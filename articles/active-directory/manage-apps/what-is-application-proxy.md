@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/31/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 68ccf3518a7011c0c39003d8e447a4e1d233fd91
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: ce159bc61a1f21c52b8d182c1248ba1d436462da
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88164579"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640513"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Veröffentlichen von lokalen Apps für Remotebenutzer mit dem Azure AD-Anwendungsproxy
 
@@ -76,7 +76,7 @@ Der Anwendungsproxy ist ein Azure AD-Dienst, den Sie im Azure-Portal konfigurier
 
 Die Komponenten dieses Features umfassen den Anwendungsproxydienst, der in der Cloud ausgeführt wird, den Anwendungsproxyconnector, der ein einfacher auf einem lokalen Server ausgeführter Agent ist, und den Identitätsanbieter Azure AD. Alle drei Komponenten zusammen ermöglichen dem Benutzer einmaliges Anmelden für den Zugriff auf lokale Webanwendungen.
 
-Externe Benutzer können nach dem Anmelden mit einer vertrauten URL oder mit dem [Zugriffsbereich „MyApps“](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access) auf ihren Desktop- oder iOS/MAC-Geräten auf lokale Webanwendungen zugreifen. Der Anwendungsproxy kann z.B. Remotezugriff und einmaliges Anmelden für Remotedesktop, SharePoint-Websites, Tableau, Qlik, Outlook im Web und branchenspezifische Anwendungen ermöglichen.
+Externe Benutzer können nach dem Anmelden mit einer vertrauten URL oder über [Meine Apps](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access) auf ihren Desktop- oder iOS/MAC-Geräten auf lokale Webanwendungen zugreifen. Der Anwendungsproxy kann z.B. Remotezugriff und einmaliges Anmelden für Remotedesktop, SharePoint-Websites, Tableau, Qlik, Outlook im Web und branchenspezifische Anwendungen ermöglichen.
 
 ![Architektur des Azure AD-Anwendungsproxys](media/what-is-application-proxy/azure-ad-application-proxy-architecture.png)
 

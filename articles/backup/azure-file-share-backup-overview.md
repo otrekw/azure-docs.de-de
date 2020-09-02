@@ -3,16 +3,16 @@ title: Informationen zum Sichern von Azure-Dateifreigaben
 description: Erfahren Sie, wie Sie Azure-Dateifreigaben im Recovery Services-Tresor sichern.
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 7441157d6346eefc256e9e7c29f9bb1fa5c13b79
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7960040df4208ad021bca3406f6472d8c3206d81
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289524"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892251"
 ---
 # <a name="about-azure-file-share-backup"></a>Informationen zum Sichern von Azure-Dateifreigaben
 
-Bei der Sicherung von Azure-Dateifreigaben handelt es sich um eine native, cloudbasierte Sicherungslösung, die Ihre Daten in der Cloud schützt und den zusätzlichen Wartungsaufwand bei lokalen Sicherungslösungen eliminiert. Der Azure Backup-Dienst ist nahtlos mit der Azure-Dateisynchronisierung integriert und ermöglicht Ihnen, Ihre Dateifreigabedaten und Sicherungen zu zentralisieren. Mit dieser einfachen, zuverlässigen und sicheren Lösung können Sie den Schutz für die Dateifreigaben Ihres Unternehmens in wenigen einfachen Schritten konfigurieren und dabei sicher sein, dass Sie Ihre Daten im Fall eines Notfallszenarios wiederherstellen können.
+Bei der Sicherung von Azure-Dateifreigaben handelt es sich um eine native, cloudbasierte Sicherungslösung, die Ihre Daten in der Cloud schützt und den zusätzlichen Wartungsaufwand bei lokalen Sicherungslösungen eliminiert. Der Azure Backup-Dienst ist nahtlos mit der Azure-Dateisynchronisierung integriert und ermöglicht Ihnen, Ihre Dateifreigabedaten und Sicherungen zu zentralisieren. Mit dieser einfachen, zuverlässigen und sicheren Lösung können Sie den Schutz für die Dateifreigaben Ihres Unternehmens in wenigen einfachen Schritten konfigurieren und dabei sicher sein, dass Sie Ihre Daten in einem Notfallszenario wiederherstellen können.
 
 ## <a name="key-benefits-of-azure-file-share-backup"></a>Wichtige Vorteile der Sicherung von Azure-Dateifreigaben
 
@@ -42,9 +42,9 @@ Bei der Sicherung von Azure-Dateifreigaben handelt es sich um eine native, cloud
     >[!NOTE]
     >Die Dateifreigabedaten werden nicht an den Azure Backup-Dienst übertragen, da dieser die Momentaufnahmen erstellt und verwaltet, die Teil Ihres Speicherkontos sind. Außerdem werden Sicherungen nicht an den Tresor übertragen.
 
-6. Sie können den Inhalt der Azure-Dateifreigabe (einzelne Dateien oder die gesamte Freigabe) aus den in der ursprünglichen Dateifreigabe verfügbaren Momentaufnahmen wiederherstellen. Nachdem der Vorgang ausgelöst wurde, wird die Momentaufnahme-URL aus dem Metadatenspeicher abgerufen, und die Daten werden aufgelistet und aus der Quellmomentaufnahme in die Zieldateifreigabe Ihrer Wahl übertragen. 
+6. Sie können den Inhalt der Azure-Dateifreigabe (einzelne Dateien oder die gesamte Freigabe) aus den in der ursprünglichen Dateifreigabe verfügbaren Momentaufnahmen wiederherstellen. Nachdem der Vorgang ausgelöst wurde, wird die Momentaufnahme-URL aus dem Metadatenspeicher abgerufen, und die Daten werden aufgelistet und aus der Quellmomentaufnahme in die Zieldateifreigabe Ihrer Wahl übertragen.
 
-7. Wenn Sie die Azure-Dateisynchronisierung verwenden, übergibt der Backup-Dienst dem Azure-Dateisynchronisierungsdienst die Pfade der wiederherzustellenden Dateien, der dann einen Hintergrundprozess zur Änderungserkennung für diese Dateien auslöst. Alle Dateien, die geändert wurden, werden mit dem Serverendpunkt synchronisiert. Dieser Vorgang erfolgt parallel zur ursprünglichen Wiederherstellung in der Azure-Dateifreigabe. 
+7. Wenn Sie die Azure-Dateisynchronisierung verwenden, übergibt der Backup-Dienst dem Azure-Dateisynchronisierungsdienst die Pfade der wiederherzustellenden Dateien, der dann einen Hintergrundprozess zur Änderungserkennung für diese Dateien auslöst. Alle Dateien, die geändert wurden, werden mit dem Serverendpunkt synchronisiert. Dieser Vorgang erfolgt parallel zur ursprünglichen Wiederherstellung in der Azure-Dateifreigabe.
 
 8. Die Überwachungsdaten zu den Sicherungs- und Wiederherstellungsaufträgen werden an den Azure Backup-Überwachungsdienst gepusht. Auf diese Weise können Sie Cloudsicherungen für Ihre Dateifreigaben auf einem zentralen Dashboard überwachen. Außerdem können Sie Warnungen oder E-Mail-Benachrichtigungen konfigurieren, wenn die Integrität der Sicherung beeinträchtigt ist. E-Mails werden über den Azure-E-Mail-Dienst gesendet.
 

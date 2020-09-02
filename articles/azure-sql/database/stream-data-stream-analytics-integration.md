@@ -11,12 +11,12 @@ author: ajetasin
 ms.author: ajetasi
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: 90d3507a8867ad3556891f6001f0e15ebda8c4f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 945e9019d75f9597d89a63c9322cbd4a8d502f15
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84345358"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869863"
 ---
 # <a name="stream-data-into-azure-sql-database-using-azure-stream-analytics-integration-preview"></a>Streamen von Daten an Azure SQL-Datenbank mithilfe der Azure Stream Analytics-Integration (Vorschauversion)
 
@@ -31,7 +31,7 @@ Benutzer können Streamingdaten jetzt in Echtzeit direkt aus einer Datenbank in 
 - Zusätzliche Benutzerfreundlichkeit mit Vorschau von Daten: Sie können eine Vorschau eingehender Daten aus der Ereignisquelle (Event Hub/IOT Hub) im Kontext der ausgewählten Tabelle anzeigen.
 
 > [!IMPORTANT]
-> Ein Azure Stream Analytics-Auftrag kann Ergebnisse in Azure SQL-Datenbank, Azure SQL Managed Instance oder Azure Synapse Analytics (zuvor Azure SQL Data Warehouse) ausgeben. Weitere Informationen finden Sie unter [Ausgaben](../../stream-analytics/stream-analytics-define-outputs.md#sql-database).
+> Ein Azure Stream Analytics-Auftrag kann Ergebnisse in Azure SQL-Datenbank, Azure SQL Managed Instance oder Azure Synapse Analytics (zuvor Azure SQL Data Warehouse) ausgeben. Weitere Informationen finden Sie unter [Ausgaben](../../stream-analytics/sql-database-output.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -50,7 +50,7 @@ Zum Ausführen der Schritte in diesem Artikel benötigen Sie folgende Ressourcen
 
 3. Klicken Sie auf **Erstellen**, und geben Sie Ihrem Streamingauftrag einen Namen, um mit dem Erfassen von Streamingdaten in dieser Datenbank zu beginnen. Klicken Sie anschließend auf **Next: Input** (Weiter: Eingabe).
 
-    ![Erstellen eines Stream Analytics-Auftrags](./media/stream-data-stream-analytics-integration/create-job.png)
+    ![Konfigurieren der Stream Analytics-Auftragsgrundlagen](./media/stream-data-stream-analytics-integration/create-job.png)
 
 4. Geben Sie die Details Ihrer Ereignisquelle ein, und klicken Sie dann auf **Next: Output** (Weiter: Ausgabe).
 
@@ -64,7 +64,7 @@ Zum Ausführen der Schritte in diesem Artikel benötigen Sie folgende Ressourcen
 
       Es wird empfohlen, dass Sie eine Consumergruppe und eine Richtlinie für jeden neuen Azure Stream Analytics-Auftrag erstellen, den Sie von hier aus erstellen. Consumergruppen erlauben nur fünf Leser gleichzeitig. Wenn Sie also für jeden Auftrag eine dedizierte Consumergruppe bereitstellen, vermeiden Sie mögliche Fehler durch das Überschreiten dieses Grenzwerts. Eine dedizierte Richtlinie ermöglicht das Rotieren Ihres Schlüssels oder das Widerrufen von Berechtigungen ohne Auswirkungen auf andere Ressourcen.
 
-     ![Erstellen eines Stream Analytics-Auftrags](./media/stream-data-stream-analytics-integration/create-job-output.png)
+     ![Konfigurieren der Stream Analytics-Auftragsausgabe](./media/stream-data-stream-analytics-integration/create-job-output.png)
 
 5. Wählen Sie aus, in welcher Tabelle die Streamingdaten erfasst werden sollen. Wählen Sie anschließend die Option **Erstellen** aus.
 

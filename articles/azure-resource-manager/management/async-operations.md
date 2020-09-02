@@ -2,75 +2,84 @@
 title: Status asynchroner Vorgänge
 description: Beschreibt, wie asynchrone Vorgänge in Azure nachverfolgt werden. Es werden die Werte gezeigt, die Sie verwenden, um den Status eines Vorgangs mit langer Ausführungsdauer abzurufen.
 ms.topic: conceptual
-ms.date: 12/09/2018
+ms.date: 08/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1cf8898e5fd63e35447f6580e13347ba6d7fc413
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e2c5ba137d5277466cf1b382d2b0b1bc02259f00
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75476664"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723451"
 ---
 # <a name="track-asynchronous-azure-operations"></a>Nachverfolgen asynchroner Vorgänge in Azure
+
 Einige Azure-REST-Vorgänge werden asynchron ausgeführt, da sie nicht schnell abgeschlossen werden können. In diesem Artikel wird beschrieben, wie der Status asynchroner Vorgänge mithilfe von Werten nachverfolgt wird, die in der Antwort zurückgegeben werden.  
 
 ## <a name="status-codes-for-asynchronous-operations"></a>Statuscodes für asynchrone Vorgänge
+
 Ein asynchroner Vorgang gibt anfänglich einen dieser HTTP-Statuscodes zurück:
 
 * 201 (Erstellt)
-* 202 (Akzeptiert) 
+* 202 (Akzeptiert)
 
 Wenn der Vorgang erfolgreich abgeschlossen wurde, wird einer dieser Statuscodes zurückgegeben:
 
 * 200 (OK)
-* 204 (Kein Inhalt) 
+* 204 (Kein Inhalt)
 
-In der [REST-API-Dokumentation](/rest/api/) finden Sie Informationen zu den Antworten für den Vorgang, den Sie ausführen.
+In der [REST-API-Dokumentation](/rest/api/azure/) finden Sie Informationen zu den Antworten für den Vorgang, den Sie ausführen.
 
-## <a name="monitor-status-of-operation"></a>Überwachen des Status eines Vorgangs
-Die asynchronen REST-Vorgänge geben Headerwerte zurück, mit deren Hilfe Sie den Status des jeweiligen Vorgangs bestimmen. Es gibt potenziell drei zu untersuchende Headerwerte:
+Nachdem Sie den Antwortcode 201 oder 202 erhalten haben, können Sie den Status des Vorgangs überwachen.
 
-* `Azure-AsyncOperation`: URL zur Überprüfung des aktuellen Status des Vorgangs. Wenn der Vorgang diesen Wert zurückgibt, verwenden Sie ihn stets (anstelle von „Location“), um den Status des Vorgangs nachzuverfolgen.
+## <a name="url-to-monitor-status"></a>URL zur Überwachung des Status
+
+Es gibt zwei verschiedene Möglichkeiten, den Status des asynchronen Vorgangs zu überwachen. Sie bestimmen den richtigen Ansatz, indem Sie die Headerwerte untersuchen, die von der ursprünglichen Anforderung zurückgegeben werden. Schauen Sie zuerst nach:
+
+* `Azure-AsyncOperation`: URL zur Überprüfung des aktuellen Status des Vorgangs. Wenn der Vorgang diesen Wert zurückgibt, verwenden Sie ihn, um den Status des Vorgangs nachzuverfolgen.
+* `Retry-After`: Abzuwartende Anzahl von Sekunden vor dem Überprüfen des Status des asynchronen Vorgangs.
+
+Wenn `Azure-AsyncOperation` keiner der Headerwerte ist, suchen Sie nach:
+
 * `Location`: URL zum Bestimmen, wann ein Vorgang abgeschlossen wurde. Verwenden Sie diesen Wert nur, wenn „Azure-AsyncOperation“ nicht zurückgegeben wird.
 * `Retry-After`: Abzuwartende Anzahl von Sekunden vor dem Überprüfen des Status des asynchronen Vorgangs.
 
-Nicht jeder asynchrone Vorgang gibt jedoch alle diese Werte zurück. Sie müssen beispielsweise den Headerwert „Azure-AsyncOperation“ für einen Vorgang und den Headerwert „Location“ für einen anderen Vorgang auswerten. 
-
-Die Headerwerte werden wie beliebige andere Headerwerte für eine Anforderung abgerufen. Beispiel: In C# rufen Sie den Headerwert aus einem `HttpWebResponse`-Objekt mit dem Namen `response` mit dem folgenden Code ab:
-
-```cs
-response.Headers.GetValues("Azure-AsyncOperation").GetValue(0)
-```
-
 ## <a name="azure-asyncoperation-request-and-response"></a>Anforderung „Azure-AsyncOperation“ und Antwort
 
-Um den Status des asynchronen Vorgangs zu erhalten, senden Sie eine GET-Anforderung an die URL im Headerwert „Azure-AsyncOperation“.
+Wenn Sie über eine URL aus dem Headerwert `Azure-AsyncOperation` verfügen, senden Sie eine GET-Anforderung an die URL. Verwenden Sie den Wert aus `Retry-After`, um zu planen, wie oft der Status überprüft werden soll. Sie erhalten ein Antwortobjekt, das den Status des Vorgangs angibt. Beim Überprüfen des Status des Vorgangs mit der `Location`-URL wird eine andere Antwort zurückgegeben. Weitere Informationen zur Antwort von einer Location-URL finden Sie unter [Erstellen eines Speicherkontos (202 bei „Location“ und „Retry-After“)](#create-storage-account-202-with-location-and-retry-after).
 
-Der Text der Antwort aus diesem Vorgang enthält Informationen zum Vorgang. Das folgende Beispiel zeigt die möglichen Werte, die vom Vorgang zurückgegeben werden:
+Die Antworteigenschaften können variieren, schließen aber immer den Status des asynchronen Vorgangs ein.
+
+```json
+{
+    "status": "{status-value}"
+}
+```
+
+Das folgende Beispiel zeigt andere Werte, die vom Vorgang zurückgegeben werden könnten:
 
 ```json
 {
     "id": "{resource path from GET operation}",
-    "name": "{operation-id}", 
-    "status" : "Succeeded | Failed | Canceled | {resource provider values}", 
+    "name": "{operation-id}",
+    "status" : "Succeeded | Failed | Canceled | {resource provider values}",
     "startTime": "2017-01-06T20:56:36.002812+00:00",
     "endTime": "2017-01-06T20:56:56.002812+00:00",
     "percentComplete": {double between 0 and 100 },
     "properties": {
         /* Specific resource provider values for successful operations */
     },
-    "error" : { 
+    "error" : {
         "code": "{error code}",  
-        "message": "{error description}" 
+        "message": "{error description}"
     }
 }
 ```
 
-Nur `status` wird für alle Antworten zurückgegeben. Das Fehlerobjekt wird zurückgegeben, wenn der Status „Failed“ oder „Canceled“ ist. Alle anderen Werte sind optional, weshalb die Antwort, die Sie erhalten, sich vom Beispiel unterscheiden kann.
+Das Fehlerobjekt wird zurückgegeben, wenn der Status „Failed“ oder „Canceled“ ist. Alle anderen Werte sind optional. Die Antwort, die Sie erhalten, kann sich vom Beispiel unterscheiden.
 
 ## <a name="provisioningstate-values"></a>„provisioningState“-Werte
 
-Vorgänge zum Erstellen, Aktualisieren oder Löschen (PUT, PATCH, DELETE) einer Ressource geben in der Regel einen `provisioningState`-Wert zurück. Wenn ein Vorgang abgeschlossen wurde, wird einer der folgenden drei Werte zurückgegeben: 
+Vorgänge zum Erstellen, Aktualisieren oder Löschen (PUT, PATCH, DELETE) einer Ressource geben in der Regel einen `provisioningState`-Wert zurück. Wenn ein Vorgang abgeschlossen wurde, wird einer der folgenden drei Werte zurückgegeben:
 
 * Erfolgreich
 * Fehler
@@ -81,24 +90,25 @@ Alle anderen Werte bedeuten, dass der Vorgang noch ausgeführt wird. Der Ressour
 ## <a name="example-requests-and-responses"></a>Beispielanforderungen und -antworten
 
 ### <a name="start-virtual-machine-202-with-azure-asyncoperation"></a>Starten des virtuellen Computers (202 bei „Azure-AsyncOperation“)
-In diesem Beispiel wird gezeigt, wie der Status des Vorgangs **Starten** für virtuelle Computer bestimmt wird. Die ursprüngliche Anforderung hat das folgende Format:
+
+In diesem Beispiel wird gezeigt, wie der Status des [Startvorgangs virtueller Computer](/rest/api/compute/virtualmachines/start) bestimmt wird. Die ursprüngliche Anforderung hat das folgende Format:
 
 ```HTTP
 POST 
-https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Compute/virtualMachines/{vm-name}/start?api-version=2016-03-30
+https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Compute/virtualMachines/{vm-name}/start?api-version=2019-12-01
 ```
 
 Sie gibt den Statuscode 202 zurück. Unter den Headerwerten finden Sie:
 
 ```HTTP
-Azure-AsyncOperation : https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Compute/locations/{region}/operations/{operation-id}?api-version=2016-03-30
+Azure-AsyncOperation : https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Compute/locations/{region}/operations/{operation-id}?api-version=2019-12-01
 ```
 
 Um den Status des asynchronen Vorgangs zu überprüfen, senden Sie eine weitere Anforderung an diese URL.
 
 ```HTTP
 GET 
-https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Compute/locations/{region}/operations/{operation-id}?api-version=2016-03-30
+https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Compute/locations/{region}/operations/{operation-id}?api-version=2019-12-01
 ```
 
 Der Antworttext enthält den Status des Vorgangs:
@@ -113,11 +123,11 @@ Der Antworttext enthält den Status des Vorgangs:
 
 ### <a name="deploy-resources-201-with-azure-asyncoperation"></a>Bereitstellen von Ressourcen (201 bei „Azure-AsyncOperation“)
 
-In diesem Beispiel wird gezeigt, wie der Status des Vorgangs **Bereitstellung** für die Bereitstellung von Ressourcen in Azure bestimmt wird. Die ursprüngliche Anforderung hat das folgende Format:
+In diesem Beispiel wird gezeigt, wie der Status des [Bereitstellungsvorgangs bei der Bereitstellung von Ressourcen](/rest/api/resources/deployments/createorupdate) in Azure bestimmt wird. Die ursprüngliche Anforderung hat das folgende Format:
 
 ```HTTP
 PUT
-https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/microsoft.resources/deployments/{deployment-name}?api-version=2016-09-01
+https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/microsoft.resources/deployments/{deployment-name}?api-version=2020-06-01
 ```
 
 Sie gibt den Statuscode 201 zurück. Der Antworttext enthält Folgendes:
@@ -129,47 +139,58 @@ Sie gibt den Statuscode 201 zurück. Der Antworttext enthält Folgendes:
 Unter den Headerwerten finden Sie:
 
 ```HTTP
-Azure-AsyncOperation: https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Resources/deployments/{deployment-name}/operationStatuses/{operation-id}?api-version=2016-09-01
+Azure-AsyncOperation: https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Resources/deployments/{deployment-name}/operationStatuses/{operation-id}?api-version=2020-06-01
 ```
 
 Um den Status des asynchronen Vorgangs zu überprüfen, senden Sie eine weitere Anforderung an diese URL.
 
 ```HTTP
 GET 
-https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Resources/deployments/{deployment-name}/operationStatuses/{operation-id}?api-version=2016-09-01
+https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Resources/deployments/{deployment-name}/operationStatuses/{operation-id}?api-version=2020-06-01
 ```
 
 Der Antworttext enthält den Status des Vorgangs:
 
 ```json
-{"status":"Running"}
+{
+    "status": "Running"
+}
 ```
 
 Wenn die Bereitstellung abgeschlossen ist, enthält die Antwort Folgendes:
 
 ```json
-{"status":"Succeeded"}
+{
+    "status": "Succeeded"
+}
 ```
 
 ### <a name="create-storage-account-202-with-location-and-retry-after"></a>Erstellen eines Speicherkontos (202 bei „Location“ und „Retry-After“)
 
-In diesem Beispiel wird gezeigt, wie der Status des Vorgangs **Erstellen** für Speicherkonten bestimmt wird. Die ursprüngliche Anforderung hat das folgende Format:
+In diesem Beispiel wird gezeigt, wie der Status des [Erstellungsvorgangs für Speicherkonten](/rest/api/storagerp/storageaccounts/create) bestimmt wird. Die ursprüngliche Anforderung hat das folgende Format:
 
 ```HTTP
 PUT
-https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}?api-version=2016-01-01
+https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}?api-version=2019-06-01
 ```
 
 Und der Anforderungstext enthält Eigenschaften für das Speicherkonto:
 
 ```json
-{ "location": "South Central US", "properties": {}, "sku": { "name": "Standard_LRS" }, "kind": "Storage" }
+{
+    "location": "South Central US",
+    "properties": {},
+    "sku": {
+        "name": "Standard_LRS"
+    },
+    "kind": "Storage"
+}
 ```
 
 Sie gibt den Statuscode 202 zurück. In den Headerwerten finden Sie die folgenden beiden Werte:
 
 ```HTTP
-Location: https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Storage/operations/{operation-id}?monitor=true&api-version=2016-01-01
+Location: https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Storage/operations/{operation-id}?monitor=true&api-version=2019-06-01
 Retry-After: 17
 ```
 
@@ -177,12 +198,12 @@ Retry-After: 17
 
 ```HTTP
 GET 
-https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Storage/operations/{operation-id}?monitor=true&api-version=2016-01-01
+https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Storage/operations/{operation-id}?monitor=true&api-version=2019-06-01
 ```
 
 Wenn die Anforderung noch ausgeführt wird, erhalten Sie den Statuscode 202. Wenn die Anforderung abgeschlossen wurde, erhalten Sie den Statuscode 200, wobei der Text der Anforderung die Eigenschaften des erstellten Speicherkontos enthält.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zu den einzelnen REST-Vorgängen finden Sie in der [REST-API-Dokumentation](/rest/api/).
+* Informationen zu den einzelnen REST-Vorgängen finden Sie in der [REST-API-Dokumentation](/rest/api/azure/).
 * Informationen zum Bereitstellen von Vorlagen mit der Ressourcen-Manager-REST-API finden Sie unter [Bereitstellen von Ressourcen mit Resource Manager-Vorlagen und der Resource Manager-REST-API](../templates/deploy-rest.md).

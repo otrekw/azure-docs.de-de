@@ -9,15 +9,16 @@ ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 08/04/2020
+ms.date: 08/20/2020
 ms.author: curtand
 ms.reviewer: kexia
-ms.openlocfilehash: 754d456f557b6c9500cdb64ee01a42124a18ab9c
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+metadata ms.custom: contperfq1
+ms.openlocfilehash: 61ba06054e86d544ae4ab1edbdef8d86667ef3b2
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036673"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796577"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>Allgemeine Probleme mit der zweistufigen Überprüfung in Verbindung mit Ihrem Geschäfts-, Schul- oder Unikonto
 
@@ -31,14 +32,10 @@ Wenn die zweistufige Überprüfung aktiviert ist, ist für Ihre Kontoanmeldedate
 
 Die zweistufige Überprüfung ist sicherer als nur ein Kennwort, da sie etwas erfordert, das Sie _wissen_ und über das Sie _verfügen_. Kein Hacker verfügt über Ihr physisches Smartphone.
 
-<center>
-
-![Bild konzeptioneller Authentifizierungsmethoden](../authentication/media/concept-mfa-howitworks/methods.png)</center>
-
 >[!Important]
->Administratoren finden in der [Azure AD-Dokumentation](https://docs.microsoft.com/azure/active-directory) weitere Informationen zum Einrichten und Verwalten der Azure AD-Umgebung.
->
->Dieser Inhalt ist außerdem nur für die Verwendung mit Ihrem Geschäfts-, Schul- oder Unikonto vorgesehen, also dem Konto, das Ihnen von Ihrer Organisation zur Verfügung gestellt wird (z. B. alain@contoso.com). Bei Problemen mit der zweistufigen Überprüfung in Verbindung mit Ihrem persönlichen Microsoft-Konto, also dem Konto, das Sie für sich selbst eingerichtet haben (z. B. danielle@outlook.com) lesen Sie den Artikel [Aktivieren oder Deaktivieren der Überprüfung in zwei Schritten für Ihr Microsoft-Konto](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
+>Administratoren finden in der [Azure AD-Dokumentation](../index.yml) weitere Informationen zum Einrichten und Verwalten der Azure AD-Umgebung.
+
+Dieser Inhalt soll Ihnen bei Ihrem Geschäfts-, Schul- oder Unikonto helfen, also dem Konto, das Ihnen von Ihrer Organisation zur Verfügung gestellt wird (z. B. dritan@contoso.com). Bei Problemen mit der zweistufigen Überprüfung in Verbindung mit einem persönlichen Microsoft-Konto, also dem Konto, das Sie für sich selbst eingerichtet haben (z. B. danielle@outlook.com) lesen Sie den Artikel [Aktivieren oder Deaktivieren der Überprüfung in zwei Schritten für Ihr Microsoft-Konto](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
 
 ## <a name="i-dont-have-my-mobile-device-with-me"></a>Ich habe mein mobiles Gerät nicht bei mir
 

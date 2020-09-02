@@ -37,9 +37,6 @@
       href: powershell-samples.md
     - name: Resource Manager-Vorlagen
       href: template-samples.md
-    - name: Azure Policy-Integrationen
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Konzepte
   items:
     - name: Geschäftskontinuität
@@ -226,6 +223,12 @@
               href: ipv6-reserve-public-ip-address-prefix.md
         - name: IP-Adressierung
           items:
+            - name: 'Erstellen öffentlicher IP-Adressen: Portal'
+              href: create-public-ip-portal.md
+            - name: 'Erstellen öffentlicher IP-Adressen: PowerShell'
+              href: create-public-ip-powershell.md
+            - name: 'Erstellen öffentlicher IP-Adressen: Azure CLI'
+              href: create-public-ip-cli.md
             - name: Verwalten öffentlicher IP-Adressen
               href: virtual-network-public-ip-address.md
             - name: Verwalten des Präfixes für öffentliche IP-Adressen
@@ -432,6 +435,9 @@
       href: /azure/templates/microsoft.network/allversions
     - name: Codebeispiele
       href: 'https://azure.microsoft.com/resources/samples/?service=virtual-network'
+    - name: Azure Policy-Integrationen
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Ressourcen
   items:
     - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn

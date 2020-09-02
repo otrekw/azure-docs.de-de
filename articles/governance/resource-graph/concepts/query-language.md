@@ -1,14 +1,14 @@
 ---
 title: Grundlegendes zur Abfragesprache
 description: Beschreibt Resource Graph-Tabellen und die verfügbaren Kusto-Datentypen, -Operatoren und -Funktionen, die mit Azure Resource Graph verwendet werden können.
-ms.date: 08/03/2020
+ms.date: 08/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: b59811ecd877b9b2e22a43c00329ed7d02dfb97d
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 4d7ca949e9eef075adb130bb84b2617749950bec
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541820"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798549"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Grundlegendes zur Azure Resource Graph-Abfragesprache
 
@@ -64,6 +64,25 @@ Resources
 > [!NOTE]
 > Wenn Sie die Ergebnisse von `join` mit `project` einschränken, muss die Eigenschaft, die von `join` zum Verknüpfen der beiden Tabellen verwendet wird (_subscriptionId_ im obigen Beispiel), in `project` enthalten sein.
 
+## <a name="extended-properties-preview"></a><a name="extended-properties"></a>Erweiterte Eigenschaften (Vorschau)
+
+Als _Previewfunktion_ verfügen einige der Ressourcentypen in Resource Graph über zusätzliche typbezogene Eigenschaften, die über die von Azure Resource Manager bereitgestellten Eigenschaften hinaus abgefragt werden können. Dieser Satz von Werten, bekannt als _erweiterte Eigenschaften_, existiert auf einem unterstützten Ressourcentyp in `properties.extended`. Verwenden Sie die folgende Abfrage, um zu ermitteln, welche Ressourcentypen über _erweiterte Eigenschaften_ verfügen:
+
+```kusto
+Resources
+| where isnotnull(properties.extended)
+| distinct type
+| order by type asc
+```
+
+Beispiel: Abrufen der Anzahl virtueller Computer über `instanceView.powerState.code`:
+
+```kusto
+Resources
+| where type == 'microsoft.compute/virtualmachines'
+| summarize count() by tostring(properties.extended.instanceView.powerState.code)
+```
+
 ## <a name="resource-graph-custom-language-elements"></a>Benutzerdefinierte Sprachelemente in Resource Graph
 
 ### <a name="shared-query-syntax-preview"></a><a name="shared-query-syntax"></a>Syntax für freigegebene Abfragen (Vorschauversion)
@@ -93,7 +112,7 @@ Bei dieser Abfrage wird zunächst die freigegebene Abfrage und dann `limit` verw
 
 ## <a name="supported-kql-language-elements"></a>Unterstützte KQL-Sprachelemente
 
-Resource Graph unterstützt alle [Datentypen](/azure/kusto/query/scalar-data-types/), [Skalarfunktionen](/azure/kusto/query/scalarfunctions), [Skalaroperatoren](/azure/kusto/query/binoperators) und [Aggregationsfunktionen](/azure/kusto/query/any-aggfunction) von KQL. Es werden bestimmte [tabellarische Operatoren](/azure/kusto/query/queries) von Resource Graph unterstützt, von denen einige unterschiedliche Verhaltensweisen aufweisen.
+Resource Graph unterstützt eine Teilmenge von [Datentypen](/azure/kusto/query/scalar-data-types/), [Skalarfunktionen](/azure/kusto/query/scalarfunctions), [Skalaroperatoren](/azure/kusto/query/binoperators) und [Aggregationsfunktionen](/azure/kusto/query/any-aggfunction) von KQL. Es werden bestimmte [tabellarische Operatoren](/azure/kusto/query/queries) von Resource Graph unterstützt, von denen einige unterschiedliche Verhaltensweisen aufweisen.
 
 ### <a name="supported-tabulartop-level-operators"></a>Unterstützte tabellarische Operatoren und Operatoren auf oberster Ebene
 
@@ -123,8 +142,7 @@ Es folgt eine Liste der von Resource Graph unterstützten tabellarischen KQL-Ope
 Der Bereich der Abonnements, aus denen Ressourcen von einer Abfrage zurückgegeben werden, hängt von der Methode des Zugriffs auf Resource Graph ab. Azure CLI und Azure PowerShell füllen die Liste der Abonnements, die in die Anforderung eingeschlossen werden sollen, basierend auf dem Kontext des autorisierten Benutzers auf. Die Liste der Abonnements kann jeweils manuell mit dem Parameter **subscriptions** bzw. **Subscription** definiert werden.
 In der REST-API und allen anderen SDKs muss die Liste der Abonnements, aus denen Ressourcen eingeschlossen werden sollen, explizit als Teil der Anforderung definiert werden.
 
-Als **Vorschau** fügt die REST-API-Version `2020-04-01-preview` eine Eigenschaft hinzu, um die Abfrage auf eine [Verwaltungsgruppe](../../management-groups/overview.md) zu beschränken. In dieser Vorschau-API ist außerdem die Abonnementeigenschaft optional. Wenn weder die Verwaltungsgruppe noch die Abonnementliste definiert ist, umfasst der Abfragebereich alle Ressourcen, auf die der authentifizierte Benutzer zugreifen kann. Die neue Eigenschaft `managementGroupId` übernimmt die Verwaltungsgruppen-ID, die sich von dem Namen der Verwaltungsgruppe unterscheidet.
-Wenn `managementGroupId` angegeben ist, werden Ressourcen aus den ersten 5000 Abonnements in oder unter der angegebenen Verwaltungsgruppenhierarchie eingeschlossen. `managementGroupId` kann nicht gleichzeitig mit `subscriptions` verwendet werden.
+Als **Vorschau** fügt die REST-API-Version `2020-04-01-preview` eine Eigenschaft hinzu, um die Abfrage auf eine [Verwaltungsgruppe](../../management-groups/overview.md) zu beschränken. In dieser Vorschau-API ist außerdem die Abonnementeigenschaft optional. Wenn weder eine Verwaltungsgruppe noch eine Abonnementliste definiert ist, umfasst der Abfragebereich alle Ressourcen, auf die der authentifizierte Benutzer zugreifen kann. Die neue Eigenschaft `managementGroupId` übernimmt die Verwaltungsgruppen-ID, die sich von dem Namen der Verwaltungsgruppe unterscheidet. Wenn `managementGroupId` angegeben ist, werden Ressourcen aus den ersten 5000 Abonnements in oder unter der angegebenen Verwaltungsgruppenhierarchie eingeschlossen. `managementGroupId` kann nicht gleichzeitig mit `subscriptions` verwendet werden.
 
 Beispiel: Abfragen aller Ressourcen in der Hierarchie der Verwaltungsgruppe mit Namen „My Management Group“ mit der ID „myMG“
 

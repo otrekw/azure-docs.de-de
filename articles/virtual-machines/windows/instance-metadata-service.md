@@ -11,18 +11,18 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: fe059f684306e2c98e625af72248f03f0932ebad
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: adeba1964ab802a903e82b3ea71bc3248b86cea9
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88168268"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705060"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure-Instanzmetadatendienst
 
 Der Azure Instance Metadata Service (IMDS) stellt Informationen zu derzeit ausgeführten Instanzen virtueller Computer bereit, die zum Verwalten und Konfigurieren Ihrer virtuellen Computer verwendet werden können.
 Hierzu gehören die SKU, der Speicher, Netzwerkkonfigurationen und bevorstehende Wartungsereignisse. Eine vollständige Liste der verfügbaren Daten finden Sie unter [Metadaten-APIs](#metadata-apis).
-Der Instance Metadata Service ist sowohl für VMs als auch für Instanzen von VM-Skalierungsgruppen verfügbar. Er steht nur für laufende VMs zur Verfügung, die mit dem [Azure Resource Manager](/rest/api/resources/) erstellt/verwaltet werden.
+Der Instance Metadata Service ist für das Ausführen von Instanzen virtueller Computer und VM-Skalierungsgruppen verfügbar. Alle APIs unterstützen VMs, die mit [Azure Resource Manager](/rest/api/resources/) erstellt/verwaltet werden. Nur bestätigte (Attested) und Netzwerkendpunkte unterstützen klassische VMs (Nicht-ARM-VMs), und bei bestätigten Endpunkten erfolgt dies nur in begrenztem Umfang.
 
 Azure IMDS ist ein REST-Endpunkt, der unter einer bekannten, nicht routingfähigen IP-Adresse (`169.254.169.254`) zur Verfügung steht, auf die nur innerhalb der VM zugegriffen werden kann. Die Kommunikation zwischen dem virtuellen Computer und IMDS verlässt niemals den Host.
 Es wird empfohlen, dass die HTTP-Clients bei Abfragen von IMDS Webproxys innerhalb des virtuellen Computers umgehen und `169.254.169.254` gleich behandeln wie [`168.63.129.16`](../../virtual-network/what-is-ip-address-168-63-129-16.md).
@@ -685,7 +685,7 @@ Nonce ist eine optionale 10-stellige Zeichenfolge. Wenn nicht angegeben, gibt IM
 }
 ```
 
-Das Signaturblob ist eine signierte [pkcs7](https://aka.ms/pkcs7)-Version des Dokuments. Es enthält das zum Signieren verwendete Zertifikat zusammen mit den VM-Details wie „vmId“, „sku“, „nonce“, „subscriptionId“, „timeStamp“ für die Erstellung und den Ablauf des Dokuments sowie die Planinformationen zum Image. Die Planinformationen werden nur für Azure Marketplace-Images ausgefüllt. Das Zertifikat kann aus der Antwort extrahiert und verwendet werden, um sicherzustellen, dass die Antwort gültig ist und von Azure stammt.
+Das Signaturblob ist eine signierte [pkcs7](https://aka.ms/pkcs7)-Version des Dokuments. Es enthält das zum Signieren verwendete Zertifikat zusammen mit bestimmten VM-spezifischen Details. Bei ARM-VMs sind dies „vmId“, „sku“, „nonce“, „subscriptionId“, „timeStamp“ für die Erstellung und den Ablauf des Dokuments sowie die Planinformationen zum Image. Die Planinformationen werden nur für Azure Marketplace-Images ausgefüllt. Bei klassischen VMs (Nicht-ARM-VMs) wird nur „vmId“ garantiert ausgefüllt. Das Zertifikat kann aus der Antwort extrahiert und verwendet werden, um sicherzustellen, dass die Antwort gültig ist und von Azure stammt.
 Das Dokument enthält die folgenden Felder:
 
 Daten | BESCHREIBUNG
@@ -697,6 +697,9 @@ timestamp/expiresOn | Der UTC-Zeitstempel für den Zeitpunkt, an dem das signier
 vmId |  [Eindeutiger Bezeichner](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) für die VM
 subscriptionId | Azure-Abonnement für den virtuellen Computer, eingeführt am `2019-04-30`
 sku | Spezifische SKU für das VM-Image, eingeführt in `2019-11-01`
+
+> [!NOTE]
+> Bei klassischen VMs (Nicht-ARM-VMs) wird nur „vmId“ garantiert ausgefüllt.
 
 ### <a name="sample-2-validating-that-the-vm-is-running-in-azure"></a>Beispiel 2: Überprüfen der Ausführung des virtuellen Computers in Azure
 

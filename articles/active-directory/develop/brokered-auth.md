@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/14/2019
+ms.date: 08/25/2020
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman, hahamil, brianmel
-ms.openlocfilehash: a734589178438fd65d9a2d156fd91fc82807f578
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9042318d29b9a7fc8c2064bdf845d6f0d5a4f3e8
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76697896"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853854"
 ---
 # <a name="brokered-authentication-in-android"></a>Brokerauthentifizierung in Android
 
@@ -122,3 +122,12 @@ Wenn Sie eine `MsalClientException` mit dem Fehlercode `"BROKER_BIND_FAILURE"` e
 
 - Bitten Sie den Benutzer, die Energieoptimierung für die Microsoft Authenticator-App und das Intune-Unternehmensportal zu deaktivieren.
 - Bitten Sie den Benutzer, die Berechtigung `"READ_CONTACTS"` zu erteilen.
+
+## <a name="verifying-broker-integration"></a>Überprüfen der Brokerintegration
+
+Möglicherweise ist nicht sofort klar, dass die Brokerintegration funktioniert, aber Sie können die folgenden Schritte ausführen, um dies zu überprüfen:
+
+1. Vervollständigen Sie auf Ihrem Android-Gerät eine Anforderung mit dem Broker.
+1. Suchen Sie in den Einstellungen auf Ihrem Android-Gerät nach einem neu erstellten Konto, das dem Konto entspricht, mit dem Sie sich authentifiziert haben. Das Konto muss vom Typ *Geschäftskonto* sein.
+
+Wenn Sie den Test wiederholen möchten, können Sie das Konto aus den Einstellungen entfernen.

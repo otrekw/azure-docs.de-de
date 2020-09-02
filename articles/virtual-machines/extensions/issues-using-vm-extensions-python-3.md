@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/22/2020
+ms.date: 08/25/2020
 ms.assetid: 3cd520fd-eaf7-4ef9-b4d3-4827057e5028
-ms.openlocfilehash: 944abc62f25473ea52836af7dc1fdcd1e16d9269
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 15ece836e172b8316222ea606ca638650795d5d7
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82120613"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852594"
 ---
 # <a name="issues-using-vm-extensions-in-python-3-enabled-linux-azure-virtual-machines-systems"></a>Probleme bei der Verwendung von VM-Erweiterungen in Python 3-fähigen Linux-Systemen mit Azure Virtual Machines
 
@@ -28,7 +28,7 @@ ms.locfileid: "82120613"
 >
 > Vor der Installation von **Python 2.x** in Produktionsumgebungen sollten Sie die Frage der langfristigen Unterstützung von Python 2.x untersuchen. Dies gilt insbesondere für die Möglichkeit, Sicherheitsupdates zu erhalten. Da Updates einiger Produkte, einschließlich einiger der erwähnten Erweiterungen, die Unterstützung für **Python 3.8** beinhalten, sollten Sie Ihre Verwendung von Python 2.x einstellen.
 
-Einige Linux-Distributionen wurden auf Python 3.8 umgestellt, und der Legacy-Einstiegspunkt `/usr/bin/python` für Python wurde vollständig entfernt. Diese Umstellung wirkt sich auf die standardmäßige automatisierte Bereitstellung bestimmter VM-Erweiterungen mit den folgenden Eigenschaften aus:
+Einige Linux-Distributionen wurden auf Python 3.8 umgestellt, und der Legacy-Einstiegspunkt `/usr/bin/python` für Python wurde vollständig entfernt. Diese Umstellung wirkt sich auf die standardmäßige automatisierte Bereitstellung bestimmter VM-Erweiterungen mit diesen beiden Bedingungen aus:
 
 - Erweiterungen, bei denen die Umstellung auf Python 3.x noch durchgeführt wird
 - Erweiterungen, die den Legacy-Einstiegspunkt `/usr/bin/python` verwenden
@@ -43,50 +43,52 @@ Direkte Upgrades, z. B. ein Upgrade von **Ubuntu 18.04 LTS** auf **Ubuntu 20.
 
 ## <a name="resolution"></a>Lösung
 
-Beachten Sie die folgenden allgemeinen Empfehlungen, bevor Sie Erweiterungen in den zuvor in der Zusammenfassung beschriebenen betroffenen Szenarien bereitstellen:
+Beachten Sie diese allgemeinen Empfehlungen, bevor Sie Erweiterungen in den zuvor in der Zusammenfassung beschriebenen betroffenen Szenarien bereitstellen:
 
-1.  Stellen Sie vor dem Bereitstellen der Erweiterung den Symlink `/usr/bin/python` mithilfe der vom Anbieter der Linux-Distribution bereitgestellten Methode wieder her.
+1. Stellen Sie vor dem Bereitstellen der Erweiterung den Symlink `/usr/bin/python` mithilfe der vom Anbieter der Linux-Distribution bereitgestellten Methode wieder her.
 
-    - Beispiel für **Python 2.7**: `sudo apt update && sudo apt install python-is-python2`
+   - Beispiel für **Python 2.7**: `sudo apt update && sudo apt install python-is-python2`
 
-2.  Wenn Sie bereits eine Instanz bereitgestellt haben, in der dieses Problem auftritt, verwenden Sie die Funktion **Befehl ausführen** auf dem **VM-Blatt**, um die oben genannten Befehle auszuführen. Die Befehlserweiterung zum Ausführen von Befehlen ist von der Umstellung auf Python 3.8 nicht betroffen.
+1. Diese Empfehlung gilt für Azure-Kunden und wird in Azure Stack nicht unterstützt:
 
-3.  Wenn Sie eine neue Instanz bereitstellen und während der Bereitstellung eine Erweiterung festlegen müssen, verwenden Sie **cloud-init**-Benutzerdaten, um die oben genannten Pakete zu installieren.
+   - Wenn Sie bereits eine Instanz bereitgestellt haben, in der dieses Problem auftritt, verwenden Sie die Funktion Befehl ausführen auf dem VM-Blatt, um die oben genannten Befehle auszuführen. Die Befehlserweiterung zum Ausführen von Befehlen ist von der Umstellung auf Python 3.8 nicht betroffen.
 
-    Beispiel für Python 2.7:
+1. Wenn Sie eine neue Instanz bereitstellen und während der Bereitstellung eine Erweiterung festlegen müssen, verwenden Sie **cloud-init**-Benutzerdaten, um die oben genannten Pakete zu installieren.
 
-    ```
-    # create cloud-init config
-    cat > cloudinitConfig.json <<EOF
-    #cloud-config
-    package_update: true
+   Beispiel für Python 2.7:
+
+   ```python
+   # create cloud-init config
+   cat > cloudinitConfig.json <<EOF
+   #cloud-config
+   package_update: true
     
-    runcmd:
-    - sudo apt update
-    - sudo apt install python-is-python2 
-    EOF
-    
-    # create VM
-    az vm create \
-        --resource-group <resourceGroupName> \
-        --name <vmName> \
-        --image <Ubuntu 20.04 Image URN> \
-        --admin-username azadmin \
-        --ssh-key-value "<sshPubKey>" \
-        --custom-data ./cloudinitConfig.json
-    ```
+   runcmd:
+   - sudo apt update
+   - sudo apt install python-is-python2 
+   EOF
 
-4.  Wenn die Richtlinienadministratoren Ihrer Organisation festlegen, dass Erweiterungen nicht auf VMs bereitgestellt werden sollen, können Sie die Erweiterungsunterstützung während der Bereitstellung deaktivieren:
+   # create VM
+   az vm create \
+       --resource-group <resourceGroupName> \
+       --name <vmName> \
+       --image <Ubuntu 20.04 Image URN> \
+       --admin-username azadmin \
+       --ssh-key-value "<sshPubKey>" \
+       --custom-data ./cloudinitConfig.json
+   ```
 
-    - REST-API
+1. Wenn die Richtlinienadministratoren Ihrer Organisation festlegen, dass Erweiterungen nicht auf VMs bereitgestellt werden sollen, können Sie die Erweiterungsunterstützung während der Bereitstellung deaktivieren:
 
-      So deaktivieren und aktivieren Sie Erweiterungen, wenn Sie eine VM mit dieser Eigenschaft bereitstellen können
+   - REST-API
 
-      ```
-        "osProfile": {
-          "allowExtensionOperations": false
-        },
-      ```
+     So deaktivieren und aktivieren Sie Erweiterungen, wenn Sie eine VM mit dieser Eigenschaft bereitstellen können
+
+     ```python
+       "osProfile": {
+         "allowExtensionOperations": false
+       },
+     ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

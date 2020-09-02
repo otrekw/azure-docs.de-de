@@ -3,12 +3,12 @@ title: Vorläufiges Löschen für SQL-Server auf virtuellen Azure-Computern und 
 description: Erfahren Sie, wie das vorläufige Löschen für SQL-Server auf virtuellen Azure-Computern und SAP HANA in Azure-VM-Workloads Sicherungen noch sicherer macht.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: c0eaedea2d5428376befaade42f87348cf84e7bc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4e001ee460d9b7106d928da32b1620fb117c6b5a
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538189"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825170"
 ---
 # <a name="soft-delete-for-sql-server-in-azure-vm-and-sap-hana-in-azure-vm-workloads"></a>Vorläufiges Löschen für SQL-Server auf virtuellen Azure-Computern und SAP HANA in Azure-VM-Workloads
 
@@ -17,7 +17,7 @@ Azure Backup bietet nun vorläufiges Löschen für SQL-Server auf virtuellen Azu
 [Vorläufiges Löschen](backup-azure-security-feature-cloud.md) ist ein Sicherheitsfeature für den Schutz von Sicherungsdaten auch nach dem Löschen. Mit dem vorläufigen Löschen werden selbst beim Löschen der Sicherung einer Datenbank durch einen böswilligen Akteur oder beim versehentlichen Löschen der Sicherungsdaten diese noch 14 Tage lang aufbewahrt. Dies ermöglicht die Wiederherstellung dieses Sicherungselements ohne Datenverluste. Für die zusätzlichen 14 Tage der Aufbewahrung von Sicherungsdaten mit dem Status „Vorläufiges Löschen“ fallen für Kunden keine Kosten an.
 
 >[!NOTE]
->Nachdem die Vorschau für ein Abonnement aktiviert wurde, ist es nicht mehr möglich, vorläufiges Löschen nur für SQL Server- oder SAP HANA-Datenbanken zu deaktivieren, aber gleichzeitig für virtuelle Computer im selben Tresor aktiviert zu lassen. Für eine präzisere Steuerung können Sie separate Tresore erstellen.
+>Nachdem die Vorschau für ein Abonnement aktiviert wurde, ist es nicht mehr möglich, vorläufiges Löschen nur für SQL Server- oder SAP HANA-Datenbanken zu deaktivieren, aber gleichzeitig für virtuelle Computer im selben Tresor aktiviert zu lassen. Für eine präzisere Steuerung können Sie separate Tresore erstellen.
 
 ## <a name="steps-to-enroll-in-preview"></a>Schritte zum Registrieren für die Vorschau
 

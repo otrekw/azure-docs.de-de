@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 07/31/2020
-ms.openlocfilehash: 93507bae3f817f92cfa427ceca10f651352a46bc
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a8b5ec48b64341ad9eabd087d7ee20bb703198c6
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497578"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816234"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Häufig gestellte Fragen zu Azure Red Hat OpenShift
 
@@ -65,25 +65,9 @@ Auf Azure Red Hat OpenShift 4.x-Clustern sind Infrastrukturknoten derzeit nicht 
 
 Auf Azure Red Hat OpenShift 3.11-Clustern sind Infrastrukturknoten standardmäßig enthalten.
 
-## <a name="upgrades"></a>Upgrades
+## <a name="how-do-i-handle-cluster-upgrades"></a>Wie gehe ich mit Clusterupgrades um?
 
-###  <a name="what-is-the-general-upgrade-process"></a>Wie sieht der allgemeine Upgradeprozess aus?
-
-Patches werden automatisch auf Ihren Cluster angewendet. Sie müssen keine Maßnahmen ergreifen, um Patchupgrades auf Ihrem Cluster zu erhalten.
-
-Das Ausführen eines Upgrades ist ein sicher auszuführender Prozess und sollte die Clusterdienste nicht stören. Das gemeinsame Team von Microsoft und Red Hat kann den Upgradeprozess auslösen, wenn neue Versionen verfügbar oder Common Vulnerabilities and Exposures (CVE, allgemeine Sicherheitslücken und Schwachstellen) ausstehend sind. Verfügbare Updates werden in einer Stagingumgebung getestet und dann auf Produktionscluster angewendet. Ein Vorgehen gemäß den bewährten Methoden bietet Gewähr für minimale oder sogar keine Ausfallzeit.
-
-Geplante Wartung wird nicht zusammen mit dem Kunden vorgeplant. Auf die Wartung bezogene Benachrichtigungen können per E-Mail gesendet werden.
-
-### <a name="what-is-the-azure-red-hat-openshift-maintenance-process"></a>Was ist der Azure Red Hat OpenShift-Wartungsprozess?
-
-Es gibt zwei Arten der Wartung für Azure Red Hat OpenShift: Upgrades und vom Cloudanbieter initiierte Wartung.
-- Zu den Upgrades gehören Softwareupgrades und Common Vulnerabilities and Exposures (CVE, allgemeine Sicherheitslücken und Schwachstellen).
-- Eine von einem Cloudanbieter ausgelöste Wartung umfasst Netzwerk-, Speicher- und regionalen Ausfälle. Die Wartung ist abhängig vom Cloudanbieter und basiert auf vom Anbieter bereitgestellten Updates.
-
-### <a name="what-about-emergency-vs-planned-maintenance-windows"></a>Wird zwischen Notfall- und geplanten Wartungsfenstern unterschieden?
-
-Wir unterscheiden nicht zwischen diesen beiden Wartungstypen. Unsere Teams sind 24/7/365 verfügbar und nutzen keine herkömmlichen geplanten Wartungsfenster „außerhalb der üblichen Betriebszeiten“.
+Informationen zu Upgrades, Wartung und unterstützten Versionen finden Sie unter [Unterstützung des Lebenszyklus für Azure Red Hat OpenShift 4](support-lifecycle.md).
 
 ### <a name="how-will-the-host-operating-system-and-openshift-software-be-updated"></a>Wie werden Hostbetriebssystem und OpenShift-Software aktualisiert?
 

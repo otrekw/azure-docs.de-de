@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 5c253abf0fa6ae95dff178847209be407fb5bca5
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 6c85a7315fe05bb4fedabd176295523c2fa95d81
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120829"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855233"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Bereitstellen eines Modells in einem Azure Kubernetes Service-Cluster
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -28,7 +28,9 @@ Erfahren Sie, wie Sie ein Modell mit Azure Machine Learning als Webdienst in Azu
 - Optionen für die __Hardwarebeschleunigung__, beispielsweise GPU und FPGA (Field-Programmable Gate Arrays)
 
 > [!IMPORTANT]
-> Das Azure Machine Learning SDK bietet keine Clusterskalierung. Weitere Informationen zum Skalieren der Knoten in einem AKS-Cluster finden Sie unter [Skalieren der Knotenanzahl in einem AKS-Cluster](../aks/scale-cluster.md).
+> Das Azure Machine Learning SDK bietet keine Clusterskalierung. Weitere Informationen zum Skalieren der Knoten in einem AKS-Cluster finden Sie unter 
+- [Skalieren der Anzahl der Knoten in einem Azure Kubernetes Service-Cluster (AKS)](../aks/scale-cluster.md)
+- [Automatisches Skalieren eines Clusters zur Erfüllung von Anwendungsanforderungen in Azure Kubernetes Service (AKS)](../aks/cluster-autoscaler.md)
 
 Bei der Bereitstellung in Azure Kubernetes Service führen Sie die Bereitstellung in einem AKS-Cluster durch, der __mit Ihrem Arbeitsbereich verbunden ist__. Es gibt zwei Möglichkeiten, einen AKS-Cluster mit Ihrem Arbeitsbereich zu verbinden:
 
@@ -65,9 +67,16 @@ Der AKS-Cluster und der AML-Arbeitsbereich können sich in unterschiedlichen Res
 
 - Wenn in Ihrem Cluster anstelle eines Load Balancer Basic (BLB) ein Load Balancer Standard (SLB) bereitgestellt werden muss, erstellen Sie im AKS-Portal, mit der CLI oder über das SDK einen Cluster, und fügen Sie diesen Cluster an den AML-Arbeitsbereich an.
 
+- Wenn Sie über eine Azure Policy verfügen, die die Erstellung von öffentlichen IP-Adressen einschränkt, tritt bei der AKS-Clustererstellung ein Fehler auf. AKS erfordert eine öffentliche IP-Adresse für [ausgehenden Datenverkehr](https://docs.microsoft.com/azure/aks/limit-egress-traffic). Außerdem finden Sie in diesem Artikel Anleitungen zum Sperren von aus dem Cluster über die öffentliche IP-Adresse ausgehenden Datenverkehr mit Ausnahme einiger FQDN. Es gibt 2 Möglichkeiten, eine öffentliche IP-Adresse zu aktivieren:
+  - Der Cluster kann die öffentliche IP-Adresse verwenden, die standardmäßig mit dem BLB oder SLB erstellt wird, oder
+  - der Cluster kann ohne öffentliche IP-Adresse erstellt werden, und anschließend wird eine öffentliche IP-Adresse mit einer Firewall mit einer benutzerdefinierten Route konfiguriert, die [hier](https://docs.microsoft.com/azure/aks/egress-outboundtype) dokumentiert ist. 
+  
+  Die AML-Steuerungsebene kommuniziert nicht mit dieser öffentlichen IP-Adresse. Sie kommuniziert mit der AKS-Steuerungsebene für Bereitstellungen. 
+
 - Wenn Sie einen AKS-Cluster anfügen, der über einen [autorisierten IP-Adressbereich mit Zugriff auf den API-Server](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges) verfügt, aktivieren Sie die IP-Adressbereiche der AML-Steuerungsebene für den AKS-Cluster. Die AML-Steuerungsebene wird für Regionspaare bereitgestellt und stellt Rückschlusspods im AKS-Cluster bereit. Ohne Zugriff auf den API-Server können die Rückschlusspods nicht bereitgestellt werden. Verwenden Sie die [IP-Adressbereiche](https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519) für beide [Regionspaare]( https://docs.microsoft.com/azure/best-practices-availability-paired-regions), wenn Sie die IP-Adressbereiche in einem AKS-Cluster aktivieren.
 
-__Autorisierte IP-Adressbereiche funktionieren nur mit Load Balancer Standard.__
+
+  Autorisierte IP-Adressbereiche funktionieren nur mit Load Balancer Standard.
  
  - Der Computename MUSS innerhalb eines Arbeitsbereichs eindeutig sein
    - Der Name ist erforderlich und muss zwischen 3 und 24 Zeichen lang sein.
@@ -76,10 +85,6 @@ __Autorisierte IP-Adressbereiche funktionieren nur mit Load Balancer Standard.__
    - Der Name muss auf allen vorhandenen Compute-Instanzen innerhalb einer Azure-Region eindeutig sein. Sie erhalten eine Warnung, wenn der von Ihnen gewählte Name nicht eindeutig ist.
    
  - Wenn Sie Modelle auf GPU-Knoten oder FPGA-Knoten (oder einer bestimmten SKU) bereitstellen möchten, müssen Sie einen Cluster mit der jeweiligen SKU erstellen. Das Erstellen eines sekundären Knotenpools in einem vorhandenen Cluster und Bereitstellen von Modellen im sekundären Knotenpool wird nicht unterstützt.
- 
- 
-
-
 
 ## <a name="create-a-new-aks-cluster"></a>Erstellen eines neuen AKS-Clusters
 
@@ -228,6 +233,10 @@ Weitere Informationen finden Sie unter [az ml computetarget attach aks](https://
 ## <a name="deploy-to-aks"></a>Bereitstellen für AKS
 
 Um ein Modell für Azure Kubernetes Service bereitzustellen, erstellen Sie eine __Bereitstellungskonfiguration__, in der die benötigten Computeressourcen beschrieben werden. Dies sind beispielsweise die Anzahl von Kernen und die Arbeitsspeichergröße. Außerdem benötigen Sie eine __Rückschlusskonfiguration__, in der die zum Hosten des Modells und des Webdiensts erforderliche Umgebung beschrieben wird. Weitere Informationen zum Erstellen der Rückschlusskonfiguration finden Sie unter [Wie und wo Modelle bereitgestellt werden](how-to-deploy-and-where.md).
+
+> [!NOTE]
+> Die Anzahl der bereitzustellenden Modelle ist auf 1.000 Modelle pro Bereitstellung (pro Container) beschränkt.
+
 
 ### <a name="using-the-sdk"></a>Verwenden des SDK
 

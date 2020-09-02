@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: b1830ddef44ef33d19c953622951779632e33e71
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 5a3760956dfe9a713d344fd6684d75ea240ab7de
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076741"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705723"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>Einrichten der Sicherung und Replikation für Apache HBase und Apache Phoenix in HDInsight
 
@@ -213,7 +213,13 @@ Bei `<hdfsHBaseLocation>` kann es sich um einen beliebigen Speicherort handeln, 
 hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot 'Snapshot1' -copy-to 'wasbs://secondcluster@myaccount.blob.core.windows.net/hbase'
 ```
 
-Stellen Sie nach dem Exportieren der Momentaufnahme eine SSH-Verbindung mit dem Hauptknoten des Zielclusters her, und stellen Sie die Momentaufnahme mithilfe des Befehls „restore_snapshot“ wie weiter oben beschrieben wieder her.
+Wenn Sie Ihrem Quellcluster kein sekundäres Azure-Speicherkonto zugeordnet haben oder wenn Ihr Quellcluster ein lokaler Cluster (oder ein Nicht-HDI-Cluster) ist, kann es zu Autorisierungsproblemen kommen, wenn Sie versuchen, auf das Speicherkonto Ihres HDI-Clusters zuzugreifen. Um dies zu beheben, geben Sie den Schlüssel zu Ihrem Speicherkonto als Befehlszeilenparameter an, wie im folgenden Beispiel gezeigt. Sie können den Schlüssel zu Ihrem Speicherkonto im Azure-Portal abrufen.
+
+```console
+hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -Dfs.azure.account.key.myaccount.blob.core.windows.net=mykey -snapshot 'Snapshot1' -copy-to 'wasbs://secondcluster@myaccount.blob.core.windows.net/hbase'
+```
+
+Stellen Sie nach dem Exportieren der Momentaufnahme eine SSH-Verbindung mit dem Hauptknoten des Zielclusters her, und stellen Sie die Momentaufnahme mithilfe des Befehls `restore_snapshot` wie zuvor beschrieben wieder her.
 
 Momentaufnahmen stellen eine vollständige Sicherung einer Tabelle zum Zeitpunkt der Ausführung des Befehls `snapshot` dar. Mit Momentaufnahmen können weder inkrementelle Momentaufnahmen nach Zeitfenster erstellt noch Teilmengen einzubeziehender Spaltenfamilien angegeben werden.
 

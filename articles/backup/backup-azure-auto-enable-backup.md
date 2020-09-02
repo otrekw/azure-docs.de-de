@@ -3,12 +3,12 @@ title: Automatisches Aktivieren der Sicherung bei der VM-Erstellung mithilfe von
 description: In diesem Artikel wird beschrieben, wie Sie Azure Policy für die automatische Aktivierung der Sicherung für alle VMs verwenden, die in einem bestimmten Bereich erstellt wurden.
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: 19985ebc51fe713ee0392800e2791ea1891ff3cd
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: de4923000bc842203535e03727fd532c67a8f517
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612672"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826071"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Automatisches Aktivieren der Sicherung bei der VM-Erstellung mithilfe von Azure Policy
 
@@ -52,7 +52,7 @@ Um die Richtlinie dem erforderlichen Bereich zuzuweisen, führen Sie die folgend
 
 > [!NOTE]
 >
-> Es wird empfohlen, dass diese Richtlinie nicht mehr als 200 virtuellen Computern gleichzeitig zugewiesen wird. Wenn die Richtlinie mehr als 200 virtuellen Computern zugewiesen wird, kann dies dazu führen, dass die Sicherung einige Stunden später ausgelöst wird, als durch den Zeitplan festgelegt.
+> Sie sollten diese Richtlinie nicht mehr als 200 virtuellen Computern gleichzeitig zuzuweisen. Wenn die Richtlinie mehr als 200 virtuellen Computern zugewiesen wird, kann dies dazu führen, dass die Sicherung einige Stunden später ausgelöst wird, als durch den Zeitplan festgelegt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

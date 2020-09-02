@@ -12,16 +12,16 @@ ms.date: 02/21/2020
 ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04b0b0120a514591fb4fa23656906203acf443b4
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 7875bfc55d4530f7f56a96599491cab4a98ced04
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799501"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642026"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory
 
-Dieser Artikel zeigt Ihnen, wie Sie Benutzer oder Gruppen in Azure Active Directory (Azure AD) Unternehmensanwendungen zuordnen können, und zwar entweder im Azure-Portal oder über PowerShell. Wenn Sie einen Benutzer einer Anwendung zuweisen, wird diese im [Zugriffsbereich „Meine Apps“](https://myapps.microsoft.com/) des Benutzers angezeigt, um den Zugriff zu erleichtern. Wenn die Anwendung Rollen verfügbar macht, können Sie dem Benutzer auch eine bestimmte Rolle zuweisen.
+Dieser Artikel zeigt Ihnen, wie Sie Benutzer oder Gruppen in Azure Active Directory (Azure AD) Unternehmensanwendungen zuordnen können, und zwar entweder im Azure-Portal oder über PowerShell. Wenn Sie einen Benutzer einer Anwendung zuweisen, wird diese unter [Meine Apps](https://myapps.microsoft.com/) für den Benutzer angezeigt, um den Zugriff zu erleichtern. Wenn die Anwendung Rollen verfügbar macht, können Sie dem Benutzer auch eine bestimmte Rolle zuweisen.
 
 Für eine bessere Kontrolle können bestimmte Arten von Unternehmensanwendungen so konfiguriert werden, dass [eine Benutzerzuweisung](#configure-an-application-to-require-user-assignment) erforderlich ist. 
 
@@ -45,7 +45,7 @@ Wenn eine Benutzerzuweisung erforderlich ist, können sich nur die Benutzer anme
 
 Wenn die Zuweisung *nicht erforderlich* ist, entweder weil Sie diese Option auf **Nein** festgelegt haben oder die Anwendung einen anderen SSO-Modus verwendet, kann jeder Benutzer auf die Anwendung zugreifen. Dazu muss er über einen direkten Link zur Anwendung oder die **Benutzerzugriffs-URL** auf der Seite **Eigenschaften** der Anwendung verfügen. 
 
-Diese Einstellung hat keine Auswirkung darauf, ob eine Anwendung im Zugriffsbereich „Meine Apps“ angezeigt wird. Anwendungen werden im Zugriffsbereich „Meine Apps“ von Benutzern angezeigt, sobald Sie der Anwendung einen Benutzer oder eine Gruppe zugewiesen haben. Hintergrundinformationen finden Sie unter [Verwaltung des Zugriffs auf Apps](what-is-access-management.md).
+Diese Einstellung hat keine Auswirkung darauf, ob eine Anwendung in „Meine Apps“ angezeigt wird. Anwendungen werden im Zugriffsbereich „Meine Apps“ von Benutzern angezeigt, sobald Sie der Anwendung einen Benutzer oder eine Gruppe zugewiesen haben. Hintergrundinformationen finden Sie unter [Verwaltung des Zugriffs auf Apps](what-is-access-management.md).
 
 
 So fordern Sie eine Benutzerzuweisung für eine Anwendung an
@@ -161,7 +161,7 @@ In diesem Beispiel wird die Benutzerin Britta Simon mithilfe von PowerShell der 
 ## <a name="related-articles"></a>Verwandte Artikel
 
 - [Weitere Informationen zum Endbenutzerzugriff auf Anwendungen](end-user-experiences.md)
-- [Planen der Bereitstellung eines Azure AD-Zugriffsbereichs](access-panel-deployment-plan.md)
+- [Planen einer Bereitstellung über „Meine Apps“ in Azure AD](access-panel-deployment-plan.md)
 - [Verwalten des Zugriffs auf Apps](what-is-access-management.md)
  
 ## <a name="next-steps"></a>Nächste Schritte

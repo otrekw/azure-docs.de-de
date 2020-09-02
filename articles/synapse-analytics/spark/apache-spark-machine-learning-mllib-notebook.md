@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: f31e238c705a4b03c400a38fa6eb5f42db7204b0
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: e1ece0add7b0749cfd808b0a3ec7962dd43a302d
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535024"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719341"
 ---
 # <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Erstellen einer Machine Learning-App mit Apache Spark MLlib und Azure Synapse Analytics
 
@@ -71,7 +71,7 @@ In den folgenden Schritten entwickeln Sie ein Modell, um vorherzusagen, ob eine 
 
 Da die Rohdaten im Parquet-Format vorliegen, können Sie den Spark-Kontext verwenden, um die Datei als Dataframe direkt in den Arbeitsspeicher zu lesen. Während der unten stehende Code die Standardoptionen verwendet, ist es möglich, bei Bedarf die Zuordnung von Datentypen und anderen Schemaattributen zu erzwingen.
 
-1. Führen Sie die folgenden Zeilen aus, um einen Spark-Dataframe zu erstellen, indem Sie den Code in eine neue Zelle einfügen. Dadurch werden die Daten über die Open Datasets-API abgerufen. Das Abrufen aller dieser Daten generiert ungefähr 1,5 Milliarden Zeilen. Abhängig von der Größe Ihres Spark-Pools (Vorschau) können die Rohdaten zu umfangreich sein oder zu viel Verarbeitungszeit in Anspruch nehmen. Sie können diese Daten zu einer kleineren Menge filtern. Die Verwendung von „start_date“ und „end_date“ wendet einen Filter an, der einen Monat an Daten zurückgibt.
+1. Führen Sie die folgenden Zeilen aus, um einen Spark-Dataframe zu erstellen, indem Sie den Code in eine neue Zelle einfügen. Dadurch werden die Daten über die Open Datasets-API abgerufen. Das Abrufen aller dieser Daten generiert ungefähr 1,5 Milliarden Zeilen. Abhängig von der Größe Ihres Spark-Pools (Vorschau) können die Rohdaten zu umfangreich sein oder zu viel Verarbeitungszeit in Anspruch nehmen. Sie können diese Daten zu einer kleineren Menge filtern. Das folgende Codebeispiel verwendet „start_date“ und „end_date“, um einen Filter anzuwenden, der Daten für einen einzelnen Monat zurückgibt.
 
     ```python
     from azureml.opendatasets import NycTlcYellow
@@ -126,7 +126,7 @@ ax1.set_ylabel('Counts')
 plt.suptitle('')
 plt.show()
 
-# How many passengers tip'd by various amounts
+# How many passengers tipped by various amounts
 ax2 = sampled_taxi_pd_df.boxplot(column=['tipAmount'], by=['passengerCount'])
 ax2.set_title('Tip amount by Passenger count')
 ax2.set_xlabel('Passenger count')
@@ -157,7 +157,7 @@ Im folgenden Code werden vier Klassen von Vorgängen durchgeführt:
 - Das Entfernen von Ausreißern/falschen Werten durch Filtern.
 - Das Entfernen von Spalten, die nicht benötigt werden.
 - Das Erstellen neuer Spalten, die von den Rohdaten abgeleitet werden, damit das Modell effektiver funktioniert, manchmal auch als „Merkmalserstellung“ bezeichnet.
-- Bezeichnen („Labeln“). Während Sie eine binäre Klassifizierung vornehmen (gibt es bei einer bestimmte Fahrt ein Trinkgeld oder nicht), muss der Trinkgeldbetrag in einen Wert von 0 oder 1 konvertiert werden.
+- Bezeichnen („Labeln“) – Da Sie eine binäre Klassifizierung vornehmen (gibt es bei einer bestimmte Fahrt ein Trinkgeld oder nicht), muss der Trinkgeldbetrag in einen Wert von 0 oder 1 konvertiert werden.
 
 ```python
 taxi_df = sampled_taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'paymentType', 'rateCodeId', 'passengerCount'\
@@ -196,7 +196,7 @@ taxi_featurised_df = taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'p
 Die letzte Aufgabe besteht darin, die Daten mit Label in ein Format zu konvertieren, das mit der logistische Regression analysiert werden kann. Die Eingabe für einen logistischen Regressionsalgorithmus muss ein Satz von *Bezeichnung-Merkmals-Vektorpaaren* (Label-Feature) sein, wobei der *Merkmalsvektor* aus Zahlen besteht, die den Eingabepunkt darstellen. Somit müssen wir die Kategoriespalten in Zahlen konvertieren. Die Spalten `trafficTimeBins` und `weekdayString` müssen in ganzzahlige Darstellungen konvertiert werden. Es gibt mehrere Ansätze zum Durchführen der Konvertierung, der in diesem Beispiel verwendete Ansatz ist jedoch *OneHotEncoding*, ein gängiger Ansatz.
 
 ```python
-# The sample uses an algorithm that only works with numeric features convert them so they can be consumed
+# Since the sample uses an algorithm that only works with numeric features, convert them so they can be consumed
 sI1 = StringIndexer(inputCol="trafficTimeBins", outputCol="trafficTimeBinsIndex")
 en1 = OneHotEncoder(dropLast=False, inputCol="trafficTimeBinsIndex", outputCol="trafficTimeBinsVec")
 sI2 = StringIndexer(inputCol="weekdayString", outputCol="weekdayIndex")
@@ -225,7 +225,7 @@ train_data_df, test_data_df = encoded_final_df.randomSplit([trainingFraction, te
 Nachdem nun zwei DataFrames vorhanden sind, besteht die nächste Aufgabe darin, die Modellformel zu erstellen, sie mit dem Trainings-DataFrame auszuführen und dann anhand des Test-DataFrames zu validieren. Sie sollten mit verschiedenen Versionen der Modellformel experimentieren, um die Auswirkungen verschiedener Kombinationen herauszufinden.
 
 > [!Note]
-> Sie benötigen in Azure die Azure-Rolle „Mitwirkender an Storage-Blobdaten“, um das Modell speichern zu können. Navigieren Sie unter Ihrem Speicherkonto zu „Zugriffssteuerung (IAM)“, und klicken Sie auf „Rollenzuweisung hinzufügen“. Weisen Sie Ihrem SQL-Datenbank-Server die Azure-Rolle „Mitwirkender an Storage-Blobdaten“ zu. Nur Mitglieder mit der Berechtigung „Besitzer“ können diesen Schritt ausführen. Verschiedene integrierte Azure-Rollen finden Sie in [diesem Leitfaden](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+> Sie benötigen in Azure die Azure-Rolle „Mitwirkender an Storage-Blobdaten“, um das Modell speichern zu können. Navigieren Sie unter Ihrem Speicherkonto zu „Zugriffssteuerung (IAM)“, und klicken Sie auf **Rollenzuweisung hinzufügen**. Weisen Sie Ihrem SQL-Datenbank-Server die Azure-Rolle „Mitwirkender an Storage-Blobdaten“ zu. Nur Mitglieder mit der Berechtigung „Besitzer“ können diesen Schritt ausführen. Verschiedene integrierte Azure-Rollen finden Sie in [diesem Leitfaden](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 ```python
 ## Create a new LR object for the model
@@ -250,7 +250,7 @@ metrics = BinaryClassificationMetrics(predictionAndLabels)
 print("Area under ROC = %s" % metrics.areaUnderROC)
 ```
 
-Die Ausgabe dieser Zelle ist
+Die Ausgabe dieser Zelle ist:
 
 ```shell
 Area under ROC = 0.9779470729751403

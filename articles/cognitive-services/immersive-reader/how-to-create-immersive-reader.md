@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: 972eb3f9983004ec7dbb3cb0df7bb3c59bdc9122
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 66a2fde47f71536661431959b957246e28c81d6a
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042013"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639805"
 ---
 # <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>Erstellen einer Plastischer Reader-Ressource und Konfigurieren der Azure Active Directory-Authentifizierung
 
@@ -44,7 +44,8 @@ Das Skript ist flexibel ausgelegt. Zuerst wird nach vorhandenen Plastischer Read
         [Parameter(Mandatory=$true)] [String] $ResourceGroupLocation,
         [Parameter(Mandatory=$true)] [String] $AADAppDisplayName="ImmersiveReaderAAD",
         [Parameter(Mandatory=$true)] [String] $AADAppIdentifierUri,
-        [Parameter(Mandatory=$true)] [String] $AADAppClientSecret
+        [Parameter(Mandatory=$true)] [String] $AADAppClientSecret,
+        [Parameter(Mandatory=$true)] [String] $AADAppClientSecretExpiration
     )
     {
         $unused = ''
@@ -93,12 +94,13 @@ Das Skript ist flexibel ausgelegt. Zuerst wird nach vorhandenen Plastischer Read
         $clientId = az ad app show --id $AADAppIdentifierUri --query "appId" -o tsv
         if (-not $clientId) {
             Write-Host "Creating new Azure Active Directory app"
-            $clientId = az ad app create --password $AADAppClientSecret --display-name $AADAppDisplayName --identifier-uris $AADAppIdentifierUri --query "appId" -o tsv
+            $clientId = az ad app create --password $AADAppClientSecret --end-date "$AADAppClientSecretExpiration" --display-name $AADAppDisplayName --identifier-uris $AADAppIdentifierUri --query "appId" -o tsv
 
             if (-not $clientId) {
                 throw "Error: Failed to create Azure Active Directory app"
             }
-            Write-Host "Azure Active Directory app created successfully"
+            Write-Host "Azure Active Directory app created successfully."
+            Write-Host "NOTE: To manage your Active Directory app client secrets after this Immersive Reader Resource has been created please visit https://portal.azure.com and go to Home -> Azure Active Directory -> App Registrations -> $AADAppDisplayName -> Certificates and Secrets blade -> Client Secrets section" -ForegroundColor Yellow
         }
 
         # Create a service principal if it doesn't already exist
@@ -155,6 +157,7 @@ Das Skript ist flexibel ausgelegt. Zuerst wird nach vorhandenen Plastischer Read
       -AADAppDisplayName '<AAD_APP_DISPLAY_NAME>' `
       -AADAppIdentifierUri '<AAD_APP_IDENTIFIER_URI>' `
       -AADAppClientSecret '<AAD_APP_CLIENT_SECRET>'
+      -AADAppClientSecretExpiration '<AAD_APP_CLIENT_SECRET_Expiration>'
     ```
 
     | Parameter | Kommentare |
@@ -168,7 +171,12 @@ Das Skript ist flexibel ausgelegt. Zuerst wird nach vorhandenen Plastischer Read
     | ResourceGroupLocation |Wenn die Ressourcengruppe nicht vorhanden ist, müssen Sie einen Speicherort angeben, an dem die Gruppe erstellt werden soll. Verwenden Sie `az account list-locations` zum Abrufen einer Speicherortliste. Verwenden Sie die Eigenschaft *Name* (ohne Leerzeichen) des zurückgegebenen Ergebnisses. Dieser Parameter ist optional, wenn die Ressource bereits vorhanden ist. |
     | AADAppDisplayName |Der Anzeigename der Azure Active Directory-Anwendung. Wenn eine vorhandene Azure AD-Anwendung nicht gefunden wird, wird eine neue mit diesem Namen erstellt. Dieser Parameter ist optional, wenn die Azure AD-Anwendung bereits vorhanden ist. |
     | AADAppIdentifierUri |Der URI für die Azure AD-App. Wenn eine vorhandene Azure AD-App nicht gefunden wird, wird eine neue mit diesem URI erstellt. Beispiel: `https://immersivereaderaad-mycompany`. |
-    | AADAppClientSecret |Ein von Ihnen erstelltes Kennwort, das später beim Abrufen eines Tokens zum Starten des plastischen Readers zum Authentifizieren verwendet wird. Das Kennwort muss mindestens 16 Zeichen lang sein, mindestens 1 Sonderzeichen sowie mindestens 1 numerisches Zeichen enthalten. |
+    | AADAppClientSecret |Ein von Ihnen erstelltes Kennwort, das später beim Abrufen eines Tokens zum Starten des plastischen Readers zum Authentifizieren verwendet wird. Das Kennwort muss mindestens 16 Zeichen lang sein, mindestens 1 Sonderzeichen sowie mindestens 1 numerisches Zeichen enthalten. Um geheime Clientschlüssel von Azure AD-Anwendungen zu verwalten, nachdem Sie diese Ressource erstellt haben, besuchen Sie https://portal.azure.com, und navigieren Sie zu „Home“ -> „Azure Active Directory“ -> „App-Registrierungen“ -> `[AADAppDisplayName]` -> Blatt „Zertifikate und Geheimnisse“ -> Abschnitt „Geheime Clientschlüssel“ (siehe Screenshot „Verwalten Ihrer Azure AD-Anwendungsgeheimnisse“ weiter unten). |
+    | AADAppClientSecretExpiration |Datum oder Datetime, wonach Ihr `[AADAppClientSecret]` abläuft (z. B. „2020-12-31T11:59:59+00:00“ oder „2020-12-31“). |
+
+    Verwalten Ihrer Azure AD-Anwendungsgeheimnisse
+
+    ![Azure-Portal-Zertifikate und Blatt „Geheimnisse“](./media/client-secrets-blade.png)
 
 1. Kopieren Sie die JSON-Ausgabe zur späteren Verwendung in eine Textdatei. Die Ausgabe sollte wie im folgenden Beispiel aussehen.
 

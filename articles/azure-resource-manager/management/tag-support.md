@@ -2,13 +2,13 @@
 title: Tagunterstützung für Ressourcen
 description: Zeigt, welche Azure-Ressourcentypen Tags unterstützen. Enthält Details für alle Azure-Dienste.
 ms.topic: conceptual
-ms.date: 07/28/2020
-ms.openlocfilehash: e3a51bb7c21b6ea2e8baa86fe2981184c41d7d69
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.date: 08/25/2020
+ms.openlocfilehash: 91c6d5930a9066e73355a0c8e6021b1e7c20802d
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272432"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855077"
 ---
 # <a name="tag-support-for-azure-resources"></a>Tagunterstützung für Azure-Ressourcen
 In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](tag-resources.md) unterstützt. Die Spalte mit der Bezeichnung **Tagunterstützung** zeigt an, ob der Ressourcentyp eine Eigenschaft für das Tag hat. Die Spalte mit der Bezeichnung **Tag in Kostenbericht** gibt an, ob dieser Ressourcentyp das Tag an den Kostenbericht übergibt. Sie können die Kosten nach Tags in der [Cost Management-Kostenanalyse](../../cost-management-billing/costs/group-filter.md) und den [Azure-Abrechnungen und täglichen Nutzungsdaten](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md) anzeigen.
@@ -28,6 +28,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > - [Microsoft.AppPlatform](#microsoftappplatform)
 > - [Microsoft.Attestation](#microsoftattestation)
 > - [Microsoft.Authorization](#microsoftauthorization)
+> - [Microsoft.Automanage](#microsoftautomanage)
 > - [Microsoft.Automation](#microsoftautomation)
 > - [Microsoft.AVS](#microsoftavs)
 > - [Microsoft.Azure.Geneva](#microsoftazuregeneva)
@@ -51,6 +52,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > - [Microsoft.ClassicInfrastructureMigrate](#microsoftclassicinfrastructuremigrate)
 > - [Microsoft.ClassicNetwork](#microsoftclassicnetwork)
 > - [Microsoft.ClassicStorage](#microsoftclassicstorage)
+> - [Microsoft.Codespaces](#microsoftcodespaces)
 > - [Microsoft.CognitiveServices](#microsoftcognitiveservices)
 > - [Microsoft.Commerce](#microsoftcommerce)
 > - [Microsoft.Compute](#microsoftcompute)
@@ -78,6 +80,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > - [Microsoft.DeploymentManager](#microsoftdeploymentmanager)
 > - [Microsoft.DesktopVirtualization](#microsoftdesktopvirtualization)
 > - [Microsoft.Devices](#microsoftdevices)
+> - [Microsoft.DeviceUpdate](#microsoftdeviceupdate)
 > - [Microsoft.DevOps](#microsoftdevops)
 > - [Microsoft.DevSpaces](#microsoftdevspaces)
 > - [Microsoft.DevTestLab](#microsoftdevtestlab)
@@ -180,7 +183,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > - [Microsoft.VirtualMachineImages](#microsoftvirtualmachineimages)
 > - [Microsoft.VMware](#microsoftvmware)
 > - [Microsoft.VMwareCloudSimple](#microsoftvmwarecloudsimple)
-> - [Microsoft.VMwareOnAzure](#microsoftvmwareonazure)
 > - [Microsoft.VnfManager](#microsoftvnfmanager)
 > - [Microsoft.VSOnline](#microsoftvsonline)
 > - [Microsoft.Web](#microsoftweb)
@@ -225,6 +227,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Tagunterstützung | Tag in Kostenbericht |
 > | ------------- | ----------- | ----------- |
+> | advisorScore | Nein | Nein |
 > | Konfigurationen | Nein | Nein |
 > | generateRecommendations | Nein | Nein |
 > | metadata | Nein | Nein |
@@ -268,6 +271,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | ------------- | ----------- | ----------- |
 > | configurationStores | Ja | Ja |
 > | configurationStores/eventGridFilters | Nein | Nein |
+> | configurationStores / keyValues | Nein | Nein |
 
 ## <a name="microsoftappplatform"></a>Microsoft.AppPlatform
 
@@ -291,6 +295,8 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Tagunterstützung | Tag in Kostenbericht |
 > | ------------- | ----------- | ----------- |
+> | accessReviewScheduleDefinitions | Nein | Nein |
+> | accessReviewScheduleSettings | Nein | Nein |
 > | classicAdministrators | Nein | Nein |
 > | dataAliases | Nein | Nein |
 > | denyAssignments | Nein | Nein |
@@ -300,13 +306,23 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Berechtigungen | Nein | Nein |
 > | policyAssignments | Nein | Nein |
 > | policyDefinitions | Nein | Nein |
+> | policyExemptions | Nein | Nein |
 > | policySetDefinitions | Nein | Nein |
 > | privateLinkAssociations | Nein | Nein |
 > | providerOperations | Nein | Nein |
-> | resourceManagementPrivateLinks | Nein | Nein |
+> | resourceManagementPrivateLinks | Ja | Ja |
 > | roleAssignments | Nein | Nein |
 > | roleAssignmentsUsageMetrics | Nein | Nein |
 > | roleDefinitions | Nein | Nein |
+
+## <a name="microsoftautomanage"></a>Microsoft.Automanage
+
+> [!div class="mx-tableFixed"]
+> | Ressourcentyp | Tagunterstützung | Tag in Kostenbericht |
+> | ------------- | ----------- | ----------- |
+> | accounts | Ja | Ja |
+> | configurationProfileAssignments | Nein | Nein |
+> | configurationProfilePreferences | Ja | Ja |
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
 
@@ -323,9 +339,8 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | automationAccounts/softwareUpdateConfigurations | Nein | Nein |
 > | automationAccounts/webhooks | Nein | Nein |
 
->[!NOTE]
->Azure Automation unterstützt nur das Erstellen von maximal 15 Tagname-/Wertpaaren pro Automation-Ressource.
-> 
+> [!NOTE]
+> Azure Automation unterstützt nur das Erstellen von maximal 15 Tagname-/Wertpaaren pro Automation-Ressource.
 
 ## <a name="microsoftavs"></a>Microsoft.AVS
 
@@ -335,7 +350,15 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | privateClouds | Ja | Ja |
 > | privateClouds/authorizations | Nein | Nein |
 > | privateClouds/clusters | Nein | Nein |
+> | privateClouds / globalReachConnections | Nein | Nein |
 > | privateClouds/hcxEnterpriseSites | Nein | Nein |
+> | privateClouds / workloadNetworks | Nein | Nein |
+> | privateClouds / workloadNetworks / dhcpConfigurations | Nein | Nein |
+> | privateClouds / workloadNetworks / gateways | Nein | Nein |
+> | privateClouds / workloadNetworks / portMirroringProfiles | Nein | Nein |
+> | privateClouds / workloadNetworks / segments | Nein | Nein |
+> | privateClouds / workloadNetworks / virtualMachines | Nein | Nein |
+> | privateClouds / workloadNetworks / vmGroups | Nein | Nein |
 
 ## <a name="microsoftazuregeneva"></a>Microsoft.Azure.Geneva
 
@@ -354,6 +377,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | ------------- | ----------- | ----------- |
 > | b2cDirectories | Ja | Nein |
 > | b2ctenants | Nein | Nein |
+> | guestUsages | Ja | Ja |
 
 ## <a name="microsoftazuredata"></a>Microsoft.AzureData
 
@@ -361,9 +385,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Ressourcentyp | Tagunterstützung | Tag in Kostenbericht |
 > | ------------- | ----------- | ----------- |
 > | dataControllers | Ja | Ja |
-> | hybridDataManagers | Ja | Ja |
 > | postgresInstances | Ja | Ja |
-> | sqlInstances | Ja | Ja |
 > | sqlManagedInstances | Ja | Ja |
 > | sqlServerInstances | Ja | Ja |
 > | sqlServerRegistrations | Ja | Ja |
@@ -432,6 +454,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | billingAccounts/billingProfiles/pricesheetDownloadOperations | Nein | Nein |
 > | billingAccounts/billingProfiles/products | Nein | Nein |
 > | billingAccounts/billingProfiles/transactions | Nein | Nein |
+> | billingAccounts / billingProfiles / validateDetachPaymentMethodEligibility | Nein | Nein |
 > | billingAccounts/billingRoleAssignments | Nein | Nein |
 > | billingAccounts/billingRoleDefinitions | Nein | Nein |
 > | billingAccounts/billingSubscriptions | Nein | Nein |
@@ -688,12 +711,23 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | storageAccounts/vmImages | Nein | Nein |
 > | vmImages | Nein | Nein |
 
+## <a name="microsoftcodespaces"></a>Microsoft.Codespaces
+
+> [!div class="mx-tableFixed"]
+> | Ressourcentyp | Tagunterstützung | Tag in Kostenbericht |
+> | ------------- | ----------- | ----------- |
+> | plans | Ja | Ja |
+> | registeredSubscriptions | Nein | Nein |
+
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Tagunterstützung | Tag in Kostenbericht |
 > | ------------- | ----------- | ----------- |
 > | accounts | Ja | Ja |
+> | accounts / privateEndpointConnectionProxies | Nein | Nein |
+> | accounts / privateEndpointConnections | Nein | Nein |
+> | accounts / privateLinkResources | Nein | Nein |
 
 ## <a name="microsoftcommerce"></a>Microsoft.Commerce
 
@@ -709,6 +743,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Ressourcentyp | Tagunterstützung | Tag in Kostenbericht |
 > | ------------- | ----------- | ----------- |
 > | availabilitySets | Ja | Ja |
+> | cloudServices | Ja | Ja |
 > | diskAccesses | Ja | Ja |
 > | diskEncryptionSets | Ja | Ja |
 > | disks | Ja | Ja |
@@ -860,6 +895,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | ExternalSubscriptions/Forecast | Nein | Nein |
 > | ExternalSubscriptions/Query | Nein | Nein |
 > | Forecast | Nein | Nein |
+> | Einblicke | Nein | Nein |
 > | Abfrage | Nein | Nein |
 > | Registrieren | Nein | Nein |
 > | Reportconfigs | Nein | Nein |
@@ -913,22 +949,17 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Ressourcentyp | Tagunterstützung | Tag in Kostenbericht |
 > | ------------- | ----------- | ----------- |
 > | catalogs | Ja | Ja |
-> | datacatalogs | Ja | Ja |
-> | datacatalogs/datasources | Nein | Nein |
-> | datacatalogs/datasources/scans | Nein | Nein |
-> | datacatalogs/datasources/scans/datasets | Nein | Nein |
-> | datacatalogs/datasources/scans/triggers | Nein | Nein |
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Tagunterstützung | Tag in Kostenbericht |
 > | ------------- | ----------- | ----------- |
-> | dataFactories | Ja | Nein |
+> | dataFactories | Ja | Ja |
 > | dataFactories/diagnosticSettings | Nein | Nein |
 > | dataFactories/metricDefinitions | Nein | Nein |
 > | dataFactorySchema | Nein | Nein |
-> | factories | Ja | Nein |
+> | factories | Ja | Ja |
 > | factories/integrationRuntimes | Nein | Nein |
 
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
@@ -1022,6 +1053,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Tagunterstützung | Tag in Kostenbericht |
 > | ------------- | ----------- | ----------- |
+> | flexibleServers | Ja | Ja |
 > | serverGroups | Ja | Ja |
 > | servers | Ja | Ja |
 > | servers/advisors | Nein | Nein |
@@ -1035,7 +1067,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | servers/virtualNetworkRules | Nein | Nein |
 > | servers/waitStatistics | Nein | Nein |
 > | serversv2 | Ja | Ja |
-> | singleServers | Ja | Ja |
 
 ## <a name="microsoftdeploymentmanager"></a>Microsoft.DeploymentManager
 
@@ -1078,6 +1109,14 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | ProvisioningServices | Ja | Ja |
 > | usages | Nein | Nein |
 
+## <a name="microsoftdeviceupdate"></a>Microsoft.DeviceUpdate
+
+> [!div class="mx-tableFixed"]
+> | Ressourcentyp | Tagunterstützung | Tag in Kostenbericht |
+> | ------------- | ----------- | ----------- |
+> | accounts | Ja | Ja |
+> | accounts / instances | Ja | Ja |
+
 ## <a name="microsoftdevops"></a>Microsoft.DevOps
 
 > [!div class="mx-tableFixed"]
@@ -1119,6 +1158,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | ------------- | ----------- | ----------- |
 > | databaseAccountNames | Nein | Nein |
 > | databaseAccounts | Ja | Ja |
+> | restorableDatabaseAccounts | Nein | Nein |
 
 ## <a name="microsoftdomainregistration"></a>Microsoft.DomainRegistration
 
@@ -1301,10 +1341,10 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | devices | Ja | Ja |
 > | registeredSubscriptions | Nein | Nein |
 > | vendors | Nein | Nein |
-> | vendors/skus | Nein | Nein |
-> | vendors/vnfs | Nein | Nein |
-> | virtualNetworkFunctionSkus | Nein | Nein |
-> | vnfs | Ja | Ja |
+> | vendors / vendorskus | Nein | Nein |
+> | vendors / vendorskus / previewSubscriptions | Nein | Nein |
+> | virtualnetworkfunctions | Ja | Ja |
+> | virtualnetworkfunctionvendors | Nein | Nein |
 
 ## <a name="microsofthydra"></a>Microsoft.Hydra
 
@@ -1397,6 +1437,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Tagunterstützung | Tag in Kostenbericht |
 > | ------------- | ----------- | ----------- |
+> | Erweiterungen | Nein | Nein |
 > | sourceControlConfigurations | Nein | Nein |
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
@@ -1451,6 +1492,9 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | workspaces | Ja | Ja |
 > | workspaces/computes | Nein | Nein |
 > | workspaces/eventGridFilters | Nein | Nein |
+> | workspaces / inferenceEndpoints | Ja | Ja |
+> | workspaces / inferenceEndpoints / deployments | Ja | Ja |
+> | workspaces/linkedServices | Nein | Nein |
 
 ## <a name="microsoftmaintenance"></a>Microsoft.Maintenance
 
@@ -1460,6 +1504,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | applyUpdates | Nein | Nein |
 > | configurationAssignments | Nein | Nein |
 > | maintenanceConfigurations | Ja | Ja |
+> | publicMaintenanceConfigurations | Nein | Nein |
 > | updates | Nein | Nein |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
@@ -1515,6 +1560,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Tagunterstützung | Tag in Kostenbericht |
 > | ------------- | ----------- | ----------- |
+> | macc | Nein | Nein |
 > | offers | Nein | Nein |
 > | offerTypes | Nein | Nein |
 > | offerTypes/publishers | Nein | Nein |
@@ -1563,15 +1609,15 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | mediaservices/liveEventOperations | Nein | Nein |
 > | mediaservices/liveEvents | Ja | Ja |
 > | mediaservices/liveEvents/liveOutputs | Nein | Nein |
-> | mediaservices/liveEvents/privateEndpointConnectionProxies | Nein | Nein |
 > | mediaservices/liveOutputOperations | Nein | Nein |
 > | mediaservices/mediaGraphs | Nein | Nein |
+> | mediaservices / privateEndpointConnectionOperations | Nein | Nein |
+> | mediaservices / privateEndpointConnectionProxies | Nein | Nein |
+> | mediaservices / privateEndpointConnections | Nein | Nein |
 > | mediaservices/streamingEndpointOperations | Nein | Nein |
 > | mediaservices/streamingEndpoints | Ja | Ja |
-> | mediaservices/streamingEndpoints/privateEndpointConnectionProxies | Nein | Nein |
 > | mediaservices/streamingLocators | Nein | Nein |
 > | mediaservices/streamingPolicies | Nein | Nein |
-> | mediaservices/streamingPrivateEndpointConnectionProxyOperations | Nein | Nein |
 > | mediaservices/transforms | Nein | Nein |
 > | mediaservices/transforms/jobs | Nein | Nein |
 
@@ -1734,6 +1780,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | ------------- | ----------- | ----------- |
 > | HyperVSites | Ja | Ja |
 > | ImportSites | Ja | Ja |
+> | MasterSites | Ja | Ja |
 > | ServerSites | Ja | Ja |
 > | VMwareSites | Ja | Ja |
 
@@ -1782,6 +1829,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Tagunterstützung | Tag in Kostenbericht |
 > | ------------- | ----------- | ----------- |
+> | attestations | Nein | Nein |
 > | policyEvents | Nein | Nein |
 > | policyMetadata | Nein | Nein |
 > | policyStates | Nein | Nein |
@@ -1944,6 +1992,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | automations | Ja | Ja |
 > | AutoProvisioningSettings | Nein | Nein |
 > | Compliances | Nein | Nein |
+> | connectors | Nein | Nein |
 > | dataCollectionAgents | Nein | Nein |
 > | deviceSecurityGroups | Nein | Nein |
 > | discoveredSecuritySolutions | Nein | Nein |
@@ -1955,7 +2004,10 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | iotSecuritySolutions/analyticsModels/aggregatedRecommendations | Nein | Nein |
 > | iotSecuritySolutions/iotAlerts | Nein | Nein |
 > | iotSecuritySolutions/iotAlertTypes | Nein | Nein |
+> | iotSecuritySolutions / iotRecommendations | Nein | Nein |
+> | iotSecuritySolutions / iotRecommendationTypes | Nein | Nein |
 > | jitNetworkAccessPolicies | Nein | Nein |
+> | jitPolicies | Nein | Nein |
 > | Richtlinien | Nein | Nein |
 > | pricings | Nein | Nein |
 > | regulatoryComplianceStandards | Nein | Nein |
@@ -2004,6 +2056,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | officeConsents | Nein | Nein |
 > | settings | Nein | Nein |
 > | threatIntelligence | Nein | Nein |
+> | watchlists | Nein | Nein |
 
 ## <a name="microsoftserialconsole"></a>Microsoft.SerialConsole
 
@@ -2226,7 +2279,11 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Tagunterstützung | Tag in Kostenbericht |
 > | ------------- | ----------- | ----------- |
+> | acceptChangeTenant | Nein | Nein |
+> | aliases | Nein | Nein |
 > | cancel | Nein | Nein |
+> | changeTenantRequest | Nein | Nein |
+> | changeTenantStatus | Nein | Nein |
 > | CreateSubscription | Nein | Nein |
 > | enable | Nein | Nein |
 > | rename | Nein | Nein |
@@ -2243,6 +2300,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | workspaces | Ja | Ja |
 > | workspaces/bigDataPools | Ja | Ja |
 > | workspaces/operationStatuses | Nein | Nein |
+> | workspaces / sqlDatabases | Ja | Ja |
 > | workspaces/sqlPools | Ja | Ja |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
@@ -2293,13 +2351,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | dedicatedCloudNodes | Ja | Ja |
 > | dedicatedCloudServices | Ja | Ja |
 > | virtualMachines | Ja | Ja |
-
-## <a name="microsoftvmwareonazure"></a>Microsoft.VMwareOnAzure
-
-> [!div class="mx-tableFixed"]
-> | Ressourcentyp | Tagunterstützung | Tag in Kostenbericht |
-> | ------------- | ----------- | ----------- |
-> | privateClouds | Ja | Ja |
 
 ## <a name="microsoftvnfmanager"></a>Microsoft.VnfManager
 

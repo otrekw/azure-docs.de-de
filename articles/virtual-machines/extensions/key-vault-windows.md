@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 18ca9244f818fa745725f13d79a23c1a232e01ed
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 70dcee1cce49c658a60e98821a3ce60ec443408a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545385"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932575"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Key Vault-VM-Erweiterung für Windows
 
@@ -89,7 +89,7 @@ Im folgenden JSON-Code ist das Schema für die Key Vault-VM-Erweiterung dargeste
 | pollingIntervalInS | 3600 | Zeichenfolge |
 | certificateStoreName | MY | Zeichenfolge |
 | linkOnRenewal | false | boolean |
-| certificateStoreLocation  | LocalMachine | Zeichenfolge |
+| certificateStoreLocation  | LocalMachine oder CurrentUser (Groß-/Kleinschreibung beachten) | Zeichenfolge |
 | requiredInitialSync | true | boolean |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | Zeichenfolgenarray
 | msiEndpoint | http://169.254.169.254/metadata/identity | Zeichenfolge |
@@ -130,6 +130,8 @@ Die JSON-Konfiguration für eine VM-Erweiterung muss im VM-Ressourcenfragment de
 
 
 ## <a name="azure-powershell-deployment"></a>Azure PowerShell-Bereitstellung
+> [!WARNING]
+> PowerShell-Clients fügen `"` häufig `\` in der Datei „settings.json“ hinzu, wodurch bei „akvvm_service“ folgender Fehler auftritt: `[CertificateManagementConfiguration] Failed to parse the configuration settings with:not an object.`
 
 Azure PowerShell kann verwendet werden, um die Key Vault-VM-Erweiterung auf einem vorhandenen virtuellen Computer oder in einer VM-Skalierungsgruppe bereitzustellen. 
 

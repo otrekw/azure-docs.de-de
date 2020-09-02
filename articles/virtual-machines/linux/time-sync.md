@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/17/2018
+ms.date: 08/20/2020
 ms.author: cynthn
-ms.openlocfilehash: 4214fca9e295dc7716d8e2c069f52c719aa74697
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8a122a36b14bd3c5f4912387dc98585cb89ab53b
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292102"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705639"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Zeitsynchronisierung für Linux-VMs in Azure
 
@@ -64,7 +64,7 @@ Standardmäßig werden die meisten Azure Marketplace-Images für Linux für die 
 - NTP als primäre Quelle, die die Uhrzeit von einem NTP-Server abruft. Ubuntu 16.04 LTS-Marketplace-Images verwenden z. B. **ntp.ubuntu.com**.
 - Der VMICTimeSync-Dienst, der als sekundäre Quelle verwendet wird, um die Hostzeit an die VMs zu übermitteln und Korrekturen vorzunehmen, nachdem der virtuelle Computer zu Wartungszwecken angehalten wird. Azure-Hosts verwenden Microsoft-eigene Stratum 1-Geräte, um die genaue Uhrzeit beizubehalten.
 
-In neueren Linux-Distributionen verwendet der VMICTimeSync-Dienst das Precision Time Protocol (PTP), aber in früheren Distributionen wird PTP möglicherweise nicht unterstützt, sodass zum Abrufen der Uhrzeit vom Host auf NTP zurückgegriffen wird.
+Bei neueren Linux-Distributionen stellt der VMICTimeSync-Dienst eine PTP-Hardwarezeitquelle (Uhr) bereit, doch ist diese Zeitquelle bei früheren Distributionen möglicherweise nicht verfügbar, sodass zum Abrufen der Uhrzeit vom Host auf NTP zurückgegriffen wird.
 
 Führen Sie den Befehl `ntpq -p` aus, um zu bestätigen, dass NTP ordnungsgemäß synchronisiert wird.
 
@@ -112,9 +112,9 @@ root        391      2  0 17:52 ?        00:00:00 [hv_balloon]
 ```
 
 
-### <a name="check-for-ptp"></a>Überprüfen auf PTP
+### <a name="check-for-ptp-clock-source"></a>Überprüfen auf PTP-Zeitquelle
 
-In neueren Versionen von Linux ist eine PTP-Zeitquelle (Uhr) als Teil des VMICTimeSync-Anbieters verfügbar. In älteren Versionen von Red Hat Enterprise Linux oder CentOS 7.x können [Linux Integration Services](https://github.com/LIS/lis-next) heruntergeladen und zum Installieren des aktualisierten Treibers verwendet werden. Bei Verwendung von PTP weist das Linux-Gerät die Form „/dev/ptp*x*“ auf. 
+In neueren Versionen von Linux ist eine PTP-Zeitquelle (Uhr) als Teil des VMICTimeSync-Anbieters verfügbar. In älteren Versionen von Red Hat Enterprise Linux oder CentOS 7.x können [Linux Integration Services](https://github.com/LIS/lis-next) heruntergeladen und zum Installieren des aktualisierten Treibers verwendet werden. Ist die PTP-Zeitquelle verfügbar, weist das Linux-Gerät die Form „/dev/ptp*x*“ auf. 
 
 Ermitteln Sie, welche PTP-Zeitquellen (Uhren) verfügbar sind.
 

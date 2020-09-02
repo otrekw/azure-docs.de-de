@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 9a65065a6f3cbc7264a8efb9bcf128b06897aacf
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: aa66f7150e5c3ac4560d7f97cb73b1effb8eec89
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220268"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749637"
 ---
 # <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>Konfigurieren von Azure Active Directory Domain Services für die Unterstützung der Benutzerprofilsynchronisierung für SharePoint Server
 
-SharePoint Server umfasst einen Dienst zum Synchronisieren von Benutzerprofilen. Mit diesem Feature können Benutzerprofile an einem zentralen Ort gespeichert werden, und es kann über mehrere SharePoint-Websites und -Farmen darauf zugegriffen werden. Zum Konfigurieren des SharePoint Server-Benutzerprofildiensts müssen die entsprechenden Berechtigungen in einer durch Azure Active Directory Domain Services (Azure AD DS) verwalteten Domäne erteilt werden. Weitere Informationen finden Sie unter der [Benutzerprofilsynchronisierung in SharePoint Server](https://technet.microsoft.com/library/hh296982.aspx).
+SharePoint Server umfasst einen Dienst zum Synchronisieren von Benutzerprofilen. Mit diesem Feature können Benutzerprofile an einem zentralen Ort gespeichert werden, und es kann über mehrere SharePoint-Websites und -Farmen darauf zugegriffen werden. Zum Konfigurieren des SharePoint Server-Benutzerprofildiensts müssen die entsprechenden Berechtigungen in einer durch Azure Active Directory Domain Services (Azure AD DS) verwalteten Domäne erteilt werden. Weitere Informationen finden Sie unter der [Benutzerprofilsynchronisierung in SharePoint Server](/SharePoint/administration/user-profile-service-administration).
 
 In diesem Artikel wird gezeigt, wie Sie Azure AD DS so konfigurieren, dass der SharePoint Server-Synchronisierungsdienst für Benutzerprofile zulässig ist.
 
@@ -71,7 +71,7 @@ Führen Sie auf der VM für die Azure AD DS-Verwaltung die folgenden Schritte au
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter [Erteilen von Berechtigungen für Active Directory Domain Services für die Profilsynchronisierung in SharePoint Server](https://technet.microsoft.com/library/hh296982.aspx).
+Weitere Informationen finden Sie unter [Verwalten der Benutzerprofilsynchronisierung in SharePoint Server](/SharePoint/administration/manage-profile-synchronization).
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

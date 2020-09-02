@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 03/30/2020
-ms.openlocfilehash: 485da8549175af8813a9d0c3052d1e77f336e619
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 08/25/2020
+ms.openlocfilehash: db2bae9d9e1c9658937e725a04d919743ff9999e
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120839"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855782"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Verwenden von Azure-Tabellenspeicher zum Verwalten von Leads im kommerziellen Marketplace
 
@@ -28,19 +28,19 @@ Wenn Ihr CRM-System (Customer Relationship Management) in Partner Center nicht e
     1. Wählen Sie im Bereich **Neu** die Option **Speicher** aus. Die Liste **Highlights** wird rechts angezeigt.
     1. Wählen Sie **Speicherkonto** aus, um mit der Kontoerstellung zu beginnen. Befolgen Sie die Anweisungen unter [Erstellen eines Speicherkontos](../../storage/common/storage-quickstart-create-account.md?tabs=azure-portal).
 
-        ![Schritte zum Erstellen eines Azure Storage-Kontos](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-create.png)
+        :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-create.png" alt-text="Schritte zum Erstellen eines Azure Storage-Kontos":::.
 
         Weitere Informationen zu Speicherkonten finden Sie im [Schnellstarttutorial](../../storage/index.yml). Weitere Informationen zu den Preisen für Storage finden Sie unter [Übersicht über die Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
 
-1. Warten Sie, bis das Speicherkonto bereitgestellt wurde. Dieser Vorgang dauert in der Regel einige Minuten. 
+1. Warten Sie, bis das Speicherkonto bereitgestellt wurde. Dieser Vorgang dauert in der Regel einige Minuten.
 
 ## <a name="create-a-table-in-your-storage-account"></a>Erstellen einer Tabelle in Ihrem Speicherkonto
 
 1. Wählen Sie auf der Seite **Home** des Azure-Portals **Alle Ihre Ressourcen anzeigen** aus, um auf Ihr Speicherkonto zuzugreifen. Sie können auch auf der linken Menüleiste des Azure-Portals **Alle Ressourcen** auswählen.
 
-    ![Zugriff auf Ihr Azure-Speicherkonto](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-access.png)
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-access.png" alt-text="Zugriff auf Ihr Azure-Speicherkonto":::.
 
-1. Wählen Sie im Speicherkontobereich **Zugriffsschlüssel** aus, und kopieren Sie den Wert von **Verbindungszeichenfolge** für den Schlüssel. Speichern Sie diesen Wert, da es sich um den Wert **Verbindungszeichenfolge für Speicherkonto** handelt, den Sie im Veröffentlichungsportal angeben müssen, um Leads für Ihr Azure Marketplace-Angebot zu erhalten. 
+1. Wählen Sie im Speicherkontobereich **Zugriffsschlüssel** aus, und kopieren Sie den Wert von **Verbindungszeichenfolge** für den Schlüssel. Speichern Sie diesen Wert, da es sich um den Wert **Verbindungszeichenfolge für Speicherkonto** handelt, den Sie im Veröffentlichungsportal angeben müssen, um Leads für Ihr Azure Marketplace-Angebot zu erhalten.
 
     Hier ist ein Beispiel für eine Verbindungszeichenfolge.
 
@@ -48,13 +48,14 @@ Wenn Ihr CRM-System (Customer Relationship Management) in Partner Center nicht e
     DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.screens.net
     ```
 
-    ![Azure-Speicherschlüssel](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-keys.png)
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-keys.png" alt-text="Azure-Speicherschlüssel":::.
+
 
 1. Wählen Sie im Speicherkontobereich **Tabellen** und dann **+ Tabelle** aus, um eine Tabelle zu erstellen. Geben Sie einen Namen für die Tabelle ein, und wählen Sie **OK** aus. Speichern Sie diesen Wert, da Sie ihn benötigen, wenn Sie einen Flow für den Empfang von E-Mail-Benachrichtigungen beim Erhalt von Leads konfigurieren möchten.
 
     ![Azure-Tabellen](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-tables.png)
 
-    Sie können die Daten in Ihrer Speichertabelle im [Azure Storage-Explorer](https://archive.codeplex.com/?p=azurestorageexplorer) oder einem anderen Tool anzeigen. Sie können die Daten auch in die Azure-Tabelle exportieren. 
+    Sie können die Daten in Ihrer Speichertabelle im [Azure Storage-Explorer](https://archive.codeplex.com/?p=azurestorageexplorer) oder einem anderen Tool anzeigen. Sie können die Daten auch in die Azure-Tabelle exportieren.
 
 ## <a name="optional-use-power-automate-to-get-lead-notifications"></a>(Optional) Verwenden von Power Automate zum Abrufen von Leadbenachrichtigungen
 
@@ -66,7 +67,7 @@ In diesem Beispiel wird ein Flow erstellt, in dem automatisch eine E-Mail-Benach
 
 1. Melden Sie sich bei Ihrem Power Automate-Konto an.
 1. Wählen Sie auf der linken Navigationsleiste die Option **Meine Flows** aus.
-1. Wählen Sie auf der oberen Leiste **+ Neu** aus. 
+1. Wählen Sie auf der oberen Leiste **+ Neu** aus.
 1. Wählen Sie in der Dropdownliste **+ Geplant – ohne Vorlage** aus.
 
    ![„+ Geplant – ohne Vorlage“ unter „Meine Flows“](./media/commercial-marketplace-lead-management-instructions-azure-table/ms-flow-scheduled-from-blank.png)
@@ -90,7 +91,7 @@ In diesem Beispiel wird ein Flow erstellt, in dem automatisch eine E-Mail-Benach
 
     ![Festlegen des Intervalls als „Vergangene Zeit abrufen“](./media/commercial-marketplace-lead-management-instructions-azure-table/ms-flow-getpast-time.png)
 
-   >[!TIP] 
+   >[!TIP]
    >Sie können Ihren Flow jederzeit überprüfen, um sich zu vergewissern, dass jeder Schritt ordnungsgemäß konfiguriert ist. Um Ihren Flow zu überprüfen, wählen Sie auf der Menüleiste **Flow** die Option **Flowprüfung** aus.
 
    In den nächsten Schritten stellen Sie eine Verbindung mit Ihrer Tabelle her und richten die Verarbeitungslogik für neue Leads ein.
@@ -123,7 +124,7 @@ In diesem Beispiel wird ein Flow erstellt, in dem automatisch eine E-Mail-Benach
 
 1. Wählen Sie im Fenster **Bedingung** die Option **Wert auswählen** aus. Wählen Sie dann im Popupfenster die Option **Ausdruck** aus.
 
-1. Fügen Sie `length(body('Get_entities')?['value'])` im Feld **fx** ein. Wählen Sie **OK** aus, um diese Funktion hinzuzufügen. 
+1. Fügen Sie `length(body('Get_entities')?['value'])` im Feld **fx** ein. Wählen Sie **OK** aus, um diese Funktion hinzuzufügen.
 
 1. So schließen Sie das Einrichten der Bedingung ab:
     1. Wählen Sie in der Dropdownliste die Option **ist größer als** aus.
@@ -134,7 +135,7 @@ In diesem Beispiel wird ein Flow erstellt, in dem automatisch eine E-Mail-Benach
    In den nächsten Schritten richten Sie die Aktion ein, die entsprechend dem Ergebnis der Bedingung ausgeführt werden soll:
 
    * Hat die Bedingung das Ergebnis **Wenn nein**, soll keine Aktion ausgeführt werden.
-   * Hat die Bedingung das Ergebnis **Wenn ja**, lösen Sie eine Aktion aus, in der eine E-Mail an Ihr Office 365-Konto gesendet wird. 
+   * Hat die Bedingung das Ergebnis **Wenn ja**, lösen Sie eine Aktion aus, in der eine E-Mail an Ihr Office 365-Konto gesendet wird.
 
 1. Wählen Sie unter **Wenn ja** die Option **Aktion hinzufügen** aus.
 

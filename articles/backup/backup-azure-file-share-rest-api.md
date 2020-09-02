@@ -3,12 +3,12 @@ title: Sichern von Azure-Dateifreigaben mit der REST-API
 description: Hier erfahren Sie, wie Sie Azure-Dateifreigaben mithilfe der REST-API im Recovery Services-Tresor sichern.
 ms.topic: conceptual
 ms.date: 02/16/2020
-ms.openlocfilehash: f48ebbd20d6775fe61c3e3dbb07e8f71af41635a
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 8d2d8ed88da133986540a293185c8e37000ab87b
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036741"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824864"
 ---
 # <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>Sichern einer Azure-Dateifreigabe mithilfe von Azure Backup über die REST-API
 
@@ -38,7 +38,7 @@ Der Tresor muss im Abonnement alle Azure-Speicherkonten mit Dateifreigaben ermit
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupname}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers?api-version=2016-12-01&$filter={$filter}
 ```
 
-Der POST-URI enthält die Parameter `{subscriptionId}`, `{vaultName}`, `{vaultresourceGroupName}` und `{fabricName}`. In unserem Beispiel lautet der Wert für die verschiedenen Parameter wie folgt:
+Der POST-URI enthält die Parameter `{subscriptionId}`, `{vaultName}`, `{vaultresourceGroupName}` und `{fabricName}`. In unserem Beispiel lauten die Werte für die verschiedenen Parameter wie folgt:
 
 - `{fabricName}`: *Azure*
 
@@ -54,13 +54,13 @@ Da alle erforderlichen Parameter im URI angegeben sind, besteht keine Notwendigk
 POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/refreshContainers?api-version=2016-12-01&$filter=backupManagementType eq 'AzureStorage'
 ```
 
-#### <a name="responses"></a>Antworten
+#### <a name="responses-to-the-refresh-operation"></a>Antworten auf den Aktualisierungsvorgang
 
 Der „refresh“-Vorgang ist ein [asynchroner Vorgang](../azure-resource-manager/management/async-operations.md). Das bedeutet, dass in diesem Vorgang ein anderer Vorgang erstellt wird, der separat nachverfolgt werden muss.
 
 Er gibt zwei Antworten zurück: „202 (Akzeptiert)“, wenn ein anderer Vorgang erstellt wird, und „200 (OK)“, wenn dieser Vorgang abgeschlossen ist.
 
-##### <a name="example-responses"></a>Beispielantworten
+##### <a name="example-responses-to-the-refresh-operation"></a>Beispielantworten auf den Aktualisierungsvorgang
 
 Nachdem die *POST*-Anforderung gesendet wurde, wird die Antwort „202 (Akzeptiert)“ zurückgegeben.
 
@@ -175,7 +175,7 @@ Legen Sie die Variablen für den URI wie folgt fest:
    In unserem Beispiel ist dies *StorageContainer;Storage;AzureFiles;testvault2*
 
 >[!NOTE]
-> Übernehmen Sie immer das name-Attribut der Antwort, und geben Sie es in diese Anforderung ein. Das container-name-Format darf NICHT hartcodiert oder erstellt werden. Wenn Sie es erstellen oder hartcodieren, schlägt der API-Aufruf fehl, falls sich das container-name-Format in Zukunft ändert.
+> Übernehmen Sie immer das name-Attribut der Antwort, und geben Sie es in diese Anforderung ein. Das container-name-Format darf nicht hartcodiert oder erstellt werden. Wenn Sie es erstellen oder hartcodieren, schlägt der API-Aufruf fehl, falls sich das container-name-Format in Zukunft ändert.
 
 <br>
 
@@ -373,7 +373,7 @@ In unserem Beispiel lautet die ID der Dateifreigabe, die wir schützen wollen:
 Sie können auch auf das **name** -Attribut des Schutzcontainers und auf Antworten zu schützbaren Elementen verweisen.
 
 >[!NOTE]
->Übernehmen Sie immer das name-Attribut der Antwort, und geben Sie es in diese Anforderung ein. Das container-name-Format und das Format des Namens des geschützten Elements dürfen NICHT hartcodiert oder erstellt werden. Wenn Sie es erstellen oder hartcodieren, schlägt der API-Aufruf fehl, falls sich das container-name-Format oder das Format des Namens des geschützten Elements in Zukunft ändert.
+>Übernehmen Sie immer das name-Attribut der Antwort, und geben Sie es in diese Anforderung ein. Das container-name-Format und das Format des Namens des geschützten Elements dürfen nicht hartcodiert oder erstellt werden. Wenn Sie es erstellen oder hartcodieren, schlägt der API-Aufruf fehl, falls sich das container-name-Format oder das Format des Namens des geschützten Elements in Zukunft ändert.
 
 <br>
 
@@ -487,13 +487,13 @@ Beispiel für Anforderungstext
 }
 ```
 
-### <a name="responses"></a>Antworten
+### <a name="responses-to-the-on-demand-backup-operation"></a>Antworten auf den bedarfsgesteuerten Sicherungsvorgang
 
 Das Auslösen einer bedarfsgesteuerten Sicherung ist ein [asynchroner Vorgang](../azure-resource-manager/management/async-operations.md). Das bedeutet, dass in diesem Vorgang ein anderer Vorgang erstellt wird, der separat nachverfolgt werden muss.
 
 Er gibt zwei Antworten zurück: „202 (Akzeptiert)“, wenn ein anderer Vorgang erstellt wird, und „200 (OK)“, wenn dieser Vorgang abgeschlossen ist.
 
-### <a name="example-responses"></a>Beispielantworten
+### <a name="example-responses-to-the-on-demand-backup-operation"></a>Beispielantworten auf den bedarfsgesteuerten Sicherungsvorgang
 
 Nachdem Sie die *POST*-Anforderung für eine bedarfsgesteuerte Sicherung gesendet haben, wird als erste Antwort „202 (Akzeptiert)“ mit einem location- oder Azure-async-Header zurückgegeben.
 

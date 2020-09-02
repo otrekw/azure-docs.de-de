@@ -1,31 +1,55 @@
 ---
-title: Dashboard „Downloads“ in Analysen für den kommerziellen Microsoft-Marketplace im Partner Center
+title: Dashboard „Downloads“ in Analysen für den kommerziellen Microsoft-Marketplace im Partner Center – Azure Marketplace
 description: Erfahren Sie, wie Sie auf Downloadanforderungen für Ihre Marketplace-Angebote zugreifen.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 12/11/2019
+ms.topic: article
+ms.date: 08/21/2020
 author: shganesh-dev
 ms.author: shganesh
-ms.openlocfilehash: 5b688d64641f6dd8779d699bcd1d646e40b19b87
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: f426b0466046b366655c183a9372b2468937565b
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245671"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750295"
 ---
 # <a name="downloads-dashboard-in-commercial-marketplace-analytics"></a>Dashboard „Downloads“ in Analysen für den kommerziellen Marketplace
 
 Dieser Artikel enthält Informationen zum Dashboard „Downloads“ im Partner Center. In diesem Dashboard wird eine Liste Ihrer Downloadanforderungen über die letzten 30 Tage angezeigt.
 
-Um auf das Dashboard „Downloads“ zuzugreifen, öffnen Sie das Dashboard **[Analyse](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** unter „Kommerzieller Marketplace“.
+Um auf das Dashboard „Downloads“ zuzugreifen, öffnen Sie das Dashboard **[Analyse](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** im kommerziellen Marketplace.
 
 >[!NOTE]
 > Ausführliche Definitionen der Analyseterminologie finden Sie unter [Analysen für den kommerziellen Marketplace: Häufig gestellte Fragen und Terminologie](./faq-terminology.md).
 
 ## <a name="downloads-dashboard"></a>Dashboard „Downloads“
 
-Das Dashboard **Downloads** im Menü **Analyse** zeigt Anforderungen von Downloads mit mehr als 1000 Kunden- oder Bestelldatenzeilen an. Diese Datendownloads stehen für 30 Tage zur Verfügung und werden dann entfernt.
+Das Dashboard **Downloads** im Menü **Analyse** zeigt Anforderungen von Downloads mit mehr als 1000 Kunden- oder Bestelldatenzeilen an.
+
+Sie erhalten eine Popupbenachrichtigung mit einem Link zum Dashboard **Downloads**, wenn Sie einen Download mit mehr als 1.000 Datenzeilen anfordern. Diese Datendownloads stehen für einen Zeitraum von 30 Tagen zur Verfügung, und werden dann entfernt.
+
+## <a name="lifetime-export-of-commercial-marketplace-analytics-reports"></a>Lebensdauerexport von Analytics-Berichten zum kommerziellen Marketplace
+
+Auf der Seite „Downloads“ kann der Endbenutzer folgende Aktionen ausführen:
+
+- Lebensdauerexport von Analytics-Berichten zum kommerziellen Marketplace im CSV- und TSV-Format.
+- Export von Analytics-Berichten zum kommerziellen Marketplace für jeden Datumsbereich.
+- Export von Analytics-Berichten zum kommerziellen Marketplace für 6 oder 12 Monate Dauer.
+
+Unterstützung für die Lebensdauerexportfunktionalität von Analytics-Berichten:
+
+| Bericht | Lebensdauerexport | Beliebige Dauer basierend auf Datum |
+| - | - | - |
+| Orders | ![Grünes Häkchen](media/check-green-yes.png) | ![Grünes Häkchen](media/check-green-yes.png) |
+| Kunden | ![Grünes Häkchen](media/check-green-yes.png) | ![Grünes Häkchen](media/check-green-yes.png) |
+| Marketplace Insights | ![Grünes Häkchen](media/check-green-yes.png) | ![Grünes Häkchen](media/check-green-yes.png) |
+| Verwendung | ![Schwarzes X](media/check-black-no.png) | Maximal ein Jahr |
+|
+
+Ein Benutzer kann asynchrone Downloads von Berichten aus dem Abschnitt „Downloads“ planen:
+
+[![Planen asynchroner Downloads von Berichten aus dem Abschnitt „Downloads“](media/download-reports.png)](media/download-reports.png#lightbox)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

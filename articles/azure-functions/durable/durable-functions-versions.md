@@ -3,14 +3,14 @@ title: Übersicht über die Durable Functions-Versionen – Azure Functions
 description: Informationen über Durable Functions-Versionen
 author: cgillum
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 08/20/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 1dc58bc7c758330c0333a5359622c4e54bb95026
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d6662259494bba5747e01c4574186e9030112247
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024723"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719409"
 ---
 # <a name="durable-functions-versions-overview"></a>Übersicht über die Durable Functions-Versionen
 
@@ -44,7 +44,29 @@ In diesem Abschnitt wird beschrieben, wie Sie Ihre vorhandene Durable Functions-
 
 ### <a name="upgrade-the-extension"></a>Upgrade der Erweiterung
 
-Installieren Sie Version 2.x der [Durable Functions-Bindungserweiterung](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) in Ihrem Projekt. Siehe hierzu [Registrieren von Bindungserweiterungen von Azure Functions](../functions-bindings-register.md).
+Installieren Sie neueste 2.x-Version der Durable Functions-Bindungserweiterung in Ihrem Projekt.
+
+#### <a name="javascript-python-and-powershell"></a>JavaScript, Python und PowerShell
+
+Durable Functions 2.x ist in Version 2.x des [Azure Functions-Erweiterungspakets](../functions-bindings-register.md#extension-bundles) verfügbar.
+
+Um die Version des Erweiterungspakets in Ihrem Projekt zu aktualisieren, öffnen Sie „host.json“, und aktualisieren Sie den Abschnitt `extensionBundle`, um Version 2.x (`[2.*, 3.0.0)`) zu verwenden.
+
+```json
+{
+    "version": "2.0",
+    "extensionBundle": {
+        "id": "Microsoft.Azure.Functions.ExtensionBundle",
+        "version": "[2.*, 3.0.0)"
+    }
+}
+```
+
+#### <a name="net"></a>.NET
+
+Aktualisieren Sie Ihr .NET-Projekt, um die neueste Version der [Durable Functions Bindingserweiterung](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) zu verwenden.
+
+Siehe hierzu [Registrieren von Bindungserweiterungen von Azure Functions](../functions-bindings-register.md#local-csharp).
 
 ### <a name="update-your-code"></a>Aktualisieren Ihres Codes
 

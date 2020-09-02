@@ -3,161 +3,202 @@ title: Installieren von Language Packs auf Windows 10-VMs in Windows Virtual De
 description: Hier erfahren Sie, wie Sie Language Packs für Windows 10-VMs (mehrere Sitzungen) in Windows Virtual Desktop installieren.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 04/03/2020
+ms.date: 08/21/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 542163511a1b4fc0acde9b44d73be6ffc042d5d3
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: de495d18220500e5aa5653e89776c2634d5b1c85
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008762"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719143"
 ---
-# <a name="install-language-packs"></a>Installieren von Sprachpaketen
+# <a name="add-language-packs-to-a-windows-10-multi-session-image"></a>Hinzufügen von Language Packs zu einem Image für Windows 10 (mehrere Sitzungen)
 
-Wenn Sie Windows Virtual Desktop-Bereitstellungen für eine internationale Umgebung einrichten, sollten Sie sicherstellen, dass Ihre Bereitstellung mehrere Sprachen unterstützt. Sie können Language Packs auf dem Image eines virtuellen Windows 10 Enterprise, Multisession-Computers installieren, um so viele Sprache zu unterstützen, wie in der Organisation benötigt werden. In diesem Artikel erfahren Sie, wie Sie Language Packs installieren und Images erfassen, anhand derer Ihre Benutzer ihre eigenen Anzeigesprachen auswählen können.
+Windows Virtual Desktop ist ein Dienst, den Ihre Benutzer jederzeit und überall bereitstellen können. Daher ist es wichtig, dass die Benutzer die jeweilige Sprache, die in dem Image für Windows 10 Enterprise (mehrere Sitzungen) angezeigt wird, anpassen können.
 
-Weitere Informationen zum Bereitstellen einer VM in Azure erfahren Sie unter [Erstellen eines virtuellen Windows-Computers in einer Verfügbarkeitszone mit dem Azure-Portal](../virtual-machines/windows/create-portal-availability-zone.md).
+Es gibt zwei Möglichkeiten, die Sprachanforderungen Ihrer Benutzer zu erfüllen:
 
->[!NOTE]
->Dieser Artikel bezieht sich auf virtuelle Windows 10 Enterprise-VMs (mehrere Sitzungen).
+- Erstellen Sie dedizierte Hostpools mit einem angepassten Image für jede Sprache.
+- Fügen Sie Benutzer mit unterschiedlichen Sprach- und Lokalisierungsanforderungen demselben Hostpool hinzu, aber passen Sie deren Images an, um sicherzustellen, dass sie die gewünschte Sprache auswählen können.
 
-## <a name="install-a-language-pack"></a>Installieren eines Language Packs
+Die letztere Methode ist sehr viel effizienter und kostengünstiger. Sie können aber entscheiden, welche Methode Ihren Anforderungen am besten entspricht. In diesem Artikel wird gezeigt, wie Sie die Sprachen für Ihre Images anpassen.
 
-Zum Erstellen eines VM-Images mit Language Packs müssen Sie zunächst Language Packs auf einem Computer installieren und ein Image davon erfassen.
+## <a name="prerequisites"></a>Voraussetzungen
 
-So installieren Sie Language Packs:
+Sie benötigen folgende Komponenten, um die Images für Windows 10 Enterprise (mehrere Sitzungen) so anzupassen, dass mehrere Sprachen hinzugefügt werden können:
 
-1. Melden Sie sich als Administrator an.
-2. Stellen Sie sicher, dass Sie alle aktuellen Windows-und Windows Store-Updates installiert haben.
-3. Wechseln Sie zu **Einstellungen** > **Zeit und Sprache** > **Region**.
-4. Wählen Sie unter **Land oder Region**im Dropdownmenü das gewünschte Land oder die gewünschte Region aus.
-    In diesem Beispiel wählen wir **Frankreich**aus, wie im folgenden Screenshot zu sehen:
+- Einen virtuellen Azure-Computer (VM) mit Windows 10 Enterprise (mehrere Sitzungen), Version 1903 oder höher
 
-    > [!div class="mx-imgBorder"]
-    > ![Screenshot der Seite „Region“. Die derzeit ausgewählte Region ist Frankreich.](media/region-page-france.png)
+- Language ISO und Feature on Demand (FOD) Disk 1 für die vom Image verwendete Betriebssystemversion. Diese können Sie hier herunterladen: 
+     
+     - Language ISO:
+        - [Windows 10, Version 1903 oder 1909, Language Pack ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_CLIENTLANGPACKDVD_OEM_MULTI.iso)
+        - [Windows 10, Version 2004, Language Pack ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_CLIENTLANGPACKDVD_OEM_MULTI.iso)
 
-5. Wählen Sie anschließend **Sprache**und dann **Sprache hinzufügen**aus. Wählen Sie die zu installierende Sprache in der Liste aus, und wählen Sie **Weiter** aus.
-6. Das Fenster **Sprachfeatures installieren** wird geöffnet. Aktivieren Sie das Kontrollkästchen **Language Pack installieren und als Windows-Anzeigesprache festlegen**.
-7. Wählen Sie **Installieren** aus.
-8. Wenn Sie mehrere Sprachen gleichzeitig hinzufügen möchten, wählen Sie **Sprache hinzufügen** aus, und führen Sie den Vorgang zum Hinzufügen einer Sprache in den Schritten 5 und 6 erneut aus. Wiederholen Sie den Vorgang für jede Sprache, die Sie hinzufügen möchten. Sie können jedoch jeweils nur eine Sprache als Anzeigesprache festlegen.
+     - FOD Disk 1 ISO:
+        - [Windows 10, Version 1903 oder 1909, FOD Disk 1 ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_amd64fre_FOD-PACKAGES_OEM_PT1_amd64fre_MULTI.iso)
+        - [Windows 10, Version 2004, FOD Disk 1 ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_amd64fre_FOD-PACKAGES_OEM_PT1_amd64fre_MULTI.iso)
 
-    Dies wird im Folgenden kurz veranschaulicht. In den folgenden Abbildungen wird gezeigt, wie Sie die Sprachpakete Französisch und Niederländisch installieren und dann Französisch als Anzeigesprache festlegen.
-
-    > [!div class="mx-imgBorder"]
-    > ![Screenshot der Seite „Sprache“ zu Beginn des Vorgangs. Die ausgewählte Windows-Anzeigesprache ist Englisch.](media/language-page-default.png)
-
-    > [!div class="mx-imgBorder"]
-    > ![Screenshot des Fensters für die Sprachauswahl. Der Benutzer hat „French“ (Französisch) in die Suchleiste eingegeben, um die Language Packs für Französisch zu suchen.](media/select-language-french.png)
-
-    > [!div class="mx-imgBorder"]
-    > ![Screenshot der Seite „Sprachfeatures installieren“. Französisch ist als bevorzugte Sprache ausgewählt. Die Optionen „Anzeigesprache festlegen“, „Sprachpaket installieren“, „Spracherkennung“ und „Handschrift“ sind ausgewählt.](media/install-language-features.png)
-
-    Nachdem Sie die Language Packs installiert haben, sollten die Namen der Language Packs in der Liste der Sprachen angezeigt werden.
-
-    > [!div class="mx-imgBorder"]
-    > ![Screenshot der Seite „Sprache“ mit den installierten neuen Language Packs. Die Sprachpakete Französisch und Niederländisch werden unter „Bevorzugte Sprachen“ aufgeführt.](media/language-page-complete.png)
-
-9. Ein Fenster wird geöffnet, in dem Sie aufgefordert werden, sich von ihrer Sitzung abzumelden. Gehen Sie wie folgt vor: Melden Sie sich ab, und melden Sie sich erneut an. Ihre Anzeigesprache sollte nun der ausgewählten Sprache entsprechen.
-
-10.  Wechseln Sie zu **Systemsteuerung** > **Zeit und Region** > **Region**.
-
-11.  Wenn das Fenster **Region** geöffnet wird, wählen Sie die Registerkarte **Verwaltung** aus, und wählen Sie dann **Einstellungen kopieren**aus.
-
-12.  Aktivieren Sie die Kontrollkästchen **Willkommensseite und Systemkonten** und **Neue Benutzerkonten**.
-
-13.  Klicken Sie auf **OK**.
-
-14.  Ein Fenster wird geöffnet, in dem Sie angewiesen werden, die Sitzung neu zu starten. Klicken Sie auf **Jetzt neu starten**.
-
-15.  Nachdem Sie sich erneut angemeldet haben, wechseln Sie wieder zu **Systemsteuerung** > **Zeit und Region** > **Region**.
-
-16.  Wählen Sie die Registerkarte **Verwaltung** aus.
-
-17.  Wählen Sie **Gebietsschema ändern** aus.
-
-18. Wählen Sie im Dropdownmenü unter **Aktuelles Gebietsschema** das gewünschte Gebietsschema aus. Wählen Sie anschließend **OK** aus.
-
-19. Wählen Sie **Jetzt neu starten** aus, um die Sitzung erneut zu starten.
-
-Herzlichen Glückwunsch, Sie haben Ihre Language Packs installiert!
-
-Bevor Sie fortfahren, vergewissern Sie sich, dass in Ihrem System die neuesten Versionen von Windows und Windows Store installiert sind.
-
-## <a name="sysprep"></a>Sysprep
-
-Nun müssen Sie Sysprep für Ihren Computer ausführen, um ihn für den Image-Erfassungsvorgang vorzubereiten.
-
-So führen Sie Sysprep für Ihren Computer aus:
-
-1. Öffnen Sie PowerShell als Administrator.
-2. Führen Sie das folgende Cmdlet aus, um zum richtigen Verzeichnis zu wechseln:
-
-    ```powershell
-    cd Windows\System32\Sysprep
-    ```
-
-3. Führen Sie anschließend das folgende Cmdlet aus:
-
-    ```powershell
-    .\sysprep.exe
-    ```
-
-4. Das Fenster des Systemvorbereitungstools wird geöffnet. Aktivieren Sie das Kontrollkästchen **Verallgemeinern**, wechseln Sie zu **Optionen für Herunterfahren**, und wählen Sie im Dropdownmenü die Option **Herunterfahren** aus.
+- Eine Azure Files-Freigabe oder eine Dateifreigabe auf einer Windows-Dateiserver-VM
 
 >[!NOTE]
->Es dauert einige Minuten, bis der Sysprep-Prozess abgeschlossen ist. Beim Herunterfahren der VM wird die Remotesitzung getrennt.
+>Auf die Dateifreigabe (Repository) muss von der Azure-VM aus zugegriffen werden können, die zum Erstellen des benutzerdefinierten Images verwendet werden soll.
 
-### <a name="resolve-sysprep-errors"></a>Beheben von Sysprep-Fehlern
+## <a name="create-a-content-repository-for-language-packages-and-features-on-demand"></a>Erstellen eines Inhaltsrepositorys für Sprachpakete und Features bei Bedarf (FODs)
 
-Wenn während des Sysprep-Prozesses ein Fehler auftritt, gehen Sie wie folgt vor:
+Zum Erstellen des Inhaltsrepositorys für Sprachpakete und FODs führen Sie die folgenden Schritte aus:
 
-1. Öffnen Sie **Laufwerk C**, und wechseln Sie zu **Windows** > **System32 Sysprep** > **Panther**. Öffnen Sie anschließend die Datei **setuperr**.
+1. Laden Sie auf einer Azure-VM die Windows 10-ISO und -FODs (mehrere Sprachen) für Images für Windows 10 Enterprise (mehrere Sitzungen), Version 1903, 1909 und 2004, über die Links unter [Voraussetzungen](#prerequisites) herunter.
 
-   In der Fehlerdatei werden Sie angewiesen, ein bestimmtes Language Pack zu deinstallieren, wie in der folgenden Abbildung veranschaulicht. Kopieren Sie den Namen des Language Packs für den nächsten Schritt.
+2. Öffnen Sie die ISO-Dateien auf der VM, und binden Sie sie ein.
 
-   > [!div class="mx-imgBorder"]
-   > ![Screenshot der Datei „setuperr“. Der Text mit dem Namen des Language Packs ist dunkelblau hervorgehoben.](media/setuperr-package-name.png)
+3. Wechseln Sie zur Language Pack-ISO, kopieren Sie den Inhalt aus den Ordnern **LocalExperiencePacks** und **x64\\langpacks**, und fügen Sie dann den Inhalt in die Dateifreigabe ein.
 
-2. Öffnen Sie ein neues PowerShell-Fenster, und führen Sie das folgende Cmdlet mit dem in Schritt 2 kopierten Language Pack-Namen aus, um das Language Pack zu entfernen:
+4. Wechseln Sie zur **FOD-ISO-Datei**, kopieren Sie den gesamten Inhalt, und fügen Sie ihn in die Dateifreigabe ein.
 
-   ```powershell
-   Remove-AppxPackage <package name>
-   ```
+     >[!NOTE]
+     > Wenn Sie mit begrenztem Speicherplatz arbeiten, kopieren Sie nur die Dateien für die Sprachen, von denen Sie wissen, dass Ihre Benutzer sie benötigen. Sie können die Dateien anhand der Sprachcodes in den Dateinamen voneinander unterscheiden. Beispielsweise enthält die Datei für Französisch den Code „fr-FR“ im Namen. Eine vollständige Liste der Sprachcodes für alle verfügbaren Sprachen finden Sie unter [Verfügbare Sprachen für Windows](/windows-hardware/manufacture/desktop/available-language-packs-for-windows).
 
-3. Vergewissern Sie sich, dass Sie das Language Pack entfernt haben, indem Sie das Cmdlet `Remove-AppxPackage` noch einmal ausführen. Wenn das Paket erfolgreich entfernt wurde, sollte eine Meldung angezeigt werden, die besagt, dass das zu entfernende Paket nicht vorhanden ist.
+     >[!IMPORTANT]
+     > Einige Sprachen erfordern zusätzliche Schriftarten, die in Satellitenpaketen mit anderen Benennungskonventionen enthalten sind. Beispielsweise enthalten die Namen der Dateien für japanische Schrift die Zeichenfolge „Jpan“.
+     >
+     > [!div class="mx-imgBorder"]
+     > ![Beispiel der Sprachpakete für Japanisch mit der Sprachkennung „Jpan“ im Dateinamen](media/language-pack-example.png)
 
-4. Führen Sie das Cmdlet `sysprep.exe` noch einmal aus.
+5. Legen Sie die Berechtigungen für die Freigabe des Inhaltsrepositorys für Sprachen so fest, dass Sie über Lesezugriff von der VM aus verfügen, die Sie zum Erstellen des benutzerdefinierten Images verwenden möchten.
 
-## <a name="capture-the-image"></a>Erfassen des Images
+## <a name="create-a-custom-windows-10-enterprise-multi-session-image-manually"></a>Manuelles Erstellen eines Images für Windows 10 Enterprise (mehrere Sitzungen)
 
-Nachdem das System nun vorbereitet ist, können Sie ein Image erfassen, damit andere Benutzer auf Ihrem System basierende VMs verwenden können, ohne dass sie Konfigurationsprozess wiederholen müssen.
+Führen Sie die folgenden Schritte aus, um ein Image für Windows 10 Enterprise (mehrere Sitzungen) manuell zu erstellen:
 
-So nehmen Sie ein Image auf:
+1. Stellen Sie eine Azure-VM bereit. Dann navigieren Sie zum Azure-Katalog, und wählen Sie die von Ihnen verwendete aktuelle Version von Windows 10 Enterprise (mehrere Sitzungen) aus.
+2. Nachdem Sie die VM bereitgestellt haben, stellen Sie mithilfe von RDP als lokaler Administrator eine Verbindung her.
+3. Vergewissern Sie sich, dass die VM über alle aktuellen Windows-Updates verfügt. Laden Sie bei Bedarf die Updates herunter, und starten Sie die VM neu.
+4. Stellen Sie eine Verbindung mit dem Repository für Sprachpakete und FOD-Dateifreigaben her, und stellen Sie es auf einem Laufwerk (z. B. Laufwerk E) bereit.
 
-1. Wechseln Sie zum Azure-Portal, und wählen Sie den Namen des Computers aus, den Sie in [Installieren eines Language Packs](#install-a-language-pack) und [Sysprep](#sysprep) konfiguriert haben.
+## <a name="create-a-custom-windows-10-enterprise-multi-session-image-automatically"></a>Automatisches Erstellen eines Images für Windows 10 Enterprise (mehrere Sitzungen)
 
-2. Wählen Sie die Option **Erfassen** aus.
+Wenn Sie Sprachen lieber über einen automatisierten Prozess installieren möchten, können Sie ein Skript in PowerShell einrichten. Mithilfe des folgenden Skriptbeispiels können Sie die Sprachpakete für Spanisch (Spanien), Französisch (Frankreich) und Chinesisch (VRC) sowie die Satellitenpakete für Windows 10 Enterprise (mehrere Sitzungen), Version 2004, installieren. Mit dem Skript werden das Benutzeroberflächen-Sprachpaket und alle erforderlichen Satellitenpakete in das Image integriert. Sie können Sie dieses Skript aber auch abändern, um andere Sprachen zu installieren. Stellen Sie lediglich sicher, dass Sie das Skript in einer PowerShell-Sitzung mit erhöhten Rechten ausführen, da es andernfalls nicht funktioniert.
 
-3. Geben Sie im Feld **Name** einen Namen für das Image ein, und weisen Sie es mithilfe des Dropdownmenüs **Ressourcengruppe** der Ressourcengruppe zu, wie in der folgenden Abbildung dargestellt.
+```powershell
+########################################################
+## Add Languages to running Windows Image for Capture##
+########################################################
 
-   > [!div class="mx-imgBorder"]
-   > ![Screenshot des Fensters „Image erstellen“. Der Benutzer hat diesem Testimage den Namen „vmwvd-image-fr“ zugewiesen, und es wurde der Ressourcengruppe „testwvdimagerg“ zugewiesen.](media/create-image.png)
+##Disable Language Pack Cleanup##
+Disable-ScheduledTask -TaskPath "\Microsoft\Windows\AppxDeploymentClient\" -TaskName "Pre-staged app cleanup"
 
-4. Klicken Sie auf **Erstellen**.
+##Set Language Pack Content Stores##
+[string]$LIPContent = "E:"
 
-5. Warten Sie einige Minuten, bis die Erfassung abgeschlossen ist. Wenn das Image erstellt wurde, wird im Benachrichtigungscenter eine Meldung angezeigt, in der Sie informiert werden, dass das Image erfasst wurde.
+##Spanish##
+Add-AppProvisionedPackage -Online -PackagePath $LIPContent\es-es\LanguageExperiencePack.es-es.Neutral.appx -LicensePath $LIPContent\es-es\License.xml
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-Client-Language-Pack_x64_es-es.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-Basic-es-es-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-Handwriting-es-es-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-OCR-es-es-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-Speech-es-es-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-TextToSpeech-es-es-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-NetFx3-OnDemand-Package~31bf3856ad364e35~amd64~es-es~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-InternetExplorer-Optional-Package~31bf3856ad364e35~amd64~es-es~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-MSPaint-FoD-Package~31bf3856ad364e35~amd64~es-es~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-Notepad-FoD-Package~31bf3856ad364e35~amd64~es-es~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-PowerShell-ISE-FOD-Package~31bf3856ad364e35~amd64~es-es~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-Printing-WFS-FoD-Package~31bf3856ad364e35~amd64~es-es~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-StepsRecorder-Package~31bf3856ad364e35~amd64~es-es~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-WordPad-FoD-Package~31bf3856ad364e35~amd64~es-es~.cab
+$LanguageList = Get-WinUserLanguageList
+$LanguageList.Add("es-es")
+Set-WinUserLanguageList $LanguageList -force
 
-Sie können jetzt einen virtuellen Computer mit Ihrem neuen Image bereitstellen. Beim Bereitstellen der VM müssen Sie die Anweisungen unter [Erstellen eines virtuellen Windows-Computers in einer Verfügbarkeitszone mit dem Azure-Portal](../virtual-machines/windows/create-portal-availability-zone.md) befolgen.
+##French##
+Add-AppProvisionedPackage -Online -PackagePath $LIPContent\fr-fr\LanguageExperiencePack.fr-fr.Neutral.appx -LicensePath $LIPContent\fr-fr\License.xml
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-Client-Language-Pack_x64_fr-fr.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-Basic-fr-fr-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-Handwriting-fr-fr-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-OCR-fr-fr-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-Speech-fr-fr-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-TextToSpeech-fr-fr-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-NetFx3-OnDemand-Package~31bf3856ad364e35~amd64~fr-fr~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-InternetExplorer-Optional-Package~31bf3856ad364e35~amd64~fr-FR~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-MSPaint-FoD-Package~31bf3856ad364e35~amd64~fr-FR~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-Notepad-FoD-Package~31bf3856ad364e35~amd64~fr-FR~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-PowerShell-ISE-FOD-Package~31bf3856ad364e35~amd64~fr-FR~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-Printing-WFS-FoD-Package~31bf3856ad364e35~amd64~fr-FR~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-StepsRecorder-Package~31bf3856ad364e35~amd64~fr-FR~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-WordPad-FoD-Package~31bf3856ad364e35~amd64~fr-FR~.cab
+$LanguageList = Get-WinUserLanguageList
+$LanguageList.Add("fr-fr")
+Set-WinUserLanguageList $LanguageList -force
 
-### <a name="how-to-change-display-language-for-standard-users"></a>Ändern der Anzeigesprache für Standardbenutzer
+##Chinese(PRC)##
+Add-AppProvisionedPackage -Online -PackagePath $LIPContent\zh-cn\LanguageExperiencePack.zh-cn.Neutral.appx -LicensePath $LIPContent\zh-cn\License.xml
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-Client-Language-Pack_x64_zh-cn.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-Basic-zh-cn-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-Fonts-Hans-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-Handwriting-zh-cn-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-OCR-zh-cn-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-Speech-zh-cn-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-TextToSpeech-zh-cn-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-NetFx3-OnDemand-Package~31bf3856ad364e35~amd64~zh-cn~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-InternetExplorer-Optional-Package~31bf3856ad364e35~amd64~zh-cn~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-MSPaint-FoD-Package~31bf3856ad364e35~amd64~zh-cn~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-Notepad-FoD-Package~31bf3856ad364e35~amd64~zh-cn~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-PowerShell-ISE-FOD-Package~31bf3856ad364e35~amd64~zh-cn~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-Printing-WFS-FoD-Package~31bf3856ad364e35~amd64~zh-cn~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-StepsRecorder-Package~31bf3856ad364e35~amd64~zh-cn~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-WordPad-FoD-Package~31bf3856ad364e35~amd64~zh-cn~.cab
+$LanguageList = Get-WinUserLanguageList
+$LanguageList.Add("zh-cn")
+Set-WinUserLanguageList $LanguageList -force
+```
 
-Standardbenutzer können die Anzeigesprache auf Ihren VMs ändern.
+>[!IMPORTANT]
+>Für die Windows 10 Enterprise-Versionen 1903 und 1909 ist die Paketdatei `Microsoft-Windows-Client-Language-Pack_x64_<language-code>.cab` nicht erforderlich.
 
-So ändern Sie die Anzeigesprache:
+Je nach Anzahl der Sprachen, die installiert werden müssen, kann die Ausführung des Skripts einige Zeit in Anspruch nehmen.
 
-1. Wechseln Sie zu **Spracheinstellungen**. Wenn Sie nicht wissen, wo sich diese Einstellungen befinden, können Sie im Startmenü im Suchfeld den Begriff **Sprache** eingeben.
+Sobald die Skriptausführung abgeschlossen ist, vergewissern Sie sich, dass die Sprachpakete ordnungsgemäß installiert wurden. Dazu navigieren Sie zu **Start** > **Einstellungen** > **Uhrzeit und Sprache** > **Sprache**. Wenn die Sprachdateien vorhanden sind, ist die Einrichtung abgeschlossen.
 
-2. Wählen Sie im Dropdownmenü „Windows-Anzeigesprache“ die Sprache aus, die Sie als Anzeigesprache festlegen möchten.
+Denken Sie anschließend daran, die Freigabe wieder zu trennen.
 
-3. Melden Sie sich von Ihrer Sitzung ab, und melden Sie sich anschließend wieder an. Die Anzeigesprache sollte nun der Sprache entsprechen, die Sie in Schritt 2 ausgewählt haben.
+## <a name="finish-customizing-your-image"></a>Abschließen der Imageanpassung
+
+Nachdem Sie die Language Packs installiert haben, können Sie weitere Software installieren, die Sie dem angepassten Image hinzufügen möchten.
+
+Sobald Sie die Anpassung des Images abgeschlossen haben, müssen Sie das Tools für die Systemvorbereitung (sysprep) ausführen.
+
+Zum Ausführen von Sysprep gehen Sie folgendermaßen vor:
+
+1. Öffnen Sie eine Eingabeaufforderung mit erhöhten Rechten, und führen Sie den folgenden Befehl aus, um das Image zu generalisieren:  
+   
+     ```cmd
+     C:\Windows\System32\Sysprep\sysprep.exe /oobe /generalize /shutdown
+     ```
+
+2. Fahren Sie die VM herunter, und erfassen Sie sie in einem verwalteten Image. Folgen Sie dazu den Anweisungen unter [Erstellen eines verwalteten Images eines generalisierten virtuellen Computers in Azure](../virtual-machines/windows/capture-image-resource.md).
+
+3. Sie können jetzt das angepasste Image zum Bereitstellen eines Windows Virtual Desktop-Hostpools verwenden. Informationen dazu, wie Sie einen Hostpool bereitstellen, finden Sie im [Tutorial: Erstellen eines Hostpools mit dem Azure-Portal](create-host-pools-azure-marketplace.md).
+
+## <a name="enable-languages-in-windows-settings-app"></a>Aktivieren von Sprachen in der App für Windows-Einstellungen
+
+Zum Schluss müssen Sie die Sprache der Sprachliste jedes Benutzers hinzufügen, damit er seine bevorzugte Sprache im Menü „Einstellungen“ auswählen kann.
+
+Um sicherzustellen, dass die Benutzer die von Ihnen installierten Sprachen auswählen können, melden Sie sich als Benutzer an, und führen Sie dann das folgende PowerShell-Cmdlet aus, um die installierten Language Packs zum Menü „Sprachen“ hinzuzufügen. Sie können dieses Skript auch als automatisierte Aufgabe einrichten, die aktiviert wird, wenn sich der Benutzer bei seiner Sitzung anmeldet.
+
+```powershell
+$LanguageList = Get-WinUserLanguageList
+$LanguageList.Add("es-es")
+$LanguageList.Add("fr-fr")
+$LanguageList.Add("zh-cn")
+Set-WinUserLanguageList $LanguageList -force
+```
+
+Nachdem ein Benutzer seine Spracheinstellungen geändert hat, muss er sich von seiner Windows Virtual Desktop-Sitzung abmelden und sich erneut anmelden, damit die Änderungen wirksam werden. 
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Wenn Sie etwas über bekannte Probleme bei Language Packs erfahren möchten, finden Sie weitere Informationen unter [Hinzufügen von Sprachpaketen in Windows 10, Version 1803 und höher: Bekannte Probleme](/windows-hardware/manufacture/desktop/language-packs-known-issue).
+
+Wenn Sie weitere Fragen zu Windows 10 Enterprise (mehrere Sitzungen) haben, sehen Sie sich die Informationen unter [Häufig gestellte Fragen](windows-10-multisession-faq.md) an.

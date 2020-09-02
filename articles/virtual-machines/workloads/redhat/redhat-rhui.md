@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 685d337f9e6448f44d34a980ed884026d8a0a168
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 641ac1f6a2cc98e48694c42ec1531f679621640d
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525414"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869217"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat-Updateinfrastruktur für virtuelle On-Demand-Red Hat Enterprise Linux-VMs in Azure
  Mit der [Red Hat-Updateinfrastruktur](https://access.redhat.com/products/red-hat-update-infrastructure) können Cloudanbieter (z. B. Azure) in Red Hat gehostete Repositoryinhalte spiegeln, benutzerdefinierte Repositorys mit Azure-spezifischem Inhalt erstellen und diese für Endbenutzer-VMs zur Verfügung stellen.
@@ -49,7 +49,7 @@ Um eine vollständige Liste der Images anzuzeigen, führen Sie `az vm image list
 
 ### <a name="images-connected-to-non-eus-repositories"></a>Images, die mit Nicht-EUS-Repositorys verbunden sind
 
-Wenn Sie einen virtuellen Computer aus einem RHEL-Image bereitstellen, das mit Nicht-EUS-Repositorys verbunden ist, wird ein Upgrade auf die neueste RHEL-Nebenversion durchgeführt, wenn Sie `sudo yum update` ausführen. Wenn Sie beispielsweise einen virtuellen Computer aus einem RHEL 7.4 PAYG-Image bereitstellen und `sudo yum update` ausführen, erhalten Sie letztlich einen virtuellen RHEL 7.7-Computer (die neueste Nebenversion der RHEL7-Familie).
+Wenn Sie einen virtuellen Computer aus einem RHEL-Image bereitstellen, das mit Nicht-EUS-Repositorys verbunden ist, wird ein Upgrade auf die neueste RHEL-Nebenversion durchgeführt, wenn Sie `sudo yum update` ausführen. Wenn Sie beispielsweise einen virtuellen Computer aus einem RHEL 7.4 PAYG-Image bereitstellen und `sudo yum update` ausführen, erhalten Sie letztlich einen virtuellen RHEL 7.8-Computer (die neueste Nebenversion der RHEL7-Familie).
 
 Images, die mit Nicht-EUS-Repositorys verbunden sind, enthalten keine Nebenversionsnummer in der SKU. Die SKU ist das dritte Element im URN (vollständiger Name des Images). Beispielsweise werden alle folgenden Images verbunden mit Nicht-EUS-Repositorys bereitgestellt:
 

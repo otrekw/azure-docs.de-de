@@ -4,12 +4,12 @@ description: In diesem Artikel wird beschrieben, wie Sie mit dem Backup-Explorer
 ms.reviewer: dcurwin
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.openlocfilehash: f514f899f2db70ecb2924c2e627f3bed28e3dcad
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a50b9ee05be48113221f2a12f968540bd3a00b3b
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092795"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824411"
 ---
 # <a name="monitor-your-backups-with-backup-explorer"></a>Überwachen von Sicherungen mit dem Backup-Explorer
 
@@ -29,7 +29,7 @@ Diese Funktionen werden standardmäßig durch die native Integration mit Azure R
 > * Er ist als operatives Dashboard zum Anzeigen von Informationen zu Ihren Sicherungen in den letzten 7 Tagen (maximal) gedacht.
 > * Backup-Explorer wird in nationalen Clouds derzeit nicht unterstützt.
 > * Derzeit kann die Vorlage für den Backup-Explorer nicht angepasst werden.
-> * Es wird davon abgeraten, benutzerdefinierte Automatisierungen für Azure Resource Graph-Daten zu programmieren.
+> * Benutzerdefinierte Automatisierungen für Azure Resource Graph-Daten sollten nicht programmiert werden.
 > * Derzeit ermöglicht der Sicherungs-Explorer nur die Überwachung von Sicherungen für maximal 1000 Abonnements (mandantenübergreifend).
 
 ## <a name="get-started"></a>Erste Schritte

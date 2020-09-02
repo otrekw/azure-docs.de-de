@@ -9,14 +9,14 @@ manager: dviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 08/25/2020
 ms.custom: seodec18
-ms.openlocfilehash: 149d1eab696ae8419bed79cd2cdc0b066c32060c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 35a2be5c9f418bc423ae56c456db0062677a33c2
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527991"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88856117"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Gewähren von Datenzugriff für eine Umgebung
 
@@ -106,7 +106,7 @@ Führen Sie die folgenden Schritte aus, um einem Azure AD-Benutzer über einen 
 
 1. Der Administrator [teilt die Umgebungs-URL](time-series-insights-parameterized-urls.md) mit seinem Gast.
 
-1. Nachdem sich der Gastbenutzer bei der E-Mail-Adresse angemeldet hat, mit der Sie ihn eingeladen haben, und dieser die Einladung annimmt, wird er an das Azure-Portal weitergeleitet. 
+1. Nachdem sich der Gastbenutzer bei der E-Mail-Adresse angemeldet hat, mit der Sie ihn eingeladen haben, und dieser die Einladung annimmt, wird er an das Azure-Portal weitergeleitet.
 
 1. Der Gast kann nun mithilfe der vom Administrator bereitgestellten Umgebungs-URL auf die freigegebene Umgebung zugreifen. Er kann diese URL für den sofortigen Zugriff in seinen Webbrowser eingeben.
 
@@ -114,14 +114,14 @@ Führen Sie die folgenden Schritte aus, um einem Azure AD-Benutzer über einen 
 
     [![Avatarauswahl auf insights.azure.com](media/data-access/data-access-select-tenant-and-instance.png)](media/data-access/data-access-select-tenant-and-instance.png#lightbox)
 
+    Nachdem der Gastbenutzer den Mandanten des Administrators ausgewählt hat, kann er die freigegebene Azure Time Series Insights-Umgebung auswählen.
 
-    Nachdem der Gastbenutzer den Mandanten des Administrators ausgewählt hat, kann er die freigegebene Azure Time Series Insights-Umgebung auswählen. 
-    
     Er verfügt nun über alle Funktionen, die mit der Rolle verbunden sind, die Sie ihm in **Schritt 5** zugewiesen haben.
 
     [![Gastbenutzer wählt Ihren Azure-Mandanten aus der Dropdownliste aus](media/data-access/data-access-all-capabilities.png)](media/data-access/data-access-all-capabilities.png#lightbox)
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * Lesen Sie [Authentifizierung und Autorisierung](time-series-insights-authentication-and-authorization.md), um sich über die Schritte für die Azure Active Directory App-Registrierung zu informieren.
 
-* Anzeigen [Ihrer Umgebung im Azure Time Series Insights Gen2-Explorer](./time-series-insights-update-explorer.md)
+* Zeigen Sie [Ihre Umgebung im Azure Time Series Insights TSI-Explorer](./time-series-insights-update-explorer.md) an.

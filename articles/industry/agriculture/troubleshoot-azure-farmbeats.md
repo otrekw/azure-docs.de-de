@@ -5,16 +5,16 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 110fef2dcb4c1581d49fcb776276ebd9c4ae2235
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c66d3d6fd3ee0bcba01db61183f40cd3ccf3f39d
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497062"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797937"
 ---
 # <a name="troubleshoot-azure-farmbeats"></a>Problembehandlung in Azure FarmBeats
 
-In diesem Artikel finden Sie Lösungen für häufige Probleme mit Azure FarmBeats. Wenn Sie weitere Hilfe benötigen, wenden Sie sich an unser [Supportforum](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats), oder senden Sie eine E-Mail an farmbeatssupport@microsoft.com.
+In diesem Artikel finden Sie Lösungen für häufige Probleme mit Azure FarmBeats. Wenn Sie weitere Hilfe benötigen, wenden Sie sich an unser [Supportforum für Fragen und Antworten](https://aka.ms/farmbeatssupport), oder senden Sie eine E-Mail an farmbeatssupport@microsoft.com.
 
 > [!NOTE]
   > Wenn Sie FarmBeats im April installiert haben und Ihre Aufträge mit einer leeren Fehlermeldung fehlschlagen, wurde Ihrer Installation möglicherweise kein Batchkontingent zugeteilt, um die Unterstützung für kritische medizinische und Sicherheitsorganisationen zu priorisieren. Weitere Informationen finden Sie [hier](https://azure.microsoft.com/blog/update-2-on-microsoft-cloud-services-continuity/) . Sie müssen anfordern, dass VMs dem Batch-Konto zugeteilt werden, um Aufträge erfolgreich ausführen zu können.

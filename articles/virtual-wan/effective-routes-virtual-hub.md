@@ -7,42 +7,29 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: a7e42ddeb4abacd8707dda4cd558933b0d7a34f4
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 0f5481531d23eeb579dcabe80e028ed7b482b09f
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513705"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762265"
 ---
 # <a name="view-virtual-hub-effective-routes"></a>Anzeigen effektiver Routen eines virtuellen Hubs
 
 Sie können alle Routen Ihres Virtual WAN-Hubs im Azure-Portal anzeigen. In diesem Artikel erfahren Sie die Schritte zum Anzeigen effektiver Routen. Weitere Informationen zum Routing für virtuelle Hubs finden Sie unter [Informationen zum Routing virtueller Hubs](about-virtual-hub-routing.md).
 
-> [!NOTE]
-> Im Azure-Portal werden einige dieser Features möglicherweise noch verteilt und sind bis zur am 17. August beginnenden Woche nicht verfügbar. 
->
-
 ## <a name="select-connections-or-route-tables"></a><a name="routing"></a>Auswählen von Verbindungen oder Routingtabellen
 
 1. Navigieren Sie zu Ihrem virtuellen Hub, und wählen Sie **Routing**aus. Wählen Sie auf der Seite „Routing“ die Option **Effektive Routen** aus.
-1. In der Dropdownliste können Sie **Verbindungstyp** oder eine **Routingtabelle** auswählen. Wenn die Option für Routingtabellen nicht angezeigt wird, ist in diesem virtuellen Hub keine benutzerdefinierte oder Standardroutingtabelle eingerichtet.
-1. In der Dropdownliste für **Verbindungen/Routingtabellen** können Sie zwischen den folgenden Elementen auswählen:
-
-   * VNet-Verbindung
-   * VPN-Standortverbindung
-   * ExpressRoute-Verbindung
-   * Point-to-Site-Verbindung
-   * Routingtabelle
-
-   :::image type="content" source="./media/effective-routes-virtual-hub/routing.png" alt-text="Routing":::
+1. In der Dropdownliste können Sie **Routingtabelle** auswählen. Wenn die Option für Routingtabellen nicht angezeigt wird, ist in diesem virtuellen Hub keine benutzerdefinierte oder Standardroutingtabelle eingerichtet.
 
 ## <a name="view-output"></a><a name="output"></a>Anzeigen der Ausgabe
 
 In der Seitenausgabe sind die folgenden Felder aufgeführt:
 
-* **Präfix:** Adresspräfix, das für die aktuelle Entität bekannt ist.
+* **Präfix:** Adresspräfix, das der aktuellen Entität bekannt ist (vom virtuellen Hubrouter erlernt)
 * **Typ des nächsten Hops:** Kann Virtual Network-Verbindung, VPN_S2S_Gateway, ExpressRouteGateway, Remotehub oder Azure Firewall sein.
-* **Nächster Hop:** Dies ist die IP-Adresse oder einfach ein Link, der den aktuellen Hub impliziert.
+* **Nächster Hop:** Dies ist der Link zur Ressourcen-ID des nächsten Hops oder zeigt einfach den On-Link an, der den aktuellen Hub beinhaltet.
 * **Ursprung:** Die Ressourcen-ID der Routingquelle.
 * **AS-Pfad:** Für das BGP-Attribut „AS-Pfad“ (Autonomes System) werden alle AS-Nummern aufgeführt, die durchlaufen werden müssen, um den Standort zu erreichen, an dem das Präfix für den Pfad angekündigt wird.
 
@@ -54,13 +41,15 @@ Verwenden Sie die Scrollleiste am unteren Rand der Tabelle, um den „AS-Pfad“
 
 | **Präfix** |  **Typ des nächsten Hops** | **Nächster Hop** |  **Routenursprung** |**AS-Pfad** |
 | ---        | ---                | ---          | ---               | ---         |
-| 10.2.0.0/24| VPN_S2S_Gateway |10.1.0.6, 10.1.0.7|/subscriptions/`<sub id>`/resourceGroups/`<resource group name>`/providers/Microsoft.Network/vpnGateways/vpngw| 20000|
+| 10.2.0.0/24| VPN_S2S_Gateway |/subscriptions/`<sub id>`/resourceGroups/`<resource group name>`/providers/Microsoft.Network/vpnGateways/vpngw|/subscriptions/`<sub id>`/resourceGroups/`<resource group name>`/providers/Microsoft.Network/vpnGateways/vpngw| 20000|
 
 **Überlegungen:**
 
 * Wenn in der Ausgabe zum **Abrufen effektiver Routen** 0.0.0.0/0 angegeben ist, bedeutet dies, dass die Route in einer der Routingtabellen vorhanden ist. Wenn diese Route jedoch für das Internet eingerichtet wurde, ist für die Verbindung das zusätzliche Flag **"enableInternetSecurity": true** erforderlich. Die effektive Route wird nicht auf der VM-NIC angezeigt, wenn das Flag „enableInternetSecurity“ der Verbindung FALSE ist.
 
 * Das Feld **Standardroute weitergeben** wird im Azure Virtual WAN-Portal angezeigt, wenn Sie eine Verbindung mit einem virtuellen Netzwerk, eine VPN-Verbindung oder eine ExpressRoute-Verbindung bearbeiten. Dieses Feld gibt das **enableInternetSecurity**-Flag an, das für ExpressRoute- und VPN-Verbindungen immer standardmäßig FALSE ist, für Verbindungen mit virtuellen Netzwerken jedoch TRUE.
+
+* Wenn beim Anzeigen effektiver Routen auf einer VM-NIC der nächste Hop als „Gateway für virtuelle Netzwerke“ angezeigt wird, beinhaltet dies den virtuellen Hubrouter, wenn sich der virtuelle Computer in einer Spoke befindet, die mit einem virtuellen WAN-Hub verbunden ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

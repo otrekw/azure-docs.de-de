@@ -3,12 +3,12 @@ title: Integrieren von Azure Relay in den Azure Private Link-Dienst
 description: Es wird beschrieben, wie Sie Azure Relay in den Azure Private Link-Dienst integrieren.
 ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: a113e52b892a25fd2b12a18d73df443d9a9866f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5c35f9333378a5f0b87956e8a916491d51e3cb3
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317323"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719426"
 ---
 # <a name="integrate-azure-relay-with-azure-private-link-preview"></a>Integrieren von Azure Relay in Azure Private Link (Vorschau)
 Mit Azure Private Link können Sie über einen **privaten Endpunkt** in Ihrem virtuellen Netzwerk auf Azure-Dienste wie Azure Relay, Azure Service Bus, Azure Event Hubs, Azure Storage und Azure Cosmos DB sowie auf in Azure gehostete Kunden-/Partnerdienste zugreifen. Weitere Informationen finden Sie unter [Was ist Azure Private Link? (Vorschau)](../private-link/private-link-overview.md).
@@ -207,7 +207,7 @@ Es gibt vier Möglichkeiten für den Bereitstellungsstatus:
 3. Der Status sollte in **Getrennt** geändert werden. Anschließend wird der Endpunkt nicht mehr in der Liste angezeigt. 
 
 ## <a name="validate-that-the-private-link-connection-works"></a>Überprüfen, ob die Private Link-Verbindung funktioniert
-Sie sollten überprüfen, ob Ressourcen innerhalb desselben Subnetzes des privaten Endpunkts über dessen private IP-Adresse eine Verbindung mit dem Azure Relay-Namespace herstellen.
+Sie sollten überprüfen, ob Ressourcen innerhalb des virtuellen Netzwerks des privaten Endpunkts über dessen private IP-Adresse eine Verbindung mit dem Azure Relay-Namespace herstellen.
 
 Erstellen Sie für diesen Test einen virtuellen Computer. Eine entsprechende Anleitung finden Sie unter [Erstellen eines virtuellen Windows-Computers im Azure-Portal](../virtual-machines/windows/quick-create-portal.md).
 

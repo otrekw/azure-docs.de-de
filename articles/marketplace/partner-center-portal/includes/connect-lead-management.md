@@ -5,18 +5,18 @@ documentationcenter: partner-center-commercial-marketplace
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: include
-ms.date: 08/16/2019
+ms.date: 08/24/2020
 ms.custom: include file
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: b2d4ce0de130942ccd52dc2894d91a4e4f667c99
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7709f26b30d41b932569227b8b6f05b5725dc98f
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326618"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815662"
 ---
-Wenn Sie Ihr Angebot über Partner Center im Marketplace veröffentlichen, müssen Sie das Angebot mit Ihrem CRM-System verbinden. Dadurch können Sie Kundenkontaktinformationen unverzüglich erhalten, wenn ein Kunde Interesse bekundet oder Ihr Produkt bereitstellt.
+Wenn Sie Ihr Angebot über Partner Center im kommerziellen Marketplace veröffentlichen, müssen Sie das Angebot mit Ihrem CRM-System verbinden. So können Sie Kundenkontaktinformationen unverzüglich erhalten, wenn ein Kunde Interesse bekundet oder Ihr Produkt bereitstellt.
 
 1. Wählen Sie ein Leadziel aus, an das wir Kundenleads senden sollen. Die folgenden CRM-Systeme werden unterstützt:
 
@@ -29,7 +29,6 @@ Wenn Sie Ihr Angebot über Partner Center im Marketplace veröffentlichen, müss
     * [Azure-Tabelle](../commercial-marketplace-lead-management-instructions-azure-table.md)
     * [HTTPS-Endpunkt](../commercial-marketplace-lead-management-instructions-https.md)
 
-2. Lesen Sie diese verlinkte Dokumentation zu dem jeweils ausgewählten Leadziel, um zu erfahren, wie das Leadziel so eingerichtet wird, dass Leads von Ihrem Marketplace-Angebot empfangen werden.
-3. Verbinden Sie Ihr Angebot mit dem Leadziel, während Sie das Angebot über Partner Center im Marketplace veröffentlichen. Weitere Informationen hierzu finden Sie in der verlinkten Dokumentation.
-4. Vergewissern Sie sich, dass die Verbindung mit dem Leadziel ordnungsgemäß eingerichtet ist. Nachdem Sie das Leadziel ordnungsgemäß konfiguriert haben, wählen Sie für Ihr Angebot in Partner Center **Veröffentlichen** aus. Wir überprüfen dann die Verbindung und senden Ihnen einen Testlead. Wenn Sie das Angebot vor der Liveschaltung anzeigen, können Sie Ihre Leadverbindung ebenfalls testen, indem Sie selbst versuchen, das Angebot in der Vorschauumgebung zu erwerben.
-5. Stellen Sie sicher, dass die Verbindung mit dem Leadziel immer auf dem neuesten Stand ist, damit keine Leads verloren gehen. Aktualisieren Sie diese Verbindungen unbedingt in Partner Center, sobald etwas auf Ihrer Seite geändert wurde.
+1. Lesen Sie die entsprechende verknüpfte Dokumentation weiter oben, um zu erfahren, wie Sie Ihr Leadziel einrichten und über Leads für Ihre Angebote auf dem kommerziellen Marketplace informiert werden.
+1. Nachdem Sie Ihr Angebot mit dem Leadziel verbunden haben, wählen Sie im Partner Center **Veröffentlichen** für Ihr Angebot aus. Wir überprüfen dann die Verbindung und senden Ihnen einen Testlead. Wenn Sie das Angebot vor der Liveschaltung anzeigen, können Sie Ihre Leadverbindung ebenfalls testen, indem Sie selbst versuchen, das Angebot in der Vorschauumgebung zu erwerben.
+1. Stellen Sie sicher, dass die Verbindung mit dem Leadziel immer auf dem neuesten Stand ist, damit keine Leads verloren gehen. Aktualisieren Sie diese Verbindungen unbedingt, sobald sich etwas geändert hat.

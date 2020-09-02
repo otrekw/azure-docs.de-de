@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: kenwith
-ms.openlocfilehash: fdcea318fcd0796a790818794f6dd7cd949c17cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 09a930778e35897671d10f14a95f3fa48ea5e9eb
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367783"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642417"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Planen der Bereitstellung eines Azure AD-Anwendungsproxys
 
@@ -271,7 +271,7 @@ Die folgenden Funktionen können verwendet werden, um den Azure AD-Anwendungspro
 
 * Risikobasierter bedingter Zugriff: Schützen Sie Ihre Daten vor böswilligen Hackern, indem Sie eine [risikobasierte Richtlinie für bedingten Zugriff](https://www.microsoft.com/cloud-platform/conditional-access) verwenden, die auf alle Apps und Benutzer angewendet werden kann – lokal und in der Cloud.
 
-* Azure AD-Zugriffsbereich: Nachdem Sie Ihren Anwendungsproxydienst bereitgestellt und die Anwendungen sicher veröffentlicht haben, können Sie für Ihre Benutzer einen einfachen Hub einrichten, über den sie alle Anwendungen ermitteln und darauf zugreifen können. Steigern Sie über den [Zugriffsbereich](https://aka.ms/AccessPanelDPDownload) mit Self-Service-Funktionen die Produktivität, z. B. der Möglichkeit zum Anfordern des Zugriffs auf neue Apps und Gruppen oder zum Verwalten des Zugriffs auf diese Ressourcen im Namen von anderen Personen.
+* „Meine Apps“ in Azure AD: Nachdem Sie Ihren Anwendungsproxydienst bereitgestellt und die Anwendungen sicher veröffentlicht haben, können Sie für Ihre Benutzer einen einfachen Hub einrichten, über den sie alle Anwendungen ermitteln und darauf zugreifen können. Steigern Sie über [Meine Apps](https://aka.ms/AccessPanelDPDownload) die Produktivität mit Self-Service-Funktionen, z. B. der Möglichkeit zum Anfordern des Zugriffs auf neue Apps und Gruppen oder zum Verwalten des Zugriffs auf diese Ressourcen im Namen von anderen Personen.
 
 ## <a name="manage-your-implementation"></a>Verwalten Ihrer Implementierung
 

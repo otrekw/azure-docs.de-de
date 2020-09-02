@@ -1,17 +1,17 @@
 ---
 title: Lokales Debuggen von PowerShell Azure Functions
-description: Erfahren Sie, wie Sie mithilfe von PowerShell Funktionen entwickeln können.
+description: Erfahren Sie, wie Sie PowerShell-Funktionen bei lokaler Ausführung debuggen.
 author: tylerleonhardt
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 51edbc18a929f4f954fb1a582a417bc1600d1a6f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6be397631621c727bb8979df2ee8eec3aca43096
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082986"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799365"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>Lokales Debuggen von PowerShell Azure Functions
 
@@ -242,6 +242,16 @@ Die PowerShell-Erweiterung verwendet `Debug-Runspace`, was wiederum auf der `Bre
 Die Azure Functions Runtime führt ein paar Befehle vor dem tatsächlichen Aufrufen Ihres `run.ps1`-Skripts aus, sodass dies dazu führen kann, dass der Debugger innerhalb von `Microsoft.Azure.Functions.PowerShellWorker.psm1` oder `Microsoft.Azure.Functions.PowerShellWorker.psd1` unterbricht.
 
 Sollte es zu dieser Unterbrechung kommen, führen Sie den Befehl `continue` oder `c` aus, um diesen Breakpoint zu überspringen. Danach halten Sie am erwarteten Breakpoint an.
+
+## <a name="troubleshooting"></a>Problembehandlung
+
+Wenn beim Debuggen Probleme auftreten, sollten Sie Folgendes überprüfen:
+
+| Prüfen | Aktion |
+|------|------|
+| Führen Sie `func --version` im Terminal aus. Wenn Sie eine Fehlermeldung erhalten, dass `func` nicht gefunden werden kann, fehlen in der lokalen `path`-Variablen möglicherweise Core Tools (func.exe).| [Installieren Sie die Core Tools neu](functions-run-local.md#v2).|  
+| In Visual Studio Code benötigt das Standardterminal Zugriff auf „func.exe“. Stellen Sie sicher, dass Sie kein Standardterminal verwenden, für das Core Tools nicht installiert sind, wie z. B. das Windows-Subsystem für Linux (WSL).  | Legen Sie die Standardshell in Visual Studio Code entweder auf PowerShell 7 (empfohlen) oder Windows PowerShell 5.1 fest.|
+  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

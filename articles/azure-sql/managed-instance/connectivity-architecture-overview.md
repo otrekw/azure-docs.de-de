@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: 115cf589c6aa0786026f68eff839a7a2ad6aa9ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 059828336288eeadc0567fed060db07e323f885c
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84706204"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761864"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Konnektivitätsarchitektur für Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -89,7 +89,12 @@ Um Kundensicherheit und Verwaltbarkeitsanforderungen zu berücksichtigen, wird S
 
 Mit dienstgestützter Subnetzkonfiguration kann der Benutzer den Datenverkehr (Tabular Data Stream, TDS) vollständig kontrollieren, während SQL Managed Instance die Verantwortung übernimmt, den ununterbrochenen Fluss des Verwaltungsdatenverkehrs sicherzustellen und so eine Vereinbarung zum Servicelevel (Service Level Agreement, SLA) zu erfüllen.
 
-Die dienstgestützte Subnetzkonfiguration baut auf dem Feature [Subnetzdelegierung](../../virtual-network/subnet-delegation-overview.md) für virtuelle Netzwerke auf, um eine automatische Verwaltung der Netzwerkkonfiguration zu ermöglichen und Dienstendpunkte zu aktivieren. Dienstendpunkte können zum Konfigurieren von Firewallregeln für virtuelle Netzwerke für Speicherkonten verwendet werden, in denen Sicherungen und Überwachungsprotokolle gespeichert werden.
+Die dienstgestützte Subnetzkonfiguration baut auf dem Feature [Subnetzdelegierung](../../virtual-network/subnet-delegation-overview.md) für virtuelle Netzwerke auf, um eine automatische Verwaltung der Netzwerkkonfiguration zu ermöglichen und Dienstendpunkte zu aktivieren. 
+
+Dienstendpunkte können zum Konfigurieren von Firewallregeln für virtuelle Netzwerke für Speicherkonten verwendet werden, in denen Sicherungen und Überwachungsprotokolle gespeichert werden. Selbst bei aktivierten Dienstendpunkten wird Kunden empfohlen, [private Links](../../private-link/private-link-overview.md) zu verwenden, die zusätzliche Sicherheit über Dienstendpunkte bieten.
+
+> [!IMPORTANT]
+> Aufgrund der Besonderheiten der Konfiguration der Steuerungsebene würde eine dienstgestützte Subnetzkonfiguration keine Dienstendpunkte in nationalen Clouddiensten ermöglichen. 
 
 ### <a name="network-requirements"></a>Netzwerkanforderungen
 

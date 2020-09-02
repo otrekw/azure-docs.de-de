@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/14/2020
-ms.openlocfilehash: b2e77049d121a11a45a096017f18f1345f6c6884
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/21/2020
+ms.openlocfilehash: 37f0a8d1f70fa96db505973d097febabe99ab7a8
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374847"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749177"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Übersicht über Azure HDInsight 4.0
 
@@ -92,7 +92,7 @@ Es gibt keinen unterstützten Upgradepfad von früheren Versionen von HDInsight 
 * HDInsight 4.0 unterstützt MapReduce für Apache Hive nicht. Verwenden Sie stattdessen Apache Tez. Erfahren Sie mehr über [Apache Tez](https://tez.apache.org/).
 * HDInsight 4.0 unterstützt Apache Storm nicht.
 * HDInsight 4.0 unterstützt den Clustertyp „ML-Dienste" nicht.
-* Hive View ist in HDInsight 4.0 nicht mehr verfügbar.
+* Hive View ist nur für HDInsight 4.0-Cluster mit einer Versionsnummer gleich oder größer als 4.1 verfügbar. Diese Versionsnummer finden Sie unter „Ambari Admin -> Versionen“.
 * Shellinterpreter in Apache Zeppelin wird in Spark- und Interactive Query-Clustern nicht unterstützt.
 * Sie können LLAP in einem Spark-LLAP-Cluster nicht *deaktivieren*. Sie können LLAP nur ausschalten.
 * Azure Data Lake Storage Gen2 kann Jupyter Notebooks nicht in einem Spark-Cluster speichern.

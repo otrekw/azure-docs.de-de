@@ -7,12 +7,12 @@ ms.date: 07/22/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: d8efec0517cd0b4bdcba643a0936b474593d58c4
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 2320bed07f574c096be1883a9d82da7311e92fa7
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475463"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854219"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>Glossar für IoT Plug & Play (Vorschau)
 
@@ -54,6 +54,10 @@ Eine Verbindungszeichenfolge kapselt die Informationen, die zum Herstellen einer
 
 - Geräteverbindungszeichenfolgen ermöglichen es [IoT Plug & Play-Geräten](#iot-plug-and-play-device), eine Verbindung mit den geräteseitigen Endpunkten einer IoT Hub-Instanz herzustellen. Der Clientcode auf einem Gerät verwendet die Verbindungszeichenfolge zum Herstellen einer sicheren Verbindung mit einer IoT Hub-Instanz.
 - IoT Hub-Verbindungszeichenfolgen ermöglichen es Back-End-Lösungen und -Tools, eine sichere Verbindung mit den dienstseitigen Endpunkten einer IoT Hub-Instanz herzustellen. Diese Lösungen und Tools verwalten die IoT Hub-Instanz und die damit verbundenen Geräte.
+
+## <a name="device-certification"></a>Gerätezertifizierung
+
+Mit dem IoT Plug & Play-Gerätezertifizierungsprogramm wird überprüft, ob ein Gerät die IoT Plug & Play-Zertifizierungsanforderungen erfüllt. Sie können ein zertifiziertes Gerät zum öffentlichen [Katalog mit Certified for Azure IoT-Geräten](https://aka.ms/devicecatalog) hinzufügen.
 
 ## <a name="device-model"></a>Gerätemodell
 

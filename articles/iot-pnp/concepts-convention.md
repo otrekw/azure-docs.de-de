@@ -7,12 +7,12 @@ ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 126673391b49f884a51521d462060c425a314667
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: ef29be53e776c4c185ac8430b3340c53ca85d855
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475667"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88856053"
 ---
 # <a name="iot-plug-and-play-conventions"></a>IoT Plug & Play-Konventionen
 
@@ -127,7 +127,7 @@ Das Gerät muss zusätzlich den `{"__t": "c"}`-Marker aufweisen, um anzugeben, d
 
 Das Gerät muss bestätigen, dass es die Eigenschaft erhalten hat, indem es eine gemeldete Eigenschaft sendet. Die gemeldete Eigenschaft muss Folgendes enthalten:
 
-- `value`: der vom Gerät empfangene Wert
+- `value`: den tatsächlichen Wert der Eigenschaft (in der Regel der empfangene Wert, aber das Gerät kann bei Bedarf einen anderen Wert melden).
 - `ac`: einen Bestätigungscode, der einen HTTP-Statuscode enthält
 - `av`: eine Bestätigungsversion, die auf die `$version` der gewünschten Eigenschaft verweist.
 - `ad`: eine optionale Beschreibung der Bestätigung

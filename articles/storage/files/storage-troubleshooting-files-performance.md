@@ -4,15 +4,15 @@ description: Hier finden Sie Informationen zur Behandlung bekannter Leistungspro
 author: gunjanj
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 04/25/2019
+ms.date: 08/24/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 6739e5619a0dcaa940d38571c4a88c4f68971dfe
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: fe1460d4353addff1b8e3095cfe06c1fcb3b7bd0
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009272"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782369"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Troubleshooting bei Azure Files-Leistungsproblemen
 
@@ -20,9 +20,9 @@ In diesem Artikel sind einige allgemeine Probleme aufgeführt, die im Zusammenha
 
 ## <a name="high-latency-low-throughput-and-general-performance-issues"></a>Hohe Latenz, niedriger Durchsatz und allgemeine Leistungsprobleme
 
-### <a name="cause-1-share-experiencing-throttling"></a>Ursache 1: Freigabe, in der Drosselung auftritt
+### <a name="cause-1-share-was-throttled"></a>Ursache 1: Freigabe wurde gedrosselt
 
-Das standardmäßige Premium-Kontingent für eine Freigabe ist 100 GiB, wodurch 100 IOPS-Grundwerte bereitgestellt werden (mit der Möglichkeit, für eine Stunde auf bis zu 300 zu erweitern). Weitere Informationen zu einer Bereitstellung und deren Beziehung zu IOPS finden Sie im Planungshandbuch im Abschnitt [Bereitgestellte Freigaben](storage-files-planning.md#understanding-provisioning-for-premium-file-shares).
+Anforderungen werden gedrosselt, wenn die IOPS-, Eingangs- oder Ausgangsgrenzwerte für eine Dateifreigabe erreicht werden. Informationen zu den Grenzwerten für Standard- und Premium-Dateifreigaben finden Sie unter [Skalierungsziele für Dateifreigaben und Dateien](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#file-share-and-file-scale-targets).
 
 Um zu prüfen, ob Ihre Dateifreigabe gedrosselt wird, können Sie Azure-Metriken im Portal nutzen.
 
@@ -47,7 +47,8 @@ Um zu prüfen, ob Ihre Dateifreigabe gedrosselt wird, können Sie Azure-Metriken
 
 ### <a name="solution"></a>Lösung
 
-- Erhöhen Sie die für die Dateifreigabe bereitgestellte Kapazität, indem Sie ein höheres Kontingent für Ihre Freigabe angeben.
+- Wenn Sie eine Standarddateifreigabe verwenden, aktivieren Sie [große Dateifreigaben](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-large-file-share?tabs=azure-portal) für Ihr Speicherkonto. Große Dateifreigaben unterstützen bis zu 10.000 IOPS pro Freigabe.
+- Wenn Sie eine Premium-Dateifreigabe verwenden, sollten Sie die Größe der bereitgestellten Dateifreigabe erhöhen, um das IOPS-Limit heraufzusetzen. Weitere Informationen finden Sie im Abschnitt [Grundlegendes zur Bereitstellung für Premium-Dateifreigaben](https://docs.microsoft.com/azure/storage/files/storage-files-planning#understanding-provisioning-for-premium-file-shares) im Azure Files-Planungsleitfaden.
 
 ### <a name="cause-2-metadatanamespace-heavy-workload"></a>Ursache 2: Hohe Arbeitsauslastung bezüglich Metadaten/Namespace
 

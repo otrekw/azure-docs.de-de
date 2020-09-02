@@ -16,12 +16,12 @@ ms.date: 11/13/2019
 ms.subservice: app-mgmt
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c633f6d311d052b9f9388a38b17c6459aec4b6cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d32728c1f388e9013b922d1f60d30e65d350bbc1
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84760268"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642434"
 ---
 # <a name="application-management-best-practices"></a>Bewährte Methoden für die Anwendungsverwaltung
 
@@ -33,8 +33,8 @@ Dieser Artikel enthält Empfehlungen und bewährte Methoden für das Verwalten v
 | Durchsuchen des Azure AD-Anwendungskatalogs nach Apps  | Azure AD enthält einen Katalog mit Tausenden von vorab integrierten Anwendungen mit Enterprise Single Sign-On (Einmaliges Anmelden für Unternehmen (SSO)). App-spezifische Einrichtungsanleitungen finden Sie in der [Liste der Tutorials für SaaS-Anwendungen](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/).  | 
 | Verwenden von SAML-basiertem Verbund-SSO  | Verwenden Sie SAML-basiertes Verbund-SSO mit Azure AD anstelle von kennwortbasiertem SSO und ADFS, wenn eine Anwendung dies unterstützt.  | 
 | Verwenden von SHA-256 für die Zertifikatsignatur  | Azure AD verwendet standardmäßig den Algorithmus SHA-256 zum Signieren der SAML-Antwort. Verwenden Sie SHA-256, sofern die Anwendung nicht SHA-1 erfordert. (Weitere Informationen finden Sie unter [Optionen für die Zertifikatsignatur](certificate-signing-options.md) und [Problem bei der Anwendungsanmeldung](application-sign-in-problem-application-error.md).)  | 
-| Erfordern der Benutzerzuweisung  | Standardmäßig können Benutzer auf Ihre Unternehmensanwendungen zugreifen, ohne diesen zugewiesen zu sein. Wenn die Anwendung jedoch Rollen verfügbar macht oder Sie möchten, dass die Anwendung im Zugriffsbereich eines Benutzers angezeigt wird, müssen Sie Benutzerzuweisungen erforderlich machen. (Weitere Informationen finden Sie im [Entwicklerleitfaden zum Integrieren von Anwendungen](developer-guidance-for-integrating-applications.md).)  | 
-| Bereitstellen des Zugriffsbereichs „Meine Apps“ für Ihre Benutzer | Der [Zugriffsbereich](end-user-experiences.md) unter `https://myapps.microsoft.com` ist ein webbasiertes Portal, das Benutzern einen einzigen Einstiegspunkt für die ihnen zugewiesenen cloudbasierten Anwendungen bietet. Wenn zusätzliche Funktionen wie Gruppenverwaltung und Self-Service-Kennwortzurücksetzung hinzugefügt werden, können Benutzer diese im Zugriffsbereich finden. Weitere Informationen finden Sie unter [Planen der Bereitstellung eines Zugriffsbereichs](access-panel-deployment-plan.md).
+| Erfordern der Benutzerzuweisung  | Standardmäßig können Benutzer auf Ihre Unternehmensanwendungen zugreifen, ohne diesen zugewiesen zu sein. Falls die Anwendung jedoch Rollen verfügbar macht oder Sie möchten, dass die Anwendung unter „Meine Apps“ für einen Benutzer angezeigt wird, müssen Sie Benutzerzuweisungen erforderlich machen. (Weitere Informationen finden Sie im [Entwicklerleitfaden zum Integrieren von Anwendungen](developer-guidance-for-integrating-applications.md).)  | 
+| Bereitstellen von „Meine Apps“ für Ihre Benutzer | [Meine Apps](end-user-experiences.md) unter `https://myapps.microsoft.com` ist ein webbasiertes Portal, das Benutzern einen einzigen Einstiegspunkt für die ihnen zugewiesenen cloudbasierten Anwendungen bietet. Wenn zusätzliche Funktionen wie Gruppenverwaltung und Self-Service-Kennwortzurücksetzung hinzugefügt werden, können Benutzer diese in „Meine Apps“ finden. Informationen finden Sie unter [Planen einer Bereitstellung von „Meine Apps“](access-panel-deployment-plan.md).
 | Verwenden der Gruppenzuweisung  | Wenn die Option in Ihrem Abonnement enthalten ist, weisen Sie einer Anwendung Gruppen zu, damit Sie die laufende Zugriffsverwaltung an den Gruppenbesitzer delegieren können. (Weitere Informationen finden Sie im [Entwicklerleitfaden zum Integrieren von Anwendungen](developer-guidance-for-integrating-applications.md).)   | 
 | Einrichten eines Prozesses für das Verwalten von Zertifikaten | Die maximale Lebensdauer eines Signaturzertifikats beträgt drei Jahre. Um Ausfälle aufgrund eines ablaufenden Zertifikats zu verhindern oder zu minimieren, verwenden Sie Rollen und E-Mail-Verteilerlisten, damit sichergestellt werden kann, dass zertifikatbezogene Änderungsbenachrichtigungen genau überwacht werden. |
 

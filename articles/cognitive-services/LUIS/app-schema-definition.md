@@ -2,13 +2,13 @@
 title: App-Schemadefinition
 description: Die LUIS-App wird entweder in `.json` oder `.lu` dargestellt und beinhaltet alle Absichten, Entitäten, Beispieläußerungen, Features und Einstellungen.
 ms.topic: reference
-ms.date: 05/05/2020
-ms.openlocfilehash: dbbeb4eacbe8e07cf080b3a1527ca39c2b9a5991
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 08/22/2020
+ms.openlocfilehash: 816a6c50129f37a55ab3dba72319358e832a6b8b
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684362"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756787"
 ---
 # <a name="app-schema-definition"></a>App-Schemadefinition
 
@@ -55,12 +55,30 @@ Wählen Sie beim Importieren und Exportieren der App entweder `.json` oder `.lu`
   "tokenizerVersion": "1.0.0",
   "patternAnyEntities": [],
   "regex_entities": [],
-  "phraselists": [],
+  "phraselists": [
+  ],
   "regex_features": [],
   "patterns": [],
   "settings": []
 }
 ```
+
+| element                  | Comment                              |
+|--------------------------|--------------------------------------|
+| "hierarchicals": [],     | Veraltet, [Machine Learning-Entitäten](luis-concept-entity-types.md) verwenden.   |
+| "composites": [],        | Veraltet, [Machine Learning-Entitäten](luis-concept-entity-types.md) verwenden. Verweis auf [Entität vom Typ „Composite“](reference-entity-composite.md). |
+| "closedLists": [],       | Verweis auf [Listenentitäten](reference-entity-list.md), wird hauptsächlich von Funktionen auf Entitäten verwendet.    |
+| "versionId": "0.1",      | Version einer LUIS-App.|
+| "name": "example-app",   | Name der LUIS-App. |
+| "desc": "",              | Optionale Beschreibung der LUIS-App.  |
+| "culture": "en-us",      | [Sprache](luis-language-support.md) der App, wirkt sich auf zugrunde liegende Features wie vorgefertigte Entitäten, Machine Learning und Tokenizer aus.  |
+| "tokenizerVersion": "1.0.0", | [Tokenizer](luis-language-support.md#tokenization)  |
+| "patternAnyEntities": [],   | [Entität „Pattern.any“](reference-entity-pattern-any.md)    |
+| "regex_entities": [],    |  [Entität vom Typ „RegEx“](reference-entity-regular-expression.md)   |
+| "phraselists": [],       |  [Begriffslisten (Feature)](luis-concept-feature.md#create-a-phrase-list-for-a-concept)   |
+| "regex_features": [],    |  Veraltet, [Machine Learning-Entitäten](luis-concept-entity-types.md) verwenden. |
+| "patterns": [],          |  [Verbessern der Vorhersagegenauigkeit mit Mustern](luis-concept-patterns.md) mit [Mustersyntax](reference-pattern-syntax.md)   |
+| "settings": []           | [App-Einstellungen](luis-reference-application-settings.md)|
 
 ## <a name="version-6x"></a>Version 6.x
 

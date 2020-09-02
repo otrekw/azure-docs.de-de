@@ -46,11 +46,6 @@
       items:
         - name: Empfangen von Gerätedaten über Azure IoT Hub
           href: device-data-through-iot-hub.md
-- name: Beispiele
-  items:
-    - name: Integrierte Azure Policy-Aktionen
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Anleitungen
   expanded: false
   items:
@@ -82,6 +77,11 @@
           href: configure-cross-origin-resource-sharing.md
         - name: Konfigurieren des Exports
           href: configure-export-data.md
+    - name: Exportieren von Daten
+      expanded: false
+      items:
+        - name: Anonymisierter Export
+          href: export-data.md
     - name: Ermitteln von Identitätsobjekt-IDs
       href: find-identity-object-ids.md
     - name: Aktivieren der Diagnoseprotokollierung in Azure API for FHIR®
@@ -118,3 +118,6 @@
   items:
     - name: Azure CLI
       href: /cli/azure/ext/healthcareapis/healthcareapis
+    - name: Integrierte Azure Policy-Aktionen
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md

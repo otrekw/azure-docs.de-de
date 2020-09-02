@@ -2,14 +2,14 @@
 title: Szenarien für die Verwendung eines virtuellen Netzwerks
 description: Szenarien, Ressourcen und Einschränkungen für die Bereitstellung von Containergruppen in einem virtuellen Azure-Netzwerk.
 ms.topic: article
-ms.date: 04/29/2020
+ms.date: 08/11/2020
 ms.author: danlep
-ms.openlocfilehash: c4e983e7d83e661b4ba50ebe2c6d65bce2f42514
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 0474a5f85829080a89a74195483484c464de5840
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259547"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870764"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>Szenarien und Ressourcen für virtuelle Azure-Netzwerke
 
@@ -42,6 +42,8 @@ Containergruppen, die in einem virtuellen Azure-Netzwerk bereitgestellt werden, 
 * Sie können keine [verwaltete Identität](container-instances-managed-identity.md) in einer Containergruppe verwenden, die in einem virtuellen Netzwerk bereitgestellt wurde.
 * Sie können weder einen [Livetest](container-instances-liveness-probe.md) noch einen [Bereitschaftstest](container-instances-readiness-probe.md) in einer Containergruppe verwenden, die in einem virtuellen Netzwerk bereitgestellt wurde.
 * Aufgrund der zusätzlichen beteiligten Netzwerkressourcen erfolgen Bereitstellungen in einem virtuellen Netzwerk in der Regel langsamer als die Bereitstellung einer Standardcontainerinstanz.
+
+[!INCLUDE [container-instances-restart-ip](../../includes/container-instances-restart-ip.md)]
 
 ## <a name="where-to-deploy"></a>Bereitstellungsort
 
@@ -78,6 +80,7 @@ In der folgenden Abbildung wurden mehrere Containergruppen für ein Subnetz bere
 * Beispiele für die Bereitstellung mithilfe von Azure CLI finden Sie unter [Bereitstellen von Containerinstanzen in einem virtuellen Azure-Netzwerk](container-instances-vnet.md).
 * Informationen zum Bereitstellen eines neuen virtuellen Netzwerks, eines Subnetzes, eines Netzwerkprofils und einer Containergruppe mithilfe einer Resource Manager-Vorlage finden Sie unter [Create an Azure container group with VNet](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet
 ) (Erstellen einer Azure-Containergruppe mit einem virtuellen Netzwerk).
+* Wenn Sie das [Azure-Portal](container-instances-quickstart-portal.md) zum Erstellen einer Containerinstanz verwenden, können Sie auf der Registerkarte **Netzwerk** auch Einstellungen für ein neues oder vorhandenes virtuelles Netzwerk angeben.
 
 
 <!-- IMAGES -->

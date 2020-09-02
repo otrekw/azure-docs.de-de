@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0c66c1fc9a9b93d5b4d3af0440ec3fdc276a9b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d662689d44bcdbd468c882de0679fd60c9ab4f4
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763413"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640445"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Entwickeln von Branchen-Apps für Azure Active Directory
 Dieser Leitfaden bietet eine Übersicht über die Entwicklung von Branchenanwendungen (Line of Business, LoB) für Azure Active Directory (AD) und richtet sich primär an globale Administratoren von Active Directory/Office 365.
@@ -58,7 +58,7 @@ Folgende Schritte sind für globale Administratoren erforderlich, um Entwickler 
 Konfigurieren Sie anwendungsspezifische Zugriffsregeln für Ihre SaaS-Apps. Sie können z.B. MFA anfordern oder den Zugriff ausschließlich für Benutzer in vertrauenswürdigen Netzwerken gewähren. Weitere Informationen dazu finden Sie im Dokument [Konfigurieren von Zugriffsregeln](../conditional-access/app-based-mfa.md).
 
 ## <a name="configure-the-app-to-require-user-assignment-and-assign-users"></a>Konfigurieren der Anwendung für das Erfordern von Benutzerrechten und Zuweisen von Benutzern
-Standardmäßig können Benutzer auf Anwendungen zugreifen, ohne diesen zugewiesen zu sein. Falls die Anwendung jedoch Rollen verfügbar macht oder Sie möchten, dass die Anwendung im Zugriffsbereich eines Benutzers angezeigt wird, sollten Sie Benutzerzuweisungen erforderlich machen.
+Standardmäßig können Benutzer auf Anwendungen zugreifen, ohne diesen zugewiesen zu sein. Falls die Anwendung jedoch Rollen verfügbar macht oder Sie möchten, dass die Anwendung unter „Meine Apps“ für einen Benutzer angezeigt wird, sollten Sie Benutzerzuweisungen erforderlich machen.
 
 Abonnenten von Azure AD Premium oder Enterprise Mobility Suite (EMS) empfehlen wir ausdrücklich die Nutzung von Gruppen. Durch das Zuweisen von Gruppen zu der Anwendung kann die laufende Zugriffsverwaltung an den Besitzer der Gruppe delegiert werden. Sie können eine solche Gruppe selbst erstellen oder die zuständige Person in Ihrer Organisation bitten, die Gruppe mithilfe des vorhandenen Tools für die Gruppenverwaltung zu erstellen.
 

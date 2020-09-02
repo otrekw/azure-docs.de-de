@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/08/2020
+ms.date: 08/24/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 556d3df41b7ee66bfb2b32b8a566d7172f45e313
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 407853152d4f18d8f8daacd8ef7d19c878384076
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88034463"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871155"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage-Redundanz
 
@@ -24,7 +24,7 @@ Azure Storage speichert immer mehrere Kopien Ihrer Daten, damit sie vor geplante
 Berücksichtigen Sie bei der Entscheidung, welche Redundanzoption für Ihr Szenario am besten geeignet ist, die Kompromisse zwischen geringeren Kosten und höherer Verfügbarkeit sowie der Dauerhaftigkeit. Anhand der folgenden Faktoren können Sie bestimmen, welche Redundanzoption Sie auswählen sollten:  
 
 - Wie werden Ihre Daten in der primären Region repliziert?
-- Werden Ihre Daten an einen zweiten Standort repliziert, der geografisch von der primären Region entfernt ist, um Schutz vor regionalen Ausfällen zu erreichen?
+- Werden Ihre Daten in eine zweite Region repliziert, die geografisch von der primären Region entfernt ist, um Schutz vor regionalen Ausfällen zu erreichen?
 - Benötigt Ihre Anwendung Lesezugriff auf die replizierten Daten in der sekundären Region, falls die primäre Region aus irgendeinem Grund nicht verfügbar ist?
 
 ## <a name="redundancy-in-the-primary-region"></a>Redundanz in der primären Region
@@ -64,8 +64,8 @@ In der folgenden Tabelle wird gezeigt, welche Typen von Speicherkonten ZRS in we
 | Speicherkontotyp | Unterstützte Regionen | Unterstützte Dienste |
 |--|--|--|
 | Universell v2<sup>1</sup> | Asien, Südosten<br /> Australien (Osten)<br /> Europa, Norden<br />  Europa, Westen<br /> Frankreich, Mitte<br /> Japan, Osten<br /> Südafrika, Norden<br /> UK, Süden<br /> USA, Mitte<br /> USA, Osten<br /> USA (Ost 2)<br /> USA, Westen 2 | Blockblobs<br /> Seitenblobs<sup>2</sup><br /> Dateifreigaben (Standard)<br /> Tabellen<br /> Warteschlangen<br /> |
-| BlockBlobStorage<sup>1</sup> | Asien, Südosten<br /> Australien (Osten)<br /> Europa, Westen<br /> USA, Osten | Nur Premium-Blockblobs |
-| FileStorage | Asien, Südosten<br /> Australien (Osten)<br /> Europa, Westen<br /> USA, Osten | Nur Premium-Dateifreigaben |
+| BlockBlobStorage<sup>1</sup> | Asien, Südosten<br /> Australien (Osten)<br /> Europa, Norden<br /> Europa, Westen<br /> USA, Osten <br /> USA, Westen 2| Nur Premium-Blockblobs |
+| FileStorage | Asien, Südosten<br /> Australien (Osten)<br /> Europa, Norden<br /> Europa, Westen<br /> USA, Osten <br /> USA, Westen 2 | Nur Premium-Dateifreigaben |
 
 <sup>1</sup> Die Archivspeicherebene wird derzeit nicht für ZRS-Konten unterstützt.<br />
 <sup>2</sup> Speicherkonten, die verwaltete Azure-Datenträger für virtuelle Computer enthalten, verwenden immer LRS. Für nicht verwaltete Azure-Datenträger sollte ebenfalls LRS verwendet werden. Es ist möglich, ein Speicherkonto für nicht verwaltete Azure-Datenträger zu erstellen, das GRS verwendet. Dies wird jedoch aufgrund von potenziellen Konsistenzproblemen mit der asynchronen Georeplikation nicht empfohlen. Weder verwaltete noch nicht verwaltete Datenträger unterstützen ZRS oder GZRS. Weitere Informationen zu verwalteten Datenträgern finden Sie unter [Azure Managed Disks – Preise](https://azure.microsoft.com/pricing/details/managed-disks/).
@@ -83,9 +83,9 @@ Azure Storage bietet zwei Optionen für das Kopieren Ihrer Daten in eine sekund�
 - **Georedundanter Speicher (GRS):** Die Daten werden synchron dreimal innerhalb eines einzelnen physischen Standorts in der primären Region mit LRS kopiert. Anschließend werden die Daten asynchron an einen einzelnen physischen Standort in der sekundären Region kopiert.
 - **Geozonenredundanter Speicher (GZRS):** Die Daten werden mit ZRS synchron über drei Azure-Verfügbarkeitszonen hinweg in der primären Region kopiert. Anschließend werden die Daten asynchron an einen einzelnen physischen Standort in der sekundären Region kopiert.
 
-Der Hauptunterschied zwischen GRS und GZRS besteht in der Art, wie Daten in der primären Region repliziert werden. Am sekundären Standort werden die Daten immer dreimal synchron mithilfe von LRS repliziert. LRS in der sekundären Region schützt Ihre Daten vor Hardwareausfällen.
+Der Hauptunterschied zwischen GRS und GZRS besteht in der Art, wie Daten in der primären Region repliziert werden. In der sekundären Region werden die Daten immer dreimal synchron mithilfe von LRS repliziert. LRS in der sekundären Region schützt Ihre Daten vor Hardwareausfällen.
 
-Mit GRS oder GZRS sind die Daten am sekundären Standort nicht für Lese- oder Schreibzugriffe verfügbar, sofern kein Failover in die sekundäre Region ausgeführt wird. Für den Lesezugriff am sekundären Standort konfigurieren Sie Ihr Speicherkonto für die Verwendung von georedundantem Speicher mit Lesezugriff (RA-GRS) oder geozonenredundantem Speicher mit Lesezugriff (RA-GZRS). Weitere Informationen finden Sie unter [Lesezugriff auf Daten in der sekundären Region](#read-access-to-data-in-the-secondary-region).
+Mit GRS oder GZRS sind die Daten in der sekundären Region nicht für Lese- oder Schreibzugriffe verfügbar, sofern kein Failover in die sekundäre Region ausgeführt wird. Für den Lesezugriff in der sekundären Region konfigurieren Sie Ihr Speicherkonto für die Verwendung von georedundantem Speicher mit Lesezugriff (RA-GRS) oder geozonenredundantem Speicher mit Lesezugriff (RA-GZRS). Weitere Informationen finden Sie unter [Lesezugriff auf Daten in der sekundären Region](#read-access-to-data-in-the-secondary-region).
 
 Wenn die primäre Region nicht verfügbar ist, können Sie ein Failover in die sekundäre Region ausführen. Nachdem das Failover abgeschlossen ist, wird die sekundäre Region zur primären Region, und Sie können wieder Daten lesen und schreiben. Weitere Informationen zur Notfallwiederherstellung und zum Failover in die sekundäre Region finden Sie unter [Notfallwiederherstellung und Speicherkontofailover](storage-disaster-recovery-guidance.md).
 

@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Probleme bei der Systemstat
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
-ms.openlocfilehash: e588ce4e3458634be32a7129b40906c98fc02ac0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 56593176e705176b87cf955eb116909c1912e723
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513847"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824269"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Problembehandlung bei der Systemstatussicherung
 
@@ -17,7 +17,7 @@ In diesem Artikel werden Lösungen für Probleme beschrieben, die beim Verwenden
 
 ## <a name="basic-troubleshooting"></a>Grundlegendes zur Problembehandlung
 
-Wir empfehlen, dass Sie die nachstehende Prüfung durchführen, bevor Sie mit der Problembehandlung der Systemstatussicherung beginnen:
+Sie sollten unbedingt die folgenden Prüfungsschritte durchführen, bevor Sie mit der Problembehandlung der Systemstatussicherung beginnen:
 
 - [Sicherstellen, dass der Microsoft Azure Recovery Services-Agent (MARS) auf dem neuesten Stand ist](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
 - [Sicherstellen, dass zwischen dem MARS-Agent und Azure Netzwerkkonnektivität besteht](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
@@ -42,7 +42,7 @@ Wir empfehlen, dass Sie die nachstehende Prüfung durchführen, bevor Sie mit de
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie mit der Problembehandlung bei der Systemstatussicherung mit Azure Backup beginnen, müssen Sie die folgende Voraussetzungen überprüfen.  
+Bevor Sie mit der Problembehandlung bei der Systemstatussicherung mit Azure Backup beginnen, müssen Sie die folgenden Voraussetzungen überprüfen.  
 
 ### <a name="verify-windows-server-backup-is-installed"></a>Überprüfen, ob Windows Server-Sicherung installiert ist
 
@@ -77,12 +77,12 @@ Führen Sie die folgenden Schritte aus, um Windows Server-Sicherung mithilfe von
 3. Wählen Sie einen Server aus dem Serverpool aus, und klicken Sie auf **Weiter**. Übernehmen Sie für „Serverrollen“ die Standardauswahl, und klicken Sie auf **Weiter**.
 4. Wählen Sie auf der Registerkarte **Features** das Feature **Windows Server-Sicherung** aus, und klicken Sie auf **Weiter**.
 
-    ![Features](./media/backup-azure-system-state-troubleshoot/features.png)
+    ![Auswählen des Fensters „Features“](./media/backup-azure-system-state-troubleshoot/features.png)
 
 5. Klicken Sie auf der Registerkarte **Bestätigung** auf **Installieren**, um den Installationsvorgang zu starten.
 6. Auf der Registerkarte **Ergebnisse** wird angezeigt, dass die Installation des Features „Windows Server-Sicherung“ auf Ihrem Windows Server-Computer erfolgreich abgeschlossen wurde.
 
-    ![result](./media/backup-azure-system-state-troubleshoot/results.jpg)
+    ![Ergebnisse der Installation](./media/backup-azure-system-state-troubleshoot/results.jpg)
 
 ### <a name="system-volume-information-permission"></a>Berechtigung für „System Volume Information“
 

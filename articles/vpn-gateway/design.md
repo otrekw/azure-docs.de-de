@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 06/01/2020
 ms.author: cherylmc
-ms.openlocfilehash: d7b9077af50115e912415d784dc98ace081c0c88
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: d0bcd0608796545a4982f72f276399d5f692e765
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84302312"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852709"
 ---
 # <a name="vpn-gateway-design"></a>VPN Gateway-Entwurf
 
@@ -26,6 +26,8 @@ Wichtig: Für VPN-Gateway-Verbindungen sind verschiedene Konfigurationen verfüg
 Eine VPN Gateway-S2S-Verbindung (Site-to-Site) ist eine Verbindung über einen VPN-Tunnel vom Typ „IPsec/IKE“ (IKEv1 oder IKEv2). S2S-Verbindungen können für standortübergreifende Konfigurationen und Hybridkonfigurationen verwendet werden. Für S2S-Verbindungen wird ein lokales VPN-Gerät benötigt, dem eine öffentliche IP-Adresse zugewiesen ist. Informationen zum Auswählen eines VPN-Geräts finden Sie unter [Häufig gestellte Fragen zum VPN-Gateway](vpn-gateway-vpn-faq.md#s2s).
 
 ![Beispiel für Site-to-Site-Verbindung per Azure VPN Gateway](./media/design/vpngateway-site-to-site-connection-diagram.png)
+
+VPN Gateway kann im Aktiv/Standby-Modus mit einer öffentlichen IP-Adresse oder im Aktiv/Aktiv-Modus mit zwei öffentlichen IP-Adressen konfiguriert werden. Im Aktiv/Standby-Modus ist ein IPSec-Tunnel aktiv, und der andere Tunnel befindet sich im Standbymodus. Bei dieser Konfiguration fließt der Datenverkehr durch den aktiven Tunnel, und wenn ein Problem mit diesem Tunnel auftritt, schaltet der Datenverkehr auf den Standbytunnel um. Das Einrichten von VPN Gateway im Aktiv/Aktiv-Modus wird *empfohlen*, da hier beide IPSec-Tunnel gleichzeitig aktiv sind und Daten gleichzeitig durch beide Tunnel fließen. Ein zusätzlicher Vorteil des Aktiv/Aktiv-Modus ist, dass Kunden ein höheren Durchsatz geboten wird.
 
 ### <a name="multi-site"></a><a name="Multi"></a>Multi-Site
 

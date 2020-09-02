@@ -4,12 +4,12 @@ description: Lernen Sie die verschiedenen Methoden kennen, mit denen Code in Azu
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: bf8944952abf83837d05019bd783bec2fd43cefe
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 3865e6906b39633e14c86619770188f1c73fed8e
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905124"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641958"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Bereitstellungstechnologien in Azure Functions
 
@@ -203,6 +203,12 @@ Die folgende Tabelle gibt Aufschluss über die Betriebssysteme und Programmiersp
 | TypeScript (Node.js) | | | | | | |
 
 <sup>*</sup> Die Portalbearbeitung steht nur für HTTP-Trigger und Trigger mit Timer zur Verfügung (für Functions unter Linux mit dem Tarif „Premium“ oder „Dedicated“).
+
+## <a name="deployment-behaviors"></a>Bereitstellungsverhalten
+
+Wenn Sie eine Bereitstellung durchführen, können alle vorhandenen Ausführungen abgeschlossen oder zeitlich begrenzt werden. Danach wird der neue Code geladen, um mit der Verarbeitung von Anforderungen zu beginnen.
+
+Wenn Sie mehr Kontrolle über diesen Übergang benötigen, sollten Sie Bereitstellungsslots verwenden.
 
 ## <a name="deployment-slots"></a>Bereitstellungsslots
 

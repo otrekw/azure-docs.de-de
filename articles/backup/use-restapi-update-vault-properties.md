@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie die Konfiguration eines Tre
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: 1f0fee505443b15ba2ea97710efc220ef05df738
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3ee2d57b5589daa756020ebb787a5400ed244506
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513114"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890041"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>Aktualisieren von Konfigurationen eines Azure Recovery Services-Tresors mithilfe der REST-API
 
@@ -17,9 +17,9 @@ In diesem Artikel erfahren Sie, wie Sie sicherungsbezogene Konfigurationen in ei
 
 ## <a name="soft-delete-state"></a>Zustand des vorläufigen Löschens
 
-Das Löschen von Sicherungen eines geschützten Elements ist ein kritischer Vorgang, der überwacht werden muss. Zum Schutz vor versehentlicher Löschung verfügt der Azure Recovery Services-Tresor über eine Funktion für vorläufiges Löschen. Diese Funktion sorgt dafür, dass Kunden gelöschte Sicherungen innerhalb eines bestimmten Zeitfensters nach der Löschung wiederherstellen können.
+Das Löschen von Sicherungen eines geschützten Elements ist ein kritischer Vorgang, der überwacht werden muss. Zum Schutz vor versehentlicher Löschung verfügt der Azure Recovery Services-Tresor über eine Funktion für vorläufiges Löschen. Diese Funktion ermöglicht Ihnen, gelöschte Sicherungen ggf. innerhalb eines bestimmten Zeitfensters nach der Löschung wiederherstellen können.
 
-Es gibt jedoch Szenarien, in denen diese Funktion nicht erforderlich ist. Ein Azure Recovery Services-Tresor, der Sicherungselemente enthält, kann nicht gelöscht werden (auch dann nicht, wenn sich die Elemente im Zustand „Vorläufig gelöscht“ befinden). Dies kann problematisch sein, wenn der Tresor umgehend gelöscht werden muss. Ein Beispiel: Bei Bereitstellungsvorgängen werden die erstellten Ressourcen häufig im gleichen Workflow bereinigt. Eine Bereitstellung kann einen Tresor erstellen, Sicherungen für ein Element konfigurieren, eine Testwiederherstellung durchführen und anschließend die Sicherungselemente und den Tresor wieder löschen. Wenn der Tresor nicht gelöscht werden kann, ist unter Umständen die gesamte Bereitstellung nicht erfolgreich. Die umgehende Löschung kann nur durch Deaktivieren des vorläufigen Löschens sichergestellt werden.
+Es gibt jedoch Szenarien, in denen diese Funktion nicht erforderlich ist. Ein Azure Recovery Services-Tresor, der Sicherungselemente enthält, kann auch dann nicht gelöscht werden, wenn sich die Elemente im Zustand „Vorläufig gelöscht“ befinden. Dies kann problematisch sein, wenn der Tresor umgehend gelöscht werden muss. Ein Beispiel: Bei Bereitstellungsvorgängen werden die erstellten Ressourcen häufig im gleichen Workflow bereinigt. Eine Bereitstellung kann einen Tresor erstellen, Sicherungen für ein Element konfigurieren, eine Testwiederherstellung durchführen und anschließend die Sicherungselemente und den Tresor wieder löschen. Wenn der Tresor nicht gelöscht werden kann, ist unter Umständen die gesamte Bereitstellung nicht erfolgreich. Die umgehende Löschung kann nur durch Deaktivieren des vorläufigen Löschens sichergestellt werden.
 
 Sie müssen sich je nach Szenario genau überlegen, ob Sie das vorläufige Löschen für einen bestimmten Tresor deaktivieren möchten. Weitere Informationen finden Sie im [Artikel zu vorläufigem Löschen](backup-azure-security-feature-cloud.md).
 
@@ -65,7 +65,7 @@ Nach Übermittlung der GET-Anforderung wird eine Antwort vom Typ „200“ (erfo
 
 ### <a name="update-soft-delete-state-using-rest-api"></a>Aktualisieren des Zustands des vorläufigen Löschens mithilfe der REST-API
 
-Verwenden Sie den folgenden *PATCH*-Vorgang, um den Zustand des vorläufigen Löschens des Recovery Services-Tresors mithilfe der REST-API zu aktualisieren:
+Verwenden Sie den folgenden *PATCH*-Vorgang, um den Zustand des vorläufigen Löschens des Recovery Services-Tresors mithilfe der REST-API zu aktualisieren.
 
 ```http
 PATCH https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-05-13
@@ -103,7 +103,7 @@ Im folgenden Beispiel wird der Zustand des vorläufigen Löschens in „Disabled
 }
 ```
 
-#### <a name="responses"></a>Antworten
+#### <a name="responses-for-the-patch-operation"></a>Antworten für den Patch-Vorgang
 
 Die erfolgreiche Antwort für den PATCH-Vorgang sieht wie folgt aus:
 
@@ -111,7 +111,7 @@ Die erfolgreiche Antwort für den PATCH-Vorgang sieht wie folgt aus:
 |---------|---------|---------|
 |200 – OK     |   [BackupResourceVaultConfig](/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 
-##### <a name="example-response"></a>Beispielantwort
+##### <a name="example-response-for-the-patch-operation"></a>Beispielantwort für den PATCH-Vorgang
 
 Nach Übermittlung der PATCH-Anforderung wird eine Antwort vom Typ „200“ (erfolgreich) zurückgegeben.
 

@@ -949,6 +949,8 @@
           href: ./disk-encryption.md
         - name: LDAP-Synchronisierung in Ranger und Apache Ambari
           href: ./domain-joined/ldap-sync.md
+        - name: Doppelte Verschlüsselung während der Übertragung
+          href: ./domain-joined/encryption-in-transit.md
     - name: Anleitungen
       items:
         - name: Verwenden des Identitätsbrokers für die Verwaltung von Anmeldeinformationen

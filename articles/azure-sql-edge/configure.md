@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/28/2020
-ms.openlocfilehash: 0cb2eed0895c10f649facaa184a5f9f9ea158aa5
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 722d33e76b6009a44811dfcb8a3238b042ec6918
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87551981"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816880"
 ---
 # <a name="configure-azure-sql-edge-preview"></a>Konfigurieren von Azure SQL Edge (Vorschau)
 
@@ -157,6 +157,60 @@ Frühere CTP-Versionen von Azure SQL Edge waren so konfiguriert, dass Sie als ro
   - Aktualisieren Sie die Optionen zum Erstellen von Containern, um das `*"User": "user_name | user_id*`-Schlüssel-Wert-Paar unter den Optionen zum Erstellen von Containern hinzuzufügen. Ersetzen Sie „user_name“ oder „user_id“ durch einen tatsächlichen „user_name“ oder eine tatsächliche „user_id“ von Ihrem Docker-Host. 
   - Ändern Sie die Berechtigungen für das Verzeichnis/Bereitstellungsvolume.
 
+## <a name="persist-your-data"></a> Beibehalten von Daten
+
+Die Azure SQL Edge-Konfigurationsänderungen und -Datenbankdateien werden im Container beibehalten, auch wenn Sie den Container mit `docker stop` und `docker start` neu starten. Wenn Sie den Container jedoch mit `docker rm` entfernen, werden sämtliche Inhalte des Containers gelöscht, einschließlich Azure SQL Edge und Ihrer Datenbanken. Im folgenden Abschnitt wird erläutert, wie **Datenvolumes** verwendet werden, um Ihre Datenbankdateien beizubehalten, auch wenn die zugeordneten Container gelöscht werden.
+
+> [!IMPORTANT]
+> Für Azure SQL Edge ist es wichtig, sich mit der Datenpersistenz in Docker auseinanderzusetzen. Weitere Informationen finden Sie in der Docker-Dokumentation unter [Verwalten von Daten in Docker-Containern](https://docs.docker.com/engine/tutorials/dockervolumes/).
+
+### <a name="mount-a-host-directory-as-data-volume"></a>Einbinden eines Hostverzeichnisses als Datenvolume
+
+Die erste Option besteht darin, ein Verzeichnis auf dem Host als Datenvolume in Ihrem Container einzubinden. Verwenden Sie hierzu den Befehl `docker run` mit dem Flag `-v <host directory>:/var/opt/mssql`. Dadurch können die Daten zwischen den Containerausführungen wiederhergestellt werden.
+
+```bash
+docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>' -p 1433:1433 -v <host directory>/data:/var/opt/mssql/data -v <host directory>/log:/var/opt/mssql/log -v <host directory>/secrets:/var/opt/mssql/secrets -d mcr.microsoft.com/azure-sql-edge-developer
+```
+
+```PowerShell
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>" -p 1433:1433 -v <host directory>/data:/var/opt/mssql/data -v <host directory>/log:/var/opt/mssql/log -v <host directory>/secrets:/var/opt/mssql/secrets -d mcr.microsoft.com/azure-sql-edge-developer
+```
+
+Mit dieser Methode können Sie die Dateien auch außerhalb von Docker auf dem Host freigeben und anzeigen.
+
+> [!IMPORTANT]
+> Die Hostvolumezuordnung für **Docker unter Windows** unterstützt derzeit nicht die Zuordnung des kompletten `/var/opt/mssql`-Verzeichnisses. Sie können dem Hostcomputer jedoch ein Unterverzeichnis wie `/var/opt/mssql/data` zuordnen.
+
+> [!IMPORTANT]
+> Die Hostvolumezuordnung für **Docker unter Mac** mit dem Azure SQL Edge-Image wird derzeit nicht unterstützt. Verwenden Sie stattdessen Datenvolumecontainer. Diese Einschränkung gilt nur für das Verzeichnis `/var/opt/mssql`. Das Lesen aus einem bereitgestellten Verzeichnis funktioniert ordnungsgemäß. Sie können beispielsweise ein Hostverzeichnis mithilfe von-v auf einem Mac einbinden und eine Sicherung aus einer BAK-Datei wiederherstellen, die sich auf dem Host befindet.
+
+### <a name="use-data-volume-containers"></a>Verwenden von Datenvolumecontainern
+
+Die zweite Option besteht in der Verwendung eines Datenvolumecontainers. Sie können einen Datenvolumecontainer erstellen, indem Sie mit dem Parameter `-v` einen Volumenamen anstelle eines Hostverzeichnisses angeben. Im folgenden Beispiel wird ein freigegebenes Datenvolume mit dem Namen **sqlvolume** erstellt.
+
+```bash
+docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>' -p 1433:1433 -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/azure-sql-edge-developer
+```
+
+```PowerShell
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>" -p 1433:1433 -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/azure-sql-edge-developer
+```
+
+> [!NOTE]
+> Dieses Verfahren zum impliziten Erstellen eines Datenvolumes im run-Befehl funktioniert nicht mit älteren Docker-Versionen. Wenden Sie in diesem Fall die expliziten Schritte an, die in der Docker-Dokumentation zum [Erstellen und Einbinden eines Datenvolumecontainers](https://docs.docker.com/engine/tutorials/dockervolumes/#creating-and-mounting-a-data-volume-container) beschrieben werden.
+
+Auch wenn Sie diesen Container anhalten und entfernen, bleibt das Datenvolume erhalten. Sie können es mit dem Befehl `docker volume ls` anzeigen.
+
+```bash
+docker volume ls
+```
+
+Wenn Sie dann einen weiteren Container mit dem gleichen Volumenamen erstellen, verwendet der neue Container die gleichen Azure SQL Edge-Daten, die auch im Volume enthalten sind.
+
+Verwenden Sie den Befehl `docker volume rm`, um einen Datenvolumecontainer zu entfernen.
+
+> [!WARNING]
+> Wenn Sie den Datenvolumecontainer löschen, werden alle Azure SQL Edge-Daten im Container *dauerhaft* gelöscht.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

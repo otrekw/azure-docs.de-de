@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/08/2020
-ms.openlocfilehash: 53f151c63c85e958aad3bd0eaf16c50294bf250f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 437c2b8e42ed5128cc716eee23b8702ec012b481
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287219"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890913"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Was ist ein Azure Machine Learning-Arbeitsbereich?
 
@@ -34,7 +34,7 @@ In dem Diagramm sind die folgenden Komponenten eines Arbeitsbereichs dargestellt
 
 + Ein Arbeitsbereich kann [Azure Machine Learning-Compute-Instanzen](concept-compute-instance.md) enthalten. Diese sind Cloudressourcen, die mit der Python-Umgebung konfiguriert sind, die zum Ausführen von Azure Machine Learning erforderlich ist.
 
-+ [Benutzerrollen](how-to-assign-roles.md) ermöglichen es Ihnen, Ihren Arbeitsbereich für andere Benutzer, Teams oder Projekte freizugeben.
++ [Benutzerrollen](how-to-assign-roles.md) ermöglichen Ihnen, Ihren Arbeitsbereich für andere Benutzer, Teams oder Projekte freizugeben.
 + [Computeziele](concept-azure-machine-learning-architecture.md#compute-targets) werden verwendet, um Ihre Experimente auszuführen.
 + Wenn Sie den Arbeitsbereich erstellen, werden auch [zugeordnete Ressourcen](#resources) für Sie erstellt.
 + [Experimente](concept-azure-machine-learning-architecture.md#experiments) sind Trainingsläufe (Trainingsausführungen), mit denen Sie Ihre Modelle erstellen.  
@@ -89,7 +89,7 @@ Sie können auch die folgenden Arbeitsbereichsverwaltungsaufgaben ausführen:
 
 ## <a name="create-a-workspace"></a><a name='create-workspace'></a> Erstellen eines Arbeitsbereichs
 
-Wenn Sie einen Arbeitsbereich erstellen, entscheiden Sie, ob Sie ihn mit [Basic oder Enterprise Edition](overview-what-is-azure-ml.md#sku) erstellen. Die-Edition bestimmt die im Arbeitsbereich verfügbaren Features (Funktionen). Neben anderen Features bietet die Enterprise Edition Ihnen Zugriff auf [Azure Machine Learning Designer](concept-designer.md) und die Studio-Version zum Erstellen von [automatisierten Machine Learning-Experimenten](tutorial-first-experiment-automated-ml.md).  Weitere Details und Preisinformationen finden Sie unter [Azure Machine Learning – Preise](https://azure.microsoft.com/pricing/details/machine-learning/).
+Wenn Sie einen Arbeitsbereich erstellen, entscheiden Sie, ob Sie ihn mit [Basic oder Enterprise Edition](overview-what-is-azure-ml.md#sku) erstellen. Die-Edition bestimmt die im Arbeitsbereich verfügbaren Features (Funktionen). Neben anderen Features bietet die Enterprise Edition Ihnen Zugriff auf [Azure Machine Learning Designer](concept-designer.md) und die Studio-Version zum Erstellen von [automatisierten Machine Learning-Experimenten](tutorial-first-experiment-automated-ml.md).  Weitere Informationen, auch zu den Preisen, finden Sie unter [Machine Learning Studio – Preise](https://azure.microsoft.com/pricing/details/machine-learning/).
 
 Es gibt mehrere Möglichkeiten zum Erstellen eines Arbeitsbereichs:  
 
@@ -117,8 +117,16 @@ Wenn Sie einen neuen Arbeitsbereich erstellen, werden darin automatisch mehrere 
 > [!NOTE]
 > Neben dem Erstellen neuer Versionen können Sie auch vorhandene Azure-Dienste verwenden.
 
+### <a name="azure-storage-account"></a>Azure-Speicherkonto
+
+Das standardmäßig mit dem Arbeitsbereich erstellte Azure Storage-Konto ist ein Universell v1-Konto. Sie können dieses nach dem Erstellen des Arbeitsbereichs auf Universell v2 aktualisieren. Befolgen Sie hierzu die Schritte unter [Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Allgemein v2“](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
+
 > [!IMPORTANT]
-> Wenn Sie ein vorhandenes Azure Storage-Konto verwenden möchten, darf es sich nicht um ein Premium-Konto (Premium_LRS oder Premium_GRS) handeln. Es darf auch keinen hierarchischen Namespace aufweisen (mit Azure Data Lake Storage Gen2 verwendet). Weder Storage Premium noch hierarchische Namespaces werden mit dem _Standard_speicherkonto des Arbeitsbereichs unterstützt. Sie können Storage Premium noch hierarchische Namespaces mit _nicht standardmäßigen_ Speicherkonten verwenden.
+> Aktivieren Sie keinen hierarchischen Namespace für das Speicherkonto, nachdem Sie ein Upgrade auf Universell v2 ausgeführt haben.
+
+Wenn Sie ein vorhandenes Azure Storage-Konto verwenden möchten, darf es sich nicht um ein Premium-Konto (Premium_LRS oder Premium_GRS) handeln. Es darf auch keinen hierarchischen Namespace aufweisen (mit Azure Data Lake Storage Gen2 verwendet). Weder Storage Premium noch hierarchische Namespaces werden mit dem _Standardspeicherkonto_ des Arbeitsbereichs unterstützt. Sie können Storage Premium noch hierarchische Namespaces mit _nicht standardmäßigen_ Speicherkonten verwenden.
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,14 +1,14 @@
 ---
 title: Ausführen einer Notfallwiederherstellung virtueller Computer
-description: In diesem Artikel wird gezeigt, wie Sie eine Notfallwiederherstellung virtueller Computer mithilfe von AVS durchführen.
+description: In diesem Artikel wird gezeigt, wie Sie eine Notfallwiederherstellung virtueller Computer mithilfe der Azure-VMware-Lösung durchführen.
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 5ccaa009c8e3e059597636a8bb78cc3bd255fe68
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76a417b9ba00c4c0e6e958e5a04d19aecfe24563
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84749948"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752267"
 ---
 # <a name="complete-a-disaster-recovery-of-virtual-machines-using-azure-vmware-solution"></a>Ausführen einer Notfallwiederherstellung virtueller Computer mithilfe von Azure VMware Solution
 
@@ -46,7 +46,7 @@ Navigieren Sie zum Bereich **Disaster Recovery** (Notfallwiederherstellung), und
 
 :::image type="content" source="./media/disaster-recovery/protect-virtual-machine.png" alt-text="Auswählen von „Protect VMs“" border="true":::
 
-Wählen Sie im Fenster, das geöffnet wird, die Quell- und Remotestandorte aus. In diesem Fall sollte es sich bei dem Remotestandort um die private AVS-Cloud handeln.
+Wählen Sie im Fenster, das geöffnet wird, die Quell- und Remotestandorte aus. In diesem Fall sollte es sich bei dem Remotestandort um die private Cloud der Azure-VMware-Lösung handeln.
 
 :::image type="content" source="./media/disaster-recovery/protect-virtual-machines.png" alt-text="Fenster „VMs schützen“" border="true":::
 
@@ -56,7 +56,7 @@ Wählen Sie bei Bedarf die Standardreplikationsoptionen aus:
 
 - **Enable Quiescence (Ruhezustand aktivieren):** Hält den virtuellen Computer an, um sicherzustellen, dass eine konsistente Kopie mit dem Remotestandort synchronisiert wird.
 
-- **Destination Storage (Zielspeicher):** Wählen Sie den Remotedatenspeicher für die geschützte(n) VM(s) aus. In einer privaten AVS-Cloud sollte diese Auswahl der vSAN-Datenspeicher sein.
+- **Destination Storage (Zielspeicher):** Wählen Sie den Remotedatenspeicher für die geschützte(n) VM(s) aus. In einer privaten Cloud einer Azure-VMware-Lösung sollte diese Auswahl der vSAN-Datenspeicher sein.
 
 - **Compute Container:** Der vSphere-Remotecluster oder -Ressourcenpool.
 
@@ -95,7 +95,7 @@ Wenn der virtuelle Computer eingeschaltet ist, wird die Synchronisierung mit dem
 
 ## <a name="complete-a-test-recover-of-virtual-machines"></a>Ausführen einer Testwiederherstellung virtueller Computer
 
-Melden Sie sich beim **vSphere-Client** am Remotestandort (der privaten AVS-Cloud) an. Wählen Sie im **HCX-Plug-In** im Bereich „Notfallwiederherstellung“ die vertikalen Auslassungspunkte für eine beliebige VM aus, um das Vorgangsmenü anzuzeigen. Wählen Sie **Test Recover VM** (Testwiederherstellung VM) aus.
+Melden Sie sich beim **vSphere-Client** am Remotestandort (der privaten Cloud der Azure-VMware-Lösung) an. Wählen Sie im **HCX-Plug-In** im Bereich „Notfallwiederherstellung“ die vertikalen Auslassungspunkte für eine beliebige VM aus, um das Vorgangsmenü anzuzeigen. Wählen Sie **Test Recover VM** (Testwiederherstellung VM) aus.
 
 :::image type="content" source="./media/disaster-recovery/test-recover-virtual-machine.png" alt-text="Auswählen von „Test Recover VM“ (Testwiederherstellung VM)" border="true":::
 
@@ -105,7 +105,7 @@ Wählen Sie im neuen Fenster die Optionen für den Test aus. Wählen Sie die Mom
 
 Nachdem Sie auf **Test** (Testen) geklickt haben, beginnt der Wiederherstellungsvorgang.
 
-Wenn der Testwiederherstellungsvorgang abgeschlossen ist, kann die neue VM in vCenter der privaten AVS-Cloud überprüft werden.
+Wenn der Testwiederherstellungsvorgang abgeschlossen ist, kann die neue VM in vCenter in der privaten Cloud der Azure-VMware-Lösung überprüft werden.
 
 :::image type="content" source="./media/disaster-recovery/verify-test-recovery.png" alt-text="Überprüfen des Wiederherstellungsvorgangs" border="true":::
 
@@ -115,7 +115,7 @@ Führen Sie nach dem Testen der VM oder einer Anwendung, die auf dieser ausgefü
 
 ## <a name="recover-virtual-machines"></a>Wiederherstellen virtueller Computer
 
-Melden Sie sich beim **vSphere-Client** am Remotestandort (der privaten AVS-Cloud) an, und greifen Sie auf das **HCX-Plug-In** zu.
+Melden Sie sich beim **vSphere-Client** am Remotestandort (der privaten Cloud der Azure-VMware-Lösung) an, und greifen Sie auf das **HCX-Plug-In** zu.
 
 Für das Wiederherstellungsszenario wird eine Gruppe von virtuellen Computern für dieses Beispiel verwendet.
 
@@ -131,7 +131,7 @@ Nachdem der Wiederherstellungsvorgang abgeschlossen ist, werden die neuen VMs im
 
 ## <a name="complete-a-reverse-replication-on-virtual-machines"></a>Abschließen einer umgekehrten Replikation auf virtuellen Computern
 
-Melden Sie sich beim **vSphere-Client** in Ihrer privaten AVS-Cloud an, und greifen Sie auf das **HCX-Plug-In** zu.
+Melden Sie sich beim **vSphere-Client** in der privaten Cloud Ihrer Azure-VMware-Lösung an, und greifen Sie auf das **HCX-Plug-In** zu.
 Es ist erforderlich, dass die ursprünglichen virtuellen Computer am Quellstandort ausgeschaltet werden, bevor Sie mit der umgekehrten Replikation beginnen. Der Vorgang schlägt fehl, wenn die virtuellen Computer nicht ausgeschaltet sind.
 
 Wählen Sie in der Liste die virtuellen Computer aus, die zurück an den Quellstandort repliziert werden sollen, öffnen Sie das Menü **ACTIONS** (Aktionen), und wählen Sie **Reverse** (Umgekehrt) aus. Klicken Sie im Popupfenster auf **Reverse** (Umgekehrt), um die Replikation zu starten.

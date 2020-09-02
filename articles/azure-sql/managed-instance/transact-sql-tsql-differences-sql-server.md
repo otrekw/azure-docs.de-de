@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova, danil
 ms.date: 06/02/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 229a74fe760386b59bc83373cc7b1429bd826929
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d611fc7eff2efa7a632f4b5467b5829a8374b95e
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85298446"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705383"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>Unterschiede bei T-SQL zwischen SQL Server und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -26,7 +26,7 @@ In diesem Artikel werden die Unterschiede in der Syntax und dem Verhalten zwisch
 
 SQL Managed Instance bietet hohe Kompatibilität mit der SQL Server-Datenbank-Engine, und die meisten Features werden in SQL Managed Instance unterstützt.
 
-![Migration](./media/transact-sql-tsql-differences-sql-server/migration.png)
+![Einfache Migration von SQL Server](./media/transact-sql-tsql-differences-sql-server/migration.png)
 
 Es gibt einige PaaS-Einschränkungen, die in SQL Managed Instance eingeführt werden, und einige Verhaltensänderungen im Vergleich zu SQL Server. Die Unterschiede sind in die folgenden Kategorien unterteilt: <a name="Differences"></a>
 
@@ -364,7 +364,7 @@ Einige Windows-spezifische Ziele für XEvents (Erweiterte Ereignisse) werden nic
 
 ### <a name="external-libraries"></a>Externe Bibliotheken
 
-Datenbankinterne R- und externe Python-Bibliotheken werden noch nicht unterstützt. Siehe [SQL Server Machine Learning Services](/sql/advanced-analytics/r/sql-server-r-services).
+Externe datenbankinterne R- und Python-Bibliotheken werden in einer begrenzten öffentlichen Vorschau unterstützt. Weitere Informationen finden Sie unter [Machine Learning Services in Azure SQL Managed Instance (Vorschauversion)](machine-learning-services-overview.md)
 
 ### <a name="filestream-and-filetable"></a>Filestream und Dateitabelle
 

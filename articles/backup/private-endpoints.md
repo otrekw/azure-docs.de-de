@@ -3,12 +3,12 @@ title: Private Endpunkte
 description: Erfahren Sie mehr über den Prozess zum Erstellen privater Endpunkte für Azure Backup und die Szenarien, in denen private Endpunkte dazu beitragen, die Sicherheit Ihrer Ressourcen zu gewährleisten.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 9a50a655af02bc2bfa188225209024cfbaa82a7c
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 4f41eee7a84308eb9f4da56f087b2c36e09148f0
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432873"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890891"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Private Endpunkte für Azure Backup
 
@@ -21,15 +21,15 @@ In diesem Artikel erfahren Sie, wie private Endpunkte für Azure Backup erstellt
 - Private Endpunkte können nur für neue Recovery Services-Tresore erstellt werden (bei denen keine Elemente im Tresor registriert sind). Daher müssen private Endpunkte erstellt werden, bevor Sie versuchen, Elemente im Tresor zu schützen.
 - Ein virtuelles Netzwerk kann private Endpunkte für mehrere Recovery Services-Tresore enthalten. Außerdem kann ein Recovery Services-Tresor über private Endpunkte in mehreren virtuellen Netzwerken verfügen. Die maximale Anzahl privater Endpunkte, die für einen Tresor erstellt werden können, ist jedoch 12.
 - Sobald ein privater Endpunkt für einen Tresor erstellt ist, wird der Tresor gesperrt. Der Zugriff (für Sicherungen und Wiederherstellungen) ist nur aus Netzwerken möglich, die einen privaten Endpunkt für den Tresor enthalten. Wenn alle privaten Endpunkte für den Tresor entfernt werden, können alle Netzwerke auf den Tresor zugreifen.
-- Eine Verbindung mit privaten Endpunkten für die Sicherung verwendet insgesamt 11 private IP-Adressen in Ihrem Subnetz. Diese Anzahl kann für bestimmte Azure-Regionen höher sein (bis zu 25). Wir empfehlen daher, genügend private IP-Adressen verfügbar zu haben, wenn Sie versuchen, private Endpunkte für die Sicherung zu erstellen.
+- Eine Verbindung mit privaten Endpunkten für die Sicherung verwendet insgesamt 11 private IP-Adressen in Ihrem Subnetz einschließlich der von Azure Backup zur Sicherung verwendeten. Diese Anzahl kann für bestimmte Azure-Regionen höher sein (bis zu 25). Wir empfehlen daher, genügend private IP-Adressen verfügbar zu haben, wenn Sie versuchen, private Endpunkte für die Sicherung zu erstellen.
 - Wenngleich ein Recovery Services-Tresor von sowohl Azure Backup als auch Azure Site Recovery verwendet wird, beschränkt sich die Erörterung in diesem Artikel auf die Verwendung privater Endpunkte für Azure Backup.
 - Azure Active Directory unterstützt derzeit keine privaten Endpunkte. Daher müssen IP-Adressen und FQDNs, die für den Betrieb von Azure Active Directory in einer Region erforderlich sind, ein ausgehender Zugriff aus dem abgesicherten Netzwerk gestattet werden, wenn eine Sicherung von Datenbanken in Azure-VMs und eine Sicherung mit dem MARS-Agent erfolgt. Sie können ggf. auch NSG- und Azure Firewall-Tags verwenden, um Zugriff auf Azure AD zuzulassen.
 - Virtuelle Netzwerke mit Netzwerkrichtlinien werden für private Endpunkte nicht unterstützt. Sie müssen Netzwerkrichtlinien deaktivieren, ehe Sie fortfahren können.
-- Sie müssen den Recovery Services-Ressourcenanbieter erneut mit dem Abonnement registrieren, wenn Sie ihn vor dem 1. Mai 2020 registriert haben. Um den Anbieter erneut zu registrieren, wechseln Sie im Azure-Portal zu Ihrem Abonnement, navigieren Sie in der linken Navigationsleiste zu **Ressourcenanbieter**, wählen Sie **Microsoft.RecoveryServices** aus, und klicken Sie dann auf **Erneut registrieren**.
+- Sie müssen den Recovery Services-Ressourcenanbieter erneut mit dem Abonnement registrieren, wenn Sie ihn vor dem 1. Mai 2020 registriert haben. Um den Anbieter erneut zu registrieren, wechseln Sie im Azure-Portal zu Ihrem Abonnement, navigieren Sie in der linken Navigationsleiste zu **Ressourcenanbieter** und wählen Sie **Microsoft.RecoveryServices** und dann **Erneut registrieren** aus.
 
 ## <a name="recommended-and-supported-scenarios"></a>Empfohlene und unterstützte Szenarien
 
-Solange private Endpunkte für den Tresor aktiviert sind, werden sie nur für die Sicherung und Wiederherstellung von SQL- und SAP HANA-Workloads in einer Sicherung in einer Azure-VM und mit dem MARS-Agent verwendet. Sie können den Tresor auch für eine Sicherung anderer Workloads einsetzen (die allerdings keine privaten Endpunkte benötigen). Neben der Sicherung von SQL- und SAP HANA-Workloads und einer Sicherung mit dem MARS-Agent werden private Endpunkte im Fall einer Azure-VM-Sicherung auch für die Dateiwiederherstellung verwendet. Weitere Informationen finden Sie in der Tabelle unten:
+Solange private Endpunkte für den Tresor aktiviert sind, werden sie nur für die Sicherung und Wiederherstellung von SQL- und SAP HANA-Workloads in einer Sicherung in einer Azure-VM und mit dem MARS-Agent verwendet. Sie können den Tresor auch für die Sicherung anderer Workloads einsetzen (die allerdings keine privaten Endpunkte benötigen). Neben der Sicherung von SQL- und SAP HANA-Workloads und einer Sicherung mit dem MARS-Agent werden private Endpunkte bei einer Azure-VM-Sicherung auch für die Dateiwiederherstellung verwendet. Weitere Informationen finden Sie in der Tabelle unten:
 
 | Sicherung von Workloads in Azure-VM (SQL, SAP HANA), Sicherung mit MARS-Agent | Private Endpunkte werden empfohlen, um eine Sicherung und Wiederherstellung zu ermöglichen, ohne dass Sie IP-Adressen/FQDNs für Azure Backup oder Azure Storage in Ihren virtuellen Netzwerken auf eine Zulassungsliste setzen müssen. |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -41,7 +41,7 @@ Solange private Endpunkte für den Tresor aktiviert sind, werden sie nur für di
 Dieser Abschnitt befasst sich mit den Schritten zum Erstellen und Verwenden privater Endpunkte für Azure Backup innerhalb Ihrer virtuellen Netzwerke.
 
 >[!IMPORTANT]
-> Es wird ausdrücklich empfohlen, dass Sie die Schritte in der in diesem Dokument genannten Reihenfolge durchführen. Andernfalls kann dies dazu führen, dass der Tresor nicht mehr mit dem Einsatz privater Endpunkte kompatibel ist und Sie den Vorgang mit einem neuen Tresor neu starten müssen.
+> Sie sollten die in diesem Dokument beschriebenen Schritte unbedingt in der genannten Reihenfolge durchführen. Andernfalls kann dies dazu führen, dass der Tresor nicht mehr mit dem Einsatz privater Endpunkte kompatibel ist und Sie den Vorgang mit einem neuen Tresor neu starten müssen.
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -60,7 +60,7 @@ Verwaltete Identitäten ermöglichen dem Tresor, private Endpunkte zu erstellen 
 1. Es wird eine **Objekt-ID** generiert, die die verwaltete Identität des Tresors darstellt.
 
     >[!NOTE]
-    >Einmal aktiviert, darf die verwaltete Identität NICHT (auch nicht vorübergehend) deaktiviert werden. Die Deaktivierung der verwalteten Identität kann zu inkonsistentem Verhalten führen.
+    >Nach der Aktivierung darf die verwaltete Identität **nicht** deaktiviert werden (auch nicht vorübergehend). Die Deaktivierung der verwalteten Identität kann zu inkonsistentem Verhalten führen.
 
 ## <a name="dns-changes"></a>DNS-Änderungen
 
@@ -79,7 +79,7 @@ Es müssen zwei obligatorische DNS-Zonen erstellt werden:
 
     ![Auswählen von „Private DNS-Zone“](./media/private-endpoints/private-dns-zone.png)
 
-1. Klicken Sie im Bereich **Private DNS-Zone** auf die Schaltfläche **+Hinzufügen**, um mit dem Erstellen einer neuen Zone zu beginnen.
+1. Wählen Sie im Bereich **Private DNS-Zone** die Schaltfläche **+Hinzufügen** aus, um mit dem Erstellen einer neuen Zone zu beginnen.
 
 1. Geben Sie im Bereich **Private DNS-Zone erstellen** die erforderlichen Details ein. Das Abonnement muss demjenigen entsprechen, in dem der private Endpunkt erstellt wird.
 
@@ -99,7 +99,8 @@ Es müssen zwei obligatorische DNS-Zonen erstellt werden:
 
 ### <a name="optional-dns-zone"></a>Optionale DNS-Zone
 
-Für die Dienstkommunikation können Kunden ihre privaten Endpunkte mit privaten DNS-Zonen für Azure Backup integrieren (was im Abschnitt über die Erstellung privater Endpunkte erörtert wird). Wenn Sie keine Integration in die private DNS-Zone wünschen, können Sie entweder Ihren eigenen DNS-Server nutzen oder separat eine private DNS-Zone erstellen. Dies erfolgt zusätzlich zu den beiden obligatorischen privaten DNS-Zonen, die im vorigen Abschnitt besprochen wurden.
+Für die Dienstkommunikation können Sie wählen, ihre privaten Endpunkte in private DNS-Zonen für Azure Backup zu integrieren (was im Abschnitt [Erstellen und Verwenden privater Endpunkte für Azure Backup](#creating-and-using-private-endpoints-for-backup)
+erörtert wird). Wenn Sie keine Integration in die private DNS-Zone wünschen, können Sie entweder Ihren eigenen DNS-Server nutzen oder separat eine private DNS-Zone erstellen. Dies erfolgt zusätzlich zu den beiden obligatorischen privaten DNS-Zonen, die im vorigen Abschnitt besprochen wurden.
 
 Wenn Sie eine separate private DNS-Zone in Azure erstellen möchten, können Sie dazu die gleichen Schritte wie bei der Erstellung obligatorischer DNS-Zonen befolgen. Die Benennungs- und Abonnementdetails sind nachstehend aufgeführt:
 
@@ -119,7 +120,7 @@ Informationen zu Benennungskonventionen für URLs in nationalen Regionen:
 
 Die zuvor erstellten DNS-Zonen müssen nun mit dem virtuellen Netzwerk verbunden werden, in dem sich Ihre zu sichernden Server befinden. Dies muss für alle DNS-Zonen erfolgen, die Sie erstellt haben.
 
-1. Navigieren Sie zu Ihrer DNS-Zone (die Sie im vorherigen Schritt erstellt haben) und dann auf der linken Leiste zu **VNET-Verknüpfungen**. Klicken Sie dort auf die Schaltfläche **+Hinzufügen**.
+1. Navigieren Sie zu Ihrer DNS-Zone (die Sie im vorherigen Schritt erstellt haben) und dann auf der linken Leiste zu **VNET-Verknüpfungen**. Wählen Sie dort die Schaltfläche **+Hinzufügen** aus.
 1. Geben Sie die erforderlichen Details ein. Die Felder **Abonnement** und **Virtuelles Netzwerk** müssen mit entsprechenden Angaben zum virtuellen Netzwerk Ihrer Server ausgefüllt werden. Die anderen Felder müssen unverändert bleiben.
 
     ![Hinzufügen einer virtuellen Netzwerkverknüpfung](./media/private-endpoints/add-virtual-network-link.png)
@@ -139,7 +140,7 @@ Wir empfehlen, dem Tresor (der verwalteten Identität) die Rolle **Mitwirkender*
 
     ![Hinzufügen einer Rollenzuweisung](./media/private-endpoints/add-role-assignment.png)
 
-1. Wählen Sie im Bereich **Rollenzuweisung hinzufügen** die Option **Mitwirkender** als **Rolle** aus, und verwenden Sie den **Namen** des Tresors als **Prinzipal**. Wählen Sie Ihren Tresor aus, und klicken Sie auf **Speichern**.
+1. Wählen Sie im Bereich **Rollenzuweisung hinzufügen** die Option **Mitwirkender** als **Rolle** aus, und verwenden Sie den **Namen** des Tresors als **Prinzipal**. Wählen Sie Ihren Tresor und dann **Speichern** aus, wenn Sie fertig sind.
 
     ![Wählen von „Rolle“ und „Prinzipal“](./media/private-endpoints/choose-role-and-principal.png)
 
@@ -155,7 +156,7 @@ In diesem Abschnitt wird das Erstellen eines privaten Endpunkts für Ihren Treso
 
     ![Suchen nach „Private Link“](./media/private-endpoints/search-for-private-link.png)
 
-1. Klicken Sie auf der linken Navigationsleiste auf **Private Endpunkte**. Sobald Sie sich im Bereich **Private Endpunkte** befinden, klicken Sie auf **+Hinzufügen**, um mit der Erstellung eines privaten Endpunkts für Ihren Tresor zu beginnen.
+1. Klicken Sie auf der linken Navigationsleiste auf **Private Endpunkte**. Sobald Sie sich im Bereich **Private Endpunkte** befinden, wählen Sie **+Hinzufügen** aus, um mit der Erstellung eines privaten Endpunkts für Ihren Tresor zu beginnen.
 
     ![Hinzufügen eines privaten Endpunkts im Private Link-Center](./media/private-endpoints/add-private-endpoint.png)
 
@@ -175,7 +176,7 @@ In diesem Abschnitt wird das Erstellen eines privaten Endpunkts für Ihren Treso
 
     1. Optional können Sie für Ihren privaten Endpunkt **Tags** hinzufügen.
 
-    1. Fahren Sie mit **Überprüfen + erstellen** fort, nachdem Sie die Details eingegeben haben. Klicken Sie nach erfolgter Validierung auf **Erstellen**, um den privaten Endpunkt zu erstellen.
+    1. Fahren Sie mit **Überprüfen + erstellen** fort, nachdem Sie die Details eingegeben haben. Klicken Sie nach Abschluss der Validierung auf **Erstellen**, um den privaten Endpunkt zu erstellen.
 
 ## <a name="approving-private-endpoints"></a>Genehmigen privater Endpunkte
 
@@ -200,7 +201,7 @@ Sobald Sie die optionale private DNS-Zone und die privaten Endpunkte für Ihren 
 
 Dazu müssen Sie Einträge für jeden FQDN in Ihrem privaten Endpunkt in Ihre private DNS-Zone vornehmen.
 
-1. Wechseln Sie zu Ihrer **privaten DNS-Zone**, und navigieren Sie auf der linken Leiste zur Option **Übersicht**. Klicken Sie dort auf **Ressourceneintragssatz hinzufügen**, um mit dem Hinzufügen von Einträgen zu beginnen.
+1. Wechseln Sie zu Ihrer **privaten DNS-Zone**, und navigieren Sie auf der linken Leiste zur Option **Übersicht**. Wählen Sie dort **+Ressourceneintragssatz** aus, um mit dem Hinzufügen von Einträgen zu beginnen.
 
     ![„Ressourceneintragssatz hinzufügen“ auswählen, um Einträge hinzuzufügen](./media/private-endpoints/select-record-set.png)
 

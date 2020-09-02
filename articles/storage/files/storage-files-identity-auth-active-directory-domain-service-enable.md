@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 04/21/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: fe2bbc1d6f42819354f48812a34371a49e5acbac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d4aad485741abc1c0f54e14e00cd8654a8addbca
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999631"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930796"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Aktivieren der Azure Active Directory Domain Services-Authentifizierung über Azure Files
 
-[Azure Files](storage-files-introduction.md) unterstützt die identitätsbasierte Authentifizierung über SMB (Server Message Block) über zwei Arten von Domänendiensten: lokale Active Directory Domain Services (AD DS) und Azure Active Directory Domain Services (Azure AD DS). Es wird dringend empfohlen, den Abschnitt [Funktionsweise](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview#how-it-works) zu überprüfen, um den richtigen Domänendienst für die Autorisierung auszuwählen. Die Einrichtung unterscheidet sich abhängig von dem von Ihnen gewählten Domänendienst. In diesem Artikel wird das Aktivieren und Konfigurieren von Azure AD DS für die Authentifizierung mit Azure-Dateifreigaben erläutert.
+[Azure Files](storage-files-introduction.md) unterstützt die identitätsbasierte Authentifizierung über SMB (Server Message Block) über zwei Arten von Domänendiensten: lokale Active Directory Domain Services (AD DS) und Azure Active Directory Domain Services (Azure AD DS). Es wird dringend empfohlen, den Abschnitt [Funktionsweise](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview#how-it-works) zu überprüfen, um den richtigen Domänendienst für die Authentifizierung auszuwählen. Die Einrichtung unterscheidet sich abhängig von dem von Ihnen gewählten Domänendienst. In diesem Artikel wird das Aktivieren und Konfigurieren von Azure AD DS für die Authentifizierung mit Azure-Dateifreigaben erläutert.
 
 Wenn Sie noch nicht mit Azure-Dateifreigaben vertraut sind, empfiehlt es sich, unsere [Planhinweisliste](storage-files-planning.md) zu lesen, bevor Sie die folgende Artikelreihe lesen.
 
@@ -75,13 +75,13 @@ Das folgende Diagramm zeigt den vollständigen Workflow zur Aktivierung der Azur
 
 ![Diagramm mit Azure AD über SMB für Azure Files-Workflow](media/storage-files-active-directory-enable/azure-active-directory-over-smb-workflow.png)
 
-## <a name="1-enable-azure-ad-ds-authentication-for-your-account"></a>1. Aktivieren der Azure AD DS-Authentifizierung für Ihr Konto
+## <a name="enable-azure-ad-ds-authentication-for-your-account"></a>Aktivieren der Azure AD DS-Authentifizierung für Ihr Konto
 
 Zur Aktivierung der Azure AD DS-Authentifizierung über SMB für Azure Files können Sie mit dem Azure-Portal, Azure PowerShell oder der Azure-Befehlszeilenschnittstelle eine Eigenschaft für Speicherkonten festlegen. Wenn Sie diese Eigenschaft festlegen, wird für das Speicherkonto bei der zugehörigen Bereitstellung von Azure AD DS implizit ein Domänenbeitritt durchgeführt. Die Azure AD DS-Authentifizierung über SMB ist dann für alle neuen und vorhandenen Dateifreigaben im Speicherkonto aktiviert.
 
 Beachten Sie, dass Sie die Azure AD DS-Authentifizierung über SMB erst dann aktivieren können, wenn Sie Azure AD DS erfolgreich in Ihrem Azure AD-Mandanten bereitgestellt haben. Weitere Informationen finden Sie unter [Voraussetzungen](#prerequisites).
 
-### <a name="azure-portal"></a>Azure-Portal
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Führen Sie die folgenden Schritte aus, um die Azure AD DS-Authentifizierung über SMB über das [Azure-Portal](https://portal.azure.com) zu aktivieren:
 
@@ -94,7 +94,7 @@ In der folgenden Abbildung ist dargestellt, wie Sie die Azure AD DS-Authentifiz
 
 ![Aktivieren der Azure AD DS-Authentifizierung über SMB im Azure-Portal](media/storage-files-active-directory-enable/portal-enable-active-directory-over-smb.png)
 
-### <a name="powershell"></a>PowerShell  
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Um die Azure AD DS-Authentifizierung über SMB mit Azure PowerShell zu aktivieren, installieren Sie das neueste Az-Modul (2.4 oder höher) oder das Az.Storage-Modul (1.5 oder höher). Weitere Informationen zum Installieren von PowerShell finden Sie unter [Installieren von Azure PowerShell unter Windows mit PowerShellGet](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
@@ -120,7 +120,7 @@ Set-AzStorageAccount -ResourceGroupName "<resource-group-name>" `
 ```
 
 
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Wenn Sie die Azure AD-Authentifizierung über SMB mithilfe der Azure-Befehlszeilenschnittstelle aktivieren möchten, installieren Sie die neueste Version der Befehlszeilenschnittstelle (Version 2.0.70 oder höher). Weitere Informationen zum Installieren der Azure-Befehlszeilenschnittstelle finden Sie unter [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
@@ -137,10 +137,11 @@ Verwenden Sie den folgenden Befehl, um diese Funktion für vorhandene Speicherko
 # Update a new storage account
 az storage account update -n <storage-account-name> -g <resource-group-name> --enable-files-aadds $true
 ```
+---
 
 [!INCLUDE [storage-files-aad-permissions-and-mounting](../../../includes/storage-files-aad-permissions-and-mounting.md)]
 
-Sie haben jetzt erfolgreich die Azure AD DS-Authentifizierung über SMB aktiviert und eine benutzerdefinierte Rolle zugewiesen, die den Zugriff auf eine Azure-Dateifreigabe mit einer Azure AD-Identität ermöglicht. Befolgen Sie die Anweisungen in den Abschnitten [Zuweisen von Zugriffsberechtigungen zum Verwenden einer Identität](#2-assign-access-permissions-to-an-identity) und [Konfigurieren von NTFS-Berechtigungen über SMB](#3-configure-ntfs-permissions-over-smb), um weiteren Benutzern den Zugriff auf Ihre Dateifreigabe zu gewähren.
+Sie haben jetzt erfolgreich die Azure AD DS-Authentifizierung über SMB aktiviert und eine benutzerdefinierte Rolle zugewiesen, die den Zugriff auf eine Azure-Dateifreigabe mit einer Azure AD-Identität ermöglicht. Befolgen Sie die Anweisungen in den Abschnitten [Zuweisen von Zugriffsberechtigungen zum Verwenden einer Identität](#assign-access-permissions-to-an-identity) und [Konfigurieren von NTFS-Berechtigungen über SMB](#configure-ntfs-permissions-over-smb), um weiteren Benutzern den Zugriff auf Ihre Dateifreigabe zu gewähren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

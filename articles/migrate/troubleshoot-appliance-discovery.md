@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: eafe13adb5b37de2de2bc4eb8bf15c775af0b039
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 1ddcdfd9efddd050f996e5c2b953baba242967fa
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171853"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640581"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Behandeln von Problemen bei der Azure Migrate-Appliance und der Ermittlung
 
@@ -117,6 +117,28 @@ Fehler 50004: „Es ist keine Verbindung mit einem Host oder Cluster möglich, d
     3. Fügen Sie die IP-Adresse und den Hostnamen in einer Zeile hinzu. Wiederholen Sie dies für jeden Host oder Cluster, bei dem dieser Fehler angezeigt wird.
     4. Speichern und schließen Sie die Datei „hosts“.
     5. Überprüfen Sie mithilfe der Applianceverwaltungs-App, ob die Appliance eine Verbindung mit den Hosts herstellen kann. Nach 30 Minuten sollten die neuesten Informationen für diese Hosts im Azure-Portal angezeigt werden.
+
+
+## <a name="error-60001-unable-to-connect-to-server"></a>Fehler 60001: Verbindung mit dem Server konnte nicht hergestellt werden. 
+
+- Stellen Sie sicher, dass eine Verbindung zwischen der Appliance und dem Server besteht.
+- Wenn es sich um einen Linux-Server handelt, stellen Sie sicher, dass die kennwortbasierte Authentifizierung mithilfe der folgenden Schritte aktiviert ist:
+    1. Melden Sie sich beim Linux-Computer an, und öffnen Sie die SSH-Konfigurationsdatei mit dem Befehl „vi /etc/ssh/sshd_config“.
+    2. Setzen Sie die Option „PasswordAuthentication“ auf „Ja“. Speichern Sie die Datei .
+    3. Starten Sie den SSH-Dienst durch Ausführen von „service sshd restart“ neu.
+- Wenn es sich um einen Windows-Server handelt, vergewissern Sie sich, dass Port 5985 geöffnet ist, um WMI-Remoteaufrufe zuzulassen.
+- Wenn Sie einen GCP-Linux-Server ermitteln und einen Root-Benutzer verwenden, verwenden Sie die folgenden Befehle, um die Standardeinstellung für die Root-Anmeldung zu ändern.
+    1. Melden Sie sich beim Linux-Computer an, und öffnen Sie die SSH-Konfigurationsdatei mit dem Befehl „vi /etc/ssh/sshd_config“.
+    2. Setzen Sie die Option „PermitRootLogin“ auf „Ja“.
+    3. Starten Sie den SSH-Dienst durch Ausführen von „service sshd restart“ neu.
+
+## <a name="error-no-suitable-authentication-method-found"></a>Error: Es wurde keine passende Authentifizierungsmethode gefunden.
+
+Stellen Sie mithilfe der folgenden Schritte sicher, dass die kennwortbasierte Authentifizierung auf dem Linux-Server aktiviert ist:
+    1. Melden Sie sich beim Linux-Computer an, und öffnen Sie die SSH-Konfigurationsdatei mit dem Befehl „vi /etc/ssh/sshd_config“.
+    2. Setzen Sie die Option „PasswordAuthentication“ auf „Ja“. Speichern Sie die Datei .
+    3. Starten Sie den SSH-Dienst durch Ausführen von „service sshd restart“ neu.
+
 
 ## <a name="discovered-vms-not-in-portal"></a>Im Portal befinden sich keine ermittelten virtuellen Computer
 

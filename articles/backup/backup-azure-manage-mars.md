@@ -4,12 +4,12 @@ description: Erfahren Sie etwas über das Verwalten und Überwachen von MARS-Age
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 581141ea5ffaecf774d292f66a05da5e40c8dc54
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: b46303bdb7fc6c39aafd3046a4bcbc5e0ba75766
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263298"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88893067"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Verwalten von MARS-Agent-Sicherungen (Microsoft Azure Recovery Services) mit dem Azure Backup-Dienst
 
@@ -80,7 +80,7 @@ Sie können Ausschlussregeln hinzufügen, um Dateien und Ordner zu überspringen
     ![Auswählen der zu entfernenden Elemente](./media/backup-azure-manage-mars/select-items-remove.png)
 
     > [!NOTE]
-    > Gehen Sie mit Bedacht vor, wenn Sie ein Volume vollständig aus der Richtlinie entfernen.  Wenn Sie es erneut hinzufügen müssen, wird es als neues Volume behandelt. Die nächste geplante Sicherung wird als Erstsicherung (vollständige Sicherung) und nicht als inkrementellen Sicherung ausgeführt. Wenn Sie zu einem späteren Zeitpunkt Elemente temporär entfernen und hinzufügen müssen, empfiehlt es sich, **Ausschlusseinstellungen** anstelle von **Elemente entfernen** zu verwenden, damit statt einer vollständigen Sicherung eine inkrementelle Sicherung erfolgt.
+    > Gehen Sie mit Bedacht vor, wenn Sie ein Volume vollständig aus der Richtlinie entfernen.  Wenn Sie es erneut hinzufügen müssen, wird es als neues Volume behandelt. Die nächste geplante Sicherung wird als Erstsicherung (vollständige Sicherung) und nicht als inkrementellen Sicherung ausgeführt. Wenn Sie zu einem späteren Zeitpunkt Elemente temporär entfernen und hinzufügen müssen, sollten Sie **Ausschlusseinstellungen** anstelle von **Elemente entfernen** verwenden, damit statt einer vollständigen Sicherung eine inkrementelle Sicherung erfolgt.
 
 2. Führen Sie die nachfolgenden Schritte aus, und wählen Sie zum Abschließen des Vorgangs **Fertig stellen** aus.
 

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 3bb8f0e809ae1acbec1479c20e24c90fd81905d4
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: c7c4e1cc854fdd2fbf03d2274992bbc4a3bb93af
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212444"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717896"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>Bereitstellen des Samplebezeichnungstools
 
@@ -70,6 +70,7 @@ Führen Sie die folgenden Schritte aus, um eine neue Ressource im Azure-Portal z
 
 6. Konfigurieren Sie nun Ihren Docker-Container. Alle Felder sind erforderlich, sofern nicht anders angegeben:
 
+    # <a name="v20"></a>[v2.0](#tab/v2-0)  
    * Optionen: Wählen Sie **Einzelner Container** aus.
    * Imagequelle: Wählen Sie **Private Registrierung** aus. 
    * Server-URL: Legen Sie die URL auf `https://mcr.microsoft.com` fest.
@@ -78,6 +79,18 @@ Führen Sie die folgenden Schritte aus, um eine neue Ressource im Azure-Portal z
    * Image und Tag: Legen Sie diese Einstellung auf `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest` fest.
    * Continuous Deployment: Legen Sie diesen Wert auf **On** fest, wenn Sie automatische Aktualisierungen erhalten möchten, sobald das Entwicklungsteam Änderungen am Beschriftungstool für Stichproben vornimmt.
    * Startbefehl: Legen Sie diese Einstellung auf `./run.sh eula=accept` fest.
+
+    # <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1) 
+   * Optionen: Wählen Sie **Einzelner Container** aus.
+   * Imagequelle: Wählen Sie **Private Registrierung** aus. 
+   * Server-URL: Legen Sie die URL auf `https://mcr.microsoft.com` fest.
+   * Benutzername (optional): Erstellen Sie einen Benutzernamen. 
+   * Kennwort (optional): Erstellen Sie ein sicheres Kennwort, das Sie sich gut merken können.
+   * Image und Tag: Legen Sie diese Einstellung auf `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview` fest.
+   * Continuous Deployment: Legen Sie diesen Wert auf **On** fest, wenn Sie automatische Aktualisierungen erhalten möchten, sobald das Entwicklungsteam Änderungen am Beschriftungstool für Stichproben vornimmt.
+   * Startbefehl: Legen Sie diese Einstellung auf `./run.sh eula=accept` fest.
+    
+    ---
 
    > [!div class="mx-imgBorder"]
    > ![Konfigurieren von Docker](./media/quickstarts/formre-configure-docker.png)
@@ -100,6 +113,8 @@ Es gibt einige Dinge, die Sie über diesen Befehl wissen sollten:
 
 Führen Sie in der Azure CLI den folgenden Befehl aus, um eine Web-App-Ressource für das Tool für die Beschriftung von Beispielen zu erstellen: 
 
+
+# <a name="v20"></a>[v2.0](#tab/v2-0)   
 ```azurecli
 DNS_NAME_LABEL=aci-demo-$RANDOM
 
@@ -113,7 +128,24 @@ az container create \
   --cpu 2 \
   --memory 8 \
   --command-line "./run.sh eula=accept"
+``` 
+# <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)    
+```azurecli
+DNS_NAME_LABEL=aci-demo-$RANDOM
+
+az container create \
+  --resource-group <resource_group_name> \
+  --name <name> \
+  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview \
+  --ports 3000 \
+  --dns-name-label $DNS_NAME_LABEL \
+  --location <region name> \
+  --cpu 2 \
+  --memory 8 \
+  --command-line "./run.sh eula=accept"
 ```
+
+---
 
 ### <a name="connect-to-azure-ad-for-authorization"></a>Herstellen einer Verbindung mit Azure AD zur Autorisierung
 

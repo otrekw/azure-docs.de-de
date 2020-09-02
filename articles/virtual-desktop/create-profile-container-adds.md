@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 91f5ef4a5065079f0fe385b92af2a1c4bfa5ee84
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: ea834ed874f3011d95f8b924df860576f72bc4ee
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007708"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825612"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>Erstellen eines Profilcontainers mit Azure Files und Azure AD DS
 
@@ -113,19 +113,25 @@ So rufen Sie den Zugriffsschlüssel für das Speicherkonto ab
      net use y: \\fsprofile.file.core.windows.net\share HDZQRoFP2BBmoYQ=(truncated)= /user:Azure\fsprofile)
      ```
 
-8. Führen Sie den folgenden Befehl aus, um dem Benutzer Vollzugriff auf die Azure Files-Freigabe zu gewähren.
+8. Führen Sie die folgenden Befehle aus, damit Ihre Windows Virtual Desktop-Benutzer ihre eigenen Profilcontainer erstellen können, während sie den Zugriff auf ihren Profilcontainer durch andere Benutzer blockieren.
 
      ```cmd
-     icacls <mounted-drive-letter>: /grant <user-email>:(f)
+     icacls <mounted-drive-letter>: /grant <user-email>:(M)
+     icacls <mounted-drive-letter>: /grant "Creator Owner":(OI)(CI)(IO)(M)
+     icacls <mounted-drive-letter>: /remove "Authenticated Users"
+     icacls <mounted-drive-letter>: /remove "Builtin\Users"
      ```
 
-    - Ersetzen Sie `<mounted-drive-letter>` durch den Buchstaben des Laufwerks, das der Benutzer verwenden soll.
-    - Ersetzen Sie `<user-email>` durch den UPN des Benutzers, der dieses Profil für den Zugriff auf die Sitzungshost-VMs verwendet.
+    - Ersetzen Sie `<mounted-drive-letter>` durch den Buchstaben des Laufwerks, den Sie zum Zuordnen des Laufwerks verwendet haben.
+    - Ersetzen Sie `<user-email>` durch den UPN des Benutzers oder der Active Directory-Gruppe, die die Benutzer mit erforderlichem Zugriff auf die Freigabe enthält.
 
     Beispiel:
 
      ```cmd
-     icacls y: /grant john.doe@contoso.com:(f)
+     icacls <mounted-drive-letter>: /grant john.doe@contoso.com:(M)
+     icacls <mounted-drive-letter>: /grant "Creator Owner":(OI)(CI)(IO)(M)
+     icacls <mounted-drive-letter>: /remove "Authenticated Users"
+     icacls <mounted-drive-letter>: /remove "Builtin\Users"
      ```
 
 ## <a name="create-a-profile-container"></a>Erstellen eines Profilcontainers

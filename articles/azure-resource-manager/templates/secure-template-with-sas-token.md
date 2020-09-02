@@ -2,17 +2,20 @@
 title: Sicheres Bereitstellen von Vorlagen mithilfe des SAS-Token
 description: Bereitstellen von Ressourcen in Azure mithilfe einer Azure Resource Manager-Vorlage, die mit einem SAS-Token geschützt ist. Zeigt Azure PowerShell und Azure CLI.
 ms.topic: conceptual
-ms.date: 08/14/2019
-ms.openlocfilehash: 42eaae316d4fd0575102323933f849a3058228a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 08/25/2020
+ms.openlocfilehash: 8b35e82da8ebca98ec9fe1fb7441612bf61fb142
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156394"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855653"
 ---
 # <a name="deploy-private-arm-template-with-sas-token"></a>Bereitstellen einer privaten ARM-Vorlage mit SAS-Token
 
 Wenn sich Ihre ARM-Vorlage (Azure Resource Manager) in einem Speicherkonto befindet, können Sie den Zugriff auf die Vorlage beschränken, um deren öffentliche Bereitstellung zu vermeiden. Sie greifen auf eine gesicherte Vorlage zu, indem Sie ein SAS-Token (Shared Access Signature) für die Vorlage erstellen und dieses Token während der Bereitstellung bereitstellen. In diesem Artikel wird erläutert, wie Sie Azure PowerShell oder Azure CLI verwenden, um eine Vorlage mit einem SAS-Token bereitzustellen.
+
+> [!IMPORTANT]
+> Anstatt Ihre Vorlage mit einem SAS-Token zu sichern, sollten Sie die Verwendung von [Vorlagenspezifikationen](template-specs.md) in Erwägung ziehen. Mit Vorlagenspezifikationen können Sie Ihre Vorlagen mit anderen Benutzern in Ihrer Organisation teilen und den Zugriff auf die Vorlagen über Azure RBAC verwalten.
 
 ## <a name="create-storage-account-with-secured-container"></a>Erstellen eines Speicherkontos mit einem gesicherten Container
 
@@ -110,6 +113,8 @@ New-AzResourceGroupDeployment `
 ```
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Das folgende Beispiel arbeitet mit der Bash-Umgebung in Cloud Shell. In anderen Umgebungen ist möglicherweise eine andere Syntax erforderlich, um die Ablaufzeit für das SAS-Token zu erstellen.
 
 ```azurecli-interactive
 expiretime=$(date -u -d '30 minutes' +%Y-%m-%dT%H:%MZ)

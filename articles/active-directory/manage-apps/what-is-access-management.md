@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: kenwith
-ms.openlocfilehash: 1b19f4aae7bf7477dbe5950f2d4df31e2de81372
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 7738bd2f2dc169ab52677928c6fecbc193ff2f35
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562564"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639918"
 ---
 # <a name="managing-access-to-apps"></a>Verwalten des Zugriffs auf Apps
 
@@ -45,7 +45,7 @@ Bei bestimmten Anwendungstypen haben Sie die Möglichkeit, [die Zuweisung von Be
 * Anwendungsproxyanwendungen mit Azure Active Directory-Vorauthentifizierung
 * Anwendungen, die auf der Azure AD-Anwendungsplattform mit OAuth 2.0/OpenID Connect-Authentifizierung erstellt wurden (nachdem ein Benutzer oder Administrator seine Zustimmung für die Anwendung erteilt hat). Bestimmte Unternehmensanwendungen bieten zusätzliche Mechanismen, mit denen gesteuert werden kann, wer sich anmelden darf.
 
-Wenn die Benutzerzuweisung *nicht erforderlich* ist, wird die App im Zugriffsbereich „Meine Apps“ nicht zugewiesenen Benutzern nicht angezeigt. Diese können sich jedoch weiterhin bei der Anwendung selbst anmelden (auch als SP-initiierte Anmeldung bezeichnet) oder auf der Seite **Eigenschaften** der Anwendung die **Benutzerzugriffs-URL** verwenden (auch als IDP-initiierte Anmeldung bezeichnet).
+Wenn die Benutzerzuweisung *nicht erforderlich* ist, wird die App nicht zugewiesenen Benutzern nicht in „Meine Apps“ angezeigt. Diese können sich jedoch weiterhin bei der Anwendung selbst anmelden (auch als SP-initiierte Anmeldung bezeichnet) oder auf der Seite **Eigenschaften** der Anwendung die **Benutzerzugriffs-URL** verwenden (auch als IDP-initiierte Anmeldung bezeichnet).
 
 Bei einigen Anwendungen ist die Option zum Anfordern der Benutzerzuweisung in den Anwendungseigenschaften nicht verfügbar. In diesen Fällen können Sie mit PowerShell die Eigenschaft „appRoleAssignmentRequired“ auf dem Dienstprinzipal festlegen.
 
@@ -53,12 +53,12 @@ Bei einigen Anwendungen ist die Option zum Anfordern der Benutzerzuweisung in de
 
 Azure AD bietet [mehrere anpassbare Möglichkeiten zum Bereitstellen von Anwendungen](end-user-experiences.md) für Endbenutzer in Ihrer Organisation:
 
-* Azure AD-Zugriffsbereich „Meine Apps“
+* „Meine Apps“ in Azure AD
 * Office 365-Anwendungsstartprogramm
 * Direkte Anmeldung bei Verbund-Apps (service-pr)
 * Deep-Links zu verbundenen, kennwortbasierten oder vorhandene Apps
 
-Im Zugriffsbereich und im Office 365-Anwendungsstartprogramm können Sie sehen, ob Benutzer einer Unternehmens-App zugewiesen sind.
+Sie können festlegen, ob Benutzer, die einer Unternehmens-App zugewiesen sind, diese in „Meine Apps“ und im Office 365-Anwendungsstartprogramm sehen können.
 
 ## <a name="example-complex-application-assignment-with-azure-ad"></a>Beispiel: Komplexe Anwendungszuweisungen mit Azure AD
 Betrachten Sie eine Anwendung wie Salesforce. In vielen Organisationen wird Salesforce in erster Linie von den Marketing- und Vertriebsteams verwendet. Häufig haben Mitglieder des Marketingteams umfassende Berechtigungen für den Zugriff auf Salesforce, während Mitglieder des Vertriebsteams nur beschränkten Zugriff haben. In vielen Fällen hat ein großer Personenkreis von Information-Workern eingeschränkten Zugriff auf die Anwendung. Ausnahmen von dieser Regel kommen erschwerend hinzu. Häufig ist es Sache der Marketing- oder Vertriebsleitung, Benutzern Zugriff zu gewähren oder ihre Rollen unabhängig von allgemeinen Regeln zu ändern.
@@ -72,7 +72,7 @@ Mit Azure AD können Anwendungen wie Salesforce beispielsweise für einmaliges 
 
 * Zum Aktivieren des Ausnahmemechanismus könnte für jede Rolle eine Self-Service-Gruppe erstellt werden. Die Gruppe „Salesforce Marketingausnahme“ kann beispielsweise als Self-Service-Gruppe erstellt werden. Diese Gruppe kann der Salesforce-Marketingrolle zugewiesen und das Leadershipteam der Marketingabteilung als deren Besitzer festgelegt werden. Mitglieder des Leadershipteams der Marketingabteilung könnten somit Benutzer hinzufügen oder entfernen, eine Beitrittsrichtlinie einrichten oder sogar einzelne Beitrittsanfragen genehmigen oder verweigern. Dieser Mechanismus wird auch durch ein für Information-Worker angemessenes Verfahren begünstigt, bei dem keine spezielle Schulung für Besitzer oder Mitglieder erforderlich ist.
 
-In diesem Fall würde allen zugewiesenen Benutzern automatisch Salesforce bereitgestellt, und bei einem Wechsel in andere Gruppen würde ihre Rollenzuweisung in Salesforce aktualisiert. Die Benutzer könnten Salesforce über den Microsoft Zugriffsbereich für Anwendungen, Office-Webclients oder sogar durch Aufrufen der Salesforce-Anmeldeseite innerhalb der Organisation ermitteln und darauf zugreifen. Administratoren könnten in diesem Fall den Nutzungs- und Zuweisungszustand mithilfe von Azure AD-Berichten leicht anzeigen.
+In diesem Fall würde allen zugewiesenen Benutzern automatisch Salesforce bereitgestellt, und bei einem Wechsel in andere Gruppen würde ihre Rollenzuweisung in Salesforce aktualisiert. Die Benutzer könnten Salesforce über „Meine Apps“, Office-Webclients oder sogar durch Aufrufen der Salesforce-Anmeldeseite innerhalb der Organisation ermitteln und darauf zugreifen. Administratoren könnten in diesem Fall den Nutzungs- und Zuweisungszustand mithilfe von Azure AD-Berichten leicht anzeigen.
 
 Administratoren können den [bedingten Zugriff von Azure AD](../conditional-access/concept-conditional-access-users-groups.md) einsetzen, um Zugriffsrichtlinien für bestimmte Rollen festzulegen. In diesen Richtlinien kann enthalten sein, ob der Zugriff von außerhalb der Unternehmensumgebung erlaubt ist, und sogar, ob Multi-Factor Authentication oder bestimmte Geräteanforderungen für verschiedene Anwendungsfälle zur Anwendung kommen.
 
@@ -88,7 +88,7 @@ Es gibt drei Hauptmethoden, über die ein Benutzer Zugriff auf eine von Microsof
 
 Bei einigen Anwendungen werden diese Methoden kombiniert. Bestimmte Microsoft-Anwendungen gehören beispielsweise zu einem Office 365-Abonnement, erfordern aber trotzdem eine Zustimmung.
 
-Benutzer können über ihre Office 365-Portale auf Office 365-Anwendungen zugreifen. Sie können Office 365-Anwendungen auch im Zugriffsbereich „Meine Apps“ über den Schalter [Office 365-Sichtbarkeit](hide-application-from-user-portal.md) in den **Benutzereinstellungen** Ihres Verzeichnisses anzeigen oder ausblenden. 
+Benutzer können über ihre Office 365-Portale auf Office 365-Anwendungen zugreifen. Über den Schalter [Office 365-Sichtbarkeit](hide-application-from-user-portal.md) in den **Benutzereinstellungen** Ihres Verzeichnisses können Sie Office 365-Anwendungen auch in „Meine Apps“ anzeigen oder ausblenden. 
 
 Wie bei Unternehmens-Apps können Sie bestimmten Microsoft-Anwendungen über das Azure-Portal oder mit PowerShell (wenn die Portaloption nicht verfügbar ist) [Benutzer zuweisen](assign-user-or-group-access-portal.md).
 

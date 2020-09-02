@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 12/20/2019
 ms.author: mblythe
 ms.custom: accessibility
-ms.openlocfilehash: 7d9bc6365070c0aec96def2f55758204925fe7ba
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: e3f078cdaa54246d91e6bff5393171c05935d755
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88205950"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826785"
 ---
 # <a name="keyboard-shortcuts-in-the-azure-portal"></a>Tastenkombinationen im Azure-Portal
 
@@ -52,6 +52,10 @@ In diesem Artikel sind die Tastenkombinationen aufgelistet, die im gesamten Azur
 |Zu **Alle Ressourcen** wechseln|G+A |
 |Zu **Ressourcengruppen** wechseln|G+R |
 |Das Element auf der linken Seitenleiste an dieser Position öffnen |G+Zahl|
+
+## <a name="keyboard-shortcuts-for-specific-pages-in-the-azure-portal"></a>Tastaturkurzbefehle für bestimmte Seiten im Azure-Portal
+
+- [Azure Resource Graph-Explorer](../governance/resource-graph/reference/keyboard-shortcuts.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -3,16 +3,16 @@ title: Bereitstellen von Logik-App-Vorlagen
 description: Erfahren Sie, wie Sie Azure Resource Manager-Vorlagen bereitstellen, die für Azure Logic Apps erstellt wurden.
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: article
-ms.date: 08/01/2019
+ms.date: 08/25/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d3ef4275e5b309bb499338fe90c0f527aeaeb71f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 8c51095c9e33cd9e5f6da7e972e0cc596eec6478
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501507"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855588"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>Bereitstellen von Azure Resource Manager-Vorlagen für Azure Logic Apps
 
@@ -119,13 +119,20 @@ Hier finden Sie die allgemeinen Schritte für die Verwendung von Azure Pipelines
 
 ## <a name="authorize-oauth-connections"></a>Autorisieren von OAuth-Verbindungen
 
-Nach der Bereitstellung funktioniert Ihre Logik-App vollständig mit gültigen Parametern. Allerdings müssen Sie weiterhin jede OAuth-Verbindung autorisieren, um gültige Zugriffstoken zum [Authentifizieren Ihrer Anmeldeinformationen](../active-directory/develop/authentication-vs-authorization.md) zu generieren. Sie können OAuth-Verbindungen folgendermaßen autorisieren:
+Nach der Bereitstellung funktioniert Ihre Logik-App End-to-End mit gültigen Parametern. Um jedoch gültige Zugriffstoken für die [Authentifizierung Ihrer Anmeldeinformationen](../active-directory/develop/authentication-vs-authorization.md) zu generieren, müssen Sie weiterhin vorab autorisierte OAuth-Verbindungen autorisieren oder verwenden. Sie müssen jedoch nur einmal API-Verbindungsressourcen bereitstellen und authentifizieren. Dies bedeutet, dass Sie diese Verbindungsressourcen nicht in nachfolgende Bereitstellungen einschließen müssen, es sei denn, Sie müssen die Verbindungsinformationen aktualisieren. Wenn Sie eine Continuous Integration- und Continuous Deployment-Pipeline verwenden, stellen Sie nur aktualisierte Logic Apps-Ressourcen bereit und müssen die Verbindungen nicht jedes Mal erneut autorisieren.
 
-* Zur automatisierten Bereitstellung können Sie ein Skript verwenden, das Zustimmung für jede OAuth-Verbindung enthält. Ein Beispielskript hierfür finden Sie auf GitHub im Projekt [LogicAppConnectionAuth](https://github.com/logicappsio/LogicAppConnectionAuth).
+Im folgenden finden Sie einige Vorschläge für den Umgang mit Autorisierungsverbindungen:
 
-* Um OAuth-Verbindungen manuell zu autorisieren, öffnen Sie Ihre Logik-App über das Azure-Portal oder in Visual Studio im Logik-App-Designer. Autorisieren Sie im Designer alle erforderlichen Verbindungen.
+* Autorisieren Sie API-Verbindungsressourcen in Logik-Apps, die sich in der gleichen Region befinden, vorab und geben Sie sie frei. API-Verbindungen sind unabhängig von Logik-Apps als Azure-Ressourcen vorhanden. Während Logik-Apps Abhängigkeiten von API-Verbindungsressourcen aufweisen, weisen API-Verbindungsressourcen keine Abhängigkeiten von Logik-Apps auf und bleiben erhalten, nachdem Sie die abhängigen Logik-Apps gelöscht haben. Logik-Apps können auch API-Verbindungen verwenden, die in anderen Ressourcengruppen vorhanden sind. Der Logik-App-Designer unterstützt das Erstellen von API-Verbindungen jedoch nur in derselben Ressourcengruppe, in der sich Ihre Logik-Apps befinden.
 
-Wenn Sie zum Autorisieren von Verbindungen stattdessen einen Azure AD-[Dienstprinzipal](../active-directory/develop/app-objects-and-service-principals.md) verwenden, informieren Sie sich darüber, wie Sie [Dienstprinzipalparameter in Ihrer Logik-App-Vorlage angeben](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#authenticate-connections).
+  > [!NOTE]
+  > Wenn Sie die Freigabe von API-Verbindungen in Erwägung ziehen, stellen Sie sicher, dass Ihre Lösung [potenzielle Drosselungsprobleme behandeln](../logic-apps/handle-throttling-problems-429-errors.md#connector-throttling) kann. Die Drosselung erfolgt auf Verbindungsebene, sodass die Wiederverwendung derselben Verbindung für mehrere Logik-Apps möglicherweise das Drosselungsproblempotenzial heraufsetzt.
+
+* Wenn Ihr Szenario keine Dienste und Systeme enthält, für die Multi-Factor Authentication erforderlich ist, können Sie ein PowerShell-Skript verwenden, um die Zustimmung für jede OAuth-Verbindung bereitzustellen, indem Sie einen Continuous Integration-Worker als normales Benutzerkonto auf einem virtuellen Computer ausführen, der über aktive Browsersitzungen verfügt, in denen Autorisierungen und Zustimmung bereits bereitgestellt sind. Beispielsweise können Sie das vom [LogicAppConnectionAuth-Projekt im Logic Apps-Repository in GitHub](https://github.com/logicappsio/LogicAppConnectionAuth) bereitgestellte Beispielskript wiederverwenden.
+
+* Um OAuth-Verbindungen manuell zu autorisieren, öffnen Sie Ihre Logik-App über das Azure-Portal oder in Visual Studio im Logik-App-Designer.
+
+* Wenn Sie zum Autorisieren von Verbindungen stattdessen einen Azure AD-[Dienstprinzipal](../active-directory/develop/app-objects-and-service-principals.md) verwenden, informieren Sie sich darüber, wie Sie [Dienstprinzipalparameter in Ihrer Logik-App-Vorlage angeben](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#authenticate-connections).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

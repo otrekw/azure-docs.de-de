@@ -3,12 +3,12 @@ title: Bedarfsgerechtes Konfigurieren von Tresordiagnoseeinstellungen
 description: Konfigurieren von Log Analytics-Diagnoseeinstellungen für alle Tresore in einem bestimmten Bereich mithilfe von Azure Policy
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 58ef8af56bb3f44664ffaec6a17bab5f5e92808e
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 17a5ee5a541c3317c9ec9a6cfbed57d85f5116b4
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612502"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892234"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>Bedarfsgerechtes Konfigurieren von Tresordiagnoseeinstellungen
 
@@ -20,9 +20,9 @@ Um das Erstellen von Diagnoseeinstellungen nach Maß (mit LA als Ziel) zu verein
 
 ## <a name="supported-scenarios"></a>Unterstützte Szenarien
 
-* Die Richtlinie kann gleichzeitig auf alle Recovery Services-Tresore in einem bestimmten Abonnement (oder auf eine Ressourcengruppe innerhalb des Abonnements) angewendet werden. Der Benutzer, der die Richtlinie zuweist, muss über die Berechtigung „Besitzer“ für das Abonnement verfügen, dem die Richtlinie zugewiesen ist.
+* Die Richtlinie kann gleichzeitig auf alle Recovery Services-Tresore in einem bestimmten Abonnement (oder auf eine Ressourcengruppe innerhalb des Abonnements) angewendet werden. Der Benutzer, der die Richtlinie zuweist, muss über die Berechtigung **Besitzer** für das Abonnement verfügen, dem die Richtlinie zugewiesen ist.
 
-* Der vom Benutzer angegebene LA-Arbeitsbereich (an den die Diagnosedaten gesendet werden) kann sich in einem anderen Abonnement als die Tresore befinden, denen die Richtlinie zugewiesen ist. Der Benutzer muss über die Zugriffsberechtigung „Leser“, „Mitwirkender“ oder „Besitzer“ für das Abonnement verfügen, in dem der angegebene LA-Arbeitsbereich vorhanden ist.
+* Der vom Benutzer angegebene LA-Arbeitsbereich (an den die Diagnosedaten gesendet werden) kann sich in einem anderen Abonnement als die Tresore befinden, denen die Richtlinie zugewiesen ist. Der Benutzer muss über die Zugriffsberechtigung **Leser**, **Mitwirkender** oder **Besitzer** für das Abonnement verfügen, in dem der angegebene LA-Arbeitsbereich vorhanden ist.
 
 * Der Bereich „Verwaltungsgruppe“ wird derzeit nicht unterstützt.
 

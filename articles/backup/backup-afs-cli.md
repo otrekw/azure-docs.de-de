@@ -3,12 +3,12 @@ title: Sichern von Azure-Dateifreigaben mit Azure CLI
 description: Hier erfahren Sie, wie Sie Azure-Dateifreigaben mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI) im Recovery Services-Tresor sichern.
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.openlocfilehash: 273c8fadc25ed60ba9fb57ec69bda0b59f155f87
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9afd1e866c85770a8797493c3f89e531e2ef72fc
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514440"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763238"
 ---
 # <a name="back-up-azure-file-shares-with-cli"></a>Sichern von Azure-Dateifreigaben mit der Befehlszeilenschnittstelle
 
@@ -44,7 +44,7 @@ Führen Sie die nachstehenden Schritte aus, um einen Recovery Services-Tresors z
 
 1. Verwenden Sie das Cmdlet [az backup vault create](/cli/azure/backup/vault?view=azure-cli-latest#az-backup-vault-create), um den Tresor zu erstellen. Geben Sie denselben Speicherort für den Tresor an, der für die Ressourcengruppe verwendet wurde.
 
-    Im folgenden Beispiel wird ein Recovery Services-Tresor mit dem Namen *azurefilesvault* in der Region "USA, Osten" erstellt.
+    Im folgenden Beispiel wird ein Recovery Services-Tresor mit dem Namen *azurefilesvault* in der Region „USA, Osten“ erstellt.
 
     ```azurecli-interactive
     az backup vault create --resource-group azurefiles --name azurefilesvault --location eastus --output table

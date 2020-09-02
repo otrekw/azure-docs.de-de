@@ -3,12 +3,12 @@ title: Azure Migrate-Appliance
 description: Bietet einen Überblick über die Azure Migrate-Appliance, die bei der Serverbewertung und -migration verwendet wird.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 99b29839028432a6b760265b641d35cdf33ee57f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: a313d7b964e6ea849acb5b034ed55975b8c5b524
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122131"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927504"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-Appliance
 
@@ -43,11 +43,11 @@ In der folgenden Tabelle sind die Anforderungen der Azure Migrate-Appliance für
 **Anforderung** | **VMware** 
 --- | ---
 **Berechtigungen** | Um lokal oder remote auf die Appliance-Web-App zuzugreifen, müssen Sie Domänenadministrator oder lokaler Administrator auf dem Appliancecomputer sein.
-**Appliancekomponenten** | Die Appliance verfügt über die folgenden Komponenten:<br/><br/> - **Verwaltungs-App**: Dies ist eine Web-App für Benutzereingaben während der Appliance-Bereitstellung. Wird beim Bewerten von Computern für die Migration zu Azure verwendet.<br/> - **Ermittlungs-Agent**: Der Agent erfasst Computerkonfigurationsdaten. Wird beim Bewerten von Computern für die Migration zu Azure verwendet.<br/>- **Bewertungs-Agent**: Der Agent sammelt Leistungsdaten. Wird beim Bewerten von Computern für die Migration zu Azure verwendet.<br/>- **Dienst für automatische Aktualisierungen**: Aktualisiert Appliancekomponenten (wird alle 24 Stunden ausgeführt).<br/>- **DRA-Agent**: Orchestriert die VM-Replikation und koordiniert die Kommunikation zwischen replizierten Computern und Azure. Wird nur bei der Replikation von VMware-VMs in Azure mithilfe der Migration ohne Agent verwendet.<br/>- **Gateway**: Sendet replizierte Daten an Azure. Wird nur bei der Replikation von VMware-VMs in Azure mithilfe der Migration ohne Agent verwendet.
+**Appliancekomponenten** | Die Appliance verfügt über die folgenden Komponenten:<br/><br/> - **Verwaltungs-App**: Dies ist eine Web-App für Benutzereingaben während der Appliance-Bereitstellung. Wird beim Bewerten von Computern für die Migration zu Azure verwendet.<br/> - **Ermittlungs-Agent**: Der Agent erfasst Computerkonfigurationsdaten. Wird beim Bewerten von Computern für die Migration zu Azure verwendet.<br/>- **Collector-Agent**: Der Agent sammelt Leistungsdaten. Wird beim Bewerten von Computern für die Migration zu Azure verwendet.<br/>- **Dienst für automatische Aktualisierungen**: Aktualisiert Appliancekomponenten (wird alle 24 Stunden ausgeführt).<br/>- **DRA-Agent**: Orchestriert die VM-Replikation und koordiniert die Kommunikation zwischen replizierten Computern und Azure. Wird nur bei der Replikation von VMware-VMs in Azure mithilfe der Migration ohne Agent verwendet.<br/>- **Gateway**: Sendet replizierte Daten an Azure. Wird nur bei der Replikation von VMware-VMs in Azure mithilfe der Migration ohne Agent verwendet.
 **Unterstützte Bereitstellung** | Bereitstellen als VMware VM mit OVA-Vorlage.<br/><br/> Bereitstellen als VMware VM oder physischer Computer mithilfe des PowerShell-Installationsskripts.
 **Projektunterstützung** |  Eine Appliance kann einem einzelnen Projekt zugeordnet werden. <br/> Einem einzelnen Projekt kann eine beliebige Anzahl von Appliances zugeordnet werden.<br/> 
 **Ermittlungsgrenzwerte** | Eine Appliance kann bis zu 10.000 VMware-VMs in einer vCenter Server-Instanz ermitteln.<br/> Eine Appliance kann eine Verbindung mit einer einzelnen vCenter Server-Instanz herstellen.
-**OVA-Vorlage** | Herunterladen über das Portal oder von https://aka.ms/migrate/appliance/vmware.<br/><br/> Die Downloadgröße beträgt 10,9 GB.<br/><br/> Die heruntergeladene Appliancevorlage ist mit einer Windows Server 2016-Evaluierungslizenz ausgestattet, die 180 Tage lang gültig ist. Wenn der Evaluierungszeitraum fast abgelaufen ist, empfiehlt es sich, eine neue Appliance herunterzuladen und bereitzustellen oder die Betriebssystemlizenz der Appliance-VM zu aktivieren.
+**OVA-Vorlage** | Laden Sie sie über das Portal oder [hier](https://go.microsoft.com/fwlink/?linkid=2140333) herunter.<br/><br/> Die Downloadgröße beträgt 11,6 GB.<br/><br/> Die heruntergeladene Appliancevorlage ist mit einer Windows Server 2016-Evaluierungslizenz ausgestattet, die 180 Tage lang gültig ist. Wenn der Evaluierungszeitraum fast abgelaufen ist, empfiehlt es sich, eine neue Appliance herunterzuladen und bereitzustellen oder die Betriebssystemlizenz der Appliance-VM zu aktivieren.
 **PowerShell-Skript** | Weitere Informationen finden Sie in diesem [Artikel](./deploy-appliance-script.md#set-up-the-appliance-for-vmware).<br/><br/> 
 **Software/Hardware** |  Die Appliance sollte auf einem Computer mit Windows Server 2016, 32 GB RAM, 8 vCPUs, etwa 80 GB Speicherplatz und einem externen virtuellen Switch ausgeführt werden.<br/> Die Appliance erfordert Internetzugriff, entweder direkt oder über einen Proxy.<br/><br/> Wenn Sie die Appliance auf einem virtuellen VMware-Computer ausführen, benötigen Sie ausreichend Ressourcen auf dem vCenter Server, um einen virtuellen Computer zuzuordnen, der den Anforderungen entspricht.<br/><br/> Wenn Sie die Appliance auf einem physischen Computer ausführen, stellen Sie sicher, dass sie unter Windows Server 2016 läuft und die Hardwareanforderungen erfüllt.
 **VMware-Anforderungen** | Wenn Sie die Appliance als virtuellen VMware-Computer bereitstellen, muss er auf einem ESXi-Host mit der Version 5.5 oder höher bereitgestellt werden.<br/><br/> vCenter Server mit Version 5.5, 6.0, 6.5 oder 6.7
@@ -63,11 +63,11 @@ In der folgenden Tabelle sind die Anforderungen der Azure Migrate-Appliance für
 **Anforderung** | **Hyper-V** 
 --- | ---
 **Berechtigungen** | Um lokal oder remote auf die Appliance-Web-App zuzugreifen, müssen Sie Domänenadministrator oder lokaler Administrator auf dem Appliancecomputer sein.
-**Appliancekomponenten** | Die Appliance verfügt über die folgenden Komponenten:<br/><br/>- **Verwaltungs-App**: Dies ist eine Web-App für Benutzereingaben während der Appliance-Bereitstellung. Wird beim Bewerten von Computern für die Migration zu Azure verwendet.<br/> - **Ermittlungs-Agent**: Der Agent erfasst Computerkonfigurationsdaten. Wird beim Bewerten von Computern für die Migration zu Azure verwendet.<br/>- **Bewertungs-Agent**: Der Agent sammelt Leistungsdaten. Wird beim Bewerten von Computern für die Migration zu Azure verwendet.<br/>- **Dienst für automatische Aktualisierungen**: Aktualisiert Appliancekomponenten (wird alle 24 Stunden ausgeführt).
+**Appliancekomponenten** | Die Appliance verfügt über die folgenden Komponenten:<br/><br/>- **Verwaltungs-App**: Dies ist eine Web-App für Benutzereingaben während der Appliance-Bereitstellung. Wird beim Bewerten von Computern für die Migration zu Azure verwendet.<br/> - **Ermittlungs-Agent**: Der Agent erfasst Computerkonfigurationsdaten. Wird beim Bewerten von Computern für die Migration zu Azure verwendet.<br/>- **Collector-Agent**: Der Agent sammelt Leistungsdaten. Wird beim Bewerten von Computern für die Migration zu Azure verwendet.<br/>- **Dienst für automatische Aktualisierungen**: Aktualisiert Appliancekomponenten (wird alle 24 Stunden ausgeführt).
 **Unterstützte Bereitstellung** | Bereitstellen als Hyper-V VM mithilfe einer VHD-Vorlage.<br/><br/> Bereitstellen als virtueller Hyper-V-Computer oder physischer Computer mithilfe des PowerShell-Installationsskripts.
 **Projektunterstützung** |  Eine Appliance kann einem einzelnen Projekt zugeordnet werden. <br/> Einem einzelnen Projekt kann eine beliebige Anzahl von Appliances zugeordnet werden.<br/> 
 **Ermittlungsgrenzwerte** | Eine Appliance kann bis zu 5000 virtuelle Hyper-V-Computer ermitteln.<br/> Eine einzelne Appliance kann Verbindungen mit bis zu 300 Hyper-V-Hosts herstellen.
-**VHD-Vorlage** | Gezippte Ordner, einschließlich VHD. Herunterladen über das Portal oder von https://aka.ms/migrate/appliance/hyperv.<br/><br/> Die Downloadgröße beträgt 10 GB.<br/><br/> Die heruntergeladene Appliancevorlage ist mit einer Windows Server 2016-Evaluierungslizenz ausgestattet, die 180 Tage lang gültig ist. Wenn der Evaluierungszeitraum fast abgelaufen ist, empfiehlt es sich, eine neue Appliance herunterzuladen und bereitzustellen oder die Betriebssystemlizenz der Appliance-VM zu aktivieren.
+**VHD-Vorlage** | Gezippte Ordner, einschließlich VHD. Laden Sie sie über das Portal oder [hier](https://go.microsoft.com/fwlink/?linkid=2140422) herunter.<br/><br/> Die Downloadgröße beträgt 10,4 GB.<br/><br/> Die heruntergeladene Appliancevorlage ist mit einer Windows Server 2016-Evaluierungslizenz ausgestattet, die 180 Tage lang gültig ist. Wenn der Evaluierungszeitraum fast abgelaufen ist, empfiehlt es sich, eine neue Appliance herunterzuladen und bereitzustellen oder die Betriebssystemlizenz der Appliance-VM zu aktivieren.
 **PowerShell-Skript** | Weitere Informationen finden Sie in diesem [Artikel](./deploy-appliance-script.md#set-up-the-appliance-for-hyper-v).<br/><br/> 
 **Software/Hardware***   |  Die Appliance sollte auf einem Computer mit Windows Server 2016, 16 GB RAM, 8 vCPUs, etwa 80 GB Speicherplatz und einem externen virtuellen Switch ausgeführt werden.<br/> Die Appliance erfordert eine statische oder dynamische IP-Adresse sowie Zugriff auf das Internet, entweder direkt oder über einen Proxy.<br/><br/> Wenn Sie die Appliance als virtuellen Hyper-V-Computer ausführen, benötigen Sie ausreichend Ressourcen auf dem Hyper-V-Host, um 16 GB RAM, 8 vCPUs, ca. 80 GB Speicherplatz und einen externen Switch für den virtuellen Computer der Appliance zuzuweisen.<br/><br/> Wenn Sie die Appliance auf einem physischen Computer ausführen, stellen Sie sicher, dass sie unter Windows Server 2016 läuft und die Hardwareanforderungen erfüllt. 
 **Hyper-V-Anforderungen** | Wenn Sie die Appliance mit der VHD-Vorlage bereitstellen, entspricht die von Azure Migrate bereitgestellte Appliance der Hyper-V VM Version 5.0.<br/><br/> Auf dem Hyper-V-Host muss mindestens Windows Server 2012 R2 ausgeführt werden. 
@@ -80,11 +80,11 @@ In der folgenden Tabelle sind die Anforderungen der Azure Migrate-Appliance für
 **Anforderung** | **Physisch** 
 --- | ---
 **Berechtigungen** | Um lokal oder remote auf die Appliance-Web-App zuzugreifen, müssen Sie Domänenadministrator oder lokaler Administrator auf dem Appliancecomputer sein.
-**Appliancekomponenten** | Die Appliance verfügt über die folgenden Komponenten: <br/><br/> - **Verwaltungs-App**: Dies ist eine Web-App für Benutzereingaben während der Appliance-Bereitstellung. Wird beim Bewerten von Computern für die Migration zu Azure verwendet.<br/> - **Ermittlungs-Agent**: Der Agent erfasst Computerkonfigurationsdaten. Wird beim Bewerten von Computern für die Migration zu Azure verwendet.<br/>- **Bewertungs-Agent**: Der Agent sammelt Leistungsdaten. Wird beim Bewerten von Computern für die Migration zu Azure verwendet.<br/>- **Dienst für automatische Aktualisierungen**: Aktualisiert Appliancekomponenten (wird alle 24 Stunden ausgeführt).
+**Appliancekomponenten** | Die Appliance verfügt über die folgenden Komponenten: <br/><br/> - **Verwaltungs-App**: Dies ist eine Web-App für Benutzereingaben während der Appliance-Bereitstellung. Wird beim Bewerten von Computern für die Migration zu Azure verwendet.<br/> - **Ermittlungs-Agent**: Der Agent erfasst Computerkonfigurationsdaten. Wird beim Bewerten von Computern für die Migration zu Azure verwendet.<br/>- **Collector-Agent**: Der Agent sammelt Leistungsdaten. Wird beim Bewerten von Computern für die Migration zu Azure verwendet.<br/>- **Dienst für automatische Aktualisierungen**: Aktualisiert Appliancekomponenten (wird alle 24 Stunden ausgeführt).
 **Unterstützte Bereitstellung** | Bereitstellen als dedizierter physischer Computer oder als virtueller Computer mithilfe eines PowerShell-Installationsskripts. Das Skript steht im Portal als Download zur Verfügung.
 **Projektunterstützung** |  Eine Appliance kann einem einzelnen Projekt zugeordnet werden. <br/> Einem einzelnen Projekt kann eine beliebige Anzahl von Appliances zugeordnet werden.<br/> 
 **Ermittlungsgrenzwerte** | Eine Appliance kann bis zu 1.000 physische Server ermitteln.
-**PowerShell-Skript** | Laden Sie das Skript (AzureMigrateInstaller.ps1) in einem gezippten Ordner aus dem Portal herunter. [Weitere Informationen](tutorial-assess-physical.md#set-up-the-appliance) Alternativ können Sie es [direkt herunterladen](https://go.microsoft.com/fwlink/?linkid=2105112).<br/><br/> Die Downloadgröße beträgt 63,1 MB.
+**PowerShell-Skript** | Laden Sie das Skript (AzureMigrateInstaller.ps1) in einem gezippten Ordner aus dem Portal oder [hier](https://go.microsoft.com/fwlink/?linkid=2140334) herunter. [Weitere Informationen](tutorial-assess-physical.md#set-up-the-azure-migrate-appliance)<br/><br/> Die Downloadgröße beträgt 85 MB.
 **Software/Hardware** |  Die Appliance sollte auf einem Computer mit Windows Server 2016, 16 GB RAM, 8 vCPUs, etwa 80 GB Speicherplatz und einem externen virtuellen Switch ausgeführt werden.<br/> Die Appliance erfordert eine statische oder dynamische IP-Adresse sowie Zugriff auf das Internet, entweder direkt oder über einen Proxy.<br/><br/> Wenn Sie die Appliance auf einem physischen Computer ausführen, stellen Sie sicher, dass sie unter Windows Server 2016 läuft und die Hardwareanforderungen erfüllt.<br/> Das Ausführen der Appliance auf einem Computer mit Windows Server 2019 wird nicht unterstützt.
 **Hashwert** | [Überprüfen](deploy-appliance-script.md#verify-file-security) Sie die PowerShell-Skripthashwerte.
 
@@ -465,7 +465,7 @@ Die Appliance wird aktualisiert, wenn die auf der Appliance ausgeführten Azure 
 Sie können die automatische Aktualisierung über eine der folgenden Methoden aktivieren:
 
 - Löschen des AutoUpdate-Registrierungsschlüssels unter „HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance“.
-- Nach Abschluss der Ermittlung im Appliance-Konfigurations-Manager.
+- Klicken Sie in den Überprüfungen auf aktuelle Updates im Bereich **Erforderliche Komponenten einrichten** auf **Appliancedienste anzeigen**, um die automatische Aktualisierung zu aktivieren.
 
 So löschen Sie den Registrierungsschlüssel:
 
@@ -475,24 +475,24 @@ So löschen Sie den Registrierungsschlüssel:
 
 Aktivierung im Appliance-Konfigurations-Manager nach Abschluss der Ermittlung:
 
-1. Öffnen Sie auf dem Computer mit der Appliance den Appliance-Konfigurations-Manager.
-2. Klicken Sie unter **Appliancedienste** > **Die automatische Aktualisierung der Azure Migrate-Komponenten ist deaktiviert** auf die Option zum Aktivieren der automatischen Aktualisierung.
+1. Wechseln Sie im Appliance-Konfigurations-Manager zum Bereich **Erforderliche Komponenten einrichten**.
+2. Klicken Sie in der Überprüfung auf aktuelle Updates auf **Appliancedienste anzeigen** und dann auf den Link zum Aktivieren der automatischen Aktualisierung.
 
-    ![Aktivieren der automatischen Aktualisierung](./media/migrate-appliance/turn-on.png)
+    ![Aktivieren der automatischen Aktualisierung](./media/migrate-appliance/autoupdate-off.png)
 
 ### <a name="check-the-appliance-services-version"></a>Überprüfen der Appliancediensteversion
 
 Sie können die Version der Appliancedienste über eine der folgenden Methoden überprüfen:
 
-- Im Appliance-Konfigurations-Manager, nachdem die Ermittlung abgeschlossen wurde.
+- Wechseln Sie im Appliance-Konfigurations-Manager zum Bereich **Erforderliche Komponenten einrichten**.
 - Auf dem Computer mit der Appliance unter **Systemsteuerung** > **Programme und Features**.
 
 So überprüfen Sie die Version im Appliance-Konfigurations-Manager:
 
-1. Öffnen Sie nach Abschluss der Ermittlung den Appliance-Konfigurations-Manager (in der Appliance-Web-App).
-2. Überprüfen Sie die Version der Appliancedienste unter **Appliancedienste**.
+1. Wechseln Sie im Appliance-Konfigurations-Manager zum Bereich **Erforderliche Komponenten einrichten**.
+2. Klicken Sie in der Überprüfung auf aktuelle Updates auf **Appliancedienste anzeigen**.
 
-    ![Überprüfen der Version](./media/migrate-appliance/version.png)
+    ![Überprüfen der Version](./media/migrate-appliance/versions.png)
 
 So überprüfen Sie die Version in der Systemsteuerung:
 

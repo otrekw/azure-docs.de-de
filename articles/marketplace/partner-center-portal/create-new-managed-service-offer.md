@@ -7,12 +7,12 @@ ms.topic: how-to
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.date: 08/07/2020
-ms.openlocfilehash: 75c604df2f44e9c732fa9c2ce2093237e4e484a4
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 9ff11312b6d231927f5053868b64e0b825df371e
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606054"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816982"
 ---
 # <a name="create-a-managed-service-offer"></a>Erstellen eines Angebots für einen verwalteten Dienst
 
@@ -135,18 +135,19 @@ In diesem Abschnitt können Sie Logos und Bilder bereitstellen, die beim Anzeige
 >[!NOTE]
 >Wenn beim Hochladen von Dateien ein Problem auftritt, vergewissern Sie sich, dass das lokale Netzwerk den von Partner Center verwendeten Dienst https://upload.xboxlive.com nicht blockiert.
 
-#### <a name="marketplace-logos"></a>Marketplace-Logos
+#### <a name="store-logos"></a>Store-Logos
 
-Stellen Sie ein Logo für Ihr Angebot in vier Bildauflösungen bereit:
+Geben Sie eine PNG-Datei für das **große** Logo an. Dies wird in Partner Center verwendet, um ein **kleines** und ein **mittleres** Logo zu erstellen. Sie können diese Logos später durch andere Bilder ersetzen.
 
-- **Klein** (48 x 48)
-- **Mittel** (90 x 90)
-- **Groß** (216 x 216)
-- **Breit** (255 x 115)
+- **Groß** (von 216 × 216 bis 350 × 350 Pixel, erforderlich)
+- **Mittel** (90 × 90 Pixel, optional)
+- **Klein** (48 × 48 Pixel, optional)
 
-Diese Logos werden an unterschiedlichen Stellen im Azure Marketplace verwendet:
+Diese Logos werden an unterschiedlichen Stellen in der Auflistung verwendet:
 
 [!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
+
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Screenshots
 

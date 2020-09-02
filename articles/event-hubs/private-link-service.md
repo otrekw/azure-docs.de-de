@@ -3,12 +3,12 @@ title: Integrieren von Azure Event Hubs in den Azure Private Link-Dienst
 description: Erfahren Sie, wie Sie Azure Event Hubs in den Azure Private Link-Dienst integrieren.
 ms.date: 07/29/2020
 ms.topic: article
-ms.openlocfilehash: 8d6d5c13e1a5eab55998d3b98596ce845de104eb
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 817ec7b9256829ace61a0d1dad98f1f34683c95e
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185467"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716790"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-via-private-endpoints"></a>Gewähren des Zugriffs auf Azure Event Hubs-Namespaces über private Endpunkte 
 Mit dem Azure Private Link-Dienst können Sie über einen **privaten Endpunkt** in Ihrem virtuellen Netzwerk auf Azure-Dienste wie Azure Event Hubs, Azure Storage und Azure Cosmos DB sowie auf in Azure gehostete Kunden-/Partnerdienste zugreifen.
@@ -222,7 +222,7 @@ Es gibt vier Möglichkeiten für den Bereitstellungsstatus:
 2. Wählen Sie den **privaten Endpunkt** aus, den Sie genehmigen möchten.
 3. Wählen Sie die Schaltfläche **Genehmigen** aus.
 
-    ![Image](./media/private-link-service/approve-private-endpoint.png)
+    ![Genehmigen des privaten Endpunkts](./media/private-link-service/approve-private-endpoint.png)
 4. Geben Sie auf der Seite **Verbindung genehmigen** einen Kommentar ein (optional), und wählen Sie dann **Ja** aus. Wenn Sie **Nein** auswählen, geschieht nichts. 
 5. Der Status der Verbindung mit dem privaten Endpunkt sollte in der Liste in **Genehmigt** geändert werden. 
 
@@ -230,7 +230,7 @@ Es gibt vier Möglichkeiten für den Bereitstellungsstatus:
 
 1. Falls Sie eine Verbindung mit einem privaten Endpunkt ablehnen möchten, wählen Sie die Verbindung aus, und klicken Sie auf die Schaltfläche **Ablehnen**. Dies funktioniert sowohl für ausstehende Anforderungen als auch für bereits vorhandene Verbindungen.
 
-    ![Image](./media/private-link-service/private-endpoint-reject-button.png)
+    ![Ablehnen des privaten Endpunkts](./media/private-link-service/private-endpoint-reject-button.png)
 2. Geben Sie auf der Seite **Verbindung ablehnen** einen Kommentar ein (optional), und wählen Sie dann **Ja** aus. Wenn Sie **Nein** auswählen, geschieht nichts. 
 3. Der Status der Verbindung mit dem privaten Endpunkt sollte in der Liste in **Abgelehnt** geändert werden. 
 
@@ -242,7 +242,7 @@ Es gibt vier Möglichkeiten für den Bereitstellungsstatus:
 
 ## <a name="validate-that-the-private-link-connection-works"></a>Überprüfen, ob die Private Link-Verbindung funktioniert
 
-Vergewissern Sie sich, dass die Ressourcen innerhalb des Subnetzes, in dem sich auch die private Endpunktressource befindet, mit Ihrem Event Hubs-Namespace eine Verbindung über eine private IP-Adresse herstellen, und dass die Integration in die private DNS-Zone korrekt ist.
+Vergewissern Sie sich, dass Ressourcen innerhalb des virtuellen Netzwerks, in dem sich auch der private Endpunkt befindet, mit Ihrem Event Hubs-Namespace eine Verbindung über eine private IP-Adresse herstellen, und dass die Integration in die private DNS-Zone korrekt ist.
 
 Erstellen Sie zunächst einen virtuellen Computer. Eine entsprechende Anleitung finden Sie unter [Schnellstart: Erstellen eines virtuellen Windows-Computers im Azure-Portal](../virtual-machines/windows/quick-create-portal.md).
 

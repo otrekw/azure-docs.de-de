@@ -10,20 +10,21 @@ tags: azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 05/16/2019
+ms.date: 08/19/2020
 ms.author: amverma
-ms.openlocfilehash: fed5606da84d8311785752cc8319b7a3c642c1f5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.reviewer: cynthn
+ms.openlocfilehash: 7c66af5184c4a943fd4b3185a87623112fe0d954
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86508031"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691240"
 ---
 # <a name="hb-series-virtual-machines-overview"></a>Übersicht über virtuelle Computer der HB-Serie
 
 Die Maximierung der Leistung von HPC-Anwendungen (High Performance Computing) für AMD EPYC erfordert ein durchdachtes Konzept für die Lokalität des Arbeitsspeichers und die Prozessplatzierung. Im Anschluss finden Sie einen Überblick über die AMD EPYC-Architektur sowie über unsere Implementierung in Azure für HPC-Anwendungen. Der Begriff „pNUMA“ bezieht sich hier auf eine physische NUMA-Domäne; „vNUMA“ steht für eine virtualisierte NUMA-Domäne.
 
-Physisch handelt es sich bei einem virtuellen Computer der HC-Serie um zwei EPYC 7551-CPUs mit jeweils 32 Kernen, wodurch sich eine Gesamtanzahl von 64 physischen Kernen ergibt. Diese 64 Kerne sind in 16 pNUMA-Domänen (acht pro Socket) unterteilt, die jeweils vier Kerne umfassen und als CPU-Komplex (CPU Complex, CCX) bezeichnet werden. Jeder CCX verfügt über einen eigenen L3-Cache, der dem Betriebssystem eine pNUMA-/vNUMA-Grenze signalisiert. Ein Paar von benachbarten CCXs teilt sich jeweils den Zugriff auf zwei Kanäle des physischen DRAM. (Server der HB-Serie verfügen über 32 GB DRAM.)
+Physisch handelt es sich bei einem Server der [HB-Serie](../../hb-series.md) um zwei EPYC 7551-CPUs mit jeweils 32 Kernen, wodurch sich eine Gesamtanzahl von 64 physischen Kernen ergibt. Diese 64 Kerne sind in 16 pNUMA-Domänen (acht pro Socket) unterteilt, die jeweils vier Kerne umfassen und als CPU-Komplex (CPU Complex, CCX) bezeichnet werden. Jeder CCX verfügt über einen eigenen L3-Cache, der dem Betriebssystem eine pNUMA-/vNUMA-Grenze signalisiert. Ein Paar von benachbarten CCXs teilt sich jeweils den Zugriff auf zwei Kanäle des physischen DRAM. (Server der HB-Serie verfügen über 32 GB DRAM.)
 
 Damit der Azure-Hypervisor über genügend Platz verfügt, um ohne Beeinträchtigung des virtuellen Computers agieren zu können, wird die physische pNUMA-Domäne 0 (der erste CCX) reserviert. Anschließend werden die pNUMA-Domänen 1–15 (die verbleibenden CCX-Einheiten) für den virtuellen Computer zugewiesen. Für den virtuellen Computer steht also Folgendes zur Verfügung:
 
@@ -33,38 +34,35 @@ Dem virtuellen Computer ist nicht bekannt, dass ihm pNUMA 0 nicht zugewiesen wu
 
 Eine feste Prozesszuordnung (Process Pinning) funktioniert bei virtuellen Computern der HB-Serie, da der zugrunde liegende Chip unverändert für den virtuellen Gastcomputer verfügbar gemacht wird. Aus Leistungs- und Konsistenzgründen wird dringend empfohlen, Prozesse fest zuzuordnen.
 
-Bei LinkedIn finden Sie weitere Informationen zur [Architektur von AMD EPYC](https://bit.ly/2Epv3kC) sowie zu [Architekturen mit mehreren Chips](https://bit.ly/2GpQIMb). Ausführlichere Informationen finden Sie im [HPC-Optimierungsleitfaden für AMD EPYC-Prozessoren](https://bit.ly/2T3AWZ9).
-
 Das folgende Diagramm zeigt die Trennung zwischen den Kernen, die für den Azure-Hypervisor reserviert sind, und den Kernen für den virtuellen Computer der HB-Serie:
 
 ![Trennung zwischen den Kernen, die für den Azure-Hypervisor reserviert sind, und den Kernen für den virtuellen Computer der HB-Serie](./media/hb-series-overview/segregation-cores.png)
 
 ## <a name="hardware-specifications"></a>Hardwarespezifikationen
 
-| HW-Spezifikationen                | Virtueller Computer der HB-Serie                     |
+| Hardwarespezifikationen                | Virtueller Computer der HB-Serie                     |
 |----------------------------------|----------------------------------|
 | Kerne                            | 60 (SMT deaktiviert)                |
-| CPU                              | AMD EPYC 7551*                   |
+| CPU                              | AMD EPYC 7551                    |
 | CPU-Frequenz (ohne AVX)          | ~2,55 GHz (einzeln + alle Kerne)   |
-| Arbeitsspeicher                           | 4 GB/Kern (insgesamt 240 GB)            |
-| Lokaler Datenträger                       | 700 GB NVMe                      |
-| InfiniBand                       | 100 GBit EDR Mellanox ConnectX-5** |
-| Netzwerk                          | 50-GBit-Ethernet (davon 40 GBit nutzbar); Azure-SmartNIC der zweiten Generation*** |
+| Arbeitsspeicher                           | 4 GB/Kern (240 GB insgesamt)         |
+| Lokaler Datenträger                       | 700 GB SSD                       |
+| InfiniBand                       | 100 GBit EDR Mellanox ConnectX-5 |
+| Netzwerk                          | 50-GBit-Ethernet (davon 40 GBit nutzbar); Azure-SmartNIC der zweiten Generation |
 
 ## <a name="software-specifications"></a>Softwarespezifikationen
 
-| SW-Spezifikationen           |Virtueller Computer der HB-Serie           |
+| Softwarespezifikationen           |Virtueller Computer der HB-Serie           |
 |-----------------------------|-----------------------|
-| Maximale MPI-Auftragsgröße            | 6\.000 Kerne (100 VM-Skalierungsgruppen), 12.000 Kerne (200 VM-Skalierungsgruppen)  |
-| MPI-Unterstützung                 | MVAPICH2, OpenMPI, MPICH, Platform MPI, Intel MPI  |
+| Maximale MPI-Auftragsgröße            | 18000 Kerne (300 VMs in einer einzelnen VM-Skalierungsgruppe mit singlePlacementGroup=true)  |
+| MPI-Unterstützung                 | HPC-X, Intel MPI, OpenMPI, MVAPICH2, MPICH, Platform MPI  |
 | Zusätzliche Frameworks       | Unified Communication X, libfabric, PGAS |
-| Azure Storage-Unterstützung       | Standard und Premium (max. vier Datenträger) |
+| Azure Storage-Unterstützung       | Standard- und Premium-Datenträger (maximal 4 Datenträger) |
 | Betriebssystemunterstützung für SR-IOV/RDMA   | CentOS/RHEL 7.6+, SLES 12 SP4+, WinServer 2016+  |
-| Azure CycleCloud-Unterstützung    | Ja                         |
-| Azure Batch-Unterstützung         | Ja                         |
+| Orchestratorunterstützung        | CycleCloud, Batch  |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informieren Sie sich ausführlicher über HPC-VM-Größen für [Linux](../../sizes-hpc.md) und [Windows](../../sizes-hpc.md) in Azure.
-
-* Informieren Sie sich ausführlicher über [HPC](/azure/architecture/topics/high-performance-computing/) in Azure.
+- Erfahren Sie mehr über die [Architektur von AMD EPYC](https://bit.ly/2Epv3kC) und die [Architekturen mit mehreren Chips](https://bit.ly/2GpQIMb). Ausführlichere Informationen finden Sie im [HPC-Optimierungsleitfaden für AMD EPYC-Prozessoren](https://bit.ly/2T3AWZ9).
+- Informieren Sie sich in den [Tech Community-Blogs zu Azure Compute](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute) über die neuesten Ankündigungen, und machen Sie sich mit einigen HPC-Beispielen und Ergebnissen vertraut.
+- Eine allgemeinere Architekturübersicht zur Ausführung von HPC-Workloads finden Sie unter [High Performance Computing (HPC) in Azure](/azure/architecture/topics/high-performance-computing/).

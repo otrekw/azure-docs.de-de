@@ -9,9 +9,9 @@
       href: supported-data-stores.md
 - name: Schnellstarts
   items:
-    - name: 'Erstellen einer Datenfreigabe: Azure-Portal'
+    - name: 'Freigeben von Daten: Azure-Portal'
       href: share-your-data-portal.md
-    - name: 'Erstellen einer Datenfreigabe: ARM-Vorlage'
+    - name: 'Freigeben von Daten: ARM-Vorlage'
       displayName: Resource Manager
       href: share-your-data-arm.md
 - name: Tutorials
@@ -39,6 +39,10 @@
   items:
     - name: Freigeben und Empfangen von Daten nach Quelle
       items:
+        - name: Freigeben aus Azure Storage
+          href: how-to-share-from-storage.md
+        - name: Freigeben aus Azure SQL-Datenbank oder Synapse Analytics
+          href: how-to-share-from-sql.md
         - name: Freigeben über Azure Data Explorer
           href: /azure/data-explorer/data-share
           maintainContext: true

@@ -8,18 +8,18 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 08/25/2020
 ms.custom: seodec18
-ms.openlocfilehash: 61c969bc0c0ac9731ae35e445b82db633c3c5191
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: cbf1c678307d76361e6083f4e2231fb9e48a112f
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163168"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855157"
 ---
 # <a name="querying-data-from-azure-time-series-insights-gen2"></a>Abfragen von Daten in Azure Time Series Insights Gen2
 
-Azure Time Series Insights Gen2 ermöglicht das Abfragen von Daten für Ereignisse und Metadaten, die in der Umgebung gespeichert sind, über öffentliche Oberflächen-APIs. Diese APIs werden auch im [Azure Time Series Insights Gen2-Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-explorer) verwendet.
+Azure Time Series Insights Gen2 ermöglicht das Abfragen von Daten für Ereignisse und Metadaten, die in der Umgebung gespeichert sind, über öffentliche Oberflächen-APIs. Diese APIs werden auch im [Azure Time Series Insights TSI-Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-explorer) verwendet.
 
 Drei primäre API-Kategorien sind in Azure Time Series Insights Gen2 verfügbar:
 
@@ -73,4 +73,4 @@ Diese APIs sind in beiden Speichern (warm und kalt) unserer mehrschichtigen Spei
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erfahren Sie mehr über verschiedene Variablen, die im [Zeitreihenmodell](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-tsm) definiert werden können.
-* Erfahren Sie mehr über das Abfragen von Daten im [Azure Time Series Insights Gen2-Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-explorer).
+* Erfahren Sie mehr über das Abfragen von Daten im [Azure Time Series Insights TSI-Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-explorer).
