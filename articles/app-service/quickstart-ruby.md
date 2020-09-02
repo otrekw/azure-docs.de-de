@@ -6,19 +6,19 @@ ms.assetid: 6d00c73c-13cb-446f-8926-923db4101afa
 ms.topic: quickstart
 ms.date: 07/11/2019
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 875649d2405aa5542a7b66e247cc50d4b2cba20d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 49f2100386af21cee8f76403d7a2d2e4ac6b8f63
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88083955"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961331"
 ---
 # <a name="create-a-ruby-on-rails-app-in-app-service"></a>Erstellen einer Ruby on Rails-App in App Service
 
-[Azure App Service für Linux](overview.md#app-service-on-linux) bietet einen hochgradig skalierbaren Webhostingdienst mit Self-Patching unter dem Linux-Betriebssystem. In diesem Schnellstarttutorial wird erläutert, wie Sie mit [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) eine Ruby on Rails-App in App Service für Linux bereitstellen.
+[Azure App Service für Linux](overview.md#app-service-on-linux) bietet einen hochgradig skalierbaren Webhostingdienst mit Self-Patching unter dem Linux-Betriebssystem. In diesem Schnellstarttutorial wird erläutert, wie Sie mit [Cloud Shell](../cloud-shell/overview.md) eine Ruby on Rails-App in App Service für Linux bereitstellen.
 
 > [!NOTE]
-> Der Ruby-Entwicklungsstapel unterstützt derzeit nur Ruby on Rails. Wenn Sie eine andere Plattform, z. B. Sinatra, oder eine nicht unterstützte Ruby-Version verwenden möchten, müssen Sie diese [in einem benutzerdefinierten Container ausführen](containers/quickstart-docker-go.md).
+> Der Ruby-Entwicklungsstapel unterstützt derzeit nur Ruby on Rails. Wenn Sie eine andere Plattform, z. B. Sinatra, oder eine nicht unterstützte Ruby-Version verwenden möchten, müssen Sie diese [in einem benutzerdefinierten Container ausführen](./quickstart-custom-container.md?pivots=platform-linux%3fpivots%3dplatform-linux).
 
 ![Hello-world](./media/quickstart-ruby/hello-world-configured.png)
 

@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: 19d46c034d56c1c54f8a00f08a7e3e72e758984f
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: 8f004ff8118829ebf2d245a136cf22cdde23accc
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488204"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929787"
 ---
 # <a name="quickstart-use-search-explorer-to-run-queries-in-the-portal"></a>Schnellstart: Verwenden des Suchexplorers zum Ausführen von Abfragen im Portal
 
 Der **Suchexplorer** ist ein integriertes Abfragetool, das zum Ausführen von Abfragen über einen Suchindex in Azure Cognitive Search verwendet wird. Mit diesem Tool können Sie problemlos Abfragesyntax erlernen, einen Abfrage- oder Filterausdruck testen oder eine Datenaktualisierung bestätigen, indem Sie überprüfen, ob neue Inhalte im Index vorhanden sind.
 
-In diesem Schnellstart wird der Suchexplorer anhand eines vorhandenen Index veranschaulicht. Anforderungen werden mit der [Search-REST-API](https://docs.microsoft.com/rest/api/searchservice/) formuliert, und Antworten werden als JSON-Dokumente zurückgegeben.
+In diesem Schnellstart wird der Suchexplorer anhand eines vorhandenen Index veranschaulicht. Anforderungen werden mit der [Search-REST-API](/rest/api/searchservice/) formuliert, und Antworten werden als JSON-Dokumente zurückgegeben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -133,7 +133,7 @@ Fügen Sie [ **$orderby**](search-query-odata-orderby.md) hinzu, um die Ergebnis
 
    ![orderby-Ausdruck](./media/search-explorer/search-explorer-example-ordery.png "Ändern der Sortierreihenfolge")
 
-Die Ausdrücke **$filter** und **$orderby** sind OData-Konstrukte. Weitere Informationen finden Sie unter [OData Expression Syntax for Azure Search](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) (OData-Ausdruckssyntax für Azure Search).
+Die Ausdrücke **$filter** und **$orderby** sind OData-Konstrukte. Weitere Informationen finden Sie unter [OData Expression Syntax for Azure Search](/rest/api/searchservice/odata-expression-syntax-for-azure-search) (OData-Ausdruckssyntax für Azure Search).
 
 <a name="start-search-explorer"></a>
 
@@ -147,7 +147,7 @@ In diesem Schnellstart haben Sie den **Suchexplorer** verwendet, um einen Index 
 
 + Freiformabfragen ähneln der Eingabe in kommerziellen Webbrowsern und eignen sich zum Testen der Endbenutzererfahrung. Beim integrierten Beispielimmobilienindex könnten Sie z.B. „Seattle apartments lake washington“ eingeben und dann mit STRG+F Begriffe in den Suchergebnissen finden. 
 
-+ Abfrage- und Filterausdrücke werden in einer Syntax formuliert, die von Azure Cognitive Search unterstützt wird. Der Standardwert ist eine [einfache Syntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search), Sie können aber optional für leistungsstarke Abfragen die [vollständige Lucene-Syntax](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) verwenden. [Filterausdrücke](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) folgen einer OData-Syntax.
++ Abfrage- und Filterausdrücke werden in einer Syntax formuliert, die von Azure Cognitive Search unterstützt wird. Der Standardwert ist eine [einfache Syntax](/rest/api/searchservice/simple-query-syntax-in-azure-search), Sie können aber optional für leistungsstarke Abfragen die [vollständige Lucene-Syntax](/rest/api/searchservice/lucene-query-syntax-in-azure-search) verwenden. [Filterausdrücke](/rest/api/searchservice/odata-expression-syntax-for-azure-search) folgen einer OData-Syntax.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -159,7 +159,7 @@ Denken Sie bei Verwendung eines kostenlosen Diensts an die Beschränkung auf max
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Um mehr über Abfragestrukturen und -syntax zu erfahren, verwenden Sie Postman oder ein gleichwertiges Tool, um Abfrageausdrücke zu erstellen, die mehr Teile der API nutzen. Die [Search-REST-API](https://docs.microsoft.com/rest/api/searchservice/) ist besonders hilfreich für das Lernen und Erkunden.
+Um mehr über Abfragestrukturen und -syntax zu erfahren, verwenden Sie Postman oder ein gleichwertiges Tool, um Abfrageausdrücke zu erstellen, die mehr Teile der API nutzen. Die [Search-REST-API](/rest/api/searchservice/) ist besonders hilfreich für das Lernen und Erkunden.
 
 > [!div class="nextstepaction"]
 > [Erstellen einer einfachen Abfrage in Postman](search-query-simple-examples.md)

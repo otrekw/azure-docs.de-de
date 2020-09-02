@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34cc8154660db8afcd5859d45ccfd622bc7ca88f
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 53f99456449e778ff7c1fd3ab096e1afd3562c1e
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039822"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948860"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>Schnellstart: Fordern der Annahme von Nutzungsbedingungen vor dem Zugreifen auf Cloud-Apps
 
@@ -25,7 +25,7 @@ Bevor Sie den Zugriff auf bestimmte Cloud-Apps in Ihrer Umgebung gewähren, möc
 - Eine einfache Methode zum Konfigurieren der Nutzungsbedingungen
 - Die Option zum Fordern der Annahme Ihrer Nutzungsbedingungen über eine Richtlinie für bedingten Zugriff  
 
-Dieser Schnellstart veranschaulicht das Konfigurieren einer [Azure AD-Richtlinie für bedingten Zugriff](../active-directory-conditional-access-azure-portal.md), durch die für eine ausgewählte Cloud-App in Ihrer Umgebung erforderlich ist, dass Nutzungsbedingungen akzeptiert werden.
+Dieser Schnellstart veranschaulicht das Konfigurieren einer [Azure AD-Richtlinie für bedingten Zugriff](./overview.md), durch die für eine ausgewählte Cloud-App in Ihrer Umgebung erforderlich ist, dass Nutzungsbedingungen akzeptiert werden.
 
 ![Richtlinie erstellen](./media/require-tou/5555.png)
 
@@ -209,4 +209,4 @@ Löschen Sie den Testbenutzer, wenn er nicht mehr benötigt wird, und löschen S
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Vorschreiben der Verwendung der MFA für bestimmte Apps](app-based-mfa.md)
+> [Vorschreiben der Verwendung der MFA für bestimmte Apps](../authentication/tutorial-enable-azure-mfa.md)

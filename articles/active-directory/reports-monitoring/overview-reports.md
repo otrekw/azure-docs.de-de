@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c2ae9e7654fa468d499ca6ef8543b98b1e372ca
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 5c07500ec432d176b2cf74aa95f0a1c943348f9f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85481390"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229515"
 ---
 # <a name="what-are-azure-active-directory-reports"></a>Was sind Azure Active Directory-Berichte?
 
@@ -44,9 +44,9 @@ Die Architektur der Berichterstellung basiert auf zwei Hauptkomponenten:
 
 Mit den Sicherheitsberichten können Sie die Identitäten Ihrer Organisation schützen. Es gibt zwei Arten von Sicherheitsberichten:
 
-- **Benutzer mit Risikomarkierung:** Im [Sicherheitsbericht „Benutzer mit Risikomarkierung“](concept-user-at-risk.md) erhalten Sie eine Übersicht über Benutzerkonten, die unter Umständen kompromittiert wurden.
+- **Benutzer mit Risikomarkierung:** Im [Sicherheitsbericht „Benutzer mit Risikomarkierung“](../identity-protection/overview-identity-protection.md) erhalten Sie eine Übersicht über Benutzerkonten, die unter Umständen kompromittiert wurden.
 
-- **Riskante Anmeldungen:** Mit dem [Sicherheitsbericht „Riskante Anmeldungen“](concept-risky-sign-ins.md) erhalten Sie einen Indikator für Anmeldeversuche von Benutzern, die nicht der rechtmäßige Besitzer eines Benutzerkontos sind. 
+- **Riskante Anmeldungen:** Mit dem [Sicherheitsbericht „Riskante Anmeldungen“](../identity-protection/overview-identity-protection.md) erhalten Sie einen Indikator für Anmeldeversuche von Benutzern, die nicht der rechtmäßige Besitzer eines Benutzerkontos sind. 
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-a-security-report"></a>Welche Azure AD-Lizenz benötigen Sie für den Zugriff auf einen Sicherheitsbericht?  
 
@@ -81,7 +81,7 @@ Der [Bericht „Überwachungsprotokolle“](concept-audit-logs.md) enthält Date
 
 #### <a name="what-azure-ad-license-do-you-need-to-access-the-audit-logs-report"></a>Welche Azure AD-Lizenz benötigen Sie, um auf den Bericht „Überwachungsprotokolle“ zuzugreifen?  
 
-Der Bericht „Überwachungsprotokolle“ ist für Features verfügbar, für die Sie über Lizenzen verfügen. Wenn Sie im Besitz einer Lizenz für ein bestimmtes Feature sind, haben Sie auch Zugriff auf die dazugehörigen Informationen zum Überwachungsprotokoll. Einen detaillierten Vergleich der Funktionen bei den [verschiedenen Lizenztypen](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#what-are-the-azure-ad-licenses) finden Sie auf der Seite [Azure Active Directory – Preise](https://azure.microsoft.com/pricing/details/active-directory/). Weitere Informationen finden Sie unter [Azure Active Directory-Features und -Funktionen](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#which-features-work-in-azure-ad).
+Der Bericht „Überwachungsprotokolle“ ist für Features verfügbar, für die Sie über Lizenzen verfügen. Wenn Sie im Besitz einer Lizenz für ein bestimmtes Feature sind, haben Sie auch Zugriff auf die dazugehörigen Informationen zum Überwachungsprotokoll. Einen detaillierten Vergleich der Funktionen bei den [verschiedenen Lizenztypen](../fundamentals/active-directory-whatis.md#what-are-the-azure-ad-licenses) finden Sie auf der Seite [Azure Active Directory – Preise](https://azure.microsoft.com/pricing/details/active-directory/). Weitere Informationen finden Sie unter [Azure Active Directory-Features und -Funktionen](../fundamentals/active-directory-whatis.md#which-features-work-in-azure-ad).
 
 ### <a name="sign-ins-report"></a>Bericht zu Anmeldeaktivitäten
 
@@ -101,6 +101,6 @@ Zusätzlich zur Benutzeroberfläche ermöglicht Azure AD Ihnen über eine Reihe 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Bericht „Riskante Anmeldungen“](concept-risky-sign-ins.md)
+- [Bericht „Riskante Anmeldungen“](../identity-protection/overview-identity-protection.md)
 - [Bericht „Überwachungsprotokolle“](concept-audit-logs.md)
 - [Bericht „Anmeldungen“](concept-sign-ins.md)

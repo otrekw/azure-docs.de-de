@@ -5,12 +5,12 @@ ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 07/06/2020
 ms.custom: devx-track-dotnet, mvc, seodec18
-ms.openlocfilehash: b6d8a73dd4f4e7c1a1e430b6f5ea494ed51d20c0
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 1b72224441741990a1fc94400dfe718ea9d1b0b3
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211702"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961481"
 ---
 # <a name="app-service-overview"></a>App Service: Übersicht
 
@@ -28,15 +28,15 @@ Hier sind einige wichtige Features von App Service aufgeführt:
 * **Verwaltete Produktionsumgebung:** App Service [patcht und wartet die Betriebssystem- und Sprachframeworks](overview-patch-os-runtime.md) automatisch für Sie. Konzentrieren Sie sich auf das Schreiben erstklassiger Apps, Azure kümmert sich um die Plattform.
 * **Containerisierung und Docker**: Dockerisieren Sie Ihre App, und hosten Sie einen benutzerdefinierten Windows- oder Linux-Container in App Service. Führen Sie mit Docker Compose Apps mit mehreren Containern aus. Übertragen Sie Ihr Docker-Know-how direkt auf App Service.
 * **DevOps-Optimierung**: Richten Sie mit Azure DevOps, GitHub, BitBucket, Docker Hub oder Azure Container Registry die [fortlaufende Integration und Bereitstellung](deploy-continuous-deployment.md) ein. Stufen Sie Updates über [Test- und Stagingumgebungen](deploy-staging-slots.md)herauf. Verwalten Sie Ihre Apps in App Service mithilfe von [Azure PowerShell](/powershell/azure/) oder der [plattformübergreifenden Befehlszeilenschnittstelle (Command-Line Interface, CLI)](/cli/azure/install-azure-cli).
-* **Globale Skalierung mit Hochverfügbarkeit** – Skalieren Sie manuell oder automatisch [zentral](manage-scale-up.md) oder [horizontal](../monitoring-and-diagnostics/insights-how-to-scale.md) hoch. Hosten Sie Ihre Apps überall in der globalen Rechenzentrumsinfrastruktur von Microsoft. Die App Service-[SLA](https://azure.microsoft.com/support/legal/sla/app-service/) garantiert Hochverfügbarkeit.
+* **Globale Skalierung mit Hochverfügbarkeit** – Skalieren Sie manuell oder automatisch [zentral](manage-scale-up.md) oder [horizontal](../azure-monitor/platform/autoscale-get-started.md) hoch. Hosten Sie Ihre Apps überall in der globalen Rechenzentrumsinfrastruktur von Microsoft. Die App Service-[SLA](https://azure.microsoft.com/support/legal/sla/app-service/) garantiert Hochverfügbarkeit.
 * **Verbindungen mit SaaS-Plattformen und lokalen Daten**: Wählen Sie aus über 50 [Connectors](../connectors/apis-list.md) für Unternehmenssysteme (z.B. SAP), SaaS-Dienste (z.B. Salesforce) sowie Internetdienste (z.B. Facebook). Greifen Sie über [Hybridverbindungen](app-service-hybrid-connections.md) und [Azure Virtual Networks](web-sites-integrate-with-vnet.md) auf lokale Daten zu.
 * **Sicherheit und Compliance** – App Service ist [ISO-, SOC- und PCI-konform](https://www.microsoft.com/en-us/trustcenter). Authentifizieren Sie Benutzer per [Azure Active Directory](configure-authentication-provider-aad.md), [Google](configure-authentication-provider-google.md), [Facebook](configure-authentication-provider-facebook.md), [Twitter](configure-authentication-provider-twitter.md) oder [Microsoft-Konto](configure-authentication-provider-microsoft.md). Erstellen Sie [IP-Adresseinschränkungen](app-service-ip-restrictions.md) und [verwalten Sie Dienstidentitäten](overview-managed-identity.md).
 * **Anwendungsvorlagen**: Wählen Sie im [Azure Marketplace](https://azure.microsoft.com/marketplace/) aus zahlreichen Anwendungsvorlagen wie WordPress, Joomla und Drupal.
 * **Visual Studio- und Visual Studio Code-Integration:** Dedizierte Tools in Visual Studio und Visual Studio Code optimieren das Erstellen, Bereitstellen und Debuggen.
 * **API und mobile Features**: App Service bietet sofort einsetzbare CORS-Unterstützung für RESTful-API-Szenarien und vereinfacht Szenarien mit mobilen Apps durch Aktivierung von Authentifizierung, Offlinedatensynchronisierung, Pushbenachrichtigungen und mehr.
-* **Serverloser Code**: Führen Sie einen Codeausschnitt oder ein Skript bei Bedarf aus, ohne explizit eine Infrastruktur bereitstellen oder verwalten zu müssen, und zahlen Sie nur für die Rechenzeit, die für Ihren Code tatsächlich erforderlich ist (siehe [Dokumentation zu Azure Functions](/azure/azure-functions/)).
+* **Serverloser Code**: Führen Sie einen Codeausschnitt oder ein Skript bei Bedarf aus, ohne explizit eine Infrastruktur bereitstellen oder verwalten zu müssen, und zahlen Sie nur für die Rechenzeit, die für Ihren Code tatsächlich erforderlich ist (siehe [Dokumentation zu Azure Functions](../azure-functions/index.yml)).
 
-Neben App Service bietet Azure noch andere Dienste an, die zum Hosten von Websites und Webanwendungen verwendet werden können. Für die meisten Szenarien ist App Service aber die beste Wahl.  Informationen zur Microservicearchitektur finden Sie in der [Azure Spring Cloud-Dokumentation](/azure/spring-cloud/) oder [Azure Service Fabric-Dokumentation](https://azure.microsoft.com/documentation/services/service-fabric).  Wenn Sie eine bessere Kontrolle über die virtuellen Computer benötigen, auf denen Ihr Code ausgeführt wird, können Sie [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/) einsetzen. Weitere Informationen zur Wahl zwischen diesen Azure-Diensten finden Sie unter [Azure App Service, Azure Cloud Services, Azure Virtual Machines und Azure Service Fabric im Vergleich](overview-compare.md).
+Neben App Service bietet Azure noch andere Dienste an, die zum Hosten von Websites und Webanwendungen verwendet werden können. Für die meisten Szenarien ist App Service aber die beste Wahl.  Informationen zur Microservicearchitektur finden Sie in der [Azure Spring Cloud-Dokumentation](../spring-cloud/index.yml) oder [Azure Service Fabric-Dokumentation](https://azure.microsoft.com/documentation/services/service-fabric).  Wenn Sie eine bessere Kontrolle über die virtuellen Computer benötigen, auf denen Ihr Code ausgeführt wird, können Sie [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/) einsetzen. Weitere Informationen zur Wahl zwischen diesen Azure-Diensten finden Sie unter [Azure App Service, Azure Cloud Services, Azure Virtual Machines und Azure Service Fabric im Vergleich](/azure/architecture/guide/technology-choices/compute-decision-tree).
 
 ## <a name="app-service-on-linux"></a>App Service unter Linux
 
@@ -44,7 +44,7 @@ Von App Service können Web-Apps für unterstützte Anwendungsstapel auch nativ 
 
 ### <a name="built-in-languages-and-frameworks"></a>Integrierte Sprachen und Frameworks
 
-Von App Service für Linux wird eine Reihe von sprachspezifischen integrierten Images unterstützt. Stellen Sie einfach Ihren Code bereit. Unterstützte Sprachen: Node.js, Java (JRE 8 und JRE 11), PHP, Python, .NET Core und Ruby. Führen Sie [`az webapp list-runtimes --linux`](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) aus, um die neuesten Sprachen und unterstützten Versionen anzuzeigen. Sollte die für Ihre Anwendung erforderliche Runtime in den integrierten Images nicht unterstützt werden, können Sie sie mit einem benutzerdefinierten Container bereitstellen.
+Von App Service für Linux wird eine Reihe von sprachspezifischen integrierten Images unterstützt. Stellen Sie einfach Ihren Code bereit. Unterstützte Sprachen: Node.js, Java (JRE 8 und JRE 11), PHP, Python, .NET Core und Ruby. Führen Sie [`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) aus, um die neuesten Sprachen und unterstützten Versionen anzuzeigen. Sollte die für Ihre Anwendung erforderliche Runtime in den integrierten Images nicht unterstützt werden, können Sie sie mit einem benutzerdefinierten Container bereitstellen.
 
 ### <a name="limitations"></a>Einschränkungen
 

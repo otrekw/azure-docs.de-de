@@ -11,12 +11,12 @@ ms.date: 01/08/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e60c35a32152d4adec72fb507becc0db535036f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 02a30aa4d553910c52a7dde89719450baf9037ce
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80631723"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278835"
 ---
 # <a name="what-is-azure-ad-connect"></a>Was ist Azure AD Connect?
 
@@ -26,7 +26,7 @@ Das Microsoft-Tool Azure AD Connect wurde entwickelt, um Sie beim Erreichen Ihre
 - [Passthrough-Authentifizierung](how-to-connect-pta.md): Eine Anmeldemethode, die Benutzern die Verwendung des gleichen Kennworts lokal und in der Cloud ermöglicht, die zusätzliche Infrastruktur einer Verbundumgebung jedoch nicht erfordert.
 - [Verbundintegration](how-to-connect-fed-whatis.md): Der Verbund ist eine optionale Komponente von Azure AD Connect und kann zum Konfigurieren einer Hybridumgebung mithilfe einer lokalen AD FS-Infrastruktur verwendet werden. Er bietet auch AD FS-Verwaltungsfunktionen wie die Zertifikaterneuerung und zusätzliche AD FS-Serverbereitstellungen.
 - [Synchronisierung](how-to-connect-sync-whatis.md): Dieser Prozess ist verantwortlich für das Erstellen von Benutzern, Gruppen und anderen Objekten.  Er stellt auch sicher, dass Identitätsinformationen für Ihre lokalen Benutzer und Gruppen denen in der Cloud entsprechen.  Diese Synchronisierung umfasst auch Kennworthashes.
-- [Systemüberwachung](whatis-hybrid-identity-health.md): Azure AD Connect Health bietet eine stabile Überwachung und einen zentralen Speicherort im Azure-Portal, um diese Aktivität anzuzeigen. 
+- [Systemüberwachung](): Azure AD Connect Health bietet eine stabile Überwachung und einen zentralen Speicherort im Azure-Portal, um diese Aktivität anzuzeigen. 
 
 
 ![Was ist Azure AD Connect?](./media/whatis-hybrid-identity/arch.png)
@@ -76,4 +76,4 @@ Umfangreiche [Nutzungsmetriken](how-to-connect-health-adfs.md#usage-analytics-fo
 - [Voraussetzungen für Azure AD Connect](how-to-connect-install-prerequisites.md) 
 - [Express-Einstellungen](how-to-connect-install-express.md)
 - [Benutzerdefinierte Einstellungen](how-to-connect-install-custom.md)
-- [Installieren des Azure AD Connect Health-Agents](how-to-connect-health-agent-install.md) 
+- [Installieren des Azure AD Connect Health-Agents](how-to-connect-health-agent-install.md)

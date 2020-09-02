@@ -9,23 +9,23 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 08/17/2020
-ms.openlocfilehash: 04619df8009aca3fecf317481d030280d5532281
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 4f969b08c16b26fe67ca6520323fcde780d43925
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510911"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929770"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-postman-using-rest-apis"></a>Schnellstart: Erstellen eines Azure Cognitive Search-Index in Postman mit REST-APIs
 > [!div class="op_single_selector"]
 > * [Postman](search-get-started-postman.md)
-> * [C#](search-create-index-dotnet.md)
+> * [C#](./search-get-started-dotnet.md)
 > * [Python](search-get-started-python.md)
 > * [Portal](search-get-started-portal.md)
 > * [PowerShell](search-howto-dotnet-sdk.md)
 >*
 
-In diesem Artikel wird erläutert, wie Sie mithilfe der [Azure Cognitive Search REST-APIs](https://docs.microsoft.com/rest/api/searchservice) und eines API-Clients zum Senden und Empfangen von Anforderungen interaktiv REST-API-Anforderungen formulieren. Mit einem API-Client und dieser Anleitung können Sie vor dem Schreiben von Code Anforderungen senden und Antworten anzeigen.
+In diesem Artikel wird erläutert, wie Sie mithilfe der [Azure Cognitive Search REST-APIs](/rest/api/searchservice) und eines API-Clients zum Senden und Empfangen von Anforderungen interaktiv REST-API-Anforderungen formulieren. Mit einem API-Client und dieser Anleitung können Sie vor dem Schreiben von Code Anforderungen senden und Antworten anzeigen.
 
 In diesem Artikel kommt die Anwendung Postman zum Einsatz. Sie können [eine Postman-Sammlung herunterladen und importieren](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Quickstart), wenn Sie lieber vordefinierte Anforderungen verwenden möchten. 
 
@@ -74,7 +74,7 @@ Formulieren Sie in Postman eine Anforderung, die wie auf dem folgenden Screensho
 
 ## <a name="1---create-an-index"></a>1\. Erstellen eines Index
 
-In Azure Cognitive Search wird der Index für gewöhnlich vor dem Laden von Daten erstellt. Für diese Aufgabe wird die [REST-API für die Indexerstellung](https://docs.microsoft.com/rest/api/searchservice/create-index) verwendet. 
+In Azure Cognitive Search wird der Index für gewöhnlich vor dem Laden von Daten erstellt. Für diese Aufgabe wird die [REST-API für die Indexerstellung](/rest/api/searchservice/create-index) verwendet. 
 
 Die URL wird um den Indexnamen `hotels` erweitert.
 
@@ -128,7 +128,7 @@ Wenn Sie diese Anforderung senden, sollten Sie die Antwort „HTTP 201“ erhalt
 
 ## <a name="2---load-documents"></a>2\. Laden von Dokumenten
 
-Das Erstellen und das Auffüllen des Index sind separate Schritte. In Azure Cognitive Search enthält der Index alle durchsuchbaren Daten. In diesem Szenario werden die Daten als JSON-Dokumente bereitgestellt. Für diese Aufgabe wird die [REST-API zum Hinzufügen, Aktualisieren oder Löschen von Dokumenten](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) verwendet. 
+Das Erstellen und das Auffüllen des Index sind separate Schritte. In Azure Cognitive Search enthält der Index alle durchsuchbaren Daten. In diesem Szenario werden die Daten als JSON-Dokumente bereitgestellt. Für diese Aufgabe wird die [REST-API zum Hinzufügen, Aktualisieren oder Löschen von Dokumenten](/rest/api/searchservice/addupdate-or-delete-documents) verwendet. 
 
 Die URL wird um die Sammlungen vom Typ `docs` sowie um den Vorgang `index` erweitert.
 
@@ -236,12 +236,12 @@ Innerhalb weniger Sekunden sollten Sie eine HTTP 201-Antwort in der Sitzungslist
 Falls Sie eine 207-Antwort erhalten, ist der Upload von mindestens einem Dokument fehlgeschlagen. Wenn Sie eine 404-Antwort erhalten, ist entweder im Header oder im Text der Anforderung ein Syntaxfehler enthalten: Vergewissern Sie sich, dass Sie den Endpunkt so geändert haben, dass er `/docs/index` enthält.
 
 > [!Tip]
-> Für ausgewählte Datenquellen können Sie als Alternative auch den *Indexer*-Ansatz verwenden, bei dem die für die Indizierung erforderliche Menge an Code vereinfacht und reduziert wird. Weitere Informationen finden Sie unter [Indexer operations](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) (Indexer-Vorgänge).
+> Für ausgewählte Datenquellen können Sie als Alternative auch den *Indexer*-Ansatz verwenden, bei dem die für die Indizierung erforderliche Menge an Code vereinfacht und reduziert wird. Weitere Informationen finden Sie unter [Indexer operations](/rest/api/searchservice/indexer-operations) (Indexer-Vorgänge).
 
 
 ## <a name="3---search-an-index"></a>3\. Durchsuchen eines Index
 
-Nachdem Sie einen Index und Dokumente geladen haben, können Sie nun über die [Search Documents-REST-API](https://docs.microsoft.com/rest/api/searchservice/search-documents) Abfragen ausführen.
+Nachdem Sie einen Index und Dokumente geladen haben, können Sie nun über die [Search Documents-REST-API](/rest/api/searchservice/search-documents) Abfragen ausführen.
 
 Die URL wird um einen Abfrageausdruck erweitert, der unter Verwendung des Suchoperators angegeben wird.
 
@@ -278,7 +278,7 @@ https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?
 ```
 
 ## <a name="get-index-properties"></a>Abfragen von Indexeigenschaften
-Sie können auch [Statistik abrufen](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics) verwenden, um die Anzahl der Dokumente und die Indexgröße abzufragen: 
+Sie können auch [Statistik abrufen](/rest/api/searchservice/get-index-statistics) verwenden, um die Anzahl der Dokumente und die Indexgröße abzufragen: 
 
 ```
 https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/stats?api-version=2020-06-30

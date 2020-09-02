@@ -6,14 +6,14 @@ ms.author: owend
 tags: azure-resource-manager
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 04/14/2020
+ms.date: 08/31/2020
 ms.custom: subject-armqs, references_regions
-ms.openlocfilehash: e282e3a7e6efc5c989955a5a6b96030b3054b446
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 3e776bf41420d38a1b208ce11a6a34e97fa92a15
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641907"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230771"
 ---
 # <a name="quickstart-create-a-server---arm-template"></a>Schnellstart: Erstellen eines Servers: ARM-Vorlage
 
@@ -106,6 +106,5 @@ Write-Host "Press [ENTER] to continue..."
 
 In dieser Schnellstartanleitung haben Sie eine ARM-Vorlage verwendet, um eine neue Ressourcengruppe und eine Azure Analysis Services-Serverressource zu erstellen. Nachdem Sie eine Serverressource anhand einer Vorlage erstellt haben, könnten die folgenden Themen für Sie relevant sein:
 
-- [Schnellstart: Erstellen eines Servers – PowerShell](analysis-services-create-powershell.md)
-- [Hinzufügen eines Beispielmodells über das Portal](analysis-services-create-sample-model.md)
-- [Konfigurieren von Serveradministrator- und Benutzerrollen](tutorials/analysis-services-tutorial-roles.md)
+> [!div class="nextstepaction"]
+> [Schnellstart: Konfigurieren der Serverfirewall – Portal](analysis-services-qs-firewall.md)   

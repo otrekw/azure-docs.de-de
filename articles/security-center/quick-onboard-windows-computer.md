@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: ecbdb6dc73082fc0fab04c8802c43219cabb6a79
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2cec55b7c9450070d2e692fae50eff9ea880c54e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519761"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013740"
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Schnellstart: Einbinden von Windows-Computern in Azure Security Center
 Nachdem Sie Ihre Azure-Abonnements integriert haben, können Sie Security Center für Ressourcen aktivieren, die außerhalb von Azure ausgeführt werden, z. B. lokale Ressourcen oder Ressourcen in anderen Clouds, indem Sie den Log Analytics-Agent bereitstellen.
@@ -74,7 +74,7 @@ Jetzt müssen Sie die heruntergeladene Datei auf dem Zielcomputer installieren.
 
 Nach Abschluss wird der **Log Analytics-Agent** in der **Systemsteuerung** angezeigt. Sie können hier Ihre Konfiguration überprüfen und sicherstellen, dass der Agent verbunden ist.
 
-Weitere Informationen zur Installation und Konfiguration des Agents finden Sie unter [Verbinden von Windows-Computern](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard).
+Weitere Informationen zur Installation und Konfiguration des Agents finden Sie unter [Verbinden von Windows-Computern](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard).
 
 Jetzt können Sie Ihre Azure-VMs und Nicht-Azure-Computer zentral überwachen. Unter **Compute** haben Sie einen Überblick über alle VMs und Computer mit Empfehlungen. Jede Spalte steht für eine Gruppe von Empfehlungen. Die Farbe stellt den aktuellen Sicherheitsstatus der VM oder des Computers für diese Empfehlung dar. In Security Center werden in Sicherheitswarnungen außerdem alle erkannten Bedrohungen für diese Computer angezeigt.
 

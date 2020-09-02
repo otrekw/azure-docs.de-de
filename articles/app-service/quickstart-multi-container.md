@@ -7,19 +7,19 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 228e6f144a1d6e3d0fc4f8fd8cb35c6f4e989ee9
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 562185697f8f80fc52b06be80a9f15271f16c0a3
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88084105"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961442"
 ---
 # <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>Erstellen einer App mit mehreren Containern (Vorschauversion) mithilfe einer Docker Compose-Konfiguration
 
 > [!NOTE]
 > Apps mit mehreren Containern befinden sich in der Vorschauphase.
 
-[Web-App für Container](overview.md#app-service-on-linux) umfasst eine flexible Möglichkeit zum Verwenden von Docker-Images. In dieser Schnellstartanleitung wird veranschaulicht, wie Sie eine App mit mehreren Containern (Vorschauversion) für Web-App für Container in [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) per Docker Compose-Konfiguration bereitstellen.
+[Web-App für Container](overview.md#app-service-on-linux) umfasst eine flexible Möglichkeit zum Verwenden von Docker-Images. In dieser Schnellstartanleitung wird veranschaulicht, wie Sie eine App mit mehreren Containern (Vorschauversion) für Web-App für Container in [Cloud Shell](../cloud-shell/overview.md) per Docker Compose-Konfiguration bereitstellen.
 
 In diesem Schnellstart wird Cloud Shell verwendet. Die Befehle können aber auch lokal über die [Azure CLI](/cli/azure/install-azure-cli) (2.0.32 oder höher) ausgeführt werden. 
 
