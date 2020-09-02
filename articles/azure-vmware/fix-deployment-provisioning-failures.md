@@ -1,18 +1,18 @@
 ---
 title: 'Azure VMware Solution: Anfordern von Hilfe zu Bereitstellungen oder Bereitstellungsfehlern'
-description: In diesem Artikel erfahren Sie, wie Sie die Informationen in Ihrer privaten Azure VMware Solution-Cloud (AVS) finden, die für das Erstellen einer Serviceanfrage zu einer AVS-Bereitstellung oder zu AVS-Bereitstellungsfehlern erforderlich sind.
+description: In diesem Artikel erfahren Sie, wie Sie die Informationen in Ihrer privaten Azure VMware Solution-Cloud finden, die für das Erstellen einer Serviceanfrage zu einer Azure VMware Solution-Bereitstellung oder zu Azure VMware Solution-Bereitstellungsfehlern erforderlich sind.
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: 05c9dee088b37c37cdcdee7e745cdcd2222b63e0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 63d5440a9e2b15463e465e1d32762889508feca1
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514576"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752240"
 ---
 # <a name="get-help-with-azure-vmware-solution-deployment-or-provisioning-failures"></a>Azure VMware Solution: Anfordern von Hilfe zu Bereitstellungen oder Bereitstellungsfehlern
 
-In diesem Artikel erfahren Sie, wie Sie Hilfe zur Bereitstellung von Azure VMware Solution (AVS) oder zu AVS-Bereitstellungsfehlern in Ihrer privaten Cloud erhalten, indem Sie eine Serviceanfrage im Azure-Portal erstellen. Zunächst müssen Sie jedoch einige wichtige Informationen aus dem Azure-Portal zusammentragen. In den meisten Fällen benötigen Sie Folgendes:
+In diesem Artikel erfahren Sie, wie Sie Hilfe zur Bereitstellung von Azure VMware Solution oder zu Azure VMware Solution-Bereitstellungsfehlern in Ihrer privaten Cloud erhalten, indem Sie eine Serviceanfrage im Azure-Portal erstellen. Zunächst müssen Sie jedoch einige wichtige Informationen aus dem Azure-Portal zusammentragen. In den meisten Fällen benötigen Sie Folgendes:
 
 - Die Korrelations-ID (der fehlgeschlagenen Bereitstellung)
 - Die ID der ExpressRoute-Verbindung (die beim fehlgeschlagenen Versuch verwendet wurde, eine vorhandene private Cloud über die ExpressRoute-Verbindung zu skalieren oder ein Peering für sie zu erstellen)
@@ -27,7 +27,7 @@ Nachstehend finden Sie die Beispielausgabe einer fehlgeschlagenen Bereitstellung
 
 Kopieren und speichern Sie diese Korrelations-ID, um sie später in der Serviceanfrage verwenden zu können. Weitere Informationen finden Sie am Ende dieses Artikels unter [Erstellen einer Supportanfrage](#create-your-support-request).
 
-Wenn der Fehler in einer der Phasen der Vorabüberprüfung auftritt, bevor die private Cloud bereitgestellt wird, wird keine Korrelations-ID generiert. In diesem Fall können Sie einfach die Informationen angeben, die Sie beim Erstellen der privaten AVS-Cloud verwendet haben, einschließlich:
+Wenn der Fehler in einer der Phasen der Vorabüberprüfung auftritt, bevor die private Cloud bereitgestellt wird, wird keine Korrelations-ID generiert. In diesem Fall können Sie einfach die Informationen angeben, die Sie beim Erstellen der privaten Azure VMware Solution-Cloud verwendet haben, einschließlich:
 
 - Standort
 - Resource group
@@ -53,7 +53,7 @@ Klicken Sie unter „Benachrichtigungen“ auf **Weitere Ereignisse im Aktivitä
 
 Suchen Sie anschließend nach dem Namen der Ressource oder einer anderen eindeutigen Information, die Sie für die Erstellung der Ressource verwendet haben, um die fehlgeschlagene Bereitstellung und die entsprechende Korrelations-ID zu ermitteln. Im folgenden Beispiel werden die Suchergebnisse für eine private Cloudressource (pc03) angezeigt.
  
-:::image type="content" source="media/fix-deployment-provisioning-failures/find-past-deployments.png" alt-text="Suchen nach früheren fehlerhaften AVS-Bereitstellungen":::
+:::image type="content" source="media/fix-deployment-provisioning-failures/find-past-deployments.png" alt-text="Suchen nach früheren fehlerhaften Azure VMware Solution-Bereitstellungen":::
  
 Wenn Sie auf den Vorgangsnamen der fehlgeschlagenen Bereitstellung klicken, wird ein Detailfenster geöffnet. Klicken Sie auf die Registerkarte „JSON“, und suchen Sie nach „correlationId“. Kopieren Sie den entsprechenden Wert, und nennen Sie ihn in der Serviceanfrage. 
  
@@ -63,7 +63,7 @@ Möglicherweise verfügen Sie bereits über eine private Cloud, und es tritt ein
 
 Wenn Sie eine private Cloud im Portal anzeigen möchten, klicken Sie auf **Konnektivität > ExpressRoute**, und kopieren Sie die **ExpressRoute-ID** in die Zwischenablage.
  
-:::image type="content" source="media/fix-deployment-provisioning-failures/expressroute-id.png" alt-text="ExpressRoute-Verbindung erfassen"::: 
+:::image type="content" source="media/fix-deployment-provisioning-failures/expressroute-id.png" alt-text="Kopieren Sie die ExpressRoute-ID in die Zwischenablage."::: 
  
 Fügen Sie die ExpressRoute-ID in das entsprechende Feld in der neuen Supportanfrage ein. Weitere Informationen finden Sie im folgenden Abschnitt [Erstellen einer Supportanfrage](#create-your-support-request).
  
@@ -74,11 +74,11 @@ Fügen Sie die ExpressRoute-ID in das entsprechende Feld in der neuen Supportanf
 
 Einen allgemeinen Leitfaden zum Erstellen einer Supportanfrage finden Sie unter [Erstellen einer Azure-Supportanfrage](../azure-portal/supportability/how-to-create-azure-support-request.md). 
 
-Dieser Artikel enthält zusätzliche Anleitungen für das Erstellen einer Supportanfrage zu AVS-Bereitstellungen oder AVS-Bereitstellungsfehlern.
+Dieser Artikel enthält zusätzliche Anleitungen für das Erstellen einer Supportanfrage zu Azure VMware Solution-Bereitstellungen oder Azure VMware Solution-Bereitstellungsfehlern.
 
 1. Klicken Sie auf das **Hilfesymbol** und dann auf **+ New support request** (+ Neue Supportanfrage).
 
-    :::image type="content" source="media/fix-deployment-provisioning-failures/open-sr-on-avs.png" alt-text="ExpressRoute-Verbindung erfassen":::
+    :::image type="content" source="media/fix-deployment-provisioning-failures/open-sr-on-avs.png" alt-text="Erfassen Sie eine ExpressRoute-ID für Ihre Supportanfrage.":::
 
 2. Füllen Sie alle Pflichtfelder aus, und klicken Sie auf die Registerkarte **Grundlegende Einstellungen**:
 

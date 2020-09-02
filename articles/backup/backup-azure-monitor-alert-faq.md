@@ -4,12 +4,12 @@ description: In diesem Artikel finden Sie Antworten auf häufige Fragen zu den B
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: f5be97458ba658f315c31ae34e540842b64e3ec4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 670314d8703889016431838a9f5b0a6dc56b84b8
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76989568"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892557"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Azure Backup-Überwachungswarnungen – häufig gestellte Fragen
 
@@ -38,7 +38,7 @@ Nachdem Sie einen LA-Arbeitsbereich erstellt haben, können Sie die Daten für m
 
 ### <a name="will-i-see-all-my-data-in-reports-after-i-configure-the-la-workspace"></a>Werden nach dem Konfigurieren des LA-Arbeitsbereichs alle meine Daten in Berichten angezeigt?
 
- Alle Daten, die nach der Konfiguration der Diagnoseeinstellungen generiert werden, werden an den LA-Arbeitsbereich gepusht und stehen in den Berichten zur Verfügung. Aufträge, die sich in Bearbeitung befinden, werden nicht mithilfe von Push für die Berichterstellung übertragen. Wenn ein Auftrag abgeschlossen wird oder zu einem Fehler führt, wird er an die Berichte gesendet.
+ Alle Daten, die nach der Konfiguration der Diagnoseeinstellungen generiert werden, werden an den LA-Arbeitsbereich gepusht und stehen in den Berichten zur Verfügung. Aufträge, die sich in Bearbeitung befinden, werden nicht mithilfe von Push für die Berichterstellung übertragen. Wenn ein Auftrag abgeschlossen wird oder fehlschlägt, wird er an die Berichte gesendet.
 
 ### <a name="can-i-view-reports-across-vaults-and-subscriptions"></a>Kann ich Berichte für verschiedene Tresore und Abonnements anzeigen?
 
@@ -47,22 +47,6 @@ Ja, Sie können Berichte über Tresore, Abonnements und Regionen hinweg anzeigen
 ### <a name="can-i-view-reports-across-tenants"></a>Kann ich Berichte mandantenübergreifend anzeigen?
 
 Wenn Sie ein [Azure Lighthouse](https://azure.microsoft.com/services/azure-lighthouse/)-Benutzer mit delegiertem Zugriff auf die Abonnements oder LA-Arbeitsbereiche Ihrer Kunden sind, können Sie in den Berichten von Backup Daten zu allen Ihren Mandanten anzeigen.
-
-### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Wie lange dauert es, bis der Auftragsstatus des Azure Backup-Agents im Portal angezeigt wird?
-
-Es kann bis zu 15 Minuten dauern, bis der Status des Azure Backup-Agent-Auftrags im Azure-Portal angezeigt wird.
-
-### <a name="when-a-backup-job-fails-how-long-does-it-take-to-raise-an-alert"></a>Wie lange dauert es, bis eine Warnung ausgelöst wird, wenn ein Sicherungsauftrag nicht erfolgreich ist?
-
-Innerhalb von 20 Minuten nach dem Azure-Sicherungsfehler wird eine Warnung ausgelöst.
-
-### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>Kann es vorkommen, dass eine E-Mail nicht gesendet wird, wenn Benachrichtigungen konfiguriert sind?
-
-Ja. In den folgenden Situationen werden keine Benachrichtigungen gesendet.
-
-* Stündliche Benachrichtigungen wurden konfiguriert, und eine Warnung wird ausgelöst und innerhalb dieser Stunde gelöst.
-* Ein Auftrag wurde abgebrochen.
-* Bei einem zweiten Sicherungsauftrag tritt ein Fehler auf, weil der ursprüngliche Sicherungsauftrag noch ausgeführt wird.
 
 ## <a name="recovery-services-vault"></a>Recovery Services-Tresor
 

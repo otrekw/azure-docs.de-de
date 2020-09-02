@@ -6,17 +6,17 @@ ms.topic: how-to
 ms.date: 07/28/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2032a7c9d9cd9b17da956dc829234462f8b9e726
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 049b962740abc98a6ac7d029c1419d40aa722165
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509602"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922564"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Verwenden von Microsoft Teams in Windows Virtual Desktop
 
 >[!IMPORTANT]
->Die Medienoptimierung für Teams wird für Microsoft 365 Government-Umgebungen nicht unterstützt.
+>Die Medienoptimierung für Teams wird für Microsoft 365 Government-Umgebungen (GCC) unterstützt. Die Medienoptimierung für Teams wird für GCC-High oder DoD nicht unterstützt.
 
 >[!NOTE]
 >Die Medienoptimierung für Microsoft Teams steht nur für den Windows Desktop-Client auf Windows 10-Computern zur Verfügung. Medienoptimierungen erfordern Windows Desktop-Clientversion 1.2.1026.0 oder höher.
@@ -32,7 +32,7 @@ Bevor Sie Microsoft Teams in Windows Virtual Desktop verwenden können, müssen 
 - [Bereiten Sie Ihr Netzwerk](/microsoftteams/prepare-network/) für Microsoft Teams vor.
 - Installieren Sie den [Windows Desktop-Client](connect-windows-7-10.md) auf einem Windows 10- oder Windows 10 IoT Enterprise-Gerät, das die [Hardwareanforderungen für Microsoft Teams auf einem Windows-PC](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/) erfüllt.
 - Stellen Sie eine Verbindung mit einer Windows 10-VM mit mehreren Sitzungen oder einer virtuellen Windows 10 Enterprise-VM her.
-- Sie können die Teams-Desktop-App mit einer computerspezifischen Installation auf dem Host installieren. Die Medienoptimierung für Microsoft Teams erfordert die Teams-Desktop-App-Version 1.3.00.4461 oder höher.
+- [Laden Sie die Teams-Desktop-App herunter](https://www.microsoft.com/microsoft-365/microsoft-teams/download-app), und führen Sie eine computerspezifische Installation auf dem Host aus. Die Medienoptimierung für Microsoft Teams erfordert die Teams-Desktop-App-Version 1.3.00.4461 oder höher.
 
 ## <a name="install-the-teams-desktop-app"></a>Installieren der Teams-Desktop-App
 
@@ -94,8 +94,8 @@ Sie können die Teams-Desktop-App mit einer Pro-Computer- oder Pro-Benutzer-Inst
 
         Dadurch wird Teams auf einem 64-Bit-Betriebssystem im Ordner „Programme (x86)“ und auf einem 32-Bit-Betriebssystem im Ordner „Programme“ installiert. An diesem Punkt ist das Golden Image-Setup fertiggestellt. Die Installation von Teams pro Computer ist für nicht beständige Setups erforderlich.
 
-        Bei der Installation von Teams können zwei Flags festgelegt werden, **ALLUSER=1** und **ALLUSERS=1**. Es ist wichtig, den Unterschied zwischen diesen Parametern zu verstehen. Der Parameter **ALLUSER=1** wird nur in VDI-Umgebungen verwendet, um eine Pro-Computer-Installation anzugeben. Der Parameter **ALLUSERS=1** kann in Nicht-VDI- und in VDI-Umgebungen verwendet werden. Wenn Sie diesen Parameter festlegen, wird das computerweite Installationsprogramm von Teams in der Systemsteuerung unter „Programme und Features“ sowie in den Windows-Einstellungen unter „Apps & Features“ angezeigt. Alle Benutzer mit Administratoranmeldeinformationen auf dem Computer können Teams deinstallieren. 
-       
+        Bei der Installation von Teams können zwei Flags festgelegt werden, **ALLUSER=1** und **ALLUSERS=1**. Es ist wichtig, den Unterschied zwischen diesen Parametern zu verstehen. Der Parameter **ALLUSER=1** wird nur in VDI-Umgebungen verwendet, um eine Pro-Computer-Installation anzugeben. Der Parameter **ALLUSERS=1** kann in Nicht-VDI- und in VDI-Umgebungen verwendet werden. Wenn Sie diesen Parameter festlegen, wird das computerweite Installationsprogramm von Teams in der Systemsteuerung unter „Programme und Features“ sowie in den Windows-Einstellungen unter „Apps & Features“ angezeigt. Alle Benutzer mit Administratoranmeldeinformationen auf dem Computer können Teams deinstallieren.
+
         > [!NOTE]
         > Benutzer und Administratoren können den automatischen Start für Teams während der Anmeldung zu diesem Zeitpunkt nicht deaktivieren.
 

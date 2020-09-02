@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: bbdc05d2b5a770791bb81f26a71b9dc3eb7523d5
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 8dfc1471955a6d10199a078922151ff3aeda4294
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505715"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929487"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Arbeiten mit Azure Functions Core Tools
 
@@ -37,7 +37,7 @@ Es sind drei Versionen der Azure Functions Core Tools verfügbar. Welche Version
 
 + **Version 1.x**: Unterstützt Version 1.x der Azure Functions-Runtime. Diese Version der Tools wird nur auf Windows-Computern unterstützt und wird über ein [npm-Paket](https://www.npmjs.com/package/azure-functions-core-tools) installiert.
 
-Sofern nicht anders angegeben, gelten die Beispiele in diesem Artikel für Version 3.x.
+Sie können auf einem Computer immer nur jeweils eine Version der Core Tools installieren. Sofern nicht anders angegeben, gelten die Beispiele in diesem Artikel für Version 3.x.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -257,20 +257,21 @@ Auch wenn der Microsoft Azure-Speicheremulator für die Entwicklung verwendet wi
 
   ![Kopieren der Verbindungszeichenfolge im Storage-Explorer](./media/functions-run-local/storage-explorer.png)
 
-+ Verwenden Sie Core Tools zum Herunterladen der Verbindungszeichenfolge aus Azure mit einem der folgenden Befehle:
++ Verwenden Sie Core Tools im Projektstamm, um mit einem der folgenden Befehle die Verbindungszeichenfolge von Azure herunterzuladen:
 
   + Herunterladen aller Einstellungen aus einer vorhandenen Funktions-App:
 
     ```
     func azure functionapp fetch-app-settings <FunctionAppName>
     ```
+
   + Abrufen der Verbindungszeichenfolge für ein bestimmtes Speicherkonto:
 
     ```
     func azure storage fetch-connection-string <StorageAccountName>
     ```
 
-    Wenn Sie noch nicht in Azure angemeldet sind, werden Sie aufgefordert, sich anzumelden.
+    Wenn Sie noch nicht in Azure angemeldet sind, werden Sie aufgefordert, sich anzumelden. Diese Befehle überschreiben alle vorhandenen Einstellungen in der Datei „local.settings.json“. 
 
 ## <a name="create-a-function"></a><a name="create-func"></a>Erstellen einer Funktion
 

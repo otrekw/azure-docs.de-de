@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/14/2020
-ms.openlocfilehash: 69be4118aca45582c38bb49a996782d661d8084f
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 2f472f15f5f15fb48563aba90df273e31bb1b665
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604408"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88812868"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Richtlinien für die Azure Marketplace-Auflistung
 
@@ -24,7 +24,7 @@ In diesem Artikel werden die Anforderungen und Richtlinien für die Auflistung n
 |:--- |:--- |:--- |:--- |
 | 1 | Leadzielgruppe | Es muss ein Leadziel konfiguriert sein.| Der OCP-Katalog (One Commercial Partner) weist die CRM-Informationen zum Leadziel auf, die auch auf der Registerkarte für die Partnerlösung aufgeführt sind. |
 | 2 | Titel des Angebots | Beschreibt kurz das Lösungsangebot. Entspricht der Onlinewerbung für die Lösung auf der Website des Partners. | Enthält wichtige Suchbegriffe. |
-| 3 | Logo | Das Logo wird korrekt angezeigt. | Das Logo wird korrekt angezeigt. |
+| 3 | Logo | Das Logo wird korrekt angezeigt.  | Das Logo wird korrekt angezeigt.  |
 | 4 |  Beschreibung des Angebots | <ul><li> Umfasst 2 bis 3 Absätze.</li><li>Das Lösungsangebot ist auf einen Blick leicht verständlich.</li><li>Ist frei von Rechtschreib- und Grammatikfehlern.</li><li>Ist ausführlich und enthält die Zielgruppe, den Benutzertyp sowie den Nutzen des Angebots (Wertversprechen).</li><li>Ist in Absätze in erzählerischer Form gegliedert und besteht aus kurzen Sätzen, die einfach zu verstehen sind.</li></ul> | <ul><li> Die Zielbranche ist kurz beschrieben (sofern relevant).</li><li>Der Text ist gut formatiert mit Absatzüberschriften, die den folgenden Inhalt in einem einzigen Satz oder Schlagwort zusammenfassen, und Aufzählungszeichen (sofern angebracht) zum Hervorheben der Hauptvorteile. Der Leser soll das Angebot in einem übersichtlichen Format auf einen Blick verstehen, ohne lange Absätze lesen zu müssen.</li><li>Zwischen den einzelnen Absätzen sind geeignete Abstände vorhanden. Die Beschreibung liest sich wie eine Autobroschüre. Das heißt, sie ist umfassend und beschreibt das Angebot in einfachen Worten ohne technischen Fachjargon. | 
 | 5 | Kategorien und Branchen | <ul><li>Kategorien und Unterkategorien müssen den Angebotsfunktionen entsprechen. </li><li>Wählen Sie keine Kategorien/Unterkategorien aus, die nicht Ihren Angebotsfunktionen entsprechen. </li></ul> | <ul><li>Wählen Sie bis zu zwei Kategorien aus, einschließlich einer primären und einer sekundären Kategorie (optional).</li><li>Wählen Sie bis zu zwei Unterkategorien für jede primäre oder sekundäre Kategorie aus. Wenn keine Unterkategorie ausgewählt wird, ist das Angebot weiterhin unter der ausgewählten Kategorie auffindbar.</li></ul> |
 | 6 | Bilder | <ul><li>Die Anforderungen für Bilder sind in Partner Center aufgeführt.</li><li>Text im Screenshot ist lesbar, und das Bild ist scharf. | Das Lösungsangebot ist auf einen Blick leicht verständlich. |
@@ -53,7 +53,7 @@ In diesem Artikel werden die Anforderungen und Richtlinien für die Auflistung n
 | 4 | Details zum Onlineshop: Angebotszusammenfassung | Wird auf der Suchseite Ihrer App angezeigt und umfasst maximal 100 Zeichen. | |
 | 5 | Details zum Onlineshop: Branchen | Branchen (max. 2): Wählen Sie die Branchen aus, für die Ihre App am besten geeignet und am relevantesten ist. | |
 | 6 | Beschreibung des Angebots | <ul><li>Einfacher HTML-Code ist zulässig, einschließlich \<p>, \<em>, \<ul>, \<li>, \<ol> und Headertags. Maximal 3000 Zeichen.</li><li>Umfasst 2 bis 3 Absätze.</li><li>Das Lösungsangebot ist auf einen Blick leicht verständlich.</li><li>Die Beschreibung ist ausführlich und enthält die Zielgruppe, den Benutzertyp sowie den Nutzen des Angebots (Wertversprechen).</li><li>Ist in Absätze in erzählerischer Form gegliedert und besteht aus kurzen Sätzen, die einfach zu verstehen sind. | <ul><li>Die Zielbranche ist kurz beschrieben (sofern relevant).</li><li>Der Text ist gut formatiert mit Absatzüberschriften, die den folgenden Inhalt in einem einzigen Satz oder Schlagwort zusammenfassen, und Aufzählungszeichen (sofern angebracht) zum Hervorheben der Hauptvorteile. Der Leser soll das Angebot in einem übersichtlichen Format auf einen Blick verstehen, ohne mehrere Absätze lesen zu müssen.</li><li>Zwischen den einzelnen Absätzen sind geeignete Abstände vorhanden. Die Beschreibung liest sich wie eine Autobroschüre. Das heißt, sie ist umfassend und beschreibt das Angebot in einfachen Worten ohne technischen Fachjargon. | 
-| 7 | Marketingartefakte | Logos werden korrekt angezeigt. | <ul><li>Logos: Erforderlich sind kleine (48 x 48 Pixel), mittlere (90 x 90 Pixel) und große Logos (zwischen 216 x 216 und 350 x 350 Pixel).</li><li>Screenshots (max. 5): Erfordert ein PNG-Bild mit einer Auflösung von 1.280 × 720 Pixel. |
+| 7 | Marketingartefakte | Logos werden korrekt angezeigt. | <ul><li>Logos: Klein (48 x 48 px, optional), mittel (90 x 90 px, optional) und groß (zwischen 216 x 216 und 350 x 350 px, erforderlich).</li><li>Screenshots (max. 5): Erfordert ein PNG-Bild mit einer Auflösung von 1.280 × 720 Pixel. |
 | 8 | Kategorien und Branchen | <ul><li>Die Kategorien entsprechen den Funktionen des Lösungsangebots.</li><li>Wählen Sie mindestens ein Element im Popupfenster aus.</li><li>Wählen Sie keine Kategorien aus, denen die Lösung nicht entspricht.</li><li>Die optimale Branche oder „alle Branchen“ (sofern es keine optimalen Branchen gibt) ist ausgewählt. | Maximal drei Kategorien können ausgewählt werden (sofern zutreffend). |
 | 9 | Leadverwaltung | Wählen Sie das System aus, in dem Ihre Leads gespeichert werden. Informationen zum Herstellen einer Verbindung mit Ihrem CRM-System finden Sie unter [Abrufen von Kundenleads](./partner-center-portal/commercial-marketplace-get-customer-leads.md). |  |
 | 10 | Kontakte: Support und Hilfe für die Lösung | <ul><li>Name der Kontaktperson für technische Fragen: Der Name der Kontaktperson für technische Fragen für Ihre App. Diese Kontaktperson erhält technische Mitteilungen von Microsoft.</li><li>E-Mail-Adresse der Kontaktperson für technische Fragen: Die E-Mail-Adresse der Kontaktperson für technische Fragen.</li><li>Telefonnummer der Kontaktperson für technische Fragen: Die Telefonnummer der Kontaktperson für technische Fragen. [Telefonnummern im ISO-Format](https://en.wikipedia.org/wiki/E.123) werden unterstützt.</li><li>Name des Supportkontakts: Der Name der Kontaktperson für den Support für Ihre App. Diese Kontaktperson erhält Mitteilungen im Zusammenhang mit dem Support von Microsoft.</li><li>E-Mail-Adresse des Supportkontakts: Die E-Mail-Adresse der Kontaktperson für den Support für Ihre App.</li><li>Telefonnummer des Supportkontakts: Die Telefonnummer der Kontaktperson für den Support. [Telefonnummern im ISO-Format](https://en.wikipedia.org/wiki/E.123) werden unterstützt.</li><li>Support-URL: Die URL Ihrer Supportseite. | <ul><li>Alle Supportmethoden sind aufgeführt.</li><li>Während des *Testzeitraums* (kostenlos oder kostenpflichtig) wird kostenpflichtiger Support kostenlos angeboten *.* |
@@ -66,7 +66,7 @@ In diesem Artikel werden die Anforderungen und Richtlinien für die Auflistung n
 |:--- |:--- |:--- |:--- |
 |1 |Angebotseinstellungen | <ul><li>Angebots-ID: Maximal 50 Zeichen</li><li>Herausgeber-ID: Wählen Sie sie in der Dropdownliste aus.</li><li>Name: Maximal 50 Zeichen | Entspricht dem Stil des Titels in der Beschreibung. Vermeiden Sie lange Titel. |
 | 2 | Pläne | Der Partner wählt neue Pläne aus.| Der Titel entspricht dem Stil des Titels in der Beschreibung. Vermeiden Sie lange Titel.  |
-| 3 | Marketplace-Artefakte | Logos werden korrekt angezeigt. |<ul><li>Logos: Erforderlich sind kleine (48 x 48 Pixel), mittlere (90 x 90 Pixel) und große Logos (zwischen 216 x 216 und 350 x 350 Pixel).</li><li>Screenshots (max. 5): Erfordert ein PNG-Bild mit einer Auflösung von 1280 x 720 Pixel.|
+| 3 | Marketplace-Artefakte | Logos werden korrekt angezeigt. |<ul><li>Logos: Klein (48 x 48 px, optional), mittel (90 x 90 px, optional) und groß (zwischen 216 x 216 und 350 x 350 px, erforderlich).</li><li>Screenshots (max. 5): Erfordert ein PNG-Bild mit einer Auflösung von 1280 x 720 Pixel.|
 | 4 | Leadverwaltung |<ul><li>Leadverwaltung: Wählen Sie das System aus, in dem Ihre Leads gespeichert werden.</li><li>Informationen zum Herstellen einer Verbindung mit Ihrem CRM-System finden Sie unter [Abrufen von Kundenleads](./partner-center-portal/commercial-marketplace-get-customer-leads.md). | |
 |||
 

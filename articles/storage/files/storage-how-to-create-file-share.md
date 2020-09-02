@@ -9,12 +9,12 @@ ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
-ms.openlocfilehash: aaba608ba80a751c40cd300dee80f673897c22a8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 236134887728ebc3dd4d03fa4c9d9d450b39eac2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88525648"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930671"
 ---
 # <a name="create-an-azure-file-share"></a>Erstellen einer Azure-Dateifreigabe
 Um eine Azure-Dateifreigabe zu erstellen, müssen Sie drei Fragen zur Verwendung beantworten:
@@ -267,6 +267,9 @@ Update-AzRmStorageShare `
     -AccessTier Cool
 ```
 
+> [!Note]  
+> Die Funktionalität zum Einrichten und Ändern von Tarifen über PowerShell wird im PowerShell-Vorschaumodul „Az.Storage“ bereitgestellt. Denken Sie beim Erstellen der Skripts daran, dass diese Cmdlets bzw. deren Ausgabe sich vor Veröffentlichung der allgemein verfügbaren Version des Moduls ändern können.
+
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 Die Funktionalität zum Erstellen oder Verschieben einer Dateifreigabe in eine bestimmte Dienstebene ist im letzten Azure CLI-Update verfügbar. Das Aktualisieren von Azure CLI ist für die von Ihnen verwendete Betriebssystem-/Linux-Distribution spezifisch. Anweisungen zum Aktualisieren der Azure CLI auf Ihrem System finden Sie unter [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
@@ -282,6 +285,10 @@ az storage share-rm create \
     --name $shareName \
     --access-tier "Hot"
 ```
+
+> [!Note]  
+> Die Funktion zum Festlegen eines Tarifs mit dem Parameter `--access-tier` ist als Vorschau im neuesten Azure CLI-Paket enthalten. Denken Sie beim Erstellen der Skripts daran, dass dieser Befehl bzw. dessen Ausgabe sich ändern kann, bevor er als allgemein verfügbar gekennzeichnet wird.
+
 ---
 
 ## <a name="next-steps"></a>Nächste Schritte

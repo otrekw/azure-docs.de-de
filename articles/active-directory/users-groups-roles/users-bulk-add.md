@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4cb24a89d19abb753e2be704dbad7fd5b2ddcad
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 64fc4e1192a1ec33b1d13c38d66e9aab5cbe256b
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236555"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705621"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>Massenerstellung von Benutzern in Azure Active Directory
 
@@ -35,7 +35,7 @@ Laden Sie die CSV-Vorlage für den Massenupload herunter, und füllen Sie sie au
 ![Hochzuladendes Arbeitsblatt mit Anmerkungen zum Zweck und den Werten für die Zeilen und Spalten](./media/users-bulk-add/create-template-example.png)
 
 > [!WARNING]
-> Wenn Sie versuchen, nur einen Eintrag in der CSV-Vorlage hinzuzufügen, müssen Sie Zeile 3 beibehalten und den neuen Eintrag zu Zeile 4 hinzufügen. 
+> Wenn Sie nur einen Eintrag mithilfe der CSV-Vorlage hinzufügen, müssen Sie Zeile 3 beibehalten und den neuen Eintrag zu Zeile 4 hinzufügen.
 
 ### <a name="csv-template-structure"></a>CSV-Vorlagenstruktur
 

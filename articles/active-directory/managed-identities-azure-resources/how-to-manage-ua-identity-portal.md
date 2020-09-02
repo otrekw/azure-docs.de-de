@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/16/2018
+ms.date: 08/26/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27144dcd4c7d7490aba3626264e1cb4b64fbb162
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 348d436d1cb1fa838a34c9ebe86f5e37f0f85803
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019198"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930559"
 ---
 # <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>Erstellen, Auflisten, Löschen oder Zuweisen einer Rolle zu einer vom Benutzer zugewiesenen verwalteten Identität über das Azure-Portal
 
 Verwaltete Identitäten für Azure-Ressourcen stellen für Azure-Dienste eine verwaltete Identität in Azure Active Directory bereit. Sie können diese Identität verwenden, um sich bei Diensten mit Unterstützung für die Azure AD-Authentifizierung zu authentifizieren, ohne dass Anmeldeinformationen in Ihren Code eingebettet werden müssen. 
 
-In diesem Artikel erfahren Sie, wie Sie im Azure-Portal eine vom Benutzer zugewiesene verwaltete Identität erstellen, auflisten, löschen oder zuweisen.
+In diesem Artikel erfahren Sie, wie Sie eine benutzerseitig zugewiesene verwaltete Identität im Azure-Portal erstellen, auflisten, löschen oder zuweisen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -40,13 +40,13 @@ Ihrem Konto muss die Rolle [Mitwirkender für verwaltete Identität](/azure/role
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) mit einem Konto an, das dem Azure-Abonnement zugeordnet ist, um die vom Benutzer zugewiesene verwaltete Identität zu erstellen.
 2. Geben Sie *Verwaltete Identitäten* im Suchfeld ein, und klicken Sie unter **Dienste** auf **Verwaltete Identitäten**.
 3. Klicken Sie auf **Hinzufügen**, und geben Sie im Bereich **Vom Benutzer zugewiesene verwaltete Identität erstellen** in den folgenden Feldern Werte ein:
-   - **Ressourcenname:** Dies ist der Name für die vom Benutzer zugewiesene verwaltete Identität, z.B. „UAI1“.
-   - **Abonnement**: Wählen Sie das Abonnement aus, in dem die vom Benutzer zugewiesene verwaltete Identität erstellt werden soll.
-   - **Ressourcengruppe**: Erstellen Sie für die vom Benutzer zugewiesene Identität eine neue Ressourcengruppe, oder wählen Sie **Vorhandene verwenden** aus, um die vom Benutzer zugewiesene verwaltete Identität in einer vorhandenen Ressourcengruppe zu erstellen.
-   - **Standort**: Wählen Sie einen Standort zum Bereitstellen der vom Benutzer zugewiesenen verwalteten Identität aus, z. B. **USA, Westen**.
-4. Klicken Sie auf **Erstellen**.
-
-![Erstellen einer benutzerseitig zugewiesenen verwalteten Identität](./media/how-to-manage-ua-identity-portal/create-user-assigned-managed-identity-portal.png)
+    - **Abonnement**: Wählen Sie das Abonnement aus, in dem die benutzerseitig zugewiesene verwaltete Identität erstellt werden soll.
+    - **Ressourcengruppe**: Wählen Sie eine Ressourcengruppe aus, in der die benutzerseitig zugewiesene verwaltete Identität erstellt werden soll, oder klicken Sie auf **Neu erstellen**, um eine neue Ressourcengruppe zu erstellen.
+    - **Region**: Wählen Sie eine Region aus, in der die benutzerseitig zugewiesene verwaltete Identität bereitgestellt werden soll, z. B. **USA, Westen**.
+    - **Name**: Dies ist der Name für die vom Benutzer zugewiesene verwaltete Identität, z.B. „UAI1“.
+    ![Erstellen einer benutzerseitig zugewiesenen verwalteten Identität](./media/how-to-manage-ua-identity-portal/create-user-assigned-managed-identity-portal.png)
+4. Klicken Sie auf **Überprüfen + erstellen**, um die Änderungen zu überprüfen.
+5. Klicken Sie auf **Erstellen**.
 
 ## <a name="list-user-assigned-managed-identities"></a>Auflisten der vom Benutzer zugewiesenen verwalteten Identitäten
 

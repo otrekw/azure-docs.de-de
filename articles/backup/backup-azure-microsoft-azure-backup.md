@@ -3,12 +3,12 @@ title: Sichern von Workloads mithilfe von Azure Backup Server
 description: In diesem Artikel erfahren Sie, wie Sie Ihre Umgebung für den Schutz und die Sicherung von Workloads mithilfe von Microsoft Azure Backup Server (MABS) vorbereiten.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 9ae8fd824144c70edeb1e084155e8cdff95cd8b9
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 553073cf70e6806077a4df98e237bbbe0d2bb21a
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612332"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892285"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Installieren und Durchführen eines Upgrades für Azure Backup Server
 
@@ -19,7 +19,7 @@ ms.locfileid: "88612332"
 >
 >
 
-> Gilt für: MABS v3. (MABS v2 wird nicht mehr unterstützt. Wenn Sie eine frühere Version als MABS v3 verwenden, führen Sie ein Upgrade auf die neueste Version durch.)
+> Gilt für: MABS v3. (MABS v2 wird nicht mehr unterstützt. Wenn Sie eine frühere Version als MABS v3 verwenden, führen Sie ein Upgrade auf die neueste Version durch.)
 
 In diesem Artikel wird das Vorbereiten Ihrer Umgebung für die Sicherung von Workloads per Microsoft Azure Backup Server (MABS) beschrieben. Mit Azure Backup Server können Sie Anwendungsworkloads wie Hyper-V-VMs, Microsoft SQL Server, SharePoint Server, Microsoft Exchange und Windows-Clients über eine zentrale Konsole schützen.
 
@@ -62,7 +62,7 @@ Wenn Sie den Basisserver nicht in Azure ausführen möchten, können Sie den Ser
 Sie können die DPM-Speicherung deduplizieren, indem Sie die Windows Server-Deduplizierung verwenden. Lesen Sie die weiteren Informationen zur Zusammenarbeit von [DPM und Deduplizierung](/system-center/dpm/deduplicate-dpm-storage?view=sc-dpm-2019) bei Bereitstellung auf Hyper-V-VMs.
 
 > [!NOTE]
-> Azure Backup Server ist für die Ausführung auf einem dedizierten Server konzipiert, der nur zu einem Zweck verwendet wird. Azure Backup Server kann nicht auf folgenden Computern installiert werden:
+> Azure Backup Server ist für die Ausführung auf einem dedizierten Server konzipiert, der nur zu einem Zweck verwendet wird. Auf folgenden Computern kann Azure Backup Server nicht installiert werden:
 >
 > * Einem Computer, der als Domänencontroller ausgeführt wird
 > * Einem Computer, auf dem die Anwendungsserverrolle installiert ist
@@ -70,7 +70,7 @@ Sie können die DPM-Speicherung deduplizieren, indem Sie die Windows Server-Dedu
 > * Einem Computer, auf dem Exchange Server ausgeführt wird
 > * Einem Computer, der einen Knoten eines Clusters darstellt
 >
-> Bei Verwendung von Windows Server Core oder Microsoft Hyper-V Server wird die Installation von Azure Backup Server nicht unterstützt.
+> Unter Windows Server Core oder Microsoft Hyper-V Server wird die Installation von Azure Backup Server nicht unterstützt.
 
 Binden Sie Azure Backup Server immer in eine Domäne ein. Wenn Sie den Server in eine andere Domäne verschieben möchten, installieren Sie zuerst Azure Backup Server, und binden Sie dann den Server in die neue Domäne ein. Das Verschieben eines vorhandenen Azure Backup Server-Computers in eine neue Domäne nach der Bereitstellung wird *nicht unterstützt*.
 
@@ -129,13 +129,13 @@ So bearbeiten Sie die Einstellung für die Speicherreplikation:
     Der Assistent **Erste Schritte mit der Sicherung** ändert die Option **Infrastruktur vorbereiten**, sodass Workloads in Azure gesichert werden.
 
    > [!NOTE]
-   > Falls Sie nur Dateien und Ordner sichern möchten, empfiehlt es sich, den Azure Backup-Agent zu verwenden und gemäß der Anleitung im Artikel [Einführung: Sichern von Dateien und Ordnern in einer Resource Manager-Bereitstellung](./backup-windows-with-mars-agent.md) vorzugehen. Falls Sie nicht nur Dateien und Ordner schützen möchten oder beabsichtigen, die Schutzanforderungen auszudehnen, wählen Sie diese Workloads aus.
+   > Falls Sie nur Dateien und Ordner sichern möchten, empfiehlt es sich, den Azure Backup-Agent zu verwenden und gemäß der Anleitung im Artikel [Einführung: Sichern von Dateien und Ordnern in einer Resource Manager-Bereitstellung](./backup-windows-with-mars-agent.md) vorzugehen. Falls Sie nicht nur Dateien und Ordner schützen möchten oder beabsichtigen, die Schutzanforderungen zukünftig zu erweitern, wählen Sie diese Workloads aus.
    >
    >
 
     ![Ändern des Erste-Schritte-Assistenten](./media/backup-azure-microsoft-azure-backup/getting-started-prep-infra.png)
 
-6. Wählen Sie im Bereich **Infrastruktur vorbereiten**, der geöffnet wird, die **Downloadlinks** aus, um Azure Backup Server zu installieren und Tresoranmeldedaten herunterzuladen. Sie verwenden die Tresoranmeldedaten bei der Registrierung von Azure Backup Server beim Recovery Services-Tresor. Mit den Links gelangen Sie zum Download Center, in dem Sie das Softwarepaket herunterladen können.
+6. Wählen Sie im Bereich **Infrastruktur vorbereiten**, der geöffnet wird, die **Downloadlinks** aus, um Azure Backup Server zu installieren und Tresoranmeldedaten herunterzuladen. Bei der Registrierung von Azure Backup Server beim Recovery Services-Tresor verwenden Sie die Anmeldeinformationen des Tresors. Mit den Links gelangen Sie zum Download Center, in dem Sie das Softwarepaket herunterladen können.
 
     ![Vorbereiten der Infrastruktur für Azure Backup Server](./media/backup-azure-microsoft-azure-backup/azure-backup-server-prep-infra.png)
 
@@ -143,7 +143,7 @@ So bearbeiten Sie die Einstellung für die Speicherreplikation:
 
     ![Download Center 1](./media/backup-azure-microsoft-azure-backup/downloadcenter.png)
 
-    Da die Downloadgröße aller Dateien zusammen mehr als 3 G beträgt, dauert es über einen Downloadlink mit 10 MBit/s bis zu 60 Minuten, bis der Download abgeschlossen ist.
+    Da die Downloadgröße aller Dateien zusammen mehr als 3 GB beträgt, dauert es über einen Downloadlink mit 10 MBit/s bis zu 60 Minuten, bis der Download abgeschlossen ist.
 
 ### <a name="extracting-the-software-package"></a>Extrahieren des Softwarepakets
 
@@ -170,7 +170,7 @@ Aktivieren Sie nach Abschluss der Extrahierung das Kontrollkästchen, um die ger
 
     >[!NOTE]
     >Die folgenden SQL Server-Versionen werden unterstützt: SQL Server 2014 SP1 oder höher, 2016 und 2017.  Alle SQL Server-Versionen müssen Standard- oder Enterprise-Versionen (64-Bit) sein.
-    >Azure Backup Server funktioniert nicht mit einer Remoteinstanz von SQL Server. Die von Azure Backup Server verwendete Instanz muss lokal vorliegen. Falls Sie eine vorhandene SQL Server-Instanz für MABS verwenden, unterstützt das MABS-Setup nur die Verwendung von *benannten Instanzen* von SQL Server.
+    >Azure Backup Server funktioniert nicht mit einer Remoteinstanz von SQL Server. Die von Azure Backup Server verwendete Instanz muss lokal vorliegen. Falls Sie eine vorhandene SQL Server-Instanz für MABS verwenden, unterstützt das MABS-Setup nur die Verwendung von *benannten Instanzen* von SQL Server.
 
     ![Azure Backup Server – SQL-Überprüfung](./media/backup-azure-microsoft-azure-backup/sql/01.png)
 
@@ -216,7 +216,7 @@ Aktivieren Sie nach Abschluss der Extrahierung das Kontrollkästchen, um die ger
     ![Zusammenfassung der Einstellungen](./media/backup-azure-microsoft-azure-backup/summary-screen.png)
 8. Die Installation erfolgt in mehreren Phasen. In der ersten Phase wird der Microsoft Azure Recovery Services-Agent auf dem Server installiert. Der Assistent überprüft auch das Vorhandensein der Internetverbindung. Ist eine Internetverbindung verfügbar, können Sie die Installation fortsetzen. Wenn nicht, müssen Sie die Proxydetails bereitstellen, um eine Verbindung mit dem Internet herzustellen.
 
-    Der nächste Schritt ist die Konfiguration des Microsoft Azure Recovery Services-Agents. Bei der Konfiguration müssen Sie Ihre Tresoranmeldeinformationen zum Registrieren des Computers beim Recovery Services-Tresor angeben. Sie geben auch eine Passphrase zum Verschlüsseln bzw. Entschlüsseln von Daten an, die zwischen Azure und Ihrem lokalen Standort ausgetauscht werden. Sie können eine automatische Passphrase generieren oder eine eigene Passphrase mit mindestens 16 Zeichen angeben. Fahren Sie mit dem Assistenten fort, bis der Agent konfiguriert wurde.
+    Der nächste Schritt ist die Konfiguration des Microsoft Azure Recovery Services-Agents. Im Rahmen der Konfiguration müssen Sie Ihre Tresoranmeldeinformationen angeben, um den Computer beim Recovery Services-Tresor zu registrieren. Sie geben auch eine Passphrase zum Verschlüsseln bzw. Entschlüsseln von Daten an, die zwischen Azure und Ihrem lokalen Standort ausgetauscht werden. Sie können eine automatische Passphrase generieren oder eine eigene Passphrase mit mindestens 16 Zeichen angeben. Fahren Sie mit dem Assistenten fort, bis der Agent konfiguriert wurde.
 
     ![Server-Assistent registrieren](./media/backup-azure-microsoft-azure-backup/mars/04.png)
 9. Nach Abschluss der Registrierung von Microsoft Azure Backup Server fährt der übergreifende Setup-Assistent mit der Installation und Konfiguration von SQL Server und der Azure Backup Server-Komponenten fort. Nachdem die Installation der SQL Server-Komponenten abgeschlossen ist, werden die Azure Backup Server-Komponenten installiert.
@@ -333,7 +333,7 @@ Verwenden Sie die folgenden Verfahren, um ein Upgrade für MABS durchzuführen.
 
 > [!NOTE]
 >
-> MABS v2 ist für die Installation von MABS v3 keine Voraussetzung. Allerdings können Sie nur ein Upgrade von MABS v2 auf MABS v3 durchführen.
+> MABS v2 ist keine Voraussetzung für die Installation von MABS v3. Allerdings können Sie nur ein Upgrade von MABS v2 auf MABS v3 durchführen.
 
 Führen Sie die folgenden Schritte aus, um ein Upgrade für MABS durchzuführen:
 
@@ -343,7 +343,7 @@ Führen Sie die folgenden Schritte aus, um ein Upgrade für MABS durchzuführen:
 
    > [!NOTE]
    >
-   > Beenden Sie den Vorgang nicht, während das Upgrade für die SQL-Instanz durchgeführt wird, da die SQL-Berichtsinstanz durch eine Beendigung deinstalliert wird und bei dem Versuch, erneut ein Upgrade für MABS durchzuführen, ein Fehler auftritt.
+   > Beenden Sie die SQL-Instanz während des Upgradevorgangs nicht. Durch eine Beendigung würde die SQL Reporting-Instanz deinstalliert, und beim erneuten Versuch, ein Upgrade für MABS durchzuführen, würde ein Fehler auftreten.
 
    > [!IMPORTANT]
    >

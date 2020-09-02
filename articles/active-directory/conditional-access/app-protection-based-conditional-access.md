@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5326fd6adf12d53d836594c8e53bda14e0871e5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3626a29bb828c9fbc353b11858d42fecd4bb129d
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87009117"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641023"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>Gewusst wie: Erzwingen einer App-Schutzrichtlinie und einer genehmigten Client-App für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs
 
@@ -55,9 +55,9 @@ Organisationen müssen die folgenden Schritte ausführen, um die Verwendung eine
 1. Wählen Sie unter **Bedingungen** die Option **Geräteplattformen** aus.
    1. Legen Sie **Konfigurieren** auf **Ja** fest.
    1. Schließen Sie **Android** und **iOS** ein.
-1. Wählen Sie unter **Bedingungen** die Option **Client-Apps (Vorschau)** aus.
+1. Klicken Sie unter **Bedingungen** auf **Client-Apps**.
    1. Legen Sie **Konfigurieren** auf **Ja** fest.
-   1. Wählen Sie **Mobile Apps und Desktopclients** und **Clients mit moderner Authentifizierung** aus.
+   1. Wählen Sie **Mobile Apps und Desktopclients** aus, und deaktivieren Sie alle anderen Optionen.
 1. Wählen Sie unter **Zugriffssteuerungen** > **Erteilen** die folgenden Optionen aus:
    - **Genehmigte Client-App erforderlich**
    - **App-Schutzrichtlinie erforderlich (Vorschau)**
@@ -76,10 +76,9 @@ Für die Richtlinie zum bedingten Zugriff in diesem Schritt konfigurieren Sie fo
    1. Wählen Sie unter **Einschließen** die Option **Alle Benutzer** oder bestimmte **Benutzer und Gruppen** aus, auf die Sie diese Richtlinie anwenden möchten. 
    1. Wählen Sie **Fertig**aus.
 1. Wählen Sie unter **Cloud-Apps oder -aktionen** > **Einschließen** die Option **Office 365 Exchange Online** aus.
-1. Unter **Bedingungen**:
-   1. **Client-Apps (Vorschau):**
-      1. Legen Sie **Konfigurieren** auf **Ja** fest.
-      1. Wählen Sie **Mobile Apps und Desktopclients** und **Exchange ActiveSync-Clients** aus.
+1. Klicken Sie unter **Bedingungen** auf **Client-Apps**:
+   1. Legen Sie **Konfigurieren** auf **Ja** fest.
+   1. Wählen Sie **Exchange ActiveSync-Clients** aus, und deaktivieren Sie alle anderen Optionen.
 1. Wählen Sie unter **Zugriffssteuerungen** > **Erteilen** die Option **Zugriff erteilen**, **App-Schutzrichtlinie erforderlich** aus, und wählen Sie dann **Auswählen** aus.
 1. Bestätigen Sie die Einstellungen und legen Sie **Richtlinie aktivieren** auf **Ein** fest.
 1. Wählen Sie **Erstellen** aus, um die Richtlinie zu erstellen und zu aktivieren.
@@ -107,9 +106,9 @@ Organisationen müssen die folgenden Schritte ausführen, um die Verwendung eine
 1. Wählen Sie unter **Bedingungen** die Option **Geräteplattformen** aus.
    1. Legen Sie **Konfigurieren** auf **Ja** fest.
    1. Schließen Sie **Android** und **iOS** ein.
-1. Wählen Sie unter **Bedingungen** die Option **Client-Apps (Vorschau)** aus.
+1. Klicken Sie unter **Bedingungen** auf **Client-Apps**.
    1. Legen Sie **Konfigurieren** auf **Ja** fest.
-   1. Wählen **Browser** aus.
+   1. Wählen Sie **Browser** aus, und deaktivieren Sie alle anderen Optionen.
 1. Wählen Sie unter **Zugriffssteuerungen** > **Erteilen** die folgenden Optionen aus:
    - **Genehmigte Client-App erforderlich**
    - **App-Schutzrichtlinie erforderlich (Vorschau)**
@@ -140,9 +139,9 @@ Organisationen müssen die folgenden drei Schritte ausführen, um die Verwendung
 1. Wählen Sie unter **Bedingungen** die Option **Geräteplattformen** aus.
    1. Legen Sie **Konfigurieren** auf **Ja** fest.
    1. Schließen Sie **Android** und **iOS** ein.
-1. Wählen Sie unter **Bedingungen** die Option **Client-Apps (Vorschau)** aus.
+1. Klicken Sie unter **Bedingungen** auf **Client-Apps**.
    1. Legen Sie **Konfigurieren** auf **Ja** fest.
-   1. Wählen Sie **Mobile Apps und Desktopclients** und **Clients mit moderner Authentifizierung** aus.
+   1. Wählen Sie **Mobile Apps und Desktopclients** aus, und deaktivieren Sie alle anderen Optionen.
 1. Wählen Sie unter **Zugriffssteuerungen** > **Erteilen** die folgenden Optionen aus:
    - **Genehmigte Client-App erforderlich**
    - **App-Schutzrichtlinie erforderlich (Vorschau)**
@@ -159,10 +158,9 @@ Organisationen müssen die folgenden drei Schritte ausführen, um die Verwendung
    1. Wählen Sie unter **Einschließen** die Option **Alle Benutzer** oder bestimmte **Benutzer und Gruppen** aus, auf die Sie diese Richtlinie anwenden möchten. 
    1. Wählen Sie **Fertig**aus.
 1. Wählen Sie unter **Cloud-Apps oder -aktionen** > **Einschließen** die Option **Office 365 Exchange Online** aus.
-1. Unter **Bedingungen**:
-   1. **Client-Apps (Vorschau):**
-      1. Legen Sie **Konfigurieren** auf **Ja** fest.
-      1. Wählen Sie **Mobile Apps und Desktopclients** und **Exchange ActiveSync-Clients** aus.
+1. Klicken Sie unter **Bedingungen** auf **Client-Apps**:
+   1. Legen Sie **Konfigurieren** auf **Ja** fest.
+   1. Wählen Sie **Exchange ActiveSync-Clients** aus, und deaktivieren Sie alle anderen Optionen.
 1. Wählen Sie unter **Zugriffssteuerungen** > **Erteilen** die Option **Zugriff erteilen**, **App-Schutzrichtlinie erforderlich** aus, und wählen Sie dann **Auswählen** aus.
 1. Bestätigen Sie die Einstellungen und legen Sie **Richtlinie aktivieren** auf **Ein** fest.
 1. Wählen Sie **Erstellen** aus, um die Richtlinie zu erstellen und zu aktivieren.

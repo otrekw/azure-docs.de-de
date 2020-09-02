@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8b7d3945adaf75949ef36b50a5e56a02fde1548
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: ccd1192c7597b5a088b1c50b5367030a616b9d77
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680921"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919589"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>Benutzerportal für den Azure Multi-Factor Authentication-Server
 
@@ -29,7 +29,11 @@ Es können Benutzerportaladministratoren eingerichtet werden, und ihnen kann die
 Abhängig von Ihrer Umgebung können Sie das Benutzerportal auf dem gleichen Server wie den Azure Multi-Factor Authentication-Server oder auf einem anderen, mit dem Internet verbundenen Server bereitstellen.
 
 > [!IMPORTANT]
-> Ab dem 1. Juli 2019 bietet Microsoft keine MFA-Server mehr für neue Bereitstellungen an. Neue Kunden, die eine Multi-Factor Authentication für ihre Benutzer einrichten möchten, können stattdessen die cloudbasierte Multi-Factor Authentication von Azure verwenden. Bestehende Kunden, die ihren MFA-Server vor dem 1. Juli aktiviert haben, können weiterhin die neusten Versionen und zukünftige Updates herunterladen sowie Anmeldedaten zur Aktivierung generieren.
+> Seit dem 1. Juli 2019 bietet Microsoft für neue Bereitstellungen keine MFA-Server mehr an. Neue Kunden, die für die Anmeldung der Benutzer eine mehrstufige Authentifizierung anfordern möchten, sollten die cloudbasierte Multi-Factor Authentication von Azure verwenden.
+>
+> Informationen zu den ersten Schritten mit der cloudbasierten MFA finden Sie im [Tutorial: Schützen von Benutzeranmeldeereignissen mit Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md).
+>
+> Bestandskunden, die ihren MFA-Server vor dem 1. Juli 2019 aktiviert haben, können weiterhin die neuesten Versionen und zukünftige Updates herunterladen sowie Anmeldeinformationen zur Aktivierung generieren.
 
 ![MFA Server-Benutzerportal: Anmeldeseite](./media/howto-mfaserver-deploy-userportal/portal.png)
 
@@ -45,7 +49,7 @@ Unabhängig vom Szenario gilt: Falls das Azure Multi-Factor Authentication-Webdi
 3. Führen Sie die Installation unter Verwendung der Standardeinstellungen durch, es sei denn, Sie müssen sie aus irgendeinem Grund ändern.
 4. Binden Sie ein TLS/SSL-Zertifikat an die Website in IIS.
 
-Antworten auf Fragen zum Konfigurieren eines TLS/SSL-Zertifikats für einen IIS-Server finden Sie im Artikel [How to Set Up SSL on IIS 7](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis) (Einrichten von SSL in IIS 7).
+Antworten auf Fragen zum Konfigurieren eines TLS/SSL-Zertifikats für einen IIS-Server finden Sie im Artikel [How to Set Up SSL on IIS 7](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis) (Einrichten von SSL in IIS 7).
 
 Das Webdienst-SDK muss durch ein TLS/SSL-Zertifikat geschützt sein. Für diesen Zweck ist ein selbst signiertes Zertifikat ausreichend. Importieren Sie das Zertifikat in den Speicher „Vertrauenswürdige Stammzertifizierungsstellen“ des lokalen Computerkontos auf dem Benutzerportal-Webserver, damit dieser das Zertifikat beim Initiieren einer TLS-Verbindung als vertrauenswürdig einstuft.
 
@@ -73,7 +77,7 @@ Führen Sie die folgenden Schritte aus, um das Benutzerportal bereitzustellen:
 
 ![Installation des MFA-Server-Benutzerportals](./media/howto-mfaserver-deploy-userportal/install.png)
 
-Antworten auf Fragen zum Konfigurieren eines TLS/SSL-Zertifikats für einen IIS-Server finden Sie im Artikel [How to Set Up SSL on IIS 7](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis) (Einrichten von SSL in IIS 7).
+Antworten auf Fragen zum Konfigurieren eines TLS/SSL-Zertifikats für einen IIS-Server finden Sie im Artikel [How to Set Up SSL on IIS 7](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis) (Einrichten von SSL in IIS 7).
 
 ## <a name="deploy-the-user-portal-on-a-separate-server"></a>Bereitstellen des Benutzerportals auf einem separaten Server
 
@@ -110,7 +114,7 @@ Wenn Sie das Benutzerportal auf einem anderen Server als dem Azure Multi-Factor 
 
 6. Öffnen Sie auf einem beliebigen Computer einen Webbrowser, und navigieren Sie zu der URL, unter der das Benutzerportal installiert wurde (Beispiel: `https://mfa.contoso.com/MultiFactorAuth`). Stellen Sie sicher, dass keine Zertifikatswarnungen oder -fehler angezeigt werden.
 
-Antworten auf Fragen zum Konfigurieren eines TLS/SSL-Zertifikats für einen IIS-Server finden Sie im Artikel [How to Set Up SSL on IIS 7](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis) (Einrichten von SSL in IIS 7).
+Antworten auf Fragen zum Konfigurieren eines TLS/SSL-Zertifikats für einen IIS-Server finden Sie im Artikel [How to Set Up SSL on IIS 7](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis) (Einrichten von SSL in IIS 7).
 
 ## <a name="configure-user-portal-settings-in-the-azure-multi-factor-authentication-server"></a>Konfigurieren der Benutzerportaleinstellungen auf dem Azure Multi-Factor Authentication-Server
 

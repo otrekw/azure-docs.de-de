@@ -3,12 +3,12 @@ title: Vorbereiten des DPM-Servers zum Sichern von Workloads
 description: In diesem Artikel erfahren Sie, wie Sie System Center Data Protection Manager-Sicherungen (DPM) in Azure mithilfe des Azure Backup-Diensts vorbereiten.
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 7043b4411856addf0fae26ee5402c4d3878e7f12
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 96eadb4d600b6aa842cdbded2a906d70f27cf55e
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612655"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890806"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Vorbereiten der Sicherung von Workloads in Azure mit System Center DPM
 
@@ -90,7 +90,7 @@ Um die Anmeldeinformationen abzurufen, laden Sie die Datei mit Tresoranmeldeinfo
 - Die Tresoranmeldeinformationen werden nur während des Registrierungsworkflows verwendet.
 - Sie müssen sicherstellen, dass die Datei mit den Tresoranmeldeinformationen sicher aufbewahrt und nicht kompromittiert wird.
   - Wenn die Anmeldeinformationen verloren gehen, können die Anmeldeinformationen des Tresors zum Registrieren anderer Computer als Tresor verwendet werden.
-  - Die Sicherungsdaten sind jedoch durch eine Passphrase verschlüsselt, die dem Kunden gehört. Daher sind vorhandene Sicherungsdaten nicht gefährdet.
+  - Die Sicherungsdaten sind jedoch durch eine Passphrase verschlüsselt, die Ihnen gehört. Daher sind vorhandene Sicherungsdaten nicht gefährdet.
 - Stellen Sie sicher, dass die Datei an einem Ort gespeichert wird, auf den vom DPM-Server aus zugegriffen werden kann. Wenn sie in einer Dateifreigabe/einem SMB gespeichert sind, überprüfen Sie die Zugriffsberechtigungen.
 - Tresoranmeldeinformationen laufen nach 48 Stunden ab. Sie können so oft wie erforderlich neue Tresoranmeldeinformationen herunterladen. Allerdings kann nur die neueste Datei mit Tresoranmeldeinformationen während des Registrierungsworkflows verwendet werden.
 - Der Azure Backup-Dienst kennt nicht den privaten Schlüssel des Zertifikats, und der private Schlüssel ist weder im Portal noch im Dienst verfügbar.

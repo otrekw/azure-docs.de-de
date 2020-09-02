@@ -10,16 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.author: trbye
-ms.openlocfilehash: b1e84f9acb439324317ed2f0d11ed06eb3e43ad8
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 90a5ec8c58865c3aa1b210db51b9ffeb7169d641
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84678064"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640411"
 ---
 # <a name="what-is-speech-to-text"></a>Was ist die Spracherkennung?
-
-[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Die Spracherkennung des Speech-Diensts (auch als Sprache-zu-Text bezeichnet) ermöglicht die Echtzeittranskription von Audiostreams in Text. Diese Texteingaben können von Ihren Anwendungen, Tools oder Geräten verwendet, angezeigt und als Befehlseingabe verarbeitet werden. Dieser Dienst nutzt dieselbe Erkennungstechnologie, die Microsoft auch bei Cortana und Office-Produkten einsetzt. Er funktioniert nahtlos mit den Dienstangeboten für <a href="./speech-translation.md" target="_blank">Übersetzung<span class="docon docon-navigate-external x-hidden-focus"></span></a> und <a href="./text-to-speech.md" target="_blank">Sprachsynthese<span class="docon docon-navigate-external x-hidden-focus"></span></a>. Eine vollständige Liste der Spracherkennungssprachen finden Sie unter [Unterstützte Sprachen](language-support.md#speech-to-text).
 
@@ -30,6 +28,8 @@ Durch zusätzlichem Referenztext als Eingabe bietet der Spracherkennungsdienst z
 > [!NOTE]
 > Die Bing-Spracheingabe wurde am 15. Oktober 2019 eingestellt. Wenn Ihre Anwendungen, Tools oder Produkte die Bing-Spracheingabe-APIs verwenden, finden Sie in den nachfolgend aufgelisteten Leitfäden Informationen zur Migration zum Speech-Dienst:
 > - [Migrieren von der Bing-Spracheingabe zum Speech-Dienst](how-to-migrate-from-bing-speech.md)
+
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 ## <a name="get-started-with-speech-to-text"></a>Erste Schritte mit der Spracherkennung
 
@@ -58,6 +58,10 @@ Beispielcode für das Speech SDK finden Sie auf GitHub. In den Beispielen werden
 ## <a name="customization"></a>Anpassung
 
 Zusätzlich zum Standardmodell des Speech-Diensts können Sie auch benutzerdefinierte Modelle erstellen. Mithilfe von Anpassungen überwinden Sie Grenzen der Spracherkennung wie z. B. Sprachstil, Vokabular und Hintergrundgeräusche. Weitere Informationen finden Sie unter [Custom Speech](how-to-custom-speech.md). Die Anpassungsoptionen variieren je nach Sprache/Gebietsschema. Weitere Informationen zur Unterstützung erhalten Sie unter [Unterstützte Sprachen](supported-languages.md).
+
+## <a name="batch-transcription"></a>Batch-Transkription
+
+Bei der Batchtranskription handelt es sich um eine Reihe von Rest-API-Vorgängen, mit denen Sie große Mengen von Audiodaten im Speicher transkribieren können. Sie können per SAS-URI (Shared Access Signature) auf Audiodateien verweisen und Transkriptionsergebnisse asynchron empfangen. Weitere Informationen zur Verwendung der Batchtranskriptions-API finden Sie in [diesem Artikel](batch-transcription.md).
 
 [!INCLUDE [speech-reference-doc-links](includes/speech-reference-doc-links.md)]
 

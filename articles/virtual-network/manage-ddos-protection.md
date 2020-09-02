@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: ed311e9c8031f8586762d2adc4c104545e323bc0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 73036ba1a72d657fd07a826bbee8651781f70e9b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711509"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88931963"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Verwalten von Azure DDoS Protection Standard mithilfe des Azure-Portals
 
@@ -61,7 +61,7 @@ Die Erstellung von mehr als einem Plan ist für die meisten Organisationen nicht
     | Subscription    | Wählen Sie Ihr Abonnement aus.                                    |
     | Resource group  | Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup** aus. |
     | Standort        | East US                                                      |
-    | DDoS-Schutz | Wählen Sie **Standard** und dann unter **DDoS-Schutz** die Option **myDdosProtectionPlan** aus. Der von Ihnen ausgewählte Plan kann sich im selben oder in einem anderen Abonnement als das virtuelle Netzwerk befinden. Beide Abonnements müssen jedoch dem gleichen Azure Active Directory-Mandanten zugeordnet sein.|
+    | DDoS Protection Standard | Wählen Sie **Aktivieren** aus. Der von Ihnen ausgewählte Plan kann sich im selben oder in einem anderen Abonnement als das virtuelle Netzwerk befinden. Beide Abonnements müssen jedoch dem gleichen Azure Active Directory-Mandanten zugeordnet sein.|
 
 Ein virtuelles Netzwerk kann nicht in eine andere Ressourcengruppe oder ein anderes Abonnement verschoben werden, wenn der DDoS-Standard für das virtuelle Netzwerk aktiviert ist. Wenn Sie ein virtuelles Netzwerks mit aktiviertem DDoS-Standard verschieben müssen, deaktivieren Sie zuerst den DDoS-Standard, verschieben Sie das virtuelle Netzwerk, und aktivieren Sie dann den DDoS-Standard. Nach der Verschiebung werden die automatisch optimierten Schwellenwerte der Richtlinie für alle geschützten, öffentlichen IP-Adressen im virtuellen Netzwerk zurückgesetzt.
 
@@ -81,8 +81,7 @@ Ein virtuelles Netzwerk kann nicht in eine andere Ressourcengruppe oder ein ande
 ## <a name="disable-ddos-for-a-virtual-network"></a>Deaktivieren von DDoS für ein neues virtuelles Netzwerk
 
 1. Geben Sie am oberen Rand im Portal im Feld **Ressourcen, Dienste und Dokumente durchsuchen** den Namen des virtuellen Netzwerks ein, für das der DDoS-Schutzstandard deaktiviert werden soll. Wenn der Name des virtuellen Netzwerks in den Suchergebnissen angezeigt wird, wählen Sie ihn aus.
-2. Wählen Sie unter **EINSTELLUNGEN** die Option **DDoS-Schutz** aus.
-3. Wählen Sie **Grundlegend** unter **DDoS-Schutzplan** und dann **Speichern** aus.
+2. Wählen Sie **Unter DDoS Protection Standard** und dann **Deaktivieren** aus.
 
 **Befehle** 
 - Azure CLI: [az network ddos-protection delete](https://docs.microsoft.com/cli/azure/network/ddos-protection?view=azure-cli-latest#az-network-ddos-protection-delete)

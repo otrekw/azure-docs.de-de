@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: article
 ms.date: 04/23/2020
 ms.author: cshoe
-ms.openlocfilehash: fd7b0be967c7a0bbc605c51408448917b5222d36
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 37f79d717b7ea0e26717e7b51f9e66b908b96521
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121752"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640961"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>Manuelles Ausführen einer Funktion ohne HTTP-Trigger
 
@@ -37,7 +37,7 @@ Dieser Anforderungsort wird in Postman zusammen mit dem Hauptschlüssel der Funk
 
 ## <a name="get-the-functions-master-key"></a>Abrufen des Hauptschlüssels der Funktion
 
-1. Navigieren Sie im Azure-Portal zu Ihrer Funktion, und wählen Sie **Funktionsschlüssel** aus. Wählen Sie dann den Funktionsschlüssel aus, den Sie kopieren möchten. 
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer Funktions-App, und wählen Sie **App-Schlüssel** und dann den Schlüssel `_master` aus. 
 
     :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key.png" alt-text="Suchen nach dem Hauptschlüssel, der kopiert werden soll." border="true":::
 
@@ -50,7 +50,7 @@ Dieser Anforderungsort wird in Postman zusammen mit dem Hauptschlüssel der Funk
     :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-function-log.png" alt-text="Anzeigen der Protokolle, um die Testergebnisse für den Hauptschlüssel anzuzeigen." border="true":::
 
 > [!CAUTION]  
-> Aufgrund der erhöhten Berechtigungen, die der Hauptschlüssel in Ihrer Funktions-App gewährt, sollten Sie diesen Schlüssel nicht für Dritte freigeben oder in einer Anwendung verteilen.
+> Aufgrund der erhöhten Berechtigungen, die der Hauptschlüssel in Ihrer Funktions-App gewährt, sollten Sie diesen Schlüssel nicht für Dritte freigeben oder in einer Anwendung verteilen. Der Schlüssel darf nur an einen HTTPS-Endpunkt gesendet werden.
 
 ## <a name="call-the-function"></a>Aufrufen der Funktion
 

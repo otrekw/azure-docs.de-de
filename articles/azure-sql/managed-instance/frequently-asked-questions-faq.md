@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: 5f42079d271a933cb9a722c7e33e6f646f7c4d1b
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: fe779ebf8bb041fb90b8eb38a9469a783127ffd3
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210507"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661417"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -223,12 +223,15 @@ Informationen zur Optimierung der Speicherleistung finden Sie unter [Best Practi
 Nein, der Sicherungsspeicher wird nicht vom Speicher Ihrer verwalteten Instanz abgezogen. Der Sicherungsspeicher ist unabhängig vom Instanzspeicherplatz, und seine Größe ist nicht begrenzt. Der Sicherungsspeicher wird durch den Zeitraum zum Beibehalten der Sicherung Ihrer Instanzdatenbanken begrenzt, der bis zu 35 Tagen festgelegt werden kann. Weitere Informationen finden Sie unter [Automatisierte Sicherungen](../database/automated-backups-overview.md).
 
 **Wie kann ich feststellen, wann automatisierte Sicherungen für meine verwaltete Instanz durchgeführt werden?**
+
 Informationen zum Nachverfolgen, wann automatisierte Sicherungen auf einer SQL Managed Instance-Instanz ausgeführt wurden, finden Sie unter [So werden automatische Sicherungen für Azure SQL Managed Instance nachverfolgt](https://techcommunity.microsoft.com/t5/azure-database-support-blog/lesson-learned-128-how-to-track-the-automated-backup-for-an/ba-p/1442355).
 
 **Wird eine bedarfsgesteuerte Sicherung unterstützt?**
+
 Ja, Sie können im Azure Blob Storage eine vollständige Kopiesicherung erstellen. Diese kann jedoch nur in Managed Instance wieder hergestellt werden. Weitere Informationen finden Sie unter [Kopiesicherung](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15). Allerdings ist die Kopiesicherung nicht möglich, wenn die Datenbank von einer dienstverwalteten TDE-Technologie verschlüsselt wird, da das für die Verschlüsselung verwendete Zertifikat nicht zugänglich ist. Verwenden Sie in diesem Fall die Point-in-Time-Wiederherstellung, um diese Datenbank auf eine andere Instanz von SQL Managed Instance zu verschieben, oder wechseln Sie zu einem kundenseitig verwalteten Schlüssel.
 
 **Wird die native Wiederherstellung (von BAK-Dateien) in Managed Instance unterstützt?**
+
 Ja, sie wird unterstützt und ist für SQL Server 2005 und höhere Versionen verfügbar.  Wenn Sie die native Wiederherstellung verwenden möchten, laden Sie die BAK-Datei in Azure Blob Storage hoch, und führen Sie die T-SQL-Befehle aus. Weitere Informationen finden Sie unter [Native RESTORE FROM URL-Option](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-migrate#native-restore-from-url).
 
 ## <a name="business-continuity"></a>Geschäftskontinuität
@@ -503,6 +506,14 @@ ALTER LOGIN <login_name> WITH CHECK_EXPIRATION = OFF;
 ```
 
 (ersetzen Sie ‚test‘ durch den gewünschten Anmeldenamen, und passen Sie Werte für Richtlinie und Ablauf an).
+
+
+## <a name="service-updates"></a>Dienstupdates
+
+**Was ist ein geplantes Wartungsereignis für SQL Managed Instance?**
+
+Weitere Informationen finden Sie unter [Planen von Azure-Wartungsereignissen in SQL Managed Instance](https://docs.microsoft.com/azure/azure-sql/database/planned-maintenance). 
+
 
 ## <a name="azure-feedback-and-support"></a>Azure-Feedback und -Support
 

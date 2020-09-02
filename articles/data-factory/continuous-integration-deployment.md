@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 7c12cfc21668a13586d94089a7049f6f0d6066d7
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 4de682bd315eef100bdbf8dd24faa128c5b8c2a1
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87336921"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815809"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Continuous Integration und Continuous Delivery in Azure Data Factory
 
@@ -113,7 +113,7 @@ Im Folgenden finden Sie eine Anleitung zum Einrichten eines Azure Pipelines-Rele
     h. Wählen Sie unter **Bereitstellungsmodus** die Option **Inkrementell** aus.
 
     > [!WARNING]
-    > Bei Auswahl von **Vollständig** als **Bereitstellungsmodus** werden vorhandene Ressourcen eventuell gelöscht. Dies gilt einschließlich aller Ressourcen in der Zielressourcengruppe, die nicht in der Resource Manager-Vorlage definiert sind.
+    > Im vollständigen Bereitstellungsmodus werden Ressourcen, die in der Ressourcengruppe vorhanden, aber in der neuen Resource Manager-Vorlage nicht angegeben sind, **gelöscht**. Weitere Informationen finden Sie unter [Azure Resource Manager-Bereitstellungsmodi](../azure-resource-manager/templates/deployment-modes.md).
 
     ![Data Factory-Bereitstellung in der Produktion](media/continuous-integration-deployment/continuous-integration-image9.png)
 

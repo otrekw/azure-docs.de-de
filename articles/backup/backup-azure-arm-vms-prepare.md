@@ -3,12 +3,12 @@ title: Sichern virtueller Azure-Computer in einem Recovery Services-Tresor
 description: Beschreibt das Sichern virtueller Azure-Computer in einem Recovery Services-Tresor mit Azure Backup
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 1ae501be57be672238c8b55f431b6f5962a5fd99
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: fd958fe658306fd068356764100e6aaa15f4fc67
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88261938"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826309"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Sichern virtueller Azure-Computer in einem Recovery Services-Tresor
 
@@ -89,7 +89,7 @@ Konfigurieren Sie eine Sicherungsrichtlinie für den Tresor.
      ![Bereich „Virtuelle Computer auswählen“](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
 
     >[!NOTE]
-    > Alle virtuellen Computer in derselben Region und demselben Abonnement wie der Tresor sind zum Konfigurieren der Sicherung verfügbar. Beim Konfigurieren der Sicherung können Sie nach dem Namen des virtuellen Computers und dessen Ressourcengruppe suchen, auch wenn Sie nicht über die erforderliche Berechtigung für diese VMs verfügen. Wenn sich Ihre VM in einem vorläufig gelöschten Zustand befindet, wird Sie in dieser Liste nicht angezeigt. Wenn Sie die VM erneut schützen müssen, müssen Sie warten, bis der Zeitraum für das vorläufige Löschen abgelaufen ist, oder die VM aus der Liste der vorläufig gelöschten Elemente wiederherstellen. Weitere Informationen finden Sie im [Artikel zu vorläufigem Löschen für virtuelle Computer](soft-delete-virtual-machines.md#soft-delete-for-vms-using-azure-portal).
+    > Alle virtuellen Computer in derselben Region und demselben Abonnement wie der Tresor sind zum Konfigurieren der Sicherung verfügbar. Beim Konfigurieren der Sicherung können Sie nach dem Namen des virtuellen Computers und dessen Ressourcengruppe suchen, auch wenn Sie nicht über die erforderliche Berechtigung für diese VMs verfügen. Wenn sich Ihre VM im vorläufig gelöschten Zustand befindet, wird sie in dieser Liste nicht angezeigt. Wenn Sie die VM erneut schützen müssen, müssen Sie warten, bis der Zeitraum für das vorläufige Löschen abgelaufen ist, oder die VM aus der Liste der vorläufig gelöschten Elemente wiederherstellen. Weitere Informationen finden Sie im [Artikel zu vorläufigem Löschen für virtuelle Computer](soft-delete-virtual-machines.md#soft-delete-for-vms-using-azure-portal).
 
 1. Klicken Sie unter **Sicherung** auf **Sicherung aktivieren**. Damit wird die Richtlinie für den Tresor und die VMs bereitgestellt, und die Sicherungserweiterung wird auf dem VM-Agent auf der Azure-VM installiert.
 

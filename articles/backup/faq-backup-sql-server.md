@@ -4,12 +4,12 @@ description: Enthält Antworten auf häufig gestellte Fragen zur Sicherung von S
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 2781646e548f4f530b26ca41466f158597e817d9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d69a2aff900dc3185aafbcb2d655a29d2fff06e3
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090976"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890554"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Häufig gestellte Fragen zu SQL Server-Datenbanken, die auf einer Azure VM-Sicherungsinstanz ausgeführt werden
 
@@ -30,7 +30,7 @@ Unter bestimmten Umständen löst der Azure Backup-Dienst korrigierende Sicherun
 - Wenn Sie sich für das Überschreiben der Datenbank während der Wiederherstellung entscheiden, tritt bei der nächsten Protokoll- bzw. differenziellen Sicherung ein Fehler auf, und stattdessen wird eine vollständige Sicherung ausgelöst.
 - In Fällen, in denen aufgrund einer Änderung des Datenbank-Wiederherstellungsmodells für eine vollständige Sicherung das Zurücksetzen der Protokollketten erforderlich ist, wird beim nächsten geplanten Zeitpunkt automatisch eine vollständige Sicherung ausgelöst.
 
-Die automatische Korrektur wird für alle Benutzer standardmäßig als Funktion aktiviert. Gehen Sie aber wie folgt vor, falls Sie sich dagegen entscheiden:
+Die Funktion der automatischen Reparatur ist standardmäßig für alle Benutzer aktiviert. Wenn Sie die Funktion deaktivieren möchten, führen Sie die folgenden Schritte aus:
 
 - Erstellen Sie auf der SQL Server-Instanz im Ordner *C:\Programme\Azure Workload Backup\bin* die Datei **ExtensionSettingsOverrides.json** (bzw. bearbeiten Sie sie).
 - Legen Sie in **ExtensionSettingsOverrides.json** Folgendes fest: *{"EnableAutoHealer": false}* .
@@ -52,11 +52,11 @@ Der Standardwert von „DefaultBackupTasksThreshold“ ist **20**.
  Zwar ist diese Methode hilfreich, wenn die Sicherungsanwendung viele Ressourcen verbraucht, der [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) von SQL Server stellt jedoch eine allgemeinere Möglichkeit zur Angabe von Grenzwerten für die Menge an CPU, physischer E/A und Speicher dar, den eingehende Anwendungsanforderungen nutzen können.
 
 > [!NOTE]
-> Über die Benutzeroberfläche können Sie dennoch jederzeit entsprechend viele Sicherungen planen. Diese werden allerdings in einem gleitenden Fenster verarbeitet mit z. B. immer 5 Sicherungen gleichzeitig wie im obigen Beispiel.
+> Auf der Benutzeroberfläche können Sie weiterhin jederzeit eine beliebige Anzahl von Sicherungen planen. Diese werden allerdings in einem gleitenden Fenster von beispielsweise jeweils 5 verarbeitet, wie im obigen Beispiel gezeigt.
 
 ## <a name="can-i-run-a-full-backup-from-a-secondary-replica"></a>Kann ich eine vollständige Sicherung aus einem sekundären Replikat ausführen?
 
-Gemäß den SQL-Einschränkungen können Sie für das sekundäre Replikat eine Sicherung vom Typ „Nur vollständig kopieren“ ausführen. Eine vollständige Sicherung ist nicht zulässig.
+Gemäß den SQL-Einschränkungen können Sie für das sekundäre Replikat eine Sicherung vom Typ „Nur vollständig kopieren“ ausführen. Eine vollständige Sicherung ist jedoch nicht zulässig.
 
 ## <a name="can-i-protect-availability-groups-on-premises"></a>Kann ich Verfügbarkeitsgruppen lokal schützen?
 
@@ -68,7 +68,7 @@ Der Recovery Services-Tresor von Azure Backup kann alle Knoten erkennen und sch�
 
 ## <a name="do-successful-backup-jobs-create-alerts"></a>Erstellen erfolgreiche Sicherungsaufträge Warnungen?
 
-Nein. Erfolgreiche Sicherungsaufträge generieren keine Warnungen. Warnungen werden nur für Sicherungsaufträge gesendet, bei denen ein Fehler aufgetreten ist. Ausführliche Informationen zum Verhalten von Portalwarnungen finden Sie [hier](backup-azure-monitoring-built-in-monitor.md). Falls bei Ihnen aber auch Warnungen zu erfolgreichen Aufträgen angezeigt werden sollen, helfen Ihnen die Informationen unter [Monitoring at scale using Azure Monitor](backup-azure-monitoring-use-azuremonitor.md) (Bedarfsgesteuertes Überwachen mit Azure Monitor) weiter.
+Nein. Erfolgreiche Sicherungsaufträge generieren keine Warnungen. Warnungen werden nur für Sicherungsaufträge gesendet, bei denen ein Fehler aufgetreten ist. Ausführliche Informationen zum Verhalten von Portalwarnungen finden Sie [hier](backup-azure-monitoring-built-in-monitor.md). Falls Sie aber daran interessiert sind, Benachrichtigungen auch für erfolgreiche Aufträge zu erhalten, können Sie Sicherungen [über Azure Monitor überwachen](backup-azure-monitoring-use-azuremonitor.md).
 
 ## <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>Werden geplante Sicherungsaufträge im Menü „Sicherungsaufträge“ angezeigt?
 
@@ -92,9 +92,9 @@ Wenn Sie **Sicherung beenden mit „Daten löschen“** durchführen, werden kei
 
 ## <a name="if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior"></a>Welches Verhalten ergibt sich, wenn ich den Namen der Datenbank ändere, nachdem sie geschützt wurde?
 
-Eine umbenannte Datenbank wird wie eine neue Datenbank behandelt. Diese Situation wird vom Dienst folglich so behandelt, als sei die Datenbank nicht gefunden worden, und für die Sicherungen tritt ein Fehler auf.
+Eine umbenannte Datenbank wird wie eine neue Datenbank behandelt. Der Dienst verarbeitet diese Situation daher so, als ob die Datenbank nicht gefunden wurde: die Sicherungen können nicht ausgeführt werden.
 
-Sie können die umbenannte Datenbank auswählen und den Schutz dafür konfigurieren. Falls auf der Instanz der automatische Schutz aktiviert ist, wird die umbenannte Datenbank automatisch erkannt und geschützt.
+Sie können die umbenannte Datenbank auswählen und den Schutz dafür konfigurieren. Wenn in der Instanz der automatische Schutz aktiviert ist, wird die umbenannte Datenbank automatisch erkannt und geschützt.
 
 ## <a name="why-cant-i-see-an-added-database-for-an-autoprotected-instance"></a>Warum kann ich eine hinzugefügte Datenbank für eine Instanz mit automatischem Schutz nicht sehen?
 

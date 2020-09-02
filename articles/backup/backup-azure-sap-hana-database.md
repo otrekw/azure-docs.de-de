@@ -3,12 +3,12 @@ title: Sichern einer SAP HANA-Datenbank mit Azure Backup in Azure
 description: In diesem Artikel erfahren Sie, wie Sie eine SAP HANA-Datenbanken mit dem Azure Backup-Dienst auf virtuellen Azure-Computern sichern können.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 0efd26272bbfc4c8f63f7f02a605d48e53577390
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: c1db5bb8cd49fb45f1d34b5748d820a16724372e
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809135"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892489"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern
 

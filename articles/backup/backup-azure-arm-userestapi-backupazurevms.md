@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Sicherungsvorgänge von Azu
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 595291549b4d181967ea168d0dc71bc7e2237a67
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: db5e6cc460d320971a4005889dc2c9aa9925a18d
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514202"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890330"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Sichern eines virtuellen Azure-Computers mithilfe von Azure Backup über die REST-API
 
@@ -35,7 +35,7 @@ Der POST-URI enthält die Parameter `{subscriptionId}`, `{vaultName}`, `{vaultre
 POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/refreshContainers?api-version=2016-12-01
 ```
 
-#### <a name="responses"></a>Antworten
+#### <a name="responses-to-refresh-operation"></a>Antworten auf den Aktualisierungsvorgang
 
 Der „refresh“-Vorgang ist ein [asynchroner Vorgang](../azure-resource-manager/management/async-operations.md). Das bedeutet, dass in diesem Vorgang ein anderer Vorgang erstellt wird, der separat nachverfolgt werden muss.
 
@@ -46,7 +46,7 @@ Er gibt zwei Antworten zurück: „202 (Akzeptiert)“, wenn ein anderer Vorgang
 |204 Kein Inhalt     |         |  OK, wird ohne Inhalt zurückgegeben      |
 |202 – Akzeptiert     |         |     Zulässig    |
 
-##### <a name="example-responses"></a>Beispielantworten
+##### <a name="example-responses-to-refresh-operation"></a>Beispielantworten auf den Aktualisierungsvorgang
 
 Nachdem die *POST*-Anforderung gesendet wurde, wird die Antwort „202 (Akzeptiert)“ zurückgegeben.
 
@@ -92,7 +92,7 @@ X-Powered-By: ASP.NET
 
 ### <a name="selecting-the-relevant-azure-vm"></a>Auswählen des entsprechenden virtuellen Azure-Computers
 
- Sie können überprüfen, ob die „Zwischenspeicherung“ erfolgt ist, indem Sie [alle schützbaren Elemente](/rest/api/backup/backupprotectableitems/list) unter dem Abonnement auflisten und den gewünschten virtuellen Computer in der Antwort suchen. [Die Antwort dieses Vorgangs](#example-responses-1) enthält auch Informationen dazu, wie Recovery Services einen virtuellen Computer identifiziert.  Wenn Sie mit dem Muster vertraut sind, können Sie diesen Schritt überspringen und direkt mit dem [Aktivieren des Schutzes](#enabling-protection-for-the-azure-vm) fortfahren.
+ Sie können überprüfen, ob die „Zwischenspeicherung“ erfolgt ist, indem Sie [alle schützbaren Elemente](/rest/api/backup/backupprotectableitems/list) unter dem Abonnement auflisten und den gewünschten virtuellen Computer in der Antwort suchen. [Die Antwort dieses Vorgangs](#example-responses-to-get-operation) enthält auch Informationen dazu, wie Recovery Services einen virtuellen Computer identifiziert.  Wenn Sie mit dem Muster vertraut sind, können Sie diesen Schritt überspringen und direkt mit dem [Aktivieren des Schutzes](#enabling-protection-for-the-azure-vm) fortfahren.
 
 Dieser Vorgang ist ein *GET*-Vorgang.
 
@@ -102,13 +102,13 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 Der *GET*-URI enthält alle erforderlichen Parameter. Es ist kein zusätzlicher Anforderungstext erforderlich.
 
-#### <a name="responses"></a><a name="responses-1"></a>Antworten
+#### <a name="responses-to-get-operation"></a>Antworten auf den GET-Vorgang
 
 |Name  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
 |200 – OK     | [WorkloadProtectableItemResourceList](/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       OK |
 
-#### <a name="example-responses"></a><a name="example-responses-1"></a>Beispielantworten
+#### <a name="example-responses-to-get-operation"></a>Beispielantworten auf den GET-Vorgang
 
 Nachdem die *GET*-Anforderung gesendet wurde, wird die Antwort „200 (OK)“ zurückgegeben.
 
@@ -162,7 +162,7 @@ Im Beispiel ergeben die Werte oben Folgendes:
 
 ### <a name="enabling-protection-for-the-azure-vm"></a>Aktivieren des Schutzes für den virtuellen Azure-Computer
 
-Nachdem der entsprechende virtuelle Computer zwischengespeichert und ermittelt wurde, wählen Sie die Richtlinie zum Schutz aus. Weitere Informationen zu vorhandenen Richtlinien im Tresor finden Sie in der [Liste der Sicherungsrichtlinien](/rest/api/backup/backuppolicies/list). Wählen Sie dann die [entsprechende Richtlinie](/rest/api/backup/protectionpolicies/get) aus, indem Sie auf den Richtliniennamen verweisen. Informationen zum Erstellen von Richtlinien finden Sie im [Tutorial zum Erstellen von Richtlinien](backup-azure-arm-userestapi-createorupdatepolicy.md). Im Beispiel unten wurde „DefaultPolicy“ ausgewählt.
+Nachdem der entsprechende virtuelle Computer zwischengespeichert und ermittelt wurde, wählen Sie die Richtlinie zum Schutz aus. Weitere Informationen zu vorhandenen Richtlinien im Tresor finden Sie in der [Liste der Sicherungsrichtlinien](/rest/api/backup/backuppolicies/list). Wählen Sie dann die [entsprechende Richtlinie](/rest/api/backup/protectionpolicies/get) aus, indem Sie auf den Richtliniennamen verweisen. Informationen zum Erstellen von Richtlinien finden Sie im [Tutorial zum Erstellen von Richtlinien](backup-azure-arm-userestapi-createorupdatepolicy.md). Im Beispiel unten ist „DefaultPolicy“ ausgewählt.
 
 Beim Aktivieren des Schutzes handelt es sich um einen asynchronen *PUT*-Vorgang, mit dem ein „geschütztes Element“ erstellt wird.
 
@@ -200,9 +200,9 @@ Der folgende Anforderungstext definiert zum Erstellen eines geschützten Element
 }
 ```
 
-Bei `{sourceResourceId}` handelt es sich um die oben genannte `{virtualMachineId}` aus der [Antwort der Liste der schützbaren Elemente](#example-responses-1).
+Bei `{sourceResourceId}` handelt es sich um die oben genannte `{virtualMachineId}` aus der [Antwort der Liste der schützbaren Elemente](#example-responses-to-get-operation).
 
-#### <a name="responses"></a>Antworten
+#### <a name="responses-to-create-protected-item-operation"></a>Antworten auf den Vorgang zum Erstellen eines geschützten Elements
 
 Die Erstellung eines geschützten Elements ist ein [asynchroner Vorgang](../azure-resource-manager/management/async-operations.md). Das bedeutet, dass in diesem Vorgang ein anderer Vorgang erstellt wird, der separat nachverfolgt werden muss.
 
@@ -213,7 +213,7 @@ Er gibt zwei Antworten zurück: „202 (Akzeptiert)“, wenn ein anderer Vorgang
 |200 – OK     |    [ProtectedItemResource](/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  OK       |
 |202 – Akzeptiert     |         |     Zulässig    |
 
-##### <a name="example-responses"></a>Beispielantworten
+##### <a name="example-responses-to-create-protected-item-operation"></a>Beispielantworten auf den Vorgang zum Erstellen eines geschützten Elements
 
 Nachdem Sie die *PUT*-Anforderung für die Erstellung oder Aktualisierung eines geschützten Elements gesendet haben, wird als erste Antwort „202 (Akzeptiert)“ mit einem location- oder Azure-async-Header zurückgegeben.
 
@@ -284,13 +284,13 @@ Das Auslösen einer bedarfsgesteuerten Sicherung ist ein *POST*-Vorgang.
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/backup?api-version=2016-12-01
 ```
 
-`{containerName}` und `{protectedItemName}` entsprechen der Erstellung [oben](#responses-1). Für `{fabricName}` ist „Azure“ festgelegt. In unserem Beispiel ergibt dies Folgendes:
+`{containerName}` und `{protectedItemName}` entsprechen der Erstellung [oben](#responses-to-get-operation). Für `{fabricName}` ist „Azure“ festgelegt. In unserem Beispiel ergibt dies Folgendes:
 
 ```http
 POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM/backup?api-version=2016-12-01
 ```
 
-### <a name="create-the-request-body"></a>Erstellen des Anforderungstexts
+### <a name="create-the-request-body-for-on-demand-backup"></a>Erstellen des Anforderungstexts für eine bedarfsgesteuerte Sicherung
 
 Zum Auslösen einer bedarfsgesteuerten Sicherung werden die folgenden Komponenten des Anforderungstexts verwendet.
 
@@ -300,9 +300,9 @@ Zum Auslösen einer bedarfsgesteuerten Sicherung werden die folgenden Komponente
 
 Die vollständige Liste mit Definitionen des Anforderungstexts und weitere Einzelheiten finden Sie im [Dokument zur REST-API zum Auslösen von Sicherungen für geschützte Elemente](/rest/api/backup/backups/trigger#request-body).
 
-#### <a name="example-request-body"></a>Beispiel für Anforderungstext
+#### <a name="example-request-body-for-on-demand-backup"></a>Beispielanforderungstext für eine bedarfsgesteuerte Sicherung
 
-Der folgende Anforderungstext definiert Eigenschaften, die zum Auslösen einer Sicherung für ein geschütztes Element erforderlich sind. Wenn die Aufbewahrungsdauer nicht angegeben wird, wird die Sicherung ab dem Zeitpunkt, an dem der Sicherungsauftrag ausgelöst wurde, 30 Tage lang aufbewahrt.
+Der folgende Anforderungstext definiert Eigenschaften, die zum Auslösen einer Sicherung für ein geschütztes Element erforderlich sind. Wenn keine Aufbewahrungsdauer angegeben ist, wird die Sicherung ab dem Zeitpunkt, zu dem der Sicherungsauftrag ausgelöst wurde, 30 Tage lang aufbewahrt.
 
 ```json
 {
@@ -313,7 +313,7 @@ Der folgende Anforderungstext definiert Eigenschaften, die zum Auslösen einer S
 }
 ```
 
-### <a name="responses"></a>Antworten
+### <a name="responses-for-on-demand-backup"></a>Antworten auf eine bedarfsgesteuerte Sicherung
 
 Das Auslösen einer bedarfsgesteuerten Sicherung ist ein [asynchroner Vorgang](../azure-resource-manager/management/async-operations.md). Das bedeutet, dass in diesem Vorgang ein anderer Vorgang erstellt wird, der separat nachverfolgt werden muss.
 
@@ -323,7 +323,7 @@ Er gibt zwei Antworten zurück: „202 (Akzeptiert)“, wenn ein anderer Vorgang
 |---------|---------|---------|
 |202 – Akzeptiert     |         |     Zulässig    |
 
-#### <a name="example-responses"></a><a name="example-responses-3"></a>Beispielantworten
+#### <a name="example-responses-for-on-demand-backup"></a>Beispielantworten auf eine bedarfsgesteuerte Sicherung
 
 Nachdem Sie die *POST*-Anforderung für eine bedarfsgesteuerte Sicherung gesendet haben, wird als erste Antwort „202 (Akzeptiert)“ mit einem location- oder Azure-async-Header zurückgegeben.
 
@@ -399,7 +399,7 @@ Zum Ändern der Richtlinie, mit der der virtuelle Computer geschützt wird, kön
 }
 ```
 
-Die Antwort erfolgt im gleichen Format wie beim [Aktivieren des Schutzes](#responses-2).
+Die Antwort erfolgt im gleichen Format wie beim [Aktivieren des Schutzes](#responses-to-create-protected-item-operation).
 
 ### <a name="stop-protection-but-retain-existing-data"></a>Beenden des Schutzes, jedoch Beibehalten vorhandener Daten
 
@@ -415,7 +415,7 @@ Um den Schutz für einen geschützten virtuellen Computer zu entfernen, die bere
 }
 ```
 
-Die Antwort erfolgt im gleichen Format wie beim [Auslösen einer bedarfsgesteuerten Sicherung](#example-responses-3). Der resultierende Auftrag muss wie im [Dokument zum Überwachen von Aufträgen mit der REST-API](backup-azure-arm-userestapi-managejobs.md#tracking-the-job) erläutert nachverfolgt werden.
+Die Antwort erfolgt im gleichen Format wie beim [Auslösen einer bedarfsgesteuerten Sicherung](#example-responses-for-on-demand-backup). Der resultierende Auftrag muss wie im [Dokument zum Überwachen von Aufträgen mit der REST-API](backup-azure-arm-userestapi-managejobs.md#tracking-the-job) erläutert nachverfolgt werden.
 
 ### <a name="stop-protection-and-delete-data"></a>Beenden des Schutzes und Löschen der Daten
 
@@ -427,13 +427,13 @@ Das Beenden des Schutzes und das Löschen der Daten ist ein *DELETE*-Vorgang.
 DELETE https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}?api-version=2019-05-13
 ```
 
-`{containerName}` und `{protectedItemName}` entsprechen der Erstellung [oben](#responses-1). `{fabricName}` ist „Azure“. In unserem Beispiel ergibt dies Folgendes:
+`{containerName}` und `{protectedItemName}` entsprechen der Erstellung [oben](#responses-to-get-operation). `{fabricName}` ist „Azure“. In unserem Beispiel ergibt dies Folgendes:
 
 ```http
 DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM?api-version=2019-05-13
 ```
 
-#### <a name="responses"></a><a name="responses-2"></a>Antworten
+#### <a name="responses-for-delete-protection"></a>Antworten auf einen Vorgang zum Beenden des Schutzes und Löschen der Daten
 
 Der *DELETE*-Vorgang für den Schutz ist ein [asynchroner Vorgang](../azure-resource-manager/management/async-operations.md). Das bedeutet, dass in diesem Vorgang ein anderer Vorgang erstellt wird, der separat nachverfolgt werden muss.
 
@@ -445,9 +445,9 @@ Er gibt zwei Antworten zurück: „202 (Akzeptiert)“, wenn ein anderer Vorgang
 |202 – Akzeptiert     |         |     Zulässig    |
 
 > [!IMPORTANT]
-> Zum Schutz vor versehentlichen Löschungen steht für den Recovery Services-Tresor ein [Feature für vorläufiges Löschen](use-restapi-update-vault-properties.md#soft-delete-state) zur Verfügung. Wenn der Status „Vorläufiges Löschen“ für den Tresor auf „Aktiviert“ festgelegt ist, werden die Daten durch den Löschvorgang NICHT sofort gelöscht. Sie werden 14 Tage lang aufbewahrt und dann dauerhaft gelöscht. Für diesen Zeitraum von 14 Tagen wird dem Kunden kein Speicher in Rechnung gestellt. Informationen dazu, wie Sie den Löschvorgang rückgängig machen, finden Sie im Abschnitt zum [Rückgängigmachen des Löschens](#undo-the-stop-protection-and-delete-data).
+> Zum Schutz vor versehentlichen Löschungen steht für den Recovery Services-Tresor ein [Feature für vorläufiges Löschen](use-restapi-update-vault-properties.md#soft-delete-state) zur Verfügung. Wenn der Status „Vorläufiges Löschen“ für den Tresor auf „Aktiviert“ festgelegt ist, werden die Daten durch den Löschvorgang nicht sofort gelöscht. Sie werden 14 Tage lang aufbewahrt und dann dauerhaft gelöscht. Für diesen 14-tägigen Zeitraum wird Ihnen der Speicher nicht in Rechnung gestellt. Informationen dazu, wie Sie den Löschvorgang rückgängig machen, finden Sie im Abschnitt zum [Rückgängigmachen des Löschens](#undo-the-deletion).
 
-### <a name="undo-the-stop-protection-and-delete-data"></a>Rückgängigmachen des Beendens des Schutzes und des Löschens der Daten
+### <a name="undo-the-deletion"></a>Rückgängigmachen des Löschvorgangs
 
 Das Rückgängigmachen eines versehentlichen Löschens ähnelt dem Erstellen des Sicherungselements. Nachdem der Löschvorgang rückgängig gemacht wurde, wird das Element aufbewahrt, aber es werden keine zukünftigen Sicherungen ausgelöst.
 
@@ -464,7 +464,7 @@ Das Rückgängigmachen einer Löschung ist ein *PUT*-Vorgang, der dem [Ändern d
 }
 ```
 
-Die Antwort erfolgt im gleichen Format wie beim [Auslösen einer bedarfsgesteuerten Sicherung](#example-responses-3). Der resultierende Auftrag muss wie im [Dokument zum Überwachen von Aufträgen mit der REST-API](backup-azure-arm-userestapi-managejobs.md#tracking-the-job) erläutert nachverfolgt werden.
+Die Antwort erfolgt im gleichen Format wie beim [Auslösen einer bedarfsgesteuerten Sicherung](#example-responses-for-on-demand-backup). Der resultierende Auftrag muss wie im [Dokument zum Überwachen von Aufträgen mit der REST-API](backup-azure-arm-userestapi-managejobs.md#tracking-the-job) erläutert nachverfolgt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

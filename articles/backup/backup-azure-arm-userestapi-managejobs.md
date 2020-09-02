@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Sicherungs- und Wiederherst
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
-ms.openlocfilehash: c8dbd6fd7add58f8458c21fc65381a52ff3306d2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ced0e0020fe955734bf6cc767480fbadd6eaffc1
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079314"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890279"
 ---
 # <a name="track-backup-and-restore-jobs-using-rest-api"></a>Nachverfolgen von Sicherungs- und Wiederherstellungsaufträgen mit der REST-API
 
@@ -17,7 +17,7 @@ Der Azure Backup-Dienst löst Aufträge aus, die in unterschiedlichen Szenarien 
 
 ## <a name="fetch-job-information-from-operations"></a>Abrufen von Auftragsinformationen aus Vorgängen
 
-Für einen Vorgang, z.B. das Auslösen einer Sicherung, wird immer eine jobID zurückgegeben. Beispiel: Die letzte Antwort eines [REST-API-Vorgangs zum Auslösen einer Sicherung](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3) lautet beispielsweise wie folgt:
+Für einen Vorgang, z.B. das Auslösen einer Sicherung, wird immer eine jobID zurückgegeben. Beispiel: Die letzte Antwort eines [REST-API-Vorgangs zum Auslösen einer Sicherung](backup-azure-arm-userestapi-backupazurevms.md#example-responses-for-on-demand-backup) lautet beispielsweise wie folgt:
 
 ```http
 {
@@ -41,7 +41,7 @@ Der Azure VM-Sicherungsauftrag wird über das Feld „jobId“ identifiziert und
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}?api-version=2019-05-13
 ```
 
-`{jobName}` ist die oben erwähnte „jobId“. Die Antwort lautet immer „200 OK“, und im Feld „status“ wird der aktuelle Status des Auftrags angegeben. Wenn er „Completed“ oder „CompletedWithWarnings“ lautet, werden im Abschnitt „extendedInfo“ weitere Details zum Auftrag angegeben.
+`{jobName}` ist die oben erwähnte „jobId“. Die Antwort lautet immer „200 OK“, und im Feld „status“ wird der aktuelle Status des Auftrags angegeben. Sobald der Status „Completed“ oder „CompletedWithWarnings“ lautet, zeigt der Abschnitt „extendedInfo“ weitere Details zum Auftrag.
 
 ### <a name="response"></a>Antwort
 

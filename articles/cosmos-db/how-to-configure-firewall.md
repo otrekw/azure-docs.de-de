@@ -4,15 +4,15 @@ description: Hier erfahren Sie, wie IP-Zugriffssteuerungsrichtlinien für die Fi
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 10/31/2019
+ms.date: 08/24/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 36afc42844203436313f2a5b15975746f2acd349
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 69c39d2478ed7d488c1209c2c7e16c241c59bcef
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494354"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814177"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>Konfigurieren der IP-Firewall in Azure Cosmos DB
 
@@ -52,7 +52,7 @@ Sie können Anforderungen für den Zugriff auf das Azure-Portal ermöglichen, in
 
 Wenn Sie in Diensten, die keine statische IP bereitstellen, z.B. Azure Stream Analytics oder Azure Functions, auf das Azure Cosmos DB-Konto zugreifen, können Sie dennoch den Zugriff über die IP-Firewall einschränken. Sie können den Zugriff über andere Quellen innerhalb von Azure ermöglichen, indem Sie wie im folgenden Screenshot gezeigt die Option **Verbindungen aus Azure-Rechenzentren akzeptieren** auswählen:
 
-:::image type="content" source="./media/how-to-configure-firewall/enable-azure-services.png" alt-text="Screenshot: Öffnen der Seite „Firewall“ im Azure-Portal":::
+:::image type="content" source="./media/how-to-configure-firewall/enable-azure-services.png" alt-text="Screenshot: Akzeptieren von Verbindungen aus Azure-Rechenzentren":::
 
 Wenn Sie diese Option aktivieren, wird die IP-Adresse `0.0.0.0` zur Liste der zulässigen IP-Adressen hinzugefügt. Die IP-Adresse `0.0.0.0` beschränkt Anforderungen für das Azure Cosmos DB-Konto auf den IP-Adressbereich des Azure-Rechenzentrums. Mit dieser Einstellung ist der Zugriff auf das Azure Cosmos DB-Konto über andere IP-Adressbereiche nicht zulässig.
 
@@ -95,7 +95,44 @@ Wenn Sie über einen Computer im Internet auf das Azure Cosmos DB-Konto zugreife
 
 ## <a name="configure-an-ip-firewall-by-using-a-resource-manager-template"></a><a id="configure-ip-firewall-arm"></a>Konfigurieren einer IP-Firewall mithilfe einer Resource Manager-Vorlage
 
-Zum Konfigurieren der Zugriffssteuerung für Ihr Azure Cosmos DB-Konto muss in der Resource Manager-Vorlage das Attribut **ipRangeFilter** mit einer Liste der zugelassenen IP-Adressbereiche angegeben werden. Wenn Sie die IP-Firewall für ein bereits bereitgestelltes Cosmos-Konto konfigurieren, stellen Sie sicher, dass das `locations`-Array mit dem aktuell bereitgestellten übereinstimmt. Sie können nicht gleichzeitig das `locations`-Array und andere Eigenschaften ändern. Weitere Informationen und Beispiele zu Azure Resource Manager-Vorlagen für Azure Cosmos DB finden Sie unter [Azure Resource Manager-Vorlagen für Azure Cosmos DB](resource-manager-samples.md).
+Zum Konfigurieren der Zugriffssteuerung für Ihr Azure Cosmos DB-Konto muss in der Resource Manager-Vorlage das Attribut **ipRules** mit einem Array der zugelassenen IP-Adressbereiche angegeben sein. Wenn Sie die IP-Firewall für ein bereits bereitgestelltes Cosmos-Konto konfigurieren, stellen Sie sicher, dass das `locations`-Array mit dem aktuell bereitgestellten übereinstimmt. Sie können nicht gleichzeitig das `locations`-Array und andere Eigenschaften ändern. Weitere Informationen und Beispiele zu Azure Resource Manager-Vorlagen für Azure Cosmos DB finden Sie unter [Azure Resource Manager-Vorlagen für Azure Cosmos DB](resource-manager-samples.md).
+
+> [!IMPORTANT]
+> Die Eigenschaft **ipRules** wurde in API-Version 2020-04-01 eingeführt. In früheren Versionen wurde stattdessen die Eigenschaft **ipRangeFilter** verfügbar gemacht: eine Liste mit durch Trennzeichen getrennten IP-Adressen.
+
+Das folgende Beispiel zeigt, wie die Eigenschaft **ipRules** in der API-Version 2020-04-01 oder höher verfügbar gemacht wird:
+
+```json
+{
+  "type": "Microsoft.DocumentDB/databaseAccounts",
+  "name": "[variables('accountName')]",
+  "apiVersion": "2020-04-01",
+  "location": "[parameters('location')]",
+  "kind": "GlobalDocumentDB",
+  "properties": {
+    "consistencyPolicy": "[variables('consistencyPolicy')[parameters('defaultConsistencyLevel')]]",
+    "locations": "[variables('locations')]",
+    "databaseAccountOfferType": "Standard",
+    "enableAutomaticFailover": "[parameters('automaticFailover')]",
+    "ipRules": [
+      {
+        "ipAddressOrRange": "40.76.54.131"
+      },
+      {
+        "ipAddressOrRange": "52.176.6.30"
+      },
+      {
+        "ipAddressOrRange": "52.169.50.45"
+      },
+      {
+        "ipAddressOrRange": "52.187.184.26"
+      }
+    ]
+  }
+}
+```
+
+Hier sehen Sie ein Beispiel für eine beliebige API-Version vor 2020-04-01:
 
 ```json
 {
@@ -141,7 +178,7 @@ Das folgende Skript zeigt, wie Sie ein Azure Cosmos DB-Konto mit IP-Zugriffssteu
 # Create a Cosmos DB account with default values and IP Firewall enabled
 $resourceGroupName = "myResourceGroup"
 $accountName = "mycosmosaccount"
-$ipRangeFilter = "192.168.221.17,183.240.196.255,40.76.54.131"
+$ipRules = @("192.168.221.17","183.240.196.255","40.76.54.131")
 
 $locations = @(
     @{ "locationName"="West US 2"; "failoverPriority"=0; "isZoneRedundant"=False },
@@ -152,11 +189,11 @@ $locations = @(
 $CosmosDBProperties = @{
     "databaseAccountOfferType"="Standard";
     "locations"=$locations;
-    "ipRangeFilter"=$ipRangeFilter
+    "ipRules"=$ipRules
 }
 
 New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
-    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName `
+    -ApiVersion "2020-04-01" -ResourceGroupName $resourceGroupName `
     -Name $accountName -PropertyObject $CosmosDBProperties
 ```
 
@@ -179,6 +216,10 @@ Aktivieren Sie die Diagnoseprotokollierung für Ihr Azure Cosmos DB-Konto. Diese
 ### <a name="requests-from-a-subnet-with-a-service-endpoint-for-azure-cosmos-db-enabled"></a>Anforderungen über ein Subnetz mit einem aktiviertem Dienstendpunkt für Azure Cosmos DB
 
 Bei Anforderungen über ein Subnetz in einem virtuellen Netzwerk, für das der Dienstendpunkt für Azure Cosmos DB aktiviert ist, werden die Identitäten des virtuellen Netzwerks und des Subnetzes an Azure Cosmos DB-Konten gesendet. Diese Anforderungen enthalten nicht die öffentliche IP-Adresse der Quelle und werden deshalb durch die IP-Filter abgelehnt. Um den Zugriff über bestimmte Subnetze in virtuellen Netzwerken zu ermöglichen, fügen Sie eine VNET-Zugriffssteuerungsliste hinzu. Informationen dazu finden Sie unter [Konfigurieren des VNET- und subnetzbasierten Zugriffs für Ihr Azure Cosmos DB-Konto](how-to-configure-vnet-service-endpoint.md). Es kann bis zu 15 Minuten dauern, bis die Firewallregeln angewandt werden.
+
+### <a name="private-ip-addresses-in-list-of-allowed-addresses"></a>Private IP-Adressen in der Liste zulässiger Adressen
+
+Wenn die Liste zulässiger Adressen private IP-Adressen enthält, kann ein Azure Cosmos-Konto nicht erstellt oder aktualisiert werden. Stellen Sie sicher, dass in der Liste keine privaten IP-Adressen angegeben sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

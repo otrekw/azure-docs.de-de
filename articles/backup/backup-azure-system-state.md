@@ -3,12 +3,12 @@ title: Sichern des Windows-Systemstatus in Azure
 description: Erfahren Sie, wie Sie den Systemstatus von Windows Server-Computern in Azure sichern.
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: a56e500cc0330a6406b4465ab5baeafa39b544aa
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 8ce30b93ebaecec1e69c6c6a6f1064c6cdd3d0f6
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263043"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824461"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>Sichern des Windows-Systemstatus in Azure
 
@@ -98,7 +98,7 @@ Sie haben einen Tresor erstellt und können ihn nun für das Sichern des Windows
 ## <a name="install-and-register-the-agent"></a>Installieren und Registrieren des Agents
 
 > [!NOTE]
-> Die Sicherung kann noch nicht über das Azure-Portal aktiviert werden. Verwenden Sie den Microsoft Azure Recovery Services-Agent, um den Systemstatus von Windows Server zu sichern.
+> Die Sicherung kann nicht über das Azure-Portal aktiviert werden. Verwenden Sie den Microsoft Azure Recovery Services-Agent, um den Systemstatus von Windows Server zu sichern.
 >
 
 1. Doppelklicken Sie im Downloadordner (bzw. am entsprechenden Speicherort) auf die Datei **MARSagentinstaller.exe**.
@@ -116,7 +116,7 @@ Sie haben einen Tresor erstellt und können ihn nun für das Sichern des Windows
    * Speichern Sie die Verschlüsselungspassphrase an einem sicheren Ort.
 
      > [!NOTE]
-     > Wenn Sie die Passphrase verlieren oder vergessen, kann Microsoft Ihnen bei der Wiederherstellung der Sicherungsdaten nicht behilflich sein. Speichern Sie die Datei daher an einem sicheren Ort. Sie ist erforderlich, um eine Sicherung wiederherzustellen.
+     > Wenn Sie die Passphrase verlieren oder vergessen, kann Microsoft Ihnen bei der Wiederherstellung der Sicherungsdaten nicht behilflich sein. Speichern Sie die Datei daher an einem sicheren Ort. Die Passphrase ist unbedingt erforderlich, um eine Sicherung wiederherzustellen.
      >
      >
 
@@ -132,7 +132,7 @@ Die erste Sicherung umfasst zwei Aufgaben:
 Für die erste Sicherung verwenden Sie den Microsoft Azure Recovery Services-Agent.
 
 > [!NOTE]
-> Sie können den Systemstatus unter Windows Server 2008 R2 bis Windows Server 2016 sichern. Das Sichern des Systemstatus wird auf Client-SKUs nicht unterstützt. Der Systemstatus wird für Windows-Clients oder Computer mit Windows Server 2008 SP2 nicht als Option angezeigt.
+> Sie können den Systemstatus unter Windows Server 2008 R2 bis Windows Server 2016 sichern. Das Sichern des Systemstatus wird bei Client-SKUs nicht unterstützt. Der Systemstatus wird für Windows-Clients oder Windows Server 2008 SP2-Computer nicht als Option angezeigt.
 >
 >
 

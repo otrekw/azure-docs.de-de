@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebe40cd68074d4857b9869f29173ec3e6f78379d
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 455df5d2bf6003dd06a11f93d3e0d70ab9e11ee2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053999"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919521"
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>Aktualisieren des Azure Multi-Factor Authentication-Servers
 
@@ -25,7 +25,11 @@ Dieser Artikel führt Sie durch den Upgradevorgang von Azure Multi-Factor Authen
 Wenn Sie ein Upgrade von v6.x oder niedriger auf v7.x oder höher durchführen, ändern sich alle Komponenten von .NET 2.0 auf .NET 4.5. Alle Komponenten erfordern auch Microsoft Visual C++ 2015 Redistributable Update 1 oder höher. Das Installationsprogramm für den MFA-Server installiert die Versionen x86 und x64, wenn sie nicht schon vorher installiert wurden. Wenn das Benutzerportal und der Webdienst der mobilen App auf verschiedenen Servern ausgeführt werden, müssen Sie diese Pakete installieren, bevor Sie diese Komponenten aktualisieren. Sie können im [Microsoft Download Center](https://www.microsoft.com/download/) nach dem aktuellsten Visual C++ 2015 Redistributable Update suchen. 
 
 > [!IMPORTANT]
-> Ab dem 1. Juli 2019 bietet Microsoft keine MFA-Server mehr für neue Bereitstellungen an. Neue Kunden, die eine Multi-Factor Authentication für ihre Benutzer einrichten möchten, können stattdessen die cloudbasierte Multi-Factor Authentication von Azure verwenden. Bestehende Kunden, die ihren MFA-Server vor dem 1. Juli aktiviert haben, können weiterhin die neusten Versionen und zukünftige Updates herunterladen sowie Anmeldedaten zur Aktivierung generieren.
+> Seit dem 1. Juli 2019 bietet Microsoft für neue Bereitstellungen keine MFA-Server mehr an. Neue Kunden, die für die Anmeldung der Benutzer eine mehrstufige Authentifizierung anfordern möchten, sollten die cloudbasierte Multi-Factor Authentication von Azure verwenden.
+>
+> Informationen zu den ersten Schritten mit der cloudbasierten MFA finden Sie im [Tutorial: Schützen von Benutzeranmeldeereignissen mit Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md).
+>
+> Bestandskunden, die ihren MFA-Server vor dem 1. Juli 2019 aktiviert haben, können weiterhin die neuesten Versionen und zukünftige Updates herunterladen sowie Anmeldedaten zur Aktivierung generieren.
 
 Upgradeschritte auf einen Blick:
 

@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a56f7248d5782b63befc55c4215360e0f5cb52b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c9f59c7bb9b3977bdff7e3fd1ab78ed6fa2e412
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84338565"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717743"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Planen der Bereitstellung einer Self-Service-Kennwortzurücksetzung (SSPR) von Azure Active Directory
 
@@ -30,7 +30,7 @@ Die [Self-Service-Kennwortzurücksetzung (SSPR)](https://www.youtube.com/watch?v
 Folgende SSPR-Hauptfunktionen sind verfügbar:
 
 * Mit der Self-Service-Kennwortzurücksetzung können Endbenutzer ihre abgelaufenen (oder auch noch nicht abgelaufenen) Kennwörter ohne Unterstützung eines Administrators oder des Helpdesks zurücksetzen.
-* Die [Kennwortrückschreibung](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-writeback) ermöglicht die Verwaltung lokaler Kennwörter und die Aufhebung von Kontosperren über die Cloud.
+* Die [Kennwortrückschreibung](./concept-sspr-writeback.md) ermöglicht die Verwaltung lokaler Kennwörter und die Aufhebung von Kontosperren über die Cloud.
 * Berichte zu Kennwortverwaltungsaktivitäten gewähren Administratoren Einblicke in die Aktivitäten, die sich in Bezug auf Kennwortzurücksetzung und -registrierung in ihrer Organisation ereignen.
 
 In diesem Bereitstellungsleitfaden wird gezeigt, wie Sie einen SSPR-Rollout (Self-Service-Kennwortzurücksetzung) planen und anschließend testen.
@@ -42,7 +42,7 @@ Um die Self-Service-Kennwortzurücksetzung in Aktion zu sehen und dann zurückzu
 
 ## <a name="learn-about-sspr"></a>Informationen zu SSPR
 
-Weitere Informationen zu SSPR. Lesen Sie [So funktioniert‘s: Self-Service-Kennwortzurücksetzung in Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks).
+Weitere Informationen zu SSPR. Lesen Sie [So funktioniert‘s: Self-Service-Kennwortzurücksetzung in Azure AD](./concept-sspr-howitworks.md).
 
 ### <a name="key-benefits"></a>Hauptvorteile
 
@@ -60,7 +60,7 @@ Die Aktivierung der Self-Service-Kennwortzurücksetzung (SSPR) bietet die folgen
 
 Azure Active Directory wird pro Benutzer lizenziert. Dies bedeutet, dass jeder Benutzer über eine entsprechende Lizenz für die von ihm genutzten Features verfügen muss. Für die Self-Service-Kennwortzurücksetzung empfehlen wir die gruppenbasierte Lizenzierung. 
 
-Einen Vergleich der Editionen und Funktionen sowie Informationen zum Aktivieren der gruppen- oder benutzerdefinierten Lizenzierung finden Sie unter [Lizenzanforderungen für Azure AD-Self-Service-Kennwortzurücksetzung](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-licensing).
+Einen Vergleich der Editionen und Funktionen sowie Informationen zum Aktivieren der gruppen- oder benutzerdefinierten Lizenzierung finden Sie unter [Lizenzanforderungen für Azure AD-Self-Service-Kennwortzurücksetzung](./concept-sspr-licensing.md).
 
 Weitere Informationen zur Preisgestaltung finden Sie unter [Azure Active Directory – Preise](https://azure.microsoft.com/pricing/details/active-directory/).
 
@@ -83,10 +83,10 @@ Weitere Informationen zur Preisgestaltung finden Sie unter [Azure Active Directo
 | Onlinekurse|[Verwalten von Identitäten in Microsoft Azure Active Directory](https://www.pluralsight.com/courses/microsoft-azure-active-directory-managing-identities) Verwenden Sie SSPR, um Ihren Benutzern eine moderne, geschützte Umgebung bereitzustellen. Achten Sie besonders auf das Modul [Verwalten von Benutzern und Gruppen in Azure Active Directory](https://app.pluralsight.com/library/courses/microsoft-azure-active-directory-managing-identities/table-of-contents). |
 |Kostenpflichtige Pluralsight-Kurse |[Probleme der Identitäts- und Zugriffsverwaltung (IAM)](https://www.pluralsight.com/courses/identity-access-management-issues) Erfahren Sie mehr über IAM und Sicherheitsprobleme, auf die Sie in Ihrer Organisation achten sollten. Beachten Sie besonders das Modul „Weitere Authentifizierungsmethoden“.|
 | |[Erste Schritte mit Microsoft Enterprise Mobility Suite](https://www.pluralsight.com/courses/microsoft-enterprise-mobility-suite-getting-started) Lernen Sie die besten Methoden für die Ausweitung von lokalen Ressourcen in die Cloud kennen, die Authentifizierung, Autorisierung, Verschlüsselung und eine sichere Umgebung für Mobilgeräte gewährleisten. Beachten Sie besonders das Modul „Konfigurieren erweiterter Funktionen von Microsoft Azure Active Directory Premium“.
-|Tutorials |[Ausführen eines Rollouts der Azure AD-Self-Service-Kennwortzurücksetzung für eine Pilotgruppe](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-pilot) |
-| |[Aktivieren des Kennwortrückschreibens](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-writeback) |
-| |[Azure AD-Kennwortzurücksetzung über den Anmeldebildschirm unter Windows 10](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-windows) |
-| Häufig gestellte Fragen|[Häufig gestellte Fragen zur Kennwortverwaltung](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-faq) |
+|Tutorials |[Ausführen eines Rollouts der Azure AD-Self-Service-Kennwortzurücksetzung für eine Pilotgruppe](./tutorial-enable-sspr.md) |
+| |[Aktivieren des Kennwortrückschreibens](./tutorial-enable-sspr-writeback.md) |
+| |[Azure AD-Kennwortzurücksetzung über den Anmeldebildschirm unter Windows 10](./howto-sspr-windows.md) |
+| Häufig gestellte Fragen|[Häufig gestellte Fragen zur Kennwortverwaltung](./active-directory-passwords-faq.md) |
 
 
 ### <a name="solution-architecture"></a>Lösungsarchitektur
@@ -103,7 +103,7 @@ Zum Zurücksetzen des Kennworts müssen Benutzer zum [Kennwortzurücksetzungs-Po
 
 * Bei Hybridbenutzern schreibt SSPR das Kennwort über den Azure AD Connect-Dienst zurück in das lokale Active Directory. 
 
-Hinweis: Bei Benutzern, bei denen die [Kennworthashsynchronisierung](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-phs) deaktiviert ist, speichert SSPR die Kennwörter nur im lokalen Active Directory.
+Hinweis: Bei Benutzern, bei denen die [Kennworthashsynchronisierung](../hybrid/whatis-phs.md) deaktiviert ist, speichert SSPR die Kennwörter nur im lokalen Active Directory.
 
 ### <a name="best-practices"></a>Bewährte Methoden
 
@@ -141,9 +141,9 @@ Kommunikation ist ein kritischer Faktor für den Erfolg jedes neuen Diensts. Sie
 
 ### <a name="plan-a-pilot"></a>Planen eines Pilotprojekts
 
-Wir empfehlen, die erste Konfiguration von SSPR in einer Testumgebung vorzunehmen. Beginnen Sie mit einer Pilotgruppe, indem Sie SSPR für eine Teilmenge von Benutzern in Ihrer Organisation aktivieren. Lesen Sie hierzu [Bewährte Methoden für einen Pilotversuch](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans).
+Wir empfehlen, die erste Konfiguration von SSPR in einer Testumgebung vorzunehmen. Beginnen Sie mit einer Pilotgruppe, indem Sie SSPR für eine Teilmenge von Benutzern in Ihrer Organisation aktivieren. Lesen Sie hierzu [Bewährte Methoden für einen Pilotversuch](../fundamentals/active-directory-deployment-plans.md).
 
-Informationen zum Erstellen einer Gruppe finden Sie unter [Erstellen einer Gruppe und Hinzufügen von Mitgliedern in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-groups-create-azure-portal). 
+Informationen zum Erstellen einer Gruppe finden Sie unter [Erstellen einer Gruppe und Hinzufügen von Mitgliedern in Azure Active Directory](../fundamentals/active-directory-groups-create-azure-portal.md). 
 
 ## <a name="plan-configuration"></a>Planen der Konfiguration
 
@@ -172,7 +172,7 @@ Wählen Sie beim Aktivieren von SSPR eine entsprechende Sicherheitsgruppe in der
 
 ### <a name="authentication-methods"></a>Authentifizierungsmethoden
 
-Wenn SSPR aktiviert ist, können Benutzer ihr Kennwort nur dann zurücksetzen, wenn für die Authentifizierungsmethoden, die der Administrator aktiviert hat, Benutzerdaten vorliegen. Zu den Methoden zählen Telefon, Benachrichtigung in Authenticator-App, Sicherheitsfrage usw. Weitere Informationen finden Sie unter [Authentifizierungsmethoden](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-methods).
+Wenn SSPR aktiviert ist, können Benutzer ihr Kennwort nur dann zurücksetzen, wenn für die Authentifizierungsmethoden, die der Administrator aktiviert hat, Benutzerdaten vorliegen. Zu den Methoden zählen Telefon, Benachrichtigung in Authenticator-App, Sicherheitsfrage usw. Weitere Informationen finden Sie unter [Authentifizierungsmethoden](./concept-authentication-methods.md).
 
 Als Authentifizierungsmethoden empfehlen wir die folgenden Einstellungen:
 
@@ -180,7 +180,7 @@ Als Authentifizierungsmethoden empfehlen wir die folgenden Einstellungen:
 
 * Legen Sie **Anzahl der zum Zurücksetzen erforderlichen Methoden**  auf ein für Ihre Organisation angemessenes Maß fest. Eine bringt das geringste Maß an Reibung mit sich, während zwei den Sicherheitsstatus Ihrer Organisation verbessern können. 
 
-Hinweis: Der Benutzer muss über die Authentifizierungsmethoden verfügen, die in [Kennwortrichtlinien und -einschränkungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy) konfiguriert wurden.
+Hinweis: Der Benutzer muss über die Authentifizierungsmethoden verfügen, die in [Kennwortrichtlinien und -einschränkungen in Azure Active Directory](./concept-sspr-policy.md) konfiguriert wurden.
 
 ### <a name="registration-settings"></a>Registrierungseinstellungen
 
@@ -196,11 +196,11 @@ Konfigurieren Sie beide Einstellungen **Benutzer über Kennwortzurücksetzungen 
 
 Es ist wichtig, die E-Mail-Adresse oder URL des Helpdesks anzupassen, um sicherzustellen, dass Benutzer, bei denen Probleme auftreten, sofort Hilfe erhalten. Legen Sie diese Option auf eine allgemeine E-Mail-Adresse oder Website fest, die Ihren Benutzern vertraut ist. 
 
-Weitere Informationen finden Sie unter [Anpassen der Azure AD-Funktionalität für die Self-Service-Kennwortzurücksetzung](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-customization).
+Weitere Informationen finden Sie unter [Anpassen der Azure AD-Funktionalität für die Self-Service-Kennwortzurücksetzung](./howto-sspr-customization.md).
 
 ### <a name="password-writeback"></a>Rückschreiben von Kennwörtern
 
-Die Funktion **Kennwortrückschreiben** wird mit [Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity) aktiviert und ermöglicht es, Kennwortzurücksetzungen in der Cloud in Echtzeit in ein vorhandenes lokales Verzeichnis zurückzuschreiben. Weitere Informationen finden Sie unter [Was ist Kennwortrückschreiben?](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-writeback)
+Die Funktion **Kennwortrückschreiben** wird mit [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) aktiviert und ermöglicht es, Kennwortzurücksetzungen in der Cloud in Echtzeit in ein vorhandenes lokales Verzeichnis zurückzuschreiben. Weitere Informationen finden Sie unter [Was ist Kennwortrückschreiben?](./concept-sspr-writeback.md)
 
 Wir empfehlen die folgenden Einstellungen:
 
@@ -220,7 +220,7 @@ Wir empfehlen, lokale Active Directory-Administratorkonten nicht mit Azure AD zu
 
 ### <a name="environments-with-multiple-identity-management-systems"></a>Umgebungen mit mehreren Identitätsverwaltungssystemen
 
-Einige Umgebungen verfügen über mehrere Identitätsverwaltungssysteme. Lokale Identitätsverwaltungssysteme wie Oracle AM und SiteMinder erfordern die Kennwortsynchronisierung mit AD. Dafür können Sie ein Tool wie Password Change Notification Service (PCNS) mit Microsoft Identity Manager (MIM) verwenden. Informationen zu diesem komplexeren Szenario finden Sie im Artikel [Bereitstellen des MIM-Benachrichtigungsdiensts für Kennwortänderungen auf einem Domänencontroller](https://docs.microsoft.com/microsoft-identity-manager/deploying-mim-password-change-notification-service-on-domain-controller).
+Einige Umgebungen verfügen über mehrere Identitätsverwaltungssysteme. Lokale Identitätsverwaltungssysteme wie Oracle AM und SiteMinder erfordern die Kennwortsynchronisierung mit AD. Dafür können Sie ein Tool wie Password Change Notification Service (PCNS) mit Microsoft Identity Manager (MIM) verwenden. Informationen zu diesem komplexeren Szenario finden Sie im Artikel [Bereitstellen des MIM-Benachrichtigungsdiensts für Kennwortänderungen auf einem Domänencontroller](/microsoft-identity-manager/deploying-mim-password-change-notification-service-on-domain-controller).
 
 ## <a name="plan-testing-and-support"></a>Planen von Tests und Support
 
@@ -228,7 +228,7 @@ Stellen Sie auf jeder Bereitstellungsstufe (von anfänglichen Pilotgruppen bis h
 
 ### <a name="plan-testing"></a>Planen von Tests
 
-Um sicherzustellen, dass Ihre Bereitstellung erwartungsgemäß funktioniert, sollten Sie eine Reihe von Testfällen zum Überprüfen der Implementierung planen. Um auf die Testfälle zuzugreifen, benötigen Sie einen Testbenutzer (ohne Administratorrechte) mit einem Kennwort. Falls Sie einen Benutzer erstellen müssen, finden Sie unter [Hinzufügen neuer Benutzer in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory) entsprechende Informationen.
+Um sicherzustellen, dass Ihre Bereitstellung erwartungsgemäß funktioniert, sollten Sie eine Reihe von Testfällen zum Überprüfen der Implementierung planen. Um auf die Testfälle zuzugreifen, benötigen Sie einen Testbenutzer (ohne Administratorrechte) mit einem Kennwort. Falls Sie einen Benutzer erstellen müssen, finden Sie unter [Hinzufügen neuer Benutzer in Azure Active Directory](../fundamentals/add-users-azure-active-directory.md) entsprechende Informationen.
 
 Die folgende Tabelle enthält praktische Testszenarien, die Sie zum Dokumentieren der auf der Grundlage Ihrer Richtlinien erwarteten Ergebnisse für Ihre Organisation verwenden können.
 <br>
@@ -246,7 +246,7 @@ Die folgende Tabelle enthält praktische Testszenarien, die Sie zum Dokumentiere
 | Zurücksetzen des Benutzerkennworts über den Sperrbildschirm eines in Azure AD oder hybrid in Azure AD eingebundenen Geräts unter Windows 10| Benutzer kann Kennwort zurücksetzen |
 | SSPR-Registrierungs- und Nutzungsdaten stehen Administratoren nahezu in Echtzeit zur Verfügung| Über die Überwachungsprotokolle verfügbar |
 
-Siehe auch [Ausführen eines Rollouts der Azure AD-Self-Service-Kennwortzurücksetzung für eine Pilotgruppe](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-pilot). In diesem Tutorial aktivieren Sie ein Rollout der Self-Service-Kennwortzurücksetzung (SSPR) für eine Pilotgruppe in Ihrer Organisation und führen Tests mithilfe eines Kontos ohne Administratorrechte aus.
+Siehe auch [Ausführen eines Rollouts der Azure AD-Self-Service-Kennwortzurücksetzung für eine Pilotgruppe](./tutorial-enable-sspr.md). In diesem Tutorial aktivieren Sie ein Rollout der Self-Service-Kennwortzurücksetzung (SSPR) für eine Pilotgruppe in Ihrer Organisation und führen Tests mithilfe eines Kontos ohne Administratorrechte aus.
 
 ### <a name="plan-support"></a>Planen von Support
 
@@ -289,20 +289,20 @@ Stellen Sie sicher, dass Sie vor der Bereitstellung folgende Aufgaben ausgeführ
 
 **Jetzt können Sie mit der Bereitstellung von SSPR beginnen!**
 
-Unter [Aktivieren der Self-Service-Kennwortzurücksetzung](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-pilot#enable-self-service-password-reset) finden Sie eine vollständige Schritt-für-Schritt-Anleitung zum Konfigurieren der folgenden Bereiche.
+Unter [Aktivieren der Self-Service-Kennwortzurücksetzung](./tutorial-enable-sspr.md#enable-self-service-password-reset) finden Sie eine vollständige Schritt-für-Schritt-Anleitung zum Konfigurieren der folgenden Bereiche.
 
-1. [Authentifizierungsmethoden](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-methods)
+1. [Authentifizierungsmethoden](./concept-authentication-methods.md)
 
-1. [Registrierungseinstellungen](https://docs.microsoft.com/azure/active-directory/authentication/concept-registration-mfa-sspr-combined)
+1. [Registrierungseinstellungen](./concept-registration-mfa-sspr-combined.md)
 
 1. [Benachrichtigungseinstellungen](#notifications-settings)
 
-1. [Anpassungseinstellungen](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-customization)
+1. [Anpassungseinstellungen](./howto-sspr-customization.md)
 
-1. [Lokale Integration](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-writeback)
+1. [Lokale Integration](./tutorial-enable-sspr-writeback.md)
 
 ### <a name="enable-sspr-in-windows"></a>Aktivieren von SSPR in Windows
-Bei Computern, auf denen Windows 7, 8, 8.1 und 10 ausgeführt wird, können Sie [Benutzern das Zurücksetzen ihres Kennworts über den Windows-Anmeldebildschirm ermöglichen](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-windows).
+Bei Computern, auf denen Windows 7, 8, 8.1 und 10 ausgeführt wird, können Sie [Benutzern das Zurücksetzen ihres Kennworts über den Windows-Anmeldebildschirm ermöglichen](./howto-sspr-windows.md).
 
 ## <a name="manage-sspr"></a>Verwalten von SSPR
 
@@ -310,41 +310,41 @@ Azure AD kann durch Überprüfungen und Berichte weitere Informationen zur SSPR-
 
 ### <a name="password-management-activity-reports"></a>Aktivitätsberichte der Kennwortverwaltung 
 
-Mithilfe von vordefinierten Berichten im Azure-Portal können Sie die SSPR-Leistung messen. Wenn Sie eine ordnungsgemäße Lizenz haben, können Sie auch benutzerdefinierte Abfragen erstellen. Weitere Informationen finden Sie unter [Berichtsoptionen für die Azure AD-Kennwortverwaltung](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-reporting).
+Mithilfe von vordefinierten Berichten im Azure-Portal können Sie die SSPR-Leistung messen. Wenn Sie eine ordnungsgemäße Lizenz haben, können Sie auch benutzerdefinierte Abfragen erstellen. Weitere Informationen finden Sie unter [Berichtsoptionen für die Azure AD-Kennwortverwaltung](./howto-sspr-reporting.md).
 
 > [!NOTE]
->  Sie müssen [ein globaler Administrator](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) sein und zustimmen, dass diese Daten für Ihr Unternehmen erfasst werden. Als Bestätigung Ihrer Zustimmung müssen Sie die Registerkarte „Berichterstellung“ oder die Überwachungsprotokolle im Azure-Portal mindestens ein Mal aufrufen. Vorher werden die Daten für Ihre Organisation nicht gesammelt.
+>  Sie müssen [ein globaler Administrator](../users-groups-roles/directory-assign-admin-roles.md) sein und zustimmen, dass diese Daten für Ihr Unternehmen erfasst werden. Als Bestätigung Ihrer Zustimmung müssen Sie die Registerkarte „Berichterstellung“ oder die Überwachungsprotokolle im Azure-Portal mindestens ein Mal aufrufen. Vorher werden die Daten für Ihre Organisation nicht gesammelt.
 
-Überwachungsprotokolle für die Registrierung und die Kennwortzurücksetzung sind 30 Tage lang verfügbar. Wenn die Sicherheitsüberwachung in Ihrem Unternehmen eine längere Aufbewahrungszeit erfordert, müssen die Protokolle exportiert und in einem SIEM-Tool wie etwa [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-active-directory), Splunk oder ArcSight genutzt werden.
+Überwachungsprotokolle für die Registrierung und die Kennwortzurücksetzung sind 30 Tage lang verfügbar. Wenn die Sicherheitsüberwachung in Ihrem Unternehmen eine längere Aufbewahrungszeit erfordert, müssen die Protokolle exportiert und in einem SIEM-Tool wie etwa [Azure Sentinel](../../sentinel/connect-azure-active-directory.md), Splunk oder ArcSight genutzt werden.
 
 ![Screenshot der SSPR-Berichterstellung](./media/howto-sspr-deployment/sspr-reporting.png)
 
 ### <a name="authentication-methods--usage-and-insights"></a>Authentifizierungsmethoden: Nutzung und Erkenntnisse
 
-Mithilfe der Funktion [Nutzung und Erkenntnisse](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-methods-usage-insights) können Sie besser verstehen, wie Authentifizierungsmethoden für Funktionen wie Azure MFA und SSPR in Ihrem Unternehmen funktionieren. Dank dieser Berichtsfunktion kann Ihr Unternehmen erkennen, welche Methoden registriert werden und wie sie verwendet werden.
+Mithilfe der Funktion [Nutzung und Erkenntnisse](./howto-authentication-methods-usage-insights.md) können Sie besser verstehen, wie Authentifizierungsmethoden für Funktionen wie Azure MFA und SSPR in Ihrem Unternehmen funktionieren. Dank dieser Berichtsfunktion kann Ihr Unternehmen erkennen, welche Methoden registriert werden und wie sie verwendet werden.
 
 ### <a name="troubleshoot"></a>Problembehandlung
 
-* Siehe [Problembehandlung für die Self-Service-Kennwortzurücksetzung](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-troubleshoot) 
+* Siehe [Problembehandlung für die Self-Service-Kennwortzurücksetzung](./active-directory-passwords-troubleshoot.md) 
 
-* Folgen Sie [Häufig gestellte Fragen zur Kennwortverwaltung](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-faq) 
+* Folgen Sie [Häufig gestellte Fragen zur Kennwortverwaltung](./active-directory-passwords-faq.md) 
 
 ### <a name="helpful-documentation"></a>Hilfreiche Dokumentation
 
-* [Authentifizierungsmethoden](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-methods)
+* [Authentifizierungsmethoden](./concept-authentication-methods.md)
 
-* [So funktioniert's: Azure AD-Self-Service-Kennwortzurücksetzung](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks)
+* [So funktioniert's: Azure AD-Self-Service-Kennwortzurücksetzung](./concept-sspr-howitworks.md)
 
-* [Anpassen der Azure AD-Funktionalität für die Self-Service-Kennwortzurücksetzung](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-customization)
+* [Anpassen der Azure AD-Funktionalität für die Self-Service-Kennwortzurücksetzung](./howto-sspr-customization.md)
 
-* [Kennwortrichtlinien und -einschränkungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy)
+* [Kennwortrichtlinien und -einschränkungen in Azure Active Directory](./concept-sspr-policy.md)
 
-* [Was ist die Kennwortrückschreibung?](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-writeback)
+* [Was ist Kennwortrückschreiben?](./concept-sspr-writeback.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Um mit der Bereitstellung von SSPR zu beginnen, lesen Sie [Aktivieren der Self-Service-Kennwortzurücksetzung in Azure AD](tutorial-enable-sspr.md).
 
-* [Überlegungen zur Implementierung von Azure AD-Kennwortschutz](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad)
+* [Überlegungen zur Implementierung von Azure AD-Kennwortschutz](./concept-password-ban-bad.md)
 
-* [Überlegungen zur Implementierung von Smart Lockout für Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-smart-lockout)
+* [Überlegungen zur Implementierung von Smart Lockout für Azure AD](./howto-password-smart-lockout.md)

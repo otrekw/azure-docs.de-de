@@ -14,12 +14,12 @@ ms.date: 04/01/2020
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33b67c836be3395061e33b5988a4bb06fa5ee20f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c9d2f295394d89432f3c6dd99585cc4363d4ff74
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608550"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641363"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Verschieben der Anwendungsauthentifizierung von Active Directory-Verbunddiensten (AD FS) in Azure Active Directory
 
@@ -483,7 +483,7 @@ Selbst wenn der geplante Ausfallzeitraum für den Wechsel von AD FS zu Azure AD 
 
 Nachdem die Bereitstellung abgeschlossen ist, können Sie die Benutzer über die erfolgreiche Bereitstellung informieren und an alle neuen Schritte erinnern, die sie durchführen müssen.
 
-* Weisen Sie die Benutzer an, den [Zugriffsbereich](https://myapps.microsoft.com) für den Zugriff auf alle migrierten Anwendungen zu verwenden. 
+* Weisen Sie die Benutzer an, [Meine Apps](https://myapps.microsoft.com) für den Zugriff auf alle migrierten Anwendungen zu verwenden. 
 
 * Erinnern Sie Benutzer daran, dass sie ihre MFA-Einstellungen möglicherweise aktualisieren müssen. 
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/04/2020
 ms.author: rosouz
 ms.custom: devx-track-javascript
-ms.openlocfilehash: b13585b4a839bfcf6c0645c911e98d1f1885f3ca
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: b5bf7cc74a5444e5f51aaddb1d088f6b0c1e52a8
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036707"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798889"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>Änderungsdatenströme in der API für MongoDB von Azure Cosmos-DB
 
@@ -21,26 +21,6 @@ Die Unterstützung von [Änderungsfeeds](change-feed.md) in der API für MongoDB
 
 > [!NOTE]
 > Um Änderungsdatenströme zu verwenden, erstellen Sie das Konto mit Version 3.6 der API für MongoDB von Azure Cosmos DB oder einer höheren Version. Wenn Sie die Änderungsdatenstrom-Beispiele für eine frühere Version ausführen, wird möglicherweise die Fehlermeldung `Unrecognized pipeline stage name: $changeStream` angezeigt.
-
-## <a name="current-limitations"></a>Aktuelle Einschränkungen
-
-Es gelten die folgenden Einschränkungen, wenn Änderungsdatenströme verwendet werden:
-
-* Die Eigenschaften `operationType` und `updateDescription` werden im Ausgabedokument noch nicht unterstützt.
-* Die Vorgangstypen `insert`, `update` und `replace` werden derzeit unterstützt. 
-* Löschvorgänge oder andere Ereignisse werden noch nicht unterstützt.
-
-Aufgrund dieser Einschränkungen sind die Phasen „$match“, „$project“ und die „fullDocument“-Optionen erforderlich, wie in den vorherigen Beispielen gezeigt.
-
-Anders als beim Änderungsfeed in der SQL-API von Azure Cosmos DB gibt es keine separate [Änderungsfeed-Prozessorbibliothek](change-feed-processor.md), um Änderungsdatenströme zu nutzen, und auch keinen Bedarf für einen Leasecontainer. Es gibt derzeit keine Unterstützung für [Azure Functions-Trigger](change-feed-functions.md) zum Verarbeiten von Änderungsdatenströmen.
-
-## <a name="error-handling"></a>Fehlerbehandlung
-
-Die folgenden Fehlercodes und Meldungen werden bei der Verwendung von Änderungsdatenströmen unterstützt:
-
-* **HTTP-Fehlercode 16500**: Wenn der Änderungsdatenstrom gedrosselt wird, wird eine leere Seite zurückgegeben.
-
-* **NamespaceNotFound (OperationType Invalidate)** : Wenn Sie den Änderungsdatenstrom für die nicht existierende Sammlung ausführen oder die Sammlung verworfen wird, wird ein `NamespaceNotFound`-Fehler zurückgegeben. Da die `operationType`-Eigenschaft nicht im Ausgabedokument zurückgegeben werden kann, wird anstelle des Fehlers `operationType Invalidate` der Fehler `NamespaceNotFound` zurückgegeben.
 
 ## <a name="examples"></a>Beispiele
 
@@ -156,15 +136,17 @@ var cursor = db.coll.watch(
 Es gelten die folgenden Einschränkungen, wenn Änderungsdatenströme verwendet werden:
 
 * Die Eigenschaften `operationType` und `updateDescription` werden im Ausgabedokument noch nicht unterstützt.
-* Die Vorgangstypen `insert`, `update` und `replace` werden derzeit unterstützt. Löschvorgänge oder andere Ereignisse werden noch nicht unterstützt.
+* Die Vorgangstypen `insert`, `update` und `replace` werden derzeit unterstützt. Löschvorgänge oder andere Ereignisse werden jedoch noch nicht unterstützt.
 
 Aufgrund dieser Einschränkungen sind die Phasen „$match“, „$project“ und die „fullDocument“-Optionen erforderlich, wie in den vorherigen Beispielen gezeigt.
+
+Anders als beim Änderungsfeed in der SQL-API von Azure Cosmos DB gibt es keine separate [Änderungsfeed-Prozessorbibliothek](change-feed-processor.md), um Änderungsdatenströme zu nutzen, und auch keinen Bedarf für einen Leasecontainer. Es gibt derzeit keine Unterstützung für [Azure Functions-Trigger](change-feed-functions.md) zum Verarbeiten von Änderungsdatenströmen.
 
 ## <a name="error-handling"></a>Fehlerbehandlung
 
 Die folgenden Fehlercodes und Meldungen werden bei der Verwendung von Änderungsdatenströmen unterstützt:
 
-* **HTTP-Fehlercode 429**: Wenn der Änderungsdatenstrom gedrosselt wird, wird eine leere Seite zurückgegeben.
+* **HTTP-Fehlercode 16500**: Wenn der Änderungsdatenstrom gedrosselt wird, wird eine leere Seite zurückgegeben.
 
 * **NamespaceNotFound (OperationType Invalidate)** : Wenn Sie den Änderungsdatenstrom für die nicht existierende Sammlung ausführen oder die Sammlung verworfen wird, wird ein `NamespaceNotFound`-Fehler zurückgegeben. Da die `operationType`-Eigenschaft nicht im Ausgabedokument zurückgegeben werden kann, wird anstelle des Fehlers `operationType Invalidate` der Fehler `NamespaceNotFound` zurückgegeben.
 

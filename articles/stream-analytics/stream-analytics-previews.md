@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/08/2020
-ms.openlocfilehash: 7391fbccaf7983a070d80da64a2908333280420b
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 8/07/2020
+ms.openlocfilehash: e11d5b14bdf6b134fefea79a1f709ec73499bd20
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83609000"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815707"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure Stream Analytics – Vorschaufeatures
 
@@ -24,16 +24,15 @@ Die folgenden Features befinden sich in der öffentlichen Vorschau. Sie können 
 
 ### <a name="authenticate-to-sql-database-output-with-managed-identities"></a>Authentifizieren bei der SQL-Datenbank-Ausgabe mit verwalteten Identitäten
 
-Azure Stream Analytics unterstützt die [Authentifizierung über verwaltete Identitäten](../active-directory/managed-identities-azure-resources/overview.md) für Azure SQL-Datenbank-Ausgabesenken. Verwaltete Identitäten heben die Einschränkungen benutzerbasierter Authentifizierungsmethoden auf, wie etwa die Notwendigkeit einer erneuten Authentifizierung aufgrund von Kennwortänderungen oder Benutzertoken, die alle 90 Tage ablaufen. Wenn Sie die Notwendigkeit einer manuellen Authentifizierung aufheben, können Ihre Stream Analytics-Bereitstellungen vollständig automatisiert werden.
+Azure Stream Analytics unterstützt die [Authentifizierung über verwaltete Identitäten](../active-directory/managed-identities-azure-resources/overview.md) für Azure SQL-Datenbank-Ausgabesenken. Verwaltete Identitäten heben die Einschränkungen benutzerbasierter Authentifizierungsmethoden auf, wie etwa die Notwendigkeit einer erneuten Authentifizierung aufgrund von Kennwortänderungen. 
 
 ### <a name="output-to-azure-synapse-analytics"></a>Ausgabe an Azure Synapse Analytics
 
 Bei Azure Stream Analytics-Aufträgen kann die Ausgabe in eine SQL-Pooltabelle in [Azure Synapse Analytics](https://azure.microsoft.com/services/synapse-analytics) erfolgen, und es können Durchsatzraten von bis zu 200 MB/s verarbeitet werden. Dies unterstützt die anspruchsvollsten Anforderungen hinsichtlich Echtzeitanalyse und Datenverarbeitung im langsamsten Pfad für Workloads wie z. B. das Erstellen von Berichten und Dashboards.  
 
+### <a name="real-time-high-performance-scoring-with-custom-ml-models-managed-by-azure-machine-learning"></a>Leistungsstarke Echtzeitbewertung mit benutzerdefinierten ML-Modellen, die von Azure Machine Learning verwaltet werden
 
-### <a name="online-scaling"></a>Onlineskalierung
-
-Bei der Onlineskalierung müssen Sie den Auftrag nicht anhalten, wenn Sie die SU-Zuweisung ändern müssen. Sie können die SU-Kapazität eines laufenden Auftrags erhöhen oder verringern, ohne ihn anzuhalten. Dieser Fähigkeit liegt das Kundenversprechen von unternehmenskritischen Pipelines mit langer Ausführungszeit zugrunde, die Stream Analytics nun bietet. Weitere Informationen finden Sie unter [Konfigurieren von Azure Stream Analytics-Streamingeinheiten](stream-analytics-streaming-unit-consumption.md#configure-stream-analytics-streaming-units-sus).
+Azure Stream Analytics unterstützt die leistungsstarke Echtzeitbewertung anhand benutzerdefinierter, bereits trainierter ML-Modelle, die von Azure Machine Learning verwaltet und in Azure Kubernetes Service (AKS) oder Azure Container Instances (ACI) gehostet werden; dabei wird ein Workflow verwendet, für den Sie keinen Code schreiben müssen. [Registrieren Sie sich](https://aka.ms/asapreview1) für das Vorschaufeature.
 
 ### <a name="c-custom-de-serializers"></a>Benutzerdefinierte C#-Deserialisierer
 Entwickler können von der Leistung von Azure Stream Analytics profitieren und Daten in Protobuf, XML oder einem beliebigen benutzerdefinierten Format verarbeiten. Sie können [benutzerdefinierte Deserialisierer](custom-deserializer-examples.md) in C# implementieren, um Ereignisse zu deserialisieren, die von Azure Stream Analytics empfangen wurden.
@@ -42,33 +41,22 @@ Entwickler können von der Leistung von Azure Stream Analytics profitieren und D
 
 Entwickler, die Stream Analytics-Module in der Cloud oder in IoT Edge erstellen, können benutzerdefinierte C#-Funktionen schreiben oder wiederverwenden und diese über [benutzerdefinierte Funktionen](stream-analytics-edge-csharp-udf-methods.md) direkt in der Abfrage abrufen.
 
-
 ### <a name="debug-query-steps-in-visual-studio"></a>Schritte zum Debuggen von Abfragen in Visual Studio
 
 Sie können auf einfache Weise eine Vorschau des Zwischenrowsets für ein Datendiagramm aufrufen, wenn Sie lokale Tests in Azure Stream Analytics-Tools für Visual Studio ausführen. 
-
-### <a name="local-testing-with-live-data-in-visual-studio-code"></a>Lokales Testen mit Livedaten in Visual Studio Code
-
-Sie können Ihre Abfragen mit Livedaten auf dem lokalen Computer testen, bevor Sie den Auftrag an Azure senden. Jede Testiteration dauert durchschnittlich zwei bis drei Sekunden, wodurch ein höchst effizienter Entwicklungsprozess sichergestellt ist.
-
-### <a name="visual-studio-code-for-azure-stream-analytics"></a>Visual Studio Code für Azure Stream Analytics
-
-Azure Stream Analytics-Aufträge können in Visual Studio Code erstellt werden. Siehe [Visual Studio Code-Schnellstart](https://docs.microsoft.com/azure/stream-analytics/quick-create-vs-code).
-
-
-### <a name="real-time-high-performance-scoring-with-custom-ml-models-managed-by-azure-machine-learning"></a>Leistungsstarke Echtzeitbewertung mit benutzerdefinierten ML-Modellen, die von Azure Machine Learning verwaltet werden
-
-Azure Stream Analytics unterstützt die leistungsstarke Echtzeitbewertung anhand benutzerdefinierter, bereits trainierter ML-Modelle, die von Azure Machine Learning verwaltet und in Azure Kubernetes Service (AKS) oder Azure Container Instances (ACI) gehostet werden; dabei wird ein Workflow verwendet, für den Sie keinen Code schreiben müssen. [Registrieren Sie sich](https://aka.ms/asapreview1) für das Vorschaufeature.
 
 
 ### <a name="live-data-testing-in-visual-studio"></a>Livedatentests in Visual Studio
 
 Visual Studio-Tools für Azure Stream Analytics erweitern die lokale Testfunktion, mit der Sie Ihre Abfragen anhand von Liveereignisstreams aus Cloudquellen wie Event Hub oder IoT Hub testen können. Erfahren Sie mehr über [Lokales Testen von Livedaten mithilfe von Azure Stream Analytics-Tools für Visual Studio](stream-analytics-live-data-local-testing.md).
 
+### <a name="visual-studio-code-for-azure-stream-analytics"></a>Visual Studio Code für Azure Stream Analytics
 
-### <a name="net-user-defined-functions-on-iot-edge"></a>Benutzerdefinierte NET-Funktionen auf IoT Edge
+Azure Stream Analytics-Aufträge können in Visual Studio Code erstellt werden. Siehe [Visual Studio Code-Schnellstart](https://docs.microsoft.com/azure/stream-analytics/quick-create-vs-code).
 
-Mit benutzerdefinierten .NET-Standardfunktionen können Sie .NET-Standardcode als Teil Ihrer Streamingpipeline ausführen. Sie können einfache C#-Klassen erstellen oder komplette Projekte und Bibliotheken importieren. In Visual Studio wird das vollständige Erstellen von Dokumenten und Debuggen unterstützt. Weitere Informationen finden Sie unter [Entwickeln von benutzerdefinierten .NET Standard-Funktionen für Azure Stream Analytics Edge-Aufträge](stream-analytics-edge-csharp-udf-methods.md).
+### <a name="local-testing-with-live-data-in-visual-studio-code"></a>Lokales Testen mit Livedaten in Visual Studio Code
+
+Sie können Ihre Abfragen mit Livedaten auf dem lokalen Computer testen, bevor Sie den Auftrag an Azure senden. Jede Testiteration dauert durchschnittlich zwei bis drei Sekunden, wodurch ein höchst effizienter Entwicklungsprozess sichergestellt ist.
 
 ## <a name="other-previews"></a>Weitere Previews
 

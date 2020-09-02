@@ -4,12 +4,12 @@ description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und 
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: cfa8a6c7cb2da35929151dfce09c0bc31ee69bb2
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 6cb9f53bceb6caaac77dddd6828c46842e53d257
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611533"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825255"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 
@@ -49,7 +49,7 @@ Sicherungen pro Tag (über DPM/MABS) | Zwei geplante Sicherungen pro Tag
 Monatliche oder jährliche Sicherung| Wird bei der Sicherung mit der Azure-VM-Erweiterung nicht unterstützt. Lediglich tägliche und wöchentliche Sicherungen werden unterstützt.<br/><br/> Sie können die Richtlinie so einrichten, dass tägliche oder wöchentliche Sicherungen in einem monatlichen oder jährlichen Aufbewahrungszeitraum beibehalten werden.
 Automatische Uhrzeitanpassung | Wird nicht unterstützt.<br/><br/> Azure Backup passt Änderungen an der Sommer- oder Winterzeit bei der Sicherung einer VM nicht automatisch an.<br/><br/>  Ändern Sie die Richtlinie nach Bedarf manuell.
 [Sicherheitsfunktionen für Hybridsicherungen](./backup-azure-security-feature.md) |Die Sicherheitsfunktionen können nicht deaktiviert werden.
-Sichern von virtuellen Computern mit geänderter Computerzeit | Wird nicht unterstützt.<br/><br/> Falls als Computerzeit ein zukünftiges Datum bzw. eine zukünftige Uhrzeit festgelegt wird, nachdem die Sicherung für diese VM aktiviert wurde. Auch wenn diese Änderung rückgängig gemacht wird, kann die erfolgreiche Sicherung nicht garantiert werden.
+Sichern von virtuellen Computern mit geänderter Computerzeit | Wird nicht unterstützt.<br/><br/> Eine erfolgreiche Sicherung nicht garantiert werden, wenn die Computerzeit nach dem Aktivieren der Sicherung für diesen virtuellen Computer in ein zukünftiges Datum bzw. eine zukünftige Uhrzeit geändert wird. Dies gilt auch, wenn diese Änderung wieder rückgängig gemacht wird.
 Azure-VMs in [VM-Skalierungsgruppen](../virtual-machine-scale-sets/overview.md) | Sicherung und Wiederherstellung wird für VMs mit auf 3 festgelegtem [Orchestrierungsmodus](../virtual-machine-scale-sets/orchestration-modes.md#orchestration-modes) unterstützt. <br><br>Verfügbarkeitsgruppen werden nicht unterstützt.
 
 ## <a name="operating-system-support-windows"></a>Unterstützte Betriebssysteme (Windows)
@@ -149,7 +149,7 @@ Sichern mit [Diagnoseeinstellungen](../azure-monitor/platform/platform-logs-over
 Wiederherstellen von an Zonen angehefteten virtuellen Computern | Unterstützt (für virtuelle Computer, die nach Januar 2019 gesichert wurden und bei denen es [Verfügbarkeitszonen](https://azure.microsoft.com/global-infrastructure/availability-zones/) gibt).<br/><br/>Wir unterstützen derzeit die Wiederherstellung in derselben Zone, die in virtuellen Computern angeheftet ist. Wenn aber die Zone nicht verfügbar ist, schlägt die Wiederherstellung fehl.
 Gen2-VMS | Unterstützt <br> Azure Backup unterstützt die Sicherung und Wiederherstellung von [Gen2-VMS](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/). Bei Wiederherstellung über einen Wiederherstellungspunkt werden diese VMs als [Gen2-VMs](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/) wiederhergestellt.
 Sicherung virtueller Azure-Computer mit Sperren | Wird für nicht verwaltete virtuelle Computer nicht unterstützt. <br><br> Wird für verwaltete virtuelle Computer unterstützt.
-[Spot-VMs](../virtual-machines/windows/spot-vms.md) | Nicht unterstützt. Azure Backup stellt Spot-VMs als reguläre Azure-VMs wieder her.
+[Spot-VMs](../virtual-machines/spot-vms.md) | Nicht unterstützt. Azure Backup stellt Spot-VMs als reguläre Azure-VMs wieder her.
 
 ## <a name="vm-storage-support"></a>Unterstützung für VM-Speicher
 
@@ -165,7 +165,7 @@ Sichern und Wiederherstellen von deduplizierten VMs/Datenträgern | Azure Backup
 Hinzufügen eines Datenträgers zu geschütztem virtuellen Computer | Unterstützt.
 Ändern der Datenträgergröße auf geschütztem virtuellen Computer | Unterstützt.
 Freigegebener Speicher| Das Sichern von VMs mit freigegebenem Clustervolume (Cluster Shared Volume, CSV) oder Dateiservern mit horizontaler Skalierung wird nicht unterstützt. Bei CSV-Schreibern treten während der Sicherung voraussichtlich Fehler auf. Bei der Wiederherstellung werden Datenträger, die CSV-Volumes enthalten, möglicherweise nicht hochgefahren.
-[Freigegebene Datenträger](../virtual-machines/windows/disks-shared-enable.md) | Wird nicht unterstützt.
+[Freigegebene Datenträger](../virtual-machines/disks-shared-enable.md) | Wird nicht unterstützt.
 
 ## <a name="vm-network-support"></a>Netzwerkunterstützung bei virtuellen Computern
 

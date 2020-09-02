@@ -16,12 +16,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0754c8e2be62c0a5568e97e7e5cf4376fb3c593
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: d1f77d6189e5b32ca771d17ae9902341bcaa1871
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210912"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88688129"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Voraussetzungen für Azure AD Connect
 In diesem Artikel werden die Voraussetzungen und die Hardwareanforderungen für Azure Active Directory (Azure AD) Connect beschrieben.
@@ -73,6 +73,7 @@ Es wird empfohlen, den Azure AD Connect-Server zuverlässig zu schützen, um di
 - Beschränken Sie den administrativen Zugriff auf den Azure AD Connect-Server ausschließlich auf Domänenadministratoren oder andere streng kontrollierte Sicherheitsgruppen.
 - Erstellen Sie ein [dediziertes Konto für alle Mitarbeiter mit privilegiertem Zugriff](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access). Administratoren sollten in Konten mit hohen Berechtigungen nicht im Internet surfen, ihre E-Mails abfragen oder alltägliche Produktivitätsaufgaben ausführen.
 - Folgen Sie den Anweisungen unter [Schützen des privilegierten Zugriffs](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access). 
+- Lehnen Sie die Verwendung der NTLM-Authentifizierung beim AADConnect-Server ab. Hierfür gibt es verschiedene Möglichkeiten: [Einschränken von NTLM auf dem AADConnect-Server](https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-outgoing-ntlm-traffic-to-remote-servers) und [Einschränken von NTLM in einer Domäne](https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-ntlm-authentication-in-this-domain)
 - Stellen Sie sicher, dass für jeden Computer ein eindeutiges lokales Administratorkennwort vorhanden ist. Weitere Informationen finden Sie unter [Microsoft-Sicherheitsempfehlung: Local Administrator Password Solution (LAPS)](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps). Mit dieser Lösung können eindeutige zufällige Kennwörter auf jeder Arbeitsstation konfiguriert werden, und für den Server werden die Kennwörter in Active Directory gespeichert und durch eine ACL geschützt. Nur berechtigte autorisierte Benutzer können diese lokalen Kennwörter für das Administratorkonto lesen oder eine Rücksetzung anfordern. Sie können die LAPS für die Verwendung auf Arbeitsstationen und Servern aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=46899#:~:text=The%20%22Local%20Administrator%20Password%20Solution,it%20or%20request%20its%20reset.) abrufen. Weitere Informationen zum Betreiben einer Umgebung mit LAPS und Arbeitsstationen mit privilegiertem Zugriff (Privileged Access Workstations, PAWs) finden Sie unter [Prinzip der vertrauenswürdigen Quelle für betriebliche Standards](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle). 
 - Implementieren Sie dedizierte [Arbeitsstationen mit privilegiertem Zugriff](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations) für alle Mitarbeiter mit privilegiertem Zugriff auf die Informationssysteme Ihrer Organisation. 
 - Berücksichtigen Sie diese [zusätzlichen Richtlinien](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface), um die Angriffsfläche Ihrer Active Directory-Umgebung zu verringern.

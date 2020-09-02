@@ -3,18 +3,18 @@ title: Konzepte – Private Clouds und Cluster
 description: Erfahren Sie mehr über die wichtigsten Funktionen von softwaredefinierten Azure-VMware-Rechenzentren und vSphere-Clustern in Azure VMware Solution von VMware.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 09e1fd45b1dd873509f942ef8b524783acfed4ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 06161d2ce95415ae3309d58ad18ad0d40b3782fb
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84906988"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752277"
 ---
-# <a name="azure-vmware-solution-avs-preview-private-cloud-and-cluster-concepts"></a>Azure VMware Solution (Vorschau): Konzepte – Private Clouds und Cluster
+# <a name="azure-vmware-solution-preview-private-cloud-and-cluster-concepts"></a>Azure VMware Solution (Vorschau): Konzepte – Private Clouds und Cluster
 
-Azure VMware Solution (AVS) bietet VMware-basierte private Clouds in Azure. Die privaten Clouds werden aus Clustern dedizierter Bare-Metal-Hosts erstellt und über das Azure-Portal bereitgestellt und verwaltet. Cluster in privaten Clouds werden mit VMware vSphere-, vCenter-, vSAN- und NSX-Software bereitgestellt. Hardware- und Softwarebereitstellungen für private AVS-Clouds sind vollständig in Azure integriert und automatisiert.
+Azure VMware Solution bietet VMware-basierte private Clouds in Azure. Die privaten Clouds werden aus Clustern dedizierter Bare-Metal-Hosts erstellt und über das Azure-Portal bereitgestellt und verwaltet. Cluster in privaten Clouds werden mit VMware vSphere-, vCenter-, vSAN- und NSX-Software bereitgestellt. Hardware- und Softwarebereitstellungen für private Azure VMware Solution-Clouds sind vollständig in Azure integriert und automatisiert.
 
-Es besteht eine logische Beziehung zwischen Azure-Abonnements, privaten AVS-Clouds, vSAN-Clustern und Hosts. Im Diagramm sind zwei private Clouds in einem einzelnen Azure-Abonnement dargestellt. Private Clouds stellen eine Entwicklungs- und Produktionsumgebung dar, die jeweils über eine eigene private Cloud verfügen. In jeder dieser privaten Clouds gibt es zwei Cluster. Um die geringeren potenziellen Anforderungen einer Entwicklungsumgebung aufzuzeigen, werden kleinere Cluster und Hosts mit geringeren Kapazitäten verwendet. All diese Konzepte werden in den folgenden Abschnitten beschrieben.
+Es besteht eine logische Beziehung zwischen Azure-Abonnements, privaten Azure VMware Solution-Clouds, vSAN-Clustern und Hosts. Im Diagramm sind zwei private Clouds in einem einzelnen Azure-Abonnement dargestellt. Private Clouds stellen eine Entwicklungs- und Produktionsumgebung dar, die jeweils über eine eigene private Cloud verfügen. In jeder dieser privaten Clouds gibt es zwei Cluster. Um die geringeren potenziellen Anforderungen einer Entwicklungsumgebung aufzuzeigen, werden kleinere Cluster und Hosts mit geringeren Kapazitäten verwendet. All diese Konzepte werden in den folgenden Abschnitten beschrieben.
 
 ![Abbildung von zwei privaten Clouds in einem Kundenabonnement](./media/hosts-clusters-private-clouds-final.png)
 
@@ -34,7 +34,7 @@ Sie können Cluster über das Portal oder die API erstellen, löschen und skalie
 
 ## <a name="hosts"></a>Hosts
 
-In Clustern privater AVS-Clouds werden hyperkonvergente Bare-Metal-Infrastrukturknoten verwendet. Die RAM-, CPU- und Datenträgerkapazitäten des Hosts sind in der folgenden Tabelle angegeben. 
+In Clustern privater Azure VMware Solution-Clouds werden hyperkonvergente Bare-Metal-Infrastrukturknoten verwendet. Die RAM-, CPU- und Datenträgerkapazitäten des Hosts sind in der folgenden Tabelle angegeben. 
 
 | Hosttyp              |             CPU             |   RAM (GB)   |  vSAN NVMe-Cacheebene (TB, Raw)  |  vSAN SSD-Kapazitätsebene (TB, Raw)  |
 | :---                   |            :---:            |    :---:     |               :---:              |                :---:               |
@@ -44,7 +44,7 @@ Zum Erstellen oder Skalieren von Clustern verwendete Hosts werden aus einem isol
 
 ## <a name="vmware-software-versions"></a>Versionen von VMware-Software
 
-Im Folgenden die aktuellen in Clustern privater AVS-Clouds verwendeten VMware-Softwareversionen:
+Im Folgenden die aktuellen in Clustern privater Azure VMware Solution-Clouds verwendeten VMware-Softwareversionen:
 
 | Software              |    Version   |
 | :---                  |     :---:    |
@@ -55,16 +55,16 @@ Im Folgenden die aktuellen in Clustern privater AVS-Clouds verwendeten VMware-So
 
 Bei jedem neuen Cluster in einer privaten Cloud entspricht die Softwareversion derjenigen, die derzeit in der privaten Cloud ausgeführt wird. Für alle neuen private Clouds in einem Kundenabonnement wird die neueste Version des Softwarestapels installiert.
 
-Die allgemeinen Upgraderichtlinien und -prozesse für die AVS-Plattformsoftware werden im Dokument zu Upgradekonzepten beschrieben.
+Die allgemeinen Upgraderichtlinien und -prozesse für die Azure VMware Solution-Plattformsoftware werden im Dokument zu Upgradekonzepten beschrieben.
 
 ## <a name="host-maintenance-and-lifecycle-management"></a>Hostwartung und Lebenszyklusverwaltung
 
 Die Hostwartung und Lebenszyklusverwaltung haben keine Auswirkungen auf die Kapazität oder Leistung von Clustern in privaten Clouds. Beispiele für die automatisierte Hostwartung sind Firmwareupgrades und Hardwarereparaturen oder der Austausch von Hardware.
 
-Microsoft ist für die Lebenszyklusverwaltung von NSX-T-Appliances wie NSX-T Manager und NSX-T Edge verantwortlich. Microsoft ist auch für das Bootstrapping der Netzwerkkonfiguration zuständig, wie die Erstellung des Tier-0-Gateways und die Aktivierung des Nord-Süd-Routings. Als Administrator der privaten AVS-Cloud sind Sie für die NSX-T-SDN-Konfiguration verantwortlich, z. B. Netzwerksegmente, Regeln für verteilte Firewalls, Tier-1-Gateways und Lastenausgleiche.
+Microsoft ist für die Lebenszyklusverwaltung von NSX-T-Appliances wie NSX-T Manager und NSX-T Edge verantwortlich. Microsoft ist auch für das Bootstrapping der Netzwerkkonfiguration zuständig, wie die Erstellung des Tier-0-Gateways und die Aktivierung des Nord-Süd-Routings. Als Administrator der privaten Azure VMware Solution-Cloud sind Sie für die NSX-T-SDN-Konfiguration verantwortlich, z. B. Netzwerksegmente, Regeln für verteilte Firewalls, Tier-1-Gateways und Lastenausgleiche.
 
 > [!IMPORTANT]
-> Die Konfiguration von NSX-T Edge oder Tier-0-Gateways darf von einem AVS-Administrator nicht geändert werden. Dies kann zu einer Beeinträchtigung des Diensts führen.
+> Die Konfiguration von NSX-T Edge oder Tier-0-Gateways darf von einem Azure VMware Solution-Administrator nicht geändert werden. Dies kann zu einer Beeinträchtigung des Diensts führen.
 
 ## <a name="backup-and-restoration"></a>Sichern und Wiederherstellen
 

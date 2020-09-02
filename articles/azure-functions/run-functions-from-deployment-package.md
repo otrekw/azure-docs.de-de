@@ -3,12 +3,12 @@ title: Ausführen von Azure Functions aus einem Paket
 description: Lassen Sie die Azure Functions-Laufzeit Ihre Funktionen ausführen, indem Sie eine Bereitstellungspaketdatei einbinden, die Ihre Projektdateien für die Funktions-App enthält.
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: 6a2633550c9bcbdc59baf99f79559655afbb9b74
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: b2d90cf78263b30b4315199cf1c543186a435f17
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214236"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639884"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Ausführen Ihrer Azure Functions aus einem Paket
 
@@ -50,6 +50,9 @@ Das folgende Beispiel zeigt eine Funktions-App, die so konfiguriert ist, dass Si
 ## <a name="integration-with-zip-deployment"></a>Integration mit einer ZIP-Bereitstellung
 
 [ZIP-Bereitstellung][Zip deployment for Azure Functions] ist eine Funktion von Azure App Service, mit der Sie Ihr Funktions-App-Projekt im Verzeichnis `wwwroot` bereitstellen können. Das Projekt ist als ZIP-Bereitstellungsdatei verpackt. Mit derselben API können Sie Ihr Paket im Ordner `d:\home\data\SitePackages` bereitstellen. Mit dem `WEBSITE_RUN_FROM_PACKAGE`-App-Einstellungswert von `1` kopieren die ZIP-Bereitstellungs-APIs Ihr Paket in den Ordner `d:\home\data\SitePackages`, anstatt die Dateien nach `d:\home\site\wwwroot` zu extrahieren. Außerdem wird die Datei `packagename.txt` erstellt. Nach einem Neustart wird das Paket in `wwwroot` als schreibgeschütztes Dateisystem bereitgestellt. Weitere Informationen zur ZIP-Bereitstellung finden Sie unter [ZIP-Bereitstellung für Azure Functions](deployment-zip-push.md).
+
+> [!NOTE]
+> Wenn eine Bereitstellung erfolgt, wird ein Neustart der Funktions-App ausgelöst. Vor einem Neustart können alle bestehenden Funktionsausführungen abgeschlossen oder ein Timeout erreicht werden. Weitere Informationen finden Sie unter [Bereitstellungsverhalten](functions-deployment-technologies.md#deployment-behaviors).
 
 ## <a name="adding-the-website_run_from_package-setting"></a>Hinzufügen der Einstellung WEBSITE_RUN_FROM_PACKAGE
 

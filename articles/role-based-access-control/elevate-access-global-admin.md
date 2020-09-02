@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 06/09/2020
 ms.author: rolyon
-ms.openlocfilehash: a93901bd95d57b29aeb1464652737a77a1a84376
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 343f6b7a78ca98615d512d31d7ac1c10d9de8f10
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791995"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799331"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Erhöhen der Zugriffsrechte zum Verwalten aller Azure-Abonnements und Verwaltungsgruppen
 
@@ -144,6 +144,22 @@ Führen Sie die folgenden Schritte aus, um die Zuweisung der Rolle „Benutzerzu
     ```
 
 ## <a name="azure-cli"></a>Azure CLI
+
+### <a name="elevate-access-for-a-global-administrator"></a>Erhöhen der Zugriffsrechte für einen globalen Administrator
+
+Führen Sie die folgenden grundlegenden Schritte aus, um die Zugriffsrechte für einen globalen Administrator über die Azure CLI zu erhöhen.
+
+1. Rufen Sie mit dem Befehl [az rest](/cli/azure/reference-index?view=azure-cli-latest#az-rest) den Endpunkt `elevateAccess` auf. Dadurch wird Ihnen die Rolle „Benutzerzugriffsadministrator“ im Stammbereich (`/`) zugewiesen.
+
+    ```azurecli
+    az rest --method post --url "/providers/Microsoft.Authorization/elevateAccess?api-version=2016-07-01"
+    ```
+
+1. Führen Sie die erforderlichen Änderungen für erhöhte Zugriffsrechte durch.
+
+    Informationen zum Zuweisen von Rollen finden Sie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe der Azure CLI](role-assignments-cli.md).
+
+1. Führen Sie die Schritte in einem späteren Abschnitt aus, um die erhöhten Zugriffsrechte zu entfernen.
 
 ### <a name="list-role-assignment-at-root-scope-"></a>Auflisten der Rollenzuweisung im Stammbereich (/)
 

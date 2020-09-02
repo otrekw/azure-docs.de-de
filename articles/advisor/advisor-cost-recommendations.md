@@ -3,12 +3,12 @@ title: Reduzieren der Dienstkosten mithilfe von Azure Advisor
 description: Nutzen Sie Azure Advisor, um die Kosten Ihrer Azure-Bereitstellungen zu optimieren.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 15f357248a6174de1e0890a4b45e9fa3930a06fe
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: d234e89d0d042999805fae73d3df24c03d1027c9
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258537"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654037"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>Reduzieren der Dienstkosten mithilfe des Azure Advisors
 
@@ -71,7 +71,7 @@ Der Advisor analysiert die Nutzung Ihres Azure-Blob- und Azure Data Lake-Speiche
 ### <a name="mariadb-mysql-and-postgresql-reserved-capacity"></a>Reservierte Kapazität für MariaDB, MySQL und PostgreSQL
 Der Advisor analysiert Ihre Nutzungsmuster für Azure Database for MariaDB, Azure Database for MySQL und Azure Database for PostgreSQL innerhalb der letzten 30 Tage. Anschließend empfiehlt er den Erwerb von reservierten Kapazitäten, die die Kosten optimieren. Mithilfe von reservierter Kapazität können Sie vorab Nutzungsstunden für MariaDB,MySQL und PostgreSQL erwerben und so bei Ihren aktuellen Kosten sparen. Die reservierte Kapazität ist ein Abrechnungsvorteil und gilt automatisch für neue und vorhandene Bereitstellungen. Der Advisor berechnet die geschätzten Einsparungen für einzelne Abonnements anhand des Preises einer dreijährigen Reservierung und der Nutzungsmuster, die in den letzten 30 Tage beobachtet wurden. Es sind auch Empfehlungen für den Kauf von reservierten Kapazitäten verfügbar, die für mehrere Abonnements gelten. Diese können dazu beitragen, noch mehr Kosten zu sparen.
 
-### <a name="synapse-analytics-formerly-sql-data-warehouse-reserved-capacity"></a>Reservierte Kapazität für Azure Synapse Analytics (vormals SQL Data Warehouse)
+### <a name="azure-synapse-analytics-formerly-sql-data-warehouse-reserved-capacity"></a>Reservierte Kapazität für Azure Synapse Analytics (vormals SQL Data Warehouse)
 Der Advisor analysiert Ihre Azure Synapse Analytics-Nutzungsmuster der vergangenen 30 Tage und empfiehlt den Erwerb von reservierter Kapazität, um die Kosten zu optimieren. Mithilfe von reservierter Kapazität können Sie die Nutzungsstunden von Synapse Analytics vorab erwerben und Einsparungen im Vergleich zur bedarfsabhängigen Nutzung erzielen. Die reservierte Kapazität ist ein Abrechnungsvorteil und gilt automatisch für neue und vorhandene Bereitstellungen. Der Advisor berechnet die geschätzten Einsparungen für einzelne Abonnements anhand des Preises einer dreijährigen Reservierung und der Nutzungsmuster, die in den letzten 30 Tage beobachtet wurden. Es sind auch Empfehlungen für den Kauf von reservierten Kapazitäten verfügbar, die für mehrere Abonnements gelten. Diese können dazu beitragen, noch mehr Kosten zu sparen.
 
 ## <a name="delete-unassociated-public-ip-addresses-to-save-money"></a>Löschen nicht zugeordneter öffentlicher IP-Adressen zum Einsparen von Kosten

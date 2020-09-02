@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec20a1bda8021e61f5147142a8e6bddd6cf5d166
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2fafe9fd46322b0720d876f5b70d204fdf23fbb2
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027613"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716298"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Erstellen einer robusten Verwaltungsstrategie für die Zugriffssteuerung in Azure Active Directory
 
@@ -55,7 +55,7 @@ Das Entschärfen einer tatsächlichen Unterbrechung muss für eine Organisation 
 
 ### <a name="administrator-lockout-contingency"></a>Notfallplan für die Administratorsperre
 
-Um den Administratorzugriff auf Ihren Mandanten freizugeben, sollten Sie Notfallzugriffs-Konten erstellen. Diese *Notfallzugriffs-Konten* lassen den Zugriff auf die Verwaltung der Azure AD-Konfiguration zu, wenn die normalen Verfahren zum berechtigten Kontozugriff nicht zur Verfügung stehen. Mindestens zwei Notfallzugriffs-Konten sollten gemäß dem Artikel [Verwalten von Konten für den Notfallzugriff in Azure AD]( https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access) erstellt werden.
+Um den Administratorzugriff auf Ihren Mandanten freizugeben, sollten Sie Notfallzugriffs-Konten erstellen. Diese *Notfallzugriffs-Konten* lassen den Zugriff auf die Verwaltung der Azure AD-Konfiguration zu, wenn die normalen Verfahren zum berechtigten Kontozugriff nicht zur Verfügung stehen. Mindestens zwei Notfallzugriffs-Konten sollten gemäß dem Artikel [Verwalten von Konten für den Notfallzugriff in Azure AD]( ../users-groups-roles/directory-emergency-access.md) erstellt werden.
 
 ### <a name="mitigating-user-lockout"></a>Entschärfen von Benutzersperren
 
@@ -65,11 +65,11 @@ Um den Administratorzugriff auf Ihren Mandanten freizugeben, sollten Sie Notfall
 
 Integrieren Sie die folgenden Zugriffssteuerungen in Ihre vorhandenen Richtlinien für bedingten Zugriff in Ihrer Organisation:
 
-1. Stellen Sie mehrere Authentifizierungsmethoden für jeden Benutzer bereit, die auf verschiedenen Kommunikationskanälen basieren, z.B. die Microsoft Authenticator-App (internetbasiert), das OATH-Token (auf dem Gerät generiert) und SMS (telefonisch). Mit dem folgenden PowerShell-Skript können Sie im Voraus identifizieren, für welche zusätzlichen Methoden sich Ihre Benutzer registrieren sollten: [Skript für die Analyse der Azure MFA-Authentifizierungsmethode](https://docs.microsoft.com/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/).
+1. Stellen Sie mehrere Authentifizierungsmethoden für jeden Benutzer bereit, die auf verschiedenen Kommunikationskanälen basieren, z.B. die Microsoft Authenticator-App (internetbasiert), das OATH-Token (auf dem Gerät generiert) und SMS (telefonisch). Mit dem folgenden PowerShell-Skript können Sie im Voraus identifizieren, für welche zusätzlichen Methoden sich Ihre Benutzer registrieren sollten: [Skript für die Analyse der Azure MFA-Authentifizierungsmethode](/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/).
 2. Stellen Sie Windows Hello for Business auf Windows 10-Geräten bereit, um MFA-Anforderungen direkt bei der Geräteanmeldung zu erfüllen.
-3. Verwenden Sie vertrauenswürdige Geräte über [Azure AD Hybrid Join](https://docs.microsoft.com/azure/active-directory/devices/overview) oder [von Microsoft Intune verwaltete Geräte](https://docs.microsoft.com/intune/planning-guide). Vertrauenswürdige Geräte verbessern die Benutzerfreundlichkeit, da das vertrauenswürdige Gerät selbst die strengen Authentifizierungsanforderungen der Richtlinie erfüllen kann, ohne dass der Benutzer die MFA durchlaufen muss. MFA ist dann erforderlich, wenn ein neues Gerät registriert wird und nicht vertrauenswürdige Geräte auf Apps oder Ressourcen zugreifen.
+3. Verwenden Sie vertrauenswürdige Geräte über [Azure AD Hybrid Join](../devices/overview.md) oder [von Microsoft Intune verwaltete Geräte](/intune/planning-guide). Vertrauenswürdige Geräte verbessern die Benutzerfreundlichkeit, da das vertrauenswürdige Gerät selbst die strengen Authentifizierungsanforderungen der Richtlinie erfüllen kann, ohne dass der Benutzer die MFA durchlaufen muss. MFA ist dann erforderlich, wenn ein neues Gerät registriert wird und nicht vertrauenswürdige Geräte auf Apps oder Ressourcen zugreifen.
 4. Verwenden Sie anstelle fester MFA-Richtlinien risikobasierte Azure AD-Identitätsschutz-Richtlinien, die den Zugriff verhindern, wenn mit Benutzer oder Anmeldung ein Risiko verbunden ist.
-5. Wenn Sie den VPN-Zugriff mit der NPS-Erweiterung für Azure MFA schützen, sollten Sie für Ihre VPN-Lösung den Verbund als [SAML-App](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-non-gallery-applications) in Betracht ziehen und die App-Kategorie gemäß den folgenden Empfehlungen bestimmen. 
+5. Wenn Sie den VPN-Zugriff mit der NPS-Erweiterung für Azure MFA schützen, sollten Sie für Ihre VPN-Lösung den Verbund als [SAML-App](../manage-apps/view-applications-portal.md) in Betracht ziehen und die App-Kategorie gemäß den folgenden Empfehlungen bestimmen. 
 
 >[!NOTE]
 > Risikobasierte Richtlinien erfordern [Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/)-Lizenzen.
@@ -92,7 +92,7 @@ Dieser Beispielrichtliniensatz gewährt ausgewählten Benutzern in **AppUsers** 
 
 ### <a name="contingencies-for-user-lockout"></a>Notfallpläne für Benutzersperre
 
-Alternativ kann Ihre Organisation auch Notfallplanrichtlinien erstellen. Um Notfallplanrichtlinien zu erstellen, müssen Sie die Kriterien des Kompromisses zwischen Geschäftskontinuität, Betriebskosten, Finanzierungskosten und Sicherheitsrisiken definieren. Sie können z.B. eine Notfallplanrichtlinie nur für eine Teilmenge von Benutzern, Apps, Clients oder Standorten aktivieren. Notfallplanrichtlinien gewähren bei einer Unterbrechung Administratoren und Endbenutzer Zugriff auf Apps und Ressourcen, wenn keine Entschärfungsmethode implementiert wurde. Microsoft empfiehlt, Notfallplanrichtlinien im [reinen Berichtsmodus](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-report-only) zu aktivieren, wenn sie nicht verwendet werden, damit Administratoren die potenziellen Auswirkungen der Richtlinien überwachen können, falls diese aktiviert werden müssen.
+Alternativ kann Ihre Organisation auch Notfallplanrichtlinien erstellen. Um Notfallplanrichtlinien zu erstellen, müssen Sie die Kriterien des Kompromisses zwischen Geschäftskontinuität, Betriebskosten, Finanzierungskosten und Sicherheitsrisiken definieren. Sie können z.B. eine Notfallplanrichtlinie nur für eine Teilmenge von Benutzern, Apps, Clients oder Standorten aktivieren. Notfallplanrichtlinien gewähren bei einer Unterbrechung Administratoren und Endbenutzer Zugriff auf Apps und Ressourcen, wenn keine Entschärfungsmethode implementiert wurde. Microsoft empfiehlt, Notfallplanrichtlinien im [reinen Berichtsmodus](../conditional-access/howto-conditional-access-report-only.md) zu aktivieren, wenn sie nicht verwendet werden, damit Administratoren die potenziellen Auswirkungen der Richtlinien überwachen können, falls diese aktiviert werden müssen.
 
  Wenn Sie bei einer Unterbrechung über die Gefährdung informiert sind, ist das Risiko geringer, und es ist ein wichtiger Bestandteil des Planungsprozesses. Um Ihren Notfallplan zu erstellen, bestimmen Sie zunächst die folgenden geschäftlichen Anforderungen Ihrer Organisation:
 
@@ -119,7 +119,7 @@ Eine Notfallplanrichtlinie des bedingten Zugriffs ist eine **Sicherungsrichtlini
 
 * Konfigurieren Sie einen Satz von Fallbackrichtlinien für den Fall, dass eine Unterbrechung in einem Anmeldeinformationentyp auftritt oder ein Zugriffssteuerungsmechanismus den Zugriff auf Ihre Apps beeinträchtigt. Konfigurieren Sie als Sicherung für eine aktive Richtlinie, die einen MFA-Drittanbieter erfordert, eine Richtlinie im reinen Berichtsmodus, die als Steuerelement den Domänenbeitritt voraussetzt.
 * Reduzieren Sie das Risiko, dass Hacker Kennwörter erraten, wenn MFA nicht erforderlich ist, anhand der im Whitepaper [Password Guidance (Kennwortleitfaden)](https://aka.ms/passwordguidance) beschriebenen Methoden.
-* Stellen Sie [Azure AD-Self-Service-Kennwortzurücksetzung](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr) und [Azure AD-Kennwortschutz](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-deploy) bereit, um sicherzustellen, dass Benutzer keine gängigen Kennwörter und Begriffe verwenden, die Sie sperren möchten.
+* Stellen Sie [Azure AD-Self-Service-Kennwortzurücksetzung](./tutorial-enable-sspr.md) und [Azure AD-Kennwortschutz](./howto-password-ban-bad-on-premises-deploy.md) bereit, um sicherzustellen, dass Benutzer keine gängigen Kennwörter und Begriffe verwenden, die Sie sperren möchten.
 * Verwenden Sie Richtlinien, die den Zugriff innerhalb der Apps beschränken, wenn eine bestimmte Authentifizierungsebene nicht erreicht wird, statt eines einfachen Zurücksetzens auf Vollzugriff. Beispiel:
   * Konfigurieren Sie eine Sicherungsrichtlinie, die den eingeschränkten Sitzungsanspruch auf Exchange und SharePoint sendet.
   * Wenn Ihre Organisation Microsoft Cloud App Security verwendet, ziehen Sie ein Fallback auf eine Richtlinie in Betracht, die MCAS aktiviert, und dann erlaubt MCAS schreibgeschützten Zugriff, jedoch kein Hochladen.
@@ -208,7 +208,7 @@ Reihenfolge der Aktivierung:
 
 ### <a name="contingencies-for-user-lockout-from-on-prem-resources-nps-extension"></a>Notfallpläne für Benutzersperren bei lokalen Ressourcen (NPS-Erweiterung)
 
-Wenn Sie den VPN-Zugriff mit der NPS-Erweiterung für Azure MFA schützen, sollten Sie für Ihre VPN-Lösung den Verbund als [SAML-App](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-non-gallery-applications) in Betracht ziehen und die App-Kategorie gemäß den folgenden Empfehlungen bestimmen. 
+Wenn Sie den VPN-Zugriff mit der NPS-Erweiterung für Azure MFA schützen, sollten Sie für Ihre VPN-Lösung den Verbund als [SAML-App](../manage-apps/view-applications-portal.md) in Betracht ziehen und die App-Kategorie gemäß den folgenden Empfehlungen bestimmen. 
 
 Wenn Sie die NPS-Erweiterung für Azure AD MFA bereitgestellt haben, um lokale Ressourcen wie VPN und Remotedesktopgateway mit MFA zu schützen, sollten Sie im Voraus berücksichtigen, ob Sie bereit sind, die MFA im Notfall zu deaktivieren.
 
@@ -233,7 +233,7 @@ Eine Benutzersperre kann auch auftreten, wenn die folgenden Bedingungen erfüllt
 - Ihre Organisation verwendet eine Hybrididentitätslösung mit Pass-Through-Authentifizierung oder Verbund.
 - Ihre lokalen Identitätsysteme (z.B. Active Directory, AD FS oder eine abhängige Komponente) sind nicht verfügbar. 
  
-Für höhere Stabilität sollte Ihre Organisation [Kennworthash-Synchronisierung aktivieren](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn), da Sie zur [Verwendung der Kennworthash-Synchronisierung wechseln](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-user-signin) können, wenn Ihre lokalen Identitätssysteme nicht verfügbar sind.
+Für höhere Stabilität sollte Ihre Organisation [Kennworthash-Synchronisierung aktivieren](../hybrid/choose-ad-authn.md), da Sie zur [Verwendung der Kennworthash-Synchronisierung wechseln](../hybrid/plan-connect-user-signin.md) können, wenn Ihre lokalen Identitätssysteme nicht verfügbar sind.
 
 #### <a name="microsoft-recommendations"></a>Empfehlungen von Microsoft
  Aktivieren Sie die Kennworthash-Synchronisierung mit dem Azure AD Connect-Assistenten unabhängig davon, ob Ihre Organisation Verbund oder Pass-Through-Authentifizierung verwendet.
@@ -255,7 +255,7 @@ Je nachdem, welche Entschärfungen oder Notfallpläne bei einer Unterbrechung ve
 1. Als Teil Ihrer Strategie zum Ändern der Steuerung dokumentieren Sie alle Änderungen und den vorherigen Status, damit Sie Notfallpläne, die Sie implementiert haben, zurücksetzen können, sobald die Zugriffssteuerungen wieder voll funktionstüchtig sind.
 2. Gehen Sie davon aus, dass böswillige Akteure versuchen werden, Kennwörter über Kennwort-Spray- oder Phishing-Angriffe zu sammeln, während Sie MFA deaktiviert haben. Böswillige Akteure könnten möglicherweise auch bereits über Kennwörter verfügen, die zuvor keinen Zugriff auf Ressourcen zuließen, aber in diesem Zeitfenster ausprobiert werden könnten. Sie können dieses Risiko für kritische Benutzer wie Führungskräfte teilweise verringern, indem Sie deren Kennwörter zurücksetzen, bevor Sie MFA für Sie deaktivieren.
 3. Archivieren Sie alle Anmeldeaktivitäten, um feststellen zu können, wer während des Zeitraums, in dem MFA deaktiviert war, auf was zugegriffen hat.
-4. [Selektieren Sie alle gemeldeten Risikoerkennungen](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) in diesem Zeitfenster erfolgt sind.
+4. [Selektieren Sie alle gemeldeten Risikoerkennungen](../reports-monitoring/concept-sign-ins.md) in diesem Zeitfenster erfolgt sind.
 
 ## <a name="after-a-disruption"></a>Nach einer Unterbrechung
 
@@ -265,8 +265,8 @@ Machen Sie die Änderungen, die Sie als Teil des aktivierten Notfallplans vorgen
 2. Deaktivieren Sie die Notfallplanrichtlinien, und stellen Sie den reinen Berichtsmodus wieder her. 
 3. Setzen Sie alle anderen Änderungen zurück, die Sie während der Unterbrechung vorgenommen und dokumentiert haben.
 4. Wenn Sie ein Konto für den Notfallzugriff verwendet haben, müssen Sie die Anmeldeinformationen neu generieren und die Details der neuen Anmeldeinformationen physisch als Teil Ihrer Notfallzugriffskonto-Verfahren sichern.
-5. Setzen Sie nach der Unterbrechung die [Selektierung aller gemeldeten Risikoerkennungen](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) nach verdächtigen Aktivitäten fort.
-6. Widerrufen Sie alle Aktualisierungstoken, die [mithilfe von PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) für eine Gruppe von Benutzern ausgegeben wurden. Das Widerrufen aller Aktualisierungstoken ist wichtig für privilegierte Konten, die während der Unterbrechung verwendet wurden, und so wird erzwungen, dass sie sich erneut authentifizieren und die Steuerungsanforderungen der wiederhergestellten Richtlinien erfüllen.
+5. Setzen Sie nach der Unterbrechung die [Selektierung aller gemeldeten Risikoerkennungen](../reports-monitoring/concept-sign-ins.md) nach verdächtigen Aktivitäten fort.
+6. Widerrufen Sie alle Aktualisierungstoken, die [mithilfe von PowerShell](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) für eine Gruppe von Benutzern ausgegeben wurden. Das Widerrufen aller Aktualisierungstoken ist wichtig für privilegierte Konten, die während der Unterbrechung verwendet wurden, und so wird erzwungen, dass sie sich erneut authentifizieren und die Steuerungsanforderungen der wiederhergestellten Richtlinien erfüllen.
 
 ## <a name="emergency-options"></a>Notfalloptionen
 
@@ -280,17 +280,17 @@ Wenn Ihre Organisation ältere, pro Benutzer geltende MFA-Richtlinien verwendet,
  > Wenn Sie die vertrauenswürdigen IP-Adressen erweitern, um die Blockierung des Zugriffs aufzuheben, werden keine Risikoerkennungen im Zusammenhang mit IP-Adressen (z. B. unmöglicher Ortswechsel oder unbekannte Orte) generiert.
 
 >[!NOTE]
- > Konfigurieren von [vertrauenswürdigen IP-Adressen](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-mfasettings) für Azure MFA ist nur mit [Azure AD Premium-Lizenzen](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-licensing) verfügbar.
+ > Konfigurieren von [vertrauenswürdigen IP-Adressen](./howto-mfa-mfasettings.md) für Azure MFA ist nur mit [Azure AD Premium-Lizenzen](./concept-mfa-licensing.md) verfügbar.
 
 ## <a name="learn-more"></a>Weitere Informationen
 
-* [Dokumentation zur Azure AD-Authentifizierung](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-iis)
-* [Verwalten von Administratorkonten für den Notfallzugriff in Azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
-* [Konfigurieren benannter Orte in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
-  * [Set-MsolDomainFederationSettings](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
-* [Konfigurieren von in Azure Active Directory eingebundenen Hybridgeräten](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
-* [Windows Hello for Business– Bereitstellungshandbuch](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
+* [Dokumentation zur Azure AD-Authentifizierung](./howto-mfaserver-iis.md)
+* [Verwalten von Administratorkonten für den Notfallzugriff in Azure AD](../users-groups-roles/directory-emergency-access.md)
+* [Konfigurieren benannter Orte in Azure Active Directory](../reports-monitoring/quickstart-configure-named-locations.md)
+  * [Set-MsolDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
+* [Konfigurieren von in Azure Active Directory eingebundenen Hybridgeräten](../devices/hybrid-azuread-join-plan.md)
+* [Windows Hello for Business– Bereitstellungshandbuch](/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
   * [Password Guidance (Kennwortleitfaden) – Microsoft Research](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)
-* [Was sind Bedingungen beim bedingten Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)
-* [Was sind die Zugriffssteuerungen beim bedingten Zugriff mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)
-* [Was ist der reine Berichtsmodus des bedingten Zugriffs?](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-report-only)
+* [Was sind Bedingungen beim bedingten Zugriff in Azure Active Directory?](../conditional-access/concept-conditional-access-conditions.md)
+* [Was sind die Zugriffssteuerungen beim bedingten Zugriff mit Azure Active Directory?](../conditional-access/controls.md)
+* [Was ist der reine Berichtsmodus des bedingten Zugriffs?](../conditional-access/concept-conditional-access-report-only.md)

@@ -11,19 +11,25 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2377ca4b929200ecd0a3a7de01dd3a58be6b7863
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 5c072298bf5cce4e22fe50d2474c7abe6b915f74
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83845439"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919504"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-iis-web-apps"></a>Konfigurieren des Azure Multi-Factor Authentication-Servers für IIS-Web-Apps
 
 Verwenden Sie den Bereich „IIS-Authentifizierung“ des Azure Multi-Factor Authentication-Servers (MFA), um die IIS-Authentifizierung für die Integration mit Microsoft IIS-Webanwendungen zu aktivieren und zu konfigurieren. Vom Azure MFA-Server wird ein Plug-In installiert, mit dem an den IIS-Webserver gesendete Anforderungen gefiltert werden können, um Azure Multi-Factor Authentication hinzuzufügen. Das IIS-Plug-In bietet Unterstützung für die formularbasierte Authentifizierung und die integrierte Windows-HTTP-Authentifizierung. Vertrauenswürdige IP-Adressen können auch konfiguriert werden, um interne IP-Adressen der zweistufigen Authentifizierung auszunehmen.
 
 > [!IMPORTANT]
-> Ab dem 1. Juli 2019 bietet Microsoft keine MFA-Server mehr für neue Bereitstellungen an. Neue Kunden, die eine Multi-Factor Authentication für ihre Benutzer einrichten möchten, können stattdessen die cloudbasierte Multi-Factor Authentication von Azure verwenden. Bestehende Kunden, die ihren MFA-Server vor dem 1. Juli aktiviert haben, können weiterhin die neusten Versionen und zukünftige Updates herunterladen sowie Anmeldedaten zur Aktivierung generieren. Wenn Sie die cloudbasierte Azure-Multi-Factor Authentication verwenden, gibt es keine Alternative zum IIS-Plug-In, das von Azure Multi-Factor Authentication (MFA)-Server bereitgestellt wird. Verwenden Sie stattdessen den Webanwendungsproxy (WAP) mit Active Directory-Verbunddiensten (AD FS) oder den Azure Active Directory-Anwendungsproxy.
+> Seit dem 1. Juli 2019 bietet Microsoft für neue Bereitstellungen keine MFA-Server mehr an. Neue Kunden, die für die Anmeldung der Benutzer eine mehrstufige Authentifizierung anfordern möchten, sollten die cloudbasierte Multi-Factor Authentication von Azure verwenden.
+>
+> Informationen zu den ersten Schritten mit der cloudbasierten MFA finden Sie im [Tutorial: Schützen von Benutzeranmeldeereignissen mit Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md).
+>
+> Bestandskunden, die ihren MFA-Server vor dem 1. Juli 2019 aktiviert haben, können weiterhin die neuesten Versionen und zukünftige Updates herunterladen sowie Anmeldedaten zur Aktivierung generieren.
+>
+> Wenn Sie die cloudbasierte Azure-Multi-Factor Authentication verwenden, gibt es keine Alternative zum IIS-Plug-In, das von Azure Multi-Factor Authentication (MFA)-Server bereitgestellt wird. Verwenden Sie stattdessen den Webanwendungsproxy (WAP) mit Active Directory-Verbunddiensten (AD FS) oder den Azure Active Directory-Anwendungsproxy.
 
 ![IIS-Authentifizierung in MFA Server](./media/howto-mfaserver-iis/iis.png)
 
@@ -58,7 +64,7 @@ Um eine IIS-Webanwendung zu sichern, für die die integrierte Windows-HTTP-Authe
 1. Klicken Sie auf dem Azure Multi-Factor Authentication-Server im linken Menü auf das Symbol „IIS-Authentifizierung“.
 2. Klicken Sie auf die Registerkarte **HTTP**.
 3. Klicken Sie auf **Hinzufügen**.
-4. Geben Sie im Dialogfeld „Basis-URL hinzufügen“ die URL für die Website ein, auf der die HTTP-Authentifizierung erfolgt (beispielsweise <http://localhost/owa>), und geben Sie optional einen Anwendungsnamen an. Der Anwendungsname wird in Azure Multi-Factor Authentication-Berichten und möglicherweise auch in Authentifizierungsnachrichten in SMS oder der mobilen App angezeigt.
+4. Geben Sie im Dialogfeld „Basis-URL hinzufügen“ die URL für die Website ein, auf der die HTTP-Authentifizierung erfolgt (beispielsweise `http://localhost/owa`), und geben Sie optional einen Anwendungsnamen an. Der Anwendungsname wird in Azure Multi-Factor Authentication-Berichten und möglicherweise auch in Authentifizierungsnachrichten in SMS oder der mobilen App angezeigt.
 5. Passen Sie die Leerlaufzeitüberschreitung und die maximale Sitzungsdauer an, wenn die Standardwerte nicht ausreichend sind.
 6. Aktivieren Sie das Kontrollkästchen **Multi-Factor Authentication-Benutzerabgleich erfordern**, wenn alle Benutzer in den Server importiert wurden oder werden und die Multi-Factor Authentication verwenden. Wenn eine große Anzahl von Benutzern noch nicht in den Server importiert wurde und/oder von der Multi-Factor Authentication ausgenommen werden soll, lassen Sie das Kontrollkästchen deaktiviert.
 7. Aktivieren Sie bei Bedarf das Kontrollkästchen für das **Cookie zur** Zwischenspeicherung.

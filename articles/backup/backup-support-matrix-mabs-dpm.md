@@ -3,12 +3,12 @@ title: MABS & System Center DPM-Unterstützungsmatrix
 description: Dieser Artikel enthält eine Zusammenfassung der Unterstützung für Azure Backup bei Verwendung von Microsoft Azure Backup Server (MABS) oder System Center DPM zum Sichern von lokalen Ressourcen und Ressourcen auf virtuellen Azure-Computern.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4ed4452cf8f1f44e90cfc991c2b1d13d30dddcd2
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 26d9e3012749298a781cd611866bc6d0a6596979
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612774"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825221"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Unterstützungsmatrix für die Sicherung mit Microsoft Azure Backup Server oder System Center DPM
 
@@ -76,7 +76,7 @@ Mit Azure Backup können MABS- und DPM-Instanzen bei Ausführung unter den folge
 **DPM auf einem lokalen Computer** | Physischer Server und virtueller Hyper-V-Computer: System Center 2012 SP1 oder höher<br/><br/> Virtueller VMware-Computer: System Center 2012 R2 mit Update 5 oder höher
 
 >[!NOTE]
->Bei Verwendung von Windows Server Core oder Microsoft Hyper-V Server wird die Installation von Azure Backup Server nicht unterstützt.
+>Unter Windows Server Core oder Microsoft Hyper-V Server wird die Installation von Azure Backup Server nicht unterstützt.
 
 ## <a name="management-support"></a>Verwaltungsunterstützung
 

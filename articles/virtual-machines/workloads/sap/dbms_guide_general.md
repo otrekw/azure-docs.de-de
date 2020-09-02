@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ad6bbc1d3c20659441b8b062898526471f4d713a
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 15c0368b2d0bd85f6fee65ffa2c9d6776d07f162
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510231"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650614"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -111,10 +111,7 @@ Installation und Konfiguration von Windows, Linux und DBMS sind generell weitgeh
 ## <a name="storage-structure-of-a-vm-for-rdbms-deployments"></a><a name="65fa79d6-a85f-47ee-890b-22e794f51a64"></a>Speicherstruktur einer VM für RDBMS-Bereitstellungen
 Damit Sie diesem Kapitel folgen können, sollten Sie die Informationen [diesem Kapitel][deployment-guide-3] des [Bereitstellungshandbuchs][deployment-guide] gelesen und verstanden haben. Sie müssen die verschiedenen VM-Serien und die Unterschiede zwischen Standard- und Premium-Speicher verstehen und kennen, bevor Sie dieses Kapitel lesen. 
 
-Informationen zu Azure Storage für Azure-VMs finden Sie unter:
-
-- [Einführung in verwaltete Azure-Datenträger für Azure Windows-VMs](../../windows/managed-disks-overview.md)
-- [Einführung in verwaltete Azure-Datenträger für Azure Linux-VMs](../../linux/managed-disks-overview.md)
+Weitere Informationen zu Azure Storage für Azure-VMs finden Sie unter [Einführung in verwaltete Datenträger für Azure-VMs](../../managed-disks-overview.md).
 
 In einer Basiskonfiguration eignet sich eine Bereitstellungsstruktur, bei der das Betriebssystem, das DBMS und eventuelle SAP-Binärdateien von den Datenbankdateien getrennt sind. Wird empfehlen, dass bei SAP-Systemen, die auf Azure-VMs ausgeführt werden, das Basis-VHD – oder der Datenträger – mit dem Betriebssystem, den ausführbaren Dateien für das Datenbankverwaltungssystem und den ausführbaren SAP-Dateien installiert wird. 
 

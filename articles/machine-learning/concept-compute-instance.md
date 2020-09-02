@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: f4938d517d9a5c244045798a79f31b96bacd03f5
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: c72777bf2a4415a7f773f82a21a121f5e58f2ec0
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829440"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651914"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Was ist eine Azure Machine Learning-Compute-Instanz?
 
@@ -155,26 +155,22 @@ Sie können auch eine Instanz
 * direkt in der [integrierten Notebookumgebung](tutorial-1st-experiment-sdk-setup.md#azure) erstellen.
 * Im Azure-Portal
 * Über eine Azure Resource Manager-Vorlage. Eine Beispielvorlage finden Sie unter [Erstellen einer Azure Machine Learning Compute-Instanzvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance).
-* Mit dem [Azure Machine Learning SDK](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb)
+* Mit dem Azure Machine Learning SDK
 * Über die [CLI-Erweiterung für Azure Machine Learning](reference-azure-machine-learning-cli.md#computeinstance)
 
 Die dedizierten Kerne pro Region pro VM-Familienkontingent und das gesamte regionale Kontingent, das für die Erstellung von Compute-Instanzen gilt. ist vereinheitlicht und wird mit dem Computeclusterkontingent für das Azure Machine Learning-Training gemeinsam genutzt. Das Beenden der Compute-Instanz gibt keine Kontingente frei, um sicherzustellen, dass Sie die Compute-Instanz erneut starten können.
 
 ## <a name="compute-target"></a>Computeziel
 
-Compute-Instanzen können als [Trainingscomputeziele](concept-compute-target.md#train) verwendet werden, ähnlich wie Azure Machine Learning-Computetrainingscluster. 
+Compute-Instanzen können als [Trainingscomputeziele](concept-compute-target.md#train) verwendet werden, ähnlich wie Azure Machine Learning-Computecluster. 
 
 Folgendes gilt für eine Compute-Instanz:
 * Sie verfügt über eine Auftragswarteschlange.
 * Sie führt Aufträge sicher in einer virtuellen Netzwerkumgebung aus, ohne dass Unternehmen hierfür SSH-Ports öffnen müssen. Der Auftrag wird in einer Containerumgebung ausgeführt und packt die Abhängigkeiten Ihres Modells in einen Docker-Container.
 * Sie kann mehrere kleine Aufträge parallel ausführen (Vorschauversion).  Zwei Aufträge pro Kern können parallel ausgeführt werden, während die restlichen Aufträge in die Warteschlange eingereiht werden.
+* Unterstützt verteilte Trainingsaufträge mit einem einzelnen Knoten mit mehreren GPUs
 
 Sie können die Compute-Instanz als gefolgertes lokales Bereitstellungsziel für Test-/Debugszenarien verwenden.
-
-> [!NOTE]
-> Verteilte Trainingsaufträge werden auf der Compute-Instanz nicht unterstützt.  Verwenden Sie (Computecluster](how-to-set-up-training-targets.md#amlcompute) für verteiltes Training.
-
-Weitere Informationen finden Sie im Notebook [train-on-computeinstance](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb). Dieses Notebook befindet sich auch im Studio-Ordner **Beispiele** in *training/train-on-computeinstance*.
 
 ## <a name="what-happened-to-notebook-vm"></a><a name="notebookvm"></a>Was ist mit der Notebook-VM passiert?
 

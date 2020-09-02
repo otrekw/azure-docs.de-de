@@ -1,6 +1,6 @@
 ---
 title: Serverseitige Verschlüsselung von Azure Managed Disks – Azure CLI
-description: Azure Storage schützt Ihre Daten, indem der Dienst diese im Ruhezustand verschlüsselt, bevor diese auf Storage-Clustern gespeichert werden. Sie können von Microsoft verwaltete Schlüssel für die Verschlüsselung Ihrer verwalteten Datenträger nutzen, oder Sie können mit vom Kunden verwalteten Schlüsseln die Verschlüsselung mit Ihren eigenen Schlüsseln verwalten.
+description: Azure Storage schützt Ihre Daten, indem der Dienst diese im Ruhezustand verschlüsselt, bevor diese auf Storage-Clustern gespeichert werden. Sie können mit kundenseitig verwalteten Schlüsseln die Verschlüsselung mit Ihren eigenen Schlüsseln verwalten, oder Sie können sich bei der Verschlüsselung Ihrer verwalteten Datenträger auf von Microsoft verwaltete Schlüssel verlassen.
 author: roygara
 ms.date: 07/10/2020
 ms.topic: conceptual
@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: e0a1f97cc7467d115ecc8462a301e45f90d73818
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: e541fd90f0cb9c8f0e2763f16541824c5a7b3000
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449152"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816897"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Serverseitige Verschlüsselung von Azure Disk Storage
 
@@ -80,7 +80,7 @@ Kunden mit besonders hohen Sicherheitsanforderungen, die befürchten, dass ein e
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Aktivieren der End-to-End-Verschlüsselung mit Verschlüsselung auf dem Host mit entweder [CLI](disks-enable-host-based-encryption-cli.md) oder dem [Azure-Portal](disks-enable-host-based-encryption-portal.md).
-- Aktivieren sie doppelte Verschlüsselung für verwaltete Datenträger mithilfe der [CLI](disks-enable-double-encryption-at-rest-cli.md) oder des [Azure-Portals](disks-enable-double-encryption-at-rest-portal.md).
-- Aktivieren Sie kundenseitig verwaltete Schlüssel für verwaltete Datenträger mit der [CLI](disks-enable-customer-managed-keys-cli.md) oder dem [Azure-Portal](disks-enable-customer-managed-keys-portal.md).
+- Aktivieren der End-to-End-Verschlüsselung mit Verschlüsselung auf dem Host mit entweder [CLI](disks-enable-host-based-encryption-cli.md) oder dem [Azure-Portal](../disks-enable-host-based-encryption-portal.md).
+- Aktivieren sie doppelte Verschlüsselung für verwaltete Datenträger mithilfe der [CLI](disks-enable-double-encryption-at-rest-cli.md) oder des [Azure-Portals](../disks-enable-double-encryption-at-rest-portal.md).
+- Aktivieren Sie kundenseitig verwaltete Schlüssel für verwaltete Datenträger mit der [CLI](disks-enable-customer-managed-keys-cli.md) oder dem [Azure-Portal](../disks-enable-customer-managed-keys-portal.md).
 - [Was ist der Azure-Schlüsseltresor?](../../key-vault/general/overview.md)

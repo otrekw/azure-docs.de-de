@@ -3,12 +3,12 @@ title: Häufig gestellte Fragen zum Sichern von Azure Files
 description: In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zum Schützen von Azure-Dateifreigaben mit dem Azure Backup-Dienst.
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6c2ef95a6303fd061b1ce486e893ba9812b83e14
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 0db30de655bfc0b98baa81a4ef20532e697fc1f8
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87382711"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824728"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Fragen zum Sichern von Azure Files
 
@@ -36,7 +36,7 @@ Wenn Sie beim Sichern ein Speicherkonto auswählen, um die darin enthaltenen Dat
 
 ### <a name="why-cant-i-change-the-vault-to-configure-backup-for-the-file-share"></a>Warum kann ich den Tresor nicht ändern, um die Sicherung für die Dateifreigabe zu konfigurieren?
 
-Wenn das Speicherkonto bereits bei einem Tresor registriert ist oder andere Dateifreigaben im Speicherkonto mithilfe eines Tresors geschützt sind, kann der Tresor nicht geändert werden, da alle Dateifreigaben in einem Speicherkonto nur durch denselben Tresor geschützt werden können. Wenn Sie den Tresor ändern möchten, müssen Sie den [Schutz für alle Dateifreigaben im Speicherkonto aus dem verbundenen Tresor aufheben](manage-afs-backup.md#stop-protection-on-a-file-share), die [Registrierung des Speicherkontos aufheben](manage-afs-backup.md#unregister-a-storage-account) und dann einen anderen Tresor für den Schutz auswählen.
+Wenn das Speicherkonto bereits bei einem Tresor registriert ist oder andere Dateifreigaben im Speicherkonto mithilfe eines Tresors geschützt sind, kann der Tresor nicht geändert werden. Alle Dateifreigaben in einem Speicherkonto können nur durch denselben Tresor geschützt werden. Wenn Sie den Tresor ändern möchten, müssen Sie im verbundenen Tresor den [Schutz für alle Dateifreigaben im Speicherkonto beenden](manage-afs-backup.md#stop-protection-on-a-file-share), die [Registrierung des Speicherkontos aufheben](manage-afs-backup.md#unregister-a-storage-account) und dann einen anderen Tresor für den Schutz auswählen.
 
 ### <a name="can-i-change-the-vault-to-which-i-back-up-my-file-shares"></a>Kann ich den Tresor ändern, in dem ich meine Dateifreigaben sichere?
 

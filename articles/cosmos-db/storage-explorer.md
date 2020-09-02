@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie eine Verbindung mit Azure Cosmos DB herstelle
 author: deborahc
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 10/23/2019
+ms.date: 08/24/2020
 ms.author: dech
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: a43e49ab29780e718139b677b780443e5e31e2ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b892e4c5078b50bb865a715ddf12aebc1eb05f57
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262241"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799110"
 ---
 # <a name="work-with-data-using-azure-storage-explorer"></a>Arbeiten mit Daten unter Verwendung von Azure Storage-Explorer
 
@@ -31,23 +31,23 @@ Installieren Sie die neuesten Komponenten von Azure Storage Explorer, die Sie un
 
 1. Klicken Sie nach dem Installieren von **Azure Storage-Explorer** links auf das Symbol **Plug-In**, wie in der folgenden Abbildung dargestellt:
 
-   :::image type="content" source="./media/storage-explorer/plug-in-icon.png" alt-text="Plug-In-Symbol":::
+   :::image type="content" source="./media/storage-explorer/plug-in-icon.png" alt-text="Auswählen des Plug-In-Symbols zum Herstellen einer Verbindung":::
 
-2. Wählen Sie **Azure-Konto hinzufügen** aus, und klicken Sie dann auf **Anmelden**.
+2. Wählen Sie **Azure-Konto hinzufügen** und dann **Anmelden**.
 
-   :::image type="content" source="./media/storage-explorer/connect-to-azure-subscription.png" alt-text="Herstellen einer Verbindung mit einem Azure-Abonnement":::
+   :::image type="content" source="./media/storage-explorer/connect-to-azure-subscription.png" alt-text="Herstellen einer Verbindung mit dem erforderlichen Azure-Abonnement":::
 
 2. Wählen Sie im Dialogfeld **Azure-Anmeldung** die Option **Anmelden** aus, und geben Sie Ihre Azure-Anmeldeinformationen ein.
 
-    :::image type="content" source="./media/storage-explorer/sign-in.png" alt-text="Anmelden":::
+    :::image type="content" source="./media/storage-explorer/sign-in.png" alt-text="Anmelden bei Ihrem Azure-Abonnement":::
 
 3. Wählen Sie Ihr Abonnement in der Liste aus, und klicken Sie dann auf **Anwenden**.
 
-    :::image type="content" source="./media/storage-explorer/apply-subscription.png" alt-text="Anwenden":::
+    :::image type="content" source="./media/storage-explorer/apply-subscription.png" alt-text="Auswählen einer Abonnement-ID aus der Filterliste":::
 
     Der Explorer-Bereich wird aktualisiert und zeigt die Konten im ausgewählten Abonnement an.
 
-    :::image type="content" source="./media/storage-explorer/account-list.png" alt-text="Kontoliste":::
+    :::image type="content" source="./media/storage-explorer/account-list.png" alt-text="Auswählen eines Azure Cosmos DB-Kontos aus der Liste":::
 
     Sie haben nun Ihr **Cosmos DB-Konto** mit Ihrem Azure-Abonnement verbunden.
 
@@ -57,11 +57,11 @@ Eine alternative Möglichkeit zum Herstellen einer Verbindung mit einer Azure Co
 
 1. Suchen Sie in der linken Struktur nach **Local and Attached** (Lokal und angefügt), klicken Sie mit der rechten Maustaste auf **Cosmos DB-Konten**, und wählen Sie **Connect to Cosmos DB...** (Mit Cosmos DB verbinden...).
 
-    :::image type="content" source="./media/storage-explorer/connect-to-db-by-connection-string.png" alt-text="Herstellen einer Verbindung mit Cosmos DB mithilfe einer Verbindungszeichenfolge":::
+    :::image type="content" source="./media/storage-explorer/connect-to-db-by-connection-string.png" alt-text="Herstellen einer Verbindung mit Azure Cosmos DB mithilfe einer Verbindungszeichenfolge":::
 
-2. Derzeit werden nur SQL und die Tabellen-API unterstützt. Wählen Sie die API aus, fügen Sie die **Verbindungszeichenfolge** ein, und geben Sie die **Kontobezeichnung** ein. Klicken Sie auf **Weiter**, um die Zusammenfassung zur Überprüfung anzuzeigen, und klicken Sie dann auf **Verbinden**, um eine Verbindung mit dem Azure Cosmos DB-Konto herzustellen. Informationen zum Abrufen der primären Verbindungszeichenfolge finden Sie unter [Abrufen der Verbindungszeichenfolge](manage-with-powershell.md#list-keys).
+2. Derzeit werden nur SQL und die Tabellen-API unterstützt. Wählen Sie die API aus, fügen Sie die **Verbindungszeichenfolge** ein, und geben Sie die **Kontobezeichnung** ein. Klicken Sie auf **Weiter**, um die Zusammenfassung zu überprüfen, und klicken Sie dann auf **Verbinden**, um eine Verbindung mit dem Azure Cosmos DB-Konto herzustellen. Informationen zum Abrufen der primären Verbindungszeichenfolge finden Sie unter [Abrufen der Verbindungszeichenfolge](manage-with-powershell.md#list-keys).
 
-    :::image type="content" source="./media/storage-explorer/connection-string.png" alt-text="Verbindungszeichenfolge":::
+    :::image type="content" source="./media/storage-explorer/connection-string.png" alt-text="Eingeben der Verbindungszeichenfolge":::
 
 ## <a name="connect-to-azure-cosmos-db-by-using-local-emulator"></a>Herstellen einer Verbindung mit Azure Cosmos DB über den lokalen Emulator
 
@@ -71,11 +71,11 @@ Verwenden Sie die folgenden Schritte, um eine Verbindung mit Azure Cosmos DB per
 
 2. Suchen Sie in der linken Struktur nach **Local and Attached** (Lokal und angefügt), klicken Sie mit der rechten Maustaste auf **Cosmos DB-Konten**, und wählen Sie **Connect to Cosmos DB Emulator...** (Mit Cosmos DB-Emulator verbinden...).
 
-    :::image type="content" source="./media/storage-explorer/emulator-entry.png" alt-text="Herstellen einer Verbindung mit Cosmos DB per Emulator":::
+    :::image type="content" source="./media/storage-explorer/emulator-entry.png" alt-text="Herstellen einer Verbindung mit Azure Cosmos DB über den Emulator":::
 
-3. Derzeit wird nur die SQL-API unterstützt. Fügen Sie die **Verbindungszeichenfolge** ein, und geben Sie die **Kontobezeichnung** ein. Klicken Sie auf **Weiter**, um die Zusammenfassung zur Überprüfung anzuzeigen, und klicken Sie dann auf **Verbinden**, um eine Verbindung mit dem Azure Cosmos DB-Konto herzustellen. Informationen zum Abrufen der primären Verbindungszeichenfolge finden Sie unter [Abrufen der Verbindungszeichenfolge](manage-with-powershell.md#list-keys).
+3. Derzeit wird nur die SQL-API unterstützt. Fügen Sie die **Verbindungszeichenfolge** ein, und geben Sie die **Kontobezeichnung** ein. Klicken Sie auf **Weiter**, um die Zusammenfassung zu überprüfen, und klicken Sie dann auf **Verbinden**, um eine Verbindung mit dem Azure Cosmos DB-Konto herzustellen. Informationen zum Abrufen der primären Verbindungszeichenfolge finden Sie unter [Abrufen der Verbindungszeichenfolge](manage-with-powershell.md#list-keys).
 
-    :::image type="content" source="./media/storage-explorer/emulator-dialog.png" alt-text="Dialogfeld zum Herstellen einer Verbindung mit Cosmos DB per Emulator":::
+    :::image type="content" source="./media/storage-explorer/emulator-dialog.png" alt-text="Dialogfeld zum Herstellen einer Verbindung mit Cosmos DB über den Emulator":::
 
 
 ## <a name="azure-cosmos-db-resource-management"></a>Azure Cosmos DB-Ressourcenverwaltung
@@ -103,100 +103,114 @@ Indem Sie mit der rechten Maustaste auf ein Abonnement im Explorer-Bereich klick
     :::image type="content" source="./media/storage-explorer/search-from-here.png" alt-text="Ab hier suchen":::
 
 ### <a name="database-and-collection-management"></a>Datenbank- und Sammlungsverwaltung
+
 #### <a name="create-a-database"></a>Erstellen einer Datenbank
+
 -   Klicken Sie mit der rechten Maustaste auf das Azure Cosmos DB-Konto, wählen Sie **Datenbank erstellen** aus, geben Sie den Datenbanknamen ein, und drücken Sie zum Abschluss die **Eingabetaste**.
 
-    :::image type="content" source="./media/storage-explorer/create-database.png" alt-text="Erstellen der Datenbank":::
+    :::image type="content" source="./media/storage-explorer/create-database.png" alt-text="Erstellen einer Datenbank im Azure Cosmos-Konto":::
 
 #### <a name="delete-a-database"></a>Löschen einer Datenbank
-- Klicken Sie mit der rechten Maustaste auf die Datenbank, klicken Sie auf **Datenbank löschen**, und klicken Sie im Popupfenster auf **Ja**. Der Datenbankknoten wird gelöscht, und das Azure Cosmos DB-Konto wird automatisch aktualisiert.
 
-    :::image type="content" source="./media/storage-explorer/delete-database1.png" alt-text="database1 löschen":::
+- Klicken Sie mit der rechten Maustaste auf die Datenbank, wählen Sie **Datenbank löschen** aus, und klicken Sie im Popupfenster auf **Ja**. Der Datenbankknoten wird gelöscht, und das Azure Cosmos DB-Konto wird automatisch aktualisiert.
 
-    :::image type="content" source="./media/storage-explorer/delete-database2.png" alt-text="database2 löschen":::
+    :::image type="content" source="./media/storage-explorer/delete-database1.png" alt-text="Löschen der ersten Datenbank":::
+
+    :::image type="content" source="./media/storage-explorer/delete-database2.png" alt-text="Löschen der zweiten Datenbank":::
 
 #### <a name="create-a-collection"></a>Erstellen einer Sammlung
+
 1. Klicken Sie mit der rechten Maustaste auf die Datenbank, wählen Sie **Sammlung erstellen** aus, und geben Sie dann die benötigten Informationen ein, z.B. **Sammlungs-ID**, **Speicherkapazität** usw. Klicken Sie auf **OK**, um den Vorgang abzuschließen.
 
-    :::image type="content" source="./media/storage-explorer/create-collection.png" alt-text="collection1 erstellen":::
+    :::image type="content" source="./media/storage-explorer/create-collection.png" alt-text="Erstellen der ersten Sammlung in der Datenbank":::
 
-    :::image type="content" source="./media/storage-explorer/create-collection2.png" alt-text="collection2 erstellen":::
+    :::image type="content" source="./media/storage-explorer/create-collection2.png" alt-text="Erstellen der zweite Sammlung in der Datenbank":::
 
-2. Wählen Sie **Unbegrenzt**, um den Partitionsschlüssel angeben zu können, und klicken Sie dann auf **OK**, um den Vorgang abzuschließen.
+2. Wählen Sie **Unbegrenzt** aus, um den Partitionsschlüssel angeben zu können, und klicken Sie dann auf **OK**, um den Vorgang abzuschließen.
 
     Wenn zum Erstellen einer Sammlung ein Partitionsschlüssel verwendet wird, kann der Partitionsschlüsselwert für die Auflistung nach Abschluss der Erstellung nicht mehr geändert werden.
 
-    :::image type="content" source="./media/storage-explorer/partitionkey.png" alt-text="Partitionsschlüssel":::
+    :::image type="content" source="./media/storage-explorer/partitionkey.png" alt-text="Konfigurieren eines Partitionsschlüssels":::
 
 #### <a name="delete-a-collection"></a>Löschen einer Sammlung
-- Klicken Sie mit der rechten Maustaste auf die Sammlung, klicken Sie auf **Sammlung löschen**, und klicken Sie dann im Popupfenster auf **Ja**.
+
+- Klicken Sie mit der rechten Maustaste auf die Sammlung, wählen Sie **Sammlung löschen** aus, und klicken Sie dann im Popupfenster auf **Ja**.
 
     Der Sammlungsknoten wird gelöscht, und die Datenbank wird automatisch aktualisiert.
 
-    :::image type="content" source="./media/storage-explorer/delete-collection.png" alt-text="Sammlung löschen":::
+    :::image type="content" source="./media/storage-explorer/delete-collection.png" alt-text="Löschen einer der Sammlungen":::
 
 ### <a name="document-management"></a>Dokumentverwaltung
 
 #### <a name="create-and-modify-documents"></a>Erstellen und Ändern von Dokumenten
-- Um ein neues Dokument zu erstellen, öffnen Sie im linken Fenster **Dokumente**, klicken Sie auf **Neues Dokument**. Bearbeiten Sie den Inhalt im rechten Bereich, und klicken Sie auf **Speichern**. Sie können auch ein vorhandenes Dokument aktualisieren und dann auf **Speichern** klicken. Änderungen können durch Klicken auf **Verwerfen** verworfen werden.
 
-    :::image type="content" source="./media/storage-explorer/document.png" alt-text="Dokument":::
+- Um ein neues Dokument zu erstellen, öffnen Sie im linken Fenster die Option **Dokumente**, und klicken Sie auf **Neues Dokument**. Bearbeiten Sie den Inhalt im rechten Bereich, und klicken Sie auf **Speichern**. Sie können auch ein vorhandenes Dokument aktualisieren und dann auf **Speichern** klicken. Änderungen können durch Klicken auf **Verwerfen** verworfen werden.
+
+    :::image type="content" source="./media/storage-explorer/document.png" alt-text="Erstellen eines neuen Dokuments":::
 
 #### <a name="delete-a-document"></a>Löschen eines Dokuments
+
 - Klicken Sie auf die Schaltfläche **Löschen**, um das ausgewählte Dokument zu löschen.
 
 #### <a name="query-for-documents"></a>Abfragen von Dokumenten
-- Bearbeiten Sie den Dokumentfilter durch Eingeben einer [SQL-Abfrage](how-to-sql-query.md), und klicken Sie dann auf **Anwenden**.
 
-    :::image type="content" source="./media/storage-explorer/document-filter.png" alt-text="Dokumentfilter":::
+- Bearbeiten Sie den Dokumentfilter, indem Sie eine [SQL-Abfrage](how-to-sql-query.md) eingeben und dann auf **Anwenden** klicken.
 
-
+    :::image type="content" source="./media/storage-explorer/document-filter.png" alt-text="Abfrage für bestimmte Dokumente":::
 
 ### <a name="graph-management"></a>Graphverwaltung
 
 #### <a name="create-and-modify-vertex"></a>Erstellen und Ändern des Scheitelpunkts
-1. Öffnen Sie zum Erstellen eines neuen Scheitelpunkts im linken Fenster die Option **Graph**, klicken Sie auf **New Vertex** (Neuer Scheitelpunkt) bearbeiten Sie den Inhalt, und klicken Sie dann auf **OK**.
+
+1. Öffnen Sie zum Erstellen eines neuen Scheitelpunkts im linken Fenster die Option **Graph**, und wählen Sie **Neuer Scheitelpunkt** aus. Bearbeiten Sie den Inhalt, und klicken Sie dann auf **OK**.
 2. Klicken Sie im rechten Bereich auf das Stiftsymbol, um einen vorhandenen Scheitelpunkt zu ändern.
 
-    :::image type="content" source="./media/storage-explorer/vertex.png" alt-text="Graph":::
+    :::image type="content" source="./media/storage-explorer/vertex.png" alt-text="Ändern des Scheitelpunkts eines Graphen":::
 
 #### <a name="delete-a-graph"></a>Löschen eines Graphen
+
 - Klicken Sie zum Löschen eines Scheitelpunkts auf das Papierkorbsymbol neben dem Namen des Scheitelpunkts.
 
 #### <a name="filter-for-graph"></a>Filter für Graph
-- Bearbeiten Sie den Graphfilter, indem Sie eine [Gremlin-Abfrage](gremlin-support.md) eingeben und dann auf **Filter anwenden** klicken.
 
-    :::image type="content" source="./media/storage-explorer/graph-filter.png" alt-text="Graphfilter":::
+- Bearbeiten Sie den Graphfilter, indem Sie eine [Gremlin-Abfrage](gremlin-support.md) eingeben. Klicken Sie dann auf **Filter anwenden**.
+
+    :::image type="content" source="./media/storage-explorer/graph-filter.png" alt-text="Ausführen einer Graphabfrage":::
 
 ### <a name="table-management"></a>Tabellenverwaltung
 
 #### <a name="create-and-modify-table"></a>Erstellen und Ändern der Tabelle
-1. Öffnen Sie zum Erstellen einer neuen Tabelle im linken Fenster die Option **Entitäten**, klicken Sie auf **Hinzufügen**, bearbeiten Sie den Inhalt im Dialogfeld **Entität hinzufügen**, fügen Sie die Eigenschaft durch das Klicken auf die Schaltfläche **Eigenschaft hinzufügen** hinzu, und klicken Sie anschließend auf **Einfügen**.
-2. Klicken Sie zum Ändern einer Tabelle auf **Bearbeiten**, ändern Sie den Inhalt, und klicken Sie dann auf **Aktualisieren**.
 
-    :::image type="content" source="./media/storage-explorer/table.png" alt-text="Table":::
+1. Öffnen Sie zum Erstellen einer neuen Tabelle im linken Fenster die Option **Entitäten**, und wählen Sie **Hinzufügen** aus. Bearbeiten Sie den Inhalt im Dialogfeld **Entität hinzufügen**: Klicken Sie zum Hinzufügen einer Eigenschaft auf die Schaltfläche **Eigenschaft hinzufügen**, und wählen Sie dann **Einfügen** aus.
+2. Wenn Sie eine Tabelle ändern möchten, klicken Sie auf **Bearbeiten**, ändern den Inhalt und klicken dann auf **Aktualisieren**.
+
+    :::image type="content" source="./media/storage-explorer/table.png" alt-text="Erstellen und Ändern einer Tabelle":::
 
 #### <a name="import-and-export-table"></a>Importieren und Exportieren einer Tabelle
+
 1. Klicken Sie zum Importieren auf die Schaltfläche **Importieren**, und wählen Sie eine vorhandene Tabelle aus.
 2. Klicken Sie zum Exportieren auf die Schaltfläche **Exportieren**, und wählen Sie ein Ziel aus.
 
-    :::image type="content" source="./media/storage-explorer/table-import-export.png" alt-text="Tabellenimport und -export":::
+    :::image type="content" source="./media/storage-explorer/table-import-export.png" alt-text="Importieren oder Exportieren einer Tabelle":::
 
 #### <a name="delete-entities"></a>Löschen von Entitäten
+
 - Wählen Sie die Entitäten aus, und klicken Sie auf die Schaltfläche **Löschen**.
 
-    :::image type="content" source="./media/storage-explorer/table-delete.png" alt-text="Tabelle löschen":::
+    :::image type="content" source="./media/storage-explorer/table-delete.png" alt-text="Löschen einer Tabelle":::
 
 #### <a name="query-table"></a>Abfragen einer Tabelle
-- Klicken Sie auf die Schaltfläche **Abfragen**, geben Sie eine Abfragebedingung ein, und klicken Sie dann auf die Schaltfläche **Abfrage ausführen**. Schließen Sie den Abfragebereich, indem Sie auf die Schaltfläche **Abfrage schließen** klicken.
 
-    :::image type="content" source="./media/storage-explorer/table-query.png" alt-text="Tabelle abfragen":::
+- Klicken Sie auf die Schaltfläche **Abfrage**, geben Sie eine Abfragebedingung ein, und klicken Sie dann auf die Schaltfläche **Abfrage ausführen**. Schließen Sie den Abfragebereich, indem Sie auf die Schaltfläche **Abfrage schließen** klicken.
+
+    :::image type="content" source="./media/storage-explorer/table-query.png" alt-text="Abfragen von Daten aus der Tabelle":::
 
 ### <a name="manage-stored-procedures-triggers-and-udfs"></a>Verwalten von gespeicherten Prozeduren, Triggern und UDFs
-* Um eine gespeicherte Prozedur zu erstellen, klicken Sie in der linken Struktur mit der rechten Maustaste auf **Gespeicherte Prozedur**, wählen Sie **Gespeicherte Prozedur erstellen** aus, geben Sie links einen Namen ein, geben Sie die Skripts für die gespeicherte Prozedur im rechten Fenster ein, und klicken Sie dann auf **Erstellen**.
-* Sie können auch vorhandene gespeicherte Prozeduren bearbeiten, indem Sie doppelklicken, die Aktualisierung vornehmen und dann auf **Aktualisieren** klicken, um sie zu speichern, oder auf **Verwerfen**, um die Änderungen zu verwerfen.
 
-    :::image type="content" source="./media/storage-explorer/stored-procedure.png" alt-text="Gespeicherte Prozedur":::
+* Zum Erstellen einer gespeicherten Prozedur klicken Sie in der linken Struktur mit der rechten Maustaste auf **Gespeicherte Prozedur** und wählen **Gespeicherte Prozedur erstellen** aus. Geben Sie im linken Fenster einen Namen und im rechten Fenster die Skripts für die gespeicherte Prozedur ein, und klicken Sie dann auf **Erstellen**.
+* Sie können auch vorhandene gespeicherte Prozeduren bearbeiten: Doppelklicken Sie auf die entsprechende Prozedur, nehmen Sie die gewünschten Änderungen vor, und klicken Sie auf **Aktualisieren**, um die Prozedur zu speichern. Wenn Sie den Vorgang abbrechen möchten, klicken Sie auf **Verwerfen**.
+
+    :::image type="content" source="./media/storage-explorer/stored-procedure.png" alt-text="Erstellen und Verwalten von gespeicherten Prozeduren":::
 * Die Vorgänge für **Trigger** und **UDFs** ähneln **gespeicherten Prozeduren**.
 
 ## <a name="troubleshooting"></a>Problembehandlung
@@ -215,7 +229,7 @@ Es gibt verschiedene Gründe, warum dieser Fehler unter Umständen angezeigt wir
 
 + Sie befinden sich hinter einem *transparenten Proxy*. Dies bedeutet, dass HTTPS-Datenverkehr abgefangen (z.B. von Ihrer IT-Abteilung) und entschlüsselt und anschließend mit einem selbstsignierten Zertifikat wieder verschlüsselt wird.
 
-+ Sie führen Software aus, z. B. Virenschutzsoftware, mit der ein selbstsigniertes TLS-/SSL-Zertifikat in Ihre HTTPS-Nachrichten injiziert wird.
++ Sie führen eine Softwareanwendung aus – beispielsweise eine Virenschutzsoftware –, die ein selbstsigniertes TLS/SSL-Zertifikat in die von Ihnen empfangenen HTTPS-Nachrichten injiziert.
 
 Wenn Storage-Explorer eines dieser „selbstsignierten Zertifikate“ erkennt, kann nicht mehr überprüft werden, ob die empfangene HTTPS-Nachricht manipuliert wurde. Falls Sie aber über eine Kopie des selbstsignierten Zertifikats verfügen, können Sie Storage-Explorer anweisen, es als vertrauenswürdig anzusehen. Wenn Sie unsicher sind, von wem das Zertifikat injiziert wird, können Sie mit den folgenden Schritten versuchen, es selbst zu finden:
 
@@ -236,7 +250,7 @@ Falls Sie mit den oben angegebenen Schritten keine selbstsignierten Zertifikate 
 
 Gehen Sie wie folgt vor, wenn Sie nach dem erfolgreichen Anmelden Ihre Abonnements nicht abrufen können:
 
-- Melden Sie sich am [Azure-Portal](https://portal.azure.com/) an, um zu überprüfen, ob Ihr Konto Zugriff auf die Abonnements hat.
+- Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, um zu überprüfen, ob Ihr Konto Zugriff auf die Abonnements hat.
 - Stellen Sie sicher, dass die Anmeldung mit der richtigen Umgebung ([Azure](https://portal.azure.com/), [Azure China](https://portal.azure.cn/), [Azure Deutschland](https://portal.microsoftazure.de/), [Azure US-Regierung](https://portal.azure.us/) oder „Benutzerdefinierte Umgebung/Azure Stack“) erfolgt ist.
 - Wenn Sie sich hinter einem Proxy befinden, sollten Sie sicherstellen, dass Sie den Storage-Explorer-Proxy richtig konfiguriert haben.
 - Entfernen Sie das Konto, und fügen Sie es wieder hinzu.
@@ -246,7 +260,7 @@ Gehen Sie wie folgt vor, wenn Sie nach dem erfolgreichen Anmelden Ihre Abonnemen
   - .extaccounts
 - Achten Sie beim Anmelden auf Fehlermeldungen in der Entwicklertools-Konsole (F12)
 
-:::image type="content" source="./media/storage-explorer/console.png" alt-text="Konsole":::
+:::image type="content" source="./media/storage-explorer/console.png" alt-text="Überprüfen der Konsole für Entwicklertools auf Fehler":::
 
 #### <a name="unable-to-see-the-authentication-page"></a>Authentifizierungsseite wird nicht angezeigt
 
@@ -277,7 +291,7 @@ Es ist nicht möglich, Azure Cosmos DB-Knoten in der linken Struktur aufzulisten
 
 ### <a name="development-node-under-local-and-attached-node-issue"></a>Problem mit dem Knoten „Development“ unter „Local and Attached“
 
-Wenn Sie in der linken Struktur unter „Local and Attached“ (Lokal und angefügt) auf den Knoten „Development“ (Entwicklung) klicken, erfolgt keine Reaktion.  Dies ist das erwartete Verhalten. Der lokale Azure Cosmos DB-Emulator wird ab dem nächsten Release unterstützt.
+Wenn Sie in der linken Struktur unter „Lokal und angefügt“ auf den Knoten „Entwicklung“ klicken, erfolgt keine Reaktion.  Dies ist das erwartete Verhalten. Der lokale Azure Cosmos DB-Emulator wird ab dem nächsten Release unterstützt.
 
 :::image type="content" source="./media/storage-explorer/development.png" alt-text="Knoten „Development“":::
 
@@ -291,16 +305,12 @@ Wenn nach dem Anfügen des Azure Cosmos DB-Kontos unter dem Knoten „Local and 
 
 Unter Umständen wird der folgende Fehler angezeigt, wenn Sie versuchen, in der linken Struktur die Knoten zu erweitern.
 
-:::image type="content" source="./media/storage-explorer/expand-error.png" alt-text="Fehler beim Erweitern":::
+:::image type="content" source="./media/storage-explorer/expand-error.png" alt-text="Fehler beim Erweitern des Azure Cosmos DB-Knotens":::
 
 Versuchen Sie es mit folgenden Lösungsvorschlägen:
 
 - Überprüfen Sie, ob die Bereitstellung des Azure Cosmos DB-Kontos ausgeführt wird, und wiederholen Sie den Vorgang, nachdem die Erstellung des Kontos erfolgreich abgeschlossen wurde.
 - Wenn sich das Konto unter dem Knoten „Quick Access“ (Schnellzugriff) oder „Local and Attached“ (Lokal und angefügt) befindet, sollten Sie überprüfen, ob das Konto gelöscht wurde. Wenn dies der Fall ist, müssen Sie den Knoten manuell entfernen.
-
-## <a name="contact-us"></a>Kontakt
-
-Falls Ihnen keine dieser Lösungen weiterhilft, können Sie eine E-Mail mit Details zum Problem an das Azure Cosmos DB Dev Tooling-Team ([cosmosdbtooling@microsoft.com](mailto:cosmosdbtooling@microsoft.com)) senden, um Informationen zur Problemlösung zu erhalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

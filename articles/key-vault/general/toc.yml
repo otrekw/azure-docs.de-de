@@ -39,9 +39,6 @@
   items:
     - name: Codebeispiele für Key Vault
       href: 'https://docs.microsoft.com/samples/browse/?expanded=azure&products=azure-key-vault'
-    - name: Azure Policy-Integrationen
-      displayName: 'samples, policies, definitions'
-      href: ../policy-samples.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
 - name: Konzepte
   items:
     - name: Grundlegende Konzepte
@@ -90,6 +87,8 @@
           href: managed-identity.md
         - name: Verwenden einer Zugriffssteuerungsrichtlinie
           href: group-permissions-for-apps.md
+        - name: Verwenden einer rollenbasierten Azure-Zugriffssteuerung (Vorschau)
+          href: rbac-guide.md
         - name: Behandeln von Zugriffsproblemen
           href: troubleshooting-access-issues.md
     - name: Entwickeln
@@ -148,7 +147,7 @@
       href: versions.md
     - name: Azure PowerShell
       href: /powershell/module/az.keyvault/?view=azps-1.2.0#key_vault
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/keyvault
     - name: .NET
       href: /dotnet/api/overview/azure/keyvault/management?view=azure-dotnet
@@ -163,6 +162,9 @@
     - name: Resource Manager-Vorlage
       href: /azure/templates/microsoft.keyvault/allversions
       displayName: ARM
+    - name: Azure Policy-Integrationen
+      displayName: 'samples, policies, definitions'
+      href: ../policy-reference.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
 - name: Ressourcen
   items:
     - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn

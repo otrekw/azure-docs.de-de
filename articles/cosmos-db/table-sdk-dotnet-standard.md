@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: 097868c0f6c64ad8b58dce365a2232bb02b786e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de173d6dc25610cd397cd719fe4c1c9db33a02f6
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84168198"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641839"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>.NET Standard-API für Azure Cosmos DB-Tabellen: Download und Versionshinweise
 > [!div class="op_single_selector"]
@@ -41,6 +41,14 @@ Die Serie 2.0.0 übernimmt die Abhängigkeit von [Microsoft.Azure.Cosmos](https
 
 ## <a name="release-notes-for-100-series"></a>Versionshinweise für die Serie 1.0.0
 Die Serie 1.0.0 übernimmt die Abhängigkeit von [Microsoft.Azure.DocumentDB.Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/).
+
+### <a name="108"></a><a name="1.0.8"></a>1.0.8
+* Hinzufügung von Unterstützung zum Festlegen der TTL-Eigenschaft im Fall eines CosmosDB-Endpunkts 
+* Beachtung der Wiederholungsrichtlinie bei Timeout und Ausnahme aufgrund eines Taskabbruchs
+* Korrektur einer zeitweilig auftretenden Ausnahme aufgrund eines Taskabbruchs in ASP.NET-Anwendungen
+* Korrektur des Azure Table Storage-Abrufs nur vom sekundären Endpunkt (Standortmodus)
+* Aktualisierung der Abhängigkeitsversion von `Microsoft.Azure.DocumentDB.Core` auf 2.11.2 zum Beheben zeitweilig auftretender Nullverweisausnahmen
+* Aktualisierung der Abhängigkeitsversion von `Odata.Core` auf 7.6.4 zum Beheben von Kompatibilitätskonflikten mit Azure Shell
 
 ### <a name="107"></a><a name="1.0.7"></a>1.0.7
 * Leistungsverbesserung durch Festlegen der Standard-Ablaufverfolgungsebene für das Tabellen-SDK auf „SourceLevels.Off“, die über „app.config“ aktiviert werden kann.

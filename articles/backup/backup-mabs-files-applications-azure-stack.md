@@ -3,19 +3,19 @@ title: Sichern von Dateien auf virtuellen Azure Stack-Computern
 description: Verwenden Sie Azure Backup, um Azure Stack-Dateien und -Anwendungen in Ihrer Azure Stack-Umgebung zu sichern und wiederherzustellen.
 ms.topic: conceptual
 ms.date: 06/05/2018
-ms.openlocfilehash: b45e3a0916f46f247503ea336105646f5538246c
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: caac247b5a972c515b4350f1b0c79792bbf75537
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263128"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825799"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Sichern von Dateien und Anwendungen in Azure Stack
 
 Sie können Azure Backup verwenden, um Dateien und Anwendungen in Azure Stack zu schützen (oder zu sichern). Installieren Sie Microsoft Azure Backup Server als virtuellen Computer, der unter Azure Stack ausgeführt wird, um Dateien und Anwendungen zu sichern. Sie können die Dateien schützen, die auf einem beliebigen Azure Stack-Server in demselben virtuellen Netzwerk ausgeführt werden. Nachdem Sie Azure Backup Server installiert haben, fügen Sie Azure-Datenträger hinzu, um den lokalen Speicher zu vergrößern, der für die kurzfristige Sicherung von Daten verfügbar ist. Azure Backup Server nutzt Azure-Speicher für die langfristige Aufbewahrung.
 
 > [!NOTE]
-> Azure Backup Server und System Center Data Protection Manager (DPM) sind zwar ähnlich, aber DPM wird für die Verwendung mit Azure Stack nicht unterstützt.
+> Azure Backup Server und System Center Data Protection Manager (DPM) funktionieren zwar ähnlich, aber DPM wird für die Verwendung mit Azure Stack nicht unterstützt.
 >
 
 In diesem Artikel wird nicht die Installation von Azure Backup Server in der Azure Stack-Umgebung behandelt. Informationen zur Installation von Azure Backup Server in Azure Stack finden Sie im Artikel [Installieren von Azure Backup Server in Azure Stack](backup-mabs-install-azure-stack.md).

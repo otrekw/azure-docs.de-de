@@ -3,12 +3,12 @@ title: Übersicht über die Architektur
 description: Übersicht über die Architektur, die Komponenten und die Prozesse des Azure Backup-Diensts.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: fc57f275d7693c9cf93adf04dc5dcc7524ba0567
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 1081de6b467b896bd8cc62b84c9a67c329b11e02
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835730"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824031"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup-Architektur und -Komponenten
 
@@ -146,7 +146,7 @@ Sicherung deduplizierter Datenträger | | | ![Teilweise][yellow]<br/><br/> Nur f
     - Momentaufnahmedaten werden möglicherweise nicht sofort in den Tresor kopiert. Zu Spitzenzeiten kann die Sicherung mehrere Stunden dauern. Bei täglichen Sicherungsrichtlinien beträgt die Gesamtdauer der Sicherung eines virtuellen Computers weniger als 24 Stunden.
 1. Nachdem die Daten an den Tresor gesendet wurden, wird ein Wiederherstellungspunkt erstellt. Standardmäßig werden Momentaufnahmen zwei Tage lang aufbewahrt, bevor sie gelöscht werden. Mit diesem Feature kann die Wiederherstellung über diese Momentaufnahmen mit reduzierten Wiederherstellungszeiten durchgeführt werden. Es reduziert die erforderliche Zeit zum Transformieren und Zurückkopieren von Daten aus dem Tresor. Lesen Sie die Informationen unter [Verbesserte Sicherungs- und Wiederherstellungsleistung mit der Azure Backup-Funktion zur sofortigen Wiederherstellung](./backup-instant-restore-capability.md).
 
-Sie brauchen die Internetverbindung nicht explizit zuzulassen, um Ihre virtuellen Azure-Computer zu sichern.
+Sie müssen die Internetverbindung nicht explizit zulassen, um Ihre Azure-VMs zu sichern.
 
 ![Sicherung virtueller Azure-Computer](./media/backup-architecture/architecture-azure-vm.png)
 
@@ -193,9 +193,8 @@ Betriebssystem, Apps und Daten von virtuellen Azure-Computern werden auf Datentr
 
 Weitere Informationen zu Datenträgerspeicher und den verfügbaren Datenträgertypen für VMs finden Sie in den folgenden Artikeln:
 
-- [Verwaltete Azure-Datenträger für Windows-VMs](../virtual-machines/windows/managed-disks-overview.md)
-- [Verwaltete Azure-Datenträger für Linux-VMs](../virtual-machines/linux/managed-disks-overview.md)
-- [Verfügbare Datenträgertypen für VMs](../virtual-machines/windows/disks-types.md)
+- [Verwaltete Azure-Datenträger für Linux-VMs](../virtual-machines/managed-disks-overview.md)
+- [Verfügbare Datenträgertypen für VMs](../virtual-machines/disks-types.md)
 
 ### <a name="back-up-and-restore-azure-vms-with-premium-storage"></a>Sichern und Wiederherstellen von Azure-VMs mit Storage Premium
 
@@ -204,7 +203,7 @@ Sie können virtuelle Azure-Computer mithilfe von Storage Premium mit Azure Back
 - Während des Vorgangs zum Sichern virtueller Computer mit Storage Premium erstellt der Backup-Dienst im Speicherkonto einen temporären Stagingspeicherort mit dem Namen *AzureBackup-* . Die Größe des Stagingspeicherorts entspricht der Größe der Momentaufnahme des Wiederherstellungspunkts.
 - Stellen Sie sicher, dass das Premium-Speicherkonto über genügend freien Speicherplatz für den temporären Stagingspeicherort verfügt. Weitere Informationen finden Sie unter [Skalierbarkeitsziele für Seitenblobspeicher mit Premium-Leistung](../storage/blobs/scalability-targets-premium-page-blobs.md). Ändern Sie den Stagingspeicherort nicht.
 - Nach Abschluss des Sicherungsauftrags wird der Stagingspeicherort gelöscht.
-- Die Kosten für den Speicher, der für den Stagingspeicherort genutzt wird, entsprechen den [Preisen für Storage Premium](../virtual-machines/windows/disks-types.md#billing).
+- Die Kosten für den Speicher, der für den Stagingspeicherort genutzt wird, entsprechen den [Preisen für Storage Premium](../virtual-machines/disks-types.md#billing).
 
 Virtuelle Azure-Computer mit Storage Premium können in Storage Premium oder Storage Standard wiederhergestellt werden. In der Regel werden die VMs in Storage Premium wiederhergestellt. Wenn Sie jedoch nur eine Teilmenge der Dateien des virtuellen Computers benötigen, kann die Wiederherstellung in Storage Standard kostengünstiger sein.
 

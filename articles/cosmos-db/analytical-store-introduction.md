@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: rosouz
-ms.openlocfilehash: 3b210ea558f857d017504d07e571e94e34c0d4f6
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: b3d1371f486a73b40d352007e3681fd451a8a8b7
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037098"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815826"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Was ist der Azure Cosmos DB-Analysespeicher (Vorschau)?
 
@@ -22,7 +22,7 @@ Der Azure Cosmos DB-Analysespeicher ist ein vollständig isolierter Spaltenspei
 
 ## <a name="challenges-with-large-scale-analytics-on-operational-data"></a>Herausforderungen bei umfangreichen Analysen operativer Daten
 
-Die operativen Daten aus mehreren Modellen in einem Azure Cosmos DB-Container werden intern in einem indizierten zeilenbasierten „Transaktionsspeicher“ gespeichert. Das Zeilenspeicherformat ist so konzipiert, dass schnelle transaktionale Lese- und Schreibvorgänge mit Antwortzeiten im Millisekundenbereich sowie operative Abfragen möglich sind. Wenn Ihr Dataset umfangreicher wird, können komplexe analytische Abfragen in Hinsicht auf den bereitgestellten Durchsatz für die in diesem Format gespeicherten Daten teuer werden. Ein hoher Verbrauch von bereitgestelltem Durchsatz wirkt sich wiederum auf die Leistung von Transaktionsworkloads aus, die von Ihren Echtzeitanwendungen und -diensten verwendet werden.
+Die operativen Daten aus mehreren Modellen in einem Azure Cosmos DB-Container werden intern in einem indizierten zeilenbasierten „Transaktionsspeicher“ gespeichert. Das Zeilenspeicherformat ist so konzipiert, dass schnelle transaktionale Lese- und Schreibvorgänge mit Antwortzeiten im Millisekundenbereich sowie operative Abfragen möglich sind. Wenn das Dataset sehr umfangreich wird, können komplexe analytische Abfragen hinsichtlich des bereitgestellten Durchsatzes der in diesem Format gespeicherten Daten teuer sein. Ein hoher Verbrauch von bereitgestelltem Durchsatz wirkt sich wiederum auf die Leistung von transaktionalen Workloads aus, die von ihren Echtzeitanwendungen und -Diensten verwendet werden.
 
 Zum Analysieren großer Datenmengen werden operative Daten in der Regel aus dem Transaktionsspeicher von Azure Cosmos DB extrahiert und in einer separaten Datenschicht gespeichert. Die Daten werden beispielsweise in einem Data Warehouse oder Data Lake in einem geeigneten Format gespeichert. Später werden diese Daten für umfangreiche Analysen verwendet und mithilfe einer Compute-Engine (z. B. den Apache Spark-Clustern) analysiert. Diese Trennung der Analysespeicher- und Analysecompute-Ebenen von den operativen Daten führt zu einer zusätzlichen Latenz, da die ETL-Pipelines (Extrahieren, Transformieren, Laden) seltener ausgeführt werden, um die potenziellen Auswirkungen auf Ihre Transaktionsworkloads zu minimieren.
 
@@ -131,10 +131,10 @@ Der Analysespeicher folgt einem nutzungsbasierten Preismodell, bei dem Folgendes
 
 * Analyseschreibvorgänge: Die vollständig verwaltete Synchronisierung von Aktualisierungen operativer Daten aus dem Transaktionsspeicher in den Analysespeicher (automatische Synchronisierung).
 
-* Analyselesevorgänge: Die Lesevorgänge, die für den Analysespeicher aus Synapse Analytics Spark- und SQL serverlos-Laufzeiten ausgeführt werden.
+* Analyselesevorgänge: Die Lesevorgänge, die für den Analysespeicher in Synapse Analytics Spark- und serverlosen SQL-Laufzeiten ausgeführt werden.
 
 > [!NOTE]
-> Der Azure Cosmos DB-Analysespeicher ist in der öffentlichen Vorschau bis zum 30. August 2020 kostenlos verfügbar.
+> Der Azure Cosmos DB-Analysespeicher ist derzeit in der öffentlichen Vorschau kostenlos verfügbar.
 
 Die Preise für den Analysespeicher sind vom Preismodell für den Transaktionsspeicher getrennt. Es gibt kein Konzept für bereitgestellte RUs im Analysespeicher. Ausführliche Informationen zum Preismodell für den Analysespeicher finden Sie auf der Seite [Azure Cosmos DB – Preise](https://azure.microsoft.com/pricing/details/cosmos-db/).
 
@@ -144,7 +144,7 @@ Wenn Sie eine allgemeine Kostenschätzung für das Aktivieren des Analysespeiche
 
 Die analytische Gültigkeitsdauer gibt an, wie lange Daten in Ihrem Analysespeicher für einen Container aufbewahrt werden sollen. 
 
-Die Einfüge-, Aktualisierungs- und Löschvorgänge für operative Daten werden unabhängig von der Konfiguration der transaktionalen Gültigkeitsdauer automatisch aus dem Transaktionsspeicher in den Analysespeicher synchronisiert. Die Aufbewahrung dieser operativen Daten im Analysespeicher kann durch den Wert der analytischen Gültigkeitsdauer auf Containerebene gesteuert werden, wie nachfolgend beschrieben:
+Wenn der Analysespeicher aktiviert ist, werden Einfüge-, Aktualisierungs- und Löschvorgänge für operative Daten unabhängig von der Konfiguration der transaktionalen Gültigkeitsdauer automatisch aus dem Transaktionsspeicher in den Analysespeicher synchronisiert. Die Aufbewahrung dieser operativen Daten im Analysespeicher kann durch den Wert der analytischen Gültigkeitsdauer auf Containerebene gesteuert werden, wie nachfolgend beschrieben:
 
 Die analytische Gültigkeitsdauer für einen Container wird mithilfe der Eigenschaft `AnalyticalStoreTimeToLiveInSeconds` festgelegt:
 

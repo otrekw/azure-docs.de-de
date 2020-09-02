@@ -9,19 +9,19 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 7918f684fea1092cbd7c11fade3d8f40c1e44240
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 1c03f52802881bcf4c916ce3ed438e465e574090
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431204"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691257"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Freigeben und Entdecken von Ressourcen im Azure KI-Katalog
 
 **BETRIFFT:** ![Ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) ![Nein](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
 
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 
 **[Azure AI Gallery](https://gallery.azure.ai)** ist eine communitybasierte Website zum Entdecken und Teilen von Lösungen, die mit Azure-KI-Diensten erstellt wurden.
 Der Katalog enthält viele Ressourcen, mit denen Sie Ihre eigenen Analytics-Lösungen entwickeln können.
@@ -34,7 +34,6 @@ Der Azure KI-Katalog enthält verschiedene Ressourcen, die von Microsoft und Mit
 * **Tutorials**: Es sind mehrere Tutorials verfügbar, in denen Machine Learning-Technologien und -Konzepte oder erweiterte Methoden zum Lösen verschiedener Machine Learning-Probleme beschrieben werden.
 * **Sammlungen**: Mit einer Sammlung können Sie Experimente, APIs und andere Ressourcen gruppieren, die eine bestimmte Lösung oder ein Konzept betreffen.
 * **Benutzerdefinierte Module**: Sie können benutzerdefinierte Module in Ihren (klassischen) Studio-Arbeitsbereich herunterladen und in Ihren eigenen Experimenten verwenden.
-* **Jupyter Notebooks**: Jupyter Notebooks umfassen Code, Datenvisualisierungen und Dokumentationen in einem einzelnen, interaktiven Zeichenbereich. Über Notebooks im Katalog werden Tutorials und ausführliche Erklärungen von erweiterten Machine Learning-Verfahren und -Lösungen bereitgestellt.
 
 ## <a name="discover-and-contribute"></a>Entdecken und Mitwirken
 
@@ -49,12 +48,12 @@ Außerdem können Sie eine Ressource auch mit Freunden oder Kollegen teilen, ind
 
 Wenn Sie sich registrieren, werden Sie Mitglied der Katalog-Community. Sie können dann Ressourcen herunterladen oder eigene Gallery-Elemente bereitstellen, damit andere Benutzer von Ihren Lösungen profitieren können.
 
-Sie können **Experimente**, **benutzerdefinierte Module** und **Jupyter Notebooks** herunterladen und zur Entwicklung Ihrer eigenen Analyselösungen verwenden.
+Sie können **Experimente** und **benutzerdefinierte Module** herunterladen und zur Entwicklung Ihrer eigenen Analyselösungen verwenden.
 Sie können mit **Experimenten**, **Tutorials** und **Sammlungen** zur Gallery beitragen.
 
-## <a name="download-experiments-modules-notebooks"></a>Herunterladen von Experimenten, Modulen, Notebooks
+## <a name="download-experiments-modules"></a>Herunterladen von Experimenten und Modulen
 
-Sie können **Experimente**, **benutzerdefinierte Module** und **Jupyter Notebooks** in Ihren eigenen (klassischen) Machine Learning Studio-Arbeitsbereich herunterladen und zur Entwicklung Ihrer eigenen Analyselösungen verwenden.
+Sie können **Experimente** und **benutzerdefinierte Module** in Ihren eigenen Azure Machine Learning Studio (Classic)-Arbeitsbereich herunterladen und zur Entwicklung Ihrer eigenen Analyselösungen verwenden.
 
 So laden Sie eine Ressource aus dem Azure KI-Katalog herunter:
 

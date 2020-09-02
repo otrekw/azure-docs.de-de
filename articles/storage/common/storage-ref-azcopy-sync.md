@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 04b87f8d0dd6a8fff35e3ae769652b50e7d0ef34
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 16ee2f01e1b7771e71afe49c4b69b1fb39e43f37
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285202"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869438"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -150,6 +150,10 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 **--include-pattern** string   Schließt nur Dateien ein, deren Name der Musterliste entspricht. Beispiel: `*.jpg;*.pdf;exactName`
 
 **--log-level** string  Definiert die Ausführlichkeit des Protokolls für die Protokolldatei. Verfügbare Ebenen: `INFO`(alle Anforderungen und Antworten), `WARNING`(langsame Antworten), `ERROR`(nur fehlerhafte Anforderungen) und `NONE`(keine Ausgabeprotokolle). (Standardwert: `INFO`) 
+
+**--preserve-smb-info**   Standardmäßig „False“.Behält SMB-Eigenschaftsinformationen ( letzte Schreibzeit, Erstellungszeit, Attributbits) zwischen SMB-fähigen Ressourcen (Windows und Azure Files) bei.Dieses Flag gilt sowohl für Dateien als auch für Ordner, es sei denn, ein reiner Dateifilter ist angegeben (z. B. „include-pattern“). Die für Ordner übertragenen Informationen sind die gleichen wie die für Dateien, mit Ausnahme der letzten Schreibzeit, die für Ordner nicht gespeichert wird.
+
+**--preserve-smb-permissions**   Standardmäßig „False“.Behält SMB-ACLs zwischen SMB-fähigen Ressourcen (Windows und Azure Files) bei. Dieses Flag gilt sowohl für Dateien als auch für Ordner, es sei denn, ein reiner Dateifilter ist angegeben (z. B.  `include-pattern`).
 
 **--put-md5:**  Erstellt einen MD5-Hash jeder Datei und speichert den Hash als „Content-MD5“-Eigenschaft des Zielblobs bzw. der Zieldatei. (Standardmäßig wird der Hash NICHT erstellt.) Nur beim Hochladen verfügbar.
 

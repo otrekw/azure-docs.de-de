@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.subservice: metrics
-ms.openlocfilehash: ca697fe0174a62532f3fa9ffbc5b3fcfc0c06ad7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 73c9b2bf8cf88ca5e8576c451c9d9ac5f0eae8a3
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321274"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639901"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Benutzerdefinierte Metriken in Azure Monitor (Vorschau)
 
@@ -26,6 +26,7 @@ Benutzerdefinierte Azure Monitor-Metriken sind aktuell in der öffentlichen Vors
 
 Benutzerdefinierte Metriken können über verschiedene Methoden an Azure Monitor übermittelt werden:
 - Instrumentieren Ihrer Anwendung mit dem Azure Application Insights SDK und Senden benutzerdefinierter Telemetriedaten an Azure Monitor 
+- Installieren Sie den Azure Monitor-Agent (Vorschau) auf Ihrer [Windows- oder Linux-Azure-VM](azure-monitor-agent-overview.md), und verwenden Sie eine [Datensammlungsregel](data-collection-rule-azure-monitor-agent.md), um Leistungsindikatoren an Azure Monitor-Metriken zu senden.
 - Installieren der WAD-Erweiterung (Windows Azure-Diagnose) auf Ihrer [Azure-VM](collect-custom-metrics-guestos-resource-manager-vm.md), [VM-Skalierungsgruppe](collect-custom-metrics-guestos-resource-manager-vmss.md), [klassischen VM](collect-custom-metrics-guestos-vm-classic.md) oder Ihrem [klassischen Clouddienst](collect-custom-metrics-guestos-vm-cloud-service-classic.md) und Senden der Leistungsindikatoren an Azure Monitor 
 - Installieren des [InfluxData Telegraf-Agents](collect-custom-metrics-linux-telegraf.md) auf Ihrer Azure-Linux-VM und Senden der Metriken mithilfe des Ausgabe-Plug-Ins von Azure Monitor
 - Senden von benutzerdefinierten Metriken [direkt an die Azure Monitor-REST-API](./metrics-store-custom-rest-api.md), `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`.

@@ -13,12 +13,12 @@ ms.date: 08/12/2020
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 06f15257148342879a164005a8f4fb302c539e67
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 6330621aac78d5e9df52f2cd3ad9c3968bb0120d
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163661"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853379"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft Identity Platform-Zertifikatanmeldeinformationen für die Anwendungsauthentifizierung
 
@@ -36,7 +36,7 @@ Für die Berechnung der Assertion können Sie eine der zahlreichen JWT-Bibliothe
 | --- | --- |
 | `alg` | Muss **RS256** sein. |
 | `typ` | Muss **JWT** sein. |
-| `x5t` | Der X.509-Zertifikathash (auch als SHA-1-*Fingerabdruck* des Zertifikats bezeichnet), der als Base64-Zeichenfolgenwert codiert ist. Bei einem X.509-Zertifikathash von `84E05C1D98BCE3A5421D225B140B36E86A3D5534` würde der `x5t`-Anspruch beispielsweise `hOBcHZi846VCHSJbFAs26Go9VTQ` lauten. |
+| `x5t` | Die als Base64-Zeichenfolgenwert codierte Hexadezimaldarstellung des X.509-Zertifikathashs (auch als SHA-1-*Fingerabdruck* des Zertifikats bezeichnet). Beim X.509-Zertifikathash `84E05C1D98BCE3A5421D225B140B36E86A3D5534` (Hexadezimaldarstellung) würde der `x5t`-Anspruch beispielsweise `hOBcHZi846VCHSJbFAs26Go9VTQ=` (Base64) lauten. |
 
 ### <a name="claims-payload"></a>Ansprüche (Nutzlast)
 

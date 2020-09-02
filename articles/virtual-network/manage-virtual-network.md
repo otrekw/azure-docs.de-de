@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 0a35576435780ee43d9f2aa99167b736f90799ab
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 5581a4c43f0b78dc8c14c44bfb1ded371a925fd0
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87265244"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88706029"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Erstellen, Ändern oder Löschen eines virtuellen Netzwerks
 
@@ -49,9 +49,8 @@ Führen Sie zuerst die folgenden Aufgaben aus, ehe Sie die Schritte in den Absch
 
      Sie können beim Erstellen des virtuellen Netzwerks im Portal zwar nur einen Adressbereich definieren, nach der Erstellung des virtuellen Netzwerks dem Adressraum jedoch weitere Adressbereiche hinzufügen. Informationen zum Hinzufügen eines Adressbereichs zu einem vorhandenen virtuellen Netzwerk finden Sie unter [Hinzufügen oder Entfernen eines Adressbereichs](#add-or-remove-an-address-range).
 
-     >[!WARNING]
-     >Wenn ein virtuelles Netzwerk Adressbereiche aufweist, die sich mit denen eines anderen virtuellen Netzwerks oder eines lokalen Netzwerks überlappen, können die beiden Netzwerke nicht verbunden werden. Bevor Sie einen Adressbereich definieren, sollten Sie das virtuelle Netzwerk zukünftig eventuell mit anderen virtuellen Netzwerken oder lokalen Netzwerken verbinden.
-     >
+     > [!WARNING]
+     > Wenn ein virtuelles Netzwerk Adressbereiche enthält, die sich mit einem anderen virtuellen Netzwerk oder einem lokalen Netzwerk überschneiden, können die beiden Netzwerke nicht verbunden werden. Bevor Sie einen Adressbereich definieren, sollten Sie das virtuelle Netzwerk zukünftig eventuell mit anderen virtuellen Netzwerken oder lokalen Netzwerken verbinden. Microsoft empfiehlt, die Adressbereiche für virtuelle Netzwerke mit einem privaten Adressraum oder einem öffentlichen Adressraum im Besitz Ihrer Organisation zu konfigurieren.
      >
 
      - **Subnetzname**: Der Subnetzname muss innerhalb des virtuellen Netzwerks eindeutig sein. Sie können den Subnetznamen nicht ändern, nachdem das Subnetz erstellt wurde. Das Portal erfordert, dass Sie bei der Erstellung eines virtuellen Netzwerks ein Subnetz definieren, obwohl ein virtuelles Netzwerk nicht unbedingt Subnetze umfassen muss. Im Portal können Sie nur ein Subnetz definieren, wenn Sie ein virtuelles Netzwerk erstellen. Sie können später weitere Subnetze zum virtuellen Netzwerk hinzufügen, nachdem das virtuelle Netzwerk erstellt wurde. Informationen zum Hinzufügen eines Subnetzes zu einem virtuellen Netzwerk finden Sie unter [Verwalten von Subnetzen](virtual-network-manage-subnet.md). Sie können über die Azure CLI oder über PowerShell ein virtuelles Netzwerk mit mehreren Subnetzen erstellen.

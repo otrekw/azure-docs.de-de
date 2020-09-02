@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: 034a49793d3a3e416f307741e49446979eb33bb3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 97541a4f8d86b90bf6045fc2a9e5abbe86aee5cd
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090449"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717335"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Load Balancer Standard-Diagnose mit Metriken, Warnungen und Ressourcenintegrität
 
@@ -25,7 +25,7 @@ Azure Load Balancer Standard bietet die folgenden Diagnosefunktionen:
 
 * **Mehrdimensionale Metriken und Warnungen**: Stellt mehrdimensionale Diagnosefunktionen über [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) für Load Balancer Standard-Konfigurationen bereit. Sie können Ihre Load Balancer Standard-Ressourcen überwachen, verwalten und hinsichtlich Fehlern behandeln.
 
-* **Ressourcenintegrität**: Die Seite „Load Balancer“ im Azure-Portal und die Seite „Ressourcenintegrität“ (unter „Monitor“) stellen den Abschnitt „Ressourcenintegrität“ für Load Balancer Standard bereit. 
+* **Ressourcenintegrität**: Der Ressourcenintegritätsstatus Ihrer Load Balancer-Instanz ist auf der Seite „Ressourcenintegrität“ unter „Monitor“ verfügbar. Diese automatische Überprüfung informiert Sie über die aktuelle Verfügbarkeit Ihrer Load Balancer-Ressource.
 
 Dieser Artikel enthält einen kurzen Überblick über diese Funktionen und zeigt Möglichkeiten auf, wie diese für Standard Load Balancer verwendet werden können. 
 
@@ -91,7 +91,7 @@ So konfigurieren Sie Warnungen:
 #### <a name="is-the-data-path-up-and-available-for-my-load-balancer-frontend"></a>Ist der Datenpfad aktiv und für mein Load Balancer-Front-End verfügbar?
 <details><summary>Expand</summary>
 
-Die Datenpfadverfügbarkeitsmetrik beschreibt die Integrität des Datenpfads innerhalb des Bereichs zu dem Computehost, auf dem sich Ihre virtuellen Computer befinden. Die Metrik reflektiert die Integrität der Azure-Infrastruktur. Anhand der Metrik können Sie:
+Die Metrik der Datenpfadverfügbarkeit beschreibt die Integrität des regionsinternen Datenpfads zu dem Computehost, auf dem sich Ihre VMs befinden. Die Metrik reflektiert die Integrität der Azure-Infrastruktur. Anhand der Metrik können Sie:
 - Die externe Verfügbarkeit Ihres Diensts überwachen
 - Tiefer einsteigen und ermitteln, ob die Plattform, auf der Ihr Dienst bereitgestellt wird, fehlerfrei ist, oder ob Ihr Gastbetriebssystem oder die Anwendungsinstanz fehlerfrei ist.
 - Bestimmen, ob sich ein Ereignis auf Ihren Dienst oder die zugrunde liegende Datenebene bezieht. Verwechseln Sie diese Metrik nicht mit dem Integritätsteststatus („Back-End-Instanzverfügbarkeit“).
@@ -110,7 +110,7 @@ Die Metrik wird durch eine aktive bandinterne Messung generiert. Ein Sondierungs
 
 Ein Paket, das dem Front-End und der Regel Ihrer Bereitstellung entspricht, wird regelmäßig generiert. Es durchläuft die Region von der Quelle bis zu dem Host, auf dem sich ein virtueller Computer im Back-End-Pool befindet. Die Load Balancer-Infrastruktur führt dieselben Lastenausgleichs- und Übersetzungsvorgänge aus, wie sie dies für jeden anderen Datenverkehr tut. Diese Sondierung erfolgt bandintern auf Ihrem Endpunkt mit Lastenausgleich. Sobald der Test (Sondierung) auf dem Computehost eingeht, auf dem sich ein fehlerfreier virtueller Computer im Back-End-Pool befindet, generiert der Computehost eine Antwort an den Sondierungsdienst. Ihr virtueller Computer „sieht“ diesen Datenverkehr nicht.
 
-Datenpfadverfügbarkeit kann aus folgenden Gründen fehlschlagen:
+Fehler bei der Datenpfadverfügbarkeit aus folgenden Gründen:
 - Ihre Bereitstellung hat keine fehlerfreien virtuellen Computer, die im Back-End-Pool verblieben sind. 
 - Es ist ein Infrastrukturausfall aufgetreten.
 
@@ -155,14 +155,14 @@ So rufen Sie SNAT-Verbindungsstatistiken ab
 #### <a name="how-do-i-check-my-snat-port-usage-and-allocation"></a>Wie überprüfe ich die Verwendung und Zuordnung meines SNAT-Ports?
 <details>
   <summary>Expand</summary>
-Die Metrik zur SNAT-Verwendung gibt an, wie viele eindeutige Flows zwischen einer Internetquelle und einer Back-End-VM oder einer VM-Skalierungsgruppe eingerichtet werden, die sich hinter einem Lastenausgleicher befinden und keine öffentliche IP-Adresse besitzen. Durch den Vergleich mit der SNAT-Zuordnungsmetrik können Sie feststellen, ob Ihr Dienst eine Auslastung des SNAT und einen daraus resultierenden ausgehenden Flowfehler erlebt oder ein entsprechendes Risiko besteht. 
+Die Metrik „Verwendete SNAT-Ports“ verfolgt nach, wie viele SNAT-Ports für ausgehende Flows genutzt werden. Diese Metrik gibt an, wie viele eindeutige Flows zwischen einer Internetquelle und einer Back-End-VM oder einer VM-Skalierungsgruppe eingerichtet werden, die sich hinter einem Lastenausgleichsmodul befindet und keine öffentliche IP-Adresse besitzt. Durch Vergleich der Anzahl von verwendeten SNAT-Ports mit der Metrik der zugeordneten SNAT-Ports können Sie feststellen, ob eine SNAT-Überlastung (oder ein entsprechendes Risiko) für Ihren Dienst besteht, die zu Fehlern bei ausgehenden Flows führen kann. 
 
 Wenn Ihre Metriken auf das Risiko eines [ausgehenden Flowfehlers](https://aka.ms/lboutbound) hinweisen, verweisen Sie auf den Artikel und unternehmen Sie Schritte, um dies zu minimieren, um die Dienstintegrität sicherzustellen.
 
 So zeigen Sie die Verwendung und Zuordnung von SNAT-Ports an
 1. Legen Sie die Zeitaggregation des Diagramms auf eine Minute fest, um sicherzustellen, dass die gewünschten Daten angezeigt werden.
-1. Wählen Sie **SNAT Usage** und/oder **SNAT Allocation** als Metriktyp und **Average** (Durchschnitt) als Aggregation aus.
-    * Standardmäßig ist dies die durchschnittliche Anzahl der SNAT-Ports, die den einzelnen Back-End-VM- oder VMSS-Instanzen zugewiesen oder von diesen verwendet werden, entsprechend aller öffentlichen Front-End-IP-Adressen, die der Load Balancer-Instanz zugeordnet sind, aggregiert über TCP und UDP.
+1. Wählen Sie **Verwendete SNAT-Ports** und/oder **Zugeordnete SNAT-Ports** als Metriktyp und **Durchschnitt** als Aggregation aus.
+    * Standardmäßig stellen diese Metriken die durchschnittliche Anzahl der SNAT-Ports dar, die den einzelnen Back-End-VM- oder VMSS-Instanzen zugewiesen sind oder von diesen verwendet werden, entsprechend aller öffentlichen Front-End-IP-Adressen, die der Load Balancer-Instanz zugeordnet sind, aggregiert über TCP und UDP.
     * Verwenden Sie zum Anzeigen der gesamten SNAT-Ports, die von der Load Balancer-Instanz verwendet oder ihr zugeordnet wurden, die Metrikaggregation **Summe**.
 1. Filtern Sie nach einem bestimmten **Protokolltyp**, einer Reihe von **Back-End-IP-Adressen** und/oder **Front-End-IP-Adressen**.
 1. Um die Integrität pro Back-End- oder Front-End-Instanz zu überwachen, wenden Sie die Teilung an. 
@@ -252,13 +252,14 @@ So zeigen Sie die Integrität Ihrer öffentlichen Standard Load Balancer-Ressour
 
    *Abbildung: Load Balancer-Integritätsanzeige für Ressource*
  
-In der folgenden Tabelle sind die verschiedenen Ressourcenintegritätsstatus und deren Beschreibungen aufgeführt: 
+Eine generische Beschreibung des Ressourcenintegritätsstatus finden Sie in der [Dokumentation zu Resource Health](https://docs.microsoft.com/azure/service-health/resource-health-overview). Bestimmte Status für Azure Load Balancer sind in der folgenden Tabelle aufgeführt: 
 
 | Ressourcenintegritätsstatus | BESCHREIBUNG |
 | --- | --- |
 | Verfügbar | Ihre Load Balancer Standard-Ressource ist fehlerfrei und verfügbar. |
-| Nicht verfügbar | Ihre Load Balancer Standard-Ressource ist nicht fehlerfrei. Wählen Sie **Azure Monitor** > **Metriken** aus, um eine Diagnose der Integrität auszuführen.<br>(Der Status *Nicht verfügbar* kann auch bedeuten, dass die Ressource nicht mit Ihrem Load Balancer Standard verbunden ist.) |
-| Unknown | Der Ressourcenintegritätsstatus für Ihre Load Balancer Standard-Ressource wurde noch nicht aktualisiert.<br>(Der Status *Unbekannt* kann auch bedeuten, dass die Ressource nicht mit Ihrem Load Balancer Standard verbunden ist.)  |
+| Heruntergestuft | Für die Load Balancer Standard-Instanz liegen plattform- oder benutzerseitig initiierte Ereignisse vor, die sich auf die Leistung auswirken. Die Metrik für die Datenpfadverfügbarkeit hat mindestens zwei Minuten lang weniger als 90 %, aber mehr als 25 %Integrität gemeldet. Es treten mittlere bis schwerwiegende Leistungsbeeinträchtigungen auf. [Lesen Sie den Leitfaden zur Behandlung von Problemen mit der Datenpfadverfügbarkeit], um zu ermitteln, ob benutzerseitig initiierte Ereignisse vorliegen, die sich auf die Verfügbarkeit auswirken.
+| Nicht verfügbar | Ihre Load Balancer Standard-Ressource ist nicht fehlerfrei. Die Metrik für die Datenpfadverfügbarkeit hat mindestens zwei Minuten lang weniger als 25 % Integrität gemeldet. Leistung und Verfügbarkeit für eingehende Verbindungen sind erheblich beeinträchtigt. Möglicherweise liegen Benutzer- oder Plattformereignisse vor, die eine Nichtverfügbarkeit verursachen. [Lesen Sie den Leitfaden zur Behandlung von Problemen mit der Datenpfadverfügbarkeit], um zu ermitteln, ob benutzerseitig initiierte Ereignisse vorliegen, die sich auf die Verfügbarkeit auswirken. |
+| Unbekannt | Der Ressourcenintegritätsstatus Ihrer Load Balancer Standard-Ressource wurde noch nicht aktualisiert oder hat in den letzten 10 Minuten keine Informationen zur Datenpfadverfügbarkeit empfangen. Dieser Zustand sollte vorübergehend sein. Der korrekte Status wird angegeben, sobald Daten empfangen werden. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

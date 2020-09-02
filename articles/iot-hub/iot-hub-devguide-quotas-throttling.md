@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-ms.openlocfilehash: bee22391664250888816dc2b4bbb93622cab7942
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: ec8d277de177942386d9f3becdf329cdff1ca812
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87335561"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797801"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referenz: IoT Hub-Kontingente und -Drosselung
 
@@ -111,7 +111,8 @@ IoT Hub erzwingt andere Funktionsbegrenzungen:
 | Automatische Geräte- und Modulkonfigurationen<sup>1</sup> | 100 Konfigurationen pro kostenpflichtigem SKU-Hub. 20 Konfigurationen pro kostenfreiem SKU-Hub. |
 | Automatische IoT Edge-Bereitstellungen<sup>1</sup> | 50 Module pro Bereitstellung 100 Bereitstellungen (einschließlich geschichteter Bereitstellungen) pro kostenpflichtigem SKU-Hub. 10 Bereitstellungen pro kostenfreiem SKU-Hub. |
 | Zwillinge<sup>1</sup> | Die maximale Größe der Abschnitte für gewünschte Eigenschaften und gemeldete Eigenschaften beträgt jeweils 32 KB. Die maximale Größe des Tagabschnitts beträgt 8 KB. |
-| Freigegebene Zugriffsrichtlinien | Die maximale Anzahl von Shared Access-Richtlinien beträgt 16. |
+| Freigegebene Zugriffsrichtlinien | Die maximale Anzahl von SAS-Richtlinien beträgt 16. |
+| X.509-Zertifizierungsstellenzertifikate | Die maximale Anzahl von X.509-Zertifizierungsstellenzertifikaten, die bei IoT Hub registriert werden können, beträgt 25. |
 
 <sup>1</sup>Dieses Feature ist im Tarif „Basic“ von IoT Hub nicht verfügbar. Weitere Informationen finden Sie unter [Wählen des richtigen IoT Hub-Tarifs für Ihre Lösung](iot-hub-scaling.md).
 

@@ -4,12 +4,12 @@ description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und 
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 5871e61229277d8036727c11b42d9d7a061bad99
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 9b0698b16d3432c1bfefd3cf909cdfdf5529200e
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612519"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892183"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Supportmatrix für Azure Backup
 
@@ -135,7 +135,7 @@ Azure Backup unterstützt die Komprimierung des Sicherungsdatenverkehrs. In der 
 
 **Einstellung** | **Einschränkungen**
 --- | ---
-**Maximale Wiederherstellungspunkte pro geschützter Instanz (Computer oder Workload)** | 9\.999
+**Maximale Anzahl von Wiederherstellungspunkten pro geschützter Instanz (Computer oder Workload)** | 9\.999
 **Maximale Ablaufzeit für einen Wiederherstellungspunkt** | Keine Begrenzung
 **Maximale Sicherungshäufigkeit für DPM/MABS** | Alle 15 Minuten für SQL Server<br/><br/> Stündlich für andere Workloads
 **Maximale Sicherungshäufigkeit für Tresor** | **Lokale Windows-Computer oder Azure-VMs mit dem MARS-Agent:** Dreimal pro Tag<br/><br/> **DPM/MABS:** Zweimal pro Tag<br/><br/> **Azure VM-Sicherung:** Einmal pro Tag
@@ -145,7 +145,7 @@ Azure Backup unterstützt die Komprimierung des Sicherungsdatenverkehrs. In der 
 
 ## <a name="cross-region-restore"></a>Regionsübergreifende Wiederherstellung
 
-Azure Backup hat das Feature zur regionsübergreifenden Wiederherstellung hinzugefügt, um Datenverfügbarkeit und Resilienz zu verbessern, sodass Kunden vollständige Kontrolle über die Wiederherstellung von Daten in einer sekundären Region haben. Weitere Informationen zu diesem Feature finden Sie im Artikel [Festlegen der regionsübergreifenden Wiederherstellung](backup-create-rs-vault.md#set-cross-region-restore). Dieses Feature wird für die folgenden Verwaltungstypen unterstützt:
+In Azure Backup wurde ein Feature zur regionsübergreifenden Wiederherstellung hinzugefügt, um die Datenverfügbarkeit und Resilienz zu verbessern. Damit erhalten Sie die vollständige Kontrolle und können Daten in einer sekundären Region wiederherstellen. Weitere Informationen zu diesem Feature finden Sie im Artikel [Festlegen der regionsübergreifenden Wiederherstellung](backup-create-rs-vault.md#set-cross-region-restore). Dieses Feature wird für die folgenden Verwaltungstypen unterstützt:
 
 | Sicherungsverwaltungstyp | Unterstützt                                                    | Unterstützte Regionen |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |

@@ -17,12 +17,12 @@ ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81daa7696c645c1353cdd5e6d3cbca90ac4f03da
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 6440e71eade32bfea4ed19448fd2f2007b519cc8
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87388117"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816081"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal
 
@@ -47,11 +47,7 @@ In diesem Artikel erhalten Sie einen Überblick über den Bericht zu Anmeldeakti
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>Welche Azure AD-Lizenz benötigen Sie für den Zugriff auf die Anmeldeaktivität?
 
-- Der Bericht mit den Anmeldeaktivitäten ist in [allen Editionen von Azure AD](reference-reports-data-retention.md#how-long-does-azure-ad-store-the-data) verfügbar.
-
-- Wenn Sie über eine API auf die Anmeldedaten zugreifen möchten, muss Ihrem Mandanten eine [Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md)-Lizenz zugeordnet sein.
-
-
+Der Bericht zu Anmeldeaktivitäten ist in [allen Editionen von Azure AD](reference-reports-data-retention.md#how-long-does-azure-ad-store-the-data) verfügbar, und Sie können auch über die Microsoft Graph-API darauf zugreifen.
 
 ## <a name="sign-ins-report"></a>Bericht zu Anmeldeaktivitäten
 

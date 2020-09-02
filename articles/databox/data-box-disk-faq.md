@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 8a0b3a91d9af119191717aa63a2dedf0797159fd
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: f2231b74034ba6cea672a7bbf68f506fce423d45
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745794"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826139"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: Häufig gestellte Fragen
 
@@ -56,8 +56,25 @@ A.  Unter [Regionale Verfügbarkeit](data-box-disk-overview.md#region-availabili
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>Q. In welchen Regionen kann ich Daten über Data Box-Datenträger speichern?
 A. Data Box Disk wird für alle Regionen in den USA, Kanada, Australien, Westeuropa und Nordeuropa sowie Korea und Japan unterstützt. Es werden nur die öffentlichen Azure-Cloudregionen unterstützt. Azure Government oder andere Sovereign Clouds werden nicht unterstützt.
 
-### <a name="q-will-my-data-box-disk-cross-countryregion-borders-during-shipping"></a>Q. Überquert mein Data Box-Datenträger beim Versand Länder-/Regionsgrenzen?
-A. Data Box-Datenträger werden aus demselben Land/derselben Region wie ihr Ziel versendet und überqueren keine internationalen Grenzen. Die einzige Ausnahme betrifft Bestellungen innerhalb der Europäischen Union (EU). Dort können Datenträger in und aus beliebige(n) EU-Länder(n) bzw. EU-Regionen gesendet werden.
+### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>Q. In welchen Regionen kann ich Daten über Data Box-Datenträger speichern?
+A. Data Box Disk wird für alle Regionen in den USA, Kanada, Australien, Westeuropa und Nordeuropa sowie Korea und Japan unterstützt. Es werden nur die öffentlichen Azure-Cloudregionen unterstützt. Azure Government oder andere Sovereign Clouds werden nicht unterstützt.
+
+### <a name="q-how-can-i-import-source-data-present-at-my-location-in-one-countryregion-to-an-azure-region-in-a-different-country"></a>Q. Wie kann ich Quelldaten, die sich an einem Standort in einem Land bzw. einer Region befinden, in eine Azure-Region in einem anderen Land importieren?
+A. Data Box Disk unterstützt die Datenerfassung nur innerhalb desselben Landes/derselben Region, in dem bzw. der sich auch das Ziel befindet. Internationale Grenzen werden nicht überquert. Die einzige Ausnahme betrifft Bestellungen innerhalb der Europäischen Union. Dort können Data Box Disks in und aus beliebige(n) EU-Länder(n) bzw. EU-Regionen gesendet werden.
+
+Wenn Sie beispielsweise Daten von Ihrem Standort in Kanada in ein Speicherkonto in der Azure-Region „USA, Westen“ verlagern möchten, könnten Sie folgendermaßen vorgehen:
+
+### <a name="option-1"></a>Option 1: 
+
+Senden Sie einen [unterstützten Datenträger](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements?toc=/azure/storage/blobs/toc.json#supported-disks) mit Daten über den [Azure Import/Export-Dienst](https://docs.microsoft.com/azure/storage/common/storage-import-export-service) vom Quellstandort in Kanada an das Azure-Rechenzentrum in „USA, Westen“.
+
+### <a name="option-2"></a>Option 2:
+
+1. Bestellen Sie Data Box Disk in Kanada, indem Sie ein Speicherkonto beispielsweise in „Kanada, Mitte“ auswählen. Die SSD-Datenträger werden vom Azure-Rechenzentrum in „Kanada, Mitte“ an die Lieferadresse (in Kanada) gesendet, die bei Auftragserstellung angegeben wurde.
+
+2. Nachdem die Daten von Ihrem lokalen Server auf die Datenträger kopiert wurden, senden Sie die Datenträger zurück an das Azure-Rechenzentrum in Kanada. Verwenden Sie dabei die von Microsoft bereitgestellten Rücksendeetiketten. Die Daten auf den Data Box Disk-Datenträgern werden dann in das Zielspeicherkonto in Azure Kanada hochgeladen, das während der Auftragserstellung ausgewählt wurde.
+
+3. Anschließend können Sie mithilfe eines Tools wie AzCopy die Daten in ein Speicherkonto in „USA, Westen“ kopieren. Bei diesem Schritt fallen Kosten für [Standardspeicher](https://azure.microsoft.com/pricing/details/storage/) und [Bandbreite](https://azure.microsoft.com/pricing/details/bandwidth/) an, die in der Data Box Disk-Abrechnung nicht enthalten sind.
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>Q. An wen sollte ich mich wenden, falls Probleme mit Data Box-Datenträgern auftreten?
 A. Falls Probleme mit Data Box-Datenträgern auftreten, wenden Sie sich an den [Microsoft-Support](https://docs.microsoft.com/azure/databox/data-box-disk-contact-microsoft-support).

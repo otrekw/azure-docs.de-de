@@ -3,12 +3,12 @@ title: 'Übersicht über die Features: Azure Event Hubs | Microsoft-Dokumentatio
 description: Dieser Artikel enthält Details zu Features und Terminologie von Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 2de83be023c32df067712146937f880092025a44
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 9e004b3a8a9dd454eae5a20564a1ab74a26b66d5
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172124"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936230"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Features und Terminologie in Azure Event Hubs
 
@@ -37,7 +37,7 @@ Sie können ein Ereignis über AMQP 1.0, Kafka 1.0 (und höher) oder HTTPS verö
 
 Die Wahl zwischen AMQP oder HTTPS ist auf das Verwendungsszenario bezogen. AMQP erfordert die Einrichtung eines persistenten bidirektionalen Sockets zusätzlich zu TLS (Transport Level Security) oder SSL/TLS. AMQP weist höhere Netzwerkkosten beim Initialisieren der Sitzung auf, HTTPS erfordert jedoch zusätzlichen TLS-Mehraufwand für jede Anforderung. AMQP verfügt über eine höhere Leistung für häufige Herausgeber.
 
-![Event Hubs](./media/event-hubs-features/partition_keys.png)
+![Partitionsschlüssel](./media/event-hubs-features/partition_keys.png)
 
 Event Hubs stellt sicher, dass alle Ereignisse mit dem gleichen Partitionsschlüsselwert in der richtigen Reihenfolge und an die gleiche Partition übermittelt werden. Wenn Partitionsschlüssel mit Herausgeberrichtlinien verwendet werden, müssen die Identität des Herausgebers und der Wert des Partitionsschlüssels übereinstimmen. Andernfalls tritt ein Fehler auf.
 
@@ -86,13 +86,13 @@ Nachstehend finden Sie einige Beispiele für die URI-Konvention für Consumergru
 
 Die folgende Abbildung zeigt die Datenstromverarbeitungsarchitektur von Event Hubs:
 
-![Event Hubs](./media/event-hubs-features/event_hubs_architecture.png)
+![Event Hubs-Architektur](./media/event-hubs-features/event_hubs_architecture.png)
 
 ### <a name="stream-offsets"></a>Streamoffsets
 
 Ein *Offset* ist die Position eines Ereignisses innerhalb einer Partition. Sie können sich einen Offset als einen clientseitigen Zeiger vorstellen. Der Offset ist eine Nummerierung des Ereignisses in Byte. Dieser Offset ermöglicht es Ereignisconsumern (Lesern), einen Punkt im Ereignisstream anzugeben, ab dem Ereignisse gelesen werden sollen. Sie können den Offset als Zeitstempel oder als Offsetwert angeben. Es liegt in der Verantwortung jedes Consumers, seine eigenen Offsetwerte außerhalb des Event Hubs-Diensts zu speichern. Innerhalb einer Partition enthält jedes Ereignis einen Offset.
 
-![Event Hubs](./media/event-hubs-features/partition_offset.png)
+![Partitionsoffset](./media/event-hubs-features/partition_offset.png)
 
 ### <a name="checkpointing"></a>Setzen von Prüfpunkten
 
@@ -138,10 +138,10 @@ Die Verwaltung des Offsets liegt in Ihrer Verantwortung.
 Weitere Informationen zu Event Hubs erhalten Sie unter den folgenden Links:
 
 - Erste Schritte mit Event Hubs
-    - [.NET](get-started-dotnet-standard-send-v2.md)
-    - [Java](get-started-java-send-v2.md)
-    - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-java-send-v2.md)
+    - [.NET](event-hubs-dotnet-standard-getstarted-send.md)
+    - [Java](event-hubs-java-get-started-send.md)
+    - [Python](event-hubs-python-get-started-send.md)
+    - [JavaScript](event-hubs-java-get-started-send.md)
 * [Programmierleitfaden für Event Hubs](event-hubs-programming-guide.md)
 * [Verfügbarkeit und Konsistenz in Event Hubs](event-hubs-availability-and-consistency.md)
 * [Event Hubs – häufig gestellte Fragen](event-hubs-faq.md)

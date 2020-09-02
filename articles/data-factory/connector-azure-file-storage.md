@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/18/2020
-ms.openlocfilehash: be12393591d534b4141594439f0409d0db331bd0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.date: 08/21/2020
+ms.openlocfilehash: 135993a39a3b06bdabfff4a219df92d41c736a51
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522673"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718253"
 ---
 # <a name="copy-data-from-or-to-azure-file-storage-by-using-azure-data-factory"></a>Kopieren von Daten aus bzw. in Azure File Storage mithilfe von Azure Data Factory
 
@@ -33,7 +33,12 @@ Dieser Azure File Storage-Connector wird für die folgenden Aktivitäten unterst
 - [GetMetadata-Aktivität](control-flow-get-metadata-activity.md)
 - [Delete-Aktivität](delete-activity.md)
 
-Dieser Azure File Storage-Connector unterstützt insbesondere das Kopieren von Dateien im unveränderten Zustand sowie das Analysieren/Generieren von Dateien mit den [unterstützten Dateiformaten und Codecs für die Komprimierung](supported-file-formats-and-compression-codecs.md).
+Sie können Daten aus Azure File Storage in einen beliebigen unterstützten Senkendatenspeicher bzw. Daten aus einem beliebigen unterstützten Quelldatenspeicher in Azure File Storage kopieren. Eine Liste der Datenspeicher, die die Kopieraktivität als Quellen und Senken unterstützt, finden Sie unter [Unterstützte Datenspeicher und Formate](copy-activity-overview.md#supported-data-stores-and-formats).
+
+Dieser Azure File Storage-Connector unterstützt insbesondere Folgendes:
+
+- Kopieren von Dateien mithilfe der Authentifizierung per Kontoschlüssel oder per Dienst-SAS (Shared Access Signature).
+- Kopieren von Dateien im jeweiligen Zustand oder Analysieren bzw. Generieren von Dateien mit den [unterstützten Dateiformaten und Codecs für die Komprimierung](supported-file-formats-and-compression-codecs.md)
 
 ## <a name="getting-started"></a>Erste Schritte
 
@@ -43,7 +48,139 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren 
 
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
 
-Folgende Eigenschaften werden für den mit Azure File Storage verknüpften Dienst unterstützt:
+Dieser Azure File Storage-Connector unterstützt die folgenden Authentifizierungstypen. Weitere Informationen finden Sie in den entsprechenden Abschnitten.
+
+- [Kontoschlüsselauthentifizierung](#account-key-authentication)
+- [SAS-Authentifizierung (Shared Access Signature)](#shared-access-signature-authentication)
+
+>[!NOTE]
+> Sie können den verknüpften Azure File Storage-Dienst mit einem [Legacymodell](#legacy-model) verwenden, in dem auf der Benutzeroberfläche zum Erstellen einer ADF die „Standardauthentifizierung“ angezeigt wird. Dies wird unverändert unterstützt, es wird jedoch empfohlen, in Zukunft das neue Modell zu verwenden. Das Legacymodell überträgt Daten an den bzw. aus dem Speicher über SMB (Server Message Block), während das neue Modell das Speicher-SDK verwendet, das einen besseren Durchsatz aufweist. Um ein Upgrade durchzuführen, können Sie den verknüpften Dienst bearbeiten und die Authentifizierungsmethode in „Kontoschlüssel“ oder „SAS-URI“ ändern. Für das Dataset und die Kopieraktivität sind keine Änderungen erforderlich.
+
+### <a name="account-key-authentication"></a>Kontoschlüsselauthentifizierung
+
+Data Factory unterstützt die folgenden Eigenschaften für die Kontoschlüsselauthentifizierung von Azure File Storage:
+
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
+|:--- |:--- |:--- |
+| type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **AzureFileStorage**. | Ja |
+| connectionString | Geben Sie die zum Verbinden mit Azure File Storage erforderlichen Informationen an. <br/> Sie können auch den Kontoschlüssel in Azure Key Vault speichern und die `accountKey`-Konfiguration aus der Verbindungszeichenfolge pullen. Weitere Informationen finden Sie in den folgenden Beispielen und im Artikel [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). |Ja |
+| fileShare | Geben Sie die Dateifreigabe an. | Ja |
+| Momentaufnahme | Geben Sie das Datum der [Dateifreigabe-Momentaufnahme](../storage/files/storage-snapshots-files.md) an, wenn die Kopie von einer Momentaufnahme erstellt werden soll. | Nein |
+| connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die Azure-Integrationslaufzeit oder selbstgehostete Integrationslaufzeit verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
+
+**Beispiel:**
+
+```json
+{
+    "name": "AzureFileStorageLinkedService",
+    "properties": {
+        "type": "AzureFileStorage",
+        "typeProperties": {
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountName>;AccountKey=<accountKey>;EndpointSuffix=core.windows.net;",
+            "fileShare": "<file share name>"
+        },
+        "connectVia": {
+          "referenceName": "<name of Integration Runtime>",
+          "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+**Beispiel: Speichern des Kontoschlüssels in Azure Key Vault**
+
+```json
+{
+    "name": "AzureFileStorageLinkedService",
+    "properties": {
+        "type": "AzureFileStorage",
+        "typeProperties": {
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;",
+            "fileShare": "<file share name>",
+            "accountKey": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }            
+    }
+}
+```
+
+### <a name="shared-access-signature-authentication"></a>SAS-Authentifizierung (Shared Access Signature)
+
+Shared Access Signatures bieten delegierten Zugriff auf Ressourcen in Ihrem Speicherkonto. Sie können eine SAS verwenden, um einem Client für einen bestimmten Zeitraum eingeschränkte Berechtigungen für Objekte in Ihrem Speicherkonto zu gewähren. Weitere Informationen zu Shared Access Signatures finden Sie unter [Shared Access Signatures (SAS): Verstehen des Shared Access Signature-Modells](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+
+Data Factory unterstützt die folgenden Eigenschaften für die Verwendung der SAS-Authentifizierung:
+
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
+|:--- |:--- |:--- |
+| type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **AzureFileStorage**. | Ja |
+| sasUri | Geben Sie den SAS-URI zur den Ressourcen an. <br/>Markieren Sie dieses Feld als **SecureString**, um es sicher in Data Factory zu speichern. Sie können auch das SAS-Token in Azure Key Vault speichern, um die automatische Rotation zu nutzen und den Tokenabschnitt zu entfernen. Weitere Informationen finden Sie in den folgenden Beispielen sowie unter [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
+| fileShare | Geben Sie die Dateifreigabe an. | Ja |
+| Momentaufnahme | Geben Sie das Datum der [Dateifreigabe-Momentaufnahme](../storage/files/storage-snapshots-files.md) an, wenn die Kopie von einer Momentaufnahme erstellt werden soll. | Nein |
+| connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die Azure-Integrationslaufzeit oder selbstgehostete Integrationslaufzeit verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
+
+**Beispiel:**
+
+```json
+{
+    "name": "AzureFileStorageLinkedService",
+    "properties": {
+        "type": "AzureFileStorage",
+        "typeProperties": {
+            "sasUri": {
+                "type": "SecureString",
+                "value": "<SAS URI of the resource e.g. https://<accountname>.file.core.windows.net/?sv=<storage version>&st=<start time>&se=<expire time>&sr=<resource>&sp=<permissions>&sip=<ip range>&spr=<protocol>&sig=<signature>>"
+            },
+            "fileShare": "<file share name>",
+            "snapshot": "<snapshot version>"
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+**Beispiel: Speichern des Kontoschlüssels in Azure Key Vault**
+
+```json
+{
+    "name": "AzureFileStorageLinkedService",
+    "properties": {
+        "type": "AzureFileStorage",
+        "typeProperties": {
+            "sasUri": {
+                "type": "SecureString",
+                "value": "<SAS URI of the Azure Storage resource without token e.g. https://<accountname>.file.core.windows.net/>"
+            },
+            "sasToken": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName with value of SAS token e.g. ?sv=<storage version>&st=<start time>&se=<expire time>&sr=<resource>&sp=<permissions>&sip=<ip range>&spr=<protocol>&sig=<signature>>" 
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="legacy-model"></a>Legacymodell
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
@@ -52,13 +189,6 @@ Folgende Eigenschaften werden für den mit Azure File Storage verknüpften Diens
 | userid | Geben Sie den Benutzer für den Zugriff auf Azure File Storage an als: <br/>– Unter Verwendung der Benutzeroberfläche: Geben Sie `AZURE\<storage name>` an.<br/>– Unter Verwendung von JSON: `"userid": "AZURE\\<storage name>"`. | Ja |
 | password | Geben Sie den Speicherzugriffsschlüssel an. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 | connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die Azure-Integrationslaufzeit oder selbstgehostete Integrationslaufzeit verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Quelle: Nein, Senke: Ja |
-
->[!IMPORTANT]
-> - Wenn Sie Daten unter Verwendung von Azure Integration Runtime in Azure File Storage kopieren möchten, [erstellen Sie explizit eine Azure-IR](create-azure-integration-runtime.md#create-azure-ir) mit dem Standort Ihres File Storage-Diensts, und konfigurieren Sie die Zuordnung wie im folgenden Beispiel.
-> - Wenn Sie Daten unter Verwendung einer selbstgehosteten Integration Runtime außerhalb von Azure aus/in Azure File Storage kopieren möchten, vergessen Sie nicht, den ausgehenden TCP-Port 445 in Ihrem lokalen Netzwerk zu öffnen.
-
->[!TIP]
->Wenn Sie die Benutzeroberfläche der Anwendungsdefinitionsdatei für die Dokumenterstellung verwenden, finden Sie den spezifischen Eintrag für „Azure File Storage“ zum Erstellen eines verknüpften Diensts, der darunter ein Objekt vom Typ `FileServer` generiert.
 
 **Beispiel:**
 
@@ -138,12 +268,13 @@ Folgende Eigenschaften werden für Azure File Storage unter `storeSettings`-Eins
 | type                     | Die „type“-Eigenschaft unter `storeSettings` muss auf **FileServerReadSettings** festgelegt werden. | Ja                                           |
 | ***Suchen Sie die zu kopierenden Dateien:*** |  |  |
 | OPTION 1: statischer Pfad<br> | Kopieren Sie aus dem im Dataset angegebenen Ordner/Dateipfad. Wenn Sie alle Dateien aus einem Ordner kopieren möchten, geben Sie zusätzlich für `wildcardFileName` den Wert `*` an. |  |
-| OPTION 2: Platzhalter<br>– wildcardFolderPath | Der Ordnerpfad mit Platzhalterzeichen, um Quellordner zu filtern. <br>Zulässige Platzhalter sind: `*` (entspricht null oder mehr Zeichen) und `?` (entspricht null oder einem einzelnen Zeichen). Verwenden Sie `^` als Escapezeichen, wenn Ihr tatsächlicher Dateiname einen Platzhalter oder dieses Escapezeichen enthält. <br>Weitere Beispiele finden Sie unter [Beispiele für Ordner- und Dateifilter](#folder-and-file-filter-examples). | Nein                                            |
-| OPTION 2: Platzhalter<br>– wildcardFileName | Der Dateiname mit Platzhalterzeichen unter dem angegebenen „folderPath/wildcardFolderPath“ für das Filtern von Quelldateien. <br>Zulässige Platzhalter sind: `*` (entspricht null oder mehr Zeichen) und `?` (entspricht null oder einem einzelnen Zeichen). Verwenden Sie `^` als Escapezeichen, wenn Ihr tatsächlicher Dateiname einen Platzhalter oder dieses Escapezeichen enthält.  Weitere Beispiele finden Sie unter [Beispiele für Ordner- und Dateifilter](#folder-and-file-filter-examples). | Ja |
-| OPTION 3: eine Liste von Dateien<br>– fileListPath | Gibt an, dass eine bestimmte Dateigruppe kopiert werden soll. Verweisen Sie auf eine Textdatei, die eine Liste der zu kopierenden Dateien enthält, und zwar eine Datei pro Zeile. Dies ist der relative Pfad zu dem im Dataset konfigurierten Pfad.<br/>Wenn Sie diese Option verwenden, dürfen Sie keinen Dateinamen im Dataset angeben. Weitere Beispiele finden Sie unter [Beispiele für Dateilisten](#file-list-examples). |Nein |
+| OPTION 2: Dateipräfix<br>– prefix | Präfix für den Dateinamen in der angegebenen Dateifreigabe, die in einem Dataset zum Filtern von Quelldateien konfiguriert ist. Es werden Dateien ausgewählt, deren Namen mit `fileshare_in_linked_service/this_prefix` beginnen. Für Azure File Storage wird der dienstseitige Filter verwendet, dessen Leistung besser ist als die eines Platzhalterfilters. Dieses Feature wird bei Verwendung eines [verknüpften Legacydienstmodells](#legacy-model) nicht unterstützt. | Nein                                                          |
+| OPTION 3: Platzhalter<br>– wildcardFolderPath | Der Ordnerpfad mit Platzhalterzeichen, um Quellordner zu filtern. <br>Zulässige Platzhalter sind: `*` (entspricht null oder mehr Zeichen) und `?` (entspricht null oder einem einzelnen Zeichen). Verwenden Sie `^` als Escapezeichen, wenn Ihr tatsächlicher Dateiname einen Platzhalter oder dieses Escapezeichen enthält. <br>Weitere Beispiele finden Sie unter [Beispiele für Ordner- und Dateifilter](#folder-and-file-filter-examples). | Nein                                            |
+| OPTION 3: Platzhalter<br>– wildcardFileName | Der Dateiname mit Platzhalterzeichen unter dem angegebenen „folderPath/wildcardFolderPath“ für das Filtern von Quelldateien. <br>Zulässige Platzhalter sind: `*` (entspricht null oder mehr Zeichen) und `?` (entspricht null oder einem einzelnen Zeichen). Verwenden Sie `^` als Escapezeichen, wenn Ihr tatsächlicher Dateiname einen Platzhalter oder dieses Escapezeichen enthält.  Weitere Beispiele finden Sie unter [Beispiele für Ordner- und Dateifilter](#folder-and-file-filter-examples). | Ja |
+| OPTION 4: eine Liste von Dateien<br>– fileListPath | Gibt an, dass eine bestimmte Dateigruppe kopiert werden soll. Verweisen Sie auf eine Textdatei, die eine Liste der zu kopierenden Dateien enthält, und zwar eine Datei pro Zeile. Dies ist der relative Pfad zu dem im Dataset konfigurierten Pfad.<br/>Wenn Sie diese Option verwenden, dürfen Sie keinen Dateinamen im Dataset angeben. Weitere Beispiele finden Sie unter [Beispiele für Dateilisten](#file-list-examples). |Nein |
 | ***Zusätzliche Einstellungen:*** |  | |
 | recursive | Gibt an, ob die Daten rekursiv aus den Unterordnern oder nur aus dem angegebenen Ordner gelesen werden. Beachten Sie Folgendes: Wenn „recursive“ auf „true“ festgelegt ist und es sich bei der Senke um einen dateibasierten Speicher handelt, wird ein leerer Ordner oder Unterordner nicht in die Senke kopiert und dort auch nicht erstellt. <br>Zulässige Werte sind **true** (Standard) und **false**.<br>Diese Eigenschaft gilt nicht, wenn Sie `fileListPath` konfigurieren. |Nein |
-| deleteFilesAfterCompletion | Gibt an, ob die Binärdateien nach dem erfolgreichen Verschieben in den Zielspeicher aus dem Quellspeicher gelöscht werden. Die Dateien werden einzeln gelöscht, sodass Sie bei einem Fehler der Kopieraktivität feststellen werden, dass einige Dateien bereits ins Ziel kopiert und aus der Quelle gelöscht wurden, wohingegen sich andere weiter im Quellspeicher befinden. <br/>Diese Eigenschaft kann nur in Szenarien für Binärkopien verwendet werden, bei denen die Datenquellenspeicher Blob, ADLS Gen1, ADLS Gen2, S3, Google Cloud Storage, File, Azure File, SFTP oder FTP sind. Standardwert: FALSE. |Nein |
+| deleteFilesAfterCompletion | Gibt an, ob die Binärdateien nach dem erfolgreichen Verschieben in den Zielspeicher aus dem Quellspeicher gelöscht werden. Die Dateien werden einzeln gelöscht, sodass Sie bei einem Fehler der Kopieraktivität feststellen werden, dass einige Dateien bereits ins Ziel kopiert und aus der Quelle gelöscht wurden, wohingegen sich andere weiter im Quellspeicher befinden. <br/>Diese Eigenschaft kann nur in Szenarios für Binärkopien verwendet werden, bei denen die Datenquellenspeicher Blob, ADLS Gen1, ADLS Gen2, S3, Google Cloud Storage, File, Azure File, SFTP oder FTP sind. Standardwert: FALSE. |Nein |
 | modifiedDatetimeStart    | Dateifilterung basierend auf dem Attribut: Letzte Änderung. <br>Die Dateien werden ausgewählt, wenn der Zeitpunkt der letzten Änderung innerhalb des Zeitbereichs zwischen `modifiedDatetimeStart` und `modifiedDatetimeEnd` liegt. Die Zeit wird auf die UTC-Zeitzone im Format „2018-12-01T05:00:00Z“ angewandt. <br> Die Eigenschaften können NULL sein, was bedeutet, dass kein Dateiattributfilter auf das Dataset angewandt wird.  Wenn `modifiedDatetimeStart` den datetime-Wert aufweist, aber `modifiedDatetimeEnd` NULL ist, bedeutet dies, dass die Dateien ausgewählt werden, deren Attribut für die letzte Änderung größer oder gleich dem datetime-Wert ist.  Wenn `modifiedDatetimeEnd` den datetime-Wert aufweist, aber `modifiedDatetimeStart` NULL ist, bedeutet dies, dass die Dateien ausgewählt werden, deren Attribut für die letzte Änderung kleiner als der datetime-Wert ist.<br/>Diese Eigenschaft gilt nicht, wenn Sie `fileListPath` konfigurieren. | Nein                                            |
 | modifiedDatetimeEnd      | Wie oben.                                               | Nein                                            |
 | maxConcurrentConnections | Die Anzahl von Verbindungen, die gleichzeitig mit einem Speicher hergestellt werden können. Geben Sie diesen Wert nur an, wenn Sie die gleichzeitigen Verbindungen mit dem Datenspeicher begrenzen möchten. | Nein                                            |

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/05/2020
-ms.openlocfilehash: 85f4cc9f9e6e762a85571010840cc697bc6c9888
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: f152283b1280cde2a26569b8acf10738e883e39e
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963664"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816019"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Zugreifen auf Ressourcen virtueller Azure-Netzwerke über Azure Logic Apps mit Integrationsdienstumgebungen (ISEs)
 
@@ -117,7 +117,14 @@ Beim Erstellen Ihrer ISE können Sie auswählen, ob interne oder externe Zugriff
 > [!IMPORTANT]
 > Sie können den Zugriffsendpunkt nur während der Erstellung der ISE auswählen und diese Option später nicht mehr ändern.
 
-* **Intern:** Private Endpunkte, die Aufrufe von Logik-Apps in Ihrer ISE *nur innerhalb des virtuellen Netzwerks* zulassen, wo Sie auf Ein- und Ausgaben aus dem Ausführungsverlauf von Logik-Apps zugreifen können. Stellen Sie sicher, dass Sie über eine Netzwerkverbindung zwischen den privaten Endpunkten und dem Computer verfügen, von dem aus Sie auf den Ausführungsverlauf zugreifen möchten. Beispielsweise kann sich Ihr Clientcomputer im virtuellen Netzwerk der ISE oder innerhalb eines virtuellen Netzwerks, das mit dem virtuellen Netzwerk der ISE verbunden ist, z. B. durch Peering oder ein virtuelles privates Netzwerk, befinden.
+* **Intern:** Private Endpunkte, die Aufrufe von Logik-Apps in Ihrer ISE *nur innerhalb des virtuellen Netzwerks* zulassen, wo Sie auf Ein- und Ausgaben aus dem Ausführungsverlauf von Logik-Apps zugreifen können.
+
+  > [!IMPORTANT]
+  > Stellen Sie sicher, dass Sie über eine Netzwerkverbindung zwischen den privaten Endpunkten und dem Computer verfügen, von dem aus Sie auf den Ausführungsverlauf zugreifen möchten. Andernfalls wird beim Versuch, den Ausführungsverlauf der Logik-App anzuzeigen, Folgendes angezeigt: „Unerwarteter Fehler. Fehler beim Abrufen.“
+  >
+  > ![Fehler bei Azure Storage-Aktion, weil kein Datenverkehr über die Firewall gesendet werden kann](./media/connect-virtual-network-vnet-isolated-environment-overview/integration-service-environment-error.png)
+  >
+  > Beispielsweise kann sich Ihr Clientcomputer im virtuellen Netzwerk der ISE oder in einem virtuellen Netzwerk befinden, das per Peering oder VPN mit dem virtuellen Netzwerk der ISE verbunden ist. 
 
 * **Extern:** Öffentliche Endpunkte, die Aufrufe von Logik-Apps in Ihrer ISE *von außerhalb des virtuellen Netzwerks* zulassen, wo Sie auf Ein- und Ausgaben aus dem Ausführungsverlauf von Logik-Apps zugreifen können. Wenn Sie Netzwerksicherheitsgruppen (NSGs) verwenden, stellen Sie sicher, dass Sie mit eingehenden Regeln eingerichtet sind, um den Zugriff auf die Eingaben und Ausgaben des Ausführungsverlaufs zuzulassen. Weitere Informationen finden Sie unter [Aktivieren des Zugriffs für ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access).
 

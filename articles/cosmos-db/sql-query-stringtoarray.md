@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 18acbd94fa3d717fc20b9e1020b9bf7c6db7744d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b00fe7a515d1d27ce9be2ab62a96c719d5e045a5
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78302915"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798583"
 ---
 # <a name="stringtoarray-azure-cosmos-db"></a>StringToArray (Azure Cosmos DB)
  Gibt den Ausdruck übersetzt in ein Array zurück. Wenn der Ausdruck nicht übersetzt werden kann, wird „undefined“ zurückgegeben.  
@@ -33,7 +33,7 @@ StringToArray(<str_expr>)
   Gibt einen Arrayausdruck oder „undefined“ zurück. 
   
 ## <a name="remarks"></a>Bemerkungen
-  Geschachtelte Zeichenfolgenwerte müssen in doppelten Anführungszeichen angegeben werden, damit sie gültige JSON-Werte darstellen. Ausführliche Informationen zum JSON-Format finden Sie unter [json.org](https://json.org/).
+  Geschachtelte Zeichenfolgenwerte müssen in doppelten Anführungszeichen angegeben werden, damit sie gültige JSON-Werte darstellen. Ausführliche Informationen zum JSON-Format finden Sie unter [json.org](https://json.org/). Der Index wird von dieser Systemfunktion nicht verwendet.
   
 ## <a name="examples"></a>Beispiele
   
@@ -90,10 +90,6 @@ Hier ist das Resultset.
 ```json
 [{}]
 ```
-
-## <a name="remarks"></a>Bemerkungen
-
-Der Index wird von dieser Systemfunktion nicht verwendet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -15,22 +15,22 @@ ms.topic: how-to
 ms.date: 04/20/2020
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2a59343d4eafaa0e11f56636daa7471e748abf2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa1016307cc6e838e2e1136f6bbacd82d2f8c82e
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763141"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640751"
 ---
 # <a name="how-to-configure-self-service-application-assignment"></a>Konfigurieren der Self-Service-Anwendungszuweisung
 
-Damit Ihre Benutzer über ihren Zugriffsbereich „Meine Apps“ Anwendungen selbst ermitteln können, müssen Sie den **Self-Service-Anwendungszugriff** für alle Anwendungen aktivieren, die Benutzer selbst ermitteln und für die sie den Zugriff anfordern können sollen. Diese Funktion ist für Anwendungen verfügbar, die aus dem [Azure AD-Katalog](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app), [Azure AD-Anwendungsproxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) oder über [Benutzer- oder Administratoreinwilligung](https://docs.microsoft.com/azure/active-directory/develop/application-consent-experience) hinzugefügt wurden. 
+Damit Ihre Benutzer Anwendungen über „Meine Apps“ selbst ermitteln können, müssen Sie den **Self-Service-Anwendungszugriff** auf alle Anwendungen aktivieren, die Benutzer selbst ermitteln und für die sie den Zugriff anfordern können sollen. Diese Funktion ist für Anwendungen verfügbar, die aus dem [Azure AD-Katalog](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app), [Azure AD-Anwendungsproxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) oder über [Benutzer- oder Administratoreinwilligung](https://docs.microsoft.com/azure/active-directory/develop/application-consent-experience) hinzugefügt wurden. 
 
 Diese Funktion ermöglicht Ihnen als IT-Abteilung, Zeit und Geld zu sparen, und empfiehlt sich unbedingt als Bestandteil einer modernen Anwendungsbereitstellung mit Azure Active Directory.
 
 Mit dieser Funktion können Sie die folgenden Schritte ausführen:
 
--   Benutzern ermöglichen, Anwendungen über den [Zugriffsbereich „Meine Apps“](https://myapps.microsoft.com/) ohne Zutun der IT-Abteilung selbst zu ermitteln
+-   Sie können es Benutzern ermöglichen, Anwendungen über den [Zugriffsbereich „Meine Apps“](https://myapps.microsoft.com/) ohne Zutun der IT-Abteilung selbst zu ermitteln.
 
 -   Diese Benutzer einer vorkonfigurierten Gruppe hinzufügen, sodass Sie sehen können, welcher Benutzer den Zugriff angefordert hat, sowie den Zugriff aufheben und die den Benutzern zugewiesenen Rollen verwalten können
 
@@ -38,7 +38,7 @@ Mit dieser Funktion können Sie die folgenden Schritte ausführen:
 
 -   Optional bis zu 10 Personen konfigurieren, die den Zugriff auf eine Anwendung genehmigen können
 
--   Optional festlegen, dass eine genehmigende Person des Unternehmens direkt über den [Anwendungszugriffsbereich](https://myapps.microsoft.com/) die Kennwörter angeben kann, die die Benutzer für die Anmeldung bei der Anwendung verwenden können
+-   Sie können optional angeben, dass eine genehmigende Person aus einer Geschäftsabteilung direkt über den Bereich [Meine Apps](https://myapps.microsoft.com/) die Kennwörter festlegen kann, die Benutzer zum Anmelden bei der Anwendung verwenden können.
 
 -   Optional Benutzer mit Self-Service-Zuweisung automatisch direkt einer Anwendungsrolle zuweisen
 
@@ -79,7 +79,7 @@ Führen Sie die folgenden Schritte aus, um den Self-Service-Anwendungszugriff au
 
 11. Klicken Sie abschließend oben im Bereich auf die Schaltfläche **Speichern**.
 
-Nachdem Sie die Self-Service-Anwendungskonfiguration abgeschlossen haben, können Benutzer in ihrem [Zugriffsbereich „Meine Apps“](https://myapps.microsoft.com/) auf die Schaltfläche **Self-Service-Apps hinzufügen** klicken und die Apps suchen, die für den Self-Service-Zugriff aktiviert sind. Genehmigende Personen des Unternehmens wird im [Zugriffsbereich „Meine Apps“](https://myapps.microsoft.com/) zudem eine Benachrichtigung angezeigt. Sie können festlegen, dass sie in einer E-Mail darüber benachrichtigt werden, dass ein Benutzer den Zugriff auf eine Anwendung angefordert hat, der zu genehmigen ist.
+Nachdem Sie die Self-Service-Anwendungskonfiguration abgeschlossen haben, können Benutzer in ihrem Bereich [Meine Apps](https://myapps.microsoft.com/) auf die Schaltfläche **Self-Service-Apps hinzufügen** klicken und die Apps suchen, die für den Self-Service-Zugriff aktiviert sind. Genehmigenden Personen aus einer Geschäftsabteilung wird in [Meine Apps](https://myapps.microsoft.com/) zudem eine Benachrichtigung angezeigt. Sie können festlegen, dass sie in einer E-Mail darüber benachrichtigt werden, dass ein Benutzer den Zugriff auf eine Anwendung angefordert hat, der zu genehmigen ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Einrichten von Azure Active Directory zur Self-Service-Gruppenverwaltung](../users-groups-roles/groups-self-service-management.md)

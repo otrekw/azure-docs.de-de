@@ -3,12 +3,12 @@ title: Wiederherstellen des Systemstatus auf einem Windows Server-Computer
 description: Ausführliche Anleitung zum Wiederherstellen des Windows Server-Systemstatus aus einer Sicherung in Azure.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 727268b2dc9473a6bda79f023e8a75202d43afe4
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 9237d3d087da7f9e72813baa0056cd6b70f2c914
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263434"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892540"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Wiederherstellen des Systemstatus von Windows Server
 
@@ -73,7 +73,7 @@ In diesen Schritten wird folgende Terminologie verwendet:
 * *Beispieltresor* – Der Recovery Services-Tresor, bei dem der *Quellcomputer* und der *Zielcomputer* registriert sind.
 
 > [!NOTE]
-> Sicherungen von einem Computer können nicht auf einem Computer wiederhergestellt werden, auf dem eine frühere Version des Betriebssystems ausgeführt wird. Beispielsweise können Sicherungen von einem Windows Server 2016-Computer nicht unter Windows Server 2012 R2 wiederhergestellt werden. In umgekehrter Richtung ist dies jedoch möglich. Sie können Sicherungen von Windows Server 2012 R2 zum Wiederherstellen von Windows Server 2016 verwenden.
+> Sicherungen von einem Computer können nicht auf einem anderen Computer wiederhergestellt werden, auf dem eine frühere Version des Betriebssystems ausgeführt wird. Beispielsweise können Sicherungen von einem Windows Server 2016-Computer nicht unter Windows Server 2012 R2 wiederhergestellt werden. In umgekehrter Richtung ist dies jedoch möglich. Sie können Sicherungen von Windows Server 2012 R2 zum Wiederherstellen von Windows Server 2016 verwenden.
 >
 
 1. Öffnen Sie das Snap-In **Microsoft Azure Backup** auf dem *Zielcomputer*.
@@ -154,7 +154,7 @@ Nachdem Sie mit dem Azure Recovery Services-Agent den Systemstatus als Dateien w
     ![Wiederherstellung der Systemstatusdateien starten](./media/backup-azure-restore-system-state/launch-ss-recovery.png)
 
     >[!NOTE]
-    >Aktivieren Sie die Option **Automatically reboot the server** (Server automatisch neu starten) nicht, wenn Sie die Wiederherstellung im DSRM-Modus durchführen.
+    >Aktivieren Sie die Option **Server automatisch neu starten** nicht, wenn Sie die Wiederherstellung im DSRM-Modus durchführen.
 
 1. Nachdem Sie eine Wiederherstellung erfolgreich abgeschlossen haben, müssen Sie den Server im normalen Modus neu starten. Öffnen Sie eine Eingabeaufforderung, und geben Sie Folgendes ein: `bcdedit /deletevalue safeboot`
 1. Starten Sie den Server neu.
@@ -181,7 +181,7 @@ In diesem Artikel wird nur das erste Szenario beschrieben, bei dem eine nicht au
     * Befolgen Sie die obige Anleitung zum [Anwenden der wiederhergestellten Systemstatusdateien auf Windows Server](#apply-restored-system-state-on-a-windows-server) mit dem Hilfsprogramm „Windows Server-Sicherung“.
 
         >[!NOTE]
-        >Wenn Sie alle Active Directory-Daten wiederherstellen (und in der Gesamtstruktur keine funktionierenden Domänencontroller mehr vorhanden sind), sollten Sie in Schritt 9 oben darauf achten, dass Sie die Option **Perform an authoritative restore of Active Directory files** (Autoritative Wiederherstellung von Active Directory-Dateien durchführen) aktivieren.
+        >Wenn Sie alle Active Directory-Daten wiederherstellen (und in der Gesamtstruktur keine funktionierenden Domänencontroller mehr vorhanden sind), sollten Sie in Schritt 9 oben darauf achten, dass Sie die Option **Autorisierende Wiederherstellung von Active Directory-Dateien durchführen** aktivieren.
 
     * Verwenden Sie das Hilfsprogramm [wbadmin](/windows-server/administration/windows-commands/wbadmin-start-systemstaterecovery), um die Wiederherstellung über die Befehlszeile durchzuführen.
 

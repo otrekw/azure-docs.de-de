@@ -4,16 +4,16 @@ description: In diesem Artikel erfahren Sie, wie Sie Sicherungs- und Wiederherst
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
-ms.openlocfilehash: 0170bda1ca956efe971695e34dc0d14b68eb109a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c4aa88399bfbdd7814864170d9861a7b7d14dc58
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079331"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757250"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>Erstellen eines Azure Recovery Services-Tresors mit der REST-API
 
-Die Schritte zum Erstellen eines Azure Recovery Services-Tresors mit der REST-API sind in der Dokumentation unter [Vaults – Create Or Update](/rest/api/recoveryservices/vaults/createorupdate) (Tresore – Erstellen oder Aktualisieren) beschrieben. Wir nutzen dieses Dokument als Referenz zum Erstellen eines Tresors mit dem Namen „testVault“ in der Region „West US“ (USA, Westen).
+Die Schritte zum Erstellen eines Azure Recovery Services-Tresors mit der REST-API finden Sie in der Dokumentation zur [REST-API zum Erstellen von Tresoren](/rest/api/recoveryservices/vaults/createorupdate). Wir nutzen dieses Dokument als Referenz zum Erstellen eines Tresors mit dem Namen „testVault“ in der Region „West US“ (USA, Westen).
 
 Verwenden Sie den folgenden *PUT*-Vorgang, um einen Azure Recovery Services-Tresor zu erstellen oder zu aktualisieren.
 

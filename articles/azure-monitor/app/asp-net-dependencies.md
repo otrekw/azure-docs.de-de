@@ -2,13 +2,14 @@
 title: Abhängigkeitsnachverfolgung in Azure Application Insights | Microsoft Docs
 description: Überwachen Sie Abhängigkeitsaufrufe von Ihrer lokalen oder Microsoft Azure-Webanwendung mit Application Insights.
 ms.topic: conceptual
-ms.date: 06/26/2020
-ms.openlocfilehash: a7f42c19c835e4f5c49f4d7aa91504b606a09f5b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 08/26/2020
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3d98fe91994c992d11fc58e3fec42d1796c0c966
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321376"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936536"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Abhängigkeitsnachverfolgung in Azure Application Insights 
 
@@ -16,7 +17,7 @@ Eine *Abhängigkeit* ist eine Komponente, die von Ihrer Anwendung aufgerufen wir
 
 ## <a name="automatically-tracked-dependencies"></a>Automatisch nachverfolgte Abhängigkeiten
 
-Application Insights-SDKs für .NET und .NET Core werden mit `DependencyTrackingTelemetryModule` geliefert. Hierbei handelt es sich um ein Telemetriemodul, das Abhängigkeiten automatisch erfasst. Diese Abhängigkeitserfassung ist für [ASP.NET](./asp-net.md)- und [ASP.NET Core](./asp-net-core.md)-Anwendungen automatisch aktiviert, wenn diese gemäß der verknüpften offiziellen Dokumentation konfiguriert werden. `DependencyTrackingTelemetryModule` ist im Lieferumfang [dieses](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) NuGet-Pakets enthalten und wird bei Verwendung eines der NuGet-Pakete `Microsoft.ApplicationInsights.Web` oder `Microsoft.ApplicationInsights.AspNetCore` automatisch geladen.
+Application Insights-SDKs für .NET und .NET Core werden mit `DependencyTrackingTelemetryModule` geliefert – ein Telemetriemodul, das Abhängigkeiten automatisch erfasst. Diese Abhängigkeitserfassung ist für [ASP.NET](./asp-net.md)- und [ASP.NET Core](./asp-net-core.md)-Anwendungen automatisch aktiviert, wenn diese gemäß der verknüpften offiziellen Dokumentation konfiguriert werden. `DependencyTrackingTelemetryModule` ist im Lieferumfang [dieses](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) NuGet-Pakets enthalten und wird bei Verwendung eines der NuGet-Pakete `Microsoft.ApplicationInsights.Web` oder `Microsoft.ApplicationInsights.AspNetCore` automatisch geladen.
 
  Folgende Abhängigkeiten werden von `DependencyTrackingTelemetryModule` derzeit automatisch verfolgt:
 
@@ -34,7 +35,7 @@ Wenn eine Abhängigkeit fehlt oder ein anderes SDK verwendet wird, stellen Sie s
 
 ## <a name="setup-automatic-dependency-tracking-in-console-apps"></a>Einrichten einer automatischen Abhängigkeitsüberwachung in Konsolen-Apps
 
-Um Abhängigkeiten automatisch über .NET-Konsolen-Apps nachzuverfolgen, installieren Sie das Nuget-Paket `Microsoft.ApplicationInsights.DependencyCollector`, und initialisieren Sie `DependencyTrackingTelemetryModule` wie folgt:
+Um Abhängigkeiten in .NET-Konsolen-Apps automatisch nachzuverfolgen, installieren Sie das NuGet-Paket `Microsoft.ApplicationInsights.DependencyCollector`, und initialisieren Sie `DependencyTrackingTelemetryModule` wie folgt:
 
 ```csharp
     DependencyTrackingTelemetryModule depModule = new DependencyTrackingTelemetryModule();
@@ -196,6 +197,18 @@ Sie können Abhängigkeiten in der [Abfragesprache Kusto](/azure/kusto/query/) v
 ### <a name="how-does-automatic-dependency-collector-report-failed-calls-to-dependencies"></a>*Wie meldet die automatische Abhängigkeitserfassung fehlerhafte Aufrufe an Abhängigkeiten?*
 
 * Bei fehlerhaften Abhängigkeitsaufrufen wird das Feld „success“ auf FALSE festgelegt. `DependencyTrackingTelemetryModule` gibt keine Auskunft über `ExceptionTelemetry`. Das vollständige Datenmodell für Abhängigkeiten wird [hier](data-model-dependency-telemetry.md) beschrieben.
+
+### <a name="how-do-i-calculate-ingestion-latency-for-my-dependency-telemetry"></a>*Wie berechne ich die Erfassungslatenz für meine Abhängigkeitstelemetrie?*
+
+```kusto
+dependencies
+| extend E2EIngestionLatency = ingestion_time() - timestamp 
+| extend TimeIngested = ingestion_time()
+```
+
+### <a name="how-do-i-determine-the-time-the-dependency-call-was-initiated"></a>*Wie ermittle ich die Uhrzeit, zu der der Abhängigkeitsaufruf initiiert wurde?*
+
+In der Log Analytics-Abfrageansicht stellt `timestamp` den Moment dar, in dem der TrackDependency()-Aufruf initiiert wurde. Dies erfolgt sofort nach dem Empfang der Antwort auf den Abhängigkeitsaufruf. Um die Uhrzeit des Beginns des Abhängigkeitsaufrufs zu berechnen, subtrahieren Sie den aufgezeichneten `timestamp`-Wert des Abhängigkeitsaufrufs von `duration`.
 
 ## <a name="open-source-sdk"></a>Open Source SDK
 Wie jedes Application Insights-SDK ist auch das Modul zur Abhängigkeitserfassung ein Open Source-Modul. Lesen Sie den Code, tragen Sie zum Code bei, oder melden Sie Probleme im [offiziellen GitHub-Repository](https://github.com/Microsoft/ApplicationInsights-dotnet-server).

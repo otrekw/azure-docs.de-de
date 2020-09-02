@@ -13,19 +13,19 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/03/2019
+ms.date: 08/24/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: acf60138aaecd914b30a020fdead292eb0ef1473
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5a356e96b82e6fbe855d0b474dcb6b1f59c98333
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035977"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855210"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-file-share-on-azure"></a>Hochverfügbarkeit von SAP ASCS/SCS-Instanzen mit Multi-SID-Konfiguration mithilfe von Windows Server-Failoverclustering und Dateifreigaben in Azure
 
-> ![Windows][Logo_Windows] Windows
+> ![Windows-Betriebssystem][Logo_Windows] Windows
 >
 
 Sie können mehrere virtuelle IP-Adressen mithilfe eines [internen Azure-Lastenausgleichs][load-balancer-multivip-overview] verwalten. 
@@ -61,6 +61,7 @@ _**Abbildung 1:** Bereitstellung einer SAP ASCS/SCS-Instanz und von SOFS in zwei
 > * Unterschiedliche Dateifreigaben von globalen SAP-Hosts, die verschiedenen SAP-SIDs zugeordnet sind, müssen denselben SOFS-Cluster verwenden.
 > * Jede SID eines Datenbank-Verwaltungssystems (DBMS) muss über ihren eigenen dedizierten WSFC-Cluster verfügen.
 > * SAP-Anwendungsserver, die zur gleichen SAP-System-SID gehören, müssen eigene dedizierte VMs aufweisen.
+> * Eine Kombination von Enqueue Replication Server 1 und Enqueue Replication Server 2 im gleichen Cluster wird nicht unterstützt.  
 
 ## <a name="sap-ascsscs-multi-sid-architecture-with-file-share"></a>SAP ASCS/SCS-Instanzen mit Multi-SID-Architektur und Dateifreigabe
 
