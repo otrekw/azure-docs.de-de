@@ -41,8 +41,6 @@
       href: ./policies/index.md
     - name: Azure PowerShell
       href: powershell-samples.md
-    - name: Azure Policy-Integrationen
-      href: ./policy-samples.md
 - name: Konzepte
   items:
     - name: Begriff
@@ -263,6 +261,9 @@
       href: /rest/api/apimanagement/ApiManagementREST/api-management-REST
     - name: Resource Manager-Vorlage
       href: /azure/templates/microsoft.apimanagement/allversions
+    - name: Azure Policy-Integrationen
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Ressourcen
   items:
     - name: Häufig gestellte Fragen
