@@ -3,12 +3,12 @@ title: Preise für Azure Backup
 description: Erfahren Sie, wie Sie mithilfe einer Preiskalkulation Ihre Kosten für Azure Backup abschätzen können.
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: cdb3dc756e1ee7e32453acd7246952c84abebaf7
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 03ec0076d3089562ddaace6db413fb3f1ba949a6
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035755"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654530"
 ---
 # <a name="azure-backup-pricing"></a>Preise für Azure Backup
 
@@ -161,7 +161,7 @@ Sie benötigen die folgenden Parameter, um die Kosten für die Sicherung von Azu
 
 - Erwartete Datenänderungsrate auf den Dateifreigaben, die Sie sichern möchten. <br>Änderungsrate bezieht sich auf die Menge der Datenänderungen und wirkt sich direkt auf die Größe des Momentaufnahmenspeichers aus. Wenn Sie z. B. über eine Dateifreigabe mit 200 GB zu sichernden Daten verfügen, von denen sich 10 GB täglich ändern, beträgt die tägliche Änderungsrate 5 %.
   - Eine höhere Datenänderungsrate bedeutet, dass sich täglich eine große Menge an Daten im Inhalt der Dateifreigabe ändert, sodass die inkrementellen Momentaufnahmen (bei denen nur die Datenänderungen erfasst werden) ebenfalls größer wären.
-  - Wählen Sie „Niedrig“ (1%), „Mittel“ (3%) oder „Hoch“ (5%) aus, basierend auf den Merkmalen und der Verwendung der Dateifreigabe.
+  - Wählen Sie „Niedrig“ (1 %), „Mittel“ (3 %) oder „Hoch“ (5 %) aus, basierend auf den Merkmalen und der Verwendung der Dateifreigabe.
   - Wenn Sie die exakte **Änderungsrate (%)** für Ihre Dateifreigabe kennen, können Sie die Option **Eigene Rate eingeben (%)** aus der Dropdownliste auswählen. Geben Sie die Werte für die tägliche, wöchentliche, monatliche und jährliche Änderungsrate (in %) an.
 
 - Art des Speicherkontos (Standard oder Premium) und Einstellung für die Speicherredundanz für das Speicherkonto, in dem die gesicherte Dateifreigabe gehostet wird. <br>In der aktuellen Sicherungslösung für Azure-Dateifreigaben werden Momentaufnahmen im gleichen Speicherkonto wie die gesicherte Dateifreigabe gespeichert. Daher werden die mit Momentaufnahmen verbundenen Speicherkosten als Teil Ihrer Rechnung für Azure-Dateien in Rechnung gestellt, basierend auf den Preisen der Momentaufnahmen für den Kontotyp und der Redundanzeinstellung für das Speicherkonto, das die gesicherte Dateifreigabe und die Momentaufnahmen hostet.

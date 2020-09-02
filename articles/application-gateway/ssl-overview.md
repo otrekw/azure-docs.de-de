@@ -2,17 +2,17 @@
 title: Aktivieren von End-to-End-TLS in Azure Application Gateway
 description: Dieser Artikel enthält eine Übersicht über die Unterstützung von End-to-End-TLS in Application Gateway.
 services: application-gateway
-author: amsriva
+author: surajmb
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 5/13/2020
+ms.date: 08/21/2020
 ms.author: victorh
-ms.openlocfilehash: 1986955c7135cb9296937392b23635ae62d8d9f7
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 3d714b579bebb096745a47410da3f8f458e27161
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962100"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723298"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>Übersicht über TLS-Beendigung und End-to-End-TLS mit Application Gateway
 
@@ -30,7 +30,7 @@ Application Gateway unterstützt die TLS-Beendigung am Gateway, wonach der Daten
 Zum Konfigurieren der TLS-Terminierung muss dem Listener ein TLS/SSL-Zertifikat hinzugefügt werden, damit Application Gateway einen symmetrischen Schlüssel gemäß der Spezifikation des TLS/SSL-Protokolls ableiten kann. Der symmetrische Schlüssel wird dann zum Verschlüsseln und Entschlüsseln des Datenverkehrs mit dem Gateway verwendet. Das TLS/SSL-Zertifikat muss im PFX-Format (privater Informationsaustausch) vorliegen. In diesem Dateiformat können Sie den privaten Schlüssel exportieren. Das ist erforderlich, damit das Anwendungsgateway die Ver- und Entschlüsselung des Datenverkehrs durchführen kann.
 
 > [!IMPORTANT] 
-> Beachten Sie, dass für das Zertifikat für den Listener die gesamte Zertifikatkette hochgeladen werden muss. 
+> Das Zertifikat auf dem Listener erfordert das Hochladen der gesamten Zertifikatskette (Stammzertifikat von der Zertifizierungsstelle, die Zwischenzertifikate und untergeordnetes Zertifikat), um die Vertrauenskette herzustellen. 
 
 
 > [!NOTE] 

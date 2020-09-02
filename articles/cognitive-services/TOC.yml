@@ -26,10 +26,6 @@
       href: resource-manager-template.md
     - name: Diagnoseprotokollierung
       href: diagnostic-logging.md
-- name: Beispiele
-  items:
-    - name: Azure Policy-Integrationen
-      href: ./policy-samples.md
 - name: Sicherheit
   items:
     - name: Sicherheit von Cognitive Services
@@ -86,6 +82,11 @@
           href: ./big-data/recipes/anomaly-detection.md
         - name: 'Rezept: Art-Explorer'
           href: ./big-data/recipes/art-explorer.md
+- name: Referenz
+  items:
+    - name: Integrierte Azure Policy-Aktionen
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Ressourcen
   items:
     - name: Azure-Roadmap

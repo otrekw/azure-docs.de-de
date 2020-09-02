@@ -6,22 +6,22 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 04/02/2020
+ms.date: 08/19/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 24118e6ae5c31399ce5d33361dd60e3a08424681
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 4c6c2774e0d71ec33449565efab797c040aa264f
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88055767"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640598"
 ---
 # <a name="blob-snapshots"></a>Blobmomentaufnahmen
 
 Eine Momentaufnahme ist eine schreibgeschützte Version eines Blobs, die zu einem bestimmten Zeitpunkt erstellt wird.
 
 > [!NOTE]
-> Die Blobversionsverwaltung (Vorschau) bietet eine alternative Möglichkeit zum Verwalten von historischen Kopien eines Blobs. Weitere Informationen finden Sie unter [Versionsverwaltung (Vorschau)](versioning-overview.md).
+> Die Blobversionsverwaltung (Vorschau) bietet eine alternative Möglichkeit zum Verwalten von früheren Versionen eines Blobs. Weitere Informationen finden Sie unter [Versionsverwaltung (Vorschau)](versioning-overview.md).
 
 ## <a name="about-blob-snapshots"></a>Informationen zu Blobmomentaufnahmen
 
@@ -33,7 +33,7 @@ Eine Momentaufnahme eines Blobs ist mit dem dazugehörigen Basisblob bis auf die
 > Für alle Momentaufnahmen wird der URI des Basisblobs verwendet. Der einzige Unterschied zwischen dem Basisblob und der Momentaufnahme ist der angefügte **DateTime** -Wert.
 >
 
-Für ein Blob kann eine beliebige Anzahl von Momentaufnahmen vorhanden sein. Momentaufnahmen bleiben bestehen, bis sie explizit gelöscht werden. Die Löschung kann individuell oder im Rahmen des Vorgangs „Blob löschen“ für das Basisblob erfolgen. Sie können alle einem Basisblob zugeordneten Momentaufnahmen auflisten, um die aktuell vorhandenen Momentaufnahmen nachzuverfolgen.
+Für ein Blob kann eine beliebige Anzahl von Momentaufnahmen vorhanden sein. Momentaufnahmen bleiben bestehen, bis sie explizit gelöscht werden. Die Löschung kann individuell oder im Rahmen des Vorgangs [Blob löschen](/rest/api/storageservices/delete-blob) für das Basisblob erfolgen. Sie können alle einem Basisblob zugeordneten Momentaufnahmen auflisten, um die aktuell vorhandenen Momentaufnahmen nachzuverfolgen.
 
 Wenn Sie eine Momentaufnahme eines Blobs erstellen, werden seine Systemeigenschaften mit denselben Werten in die Momentaufnahme kopiert. Die Metadaten des Basisblobs werden auch in die Momentaufnahme kopiert, sofern Sie beim Erstellen keine separaten Metadaten für die Momentaufnahme angeben. Nach dem Erstellen einer Momentaufnahme kann sie gelesen, kopiert oder gelöscht, aber nicht mehr geändert werden.
 
@@ -51,15 +51,15 @@ Die folgende Liste enthält wichtige Punkte, die beim Erstellen einer Momentaufn
 
 - Für Ihr Speicherkonto fallen Gebühren für eindeutige Blöcke oder Seiten an, die im Blob oder in der Momentaufnahme enthalten sind. Ihrem Konto werden erst dann zusätzliche Gebühren für Momentaufnahmen angerechnet, die einem BLOB zugeordnet sind, wenn Sie das BLOB aktualisieren, auf dem sie basieren. Sobald Sie das Basisblob aktualisieren, entstehen Abweichungen von den zugeordneten Momentaufnahmen. In diesem Fall werden für alle eindeutigen Blöcke oder Seiten in jedem Blob bzw. einer Momentaufnahme Gebühren berechnet.
 - Wenn Sie einen Block innerhalb eines Block-BLOBs ersetzen, wird dieser Block anschließend als eindeutiger Block berechnet. Dies gilt auch, wenn der Block dieselbe Block-ID und dieselben Daten enthält wie in der Momentaufnahme. Nachdem ein erneuter Commit für den Block ausgeführt wurde, weicht er von seinem Pendant in den Momentaufnahmen ab, und Ihnen werden die Daten des Blocks berechnet. Gleiches gilt für eine Seite in einem Seitenblob, die mit identischen Daten aktualisiert wird.
-- Wenn Sie ein Blockblob durch einen Aufruf einer der Methoden [UploadFromFile][dotnet_UploadFromFile], [UploadText][dotnet_UploadText], [UploadFromStream][dotnet_UploadFromStream] oder [UploadFromByteArray][dotnet_UploadFromByteArray] ersetzen, werden alle Blöcke im Blob ersetzt. Wenn dem Blob eine Momentaufnahme zugeordnet ist, weisen anschließend alle Blöcke im Basisblob und in der Momentaufnahme Abweichungen auf, und Ihnen werden Gebühren für alle Blöcke in beiden Blobs berechnet. Dies gilt auch, wenn die Daten im Basis-BLOB und in der Momentaufnahme identisch sind.
+- Wenn Sie ein Blockblob durch Aufrufen einer Methode aktualisieren, die den gesamten Inhalt des Blobs überschreibt, werden alle Blöcke im Blob ersetzt. Wenn dem Blob eine Momentaufnahme zugeordnet ist, weisen anschließend alle Blöcke im Basisblob und in der Momentaufnahme Abweichungen auf, und Ihnen werden Gebühren für alle Blöcke in beiden Blobs berechnet. Dies gilt auch, wenn die Daten im Basis-BLOB und in der Momentaufnahme identisch sind.
 - Der Azure-Blob-Dienst kann nicht feststellen, ob zwei Blöcke identische Daten enthalten. Jeder hochgeladene Block, für den ein Commit ausgeführt wird, wird als eindeutig behandelt, selbst wenn die enthaltenen Daten und die Block-ID identisch sind. Da Gebühren jeweils für eindeutige Blöcke berechnet werden, ist zu berücksichtigen, dass beim Aktualisieren eines Blobs mit einer zugeordneten Momentaufnahme zusätzliche eindeutige Blöcke generiert werden, für die zusätzliche Gebühren entstehen.
 
-### <a name="minimize-cost-with-snapshot-management"></a>Minimieren der Kosten durch Momentaufnahmenverwaltung
+### <a name="minimize-costs-with-snapshot-management"></a>Minimieren der Kosten durch Momentaufnahmenverwaltung
 
 Es empfiehlt sich, Ihre Momentaufnahmen sorgfältig zu verwalten, um zusätzlich anfallende Gebühren zu vermeiden. Sie können die folgenden bewährten Methoden befolgen, um die beim Speichern von Momentaufnahmen anfallenden Kosten zu minimieren:
 
 - Löschen und erstellen Sie zugehörige Momentaufnahmen für ein BLOB neu, wenn Sie das BLOB aktualisieren, selbst wenn Sie mit identischen Daten aktualisieren, es sei denn, der Anwendungsentwurf erfordert, dass die Momentaufnahmen beibehalten werden. Durch Löschen und Neuerstellen der Momentaufnahmen für ein Blob können Sie sicherstellen, dass das Blob und die Momentaufnahmen nicht voneinander abweichen.
-- Wenn Sie Momentaufnahmen für ein Blob beibehalten, sollten Sie Aufrufe von [UploadFromFile][dotnet_UploadFromFile], [UploadText][dotnet_UploadText], [UploadFromStream][dotnet_UploadFromStream] oder [UploadFromByteArray][dotnet_UploadFromByteArray] zum Aktualisieren des Blobs vermeiden. Bei diesen Methoden werden alle Blöcke im Blob ersetzt, sodass Ihr Basisblob und seine Momentaufnahmen erheblich voneinander abweichen. Aktualisieren Sie stattdessen so wenig Blöcke wie möglich, indem Sie die Methoden [PutBlock][dotnet_PutBlock] und [PutBlockList][dotnet_PutBlockList] aufrufen.
+- Wenn Sie Momentaufnahmen für ein Blob aufbewahren, sollten Sie keine Methoden aufrufen, die beim Aktualisieren des Blobs den gesamten Blob überschreiben. Aktualisieren Sie stattdessen so wenig Blöcke wie möglich, um die Kosten niedrig zu halten.
 
 ### <a name="snapshot-billing-scenarios"></a>Abrechnungsszenarien für Momentaufnahmen
 
@@ -85,9 +85,12 @@ In Szenario 3 wurde das Basisblob aktualisiert, die Momentaufnahme jedoch nicht
 
 #### <a name="scenario-4"></a>Szenario 4
 
-In Szenario 4 wurde das Basis-Blob vollständig aktualisiert und enthält keinen der ursprünglichen Blöcke. Daher wird das Konto für alle acht eindeutigen Blöcke belastet. Dieses Szenario kann auftreten, wenn Sie eine Updatemethode wie [UploadFromFile][dotnet_UploadFromFile], [UploadText][dotnet_UploadText], [UploadFromStream][dotnet_UploadFromStream] oder [UploadFromByteArray][dotnet_UploadFromByteArray] verwenden, da diese Methoden sämtliche Inhalte eines Blobs ersetzen.
+In Szenario 4 wurde das Basis-Blob vollständig aktualisiert und enthält keinen der ursprünglichen Blöcke. Daher wird das Konto für alle acht eindeutigen Blöcke belastet.
 
 ![Azure Storage-Ressourcen](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-4.png)
+
+> [!TIP]
+> Vermeiden Sie das Aufrufen von Methoden, die das gesamte Blob überschreiben, und aktualisieren Sie stattdessen einzelne Blöcke, um die Kosten niedrig zu halten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 07/29/2020
-ms.openlocfilehash: b1baeaa31eddc13a68f2cc1d374b850f1c1a26bd
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 2ff8d962479188ddf324dc5ff75d22eac4fed3d6
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136336"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826768"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Geografische Verfügbarkeit und Unterstützung von Währungen für den kommerziellen Marketplace
 
@@ -172,12 +172,19 @@ Angebote im kommerziellen Marketplace können in 141 geografischen Regionen gem�
 
 ## <a name="how-we-convert-currency"></a>So rechnen wir Währungen um
 
-ISVs haben die Möglichkeit, für alle kostenpflichtigen Angebotstypen Preise in USD einzugeben oder Preise in der lokalen Währung hochzuladen. Die in USD eingegebenen Preise werden automatisch in die lokale Währung umgerechnet, wenn die Seite gespeichert wird. Die im Partner Center verwendeten Tarife werden täglich aktualisiert. ISVs können die Preise exportieren und die umgerechneten Werte überprüfen.
+Sie haben die Möglichkeit, für alle kostenpflichtigen Angebotstypen Preise in USD einzugeben oder Preise in lokaler Währung hochzuladen. Die in USD eingegebenen Preise werden automatisch in die lokale Währung umgerechnet, wenn die Seite gespeichert wird. Die im Partner Center verwendeten Tarife werden täglich aktualisiert. Sie können die Preise exportieren und die umgerechneten Werte überprüfen.
 
 Um einen beliebigen Preis vor der Veröffentlichung anzupassen, exportieren Sie einfach das Preisarbeitsblatt, nehmen Änderungen vor und laden das geänderte Arbeitsblatt hoch.
 
 > [!NOTE]
 > Nachdem ein Preis für einen Markt in Ihrem Plan veröffentlicht wurde, kann er nicht mehr geändert werden. Um vor der Veröffentlichung dieser Preise sicherzustellen, dass sie richtig sind, exportieren Sie das Preisarbeitsblatt, und überprüfen Sie die Preise für jeden Markt.
+
+Der Preis eines Angebots wird dem Kunden immer in seiner lokalen Währung angezeigt. Der Preis, den Sie in Partner Center auswählen, wird gemäß dem Wechselkurs, der zum Zeitpunkt des Speichern des Preises in Partner Center gültig war, in die lokale Währung des Kunden umgerechnet. Der dem Kunden in den Onlineshops angezeigte Preis ändert sich erst, wenn Sie Ihr Angebot erneut veröffentlichen.
+
+Microsoft erhält Zahlungen von Kunden in deren lokaler Währung und bezahlt Sie in Ihrer lokalen Währung. Microsoft rechnet die lokale Währung des Kunden anhand des Wechselkurses, der am Tag des Kaufs gültig war, in Ihre lokale Währung um.
+
+> [!NOTE]
+> Microsoft rechnet Angebotspreise mit dem Microsoft Treasury-Wechselkurs um.
 
 ## <a name="retrieving-currency-information-by-api"></a>Abrufen von Währungsinformationen per API
 

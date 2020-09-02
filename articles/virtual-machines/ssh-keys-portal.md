@@ -5,14 +5,14 @@ author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 07/31/2020
+ms.date: 08/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 17ab7ee75e335d686bf308c4b15a53dc4e2e6b0e
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: abc9a2ae130d987c90ce87ffaecbf2bb44b06010
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041747"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929436"
 ---
 # <a name="generate-and-store-ssh-keys-in-the-azure-portal"></a>Generieren und Speichern von SSH-Schlüsseln im Azure-Portal
 
@@ -28,7 +28,7 @@ Ausführlichere Informationen zur Erstellung und Verwendung von SSH-Schlüsseln 
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
 
-1. Geben Sie oben auf der Seite *SSH* für die Suche ein. Wählen Sie unter *Marketplace* die Option **SSH-Schlüssel** aus.
+1. Geben Sie oben auf der Seite *SSH* für die Suche ein. Wählen Sie unter **Marketplace** die Option **SSH-Schlüssel** aus.
 
 1. Wählen Sie auf der Seite **SSH-Schlüssel** die Option **Erstellen** aus.
 
@@ -89,6 +89,20 @@ Sie können auch einen öffentlichen SSH-Schlüssel für die Speicherung in Azur
 1. Wenn die Überprüfung abgeschlossen ist, wählen Sie **Erstellen** aus. 
 
 Nachdem der Schlüssel hochgeladen wurde, können Sie ihn bei der Erstellung eines virtuellen Computers verwenden.
+
+## <a name="list-keys"></a>Auflisten von Schlüsseln
+
+Im Portal erstellte SSH-Schlüssel werden als Ressourcen gespeichert, sodass Sie Ihre Ressourcenansicht filtern können, um alle anzuzeigen.
+
+1. Wählen Sie im Portal **Alle Ressourcen** aus.
+1. Wählen Sie in den Filtern **Typ** aus. Heben Sie die Auswahl der Option **Alle auswählen** auf, um die Liste zu leeren.
+1. Geben Sie als Filter **SSH** ein, und wählen Sie **SSH-Schlüssel** aus.
+
+   :::image type="content" source="./media/ssh-keys/filter.png" alt-text="Screenshot des Filterns der Liste, um alle Ihre SSH-Schlüssel anzuzeigen.":::
+
+## <a name="get-the-public-key"></a>Abrufen des öffentlichen Schlüssels
+
+Wenn Sie Ihren öffentlichen Schlüssel benötigen, können Sie ihn problemlos von der Portalseite des Schlüssels kopieren. Listen Sie einfach Ihre Schlüssel auf (mithilfe des Verfahrens im letzten Abschnitt), und wählen Sie dann einen Schlüssel in der Liste aus. Die Seite Ihres Schlüssels wird geöffnet. Sie können auf das Symbol **In die Zwischenablage kopieren** neben dem Schlüssel klicken, um ihn zu kopieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

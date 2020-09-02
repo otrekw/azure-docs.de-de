@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/08/2020
+ms.date: 08/21/2020
 ms.author: jingwang
-ms.openlocfilehash: a937548c9318d98e8832720706626b74167d32d9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dd5e116f0c6844abeffc27820da03462c6e1cbbc
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87044395"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718202"
 ---
 # <a name="excel-format-in-azure-data-factory"></a>Excel-Format in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -32,7 +32,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 | type             | Die type-Eigenschaft des Datasets muss auf **Excel** festgelegt werden.   | Ja      |
 | location         | Speicherorteinstellungen der Datei(en) Jeder dateibasierte Connector verfügt unter `location` über seinen eigenen Speicherorttyp und unterstützte Eigenschaften. | Ja      |
 | sheetName        | Der Name des Excel-Arbeitsblatts zum Lesen der Daten.                       | Ja      |
-| range            | Der Zellenbereich im jeweiligen Arbeitsblatt zum Ermitteln der selektiven Daten, z. B. `A3:H5` (Tabelle von A3 bis H5), `A3` (Tabelle, die ab Zelle A3 beginnt) und `A3:A3` (nur eine Zelle). Wenn nichts angegeben ist, wird von ADF für das Lesen aus der Tabelle das gesamte Arbeitsblatt verwendet. | Nein       |
+| range            | Der Zellenbereich im jeweiligen Arbeitsblatt zum Ermitteln der selektiven Daten, z. B.:<br>Nicht angegeben: Das gesamte Arbeitsblatt wird als Tabelle ab der ersten nicht leeren Zeile und Spalte gelesen.<br>- `A3`: Eine Tabelle wird ab der angegebenen Zelle gelesen, wobei alle Zeilen darunter und alle Spalten rechts davon dynamisch erkannt werden.<br>- `A3:H5`: Dieser feste Bereich wird als Tabelle gelesen.<br>- `A3:A3`: Diese einzelne Zelle wird gelesen. | Nein       |
 | firstRowAsHeader | Gibt an, ob die erste Zeile des jeweiligen Arbeitsblatts bzw. Bereichs als Headerzeile mit den Namen der Spalten behandelt werden soll.<br>Zulässige Werte sind **true** und **false** (Standard). | Nein       |
 | nullValue        | Gibt eine Zeichenfolgendarstellung von Null-Werten an. <br>Der Standardwert ist eine **leere Zeichenfolge**. | Nein       |
 | compression | Gruppe von Eigenschaften zum Konfigurieren der Dateikomprimierung. Konfigurieren Sie diesen Abschnitt, wenn Sie während der Aktivitätsausführung eine Komprimierung/Dekomprimierung durchführen möchten. | Nein |

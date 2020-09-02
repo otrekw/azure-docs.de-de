@@ -10,12 +10,12 @@ ms.date: 07/29/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: e7bb996b3d42e2db2b4fa65d050ec1cb6a935bc6
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 2439bec08c16ce109b271844dc72b8fd2569aa07
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533375"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88755907"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>Erzwingen der erforderliche Mindestversion der Transport Layer Security (TLS) für Anforderungen an ein Speicherkonto
 
@@ -338,6 +338,10 @@ Nachdem Sie die Richtlinie mit der Auswirkung „Deny“ erstellt und einem Bere
 Die folgende Abbildung zeigt den Fehler, der beim Erstellen eines Speicherkontos mit der TLS-Mindestversion von TLS 1.0 (dem Standard für ein neues Konto) auftritt, wenn eine Richtlinie mit der Auswirkung „Deny“ erfordert, dass die TLS-Mindestversion auf TLS 1.2 festgelegt wird.
 
 :::image type="content" source="media/transport-layer-security-configure-minimum-version/deny-policy-error.png" alt-text="Screenshot mit dem Fehler, der beim Erstellen eines Speicherkontos bei einem Verstoß gegen die Richtlinie auftritt":::
+
+## <a name="network-considerations"></a>Überlegungen zu Netzwerken
+
+Wenn ein Client eine Anforderung an ein Speicherkonto sendet, stellt der Client zunächst eine Verbindung mit dem öffentlichen Endpunkt des Speicherkontos her, ehe Anforderungen bearbeitet werden. Die Einstellung der TLS-Mindestversion wird nach dem Herstellen der Verbindung überprüft. Wenn für die Anforderung eine frühere Version von TLS als die durch die Einstellung angegebene verwendet wird, ist die Verbindung weiterhin erfolgreich, aber die Anforderung schlägt letztendlich fehl. Weitere Informationen zu öffentlichen Endpunkten für Azure Storage finden Sie unter [Syntax von Ressourcen-URIs](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#resource-uri-syntax).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

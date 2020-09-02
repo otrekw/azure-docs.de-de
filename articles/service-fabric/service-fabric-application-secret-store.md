@@ -3,16 +3,19 @@ title: Azure Service Fabric Central Secrets Store
 description: In diesem Artikel wird beschrieben, wie Sie den Central Secrets Store in Azure Service Fabric verwenden.
 ms.topic: conceptual
 ms.date: 07/25/2019
-ms.openlocfilehash: c48be8945326f0f11ded7c5700cd70043830e4db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9fd435803ad5354b0eb2d4f5de50009a8cbbfe2
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83197761"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869754"
 ---
 # <a name="central-secrets-store-in-azure-service-fabric"></a>Central Secrets Store in Azure Service Fabric 
 In diesem Artikel wird beschrieben, wie Sie den Central Secrets Store (CSS) in Azure Service Fabric zum Erstellen von Geheimnissen in Service Fabric-Anwendungen verwenden. CSS ist ein lokaler Geheimnisspeichercache, der verwendet wird, um vertrauliche Daten wie Kennwörter, Token und Schlüssel im Arbeitsspeicher verschlüsselt zu speichern.
 
+  > [!NOTE] 
+  > Beim erstmaligen Aktivieren des CSS in Azure Service Fabric vor Version 7.1. CU3 kann die Aktivierung fehlschlagen und CSS in einem dauerhaft fehlerhaften Zustand verbleiben, wenn Folgendes zutrifft: CSS wird in einem von Windows authentifizierten Cluster aktiviert; CSS wird in einem beliebigen Cluster aktiviert, jedoch ist `EncryptionCertificateThumbprint` falsch deklariert, oder das zugehörige Zertifikat ist nicht installiert/auf Knoten per Zugriffssteuerungsliste zugewiesen. Wechseln Sie bei dem von Windows authentifizierten Cluster zu 7.1. CU3, bevor Sie fortfahren. Überprüfen Sie bei den anderen Clustern diese Invarianten sorgfältig, oder wechseln Sie zu 7.1. CU3.
+  
 ## <a name="enable-central-secrets-store"></a>Aktivieren von Central Secrets Store
 Fügen Sie Ihrer Clusterkonfiguration das folgende Skript unter `fabricSettings` hinzu, um CSS zu aktivieren. Es wird empfohlen, ein anderes Zertifikat als ein Clusterzertifikat für CSS zu verwenden. Stellen Sie sicher, dass das Verschlüsselungszertifikat auf allen Knoten installiert ist und dass `NetworkService` über Leseberechtigung für den privaten Schlüssel des Zertifikats verfügt.
   ```json

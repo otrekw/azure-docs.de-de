@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: juluk
 ms.date: 06/29/2020
 author: jluk
-ms.openlocfilehash: 2ffe9d525e92fa2154889cea43f681a0f31a18ab
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 5095931e28438beebf3250155ede1a8af0bb5c64
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214221"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796968"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route"></a>Anpassen des ausgehenden Clusterdatenverkehrs mit einer benutzerdefinierten Route
 
@@ -32,7 +32,7 @@ In diesem Artikel wird beschrieben, wie Sie die ausgehende Route eines Clusters 
 
 ## <a name="overview-of-outbound-types-in-aks"></a>Übersicht über ausgehende Datenverkehrstypen in AKS
 
-Ein AKS-Cluster kann mit einem eindeutigen `outboundType` als Lastenausgleich oder benutzerdefinierte Route angepasst werden.
+Ein AKS-Cluster kann mit einem eindeutigen `outboundType` vom Typ `loadBalancer` oder `userDefinedRouting` angepasst werden.
 
 > [!IMPORTANT]
 > Der ausgehende Typ betrifft nur den ausgehenden Datenverkehr Ihres Clusters. Weitere Informationen finden Sie unter [Einrichten von Eingangscontrollern](ingress-basic.md).
@@ -62,7 +62,11 @@ Wenn `userDefinedRouting` festgelegt ist, konfiguriert AKS ausgehende Datenpfade
 
 Der AKS-Cluster muss in einem bestehenden virtuellen Netzwerk mit einem zuvor konfigurierten Subnetz bereitgestellt werden, da ein expliziter Ausgang eingerichtet werden muss, wenn die Architektur für den standardmäßigen Lastenausgleich (Standard Load Balancer, SLB) nicht verwendet wird. Als solche erfordert diese Architektur das explizite Senden von ausgehendem Datenverkehr an eine Appliance wie eine Firewall, ein Gateway oder einen Proxy oder das Zulassen der Netzwerkadressenübersetzung (NAT) über eine öffentliche IP-Adresse, die dem Load Balancer Standard oder der Appliance zugewiesen ist.
 
-Der AKS-Ressourcenanbieter stellt eine standardmäßige Lastenausgleichsressource (Standard Load Balancer, SLB) bereit. Der Lastenausgleich wird ohne jede Regeln konfiguriert und [verursacht erst dann Gebühren, wenn eine Regel platziert wird](https://azure.microsoft.com/pricing/details/load-balancer/). AKS stellt **weder** automatisch eine öffentliche IP-Adresse für das Front-End von Load Balancer Standard bereit noch konfiguriert er den Back-End-Pool für den Lastenausgleich automatisch.
+#### <a name="load-balancer-creation-with-userdefinedrouting"></a>Load Balancer-Erstellung mit „UserDefinedRouting“
+
+AKS-Cluster mit dem Ausgangstyp „UDR“ erhalten nur dann einen Standard-Load Balancer (SLB), wenn der erste Kubernetes-Dienst vom Typ „loadBalancer“ bereitgestellt wird. Der Load Balancer wird mit einer öffentlichen IP-Adresse für *eingehende* Anforderungen und einem Back-End-Pool für *eingehende* Anforderungen konfiguriert. Eingangsregeln werden vom Azure-Cloudanbieter konfiguriert. Aufgrund des Ausgangstyps „UDR“ werden aber **weder eine öffentliche ausgehende IP-Adresse noch Ausgangsregeln** konfiguriert. Ihre benutzerdefinierte Route (UDR) ist weiterhin die einzige Quelle für ausgehenden Datenverkehr.
+
+Für Azure Load Balancer [fallen erst Gebühren an, wenn eine Regel festgelegt wird](https://azure.microsoft.com/pricing/details/load-balancer/).
 
 ## <a name="deploy-a-cluster-with-outbound-type-of-udr-and-azure-firewall"></a>Bereitstellen eines Clusters mit dem ausgehenden Typ „UDR“ und Azure Firewall
 
@@ -70,9 +74,7 @@ Um die Anwendung eines Clusters mit ausgehendem Typ und einer benutzerdefinierte
 
 > [!IMPORTANT]
 > Für den ausgehenden Typ „UDR“ muss in der Routingtabelle eine Route für das Ziel 0.0.0.0/0 und den nächsten Hop des virtuellen Netzwerkgeräts (Network Virtual Appliance, NVA) vorhanden sein.
-> Die Routingtabelle weist bereits den Standardwert 0.0.0.0/0 zum Internet auf. Ohne eine öffentliche IP-Adresse zum SNAT wird Ihnen allein das Hinzufügen dieser Route keinen Ausgang ermöglichen. AKS wird überprüfen, dass Sie keine 0.0.0.0/0-Route erstellen, die auf das Internet verweist, sondern stattdessen auf NVA oder ein Gateway usw.
-> 
-> Bei Verwendung eines ausgehenden Typs von UDR wird nur dann eine öffentliche IP-Adresse des Lastenausgleichs erstellt, wenn ein Dienst vom Typ *loadbalancer* konfiguriert ist.
+> Die Routingtabelle weist bereits den Standardwert 0.0.0.0/0 zum Internet auf. Ohne eine öffentliche IP-Adresse zum SNAT wird Ihnen allein das Hinzufügen dieser Route keinen Ausgang ermöglichen. AKS wird überprüfen, dass Sie keine 0.0.0.0/0-Route erstellen, die auf das Internet verweist, sondern stattdessen auf NVA oder ein Gateway usw. Bei Verwendung des Ausgangstyps „UDR“ wird eine öffentliche Load Balancer-IP-Adresse für **eingehende Anforderungen** nur dann erstellt, wenn ein Dienst vom Typ *loadbalancer* konfiguriert wird. Eine öffentliche IP-Adresse für **ausgehende Anforderungen** wird von Azure Kubernetes Service nie erstellt, wenn „UDR“ als Ausgangstyp festgelegt ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

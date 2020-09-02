@@ -2,19 +2,19 @@
 title: 'Azure CLI: Aktivieren kundenseitig verwalteter Schlüssel mit SSE – verwaltete Datenträger'
 description: Aktivieren Sie kundenseitig verwaltete Schlüssel auf Ihren verwalteten Datenträgern über die Azure CLI.
 author: roygara
-ms.date: 07/10/2020
+ms.date: 08/24/2020
 ms.topic: how-to
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: cd1855a4ce2d394559db28448d9f1c9a01b4bd08
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 2acc95190454de2ffdd81a05a6e6cf166a9a6549
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86235692"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814132"
 ---
-# <a name="azure-cli---enable-customer-managed-keys-with-server-side-encryption---managed-disks"></a>Azure CLI: Aktivieren kundenseitig verwalteter Schlüssel mit serverseitiger Verschlüsselung – verwaltete Datenträger
+# <a name="use-the-azure-cli-to-enable-server-side-encryption-with-customer-managed-keys-for-managed-disks"></a>Verwenden der Azure CLI zum Aktivieren der serverseitigen Verschlüsselung mit kundenseitig verwalteten Schlüsseln für verwaltete Datenträger
 
 Mit Azure Disk Storage können Sie Ihre eigenen Schlüssel verwalten, wenn Sie die serverseitige Verschlüsselung (Server Side Encryption, SSE) für verwaltete Datenträger verwenden. Informationen zum Konzept der SSE mit kundenseitig verwalteten Schlüsseln sowie weitere Typen der Verschlüsselung von Daten auf verwalteten Datenträgern finden Sie im Abschnitt [Vom Kunden verwaltete Schlüssel](disk-encryption.md#customer-managed-keys) des Artikels zur Datenträgerverschlüsselung.
 

@@ -4,15 +4,15 @@ description: Replizieren Sie Azure Analysis Services-Server mittels horizontalem
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/02/2020
+ms.date: 08/20/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3ea304d038618fc428f20e7ad72b398f593d09a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ceed2a287fb210a421972e9c9f9e6c77c6cb1879
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78247987"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716927"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Horizontales Hochskalieren von Azure Analysis Services
 
@@ -50,7 +50,7 @@ Wenn Sie einen nachfolgenden horizontalen Skalierungsvorgang ausführen und beis
 
 ### <a name="synchronization-mode"></a>Synchronisierungsmodus
 
-Standardmäßig werden Abfragereplikate vollständig und nicht inkrementell reaktiviert. Die Reaktivierung erfolgt in Phasen. Es werden jeweils zwei gleichzeitig getrennt und angefügt (sofern mindestens drei Replikate vorhanden sind), um sicherzustellen, dass jederzeit mindestens ein Replikat für Abfragen online ist. In einigen Fällen müssen Clients möglicherweise während der Ausführung dieses Prozesses erneut eine Verbindung mit einem der Onlinereplikate herstellen. Mithilfe der Einstellung **ReplicaSyncMode** (in der Vorschauphase) können Sie nun angeben, dass die Synchronisierung der Abfragereplikate parallel erfolgen soll. Die parallele Synchronisierung bietet folgende Vorteile: 
+Standardmäßig werden Abfragereplikate vollständig und nicht inkrementell reaktiviert. Die Reaktivierung erfolgt in Phasen. Es werden jeweils zwei gleichzeitig getrennt und angefügt (sofern mindestens drei Replikate vorhanden sind), um sicherzustellen, dass jederzeit mindestens ein Replikat für Abfragen online ist. In einigen Fällen müssen Clients möglicherweise während der Ausführung dieses Prozesses erneut eine Verbindung mit einem der Onlinereplikate herstellen. Mithilfe der Einstellung **ReplicaSyncMode** können Sie nun angeben, dass die Synchronisierung der Abfragereplikate parallel erfolgen soll. Die parallele Synchronisierung bietet folgende Vorteile: 
 
 - Deutliche Verringerung der Synchronisierungszeit 
 - Daten in unterschiedlichen Replikaten sind während des Synchronisationsvorgang eher konsistent. 

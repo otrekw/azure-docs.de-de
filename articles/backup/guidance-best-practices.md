@@ -3,12 +3,12 @@ title: Leitfaden und bewährte Methoden
 description: Bewährte Methoden und Anleitungen zum Sichern von Cloudworkloads und lokalen Workloads in der Cloud
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 2571fcc31a0ea6a548ec764d7a15d6d976ae4822
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 6daa3051a00093f74b8b5dac5c81befe006107a4
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808626"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825578"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Sichern von Cloudworkloads und lokalen Workloads in der Cloud
 
@@ -48,7 +48,7 @@ Azure Backup ermöglicht den Datenschutz für verschiedene Workloads (lokale und
 
 ### <a name="management-plane"></a>Verwaltungsebene
 
-* **Zugriffssteuerung**: Der Recovery Service-Tresor bietet die Verwaltungsfunktionen, und der Zugriff erfolgt über das Azure-Portal, SDK, CLI und sogar REST-APIs. Es handelt sich außerdem um eine RBAC-Grenze, die Ihnen die Möglichkeit bietet, den Zugriff auf Sicherungen auf autorisierte Sicherungsadministratoren zu beschränken.
+* **Zugriffssteuerung**: Der Recovery Services-Tresor bietet die Verwaltungsfunktionen. Der Zugriff erfolgt über das Azure-Portal, SDK, die CLI und sogar REST-APIs. Es handelt sich außerdem um eine RBAC-Grenze, die Ihnen die Möglichkeit bietet, den Zugriff auf Sicherungen auf autorisierte Sicherungsadministratoren zu beschränken.
 
 * **Richtlinienverwaltung**: Azure Backup-Richtlinien innerhalb jedes Tresors definieren, wann die Sicherungen ausgelöst und wie lange sie aufbewahrt werden müssen. Sie können diese Richtlinien auch verwalten und auf mehrere Elemente anwenden.
 
@@ -143,7 +143,7 @@ Zum Schutz Ihrer Sicherungsdaten zur Einhaltung der Sicherheitsanforderungen Ihr
 
 * Azure Backup verfügt über mehrere integrierte Sicherheitskontrollen, um Sicherheitsrisiken zu verhindern, zu erkennen und darauf zu reagieren (weitere Informationen).
 
-* Von Recovery Services-Tresoren verwendete Speicherkonten sind isoliert, sodass böswillige Akteure keinen Zugriff darauf haben. Der Zugriff ist nur über Azure Backup-Verwaltungsvorgänge, z. B. eine Wiederherstellung, zulässig.
+* Von Recovery Services-Tresoren verwendete Speicherkonten sind isoliert, sodass böswillige Akteure keinen Zugriff darauf erhalten. Der Zugriff ist nur über Azure Backup-Verwaltungsvorgänge, z. B. eine Wiederherstellung, zulässig.
 
 ### <a name="encryption-of-data-in-transit-and-at-rest"></a>Verschlüsselung von Daten während der Übertragung und im Ruhezustand
 
@@ -247,13 +247,13 @@ Als Sicherungsbenutzer oder -administrator sollten Sie alle Sicherungslösungen 
 
 * Azure Backup stellt einen Benachrichtigungsmechanismus für **integrierte Warnungen** per E-Mail für Fehler, Warnungen und kritische Vorgänge bereit. Sie können einzelne E-Mail-Adressen oder Verteilerlisten angeben, die benachrichtigt werden sollen, wenn eine Warnung generiert wurde. Sie können ebenfalls Benachrichtigungen für jede einzelne Warnung aktivieren oder diese in einer stündlichen Übersicht gruppieren.
   * Diese Warnungen werden vom Dienst definiert und bieten Unterstützung für begrenzte Szenarien: Sicherungs-/Wiederherstellungsfehler, Beenden des Schutzes inklusive Beibehaltung der Daten/Beenden des Schutzes inklusive Löschung usw. [Hier erhalten Sie weitere Informationen](backup-azure-monitoring-built-in-monitor.md#alert-scenarios).
-  * Wenn ein destruktiver Vorgang wie das Beenden des Schutzes inklusive Löschung der Daten durchgeführt wird, wird eine Warnung ausgelöst und eine E-Mail an den Besitzer des Abonnements sowie an die Administratoren und Co-Admins des Abonnements gesendet, auch wenn die Benachrichtigungen für den Recovery Services-Tresor nicht konfiguriert wurden.
+  * Wenn ein destruktiver Vorgang wie das Beenden des Schutzes inklusive Löschung der Daten durchgeführt wird, wird eine Warnung ausgelöst und eine E-Mail an den Besitzer des Abonnements sowie an die Administratoren und Co-Admins des Abonnements gesendet, auch wenn die Benachrichtigungen für den Recovery Services-Tresor **nicht** konfiguriert wurden.
   * Bestimmte Workloads können eine hohe Fehlerfrequenz generieren (z. B. SQL Server alle 15 Minuten). Um zu verhindern, mit Warnungen überhäuft zu werden, die bei jedem Fehlerereignis ausgelöst werden, werden die Warnungen konsolidiert. [Hier erhalten Sie weitere Informationen](backup-azure-monitoring-built-in-monitor.md#consolidated-alerts).
   * Die integrierten Warnungen können nicht angepasst werden und sind auf die im Azure-Portal definierten E-Mails beschränkt.
 
 * Wenn Sie **benutzerdefinierte Warnungen erstellen** müssen (z. B. Benachrichtigungen bei erfolgreichen Aufträgen), verwenden Sie Log Analytics. In Azure Monitor können Sie Ihre eigenen Warnungen in einem Log Analytics-Arbeitsbereich erstellen. Hybridworkloads (DPM/MABS) können auch Daten an LA senden und LA verwenden, um gemeinsame Warnungen für alle von Azure Backup unterstützten Workloads bereitzustellen.
 
-* Sie können Benachrichtigungen auch über integrierte **Aktivitätsprotokolle** des Recovery Services-Tresors erhalten. Er unterstützt jedoch nur begrenzte Szenarien und eignet sich nicht für Vorgänge wie geplante Sicherungen, für die Ressourcenprotokolle besser geeignet sind als Aktivitätsprotokolle. Weitere Informationen zu diesen Einschränkungen und darüber, wie Sie einen Log Analytics-Arbeitsbereich für die ordnungsgemäße Überwachung und Warnungserstellung für alle Ihre durch Azure Backup geschützten Workloads verwenden, finden Sie in [diesem Artikel](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-to-monitor-at-scale).
+* Sie können Benachrichtigungen auch über integrierte **Aktivitätsprotokolle** für Recovery Services-Tresore erhalten. Diese Vorgehensweise unterstützt jedoch begrenzte Szenarien und eignet sich nicht für Vorgänge wie geplante Sicherungen, die sich besser mit Ressourcenprotokollen als mit Aktivitätsprotokollen vereinbaren lassen. Weitere Informationen zu diesen Einschränkungen und darüber, wie Sie einen Log Analytics-Arbeitsbereich für die ordnungsgemäße Überwachung und Warnungserstellung für alle Ihre durch Azure Backup geschützten Workloads verwenden, finden Sie in [diesem Artikel](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-to-monitor-at-scale).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

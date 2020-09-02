@@ -3,12 +3,12 @@ title: Offlinesicherung für DPM und Azure Backup Server
 description: Mit Azure Backup können Sie Daten unter Verwendung des Azure Import/Export-Diensts aus dem Netzwerk senden. In diesem Artikel wird der Offlinesicherungsworkflow für DPM und Azure Backup Server erläutert.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: f27a38657bb43a1d1153a0372db0e1f9e284eccc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 221424871aa4f022e199c98e95024ec20e55d803
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067345"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890075"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>Offlinesicherungsworkflow für DPM und Azure Backup Server (MABS)
 
@@ -136,7 +136,7 @@ Das Hilfsprogramm *AzureOfflineBackupDiskPrep* bereitet die SATA-Laufwerke vor, 
 
     ![Azure-Anmeldebildschirm](./media/backup-azure-backup-server-import-export/signin-disk-prep.png)
 
-    Das Tool beginnt dann, den Datenträger vorzubereiten und die Sicherungsdaten zu kopieren. Falls auf dem bereitgestellten Datenträger nicht genügend Speicherplatz für die Sicherungsdaten verfügbar ist, müssen Sie unter Umständen weitere Datenträger anfügen, wenn Sie vom Tool dazu aufgefordert werden. <br/>
+    Das Tool beginnt dann, den Datenträger vorzubereiten und die Sicherungsdaten zu kopieren. Falls auf dem bereitgestellten Datenträger nicht genügend Speicherplatz für die Sicherungsdaten verfügbar ist, müssen Sie ggf. weitere Datenträger anfügen, wenn Sie vom Tool dazu aufgefordert werden. <br/>
 
     Nach erfolgreicher Ausführung des Tools gibt die Befehlszeile drei Informationen zurück:
     * Die von Ihnen bereitgestellten Datenträger werden für den Versand an Azure vorbereitet.

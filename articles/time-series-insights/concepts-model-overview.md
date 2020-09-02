@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 08/25/2020
 ms.custom: seodec18
-ms.openlocfilehash: f62a7eb895248f5d39f5c3df136c88a9b1f0e5b1
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 18212bf92304e75c702c51ff12628cd670755bb0
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141719"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855203"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Zeitreihenmodell in Azure Time Series Insights Gen2
 
@@ -24,7 +24,7 @@ Dieser Artikel beschreibt das Zeitreihenmodell sowie die zugehörigen Funktionen
 > [!TIP]
 >
 > * Wechseln Sie zur Demoumgebung  [Contoso Wind Farm](https://insights.timeseries.azure.com/preview/samples), um ein Livebeispiel für ein Zeitreihenmodell zu sehen.
-> * Informieren Sie sich über das [Arbeiten mit dem Zeitreihenmodell](/azure/time-series-insights/how-to-edit-your-model) mithilfe des Azure Time Series Insights Gen2-Explorers.
+> * Informieren Sie sich über das [Arbeiten mit dem Zeitreihenmodell](/azure/time-series-insights/how-to-edit-your-model) mithilfe des Azure Time Series Insights TSI-Explorers.
 
 ## <a name="summary"></a>Zusammenfassung
 
@@ -75,7 +75,7 @@ Diese Komponenten werden kombiniert, um ein Zeitreihenmodell anzugeben und Ihre 
 
 [![Übersicht über Zeitreihenmodelldiagramm](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
-Ein Zeitreihenmodell kann über die Schnittstelle [Azure Time Series Insights Gen2-Explorer](/azure/time-series-insights/concepts-model-overview) erstellt und verwaltet werden. Die Einstellungen eines Zeitreihenmodells können über die [Modelleinstellungs-API](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis) verwaltet werden.
+Ein Zeitreihenmodell kann über die Schnittstelle [Azure Time Series Insights TSI-Explorer](/azure/time-series-insights/concepts-model-overview) erstellt und verwaltet werden. Die Einstellungen eines Zeitreihenmodells können über die [Modelleinstellungs-API](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis) verwaltet werden.
 
 ## <a name="time-series-model-instances"></a>Zeitreihenmodellinstanzen
 
@@ -87,7 +87,7 @@ Instanzen sind beschreibende Informationen zugeordnet, die als *Instanzeigenscha
 
 *Instanzfelder* sind eine Sammlung beschreibender Informationen, die Werte für Hierarchieebenen sowie für Hersteller, Bediener usw. umfassen können.
 
-Nachdem eine Ereignisquelle für die Azure Time Series Insights Gen2-Umgebung konfiguriert wurde, werden Instanzen in einem Zeitreihenmodell automatisch entdeckt und erstellt. Die Instanzen können mithilfe von Zeitreihenmodellabfragen über den Azure Time Series Insights Gen2-Explorer erstellt oder aktualisiert werden.
+Nachdem eine Ereignisquelle für die Azure Time Series Insights Gen2-Umgebung konfiguriert wurde, werden Instanzen in einem Zeitreihenmodell automatisch entdeckt und erstellt. Die Instanzen können mithilfe von Zeitreihenmodellabfragen über den Azure Time Series Insights TSI-Explorer erstellt oder aktualisiert werden.
 
 Die Demoumgebung [Contoso Wind Farm](https://insights.timeseries.azure.com/preview/samples) stellt zahlreiche Beispiele für Live-Instanzen bereit.
 
@@ -216,7 +216,7 @@ Mit den in der vorherigen Definition verwendeten Instanzfeldern und verschiedene
 | ID4 | "building" = "1000", "floor" = "10"  |
 | ID5 | Weder „building“ noch „floor“ noch „room“ wurden festgelegt. |
 
-Die Zeitreihen **ID1** und **ID4** werden im [Azure Time Series Insights Gen2-Explorer](time-series-insights-update-explorer.md) als Teil der Hierarchie **H1** angezeigt, weil sie vollständig definierte und richtig angeordnete *building*-, *floor*- und *room*-Parameter aufweisen.
+Die Zeitreihen **ID1** und **ID4** werden im [Azure Time Series Insights TSI-Explorer](time-series-insights-update-explorer.md) als Teil der Hierarchie **H1** angezeigt, weil sie vollständig definierte und richtig angeordnete Parameter *building*, *floor* und *room* aufweisen.
 
 Die anderen Zeitreihen sind unter *Unparented Instances* klassifiziert, weil sie der angegebenen Datenhierarchie nicht entsprechen.
 

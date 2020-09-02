@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: a5d002532adb043fa5196231964d5b6e2c81417c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a04f4879bbd06c2fa6c1af921d7adafdef9417d6
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84706374"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871444"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>Herstellen einer Verbindung zwischen einer Anwendung und SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -42,7 +42,7 @@ Das Herstellen einer Verbindung zwischen einer Anwendung, wenn sich diese in ein
 
 Es gibt zwei Optionen zum Verbinden virtueller Netzwerke:
 
-- [Azure-VPN-Peering](../../virtual-network/virtual-network-peering-overview.md)
+- [Azure-VNET-Peering](../../virtual-network/virtual-network-peering-overview.md)
 - VNET-zu-VNET-VPN-Gateway ([Azure-Portal](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md), [PowerShell](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md), [Azure CLI](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-cli.md))
 
 Dabei ist Peering vorzuziehen, da dabei das Microsoft-Backbonenetzwerk verwendet wird, sodass es im Hinblick auf die Konnektivität keinen spürbaren Unterschied bei der Latenz zwischen virtuellen Computern im Peering-VNET und im selben VNET gibt. VNET-Peering ist auf die Netzwerke in der gleichen Region beschränkt.  

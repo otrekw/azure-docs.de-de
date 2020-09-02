@@ -2,17 +2,17 @@
 title: Einrichten einer Azure-Funktion zum Verarbeiten von Daten
 titleSuffix: Azure Digital Twins
 description: Erfahren Sie, wie Sie eine Azure-Funktion erstellen, die auf digitale Zwillinge zugreifen und von diesen ausgelöst werden kann.
-author: cschormann
-ms.author: cschorm
+author: baanders
+ms.author: baanders
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d9f9957209c6df91185059085f57636a16a3961c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 66f514f4c5d299ef11efda541f16f4ef2fe61aed
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589400"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930161"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>Verbinden von Azure Functions-Apps für die Verarbeitung von Daten
 
@@ -84,7 +84,7 @@ Weitere Informationen hierzu finden Sie unter [*Lokales Debuggen des Event Grid-
 
 Die Funktions-App interagiert mit Azure Digital Twins unter Verwendung der [Azure IoT Digital Twin-Clientbibliothek für .NET (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). Wenn Sie das SDK verwenden möchten, müssen Sie die folgenden Pakete in Ihr Projekt einbinden:
 * `Azure.DigitalTwins.Core` (Version `1.0.0-preview.2`)
-* `Azure.Identity` (Version `1.1.1`)
+* `Azure.Identity`
 
 Damit die Konfiguration der Azure SDK-Pipeline für Azure Functions ordnungsgemäß eingerichtet werden kann, benötigen Sie auch Folgendes:
 * `Azure.Net.Http`
@@ -95,8 +95,8 @@ Je nachdem, welche Tools Sie verwenden, können Sie hierzu den Visual Studio-Pak
 Fügen Sie Ihrer Azure-Funktion folgende using-Anweisungen hinzu:
 
 ```csharp
-using Azure.Identity;
 using Azure.DigitalTwins.Core;
+using Azure.Identity;
 using System.Net.Http;
 using Azure.Core.Pipeline;
 ```
@@ -157,7 +157,7 @@ Verwenden Sie den folgenden Befehl, um die vom System verwaltete Identität zu e
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>
 ```
 
-Verwenden Sie den Wert *principalId* im folgenden Befehl, um die Identität der Funktions-App der Rolle *Besitzer* für Ihre Azure Digital Twins-Instanz zuzuweisen:
+Verwenden Sie den Wert *principalId* im folgenden Befehl, um die Identität der Funktions-App der Rolle *Azure Digital Twins-Besitzer (Vorschau)* für Ihre Azure Digital Twins-Instanz zuzuweisen. Dadurch erhält die Funktions-App die Berechtigung in der Instanz zum Ausführen von Aktivitäten auf Datenebene.
 
 ```azurecli
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Owner (Preview)"

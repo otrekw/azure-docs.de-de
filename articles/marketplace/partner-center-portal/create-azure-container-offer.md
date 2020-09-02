@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: 9196bea663d037f269316dc108f99d3f2c282ec7
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 055db043f4e695001b2ee90a47a2531284466314
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606364"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815629"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Erstellen eines Azure-Containerangebots in Azure Marketplace
 
@@ -197,16 +197,17 @@ Stellen Sie Logos und Bilder zur Verwendung mit Ihrem Angebot bereit. Alle Bilde
 
 #### <a name="store-logos"></a>Store-Logos
 
- Stellen Sie PNG-Dateien des Logos zu Ihrem Angebot in jeder der folgenden vier Pixelgrößen bereit:
+Geben Sie eine PNG-Datei für das **große** Logo an. Dies wird in Partner Center verwendet, um ein **kleines** und ein **mittleres** Logo zu erstellen. Sie können diese Logos später optional durch andere Bilder ersetzen.
 
-- **Klein** (48 x 48)
-- **Mittel** (90 x 90)
-- **Groß** (216 x 216)
-- **Breit** (255 x 115)
+- **Groß** (von 216 x 216 bis 350 x 350 Pixel, erforderlich)
+- **Mittel** (90 x 90 Pixel, optional)
+- **Klein** (48 x 48 Pixel, optional)
 
-Alle vier Logos sind erforderlich und werden an verschiedenen Stellen in der Marketplace-Auflistung verwendet.
+Diese Logos werden an unterschiedlichen Stellen in der Auflistung verwendet:
 
 [!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots-optional"></a>Screenshots (optional)
 

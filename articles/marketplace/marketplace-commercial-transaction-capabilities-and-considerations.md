@@ -4,35 +4,39 @@ description: In diesem Artikel werden Überlegungen zur Preisgestaltung, Abrechn
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/22/2020
+ms.date: 08/20/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 5058f37fcf96c7c556b55f0afb8753390f51f4d1
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 04a984a2dfa473502fd9e534e52b60b33be52757
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607345"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88704959"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Transaktionsfunktionen im kommerziellen Marketplace
 
-## <a name="transactions-by-publishing-option"></a>Transaktionen nach Veröffentlichungsoption
+In diesem Artikel werden Überlegungen zur Preisgestaltung, Abrechnung, Rechnungsstellung und Auszahlung im kommerziellen Microsoft-Marketplace beschrieben. 
 
-Für die Verwaltung von Softwarelizenztransaktionen für Angebote im kommerziellen Marketplace ist entweder der Herausgeber oder Microsoft verantwortlich. Wer die Transaktion verwaltet, wird von der Veröffentlichungsoption bestimmt, die Sie für Ihr Angebot auswählen. Informationen zur Verfügbarkeit und Erläuterungen der einzelnen Veröffentlichungsoptionen finden Sie unter [Bestimmen Ihrer Veröffentlichungsoption](./determine-your-listing-type.md#choose-a-call-to-action).
+## <a name="transactions-by-listing-option"></a>Transaktionen nach Auflistungsoption
 
-### <a name="list-trial-and-byol-publishing-options"></a>Veröffentlichungsoptionen „Listung“, „Testversion“ und „BYOL“
+Für die Verwaltung von Softwarelizenztransaktionen für Angebote im kommerziellen Marketplace ist entweder der Herausgeber oder Microsoft verantwortlich. Wer die Transaktion verwaltet, wird durch die Auflistungsoption bestimmt, die Sie für Ihr Angebot auswählen. Informationen zur Verfügbarkeit und Erläuterungen der einzelnen Veröffentlichungsoptionen finden Sie unter [Auswählen einer Auflistungsoption](./determine-your-listing-type.md#choose-a-listing-option).
 
-Herausgeber mit bestehenden E-Commerce-Funktionen können die Veröffentlichungsoptionen „Listung“, „Testversion“ und „BYOL“ (Bring Your Own License) für Werbezwecke und zur Neukundengewinnung auswählen. Bei diesen Optionen ist Microsoft nicht direkt an den Softwarelizenztransaktionen des Herausgebers beteiligt, und es fallen keine damit verbundenen Transaktionsgebühren an. Herausgeber sind für die Unterstützung aller Aspekte der Softwarelizenztransaktion verantwortlich, einschließlich, aber nicht beschränkt auf Auftrag, Auftragsabwicklung, Messung, Abrechnung, Rechnungsstellung, Zahlung und Inkasso. Bei den Veröffentlichungsoptionen „Listung“ und „Testversion“ behalten Herausgeber 100 % der vom Kunden eingezogenen Lizenzgebühren für Software ein.
+### <a name="contact-me-free-trial-and-byol-options"></a>Optionen „Kontaktaufnahme“, „Kostenlose Testversion“ und „BYOL“
+
+Herausgeber können die Optionen _Kontaktaufnahme_ und _Kostenlose Testversion_ für Werbezwecke und zur Neukundengewinnung auswählen. Bei manchen Angebotstypen können Sie als Herausgeber die Option „BYOL“ (Bring Your Own License) auswählen, damit Kunden mit einer Lizenz, die sie direkt bei Ihnen gekauft haben, ein Abonnement für Ihr Angebot erwerben können. Bei diesen Optionen ist Microsoft nicht direkt an den Softwarelizenztransaktionen des Herausgebers beteiligt, und es fallen keine damit verbundenen Transaktionsgebühren an. 
+
+Herausgeber sind dafür verantwortlich, alle Aspekte der Softwarelizenztransaktion zu unterstützen. Dazu zählen u. a. Auftrag, Erfüllung, Messung, Abrechnung, Rechnungstellung, Zahlung und Erfassung. Bei der Auflistungsoption „Kontaktaufnahme“ behalten Herausgeber 100 % der vom Kunden eingezogenen Softwarelizenzgebühren ein.
 
 ### <a name="transact-publishing-option"></a>Veröffentlichungsoption „Transaktion“
 
-Die Veröffentlichungsoption „Transaktion“ nutzt die E-Commerce-Funktionen von Microsoft und bietet eine End-to-End-Umgebung von der Ermittlung und Auswertung bis zum Erwerb und zur Implementierung. Transaktionsangebote werden für ein vorhandenes Microsoft-Abonnement oder per Kreditkarte abgerechnet, sodass Microsoft Marketplace-Transaktionen in der Cloud im Auftrag des Herausgebers hosten kann.
+Wenn Sie sich dafür entscheiden, über Microsoft zu verkaufen, profitieren Sie von den E-Commerce-Funktionen von Microsoft und nutzen die End-to-End-Umgebung für Ermittlung und Auswertung bis hin zu Kauf und Implementierung. Bei einem transaktionsfähigen Angebot handelt es sich um ein Angebot, bei dem Microsoft den Geldfluss für eine Softwarelizenz im Namen des Herausgebers vereinfacht. Transaktionsfähige Angebote werden einem vorhandenen Microsoft-Abonnement in Rechnung gestellt oder per Kreditkarte abgerechnet, sodass Microsoft im Namen des Herausgebers Marketplace-Transaktionen in der Cloud hosten kann.
 
-Sie wählen die Option „Transaktion“ aus, wenn Sie in Partner Center ein neues Angebot erstellen. Wählen Sie auf der Seite **Angebotseinrichtung** unter **Einrichtungsdetails** die Option „Ja, ich möchte über Microsoft verkaufen, und Microsoft soll Transaktionen in meinem Namen hosten“ aus. Diese Option wird nur angezeigt, wenn die Option „Transaktion“ für Ihren Angebotstyp verfügbar ist.
+Sie wählen die Option „Transaktion“ aus, wenn Sie in Partner Center ein neues Angebot erstellen. Diese Option wird nur angezeigt, wenn die Option „Transaktion“ für Ihren Angebotstyp verfügbar ist.
 
 ## <a name="transact-overview"></a>Übersicht über „Transaktion“
 
-Bei Verwendung der Veröffentlichungsoption „Transaktion“ ermöglicht Microsoft den Verkauf von Software von Drittanbietern und die Bereitstellung einiger Angebotstypen für das Azure-Abonnement des Kunden. Sie als Herausgeber müssen bei der Auswahl eines Abrechnungsmodells und Angebotstyps die Abrechnung der Infrastrukturgebühren und Ihrer eigenen Softwarelizenzgebühren berücksichtigen.
+Bei Verwendung der Option „Transaktion“ ermöglicht Microsoft den Verkauf von Drittanbietersoftware und die Bereitstellung einiger Angebotstypen für das Azure-Abonnement des Kunden. Sie als Herausgeber müssen bei der Auswahl eines Abrechnungsmodells für ein Angebot die Abrechnung der Infrastrukturgebühren und Ihrer eigenen Softwarelizenzgebühren berücksichtigen.
 
 Die Veröffentlichungsoption „Transaktion“ wird derzeit für die folgenden Angebotstypen unterstützt:
 
@@ -44,31 +48,37 @@ Die Veröffentlichungsoption „Transaktion“ wird derzeit für die folgenden A
 
 Für **virtuelle Computer** und **Azure-Anwendungen** werden die Nutzungsgebühren für Azure-Infrastruktur im Azure-Abonnement des Kunden in Rechnung gestellt. Auf der Rechnung des Kunden werden die Infrastrukturnutzungsgebühren separat von den Lizenzgebühren des Softwareanbieters ausgewiesen.
 
-Bei **SaaS-Apps** müssen Sie als Herausgeber die Nutzungsgebühren für Azure-Infrastruktur und Softwarelizenzgebühren als einen Kostenposten verrechnen.  Diese werden dem Kunden als Pauschalgebühr angegeben. Die Nutzung der Azure-Infrastruktur wird verwaltet und dem Partner direkt in Rechnung gestellt. Tatsächliche Nutzungsgebühren für die Infrastruktur werden dem Kunden nicht angezeigt. Herausgeber entscheiden sich in der Regel dafür, die Nutzungsgebühren für Azure-Infrastruktur in ihren Softwarelizenzpreis einfließen zu lassen. Softwarelizenzgebühren werden nicht gemessen oder nutzungsabhängig berechnet.
+Bei **SaaS-Apps** müssen Sie als Herausgeber die Nutzungsgebühren für Azure-Infrastruktur und Softwarelizenzgebühren als einen Kostenposten verrechnen.  Diese werden dem Kunden als Pauschalgebühr angegeben. Die Nutzung der Azure-Infrastruktur wird verwaltet und dem Herausgeber direkt in Rechnung gestellt. Tatsächliche Nutzungsgebühren für die Infrastruktur werden dem Kunden nicht angezeigt. Herausgeber entscheiden sich in der Regel dafür, die Nutzungsgebühren für Azure-Infrastruktur in ihren Softwarelizenzpreis einfließen zu lassen. Softwarelizenzgebühren werden nicht gemessen oder nutzungsabhängig ermittelt.
 
-## <a name="transact-billing-models"></a>Abrechnungsmodelle für die Veröffentlichungsoption „Transaktion“
+## <a name="pricing-models"></a>Preismodelle
 
-Je nach verwendeter Transaktionsoption fallen folgende Softwarelizenzgebühren an:
+Je nach verwendeter Transaktionsoption fallen folgende Abonnementgebühren an:
 
-- **Kostenlos**: Keine Kosten für Softwarelizenzen.
-- **Bring-Your-Own-License (BYOL, Verwendung Ihrer eigenen Lizenz)** : Alle anfallenden Gebühren für Softwarelizenzen werden direkt zwischen Herausgeber und Kunde geregelt. Microsoft wickelt nur die Nutzungsgebühren für Azure-Infrastruktur ab. Dies gilt nur für virtuelle Computer und Azure-Anwendungen.
-- **Nutzungsbasierte Bezahlung**: Softwarelizenzgebühren werden basierend auf der verwendeten Azure-Infrastruktur als Preis pro Stunde und pro Kern (vCPU) ausgewiesen. Dies gilt nur für virtuelle Computer und Azure-Anwendungen.
-- **Abonnementpreise**: Softwarelizenzgebühren fallen als monatliche oder jährliche wiederkehrende Gebühren an, die als Pauschalgebühr oder pro Arbeitsplatz berechnet werden. Dies gilt nur für SaaS-Apps (monatlich oder jährlich) und verwaltete Azure-Apps (monatlich).
-- **Kostenlose Testversion der Software**: Keine Kosten für Softwarelizenzen für 30 bzw. 90 Tage.
+- **Jetzt herunterladen (kostenlos)** : Keine Softwarelizenzgebühren. Bei Nutzung eines kostenlosen Angebots fallen für den Kunden keine Azure Marketplace-Gebühren an. Kostenlose Angebote können nicht in ein kostenpflichtiges Angebot umgewandelt werden. Der Kunde muss ein kostenpflichtiges Angebot bestellen.
+- **Bring-Your-Own-License (BYOL, Verwendung Ihrer eigenen Lizenz)** : Alle anfallenden Gebühren für Softwarelizenzen werden direkt zwischen Herausgeber und Kunde geregelt. Microsoft wickelt nur die Nutzungsgebühren für Azure-Infrastruktur ab. Wenn ein Angebot im kommerziellen Marketplace aufgelistet ist, werden dem Kunden, der außerhalb des kommerziellen Marketplace Zugriff auf das Angebot erhält bzw. das Angebot nutzt, keine kommerziellen Marketplace-Gebühren in Rechnung gestellt.
+- **Abonnementpreise**: Softwarelizenzgebühren fallen als laufende Abonnementgebühr an, die monatlich oder jährlich fällig ist und als Pauschale oder pro Arbeitsplatz berechnet wird. Bei Kündigungen durch den Kunden in der Mitte der Laufzeit bzw. bei nicht genutzten Diensten erfolgt keine anteilsmäßige Erstattung von laufenden Abonnementgebühren. Laufende Abonnementgebühren können angerechnet werden, wenn der Kunde das Abonnement in der Mitte der Abonnementlaufzeit aktualisiert oder herabstuft.
+- **Nutzungsbasierte Preisgestaltung**: Bei Angeboten für virtuelle Azure-Computer werden dem Kunden nutzungsabhängige Gebühren für das Angebot berechnet. Bei VM-Images wird dem Kunden ein Azure Marketplace-Stundensatz in Rechnung gestellt, der vom Herausgebern festgelegt und für die Nutzung der von den VM-Images bereitgestellten virtuellen Computer erhoben wird. Die Stundengebühr kann einheitlich sein oder je nach VM-Größe variieren. Angefangene Stunden werden pro Minute abgerechnet. Pläne werden monatlich abgerechnet.
+- **Getaktetes Preismodell**: Bei Azure-Anwendungs- und SaaS-Angeboten können Herausgeber den [Marketplace-Messungsdienst](./partner-center-portal/marketplace-metering-service-apis.md) verwenden, um die Nutzung anhand der ausgewählten Messgrößen zu berechnen. Dazu zählen beispielsweise Bandbreite, Tickets oder verarbeitete E-Mails. Herausgeber können für jeden Plan eine oder mehrere Messdimensionen definieren. Herausgeber sind dafür verantwortlich, die Nutzung der einzelnen Kunden mit jeder im Angebot definierten Messgröße nachzuverfolgen. Ereignisse sollten innerhalb einer Stunde an Microsoft gemeldet werden. Microsoft erstellt die Kundenrechnungen auf Basis der von den Herausgebern für den jeweiligen Abrechnungszeitraum gemeldeten Nutzungsinformationen.
+- **Kostenlose Testversion**: Für Softwarelizenzen, die zwischen 30 Tagen und sechs Monaten gültig sind, werden je nach Angebotstyp keine Kosten berechnet. Wenn Herausgeber eine kostenlose Testversion für mehrere Pläne innerhalb desselben Angebots bereitstellen, kann der Kunde zwar zu einer kostenlosen Testversion für einen anderen Plan wechseln, der Testzeitraum wird jedoch nicht neu gestartet. Bei Angeboten für virtuelle Computer werden dem Kunden die Azure-Infrastrukturkosten für die Nutzung des Angebots während eines Testzeitraums in Rechnung gestellt. Nach Ablauf des Testzeitraums wird dem Kunden automatisch der Standardtarif für den Plan in Rechnung gestellt, für den er zuletzt die Testversion verwendet hat, sofern er nicht vor dem Ende des Testzeitraums gekündigt hat.
 
-### <a name="free-and-bring-your-own-license-byol-pricing"></a>Preise für die Modelle „Kostenlos“ und „BYOL“ (Bring-Your-Own-License, Verwendung Ihrer eigenen Lizenz)
+> [!NOTE]
+> Angebote, die nach Verbrauch abgerechnet werden, sind nach Verwendung der Lösung nicht erstattungsfähig.
 
-Bei der Veröffentlichung eines kostenlosen oder BYOL- Transaktionsangebots spielt Microsoft keine Rolle bei der Abwicklung des Verkaufsvorgangs für Ihre Softwarelizenzgebühren. Wie bei den Veröffentlichungsoptionen „Listung“ und „Testversion“ behält der Herausgeber 100 % der Softwarelizenzgebühren ein.
+Wenn ein Herausgeber die einem Angebot zugeordneten Nutzungsgebühren ändern möchte, sollte er zunächst das Angebot (oder den jeweiligen Plan innerhalb des Angebots) aus dem kommerziellen Marketplace entfernen. Das Entfernen sollte in Übereinstimmung mit den Anforderungen der [Microsoft-Herausgebervereinbarung](https://go.microsoft.com/fwlink/?LinkID=699560) erfolgen. Anschließend kann der Herausgeber ein neues Angebot (oder einen Plan innerhalb des Angebots) mit den neuen Nutzungsgebühren veröffentlichen. Weitere Informationen zum Entfernen eines Angebots oder Plans finden Sie unter [Einstellen des Verkaufs eines Angebots oder Plans](./partner-center-portal/update-existing-offer.md#stop-selling-an-offer-or-plan).
 
-### <a name="pay-as-you-go-and-subscription-site-based-pricing"></a>Nutzungsbasierte Bezahlung und Abonnementpreis (standortbasiert)
+### <a name="free-contact-me-and-bring-your-own-license-byol-pricing"></a>Preisgestaltung für die Optionen „Kostenlos“, „Kontaktaufnahme“ und „BYOL“ (Bring-Your-Own-License)
 
-Bei der Veröffentlichung eine Transaktionsangebots mit dem Modell „Nutzungsbasierte Bezahlung“ oder „Abonnement“ stellt Microsoft die Technologie und Dienste zur Verfügung, um Käufe, Rückgaben und Rückbuchungen von Softwarelizenzen zu verarbeiten. In diesem Szenario autorisiert der Herausgeber Microsoft, als Vermittler für diese Zwecke zu fungieren. Der Herausgeber erlaubt Microsoft die Abwicklung der Softwarelizenzierungstransaktion, wobei er seine Kennzeichnung als Verkäufer, Anbieter, Distributor und Lizenzgeber beibehält.
+Bei der Veröffentlichung eines Angebots mit der Option „Jetzt herunterladen (kostenlos)“, „Kontaktaufnahme“ oder „BYOL“ spielt Microsoft keine Rolle bei der Abwicklung der Verkaufstransaktion für Ihre Softwarelizenzgebühren. Wie bei den Veröffentlichungsoptionen „Liste“ und „Kostenlose Testversion“ behält der Herausgeber 100 % der Softwarelizenzgebühren ein.
+
+### <a name="usage-based-and-subscription-pricing"></a>Nutzungsbasierte Preisgestaltung und Abonnementpreise
+
+Bei der Veröffentlichung eines Angebots mit einer benutzerbasierten oder Abonnementtransaktion stellt Microsoft die Technologie und Dienste zum Verarbeiten von Käufen, Rückgaben und Rückbuchungen von Softwarelizenzen zur Verfügung. In diesem Szenario autorisiert der Herausgeber Microsoft, als Vermittler für diese Zwecke zu fungieren. Der Herausgeber erlaubt Microsoft die Abwicklung der Softwarelizenzierungstransaktion, wobei er seine Kennzeichnung als Verkäufer, Anbieter, Distributor und Lizenzgeber beibehält.
 
 Microsoft ermöglicht es Kunden, Ihre Software zu bestellen, zu lizenzieren und zu nutzen, wobei die Bedingungen des kommerziellen Marketplace von Microsoft und Ihres Endbenutzerlizenzvertrags gelten. Sie müssen Ihren eigenen Endbenutzerlizenzvertrag bereitstellen oder beim Erstellen des Angebots den [Standardvertrag](./standard-contract.md) auswählen.
 
 ### <a name="free-software-trials"></a>Kostenlose Testversionen
 
-Bei Veröffentlichungsszenarien des Typs „Transaktion“ können Sie eine Softwarelizenz 30 oder 90 Tage kostenlos zur Verfügung stellen. Diese Rabattierungsmöglichkeit schließt nicht die Kosten für die Nutzung der Azure-Infrastruktur ein, die durch die Nutzung der Partnerlösung verursacht wird.
+Bei Veröffentlichungsszenarien des Typs „Transaktion“ können Sie je nach Abonnement eine Softwarelizenz zwischen 30 und 120 Tagen kostenlos zur Verfügung stellen. Diese Rabattierungsmöglichkeit schließt nicht die Kosten für die Nutzung der Azure-Infrastruktur ein, die durch die Nutzung der Partnerlösung verursacht wird.
 
 ### <a name="private-offers"></a>Private Angebote
 
@@ -78,9 +88,9 @@ Diese Option ermöglicht höhere oder niedrigere Preise als für das öffentlich
 
 ### <a name="examples"></a>Beispiele
 
-**Nutzungsbasierte Bezahlung** 
+**Nutzungsbasiert** 
 
-Die nutzungsbasierte Bezahlung weist die folgende Kostenstruktur auf:
+Die nutzungsbasierte Preisgestaltung weist folgende Kostenstruktur auf:
 
 |Ihre Lizenzkosten  | 1,00 USD pro Stunde   |
 |---------|---------|
@@ -127,8 +137,6 @@ Diese Option muss für den Verkauf über Microsoft konfiguriert sein und kann pe
 
 In diesem Szenario stellt Microsoft 100,00 USD für Ihre Softwarelizenz in Rechnung und zahlt 80,00 USD an den Herausgeber aus.
 
-Für Partner, die für die reduzierte Marketplace-Dienstgebühr qualifiziert sind, wird von Mai 2019 bis Juni 2020 eine reduzierte Transaktionsgebühr für die SaaS-Angebote angezeigt.
-
 In diesem Szenario stellt Microsoft 100,00 USD für Ihre Softwarelizenz in Rechnung und zahlt 90,00 USD an den Herausgeber aus:
 
 |Berechnung durch Microsoft  | 100,00 USD pro Monat  |
@@ -136,7 +144,7 @@ In diesem Szenario stellt Microsoft 100,00 USD für Ihre Softwarelizenz in Rech
 |Microsoft zahlt Ihnen 80% Ihrer Lizenzkosten <br> \* Für jede qualifizierte SaaS-App zahlt Microsoft 90 % Ihrer Lizenzkosten.   |   80,00 USD pro Monat <br> \* 90,00 USD pro Monat    |
 |Microsoft behält 20% Ihrer Lizenzkosten ein <br> \* Für jede qualifizierte SaaS-App behält Microsoft 10 % Ihrer Lizenzkosten.  |  20,00 USD pro Monat <br> \* 10,00 USD     |
 
-Für bestimmte Angebote, die Sie im kommerziellen Marketplace veröffentlichen, senkt Microsoft die Marketplace-Dienstgebühr von 20 % (wie in der Microsoft-Herausgebervereinbarung angegeben) auf 10 %. Damit Ihre Angebote qualifiziert sind, müssen sie von Microsoft als gefördert für Azure IP-Co-Selling gekennzeichnet worden sein. Die Anforderungen für die Berechtigung müssen mindestens fünf (5) Arbeitstage vor dem Ende eines jeden Kalendermonats erfüllt sein, damit die reduzierte Marketplace-Dienstgebühr für den Monat in Anspruch genommen werden kann. Die gesenkte Marketplace-Dienstgebühr gilt für Azure IP-Co-Selling-Anreize für SaaS, VMs, verwaltete Apps und andere qualifizierte transaktionsfähige IaaS-Angebote, die über den kommerziellen Marketplace bereitgestellt werden.
+Für bestimmte Angebote, die Sie im kommerziellen Marketplace veröffentlichen, senkt Microsoft die Marketplace-Dienstgebühr von 20 % (wie in der [Microsoft-Herausgebervereinbarung](https://go.microsoft.com/fwlink/?LinkID=699560) angegeben) auf 10 %. Damit Ihre Angebote qualifiziert sind, müssen sie von Microsoft als gefördert für Azure IP-Co-Selling gekennzeichnet worden sein. Die Anforderungen für die Berechtigung müssen mindestens fünf (5) Arbeitstage vor dem Ende eines jeden Kalendermonats erfüllt sein, damit die reduzierte Marketplace-Dienstgebühr für den Monat in Anspruch genommen werden kann. Die gesenkte Marketplace-Dienstgebühr gilt für Azure IP-Co-Selling-Anreize für SaaS, VMs, verwaltete Apps und andere qualifizierte transaktionsfähige IaaS-Angebote, die über den kommerziellen Marketplace bereitgestellt werden.
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>Rechnungsstellung für den Kunden, Zahlung, Abrechnung und Inkasso
 
@@ -163,7 +171,7 @@ Kunden kaufen in der Regel im Rahmen eines Enterprise Agreement oder eines Vertr
 
 #### <a name="billing-questions-and-support"></a>Fragen zu Abrechnung und Support
 
-Weitere Informationen und gesetzliche Richtlinien finden Sie in der [Herausgebervereinbarung](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx) (in Partner Center verfügbar).
+Weitere Informationen und gesetzliche Richtlinien finden Sie in der [Microsoft-Herausgebervereinbarung](https://go.microsoft.com/fwlink/?LinkID=699560) (in Partner Center verfügbar).
 
 Hilfe zu Abrechnungsfragen erhalten Sie beim [Support für Herausgeber im kommerziellen Marketplace](https://aka.ms/marketplacepublishersupport).
 
@@ -182,7 +190,7 @@ Weitere Informationen zum Einrichten dieser Konten finden Sie unter [Verwalten I
 
 Die Veröffentlichungsoption „Transaktion“ ist nur für die folgenden Typen von Marketplace-Angeboten verfügbar:
 
-- **Virtueller Computer:** Wählen Sie zwischen den Preismodellen „Kostenlos“, „Bring-Your-Own-License“ und „Nutzungsbasierte Bezahlung“ aus, und weisen Sie sie als auf Angebotsebene definierte Pläne aus. Auf der Azure-Rechnung des Kunden weist Microsoft die Softwarelizenzgebühren des Herausgebers getrennt von den zugrunde liegenden Azure-Infrastrukturgebühren aus. Azure-Infrastrukturgebühren hängen von der Verwendung der Software des Herausgebers ab.
+- **Virtueller Azure-Computer:** Wählen Sie eines der Modelle „Kostenlos“, „BYOL (Bring-Your-Own-License)“ und „Nutzungsbasierte Preisgestaltung“ aus, und weisen Sie es als auf Angebotsebene definierte Pläne aus. Auf der Azure-Rechnung des Kunden weist Microsoft die Softwarelizenzgebühren des Herausgebers getrennt von den zugrunde liegenden Azure-Infrastrukturgebühren aus. Azure-Infrastrukturgebühren hängen von der Verwendung der Software des Herausgebers ab.
 
 - **Azure-Anwendung: Lösungsvorlage oder verwaltete App**: Muss einen oder mehrere virtuelle Computer bereitstellen und zieht sich durch die Summe der Preise für virtuelle Computer. Für verwaltete Apps mit einem Einzelplan kann anstelle der Preise für virtuelle Computer ein pauschales Monatsabonnement als Preismodell gewählt werden. In einigen Fällen werden dem Kunden die Nutzungsgebühren der Azure-Infrastruktur getrennt von den Softwarelizenzgebühren in Rechnung gestellt – aber auf derselben Abrechnung. Wenn Sie allerdings ein Angebot für eine verwaltete App für ISV-Infrastrukturgebühren konfigurieren, werden die Azure-Ressourcen dem Herausgeber berechnet. Für den Kunden wird eine Pauschalgebühr verwendet, die die Kosten für die Infrastruktur, Softwarelizenzen und Verwaltungsdienste abdeckt.
 

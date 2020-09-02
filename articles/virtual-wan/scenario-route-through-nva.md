@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: a8bed6c46b0660d5bf43863a5c7aaf4eeaf7e26f
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 6b62f8c33c73ded978c0c2e3a8c3b7fadea49c96
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853211"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852093"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>Szenario: Weiterleiten von Datenverkehr über ein virtuelles Netzwerkgerät
 
 Wenn Sie mit Virtual WAN-Routing für virtuelle Hubs arbeiten, stehen Ihnen eine ganze Reihe von Szenarien zur Verfügung. In diesem NVA-Szenario besteht das Ziel darin, den Datenverkehr durch ein virtuelles Netzwerkgerät (Network Virtual Appliance, NVA) für Branch-zu-VNet und VNet-zu-Branch zu leiten. Weitere Informationen zum Routing für virtuelle Hubs finden Sie unter [Informationen zum Routing virtueller Hubs](about-virtual-hub-routing.md).
 
 > [!NOTE]
-> Einige der Routingfunktionen befinden sich ggf. noch in der Einführungsphase. Wenn das Rollout in Ihrer Region noch nicht erfolgt ist, führen Sie in der Zwischenzeit die Schritte in diesen Versionen der Artikel aus:
+> Wenn Sie bereits über eine Einrichtung mit Routen verfügen, die vor der Verfügbarkeit der in [Konfigurieren des Routings für virtuelle Hubs](how-to-virtual-hub-routing.md) beschriebenen neuen Möglichkeiten liegen, befolgen Sie die Schritte in diesen Versionen der Artikel:
 >* [Artikel zum Azure-Portal](virtual-wan-route-table-nva-portal.md)
 >* [Artikel zu PowerShell](virtual-wan-route-table-nva.md)
 >

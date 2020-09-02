@@ -2,17 +2,17 @@
 title: Bereitstellen einer Vorlagenspezifikation als verknüpfte Vorlage
 description: Erfahren Sie, wie Sie eine vorhandene Vorlagenspezifikation in einer verknüpften Bereitstellung bereitstellen.
 ms.topic: conceptual
-ms.date: 07/20/2020
-ms.openlocfilehash: 5d4824ea432d804418fda2cdc90d49154d496722
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/26/2020
+ms.openlocfilehash: dacf2fba3ff78f3ff92741b49edad8fdf5bffe29
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094352"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918382"
 ---
 # <a name="tutorial-deploy-a-template-spec-as-a-linked-template-preview"></a>Tutorial: Bereitstellen einer Vorlagenspezifikation als verknüpfte Vorlage (Vorschau)
 
-Erfahren Sie, wie Sie eine vorhandene [Vorlagenspezifikation](template-specs.md) mithilfe einer [verknüpften Bereitstellung](linked-templates.md#linked-template) bereitstellen. Mithilfe von Vorlagenspezifikationen teilen Sie ARM-Vorlagen mit anderen Benutzer in Ihrer Organisation. Nachdem Sie eine Vorlagenspezifikation erstellt haben, können Sie die Vorlagenspezifikation mithilfe von Azure PowerShell bereitstellen. Sie können die Vorlagenspezifikation auch als Teil ihrer Projektmappe bereitstellen, indem Sie eine verknüpfte Vorlage verwenden.
+Erfahren Sie, wie Sie eine vorhandene [Vorlagenspezifikation](template-specs.md) mithilfe einer [verknüpften Bereitstellung](linked-templates.md#linked-template) bereitstellen. Mithilfe von Vorlagenspezifikationen teilen Sie ARM-Vorlagen mit anderen Benutzer in Ihrer Organisation. Nachdem Sie eine Vorlagenspezifikation erstellt haben, können Sie die Vorlagenspezifikation mithilfe von Azure PowerShell oder Azure CLI bereitstellen. Sie können die Vorlagenspezifikation auch als Teil ihrer Projektmappe bereitstellen, indem Sie eine verknüpfte Vorlage verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -117,9 +117,22 @@ Zum Bereitstellen einer Vorlagenspezifikation in einer ARM-Vorlage fügen Sie Ih
 
 Die Vorlagenspezifikations-ID wird mithilfe der [`resourceID()`](template-functions-resource.md#resourceid)-Funktion generiert. Das Ressourcengruppenargument in der resourceID()-Funktion ist optional, wenn sich die Vorlagenspezifikation (templateSpec) in derselben Ressourcengruppe der aktuellen Bereitstellung befindet.  Sie können die Ressourcen-ID auch direkt als Parameter übergeben. Zum Abrufen der ID verwenden Sie:
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```azurepowershell-interactive
 $id = (Get-AzTemplateSpec -ResourceGroupName $resourceGroupName -Name $templateSpecName -Version $templateSpecVersion).Version.Id
 ```
+
+# <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/azure-cli)
+
+```azurecli-interactive
+id = $(az template-specs show --name $templateSpecName --resource-group $resourceGroupName --version $templateSpecVersion --query "id")
+```
+
+> [!NOTE]
+> Es gibt ein bekanntes Problem beim Abrufen der Vorlagenspezifikations-ID und deren Zuweisung zu einer Variablen in Windows PowerShell.
+
+---
 
 Die Syntax zum Übergeben von Parametern an die Vorlagenspezifikation lautet:
 
@@ -138,6 +151,8 @@ Die Syntax zum Übergeben von Parametern an die Vorlagenspezifikation lautet:
 
 Wenn Sie die verknüpfte Vorlage bereitstellen, stellt sie sowohl die Webanwendung als auch das Speicherkonto bereit. Die Bereitstellung ist mit der Bereitstellung anderer ARM-Vorlagen identisch.
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```azurepowershell
 New-AzResourceGroup `
   -Name webRG `
@@ -147,6 +162,21 @@ New-AzResourceGroupDeployment `
   -ResourceGroupName webRG `
   -TemplateFile "c:\Templates\deployTS\azuredeploy.json"
 ```
+
+# <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/azure-cli)
+
+```azurecli
+az group create \
+  --name webRG \
+  --location westus2
+
+az deployment group create \
+  --resource-group webRG \
+  --template-file "c:\Templates\deployTS\azuredeploy.json"
+
+```
+
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 

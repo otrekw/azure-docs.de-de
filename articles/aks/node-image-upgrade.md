@@ -5,15 +5,15 @@ author: laurenhughes
 ms.author: lahugh
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 07/13/2020
-ms.openlocfilehash: 040f4378e01c3696b9a74bfcc27230503828f19a
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.date: 08/17/2020
+ms.openlocfilehash: 154558a2aa679dddad395225088ea891ecea8ebc
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562786"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654275"
 ---
-# <a name="preview---azure-kubernetes-service-aks-node-image-upgrades"></a>Vorschau – Upgrades für AKS-Knotenimages (Azure Kubernetes Service)
+# <a name="azure-kubernetes-service-aks-node-image-upgrade"></a>Upgrade für AKS-Knotenimages (Azure Kubernetes Service)
 
 AKS unterstützt Upgrades für Images auf einem Knoten, sodass Sie mit den aktuellsten Betriebssystem- und Laufzeitupdates auf dem neuesten Stand sind. AKS stellt ein neues Image pro Woche mit den neuesten Updates zur Verfügung. Es ist daher von Vorteil, die Images Ihres Knotens regelmäßig auf die neuesten Features, einschließlich Linux- oder Windows-Patches, zu aktualisieren. In diesem Artikel erfahren Sie, wie Sie ein Upgrade für AKS-Clusterknotenimages durchführen und Knotenpoolimages aktualisieren können, ohne ein Upgrade der Version von Kubernetes durchzuführen.
 
@@ -21,23 +21,9 @@ Wenn Sie an Informationen zu den neuesten von AKS bereitgestellten Images intere
 
 Informationen zum Upgrade der Kubernetes-Version für Ihren Cluster finden Sie unter [Aktualisieren eines AKS-Clusters][upgrade-cluster].
 
-## <a name="register-the-node-image-upgrade-preview-feature"></a>Registrieren der Previewfunktion für Upgrades von Knotenimages
+## <a name="install-the-aks-cli-extension"></a>Installieren der CLI-Erweiterung für AKS
 
-Um die Previewfunktion für Upgrades von Knotenimages während des Vorschauzeitraums verwenden zu können, müssen Sie die Funktion registrieren.
-
-```azurecli
-# Register the preview feature
-az feature register --namespace "Microsoft.ContainerService" --name "NodeImageUpgradePreview"
-```
-
-Die Registrierung dauert einige Minuten. Verwenden Sie den folgenden Befehl, um zu überprüfen, ob die Funktion registriert ist:
-
-```azurecli
-# Verify the feature is registered:
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/NodeImageUpgradePreview')].{Name:name,State:properties.state}"
-```
-
-In der Vorschauphase benötigen Sie die CLI-Erweiterung *aks-preview*, um Upgrades für Knotenimages durchführen zu können. Verwenden Sie den Befehl [az extension add][az-extension-add], und suchen Sie dann mit dem Befehl [az extension update][az-extension-update] nach verfügbaren Updates:
+Vor Veröffentlichung der nächsten CLI-Hauptversion benötigen Sie die CLI-Erweiterung *aks-preview*, um Upgrades für Knotenimages durchführen zu können. Verwenden Sie den Befehl [az extension add][az-extension-add], und suchen Sie dann mit dem Befehl [az extension update][az-extension-update] nach verfügbaren Updates:
 
 ```azurecli
 # Install the aks-preview extension
@@ -46,12 +32,6 @@ az extension add --name aks-preview
 # Update the extension to make sure you have the latest version installed
 az extension update --name aks-preview
 ```
-
-Wenn der Status als registriert angezeigt wird, können Sie die Registrierung des `Microsoft.ContainerService`-Ressourcenanbieters mit dem Befehl [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) aktualisieren:
-
-```azurecli
-az provider register --namespace Microsoft.ContainerService
-```  
 
 ## <a name="upgrade-all-nodes-in-all-node-pools"></a>Aktualisieren aller Knoten in allen Knotenpools
 

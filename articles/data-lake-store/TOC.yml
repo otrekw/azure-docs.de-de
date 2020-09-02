@@ -22,11 +22,6 @@
       href: data-lake-store-get-started-powershell.md
     - name: Verwenden der Azure-Befehlszeilenschnittstelle
       href: data-lake-store-get-started-cli-2.0.md
-- name: Beispiele
-  items:
-    - name: Azure Policy-Integrationen
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Anleitung
   items:
     - name: Laden und Verschieben von Daten
@@ -177,6 +172,9 @@
       href: /azure/templates/microsoft.datalakestore/allversions
     - name: Azure CLI
       href: 'https://docs.microsoft.com/cli/azure/dls'
+    - name: Integrierte Azure Policy-Aktionen
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Ressourcen
   items:
     - name: Azure-Roadmap

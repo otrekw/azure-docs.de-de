@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 3d680fb105b6bde26e5b02544359009f316647bb
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: f29a7e48fc1872f83b5a6ce127f38c1a559b2691
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513722"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762316"
 ---
 # <a name="about-virtual-hub-routing"></a>Informationen zum Routing virtueller Hubs
 
@@ -25,10 +25,6 @@ Informationen zur Konfiguration des Routings finden Sie unter [Konfigurieren des
 ## <a name="routing-concepts"></a><a name="concepts"></a>Routingkonzepte
 
 In den folgenden Abschnitten werden die Schlüsselkonzepte des Routings für virtuelle Hubs beschrieben.
-
-> [!NOTE]
-> Einige dieser neuen Konzepte für Hub-Routingtabelle, Zuordnung, Weitergabe und statische Routen in einer VNET-Verbindung befinden sich möglicherweise noch in der Rolloutphase, die voraussichtlich in der Woche ab dem 17. August abgeschlossen ist.
->
 
 ### <a name="hub-route-table"></a><a name="hub-route"></a>Hub-Routingtabelle
 
@@ -77,9 +73,9 @@ Routingtabellen verfügen jetzt über Features für die Zuordnung und Weitergabe
 
 * **Kunden mit Virtual WAN vom Typ „Standard“ mit bereits vorhandenen Routen auf dem virtuellen Hub**:
 
-Wenn Sie neue Routingtabellenfunktionen verwenden möchten, warten Sie bis zum Abschluss des Rollouts in Azure in der Woche ab dem 17. August. Wenn im Azure-Portal im Abschnitt „Routing“ für den Hub bereits Routen vorhanden sind, müssen Sie diese zuerst löschen und dann versuchen, neue Routingtabellen zu erstellen (verfügbar im Abschnitt „Routingtabellen“ für den Hub im Azure-Portal).
+Wenn im Azure-Portal im Abschnitt „Routing“ für den Hub bereits Routen vorhanden sind, müssen Sie diese zuerst löschen und dann versuchen, neue Routingtabellen zu erstellen (verfügbar im Abschnitt „Routingtabellen“ für den Hub im Azure-Portal).
 
-* **Kunden mit Virtual WAN vom Typ „Basic“ mit bereits vorhandenen Routen auf dem virtuellen Hub**: Wenn Sie die neuen Routingtabellenfunktionen verwenden möchten, warten Sie bis zum Abschluss des Rollouts in Azure in der Woche ab dem 17. August. Wenn Sie bereits über vorhandene Routen im Routing-Abschnitt für den Hub im Azure-Portal verfügen, müssen Sie diese zuerst löschen und dann Virtual WAN vom Typ „Basic“ auf „Standard“ **upgraden**. Weitere Informationen finden Sie unter [Upgrade eines Virtual WAN von Basic auf Standard](upgrade-virtual-wan.md).
+* **Kunden mit Virtual WAN vom Typ „Basic“ mit bereits vorhandenen Routen auf dem virtuellen Hub**: Wenn im Azure-Portal im Abschnitt „Routing“ für den Hub bereits Routen vorhanden sind, müssen Sie diese zuerst löschen und dann Ihre Virtual WAN-Instanz vom Typ „Basic“ auf „Standard“ **upgraden**. Weitere Informationen finden Sie unter [Upgrade eines Virtual WAN von Basic auf Standard](upgrade-virtual-wan.md).
 
 ## <a name="virtual-wan-routing-considerations"></a><a name="considerations"></a>Überlegungen zum Routing mit Virtual WAN
 
@@ -89,6 +85,8 @@ Beachten Sie beim Konfigurieren des Virtual WAN-Routings Folgendes:
 * Alle Branchverbindungen müssen ihre Routen an dieselbe Gruppe von Routingtabellen weitergeben. Wenn Sie z. B. festlegen, dass Branches an die Standardroutingtabelle weitergeben sollen, muss diese Konfiguration über alle Branches konsistent sein. Somit können alle Verbindungen, die der Standardroutingtabelle zugeordnet sind, alle Branches erreichen.
 * Das Routing zwischen Branches über Azure Firewall wird derzeit nicht unterstützt.
 * Wenn Sie Azure Firewall in mehreren Regionen verwenden, müssen alle virtuellen Spoke-Netzwerke derselben Routingtabelle zugeordnet werden. Beispielsweise ist es nicht möglich, dass eine Teilmenge der VNETs Azure Firewall durchlaufen, während andere VNETs Azure Firewall im selben virtuellen Hub umgehen.
+* Eine einzelne IP-Adresse für den nächsten Hop kann pro VNET-Verbindung konfiguriert werden.
+* Der virtuelle Hub unterstützt keine statische Route für 0.0.0.0/0 und virtuelle Netzwerkverbindung für den nächsten Hop (oder eine IP-Adresse einer Appliance in der VNET-Verbindung).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

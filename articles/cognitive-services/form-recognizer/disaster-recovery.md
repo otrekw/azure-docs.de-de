@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 42faf4ba0a596fc5b2b34f403a5117e5ceea82ed
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: ac934f88d00521b13fd2b134c80f19656c63117b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903339"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718814"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>Sichern und Wiederherstellen Ihrer Modelle für die Formularerkennung
 
@@ -39,6 +39,9 @@ Der Vorgang zum Kopieren eines benutzerdefinierten Modells umfasst die folgenden
 1. Zuerst senden Sie eine Autorisierungsanforderung für den Kopiervorgang an die Zielressource – d. h. die Ressource, die das kopierte Modell erhalten soll. Als Antwort erhalten Sie die URL des neu erstellten Zielmodells, das die kopierten Daten erhalten wird.
 1. Als Nächstes senden Sie die Kopieranforderung an die Quellressource – also an die Ressource, die das zu kopierende Modell enthält. Als Antwort erhalten Sie eine URL, mit der Sie den Fortschritt des Vorgangs nachverfolgen können.
 1. Sie verwenden die Anmeldeinformationen für Ihre Quellressource zum Abfragen der URL zum Fortschritt, bis der Vorgang erfolgreich abgeschlossen wurde. Sie können auch die ID des neuen Modells in der Zielressource abfragen, um den Status des neuen Modells abzurufen.
+
+> [!CAUTION]
+> Die Kopier-API unterstützt derzeit keine Modell-IDs für [zusammengesetzte benutzerdefinierte Modelle](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/Compose). Das Zusammensetzen von Modellen ist eine Previewfunktion in der Vorschauversion v2.1-preview.1. 
 
 ## <a name="generate-copy-authorization-request"></a>Generieren einer Autorisierungsanforderung für den Kopiervorgang
 

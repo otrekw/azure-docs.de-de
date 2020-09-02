@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: e134c69f5d602cb4369e9410e3e2b9d3478b11a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2c238bf3911283db5d09fdd5679d784c5e5401f8
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76756248"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654802"
 ---
 # <a name="scalability-and-performance-targets-for-premium-page-blob-storage-accounts"></a>Skalierungs- und Leistungsziele für Seitenblob-Speicherkonten mit Premium-Leistung
 
@@ -25,7 +25,7 @@ ms.locfileid: "76756248"
 Ein Seitenblob-Speicherkonto mit Premium-Leistung ist für Lese-/Schreibvorgänge optimiert. Dieser Speicherkontotyp sichert einen nicht verwalteten Datenträger für einen virtuellen Azure-Computer.
 
 > [!NOTE]
-> Microsoft empfiehlt, nach Möglichkeit verwaltete Datenträger für virtuelle Azure-Computer (VMs) zu verwenden. Weitere Informationen zu verwalteten Datenträgern finden Sie in der [Übersicht über Azure Disk Storage für Windows-VMs](../../virtual-machines/windows/managed-disks-overview.md).
+> Microsoft empfiehlt, nach Möglichkeit verwaltete Datenträger für virtuelle Azure-Computer (VMs) zu verwenden. Weitere Informationen zu verwalteten Datenträgern finden Sie in der [Übersicht über Azure Disk Storage für virtuelle Computer](../../virtual-machines/managed-disks-overview.md).
 
 Seitenblob-Speicherkonten mit Premium-Leistung weisen folgende Skalierbarkeitsziele auf:
 
@@ -39,7 +39,7 @@ Seitenblob-Speicherkonten mit Premium-Leistung weisen folgende Skalierbarkeitszi
 
 Ein Seitenblobkonto mit Premium-Leistung ist ein universelles Konto, das für Premium-Leistung konfiguriert ist. Es werden Speicherkonten vom Typ „Universell v2“ empfohlen.
 
-Wenn Sie Seitenblob-Speicherkonten mit Premium-Leistung für nicht verwaltete Datenträger verwenden und Ihre Anwendung die Skalierbarkeitsziele eines einzelnen Speicherkontos überschreitet, empfiehlt Microsoft die Migration zu verwalteten Datenträgern. Weitere Informationen zu verwalteten Datenträgern finden Sie in der [Übersicht über Azure Disk Storage für Windows-VMs](../../virtual-machines/windows/managed-disks-overview.md) und der [Übersicht über Azure Disk Storage für Linux-VMs](../../virtual-machines/linux/managed-disks-overview.md).
+Wenn Sie Seitenblob-Speicherkonten mit Premium-Leistung für nicht verwaltete Datenträger verwenden und Ihre Anwendung die Skalierbarkeitsziele eines einzelnen Speicherkontos überschreitet, empfiehlt Microsoft die Migration zu verwalteten Datenträgern. Weitere Informationen zu verwalteten Datenträgern finden Sie in der [Übersicht über Azure Disk Storage für virtuelle Computer](../../virtual-machines/managed-disks-overview.md).
 
 Falls Sie keine Migration zu verwalteten Datenträgern durchführen möchten, sollten Sie Ihre Anwendung für die Verwendung von mehreren Speicherkonten erstellen und die Daten über diese Speicherkonten hinweg partitionieren. Wenn Sie beispielsweise 51-TB-Datenträger an mehrere VMs anfügen möchten, können Sie sie auf zwei Speicherkonten verteilen. 35 TB ist der Grenzwert pro Storage Premium-Konto. Stellen Sie sicher, dass ein Speicherkonto mit Premium-Leistung stets Datenträger mit einer Größe von maximal 35 TB enthält.
 

@@ -3,12 +3,12 @@ title: 'Kontingente bei Live Video Analytics in IoT Edge: Azure'
 description: In diesem Artikel werden die Kontingente und Einschränkungen von Live Video Analytics in IoT Edge beschrieben.
 ms.topic: conceptual
 ms.date: 05/22/2020
-ms.openlocfilehash: 90141fa850c9ab3e3abbea15001249da0736ac45
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 32a24079b36655bfdacd25b07d419009f5012507
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091809"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750230"
 ---
 # <a name="quotas-and-limitations"></a>Kontingente und Einschränkungen
 
@@ -36,21 +36,23 @@ Für die Vorschauversion gelten Einschränkungen für die unterschiedlichen Knot
    * Pro Diagrammtopologie ist nur eine RTSP-Quelle zulässig.
 * Verarbeitungsknoten für Frameratenfilter
    * Muss direkt hinter dem RTSP-Quellknoten oder dem Verarbeitungsknoten für die Bewegungserkennung angeordnet sein.
-   * Darf nicht hinter einem Verarbeitungsknoten für die HTTP-Erweiterung angeordnet sein.
+   * Darf nicht hinter einem HTTP- oder gRPC-Erweiterungsprozessor angeordnet sein.
    * Darf nicht vor einem Verarbeitungsknoten für die Bewegungserkennung angeordnet sein.
 * Verarbeitungsknoten für die HTTP-Erweiterung
+   * Pro Diagrammtopologie ist maximal ein solcher Verarbeitungsknoten zulässig.
+* gRPC-Erweiterungsprozessor
    * Pro Diagrammtopologie ist maximal ein solcher Verarbeitungsknoten zulässig.
 * Verarbeitungsknoten für die Bewegungserkennung
    * Muss direkt hinter dem RTSP-Quellknoten angeordnet sein.
    * Pro Diagrammtopologie ist maximal ein solcher Verarbeitungsknoten zulässig.
-   * Darf nicht hinter einem Verarbeitungsknoten für die HTTP-Erweiterung angeordnet sein.
+   * Darf nicht hinter einem HTTP- oder gRPC-Erweiterungsprozessor angeordnet sein.
 * Signalgateprozessor
    * Muss direkt hinter dem RTSP-Quellknoten angeordnet sein.
 * Medienobjektsenke 
    * Muss direkt hinter dem RTSP-Quellknoten oder Signalgateprozessor angeordnet sein.
 * Dateisenke
    * Muss direkt hinter dem Signalgateprozessor angeordnet sein.
-   * Darf nicht direkt hinter dem Verarbeitungsknoten für die HTTP-Erweiterung oder die Bewegungserkennung angeordnet sein.
+   * Darf nicht direkt hinter einem HTTP- oder gRPC-Erweiterungs- oder Bewegungserkennungsprozessor angeordnet sein.
 * IoT Hub-Senke
    * Darf nicht direkt hinter einer IoT Hub-Quelle angeordnet sein.
 

@@ -3,12 +3,12 @@ title: Sichern einer SQL Server-VM über den VM-Bereich
 description: In diesem Artikel erfahren Sie, wie Sie SQL Server-Datenbanken auf virtuellen Azure-Computern über den VM-Bereich sichern können.
 ms.topic: conceptual
 ms.date: 08/13/2020
-ms.openlocfilehash: dd30ca1fb138d3e3bd44633b9d5e71beae6d96be
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 4f4ea202ee96e93a621c8dd0025c9ebc8b8d445d
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88226846"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88891656"
 ---
 # <a name="back-up-a-sql-server-from-the-vm-pane"></a>Sichern einer SQL Server-Instanz über den VM-Bereich
 
@@ -62,12 +62,12 @@ Sie können die Sicherung auf Ihrer SQL Server-VM über den Bereich **Sicherung*
 
     ![„Sicherungsbereitschaft“ ist „Nicht bereit“](./media/backup-sql-server-vm-from-vm-pane/backup-readiness-not-ready.png)
 
-8. Für weitere Vorgänge oder Überwachungen, die Sie auf der gesicherten SQL Server-VM durchführen müssen, wechseln Sie zum entsprechenden Recovery Service-Tresor. Wechseln Sie zu **Sicherungselemente**, um alle in diesem Tresor gesicherten Datenbanken anzuzeigen und Vorgänge wie bedarfsgesteuerte Sicherungen und Wiederherstellungen auszulösen. In ähnlicher Weise wechseln Sie zu **Sicherungsaufträge**, um Aufträge, die Vorgängen wie Konfigurieren von Schutz, Sicherung und Wiederherstellung entsprechen, zu [überwachen](manage-monitor-sql-database-backup.md).
+8. Für weitere Vorgänge oder Überwachungen, die Sie auf der gesicherten SQL Server-VM durchführen müssen, wechseln Sie zum entsprechenden Recovery Services-Tresor. Wechseln Sie zu **Sicherungselemente**, um alle in diesem Tresor gesicherten Datenbanken anzuzeigen und Vorgänge wie bedarfsgesteuerte Sicherungen und Wiederherstellungen auszulösen. In ähnlicher Weise wechseln Sie zu **Sicherungsaufträge**, um Aufträge, die Vorgängen wie Konfigurieren von Schutz, Sicherung und Wiederherstellung entsprechen, zu [überwachen](manage-monitor-sql-database-backup.md).
 
     ![Siehe „Gesicherte Datenbanken“ in „Sicherungselemente“](./media/backup-sql-server-vm-from-vm-pane/backup-items.png)
 
 >[!NOTE]
->Auf den neuen SQL Server-Instanzen, die der geschützten VM möglicherweise später hinzugefügt werden, wird die Sicherung wird nicht automatisch konfiguriert. Um die Sicherung für die neu hinzugefügten Instanzen zu konfigurieren, müssen Sie zum Tresor wechseln, bei dem die VM registriert ist, und die [hier](backup-sql-server-database-azure-vms.md) aufgeführten Schritte ausführen.
+>Auf den neuen SQL Server-Instanzen, die der geschützten VM möglicherweise später hinzugefügt werden, wird die Sicherung nicht automatisch konfiguriert. Um die Sicherung für die neu hinzugefügten Instanzen zu konfigurieren, müssen Sie zum Tresor wechseln, bei dem die VM registriert ist, und die [hier](backup-sql-server-database-azure-vms.md) aufgeführten Schritte ausführen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

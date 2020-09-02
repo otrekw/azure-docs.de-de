@@ -3,12 +3,12 @@ title: 'Offlinesicherung für Data Protection Manager (DPM) und Microsoft Azure 
 description: Mit Azure Backup können Sie Daten unter Verwendung des Azure Import/Export-Diensts aus dem Netzwerk senden. In diesem Artikel wird der Offlinesicherungsworkflow für frühere Versionen von DPM und Azure Backup Server erläutert.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: e986baaf6ac2943bd210761ff2194eacdee5984a
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: b747fd3c682dc1caf7312ba7279470a1e6b38bd5
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88261921"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890092"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-previous-versions"></a>Offlinesicherungsworkflow für DPM und Azure Backup Server (vorherige Versionen)
 
@@ -203,7 +203,7 @@ Das Hilfsprogramm *AzureOfflineBackupDiskPrep* wird zum Vorbereiten der SATA-Lau
 
 1. Geben Sie den Laufwerkbuchstaben ohne nachgestellten Doppelpunkt für den bereitgestellten Datenträger an, den Sie für die Übertragung an Azure vorbereiten möchten. Bestätigen Sie die Formatierung des Laufwerks, wenn Sie dazu aufgefordert werden.
 
-    Das Tool beginnt dann, den Datenträger vorzubereiten und die Sicherungsdaten zu kopieren. Falls auf dem bereitgestellten Datenträger nicht genügend Speicherplatz für die Sicherungsdaten verfügbar ist, müssen Sie unter Umständen weitere Datenträger anfügen, wenn Sie vom Tool dazu aufgefordert werden. <br/>
+    Das Tool beginnt dann, den Datenträger vorzubereiten und die Sicherungsdaten zu kopieren. Falls auf dem bereitgestellten Datenträger nicht genügend Speicherplatz für die Sicherungsdaten verfügbar ist, müssen Sie ggf. weitere Datenträger anfügen, wenn Sie vom Tool dazu aufgefordert werden. <br/>
 
     Nach der erfolgreichen Ausführung des Tools sind ein oder mehrere Datenträger, die Sie angegeben haben, für den Versand an Azure vorbereitet. In Azure wird ein Importauftrag mit dem Namen erstellt, den Sie während des Workflows im Abschnitt „Initiieren der Offlinesicherung“ angegeben haben. Zum Schluss zeigt das Hilfsprogramm die Lieferadresse des Azure-Rechenzentrums an, an das die Datenträger gesendet werden müssen.
 

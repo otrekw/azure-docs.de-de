@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/07/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 7500eddc2416a1cb705ef207930c5fe4c6f1068a
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: c1550b941c6d0f58feba7d505c7206993e14226b
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604755"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88856064"
 ---
 # <a name="create-a-saas-offer-in-the-commercial-marketplace"></a>Erstellen eines SaaS-Angebots im kommerziellen Marketplace
 
@@ -234,7 +234,7 @@ Für kommerzielle Marketplace-Herausgeber stehen zwei Arten von Zusatzvereinbaru
 
 #### <a name="terms-and-conditions"></a>Geschäftsbedingungen
 
-Wenn Sie Ihre eigenen Geschäftsbedingungen einschließen möchten, können Sie diese in das Feld für die Geschäftsbedingungen eingeben. Sie können bis zu 10.000 Zeichen in dieses Feld eingeben. Wenn Ihre Geschäftsbedingungen eine längere Beschreibung erfordern, geben Sie in diesem Feld einen einzelnen URL-Link ein, über den Ihre Geschäftsbedingungen aufgerufen werden können. Er wird für Kunden als aktiver Link angezeigt.
+Wenn Sie Ihre eigenen Geschäftsbedingungen einschließen möchten, können Sie diese in das Feld für die Geschäftsbedingungen eingeben. Sie können bis zu 10.000 Zeichen in dieses Feld eingeben. Wenn Ihre Geschäftsbedingungen eine längere Beschreibung erfordern, geben Sie in diesem Feld einen einzelnen URL-Link ein, über den Ihre Geschäftsbedingungen aufgerufen werden können.
 
 Kunden müssen diese Bestimmungen akzeptieren, bevor sie Ihr Angebot testen können.
 
@@ -282,18 +282,19 @@ Dies ist ein Pflichtfeld.
 #### <a name="files-and-images"></a>Dateien und Bilder
 
 - **Dokumente** (erforderlich): Fügen Sie für Ihr Angebot Marketingdokumente im PDF-Format hinzu (pro Angebot mindestens ein Dokument und maximal drei Dokumente).
-- **Bilder** – Laden Sie Logobilder im PNG-Format hoch:
+- **Bilder** (erforderlich): Logobilder Ihres Angebots können in den Marketplaces an verschiedenen Stellen angezeigt werden. Geben Sie eine PNG-Datei für das **große** Logo an. Dies wird in Partner Center verwendet, um ein **kleines** und ein **mittleres** Logo zu erstellen. Sie können diese Logos später optional durch andere Bilder ersetzen.
 
-  - **Klein** (48 x 48 Pixel, erforderlich)
-  - **Mittel** (90 x 90 Pixel, erforderlich)
-  - **Groß** (216 x 216 Pixel, erforderlich)
-  - **Breit** (255 x 115 Pixel, optional)
+  - **Groß** (von 216 x 216 bis 350 x 350 Pixel, erforderlich)
+  - **Mittel** (90 x 90 Pixel, optional)
+  - **Klein** (48 x 48 Pixel, optional)
+  
+  Diese Logos werden an unterschiedlichen Stellen in der Auflistung verwendet:
 
-   Diese drei Logogrößen werden an verschiedenen Stellen in den Onlineshops verwendet:
+   - Das große Logo wird auf Ihrer Seite mit der Angebotsliste sowie im Azure Marketplace und in Microsoft AppSource angezeigt.
+   - Das mittelgroße Logo wird angezeigt, wenn Sie eine neue Ressource in Microsoft Azure erstellen.
+   - Das kleine Logo erscheint in den Suchergebnissen von Azure Marketplace sowie auf der Hauptseite und Suchergebnisseite von Microsoft AppSource.
 
-   -   Das kleine Logo (48 x 48 Pixel) erscheint in den Suchergebnissen von Azure Marketplace sowie auf der Hauptseite und Suchergebnisseite von Microsoft AppSource. 
-   -   Das mittelgroße Logo (90 x 90 Pixel) wird angezeigt, wenn Sie eine neue Ressource in Microsoft Azure erstellen.
-   -   Das große Logo (zwischen 216 x 216 und 350 x 350 Pixel) erscheint auf Ihrer Seite mit der Angebotsliste sowie im Azure Marketplace und in Microsoft AppSource.
+   [!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 - **Screenshots** (erforderlich): Fügen Sie maximal fünf Screenshots hinzu, um Ihr Angebot zu veranschaulichen (mit einer Größe von 1280 x 720 Pixeln). Alle Bilder müssen das PNG-Format aufweisen.
 - **Videos** (optional): Fügen Sie Links zu Videos hinzu, um Ihr Angebot zu veranschaulichen. Sie können Links zu YouTube und/oder Vimeo-Videos angeben, die zusammen mit Ihrem Angebot bei Kunden angezeigt werden. Sie müssen auch ein Miniaturbild des Videos hinzufügen. Es muss das PNG-Format und eine Größe von 1280 x 720 Pixel aufweisen. Sie können bis zu vier Videos pro Angebot anzeigen.

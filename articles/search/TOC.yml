@@ -88,9 +88,6 @@
       href: /samples/browse/?languages=python&products=azure-cognitive-search
     - name: REST-Beispiele
       href: /samples/browse/?expanded=azure&languages=http&products=azure-cognitive-search
-    - name: Integrierte Azure Policy-Aktionen
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Konzepte
   items:
     - name: Volltextsuche
@@ -387,7 +384,7 @@
           href: cognitive-search-common-errors-warnings.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/search?view=azure-cli-latest
     - name: Azure PowerShell
       href: /powershell/module/az.search
@@ -496,6 +493,9 @@
           items:
             - name: Erkennung benannter Entitäten
               href: cognitive-search-skill-named-entity-recognition.md
+    - name: Integrierte Azure Policy-Aktionen
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Ressourcen
   items:
     - name: Azure-Communitysupport

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 3d8c5d408ef2b958ca7d3454f23ce2c52fb1d1be
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 0f9a8a1c4631fc667d0dd31ae62f7d57aefccc90
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88513028"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855853"
 ---
 # <a name="frequently-asked-questions-about-classic-to-azure-resource-manager-migration"></a>Häufig gestellte Fragen zur Migration vom klassischen Bereitstellungsmodell zum Azure Resource Manager-Bereitstellungsmodell
 
@@ -22,11 +22,11 @@ ms.locfileid: "88513028"
 
 ## <a name="what-is-azure-service-manager-and-what-does-it-mean-by-classic"></a>Was ist Azure Service Manager, und was bedeutet „klassisch“?
 
-Das Wort „klassisch“ bei „IaaS-VMs (klassisch)“ bezieht sich auf VMs, die von Azure Service Manager (ASM) verwaltet werden. Azure Service Manager (ASM) ist die alte Steuerungsebene von Azure, über die VMs erstellt, verwaltet und gelöscht werden und über die weitere Steuerungsebenenvorgänge ausgeführt werden können. 
+Das Wort „klassisch“ bei „IaaS-VMs (klassisch)“ bezieht sich auf VMs, die von Azure Service Manager (ASM) verwaltet werden. Azure Service Manager (ASM) ist die alte Steuerungsebene von Azure, über die VMs erstellt, verwaltet und gelöscht und weitere Steuerungsebenenvorgänge ausgeführt werden können. 
 
 ## <a name="what-is-azure-resource-manager"></a>Was ist Azure Resource Manager?
 
-[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) ist die aktuelle Steuerungsebene von Azure, über die VMs erstellt, verwaltet und gelöscht werden und über die weitere Steuerungsebenenvorgänge ausgeführt werden können. 
+[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) ist die aktuelle Steuerungsebene von Azure, über die VMs erstellt, verwaltet und gelöscht und weitere Steuerungsebenenvorgänge ausgeführt werden können. 
 
 ## <a name="what-is-the-time-required-for-migration"></a>Wie viel Zeit ist für die Migration erforderlich?
 
@@ -70,7 +70,7 @@ Sie können die Migration nicht abbrechen, wenn für den Commitvorgang ein Fehle
 
 ## <a name="do-i-have-to-buy-another-express-route-circuit-if-i-have-to-use-iaas-under-resource-manager"></a>Muss ich eine weitere ExpressRoute-Verbindung erwerben, wenn ich IaaS unter Resource Manager verwenden muss? 
 
-Nein. Vor Kurzem haben wir das [Umstellen von ExpressRoute-Verbindungen vom klassischen Bereitstellungsmodell auf das Resource Manager-Bereitstellungsmodell](~/articles/expressroute/expressroute-move.md)ermöglicht. Sie müssen keine neue ExpressRoute-Verbindung erwerben, wenn Sie bereits eine besitzen.
+Nein. Vor Kurzem haben wir das [Umstellen von ExpressRoute-Verbindungen vom klassischen Bereitstellungsmodell auf das Resource Manager-Bereitstellungsmodell](../expressroute/expressroute-move.md)ermöglicht. Sie müssen keine neue ExpressRoute-Verbindung erwerben, wenn Sie bereits eine besitzen.
 
 ## <a name="what-if-i-had-configured-role-based-access-control-policies-for-my-classic-iaas-resources"></a>Was passiert, wenn ich für meine klassischen IaaS-Ressourcen Richtlinien für die rollenbasierte Zugriffssteuerung konfiguriert habe? 
 
@@ -93,7 +93,7 @@ So migrieren Sie den virtuellen Computer zum Resource Manager-Modus
 1. Löschen Sie die Sicherungs-/Momentaufnahmenerweiterung vom virtuellen Computer.
 2. Migrieren Sie den virtuellen Computer vom klassischen Modus zum Resource Manager-Modus. Stellen Sie sicher, dass die Speicher- und Netzwerkinformationen des virtuellen Computers ebenfalls zum Resource Manager-Modus migriert werden.
 
-Wenn Sie den migrierten virtuellen Computer darüber hinaus sichern möchten, wechseln Sie zum Blatt „Verwaltung virtueller Computer“, um [die Sicherung zu aktivieren](~/articles/backup/quick-backup-vm-portal.md#enable-backup-on-a-vm).
+Wenn Sie den migrierten virtuellen Computer darüber hinaus sichern möchten, wechseln Sie zum Blatt „Verwaltung virtueller Computer“, um [die Sicherung zu aktivieren](../backup/quick-backup-vm-portal.md#enable-backup-on-a-vm).
 
 ## <a name="can-i-validate-my-subscription-or-resources-to-see-if-theyre-capable-of-migration"></a>Kann ich mein Abonnement oder meine Ressourcen überprüfen, um zu ermitteln, ob sie für die Migration geeignet sind? 
 
@@ -113,7 +113,7 @@ Alle Ressourcen, für die Sie unter dem klassischen Bereitstellungsmodell expliz
 
 ## <a name="can-i-migrate-expressroute-circuits-used-across-subscriptions-with-authorization-links"></a>Kann ich ExpressRoute-Verbindungen mit abonnementübergreifenden Autorisierungslinks migrieren? 
 
-ExpressRoute-Verbindungen mit abonnementübergreifenden Autorisierungslinks können ohne Ausfallzeiten nicht automatisch migriert werden. Für deren Migration steht eine Anleitung mit manuellen Schritten zur Verfügung. Die entsprechenden Schritte sowie weitere Informationen finden Sie unter [Migrieren von ExpressRoute-Verbindungen und zugeordneten virtuellen Netzwerken vom klassischen Bereitstellungsmodell zum Resource Manager-Bereitstellungsmodell](~/articles/expressroute/expressroute-migration-classic-resource-manager.md).
+ExpressRoute-Verbindungen mit abonnementübergreifenden Autorisierungslinks können ohne Ausfallzeiten nicht automatisch migriert werden. Für deren Migration steht eine Anleitung mit manuellen Schritten zur Verfügung. Die entsprechenden Schritte sowie weitere Informationen finden Sie unter [Migrieren von ExpressRoute-Verbindungen und zugeordneten virtuellen Netzwerken vom klassischen Bereitstellungsmodell zum Resource Manager-Bereitstellungsmodell](../expressroute/expressroute-migration-classic-resource-manager.md).
 
 ## <a name="i-got-the-message-vm-is-reporting-the-overall-agent-status-as-not-ready-hence-the-vm-cannot-be-migrated-ensure-that-the-vm-agent-is-reporting-overall-agent-status-as-ready-or-vm-contains-extension-whose-status-is-not-being-reported-from-the-vm-hence-this-vm-cannot-be-migrated"></a>Ich erhalte die Fehlermeldung *Die VM meldet den Gesamtstatus des Agents als ,Nicht bereit‘. Daher kann die VM nicht migriert werden. Stellen Sie sicher, dass der VM-Agent den Gesamtstatus des Agents als ,Bereit‘ meldet“* oder *„Die VM enthält eine Erweiterung, deren Status nicht von der VM gemeldet wird. Daher kann diese VM nicht migriert werden.*
 

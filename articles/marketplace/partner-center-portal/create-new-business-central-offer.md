@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 08/07/2020
-ms.openlocfilehash: 0d00f779031ec294523c861a4e9868f7cbbe790d
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 4226f9cc45589b8c555d3d54918e31a04acbfc6b
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606150"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88817050"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Erstellen eines Angebots für Dynamics 365 Business Central
 
@@ -182,16 +182,16 @@ Geben Sie mindestens ein (und höchstens drei) zugehörige Marketingdokumente an
 
 ### <a name="marketplace-images"></a>Marketplace-Bilder
 
-Stellen Sie Logos und Bilder für Ihr Angebot bereit. Alle Bilder müssen das PNG-Format aufweisen. 
+Geben Sie eine PNG-Datei für das **große** Logo an. Dies wird in Partner Center verwendet, um ein **kleines** Logo zu erstellen. Später können Sie dieses Logo optional durch ein anderes Bild ersetzen.
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+- **Groß** (von 216 x 216 bis 350 x 350 Pixel, erforderlich)
+- **Klein** (48 x 48 Pixel, optional)
 
-Laden Sie das Logo Ihres Angebots in zwei Größen hoch:
-
-* **Klein** (48 x 48 Pixel)
-* **Groß** (216 x 216 Pixel)
+Diese Logos werden an unterschiedlichen Stellen in der Auflistung verwendet:
 
 [!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 >[!NOTE]
 >Wenn beim Hochladen von Dateien ein Problem auftritt, vergewissern Sie sich, dass das lokale Netzwerk den von Partner Center verwendeten Dienst `https://upload.xboxlive.com` nicht blockiert.
@@ -270,7 +270,7 @@ Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
 
 ## <a name="test-drive-technical-configuration"></a>Technische Konfiguration der Testversion
 
-Auf dieser Seite können Sie eine Demonstration („Testversion“) einrichten, mit der Kunden Ihr Angebot vor dem Erwerb ausprobieren können. Weitere Informationen finden Sie unter [Was ist die Testversion?](../what-is-test-drive.md)
+Auf dieser Seite können Sie eine Demonstration („Testversion“) einrichten, mit der Kunden Ihr Angebot vor dem Erwerb ausprobieren können. Weitere Informationen finden Sie unter [Was ist die Testversion?](../what-is-test-drive.md).
 
 Aktivieren Sie auf der Registerkarte [Angebotseinrichtung](#test-drive) das Kontrollkästchen **Testversion aktivieren**, um eine Testversion zu aktivieren. Deaktivieren Sie dieses Kontrollkästchen, um die Testversion aus Ihrem Angebot zu entfernen.
 

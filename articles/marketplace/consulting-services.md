@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 author: Microsoft-BradleyWright
 ms.author: brwrigh
-ms.openlocfilehash: 2ca0031d3ae9fc1347c3a8bd7bf24c2780e502a8
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: afcca913b8a9c8fb31fa6e18d0570aebd68b8ef3
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607450"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814721"
 ---
 # <a name="consulting-service-offers"></a>Beratungsdienstangebote
 
@@ -72,40 +72,40 @@ Weitere Informationen zu Kompetenzen finden Sie auf der Seite zu [Kompetenzen im
 
 Systemintegratorpartner können Beratungsdienstangebote für die folgenden 20 Länder/Regionen übermitteln:
 
-| Länder  | (Fortsetzung...)   | (Fortsetzung...)  | (Fortsetzung...)  |
+| Länder | (Cont.) |  (Cont.) |  (Cont.) |
 |---------|----------|----------|----------|
 | Australien | Belgien | Canada | Dänemark |
 | Finnland  | Frankreich | Deutschland  | Indien   |
 | Italien    | Japan  |  Mexiko  |  Niederlande  |
 |  Neuseeland  |  Norwegen  |  Polen  | Südafrika |
 |  Schweden  | Schweiz  |  USA  | United Kingdom  |
-||
+|
 
 ## <a name="register-for-consulting-services-in-the-commercial-marketplace"></a>Registrieren für Beratungsdienste im kommerziellen Marketplace
 
-[Registrieren](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) Sie zunächst ihre Unternehmensinformationen in Azure Marketplace. Eine vollständige Prüfliste der Registrierungsanforderungen finden Sie unter [Ihr Weg zum Herausgeber im Marketplace](become-publisher.md). 
+[Registrieren](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) Sie zunächst ihre Unternehmensinformationen in Azure Marketplace. Eine vollständige Prüfliste der Registrierungsanforderungen finden Sie unter [Ihr Weg zum Herausgeber im Marketplace](become-publisher.md).
 
 ## <a name="prepare-your-publishing-artifacts"></a>Vorbereiten von Veröffentlichungsartefakten
 Vor der Registrierung können Sie mit der Sammlung und Vorbereitung der Inhalte beginnen, mit denen Sie im Rahmen Ihrer Auflistung den Wert Ihres Diensts und Ihrer Lösung gegenüber Ihrem Zielkunden darstellen können. 
 
 |Einrichtung für neue Herausgeber  |
-|---------|
-|MPN-ID     |
-|Unternehmenslogos (48 × 48, 216 × 216 Pixel)     |
-|Leadzielgruppe     |
-||
+| - |
+| MPN-ID |
+| Unternehmenslogos (48 × 48, 216 × 216 Pixel) |
+| Leadzielgruppe |
+|
 
 |Einrichtung für neue Angebote  |
-|---------|
-|Angebotsname (200 Zeichen) und -beschreibung (2.000 Zeichen)    |
-|Kompetenzen     |
-|Verfügbarkeit in Land/Region     |
-|Dauer des Projekts     |
-|Geeignete Branchen, Kategorien und Suchschlüsselwörter     |
-|Produktübersichtsvideo    |
-|Screenshots (max. 5, 1.280 × 720 Pixel)     |
-|Marketingdokumente (max. 3)     |
-||
+| - |
+| Angebotsname (200 Zeichen) und -beschreibung (2.000 Zeichen) |
+| Kompetenzen  |
+| Verfügbarkeit in Land/Region |
+| Dauer des Projekts  |
+| Geeignete Branchen, Kategorien und Suchschlüsselwörter |
+| Produktübersichtsvideo |
+| Screenshots (max. 5, 1.280 × 720 Pixel) |
+| Marketingdokumente (max. 3) |
+|
 
 ## <a name="the-publishing-process"></a>Der Veröffentlichungsvorgang
 

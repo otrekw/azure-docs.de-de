@@ -21,11 +21,6 @@
       href: tutorial-custom-providers-create.md
     - name: Erweitern von Ressourcen
       href: tutorial-resource-onboarding.md
-- name: Beispiele
-  items:
-    - name: Integrierte Azure Policy-Aktionen
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Konzepte
   items:
     - name: Azure Policy für Zuordnungen
@@ -50,6 +45,9 @@
       href: /rest/api/customproviders/
     - name: Azure CLI
       href: /cli/azure/ext/custom-providers/custom-providers/
+    - name: Integrierte Azure Policy-Aktionen
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Ressourcen
   items:
     - name: Azure-Roadmap

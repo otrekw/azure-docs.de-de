@@ -16,12 +16,6 @@
       href: ./learn/tutorial-assign-policy-portal.md
     - name: Überwachen des Computers
       href: ./learn/tutorial-enable-vm-insights.md
-- name: Beispiele
-  items:
-    - name: Integrierte Azure Policy-Aktionen
-      items:
-        - name: Server mit Arc-Aktivierung
-          href: policy-samples.md
 - name: Konzepte
   items:
     - name: Sicherheit
@@ -57,3 +51,6 @@
           href: data-residency.md
         - name: REST
           href: /rest/api/hybridcompute
+        - name: Azure Policy-Integrationen
+          displayName: 'samples, policies, definitions'
+          href: policy-reference.md

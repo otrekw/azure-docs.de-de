@@ -13,7 +13,7 @@
       items:
         - name: Azure-Portal
           href: stream-analytics-quick-create-portal.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: quick-create-azure-cli.md
         - name: ARM-Vorlage
           displayName: Resource Manager
@@ -40,9 +40,6 @@
   items:
     - name: Codebeispiele
       href: 'https://azure.microsoft.com/resources/samples/?service=stream-analytics'
-    - name: Azure Policy-Integrationen
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Konzepte
   items:
     - name: "Auswählen einer Stream\_Analytics-Technologie"
@@ -653,8 +650,11 @@
       href: /rest/api/streamanalytics
     - name: Resource Manager-Vorlage
       href: /azure/templates/microsoft.streamanalytics/allversions
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/ext/stream-analytics/stream-analytics
+    - name: Integrierte Azure Policy-Aktionen
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Ressourcen
   items:
     - name: Stream Analytics-Vorschauversionen

@@ -1,28 +1,28 @@
 ---
 title: Konzepte – rollenbasierte Zugriffssteuerung (RBAC)
-description: Erfahren Sie mehr über die wichtigsten Funktionen der rollenbasierten Zugriffssteuerung für Azure VMware Solution (AVS)
+description: Erfahren Sie mehr über die wichtigsten Funktionen der rollenbasierten Zugriffssteuerung für Azure VMware Solution
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 8628c88c300ef8ed271f5e06a8e8dfae40231fec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b9e83f0442953f59d02c42514a8550301ea947b
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85656754"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752255"
 ---
-# <a name="role-based-access-control-rbac-for-azure-vmware-solution-avs"></a>Rollenbasierte Zugriffssteuerung (RBAC) für Azure VMware Solution (AVS)
+# <a name="role-based-access-control-rbac-for-azure-vmware-solution"></a>Rollenbasierte Zugriffssteuerung (RBAC) für Azure VMware Solution
 
-In einer lokalen Bereitstellung von vCenter und ESXi hat der Administrator Zugriff auf das vCenter-Konto administrator@vsphere.local und kann zusätzliche Active Directory (AD)-Benutzer/-Gruppen zugewiesen haben. In einer Bereitstellung von Azure VMware Solution (AVS) hat der Administrator hingegen keinen Zugriff auf das Administratorbenutzerkonto, kann aber AD-Benutzer und -Gruppen zur CloudAdmin-Rolle in vCenter zuweisen.  Außerdem sind die Private Cloud-Benutzer von AVS nicht berechtigt, auf bestimmte von Microsoft unterstützte und verwaltete Verwaltungskomponenten zuzugreifen oder diese zu konfigurieren, wie z. B. Cluster, Hosts, Datenspeicher und verteilte virtuelle Netzwerke.
+In einer lokalen Bereitstellung von vCenter und ESXi hat der Administrator Zugriff auf das vCenter-Konto administrator@vsphere.local und kann zusätzliche Active Directory (AD)-Benutzer/-Gruppen zugewiesen haben. In einer Bereitstellung von Azure VMware Solution hat der Administrator hingegen keinen Zugriff auf das Administratorbenutzerkonto, kann aber AD-Benutzer und -Gruppen der Rolle CloudAdmin in vCenter zuweisen.  Außerdem sind die Private Cloud-Benutzer von Azure VMware Solution nicht berechtigt, auf bestimmte von Microsoft unterstützte und verwaltete Verwaltungskomponenten zuzugreifen oder diese zu konfigurieren, wie z. B. Cluster, Hosts, Datenspeicher und verteilte virtuelle Netzwerke.
 
 
-In AVS verfügt vCenter über einen integrierten lokalen Benutzer namens „cloudadmin“, der der integrierten CloudAdmin-Rolle zugewiesen ist. Der lokale cloudadmin-Benutzer wird zum Einrichten weiterer Benutzer in AD verwendet. Die CloudAdmin-Rolle verfügt im Allgemeinen über die Berechtigung zum Erstellen und Verwalten von Workloads in Ihrer privaten Cloud (VMs, Ressourcenpools, Datenspeicher und Netzwerke). Die CloudAdmin-Rolle in AVS verfügt über eine bestimmte Menge von vCenter-Berechtigungen, die von anderen VMware-Cloudlösungen abweicht.   
+In Azure VMware Solution verfügt vCenter über einen integrierten lokalen Benutzer namens „cloudadmin“, der der integrierten CloudAdmin-Rolle zugewiesen ist. Der lokale cloudadmin-Benutzer wird zum Einrichten weiterer Benutzer in AD verwendet. Die CloudAdmin-Rolle verfügt im Allgemeinen über die Berechtigung zum Erstellen und Verwalten von Workloads in Ihrer privaten Cloud (VMs, Ressourcenpools, Datenspeicher und Netzwerke). Die Rolle CloudAdmin in Azure VMware Solution verfügt über eine bestimmte Menge von vCenter-Berechtigungen, die von anderen VMware-Cloudlösungen abweicht.   
 
 > [!NOTE]
-> AVS bietet derzeit keine benutzerdefinierten Rollen in vCenter oder im AVS-Portal. 
+> Azure VMware Solution bietet derzeit in vCenter oder im Azure VMware Solution-Portal keine benutzerdefinierten Rollen. 
 
-## <a name="avs-cloudadmin-role-on-vcenter"></a>Rolle „AVS CloudAdmin“ in vCenter
+## <a name="azure-vmware-solution-cloudadmin-role-on-vcenter"></a>Azure VMware Solution-Rolle CloudAdmin in vCenter
 
-Sie können die Berechtigungen anzeigen, die der Rolle „AVS CloudAdmin“ in vCenter Ihrer privaten AVS-Cloud erteilt wurden.
+Sie können die Berechtigungen anzeigen, die der Azure VMware Solution-Rolle CloudAdmin in vCenter Ihrer privaten Azure VMware Solution-Cloud erteilt wurden.
 
 1. Melden Sie sich beim vSphere-Client des SDDC an, und gehen Sie zu **Menü** > **Verwaltung**.
 1. Wählen Sie unter **Zugriffssteuerung** die Option **Rollen** aus.
@@ -30,7 +30,7 @@ Sie können die Berechtigungen anzeigen, die der Rolle „AVS CloudAdmin“ in v
 
    :::image type="content" source="media/rbac-cloudadmin-role-privileges.png" alt-text="Anzeigen der Berechtigungen der CloudAdmin-Rolle im vSphere-Client":::
 
-Die CloudAdmin-Rolle in AVS verfügt über die folgenden Berechtigungen für vCenter. Eine ausführliche Erläuterung der einzelnen Berechtigungen finden Sie in der [VMware-Produktdokumentation](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html).
+Die Azure VMware Solution-Rolle CloudAdmin verfügt über die folgenden Berechtigungen für vCenter. Eine ausführliche Erläuterung der einzelnen Berechtigungen finden Sie in der [VMware-Produktdokumentation](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html).
 
 | Berechtigung | BESCHREIBUNG |
 | --------- | ----------- |

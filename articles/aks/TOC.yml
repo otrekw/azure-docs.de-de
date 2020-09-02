@@ -40,11 +40,6 @@
       href: tutorial-kubernetes-app-update.md
     - name: 7. Aktualisieren des Clusters
       href: tutorial-kubernetes-upgrade-cluster.md
-- name: Beispiele
-  items:
-    - name: Azure Policy-Integrationen
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Konzepte
   items:
     - name: Cluster und Workloads
@@ -388,6 +383,9 @@
       href: /javascript/api/overview/azure/container-service
     - name: Resource Manager-Vorlage
       href: /azure/templates/microsoft.containerservice/managedclusters
+    - name: Azure Policy-Integrationen
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Ressourcen
   items:
     - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn

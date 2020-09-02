@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/30/2020
-ms.openlocfilehash: 1b0846c68f6860b5c7dac9e93808088dac4f6a05
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 4a27ace4e45d00a2fbb35b9e0e3e9b7c03383681
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607437"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705876"
 ---
 # <a name="determine-your-publishing-option"></a>Bestimmung Ihrer Veröffentlichungsoption
 
@@ -47,9 +47,9 @@ In der folgenden Tabelle sind die Veröffentlichungsoptionen für Angebotstypen 
 
 &#42;&#42; Microsoft 365-Angebote können kostenlos installiert und über das SaaS-Angebot als Lizenzierungsdienst monetarisiert werden. Weitere Informationen finden Sie unter [Monetarisieren Ihres Office 365-Add-Ins über den kommerziellen Microsoft-Marketplace](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace).
 
-## <a name="choose-a-call-to-action"></a>Auswählen einer Handlungsaufforderung
+## <a name="choose-a-listing-option"></a>Auswählen einer Auflistungsoption
 
-Die verfügbaren Veröffentlichungsoptionen ermöglichen eine differenzierte Kundenbindung und ebnen Ihnen den Weg zu gemeinsamem Zugriff auf Leads und [Vorteile des kommerziellen Marketplace](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits). Beachten Sie die Aktionsaufrufe, die mit den Veröffentlichungsoptionen verbunden sind:
+Die verfügbaren Auflistungsoptionen ermöglichen eine differenzierte Kundenbindung, ebnen Ihnen den Weg zum gemeinsamen Zugriff auf Leads, und bieten Ihnen die [Vorteile des kommerziellen Marketplace](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits). Beachten Sie die Auflistungsoptionen, die der Veröffentlichungsoption entsprechen:
 
 | **Veröffentlichungsoption**    | **Beschreibung**  |
 | :------------------- | :-------------------|

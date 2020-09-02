@@ -3,12 +3,12 @@ title: 'Mediengraphkonzept: Azure'
 description: Mit einem Mediengraph können Sie definieren, von welchem Ort Medien erfasst, wie diese verarbeitet und wohin die Ergebnisse übermittelt werden sollen. Dieser Artikel bietet eine detaillierte Beschreibung des Konzepts eines Mediengraphs.
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 02e960e917a059afdb0d688c7429d27d8e8a48eb
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 8c6775da6804b5079c89cae73d4621dd8067e90a
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300806"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798838"
 ---
 # <a name="media-graph"></a>Mediendiagramm
 
@@ -79,7 +79,11 @@ Der Verarbeitungsknoten für Bildfrequenzfilter ermöglicht es Ihnen, mit einer 
 
 #### <a name="http-extension-processor"></a>Verarbeitungsknoten für die HTTP-Erweiterung
 
-Der Verarbeitungsknoten für die HTTP-Erweiterung ermöglicht es Ihnen, Ihr eigenes IoT Edge-Modul mit einem Mediengraph zu verbinden. Dieser Knoten nimmt decodierte Video-Einzelbilder als Eingabe an und leitet diese Einzelbilder an einen HTTP-REST-Endpunkt weiter, der von Ihrem Modul zur Verfügung gestellt wird. Dieser Knoten kann bei Bedarf beim REST-Endpunkt authentifiziert werden. Darüber hinaus weist der Knoten einen integrierten Bildformatierer auf, um Video-Einzelbilder zu skalieren und zu codieren, bevor sie an den REST-Endpunkt weitergeleitet werden. Der Skalierer verfügt über Optionen für das Beibehalten, Auffüllen oder Strecken des Seitenverhältnisses. Der Bildcodierer unterstützt die Formate JPEG, PNG und BMP.
+Der Verarbeitungsknoten für die HTTP-Erweiterung ermöglicht es Ihnen, Ihr eigenes IoT Edge-Modul mit einem Mediengraph zu verbinden. Dieser Knoten nimmt decodierte Video-Einzelbilder als Eingabe an und leitet diese Einzelbilder an einen HTTP-REST-Endpunkt weiter, der von Ihrem Modul zur Verfügung gestellt wird. Dieser Knoten kann bei Bedarf beim REST-Endpunkt authentifiziert werden. Darüber hinaus weist der Knoten einen integrierten Bildformatierer auf, um Video-Einzelbilder zu skalieren und zu codieren, bevor sie an den REST-Endpunkt weitergeleitet werden. Der Skalierer verfügt über Optionen für das Beibehalten, Auffüllen oder Strecken des Seitenverhältnisses. Der Codierer für Bilder unterstützt die Formate JPEG, PNG und BMP.
+
+#### <a name="grpc-extension-processor"></a>gRPC-Erweiterungsprozessor
+
+Dieser gRPC-Erweiterungsprozessor verwendet decodierte Videoeinzelbilder als Eingabe und leitet diese an einen [gRPC](terminology.md#grpc)-Endpunkt weiter, der von Ihrem Modul zur Verfügung gestellt wird. Darüber hinaus weist der Knoten einen integrierten Bildformatierer auf, um Videoeinzelbilder zu skalieren und zu codieren, bevor sie an den gRPC-Endpunkt weitergeleitet werden. Der Skalierer verfügt über Optionen für das Beibehalten, Auffüllen oder Strecken des Seitenverhältnisses. Der Bildcodierer unterstützt die Formate JPEG, PNG und BMP.
 
 #### <a name="signal-gate-processor"></a>Signalgateprozessor  
 
@@ -101,7 +105,7 @@ Ein Knoten der IoT Hub-Nachrichtensenke ermöglicht Ihnen das Veröffentlichen v
 
 ## <a name="rules-on-the-use-of-nodes"></a>Regeln für die Verwendung von Knoten
 
-Weitere Regeln zur Verwendung verschiedener Knoten in einem Mediengraph finden Sie unter [Kontingente](quotas-limitations.md#limitations-on-graph-topologies-at-preview).
+Weitere Regeln zur Verwendung verschiedener Knoten in einem Mediengraph finden Sie unter [Einschränkungen bei Graphtopologien](quotas-limitations.md#limitations-on-graph-topologies-at-preview).
 
 ## <a name="scenarios"></a>Szenarien
 

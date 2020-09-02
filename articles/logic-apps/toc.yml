@@ -34,9 +34,6 @@
       href: /samples/browse/?products=azure-logic-apps
     - name: "Resource\_Manager-Schnellstartvorlagen"
       href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Logic'
-    - name: Integrierte Azure Policy-Aktionen
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Konzepte
   items:
     - name: Connectors für Logic Apps
@@ -396,6 +393,9 @@
           href: logic-apps-track-integration-account-x12-tracking-schema.md
         - name: Benutzerdefiniertes Nachverfolgungsschema
           href: logic-apps-track-integration-account-custom-tracking-schema.md
+    - name: Integrierte Azure Policy-Aktionen
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Ressourcen
   items:
     - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn

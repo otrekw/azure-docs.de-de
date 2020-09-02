@@ -12,12 +12,12 @@ ms.date: 08/14/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 3d810d14dd6b49bc054e3844a60ec33c62dc084c
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 1ce8f376d3264a06618cb7321c75142dcf92d9ea
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271242"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88891860"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Veröffentlichen Ihrer App im Azure AD-App-Katalog
 
@@ -98,7 +98,7 @@ OAuth 2.0 ist ein [Branchenstandard](https://oauth.net/2/)-Protokoll für die Au
 
 ### <a name="saml-20-or-ws-fed"></a>SAML 2.0 oder WS-Fed
 
-SAML ist ein ausgereifter und weit verbreiteter Standard für einmaliges Anmelden bei Webanwendungen. Unter [Verwendung des SAML-Protokolls durch Azure AD](active-directory-saml-protocol-reference.md) erfahren Sie, wie SAML von Azure verwendet wird. 
+SAML ist ein ausgereifter und weit verbreiteter [Standard für einmaliges Anmelden](https://www.oasis-open.org/standards#samlv2.0) bei Webanwendungen. Unter [Verwendung des SAML-Protokolls durch Azure AD](active-directory-saml-protocol-reference.md) erfahren Sie, wie SAML von Azure verwendet wird. 
 
 Webdiensteverbund (WS-Fed) ist ein [Branchenstandard](https://docs.oasis-open.org/wsfed/federation/v1.2/ws-federation.html), der im Allgemeinen für mit der .NET-Plattform entwickelte Webanwendungen verwendet wird.
 

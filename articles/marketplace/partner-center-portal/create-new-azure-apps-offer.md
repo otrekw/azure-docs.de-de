@@ -7,12 +7,12 @@ ms.topic: article
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: f62483880d2572b6487c87bbd73e0dd7033238d3
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 071d3fc972e99d61a226492350b7eee146584df6
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606184"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815663"
 ---
 # <a name="create-an-azure-application-offer"></a>Erstellen eines Azure-Anwendungsangebots
 
@@ -249,16 +249,17 @@ Stellen Sie Logos und Bilder zur Verwendung mit Ihrem Angebot bereit. Alle Bilde
 
 #### <a name="store-logos"></a>Store-Logos
 
-Geben Sie PNG-Dateien für das Logo Ihres Angebots in den folgenden Bildauflösungen bereit:
+Geben Sie eine PNG-Datei für das **große** Logo an. Dies wird in Partner Center verwendet, um ein **kleines** und ein **mittleres** Logo zu erstellen. Sie können diese Logos später optional durch andere Bilder ersetzen.
 
-- **Klein** (48 x 48)
-- **Mittel** (90 x 90)
-- **Groß** (216 x 216)
-- **Breit** (255 x 115)
+- **Groß** (von 216 x 216 bis 350 x 350 Pixel, erforderlich)
+- **Mittel** (90 x 90 Pixel, optional)
+- **Klein** (48 x 48 Pixel, optional)
 
-Alle drei Logos sind erforderlich und werden an verschiedenen Stellen im Angebot verwendet.
+Diese Logos werden an unterschiedlichen Stellen in der Auflistung verwendet:
 
 [!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Screenshots
 

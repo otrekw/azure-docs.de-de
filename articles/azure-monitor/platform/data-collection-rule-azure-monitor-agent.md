@@ -4,13 +4,13 @@ description: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/10/2020
-ms.openlocfilehash: 3cd2ed692f3a34223675da69efd92e78c2ba9504
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.date: 08/19/2020
+ms.openlocfilehash: 97ba976c841e192646ebb484fe4d004556e34c54
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88082826"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640836"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Konfigurieren der Datensammlung für den Azure Monitor-Agent (Vorschau)
 Mit Datensammlungsregeln werden die in Azure Monitor eingehenden Daten definiert, und es wird angegeben, wohin sie gesendet werden sollen. In diesem Artikel wird beschrieben, wie Sie eine Datensammlungsregel erstellen, um mit dem Azure Monitor-Agent Daten von virtuellen Computern zu sammeln.
@@ -61,6 +61,11 @@ Klicken Sie auf **Datenquelle hinzufügen** und dann auf **Bewerten + erstellen*
 > [!NOTE]
 > Nachdem die Datensammlungsregel und die Zuordnungen erstellt wurden, kann es bis zu fünf Minuten dauern, bis Daten an die Ziele gesendet werden.
 
+## <a name="createusingrestapi"></a>Erstellen mithilfe der REST-API
+Führen Sie die folgenden Schritte aus, um mithilfe der Rest-API einen DCR und Zuordnungen zu erstellen. 
+1. Erstellen Sie die DCR-Datei manuell im JSON-Format, das im  [Beispiel einer Datensammlungsregel](data-collection-rule-overview.md#sample-data-collection-rule) gezeigt wird.
+2. Erstellen Sie die Regel mithilfe der  [Rest-API](https://docs.microsoft.com/rest/api/monitor/datacollectionrules/create#examples).
+3. Richten Sie mithilfe der [Rest-API](https://docs.microsoft.com/rest/api/monitor/datacollectionruleassociations/create#examples) für jeden virtuellen Computer eine Zuordnung zur Datensammlungsregel ein.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

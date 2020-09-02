@@ -3,17 +3,17 @@ title: Verarbeiten von Änderungsfeeds in Azure Blob Storage (Vorschau) | Micros
 description: Erfahren Sie, wie Änderungsfeedprotokolle in einer .NET-Clientanwendung verarbeitet werden.
 author: normesta
 ms.author: normesta
-ms.date: 11/04/2019
+ms.date: 06/18/2020
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: 75995eeb3f8255cb4c60d5be267f9c343edfea89
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: baed9ef099ed818fa0967c7a3e7ab61fb4921f75
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74111858"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719307"
 ---
 # <a name="process-change-feed-in-azure-blob-storage-preview"></a>Verarbeiten von Änderungsfeeds in Azure Blob Storage (Vorschau)
 
@@ -22,352 +22,199 @@ Der Änderungsfeed stellt Transaktionsprotokolle für alle Änderungen bereit, d
 Weitere Informationen zu Änderungsfeeds finden Sie unter [Änderungsfeed in Azure Blob Storage (Vorschau)](storage-blob-change-feed.md).
 
 > [!NOTE]
-> Der Änderungsfeed befindet sich in der öffentlichen Vorschauphase und ist in den Regionen **USA, Westen-Mitte** und **USA, Westen 2** verfügbar. Weitere Informationen zu dieser Funktion sowie bekannten Problemen und Einschränkungen finden Sie unter [Änderungsfeedunterstützung in Azure Blob Storage](storage-blob-change-feed.md). Die Change Feed Processor-Bibliothek kann sich ab dem jetzigen Zeitpunkt bis zum Zeitpunkt der allgemeinen Verfügbarkeit dieser Bibliothek ändern.
+> Der Änderungsfeed befindet sich in der öffentlichen Vorschau und ist in eingeschränkten Regionen verfügbar. Weitere Informationen zu dieser Funktion sowie bekannten Problemen und Einschränkungen finden Sie unter [Änderungsfeedunterstützung in Azure Blob Storage](storage-blob-change-feed.md). Die Change Feed Processor-Bibliothek kann sich ab dem jetzigen Zeitpunkt bis zum Zeitpunkt der allgemeinen Verfügbarkeit dieser Bibliothek ändern.
 
 ## <a name="get-the-blob-change-feed-processor-library"></a>Anfordern der Change Feed Processor-Bibliothek
 
-1. Fügen Sie in Visual Studio die URL-`https://azuresdkartifacts.blob.core.windows.net/azuresdkpartnerdrops/index.json` zu den NuGet-Paketquellen hinzu. 
+1. Öffnen Sie ein Befehlsfenster (z. B. Windows PowerShell).
+2. Installieren Sie in Ihrem Projektverzeichnis das NuGet-Paket [**Azure.Storage.Blobs.Changefeed**](https://www.nuget.org/packages/Azure.Storage.Blobs.ChangeFeed/).
 
-   Entsprechende Informationen finden Sie unter [Paketquellen](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#package-sources).
-
-2. Suchen Sie im NuGet-Paket-Manager nach dem Paket **Microsoft.Azure.Storage.Changefeed** und installieren Sie es in Ihrem Projekt. 
-
-   Weitere Informationen finden Sie unter [Suchen und Installieren eines Pakets](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package).
-
-## <a name="connect-to-the-storage-account"></a>Verbinden mit dem Speicherkonto
-
-Analysieren Sie die Verbindungszeichenfolge, indem Sie die [CloudStorageAccount.TryParse](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.tryparse)-Methode aufrufen. 
-
-Erstellen Sie dann ein Objekt, das Blob Storage in Ihrem Speicherkonto darstellt, indem Sie die [CloudStorageAccount.CreateCloudBlobClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobaccountextensions.createcloudblobclient)-Methode aufrufen.
-
-```cs
-public bool GetBlobClient(ref CloudBlobClient cloudBlobClient, string storageConnectionString)
-{
-    if (CloudStorageAccount.TryParse
-        (storageConnectionString, out CloudStorageAccount storageAccount))
-        {
-            cloudBlobClient = storageAccount.CreateCloudBlobClient();
-
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-}
+```console
+dotnet add package Azure.Storage.Blobs --version 12.5.1
+dotnet add package Azure.Storage.Blobs.ChangeFeed --version 12.0.0-preview.4
 ```
-
-## <a name="initialize-the-change-feed"></a>Änderungsfeed initialisieren
-
-Fügen Sie die folgenden using-Anweisungen am Anfang Ihrer Codedatei ein. 
-
-```csharp
-using Avro.Generic;
-using ChangeFeedClient;
-```
-
-Erstellen Sie dann eine Instanz der **ChangeFeed**-Klasse, indem Sie die **GetContainerReference**-Methode aufrufen. Übergeben Sie den Namen des Änderungsfeedcontainers.
-
-```csharp
-public async Task<ChangeFeed> GetChangeFeed(CloudBlobClient cloudBlobClient)
-{
-    CloudBlobContainer changeFeedContainer =
-        cloudBlobClient.GetContainerReference("$blobchangefeed");
-
-    ChangeFeed changeFeed = new ChangeFeed(changeFeedContainer);
-    await changeFeed.InitializeAsync();
-
-    return changeFeed;
-}
-```
-
-## <a name="reading-records"></a>Lesen von Datensätzen
+## <a name="read-records"></a>Lesen von Datensätzen
 
 > [!NOTE]
 > Der Änderungsfeed ist eine unveränderliche und schreibgeschützte Entität in Ihrem Speicherkonto. Mehrere Anwendungen können den Änderungsfeed gleichzeitig und unabhängig voneinander nach Belieben lesen und verarbeiten. Datensätze werden nicht aus dem Änderungsfeed entfernt, wenn sie von einer Anwendung gelesen werden. Der Lese- oder Iterationszustand jedes Readers ist unabhängig und wird nur von der jeweiligen Anwendung verwaltet.
 
-Die einfachste Möglichkeit zum Lesen von Datensätzen ist das Erstellen einer Instanz der **ChangeFeedReader**-Klasse. 
-
-In diesem Beispiel werden alle Datensätze im Änderungsfeed durchlaufen. Anschließend werden in der Konsole einige Werte der einzelnen Datensätze ausgegeben. 
+In diesem Beispiel werden alle Datensätze im Änderungsfeed durchlaufen und einer Liste hinzugefügt. Anschließend wird diese Liste an den Aufrufer zurückgegeben.
  
 ```csharp
-public async Task ProcessRecords(ChangeFeed changeFeed)
+public async Task<List<BlobChangeFeedEvent>> ChangeFeedAsync(string connectionString)
 {
-    ChangeFeedReader processor = await changeFeed.CreateChangeFeedReaderAsync();
+    // Get a new blob service client.
+    BlobServiceClient blobServiceClient = new BlobServiceClient(connectionString);
 
-    ChangeFeedRecord currentRecord = null;
-    do
+    // Get a new change feed client.
+    BlobChangeFeedClient changeFeedClient = blobServiceClient.GetChangeFeedClient();
+
+    List<BlobChangeFeedEvent> changeFeedEvents = new List<BlobChangeFeedEvent>();
+
+    // Get all the events in the change feed. 
+    await foreach (BlobChangeFeedEvent changeFeedEvent in changeFeedClient.GetChangesAsync())
     {
-        currentRecord = await processor.GetNextItemAsync();
+        changeFeedEvents.Add(changeFeedEvent);
+    }
 
-        if (currentRecord != null)
-        {
-            string subject = currentRecord.record["subject"].ToString();
-            string eventType = ((GenericEnum)currentRecord.record["eventType"]).Value;
-            string api = ((GenericEnum)((GenericRecord)currentRecord.record["data"])["api"]).Value;
-
-            Console.WriteLine("Subject: " + subject + "\n" +
-                "Event Type: " + eventType + "\n" +
-                "Api: " + api);
-        }
-
-    } while (currentRecord != null);
+    return changeFeedEvents;
 }
 ```
 
-## <a name="resuming-reading-records-from-a-saved-position"></a>Fortsetzen des Lesens von Datensätzen ausgehend von einer gespeicherten Position
-
-Sie können die Leseposition in Ihrem Änderungsfeed speichern und die Iteration der Datensätze zu einem späteren Zeitpunkt fortsetzen. Sie können den Iterationszustand des Änderungsfeeds jederzeit mit der **ChangeFeedReader.SerializeState()** -Methode speichern. Der Zustand ist eine **Zeichenfolge** und die Anwendung kann diesen Zustand abhängig von der Gestaltung der Anwendung speichern (z. B. in einer Datenbank oder einer Datei).
+In diesem Beispiel werden einige Werte von jedem Datensatz in der Liste an die Konsole ausgegeben. 
 
 ```csharp
-    string currentReadState = processor.SerializeState();
+public void showEventData(List<BlobChangeFeedEvent> changeFeedEvents)
+{
+    foreach (BlobChangeFeedEvent changeFeedEvent in changeFeedEvents)
+    {
+        string subject = changeFeedEvent.Subject;
+        string eventType = changeFeedEvent.EventType.ToString();
+        string api = changeFeedEvent.EventData.Api;
+
+        Console.WriteLine("Subject: " + subject + "\n" +
+        "Event Type: " + eventType + "\n" +
+        "Api: " + api);
+    }
+}
 ```
 
-Sie können die Iteration der Datensätze ab dem letzten Zustand fortsetzen, indem Sie **ChangeFeedReader** mit **CreateChangeFeedReaderFromPointerAsync**-Methode erstellen.
+## <a name="resume-reading-records-from-a-saved-position"></a>Fortsetzen des Lesens von Datensätzen ab einer gespeicherten Position
+
+Sie können Ihre Leseposition im Änderungsfeed speichern und dann das Durchlaufen der Datensätze zu einem späteren Zeitpunkt fortsetzen. Sie können die Leseposition speichern, indem Sie den Änderungsfeedcursor abrufen. Dieser Cursor ist eine **Zeichenfolge**, die Ihre Anwendung entsprechend dem Design der Anwendung (z. B. in einer Datei oder Datenbank) speichern kann.
+
+In diesem Beispiel werden alle Datensätze im Änderungsfeed durchlaufen, einer Liste hinzugefügt, und der Cursor wird gespeichert. Die Liste und der Cursor werden an den Aufrufer zurückgegeben. 
 
 ```csharp
-public async Task ProcessRecordsFromLastPosition(ChangeFeed changeFeed, string lastReadState)
+public async Task<(string, List<BlobChangeFeedEvent>)> ChangeFeedResumeWithCursorAsync
+    (string connectionString,  string cursor)
 {
-    ChangeFeedReader processor = await changeFeed.CreateChangeFeedReaderFromPointerAsync(lastReadState);
+    // Get a new blob service client.
+    BlobServiceClient blobServiceClient = new BlobServiceClient(connectionString);
 
-    ChangeFeedRecord currentRecord = null;
-    do
+    // Get a new change feed client.
+    BlobChangeFeedClient changeFeedClient = blobServiceClient.GetChangeFeedClient();
+    List<BlobChangeFeedEvent> changeFeedEvents = new List<BlobChangeFeedEvent>();
+
+    IAsyncEnumerator<Page<BlobChangeFeedEvent>> enumerator = changeFeedClient
+        .GetChangesAsync(continuation: cursor)
+        .AsPages(pageSizeHint: 10)
+        .GetAsyncEnumerator();
+
+    await enumerator.MoveNextAsync();
+
+    foreach (BlobChangeFeedEvent changeFeedEvent in enumerator.Current.Values)
     {
-        currentRecord = await processor.GetNextItemAsync();
-
-        if (currentRecord != null)
-        {
-            string subject = currentRecord.record["subject"].ToString();
-            string eventType = ((GenericEnum)currentRecord.record["eventType"]).Value;
-            string api = ((GenericEnum)((GenericRecord)currentRecord.record["data"])["api"]).Value;
-
-            Console.WriteLine("Subject: " + subject + "\n" +
-                "Event Type: " + eventType + "\n" +
-                "Api: " + api);
-        }
-
-    } while (currentRecord != null);
+    
+        changeFeedEvents.Add(changeFeedEvent);             
+    }
+    
+    // Update the change feed cursor.  The cursor is not required to get each page of events,
+    // it is intended to be saved and used to resume iterating at a later date.
+    cursor = enumerator.Current.ContinuationToken;
+    return (cursor, changeFeedEvents);
 }
-
 ```
 
 ## <a name="stream-processing-of-records"></a>Streamverarbeitung von Datensätzen
 
-Sie können Änderungsfeeddatensätze verarbeiten, wenn sie ankommen. Weitere Informationen finden Sie unter [Spezifikationen](storage-blob-change-feed.md#specifications).
+Sie können Änderungsfeeddatensätze verarbeiten, wenn sie an den Änderungsfeed commitet werden. Weitere Informationen finden Sie unter [Spezifikationen](storage-blob-change-feed.md#specifications). Änderungsereignisse werden im Durchschnitt nach 60 Sekunden im Änderungsfeed veröffentlicht. Wir empfehlen, bei der Festlegung des Abrufintervalls und des Abrufs neuer Änderungen diesen Zeitraum zu berücksichtigen.
+
+In diesem Beispiel werden regelmäßig Änderungen abgerufen.  Wenn Änderungsdatensätze vorhanden sind, verarbeitet dieser Code die Datensätze und speichert den Änderungsfeedcursor. Auf diese Weise kann die Anwendung, wenn der Vorgang angehalten und anschließend neu gestartet wird, mit dem Cursor die Verarbeitung der Datensätze an der Stelle fortsetzen, an der sie unterbrochen wurde. In diesem Beispiel wird der Cursor in einer lokalen Anwendungskonfigurationsdatei gespeichert. Ihre Anwendung kann den Cursor jedoch in jeder Form speichern, die für Ihr Szenario am sinnvollsten ist. 
 
 ```csharp
-public async Task ProcessRecordsStream(ChangeFeed changeFeed, int waitTimeMs)
+public async Task ChangeFeedStreamAsync
+    (string connectionString, int waitTimeMs, string cursor)
 {
-    ChangeFeedReader processor = await changeFeed.CreateChangeFeedReaderAsync();
+    // Get a new blob service client.
+    BlobServiceClient blobServiceClient = new BlobServiceClient(connectionString);
 
-    ChangeFeedRecord currentRecord = null;
-    while (true)
-    {
-        do
-        {
-            currentRecord = await processor.GetNextItemAsync();
-
-            if (currentRecord != null)
-            {
-                string subject = currentRecord.record["subject"].ToString();
-                string eventType = ((GenericEnum)currentRecord.record["eventType"]).Value;
-                string api = ((GenericEnum)((GenericRecord)currentRecord.record["data"])["api"]).Value;
-
-                Console.WriteLine("Subject: " + subject + "\n" +
-                    "Event Type: " + eventType + "\n" +
-                    "Api: " + api);
-            }
-
-        } while (currentRecord != null);
-
-        await Task.Delay(waitTimeMs);
-    }
-}
-```
-
-## <a name="reading-records-within-a-time-range"></a>Lesen von Datensätzen innerhalb eines Zeitbereichs
-
-Der Änderungsfeed wird anhand der Zeit, zu der die Änderung erfolgt, in stündliche Segmente organisiert. Weitere Informationen finden Sie unter [Spezifikationen](storage-blob-change-feed.md#specifications). Sie können Datensätze aus Änderungsfeedsegmenten lesen, die in einem bestimmten Zeitbereich liegen.
-
-Im folgenden Beispiel werden die Startzeiten aller Segmente abgerufen. Anschließend wird die Liste durchlaufen, bis die Startzeit über die Zeit des letzten nutzbaren Segments oder über die Endzeit des gewünschten Bereichs hinausgeht. 
-
-### <a name="selecting-segments-for-a-time-range"></a>Auswählen von Segmenten für einen Zeitbereich
-
-```csharp
-public async Task<List<DateTimeOffset>> GetChangeFeedSegmentRefsForTimeRange
-    (ChangeFeed changeFeed, DateTimeOffset startTime, DateTimeOffset endTime)
-{
-    List<DateTimeOffset> result = new List<DateTimeOffset>();
-
-    DateTimeOffset stAdj = startTime.AddMinutes(-15);
-    DateTimeOffset enAdj = endTime.AddMinutes(15);
-
-    DateTimeOffset lastConsumable = (DateTimeOffset)changeFeed.LastConsumable;
-
-    List<DateTimeOffset> segments = 
-        (await changeFeed.ListAvailableSegmentTimesAsync()).ToList();
-
-    foreach (var segmentStart in segments)
-    {
-        if (lastConsumable.CompareTo(segmentStart) < 0)
-        {
-            break;
-        }
-
-        if (enAdj.CompareTo(segmentStart) < 0)
-        {
-            break;
-        }
-
-        DateTimeOffset segmentEnd = segmentStart.AddMinutes(60);
-
-        bool overlaps = stAdj.CompareTo(segmentEnd) < 0 && 
-            segmentStart.CompareTo(enAdj) < 0;
-
-        if (overlaps)
-        {
-            result.Add(segmentStart);
-        }
-    }
-
-    return result;
-}
-```
-
-### <a name="reading-records-in-a-segment"></a>Lesen von Datensätzen in einem Segment
-
-Sie können Datensätze aus einzelnen Segmenten oder Segmentbereichen lesen.
-
-```csharp
-public async Task ProcessRecordsInSegment(ChangeFeed changeFeed, DateTimeOffset segmentOffset)
-{
-    ChangeFeedSegment segment = new ChangeFeedSegment(segmentOffset, changeFeed);
-    await segment.InitializeAsync();
-
-    ChangeFeedSegmentReader processor = await segment.CreateChangeFeedSegmentReaderAsync();
-
-    ChangeFeedRecord currentRecord = null;
-    do
-    {
-        currentRecord = await processor.GetNextItemAsync();
-
-        if (currentRecord != null)
-        {
-            string subject = currentRecord.record["subject"].ToString();
-            string eventType = ((GenericEnum)currentRecord.record["eventType"]).Value;
-            string api = ((GenericEnum)((GenericRecord)currentRecord.record["data"])["api"]).Value;
-
-            Console.WriteLine("Subject: " + subject + "\n" +
-                "Event Type: " + eventType + "\n" +
-                "Api: " + api);
-        }
-
-    } while (currentRecord != null);
-}
-```
-
-## <a name="read-records-starting-from-a-time"></a>Lesen von Datensätzen ab einem Zeitpunkt
-
-Sie können die Datensätze des Änderungsfeeds ausgehend von einem Anfangssegment bis zum Ende lesen. Ähnlich wie beim Lesen von Datensätzen in einem Zeitbereich können Sie die Segmente auflisten und ein Segment auswählen, an dem die Iteration beginnen soll.
-
-In diesem Beispiel wird der [DateTimeOffset](https://docs.microsoft.com/dotnet/api/system.datetimeoffset?view=netframework-4.8)-Wert des ersten zu verarbeitenden Segments abgerufen.
-
-```csharp
-public async Task<DateTimeOffset> GetChangeFeedSegmentRefAfterTime
-    (ChangeFeed changeFeed, DateTimeOffset timestamp)
-{
-    DateTimeOffset result = new DateTimeOffset();
-
-    DateTimeOffset lastConsumable = (DateTimeOffset)changeFeed.LastConsumable;
-    DateTimeOffset lastConsumableEnd = lastConsumable.AddMinutes(60);
-
-    DateTimeOffset timestampAdj = timestamp.AddMinutes(-15);
-
-    if (lastConsumableEnd.CompareTo(timestampAdj) < 0)
-    {
-        return result;
-    }
-
-    List<DateTimeOffset> segments = (await changeFeed.ListAvailableSegmentTimesAsync()).ToList();
-    foreach (var segmentStart in segments)
-    {
-        DateTimeOffset segmentEnd = segmentStart.AddMinutes(60);
-        if (timestampAdj.CompareTo(segmentEnd) <= 0)
-        {
-            result = segmentStart;
-            break;
-        }
-    }
-
-    return result;
-}
-```
-
-In diesem Beispiel werden Änderungsfeeddatensätze ab dem [DateTimeOffset](https://docs.microsoft.com/dotnet/api/system.datetimeoffset?view=netframework-4.8) eines Anfangssegments verarbeitet.
-
-```csharp
-public async Task ProcessRecordsStartingFromSegment(ChangeFeed changeFeed, DateTimeOffset segmentStart)
-{
-    TimeSpan waitTime = new TimeSpan(60 * 1000);
-
-    ChangeFeedSegment segment = new ChangeFeedSegment(segmentStart, changeFeed);
-
-    await segment.InitializeAsync();
+    // Get a new change feed client.
+    BlobChangeFeedClient changeFeedClient = blobServiceClient.GetChangeFeedClient();
 
     while (true)
     {
-        while (!await IsSegmentConsumableAsync(changeFeed, segment))
+        IAsyncEnumerator<Page<BlobChangeFeedEvent>> enumerator = changeFeedClient
+        .GetChangesAsync(continuation: cursor).AsPages().GetAsyncEnumerator();
+
+        while (true) 
         {
-            await Task.Delay(waitTime);
-        }
+            var result = await enumerator.MoveNextAsync();
 
-        ChangeFeedSegmentReader reader = await segment.CreateChangeFeedSegmentReaderAsync();
-
-        do
-        {
-            await reader.CheckForFinalizationAsync();
-
-            ChangeFeedRecord currentItem = null;
-            do
+            if (result)
             {
-                currentItem = await reader.GetNextItemAsync();
-                if (currentItem != null)
+                foreach (BlobChangeFeedEvent changeFeedEvent in enumerator.Current.Values)
                 {
-                    string subject = currentItem.record["subject"].ToString();
-                    string eventType = ((GenericEnum)currentItem.record["eventType"]).Value;
-                    string api = ((GenericEnum)((GenericRecord)currentItem.record["data"])["api"]).Value;
+                    string subject = changeFeedEvent.Subject;
+                    string eventType = changeFeedEvent.EventType.ToString();
+                    string api = changeFeedEvent.EventData.Api;
 
                     Console.WriteLine("Subject: " + subject + "\n" +
                         "Event Type: " + eventType + "\n" +
                         "Api: " + api);
                 }
-            } while (currentItem != null);
-
-            if (segment.timeWindowStatus != ChangefeedSegmentStatus.Finalized)
-            {
-                await Task.Delay(waitTime);
+            
+                // helper method to save cursor. 
+                SaveCursor(enumerator.Current.ContinuationToken);
             }
-        } while (segment.timeWindowStatus != ChangefeedSegmentStatus.Finalized);
+            else
+            {
+                break;
+            }
 
-        segment = await segment.GetNextSegmentAsync(); // TODO: What if next window doesn't yet exist?
-        await segment.InitializeAsync(); // Should update status, shard list.
+        }
+        await Task.Delay(waitTimeMs);
     }
+
 }
 
-private async Task<bool> IsSegmentConsumableAsync(ChangeFeed changeFeed, ChangeFeedSegment segment)
+public void SaveCursor(string cursor)
 {
-    if (changeFeed.LastConsumable >= segment.startTime)
-    {
-        return true;
-    }
-    await changeFeed.InitializeAsync();
-    return changeFeed.LastConsumable >= segment.startTime;
+    System.Configuration.Configuration config = 
+        ConfigurationManager.OpenExeConfiguration
+        (ConfigurationUserLevel.None);
+
+    config.AppSettings.Settings.Clear();
+    config.AppSettings.Settings.Add("Cursor", cursor);
+    config.Save(ConfigurationSaveMode.Modified);
 }
 ```
 
->[!TIP]
-> Ein Segment von kann Änderungsfeedprotokolle in einem oder mehreren *chunkFilePath*-Pfaden aufweisen. Bei mehreren *chunkFilePath*-Pfaden wurden die Datensätze vom System intern in mehrere Shards partitioniert, um den Veröffentlichungsdurchsatz zu verwalten. Es ist sichergestellt, dass jede Partition des Segments Änderungen für sich gegenseitig ausschließende Blobs enthält und ohne Missachtung der Reihenfolge unabhängig voneinander verarbeitet werden kann. Sie können die **ChangeFeedSegmentShardReader**-Klasse verwenden, um Datensätze auf Shardebene zu durchlaufen, wenn dies für das jeweilige Szenario am effizientesten ist.
+## <a name="reading-records-within-a-time-range"></a>Lesen von Datensätzen innerhalb eines Zeitbereichs
+
+Sie können Datensätze lesen, die in einem bestimmten Zeitbereich liegen. In diesem Beispiel werden alle Datensätze im Änderungsfeed im Zeitraum vom 2. März 2020, 15:00 Uhr, bis 7. August 2020, 2:00 Uhr, durchlaufen und einer Liste hinzugefügt. Anschließend wird diese Liste an den Aufrufer zurückgegeben.
+
+### <a name="selecting-segments-for-a-time-range"></a>Auswählen von Segmenten für einen Zeitbereich
+
+```csharp
+public async Task<List<BlobChangeFeedEvent>> ChangeFeedBetweenDatesAsync(string connectionString)
+{
+    // Get a new blob service client.
+    BlobServiceClient blobServiceClient = new BlobServiceClient(connectionString);
+
+    // Get a new change feed client.
+    BlobChangeFeedClient changeFeedClient = blobServiceClient.GetChangeFeedClient();
+    List<BlobChangeFeedEvent> changeFeedEvents = new List<BlobChangeFeedEvent>();
+
+    // Create the start and end time.  The change feed client will round start time down to
+    // the nearest hour, and round endTime up to the next hour if you provide DateTimeOffsets
+    // with minutes and seconds.
+    DateTimeOffset startTime = new DateTimeOffset(2020, 3, 2, 15, 0, 0, TimeSpan.Zero);
+    DateTimeOffset endTime = new DateTimeOffset(2020, 8, 7, 2, 0, 0, TimeSpan.Zero);
+
+    // You can also provide just a start or end time.
+    await foreach (BlobChangeFeedEvent changeFeedEvent in changeFeedClient.GetChangesAsync(
+        start: startTime,
+        end: endTime))
+    {
+        changeFeedEvents.Add(changeFeedEvent);
+    }
+
+    return changeFeedEvents;
+}
+```
+
+Die von Ihnen angegebene Startzeit wird auf die volle Stunde abgerundet, und die Endzeit wird auf die volle Stunde aufgerundet. Möglicherweise werden Benutzern Ereignisse angezeigt, die vor der Startzeit und nach der Endzeit aufgetreten sind. Es ist auch möglich, das einige Ereignisse, die zwischen Start- und Endzeit liegen, nicht angezeigt werden. Das liegt daran, dass Ereignisse möglicherweise in der Stunde vor der Startzeit oder in der Stunde nach der Endzeit aufgezeichnet wurden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

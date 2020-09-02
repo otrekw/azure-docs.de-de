@@ -3,12 +3,12 @@ title: 'Überwachung und Protokollierung: Azure'
 description: Dieser Artikel bietet eine Übersicht der Überwachung und Protokollierung von Live Video Analytics in IoT Edge.
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: 82e4a5879e4c88e462edcddb02866ec9b671d7fe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e1f31c6bb3ea344286ad9af89417ca9f8fd59527
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060453"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934292"
 ---
 # <a name="monitoring-and-logging"></a>Überwachung und Protokollierung
 
@@ -99,6 +99,25 @@ Live Video Analytics in IoT Edge gibt Ereignisse oder Telemetriedaten entspreche
    }
    ```
 Die Ereignisse, die vom Modul ausgegeben werden, werden an den [IoT Edge-Hub](../../iot-edge/iot-edge-runtime.md#iot-edge-hub) gesendet und können von dort aus an andere Ziele weitergeleitet werden. 
+
+### <a name="timestamps-in-analytic-events"></a>Zeitstempel in Analyseereignissen
+Wie oben gezeigt, sind Ereignisse, die im Rahmen der Videoanalyse generiert werden, mit einem Zeitstempel versehen. Wenn die [Livevideo-Aufzeichnung](video-recording-concept.md) im Rahmen der Graphtopologie erfolgt, können Sie anhand dieses Zeitstempels ermitteln, wo das jeweilige Ereignis im aufgezeichneten Video zu finden ist. Im Folgenden finden Sie die Richtlinien zum Zuordnen des Zeitstempels in einem Analyseereignis zur Zeitachse des Videos, das in einem [Azure Media Services-Asset](terminology.md#asset) aufgezeichnet wurde.
+
+Extrahieren Sie zuerst den Wert `eventTime`. Verwenden Sie diesen Wert in einem [Zeitbereichsfilter](playback-recordings-how-to.md#time-range-filters), um einen passenden Teil der Aufzeichnung abzurufen. Angenommen, Sie möchten ein Video abrufen, das 30 Sekunden vor der `eventTime` beginnt und 30 Sekunden danach endet. Im obigen Beispiel mit einer `eventTime` von „2020-05-12T23:33:09.381Z“ sieht eine Anforderung für ein HLS-Manifest für das Fenster „+/- 30s“ wie folgt aus:
+```
+https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl,startTime=2020-05-12T23:32:39Z,endTime=2020-05-12T23:33:39Z).m3u8
+```
+Die obige URL würde eine so genannte [Hauptwiedergabeliste](https://developer.apple.com/documentation/http_live_streaming/example_playlists_for_http_live_streaming) zurückgeben, die URLs für Medienwiedergabelisten enthält. Die Medienwiedergabeliste enthält Einträge, die den folgenden Beispielen vergleichbar sind:
+
+```
+...
+#EXTINF:3.103011,no-desc
+Fragments(video=143039375031270,format=m3u8-aapl)
+...
+```
+Im obigen Beispiel wird über den Eintrag gemeldet, dass ein Videofragment verfügbar ist, das bei einem Zeitstempelwert von `143039375031270` beginnt. Der Wert `timestamp` im Analyseereignis verwendet dieselbe Zeitskala wie die Medienwiedergabeliste und kann zum Identifizieren des entsprechenden Videofragments und für die Suche nach dem richtigen Frame verwendet werden.
+
+Weitere Informationen finden Sie in einem der vielen [Artikel](https://www.bing.com/search?q=frame+accurate+seeking+in+HLS) zur framegenauen Suche in HLS.
 
 ## <a name="controlling-events"></a>Steuern von Ereignissen
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure
 ms.date: 06/29/2020
 ms.author: genli
-ms.openlocfilehash: a843a42de6fc1e6cd8ef788552ab4a8ac17b4e25
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 23f31e8d36d6ba615b21a4043c7d39716fc6d89a
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999053"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653493"
 ---
 # <a name="vhd-is-not-supported-when-you-create-a-virtual-machine-in-azure"></a>VHD wird beim Erstellen eines virtuellen Computers in Azure nicht unterstützt
 
@@ -62,7 +62,6 @@ Weitere Informationen zum Erstellen und Hochladen einer VHD zur Erstellung von v
 
 Anhaltende Probleme können auf einen beschädigte VHD hinweisen. In dieser Situation empfiehlt es sich, die VHD von Grund auf neu zu erstellen.
 
-Weitere Informationen finden Sie in den folgenden Artikeln:
+Weitere Informationen finden Sie im folgenden Artikel:
 
-- [Informationen zur Windows-VHD](../windows/managed-disks-overview.md)
-- [Informationen zur Linux-VHD](../linux/managed-disks-overview.md)
+- [Informationen zu VHD](../managed-disks-overview.md)
