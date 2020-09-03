@@ -1,14 +1,14 @@
 ---
 title: Grundlegendes zum Lebenszyklus einer Blaupause
 description: Erfahren Sie mehr über den Lebenszyklus einer Blaupausendefinition und die Details zu den einzelnen Phasen, einschließlich dem Aktualisieren und Entfernen von Blaupausenzuweisungen.
-ms.date: 05/06/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: dc024c0e6643420d26bdc92e47fabe647c55ae7b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c1de2cf869362154b112c3eef74ed1fb0db3a993
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82864027"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049705"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Grundlegendes zum Lebenszyklus von Azure Blueprints
 
@@ -81,14 +81,14 @@ Löschen Sie eine Blaupause mit dem [Azure-Portal](../create-blueprint-portal.md
 
 Es gibt mehrere Punkte im Lebenszyklus, an denen einem Abonnement eine Blaupause zugewiesen werden kann. Wenn sich eine Blaupausenversion im Modus **Veröffentlicht** befindet, kann diese Version einem Abonnement zugewiesen werden. Dank dieses Lebenszyklus können Versionen einer Blaupause verwendet und aktiv zugewiesen werden, während eine neuere Version entwickelt wird.
 
-Wenn Blaupausenversionen zugewiesen werden, sollte unbedingt beachtet werden, welchen Elementen sie zugewiesen werden und welche Parameter ihnen zugewiesen wurden. Die Parameter können entweder statisch oder dynamisch sein. Weitere Informationen finden Sie im Artikel zu [statischen und dynamischen Parametern](parameters.md).
+Wenn Blaupausenversionen zugewiesen werden, sollte unbedingt beachtet werden, welchen Elementen sie zugewiesen werden und welche Parameter ihnen zugewiesen wurden. Die Parameter können entweder statisch oder dynamisch sein. Weitere Informationen finden Sie im Artikel zu [statischen und dynamischen Parametern](./parameters.md).
 
 ### <a name="updating-assignments"></a>Aktualisieren von Zuweisungen
 
 Wenn eine Blaupause zugewiesen ist, kann die Zuweisung aktualisiert werden. Es gibt verschiedene Gründe für das Aktualisieren einer vorhandenen Zuweisung:
 
-- Hinzufügen oder Entfernen einer [Ressourcensperre](resource-locking.md)
-- Ändern des Wertes von [dynamischen Parametern](parameters.md#dynamic-parameters)
+- Hinzufügen oder Entfernen einer [Ressourcensperre](./resource-locking.md)
+- Ändern des Wertes von [dynamischen Parametern](./parameters.md#dynamic-parameters)
 - Durchführen eines Upgrades auf eine neuere Blaupausenversion mit dem Status **Veröffentlicht**
 
 Erfahren Sie, wie Sie [vorhandene Zuweisungen aktualisieren](../how-to/update-existing-assignments.md).
@@ -97,7 +97,7 @@ Erfahren Sie, wie Sie [vorhandene Zuweisungen aktualisieren](../how-to/update-ex
 
 Wenn die Blaupause nicht mehr benötigt wird, kann ihre Zuweisung in der Verwaltungsgruppe oder dem Abonnement aufgehoben werden. Bei der Aufhebung der Blaupausenzuweisung wird Folgendes durchgeführt:
 
-- Entfernen der [Ressourcensperre der Blaupause](resource-locking.md)
+- Entfernen der [Ressourcensperre der Blaupause](./resource-locking.md)
 - Löschen des Blaupausenzuweisungsobjekts
 - (Bedingt:) Wenn eine **vom System zugewiesene verwaltete Identität** verwendet wurde, wird sie ebenfalls gelöscht.
 
@@ -106,8 +106,8 @@ Wenn die Blaupause nicht mehr benötigt wird, kann ihre Zuweisung in der Verwalt
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Machen Sie sich mit der Verwendung [statischer und dynamischer Parameter](parameters.md) vertraut.
-- Erfahren Sie, wie Sie die [Abfolge von Blaupausen](sequencing-order.md) anpassen können.
-- Erfahren Sie, wie Sie [Ressourcen in Blaupausen sperren](resource-locking.md) können.
+- Machen Sie sich mit der Verwendung [statischer und dynamischer Parameter](./parameters.md) vertraut.
+- Erfahren Sie, wie Sie die [Abfolge von Blaupausen](./sequencing-order.md) anpassen können.
+- Erfahren Sie, wie Sie [Ressourcen in Blaupausen sperren](./resource-locking.md) können.
 - Lernen Sie, wie Sie [vorhandene Zuweisungen aktualisieren](../how-to/update-existing-assignments.md).
 - Beheben Sie Probleme bei der Blaupausenzuweisung mithilfe des [allgemeinen Leitfadens zur Problembehandlung](../troubleshoot/general.md).

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fafe9fd46322b0720d876f5b70d204fdf23fbb2
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: f58e5a07348dfde4e4618eb58746f08016c55ed6
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716298"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049569"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Erstellen einer robusten Verwaltungsstrategie für die Zugriffssteuerung in Azure Active Directory
 
@@ -92,7 +92,7 @@ Dieser Beispielrichtliniensatz gewährt ausgewählten Benutzern in **AppUsers** 
 
 ### <a name="contingencies-for-user-lockout"></a>Notfallpläne für Benutzersperre
 
-Alternativ kann Ihre Organisation auch Notfallplanrichtlinien erstellen. Um Notfallplanrichtlinien zu erstellen, müssen Sie die Kriterien des Kompromisses zwischen Geschäftskontinuität, Betriebskosten, Finanzierungskosten und Sicherheitsrisiken definieren. Sie können z.B. eine Notfallplanrichtlinie nur für eine Teilmenge von Benutzern, Apps, Clients oder Standorten aktivieren. Notfallplanrichtlinien gewähren bei einer Unterbrechung Administratoren und Endbenutzer Zugriff auf Apps und Ressourcen, wenn keine Entschärfungsmethode implementiert wurde. Microsoft empfiehlt, Notfallplanrichtlinien im [reinen Berichtsmodus](../conditional-access/howto-conditional-access-report-only.md) zu aktivieren, wenn sie nicht verwendet werden, damit Administratoren die potenziellen Auswirkungen der Richtlinien überwachen können, falls diese aktiviert werden müssen.
+Alternativ kann Ihre Organisation auch Notfallplanrichtlinien erstellen. Um Notfallplanrichtlinien zu erstellen, müssen Sie die Kriterien des Kompromisses zwischen Geschäftskontinuität, Betriebskosten, Finanzierungskosten und Sicherheitsrisiken definieren. Sie können z.B. eine Notfallplanrichtlinie nur für eine Teilmenge von Benutzern, Apps, Clients oder Standorten aktivieren. Notfallplanrichtlinien gewähren bei einer Unterbrechung Administratoren und Endbenutzer Zugriff auf Apps und Ressourcen, wenn keine Entschärfungsmethode implementiert wurde. Microsoft empfiehlt, Notfallplanrichtlinien im [reinen Berichtsmodus](../conditional-access/howto-conditional-access-insights-reporting.md) zu aktivieren, wenn sie nicht verwendet werden, damit Administratoren die potenziellen Auswirkungen der Richtlinien überwachen können, falls diese aktiviert werden müssen.
 
  Wenn Sie bei einer Unterbrechung über die Gefährdung informiert sind, ist das Risiko geringer, und es ist ein wichtiger Bestandteil des Planungsprozesses. Um Ihren Notfallplan zu erstellen, bestimmen Sie zunächst die folgenden geschäftlichen Anforderungen Ihrer Organisation:
 

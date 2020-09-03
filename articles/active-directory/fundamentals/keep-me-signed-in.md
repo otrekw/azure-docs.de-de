@@ -12,12 +12,12 @@ ms.date: 06/05/2020
 ms.author: celested
 ms.reviewer: asteen, jlu, hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd24e6847dbf02bc7efe5d9e6ea02043879f720b
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: bed6bc43dfc15abf2bdf9f38a5de2240d348d6fb
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054711"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320255"
 ---
 # <a name="configure-the-stay-signed-in-prompt-for-azure-ad-accounts"></a>Konfigurieren von „Angemeldet bleiben?“ Eingabeaufforderung für Azure AD-Konten
 
@@ -57,7 +57,7 @@ Einzelheiten zum Anmeldefehler lauten wie folgt und sind im Beispiel hervorgehob
 
 Sie können verhindern, dass Benutzern der Interrupt angezeigt wird, indem Sie unter „Unternehmensbranding“ in den erweiterten Einstellungen die Einstellung **Option „Angemeldet bleiben“ anzeigen** auf **Nein** festlegen. Dadurch wird die Eingabeaufforderung „Angemeldet bleiben?“ für alle Benutzer im Azure AD-Verzeichnis deaktiviert.
 
-Sie können auch die Steuerelemente für die persistente Browsersitzung im bedingten Zugriff verwenden, um zu verhindern, dass Benutzern die Eingabeaufforderung „Angemeldet bleiben?“ angezeigt wird. Mit dieser Option können Sie die Eingabeaufforderung „Angemeldet bleiben?“ für eine ausgewählte Gruppe von Benutzern (z. B. globale Administratoren) deaktivieren, ohne dass sich dies auf das Anmeldeverhalten der übrigen Benutzer im Verzeichnis auswirkt. Weitere Informationen finden Sie unter [Anmeldehäufigkeit von Benutzern](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime). 
+Sie können auch die Steuerelemente für die persistente Browsersitzung im bedingten Zugriff verwenden, um zu verhindern, dass Benutzern die Eingabeaufforderung „Angemeldet bleiben?“ angezeigt wird. Mit dieser Option können Sie die Eingabeaufforderung „Angemeldet bleiben?“ für eine ausgewählte Gruppe von Benutzern (z. B. globale Administratoren) deaktivieren, ohne dass sich dies auf das Anmeldeverhalten der übrigen Benutzer im Verzeichnis auswirkt. Weitere Informationen finden Sie unter [Anmeldehäufigkeit von Benutzern](../conditional-access/howto-conditional-access-session-lifetime.md). 
 
 Um sicherzustellen, dass die KMSI-Eingabeaufforderung nur angezeigt wird, wenn der Benutzer davon profitieren kann, wird die KMSI-Eingabeaufforderung in den folgenden Szenarien absichtlich nicht angezeigt:
 
@@ -72,6 +72,6 @@ Um sicherzustellen, dass die KMSI-Eingabeaufforderung nur angezeigt wird, wenn d
 
 Lernen Sie weitere Einstellungen kennen, die sich auf das Timeout der Anmeldesitzung auswirken:
 
-* Microsoft 365 – [Abmelden von inaktiven Benutzern](https://docs.microsoft.com/sharepoint/sign-out-inactive-users)
-* Bedingter Azure AD-Zugriff – [Anmeldehäufigkeit von Benutzern](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime)
-* Azure-Portal – [Festlegen des Inaktivitätstimeouts auf Verzeichnisebene](https://docs.microsoft.com/azure/azure-portal/admin-timeout)
+* Microsoft 365 – [Abmelden von inaktiven Benutzern](/sharepoint/sign-out-inactive-users)
+* Bedingter Azure AD-Zugriff – [Anmeldehäufigkeit von Benutzern](../conditional-access/howto-conditional-access-session-lifetime.md)
+* Azure-Portal – [Festlegen des Inaktivitätstimeouts auf Verzeichnisebene](../../azure-portal/set-preferences.md#change-the-directory-timeout-setting-admin)

@@ -8,18 +8,18 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 07/15/2020
-ms.openlocfilehash: ba30584ca40e7d093ecd9090b82b977d71fc1e0e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 99d477bb9e8291721022e276c5933ec0ef7f1e37
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503301"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936009"
 ---
 # <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Tutorial: Verwenden von REST und KI zum Generieren von durchsuchbarem Inhalt über Azure-Blobs
 
 Wenn Sie in Azure Blob Storage über unstrukturierten Text oder Bilder verfügen, können Sie mithilfe einer [KI-Anreicherungspipeline](cognitive-search-concept-intro.md) Informationen extrahieren und neue Inhalte erstellen, die für die Volltextsuche oder in Knowledge Mining-Szenarien verwendet werden können. Eine Pipeline kann zwar Bilder verarbeiten, in diesem REST-Tutorial steht jedoch Text im Mittelpunkt, um unter Verwendung der Spracherkennung und der Verarbeitung natürlicher Sprache neue Felder zu erstellen, die Sie in Abfragen, Facetten und Filtern nutzen können.
 
-In diesem Tutorial werden Postman und die [Azure Cognitive Search-REST-APIs](https://docs.microsoft.com/rest/api/searchservice/) verwendet, um folgende Aufgaben auszuführen:
+In diesem Tutorial werden Postman und die [Azure Cognitive Search-REST-APIs](/rest/api/searchservice/) verwendet, um folgende Aufgaben auszuführen:
 
 > [!div class="checklist"]
 > * Beginnen Sie mit vollständigen Dokumenten (unstrukturierter Text, beispielsweise im PDF-, HTML-, DOCX- oder PPTX-Format) in Azure Blob Storage.
@@ -135,7 +135,7 @@ In Azure Cognitive Search erfolgt die KI-Verarbeitung während der Indizierung (
 
 ### <a name="step-1-create-a-data-source"></a>Schritt 1: Erstellen einer Datenquelle
 
-Ein [Datenquellenobjekt](https://docs.microsoft.com/rest/api/searchservice/create-data-source) stellt die Verbindungszeichenfolge für den Blobcontainer mit den Dateien bereit.
+Ein [Datenquellenobjekt](/rest/api/searchservice/create-data-source) stellt die Verbindungszeichenfolge für den Blobcontainer mit den Dateien bereit.
 
 1. Verwenden Sie **POST** und die folgende URL, und ersetzen Sie dabei „YOUR-SERVICE-NAME“ durch den tatsächlichen Namen Ihres Diensts.
 
@@ -165,7 +165,7 @@ Wenn der Fehler 403 oder 404 angezeigt wird, überprüfen Sie die Konstruktion d
 
 ### <a name="step-2-create-a-skillset"></a>Schritt 2: Erstellen eines Skillsets
 
-Bei einem [Skillset-Objekt](https://docs.microsoft.com/rest/api/searchservice/create-skillset) handelt es sich um eine Gruppe von Anreicherungsschritten, die auf Ihre Inhalte angewendet werden. 
+Bei einem [Skillset-Objekt](/rest/api/searchservice/create-skillset) handelt es sich um eine Gruppe von Anreicherungsschritten, die auf Ihre Inhalte angewendet werden. 
 
 1. Verwenden Sie **PUT** und die folgende URL, und ersetzen Sie dabei „YOUR-SERVICE-NAME“ durch den tatsächlichen Namen Ihres Diensts.
 
@@ -250,7 +250,7 @@ Bei einem [Skillset-Objekt](https://docs.microsoft.com/rest/api/searchservice/cr
 
 ### <a name="step-3-create-an-index"></a>Schritt 3: Erstellen eines Index
 
-Ein [Index](https://docs.microsoft.com/rest/api/searchservice/create-index) stellt das Schema bereit, das verwendet wird, um den physischen Ausdruck Ihres Inhalts in invertierten Indizes und anderen Konstrukten in Azure Cognitive Search zu erstellen. Die größte Komponente eines Index ist die Feldauflistung, deren Datentyp und Attribute die Inhalte und Verhaltensweisen in Azure Cognitive Search bestimmen.
+Ein [Index](/rest/api/searchservice/create-index) stellt das Schema bereit, das verwendet wird, um den physischen Ausdruck Ihres Inhalts in invertierten Indizes und anderen Konstrukten in Azure Cognitive Search zu erstellen. Die größte Komponente eines Index ist die Feldauflistung, deren Datentyp und Attribute die Inhalte und Verhaltensweisen in Azure Cognitive Search bestimmen.
 
 1. Verwenden Sie **PUT** und die folgende URL, und ersetzen Sie dabei „YOUR-SERVICE-NAME“ durch den tatsächlichen Namen Ihres Diensts, um Ihren Index zu benennen.
 
@@ -334,7 +334,7 @@ Ein [Index](https://docs.microsoft.com/rest/api/searchservice/create-index) stel
 
 ### <a name="step-4-create-and-run-an-indexer"></a>Schritt 4: Erstellen und Ausführen eines Indexers
 
-Ein [Indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer) steuert die Pipeline. Die drei bereits erstellten Komponenten (Datenquelle, Skillset und Index) sind Eingaben für einen Indexer. Durch die Erstellung des Indexers in Azure Cognitive Search wird die gesamte Pipeline aktiviert. 
+Ein [Indexer](/rest/api/searchservice/create-indexer) steuert die Pipeline. Die drei bereits erstellten Komponenten (Datenquelle, Skillset und Index) sind Eingaben für einen Indexer. Durch die Erstellung des Indexers in Azure Cognitive Search wird die gesamte Pipeline aktiviert. 
 
 1. Verwenden Sie **PUT** und die folgende URL, und ersetzen Sie dabei „YOUR-SERVICE-NAME“ durch den tatsächlichen Namen Ihres Diensts, um Ihren Indexer zu benennen.
 
@@ -486,7 +486,7 @@ Zur Erinnerung: Wir haben Blobinhalte als Grundlage verwendet, bei denen das ges
    https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$filter=organizations/any(organizations: organizations eq 'NASDAQ')&$select=metadata_storage_name,organizations&$count=true&api-version=2020-06-30
    ```
 
-Diese Abfragen veranschaulichen einige der Verwendungsmöglichkeiten von Abfragesyntax und Filtern für neue Felder, die von Cognitive Search erstellt werden. Weitere Abfragebeispiele finden Sie unter [Beispiele](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) im Artikel „Durchsuchen von Dokumenten (Azure Cognitive Search-REST-API)“, unter [Erstellen einer einfachen Abfrage in Azure Search](search-query-simple-examples.md) sowie unter [Verwenden der „vollständigen“ Lucene-Suchsyntax (erweiterte Abfragen in der kognitiven Azure-Suche)](search-query-lucene-examples.md).
+Diese Abfragen veranschaulichen einige der Verwendungsmöglichkeiten von Abfragesyntax und Filtern für neue Felder, die von Cognitive Search erstellt werden. Weitere Abfragebeispiele finden Sie unter [Beispiele](/rest/api/searchservice/search-documents#bkmk_examples) im Artikel „Durchsuchen von Dokumenten (Azure Cognitive Search-REST-API)“, unter [Erstellen einer einfachen Abfrage in Azure Search](search-query-simple-examples.md) sowie unter [Verwenden der „vollständigen“ Lucene-Suchsyntax (erweiterte Abfragen in der kognitiven Azure-Suche)](search-query-lucene-examples.md).
 
 <a name="reset"></a>
 

@@ -3,7 +3,7 @@ title: Tutorial:`:` Verwenden einer verwalteten Identität für den Zugriff auf 
 description: In diesem Tutorial erfahren Sie, wie Sie eine systemseitig zugewiesene verwaltete Identität eines virtuellen Windows-Computers verwenden, um auf Azure SQL-Datenbank zuzugreifen.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 ms.service: active-directory
 ms.subservice: msi
@@ -12,14 +12,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/14/2020
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13be33843172f505ed8f12293137c0808e9bd2a0
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: d576fb4f5dea10a2adf0d7488aa422e1397fd6d1
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920383"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255748"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>Tutorial: Verwenden der systemseitig zugewiesenen verwalteten Identität eines virtuellen Windows-Computers für den Zugriff auf Azure SQL
 
@@ -44,7 +44,7 @@ In diesem Tutorial erfahren Sie, wie Sie eine systemseitig zugewiesene Identitä
 
 ## <a name="grant-access"></a>Gewähren von Zugriff
 
-Um Ihrem virtuellen Computer Zugriff auf eine Datenbank in Azure SQL-Datenbank zu gewähren, können Sie einen vorhandenen [logischen SQL-Server](../../azure-sql/database/logical-servers.md) verwenden oder einen neuen erstellen. Zum Erstellen eines neuen Servers und einer Datenbank mithilfe des Azure-Portals befolgen Sie diesen [Azure SQL-Schnellstart](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal). Es gibt in der [Azure SQL-Dokumentation](https://docs.microsoft.com/azure/sql-database/) auch Schnellstarts, in denen die Azure-Befehlszeilenschnittstelle und Azure PowerShell verwendet werden.
+Um Ihrem virtuellen Computer Zugriff auf eine Datenbank in Azure SQL-Datenbank zu gewähren, können Sie einen vorhandenen [logischen SQL-Server](../../azure-sql/database/logical-servers.md) verwenden oder einen neuen erstellen. Zum Erstellen eines neuen Servers und einer Datenbank mithilfe des Azure-Portals befolgen Sie diesen [Azure SQL-Schnellstart](../../azure-sql/database/single-database-create-quickstart.md). Es gibt in der [Azure SQL-Dokumentation](/azure/sql-database/) auch Schnellstarts, in denen die Azure-Befehlszeilenschnittstelle und Azure PowerShell verwendet werden.
 
 Zur Gewährung des Datenbankzugriffs für Ihren virtuellen Computer sind zwei Schritte erforderlich:
 
@@ -53,7 +53,7 @@ Zur Gewährung des Datenbankzugriffs für Ihren virtuellen Computer sind zwei Sc
 
 ### <a name="enable-azure-ad-authentication"></a>Aktivieren der Azure AD-Authentifizierung
 
-**So[ konfigurieren Sie die Azure AD-Authentifizierung](/azure/sql-database/sql-database-aad-authentication-configure)**
+**So[ konfigurieren Sie die Azure AD-Authentifizierung](../../azure-sql/database/authentication-aad-configure.md)**
 
 1. Wählen Sie im Azure-Portal im Navigationsbereich links **SQL-Server** aus.
 2. Klicken Sie auf den SQL-Server, für den die Azure AD-Authentifizierung aktiviert werden soll.
@@ -64,10 +64,10 @@ Zur Gewährung des Datenbankzugriffs für Ihren virtuellen Computer sind zwei Sc
 
 ### <a name="create-contained-user"></a>Erstellen eines enthaltenen Benutzers
 
-In diesem Abschnitt wird gezeigt, wie Sie einen in der Datenbank enthaltenen Benutzer erstellen, der die systemseitig zugewiesene Identität des virtuellen Computers darstellt. Für diesen Schritt benötigen Sie [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS). Bevor Sie beginnen, sollten Sie die folgenden Artikel mit Hintergrundinformationen zur Azure AD-Integration lesen:
+In diesem Abschnitt wird gezeigt, wie Sie einen in der Datenbank enthaltenen Benutzer erstellen, der die systemseitig zugewiesene Identität des virtuellen Computers darstellt. Für diesen Schritt benötigen Sie [Microsoft SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS). Bevor Sie beginnen, sollten Sie die folgenden Artikel mit Hintergrundinformationen zur Azure AD-Integration lesen:
 
-- [Universelle Authentifizierung bei SQL-Datenbank und Azure Synapse Analytics (SSMS-Unterstützung für MFA)](/azure/sql-database/sql-database-ssms-mfa-authentication)
-- [Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit SQL-Datenbank oder Azure Synapse Analytics](/azure/sql-database/sql-database-aad-authentication-configure)
+- [Universelle Authentifizierung bei SQL-Datenbank und Azure Synapse Analytics (SSMS-Unterstützung für MFA)](../../azure-sql/database/authentication-mfa-ssms-overview.md)
+- [Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit SQL-Datenbank oder Azure Synapse Analytics](../../azure-sql/database/authentication-aad-configure.md)
 
 SQL-Datenbank benötigt eindeutige AAD-Anzeigenamen. Mit dieser Option müssen die für verwaltete Identität aktivierten AAD-Konten wie z. B. Benutzer, Gruppen und Dienstprinzipale (Anwendungen) sowie VM-Namen in Bezug auf den Anzeigenamen eindeutig im AAD definiert werden. SQL-Datenbank überprüft den AAD-Anzeigenamen während der T-SQL-Erstellung solcher Benutzer. Wenn er nicht eindeutig ist, kann der Befehl, der die Angabe eines AAD-Anzeigenamens für ein bestimmtes Konto anfordert, nicht ausgeführt werden.
 
@@ -208,4 +208,4 @@ Eine andere schnelle Möglichkeit zum Testen der umfassenden Einrichtung ohne Sc
 In diesem Tutorial haben Sie gelernt, wie Sie eine systemseitig zugewiesene verwaltete Identität für den Zugriff auf Azure SQL-Datenbank verwenden. Weitere Informationen zu Azure SQL-Datenbank:
 
 > [!div class="nextstepaction"]
-> [Azure SQL-Datenbank](/azure/sql-database/sql-database-technical-overview)
+> [Azure SQL-Datenbank](../../azure-sql/database/sql-database-paas-overview.md)

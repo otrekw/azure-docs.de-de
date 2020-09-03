@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 7c5015cb6328dba70fed40053bc234966572ae98
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 64ee8f2daddd53d37aeaf0f02208e02500b48f57
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873720"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320867"
 ---
 # <a name="what-are-security-defaults"></a>Was sind Sicherheitsstandards?
 
@@ -92,7 +92,7 @@ Nach Aktivierung der Sicherheitsstandards in Ihrem Mandanten werden alle Authent
 > [!WARNING]
 > Stellen Sie vor dem Aktivieren von Sicherheitsstandards sicher, dass Ihre Administratoren keine älteren Authentifizierungsprotokolle verwenden. Weitere Informationen finden Sie unter [Blockieren der Legacyauthentifizierung](concept-fundamentals-block-legacy-authentication.md).
 
-- [Einrichten eines Multifunktionsgeräts oder einer -anwendung zum Senden von E-Mails mit Office 365 und Microsoft 365](https://docs.microsoft.com/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-microsoft-365-or-office-365)
+- [Einrichten eines Multifunktionsgeräts oder einer -anwendung zum Senden von E-Mails mit Office 365 und Microsoft 365](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-microsoft-365-or-office-365)
 
 ### <a name="protecting-privileged-actions"></a>Schützen privilegierter Aktionen
 
@@ -109,7 +109,7 @@ Es ist wichtig, die Identität der Benutzer zu überprüfen, die auf Azure Resou
 Nach Aktivierung der Sicherheitsstandards in Ihrem Mandanten muss jeder Benutzer, der auf das Azure-Portal, Azure PowerShell oder die Azure CLI zugreift, eine zusätzliche Authentifizierung durchlaufen. Diese Richtlinie gilt für alle Benutzer mit Zugriff auf Azure Resource Manager – nicht nur für Administratoren. 
 
 > [!NOTE]
-> Bei Mandanten vor Exchange Online 2017 ist die moderne Authentifizierung standardmäßig deaktiviert. Sie müssen die [moderne Authentifizierung aktivieren](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online), um eine mögliche Anmeldeschleife bei der Authentifizierung über diese Mandanten zu vermeiden.
+> Bei Mandanten vor Exchange Online 2017 ist die moderne Authentifizierung standardmäßig deaktiviert. Sie müssen die [moderne Authentifizierung aktivieren](/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online), um eine mögliche Anmeldeschleife bei der Authentifizierung über diese Mandanten zu vermeiden.
 
 > [!NOTE]
 > Das Azure AD Connect-Synchronisierungskonto ist von den Sicherheitsstandards ausgenommen. Sie werden nicht aufgefordert, sich für die mehrstufige Authentifizierung zu registrieren bzw. diese auszuführen. Organisationen sollten dieses Konto nicht für andere Zwecke verwenden.

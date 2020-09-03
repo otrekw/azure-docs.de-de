@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb,
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3ee7287f2a5cf9491ae91d434caf2f653c853a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4d05aaa7a6bd48c92e863d38dcee9f0bf925bafa
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83995308"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049263"
 ---
 # <a name="conditional-access-block-access"></a>Bedingter Zugriff: Zugriff blockieren
 
@@ -38,7 +38,7 @@ Richtlinien für bedingten Zugriff sind leistungsstarke Tools, daher wird empfoh
 
 ## <a name="create-a-conditional-access-policy"></a>Erstellen der Richtlinie für bedingten Zugriff
 
-Mit den folgenden Schritte können Sie Richtlinien für den bedingten Zugriff erstellen, um den Zugriff auf alle Apps (mit Ausnahme von [Office 365](concept-conditional-access-cloud-apps.md#office-365-preview)) zu blockieren, wenn sich Benutzer nicht in einem vertrauenswürdigen Netzwerk befinden. Für diese Richtlinien wird zu Beginn der Modus [Nur Bericht](howto-conditional-access-report-only.md) festgelegt, damit Administratoren die Auswirkungen auf vorhandene Benutzer ermitteln können. Wenn die Administratoren sicher sind, dass die Richtlinien erwartungsgemäß funktionieren, können sie die Richtlinien **aktivieren**.
+Mit den folgenden Schritte können Sie Richtlinien für den bedingten Zugriff erstellen, um den Zugriff auf alle Apps (mit Ausnahme von [Office 365](concept-conditional-access-cloud-apps.md#office-365-preview)) zu blockieren, wenn sich Benutzer nicht in einem vertrauenswürdigen Netzwerk befinden. Für diese Richtlinien wird zu Beginn der Modus [Nur Bericht](howto-conditional-access-insights-reporting.md) festgelegt, damit Administratoren die Auswirkungen auf vorhandene Benutzer ermitteln können. Wenn die Administratoren sicher sind, dass die Richtlinien erwartungsgemäß funktionieren, können sie die Richtlinien **aktivieren**.
 
 Die erste Richtlinie blockiert den Zugriff auf alle Apps mit Ausnahme von Office 365-Anwendungen, wenn sie sich nicht an einem vertrauenswürdigen Standort befinden.
 
@@ -84,6 +84,6 @@ Nachfolgend wird eine zweite Richtlinie erstellt, die für Benutzer von Office 3
 
 [Allgemeine Richtlinien für bedingten Zugriff](concept-conditional-access-policy-common.md)
 
-[Bestimmen der Auswirkung durch Verwendung des reinen Berichtsmodus des bedingten Zugriffs](howto-conditional-access-report-only.md)
+[Bestimmen der Auswirkung durch Verwendung des reinen Berichtsmodus des bedingten Zugriffs](howto-conditional-access-insights-reporting.md)
 
 [Simulieren des Anmeldeverhaltens mit dem Was-wäre-wenn-Tool für den bedingten Zugriff](troubleshoot-conditional-access-what-if.md)

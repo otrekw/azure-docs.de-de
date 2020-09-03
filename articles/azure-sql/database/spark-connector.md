@@ -11,12 +11,12 @@ author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: carlrab
 ms.date: 09/25/2018
-ms.openlocfilehash: cb7fb7f6c44f9e1c4a9b073c666543a2e892582a
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: e7ce11a5fdba5c7d98cc331d581e827d34f7af42
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985498"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318844"
 ---
 # <a name="accelerate-real-time-big-data-analytics-using-the-spark-connector"></a>Beschleunigung von Big-Data-Echtzeitanalysen mit dem Spark-Connector 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,7 +25,7 @@ Der Spark-Connector ermöglicht die Verwendung von Datenbanken in Azure SQL-Date
 
 ## <a name="download-and-build-a-spark-connector"></a>Herunterladen und Erstellen eines Spark-Connectors
 
-Laden Sie zunächst den Spark-Connector aus dem GitHub-Repository [azure-sqldb-spark](https://github.com/Azure/azure-sqldb-spark) herunter.
+Laden Sie zunächst den Spark-Connector aus dem GitHub-Repository [azure-sqldb-spark](https://github.com/microsoft/sql-spark-connector) herunter.
 
 ### <a name="official-supported-versions"></a>Offiziell unterstützte Versionen
 

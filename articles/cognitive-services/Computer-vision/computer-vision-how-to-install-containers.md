@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 70cbb21430253dc9683cd3803f2a09ef8bb858cb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 819fc27d3b50245975192622ad969b53605c1acd
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545640"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378473"
 ---
 # <a name="install-and-run-read-containers-preview"></a>Installieren und Ausführen von Lesecontainern (Vorschauversion)
 
@@ -68,14 +68,14 @@ Für das Lesen stehen Containerimages zur Verfügung.
 
 | Container | Container Registry/Repository/Imagename |
 |-----------|------------|
-| Lesen | `containerpreview.azurecr.io/microsoft/cognitive-services-read:latest` |
+| Lesen | `containerpreview.azurecr.io/microsoft/cognitive-services-read:2.0` |
 
 Verwenden Sie den Befehl [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/), um ein Containerimage herunterzuladen.
 
 ### <a name="docker-pull-for-the-read-container"></a>„docker pull“ für den Container für das Lesen
 
 ```bash
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-read:latest
+docker pull containerpreview.azurecr.io/microsoft/cognitive-services-read:2.0
 ```
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
@@ -283,7 +283,7 @@ In diesem Artikel haben Sie die Konzepte und den Workflow zum Herunterladen, Ins
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Konfigurationseinstellungen finden Sie unter [Konfigurieren von Containern](computer-vision-resource-container-config.md).
-* Lesen Sie [Übersicht über maschinelles Sehen](Home.md), um weitere Informationen zur Erkennung von gedrucktem und handschriftlichem Text zu erhalten.
+* Lesen Sie [Übersicht über maschinelles Sehen](overview.md), um weitere Informationen zur Erkennung von gedrucktem und handschriftlichem Text zu erhalten.
 * Details zu den vom Container unterstützten Methoden finden Sie unter [Maschinelles Sehen-API](//westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa).
 * Unter [Häufig gestellte Fragen (FAQ)](FAQ.md) finden Sie Informationen zum Beheben von Problemen im Zusammenhang mit der Funktionalität des maschinellen Sehens.
 * Verwenden weiterer [Cognitive Services-Container](../cognitive-services-container-support.md)

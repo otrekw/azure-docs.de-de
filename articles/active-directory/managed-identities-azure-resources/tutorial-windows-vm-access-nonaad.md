@@ -3,7 +3,7 @@ title: Tutorial`:` Verwenden einer verwalteten Identität für den Zugriff auf A
 description: In diesem Tutorial erfahren Sie, wie Sie eine systemseitig zugewiesene verwaltete Identität eines virtuellen Windows-Computers verwenden, um auf Azure Key Vault zuzugreifen.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: daveba
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/10/2020
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7648f0c41731968c6cf8d2b2b2e55fffd9b5f53d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2890eb2211ac0a105363742a0e900e52a577ed27
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87018773"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255824"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>Tutorial: Verwenden der systemseitig zugewiesenen verwalteten Identität eines virtuellen Windows-Computers für den Zugriff auf Azure Key Vault 
 
@@ -75,7 +75,7 @@ Fügen Sie der Key Vault nun ein Geheimnis hinzu, das Sie später mithilfe von C
  
 ## <a name="access-data"></a>Zugreifen auf Daten  
 
-In diesem Abschnitt wird gezeigt, wie Sie mithilfe der VM-Identität ein Zugriffstoken abrufen und es zum Abrufen des Geheimnisses aus der Key Vault-Instanz verwenden. Wenn bei Ihnen nicht PowerShell 4.3.1 oder höher installiert ist, müssen Sie [die neueste Version herunterladen und installieren](https://docs.microsoft.com/powershell/azure/).
+In diesem Abschnitt wird gezeigt, wie Sie mithilfe der VM-Identität ein Zugriffstoken abrufen und es zum Abrufen des Geheimnisses aus der Key Vault-Instanz verwenden. Wenn bei Ihnen nicht PowerShell 4.3.1 oder höher installiert ist, müssen Sie [die neueste Version herunterladen und installieren](/powershell/azure/).
 
 Zuerst wird mit der systemseitig zugewiesenen verwalteten Identität des virtuellen Computers ein Zugriffstoken für die Authentifizierung bei Key Vault abgerufen:
  
@@ -128,4 +128,4 @@ Nachdem Sie das Geheimnis aus der Key Vault abgerufen haben, können Sie es für
 In diesem Tutorial haben Sie gelernt, wie Sie eine systemseitig zugewiesene verwaltete Identität eines virtuellen Windows-Computers verwenden, um auf Azure Key Vault zuzugreifen.  Weitere Informationen zu Azure Key Vault finden Sie in folgendem Artikel:
 
 > [!div class="nextstepaction"]
->[Azure Key Vault](/azure/key-vault/key-vault-overview)
+>[Azure Key Vault](../../key-vault/general/overview.md)

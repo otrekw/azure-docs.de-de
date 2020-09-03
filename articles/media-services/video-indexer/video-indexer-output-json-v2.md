@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 08/10/2020
+ms.date: 08/27/2020
 ms.author: juliako
-ms.openlocfilehash: ddd1a5b9217962b595408973874a59219af298cf
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 6eecaaff836d3253d382fdf0280f9a15c3a7b00b
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604774"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050861"
 ---
 # <a name="examine-the-video-indexer-output"></a>Überprüfen der Video Indexer-Ausgabe
 
@@ -27,7 +27,7 @@ Sie können auch die API verwenden. Wenn Sie die **Get Video Index**-API aufrufe
 
 ![Einblicke](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
 
-In diesem Artikel wird die Video Indexer-Ausgabe (JSON-Inhalt) untersucht. Informationen über die Features und Erkenntnisse, die Ihnen zur Verfügung stehen, finden Sie unter [Video Indexer-Erkenntnisse](video-indexer-overview.md#video-insights).
+In diesem Artikel wird die Video Indexer-Ausgabe (JSON-Inhalt) untersucht. <br/>Informationen über die Features und Erkenntnisse, die Ihnen zur Verfügung stehen, finden Sie unter [Video Indexer-Erkenntnisse](video-indexer-overview.md#video-insights).
 
 > [!NOTE]
 > Der Zeitraum bis zum Ablauf aller Zugriffstoken in Video Indexer beträgt eine Stunde.

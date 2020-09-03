@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 0e6759837519feccf6069e805e3fe0f72562fb7b
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 8a615dc02b78993a18a86def9d8f496ba0bba922
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85559019"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929702"
 ---
 # <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>Tutorial: Indizieren von JSON-Blobs aus Azure Storage per REST
 
 Azure Cognitive Search kann JSON-Dokumente und -Arrays in Azure Blob Storage mithilfe eines [Indexers](search-indexer-overview.md) indizieren, der teilweise strukturierte Daten lesen kann. Teilweise strukturierte Daten enthalten Tags oder Markierungen, mit denen Inhalte in den Daten voneinander getrennt werden. Sie bilden den Unterschied zwischen unstrukturierten Daten, die vollständig indiziert werden müssen, und formal strukturierten Daten, die einem Datenmodell entsprechen (wie z. B. einem Schema einer relationalen Datenbank), das pro Feld indiziert werden kann.
 
-In diesem Tutorial werden Postman und die [Azure Cognitive Search-REST-APIs](https://docs.microsoft.com/rest/api/searchservice/) verwendet, um folgende Aufgaben durchzuführen:
+In diesem Tutorial werden Postman und die [Azure Cognitive Search-REST-APIs](/rest/api/searchservice/) verwendet, um folgende Aufgaben durchzuführen:
 
 > [!div class="checklist"]
 > * Konfigurieren einer Azure Cognitive Search-Datenquelle für einen Azure-Blobcontainer
@@ -31,7 +31,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-+ [Azure Storage (in englischer Sprache)](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
++ [Azure Storage (in englischer Sprache)](../storage/common/storage-account-create.md)
 + [Postman-Desktop-App](https://www.getpostman.com/)
 + [Neuer](search-create-service-portal.md) oder [bereits vorhandener](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) Suchdienst 
 
@@ -72,7 +72,7 @@ Erstellen Sie diese beiden Dienste nach Möglichkeit in derselben Region und Res
 
 1. Klicken Sie auf den Dienst **Blobs**.
 
-1. [Erstellen Sie einen Blobcontainer](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) für die Beispieldaten. Sie können die öffentliche Zugriffsebene auf beliebige gültige Werte festlegen.
+1. [Erstellen Sie einen Blobcontainer](../storage/blobs/storage-quickstart-blobs-portal.md) für die Beispieldaten. Sie können die öffentliche Zugriffsebene auf beliebige gültige Werte festlegen.
 
 1. Nachdem der Container erstellt wurde, öffnen Sie ihn, und wählen Sie auf der Befehlsleiste die Option **Hochladen** aus.
 
@@ -116,7 +116,7 @@ In URIs muss eine API-Version angegeben werden, und für jeden Aufruf sollte **2
 
 ## <a name="3---create-a-data-source"></a>3\. Erstellen einer Datenquelle
 
-Die [API zum Erstellen einer Datenquelle](https://docs.microsoft.com/rest/api/searchservice/create-data-source) erstellt ein Azure Cognitive Search-Objekt, das angibt, welche Daten indiziert werden sollen.
+Die [API zum Erstellen einer Datenquelle](/rest/api/searchservice/create-data-source) erstellt ein Azure Cognitive Search-Objekt, das angibt, welche Daten indiziert werden sollen.
 
 1. Legen Sie den Endpunkt dieses Aufrufs auf `https://[service name].search.windows.net/datasources?api-version=2020-06-30` fest. Ersetzen Sie `[service name]` durch den Namen Ihres Suchdiensts. 
 
@@ -159,7 +159,7 @@ Die [API zum Erstellen einer Datenquelle](https://docs.microsoft.com/rest/api/se
 
 ## <a name="4---create-an-index"></a>4\. Erstellen eines Index
     
-Beim zweiten Aufruf wird die [API zum Erstellen eines Index](https://docs.microsoft.com/rest/api/searchservice/create-index) aufgerufen, die einen Azure Cognitive Search-Index mit allen durchsuchbaren Daten erstellt. Ein Index gibt alle Parameter und die dazugehörigen Attribute an.
+Beim zweiten Aufruf wird die [API zum Erstellen eines Index](/rest/api/searchservice/create-index) aufgerufen, die einen Azure Cognitive Search-Index mit allen durchsuchbaren Daten erstellt. Ein Index gibt alle Parameter und die dazugehörigen Attribute an.
 
 1. Legen Sie den Endpunkt dieses Aufrufs auf `https://[service name].search.windows.net/indexes?api-version=2020-06-30` fest. Ersetzen Sie `[service name]` durch den Namen Ihres Suchdiensts.
 
@@ -234,7 +234,7 @@ Beim zweiten Aufruf wird die [API zum Erstellen eines Index](https://docs.micros
 
 ## <a name="5---create-and-run-an-indexer"></a>5\. Erstellen und Ausführen eines Indexers
 
-Ein Indexer stellt eine Verbindung mit der Datenquelle her, importiert Daten in den Zielsuchindex und stellt optional einen Zeitplan für die Automatisierung der Datenaktualisierung bereit. Die REST-API für diese Aufgabe ist [Indexer erstellen](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
+Ein Indexer stellt eine Verbindung mit der Datenquelle her, importiert Daten in den Zielsuchindex und stellt optional einen Zeitplan für die Automatisierung der Datenaktualisierung bereit. Die REST-API für diese Aufgabe ist [Indexer erstellen](/rest/api/searchservice/create-indexer).
 
 1. Legen Sie den URI für diesen Aufruf auf `https://[service name].search.windows.net/indexers?api-version=2020-06-30` fest. Ersetzen Sie `[service name]` durch den Namen Ihres Suchdiensts.
 

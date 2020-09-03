@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 082e4a35582e9fe643aefc13c0c46a1c75f443e5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fd33845c331f907dbd5720ac92c6b1c627f01873
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025386"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318408"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Bereitstellungshandbuch für Azure Active Directory-Features
 
@@ -35,7 +35,7 @@ Weitere Informationen zur Lizenzierung finden Sie auf den folgenden Seiten:
 * [Azure AD-Lizenzierung](https://azure.microsoft.com/pricing/details/active-directory/)
 * [Microsoft 365 Enterprise](https://www.microsoft.com/en-us/licensing/product-licensing/microsoft-365-enterprise)
 * [Enterprise Mobility + Security](https://www.microsoft.com/en-us/licensing/product-licensing/enterprise-mobility-security)
-* [Leitfaden zur Azure AD B2B-Lizenzierung](../b2b/licensing-guidance.md)
+* [Leitfaden zur Azure AD B2B-Lizenzierung](../external-identities/licensing-guidance.md)
 
 ## <a name="phase-1-build-a-foundation-of-security"></a>Phase 1: Erstellen eines Fundaments aus Sicherheit
 
@@ -47,7 +47,7 @@ In dieser Phase aktivieren Administratoren die grundlegenden Sicherheitsfunktion
 | [Nach Möglichkeit nicht globale Administratorrollen verwenden](../users-groups-roles/directory-assign-admin-roles.md) | Gewähren Sie Ihren Administratoren nur den Zugriff, den sie benötigen, und nur für Bereiche, auf die sie zugreifen müssen. Nicht alle Administratoren müssen globale Administratoren sein. | Azure AD Free |
 | [Aktivieren von Privileged Identity Management für die Nachverfolgung der Nutzung der Administratorrolle](../privileged-identity-management/pim-getting-started.md) | Aktivieren Sie Privileged Identity Management, um mit der Nachverfolgung der Nutzung der Administratorrolle zu beginnen. | Azure AD Premium P2 |
 | [Erfolgreicher Rollout der Self-Service-Kennwortzurücksetzung](../authentication/howto-sspr-deployment.md) | Reduzieren Sie Anrufe beim Helpdesk für Kennwortzurücksetzungen, indem Sie Mitarbeitern mithilfe von Richtlinien, die Sie als Administrator steuern, das Zurücksetzen ihrer eigenen Kennwörter ermöglichen. | |
-| [Erstellen einer benutzerdefinierten organisationsspezifischen Liste gesperrter Kennwörter](../authentication/howto-password-ban-bad-configure.md) | Verhindern Sie, dass Benutzer Kennwörter erstellen, die Wörter oder Ausdrücke enthalten, die in Ihrer Organisation bzw. Ihrem Bereich häufig vorkommen. | |
+| [Erstellen einer benutzerdefinierten organisationsspezifischen Liste gesperrter Kennwörter](../authentication/tutorial-configure-custom-password-protection.md) | Verhindern Sie, dass Benutzer Kennwörter erstellen, die Wörter oder Ausdrücke enthalten, die in Ihrer Organisation bzw. Ihrem Bereich häufig vorkommen. | |
 | [Aktivieren von Azure AD-Kennwortschutz für die lokale Integration](../authentication/concept-password-ban-bad-on-premises.md) | Erweitern Sie die Liste der gesperrten Kennwörtern auf Ihr lokales Verzeichnis, um sicherzustellen, dass auch lokal festgelegte Kennwörter den globalen und mandantenspezifischen Listen gesperrter Kennwörter entsprechen. | Azure AD Premium P1 |
 | [Kennwortleitfaden von Microsoft aktivieren](https://www.microsoft.com/research/publication/password-guidance/) | Wenn Ihre Benutzer ihre Kennwörter nicht mehr nach einem festgelegten Zeitplan ändern müssen, und Sie die Anforderungen an die Kennwortkomplexität abschaffen, fällt es Ihren Benutzern leichter, sich Kennwörter zu merken und sichere Kennwörter festzulegen. | Azure AD Free |
 | [Deaktivieren von regelmäßigen Kennwortzurücksetzungen für cloudbasierte Benutzerkonten](../authentication/concept-sspr-policy.md#set-a-password-to-never-expire) | Regelmäßige Kennwortzurücksetzungen regen Ihre Benutzer dazu an, ihre vorhandenen Kennwörter lediglich mit geänderten Zahlen wiederzuverwenden. Verwenden Sie die Richtlinien aus dem Kennwortleitfaden von Microsoft, und spiegeln Sie Ihre lokalen Richtlinie für reine Cloudbenutzer. | Azure AD Free |
@@ -65,12 +65,12 @@ Als Nächstes ergänzen wir die in Phase 1 geschaffene Grundlage durch das Impor
 
 | Aufgabe | Detail | Erforderliche Lizenz |
 | ---- | ------ | ---------------- |
-| [Installieren von Azure AD Connect](../connect/active-directory-aadconnect-select-installation.md) | Bereiten Sie die Synchronisierung von Benutzern aus Ihrem vorhandenen lokalen Verzeichnis mit der Cloud vor. | Azure AD Free |
-| [Implementieren der Kennworthashsynchronisierung](../connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md) | Synchronisieren Sie Kennworthashes, um die Replikation von Kennwortänderungen, die Erkennung und Behandlung falscher Kennwörter und das Melden kompromittierter Anmeldeinformationen zu ermöglichen. | Azure AD Free |
-| [Implementieren der Kennwortrückschreibung](../authentication/howto-sspr-writeback.md) | Lassen Sie zu, dass Kennwortänderungen in der Cloud in eine lokale Windows Server Active Directory-Umgebung zurückgeschrieben werden. | Azure AD Premium P1 |
-| [Implementieren von Azure AD Connect Health](../connect-health/active-directory-aadconnect-health.md) | Aktivieren Sie die Überwachung wichtiger Integritätsstatistiken für Ihre Azure AD Connect-Server, AD FS-Server und Domänencontroller. | Azure AD Premium P1 |
+| [Installieren von Azure AD Connect](../hybrid/how-to-connect-install-select-installation.md) | Bereiten Sie die Synchronisierung von Benutzern aus Ihrem vorhandenen lokalen Verzeichnis mit der Cloud vor. | Azure AD Free |
+| [Implementieren der Kennworthashsynchronisierung](../hybrid/how-to-connect-password-hash-synchronization.md) | Synchronisieren Sie Kennworthashes, um die Replikation von Kennwortänderungen, die Erkennung und Behandlung falscher Kennwörter und das Melden kompromittierter Anmeldeinformationen zu ermöglichen. | Azure AD Free |
+| [Implementieren der Kennwortrückschreibung](../authentication/tutorial-enable-sspr-writeback.md) | Lassen Sie zu, dass Kennwortänderungen in der Cloud in eine lokale Windows Server Active Directory-Umgebung zurückgeschrieben werden. | Azure AD Premium P1 |
+| [Implementieren von Azure AD Connect Health](../hybrid/whatis-azure-ad-connect.md#what-is-azure-ad-connect-health) | Aktivieren Sie die Überwachung wichtiger Integritätsstatistiken für Ihre Azure AD Connect-Server, AD FS-Server und Domänencontroller. | Azure AD Premium P1 |
 | [Zuweisen von Lizenzen zu Benutzer nach Gruppenmitgliedschaft in Azure Active Directory](../users-groups-roles/licensing-groups-assign.md) | Sparen Sie Zeit und Aufwand durch das Erstellen von Lizenzierungsgruppen, die Funktionen anhand von Gruppen anstatt einer Einstellung pro Benutzer aktivieren oder deaktivieren. | |
-| [Erstellen eines Plans für den Zugriff durch Gastbenutzer](../b2b/what-is-b2b.md) | Arbeiten Sie mit Gastbenutzern zusammen, indem Sie ihnen ermöglichen, sich mit ihrem Geschäfts-, Schul- oder Unikonto bzw. mit ihrer Identität bei Ihren Anwendungen und Diensten anzumelden. | [Leitfaden zur Azure AD B2B-Lizenzierung](../b2b/licensing-guidance.md) |
+| [Erstellen eines Plans für den Zugriff durch Gastbenutzer](../external-identities/what-is-b2b.md) | Arbeiten Sie mit Gastbenutzern zusammen, indem Sie ihnen ermöglichen, sich mit ihrem Geschäfts-, Schul- oder Unikonto bzw. mit ihrer Identität bei Ihren Anwendungen und Diensten anzumelden. | [Leitfaden zur Azure AD B2B-Lizenzierung](../external-identities/licensing-guidance.md) |
 | [Entscheidungen zur Geräteverwaltungsstrategie](../devices/overview.md) | Entscheiden Sie, was Ihre Organisation in Bezug auf Geräte zulässt, z.B. Registrierung oder Beitritt, Bring Your Own Device oder unternehmenseigene Geräte. | |
 | [Bereitstellen von Windows Hello for Business in Ihrer Organisation](/windows/security/identity-protection/hello-for-business/hello-manage-in-organization) | Bereiten Sie die kennwortlose Authentifizierung unter Verwendung von Windows Hello vor. | |
 | [Bereitstellen von Methoden zur kennwortlosen Authentifizierung für Ihre Benutzer](../authentication/concept-authentication-passwordless.md) | Stellen Sie für Ihre Benutzer Methoden für die Authentifizierung ohne Kennwort bereit. | Azure AD Premium P1 |
@@ -101,6 +101,6 @@ In Phase 4 erzwingen Administratoren die Prinzipien der geringsten Rechte für d
 
 [Details zu Azure AD-Lizenzierung und Preisen](https://azure.microsoft.com/pricing/details/active-directory/)
 
-[Konfigurationen für den Identitäts- und Gerätezugriff](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
+[Konfigurationen für den Identitäts- und Gerätezugriff](/microsoft-365/enterprise/microsoft-365-policies-configurations)
 
-[Allgemeine empfohlene Identitäts- und Gerätezugriffsrichtlinien](https://docs.microsoft.com/microsoft-365/enterprise/identity-access-policies)
+[Allgemeine empfohlene Identitäts- und Gerätezugriffsrichtlinien](/microsoft-365/enterprise/identity-access-policies)

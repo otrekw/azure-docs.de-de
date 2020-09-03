@@ -3,21 +3,23 @@ title: Senden von Freihanddaten an die Freihanderkennungs-API
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie mehr über das Aufrufen der Freihandanalyse-API für unterschiedliche Anwendungen.
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.author: erhopf
-ms.openlocfilehash: 0ad961495d44f13522a3c02224a5612aaedaf076
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 08/24/2020
+ms.author: aahi
+ms.openlocfilehash: 8665e27b6b7c43bce7d749d9bfe0a2f815a0f46d
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219208"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051099"
 ---
 # <a name="send-ink-data-to-the-ink-recognizer-api"></a>Senden von Freihanddaten an die Freihanderkennungs-API 
+
+[!INCLUDE [ink-recognizer-deprecation](../includes/deprecation-note.md)]
 
 Digitale Freihandeingabe bezieht sich auf Technologien, die digitale Darstellungen von Eingaben wie Handschrift und Zeichnungen ermöglichen. Dies wird normalerweise mithilfe eines Digitalisierungsgeräts realisiert, das die Bewegungen der Eingabegeräte, z. B. eines Tablettstifts, erfasst. Mit der zunehmenden Bereitstellung funktionsreicher digitaler Freihandeingabeerfahrungen durch die Geräte ermöglichen künstliche Intelligenz und maschinelles Lernen die Erkennung von geschriebene Formen und Text in jedem Kontext. Die Freihanderkennungs-API ermöglicht es Ihnen, Freihandstriche zu senden und detaillierte Informationen über diese zu erhalten. 
 

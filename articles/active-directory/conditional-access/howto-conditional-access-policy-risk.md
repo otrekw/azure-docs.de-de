@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce687ae1f47b20bb5fff3827e7bcbd5d7edf2d83
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 0c6e3316afc09992d16e17d9d2e2afe6b92dcd22
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024358"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049042"
 ---
 # <a name="conditional-access-sign-in-risk-based-conditional-access"></a>Bedingter Zugriff: Risikobasierter bedingter Zugriff beim Anmelden
 
@@ -66,8 +66,8 @@ Es gibt zwei Möglichkeiten, diese Richtlinie zuzuweisen. Organisationen sollten
 
 [Bedingter Zugriff anhand des Benutzerrisikos](howto-conditional-access-policy-risk-user.md)
 
-[Bestimmen der Auswirkung durch Verwendung des reinen Berichtsmodus des bedingten Zugriffs](howto-conditional-access-report-only.md)
+[Bestimmen der Auswirkung durch Verwendung des reinen Berichtsmodus des bedingten Zugriffs](howto-conditional-access-insights-reporting.md)
 
 [Simulieren des Anmeldeverhaltens mit dem Was-wäre-wenn-Tool für den bedingten Zugriff](troubleshoot-conditional-access-what-if.md)
 
-[Was ist Azure Active Directory Identity Protection?](../identity-protection/overview.md)
+[Was ist Azure Active Directory Identity Protection?](../identity-protection/overview-identity-protection.md)
