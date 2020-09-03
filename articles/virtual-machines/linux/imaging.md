@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 220aa4e0d545eedcd1eb0e6f5a6555b17a361da2
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 781cc10895f3a77afe71d508c1194b425010ec41
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815299"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319541"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>Bereitstellen und Erstellen von Linux-Images in Azure
 
@@ -46,7 +46,7 @@ Azure bietet zwei Haupttypen von Images, generalisierte und spezialisierte Image
 
 ### <a name="generalized-images"></a>Generalisierte Images
 
-Bei einem generalisierten Image handelt es sich um ein Image, für das die Einrichtung beim ersten Start abgeschlossen werden muss. Beispielsweise legen Sie beim ersten Start den Hostnamen, den Administratorbenutzer und andere VM-spezifische Konfigurationen fest. Dies ist nützlich, wenn das Image mehrfach wiederverwendet werden soll und wenn bei der Erstellung Parameter übergeben werden sollen. Wenn das generalisierte Image den Azure-Agent enthält, verarbeitet der Agent die Parameter und signalisiert der Plattform, dass die Erstkonfiguration abgeschlossen wurde. Dieser Vorgang wird als **Bereitstellung** bezeichnet. 
+Bei einem generalisierten Image handelt es sich um ein Image, für das die Einrichtung beim ersten Start abgeschlossen werden muss. Beispielsweise legen Sie beim ersten Start den Hostnamen, den Administratorbenutzer und andere VM-spezifische Konfigurationen fest. Dies ist nützlich, wenn das Image mehrfach wiederverwendet werden soll und wenn bei der Erstellung Parameter übergeben werden sollen. Wenn das generalisierte Image den Azure-Agent enthält, verarbeitet der Agent die Parameter und signalisiert der Plattform, dass die Erstkonfiguration abgeschlossen wurde. Dieser Vorgang wird als [Bereitstellung](https://docs.microsoft.com/azure/virtual-machines/linux/provisioning) bezeichnet. 
 
 Für die Bereitstellung ist es erforderlich, dass ein Bereitsteller im Image enthalten ist. Es gibt zwei Bereitsteller:
 - [Azure Linux-Agents](../extensions/agent-linux.md)

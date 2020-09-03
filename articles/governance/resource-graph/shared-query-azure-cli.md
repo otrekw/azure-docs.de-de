@@ -3,12 +3,12 @@ title: 'Schnellstart: Erstellen einer freigegebenen Abfrage mit der Azure CLI'
 description: In dieser Schnellstartanleitung führen Sie die Schritte zum Aktivieren der Resource Graph-Erweiterung für die Azure CLI und zum Erstellen einer freigegebenen Abfrage aus.
 ms.date: 06/29/2020
 ms.topic: quickstart
-ms.openlocfilehash: fc03339c50316516301901d84d2c5a3ba2ab287d
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: c5f7e6fbe1b462c1f9b6e8ad46c598398e1aca02
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85569444"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050946"
 ---
 # <a name="quickstart-create-a-resource-graph-shared-query-using-azure-cli"></a>Schnellstart: Erstellen einer freigegebenen Resource Graph-Abfrage mithilfe der Azure CLI
 
@@ -26,7 +26,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Um die Azure-Befehlszeilenschnittstelle für die Arbeit mit Azure Resource Graph zu aktivieren, muss die Erweiterung hinzugefügt werden. Diese Erweiterung funktioniert überall, wo die Azure-Befehlszeilenschnittstelle verwendet werden kann, einschließlich [bash unter Windows 10](/windows/wsl/install-win10), [Cloud Shell](https://shell.azure.com) (sowohl eigenständig als auch innerhalb des Portals), [Azure CLI-Docker-Image](https://hub.docker.com/r/microsoft/azure-cli/) oder lokaler Installation.
 
-1. Überprüfen Sie, ob die aktuelle Azure CLI-Version (mindestens **2.8.0**) installiert ist. Falls es noch nicht installiert ist, befolgen Sie [diese Anweisungen](/cli/azure/install-azure-cli-windows?view=azure-cli-latest).
+1. Überprüfen Sie, ob die aktuelle Azure CLI-Version (mindestens **2.8.0**) installiert ist. Falls es noch nicht installiert ist, befolgen Sie [diese Anweisungen](/cli/azure/install-azure-cli-windows).
 
 1. Verwenden Sie in der Azure CLI-Umgebung Ihrer Wahl [az extension add](/cli/azure/extension#az-extension-add), um die Resource Graph-Erweiterung mit dem folgenden Befehl zu importieren:
 

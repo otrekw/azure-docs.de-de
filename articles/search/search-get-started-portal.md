@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: 632071c2a9597fc11ab4ffc0971493ef5b52d807
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f405219701e910159de6f4fc91e9960a76f5a0cd
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083558"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935312"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Schnellstart: Erstellen eines Index für Azure Cognitive Search im Azure-Portal
 > [!div class="op_single_selector"]
@@ -140,7 +140,7 @@ Nehmen Sie sich kurz Zeit, um die Optionen für die Indexdefinition anzuzeigen u
 
 Sie sollten nun über einen Suchindex verfügen, der über die integrierte [**Suchexplorer**](search-explorer.md)-Abfrageseite abgefragt werden kann. Sie enthält ein Suchfeld, über das Sie beliebige Abfragezeichenfolgen testen können.
 
-Der **Suchexplorer** ist nur auf die Verarbeitung von [REST-API-Anforderungen](https://docs.microsoft.com/rest/api/searchservice/search-documents) ausgelegt. Er akzeptiert aber auch [einfache Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) und Syntax für den [vollständigen Lucene-Abfrageparser](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) sowie alle Suchparameter, die für Vorgänge mit der [REST-API zum Durchsuchen von Dokumenten](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) verfügbar sind.
+Der **Suchexplorer** ist nur auf die Verarbeitung von [REST-API-Anforderungen](/rest/api/searchservice/search-documents) ausgelegt. Er akzeptiert aber auch [einfache Abfragesyntax](/rest/api/searchservice/simple-query-syntax-in-azure-search) und Syntax für den [vollständigen Lucene-Abfrageparser](/rest/api/searchservice/lucene-query-syntax-in-azure-search) sowie alle Suchparameter, die für Vorgänge mit der [REST-API zum Durchsuchen von Dokumenten](/rest/api/searchservice/search-documents#bkmk_examples) verfügbar sind.
 
 > [!TIP]
 > Die folgenden Schritte werden im [Übersichtsvideo für Azure Cognitive Search](https://channel9.msdn.com/Events/Connect/2016/138) ab 6:08 veranschaulicht.
@@ -188,7 +188,7 @@ Filter werden in Suchanfragen eingefügt, wenn Sie den Parameter **$filter** anf
 
 * Der Parameter **$filter** gibt Ergebnisse zurück, die den angegebenen Kriterien entsprechen. In diesem Fall: höhere Bewertungen als 4.
 
-* Bei der Filtersyntax handelt es sich um eine OData-Konstruktion. Weitere Informationen finden Sie unter [OData Expression Syntax for Azure Search](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) (OData-Ausdruckssyntax für Azure Search).
+* Bei der Filtersyntax handelt es sich um eine OData-Konstruktion. Weitere Informationen finden Sie unter [OData Expression Syntax for Azure Search](/rest/api/searchservice/odata-expression-syntax-for-azure-search) (OData-Ausdruckssyntax für Azure Search).
 
 ### <a name="facet-the-query"></a><a name="facet-query"></a> Facettieren der Abfrage
 
@@ -207,7 +207,7 @@ Facettenfilter werden in Suchanfragen eingebunden. Sie können den Parameter „
 
 * Nur filterbare Felder können facettiert werden. In den Ergebnissen können nur abrufbare Felder zurückgegeben werden.
 
-* Das Feld *Bewertung* ist eine Gleitkommazahl mit doppelter Genauigkeit. Weitere Informationen zum Gruppieren per Intervall (z. B. „Bewertungen mit 3 Sternen“, „Bewertungen mit 4 Sternen“ usw.) finden Sie unter [Implementieren der Facettennavigation in Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-faceted-navigation#filter-based-on-a-range).
+* Das Feld *Bewertung* ist eine Gleitkommazahl mit doppelter Genauigkeit. Weitere Informationen zum Gruppieren per Intervall (z. B. „Bewertungen mit 3 Sternen“, „Bewertungen mit 4 Sternen“ usw.) finden Sie unter [Implementieren der Facettennavigation in Azure Cognitive Search](./search-faceted-navigation.md#filter-based-on-a-range).
 
 
 ### <a name="highlight-search-results"></a><a name="highlight-query"></a> Hervorheben von Suchergebnissen
@@ -240,11 +240,11 @@ Ohne Angabe von **queryType** wird der standardmäßige Parser für einfache Abf
 
 Die Fuzzysuche und die Platzhaltersuche haben Auswirkungen auf die Suchausgabe. Die linguistische Analyse wird für diese Abfrageformate nicht durchgeführt. Bevor Sie die Fuzzy- und Platzhaltersuche verwenden, sollten Sie sich unter [Funktionsweise der Volltextsuche in Azure Cognitive Search – Phase 2: Lexikalische Analyse](search-lucene-query-architecture.md#stage-2-lexical-analysis) den Abschnitt zu den Ausnahmen bei der lexikalischen Analyse durchlesen.
 
-Weitere Informationen zu möglichen Abfrageszenarien mit dem Parser für vollständige Abfragen finden Sie unter [Lucene-Abfragesyntax in Azure Cognitive Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search).
+Weitere Informationen zu möglichen Abfrageszenarien mit dem Parser für vollständige Abfragen finden Sie unter [Lucene-Abfragesyntax in Azure Cognitive Search](/rest/api/searchservice/lucene-query-syntax-in-azure-search).
 
 ### <a name="try-geospatial-search"></a><a name="geo-search"></a> Ausprobieren der Geosuche
 
-Die Geosuche wird über den [Datentyp „edm.GeographyPoint“](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) für ein Feld mit Koordinaten unterstützt. Die Geosuche ist ein Filtertyp und wird in der [OData-Ausdruckssyntax für Azure Search](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) angegeben.
+Die Geosuche wird über den [Datentyp „edm.GeographyPoint“](/rest/api/searchservice/supported-data-types) für ein Feld mit Koordinaten unterstützt. Die Geosuche ist ein Filtertyp und wird in der [OData-Ausdruckssyntax für Azure Search](/rest/api/searchservice/odata-expression-syntax-for-azure-search) angegeben.
 
 #### <a name="example-geo-coordinate-filters-searchcounttruefiltergeodistancelocationgeographypoint-12212-4767-le-5"></a>Beispiel (Geokoordinatenfilter): `search=*&$count=true&$filter=geo.distance(Location,geography'POINT(-122.12 47.67)') le 5`
 
@@ -256,7 +256,7 @@ Die Geosuche ist hilfreich, wenn Ihre Suchanwendung über eine Umgebungssuche od
 
 Dieses Tutorial enthält eine kurze Einführung zur Verwendung von Azure Cognitive Search über das Azure-Portal.
 
-Sie haben erfahren, wie Sie mithilfe des Assistenten **Daten importieren** einen Suchindex erstellen. Sie haben sich über [Indexer](search-indexer-overview.md) und über den grundlegenden Workflow für das Entwerfen von Indizes informiert, z.B. [unterstützte Änderungen an einem veröffentlichten Index](https://docs.microsoft.com/rest/api/searchservice/update-index).
+Sie haben erfahren, wie Sie mithilfe des Assistenten **Daten importieren** einen Suchindex erstellen. Sie haben sich über [Indexer](search-indexer-overview.md) und über den grundlegenden Workflow für das Entwerfen von Indizes informiert, z.B. [unterstützte Änderungen an einem veröffentlichten Index](/rest/api/searchservice/update-index).
 
 Unter Verwendung des **Suchexplorers** im Azure-Portal haben Sie eine grundlegende Abfragesyntax anhand von praktischen Beispielen erlernt, und es wurden wichtige Funktionen wie Filter, Treffermarkierung, Fuzzysuche und die geografische Suche veranschaulicht.
 
@@ -280,4 +280,4 @@ Verwenden Sie einen Portal-Assistenten, um eine sofort einsatzbereite Web-App zu
 Möchten Sie Ihre Cloudausgaben optimieren und somit Geld sparen?
 
 > [!div class="nextstepaction"]
-> [Beginnen mit der Kostenanalyse mit Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> [Beginnen mit der Kostenanalyse mit Cost Management](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
