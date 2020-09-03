@@ -17,12 +17,12 @@ ms.date: 05/13/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d031546bb4f1f05e9ea2abb5b74fe911b0b507f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0498ee1c57cfa661884fe3209d4e089b54996fae
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74007700"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231060"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Latenzen bei Azure Active Directory-Berichten
 
@@ -54,8 +54,8 @@ Wenn Ihnen bereits mit einer kostenlosen Lizenz Daten zu Aktivitäten angezeigt 
 
 Es gibt zwei Arten von Sicherheitsberichten:
 
-- [Riskante Anmeldungen:](concept-risky-sign-ins.md) Eine riskante Anmeldung ist ein Indikator für einen Anmeldeversuch von einem Benutzer, der nicht der rechtmäßige Besitzer eines Benutzerkontos ist. 
-- [Benutzer mit Risikomarkierung:](concept-user-at-risk.md) Ein Benutzer mit Risikomarkierung ist ein Indikator für ein möglicherweise kompromittiertes Benutzerkonto. 
+- [Riskante Anmeldungen:](../identity-protection/overview-identity-protection.md) Eine riskante Anmeldung ist ein Indikator für einen Anmeldeversuch von einem Benutzer, der nicht der rechtmäßige Besitzer eines Benutzerkontos ist. 
+- [Benutzer mit Risikomarkierung:](../identity-protection/overview-identity-protection.md) Ein Benutzer mit Risikomarkierung ist ein Indikator für ein möglicherweise kompromittiertes Benutzerkonto. 
 
 Die folgende Tabelle enthält Latenzzeitinformationen für Sicherheitsberichte.
 
@@ -84,4 +84,4 @@ Die folgende Tabelle enthält Latenzzeitinformationen für Risikoerkennungen.
 
 * [Übersicht über Azure AD-Berichte](overview-reports.md)
 * [Programmgesteuerter Zugriff auf Azure AD-Berichte](concept-reporting-api.md)
-* [Azure Active Directory-Risikoerkennungen](concept-risk-events.md)
+* [Azure Active Directory-Risikoerkennungen](../identity-protection/overview-identity-protection.md)

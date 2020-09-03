@@ -4,24 +4,26 @@ titleSuffix: Azure Media Services
 description: Erfahren Sie, wie Sie Filter mithilfe von Dynamic Packager erstellen, um Ihre Manifeste zu filtern und selektiv zu streamen.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
-ms.date: 07/11/2019
-ms.author: juliako
-ms.openlocfilehash: cb7a399258dcab679468d2b8f699487b1ec5406b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: acb30c1659c4c29e0af83da5594bdd9a7e3465d8
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84705201"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299030"
 ---
 # <a name="filter-your-manifests-using-dynamic-packager"></a>Filtern von Manifesten mithilfe von Dynamic Packager
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Bei der Bereitstellung von Inhalten mit Adaptive Bitrate Streaming auf Geräten müssen Sie manchmal mehrere Versionen eines Manifests veröffentlichen, um bestimmte Gerätefunktionen oder eine verfügbare Netzwerkbandbreite als Ziel verwenden zu können. [Dynamic Packager](dynamic-packaging-overview.md) gestattet es Ihnen, Filter anzugeben, die bestimmte Codecs, Auflösungen, Bitraten und Audiospurkombinationen unmittelbar ausfiltern können. Durch diese Filterung entfällt die Notwendigkeit, mehrere Kopien zu erstellen. Sie müssen lediglich eine neue URL mit einem bestimmten Satz von Filtern veröffentlichen, die für Ihre Zielgeräte (iOS, Android, SmartTV oder Browser) und die Netzwerkgegebenheiten (Szenarien mit hoher Bandbreite, mobiler Datenübertragung oder niedriger Bandbreite) konfiguriert sind. In diesem Fall können Clients das Streamen Ihrer Inhalte durch die Abfragezeichenfolge manipulieren (durch Angeben verfügbarer [Medienobjekt- oder Kontofilter](filters-concept.md)) und Filter verwenden, um bestimmte Abschnitte eines Datenstroms zu filtern.
 

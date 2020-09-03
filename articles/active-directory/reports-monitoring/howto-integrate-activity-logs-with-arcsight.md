@@ -17,12 +17,12 @@ ms.date: 04/19/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c3c597c172c7ec21c2d46e89602abf87d750127
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc7bcab04da005fd0d46d18e7b708dcb1c9d58e5
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608176"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230516"
 ---
 # <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor"></a>Integrieren von Azure Active Directory-Protokollen in ArcSight mit Azure Monitor
 
@@ -33,7 +33,7 @@ In diesem Artikel erfahren Sie, wie Azure AD-Protokolle mithilfe von Azure Monit
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Sie benötigen Folgendes, um dieses Feature verwenden zu können:
-* Ein Azure Event Hub, der Azure AD-Aktivitätsprotokolle enthält. Erfahren Sie, [wie Sie Aktivitätsprotokolle an einen Event Hub streamen](quickstart-azure-monitor-stream-logs-to-event-hub.md). 
+* Ein Azure Event Hub, der Azure AD-Aktivitätsprotokolle enthält. Erfahren Sie, [wie Sie Aktivitätsprotokolle an einen Event Hub streamen](./tutorial-azure-monitor-stream-logs-to-event-hub.md). 
 * Eine konfigurierte Instanz von ArcSight Syslog NG Daemon SmartConnector (SmartConnector) oder ArcSight Load Balancer. Wenn die Ereignisse an ArcSight Load Balancer gesendet werden, werden sie anschließend von Load Balancer an den SmartConnector gesendet.
 
 Laden Sie den [Konfigurationsleitfaden für ArcSight SmartConnector für den Azure Monitor-Event Hub](https://community.microfocus.com/t5/ArcSight-Connectors/SmartConnector-for-Microsoft-Azure-Monitor-Event-Hub/ta-p/1671292) herunter, und öffnen Sie ihn. Dieser Leitfaden enthält die Schritte zum Installieren und Konfigurieren von ArcSight SmartConnector für Azure Monitor. 

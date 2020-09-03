@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute: Asymmetrisches Routing'
 description: Dieser Artikel behandelt Probleme, die bei asymmetrischem Routing in einem Netzwerk mit mehreren Verbindungen mit einem Ziel auftreten können.
 services: expressroute
-author: osamazia
+author: duongau
 ms.service: expressroute
 ms.topic: article
 ms.date: 10/10/2016
-ms.author: osamam
-ms.openlocfilehash: 8adfcc6559e3e2d48aabd3cfeec4fe20541917c3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: duau
+ms.openlocfilehash: aa3465940088d3a66f23dfd5d58a6ec3fd3053de
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74072136"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397711"
 ---
 # <a name="asymmetric-routing-with-multiple-network-paths"></a>Asymmetrisches Routing mit mehreren Netzwerkpfaden
 In diesem Artikel erfahren Sie, wie ausgehender und eingehender Netzwerkdatenverkehr über unterschiedliche Routen abgewickelt werden kann, wenn zwischen Netzwerkquelle und -ziel mehrere Pfade verfügbar sind.

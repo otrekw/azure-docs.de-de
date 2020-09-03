@@ -1,19 +1,19 @@
 ---
-title: Filtern von eingehendem Internetdatenverkehr mit Azure Firewall-DNAT im Portal
+title: 'Tutorial: Filtern von eingehendem Internetdatenverkehr mit Azure Firewall-DNAT im Portal'
 description: In diesem Tutorial erfahren Sie, wie Sie Azure Firewall-DNAT über das Azure-Portal bereitstellen und konfigurieren.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 03/02/2020
+ms.date: 08/28/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 7220e48c6103352108bdb89e107bb862ee194040
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 8f528c6be68258400cb3e29582943f1d657c557d
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "78251489"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069271"
 ---
 # <a name="tutorial-filter-inbound-internet-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>Tutorial: Filtern von eingehendem Internetdatenverkehr mit Azure Firewall-DNAT im Azure-Portal
 
@@ -28,12 +28,11 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Konfigurieren einer DNAT-Regel
 > * Testen der Firewall
 
+## <a name="prerequisites"></a>Voraussetzungen
+
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-In diesem Tutorial erstellen Sie zwei mittels Peering verknüpfte VNETs:
 
-- **VN-Hub**:In diesem VNET befindet sich die Firewall.
-- **VN-Spoke**: In diesem VNET befindet sich der Workloadserver.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -45,6 +44,11 @@ In diesem Tutorial erstellen Sie zwei mittels Peering verknüpfte VNETs:
 6. Klicken Sie auf **Erstellen**.
 
 ## <a name="set-up-the-network-environment"></a>Einrichten der Netzwerkumgebung
+
+In diesem Tutorial erstellen Sie zwei mittels Peering verknüpfte VNETs:
+
+- **VN-Hub**:In diesem VNET befindet sich die Firewall.
+- **VN-Spoke**: In diesem VNET befindet sich der Workloadserver.
 
 Erstellen Sie zuerst die VNETs, und führen Sie anschließend das Peering dafür durch.
 

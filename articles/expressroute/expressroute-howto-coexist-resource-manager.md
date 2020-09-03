@@ -2,18 +2,18 @@
 title: 'Konfigurieren von parallel bestehenden ExpressRoute- und S2S-VPN-Verbindungen: Azure PowerShell'
 description: Konfiguration von ExpressRoute- und Site-to-Site-VPN-Verbindungen, die für das Resource Manager-Modell gleichzeitig bestehen können, mithilfe von PowerShell.
 services: expressroute
-author: charwen
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/11/2019
-ms.author: charwen
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 52105cf351a45a233a5fb96c9ac8df689c575527
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc53aa9cab765f16fdf7a517793f8f36ca30daac
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736287"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89396181"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>Konfigurieren von parallel bestehenden ExpressRoute- und Standort-zu-Standort-Verbindungen mithilfe von PowerShell
 > [!div class="op_single_selector"]

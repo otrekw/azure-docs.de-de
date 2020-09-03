@@ -3,7 +3,7 @@ title: 'Tutorial: Verwenden einer verwalteten Identität für den Zugriff auf Az
 description: In diesem Tutorial erfahren Sie, wie Sie eine systemseitig zugewiesene verwaltete Identität für einen virtuellen Windows-Computer verwenden, um auf Azure Cosmos DB zuzugreifen.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/14/2020
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11b7f8eeb94fb2d6f197af2d40b120c5f74d6128
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 17cdebb1291f78706178e129a62b932d45f38537
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583060"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263064"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>Tutorial: Verwenden der systemseitig zugewiesenen verwalteten Identität eines virtuellen Windows-Computers für den Zugriff auf Azure Cosmos DB
 
@@ -84,7 +84,7 @@ New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Cosmos DB Account Read
 
 In diesem Abschnitt wird gezeigt, wie Sie mithilfe eines Zugriffstokens für die systemseitig zugewiesene verwaltete Identität des virtuellen Windows-Computers Azure Resource Manager aufrufen. Für den Rest des Tutorials arbeiten wir von dem virtuellen Computer aus, den wir zuvor erstellt haben. 
 
-Sie müssen die aktuelle Version der [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) auf Ihrem virtuellen Windows-Computer installieren.
+Sie müssen die aktuelle Version der [Azure CLI](/cli/azure/install-azure-cli) auf Ihrem virtuellen Windows-Computer installieren.
 
 
 
@@ -204,6 +204,4 @@ Mit diesem CLI-Befehl werden Details zur Sammlung zurückgegeben:
 In diesem Tutorial haben Sie gelernt, wie Sie eine systemseitig zugewiesene Identität eines virtuellen Windows-Computers für den Zugriff auf Cosmos DB verwenden.  Weitere Informationen zu Cosmos DB finden Sie hier:
 
 > [!div class="nextstepaction"]
->[Willkommen bei Azure Cosmos DB](/azure/cosmos-db/introduction)
-
-
+>[Willkommen bei Azure Cosmos DB](../../cosmos-db/introduction.md)

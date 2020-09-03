@@ -3,12 +3,13 @@ title: Authentifizierung von Clients, die Ereignisse in benutzerdefinierten Even
 description: Dieser Artikel beschreibt verschiedene Möglichkeiten zur Authentifizierung von Clients, die Ereignisse in benutzerdefinierten Event Grid-Themen veröffentlichen.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 8b08c46fdeadccfad0471ddfa4f9ba2762a951a0
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e934ce0d8f5e31dc8dd7592a2e553cd278af2b10
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837396"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019112"
 ---
 # <a name="authenticate-publishing-clients-azure-event-grid"></a>Authentifizieren von Veröffentlichungsclients (Azure Event Grid)
 Dieser Artikel enthält Informationen zur Authentifizierung von Clients, die Ereignisse zu Azure Event Grid-Themen oder -Domänen mit **Zugangsschlüssel** oder **SAS-Token (Shared Access Signature)** veröffentlichen. Es wird empfohlen, SAS-Token zu verwenden, Schlüsselauthentifizierung ist aber einfacher zu programmieren und mit vielen vorhandenen Webhookherausgebern kompatibel.  

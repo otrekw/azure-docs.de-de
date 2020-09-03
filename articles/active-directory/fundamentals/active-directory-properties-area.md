@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: bpham
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfc60eacd70576d9cfa79dbc03368c8e8c4a8636
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: f47ae9b087615a77f6bd4d3f14f1b0052037cba6
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797392"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321972"
 ---
 # <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>Hinzufügen der Datenschutzinformationen Ihrer Organisation mit Azure Active Directory
 In diesem Artikel wird erläutert, wie ein Mandantenadministrator dem Azure Active Directory-Mandanten (Azure AD) einer Organisation über das Azure-Portal Informationen in Bezug auf den Datenschutz hinzufügen kann.
@@ -56,5 +56,5 @@ Sie fügen die Datenschutzinformationen Ihrer Organisation im Bereich **Eigensch
 4. Wählen Sie **Speichern** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Azure Active Directory B2B-Zusammenarbeit: Einlösen von Einladungen](../b2b/redemption-experience.md)
+- [Azure Active Directory B2B-Zusammenarbeit: Einlösen von Einladungen](../external-identities/redemption-experience.md)
 - [Hinzufügen oder Ändern von Profilinformationen für einen Benutzer in Azure Active Directory](active-directory-users-profile-azure-portal.md)

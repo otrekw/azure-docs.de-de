@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 92cc742fce101b67bfb359381b4eabf9cf2a404e
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: ade5972226a735ce5d093890091536baf02f5eff
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869574"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068982"
 ---
 # <a name="outputs-from-azure-stream-analytics"></a>Ausgaben von Azure Stream Analytics
 
@@ -24,7 +24,7 @@ Für einige Ausgabetypen wird die [Partitionierung](#partitioning) unterstützt,
 
 | Ausgabetyp | Partitionierung | Sicherheit | 
 |-------------|--------------|----------|
-|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|Azure Active Directory-Benutzer </br> MSI|
+|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|Ja|Azure Active Directory-Benutzer </br> MSI|
 |[Azure SQL-Datenbank](sql-database-output.md)|Ja, muss aktiviert sein.|SQL-Benutzerauthentifizierung </br> MSI (Vorschau)|
 |[Azure Synapse Analytics (Vorschau)](azure-synapse-analytics-output.md)|Nein|SQL-Benutzerauthentifizierung|
 |[Blob Storage und Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|Ja|MSI </br> Zugriffsschüssel|

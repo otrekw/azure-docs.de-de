@@ -6,12 +6,12 @@ author: jnoller
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: be80c0d5999ed06bcc505ec5737e7e416d28b981
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c51b5c4d9cd7362aeda0a0998d8031d0ba358ce1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050682"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012346"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Unterstützungsrichtlinien für Azure Kubernetes Service
 
@@ -20,7 +20,7 @@ Dieser Artikel enthält Details zu den Richtlinien und Einschränkungen für den
 ## <a name="service-updates-and-releases"></a>Dienstupdates und -versionen
 
 * Versionsinformationen finden Sie unter [AKS-Versionshinweise](https://github.com/Azure/AKS/releases).
-* Informationen zu Features in der Vorschauversion finden Sie unter [AKS-Previewfunktionen und zugehörige Projekte](https://github.com/Azure/AKS/blob/master/previews.md).
+* Informationen zu Features in der Vorschauversion finden Sie unter [AKS-Previewfunktionen und zugehörige Projekte](https://awesomeopensource.com/projects/aks?categoryPage=11).
 
 ## <a name="managed-features-in-aks"></a>Verwaltete Features in AKS
 
@@ -149,7 +149,7 @@ AKS bietet nur Support für stabile Features im Rahmen des Upstream-Kubernetes-P
 In zwei Szenarien können Features der Alpha- und Betaversion eingeführt werden, bevor sie allgemein verfügbar sind:
 
 * Kunden wurden bei einem Treffen mit den Produkt-, Support- oder -Entwicklungsteams von AKS darum gebeten, diese neuen Features auszuprobieren.
-* Diese Features wurden [durch ein Featureflag aktiviert](https://github.com/Azure/AKS/blob/master/previews.md). Kunden müssen sich explizit für die Nutzung dieser Features entscheiden.
+* Diese Features wurden [durch ein Featureflag aktiviert](https://awesomeopensource.com/projects/aks?categoryPage=11). Kunden müssen sich explizit für die Nutzung dieser Features entscheiden.
 
 ## <a name="preview-features-or-feature-flags"></a>Previewfunktionen oder Featureflags
 
