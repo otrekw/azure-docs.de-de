@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91c3b1216d5ced766a77bb1fb63e41eaedb8220d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ccdfa99a36635e72fc97820ec6b852e36a50ec2
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608975"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229785"
 ---
 # <a name="integrate-azure-active-directory-logs-with-sumologic-using-azure-monitor"></a>Integrieren von Azure Active Directory-Protokollen in SumoLogic mit Azure Monitor
 
@@ -31,12 +31,12 @@ In diesem Artikel erfahren Sie, wie Sie Azure Active Directory-Protokolle (Azure
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Sie benötigen Folgendes, um dieses Feature verwenden zu können:
-* Ein Azure Event Hub, der Azure AD-Aktivitätsprotokolle enthält. Erfahren Sie, [wie Sie Aktivitätsprotokolle an einen Event Hub streamen](quickstart-azure-monitor-stream-logs-to-event-hub.md). 
+* Ein Azure Event Hub, der Azure AD-Aktivitätsprotokolle enthält. Erfahren Sie, [wie Sie Aktivitätsprotokolle an einen Event Hub streamen](./tutorial-azure-monitor-stream-logs-to-event-hub.md). 
 * Ein SumoLogic-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 ## <a name="steps-to-integrate-azure-ad-logs-with-sumologic"></a>Schritte zum Integrieren von Azure AD-Protokollen in SumoLogic 
 
-1. Beginnen Sie mit dem [Streamen von Azure AD-Protokollen an einen Azure Event Hub](quickstart-azure-monitor-stream-logs-to-event-hub.md).
+1. Beginnen Sie mit dem [Streamen von Azure AD-Protokollen an einen Azure Event Hub](./tutorial-azure-monitor-stream-logs-to-event-hub.md).
 2. Konfigurieren Sie Ihre SumoLogic-Instanz für das [Sammeln von Protokollen für Azure Active Directory](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Collect_Logs_for_Azure_Active_Directory).
 3. [Installieren Sie die Azure AD-App für SumoLogic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Install_the_Azure_Active_Directory_App_and_View_the_Dashboards), um die vorkonfigurierten Dashboards für die Echtzeitanalyse Ihrer Umgebung zu verwenden.
 

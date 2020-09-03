@@ -5,12 +5,12 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: b917ef9234ef2e0d36526bc1688dfae2020d6b51
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b160f0aa50c30f7856bc09b88b3eb305f32d6f98
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075482"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961923"
 ---
 # <a name="back-up-your-app-in-azure"></a>Sichern einer App in Azure
 Das Feature zum Sichern und Wiederherstellen in [Azure App Service](overview.md) ermöglicht Ihnen, App-Sicherungen einfach manuell oder nach einem Zeitplan zu erstellen. Sie können die Sicherungen so konfigurieren, dass Sie für einen bis zu unbestimmten Zeitraum aufbewahrt werden. Sie können die App mit einer Momentaufnahme eines früheren Zustands wiederherstellen, indem Sie die vorhandene App überschreiben oder als andere App wiederherstellen.
@@ -42,7 +42,7 @@ Die folgenden Datenbanklösungen werden von der Sicherungsfunktion unterstützt:
 
 ## <a name="requirements-and-restrictions"></a>Anforderungen und Einschränkungen
 * Die Funktion zum Sichern und Wiederherstellen erfordert einen App Service-Plan im Tarif **Standard**, **Premium** oder **Isoliert**. Weitere Informationen zum Skalieren des App Service-Plans zur Verwendung eines höheren Tarifs finden Sie unter [Hochskalieren einer App in Azure](manage-scale-up.md). Im Tarif **Premium** und **Isoliert** ist eine größere Anzahl täglicher Sicherungen zulässig als im Tarif **Standard**.
-* Sie benötigen ein Azure-Speicherkonto und einen Container im selben Abonnement wie die App, die Sie sichern möchten. Weitere Informationen zu Azure-Speicherkonten finden Sie unter [Azure Storage-Konto – Übersicht](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
+* Sie benötigen ein Azure-Speicherkonto und einen Container im selben Abonnement wie die App, die Sie sichern möchten. Weitere Informationen zu Azure-Speicherkonten finden Sie unter [Azure Storage-Konto – Übersicht](../storage/common/storage-account-overview.md).
 * Sicherungen können bis zu 10GB an App- und Datenbankinhalten umfassen. Wenn die Sicherungsgröße diesen Grenzwert überschreitet, erhalten Sie eine Fehlermeldung.
 * Sicherungen von Azure Database for MySQL mit aktiviertem TLS werden nicht unterstützt. Wenn eine Sicherung konfiguriert ist,werden fehlerhafte Sicherungen angezeigt.
 * Sicherungen von Azure Database for PostgreSQL mit aktiviertem TLS werden nicht unterstützt. Wenn eine Sicherung konfiguriert ist,werden fehlerhafte Sicherungen angezeigt.
@@ -169,4 +169,4 @@ Beispiele finden Sie unter:
 <a name="nextsteps"></a>
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informationen zum Wiederherstellen einer App aus einer Sicherung finden Sie unter [Wiederherstellen einer App in Azure](web-sites-restore.md). 
+Informationen zum Wiederherstellen einer App aus einer Sicherung finden Sie unter [Wiederherstellen einer App in Azure](web-sites-restore.md).

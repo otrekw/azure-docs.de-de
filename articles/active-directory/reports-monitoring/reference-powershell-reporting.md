@@ -17,17 +17,18 @@ ms.date: 08/07/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a198a63d633573ad683a3f8e8215b2975721bc9
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 4353ed5413f76b13425a59d31bb6108542e3bd23
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88794932"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231128"
 ---
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>Azure AD PowerShell-Cmdlets für die Berichterstellung
 
 > [!NOTE] 
-> Diese PowerShell-Cmdlets funktionieren derzeit nur mit dem [Azure AD-Vorschaumodul](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#directory_auditing). Beachten Sie, dass das Vorschaumodul nicht in Produktionsumgebungen verwendet werden sollte. 
+> Diese PowerShell-Cmdlets funktionieren derzeit nur mit dem [Azure AD-Vorschaumodul](/powershell/module/azuread/?view=azureadps-2.0-preview#directory_auditing). Beachten Sie, dass das Vorschaumodul nicht in Produktionsumgebungen verwendet werden sollte. 
 
 Verwenden Sie folgenden Befehl, um die öffentliche Vorschauversion zu installieren. 
 
@@ -35,7 +36,7 @@ Verwenden Sie folgenden Befehl, um die öffentliche Vorschauversion zu installie
 Install-module AzureADPreview
 ```
 
-Weitere Informationen dazu, wie Sie mithilfe von PowerShell eine Verbindung mit Azure AD herstellen, finden Sie im Artikel [Azure AD PowerShell für Graph](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0).  
+Weitere Informationen dazu, wie Sie mithilfe von PowerShell eine Verbindung mit Azure AD herstellen, finden Sie im Artikel [Azure AD PowerShell für Graph](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0).  
 
 Mit Azure AD-Berichten (Azure Active Directory) können Sie Details zu Aktivitäten rund um alle Schreibvorgänge in Ihrem Verzeichnis (Überwachungsprotokolle) und Authentifizierungsdaten (Anmeldeprotokolle) erhalten. Diese Informationen stehen zwar schon über die Microsoft Graph-API zur Verfügung, aber jetzt können Sie die gleichen Daten mithilfe der Azure AD-PowerShell-Cmdlets für die Berichterstellung abrufen.
 

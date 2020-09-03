@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 07/14/2020
-ms.openlocfilehash: d49f9df9fdc7dd8d2fb53b9ad6eb6eae64965fb7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 09/02/2020
+ms.openlocfilehash: fe8024c60e204a4ec72002c878f7753ae35aa00d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87271721"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393818"
 ---
 # <a name="pricing-for-virtual-machine-offers"></a>Preise für VM-Angebote
 
@@ -98,7 +98,7 @@ Der Herausgeber kann auch seine Preistabelle an einen temporären Speicherort ho
 
 ## <a name="new-core-sizes-added-on-722019"></a>Neue Kerngrößen wurden am 2.7.2019 hinzugefügt.
 
-VM-Herausgeber wurden am 2. Juli 2019 über neue Preise für neue Größen virtueller Azure-Computer (basierend auf der Anzahl der Kerne) benachrichtigt.  Die neuen Preise gelten für die Kerngrößen 10, 44, 48, 60, 120, 208 und 416.  Für vorhandene VM-Angebote wurden die neue Preise für diese Kerngrößen basierend auf den aktuellen Preisen automatisch berechnet.  Herausgeber haben bis zum 1. August 2019 Zeit, die zusätzlichen Preise zu überprüfen und alle gewünschten Änderungen vorzunehmen.  Nach diesem Datum gelten die automatisch berechneten Preise für diese neuen Kerngrößen, wenn sie nicht bereits vom Herausgeber erneut veröffentlicht wurden.
+VM-Herausgeber wurden am 2. Juli 2019 über neue Preise für neue Größen virtueller Azure-Computer (basierend auf der Anzahl der Kerne) benachrichtigt.  Die neuen Preise gelten für die Kerngrößen 10, 44, 48, 60, 120, 208 und 416.  Für vorhandene VM-Angebote wurden die neue Preise für diese Kerngrößen basierend auf den aktuellen Preisen automatisch berechnet. Herausgeber haben bis zum 1. August 2019 Zeit, die zusätzlichen Preise zu überprüfen und alle gewünschten Änderungen vorzunehmen.  Nach diesem Datum gelten die automatisch berechneten Preise für diese neuen Kerngrößen, wenn sie nicht bereits vom Herausgeber erneut veröffentlicht wurden.
 
 ## <a name="regions"></a>Regions
 
@@ -121,7 +121,7 @@ Die folgende Tabelle zeigt die verschiedenen Regionen, die Sie für angepasste K
 | CR         | Costa Rica           | CRC               |
 | HR         | Kroatien              | HRK               |
 | CY         | Zypern               | EUR               |
-| CZ         | Tschechische Republik       | CZK               |
+| CZ         | Tschechien       | CZK               |
 | DK         | Dänemark              | DKK               |
 | DO         | Dominikanische Republik   | USD               |
 | EC         | Ecuador              | USD               |
@@ -151,7 +151,6 @@ Die folgende Tabelle zeigt die verschiedenen Regionen, die Sie für angepasste K
 | LI         | Liechtenstein        | CHF               |
 | LT         | Litauen            | EUR               |
 | LU         | Luxemburg           | EUR               |
-| MK         | Nordmazedonien      | MKD               |
 | MY         | Malaysia             | MYR               |
 | MT         | Malta                | EUR               |
 | MX         | Mexiko               | MXN               |
@@ -160,6 +159,7 @@ Die folgende Tabelle zeigt die verschiedenen Regionen, die Sie für angepasste K
 | NL         | Niederlande          | EUR               |
 | NZ         | Neuseeland          | NZD               |
 | NG         | Nigeria              | NGN               |
+| MK         | Nordmazedonien      | MKD               |
 | Nein         | Norwegen               | NOK               |
 | OM         | Oman                 | OMR               |
 | PK         | Pakistan             | PKR               |

@@ -3,12 +3,12 @@ title: Konfigurieren Ihres eigenen Schlüssels zum Verschlüsseln ruhender Azure
 description: Dieser Artikel enthält Informationen dazu, wie Sie einen eigenen Schlüssel für die Verschlüsselung ruhender Azure Service Bus-Daten konfigurieren.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 97de8df336367a74f66628675569c06d7726f2a4
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: e3da167fcdd3bac53de86dae07242cf8bccb621c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067238"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400584"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln für die Verschlüsselung ruhender Azure Service Bus-Daten mithilfe des Azure-Portals
 Azure Service Bus Premium ermöglicht die Verschlüsselung ruhender Daten mit der Azure-Speicherdienstverschlüsselung (Azure Storage Service Encryption, SSE). Service Bus Premium verwendet Azure Storage zum Speichern der Daten. Standardmäßig werden alle mit Azure Storage gespeicherten Daten durch von Microsoft verwaltete Schlüssel verschlüsselt. 
@@ -82,12 +82,12 @@ Nachdem Sie kundenseitig verwaltete Schlüssel aktiviert haben, müssen Sie den 
     > 
     >   * Wenn die [georedundante Notfallwiederherstellung](service-bus-geo-dr.md) bereits für den Service Bus-Namespace aktiviert ist und Sie den vom Kunden verwalteten Schlüssel aktivieren möchten: 
     >     * Heben Sie die Kopplung auf.
-    >     * [Richten Sie die Zugriffsrichtlinien](../key-vault/general/managed-identity.md) für die verwaltete Identität sowohl für den primären als auch für den sekundären Namespace auf den Schlüsseltresor ein.
+    >     * [Richten Sie die Zugriffsrichtlinien](../key-vault/general/assign-access-policy-portal.md) für die verwaltete Identität sowohl für den primären als auch für den sekundären Namespace auf den Schlüsseltresor ein.
     >     * Richten Sie die Verschlüsselung für den primären Namespace ein.
     >     * Stellen Sie die Kopplung des primären und des sekundären Namespace wieder her.
     > 
     >   * Wenn Sie in einem Service Bus-Namespace, in dem bereits vom Kunden verwaltete Schlüssel eingerichtet sind, georedundante Notfallwiederherstellung aktivieren möchten:
-    >     * [Richten Sie die Zugriffsrichtlinien](../key-vault/general/managed-identity.md) für die verwaltete Identität für den sekundären Namespace auf den Schlüsseltresor ein.
+    >     * [Richten Sie die Zugriffsrichtlinien](../key-vault/general/assign-access-policy-portal.md) für die verwaltete Identität für den sekundären Namespace auf den Schlüsseltresor ein.
     >     * Koppeln Sie den primären und den sekundären Namespace.
 
 

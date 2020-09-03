@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83cc75c1d69ee7232edf0c21643d25027b97f088
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 14612247d241aed420a76ff40e19d04164cbe150
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85339723"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049926"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Planen einer Bereitstellung für bedingten Zugriff
 
@@ -242,7 +242,7 @@ Es kann schwierig sein, die Anzahl und die Namen von Benutzern vorherzusagen, di
 
 Ein [reiner Berichtsmodus ](concept-conditional-access-report-only.md) ermöglicht Administratoren das Auswerten der Auswirkungen von Richtlinien für bedingten Zugriff auswerten, bevor sie diese in ihrer Umgebung aktivieren.
 
-Informieren Sie sich über das [Konfigurieren einer Richtlinie für bedingten Zugriff im reinen Berichtsmodus](howto-conditional-access-report-only.md).
+Informieren Sie sich über das [Konfigurieren einer Richtlinie für bedingten Zugriff im reinen Berichtsmodus](howto-conditional-access-insights-reporting.md).
 
 ### <a name="plan-for-disruption"></a>Planen von Unterbrechungen
 
@@ -313,7 +313,7 @@ Gängige Anwendungsfälle für die MFA-Anforderung:
 
 * [Zugriff durch Administratoren](howto-conditional-access-policy-admin-mfa.md)
 
-* [Zugriff auf bestimmte Apps](app-based-mfa.md)
+* [Zugriff auf bestimmte Apps](../authentication/tutorial-enable-azure-mfa.md)
 
 * [Für alle Benutzer](howto-conditional-access-policy-all-users-mfa.md)
 
@@ -384,18 +384,18 @@ Der Testplan ist wichtig, um die erwarteten Ergebnisse mit den tatsächlichen Er
 | - | - | - |
 | [Anfordern der MFA, wenn nicht bei der Arbeit](untrusted-networks.md)| Ein autorisierter Benutzer meldet sich bei der App an, während er sich an einem vertrauenswürdigen Ort/bei der Arbeit befindet.| Der Benutzer wird nicht zur Verwendung von MFA aufgefordert. |
 | [Anfordern der MFA, wenn nicht bei der Arbeit](untrusted-networks.md)| Ein autorisierter Benutzer meldet sich bei der App an, während er sich nicht an einem vertrauenswürdigen Ort/bei der Arbeit befindet.| Der Benutzer wird zur Verwendung der MFA aufgefordert und kann sich erfolgreich anmelden. |
-| [Anfordern der MFA für Administratoren](howto-baseline-protect-administrators.md)| Ein globaler Administrator meldet sich bei der App an.| Der Administrator wird zur Verwendung der MFA aufgefordert. |
-| [Riskante Anmeldungen](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)| Ein Benutzer meldet sich bei der App über einen nicht genehmigten Browser an.| Der Administrator wird zur Verwendung der MFA aufgefordert. |
+| [Anfordern der MFA für Administratoren](../fundamentals/concept-fundamentals-security-defaults.md)| Ein globaler Administrator meldet sich bei der App an.| Der Administrator wird zur Verwendung der MFA aufgefordert. |
+| [Riskante Anmeldungen](../identity-protection/howto-identity-protection-configure-risk-policies.md)| Ein Benutzer meldet sich bei der App über einen nicht genehmigten Browser an.| Der Administrator wird zur Verwendung der MFA aufgefordert. |
 | [Geräteverwaltung](require-managed-devices.md)| Ein autorisierter Benutzer versucht, sich über ein autorisiertes Gerät anzumelden.| Der Zugriff wird gewährt. |
 | [Geräteverwaltung](require-managed-devices.md)| Ein autorisierter Benutzer versucht, sich über ein nicht autorisiertes Gerät anzumelden.| Der Zugriff wird blockiert. |
-| [Kennwortänderung für riskante Benutzer](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)| Ein autorisierter Benutzer versucht, sich mit gefährdeten Anmeldeinformationen anzumelden (Anmeldung mit hohem Risiko).| Der Benutzer wird aufgefordert, das Kennwort zu ändern, oder der Zugriff wird blockiert (auf der Grundlage Ihrer Richtlinie). |
+| [Kennwortänderung für riskante Benutzer](../identity-protection/howto-identity-protection-configure-risk-policies.md)| Ein autorisierter Benutzer versucht, sich mit gefährdeten Anmeldeinformationen anzumelden (Anmeldung mit hohem Risiko).| Der Benutzer wird aufgefordert, das Kennwort zu ändern, oder der Zugriff wird blockiert (auf der Grundlage Ihrer Richtlinie). |
 
 
 ### <a name="configure-the-test-policy"></a>Konfigurieren der Testrichtlinie
 
 Im [Azure-Portal](https://portal.azure.com/) konfigurieren Sie Richtlinien für bedingten Zugriff unter „Azure Active Directory > Sicherheit > Bedingter Zugriff“.
 
-Weitere Informationen zum Erstellen von Richtlinien für bedingten Zugriff finden Sie in diesem Beispiel: [Richtlinie für bedingten Zugriff, die zur Verwendung von MFA auffordert, wenn sich ein Benutzer am Azure-Portal anmeldet](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-azure-mfa?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json). Diese Schnellstartanleitung enthält Folgendes:
+Weitere Informationen zum Erstellen von Richtlinien für bedingten Zugriff finden Sie in diesem Beispiel: [Richtlinie für bedingten Zugriff, die zur Verwendung von MFA auffordert, wenn sich ein Benutzer am Azure-Portal anmeldet](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json). Diese Schnellstartanleitung enthält Folgendes:
 
 * Vertrautwerden mit der Benutzeroberfläche
 
@@ -442,7 +442,7 @@ Sollte für Ihre neu implementierten Richtlinien ein Rollback erforderlich sein,
 > [!NOTE]
 >  Diese Option sollte nur für vertrauenswürdige Benutzer verwendet werden. Der Benutzer sollte der Richtlinie oder Gruppe baldmöglichst wieder hinzugefügt werden.
 
-* **Löschen der Richtlinie.** [Löschen](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-azure-mfa?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json) Sie die Richtlinie, wenn Sie sie nicht mehr benötigen.
+* **Löschen der Richtlinie.** [Löschen](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json) Sie die Richtlinie, wenn Sie sie nicht mehr benötigen.
 
 ## <a name="manage-access-to-cloud-apps"></a>Verwalten des Zugriffs auf Cloud-Apps
 
@@ -501,4 +501,4 @@ Nachdem Sie diese Informationen erfasst haben, finden Sie weitere Beschreibungen
 
 [Erfahren Sie mehr über Identity Protection](../identity-protection/overview-identity-protection.md)
 
-[Verwalten von Richtlinien für bedingten Zugriff mit der Microsoft Graph-API](https://docs.microsoft.com/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md)
+[Verwalten von Richtlinien für bedingten Zugriff mit der Microsoft Graph-API](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md)

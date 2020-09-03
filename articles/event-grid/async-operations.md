@@ -3,12 +3,13 @@ title: Status asynchroner Vorgänge von Event Grid
 description: Beschreibt, wie asynchrone Vorgänge von Event Grid in Azure nachverfolgt werden. Es werden die Werte gezeigt, die Sie verwenden, um den Status eines Vorgangs mit langer Ausführungsdauer abzurufen.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 621490a9f56e88baaf343c1c2a072ab84aa7d3ef
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: baae7b097a0b696d405c0e7ea3d3bdeb326f23b1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103329"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011683"
 ---
 # <a name="track-event-grid-asynchronous-azure-operations"></a>Nachverfolgen asynchroner Vorgänge von Event Grid in Azure
 Einige Azure-REST-Vorgänge werden asynchron ausgeführt, da sie nicht schnell abgeschlossen werden können. In diesem Artikel wird beschrieben, wie der Status asynchroner Vorgänge mithilfe von Werten nachverfolgt wird, die in der Antwort zurückgegeben werden.  

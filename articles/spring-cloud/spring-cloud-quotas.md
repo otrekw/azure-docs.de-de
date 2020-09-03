@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: cda22c63a70c5121e6a6972c66bdc0a4bb5158fc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7d47311385848f96a12a50c1dcf8b8284869c71d
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089463"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260355"
 ---
 # <a name="quotas-and-service-plans-for-azure-spring-cloud"></a>Kontingente und Servicepläne für Azure Spring Cloud
 
@@ -27,9 +27,6 @@ Arbeitsspeicher | 2 GB pro Dienstinstanz | 8 GB pro Dienstinstanz
 Azure Spring Cloud-Dienstinstanzen pro Region und Abonnement | 10 | 10
 Gesamtanzahl der App-Instanzen pro Azure Spring Cloud-Dienstinstanz | 25 | 500
 Persistente Volumes | 1 GB/App × 10 Apps | 50 GB/App × 10 Apps
-
-
-Während der Vorschauphase bietet Azure Spring Cloud nur eine Dienstebene. Bei Erreichen eines Grenzwerts erhalten Sie einen Fehler vom Typ 400 mit folgender Information: „Das Kontingent überschreitet den Grenzwert für das Abonnement *Ihr Abonnement* in der Region *Region, in der Ihr Azure Spring Cloud-Dienst erstellt wurde*.“
 
 ## <a name="next-steps"></a>Nächste Schritte
 

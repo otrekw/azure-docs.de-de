@@ -17,12 +17,12 @@ ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6440e71eade32bfea4ed19448fd2f2007b519cc8
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: e84fb04d967311fede3be7f20b45f01fb442e69e
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816081"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228765"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal
 
@@ -32,8 +32,8 @@ Die Architektur für die Berichterstellung in Azure Active Directory (Azure AD) 
     - **Anmeldungen**: Informationen zur Nutzung von verwalteten Anwendungen und Aktivitäten der Benutzeranmeldung.
     - **Überwachungsprotokolle** - [Überwachungsprotokolle](concept-audit-logs.md) stellen Systemaktivitätsinformationen zu Benutzern und zur Gruppenverwaltung, zu verwalteten Anwendungen und zu Verzeichnisaktivitäten bereit.
 - **Security** 
-    - **Riskante Anmeldungen**: Eine [riskante Anmeldung](concept-risky-sign-ins.md) ist ein Indikator für einen Anmeldeversuch von einem Benutzer, der nicht der rechtmäßige Besitzer eines Benutzerkontos ist.
-    - **Benutzer mit Risikomarkierung**: Ein [Benutzer mit Risikomarkierung](concept-user-at-risk.md) ist ein Indikator für ein ggf. kompromittiertes Benutzerkonto.
+    - **Riskante Anmeldungen**: Eine [riskante Anmeldung](../identity-protection/overview-identity-protection.md) ist ein Indikator für einen Anmeldeversuch von einem Benutzer, der nicht der rechtmäßige Besitzer eines Benutzerkontos ist.
+    - **Benutzer mit Risikomarkierung**: Ein [Benutzer mit Risikomarkierung](../identity-protection/overview-identity-protection.md) ist ein Indikator für ein ggf. kompromittiertes Benutzerkonto.
 
 In diesem Artikel erhalten Sie einen Überblick über den Bericht zu Anmeldeaktivitäten.
 
@@ -149,7 +149,7 @@ Zuerst schränken Sie die gemeldeten Daten auf einen Umfang ein, der für Sie ge
 |Exchange ActiveSync| |Dieser Filter zeigt alle Anmeldeversuche, bei denen das EAS-Protokoll versucht wurde.|
 |Browser|![Prüfen](./media/concept-sign-ins/check.png)|Zeigt alle Anmeldeversuche von Benutzern über Webbrowser|
 |Exchange ActiveSync| | Zeigt alle Anmeldeversuche von Benutzern mit Client-Apps, die Exchange ActiceSync zur Herstellung einer Verbindung mit Exchange Online verwenden|
-|Exchange Online PowerShell| |Wird zum Herstellen einer Verbindung mit Exchange Online über Remote-PowerShell verwendet. Wenn Sie die Standardauthentifizierung für Exchange Online PowerShell blockieren, müssen Sie das Exchange Online PowerShell-Modul verwenden, um eine Verbindung herzustellen. Anweisungen finden Sie unter [Herstellen einer Verbindung mit Exchange Online PowerShell mithilfe der mehrstufigen Authentifizierung](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).|
+|Exchange Online PowerShell| |Wird zum Herstellen einer Verbindung mit Exchange Online über Remote-PowerShell verwendet. Wenn Sie die Standardauthentifizierung für Exchange Online PowerShell blockieren, müssen Sie das Exchange Online PowerShell-Modul verwenden, um eine Verbindung herzustellen. Anweisungen finden Sie unter [Herstellen einer Verbindung mit Exchange Online PowerShell mithilfe der mehrstufigen Authentifizierung](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).|
 |Exchange-Webdienste| |Eine Programmierschnittstelle, die von Outlook, Outlook für Mac und Drittanbieter-Apps verwendet wird.|
 |IMAP4| |Älterer E-Mail-Client, der IMAP zum Abrufen von E-Mails verwendet.|
 |MAPI über HTTP| |Wird von Outlook 2010 und höher verwendet.|
@@ -271,13 +271,12 @@ Mit der Option **Anmeldungen** können Sie eine vollständige Übersicht über a
 
 ## <a name="office-365-activity-logs"></a>Office 365-Aktivitätsprotokolle
 
-Sie können Office 365-Aktivitätsprotokolle im [Microsoft 365 Admin Center](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center) anzeigen. Beachten Sie, dass Office 365- und Azure AD-Aktivitätsprotokolle eine beträchtliche Anzahl von Verzeichnisressourcen gemeinsam nutzen. Nur das Microsoft 365 Admin Center bietet eine vollständige Übersicht über die Office 365-Aktivitätsprotokolle. 
+Sie können Office 365-Aktivitätsprotokolle im [Microsoft 365 Admin Center](/office365/admin/admin-overview/about-the-admin-center) anzeigen. Beachten Sie, dass Office 365- und Azure AD-Aktivitätsprotokolle eine beträchtliche Anzahl von Verzeichnisressourcen gemeinsam nutzen. Nur das Microsoft 365 Admin Center bietet eine vollständige Übersicht über die Office 365-Aktivitätsprotokolle. 
 
-Mithilfe der [Office 365-Verwaltungs-APIs](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview) können Sie auch programmgesteuert auf die Office 365-Aktivitätsprotokolle zugreifen.
+Mithilfe der [Office 365-Verwaltungs-APIs](/office/office-365-management-api/office-365-management-apis-overview) können Sie auch programmgesteuert auf die Office 365-Aktivitätsprotokolle zugreifen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Fehlercodes des Berichts mit den Anmeldeaktivitäten](reference-sign-ins-error-codes.md)
 * [Aufbewahrungsrichtlinien für Azure Active Directory-Berichte](reference-reports-data-retention.md)
 * [Latenzen bei Azure Active Directory-Berichten](reference-reports-latencies.md)
-

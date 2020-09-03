@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: 2bedd8d9ab0b879886042de3dc2fcff7f7b36f2f
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: fdb502685259a5e12bf0182c36aa6c73ec7c1dd5
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080931"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958932"
 ---
 # <a name="application-gateway-integration-with-service-endpoints"></a>Application Gateway-Integration mit Dienstendpunkten
 Es gibt drei Varianten von App Service, die jeweils eine etwas andere Konfiguration der Integration mit Azure Application Gateway erfordern. Zu diesen Varianten zählen die reguläre App Service-Instanz (mehrinstanzenfähig) sowie ILB-ASE (Internal Load Balancer App Service Environment, App Service-Umgebung mit internem Lastenausgleich) und die externe ASE. In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie die Konfiguration mit App Service (mehrinstanzenfähig) durchführen, und Sie finden Informationen zu ILB und externer ASE.
@@ -84,6 +84,6 @@ az webapp config access-restriction add --resource-group myRG --name myWebApp --
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zur App Service-Umgebung finden Sie in der [Einführung in die App Service-Umgebungen](https://docs.microsoft.com/azure/app-service/environment).
+Weitere Informationen zur App Service-Umgebung finden Sie in der [Einführung in die App Service-Umgebungen](/azure/app-service/environment).
 
 Unter [Azure Web Application Firewall für Azure Application Gateway](../../web-application-firewall/ag/ag-overview.md) finden Sie Informationen zur Web Application Firewall in Application Gateway, mit der Sie Ihre App noch sicherer machen können.

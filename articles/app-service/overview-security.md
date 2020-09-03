@@ -5,16 +5,16 @@ keywords: Azure App Service, Web-App, mobile App, API-App, Funktions-App, Sicher
 ms.topic: article
 ms.date: 08/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: a6c8aeeaded659fb7fd37409c3d9e495aa711fa6
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 55ffb2d03a42809a41583e6be25066b0b8e104b1
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080299"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961498"
 ---
 # <a name="security-in-azure-app-service"></a>Sicherheit in Azure App Service
 
-In diesem Artikel erfahren Sie, wie [Azure App Service](overview.md) zum Schutz Ihrer Web-App, Ihres Mobile App-Back-Ends, Ihrer API-App sowie Ihrer [Funktions-App](/azure/azure-functions/) beiträgt. Außerdem erfahren Sie, wie Sie Ihre App mithilfe der integrierten App Service-Features noch besser schützen können.
+In diesem Artikel erfahren Sie, wie [Azure App Service](overview.md) zum Schutz Ihrer Web-App, Ihres Mobile App-Back-Ends, Ihrer API-App sowie Ihrer [Funktions-App](../azure-functions/index.yml) beiträgt. Außerdem erfahren Sie, wie Sie Ihre App mithilfe der integrierten App Service-Features noch besser schützen können.
 
 [!INCLUDE [app-service-security-intro](../../includes/app-service-security-intro.md)]
 
@@ -43,7 +43,7 @@ Für die Dateibereitstellung unterstützt App Service sowohl FTP als auch FTPS. 
 
 Standardmäßig akzeptiert Ihre App Service-App Anforderungen von allen IP-Adressen aus dem Internet, der Zugriff kann aber auf eine kleine Teilmenge von IP-Adressen beschränkt werden. In App Service unter Windows können Sie eine Liste mit IP-Adressen definieren, die auf Ihre App zugreifen dürfen. Die Liste mit den zulässigen IP-Adressen kann einzelne IP-Adressen oder einen durch eine Subnetzmaske definierten IP-Adressbereich enthalten. Weitere Informationen finden Sie unter [Statische Azure App Service-IP-Einschränkungen](app-service-ip-restrictions.md).
 
-Für App Service unter Windows können Sie IP-Adressen auch dynamisch einschränken, indem Sie _web.config_ konfigurieren. Weitere Informationen finden Sie unter [Dynamic IP Security \<dynamicIpSecurity>](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/) (Dynamische IP-Sicherheit: <dynamicIpSecurity>).
+Für App Service unter Windows können Sie IP-Adressen auch dynamisch einschränken, indem Sie _web.config_ konfigurieren. Weitere Informationen finden Sie unter [Dynamic IP Security \<dynamicIpSecurity>](/iis/configuration/system.webServer/security/dynamicIpSecurity/) (Dynamische IP-Sicherheit: <dynamicIpSecurity>).
 
 ## <a name="client-authentication-and-authorization"></a>Clientauthentifizierung und -autorisierung
 
@@ -55,7 +55,7 @@ Von der App Service-Authentifizierung und -Autorisierung werden mehrere Authenti
 
 Für die Authentifizierung bei einem Back-End-Dienst bietet App Service zwei unterschiedliche bedarfsspezifische Mechanismen:
 
-- **Dienstidentität:** Melden Sie sich unter Verwendung der Identität der App bei der Remoteressource an. Mit App Service können Sie ganz einfach eine [verwaltete Identität](overview-managed-identity.md) erstellen und für die Authentifizierung bei anderen Diensten (beispielsweise [Azure SQL-Datenbank](/azure/sql-database/) oder [Azure Key Vault](/azure/key-vault/)) verwenden. Ein umfassendes Tutorial für diesen Ansatz finden Sie unter [Tutorial: Schützen der SQL-Datenbank-Verbindung mittels verwalteter Identität](app-service-web-tutorial-connect-msi.md).
+- **Dienstidentität:** Melden Sie sich unter Verwendung der Identität der App bei der Remoteressource an. Mit App Service können Sie ganz einfach eine [verwaltete Identität](overview-managed-identity.md) erstellen und für die Authentifizierung bei anderen Diensten (beispielsweise [Azure SQL-Datenbank](/azure/sql-database/) oder [Azure Key Vault](../key-vault/index.yml)) verwenden. Ein umfassendes Tutorial für diesen Ansatz finden Sie unter [Tutorial: Schützen der SQL-Datenbank-Verbindung mittels verwalteter Identität](app-service-web-tutorial-connect-msi.md).
 - **Im Namen von (on behalf of, OBO):** Greifen Sie unter Verwendung von delegiertem Zugriff im Namen des Benutzers auf Remoteressourcen zu. Mit Azure Active Directory als Authentifizierungsanbieter kann Ihre App Service-App eine delegierte Anmeldung bei einem Remotedienst durchführen – etwa bei der [Microsoft Graph-API](../active-directory/develop/microsoft-graph-intro.md) oder bei einer Remote-API-App in App Service. Ein umfassendes Tutorial für diesen Ansatz finden Sie unter [Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service](tutorial-auth-aad.md).
 
 ## <a name="connectivity-to-remote-resources"></a>Konnektivität mit Remoteressourcen
@@ -70,13 +70,13 @@ In jedem dieser Fälle bietet App Service eine Möglichkeit zur Herstellung sich
 
 ### <a name="azure-resources"></a>Azure-Ressourcen
 
-Wenn Ihre App eine Verbindung mit Azure-Ressourcen (etwa mit [SQL-Datenbank](https://azure.microsoft.com/services/sql-database/) und [Azure Storage](/azure/storage/)) herstellt, bleibt die Verbindung innerhalb von Azure und überschreitet keine Netzwerkgrenzen. Die Verbindung durchläuft jedoch die gemeinsam genutzten Netzwerke in Azure. Stellen Sie daher sicher, dass Ihre Verbindung verschlüsselt ist. 
+Wenn Ihre App eine Verbindung mit Azure-Ressourcen (etwa mit [SQL-Datenbank](https://azure.microsoft.com/services/sql-database/) und [Azure Storage](../storage/index.yml)) herstellt, bleibt die Verbindung innerhalb von Azure und überschreitet keine Netzwerkgrenzen. Die Verbindung durchläuft jedoch die gemeinsam genutzten Netzwerke in Azure. Stellen Sie daher sicher, dass Ihre Verbindung verschlüsselt ist. 
 
 Wenn Ihre App in einer [App Service-Umgebung](environment/intro.md) gehostet wird, sollten Sie [über Virtual Network-Dienstendpunkte eine Verbindung mit unterstützten Azure-Diensten herstellen](../virtual-network/virtual-network-service-endpoints-overview.md).
 
 ### <a name="resources-inside-an-azure-virtual-network"></a>Ressourcen in einer Azure Virtual Network-Instanz
 
-Ihre App kann mittels [Virtual Network-Integration](web-sites-integrate-with-vnet.md) auf Ressourcen in einer [Azure Virtual Network-Instanz](/azure/virtual-network/) zugreifen. Die Virtual Network-Integration wird über ein Point-to-Site-VPN implementiert. Die App kann daraufhin unter Verwendung der privaten IP-Adressen auf die Ressourcen in der Virtual Network-Instanz zugreifen. Die Point-to-Site-Verbindung durchläuft allerdings die gemeinsam genutzten Netzwerke in Azure. 
+Ihre App kann mittels [Virtual Network-Integration](web-sites-integrate-with-vnet.md) auf Ressourcen in einer [Azure Virtual Network-Instanz](../virtual-network/index.yml) zugreifen. Die Virtual Network-Integration wird über ein Point-to-Site-VPN implementiert. Die App kann daraufhin unter Verwendung der privaten IP-Adressen auf die Ressourcen in der Virtual Network-Instanz zugreifen. Die Point-to-Site-Verbindung durchläuft allerdings die gemeinsam genutzten Netzwerke in Azure. 
 
 Wenn Sie die Ressourcenkonnektivität vollständig von den gemeinsam genutzten Netzwerken in Azure isolieren möchten, müssen Sie Ihre App in einer [App Service-Umgebung](environment/intro.md) erstellen. Da eine App Service-Umgebung immer in einer dedizierten Virtual Network-Instanz bereitgestellt wird, ist die Konnektivität zwischen Ihrer App und den Ressourcen innerhalb der Virtual Network-Instanz vollständig isoliert. Informationen zu anderen Aspekten der Netzwerksicherheit in einer App Service-Umgebung finden Sie unter [Netzwerkisolation](#network-isolation).
 
@@ -92,14 +92,14 @@ Für den sicheren Zugriff auf lokale Ressourcen (beispielsweise Datenbanken) ste
 
 Speichern Sie Anwendungsgeheimnisse wie Datenbank-Anmeldeinformationen, API-Token und private Schlüssel nicht in Ihrem Code oder in Konfigurationsdateien. Für den Zugriff auf diese Geheimnisse hat es sich bewährt, [Umgebungsvariablen](https://wikipedia.org/wiki/Environment_variable) mit dem Standardmuster in der Sprache Ihrer Wahl zu verwenden. In App Service werden Umgebungsvariablen über [App-Einstellungen](configure-common.md#configure-app-settings) (und speziell für .NET-Anwendungen über [Verbindungszeichenfolgen](configure-common.md#configure-connection-strings)) definiert. App-Einstellungen und Verbindungszeichenfolgen werden in Azure verschlüsselt gespeichert und erst entschlüsselt, wenn sie beim Start der App in ihren Prozessspeicher eingefügt werden. Die Verschlüsselungsschlüssel werden regelmäßig rotiert.
 
-Wenn Sie eine erweiterte Geheimnisverwaltung benötigen, können Sie Ihre App Service-App auch in [Azure Key Vault](/azure/key-vault/) integrieren. Durch den [Zugriff auf Key Vault mit einer verwalteten Identität](../key-vault/tutorial-web-application-keyvault.md) kann Ihre App Service-App sicher auf die benötigten Geheimnisse zugreifen.
+Wenn Sie eine erweiterte Geheimnisverwaltung benötigen, können Sie Ihre App Service-App auch in [Azure Key Vault](../key-vault/index.yml) integrieren. Durch den [Zugriff auf Key Vault mit einer verwalteten Identität](../key-vault/general/tutorial-net-create-vault-azure-web-app.md) kann Ihre App Service-App sicher auf die benötigten Geheimnisse zugreifen.
 
 ## <a name="network-isolation"></a>Netzwerkisolation
 
-Mit Ausnahme des Tarifs **Isoliert** wird Ihre App bei allen Tarifen in der gemeinsam genutzten Netzwerkinfrastruktur in App Service ausgeführt. So werden beispielsweise die öffentlichen IP-Adressen und Front-End-Lastenausgleichsmodule gemeinsam mit anderen Mandanten genutzt. Im Tarif **Isoliert** werden Ihre Apps in einer dedizierten [App Service-Umgebung](environment/intro.md) ausgeführt, wodurch eine vollständige Netzwerkisolation erreicht wird. Eine App Service-Umgebung wird in Ihrer eigenen Instanz von [Azure Virtual Network](/azure/virtual-network/) betrieben. Dadurch haben Sie folgende Möglichkeiten: 
+Mit Ausnahme des Tarifs **Isoliert** wird Ihre App bei allen Tarifen in der gemeinsam genutzten Netzwerkinfrastruktur in App Service ausgeführt. So werden beispielsweise die öffentlichen IP-Adressen und Front-End-Lastenausgleichsmodule gemeinsam mit anderen Mandanten genutzt. Im Tarif **Isoliert** werden Ihre Apps in einer dedizierten [App Service-Umgebung](environment/intro.md) ausgeführt, wodurch eine vollständige Netzwerkisolation erreicht wird. Eine App Service-Umgebung wird in Ihrer eigenen Instanz von [Azure Virtual Network](../virtual-network/index.yml) betrieben. Dadurch haben Sie folgende Möglichkeiten: 
 
 - Sie können Ihre Apps über einen dedizierten öffentlichen Endpunkt mit dedizierten Front-Ends bereitstellen.
 - Sie können interne Anwendungen unter Verwendung eines internen Lastenausgleichsmoduls (internal load balancer, ILB) bereitstellen, wodurch der Zugriff nur innerhalb Ihrer Azure Virtual Network-Instanz möglich ist. Das interne Lastenausgleichsmodul besitzt eine IP-Adresse aus Ihrem privaten Subnetz, sodass Ihre Apps vollständig vom Internet isoliert sind.
 - Sie können [ein internes Lastenausgleichsmodul hinter einer Web Application Firewall (WAF) verwenden](environment/integrate-with-application-gateway.md). Die WAF bietet professionellen Schutz für Ihre öffentlichen Anwendungen – beispielsweise DDoS-Schutz, URI-Filterung und Verhinderung der Einschleusung von SQL-Befehlen.
 
-Weitere Informationen finden Sie in der [Einführung in die App Service-Umgebungen](environment/intro.md). 
+Weitere Informationen finden Sie in der [Einführung in die App Service-Umgebungen](environment/intro.md).

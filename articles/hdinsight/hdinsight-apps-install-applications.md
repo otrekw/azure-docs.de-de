@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: fd0d425f00e001071f5c9021068ca2f038371a36
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: e0d1f9ad99e1b64560321312a22f61f5a2ef3dea
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212830"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016035"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Installieren von Apache Hadoop-Anwendungen von Drittanbietern in Azure HDInsight
 
@@ -29,7 +29,7 @@ Die folgende Liste zeigt die veröffentlichten Anwendungen:
 |[CDAP für HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/cask.cdap-for-hdinsight) |hbase |CDAP ist die erste einheitliche Integrationsplattform für Big Data, die die Amortisationszeit für Hadoop beschleunigt und Informatikern ermöglicht, Self-Service-Daten bereitzustellen. CDAP ist Open Source und erweiterbar, wodurch Hürden für die Innovation entfernt werden. Anforderungen: 4 Regionsknoten und eine D3 v2-Instanz (mindestens). |
 |[Datameer](https://azuremarketplace.microsoft.com/marketplace/apps/datameer.datameer) |Hadoop |Die skalierbare Self-Service-Plattform von Datameer zum Vorbereiten, Untersuchen und Steuern Ihrer Daten für die Analyse, mit der Sie komplexe Daten aus mehreren Quellen schneller in wertvolle unternehmensrelevante Informationen verwandeln und schnell hilfreiche Erkenntnisse für das gesamte Unternehmen gewinnen können. |
 |[Dataiku DSS in HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/dataiku.dss-on-hdi) |Hadoop, Spark |Dataiku DSS ist eine Data Science-Plattform für Unternehmen, mit der Data Scientists und Data Analysts zusammenarbeiten können, um neue Datenprodukte und Dienste effizienter zu entwerfen und auszuführen, wodurch Rohdaten in aussagekräftig Vorhersagen konvertiert werden. |
-|[WANdisco Fusion HDI App](https://azuremarketplace.microsoft.com/marketplace/apps/wandisco.fusion-hdi-app) |Hadoop, Spark, HBase, Storm, Kafka |Die Beibehaltung der Datenkonsistenz in einer verteilten Umgebung ist eine große Herausforderung für Datenvorgänge. WANdisco Fusion ist eine professionelle Softwareplattform, die dieses Problem löst, indem unstrukturierte Datenkonsistenz zwischen beliebigen Umgebungen ermöglicht wird. |
+|[WANdisco Fusion HDI App](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/wandisco.wandisco-liveanalytics) |Hadoop, Spark, HBase, Storm, Kafka |Die Beibehaltung der Datenkonsistenz in einer verteilten Umgebung ist eine große Herausforderung für Datenvorgänge. WANdisco Fusion ist eine professionelle Softwareplattform, die dieses Problem löst, indem unstrukturierte Datenkonsistenz zwischen beliebigen Umgebungen ermöglicht wird. |
 |[H2O SparklingWater für HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/h2o-ai.h2o-sparklingwater) |Spark |H2O Sparkling Water unterstützt die folgenden verteilten Algorithmen: GLM, Naïve Bayes, Distributed Random Forest, Gradient Boosting Machine, Deep Neural Networks, Deep learning, K-means, PCA, Generalized Low Rank Models, Anomalieerkennung und Autoencoders. |
 |[Striim für Echtzeitdatenintegration in HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/striim.striimbyol) |Hadoop, HBase, Storm, Spark, Kafka |Striim (Aussprache: Stream) ist eine End-to-End-Integrations- und Intelligence-Plattform für Streamingdaten, die eine kontinuierliche Erfassung, Verarbeitung und Analyse unterschiedlicher Datenströme ermöglicht. |
 |[Jumbune – BigData-Analyse für Unternehmensbeschleunigung](https://azuremarketplace.microsoft.com/marketplace/apps/impetus-infotech-india-pvt-ltd.impetus_jumbune) |Hadoop, Spark |Jumbune unterstützt Unternehmen im Allgemeinen wie folgt: 1\. Beschleunigt die Workloadleistung von Tez, MapReduce & Spark-basiertes Hive, Java, und Scala. 2. Überwacht Hadoop-Cluster proaktiv. 3\. Richtet Datenqualitätsverwaltung für verteilte Dateisysteme ein. |

@@ -3,12 +3,12 @@ title: Erstellen von Richtlinien für Arrayeigenschaften für Ressourcen
 description: Erfahren Sie, wie Sie mit Arrayparametern und Arrayausdrücken arbeiten, den [*]-Alias auswerten und Elemente mit Azure Policy-Definitionsregeln anfügen.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: f3ba5179ca7acc60042d23e88d42a504d4d05f08
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5b9392a943e264ae5eca989ee87eb9ff09b36972
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544586"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048481"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Erstellen von Richtlinien für Arrayeigenschaften für Azure-Ressourcen
 
@@ -95,7 +95,7 @@ Das Format für den Parameterwert unterscheidet sich bei der Verwendung der Azur
 
 Die Befehle zur Verwendung dieser Zeichenfolge mit den einzelnen SDKs lauten wie folgt:
 
-- Azure CLI: Befehl [az policy assignment create](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) mit dem Parameter **params**
+- Azure CLI: Befehl [az policy assignment create](/cli/azure/policy/assignment#az-policy-assignment-create) mit dem Parameter **params**
 - Azure PowerShell: Cmdlet [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) mit dem Parameter **PolicyParameter**
 - REST-API: Im _PUT_-Vorgang [create](/rest/api/resources/policyassignments/create) als Teil des Anforderungstextes als Wert der **properties.parameters**-Eigenschaft
 

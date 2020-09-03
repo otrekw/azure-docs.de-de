@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/05/2020
-ms.openlocfilehash: 14634fac5d4501572a54f80f01a37e440d69d09b
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: e279f0ba5186ae4e4ad4b403ad823a59ee085170
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86075534"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88997556"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Verwalten von Protokollen für einen HDInsight-Cluster
 
@@ -67,7 +67,7 @@ Es ist wichtig, dass Sie die in Ihren HDInsight-Clustern ausgeführten Workloadt
 
 * Überlegen Sie, wie Sie Protokolle für den Cluster oder mehr als einen Cluster sammeln und für Zwecke wie Auditing, Überwachung, Planung und Warnung zusammenstellen können. Sie können ggf. eine benutzerdefinierte Lösung nutzen, um regelmäßig auf die Protokolldateien zuzugreifen und diese herunterzuladen und dann zu kombinieren und zu analysieren, um eine entsprechende Dashboardanzeige bereitzustellen. Außerdem können Sie weitere Funktionen für Sicherheitswarnungen oder die Fehlererkennung hinzufügen. Sie können diese Hilfsprogramme mit PowerShell, den HDInsight SDKs oder Code erstellen, mit dem auf das klassische Azure-Bereitstellungsmodell zugegriffen wird.
 
-* Überlegen Sie, ob eine Überwachungslösung oder ein entsprechender Dienst nützlich wäre. In Microsoft System Center ist ein [HDInsight Management Pack](https://www.microsoft.com/download/details.aspx?id=42521) verfügbar. Sie können auch Drittanbietertools verwenden, z. B. Apache Chukwa und Ganglia, um Protokolle zu sammeln und zu zentralisieren. Viele Unternehmen bieten Dienste, um Hadoop-basierte Big Data-Lösungen zu überwachen, zum Beispiel: Centerity, Compuware APM, Sematext SPM und Zettaset Orchestrator.
+* Überlegen Sie, ob eine Überwachungslösung oder ein entsprechender Dienst nützlich wäre. In Microsoft System Center ist ein [HDInsight Management Pack](https://systemcenter.wiki/?Get_ManagementPackBundle=Microsoft.HDInsight.mpb&FileMD5=10C7D975C6096FFAA22C84626D211259) verfügbar. Sie können auch Drittanbietertools verwenden, z. B. Apache Chukwa und Ganglia, um Protokolle zu sammeln und zu zentralisieren. Viele Unternehmen bieten Dienste, um Hadoop-basierte Big Data-Lösungen zu überwachen, zum Beispiel: Centerity, Compuware APM, Sematext SPM und Zettaset Orchestrator.
 
 ## <a name="step-2-manage-cluster-service-versions-and-view-logs"></a>Schritt 2: Verwalten von Clusterdienstversionen und Anzeigen von Protokollen
 

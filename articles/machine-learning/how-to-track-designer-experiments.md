@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 0d8d9f598da41b2bd39369e063200f5445ba740a
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 20845a6f1238095b40c9b05b5f5d8d85217b6db5
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87554710"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950407"
 ---
 # <a name="enable-logging-in-azure-machine-learning-designer-preview-pipelines"></a>Aktivieren der Protokollierung in Azure Machine Learning-Designerpipelines (Vorschauversion)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -78,5 +78,5 @@ Nachdem die Pipelineausführung abgeschlossen ist, wird der Fehler *Mean_Absolut
 
 In diesem Artikel haben Sie gelernt, wie Sie Protokolle im Designer verwenden. Informationen zu den nächsten Schritten finden Sie in den folgenden Artikeln:
 
-* Informationen zum Beheben von Problemen mit Designerpipelines im Artikel [Debuggen und Problembehandlung für Machine Learning-Pipelines](how-to-debug-pipelines.md#azure-machine-learning-designer-preview)
+* Informationen zum Beheben von Problemen mit Designerpipelines im Artikel [Debuggen und Problembehandlung für Machine Learning-Pipelines](how-to-debug-pipelines.md#logging-in-azure-machine-learning-designer-preview)
 * Informationen zum Verwenden des Python-SDK zum Protokollieren von Metriken in der SDK-Erstellungsfunktion im Artikel [Überwachen von Azure ML-Experimentausführungen und -metriken](how-to-track-experiments.md)

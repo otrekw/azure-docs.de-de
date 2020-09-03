@@ -2,20 +2,20 @@
 title: Metriken und Warnungen in Azure Traffic Manager
 description: In diesem Artikel erfahren Sie mehr über die Metriken und Warnungen, die für Traffic Manager in Azure verfügbar sind.
 services: traffic-manager
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/11/2018
-ms.author: rohink
-ms.openlocfilehash: 521e6ac605d187c0f95545611a17a86cfda6e1dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: duau
+ms.openlocfilehash: 997e2e97161e6db7cdca04c1b79f5149a2e4c409
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76938588"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89392849"
 ---
 # <a name="traffic-manager-metrics-and-alerts"></a>Traffic Manager-Metriken und -Warnungen
 

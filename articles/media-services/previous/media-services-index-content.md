@@ -15,14 +15,17 @@ ms.topic: article
 ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: 8b9f0e824352126204c7a6f1cfe08d3e7c6c29a9
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5665357474b392a413d2b70f9c321b5da3e0bfe5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826057"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89256445"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>Indizieren von Mediendateien mit Azure Media Indexer
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > Der **Azure Media Indexer**-Medienprozessor wird eingestellt. Die Daten zur Einstellung finden Sie unter dem Thema [Legacykomponenten](legacy-components.md). [Azure Media Services Video Indexer](../video-indexer/index.yml) ersetzt diesen Legacy-Medienprozessor. Weitere Informationen finden Sie unter [Migration von Azure Media Indexer v1 und Azure Media Indexer v2 zu Azure Media Services Video Indexer](migrate-indexer-v1-v2.md).

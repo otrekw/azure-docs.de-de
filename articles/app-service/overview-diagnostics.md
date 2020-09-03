@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/18/2019
 ms.author: jennile
 ms.custom: seodec18
-ms.openlocfilehash: df8f68e47776f46ae2d1331f85bd76d6cfe17b80
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: d58341979b0bbe0699a5ca293b20394c43cde1d1
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81869941"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962807"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Übersicht über die Azure App Service-Diagnose
 
@@ -20,7 +20,7 @@ Wenn Sie eine Webanwendung ausführen, möchten Sie auf möglicherweise auftrete
 
 Diese Komponente ist besonders hilfreich, wenn innerhalb der letzten 24 Stunden Probleme bei der App aufgetreten sind, jedoch stehen Ihnen alle Diagnosediagramme jederzeit für die Analyse zur Verfügung.
 
-Die App Service-Diagnose funktioniert nicht nur bei Ihrer App unter Windows, sondern auch bei Apps für [Linux-Container](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro), die [App Service-Umgebung](https://docs.microsoft.com/azure/app-service/environment/intro) und [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview).
+Die App Service-Diagnose funktioniert nicht nur bei Ihrer App unter Windows, sondern auch bei Apps für [Linux-Container](./overview.md#app-service-on-linux), die [App Service-Umgebung](./environment/intro.md) und [Azure Functions](../azure-functions/functions-overview.md).
 
 ## <a name="open-app-service-diagnostics"></a>Öffnen der App Service-Diagnose
 
@@ -71,7 +71,7 @@ Es gibt vier verschiedene Diagramme in der Integritätsüberprüfung.
 
 ### <a name="investigate-application-code-issues-only-for-windows-app"></a>Untersuchen von Problemen mit dem Anwendungscode (nur für Windows-Apps)
 
-Da viele App-Probleme auf Ihren Anwendungscode zurückzuführen sind, ist die App Service-Diagnose in [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) integriert, um Ausnahmen und Probleme mit Abhängigkeiten zur entsprechend ausgewählten Ausfallzeiten hervorzuheben. Application Insights muss separat aktiviert werden.
+Da viele App-Probleme auf Ihren Anwendungscode zurückzuführen sind, ist die App Service-Diagnose in [Application Insights](../azure-monitor/app/app-insights-overview.md) integriert, um Ausnahmen und Probleme mit Abhängigkeiten zur entsprechend ausgewählten Ausfallzeiten hervorzuheben. Application Insights muss separat aktiviert werden.
 
 ![Application Insights](./media/app-service-diagnostics/application-insights-7.png)
 

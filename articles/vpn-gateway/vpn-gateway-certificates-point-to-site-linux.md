@@ -3,17 +3,17 @@ title: 'Generieren und Exportieren von Zertifikaten für Point-to-Site-Verbindun
 description: Erstellen eines selbstsignierten Stammzertifikats, Exportieren des öffentlichen Schlüssels und Generieren von Clientzertifikaten mit der Linux-Befehlszeilenschnittstelle (strongSwan)
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
-author: kumudD
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 08/14/2019
+ms.date: 09/02/2020
 ms.author: alzam
-ms.openlocfilehash: c55c304ae71cba396266c83bcaaa727351dcd677
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0be5bb042649b0fe425077b5b3feb3cea728218c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064624"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394005"
 ---
 # <a name="generate-and-export-certificates"></a>Generieren und Exportieren von Zertifikaten
 

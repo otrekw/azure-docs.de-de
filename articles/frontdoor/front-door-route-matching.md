@@ -3,20 +3,20 @@ title: Azure Front Door – Überwachung des Abgleichs mit Routingregeln | Micro
 description: Dieser Artikel bietet grundlegende Informationen dazu, wie Azure Front Door entscheidet, welche Routingregel für eine eingehende Anforderung verwendet werden soll.
 services: front-door
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: 420aa52293da14a0dfe8fbdfe681440ee4309e6b
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.author: duau
+ms.openlocfilehash: 9593a6c4fa45d9810aabb2bbb3123428930c5891
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878594"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401570"
 ---
 # <a name="how-front-door-matches-requests-to-a-routing-rule"></a>Abgleich von Anforderungen mit Routingregeln durch Front Door
 

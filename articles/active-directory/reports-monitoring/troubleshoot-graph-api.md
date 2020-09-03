@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eec5c5a3d810fdd2d561313e3a355e872fb525c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: abc8badf261e631dd6ceb7af9a6a0cb3676ae25d
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608091"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231009"
 ---
 # <a name="troubleshoot-errors-in-azure-active-directory-reporting-api"></a>Problembehandlung von Fehlern in der Azure Active Directory-Berichterstellungs-API
 
@@ -50,5 +50,5 @@ Führen Sie die Schritte unter [Voraussetzungen für den Zugriff auf die Azure A
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Verwenden der Referenz zur Überwachungs-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit)
-[Verwenden der Referenz zur Anmeldeaktivitätsbericht-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
+[Verwenden der Referenz zur Überwachungs-API](/graph/api/resources/directoryaudit?view=graph-rest-beta)
+[Verwenden der Referenz zur Anmeldeaktivitätsbericht-API](/graph/api/resources/signin?view=graph-rest-beta)

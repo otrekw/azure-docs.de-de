@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 916ff4a5e6afd68106d70f386436723c24574df1
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: d5423a61c8febee72f32935f3dee4e9f9e868630
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605587"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049076"
 ---
 # <a name="conditional-access-user-risk-based-conditional-access"></a>Bedingter Zugriff: Auf dem Benutzerrisiko basierender bedingter Zugriff
 
@@ -29,7 +29,7 @@ Es gibt zwei Möglichkeiten, diese Richtlinie zuzuweisen. Organisationen sollten
 1. Melden Sie sich beim **Azure-Portal** als globaler Administrator, Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
 1. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff**.
 1. Wählen Sie **Neue Richtlinie**.
-1. Benennen Sie Ihre Richtlinie. Es wird empfohlen, dass Unternehmen einen aussagekräftigen Standard für die Namen ihrer Richtlinien erstellen. Weitere Informationen finden Sie unter [Festlegen von Benennungsstandards für Ihre Richtlinien](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access#set-naming-standards-for-your-policies).
+1. Benennen Sie Ihre Richtlinie. Es wird empfohlen, dass Unternehmen einen aussagekräftigen Standard für die Namen ihrer Richtlinien erstellen. Weitere Informationen finden Sie unter [Festlegen von Benennungsstandards für Ihre Richtlinien](./plan-conditional-access.md#set-naming-standards-for-your-policies).
 1. Klicken Sie unter **Zuweisungen** auf **Benutzer und Gruppen**.
    1. Wählen Sie unter **Einschließen** die Option **Alle Benutzer** aus.
    1. Wählen Sie unter **Ausschließen** die Option **Benutzer und Gruppen** und dann die Konten für den Notfallzugriff Ihres Unternehmens aus. 
@@ -62,8 +62,8 @@ Es gibt zwei Möglichkeiten, diese Richtlinie zuzuweisen. Organisationen sollten
 
 [Risikobasierter bedingter Zugriff beim Anmelden](howto-conditional-access-policy-risk.md)
 
-[Bestimmen der Auswirkung durch Verwendung des reinen Berichtsmodus des bedingten Zugriffs](howto-conditional-access-report-only.md)
+[Bestimmen der Auswirkung durch Verwendung des reinen Berichtsmodus des bedingten Zugriffs](howto-conditional-access-insights-reporting.md)
 
 [Simulieren des Anmeldeverhaltens mit dem Was-wäre-wenn-Tool für den bedingten Zugriff](troubleshoot-conditional-access-what-if.md)
 
-[Was ist Azure Active Directory Identity Protection?](../identity-protection/overview.md)
+[Was ist Azure Active Directory Identity Protection?](../identity-protection/overview-identity-protection.md)

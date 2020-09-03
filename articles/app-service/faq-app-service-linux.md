@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: e01954e0f2f311a7229a69cb18f881e0491b80d3
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: c35647a46cd252ce045d10e8dfefcf78236ba74b
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88082818"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961719"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux
 
@@ -122,7 +122,7 @@ Geben Sie die vollständige Registrierungs-URL samt `http://` oder `https://` ei
 
 **Welches Format hat der Imagename in der Option zur privaten Registrierung?**
 
-Fügen Sie den vollständigen Namen hinzu, einschließlich der URL der privaten Registrierung (Beispiel: myacr.azurecr.io/dotnet:latest). Namen von Images, die einen benutzerdefinierten Port verwenden, [können nicht über das Portal eingegeben werden](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). Verwenden Sie das [Befehlszeilentool](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set)`az`, um `docker-custom-image-name` festzulegen.
+Fügen Sie den vollständigen Namen hinzu, einschließlich der URL der privaten Registrierung (Beispiel: myacr.azurecr.io/dotnet:latest). Namen von Images, die einen benutzerdefinierten Port verwenden, [können nicht über das Portal eingegeben werden](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). Verwenden Sie das [Befehlszeilentool](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set)`az`, um `docker-custom-image-name` festzulegen.
 
 **Kann ich mehr als einen Port in meinem benutzerdefinierten Containerimage verfügbar machen?**
 
@@ -130,7 +130,7 @@ Es kann nur ein Port verfügbar gemacht werden.
 
 **Kann ich meinen eigenen Speicher verwenden?**
 
-Ja, [Bring Your Own Storage](https://docs.microsoft.com/azure/app-service/configure-connect-to-azure-storage) ist als Vorschauversion verfügbar.
+Ja, [Bring Your Own Storage](./configure-connect-to-azure-storage.md) ist als Vorschauversion verfügbar.
 
 **Warum kann ich über die SCM-Website das Dateisystem meines benutzerdefinierten Containers nicht durchsuchen und keine Prozesse ausführen?**
 

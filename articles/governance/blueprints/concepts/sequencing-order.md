@@ -1,14 +1,14 @@
 ---
 title: Verstehen der Bereitstellungsreihenfolge
 description: Erfahren Sie mehr über die Standardreihenfolge, in der Blaupausenartefakte während einer Blaupausenzuweisung bereitgestellt werden, und wie Sie die Bereitstellungsreihenfolge anpassen können.
-ms.date: 05/06/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: d4a3b07e158aa7e4514ea9543bf44ad57e379d24
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 8305e5d44caef0f35e5b4beb4b70be9736272fa7
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970619"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051473"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Verstehen der Bereitstellungsreihenfolge in Azure Blueprint
 
@@ -141,8 +141,8 @@ Ein Beispiel wäre etwa eine Ressourcengruppe, die von einer Richtlinie auf Abon
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über den [Lebenszyklus von Blaupausen](lifecycle.md).
-- Machen Sie sich mit der Verwendung [statischer und dynamischer Parameter](parameters.md) vertraut.
-- Erfahren Sie, wie Sie [Ressourcen in Blaupausen sperren](resource-locking.md) können.
+- Erfahren Sie mehr über den [Lebenszyklus von Blaupausen](./lifecycle.md).
+- Machen Sie sich mit der Verwendung [statischer und dynamischer Parameter](./parameters.md) vertraut.
+- Erfahren Sie, wie Sie [Ressourcen in Blaupausen sperren](./resource-locking.md) können.
 - Lernen Sie, wie Sie [vorhandene Zuweisungen aktualisieren](../how-to/update-existing-assignments.md).
 - Beheben Sie Probleme bei der Blaupausenzuweisung mithilfe des [allgemeinen Leitfadens zur Problembehandlung](../troubleshoot/general.md).

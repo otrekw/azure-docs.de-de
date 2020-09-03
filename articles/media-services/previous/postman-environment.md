@@ -13,14 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 8254d121c62a20de0a1593920b7793195f8eb50e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2ccc765a3fb0063d92382edcec260808183f27a2
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78926714"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259250"
 ---
-# <a name="import-the-postman-environment"></a>Importieren der Postman-Umgebung  
+# <a name="import-the-postman-environment"></a>Importieren der Postman-Umgebung
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)] 
 
 Dieser Artikel enthält eine Definition der **Postman**-Umgebungsvariablen, die in der [Postman-Sammlung](postman-collection.md) verwendet werden, die gruppierte HTTP-Anforderungen enthält, die Media Services-REST-APIs aufrufen. Die Umgebungs- und Sammlungsdateien werden vom Tutorial [Konfigurieren von Postman für Media Services-REST-API-Aufrufe](media-rest-apis-with-postman.md) verwendet.
 

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 0a282a412823207e5f662441158000e8c6121796
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 1146b5979d81b91c6c6894aa54b2e0ca50c896c1
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80637923"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961617"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Anleitung zum Bereitstellen von Web-Apps mit Azure Resource Manager-Vorlagen
 
@@ -90,7 +90,7 @@ Wenn Ihre Resource Manager-Vorlage MS Deploy verwendet, sind die Bereitstellungs
 
 1. Wechseln Sie zur [Kudu-Konsole](https://github.com/projectkudu/kudu/wiki/Kudu-console) der Website.
 2. Navigieren Sie zum Ordner „D:\home\LogFiles\SiteExtensions\MSDeploy“.
-3. Suchen Sie nach den Dateien „appManagerStatus.xml“ und „appManagerLog.xml“. Die erste Datei protokolliert den Status. Die zweite Datei protokolliert Informationen zum Fehler. Wenn Ihnen der Fehler nicht klar ist, können Sie die Informationen bei Nachfragen im [Forum](https://docs.microsoft.com/answers/topics/azure-webapps.html) einfügen.
+3. Suchen Sie nach den Dateien „appManagerStatus.xml“ und „appManagerLog.xml“. Die erste Datei protokolliert den Status. Die zweite Datei protokolliert Informationen zum Fehler. Wenn Ihnen der Fehler nicht klar ist, können Sie die Informationen bei Nachfragen im [Forum](/answers/topics/azure-webapps.html) einfügen.
 
 ## <a name="choose-a-unique-web-app-name"></a>Auswählen eines eindeutigen Web-App-Namens
 
