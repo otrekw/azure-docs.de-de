@@ -12,12 +12,12 @@ ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 1384dc760edb0bca66344d8892c18fdebb54855d
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: e53cf38c9544884caddfdf03c2615217c49ec3d0
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853587"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068725"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Gewusst wie: Bereitstellen optionaler Ansprüche für Ihre App
 
@@ -58,7 +58,7 @@ Die Gruppe optionaler Ansprüche, die standardmäßig zur Verwendung in Anwendun
 | `verified_secondary_email` | Wird aus der „SecondaryAuthoritativeEmail“ des Benutzers abgerufen   | JWT        |           |        |
 | `vnet`                     | Informationen zum VNET-Spezifizierer | JWT        |           |      |
 | `fwd`                      | IP-Adresse.| JWT    |   | Fügt die ursprüngliche IPv4-Adresse des anfordernden Clients hinzu (wenn innerhalb eines VNET). |
-| `ctry`                     | Land/Region des Benutzers | JWT |  | Azure AD gibt den optionalen Anspruch `ctry` zurück, wenn er vorhanden ist und der Wert des Felds ein standardmäßiger aus zwei Buchstaben bestehender Länder-/Regionscode (wie z. B. FR, JP oder SZ) ist. |
+| `ctry`                     | Land/Region des Benutzers | JWT, SAML |  | Azure AD gibt den optionalen Anspruch `ctry` zurück, wenn er vorhanden ist und der Wert des Felds ein standardmäßiger aus zwei Buchstaben bestehender Länder-/Regionscode (wie z. B. FR, JP oder SZ) ist. |
 | `tenant_ctry`              | Land des Ressourcenmandanten | JWT | | Identisch mit `ctry`, wird jedoch auf Mandantenebene durch einen Administrator festgelegt.  Muss außerdem ein standardmäßiger Wert mit zwei Buchstaben sein. |
 | `xms_pdl`             | Bevorzugter Datenspeicherort   | JWT | | Für Multi-Geo-Mandanten ist der bevorzugte Datenspeicherort ein aus drei Buchstaben bestehender Code, der die geografische Region anzeigt, in der sich der Benutzer befindet. Weitere Informationen finden Sie unter [Azure Active Directory Connect-Synchronisierung: Konfigurieren des bevorzugten Datenspeicherorts für Office 365-Ressourcen](../hybrid/how-to-connect-sync-feature-preferreddatalocation.md).<br/>Zum Beispiel: `APC` für Asien-Pazifik. |
 | `xms_pl`                   | Bevorzugte Benutzersprache  | JWT ||Die bevorzugte Sprache des Benutzers, falls festgelegt. Wird in Szenarios mit Gastzugriff aus dem Basismandanten abgerufen. Sie wird im Format Sprachkürzel-Länderkürzel angegeben (z. B. en-us). |

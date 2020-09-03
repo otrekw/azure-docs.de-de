@@ -13,14 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 2796a2be5c779124db4dd7f1137ebbff4094705d
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b5b0b383cba45646a1e5a8f980b3a097767f9979
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056700"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89262599"
 ---
 # <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>Verwalten von Media Services-Medienobjekten über mehrere Speicherkonten  
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 Sie können mehrere Speicherkonten an ein einzelnes Media Services-Konto anfügen. Die Möglichkeit, mehrere Speicherkonten an ein Media Services-Konto anzufügen, bietet die folgenden Vorteile:
 

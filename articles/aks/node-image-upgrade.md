@@ -6,12 +6,12 @@ ms.author: lahugh
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: 154558a2aa679dddad395225088ea891ecea8ebc
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 744e62f8a2207cff400a96069fc6ea82866f6e2d
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654275"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055684"
 ---
 # <a name="azure-kubernetes-service-aks-node-image-upgrade"></a>Upgrade für AKS-Knotenimages (Azure Kubernetes Service)
 
@@ -20,6 +20,10 @@ AKS unterstützt Upgrades für Images auf einem Knoten, sodass Sie mit den aktue
 Wenn Sie an Informationen zu den neuesten von AKS bereitgestellten Images interessiert sind, finden Sie weitere Einzelheiten in den [AKS-Versionshinweisen](https://github.com/Azure/AKS/releases).
 
 Informationen zum Upgrade der Kubernetes-Version für Ihren Cluster finden Sie unter [Aktualisieren eines AKS-Clusters][upgrade-cluster].
+
+## <a name="limitations"></a>Einschränkungen
+
+* Der AKS-Cluster muss VM-Skalierungsgruppen für die Knoten verwenden.
 
 ## <a name="install-the-aks-cli-extension"></a>Installieren der CLI-Erweiterung für AKS
 

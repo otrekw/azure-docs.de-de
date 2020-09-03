@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: 2f25cab211d24facea7863c15b6d7671a9657ae9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b6164ef955ac92a7ef8776e560ea4d3a92abaf8d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290679"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935975"
 ---
 # <a name="tutorial-diagnose-repair-and-commit-changes-to-your-skillset"></a>Tutorial: Diagnostizieren, Reparieren und Committen von Änderungen an Ihrem Skillset
 
@@ -39,7 +39,7 @@ In diesem Tutorial werden Azure Cognitive Search und Azure Storage-Dienste verwe
 
 * [Laden Sie Beispieldaten herunter](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/clinical-trials-pdf-19), die aus 19 Dateien bestehen.
 
-* [Erstellen Sie ein Azure Storage-Konto](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal), oder [suchen Sie nach einem vorhandenen Konto](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/). 
+* [Erstellen Sie ein Azure Storage-Konto](../storage/common/storage-account-create.md?tabs=azure-portal), oder [suchen Sie nach einem vorhandenen Konto](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/). 
 
    Es muss sich in der gleichen Region wie Azure Cognitive Search befinden, um Bandbreitengebühren zu vermeiden.
    
@@ -258,5 +258,5 @@ Denken Sie bei Verwendung eines kostenlosen Diensts an die Beschränkung auf max
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Weitere Informationen zu Skillsets](https://docs.microsoft.com/azure/search/cognitive-search-working-with-skillsets)
-> [Weitere Informationen zu inkrementellen Anreicherungen und Caching](https://docs.microsoft.com/azure/search/cognitive-search-incremental-indexing-conceptual)
+> [Weitere Informationen zu Skillsets](./cognitive-search-working-with-skillsets.md)
+> [Weitere Informationen zu inkrementellen Anreicherungen und Caching](./cognitive-search-incremental-indexing-conceptual.md)

@@ -2,14 +2,13 @@
 title: Grenzwerte und Kontingente von Azure-Abonnements
 description: Stellt eine Liste allgemeiner Azure-Abonnements und Diensteinschränkungen, Kontingenten und Einschränkungen bereit. Dieser Artikel enthält Informationen zum Erhöhen von Grenzwerten und Höchstwerten.
 ms.topic: conceptual
-author: davidsmatlak
-ms.date: 06/04/2020
-ms.openlocfilehash: 86c9958818b5439502ab37471ed7a51fb3f21bf9
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.date: 09/02/2020
+ms.openlocfilehash: 87018f58a59c34c5027ca63102e4c5ca841e652b
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854084"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376202"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen
 

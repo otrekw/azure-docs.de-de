@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/30/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 49f63207e40ea94620b4acd1465b61c5e46d80a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8e1a739c605bc2235567a8d31892771db15572d5
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85832473"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959061"
 ---
 # <a name="implementing-a-layered-security-architecture-with-app-service-environments"></a>Implementieren einer mehrstufigen Sicherheitsarchitektur mit App Service-Umgebungen
 Da App Service-Umgebungen eine in einem virtuellen Netzwerk bereitgestellte isolierte Laufzeitumgebung bieten, können Entwickler eine mehrstufige Sicherheitsarchitektur erstellen, in der sie abgestuften Netzwerkzugriff für jede physische Anwendungsschicht gewähren können.
@@ -104,7 +104,7 @@ Von App Service-Umgebungen verwendete [Netzwerkports][InboundTraffic].
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 
 <!-- LINKS -->
-[NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
+[NetworkSecurityGroups]: ../../virtual-network/virtual-network-vnet-plan-design-arm.md
 [NetworkArchitecture]:  app-service-app-service-environment-network-architecture-overview.md
 [InboundTraffic]:  app-service-app-service-environment-control-inbound-traffic.md
 

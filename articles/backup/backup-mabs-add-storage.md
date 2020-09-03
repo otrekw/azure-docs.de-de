@@ -3,12 +3,12 @@ title: Verwenden von Modern Backup Storage mit Azure Backup Server
 description: In diesem Artikel erfahren Sie mehr über die neuen Features in Azure Backup Server. Dieser Artikel beschreibt, wie Sie Ihre Backup-Server-Installation aktualisieren.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: b8620f6999c1fcb1a1e70c73fb71fcaac008d930
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 997b2052751473d095b6534ef0bcbe3ed6a099ad
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825867"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378235"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Hinzufügen von Speicher zu Azure Backup Server
 

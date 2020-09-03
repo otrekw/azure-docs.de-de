@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ff5a83a8ab608e685f43056debe45877965e0c53
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 459e2184f5236278377bd9e655e2b1ed154cc6a3
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85203995"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377215"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen OpenID Connect-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -91,6 +91,19 @@ Das technische Profil gibt auch Ansprüche zurück, die vom Identitätsanbieter 
 | MarkAsFailureOnStatusCode5xx | Nein | Gibt an, ob eine Anforderung an einen externen Dienst als fehlerhaft gekennzeichnet werden soll, wenn der HTTP-Statuscode im Bereich 5xx liegt. Der Standardwert lautet `false`. |
 | DiscoverMetadataByTokenIssuer | Nein | Gibt an, ob die OIDC-Metadaten mithilfe des Ausstellers im JWT-Token ermittelt werden sollen. |
 | IncludeClaimResolvingInClaimsHandling  | Nein | Gibt bei Eingabe- und Ausgabeansprüchen an, ob die [Anspruchsauflösung](claim-resolver-overview.md) im technischen Profil enthalten ist. Mögliche Werte sind `true` oder `false` (Standardwert). Wenn Sie im technischen Profil eine Anspruchsauflösung verwenden möchten, legen Sie für diese Einstellung den Wert `true` fest. |
+
+```xml
+<Metadata>
+  <Item Key="ProviderName">https://login.live.com</Item>
+  <Item Key="METADATA">https://login.live.com/.well-known/openid-configuration</Item>
+  <Item Key="response_types">code</Item>
+  <Item Key="response_mode">form_post</Item>
+  <Item Key="scope">openid profile email</Item>
+  <Item Key="HttpBinding">POST</Item>
+  <Item Key="UsePolicyInRedirectUri">0</Item>
+  <Item Key="client_id">Your Microsoft application client ID</Item>
+</Metadata>
+```
 
 ### <a name="ui-elements"></a>Benutzeroberflächenelemente
  

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f1eae9cc067f8aa10ad49d70dfe0393f4bed6c5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a531692264a768e4f6cb8e6475807789df049d03
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518418"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049145"
 ---
 # <a name="conditional-access-block-access-by-location"></a>Bedingter Zugriff: Blockieren des Zugriffs nach Standort
 
@@ -57,6 +57,6 @@ Weitere Informationen zur Standortbedingung in Conditional Access finden Sie im 
 
 [Allgemeine Richtlinien für bedingten Zugriff](concept-conditional-access-policy-common.md)
 
-[Bestimmen der Auswirkung durch Verwendung des reinen Berichtsmodus des bedingten Zugriffs](howto-conditional-access-report-only.md)
+[Bestimmen der Auswirkung durch Verwendung des reinen Berichtsmodus des bedingten Zugriffs](howto-conditional-access-insights-reporting.md)
 
 [Simulieren des Anmeldeverhaltens mit dem Was-wäre-wenn-Tool für den bedingten Zugriff](troubleshoot-conditional-access-what-if.md)

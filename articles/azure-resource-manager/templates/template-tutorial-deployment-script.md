@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 04/23/2020
+ms.date: 08/25/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 81574f25e2132a7079fa0242284fb67b0132a8af
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e1094befcc6b3a6e9d56ba3b603dc45fcb91ba13
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119326"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825493"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>Tutorial: Verwenden von Bereitstellungsskripts zum Erstellen eines selbstsignierten Zertifikats (Vorschau)
 
@@ -42,7 +42,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 
 * **[Visual Studio Code](https://code.visualstudio.com/) mit der Erweiterung „Azure Resource Manager-Tools“.** Weitere Informationen finden Sie unter [Schnellstart: Erstellen von Azure Resource Manager-Vorlagen mit Visual Studio Code](./quickstart-create-templates-use-visual-studio-code.md)
 
-* **Vom Benutzer zugewiesene verwaltete Identität mit der Rolle „Mitwirkender“ auf Abonnementebene.** Diese Identität wird zum Ausführen von Bereitstellungsskripts verwendet. Informationen zur Erstellung finden Sie unter [Benutzerseitig zugewiesene verwaltete Identität](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#user-assigned-managed-identity). Sie benötigen die Identitäts-ID beim Bereitstellen der Vorlage. Das Format der Identität lautet:
+* **Vom Benutzer zugewiesene verwaltete Identität mit der Rolle „Mitwirkender“ auf Abonnementebene.** Diese Identität wird zum Ausführen von Bereitstellungsskripts verwendet. Informationen zur Erstellung finden Sie unter [Benutzerseitig zugewiesene verwaltete Identität](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md). Sie benötigen die Identitäts-ID beim Bereitstellen der Vorlage. Das Format der Identität lautet:
 
   ```json
   /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<IdentityID>

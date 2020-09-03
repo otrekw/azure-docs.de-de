@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 50e2666aa533a5111055a095c612b58bfe6f9db4
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: eba08211355b0f57dd9dd11ec4c18d5912208ec8
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546699"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962212"
 ---
 # <a name="security-recommendations-for-app-service"></a>Sicherheitsempfehlungen für App Service
 
@@ -38,17 +38,17 @@ Dieser Artikel enthält Sicherheitsempfehlungen für Azure App Service. Die Umse
 | Empfehlung | Kommentare |
 |-|-|
 | Richten Sie eine Umleitung von HTTP zu HTTPS ein. | Clients können sich standardmäßig über HTTP oder HTTPS mit Web-Apps verbinden. Empfohlen wird eine Umleitung von HTTP zu HTTPS, da für die letztgenannte Option das SSL/TLS-Protokoll verwendet wird. Dieses ermöglicht eine sichere Verbindung, die gleichzeitig verschlüsselt und authentifiziert ist. |
-| Verschlüsseln Sie die Kommunikation mit Azure-Ressourcen. | Wenn sich Ihre App mit Azure-Ressourcen wie [SQL-Datenbank](https://azure.microsoft.com/services/sql-database/) oder [Azure Storage](/azure/storage/) verbindet, wird eine Verbindung innerhalb des gemeinsam verwendeten Azure-Netzwerks hergestellt. Sie sollten daher Ihre Kommunikation immer verschlüsseln. |
+| Verschlüsseln Sie die Kommunikation mit Azure-Ressourcen. | Wenn sich Ihre App mit Azure-Ressourcen wie [SQL-Datenbank](https://azure.microsoft.com/services/sql-database/) oder [Azure Storage](../storage/index.yml) verbindet, wird eine Verbindung innerhalb des gemeinsam verwendeten Azure-Netzwerks hergestellt. Sie sollten daher Ihre Kommunikation immer verschlüsseln. |
 | Erzwingen Sie den Einsatz der neuesten TLS-Version. | Seit 2018 verwenden neue Azure App Service-Apps TLS 1.2. Neuere TLS-Versionen enthalten Sicherheitsoptimierungen, die in älteren Protokollversionen fehlen. |
 | Verwenden Sie FTPS. | Für die Dateibereitstellung unterstützt App Service sowohl FTP als auch FTPS. Verwenden Sie nach Möglichkeit FTPS anstelle von FTP. Wenn Sie eines dieser Protokolle (oder beide) nicht verwenden, sollten Sie die nicht verwendeten Protokolle [deaktivieren](deploy-ftp.md#enforce-ftps). |
-| Schützen von Anwendungsdaten | Speichern Sie Anwendungsgeheimnisse wie Datenbank-Anmeldeinformationen, API-Token oder private Schlüssel nicht in Ihrem Code oder in Konfigurationsdateien. Für den Zugriff auf diese Geheimnisse hat es sich bewährt, [Umgebungsvariablen](https://wikipedia.org/wiki/Environment_variable) mit dem Standardmuster in der Sprache Ihrer Wahl zu verwenden. In Azure App Service können Sie Umgebungsvariablen über [App-Einstellungen](web-sites-configure.md) und [Verbindungszeichenfolgen](web-sites-configure.md) definieren. App-Einstellungen und Verbindungszeichenfolgen werden verschlüsselt in Azure gespeichert. Die App-Einstellungen werden erst entschlüsselt, wenn sie beim Start der App in den Prozessspeicher der App eingefügt werden. Die Verschlüsselungsschlüssel werden regelmäßig rotiert. Alternativ können Sie Ihre Azure App Service-App auch in [Azure Key Vault](/azure/key-vault/) integrieren, wenn Sie eine Geheimnisverwaltung mit mehr Konfigurationsmöglichkeiten benötigen. Durch den [Zugriff auf Key Vault mit einer verwalteten Identität](../key-vault/tutorial-web-application-keyvault.md) kann Ihre App Service-App sicher auf die benötigten Geheimnisse zugreifen. |
+| Schützen von Anwendungsdaten | Speichern Sie Anwendungsgeheimnisse wie Datenbank-Anmeldeinformationen, API-Token oder private Schlüssel nicht in Ihrem Code oder in Konfigurationsdateien. Für den Zugriff auf diese Geheimnisse hat es sich bewährt, [Umgebungsvariablen](https://wikipedia.org/wiki/Environment_variable) mit dem Standardmuster in der Sprache Ihrer Wahl zu verwenden. In Azure App Service können Sie Umgebungsvariablen über [App-Einstellungen](./configure-common.md) und [Verbindungszeichenfolgen](./configure-common.md) definieren. App-Einstellungen und Verbindungszeichenfolgen werden verschlüsselt in Azure gespeichert. Die App-Einstellungen werden erst entschlüsselt, wenn sie beim Start der App in den Prozessspeicher der App eingefügt werden. Die Verschlüsselungsschlüssel werden regelmäßig rotiert. Alternativ können Sie Ihre Azure App Service-App auch in [Azure Key Vault](../key-vault/index.yml) integrieren, wenn Sie eine Geheimnisverwaltung mit mehr Konfigurationsmöglichkeiten benötigen. Durch den [Zugriff auf Key Vault mit einer verwalteten Identität](../key-vault/general/tutorial-net-create-vault-azure-web-app.md) kann Ihre App Service-App sicher auf die benötigten Geheimnisse zugreifen. |
 
 ## <a name="networking"></a>Netzwerk
 
 | Empfehlung | Kommentare |
 |-|-|
 | Nutzen Sie statische IP-Adressen zur Zugriffsbeschränkung. | In Azure App Service unter Windows können Sie eine Liste mit IP-Adressen definieren, über die der Zugriff auf Ihre App gestattet wird. Die Liste mit den zulässigen IP-Adressen kann einzelne IP-Adressen oder einen durch eine Subnetzmaske definierten IP-Adressbereich enthalten. Weitere Informationen finden Sie unter [Statische Azure App Service-IP-Einschränkungen](app-service-ip-restrictions.md).  |
-| Verwenden Sie den Tarif „App Service (isoliert)“. | Mit Ausnahme des Tarifs „App Service (isoliert)“ wird Ihre App bei allen Tarifen in der gemeinsam genutzten Netzwerkinfrastruktur in App Service ausgeführt. Im Tarif „App Service (isoliert)“ werden Ihre Apps in einer dedizierten [App Service-Umgebung](environment/intro.md) ausgeführt, wodurch eine vollständige Netzwerkisolation erreicht wird. Eine App Service-Umgebung wird in Ihrer eigenen Instanz von [Azure Virtual Network](/azure/virtual-network/) betrieben.|
+| Verwenden Sie den Tarif „App Service (isoliert)“. | Mit Ausnahme des Tarifs „App Service (isoliert)“ wird Ihre App bei allen Tarifen in der gemeinsam genutzten Netzwerkinfrastruktur in App Service ausgeführt. Im Tarif „App Service (isoliert)“ werden Ihre Apps in einer dedizierten [App Service-Umgebung](environment/intro.md) ausgeführt, wodurch eine vollständige Netzwerkisolation erreicht wird. Eine App Service-Umgebung wird in Ihrer eigenen Instanz von [Azure Virtual Network](../virtual-network/index.yml) betrieben.|
 | Verwenden Sie sichere Verbindungen beim Zugriff auf lokale Ressourcen. | Sie können [Hybrid Connections](app-service-hybrid-connections.md), [die Virtual Network-Integration](web-sites-integrate-with-vnet.md) oder die [App Service-Umgebung](environment/intro.md) nutzen, um eine Verbindung mit lokalen Ressourcen herzustellen. |
 | Schränken Sie den Zugriff auf eingehenden Netzwerkdatenverkehr ein. | Mit Netzwerksicherheitsgruppen können Sie den Netzwerkzugriff einschränken und die Anzahl der verfügbaren Endpunkte festlegen. Weitere Informationen finden Sie unter [Steuern von eingehendem Datenverkehr in eine App Service-Umgebung](environment/app-service-app-service-environment-control-inbound-traffic.md). |
 
@@ -60,4 +60,4 @@ Dieser Artikel enthält Sicherheitsempfehlungen für Azure App Service. Die Umse
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erkundigen Sie sich bei Ihrem Anwendungsanbieter, ob weitere Sicherheitsanforderungen bestehen. Weitere Informationen zum Entwickeln sicherer Anwendungen finden Sie unter [Dokumentation zur sicheren Entwicklung](../security/fundamentals/abstract-develop-secure-apps.md).
+Erkundigen Sie sich bei Ihrem Anwendungsanbieter, ob weitere Sicherheitsanforderungen bestehen. Weitere Informationen zum Entwickeln sicherer Anwendungen finden Sie unter [Dokumentation zur sicheren Entwicklung](https://azure.microsoft.com/resources/develop-secure-applications-on-azure/).

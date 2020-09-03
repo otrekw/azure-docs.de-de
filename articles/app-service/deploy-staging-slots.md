@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ab8bee756cc714074a6f97156bf528ddeabff8a0
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: b12b85a2248d7709066ba3218327e0a5d52a0192
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236742"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962161"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Einrichten von Stagingumgebungen in Azure App Service
 <a name="Overview"></a>
@@ -62,7 +62,7 @@ Die App muss im Tarif **Standard**, **Premium** oder **I** ausgeführt werden, u
 
 6. Wählen Sie auf der Ressourcenseite des Slots die App-URL aus. Der Bereitstellungsslot besitzt einen eigenen Hostnamen und ist außerdem eine Live-App. Informationen zum Beschränken des öffentlichen Zugriffs auf den Bereitstellungsslot finden Sie unter [Statische Azure App Service-IP-Einschränkungen](app-service-ip-restrictions.md).
 
-Der neue Bereitstellungsslot hat keinen Inhalt. Das gilt auch, wenn Sie die Einstellungen eines anderen Slots klonen. Sie können beispielsweise [Git verwenden, um etwas in diesem Slot zu veröffentlichen](app-service-deploy-local-git.md). Die Bereitstellung im Slot kann aus einem anderen Repository-Branch oder aus einem anderen Repository erfolgen.
+Der neue Bereitstellungsslot hat keinen Inhalt. Das gilt auch, wenn Sie die Einstellungen eines anderen Slots klonen. Sie können beispielsweise [Git verwenden, um etwas in diesem Slot zu veröffentlichen](./deploy-local-git.md). Die Bereitstellung im Slot kann aus einem anderen Repository-Branch oder aus einem anderen Repository erfolgen.
 
 <a name="AboutConfiguration"></a>
 
@@ -83,7 +83,7 @@ Wenn Sie zwei Slots austauschen (in der Regel, um aus einem Stagingslot einen Pr
 
 1. Wenn [lokaler Cache](overview-local-cache.md) aktiviert ist, löst App Service die Initialisierung des lokalen Caches aus. Hierzu wird eine HTTP-Anforderung an den Anwendungsstamm („/“) in jeder Instanz des Quellslots gerichtet. Daraufhin wird gewartet, bis die einzelnen Instanzen eine HTTP-Antwort zurückgeben. Die Initialisierung des lokalen Caches hat einen weiteren Neustart der einzelnen Instanzen zur Folge.
 
-1. Wenn [Automatisch tauschen](#Auto-Swap) mit [benutzerdefinierter Aufwärmphase](#Warm-up) aktiviert ist, löst App Service die [Anwendungsinitiierung](https://docs.microsoft.com/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization) aus. Hierzu wird eine HTTP-Anforderung an den Anwendungsstamm („/“) in jeder Instanz des Quellslots gerichtet.
+1. Wenn [Automatisch tauschen](#Auto-Swap) mit [benutzerdefinierter Aufwärmphase](#Warm-up) aktiviert ist, löst App Service die [Anwendungsinitiierung](/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization) aus. Hierzu wird eine HTTP-Anforderung an den Anwendungsstamm („/“) in jeder Instanz des Quellslots gerichtet.
 
     Ohne Angabe von `applicationInitialization` löst App Service eine HTTP-Anforderung an den Anwendungsstamm des Quellslots in jeder Instanz aus. 
     
@@ -222,7 +222,7 @@ Informationen zur Problembehandlung finden Sie bei Bedarf unter [Behandeln von P
 
 ## <a name="monitor-a-swap"></a>Überwachen eines Austauschs
 
-Bei länger dauernden [Austauschvorgängen](#AboutConfiguration) können Sie sich anhand des [Aktivitätsprotokolls](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) über den Austauschvorgang informieren.
+Bei länger dauernden [Austauschvorgängen](#AboutConfiguration) können Sie sich anhand des [Aktivitätsprotokolls](../azure-monitor/platform/platform-logs-overview.md) über den Austauschvorgang informieren.
 
 Wählen Sie im Portal auf der Ressourcenseite Ihrer App im linken Bereich die Option **Aktivitätsprotokoll** aus.
 
@@ -335,7 +335,7 @@ Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microso
 
 ## <a name="automate-with-resource-manager-templates"></a>Automatisieren mit Resource Manager-Vorlagen
 
-[Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview) sind deklarative JSON-Dateien, die zur Automatisierung der Bereitstellung und Konfiguration von Azure-Ressourcen verwendet werden. Zum Austauschen von Slots mithilfe von Resource Manager-Vorlagen legen Sie zwei Eigenschaften für die Ressourcen *Microsoft.Web/sites/slots* und *Microsoft.Web/sites* fest:
+[Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/overview.md) sind deklarative JSON-Dateien, die zur Automatisierung der Bereitstellung und Konfiguration von Azure-Ressourcen verwendet werden. Zum Austauschen von Slots mithilfe von Resource Manager-Vorlagen legen Sie zwei Eigenschaften für die Ressourcen *Microsoft.Web/sites/slots* und *Microsoft.Web/sites* fest:
 
 - `buildVersion`: Dies ist eine Zeichenfolgeneigenschaft, die die aktuelle Version der im Slot bereitgestellten App darstellt. Beispiele: „v1“, „1.0.0.1“ oder „2019-09-20T11:53:25.2887393-07:00“.
 - `targetBuildVersion`: Dies ist eine Zeichenfolgeneigenschaft, die angibt, welche `buildVersion` der Slot enthalten soll. Wenn targetBuildVersion nicht mit der aktuellen `buildVersion` identisch ist, wird der Austauschvorgang dadurch ausgelöst, dass der Slot mit der angegebenen `buildVersion` ermittelt wird.

@@ -3,7 +3,7 @@ title: Beenden der Verwendung der VM-Erweiterung für verwaltete Identitäten �
 description: Eine Schritt-für-Schritt-Anleitung für den Umstieg von der VM-Erweiterung auf Azure Instance Metadata Service (IMDS) für die Authentifizierung.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,13 +13,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/25/2018
-ms.author: markvi
-ms.openlocfilehash: afcbf5187a3b5ef3f44aebda22d376e9b796bf59
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.author: barclayn
+ms.openlocfilehash: 5b298767f9814f76dd606bab29bd0b245dad6937
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848393"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260185"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>Umsteigen von der VM-Erweiterung für verwaltete Identitäten auf Azure Instance Metadata Service
 
@@ -35,7 +35,7 @@ Die VM-Erweiterung für verwaltete Identitäten wird aufgrund diverser Einschrä
 
 ### <a name="provision-the-extension"></a>Bereitstellen der Erweiterung 
 
-Wenn Sie einen virtuellen Computer oder eine VM-Skalierungsgruppe mit einer verwalteten Identität konfigurieren, können Sie die verwalteten Identitäten optional für die VM-Erweiterung für Azure-Ressourcen bereitstellen, indem Sie das Cmdlet [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) mit dem Parameter `-Type` verwenden. Sie können abhängig von der Art des virtuellen Computers entweder `ManagedIdentityExtensionForWindows` oder `ManagedIdentityExtensionForLinux` übergeben und mithilfe des Parameters `-Name` einen Namen festlegen. Der `-Settings`-Parameter gibt den Port an, der vom OAuth-Token-Endpunkt für den Tokenabruf verwendet wird:
+Wenn Sie einen virtuellen Computer oder eine VM-Skalierungsgruppe mit einer verwalteten Identität konfigurieren, können Sie die verwalteten Identitäten optional für die VM-Erweiterung für Azure-Ressourcen bereitstellen, indem Sie das Cmdlet [Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) mit dem Parameter `-Type` verwenden. Sie können abhängig von der Art des virtuellen Computers entweder `ManagedIdentityExtensionForWindows` oder `ManagedIdentityExtensionForLinux` übergeben und mithilfe des Parameters `-Name` einen Namen festlegen. Der `-Settings`-Parameter gibt den Port an, der vom OAuth-Token-Endpunkt für den Tokenabruf verwendet wird:
 
 ```powershell
    $settings = @{ "port" = 50342 }
@@ -96,7 +96,7 @@ Wenn Sie die VM-Skalierungsgruppenerweiterung mithilfe der Azure Resource Manage
 Es kann vorkommen, dass die Bereitstellung der VM-Erweiterung aufgrund von Fehlern beim DNS-Lookup nicht erfolgreich ist. Starten Sie in diesem Fall den virtuellen Computer neu, und versuchen Sie es noch mal. 
 
 ### <a name="remove-the-extension"></a>Entfernen der Erweiterung 
-Wenn Sie die Erweiterung entfernen möchten, verwenden Sie die Azure-Befehlszeilenschnittstelle mit [az vm extension delete](https://docs.microsoft.com/cli/azure/vm/) (bzw. [az vmss extension delete](https://docs.microsoft.com/cli/azure/vmss) für VM-Skalierungsgruppen) und dem Schalter `-n ManagedIdentityExtensionForWindows` oder `-n ManagedIdentityExtensionForLinux` (abhängig von der Art des virtuellen Computers), oder verwenden Sie `Remove-AzVMExtension` für PowerShell:
+Wenn Sie die Erweiterung entfernen möchten, verwenden Sie die Azure-Befehlszeilenschnittstelle mit [az vm extension delete](/cli/azure/vm/) (bzw. [az vmss extension delete](/cli/azure/vmss) für VM-Skalierungsgruppen) und dem Schalter `-n ManagedIdentityExtensionForWindows` oder `-n ManagedIdentityExtensionForLinux` (abhängig von der Art des virtuellen Computers), oder verwenden Sie `Remove-AzVMExtension` für PowerShell:
 
 ```azurecli-interactive
 az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentityExtensionForWindows
@@ -196,7 +196,7 @@ Die Verwendung der VM-Erweiterung geht mit mehreren signifikanten Einschränkung
 
 ## <a name="azure-instance-metadata-service"></a>Azure-Instanzmetadatendienst
 
-[Azure Instance Metadata Service (IMDS)](/azure/virtual-machines/windows/instance-metadata-service) ist ein REST-Endpunkt, der Informationen zu ausgeführten VM-Instanzen bereitstellt, die zum Verwalten und Konfigurieren Ihrer virtuellen Computer verwendet werden können. Der Endpunkt ist unter einer bekannten, nicht routingfähigen IP-Adresse verfügbar (`169.254.169.254`), auf die nur innerhalb des virtuellen Computers zugegriffen werden kann.
+[Azure Instance Metadata Service (IMDS)](../../virtual-machines/windows/instance-metadata-service.md) ist ein REST-Endpunkt, der Informationen zu ausgeführten VM-Instanzen bereitstellt, die zum Verwalten und Konfigurieren Ihrer virtuellen Computer verwendet werden können. Der Endpunkt ist unter einer bekannten, nicht routingfähigen IP-Adresse verfügbar (`169.254.169.254`), auf die nur innerhalb des virtuellen Computers zugegriffen werden kann.
 
 Das Anfordern von Token mit Azure IMDS hat zahlreiche Vorteile. 
 
@@ -212,4 +212,4 @@ Aus diesen Gründen werden Token mithilfe von Azure IMDS angefordert, nachdem d
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Verwenden von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer zum Abrufen eines Zugriffstokens](how-to-use-vm-token.md)
-* [Azure-Instanzmetadatendienst](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
+* [Azure-Instanzmetadatendienst](../../virtual-machines/windows/instance-metadata-service.md)

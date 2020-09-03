@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 6911b16c3fdf5bb94d42a40198943c3b1baa00da
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c30808a46b5cecfaf2e761b3f7a611020cd2cdfb
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042832"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263670"
 ---
 # <a name="azure-media-services-error-codes"></a>Azure Media Services-Fehlercodes
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 Wenn Sie Microsoft Azure Media Services verwenden, erhalten Sie möglicherweise HTTP-Fehlercodes vom Dienst, abhängig von Problemen wie dem Ablaufen von Authentifizierungstoken und Aktionen, die in Media Services nicht unterstützt werden. Im Folgenden werden die **HTTP-Fehlercodes** aufgelistet, die von Media Services zurückgegeben werden könnten, sowie mögliche Ursachen für diese Fehlercodes.  
 
 ## <a name="400-bad-request"></a>400 – Ungültige Anforderung

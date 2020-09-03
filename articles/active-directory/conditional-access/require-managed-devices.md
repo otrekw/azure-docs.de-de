@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf3fd50b907e69311c475af844c7969f081a3094
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 7d3fbb06355772794fbe3fab5cdf3c8622c2baf4
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849927"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948826"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Anleitung: Vorschreiben der Verwendung verwalteter Geräte für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs
 
@@ -28,7 +28,7 @@ In diesem Artikel erfahren Sie, wie Sie Richtlinien für den bedingten Zugriff k
 
 Wenn Sie für Cloud-Apps die Verwendung verwalteter Geräte vorschreiben, wird der **bedingte Zugriff von Azure AD** mit der **Geräteverwaltung von Azure AD** verknüpft. Wenn Sie mit einem dieser Bereiche noch nicht vertraut sind, sollten Sie zunächst die folgenden Themen lesen:
 
-- **[Bedingter Zugriff in Azure Active Directory:](../active-directory-conditional-access-azure-portal.md)** Dieser Artikel enthält eine konzeptionelle Übersicht über den bedingten Zugriff und die entsprechende Terminologie.
+- **[Bedingter Zugriff in Azure Active Directory:](./overview.md)** Dieser Artikel enthält eine konzeptionelle Übersicht über den bedingten Zugriff und die entsprechende Terminologie.
 - **[Einführung in die Geräteverwaltung in Azure Active Directory:](../devices/overview.md)** Dieser Artikel enthält eine Übersicht über die verschiedenen Optionen, mit denen Sie Geräte unter die Kontrolle der Organisation bringen können. 
 - Installieren Sie die [Erweiterung für Windows 10-Konten](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji), damit Chrome ab **Windows 10 Creators Update (Version 1703)** unterstützt wird. Diese Erweiterung ist erforderlich, wenn eine Richtlinie für bedingten Zugriff gerätespezifische Details erfordert.
 

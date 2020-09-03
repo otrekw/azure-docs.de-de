@@ -3,12 +3,13 @@ title: 'Verwenden der Personalisierung in einem Chatbot: Personalisierung'
 description: Passen Sie einen C# .NET-Chatbot mit einer Personalisierungsschleife an, um einem Benutzer basierend auf Aktionen (mit Features) und Kontextfeatures die richtigen Inhalte bereitzustellen.
 ms.topic: tutorial
 ms.date: 07/17/2020
-ms.openlocfilehash: 8e936b4017ad50434bc7d6b05b4217f82a9080e0
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ee037632b068b0d8d2f3ed3b6ea7a83d157c5083
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131666"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935652"
 ---
 # <a name="tutorial-use-personalizer-in-net-chat-bot"></a>Tutorial: Verwenden der Personalisierung in einem .NET-Chatbot
 

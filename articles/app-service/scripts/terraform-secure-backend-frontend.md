@@ -8,21 +8,21 @@ ms.date: 08/10/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 238cd5e79fe749052206cfdf25d576f88f1020e8
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 76591b9f397bd84e5afac19a56dd2c6467f4650f
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065436"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962229"
 ---
 # <a name="create-two-web-apps-connected-securely-with-private-endpoint-and-vnet-integration"></a>Erstellen von zwei sicher verbundenen Web-Apps mit privatem Endpunkt und VNET-Integration
 
-In diesem Artikel erfahren Sie anhand eines Beispiels, wie Sie einen [privaten Endpunkt](https://docs.microsoft.com/azure/app-service/networking/private-endpoint) und eine regionale [VNET-Integration](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet) verwenden, um zwei Web-Apps (Front-End und Back-End) sicher zu verbinden. Dazu müssen folgende Schritte ausgeführt werden:
+In diesem Artikel erfahren Sie anhand eines Beispiels, wie Sie einen [privaten Endpunkt](../networking/private-endpoint.md) und eine regionale [VNET-Integration](../web-sites-integrate-with-vnet.md) verwenden, um zwei Web-Apps (Front-End und Back-End) sicher zu verbinden. Dazu müssen folgende Schritte ausgeführt werden:
 - Bereitstellen eines VNET
 - Erstellen des ersten Subnetzes für die Integration
 - Erstellen des zweiten Subnetzes für den privaten Endpunkt und Festlegen eines bestimmten Parameters zum Deaktivieren von Netzwerkrichtlinien
 - Bereitstellen eines App Service-Plans vom Typ „PremiumV2“ (mindestens erforderliche SKU für das Feature „Privater Endpunkt“)
-- Erstellen der Front-End-Web-App mit spezifischen App-Einstellungen für die Verwendung der privaten DNS-Zone ([Ausführlichere Informationen](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet#azure-dns-private-zones))
+- Erstellen der Front-End-Web-App mit spezifischen App-Einstellungen für die Verwendung der privaten DNS-Zone ([Ausführlichere Informationen](../web-sites-integrate-with-vnet.md#azure-dns-private-zones))
 - Herstellen einer Verbindung zwischen der Front-End-Web-App und dem Integrationssubnetz
 - Erstellen der Back-End-Web-App
 - Erstellen der privaten DNS-Zone mit dem Namen der Private Link-Zone für die Web-App (privatelink.azurewebsites.net)
@@ -31,7 +31,7 @@ In diesem Artikel erfahren Sie anhand eines Beispiels, wie Sie einen [privaten E
 
 ## <a name="how-to-use-terraform-in-azure"></a>Verwenden von Terraform in Azure
 
-Informationen zur Verwendung von Terrraform mit Azure finden Sie in der [Azure-Dokumentation](https://docs.microsoft.com/azure/developer/terraform/).
+Informationen zur Verwendung von Terrraform mit Azure finden Sie in der [Azure-Dokumentation](/azure/developer/terraform/).
 
 ## <a name="the-complete-terraform-file"></a>Vollständige Terraform-Datei
 
@@ -149,4 +149,4 @@ resource "azurerm_private_endpoint" "privateendpoint" {
 ## <a name="next-steps"></a>Nächste Schritte
 
 
-> [Weitere Informationen zur Verwendung von Terraform in Azure](https://docs.microsoft.com/azure/developer/terraform/)
+> [Weitere Informationen zur Verwendung von Terraform in Azure](/azure/developer/terraform/)

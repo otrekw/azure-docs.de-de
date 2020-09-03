@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.author: msangapu
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.openlocfilehash: 106427a6b26386e6ff881862f836e9108a27aa96
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: c34cf47a5b8c20c10b160ac6e55309b3c18448f3
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88082064"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959016"
 ---
 # <a name="tutorial-troubleshoot-an-app-service-app-with-azure-monitor"></a>Tutorial: Problembehandlung für eine App Service-App mit Azure Monitor
 
@@ -18,9 +18,9 @@ ms.locfileid: "88082064"
 > Die Azure Monitor-Integration in App Service befindet sich in der [Vorschauphase](https://aka.ms/appsvcblog-azmon).
 >
 
-In diesem Tutorial wird veranschaulicht, wie Sie mit [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) die Problembehandlung für eine [App Service](overview.md)-App durchführen. Die Beispiel-App enthält Code, mit dem der Arbeitsspeicher ausgelastet wird und HTTP 500-Fehler verursacht werden, damit Sie das Problem mit Azure Monitor diagnostizieren und beheben können. Nach Abschluss des Vorgangs verfügen Sie über eine Beispiel-App, die über App Service unter Linux mit Integration von [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) ausgeführt wird.
+In diesem Tutorial wird veranschaulicht, wie Sie mit [Azure Monitor](../azure-monitor/overview.md) die Problembehandlung für eine [App Service](overview.md)-App durchführen. Die Beispiel-App enthält Code, mit dem der Arbeitsspeicher ausgelastet wird und HTTP 500-Fehler verursacht werden, damit Sie das Problem mit Azure Monitor diagnostizieren und beheben können. Nach Abschluss des Vorgangs verfügen Sie über eine Beispiel-App, die über App Service unter Linux mit Integration von [Azure Monitor](../azure-monitor/overview.md) ausgeführt wird.
 
-[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) maximiert die Verfügbarkeit und Leistung Ihrer Anwendungen und Dienste durch die Bereitstellung einer umfassenden Lösung für das Sammeln, Analysieren und Reagieren auf Telemetriedaten aus Ihren cloudbasierten und lokalen Umgebungen.
+[Azure Monitor](../azure-monitor/overview.md) maximiert die Verfügbarkeit und Leistung Ihrer Anwendungen und Dienste durch die Bereitstellung einer umfassenden Lösung für das Sammeln, Analysieren und Reagieren auf Telemetriedaten aus Ihren cloudbasierten und lokalen Umgebungen.
 
 In diesem Tutorial lernen Sie, wie die folgenden Aufgaben ausgeführt werden:
 
@@ -38,7 +38,7 @@ Die Schritte in diesem Tutorial können unter macOS, Linux und Windows ausgefüh
 Um dieses Tutorial abzuschließen, benötigen Sie Folgendes:
 
 - [Azure-Abonnement](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-- [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli)
+- [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli)
 - [Git-Client](https://git-scm.com/)
 
 ## <a name="create-azure-resources"></a>Erstellen von Azure-Ressourcen
@@ -73,12 +73,12 @@ az monitor log-analytics workspace create --resource-group myResourceGroup --wor
 
 ### <a name="create-a-diagnostic-setting"></a>Erstellen einer Diagnoseeinstellung
 
-Mit Diagnoseeinstellungen können Metriken für bestimmte Azure-Dienste in Azure Monitor-Protokollen erfasst werden, um dann mit anderen Überwachungsdaten anhand von Protokollabfragen analysiert zu werden. In diesem Tutorial aktivieren Sie den Webserver und die standardmäßigen Ausgabe- bzw. Fehlerprotokolle. Eine umfassende Liste mit den Protokolltypen und Beschreibungen finden Sie unter [Unterstützte Protokolltypen](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs#supported-log-types).
+Mit Diagnoseeinstellungen können Metriken für bestimmte Azure-Dienste in Azure Monitor-Protokollen erfasst werden, um dann mit anderen Überwachungsdaten anhand von Protokollabfragen analysiert zu werden. In diesem Tutorial aktivieren Sie den Webserver und die standardmäßigen Ausgabe- bzw. Fehlerprotokolle. Eine umfassende Liste mit den Protokolltypen und Beschreibungen finden Sie unter [Unterstützte Protokolltypen](./troubleshoot-diagnostic-logs.md#supported-log-types).
 
 Sie führen die folgenden Befehle aus, um Diagnoseeinstellungen für AppServiceConsoleLogs (Standardausgabe/-fehler) und AppServiceHTTPLogs (Webserverprotokolle) zu erstellen. Ersetzen Sie _\<app-name>_ und _\<workspace-name>_ durch Ihre eigenen Werte. 
 
 > [!NOTE]
-> Die ersten beiden Befehle (`resourceID` und `workspaceID`) sind Variablen, die im Befehl `az monitor diagnostic-settings create` verwendet werden. Weitere Informationen zu diesem Befehl finden Sie unter [Erstellen von Diagnoseeinstellungen mithilfe der Azure CLI](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings#create-diagnostic-settings-using-azure-cli).
+> Die ersten beiden Befehle (`resourceID` und `workspaceID`) sind Variablen, die im Befehl `az monitor diagnostic-settings create` verwendet werden. Weitere Informationen zu diesem Befehl finden Sie unter [Erstellen von Diagnoseeinstellungen mithilfe der Azure CLI](../azure-monitor/platform/diagnostic-settings.md#create-using-azure-cli).
 >
 
 ```bash
@@ -129,7 +129,7 @@ Wählen Sie im Azure-Portal Ihren Log Analytics-Arbeitsbereich aus.
 
 ### <a name="log-queries"></a>Protokollabfragen
 
-Mithilfe von Protokollabfragen können Sie die Daten, die in Azure Monitor-Protokollen erfasst werden, in vollem Umfang nutzen. Sie verwenden Protokollabfragen, um die Protokolle sowohl in „AppServiceHTTPLogs“ als auch in „AppServiceConsoleLogs“ zu identifizieren. Weitere Informationen zu Protokollabfragen finden Sie unter [Übersicht über Protokollabfragen in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
+Mithilfe von Protokollabfragen können Sie die Daten, die in Azure Monitor-Protokollen erfasst werden, in vollem Umfang nutzen. Sie verwenden Protokollabfragen, um die Protokolle sowohl in „AppServiceHTTPLogs“ als auch in „AppServiceConsoleLogs“ zu identifizieren. Weitere Informationen zu Protokollabfragen finden Sie unter [Übersicht über Protokollabfragen in Azure Monitor](../azure-monitor/log-query/log-query-overview.md).
 
 ### <a name="view-appservicehttplogs-with-log-query"></a>Anzeigen von „AppServiceHTTPLogs“ mit Protokollabfrage
 

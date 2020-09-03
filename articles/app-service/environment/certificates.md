@@ -7,16 +7,16 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 73ee2165b8750b79bc33c76604ffed295fd1ea48
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 306445e26e5b236b49273b9ab8888ecc610bc075
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85831878"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962042"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>Zertifikate und die App Service-Umgebung 
 
-Die App Service-Umgebung (ASE) ist eine Bereitstellung des Azure App Service, die in Ihrem Azure Virtual Network (VNet) ausgeführt wird. Sie kann mit einem über das Internet zugänglichen Anwendungsendpunkt oder einem Anwendungsendpunkt in Ihrem VNet bereitgestellt werden. Wenn Sie die ASE mit einem über das Internet zugänglichen Endpunkt bereitstellen, wird diese Bereitstellung als externe ASE bezeichnet. Wenn Sie die ASE mit einem Endpunkt in Ihrem VNet bereitstellen, wird diese Bereitstellung als IBL-ASE bezeichnet. Weitere Informationen zur ILB-ASE finden Sie im Dokument [Erstellen und Verwenden einer ILB-ASE](https://docs.microsoft.com/azure/app-service/environment/create-ilb-ase).
+Die App Service-Umgebung (ASE) ist eine Bereitstellung des Azure App Service, die in Ihrem Azure Virtual Network (VNet) ausgeführt wird. Sie kann mit einem über das Internet zugänglichen Anwendungsendpunkt oder einem Anwendungsendpunkt in Ihrem VNet bereitgestellt werden. Wenn Sie die ASE mit einem über das Internet zugänglichen Endpunkt bereitstellen, wird diese Bereitstellung als externe ASE bezeichnet. Wenn Sie die ASE mit einem Endpunkt in Ihrem VNet bereitstellen, wird diese Bereitstellung als IBL-ASE bezeichnet. Weitere Informationen zur ILB-ASE finden Sie im Dokument [Erstellen und Verwenden einer ILB-ASE](./create-ilb-ase.md).
 
 Die ASE ist ein einzelnes Mandantensystem. Da es sich um einen einzelnen Mandanten handelt, gibt es einige Features, die nur mit einer ASE verfügbar sind und die im mehrinstanzenfähigen App Service nicht verfügbar sind. 
 
