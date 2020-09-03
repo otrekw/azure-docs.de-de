@@ -70,23 +70,23 @@
             - name: VM aus VHD-Upload
               href: ./../scripts/virtual-machines-windows-powershell-upload-generalized-script.md
             - name: Anfügen eines Betriebssystem-Datenträgers
-              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md
+              href: ./../scripts/virtual-machines-powershell-sample-create-vm-from-managed-os-disks.md
             - name: VM aus Momentaufnahme
               href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md
         - name: Verwalten von Speicher
           items:
             - name: Erstellen eines verwalteten Datenträgers aus einer VHD
-              href: ../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-vhd.md
+              href: ../scripts/virtual-machines-powershell-sample-create-managed-disk-from-vhd.md
             - name: Erstellen eines verwalteten Datenträgers aus einer Momentaufnahme
-              href: ../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md
+              href: ../scripts/virtual-machines-powershell-sample-create-managed-disk-from-snapshot.md
             - name: Kopieren eines verwalteten Datenträgers
               href: ../scripts/virtual-machines-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md
             - name: Exportieren einer Momentaufnahme als VHD in ein Speicherkonto
               href: ../scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account.md
             - name: Exportieren der VHD eines verwalteten Datenträgers in ein Speicherkonto
-              href: ../scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-vhd.md
+              href: ../scripts/virtual-machines-powershell-sample-copy-managed-disks-vhd.md
             - name: Erstellen einer Momentaufnahme aus einer VHD
-              href: ../scripts/virtual-machines-windows-powershell-sample-create-snapshot-from-vhd.md
+              href: ../scripts/virtual-machines-powershell-sample-create-snapshot-from-vhd.md
             - name: Kopieren einer Momentaufnahme
               href: ../scripts/virtual-machines-powershell-sample-copy-snapshot-to-same-or-different-subscription.md
         - name: Sicher
@@ -118,15 +118,15 @@
         - name: Verwalten von Speicher
           items:
             - name: Erstellen verwalteter Datenträger aus einer VHD
-              href: ../scripts/virtual-machines-windows-cli-sample-create-managed-disk-from-vhd.md
+              href: ../scripts/virtual-machines-cli-sample-create-managed-disk-from-vhd.md
             - name: Erstellen eines verwalteten Datenträgers aus einer Momentaufnahme
-              href: ../scripts/virtual-machines-windows-cli-sample-create-managed-disk-from-snapshot.md
+              href: ../scripts/virtual-machines-cli-sample-create-managed-disk-from-snapshot.md
             - name: Kopieren verwalteter Datenträger
               href: ../scripts/virtual-machines-cli-sample-copy-managed-disks-to-same-or-different-subscription.md
             - name: Exportieren einer Momentaufnahme als VHD-Datei in ein Speicherkonto
               href: ../scripts/virtual-machines-cli-sample-copy-snapshot-to-storage-account.md
             - name: Exportieren der VHD eines verwalteten Datenträgers in ein Speicherkonto
-              href: ../scripts/virtual-machines-windows-cli-sample-copy-managed-disks-vhd.md
+              href: ../scripts/virtual-machines-cli-sample-copy-managed-disks-vhd.md
             - name: Kopieren einer Momentaufnahme
               href: ../scripts/virtual-machines-cli-sample-copy-snapshot-to-same-or-different-subscription.md
         - name: Netzwerk
@@ -172,7 +172,7 @@
         - name: VM-Größen
           href: ../sizes.md
         - name: Virtuelle Computer der 2. Generation
-          href: generation-2.md
+          href: ../generation-2.md
         - name: Allgemeiner Zweck
           items:
             - name: Übersicht
@@ -621,7 +621,7 @@
     - name: Verwalten von VMs
       items:
         - name: VM-Nutzung
-          href: vm-usage.md
+          href: ../vm-usage.md
         - name: Allgemeine PowerShell-Aufgaben
           href: ps-common-ref.md
         - name: Ändern der VM-Größe

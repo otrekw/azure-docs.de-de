@@ -4,7 +4,7 @@
   expanded: true
   items:
     - name: Worum handelt es sich bei maschinellem Sehen?
-      href: Home.md
+      href: overview.md
     - name: Neues
       href: whats-new.md
 - name: Schnellstarts

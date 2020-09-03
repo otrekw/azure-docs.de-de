@@ -470,13 +470,13 @@
     - name: Automatische Benutzerbereitstellung (SCIM)
       items:
         - name: Worum handelt es sich bei automatischer Benutzerbereitstellung?
-          href: ../app-provisioning/user-provisioning.md
+          href: ../app-provisioning/user-provisioning.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
         - name: Entwickeln und Integrieren eines SCIM-Endpunkts
-          href: ../app-provisioning/use-scim-to-provision-users-and-groups.md
+          href: ../app-provisioning/use-scim-to-provision-users-and-groups.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
         - name: Häufige Bereitstellungsszenarien
-          href: ../app-provisioning/scim-graph-scenarios.md
+          href: ../app-provisioning/scim-graph-scenarios.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
         - name: Automatisieren der Konfiguration mit MS Graph
-          href: ../app-provisioning/application-provisioning-configure-api.md
+          href: ../app-provisioning/application-provisioning-configure-api.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
     - name: Hilfeartikel zum Azure-Portal
       items:
         - name: Standardwerte für die Tokengültigkeitsdauer für eine benutzerdefinierte Anwendung

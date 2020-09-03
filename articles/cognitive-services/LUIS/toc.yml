@@ -22,7 +22,7 @@
     - name: Verwenden eines Browsers
       href: luis-get-started-get-intent-from-browser.md
     - name: Verwenden eines SDK
-      href: quickstart-sdk.md
+      href: azure-sdk-quickstart.md
     - name: Verwenden von REST-APIs
       items:
         - name: Abrufen der Absicht
@@ -416,7 +416,7 @@
       displayName: 'FAQ, import'
     - name: Preise und Einschränkungen
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/'
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Verschlüsselung
       href: luis-encryption-of-data-at-rest.md

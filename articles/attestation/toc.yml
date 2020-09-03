@@ -15,7 +15,7 @@
     - name: Erstellen und Signieren einer Nachweisrichtlinie
       href: author-sign-policy.md
     - name: Codebeispiele für den SGX-Nachweis
-      href: 'https://docs.microsoft.com/en-us/samples/browse/?expanded=azure&terms=attestation'
+      href: /samples/browse/?expanded=azure&terms=attestation
 - name: Beispiele
   items:
     - name: Nachweisrichtlinie

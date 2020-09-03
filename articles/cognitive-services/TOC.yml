@@ -4,7 +4,7 @@
   expanded: true
   items:
     - name: Was ist Cognitive Services?
-      href: Welcome.md
+      href: what-are-cognitive-services.md
     - name: Neues in der Cognitive Services-Dokumentation
       href: whats-new-docs.md
     - name: Cognitive Services und maschinelles Lernen
@@ -84,7 +84,7 @@
           href: ./big-data/recipes/art-explorer.md
 - name: Referenz
   items:
-    - name: Integrierte Azure Policy-Aktionen
+    - name: Azure Policy-Integrationen
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
 - name: Ressourcen
@@ -95,7 +95,7 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/'
     - name: Preisrechner
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Support- und Hilfeoptionen
       href: cognitive-services-support-options.md
