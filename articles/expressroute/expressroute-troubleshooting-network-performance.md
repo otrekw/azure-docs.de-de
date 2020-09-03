@@ -2,18 +2,18 @@
 title: 'Beheben von Problemen mit der Leistung der Netzwerkverbindung: Azure'
 description: Diese Seite enthält eine standardisierte Methode zum Testen der Leistung der Azure-Netzwerkverbindung.
 services: expressroute
-author: tracsman
+author: duongau
 ms.service: expressroute
 ms.topic: troubleshooting
 ms.date: 12/20/2017
-ms.author: jonor
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: e882035af3ac0a086c58b4886fd6999970712df1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4d6dac98125827a303b8370b5a0a959ea425fb57
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521665"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401451"
 ---
 # <a name="troubleshooting-network-performance"></a>Beheben von Problemen bei der Netzwerkleistung
 ## <a name="overview"></a>Übersicht

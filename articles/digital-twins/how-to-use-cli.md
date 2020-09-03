@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/25/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7f13dc3e86b21a3f4113a7a7c6f477f239315a27
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 2c642b2441d1f30c31e707a237732e028f548ac5
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499091"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89298180"
 ---
 # <a name="use-the-azure-digital-twins-cli"></a>Verwenden der Azure Digital Twins-Befehlszeilenschnittstelle
 
@@ -24,6 +24,8 @@ Zusätzlich zur Verwaltung Ihrer Azure Digital Twins-Instanz im Azure-Portal ver
 * Konfigurieren von Endpunkten
 * Verwalten von [Routen](concepts-route-events.md)
 * Konfigurieren der [Sicherheit](concepts-security.md) über die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)
+
+[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
 
 ## <a name="uses-deploy-and-validate"></a>Verwendungen (bereitstellen und validieren)
 

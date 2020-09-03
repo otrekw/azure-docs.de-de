@@ -4,23 +4,23 @@ description: Erfahren Sie, wie Sie ein virtuelles Dateisystem in einen Batch-Poo
 ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 08/13/2019
-ms.openlocfilehash: 6b42d73954bf7ccaedfec15371cc73115c51198a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: df03275fdeea88df1a2f2b6e2cda55021497cdf7
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88921629"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145483"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Einbinden eines virtuellen Dateisystems in einen Batch-Pool
 
 Azure Batch unterstützt jetzt die Einbindung von Cloudspeicher oder eines externen Dateisystems auf Windows- oder Linux-Computeknoten in Ihren Batch-Pools. Wenn ein Computeknoten einem Pool beitritt, wird das virtuelle Dateisystem eingebunden und als lokales Laufwerk auf diesem Knoten behandelt. Sie können Dateisysteme wie Azure Files, Azure Blob Storage, Network File System (NFS) einschließlich eines [Avere vFXT-Caches](../avere-vfxt/avere-vfxt-overview.md) oder Common Internet File System (CIFS) einbinden.
 
-In diesem Artikel erfahren Sie, wie Sie ein virtuelles Dateisystem mithilfe der [Azure Batch-Verwaltungsbibliothek für .NET](/dotnet/api/overview/azure/batch?view=azure-dotnet) in einen Pool von Computeknoten einbinden.
+In diesem Artikel erfahren Sie, wie Sie ein virtuelles Dateisystem mithilfe der [Azure Batch-Verwaltungsbibliothek für .NET](/dotnet/api/overview/azure/batch) in einen Pool von Computeknoten einbinden.
 
 > [!NOTE]
 > Das Einbinden eines virtuellen Dateisystems wird in Batch-Pools unterstützt, die am oder nach dem 19.08.2019 erstellt wurden. Von vor dem 19.08.2019 erstellten Batch-Pools wird diese Funktion nicht unterstützt.
 > 
-> Die APIs für die Einbindung von Dateisystemen auf einem Computeknoten sind Teil der [Batch .NET](/dotnet/api/microsoft.azure.batch?view=azure-dotnet)-Bibliothek.
+> Die APIs für die Einbindung von Dateisystemen auf einem Computeknoten sind Teil der [Batch .NET](/dotnet/api/microsoft.azure.batch)-Bibliothek.
 
 ## <a name="benefits-of-mounting-on-a-pool"></a>Vorteile der Einbindung in einen Pool
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 11/04/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: ef202bb3ba82b48aca75c7f934aecb3f5fbe0a0b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0287bc8a11c359acce5fbf12d3a51e99a9f5420e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87070764"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297143"
 ---
 # <a name="bind-an-azure-database-for-mysql-instance-to-your-azure-spring-cloud-application"></a>Binden einer Azure Database for MySQL-Instanz an Ihre Azure Spring Cloud-Anwendung 
 
@@ -24,7 +24,7 @@ Mit Azure Spring Cloud können Sie ausgewählte Azure-Dienste automatisch an Ihr
 * Ein Azure Database for MySQL-Konto
 * Azure CLI
 
-Wenn Sie keine Azure Spring Cloud-Instanz bereitgestellt haben, befolgen Sie die Anweisungen unter [Schnellstart: Starten einer Azure Spring Cloud-Anwendung über das Azure-Portal](spring-cloud-quickstart-launch-app-portal.md), um Ihre erste Spring Cloud-App bereitzustellen.
+Wenn Sie keine Azure Spring Cloud-Instanz bereitgestellt haben, befolgen Sie die Anweisungen unter [Schnellstart: Starten einer Azure Spring Cloud-Anwendung über das Azure-Portal](spring-cloud-quickstart.md), um Ihre erste Spring Cloud-App bereitzustellen.
 
 ## <a name="bind-your-app-to-your-azure-database-for-mysql-instance"></a>Binden der App an Ihre Azure Database for MySQL-Instanz
 

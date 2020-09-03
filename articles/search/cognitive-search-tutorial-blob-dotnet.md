@@ -8,18 +8,19 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 08/20/2020
-ms.openlocfilehash: 693a7006a9f5742341a11af23b64bcd8c501618f
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 09273cf901830e850acca05c57c0b110ffd7e28a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705893"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002861"
 ---
 # <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>Tutorial: Durch KI generierter durchsuchbarer Inhalt aus Azure-Blobs mit dem .NET SDK
 
 Wenn Sie in Azure-Blobspeicher über unstrukturierten Text oder Bilder verfügen, können Sie mithilfe einer [KI-Anreicherungspipeline](cognitive-search-concept-intro.md) Informationen extrahieren und neue Inhalte erstellen, die für die Volltextsuche oder in Knowledge Mining-Szenarien verwendet werden können. In diesem C#-Tutorial wenden Sie die optische Zeichenerkennung (Optical Character Recognition, OCR) auf Bilder an und führen die Verarbeitung natürlicher Sprache durch, um neue Felder zu erstellen, die Sie in Abfragen, Facetten und Filtern nutzen können.
 
-In diesem Tutorial werden C# und das [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) verwendet, um die folgenden Aufgaben durchzuführen:
+In diesem Tutorial werden C# und das [.NET SDK](/dotnet/api/overview/azure/search) verwendet, um die folgenden Aufgaben durchzuführen:
 
 > [!div class="checklist"]
 > * Beginnen Sie mit Anwendungsdateien und Bildern in Azure-Blobspeicher.
@@ -127,7 +128,7 @@ Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her 
 
 ### <a name="install-nuget-packages"></a>Installieren von NuGet-Paketen
 
-Das [.NET SDK für Azure Cognitive Search](https://docs.microsoft.com/dotnet/api/overview/azure/search) umfasst einige wenige Clientbibliotheken, mit denen Sie sowohl Ihre Indizes, Datenquellen, Indexer und Qualifikationsgruppen verwalten als auch Dokumente hochladen und verwalten sowie Abfragen ausführen können, ohne die Details von HTTP und JSON berücksichtigen zu müssen. Alle diese Clientbibliotheken werden als NuGet-Pakete verteilt.
+Das [.NET SDK für Azure Cognitive Search](/dotnet/api/overview/azure/search) umfasst einige wenige Clientbibliotheken, mit denen Sie sowohl Ihre Indizes, Datenquellen, Indexer und Qualifikationsgruppen verwalten als auch Dokumente hochladen und verwalten sowie Abfragen ausführen können, ohne die Details von HTTP und JSON berücksichtigen zu müssen. Alle diese Clientbibliotheken werden als NuGet-Pakete verteilt.
 
 Installieren Sie für dieses Projekt Version 9 (oder höher) des NuGet-Pakets `Microsoft.Azure.Search`.
 
@@ -680,7 +681,7 @@ Fügen Sie die folgende using-Anweisung hinzu, um den mehrdeutigen Verweis zu ko
 using Index = Microsoft.Azure.Search.Models.Index;
 ```
 
-Weitere Informationen zum Definieren eines Index finden Sie unter [Index erstellen (Azure Cognitive Search-REST-API)](https://docs.microsoft.com/rest/api/searchservice/create-index).
+Weitere Informationen zum Definieren eines Index finden Sie unter [Index erstellen (Azure Cognitive Search-REST-API)](/rest/api/searchservice/create-index).
 
 ### <a name="step-4-create-and-run-an-indexer"></a>Schritt 4: Erstellen und Ausführen eines Indexers
 
@@ -905,7 +906,7 @@ catch (Exception e)
 }
 ```
 
-Wiederholen Sie das Verfahren in dieser Übung für weitere Felder: „content“, „languageCode“, „keyPhrases“ und „organizations“. Sie können mit der [Select](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.searchparameters.select?view=azure-dotnet)-Eigenschaft mehrere Felder zurückgeben, indem Sie eine durch Trennzeichen getrennte Liste verwenden.
+Wiederholen Sie das Verfahren in dieser Übung für weitere Felder: „content“, „languageCode“, „keyPhrases“ und „organizations“. Sie können mit der [Select](/dotnet/api/microsoft.azure.search.models.searchparameters.select?view=azure-dotnet)-Eigenschaft mehrere Felder zurückgeben, indem Sie eine durch Trennzeichen getrennte Liste verwenden.
 
 <a name="reset"></a>
 

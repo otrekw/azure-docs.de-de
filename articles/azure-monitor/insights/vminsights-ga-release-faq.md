@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/31/2020
-ms.openlocfilehash: df96ceb47bf33b734f2127bade50af18713a97a0
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: be192a5807c40ea65ea6533ec6244183e5a4b644
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82581361"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958795"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Monitor für VMs in der allgemein verfügbaren Version (GA)
 Diese häufig gestellten Fragen zur allgemeinen Verfügbarkeit betreffen Änderungen, die im vierten Quartal 2019 und im ersten Quartal 2020 vorgenommen wurden.
@@ -39,7 +39,7 @@ Wenn ein Log Analytics-Arbeitsbereich auf die neueste Version von Azure Monitor 
 Verwenden Sie den folgenden Befehl, um einen Arbeitsbereich mit PowerShell zu aktualisieren:
 
 ```PowerShell
-Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <resource-group-name> -WorkspaceName <workspace-name> -IntelligencePackName "VMInsights" -Enabled $True
+Set-AzOperationalInsightsIntelligencePack -ResourceGroupName <resource-group-name> -WorkspaceName <workspace-name> -IntelligencePackName "VMInsights" -Enabled $True
 ```
 
 ## <a name="what-should-i-do-about-the-performance-counters-in-my-workspace-if-i-install-the-vminsights-solution"></a>Was soll ich mit den Leistungsindikatoren in meinem Arbeitsbereich machen, wenn ich die VMInsights-Lösung installiere?

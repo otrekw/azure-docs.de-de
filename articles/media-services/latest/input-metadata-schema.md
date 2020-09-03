@@ -1,7 +1,7 @@
 ---
 title: Schema von Eingabemetadaten für Azure Media Services v3
 description: Dieser Artikel bietet eine Übersicht über das Schema von Eingabemetadaten für Azure Media Services v3.
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -10,17 +10,19 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 04/14/2020
-ms.author: juliako
-ms.openlocfilehash: 40e61061878c8aec6bad353bfd0c5f2f4178ce14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: reference
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 9ddfe3ea0d26a9032922423e7f2c2a2b6c3e411a
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85095559"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89295545"
 ---
-# <a name="input-metadata"></a>Eingabemetadaten 
+# <a name="input-metadata"></a>Eingabemetadaten
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Ein Codierauftrag ist einem Eingabeobjekt (oder mehreren) zugeordnet, für das Sie einige Codieraufgaben durchführen möchten.  Nach Abschluss einer Aufgabe wird ein Ausgabeobjekt erzeugt. Das Ausgabeobjekt enthält Videodaten, Audiodaten, Miniaturansichten, das Manifest und andere Dateien. 
 

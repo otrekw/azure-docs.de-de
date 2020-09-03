@@ -2,18 +2,18 @@
 title: 'Azure ExpressRoute: Workflow für die Leitungskonfiguration'
 description: Diese Seite zeigt den Workflow für die Konfiguration von ExpressRoute-Leitungen und -Peerings.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/24/2020
-ms.author: cherylmc
+ms.author: duau
 ms.custom: contperfq1
-ms.openlocfilehash: 229b7c145fa38443d2bc5f99005078ffa7f77065
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 14a61d33ef2e4d4fc80770f5c86e33d34ec860cd
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814075"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401434"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>ExpressRoute-Workflows für die Verbindungsbereitstellung und Verbindungszustände
 

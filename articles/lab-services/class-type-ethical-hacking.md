@@ -3,12 +3,12 @@ title: Einrichten eines Labs für ethisches Hacken mit Azure Lab Services | Micr
 description: Erfahren Sie, wie Sie mithilfe von Azure Lab Services ein Lab einrichten, um ethisches Hacken zu vermitteln.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 0e3a5c6e09038ea731e4157657b0e6ad9c9263ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5134a7db824bad69f42a4051319479f712051446
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443994"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297585"
 ---
 # <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>Einrichten eines Labs zum Vermitteln von Kursen für ethisches Hacken 
 In diesem Artikel erfahren Sie, wie Sie einen Kurs einrichten, der sich auf die forensische Seite des ethischen Hackens konzentriert. Bei Penetrationstests, eine von der Community für ethisches Hacken verwendete Vorgehensweise, versucht eine Person, auf das System oder Netzwerk zuzugreifen, um Schwachstellen zu demonstrieren, die ein böswilliger Angreifer ausnutzen könnte. 
@@ -74,7 +74,7 @@ Das Rapid7 Metasploitable-Image ist ein Image, das absichtlich mit Schwachstelle
 1. Wählen Sie die Schaltfläche **Metasploitable jetzt herunterladen** aus.
 1. Wenn die ZIP-Datei heruntergeladen ist, extrahieren Sie sie, und merken Sie sich den Speicherort.
 1. Konvertieren Sie die extrahierte VMDK-Datei in eine VHDX-Datei, damit Sie sie mit Hyper-V verwenden können. Öffnen Sie hierzu PowerShell mit Administratorrechten, navigieren Sie zu dem Ordner, in dem sich die VMDK-Datei befindet, und befolgen Sie diese Anweisungen:
-    1. Laden Sie den [Microsoft Virtual Machine Converter](https://www.microsoft.com/download/details.aspx?id=42497) herunter, und führen Sie die Datei „mvmc_setup.msi“ aus, wenn Sie dazu aufgefordert werden.
+    1. Laden Sie den [Microsoft Virtual Machine Converter](https://download.microsoft.com/download/9/1/E/91E9F42C-3F1F-4AD9-92B7-8DD65DA3B0C2/mvmc_setup.msi) herunter, und führen Sie die Datei „mvmc_setup.msi“ aus, wenn Sie dazu aufgefordert werden.
     1. Importieren Sie das PowerShell-Modul.  Der Standardspeicherort, an dem das Modul installiert wird, lautet „C:\Programme\Microsoft Virtual Machine Converter\“.
 
         ```powershell

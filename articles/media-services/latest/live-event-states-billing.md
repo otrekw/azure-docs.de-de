@@ -3,24 +3,26 @@ title: 'LiveEvent: Zustandswerte und Abrechnung in Azure Media Services | Micros
 description: Dieses Thema bietet eine Übersicht über LiveEvent-Zustandswerte und die entsprechende Abrechnung in Azure Media Services.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
-ms.date: 10/24/2019
-ms.author: juliako
-ms.openlocfilehash: dd63152776e0268b8f9e3e0ce116fea897cdf4e2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 1b058eefe22238b60c3482c55b5ae340f4e597f0
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000872"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296735"
 ---
 # <a name="live-event-states-and-billing"></a>Zustandswerte von Liveereignissen und Abrechnung
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 In Azure Media Services fallen für ein Liveereignis Gebühren an, sobald der Zustand in **Wird ausgeführt** geändert wird. Es wird Ihnen auch dann in Rechnung gestellt, wenn kein Video den Dienst durchläuft. Damit für das Liveereignis keine Gebühren mehr anfallen, müssen Sie es beenden. Die Livetranskription wird auf dieselbe Weise abgerechnet wie das Liveereignis.
 

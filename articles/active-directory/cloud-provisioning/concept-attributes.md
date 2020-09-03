@@ -15,12 +15,12 @@ ms.date: 02/18/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ac09fb3faf55be6c07a1e0a88b6e2032c9ab8ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1fff90777c63820b54a1cb37156021c894de19c8
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78299328"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226929"
 ---
 # <a name="understand-the-azure-ad-schema"></a>Grundlegendes zum Azure AD-Schema
 Ein Objekt in Azure Active Directory (Azure AD) ist wie jedes Verzeichnis ein programmgesteuertes allgemeines Datenkonstrukt, das Elemente wie Benutzer, Gruppen und Kontakte darstellt. Wenn Sie einen neuen Benutzer oder Kontakt in Azure AD erstellen, erstellen Sie eine neue Instanz dieses Objekts. Diese Instanzen können anhand ihrer Eigenschaften unterschieden werden.
@@ -51,7 +51,7 @@ Wenn Sie beispielsweise das E-Mail-Attribut „john.smith@contoso.com“ haben u
 * **EINGABE** (mail): "john.smith@contoso.com"
 * **AUSGABE**: "john.smith"
 
-Weitere Informationen zum Schreiben benutzerdefinierter Ausdrücke und zur Syntax finden Sie unter [Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data).
+Weitere Informationen zum Schreiben benutzerdefinierter Ausdrücke und zur Syntax finden Sie unter [Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory](../app-provisioning/functions-for-customizing-application-data.md).
 
 In der folgenden Tabelle sind einige allgemeine Attribute und ihre Synchronisierung mit Azure AD aufgeführt.
 

@@ -3,41 +3,39 @@ title: Bewährte Methoden für den Azure Maps-Suchdienst | Microsoft Azure Maps
 description: Erfahren Sie, wie Sie beim Nutzen des Suchdiensts von Microsoft Azure Maps bewährte Methoden verwenden.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 01/23/2020
+ms.date: 09/02/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 5e98763a3a1c8273cdeec5e945dd324ae43e773f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6565d8056ae8106bd93b7dd096bc709010ec5c3f
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064261"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400703"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Bewährte Methoden für den Suchdienst von Azure Maps
 
 Der Azure Maps-[Suchdienst](https://docs.microsoft.com/rest/api/maps/search) enthält APIs, die verschiedene Funktionen bieten, die Entwickler bei der Suche nach Adressen, Orten, Brancheneinträgen (nach Name oder Kategorie) und anderen geografischen Informationen unterstützen. Mithilfe der [API für die Fuzzysuche](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) können Benutzer beispielsweise nach einer Adresse oder einem Point of Interest (POI) suchen.
 
 In diesem Artikel wird erläutert, wie Sie beim Aufrufen von Daten aus dem Suchdienst von Azure Maps vernünftige Methoden anwenden können. Sie lernen Folgendes:
-
-* Erstellen von Abfragen zum Zurückgeben relevanter Übereinstimmungen
-* Einschränken von Suchergebnissen
-* Kennenlernen der Unterschiede zwischen den Ergebnistypen
-* Lesen der Antwortstruktur der Adresssuche
+> [!div class="checklist"]
+> * Erstellen von Abfragen zum Zurückgeben relevanter Übereinstimmungen
+> * Einschränken von Suchergebnissen
+> * Kennenlernen der Unterschiede zwischen den Ergebnistypen
+> * Lesen der Antwortstruktur der Adresssuche
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die Azure Maps-Dienst-APIs aufrufen zu können, benötigen Sie ein Azure Maps-Konto mit zugehörigem Schlüssel. Weitere Informationen finden Sie unter [Erstellen eines Kontos](quick-demo-map-app.md#create-an-azure-maps-account) und [Abrufen eines Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account). 
+1. [Erstellen eines Azure Maps-Kontos](quick-demo-map-app.md#create-an-azure-maps-account)
+2. [Abrufen eines Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account) (auch primärer Schlüssel oder Abonnementschlüssel genannt)
 
-Informationen zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](./how-to-manage-authentication.md).
-
-> [!TIP]
-> Sie können die [Postman-App](https://www.getpostman.com/apps) zum Erstellen von REST-Aufrufen verwenden, um den Suchdienst abzufragen. Sie können aber auch jede beliebige API-Entwicklungsumgebung verwenden, die Sie bevorzugen.
+In diesem Artikel wird die [Postman-App](https://www.postman.com/downloads/) zum Generieren von REST-Aufrufen verwendet, Sie können aber eine beliebige API-Entwicklungsumgebung verwenden.
 
 ## <a name="best-practices-to-geocode-addresses"></a>Bewährte Methoden zur Geocodierung von Adressen
 
-Wenn Sie mit dem Suchdienst von Azure Maps nach einer vollständigen oder unvollständigen Adresse suchen, liest die API Schlüsselwörter aus Ihrer Suchabfrage. Anschließend werden der Längen- und Breitengrad der Adresse zurückgegeben. Dieser Vorgang wird als *Geocodierung* bezeichnet. 
+Wenn Sie mit dem Suchdienst von Azure Maps nach einer vollständigen oder unvollständigen Adresse suchen, liest die API Schlüsselwörter aus Ihrer Suchabfrage. Anschließend werden der Längen- und Breitengrad der Adresse zurückgegeben. Dieser Vorgang wird als *Geocodierung* bezeichnet.
 
 Die Möglichkeit der Geocodierung in einem Land/einer Region hängt von der Verfügbarkeit von Straßendaten und der Genauigkeit des Geocodierungsdiensts ab. Weitere Informationen zu den Geocodierungsfunktionen von Azure Maps nach Land oder Region finden Sie unter [Abdeckung durch Geocodierung](https://docs.microsoft.com/azure/azure-maps/geocoding-coverage).
 

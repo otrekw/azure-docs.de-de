@@ -8,22 +8,18 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 07/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 634967fbe50c74770bdc3b526d68896728e4ee07
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 00d79f8058d7d478f7fe97ba9677e47098b70e1b
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513059"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145925"
 ---
 # <a name="how-to-configure-virtual-hub-routing"></a>Konfigurieren des Routings für virtuelle Hubs
 
 Ein virtueller Hub kann mehrere Gateways enthalten, z. B. ein Site-to-Site-VPN-Gateway, ExpressRoute-Gateway, Point-to-Site-Gateway und Azure Firewall. Die Routingfunktionen auf dem virtuellen Hub werden von einem Router bereitgestellt, der das gesamte Routing, einschließlich Transitrouting, zwischen den Gateways mit dem Border Gateway Protocol (BGP) verwaltet. Dieser Router bietet auch Transitkonnektivität zwischen virtuellen Netzwerken, die mit einem virtuellen Hub verbunden sind, und kann einen Gesamtdurchsatz von bis zu 50 GBit/s unterstützen. Diese Routingfunktionen gelten für Kunden von Virtual WAN Standard.
 
 Weitere Informationen finden Sie unter [Informationen zum Routing virtueller Hubs](about-virtual-hub-routing.md).
-
-> [!NOTE]
-> Einige dieser Funktionen befinden sich ggf. noch in der Einführungsphase. Diese Phase wird voraussichtlich bis zum 17. August abgeschlossen sein.
->
 
 ## <a name="create-a-route-table"></a><a name="create-table"></a>Erstellen einer Routingtabelle
 

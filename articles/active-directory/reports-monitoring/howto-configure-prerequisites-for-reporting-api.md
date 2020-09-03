@@ -17,18 +17,18 @@ ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4702b12bea2e078af4d10fe9d709d16c361b3f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 22a8a0efe16b4ab2ea7b8a647284a3449741ac02
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608261"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226963"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Voraussetzungen für den Zugriff auf die Azure Active Directory-Berichterstellungs-API
 
-Die [Berichtserstellungs-APIs von Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-reporting-api) bieten Ihnen über eine Gruppe von REST-basierten APIs programmgesteuerten Zugriff auf die Daten. Sie können diese APIs über Programmiersprachen und Tools aufrufen.
+Die [Berichtserstellungs-APIs von Azure Active Directory (Azure AD)](./concept-reporting-api.md) bieten Ihnen über eine Gruppe von REST-basierten APIs programmgesteuerten Zugriff auf die Daten. Sie können diese APIs über Programmiersprachen und Tools aufrufen.
 
-Die Berichterstellungs-API verwendet [OAuth](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad) zum Autorisieren des Zugriffs auf die Web-APIs.
+Die Berichterstellungs-API verwendet [OAuth](../../api-management/api-management-howto-protect-backend-with-aad.md) zum Autorisieren des Zugriffs auf die Web-APIs.
 
 Um auf die Berichterstellungs-API zugreifen zu können, müssen Sie folgende Schritte ausführen:
 
@@ -225,5 +225,5 @@ Führen Sie die unter [Voraussetzungen für den Zugriff auf die Azure Active Dir
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Abrufen von Daten per Berichtserstellungs-API von Azure Active Directory mit Zertifikaten](tutorial-access-api-with-certificates.md)
-* [Referenz zur Überwachungs-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
-* [Referenz zur Anmeldeaktivitätsbericht-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
+* [Referenz zur Überwachungs-API](/graph/api/resources/directoryaudit?view=graph-rest-beta) 
+* [Referenz zur Anmeldeaktivitätsbericht-API](/graph/api/resources/signin?view=graph-rest-beta)

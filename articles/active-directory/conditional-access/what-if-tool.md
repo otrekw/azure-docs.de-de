@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5f75ce20d24f98e5fcefde49b95a545281f8066
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: db76ec2bc2fc8640214f962a809fee559b4c4af3
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032882"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948197"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Beheben von Problemen mit dem What If-Tool beim bedingten Zugriff
 
-[Bedingter Zugriff](../active-directory-conditional-access-azure-portal.md) ist eine Funktion von Azure Active Directory (Azure AD), mit der Sie den Zugriff autorisierter Benutzer auf Ihre Cloud-Apps steuern können. Wie wissen Sie, was Sie von den Richtlinien für bedingten Zugriff in Ihrer Umgebung erwarten können? Um diese Frage zu beantworten, können Sie das **Was-wäre-wenn-Tool für den bedingten Zugriff** verwenden.
+[Bedingter Zugriff](./overview.md) ist eine Funktion von Azure Active Directory (Azure AD), mit der Sie den Zugriff autorisierter Benutzer auf Ihre Cloud-Apps steuern können. Wie wissen Sie, was Sie von den Richtlinien für bedingten Zugriff in Ihrer Umgebung erwarten können? Um diese Frage zu beantworten, können Sie das **Was-wäre-wenn-Tool für den bedingten Zugriff** verwenden.
 
 In diesem Artikel wird erläutert, wie Sie dieses Tool zum Testen Ihrer Richtlinien für den bedingten Zugriff verwenden können.
 
@@ -105,4 +105,4 @@ In der Liste der Richtlinien, die nicht für den Benutzer gelten, finden Sie auc
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zur Richtlinie für bedingten Zugriff finden Sie unter [Erkenntnisse und Berichterstellung zum bedingten Zugriff](howto-conditional-access-insights-reporting.md), wenn Sie Richtlinien im reinen Berichtsmodus verwenden.
-- Wenn Sie bereit sind, Richtlinien für bedingten Zugriff für Ihre Umgebung zu konfigurieren, lesen Sie den Artikel [Allgemeine Richtlinien für bedingten Zugriff](concept-conditional-access-policy-common.md). 
+- Wenn Sie bereit sind, Richtlinien für bedingten Zugriff für Ihre Umgebung zu konfigurieren, lesen Sie den Artikel [Allgemeine Richtlinien für bedingten Zugriff](concept-conditional-access-policy-common.md).

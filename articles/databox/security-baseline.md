@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: a13a8b2eef9fa1bd9c7281ac6b7c7dba40105428
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: d8a1b2192784c26ed17b31be262b22efbf935d84
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497323"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89225603"
 ---
 # <a name="azure-security-baseline-for-azure-data-box"></a>Azure-Sicherheitsbaseline für Azure Data Box
 
@@ -216,11 +216,11 @@ Weitere Informationen finden Sie in der [Übersicht über Azure-Sicherheitsbasel
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: Verwalten eines Bestands von Administratorkonten
 
-**Leitfaden**: Verwalten Sie ein Inventar der Benutzerkonten, die über Administratorzugriff auf Azure Data Box verfügen. Sie können die Identitäts- und Zugriffssteuerung (Identity and Access control, IAM) im Azure-Portal für Ihr Abonnement verwenden, um die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) zu konfigurieren. Die Rollen werden Benutzern, Gruppen, Dienstprinzipalen und verwalteten Identitäten in Active Directory zugewiesen. Sie können beim Erstellen Ihres Auftrags festlegen, wer auf diesen Auftrag zugreifen kann. Richten Sie Azure-Rollen in verschiedenen Gültigkeitsbereichen ein, um den Zugriff auf den Data Box-Auftrag zu steuern. Eine Azure-Rolle bestimmt die Art des Zugriffs: Lese-/Schreibzugriff, schreibgeschützter Zugriff, Lese-/Schreibzugriff auf eine Teilmenge von Vorgängen.
+**Leitfaden**: Verwalten Sie ein Inventar der Benutzerkonten, die über Administratorzugriff auf Azure Data Box verfügen. Sie können die Identitäts- und Zugriffssteuerung (IAM) im Azure-Portal für Ihr Abonnement verwenden, um die rollenbasierte Zugriffssteuerung von Azure (Azure RBAC) zu konfigurieren. Die Rollen werden Benutzern, Gruppen, Dienstprinzipalen und verwalteten Identitäten in Active Directory zugewiesen. Sie können beim Erstellen Ihres Auftrags festlegen, wer auf diesen Auftrag zugreifen kann. Richten Sie Azure-Rollen in verschiedenen Gültigkeitsbereichen ein, um den Zugriff auf den Data Box-Auftrag zu steuern. Eine Azure-Rolle bestimmt die Art des Zugriffs: Lese-/Schreibzugriff, schreibgeschützter Zugriff, Lese-/Schreibzugriff auf eine Teilmenge von Vorgängen.
 
 * [Grundlegendes zu benutzerdefinierten Rollen](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)
 
-* [Konfigurieren von RBAC in Arbeitsmappen](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility)
+* [Konfigurieren von Azure RBAC in Arbeitsmappen](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility)
 
 * [Grundlegendes zum Einrichten der Zugriffssteuerung für den Auftrag](https://docs.microsoft.com/azure/databox/data-box-logs#set-up-access-control-on-the-order)
 
@@ -427,7 +427,7 @@ Während des Hochladens von Daten in Azure werden die Data Box-Appliance und der
 
 **Verantwortlichkeit**: Nicht verfügbar
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6: Verwenden der rollenbasierten Zugriffssteuerung zum Steuern des Zugriffs auf Ressourcen
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Verwenden von Azure RBAC zum Steuern des Zugriffs auf Ressourcen
 
 **Leitfaden**: Sie haben Zugriff als Besitzer oder Mitwirkender auf das Abonnement (zum Erstellen einer Data Box-Bestellung erforderlich). Sie können die Data Box-Rollen „Leser“ und „Mitwirkender“ auch auf Ressourcenebene definieren.
 

@@ -4,20 +4,20 @@ titleSuffix: Azure Media Services
 description: Erfahren Sie, wie Sie Transformationen erstellen, um die Regeln zu beschreiben, gemäß denen Ihre Videos in Azure Media Services verarbeitet werden.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/19/2019
-ms.author: juliako
-ms.openlocfilehash: d45d802456345eab857f571d2d52793c8be691eb
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.author: inhenkel
+ms.openlocfilehash: a9e34c4aaeb6fc2c151233b05ed5584e0e624148
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543060"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297976"
 ---
 # <a name="transforms-and-jobs-in-media-services"></a>Transformationen und Aufträge in Media Services
 
