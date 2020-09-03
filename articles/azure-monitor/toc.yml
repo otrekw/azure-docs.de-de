@@ -160,6 +160,8 @@
       href: platform/partners.md
     - name: Sicherheit
       items:
+        - name: Sicherheitsbaseline
+          href: security-baseline.md
         - name: Sicherheitskontrollen von Azure Policy
           displayName: 'regulatory, compliance, standards, domains'
           href: ./platform/security-controls-policy.md
@@ -982,7 +984,7 @@
       items:
         - name: Übersicht
           href: insights/container-insights-overview.md
-        - name: FAQ
+        - name: Häufig gestellte Fragen
           href: faq.md#azure-monitor-for-containers
         - name: Aktivieren der Überwachung
           items:
@@ -1295,7 +1297,7 @@
           href: /azure/templates/microsoft.insights/allversions
         - name: Azure Monitor-Protokolle
           href: /azure/templates/microsoft.operationalinsights/allversions
-    - name: Integrierte Azure Policy-Aktionen
+    - name: Azure Policy-Integrationen
       displayName: 'samples, policies, definitions'
       href: samples/policy-reference.md
     - name: Feature- und API-Ausmusterung
