@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 5507e6f97211f209eb559ff7491f22bdf1a00e54
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 888118d227529110c209d7c8d5a3bb79cfcf3a9a
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079670"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959790"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Überwachen von Apps in Azure App Service
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) bietet integrierte Überwachungsfunktionen für Web-Apps, mobile und API-Apps im [Azure-Portal](https://portal.azure.com).
@@ -152,14 +152,14 @@ Wählen Sie **Einstellungen** > **Kontingente** aus, um nach Kontingenten zu suc
 
 Wenn Sie auf eins der Diagramme klicken, wechseln Sie zur Metrikansicht, in der Sie benutzerdefinierte Diagramme erstellen, verschiedene Metriken abfragen und vieles mehr können. 
 
-Weitere Informationen zu Metriken finden Sie unter [Von Azure Monitor gesammelte Überwachungsdaten](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md).
+Weitere Informationen zu Metriken finden Sie unter [Von Azure Monitor gesammelte Überwachungsdaten](../azure-monitor/platform/data-platform.md).
 
 ## <a name="alerts-and-autoscale"></a>Warnungen und automatische Skalierung
-Metriken für eine App oder einen App Service-Plan können mit Warnungen verknüpft werden. Weitere Informationen finden Sie unter [Verwenden des Azure-Portals zum Erstellen von Warnungen für Azure-Dienste](../monitoring-and-diagnostics/insights-alerts-portal.md).
+Metriken für eine App oder einen App Service-Plan können mit Warnungen verknüpft werden. Weitere Informationen finden Sie unter [Verwenden des Azure-Portals zum Erstellen von Warnungen für Azure-Dienste](../azure-monitor/platform/alerts-classic-portal.md).
 
 App Service-Apps, die unter App Service-Plänen vom Typ „Basic“ oder höher gehostet werden, unterstützen die automatische Skalierung. Mithilfe der automatischen Skalierung können Sie Regeln zur Überwachung der Metriken des App Service-Plans konfigurieren. Über Regeln kann die Anzahl der Instanzen erhöht oder verringert werden, wodurch bei Bedarf zusätzliche Ressourcen bereitgestellt werden können. Außerdem helfen Regeln auch dabei, Geld zu sparen, wenn die App zu oft bereitgestellt wird.
 
-Weitere Informationen zur automatischen Skalierung finden Sie unter [Erste Schritte mit der automatischen Skalierung in Azure](../monitoring-and-diagnostics/insights-how-to-scale.md) und [Bewährte Methoden für die automatische Skalierung](../azure-monitor/platform/autoscale-best-practices.md).
+Weitere Informationen zur automatischen Skalierung finden Sie unter [Erste Schritte mit der automatischen Skalierung in Azure](../azure-monitor/platform/autoscale-get-started.md) und [Bewährte Methoden für die automatische Skalierung](../azure-monitor/platform/autoscale-best-practices.md).
 
 [fzilla]:https://go.microsoft.com/fwlink/?LinkId=247914
 [vmsizes]:https://go.microsoft.com/fwlink/?LinkID=309169

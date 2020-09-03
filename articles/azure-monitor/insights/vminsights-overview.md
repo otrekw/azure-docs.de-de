@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/22/2020
-ms.openlocfilehash: f9ad39b88ad2212ea2cdceb40e61fbc0a2d1a764
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5c3cb13d0b2da9370f402083d82397679f2c9343
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320492"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022495"
 ---
 # <a name="what-is-azure-monitor-for-vms"></a>Was ist Azure Monitor for VMs?
 
@@ -26,10 +26,6 @@ Azure Monitor für VMs unterstützt Windows- und Linux-Betriebssysteme auf folge
 - In einer anderen Cloudumgebung gehostete virtuelle Computer
   
 
-
->[!NOTE]
->Wir haben kürzlich Änderungen am Integritätsfeature [angekündigt](https://azure.microsoft.com/updates/updates-to-azure-monitor-for-virtual-machines-preview-before-general-availability-release/
-). Diese Änderungen basieren auf dem Feedback, das wir von unseren Public Preview-Kunden erhalten haben. Aufgrund der Anzahl von Änderungen wird das Integritätsfeature für Neukunden nicht mehr angeboten. Bestandskunden können das Integritätsfeature dagegen weiterhin verwenden. Ausführlichere Informationen finden Sie in den [häufig gestellten Fragen zur allgemeinen Verfügbarkeit](vminsights-ga-release-faq.md).  
 
 
 Azure Monitor für VMs speichert die Daten in Azure Monitor-Protokollen und ermöglicht dadurch leistungsstarke Aggregation und Filterung sowie die Analyse von Datentrends im zeitlichen Verlauf. Sie können diese Daten direkt in einer einzelnen VM anzeigen, oder Sie können eine aggregierte Ansicht mehrerer VMs mit Azure Monitor bereitstellen.

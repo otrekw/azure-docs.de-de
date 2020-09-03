@@ -3,12 +3,12 @@ title: Programmgesteuertes Erstellen von Richtlinien
 description: In diesem Artikel wird Schritt für Schritt das programmgesteuerte Erstellen und Verwalten von Richtlinien für Azure Policy per Azure-Befehlszeilenschnittstelle, Azure PowerShell und REST-API beschrieben.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 7a72986d8ffe64953e68ff166de9a02a15fb9c86
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9b0c2e50536a847555dfa5cc6b9c823cfc1a4cfa
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548310"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047053"
 ---
 # <a name="programmatically-create-policies"></a>Programmgesteuertes Erstellen von Richtlinien
 
@@ -235,7 +235,7 @@ Die ID für die Richtliniendefinition, die Sie erstellt haben, sollte in etwa wi
 "/subscription/<subscriptionId>/providers/Microsoft.Authorization/policyDefinitions/Audit Storage Accounts Open to Public Networks"
 ```
 
-Weitere Informationen zum Verwalten von Ressourcenrichtlinien mit der Azure-Befehlszeilenschnittstelle finden Sie unter [Azure CLI-Ressourcenrichtlinien](/cli/azure/policy?view=azure-cli-latest).
+Weitere Informationen zum Verwalten von Ressourcenrichtlinien mit der Azure-Befehlszeilenschnittstelle finden Sie unter [Azure CLI-Ressourcenrichtlinien](/cli/azure/policy).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -243,6 +243,6 @@ Weitere Informationen zu den in diesem Artikel verwendeten Befehlen und Abfragen
 
 - [Azure-REST-API-Ressourcen](/rest/api/resources/)
 - [Azure PowerShell-Module](/powershell/module/az.resources/#policies)
-- [Befehle für Azure CLI-Richtlinien](/cli/azure/policy?view=azure-cli-latest)
+- [Befehle für Azure CLI-Richtlinien](/cli/azure/policy)
 - [Azure-Ressourcenanbieter „Policy Insights“ – REST-API-Referenz](/rest/api/policy-insights)
 - [Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen](../../management-groups/overview.md)

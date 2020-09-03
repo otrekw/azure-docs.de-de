@@ -9,17 +9,19 @@ manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: tutorial
-ms.date: 08/11/2020
+ms.topic: how-to
+ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: a046a3caba9a0909d873356bda8d1fa6cf1f9860
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 0bdb2c36bc895c9229e4c04e9e0d76aa852bd139
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719256"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297305"
 ---
 # <a name="upload-media-for-streaming-or-encoding"></a>Hochladen von Medien für Streaming und Codierung
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 In Media Services laden Sie Ihre digitalen Dateien (Medien) in einen Blobcontainer hoch, der einem Medienobjekt zugeordnet ist. Die [Asset](/rest/api/media/operations/asset)-Entität kann Videos, Audiodateien, Bilder, Miniaturansichtssammlungen, Texttitel und Untertiteldateien (und die Metadaten zu diesen Dateien) enthalten. Nachdem die Dateien in den Container des Medienobjekts hochgeladen wurden, werden Ihre Inhalte zur weiteren Verarbeitung und zum Streaming sicher in der Cloud gespeichert.
 

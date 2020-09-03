@@ -3,20 +3,20 @@ title: Azure Front Door – Lastenausgleich mit der Azure-Suite für die Anwendu
 description: In diesem Artikel werden die Empfehlungen von Microsoft Azure für den Lastenausgleich mit der Azure-Suite für die Anwendungsbereitstellung erläutert.
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: 44af14a01e7b045b7abb6a84db89a67f3dd22445
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.author: duau
+ms.openlocfilehash: 685ee9feaf057e4f2fae3cfe016624806f1ad00c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80875281"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399462"
 ---
 # <a name="load-balancing-with-azures-application-delivery-suite"></a>Lastenausgleich mit der Azure-Suite für die Anwendungsbereitstellung
 

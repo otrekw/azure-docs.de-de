@@ -9,36 +9,36 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: nichola
-ms.openlocfilehash: c75d04faf9ac59f21aad1dcd88dfe83699a11941
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: bbe813b46b41bf0e2b8bf9c6b3fe3e3e843204ed
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88057030"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319745"
 ---
 # <a name="five-steps-for-integrating-all-your-apps-with-azure-ad"></a>Fünf Schritte zum Integrieren Ihrer gesamten Apps in Azure AD
 
-Azure Active Directory (Azure AD) ist der cloudbasierte Identitäts- und Zugriffsverwaltungsdienst von Microsoft. Azure AD verfügt über sichere Lösungen für die Authentifizierung und Autorisierung, damit Kunden, Partner und Mitarbeiter auf die benötigten Anwendungen zugreifen können. Mit Azure AD ist die Identitäts- und Zugriffsverwaltung durch Features wie [bedingter Zugriff](https://docs.microsoft.com/azure/active-directory/conditional-access/overview), [mehrstufige Authentifizierung](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks), [einmaliges Anmelden](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso) und [automatische Benutzerbereitstellung](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning) einfach und sicher.
+Azure Active Directory (Azure AD) ist der cloudbasierte Identitäts- und Zugriffsverwaltungsdienst von Microsoft. Azure AD verfügt über sichere Lösungen für die Authentifizierung und Autorisierung, damit Kunden, Partner und Mitarbeiter auf die benötigten Anwendungen zugreifen können. Mit Azure AD ist die Identitäts- und Zugriffsverwaltung durch Features wie [bedingter Zugriff](../conditional-access/overview.md), [mehrstufige Authentifizierung](../authentication/concept-mfa-howitworks.md), [einmaliges Anmelden](../hybrid/how-to-connect-sso.md) und [automatische Benutzerbereitstellung](../app-provisioning/user-provisioning.md) einfach und sicher.
 
-Wenn Ihr Unternehmen über ein Microsoft 365-Abonnement verfügt, ist die Wahrscheinlichkeit hoch, dass Sie Azure AD [bereits nutzen](https://docs.microsoft.com/office365/enterprise/about-office-365-identity). Azure AD kann aber für Ihre gesamten Anwendungen verwendet werden. Indem Sie [Ihre Anwendungsverwaltung zentralisieren](https://docs.microsoft.com/azure/active-directory/manage-apps/common-scenarios), können Sie dieselben Features, Tools und Richtlinien für die Identitätsverwaltung Ihres gesamten App-Portfolios verwenden. Hierbei erhalten Sie eine einheitliche Lösung, die zu einer besseren Sicherheit, reduzierten Kosten und einer Steigerung der Produktivität führt und Ihnen die Sicherstellung der Konformität ermöglicht. Darüber hinaus erhalten Sie Remotezugriff auf lokale Apps.
+Wenn Ihr Unternehmen über ein Microsoft 365-Abonnement verfügt, ist die Wahrscheinlichkeit hoch, dass Sie Azure AD [bereits nutzen](/office365/enterprise/about-office-365-identity). Azure AD kann aber für Ihre gesamten Anwendungen verwendet werden. Indem Sie [Ihre Anwendungsverwaltung zentralisieren](../manage-apps/common-scenarios.md), können Sie dieselben Features, Tools und Richtlinien für die Identitätsverwaltung Ihres gesamten App-Portfolios verwenden. Hierbei erhalten Sie eine einheitliche Lösung, die zu einer besseren Sicherheit, reduzierten Kosten und einer Steigerung der Produktivität führt und Ihnen die Sicherstellung der Konformität ermöglicht. Darüber hinaus erhalten Sie Remotezugriff auf lokale Apps.
 
 In diesem Leitfaden wird beschrieben, wie Sie Ihre gesamten Anwendungen in Azure AD integrieren. In jedem Schritt wird der Wert beschrieben, und es sind Links zu den Ressourcen angegeben, unter denen Sie Informationen zu den technischen Details finden. Diese Schritte sind hier in der von uns empfohlenen Reihenfolge angegeben. Sie können aber auch zu jedem Teil des Prozesses springen, um mit dem Schritt zu starten, der für Sie den größten Nutzen bringt.
 
-Weitere Ressourcen zu diesem Thema, z. B. ausführliche Whitepaper zum Geschäftsprozess, finden Sie auf der Seite [Ressourcen zum Migrieren von Anwendungen zu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources).
+Weitere Ressourcen zu diesem Thema, z. B. ausführliche Whitepaper zum Geschäftsprozess, finden Sie auf der Seite [Ressourcen zum Migrieren von Anwendungen zu Azure Active Directory](../manage-apps/migration-resources.md).
 
 ## <a name="1-use-azure-ad-for-new-applications"></a>1. Verwenden von Azure AD für neue Anwendungen
 
-Konzentrieren Sie sich zuerst auf neu erworbene Anwendungen. Wenn Ihr Unternehmen mit der Nutzung einer neuen Anwendung beginnt, sollten Sie sie sofort [Ihrem Azure AD-Mandanten hinzufügen](https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal). Richten Sie eine Unternehmensrichtlinie ein, damit das Hinzufügen neuer Apps zu Azure AD die Standardvorgehensweise Ihrer Organisation ist. Dies bedeutet für vorhandene Geschäftsprozesse nur eine minimale Störung und ermöglicht Ihnen die Untersuchung und Bestätigung des Nutzens, den Sie mit der Integration von Apps erzielen, ohne dass sich die derzeitigen Geschäftsabläufe für die Mitarbeiter Ihres Unternehmens ändern.
+Konzentrieren Sie sich zuerst auf neu erworbene Anwendungen. Wenn Ihr Unternehmen mit der Nutzung einer neuen Anwendung beginnt, sollten Sie sie sofort [Ihrem Azure AD-Mandanten hinzufügen](../manage-apps/add-application-portal.md). Richten Sie eine Unternehmensrichtlinie ein, damit das Hinzufügen neuer Apps zu Azure AD die Standardvorgehensweise Ihrer Organisation ist. Dies bedeutet für vorhandene Geschäftsprozesse nur eine minimale Störung und ermöglicht Ihnen die Untersuchung und Bestätigung des Nutzens, den Sie mit der Integration von Apps erzielen, ohne dass sich die derzeitigen Geschäftsabläufe für die Mitarbeiter Ihres Unternehmens ändern.
 
-Azure Active Directory (Azure AD) enthält einen Katalog mit Tausenden von vorab integrierten Anwendungen, um Ihnen den Einstieg zu erleichtern. Sie können [Ihrer Azure AD-Organisation eine Katalog-App hinzufügen](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app), indem Sie die Schritt-für-Schritt-[Tutorials](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) für die Integration in beliebte Apps verwenden. Beispiele:
+Azure Active Directory (Azure AD) enthält einen Katalog mit Tausenden von vorab integrierten Anwendungen, um Ihnen den Einstieg zu erleichtern. Sie können [Ihrer Azure AD-Organisation eine Katalog-App hinzufügen](../manage-apps/add-application-portal.md), indem Sie die Schritt-für-Schritt-[Tutorials](../saas-apps/tutorial-list.md) für die Integration in beliebte Apps verwenden. Beispiele:
 
-- [ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-tutorial)
-- [Workday](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-tutorial)
-- [Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-tutorial)
-- [AWS](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial)
-- [Puffer](https://docs.microsoft.com/azure/active-directory/saas-apps/slack-tutorial)
+- [ServiceNow](../saas-apps/servicenow-tutorial.md)
+- [Workday](../saas-apps/workday-tutorial.md)
+- [Salesforce](../saas-apps/salesforce-tutorial.md)
+- [AWS](../saas-apps/amazon-web-service-tutorial.md)
+- [Puffer](../saas-apps/slack-tutorial.md)
 
-Darüber hinaus können Sie auch [nicht im Katalog enthaltene Anwendungen integrieren](https://docs.microsoft.com/azure/active-directory/manage-apps/add-non-gallery-app). Beispiele hierfür sind alle Anwendungen, die in Ihrer Organisation bereits vorhanden sind, oder alle Drittanbieteranwendungen von einem Anwender, der nicht bereits im Azure AD-Katalog enthalten ist. Sie haben auch die Möglichkeit, [Ihre App dem Katalog hinzuzufügen](https://docs.microsoft.com/azure/active-directory/azuread-dev/howto-app-gallery-listing), falls sie darin noch nicht enthalten ist.
+Darüber hinaus können Sie auch [nicht im Katalog enthaltene Anwendungen integrieren](../manage-apps/view-applications-portal.md). Beispiele hierfür sind alle Anwendungen, die in Ihrer Organisation bereits vorhanden sind, oder alle Drittanbieteranwendungen von einem Anwender, der nicht bereits im Azure AD-Katalog enthalten ist. Sie haben auch die Möglichkeit, [Ihre App dem Katalog hinzuzufügen](../azuread-dev/howto-app-gallery-listing.md), falls sie darin noch nicht enthalten ist.
 
 Außerdem können Sie die von Ihnen intern entwickelten Apps integrieren. Dies wird in Schritt 5 dieses Handbuchs beschrieben.
 
@@ -46,11 +46,11 @@ Außerdem können Sie die von Ihnen intern entwickelten Apps integrieren. Dies w
 
 Ermitteln Sie als Nächstes die Anwendungen, die von Mitarbeitern häufig genutzt werden, und priorisieren Sie Ihre Arbeit für die Integration in Azure AD.
 
-Sie können beginnen, indem Sie die [Cloud Discovery-Tools](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it) von Microsoft Cloud App Security verwenden, um für Ihr Netzwerk die Ermittlung von „Schatten-IT“ durchzuführen (Apps, die nicht von der IT-Abteilung verwaltet werden). Sie können [Microsoft Defender Advanced Threat Protection (ATP) verwenden](https://docs.microsoft.com/cloud-app-security/wdatp-integration), um den Ermittlungsprozess zu vereinfachen und zu erweitern.
+Sie können beginnen, indem Sie die [Cloud Discovery-Tools](/cloud-app-security/tutorial-shadow-it) von Microsoft Cloud App Security verwenden, um für Ihr Netzwerk die Ermittlung von „Schatten-IT“ durchzuführen (Apps, die nicht von der IT-Abteilung verwaltet werden). Sie können [Microsoft Defender Advanced Threat Protection (ATP) verwenden](/cloud-app-security/wdatp-integration), um den Ermittlungsprozess zu vereinfachen und zu erweitern.
 
-Außerdem können Sie den [AD FS-Anwendungsaktivitätsbericht](https://docs.microsoft.com/azure/active-directory/manage-apps/migrate-adfs-application-activity) im Azure-Portal verwenden, um alle AD FS-Apps in Ihrer Organisation, die Anzahl von dafür angemeldeten eindeutigen Benutzern und die Kompatibilität in Bezug auf die Integration in Azure AD zu ermitteln.
+Außerdem können Sie den [AD FS-Anwendungsaktivitätsbericht](../manage-apps/migrate-adfs-application-activity.md) im Azure-Portal verwenden, um alle AD FS-Apps in Ihrer Organisation, die Anzahl von dafür angemeldeten eindeutigen Benutzern und die Kompatibilität in Bezug auf die Integration in Azure AD zu ermitteln.
 
-Nachdem Sie die Details für Ihre vorhandene Landschaft ermittelt haben, sollten Sie einen [Plan erstellen](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources) und die Apps mit der höchsten Priorität für die Integration priorisieren. Hier sind einige Beispiele für hilfreiche Fragen zur Unterstützung dieses Prozesses angegeben:
+Nachdem Sie die Details für Ihre vorhandene Landschaft ermittelt haben, sollten Sie einen [Plan erstellen](../manage-apps/migration-resources.md) und die Apps mit der höchsten Priorität für die Integration priorisieren. Hier sind einige Beispiele für hilfreiche Fragen zur Unterstützung dieses Prozesses angegeben:
 
 - Welche Apps werden am häufigsten verwendet?
 - Für welche ist das Risiko am höchsten?
@@ -65,8 +65,8 @@ Während Ihres Ermittlungsprozesses haben Sie ggf. Anwendungen ermittelt, die vo
 
 - Einsparung von Kosten, indem die lokale Benutzerbereitstellung und -authentifizierung sowie die Lizenzierungsgebühren wegfallen, die an andere Cloudidentitätsanbieter für den gleichen Dienst gezahlt werden müssen
 - Reduzierung des Verwaltungsaufwands und Ermöglichung von strengeren Sicherheitsmaßnahmen mit weniger Redundanzen für Ihren Prozess zur Identitäts- und Zugriffsverwaltung
-- Ermöglichung des Zugriffs mit sicherem einmaligem Anmelden auf ALLE benötigten Anwendungen für Mitarbeiter über das [MyApps-Portal](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-collections)
-- Verbesserung der Intelligence-Ebene der Dienste für [Identity Protection](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection) von Azure AD, z. B. bedingter Zugriff, indem die Datenmenge zur App-Nutzung erhöht wird und die erzielten Vorteile auf neu hinzugefügte Apps ausgedehnt werden
+- Ermöglichung des Zugriffs mit sicherem einmaligem Anmelden auf ALLE benötigten Anwendungen für Mitarbeiter über das [MyApps-Portal](../manage-apps/access-panel-collections.md)
+- Verbesserung der Intelligence-Ebene der Dienste für [Identity Protection](../identity-protection/overview-identity-protection.md) von Azure AD, z. B. bedingter Zugriff, indem die Datenmenge zur App-Nutzung erhöht wird und die erzielten Vorteile auf neu hinzugefügte Apps ausgedehnt werden
 
 Wir haben einen Leitfaden zur Verwaltung des Geschäftsprozesses für die Integration von Apps in Azure AD veröffentlicht. Darin sind beispielsweise ein [Poster](https://aka.ms/AppOnePager) und eine [Präsentation](https://aka.ms/AppGuideline) enthalten, damit Sie die für Geschäftsprozesse und Anwendungen verantwortlichen Personen informieren und deren Interesse wecken können. Sie können diese Beispiele mit Ihrem eigenen Branding versehen und für Ihre Organisation veröffentlichen, indem Sie Ihr Unternehmensportal, einen Newsletter oder ein anderes Medium verwenden, während Sie diesen Prozess durchführen.
 
@@ -74,7 +74,7 @@ Ein guter Ausgangspunkt ist die Auswertung Ihrer Nutzung von AD FS (Active Dire
 
 ![Im Diagramm sind lokale Apps, Branchenanwendungen, SaaS-Apps und Office 365-Apps (über Azure AD) dargestellt, die durch gepunktete Linien jeweils mit Active Directory und AD FS verbunden sind.](\media\five-steps-to-full-application-integration-with-azure-ad\adfs-integration-1.png)
 
-Sie können diese Konfiguration aktualisieren, indem Sie [AD FS durch Azure AD als Mittelpunkt Ihrer Lösung für die Identitätsverwaltung ersetzen](https://docs.microsoft.com/azure/active-directory/manage-apps/migrate-adfs-apps-to-azure). Dies ermöglicht die Anmeldung für alle Apps, auf die Ihre Mitarbeiter zugreifen möchten. Die Mitarbeiter können alle Geschäftsanwendungen, die sie benötigen, über das [MyApps-Portal](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access) leicht finden und kommen darüber hinaus in den Genuss der oben beschriebenen weiteren Vorteile.
+Sie können diese Konfiguration aktualisieren, indem Sie [AD FS durch Azure AD als Mittelpunkt Ihrer Lösung für die Identitätsverwaltung ersetzen](../manage-apps/migrate-adfs-apps-to-azure.md). Dies ermöglicht die Anmeldung für alle Apps, auf die Ihre Mitarbeiter zugreifen möchten. Die Mitarbeiter können alle Geschäftsanwendungen, die sie benötigen, über das [MyApps-Portal](../user-help/my-apps-portal-end-user-access.md) leicht finden und kommen darüber hinaus in den Genuss der oben beschriebenen weiteren Vorteile.
 
 ![Im Diagramm sind lokale Apps (über Active Directory und AD FS), Branchenanwendungen, SaaS-Apps und Office 365-Apps dargestellt, die durch gepunktete Linien jeweils mit Azure Active Directory verbunden sind.](\media\five-steps-to-full-application-integration-with-azure-ad\adfs-integration-2.png)
 
@@ -86,27 +86,27 @@ Sie können auch Apps, für die ein anderer Anbieter eines cloudbasierten Identi
 
 ## <a name="4-integrate-on-premises-applications"></a>4. Integrieren lokaler Anwendungen
 
-In der Vergangenheit wurde für die Sicherheit von Anwendungen gesorgt, indem der Zugriff nur zugelassen wurde, während eine Verbindung mit dem Unternehmensnetzwerk bestanden hat. In einer zunehmend vernetzten Welt soll aber der Zugriff auf Apps für Kunden, Partner und Mitarbeiter unabhängig von ihrem Standort ermöglicht werden. Der [Azure AD-Anwendungsproxy](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-application-proxy) (AppProxy) ist ein Feature von Azure AD, mit dem Ihre vorhandenen lokalen Apps mit Azure AD verbunden werden und bei dem es nicht erforderlich ist, dass Sie zu diesem Zweck Edgeserver oder andere zusätzliche Infrastruktur betreiben.
+In der Vergangenheit wurde für die Sicherheit von Anwendungen gesorgt, indem der Zugriff nur zugelassen wurde, während eine Verbindung mit dem Unternehmensnetzwerk bestanden hat. In einer zunehmend vernetzten Welt soll aber der Zugriff auf Apps für Kunden, Partner und Mitarbeiter unabhängig von ihrem Standort ermöglicht werden. Der [Azure AD-Anwendungsproxy](../manage-apps/what-is-application-proxy.md) (AppProxy) ist ein Feature von Azure AD, mit dem Ihre vorhandenen lokalen Apps mit Azure AD verbunden werden und bei dem es nicht erforderlich ist, dass Sie zu diesem Zweck Edgeserver oder andere zusätzliche Infrastruktur betreiben.
 
 ![Der Anwendungsproxydienst ist im Diagramm in Aktion dargestellt. Ein Benutzer greift auf „https://sales.contoso.com“ zu, und seine Anforderung wird über „https://sales-contoso.msappproxy.net“ in Azure Active Directory an die lokale Adresse „http://sales“ umgeleitet.](./media/five-steps-to-full-application-integration-with-azure-ad\app-proxy.png)
 
-Sie können die Informationen unter [Tutorial: Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application) nutzen, um den Anwendungsproxy zu aktivieren und die lokale Anwendung Ihrem Azure AD-Mandanten hinzuzufügen.
+Sie können die Informationen unter [Tutorial: Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure Active Directory](../manage-apps/application-proxy-add-on-premises-application.md) nutzen, um den Anwendungsproxy zu aktivieren und die lokale Anwendung Ihrem Azure AD-Mandanten hinzuzufügen.
 
-Darüber hinaus können Sie Controller für die Anwendungsbereitstellung integrieren, z. B. F5 Big-IP APM oder Zscaler Private Access. Indem Sie diese in Azure AD integrieren, erhalten Sie die moderne Authentifizierungs- und Identitätsverwaltung von Azure AD sowie die Features für Datenverkehrsverwaltung und Sicherheit des Partnerprodukts. Wir nennen diese Lösung [Sicherer Hybridzugriff](https://docs.microsoft.com/azure/active-directory/manage-apps/secure-hybrid-access). Falls Sie derzeit einen der folgenden Dienste nutzen, helfen Ihnen die Informationen in den Tutorials weiter, in denen die Integration in Azure AD Schritt für Schritt beschrieben wird.
+Darüber hinaus können Sie Controller für die Anwendungsbereitstellung integrieren, z. B. F5 Big-IP APM oder Zscaler Private Access. Indem Sie diese in Azure AD integrieren, erhalten Sie die moderne Authentifizierungs- und Identitätsverwaltung von Azure AD sowie die Features für Datenverkehrsverwaltung und Sicherheit des Partnerprodukts. Wir nennen diese Lösung [Sicherer Hybridzugriff](../manage-apps/secure-hybrid-access.md). Falls Sie derzeit einen der folgenden Dienste nutzen, helfen Ihnen die Informationen in den Tutorials weiter, in denen die Integration in Azure AD Schritt für Schritt beschrieben wird.
 
-- [Akamai Enterprise Application Access (EAA)](https://docs.microsoft.com/azure/active-directory/saas-apps/akamai-tutorial)
-- [Citrix Application Deliver Controller (ADC)](https://docs.microsoft.com/azure/active-directory/saas-apps/citrix-netscaler-tutorial) (vormals Citrix NetScaler)
-- [F5 Big-IP APM](https://docs.microsoft.com/azure/active-directory/saas-apps/headerf5-tutorial)
-- [Zscaler Private Access (ZPA)](https://docs.microsoft.com/azure/active-directory/saas-apps/zscalerprivateaccess-tutorial)
+- [Akamai Enterprise Application Access (EAA)](../saas-apps/akamai-tutorial.md)
+- [Citrix Application Deliver Controller (ADC)](../saas-apps/citrix-netscaler-tutorial.md) (vormals Citrix NetScaler)
+- [F5 Big-IP APM](../saas-apps/headerf5-tutorial.md)
+- [Zscaler Private Access (ZPA)](../saas-apps/zscalerprivateaccess-tutorial.md)
 
 ## <a name="5-integrate-apps-your-developers-build"></a>5. Integrieren der von Ihren Entwicklern erstellten Apps
 
-Für Apps, die in Ihrem Unternehmen erstellt werden, können Ihre Entwickler die [Microsoft Identity Platform](https://docs.microsoft.com/azure/active-directory/develop/) verwenden, um die Authentifizierung und Autorisierung zu implementieren. In die Plattform integrierte Anwendungen werden [unter Azure AD registriert](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app) und wie jede andere App Ihres Portfolios verwaltet.
+Für Apps, die in Ihrem Unternehmen erstellt werden, können Ihre Entwickler die [Microsoft Identity Platform](../develop/index.yml) verwenden, um die Authentifizierung und Autorisierung zu implementieren. In die Plattform integrierte Anwendungen werden [unter Azure AD registriert](../develop/quickstart-register-app.md) und wie jede andere App Ihres Portfolios verwaltet.
 
-Entwickler können die Plattform sowohl für Apps zur internen Nutzung als auch für Kunden-Apps verwenden, und die Nutzung hat zudem noch weitere Vorteile. Mit der [Microsoft-Authentifizierungsbibliothek (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview), die Teil der Plattform ist, können Entwickler moderne Umgebungen bereitstellen, z. B. für die mehrstufige Authentifizierung und die Verwendung von Sicherheitsschlüsseln für den Zugriff auf ihre Apps, ohne die Implementierung selbst durchführen zu müssen. Darüber hinaus besteht für Apps, die in die Microsoft Identity Platform integriert sind, Zugriff auf [Microsoft Graph](https://docs.microsoft.com/azure/active-directory/develop/microsoft-graph-intro). Dies ist ein einheitlicher API-Endpunkt, über den die Microsoft 365-Daten bereitgestellt werden, mit denen die Muster für Produktivität, Identität und Sicherheit einer Organisation beschrieben werden. Entwickler können diese Informationen nutzen, um Features zu implementieren, mit denen die Produktivität für Ihre Benutzer erhöht wird. Ein Beispiel hierfür ist die Identifizierung der Personen, mit denen der Benutzer in letzter Zeit interagiert hat, und die Anzeige dieser Personen auf der Benutzeroberfläche der App.
+Entwickler können die Plattform sowohl für Apps zur internen Nutzung als auch für Kunden-Apps verwenden, und die Nutzung hat zudem noch weitere Vorteile. Mit der [Microsoft-Authentifizierungsbibliothek (MSAL)](../develop/msal-overview.md), die Teil der Plattform ist, können Entwickler moderne Umgebungen bereitstellen, z. B. für die mehrstufige Authentifizierung und die Verwendung von Sicherheitsschlüsseln für den Zugriff auf ihre Apps, ohne die Implementierung selbst durchführen zu müssen. Darüber hinaus besteht für Apps, die in die Microsoft Identity Platform integriert sind, Zugriff auf [Microsoft Graph](../develop/microsoft-graph-intro.md). Dies ist ein einheitlicher API-Endpunkt, über den die Microsoft 365-Daten bereitgestellt werden, mit denen die Muster für Produktivität, Identität und Sicherheit einer Organisation beschrieben werden. Entwickler können diese Informationen nutzen, um Features zu implementieren, mit denen die Produktivität für Ihre Benutzer erhöht wird. Ein Beispiel hierfür ist die Identifizierung der Personen, mit denen der Benutzer in letzter Zeit interagiert hat, und die Anzeige dieser Personen auf der Benutzeroberfläche der App.
 
-Wir haben eine [Videoreihe](https://www.youtube.com/watch?v=zjezqZPPOfc&amp;list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX) bereitgestellt, in der Sie eine umfassende Einführung in die Plattform sowie [viele Codebeispiele](https://docs.microsoft.com/azure/active-directory/develop/sample-v2-code) in unterstützten Sprachen und für unterschiedliche Plattformen erhalten.
+Wir haben eine [Videoreihe](https://www.youtube.com/watch?v=zjezqZPPOfc&amp;list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX) bereitgestellt, in der Sie eine umfassende Einführung in die Plattform sowie [viele Codebeispiele](../develop/sample-v2-code.md) in unterstützten Sprachen und für unterschiedliche Plattformen erhalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Ressourcen zum Migrieren von Anwendungen zu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources)
+- [Ressourcen zum Migrieren von Anwendungen zu Azure Active Directory](../manage-apps/migration-resources.md)

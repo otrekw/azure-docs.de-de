@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/24/2020
 ms.author: dech
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: b892e4c5078b50bb865a715ddf12aebc1eb05f57
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: d1948ae186662c7f60f4d49c19a4d48b424a38f7
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799110"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047478"
 ---
 # <a name="work-with-data-using-azure-storage-explorer"></a>Arbeiten mit Daten unter Verwendung von Azure Storage-Explorer
 
@@ -95,7 +95,7 @@ Indem Sie mit der rechten Maustaste auf ein Abonnement im Explorer-Bereich klick
 
 * Wenn Sie mit der rechten Maustaste auf ein Azure Cosmos DB-Konto oder eine Datenbank klicken, können Sie **Im Portal öffnen** auswählen und die Ressource über den Browser im Azure-Portal verwalten.
 
-     :::image type="content" source="./media/storage-explorer/open-in-portal.png" alt-text="Im Portal öffnen":::
+  :::image type="content" source="./media/storage-explorer/open-in-portal.png" alt-text="Im Portal öffnen":::
 
 * Sie können auch die Azure Cosmos DB-Konten, Datenbanken oder Sammlungen als **Schnellzugriff** hinzufügen.
 * **Ab hier suchen** ermöglicht eine Schlüsselwortsuche unter dem ausgewählten Pfad.
@@ -106,25 +106,25 @@ Indem Sie mit der rechten Maustaste auf ein Abonnement im Explorer-Bereich klick
 
 #### <a name="create-a-database"></a>Erstellen einer Datenbank
 
--   Klicken Sie mit der rechten Maustaste auf das Azure Cosmos DB-Konto, wählen Sie **Datenbank erstellen** aus, geben Sie den Datenbanknamen ein, und drücken Sie zum Abschluss die **Eingabetaste**.
+- Klicken Sie mit der rechten Maustaste auf das Azure Cosmos DB-Konto, wählen Sie **Datenbank erstellen** aus, geben Sie den Datenbanknamen ein, und drücken Sie zum Abschluss die **Eingabetaste**.
 
-    :::image type="content" source="./media/storage-explorer/create-database.png" alt-text="Erstellen einer Datenbank im Azure Cosmos-Konto":::
+  :::image type="content" source="./media/storage-explorer/create-database.png" alt-text="Erstellen einer Datenbank im Azure Cosmos-Konto":::
 
 #### <a name="delete-a-database"></a>Löschen einer Datenbank
 
 - Klicken Sie mit der rechten Maustaste auf die Datenbank, wählen Sie **Datenbank löschen** aus, und klicken Sie im Popupfenster auf **Ja**. Der Datenbankknoten wird gelöscht, und das Azure Cosmos DB-Konto wird automatisch aktualisiert.
 
-    :::image type="content" source="./media/storage-explorer/delete-database1.png" alt-text="Löschen der ersten Datenbank":::
+  :::image type="content" source="./media/storage-explorer/delete-database1.png" alt-text="Löschen der ersten Datenbank":::
 
-    :::image type="content" source="./media/storage-explorer/delete-database2.png" alt-text="Löschen der zweiten Datenbank":::
+  :::image type="content" source="./media/storage-explorer/delete-database2.png" alt-text="Löschen der zweiten Datenbank":::
 
 #### <a name="create-a-collection"></a>Erstellen einer Sammlung
 
 1. Klicken Sie mit der rechten Maustaste auf die Datenbank, wählen Sie **Sammlung erstellen** aus, und geben Sie dann die benötigten Informationen ein, z.B. **Sammlungs-ID**, **Speicherkapazität** usw. Klicken Sie auf **OK**, um den Vorgang abzuschließen.
 
-    :::image type="content" source="./media/storage-explorer/create-collection.png" alt-text="Erstellen der ersten Sammlung in der Datenbank":::
+   :::image type="content" source="./media/storage-explorer/create-collection.png" alt-text="Erstellen der ersten Sammlung in der Datenbank":::
 
-    :::image type="content" source="./media/storage-explorer/create-collection2.png" alt-text="Erstellen der zweite Sammlung in der Datenbank":::
+   :::image type="content" source="./media/storage-explorer/create-collection2.png" alt-text="Erstellen der zweite Sammlung in der Datenbank":::
 
 2. Wählen Sie **Unbegrenzt** aus, um den Partitionsschlüssel angeben zu können, und klicken Sie dann auf **OK**, um den Vorgang abzuschließen.
 
@@ -146,7 +146,7 @@ Indem Sie mit der rechten Maustaste auf ein Abonnement im Explorer-Bereich klick
 
 - Um ein neues Dokument zu erstellen, öffnen Sie im linken Fenster die Option **Dokumente**, und klicken Sie auf **Neues Dokument**. Bearbeiten Sie den Inhalt im rechten Bereich, und klicken Sie auf **Speichern**. Sie können auch ein vorhandenes Dokument aktualisieren und dann auf **Speichern** klicken. Änderungen können durch Klicken auf **Verwerfen** verworfen werden.
 
-    :::image type="content" source="./media/storage-explorer/document.png" alt-text="Erstellen eines neuen Dokuments":::
+  :::image type="content" source="./media/storage-explorer/document.png" alt-text="Erstellen eines neuen Dokuments":::
 
 #### <a name="delete-a-document"></a>Löschen eines Dokuments
 
@@ -156,7 +156,7 @@ Indem Sie mit der rechten Maustaste auf ein Abonnement im Explorer-Bereich klick
 
 - Bearbeiten Sie den Dokumentfilter, indem Sie eine [SQL-Abfrage](how-to-sql-query.md) eingeben und dann auf **Anwenden** klicken.
 
-    :::image type="content" source="./media/storage-explorer/document-filter.png" alt-text="Abfrage für bestimmte Dokumente":::
+  :::image type="content" source="./media/storage-explorer/document-filter.png" alt-text="Abfrage für bestimmte Dokumente":::
 
 ### <a name="graph-management"></a>Graphverwaltung
 
@@ -165,7 +165,7 @@ Indem Sie mit der rechten Maustaste auf ein Abonnement im Explorer-Bereich klick
 1. Öffnen Sie zum Erstellen eines neuen Scheitelpunkts im linken Fenster die Option **Graph**, und wählen Sie **Neuer Scheitelpunkt** aus. Bearbeiten Sie den Inhalt, und klicken Sie dann auf **OK**.
 2. Klicken Sie im rechten Bereich auf das Stiftsymbol, um einen vorhandenen Scheitelpunkt zu ändern.
 
-    :::image type="content" source="./media/storage-explorer/vertex.png" alt-text="Ändern des Scheitelpunkts eines Graphen":::
+   :::image type="content" source="./media/storage-explorer/vertex.png" alt-text="Ändern des Scheitelpunkts eines Graphen":::
 
 #### <a name="delete-a-graph"></a>Löschen eines Graphen
 
@@ -175,7 +175,7 @@ Indem Sie mit der rechten Maustaste auf ein Abonnement im Explorer-Bereich klick
 
 - Bearbeiten Sie den Graphfilter, indem Sie eine [Gremlin-Abfrage](gremlin-support.md) eingeben. Klicken Sie dann auf **Filter anwenden**.
 
-    :::image type="content" source="./media/storage-explorer/graph-filter.png" alt-text="Ausführen einer Graphabfrage":::
+   :::image type="content" source="./media/storage-explorer/graph-filter.png" alt-text="Ausführen einer Graphabfrage":::
 
 ### <a name="table-management"></a>Tabellenverwaltung
 
@@ -184,33 +184,34 @@ Indem Sie mit der rechten Maustaste auf ein Abonnement im Explorer-Bereich klick
 1. Öffnen Sie zum Erstellen einer neuen Tabelle im linken Fenster die Option **Entitäten**, und wählen Sie **Hinzufügen** aus. Bearbeiten Sie den Inhalt im Dialogfeld **Entität hinzufügen**: Klicken Sie zum Hinzufügen einer Eigenschaft auf die Schaltfläche **Eigenschaft hinzufügen**, und wählen Sie dann **Einfügen** aus.
 2. Wenn Sie eine Tabelle ändern möchten, klicken Sie auf **Bearbeiten**, ändern den Inhalt und klicken dann auf **Aktualisieren**.
 
-    :::image type="content" source="./media/storage-explorer/table.png" alt-text="Erstellen und Ändern einer Tabelle":::
+   :::image type="content" source="./media/storage-explorer/table.png" alt-text="Erstellen und Ändern einer Tabelle":::
 
 #### <a name="import-and-export-table"></a>Importieren und Exportieren einer Tabelle
 
 1. Klicken Sie zum Importieren auf die Schaltfläche **Importieren**, und wählen Sie eine vorhandene Tabelle aus.
 2. Klicken Sie zum Exportieren auf die Schaltfläche **Exportieren**, und wählen Sie ein Ziel aus.
 
-    :::image type="content" source="./media/storage-explorer/table-import-export.png" alt-text="Importieren oder Exportieren einer Tabelle":::
+   :::image type="content" source="./media/storage-explorer/table-import-export.png" alt-text="Importieren oder Exportieren einer Tabelle":::
 
 #### <a name="delete-entities"></a>Löschen von Entitäten
 
 - Wählen Sie die Entitäten aus, und klicken Sie auf die Schaltfläche **Löschen**.
 
-    :::image type="content" source="./media/storage-explorer/table-delete.png" alt-text="Löschen einer Tabelle":::
+  :::image type="content" source="./media/storage-explorer/table-delete.png" alt-text="Löschen einer Tabelle":::
 
 #### <a name="query-table"></a>Abfragen einer Tabelle
 
 - Klicken Sie auf die Schaltfläche **Abfrage**, geben Sie eine Abfragebedingung ein, und klicken Sie dann auf die Schaltfläche **Abfrage ausführen**. Schließen Sie den Abfragebereich, indem Sie auf die Schaltfläche **Abfrage schließen** klicken.
 
-    :::image type="content" source="./media/storage-explorer/table-query.png" alt-text="Abfragen von Daten aus der Tabelle":::
+  :::image type="content" source="./media/storage-explorer/table-query.png" alt-text="Abfragen von Daten aus der Tabelle":::
 
 ### <a name="manage-stored-procedures-triggers-and-udfs"></a>Verwalten von gespeicherten Prozeduren, Triggern und UDFs
 
 * Zum Erstellen einer gespeicherten Prozedur klicken Sie in der linken Struktur mit der rechten Maustaste auf **Gespeicherte Prozedur** und wählen **Gespeicherte Prozedur erstellen** aus. Geben Sie im linken Fenster einen Namen und im rechten Fenster die Skripts für die gespeicherte Prozedur ein, und klicken Sie dann auf **Erstellen**.
 * Sie können auch vorhandene gespeicherte Prozeduren bearbeiten: Doppelklicken Sie auf die entsprechende Prozedur, nehmen Sie die gewünschten Änderungen vor, und klicken Sie auf **Aktualisieren**, um die Prozedur zu speichern. Wenn Sie den Vorgang abbrechen möchten, klicken Sie auf **Verwerfen**.
 
-    :::image type="content" source="./media/storage-explorer/stored-procedure.png" alt-text="Erstellen und Verwalten von gespeicherten Prozeduren":::
+  :::image type="content" source="./media/storage-explorer/stored-procedure.png" alt-text="Erstellen und Verwalten von gespeicherten Prozeduren":::
+
 * Die Vorgänge für **Trigger** und **UDFs** ähneln **gespeicherten Prozeduren**.
 
 ## <a name="troubleshooting"></a>Problembehandlung

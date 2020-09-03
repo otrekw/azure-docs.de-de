@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/06/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 881005c2597eadc3b3b0be9a01fbf9d82d35d050
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7fb1f88ab5eaf22047f5a696ec9cb021981cdd5e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87070786"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297177"
 ---
 # <a name="bind-an-azure-cosmos-db-database-to-your-azure-spring-cloud-application"></a>Binden einer Azure Cosmos DB-Datenbank an Ihre Azure Spring Cloud-Anwendung
 
@@ -20,7 +20,7 @@ Mit Azure Spring Cloud können Sie ausgewählte Azure-Dienste automatisch an Ihr
 
 Voraussetzungen:
 
-* Eine bereitgestellte Azure Spring Cloud-Instanz. Informationen zu den ersten Schritten finden Sie unter [Schnellstart: Starten einer Java Spring-Anwendung mit der Azure CLI](spring-cloud-quickstart-launch-app-cli.md).
+* Eine bereitgestellte Azure Spring Cloud-Instanz. Informationen zu den ersten Schritten finden Sie unter [Schnellstart: Starten einer Java Spring-Anwendung mit der Azure CLI](spring-cloud-quickstart.md).
 * Ein Azure Cosmos DB-Konto mit mindestens der Berechtigungsebene „Mitwirkender“
 
 ## <a name="bind-azure-cosmos-db"></a>Binden von Azure Cosmos DB

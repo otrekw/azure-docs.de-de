@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: references_regions
-ms.openlocfilehash: 8748e4f78582ab133d7e527daba1c126dcb7e7e2
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 0fe8c4753cef9fa829a2cb696e164dbdf5f2b8f2
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543706"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297568"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Erstellen und Konfigurieren eines AKS-Clusters zur Verwendung von virtuellen Knoten im Azure-Portal
 
@@ -62,7 +62,7 @@ Für Bereitstellungen von virtuellen Knoten werden die folgenden Regionen unters
 Die Funktionalität der virtuellen Knoten ist stark abhängig von den ACI-Features. Neben den [Kontingenten und Limits für Azure Container Instances](../container-instances/container-instances-quotas.md) werden die folgenden Szenarien für virtuelle Knoten noch nicht unterstützt:
 
 * Verwenden des Dienstprinzipals zur Übertragung von ACR-Images mithilfe von Pull. Eine [Problemumgehung](https://github.com/virtual-kubelet/azure-aci/blob/master/README.md#private-registry) ist mithilfe von [Kubernetes-Geheimnissen](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line) möglich.
-* [Einschränkungen für virtuelle Netzwerke](../container-instances/container-instances-vnet.md), darunter für VNET-Peering, für Kubernetes-Netzwerkrichtlinien und für ausgehenden Internetdatenverkehr im Zusammenhang mit Netzwerksicherheitsgruppen.
+* [Einschränkungen für virtuelle Netzwerke](../container-instances/container-instances-virtual-network-concepts.md), darunter für VNET-Peering, für Kubernetes-Netzwerkrichtlinien und für ausgehenden Internetdatenverkehr im Zusammenhang mit Netzwerksicherheitsgruppen.
 * Initialisierungscontainer.
 * [Hostaliase](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/).
 * [Argumente](../container-instances/container-instances-exec.md#restrictions) für „exec“ in ACI.

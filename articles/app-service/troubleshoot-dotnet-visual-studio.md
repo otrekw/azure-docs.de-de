@@ -6,16 +6,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 1ed7a6ebea12e5db37ec89c73db105dd7ce7e2ab
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: de39789a45856211421e3ec5638a2df94d49976c
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211993"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958710"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Problembehandlung von Apps in Azure App Service mit Visual Studio
 ## <a name="overview"></a>Übersicht
-In diesem Tutorial lernen Sie die Visual Studio-Tools zum Debuggen von Apps in [App Service](https://go.microsoft.com/fwlink/?LinkId=529714) kennen. Sie führen die App remote im [Debugmodus](https://docs.microsoft.com/visualstudio/debugger/) aus oder zeigen Anwendungs- und Webserverprotokolle an.
+In diesem Tutorial lernen Sie die Visual Studio-Tools zum Debuggen von Apps in [App Service](https://go.microsoft.com/fwlink/?LinkId=529714) kennen. Sie führen die App remote im [Debugmodus](/visualstudio/debugger/) aus oder zeigen Anwendungs- und Webserverprotokolle an.
 
 Sie lernen Folgendes:
 
@@ -680,7 +680,7 @@ Weitere Informationen zur Analyse von Webserverprotokollen finden Sie in den fol
   Ein Tool zum Anzeigen von Daten in Webserverprotokollen ( *.log* -Dateien).
 * [Problembehandlung bei IIS-Leistungsproblemen oder Anwendungsfehlern mithilfe von LogParser](https://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
   (Problembehandlung von IIS-Leistungsproblemen oder Anwendungsfehlern mithilfe von LogParser, in englischer Sprache) Eine Einführung in das LogParser-Tool, das Sie bei der Analyse von Webserverprotokollen unterstützt.
-* [Blogbeiträge von Robert McMurray zur Verwendung von LogParser](https://docs.microsoft.com/archive/blogs/robert_mcmurray/using-logparser-with-ftp-7-x-sessions)<br/>
+* [Blogbeiträge von Robert McMurray zur Verwendung von LogParser](/archive/blogs/robert_mcmurray/using-logparser-with-ftp-7-x-sessions)<br/>
 * [HTTP-Statuscodes in IIS 7.0, IIS 7.5 und IIS 8.0](https://support.microsoft.com/kb/943891)
 
 ### <a name="analyzing-failed-request-tracing-logs"></a>Analyse der Ablaufverfolgungsprotokolle mit fehlgeschlagenen Anforderungen

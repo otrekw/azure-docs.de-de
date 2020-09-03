@@ -2,17 +2,17 @@
 title: Integrieren einer Stamm- oder Apex-Domäne in eine vorhandene Front Door-Instanz – Azure-Portal
 description: Informationen zum Integrieren einer Stamm- oder Apex-Domäne in eine Front Door-Instanz mithilfe des Azure-Portals
 services: front-door
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.topic: how-to
 ms.date: 5/21/2019
-ms.author: sharadag
-ms.openlocfilehash: d8f08f7cde54aaf705872c8c45bc18eb4a27df77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 05267ad43f6e7f89ec50b1765d2475a02fae1702
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743591"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399578"
 ---
 # <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>Integrieren einer Stamm- oder Apex-Domäne in Ihre Front Door-Instanz
 Azure Front Door verwendet CNAME-Einträge zum Überprüfen des Domänenbesitzes beim Integrieren von benutzerdefinierten Domänen. Außerdem gibt Front Door nicht die Frontend-IP-Adresse frei, die Ihrem Front Door-Profil zugeordnet ist. Daher können Sie Ihre Apex-Domäne keiner IP-Adresse zuordnen, wenn Sie die Absicht haben, die Front Door-Instanz zu integrieren.

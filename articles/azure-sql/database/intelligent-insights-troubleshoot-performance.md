@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/12/2020
-ms.openlocfilehash: 0fd391bfb7ed8944866b80acb31d76ea43c77912
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 329d3208037548bd1cb5a5564a4a393747ed48f0
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986384"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017276"
 ---
 # <a name="troubleshoot-azure-sql-database-and-azure-sql-managed-instance-performance-issues-with-intelligent-insights"></a>Behandeln von Problemen mit der Leistung von Azure SQL-Datenbank und Azure SQL Managed Instance mithilfe von Intelligent Insights
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -168,7 +168,7 @@ Da ein Seitenlatch ein interner Steuermechanismus ist, wird seine Verwendung aut
 
 Eine Methode zur Behandlung von Latchkonflikten ist das Ersetzen eines sequenziellen Indexschlüssels durch einen nicht sequenziellen Schlüssel, um Einfügevorgänge gleichmäßig auf einen Indexbereich zu verteilen. Typischerweise verteilt eine führende Spalte im Index die Workload proportional. Eine andere mögliche Methode ist die Tabellenpartitionierung. Das Erstellen eines Hashpartitionierungsschemas mit einer berechneten Spalte für eine partitionierte Tabelle ist eine gängige Methode zur Vermeidung übermäßiger Latchkonflikte. Im Fall von E/A-Seitenlatchkonflikten hilft das Einführen von Indizes, dieses Leistungsproblem zu beheben.
 
-Weitere Informationen finden Sie unter [Diagnose and resolve latch contention on SQL Server (Diagnostizieren und Beheben von Latchkonflikten in SQL Server)](https://download.microsoft.com/download/B/9/E/B9EDF2CD-1DBF-4954-B81E-82522880A2DC/SQLServerLatchContention.pdf) (PDF-Download).
+Weitere Informationen finden Sie unter [Diagnose and resolve latch contention on SQL Server (Diagnostizieren und Beheben von Latchkonflikten in SQL Server)](http://databaser.net/moniwiki/pds/PerformanceTuning/SQLServerLatchContention.pdf) (PDF-Download).
 
 ## <a name="missing-index"></a>Fehlender Index
 

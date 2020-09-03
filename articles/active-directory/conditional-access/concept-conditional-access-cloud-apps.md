@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: defb959a56446da337c4c7c16ee118ceecd3e674
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: b8b1440f34feb1cda2661178e520590cb9ec54f1
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846308"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948401"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Bedingter Zugriff: Cloud-Apps oder -aktionen
 
@@ -115,7 +115,7 @@ Neben den Microsoft-Apps können Administratoren jede für Azure AD registrierte
 
 - Über den [Azure AD-Anwendungsproxy](../manage-apps/what-is-application-proxy.md) veröffentlichte Anwendungen
 - [Aus dem Katalog hinzugefügte Anwendungen](../manage-apps/add-application-portal.md)
-- [Benutzerdefinierte Nicht-Kataloganwendungen](../manage-apps/add-non-gallery-app.md)
+- [Benutzerdefinierte Nicht-Kataloganwendungen](../manage-apps/view-applications-portal.md)
 - [Ältere Anwendungen, die über App-Bereitstellungscontroller und -netzwerke veröffentlicht wurden](../manage-apps/secure-hybrid-access.md)
 - Anwendungen, die [einmaliges Anmelden mit Kennwort](../manage-apps/configure-password-single-sign-on-non-gallery-applications.md) verwenden
 

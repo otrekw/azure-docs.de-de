@@ -3,20 +3,20 @@ title: Azure Front Door – Sicherheit für die Anwendungsschicht | Microsoft-Do
 description: In diesem Artikel wird erläutert, wie Azure Front Door das Schützen und Sichern Ihrer Anwendungs-Back-Ends ermöglicht.
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: e458926930c1b95d48886559551878fc6c9d0673
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: duau
+ms.openlocfilehash: 4ee50b4c7da27df3630c1b4d263f076da44189bc
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471794"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399938"
 ---
 # <a name="application-layer-security-with-front-door"></a>Sicherheit für die Anwendungsschicht mit Front Door
 Azure Front Door bietet Funktionen für den Schutz von Webanwendungen, um Ihre Webanwendungen vor Netzwerkangriffen und verbreiteten Sicherheitsrisiken und Exploits im Internet wie Einschleusung von SQL-Befehlen oder Cross-Site Scripting (XSS) zu schützen. Die Sicherheit für die Anwendungsschicht von Front Door ist ein global verteiltes Always On-Feature für HTTP(S)-Front-Ends, das böswillige Angriffe auf das Azure-Netzwerkedge beendet – weit entfernt von Ihren Back-Ends. Durch höhere Sicherheit und Leistungsoptimierungen ermöglicht Front Door schnelle und sichere Weberlebnisse für Ihre Endbenutzer.

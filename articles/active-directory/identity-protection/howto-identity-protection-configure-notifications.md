@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9090ca5b8057179b0cbef1d0a87ae563303ed2c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 291afbdd902c7563e47595132d56b354dab28a3a
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85130431"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950390"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Identity Protection Benachrichtigungen
 
@@ -29,7 +29,7 @@ Dieser Artikel gibt Ihnen eine Übersicht zu beiden Benachrichtigungs-E-Mails.
 
 ## <a name="users-at-risk-detected-email"></a>E-Mail für erkannte gefährdete Benutzer
 
-Als Reaktion auf ein erkanntes gefährdetes Konto erstellt Azure Active Directory Identity Protection eine E-Mail-Warnung mit dem Betreff **Gefährdete Benutzer erkannt**. Die E-Mail enthält einen Link zum Bericht vom Typ **[Benutzer mit Risikokennzeichnung](../reports-monitoring/concept-user-at-risk.md)** . Als bewährte Methode sollten Sie die gefährdeten Benutzer sofort untersuchen.
+Als Reaktion auf ein erkanntes gefährdetes Konto erstellt Azure Active Directory Identity Protection eine E-Mail-Warnung mit dem Betreff **Gefährdete Benutzer erkannt**. Die E-Mail enthält einen Link zum Bericht vom Typ **[Benutzer mit Risikokennzeichnung](./overview-identity-protection.md)** . Als bewährte Methode sollten Sie die gefährdeten Benutzer sofort untersuchen.
 
 Durch Konfiguration dieser Warnung können Sie angeben, bei welcher Benutzerrisikostufe die Warnung generiert werden soll. Die E-Mail wird generiert, wenn die angegebene Risikostufe des Benutzers erreicht wird. Wenn Sie beispielsweise die Richtlinie für Warnungen auf ein mittleres Benutzerrisiko festlegen und die Risikobewertung Ihres Benutzers Johann aufgrund eines Echtzeit-Anmelderisikos die mittlere Risikostufe erreicht, erhalten Sie eine E-Mail des Typs „Gefährdete Benutzer erkannt“. Wenn für den Benutzer anschließend erneut Risiken ermittelt werden, aufgrund derer die Risikostufe des Benutzers die festgelegte Risikostufe bzw. eine höhere Risikostufe erreicht, erhalten Sie weitere E-Mails dieses Typs, sobald die Risikobewertung des Benutzers neu berechnet wurde. Wenn für einen Benutzer z. B. am 1. Januar die mittlere Risikostufe erreicht wird und Sie in Ihren Einstellungen festgelegt haben, dass bei mittlerem Risiko eine Warnung ausgegeben werden soll, erhalten Sie eine E-Mail-Benachrichtigung. Wenn für denselben Benutzer am 5. Januar ein weiteres mittleres Risiko ermittelt wird und die Risikobewertung des Benutzers nach der Neuberechnung weiterhin ein mittleres Risiko anzeigt, erhalten Sie eine weitere E-Mail-Benachrichtigung. 
 
@@ -70,4 +70,4 @@ Konfigurieren Sie die wöchentliche Zusammenfassung per E-Mail im **Azure-Portal
 
 ## <a name="see-also"></a>Weitere Informationen
 
-- [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
+- [Azure Active Directory Identity Protection](./overview-identity-protection.md)

@@ -3,13 +3,13 @@ title: Authentifizieren des Zugriffs auf Azure Event Hubs mit Shared Access Sig
 description: In diesem Artikel erfahren Sie, wie Sie den Zugriff auf Event Hubs-Ressourcen mit Shared Access Signatures authentifizieren.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 5397cd746f33fc82ee63cc7d2a1f396ba704f334
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: bf1f42020237c0907ec7656735adfa46a21370f9
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423098"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89008317"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Authentifizieren des Zugriffs auf Event Hubs-Ressourcen mit Shared Access Signatures (SAS)
 Die Shared Access Signature (SAS) ermöglicht Ihnen die präzise Steuerung des Zugriffstyps, den Sie den Clients mit der Shared Access Signature gewähren. Folgende Kontrollen können Sie beispielsweise in einer SAS festlegen: 

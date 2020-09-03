@@ -3,20 +3,20 @@ title: Azure Front Door – Zwischenspeicherung | Microsoft-Dokumentation
 description: In diesem Artikel wird erläutert, wie Azure Front Door die Integrität Ihrer Back-Ends überwacht.
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: e521711cdf488f00b56e2805ee0aaa6ee8412958
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.author: duau
+ms.openlocfilehash: 1cb24e4a959e7d32a3c3b5b69a39938df4efddfa
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056957"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399870"
 ---
 # <a name="caching-with-azure-front-door"></a>Zwischenspeicherung mit Azure Front Door
 In diesem Dokument wird das Verhalten von Azure Front Door Service für Routingregeln mit aktivierter Zwischenspeicherung erläutert. Front Door ist ein modernes Content Delivery Network (CDN) und unterstützt daher neben der Beschleunigung dynamischer Websites und dem Lastenausgleich auch Zwischenspeicherungsverhalten wie jedes andere CDN.

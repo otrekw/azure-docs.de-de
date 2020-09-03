@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 515e23fa318e8e77024dadefe9a13e795999f820
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 01021530c491fd25a199f32475c031a0e7f6cd0b
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761694"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376637"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Azure Queue Storage-Trigger für Azure Functions
 
@@ -388,7 +388,7 @@ Der Algorithmus verwendet die folgende Logik:
 - Wenn eine Nachricht gefunden wird, wartet die Runtime zwei Sekunden und prüft dann, ob eine andere Nachricht vorhanden ist.
 - Wenn keine Nachricht gefunden wird, wartet sie ungefähr vier Sekunden, bevor der Versuch wiederholt wird.
 - Nach aufeinander folgenden fehlgeschlagenen Versuchen, eine Warteschlangennachricht abzurufen, erhöht sich die Wartezeit immer mehr, bis die maximale Wartezeit, standardmäßig eine Minute, erreicht ist.
-- Die maximale Wartezeit kann über die `maxPollingInterval`-Eigenschaft in der Datei [host.json](functions-host-json.md#queues) konfiguriert werden.
+- Die maximale Wartezeit kann über die `maxPollingInterval`-Eigenschaft in der Datei [host.json](functions-host-json-v1.md#queues) konfiguriert werden.
 
 Bei der lokalen Entwicklung ist das maximale Abrufintervall standardmäßig auf zwei Sekunden eingestellt.
 

@@ -11,21 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60d72a98a22fa85e87eb8560ad968415ca70f9a5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b5536c3c427e5b6225d81d649722d8af48c23091
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87275427"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948452"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Best Practices für den bedingten Zugriff in Azure Active Directory
 
-Mit dem [bedingten Zugriff von Azure Active Directory (Azure AD)](../active-directory-conditional-access-azure-portal.md) können Sie den Zugriff von autorisierten Benutzern auf Ihre Cloud-Apps steuern. Dieser Artikel bietet Folgendes:
+Mit dem [bedingten Zugriff von Azure Active Directory (Azure AD)](./overview.md) können Sie den Zugriff von autorisierten Benutzern auf Ihre Cloud-Apps steuern. Dieser Artikel bietet Folgendes:
 
 - Wichtige Informationen 
 - Aktionen, die Sie beim Konfigurieren von Richtlinien für bedingten Zugriff vermeiden sollten. 
 
-Für diesen Artikel wird davon ausgegangen, dass Sie mit den Konzepten und Begriffen vertraut sind, die in [ Was ist bedingter Zugriff in Azure Active Directory?](../active-directory-conditional-access-azure-portal.md) beschrieben werden.
+Für diesen Artikel wird davon ausgegangen, dass Sie mit den Konzepten und Begriffen vertraut sind, die in [ Was ist bedingter Zugriff in Azure Active Directory?](./overview.md) beschrieben werden.
 
 ## <a name="whats-required-to-make-a-policy-work"></a>Was ist erforderlich, damit eine Richtlinie ausgeführt wird?
 
@@ -35,7 +35,7 @@ Wenn Sie eine neue Richtlinie erstellen, werden keine Benutzer, Gruppen, Apps od
 
 Damit Ihre Richtlinie funktioniert, müssen Sie Folgendes konfigurieren:
 
-| Was?           | Wie?                                  | Warum? |
+| Was           | Wie?                                  | Warum? |
 | :--            | :--                                  | :-- |
 | **Cloud-Apps** |Wählen Sie mindestens eine App aus.  | Ziel einer Richtlinie für bedingten Zugriff ist es, Ihnen die Steuerung des Zugriffs autorisierter Benutzer auf Cloud-Apps zu ermöglichen.|
 | **Benutzer und Gruppen** | Wählen Sie mindestens einen Benutzer oder eine Gruppe aus, der bzw. die dazu autorisiert ist, auf die von Ihnen ausgewählten Cloud-Apps zuzugreifen. | Eine Richtlinie für bedingten Zugriff, der keine Benutzer und Gruppen zugewiesen sind, wird niemals ausgelöst. |
@@ -154,5 +154,5 @@ Weitere Informationen finden Sie unter [Migrieren klassischer Richtlinien in das
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- Informationen zum Konfigurieren einer Richtlinie für bedingten Zugriff finden Sie unter [Anfordern der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) für bestimmte Apps über den bedingten Zugriff von Azure Active Directory](app-based-mfa.md).
+- Informationen zum Konfigurieren einer Richtlinie für bedingten Zugriff finden Sie unter [Anfordern der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) für bestimmte Apps über den bedingten Zugriff von Azure Active Directory](../authentication/tutorial-enable-azure-mfa.md).
 - Informationen zum Planen Ihrer Richtlinien für bedingten Zugriff finden Sie unter [Planen der Bereitstellung von bedingtem Zugriff in Azure Active Directory](plan-conditional-access.md).

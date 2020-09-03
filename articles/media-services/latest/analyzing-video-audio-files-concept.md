@@ -4,22 +4,26 @@ titleSuffix: Azure Media Services
 description: Informationen zum Analysieren von Audio- und Videoinhalten mit AudioAnalyzerPreset und VideoAnalyzerPreset in Azure Media Services
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
-ms.date: 01/30/2020
-ms.author: juliako
-ms.openlocfilehash: 4c0eb626b827656a478e02a43b98ed15e7469f92
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 29d80d2c6dc4e090e30d7a90460dc970ff4d8ca9
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053474"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320680"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Analysieren von Video- und Audiodateien mit Azure Media Services
+
+[!INCLUDE [regulation](../video-indexer/includes/regulation.md)]
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Mit Azure Media Services, Version 3 können Sie Inhalte aus Video- und Audiodateien mit Video Indexer extrahieren. In diesem Artikel werden die Voreinstellungen der Version 3 des Media Services-Analysetools beschrieben, mit denen diese Inhalte extrahiert werden. Wenn Sie detailliertere Erkenntnisse möchten, verwenden Sie Video Indexer direkt. Was für die Verwendung von Video Indexer anstelle von Voreinstellungen des Media Services-Analysetools spricht, erfahren Sie im [Vergleichsdokument](../video-indexer/compare-video-indexer-with-media-services-presets.md).
 

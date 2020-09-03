@@ -1,0 +1,22 @@
+---
+author: DCtheGeek
+ms.service: azure-policy
+ms.topic: include
+ms.date: 07/10/2020
+ms.author: dacoulte
+ms.custom: generated
+ms.openlocfilehash: 6eca6936420c05098329455bcdf84b0c82afb865
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300613"
+---
+|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|---|---|---|---|
+|[BYOK-Datenschutz (Bring Your Own Key) muss für MySQL-Server aktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F83cef61d-dbd1-4b20-a4fc-5fbc7da10833) |Diese Richtlinie überwacht MySQL-Server in Ihrer Umgebung, für die kein BYOK-Datenschutz (Bring Your Own Key) aktiviert ist. Weitere Details finden Sie unter [https://aka.ms/mysqlbyok](https://aka.ms/mysqlbyok). |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/MySQL_EnableByok_Audit.json) |
+|[Erzwingen einer SSL-Verbindung muss für MySQL-Datenbankserver aktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe802a67a-daf5-4436-9ea6-f6d821dd0c5d) |Diese Richtlinie überwacht alle MySQL Server-Instanzen, die keine SSL-Verbindung erzwingen. Azure-Datenbank für MySQL unterstützt die Verbindung Ihres Servers mit Azure-Datenbank für MySQL mit Clientanwendungen, die Secure Sockets Layer (SSL) verwenden. Durch das Erzwingen von SSL-Verbindungen zwischen Ihrem Datenbankserver und Ihren Clientanwendungen können Sie sich vor Man-in-the-Middle-Angriffen schützen, indem Sie den Datenstrom zwischen dem Server und Ihrer Anwendung verschlüsseln. |Audit, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/MySQL_EnableSSL_Audit.json) |
+|[Georedundante Sicherung muss für Azure Database for MySQL aktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F82339799-d096-41ae-8538-b108becf0970) |Diese Richtlinie überwacht alle Azure Database for MySQL-Instanzen mit nicht aktivierter georedundanter Sicherung. |Audit, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/GeoRedundant_DBForMySQL_Audit.json) |
+|[MySQL-Server muss einen VNET-Dienstendpunkt verwenden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3375856c-3824-4e0e-ae6a-79e011dd4c47) |Diese Richtlinie überwacht MySQL-Server, die nicht für die Verwendung eines VNET-Dienstendpunkts konfiguriert sind. Weitere Details finden Sie unter [https://aka.ms/mysqlvnet](https://aka.ms/mysqlvnet). |AuditIfNotExists, Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/MySQL_VirtualNetworkServiceEndpoint_Audit.json) |
+|[Privater Endpunkt muss für MySQL-Server aktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7595c971-233d-4bcf-bd18-596129188c49) |Diese Richtlinie überwacht MySQL-Server, die nicht für die Verwendung eines privaten Endpunkts konfiguriert sind. Weitere Details finden Sie unter [https://aka.ms/mysqlprivatelink](https://aka.ms/mysqlprivatelink). |AuditIfNotExists, Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/MySQL_EnablePrivateEndPoint_Audit.json) |
+|[Öffentlicher Netzwerkzugriff muss für MySQL-Server deaktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd9844e8a-1437-4aeb-a32c-0c992f056095) |Diese Richtlinie überwacht MySQL-Server in Ihrer Umgebung, für die der öffentliche Netzwerkzugriff aktiviert ist. Weitere Details finden Sie unter [https://go.microsoft.com/fwlink/?linkid=2120014](https://go.microsoft.com/fwlink/?linkid=2120014). |Audit, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/MySQL_DisablePublicNetworkAccess_Audit.json) |

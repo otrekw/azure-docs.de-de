@@ -3,7 +3,7 @@ title: Verwalten von Streamingendpunkten mit Azure Media Services v3
 description: In diesem Artikel erfahren Sie, wie Sie Streamingendpunkte mit Azure Media Services v3 verwalten.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 writer: juliako
 manager: femila
 editor: ''
@@ -11,18 +11,20 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 03/11/2020
-ms.author: juliako
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6c88a1f36d4e3405b44f36864262b2ab97517933
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.topic: how-to
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: devx-track-azurecli, devx-track-csharp
+ms.openlocfilehash: 8d3835d78ec55f120f6b9439aea9c29434e6bd47
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500554"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89289476"
 ---
 # <a name="manage-streaming-endpoints-with--media-services-v3"></a>Verwalten von Streamingendpunkten in Media Services v3
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Beim Erstellen Ihres Media Services-Kontos wird dem Konto ein **Standard**[-Streamingendpunkt](streaming-endpoint-concept.md) im Zustand **Beendet** hinzugefügt. Um mit dem Streamen Ihrer Inhalte zu beginnen und die [dynamische Paketerstellung](dynamic-packaging-overview.md) und [dynamische Verschlüsselung](content-protection-overview.md) zu nutzen, muss der Streamingendpunkt, von dem Sie Inhalte streamen möchten, den Zustand **Wird ausgeführt** aufweisen.
 

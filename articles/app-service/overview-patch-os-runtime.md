@@ -4,18 +4,18 @@ description: Erfahren Sie, wie Azure App Service das Betriebssystem und Runtimes
 ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18
-ms.openlocfilehash: 93716ab36bc475b092542d1eef40cfe9d75ad819
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 831ba5f055b70e2f46cb8c6a941c0401df347dd5
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87414937"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961515"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Patchen von Betriebssystem und Runtime in Azure App Service
 
 Dieser Artikel veranschaulicht das Abrufen bestimmter Versionsinformationen zu Betriebssystem oder Software in [App Service](overview.md). 
 
-App Service ist eine Platform as a Service, d.h., Betriebssystem und Anwendungsstapel werden für Sie von Azure verwaltet; Sie verwalten nur Ihre Anwendung und deren Daten. Mehr Kontrolle über Betriebssystem und Anwendungsstapel haben Sie in [Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/). Vor diesem Hintergrund ist es dennoch für Sie als App Service-Benutzer hilfreich, weitere Informationen zu kennen, z.B.:
+App Service ist eine Platform as a Service, d.h., Betriebssystem und Anwendungsstapel werden für Sie von Azure verwaltet; Sie verwalten nur Ihre Anwendung und deren Daten. Mehr Kontrolle über Betriebssystem und Anwendungsstapel haben Sie in [Azure Virtual Machines](../virtual-machines/index.yml). Vor diesem Hintergrund ist es dennoch für Sie als App Service-Benutzer hilfreich, weitere Informationen zu kennen, z.B.:
 
 -   Wie und wann werden Betriebssystemupdates angewendet?
 -   Wie wird App Service für erhebliche Sicherheitsrisiken (z.B. Zero-Day-Bedrohungen) gepatcht?
@@ -25,7 +25,7 @@ Aus Sicherheitsgründen werden bestimmte Einzelheiten von Sicherheitsinformation
 
 ## <a name="how-and-when-are-os-updates-applied"></a>Wie und wann werden Betriebssystemupdates angewendet?
 
-Azure verwaltet Betriebssystempatches auf zwei Ebenen, den physischen Servern und den virtuellen Gastcomputern (VMs), die die App Service-Ressourcen ausführen. Beide werden monatlich aktualisiert, was dem monatlichen [Patch-Dienstag](https://technet.microsoft.com/security/bulletins.aspx)-Zeitplan entspricht. Diese Updates werden automatisch auf eine Weise angewendet, die die Hochverfügbarkeits-SLA der Azure-Dienste erfüllt. 
+Azure verwaltet Betriebssystempatches auf zwei Ebenen, den physischen Servern und den virtuellen Gastcomputern (VMs), die die App Service-Ressourcen ausführen. Beide werden monatlich aktualisiert, was dem monatlichen [Patch-Dienstag](/security-updates/)-Zeitplan entspricht. Diese Updates werden automatisch auf eine Weise angewendet, die die Hochverfügbarkeits-SLA der Azure-Dienste erfüllt. 
 
 Ausführliche Informationen zur Anwendung von Updates finden Sie unter [Demystifying the magic behind App Service OS updates](https://azure.github.io/AppService/2018/01/18/Demystifying-the-magic-behind-App-Service-OS-updates.html) (Entmystifizierung des hinter App Service-Betriebssystemupdates steckenden Zaubers).
 
@@ -55,7 +55,7 @@ Patchupdates für .NET-, PHP-, Java SDK- oder Tomcat/Jetty-Version werden automa
 
 ### <a name="new-major-and-minor-versions"></a>Neue Haupt- und Nebenversionen
 
-Wenn eine neue Haupt- oder Nebenversion hinzugefügt wird, wird sie parallel zu vorhandenen Versionen installiert. Sie können Ihre App manuell auf die neue Version aktualisieren. Wenn Sie die Runtimeversion in einer Konfigurationsdatei (z.B. `web.config` und `package.json`) konfiguriert haben, müssen Sie sie mit der gleichen Methode aktualisieren. Bei Verwendung einer App Service-Einstellung zum Konfigurieren der Runtimeversion können Sie sie im [Azure-Portal](https://portal.azure.com) oder durch Ausführen eines [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)-Befehls in der [Cloud Shell](../cloud-shell/overview.md) ändern, wie in den folgenden Beispielen gezeigt:
+Wenn eine neue Haupt- oder Nebenversion hinzugefügt wird, wird sie parallel zu vorhandenen Versionen installiert. Sie können Ihre App manuell auf die neue Version aktualisieren. Wenn Sie die Runtimeversion in einer Konfigurationsdatei (z.B. `web.config` und `package.json`) konfiguriert haben, müssen Sie sie mit der gleichen Methode aktualisieren. Bei Verwendung einer App Service-Einstellung zum Konfigurieren der Runtimeversion können Sie sie im [Azure-Portal](https://portal.azure.com) oder durch Ausführen eines [Azure CLI](/cli/azure/get-started-with-azure-cli)-Befehls in der [Cloud Shell](../cloud-shell/overview.md) ändern, wie in den folgenden Beispielen gezeigt:
 
 ```azurecli-interactive
 az webapp config set --net-framework-version v4.7 --resource-group <groupname> --name <appname>
@@ -86,7 +86,7 @@ Die folgende Tabelle zeigt, wie Sie die Versionen von Windows und der Language R
 | Java-Version | Geben Sie unter `https://<appname>.scm.azurewebsites.net/DebugConsole` im Eingabeaufforderungsfenster den folgenden Befehl ein: <br> `java -version` |  
 
 > [!NOTE]  
-> Der Zugriff auf den Registrierungsspeicherort `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`, wo Informationen zu [„KB“-Patches](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins) gespeichert sind, ist gesperrt.
+> Der Zugriff auf den Registrierungsspeicherort `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`, wo Informationen zu [„KB“-Patches](/security-updates/SecurityBulletins/securitybulletins) gespeichert sind, ist gesperrt.
 >
 >
 

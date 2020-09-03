@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 907ad8705742e4b2e38b13c3c675ebd333bd27d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 36ab632010ec2bbbc19ac71cbeccab2ff6b3565f
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295320"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948384"
 ---
 # <a name="building-a-conditional-access-policy"></a>Erstellen einer Richtlinie für bedingten Zugriff
 
@@ -44,7 +44,7 @@ Eine Richtlinie kann mehrere [Bedingungen](concept-conditional-access-conditions
 
 #### <a name="sign-in-risk"></a>Anmelderisiko
 
-Bei Organisationen mit [Azure AD Identity Protection](../identity-protection/overview.md) können die dort generierten Risikoerkennungen Ihre Richtlinien für den bedingten Zugriff beeinflussen.
+Bei Organisationen mit [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md) können die dort generierten Risikoerkennungen Ihre Richtlinien für den bedingten Zugriff beeinflussen.
 
 #### <a name="device-platforms"></a>Geräteplattformen
 

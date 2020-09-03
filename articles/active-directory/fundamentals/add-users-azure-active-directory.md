@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6d8e6ed412a0e71e8c85827cfc8fc05cd744e3d
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 9fbdccfa7ff16bd63dda1f7c21c07e6d20e086e1
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797099"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321088"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Hinzufügen oder Löschen von Benutzern in Azure Active Directory
 
@@ -60,7 +60,7 @@ Der Benutzer wird erstellt und Ihrer Azure AD-Organisation hinzugefügt.
 
 ## <a name="add-a-new-guest-user"></a>Hinzufügen eines neuen Gastbenutzers
 
-Sie können auch einen neuen Gastbenutzer einladen, mit Ihrer Organisation zusammenzuarbeiten, indem Sie auf der Seite **Neuer Benutzer** die Option **Benutzer einladen** auswählen. Wenn die Einstellungen für externe Zusammenarbeit Ihrer Organisation so konfiguriert sind, dass Sie Gäste einladen dürfen, wird dem Benutzer eine E-Mail-Einladung geschickt, die dieser akzeptieren muss, um mit der Zusammenarbeit zu beginnen. Weitere Informationen zum Einladen von B2B-Zusammenarbeitsbenutzern finden Sie unter [Einladen von B2B-Benutzern zu Azure Active Directory](../b2b/add-users-administrator.md).
+Sie können auch einen neuen Gastbenutzer einladen, mit Ihrer Organisation zusammenzuarbeiten, indem Sie auf der Seite **Neuer Benutzer** die Option **Benutzer einladen** auswählen. Wenn die Einstellungen für externe Zusammenarbeit Ihrer Organisation so konfiguriert sind, dass Sie Gäste einladen dürfen, wird dem Benutzer eine E-Mail-Einladung geschickt, die dieser akzeptieren muss, um mit der Zusammenarbeit zu beginnen. Weitere Informationen zum Einladen von B2B-Zusammenarbeitsbenutzern finden Sie unter [Einladen von B2B-Benutzern zu Azure Active Directory](../external-identities/add-users-administrator.md).
 
 ## <a name="add-a-consumer-user"></a>Hinzufügen eines Consumerbenutzers
 
@@ -105,4 +105,4 @@ Nachdem Sie Ihre Benutzer hinzugefügt haben, können Sie die folgenden grundleg
 
 - [Arbeiten mit dynamischen Gruppen und Benutzern](../users-groups-roles/groups-create-rule.md)
 
-Oder Sie können andere Benutzerverwaltungsaufgaben durchführen wie das [Hinzufügen von Gastbenutzern aus einem anderen Verzeichnis](../b2b/what-is-b2b.md) oder das [Wiederherstellen eines gelöschten Benutzers](active-directory-users-restore.md). Weitere Informationen zu anderen verfügbaren Aktionen finden Sie unter [Dokumentation zur Azure Active Directory-Benutzerverwaltung](../users-groups-roles/index.yml).
+Oder Sie können andere Benutzerverwaltungsaufgaben durchführen wie das [Hinzufügen von Gastbenutzern aus einem anderen Verzeichnis](../external-identities/what-is-b2b.md) oder das [Wiederherstellen eines gelöschten Benutzers](active-directory-users-restore.md). Weitere Informationen zu anderen verfügbaren Aktionen finden Sie unter [Dokumentation zur Azure Active Directory-Benutzerverwaltung](../users-groups-roles/index.yml).

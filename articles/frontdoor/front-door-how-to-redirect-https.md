@@ -2,17 +2,17 @@
 title: Erstellen einer Front Door-Ressource mit Umleitung von HTTP zu HTTPS über das Azure-Portal
 description: Erfahren Sie, wie Sie mithilfe des Azure-Portals eine Front Door-Ressource mit Datenverkehr erstellen, der von HTTP zu HTTPS umgeleitet wird.
 services: front-door
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.topic: how-to
 ms.date: 5/21/2019
-ms.author: sharadag
-ms.openlocfilehash: 05699c827af251b890de4c6f195df5872bfbe364
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: fe2159f0eeb9d01081e6a25e7a88ceff4f1e361c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743608"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399689"
 ---
 # <a name="create-a-front-door-with-http-to-https-redirection-using-the-azure-portal"></a>Erstellen einer Front Door-Ressource mit Umleitung von HTTP zu HTTPS über das Azure-Portal
 

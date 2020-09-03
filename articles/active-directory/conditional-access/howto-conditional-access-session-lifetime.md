@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7d2bb927569a125015f1b0befa27fd3e1f17c00
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 28516482cf154c81912de0f8e3f35b9e54ef2f69
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874774"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948265"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurieren der Verwaltung von Authentifizierungssitzungen mit bedingtem Zugriff
 
@@ -136,5 +136,5 @@ Um die erwartete Funktionsweise der Richtlinie sicherzustellen, empfiehlt es sic
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Wenn Sie wissen möchten, wie Sie eine Richtlinie für bedingten Zugriff konfigurieren, informieren Sie sich im Artikel [Schnellstart: Anfordern der mehrstufigen Authentifizierung für bestimmte Apps über den bedingten Zugriff von Azure Active Directory](app-based-mfa.md).
+* Wenn Sie wissen möchten, wie Sie eine Richtlinie für bedingten Zugriff konfigurieren, informieren Sie sich im Artikel [Schnellstart: Anfordern der mehrstufigen Authentifizierung für bestimmte Apps über den bedingten Zugriff von Azure Active Directory](../authentication/tutorial-enable-azure-mfa.md).
 * Wenn Sie bereit sind, Richtlinien für bedingten Zugriff für Ihre Umgebung zu konfigurieren, lesen Sie den Artikel [Best Practices für den bedingten Zugriff in Azure Active Directory](best-practices.md).

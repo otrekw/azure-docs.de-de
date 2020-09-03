@@ -4,23 +4,25 @@ titleSuffix: Azure Media Services
 description: Erfahren Sie mehr über Regeln, die für Entitäten und APIs gelten, wenn Sie mit Media Services v3 entwickeln.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
-ms.date: 10/21/2019
-ms.author: juliako
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: dcec4d0bc93433c768faf10e4520131aeecc5e77
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 371cfdc8bf2b09f703e1c7bd0153a433ff60ad16
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719188"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89298962"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>Entwickeln mit Media Services v3-APIs
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Als Entwickler können Sie die [REST-API](/rest/api/media/) von Media Services oder Clientbibliotheken verwenden, die es Ihnen ermöglichen, mit der REST-API auf einfache Weise zu interagieren, um benutzerdefinierte Medienworkflows zu erstellen, zu verwalten und zu pflegen. Die [Media Services v3](https://aka.ms/ams-v3-rest-sdk)-API basiert auf der OpenAPI-Spezifikation (ehemals Swagger).
 

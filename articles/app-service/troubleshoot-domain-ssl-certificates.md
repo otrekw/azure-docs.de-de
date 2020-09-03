@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: d61b95c7136a4cbce11789a58d27cc1a164ae374
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 1cefb5a7b554b9a477f6a51eab3b22b0e8f55378
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668021"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958421"
 ---
 # <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>Problembehandlung bei Domänen- und TLS/SSL-Zertifikaten in Azure App Service
 
@@ -131,7 +131,7 @@ Sie können einer App keinen neuen Hostnamen hinzufügen, um eine Unterdomäne z
 #### <a name="solution"></a>Lösung
 
 - Lassen Sie Ihren Abonnementadministrator überprüfen, ob Sie Berechtigungen zum Hinzufügen von Hostnamen zur App haben.
-- Wenn Sie weitere Unterdomänen benötigen, empfiehlt es sich, dass Sie für das Domänenhosting zu Azure Domain Name Service (DNS) wechseln. Wenn Sie Azure DNS verwenden, können Sie Ihrer App 500 Hostnamen hinzufügen. Weitere Informationen finden Sie unter [Hinzufügen einer Unterdomäne](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/).
+- Wenn Sie weitere Unterdomänen benötigen, empfiehlt es sich, dass Sie für das Domänenhosting zu Azure Domain Name Service (DNS) wechseln. Wenn Sie Azure DNS verwenden, können Sie Ihrer App 500 Hostnamen hinzufügen. Weitere Informationen finden Sie unter [Hinzufügen einer Unterdomäne](/archive/blogs/waws/mapping-a-custom-subdomain-to-an-azure-website).
 
 ### <a name="dns-cant-be-resolved"></a>DNS kann nicht aufgelöst werden
 
@@ -310,7 +310,7 @@ Ja. Wenn Sie im Azure-Portal das Blatt „Benutzerdefinierte Domänen und TLS“
 
 **Kann ich eine Domäne aus einem Abonnement in ein anderes übertragen?**
 
-Sie können mit dem PowerShell-Cmdlet [Move-AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Move-azResource) eine Domäne in ein anderes Abonnement bzw. in eine andere Ressourcengruppe übertragen.
+Sie können mit dem PowerShell-Cmdlet [Move-AzResource](/powershell/module/az.Resources/Move-azResource) eine Domäne in ein anderes Abonnement bzw. in eine andere Ressourcengruppe übertragen.
 
 **Wie kann ich meine benutzerdefinierte Domäne verwalten, falls ich aktuell nicht über eine Azure App Service-App verfüge?**
 

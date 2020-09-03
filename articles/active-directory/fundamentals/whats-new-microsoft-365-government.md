@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/07/2019
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48a7e5e810e509a97b6010218532f6e7dff0b73f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a0efc4bc8f89b0fbefbba171d80a3f8a1ed5e7f6
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77425543"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318929"
 ---
 # <a name="whats-new-for-azure-active-directory-in-microsoft-365-government"></a>Neuerungen bei Azure Active Directory in Microsoft 365 Government
 
@@ -57,18 +57,18 @@ Die folgende Tabelle enthält die Endpunkte für alle Kunden:
 | Azure Active Directory Authority-Endpunkt | https://login.microsoftonline.us |
 | Microsoft Graph-API für Microsoft 365 Government – GCC High | https://graph.microsoft.us |
 | Microsoft Graph-API für Microsoft 365 Government – DoD | https://dod-graph.microsoft.us |
-| Azure Government-Dienstendpunkte | Einzelheiten finden Sie im [Azure Government-Entwicklerhandbuch](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide) |
-| Microsoft 365 Government – GCC High-Endpunkte | Einzelheiten finden Sie unter [Office 365 US Government – GCC High-Endpunkte](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-gcc-high-endpoints) |
-| Microsoft 365 Government – DoD | Einzelheiten finden Sie unter [Office 365 US Government – DoD-Endpunkte](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-dod-endpoints) |
+| Azure Government-Dienstendpunkte | Einzelheiten finden Sie im [Azure Government-Entwicklerhandbuch](../../azure-government/documentation-government-developer-guide.md) |
+| Microsoft 365 Government – GCC High-Endpunkte | Einzelheiten finden Sie unter [Office 365 US Government – GCC High-Endpunkte](/office365/enterprise/office-365-u-s-government-gcc-high-endpoints) |
+| Microsoft 365 Government – DoD | Einzelheiten finden Sie unter [Office 365 US Government – DoD-Endpunkte](/office365/enterprise/office-365-u-s-government-dod-endpoints) |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen und Beispiele finden Sie in diesen Artikeln:
 
-- [Was ist Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)
+- [Was ist Azure Government?](../../azure-government/documentation-government-welcome.md)
 
 - [Blog: Azure Government AAD Authority Endpoint Update](https://devblogs.microsoft.com/azuregov/azure-government-aad-authority-endpoint-update/)
 
 - [Microsoft Graph-Endpunkte in US Government-Cloud](https://developer.microsoft.com/graph/blogs/new-microsoft-graph-endpoints-in-us-government-cloud/)
 
-- [Office 365 US Government – GCC High und DoD](https://docs.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/office-365-us-government/gcc-high-and-dod)
+- [Office 365 US Government – GCC High und DoD](/office365/servicedescriptions/office-365-platform-service-description/office-365-us-government/gcc-high-and-dod)

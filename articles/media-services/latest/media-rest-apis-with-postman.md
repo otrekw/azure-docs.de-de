@@ -3,24 +3,26 @@ title: Konfigurieren von Postman für Azure Media Services v3 REST-API-Aufrufe
 description: In diesem Artikel wird veranschaulicht, wie Sie Postman so konfigurieren, dass das Tool für den Aufruf von Azure Media Services-REST-APIs verwendet werden kann.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 12/05/2019
-ms.author: juliako
-ms.openlocfilehash: e35a5fe2243c3a9880359900c63f74c6dc90e586
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.topic: how-to
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: aa10cb207011051c30866a3a3ed693e7113b5882
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654360"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297704"
 ---
 # <a name="configure-postman-for-media-services-v3-rest-api-calls"></a>Konfigurieren von Postman für Media Services v3 REST-API-Aufrufe
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 In diesem Artikel wird veranschaulicht, wie Sie **Postman** so konfigurieren, dass das Tool für den Aufruf von Azure Media Services-REST-APIs verwendet werden kann. In diesem Artikel wird veranschaulicht, wie Umgebungs- und Sammlungsdateien in **Postman** importiert werden. Die Sammlung enthält gruppierte Definitionen von HTTP-Anforderungen, die Azure Media Services-REST-APIs aufrufen. Die Umgebungsdatei enthält Variablen, die von der Sammlung verwendet werden.
 

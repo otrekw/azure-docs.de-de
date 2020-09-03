@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/15/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 1b32ae55030cc24c8892b204ff7330269993a483
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 15b129db56a9c6854bc3c1f2814a8776ec39adc6
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094811"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961566"
 ---
 # <a name="availability-zone-support-for-app-service-environments"></a>Unterstützung für Verfügbarkeitszonen in App Service-Umgebungen
 
@@ -77,7 +77,7 @@ Der nachstehende Beispielcodeausschnitt für die ARM-Vorlage zeigt die neue ***z
     ]
 ```
 
-Damit Ihre Apps zonenredundant sind, müssen Sie zwei zonale ILB-ASEs bereitstellen. Die beiden zonalen ILB-ASEs müssen sich in getrennten Verfügbarkeitszonen befinden. Anschließend müssen Sie Ihre Apps in beiden ILB-ASEs bereitstellen. Nach dem Erstellen Ihrer Apps müssen Sie eine Lösung für den Lastenausgleich konfigurieren. Die empfohlene Lösung ist das Bereitstellen einer [zonenredundanten Application Gateway-Instanz](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) hinter den zonalen ILB-ASEs. 
+Damit Ihre Apps zonenredundant sind, müssen Sie zwei zonale ILB-ASEs bereitstellen. Die beiden zonalen ILB-ASEs müssen sich in getrennten Verfügbarkeitszonen befinden. Anschließend müssen Sie Ihre Apps in beiden ILB-ASEs bereitstellen. Nach dem Erstellen Ihrer Apps müssen Sie eine Lösung für den Lastenausgleich konfigurieren. Die empfohlene Lösung ist das Bereitstellen einer [zonenredundanten Application Gateway-Instanz](../../application-gateway/application-gateway-autoscaling-zone-redundant.md) hinter den zonalen ILB-ASEs. 
 
 ## <a name="in-region-data-residency"></a>Data Residency in der Region ##
 
@@ -90,5 +90,3 @@ Kunden können sich mit den folgenden Schritten vergewissern, dass eine App Serv
 1. Navigieren Sie im [Ressourcen-Explorer](https://resources.azure.com) zu der ARM-Ressource für die App Service-Umgebung.  ASEs werden unter *providers/Microsoft.Web/hostingEnvironments* aufgelistet.
 2. Wenn eine *zones*-Eigenschaft in der Ansicht der ARM-JSON-Syntax vorhanden ist und ein JSON-Array mit einem einzelnen Wert „1“, „2“ oder „3“ enthält, wird die ASE zonal bereitgestellt, und die Kundendaten verbleiben in derselben Region.
 2. Wenn keine *zones*-Eigenschaft vorhanden ist oder die Eigenschaft keinen gültigen Zonenwert wie zuvor angegeben aufweist, wird die ASE nicht zonal bereitgestellt, und die Kundendaten werden nicht exklusiv in derselben Region gespeichert.
-
-

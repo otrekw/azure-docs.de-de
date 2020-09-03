@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81f3f771987ce2ff11aab88a4d35df01b6c85941
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 5cead917c6c98d10d3f9e5ebe2f75bd5513574c5
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184345"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948911"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Nutzungsbedingungen für Azure Active Directory
 
@@ -50,7 +50,7 @@ Für die Azure AD-Nutzungsbedingungen können Sie folgendes festlegen:
 - Auflisten, wer den Nutzungsbedingungen bereits bzw. noch nicht zugestimmt hat.
 - Leisten eines Beitrags zur Erfüllung von Datenschutzbestimmungen
 - Anzeigen eines Protokolls zur Aktivität der Nutzungsbedingungen in Bezug auf Compliance und Überwachung.
-- Erstellen und Verwalten von Nutzungsbedingungen für die Verwendung von [Microsoft Graph-APIs](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/agreement) (derzeit in der Vorschau).
+- Erstellen und Verwalten von Nutzungsbedingungen für die Verwendung von [Microsoft Graph-APIs](/graph/api/resources/agreement?view=graph-rest-beta) (derzeit in der Vorschau).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
