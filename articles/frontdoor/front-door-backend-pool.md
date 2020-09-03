@@ -3,20 +3,20 @@ title: Back-Ends und Back-End-Pools in Azure Front Door | Microsoft-Dokumentatio
 description: In diesem Artikel wird beschrieben, welche Back-Ends und Back-End-Pools in der Front Door-Konfiguration enthalten sind.
 services: front-door
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: 18b165d83bfa154348842542bd8323a40330aa2a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: duau
+ms.openlocfilehash: 66767d4329a0a757de99308e1f586b56b327a515
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80293465"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399921"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door"></a>Back-Ends und Back-End-Pools in Azure Front Door
 In diesem Artikel werden die Konzepte für die Zuordnung Ihrer App-Bereitstellung mit Azure Front Door beschrieben. Darüber hinaus werden die verschiedenen Begriffe erläutert, die bei der Front Door-Konfiguration rund um App-Back-Ends verwendet werden.

@@ -14,12 +14,12 @@ ms.date: 08/16/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3a17eb7fdde6840ce04fb0cbce13ec3f1a121e0
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 3a68c3719ea742a5c02f8be167fc1989ae4683c0
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "80673706"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279192"
 ---
 # <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>Tutorial: Erstellen eines Verbunds einer Umgebung mit einer AD-Gesamtstruktur mit der Cloud
 
@@ -29,9 +29,9 @@ Das folgende Tutorial führt Sie durch das Erstellen einer Hybrididentitätsumge
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Im Folgenden finden Sie die erforderlichen Komponenten für die Durchführung dieses Tutorials:
-- Ein Computer mit installiertem [Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/hyper-v-technology-overview).  Es wird empfohlen, dies entweder auf einem [Windows 10](https://docs.microsoft.com/virtualization/hyper-v-on-windows/about/supported-guest-os)- oder einem [Windows Server 2016](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows)-Computer durchzuführen.
+- Ein Computer mit installiertem [Hyper-V](/windows-server/virtualization/hyper-v/hyper-v-technology-overview).  Es wird empfohlen, dies entweder auf einem [Windows 10](/virtualization/hyper-v-on-windows/about/supported-guest-os)- oder einem [Windows Server 2016](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows)-Computer durchzuführen.
 - [Ein Azure-Abonnement](https://azure.microsoft.com/free)
-- - Ein [externer Netzwerkadapter](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/connect-to-network), um dem virtuellen Computer die Kommunikation mit dem Internet zu ermöglichen.
+- - Ein [externer Netzwerkadapter](/virtualization/hyper-v-on-windows/quick-start/connect-to-network), um dem virtuellen Computer die Kommunikation mit dem Internet zu ermöglichen.
 - Eine Kopie von Windows Server 2016.
 - Eine [benutzerdefinierte Domäne](../../active-directory/fundamentals/add-custom-domain.md), die verifiziert werden kann.
 
@@ -140,7 +140,7 @@ Nachdem nun die VM erstellt ist, umbenannt wurde und über eine statische IP-Adr
 $DatabasePath = "c:\windows\NTDS"
 $DomainMode = "WinThreshold"
 $DomainName = "contoso.com"
-$DomaninNetBIOSName = "CONTOSO"
+$DomainNetBIOSName = "CONTOSO"
 $ForestMode = "WinThreshold"
 $LogPath = "c:\windows\NTDS"
 $SysVolPath = "c:\windows\SYSVOL"
@@ -292,4 +292,3 @@ Sie haben nun erfolgreich eine Hybrididentitätsumgebung eingerichtet, die Sie z
 - [Voraussetzungen für Azure AD Connect](how-to-connect-install-prerequisites.md) 
 - [Benutzerdefinierte Einstellungen](how-to-connect-install-custom.md)
 - [Azure AD Connect und Verbund](how-to-connect-fed-whatis.md)
-

@@ -7,14 +7,14 @@ manager: ravijan
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
-ms.date: 08/24/2020
+ms.date: 08/28/2020
 ms.author: sudbalas
-ms.openlocfilehash: e4364c3c5bcba1a04837f3f9e7a0576579211c72
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 35814f34550ac7bf4ad85a96d0838df62fe63be6
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88796594"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89073181"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Azure Key Vault: Verfügbarkeit und Redundanz
 
@@ -32,8 +32,6 @@ Beachten Sie folgende Einschränkungen:
 
 * Beim Failover einer Region kann es einige Minuten dauern, bis das Failover des Diensts erfolgt. Anforderungen während dieser Zeit vor dem Failover können fehlschlagen.
 * Während eines Failovers befindet sich der Schlüsseltresor im schreibgeschützten Modus. Folgende Anforderungen werden in diesem Modus unterstützt:
-  * Auflisten von Schlüsseltresoren
-  * Abrufen von Eigenschaften von Schlüsseltresoren
   * Auflisten von Zertifikaten
   * Abrufen von Zertifikaten
   * Auflisten geheimer Schlüssel

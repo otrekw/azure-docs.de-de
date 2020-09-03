@@ -11,12 +11,12 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 722b3fcb2bc533e396a35feb4c755de99c375b10
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: c14f406e5671e1eefb43f0208044f9945e446267
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201849"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226572"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory
 Wenn Sie die Cloudbereitstellung konfigurieren, ist einer der Attributzuordnungstypen, die Sie angeben können, eine Ausdruckszuordnung. 
@@ -253,7 +253,7 @@ Wenn das accountName-Attribut nicht vorhanden ist, wird ein Fehler für das Obje
    | Name | Erforderlich/wiederholt | type | Notizen |
    | --- | --- | --- | --- |
    | **Quelle** |Erforderlich |String |Normalerweise der Name des Attributs aus dem Quellobjekt |
-   | **Eingabeformat** |Erforderlich |String |Erwartetes Format des Quellwerts. Unterstützte Formate finden Sie unter [https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx). |
+   | **Eingabeformat** |Erforderlich |String |Erwartetes Format des Quellwerts. Unterstützte Formate sind unter [/dotnet/standard/base-types/custom-date-and-time-format-strings](/dotnet/standard/base-types/custom-date-and-time-format-strings) aufgeführt. |
    | **Ausgabeformat** |Erforderlich |String |Format des Ausgabedatums. |
 
 ---

@@ -16,12 +16,12 @@ ms.date: 04/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a14249f28da15f04a214c2a1cb4bd415fb59ce9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69373e039320cd733fb859bb84e03e5493e05403
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356626"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277203"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: Aktualisieren von einer früheren Version auf die aktuelle Version
 In diesem Thema werden die verschiedenen Methoden beschrieben, die Sie verwenden können, um Ihre Azure Active Directory (Azure AD) Connect-Installation auf die aktuelle Version zu aktualisieren. Es wird empfohlen, immer die aktuelle Version von Azure AD Connect zu nutzen. Sie können auch die unter [Swing-Migration](#swing-migration) beschriebenen Schritte ausführen, wenn Sie wesentliche Änderungen an der Konfiguration vornehmen.
@@ -54,7 +54,7 @@ Wenn Sie vordefinierte Synchronisierungsregeln geändert haben, werden diese Reg
 
 Bei einem direkten Upgrade werden unter Umständen Änderungen eingeführt, für die nach Abschluss des Upgrades bestimmte Synchronisierungsaktivitäten durchgeführt werden müssen (einschließlich vollständigem Import und vollständiger Synchronisierung). Wie Sie solche Aktivitäten zurückstellen, erfahren Sie im Abschnitt [Zurückstellen der vollständigen Synchronisierung nach dem Upgrade](#how-to-defer-full-synchronization-after-upgrade).
 
-Bei Verwendung von Azure AD Connect mit nicht standardmäßigem Connector (z.B. Generic LDAP Connector und Generic SQL Connector) müssen Sie die entsprechende Connectorkonfiguration im [Synchronization Service Manager](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-connectors) nach dem direkten Upgrade aktualisieren. Weitere Informationen zum Aktualisieren der Konfiguration des Connectors finden Sie im Artikelabschnitt [Troubleshooting](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-connector-version-history#troubleshooting) (Problembehandlung). Wenn Sie die Konfiguration nicht aktualisieren, funktionieren die Import- und Exportausführungsschritte für den Connector nicht ordnungsgemäß. Sie erhalten die folgende Fehlermeldung im Ereignisprotokoll der Anwendung: *Assemblyversion in der AAD-Connector-Konfiguration („X.X.XXX.X“) ist älter als die aktuelle Version („X.X.XXX.X“) von „C:\Programme\Microsoft Azure AD Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll.*
+Bei Verwendung von Azure AD Connect mit nicht standardmäßigem Connector (z.B. Generic LDAP Connector und Generic SQL Connector) müssen Sie die entsprechende Connectorkonfiguration im [Synchronization Service Manager](./how-to-connect-sync-service-manager-ui-connectors.md) nach dem direkten Upgrade aktualisieren. Weitere Informationen zum Aktualisieren der Konfiguration des Connectors finden Sie im Artikelabschnitt [Troubleshooting](/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-version-history#troubleshooting) (Problembehandlung). Wenn Sie die Konfiguration nicht aktualisieren, funktionieren die Import- und Exportausführungsschritte für den Connector nicht ordnungsgemäß. Sie erhalten die folgende Fehlermeldung im Ereignisprotokoll der Anwendung: *Assemblyversion in der AAD-Connector-Konfiguration („X.X.XXX.X“) ist älter als die aktuelle Version („X.X.XXX.X“) von „C:\Programme\Microsoft Azure AD Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll.*
 
 ## <a name="swing-migration"></a>Swing-Migration
 Wenn Sie über eine komplexe Bereitstellung oder viele Objekte verfügen, kann möglicherweise ein direktes Upgrade auf einem Livesystem nicht ausgeführt werden. Dieser Prozess könnte für einige Kunden mehrere Tage dauern, und während dieser Zeit werden keine Deltaänderungen verarbeitet. Sie können diese Methode auch anwenden, wenn Sie wesentliche Änderungen an Ihrer Konfiguration planen und diese vor der Übertragung in die Cloud testen möchten.

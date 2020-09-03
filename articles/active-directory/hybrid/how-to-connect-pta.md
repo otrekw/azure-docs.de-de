@@ -16,12 +16,12 @@ ms.date: 10/21/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa763c875b06bd7e22be0e814838f2e79b24e283
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b8f613cb7c75d9dd6af1fcf62f9d484398072c6
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358020"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279464"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Benutzeranmeldung mit der Azure Active Directory-Passthrough-Authentifizierung
 
@@ -31,7 +31,7 @@ Mit der Azure AD-Passthrough-Authentifizierung (Azure Active Directory) können 
 
 >[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
-Diese Funktion ist eine Alternative zum [Kennworthashsynchronisierung von Azure AD](how-to-connect-password-hash-synchronization.md), die Organisationen auch eine Möglichkeit zur Cloudauthentifizierung bereitstellt. Allerdings können bestimmte Organisationen, die ihre lokale Active Directory-Sicherheits- und -Kennwortrichtlinien erzwingen möchten, stattdessen die Passthrough-Authentifizierung verwenden. Einen Vergleich der verschiedenen Azure AD-Anmeldemethoden und Informationen, wie Sie die richtige Anmeldemethode für Ihre Organisation wählen, finden Sie in [diesem Leitfaden](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn).
+Diese Funktion ist eine Alternative zum [Kennworthashsynchronisierung von Azure AD](how-to-connect-password-hash-synchronization.md), die Organisationen auch eine Möglichkeit zur Cloudauthentifizierung bereitstellt. Allerdings können bestimmte Organisationen, die ihre lokale Active Directory-Sicherheits- und -Kennwortrichtlinien erzwingen möchten, stattdessen die Passthrough-Authentifizierung verwenden. Einen Vergleich der verschiedenen Azure AD-Anmeldemethoden und Informationen, wie Sie die richtige Anmeldemethode für Ihre Organisation wählen, finden Sie in [diesem Leitfaden](./choose-ad-authn.md).
 
 ![Azure AD-Passthrough-Authentifizierung](./media/how-to-connect-pta/pta1.png)
 
@@ -42,14 +42,14 @@ Sie können die Passthrough-Authentifizierung mit dem Feature zum [nahtlosen ein
 - *Große Benutzerfreundlichkeit*
   - Benutzer verwenden für die Anmeldung bei lokalen und cloudbasierten Anwendungen das gleiche Kennwort.
   - Benutzer verbringen weniger Zeit mit dem gemeinsamen Lösen von Kennwortproblemen mit dem IT-Helpdesk
-  - Benutzer können die [Self-Service-Kennwortverwaltung](../authentication/active-directory-passwords-overview.md) selbst in der Cloud durchführen.
+  - Benutzer können die [Self-Service-Kennwortverwaltung](../authentication/concept-sspr-howitworks.md) selbst in der Cloud durchführen.
 - *Einfache Bereitstellung und Verwaltung*
   - Bereitstellungen oder Netzwerkkonfigurationen müssen nicht mehr komplex und lokal sein.
   - Es muss nur ein einfacher Agent lokal installiert werden.
   - Es gibt keinen zusätzlichen Verwaltungsaufwand. Der Agent empfängt Verbesserungen und Fehlerbehebungen automatisch.
 - *Schützen*
   - Lokale Kennwörter werden niemals in irgendeiner Form in der Cloud gespeichert.
-  - Ihre Benutzerkonten werden durch die nahtlose Kompatibilität mit [Azure AD-Richtlinien für bedingten Zugriff](../active-directory-conditional-access-azure-portal.md), einschließlich der Multi-Factor Authentication (MFA), durch das [Blockieren der Legacyauthentifizierung](../conditional-access/concept-conditional-access-conditions.md) und durch das [Herausfiltern von Brute-Force-Kennwortangriffen](../authentication/howto-password-smart-lockout.md) geschützt.
+  - Ihre Benutzerkonten werden durch die nahtlose Kompatibilität mit [Azure AD-Richtlinien für bedingten Zugriff](../conditional-access/overview.md), einschließlich der Multi-Factor Authentication (MFA), durch das [Blockieren der Legacyauthentifizierung](../conditional-access/concept-conditional-access-conditions.md) und durch das [Herausfiltern von Brute-Force-Kennwortangriffen](../authentication/howto-password-smart-lockout.md) geschützt.
   - Der Agent stellt innerhalb des Netzwerks nur ausgehende Verbindungen her. Daher muss der Agent nicht in einem Umkreisnetzwerk (auch als DMZ bezeichnet) installiert werden.
   - Die Kommunikation zwischen einem Agent und Azure AD wird per zertifikatbasierter Authentifizierung geschützt. Diese Zertifikate werden alle paar Monate automatisch von Azure AD verlängert.
 - *Hoch verfügbar*
@@ -59,8 +59,8 @@ Sie können die Passthrough-Authentifizierung mit dem Feature zum [nahtlosen ein
 
 - Benutzeranmeldungen in allen browserbasierten Webanwendungen und Microsoft Office-Clientanwendungen werden unterstützt, die die [moderne Authentifizierung](https://aka.ms/modernauthga) verwenden.
 - Bei den Benutzernamen für die Anmeldung kann es sich entweder um den lokalen Standardbenutzernamen (`userPrincipalName`) oder um ein anderes (als `Alternate ID` bezeichnetes) Attribut handeln, das in Azure AD Connect konfiguriert ist.
-- Das Feature funktioniert nahtlos mit Features für den [bedingten Zugriff](../active-directory-conditional-access-azure-portal.md) wie die Multi-Factor Authentication (MFA), mit der Sie Ihre Benutzer schützen können.
-- Es ist in eine cloudbasierte [Self-Service-Kennwortverwaltung](../authentication/active-directory-passwords-overview.md) integriert, einschließlich Rückschreiben von Kennwörtern auf lokalem Active Directory und Kennwortschutz, indem häufig verwendete Kennwörter gesperrt werden.
+- Das Feature funktioniert nahtlos mit Features für den [bedingten Zugriff](../conditional-access/overview.md) wie die Multi-Factor Authentication (MFA), mit der Sie Ihre Benutzer schützen können.
+- Es ist in eine cloudbasierte [Self-Service-Kennwortverwaltung](../authentication/concept-sspr-howitworks.md) integriert, einschließlich Rückschreiben von Kennwörtern auf lokalem Active Directory und Kennwortschutz, indem häufig verwendete Kennwörter gesperrt werden.
 - Umgebungen mit mehreren Gesamtstrukturen werden unterstützt, wenn Gesamtstruktur-Vertrauensstellungen zwischen Ihren AD-Gesamtstrukturen bestehen und das Namensuffixrouting ordnungsgemäß konfiguriert ist.
 - Es handelt sich um ein kostenloses Feature, sodass Sie für dessen Verwendung keine kostenpflichtigen Editionen von Azure AD benötigen.
 - Dies kann über [Azure AD Connect](whatis-hybrid-identity.md) aktiviert werden.

@@ -16,12 +16,12 @@ ms.date: 10/09/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7730efd29e24f99bce3937a9ce5cc2caf4e1400f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 18853699ae45cbc36ade1d31b7e372b4343b475d
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359499"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279889"
 ---
 # <a name="azure-ad-connect-and-federation"></a>Azure AD Connect und Verbund
 Mit Azure Active Directory (Azure AD) Connect können Sie einen Verbund mit lokalen Active Directory-Verbunddiensten (AD FS) und Azure AD konfigurieren. Mit der Verbundanmeldung können sich Benutzer mit ihren lokalen Kennwörtern bei Azure AD-basierten Diensten anmelden, während sie in ihrem Unternehmensnetzwerk angemeldet sind - und das, ohne ihre Kennwörter erneut eingeben zu müssen. Mithilfe der Verbundoption mit AD FS können Sie eine neue Installation von AD FS bereitstellen oder eine vorhandene Installation in einer Windows Server 2012 R2-Farm angeben.
@@ -53,5 +53,5 @@ Dieses Thema ist das zentrale Thema zu verbundbezogenen Funktionen für Azure AD
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 * [Erstellen eines Verbunds mit zwei Azure AD-Instanzen und einer einzelnen Instanz von AD FS](how-to-connect-fed-single-adfs-multitenant-federation.md)
-* [AD FS-Bereitstellung in Azure](how-to-connect-fed-azure-adfs.md)
-* [Gebietsübergreifende, hochverfügbare AD FS-Bereitstellung in Azure mit Azure Traffic Manager](../active-directory-adfs-in-azure-with-azure-traffic-manager.md)
+* [AD FS-Bereitstellung in Azure](/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs)
+* [Gebietsübergreifende, hochverfügbare AD FS-Bereitstellung in Azure mit Azure Traffic Manager](/windows-server/identity/ad-fs/deployment/active-directory-adfs-in-azure-with-azure-traffic-manager)

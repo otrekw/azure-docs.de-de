@@ -3,23 +3,25 @@ title: Signalisieren beschreibender Audiospuren mit Azure Media Services v3 | Mi
 description: Führen Sie die Schritte in diesem Tutorial aus, um eine Datei hochzuladen, das Video zu codieren, beschreibende Audiospuren hinzuzufügen und Ihre Inhalte mit Media Services v3 zu streamen.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
-ms.custom: ''
-ms.date: 09/25/2019
-ms.author: juliako
-ms.openlocfilehash: 99e0a78ea1aed0ecf08618c919e7949c5645de5b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: how-to
+ms.custom: devx-track-csharp
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 0bd2002e8f6f233361dd85cc08cfbd97ca23ed60
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072068"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291261"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>Signalisieren beschreibender Audiospuren
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Sie können dem Video eine Audiokommentarspur hinzufügen, damit Benutzer mit Sehbehinderung dem Video folgen können, indem sie sich den Audiokommentar anhören. In Media Services v3 signalisieren Sie beschreibende Audiospuren, indem Sie die Audiospur in der Manifestdatei kommentieren.
 

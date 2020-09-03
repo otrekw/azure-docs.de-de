@@ -4,12 +4,12 @@ description: In diesem Artikel lernen Sie die selektive Datenträgersicherung un
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: 44454977a977a85b8735657a439a265467f1bcf5
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 12b5b4cd35d70d8ebbd6b269e82c46984652bd07
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824745"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961991"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Selektive Datenträgersicherung und -wiederherstellung für Azure-VMs
 
@@ -68,31 +68,31 @@ az backup protection enable-for-vm  --resource-group {ResourceGroup} --vault-nam
 ### <a name="modify-protection-for-already-backed-up-vms-with-azure-cli"></a>Ändern des Schutzes für bereits gesicherte VMs mit Azure CLI
 
 ```azurecli
-az backup protection update-for-vm --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} --disk-list-setting exclude --diskslist {LUN number(s) separated by space}
+az backup protection update-for-vm --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} --backup-management-type AzureIaasVM --disk-list-setting exclude --diskslist {LUN number(s) separated by space}
 ```
 
 ### <a name="backup-only-os-disk-during-configure-backup-with-azure-cli"></a>Ausschließliche Sicherung des Betriebssystemdatenträgers beim Konfigurieren der Sicherung mit Azure CLI
 
 ```azurecli
-az backup protection enable-for-vm --resource-group {resourcegroup} --vault-name {vaultname} --vm {vmname} --policy-name {policyname} -- exclude-all-data-disks
+az backup protection enable-for-vm --resource-group {resourcegroup} --vault-name {vaultname} --vm {vmname} --policy-name {policyname} --exclude-all-data-disks
 ```
 
 ### <a name="backup-only-os-disk-during-modify-protection-with-azure-cli"></a>Ausschließliche Sicherung des Betriebssystemdatenträgers beim Ändern des Schutzes mit Azure CLI
 
 ```azurecli
-az backup protection update-for-vm --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} --exclude-all-data-disks
+az backup protection update-for-vm --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} --backup-management-type AzureIaasVM --exclude-all-data-disks
 ```
 
 ### <a name="restore-disks-with-azure-cli"></a>Wiederherstellen von Datenträgern mit Azure CLI
 
 ```azurecli
-az backup restore restore-disks --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} -r {restorepoint} --target-resource-group {targetresourcegroup} --storage-account {storageaccountname} --restore-to-staging-storage-account --diskslist {LUN number of the disk(s) to be restored}
+az backup restore restore-disks --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} --backup-management-type AzureIaasVM -r {restorepoint} --target-resource-group {targetresourcegroup} --storage-account {storageaccountname} --diskslist {LUN number of the disk(s) to be restored}
 ```
 
 ### <a name="restore-only-os-disk-with-azure-cli"></a>Ausschließliches Wiederherstellen von Betriebssystemdatenträgern mit Azure CLI
 
 ```azurecli
-az backup restore restore-disks --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} -r {restorepoint} } --target-resource-group {targetresourcegroup} --storage-account {storageaccountname} --restore-to-staging-storage-account --restore-only-osdisk
+az backup restore restore-disks --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} -r {restorepoint} } --target-resource-group {targetresourcegroup} --storage-account {storageaccountname} --restore-only-osdisk
 ```
 
 ### <a name="get-protected-item-to-get-disk-exclusion-details-with-azure-cli"></a>Abrufen des geschützten Elements zum Abrufen von Datenträgerausschlussdetails mit Azure CLI
@@ -181,7 +181,7 @@ Jeder Wiederherstellungspunkt verfügt über die Informationen der ein- und ausg
 ### <a name="remove-disk-exclusion-settings-and-get-protected-item-with-azure-cli"></a>Entfernen von Datenträgerausschlusseinstellungen und Abrufen eines geschützten Elements mit Azure CLI
 
 ```azurecli
-az backup protection update-for-vm --vault-name {vaultname} --resource-group {resourcegroup} -c {vmname} -i {vmname} --disk-list-setting resetexclusionsettings
+az backup protection update-for-vm --vault-name {vaultname} --resource-group {resourcegroup} -c {vmname} -i {vmname} --backup-management-type AzureIaasVM --disk-list-setting resetexclusionsettings
 
 az backup item show -c {vmname} -n {vmname} --vault-name {vaultname} --resource-group {resourcegroup} --backup-management-type AzureIaasVM
 ```

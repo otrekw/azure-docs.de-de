@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 08f083fe60076c80b5b7d60f555daac499974254
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: bc926c385aeee40601c00b3b4ab68065a4260f2f
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611312"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268773"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Beheben von Problemen mit Geräten mit Hybrid-Azure Active Directory-Einbindung
 
@@ -28,8 +28,8 @@ Informationen zu anderen Windows-Clients finden Sie im Artikel [Beheben von Prob
 In diesem Artikel wird vorausgesetzt, dass Sie [Geräte mit Hybrideinbindung in Azure Active Directory konfiguriert haben](hybrid-azuread-join-plan.md), um die folgenden Szenarien zu unterstützen:
 
 - Gerätebasierter bedingter Zugriff
-- [Unternehmensroaming von Einstellungen](../active-directory-windows-enterprise-state-roaming-overview.md)
-- [Windows Hello for Business](../active-directory-azureadjoin-passport-deployment.md)
+- [Unternehmensroaming von Einstellungen](./enterprise-state-roaming-overview.md)
+- [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification)
 
 Dieses Dokument enthält Anleitungen zur Problembehandlung zum Beheben potenzieller Probleme.
 
@@ -132,7 +132,7 @@ Das Feld „Fehlerphase“ bezeichnet die Phase, in der der Einbindungsfehlers a
 
 Verwenden Sie die Protokolle der Ereignisanzeige, um die Phase und den Fehlercode für die Einbindungsfehler zu ermitteln.
 
-1. Öffnen Sie die Ereignisprotokolle der **Benutzergeräteregistrierung** in der Ereignisanzeige. Sie finden sie unter **Anwendungs- und Dienstprotokolle**> **Microsoft**> **Windows**> **Benutzergeräteregistrierung**.
+1. Öffnen Sie die Ereignisprotokolle der **Benutzergeräteregistrierung** in der Ereignisanzeige. Sie finden sie unter **Anwendungs- und Dienstprotokolle** > **Microsoft** > **Windows** > **Benutzergeräteregistrierung**.
 2. Suchen Sie nach Ereignissen mit den folgenden eventIDs: 304, 305, 307.
 
 ![Fehlerprotokollereignis](./media/troubleshoot-hybrid-join-windows-current/1.png)
@@ -207,7 +207,7 @@ Suchen Sie im Abschnitt „Diagnosedaten“ der Statusausgabe zur Einbindung nac
 
 Verwenden Sie die Protokolle der Ereignisanzeige, um die Phase und den Fehlercode für die Einbindungsfehler zu ermitteln.
 
-1. Öffnen Sie die Ereignisprotokolle der **Benutzergeräteregistrierung** in der Ereignisanzeige. Sie finden sie unter **Anwendungs- und Dienstprotokolle**> **Microsoft**> **Windows**> **Benutzergeräteregistrierung**.
+1. Öffnen Sie die Ereignisprotokolle der **Benutzergeräteregistrierung** in der Ereignisanzeige. Sie finden sie unter **Anwendungs- und Dienstprotokolle** > **Microsoft** > **Windows** > **Benutzergeräteregistrierung**.
 2. Suchen Sie nach Ereignissen mit den folgenden eventIDs: 201
 
 ![Fehlerprotokollereignis](./media/troubleshoot-hybrid-join-windows-current/5.png)
@@ -252,7 +252,7 @@ Fehlerursachen:
 
 Verwenden Sie die Protokolle der Ereignisanzeige, um Fehlercode, Unterfehlercode, Serverfehlercode und Serverfehlermeldung zu finden.
 
-1. Öffnen Sie die Ereignisprotokolle der **Benutzergeräteregistrierung** in der Ereignisanzeige. Sie finden sie unter **Anwendungs- und Dienstprotokolle**> **Microsoft**> **Windows**> **Benutzergeräteregistrierung**.
+1. Öffnen Sie die Ereignisprotokolle der **Benutzergeräteregistrierung** in der Ereignisanzeige. Sie finden sie unter **Anwendungs- und Dienstprotokolle** > **Microsoft** > **Windows** > **Benutzergeräteregistrierung**.
 2. Suchen Sie nach Ereignissen mit den folgenden eventIDs: 305
 
 ![Fehlerprotokollereignis](./media/troubleshoot-hybrid-join-windows-current/3.png)
@@ -327,7 +327,7 @@ Das Feld „Registrierungstyp“ gibt die Art der durchgeführten Einbindung an.
 
 Verwenden Sie die Protokolle der Ereignisanzeige, um die Phase und den Fehlercode für die Einbindungsfehler zu ermitteln.
 
-1. Öffnen Sie die Ereignisprotokolle der **Benutzergeräteregistrierung** in der Ereignisanzeige. Sie finden sie unter **Anwendungs- und Dienstprotokolle**> **Microsoft**> **Windows**> **Benutzergeräteregistrierung**.
+1. Öffnen Sie die Ereignisprotokolle der **Benutzergeräteregistrierung** in der Ereignisanzeige. Sie finden sie unter **Anwendungs- und Dienstprotokolle** > **Microsoft** > **Windows** > **Benutzergeräteregistrierung**.
 2. Suchen Sie nach Ereignissen mit den folgenden eventIDs: 204
 
 ![Fehlerprotokollereignis](./media/troubleshoot-hybrid-join-windows-current/4.png)

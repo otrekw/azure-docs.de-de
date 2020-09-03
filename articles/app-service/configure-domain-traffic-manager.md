@@ -5,21 +5,21 @@ ms.assetid: 0f96c0e7-0901-489b-a95a-e3b66ca0a1c2
 ms.topic: article
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5ae68a8871bc2894191644e4ab183be4b469bf16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e8d5fa14678a2a26234dfcd73f4a50af62ca7aa
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82610240"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962875"
 ---
 # <a name="configure-a-custom-domain-name-in-azure-app-service-with-traffic-manager-integration"></a>Konfigurieren eines benutzerdefinierten Domänennamens in Azure App Service mit Traffic Manager-Integration
 
 [!INCLUDE [web-selector](../../includes/websites-custom-domain-selector.md)]
 
 > [!NOTE]
-> Informationen zu Clouddiensten finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für einen Azure-Clouddienst](../cloud-services/cloud-services-custom-domain-name.md)
+> Informationen zu Clouddiensten finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für einen Azure-Clouddienst](../cloud-services/cloud-services-custom-domain-name-portal.md)
 
-Wenn Sie [Azure Traffic Manager](/azure/traffic-manager/) für den Lastenausgleich des Datenverkehrs zum [Azure App Service](overview.md) verwenden, kann mithilfe von **\<traffic-manager-endpoint>.trafficmanager.net** auf die App Service-App zugegriffen werden. Sie können Ihrer App Service-App einen benutzerdefinierten Domänennamen wie „www\.contoso.com“ zuweisen, um Ihren Benutzern einen einprägsameren Domänennamen zur Verfügung zu stellen.
+Wenn Sie [Azure Traffic Manager](../traffic-manager/index.yml) für den Lastenausgleich des Datenverkehrs zum [Azure App Service](overview.md) verwenden, kann mithilfe von **\<traffic-manager-endpoint>.trafficmanager.net** auf die App Service-App zugegriffen werden. Sie können Ihrer App Service-App einen benutzerdefinierten Domänennamen wie „www\.contoso.com“ zuweisen, um Ihren Benutzern einen einprägsameren Domänennamen zur Verfügung zu stellen.
 
 In diesem Artikel wird gezeigt, wie Sie einen benutzerdefinierten Domänenname mit einer Azure App Service-App konfigurieren, die in [Traffic Manager](../traffic-manager/traffic-manager-overview.md) integriert ist.
 
@@ -55,7 +55,7 @@ Klicken Sie auf **Anwenden**.
 
 ## <a name="create-traffic-manager-endpoint"></a>Erstellen des Traffic Manager-Endpunkts
 
-Befolgen Sie die Schritte unter [Hinzufügen und Löschen von Endpunkten](../traffic-manager/traffic-manager-endpoints.md), um Ihre App Service-App dem Traffic Manager-Profil als Endpunkt hinzuzufügen.
+Befolgen Sie die Schritte unter [Hinzufügen und Löschen von Endpunkten](../traffic-manager/traffic-manager-manage-endpoints.md), um Ihre App Service-App dem Traffic Manager-Profil als Endpunkt hinzuzufügen.
 
 Sobald Ihre App Service-App einen unterstützten Tarif aufweist, wird sie in der Liste der verfügbaren App Service-Ziele angezeigt, wenn Sie den Endpunkt hinzufügen. Wenn Ihre App nicht aufgeführt wird, [überprüfen Sie den Tarif Ihrer App](#prepare-the-app).
 
