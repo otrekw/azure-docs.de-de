@@ -6,12 +6,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: fd7f860eb6e18edeb2096c12102e74c7446d050f
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 90becfb79973ba45851b0e30384b0f05a7b887e3
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213761"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962246"
 ---
 # <a name="tutorial-deploy-an-aspnet-app-to-azure-with-azure-sql-database"></a>Tutorial: Bereitstellen einer ASP.NET-App in Azure mit Azure SQL-Datenbank
 
@@ -199,7 +199,7 @@ Erweitern Sie Ihre Verbindung unter **Datenbanken** >  **&lt;Ihre Datenbank>**  
 
 Sie können die vertrauten Tools in Visual Studio verwenden, um Ihre Datenbank und App in Azure zu aktualisieren. In diesem Schritt verwenden Sie Code First-Migrationen in Entity Framework, um eine Änderung am Datenbankschema vorzunehmen und sie in Azure zu veröffentlichen.
 
-Weitere Informationen zur Verwendung von Entity Framework Code First-Migrationen finden Sie unter [Getting Started with Entity Framework 6 Code First using MVC 5](https://docs.microsoft.com/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application) (Erste Schritte mit Entity Framework 6 Code First per MVC 5).
+Weitere Informationen zur Verwendung von Entity Framework Code First-Migrationen finden Sie unter [Getting Started with Entity Framework 6 Code First using MVC 5](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application) (Erste Schritte mit Entity Framework 6 Code First per MVC 5).
 
 ### <a name="update-your-data-model"></a>Aktualisieren Sie des Datenmodells
 
@@ -416,7 +416,7 @@ Weitere Ressourcen:
 > [!div class="nextstepaction"]
 > [Konfigurieren einer ASP.NET-App](configure-language-dotnet-framework.md)
 
-Möchten Sie Ihre Cloudausgaben optimieren und dabei sparen?
+Möchten Sie Ihre Cloudausgaben optimieren und Geld sparen?
 
 > [!div class="nextstepaction"]
-> [Beginnen mit der Kostenanalyse mit Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> [Beginnen mit der Kostenanalyse mit Cost Management](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

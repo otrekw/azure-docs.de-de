@@ -1,5 +1,5 @@
 ---
-title: Untersuchen der Grundlagen mit einer Beispielclient-App
+title: 'Tutorial: Erkunden von Azure Digital Twins mit einer Beispielclient-App'
 titleSuffix: Azure Digital Twins
 description: Tutorial zum Erkunden der Azure Digital Twins SDKs mithilfe einer Beispielbefehlszeilenanwendung
 author: baanders
@@ -7,23 +7,24 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: d02766d82690d2f546fdcbad76efcda043f54471
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: a1dc42815167da308fd87b541c0f21d02b47329b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986270"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022512"
 ---
-# <a name="explore-azure-digital-twins-with-a-sample-client-app"></a>Erkunden von Azure Digital Twins mit einer Beispielclient-App
+# <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>Tutorial: Erkunden von Azure Digital Twins mit einer Beispielclient-App
 
 In diesem Tutorial wird eine Beispielanwendung eingeführt, die eine Befehlszeilenclientanwendung für die Interaktion mit einer Azure Digital Twins-Instanz implementiert. Die Client-App ähnelt der unter [*Tutorial: Codieren einer Client-App*](tutorial-code.md) geschriebenen App.
 
 Sie können dieses Beispiel verwenden, um grundlegende Azure Digital Twins-Aktionen auszuführen, etwa Hochladen von Modellen, Erstellen und Ändern von Zwillingen und Erstellen von Beziehungen. Sie können sich auch den Code des Beispiels ansehen, um mehr über die Azure Digital Twins-APIs zu erfahren, und die Implementierung eigener Befehle üben, indem Sie das Beispielprojekt wunschgemäß anpassen.
 
 In diesem Tutorial lernen Sie Folgendes:
-1. Einrichten einer Azure Digital Twins-Instanz
-2. Konfigurieren der Beispielbefehlszeilen-App für die Interaktion mit der Instanz
-3. Verwenden Sie die Befehlszeilen-App zum Erkunden von Azure Digital Twins, und sehen Sie sich u. a. **Modelle**, **digitale Zwillinge**, **Beziehungen** und **Abfragen** genauer an.
+> [!div class="checklist"]
+> * Einrichten einer Azure Digital Twins-Instanz
+> * Konfigurieren der Beispielbefehlszeilen-App für die Interaktion mit der Instanz
+> * Verwenden Sie die Befehlszeilen-App zum Erkunden von Azure Digital Twins, und sehen Sie sich u. a. **Modelle**, **digitale Zwillinge**, **Beziehungen** und **Abfragen** genauer an.
 
 [!INCLUDE [Azure Digital Twins tutorial: sample prerequisites](../../includes/digital-twins-tutorial-sample-prereqs.md)]
 
@@ -288,24 +289,7 @@ Eine Hauptfunktion von Azure Digital Twins ist das einfache [Abfragen](concepts-
 Das Projekt in diesem Tutorial bildet die Grundlage für das nächste Tutorial: [*Tutorials: Erstellen einer End-to-End-Lösung*](tutorial-end-to-end.md). Wenn Sie mit dem nächsten Tutorial fortfahren möchten, können Sie die hier eingerichteten Ressourcen behalten, um diese Azure Digital Twins-Instanz und die konfigurierte Beispiel-App weiterhin zu verwenden.
 * Sie können die Befehle `DeleteAllTwins` und `DeleteAllModels` der Beispiel-App nutzen, um die Zwillinge und Modelle in Ihrer Instanz zu löschen. Dadurch können Sie im nächsten Tutorial von Grund auf neu beginnen.
 
-Wenn Sie die in diesem Tutorial erstellten Ressourcen nicht mehr benötigen, führen Sie die folgenden Schritte zum Löschen aus.
-
-Bei Verwendung von [Azure Cloud Shell](https://shell.azure.com) können Sie alle Azure-Ressourcen in einer Ressourcengruppe mit dem Befehl [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) löschen. Dadurch werden die Ressourcengruppe und die Azure Digital Twins-Instanz entfernt.
-
-> [!IMPORTANT]
-> Das Löschen einer Ressourcengruppe kann nicht rückgängig gemacht werden. Die Ressourcengruppe und alle darin enthaltenen Ressourcen werden unwiderruflich gelöscht. Achten Sie daher darauf, dass Sie nicht versehentlich die falsche Ressourcengruppe oder die falschen Ressourcen löschen. 
-
-Öffnen Sie eine Azure Cloud Shell-Instanz, und führen Sie den folgenden Befehl aus, um die Ressourcengruppe und alle darin enthaltenen Elemente zu löschen.
-
-```azurecli-interactive
-az group delete --name <your-resource-group>
-```
-
-Löschen Sie als Nächstes mit dem folgenden Befehl die Azure Active Directory-App-Registrierung, die Sie für Ihre Client-App erstellt haben:
-
-```azurecli
-az ad app delete --id <your-application-ID>
-```
+[!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
 Löschen Sie abschließend den Projektbeispielordner, den Sie auf Ihren lokalen Computer heruntergeladen haben.
 
@@ -314,12 +298,5 @@ Löschen Sie abschließend den Projektbeispielordner, den Sie auf Ihren lokalen 
 In diesem Tutorial haben Sie erste Schritte mit Azure Digital Twins ausgeführt, indem Sie eine Instanz und eine Clientanwendung für die Interaktion mit der Instanz eingerichtet haben. Sie haben die Client-App verwendet, um Azure Digital Twins zu erkunden, und haben Modelle, digitale Zwillinge und Beziehungen erstellt. Darüber hinaus haben Sie einige Abfragen für die Lösung ausgeführt, um eine Vorstellung davon zu erhalten, welche Arten von Fragen Azure Digital Twins zu einer Umgebung beantworten kann.
 
 Fahren Sie mit dem nächsten Tutorial fort, um die Beispielbefehlszeilen-App in Kombination mit anderen Azure-Diensten zu verwenden und ein datengesteuertes End-to-End-Szenario zu erhalten:
-
 > [!div class="nextstepaction"]
 > [*Tutorial: Erstellen einer End-to-End-Lösung*](tutorial-end-to-end.md)
-
-Sehen Sie sich alternativ die Konzeptdokumentation an, um mehr über die Elemente zu erfahren, mit denen Sie in diesem Tutorial gearbeitet haben:
-* [*Konzepte: Grundlegendes zu Zwillingsmodellen in Azure Digital Twins*](concepts-models.md)
-
-In den Anleitungen können Sie sich auch ausführlicher über die Prozesse in diesem Tutorial informieren:
-* [*Verwenden der Azure Digital Twins-Befehlszeilenschnittstelle*](how-to-use-cli.md)

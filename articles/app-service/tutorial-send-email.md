@@ -4,12 +4,12 @@ description: Es wird beschrieben, wie Sie Geschäftsprozesse über Ihre App Serv
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 9d4136099a8cadc43a53298f367f6eeb784e5ce1
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: ddd57bfe653766d133824f42098d9ad9adb1e56b
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212836"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962195"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>Tutorial: Senden von E-Mails und Aufrufen anderer Geschäftsprozesse aus App Service
 
@@ -84,7 +84,7 @@ Stellen Sie eine App über das Sprachframework Ihrer Wahl für App Service berei
 1. Klicken Sie unten im Designer auf **Neuer Schritt**, geben Sie im Suchfeld für Aktionen **Gmail** ein, und wählen Sie **E-Mail senden (V2)** aus, nachdem diese Option gefunden wurde.
     
     > [!TIP]
-    > Sie können auch nach anderen Arten von Integrationen suchen, z. B. SendGrid, MailChimp, Office 365 und Salesforce. Weitere Informationen hierzu finden Sie in der [Logic Apps-Dokumentation](https://docs.microsoft.com/azure/logic-apps/).
+    > Sie können auch nach anderen Arten von Integrationen suchen, z. B. SendGrid, MailChimp, Office 365 und Salesforce. Weitere Informationen hierzu finden Sie in der [Logic Apps-Dokumentation](../logic-apps/index.yml).
 1. Wählen Sie im Dialogfeld **Gmail** die Option **Anmelden** aus, und melden Sie sich bei dem Gmail-Konto an, über das Sie die E-Mail senden möchten.
 
     ![Screenshot des Dialogfelds „Gmail“, das Sie verwenden, um sich bei dem Gmail-Konto anzumelden, von dem aus Sie E-Mail senden möchten.](./media/tutorial-send-email/gmail-sign-in.png)
@@ -152,7 +152,7 @@ Klicken Sie unten auf die Registerkarte für die bevorzugte Sprache bzw. das Fra
 
 ### <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
 
-In ASP.NET können Sie HTTP POST mit der [System.Net.Http.HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient)-Klasse senden. Beispiel:
+In ASP.NET können Sie HTTP POST mit der [System.Net.Http.HttpClient](/dotnet/api/system.net.http.httpclient)-Klasse senden. Beispiel:
 
 ```csharp
 // requires using System.Net.Http;
@@ -177,7 +177,7 @@ Wenn Sie diesen Code für die Beispiel-App aus [Tutorial: Erstellen einer ASP.NE
 
 ### <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
 
-In ASP.NET Core können Sie HTTP POST mit der [System.Net.Http.HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient)-Klasse senden. Beispiel:
+In ASP.NET Core können Sie HTTP POST mit der [System.Net.Http.HttpClient](/dotnet/api/system.net.http.httpclient)-Klasse senden. Beispiel:
 
 ```csharp
 // requires using System.Net.Http;
@@ -199,7 +199,7 @@ var statusCode = result.StatusCode.ToString();
 ```
 
 > [!NOTE]
-> Dieser Code wurde zu Demonstrationszwecken vereinfacht. In der Praxis sollten Sie nicht für jede Anforderung ein `HttpClient`-Objekt instanziieren. Befolgen Sie die Anleitung unter [Verwenden von IHttpClientFactory zur Implementierung robuster HTTP-Anforderungen](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests).
+> Dieser Code wurde zu Demonstrationszwecken vereinfacht. In der Praxis sollten Sie nicht für jede Anforderung ein `HttpClient`-Objekt instanziieren. Befolgen Sie die Anleitung unter [Verwenden von IHttpClientFactory zur Implementierung robuster HTTP-Anforderungen](/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests).
 
 Wenn Sie diesen Code für die Beispiel-App aus [Tutorial: Erstellen einer ASP.NET Core- und SQL-Datenbank-App in Azure App Service](tutorial-dotnetcore-sqldb-app.md) testen, können Sie hiermit eine E-Mail-Bestätigung per [Create-Aktion](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial/blob/master/Controllers/TodosController.cs#L56-L65) senden, nachdem das `Todo`-Element hinzugefügt wurde.
 

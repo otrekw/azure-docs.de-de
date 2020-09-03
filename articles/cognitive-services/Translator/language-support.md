@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: d8e6a4e769b08d674b355f6f88a0967316e95c63
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 9c745395026b8b7e8c58fcb4b7cc67971d971a7c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782327"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300220"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Sprach- und Regionsunterstützung für Text- und Sprachübersetzung
 
@@ -155,6 +155,7 @@ Der Translator erkennt die folgenden Sprachen für die Übersetzung und Translit
 |Suaheli| `sw`    |
 |Klingonisch|   `tlh-Latn`  |
 |Koreanisch |`ko`   |
+|Kurdisch (zentral)  |`ku-Arab`  |
 |Lettisch|   `lv`    |
 |Litauisch|    `lt`    |
 |Malaiisch| `ms`        |
@@ -283,10 +284,12 @@ Die folgenden Sprachen sind für die Anpassung an das Englische oder aus dem Eng
 
 | Sprache    | Sprachcode |
 |:----------- |:-------------:|
+|Afrikaans| `af`|
 | Arabisch       | `ar`          |
 | Bengalisch      | `bn`          |
 | Bosnisch (Lateinisch)      | `bs`          |
 | Bulgarisch      | `bg`          |
+|Katalanisch|   `ca`    |
 | Chinesisch (vereinfacht)      | `zh-Hans`          |
 |Chinesisch (traditionell)|   `zh-Hant`   |
 | Kroatisch      | `hr`          |
@@ -295,6 +298,8 @@ Die folgenden Sprachen sind für die Anpassung an das Englische oder aus dem Eng
 | Niederländisch      | `nl`          |
 | Englisch    | `en`     |
 | Estnisch      | `et`          |
+|Fidschi|    `fj`    |
+|Filipino|  `fil`   |
 | Finnisch      | `fi`          |
 | Französisch      | `fr`          |
 | Deutsch      | `de`          |
@@ -308,12 +313,14 @@ Die folgenden Sprachen sind für die Anpassung an das Englische oder aus dem Eng
 | Irisch | `ga`  |
 | Italienisch      | `it`          |
 | Japanisch      | `ja`          |
+|Kannada|`kn`|
 | Suaheli|    `sw`    |
 | Koreanisch      | `ko`          |
 | Lettisch      | `lv`          |
 | Litauisch      | `lt`          |
 | Madagassisch| `mg`    |
 | Malaiisch|    `ms`        |
+|Maltesisch|   `mt`    |
 | Maori| `mi`  |
 | Marathi| `mr`  |
 | Norwegisch      | `nb`          |
@@ -329,7 +336,9 @@ Die folgenden Sprachen sind für die Anpassung an das Englische oder aus dem Eng
 | Slowenisch      | `sl`          |
 | Spanisch      | `es`          |
 | Schwedisch      | `sv`          |
+|Tahitisch|  `ty`    |
 | Thailändisch      | `th`          |
+|Tongaisch|    `to`    |
 | Türkisch      | `tr`          |
 | Ukrainisch      | `uk`          |
 | Urdu| `ur`    |

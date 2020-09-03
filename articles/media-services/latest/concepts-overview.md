@@ -4,23 +4,25 @@ titleSuffix: Azure Media Services
 description: Erfahren Sie mehr über Terminologie und Konzepte für Azure Media Services.
 services: media-servicesgit
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
-ms.date: 02/18/2020
-ms.author: juliako
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 5f0436394d6d45e8a8e112cc59bc7be50356ce10
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dec0503ec369ae473fb592db958c0e30a27a4268
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092098"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297432"
 ---
 # <a name="media-services-terminology-and-concepts"></a>Media Services – Terminologie und Konzepte
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Dieses Thema bietet eine kurze Übersicht über die Azure Media Services-Terminologie und -Konzepte. Darüber hinaus enthält der Artikel Links zu Artikeln mit ausführlicheren Erläuterungen zu Konzepten und Funktionen von Media Services v3.
 

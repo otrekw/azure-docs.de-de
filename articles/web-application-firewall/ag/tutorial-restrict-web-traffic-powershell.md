@@ -5,15 +5,15 @@ description: Hier erfahren Sie, wie Sie Azure PowerShell verwenden, um Webdatenv
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 11/14/2019
+ms.date: 08/31/2020
 ms.author: victorh
-ms.topic: conceptual
-ms.openlocfilehash: a57c5b155f7ab00f781236cfceea59a4277ff06a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.openlocfilehash: 1e2fb98d83d1246c54ccb37d68d9b4282701677e
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74046289"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89225185"
 ---
 # <a name="enable-web-application-firewall-using-azure-powershell"></a>Aktivieren einer Web Application Firewall mithilfe von Azure PowerShell
 
@@ -21,11 +21,10 @@ Sie können Datenverkehr für ein Anwendungsgateway mit einer [Web Application F
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
-> [!div class="checklist"]
-> * Einrichten des Netzwerks
-> * Erstellen eines Anwendungsgateways mit aktivierter WAF
-> * Erstellen einer Skalierungsgruppe für virtuelle Computer
-> * Erstellen eines Speicherkontos und Konfigurieren der Diagnose
+* Einrichten des Netzwerks
+* Erstellen eines Anwendungsgateways mit aktivierter WAF
+* Erstellen einer Skalierungsgruppe für virtuelle Computer
+* Erstellen eines Speicherkontos und Konfigurieren der Diagnose
 
 ![Web Application Firewall – Beispiel](../media/tutorial-restrict-web-traffic-powershell/scenario-waf.png)
 

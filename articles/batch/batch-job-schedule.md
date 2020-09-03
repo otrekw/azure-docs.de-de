@@ -4,12 +4,12 @@ description: Verwenden Sie die Auftragsplanung, um Ihre Tasks zu verwalten.
 ms.topic: how-to
 ms.date: 02/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: 89881808e48b3fbe44fbcd5352a15afc4eb427ef
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 7da3c78e00f5d7e41a5396603cf4885a50cb6e5c
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964344"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146350"
 ---
 # <a name="schedule-jobs-for-efficiency"></a>Planen von Aufträgen für Effizienz
 
@@ -67,7 +67,7 @@ Nachdem Sie **Speichern** ausgewählt haben und in der linken Navigation zu **Au
 
 ## <a name="for-more-information"></a>Weitere Informationen finden Sie unter
 
-Informationen zum Verwalten eines Auftrags mit der Azure-Befehlszeilenschnittstelle finden Sie unter [az batch job-schedule](/cli/azure/batch/job-schedule?view=azure-cli-latest).
+Informationen zum Verwalten eines Auftrags mit der Azure-Befehlszeilenschnittstelle finden Sie unter [az batch job-schedule](/cli/azure/batch/job-schedule).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

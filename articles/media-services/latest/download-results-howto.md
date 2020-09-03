@@ -8,17 +8,20 @@ manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
-ms.date: 03/04/2020
+ms.topic: how-to
+ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 0a2e4d1ac5cf0945ab75e58bb42d23d10d6c89aa
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b3decdd4a2855382b27cb426d7fb030b46a2458c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607248"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89298027"
 ---
 # <a name="download-the-results-of-a-job"></a>Herunterladen der Ergebnisse eines Auftrags
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 In Azure Media Services müssen Sie bei der Verarbeitung von Videos (z. B. Codierung oder Analyse) eine [Ausgaberessource](assets-concept.md) erstellen, um das Ergebnis Ihres [Auftrags](transforms-jobs-concept.md) zu speichern. Anschließend können Sie diese Ergebnisse mithilfe von Media Service- und Storage-APIs in einen lokalen Ordner herunterladen. 
 

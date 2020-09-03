@@ -3,12 +3,12 @@ title: Details der Struktur von Initiativendefinitionen
 description: Beschreibt, wie Initiativendefinitionen von Richtlinien verwendet werden, um Richtliniendefinitionen für die Bereitstellung in Azure-Ressourcen in Ihrer Organisation zu gruppieren.
 ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: b151ef4d58998b810e116321de68cbdb2e8d3eff
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d7b4adf15193e2cd1b9e516a04c7c989dc442ee9
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544637"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048498"
 ---
 # <a name="azure-policy-initiative-definition-structure"></a>Struktur von Azure Policy-Initiativendefinitionen
 
@@ -284,7 +284,7 @@ Für diese Informationen gilt:
 
 - Sie werden im Azure-Portal in der Übersicht einer **Kontrolle** für eine Initiative zur Einhaltung gesetzlicher Bestimmungen angezeigt.
 - Sie sind über eine REST-API verfügbar. Weitere Informationen finden Sie unter dem Ressourcenanbieter `Microsoft.PolicyInsights` und der [policyMetadata-Vorgangsgruppe](/rest/api/policy-insights/policymetadata/getresource).
-- Sie sind über die Azure-Befehlszeilenschnittstelle verfügbar. Weitere Informationen finden Sie unter dem Befehl [az policy metadata](/cli/azure/policy/metadata?view=azure-cli-latest).
+- Sie sind über die Azure-Befehlszeilenschnittstelle verfügbar. Weitere Informationen finden Sie unter dem Befehl [az policy metadata](/cli/azure/policy/metadata).
 
 > [!IMPORTANT]
 > Metadatenobjekte zur Einhaltung gesetzlicher Bestimmungen sind _schreibgeschützt_ und können nicht von Kunden erstellt werden.

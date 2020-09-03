@@ -3,23 +3,25 @@ title: 'Eine Voreinstellung für die inhaltsbezogene Codierung: Azure Media Serv
 description: In diesem Artikel wird die inhaltsbezogene Codierung in Microsoft Azure Media Services v3 erläutert.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
-ms.date: 04/29/2020
-ms.author: juliako
-ms.custom: ''
-ms.openlocfilehash: 3669919a8ddf4ffcbcf0d3e7e060c62f4c8df1c6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5d08e09905841f6068f2bac45680a8e5a011c158
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039141"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297364"
 ---
 # <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>Ermitteln des optimalen Bitratenwerts für eine bestimmte Auflösung unter Verwendung der Voreinstellung für die inhaltsbezogene Codierung
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Um Inhalte für die Übermittlung durch [Adaptive Bitrate Streaming](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) vorzubereiten, muss Video mit mehreren Bitraten (hoch bis niedrig) codiert werden. Dadurch wird eine gleichmäßige Qualitätsminderung gewährleistet, da mit abnehmender Bitrate auch die Auflösung des Videos verringert wird. Bei einer solchen Codierung mit Mehrfachbitrate wird eine sogenannte Codierungsleiter (Tabelle mit Auflösungen und Bitraten) verwendet. Weitere Informationen hierzu finden Sie in den [integrierten Codierungsvoreinstellungen](/rest/api/media/transforms/createorupdate#encodernamedpreset) von Media Services.
 

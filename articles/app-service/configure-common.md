@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 57039149afd22546bbd584db47e7a015b8b5f85c
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 4990862bacbf2afe2d4b5f39c2b9d31a7c48b78e
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213583"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962892"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Konfigurieren einer App Service-App im Azure-Portal
 
@@ -44,7 +44,7 @@ Andere Sprachstapel erhalten die App-Einstellungen ebenfalls als Umgebungsvariab
 App-Einstellungen werden bei der Speicherung stets verschlüsselt (encrypted-at-rest).
 
 > [!NOTE]
-> App-Einstellungen können auch über [Key Vault](/azure/key-vault/) mithilfe von [Key Vault-Referenzen](app-service-key-vault-references.md) aufgelöst werden.
+> App-Einstellungen können auch über [Key Vault](../key-vault/index.yml) mithilfe von [Key Vault-Referenzen](app-service-key-vault-references.md) aufgelöst werden.
 
 ### <a name="show-hidden-values"></a>Anzeigen ausgeblendeter Werte
 
@@ -115,7 +115,7 @@ Wenn beispielsweise eine MySql-Verbindungszeichenfolge *connectionstring1* heiß
 Verbindungszeichenfolgen werden bei der Speicherung stets verschlüsselt (encrypted-at-rest).
 
 > [!NOTE]
-> Verbindungszeichenfolgen können auch über [Key Vault](/azure/key-vault/) mithilfe von [Key Vault-Referenzen](app-service-key-vault-references.md) aufgelöst werden.
+> Verbindungszeichenfolgen können auch über [Key Vault](../key-vault/index.yml) mithilfe von [Key Vault-Referenzen](app-service-key-vault-references.md) aufgelöst werden.
 
 ### <a name="show-hidden-values"></a>Anzeigen ausgeblendeter Werte
 

@@ -3,22 +3,25 @@ title: Erstellen eines Azure Media Services-Auftrags mit mehreren Transformation
 description: In diesem Thema wird gezeigt, wie Sie einen Azure Media Services-Auftrag mit mehreren Transformationsausgaben erstellen.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
-ms.date: 02/17/2020
-ms.author: juliako
-ms.openlocfilehash: 7c39b133773cbe35d78e04c4e40de9d62c4eba18
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: how-to
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e5fe12b02503aff625a1cc2c39a71abcdf3dab0b
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001110"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296781"
 ---
 # <a name="create-a-job-with-multiple-transform-outputs"></a>Erstellen eines Auftrags mit mehreren Transformationsausgaben
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 In diesem Thema wird gezeigt, wie Sie eine Transformation mit zwei Transformationsausgaben erstellen können. Die erste fordert die Codierung der Eingabe für Adaptive Bitrate Streaming mit einer integrierten [AdaptiveStreaming](encoding-concept.md#builtinstandardencoderpreset)-Voreinstellung. Die zweite fordert, dass das Audiosignal im Eingangsvideo mit [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md#built-in-presets) verarbeitet wird. Nachdem die Transformation erstellt wurde, können Sie einen Auftrag übermitteln, der Ihr Video entsprechend verarbeitet. Da in diesem Beispiel zwei Transformationsausgaben angegeben werden, müssen zwei Auftragsausgaben angegeben werden. Sie können wählen, ob Sie beide Auftragsausgaben an dasselbe Objekt leiten (wie unten gezeigt) oder die Ergebnisse in separate Objekte schreiben lassen möchten.
  

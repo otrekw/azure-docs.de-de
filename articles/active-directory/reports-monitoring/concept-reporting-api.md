@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5dbfca54227895de53b984dcf5c7a1f8c5fbf51d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf2e3f98bd96c09fe741a24a1332443c876e2e61
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83647394"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89225909"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Erste Schritte mit der Berichterstellungs-API von Azure Active Directory
 
@@ -32,7 +32,7 @@ Mit der Microsoft Graph-API für Azure AD-Berichte können Sie über eine Gruppe
 
 Dieser Artikel enthält eine Übersicht über die Berichterstellungs-API und beispielsweise auch Informationen zu den Zugriffsmöglichkeiten.
 
-Wenn Probleme auftreten sollten, lesen Sie [Gewusst wie: Beziehen von Support für Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto).
+Wenn Probleme auftreten sollten, lesen Sie [Gewusst wie: Beziehen von Support für Azure Active Directory](../fundamentals/active-directory-troubleshooting-support-howto.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -47,9 +47,9 @@ Ausführliche Anweisungen finden Sie in den [Voraussetzungen für den Zugriff au
 
 ## <a name="api-endpoints"></a>API-Endpunkte 
 
-Der Microsoft Graph-API-Endpunkt für Überwachungsprotokolle ist `https://graph.microsoft.com/v1.0/auditLogs/directoryAudits`, und für Anmeldungen lautet er `https://graph.microsoft.com/v1.0/auditLogs/signIns`. Weitere Informationen finden Sie in der [Referenz zur Überwachungs-API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/directoryaudit) und in der [Referenz zur Anmelde-API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/signIn).
+Der Microsoft Graph-API-Endpunkt für Überwachungsprotokolle ist `https://graph.microsoft.com/v1.0/auditLogs/directoryAudits`, und für Anmeldungen lautet er `https://graph.microsoft.com/v1.0/auditLogs/signIns`. Weitere Informationen finden Sie in der [Referenz zur Überwachungs-API](/graph/api/resources/directoryaudit?view=graph-rest-1.0) und in der [Referenz zur Anmelde-API](/graph/api/resources/signIn?view=graph-rest-1.0).
 
-Darüber hinaus können Sie die [API für Identity Protection-Risikoerkennungen](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) verwenden, um programmgesteuerten Zugriff auf Sicherheitserkennungen über Microsoft Graph zu erhalten. Weitere Informationen finden Sie unter [Erste Schritte mit Azure Active Directory Identity Protection und Microsoft Graph](../identity-protection/graph-get-started.md). 
+Darüber hinaus können Sie die [API für Identity Protection-Risikoerkennungen](/graph/api/resources/identityriskevent?view=graph-rest-beta) verwenden, um programmgesteuerten Zugriff auf Sicherheitserkennungen über Microsoft Graph zu erhalten. Weitere Informationen finden Sie unter [Erste Schritte mit Azure Active Directory Identity Protection und Microsoft Graph](../identity-protection/howto-identity-protection-graph-api.md). 
   
 ## <a name="apis-with-microsoft-graph-explorer"></a>APIs mit Microsoft Graph-Tester
 
@@ -70,5 +70,3 @@ Ausführliche Anweisungen finden Sie unter [Abrufen von Daten per Azure AD-Beric
  * [Voraussetzungen für den Zugriff auf die Azure Active Directory-Berichterstellungs-API](howto-configure-prerequisites-for-reporting-api.md) 
  * [Abrufen von Daten per Azure AD Reporting-API mit Zertifikaten](tutorial-access-api-with-certificates.md)
  * [Beheben von Fehlern in der Azure AD-Berichterstellungs-API](troubleshoot-graph-api.md)
-
-

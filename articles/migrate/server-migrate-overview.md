@@ -3,12 +3,12 @@ title: Auswählen einer VMware-Migrationsoption mit der Azure Migrate-Servermigr
 description: Bietet eine Übersicht über die Optionen zum Migrieren von VMware-VMs zu Azure mit der Azure Migrate-Servermigration
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 56398f8bf78cb48b6cfe7a90ffdcbdb72743dc93
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e62b9cea80f1ed7f672135b93e52ba606a717a6c
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84769624"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950220"
 ---
 # <a name="select-a-vmware-migration-option"></a>Auswählen einer VMware-Migrationsoption
 
@@ -29,7 +29,7 @@ Die folgende Tabelle hilft Ihnen bei der Wahl der geeigneten Methode. Sie könne
 **Bereitstellung einer Appliance** | Die [Azure Migrate-Appliance](migrate-appliance.md) wird lokal bereitgestellt. | Die [Azure Migrate-Replikationsappliance](migrate-replication-appliance.md) wird lokal bereitgestellt.
 **Site Recovery-Kompatibilität** | Kompatibel | Wenn Sie die Replikation für einen Computer mit Site Recovery eingerichtet haben, können Sie keine Replikation mit der Azure Migrate-Servermigration durchführen.
 **Zieldatenträger** | Verwaltete Datenträger | Verwaltete Datenträger
-**Einschränkungen für Datenträger** | Betriebssystemdatenträger: 2 TB<br/><br/> Datenträger für Daten: 4 TB<br/><br/> Maximale Datenträger: 60 | Betriebssystemdatenträger: 2 TB<br/><br/> Datenträger für Daten: 8 TB<br/><br/> Maximale Datenträger: 63
+**Einschränkungen für Datenträger** | Betriebssystemdatenträger: 2 TB<br/><br/> Datenträger für Daten: 8 TB<br/><br/> Maximale Datenträger: 60 | Betriebssystemdatenträger: 2 TB<br/><br/> Datenträger für Daten: 8 TB<br/><br/> Maximale Datenträger: 63
 **Pass-Through-Datenträger** | Nicht unterstützt | Unterstützt
 **UEFI-Start** | Nicht unterstützt | Der migrierte virtuelle Computer in Azure wird automatisch in einen virtuellen Computer mit BIOS-Start konvertiert.<br/><br/> Der Betriebssystemdatenträger sollte bis zu vier Partitionen aufweisen, und Volumes sollten mit NTFS formatiert sein.
 
