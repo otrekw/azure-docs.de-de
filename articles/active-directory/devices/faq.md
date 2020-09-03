@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7637a4280d725aa8cd3482641645dbe19cb56210
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8d03b8f13a016dc21e37b82f66abc8050ef17d8
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84689043"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266781"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory: Häufig gestellte Fragen zur Geräteverwaltung
 
@@ -62,7 +62,7 @@ Nur die folgenden Geräte werden unter den **BENUTZER-Geräten** aufgeführt:
 - Der Benutzer deaktiviert das Gerät im Meine Apps-Portal. 
 - Ein Administrator (oder Benutzer) löscht oder deaktiviert das Gerät im Azure-Portal oder über PowerShell.
 - Nur in Azure AD Hybrid eingebundene Geräte: Ein Administrator entfernt die Geräte-OE aus dem Synchronisierungsbereich, was dazu führt, dass die Geräte aus Azure AD gelöscht werden.
-- Aktualisieren von Azure AD Connect auf Version 1.4.xx.x. [Grundlegendes zu Azure AD Connect 1.4.xx.x und zum Verschwinden von Geräten](/azure/active-directory/hybrid/reference-connect-device-disappearance).
+- Aktualisieren von Azure AD Connect auf Version 1.4.xx.x. [Grundlegendes zu Azure AD Connect 1.4.xx.x und zum Verschwinden von Geräten](../hybrid/reference-connect-device-disappearance.md).
 
 
 Weiter unten finden Sie Informationen dazu, wie diese Aktionen korrigiert werden können.
@@ -312,7 +312,7 @@ UPN-Änderungen werden mit dem Windows 10-Update 2004 unterstützt. Bei Benutz
 **A:** Führen Sie die folgenden Schritte aus:
 
 1.    [Erstellen Sie eine Konformitätsrichtlinie](/intune/compliance-policy-create-mac-os).
-1.    [Definieren Sie eine Richtlinie zum bedingten Zugriff für macOS-Geräte](../active-directory-conditional-access-azure-portal.md). 
+1.    [Definieren Sie eine Richtlinie zum bedingten Zugriff für macOS-Geräte](../conditional-access/overview.md). 
 
 **Hinweise:**
 

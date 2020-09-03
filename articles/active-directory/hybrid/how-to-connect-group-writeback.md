@@ -11,12 +11,12 @@ ms.date: 06/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c8fb54261f51d74f02b7b79c27f7a2043426686
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 1e49516647a4783fb27bf1be1cee60a3274fc040
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385142"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279846"
 ---
 # <a name="azure-ad-connect-group-writeback"></a>Gruppenrückschreiben in Azure AD Connect
 
@@ -48,7 +48,7 @@ Import-Module "C:\Program Files\Microsoft Azure Active Directory Connect\AdSyncC
 Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN $AzureADConnectSWritebackAccountDN
 ```
 
-Weitere Informationen zum Konfigurieren der Office 365-Gruppen finden Sie unter [Konfigurieren von Microsoft 365-Gruppen mit lokaler Exchange-Hybridbereitstellung](https://docs.microsoft.com/exchange/hybrid-deployment/set-up-microsoft-365-groups#enable-group-writeback-in-azure-ad-connect).
+Weitere Informationen zum Konfigurieren der Office 365-Gruppen finden Sie unter [Konfigurieren von Microsoft 365-Gruppen mit lokaler Exchange-Hybridbereitstellung](/exchange/hybrid-deployment/set-up-microsoft-365-groups#enable-group-writeback-in-azure-ad-connect).
 
 ## <a name="disabling-group-writeback"></a>Deaktivieren des Gruppenrückschreibens
 Gehen Sie zum Deaktivieren des Gruppenrückschreibens wie folgt vor: 

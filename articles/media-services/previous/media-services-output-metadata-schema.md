@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: e53aad83e79f236bf9a0bb3029e332cad211471a
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: cd81ef78ecc5ef9cea71adb387597681460d50c8
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86058094"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89261324"
 ---
 # <a name="output-metadata"></a>Ausgeben von Metadaten
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 ## <a name="overview"></a>Übersicht
 Ein Codierauftrag ist einem Eingabeasset (oder mehreren) zugeordnet, für das Sie einige Codieraufgaben durchführen möchten. Beispiele: Codieren einer MP4-Datei in H.264 MP4 Adaptive Bitrate-Sätze, Erstellen einer Miniaturansicht, Erstellen von Überlagerungen. Nach Abschluss einer Aufgabe wird ein Ausgabeasset erzeugt.  Das Ausgabemedienobjekt enthält Videodaten, Audiodaten, Miniaturansichten usw. Das Ausgabeasset enthält auch eine Datei mit Metadaten zum Ausgabeasset. Der Name der XML-Metadatendatei weist das folgende Format auf: &lt;Quelldateiname&gt;_manifest.xml (z.B. BigBuckBunny_manifest.xml).  
 

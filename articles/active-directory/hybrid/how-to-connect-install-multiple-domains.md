@@ -16,12 +16,12 @@ ms.date: 05/31/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a49abdea9d5b80687c53fbaa3d41480825ed504
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 1607bf1cd6f25f56c6819a2ea3194244e10df8dd
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849949"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277536"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>Unterstützung mehrerer Domänen für den Verbund mit Azure AD
 Die folgende Dokumentation enthält eine Anleitung dazu, wie Sie mehrere Domänen der obersten Ebene und Unterdomänen verwenden, wenn Sie einen Verbund mit Office 365- oder Azure AD-Domänen erstellen.
@@ -106,14 +106,14 @@ Führen Sie die folgenden Schritte aus, um die Microsoft Online-Vertrauensstellu
 2. Erweitern Sie auf der linken Seite die Optionen **Vertrauensstellungen** und **Vertrauensstellungen der vertrauenden Seite**.
 3. Löschen Sie auf der rechten Seite den Eintrag **Microsoft Office 365 Identity Platform** .
    ![Microsoft Online entfernen](./media/how-to-connect-install-multiple-domains/trust4.png)
-4. Führen Sie auf einem Computer, auf dem das [Azure Active Directory-Modul für Windows PowerShell](https://msdn.microsoft.com/library/azure/jj151815.aspx) installiert ist, Folgendes aus: `$cred=Get-Credential`.  
+4. Führen Sie auf einem Computer, auf dem das [Azure Active Directory-Modul für Windows PowerShell](/previous-versions/azure/jj151815(v=azure.100)) installiert ist, Folgendes aus: `$cred=Get-Credential`.  
 5. Geben Sie den Benutzernamen und das Kennwort eines globalen Administrators für die Azure AD-Domäne ein, mit der Sie den Verbund erstellen.
 6. Geben Sie in PowerShell `Connect-MsolService -Credential $cred` ein.
 7. Geben Sie in PowerShell `Update-MSOLFederatedDomain -DomainName <Federated Domain Name> -SupportMultipleDomain` ein.  Dies ist das Update für die ursprüngliche Domäne.  Mit den obigen Domänen ergibt sich Folgendes: `Update-MsolFederatedDomain -DomainName bmcontoso.com -SupportMultipleDomain`
 
 Führen Sie die folgenden Schritte aus, um die neue Domäne der obersten Ebene mit PowerShell hinzuzufügen.
 
-1. Führen Sie auf einem Computer, auf dem das [Azure Active Directory-Modul für Windows PowerShell](https://msdn.microsoft.com/library/azure/jj151815.aspx) installiert ist, Folgendes aus: `$cred=Get-Credential`.  
+1. Führen Sie auf einem Computer, auf dem das [Azure Active Directory-Modul für Windows PowerShell](/previous-versions/azure/jj151815(v=azure.100)) installiert ist, Folgendes aus: `$cred=Get-Credential`.  
 2. Geben Sie den Benutzernamen und das Kennwort eines globalen Administrators für die Azure AD-Domäne ein, mit der Sie den Verbund erstellen.
 3. Geben Sie in PowerShell `Connect-MsolService -Credential $cred` ein.
 4. Geben Sie in PowerShell `New-MsolFederatedDomain –SupportMultipleDomain –DomainName` ein.

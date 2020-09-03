@@ -3,12 +3,13 @@ title: Objektserialisierung der zuverlässigen Sammlung
 description: Hier erhalten Sie Informationen zur Objektserialisierung zuverlässiger Sammlungen in Azure Service Fabric, u. a. zur Standardstrategie sowie zum Definieren der benutzerdefinierten Serialisierung.
 ms.topic: conceptual
 ms.date: 5/8/2017
-ms.openlocfilehash: f7a0dc56c181ddd6a98ab0e263180c222368dafb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 1d29f5d3391bdea0b21997a392d4d2e053b7ec65
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245992"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018619"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Reliable Collection-Objektserialisierung in Azure Service Fabric
 Reliable Collection repliziert und speichert seine Elemente, um sicherzustellen, dass sie über Computer- und Stromausfälle hinaus erhalten bleiben.

@@ -3,12 +3,13 @@ title: 'PowerShell-Skript: Suchen nach Tresor für Speicherkonto'
 description: Hier erfahren Sie, wie Sie mithilfe eines Azure PowerShell-Skripts nach dem Recovery Services-Tresor suchen können, bei dem Ihr Speicherkonto registriert ist.
 ms.topic: sample
 ms.date: 1/28/2020
-ms.openlocfilehash: 1e12f1472b8141d06a1b3c1c9049e057f100d0e4
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 40859c1ea05210d27fcdcf33ba9d4f961965ea22
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757522"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89075697"
 ---
 # <a name="powershell-script-to-find-the-recovery-services-vault-where-a-storage-account-is-registered"></a>PowerShell-Skript für die Suche nach dem Recovery Services-Tresor, bei dem ein Speicherkonto registriert ist
 

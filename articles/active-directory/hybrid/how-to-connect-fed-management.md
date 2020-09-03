@@ -18,12 +18,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58bc154f4ffb234df52faf3c02b5ed7ecaf77c2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72339d9ce492446d05f23b63ac2d0a1c2d62f766
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830926"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276778"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Verwaltung und Anpassung der Active Directory-Verbunddienste mit Azure AD Connect
 In diesem Artikel wird beschrieben, wie Active Directory-Verbunddienste (AD FS) mit Azure Active Directory (Azure AD) Connect verwaltet und angepasst werden. Darüber hinaus werden andere gängige AD FS-Aufgaben behandelt, die Sie möglicherweise zur vollständigen Konfiguration einer AD FS-Farm benötigen.
@@ -85,7 +85,7 @@ Das Konfigurieren einer alternativen Anmelde-ID für AD FS besteht aus zwei Haup
     Installieren Sie zur Korrektur der Konfiguration bei fehlendem KB-Update das erforderliche Update [KB2919355](https://go.microsoft.com/fwlink/?LinkID=396590), und reparieren Sie dann die Vertrauensstellung mithilfe der Informationen unter [AAD reparieren und AD FS-Vertrauensstellung](#repairthetrust).
 
 > [!NOTE]
-> Weitere Informationen zur alternativen Anmelde-ID sowie Schritte zur manuellen Konfiguration finden Sie unter [Konfigurieren alternativer Anmelde-IDs](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configuring-alternate-login-id)
+> Weitere Informationen zur alternativen Anmelde-ID sowie Schritte zur manuellen Konfiguration finden Sie unter [Konfigurieren alternativer Anmelde-IDs](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)
 
 ## <a name="add-an-ad-fs-server"></a><a name="addadfsserver"></a>Hinzufügen eines AD FS-Servers 
 
@@ -174,7 +174,7 @@ Das Hinzufügen einer Domäne, die einen Verbund mit Azure AD bilden soll, ist m
 
    ![Azure AD-Domäne](./media/how-to-connect-fed-management/AdditionalDomain4.PNG)
 
-    Nach der Auswahl der Domäne erhalten Sie vom Assistenten die entsprechenden Informationen zu weiteren Aktionen, die er ausführt, sowie zur Auswirkung der Konfiguration. In einigen Fällen – wenn Sie eine Domäne auswählen, die noch nicht in Azure AD überprüft wurde – erhalten Sie vom Assistenten Informationen zur Überprüfung der Domäne. Ausführliche Informationen finden Sie unter [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](../active-directory-domains-add-azure-portal.md) .
+    Nach der Auswahl der Domäne erhalten Sie vom Assistenten die entsprechenden Informationen zu weiteren Aktionen, die er ausführt, sowie zur Auswirkung der Konfiguration. In einigen Fällen – wenn Sie eine Domäne auswählen, die noch nicht in Azure AD überprüft wurde – erhalten Sie vom Assistenten Informationen zur Überprüfung der Domäne. Ausführliche Informationen finden Sie unter [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](../fundamentals/add-custom-domain.md) .
 
 5. Klicken Sie auf **Weiter**. Auf der Seite **Bereit zur Konfiguration** wird die Liste mit den Aktionen angezeigt, die von Azure AD Connect ausgeführt werden. Klicken Sie auf **Installieren** , um die Konfiguration abzuschließen.
 
@@ -207,7 +207,7 @@ Set-AdfsGlobalWebContent -SignInPageDescriptionText "<p>Sign-in to Contoso requi
 ```
 
 ## <a name="modify-ad-fs-claim-rules"></a><a name="modclaims"></a>Ändern von AD FS-Anspruchsregeln 
-AD FS unterstützt eine umfangreiche Sprache für Ansprüche, die Sie zum Erstellen von benutzerdefinierten Anspruchsregeln verwenden können. Weitere Informationen finden Sie unter [Rolle der Anspruchsregelsprache](https://technet.microsoft.com/library/dd807118.aspx).
+AD FS unterstützt eine umfangreiche Sprache für Ansprüche, die Sie zum Erstellen von benutzerdefinierten Anspruchsregeln verwenden können. Weitere Informationen finden Sie unter [Rolle der Anspruchsregelsprache](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dd807118(v=ws.11)).
 
 In den folgenden Abschnitten wird beschrieben, wie Sie benutzerdefinierte Regeln für einige Szenarien in Zusammenhang mit dem Azure AD- und AD FS-Verbund schreiben können.
 

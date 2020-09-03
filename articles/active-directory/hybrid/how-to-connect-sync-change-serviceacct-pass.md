@@ -17,19 +17,19 @@ ms.date: 05/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce4c64f0be61c2fe28a102674929333235ee29c8
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 31c76b78d4ab7a3f305b52526b7e4ce14f3b1ede
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385091"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278036"
 ---
 # <a name="changing-the-adsync-service-account-password"></a>Ändern des Kennworts für das ADSync-Dienstkonto
 Wenn Sie das Kennwort für das ADSync-Dienstkonto ändern, kann der Synchronisierungsdienst nicht ordnungsgemäß gestartet werden, bis der Verschlüsselungsschlüssel verworfen und das Kennwort für das ADSync-Dienstkonto erneut initialisiert wurde. 
 
 Azure AD Connect verwendet als Teil der Synchronisierungsdienste einen Verschlüsselungsschlüssel zum Speichern der Kennwörter für das AD DS-Connectorkonto und das ADSync-Dienstkonto.  Diese Konten werden verschlüsselt, bevor sie in der Datenbank gespeichert werden. 
 
-Der verwendete Verschlüsselungsschlüssel wird über [Windows-Datenschutz (DPAPI)](https://msdn.microsoft.com/library/ms995355.aspx) gesichert. DPAPI schützt den Verschlüsselungsschlüssel mithilfe des **ADSync-Dienstkontos**. 
+Der verwendete Verschlüsselungsschlüssel wird über [Windows-Datenschutz (DPAPI)](/previous-versions/ms995355(v=msdn.10)) gesichert. DPAPI schützt den Verschlüsselungsschlüssel mithilfe des **ADSync-Dienstkontos**. 
 
 Wenn Sie das Kennwort des Dienstkontos ändern müssen, können Sie hierzu die Verfahren unter [Verwerfen des Verschlüsselungsschlüssels für das ADSync-Dienstkonto](#abandoning-the-adsync-service-account-encryption-key) verwenden.  Diese Verfahren sollten auch verwendet werden, wenn Sie den Verschlüsselungsschlüssel aus irgendeinem Grund verwerfen müssen.
 

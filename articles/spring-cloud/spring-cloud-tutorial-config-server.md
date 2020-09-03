@@ -7,12 +7,12 @@ ms.author: brendm
 author: bmitchell287
 ms.date: 10/18/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 38ef1188503d0076cfd98843f6f68c990fba7463
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 665d508a7d95e177d0db09ad86e2a5f0ee4d605b
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762364"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291295"
 ---
 # <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>Einrichten einer Spring Cloud-Konfigurationsserverinstanz für Ihren Dienst
 
@@ -22,7 +22,7 @@ Die Spring Cloud-Konfiguration bietet server- und clientseitige Unterstützung f
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. 
-* Einen bereits bereitgestellten und ausgeführten Azure Spring Cloud-Dienst. Informationen zum Einrichten und Starten eines Azure Spring Cloud-Diensts finden Sie unter [Schnellstart: Starten einer Java Spring-Anwendung mit der Azure-Befehlszeilenschnittstelle](spring-cloud-quickstart-launch-app-cli.md).
+* Einen bereits bereitgestellten und ausgeführten Azure Spring Cloud-Dienst. Informationen zum Einrichten und Starten eines Azure Spring Cloud-Diensts finden Sie unter [Schnellstart: Starten einer Java Spring-Anwendung mit der Azure-Befehlszeilenschnittstelle](spring-cloud-quickstart.md).
 
 ## <a name="restriction"></a>Einschränkung
 

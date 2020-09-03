@@ -3,12 +3,12 @@ title: Richtlinien für das Taggen von Ressourcen
 description: In diesem Artikel werden die Azure-Richtlinien beschrieben, die Sie zuweisen können, um Konformität in Bezug auf Tags sicherzustellen.
 ms.topic: conceptual
 ms.date: 03/20/2020
-ms.openlocfilehash: e3eeb28ea23b18c3492f68d2fac294fc014420c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c6867bc01306ac3c08a9797ece0567a45e060af2
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82147866"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89293733"
 ---
 # <a name="assign-policies-for-tag-compliance"></a>Zuweisen von Richtlinien für Konformität in Bezug auf Tags
 
@@ -16,7 +16,7 @@ Sie verwenden [Azure Policy](../../governance/policy/overview.md), um Taggingreg
 
 ## <a name="policies"></a>Richtlinien
 
-[!INCLUDE [Tag policies](../../../includes/policy/samples/bycat/policies-tags.md)]
+[!INCLUDE [Tag policies](../../../includes/policy/reference/bycat/policies-tags.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -15,12 +15,12 @@ ms.date: 10/29/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ca2600101c302cee1da4d22a3f098436ecb71e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1279ef9b8767ba05f329678429dff40f9bfed640
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85355895"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89280112"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>Beheben von Fehlern während der Synchronisierung
 Fehler können auftreten, wenn Identitätsdaten aus Windows Server Active Directory (AD DS) mit Azure Active Directory (Azure AD) synchronisiert werden. Dieser Artikel bietet einen Überblick über verschiedene Fehlertypen, die während der Synchronisierung auftreten können, einige der möglichen Szenarios, die solche Fehler verursachen, und Möglichkeiten, diese Fehler zu beheben. In diesem Artikel werden die häufigsten Fehlertypen behandelt, daher sind eventuell nicht alle möglichen Fehler enthalten.
@@ -246,5 +246,5 @@ Führen Sie folgende Schritte aus, um dieses Problem zu beheben:
 >Sie können die Administratorrolle dem vorhandenen Benutzerobjekt erneut zuweisen, nachdem der Soft Match zwischen dem lokalen Benutzerobjekt und dem Azure AD-Benutzerobjekt abgeschlossen ist.
 
 ## <a name="related-links"></a>Verwandte Links
-* [In Active Directory-Verwaltungscenter nach Active Directory-Objekten suchen](https://technet.microsoft.com/library/dd560661.aspx)
-* [Verwalten von Azure AD mit Windows PowerShell](https://msdn.microsoft.com/library/azure/jj151815.aspx)
+* [In Active Directory-Verwaltungscenter nach Active Directory-Objekten suchen](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd560661(v=ws.10))
+* [Verwalten von Azure AD mit Windows PowerShell](/previous-versions/azure/jj151815(v=azure.100))

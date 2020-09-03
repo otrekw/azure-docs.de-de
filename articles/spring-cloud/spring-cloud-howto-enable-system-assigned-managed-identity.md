@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/13/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 1b9d7326ec13176fbe65ba430a8a33bb93a48f74
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0c092052e05f355838f3853fa7376b46ef743de7
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091452"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299644"
 ---
 # <a name="how-to-enable-system-assigned-managed-identity-for-azure-spring-cloud-application"></a>Aktivieren einer systemseitig zugewiesenen verwalteten Identität für eine Azure Spring Cloud-Anwendung
 Verwaltete Identitäten stellen für Azure-Ressourcen wie Ihre Azure Spring Cloud-Anwendung eine automatisch verwaltete Identität in Azure Active Directory bereit. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein.
@@ -21,7 +21,7 @@ In diesem Artikel erfahren Sie, wie Sie systemseitig zugewiesene verwaltete Iden
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Wenn Sie nicht mit verwalteten Identitäten für Azure-Ressourcen vertraut sind, sehen Sie sich die [Übersicht](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) an.
-Sie benötigen eine bereitgestellte Azure Spring Cloud-Instanz. Befolgen Sie dazu die Schritte im Artikel [Schnellstart: Starten einer Java Spring-Anwendung mit der Azure CLI](spring-cloud-quickstart-launch-app-cli.md).
+Sie benötigen eine bereitgestellte Azure Spring Cloud-Instanz. Befolgen Sie dazu die Schritte im Artikel [Schnellstart: Starten einer Java Spring-Anwendung mit der Azure CLI](spring-cloud-quickstart.md).
 
 ## <a name="add-a-system-assigned-identity"></a>Hinzufügen einer systemseitig zugewiesenen Identität
 Für die Erstellung einer App mit einer systemseitig zugewiesenen Identität muss eine zusätzliche Eigenschaft für die Anwendung festgelegt werden.
@@ -72,7 +72,7 @@ Bei einer App, für die eine vom System zugewiesene verwaltete Identität nicht 
 1. Navigieren Sie zum gewünschten virtuellen Computer, und wählen Sie **Identität** aus.
 1. Wählen Sie unter **Vom System zugewiesen**/**Status** die Option **Aus** aus, und klicken Sie dann auf **Speichern**:
 
- ![Verwaltete Identität im Portal](./media/spring-cloud-managed-identity/remove-identity.png)
+ ![Verwaltete Identität](./media/spring-cloud-managed-identity/remove-identity.png)
 
 ### <a name="using-azure-cli"></a>Verwenden der Azure-Befehlszeilenschnittstelle
 Für eine App, für die eine vom System zugewiesene verwaltete Identität nicht mehr benötigt wird, können Sie den folgenden Befehl zum Entfernen der Identität verwenden:

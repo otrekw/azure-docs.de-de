@@ -13,12 +13,12 @@ ms.date: 09/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bee5ba92f6795df6635dc98a19cabaeb9692a470
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd3361657406f2ece6a48b74d3ca6ee3d9ed68ca
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358734"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277356"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Installationsübersicht: Azure AD Connect und Azure AD Connect Health
 
@@ -49,14 +49,14 @@ Den Download für Azure AD Connect finden Sie im [Microsoft Download Center](htt
 |Nach der Installation | [Überprüfen der Installation und Zuweisen von Lizenzen](how-to-connect-post-installation.md)|
 
 ### <a name="learn-more-about-install-azure-ad-connect"></a>Weitere Informationen über die Installation von Azure AD Connect
-Sie sollten sich auch auf [betriebliche](how-to-connect-sync-operations.md) Probleme vorbereiten. Verwenden Sie ggf. einen Standbyserver, um im [Notfall](how-to-connect-sync-staging-server.md#disaster-recovery) problemlos ein Failover ausführen zu können. Wenn Sie häufig Konfigurationsänderungen vornehmen möchten, sollten Sie einen [Stagingmodus](how-to-connect-sync-staging-server.md) -Server einplanen.
+Sie sollten sich auch auf [betriebliche](./how-to-connect-sync-staging-server.md) Probleme vorbereiten. Verwenden Sie ggf. einen Standbyserver, um im [Notfall](how-to-connect-sync-staging-server.md#disaster-recovery) problemlos ein Failover ausführen zu können. Wenn Sie häufig Konfigurationsänderungen vornehmen möchten, sollten Sie einen [Stagingmodus](how-to-connect-sync-staging-server.md) -Server einplanen.
 
 |Thema |Link|  
 | --- | --- |
 |Unterstützte Topologien | [Topologien für Azure AD Connect](plan-connect-topologies.md)|
 |Entwurfskonzepte | [Entwurfskonzepte für Azure AD Connect](plan-connect-design-concepts.md)|
 |Für die Installation verwendete Konten | [Weitere Informationen zu den Anmeldeinformationen und Berechtigungen von Azure AD Connect](reference-connect-accounts-permissions.md)|
-|Operative Planung | [Azure AD Connect-Synchronisierung: Operative Aufgaben und Überlegungen](how-to-connect-sync-operations.md)|
+|Operative Planung | [Azure AD Connect-Synchronisierung: Operative Aufgaben und Überlegungen](./how-to-connect-sync-staging-server.md)|
 |Optionen für die Benutzeranmeldung | [Azure AD Connect-Optionen für die Benutzeranmeldung](plan-connect-user-signin.md)|
 
 ## <a name="configure-sync-features"></a>Konfigurieren der Synchronisierungsfunktionen
@@ -66,7 +66,7 @@ Azure AD Connect verfügt über mehrere Funktionen, die Sie optional aktivieren 
 
 [Kennworthashsynchronisierung](how-to-connect-password-hash-synchronization.md) synchronisiert das Kennworthash in Active Directory mit Azure AD. So kann der Endbenutzer das gleiche Kennwort lokal und in der Cloud verwenden, es jedoch nur an einem Ort verwalten. Da es das lokale Active Directory als Autorität verwendet, können Sie auch Ihre eigene Kennwortrichtlinie verwenden.
 
-[Kennwortrückschreiben](../authentication/quickstart-sspr.md) ermöglicht es den Benutzern, ihre Kennwörter in der Cloud zu ändern und zurückzusetzen und die lokale Kennwortrichtlinie anzuwenden.
+[Kennwortrückschreiben](../authentication/tutorial-enable-sspr.md) ermöglicht es den Benutzern, ihre Kennwörter in der Cloud zu ändern und zurückzusetzen und die lokale Kennwortrichtlinie anzuwenden.
 
 [Geräterückschreiben](how-to-connect-device-writeback.md) ermöglicht es Ihnen, ein in Azure AD registriertes Gerät wieder in das lokale Active Directory zurückzuschreiben, damit es für bedingten Zugriff verwendet werden kann.
 
@@ -80,7 +80,7 @@ Die Funktion zum [Verhindern eines versehentlichen Löschvorgangs](how-to-connec
 |Konfigurieren der Filterung | [Azure AD Connect-Synchronisierung: Konfigurieren der Filterung](how-to-connect-sync-configure-filtering.md)|
 |Kennworthashsynchronisierung | [Kennworthashsynchronisierung](how-to-connect-password-hash-synchronization.md)|
 |Passthrough-Authentifizierung | [Passthrough-Authentifizierung](how-to-connect-pta.md)
-|Kennwortrückschreiben | [Erste Schritte mit der Kennwortverwaltung](../authentication/quickstart-sspr.md)|
+|Kennwortrückschreiben | [Erste Schritte mit der Kennwortverwaltung](../authentication/tutorial-enable-sspr.md)|
 |Geräterückschreiben | [Aktivieren des Geräterückschreibens in Azure AD Connect](how-to-connect-device-writeback.md)|
 |Verhindern eines versehentlichen Löschvorgangs | [Azure AD Connect-Synchronisierung: Verhindern von versehentlichen Löschvorgängen](how-to-connect-sync-feature-prevent-accidental-deletes.md)|
 |automatische Upgrade | [Azure AD Connect: Automatisches Upgrade](how-to-connect-install-automatic-upgrade.md)|

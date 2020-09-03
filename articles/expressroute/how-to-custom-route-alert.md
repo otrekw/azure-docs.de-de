@@ -2,17 +2,17 @@
 title: 'ExpressRoute: Konfigurieren benutzerdefinierter Warnungen für angekündigte Routen'
 description: In diesem Artikel erfahren Sie, wie Sie mit Azure Automation und Logic Apps die Anzahl der Routen überwachen, die vom ExpressRoute-Gateway in lokalen Netzwerken angekündigt werden, um den Grenzwert von 200 Routen nicht zu überschreiten.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
-ms.author: cherylmc
-ms.openlocfilehash: 42f416cf6f297eb54298a10162e7ba28f7acd1bd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: f29f43234f1541abeb448e722d0b72ef7c0221c9
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738480"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401723"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>Konfigurieren benutzerdefinierter Warnungen zum Überwachen angekündigter Routen
 

@@ -11,12 +11,12 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39acc0373f5748f57f4fef5a5cee5fb038071523
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: c083b319b11807a88461b2464153821fa2ad0b67
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080180"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276183"
 ---
 # <a name="hybrid-identity-considerations-for-the-azure-government-cloud"></a>Überlegungen zur Hybrididentität für die Azure Government-Cloud
 
@@ -25,7 +25,7 @@ In diesem Artikel werden Überlegungen zum Integrieren einer Hybridumgebung in d
 > [!NOTE]
 > Um eine lokale Azure Active Directory-Umgebung (Azure AD) in die Azure Government-Cloud zu integrieren, müssen Sie ein Upgrade auf das neueste Release von [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) durchführen.
 
-Eine vollständige Liste der Endpunkte des US-Verteidigungsministeriums finden Sie in der [Dokumentation](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-dod-endpoints).
+Eine vollständige Liste der Endpunkte des US-Verteidigungsministeriums finden Sie in der [Dokumentation](/office365/enterprise/office-365-u-s-government-dod-endpoints).
 
 ## <a name="azure-ad-pass-through-authentication"></a>Azure AD-Passthrough-Authentifizierung
 

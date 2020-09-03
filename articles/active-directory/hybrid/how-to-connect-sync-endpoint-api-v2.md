@@ -12,12 +12,12 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a2e8bb6da4cf126a9dbd955b082d77965772f6f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce7041cd74a6bfd3ac736d3ae774324122ed737b
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357578"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277067"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Synchronisierungsendpunkt-API V2 für Azure AD Connect (öffentliche Vorschau) 
 Microsoft hat einen neuen Endpunkt (API) für Azure AD Connect bereitgestellt, mit dem die Leistung der Synchronisierungsdienstvorgänge für Azure Active Directory verbessert wird. Wenn Sie den neuen V2-Endpunkt verwenden, treten beim Exportieren aus und Importieren in Azure AD spürbare Leistungssteigerungen auf. Dieser neue Endpunkt unterstützt Folgendes:
@@ -33,7 +33,7 @@ Microsoft hat einen neuen Endpunkt (API) für Azure AD Connect bereitgestellt, m
 Um den neuen V2-Endpunkt verwenden zu können, müssen Sie [Azure AD Connect Version 1.5.30.0](https://www.microsoft.com/download/details.aspx?id=47594) oder höher verwenden und die unten angegebenen Bereitstellungsschritte ausführen, um den V2-Endpunkt für Ihren Azure AD Connect-Server zu aktivieren.   
 
 >[!NOTE]
->Diese öffentliche Vorschau ist derzeit nur in der globalen Azure-Cloud und nicht für [nationale Clouds](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud) verfügbar.
+>Diese öffentliche Vorschau ist derzeit nur in der globalen Azure-Cloud und nicht für [nationale Clouds](../develop/authentication-national-cloud.md) verfügbar.
 
 ### <a name="public-preview-limitations"></a>Einschränkungen der öffentlichen Vorschauversion  
 Obwohl dieses Release umfangreiche Tests durchlaufen hat, treten möglicherweise Probleme auf. Eines der Ziele dieser öffentlichen Vorschauversion besteht darin, derartige Probleme zu ermitteln und zu beheben.  
@@ -44,7 +44,7 @@ Obwohl dieses Release umfangreiche Tests durchlaufen hat, treten möglicherweise
 ## <a name="deployment-guidance"></a>Hinweise zur Bereitstellung 
 Sie müssen [Azure AD Connect Version 1.5.30.0](https://www.microsoft.com/download/details.aspx?id=47594) oder höher bereitstellen, um den V2-Endpunkt zu verwenden. Verwenden Sie den bereitgestellten Link zum Herunterladen. 
 
-Es wird empfohlen, die [Swingmigrationsmethode](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version#swing-migration) für das Rollout des neuen Endpunkts in Ihrer Umgebung zu befolgen. Dadurch wird ein klarer Notfallplan für den Fall bereitgestellt, dass ein umfangreiches Rollback erforderlich ist. Im folgenden Beispiel wird veranschaulicht, wie eine Swingmigration in diesem Szenario verwendet werden kann. Weitere Informationen zur Swingmigrations-Bereitstellungsmethode finden Sie unter dem bereitgestellten Link. 
+Es wird empfohlen, die [Swingmigrationsmethode](./how-to-upgrade-previous-version.md#swing-migration) für das Rollout des neuen Endpunkts in Ihrer Umgebung zu befolgen. Dadurch wird ein klarer Notfallplan für den Fall bereitgestellt, dass ein umfangreiches Rollback erforderlich ist. Im folgenden Beispiel wird veranschaulicht, wie eine Swingmigration in diesem Szenario verwendet werden kann. Weitere Informationen zur Swingmigrations-Bereitstellungsmethode finden Sie unter dem bereitgestellten Link. 
 
 ### <a name="swing-migration-for-deploying-v2-endpoint"></a>Swingmigration zum Bereitstellen des V2-Endpunkts
 Die folgenden Schritte führen Sie durch die Bereitstellung des V2-Endpunkts mithilfe der Swingmethode.

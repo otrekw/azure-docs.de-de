@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 4826bcdc85e0c6189c51aa262014fe154bb479b1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f420f66e1db6efc6a0aa43cb88f26687839f0d1a
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74534814"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321513"
 ---
 # <a name="azure-active-directory-governance-operations-reference-guide"></a>Referenzleitfaden zu Azure Active Directory-Governancevorgängen
 
@@ -49,8 +49,8 @@ Beim Überprüfen Ihrer Liste stellen Sie ggf. fest, dass Sie entweder einen Bes
 
 #### <a name="owner-recommended-reading"></a>Empfohlene Artikel für Besitzer
 
-- [Zuweisen von Administratorrollen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)
-- [Governance in Azure](https://docs.microsoft.com/azure/security/governance-in-azure)
+- [Zuweisen von Administratorrollen in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md)
+- [Governance in Azure](../../governance/index.yml)
 
 ### <a name="configuration-changes-testing"></a>Testen von Konfigurationsänderungen
 
@@ -58,7 +58,7 @@ Für einige Änderungen sind beim Testen besondere Maßnahmen erforderlich, beis
 
 | Szenario| Empfehlung |
 |-|-|
-|Ändern des Authentifizierungstyps von „Verbund“ in „PHS/PTA“ oder umgekehrt| Testen Sie die Auswirkung der Änderung des Authentifizierungstyp mit einem [gestaffelten Rollout](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-staged-rollout).|
+|Ändern des Authentifizierungstyps von „Verbund“ in „PHS/PTA“ oder umgekehrt| Testen Sie die Auswirkung der Änderung des Authentifizierungstyp mit einem [gestaffelten Rollout](../hybrid/how-to-connect-staged-rollout.md).|
 |Rollout einer neuen Richtlinie für bedingten Zugriff oder einer Identitätsschutzrichtlinie|Erstellen Sie eine neue ZS-Richtlinie, und weisen Sie diese Testbenutzern zu.|
 |Onboarding einer Testumgebung für eine Anwendung|Fügen Sie die Anwendung zu einer Produktionsumgebung hinzu, blenden Sie sie im MyApps-Panel aus, und weisen Sie sie während der Qualitätssicherungsphase Testbenutzern zu.|
 |Ändern von Synchronisierungsregeln|Führen Sie die Änderungen in einer Azure AD Connect-Testumgebung mit der gleichen Konfiguration aus, die zu diesem Zeitpunkt in der Produktion verwendet wird (auch als Stagingmodus bezeichnet), und analysieren Sie die Ergebnisse von CSExport. Wenn Sie zufrieden sind, wechseln Sie in die Produktion.|
@@ -66,7 +66,7 @@ Für einige Änderungen sind beim Testen besondere Maßnahmen erforderlich, beis
 |Rollout eines neuen Features|Wenn das Feature das Rollout für bestimmte Zielbenutzer ermöglicht, legen Sie Pilotbenutzer fest, und erweitern Sie diese nach und nach. Für die Self-Service-Kennwortzurücksetzung und die mehrstufige Authentifizierung können beispielsweise bestimmte Zielbenutzer oder -gruppen festgelegt werden.|
 |Umstellung einer Anwendung von einem lokalen Identitätsanbieter (IdP) wie Azure Active Directory zu Azure AD|Wenn die Anwendung mehrere IdP-Konfigurationen unterstützt, z. B. Salesforce, konfigurieren Sie alle verfügbaren Optionen, und testen Sie Azure AD während eines Änderungsfensters (falls die Anwendung die HRD-Seite einführt). Wenn die Anwendung nur einen Identitätsanbieter unterstützt, sollten Sie das Testen während eines Änderungssteuerungsfensters und einer Downtime des Programms ansetzen.|
 |Aktualisieren dynamischer Gruppenregeln|Erstellen Sie eine parallele dynamische Gruppe mit der neuen Regel. Gleichen Sie das berechnete Ergebnis ab, indem Sie beispielsweise PowerShell mit der gleichen Bedingung ausführen.<br>Wenn der Test erfolgreich verlaufen ist, tauschen Sie die Stellen aus, an denen die alte Gruppe verwendet wurde (sofern möglich).|
-|Migrieren von Produktlizenzen|Weitere Informationen finden Sie unter [Ändern der Lizenz für einen einzelnen Benutzer in einer lizenzierten Gruppe in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/users-groups-roles/licensing-groups-change-licenses).|
+|Migrieren von Produktlizenzen|Weitere Informationen finden Sie unter [Ändern der Lizenz für einen einzelnen Benutzer in einer lizenzierten Gruppe in Azure Active Directory](../users-groups-roles/licensing-groups-change-licenses.md).|
 |Ändern von AD FS-Regeln wie Autorisierung, Ausstellung, MFA|Verwenden Sie einen Gruppenanspruch, um eine Teilmenge der Benutzer zu verwenden.|
 |Ändern der AD FS-Authentifizierungsfunktion oder ähnliche farmweite Änderungen|Erstellen Sie eine parallele Farm mit demselben Hostnamen, implementieren Sie Konfigurationsänderungen, testen Sie sie auf Clients mithilfe von HOSTS-Dateien, NLB-Routingregeln oder ähnlichem Routing.<br>Wenn die Zielplattform (z. B. mobile Geräte) keine Hostdateien unterstützt, überprüfen Sie die Änderung.|
 
@@ -74,7 +74,7 @@ Für einige Änderungen sind beim Testen besondere Maßnahmen erforderlich, beis
 
 ### <a name="access-reviews-to-applications"></a>Zugriffsüberprüfungen auf Anwendungen
 
-Im Laufe der Zeit können Benutzer den Zugriff auf Ressourcen ansammeln, wenn sie verschiedene Teams und Positionen durchlaufen. Es ist wichtig, dass Ressourcenbesitzer den Zugriff auf Anwendungen regelmäßig überprüfen und Berechtigungen entfernen, die von bestimmten Benutzern nicht mehr benötigt werden. Mithilfe von [Azure AD-Zugriffsüberprüfungen](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview) können Unternehmen Gruppenmitgliedschaften, den Zugriff auf Unternehmensanwendungen sowie Rollenzuweisungen effizient verwalten. Ressourcenbesitzer sollten den Benutzerzugriff regelmäßig überprüfen, um sicherzustellen, dass nur die richtigen Personen weiterhin Zugriff besitzen. Im Idealfall sollten Sie Azure AD-Zugriffsüberprüfungen für diese Aufgabe verwenden.
+Im Laufe der Zeit können Benutzer den Zugriff auf Ressourcen ansammeln, wenn sie verschiedene Teams und Positionen durchlaufen. Es ist wichtig, dass Ressourcenbesitzer den Zugriff auf Anwendungen regelmäßig überprüfen und Berechtigungen entfernen, die von bestimmten Benutzern nicht mehr benötigt werden. Mithilfe von [Azure AD-Zugriffsüberprüfungen](../governance/access-reviews-overview.md) können Unternehmen Gruppenmitgliedschaften, den Zugriff auf Unternehmensanwendungen sowie Rollenzuweisungen effizient verwalten. Ressourcenbesitzer sollten den Benutzerzugriff regelmäßig überprüfen, um sicherzustellen, dass nur die richtigen Personen weiterhin Zugriff besitzen. Im Idealfall sollten Sie Azure AD-Zugriffsüberprüfungen für diese Aufgabe verwenden.
 
 ![Startseite für Zugriffsüberprüfungen](./media/active-directory-ops-guide/active-directory-ops-img15.png)
 
@@ -83,7 +83,7 @@ Im Laufe der Zeit können Benutzer den Zugriff auf Ressourcen ansammeln, wenn si
 
 ### <a name="access-reviews-to-external-identities"></a>Zugriffsüberprüfungen für externe Identitäten
 
-Es ist von entscheidender Bedeutung, den Zugriff auf externe Identitäten nur auf Ressourcen zu beschränken, die während einer bestimmten Zeit benötigt werden. Richten Sie mithilfe der [Azure AD-Zugriffsüberprüfungen](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview) einen regulären automatisierten Prozess für die Zugriffsüberprüfung für alle externen Identitäten und den Anwendungszugriff ein. Wenn ein Prozess bereits lokal vorhanden ist, sollten Sie die Verwendung der Azure AD Zugriffsüberprüfungen in Erwägung ziehen. Wenn eine Anwendung eingestellt oder nicht mehr verwendet wird, entfernen Sie alle externen Identitäten, die Zugriff auf die Anwendung haben.
+Es ist von entscheidender Bedeutung, den Zugriff auf externe Identitäten nur auf Ressourcen zu beschränken, die während einer bestimmten Zeit benötigt werden. Richten Sie mithilfe der [Azure AD-Zugriffsüberprüfungen](../governance/access-reviews-overview.md) einen regulären automatisierten Prozess für die Zugriffsüberprüfung für alle externen Identitäten und den Anwendungszugriff ein. Wenn ein Prozess bereits lokal vorhanden ist, sollten Sie die Verwendung der Azure AD Zugriffsüberprüfungen in Erwägung ziehen. Wenn eine Anwendung eingestellt oder nicht mehr verwendet wird, entfernen Sie alle externen Identitäten, die Zugriff auf die Anwendung haben.
 
 > [!NOTE]
 > Jeder Benutzer, der mit Zugriffsüberprüfungen interagiert, benötigt eine kostenpflichtige Azure AD Premium P2-Lizenz.
@@ -94,22 +94,22 @@ Es ist von entscheidender Bedeutung, den Zugriff auf externe Identitäten nur au
 
 Hacker haben häufig Administratorkonten und andere Komponenten mit privilegiertem Zugriff im Visier, um mit Angriffen schnell Zugriff auf vertrauliche Daten und Systeme zu erhalten. Da sich Benutzer mit privilegierten Rollen tendenziell im Laufe der Zeit ansammeln, ist es wichtig, den Administratorzugriff regelmäßig zu überprüfen und zu verwalten und privilegierten Just-In-Time-Zugriff auf Azure AD- und Azure-Ressourcen zu gewähren.
 
-Wenn in Ihrer Organisation kein Prozess zum Verwalten privilegierter Konten vorhanden ist, oder wenn einige Administratoren derzeit ihre regulären Benutzerkonten zum Verwalten von Diensten und Ressourcen verwenden, sollten Sie sofort mit der Verwendung separater Konten beginnen, z. B. eines für reguläre Alltagsaktivitäten und ein anderes für privilegierten Zugriff, das mit MFA konfiguriert wurde. Wenn Ihre Organisation ein Azure AD Premium P2-Abonnement besitzt, sollten Sie sofort [Azure AD Privileged Identity Management (PIM)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure#license-requirements) aktivieren. Im gleichen Zug sollten Sie auch diese privilegierten Konten überprüfen und ggf. [Rollen mit geringeren Berechtigungen](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-admin-roles-secure) zuweisen.
+Wenn in Ihrer Organisation kein Prozess zum Verwalten privilegierter Konten vorhanden ist, oder wenn einige Administratoren derzeit ihre regulären Benutzerkonten zum Verwalten von Diensten und Ressourcen verwenden, sollten Sie sofort mit der Verwendung separater Konten beginnen, z. B. eines für reguläre Alltagsaktivitäten und ein anderes für privilegierten Zugriff, das mit MFA konfiguriert wurde. Wenn Ihre Organisation ein Azure AD Premium P2-Abonnement besitzt, sollten Sie sofort [Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md#license-requirements) aktivieren. Im gleichen Zug sollten Sie auch diese privilegierten Konten überprüfen und ggf. [Rollen mit geringeren Berechtigungen](../users-groups-roles/directory-admin-roles-secure.md) zuweisen.
 
-Sie sollten im Rahmen der Verwaltung privilegierter Konten zudem [Zugriffsüberprüfungen](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview) für diese Konten festlegen (manuell oder [über PIM automatisiert](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-perform-security-review)).
+Sie sollten im Rahmen der Verwaltung privilegierter Konten zudem [Zugriffsüberprüfungen](../governance/access-reviews-overview.md) für diese Konten festlegen (manuell oder [über PIM automatisiert](../privileged-identity-management/pim-how-to-perform-security-review.md)).
 
 #### <a name="privileged-account-management-recommended-reading"></a>Empfohlene Artikel zur Verwaltung privilegierter Konten
 
-- [Rollen in Azure AD Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-roles)
+- [Rollen in Azure AD Privileged Identity Management](../privileged-identity-management/pim-roles.md)
 
 ### <a name="emergency-access-accounts"></a>Konten für den Notfallzugriff
 
-Organisationen müssen [Notfallkonten](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access) einrichten, damit sie im Fall von Authentifizierungsausfällen wie den folgenden auf die Verwaltung von Azure AD vorbereitet sind:
+Organisationen müssen [Notfallkonten](../users-groups-roles/directory-emergency-access.md) einrichten, damit sie im Fall von Authentifizierungsausfällen wie den folgenden auf die Verwaltung von Azure AD vorbereitet sind:
 
 - Ausfall von Komponenten der Authentifizierungsinfrastruktur (AD FS, lokale AD-Instanzen, MFA-Dienst)
 - Mitarbeiterfluktuation in der Verwaltungsebene
 
-Sie sollten zwei oder mehr Notfallkonten erstellen, um sicherzustellen, dass diese mit den [Best Practices](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-admin-roles-secure) und [Break-Glass-Verfahren](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-admin-roles-secure#break-glass-what-to-do-in-an-emergency) von Microsoft konform sind. So können Sie vermeiden, versehentlich aus Ihrem Mandanten ausgesperrt zu werden, weil Sie sich mit einem bestehenden individuellen Benutzerkonto nicht als Administrator anmelden oder dieses aktivieren können.
+Sie sollten zwei oder mehr Notfallkonten erstellen, um sicherzustellen, dass diese mit den [Best Practices](../users-groups-roles/directory-admin-roles-secure.md) und [Break-Glass-Verfahren](../users-groups-roles/directory-admin-roles-secure.md#break-glass-what-to-do-in-an-emergency) von Microsoft konform sind. So können Sie vermeiden, versehentlich aus Ihrem Mandanten ausgesperrt zu werden, weil Sie sich mit einem bestehenden individuellen Benutzerkonto nicht als Administrator anmelden oder dieses aktivieren können.
 
 ### <a name="privileged-access-to-azure-ea-portal"></a>Privilegierter Zugriff auf das Azure EA-Portal
 
@@ -119,11 +119,11 @@ Wenn die Authentifizierungsebene derzeit also auf „Gemischter Modus“ festgel
 
 #### <a name="privileged-access-recommended-reading"></a>Empfohlene Artikel für den privilegierten Zugriff
 
-- [Berechtigungen der Administratorrolle in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)
+- [Berechtigungen der Administratorrolle in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md)
 
 ## <a name="entitlement-management"></a>Berechtigungsverwaltung
 
-Mit der [Berechtigungsverwaltung](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview) können App-Besitzer Ressourcen bündeln und diese bestimmten internen oder externen Personas in der Organisation zuweisen. So können Sie die Self-Service-Registrierung und Delegierung für Unternehmensbesitzer einrichten und gleichzeitig Governancerichtlinien für das Genehmigen von Zugriff, das Festlegen der Zugriffsdauer und das Zulassen von Genehmigungsworkflows beibehalten. 
+Mit der [Berechtigungsverwaltung](../governance/entitlement-management-overview.md) können App-Besitzer Ressourcen bündeln und diese bestimmten internen oder externen Personas in der Organisation zuweisen. So können Sie die Self-Service-Registrierung und Delegierung für Unternehmensbesitzer einrichten und gleichzeitig Governancerichtlinien für das Genehmigen von Zugriff, das Festlegen der Zugriffsdauer und das Zulassen von Genehmigungsworkflows beibehalten. 
 
 > [!NOTE]
 > Für die Azure AD-Berechtigungsverwaltung sind Azure AD Premium P2-Lizenzen erforderlich.

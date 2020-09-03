@@ -17,12 +17,12 @@ ms.date: 07/17/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8d0e8301fe5443e548dd35a6b6058e8c7a409d0
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 956428b6f197912e2ab7c3a94133ed9d59f37749
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849903"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279923"
 ---
 # <a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>Erstellen eines Verbunds mit mehreren Instanzen von Azure AD und einer Einzelinstanz von AD FS
 
@@ -42,7 +42,7 @@ Angenommen, eine Domäne namens „contoso.com“ ist in „contoso.onmicrosoft.
 
 ## <a name="step-1-establish-a-two-way-trust"></a>Schritt 1: Einrichten einer bidirektionale Vertrauensstellung
  
-Damit AD FS in „contoso.com“ Benutzer in „fabrikam.com“ authentifizieren kann, ist zwischen „contoso.com“ und „fabrikam.com“ eine bidirektionale Vertrauensstellung erforderlich. Eine Anleitung zum Erstellen der bidirektionalen Vertrauensstellung finden Sie in [diesem Artikel](https://technet.microsoft.com/library/cc816590.aspx).
+Damit AD FS in „contoso.com“ Benutzer in „fabrikam.com“ authentifizieren kann, ist zwischen „contoso.com“ und „fabrikam.com“ eine bidirektionale Vertrauensstellung erforderlich. Eine Anleitung zum Erstellen der bidirektionalen Vertrauensstellung finden Sie in [diesem Artikel](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc816590(v=ws.10)).
  
 ## <a name="step-2-modify-contosocom-federation-settings"></a>Schritt 2: Ändern der Verbundeinstellungen für „contoso.com“ 
  
