@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 9f583e7956cba0de06e5b3277bfea13c463019d9
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 7bdffa607a1cbe47b940590d19f6140238d31bf0
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171974"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266492"
 ---
-# <a name="widevine-license-template-overview"></a>Übersicht über die Widevine-Lizenzvorlage 
+# <a name="widevine-license-template-overview"></a>Übersicht über die Widevine-Lizenzvorlage
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 Widevine-Lizenzen können mithilfe von Azure Media Services konfiguriert und angefordert werden. Wenn der Player versucht, Ihre durch Widevine geschützten Inhalte wiederzugeben, wird eine Anforderung zum Erwerben einer Lizenz an den Lizenzbereitstellungsdienst gesendet. Wenn der Lizenzdienst die Anforderung genehmigt, stellt der Dienst die Lizenz aus. Sie wird an den Client gesendet und dient zum Entschlüsseln und Wiedergeben des angegebenen Inhalts.
 
 Eine Widevine-Lizenzanforderung ist als JSON-Nachricht formatiert.  

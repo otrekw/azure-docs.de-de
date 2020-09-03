@@ -17,12 +17,12 @@ ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f84724285dee6dfff4913b067daa651837787d4e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 1ccffe5e6e12d828acb4ced46bf3abf36113c588
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255777"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276489"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Konten und Berechtigungen
 
@@ -55,7 +55,7 @@ Zusätzlich zu diesen drei Konten, die zum Ausführen von Azure AD Connect ausge
 > [!NOTE]
 > Es wird unterstützt, um die in Azure AD Connect verwendeten Administratorkonten über eine administrative ESAE-Gesamtstruktur (auch „Red Forest“ genannt) verwalten zu können.
 > Mithilfe dedizierter administrativer Gesamtstrukturen können Organisationen Administratorkonten, Arbeitsstationen und Gruppen in einer Umgebung hosten, die über bessere Sicherheitskontrollen verfügt als die Produktionsumgebung.
-> Weitere Informationen zu dedizierten administrativen Gesamtstrukturen finden Sie unter [ESAE-basierter Ansatz für den Entwurf einer administrativen Gesamtstruktur](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach).
+> Weitere Informationen zu dedizierten administrativen Gesamtstrukturen finden Sie unter [ESAE-basierter Ansatz für den Entwurf einer administrativen Gesamtstruktur](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach).
 
 > [!NOTE]
 > Die Rolle „Globaler Administrator“ ist nach der ersten Installation nicht erforderlich. Das einzige erforderliche Konto ist das Rollenkonto **Verzeichnissynchronisierungskonten**. Dies bedeutet nicht unbedingt, dass Sie das Konto mit der Rolle „Globaler Administrator“ einfach entfernen sollten. Sie sollten stattdessen besser die Rolle in eine Rolle mit weniger Berechtigungen ändern, da das vollständige Entfernen des Kontos zu Problemen führen kann, wenn Sie den Assistenten erneut ausführen müssen. Indem Sie die Berechtigungen der Rolle verringern, können Sie sie jederzeit erneut erhöhen, wenn Sie den Azure AD Connect-Assistenten erneut verwenden müssen. 
@@ -147,7 +147,7 @@ Welche Berechtigungen Sie benötigen, hängt von den aktivierten optionalen Funk
 | Kennworthashsynchronisierung |<li>Verzeichnisänderungen replizieren</li>  <li>Verzeichnisänderungen replizieren: Alle |
 | Exchange-Hybridbereitstellung |Schreibberechtigungen für die Attribute, die in [Exchange-Hybridrückschreiben](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) für Benutzer, Gruppen und Kontakte dokumentiert sind |
 | Öffentlicher Exchange-E-Mail-Ordner |Leseberechtigungen für die Attribute, die im [öffentlichen Exchange-E-Mail-Ordner](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder) für öffentliche Ordner dokumentiert sind. | 
-| Kennwortrückschreiben |Schreibberechtigungen für die Attribute, die in [Erste Schritte mit der Kennwortverwaltung](../authentication/howto-sspr-writeback.md) für Benutzer dokumentiert sind |
+| Kennwortrückschreiben |Schreibberechtigungen für die Attribute, die in [Erste Schritte mit der Kennwortverwaltung](../authentication/tutorial-enable-sspr-writeback.md) für Benutzer dokumentiert sind |
 | Geräterückschreiben |Berechtigungen, die mit einem PowerShell-Skript erteilt wurden, wie unter [Geräterückschreiben](how-to-connect-device-writeback.md)beschrieben |
 | Gruppenrückschreiben |Ermöglicht das Rückschreiben von **Office 365-Gruppen** in eine Gesamtstruktur, in der Exchange installiert ist.|
 
@@ -197,8 +197,8 @@ Legende:
 - Nicht fett formatiert: unterstützte Option
 - Lokales Konto: lokales Benutzerkonto auf dem Server
 - Domänenkonto: Domänenbenutzerkonto
-- sMSA: [eigenständig verwaltetes Dienstkonto](https://technet.microsoft.com/library/dd548356.aspx)
-- gMSA: [gruppenverwaltetes Dienstkonto](https://technet.microsoft.com/library/hh831782.aspx)
+- sMSA: [eigenständig verwaltetes Dienstkonto](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd548356(v=ws.10))
+- gMSA: [gruppenverwaltetes Dienstkonto](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11))
 
 | | LocalDB</br>Express | LocalDB/LocalSQL</br>Benutzerdefiniert | Remote-SQL</br>Benutzerdefiniert |
 | --- | --- | --- | --- |
@@ -215,11 +215,11 @@ Das VSA ist für den Einsatz in Szenarien vorgesehen, in denen das Synchronisier
 Für dieses Feature ist Windows Server 2008 R2 oder höher erforderlich. Wenn Sie Azure AD Connect unter Windows Server 2008 installieren, wird bei der Installation automatisch ein [Benutzerkonto](#user-account) verwendet.
 
 #### <a name="group-managed-service-account"></a>Gruppenverwaltetes Dienstkonto
-Wenn Sie einen Remotecomputer mit SQL Server verwenden, empfehlen wir den Einsatz eines **gruppenverwalteten Dienstkontos**. Weitere Informationen zum Vorbereiten von Active Directory für das gruppenverwaltete Benutzerkonto finden Sie unter [Gruppenverwaltete Dienstkonten: Übersicht](https://technet.microsoft.com/library/hh831782.aspx).
+Wenn Sie einen Remotecomputer mit SQL Server verwenden, empfehlen wir den Einsatz eines **gruppenverwalteten Dienstkontos**. Weitere Informationen zum Vorbereiten von Active Directory für das gruppenverwaltete Benutzerkonto finden Sie unter [Gruppenverwaltete Dienstkonten: Übersicht](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11)).
 
 Um diese Option zu verwenden, wählen Sie auf der Seite [Erforderliche Komponenten installieren](how-to-connect-install-custom.md#install-required-components) die Optionen **Vorhandenes Dienstkonto verwenden** und **Verwaltetes Dienstkonto**.  
 ![VSA](./media/reference-connect-accounts-permissions/serviceaccount.png)  
-Die Verwendung eines [eigenständig verwalteten Dienstkontos](https://technet.microsoft.com/library/dd548356.aspx) wird ebenfalls unterstützt. Diese Konten können jedoch nur auf dem lokalen Computer verwendet werden, und es gibt keinen praktischen Vorteil gegenüber dem virtuellen Standarddienstkonto.
+Die Verwendung eines [eigenständig verwalteten Dienstkontos](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd548356(v=ws.10)) wird ebenfalls unterstützt. Diese Konten können jedoch nur auf dem lokalen Computer verwendet werden, und es gibt keinen praktischen Vorteil gegenüber dem virtuellen Standarddienstkonto.
 
 Für dieses Feature ist Windows Server 2012 oder höher erforderlich. Wenn Sie ein älteres Betriebssystem und Remote-SQL einsetzen, müssen Sie ein [Benutzerkonto](#user-account) verwenden.
 
@@ -252,7 +252,7 @@ Es besteht eine Beschränkung auf 20 Synchronisierungsdienstkonten in Azure AD.
 Um nicht verwendete Azure AD-Dienstkonten zu entfernen, führen Sie das folgende Azure AD PowerShell-Cmdlet aus: `Remove-AzureADUser -ObjectId <ObjectId-of-the-account-you-wish-to-remove>`
 
 >[!NOTE]
->Bevor Sie die oben aufgeführten PowerShell-Befehle verwenden können, müssen Sie [Azure Active Directory-PowerShell für das Graph-Modul](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0#installing-the-azure-ad-module) installieren und mit [Connect-AzureAD](https://docs.microsoft.com/powershell/module/azuread/connect-azuread?view=azureadps-2.0) eine Verbindung zu Ihrer Azure AD-Instanz herstellen.
+>Bevor Sie die oben aufgeführten PowerShell-Befehle verwenden können, müssen Sie [Azure Active Directory-PowerShell für das Graph-Modul](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0#installing-the-azure-ad-module) installieren und mit [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0) eine Verbindung zu Ihrer Azure AD-Instanz herstellen.
 
 Weitere Informationen zum Verwalten oder Zurücksetzen des Kennworts für das Azure AD Connector-Konto finden Sie unter [Verwalten der Azure AD Connect-Konten](how-to-connect-azureadaccount.md).
 

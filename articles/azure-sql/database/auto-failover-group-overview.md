@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 07/09/2020
-ms.openlocfilehash: 5a7f13982de000478b14eb75d7341ed2e99c1274
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.date: 08/28/2020
+ms.openlocfilehash: 3b81ce6e1b77db7b89f293850e2d00fde5d40cfa
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245569"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89076513"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Verwenden von Autofailover-Gruppen für ein transparentes und koordiniertes Failover mehrerer Datenbanken
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -89,11 +89,11 @@ Wenn Sie echte Geschäftskontinuität erreichen möchten, ist das Bereitstellen 
 
 - **Lese-/Schreib-Failovergruppenlistener**
 
-  Ein DNS CNAME-Eintrag, der auf die URL der aktuellen primären Datenbank verweist. Er wird automatisch erstellt, wenn die Failovergruppe erstellt wird, und ermöglicht der Lese-/Schreibworkload die transparente Verbindungswiederherstellung mit der primären Datenbank, wenn sich die primäre Datenbank nach dem Failover ändert. Wenn die Failovergruppe auf einem Server erstellt wird, hat der DNS CNAME-Eintrag für die Listener-URL die Form `<fog-name>.database.windows.net`. Wenn die Failovergruppe in einer SQL Managed Instance erstellt wird, hat der DNS CNAME-Eintrag für die Listener-URL die Form `<fog-name>.zone_id.database.windows.net`.
+  Ein DNS CNAME-Eintrag, der auf die URL der aktuellen primären Datenbank verweist. Er wird automatisch erstellt, wenn die Failovergruppe erstellt wird, und ermöglicht der Lese-/Schreibworkload die transparente Verbindungswiederherstellung mit der primären Datenbank, wenn sich die primäre Datenbank nach dem Failover ändert. Wenn die Failovergruppe auf einem Server erstellt wird, hat der DNS CNAME-Eintrag für die Listener-URL die Form `<fog-name>.database.windows.net`. Wenn die Failovergruppe in einer SQL Managed Instance erstellt wird, hat der DNS CNAME-Eintrag für die Listener-URL die Form `<fog-name>.<zone_id>.database.windows.net`.
 
 - **Nur-Lese-Failovergruppenlistener**
 
-  Ein DNS CNAME-Eintrag, der auf den schreibgeschützten Listener verweist, der wiederum auf die URL der sekundären Datenbank verweist. Er wird automatisch erstellt, wenn die Failovergruppe erstellt wird, und ermöglicht der schreibgeschützten SQL-Workload die transparente Verbindungsherstellung mit der sekundären Datenbank unter Verwendung der angegebenen Lastenausgleichsregeln. Wenn die Failovergruppe auf einem Server erstellt wird, hat der DNS CNAME-Eintrag für die Listener-URL die Form `<fog-name>.secondary.database.windows.net`. Wenn die Failovergruppe in einer SQL Managed Instance erstellt wird, hat der DNS CNAME-Eintrag für die Listener-URL die Form `<fog-name>.zone_id.secondary.database.windows.net`.
+  Ein DNS CNAME-Eintrag, der auf den schreibgeschützten Listener verweist, der wiederum auf die URL der sekundären Datenbank verweist. Er wird automatisch erstellt, wenn die Failovergruppe erstellt wird, und ermöglicht der schreibgeschützten SQL-Workload die transparente Verbindungsherstellung mit der sekundären Datenbank unter Verwendung der angegebenen Lastenausgleichsregeln. Wenn die Failovergruppe auf einem Server erstellt wird, hat der DNS CNAME-Eintrag für die Listener-URL die Form `<fog-name>.secondary.database.windows.net`. Wenn die Failovergruppe in einer SQL Managed Instance erstellt wird, hat der DNS CNAME-Eintrag für die Listener-URL die Form `<fog-name>.secondary.<zone_id>.database.windows.net`.
 
 - **Richtlinie für automatisches Failover**
 
@@ -257,13 +257,13 @@ Verwenden Sie beim Durchführen von OLTP-Vorgängen `<fog-name>.zone_id.database
 
 ### <a name="using-read-only-listener-to-connect-to-the-secondary-instance"></a>Verwenden eines schreibgeschützten Listeners zum Herstellen einer Verbindung mit der sekundären Instanz
 
-Wenn Sie über eine logisch isolierte schreibgeschützte Workload verfügen, die gegenüber einer bestimmten Veraltung tolerant ist, können Sie die sekundäre Datenbank in der Anwendung verwenden. Verwenden Sie zum direkten Verbinden mit der georeplizierten sekundären Datenbank `server.secondary.zone_id.database.windows.net` als Server-URL, damit die Verbindung direkt mit der georeplizierten sekundären Datenbank hergestellt wird.
+Wenn Sie über eine logisch isolierte schreibgeschützte Workload verfügen, die gegenüber einer bestimmten Veraltung tolerant ist, können Sie die sekundäre Datenbank in der Anwendung verwenden. Verwenden Sie zum direkten Verbinden mit der georeplizierten sekundären Datenbank `<fog-name>.secondary.<zone_id>.database.windows.net` als Server-URL, damit die Verbindung direkt mit der georeplizierten sekundären Datenbank hergestellt wird.
 
 > [!NOTE]
 > Bei bestimmten Dienstebenen unterstützt SQL-Datenbank die Verwendung von [schreibgeschützten Replikaten](read-scale-out.md) für den Lastenausgleich schreibgeschützter Abfrageworkloads, wobei die Kapazität eines schreibgeschützten Replikats und der Parameter `ApplicationIntent=ReadOnly` in der Verbindungszeichenfolge verwendet werden. Wenn Sie eine georeplizierte sekundäre Datenbank konfiguriert haben, können Sie mit dieser Funktion eine Verbindung entweder mit einem schreibgeschützten Replikat am primären Standort oder am geografisch replizierten Standort herstellen.
 >
-> - Zum Herstellen einer Verbindung mit einem schreibgeschützten Replikat am primären Standort verwenden Sie `<fog-name>.zone_id.database.windows.net`.
-> - Zum Herstellen einer Verbindung mit einem schreibgeschützten Replikat am sekundären Standort verwenden Sie `<fog-name>.secondary.zone_id.database.windows.net`.
+> - Zum Herstellen einer Verbindung mit einem schreibgeschützten Replikat am primären Standort verwenden Sie `<fog-name>.<zone_id>.database.windows.net`.
+> - Zum Herstellen einer Verbindung mit einem schreibgeschützten Replikat am sekundären Standort verwenden Sie `<fog-name>.secondary.<zone_id>.database.windows.net`.
 
 ### <a name="preparing-for-performance-degradation"></a>Vorbereiten auf Leistungsbeeinträchtigungen
 

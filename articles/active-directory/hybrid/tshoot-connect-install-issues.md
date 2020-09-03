@@ -15,23 +15,23 @@ ms.date: 01/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6da21e9aa3b3b4cafec71a4d1881b9eb32b4dedc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25314b4a306678dc877a95194907b3d73979e4f8
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356218"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89275860"
 ---
 # <a name="troubleshoot-azure-ad-connect-install-issues"></a>Problembehandlung: Azure AD Connect-Installationsprobleme
 
 ## <a name="recommended-steps"></a>**Empfohlene Schritte**
-Überprüfen Sie, welcher [Azure AD Connect-Installationstyp](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-select-installation) für Sie geeignet ist. Werden die Kriterien für die Express-Installation erfüllt, wird dringend empfohlen, die Express-Installation zu verwenden. Bei der Express-Installation müssen Sie nur geringfügige Optionen angeben, um die Installation abzuschließen. Dadurch reduziert sich die Fehlerwahrscheinlichkeit. 
+Überprüfen Sie, welcher [Azure AD Connect-Installationstyp](./how-to-connect-install-select-installation.md) für Sie geeignet ist. Werden die Kriterien für die Express-Installation erfüllt, wird dringend empfohlen, die Express-Installation zu verwenden. Bei der Express-Installation müssen Sie nur geringfügige Optionen angeben, um die Installation abzuschließen. Dadurch reduziert sich die Fehlerwahrscheinlichkeit. 
 
 Wenn die Kriterien für eine Express-Installation jedoch nicht erfüllt werden und Sie die benutzerdefinierte Installation ausführen müssen, finden Sie hier einige bewährte Methoden, denen Sie folgen können, um häufig auftretende Probleme zu vermeiden. Der Einfachheit halber sind hier nur selektive Optionen aufgeführt:
 
 * Stellen Sie sicher, dass Sie für den Computer, auf dem Sie AAD Connect installieren, Administratorrechte haben. Melden Sie sich am Computer mit den gleichen Administratoranmeldeinformationen an.
 
-* Übernehmen Sie auf der folgenden Seite für alle Optionen die Standardeinstellungen. Eine Ausnahme bildet dabei die Option „Vorhandenen SQL Server-Computer verwenden“, wenn Sie vorhandene SQL Server-Computer verwenden möchten. Hier finden Sie [weitere Details](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-custom) zur Verwendung der Optionen bei einer benutzerdefinierten Installation. 
+* Übernehmen Sie auf der folgenden Seite für alle Optionen die Standardeinstellungen. Eine Ausnahme bildet dabei die Option „Vorhandenen SQL Server-Computer verwenden“, wenn Sie vorhandene SQL Server-Computer verwenden möchten. Hier finden Sie [weitere Details](./how-to-connect-install-custom.md) zur Verwendung der Optionen bei einer benutzerdefinierten Installation. 
 
     ![Vorhandenen SQL Server-Computer verwenden](media/tshoot-connect-install-issues/tshoot-connect-install-issues/useexistingsqlserver.png)
 
@@ -41,26 +41,21 @@ Wenn die Kriterien für eine Express-Installation jedoch nicht erfüllt werden u
 
 ### <a name="common-issues"></a>**Allgemeine Probleme**
 
-* [Konnektivitätsprobleme mit lokaler Active Directory-Instanz](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-adconnectivitytools)
+* [Konnektivitätsprobleme mit lokaler Active Directory-Instanz](./reference-connect-adconnectivitytools.md)
 
-* [Konnektivitätsprobleme mit Azure Active Directory-Onlineinstanz](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-connectivity)
+* [Konnektivitätsprobleme mit Azure Active Directory-Onlineinstanz](./tshoot-connect-connectivity.md)
 
-* [Berechtigungsprobleme mit lokaler Active Directory-Instanz](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account)
+* [Berechtigungsprobleme mit lokaler Active Directory-Instanz](./how-to-connect-configure-ad-ds-connector-account.md)
 
 ## <a name="recommended-documents"></a>**Empfohlene Dokumente**
-* [Voraussetzungen für Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites)
-* [Auswählen des Installationstyps für Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-select-installation)
-* [Erste Schritte mit Azure AD Connect mit Expresseinstellungen](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-express)
-* [Benutzerdefinierte Installation von Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-custom)
-* [Azure AD Connect: Aktualisieren von einer früheren Version auf die aktuelle Version](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version).
-* [Azure AD Connect: Was ist ein Stagingserver?](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-topologies#staging-server)
-* [Was ist das PowerShell-Modul „ADConnectivityTool“?](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-adconnectivitytools)
+* [Voraussetzungen für Azure AD Connect](./how-to-connect-install-prerequisites.md)
+* [Auswählen des Installationstyps für Azure AD Connect](./how-to-connect-install-select-installation.md)
+* [Erste Schritte mit Azure AD Connect mit Expresseinstellungen](./how-to-connect-install-express.md)
+* [Benutzerdefinierte Installation von Azure AD Connect](./how-to-connect-install-custom.md)
+* [Azure AD Connect: Aktualisieren von einer früheren Version auf die aktuelle Version](./how-to-upgrade-previous-version.md).
+* [Azure AD Connect: Was ist ein Stagingserver?](./plan-connect-topologies.md#staging-server)
+* [Was ist das PowerShell-Modul „ADConnectivityTool“?](./how-to-connect-adconnectivitytools.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Azure AD Connect-Synchronisierung](how-to-connect-sync-whatis.md)
 - [Was ist eine Hybrididentität?](whatis-hybrid-identity.md)
-
-
-
-
-

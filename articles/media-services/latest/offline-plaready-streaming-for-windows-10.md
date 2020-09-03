@@ -12,16 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/01/2019
+ms.date: 08/31/2020
 ms.author: willzhan
-ms.openlocfilehash: d5d6c7738516337b3db90bbc5d1a94515e96b3ce
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9e0c4daeae9884bdb5feaceccc23046866f0d59c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060589"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266679"
 ---
 # <a name="offline-playready-streaming-for-windows-10-with-media-services-v3"></a>Offlinestreaming mit PlayReady für Windows 10 mit Media Services v3
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services unterstützt Download und Offlinewiedergabe mit DRM-Schutz. In diesem Artikel wird die Offline-Unterstützung von Azure Media Services für PlayReady-Clients unter Windows 10 behandelt. In den folgenden Artikeln erfahren Sie mehr über die Unterstützung des Offlinemodus für Geräte mit iOS/FairPlay und Android/Widevine:
 

@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-csharp, mvc, cli-validate
-ms.openlocfilehash: bb1c947a388811efb5d161b7739664bea9fc85c8
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 882188c638c77fa0055f1c2d2e664d97a4fe9359
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213709"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962263"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Tutorial: Schützen der Azure SQL-Datenbank-Verbindung von App Service mittels einer verwalteten Identität
 
@@ -37,7 +37,7 @@ Sie lernen Folgendes:
 > * Herstellen einer Verbindung mit SQL-Datenbank über Visual Studio unter Verwendung der Azure AD-Authentifizierung
 
 > [!NOTE]
->Die Azure AD-Authentifizierung _unterscheidet sich_ von der [integrierten Windows-Authentifizierung](/previous-versions/windows/it-pro/windows-server-2003/cc758557(v=ws.10)) im lokalen Active Directory (AD DS). AD DS und Azure AD verwenden grundverschiedene Authentifizierungsprotokolle. Weitere Informationen finden Sie in der [Dokumentation zu Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/).
+>Die Azure AD-Authentifizierung _unterscheidet sich_ von der [integrierten Windows-Authentifizierung](/previous-versions/windows/it-pro/windows-server-2003/cc758557(v=ws.10)) im lokalen Active Directory (AD DS). AD DS und Azure AD verwenden grundverschiedene Authentifizierungsprotokolle. Weitere Informationen finden Sie in der [Dokumentation zu Azure AD Domain Services](../active-directory-domain-services/index.yml).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -83,7 +83,7 @@ Nun können Sie Ihre App mit der SQL-Datenbank als Back-End entwickeln und debug
 
 ### <a name="macos-client"></a>macOS-Client
 
-Visual Studio für Mac ist nicht in die Azure AD-Authentifizierung integriert. Die Bibliothek [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication), die Sie später verwenden werden, kann jedoch Token von der Azure CLI verwenden. Um die Entwicklung und das Debuggen in Visual Studio zu ermöglichen, müssen Sie zunächst die [Azure CLI auf dem lokalen Computer installieren](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Visual Studio für Mac ist nicht in die Azure AD-Authentifizierung integriert. Die Bibliothek [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication), die Sie später verwenden werden, kann jedoch Token von der Azure CLI verwenden. Um die Entwicklung und das Debuggen in Visual Studio zu ermöglichen, müssen Sie zunächst die [Azure CLI auf dem lokalen Computer installieren](/cli/azure/install-azure-cli).
 
 Wenn die Azure CLI auf dem lokalen Computer installiert ist, führen Sie den folgenden Befehl aus, um sich mit Ihrem Azure AD-Benutzerkonto bei der Azure CLI anzumelden:
 

@@ -9,16 +9,16 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: a1f977cef614a52853407c0d0665399f1a249c53
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: c8eae70b88aa454e5d712b3c5b7930b12d169912
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422061"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078247"
 ---
 # <a name="transition-to-metrics-in-azure-monitor"></a>Wechseln zu Metriken in Azure Monitor
 
-Azure Storage integriert nun Metriken in die Azure Monitor-Plattform. Dieser Artikel hilft Ihnen bei der Umstellung.
+Am **31. August 2023** werden Storage Analytics-Metriken (auch als *klassische Metriken* bezeichnet) eingestellt. Wenn Sie klassische Metriken verwenden, sollten Sie unbedingt vor diesem Datum zu den Metriken in Azure Monitor wechseln. Dieser Artikel hilft Ihnen bei der Umstellung.
 
 ## <a name="steps-to-complete-the-transition"></a>Schritte zum Durchführen der Umstellung
 

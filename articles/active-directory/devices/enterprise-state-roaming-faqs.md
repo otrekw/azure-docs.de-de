@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35669a7d80907e2335c68b1da9010f5879aa6c7c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: d9510bd564ced2f458a9a78ff23200bb32358c3e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87274084"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268535"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Roaming von Einstellungen und Daten – Häufig gestellte Fragen
 
@@ -37,7 +37,7 @@ Dieser Artikel enthält Antworten auf Fragen zur Synchronisierung von Einstellun
 > [!NOTE]
 > Dieser Artikel bezieht sich auf den älteren HTML-basierten Microsoft Edge-Browser, der im Juli 2015 mit Windows 10 veröffentlicht wurde. Der Artikel gilt nicht für den neuen Chromium-basierten Microsoft Edge-Browser, der am 15. Januar 2020 veröffentlicht wurde. Weitere Informationen zum Synchronisierungsverhalten des neuen Microsoft Edge finden Sie im Artikel [Microsoft Edge-Synchronisierung](/deployedge/microsoft-edge-enterprise-sync).
 
-**Anwendungsdaten:** Universelle Windows-Apps können Einstellungsdaten in einen Roamingordner schreiben. Alle Daten, die in diesen Ordner geschrieben werden, werden automatisch synchronisiert. App-Entwickler können eine App entwerfen, um diese Funktion zu nutzen. Weitere Informationen zum Entwickeln einer universellen Windows-App, die Roaming verwendet, finden Sie unter [Speichern und Abrufen von Einstellungen und anderen App-Daten](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) und im [Entwicklerblog zum Roaming von Windows 8-App-Daten](https://blogs.windows.com/windowsdeveloper/2016/05/04/roaming-app-data-and-the-user-experience/).
+**Anwendungsdaten:** Universelle Windows-Apps können Einstellungsdaten in einen Roamingordner schreiben. Alle Daten, die in diesen Ordner geschrieben werden, werden automatisch synchronisiert. App-Entwickler können eine App entwerfen, um diese Funktion zu nutzen. Weitere Informationen zum Entwickeln einer universellen Windows-App, die Roaming verwendet, finden Sie unter [Speichern und Abrufen von Einstellungen und anderen App-Daten](/windows/uwp/design/app-settings/store-and-retrieve-app-data) und im [Entwicklerblog zum Roaming von Windows 8-App-Daten](https://blogs.windows.com/windowsdeveloper/2016/05/04/roaming-app-data-and-the-user-experience/).
 
 ## <a name="what-account-is-used-for-settings-sync"></a>Welches Konto wird für die Einstellungssynchronisierung verwendet?
 
@@ -86,9 +86,9 @@ Wenn sich mehrere Azure AD-Konten von verschiedenen Azure AD-Mandanten auf demse
 Roaming kann nur für universelle Windows-Apps verwendet werden. Das Roaming für eine bereits vorhandene Windows-Desktopanwendung kann auf zwei Arten aktiviert werden:
 
 * Mithilfe der [Desktop-Brücke](https://aka.ms/desktopbridge) können Sie bereits vorhandene Windows-Desktop-Apps zur universellen Windows-Plattform migrieren. Anschließend sind nur minimale Codeänderungen erforderlich, um das Roaming von Azure AD-App-Daten zu nutzen. Die Desktop-Brücke versieht Ihre Apps mit einer App-Identität. Diese wird benötigt, um das App-Datenroaming für bereits vorhandene Desktop-Apps zu ermöglichen.
-* [User Experience Virtualization (UE-V)](https://technet.microsoft.com/library/dn458947.aspx) können Sie eine Vorlage mit benutzerdefinierten Einstellungen für bereits vorhandene Windows-Desktop-Apps erstellen und das Roaming für Win32-Apps ermöglichen. Bei dieser Option sind keinerlei Änderungen am App-Code erforderlich. UE-V ist auf lokales Active Directory-Roaming für Kunden beschränkt, die das Microsoft Desktop Optimization Pack erworben haben.
+* [User Experience Virtualization (UE-V)](/previous-versions//dn458947(v=vs.85)) können Sie eine Vorlage mit benutzerdefinierten Einstellungen für bereits vorhandene Windows-Desktop-Apps erstellen und das Roaming für Win32-Apps ermöglichen. Bei dieser Option sind keinerlei Änderungen am App-Code erforderlich. UE-V ist auf lokales Active Directory-Roaming für Kunden beschränkt, die das Microsoft Desktop Optimization Pack erworben haben.
 
-Administratoren können UE-V so konfigurieren, dass das Roaming nur für Daten von Windows-Desktop-Apps stattfindet, indem sie mithilfe von [UE-V-Gruppenrichtlinien](https://technet.microsoft.com/itpro/mdop/uev-v2/configuring-ue-v-2x-with-group-policy-objects-both-uevv2) das Roaming von Windows-Betriebssystemeinstellungen und von Daten universeller Apps deaktivieren. Dies betrifft folgende Einstellungen und Daten:
+Administratoren können UE-V so konfigurieren, dass das Roaming nur für Daten von Windows-Desktop-Apps stattfindet, indem sie mithilfe von [UE-V-Gruppenrichtlinien](/microsoft-desktop-optimization-pack/uev-v2/configuring-ue-v-2x-with-group-policy-objects-both-uevv2) das Roaming von Windows-Betriebssystemeinstellungen und von Daten universeller Apps deaktivieren. Dies betrifft folgende Einstellungen und Daten:
 
 * Gruppenrichtlinie „Roaming von Windows-Einstellungen“
 * Gruppenrichtlinie „Windows-Apps nicht synchronisieren“

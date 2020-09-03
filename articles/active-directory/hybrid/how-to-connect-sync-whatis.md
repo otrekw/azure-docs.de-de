@@ -16,12 +16,12 @@ ms.date: 11/08/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4dc1754eb8818df894e67c1748517b2e2f4356d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf014feb9ef08b7a24c9640679c7c0baadf298c0
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356864"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277152"
 ---
 # <a name="azure-ad-connect-sync-understand-and-customize-synchronization"></a>Azure AD Connect-Synchronisierung: Grundlagen und Anpassung der Synchronisierung
 Die Azure Active Directory Connect-Synchronisierungsdienste (Azure AD Connect Sync) sind eine Hauptkomponente von Azure AD Connect. Die Dienste verarbeiten alle Vorgänge in Bezug auf die Synchronisierung von Identitätsdaten zwischen Ihrer lokalen Umgebung und Azure AD. Azure AD Connect Sync ist der Nachfolger von DirSync, Azure AD Sync und Forefront Identity Manager mit konfiguriertem Azure Active Directory-Connector.
@@ -58,7 +58,7 @@ Der Synchronisierungsdienst besteht aus zwei Komponenten: der lokalen **Azure AD
 | [Resilienz bei doppelten Attributen](how-to-connect-syncservice-duplicate-attribute-resiliency.md) |Beschreibt die Aktivierung und Verwendung der Resilienz bei doppelten Attributwerten von **userPrincipalName** und **proxyAddresses**. |
 | **Vorgänge und Benutzeroberfläche** | |
 | [Synchronization Service Manager](how-to-connect-sync-service-manager-ui.md) |Beschreibt die Benutzeroberfläche von Synchronization Service Manager, einschließlich der Registerkarten [Vorgänge](how-to-connect-sync-service-manager-ui-operations.md), [Connectors](how-to-connect-sync-service-manager-ui-connectors.md), [Metaverse Designer](how-to-connect-sync-service-manager-ui-mvdesigner.md) und [Metaverse Search](how-to-connect-sync-service-manager-ui-mvsearch.md). |
-| [Operative Aufgaben und Überlegungen](how-to-connect-sync-operations.md) |Es werden operative Aspekte beschrieben, z. B. die Notfallwiederherstellung. |
+| [Operative Aufgaben und Überlegungen](./how-to-connect-sync-staging-server.md) |Es werden operative Aspekte beschrieben, z. B. die Notfallwiederherstellung. |
 | **Gewusst wie...** | |
 | [Zurücksetzen des Azure AD-Kontos](how-to-connect-azureadaccount.md) |Informationen zum Zurücksetzen der Anmeldeinformationen des Dienstkontos, das für das Herstellen einer Verbindung zwischen Azure AD Connect-Synchronisierung und Azure AD verwendet wird |
 | **Weitere Informationen und Referenzen** | |

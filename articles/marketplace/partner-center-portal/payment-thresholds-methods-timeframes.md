@@ -6,13 +6,13 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/24/2020
-ms.openlocfilehash: f5614da7eac0717894d2bcb3c9cfdd959cb57f72
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.date: 09/02/2020
+ms.openlocfilehash: 0d98afb97113f222b9ff0edc8405ea75ad10a3fb
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607289"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322074"
 ---
 # <a name="payment-thresholds-methods-and-time-frames"></a>Zahlungsschwellenwerte, -methoden und -zeitrahmen
 
@@ -78,7 +78,7 @@ In den folgenden Ländern und Regionen werden die oben genannten Zahlungsmethode
 | Côte d’Ivoire | Ja | Ja | Ja | Nein |
 | Kroatien | Ja | Ja | Ja | Nein |
 | Zypern | Ja | Ja | Ja | Ja |
-| Tschechische Republik | Ja | Ja | Ja | Ja |
+| Tschechien | Ja | Ja | Ja | Ja |
 | Dänemark | Ja | Ja | Ja | Ja |
 | Dominica | Ja | Ja | Nein | Ja |
 | Dominikanische Republik | Ja | Ja | Ja | Ja |
@@ -123,7 +123,6 @@ In den folgenden Ländern und Regionen werden die oben genannten Zahlungsmethode
 | Liechtenstein | Ja | Ja | Ja | Ja |
 | Litauen | Ja | Ja | Ja | Nein |
 | Luxemburg | Ja | Ja | Ja | Ja |
-| Nordmazedonien | Nein | Ja | Ja | Nein |
 | Madagaskar | Ja | Ja | Ja | Nein |
 | Malawi | Ja | Ja | Ja | Ja |
 | Malaysia | Ja | Ja | Ja | Ja |
@@ -142,6 +141,7 @@ In den folgenden Ländern und Regionen werden die oben genannten Zahlungsmethode
 | Nicaragua | Ja | Ja | Ja | Ja |
 | Niger | Ja | Ja | Ja | Nein |
 | Nigeria | Ja | Ja | Ja | Nein |
+| Nordmazedonien | Nein | Ja | Ja | Nein |
 | Norwegen | Ja | Ja | Ja | Ja |
 | Oman | Ja | Ja | Ja | Ja |
 | Pakistan | Ja | Ja | Ja | Nein |

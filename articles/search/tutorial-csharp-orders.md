@@ -8,13 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: f2182dcfd3db83580dfbec9b4f09479650dd62ca
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 9819615039a6dd6aceec796a3ec1c7338f6f3968
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420633"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998525"
 ---
 # <a name="tutorial-order-search-results-using-the-net-sdk"></a>Tutorial: Sortieren von Suchergebnissen mithilfe des .NET SDK
 
@@ -462,8 +462,8 @@ Zum Anzeigen von Ergebnissen basierend auf der geografischen Entfernung sind meh
 
 4. Nun müssen Sie diese Konzepte miteinander verbinden. Unser Tutorial behandelt jedoch nur diese Codeausschnitte, die Erstellung einer kartenbasierten App wird dem Leser als Übung überlassen. Um dieses Beispiel weiter zu vertiefen, sollten Sie entweder einen Städtenamen mit einem Radius eingeben oder einen Punkt auf einer Karte lokalisieren und einen Radius auswählen. Um diese Optionen weiter zu erkunden, beachten Sie die folgenden Ressourcen:
 
-* [Dokumentation zu Azure Location Based Services (Vorschauversion)](https://docs.microsoft.com/azure/azure-maps/)
-* [Suchen nach einer Adresse mit dem Suchdienst von Azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-search-for-address)
+* [Dokumentation zu Azure Location Based Services (Vorschauversion)](../azure-maps/index.yml)
+* [Suchen nach einer Adresse mit dem Suchdienst von Azure Maps](../azure-maps/how-to-search-for-address.md)
 
 ## <a name="order-results-based-on-a-scoring-profile"></a>Sortieren von Ergebnissen basierend auf einem Bewertungsprofil
 
@@ -959,7 +959,7 @@ Betrachten wir drei Beispiele für Bewertungsprofile und überlegen uns, wie sic
 
 ### <a name="resources"></a>Ressourcen
 
-Weitere Informationen finden Sie unter [Hinzufügen von Bewertungsprofilen zu einem Azure Cognitive Search-Index](https://docs.microsoft.com/azure/search/index-add-scoring-profiles).
+Weitere Informationen finden Sie unter [Hinzufügen von Bewertungsprofilen zu einem Azure Cognitive Search-Index](/azure/search/index-add-scoring-profiles).
 
 ## <a name="takeaways"></a>Wesentliche Punkte
 
@@ -975,4 +975,4 @@ Beachten Sie die folgenden Erkenntnisse aus diesem Projekt:
 
 Nachdem Sie diese Reihe von C#-Tutorials abgeschlossen haben, sollten Sie nun über wertvolle Kenntnisse über die Azure Cognitive Search-APIs verfügen.
 
-Weitere Informationen und Tutorials finden Sie unter [Microsoft Learn](https://docs.microsoft.com/learn/browse/?products=azure) oder in anderen Tutorials in der [Azure Cognitive Search-Dokumentation](https://docs.microsoft.com/azure/search/).
+Weitere Informationen und Tutorials finden Sie unter [Microsoft Learn](/learn/browse/?products=azure) oder in anderen Tutorials in der [Azure Cognitive Search-Dokumentation](./index.yml).

@@ -16,19 +16,19 @@ ms.date: 07/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f480118aaabf24bd7c5ca472bf04b12ee1405010
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 99ebac32193f764059bea2a30b6ddbce879938a6
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446997"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89275922"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Behandlung von Problemen bei der Azure Active Directory-Passthrough-Authentifizierung
 
 In diesem Artikel hilft Ihnen beim Auffinden von Informationen zur Problembehandlung von bekannten Problemen mit der Azure AD-Passthrough-Authentifizierung.
 
 >[!IMPORTANT]
->Wenn Sie es mit Benutzeranmeldeproblemen bei der Passthrough-Authentifizierung zu tun haben, deaktivieren das Feature nicht. Deinstallieren auch keine Agents für die Passthrough-Authentifizierung ohne ein ausschließlich cloudbasiertes globales Administratorkonto, auf das ein Fallback ausgeführt werden kann. Erfahren Sie, wie Sie ein [rein cloudbasiertes Konto für den globalen Administrator hinzufügen](../active-directory-users-create-azure-portal.md). Dieser Schritt ist unerlässlich und stellt sicher, dass Sie sich nicht aus Ihrem Mandanten aussperren.
+>Wenn Sie es mit Benutzeranmeldeproblemen bei der Passthrough-Authentifizierung zu tun haben, deaktivieren das Feature nicht. Deinstallieren auch keine Agents für die Passthrough-Authentifizierung ohne ein ausschließlich cloudbasiertes globales Administratorkonto, auf das ein Fallback ausgeführt werden kann. Erfahren Sie, wie Sie ein [rein cloudbasiertes Konto für den globalen Administrator hinzufügen](../fundamentals/add-users-azure-active-directory.md). Dieser Schritt ist unerlässlich und stellt sicher, dass Sie sich nicht aus Ihrem Mandanten aussperren.
 
 ## <a name="general-issues"></a>Allgemeine Probleme
 
@@ -72,10 +72,10 @@ Dieser Fall kann eintreten, wenn sich der lokale Benutzerprinzipalname (User Pri
  ``` 
 4. Wenn Sie zur Eingabe von Anmeldeinformationen aufgefordert werden, geben Sie den für die Anmeldung verwendeten Benutzernamen und das entsprechende Kennwort ein (https://login.microsoftonline.com).
 
-Sollte der gleiche Benutzernamen-/Kennwortfehler auftreten, funktioniert der Agent für die Passthrough-Authentifizierung ordnungsgemäß, und das Problem ist möglicherweise auf einen nicht routingfähigen lokalen UPN zurückzuführen. Weitere Informationen finden Sie unter [Konfigurieren einer alternativen Anmelde-ID]( https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id#:~:text=%20Configuring%20Alternate%20Login%20ID,See%20Also.%20%20More).
+Sollte der gleiche Benutzernamen-/Kennwortfehler auftreten, funktioniert der Agent für die Passthrough-Authentifizierung ordnungsgemäß, und das Problem ist möglicherweise auf einen nicht routingfähigen lokalen UPN zurückzuführen. Weitere Informationen finden Sie unter [Konfigurieren einer alternativen Anmelde-ID]( /windows-server/identity/ad-fs/operations/configuring-alternate-login-id#:~:text=%20Configuring%20Alternate%20Login%20ID,See%20Also.%20%20More).
 
 > [!IMPORTANT]
-> Wenn der Azure AD Connect-Server nicht in die Domäne eingebunden ist, eine Anforderung, die unter [Azure AD Connect: Voraussetzungen für die Installation](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites#installation-prerequisites) erwähnt wird, tritt das Problem mit dem ungültigen Benutzernamen/Kennwort auf.
+> Wenn der Azure AD Connect-Server nicht in die Domäne eingebunden ist, eine Anforderung, die unter [Azure AD Connect: Voraussetzungen für die Installation](./how-to-connect-install-prerequisites.md#installation-prerequisites) erwähnt wird, tritt das Problem mit dem ungültigen Benutzernamen/Kennwort auf.
 
 ### <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center-needs-premium-license"></a>Gründe für Anmeldefehler im Azure Active Directory-Admin Center (Premium-Lizenz erforderlich)
 
@@ -98,7 +98,7 @@ Navigieren Sie im [Azure Active Directory Admin Center](https://aad.portal.azure
 | 80011 | Der Authentifizierungs-Agent kann den Entschlüsselungsschlüssel nicht abrufen. | If the problem is consistently reproducible, install and register a new Authentication Agent. (Wenn das Problem konsistent reproduziert werden kann, installieren und registrieren Sie einen neuen Authentifizierungs-Agent.) And uninstall the current one. (Deinstallieren der Sie außerdem den aktuellen.)
 
 >[!IMPORTANT]
->Passthrough-Authentifizierungs-Agents authentifizieren Azure AD-Benutzer, indem sie deren Benutzernamen und Kennwörter für Active Directory durch Aufrufen der [Win32 LogonUser-API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx) überprüfen. Wenn Sie in Active Directory die Einstellung „Anmeldung bei“ zum Einschränken des Anmeldezugriffs für Arbeitsstationen festgelegt haben, müssen Sie daher auch der Serverliste „Anmeldung bei“ Server hinzufügen, auf denen Passthrough-Authentifizierungs-Agents gehostet werden. Wenn Sie dies nicht tun, können sich Ihre Benutzer nicht bei Azure AD anmelden.
+>Passthrough-Authentifizierungs-Agents authentifizieren Azure AD-Benutzer, indem sie deren Benutzernamen und Kennwörter für Active Directory durch Aufrufen der [Win32 LogonUser-API](/windows/win32/api/winbase/nf-winbase-logonusera) überprüfen. Wenn Sie in Active Directory die Einstellung „Anmeldung bei“ zum Einschränken des Anmeldezugriffs für Arbeitsstationen festgelegt haben, müssen Sie daher auch der Serverliste „Anmeldung bei“ Server hinzufügen, auf denen Passthrough-Authentifizierungs-Agents gehostet werden. Wenn Sie dies nicht tun, können sich Ihre Benutzer nicht bei Azure AD anmelden.
 
 ## <a name="authentication-agent-installation-issues"></a>Probleme bei der Installation des Authentifizierungs-Agents
 

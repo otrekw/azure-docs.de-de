@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b80cd2e40e54837682e72837cf0d1a9058f3a7fc
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 6c062b907f1e8a8e0541db0d69c6e24901f3145f
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428377"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268552"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Tutorial: Manuelles Konfigurieren von in Azure Active Directory eingebundenen Hybridgeräten
 
@@ -39,7 +39,7 @@ Wenn Sie in einer lokalen Active Directory-Umgebung Ihre in die Domäne eingebun
 
 In diesem Tutorial wird vorausgesetzt, dass Sie mit Folgendem vertraut sind:
 
-* [Einführung in die Geräteverwaltung in Azure Active Directory](../device-management-introduction.md)
+* [Einführung in die Geräteverwaltung in Azure Active Directory](./overview.md)
 * [Planen der Implementierung von Azure Active Directory (Azure AD) Hybrid Join](hybrid-azuread-join-plan.md)
 * [Steuern der Azure AD-Hybrideinbindung für Ihre Geräte](hybrid-azuread-join-control.md)
 
@@ -94,7 +94,7 @@ Verwenden Sie die folgende Tabelle, um eine Übersicht über die Schritte zu erh
 
 Ihre Geräte verwenden im Rahmen der Registrierung ein SCP-Objekt (Service Connection Point, Dienstverbindungspunkt), um Informationen zum Azure AD-Mandanten zu ermitteln. In Ihrer lokalen Active Directory-Instanz muss sich das SCP-Objekt für die in Azure AD eingebundenen Hybridgeräte in der Partition für den Konfigurationsnamenskontext der Computergesamtstruktur befinden. Es gibt nur einen Konfigurationsnamenskontext pro Gesamtstruktur. In einer Active Directory-Konfiguration mit mehreren Gesamtstrukturen muss der Dienstverbindungspunkt in allen Gesamtstrukturen vorhanden sein, die in die Domäne eingebundene Computer enthalten.
 
-Sie können das [**Get-ADRootDSE**](https://technet.microsoft.com/library/ee617246.aspx)-Cmdlet verwenden, um den Konfigurationsnamenskontext aus Ihrer Gesamtstruktur abzurufen.  
+Sie können das [**Get-ADRootDSE**](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee617246(v=technet.10))-Cmdlet verwenden, um den Konfigurationsnamenskontext aus Ihrer Gesamtstruktur abzurufen.  
 
 Für eine Gesamtstruktur mit dem Active Directory-Domänennamen *fabrikam.com* lautet der Konfigurationsnamenskontext:
 
@@ -167,7 +167,7 @@ Verwenden Sie für Domänencontroller mit Windows Server 2008 oder älteren Vers
 
 Im obigen Skript ist `$verifiedDomain = "contoso.com"` ein Platzhalter. Ersetzen Sie ihn durch einen Ihrer überprüften Domänennamen in Azure AD. Sie müssen die Domäne besitzen, um sie verwenden zu können.
 
-Weitere Informationen zu überprüften Domänennamen finden Sie unter [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](../active-directory-domains-add-azure-portal.md).
+Weitere Informationen zu überprüften Domänennamen finden Sie unter [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](../fundamentals/add-custom-domain.md).
 
 Zum Abrufen einer Liste mit Ihren überprüften Unternehmensdomänen können Sie das Cmdlet [Get-AzureADDomain](/powershell/module/Azuread/Get-AzureADDomain?view=azureadps-2.0) verwenden.
 
@@ -326,7 +326,7 @@ Der Anspruch `http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid` 
 
 Im obigen Anspruch ist `<verified-domain-name>` ein Platzhalter. Ersetzen Sie ihn durch einen Ihrer überprüften Domänennamen in Azure AD. Verwenden Sie z. B. `Value = "http://contoso.com/adfs/services/trust/"`.
 
-Weitere Informationen zu überprüften Domänennamen finden Sie unter [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](../active-directory-domains-add-azure-portal.md).  
+Weitere Informationen zu überprüften Domänennamen finden Sie unter [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](../fundamentals/add-custom-domain.md).  
 
 Zum Abrufen einer Liste mit Ihren überprüften Unternehmensdomänen können Sie das [Get-MsolDomain](/powershell/module/msonline/get-msoldomain?view=azureadps-1.0)-Cmdlet verwenden.
 
@@ -614,7 +614,7 @@ Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -e
 
 Sollten bei der Azure AD-Hybrideinbindung für in Domänen eingebundene Windows-Geräte Probleme auftreten, finden Sie weitere Informationen unter:
 
-- [Problembehandlung von Geräten mit dem Befehl „dsregcmd“](https://docs.microsoft.com/azure/active-directory/devices/troubleshoot-device-dsregcmd)
+- [Problembehandlung von Geräten mit dem Befehl „dsregcmd“](./troubleshoot-device-dsregcmd.md)
 - [Beheben von Problemen mit Geräten mit Hybrid-Azure Active Directory-Einbindung](troubleshoot-hybrid-join-windows-current.md)
 - [Beheben von Problemen mit Geräten mit Hybrideinbindung in Azure Active Directory](troubleshoot-hybrid-join-windows-legacy.md)
 

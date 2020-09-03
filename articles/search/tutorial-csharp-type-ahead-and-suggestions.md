@@ -8,13 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 07/15/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 244809db8efac00124a11ab5c163bfefc9ea7dd2
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 47c846f0d8d1cccd91301c7424b2618fffddd565
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420599"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998440"
 ---
 # <a name="tutorial-add-autocomplete-and-suggestions-using-the-net-sdk"></a>Tutorial: Hinzufügen von AutoVervollständigen und Vorschlägen mithilfe des .NET SDK
 
@@ -145,7 +145,7 @@ Wir beginnen mit der einfachsten Möglichkeit zum Anbieten von Alternativen für
  
     ![Eingeben von „pa“ mit Festlegung von „fuzzy“ auf „true“](./media/tutorial-csharp-create-first-app/azure-search-suggest-fuzzy.png)
 
-    Wenn Sie Interesse daran haben, können Sie sich unter [Lucene-Abfragesyntax in Azure Cognitive Search](https://docs.microsoft.com/azure/search/query-lucene-syntax) ausführlicher über die Logik informieren, die für Fuzzysuchen verwendet wird.
+    Wenn Sie Interesse daran haben, können Sie sich unter [Lucene-Abfragesyntax in Azure Cognitive Search](./query-lucene-syntax.md) ausführlicher über die Logik informieren, die für Fuzzysuchen verwendet wird.
 
 ## <a name="add-highlighting-to-the-suggestions"></a>Hinzufügen der Hervorhebung für die Vorschläge
 
@@ -244,7 +244,7 @@ Eine andere Variante, die sich leicht von Vorschlägen unterscheidet, ist AutoVe
 
     Beachten Sie, dass wir für die Suche mit AutoVervollständigen die gleiche *suggester*-Funktion mit dem Namen „sg“ wie für die Vorschläge verwenden (es sollen also nur die Hotelnamen automatisch vervollständigt werden).
 
-    Es sind verschiedene **AutocompleteMode**-Einstellungen vorhanden, von denen wir **OneTermWithContext** verwenden. Eine Beschreibung zusätzlicher Optionen finden Sie im Artikel zur [AutoVervollständigen-API](https://docs.microsoft.com/rest/api/searchservice/autocomplete).
+    Es sind verschiedene **AutocompleteMode**-Einstellungen vorhanden, von denen wir **OneTermWithContext** verwenden. Eine Beschreibung zusätzlicher Optionen finden Sie im Artikel zur [AutoVervollständigen-API](/rest/api/searchservice/autocomplete).
 
 4. Führen Sie die App aus. Beachten Sie, dass es sich bei den Optionen in der Dropdownliste um einzelne Wörter handelt. Versuchen Sie es mit der Eingabe von Wörtern, die mit „re“ beginnen. Sie sehen, dass sich die Anzahl von Optionen reduziert, je mehr Buchstaben Sie eingeben.
 
@@ -464,5 +464,3 @@ Im nächsten Tutorial sehen wir uns ein anderes Verfahren an, mit dem wir die Be
 
 > [!div class="nextstepaction"]
 > [C#-Tutorial: Verwenden von Facetten zur Vereinfachung der Navigation – Azure Cognitive Search](tutorial-csharp-facets.md)
-
-

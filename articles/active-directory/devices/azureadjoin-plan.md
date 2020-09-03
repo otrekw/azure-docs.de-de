@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d43e6e89faa8eca720e3aeafc873af1a18b9753b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0863a782b7f4531b900bc3c005a39387c83d983
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555021"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268226"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Gewusst wie: Planen der Implementierung Ihrer Azure AD-Einbindung
 
@@ -26,7 +26,7 @@ In diesem Artikel erhalten Sie die Informationen, die Sie zum Planen der Impleme
  
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Dieser Artikel setzt voraus, dass Sie die [Einführung in die Geräteverwaltung in Azure Active Directory](../device-management-introduction.md) gelesen haben.
+Dieser Artikel setzt voraus, dass Sie die [Einführung in die Geräteverwaltung in Azure Active Directory](./overview.md) gelesen haben.
 
 ## <a name="plan-your-implementation"></a>Planen Ihrer Implementierung
 
@@ -58,7 +58,7 @@ Azure AD Join kann sowohl in verwalteten Umgebungen als auch in Verbundumgebunge
 
 ### <a name="managed-environment"></a>Verwaltete Umgebung
 
-Eine verwaltete Umgebung kann entweder durch [Kennworthashsynchronisierung](/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) oder [Passthrough-Authentifizierung](/azure/active-directory/hybrid/how-to-connect-pta-quick-start) mit dem nahtlosen einmaligen Anmelden (Seamless Single Sign On, Seamless SSO) bereitgestellt werden.
+Eine verwaltete Umgebung kann entweder durch [Kennworthashsynchronisierung](../hybrid/how-to-connect-password-hash-synchronization.md) oder [Passthrough-Authentifizierung](../hybrid/how-to-connect-pta-quick-start.md) mit dem nahtlosen einmaligen Anmelden (Seamless Single Sign On, Seamless SSO) bereitgestellt werden.
 
 In diesen Szenarien müssen Sie keinen Verbundserver für die Authentifizierung konfigurieren.
 
@@ -90,7 +90,7 @@ Zum Einbinden von Geräten in Azure AD können Sie keine Smartcards oder zertifi
 
 Bei der Erstellung von Benutzern in:
 
-- **Lokalem Active Directory** müssen Sie die Benutzer mithilfe von [Azure AD Connect](/azure/active-directory/hybrid/how-to-connect-sync-whatis) mit Azure AD synchronisieren. 
+- **Lokalem Active Directory** müssen Sie die Benutzer mithilfe von [Azure AD Connect](../hybrid/how-to-connect-sync-whatis.md) mit Azure AD synchronisieren. 
 - **Azure AD** ist keine zusätzliche Einrichtung erforderlich.
 
 Lokale UPNs, die sich von Azure AD-UPNs unterscheiden, werden auf in Azure AD eingebundenen Geräten nicht unterstützt. Wenn Ihre Benutzer einen lokalen UPN verwenden, sollten Sie auf die Verwendung ihres primären UPN in Azure AD umstellen.
@@ -162,7 +162,7 @@ Wenn Sie AD FS verwenden, lesen Sie [Überprüfen und Verwalten von einmaligem A
 
 Benutzer erhalten SSO über in Azure AD eingebundene Geräte, wenn das jeweilige Gerät Zugriff auf einen Domänencontroller hat. 
 
-**Empfehlung:** Stellen Sie den [Azure AD-App-Proxy](/azure/active-directory/manage-apps/application-proxy) bereit, um den sicheren Zugriff für diese Anwendungen zu ermöglichen.
+**Empfehlung:** Stellen Sie den [Azure AD-App-Proxy](../manage-apps/application-proxy.md) bereit, um den sicheren Zugriff für diese Anwendungen zu ermöglichen.
 
 ### <a name="on-premises-network-shares"></a>Lokale Netzwerkfreigaben
 
@@ -190,7 +190,7 @@ Ab dem Windows 10-Update 2004 können Benutzer auch Remotedesktopfunktionen au
 
 Sie können Azure AD Join mithilfe der folgenden Methoden bereitstellen:
 
-- **Self-Service auf der Windows-Willkommensseite/in den Windows-Einstellungen**: Im Self-Service-Modus durchlaufen die Benutzer den Azure AD-Einbindungsprozess entweder auf der Windows-Willkommensseite (Windows Out-of-Box-Experience, OOBE) oder in den Windows-Einstellungen. Weitere Informationen finden Sie unter [Einbinden von geschäftlichen Geräten in das Netzwerk der Organisation](/azure/active-directory/user-help/user-help-join-device-on-network). 
+- **Self-Service auf der Windows-Willkommensseite/in den Windows-Einstellungen**: Im Self-Service-Modus durchlaufen die Benutzer den Azure AD-Einbindungsprozess entweder auf der Windows-Willkommensseite (Windows Out-of-Box-Experience, OOBE) oder in den Windows-Einstellungen. Weitere Informationen finden Sie unter [Einbinden von geschäftlichen Geräten in das Netzwerk der Organisation](../user-help/user-help-join-device-on-network.md). 
 - **Windows Autopilot**: Windows Autopilot ermöglicht die Vorkonfiguration von Geräten, um auf der Windows-Willkommensseite für ein möglichst reibungsloses Benutzererlebnis bei einer Azure AD-Einbindung zu sorgen. Weitere Informationen finden Sie in der [Übersicht über Windows Autopilot](/windows/deployment/windows-autopilot/windows-10-autopilot). 
 - **Massenregistrierung**: Die Massenregistrierung ermöglicht eine vom Administrator gesteuerte Azure AD-Einbindung mithilfe eines Massenbereitstellungstools zum Konfigurieren von Geräten. Weitere Informationen finden Sie unter [Massenregistrierung für Windows-Geräte](/intune/windows-bulk-enroll).
  
@@ -297,7 +297,7 @@ Sie können diese Implementierung nutzen, um [die Verwendung verwalteter Geräte
 
 > [!div class="nextstepaction"]
 > [Einbinden eines neuen Windows 10-Geräts in Azure AD auf der Windows-Willkommensseite](azuread-joined-devices-frx.md)
-> [Einbinden von geschäftlichen Geräten in das Netzwerk der Organisation](/azure/active-directory/user-help/user-help-join-device-on-network)
+> [Einbinden von geschäftlichen Geräten in das Netzwerk der Organisation](../user-help/user-help-join-device-on-network.md)
 
 <!--Image references-->
 [1]: ./media/azureadjoin-plan/12.png

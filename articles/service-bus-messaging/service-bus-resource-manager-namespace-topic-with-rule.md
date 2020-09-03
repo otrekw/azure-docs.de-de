@@ -6,13 +6,13 @@ ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3a53cadbdf7529a2690594617122e84f355e0e46
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 3f3287dd67f89f678a9875ddce93e2d0d26b2209
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065657"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077623"
 ---
 # <a name="create-a-service-bus-namespace-with-topic-subscription-and-rule-using-an-azure-resource-manager-template"></a>Erstellen eines Service Bus-Namespace mit einem Thema, einem Abonnement und einer Regel anhand einer Azure Resource Manager-Vorlage
 

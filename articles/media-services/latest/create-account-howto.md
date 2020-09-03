@@ -11,17 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 03/15/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 23a26e01c8329fa384d29443a143b173c58a2c6e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 93f5e4d659b94bd79345a5e687de14ab6a5e8ba6
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88539119"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267971"
 ---
 # <a name="create-a-media-services-account"></a>Erstellen eines Media Services-Kontos
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Um mit dem Verschlüsseln, Codieren, Analysieren, Verwalten und Streamen von Medieninhalten in Azure beginnen zu können, müssen Sie ein Media Services-Konto erstellen. Das Media Services-Konto muss einem oder mehreren Speicherkonten zugeordnet werden. In diesem Artikel werden die Schritte zum Erstellen eines neuen Azure Media Services-Kontos beschrieben.
 

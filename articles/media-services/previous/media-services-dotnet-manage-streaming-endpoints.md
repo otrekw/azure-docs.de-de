@@ -15,14 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: fa68c842495725c73a6a4b5629d38fb9c12a819f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c0eceff6ba371cbdd01805a38c56dcc09f0887f9
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038731"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266001"
 ---
-# <a name="manage-streaming-endpoints-with-net-sdk"></a>Verwalten von Streamingendpunkten mit .NET SDK  
+# <a name="manage-streaming-endpoints-with-net-sdk"></a>Verwalten von Streamingendpunkten mit .NET SDK
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]  
 
 >[!NOTE]
 >Sehen Sie sich zunächst den Artikel [Übersicht](media-services-streaming-endpoints-overview.md) an. Lesen Sie außerdem [StreamingEndpoint](/rest/api/media/operations/streamingendpoint).

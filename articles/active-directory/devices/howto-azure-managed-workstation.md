@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5fe1bf294c34afc2f7e0e0aa911dc05597ab9df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 841bc3ae4fbddb376ea4da8141bf4df3f895c4dc
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85252779"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269555"
 ---
 # <a name="deploy-a-secure-azure-managed-workstation"></a>Bereitstellen einer sicheren, von Azure verwalteten Arbeitsstation
 
@@ -449,9 +449,9 @@ Die Anwendungsprotokollierung ist in Ihrem ausgewählten Log Analytics-Arbeitsbe
 
 ## <a name="monitoring"></a>Überwachung
 
-* Erfahren Sie mehr im [Tutorial: Standardmäßig verfügbare Erkennung von Bedrohungen](/azure/sentinel/tutorial-detect-threats).
-* Lesen Sie [Untersuchen von Incidents mit Azure Sentinel](/azure/sentinel/tutorial-investigate-cases).
-* Machen Sie sich mit dem [Einrichten automatisierter Reaktionen auf Bedrohungen in Azure Sentinel](/azure/sentinel/tutorial-respond-threats-playbook) vertraut.
+* Erfahren Sie mehr im [Tutorial: Standardmäßig verfügbare Erkennung von Bedrohungen](../../sentinel/tutorial-detect-threats-built-in.md).
+* Lesen Sie [Untersuchen von Incidents mit Azure Sentinel](../../sentinel/tutorial-investigate-cases.md).
+* Machen Sie sich mit dem [Einrichten automatisierter Reaktionen auf Bedrohungen in Azure Sentinel](../../sentinel/tutorial-respond-threats-playbook.md) vertraut.
 * Informieren Sie sich, wie Sie Ihr [Exposure Score (Risikopotenzial)](/windows/security/threat-protection/microsoft-defender-atp/tvm-exposure-score) prüfen können.
 * Lesen Sie mehr zu [Sicherheitsempfehlungen](/windows/security/threat-protection/microsoft-defender-atp/tvm-security-recommendation).
 * Verwalten Sie [Empfehlungen](/windows/security/threat-protection/microsoft-defender-atp/tvm-remediation) für eine höhere Sicherheit.
@@ -463,4 +463,4 @@ Die Anwendungsprotokollierung ist in Ihrem ausgewählten Log Analytics-Arbeitsbe
 * Weitere Informationen zu [Microsoft Intune](/intune/index)
 * Grundlegendes zu [Azure AD](../index.yml)
 * Arbeiten mit [Microsoft Defender Advanced Threat Protection](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)
-* Entdecken der Funktionen von [Azure Sentinel](/azure/sentinel/)
+* Entdecken der Funktionen von [Azure Sentinel](../../sentinel/index.yml)

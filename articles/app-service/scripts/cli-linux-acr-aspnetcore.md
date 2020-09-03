@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 12/13/2018
 ms.author: msangapu
 ms.custom: devx-track-dotnet, mvc, seodec18
-ms.openlocfilehash: 51f1b40a6b429d478432e6ab440be68f8405e49a
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 1b5f6988a7f217669b2b2dfe90dd5152b880b41c
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207646"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88960427"
 ---
 # <a name="create-an-aspnet-core-app-in-a-docker-container-in-app-service-from-azure-container-registry"></a>Erstellen einer ASP.NET Core-App in einem Docker-Container in App Service über Azure Container Registry
 
@@ -44,6 +44,6 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure).
+Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](/cli/azure).
 
 Zusätzliche App Service-CLI-Skriptbeispiele finden Sie in der [Dokumentation zu Azure App Service](../samples-cli.md).

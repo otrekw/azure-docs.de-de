@@ -2,18 +2,18 @@
 title: 'ExpressRoute: Verknüpfen eines VNET mit einer Verbindung: Azure PowerShell'
 description: Dieses Dokument bietet Ihnen eine Übersicht über das Verknüpfen virtueller Netzwerke (VNETs) mit ExpressRoute-Verbindungen über das Resource Manager-Bereitstellungsmodell und PowerShell.
 services: expressroute
-author: charwen
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/20/2018
-ms.author: charwen
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: c8fd3bc4a2efd90857d0696491102790b069d5e1
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 49f259178020dd0e8e4f24aed67869aefd73b037
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984149"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89395841"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit"></a>Verbinden eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung
 > [!div class="op_single_selector"]

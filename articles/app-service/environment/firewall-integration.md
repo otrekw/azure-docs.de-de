@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 07/13/2020
 ms.author: ccompy
 ms.custom: seodec18, references_regions
-ms.openlocfilehash: 1e5c909dfebf9c2073ac1809e0a1b7dcbcc7a297
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: e79381c156247efafa55de51f7e2e0154dbc1b51
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874196"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962501"
 ---
 # <a name="locking-down-an-app-service-environment"></a>Sperren einer App Service-Umgebung
 
 Die App Service-Umgebung verfügt über externe Abhängigkeiten, auf die sie Zugriff benötigt, um ordnungsgemäß zu funktionieren. Die App Service-Umgebung befindet sich in der Azure Virtual Network-Instanz (VNET) des Benutzers. Benutzer müssen den Datenverkehr für Abhängigkeiten der App Service-Umgebung zulassen. Dies ist jedoch problematisch, wenn sie den gesamten ausgehenden Datenverkehr ihres VNET sperren wollen.
 
-Es gibt eine Reihe von Endpunkten für eingehenden Datenverkehr, die zum Verwalten einer App Service-Umgebung verwendet werden. Der eingehende Verwaltungsdatenverkehr kann über eine Firewallgerät nicht gesendet werden. Die Quelladressen für diesen Datenverkehr sind bekannt und werden im Dokument [Verwaltungsadressen der App Service-Umgebung](https://docs.microsoft.com/azure/app-service/environment/management-addresses) veröffentlicht. Es gibt auch ein Diensttag mit dem Namen AppServiceManagement, das mit Netzwerksicherheitsgruppen (NSGs) verwendet werden kann, um den eingehenden Datenverkehr zu sichern.
+Es gibt eine Reihe von Endpunkten für eingehenden Datenverkehr, die zum Verwalten einer App Service-Umgebung verwendet werden. Der eingehende Verwaltungsdatenverkehr kann über eine Firewallgerät nicht gesendet werden. Die Quelladressen für diesen Datenverkehr sind bekannt und werden im Dokument [Verwaltungsadressen der App Service-Umgebung](./management-addresses.md) veröffentlicht. Es gibt auch ein Diensttag mit dem Namen AppServiceManagement, das mit Netzwerksicherheitsgruppen (NSGs) verwendet werden kann, um den eingehenden Datenverkehr zu sichern.
 
 Die Abhängigkeiten der App Service-Umgebung für den ausgehenden Datenverkehr werden fast ausschließlich mit FQDNs definiert, hinter denen sich keine statischen Adressen befinden. Das Fehlen statischer Adressen bedeutet, dass Netzwerksicherheitsgruppen nicht verwendet werden können, um den ausgehenden Datenverkehr einer App Service-Umgebung zu sperren. Die Adressen ändern sich häufig, sodass keine Regeln auf Grundlage der aktuellen Auflösung aufgestellt und keine NSGs damit erstellt werden können. 
 
@@ -55,7 +55,7 @@ Gehen Sie wie folgt vor, um ausgehenden Datenverkehr Ihrer bestehenden App Servi
 
    ![Auswählen von Dienstendpunkten][2]
   
-1. Erstellen Sie ein Subnetz namens „AzureFirewallSubnet“ in dem VNET, in dem sich die ASE befindet. Folgen Sie den Anweisungen in der [Azure Firewall-Dokumentation](https://docs.microsoft.com/azure/firewall/), um Ihre Azure Firewall-Instanz zu erstellen.
+1. Erstellen Sie ein Subnetz namens „AzureFirewallSubnet“ in dem VNET, in dem sich die ASE befindet. Folgen Sie den Anweisungen in der [Azure Firewall-Dokumentation](../../firewall/index.yml), um Ihre Azure Firewall-Instanz zu erstellen.
 
 1. Navigieren Sie in der Azure Firewall-Benutzeroberfläche zu „Regeln“ > „Anwendungsregelsammlung“, und wählen Sie „Anwendungsregelsammlung hinzufügen“ aus. Geben Sie einen Namen und eine Priorität an, und legen Sie „Zulassen“ fest. Geben Sie im Abschnitt „FQDN-Tags“ einen Namen an, legen Sie die Quelladressen auf „*“ fest, und wählen Sie die FQDN-Tags „AppServiceEnvironment“ und „WindowsUpdate“ aus. 
    
@@ -69,7 +69,7 @@ Gehen Sie wie folgt vor, um ausgehenden Datenverkehr Ihrer bestehenden App Servi
 
    ![Hinzufügen einer NTP-Diensttag-Netzwerkregel][6]
    
-1. Erstellen Sie eine Routingtabelle mit den Verwaltungsadressen aus [Verwaltungsadressen der App Service-Umgebung]( https://docs.microsoft.com/azure/app-service/environment/management-addresses) mit dem nächsten Hop zum Internet. Die Routingtabelleneinträge werden benötigt, um asymmetrische Routingprobleme zu vermeiden. Fügen Sie mit dem nächsten Hop zum Internet den IP-Adressabhängigkeiten (s. weiter unten „IP-Adressabhängigkeiten“) Routen hinzu. Fügen Sie Ihrer Routingtabelle eine Route für ein virtuelles Gerät für 0.0.0.0/0 hinzu, und legen Sie dabei Ihre private Azure Firewall-IP-Adresse als nächsten Hop fest. 
+1. Erstellen Sie eine Routingtabelle mit den Verwaltungsadressen aus [Verwaltungsadressen der App Service-Umgebung]( ./management-addresses.md) mit dem nächsten Hop zum Internet. Die Routingtabelleneinträge werden benötigt, um asymmetrische Routingprobleme zu vermeiden. Fügen Sie mit dem nächsten Hop zum Internet den IP-Adressabhängigkeiten (s. weiter unten „IP-Adressabhängigkeiten“) Routen hinzu. Fügen Sie Ihrer Routingtabelle eine Route für ein virtuelles Gerät für 0.0.0.0/0 hinzu, und legen Sie dabei Ihre private Azure Firewall-IP-Adresse als nächsten Hop fest. 
 
    ![Erstellen einer Routingtabelle][4]
    
@@ -77,7 +77,7 @@ Gehen Sie wie folgt vor, um ausgehenden Datenverkehr Ihrer bestehenden App Servi
 
 #### <a name="deploying-your-ase-behind-a-firewall"></a>Bereitstellen Ihrer ASE hinter einer Firewall
 
-Die Schritte zum Bereitstellen Ihrer ASE hinter einer Firewall sind identisch mit der Konfiguration der bestehenden ASE mit einer Azure Firewall-Instanz. Der einzige Unterschied besteht darin, dass Sie Ihr ASE-Subnetz erstellen und anschließend die obigen Schritte ausführen müssen. Wenn Sie Ihre ASE in einem bereits vorhandenen Subnetz erstellen möchten, müssen Sie wie im Dokument [Erstellen einer ASE mit einer Azure Resource Manager-Vorlage](https://docs.microsoft.com/azure/app-service/environment/create-from-template) beschrieben eine Resource Manager-Vorlage verwenden.
+Die Schritte zum Bereitstellen Ihrer ASE hinter einer Firewall sind identisch mit der Konfiguration der bestehenden ASE mit einer Azure Firewall-Instanz. Der einzige Unterschied besteht darin, dass Sie Ihr ASE-Subnetz erstellen und anschließend die obigen Schritte ausführen müssen. Wenn Sie Ihre ASE in einem bereits vorhandenen Subnetz erstellen möchten, müssen Sie wie im Dokument [Erstellen einer ASE mit einer Azure Resource Manager-Vorlage](./create-from-template.md) beschrieben eine Resource Manager-Vorlage verwenden.
 
 ## <a name="application-traffic"></a>Anwendungsdatenverkehr 
 
@@ -88,7 +88,7 @@ Mithilfe der oben genannten Schritte kann Ihre App Service-Umgebung problemlos a
 
 Wenn Ihre Anwendungen Abhängigkeiten aufweisen, müssen diese Ihrer Azure Firewall-Instanz hinzugefügt werden. Erstellen Sie Anwendungsregeln, um HTTP/HTTPS-Datenverkehr und Netzwerkregeln zuzulassen. 
 
-Wenn Sie den Adressbereich kennen, aus dem der von Ihrer Anwendung angeforderte Datenverkehr kommt, können Sie ihn der Routingtabelle hinzufügen, die dem Subnetz Ihrer App Service-Umgebung zugeordnet ist. Wenn der Adressbereich groß oder nicht angegeben ist, können Sie ein Netzwerkgerät wie Application Gateway verwenden, um eine Adresse Ihrer Routingtabelle hinzufügen zu können. Weitere Informationen zum Konfigurieren einer Application Gateway-Instanz mit dem internen Lastenausgleichsmodul der App Service-Umgebung finden Sie unter [Integrieren eines internen Lastenausgleichs einer App Service-Umgebung in eine Application Gateway-Instanz](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway).
+Wenn Sie den Adressbereich kennen, aus dem der von Ihrer Anwendung angeforderte Datenverkehr kommt, können Sie ihn der Routingtabelle hinzufügen, die dem Subnetz Ihrer App Service-Umgebung zugeordnet ist. Wenn der Adressbereich groß oder nicht angegeben ist, können Sie ein Netzwerkgerät wie Application Gateway verwenden, um eine Adresse Ihrer Routingtabelle hinzufügen zu können. Weitere Informationen zum Konfigurieren einer Application Gateway-Instanz mit dem internen Lastenausgleichsmodul der App Service-Umgebung finden Sie unter [Integrieren eines internen Lastenausgleichs einer App Service-Umgebung in eine Application Gateway-Instanz](./integrate-with-application-gateway.md).
 
 Diese Verwendung von Application Gateway ist nur ein Beispiel dafür, wie Sie Ihr System konfigurieren können. Bei der obigen Konfiguration müssten Sie der Routingtabelle für das ASE-Subnetz eine Route hinzufügen, damit der an die Application Gateway-Instanz gesendete Antwortdatenverkehr direkt an diese weitergeleitet wird. 
 
@@ -100,7 +100,7 @@ Azure Firewall kann Protokolle an Azure Storage, Event Hub oder Azure Monitor-Pr
 AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 ```
 
-Die Integration Ihrer Azure Firewall-Instanz in Azure Monitor-Protokolle ist nützlich, wenn Sie eine Anwendung erstmals einrichten und nicht alle Anwendungsabhängigkeiten kennen. Weitere Informationen zu Azure Monitor-Protokollen finden Sie unter [Analysieren von Protokolldaten in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
+Die Integration Ihrer Azure Firewall-Instanz in Azure Monitor-Protokolle ist nützlich, wenn Sie eine Anwendung erstmals einrichten und nicht alle Anwendungsabhängigkeiten kennen. Weitere Informationen zu Azure Monitor-Protokollen finden Sie unter [Analysieren von Protokolldaten in Azure Monitor](../../azure-monitor/log-query/log-query-overview.md).
  
 ## <a name="dependencies"></a>Abhängigkeiten
 
@@ -269,7 +269,7 @@ Mit einer Azure Firewall-Instanz erhalten Sie automatisch alle der unten aufgef�
 
 ## <a name="us-gov-dependencies"></a>US Gov-Abhängigkeiten
 
-Befolgen Sie für App Service-Umgebungen in Regionen des Typs US Gov die Anweisungen im Abschnitt [Konfigurieren von Azure Firewall mit ihrer App Service-Umgebung](https://docs.microsoft.com/azure/app-service/environment/firewall-integration#configuring-azure-firewall-with-your-ase) in diesem Dokument, um Azure Firewall mit ihrer App Service-Umgebung zu konfigurieren.
+Befolgen Sie für App Service-Umgebungen in Regionen des Typs US Gov die Anweisungen im Abschnitt [Konfigurieren von Azure Firewall mit ihrer App Service-Umgebung](#configuring-azure-firewall-with-your-ase) in diesem Dokument, um Azure Firewall mit ihrer App Service-Umgebung zu konfigurieren.
 
 Wenn Sie ein anderes Gerät als Azure Firewall in Regionen des Typs US Gov verwenden möchten 
 

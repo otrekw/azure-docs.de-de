@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 03/20/2020
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 51b6be8b4deffd81da6c0b714bc6afeff4b06ab2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fa30c6c2c3ecd9c9c119fee80b7ef90999e42d30
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073946"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962620"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Continuous Deployment in Azure App Service
 
@@ -23,7 +23,7 @@ Weitere Informationen zu den Quellcodeverwaltungsdiensten finden Sie unter [Erst
 
 ## <a name="authorize-azure-app-service"></a>Autorisieren von Azure App Service 
 
-Um Azure Repos zu verwenden, stellen Sie sicher, dass Ihre Azure DevOps-Organisation mit Ihrem Azure-Abonnement verknüpft ist. Weitere Informationen finden Sie unter [„Einrichten eines Azure DevOps-Dienstkontos zur Bereitstellung für eine Webanwendung“](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops).
+Um Azure Repos zu verwenden, stellen Sie sicher, dass Ihre Azure DevOps-Organisation mit Ihrem Azure-Abonnement verknüpft ist. Weitere Informationen finden Sie unter [„Einrichten eines Azure DevOps-Dienstkontos zur Bereitstellung für eine Webanwendung“](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops).
 
 Für Bitbucket oder GitHub autorisieren Sie den Azure App Service, sich mit Ihrem Repository zu verbinden. Sie müssen sich nur einmal bei einem Quellcodverwaltungsdienst autorisieren. 
 
@@ -58,7 +58,7 @@ Sie können den integrierten Kudu App Service Build-Server verwenden, um die Ber
 1. Wählen Sie auf der Seite **„Bereitstellungscenter“** Ihren autorisierten Quellcodeverwaltungdienst aus und wählen Sie **„Weiter“** . Für GitHub oder Bitbucket können Sie auch **„Konto ändern“** wählen, um das autorisierte Konto zu ändern. 
    
    > [!NOTE]
-   > Um Azure Repos zu verwenden, stellen Sie sicher, dass Ihre Azure DevOps Services-Organisation mit Ihrem Azure-Abonnement verknüpft ist. Weitere Informationen finden Sie unter [„Einrichten eines Azure DevOps-Dienstkontos zur Bereitstellung für eine Webanwendung“](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops).
+   > Um Azure Repos zu verwenden, stellen Sie sicher, dass Ihre Azure DevOps Services-Organisation mit Ihrem Azure-Abonnement verknüpft ist. Weitere Informationen finden Sie unter [„Einrichten eines Azure DevOps-Dienstkontos zur Bereitstellung für eine Webanwendung“](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops).
    
 1. Wählen Sie für GitHub oder Azure Repos auf der Seite **„Buildanbieter“** die Option **„App Service-Builddienst“** und dann **„Weiter“** . Bitbucket verwendet immer den App Service-Builddienst.
    
@@ -76,7 +76,7 @@ Sie können den integrierten Kudu App Service Build-Server verwenden, um die Ber
    - Wählen Sie für Azure Repos die **Azure DevOps-Organisation**, das **Projekt**, das **Repository** und **Branch** aus, die Sie fortlaufend nutzen möchten.
      
      > [!NOTE]
-     > Wenn Ihre Azure DevOps-Organisation nicht aufgeführt ist, stellen Sie sicher, dass sie mit Ihrem Azure-Abonnement verknüpft ist. Weitere Informationen finden Sie unter [„Einrichten eines Azure DevOps-Dienstkontos zur Bereitstellung für eine Webanwendung“](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops).
+     > Wenn Ihre Azure DevOps-Organisation nicht aufgeführt ist, stellen Sie sicher, dass sie mit Ihrem Azure-Abonnement verknüpft ist. Weitere Informationen finden Sie unter [„Einrichten eines Azure DevOps-Dienstkontos zur Bereitstellung für eine Webanwendung“](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops).
      
 1. Wählen Sie **Weiter**.
    

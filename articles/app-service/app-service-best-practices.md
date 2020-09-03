@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/01/2016
 ms.author: dariac
 ms.custom: seodec18
-ms.openlocfilehash: ded812d5d7a0440466e7284b56c90965ea00406e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a25ae41a5f4ed73148f629799ca4865d756a769
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75768485"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962450"
 ---
 # <a name="best-practices-for-azure-app-service"></a>Empfohlene Methoden für Azure App Service
 In diesem Artikel werden die empfohlenen Methoden für die Verwendung von [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)zusammengefasst. 
@@ -67,7 +67,7 @@ Die Azure App Service-Standardkonfiguration für Node.js-Apps soll den Bedürfni
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Unter [Übersicht über die Azure App Service-Diagnose](https://docs.microsoft.com/azure/app-service/overview-diagnostics) finden Sie spezifische bewährte Methoden für Ihre Ressource.
+Unter [Übersicht über die Azure App Service-Diagnose](./overview-diagnostics.md) finden Sie spezifische bewährte Methoden für Ihre Ressource.
 
 - Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer Web-App.
 - Klicken Sie im linken Navigationsbereich auf **Diagnose und Problembehandlung**, um die App Service-Diagnose zu öffnen.

@@ -3,7 +3,7 @@ title: Verwenden von verwalteten Identitäten auf einem virtuellen Azure-Compute
 description: Schrittweise Anleitungen und Beispiele für die Skriptclient-Anmeldung und den Ressourcenzugriff mit verwalteten Identitäten auf einem virtuellen Azure-Computer für Azure-Ressourcen (Dienstprinzipal).
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 058058b975116fabcbc242f46afb09dff8df08b6
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 08fe856fd43baad4189d81f7743396a71cd5de48
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87480440"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266322"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Verwenden von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer für die Anmeldung 
 
@@ -34,7 +34,7 @@ Dieser Artikel enthält PowerShell- und CLI-Skriptbeispiele für die Anmeldung m
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-Wenn Sie die Azure PowerShell- oder Azure CLI-Beispiele in diesem Artikel verwenden möchten, müssen Sie die neueste Version von [Azure PowerShell](/powershell/azure/install-az-ps) bzw. der [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) installieren. 
+Wenn Sie die Azure PowerShell- oder Azure CLI-Beispiele in diesem Artikel verwenden möchten, müssen Sie die neueste Version von [Azure PowerShell](/powershell/azure/install-az-ps) bzw. der [Azure CLI](/cli/azure/install-azure-cli) installieren. 
 
 > [!IMPORTANT]
 > - Bei allen Beispielskripts in diesem Artikel wird vorausgesetzt, dass der Befehlszeilenclient auf einem virtuellen Computer mit verwalteten Identitäten für Azure-Ressourcen ausgeführt wird. Verwenden Sie die Funktion „Verbinden“ im Azure-Portal zum Herstellen einer Remoteverbindung mit Ihrem virtuellen Computer. Weitere Informationen zur Aktivierung von verwalteten Identitäten für Azure-Ressourcen auf einer VM finden Sie unter [Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einer VM über das Azure-Portal](qs-configure-portal-windows-vm.md) oder in einem der verwandten Artikel (PowerShell, CLI, Vorlage oder Azure SDK). 
@@ -100,9 +100,3 @@ Wenn einer dieser Punkte nicht zutrifft, müssen Sie die verwalteten Identitäte
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zum Aktivieren verwalteter Identitäten für Azure-Ressourcen auf einer Azure-VM finden Sie unter [Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer mit PowerShell](qs-configure-powershell-windows-vm.md) und [Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer mithilfe der Azure-Befehlszeilenschnittstelle](qs-configure-cli-windows-vm.md)
-
-
-
-
-
-

@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 01/08/2020
+ms.date: 08/28/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 802df45e7434fd0cb425137964880a281f885ad8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a91d0e11c44657a2d4cdd267ffa6490ca89532a9
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611185"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069407"
 ---
 # <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Bereitstellen und Konfigurieren von Azure Firewall in einem Hybridnetzwerk mit Azure PowerShell
 
@@ -31,17 +31,16 @@ Für diesen Artikel erstellen Sie drei virtuelle Netzwerke:
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
-> [!div class="checklist"]
-> * Deklarieren der Variablen
-> * Erstellen des virtuellen Firewall-Hub-Netzwerks
-> * Erstellen des virtuellen Spoke-Netzwerks
-> * Erstellen des lokalen virtuellen Netzwerks
-> * Konfigurieren und Bereitstellen der Firewall
-> * Erstellen und Verbinden der VPN-Gateways
-> * Durchführen des Peerings für die virtuellen Hub- und Spoke-Netzwerke
-> * Erstellen der Routen
-> * Erstellen der virtuellen Computer
-> * Testen der Firewall
+* Deklarieren der Variablen
+* Erstellen des virtuellen Firewall-Hub-Netzwerks
+* Erstellen des virtuellen Spoke-Netzwerks
+* Erstellen des lokalen virtuellen Netzwerks
+* Konfigurieren und Bereitstellen der Firewall
+* Erstellen und Verbinden der VPN-Gateways
+* Durchführen des Peerings für die virtuellen Hub- und Spoke-Netzwerke
+* Erstellen der Routen
+* Erstellen der virtuellen Computer
+* Testen der Firewall
 
 Wenn Sie das Azure-Portal verwenden möchten, statt dieses Tutorial durchzuarbeiten, lesen Sie [Tutorial: Bereitstellen und Konfigurieren von Azure Firewall in einem Hybridnetzwerk über das Azure-Portal](tutorial-hybrid-portal.md)
 

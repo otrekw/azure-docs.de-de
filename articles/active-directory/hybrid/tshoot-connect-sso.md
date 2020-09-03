@@ -13,12 +13,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5b35815e42b6c9fa5cbd874c0a58f5285c99539
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6afba520db399cc4eb99c8716540886cc88f6ae7
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85355912"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89275877"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Problembehandlung beim nahtlosen einmaligen Anmelden mit Azure Active Directory
 
@@ -74,9 +74,9 @@ Navigieren Sie im [Azure Active Directory Admin Center](https://aad.portal.azure
 Verwenden Sie die folgende Checkliste zur Behebung von Problemen in Bezug auf die nahtlose einmalige Anmeldung:
 
 - Überprüfen Sie, ob die Funktion zum nahtlosen einmaligen Anmelden in Azure AD Connect aktiviert ist. Wenn Sie die Funktion (z.B. aufgrund eines blockierten Ports) nicht aktivieren können, vergewissern Sie sich, dass alle [Voraussetzungen](how-to-connect-sso-quick-start.md#step-1-check-the-prerequisites) erfüllt sind.
-- Wenn Sie für Ihren Mandanten sowohl [Azure AD Join](../active-directory-azureadjoin-overview.md) als auch nahtlose einmalige Anmeldung aktiviert haben, vergewissern Sie sich, dass das Problem nicht bei Azure AD Join liegt. Einmaliges Anmelden von Azure AD Join hat Vorrang vor der nahtlosen einmaligen Anmeldung, wenn das Gerät sowohl bei Azure AD registriert als auch Mitglied einer Domäne ist. Bei einmaligem Anmelden von Azure AD Join wird dem Benutzer eine Anmeldekachel mit dem Text „Mit Windows verbunden“ angezeigt.
+- Wenn Sie für Ihren Mandanten sowohl [Azure AD Join](../devices/overview.md) als auch nahtlose einmalige Anmeldung aktiviert haben, vergewissern Sie sich, dass das Problem nicht bei Azure AD Join liegt. Einmaliges Anmelden von Azure AD Join hat Vorrang vor der nahtlosen einmaligen Anmeldung, wenn das Gerät sowohl bei Azure AD registriert als auch Mitglied einer Domäne ist. Bei einmaligem Anmelden von Azure AD Join wird dem Benutzer eine Anmeldekachel mit dem Text „Mit Windows verbunden“ angezeigt.
 - Stellen Sie sicher, dass die Azure AD-URL (`https://autologon.microsoftazuread-sso.com`) Teil der Zoneneinstellung „Intranet“ des Benutzers ist.
-- Stellen Sie sicher, dass das Unternehmensgerät mit der Active Directory-Domäne verknüpft ist. Das Gerät muss _nicht_[In Azure AD eingebunden](../active-directory-azureadjoin-overview.md) sein, damit das nahtlose einmalige Anmelden funktioniert.
+- Stellen Sie sicher, dass das Unternehmensgerät mit der Active Directory-Domäne verknüpft ist. Das Gerät muss _nicht_[In Azure AD eingebunden](../devices/overview.md) sein, damit das nahtlose einmalige Anmelden funktioniert.
 - Stellen Sie sicher, dass der Benutzer über ein Active Directory-Domänenkonto beim Gerät angemeldet ist.
 - Stellen Sie sicher, dass das Benutzerkonto aus einer Active Directory-Gesamtstruktur stammt, in der nahtloses einmaliges Anmelden eingerichtet wurde.
 - Stellen Sie sicher, dass das Gerät mit dem Unternehmensnetzwerk verbunden ist.
@@ -106,7 +106,7 @@ Wenn die Problembehandlung nicht hilft, können Sie die Funktion auf Ihrem Manda
 
 ### <a name="step-1-import-the-seamless-sso-powershell-module"></a>Schritt 1: Importieren Sie das PowerShell-Modul „Nahtlose SSO“
 
-1. Laden Sie zuerst [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview) herunter, und installieren Sie die Software.
+1. Laden Sie zuerst [Azure AD PowerShell](/powershell/azure/active-directory/overview) herunter, und installieren Sie die Software.
 2. Navigieren Sie zum Ordner `%programfiles%\Microsoft Azure Active Directory Connect`.
 3. Importieren Sie das PowerShell-Modul für nahtloses SSO mit folgendem Befehl: `Import-Module .\AzureADSSO.psd1`.
 

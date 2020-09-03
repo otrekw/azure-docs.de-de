@@ -12,12 +12,12 @@ ms.date: 08/07/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b0b0a98e80fb7f343411b49ff2ccd11046bcdc5
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: d790c7c4c8d184999ff073e97613d663988c34e7
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88052928"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89275945"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verlauf der Versionsveröffentlichungen
 Das Azure Active Directory-Team (Azure AD) aktualisiert Azure AD Connect regelmäßig mit neuen Features und Funktionen. Nicht alle Erweiterungen gelten für alle Benutzergruppen.
@@ -48,7 +48,7 @@ Nicht für alle Releases von Azure AD Connect wird das automatische Upgrade zur 
 >
 >Wenn Sie Azure AD Connect für die Synchronisierung aktiviert haben und eine der älteren Versionen ausführen, erhalten Sie in Kürze automatische Integritätsbenachrichtigungen, die Sie vor anstehenden Einstellungen warnen.
 >
->In [diesem Artikel](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version) erfahren Sie mehr über das Upgrade von Azure AD Connect auf die aktuelle Version.
+>In [diesem Artikel](./how-to-upgrade-previous-version.md) erfahren Sie mehr über das Upgrade von Azure AD Connect auf die aktuelle Version.
 >
 >Informationen zum Versionsverlauf für veraltete Versionen finden Sie unter [Azure AD Connect: Archiv des Versionsfreigabeverlaufs](reference-connect-version-history-archive.md).
 
@@ -74,7 +74,7 @@ Dies ist ein Release zur Fehlerbehebung. Dieses Release enthält keine funktiona
 ### <a name="functional-changes"></a>Funktionale Änderungen
 Dieses Release enthält eine öffentliche Vorschau der Funktion zum Exportieren der Konfiguration eines vorhandenen Azure AD Connect-Servers in eine JSON-Datei, die beim Installieren eines neuen Azure AD Connect-Servers verwendet werden kann, um eine Kopie des ursprünglichen Servers zu erstellen.
 
-Eine detaillierte Beschreibung dieser Funktion finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-import-export-config).
+Eine detaillierte Beschreibung dieser Funktion finden Sie in [diesem Artikel](./how-to-connect-import-export-config.md).
 
 ### <a name="fixed-issues"></a>Behobene Probleme
 - Es wurde ein Fehler behoben, der beim Upgrade zu einer falschen Warnung in Bezug auf die Größe der lokalen Datenbank in den lokalisierten Builds führte.

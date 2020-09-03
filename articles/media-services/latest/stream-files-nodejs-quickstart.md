@@ -3,7 +3,7 @@ title: 'Streamen von Videodateien mit Azure Media Services: Node.js | Microsoft-
 description: Führen Sie die in diesem Tutorial beschriebenen Schritte aus, um ein neues Azure Media Services-Konto zu erstellen, eine Datei zu codieren und in Azure Media Player zu streamen.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 keywords: azure media services, streamen
@@ -11,16 +11,18 @@ ms.service: media-services
 ms.workload: media
 ms.topic: tutorial
 ms.custom: mvc, devx-track-javascript
-ms.date: 08/19/2019
-ms.author: juliako
-ms.openlocfilehash: 1c96c538826de696de531aff79ce601bc01a239d
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 901287a82ece873a572d7773dd53f80e1e8af716
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87414070"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267393"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---nodejs"></a>Tutorial: Codieren einer Remotedatei anhand einer URL und Streamen des Videos – Node.js
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Dieses Tutorial zeigt, wie einfach es ist, Videos zu codieren und mit deren Streaming für eine Vielzahl von Browsern und Geräten mit Azure Media Services zu beginnen. Ein Eingabeinhalt kann über HTTPS-URLs, SAS-URLs oder Pfade zu Dateien in Azure Blob Storage angegeben werden.
 

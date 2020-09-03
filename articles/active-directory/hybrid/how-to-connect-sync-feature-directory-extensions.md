@@ -16,15 +16,15 @@ ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d64bfe66f5fb871ff9f85a5d58d128ac44643846
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1b013c4edcaceeea585494bd8924ccea08aa1d37
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019760"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277050"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect Sync: Verzeichniserweiterungen
-Sie können Verzeichniserweiterungen verwenden, um das Schema in Azure Active Directory (Azure AD) um Ihre eigenen Attribute aus dem lokalen Active Directory zu erweitern. Dank dieses Features können Sie Branchen-Apps erstellen, indem Sie Attribute nutzen, die Sie weiterhin lokal verwalten. Diese Attribute können über [Erweiterungen](https://docs.microsoft.com/graph/extensibility-overview
+Sie können Verzeichniserweiterungen verwenden, um das Schema in Azure Active Directory (Azure AD) um Ihre eigenen Attribute aus dem lokalen Active Directory zu erweitern. Dank dieses Features können Sie Branchen-Apps erstellen, indem Sie Attribute nutzen, die Sie weiterhin lokal verwalten. Diese Attribute können über [Erweiterungen](/graph/extensibility-overview
 ) genutzt werden. Sie können die verfügbaren Attribute mithilfe von [Microsoft Graph-Explorer](https://developer.microsoft.com/graph/graph-explorer) anzeigen. Sie können diese Funktion auch zum Erstellen dynamischer Gruppen in Azure AD verwenden.
 
 Derzeit können diese Attribute von keiner Office 365-Workload genutzt werden.
@@ -69,7 +69,7 @@ Diese Attribute sind jetzt in [Microsoft Graph-Explorer](https://developer.micro
 >[!NOTE]
 > In der Microsoft Graph-API müssen Sie die zurückzugebenden Attribute anfordern. Wählen Sie die Attribute wie folgt explizit aus: `https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division`.
 >
-> Weitere Informationen finden Sie unter [Microsoft Graph: Verwenden von Abfrageparametern](https://developer.microsoft.com/graph/docs/concepts/query_parameters#select-parameter).
+> Weitere Informationen finden Sie unter [Microsoft Graph: Verwenden von Abfrageparametern](/graph/query-parameters#select-parameter).
 
 ## <a name="use-the-attributes-in-dynamic-groups"></a>Verwenden der Attribute in dynamischen Gruppen
 
