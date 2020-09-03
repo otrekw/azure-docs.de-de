@@ -2,7 +2,7 @@
 title: 'Schnellstart: Erstellen eines Profils für Hochverfügbarkeit von Anwendungen: Azure PowerShell – Azure Traffic Manager'
 description: In diesem Schnellstartartikel wird beschrieben, wie Sie ein Traffic Manager-Profil erstellen, um eine hoch verfügbare Webanwendung zu entwickeln.
 services: traffic-manager
-author: rohinkoul
+author: duongau
 mnager: twooley
 Customer intent: As an IT admin, I want to direct user traffic to ensure high availability of web applications.
 ms.service: traffic-manager
@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/04/2019
-ms.author: rohink
-ms.openlocfilehash: 0ab7392b4fa6e248d51392706fedaed156344a99
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 08/25/2020
+ms.author: duau
+ms.openlocfilehash: f3ecdfb03a6e6d1aab355edf7c370b29240e0543
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76934822"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929515"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-powershell"></a>Schnellstart: Erstellen eines Traffic Manager-Profils für eine hoch verfügbare Webanwendung mit Azure PowerShell
 

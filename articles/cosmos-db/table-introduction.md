@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-table
 ms.topic: overview
 ms.date: 07/26/2019
 ms.author: sngun
-ms.openlocfilehash: 91a6ae308faf31b3d3eb0c9f287dd5bd791f628e
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 6cf9dddbfa6eb6f754c529981307f8ee80cfe7d1
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85557531"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376994"
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Einführung in Azure Cosmos DB: Tabelle-API
 
@@ -36,7 +36,7 @@ Wenn Sie derzeit Azure Table Storage verwenden, bietet Ihnen der Wechsel zur Azu
 | --- | --- | --- |
 | Latency | Schnell, aber keine Obergrenzen für die Wartezeit. | Wartezeit im einstelligen Millisekundenbereich für Lese- und Schreibvorgänge, unterstützt durch weniger als 10 ms Wartezeit bei Lese- und Schreibvorgängen im 99. Perzentil, bei beliebiger Skalierung weltweit |
 | Throughput | Variables Durchsatzmodell. Tabellen verfügen über eine maximale Skalierbarkeit von 20.000 Vorgängen/s. | Hochgradig skalierbar mit einem [dedizierten reservierten Durchsatz pro Tabelle](request-units.md), der durch SLAs abgedeckt ist. Konten haben keine Obergrenze für den Durchsatz und unterstützen pro Tabelle mehr als 10 Millionen Vorgänge/s. |
-| Globale Verteilung | Einzelne Region mit einer optionalen sekundären Leseregion für Hochverfügbarkeit. Es kann kein Failover initiiert werden. | [Globale, sofort einsatzbereite Verteilung](distribute-data-globally.md) für eine beliebige Anzahl von Regionen. Unterstützung von [automatischen und manuellen Failovern](high-availability.md) zu jeder Zeit und an jedem Ort der Welt. Multimasterfunktion, damit jede Region Schreibvorgänge akzeptieren kann |
+| Globale Verteilung | Einzelne Region mit einer optionalen sekundären Leseregion für Hochverfügbarkeit. | [Globale, sofort einsatzbereite Verteilung](distribute-data-globally.md) für eine beliebige Anzahl von Regionen. Unterstützung von [automatischen und manuellen Failovern](high-availability.md) zu jeder Zeit und an jedem Ort der Welt. Multimasterfunktion, damit jede Region Schreibvorgänge akzeptieren kann |
 | Indizierung | Nur primärer Index für PartitionKey und RowKey. Keine sekundären Indizes. | Standardmäßig automatische und vollständige Indizierung für alle Eigenschaften, keine Indexverwaltung. |
 | Abfrage | Abfrageausführung verwendet Index für Primärschlüssel, andernfalls die Suche. | Abfragen können die automatische Indizierung für Eigenschaften für schnelle Abfragezeiten nutzen. |
 | Konsistenz | „Stark“ in der primären Region. „Möglich“ in der sekundären Region. | [Fünf klar definierte Konsistenzebenen](consistency-levels.md) zur Abstimmung von Verfügbarkeit, Latenz, Durchsatz und Konsistenz basierend auf Ihren Anwendungsanforderungen. |

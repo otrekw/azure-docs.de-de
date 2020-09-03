@@ -3,12 +3,12 @@ title: 'Schnellstart: Erstellen einer Blaupause mit Azure CLI'
 description: In dieser Schnellstartanleitung verwenden Sie Azure Blueprint, um Artefakte mithilfe der Azure CLI zu erstellen, zu definieren und bereitzustellen.
 ms.date: 06/02/2020
 ms.topic: quickstart
-ms.openlocfilehash: 30a450fc7eab55424da7ce971ad234cbf2248b30
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: c64723befbe3cb8d811179e7062df18606749783
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85969667"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051541"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-azure-cli"></a>Schnellstart: Definieren und Zuweisen einer Azure-Blaupause mit der Azure CLI
 
@@ -25,7 +25,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 Damit Azure CLI Blaupausendefinitionen und -zuweisungen verwalten kann, muss die Erweiterung hinzugefügt werden.
 Diese Erweiterung funktioniert überall, wo die Azure-Befehlszeilenschnittstelle verwendet werden kann, einschließlich [bash unter Windows 10](/windows/wsl/install-win10), [Cloud Shell](https://shell.azure.com) (sowohl eigenständig als auch innerhalb des Portals), [Azure CLI-Docker-Image](https://hub.docker.com/r/microsoft/azure-cli/) oder lokaler Installation.
 
-1. Vergewissern Sie sich, dass die neueste Azure CLI (mindestens **2.0.76**) installiert ist. Falls es noch nicht installiert ist, befolgen Sie [diese Anweisungen](/cli/azure/install-azure-cli-windows?view=azure-cli-latest).
+1. Vergewissern Sie sich, dass die neueste Azure CLI (mindestens **2.0.76**) installiert ist. Falls es noch nicht installiert ist, befolgen Sie [diese Anweisungen](/cli/azure/install-azure-cli-windows).
 
 1. Importieren Sie sie mit folgendem Befehl in die Azure CLI-Umgebung Ihrer Wahl:
 

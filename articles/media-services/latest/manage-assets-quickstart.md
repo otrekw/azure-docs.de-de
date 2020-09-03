@@ -2,18 +2,20 @@
 title: 'Hochladen, Codieren und Streamen von Inhalten mithilfe des Portals: Azure'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie das Portal verwenden, um Inhalte mit Azure Media Services hochzuladen, zu codieren und zu streamen.
 ms.topic: quickstart
-ms.date: 06/08/2020
+ms.date: 08/31/2020
 author: IngridAtMicrosoft
 ms.author: inhenkel
 manager: femila
-ms.openlocfilehash: 7aebc6e52ec7fac97c6f1e8fb9b30cc63b74e860
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 16a5793f9848a6e16856728877727dbefc3e0805
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605667"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89264928"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>Schnellstart: Hochladen, Codieren und Streamen von Inhalten mithilfe des Portals
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie das Azure-Portal verwenden, um Inhalte mit Azure Media Services hochzuladen, zu codieren und zu streamen.
 

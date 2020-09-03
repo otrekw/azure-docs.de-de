@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/23/2020
 ms.author: magoedte
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 37a619fe3279d1cb03763b14c3dfc9e315d850b9
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 441e53123512a9611f9568edccfd40a3e17c981f
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685642"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055429"
 ---
 # <a name="quickstart-create-an-automation-account-by-using-arm-template"></a>Schnellstart: Erstellen eines Automation-Kontos mithilfe einer ARM-Vorlage
 
@@ -60,7 +60,7 @@ Die folgende Tabelle enthält die API-Versionen für die Ressourcen, die in dies
 |:---|:---|:---|
 | [Arbeitsbereich](/azure/templates/microsoft.operationalinsights/workspaces) | workspaces | 2020-03-01-preview |
 | [Automation-Konto](/azure/templates/microsoft.automation/automationaccounts) | automation | 2020-01-13-preview |
-| [Mit dem Arbeitsbereich verknüpfte Dienste](/azure/templates/microsoft.operationalinsights/workspaces/linkedservices) | Arbeitsbereiche | 2020-03-01-preview |
+| [Mit dem Arbeitsbereich verknüpfte Dienste](/azure/templates/microsoft.operationalinsights/workspaces/linkedservices) | workspaces | 2020-03-01-preview |
 
 ### <a name="before-you-use-the-template"></a>Vor der Verwendung der Vorlage
 

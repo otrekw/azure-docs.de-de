@@ -5,12 +5,12 @@ keywords: Azure, künstliche Intelligenz, KI, Verarbeitung natürlicher Sprache,
 ms.topic: overview
 ms.date: 08/07/2020
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 22fe99e1552a9612adfbc455d60852f1591a1a54
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 98d801f6a34feb40d56215f8b6257a68ec628e10
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752149"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320051"
 ---
 # <a name="what-is-language-understanding-luis"></a>Worum handelt es sich bei Language Understanding (LUIS)?
 
@@ -64,7 +64,7 @@ Entwerfen Sie Ihr Modell mit Kategorien von Benutzerabsichten, die als **[Absich
 |`When does your store open?`|GeschäftszeitenUndStandorte|öffnen|
 |`Schedule a meeting at 1pm with Bob in Distribution`|BesprechungPlanen|13 Uhr, Robert|
 
-Erstellen Sie das Modell mit den [Dokumenterstellungs](https://go.microsoft.com/fwlink/?linkid=2092087)-APIs, dem [**LUIS-Portal**](https://www.luis.ai) oder mit beidem. Erfahren Sie mehr über das Erstellen mit dem [Portal](get-started-portal-build-app.md) und den [SDK-Clientbibliotheken](quickstart-sdk.md).
+Erstellen Sie das Modell mit den [Dokumenterstellungs](https://go.microsoft.com/fwlink/?linkid=2092087)-APIs, dem [**LUIS-Portal**](https://www.luis.ai) oder mit beidem. Erfahren Sie mehr über das Erstellen mit dem [Portal](get-started-portal-build-app.md) und den [SDK-Clientbibliotheken](azure-sdk-quickstart.md).
 
 ## <a name="step-2-get-the-query-prediction"></a>Schritt 2: Abrufen der Abfragevorhersage
 
@@ -126,7 +126,7 @@ LUIS stellt Funktionen der Textanalyse als Teil Ihrer vorhandenen LUIS-Ressource
 
 ## <a name="learn-with-the-quickstarts"></a>Lernen mit den Schnellstartanleitungen
 
-Erfahren Sie mit praktischen Schnellstarts, in denen das [Portal](get-started-portal-build-app.md) und die [SDK-Clientbibliotheken](quickstart-sdk.md) verwendet werden, mehr über LUIS.
+Erfahren Sie mit praktischen Schnellstarts, in denen das [Portal](get-started-portal-build-app.md) und die [SDK-Clientbibliotheken](azure-sdk-quickstart.md) verwendet werden, mehr über LUIS.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

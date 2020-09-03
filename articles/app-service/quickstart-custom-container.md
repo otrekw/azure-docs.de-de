@@ -7,12 +7,12 @@ ms.date: 08/28/2019
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 2aed6a2fea38f10a2e06ea51edb7fb529c8a2dde
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 33eaf6274f2da09ab98a21e6028b0103df817744
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212519"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961362"
 ---
 # <a name="run-a-custom-container-in-azure"></a>Ausführen eines benutzerdefinierten Containers in Azure
 
@@ -103,7 +103,7 @@ Führen Sie zum Erstellen einer ASP.NET-Web-App die folgenden Schritte aus:
 
    ![Konfigurieren Ihrer Web-App für Container](media/quickstart-custom-container/configure-web-app-continer.png)
 
-    Wenn Sie an anderer Stelle, etwa in [Azure Container Registry](/azure/container-registry/) oder einem anderen privaten Repository, ein benutzerdefiniertes Image für Ihre Webanwendung besitzen, können Sie es hier konfigurieren.
+    Wenn Sie an anderer Stelle, etwa in [Azure Container Registry](../container-registry/index.yml) oder einem anderen privaten Repository, ein benutzerdefiniertes Image für Ihre Webanwendung besitzen, können Sie es hier konfigurieren.
 
 1. Wählen Sie **Überprüfen und erstellen** > **Erstellen** aus, und warten Sie, bis Azure die erforderlichen Ressourcen erstellt hat.
 
@@ -173,8 +173,8 @@ Die gestreamten Protokolle sehen wie folgt aus:
 
 Sie können für die Ausführung Ihrer App auch ein anderes benutzerdefiniertes Docker-Image verwenden. Sie müssen jedoch das passende [übergeordnete Image (Basisimage)](https://docs.docker.com/develop/develop-images/baseimages/) für das gewünschte Framework auswählen:
 
-- Verwenden Sie zum Bereitstellen von .NET Framework-Apps ein übergeordnetes Image, das auf dem [LTSC](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc)-Release (Long-Term Servicing Channel, langfristiger Wartungskanal) von Windows Server Core 2019 basiert. 
-- Verwenden Sie zum Bereitstellen von .NET Core-Apps ein übergeordnetes Image, das auf dem Release [Semi-Annual Servicing Channel (SAC)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) von Windows Server Nano 1809 basiert. 
+- Verwenden Sie zum Bereitstellen von .NET Framework-Apps ein übergeordnetes Image, das auf dem [LTSC](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc)-Release (Long-Term Servicing Channel, langfristiger Wartungskanal) von Windows Server Core 2019 basiert. 
+- Verwenden Sie zum Bereitstellen von .NET Core-Apps ein übergeordnetes Image, das auf dem Release [Semi-Annual Servicing Channel (SAC)](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) von Windows Server Nano 1809 basiert. 
 
 Während des App-Starts dauert das Herunterladen eines übergeordneten Images eine Weile. Sie können die Startzeit jedoch reduzieren, indem Sie eins der folgenden übergeordneten Images verwenden, die bereits in Azure App Service zwischengespeichert sind:
 
@@ -188,7 +188,7 @@ Während des App-Starts dauert das Herunterladen eines übergeordneten Images ei
 ::: zone-end  
 
 ::: zone pivot="container-linux"
-Bei App Service für Linux werden vordefinierte Anwendungsstapel unter Linux mit Unterstützung für verschiedene Sprachen bereitgestellt, z. B. .NET, PHP, Node.js und andere. Sie können auch ein benutzerdefiniertes Docker-Image verwenden, um Ihre Web-App in einem Anwendungsstapel auszuführen, der nicht bereits in Azure definiert ist. In dieser Schnellstartanleitung erfahren Sie, wie Sie ein Image aus einer [Azure Container Registry](/azure/container-registry)-Instanz (ACR) in App Service bereitstellen.
+Bei App Service für Linux werden vordefinierte Anwendungsstapel unter Linux mit Unterstützung für verschiedene Sprachen bereitgestellt, z. B. .NET, PHP, Node.js und andere. Sie können auch ein benutzerdefiniertes Docker-Image verwenden, um Ihre Web-App in einem Anwendungsstapel auszuführen, der nicht bereits in Azure definiert ist. In dieser Schnellstartanleitung erfahren Sie, wie Sie ein Image aus einer [Azure Container Registry](../container-registry/index.yml)-Instanz (ACR) in App Service bereitstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -200,7 +200,7 @@ Bei App Service für Linux werden vordefinierte Anwendungsstapel unter Linux mit
 
 ## <a name="create-an-image"></a>Erstellen eines Images
 
-Für diesen Schnellstart benötigen Sie ein geeignetes Web-App-Image, das in einer [Azure Container Registry](/azure/container-registry)-Instanz gespeichert ist. Führen Sie die Schritte in [Schnellstart: Erstellen einer privaten Containerregistrierung im Azure-Portal](/azure/container-registry/container-registry-get-started-portal) aus, verwenden Sie aber das `mcr.microsoft.com/azuredocs/go`-Image anstelle des `hello-world`-Images. Als Referenz finden Sie die [Dockerfile-Beispieldatei im Repository mit Azure-Beispielen](https://github.com/Azure-Samples/go-docs-hello-world).
+Für diesen Schnellstart benötigen Sie ein geeignetes Web-App-Image, das in einer [Azure Container Registry](../container-registry/index.yml)-Instanz gespeichert ist. Führen Sie die Schritte in [Schnellstart: Erstellen einer privaten Containerregistrierung im Azure-Portal](../container-registry/container-registry-get-started-portal.md) aus, verwenden Sie aber das `mcr.microsoft.com/azuredocs/go`-Image anstelle des `hello-world`-Images. Als Referenz finden Sie die [Dockerfile-Beispieldatei im Repository mit Azure-Beispielen](https://github.com/Azure-Samples/go-docs-hello-world).
 
 > [!IMPORTANT]
 > Stellen Sie sicher, dass Sie beim Erstellen der Containerregistrierung die Option **Administratorbenutzer** auf **Aktivieren** festlegen. Sie können die Option auch im Azure-Portal im Abschnitt **Zugriffsschlüssel** Ihrer Registrierungsseite festlegen. Diese Einstellung ist für den App Service-Zugriff erforderlich.
@@ -261,4 +261,4 @@ Sehen Sie sich als Nächstes die anderen Azure-Erweiterungen an.
 
 Oder installieren Sie das [Azure-Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack)-Erweiterungspaket, um alle Erweiterungen auf einmal erhalten.
 
-::: zone-end  
+::: zone-end

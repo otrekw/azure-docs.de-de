@@ -9,23 +9,24 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 08/17/2020
-ms.openlocfilehash: b74deaecd1a71fec14e31f0a6aca2fed34361d76
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: f803532e7d08d0de21541cb5d1b52639b623bb90
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506004"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078298"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-powershell-using-rest-apis"></a>Schnellstart: Erstellen eines Azure Cognitive Search-Index in PowerShell mithilfe von REST-APIs
 > [!div class="op_single_selector"]
-> * [PowerShell (REST)](search-create-index-rest-api.md)
-> * [C#](search-create-index-dotnet.md)
+> * [PowerShell (REST)]()
+> * [C#](./search-get-started-dotnet.md)
 > * [Postman (REST)](search-get-started-postman.md)
 > * [Python](search-get-started-python.md)
 > * [Portal](search-get-started-portal.md)
 > 
 
-Dieser Artikel führt Sie durch das Erstellen, Laden und Abfragen eines Azure Cognitive Search-Index mit PowerShell und den [Azure Cognitive Search-REST-APIs](https://docs.microsoft.com/rest/api/searchservice/). In diesem Artikel wird erläutert, wie Sie PowerShell-Befehle interaktiv ausführen können. Alternativ können Sie ein [PowerShell-Skript herunterladen und ausführen](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart), das die gleichen Vorgänge ausführt.
+Dieser Artikel führt Sie durch das Erstellen, Laden und Abfragen eines Azure Cognitive Search-Index mit PowerShell und den [Azure Cognitive Search-REST-APIs](/rest/api/searchservice/). In diesem Artikel wird erläutert, wie Sie PowerShell-Befehle interaktiv ausführen können. Alternativ können Sie ein [PowerShell-Skript herunterladen und ausführen](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart), das die gleichen Vorgänge ausführt.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -33,7 +34,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Für diesen Schnellstart sind die folgenden Dienste und Tools erforderlich. 
 
-+ [PowerShell 5.1 oder höher](https://github.com/PowerShell/PowerShell) mit [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) für sequenzielle und interaktive Schritte.
++ [PowerShell 5.1 oder höher](https://github.com/PowerShell/PowerShell) mit [Invoke-RestMethod](/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) für sequenzielle und interaktive Schritte.
 
 + [Erstellen Sie einen Dienst für die kognitive Azure-Suche](search-create-service-portal.md), oder [suchen Sie nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) in Ihrem aktuellen Abonnement. Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden. 
 
@@ -85,7 +86,7 @@ Für alle an Ihren Dienst gesendeten Anforderungen ist ein API-Schlüssel erford
 
 ## <a name="1---create-an-index"></a>1\. Erstellen eines Index
 
-Sofern Sie nicht das Portal verwenden, muss im Dienst ein Index vorhanden sein, bevor Sie Daten laden können. In diesem Schritt wird der Index definiert und per Pushvorgang an den Dienst übertragen. Für diesen Schritt wird [Index erstellen (REST-API)](https://docs.microsoft.com/rest/api/searchservice/create-index) verwendet.
+Sofern Sie nicht das Portal verwenden, muss im Dienst ein Index vorhanden sein, bevor Sie Daten laden können. In diesem Schritt wird der Index definiert und per Pushvorgang an den Dienst übertragen. Für diesen Schritt wird [Index erstellen (REST-API)](/rest/api/searchservice/create-index) verwendet.
 
 Erforderliche Elemente eines Index sind beispielsweise ein Name und eine Feldsammlung. Mit der Feldsammlung wird die Struktur eines *Dokuments* definiert. Jedes Feld verfügt über Name, Typ und Attribute zur Bestimmung der Nutzung (z. B. Volltextsuche, Filterbarkeit oder Abrufbarkeit in Suchergebnissen). In einem Index muss eines der Felder vom Typ `Edm.String` als *Schlüssel* für die Dokumentidentität angegeben werden.
 
@@ -179,7 +180,7 @@ Dieser Index trägt den Namen „hotels-quickstart“ und hat die unten gezeigte
 
 ## <a name="2---load-documents"></a>2\. Laden von Dokumenten
 
-Senden Sie eine HTTP POST-Anforderung an den URL-Endpunkt Ihres Index, um Dokumente per Pushvorgang zu übertragen. Die REST-API für diese Aufgabe ist [Hinzufügen, Aktualisieren oder Löschen von Dokumenten](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
+Senden Sie eine HTTP POST-Anforderung an den URL-Endpunkt Ihres Index, um Dokumente per Pushvorgang zu übertragen. Die REST-API für diese Aufgabe ist [Hinzufügen, Aktualisieren oder Löschen von Dokumenten](/rest/api/searchservice/addupdate-or-delete-documents).
 
 1. Fügen Sie dieses Beispiel in PowerShell ein, um ein **$body**-Objekt mit den hochzuladenden Dokumenten zu erstellen. 
 
@@ -281,7 +282,7 @@ Senden Sie eine HTTP POST-Anforderung an den URL-Endpunkt Ihres Index, um Dokume
     ```powershell
     Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $body | ConvertTo-Json
     ```
-    Die Ergebnisse sollten in etwa dem folgenden Beispiel entsprechen. Der [Statuscode 201](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes) sollte angezeigt werden.
+    Die Ergebnisse sollten in etwa dem folgenden Beispiel entsprechen. Der [Statuscode 201](/rest/api/searchservice/HTTP-status-codes) sollte angezeigt werden.
 
     ```
     {
@@ -317,7 +318,7 @@ Senden Sie eine HTTP POST-Anforderung an den URL-Endpunkt Ihres Index, um Dokume
 
 ## <a name="3---search-an-index"></a>3\. Durchsuchen eines Index
 
-In diesem Schritt wird beschrieben, wie Sie einen Index mit der [API zum Durchsuchen von Dokumenten](https://docs.microsoft.com/rest/api/searchservice/search-documents) abfragen.
+In diesem Schritt wird beschrieben, wie Sie einen Index mit der [API zum Durchsuchen von Dokumenten](/rest/api/searchservice/search-documents) abfragen.
 
 Verwenden Sie bei der Suche mit „$urls“ unbedingt einfache Anführungszeichen. Abfragezeichenketten enthalten das Zeichen **$** , und Sie können das Escapezeichen weglassen, wenn die gesamte Zeichenkette in einfache Anführungszeichen eingeschlossen ist.
 

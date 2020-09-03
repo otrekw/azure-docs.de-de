@@ -4,23 +4,25 @@ titleSuffix: Azure Media Services
 description: Informationen zum Filtern, Sortieren und Paginieren von Azure Media Services v3-Entitäten.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
-ms.date: 01/21/2020
-ms.author: juliako
-ms.custom: seodec18
-ms.openlocfilehash: a9f9463cd1cac49e36ea52cafaf4d07f4e709ca7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: overview
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 9a8cff3685cdaad011332adf58dc76f74976cd44
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053261"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300186"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Filtern, Sortieren und Paginieren von Media Services-Entitäten
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 In diesem Thema werden die OData-Abfrageoptionen und die Paginierungsunterstützung behandelt, die beim Auflisten von Azure Media Services v3-Entitäten zur Verfügung stehen.
 

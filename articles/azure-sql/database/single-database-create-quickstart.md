@@ -11,18 +11,18 @@ author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein, vanto
 ms.date: 04/19/2020
-ms.openlocfilehash: 20f8a08cfe31534abe24c7af1055e0945e021643
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 6572f2e71b794f9f147278970b3f5f29fceb29d7
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86081586"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962688"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>Schnellstart: Erstellen einer Azure SQL-Einzeldatenbank
 
 In dieser Schnellstartanleitung verwenden Sie das Azure-Portal, ein PowerShell-Skript oder ein Azure CLI-Skript, um eine Einzeldatenbank in Azure SQL-Datenbank zu erstellen. Anschließend fragen Sie die Datenbank mit dem **Abfrage-Editor** im Azure-Portal ab.
 
-Eine [Einzeldatenbank](single-database-overview.md) ist die schnellste und einfachste Option für Azure SQL-Datenbank. Sie verwalten eine Einzeldatenbank auf einem [Server](logical-servers.md), der sich in einer [Azure-Ressourcengruppe](../../active-directory-b2c/overview.md) in einer angegebenen Region befindet. In dieser Schnellstartanleitung erstellen Sie eine neue Ressourcengruppe und einen Server für die neue Datenbank.
+Eine [Einzeldatenbank](single-database-overview.md) ist die schnellste und einfachste Option für Azure SQL-Datenbank. Sie verwalten eine Einzeldatenbank auf einem [Server](logical-servers.md), der sich in einer [Azure-Ressourcengruppe](../../azure-resource-manager/management/manage-resource-groups-portal.md) in einer angegebenen Region befindet. In dieser Schnellstartanleitung erstellen Sie eine neue Ressourcengruppe und einen Server für die neue Datenbank.
 
 Sie können eine Einzeldatenbank auf der *bereitgestellten* oder der *serverlosen* Computeebene erstellen. Für eine bereitgestellte Datenbank wird vorab eine festgelegte Menge an Computeressourcen zugeordnet, einschließlich CPU und Arbeitsspeicher, und es werden zwei [Kaufmodelle](purchasing-models.md) verwendet. In dieser Schnellstartanleitung wird eine bereitgestellte Datenbank mit dem [vCore-basierten](service-tiers-vcore.md) Kaufmodell erstellt, aber Sie können auch ein [DTU-basiertes](service-tiers-dtu.md) Modell auswählen.
 

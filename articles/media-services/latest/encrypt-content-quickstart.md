@@ -2,15 +2,17 @@
 title: Verschlüsseln von Inhalten mithilfe des Azure-Portals
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie die Verschlüsselung Ihrer Inhalte mit Azure Media Services im Azure-Portal konfigurieren.
 ms.topic: quickstart
-ms.date: 06/08/2020
-ms.openlocfilehash: 6ff3c14039f9199053d3d43c6ce4488c2692b336
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.date: 08/31/2020
+ms.openlocfilehash: e42b2d4487f2f51c082f22068160a02b3dcbb0a5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84988830"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263636"
 ---
 # <a name="quickstart-use-portal-to-encrypt-content"></a>Schnellstart: Verschlüsseln von Inhalten mithilfe des Portals
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Verwenden Sie Azure Media Services, um Ihre Medien ab dem Zeitpunkt, an dem sie Ihren Computer verlassen, während des gesamten Prozesses der Speicherung, Verarbeitung und Übermittlung sichern. Mit Media Services können Sie Ihre zu übermittelnden Live- und On-Demand-Inhalte dynamisch mit Advanced Encryption Standard (AES-128) oder einem der drei wichtigsten DRM-Systeme verschlüsseln: Microsoft PlayReady, Google Widevine und Apple FairPlay. Media Services bietet auch einen Dienst für die Übermittlung von AES-Schlüsseln und DRM-Lizenzen (PlayReady, Widevine und FairPlay) an autorisierte Clients. 
  

@@ -3,12 +3,12 @@ title: Einführung
 description: Hier finden Sie Informationen zu den Features und Vorteilen von Azure VMware Solution für die Bereitstellung und Verwaltung VMware-basierter Workloads in Azure.
 ms.topic: overview
 ms.date: 05/04/2020
-ms.openlocfilehash: 9d39cb759190eef535519decccec943ab66de2c7
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 3d6801a6cdec7600cc6003711a08e6af8c86483e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752130"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005053"
 ---
 # <a name="what-is-azure-vmware-solution-preview"></a>Was ist Azure VMware Solution (Vorschauversion)?
 
@@ -46,7 +46,7 @@ Durch regelmäßige Upgrades der privaten Azure VMware Solution-Cloud und der VM
 
 ## <a name="monitoring-your-private-cloud"></a>Überwachen Ihrer privaten Cloud
 
-Sie können [Protokolle in Azure Monitor](../azure-monitor/overview.md) verwenden, um Protokolle auf Ihren virtuellen Computern zu sammeln, die in Ihrer privaten Azure VMware Solution-Cloud ausgeführt werden. Sie können den [MMA-Agent auf virtuellen Linux- und Windows-Computern, die in Ihren privaten Azure VMware Solution-Clouds ausgeführt werden, herunterladen und installieren](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration) und die gleichen Abfragen verwenden, die Sie auch auf Ihren lokalen virtuellen Computern ausführen. Nichtsdestotrotz können Sie die gleichen Abfragen ausführen, die Sie normalerweise auf Ihren virtuellen Computern ausführen würden. Weitere Informationen zum Erstellen von Abfragen finden Sie unter [Wie erfahre ich, wie ich Abfragen schreiben kann?](../azure-monitor/log-query/log-query-overview.md#how-can-i-learn-how-to-write-queries).
+Sie können [Protokolle in Azure Monitor](../azure-monitor/overview.md) verwenden, um Protokolle auf Ihren virtuellen Computern zu sammeln, die in Ihrer privaten Azure VMware Solution-Cloud ausgeführt werden. Sie können den [MMA-Agent auf virtuellen Linux- und Windows-Computern, die in Ihren privaten Azure VMware Solution-Clouds ausgeführt werden, herunterladen und installieren](../azure-monitor/platform/log-analytics-agent.md#installation-options) und die gleichen Abfragen verwenden, die Sie auch auf Ihren lokalen virtuellen Computern ausführen. Nichtsdestotrotz können Sie die gleichen Abfragen ausführen, die Sie normalerweise auf Ihren virtuellen Computern ausführen würden. Weitere Informationen zum Erstellen von Abfragen finden Sie unter [Wie erfahre ich, wie ich Abfragen schreiben kann?](../azure-monitor/log-query/log-query-overview.md#how-can-i-learn-how-to-write-queries).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
