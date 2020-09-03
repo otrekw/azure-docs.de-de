@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 496d99b3d871c66e2557e1f384bb4480cd8b0831
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 13b3d483e271ac220ae254891fe362e932746e87
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423149"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279498"
 ---
 # <a name="azure-operational-security-best-practices"></a>Bewährte Methoden für Azure Operational Security
 Dieser Artikel enthält eine Reihe von bewährten Methoden für den Schutz Ihrer Daten, Anwendungen und anderen Ressourcen in Azure.
@@ -116,7 +116,7 @@ Anhand der Sicherheitsbewertung, die auf CIS-Steuerelementen (Center for Interne
 **Detail**: Befolgen Sie die [Sicherheitsempfehlungen](../../security-center/security-center-recommendations.md) in Security Center, beginnend mit den Elementen mit der höchsten Priorität.
 
 **Bewährte Methode**: Integrieren Sie Security Center-Warnungen in Ihre SIEM-Lösung (Security Information and Event Management).   
-**Detail**: Die meisten Organisationen mit einer SIEM-Lösung verwenden diese als ein zentrales Clearinghouse für Sicherheitswarnungen, die eine Analystenantwort erfordern. Von Security Center erzeugte verarbeitete Ereignisse werden im Azure-Aktivitätsprotokoll veröffentlicht, einem der über Azure Monitor verfügbaren Protokolle. Azure Monitor bietet eine konsolidierte Pipeline zum Routing beliebiger Überwachungsdaten zu einem SIEM-Tool. Anweisungen finden Sie unter [Exportieren von Sicherheitswarnungen und -empfehlungen](../../security-center/continuous-export.md#configuring-siem-integration-via-azure-event-hubs). Wenn Sie Azure Sentinel verwenden, finden Sie Informationen unter [Herstellen einer Verbindung mit Azure Security Center](../../sentinel/connect-azure-security-center.md).
+**Detail**: Die meisten Organisationen mit einer SIEM-Lösung verwenden diese als ein zentrales Clearinghouse für Sicherheitswarnungen, die eine Analystenantwort erfordern. Von Security Center erzeugte verarbeitete Ereignisse werden im Azure-Aktivitätsprotokoll veröffentlicht, einem der über Azure Monitor verfügbaren Protokolle. Azure Monitor bietet eine konsolidierte Pipeline zum Routing beliebiger Überwachungsdaten zu einem SIEM-Tool. Anweisungen finden Sie unter [Exportieren von Sicherheitswarnungen und -empfehlungen](../../security-center/continuous-export.md#configure-siem-integration-via-azure-event-hubs). Wenn Sie Azure Sentinel verwenden, finden Sie Informationen unter [Herstellen einer Verbindung mit Azure Security Center](../../sentinel/connect-azure-security-center.md).
 
 **Bewährte Methode**: Integrieren von Azure-Protokollen in Ihr SIEM-System.   
 **Detail**: Verwenden Sie [Azure Monitor zum Sammeln und Exportieren von Daten](/azure/azure-monitor/overview#integrate-and-export-data). Diese Vorgehensweise ist wichtig, damit Sicherheitsincidents untersucht werden können. Außerdem ist die Aufbewahrung von Onlineprotokollen beschränkt. Wenn Sie Azure Sentinel verwenden, finden Sie Informationen unter [Herstellen einer Verbindung mit Datenquellen](../../sentinel/connect-data-sources.md).

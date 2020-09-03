@@ -1,7 +1,7 @@
 ---
 title: Azure Media Services-Ausgabemetadaten-Schema | Microsoft Docs
 description: Dieser Artikel enthält eine Übersicht über das Azure Media Services-Ausgabemetadaten-Schema.
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -10,17 +10,19 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/03/2020
-ms.author: juliako
-ms.openlocfilehash: ce3d0a5beb5903d29b1deec345cf4673e3492e5d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: reference
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 66f4e426ee6d77b9faa1efab3deb3d7ee4baf47d
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080923"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89289369"
 ---
 # <a name="output-metadata"></a>Ausgeben von Metadaten
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Ein Codierauftrag ist einem Eingabeasset (oder mehreren) zugeordnet, für das Sie einige Codieraufgaben durchführen möchten. Beispiele: Codieren einer MP4-Datei in H.264 MP4 Adaptive Bitrate-Sätze, Erstellen einer Miniaturansicht, Erstellen von Überlagerungen. Nach Abschluss einer Aufgabe wird ein Ausgabeasset erzeugt.  Das Ausgabeasset enthält Video-, Audio-, Miniaturansichts- und weitere Dateien. Das Ausgabeasset enthält auch eine Datei mit Metadaten zum Ausgabeasset. Der Name der JSON-Metadatendatei weist das folgende Format auf: `<source_file_name>_manifest.json` (Beispiel: `BigBuckBunny_manifest.json`). Sie sollten nach „*_metadata.json“ suchen und die enthaltene Dateipfad-Zeichenfolge abfragen, um den Quelldateinamen (ohne Kürzung) zu suchen.
 

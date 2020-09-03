@@ -16,12 +16,12 @@ ms.date: 05/08/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b139441adb02f5fb33ae8c4a70aaa9b423f0d0e
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: d526394ac89e2d29b2002004736e8480bb15b954
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447092"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279260"
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect: Aktivieren des Geräterückschreibens
 > [!NOTE]
@@ -31,10 +31,10 @@ ms.locfileid: "87447092"
 
 Die folgende Dokumentation enthält Informationen zum Aktivieren des Features "Geräterückschreiben" in Azure AD Connect. Das Geräterückschreiben wird in den folgenden Szenarien verwendet:
 
-* Aktivieren von [Windows Hello for Business mithilfe der Hybridbereitstellung von Zertifikatvertrauensstellungen](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-trust-prereqs#device-registration)
+* Aktivieren von [Windows Hello for Business mithilfe der Hybridbereitstellung von Zertifikatvertrauensstellungen](/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-trust-prereqs#device-registration)
 * Aktivieren des bedingten Zugriffs basierend auf Geräten auf von ADFS (2012 R2 oder höher) geschützte Anwendungen (Vertrauensstellungen für vertrauende Seiten).
 
-Dies bietet zusätzliche Sicherheit und die Gewissheit, dass nur vertrauenswürdige Geräte auf die Anwendung zugreifen können. Weitere Informationen zum bedingten Zugriff finden Sie unter [Verwalten von Risiken mit bedingtem Zugriff](../active-directory-conditional-access-azure-portal.md) und [Einrichten des lokalen bedingten Zugriffs mithilfe von Azure Active Directory Device Registration](../../active-directory/active-directory-device-registration-on-premises-setup.md).
+Dies bietet zusätzliche Sicherheit und die Gewissheit, dass nur vertrauenswürdige Geräte auf die Anwendung zugreifen können. Weitere Informationen zum bedingten Zugriff finden Sie unter [Verwalten von Risiken mit bedingtem Zugriff](../conditional-access/overview.md) und [Einrichten des lokalen bedingten Zugriffs mithilfe von Azure Active Directory Device Registration](../devices/overview.md).
 
 > [!IMPORTANT]
 > <li>Geräte müssen sich in der gleichen Gesamtstruktur befinden wie die Benutzer. Da Geräte in eine einzelne Gesamtstruktur zurückgeschrieben werden müssen, unterstützt diese Funktion derzeit keine Bereitstellung mit mehreren Gesamtstrukturen für Benutzer.</li>
@@ -83,7 +83,7 @@ Das Geräterückschreiben sollte jetzt ordnungsgemäß ausgeführt werden. Beden
    ![Active Directory-Verwaltungscenter – Liste der registrierten Geräte](./media/how-to-connect-device-writeback/devicewriteback6.png)
 
 ## <a name="enable-conditional-access"></a>Aktivieren des bedingten Zugriffs
-Ausführliche Informationen zum Aktivieren dieses Szenarios finden Sie unter [Einrichten des lokalen bedingten Zugriffs mithilfe der Azure Active Directory-Geräteregistrierung](../../active-directory/active-directory-device-registration-on-premises-setup.md).
+Ausführliche Informationen zum Aktivieren dieses Szenarios finden Sie unter [Einrichten des lokalen bedingten Zugriffs mithilfe der Azure Active Directory-Geräteregistrierung](../devices/overview.md).
 
 ## <a name="troubleshooting"></a>Problembehandlung
 ### <a name="the-writeback-checkbox-is-still-disabled"></a>Kontrollkästchen für das Rückschreiben ist weiterhin deaktiviert
@@ -126,9 +126,8 @@ Zuerst die wichtigen Dinge:
 ![Problembehandlung – Überprüfen der Berechtigungen für Device Registration Configuration](./media/how-to-connect-device-writeback/troubleshoot6.png)
 
 ## <a name="additional-information"></a>Zusätzliche Informationen
-* [Verwalten von Risiken mit bedingtem Zugriff](../active-directory-conditional-access-azure-portal.md)
-* [Einrichten des lokalen bedingten Zugriffs mithilfe der Azure Active Directory-Geräteregistrierung](../../active-directory/active-directory-device-registration-on-premises-setup.md)
+* [Verwalten von Risiken mit bedingtem Zugriff](../conditional-access/overview.md)
+* [Einrichten des lokalen bedingten Zugriffs mithilfe der Azure Active Directory-Geräteregistrierung](../devices/overview.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](whatis-hybrid-identity.md).
-

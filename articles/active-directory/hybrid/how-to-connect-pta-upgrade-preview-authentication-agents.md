@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d27018a19db85e8544029db4f1b638ef7cae448a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d0507f7751305af5e626cbd7dd6e0dfd1a63a74
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358139"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279481"
 ---
 # <a name="azure-active-directory-pass-through-authentication-upgrade-preview-authentication-agents"></a>Azure Active Directory-Passthrough-Authentifizierung – Upgrade von Authentifizierungs-Agents der Vorschau
 
@@ -60,7 +60,7 @@ Um die Versionen der Authentifizierungs-Agents zu überprüfen, die im vorherige
 
 Stellen Sie vor dem Upgrade sicher, dass folgende Elemente vorhanden sind:
 
-1. **Erstellen Sie ein rein cloudbasiertes globales Administratorkonto**: Führen Sie ein Upgrade erst durch, wenn Sie über ein globales Administratorkonto verfügen, das nur in der Cloud verwendet wird. Dieses benötigen Sie für Notfallsituationen, in denen Ihre Passthrough-Authentifizierungs-Agents nicht ordnungsgemäß funktionieren. Erfahren Sie, wie Sie ein [rein cloudbasiertes Konto für den globalen Administrator hinzufügen](../active-directory-users-create-azure-portal.md). Dieser Schritt ist unerlässlich und stellt sicher, dass Sie sich nicht aus Ihrem Mandanten aussperren.
+1. **Erstellen Sie ein rein cloudbasiertes globales Administratorkonto**: Führen Sie ein Upgrade erst durch, wenn Sie über ein globales Administratorkonto verfügen, das nur in der Cloud verwendet wird. Dieses benötigen Sie für Notfallsituationen, in denen Ihre Passthrough-Authentifizierungs-Agents nicht ordnungsgemäß funktionieren. Erfahren Sie, wie Sie ein [rein cloudbasiertes Konto für den globalen Administrator hinzufügen](../fundamentals/add-users-azure-active-directory.md). Dieser Schritt ist unerlässlich und stellt sicher, dass Sie sich nicht aus Ihrem Mandanten aussperren.
 2.  **Stellen Sie Hochverfügbarkeit sicher**: Sofern noch nicht geschehen, installieren Sie einen zweiten eigenständigen Authentifizierungs-Agent, um Hochverfügbarkeit für Anmeldeanforderungen bereitzustellen. Folgen Sie [diesen Anweisungen](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability).
 
 ## <a name="upgrading-the-authentication-agent-on-your-azure-ad-connect-server"></a>Aktualisieren des Authentifizierungs-Agents auf Ihrem Azure AD Connect-Server

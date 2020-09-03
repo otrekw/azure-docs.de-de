@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/27/2017
-ms.openlocfilehash: ad50cbb423f8c60f1caad159bc1a20cf96ed98aa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c6d95cb938a341b94a32989e82c42d37956c0a80
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74792541"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179843"
 ---
 # <a name="handle-edifact-documents-with-unh25-segments-in-azure-logic-apps"></a>Verarbeiten von EDIFACT-Dokumenten mit UNH2.5-Segmenten in Azure Logic Apps
 
@@ -56,8 +56,6 @@ Richten Sie das Schema in den Sendeeinstellungen der EDIFACT-Vereinbarung ein, u
 1. Fügen Sie das Schema Ihrem Integrationskonto hinzu.
 
 1. Konfigurieren Sie das Schema in den Sendeeinstellungen der EDIFACT-Vereinbarung.
-
-1. Wählen Sie die EDIFACT-Vereinbarung aus, und klicken Sie auf **Als JSON bearbeiten**.  Fügen Sie den UNH2.5-Wert in der Sendevereinbarung dem Abschnitt **schemaReferences** hinzu.
 
 1. Wählen Sie die EDIFACT-Vereinbarung und anschließend **Als JSON bearbeiten** aus. Fügen Sie den UNH2.5-Wert dem Abschnitt `schemaReferences` der Sendevereinbarung hinzu:
 

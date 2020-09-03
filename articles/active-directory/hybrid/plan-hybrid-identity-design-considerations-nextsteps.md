@@ -16,12 +16,12 @@ ms.date: 07/18/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f834924a564f92fe7050a1236701701af7f5229
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a2fdfdf2012d17b6a9e1bde872a29f740a95b33e
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83647272"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278376"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations--next-steps"></a>Überlegungen zum Entwurf der Azure Active Directory-Hybrid-Identität – Nächste Schritte
 Nachdem Sie die Anforderungen definiert und alle Optionen für Ihre Lösung zur Verwaltung mobiler Geräte (Mobile Device Management, MDM) untersucht haben, können Sie die nächsten Schritte zur Bereitstellung der unterstützenden Infrastruktur ausführen, die für Sie und Ihr Unternehmen geeignet ist.
@@ -29,8 +29,8 @@ Nachdem Sie die Anforderungen definiert und alle Optionen für Ihre Lösung zur 
 ## <a name="hybrid-identity-documentation"></a>Dokumentation zur Hybrid-Identität
 Informationen zur konzeptuellen und verfahrensorientierten Planung, Bereitstellung und Verwaltung sind hilfreich, wenn Sie Ihre Lösung für die Verwaltung mobiler Geräte implementieren:
 
-* [Microsoft System Center](https://technet.microsoft.com/library/cc507089.aspx) -Lösungen können beim Sammeln und Zusammenfassen von Wissen zu Infrastruktur, Richtlinien, Prozessen und bewährten Methoden hilfreich sein, damit Ihr IT-Personal verwaltbare Systeme erstellen und Vorgänge automatisieren kann.
-* [Microsoft Intune](https://technet.microsoft.com/library/jj676587.aspx) ist ein cloudbasierter Geräteverwaltungsdienst, der Sie beim Verwalten Ihrer Computer und mobilen Geräte und beim Schützen der Unternehmensinformationen unterstützt.
+* [Microsoft System Center](/previous-versions/system-center/developer/cc817313(v=msdn.10)) -Lösungen können beim Sammeln und Zusammenfassen von Wissen zu Infrastruktur, Richtlinien, Prozessen und bewährten Methoden hilfreich sein, damit Ihr IT-Personal verwaltbare Systeme erstellen und Vorgänge automatisieren kann.
+* [Microsoft Intune](/mem/intune/) ist ein cloudbasierter Geräteverwaltungsdienst, der Sie beim Verwalten Ihrer Computer und mobilen Geräte und beim Schützen der Unternehmensinformationen unterstützt.
 * [MDM für Office 365](https://technet.microsoft.com/library/ms.o365.cc.devicepolicy.aspx) ermöglicht Ihnen das Verwalten und Schützen mobiler Geräte, wenn diese mit Ihrem Office 365-Unternehmen verbunden sind. Sie können MDM für Office 365 nutzen, um Sicherheitsrichtlinien und Zugriffsregeln für Geräte festzulegen und die Daten mobiler Geräte zu löschen, falls Sie verloren gehen oder gestohlen werden.
 
 ## <a name="hybrid-identity-resources"></a>Ressourcen zur Hybrid-Identität
@@ -43,4 +43,3 @@ Indem Sie die folgenden Ressourcen im Auge behalten, erhalten Sie aktuelle Neuig
 
 ## <a name="see-also"></a>Weitere Informationen
 [Überlegungen zum Entwurf – Übersicht](plan-hybrid-identity-design-considerations-overview.md)
-

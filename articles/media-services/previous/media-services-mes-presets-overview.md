@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 1d264b0ae0b06079a45cd1e862144a6920133901
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: aa0514834d1619bbbae4501fe6b1af16d7964ff7
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038441"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89261474"
 ---
 # <a name="sample-presets-for-media-encoder-standard-mes"></a>Beispielvoreinstellungen für Media Encoder Standard (MES)
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 **Media Encoder Standard** bietet eine Reihe vom System vordefinierter Codierungsvoreinstellungen, die Sie beim Erstellen von Codierungsaufträgen verwenden können. Es wird empfohlen, die Voreinstellung „Adaptives Streaming“ zu verwenden, wenn Sie ein Video für das Streamen mit Media Services codieren möchten. Bei Angabe dieser Voreinstellung wird von Media Encoder Standard [automatisch eine Bitrate generiert](media-services-autogen-bitrate-ladder-with-mes.md). 
 

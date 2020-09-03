@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 8142ef5e2aaaf5831c01215d28eecf8d06e1d8ab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4288e2e955f8205f3b6551c83a5c883eecf02501
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071926"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89264809"
 ---
-# <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>Erweiterte Codierung mit Media Encoder Standard-Voreinstellungen 
+# <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>Erweiterte Codierung mit Media Encoder Standard-Voreinstellungen
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 ## <a name="overview"></a>Übersicht
 
@@ -50,7 +53,7 @@ Beim Generieren von Miniaturansichten müssen Sie nicht immer die Breite und Hö
 <Height>100%</Height>
 ```
 
-## <a name="generate-thumbnails"></a><a id="thumbnails"></a>Generieren von Miniaturansichten
+## <a name="generate-thumbnails"></a>Generieren von Miniaturansichten
 
 In diesem Abschnitt erfahren Sie, wie Sie eine Voreinstellung anpassen, die Miniaturansichten generiert. Die unten definierte Voreinstellung enthält Informationen zum Codieren Ihrer Datei sowie die erforderlichen Informationen zum Generieren von Miniaturansichten. Sie können alle in [diesem](media-services-mes-presets-overview.md) Abschnitt dokumentierten MES-Voreinstellungen verwenden und Code hinzufügen, mit dem Miniaturansichten generiert werden.  
 
@@ -63,7 +66,7 @@ Informationen zum Schema finden Sie in [diesem](media-services-mes-schema.md) Th
 
 Lesen Sie unbedingt den Abschnitt [Überlegungen](#considerations) .
 
-### <a name="json-preset"></a><a id="json"></a>JSON-Voreinstellung
+### <a name="json-preset"></a>JSON-Voreinstellung
 
 ```json
 {
@@ -165,7 +168,7 @@ Lesen Sie unbedingt den Abschnitt [Überlegungen](#considerations) .
 }
 ```
 
-### <a name="xml-preset"></a><a id="xml"></a>XML-Voreinstellung
+### <a name="xml-preset"></a>XML-Voreinstellung
 
 ```xml
 <?xml version="1.0" encoding="utf-16"?>

@@ -9,16 +9,18 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 08/31/2020
 ms.author: juliako
-ms.openlocfilehash: e5d32d1bc3bd704b03e58c62251a323ed3f4662c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d05e73bc9aa51bf20121790de94b1b6d0e26615
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61229049"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268569"
 ---
-# <a name="generate-a-thumbnail-sprite"></a>Generieren eines Miniaturbild-Sprites  
+# <a name="generate-a-thumbnail-sprite"></a>Generieren eines Miniaturbild-Sprites
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 Sie können Media Encoder Standard verwenden, um ein Miniaturbild-Sprite zu generieren, das eine JPEG-Datei ist, die mehrere Miniaturbilder mit kleiner Auflösung enthält, die zusammen mit einer VTT-Datei zu einem einzigen (großen) Bild zusammengefügt werden. Diese VTT-Datei gibt den Zeitbereich im Eingabevideo an, den jedes Miniaturbild darstellt, zusammen mit der Größe und den Koordinaten dieses Miniaturbildes innerhalb der großen JPEG-Datei. Videoplayer verwenden die VTT-Datei und das Sprite-Bild, um eine „visuelle“ Suchleiste anzuzeigen, die dem Betrachter visuelles Feedback gibt, wenn er sich entlang der Videozeitleiste vor- und zurückbewegt.
 

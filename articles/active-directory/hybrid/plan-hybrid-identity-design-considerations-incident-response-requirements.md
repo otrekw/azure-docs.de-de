@@ -17,15 +17,15 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52b5e37c29e4b3df3f171f683266b5d0a3e0c95d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8c68be4e46693621f77cb25dd8f34f8e0b7d75dd
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67109276"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278410"
 ---
 # <a name="determine-incident-response-requirements-for-your-hybrid-identity-solution"></a>Bestimmen der Anforderungen an Reaktionen auf Vorfälle für Ihre Hybrid-Identitätslösung
-Große und mittelgroße Unternehmen verfügen meist über einen Plan für [Reaktionen auf Vorfälle](https://technet.microsoft.com/library/cc700825.aspx) , damit das IT-Personal je nach Schweregrad des Vorfalls die passenden Maßnahmen ergreifen kann. Das System für die Identitätsverwaltung ist eine wichtige Komponente des Prozesses für Reaktionen auf Vorfälle, weil damit identifiziert werden kann, wer eine bestimmte Aktion für das Ziel durchgeführt hat. Die Hybrid-Identitätslösung muss Funktionen für Überwachung und Berichterstellung bereitstellen können, die von der IT-Abteilung genutzt werden können, um Maßnahmen zur Identifizierung und Minimierung einer potenziellen Bedrohung zu ergreifen. Ein typischer Plan für Reaktionen auf Vorfälle enthält die folgenden Phasen:
+Große und mittelgroße Unternehmen verfügen meist über einen Plan für [Reaktionen auf Vorfälle](/previous-versions/tn-archive/cc700825(v=technet.10)) , damit das IT-Personal je nach Schweregrad des Vorfalls die passenden Maßnahmen ergreifen kann. Das System für die Identitätsverwaltung ist eine wichtige Komponente des Prozesses für Reaktionen auf Vorfälle, weil damit identifiziert werden kann, wer eine bestimmte Aktion für das Ziel durchgeführt hat. Die Hybrid-Identitätslösung muss Funktionen für Überwachung und Berichterstellung bereitstellen können, die von der IT-Abteilung genutzt werden können, um Maßnahmen zur Identifizierung und Minimierung einer potenziellen Bedrohung zu ergreifen. Ein typischer Plan für Reaktionen auf Vorfälle enthält die folgenden Phasen:
 
 1. Anfängliche Bewertung
 2. Kommunikation von Vorfällen
@@ -69,4 +69,3 @@ Während der Phase der Schadensbegrenzung und Risikominderung ist es wichtig, di
 
 ## <a name="see-also"></a>Weitere Informationen
 [Überlegungen zum Entwurf – Übersicht](plan-hybrid-identity-design-considerations-overview.md)
-

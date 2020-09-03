@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
-ms.openlocfilehash: 7cc2e346a35cd1cdf1278b527dc451a903d60f89
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 154d28e4df9bad68f3c5e93208ccf62ba2721663
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78402822"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144820"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Git-Integration für Azure Machine Learning
 
@@ -116,4 +116,4 @@ Weitere Informationen finden Sie in der Referenzdokumentation zu [az ml run](htt
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Einrichten und Verwenden von Computezielen für das Modelltraining](how-to-set-up-training-targets.md)
+* [Verwenden von Computeziele für das Modelltraining](how-to-set-up-training-targets.md)

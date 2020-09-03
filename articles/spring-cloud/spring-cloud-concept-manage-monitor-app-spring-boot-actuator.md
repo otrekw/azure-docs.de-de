@@ -7,19 +7,19 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 5cfc13700decf0176b283f5f1f9bd81503c1b10a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1c1ea19c22d003ed1aa7c3d3191ff20a69513bc5
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037592"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299506"
 ---
 # <a name="manage-and-monitor-app-with-azure-spring-boot-actuator"></a>Verwalten und Überwachen einer App mit dem Azure Spring Boot-Aktor
 
 Nach der Bereitstellung einer neuen Binärdatei für Ihre App sollten Sie die Funktionalität prüfen und Informationen zu Ihrer ausgeführten Anwendung abrufen. In diesem Artikel wird erläutert, wie Sie über einen von Azure Spring Cloud bereitgestellten Testendpunkt auf die API zugreifen und die produktionsreifen Features für Ihre App zur Verfügung stellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-In diesem Artikel wird vorausgesetzt, dass Sie über eine Spring Boot 2.x-Anwendung verfügen, die erfolgreich bereitgestellt und im Azure Spring Cloud-Dienst gestartet werden kann.  Weitere Informationen finden Sie unter [Schnellstart: Starten einer vorhandenen Azure Spring Cloud-Anwendung über das Azure-Portal](spring-cloud-quickstart-launch-app-portal.md).
+In diesem Artikel wird vorausgesetzt, dass Sie über eine Spring Boot 2.x-Anwendung verfügen, die erfolgreich bereitgestellt und im Azure Spring Cloud-Dienst gestartet werden kann.  Weitere Informationen finden Sie unter [Schnellstart: Starten einer vorhandenen Azure Spring Cloud-Anwendung über das Azure-Portal](spring-cloud-quickstart.md).
 
 ## <a name="verify-app-through-test-endpoint"></a>Überprüfen der App über einen Testendpunkt
 1. Öffnen Sie das **Anwendungsdashboard**, und klicken Sie auf Ihre App, um zur App-Übersichtsseite zu gelangen.

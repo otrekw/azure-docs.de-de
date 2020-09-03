@@ -9,12 +9,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 8c17351c049ef419ab95f46a54aa9f8cc523f7cf
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 76c45e586ea7101015cb878d198cab73ed32498e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84887460"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018245"
 ---
 # <a name="install-software-and-set-up-resources-for-the-tutorial"></a>Installieren von Software und Einrichten von Ressourcen für das Tutorial
 
@@ -30,7 +30,7 @@ In diesem dreiteiligen Tutorial erstellen Sie ein Machine Learning-Modell zum Vo
 4. Installieren Sie [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio/).
 5. Öffnen Sie Azure Data Studio, und konfigurieren Sie Python für Notebooks. Weitere Informationen finden Sie unter [Konfigurieren von Python für Notebooks](/sql/azure-data-studio/sql-notebooks#configure-python-for-notebooks). Dieser Schritt kann mehrere Minuten lang dauern.
 6. Installieren Sie die neueste Version von [Azure CLI](https://github.com/Azure/azure-powershell/releases/tag/v3.5.0-February2020). Für die folgenden Skripts muss AZ PowerShell die neueste Version (3.5.0, Februar 2020) sein.
-7. Laden Sie die [DACPAC-](https://github.com/microsoft/sql-server-samples/tree/master/samples/demos/azure-sql-edge-demos/iron-ore-silica-impurities/DACPAC) und [AMD/ARM-Docker-Imagedateien](https://github.com/microsoft/sql-server-samples/tree/master/samples/demos/azure-sql-edge-demos/iron-ore-silica-impurities/tar-files) herunter, die im Tutorial verwendet werden.
+7. Laden Sie die [DACPAC-](https://github.com/microsoft/sql-server-samples/tree/master/samples/demos/azure-sql-edge-demos/iron-ore-silica-impurities/DACPAC) und [AMD/ARM-Docker-Imagedateien](https://www.docker.com/blog/multi-arch-images/) herunter, die im Tutorial verwendet werden.
 
 ## <a name="deploy-azure-resources-using-powershell-script"></a>Bereitstellen von Azure-Ressourcen mithilfe eines PowerShell-Skripts
 

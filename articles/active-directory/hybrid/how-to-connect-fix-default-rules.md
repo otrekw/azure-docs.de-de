@@ -13,12 +13,12 @@ ms.date: 03/21/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e52083b2413f28b0c95b3a86be44c501e97cfd7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd16dd5a20a677568c928f805c1aaa5f2c222f24
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359754"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279940"
 ---
 # <a name="fix-modified-default-rules-in-azure-ad-connect"></a>Korrigieren von geänderten Standardregeln in Azure AD Connect
 
@@ -89,7 +89,7 @@ Lassen Sie **Bereichsfilter** leer. Das heißt, dass die Regel auf alle Objekte 
 
 Lassen Sie **Verknüpfungsregeln** leer. Das heißt, dass diese Regel die Verknüpfungsbedingung verwendet, die in der unbearbeiteten Standardregel definiert ist. Dies ist ein weiterer Grund dafür, dass die unbearbeitete Standardregel nicht deaktiviert oder gelöscht werden sollte. Ist keine Verknüpfungsbedingung vorhanden, erfolgt kein Attributfluss. 
 
-Fügen Sie die entsprechenden Transformationen für das Attribut hinzu. Sie können eine Konstante zuweisen, um einen den Fluss eines konstanten Werts zum Zielattribut einzurichten. Sie können eine direkte Zuordnung zwischen dem Quell- oder Zielattribut verwenden. Sie können aber auch einen Ausdruck für das Attribut verwenden. Hier finden Sie verschiedene [expression-Funktionen](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-sync-functions-reference), die Sie verwenden können.
+Fügen Sie die entsprechenden Transformationen für das Attribut hinzu. Sie können eine Konstante zuweisen, um einen den Fluss eines konstanten Werts zum Zielattribut einzurichten. Sie können eine direkte Zuordnung zwischen dem Quell- oder Zielattribut verwenden. Sie können aber auch einen Ausdruck für das Attribut verwenden. Hier finden Sie verschiedene [expression-Funktionen](./reference-connect-sync-functions-reference.md), die Sie verwenden können.
 
 #### <a name="add-an-outbound-sync-rule"></a>Hinzufügen einer Synchronisierungsregel für ausgehenden Datenverkehr
 Um das Attribut mit dem Zielverzeichnis zu verknüpfen, müssen Sie eine Ausgangsregel erstellen. Das heißt, dass der Metaverse die Quelle und das verbundene System das Ziel ist. Um eine Ausgangsregel zu erstellen, starten Sie den **Synchronisierungsregel-Editor**, ändern Sie die **Richtung** in **Ausgehend**, und wählen Sie **Neue Regel hinzufügen** aus. 
@@ -102,7 +102,7 @@ Wie bei der Regel für eingehenden Datenverkehr können Sie zum Benennen der Reg
 
 Lassen Sie die Felder **Bereichsfilter** und **Verknüpfungsregeln** leer. Geben Sie die Transformation als Konstante, Direkt oder Ausdruck ein. 
 
-Nun wissen Sie, wie Sie ein neues Attribut für ein Benutzerobjekt von Active Directory nach Azure Active Directory fließen lassen. Sie können diese Schritte verwenden, um jedem beliebigen Attribut jedes beliebigen Objekts eine Quelle und ein Ziel zuzuordnen. Weitere Informationen finden Sie unter [Erstellen benutzerdefinierter Synchronisierungsregeln](how-to-connect-create-custom-sync-rule.md) und [Vorbereiten der Bereitstellung von Benutzern](https://docs.microsoft.com/office365/enterprise/prepare-for-directory-synchronization).
+Nun wissen Sie, wie Sie ein neues Attribut für ein Benutzerobjekt von Active Directory nach Azure Active Directory fließen lassen. Sie können diese Schritte verwenden, um jedem beliebigen Attribut jedes beliebigen Objekts eine Quelle und ein Ziel zuzuordnen. Weitere Informationen finden Sie unter [Erstellen benutzerdefinierter Synchronisierungsregeln](how-to-connect-create-custom-sync-rule.md) und [Vorbereiten der Bereitstellung von Benutzern](/office365/enterprise/prepare-for-directory-synchronization).
 
 ### <a name="override-the-value-of-an-existing-attribute"></a>Überschreiben des Werts eines vorhandenen Attributs
 Eventuell möchten Sie den Wert eines Attributs überschreiben, das bereits zugeordnet wurde. Wenn ein Attribut in Azure AD beispielsweise immer auf einen NULL-Wert festgelegt sein soll, erstellen Sie einfach nur eine eingehende Regel. Lassen Sie den konstanten Wert `AuthoritativeNull` zum Zielattribut fließen. 
@@ -194,6 +194,3 @@ Um die Regeln zu korrigieren und sie wieder auf die Standardeinstellungen zurüc
 - [Voraussetzungen für Azure AD Connect](how-to-connect-install-prerequisites.md) 
 - [Express-Einstellungen](how-to-connect-install-express.md)
 - [Benutzerdefinierte Einstellungen](how-to-connect-install-custom.md)
-
-
-

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc10fb4f9894a355c9eed024ae9f87747214999b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7d3315a8d6bca9406461d0082ed85bbefc9459f4
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72886713"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950203"
 ---
 # <a name="user-experiences-with-azure-ad-identity-protection"></a>Benutzererfahrungen mit Azure AD Identity Protection
 
@@ -29,7 +29,7 @@ Alle Identitätsschutzrichtlinien haben Auswirkungen auf den Benutzeranmeldevorg
 
 ## <a name="multi-factor-authentication-registration"></a>Registrierung für die mehrstufige Authentifizierung
 
-Indem Sie die Identity Protection-Richtlinie, die eine Multi-Factor Authentication-Registrierung erfordert, für alle Benutzer aktivieren, wird sichergestellt, dass diese in Zukunft die Möglichkeit zur Eigenwartung mit Azure MFA haben. Wenn Sie diese Richtlinie konfigurieren, können sich Ihre Benutzer in den darauffolgenden 14 Tagen freiwillig registrieren. Nach Ablauf dieses Zeitraums wird die Registrierung erzwungen. Die Benutzeroberfläche wird unten beschrieben. Weitere Informationen finden Sie in der Dokumentation für Endbenutzer im Artikel [Übersicht über die zweistufige Überprüfung und Ihr Geschäfts-, Schul- oder Unikonto](../user-help/user-help-two-step-verification-overview.md).
+Indem Sie die Identity Protection-Richtlinie, die eine Multi-Factor Authentication-Registrierung erfordert, für alle Benutzer aktivieren, wird sichergestellt, dass diese in Zukunft die Möglichkeit zur Eigenwartung mit Azure MFA haben. Wenn Sie diese Richtlinie konfigurieren, können sich Ihre Benutzer in den darauffolgenden 14 Tagen freiwillig registrieren. Nach Ablauf dieses Zeitraums wird die Registrierung erzwungen. Die Benutzeroberfläche wird unten beschrieben. Weitere Informationen finden Sie in der Dokumentation für Endbenutzer im Artikel [Übersicht über die zweistufige Überprüfung und Ihr Geschäfts-, Schul- oder Unikonto](../user-help/multi-factor-authentication-end-user-first-time.md).
 
 ### <a name="registration-interrupt"></a>Registrierungsunterbrechung
 
@@ -84,4 +84,4 @@ Die IT-Mitarbeiter können die Anweisungen im Abschnitt [Aufheben der Blockierun
 
 - [Beheben von Risiken und Aufheben der Blockierung von Benutzern](howto-identity-protection-remediate-unblock.md)
 
-- [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) 
+- [Azure Active Directory Identity Protection](./overview-identity-protection.md)

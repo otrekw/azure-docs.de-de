@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea5c3e0ffc000d3d239e87e9771d1b49d98fd206
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: b594bcac8ef50a3f5fbe6a2424bf5dbfe9f180cd
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589043"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278988"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Nahtloses einmaliges Anmelden mit Azure Active Directory: Häufig gestellte Fragen
 
@@ -37,7 +37,7 @@ Die nahtlose SSO ist eine kostenlose Funktion, sodass Sie für deren Verwendung 
 
 **F: Ist Seamless SSO in der Cloud [Microsoft Azure Deutschland](https://www.microsoft.de/cloud-deutschland) und der Cloud [Microsoft Azure Government](https://azure.microsoft.com/features/gov/) verfügbar?**
 
-Nahtloses SSO ist für die Azure Government-Cloud verfügbar. Weitere Informationen finden Sie unter [Überlegungen zur Hybrididentität für Azure Government](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud).
+Nahtloses SSO ist für die Azure Government-Cloud verfügbar. Weitere Informationen finden Sie unter [Überlegungen zur Hybrididentität für Azure Government](./reference-connect-government-cloud.md).
 
 **F: Welche Anwendungen nutzen die `domain_hint`- oder `login_hint`-Parameterfunktion von Seamless SSO?**
 
@@ -64,9 +64,9 @@ Wenn unsere automatische Anmeldung für andere Anwendungen verwenden möchten, t
 
 Ja. Die nahtlose SSO unterstützt `Alternate ID` als Benutzername, wenn dies in Azure AD Connect wie [hier](how-to-connect-install-custom.md) beschrieben entsprechend konfiguriert ist. Nicht alle Office 365-Anwendungen unterstützen `Alternate ID`. Angaben zur Supporterklärung finden Sie in der Dokumentation der jeweiligen Anwendung.
 
-**F: Was ist der Unterschied zwischen dem von [Azure AD Join](../active-directory-azureadjoin-overview.md) bereitgestellten einmaligen Anmelden und Seamless SSO?**
+**F: Was ist der Unterschied zwischen dem von [Azure AD Join](../devices/overview.md) bereitgestellten einmaligen Anmelden und Seamless SSO?**
 
-[Azure AD Join](../active-directory-azureadjoin-overview.md) stellt SSO für Benutzer bereit, wenn deren Geräte bei Azure AD registriert sind. Diese Geräte müssen nicht unbedingt in eine Domäne eingebunden sein. SSO wird über *primäre Aktualisierungstoken* oder *PRTs* (Primary Refresh Token) bereitgestellt und nicht per Kerberos. Die Benutzeroberfläche ist für Windows 10-Geräte optimiert. Das einmalige Anmelden erfolgt im Microsoft Edge-Browser automatisch. Es kann mithilfe einer Browsererweiterung auch in Chrome genutzt werden.
+[Azure AD Join](../devices/overview.md) stellt SSO für Benutzer bereit, wenn deren Geräte bei Azure AD registriert sind. Diese Geräte müssen nicht unbedingt in eine Domäne eingebunden sein. SSO wird über *primäre Aktualisierungstoken* oder *PRTs* (Primary Refresh Token) bereitgestellt und nicht per Kerberos. Die Benutzeroberfläche ist für Windows 10-Geräte optimiert. Das einmalige Anmelden erfolgt im Microsoft Edge-Browser automatisch. Es kann mithilfe einer Browsererweiterung auch in Chrome genutzt werden.
 
 Sie können sowohl Azure AD Join als auch das nahtlose einmalige Anmelden für Ihren Mandanten verwenden. Diese beiden Features ergänzen einander. Wenn beide Features aktiviert sind, hat das einmalige Anmelden aus Azure AD Join eine höhere Priorität als das nahtlose einmalige Anmelden.
 
@@ -85,7 +85,7 @@ Führen Sie diese Schritte auf dem lokalen Server durch, auf dem Azure AD Connec
 
    **Schritt 1. Rufen Sie die Liste der AD-Gesamtstrukturen ab, für die das nahtlose einmalige Anmelden aktiviert wurde.**
 
-   1. Laden Sie zuerst [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview) herunter, und installieren Sie die Software.
+   1. Laden Sie zuerst [Azure AD PowerShell](/powershell/azure/active-directory/overview) herunter, und installieren Sie die Software.
    2. Navigieren Sie zum Ordner `%programfiles%\Microsoft Azure Active Directory Connect`.
    3. Importieren Sie das PowerShell-Modul „Nahtlose SSO“ mit folgendem Befehl: `Import-Module .\AzureADSSO.psd1`.
    4. Führen Sie PowerShell als Administrator aus. Rufen Sie in PowerShell `New-AzureADSSOAuthenticationContext` auf. Mit diesem Befehl sollte ein Popupfenster geöffnet werden, in dem Sie die Anmeldeinformationen des globalen Administrators Ihres Mandanten eingeben können.
@@ -130,7 +130,7 @@ Führen Sie diese Schritte auf dem lokalen Server durch, auf dem Azure AD Connec
 
    Führen Sie die folgenden Schritte auf dem lokalen Server durch, auf dem Azure AD Connect ausgeführt wird:
 
-   1. Laden Sie zuerst [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview) herunter, und installieren Sie die Software.
+   1. Laden Sie zuerst [Azure AD PowerShell](/powershell/azure/active-directory/overview) herunter, und installieren Sie die Software.
    2. Navigieren Sie zum Ordner `%programfiles%\Microsoft Azure Active Directory Connect`.
    3. Importieren Sie das PowerShell-Modul „Nahtlose SSO“ mit folgendem Befehl: `Import-Module .\AzureADSSO.psd1`.
    4. Führen Sie PowerShell als Administrator aus. Rufen Sie in PowerShell `New-AzureADSSOAuthenticationContext` auf. Mit diesem Befehl sollte ein Popupfenster geöffnet werden, in dem Sie die Anmeldeinformationen des globalen Administrators Ihres Mandanten eingeben können.
@@ -145,7 +145,7 @@ Führen Sie diese Schritte auf dem lokalen Server durch, auf dem Azure AD Connec
 
    Führen Sie die Aufgaben 1 bis 4 unten aus, wenn Sie das nahtlose einmalige Anmelden mit Azure AD Connect deaktiviert haben. Wenn Sie das nahtlose einmalige Anmelden stattdessen mithilfe von PowerShell deaktiviert haben, fahren Sie direkt mit Aufgabe 5 fort.
 
-   1. Laden Sie zuerst [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview) herunter, und installieren Sie die Software.
+   1. Laden Sie zuerst [Azure AD PowerShell](/powershell/azure/active-directory/overview) herunter, und installieren Sie die Software.
    2. Navigieren Sie zum Ordner `%programfiles%\Microsoft Azure Active Directory Connect`.
    3. Importieren Sie das PowerShell-Modul „Nahtlose SSO“ mit folgendem Befehl: `Import-Module .\AzureADSSO.psd1`.
    4. Führen Sie PowerShell als Administrator aus. Rufen Sie in PowerShell `New-AzureADSSOAuthenticationContext` auf. Mit diesem Befehl sollte ein Popupfenster geöffnet werden, in dem Sie die Anmeldeinformationen des globalen Administrators Ihres Mandanten eingeben können.

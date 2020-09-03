@@ -15,12 +15,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3037dd2e03062ebab0c48438aa4345a766a22fc8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 725b3b712313c199382cebe32bed98f2115fc262
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608924"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231162"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Behandeln von „Benutzer mit Risikomarkierung“ im Azure Active Directory-Portal
 
@@ -40,7 +40,7 @@ Dem Bericht „Benutzer mit Risikomarkierung“ können Sie für jeden Benutzer 
 - Festlegen, dass der Benutzer bei der nächsten Anmeldung eine sichere Kennwortzurücksetzung ausführen muss
 - Verwerfen des Benutzerrisikos, ohne eine Korrekturaktion auszuführen
 
-Weitere Informationen finden Sie unter [Sicherheitsbericht „Benutzer mit Risikomarkierung“](concept-user-at-risk.md).
+Weitere Informationen finden Sie unter [Sicherheitsbericht „Benutzer mit Risikomarkierung“](../identity-protection/overview-identity-protection.md).
 
 ### <a name="azure-ad-subscription-for-office-365-customers"></a>Azure AD-Abonnement für Office 365-Kunden
 
@@ -91,5 +91,5 @@ Darüber hinaus empfiehlt sich Folgendes:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
-* [Sicherheitsbericht „Benutzer mit Risikomarkierung“ im Azure Active Directory-Portal](concept-user-at-risk.md)
+* [Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md)
+* [Sicherheitsbericht „Benutzer mit Risikomarkierung“ im Azure Active Directory-Portal](../identity-protection/overview-identity-protection.md)

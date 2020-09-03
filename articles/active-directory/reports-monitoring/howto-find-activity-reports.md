@@ -14,12 +14,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33c4eeda7f7df1a8238f54fa1afd1bc069f64e96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b705cf6ac6fd25c7794db7651db5bc5c5c0e790c
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608210"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230618"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Speicherorte von Aktivitätsberichten im Azure-Portal
 
@@ -114,7 +114,7 @@ Sie können den Bericht „Anmeldungen“ verwenden, um Details zur Anwendungsnu
 
 Berichte zu anomalen Aktivitäten enthalten Informationen zu sicherheitsbezogenen Risikoerkennungen, die in Azure AD erkannt und für die Berichte erstellt werden können.
 
-In der folgenden Tabelle sind die Azure AD-Sicherheitsberichte zu anomalen Aktivitäten und die entsprechenden Risikoerkennungstypen im Azure-Portal aufgeführt. Weitere Informationen finden Sie unter [Azure Active Directory risk detections](concept-risk-events.md) (Azure Active Directory-Risikoerkennungen).  
+In der folgenden Tabelle sind die Azure AD-Sicherheitsberichte zu anomalen Aktivitäten und die entsprechenden Risikoerkennungstypen im Azure-Portal aufgeführt. Weitere Informationen finden Sie unter [Azure Active Directory risk detections](../identity-protection/overview-identity-protection.md) (Azure Active Directory-Risikoerkennungen).  
 
 
 | Bericht zur anormalen Aktivität von Azure AD |  Identity Protection-Risikoerkennungstyp|
@@ -136,8 +136,8 @@ Folgende Azure AD-Sicherheitsberichte zu anomalen Aktivitäten sind nicht als R
 
 Sie können im [Azure-Portal](https://portal.azure.com) auf dem Blatt **Azure Active Directory** im Abschnitt **Sicherheit** auf die Berichte zu erkannten Risikoerkennungen zugreifen. Die erkannten Risikoerkennungen werden in den folgenden Berichten nachverfolgt:   
 
-- [Gefährdete Benutzer](concept-user-at-risk.md)
-- [Riskante Anmeldungen](concept-risky-sign-ins.md)
+- [Gefährdete Benutzer](../identity-protection/overview-identity-protection.md)
+- [Riskante Anmeldungen](../identity-protection/overview-identity-protection.md)
 
     ![Sicherheitsberichte](./media/howto-find-activity-reports/04.png "Sicherheitsberichte")
 
@@ -228,4 +228,4 @@ Sie haben zwei Möglichkeiten, um die Daten länger als 30 Tage beibehalten. Mit
 
 * [Berichte zu Überwachungsaktivitäten im Azure Active Directory-Portal](concept-audit-logs.md)
 * [Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal](concept-sign-ins.md)
-* [Azure Active Directory-Risikoereignisse](concept-risk-events.md)
+* [Azure Active Directory-Risikoereignisse](../identity-protection/overview-identity-protection.md)

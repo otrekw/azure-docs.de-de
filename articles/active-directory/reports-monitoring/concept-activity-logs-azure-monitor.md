@@ -17,12 +17,12 @@ ms.date: 04/09/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0822bdd886a9a29f2cdb6843d3dc4404d7360f32
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: f4253fe52346890eaa993a18e8e9bc9b270bffd7
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261022"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229853"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure AD-Aktivitätsprotokolle in Azure Monitor
 
@@ -126,7 +126,7 @@ In der folgenden Tabelle sind die geschätzten Kosten pro Monat für einen einfa
 
 
 
-Informationen zum Überprüfen der Kosten im Zusammenhang mit der Verwaltung von Azure Monitor-Protokollen finden Sie unter [Verwalten der Kosten durch Steuerung der Datenmenge und -aufbewahrung in Azure Monitor-Protokollen](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-cost-storage).
+Informationen zum Überprüfen der Kosten im Zusammenhang mit der Verwaltung von Azure Monitor-Protokollen finden Sie unter [Verwalten der Kosten durch Steuerung der Datenmenge und -aufbewahrung in Azure Monitor-Protokollen](../../azure-monitor/platform/manage-cost-storage.md).
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
@@ -180,13 +180,13 @@ Dieser Abschnitt beantwortet häufig gestellte Fragen und bespricht bekannte Pro
 
 **F: Welche SIEM-Tools werden derzeit unterstützt?** 
 
-**A:** **A:** Derzeit wird Azure Monitor von [Splunk](tutorial-integrate-activity-logs-with-splunk.md), IBM QRadar, [Sumo Logic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory), [ArcSight](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-arcsight), LogRhythm und Logz.io unterstützt. Weitere Informationen zur Funktionsweise von Connectors finden Sie unter [Streamen von Azure-Überwachungsdaten an einen Event Hub für die Verwendung durch ein externes Tool](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
+**A:** **A:** Derzeit wird Azure Monitor von [Splunk](./howto-integrate-activity-logs-with-splunk.md), IBM QRadar, [Sumo Logic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory), [ArcSight](./howto-integrate-activity-logs-with-arcsight.md), LogRhythm und Logz.io unterstützt. Weitere Informationen zur Funktionsweise von Connectors finden Sie unter [Streamen von Azure-Überwachungsdaten an einen Event Hub für die Verwendung durch ein externes Tool](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
 
 ---
 
 **F: Wie integriere ich Azure AD-Aktivitätsprotokolle in meine Splunk-Instanz?**
 
-**A:** [Leiten Sie die Azure AD-Aktivitätsprotokolle zunächst an einen Event Hub weiter](quickstart-azure-monitor-stream-logs-to-event-hub.md), und führen Sie dann die Schritte zum [Integrieren von Aktivitätsprotokollen in Splunk](tutorial-integrate-activity-logs-with-splunk.md) aus.
+**A:** [Leiten Sie die Azure AD-Aktivitätsprotokolle zunächst an einen Event Hub weiter](./tutorial-azure-monitor-stream-logs-to-event-hub.md), und führen Sie dann die Schritte zum [Integrieren von Aktivitätsprotokollen in Splunk](./howto-integrate-activity-logs-with-splunk.md) aus.
 
 ---
 
@@ -198,7 +198,7 @@ Dieser Abschnitt beantwortet häufig gestellte Fragen und bespricht bekannte Pro
 
 **F: Kann ich über einen Event Hub auf die Daten zugreifen, ohne ein externes SIEM-Tool zu verwenden?** 
 
-**A:** Ja. Sie können die [Event Hubs-API](../../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md) nutzen, um über Ihre benutzerdefinierte Anwendung auf die Protokolle zuzugreifen. 
+**A:** Ja. Sie können die [Event Hubs-API](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md) nutzen, um über Ihre benutzerdefinierte Anwendung auf die Protokolle zuzugreifen. 
 
 ---
 
@@ -206,5 +206,5 @@ Dieser Abschnitt beantwortet häufig gestellte Fragen und bespricht bekannte Pro
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Archivieren von Aktivitätsprotokollen in einem Speicherkonto](quickstart-azure-monitor-route-logs-to-storage-account.md)
-* [Weiterleiten von Aktivitätsprotokollen an Event Hub](quickstart-azure-monitor-stream-logs-to-event-hub.md)
+* [Weiterleiten von Aktivitätsprotokollen an Event Hub](./tutorial-azure-monitor-stream-logs-to-event-hub.md)
 * [Integrieren von Aktivitätsprotokollen in Azure Monitor](howto-integrate-activity-logs-with-log-analytics.md)

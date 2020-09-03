@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c915898d3eec4494b6a300e88ffde216f21d5d68
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 396344ba90aa3850d7d23dc40d6df95f6d1f6c3f
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358122"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279515"
 ---
 # <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>Datenschutz und Passthrough-Authentifizierung von Azure Active Directory
 
@@ -67,7 +67,7 @@ Weitere Informationen zu verwandten DSGVO-Anforderungen für Azure AD Connect fi
 
 ### <a name="delete-authentication-agent-event-logs"></a>Löschen der Ereignisprotokolle des Authentifizierungs-Agents
 
-Mit diesem Produkt können auch **Windows-Ereignisprotokolle** erstellt werden. Weitere Informationen finden Sie in [diesem Artikel](https://msdn.microsoft.com/library/windows/desktop/aa385780(v=vs.85).aspx).
+Mit diesem Produkt können auch **Windows-Ereignisprotokolle** erstellt werden. Weitere Informationen finden Sie in [diesem Artikel](/windows/win32/wes/windows-event-log).
 
 Öffnen Sie zum Anzeigen von Protokollen zum Agent für die Passthrough-Authentifizierung die **Ereignisanzeige** auf dem Server, und sehen Sie unter **Anwendungs- und Dienstprotokolle\Microsoft\AzureAdConnect\AuthenticationAgent\Admin** nach.
 
@@ -103,7 +103,7 @@ Führen Sie diese Schritte aus, um für das Skript die Ausführung nach jeweils 
  
 ### <a name="note-about-domain-controller-logs"></a>Hinweis zu Domänencontrollerprotokollen
 
-Wenn die Überwachungsprotokollierung aktiviert ist, kann dieses Produkt Sicherheitsprotokolle für Ihre Domänencontroller generieren. Weitere Informationen zum Konfigurieren von Überwachungsrichtlinien finden Sie in [diesem Artikel](https://technet.microsoft.com/library/dd277403.aspx).
+Wenn die Überwachungsprotokollierung aktiviert ist, kann dieses Produkt Sicherheitsprotokolle für Ihre Domänencontroller generieren. Weitere Informationen zum Konfigurieren von Überwachungsrichtlinien finden Sie in [diesem Artikel](/previous-versions/tn-archive/dd277403(v=technet.10)).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Die Microsoft-Datenschutzrichtlinie im Trust Center](https://www.microsoft.com/trustcenter)

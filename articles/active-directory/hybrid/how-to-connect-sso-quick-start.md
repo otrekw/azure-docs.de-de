@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc955fe64ae68cb1248b0e616357bccf82f5f036
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 1387c8525ec14b1db330252b78474bba66db8b5b
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87115752"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276132"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Nahtloses einmaliges Anmelden mit Azure Active Directory: Schnellstart
 
@@ -40,7 +40,7 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt werden:
    - Wenn es Ihre Firewall oder Ihr Proxy zulässt, fügen Sie die Verbindungen zur Zulassungsliste für **\*.msappproxy.net**-URLs über Port 443 hinzu. Aktivieren Sie andernfalls den Zugriff auf die [IP-Adressbereiche für das Azure-Rechenzentrum](https://www.microsoft.com/download/details.aspx?id=41653), die wöchentlich aktualisiert werden. Diese Voraussetzung gilt nur, wenn Sie das Feature aktivieren. Sie ist für tatsächliche Benutzeranmeldungen nicht erforderlich.
 
     >[!NOTE]
-    >Die Azure AD Connect-Versionen 1.1.557.0, 1.1.558.0, 1.1.561.0 und 1.1.614.0 weisen ein Problem in Bezug auf die Kennworthashsynchronisierung auf. Wenn Sie die Kennworthashsynchronisierung _nicht_ zusammen mit der Passthrough-Authentifizierung verwenden möchten, finden Sie weitere Informationen dazu in den [Versionshinweisen zu Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470).
+    >Die Azure AD Connect-Versionen 1.1.557.0, 1.1.558.0, 1.1.561.0 und 1.1.614.0 weisen ein Problem in Bezug auf die Kennworthashsynchronisierung auf. Wenn Sie die Kennworthashsynchronisierung _nicht_ zusammen mit der Passthrough-Authentifizierung verwenden möchten, finden Sie weitere Informationen dazu in den [Versionshinweisen zu Azure AD Connect](./reference-connect-version-history.md).
 
 * **Verwenden Sie eine unterstützte Azure AD Connect-Topologie:** Stellen Sie sicher, dass Sie eine der [hier](plan-connect-topologies.md) beschriebenen, von Azure AD Connect unterstützten Topologien verwenden.
 
@@ -51,7 +51,7 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt werden:
     * Sie über Azure AD Connect mit Azure AD synchronisieren.
     * Benutzer enthält, für die Sie nahtloses SSO aktivieren möchten.
     
-* **Aktivieren Sie die moderne Authentifizierung:** Sie müssen die [moderne Authentifizierung](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016) auf Ihrem Mandanten aktivieren, damit dieses Feature funktioniert.
+* **Aktivieren Sie die moderne Authentifizierung:** Sie müssen die [moderne Authentifizierung](/office365/enterprise/modern-auth-for-office-2013-and-2016) auf Ihrem Mandanten aktivieren, damit dieses Feature funktioniert.
 
 * **Verwenden Sie die neuesten Versionen der Office 365-Clients:** Zur automatischen Anmeldung bei Office 365-Clients (Outlook, Word, Excel und anderen) benötigen Ihre Benutzer Versionen ab 16.0.8730.xxxx.
 
@@ -187,11 +187,11 @@ Stellen Sie sicher, dass der Computer mit macOS in AD eingebunden ist. Anweisung
 
 #### <a name="microsoft-edge-based-on-chromium-all-platforms"></a>Microsoft Edge auf Chromium-Basis (alle Plattformen)
 
-Wenn Sie die Richtlinieneinstellungen [AuthNegotiateDelegateAllowlist](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authnegotiatedelegateallowlist) oder [AuthServerAllowlist](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authserverallowlist) in Ihrer Umgebung überschrieben haben, stellen Sie sicher, dass Sie ihnen auch die URL von Azure AD (`https://autologon.microsoftazuread-sso.com`) hinzufügen.
+Wenn Sie die Richtlinieneinstellungen [AuthNegotiateDelegateAllowlist](/DeployEdge/microsoft-edge-policies#authnegotiatedelegateallowlist) oder [AuthServerAllowlist](/DeployEdge/microsoft-edge-policies#authserverallowlist) in Ihrer Umgebung überschrieben haben, stellen Sie sicher, dass Sie ihnen auch die URL von Azure AD (`https://autologon.microsoftazuread-sso.com`) hinzufügen.
 
 #### <a name="microsoft-edge-based-on-chromium-macos-and-other-non-windows-platforms"></a>Microsoft Edge auf Chromium-Basis (macOS und andere Nicht-Windows-Plattformen)
 
-Für Microsoft Edge auf Chromium-Basis auf macOS und anderen Nicht-Windows-Plattformen finden Sie unter [Microsoft Edge – Richtlinien](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authserverallowlist) Informationen zum Hinzufügen der Azure AD-URL zu Ihrer Zulassungsliste für die integrierte Authentifizierung.
+Für Microsoft Edge auf Chromium-Basis auf macOS und anderen Nicht-Windows-Plattformen finden Sie unter [Microsoft Edge – Richtlinien](/DeployEdge/microsoft-edge-policies#authserverallowlist) Informationen zum Hinzufügen der Azure AD-URL zu Ihrer Zulassungsliste für die integrierte Authentifizierung.
 
 #### <a name="google-chrome-all-platforms"></a>Google Chrome (alle Plattformen)
 
@@ -211,7 +211,7 @@ Das nahtlose einmalige Anmelden funktioniert in den Browsern Firefox und Microso
 
 Um das Feature für einen bestimmten Benutzer zu testen, stellen Sie sicher, dass alle folgenden Bedingungen erfüllt werden:
   - Der Benutzer meldet sich auf einem Gerät des Unternehmens an.
-  - Das Gerät ist mit Ihrer Active Directory-Domäne verknüpft. Das Gerät muss _nicht_[In Azure AD eingebunden](../active-directory-azureadjoin-overview.md) sein.
+  - Das Gerät ist mit Ihrer Active Directory-Domäne verknüpft. Das Gerät muss _nicht_[In Azure AD eingebunden](../devices/overview.md) sein.
   - Es muss eine direkte Verbindung zwischen dem Gerät und Ihrem Domänencontroller (DC) bestehen, entweder über das Unternehmensnetzwerk (Kabel- oder Funknetzwerk) oder per Remotezugriff, z.B. über eine VPN-Verbindung.
   - Sie haben [das Feature für diesen Benutzer mithilfe von Gruppenrichtlinien ausgerollt](#step-3-roll-out-the-feature).
 

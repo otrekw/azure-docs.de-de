@@ -4,12 +4,12 @@ description: Der Azure Resource Graph-Explorer im Azure-Portal unterstützt Tast
 ms.date: 08/25/2020
 ms.topic: reference
 ms.custom: accessibility
-ms.openlocfilehash: f5995498f2b95828a7c03dbcd5669491e62de2e7
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 02471a6efc4ac4d002ca641b792c1c721ffeb3f7
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88848689"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146435"
 ---
 # <a name="keyboard-shortcuts-for-azure-resource-graph-explorer"></a>Tastenkombinationen für den Azure Resource Graph-Explorer
 
@@ -22,7 +22,6 @@ In diesem Artikel sind die Tastenkombinationen aufgelistet, die auf der Seite de
 |Auskommentieren/Auskommentierung aufheben |<kbd>STRG</kbd>+<kbd>/</kbd> | <kbd>Cmd</kbd>+<kbd>/</kbd> |
 |Einzug verkleinern |<kbd>STRG</kbd>+<kbd>[</kbd> |<kbd>Cmd</kbd>+<kbd>[</kbd> |
 |Einzug vergrößern |<kbd>STRG</kbd>+<kbd>]</kbd> |<kbd>Cmd</kbd>+<kbd>]</kbd> |
-|Alle auswählen |<kbd>STRG</kbd>+<kbd>A</kbd> |<kbd>Cmd</kbd>+<kbd>A</kbd> |
 |Zeile nach unten verschieben |<kbd>ALT</kbd>+<kbd>↓</kbd> |<kbd>Option</kbd>+<kbd>↓</kbd> |
 |Zeile nach oben verschieben |<kbd>ALT</kbd>+<kbd>↑</kbd> |<kbd>Option</kbd>+<kbd>↑</kbd> |
 |Replace |<kbd>STRG</kbd>+<kbd>F</kbd> |<kbd>Cmd</kbd>+<kbd>ALT</kbd>+<kbd>F</kbd> |

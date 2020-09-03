@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbfbad53fd2361752824292e0ade82f3ac231916
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2bb8c6c64e0a68f5176c4eb0c0177c5220394695
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094410"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268756"
 ---
 # <a name="enforce-tls-12-for-the-azure-ad-registration-service"></a>Erzwingen von TLS 1.2 für den Azure AD Device Registration-Dienst
 
@@ -52,7 +52,7 @@ Sie müssen sicherstellen, dass TLS 1.2 auf allen Computern aktiviert ist, die 
 
 ## <a name="update-ad-fs-servers"></a>Aktualisieren von AD FS-Servern
 
-Sie müssen sicherstellen, dass TLS 1.2 auf allen AD FS-Servern aktiviert ist, die für die Kommunikation mit dem Azure AD Device Registration-Dienst verwendet werden. Informationen zum Aktivieren/Überprüfen dieser Konfiguration finden Sie unter [Verwalten von SSL/TLS-Protokollen und Verschlüsselungssammlungen für AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs).
+Sie müssen sicherstellen, dass TLS 1.2 auf allen AD FS-Servern aktiviert ist, die für die Kommunikation mit dem Azure AD Device Registration-Dienst verwendet werden. Informationen zum Aktivieren/Überprüfen dieser Konfiguration finden Sie unter [Verwalten von SSL/TLS-Protokollen und Verschlüsselungssammlungen für AD FS](/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs).
 
 ## <a name="client-updates"></a>Clientupdates
 
@@ -68,4 +68,4 @@ Die folgenden Clients können TLS 1.2 bekanntermaßen nicht unterstützen. Aktu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Übersicht über TLS/SSL (Schannel SSP)](https://docs.microsoft.com/windows-server/security/tls/tls-ssl-schannel-ssp-overview)
+[Übersicht über TLS/SSL (Schannel SSP)](/windows-server/security/tls/tls-ssl-schannel-ssp-overview)

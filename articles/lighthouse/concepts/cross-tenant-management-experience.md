@@ -3,12 +3,12 @@ title: Mandantenübergreifende Verwaltungsmöglichkeiten
 description: Die delegierte Azure-Ressourcenverwaltung ermöglicht eine mandantenübergreifende Verwaltungserfahrung.
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0ad1c0944076f24363961da21ee347dbd7c0239c
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 41e93f2a6a9fb21720dd2348dd611160b05b65c0
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163508"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146911"
 ---
 # <a name="cross-tenant-management-experiences"></a>Mandantenübergreifende Verwaltungsmöglichkeiten
 
@@ -35,7 +35,7 @@ Sie können Verwaltungsaufgaben für delegierte Ressourcen direkt im Portal oder
 
 Das Azure PowerShell-Cmdlet [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) zeigt die Attribute `HomeTenantId` und `ManagedByTenantIds` für jedes Abonnement, sodass Sie ermitteln können, ob ein zurückgegebenes Abonnement zu einem verwalteten Mandanten oder Ihrem verwaltenden Mandanten gehört.
 
-Ebenso zeigen Azure CLI-Befehle wie [az account list](/cli/azure/account?view=azure-cli-latest#az-account-list) die Attribute `homeTenantId` und `managedByTenants` an.
+Ebenso zeigen Azure CLI-Befehle wie [az account list](/cli/azure/account#az-account-list) die Attribute `homeTenantId` und `managedByTenants` an.
 
 > [!TIP]
 > Wenn diese Werte bei Verwendung der Azure-Befehlszeilenschnittstelle nicht angezeigt werden, löschen Sie den Cache, indem Sie `az account clear` gefolgt von `az login --identity` ausführen.

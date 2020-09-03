@@ -14,18 +14,18 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4c637a01825616334cda8faa594efd08f29de8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e4950906e016b9e1915d18ecacc1edcfda8b4d09
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74213076"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279396"
 ---
 # <a name="azure-ad-connect---msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>Azure AD Connect: „msExchUserHoldPolicies“ und „cloudMsExchUserHoldPolicies“
 Im folgenden Referenzdokument werden diese von Exchange verwendeten Attribute beschrieben, und Sie erfahren, wie Sie die Standardsynchronisierungsregeln ordnungsgemäß bearbeiten.
 
 ## <a name="what-are-msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>Worum handelt es sich bei „msExchUserHoldPolicies“ und „cloudMsExchUserHoldPolicies“?
-Für Exchange Server sind zwei [Aufbewahrungsarten](https://docs.microsoft.com/Exchange/policy-and-compliance/holds/holds?view=exchserver-2019) verfügbar: Beweissicherungsverfahren und In-Situ-Aufbewahrung. Bei aktiviertem Beweissicherungsverfahren werden alle Postfachelemente aufbewahrt.  Bei der In-Situ-Aufbewahrung werden nur Elemente aufbewahrt, die den Kriterien einer Suchabfrage entsprechen, die Sie mithilfe des In-Situ-eDiscovery-Tools definiert haben.
+Für Exchange Server sind zwei [Aufbewahrungsarten](/Exchange/policy-and-compliance/holds/holds?view=exchserver-2019) verfügbar: Beweissicherungsverfahren und In-Situ-Aufbewahrung. Bei aktiviertem Beweissicherungsverfahren werden alle Postfachelemente aufbewahrt.  Bei der In-Situ-Aufbewahrung werden nur Elemente aufbewahrt, die den Kriterien einer Suchabfrage entsprechen, die Sie mithilfe des In-Situ-eDiscovery-Tools definiert haben.
 
 Anhand der Attribute „MsExchUserHoldPolicies“ und „cloudMsExchUserHoldPolicies“ können lokale AD-Instanzen und Azure AD-Instanzen die Benutzer ermitteln, für die eine Aufbewahrungspflicht gilt (abhängig davon, ob sie eine lokale Exchange-Instanz oder Exchange Online verwenden).
 

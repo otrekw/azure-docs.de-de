@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/15/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 960e480bc3271a24f1fa898e1af6c55bcaaada7b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3f004be0afc6c73fdabe57e568cd57b51e9abcc5
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037558"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299681"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>Azure Spring Cloud: CI/CD mit GitHub Actions
 
@@ -164,7 +164,7 @@ jobs:
 ```
 
 ## <a name="deploy-with-maven-plugin"></a>Bereitstellen mit Maven-Plug-In
-Eine weitere Option ist die Verwendung des [Maven-Plug-Ins](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-maven), um die JAR-Datei bereitzustellen und die App-Einstellungen zu aktualisieren. Der Befehl `mvn azure-spring-cloud:deploy` ist idempotent und erstellt Apps bei Bedarf automatisch. Entsprechende Apps müssen nicht im Voraus erstellt werden.
+Eine weitere Option ist die Verwendung des [Maven-Plug-Ins](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart), um die JAR-Datei bereitzustellen und die App-Einstellungen zu aktualisieren. Der Befehl `mvn azure-spring-cloud:deploy` ist idempotent und erstellt Apps bei Bedarf automatisch. Entsprechende Apps müssen nicht im Voraus erstellt werden.
 
 ```
 name: AzureSpringCloud

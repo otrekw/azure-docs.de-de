@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/04/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: b7b3236fe1e4052689657316df851753de7edbe5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5a67ebbf0f83f2dc3a340f52cab7437bbfaa350e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083683"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299166"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Behandlung von allgemeinen Problemen mit Azure Spring Cloud
 
@@ -138,7 +138,7 @@ Sollte der Abruf unterbrochen werden, können Sie mithilfe des folgenden Befehls
 
 `az spring-cloud app show-deploy-log -n <app-name>`
 
-Beachten Sie aber, dass die Azure Spring Cloud-Dienstinstanz nur jeweils einen Buildauftrag pro Quellpaket auslösen kann. Weitere Informationen finden Sie unter [Schnellstart: Starten einer Azure Spring Cloud-Anwendung über das Azure-Portal](spring-cloud-quickstart-launch-app-portal.md) und unter [Einrichten einer Stagingumgebung](spring-cloud-howto-staging-environment.md).
+Beachten Sie aber, dass die Azure Spring Cloud-Dienstinstanz nur jeweils einen Buildauftrag pro Quellpaket auslösen kann. Weitere Informationen finden Sie unter [Schnellstart: Starten einer Azure Spring Cloud-Anwendung über das Azure-Portal](spring-cloud-quickstart.md) und unter [Einrichten einer Stagingumgebung](spring-cloud-howto-staging-environment.md).
 
 ### <a name="my-application-cant-be-registered"></a>Meine Anwendung kann nicht registriert werden
 
