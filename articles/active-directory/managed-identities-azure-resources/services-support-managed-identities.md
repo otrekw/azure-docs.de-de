@@ -2,21 +2,21 @@
 title: Azure-Dienste, die verwaltete Identitäten unterstützen – Azure AD
 description: Liste der Dienste, die verwaltete Identitäten für Azure-Ressourcen und die Azure AD-Authentifizierung unterstützen
 services: active-directory
-author: MarkusVi
-ms.author: markvi
+author: barclayn
+ms.author: barclayn
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
-manager: markvi
+manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 13521017076c609c2fadb4362d5cccdf12d94098
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: e62fc34ad02303f61214f754f6506c39af76fc94
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873584"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267444"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen
 
@@ -39,7 +39,7 @@ Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen 
 
 Konfigurieren Sie die verwaltete Identität für Azure API Management anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
 
-- [Azure Resource Manager-Vorlage](/azure/api-management/api-management-howto-use-managed-service-identity)
+- [Azure Resource Manager-Vorlage](../../api-management/api-management-howto-use-managed-service-identity.md)
 
 
 ### <a name="azure-app-service"></a>Azure App Service
@@ -51,10 +51,10 @@ Konfigurieren Sie die verwaltete Identität für Azure API Management anhand der
 
 Konfigurieren Sie die verwaltete Identität für Azure App Service anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
 
-- [Azure portal](/azure/app-service/overview-managed-identity#using-the-azure-portal)
-- [Azure-Befehlszeilenschnittstelle](/azure/app-service/overview-managed-identity#using-the-azure-cli)
-- [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
-- [Azure Resource Manager-Vorlage](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
+- [Azure portal](../../app-service/overview-managed-identity.md#using-the-azure-portal)
+- [Azure-Befehlszeilenschnittstelle](../../app-service/overview-managed-identity.md#using-the-azure-cli)
+- [Azure PowerShell](../../app-service/overview-managed-identity.md#using-azure-powershell)
+- [Azure Resource Manager-Vorlage](../../app-service/overview-managed-identity.md#using-an-azure-resource-manager-template)
 
 ### <a name="azure-arc-enabled-kubernetes"></a>Kubernetes mit Azure Arc-Aktivierung
 
@@ -63,7 +63,7 @@ Konfigurieren Sie die verwaltete Identität für Azure App Service anhand der fo
 | Vom System zugewiesen | Vorschau | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar | 
 | Vom Benutzer zugewiesen | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
 
-Kubernetes mit Azure Arc-Aktivierung [unterstützt derzeit systemseitig zugewiesene Identitäten](https://docs.microsoft.com/azure/azure-arc/kubernetes/connect-cluster#azure-arc-agents-for-kubernetes). Das Zertifikat der Identität für den verwalteten Dienst wird von allen Kubernetes-Agents mit Azure Arc-Aktivierung zur Kommunikation mit Azure verwendet.
+Kubernetes mit Azure Arc-Aktivierung [unterstützt derzeit systemseitig zugewiesene Identitäten](../../azure-arc/kubernetes/connect-cluster.md#azure-arc-agents-for-kubernetes). Das Zertifikat der Identität für den verwalteten Dienst wird von allen Kubernetes-Agents mit Azure Arc-Aktivierung zur Kommunikation mit Azure verwendet.
 
 ### <a name="azure-blueprints"></a>Azure Blueprint
 
@@ -165,10 +165,10 @@ Typ der verwalteten Identität |Allgemein verfügbar<br>Globale Azure-Regionen |
 
 Konfigurieren Sie die verwaltete Identität für Azure Functions anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
 
-- [Azure portal](/azure/app-service/overview-managed-identity#using-the-azure-portal)
-- [Azure-Befehlszeilenschnittstelle](/azure/app-service/overview-managed-identity#using-the-azure-cli)
-- [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
-- [Azure Resource Manager-Vorlage](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
+- [Azure portal](../../app-service/overview-managed-identity.md#using-the-azure-portal)
+- [Azure-Befehlszeilenschnittstelle](../../app-service/overview-managed-identity.md#using-the-azure-cli)
+- [Azure PowerShell](../../app-service/overview-managed-identity.md#using-azure-powershell)
+- [Azure Resource Manager-Vorlage](../../app-service/overview-managed-identity.md#using-an-azure-resource-manager-template)
 
 ### <a name="azure-iot-hub"></a>Azure IoT Hub
 
@@ -196,7 +196,7 @@ Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen 
 | Vom Benutzer zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Nicht verfügbar | ![Verfügbar][check] |
 
 
-Weitere Informationen finden Sie unter [Verwenden verwalteter Identitäten in Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/use-managed-identity).
+Weitere Informationen finden Sie unter [Verwenden verwalteter Identitäten in Azure Kubernetes Service](../../aks/use-managed-identity.md).
 
 
 ### <a name="azure-logic-apps"></a>Azure Logic Apps
@@ -209,8 +209,8 @@ Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen 
 
 Konfigurieren Sie die verwaltete Identität für Azure Logic Apps anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
 
-- [Azure portal](/azure/logic-apps/create-managed-service-identity#enable-system-assigned-identity-in-azure-portal)
-- [Azure Resource Manager-Vorlage](https://docs.microsoft.com/azure/logic-apps/logic-apps-azure-resource-manager-templates-overview)
+- [Azure portal](../../logic-apps/create-managed-service-identity.md#enable-system-assigned-identity-in-azure-portal)
+- [Azure Resource Manager-Vorlage](../../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
 
 
 ### <a name="azure-policy"></a>Azure Policy
@@ -224,14 +224,14 @@ Konfigurieren Sie die verwaltete Identität für Azure Policy anhand der folgend
 
 - [Azure portal](../../governance/policy/tutorials/create-and-manage.md#assign-a-policy)
 - [PowerShell](../../governance/policy/how-to/remediate-resources.md#create-managed-identity-with-powershell)
-- [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create)
-- [Azure-Ressourcen-Manager-Vorlagen](https://docs.microsoft.com/azure/templates/microsoft.authorization/policyassignments)
-- [REST](https://docs.microsoft.com/rest/api/resources/policyassignments/create)
+- [Azure-Befehlszeilenschnittstelle](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create)
+- [Azure-Ressourcen-Manager-Vorlagen](/azure/templates/microsoft.authorization/policyassignments)
+- [REST](/rest/api/resources/policyassignments/create)
 
 
 ### <a name="azure-service-fabric"></a>Azure Service Fabric
 
-[Verwaltete Identität für Service Fabric-Anwendungen](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity) ist in allen Regionen verfügbar.
+[Verwaltete Identität für Service Fabric-Anwendungen](../../service-fabric/concepts-managed-identity.md) ist in allen Regionen verfügbar.
 
 Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
@@ -291,9 +291,9 @@ Konfigurieren Sie die verwaltete Identität für Azure Virtual Machines anhand d
 | Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
 | Vom System zugewiesen | Nicht verfügbar. | Nicht verfügbar. | Nicht verfügbar. | Nicht verfügbar. | 
-| Vom Benutzer zugewiesen | [Verfügbar in unterstützten Regionen](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#regions) | Nicht verfügbar. | Nicht verfügbar. | Nicht verfügbar. |
+| Vom Benutzer zugewiesen | [Verfügbar in unterstützten Regionen](../../virtual-machines/windows/image-builder-overview.md#regions) | Nicht verfügbar. | Nicht verfügbar. | Nicht verfügbar. |
 
-Informationen zum Konfigurieren der verwalteten Identität für Azure VM Image Builder (in Regionen, in denen sie verfügbar ist) finden Sie in der [Übersicht über Image Builder](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#permissions).
+Informationen zum Konfigurieren der verwalteten Identität für Azure VM Image Builder (in Regionen, in denen sie verfügbar ist) finden Sie in der [Übersicht über Image Builder](../../virtual-machines/windows/image-builder-overview.md#permissions).
 ### <a name="azure-signalr-service"></a>Azure SignalR Service
 
 Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
@@ -397,7 +397,7 @@ Konfigurieren Sie den Zugriff auf Azure Resource Manager anhand der folgenden Li
 | Azure China 21Vianet | `https://*.asazure.chinacloudapi.cn` | ![Verfügbar][check] |
 
 > [!Note]
-> Microsoft Power BI bietet auch [Unterstützung für verwaltete Identitäten](https://docs.microsoft.com/azure/stream-analytics/powerbi-output-managed-identity).
+> Microsoft Power BI bietet auch [Unterstützung für verwaltete Identitäten](../../stream-analytics/powerbi-output-managed-identity.md).
 
 
 [check]: media/services-support-managed-identities/check.png "Verfügbar"

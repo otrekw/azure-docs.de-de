@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: addc4edba734c350a1e0e4246203c64315f345dd
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: b4581b7e93cde9d6ba9a20d46ee263a879c05402
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88081050"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961872"
 ---
 # <a name="deployment-best-practices"></a>Bewährte Methoden der Bereitstellung
 
@@ -127,7 +127,7 @@ Melden Sie sich in Ihrem Skript mit `az login --service-principal`an, und geben 
 
 ### <a name="java"></a>Java
 
-Verwenden Sie die Kudu-API [zipdeploy/](deploy-zip.md) für die Bereitstellung von JAR-Anwendungen und [wardeploy/](deploy-zip.md#deploy-war-file) für WAR-Apps. Wenn Sie Jenkins verwenden, können Sie diese APIs direkt in der Bereitstellungsphase verwenden. [hier finden Sie weitere Informationen](../jenkins/execute-cli-jenkins-pipeline.md)
+Verwenden Sie die Kudu-API [zipdeploy/](deploy-zip.md) für die Bereitstellung von JAR-Anwendungen und [wardeploy/](deploy-zip.md#deploy-war-file) für WAR-Apps. Wenn Sie Jenkins verwenden, können Sie diese APIs direkt in der Bereitstellungsphase verwenden. [hier finden Sie weitere Informationen](/azure/developer/jenkins/deploy-to-azure-app-service-using-azure-cli)
 
 ### <a name="node"></a>Node
 
@@ -149,7 +149,7 @@ Verwenden Sie immer einen lokalen Cache zusammen mit [Bereitstellungsslots](depl
 
 Wenn Ihr App Service-Plan mehr als 90 % der verfügbaren CPU oder des Arbeitsspeichers verwendet, hat der zugrunde liegende virtuelle Computer möglicherweise Probleme beim Verarbeiten Ihrer Bereitstellung. Wenn dies geschieht, skalieren Sie die Anzahl Ihrer Instanzen vorübergehend hoch, um die Bereitstellung auszuführen. Nachdem die Bereitstellung abgeschlossen ist, können Sie die Anzahl der Instanzen auf den vorherigen Wert zurücksetzen.
 
-Unter [Übersicht über die Azure App Service-Diagnose](https://docs.microsoft.com/azure/app-service/overview-diagnostics) finden Sie spezifische bewährte Methoden für Ihre Ressource.
+Unter [Übersicht über die Azure App Service-Diagnose](./overview-diagnostics.md) finden Sie spezifische bewährte Methoden für Ihre Ressource.
 
 - Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer Web-App.
 - Klicken Sie im linken Navigationsbereich auf **Diagnose und Problembehandlung**, um die App Service-Diagnose zu öffnen.

@@ -3,25 +3,27 @@ title: Anzeigen von Metriken mit Azure Monitor
 description: In diesem Artikel wird das Überwachen von Metriken mit den Azure-Portal-Diagrammen und der Azure-Befehlszeilenschnittstelle beschrieben.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/08/2019
-ms.author: juliako
+ms.topic: how-to
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 154e5b5d9639203810e9d16dec4e2907fe5ee80a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: f5a3488be3fdc0eb3bc8956db66c06df25ff18c0
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504295"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296620"
 ---
 # <a name="monitor-media-services-metrics"></a>Überwachen von Media Services-Metriken
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 [Azure Monitor](../../azure-monitor/overview.md) ermöglicht Ihnen die Überwachung von Metriken und Diagnoseprotokollen, die Ihnen zu verstehen helfen, wie sich Ihre Anwendungen verhalten. Eine ausführliche Beschreibung dieser Funktion und Argumente für die Verwendung der Azure Media Services-Metriken und -Diagnoseprotokolle finden Sie unter [Überwachen von Media Services-Metriken und -Diagnoseprotokollen](media-services-metrics-diagnostic-logs.md).
 

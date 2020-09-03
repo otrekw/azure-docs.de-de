@@ -12,12 +12,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 626bc12b01428b90de1cbafe28bd7493e7ed1743
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84b81e32f8c71ccf0c3369e137a24e90dc284e86
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356643"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276591"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Migrieren vom Verbund zur Passthrough-Authentifizierung für Azure Active Directory
 
@@ -40,13 +40,13 @@ Damit Sie die Schritte zur Umstellung auf die Verwendung der Passthrough-Authent
 > [!IMPORTANT]
 > Unter Umständen lesen Sie in veralteten Dokumentationen, Tools und Blogs noch, dass eine Benutzerkonvertierung erforderlich ist, wenn Sie Domänen von der Verbundidentität auf die verwaltete Identität umstellen. Das *Konvertieren von Benutzern* muss aber nicht mehr durchgeführt werden. Microsoft arbeitet an der Aktualisierung der Dokumentation und der Tools, damit diese Veränderung entsprechend widergespiegelt wird.
 
-Führen Sie die Schritte unter [Azure AD Connect: Aktualisieren von einer früheren Version auf die aktuelle Version](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version) aus, um Azure AD Connect zu aktualisieren.
+Führen Sie die Schritte unter [Azure AD Connect: Aktualisieren von einer früheren Version auf die aktuelle Version](./how-to-upgrade-previous-version.md) aus, um Azure AD Connect zu aktualisieren.
 
 ### <a name="plan-authentication-agent-number-and-placement"></a>Planen der Anzahl und Platzierung von Authentifizierungs-Agents
 
 Für die Passthrough-Authentifizierung müssen auf dem Azure AD Connect-Server und Ihrem lokalen Computer, auf dem Windows Server ausgeführt wird, einfache Agents bereitgestellt werden. Installieren Sie die Agents so nah wie möglich bei Ihren Active Directory-Domänencontrollern, um die Latenz zu verringern.
 
-Für die meisten Kunden reichen zwei oder drei Authentifizierungs-Agents aus, um Hochverfügbarkeit und die erforderliche Kapazität bereitzustellen. Für einen Mandanten können maximal zwölf Agents registriert werden. Der erste Agent wird immer auf dem Azure AD Connect-Server selbst installiert. Informationen zu Einschränkungen und Bereitstellungsoptionen für Agents finden Sie unter [Azure AD-Passthrough-Authentifizierung: Aktuelle Einschränkungen](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-current-limitations).
+Für die meisten Kunden reichen zwei oder drei Authentifizierungs-Agents aus, um Hochverfügbarkeit und die erforderliche Kapazität bereitzustellen. Für einen Mandanten können maximal zwölf Agents registriert werden. Der erste Agent wird immer auf dem Azure AD Connect-Server selbst installiert. Informationen zu Einschränkungen und Bereitstellungsoptionen für Agents finden Sie unter [Azure AD-Passthrough-Authentifizierung: Aktuelle Einschränkungen](./how-to-connect-pta-current-limitations.md).
 
 ### <a name="plan-the-migration-method"></a>Planen der Migrationsmethode
 
@@ -102,8 +102,8 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 
 Weitere Informationen und Beispiele finden Sie in diesen Artikeln:
 
-* [Active Directory Federation Services prompt=login parameter support](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-prompt-login) (Active Directory-Verbunddienste: Unterstützung für Parameter „prompt=login“)
-* [Set-MsolDomainAuthentication](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainauthentication?view=azureadps-1.0)
+* [Active Directory Federation Services prompt=login parameter support](/windows-server/identity/ad-fs/operations/ad-fs-prompt-login) (Active Directory-Verbunddienste: Unterstützung für Parameter „prompt=login“)
+* [Set-MsolDomainAuthentication](/powershell/module/msonline/set-msoldomainauthentication?view=azureadps-1.0)
 
 > [!NOTE]
 > Wenn **SupportsMfa** auf **True** festgelegt ist, verwenden Sie eine lokale Lösung für die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA), um eine zweite Faktorabfrage in den Benutzerauthentifizierungsflow einzufügen. Diese Einrichtung funktioniert für Azure AD-Authentifizierungsszenarien nicht mehr. 
@@ -112,7 +112,7 @@ Weitere Informationen und Beispiele finden Sie in diesen Artikeln:
 
 #### <a name="back-up-federation-settings"></a>Sichern von Verbundeinstellungen
 
-Auch wenn während der in diesem Artikel beschriebenen Prozesse keine Änderungen an anderen vertrauenden Seiten Ihrer AD FS-Farm vorgenommen werden, empfehlen wir Ihnen das Anlegen einer aktuellen gültigen Sicherung Ihrer AD FS-Farm, mit der Sie eine Wiederherstellung durchführen können. Sie können eine aktuelle gültige Sicherung erstellen, indem Sie das kostenlose Microsoft-[Tool für die schnelle AD FS-Wiederherstellung](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-rapid-restore-tool) (AD FS Rapid Restore Tool) verwenden. Mit dem Tool können Sie AD FS sichern und eine vorhandene Farm wiederherstellen oder eine neue Farm erstellen.
+Auch wenn während der in diesem Artikel beschriebenen Prozesse keine Änderungen an anderen vertrauenden Seiten Ihrer AD FS-Farm vorgenommen werden, empfehlen wir Ihnen das Anlegen einer aktuellen gültigen Sicherung Ihrer AD FS-Farm, mit der Sie eine Wiederherstellung durchführen können. Sie können eine aktuelle gültige Sicherung erstellen, indem Sie das kostenlose Microsoft-[Tool für die schnelle AD FS-Wiederherstellung](/windows-server/identity/ad-fs/operations/ad-fs-rapid-restore-tool) (AD FS Rapid Restore Tool) verwenden. Mit dem Tool können Sie AD FS sichern und eine vorhandene Farm wiederherstellen oder eine neue Farm erstellen.
 
 Wenn Sie das „AD FS Rapid Restore Tool“ nicht verwenden möchten, sollten Sie zumindest die Vertrauensstellung der vertrauenden Seite von Microsoft Office 365 Identity Platform und alle zugeordneten benutzerdefinierten Anspruchsregeln exportieren, die Sie ggf. hinzugefügt haben. Sie können die Vertrauensstellung der vertrauenden Seite und die zugehörigen Anspruchsregeln exportieren, indem Sie das folgende PowerShell-Beispiel verwenden:
 
@@ -132,9 +132,9 @@ Bevor Sie die Umstellung von der Verbundidentität auf die verwaltete Identität
 |-|-|
 | Sie planen, AD FS für andere Anwendungen (als Azure AD und Office 365) weiterzuverwenden. | Nachdem Sie Ihre Domänen konvertiert haben, verwenden Sie sowohl AD FS als auch Azure AD. Berücksichtigen Sie die Benutzerfreundlichkeit. In einigen Szenarien müssen sich Benutzer unter Umständen zweimal authentifizieren: einmal für Azure AD (worüber ein Benutzer SSO-Zugriff auf andere Anwendungen erhält, z.B. Office 365) und erneut für alle Anwendungen, die noch an AD FS als Vertrauensstellung der vertrauenden Seite gebunden sind. |
 | Ihre AD FS-Instanz wurde stark angepasst und nutzt in der Datei „onload.js“ spezifische Anpassungseinstellungen (z.B. wenn Sie die Anmeldung so geändert haben, dass Benutzer nur das Format **SamAccountName** für ihren Benutzernamen verwenden, anstatt einen Benutzerprinzipalnamen (UPN), oder wenn Ihre Organisation die Anmeldung mit umfangreichem Branding versehen hat). Die Datei „onload.js“ kann in Azure AD nicht dupliziert werden. | Vor dem Fortfahren müssen Sie sich vergewissern, dass mit Azure AD Ihre derzeitigen Anpassungsanforderungen erfüllt werden können. Weitere Informationen und Anleitungen finden Sie in den Abschnitten zum AD FS-Branding und zur AD FS-Anpassung.|
-| Sie können AD FS zum Blockieren von früheren Versionen von Clients mit Authentifizierung verwenden.| Erwägen Sie die Ersetzung von AD FS-Steuerungen, mit denen frühere Versionen von Authentifizierungsclients blockiert werden, indem Sie eine Kombination aus [Steuerungen des bedingten Zugriffs](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions) und [Clientzugriffsregeln in Exchange Online](https://aka.ms/EXOCAR) verwenden. |
+| Sie können AD FS zum Blockieren von früheren Versionen von Clients mit Authentifizierung verwenden.| Erwägen Sie die Ersetzung von AD FS-Steuerungen, mit denen frühere Versionen von Authentifizierungsclients blockiert werden, indem Sie eine Kombination aus [Steuerungen des bedingten Zugriffs](../conditional-access/concept-conditional-access-conditions.md) und [Clientzugriffsregeln in Exchange Online](https://aka.ms/EXOCAR) verwenden. |
 | Bei Ihnen ist es erforderlich, dass Benutzer eine mehrstufige Authentifizierung über eine entsprechende lokale Serverlösung durchführen, um sich für AD FS zu authentifizieren.| In einer Domäne mit verwalteter Identität können Sie über die lokale Lösung für die mehrstufige Authentifizierung keine MFA-Abfrage in den Authentifizierungsablauf einfügen. Sie können den Dienst „Azure Multi-Factor Authentication“ aber für die mehrstufige Authentifizierung nutzen, nachdem die Domäne konvertiert wurde.<br /><br /> Falls Ihre Benutzer Azure Multi-Factor Authentication derzeit nicht verwenden, ist ein einmaliger Registrierungsschritt für die Benutzer erforderlich. Sie müssen sich auf die geplante Registrierung für Ihre Benutzer vorbereiten und dies kommunizieren. |
-| Sie verwenden derzeit Zugriffssteuerungsrichtlinien (AuthZ-Regeln) in AD FS, um den Zugriff auf Office 365 zu steuern.| Erwägen Sie, die Richtlinien durch die entsprechenden [Azure AD-Richtlinien für den bedingten Zugriff](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) und die [Clientzugriffsregeln für Exchange Online](https://aka.ms/EXOCAR) zu ersetzen.|
+| Sie verwenden derzeit Zugriffssteuerungsrichtlinien (AuthZ-Regeln) in AD FS, um den Zugriff auf Office 365 zu steuern.| Erwägen Sie, die Richtlinien durch die entsprechenden [Azure AD-Richtlinien für den bedingten Zugriff](../conditional-access/overview.md) und die [Clientzugriffsregeln für Exchange Online](https://aka.ms/EXOCAR) zu ersetzen.|
 
 ### <a name="common-ad-fs-customizations"></a>Häufige AD FS-Anpassungen
 
@@ -142,13 +142,13 @@ In diesem Abschnitt werden häufige AD FS-Anpassungen beschrieben.
 
 #### <a name="insidecorporatenetwork-claim"></a>InsideCorporateNetwork-Anspruch
 
-Der Anspruch **InsideCorporateNetwork** wird von AD FS ausgegeben, wenn sich der Benutzer, der die Authentifizierung durchführt, innerhalb des Unternehmensnetzwerks befindet. Dieser Anspruch kann dann an Azure AD übergeben werden. Der Anspruch wird verwendet, um die mehrstufige Authentifizierung basierend auf der Netzwerkadresse des Benutzers zu umgehen. Informationen zur Ermittlung, ob diese Funktionalität in AD FS derzeit verfügbar ist, finden Sie unter [Vertrauenswürdige IPs für Partnerbenutzer](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-adfs-cloud).
+Der Anspruch **InsideCorporateNetwork** wird von AD FS ausgegeben, wenn sich der Benutzer, der die Authentifizierung durchführt, innerhalb des Unternehmensnetzwerks befindet. Dieser Anspruch kann dann an Azure AD übergeben werden. Der Anspruch wird verwendet, um die mehrstufige Authentifizierung basierend auf der Netzwerkadresse des Benutzers zu umgehen. Informationen zur Ermittlung, ob diese Funktionalität in AD FS derzeit verfügbar ist, finden Sie unter [Vertrauenswürdige IPs für Partnerbenutzer](../authentication/howto-mfa-adfs.md).
 
-Der Anspruch **InsideCorporateNetwork** ist nicht mehr verfügbar, sobald Sie für Ihre Domänen die Umstellung auf die Passthrough-Authentifizierung durchgeführt haben. Sie können [benannte Orte in Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-named-locations) verwenden, um diese Funktionalität zu ersetzen.
+Der Anspruch **InsideCorporateNetwork** ist nicht mehr verfügbar, sobald Sie für Ihre Domänen die Umstellung auf die Passthrough-Authentifizierung durchgeführt haben. Sie können [benannte Orte in Azure AD](../reports-monitoring/quickstart-configure-named-locations.md) verwenden, um diese Funktionalität zu ersetzen.
 
 Nach dem Konfigurieren der benannten Orte müssen Sie alle Richtlinien für bedingten Zugriff aktualisieren, die konfiguriert wurden. Schließen Sie die Werte **Alle vertrauenswürdigen Standorte** oder **Für MFA vertrauenswürdige IPs** für das Netzwerk ein oder aus, um die neu benannten Orte widerzuspiegeln.
 
-Weitere Informationen zur Bedingung **Standort** beim bedingten Zugriff finden Sie unter [Was sind Standortbedingungen beim bedingten Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-locations).
+Weitere Informationen zur Bedingung **Standort** beim bedingten Zugriff finden Sie unter [Was sind Standortbedingungen beim bedingten Zugriff in Azure Active Directory?](../conditional-access/location-condition.md).
 
 #### <a name="hybrid-azure-ad-joined-devices"></a>Mit Azure AD Hybrid verknüpfte Geräte
 
@@ -158,11 +158,11 @@ Gehen Sie für Windows 10-Clients wie folgt vor, um sicherzustellen, dass die Hy
 
 Für Windows 8- und Windows 7-Computerkonten wird für die Hybrideinbindung das nahtlose einmalige Anmelden genutzt, um die Computer in Azure AD zu registrieren. Es ist nicht erforderlich, Windows 8- und Windows 7-Computerkonten zu synchronisieren, wie Sie dies für Windows 10-Geräte durchführen. Allerdings müssen Sie eine aktualisierte Version der Datei „workplacejoin.exe“ (per MSI-Datei) für Windows 8- und Windows 7-Clients bereitstellen, damit diese sich per nahtlosem einmaligem Anmelden registrieren können. [Laden Sie die MSI-Datei herunter](https://www.microsoft.com/download/details.aspx?id=53554).
 
-Weitere Informationen finden Sie unter [Anleitung: Planen der Implementierung einer Azure Active Directory-Hybrideinbindung](https://docs.microsoft.com/azure/active-directory/device-management-hybrid-azuread-joined-devices-setup).
+Weitere Informationen finden Sie unter [Anleitung: Planen der Implementierung einer Azure Active Directory-Hybrideinbindung](../devices/hybrid-azuread-join-plan.md).
 
 #### <a name="branding"></a>Branding
 
-Wenn Ihre Organisation die [Seiten für die AD FS-Anmeldung so angepasst hat](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-user-sign-in-customization), dass viele organisationsbezogene Informationen angezeigt werden, können Sie erwägen, ähnliche [Anpassungen auch an der Azure AD-Anmeldeseite vorzunehmen](https://docs.microsoft.com/azure/active-directory/customize-branding).
+Wenn Ihre Organisation die [Seiten für die AD FS-Anmeldung so angepasst hat](/windows-server/identity/ad-fs/operations/ad-fs-user-sign-in-customization), dass viele organisationsbezogene Informationen angezeigt werden, können Sie erwägen, ähnliche [Anpassungen auch an der Azure AD-Anmeldeseite vorzunehmen](../fundamentals/customize-branding.md).
 
 Es sind zwar ähnliche Anpassungen verfügbar, aber auf Anmeldeseiten sollte mit visuellen Änderungen gerechnet werden, nachdem die Konvertierung durchgeführt wurde. Es kann ratsam sein, in der Benachrichtigung für Ihre Benutzer auch Informationen zu den zu erwartenden Änderungen anzugeben.
 
@@ -173,7 +173,7 @@ Es sind zwar ähnliche Anpassungen verfügbar, aber auf Anmeldeseiten sollte mit
 
 Azure AD Smart Lockout schützt Sie vor Brute-Force-Kennwortangriffen. Mit Smart Lockout wird verhindert, dass ein lokales Active Directory-Konto gesperrt wird, wenn die Passthrough-Authentifizierung verwendet und eine Gruppenrichtlinie für das Sperren von Konten in Active Directory festgelegt wird.
 
-Weitere Informationen finden Sie unter [Azure Active Directory Smart Lockout](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-smart-lockout).
+Weitere Informationen finden Sie unter [Azure Active Directory Smart Lockout](../authentication/howto-password-smart-lockout.md).
 
 ## <a name="plan-deployment-and-support"></a>Planen der Bereitstellung und des Supports
 
@@ -228,7 +228,7 @@ Damit Ihre Geräte das nahtlose einmalige Anmelden verwenden können, müssen Si
 
 Webbrowser berechnen standardmäßig anhand der URL automatisch die richtige Zone (Internet oder Intranet). Beispielsweise ist **http:\/\/contoso/** der Intranetzone und **http:\/\/intranet.contoso.com** der Internetzone zugeordnet (da die URL einen Punkt enthält). Browser senden keine Kerberos-Tickets an Cloudendpunkte wie die Azure AD-URL, sofern Sie die URL nicht explizit der Intranetzone des Browsers hinzufügen.
 
-Führen Sie die [Schritte](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start) aus, um mit der Veröffentlichung der erforderlichen Änderungen für Ihre Geräte zu beginnen.
+Führen Sie die [Schritte](./how-to-connect-sso-quick-start.md) aus, um mit der Veröffentlichung der erforderlichen Änderungen für Ihre Geräte zu beginnen.
 
 > [!IMPORTANT]
 > Wenn Sie diese Änderung vornehmen, ergeben sich keine Änderungen der Art und Weise, wie sich Benutzer bei Azure AD anmelden. Es ist aber wichtig, dass Sie diese Konfiguration vor dem Fortfahren auf alle Ihre Geräte anwenden. Benutzer, die sich an Geräten ohne diese Konfiguration anmelden, müssen einfach einen Benutzernamen und ein Kennwort eingeben, um sich an Azure AD anzumelden.
@@ -330,7 +330,7 @@ Aktivieren Sie zunächst die Passthrough-Authentifizierung:
    ![Screenshot: Einstellungen im Abschnitt „Benutzeranmeldung“](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image19.png)
 8. Klicken Sie auf **Passthrough-Authentifizierung**, und überprüfen Sie, ob der Status **Aktiv** lautet.<br />
    
-   Wenn der Authentifizierungs-Agent nicht aktiv ist, sollten Sie einige [Problembehandlungsschritte](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-pass-through-authentication) ausführen, bevor Sie im nächsten Schritt mit dem Prozess zum Konvertieren der Domäne fortfahren. Sie riskieren einen Ausfall der Authentifizierung, wenn Sie Ihre Domänen konvertieren, bevor Sie überprüft haben, ob Ihre Agents für die Passthrough-Authentifizierung erfolgreich installiert wurden und ob ihr Status im Azure-Portal **Aktiv** lautet.
+   Wenn der Authentifizierungs-Agent nicht aktiv ist, sollten Sie einige [Problembehandlungsschritte](./tshoot-connect-pass-through-authentication.md) ausführen, bevor Sie im nächsten Schritt mit dem Prozess zum Konvertieren der Domäne fortfahren. Sie riskieren einen Ausfall der Authentifizierung, wenn Sie Ihre Domänen konvertieren, bevor Sie überprüft haben, ob Ihre Agents für die Passthrough-Authentifizierung erfolgreich installiert wurden und ob ihr Status im Azure-Portal **Aktiv** lautet.
 
 Stellen Sie als Nächstes zusätzliche Authentifizierungs-Agents bereit:
 
@@ -411,7 +411,7 @@ Testen Sie das nahtlose einmalige Anmelden wie folgt:
    > Das nahtlose einmalige Anmelden funktioniert für Office 365-Dienste, die Domänenhinweise unterstützen (z.B. myapps.microsoft.com/contoso.com). Derzeit unterstützt das Office 365-Portal (portal.office.com) keine Domänenhinweise. Benutzer müssen einen Benutzerprinzipalnamen (UPN) eingeben. Nachdem ein UPN eingegeben wurde, ruft der Prozess zum nahtlosen einmaligen Anmelden das Kerberos-Ticket im Namen des Benutzers ab. Der Benutzer wird angemeldet, ohne ein Kennwort einzugeben.
 
    > [!TIP]
-   > Erwägen Sie die Bereitstellung der [Azure AD-Hybrideinbindung unter Windows 10](https://docs.microsoft.com/azure/active-directory/device-management-introduction), um das einmalige Anmelden zu verbessern.
+   > Erwägen Sie die Bereitstellung der [Azure AD-Hybrideinbindung unter Windows 10](../devices/overview.md), um das einmalige Anmelden zu verbessern.
 
 ### <a name="remove-the-relying-party-trust"></a>Entfernen der Vertrauensstellung der vertrauenden Seite
 
@@ -435,7 +435,7 @@ Updates des Attributs **UserPrincipalName**, für das der Synchronisierungsdiens
 * Der Benutzer befindet sich in einer Domäne mit verwalteter Identität (kein Verbund).
 * Dem Benutzer wurde keine Lizenz zugewiesen.
 
-Informationen dazu, wie Sie dieses Feature überprüfen oder aktivieren, finden Sie im Artikel zur [Synchronisierung von userPrincipalName-Updates](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsyncservice-features).
+Informationen dazu, wie Sie dieses Feature überprüfen oder aktivieren, finden Sie im Artikel zur [Synchronisierung von userPrincipalName-Updates](./how-to-connect-syncservice-features.md).
 
 ## <a name="roll-over-the-seamless-sso-kerberos-decryption-key"></a>Durchführen des Rollovers des Kerberos-Entschlüsselungsschlüssels für das einmalige Anmelden
 
@@ -443,7 +443,7 @@ Es ist wichtig, häufig einen Rollover für den Kerberos-Entschlüsselungsschlü
 
 Initiieren Sie den Rollover des Kerberos-Entschlüsselungsschlüssels für das nahtlose einmalige Anmelden auf dem lokalen Server, auf dem Azure AD Connect ausgeführt wird.
 
-Weitere Informationen finden Sie unter [Wie kann ich einen Rollover des Kerberos-Entschlüsselungsschlüssels des AZUREADSSOACC-Computerkontos durchführen?](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-faq).
+Weitere Informationen finden Sie unter [Wie kann ich einen Rollover des Kerberos-Entschlüsselungsschlüssels des AZUREADSSOACC-Computerkontos durchführen?](./how-to-connect-sso-faq.md).
 
 ## <a name="monitoring-and-logging"></a>Überwachung und Protokollierung
 
@@ -453,10 +453,10 @@ Authentifizierungs-Agents protokollieren Vorgänge in den Windows-Ereignisprotok
 
 Sie können auch die Protokollierung für die Problembehandlung aktivieren.
 
-Weitere Informationen finden Sie unter [Behandlung von Problemen bei der Azure Active Directory-Passthrough-Authentifizierung](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-Pass-through-authentication).
+Weitere Informationen finden Sie unter [Behandlung von Problemen bei der Azure Active Directory-Passthrough-Authentifizierung](./tshoot-connect-pass-through-authentication.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informieren Sie sich über [Entwurfskonzepte für Azure AD Connect](plan-connect-design-concepts.md).
-* Wählen Sie die [richtige Authentifizierung](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn).
+* Wählen Sie die [richtige Authentifizierung](./choose-ad-authn.md).
 * Erfahren Sie mehr über [unterstützte Topologien](plan-connect-design-concepts.md).

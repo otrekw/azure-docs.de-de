@@ -3,23 +3,25 @@ title: Rollenbasierte Zugriffssteuerung für Media Services-Konten – Azure | M
 description: Dieser Artikel beschreibt die rollenbasierte Zugriffssteuerung (RBAC) für Azure Media Services-Konten.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
-ms.date: 05/23/2019
-ms.author: juliako
-ms.custom: seodec18
-ms.openlocfilehash: c75b6e67932cfd26a3374eab3f3efa34ceade577
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: d6bc37a8aaddfb48e6d06eb46d9c1648e815b5ad
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504482"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89289238"
 ---
 # <a name="role-based-access-control-rbac-for-media-services-accounts"></a>Rollenbasierte Zugriffssteuerung (RBAC) für Media Services-Konten
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Derzeit definiert Azure Media Services keine benutzerdefinierten dienstspezifischen Rollen. Um vollen Zugriff auf das Media Services-Konto zu erhalten, können Kunden die integrierten Rollen von **Besitzer** oder **Mitwirkender** verwenden. Der Hauptunterschied zwischen diesen Rollen ist, dass der **Besitzer** im Gegensatz zu einem **Mitwirkenden** steuern kann, wer Zugriff auf eine Ressource hat. Die integrierte Rolle **Leser** kann ebenfalls verwendet werden, aber der Benutzer oder die Anwendung hat nur Lesezugriff auf die Media Services-APIs. 
 

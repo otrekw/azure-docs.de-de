@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fda228f6a24e981bb848fbb106709aaa3d8e8613
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 2237b0b0d0c1f6e95e100743b377f9c04f57210f
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87269120"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279702"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Grundlegendes zum Azure Linux-Agent und seiner Verwendung
 
@@ -92,6 +92,9 @@ Der Linux-Agent erfordert zur ordnungsgemäßen Funktion bestimmte Systempakete:
 * Textverarbeitungstools: sed, grep
 * Netzwerktools: ip-route
 * Kernel-Unterstützung für die Einbindung von UDF-Dateisystemen.
+
+Stellen Sie sicher, dass Ihr virtueller Computer Zugriff auf die IP-Adresse 168.63.129.16 hat. Unter [Was ist die IP-Adresse 168.63.129.16?](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16) finden Sie weitere Informationen dazu.
+
 
 ## <a name="installation"></a>Installation
 Für die Installation und Upgrades des Azure Linux-Agents sollte nach Möglichkeit ein RPM- oder DEB-Paket aus dem Paketrepository Ihrer Verteilung installiert werden. Das Azure Linux-Agent-Paket wird von allen [unterstützten Distributionsanbietern](../linux/endorsed-distros.md) in ihre jeweiligen Images und Repositorys integriert.

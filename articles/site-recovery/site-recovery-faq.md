@@ -4,12 +4,12 @@ description: In diesem Artikel werden häufig gestellte allgemeine Fragen zu Azu
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: 8b5730fba1a0267ab72497bc65b51de75654f970
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: d77f62a57a75f13589b11e023f902c1a128a0d95
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263382"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950492"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Allgemeine Fragen zu Azure Site Recovery
 
@@ -256,8 +256,6 @@ Eine Replikationsrichtlinie definiert die Einstellungen für den Aufbewahrungsve
 
 - 24 Stunden für den Aufbewahrungsverlauf von Wiederherstellungspunkten.
 - 4 Stunden für die Häufigkeit anwendungskonsistenter Momentaufnahmen.
-
-[Weitere Informationen zu Replikationseinstellungen](./azure-to-azure-tutorial-enable-replication.md#configure-replication-settings).
 
 ### <a name="what-is-a-crash-consistent-recovery-point"></a>Was ist ein absturzkonsistenter Wiederherstellungspunkt?
 

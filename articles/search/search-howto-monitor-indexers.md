@@ -9,12 +9,13 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: cf7ae504e57d0b7947f4ff7dc48d50b2e0141eea
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 649611b2e378cd43286b193c6d40b03b743905cd
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936638"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000072"
 ---
 # <a name="how-to-monitor-azure-cognitive-search-indexer-status-and-results"></a>Überwachen des Status und der Ergebnisse von Indexern der kognitiven Azure-Suche
 

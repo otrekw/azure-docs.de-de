@@ -4,23 +4,25 @@ titleSuffix: Azure Media Services
 description: In diesem Artikel wird erläutert, wie Sie Video- und Audiodaten mit Azure Media Services codieren.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
-ms.date: 04/29/2020
-ms.author: juliako
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: a54f86081774ffb9ac2fe23a72c8ba83e3d6845c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8533c99011232385e31f4e698743bbb1c6c00bc5
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053343"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300203"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Codieren von Video- und Audiodaten mit Media Services
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Der Begriff Codierung beschreibt in Media Services den Prozess der Konvertierung von Dateien, die digitale Video- und/oder Audiodateien enthalten, von einem Format in ein anderes Format. Ziel ist es, (a) die Größe der Dateien zu verringern und/oder (b) ein Format zu erzeugen, das mit einer Vielzahl von Geräten und Anwendungen kompatibel ist. Dieser Prozess wird auch als Videokomprimierung oder Transcodierung bezeichnet. Weitere Erläuterungen zu diesem Konzept finden Sie unter [Datenkomprimierung](https://en.wikipedia.org/wiki/Data_compression) und [Was bedeutet Codierung und Transcodierung?](https://www.streamingmedia.com/Articles/Editorial/What-Is-/What-Is-Encoding-and-Transcoding-75025.aspx).
 

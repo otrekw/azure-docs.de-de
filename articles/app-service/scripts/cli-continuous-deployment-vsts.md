@@ -9,19 +9,19 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: d8889297267c2c583ac4b5bdcd4ff442ec3ef047
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 01855fa7920a4e04cff9fa178083d094142d59d7
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495587"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88960886"
 ---
 # <a name="create-an-app-service-app-with-continuous-deployment-using-azure-cli"></a>Erstellen einer App Service-App mit Continuous Deployment mit der Azure CLI
 
 Mit diesem Beispielskript wird eine App in App Service mit den zugehörigen Ressourcen erstellt und dann Continuous Deployment über ein Azure DevOps-Repository eingerichtet. Für dieses Beispiel benötigen Sie Folgendes:
 
 * Ein Azure DevOps-Repository mit Anwendungscode, für das Sie über Administratorberechtigungen verfügen.
-* Ein [persönliches Zugriffstoken (PAT)](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=vsts) für Ihre Azure DevOps-Organisation.
+* Ein [persönliches Zugriffstoken (PAT)](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=vsts) für Ihre Azure DevOps-Organisation.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -49,6 +49,6 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure).
+Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](/cli/azure).
 
 Zusätzliche App Service-CLI-Skriptbeispiele finden Sie in der [Dokumentation zu Azure App Service](../samples-cli.md).

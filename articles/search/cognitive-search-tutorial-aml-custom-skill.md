@@ -8,16 +8,16 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/10/2020
-ms.openlocfilehash: 69618604c38d82567260e45d651df523055c5f7b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a4e686fe7adcc7e990a26484bc5850de977e862a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245329"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924587"
 ---
 # <a name="tutorial-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>Tutorial: Erstellen und Bereitstellen eines benutzerdefinierten Skills mit Azure Machine Learning 
 
-In diesem Tutorial verwenden Sie das [Dataset mit Hotelrezensionen, „hotel reviews“](https://www.kaggle.com/datafiniti/hotel-reviews) (verteilt unter der Creative Commons-Lizenz [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt)) zum Erstellen eines [benutzerdefinierten Skills](https://docs.microsoft.com/azure/search/cognitive-search-aml-skill) mithilfe von Azure Machine Learning, um eine aspektbasierte Stimmung aus den Rezensionen zu extrahieren. Dies ermöglicht die Zuweisung von positiver und negativer Stimmung innerhalb derselben Rezension, damit sie identifizierten Entitäten wie „Personal“, „Raum“, „Lobby“ oder „Pool“ ordnungsgemäß zugeschrieben wird.
+In diesem Tutorial verwenden Sie das [Dataset mit Hotelrezensionen, „hotel reviews“](https://www.kaggle.com/datafiniti/hotel-reviews) (verteilt unter der Creative Commons-Lizenz [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt)) zum Erstellen eines [benutzerdefinierten Skills](./cognitive-search-aml-skill.md) mithilfe von Azure Machine Learning, um eine aspektbasierte Stimmung aus den Rezensionen zu extrahieren. Dies ermöglicht die Zuweisung von positiver und negativer Stimmung innerhalb derselben Rezension, damit sie identifizierten Entitäten wie „Personal“, „Raum“, „Lobby“ oder „Pool“ ordnungsgemäß zugeschrieben wird.
 
 Zum Trainieren des aspektbasierten Stimmungsmodells in Azure Machine Learning verwenden Sie das [NLP-Projektrepository](https://github.com/microsoft/nlp-recipes/tree/master/examples/sentiment_analysis/absa). Das Modell wird dann als Endpunkt in einem Azure Kubernetes-Cluster bereitgestellt. Nach der Bereitstellung wird der Endpunkt der Anreicherungspipeline als AML-Skill hinzugefügt, um die Verwendung durch den Cognitive Search-Dienst zu ermöglichen.
 
@@ -36,10 +36,10 @@ Es werden zwei Datasets bereitgestellt. Wenn Sie das Modell selbst trainieren m�
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Azure-Abonnement – rufen Sie ein [kostenloses Abonnement](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) ab.
-* [Cognitive Search-Dienst](https://docs.microsoft.com/azure/search/search-get-started-arm)
-* [Cognitive Services-Ressource](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows)
-* [Azure Storage-Konto](https://docs.microsoft.com/azure/storage/common/storage-account-create?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal)
-* [Azure Machine Learning-Arbeitsbereich](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)
+* [Cognitive Search-Dienst](./search-get-started-arm.md)
+* [Cognitive Services-Ressource](../cognitive-services/cognitive-services-apis-create-account.md?tabs=multiservice%2cwindows)
+* [Azure Storage-Konto](../storage/common/storage-account-create.md?tabs=azure-portal&toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* [Azure Machine Learning-Arbeitsbereich](../machine-learning/how-to-manage-workspace.md)
 
 ## <a name="setup"></a>Einrichten
 
@@ -47,9 +47,9 @@ Es werden zwei Datasets bereitgestellt. Wenn Sie das Modell selbst trainieren m�
 * Wenn der Download eine ZIP-Datei ist, extrahieren Sie den Inhalt. Stellen Sie sicher, dass die Dateien schreibgeschützt sind.
 * Kopieren Sie beim Einrichten der Azure-Konten und -Dienste die Namen und Schlüssel in eine Textdatei, auf die leicht zugegriffen werden kann. Die Namen und Schlüssel werden der ersten Zelle in dem Notebook hinzugefügt, in dem Variablen für den Zugriff auf die Azure-Dienste definiert wurden.
 * Wenn Sie mit Azure Machine Learning und dessen Anforderungen nicht vertraut sind, sollten Sie zuerst diese Dokumente lesen:
- * [Konfigurieren einer Entwicklungsumgebung für Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-configure-environment)
- * [Erstellen und Verwalten von Azure Machine Learning-Arbeitsbereichen im Azure-Portal](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)
- * Erwägen Sie beim Konfigurieren der Entwicklungsumgebung für Azure Machine Learning die Verwendung der [cloudbasierten Compute-Instanz](https://docs.microsoft.com/azure/machine-learning/how-to-configure-environment#compute-instance), damit Sie schneller und einfacher beginnen können.
+ * [Konfigurieren einer Entwicklungsumgebung für Azure Machine Learning](../machine-learning/how-to-configure-environment.md)
+ * [Erstellen und Verwalten von Azure Machine Learning-Arbeitsbereichen im Azure-Portal](../machine-learning/how-to-manage-workspace.md)
+ * Erwägen Sie beim Konfigurieren der Entwicklungsumgebung für Azure Machine Learning die Verwendung der [cloudbasierten Compute-Instanz](../machine-learning/how-to-configure-environment.md#compute-instance), damit Sie schneller und einfacher beginnen können.
 * Laden Sie die Datasetdatei in einen Container im Speicherkonto hoch. Die größere Datei ist erforderlich, wenn Sie den Trainingsschritt im Notebook ausführen möchten. Wenn Sie den Trainingsschritt lieber überspringen möchten, wird die kleinere Datei empfohlen.
 
 ## <a name="open-notebook-and-connect-to-azure-services"></a>Öffnen des Notebooks und Herstellen einer Verbindung mit Azure-Diensten
@@ -68,9 +68,9 @@ Abschnitt 2 enthält sechs Zellen zum Herunterladen der Glove-Einbettungsdatei 
 
 In Abschnitt 3 des Notebooks werden Sie die in Abschnitt 2 erstellten Modelle trainieren, registrieren und als Endpunkt in einem Azure Kubernetes-Cluster bereitstellen. Wenn Sie mit Azure Kubernetes nicht vertraut sind, müssen Sie unbedingt die folgenden Artikel lesen, bevor Sie einen Rückschlusscluster zu erstellen versuchen:
 
-* [Übersicht über Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/intro-kubernetes)
-* [Grundlegende Kubernetes-Konzepte für Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/concepts-clusters-workloads)
-* [Kontingente, Größeneinschränkungen für virtuelle Computer und regionale Verfügbarkeit in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/quotas-skus-regions)
+* [Übersicht über Azure Kubernetes Service](../aks/intro-kubernetes.md)
+* [Grundlegende Kubernetes-Konzepte für Azure Kubernetes Service (AKS)](../aks/concepts-clusters-workloads.md)
+* [Kontingente, Größeneinschränkungen für virtuelle Computer und regionale Verfügbarkeit in Azure Kubernetes Service (AKS)](../aks/quotas-skus-regions.md)
 
 Das Erstellen und Bereitstellen des Rückschlussclusters kann bis zu 30 Minuten dauern. Es wird empfohlen, den Webdienst zu testen, bevor Sie mit den abschließenden Schritten fortfahren, Ihr Skillset aktualisieren und den Indexer ausführen.
 
@@ -108,5 +108,5 @@ Denken Sie bei Verwendung eines kostenlosen Diensts an die Beschränkung auf max
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Informieren Sie sich über die Web-API für benutzerdefinierte Skills](https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-web-api)
-> [Erfahren Sie mehr zum Hinzufügen benutzerdefinierter Skills zur Anreicherungspipeline](https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-interface)
+> [Informieren Sie sich über die Web-API für benutzerdefinierte Skills](./cognitive-search-custom-skill-web-api.md)
+> [Erfahren Sie mehr zum Hinzufügen benutzerdefinierter Skills zur Anreicherungspipeline](./cognitive-search-custom-skill-interface.md)

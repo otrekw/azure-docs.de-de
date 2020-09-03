@@ -16,12 +16,12 @@ ms.date: 04/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1754456873e464e4bd624f47c5ea98e4fb88827
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: b00037704558d0029223b3c99154d0d60757612f
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542228"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279430"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect-Synchronisierung: Mit Azure Active Directory synchronisierte Attribute
 In diesem Thema werden die Attribute aufgelistet, die bei der Azure AD Connect-Synchronisierung synchronisiert werden.  
@@ -397,7 +397,7 @@ Diese Gruppe umfasst einen Satz von Attributen, die verwendet werden können, we
 | userPrincipalName |X | | |Dieser Benutzerprinzipalname (UPN) ist die Anmelde-ID für den Benutzer. Meistens identisch mit dem Wert [mail]. |
 
 ## <a name="windows-10"></a>Windows 10
-Bei unter Windows 10 per Domänenbeitritt in die Domäne eingebundenen Computern (Geräten) werden einige Attribute mit Azure AD synchronisiert. Weitere Informationen zu den Szenarien finden Sie unter [Verbinden von in die Domäne eingebundenen Geräten mit Azure AD für Windows 10-Funktionen](../active-directory-azureadjoin-devices-group-policy.md). Diese Attribute werden immer synchronisiert, und Windows 10 wird nicht als App angezeigt, für die Sie die Auswahl aufheben können. Ein unter Windows 10 in die Domäne eingebundener Computer wird dadurch identifiziert, dass das Attribut „userCertificate“ aufgefüllt ist.
+Bei unter Windows 10 per Domänenbeitritt in die Domäne eingebundenen Computern (Geräten) werden einige Attribute mit Azure AD synchronisiert. Weitere Informationen zu den Szenarien finden Sie unter [Verbinden von in die Domäne eingebundenen Geräten mit Azure AD für Windows 10-Funktionen](../devices/hybrid-azuread-join-plan.md). Diese Attribute werden immer synchronisiert, und Windows 10 wird nicht als App angezeigt, für die Sie die Auswahl aufheben können. Ein unter Windows 10 in die Domäne eingebundener Computer wird dadurch identifiziert, dass das Attribut „userCertificate“ aufgefüllt ist.
 
 | Attributname | Sicherungsmedium | Comment |
 | --- |:---:| --- |

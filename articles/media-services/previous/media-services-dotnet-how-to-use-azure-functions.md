@@ -14,14 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 43e16d15c48471d75a7ab5ce23898f1161a60153
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 90cd9605a166a00412ed77caf3727ffb3ad3e1fd
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052834"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89262110"
 ---
 # <a name="develop-azure-functions-with-media-services"></a>Entwickeln von Azure Functions mit Media Services
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 In diesem Artikel wird veranschaulicht, wie Sie mit der Erstellung von Azure Functions beginnen, für die Media Services verwendet werden. Die in diesem Artikel definierte Azure Function überwacht einen Speicherkontocontainer mit dem Namen **input** für neue MP4-Dateien. Sobald eine Datei in den Speichercontainer abgelegt wird, führt der Blobtrigger die Funktion aus. Informationen zu Azure Functions finden Sie unter [Übersicht](../../azure-functions/functions-overview.md) und anderen Themen im Abschnitt **Azure Functions**.
 

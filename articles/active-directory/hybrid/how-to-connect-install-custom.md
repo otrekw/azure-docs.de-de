@@ -14,12 +14,12 @@ ms.date: 06/10/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84b5635d934b15c7ddd289e3a9deb014361d3c94
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 6aa0c1903597c8fbfd1a782d6f6f0fe52870c13b
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850175"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279753"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Benutzerdefinierte Installation von Azure AD Connect
 Die **benutzerdefinierten Einstellungen** von Azure AD Connect werden verwendet, wenn Sie mehr Optionen für die Installation benötigen. Sie kommen zum Einsatz, wenn Sie über mehrere Gesamtstrukturen verfügen oder optionale Features konfigurieren möchten, die nicht Teil der Expressinstallation sind. Sie werden in allen Fällen verwendet, in denen die Option [**Expressinstallation**](how-to-connect-install-express.md) für Ihre Bereitstellung oder Topologie nicht ausreicht.
@@ -95,15 +95,15 @@ Ab Build 1.4.18.0. wird die Verwendung eines Unternehmens- oder Domänenadminist
 Auf dieser Seite können Sie die UPN-Domänen anzeigen, die in der lokalen AD DS-Instanz vorhanden sind und in Azure AD überprüft wurden. Darüber hinaus können Sie auf dieser Seite das Attribut für „userPrincipalName“ konfigurieren.
 
 ![Nicht überprüfte Domänen](./media/how-to-connect-install-custom/aadsigninconfig2.png)  
-Überprüfen Sie alle Domänen, die als **Nicht hinzugefügt** und **Nicht überprüft** markiert sind. Stellen Sie sicher, dass die verwendeten Domänen in Azure AD überprüft wurden. Klicken Sie auf das Symbol zum Aktualisieren, wenn Sie Ihre Domänen überprüft haben. Weitere Informationen finden Sie unter [Hinzufügen und Überprüfen der Domäne](../active-directory-domains-add-azure-portal.md).
+Überprüfen Sie alle Domänen, die als **Nicht hinzugefügt** und **Nicht überprüft** markiert sind. Stellen Sie sicher, dass die verwendeten Domänen in Azure AD überprüft wurden. Klicken Sie auf das Symbol zum Aktualisieren, wenn Sie Ihre Domänen überprüft haben. Weitere Informationen finden Sie unter [Hinzufügen und Überprüfen der Domäne](../fundamentals/add-custom-domain.md).
 
-**userPrincipalName** : Das userPrincipalName-Attribut wird von Benutzern verwendet, wenn sie sich bei Azure AD und Office 365 anmelden. Die verwendeten Domänen, auch als UPN-Suffix bezeichnet, sollte in Azure AD überprüft werden, bevor die Benutzer synchronisiert werden. Microsoft empfiehlt, das Standardattribut „userPrincipalName“ beizubehalten. Wenn dieses Attribut nicht routingfähig ist und nicht überprüft werden kann, können Sie ein anderes Attribut auswählen. So können Sie beispielsweise „email“ als Attribut mit der Anmelde-ID verwenden. Wenn Sie ein anderes Attribut als „userPrincipalName“ verwenden, wird dieses als **alternative ID**bezeichnet. Der Attributwert der alternativen ID muss dem RFC822-Standard entsprechen. Eine alternative ID kann mit Kennworthashsynchronisierung, Pass-Through-Authentifizierung und Verbund verwendet werden. Das Attribut darf in Active Directory nicht als mehrwertiges Attribut definiert werden, auch wenn es nur einen einzelnen Wert hat. Weitere Informationen zur alternativen ID finden Sie unter dem Thema [Häufig gestellte Fragen](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-faq#does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname).
+**userPrincipalName** : Das userPrincipalName-Attribut wird von Benutzern verwendet, wenn sie sich bei Azure AD und Office 365 anmelden. Die verwendeten Domänen, auch als UPN-Suffix bezeichnet, sollte in Azure AD überprüft werden, bevor die Benutzer synchronisiert werden. Microsoft empfiehlt, das Standardattribut „userPrincipalName“ beizubehalten. Wenn dieses Attribut nicht routingfähig ist und nicht überprüft werden kann, können Sie ein anderes Attribut auswählen. So können Sie beispielsweise „email“ als Attribut mit der Anmelde-ID verwenden. Wenn Sie ein anderes Attribut als „userPrincipalName“ verwenden, wird dieses als **alternative ID**bezeichnet. Der Attributwert der alternativen ID muss dem RFC822-Standard entsprechen. Eine alternative ID kann mit Kennworthashsynchronisierung, Pass-Through-Authentifizierung und Verbund verwendet werden. Das Attribut darf in Active Directory nicht als mehrwertiges Attribut definiert werden, auch wenn es nur einen einzelnen Wert hat. Weitere Informationen zur alternativen ID finden Sie unter dem Thema [Häufig gestellte Fragen](./how-to-connect-pta-faq.md#does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname).
 
 >[!NOTE]
 > Beim Aktivieren der Passthrough-Authentifizierung müssen Sie mindestens über eine verifizierte Domäne verfügen, um im Assistenten fortfahren zu können.
 
 > [!WARNING]
-> Eine alternative ID ist nicht mit allen Office 365-Workloads kompatibel. Weitere Informationen finden Sie unter [Konfigurieren der alternativen Anmelde-ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id).
+> Eine alternative ID ist nicht mit allen Office 365-Workloads kompatibel. Weitere Informationen finden Sie unter [Konfigurieren der alternativen Anmelde-ID](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id).
 >
 >
 
@@ -180,7 +180,7 @@ In einer Produktionsbereitstellung wird es schwer, eine einzelne Gruppe mit alle
 | Öffentliche Exchange-E-Mail-Ordner | Mit dem Feature „Öffentliche Exchange-E-Mail-Ordner“ können Sie Objekte für E-Mail-aktivierte öffentliche Ordner von Ihrer lokalen Active Directory-Instanz nach Azure AD synchronisieren. |
 | Azure AD-App- und Attributfilterung |Mithilfe der App- und Attributfilterung von Azure AD kann die Gruppe synchronisierter Attribute individuell konfiguriert werden. Durch diese Option wird der Assistent um zwei weitere Konfigurationsseiten erweitert. Weitere Informationen finden Sie unter [Azure AD-App- und Attributfilterung](#azure-ad-app-and-attribute-filtering). |
 | Kennworthashsynchronisierung |Diese Option ist verfügbar, wenn Sie als Anmeldelösung die Verbundoption ausgewählt haben. Die Kennworthashsynchronisierung kann dann als Sicherungsoption verwendet werden. Weitere Informationen finden Sie unter [Implement password hash synchronization with Azure AD Connect sync](how-to-connect-password-hash-synchronization.md) (Implementieren der Kennworthashsynchronisierung mit Azure AD Connect-Synchronisierung). </br></br>Wenn Sie die Passthrough-Authentifizierung ausgewählt haben, kann diese Option auch standardmäßig aktiviert werden, um sicherzustellen, dass Legacyclients unterstützt werden und eine Sicherungsoption vorhanden ist. Weitere Informationen finden Sie unter [Implement password hash synchronization with Azure AD Connect sync](how-to-connect-password-hash-synchronization.md) (Implementieren der Kennworthashsynchronisierung mit Azure AD Connect-Synchronisierung).|
-| Kennwortrückschreiben |Durch Aktivieren des Kennwortrückschreibens werden Kennwortänderungen aus Azure AD in Ihr lokales Verzeichnis zurückgeschrieben. Weitere Informationen finden Sie unter [Erste Schritte mit der Kennwortverwaltung](../authentication/quickstart-sspr.md). |
+| Kennwortrückschreiben |Durch Aktivieren des Kennwortrückschreibens werden Kennwortänderungen aus Azure AD in Ihr lokales Verzeichnis zurückgeschrieben. Weitere Informationen finden Sie unter [Erste Schritte mit der Kennwortverwaltung](../authentication/tutorial-enable-sspr.md). |
 | Gruppenrückschreiben |Bei Verwendung des Features **Office 365-Gruppen** können diese Gruppen in Ihrem lokalen Active Directory dargestellt werden. Diese Option ist nur verfügbar, wenn Exchange in Ihrem lokalen Active Directory vorhanden ist. Weitere Informationen finden Sie unter [Azure AD Connect-Gruppenrückschreiben](how-to-connect-group-writeback.md).|
 | Geräterückschreiben |Ermöglicht für bedingte Szenarios das Rückschreiben von Geräteobjekten in Azure AD auf Ihr lokales Active Directory. Weitere Informationen finden Sie unter [Aktivieren des Geräterückschreibens in Azure AD Connect](how-to-connect-device-writeback.md). |
 | Verzeichniserweiterungen-Attributsynchronisierung |Durch Aktivieren der Attributsynchronisierung für Verzeichniserweiterungen werden die angegebenen Attribute mit Azure AD synchronisiert. Weitere Informationen finden Sie unter [Verzeichniserweiterungen](how-to-connect-sync-feature-directory-extensions.md). |
@@ -303,7 +303,7 @@ Diese Konfiguration wird verwendet, um die Verbundbeziehung zwischen AD FS und A
 ![Azure AD-Domäne](./media/how-to-connect-install-custom/adfs6.png)
 
 ### <a name="verify-the-azure-ad-domain-selected-for-federation"></a>Überprüfen der für den Verbund ausgewählten Azure AD-Domäne
-Wenn Sie die Domäne in einem Verbund verwenden möchten, stellt Azure AD Connect die erforderlichen Informationen zur Überprüfung einer nicht überprüften Domäne bereit. Informationen zur Verwendung dieser Informationen finden Sie unter [Hinzufügen und Überprüfen der Domäne](../active-directory-domains-add-azure-portal.md).
+Wenn Sie die Domäne in einem Verbund verwenden möchten, stellt Azure AD Connect die erforderlichen Informationen zur Überprüfung einer nicht überprüften Domäne bereit. Informationen zur Verwendung dieser Informationen finden Sie unter [Hinzufügen und Überprüfen der Domäne](../fundamentals/add-custom-domain.md).
 
 ![Azure AD-Domäne](./media/how-to-connect-install-custom/verifyfeddomain.png)
 

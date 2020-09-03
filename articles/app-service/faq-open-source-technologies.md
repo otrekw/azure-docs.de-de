@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 89c317e6623a868fd75b09274c726720e726e470
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 512776f2498a88f1fda9b5e7f0e2db0ddd32b955
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87848637"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962327"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zu Open-Source-Technologien für Web-Apps in Azure | Microsoft-Dokumentation
 
@@ -43,7 +43,7 @@ So aktivieren Sie die PHP-Protokollierung
     ```
 12. Starten Sie im Azure-Portal im Menü „Web-App“ Ihre Web-App neu.
 
-Weitere Informationen finden Sie unter [Aktivieren von WordPress-Fehlerprotokollen](https://blogs.msdn.microsoft.com/azureossds/2015/10/09/logging-php-errors-in-wordpress-2/).
+Weitere Informationen finden Sie unter [Aktivieren von WordPress-Fehlerprotokollen](/archive/blogs/azureossds/logging-php-errors-in-wordpress-2).
 
 ## <a name="how-do-i-log-python-application-errors-in-apps-that-are-hosted-in-app-service"></a>Wie protokolliere ich Python-Anwendungsfehler in Apps, die in App Service gehostet werden?
 [!INCLUDE [web-sites-python-troubleshooting-wsgi-error-log](../../includes/web-sites-python-troubleshooting-wsgi-error-log.md)]
@@ -80,7 +80,7 @@ Um die Version der Node.js-Anwendung zu ändern, können Sie eine der folgenden 
 
 ## <a name="i-see-the-message-error-establishing-a-database-connection-in-my-wordpress-app-thats-hosted-in-app-service-how-do-i-troubleshoot-this"></a>Mir wird die Meldung „Fehler beim Herstellen einer Datenbankverbindung“ in meiner WordPress-App angezeigt, die in App Service gehostet wird. Wie kann ich das Problem beheben?
 
-Wenn Ihnen dieser Fehler in der Azure-WordPress-App angezeigt wird, führen Sie zum Aktivieren von „php_errors.log“ und „debug.log“ die Schritte unter [Aktivieren von WordPress-Fehlerprotokollen](https://blogs.msdn.microsoft.com/azureossds/2015/10/09/logging-php-errors-in-wordpress-2/) aus.
+Wenn Ihnen dieser Fehler in der Azure-WordPress-App angezeigt wird, führen Sie zum Aktivieren von „php_errors.log“ und „debug.log“ die Schritte unter [Aktivieren von WordPress-Fehlerprotokollen](/archive/blogs/azureossds/logging-php-errors-in-wordpress-2) aus.
 
 Wenn die Protokolle aktiviert sind, reproduzieren Sie den Fehler, und überprüfen Sie die Protokolle, um zu prüfen, ob Verbindungen knapp werden:
 ```
@@ -97,11 +97,11 @@ Wenn Sie diesen Fehler in Ihren Dateien „debug.log“ oder „php_errors.log�
 
 ## <a name="how-do-i-install-native-python-modules-in-an-app-service-web-app-or-api-app"></a>Wie installiere ich native Python-Module in einer App Service-Web-App oder -API-App?
 
-Einige Pakete lassen sich ggf. nicht mithilfe von pip in Azure installieren. Das Paket ist möglicherweise nicht im Python Package Index verfügbar, oder ggf. ist ein Compiler erforderlich (auf dem Computer, auf dem die Web-App in App Service ausgeführt wird, ist kein Compiler verfügbar). Informationen zum Installieren nativer Module in App Service-Web-Apps und -API-Apps finden Sie unter [Installieren von Python-Modulen in App Service](https://blogs.msdn.microsoft.com/azureossds/2015/06/29/install-native-python-modules-on-azure-web-apps-api-apps/).
+Einige Pakete lassen sich ggf. nicht mithilfe von pip in Azure installieren. Das Paket ist möglicherweise nicht im Python Package Index verfügbar, oder ggf. ist ein Compiler erforderlich (auf dem Computer, auf dem die Web-App in App Service ausgeführt wird, ist kein Compiler verfügbar). Informationen zum Installieren nativer Module in App Service-Web-Apps und -API-Apps finden Sie unter [Installieren von Python-Modulen in App Service](/archive/blogs/azureossds/install-native-python-modules-on-azure-web-apps-api-apps).
 
 ## <a name="how-do-i-deploy-a-django-app-to-app-service-by-using-git-and-the-new-version-of-python"></a>Wie stelle ich eine Django-App in App Service mithilfe von Git und der neuen Version von Python bereit?
 
-Informationen zum Installieren von Django finden Sie unter [Bereitstellen einer Django-App in App Service](https://blogs.msdn.microsoft.com/azureossds/2016/08/25/deploying-django-app-to-azure-app-services-using-git-and-new-version-of-python/).
+Informationen zum Installieren von Django finden Sie unter [Bereitstellen einer Django-App in App Service](/archive/blogs/azureossds/deploying-django-app-to-azure-app-services-using-git-and-new-version-of-python).
 
 ## <a name="where-are-the-tomcat-log-files-located"></a>Wo befinden sich die Tomcat-Protokolldateien?
 
@@ -183,7 +183,7 @@ Wenn Sie vor Kurzem zu Azure migriert sind, leitet WordPress Sie zur alten Domä
 
 WordPress Buddy+ ist eine Erweiterung für Azure-Websites, mit deren Hilfe Sie die Umleitungs-URL direkt in der Datenbank aktualisieren können. Weitere Informationen zur Verwendung von WordPress Buddy+ finden Sie unter [WordPress tools and MySQL migration with WordPress Buddy+](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/) (WordPress-Tools und MySQL-Migration mit WordPress Buddy+).
 
-Wenn Sie die Umleitungs-URL lieber manuell mithilfe von SQL-Abfragen oder PHPMyAdmin aktualisieren, gehen Sie wie unter [WordPress: Redirecting to wrong URL](https://blogs.msdn.microsoft.com/azureossds/2016/07/12/wordpress-redirecting-to-wrong-url/) (WordPress: Umleitung zur falschen URL) beschrieben vor.
+Wenn Sie die Umleitungs-URL lieber manuell mithilfe von SQL-Abfragen oder PHPMyAdmin aktualisieren, gehen Sie wie unter [WordPress: Redirecting to wrong URL](/archive/blogs/azureossds/wordpress-redirecting-to-wrong-url) (WordPress: Umleitung zur falschen URL) beschrieben vor.
 
 ## <a name="how-do-i-change-my-wordpress-sign-in-password"></a>Wie ändere ich mein WordPress-Anmeldungskennwort?
 
@@ -197,12 +197,12 @@ Wenn Sie sich nach einer vor Kurzem erfolgten Installation eines Plug-Ins aus Wo
 
 Sie haben mehrere Optionen zum Migrieren der MySQL-Datenbank, die mit Ihrer WordPress-Website verbunden ist:
 
-* Entwickler: Verwenden Sie die [Eingabeaufforderung oder PHPMyAdmin](https://blogs.msdn.microsoft.com/azureossds/2016/03/02/migrating-data-between-mysql-databases-using-kudu-console-azure-app-service/).
+* Entwickler: Verwenden Sie die [Eingabeaufforderung oder PHPMyAdmin](/archive/blogs/azureossds/migrating-data-between-mysql-databases-using-kudu-console-azure-app-service).
 * Andere Benutzer: Verwenden Sie [WordPress Buddy+](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/).
 
 ## <a name="how-do-i-help-make-wordpress-more-secure"></a>Wie kann ich WordPress sicherer machen?
 
-Informationen zu bewährten Sicherheitsmethoden für WordPress finden Sie unter [Best practices for WordPress security in Azure](https://blogs.msdn.microsoft.com/azureossds/2016/12/26/best-practices-for-wordpress-security-on-azure/) (Bewährte Methoden für die WordPress-Sicherheit in Azure).
+Informationen zu bewährten Sicherheitsmethoden für WordPress finden Sie unter [Best practices for WordPress security in Azure](/archive/blogs/azureossds/best-practices-for-wordpress-security-on-azure) (Bewährte Methoden für die WordPress-Sicherheit in Azure).
 
 ## <a name="i-am-trying-to-use-phpmyadmin-and-i-see-the-message-access-denied-how-do-i-resolve-this"></a>Ich versuche, PHPMyAdmin zu verwenden, und erhalte die Fehlermeldung „Zugriff verweigert“. Wie löse ich dieses Problem?
 

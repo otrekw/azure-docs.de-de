@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 08/24/2020
+ms.date: 08/27/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ecb25e9bb9625a5ada70be2df61898a462c86af
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 629173612f091319f6dec57b1cdfcfea41033bfc
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815051"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047104"
 ---
 # <a name="what-is-risk"></a>Was bedeutet Risiko?
 
@@ -39,7 +39,6 @@ Diese Risiken werden offline anhand interner und externer Threat Intelligence-Q
 | Risikoerkennung | BESCHREIBUNG |
 | --- | --- |
 | Kompromittierte Anmeldeinformationen | Dieser Risikoerkennungstyp gibt an, dass die gültigen Anmeldeinformationen des Benutzers kompromittiert wurden. Wenn Internetkriminelle an gültige Kennwörter von berechtigten Benutzern gelangen, geben sie diese Anmeldeinformationen häufig weiter. Diese Freigabe erfolgt in der Regel durch eine Veröffentlichung im Darknet oder auf Paste Sites oder durch den Handel und Verkauf der Anmeldeinformationen auf dem Schwarzmarkt. Wenn der Microsoft-Dienst für kompromittierte Anmeldeinformationen Benutzeranmeldeinformationen aus dem Darknet, von Paste Sites oder anderen Quellen erwirbt, werden sie mit aktuell gültigen Anmeldeinformationen von Azure AD-Benutzern verglichen, um gültige Übereinstimmungen zu finden. Weitere Informationen zu kompromittierten Anmeldeinformationen finden Sie unter [Häufig gestellte Fragen](#common-questions). |
-| Kennwortspray | Bei einem Kennwortspray-Angriff werden mehrere Benutzernamen unter Verwendung gängiger Kennwörter im Rahmen eines koordinierten Brute-Force-Angriffs angegriffen, um nicht autorisierten Zugriff zu erhalten. Die Risikoerkennung wird ausgelöst, wenn ein Kennwortspray-Angriff erfolgt ist. |
 | Azure AD Threat Intelligence | Dieser Risikoerkennungstyp gibt Benutzeraktivitäten an, die für den angegebenen Benutzer unüblich oder mit bekannten Angriffsmustern konsistent sind (basierend auf internen und externen Threat Intelligence-Quellen von Microsoft). |
 
 ### <a name="sign-in-risk"></a>Anmelderisiko
@@ -57,6 +56,7 @@ Diese Risiken können in Echtzeit oder offline anhand interner und externer Thre
 | Benutzergefährdung durch Administrator bestätigt | Offline | Diese Erkennung gibt an, dass ein Administrator auf der Benutzeroberfläche für riskante Benutzer oder mithilfe der riskyUsers-API die Option „Benutzergefährdung bestätigen“ ausgewählt hat. Überprüfen Sie den Risikoverlauf des Benutzers (auf der Benutzeroberfläche oder über die API), um zu überprüfen, welcher Administrator diese Benutzergefährdung bestätigt hat. |
 | Schädliche IP-Adresse | Offline | Diese Erkennung gibt eine Anmeldung über eine schädliche IP-Adresse an. Eine IP-Adresse wird wegen hoher Fehlerraten aufgrund von ungültige Anmeldeinformationen, die von der IP-Adresse oder anderen IP-Zuverlässigkeitsquellen empfangen wurden, als schädlich eingestuft. |
 | Verdächtige Regeln zur Posteingangsänderung | Offline | Diese Erkennung wird von [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-manipulation-rules) erkannt. Diese Erkennung erstellt ein Profil Ihrer Umgebung und löst Warnungen aus, wenn verdächtige Regeln zum Löschen oder Verschieben von Nachrichten oder Ordnern für den Posteingang eines Benutzers festgelegt werden. Diese Erkennung kann darauf hinweisen, dass das Konto des Benutzers kompromittiert ist, dass Nachrichten absichtlich ausgeblendet werden und das Postfach zum Verteilen von Spam und Schadsoftware in Ihrer Organisation verwendet wird. |
+| Kennwortspray | Offline | Bei einem Kennwortspray-Angriff werden mehrere Benutzernamen unter Verwendung gängiger Kennwörter im Rahmen eines koordinierten Brute-Force-Angriffs angegriffen, um nicht autorisierten Zugriff zu erhalten. Die Risikoerkennung wird ausgelöst, wenn ein Kennwortspray-Angriff erfolgt ist. |
 | Unmöglicher Ortswechsel | Offline | Diese Erkennung wird von [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#impossible-travel) erkannt. Diese Erkennung identifiziert zwei Benutzeraktivitäten (in einer einzelnen Sitzung oder in mehreren Sitzungen), die von unterschiedlichen geografischen Standorten stammen und in einem Zeitraum liegen, der kürzer ist als die Zeit, die der Benutzer benötigt, um von Standort A zu Standort B zu gelangen. Dies deutet darauf hin, dass ein anderer Benutzer die gleichen Anmeldeinformationen verwendet. |
 
 ### <a name="other-risk-detections"></a>Andere Risikoerkennungen

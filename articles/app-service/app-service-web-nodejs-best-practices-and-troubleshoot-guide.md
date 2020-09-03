@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 3fd9a013eb3318abc48745e163d9ee0118b52b1d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 3b4a9547a1bd62b7464b4a79fe68720572630f3d
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077474"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961889"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Bewährte Methoden und Problembehandlungsschritte für Node-Anwendungen in Azure App Service unter Windows
 
@@ -274,8 +274,8 @@ NODE.exe verfügt über eine Einstellung namens `NODE_PENDING_PIPE_INSTANCES`. I
 Unter den unten angegebenen Links finden Sie weitere Informationen zu „node.js“-Anwendungen für Azure App Service.
 
 * [Erste Schritte mit Node.js-Web-Apps in Azure App Service](quickstart-nodejs.md)
-* [Debuggen einer Node.js-Web-App in Azure App Service](https://blogs.msdn.microsoft.com/azureossds/2018/08/03/debugging-node-js-apps-on-azure-app-services/)
+* [Debuggen einer Node.js-Web-App in Azure App Service](/archive/blogs/azureossds/debugging-node-js-apps-on-azure-app-services)
 * [Verwenden von Node.js-Modulen mit Azure-Anwendungen](../nodejs-use-node-modules-azure-apps.md)
-* [Azure App Service-Web-Apps: Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)
+* [Azure App Service-Web-Apps: Node.js](/archive/blogs/silverlining/windows-azure-websites-node-js)
 * [Node.js Developer Center (in englischer Sprache)](../nodejs-use-node-modules-azure-apps.md)
 * [Exploring the Super Secret Kudu Debug Console (Erkunden der geheimen Kudu-Debugkonsole)](https://azure.microsoft.com/documentation/videos/super-secret-kudu-debug-console-for-azure-web-sites/)

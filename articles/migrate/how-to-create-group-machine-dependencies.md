@@ -3,12 +3,12 @@ title: Einrichten der agentbasierten Abhängigkeitsanalyse in der Azure Migrate-
 description: In diesem Artikel wird das Einrichten der agentbasierten Abhängigkeitsanalyse in der Azure Migrate-Serverbewertung beschrieben.
 ms.topic: how-to
 ms.date: 6/09/2020
-ms.openlocfilehash: c41f8eb82cf912fc566975f833fc73589f17be98
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: c5c019ec995f59b61fb96917bed50bd8ba3f61d4
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829916"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022376"
 ---
 # <a name="set-up-dependency-visualization"></a>Einrichten der Abhängigkeitsvisualisierung
 
@@ -82,9 +82,9 @@ Gehen Sie wie folgt vor, um den Agent auf einem Windows-Computer zu installieren
 5. Klicken Sie auf **Hinzufügen**, um einen neuen Log Analytics-Arbeitsbereich hinzuzufügen. Fügen Sie die Arbeitsbereichs-ID und den dazugehörigen Schlüssel ein, die bzw. den Sie im Portal kopiert haben. Klicken Sie auf **Weiter**.
 
 Sie können den Agent über die Befehlszeile oder mithilfe einer automatisierten Methode wie Configuration Manager oder [Intigua](https://www.intigua.com/intigua-for-azure-migration) installieren.
-- [Weitere Informationen](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration) zur Verwendung dieser Methoden zum Installieren des MMA-Agent.
+- [Weitere Informationen](../azure-monitor/platform/log-analytics-agent.md#installation-options) zur Verwendung dieser Methoden zum Installieren des MMA-Agent.
 - Der MMA-Agent kann auch mit diesem [Skript](https://go.microsoft.com/fwlink/?linkid=2104394) installiert werden.
-- [Erfahren Sie mehr](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems) über die durch den MMA unterstützten Windows-Betriebssysteme.
+- [Erfahren Sie mehr](../azure-monitor/platform/agents-overview.md#supported-operating-systems) über die durch den MMA unterstützten Windows-Betriebssysteme.
 
 ### <a name="install-mma-on-a-linux-machine"></a>Installieren von MMA auf einem Linux-Computer
 
@@ -95,7 +95,7 @@ So installieren Sie MMA auf einem Linux-Computer
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
-[Erfahren Sie mehr](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) über die Liste der Unterstützungen durch den MMA für Linux-Betriebssysteme. 
+[Erfahren Sie mehr](../azure-monitor/platform/agents-overview.md#supported-operating-systems) über die Liste der Unterstützungen durch den MMA für Linux-Betriebssysteme. 
 
 ## <a name="install-the-dependency-agent"></a>Installieren des Abhängigkeits-Agents
 

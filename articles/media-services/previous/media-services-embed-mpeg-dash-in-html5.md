@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 6c1df14ba5a9f233f42750d4e6dea68a7d6ddc0e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55c22a58ea76c268c40894c0ea64d43312b1ba27
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77564855"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269093"
 ---
-# <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>Einbetten eines Videos mit adaptivem Streaming im MPEG-DASH-Format in eine HTML5-Anwendung mit DASH.js  
+# <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>Einbetten eines Videos mit adaptivem Streaming im MPEG-DASH-Format in eine HTML5-Anwendung mit DASH.js
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)] 
 
 ## <a name="overview"></a>Übersicht
 MPEG-DASH ist ein ISO-Standard für adaptives Streaming von Videoinhalten, der Entwicklern wichtige Vorteile bietet, die qualitativ hochwertige Videoausgaben mit adaptivem Streaming bereitstellen möchten. Mit MPEG-DASH wird der Videostream automatisch einer niedrigeren Auflösung angepasst, wenn das Netzwerk überlastet ist. Dadurch verringert sich die Wahrscheinlichkeit eines angehaltenen Videos, während der Player die nächsten Sekunden für die Wiedergabe herunterlädt (Pufferung). Wenn die Netzwerküberlastung abnimmt, kehrt der Videoplayer zu einem Streaming mit höherer Qualität zurück. Diese Möglichkeit, die erforderliche Bandbreite anzupassen, führt außerdem zu einer kürzeren Startzeit für Videos. Das bedeutet, dass die ersten Sekunden in einem schnell herunterladbaren Segment mit niedriger Qualität wiedergegeben werden können und die Qualität anschließend erhöht wird, wenn genügend Inhalte gepuffert wurden.

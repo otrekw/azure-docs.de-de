@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 867c011cb3086cab736d17501e72bc477d0d2889
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 5545acbfd6bb239b9518fbe352b819f300dafaf0
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159999"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962348"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zur Konfiguration und Verwaltung von Web-Apps in Azure
 
@@ -65,7 +65,7 @@ So richten Sie die Serverzeitzone für Ihre Web-App ein
     * Wert = *Die gewünschte Zeitzone*
 3. Wählen Sie **Speichern** aus.
 
-Akzeptierte Werte für App-Dienste unter Windows finden Sie im Artikel [Standardzeitzonen](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones) in der Spalte **Zeitzone**. Legen Sie für App-Dienste, die unter Linux ausgeführt werden, den [Namen der TZ-Datenbank](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) als Zeitzonenwert fest. Dies ist ein Beispiel für den Namen der TZ-Datenbank: America/Adak.
+Akzeptierte Werte für App-Dienste unter Windows finden Sie im Artikel [Standardzeitzonen](/windows-hardware/manufacture/desktop/default-time-zones) in der Spalte **Zeitzone**. Legen Sie für App-Dienste, die unter Linux ausgeführt werden, den [Namen der TZ-Datenbank](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) als Zeitzonenwert fest. Dies ist ein Beispiel für den Namen der TZ-Datenbank: America/Adak.
 
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>Warum misslingen meine fortlaufend ausgeführten WebJobs mitunter?
 
@@ -147,7 +147,7 @@ Die Ausnahme wurde durch ein Problem beim Hybridverbindungs-Manager ausgelöst, 
 
 ## <a name="how-do-i-add-a-url-rewrite-rule"></a>Wie kann ich eine URL-Rewrite-Regel hinzufügen?
 
-Um eine URL-Rewrite-Regel (Regel zum erneuten Schreiben einer URL) hinzuzufügen, erstellen Sie eine „web.config“-Datei mit den entsprechenden Konfigurationseinträgen im Ordner **wwwroot**. Weitere Informationen finden Sie unter [Azure App Services: Understanding URL Re-write](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/).
+Um eine URL-Rewrite-Regel (Regel zum erneuten Schreiben einer URL) hinzuzufügen, erstellen Sie eine „web.config“-Datei mit den entsprechenden Konfigurationseinträgen im Ordner **wwwroot**. Weitere Informationen finden Sie unter [Azure App Services: Understanding URL Re-write](/archive/blogs/madhurabharadwaj/azure-app-services-understanding-url-re-write).
 
 ## <a name="how-do-i-control-inbound-traffic-to-app-service"></a>Wie steuere ich den in App Service eingehenden Datenverkehr?
 
@@ -222,7 +222,7 @@ Stellen Sie zum Beheben dieses Problems sicher, dass keine der folgenden Bedingu
 * Eine fehlerhafte Netzwerksicherheitsgruppe verhindert das Erfüllen der Anforderungen an die Netzwerkverbindung einer App Service-Umgebung.
 * Erzwungenes Tunneln ist aktiviert.
 
-Weitere Informationen finden Sie unter [Most frequent issues when deploying (creating) a new Azure App Service Environment (ASE)](https://blogs.msdn.microsoft.com/waws/2016/05/13/most-frequent-issues-when-deploying-creating-a-new-azure-app-service-environment-ase/) (Häufig auftretende Probleme beim Bereitstellen [oder Erstellen] einer neuen Azure App Service-Umgebung).
+Weitere Informationen finden Sie unter [Most frequent issues when deploying (creating) a new Azure App Service Environment (ASE)](/archive/blogs/waws/most-frequent-issues-when-deploying-creating-a-new-azure-app-service-environment-ase) (Häufig auftretende Probleme beim Bereitstellen [oder Erstellen] einer neuen Azure App Service-Umgebung).
 
 ## <a name="why-cant-i-delete-my-app-service-plan"></a>Warum kann ich meinen App Service-Plan nicht löschen?
 
@@ -286,7 +286,7 @@ Beim Erstellen einer neuen Website mithilfe von Web-Apps in Azure wird Ihrer Web
 
 ## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>Wie erkenne ich, welche .NET-Version in App Service installiert ist?
 
-Die schnellste Methode, die Version von Microsoft .NET zu bestimmen, die in App Service installiert ist, bietet die Kudu-Konsole. Auf die Kudu-Konsole können Sie +über das Portal oder die URL Ihrer App Service-App zugreifen. Ausführliche Anweisungen finden Sie unter [How to determine the installed .NET version in Azure App Services](https://blogs.msdn.microsoft.com/waws/2016/11/02/how-to-determine-the-installed-net-version-in-azure-app-services/) (Bestimmen der installierten Version von .NET in App Service).
+Die schnellste Methode, die Version von Microsoft .NET zu bestimmen, die in App Service installiert ist, bietet die Kudu-Konsole. Auf die Kudu-Konsole können Sie +über das Portal oder die URL Ihrer App Service-App zugreifen. Ausführliche Anweisungen finden Sie unter [How to determine the installed .NET version in Azure App Services](/archive/blogs/waws/how-to-determine-the-installed-net-version-in-azure-app-services) (Bestimmen der installierten Version von .NET in App Service).
 
 ## <a name="why-isnt-autoscale-working-as-expected"></a>Warum funktioniert die automatische Skalierung nicht wie erwartet?
 

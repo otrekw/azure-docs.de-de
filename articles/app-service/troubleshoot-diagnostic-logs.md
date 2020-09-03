@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 1a6c109907c20e06796744d42feae20dc53f2b52
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 89162a0b8ca20e59319802f9e2359c2f27ff163f
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207524"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962178"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Aktivieren der Diagnoseprotokollierung für Apps in Azure App Service
 ## <a name="overview"></a>Übersicht
@@ -46,12 +46,12 @@ Um Anwendungsprotokollierung für Windows-Apps im [Azure-Portal](https://portal.
 
 Wählen Sie für **Anwendungsprotokollierung (Dateisystem)** oder **Anwendungsprotokollierung (Blob)** oder beides die Option **Ein** aus. 
 
-Die Option **Dateisystem** ist für das temporäre Debuggen bestimmt und schaltet sich nach 12 Stunden aus. Die Option **Blob** ist für die langfristige Protokollierung vorgesehen und benötigt einen Blobspeichercontainer, in den Protokolle geschrieben werden.  Die Option **Blob** enthält auch zusätzliche Informationen in den Protokollmeldungen, z.B. die ID der ursprünglichen VM-Instanz der Protokollmeldung (`InstanceId`), die Thread-ID (`Tid`) und einen genaueren Zeitstempel ([`EventTickCount`](https://docs.microsoft.com/dotnet/api/system.datetime.ticks)).
+Die Option **Dateisystem** ist für das temporäre Debuggen bestimmt und schaltet sich nach 12 Stunden aus. Die Option **Blob** ist für die langfristige Protokollierung vorgesehen und benötigt einen Blobspeichercontainer, in den Protokolle geschrieben werden.  Die Option **Blob** enthält auch zusätzliche Informationen in den Protokollmeldungen, z.B. die ID der ursprünglichen VM-Instanz der Protokollmeldung (`InstanceId`), die Thread-ID (`Tid`) und einen genaueren Zeitstempel ([`EventTickCount`](/dotnet/api/system.datetime.ticks)).
 
 > [!NOTE]
 > Zurzeit können nur .NET-Anwendungsprotokolle in den Blobspeicher geschrieben werden. Anwendungsprotokoll für Java, PHP, Node.js, Python können nur im App Service-Dateisystem gespeichert werden (ohne Codeänderungen, um Protokolle in externen Speicher zu schreiben).
 >
-> Wenn Sie [den Zugriffsschlüssel für Ihr Speicherkonto neu generieren](../storage/common/storage-create-storage-account.md), müssen Sie außerdem die jeweilige Protokollierungskonfiguration zur Verwendung der aktualisierten Zugriffsschlüssel zurücksetzen. Gehen Sie dazu folgendermaßen vor:
+> Wenn Sie [den Zugriffsschlüssel für Ihr Speicherkonto neu generieren](../storage/common/storage-account-create.md), müssen Sie außerdem die jeweilige Protokollierungskonfiguration zur Verwendung der aktualisierten Zugriffsschlüssel zurücksetzen. Gehen Sie dazu folgendermaßen vor:
 >
 > 1. Stellen Sie auf der Registerkarte **Konfigurieren** das jeweilige Protokollierungsfeature auf **Aus**. Speichern Sie die Einstellungen.
 > 2. Aktivieren Sie die Protokollierung im Speicherkontoblob erneut. Speichern Sie die Einstellungen.
@@ -89,7 +89,7 @@ Wählen Sie **Webserverprotokollierung** aus, wählen Sie **Speicher** aus, um P
 Legen Sie unter **Aufbewahrungszeitraum (Tage)** die Anzahl der Tage fest, die die Protokolle aufbewahrt werden sollen.
 
 > [!NOTE]
-> Wenn Sie [den Zugriffsschlüssel für Ihr Speicherkonto neu generieren](../storage/common/storage-create-storage-account.md), müssen Sie die jeweilige Protokollierungskonfiguration zur Verwendung der aktualisierten Schlüssel zurücksetzen. Gehen Sie dazu folgendermaßen vor:
+> Wenn Sie [den Zugriffsschlüssel für Ihr Speicherkonto neu generieren](../storage/common/storage-account-create.md), müssen Sie die jeweilige Protokollierungskonfiguration zur Verwendung der aktualisierten Schlüssel zurücksetzen. Gehen Sie dazu folgendermaßen vor:
 >
 > 1. Stellen Sie auf der Registerkarte **Konfigurieren** das jeweilige Protokollierungsfeature auf **Aus**. Speichern Sie die Einstellungen.
 > 2. Aktivieren Sie die Protokollierung im Speicherkontoblob erneut. Speichern Sie die Einstellungen.
@@ -116,7 +116,7 @@ In Ihrem Anwendungscode verwenden Sie die üblichen Protokollierungsfunktionen, 
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
     ```
 
-- Standardmäßig verwendet ASP.NET Core den Protokollierungsanbieter [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices). Weitere Informationen finden Sie unter [Protokollierung in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging/).
+- Standardmäßig verwendet ASP.NET Core den Protokollierungsanbieter [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices). Weitere Informationen finden Sie unter [Protokollierung in ASP.NET Core](/aspnet/core/fundamentals/logging/).
 
 ## <a name="stream-logs"></a>Streaming von Protokollen
 
@@ -151,7 +151,7 @@ az webapp log tail --name appname --resource-group myResourceGroup --path http
 
 ### <a name="in-local-terminal"></a>In lokalem Terminal
 
-Zum Streamen von Protokollen in der lokalen Konsole installieren Sie die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli), und [melden Sie sich bei Ihrem Konto an](https://docs.microsoft.com/cli/azure/authenticate-azure-cli). Nachdem Sie sich angemeldet haben, befolgen Sie die [Anweisungen für Cloud Shell](#in-cloud-shell).
+Zum Streamen von Protokollen in der lokalen Konsole installieren Sie die [Azure CLI](/cli/azure/install-azure-cli), und [melden Sie sich bei Ihrem Konto an](/cli/azure/authenticate-azure-cli). Nachdem Sie sich angemeldet haben, befolgen Sie die [Anweisungen für Cloud Shell](#in-cloud-shell).
 
 ## <a name="access-log-files"></a>Zugreifen auf Protokolldateien
 

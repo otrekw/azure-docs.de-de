@@ -16,19 +16,19 @@ ms.date: 07/18/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cdc7c9dba49bf37db1f039d43b0450c65884c74b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 02490839a9e35695ae2e8b3f750e139ad7413aa4
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60245506"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89280212"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect-Synchronisierung: Grundlegendes zu Ausdrücken für die deklarative Bereitstellung
 Die Azure AD Connect-Synchronisierung basiert auf der deklarativen Bereitstellung, die erstmals in Forefront Identity Manager 2010 eingeführt wurde. Sie ermöglicht Ihnen die Implementierung Ihrer gesamten Geschäftslogik zur Identitätsintegration, ohne kompilierten Code schreiben zu müssen.
 
 Ein wesentlicher Bestandteil der deklarativen Bereitstellung ist die in den Attributflüssen verwendete Ausdruckssprache. Die verwendete Sprache ist eine Teilmenge von Microsoft ® Visual Basic ® for Applications (VBA). Diese Sprache wird in Microsoft Office verwendet, und Benutzer mit Erfahrungen mit VBScript werden sie wiedererkennen. Die Ausdruckssprache für die deklarative Bereitstellung verwendet nur Funktionen und ist keine strukturierte Sprache. Es gibt keine Methoden oder Anweisungen. Funktionen werden stattdessen geschachtelt, um den Programmablauf auszudrücken.
 
-Weitere Informationen finden Sie unter [Willkommen bei der VBA-Sprachreferenz für Office 2013](https://msdn.microsoft.com/library/gg264383.aspx).
+Weitere Informationen finden Sie unter [Willkommen bei der VBA-Sprachreferenz für Office 2013](/office/vba/api/overview/language-reference).
 
 Die Attribute sind stark typisiert. Eine Funktion akzeptiert nur Attribute des richtigen Typs. Zudem muss die Groß-/Kleinschreibung beachtet werden. Sowohl bei Funktions- als auch Attributnamen muss die Groß-/Kleinschreibung korrekt sein. Andernfalls wird ein Fehler ausgegeben.
 
@@ -100,4 +100,3 @@ Beispiel:
 **Referenzthemen**
 
 * [Azure AD Connect-Synchronisierung: Funktionsreferenz](reference-connect-sync-functions-reference.md)
-

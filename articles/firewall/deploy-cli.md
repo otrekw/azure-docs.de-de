@@ -7,12 +7,12 @@ ms.service: firewall
 ms.date: 08/29/2019
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: 3087b01e849aaa4d1f3c2b6b4060cf202927f55f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7f00b57edb37cc5bb5c8340663d619e526c2eacb
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85602634"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89075425"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-cli"></a>Bereitstellen und Konfigurieren von Azure Firewall mithilfe von Azure CLI
 
@@ -35,13 +35,12 @@ In diesem Artikel erstellen Sie der Einfachheit halber ein einzelnes vereinfacht
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
-> [!div class="checklist"]
-> * Einrichten einer Netzwerkumgebung zu Testzwecken
-> * Bereitstellen einer Firewall
-> * Erstellen einer Standardroute
-> * Konfigurieren einer Anwendungsregel zum Zulassen des Zugriffs auf www.google.com
-> * Konfigurieren einer Netzwerkregel, um den Zugriff auf externe DNS-Server zuzulassen
-> * Testen der Firewall
+* Einrichten einer Netzwerkumgebung zu Testzwecken
+* Bereitstellen einer Firewall
+* Erstellen einer Standardroute
+* Konfigurieren einer Anwendungsregel zum Zulassen des Zugriffs auf www.google.com
+* Konfigurieren einer Netzwerkregel, um den Zugriff auf externe DNS-Server zuzulassen
+* Testen der Firewall
 
 Dieses Verfahren kann auch mit dem [Azure-Portal](tutorial-firewall-deploy-portal.md) oder mit [Azure PowerShell](deploy-ps.md) durchgearbeitet werden.
 

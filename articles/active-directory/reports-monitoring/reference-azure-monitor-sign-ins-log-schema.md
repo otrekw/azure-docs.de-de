@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d7c9713f27643e792ea381e1a2419cbc4b67a99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a881dee50195fe4995c77d793b4f4b75091d20b
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82129204"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231111"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Interpretieren des Azure AD-Anmeldeprotokollschemas in Azure Monitor
 
@@ -165,7 +165,7 @@ Dieser Artikel beschreibt das Azure Active Directory-Anmeldeprotokollschema (Azu
 | Identity | Die Identität des Tokens, das beim Erstellen der Anforderung angegeben wurde. Dies kann ein Benutzerkonto, ein Systemkonto oder einen Dienstprinzipal sein. |
 | Ebene | Gibt den Typ der Nachricht an. Bei Überwachungen ist es immer *Information*. |
 | Standort | Gibt den Standort der Anmeldeaktivität an. |
-| Eigenschaften | Listet alle Eigenschaften auf, die mit Anmeldungen verknüpft sind. Weitere Informationen finden Sie in der [Microsoft Graph-API-Referenz](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin). Dieses Schema verwendet zur besseren Lesbarkeit die gleichen Attributnamen wie die Anmelderessource.
+| Eigenschaften | Listet alle Eigenschaften auf, die mit Anmeldungen verknüpft sind. Weitere Informationen finden Sie in der [Microsoft Graph-API-Referenz](/graph/api/resources/signin?view=graph-rest-beta). Dieses Schema verwendet zur besseren Lesbarkeit die gleichen Attributnamen wie die Anmelderessource.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

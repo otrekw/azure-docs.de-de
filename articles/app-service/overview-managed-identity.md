@@ -6,13 +6,13 @@ ms.topic: article
 ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: f5255041a97a56e6577f33b571403ff454bb65b4
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell
+ms.openlocfilehash: 98cec9fc30b4840a763358c0b3cd76659ff865d7
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211876"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070359"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Verwenden verwalteter Identitäten für App Service und Azure Functions
 
@@ -52,7 +52,7 @@ Um mithilfe der Azure CLI eine verwaltete Entität einzurichten, müssen Sie fü
 
 - Verwenden Sie [Azure Cloud Shell](../cloud-shell/overview.md) über das Azure-Portal.
 - Verwenden Sie die eingebettete Azure Cloud Shell über die Schaltfläche „Ausprobieren“ in der rechten oberen Ecke der unten aufgeführten Codeblöcke.
-- [Installieren Sie die neueste Version der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.31 oder höher), wenn Sie lieber eine lokale CLI-Konsole verwenden möchten. 
+- [Installieren Sie die neueste Version der Azure CLI](/cli/azure/install-azure-cli) (2.0.31 oder höher), wenn Sie lieber eine lokale CLI-Konsole verwenden möchten. 
 
 In den folgenden Schritten werden Sie durch das Erstellen einer Web-App und das Zuweisen einer Identität zur App mithilfe der CLI geleitet:
 
@@ -109,7 +109,7 @@ In den folgenden Schritten werden Sie durch das Erstellen einer App und das Zuwe
 
 1. Installieren Sie bei Bedarf Azure PowerShell mithilfe der Anleitungen in der [Azure PowerShell-Dokumentation](/powershell/azure/), und führen Sie dann `Login-AzAccount` aus, um eine Verbindung mit Azure herzustellen.
 
-2. Erstellen Sie eine Funktions-App mit Azure PowerShell. Weitere Beispiele zur Verwendung von Azure PowerShell mit Azure Functions finden Sie in der [Az-Funktionenreferenz](https://docs.microsoft.com/powershell/module/az.functions/?view=azps-4.1.0#functions):
+2. Erstellen Sie eine Funktions-App mit Azure PowerShell. Weitere Beispiele zur Verwendung von Azure PowerShell mit Azure Functions finden Sie in der [Az-Funktionenreferenz](/powershell/module/az.functions/?view=azps-4.1.0#functions):
 
     ```azurepowershell-interactive
     # Create a resource group.
@@ -219,7 +219,7 @@ In den folgenden Schritten werden Sie durch das Erstellen einer App und das Zuwe
 
 1. Installieren Sie bei Bedarf Azure PowerShell mithilfe der Anleitungen in der [Azure PowerShell-Dokumentation](/powershell/azure/), und führen Sie dann `Login-AzAccount` aus, um eine Verbindung mit Azure herzustellen.
 
-2. Erstellen Sie eine Funktions-App mit Azure PowerShell. Weitere Beispiele zur Verwendung von Azure PowerShell mit Azure Functions finden Sie in der [Az-Funktionenreferenz](https://docs.microsoft.com/powershell/module/az.functions/?view=azps-4.1.0#functions). Im folgenden Skript wird auch `New-AzUserAssignedIdentity` verwendet, die gemäß [Erstellen, Auflisten oder Löschen einer vom Benutzer zugewiesenen verwalteten Identität mit Azure PowerShell](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md) separat installiert werden muss.
+2. Erstellen Sie eine Funktions-App mit Azure PowerShell. Weitere Beispiele zur Verwendung von Azure PowerShell mit Azure Functions finden Sie in der [Az-Funktionenreferenz](/powershell/module/az.functions/?view=azps-4.1.0#functions). Im folgenden Skript wird auch `New-AzUserAssignedIdentity` verwendet, die gemäß [Erstellen, Auflisten oder Löschen einer vom Benutzer zugewiesenen verwalteten Identität mit Azure PowerShell](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md) separat installiert werden muss.
 
     ```azurepowershell-interactive
     # Create a resource group.
@@ -347,7 +347,7 @@ Eine erfolgreiche 200 OK-Antwort enthält einen JSON-Text mit folgenden Eigensch
 > | resource      | Die Ressource, für die das Zugriffstoken angefordert wurde (Übereinstimmung mit dem Abfragezeichenfolgenparameter `resource` der Anforderung).                                                                                                                               |
 > | token_type    | Gibt den Wert des Tokentyps an. Der einzige von Azure AD unterstützte Typ ist FBearer. Weitere Informationen zu Bearertoken finden Sie unter [OAuth 2.0-Autorisierungsframework: Verwendung von Bearertoken (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
 
-Diese Antwort ist mit der [Antwort auf die Zugriffstokenanforderung zwischen zwei Azure AD-Diensten](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response) identisch.
+Diese Antwort ist mit der [Antwort auf die Zugriffstokenanforderung zwischen zwei Azure AD-Diensten](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response) identisch.
 
 ### <a name="rest-protocol-examples"></a>Beispiele für REST-Protokolle
 

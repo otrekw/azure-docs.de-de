@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 1a5ed324ae109a151bf21050993bff02434410df
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: e949c3db6d8c0cafab8556dbfde367e6e49273e9
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814449"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078196"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Azure Storage-Verschlüsselung für ruhende Daten
 
@@ -69,6 +69,8 @@ Nachdem Sie einen Verschlüsselungsbereich erstellt haben, können Sie diesen f�
 
 > [!NOTE]
 > Verschlüsselungsbereiche werden bei Konten für den Lesezugriff auf georedundanten Speicher (RA-GRS) und für den Lesezugriff auf geozonenredundanten Speicher (RA-GZRS) während der Vorschau nicht unterstützt.
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!IMPORTANT]
 > Die Vorschauversion der Verschlüsselungsbereiche ist nur für die Verwendung außerhalb der Produktion bestimmt. Produktions-SLAs (Service Level Agreements, Vereinbarungen zum Servicelevel) sind derzeit nicht verfügbar.

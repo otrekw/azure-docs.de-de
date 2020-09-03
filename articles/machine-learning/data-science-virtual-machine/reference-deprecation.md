@@ -8,12 +8,12 @@ ms.subservice: data-science-vm
 ms.author: laobri
 ms.date: 07/17/2020
 ms.topic: reference
-ms.openlocfilehash: ac56e2e69cf62c8afae73e0a7616e7e7f80c0493
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: d5f541dec14eebc944e4eac11dbe569b38cb277e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816319"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001619"
 ---
 # <a name="reference-retirements-of-dsvm-images"></a>Referenz: Deaktivierungen von DSVM-Images
 
@@ -50,18 +50,3 @@ Vorhandene von DSVM bereitgestellte Images in Ihrem Abonnement funktionieren nac
 >
 > ARM-Vorlagen, die nicht mit den neuen Details zum DSVM-Image aktualisiert wurden, können nach dem Deaktivierungsdatum nicht mehr bereitgestellt werden.
 
-## <a name="mitigating-upcoming-retirements"></a>Abmildern bevorstehender Deaktivierungen
-
-In diesem Abschnitt werden Maßnahmen für bevorstehende Deaktivierungen erörtert.
-
-### <a name="upgrade-windows-2016-dsvm"></a>Upgrade der Windows 2016 DSVM
-
-Führen Sie die folgenden Schritte aus, um einen Datenträger von Ihrer vorhandenen Windows 2016 DSVM zu einer Windows 2019 DSVM zu migrieren:
-
-1. Erstellen Sie eine neue Windows 2019 DSVM, indem Sie die [hier](./provision-vm.md#create-your-dsvm) beschriebenen Anweisungen befolgen.
-1. Trennen Sie unter Befolgen [dieser Anweisungen](../../virtual-machines/windows/detach-disk.md) vorhandene Datenträger von Ihrem Windows 2016-Image.
-1. Fügen Sie den Datenträger aus dem vorherigen Schritt an Ihr Windows 2019-Image an, indem Sie [diese Anweisungen](../../virtual-machines/windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm) befolgen.
-
-### <a name="upgrade-ubuntu-1604-dsvm"></a>Upgrade einer Ubuntu 1604-DSVM
-
-Es wird empfohlen, vorhandene Ubuntu 16.04-DSVMs auf die [Ubuntu 18.04-DSVM-Edition](./dsvm-ubuntu-intro.md) zu aktualisieren.

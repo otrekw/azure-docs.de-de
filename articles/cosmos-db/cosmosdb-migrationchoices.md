@@ -5,13 +5,13 @@ author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 10/23/2019
-ms.openlocfilehash: a1b8ddba84920d8d3b6871ab404081d3b24c72e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/01/2020
+ms.openlocfilehash: 02a2880c42d4eda42c1a96cfaafb04c85358ccb5
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261969"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321275"
 ---
 # <a name="options-to-migrate-your-on-premises-or-cloud-data-to-azure-cosmos-db"></a>Optionen zum Migrieren von lokalen oder Clouddaten zu Azure Cosmos DB
 
@@ -31,41 +31,48 @@ Die folgenden Faktoren haben Einfluss auf die Auswahl des Migrationstools:
 * **Erwartete Migrationsdauer:** Migrationsvorgänge können so konfiguriert werden, dass sie langsam und schrittweise ausgeführt werden und damit weniger Durchsatz beanspruchen, oder so, dass der gesamten Durchsatz des Ziel Azure Cosmos DB-Zielcontainers genutzt wird, um die Migration in kürzerer Zeit abzuschließen.
 
 ## <a name="azure-cosmos-db-sql-api"></a>SQL-API von Azure Cosmos DB
+
 |**Migrationstyp**|**Lösung**|**Überlegungen**|
 |---------|---------|---------|
-|Offline|[Datenmigrationstool](https://docs.microsoft.com/azure/cosmos-db/import-data)|&bull; Einfache Einrichtung und Unterstützung mehrerer Quellen <br/>&bull; Nicht geeignet für große Datasets|
-|Offline|[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db)|&bull; Einfache Einrichtung und Unterstützung mehrerer Quellen <br/>&bull; Nutzt die Azure Cosmos DB-BulkExecutor-Bibliothek <br/>&bull; Geeignet für große Datasets <br/>&bull; Fehlende Prüfpunktausführung: Wenn während der Migration ein Problem auftritt, müssen Sie den gesamten Migrationsprozess neu starten.<br/>&bull; Fehlende Warteschlange für unzustellbare Nachrichten: Dies bedeutet, dass wenige fehlerhafte Dateien den gesamten Migrationsprozess unterbrechen können.|
-|Offline|[Azure Cosmos DB-Spark-Connector](https://docs.microsoft.com/azure/cosmos-db/spark-connector)|&bull; Nutzt die Azure Cosmos DB-BulkExecutor-Bibliothek <br/>&bull; Geeignet für große Datasets <br/>&bull; Erfordert eine benutzerdefinierte Spark-Einrichtung <br/>&bull; Spark bietet keine Toleranz gegenüber Inkonsistenzen beim Schema. Dies kann während der Migration ein Problem darstellen. |
-|Offline|[Benutzerdefiniertes Tool mit Cosmos DB-BulkExecutor-Bibliothek](https://docs.microsoft.com/azure/cosmos-db/migrate-cosmosdb-data)|&bull; Bietet Prüfpunktfunktionen für unzustellbare Nachrichten und damit eine höhere Resilienz bei der Migration <br/>&bull; Geeignet für sehr große Datasets (> 10 TB)  <br/>&bull; Erfordert die benutzerdefinierte Einrichtung dieses Tools, das als App Service ausgeführt wird |
-|Online|[Cosmos DB-Funktionen + ChangeFeed-API](https://docs.microsoft.com/azure/cosmos-db/change-feed-functions)|&bull; Einfache Einrichtung <br/>&bull; Funktioniert nur, wenn die Quelle ein Azure Cosmos DB-Container ist <br/>&bull; Nicht geeignet für große Datasets <br/>&bull; Erfasst keine Löschvorgänge im Quellcontainer |
+|Offline|[Datenmigrationstool](import-data.md)|&bull; Einfache Einrichtung und Unterstützung mehrerer Quellen <br/>&bull; Nicht geeignet für große Datasets|
+|Offline|[Azure Data Factory](../data-factory/connector-azure-cosmos-db.md)|&bull; Einfache Einrichtung und Unterstützung mehrerer Quellen <br/>&bull; Nutzt die Azure Cosmos DB-BulkExecutor-Bibliothek <br/>&bull; Geeignet für große Datasets <br/>&bull; Fehlende Prüfpunktausführung: Wenn während der Migration ein Problem auftritt, müssen Sie den gesamten Migrationsprozess neu starten.<br/>&bull; Fehlende Warteschlange für unzustellbare Nachrichten: Dies bedeutet, dass wenige fehlerhafte Dateien den gesamten Migrationsprozess unterbrechen können.|
+|Offline|[Azure Cosmos DB-Spark-Connector](spark-connector.md)|&bull; Nutzt die Azure Cosmos DB-BulkExecutor-Bibliothek <br/>&bull; Geeignet für große Datasets <br/>&bull; Erfordert eine benutzerdefinierte Spark-Einrichtung <br/>&bull; Spark bietet keine Toleranz gegenüber Inkonsistenzen beim Schema. Dies kann während der Migration ein Problem darstellen. |
+|Offline|[Benutzerdefiniertes Tool mit Cosmos DB-BulkExecutor-Bibliothek](migrate-cosmosdb-data.md)|&bull; Bietet Prüfpunktfunktionen für unzustellbare Nachrichten und damit eine höhere Resilienz bei der Migration <br/>&bull; Geeignet für sehr große Datasets (> 10 TB)  <br/>&bull; Erfordert die benutzerdefinierte Einrichtung dieses Tools, das als App Service ausgeführt wird |
+|Online|[Cosmos DB-Funktionen + ChangeFeed-API](change-feed-functions.md)|&bull; Einfache Einrichtung <br/>&bull; Funktioniert nur, wenn die Quelle ein Azure Cosmos DB-Container ist <br/>&bull; Nicht geeignet für große Datasets <br/>&bull; Erfasst keine Löschvorgänge im Quellcontainer |
 |Online|[Benutzerdefinierter Migrationsdienst mithilfe von ChangeFeed](https://github.com/nomiero/CosmosDBLiveETLSample)|&bull; Ermöglicht die Statusnachverfolgung <br/>&bull; Funktioniert nur, wenn die Quelle ein Azure Cosmos DB-Container ist <br/>&bull; Funktioniert auch für größere Datasets <br/>&bull; Erfordert die Einrichtung einer App Service-Instanz zum Hosten der Änderungsfeedverarbeitung <br/>&bull; Erfasst keine Löschvorgänge im Quellcontainer|
-|Online|[Striim](https://docs.microsoft.com/azure/cosmos-db/cosmosdb-sql-api-migrate-data-striim)|&bull; Funktioniert mit einer Vielzahl von Quellen wie Oracle, DB2, SQL Server <br/>&bull; Einfaches Erstellen von ETL-Pipelines; einschließlich eines Dashboards für die Überwachung <br/>&bull; Unterstützt größere Datasets <br/>&bull; Da dies ein Drittanbietertool ist, muss es über den Marketplace erworben und in der Benutzerumgebung installiert werden.|
+|Online|[Striim](cosmosdb-sql-api-migrate-data-striim.md)|&bull; Funktioniert mit einer Vielzahl von Quellen wie Oracle, DB2, SQL Server <br/>&bull; Einfaches Erstellen von ETL-Pipelines; einschließlich eines Dashboards für die Überwachung <br/>&bull; Unterstützt größere Datasets <br/>&bull; Da dies ein Drittanbietertool ist, muss es über den Marketplace erworben und in der Benutzerumgebung installiert werden.|
 
 ## <a name="azure-cosmos-db-mongo-api"></a>Mongo-API von Azure Cosmos DB
+
 |**Migrationstyp**|**Lösung**|**Überlegungen**|
 |---------|---------|---------|
-|Offline|[Datenmigrationstool](https://docs.microsoft.com/azure/cosmos-db/import-data)|&bull; Einfache Einrichtung und Unterstützung mehrerer Quellen <br/>&bull; Nicht geeignet für große Datasets|
-|Offline|[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db)|&bull; Einfache Einrichtung und Unterstützung mehrerer Quellen <br/>&bull; Nutzt die Azure Cosmos DB-BulkExecutor-Bibliothek <br/>&bull; Geeignet für große Datasets <br/>&bull; Fehlende Prüfpunktausführung: Wenn während der Migration ein Problem auftritt, muss der gesamte Migrationsprozess neu gestartet werden.<br/>&bull; Fehlende Warteschlange für unzustellbare Nachrichten: Dies bedeutet, dass wenige fehlerhafte Dateien den gesamten Migrationsprozess unterbrechen können. <br/>&bull; Erfordert benutzerdefinierten Code, um den Lesedurchsatz für bestimmte Datenquellen zu erhöhen|
+|Online|[Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db-online.md)|&bull; Nutzt die Azure Cosmos DB-BulkExecutor-Bibliothek <br/>&bull; Eignet sich für große Datasets und übernimmt die Replikation von Liveänderungen <br/>&bull; Funktioniert nur mit anderen MongoDB-Quellen|
+|Offline|[Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db-online.md)|&bull; Nutzt die Azure Cosmos DB-BulkExecutor-Bibliothek <br/>&bull; Eignet sich für große Datasets und übernimmt die Replikation von Liveänderungen <br/>&bull; Funktioniert nur mit anderen MongoDB-Quellen|
+|Offline|[Azure Data Factory](../data-factory/connector-azure-cosmos-db.md)|&bull; Einfache Einrichtung und Unterstützung mehrerer Quellen <br/>&bull; Nutzt die Azure Cosmos DB-BulkExecutor-Bibliothek <br/>&bull; Geeignet für große Datasets <br/>&bull; Fehlende Prüfpunktausführung: Wenn während der Migration ein Problem auftritt, muss der gesamte Migrationsprozess neu gestartet werden.<br/>&bull; Fehlende Warteschlange für unzustellbare Nachrichten: Dies bedeutet, dass wenige fehlerhafte Dateien den gesamten Migrationsprozess unterbrechen können. <br/>&bull; Erfordert benutzerdefinierten Code, um den Lesedurchsatz für bestimmte Datenquellen zu erhöhen|
 |Offline|[Vorhandene Mongo-Tools (mongodump, mongorestore, Studio3T)](https://azure.microsoft.com/resources/videos/using-mongodb-tools-with-azure-cosmos-db/)|&bull; Einfache Einrichtung und Integration <br/>&bull; Erfordert die benutzerdefinierte Behandlung von Drosselungen|
-|Online|[Azure Database Migration Service](https://docs.microsoft.com/azure/dms/tutorial-mongodb-cosmos-db-online)|&bull; Nutzt die Azure Cosmos DB-BulkExecutor-Bibliothek <br/>&bull; Eignet sich für große Datasets und übernimmt die Replikation von Liveänderungen <br/>&bull; Funktioniert nur mit anderen MongoDB-Quellen|
+
 
 ## <a name="azure-cosmos-db-cassandra-api"></a>Cassandra-API für Azure Cosmos DB
+
 |**Migrationstyp**|**Lösung**|**Überlegungen**|
 |---------|---------|---------|
-|Offline|[cqlsh-Befehl COPY](https://docs.microsoft.com/azure/cosmos-db/cassandra-import-data#migrate-data-using-cqlsh-copy-command)|&bull; Einfache Einrichtung <br/>&bull; Nicht geeignet für große Datasets <br/>&bull; Funktioniert nur, wenn die Quelle eine Cassandra-Tabelle ist|
-|Offline|[Kopieren der Tabelle mit Spark](https://docs.microsoft.com/azure/cosmos-db/cassandra-import-data#migrate-data-using-spark) |&bull; Ermöglicht die Verwendung von Spark-Funktionen zum Parallelisieren von Transformation und Erfassung <br/>&bull; Erfordert die Konfiguration mit einer benutzerdefinierten Wiederholungsrichtlinie für die Behandlung der Drosselung|
-|Online|[Striim (aus Oracle DB/Apache Cassandra)](https://docs.microsoft.com/azure/cosmos-db/cosmosdb-cassandra-api-migrate-data-striim)|&bull; Funktioniert mit einer Vielzahl von Quellen wie Oracle, DB2, SQL Server <br/>&bull; Einfaches Erstellen von ETL-Pipelines; einschließlich eines Dashboards für die Überwachung <br/>&bull; Unterstützt größere Datasets <br/>&bull; Da dies ein Drittanbietertool ist, muss es über den Marketplace erworben und in der Benutzerumgebung installiert werden.|
-|Online|[Blitzz (aus Oracle DB/Apache Cassandra)](https://docs.microsoft.com/azure/cosmos-db/oracle-migrate-cosmos-db-blitzz)|<br/>&bull; Unterstützt größere Datasets <br/>&bull; Da dies ein Drittanbietertool ist, muss es über den Marketplace erworben und in der Benutzerumgebung installiert werden.|
+|Offline|[cqlsh-Befehl COPY](cassandra-import-data.md#migrate-data-using-cqlsh-copy-command)|&bull; Einfache Einrichtung <br/>&bull; Nicht geeignet für große Datasets <br/>&bull; Funktioniert nur, wenn die Quelle eine Cassandra-Tabelle ist|
+|Offline|[Kopieren der Tabelle mit Spark](cassandra-import-data.md#migrate-data-using-spark) |&bull; Ermöglicht die Verwendung von Spark-Funktionen zum Parallelisieren von Transformation und Erfassung <br/>&bull; Erfordert die Konfiguration mit einer benutzerdefinierten Wiederholungsrichtlinie für die Behandlung der Drosselung|
+|Online|[Striim (aus Oracle DB/Apache Cassandra)](cosmosdb-cassandra-api-migrate-data-striim.md)|&bull; Funktioniert mit einer Vielzahl von Quellen wie Oracle, DB2, SQL Server <br/>&bull; Einfaches Erstellen von ETL-Pipelines; einschließlich eines Dashboards für die Überwachung <br/>&bull; Unterstützt größere Datasets <br/>&bull; Da dies ein Drittanbietertool ist, muss es über den Marketplace erworben und in der Benutzerumgebung installiert werden.|
+|Online|[Blitzz (aus Oracle DB/Apache Cassandra)](oracle-migrate-cosmos-db-blitzz.md)|<br/>&bull; Unterstützt größere Datasets <br/>&bull; Da dies ein Drittanbietertool ist, muss es über den Marketplace erworben und in der Benutzerumgebung installiert werden.|
 
 ## <a name="other-apis"></a>Andere APIs
+
 Bei anderen APIs als SQL-API, Mongo-API und Cassandra-API werden in den Umgebungen der einzelnen APIs verschiedene Tools unterstützt. 
 
 **Tabellen-API** 
-* [Datenmigrationstool](https://docs.microsoft.com/azure/cosmos-db/table-import#data-migration-tool)
-* [AzCopy](https://docs.microsoft.com/azure/cosmos-db/table-import#migrate-data-by-using-azcopy)
+
+* [Datenmigrationstool](table-import.md#data-migration-tool)
+* [AzCopy](table-import.md#migrate-data-by-using-azcopy)
 
 **Gremlin-API**
-* [Graph-BulkExecutor-Bibliothek](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-graph-dotnet)
+
+* [Graph-BulkExecutor-Bibliothek](bulk-executor-graph-dotnet.md)
 * [Gremlin Spark](https://github.com/Azure/azure-cosmosdb-spark/blob/2.4/samples/graphframes/main.scala) 
 
 ## <a name="next-steps"></a>Nächste Schritte

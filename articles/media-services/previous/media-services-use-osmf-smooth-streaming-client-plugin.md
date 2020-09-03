@@ -14,14 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 63b534f67aa5cf39f7549a467be28ec1212897d2
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9b71a2064887cc2b6099ead2e59f9fa3113d2f0b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86172008"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269011"
 ---
-# <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>Verwenden des Microsoft Smooth Streaming-Plug-Ins für das Adobe Open Source Media-Framework  
+# <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>Verwenden des Microsoft Smooth Streaming-Plug-Ins für das Adobe Open Source Media-Framework
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 ## <a name="overview"></a>Übersicht
 Das Microsoft Smooth Streaming-Plug-In für das Open Source Media-Framework 2.0 (SS für OSMF) erweitert die OSMF-Standardfunktionen und bietet Abspielfunktionen für Microsoft Smooth Streaming-Inhalte für neue und existierende OSMF-Player. Das Plug-In bietet außerdem Smooth Streaming-Wiedergabefähigkeiten für Strobe Media Playback (SMP).
 

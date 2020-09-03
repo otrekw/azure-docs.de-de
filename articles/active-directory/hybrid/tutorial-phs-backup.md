@@ -12,12 +12,12 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e5ad7badfa44a006fd7e71d3b0e42ee95ac698d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a9cd70d534cebf35938285208dc76bd4a6d94533
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "64919007"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279005"
 ---
 # <a name="tutorial--setting-up-phs-as-backup-for-ad-fs-in-azure-ad-connect"></a>Tutorial:  Einrichten der Kennworthashsynchronisierung als Sicherung für AD FS in Azure AD Connect
 
@@ -33,7 +33,7 @@ Im folgenden Tutorial werden Sie durch die Einrichtung der Kennworthashsynchroni
 Dieses Tutorial baut auf dem [Tutorial: Erstellen eines Verbunds einer Umgebung mit einer AD-Gesamtstruktur mit der Cloud](tutorial-federation.md) auf und ist Voraussetzung für die Bearbeitung des vorliegenden Tutorials.  Sofern noch nicht geschehen, bearbeiten Sie zunächst das genannte Tutorial, bevor Sie das vorliegende Dokument bearbeiten.
 
 >[!IMPORTANT]
->Vor einem Wechsel zu PHS (Password Hash Sync, Kennworthashsynchronisierung) sollten Sie eine Sicherung Ihrer AD FS-Umgebung erstellen.  Dazu können Sie das [AD FS Rapid Restore-Tool](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-rapid-restore-tool#how-to-use-the-tool) verwenden.
+>Vor einem Wechsel zu PHS (Password Hash Sync, Kennworthashsynchronisierung) sollten Sie eine Sicherung Ihrer AD FS-Umgebung erstellen.  Dazu können Sie das [AD FS Rapid Restore-Tool](/windows-server/identity/ad-fs/operations/ad-fs-rapid-restore-tool#how-to-use-the-tool) verwenden.
 
 ## <a name="enable-phs-in-azure-ad-connect"></a>Aktivieren der Kennworthashsynchronisierung in Azure AD Connect
 Nachdem eine Azure AD Connect-Umgebung mit Verbund eingerichtet wurde, besteht der erste Schritt darin, die Kennworthashsynchronisierung zu aktivieren und Azure AD Connect das Synchronisieren der Hashes zu gestatten.

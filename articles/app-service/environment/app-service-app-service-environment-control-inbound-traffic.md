@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 01/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 5efca8ab51c789a619e48b1ae96a53494ae411ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fe9326ea9ebd5afe981b7ba6c34b1a5d51e084b0
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85831164"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962059"
 ---
 # <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>Steuern von eingehendem Datenverkehr in eine App Service-Umgebung
 ## <a name="overview"></a>Übersicht
@@ -130,12 +130,11 @@ Weitere Informationen finden Sie unter [Sicheres Verbinden mit Back-End-Ressourc
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 
 <!-- LINKS -->
-[virtualnetwork]: https://azure.microsoft.com/documentation/articles/virtual-networks-faq/
+[virtualnetwork]: ../../virtual-network/virtual-networks-faq.md
 [HowToCreateAnAppServiceEnvironment]: app-service-web-how-to-create-an-app-service-environment.md
-[NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
+[NetworkSecurityGroups]: ../../virtual-network/virtual-network-vnet-plan-design-arm.md
 [IntroToAppServiceEnvironment]:  app-service-app-service-environment-intro.md
 [SecurelyConnecttoBackend]:  app-service-app-service-environment-securely-connecting-to-backend-resources.md
 [NewPortal]:  https://portal.azure.com  
 
 <!-- IMAGES -->
-

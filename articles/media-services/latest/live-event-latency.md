@@ -3,24 +3,27 @@ title: LiveEvent-Einstellungen für niedrige Latenz in Azure Media Services | Mi
 description: Dieses Thema bietet eine Übersicht über die LiveEvent-Einstellungen für niedrige Latenz und zeigt, wie Sie eine niedrige Latenz festlegen.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
-ms.date: 04/22/2019
-ms.author: juliako
-ms.openlocfilehash: 24eb5f8691c94c1f319820f3133b66065504ace3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 114efe668fba47e9d83741b8fa45e1f396725198
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000890"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291516"
 ---
 # <a name="live-event-low-latency-settings"></a>LiveEvent-Einstellungen für niedrige Latenz
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Dieser Artikel zeigt, wie Sie eine niedrige Latenz für ein [Liveereignis](/rest/api/media/liveevents) festlegen. Außerdem werden typische Ergebnisse beschrieben, die bei der Verwendung der Einstellungen für geringe Latenz und verschiedenen Playern angezeigt werden. Die Ergebnisse variieren basierend auf dem CDN und der Netzwerklatenz.
 

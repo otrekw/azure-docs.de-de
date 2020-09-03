@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e260ff55c3039b7943137ff1656068e9b5b9cb28
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 8f800c11bb878ca1788c7258cde25266847e2a90
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053219"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278580"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrieren zur Cloudauthentifizierung mithilfe eines gestaffelten Rollouts (Vorschau)
 
@@ -25,7 +25,7 @@ Gestaffelte Rollouts ermöglichen Ihnen das selektive Testen von Benutzergruppen
 -  Sie verwenden Smartcards für die Authentifizierung. 
 -  Ihr aktueller Server bietet bestimmte Features, die sich ausschließlich auf Verbundauthentifizierung beziehen.
 
-Bevor Sie dieses Feature testen, empfehlen wir Ihnen, unseren Leitfaden zum Auswählen der richtigen Authentifizierungsmethode zu lesen. Weitere Informationen finden Sie in der Tabelle „Methodenvergleich“ unter [Auswählen der richtigen Authentifizierungsmethode für Ihre Azure Active Directory-Hybrididentitätslösung](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn#comparing-methods).
+Bevor Sie dieses Feature testen, empfehlen wir Ihnen, unseren Leitfaden zum Auswählen der richtigen Authentifizierungsmethode zu lesen. Weitere Informationen finden Sie in der Tabelle „Methodenvergleich“ unter [Auswählen der richtigen Authentifizierungsmethode für Ihre Azure Active Directory-Hybrididentitätslösung](./choose-ad-authn.md#comparing-methods).
 
 Einen Überblick über das Feature finden Sie hier: „Azure Active Directory: Was sind gestaffelte Rollouts?“ (Video):
 
@@ -91,7 +91,7 @@ Die folgenden Szenarien werden für gestaffelten Rollout nicht unterstützt:
 
 Zum Testen der *Kennworthashsynchronisierung* melden Sie sich mithilfe des gestaffelten Rollouts an und befolgen die Anweisungen für die Vorbereitung im nächsten Abschnitt.
 
-Weitere Informationen dazu, welche PowerShell-Cmdlets verwendet werden sollten, finden Sie unter [Azure AD 2.0 Vorschau](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout).
+Weitere Informationen dazu, welche PowerShell-Cmdlets verwendet werden sollten, finden Sie unter [Azure AD 2.0 Vorschau](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout).
 
 ## <a name="pre-work-for-password-hash-sync"></a>Vorbereitende Schritte für die Kennworthashsynchronisierung
 
@@ -225,7 +225,7 @@ Gehen Sie wie folgt vor, um die Anmeldung mit *nahtlosem SSO* zu testen:
 
 1. Stellen Sie sicher, dass die Anmeldung im [Azure AD-Bericht zu Anmeldeaktivitäten](../reports-monitoring/concept-sign-ins.md) erfolgreich angezeigt wird, indem Sie nach dem Benutzerprinzipalnamen (UserPrincipalName) filtern.
 
-   Um Benutzeranmeldungen nachzuverfolgen, die weiterhin für Active Directory-Verbunddienste (AD FS) für ausgewählte Benutzer mit gestaffeltem Rollout auftreten, befolgen Sie die Anweisungen unter [Problembehandlung von AD FS: Ereignisse und Protokollierung](https://docs.microsoft.com/windows-server/identity/ad-fs/troubleshooting/ad-fs-tshoot-logging#types-of-events). Lesen Sie in der Dokumentation des Herstellers nach, wie dies für Drittanbieter von Verbunddiensten überprüft wird.
+   Um Benutzeranmeldungen nachzuverfolgen, die weiterhin für Active Directory-Verbunddienste (AD FS) für ausgewählte Benutzer mit gestaffeltem Rollout auftreten, befolgen Sie die Anweisungen unter [Problembehandlung von AD FS: Ereignisse und Protokollierung](/windows-server/identity/ad-fs/troubleshooting/ad-fs-tshoot-logging#types-of-events). Lesen Sie in der Dokumentation des Herstellers nach, wie dies für Drittanbieter von Verbunddiensten überprüft wird.
 
 ## <a name="remove-a-user-from-staged-rollout"></a>Entfernen eines Benutzers aus dem gestaffelten Rollout
 
@@ -243,7 +243,7 @@ A: Nein, dieses Feature ist für die Migration von der Verbund- zur Cloudauthent
 
 **F: Kann PowerShell verwendet werden, um einen gestaffelten Rollout auszuführen?**
 
-A: Ja. Informationen zum Verwenden von PowerShell zum Ausführen eines gestaffelten Rollouts finden Sie unter [Azure AD Vorschau](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout).
+A: Ja. Informationen zum Verwenden von PowerShell zum Ausführen eines gestaffelten Rollouts finden Sie unter [Azure AD Vorschau](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout).
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Azure AD 2.0 Vorschau](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )
+- [Azure AD 2.0 Vorschau](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )
