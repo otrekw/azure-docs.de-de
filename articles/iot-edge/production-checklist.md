@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 6f5698c5390a341df505bf5a1f849e121bd754a2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 90a6c287b1341b21f50a808d46cc681b0527f1c0
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258796"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300339"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Vorbereiten der Bereitstellung einer IoT Edge-Lösung für die Produktion
 
@@ -182,7 +182,7 @@ Rufen Sie die Images mit dem Docker-Pullbefehl ab, um sie in Ihrer privaten Regi
 | IoT Edge-Runtimecontainer | Docker-Pullbefehl |
 | --- | --- |
 | [Azure IoT Edge-Agent](https://hub.docker.com/_/microsoft-azureiotedge-agent) | `docker pull mcr.microsoft.com/azureiotedge-agent` |
-| [Azure IoT Edge-Hub](https://hub.docker.com/_/microsoft-azureiotedge-hub) | `docker pull mcr.microsoft.com/azureiotedge-hub` |
+| [Azure IoT Edge Hub](https://hub.docker.com/_/microsoft-azureiotedge-hub) | `docker pull mcr.microsoft.com/azureiotedge-hub` |
 
 Stellen Sie als nächstes sicher, dass Sie die Imagereferenzen in der Datei deployment.template.json für die Systemmodule edgeAgent und edgeHub aktualisieren. Ersetzen Sie `mcr.microsoft.com` durch Ihren Registrierungsnamen und -server für beide Module.
 
@@ -321,9 +321,9 @@ Sie können dies in den **createOptions** der einzelnen Module vornehmen. Beispi
 
 ### <a name="consider-tests-and-cicd-pipelines"></a>Integration in Test- und CI/CD-Pipelines
 
-Für das effizienteste IoT Edge-Bereitstellungsszenario wird die Integration Ihrer Produktionsumgebung in Ihre Test- und CI/CD-Pipelines empfohlen. Azure IoT Edge unterstützt mehrere CI/CD-Plattformen, einschließlich Azure DevOps. Weitere Informationen finden Sie unter [Continuous Integration und Continuous Deployment für Azure IoT Edge](how-to-ci-cd.md).
+Für das effizienteste IoT Edge-Bereitstellungsszenario wird die Integration Ihrer Produktionsumgebung in Ihre Test- und CI/CD-Pipelines empfohlen. Azure IoT Edge unterstützt mehrere CI/CD-Plattformen, einschließlich Azure DevOps. Weitere Informationen finden Sie unter [Continuous Integration und Continuous Deployment für Azure IoT Edge](how-to-continuous-integration-continuous-deployment.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erfahren Sie mehr zur [automatischen IoT Edge-Bereitstellung](module-deployment-monitoring.md).
-* Erfahren Sie, wie IoT Edge [Continuous Integration und Continuous Deployment](how-to-ci-cd.md) unterstützt.
+* Erfahren Sie, wie IoT Edge [Continuous Integration und Continuous Deployment](how-to-continuous-integration-continuous-deployment.md) unterstützt.

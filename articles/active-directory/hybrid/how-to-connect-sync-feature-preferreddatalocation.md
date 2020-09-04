@@ -16,12 +16,12 @@ ms.date: 11/11/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 597e322536703560fad8a0ba562cc70ce3aa1775
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ebd71eae77c75d490585c27d7bc04c069d006009
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357408"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398530"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect-Synchronisierung: Konfigurieren des bevorzugten Datenspeicherorts für Office 365-Ressourcen
 In diesem Thema wird ausführlich erläutert, wie Sie das Attribut für den bevorzugten Datenspeicherort in der Azure Active Directory Connect-Synchronisierung (Azure AD) konfigurieren. Wenn jemand Multi-Geo Capabilities in Office 365 verwendet, legen Sie mit diesem Attribut den geografischen Standort der Office 365-Daten des Benutzers fest. (Die Benennungen *Region* und *geografischer Raum* werden synonym verwendet.)
@@ -32,7 +32,7 @@ Standardmäßig befinden sich die Office 365-Ressourcen für Ihre Benutzer im gl
 Durch Festlegen des **preferredDataLocation**-Attributs können Sie den geografischen Raum des Benutzers definieren. Sie können die Office 365-Ressourcen eines Benutzers, z.B. das Postfach und OneDrive, im selben geografischen Raum wie den Benutzer platzieren und verfügen immer noch über einen Mandanten für Ihre gesamte Organisation.
 
 > [!IMPORTANT]
-> Multi-Geo ist derzeit für Kunden mit einem aktiven Konzernvertrag (Enterprise Agreement) und mindestens 500 Abonnements für Office 365-Dienste verfügbar. Ausführliche Informationen erhalten Sie von Ihrem Microsoft-Vertreter.
+> Multi-Geo steht zurzeit für Kunden mit einem aktiven Konzernvertrag (Enterprise Agreement) und mindestens 250 Abonnements für Office 365-Dienste zur Verfügung. Ausführliche Informationen erhalten Sie von Ihrem Microsoft-Vertreter.
 >
 >
 
