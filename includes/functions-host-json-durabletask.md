@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 6bb59db4c1b31033b1e116742dedc94621b1c60d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6e253604c57d73c2a89ccfa5cff7efe9e572d11d
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80116979"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89094313"
 ---
 Konfigurationseinstellungen für [Durable Functions](../articles/azure-functions/durable-functions-overview.md).
 
@@ -59,6 +59,7 @@ Konfigurationseinstellungen für [Durable Functions](../articles/azure-functions
       "partitionCount": 4,
       "trackingStoreConnectionStringName": "TrackingStorage",
       "trackingStoreNamePrefix": "DurableTask",
+      "useLegacyPartitionManagement": true,
       "workItemQueueVisibilityTimeout": "00:05:00",
     },
     "tracing": {
@@ -83,9 +84,10 @@ Konfigurationseinstellungen für [Durable Functions](../articles/azure-functions
     "maxConcurrentOrchestratorFunctions": 10,
     "extendedSessionsEnabled": false,
     "extendedSessionIdleTimeoutInSeconds": 30,
+    "useAppLease": true,
     "useGracefulShutdown": false
   }
-  }
+ }
 }
 
 ```
@@ -104,7 +106,7 @@ Aufgabenhubnamen müssen mit einem Buchstaben beginnen und bestehen nur aus Buch
 |maxConcurrentOrchestratorFunctions |Zehnfache Anzahl der Prozessoren auf dem aktuellen Computer|Die maximale Anzahl von Orchestratorfunktionen, die gleichzeitig auf einer einzelnen Hostinstanz verarbeitet werden können.|
 |maxQueuePollingInterval|30 Sekunden|Das maximale Abrufintervall der Steuerelement- und Arbeitselement-Warteschlangen im Format *hh:mm:ss*. Höhere Werte können zu höherer Latenz bei der Nachrichtenverarbeitung führen. Niedrigere Werte können aufgrund verstärkter Speichertransaktionen zu höheren Speicherkosten führen.|
 |azureStorageConnectionStringName |AzureWebJobsStorage|Der Name der App-Einstellung mit der Azure Storage-Verbindungszeichenfolge, die zum Verwalten der zugrunde liegenden Azure Storage-Ressourcen verwendet wird.|
-|trackingStoreConnectionStringName||Der Name einer Verbindungszeichenfolge, die für die Verlaufs- und Instanzentabellen verwendet wird. Wenn diese Eigenschaft nicht angegeben ist, wird die Verbindung `azureStorageConnectionStringName` verwendet.|
+|trackingStoreConnectionStringName||Der Name einer Verbindungszeichenfolge, die für die Verlaufs- und Instanzentabellen verwendet wird. Wird kein Wert angegeben, wird die Verbindung `connectionStringName` (Durable 2.x) oder `azureStorageConnectionStringName` (Durable 1.x) verwendet.|
 |trackingStoreNamePrefix||Das für die Verlaufs- und Instanzentabellen zu verwendende Präfix, wenn `trackingStoreConnectionStringName` angegeben ist. Wenn diese Eigenschaft nicht festgelegt ist, wird `DurableTask` als Standardwert für das Präfix verwendet. Wenn `trackingStoreConnectionStringName` nicht angegeben ist, wird in den Verlaufs- und Instanzentabellen der Wert `hubName` als Präfix verwendet und jede Einstellung für `trackingStoreNamePrefix` wird ignoriert.|
 |traceInputsAndOutputs |false|Ein Wert, der angibt, ob die Eingaben und Ausgaben von Funktionsaufrufen nachverfolgt werden. Das Standardverhalten beim Nachverfolgen von Ereignissen zur Funktionsausführung besteht darin, die Anzahl der Bytes in die serialisierten Eingaben und Ausgaben für Funktionsaufrufe einzuschließen. Dieses Verhalten ermöglicht minimale Informationen zu den Eingaben und Ausgaben, ohne die Protokolle zu überfrachten oder irrtümlich vertrauliche Informationen verfügbar zu machen. Wenn diese Eigenschaft auf TRUE festgelegt wird, werden bei der standardmäßigen Funktionsprotokollierung die gesamten Inhalte der Eingaben und Ausgaben der Funktionen protokolliert.|
 |logReplayEvents|false|Ein Wert, der angibt, ob Orchestrierungswiedergabeereignisse in Application Insights geschrieben werden.|
@@ -113,6 +115,8 @@ Aufgabenhubnamen müssen mit einem Buchstaben beginnen und bestehen nur aus Buch
 |eventGridPublishRetryCount|0|Die Anzahl der Wiederholungsversuche, wenn bei der Veröffentlichung im Event Grid-Thema Fehler auftreten.|
 |eventGridPublishRetryInterval|5 Minuten|Das Wiederholungsintervall der Event Grid-Veröffentlichung im Format *hh:mm:ss*.|
 |eventGridPublishEventTypes||Eine Liste von Ereignistypen, die in Event Grid veröffentlicht werden sollen. Wenn diese Eigenschaft nicht angegeben ist, werden alle Ereignistypen veröffentlicht. Zulässige Werte sind `Started`, `Completed`, `Failed` und `Terminated`.|
+|useAppLease|true|Wird diese Einstellung auf `true` festgelegt, müssen Apps vor der Verarbeitung von Aufgabenhubnachrichten eine Bloblease auf App-Ebene abrufen. Weitere Informationen finden Sie in der Dokumentation zur [Notfallwiederherstellung und geografischen Verteilung](../articles/azure-functions/durable/durable-functions-disaster-recovery-geo-distribution.md). Verfügbar ab v2.3.0
+|useLegacyPartitionManagement|true|Wird diese Einstellung auf `false` festgelegt, wird ein Partitionsverwaltungsalgorithmus verwendet, der bei der horizontalen Skalierung die Wahrscheinlichkeit einer doppelten Funktionsausführung reduziert.  Verfügbar ab v2.3.0 Der Standardwert wird in einer zukünftigen Version in `false` geändert.|
 |useGracefulShutdown|false|(Preview) Ordnungsgemäßes Herunterfahren aktivieren, um die Wahrscheinlichkeit zu verringern, dass beim Herunterfahren von Hosts Funktionsausführungen in Prozessen fehlschlagen.|
 
 Viele dieser Einstellungen werden zur Optimierung der Leistung verwendet. Weitere Informationen finden Sie unter [Leistung und Skalierbarkeit](../articles/azure-functions/durable-functions-perf-and-scale.md).

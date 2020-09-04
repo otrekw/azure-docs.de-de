@@ -39,6 +39,10 @@
       href: application-management-fundamentals.md
     - name: Allgemeine App-Verwaltungsszenarien
       href: common-scenarios.md
+    - name: Anzeigen von Apps in Ihrem Mandanten
+      href: application-types.md
+    - name: Zuweisen von Benutzern zu Apps
+      href: ways-users-get-assigned-to-applications.md
     - name: Planen der Integration von Cloud-Apps
       items:
         - name: Erste Schritte bei der App-Integration
@@ -114,7 +118,7 @@
           href: grant-admin-consent.md
         - name: Konfigurieren des Workflows für die Administratoreinwilligung (Vorschau)
           href: configure-admin-consent-workflow.md
-        - name: Zuweisen eines Benutzers oder einer Gruppe zu einer App
+        - name: Verwalten der Benutzerzuweisung für eine App
           href: assign-user-or-group-access-portal.md
         - name: 'Überprüfen von Berechtigungen, die Apps erteilt wurden'
           href: manage-application-permissions.md
@@ -124,8 +128,6 @@
           href: access-panel-manage-self-service-access.md
         - name: Methoden zum Entfernen des Benutzerzugriffs auf eine App
           href: methods-for-removing-user-access.md
-        - name: Entfernen des Benutzer- oder Gruppenzugriffs
-          href: remove-user-or-group-access-portal.md
         - name: Ausblenden einer App für einen Benutzer
           href: hide-application-from-user-portal.md
         - name: Deaktivieren der Benutzeranmeldung
@@ -203,11 +205,7 @@
     - name: Problembehandlung
       items:
         - name: Behandeln von Problemen beim Hinzufügen von Apps
-          items:
-            - name: 'Allgemeine Probleme: Katalog-Apps'
-              href: adding-gallery-app-common-problems.md
-            - name: 'Allgemeine Probleme: Nicht-Katalog-Apps'
-              href: adding-non-gallery-app-common-problems.md
+          href: troubleshoot-adding-apps.md
         - name: Problembehandlung für Benutzeranmeldung
           items:
             - name: Unerwartete Zustimmungsaufforderung
@@ -234,12 +232,6 @@
               href: configure-federated-single-sign-on-gallery-applications-problems.md
             - name: 'Allgemeine Probleme beim Konfigurieren eines Verbunds: Nicht-Katalog-Apps'
               href: configure-federated-single-sign-on-non-gallery-applications-problems.md
-        - name: Problembehandlung für App-Liste und -Zuweisung
-          items:
-            - name: Verwalten der Anwendungsliste für Ihren Mandanten
-              href: application-types.md
-            - name: Unerwarteter Benutzer zugewiesen
-              href: ways-users-get-assigned-to-applications.md
         - name: Problembehandlung für lokale Apps
           items:
             - name: Problembehandlung für Anwendungsproxys

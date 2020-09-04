@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/27/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 24f92443acddb17c0a2d337f51dbf9183996c49f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7fd91e898c12a13e35ae8b9055ebb5a57de2a051
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520520"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89272147"
 ---
 Azure Files bietet vier verschiedene Speicherebenen (Premium, transaktionsoptimiert, heiße Ebene und kalte Ebene), sodass Sie Ihre Freigaben an die Leistungs- und Preisanforderungen Ihres jeweiligen Szenarios anpassen können:
 
@@ -30,9 +30,31 @@ Heiße und kalte Dateifreigaben stehen aktuell in den folgenden öffentlichen Re
 - Australien, Mitte 2
 - Australien (Osten)
 - Australien, Südosten
+- Brasilien Süd
+- Kanada, Osten
+- Kanada, Mitte
 - Frankreich, Mitte
 - Frankreich, Süden
+- Deutschland, Norden (öffentlich)
+- Deutschland, Westen-Mitte (öffentlich)
+- Indien, Mitte
+- Indien, Süden
+- Indien, Westen
+- Japan, Osten
+- Japan, Westen
 - Korea, Mitte
 - Korea, Süden
+- Norwegen, Osten
+- Norwegen, Westen
+- Südafrika, Norden
+- Südafrika, Westen
+- Schweiz, Norden
+- Schweiz, Westen
+- VAE, Mitte
+- Vereinigte Arabische Emirate, Norden
+- UK, Süden
+- UK, Westen
+- USA Nord Mitte
+- USA Süd Mitte
 
 Informationen zum Bereitstellen einer heißen oder kalten Dateifreigabe finden Sie unter [Erstellen einer heißen oder kalten Dateifreigabe](../articles/storage/files/storage-how-to-create-file-share.md#create-a-hot-or-cool-file-share). 

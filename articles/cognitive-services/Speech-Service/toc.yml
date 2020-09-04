@@ -241,11 +241,8 @@
   items:
     - name: Dokumentation zur Absichtserkennung
       href: index-intent-recognition.yml
-    - name: Schnellstart
-      items:
-        - name: 'Erkennen von Sprache, Absichten und Entitäten'
-          displayName: 'Recognize intents and entities with LUIS, LUIS, Language Understanding, prebuilt domains'
-          href: quickstarts/intent-recognition.md
+    - name: 'Schnellstart: Erkennen von Sprache, Absichten und Entitäten mit Language Understanding (LUIS)'
+      href: quickstarts/intent-recognition.md
     - name: Anleitungen
       items:
         - name: 'Erkennen von Sprachabsichten mit LUIS, C#'
@@ -466,18 +463,14 @@
           href: custom-keyword-basics.md
 - name: Sprechererkennung
   items:
-    - name: Übersicht
+    - name: Übersicht über die Sprechererkennung
+      href: speaker-recognition-overview.md
+    - name: Schnellstart zur Sprechererkennung
+      href: get-started-speaker-recognition.md
+    - name: Referenz
       items:
-        - name: Was ist Sprechererkennung?
-          href: speaker-recognition-overview.md
-        - name: Grundlagen zur Sprechererkennung
-          href: speaker-recognition-basics.md
-    - name: Verweis
-      items:
-        - name: REST-APIs
-          items:
-            - name: REST-API für die Sprechererkennung
-              href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
+        - name: REST-API für die Sprechererkennung
+          href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
 - name: Hosting
   items:
     - name: Dokumentation zum Hosting

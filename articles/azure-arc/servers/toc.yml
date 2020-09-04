@@ -23,6 +23,8 @@
         - name: Sicherheitskontrollen von Azure Policy
           displayName: 'regulatory, compliance, standards, domains'
           href: security-controls-policy.md
+        - name: Sicherheitsübersicht
+          href: security-overview.md
 - name: Anleitungen
   items:
     - name: Herstellen einer Verbindung mit Azure Arc

@@ -28,8 +28,6 @@
       href: oracle-reference-architecture.md
     - name: Zusammenstellen einer Oracle Database
       href: oracle-design.md
-    - name: Sicherungsstrategie für Oracle Database
-      href: oracle-backup-recovery.md
     - name: Notfallwiederherstellungsoptionen für Oracle
       href: oracle-disaster-recovery.md
 - name: Anleitungen

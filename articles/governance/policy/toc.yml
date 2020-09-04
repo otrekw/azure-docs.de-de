@@ -93,6 +93,9 @@
     - name: Auswerten der Auswirkung einer neuen Richtlinie
       displayName: 'audit, enforcementmode, compliance'
       href: ./concepts/evaluate-impact.md
+    - name: Empfohlene Richtlinien
+      displayName: 'VMs, virtual machines'
+      href: ./concepts/recommended-policies.md
     - name: Einhaltung gesetzlicher Bestimmungen
       displayName: 'standards, domains, controls'
       href: ./concepts/regulatory-compliance.md
