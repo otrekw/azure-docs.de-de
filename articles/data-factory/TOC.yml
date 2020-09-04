@@ -187,7 +187,7 @@
               href: concepts-data-flow-monitoring.md
             - name: Datenflussleistung
               href: concepts-data-flow-performance.md
-            - name: Verwalten eines Graphen
+            - name: Verwalten der Datenflusscanvas
               href: concepts-data-flow-manage-graph.md
             - name: Ausdrucks-Generator
               href: concepts-data-flow-expression-builder.md

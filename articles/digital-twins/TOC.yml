@@ -36,12 +36,6 @@
       href: concepts-security.md
 - name: Anleitungen
   items:
-    - name: Entwickeln
-      items:
-        - name: Verwenden der APIs und SDKs
-          href: how-to-use-apis-sdks.md
-        - name: Erstellen benutzerdefinierter SDKs mit AutoRest
-          href: how-to-create-custom-sdks.md
     - name: Bereitstellen
       items:
         - name: Verwenden der Azure Digital Twins-Befehlszeilenschnittstelle
@@ -78,6 +72,14 @@
           href: how-to-create-azure-function.md
         - name: Abfragen des Zwillingsgraphen
           href: how-to-query-graph.md
+    - name: Entwickeln von Client-Apps
+      items:
+        - name: Verwenden der APIs und SDKs
+          href: how-to-use-apis-sdks.md
+        - name: Erstellen benutzerdefinierter SDKs mit AutoRest
+          href: how-to-create-custom-sdks.md
+        - name: Integrieren mit Azure SignalR Service
+          href: how-to-integrate-azure-signalr.md
     - name: Verbinden der Eingabe
       items:
         - name: Erfassen von Telemetriedaten aus IoT Hub
@@ -188,6 +190,8 @@
           href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/'
         - name: Benutzerdefinierte Azure Digital Twins-Swagger
           href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/'
+        - name: SignalR-Integrationsbeispiel
+          href: 'https://docs.microsoft.com/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/'
     - name: Azure-Tools
       items:
         - name: Azure Cloud Shell
