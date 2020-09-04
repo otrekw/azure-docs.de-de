@@ -4,8 +4,6 @@
   items:
     - name: Was ist Azure Front Door?
       href: front-door-overview.md
-    - name: Neues in Azure Front Door
-      href: front-door-whats-new.md
 - name: Schnellstarts
   expanded: true
   items:

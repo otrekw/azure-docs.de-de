@@ -125,8 +125,12 @@
       maintainContext: true
 - name: Anleitungen
   items:
-    - name: Regionsübergreifendes Verschieben
-      href: move-across-regions.md
+    - name: Move
+      items:
+        - name: Verschieben eines Namespace in eine andere Region
+          href: move-across-regions.md
+        - name: Verschieben eines dedizierten Clusters in eine andere Region
+          href: move-cluster-across-regions.md
     - name: Dynamisches Hinzufügen von Partitionen
       href: dynamically-add-partitions.md
     - name: Verwenden von Blob Storage als Prüfpunktspeicher in Azure Stack Hub
@@ -287,7 +291,7 @@
       href: event-hubs-quotas.md
     - name: Apache Kafka-Konfigurationen
       href: apache-kafka-configurations.md
-    - name: Integrierte Azure Policy-Aktionen
+    - name: Azure Policy-Integrationen
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
 - name: Ressourcen

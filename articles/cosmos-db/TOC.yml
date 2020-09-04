@@ -603,7 +603,7 @@
       items:
         - name: Onlinesicherung und bedarfsgesteuerte Wiederherstellung
           href: online-backup-and-restore.md
-        - name: Compliance
+        - name: Kompatibilität
           href: compliance.md
         - name: "Azure\_Policy-Unterstützung"
           href: policy.md
@@ -661,6 +661,14 @@
               href: cassandra-secondary-index.md
         - name: Anleitungen
           items:
+            - name: Migrieren zur Cassandra-API
+              items:
+                - name: 'Migrieren: Oracle DB zur Cassandra-API mithilfe von Striim'
+                  href: cosmosdb-cassandra-api-migrate-data-striim.md
+                - name: 'Migrieren: Oracle DB zur Cassandra-API mithilfe von Blitzz'
+                  href: oracle-migrate-cosmos-db-blitzz.md
+                - name: 'Migrieren: Apache Cassandra zur Cassandra-API mithilfe von Blitzz'
+                  href: cassandra-migrate-cosmos-db-blitzz.md
             - name: Änderungsfeed
               href: cassandra-change-feed.md
             - name: Speichern und Verwalten von Spring-Daten
@@ -736,12 +744,9 @@
                       href: tutorial-develop-mongodb-nodejs-part6.md
                 - name: Node.js- und React-App
                   href: tutorial-develop-mongodb-react.md
-            - name: 2. Migrieren von Daten
-              displayName: import
-              href: ../dms/tutorial-mongodb-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
-            - name: 3. Abfragen von Daten
+            - name: 2. Abfragen von Daten
               href: tutorial-query-mongodb.md
-            - name: 4. Globale Verteilung von Daten
+            - name: 3. Globale Datenverteilung
               href: tutorial-global-distribution-mongodb.md
         - name: Konzepte
           items:
@@ -753,10 +758,16 @@
               href: mongodb-api-faq.md
         - name: Anleitungen
           items:
-            - name: Leitfaden zur Migrationsvorbereitung
-              href: mongodb-pre-migration.md
-            - name: Leitfaden zur Migrationsnachbereitung
-              href: mongodb-post-migration.md
+            - name: Migrieren zur MongoDB-API
+              items:
+                - name: Leitfaden zur Migrationsvorbereitung
+                  href: mongodb-pre-migration.md
+                - name: Database Migration Service (online)
+                  href: ../dms/tutorial-mongodb-cosmos-db-online.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+                - name: Database Migration Service (offline)
+                  href: ../dms/tutorial-mongodb-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+                - name: Leitfaden zur Migrationsnachbereitung
+                  href: mongodb-post-migration.md
             - name: Abrufen der Verbindungszeichenfolge
               href: connect-mongodb-account.md
             - name: Herstellen einer Verbindung mithilfe von Studio 3T
@@ -1235,12 +1246,6 @@
           href: cosmosdb-migrationchoices.md
         - name: Migrieren zur SQL-API mithilfe von Striim
           href: cosmosdb-sql-api-migrate-data-striim.md
-        - name: Migrieren zur Cassandra-API mithilfe von Striim
-          href: cosmosdb-cassandra-api-migrate-data-striim.md
-        - name: 'Migrieren: Oracle DB zur Cassandra-API mithilfe von Blitzz'
-          href: oracle-migrate-cosmos-db-blitzz.md
-        - name: 'Migrieren: Apache Cassandra zur Cassandra-API mithilfe von Blitzz'
-          href: cassandra-migrate-cosmos-db-blitzz.md
         - name: Migrieren Hunderter Terabytes von Daten zu Azure Cosmos DB
           href: migrate-cosmosdb-data.md
         - name: 'Migrieren von relationalen Daten mit 1:n-Beziehungen'
@@ -1304,7 +1309,7 @@
       href: local-emulator-release-notes.md
 - name: Referenz
   items:
-    - name: Integrierte Azure Policy-Aktionen
+    - name: Azure Policy-Integrationen
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
 - name: Ressourcen

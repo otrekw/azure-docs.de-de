@@ -40,7 +40,7 @@
           href: cloudsimple-public-ip-address.md
         - name: Azure-Netzwerkverbindung
           href: cloudsimple-azure-network-connection.md
-        - name: Kontenverwaltung
+        - name: Kontoverwaltung
           href: cloudsimple-account.md
         - name: Aktivitätenverwaltung
           href: cloudsimple-activity.md
@@ -52,9 +52,9 @@
           href: node-quota.md
         - name: Wartung und Updates
           href: cloudsimple-maintenance-updates.md
-        - name: Häufig gestellte Fragen
+        - name: FAQ
           href: cloudsimple-faq.md
-    - name: Lernprogramme
+    - name: Tutorials
       items:
         - name: Erstellen des CloudSimple-Diensts
           href: create-cloudsimple-service.md
@@ -112,7 +112,7 @@
               href: azure-create-vm.md
             - name: Verwalten virtueller CloudSimple-Computer in Azure
               href: azure-manage-vm.md
-    - name: Gewusst-wie-Anleitungen
+    - name: Anleitungen
       items:
         - name: Sichern der Umgebung
           href: private-cloud-secure.md
@@ -178,3 +178,7 @@
               href: on-premises-connection.md
             - name: Azure Virtual Network-Verbindung mit ExpressRoute
               href: azure-expressroute-connection.md
+    - name: Anmerkungen zu diesem Release
+      items:
+        - name: CloudSimple-Update vom September 2020
+          href: update-plan-sept-2020.md

@@ -4,16 +4,6 @@
   items:
     - name: "Was ist Virtual\_WAN?"
       href: virtual-wan-about.md
-    - name: Aufbau
-      items:
-        - name: Migrieren zu Virtual WAN
-          href: migrate-from-hub-spoke-topology.md
-        - name: Globale Transitarchitektur
-          href: virtual-wan-global-transit-network-architecture.md
-        - name: SD-WAN-Verbindungsarchitektur
-          href: sd-wan-connectivity-architecture.md
-        - name: Herstellen einer Verbindung mit China
-          href: interconnect-china.md
 - name: Tutorials
   items:
     - name: Herstellen einer Standort-zu-Standort-Verbindung
@@ -36,11 +26,21 @@
           href: virtual-wan-locations-partners.md
         - name: Automatisierungsrichtlinien für Partner
           href: virtual-wan-configure-automation-providers.md
+    - name: Aufbau
+      items:
+        - name: Migrieren zu Virtual WAN
+          href: migrate-from-hub-spoke-topology.md
+        - name: Globale Transitarchitektur
+          href: virtual-wan-global-transit-network-architecture.md
+        - name: SD-WAN-Verbindungsarchitektur
+          href: sd-wan-connectivity-architecture.md
+        - name: Herstellen einer Verbindung mit China
+          href: interconnect-china.md
     - name: Routing
       items:
         - name: Informationen zum Routing virtueller Hubs
           href: about-virtual-hub-routing.md
-        - name: Szenarien
+        - name: Routingszenarien
           items:
             - name: Any-to-Any
               href: scenario-any-to-any.md
@@ -154,8 +154,6 @@
   items:
     - name: Häufig gestellte Fragen
       href: virtual-wan-faq.md
-    - name: Ankündigungen von Updates
-      href: 'https://azure.microsoft.com/updates/?category=networking&query=VIRTUAL%20WAN'
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/virtual-wan'
     - name: Einschränkungen bei Abonnements und Diensten

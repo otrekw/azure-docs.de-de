@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: d7f7b0eb2c49e4abba9e12e09d70e321cc6c06f4
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 965da18c265fad1686473d5d6dcf8ba4a7a53b33
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88760615"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89323422"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>Grundlegendes zu VM-Neustarts – Gegenüberstellung von Wartung und Ausfallzeit
 Drei Szenarien können zu einer Beeinträchtigung virtueller Computer in Azure führen: eine ungeplante Hardwarewartung, eine unerwartete Ausfallzeit und eine geplante Wartung.
@@ -33,7 +33,7 @@ Um die Downtime aufgrund eines oder mehrerer dieser Ereignisse zu verringern, so
 * [Konfigurieren mehrerer virtueller Computer in einer Verfügbarkeitsgruppe für höhere Redundanz]
 * [Verwenden von verwalteten Datenträgern für virtuelle Computer in einer Verfügbarkeitsgruppe]
 * [Verwenden von geplanten Ereignissen für proaktive Antworten auf Ereignisse, die sich auf virtuelle Computer auswirken](../articles/virtual-machines/linux/scheduled-events.md)
-* [Konfigurieren einzelner Logikschichten in separaten Verfügbarkeitsgruppen]
+* [Konfigurieren einzelner Anwendungsebenen in separaten Verfügbarkeitsgruppen](../articles/virtual-machines/windows/tutorial-availability-sets.md)
 * [Kombinieren eines Lastenausgleichs mit Verfügbarkeitszonen oder -gruppen]
 * [Verwenden von Verfügbarkeitszonen als Schutz vor Ausfällen auf Datencenterebene]
 
@@ -82,13 +82,12 @@ az vm list-skus --resource-type availabilitySets --query '[?name==`Aligned`].{Lo
 ```
 
 > [!NOTE]
-> Unter bestimmten Umständen können zwei VMs in derselben Verfügbarkeitsgruppe dieselbe Fehlerdomäne gemeinsam aufweisen. Dies können Sie bestätigen, indem Sie zur betreffenden Verfügbarkeitsgruppe wechseln und die Spalte **Fehlerdomäne** überprüfen.
-> Der Grund kann die folgende Abfolge beim Bereitstellen der VMs sein:
-> - 1\. VM bereitstellen
-> - 1\. VM beenden/freigeben
-> - 2\. VM bereitstellen
-> Unter diesen Umständen wird der Betriebssystemdatenträger der 2. VM möglicherweise in der Fehlerdomäne der 1. VM erstellt, sodass die 2. VM ebenfalls in derselben Fehlerdomäne landet. 
-> Um dieses Problem zu vermeiden, wird empfohlen, die VMs zwischen den Bereitstellungen nicht zu beenden oder ihre Zuordnung aufzuheben.
+> Unter bestimmten Umständen nutzen zwei virtuelle Computer in derselben Verfügbarkeitsgruppe möglicherweise dieselbe Fehlerdomäne. Sie können überprüfen, ob eine Fehlerdomäne gemeinsam genutzt wird, indem Sie zur betreffenden Verfügbarkeitsgruppe wechseln und sich die Spalte **Fehlerdomäne** ansehen. Es kann zur gemeinsamen Nutzung einer Fehlerdomäne kommen, wenn Sie bei der Bereitstellung der virtuellen Computer die folgenden Schritte ausgeführt haben:
+> 1. Bereitstellen des ersten virtuellen Computers
+> 1. Beenden des virtuellen Computers oder Aufheben seiner Zuordnung
+> 1. Bereitstellen des zweiten virtuellen Computers
+>
+> Unter diesen Umständen wird der Betriebssystemdatenträger des zweiten virtuellen Computers möglicherweise in derselben Fehlerdomäne wie der des ersten virtuellen Computers erstellt, sodass sich die beiden virtuellen Computer in derselben Fehlerdomäne befinden. Um dieses Problem zu vermeiden, wird empfohlen, die virtuellen Computer zwischen den Bereitstellungen nicht zu beenden bzw. ihre Zuordnung nicht aufzuheben.
 
 Gehen Sie wie folgt vor, wenn Sie planen, VMs mit nicht verwalteten Datenträgern zu verwenden: Halten Sie sich an die unten angegebenen bewährten Methoden für Storage-Konten, bei denen virtuelle Festplatten (VHDs) von VMs als [Seitenblobs](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) gespeichert werden.
 
