@@ -117,6 +117,9 @@
               href: concepts-data-encryption-postgresql.md
             - name: Doppelte Infrastrukturverschlüsselung
               href: concepts-infrastructure-double-encryption.md
+            - name: Sicherheitskontrollen von Azure Policy
+              displayName: 'regulatory, compliance, standards, domains'
+              href: ./security-controls-policy.md
             - name: Sicherheitsbaseline für Azure-Sicherheitsvergleichstest
               href: security-baseline.md
         - name: Geschäftskontinuität
@@ -390,7 +393,7 @@
           href: reference-hyperscale-parameters.md
         - name: Systemtabellen
           href: reference-hyperscale-metadata.md
-    - name: Integrierte Azure Policy-Aktionen
+    - name: Azure Policy-Integrationen
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
 - name: Ressourcen

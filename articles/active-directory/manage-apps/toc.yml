@@ -206,6 +206,10 @@
       items:
         - name: Behandeln von Problemen beim Hinzufügen von Apps
           href: troubleshoot-adding-apps.md
+        - name: Behandeln von Problemen beim kennwortbasierten einmaligen Anmelden
+          href: troubleshoot-password-based-sso.md
+        - name: Problembehandlung bei SAML-basiertem einmaligem Anmelden
+          href: troubleshoot-saml-based-sso.md
         - name: Problembehandlung für Benutzeranmeldung
           items:
             - name: Unerwartete Zustimmungsaufforderung
@@ -224,14 +228,6 @@
               href: application-sign-in-problem-federated-sso-gallery.md
             - name: Problem mit einer benutzerdefinierten App
               href: application-sign-in-problem-custom-dev.md
-        - name: Behandeln von Problemen beim einmaligen Anmelden
-          items:
-            - name: Behandeln von Problemen beim kennwortbasierten einmaligen Anmelden
-              href: troubleshoot-password-based-sso.md
-            - name: 'Allgemeine Probleme beim Konfigurieren eines Verbunds: Katalog-Apps'
-              href: configure-federated-single-sign-on-gallery-applications-problems.md
-            - name: 'Allgemeine Probleme beim Konfigurieren eines Verbunds: Nicht-Katalog-Apps'
-              href: configure-federated-single-sign-on-non-gallery-applications-problems.md
         - name: Problembehandlung für lokale Apps
           items:
             - name: Problembehandlung für Anwendungsproxys

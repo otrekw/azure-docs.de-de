@@ -109,8 +109,6 @@
           href: credential-access-key-vault.md
         - name: Verwenden von Zertifikaten mit Batch
           href: batch-certificates.md
-    - name: Verwenden von Anwendungspaketen
-      href: batch-application-packages.md
     - name: Kopieren von Dateien und Anwendungen auf Poolknoten
       items:
         - name: Kopieren von Anwendungen und Daten auf Poolknoten
@@ -265,7 +263,7 @@
           href: batch-task-complete-event.md
         - name: Taskfehlerereignis
           href: batch-task-fail-event.md
-    - name: Integrierte Azure Policy-Aktionen
+    - name: Azure Policy-Integrationen
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
 - name: Ressourcen

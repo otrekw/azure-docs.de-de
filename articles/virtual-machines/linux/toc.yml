@@ -307,14 +307,6 @@
           href: ../acu.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: vCPU-Kontingente
           href: quotas.md
-        - name: Reservierte Instanzen
-          items:
-            - name: Vorauszahlung für virtuelle Computer
-              href: prepay-reserved-vm-instances.md
-            - name: Was sind Azure-Reservierungen?
-              href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md
-            - name: Flexibilität bei der VM-Instanzgröße
-              href: ../reserved-vm-instance-size-flexibility.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Benchmarkergebnisse
           href: compute-benchmark-scores.md
     - name: Unterstützte Distributionen
