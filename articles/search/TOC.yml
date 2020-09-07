@@ -114,6 +114,8 @@
         - name: Sicherheitskontrollen von Azure Policy
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
+        - name: Schützen von Indexerressourcen
+          href: search-indexer-securing-resources.md
 - name: Anleitungen
   items:
     - name: Erstellen von Indizes und Konstrukten
@@ -354,6 +356,14 @@
               href: search-security-trimming-for-azure-search.md
             - name: Filtern nach Benutzeridentitäten
               href: search-security-trimming-for-azure-search-with-aad.md
+        - name: Ausgangssicherheit (Indexer)
+          items:
+            - name: Zugreifen über einen IP-Adressbereich
+              href: search-indexer-howto-access-ip-restricted.md
+            - name: Zugreifen über eine vertrauenswürdige Dienstausnahme
+              href: search-indexer-howto-access-trusted-service-exception.md
+            - name: Zugreifen über private Endpunkte
+              href: search-indexer-howto-access-private.md
     - name: Verwalten
       items:
         - name: Portal
@@ -392,14 +402,14 @@
       href: /azure/templates/microsoft.search/searchservices
     - name: REST
       items:
-        - name: Search 2020-06-30
+        - name: Search-API (stabile Version)
           href: /rest/api/searchservice
-        - name: Search 2020-06-30-Preview
+        - name: Search-API (Vorschauversion)
           href: /rest/api/searchservice/index-preview
-        - name: Management 2020-03-13
+        - name: Verwaltungs-API (stabile Version)
           href: /rest/api/searchmanagement
-        - name: Management 2019-10-01-Preview
-          href: /rest/api/searchmanagement/index-2019-10-01-preview
+        - name: Verwaltungs-API (Vorschauversion)
+          href: /rest/api/searchmanagement/index-preview
     - name: .NET
       items:
         - name: Search-API
@@ -493,7 +503,7 @@
           items:
             - name: Erkennung benannter Entitäten
               href: cognitive-search-skill-named-entity-recognition.md
-    - name: Integrierte Azure Policy-Aktionen
+    - name: Azure Policy-Integrationen
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
 - name: Ressourcen

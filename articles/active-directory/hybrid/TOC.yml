@@ -262,6 +262,8 @@
           href: how-to-connect-health-diagnose-sync-errors.md
         - name: 'Azure AD Connect Health: Warnungskatalog'
           href: how-to-connect-health-alert-catalog.md
+        - name: 'Azure AD Connect Health: Datenabruf'
+          href: how-to-connect-health-data-retrieval.md
     - name: Verwalten der Azure AD Connect-Synchronisierung
       items:
         - name: Stagingserver und Notfallwiederherstellung

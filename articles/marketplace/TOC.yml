@@ -42,7 +42,7 @@
               href: ./iot-edge-module.md
             - name: Beratungsdienste
               href: ./consulting-services.md
-            - name: "Office\_365, Dynamics\_365 und Power\_BI"
+            - name: 'Microsoft 365, Dynamics 365 und Power BI'
               href: ./appsource-offer-publishing-guide.md
             - name: Aktivieren der Angebotsauthentifizierung mit Azure AD
               href: ./enable-appsource-marketplace-using-azure-ad.md
@@ -60,7 +60,7 @@
             - name: Cloud Solution Provider (CSP)
               href: ./cloud-solution-providers.md
             - name: Onboardingleitfaden zu Connect Program
-              href: ./cloud-partner-portal/business-applications-isv-program.md
+              href: ./business-applications-isv-program.md
         - name: Ihre Marketplace-Vorteile
           href: ./gtm-your-marketplace-benefits.md
           items:

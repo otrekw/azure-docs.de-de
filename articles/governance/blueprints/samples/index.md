@@ -1,14 +1,14 @@
 ---
 title: Index der Blaupausenbeispiele
 description: Index der Beispiele für Compliance und Standards für die Bereitstellung von Umgebungen, Richtlinien und Cloud Adoption Framework-Grundlagen mit Azure Blueprints.
-ms.date: 07/01/2020
+ms.date: 07/10/2020
 ms.topic: sample
-ms.openlocfilehash: ef85ef0615fa0817a574240e65b7670daeaff33b
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: cf8109dc8446fe1e3625e4f7c6fd0b5493c352d6
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86181555"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488353"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints-Beispiele
 
@@ -26,7 +26,7 @@ In der folgenden Tabelle sind Links zu Beispielen für Azure Blueprints enthalte
 | [DoD-Auswirkungsstufe 5](./dod-impact-level-5/index.md) | Hier finden Sie eine Reihe von Richtlinien, die Ihnen bei der Einhaltung der DoD-Auswirkungsstufe 5 helfen. |
 | [FedRAMP Moderate](./fedramp-m/index.md) | Hier finden Sie eine Reihe von Richtlinien, die Ihnen bei der Einhaltung von „FedRAMP Moderate“ helfen. |
 | [FedRAMP High](./fedramp-h/index.md) | Hier finden Sie eine Reihe von Richtlinien, die Ihnen bei der Einhaltung von „FedRAMP High“ helfen. |
-| [HIPAA HITRUST](./HIPAA-HITRUST/index.md) | Hier finden Sie eine Reihe von Richtlinien, die Ihnen bei der Einhaltung von HIPAA HITRUST helfen. |
+| [HIPAA HITRUST 9.2](./hipaa-hitrust-9-2.md) | Hier finden Sie eine Reihe von Richtlinien, die Ihnen bei der Einhaltung von HIPAA HITRUST helfen. |
 | [IRS 1075](./irs-1075/index.md) | Enthält Leitlinien für die Einhaltung von ISO 1075.|
 | [ISO 27001](./iso27001/index.md) | Enthält Leitlinien für die Einhaltung von ISO 27001. |
 | [ISO 27001: Gemeinsame Dienste](./iso27001-shared/index.md) | Stellt eine Reihe von konformen Infrastrukturmustern und Schutzmaßnahmen für Richtlinien bereit, die für den ISO 27001-Nachweis hilfreich sind. |
