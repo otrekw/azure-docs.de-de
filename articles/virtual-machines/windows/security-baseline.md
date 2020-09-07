@@ -6,13 +6,13 @@ ms.service: virtual-machines-windows
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 4e62fd43c062d9d33292eac36a16d809bc926c98
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 7726a0f1acb8f7fde2b491979d478badeca1b384
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009833"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400380"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>Azure-Sicherheitsbaseline für virtuelle Windows-Computer
 
@@ -558,7 +558,7 @@ Microsoft verwendet das TLS-Protokoll (Transport Layer Security) zum Schutz von 
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Verwenden von Azure RBAC zum Steuern des Zugriffs auf Ressourcen
 
-**Leitfaden**: Mithilfe der rollenbasierten Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure-RBAC) können Sie Aufgabenbereiche in Ihrem Team trennen und Benutzern nur das Maß an Zugriff auf Ihre VM gewähren, das sie zur Ausführung ihrer Aufgaben benötigen. Anstatt allen Benutzern den uneingeschränkten Zugriff auf die VM zu gewähren, können Sie auch nur bestimmte Aktionen zulassen. Sie können die Zugriffssteuerung für die VM im Azure-Portal, per Azure CLI oder mit Azure PowerShell konfigurieren.
+**Leitfaden**: Mithilfe der rollenbasierten Zugriffssteuerung von Azure (Role-Based Access Control, Azure RBAC) können Sie Aufgabenbereiche in Ihrem Team isolieren und Benutzern nur das Maß an Zugriff auf Ihre VM gewähren, das sie zur Ausführung ihrer Aufgaben benötigen. Anstatt allen Benutzern den uneingeschränkten Zugriff auf die VM zu gewähren, können Sie auch nur bestimmte Aktionen zulassen. Sie können die Zugriffssteuerung für die VM im Azure-Portal, per Azure CLI oder mit Azure PowerShell konfigurieren.
 
 * [Azure RBAC](../../role-based-access-control/overview.md)
 
@@ -913,7 +913,7 @@ In den meisten Fällen sind die Microsoft-Basisvorlagen in Kombination mit Azure
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6: Sicheres Speichern von benutzerdefinierten Betriebssystemimages
 
-**Leitfaden**: Wenn Sie benutzerdefinierte Images (z. B. eine virtuelle Festplatte) verwenden, stellen Sie über die rollenbasierte Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure-RBAC) sicher, dass nur autorisierte Benutzer auf die Images zugreifen können.
+**Leitfaden**: Wenn Sie benutzerdefinierte Images (z. B. eine virtuelle Festplatte) verwenden, stellen Sie über die rollenbasierte Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC) sicher, dass nur autorisierte Benutzer auf die Images zugreifen können.
 
 * [Grundlegendes zu Azure RBAC](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 
@@ -973,7 +973,9 @@ In den meisten Fällen sind die Microsoft-Basisvorlagen in Kombination mit Azure
 
 * [Erstellen einer Key Vault-Instanz](../../key-vault/secrets/quick-create-portal.md)
 
-* [Bereitstellen der Key Vault-Authentifizierung mit einer verwalteten Identität](../../key-vault/general/managed-identity.md)
+* [Authentifizieren bei Key Vault](../../key-vault/general/authentication.md)
+
+* [Zuweisen einer Key Vault-Zugriffsrichtlinie](../../key-vault/general/assign-access-policy-portal.md)
 
 **Azure Security Center-Überwachung**: Ja
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: 5b450254648cb253d6631397d703430401009f14
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: cff2e918c7b67f6d3bccb9b56366cbf034ed1bb5
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87925633"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300101"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Verwalten des Zugriffs auf Protokolldaten und Arbeitsbereiche in Azure Monitor
 
@@ -270,7 +270,7 @@ Um eine Rolle mit ausschließlichem Zugriff auf die Tabelle _SecurityBaseline_ z
     "Microsoft.OperationalInsights/workspaces/query/SecurityBaseline/read"
 ],
 ```
-In den obigen Beispielen wird eine Whitelist mit Tabellen definiert, die zulässig sind. In diesem Beispiel wird die Definition einer schwarzen Liste gezeigt, wenn ein Benutzer auf alle Tabellen außer der Tabelle _SecurityAlert_ zugreifen kann:
+In den Beispielen oben wird eine Liste mit Tabellen definiert, die zulässig sind. In diesem Beispiel wird die Definition einer blockierten Liste gezeigt, wenn ein Benutzer auf alle Tabellen mit Ausnahme der Tabelle _SecurityAlert_ zugreifen kann:
 
 ```
 "Actions":  [

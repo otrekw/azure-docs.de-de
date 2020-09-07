@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 763a13cf2ecbe845619101bc9e325cc51564260a
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: b8a0a8093ab5f4d6c5e528bce592d5c029de30a7
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553392"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400040"
 ---
 # <a name="scenario-isolating-vnets"></a>Szenario: Isolieren von virtuellen Netzwerken (VNETs)
 
@@ -29,7 +29,7 @@ In diesem Szenario bleibt die Workload in einem bestimmten VNET isoliert und kan
 | VNETs     | &#8594;|           |     X    |
 | Branches   | &#8594;|    X     |     X    |
 
-Jede Zelle in der vorstehenden Tabelle beschreibt, ob eine Virtual WAN-Verbindung (die Seite „From“ des Flows, die Zeilenheader) ein Zielpräfix (die Seite „To“ des Flows, die kursiv gesetzten Spaltenheader) für einen bestimmten Datenverkehrsfluss lernt.
+Jede Zelle in der vorstehenden Tabelle beschreibt, ob eine Virtual WAN-Verbindung (die Seite „From“ des Flows, die Zeilenheader) ein Zielpräfix (die Seite „To“ des Flows, die kursiv formatierten Spaltenheader) für einen bestimmten Datenverkehrsfluss lernt. Dabei bedeutet ein „X“, dass die Konnektivität durch eine Virtual WAN-Verbindung bereitgestellt wird.
 
 Diese Verbindungsmatrix gibt zwei verschiedene Zeilenmuster an, die in zwei Routingtabellen übersetzt werden. Virtual WAN verfügt bereits über eine Standardroutingtabelle, daher ist eine weitere Routingtabelle erforderlich. In diesem Beispiel nennen wir die Routingtabelle **RT_VNET**.
 

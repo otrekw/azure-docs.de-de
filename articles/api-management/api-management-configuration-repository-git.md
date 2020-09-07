@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: fb252ac0b4863138fb2a9c3008dc6475bc988e5f
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 18cc42c3447de733447c27db52a9a6d664539464
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723944"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400353"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Speichern und Konfigurieren der API Management-Dienstkonfiguration mit Git
 
@@ -47,7 +47,7 @@ In diesem Artikel wird das Aktivieren und Verwenden von Git für die Verwaltung 
 
 ## <a name="access-git-configuration-in-your-service"></a>Zugreifen auf die Git-Konfiguration in Ihrem Dienst
 
-Um Ihre Git-Konfigurationseinstellungen anzuzeigen und zu konfigurieren, können Sie auf das Menü **Sicherheit** klicken und zur Registerkarte **Konfigurationsrepository** navigieren.
+Um Ihre Git-Konfigurationseinstellungen anzuzeigen und zu konfigurieren, können Sie auf das Menü **Bereitstellung und Infrastruktur** klicken und zur Registerkarte **Repository** navigieren.
 
 ![Git aktivieren][api-management-enable-git]
 
@@ -62,7 +62,7 @@ Informationen zum Aktivieren oder Deaktivieren des Git-Zugriffs mithilfe der RES
 
 Der erste Schritt vor dem Klonen des Repositorys ist, den aktuellen Zustand der Dienstkonfiguration im Repository zu speichern. Klicken Sie auf **In Repository speichern**.
 
-Nehmen Sie auf dem Bestätigungsbildschirm alle gewünschten Änderungen vor, und klicken Sie zum Speichern auf **OK** .
+Nehmen Sie auf dem Bestätigungsbildschirm alle gewünschten Änderungen vor, und klicken Sie auf **Speichern**, um die Änderungen zu speichern.
 
 Nach einigen Augenblicken wird die Konfiguration gespeichert, und der Konfigurationsstatus des Repositorys wird angezeigt, einschließlich des Datums und der Uhrzeit der letzten Konfigurationsänderung und der letzten Synchronisierung zwischen der Dienstkonfiguration und dem Repository.
 
@@ -112,7 +112,7 @@ Nachdem das Repository geklont wurde, können Sie es anzeigen und in Ihrem lokal
 
 ## <a name="to-update-your-local-repository-with-the-most-current-service-instance-configuration"></a>So aktualisieren Sie Ihr lokales Repository mit der aktuellen Dienstinstanzkonfiguration
 
-Wenn Sie Ihre API Management-Dienstinstanz im Azure-Portal oder mit der REST-API ändern, müssen Sie diese Änderungen im Repository speichern, bevor Sie Ihr lokales Repository mit den neuesten Änderungen aktualisieren können. Klicken Sie hierzu im Azure-Portal auf der Registerkarte **Konfigurationsrepository** auf **Konfiguration im Repository speichern**, und führen Sie dann den folgenden Befehl im lokalen Repository aus.
+Wenn Sie Ihre API Management-Dienstinstanz im Azure-Portal oder mit der REST-API ändern, müssen Sie diese Änderungen im Repository speichern, bevor Sie Ihr lokales Repository mit den neuesten Änderungen aktualisieren können. Klicken Sie hierzu im Azure-Portal auf der Registerkarte **Repository** auf **Im Repository speichern**, und führen Sie dann den folgenden Befehl im lokalen Repository aus.
 
 ```
 git pull
@@ -198,7 +198,7 @@ Der Stammordner `api-management` enthält eine Datei `configuration.json`, die I
 }
 ```
 
-Die ersten vier Einstellungen (`RegistrationEnabled`, `UserRegistrationTerms`, `UserRegistrationTermsEnabled` und `UserRegistrationTermsConsentRequired`) entsprechen den folgenden Einstellungen auf der Registerkarte **Identitäten** im Abschnitt **Sicherheit**.
+Die ersten vier Einstellungen (`RegistrationEnabled`, `UserRegistrationTerms`, `UserRegistrationTermsEnabled` und `UserRegistrationTermsConsentRequired`) entsprechen den folgenden Einstellungen auf der Registerkarte **Identitäten** im Abschnitt **Entwicklerportal**.
 
 | Identitätseinstellung | Entsprechung |
 | --- | --- |
@@ -208,7 +208,7 @@ Die ersten vier Einstellungen (`RegistrationEnabled`, `UserRegistrationTerms`, `
 | UserRegistrationTermsConsentRequired |**Zustimmung anfordern** |
 | RequireUserSigninEnabled |**Anonyme Benutzer zur Anmeldeseite umleiten** |
 
-Die nächsten vier Einstellungen (`DelegationEnabled`, `DelegationUrl`, `DelegatedSubscriptionEnabled` und `DelegationValidationKey`) entsprechen den folgenden Einstellungen auf der Registerkarte **Delegierung** im Abschnitt **Sicherheit**.
+Die nächsten vier Einstellungen (`DelegationEnabled`, `DelegationUrl`, `DelegatedSubscriptionEnabled` und `DelegationValidationKey`) entsprechen den folgenden Einstellungen auf der Registerkarte **Delegierung** im Abschnitt **Entwicklerportal**.
 
 | Delegierungseinstellung | Entsprechung |
 | --- | --- |

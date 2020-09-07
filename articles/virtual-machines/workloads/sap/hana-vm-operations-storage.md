@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aa6aba12af08e2b5e044eaeb299ec6090ab6d750
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 8328b961c8166247caaf0b9cd5cc288c420d089e
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650467"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279991"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer
 
@@ -88,7 +88,7 @@ Bei den Cacheempfehlungen für Azure Premium-Datenträger unten werden E/A-Merkm
 **Empfehlung: Aufgrund dieser E/A-Muster von SAP HANA sollte das Caching für die verschiedenen Volumes unter Verwendung von Azure Storage Premium wie folgt festgelegt werden:**
 
 - **/hana/data** – Kein Caching oder Read-Caching
-- **/hana/log** – Kein Caching: Ausnahme für M- und Mv2-Serie, für die die Schreibbeschleunigung ohne Zwischenspeicherung von Lesevorgängen aktiviert ist. 
+- **/hana/log** – keine Zwischenspeicherung: Ausnahme für VMs der M- und Mv2-Serie, für die Azure-Schreibbeschleunigung aktiviert sein sollte. 
 - **/hana/shared** – Read-Caching
 - **Betriebssystemdatenträger** – Ändern Sie nicht das Standardcaching, das von Azure zur Erstellungszeit der VM festgelegt wird.
 

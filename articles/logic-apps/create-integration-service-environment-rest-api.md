@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: d33207639ebef912307a3c594ec274fd9609bd67
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 427b488fe6673bef505fccdaa7185d69437bceaf
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84656543"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231315"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Erstellen einer Integrationsdienstumgebung (Integration Service Environment, ISE) mithilfe der Logic Apps-REST-API
 
@@ -58,7 +58,7 @@ Schließen Sie die folgenden Eigenschaften in den Anforderungsheader ein:
 
 ## <a name="request-body"></a>Anforderungstext
 
-Hier ist die Syntax des Anforderungstexts, in der die Eigenschaften für das Erstellen der ISE beschrieben werden. Zum Erstellen einer ISE, die die Verwendung eines selbstsignierten Zertifikats zulässt, das am Speicherort `TrustedRoot` installiert ist, nehmen Sie das `certificates`-Objekt in den Abschnitt `properties` der ISE-Definition auf. Für eine vorhandene ISE können Sie eine PATCH-Anforderung nur für das `certificates`-Objekt senden. Weitere Informationen zum Verwenden von selbstsignierten Zertifikaten finden Sie unter [HTTP-Connector: Selbst signierte Zertifikate](../connectors/connectors-native-http.md#self-signed).
+Hier ist die Syntax des Anforderungstexts, in der die Eigenschaften für das Erstellen der ISE beschrieben werden. Zum Erstellen einer ISE, die die Verwendung eines selbstsignierten Zertifikats zulässt, das am Speicherort `TrustedRoot` installiert ist, nehmen Sie das `certificates`-Objekt in den Abschnitt `properties` der ISE-Definition auf. Für eine vorhandene ISE können Sie eine PATCH-Anforderung nur für das `certificates`-Objekt senden. Weitere Informationen zum Verwenden von selbstsignierten Zertifikaten finden Sie unter [Sicherer Zugriff und Daten: Zugriff für ausgehende Aufrufe anderer Dienste und Systeme](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests).
 
 ```json
 {

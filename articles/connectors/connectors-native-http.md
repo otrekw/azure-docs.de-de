@@ -5,28 +5,32 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 06/09/2020
+ms.date: 08/27/2020
 tags: connectors
-ms.openlocfilehash: 8c7a0ddb80ba28548fc1821cc2063e500af0fa66
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9ed490dba1547db6ec3c0ddcff38aa3e0c393fcf
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286630"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226426"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Aufrufen von Dienstendpunkten per HTTP oder HTTPS aus Azure Logic Apps
 
-Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und dem integrierten HTTP-Trigger oder einer HTTP-Aktion können Sie automatisierte Tasks und Workflows erstellen, die Anforderungen per HTTP oder HTTPS an Dienstendpunkte senden. Sie können beispielsweise den Dienstendpunkt für Ihre Website überwachen, indem Sie ihn nach einem bestimmten Zeitplan überprüfen. Wenn das angegebene Ereignis (beispielsweise ein Ausfall Ihrer Website) an diesem Endpunkt auftritt, löst das Ereignis den Workflow Ihrer Logik-App aus und führt die darin enthaltenen Aktionen aus. Falls Sie stattdessen eingehende HTTPS-Aufrufe empfangen und darauf reagieren möchten, verwenden Sie den integrierten [Anforderungstrigger oder die Antwortaktion](../connectors/connectors-native-reqres.md).
+Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und dem integrierten HTTP-Trigger oder einer HTTP-Aktion können Sie automatisierte Tasks und Workflows erstellen, die ausgehende Anforderungen an Endpunkte für andere Dienste über HTTP oder HTTPS senden können. Um stattdessen eingehende HTTPS-Aufrufe zu empfangen und darauf zu reagieren, verwenden Sie den integrierten [Anforderungstrigger und die Antwortaktion](../connectors/connectors-native-reqres.md).
+
+Sie können beispielsweise einen Dienstendpunkt für Ihre Website überwachen, indem Sie ihn nach einem bestimmten Zeitplan überprüfen. Wenn das angegebene Ereignis (beispielsweise ein Ausfall Ihrer Website) an diesem Endpunkt auftritt, löst das Ereignis den Workflow Ihrer Logik-App aus und führt die darin enthaltenen Aktionen aus.
 
 * Um einen Endpunkt nach einem wiederkehrenden Zeitplan zu überprüfen oder *abzurufen*, können Sie den [HTTP-Trigger Ihrem Workflow als ersten Schritt hinzufügen](#http-trigger). Jedes Mal, wenn der Trigger den Endpunkt überprüft, führt er einen Aufruf bzw. das Senden einer *Anforderung* an den Endpunkt durch. Die Antwort des Endpunkts bestimmt, ob der Workflow der Logik-App ausgeführt wird. Der Trigger übergibt alle Inhalte aus der Antwort des Endpunkts an die Aktionen in Ihrer Logik-App.
 
 * [Fügen Sie die entsprechende HTTP-Aktion hinzu](#http-action), um einen Endpunkt an einem anderen Punkt Ihres Workflows aufzurufen. Die Antwort des Endpunkts bestimmt, wie die restlichen Aktionen des Workflows ausgeführt werden.
 
-In diesem Artikel wird veranschaulicht, wie Sie einen HTTP-Trigger bzw. eine HTTP-Aktion dem Workflow Ihrer Logik-App hinzufügen.
+Dieser Artikel zeigt, wie Sie den HTTP-Trigger und die HTTP-Aktion verwenden können, damit Ihre Logik-App ausgehende Aufrufe an andere Dienste und Systeme senden kann.
+
+Informationen zu Verschlüsselung, Sicherheit und Autorisierung für ausgehende Aufrufe Ihrer Logik-App, etwa [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security) (früher bekannt als Secure Sockets Layer (SSL)), selbstsignierte Zertifikate oder [Azure Active Directory Open Authentication (Azure AD OAuth)](../active-directory/develop/index.yml), finden Sie unter [Sicherer Zugriff und Daten: Zugriff für ausgehende Aufrufe anderer Dienste und Systeme](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+* Ein Azure-Konto und ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 * Die URL für den Zielendpunkt, den Sie aufrufen möchten
 
@@ -96,21 +100,27 @@ Diese integrierte Aktion führt einen HTTP-Aufruf der angegebenen URL für einen
 
 1. Speichern Sie die Logik-App unbedingt, wenn Sie fertig sind. Wählen Sie auf der Symbolleiste des Designers **Speichern** aus.
 
-<a name="tls-support"></a>
+## <a name="trigger-and-action-outputs"></a>Ausgaben aus Triggern und Aktionen
 
-## <a name="transport-layer-security-tls"></a>Transport Layer Security (TLS)
+Hier finden Sie weitere Informationen zu den Ausgaben aus einem HTTP-Trigger oder einer -Aktion, die diese Informationen zurückgeben:
 
-Je nach Funktionalität des Zielendpunkts unterstützen ausgehende Aufrufe die Versionen 1.0, 1.1 und 1.2 von Transport Layer Security (TLS), früher Secure Sockets Layer (SSL). Logik-Apps handeln mit dem Endpunkt die Verwendung der höchstmöglich unterstützten Version aus.
+| Eigenschaft | type | BESCHREIBUNG |
+|----------|------|-------------|
+| `headers` | JSON-Objekt | Die Header aus der Anforderung |
+| `body` | JSON-Objekt | Das Objekt mit dem Inhalt des Texts aus der Anforderung |
+| `status code` | Integer | Der Statuscode aus der Anforderung |
+|||
 
-Wenn der Endpunkt also beispielsweise Version 1.2 unterstützt, verwendet der HTTP-Connector zuerst die Version 1.2. Andernfalls verwendet der Connector die nächsthöhere unterstützte Version.
-
-<a name="self-signed"></a>
-
-## <a name="self-signed-certificates"></a>Selbstsignierte Zertifikate
-
-* Für Logik-Apps in der globalen Azure-Umgebung mit mehren Mandanten lässt der HTTP-Connector keine selbstsignierten TLS/SSL-Zertifikate zu. Wenn Ihre Logik-App per HTTP einen Server aufruft und ein selbstsigniertes TLS/SSL-Zertifikat vorlegt, schlägt der HTTP-Aufruf mit einem `TrustFailure`-Fehler fehl.
-
-* Für Logik-Apps in einer [Integrationsdienstumgebung (Integration Service Environment, ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) erlaubt der HTTP-Connector hingegen selbstsignierte Zertifikate bei TLS/SSL-Handshakes. Sie müssen jedoch zunächst die [Unterstützung für selbstsignierte Zertifikate für eine vorhandene oder eine neue ISE mithilfe der Logic Apps-REST-API aktivieren](../logic-apps/create-integration-service-environment-rest-api.md#request-body) und das öffentliche Zertifikat am `TrustedRoot`-Speicherort installieren.
+| Statuscode | BESCHREIBUNG |
+|-------------|-------------|
+| 200 | OK |
+| 202 | Zulässig |
+| 400 | Ungültige Anforderung |
+| 401 | Nicht autorisiert |
+| 403 | Verboten |
+| 404 | Nicht gefunden |
+| 500 | Interner Serverfehler. Unbekannter Fehler. |
+|||
 
 ## <a name="content-with-multipartform-data-type"></a>Inhalt des Typs „multipart/form-data“
 
@@ -249,29 +259,8 @@ Weitere Informationen zu Trigger- und Aktionsparametern finden Sie in diesen Abs
 * [HTTP-Triggerparameter](../logic-apps/logic-apps-workflow-actions-triggers.md#http-trigger)
 * [HTTP-Aktionsparameter](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)
 
-### <a name="output-details"></a>Ausgabedetails
-
-Hier finden Sie weitere Informationen zu den Ausgaben aus einem HTTP-Trigger oder einer -Aktion, die diese Informationen zurückgeben:
-
-| Eigenschaft | type | BESCHREIBUNG |
-|----------|------|-------------|
-| `headers` | JSON-Objekt | Die Header aus der Anforderung |
-| `body` | JSON-Objekt | Das Objekt mit dem Inhalt des Texts aus der Anforderung |
-| `status code` | Integer | Der Statuscode aus der Anforderung |
-|||
-
-| Statuscode | BESCHREIBUNG |
-|-------------|-------------|
-| 200 | OK |
-| 202 | Zulässig |
-| 400 | Ungültige Anforderung |
-| 401 | Nicht autorisiert |
-| 403 | Verboten |
-| 404 | Nicht gefunden |
-| 500 | Interner Serverfehler. Unbekannter Fehler. |
-|||
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zu anderen [Logic Apps-Connectors](../connectors/apis-list.md)
+* [Sicherer Zugriff und Daten: Zugriff für ausgehende Aufrufe anderer Dienste und Systeme](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests)
+* [Connectors für Logic Apps](../connectors/apis-list.md)
 

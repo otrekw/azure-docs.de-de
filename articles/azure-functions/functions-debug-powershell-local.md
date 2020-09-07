@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 6be397631621c727bb8979df2ee8eec3aca43096
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 0c37c8f108e9bcbb827c05242d8863994dfc64cf
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799365"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177090"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>Lokales Debuggen von PowerShell Azure Functions
 
@@ -65,6 +65,9 @@ Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
 ## <a name="set-the-attach-point"></a>Festlegen des Anfügepunkts
 
 Um eine PowerShell-Funktion zu debuggen, muss die Funktion angehalten werden, um den Debugger anzufügen. Das `Wait-Debugger`-Cmdlet hält die Ausführung an und wartet auf den Debugger.
+
+>[!NOTE]
+>Wenn Sie PowerShell 7 verwenden, müssen Sie in Ihrem Code den `Wait-Debugger`-Aufrufe nicht hinzufügen.
 
 Sie müssen lediglich direkt über der `if`-Anweisung einen Aufruf an das Cmdlet `Wait-Debugger` hinzufügen, wie folgt:
 

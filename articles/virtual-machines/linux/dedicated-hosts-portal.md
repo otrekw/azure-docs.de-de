@@ -7,14 +7,14 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 03/10/2020
 ms.author: cynthn
-ms.openlocfilehash: 19bd7960c4a6a02566d86d51ff7e21f4e570c34d
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: a6191b0959345e6e69c16890d755407af289ef03
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373639"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047768"
 ---
-# <a name="deploy-vms-to-dedicated-hosts-using-the-portal"></a>Bereitstellen von VMs auf dedizierten Hosts über das Portal
+# <a name="deploy-linux-vms-to-dedicated-hosts-using-the-portal"></a>Bereitstellen von Linux-VMs auf dedizierten Hosts im Portal 
 
 Dieser Artikel führt Sie durch die Erstellung eines [dedizierten Azure-Hosts](dedicated-hosts.md) zum Hosten Ihrer virtuellen Computer (VMs). 
 

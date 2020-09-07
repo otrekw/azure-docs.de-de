@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: d991b38c3f72b54f4564dd4847c8532b507286cc
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 101e42263e46c5a21f26b0fa9cdeed798525fee9
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131776"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047078"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>Einrichten der skalierbaren Notfallwiederherstellung für VMware-VMs/physische Server
 
@@ -205,7 +205,7 @@ Sie können sich wie folgt im Voraus für Failover vorbereiten:
     - Schätzen des End-to-End-RTOs für Ihre Apps
     - Schätzen des End-to-End-RPOs für Ihre Workloads
     - Identifizieren von Konflikten mit dem IP-Adressbereich
-    - Beim Ausführen von Übungen wird empfohlen, keine Produktionsnetzwerke sowie nicht dieselben Subnetznamen wie in den Produktions- und Testnetzwerken zu verwenden und die Testfailover nach jeder Übung zu bereinigen.
+    - Beim Ausführen von Drills wird empfohlen, keine Produktionsnetzwerke zu verwenden und die Testfailover nach jedem Drillvorgang zu bereinigen.
 
 Für das Ausführen eines umfangreichen Failovers wird Folgendes empfohlen:
 

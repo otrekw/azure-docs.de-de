@@ -4,12 +4,12 @@ description: Hier finden Sie Informationen zur Unterstützung der Migration phys
 ms.topic: conceptual
 ms.custom: fasttrack-edit
 ms.date: 06/14/2020
-ms.openlocfilehash: fe23989845d3c0b229a194c9a2a58f879b757811
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 30c96b11fb15ca1783b6ffc574d9d258dff9da06
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770338"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051133"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>Unterstützungsmatrix für die Migration physischer Server
 
@@ -44,6 +44,7 @@ Die Tabelle enthält eine Übersicht über die Unterstützung für physische Ser
 **Anforderungen für Azure** | Die neuesten Informationen finden Sie in den Bedingungen für [Azure-Netzwerk](../site-recovery/vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover), [Speicher](../site-recovery/vmware-physical-azure-support-matrix.md#azure-storage) und [Compute](../site-recovery/vmware-physical-azure-support-matrix.md#azure-compute) für Site Recovery. Bei Azure Migrate gelten die gleichen Anforderungen für die Migration physischer Server.
 **Mobilitätsdienst** | Der Mobilitätsdienst-Agent muss auf jedem Computer installiert sein, den Sie migrieren möchten.
 **UEFI-Start** | Der migrierte Computer in Azure wird automatisch in einen virtuellen Azure-Computer mit BIOS-Start konvertiert. Es werden nur Server unter Windows Server 2012 oder höher unterstützt.<br/><br/> Der Betriebssystemdatenträger sollte bis zu vier Partitionen aufweisen, und Volumes sollten mit NTFS formatiert sein.
+**UEFI: Sicherer Start**         | Nicht unterstützt für die Migration.
 **Zieldatenträger** | Computer können nur zu verwalteten Datenträgern (HDD Standard, SSD Premium) in Azure migriert werden.
 **Datenträgergröße** | 2 TB für den Betriebssystemdatenträger, 8 TB für Datenträger
 **Einschränkungen für Datenträger** |  Bis zu 63 Datenträger pro Computer

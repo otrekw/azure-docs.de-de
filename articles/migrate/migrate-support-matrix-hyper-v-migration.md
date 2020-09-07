@@ -3,12 +3,12 @@ title: Unterstützung der Hyper-V-Migration in Azure Migrate
 description: Hier finden Sie Informationen zur Unterstützung der Hyper-V-Migration mit Azure Migrate.
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 5af2c296147bb972d121183a7d552157b4b824c7
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 4f3609560fa59c08c4d92f4faa36c7fbbffb95d7
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871495"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051150"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Unterstützungsmatrix für die Hyper-V-Migration
 
@@ -26,7 +26,10 @@ Sie können bis zu 10 VMs gleichzeitig für die Replikation auswählen. Wenn Si
 | **Bereitstellung**       | Der Hyper-V-Host kann eigenständig oder in einem Cluster bereitgestellt werden. <br/>Azure Migrate-Replikationssoftware (Hyper-V-Replikationsanbieter) ist auf den Hyper-V-Hosts installiert.|
 | **Berechtigungen**           | Sie benötigen Administratorrechte auf dem Hyper-V-Host. |
 | **Betriebssystem des Hosts** | Windows Server 2019, Windows Server 2016 oder Windows Server 2012 R2 mit aktuellen Updates. Beachten Sie, dass auch die Server-Kerninstallation dieser Betriebssysteme unterstützt wird. |
+| **Weitere Softwareanforderungen** | .NET Framework 4.7 oder höher |
 | **Portzugriff** |  Ausgehende Verbindungen über HTTPS-Port 443 zum Senden von VM-Replikationsdaten.
+| **Freier Speicherplatz (Cache)** |  600 GB |
+| **Freier Speicherplatz (Aufbewahrungslaufwerk)** |  600 GB |
 
 
 ## <a name="hyper-v-vms"></a>Virtuelle Hyper-V-Computer
@@ -39,6 +42,7 @@ Sie können bis zu 10 VMs gleichzeitig für die Replikation auswählen. Wenn Si
 | **Erforderliche Änderungen für Azure** | Einige VMs erfordern möglicherweise Änderungen, damit sie in Azure ausgeführt werden können. Nehmen Sie vor der Migration Anpassungen manuell vor. Die entsprechenden Artikel enthalten Anweisungen zur Vorgehensweise. |
 | **Linux-Start**                 | Wenn sich „/boot“ in einer dedizierten Partition befindet, sollte diese auf dem Betriebssystemdatenträger und nicht auf mehrere Datenträger verteilt vorhanden sein.<br/> Wenn „/boot“ Teil der Stammpartition („/“) ist, sollte sich diese auf dem Betriebssystemdatenträger befinden und nicht auf andere Datenträger erstrecken. |
 | **UEFI-Start**                  | Unterstützt. Wählen Sie eine VM-Größe aus, die für Azure-VMs der Generation 2 unterstützt wird.  |
+| **UEFI: Sicherer Start**         | Nicht unterstützt für die Migration.|
 | **Datenträgergröße**                  | 2 TB für den Betriebssystemdatenträger, 4 TB für Datenträger|
 | **Anzahl der Datenträger** | Maximal 16 Datenträger pro virtuellem Computer|
 | **Verschlüsselte Datenträger/Volumes**    | Nicht unterstützt für die Migration.|

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 95fa7a8c6abd0ad65b367cacef15b8faa16da640
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: f8127b485d8fea5aedccd472e209a448e3076b5b
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553426"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400074"
 ---
 # <a name="scenario-any-to-any"></a>Szenario: Any-to-Any
 
@@ -29,7 +29,7 @@ Um herauszufinden, wie viele Routingtabellen in einem Virtual WAN-Szenario erfor
 | VNETs     | &#8594;|      X     |     X    |
 | Branches   | &#8594;|    X     |     X    |
 
-Jede Zelle in der vorstehenden Tabelle beschreibt, ob eine Virtual WAN-Verbindung (die Seite „From“ des Flows, die Zeilenheader in der Tabelle) ein Zielpräfix (die Seite „To“ des Flows, die kursiv gesetzten Spaltenheader in der Tabelle) für einen bestimmten Datenverkehrsfluss lernt.
+Jede Zelle in der vorstehenden Tabelle beschreibt, ob eine Virtual WAN-Verbindung (die Seite „From“ des Flows, die Zeilenheader in der Tabelle) ein Zielpräfix (die Seite „To“ des Flows, die kursiv formatierten Spaltenheader in der Tabelle) für einen bestimmten Datenverkehrsfluss lernt. Dabei bedeutet ein „X“, dass die Konnektivität durch eine Virtual WAN-Verbindung bereitgestellt wird.
 
 Da für alle Verbindungen von VNETs und Branches (VPN, ExpressRoute und Benutzer-VPN) die gleichen Konnektivitätsanforderungen gelten, ist eine einzelne Routingtabelle erforderlich. Dadurch werden alle Verbindungen verknüpft und an dieselbe Routingtabelle weitergegeben, nämlich die Standardroutingtabelle:
 

@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: e78f4133e7f722870f6c84de2ab7e784cd151d79
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: a57473a26d5fe809274f14c8767356914e0d4962
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562683"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400516"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Azure-Sicherheitsbaseline für Automation
 
@@ -146,7 +146,7 @@ Wenn Sie auf virtuellen Azure-Computern gehostete Hybrid Runbook Worker-Instanze
 
 **Leitfaden**: Definieren und implementieren Sie mit Azure Policy Standardsicherheitskonfigurationen für Netzwerkressourcen, die von Azure Automation verwendet werden.
 
-Sie können umfangreiche Azure-Bereitstellungen auch mithilfe von Azure Blueprints vereinfachen, indem Sie wichtige Umgebungsartefakte wie Azure Resource Manager-Vorlagen, RBAC-Steuerelemente und Richtlinien in einer einzigen Blaupausendefinition verpacken. Sie können die Blaupause auf neue Abonnements anwenden sowie die Steuerung und Verwaltung durch die Versionsverwaltung optimieren.
+Sie können umfangreiche Azure-Bereitstellungen auch mithilfe von Azure Blueprints vereinfachen, indem Sie wichtige Umgebungsartefakte wie Azure Resource Manager-Vorlagen, Azure RBAC-Steuerelemente und Richtlinien in einer einzigen Blaupausendefinition verpacken. Sie können die Blaupause auf neue Abonnements anwenden sowie die Steuerung und Verwaltung durch die Versionsverwaltung optimieren.
 
 * [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -570,11 +570,11 @@ Befolgen Sie ggf. die Empfehlungen von Azure Security Center zur Verschlüsselun
 
 **Verantwortlichkeit**: Kunde
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6: Verwenden der rollenbasierten Zugriffssteuerung zum Steuern des Zugriffs auf Ressourcen
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Verwenden von Azure RBAC zum Steuern des Zugriffs auf Ressourcen
 
-**Leitfaden**: Steuern Sie mit Azure AD RBAC den Zugriff auf Azure Automation-Ressourcen mithilfe der integrierten Rollendefinitionen, und weisen Sie Benutzern, die auf Ihre Automatisierungsressourcen zugreifen, den Zugriff nach dem Modell des Zugriffs mit gerade ausreichenden Rechten zu. Nutzen Sie bei der Verwendung von Hybrid Runbook Worker-Instanzen verwaltete Identitäten für diese virtuellen Computer, um die Verwendung von Dienstprinzipalen zu vermeiden. Wenn Sie sowohl mehrinstanzenfähige Runbook Worker-Instanzen als auch Hybrid Runbook Worker-Instanzen verwenden, stellen Sie sicher, dass Sie für die Identität der Runbook Worker-Instanzen ordnungsgemäße bereichsbezogene RBAC-Berechtigungen anwenden.
+**Leitfaden**: Steuern Sie mit der rollenbasierten Zugriffssteuerung von Azure (Azure RBAC) den Zugriff auf Azure Automation-Ressourcen mithilfe der integrierten Rollendefinitionen, und weisen Sie Benutzern, die auf Ihre Automatisierungsressourcen zugreifen, den Zugriff nach dem Modell des Zugriffs mit gerade ausreichenden Rechten zu. Nutzen Sie bei der Verwendung von Hybrid Runbook Worker-Instanzen verwaltete Identitäten für diese virtuellen Computer, um die Verwendung von Dienstprinzipalen zu vermeiden. Wenn Sie sowohl mehrinstanzenfähige Runbook Worker-Instanzen als auch Hybrid Runbook Worker-Instanzen verwenden, stellen Sie sicher, dass Sie für die Identität der Runbook Worker-Instanzen ordnungsgemäße bereichsbezogene Azure RBAC-Berechtigungen anwenden.
 
-* [Konfigurieren von RBAC in Azure](../role-based-access-control/role-assignments-portal.md)
+* [Konfigurieren von Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
 * [Runbook-Berechtigungen für einen Hybrid Runbook Worker](./automation-hybrid-runbook-worker.md#runbook-permissions-for-a-hybrid-runbook-worker)
 
@@ -968,9 +968,9 @@ In den meisten Fällen sind die Microsoft-Basisvorlagen in Kombination mit Azure
 
 Wenn Sie die Hybrid Runbook Worker-Funktion verwenden, stellen Sie sicher, dass Sie den Zugriff auf das benutzerdefinierte Betriebssystemimage in Ihrem Speicherkonto ordnungsgemäß einschränken, sodass nur autorisierte Benutzer auf das Image zugreifen können.
 
-* [Grundlegendes zu RBAC in Azure](../role-based-access-control/rbac-and-directory-admin-roles.md)
+* [Grundlegendes zu Azure RBAC](../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-* [Konfigurieren von RBAC in Azure](../role-based-access-control/quickstart-assign-role-user-portal.md)
+* [Konfigurieren von Azure RBAC](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -1042,7 +1042,9 @@ Wenn Sie die Hybrid Runbook Worker-Funktion verwenden, verwenden Sie Azure Autom
 
 * [Erstellen einer Key Vault-Instanz](../key-vault/secrets/quick-create-portal.md)
 
-* [Bereitstellen der Key Vault-Authentifizierung mit einer verwalteten Identität](../key-vault/general/managed-identity.md)
+* [Authentifizieren bei Key Vault](../key-vault/general/authentication.md)
+
+* [Zuweisen einer Key Vault-Zugriffsrichtlinie](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 

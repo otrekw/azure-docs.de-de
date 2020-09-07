@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5546fc63b01d1da6b4033e071ac071574ab9699a
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: f233aedf8b51967264994f5a4081f8f4cd99df01
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987199"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400006"
 ---
 # <a name="scenario-route-traffic-through-nvas---custom-preview"></a>Szenario: Weiterleiten von Datenverkehr über virtuelle Netzwerkgeräte: benutzerdefiniert (Vorschau)
 
@@ -40,7 +40,7 @@ In der folgenden Konnektivitätsmatrix sind die für dieses Szenario unterstütz
 | **DMZ-VNET** | &#8594;|       X |            X |      X    |      X       |
 | **Branches** | &#8594;|  statischen |            X |      X    |      X       |
 
-In den einzelnen Zellen der Konnektivitätsmatrix ist beschrieben, ob eine Virtual WAN-Verbindung (Von-Seite des Datenflusses bzw. Zeilenbezeichnung) ein Zielpräfix (An-Seite des Datenflusses bzw. kursive Spaltenüberschrift) für einen bestimmten Datenverkehrsfluss erlernt. Hier sind die einzelnen Zeilen ausführlicher beschrieben:
+In den einzelnen Zellen der Konnektivitätsmatrix ist beschrieben, ob eine Virtual WAN-Verbindung (Von-Seite des Datenflusses bzw. Zeilenbezeichnung) ein Zielpräfix (An-Seite des Datenflusses bzw. kursive Spaltenüberschrift) für einen bestimmten Datenverkehrsfluss erlernt. Ein „X“ bedeutet, dass die Konnektivität nativ von Virtual WAN bereitgestellt wird. „Statisch“ bedeutet, dass die Konnektivität von Virtual WAN mithilfe statischer Routen bereitgestellt wird. Hier sind die einzelnen Zeilen ausführlicher beschrieben:
 
 * NVA-Spokes:
   * Spokes können andere Spokes direkt über Virtual WAN-Hubs erreichen.

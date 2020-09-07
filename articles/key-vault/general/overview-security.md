@@ -1,5 +1,5 @@
 ---
-title: Azure Key Vault – Sicherheit | Microsoft-Dokumentation
+title: Azure Key Vault – Sicherheit
 description: Verwalten Sie Zugriffsberechtigungen für den Azure Key Vault, Schlüssel und Geheimnisse. In diesem Artikel wird das Authentifizierungs- und Autorisierungsmodell für Key Vault und das Schützen eines Schlüsseltresors behandelt.
 services: key-vault
 author: msmbaldwin
@@ -10,17 +10,16 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: mbaldwin
-Customer intent: As a key vault administrator, I want to learn the options available to secure my vaults
-ms.openlocfilehash: edef64c215f96b34cd0efbff4521a7d5adb98885
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 4c0430f96934c16a26ca3ab908da6aa017810ad0
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870577"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377572"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault – Sicherheit
 
-Verwenden Sie für den Schutz Ihrer Verschlüsselungsschlüssel und Geheimnisse (wie Zertifikate, Verbindungszeichenfolgen und Kennwörter) in der Cloud Azure Key Vault. Da Sie vertrauliche und unternehmenskritische Daten speichern, müssen Sie Maßnahmen ergreifen, um die Sicherheit Ihrer Tresore und der darin gespeicherten Daten zu maximieren. In diesem Artikel werden einige der Konzepte behandelt, die Sie beim Entwerfen der Sicherheit Ihrer Azure Key Vault-Instanz berücksichtigen sollten.
+Sie verwenden Azure Key Vault für den Schutz Ihrer Verschlüsselungsschlüssel und Geheimnisse (wie Zertifikate, Verbindungszeichenfolgen und Kennwörter) in der Cloud. Wenn Sie vertrauliche und unternehmenskritische Daten speichern, müssen Sie Maßnahmen ergreifen, um die Sicherheit Ihrer Tresore und der darin gespeicherten Daten zu maximieren.
 
 ## <a name="identity-and-access-management"></a>Identitäts- und Zugriffsverwaltung
 
@@ -65,7 +64,7 @@ Mit Schlüsseltresor-Zugriffsrichtlinien können separate Berechtigungen für Sc
 > [!IMPORTANT]
 > Die Schlüsseltresor-Zugriffsrichtlinie unterstützt keine differenzierten Berechtigungen auf Objektebene, wie z.B. für bestimmte Schlüssel, Geheimnisse oder Zertifikate. Wenn einem Benutzer die Berechtigung zum Erstellen und Löschen von Schlüsseln gewährt wird, kann er diese Vorgänge für alle Schlüssel in diesem Schlüsseltresor ausführen.
 
-Zum Festlegen von Zugriffsrichtlinien für einen Schlüsseltresor können Sie das [Azure-Portal](https://portal.azure.com/), die [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest), [Azure PowerShell](/powershell/azure/) oder die [REST-APIs für die Schlüsseltresorverwaltung](/rest/api/keyvault/) verwenden.
+Zum Festlegen von Zugriffsrichtlinien für einen Schlüsseltresor können Sie das [Azure-Portal](assign-access-policy-portal.md), die [Azure CLI](assign-access-policy-cli.md), [Azure PowerShell](assign-access-policy-powershell.md) oder die [REST-APIs für die Schlüsseltresorverwaltung](/rest/api/keyvault/) verwenden.
 
 Sie können den Datenebenenzugriff über [VNET-Dienstendpunkte für Azure Key Vault](overview-vnet-service-endpoints.md) einschränken. Konfigurieren Sie [Firewallregeln und VNET-Regeln](network-security.md), um eine zusätzliche Sicherheitsebene zu erstellen.
 

@@ -1,36 +1,36 @@
 ---
-title: 'Azure-VPN Gateway: Konfigurieren von Paketerfassungen'
-description: Hier erhalten Sie Informationen über Paketerfassungsfunktionen, die für VPN-Gateways verwendet werden können.
+title: 'Azure-VPN Gateway: Konfigurieren der Paketerfassung'
+description: Erfahren Sie mehr über die Paketerfassungsfunktionen, die Sie für VPN Gateways verwenden können, um die Ursache eines Problems einzugrenzen.
 services: vpn-gateway
 author: radwiv
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/15/2019
 ms.author: radwiv
-ms.openlocfilehash: 3ba3046367ceece6bf0ddf157451025c79977324
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eb64e542c8b4ca9307a232bda3aa88d87294027b
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077206"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400278"
 ---
-# <a name="configure-packet-captures-for-vpn-gateways"></a>Konfigurieren der Paketerfassung für VPN-Gateways
+# <a name="configure-packet-capture-for-vpn-gateways"></a>Konfigurieren der Paketerfassung für VPN Gateways
 
-Probleme Im Zusammenhang mit Konnektivität und Leistung sind häufig komplex, und das Eingrenzen der Ursache des Problems erfordert viel Zeit. Die Paketerfassung trägt wesentlich dazu bei, die für die Ursachensuche benötigte Zeit zu verkürzen, indem das Problem auf bestimmte Teile des Netzwerks eingeschränkt wird. So wird z. B. ermittelt, ob das Problem auf der Kundenseite des Netzwerks, auf der Azure-Seite des Netzwerks oder irgendwo dazwischen liegt. Sobald das Problem eingegrenzt wurde, ist es einfacher, ein effizientes Debugging und Maßnahmen zur Problembeseitigung durchzuführen.
+Konnektivitäts- und leistungsbezogene Probleme sind häufig komplex. Es kann viel Zeit und Mühe kosten, die Ursache des Problems einzugrenzen. Mithilfe der Paketerfassung können Sie den Umfang eines Problems auf bestimmte Teile des Netzwerks eingrenzen. Sie kann Ihnen dabei helfen, festzustellen, ob das Problem auf der Kundenseite des Netzwerks, auf der Azure-Seite des Netzwerks oder irgendwo dazwischen vorliegt. Nachdem Sie das Problem eingegrenzt haben, ist es effizienter, das Problem zu debuggen und Abhilfemaßnahmen zu ergreifen.
 
-Für die Paketerfassung stehen verschiedene gängige Tools zur Verfügung. Eine relevante Paketerfassung kann mit diesen Tools umständlich sein, insbesondere bei der Arbeit in Szenarien mit hohem Datenaufkommen. Die von einer Paketerfassung für VPN-Gateways bereitgestellten Filterfunktionen werden zu einem wichtigen Unterscheidungsmerkmal. Sie können zusätzlich zu den gängigen Tools für die Paketerfassung eine VPN-Gateway-Paketerfassung nutzen.
+Für die Paketerfassung stehen verschiedene gängige Tools zur Verfügung. Eine relevante Paketerfassung kann mit diesen Tools umständlich sein, insbesondere in Szenarien mit hohem Datenaufkommen. Die von einer Paketerfassung für VPN Gateways bereitgestellten Filterfunktionen sind ein wichtiges Unterscheidungsmerkmal. Sie können die Paketerfassung für VPN Gateways zusammen mit allgemein verfügbaren Paketerfassungstools verwenden.
 
-## <a name="vpn-gateway-packet-capture-filtering-capabilities"></a>Filterfunktionen für die VPN-Gateway-Paketerfassung
+## <a name="vpn-gateway-packet-capture-filtering-capabilities"></a>Filterfunktionen für die VPN Gateway-Paketerfassung
 
-VPN-Gateway-Paketerfassungen können je nach Kundenanforderungen für das Gateway oder eine bestimmte Verbindung ausgeführt werden. Es ist außerdem möglich, Paketerfassungen für mehrere Tunnel gleichzeitig auszuführen. Sie können uni- oder bidirektionalen Datenverkehr, IKE- und ESP-Datenverkehr und interne Pakete gemeinsam mit einer Filterung für ein VPN-Gateway erfassen.
+Die können die VPN Gateway-Paketerfassung je nach Anforderung für das Gateway oder eine bestimmte Verbindung ausführen. Es ist außerdem möglich, Paketerfassung für mehrere Tunnel gleichzeitig auszuführen. Sie können uni- oder bidirektionalen Datenverkehr, IKE- und ESP-Datenverkehr sowie interne Pakete gemeinsam mit einer Filterung für ein VPN Gateway erfassen.
 
-Die Verwendung von 5-Tupel-Filtern (Quellsubnetz, Zielsubnetz, Quellport, Zielport, Protokoll) und TCP-Flags (SYN, ACK, FIN, URG, PSH, RST) ist nützlich, um eine Problemisolierung bei einem hohen Datenverkehrsaufkommen durchzuführen.
+Die Verwendung von 5-Tupel-Filtern (Quellsubnetz, Zielsubnetz, Quellport, Zielport, Protokoll) und TCP-Flags (SYN, ACK, FIN, URG, PSH, RST) ist hilfreich, um eine Problemisolierung bei einem hohen Datenverkehrsaufkommen durchzuführen.
 
-Im Folgenden finden Sie ein Beispiel für JSON-Code und ein JSON-Schema mit Erläuterungen zu den einzelnen Eigenschaften. Beachten Sie auch einige Einschränkungen beim Ausführen der Paketerfassungen:
-- Im Schema wird der Filter als ein Array angezeigt, aber derzeit kann jeweils nur ein Filter verwendet werden.
-- Mehrere gatewayweite Paketerfassungen zur gleichen Zeit sind nicht zulässig.
-- Mehrere Paketerfassungen über dieselbe Verbindung zur gleichen Zeit sind nicht zulässig. Sie können Paketerfassungen für verschiedene Verbindungen gleichzeitig ausführen.
-- Pro Gateway können maximal fünf Paketerfassungen parallel ausgeführt werden. Diese Paketerfassungen können eine Kombination aus der gatewayweiten Paketerfassung und der Paketerfassung pro Verbindung sein.
+Die folgenden JSON-Beispiele und ein JSON-Schema bieten Erläuterungen zu den einzelnen Eigenschaften. Beachten Sie die folgenden Einschränkungen, wenn Sie Paketerfassungen ausführen:
+- Im hier gezeigten Schema ist der Filter ein Array, aber derzeit kann jeweils nur ein Filter gleichzeitig verwendet werden.
+- Mehrere gatewayweite Paketerfassungen können nicht zur gleichen Zeit ausgeführt werden.
+- Sie können nicht mehrere Paketerfassungen gleichzeitig für eine einzige Verbindung ausführen. Sie können Paketerfassungen für verschiedene Verbindungen gleichzeitig ausführen.
+- Pro Gateway können maximal fünf Paketerfassungen parallel ausgeführt werden. Diese Paketerfassungen können eine Kombination aus der gatewayweiten Paketerfassungen und Paketerfassungen pro Verbindung sein.
 
 ### <a name="example-json"></a>JSON-Beispiel
 ```JSON-interactive
@@ -316,9 +316,9 @@ Im Folgenden finden Sie ein Beispiel für JSON-Code und ein JSON-Schema mit Erl�
 }
 ```
 
-## <a name="setup-packet-capture-using-powershell"></a>Einrichten der Paketerfassung mithilfe von PowerShell
+## <a name="set-up-packet-capture-by-using-powershell"></a>Einrichten der Paketerfassung mithilfe von PowerShell
 
-Nachfolgend finden Sie Beispiele für PowerShell-Befehle zum Starten und Beenden von Paketerfassungen. Weitere Informationen zu den Parameteroptionen finden Sie in diesem PowerShell-[Dokument](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture).
+Die folgenden Beispiele zeigen PowerShell-Befehle zum Starten und Beenden von Paketerfassungen. Weitere Informationen zu den Parameteroptionen finden Sie in [diesem PowerShell-Dokument](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture).
 
 ### <a name="start-packet-capture-for-a-vpn-gateway"></a>Starten der Paketerfassung für ein VPN-Gateway
 
@@ -326,7 +326,7 @@ Nachfolgend finden Sie Beispiele für PowerShell-Befehle zum Starten und Beenden
 Start-AzVirtualnetworkGatewayPacketCapture -ResourceGroupName "YourResourceGroupName" -Name "YourVPNGatewayName"
 ```
 
-Der optionale Parameter **-FilterData** kann verwendet werden, um einen Filter anzuwenden.
+Sie können den optionalen Parameter `-FilterData` verwenden, um einen Filter anzuwenden.
 
 ### <a name="stop-packet-capture-for-a-vpn-gateway"></a>Beenden der Paketerfassung für ein VPN-Gateway
 
@@ -340,7 +340,7 @@ Stop-AzVirtualNetworkGatewayPacketCapture -ResourceGroupName "YourResourceGroupN
 Start-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourResourceGroupName" -Name "YourVPNGatewayConnectionName"
 ```
 
-Der optionale Parameter **-FilterData** kann verwendet werden, um einen Filter anzuwenden.
+Sie können den optionalen Parameter `-FilterData` verwenden, um einen Filter anzuwenden.
 
 ### <a name="stop-packet-capture-on-a-vpn-gateway-connection"></a>Beenden der Paketerfassung für eine VPN-Gatewayverbindung
 
@@ -351,9 +351,9 @@ Stop-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourReso
 ## <a name="key-considerations"></a>Wichtige Aspekte
 
 - Das Ausführen von Paketerfassungen kann sich auf die Leistung auswirken. Denken Sie daran, die Paketerfassung zu beenden, wenn sie nicht benötigt wird.
-- Die empfohlene Mindestdauer für die Paketerfassung beträgt 600 Sekunden. Eine kürzere Paketerfassung führt möglicherweise zu unvollständigen Daten aufgrund von Synchronisierungsproblemen zwischen verschiedenen Komponenten im Pfad.
+- Die empfohlene Mindestdauer für die Paketerfassung beträgt 600 Sekunden. Aufgrund von Synchronisierungsproblemen zwischen mehreren Komponenten im Pfad stellen kürzere Paketerfassungen möglicherweise keine vollständigen Daten bereit.
 - Bei der Paketerfassung werden Datendateien im PCAP-Format generiert. Verwenden Sie Wireshark oder andere allgemein verfügbare Anwendungen, um PCAP-Dateien zu öffnen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu VPN-Gateways finden Sie unter [Was ist VPN Gateway?](vpn-gateway-about-vpngateways.md).
+Weitere Informationen zu VPN Gateways finden Sie unter [Was ist ein VPN Gateway?](vpn-gateway-about-vpngateways.md)

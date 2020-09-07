@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: b37b327a535b716bbce845cd5883e58ec5379c48
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: e6ab37539d00b6748d0e63a3f559bf70f493cf42
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782718"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394736"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Verschieben einer Azure Key Vault-Instanz in ein anderes Abonnement
 
@@ -59,8 +59,6 @@ Sie verfügen über eine Anwendung, die mit dem Schlüsseltresor, der Zertifikat
 
 ## <a name="procedure"></a>Verfahren
 
-Wenn Sie 
-
 ### <a name="moving-key-vault-to-a-new-subscription-within-the-same-tenant"></a>Verschieben des Schlüsseltresors in ein neues Abonnement innerhalb desselben Mandanten
 
 1. Anmelden beim Azure-Portal
@@ -99,11 +97,9 @@ az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Upd
 
 Nachdem Sie Ihren Tresor nun der richtigen Mandanten-ID zugeordnet haben und alte Zugriffsrichtlinieneinträge entfernt wurden, können Sie neue Zugriffsrichtlinieneinträge mit dem Azure PowerShell-Cmdlet [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/Set-azKeyVaultAccessPolicy) oder dem Azure CLI-Befehl [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) festlegen.
 
-Wenn Sie eine verwaltete Identität für Azure-Ressourcen verwenden, müssen Sie sie ebenfalls auf den neuen Azure AD-Mandanten aktualisieren. Weitere Informationen zu verwalteten Identitäten finden Sie unter [Bereitstellen der Key Vault-Authentifizierung mit einer verwalteten Identität](managed-identity.md).
+Wenn Sie eine verwaltete Identität für Azure-Ressourcen verwenden, müssen Sie sie ebenfalls auf den neuen Azure Active Directory-Mandanten aktualisieren. Weitere Informationen zu verwalteten Identitäten finden Sie unter [Verwaltete Identitäten: Übersicht](/azure/active-directory/managed-identities-azure-resources/overview).
 
-Wenn Sie MSI verwenden, müssen Sie auch die MSI-Identität aktualisieren, da sich die alte Identität nicht mehr im richtigen AAD-Mandanten befindet. Informationen zum Beheben dieses Problems finden Sie in den folgenden Dokumenten. 
+Wenn Sie verwaltete Identitäten verwenden, müssen Sie auch die Identität aktualisieren, weil sich die alte Identität nicht mehr im richtigen Azure Active Directory-Mandanten befindet. Informationen zum Beheben dieses Problems finden Sie in den folgenden Dokumenten. 
 
 * [Aktualisieren von MSI](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/known-issues#transferring-a-subscription-between-azure-ad-directories)
 * [Übertragen eines Abonnements in ein neues Verzeichnis](https://docs.microsoft.com/azure/role-based-access-control/transfer-subscription)
-
-

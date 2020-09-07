@@ -5,18 +5,20 @@ services: logic-apps
 ms.suite: integration
 ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/29/2020
+ms.date: 08/27/2020
 tags: connectors
-ms.openlocfilehash: ae34840c04c3a1d2fb3646046792c97ed6f521a0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 05ce944d195cf43f860fc2b39975a736a4454c05
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289431"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226513"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Empfangen und Beantworten eingehender HTTPS-Anforderungen in Azure Logic Apps
 
-Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und dem integrierten Anforderungstrigger und der Antwortaktion können Sie automatisierte Tasks und Workflows erstellen, die eingehende HTTPS-Anforderungen empfangen und beantworten. Beispielsweise können Sie mit Ihrer Logik-App Folgendes durchführen:
+Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und dem integrierten Anforderungstrigger und der Antwortaktion können Sie automatisierte Tasks und Workflows erstellen, die eingehende HTTPS-Anforderungen über HTTPS empfangen können. Verwenden Sie zum Senden von ausgehenden Anforderungen stattdessen den integrierten [HTTP-Trigger oder die HTTP-Aktion](../connectors/connectors-native-http.md).
+
+Beispielsweise können Sie mit Ihrer Logik-App Folgendes durchführen:
 
 * Empfangen von und Antworten auf eine HTTPS-Anforderung von Daten in einer lokalen Datenbank.
 
@@ -24,47 +26,28 @@ Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und dem integrierte
 
 * Empfangen von und Antworten auf HTTPS-Aufrufe aus einer anderen Logik-App.
 
-Der Anforderungstrigger unterstützt [Azure Active Directory Open Authentication](../active-directory/develop/index.yml) (Azure AD OAuth) für die Autorisierung eingehender Aufrufe ihrer Logik-App. Weitere Informationen zum Aktivieren dieser Authentifizierung finden Sie unter [Schützen des Zugriffs und der Daten in Azure Logic Apps – Aktivieren der Azure AD OAuth-Authentifizierung](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth).
+Dieser Artikel zeigt, wie Sie den Anforderungstrigger und die Antwortaktion verwenden können, damit Ihre Logik-App eingehende Aufrufe empfangen und darauf antworten kann.
+
+Informationen zu Verschlüsselung, Sicherheit und Autorisierung für eingehende Aufrufe Ihrer Logik-App, etwa [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security) (früher bekannt als Secure Sockets Layer (SSL)) oder [Azure Active Directory Open Authentication (Azure AD OAuth)](../active-directory/develop/index.yml), finden Sie unter [Sicherer Zugriff und Daten: Zugriff für eingehende Aufrufe anforderungsbasierter Trigger](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+* Ein Azure-Konto und ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
-* Grundlegende Kenntnisse zu [Logik-Apps](../logic-apps/logic-apps-overview.md). Falls Sie noch nicht mit Logik-Apps gearbeitet haben, sollten Sie zunächst die Schnellstartanleitung zum [Erstellen Ihrer ersten Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) lesen.
-
-<a name="tls-support"></a>
-
-## <a name="transport-layer-security-tls"></a>Transport Layer Security (TLS)
-
-* Eingehende Anrufe unterstützen *nur* Transport Layer Security 1.2 (TLS). Wenn TLS-Handshakefehler auftreten, sollten Sie sicherstellen, dass Sie TLS 1.2 verwenden. Weitere Informationen finden Sie unter [Lösen des TLS 1.0-Problems](/security/solving-tls1-problem). Ausgehende Aufrufe unterstützen TLS 1.0, 1.1 und 1.2, je nach Funktionalität des Zielendpunkts.
-
-* Eingehende Anrufe unterstützen die folgenden Cipher Suites:
-
-  * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
-
-  * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
-
-  * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-
-  * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-
-  * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
-
-  * TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
-
-  * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
-
-  * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+* Grundlegende Kenntnisse über das [Erstellen von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md). Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md).
 
 <a name="add-request"></a>
 
 ## <a name="add-request-trigger"></a>Anforderungstrigger hinzufügen
 
-Dieser integrierte Trigger erstellt einen manuell aufrufbaren HTTPS-Endpunkt, der *nur* eingehende HTTPS-Anforderung empfangen kann. Wenn dieses Ereignis eintritt, wird der Trigger ausgelöst und führt die Logik-App aus. Weitere Informationen zur zugrunde liegenden JSON-Definition des Triggers und zum Aufrufen dieses Triggers finden Sie unter [Anforderungstriggertyp](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) und [Aufrufen, Auslösen oder Schachteln von Workflows mit HTTP-Endpunkten in Azure Logic Apps](../logic-apps/logic-apps-http-endpoint.md).
+Dieser integrierte Trigger erstellt einen manuell aufrufbaren Endpunkt, der *nur* eingehende Anforderungen über HTTPS verarbeiten kann. Wenn ein Aufrufer eine Anforderung an diesen Endpunkt sendet, wird der [Anforderungstrigger](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) ausgelöst und führt die Logik-App aus. Weitere Informationen zum Aufrufen dieses Triggers finden Sie unter [Aufrufen, Auslösen oder Schachteln von Workflows mit HTTPS-Endpunkten in Azure Logic Apps](../logic-apps/logic-apps-http-endpoint.md).
+
+Ihre Logik-App hält eine eingehende Anforderung nur für [begrenzte Zeit](../logic-apps/logic-apps-limits-and-config.md#request-limits) geöffnet. Unter der Annahme, dass Ihre Logik-App eine [Antwortaktion](#add-response) enthält, gibt Ihre Logik-App einen `504 GATEWAY TIMEOUT`-Status an den Aufrufer zurück, wenn Ihre Logik-App nach Ablauf dieses Zeitraums keine Antwort an den Aufrufer sendet. Wenn Ihre Logik-App keine Antwortaktion enthält, 
+> gibt Ihre Logik-App sofort einen `202 ACCEPTED`-Status an den Aufrufer zurück.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Erstellen einer leeren Logik-App
 
-1. Wenn der Designer für Logik-Apps geöffnet wird, geben Sie im Suchfeld `http request` als Filter ein. Wählen Sie in der Triggerliste den Trigger **Beim Empfang einer HTTP-Anforderung** aus. Dies ist der erste Schritt in Ihrem Logik-App-Workflow.
+1. Wenn der Designer für Logik-Apps geöffnet wird, geben Sie im Suchfeld `http request` als Filter ein. Wählen Sie aus der Triggerliste diesen Trigger aus: **Beim Empfang einer HTTP-Anforderung**.
 
    ![Anforderungstrigger auswählen](./media/connectors-native-reqres/select-request-trigger.png)
 
@@ -144,11 +127,11 @@ Dieser integrierte Trigger erstellt einen manuell aufrufbaren HTTPS-Endpunkt, de
 
    1. Wählen Sie im Anforderungstrigger **Beispielnutzlast zum Generieren eines Schemas verwenden** aus.
 
-      ![Generieren des Schemas aus Nutzlast](./media/connectors-native-reqres/generate-from-sample-payload.png)
+      ![Screenshot mit ausgewählter Option „Beispielnutzdaten zum Generieren eines Schemas verwenden“](./media/connectors-native-reqres/generate-from-sample-payload.png)
 
    1. Geben Sie die Beispielnutzlast ein, und wählen Sie dann **Fertig** aus.
 
-      ![Generieren des Schemas aus Nutzlast](./media/connectors-native-reqres/enter-payload.png)
+      ![Eingeben einer Beispielnutzlast zum Generieren eines Schemas](./media/connectors-native-reqres/enter-payload.png)
 
       Hier sehen Sie die Beispielnutzlast:
 
@@ -210,11 +193,9 @@ Dieser integrierte Trigger erstellt einen manuell aufrufbaren HTTPS-Endpunkt, de
 
 1. Zum Starten Ihrer Logik-App senden Sie eine HTTP POST-Methode an die generierte URL.
 
-   Beispielsweise können Sie ein Tool wie [Postman](https://www.getpostman.com/) verwenden, um den HTTP POST zu senden. Wenn Sie [Azure Active Directory Open Authentication](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth) (Azure AD OAuth) für die Autorisierung eingehender Aufrufe des Anforderungstriggers aktiviert haben, rufen Sie den Trigger entweder mithilfe einer [Shared Access Signature-URL (SAS)](../logic-apps/logic-apps-securing-a-logic-app.md#sas) oder mithilfe eines Authentifizierungstokens auf, aber Sie können nicht beides verwenden. Das Authentifizierungstoken muss den `Bearer`-Typ im Autorisierungsheader angeben. Weitere Informationen finden Sie unter [Schützen des Zugriffs und der Daten in Azure Logic Apps – Zugriff auf anforderungsbasierte Trigger](../logic-apps/logic-apps-securing-a-logic-app.md#secure-triggers).
+   Beispielsweise können Sie ein Tool wie [Postman](https://www.getpostman.com/) verwenden, um den HTTP POST zu senden. Weitere Informationen zur zugrunde liegenden JSON-Definition des Triggers und zum Aufzurufen dieses Triggers finden Sie in den Themen [Anforderungstriggertyp](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) und unter [Aufrufen, Auslösen oder Schachteln von Workflows mit HTTP-Endpunkten in Azure Logic Apps](../logic-apps/logic-apps-http-endpoint.md).
 
-Weitere Informationen zur zugrunde liegenden JSON-Definition des Triggers und zum Aufzurufen dieses Triggers finden Sie in den Themen [Anforderungstriggertyp](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) und unter [Aufrufen, Auslösen oder Schachteln von Workflows mit HTTP-Endpunkten in Azure Logic Apps](../logic-apps/logic-apps-http-endpoint.md).
-
-### <a name="trigger-outputs"></a>Triggerausgaben
+## <a name="trigger-outputs"></a>Triggerausgaben
 
 Im Folgenden finden Sie weitere Informationen zu den Ausgaben des Anforderungstriggers:
 
@@ -228,9 +209,7 @@ Im Folgenden finden Sie weitere Informationen zu den Ausgaben des Anforderungstr
 
 ## <a name="add-a-response-action"></a>Hinzufügen einer Antwortaktion
 
-Mithilfe der Antwortaktion können Sie mit einer Nutzlast (Daten) auf eine eingehende HTTPS-Anforderung antworten. Dies gilt allerdings nur für eine Logik-App, die durch eine HTTPS-Anforderung ausgelöst wird. Sie können die Antwortaktion an einer beliebigen Stelle im Workflow hinzufügen. Weitere Informationen zur zugrunde liegenden JSON-Definition für diesen Trigger finden Sie beim [Antwortaktionstyp](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action).
-
-Ihre Logik-App hält die eingehende Anforderung nur für [begrenzte Zeit](../logic-apps/logic-apps-limits-and-config.md#request-limits) geöffnet. Falls der Logik-App-Workflow eine Antwortaktion enthält, gibt Ihre Logik-App ein `504 GATEWAY TIMEOUT` an den Aufrufer zurück, wenn die Logik-App nach diesem Zeitraum nicht geantwortet hat. Falls Ihre Logik-App keine Antwortaktion enthält, gibt Ihre Logik-App sofort eine `202 ACCEPTED`-Antwort an den Aufrufer zurück.
+Wenn Sie den Anforderungstrigger zur Verarbeitung eingehender Anforderungen verwenden, können Sie die Antwort modellieren und die Nutzlastergebnisse mithilfe der integrierten [Antwortaktion](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action) an den Aufrufer zurücksenden. Sie können die Antwortaktion *nur* mit dem Anforderungstrigger verwenden. Diese Kombination aus dem Anforderungstrigger und der Antwortaktion erstellt die [Anforderungs-/Antwortmuster](https://en.wikipedia.org/wiki/Request%E2%80%93response). Außer innerhalb von Foreach-Schleifen und Until-Schleifen sowie parallelen Branches können Sie die Antwortaktion an beliebiger Stelle in Ihren Workflow hinzufügen.
 
 > [!IMPORTANT]
 > Wenn eine Antwortaktion diese Header enthält, entfernt Logic Apps sie aus der generierten Antwortnachricht, ohne eine Warnung oder einen Fehler anzuzeigen:
@@ -253,7 +232,7 @@ Ihre Logik-App hält die eingehende Anforderung nur für [begrenzte Zeit](../log
 
    Wenn Sie zwischen Schritten eine Aktion einfügen möchten, bewegen Sie den Mauszeiger über den Pfeil zwischen diesen Schritten. Wählen Sie das angezeigte Pluszeichen ( **+** ) aus, und wählen Sie dann **Aktion hinzufügen** aus.
 
-1. Geben Sie unter **Aktion auswählen** im Suchfeld den Text „Antwort“ als Filter ein, und wählen Sie die Aktion **Antwort** aus.
+1. Geben Sie unter **Aktion auswählen** im Suchfeld den Text `response` als Filter ein, und wählen Sie die **Antwortaktion** aus.
 
    ![Auswählen der Aktion „Antwort“](./media/connectors-native-reqres/select-response-action.png)
 
@@ -286,5 +265,5 @@ Ihre Logik-App hält die eingehende Anforderung nur für [begrenzte Zeit](../log
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+* [Sicherer Zugriff und Daten: Zugriff für eingehende Aufrufe anforderungsbasierter Trigger](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)
 * [Connectors für Logic Apps](../connectors/apis-list.md)
-

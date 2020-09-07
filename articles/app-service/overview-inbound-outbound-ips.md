@@ -2,28 +2,34 @@
 title: Eingehende/ausgehende IP-Adressen
 description: Hier wird beschrieben, wie ein- und ausgehende IP-Adressen in Azure App Service verwendet werden, wann sie sich ändern und wie Sie diese Adressen für Ihre App ermitteln.
 ms.topic: article
-ms.date: 06/06/2019
+ms.date: 08/25/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8bcd80fde95e467513590f3ed09b1dadd2646aee
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 8fa9fec9219cfd85a8a0b25f50835425766d9043
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81537626"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050691"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Ein- und ausgehende IP-Adressen in Azure App Service
 
-Mit Ausnahme von [App Service-Umgebungen](environment/intro.md) ist [Azure App Service](overview.md) ein mehrinstanzenfähiger Dienst. Apps, die sich nicht in einer App Service-Umgebung (nicht in der [isolierten Ebene](https://azure.microsoft.com/pricing/details/app-service/)) befinden, nutzen die Netzwerkinfrastruktur gemeinsam mit anderen Apps. Aus diesem Grund können sich die ein- und ausgehenden IP-Adressen einer App unterscheiden und in bestimmten Situationen sogar ändern. 
+Mit Ausnahme von [App Service-Umgebungen](environment/intro.md) ist [Azure App Service](overview.md) ein mehrinstanzenfähiger Dienst. Apps, die sich nicht in einer App Service-Umgebung (nicht in der [isolierten Ebene](https://azure.microsoft.com/pricing/details/app-service/)) befinden, nutzen die Netzwerkinfrastruktur gemeinsam mit anderen Apps. Aus diesem Grund können sich die ein- und ausgehenden IP-Adressen einer App unterscheiden und in bestimmten Situationen sogar ändern.
 
 [App Service-Umgebungen](environment/intro.md) nutzen dedizierte Netzwerkinfrastrukturen, sodass in einer App Service-Umgebung ausgeführte Apps sowohl für ein- als auch ausgehende Verbindungen statische, dedizierte IP-Adressen abrufen.
+
+## <a name="how-ip-addresses-work-in-app-service"></a>Funktionsweise von IP-Adressen in App Service
+
+Eine App Service-App wird in einem App Service-Plan ausgeführt, und App Service-Pläne werden in einer der Bereitstellungseinheiten in der Azure-Infrastruktur (intern als Webspace bezeichnet) bereitgestellt. Jeder Bereitstellungseinheit werden bis zu fünf virtuelle IP-Adressen zugewiesen, darunter eine öffentliche IP-Adresse für eingehenden Datenverkehr und vier IP-Adressen für ausgehenden Datenverkehr. Alle App Service-Pläne in derselben Bereitstellungseinheit und App-Instanzen, die darin ausgeführt werden, verwenden dieselbe Gruppe von virtuellen IP-Adressen. Für eine App Service-Umgebung (ein App Service-Plan in der [Isolierten Ebene](https://azure.microsoft.com/pricing/details/app-service/)) ist der App Service-Plan die Bereitstellungseinheit selbst, sodass ihr die virtuellen IP-Adressen zugewiesen werden.
+
+Da Sie einen App Service-Plan nicht zwischen Bereitstellungseinheiten verschieben dürfen, bleiben die Ihrer Anwendung zugewiesenen virtuellen IP-Adressen in der Regel gleich, aber es gibt Ausnahmen.
 
 ## <a name="when-inbound-ip-changes"></a>Situationen, in denen sich eingehende IP-Adressen ändern
 
 Unabhängig von der Anzahl horizontal skalierter Instanzen besitzt jede App eine einzelne eingehende IP-Adresse. Die eingehende IP-Adresse kann sich ändern, wenn Sie eine der folgenden Aktionen ausführen:
 
-- Sie löschen eine App und erstellen sie in einer anderen Ressourcengruppe neu.
-- Sie löschen die letzte App in einer Kombination aus Ressourcengruppe _und_ Region und erstellen sie neu.
-- Sie löschen eine vorhandene TLS-Bindung, beispielsweise während der Zertifikaterneuerung (siehe [Erneuern von Zertifikaten](configure-ssl-certificate.md#renew-certificate)).
+- Sie löschen eine App und erstellen sie in einer anderen Ressourcengruppe neu (die Bereitstellungseinheit kann sich ändern).
+- Sie löschen die letzte App in einer Kombination aus Ressourcengruppe _und_ Region und erstellen sie neu (die Bereitstellungseinheit kann sich ändern).
+- Sie löschen eine vorhandene IP-basierte TLS-/SSL-Bindung, beispielsweise während der Zertifikaterneuerung (siehe [Erneuern von Zertifikaten](configure-ssl-certificate.md#renew-certificate)).
 
 ## <a name="find-the-inbound-ip"></a>Auffinden der eingehenden IP-Adresse
 
@@ -39,9 +45,13 @@ Mitunter benötigen Sie eine dedizierte, statische IP-Adresse für Ihre App. Um 
 
 ## <a name="when-outbound-ips-change"></a>Situationen, in denen sich ausgehende IP-Adressen ändern
 
-Unabhängig von der Anzahl horizontal skalierter Instanzen besitzt jede App immer eine festgelegte Anzahl von ausgehenden IP-Adressen. Jede ausgehende Verbindung von der App Service-App (beispielsweise mit einer Back-End-Datenbank) verwendet eine der ausgehenden IP-Adressen als IP-Ursprungsadresse. Da Sie vorab nicht wissen, welche IP-Adresse eine bestimmte App-Instanz zum Herstellen der ausgehenden Verbindung verwendet, muss Ihr Back-End-Dienst seine Firewall für alle ausgehenden IP-Adressen Ihrer App öffnen.
+Unabhängig von der Anzahl horizontal skalierter Instanzen besitzt jede App immer eine festgelegte Anzahl von ausgehenden IP-Adressen. Jede ausgehende Verbindung von der App Service-App (beispielsweise mit einer Back-End-Datenbank) verwendet eine der ausgehenden IP-Adressen als IP-Ursprungsadresse. Die zu verwendende IP-Adresse wird zur Laufzeit zufällig ausgewählt, sodass Ihr Back-End-Dienst seine Firewall für alle ausgehenden IP-Adressen Ihrer Anwendung öffnen muss.
 
-Der Satz von ausgehenden IP-Adressen für Ihre App ändert sich, wenn Sie die App zwischen den niedrigeren Tarifen (**Basic**, **Standard** und **Premium**) und dem Tarif **Premium V2** skalieren.
+Der Satz der ausgehenden IP-Adressen für Ihre Anwendung ändert sich, wenn Sie eine der folgenden Aktionen durchführen:
+
+- Sie löschen eine App und erstellen sie in einer anderen Ressourcengruppe neu (die Bereitstellungseinheit kann sich ändern).
+- Sie löschen die letzte App in einer Kombination aus Ressourcengruppe _und_ Region und erstellen sie neu (die Bereitstellungseinheit kann sich ändern).
+- Skalieren Sie die App zwischen den niedrigeren Tarifen (**Basic**, **Standard** und **Premium**) und dem Tarif **Premium V2** (IP-Adressen können dem Satz hinzugefügt oder aus ihm entfernt werden).
 
 Sie finden die Sammlung aller möglichen IP-Ausgangsadressen, die von Ihrer App verwendet werden können, indem Sie nach der Eigenschaft `possibleOutboundIpAddresses` suchen, oder im Feld **Zusätzliche ausgehende IP-Adressen** auf dem Blatt **Eigenschaften** im Azure-Portal. Siehe [Ermitteln der ausgehenden IP-Adressen](#find-outbound-ips).
 

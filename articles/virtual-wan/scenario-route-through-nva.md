@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6b62f8c33c73ded978c0c2e3a8c3b7fadea49c96
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 2fdc1cd36c037f163b6b04907248e08ef20e961d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88852093"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400023"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>Szenario: Weiterleiten von Datenverkehr über ein virtuelles Netzwerkgerät
 
@@ -46,7 +46,7 @@ In der folgenden Konnektivitätsmatrix sind die für dieses Szenario unterstütz
 | **Nicht-NVA-VNETs**| &#8594; |   statischen |      X   |        X     |      X    |
 | **Branches**     | &#8594; |   statischen |      X   |        X     |      X    |
 
-In den einzelnen Zellen der Konnektivitätsmatrix ist beschrieben, ob eine Virtual WAN-Verbindung (Von-Seite des Datenflusses bzw. Zeilenbezeichnung in der Tabelle) ein Zielpräfix (An-Seite des Datenflusses bzw. kursive Spaltenüberschrift in der Tabelle) für einen bestimmten Datenverkehrsfluss erlernt. Beachten Sie Folgendes:
+In den einzelnen Zellen der Konnektivitätsmatrix ist beschrieben, ob eine Virtual WAN-Verbindung (Von-Seite des Datenflusses bzw. Zeilenbezeichnung in der Tabelle) ein Zielpräfix (An-Seite des Datenflusses bzw. kursive Spaltenüberschrift in der Tabelle) für einen bestimmten Datenverkehrsfluss erlernt. Ein „X“ bedeutet, dass die Konnektivität nativ von Virtual WAN bereitgestellt wird. „Statisch“ bedeutet, dass die Konnektivität von Virtual WAN mithilfe statischer Routen bereitgestellt wird. Beachten Sie Folgendes:
 
 * NVA-Spokes werden nicht mit Virtual WAN verwaltet. Die Mechanismen, über die die Kommunikation mit anderen VNETs oder Branches erfolgt, werden also vom Benutzer verwaltet. Die Konnektivität mit dem NVA-VNET wird per VNET-Peering bereitgestellt, und eine Standardroute zu „0.0.0.0/0“, die auf das NVA als nächsten Hop verweist, sollte die Konnektivität für das Internet, die anderen Spokes und die Branches abdecken.
 * NVA-VNETs kennen ihre eigenen NVA-Spokes, aber keine NVA-Spokes, die mit anderen NVA-VNETs verbunden sind. In Tabelle 1 ist VNET 2 über VNET 5 und VNET 6 informiert, aber nicht über andere Spokes, z. B. VNET 7 und VNET 8. Eine statische Route ist erforderlich, um die Präfixe anderer Spokes in NVA-VNETs einzufügen.

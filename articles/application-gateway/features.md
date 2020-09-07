@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: victorh
-ms.openlocfilehash: 560d836f99f7a1be85007bb9d488f80a68d7999b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 60ab0bd6093149aee4c9ee22f8b517dfd2460c09
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067981"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400561"
 ---
 # <a name="azure-application-gateway-features"></a>Azure Application Gateway-Funktionen
 
@@ -147,7 +147,7 @@ Weitere Informationen finden Sie unter [Neuschreibung von HTTP-Headern und der U
 
 ## <a name="sizing"></a>Festlegen der Größe
 
-Die Standard_v2-SKU von Application Gateway kann für die automatische Skalierung oder für Bereitstellungen fester Größe konfiguriert werden. Diese SKU bietet keine verschiedenen Instanzgrößen. Weitere Informationen zur Leistung und zu den Preisen von v2 finden Sie unter [Automatische Skalierung und zonenredundantes Application Gateway v2](application-gateway-autoscaling-zone-redundant.md#pricing).
+Die Standard_v2-SKU von Application Gateway kann für die automatische Skalierung oder für Bereitstellungen fester Größe konfiguriert werden. Diese SKU bietet keine verschiedenen Instanzgrößen. Weitere Informationen zur Leistung und zu den Preisen von v2 finden Sie unter [Automatische Skalierung von V2](application-gateway-autoscaling-zone-redundant.md) und [Preisgestaltung](understanding-pricing.md).
 
 Application Gateway Standard wird derzeit in drei Größen angeboten: **klein**, **mittel** und **groß**. Kleine Instanzen sind für Entwicklungs- und Testszenarien vorgesehen.
 

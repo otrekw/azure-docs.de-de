@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 1ddcdfd9efddd050f996e5c2b953baba242967fa
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 9d4f30c5946e07b9f71c007d6f3f61efcae28637
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640581"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296514"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Behandeln von Problemen bei der Azure Migrate-Appliance und der Ermittlung
 
@@ -151,7 +151,7 @@ Wenn Sie warten und der Zustand sich nicht ändert, wählen Sie **Aktualisieren*
 Wenn dies nicht funktioniert und Sie VMware-Server erkennen:
 
 - Stellen Sie sicher, dass das von Ihnen angegebene vCenter-Konto über ordnungsgemäß festgelegte Berechtigungen mit Zugriff auf mindestens einen virtuellen Computer verfügt.
-- Azure Migrate kann keine VMware-VMs erkennen, wenn dem vCenter-Konto auf Ebene des vCenter-VM-Ordners Zugriff gewährt wird. [Erfahren Sie mehr](set-discovery-scope.md) über das Beschränken der Ermittlung.
+- Azure Migrate kann keine VMware-VMs ermitteln, wenn dem vCenter-Konto auf Ebene des vCenter-VM-Ordners Zugriff gewährt wird. [Erfahren Sie mehr](set-discovery-scope.md) über das Beschränken der Ermittlung.
 
 ## <a name="vm-data-not-in-portal"></a>VM-Daten nicht im Portal
 

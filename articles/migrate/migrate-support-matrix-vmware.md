@@ -3,12 +3,12 @@ title: Unterstützung der VMware-Bewertung in Azure Migrate
 description: Informationen zur Unterstützung der Bewertung von VMware-VMs mit der Azure Migrate-Serverbewertung
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 9c9b1f7687d1ab1af36ac603501ecbaa7affd9b6
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 3d975b35ff5db9bf77ed33e040eb49b6b15f3cf9
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387029"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277781"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Unterstützungsmatrix für die VMware-Bewertung 
 
@@ -33,13 +33,14 @@ Wenn Sie VMware-VMs zu Azure migrieren möchten, überprüfen Sie die [Migration
 
 **VMware** | **Details**
 --- | ---
-**vCenter Server** | Computer, die ermittelt und bewertet werden sollen, müssen mit vCenter Server Version 5.5, 6.0, 6.5 oder 6.7 verwaltet werden.
+**vCenter Server** | Computer, die ermittelt und bewertet werden sollen, müssen mit vCenter Server Version 5.5, 6.0, 6.5, 6.7 oder 7.0 verwaltet werden.<br/><br/> Die Ermittlung von VMware-VMs durch Bereitstellen von ESXi-Hostdetails in der Appliance wird derzeit nicht unterstützt.
 **Berechtigungen** | Die Serverbewertung erfordert ein schreibgeschütztes vCenter Server-Konto für die Ermittlung und Bewertung.<br/><br/> Wenn Sie Anwendungen ermitteln oder Abhängigkeiten visualisieren möchten, müssen für das Konto Berechtigungen für **Virtuelle Computer** > **Gastvorgänge** aktiviert sein.
 
 ## <a name="vm-requirements"></a>VM-Anforderungen
 **VMware** | **Details**
 --- | ---
 **Virtuelle VMware-Computer** | Alle Betriebssysteme können für die Migration ausgewertet werden. 
+**Storage** | An SCSI-, IDE-und SATA-basierte Controller angefügte Datenträger werden unterstützt.
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Anforderungen für die Azure Migrate-Appliance

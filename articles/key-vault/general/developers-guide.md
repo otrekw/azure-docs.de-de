@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 2f90ba0bb732930b4cf3b1c832c6954683119f5f
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: b18ca88f9a97b09b7c5e15e78a2301bee712df5e
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585864"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394753"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Entwicklerhandbuch zu Azure-Schlüsseltresor
 
@@ -67,7 +67,7 @@ Bevor Sie mit Schlüsseln, Geheimnissen oder Zertifikaten in Ihrem Schlüsseltre
 - [Festlegen und Abrufen eines Zertifikats mit CLI](../certificates/quick-create-cli.md)
 - [Festlegen und Abrufen eines Zertifikats mit PowerShell](../certificates/quick-create-powershell.md)
 - [Festlegen und Abrufen eines Zertifikats mit dem Azure-Portal](../certificates/quick-create-portal.md)
-- [Schlüssel-Vorgänge mit REST](/rest/api/keyvault/#certificate-operations)
+- [Zertifikatvorgänge mit REST](/rest/api/keyvault/#certificate-operations)
 - [Festlegen und Abrufen eines Zertifikats mit Python](../certificates/quick-create-python.md)
 
 ## <a name="coding-with-key-vault"></a>Programmieren mit dem Schlüsseltresor
@@ -125,7 +125,7 @@ Die folgenden Artikel und Szenarien bieten aufgabenspezifische Anleitungen für 
 - [Erweiterbare Schlüsselverwaltung mit Azure Key Vault (SQL Server)](https://msdn.microsoft.com/library/dn198405.aspx) : Der SQL Server-Connector für Azure Key Vault ermöglicht SQL Server und SQL-in-a-VM die Nutzung des Diensts Azure Key Vault als EKM-Anbieter (Extensible Key Management), um die Verschlüsselungsschlüssel für Anwendungslinks zu schützen – transparente Datenverschlüsselung, Verschlüsseln von Sicherungen und Verschlüsselung auf Spaltenebene.
 - [Bereitstellen von Zertifikaten für VMs aus Key Vault](https://blogs.technet.microsoft.com/kv/2015/07/14/deploy-certificates-to-vms-from-customer-managed-key-vault/) : Eine in einer VM in Azure ausgeführte Cloudanwendung benötigt ein Zertifikat. Wie wird dieses Zertifikat derzeit für eine solche VM bereitgestellt?
 - [Deploying Azure Web App Certificate through Key Vault]( https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/) (Bereitstellen von Azure-Web-App-Zertifikaten über Key Vault) enthält schrittweise Anleitungen zum Bereitstellen von Zertifikaten, die im Schlüsseltresor gespeichert sind, im Rahmen des [App Service Certificate](https://azure.microsoft.com/blog/internals-of-app-service-certificate/)-Angebots.
-- [Erteilen von Berechtigungen für viele Anwendungen für den Zugriff auf einen Schlüsseltresor](group-permissions-for-apps.md): Die Key Vault-Zugriffssteuerungsrichtlinie unterstützt bis zu 1024 Einträge. Sie können aber eine Azure Active Directory-Sicherheitsgruppe erstellen. Fügen Sie dieser Sicherheitsgruppe alle zugeordneten Dienstprinzipale hinzu, und gewähren Sie dieser Sicherheitsgruppe dann Zugriff auf Key Vault.
+- Weisen Sie ein Zugriffsrichtlinie zu ([CLI](assign-access-policy-cli.md) | [PowerShell](assign-access-policy-powershell.md) | [Portal](assign-access-policy-portal.md)). Key Vault unterstützt bis zu 1024 Zugriffsrichtlinien. Um mit Benutzern innerhalb dieses Grenzwerts zu bleiben, erstellen Sie Azure Active Directory-Sicherheitsgruppen, fügen Sie dieser Gruppe alle zugehörigen Dienstprinzipale hinzu, und gewähren Sie der Gruppe dann Zugriff auf Key Vault.
 - Aufgabenspezifische Anleitungen zum Integrieren und Verwenden von Schlüsseltresoren mit Azure finden Sie in den [Beispielen für Azure Resource Manager-Vorlagen für Key Vault von Ryan Jones](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples).
 - [Verwenden des vorläufigen Löschens in Key Vault mit der CLI](soft-delete-cli.md) enthält Informationen zur Verwendung und zum Lebenszyklus eines Schlüsseltresors und verschiedener Schlüsseltresorobjekte, für den bzw. die vorläufiges Löschen aktiviert ist.
 - [Verwenden des vorläufigen Löschens in Key Vault mit PowerShell](soft-delete-powershell.md) enthält Informationen zur Verwendung und zum Lebenszyklus eines Schlüsseltresors und verschiedener Schlüsseltresorobjekte, für den bzw. die vorläufiges Löschen aktiviert ist.

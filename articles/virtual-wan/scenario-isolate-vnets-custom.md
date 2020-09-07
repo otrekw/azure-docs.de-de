@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 84c7b72e3ac7a5726dea38b21b14b5bd83b42340
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0a3665f1719c7a5f8ed9bd6acf518b642e06320d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831021"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400057"
 ---
 # <a name="scenario-custom-isolation-for-vnets"></a>Szenario: Benutzerdefinierte Isolation für VNETs
 
@@ -29,7 +29,7 @@ Um herauszufinden, wie viele Routingtabellen erforderlich sind, können Sie eine
 | **Rote VNets**  |   &#8594;|              |       X       |       X      |
 | **Branches**   |   &#8594;|     X        |       X       |       X      |
 
-Jede Zelle in der vorstehenden Tabelle beschreibt, ob eine Virtual WAN-Verbindung (die Seite „From“ des Flows, die Zeilenheader in der Tabelle) ein Zielpräfix (die Seite „To“ des Flows, die kursiv gesetzten Spaltenheader in der Tabelle) für einen bestimmten Datenverkehrsfluss lernt.
+Jede Zelle in der vorstehenden Tabelle beschreibt, ob eine Virtual WAN-Verbindung (die Seite „From“ des Flows, die Zeilenheader in der Tabelle) ein Zielpräfix (die Seite „To“ des Flows, die kursiv formatierten Spaltenheader in der Tabelle) für einen bestimmten Datenverkehrsfluss lernt. Dabei bedeutet ein „X“, dass die Konnektivität durch eine Virtual WAN-Verbindung bereitgestellt wird.
 
 Die Anzahl von verschiedenen Zeilenmustern entspricht der Anzahl von Routingtabellen, die in diesem Szenario benötigt werden. In diesem Fall werden drei Routingtabellen verwendet, wobei die für die virtuellen Netzwerke **RT_BLUE** und **RT_RED** genannt werden und die für die Zweigstellen **Standard**. Beachten Sie, dass die Zweigstellen immer der Routingtabelle „Standard“ zugeordnet sein müssen.
 

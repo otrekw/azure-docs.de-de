@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 45d2ec6cf4b2a54b899036d932bc310caede3c29
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 739325f66594667c6973df356e2bcf26a3eb056d
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223855"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300271"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Konfigurieren von Anmeldeinformationen für die Azure App Service-Bereitstellung
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) unterstützt zwei Arten von Anmeldeinformationen für [lokale Git-Bereitstellungen](deploy-local-git.md) und [FTP/S-Bereitstellungen](deploy-ftp.md). Diese Anmeldeinformationen sind nicht identisch mit den Anmeldeinformationen Ihres Azure-Abonnements.
@@ -73,6 +73,36 @@ So rufen Sie die Anmeldeinformationen auf App-Ebene ab
 2. Wählen Sie **App-Anmeldeinformationen** aus und dann den Link **Kopieren**, um den Benutzernamen oder das Kennwort zu kopieren.
 
 Um die Anmeldeinformationen auf App-Ebene zurückzusetzen, wählen Sie im selben Dialogfeld **Anmeldeinformationen zurücksetzen** aus.
+
+## <a name="disable-basic-authentication"></a>Deaktivieren der Standardauthentifizierung
+
+Einige Organisationen müssen Sicherheitsanforderungen erfüllen und möchten daher den Zugriff über FTP oder WebDeploy deaktivieren. Auf diese Weise können die Mitglieder der Organisation nur auf Ihre App Services über APIs zugreifen, die von Azure Active Directory (Azure AD) gesteuert werden.
+
+### <a name="ftp"></a>FTP
+
+Um den FTP-Zugriff auf die Website zu deaktivieren, führen Sie den folgenden CLI-Befehl aus. Ersetzen Sie die Platzhalter durch die Ressourcengruppe und den Websitenamen. 
+
+```bash
+az resource update --resource-group <resource-group> --name ftp --namespace Microsoft.Web --resource-type basicPublishingCredentialsPolicies --parent sites/<site-name> --set properties.allow=false
+```
+
+Um zu bestätigen, dass der FTP-Zugriff blockiert ist, können Sie versuchen, sich mit einem FTP-Client wie FileZilla zu authentifizieren. Zum Abrufen der Veröffentlichungsanmeldeinformationen navigieren Sie zum Übersichtsblatt Ihrer Website, und klicken Sie auf „Veröffentlichungsprofil herunterladen“. Verwenden Sie den FTP-Hostnamen, den Benutzernamen und das Kennwort für die Datei, um sich zu authentifizieren, und Sie erhalten eine 401-Fehlerantwort, die angibt, dass Sie nicht autorisiert sind.
+
+### <a name="webdeploy-and-scm"></a>WebDeploy und SCM
+
+Führen Sie den folgenden CLI-Befehl aus, um Standardauthentifizierungszugriff auf den WebDeploy-Port und die SCM-Website zu deaktivieren. Ersetzen Sie die Platzhalter durch die Ressourcengruppe und den Websitenamen. 
+
+```bash
+az resource update --resource-group <resource-group> --name scm --namespace Microsoft.Web --resource-type basicPublishingCredentialsPolicies --parent sites/<site-name> --set properties.allow=false
+```
+
+Um zu bestätigen, dass die Anmeldeinformationen für das Veröffentlichungsprofil für WebDeploy blockiert werden, versuchen Sie, eine [Web-App mit Visual Studio 2019 zu veröffentlichen](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019).
+
+### <a name="disable-access-to-the-api"></a>Deaktivieren des Zugriffs auf die API
+
+Die API im vorherigen Abschnitt basiert auf rollenbasierter Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure. Das bedeutet, dass Sie eine [benutzerdefinierte Rolle erstellen](https://docs.microsoft.com/azure/role-based-access-control/custom-roles#steps-to-create-a-custom-role) und der Rolle Benutzer mit niedrigeren Berechtigungen zuweisen können, sodass diese keine Standardauthentifizierung für beliebige Websites aktivieren können. Um die benutzerdefinierte Rolle zu konfigurieren, [befolgen Sie diese Anweisungen](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#create-a-custom-rbac-role).
+
+Sie können auch [Azure Monitor](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#audit-with-azure-monitor) verwenden, um alle erfolgreichen Authentifizierungsanforderungen zu überwachen, sowie [Azure Policy](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#enforce-compliance-with-azure-policy), um diese Konfiguration für alle Standorte in Ihrem Abonnement zu erzwingen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

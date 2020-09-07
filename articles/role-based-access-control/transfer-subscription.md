@@ -8,14 +8,14 @@ ms.service: role-based-access-control
 ms.devlang: na
 ms.topic: how-to
 ms.workload: identity
-ms.date: 07/01/2020
+ms.date: 08/31/2020
 ms.author: rolyon
-ms.openlocfilehash: 664687d096a3a9c6ce9a6c7de0025604e046b0a1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ab004c11b46428c5fad28177b0d94edc04b95654
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029976"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400543"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>Übertragen eines Azure-Abonnements in ein anderes Azure AD-Verzeichnis (Vorschau)
 
@@ -28,18 +28,21 @@ Organisationen verfügen möglicherweise über mehrere Azure-Abonnements. Jedes 
 
 In diesem Artikel werden die grundlegenden Schritte beschrieben, die Sie befolgen können, um ein Abonnement in ein anderes Azure AD-Verzeichnis zu übertragen und einige der Ressourcen nach der Übertragung erneut zu erstellen.
 
+> [!NOTE]
+> Für Azure CSP-Abonnements (Cloud Service Provider, Cloud-Dienstanbieter) wird das Ändern des Azure AD-Verzeichnisses für das Abonnement nicht unterstützt.
+
 ## <a name="overview"></a>Übersicht
 
 Das Übertragen eines Azure-Abonnements in ein anderes Azure AD-Verzeichnis ist ein komplexer Vorgang, der sorgfältig geplant und ausgeführt werden muss. Viele Azure-Dienste erfordern Sicherheitsprinzipale (Identitäten), um normal zu funktionieren oder andere Azure-Ressourcen zu verwalten. Dieser Artikel versucht, die meisten der Azure-Dienste abzudecken, die stark von Sicherheitsprinzipien abhängig sind, ist aber nicht umfassend.
 
 > [!IMPORTANT]
-> Das Übertragen eines Abonnements ist mit Ausfallzeiten verbunden, um den Vorgang abzuschließen.
+> Das Übertragen eines Abonnements ist in einigen Szenarien mit Ausfallzeiten verbunden, damit der Vorgang abgeschlossen werden kann. Sorgfältige Planung ist erforderlich, um zu ermitteln, ob für die Übertragung Ausfallzeiten erforderlich sind.
 
 Die folgende Abbildung zeigt die grundlegenden Schritte, die Sie befolgen müssen, wenn Sie ein Abonnement in ein anderes Verzeichnis übertragen.
 
 1. Vorbereiten der Übertragung
 
-1. Übertragen des Abrechnungsbesitzes eines Azure-Abonnements an ein anderes Konto
+1. Übertragen das Azure-Abonnements in ein anderes Verzeichnis
 
 1. Erneutes Erstellen von Ressourcen im Zielverzeichnis (z. B. Rollenzuweisungen, benutzerdefinierte Rollen und verwaltete Identitäten)
 
@@ -70,10 +73,10 @@ Mehrere Azure-Ressourcen weisen eine Abhängigkeit von einem Abonnement oder ein
 | Benutzerdefinierte Rollen | Ja | Ja | [Auflisten benutzerdefinierter Rollen](#save-custom-roles) | Alle benutzerdefinierten Rollen werden dauerhaft gelöscht. Die benutzerdefinierten Rollen und Rollenzuweisungen müssen erneut erstellt werden. |
 | Vom System zugewiesene verwaltete Identitäten | Ja | Ja | [Auflisten verwalteter Identitäten](#list-role-assignments-for-managed-identities) | Sie müssen die verwalteten Identitäten deaktivieren und erneut aktivieren. Sie müssen die Rollenzuweisungen erneut erstellen. |
 | Vom Benutzer zugewiesene verwaltete Identitäten | Ja | Ja | [Auflisten verwalteter Identitäten](#list-role-assignments-for-managed-identities) | Sie müssen die verwalteten Identitäten löschen, erneut erstellen und an die entsprechende Ressource anfügen. Sie müssen die Rollenzuweisungen erneut erstellen. |
-| Azure-Schlüsseltresor | Ja | Ja | [Auflisten von Key Vault-Zugriffsrichtlinien](#list-other-known-resources) | Sie müssen die Mandanten-ID aktualisieren, die den Schlüsseltresoren zugeordnet ist. Sie müssen Zugriffsrichtlinien entfernen und neue Zugriffsrichtlinien hinzufügen. |
-| Azure SQL-Datenbanken mit Azure AD-Authentifizierung | Ja | Nein | [Überprüfen von Azure SQL-Datenbanken mit Azure AD Authentifizierung](#list-other-known-resources) |  |  |
+| Azure-Schlüsseltresor | Ja | Ja | [Auflisten von Key Vault-Zugriffsrichtlinien](#list-key-vaults) | Sie müssen die Mandanten-ID aktualisieren, die den Schlüsseltresoren zugeordnet ist. Sie müssen Zugriffsrichtlinien entfernen und neue Zugriffsrichtlinien hinzufügen. |
+| Azure SQL-Datenbanken mit aktivierter Azure AD-Authentifizierungsintegration | Ja | Nein | [Überprüfen von Azure SQL-Datenbanken mit Azure AD Authentifizierung](#list-azure-sql-databases-with-azure-ad-authentication) |  |  |
 | Azure Storage und Azure Data Lake Storage Gen2 | Ja | Ja |  | ACLs müssen erneut erstellt werden. |
-| Azure Data Lake Storage Gen1 | Ja |  |  | ACLs müssen erneut erstellt werden. |
+| Azure Data Lake Storage Gen1 | Ja | Ja |  | ACLs müssen erneut erstellt werden. |
 | Azure Files | Ja | Ja |  | ACLs müssen erneut erstellt werden. |
 | Azure-Dateisynchronisierung | Ja | Ja |  |  |
 | Azure Managed Disks | Ja | – |  |  |
@@ -81,7 +84,8 @@ Mehrere Azure-Ressourcen weisen eine Abhängigkeit von einem Abonnement oder ein
 | Azure Active Directory Domain Services | Ja | Nein |  |  |
 | App-Registrierungen | Ja | Ja |  |  |
 
-Wenn Sie die Verschlüsselung ruhender Daten für eine Ressource verwenden (z. B. ein Speicherkonto oder eine SQL-Datenbank), die von einem Schlüsseltresor abhängig ist, der sich NICHT im selben Abonnement befindet, das übertragen wird, kann dies zu einem nicht wiederherstellbaren Szenario führen. In dieser Situation sollten Sie Maßnahmen ergreifen, um einen anderen Schlüsseltresor zu verwenden oder kundenseitig verwaltete Schlüssel vorübergehend zu deaktivieren, um dieses nicht wiederherstellbare Szenario zu vermeiden.
+> [!WARNING]
+> Wenn Sie die Verschlüsselung ruhender Daten für eine Ressource verwenden (z. B. ein Speicherkonto oder eine SQL-Datenbank), die von einem Schlüsseltresor abhängig ist, der sich **nicht** im selben Abonnement befindet, das übertragen wird, kann dies zu einem nicht wiederherstellbaren Szenario führen. In dieser Situation sollten Sie Maßnahmen ergreifen, um einen anderen Schlüsseltresor zu verwenden oder kundenseitig verwaltete Schlüssel vorübergehend zu deaktivieren, um dieses nicht wiederherstellbare Szenario zu vermeiden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -218,9 +222,9 @@ Verwaltete Identitäten werden nicht aktualisiert, wenn ein Abonnement in ein an
 Wenn Sie einen Schlüsseltresor erstellen, wird er automatisch an die standardmäßige Azure Active Directory-Mandanten-ID für das Abonnement gebunden, in dem er erstellt wurde. Außerdem werden auch alle Zugriffsrichtlinieneinträge an diese Mandanten-ID gebunden. Weitere Informationen finden Sie unter [Verschieben einer Azure Key Vault-Instanz in ein anderes Abonnement](../key-vault/general/move-subscription.md).
 
 > [!WARNING]
-> Wenn Sie die Verschlüsselung ruhender Daten für eine Ressource verwenden (z. B. ein Speicherkonto oder eine SQL-Datenbank), die von einem Schlüsseltresor abhängig ist, der sich NICHT im selben Abonnement befindet, das übertragen wird, kann dies zu einem nicht wiederherstellbaren Szenario führen. In dieser Situation sollten Sie Maßnahmen ergreifen, um einen anderen Schlüsseltresor zu verwenden oder kundenseitig verwaltete Schlüssel vorübergehend zu deaktivieren, um dieses nicht wiederherstellbare Szenario zu vermeiden.
+> Wenn Sie die Verschlüsselung ruhender Daten für eine Ressource verwenden (z. B. ein Speicherkonto oder eine SQL-Datenbank), die von einem Schlüsseltresor abhängig ist, der sich **nicht** im selben Abonnement befindet, das übertragen wird, kann dies zu einem nicht wiederherstellbaren Szenario führen. In dieser Situation sollten Sie Maßnahmen ergreifen, um einen anderen Schlüsseltresor zu verwenden oder kundenseitig verwaltete Schlüssel vorübergehend zu deaktivieren, um dieses nicht wiederherstellbare Szenario zu vermeiden.
 
-- Wenn Sie über einen Schlüsseltresor verfügen, verwenden Sie [az keyvault show](https://docs.microsoft.com/cli/azure/keyvault#az-keyvault-show), um die Zugriffsrichtlinien aufzulisten. Weitere Informationen finden Sie unter [Bereitstellen von Key Vault-Authentifizierung mit einer Zugriffssteuerungsrichtlinie](../key-vault/key-vault-group-permissions-for-apps.md).
+- Wenn Sie über einen Schlüsseltresor verfügen, verwenden Sie [az keyvault show](https://docs.microsoft.com/cli/azure/keyvault#az-keyvault-show), um die Zugriffsrichtlinien aufzulisten. Weitere Informationen finden Sie unter [Zuweisen einer Key Vault-Zugriffsrichtlinie](../key-vault/general/assign-access-policy-cli.md).
 
     ```azurecli
     az keyvault show --name MyKeyVault
@@ -228,7 +232,7 @@ Wenn Sie einen Schlüsseltresor erstellen, wird er automatisch an die standardm�
 
 ### <a name="list-azure-sql-databases-with-azure-ad-authentication"></a>Auflisten von Azure SQL-Datenbanken mit Azure AD-Authentifizierung
 
-- Verwenden Sie [az sql server ad-admin list](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) und die Erweiterung [az graph](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph), um festzustellen, ob Sie Azure SQL-Datenbanken mit Azure AD-Authentifizierung verwenden. Weitere Informationen finden Sie unter [Konfigurieren und Verwalten von Azure Active Directory-Authentifizierung mit SQL](../sql-database/sql-database-aad-authentication-configure.md).
+- Verwenden Sie [az sql server ad-admin list](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) und die Erweiterung [az graph](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph), um festzustellen, ob Sie Azure SQL-Datenbanken mit aktivierter Azure AD-Authentifizierungsintegration verwenden. Weitere Informationen finden Sie unter [Konfigurieren und Verwalten von Azure Active Directory-Authentifizierung mit SQL](../azure-sql/database/authentication-aad-configure.md).
 
     ```azurecli
     az sql server ad-admin list --ids $(az graph query -q 'resources | where type == "microsoft.sql/servers" | project id' -o tsv | cut -f1)
@@ -258,16 +262,21 @@ Wenn Sie einen Schlüsseltresor erstellen, wird er automatisch an die standardm�
     --subscriptions $subscriptionId --output table
     ```
 
-## <a name="step-2-transfer-billing-ownership"></a>Schritt 2: Übertragen des Abrechnungsbesitzes
+## <a name="step-2-transfer-the-subscription"></a>Schritt 2: Übertragen des Abonnements
 
-In diesem Schritt übertragen Sie den Abrechnungsbesitz des Abonnements aus dem Quellverzeichnis an das Zielverzeichnis.
+In diesem Schritt übertragen Sie das Abonnement aus dem Quellverzeichnis in das Zielverzeichnis. Die Schritte unterscheiden sich abhängig davon, ob Sie auch den Abrechnungsbesitz übertragen möchten.
 
 > [!WARNING]
-> Wenn Sie den Abrechnungsbesitz des Abonnements übertragen, werden alle Rollenzuweisungen im Quellverzeichnis **dauerhaft** gelöscht und können nicht wiederhergestellt werden. Sie können den Vorgang nicht mehr rückgängig machen, nachdem Sie den Abrechnungsbesitz des Abonnements übertragen haben. Stellen Sie sicher, dass Sie die vorherigen Schritte ausgeführt haben, bevor Sie diesen Schritt ausführen.
+> Wenn Sie das Abonnement übertragen, werden alle Rollenzuweisungen im Quellverzeichnis **dauerhaft** gelöscht und können nicht wiederhergestellt werden. Sie können den Vorgang nicht mehr rückgängig machen, nachdem Sie das Abonnement übertragen haben. Stellen Sie sicher, dass Sie die vorherigen Schritte ausgeführt haben, bevor Sie diesen Schritt ausführen.
 
-1. Führen Sie die Schritte unter [Übertragen des Abrechnungsbesitzes eines Azure-Abonnements an ein anderes Konto](../cost-management-billing/manage/billing-subscription-transfer.md) aus. Wenn Sie das Abonnement in ein anderes Azure AD Verzeichnis übertragen möchten, müssen Sie das Kontrollkästchen **Abonnement Azure AD-Mandant** aktivieren.
+1. Ermitteln Sie, ob Sie auch den Abrechnungsbesitz in ein anderes Konto übertragen möchten.
 
-1. Nachdem Sie die Übertragung des Besitzes abgeschlossen haben, kehren Sie zu diesem Artikel zurück, um die Ressourcen im Zielverzeichnis erneut zu erstellen.
+1. Übertragen Sie das Abonnement in ein anderes Verzeichnis.
+
+    - Wenn Sie den aktuellen Abrechnungsbesitz beibehalten möchten, befolgen Sie die Schritte unter [Zuordnen oder Hinzufügen eines Azure-Abonnements zu Ihrem Azure Active Directory-Mandanten](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
+    - Wenn Sie auch den Abrechnungsbesitz übertragen möchten, führen Sie die Schritte unter [Übertragen des Abrechnungsbesitzes eines Azure-Abonnements an ein anderes Konto](../cost-management-billing/manage/billing-subscription-transfer.md) aus. Wenn Sie das Abonnement in ein anderes Verzeichnis übertragen möchten, müssen Sie das Kontrollkästchen **Abonnement Azure AD-Mandant** aktivieren.
+
+1. Nachdem Sie die Übertragung des Abonnements abgeschlossen haben, kehren Sie zu diesem Artikel zurück, um die Ressourcen im Zielverzeichnis erneut zu erstellen.
 
 ## <a name="step-3-re-create-resources"></a>Schritt 3: Erneutes Erstellen der Ressourcen
 

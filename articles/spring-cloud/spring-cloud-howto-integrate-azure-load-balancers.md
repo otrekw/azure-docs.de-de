@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 04/20/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 3a7ed148c4bc8d58b2dcbc344656137a403c62eb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4315427598d004459862bcf12959e22e83c84d5d
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037541"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299725"
 ---
 # <a name="integrate-azure-spring-cloud-with-azure-load-balance-solutions"></a>Integrieren von Azure Spring Cloud in Azure-Lastenausgleichslösungen
 
@@ -26,7 +26,7 @@ Azure bietet bereits verschiedene Lösungen für den Lastenausgleich. Es gibt dr
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Azure Spring Cloud: [Erstellen eines Azure Spring Cloud-Diensts](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-portal)
+* Azure Spring Cloud: [Erstellen eines Azure Spring Cloud-Diensts](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart)
 * Azure Traffic Manager: [Erstellen einer Traffic Manager-Instanz](https://docs.microsoft.com/azure/traffic-manager/quickstart-create-traffic-manager-profile/)
 * Azure App Gateway: [Erstellen einer Application Gateway-Instanz](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
 * Azure Front Door: [Erstellen einer Front Door-Instanz](https://docs.microsoft.com/azure/frontdoor/quickstart-create-front-door)

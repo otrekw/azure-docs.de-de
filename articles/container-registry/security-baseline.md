@@ -6,19 +6,19 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 0004b7689b6ede2200e3fe4cb06bba2bbc168d6d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 3fcbc386c60611493912fdfb17226490549cdc53
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259398"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89396810"
 ---
 # <a name="azure-security-baseline-for-azure-container-registry"></a>Azure-Sicherheitsbaseline für Azure Container Registry
 
 Die Azure-Sicherheitsbaseline für Azure Container Registry enthält Empfehlungen, mit deren Hilfe Sie den Sicherheitsstatus Ihrer Bereitstellung verbessern können.
 
-Die Baseline für diesen Dienst wird aus [Azure Security Benchmark-Version 1.0](../security/benchmarks/overview.md) abgeleitet, die Empfehlungen dazu enthält, wie Sie Ihre Cloudlösungen in Azure mithilfe unserer bewährten Methoden schützen können.
+Die Baseline für diesen Dienst wird von [Azure Security Benchmark-Version 1.0](../security/benchmarks/overview.md) abgeleitet, die Empfehlungen dazu enthält, wie Sie Ihre Cloudlösungen in Azure mithilfe unserer bewährten Methoden schützen können.
 
 Weitere Informationen finden Sie unter [Übersicht über Azure-Sicherheitsbaselines](../security/benchmarks/security-baselines-overview.md).
 
@@ -135,7 +135,7 @@ Zulassen des Zugriffs nach Diensttag: https://docs.microsoft.com/azure/container
 
 **Leitfaden**: Definieren und implementieren Sie mit Azure Policy Standardsicherheitskonfigurationen für Netzwerkressourcen, die Ihren Azure-Containerregistrierungen zugeordnet sind. Verwenden Sie Azure Policy-Aliase in den Namespaces „Microsoft.ContainerRegistry“ und „Microsoft.Network“, um benutzerdefinierte Richtlinien zum Überwachen oder Erzwingen der Netzwerkkonfiguration Ihrer Azure-Containerregistrierungen zu erstellen. 
 
-Sie können Azure Blueprints verwenden, um umfangreiche Azure-Bereitstellungen zu vereinfachen, indem wichtige Umgebungsartefakte wie Azure Resource Manager-Vorlagen, RBAC-Steuerelemente und Richtlinien in einer einzigen Blaupausendefinition verpackt werden. Sie können die Blaupause einfach auf neue Abonnements anwenden und die Steuerung und Verwaltung durch die Versionsverwaltung optimieren.
+Sie können Azure Blueprints verwenden, um umfangreiche Azure-Bereitstellungen zu vereinfachen, indem wichtige Umgebungsartefakte wie Azure Resource Manager-Vorlagen, Azure RBAC-Steuerelemente und Richtlinien in einer einzigen Blaupausendefinition verpackt werden. Sie können die Blaupause einfach auf neue Abonnements anwenden und die Steuerung und Verwaltung durch die Versionsverwaltung optimieren.
 
 Überwachen der Konformität von Azure-Containerregistrierungen mithilfe von Azure Policy: https://docs.microsoft.com/azure/container-registry/container-registry-azure-policy
 
@@ -148,7 +148,7 @@ Erstellen einer Azure-Blaupause: https://docs.microsoft.com/azure/governance/blu
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10: Dokumentieren von Datenverkehrskonfigurationsregeln
 
-**Leitfaden**: Der Kunde kann auch Azure Blueprints verwenden, um umfangreiche Azure-Bereitstellungen zu vereinfachen, indem wichtige Umgebungsartefakte wie Azure Resource Manager-Vorlagen, RBAC-Steuerelemente und Richtlinien in einer einzigen Blaupausendefinition verpackt werden. Sie können die Blaupause einfach auf neue Abonnements anwenden und die Steuerung und Verwaltung durch die Versionsverwaltung optimieren.
+**Leitfaden**: Der Kunde kann auch Azure Blueprints verwenden, um umfangreiche Azure-Bereitstellungen zu vereinfachen, indem wichtige Umgebungsartefakte wie Azure Resource Manager-Vorlagen, Azure RBAC-Steuerelemente und Richtlinien in einer einzigen Blaupausendefinition verpackt werden. Sie können die Blaupause einfach auf neue Abonnements anwenden und die Steuerung und Verwaltung durch die Versionsverwaltung optimieren.
 
 Erstellen einer Azure-Blaupause: https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
@@ -556,9 +556,9 @@ Grundlegendes zum Schutz von Kundendaten in Azure: https://docs.microsoft.com/az
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Verwenden von Azure RBAC zum Steuern des Zugriffs auf Ressourcen
 
-**Leitfaden**: Verwenden Sie Azure Active Directory-RBAC (Azure AD), um den Zugriff auf Daten und Ressourcen in einer Azure-Containerregistrierung zu steuern. 
+**Leitfaden**: Verwenden Sie rollenbasierte Azure-Zugriffssteuerung (Azure RBAC), um den Zugriff auf Daten und Ressourcen in einer Azure-Containerregistrierung zu steuern. 
 
-Konfigurieren von RBAC in Azure: https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
+Konfigurieren von Azure RBAC: https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
 
 Rollen und Berechtigungen in Azure Container Registry: https://docs.microsoft.com/azure/container-registry/container-registry-roles
 
@@ -970,9 +970,11 @@ Umsetzen von Empfehlungen in Azure Security Center: https://docs.microsoft.com/a
 
 Integration mit verwalteten Azure-Identitäten: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-Erstellen einer Key Vault-Instanz: https://docs.microsoft.com/azure/key-vault/quick-create-portal
+Erstellen einer Key Vault-Instanz: https://docs.microsoft.com/azure/key-vault/general/quick-create-portal
 
-Bereitstellen der Key Vault-Authentifizierung mit einer verwalteten Identität: https://docs.microsoft.com/azure/key-vault/managed-identity
+Authentifizieren bei Key Vault: https://docs.microsoft.com/azure/key-vault/general/authentication
+
+Zuweisen einer Key Vault-Zugriffsrichtlinie: https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
 Verwenden einer von Azure verwalteten Identität mit Azure Container Registry Tasks: https://docs.microsoft.com/azure/container-registry/container-registry-tasks-authentication-managed-identity
 

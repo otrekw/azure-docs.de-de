@@ -3,12 +3,12 @@ title: Verwenden von Azure DevTest Labs für virtuelle Computer und PaaS-Testumg
 description: Hier erfahren Sie, wie Sie Azure DevTest Labs für virtuelle Computer und PaaS-Testumgebungen verwenden.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 9207c070c13c5e276a6ab95e3bcf1bb8671dc382
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 978071aa160098612a5effebfb30d5d58b777df7
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87272894"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299829"
 ---
 # <a name="use-azure-devtest-labs-for-vm-and-paas-test-environments"></a>Verwenden von Azure DevTest Labs für virtuelle Computer und PaaS-Testumgebungen
 
@@ -46,7 +46,7 @@ Dieser Artikel enthält Informationen zu verschiedenen Azure DevTest Labs-Featur
    
    | Aufgabe | Lerninhalt |
    | --- | --- |
-   | [Konfigurieren von Azure Marketplace-Images](devtest-lab-configure-marketplace-images.md) |Erfahren Sie, wie Sie Azure Marketplace-Images der Positivliste hinzufügen, sodass nur Images zur Auswahl stehen, die Sie für die Tester verwenden möchten.|
+   | [Konfigurieren von Azure Marketplace-Images](devtest-lab-configure-marketplace-images.md) |Erfahren Sie, wie Sie Azure Marketplace-Images zulassen. Dabei werden nur die Images zur Auswahl zur Verfügung gestellt, die Sie für die Tester freigeben möchten.|
    | [Erstellen eines benutzerdefinierten Images](devtest-lab-create-template.md) |Erstellen Sie ein benutzerdefiniertes Image, indem Sie die benötigte Software vorinstallieren, sodass Tester mithilfe des benutzerdefinierten Images schnell einen virtuellen Computer erstellen können.|
    | [Erfahren Sie mehr über Imagefactorys.](./devtest-lab-faq.md#blog-post) |Sehen Sie sich ein Video an, in dem beschrieben wird, wie Sie eine Imagefactory einrichten und verwenden.|
 
