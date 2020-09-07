@@ -8,19 +8,19 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: 5f558aaa367d156a8a4fa8633f113c6480236f5b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6f5479ad31f45a92b0e4cd03f07bdd9e7930f543
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038613"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277288"
 ---
 # <a name="monitor-the-security-of-your-containers"></a>Überwachen der Sicherheit Ihrer Container
 
 Auf dieser Seite wird erläutert, wie Sie die Sicherheitsfunktionen für Container verwenden, die im Konzeptartikel [Containersicherheit](container-security.md) beschrieben werden.
 
 
-## <a name="scanning-your-arm-based-container-registries-for-vulnerabilities"></a>Überprüfen von ARM-basierten Containerregistrierungen auf Sicherheitsrisiken 
+## <a name="scan-your-arm-based-container-registries-for-vulnerabilities"></a>Überprüfen von ARM-basierten Containerregistrierungen auf Sicherheitsrisiken 
 
 1. So aktivieren Sie die Überprüfung auf Sicherheitsrisiken für Ihre Azure Container Registry-Images:
 
@@ -86,7 +86,7 @@ Auf dieser Seite wird erläutert, wie Sie die Sicherheitsfunktionen für Contain
     1. Wenn Sie sicher sind, dass das aktualisierte Image per Push übertragen und überprüft wurde und nicht mehr in der Empfehlung angezeigt wird, löschen Sie das „alte“, anfällige Image aus der Registrierung.
 
 
-## <a name="hardening-your-containers-docker-hosts"></a>Härten der Docker-Hosts Ihrer Container
+## <a name="harden-your-containers-docker-hosts"></a>Härten der Docker-Hosts Ihrer Container
 
 Security Center überwacht die Konfiguration Ihrer Docker-Hosts kontinuierlich und generiert Sicherheitsempfehlungen gemäß Branchenstandards.
 

@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fdae02ca9d3c434a77eb972bfd4b955161bd72c4
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 142c6b4315eb1862dd116647f4396835c7286591
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935550"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378354"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Beheben von häufigen Fehler und Warnungen bei Suchindexern in Azure Cognitive Search
 
@@ -349,3 +349,7 @@ Um diese Warnung zu umgehen, ermitteln Sie die Textcodierung für dieses Blob, u
 ## <a name="warning-cosmos-db-collection-x-has-a-lazy-indexing-policy-some-data-may-be-lost"></a>Warnung: Cosmos DB Sammlung „X“ weist eine Indizierungsrichtlinie vom Typ „Verzögert“ auf. Unter Umständen gehen einige Daten verloren.
 
 Sammlungen mit Indizierungsrichtlinien vom Typ [Verzögert](/azure/cosmos-db/index-policy#indexing-mode) können nicht konsistent abgefragt werden, was dazu führt, dass Ihr Indexer Daten auslässt. Um diese Warnung zu umgehen, ändern Sie die Indizierungsrichtlinie in „Konsistent“.
+
+## <a name="warning-the-document-contains-very-long-words-longer-than-64-characters-these-words-may-result-in-truncated-andor-unreliable-model-predictions"></a>Warnung: Das Dokument enthält sehr lange Wörter (länger als 64 Zeichen). Diese Wörter können zu abgeschnittenen und/oder unzuverlässigen Modellvorhersagen führen.
+
+Diese Warnung wird vom Textanalysedienst weitergeleitet.  In einigen Fällen kann diese Warnung problemlos ignoriert werden, z. B. wenn Ihr Dokument eine lange URL enthält (bei der es sich wahrscheinlich nicht um einen Schlüsselausdruck oder eine steuernde Stimmungsanalyse usw. handelt).  Beachten Sie, dass ein Wort, das länger als 64 Zeichen ist, auf 64 Zeichen gekürzt wird, was die Modellvorhersagen beeinträchtigen kann.  

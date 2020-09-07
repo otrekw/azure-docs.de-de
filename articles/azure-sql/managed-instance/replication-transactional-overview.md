@@ -1,7 +1,7 @@
 ---
 title: Transaktionsreplikation
 titleSuffix: Azure SQL Managed Instance
-description: Erfahren Sie mehr über die Verwendung der SQL Server-Transaktionsreplikation mit Azure SQL Managed Instance.
+description: Erfahren Sie mehr über die Verwendung der SQL Server-Transaktionsreplikation mit Azure SQL Managed Instance (Vorschau).
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: data-movement
@@ -12,14 +12,14 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 04/20/2020
-ms.openlocfilehash: ec1dfa3edea5364151c543889d974944a1a1cd5a
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 95fc877636fe1d3dac466dc32fc49cee56f35185
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920124"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290513"
 ---
-# <a name="transactional-replication-with-azure-sql-managed-instance"></a>Transaktionsreplikation mit Azure SQL Managed Instance
+# <a name="transactional-replication-with-azure-sql-managed-instance-preview"></a>Transaktionsreplikation mit Azure SQL Managed Instance (Vorschau)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Transaktionsreplikation ist ein Feature von Azure SQL Managed Instance und SQL Server, das Ihnen die Replikation von Daten aus einer Tabelle in Azure SQL Managed Instance oder einer SQL Server-Instanz in Tabellen ermöglicht, die in Remotedatenbanken abgelegt sind. Mit diesem Feature können Sie mehrere Tabellen in unterschiedlichen Datenbanken synchronisieren. 

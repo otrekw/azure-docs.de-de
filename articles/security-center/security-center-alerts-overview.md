@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: memildin
-ms.openlocfilehash: 25b5569c123a4c7376aecd01b8e36f68b0a8e9b5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bd52cb9ba10cbbc7823cf631cea146cdccdad4e1
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519606"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278138"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Sicherheitswarnungen in Azure Security Center
 
@@ -23,7 +23,7 @@ Für die vielen verschiedenen Ressourcentypen stehen in Azure Security Center un
 
 Sicherheitswarnungen werden durch erweiterte Erkennungen ausgelöst und sind nur im Standard-Tarif von Azure Security Center verfügbar. Eine kostenlose Testversion ist verfügbar. Über die Seite **Preise und Einstellungen** können Sie ein Upgrade ausführen. Weitere Informationen zu Security Center-Preisen finden Sie [hier](https://azure.microsoft.com/pricing/details/security-center/).
 
-## <a name="responding-to-todays-threats"></a>Reagieren auf heutige Bedrohungen <a name="respond-threats"> </a>
+## <a name="respond-to-todays-threats"></a>Reagieren auf heutige Bedrohungen <a name="respond-threats"> </a>
 
 In den letzten 20 Jahren hat sich die Bedrohungslandschaft stark verändert. In der Vergangenheit mussten sich Unternehmen in der Regel nur Sorgen um eine mögliche Verunstaltung Ihrer Websites durch einzelne Angreifer machen, die häufig nur ihre Fähigkeiten austesten wollten. Die Angreifer von heute sind dagegen viel besser vorbereitet und ausgerüstet. Sie verfolgen häufig bestimmte finanzielle oder strategische Ziele. Außerdem stehen ihnen mehr Ressourcen zur Verfügung, da sie von Staaten oder der organisierten Kriminalität finanziert werden.
 

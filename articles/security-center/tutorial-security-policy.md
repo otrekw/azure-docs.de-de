@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 52488eb43377978d7f936ba0aa452cc872f8d899
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 94a0c0af5071397ee4deb859f8f58f2ed1c73a77
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519353"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277662"
 ---
 # <a name="working-with-security-policies"></a>Arbeiten mit Sicherheitsrichtlinien
 
@@ -40,7 +40,7 @@ Security Center bietet die folgenden Optionen für die Arbeit mit Sicherheitsric
 * **Hinzufügen von Richtlinien für die Einhaltung gesetzlicher Bestimmungen:** Das Security Center-Dashboard für die Einhaltung gesetzlicher Bestimmungen zeigt den Status aller Bewertungen in Ihrer Umgebung im Zusammenhang mit einem bestimmten Standard oder einer Verordnung (z. B. Azure CIS, NIST SP 800-53 R4, SWIFT CSP CSCF-v2020). Weitere Informationen finden Sie unter [Verbessern der Einhaltung gesetzlicher Vorschriften](security-center-compliance-dashboard.md).
 
 
-## <a name="managing-your-security-policies"></a>Verwalten Ihrer Sicherheitsrichtlinien
+## <a name="manage-your-security-policies"></a>Verwalten der Sicherheitsrichtlinien
 
 Zeigen Sie Ihre Sicherheitsrichtlinien in Security Center wie folgt an:
 
@@ -54,7 +54,7 @@ Zeigen Sie Ihre Sicherheitsrichtlinien in Security Center wie folgt an:
 
 1. Die Seite „Sicherheitsrichtlinie“ für dieses Abonnement bzw. diese Verwaltungsgruppe wird angezeigt. Sie enthält die verfügbaren und die zugewiesenen Richtlinien.
 
-   ![Bildschirm mit Richtlinien](./media/tutorial-security-policy/security-policy-page.png)
+   ![Richtlinienseite](./media/tutorial-security-policy/security-policy-page.png)
 
     > [!NOTE]
     > Wenn neben Ihrer Standardrichtlinie die Bezeichnung „Verwaltungsgruppe geerbt“ steht, bedeutet dies, dass die Richtlinie einer Verwaltungsgruppe zugewiesen und vom angezeigten Abonnement geerbt wurde.
@@ -111,11 +111,11 @@ Weitere Informationen zu Empfehlungen finden Sie unter [Verwalten von Sicherheit
 
 1. Wählen Sie **Effektive Richtlinie anzeigen** aus.
 
-   ![Richtlinie deaktivieren](./media/tutorial-security-policy/view-effective-policy.png)
+   ![Richtlinie anzeigen](./media/tutorial-security-policy/view-effective-policy.png)
 
 1. Wählen Sie die zugewiesene Richtlinie aus.
 
-   ![Richtlinie deaktivieren](./media/tutorial-security-policy/security-policy.png)
+   ![Richtlinie auswählen](./media/tutorial-security-policy/security-policy.png)
 
 1. Suchen Sie im Abschnitt **PARAMETER** die Richtlinie, die die zu deaktivierende Empfehlung aufruft, und wählen Sie in der Dropdownliste die Option **Deaktiviert** aus.
 

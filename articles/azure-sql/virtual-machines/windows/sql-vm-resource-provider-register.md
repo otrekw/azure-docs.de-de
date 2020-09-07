@@ -13,13 +13,13 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6c52275735a6558a625e2118761d7ba98509dbe1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 11e8a2fd709b40c68b90e5ed139f18997e4cb29e
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497068"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89396963"
 ---
 # <a name="register-a-sql-server-vm-in-azure-with-the-sql-vm-resource-provider-rp"></a>Registrieren von SQL Server-VMs in Azure mit dem SQL-VM-Ressourcenanbieter (Resource Provider, RP)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -353,7 +353,7 @@ az sql vm delete
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Um die Registrierung Ihrer SQL Server-VM beim Ressourcenanbieter mithilfe der Azure CLI aufzuheben, verwenden Sie den Befehl [New-AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm). Dadurch wird die SQL Server-VM-*Ressource* entfernt, aber der virtuelle Computer nicht gelöscht. 
+Um die Registrierung Ihrer SQL Server-VM beim Ressourcenanbieter mit PowerShell aufzuheben, verwenden Sie den Befehl [Remove-AzSqlVM](/powershell/module/az.sqlvirtualmachine/remove-azsqlvm). Dadurch wird die SQL Server-VM-*Ressource* entfernt, aber der virtuelle Computer nicht gelöscht. 
 
 ```powershell-interactive
 Remove-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name>
@@ -398,9 +398,9 @@ Der SQL-Standardverwaltungsmodus bei der Registrierung beim SQL-VM-Ressourcenanb
 
 **Wird bei der Registrierung beim SQL-VM-Ressourcenanbieter ein Agent auf meiner VM installiert?**
 
-Nein. Bei der Registrierung beim SQL-VM-Ressourcenanbieter wird lediglich eine neue Metadatenressource erstellt. Es wird kein Agent auf der VM installiert.
+Ja, bei der Registrierung beim SQL-VM-Ressourcenanbieter wird ein Agent auf der VM installiert.
 
-Die SQL Server-IaaS-Erweiterung ist nur erforderlich, um vollständige Verwaltbarkeit zu aktivieren. Bei einem Upgrade des Verwaltungsmodus von „Lightweight“ auf „Vollständig“ wird die SQL Server-IaaS-Erweiterung installiert, und SQL Server wird neu gestartet.
+Die IaaS-Erweiterung von SQL Server basiert bei der Abfrage der Metadaten für SQL Server auf dem Agent. Es wird nur dann kein Agent installiert, wenn der SQL VM-Ressourcenanbieter im NoAgent-Modus registriert ist.
 
 **Wird SQL Server durch die Registrierung beim SQL-VM-Ressourcenanbieter auf meiner VM neu gestartet?**
 
@@ -466,6 +466,6 @@ Die beiden Dienstnamen lauten:
 Weitere Informationen finden Sie in den folgenden Artikeln: 
 
 * [Übersicht über SQL Server auf einem virtuellen Windows-Computer](sql-server-on-azure-vm-iaas-what-is-overview.md)
-* [Häufig gestellte Fragen zu SQL Server auf virtuellen Windows-Computern](frequently-asked-questions-faq.md)
+* [Häufig gestellte Fragen zu SQL Server auf virtuellen Windows-Computern](frequently-asked-questions-faq.md)  
 * [Preisinformationen für SQL Server auf virtuellen Windows-Computern](pricing-guidance.md)
 * [SQL Server auf Windows-VMs – Versionshinweise](../../database/doc-changes-updates-release-notes.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: 9594e1ed14b017591ea2c4ddda59ba61feb81b0c
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 596fc44cb3d449b73b681d17db879746ce3051d3
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272279"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277747"
 ---
 # <a name="enhanced-secure-score-in-azure-security-center"></a>Erweiterte Sicherheitsbewertung in Azure Security Center
 
@@ -45,17 +45,17 @@ Die Seite „Secure Score“ von Security Center umfasst Folgendes:
 > Frühere Versionen von Security Center verteilten Punkte auf Empfehlungsebene: Wenn Sie eine Empfehlung für eine einzelne Ressource umgesetzt hatten, wurde Ihre Sicherheitsbewertung verbessert. Nun wird die Bewertung nur verbessert, wenn Sie *alle* Empfehlungen für eine einzelne Ressource innerhalb einer Sicherheitskontrolle umsetzen. Das bedeutet, dass sich Bewertung nur verbessert, wenn die Sicherheit einer Ressource verbessert wird.
 
 
-## <a name="accessing-your-secure-score"></a>Zugriff auf Ihre Sicherheitsbewertung
+## <a name="access-your-secure-score"></a>Zugriff auf Ihre Sicherheitsbewertung
 
 Ihre Sicherheitsbewertung insgesamt sowie Ihre Bewertung pro Abonnement können Sie im Azure-Portal finden oder programmatisch mit der Azure Security Center-REST-API abrufen.
 
-### <a name="getting-your-secure-score-from-the-portal"></a>Abrufen ihrer Sicherheitsbewertung aus dem Portal
+### <a name="get-your-secure-score-from-the-portal"></a>Abrufen ihrer Sicherheitsbewertung aus dem Portal
 
 Security Center zeigt Ihre Bewertung im Portal hervorgehoben an. Sie ist auf der Übersichtsseite als Erstes zu sehen. Wenn Sie sich zur dedizierten Seite von Secure Score durchklicken, wird die Bewertung nach Abonnement aufgeschlüsselt angezeigt. Klicken Sie auf ein einzelnes Abonnement, um die detaillierte Liste mit priorisierten Empfehlungen und die möglichen Auswirkungen anzuzeigen, die eine Umsetzung dieser Empfehlungen auf die Bewertung des Abonnements hat.
 
 ![Sicherheitsbewertung insgesamt, wie im Portal angezeigt](media/secure-score-security-controls/single-secure-score-via-ui.png)
 
-### <a name="getting-your-secure-score-from-the-rest-api"></a>Abrufen ihrer Sicherheitsbewertung über die REST-API
+### <a name="get-your-secure-score-from-the-rest-api"></a>Abrufen ihrer Sicherheitsbewertung über die REST-API
 
 Sie können auf Ihre Bewertung über die [Sicherheitsbewertungs-API](https://docs.microsoft.com/rest/api/securitycenter/securescores/) (derzeit in der Vorschau) zugreifen. Die API-Methoden bieten die Flexibilität, die Daten abzufragen und im Laufe der Zeit einen eigenen Berichtsmechanismus für Ihre Sicherheitsbewertungen zu erstellen. Beispielsweise können Sie die API **Sicherheitsbewertungen** verwenden, um die Bewertung für ein bestimmtes Abonnement zu erhalten. Darüber hinaus können Sie die API **Sicherheitsbewertungs-Steuerelemente** verwenden, um die Sicherheitskontrollen und die aktuelle Bewertung Ihrer Abonnements aufzulisten.
 
@@ -91,7 +91,7 @@ Der maximal mögliche Wert für das Steuerelement „Systemupdates anwenden“ i
 |**Sicherheitsbewertung**<br>Mehrere Abonnements|<br>Die aktuellen Bewertungen für alle Ressourcen in allen Abonnements werden addiert. Der anschließende Berechnungsweg entspricht dem für ein einzelnes Abonnement.<br><br>Beim Anzeigen mehrerer Abonnements werden von Secure Score alle Ressourcen in allen aktivierten Richtlinien ausgewertet und nach deren kombinierter Auswirkung auf die Höchstbewertung der einzelnen Sicherheitskontrollen gruppiert.<br>![Sicherheitsbewertung für mehrere Abonnements, wenn alle Sicherheitskontrollen aktiviert sind](media/secure-score-security-controls/secure-score-example-multiple-subs.png)<br>Die kombinierte Bewertung ist **kein** Durchschnittswert, sondern vielmehr die Auswertung des Status aller Ressourcen in allen Abonnements.<br>Wenn Sie die Seite mit den Empfehlungen aufrufen und die potenziell verfügbaren Punkte addieren, werden Sie feststellen, dass es sich hierbei um die Differenz zwischen der aktuellen Bewertung (24) und der verfügbaren Höchstbewertung (60) handelt.|
 ||||
 
-## <a name="improving-your-secure-score"></a>Verbessern Ihrer Sicherheitsbewertung
+## <a name="improve-your-secure-score"></a>Verbessern Ihrer Sicherheitsbewertung
 
 Zum Verbessern Ihrer Sicherheitsbewertung setzen Sie die Sicherheitsempfehlungen in Ihrer Empfehlungsliste um. Sie können jede Empfehlung manuell für die einzelnen Ressourcen umsetzen oder die Option **Schnelle Problembehebung** verwenden (falls verfügbar), um eine Empfehlung für eine Gruppe von Ressourcen schnell anzuwenden. Weitere Informationen finden Sie unter [Umsetzen von Empfehlungen](security-center-remediate-recommendations.md).
 

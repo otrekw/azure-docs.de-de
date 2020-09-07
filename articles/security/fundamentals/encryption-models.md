@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 105d867b4eafe37ca6555e3f6b54dc521a7264fe
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 51d7cb32ef2d1d7750a0bb53cfa3ccc111bd1302
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88226856"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89143732"
 ---
 # <a name="data-encryption-models"></a>Datenverschlüsselungsmodelle
 
@@ -159,9 +159,9 @@ Die Azure-Dienste, die die einzelnen Verschlüsselungsmodelle unterstützen:
 | Textübersetzung                  | Ja                | Ja                | -                  |
 | Power BI                         | Ja                | RSA 2048 Bit, Vorschauversion | -                  |
 | **Analyse**                    |                    |                    |                    |
-| Azure Stream Analytics           | Ja                | N/V\*            | -                  |
-| Event Hubs                       | Ja                | Ja, alle RSA-Längen. | -                  |
-| Functions                        | Ja                | Ja, alle RSA-Längen. | -                  |
+| Azure Stream Analytics           | Ja                | N/V\*              | -                  |
+| Event Hubs                       | Ja                | Ja                | -                  |
+| Functions                        | Ja                | Ja                | -                  |
 | Azure Analysis Services          | Ja                | -                  | -                  |
 | Azure Data Catalog               | Ja                | -                  | -                  |
 | Azure HDInsight                  | Ja                | All                | -                  |
@@ -175,9 +175,9 @@ Die Azure-Dienste, die die einzelnen Verschlüsselungsmodelle unterstützen:
 | Container Instances              | Ja                | Ja                | -                  |
 | Containerregistrierung               | Ja                | Ja                | -                  |
 | **Compute**                      |                    |                    |                    |
-| Virtual Machines                 | Ja                | Ja, RSA 2048 Bit  | -                  |
-| VM-Skalierungsgruppe        | Ja                | Ja, RSA 2048 Bit  | -                  |
-| SAP HANA                         | Ja                | Ja, RSA 2048 Bit  | -                  |
+| Virtual Machines                 | Ja                | Ja                | -                  |
+| VM-Skalierungsgruppe        | Ja                | Ja                | -                  |
+| SAP HANA                         | Ja                | Ja                | -                  |
 | App Service                      | Ja                | Ja\*\*            | -                  |
 | Automation                       | Ja                | Ja\*\*            | -                  |
 | Azure-Funktionen                  | Ja                | Ja\*\*            | -                  |
@@ -187,13 +187,13 @@ Die Azure-Dienste, die die einzelnen Verschlüsselungsmodelle unterstützen:
 | Service Bus                      | Ja                | Ja                | -                  |
 | Site Recovery                    | Ja                | Ja                | -                  |
 | **Datenbanken**                    |                    |                    |                    |
-| SQL Server auf virtuellen Computern   | Ja                | Ja, RSA 2048 Bit  | Ja                |
-| Azure SQL-Datenbank               | Ja                | Ja, RSA 2048 Bit  | Ja                |
+| SQL Server auf virtuellen Computern   | Ja                | Ja                | Ja                |
+| Azure SQL-Datenbank               | Ja                | Ja, RSA 3072 Bit  | Ja                |
 | Azure SQL-Datenbank for MariaDB   | Ja                | -                  | -                  |
 | Azure SQL-Datenbank for MySQL     | Ja                | Ja                | -                  |
 | Azure SQL-Datenbank for PostgreSQL | Ja               | Ja                | -                  |
-| Azure Synapse Analytics          | Ja                | Ja, RSA 2048 Bit  | -                  |
-| SQL Server Stretch Database      | Ja                | Ja, RSA 2048 Bit  | Ja                |
+| Azure Synapse Analytics          | Ja                | Ja, RSA 3072 Bit  | -                  |
+| SQL Server Stretch Database      | Ja                | Ja, RSA 3072 Bit  | Ja                |
 | Table Storage                    | Ja                | Ja                | Ja                |
 | Azure Cosmos DB                  | Ja                | Ja                | -                  |
 | Azure Databricks                 | Ja                | Ja                | -                  |
@@ -203,7 +203,7 @@ Die Azure-Dienste, die die einzelnen Verschlüsselungsmodelle unterstützen:
 | Azure Repos                      | Ja                | -                  | Ja                |
 | **Identität**                     |                    |                    |                    |
 | Azure Active Directory           | Ja                | -                  | -                  |
-| Azure Active Directory Domain Services | Ja          | Ja, RSA 2048 Bit  | -                  |
+| Azure Active Directory Domain Services | Ja          | Ja                | -                  |
 | **Integration**                  |                    |                    |                    |
 | Service Bus                      | Ja                | Ja                | Ja                |
 | Event Grid                       | Ja                | -                  | -                  |
@@ -220,20 +220,20 @@ Die Azure-Dienste, die die einzelnen Verschlüsselungsmodelle unterstützen:
 | Azure Security Center für IoT    | Ja                | Ja                | -                  |
 | Azure Sentinel                   | Ja                | Ja                | -                  |
 | **Storage**                      |                    |                    |                    |
-| Blob Storage                     | Ja                | Ja, RSA 2048 Bit  | Ja                |
-| Blob Storage Premium             | Ja                | Ja, RSA 2048 Bit  | Ja                |
+| Blob Storage                     | Ja                | Ja                | Ja                |
+| Blob Storage Premium             | Ja                | Ja                | Ja                |
 | Disk Storage                     | Ja                | Ja                | -                  |
 | Disk Storage Ultra               | Ja                | Ja                | -                  |
 | Speicher für verwaltete Datenträger             | Ja                | Ja                | -                  |
-| File Storage                     | Ja                | Ja, RSA 2048 Bit  | -                  |
-| Storage Premium für Dateien             | Ja                | Ja, RSA 2048 Bit  | -                  |
-| Dateisynchronisierung                        | Ja                | Ja, RSA 2048 Bit  | -                  |
+| File Storage                     | Ja                | Ja                | -                  |
+| Storage Premium für Dateien             | Ja                | Ja                | -                  |
+| Dateisynchronisierung                        | Ja                | Ja                | -                  |
 | Queue Storage                    | Ja                | Ja                | Ja                |
 | Avere vFXT                       | Ja                | -                  | -                  |
 | Azure Cache for Redis            | Ja                | N/V\*              | -                  |
 | Azure NetApp Files               | Ja                | Ja                | -                  |
-| Archivspeicher                  | Ja                | Ja, RSA 2048 Bit  | -                  |
-| StorSimple                       | Ja                | Ja, RSA 2048 Bit  | Ja                |
+| Archivspeicher                  | Ja                | Ja                | -                  |
+| StorSimple                       | Ja                | Ja                | Ja                |
 | Azure Backup                     | Ja                | Ja                | Ja                |
 | Data Box                         | Ja                | -                  | Ja                |
 | Data Box Edge                    | Ja                | Ja                | -                  |

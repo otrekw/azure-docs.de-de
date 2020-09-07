@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7cd6e61b8614e4c8ff5d54232972865c81cbb3ff
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 1fa464eca69f50fba7fa125212b85e0f7f63bcc9
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88928869"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294780"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-cognitive-search-service"></a>Erstellen und Verwalten von API-Schlüsseln für einen Dienst für die kognitive Azure-Suche
 
@@ -21,7 +21,7 @@ Für alle Anforderungen an einen Suchdienst wird ein schreibgeschützter API-Sch
 
 Schlüssel werden während der Dienstbereitstellung mit dem Suchdienst erstellt. Sie können Schlüsselwerte im [Azure-Portal](https://portal.azure.com) anzeigen und abrufen.
 
-![Portalseite > „Einstellungen“ > Abschnitt „Schlüssel“](media/search-manage/azure-search-view-keys.png)
+![Portalseite > Einstellungen abrufen > Abschnitt „Schlüssel“](media/search-manage/azure-search-view-keys.png)
 
 ## <a name="what-is-an-api-key"></a>Was ist ein API-Schlüssel?
 
@@ -47,7 +47,7 @@ Zugriffsschlüssel stehen über das Portal oder über die [Verwaltungs-REST-API]
 2. Listen Sie die [Suchdienste](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) für Ihr Abonnement auf.
 3. Wählen Sie den Dienst aus, und klicken Sie auf der Seite „Übersicht“ auf **Einstellungen** >**Schlüssel**, um Administrator- und Abfrageschlüssel anzuzeigen.
 
-   ![Portalseite > „Einstellungen“ > Abschnitt „Schlüssel“](media/search-security-overview/settings-keys.png)
+   ![Portalseite > Einstellungen anzeigen > Abschnitt „Schlüssel“](media/search-security-overview/settings-keys.png)
 
 ## <a name="create-query-keys"></a>Erstellen von Abfrageschlüsseln
 

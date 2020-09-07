@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/29/2019
 ms.author: memildin
-ms.openlocfilehash: bb45e1d1ee17a6daf16bd688982f79fda986bde5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d336c58971b16875d9861f85dde9529de8c734e2
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73664406"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278083"
 ---
 # <a name="compare-baselines-using-file-integrity-monitoring-fim"></a>Vergleichen der Baselines mithilfe der Überwachung der Dateiintegrität (FIM)
 
@@ -41,7 +41,7 @@ Die Standardeinstellungen der FIM-Registrierungsstruktur bieten eine bequeme Mö
 >[!NOTE]
 > Rekursive Überprüfungen gelten nur für die empfohlenen Sicherheitsstrukturen und nicht für benutzerdefinierte Registrierungspfade.  
 
-## <a name="adding-a-custom-registry-check"></a>Hinzufügen einer benutzerdefinierten Registrierungsüberprüfung
+## <a name="add-a-custom-registry-check"></a>Hinzufügen einer benutzerdefinierten Registrierungsüberprüfung
 
 FIM-Baselines beginnen damit, die Merkmale eines als funktionierend bekannten Zustands für das Betriebssystem und die unterstützende Anwendung zu identifizieren.  In diesem Beispiel liegt der Schwerpunkt auf der Kennwortrichtlinienkonfigurationen für Windows Server 2008 und höher.
 
@@ -73,14 +73,14 @@ FIM-Baselines beginnen damit, die Merkmale eines als funktionierend bekannten Zu
 
       ![Aktivieren von FIM für eine Registrierung](./media/security-center-file-integrity-monitoring-baselines/baselines-add-registry.png)
 
-## <a name="tracking-changes-to-windows-files"></a>Nachverfolgen von Änderungen an Windows-Dateien
+## <a name="track-changes-to-windows-files"></a>Nachverfolgen von Änderungen an Windows-Dateien
 
 1. Geben Sie im Fenster **Windows-Datei für Änderungsnachverfolgung hinzufügen** in das Feld **Pfad eingeben** den Ordner ein, der die Dateien enthält, die Sie nachverfolgen möchten. Im Beispiel in der folgenden Abbildung befindet sich die **Contoso Web-App** im Laufwerk D:\ innerhalb der Ordnerstruktur **ContosWebApp**.  
 1. Erstellen Sie einen benutzerdefinierten Windows-Dateieintrag, indem Sie einen Namen der Einstellungsklasse angeben, die Rekursion aktivieren und den obersten Ordner mit einem Platzhaltersuffix (*) angeben.
 
     ![Aktivieren von FIM für eine Datei](./media/security-center-file-integrity-monitoring-baselines/baselines-add-file.png)
 
-## <a name="retrieving-change-data"></a>Abrufen von Änderungsdaten
+## <a name="retrieve-change-data"></a>Abrufen von Änderungsdaten
 
 Die Daten der Dateiintegritätsüberwachung befinden sich im Azure Log Analytics/ConfigurationChange-Tabellensatz.  
 

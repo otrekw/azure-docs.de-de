@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, carlrab, sstein
-ms.date: 08/18/2020
-ms.openlocfilehash: 1833f0343aa3e41119e215e7ce022f122d13489b
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.date: 08/31/2020
+ms.openlocfilehash: 0d5390beff6c3e0045c6b887f0262a54a737a851
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589502"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181764"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Vom Benutzer initiiertes manuelles Failover für SQL Managed Instance
 
@@ -36,6 +36,15 @@ In folgenden Fällen sollten Sie allerdings ein [manuelles Failover](../database
 > Bevor Sie eine Anwendung in der Produktion bereitstellen, sollten Sie sicherstellen, dass sie resilient gegenüber Failovervorgängen ist. So reduzieren Sie das Risiko, dass die Anwendung in der Produktion ausfällt, und verbessern die Verfügbarkeit Ihrer Anwendung für Ihre Kunden.
 
 ## <a name="initiate-manual-failover-on-sql-managed-instance"></a>Initiieren eines manuellen Failovers in SQL Managed Instance
+
+### <a name="rbac-permissions-required"></a>Erforderliche RBAC-Berechtigungen
+
+Benutzer, die einen Failover initiieren, müssen über eine der folgenden RBAC-Rollen verfügen:
+
+- Rolle „Besitzer des Abonnements“ oder
+- Rolle „Mitwirkender“ der verwalteten Instanz oder
+- Benutzerdefinierte Rolle mit der folgenden Berechtigung:
+  - `Microsoft.Sql/managedInstances/failover/action`
 
 ### <a name="using-powershell"></a>PowerShell
 

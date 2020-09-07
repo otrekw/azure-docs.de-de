@@ -1,21 +1,21 @@
 ---
-title: Integrieren von Windows Admin Center mit Azure Security Center | Microsoft-Dokumentation
+title: Schützen von Windows Admin Center-Servern mit Azure Security Center
 description: In diesem Artikel wird erläutert, wie Sie Azure Security Center mit Windows Admin Center integrieren.
 services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 08/31/2020
 ms.author: memildin
-ms.openlocfilehash: 9eae210818cf623078090503deefc6295dab7164
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 90c1132091f543b84fc764522dfa95672f2e2aef
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076364"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277492"
 ---
-# <a name="integrate-azure-security-center-with-windows-admin-center"></a>Integrieren von Azure Security Center mit Windows Admin Center
+# <a name="protect-windows-admin-center-resources-with-security-center"></a>Schützen von Windows Admin Center-Ressourcen mit Azure Security Center
 
 Windows Admin Center ist ein Verwaltungstool für Ihre Windows-Server. Es stellt den zentralen Ort dar, von dem aus Systemadministratoren auf die meisten der am häufigsten verwendeten Verwaltungstools zugreifen. Sie können direkt in Windows Admin Center das Onboarding in Azure Security Center für Ihre lokalen Server durchführen. Anschließend können Sie eine Zusammenfassung Ihrer Sicherheitsempfehlungen und -warnungen direkt auf der Benutzeroberfläche von Windows Admin Center anzeigen.
 
@@ -31,7 +31,7 @@ Wenn Sie in Windows Admin Center das Onboarding eines Servers in Azure Security 
 
 Durch die Kombination dieser beiden Tools wird Security Center zum zentralen Anzeigebereich für alle Ihre Sicherheitsinformationen – und zwar unabhängig von der Ressource: lokale in Windows Admin Center verwaltete Server, Ihre VMs und alle sonstigen PaaS-Workloads.
 
-## <a name="onboarding-windows-admin-center-managed-servers-into-security-center"></a>Onboarding von in Windows Admin Center verwalteten Servern in Security Center
+## <a name="onboard-windows-admin-center-managed-servers-into-security-center"></a>Onboarding von in Windows Admin Center verwalteten Servern in Azure Security Center
 
 1. Wählen Sie in Windows Admin Center einen Ihrer Server und dann im Bereich **Tools** die Azure Security Center-Erweiterung aus:
 
@@ -54,13 +54,13 @@ Durch die Kombination dieser beiden Tools wird Security Center zum zentralen Anz
     > Es kann nach dem Onboarding einige Zeit dauern, bis Empfehlungen angezeigt werden. Tatsächlich kann es abhängig von Ihrer Serveraktivität auch vorkommen, dass Sie *überhaupt keine* Warnungen erhalten. Wenn Sie Testwarnungen generieren möchten, um die ordnungsgemäße Funktion Ihrer Warnungen zu testen, befolgen Sie die Anweisungen im [Verfahren zur Warnungsüberprüfung](security-center-alert-validation.md).
 
 
-## <a name="viewing-security-recommendations-and-alerts-in-windows-admin-center"></a>Anzeigen von Sicherheitsempfehlungen und -warnungen in Windows Admin Center
+## <a name="view-security-recommendations-and-alerts-in-windows-admin-center"></a>Anzeigen von Sicherheitsempfehlungen und -warnungen in Windows Admin Center
 
 Nach dem Onboarding können Sie Ihre Warnungen und Empfehlungen direkt im Azure Security Center-Bereich von Windows Admin Center anzeigen. Klicken Sie auf eine Empfehlung oder Warnung, um sie im Azure-Portal anzuzeigen. Dort erhalten Sie weitere Informationen und erfahren, wie Sie die Probleme korrigieren.
 
 [![Security Center-Empfehlungen und -Warnungen in Windows Admin Center](media/windows-admin-center-integration/asc-recommendations-and-alerts-in-wac.png)](media/windows-admin-center-integration/asc-recommendations-and-alerts-in-wac.png#lightbox)
 
-## <a name="viewing-security-recommendations-and-alerts-for-windows-admin-center-managed-servers-in-security-center"></a>Anzeigen von Sicherheitsempfehlungen und -warnungen für in Windows Admin Center verwaltete Server in Security Center
+## <a name="view-security-recommendations-and-alerts-for-windows-admin-center-managed-servers-in-security-center"></a>Anzeigen von Sicherheitsempfehlungen und -warnungen für in Windows Admin Center verwaltete Server in Security Center
 In Azure Security Center:
 
 * Um Sicherheitsempfehlungen für alle Ihre Windows Admin Center-Server anzuzeigen, öffnen Sie **Compute und Apps**, und klicken Sie auf die Registerkarte **VMs und Computer**. Filtern Sie die Liste nach der Ressource „Server“, wie hier gezeigt:
