@@ -3,12 +3,12 @@ title: Microsoft Azure Recovery Services-Agent (MARS) – häufig gestellte Frag
 description: Hierin geht es um häufig gestellte Fragen zum Sichern von Dateien und Ordnern mit Azure Backup.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: e50e424f1a9f044aa1ed8e95c1bce002d134bffe
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: e3a5b6d07982c3261b457d4999025c44489c0a8d
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874621"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182512"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>Häufig gestellte Fragen – Microsoft Azure Recovery Services-Agent (MARS)
 
@@ -199,7 +199,7 @@ Wenn Sie über die gleiche Passphrase (die Sie bei der Registrierung angegeben h
 
 ### <a name="my-backup-jobs-have-been-failing-or-not-running-for-a-long-time-im-past-the-retention-period-can-i-still-restore"></a>Meine Sicherungsaufträge schlagen fehl oder werden schon lange nicht mehr ausgeführt. Der Aufbewahrungszeitraum ist überschritten. Kann ich dennoch eine Wiederherstellung ausführen?
 
-Als Sicherheitsmaßnahme bewahrt Azure Backup den letzten Wiederherstellungspunkt auf, auch wenn die Aufbewahrungsfrist überschritten ist. Sobald die Sicherungen wieder aufgenommen werden und neue Wiederherstellungspunkte verfügbar sind, wird der ältere Wiederherstellungspunkt entsprechend der festgelegten Aufbewahrung entfernt.
+Als Sicherheitsmaßnahme bewahrt Azure Backup den jüngsten Wiederherstellungspunkt auf, auch wenn die Aufbewahrungsfrist überschritten ist. Sobald die Sicherungen wieder aufgenommen werden und neue Wiederherstellungspunkte verfügbar sind, wird der ältere Wiederherstellungspunkt entsprechend der festgelegten Aufbewahrung entfernt.
 
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>Was geschieht, wenn ich einen laufenden Wiederherstellungsauftrag abbreche?
 

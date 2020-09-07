@@ -3,12 +3,12 @@ title: Wiederherstellen von SAP HANA-Datenbanken auf virtuellen Azure-Computern
 description: In diesem Artikel erfahren Sie, wie Sie SAP HANA-Datenbanken wiederherstellen, die in Azure Virtual Machines ausgeführt werden.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 41ee95fc65ed7bdf79388089e27c6d6249132bfd
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 68858db6f89221e1a3a8f0955d5e009d56e2d365
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763285"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89375311"
 ---
 # <a name="restore-sap-hana-databases-on-azure-vms"></a>Wiederherstellen von SAP HANA-Datenbanken auf virtuellen Azure-Computern
 
@@ -46,7 +46,7 @@ Beachten Sie vor dem Wiederherstellen einer Datenbank Folgendes:
 
       ![Auswählen von „SAP HANA in Azure-VM“](media/sap-hana-db-restore/sap-hana-backup.png)
 
-  1. Klicken Sie unter **DBs in VMs ermitteln** auf **Details anzeigen**.
+  1. Wählen Sie unter **DBs in VMs ermitteln** die Option **Details anzeigen** aus.
 
       ![Anzeigen der Details](media/sap-hana-db-restore/view-details.png)
 

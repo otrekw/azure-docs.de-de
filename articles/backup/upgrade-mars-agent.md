@@ -3,12 +3,12 @@ title: Aktualisieren des Microsoft Azure Recovery Services-Agents (MARS)
 description: Erfahren Sie, wie Sie den Microsoft Azure Recovery Services-Agent (MARS) aktualisieren.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 79abc877f102d83cdb3c72a571f2203984eb54e4
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: a1ee26db962781643e9599069282647658301bac
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890202"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181475"
 ---
 # <a name="upgrade-the-microsoft-azure-recovery-services-mars-agent"></a>Aktualisieren des Microsoft Azure Recovery Services-Agents (MARS)
 

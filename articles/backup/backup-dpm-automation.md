@@ -3,12 +3,12 @@ title: Verwenden von PowerShell für Sicherungen von DPM-Workloads
 description: Erfahren Sie, wie Sie Azure Backup für Data Protection Manager (DPM) mithilfe von PowerShell bereitstellen und verwalten.
 ms.topic: conceptual
 ms.date: 01/23/2017
-ms.openlocfilehash: 91fd8559b1561ae83967c7fc74a2390ce2460c95
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 4f0364ef218d346149191e168540eed4827001de
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892319"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182461"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Bereitstellen und Verwalten der Sicherung in Azure für Data Protection Manager (DPM)-Server mit PowerShell
 
@@ -185,7 +185,7 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 
 ## <a name="networking"></a>Netzwerk
 
-Wenn die Verbindung des DPM-Computers mit dem Azure Backup-Dienst im Internet über einen Proxyserver hergestellt wird, müssen die Proxyservereinstellungen angegeben werden, damit die Sicherungen erfolgreich erstellt werden. Dazu werden die Parameter ```-ProxyServer```, ```-ProxyPort```, ```-ProxyUsername``` und ```ProxyPassword``` mit dem Cmdlet [Set-DPMCloudSubscriptionSetting](/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) verwendet. Weil es in diesem Beispiel keinen Proxyserver gibt, löschen wir explizit alle proxybezogenen Informationen.
+Wenn die Verbindung des DPM-Computers mit dem Azure Backup-Dienst im Internet über einen Proxyserver hergestellt wird, müssen die Proxyservereinstellungen angegeben werden, damit die Sicherungen erfolgreich erstellt werden. Dazu werden die Parameter ```-ProxyServer```, ```-ProxyPort```, ```-ProxyUsername``` und ```ProxyPassword``` mit dem Cmdlet [Set-DPMCloudSubscriptionSetting](/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) verwendet. Da es in diesem Beispiel keinen Proxyserver gibt, löschen wir explizit alle proxybezogenen Informationen.
 
 ```powershell
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -NoProxy
@@ -232,7 +232,7 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 
 ## <a name="protect-data-to-azure-backup"></a>Schützen von Daten auf Azure Backup
 
-In diesem Abschnitt fügen Sie DPM einen Produktionsserver hinzu, und anschließend schützen Sie die Daten im lokalen DPM-Speicher und auf Azure Backup. In den Beispielen wird das Sichern von Dateien und Ordnern veranschaulicht. Die Logik kann problemlos erweitert werden, um beliebige von DPM unterstützte Datenquellen zu sichern. Alle DPM-Sicherungen werden durch eine Schutzgruppe (Protection Group, PG) mit vier Teilen gesteuert:
+In diesem Abschnitt fügen Sie DPM einen Produktionsserver hinzu, und anschließend schützen Sie die Daten im lokalen DPM-Speicher und auf Azure Backup. In den Beispielen wird das Sichern von Dateien und Ordnern demonstriert. Die Logik kann problemlos erweitert werden, um beliebige von DPM unterstützte Datenquellen zu sichern. Alle DPM-Sicherungen werden durch eine Schutzgruppe (Protection Group, PG) mit vier Teilen gesteuert:
 
 1. **Gruppenmitglieder** ist eine Liste der zu schützenden Objekte (in DPM auch als *Datenquellen* bezeichnet), die in der gleichen Schutzgruppe geschützt werden sollen. Sie können aufgrund der unterschiedlichen Sicherungsanforderungen z. B. Produktions-VMs in einer Schutzgruppe und SQL-Serverdatenbanken in einer anderen Schutzgruppe schützen. Bevor Sie eine Datenquelle auf einem Produktionsserver sichern können, müssen Sie sicherstellen, dass der DPM-Agent auf dem Server installiert ist und von DPM verwaltet wird. Führen Sie die Schritte zum [Installieren des DPM-Agents](/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) und Verknüpfen des DPM-Agents mit dem entsprechenden DPM-Server aus.
 2. Die **Datenschutzmethode** gibt die Zielspeicherorte für Sicherungen an, d.h. Band, Datenträger und Cloud. In diesem Beispiel werden Daten auf dem lokalen Datenträger und in der Cloud geschützt.

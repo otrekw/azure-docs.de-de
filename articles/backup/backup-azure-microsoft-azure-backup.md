@@ -3,12 +3,12 @@ title: Sichern von Workloads mithilfe von Azure Backup Server
 description: In diesem Artikel erfahren Sie, wie Sie Ihre Umgebung für den Schutz und die Sicherung von Workloads mithilfe von Microsoft Azure Backup Server (MABS) vorbereiten.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 553073cf70e6806077a4df98e237bbbe0d2bb21a
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 79abf55fdbaae80a84618f6944870131dcd82c89
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892285"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181696"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Installieren und Durchführen eines Upgrades für Azure Backup Server
 
@@ -265,21 +265,21 @@ Im Folgenden werden die Schritte aufgeführt, wenn Sie MABS auf einen neuen Serv
   > * Sie benötigen eine Sicherung der MABS-Datenbank (DPMDB). Sie müssen die Datenbank wiederherstellen.
 
 1. Wählen Sie im Anzeigebereich die Clientcomputer aus, für die Sie den Schutz-Agent aktualisieren möchten.
-2. Fahren Sie den ursprünglichen Azure Backup-Server herunter, oder stellen Sie ihn außer Dienst.
+2. Fahren Sie den ursprünglichen Azure Backup-Server herunter, oder schalten Sie ihn offline.
 3. Setzen Sie das Computerkonto in Active Directory zurück.
-4. Installieren Sie Server 2016 auf dem neuen Computer, und vergeben Sie den gleichen Namen wie für den ursprünglichen Azure Backup-Server.
+4. Installieren Sie Server 2016 auf einem neuen Computer, und vergeben Sie den gleichen Namen wie für den ursprünglichen Azure Backup-Server.
 5. Führen Sie den Domänenbeitritt durch.
 6. Installieren Sie Azure Backup Server v3 oder höher (verschieben Sie die Datenträger für den MABS-Speicherpool vom alten Server, und führen Sie den Import durch).
 7. Stellen Sie die DPMDB aus Schritt 1 wieder her.
 8. Fügen Sie den Speicher vom ursprünglichen Sicherungsserver an den neuen Server an.
 9. Stellen Sie die DPMDB über SQL wieder her.
-10. Wechseln Sie in der Administrator-Befehlszeile auf dem neuen Server per „cd“ zum Installationsspeicherort von Microsoft Azure Backup und in den Ordner „bin“.
+10. Führen Sie die Eingabeaufforderung (CMD) als Administrator auf dem neuen Server aus. Wechseln Sie zum Microsoft Azure Backup-Installationsverzeichnis und zum Ordner „Papierkorb“.
 
-    Pfadbeispiel: C:\windows\system32>cd "c:\Programme\Microsoft Azure Backup\DPM\DPM\bin\"
+    Pfadbeispiel: `C:\windows\system32>cd "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\"`
 
-11. Zum Sichern von Azure führen Sie „DPMSYNC -SYNC“ aus.
+11. Um sich mit Azure Backup zu verbinden, führen Sie `DPMSYNC -SYNC` aus.
 
-    Wenn Sie dem DPM-Speicherpool NEUE Datenträger hinzugefügt haben, anstatt alte zu verschieben, müssen Sie Folgendes ausführen: „DPMSYNC -Reallocatereplica“.
+    Wenn Sie dem DPM-Speicherpool **neue** Datenträger hinzugefügt haben, anstatt alte zu verschieben, führen Sie `DPMSYNC -Reallocatereplica` aus.
 
 ## <a name="network-connectivity"></a>Netzwerkkonnektivität
 

@@ -3,12 +3,12 @@ title: Offlinesicherung unter Verwendung von Azure Data Box
 description: In diesem Artikel erfahren Sie, wie Sie Azure Data Box verwenden können, um ein Offlineseeding für eine große Menge Erstsicherungsdaten vom MARS-Agent in einen Recovery Services-Tresor auszuführen.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 6ad97ee60c3c7debea72357cf7fc8d483a3c1d46
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 5a4aeebeddcca4adcac511c7c225c8809dd29c93
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761558"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180931"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Offlinesicherung in Azure Backup unter Verwendung von Azure Data Box
 
@@ -195,7 +195,7 @@ So stellen Sie sicher, dass Sie Ihr Data Box-Gerät mithilfe des NFS-Protokolls 
 
     ![Abrufen von Data Box-Aufträgen nach Abonnement-ID](./media/offline-backup-azure-data-box/fetching-databox-jobs.png)
 
-1. Wählen Sie den Data Box-Auftrag aus, für den Sie Ihren Data Box-Datenträger entpackt, verbunden und entsperrt haben. Wählen Sie **Weiter** aus.
+1. Wählen Sie den Data Box-Auftrag aus, für den Sie Ihren Data Box-Datenträger entpackt, verbunden und entsperrt haben. Wählen Sie **Weiter** aus.
 
     ![Data Box-Aufträge auswählen](./media/offline-backup-azure-data-box/select-databox-order.png)
 

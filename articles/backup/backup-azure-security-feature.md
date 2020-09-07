@@ -4,12 +4,12 @@ description: In diesem Artikel wird erläutert, wie Sie mithilfe der Azure Backu
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/08/2017
-ms.openlocfilehash: cbd9ee0336953b65b4e2d55d294d30309ebe0de7
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 5a408dc07e83e790a63f8a252d4ed3f84bf66be4
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892455"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181679"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Sicherheitsfeatures für den Schutz von Hybridsicherungen mit Azure Backup
 
@@ -48,7 +48,7 @@ Wenn Sie einen Recovery Services-Tresor erstellen, können Sie alle Sicherheitsf
     ![Screenshot der Eigenschaften des Recovery Services-Tresors](./media/backup-azure-security-feature/security-settings-update.png)
 
     Über diesen Updatelink wird der Bereich **Sicherheitseinstellungen** geöffnet, in dem Sie eine Zusammenfassung der Features finden und diese aktivieren können.
-5. Wählen Sie aus der Dropdownliste **Have you configured Azure Multi-Factor Authentication?** (Haben Sie Azure Multi-Factor Authentication konfiguriert?), und wählen Sie einen Wert, um zu bestätigen, dass Sie [Azure Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md) aktiviert haben. Wenn Azure Multi-Factor Authentication aktiviert ist, werden Sie gebeten, sich bei der Anmeldung beim Azure-Portal über ein anderes Gerät (z. B. Mobiltelefon) zu authentifizieren.
+5. Wählen Sie aus der Dropdownliste **Haben Sie Azure Multi-Factor Authentication konfiguriert?** und dann einen Wert aus, um zu bestätigen, dass Sie [Azure Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md) aktiviert haben. Wenn Azure Multi-Factor Authentication aktiviert ist, werden Sie gebeten, sich bei der Anmeldung beim Azure-Portal über ein anderes Gerät (z. B. Mobiltelefon) zu authentifizieren.
 
    Wenn Sie wichtige Vorgänge in der Sicherung ausführen, müssen Sie eine im Azure Portal verfügbare Sicherheits-PIN eingeben. Das Aktivieren der Azure Multi-Factor Authentication sorgt so für eine zusätzliche Sicherheitsebene. Nur autorisierte Benutzer mit gültigen Azure-Anmeldeinformationen, die über ein zweites Gerät authentifiziert sind, können auf das Azure-Portal zugreifen.
 6. Klicken Sie zum Speichern der Sicherheitseinstellungen auf **Aktivieren** und dann auf **Speichern**. **Aktivieren** können Sie nur dann auswählen, wenn Sie im vorherigen Schritt einen Wert aus der Dropdownliste **Have you configured Azure Multi-Factor Authentication?** (Haben Sie Azure Multi-Factor Authentication konfiguriert?) ausgewählt haben.

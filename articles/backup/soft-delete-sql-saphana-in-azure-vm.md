@@ -3,12 +3,12 @@ title: Vorläufiges Löschen für SQL-Server auf virtuellen Azure-Computern und 
 description: Erfahren Sie, wie das vorläufige Löschen für SQL-Server auf virtuellen Azure-Computern und SAP HANA in Azure-VM-Workloads Sicherungen noch sicherer macht.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 4e001ee460d9b7106d928da32b1620fb117c6b5a
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 26525ec758b3a27d6e0e1b9754b11041bd1fa0d2
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825170"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022291"
 ---
 # <a name="soft-delete-for-sql-server-in-azure-vm-and-sap-hana-in-azure-vm-workloads"></a>Vorläufiges Löschen für SQL-Server auf virtuellen Azure-Computern und SAP HANA in Azure-VM-Workloads
 

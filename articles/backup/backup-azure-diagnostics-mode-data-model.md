@@ -3,12 +3,12 @@ title: Datenmodell „Azure Monitor-Protokolle“
 description: In diesem Artikel werden die Details des Azure Monitor Log Analytics-Datenmodells für Azure Backup-Daten vorgestellt.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 7822f88c9ea3e0cd83b7e600d63984a8a51becb1
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 1fcb4eb0c584f792132f19c8c4d66289342aa36e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890262"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020948"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics-Datenmodell für Azure Backup-Daten
 
@@ -159,8 +159,8 @@ Diese Tabelle enthält Details zu auftragsbezogenen Feldern.
 | DataTransferredInMB_s | Number |Für diesen Auftrag übertragene Daten in MB|
 | JobUniqueId_g |Text |Eindeutige ID zur Bezeichnung des Auftrags |
 | RecoveryJobDestination_s |Text | Ziel eines Wiederherstellungsauftrags, an dem die Daten wiederhergestellt werden |
-| RecoveryJobRPDateTime_s |Datetime | Datum und Uhrzeit, wann der Wiederherstellungspunkt, der wiederhergestellt wird, erstellt wurde |
-| RecoveryJobRPLocation_s |Text | Ort, an dem der Wiederherstellungspunkt, der wiederhergestellt wird, gespeichert wurde|
+| RecoveryJobRPDateTime_s |Datetime | Datum und Uhrzeit der Erstellung des Wiederherstellungspunkts, der wiederhergestellt wird |
+| RecoveryJobRPLocation_s |Text | Speicherort des Wiederherstellungspunkts, der wiederhergestellt wird|
 | SourceSystem |Text |Quellsystem der aktuellen Daten: Azure |
 | resourceId |Text |Ressourcenbezeichner der Daten, die erfasst werden. Beispiel: Ressourcen-ID des Recovery Services-Tresors|
 | SubscriptionId |Text |Abonnementbezeichner der Ressource (z.B. Recovery Services-Tresor), zu der Daten gesammelt werden |
