@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 03/11/2020
-ms.openlocfilehash: f60cb3f28c57d6df4a309a7630d078c593d75410
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 01501b99d5d7c42af98d0397cf6ff8cbca14b07b
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343760"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89485797"
 ---
 # <a name="tutorial-configure-an-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Tutorial: Konfigurieren eines Verfügbarkeitsgruppenlisteners für SQL Server auf virtuellen RHEL-Computern in Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -41,7 +41,7 @@ Abschluss von [Tutorial: Konfigurieren von Verfügbarkeitsgruppen für SQL Serv
 
 ## <a name="create-the-load-balancer-in-the-azure-portal"></a>Erstellen des Lastenausgleichs im Azure-Portal
 
-In der folgenden Anleitung werden die Schritte 1 bis 4 aus dem Abschnitt [Erstellen und Konfigurieren des Load Balancers im Azure-Portal](../windows/availability-group-load-balancer-portal-configure.md#create-and-configure-the-load-balancer-in-the-azure-portal) des Artikels [Konfigurieren einer Load Balancer-Instanz für eine Verfügbarkeitsgruppe in Azure auf Azure SQL Server-VMs](../windows/availability-group-load-balancer-portal-configure.md) beschrieben.
+In der folgenden Anleitung werden die Schritte 1 bis 4 aus dem Abschnitt [Erstellen und Konfigurieren des Load Balancers im Azure-Portal](../windows/availability-group-load-balancer-portal-configure.md#create--configure-load-balancer) des Artikels [Konfigurieren einer Load Balancer-Instanz für eine Verfügbarkeitsgruppe in Azure auf Azure SQL Server-VMs](../windows/availability-group-load-balancer-portal-configure.md) beschrieben.
 
 ### <a name="create-the-load-balancer"></a>Erstellen des Lastenausgleichs
 

@@ -11,12 +11,12 @@ ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops, devx-track-javascript
-ms.openlocfilehash: 140365abad266617443d58b7ed59f05a27009f59
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: c83a67f7d524a062485f2c68e0adb7fdd2855a84
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433062"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462172"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>Tutorial: Bereitstellen der App auf virtuellen Linux-Computern in Azure mithilfe von Azure DevOps Services und Azure Pipelines
 
@@ -84,9 +84,10 @@ Führen Sie die nachfolgend beschriebenen Schritte aus, je nachdem, welcher Runt
 
 #### <a name="java"></a>[Java](#tab/java)
 
-- Um Java Spring Boot- und Spring Cloud-basierte Apps bereitzustellen, erstellen Sie eine Linux-VM in Azure. Verwenden Sie dafür [diese](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804) Vorlage, die eine vollständig unterstützte, auf OpenJDK basierende Runtime enthält.
-- Um Java-Servlets auf einem Tomcat-Server bereitzustellen, erstellen Sie eine Linux-VM mit Java 8. Verwenden Sie dafür [diese](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804) Azure-Vorlage, und [konfigurieren Sie Tomcat 9.x als Dienst](https://tomcat.apache.org/tomcat-9.0-doc/setup.html).
-- Um eine Java EE-basierte App bereitzustellen, verwenden Sie eine Azure-Vorlage, um eine [Linux-VM mit Java und WebSphere 9.x](https://azuremarketplace.microsoft.com/marketplace/apps/midvision.websphere-application-server-nde-90) oder eine [Linux-VM mit Java und WebLogic 12.x](https://azuremarketplace.microsoft.com/marketplace/apps/oracle.20191009-arm-oraclelinux-wls-admin) oder eine [Linux-VM mit Java](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804) und WildFly/JBoss 14 zu erstellen. 
+- Um Java Spring Boot- und Spring Cloud-basierte Apps bereitzustellen, erstellen Sie eine Linux-VM in Azure. Verwenden Sie dafür [diese](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu13-ubuntu-2004) Vorlage, die eine vollständig unterstützte, auf OpenJDK basierende Runtime enthält.
+- Um Java-Servlets auf einem Tomcat-Server bereitzustellen, erstellen Sie eine Linux-VM mit Java 8. Verwenden Sie dafür [diese](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu13-ubuntu-2004) Azure-Vorlage, und [konfigurieren Sie Tomcat 9.x als Dienst](https://tomcat.apache.org/tomcat-9.0-doc/setup.html).
+- Um eine Java EE-basierte App bereitzustellen, verwenden Sie eine Azure-Vorlage, um eine [Linux-VM mit Java und WebSphere 9.x](https://azuremarketplace.microsoft.com/marketplace/apps/midvision.websphere-application-server-nde-90) oder eine [Linux-VM mit Java und WebLogic 12.x](https://azuremarketplace.microsoft.com/marketplace/apps/oracle.20191009-arm-oraclelinux-wls-admin) oder eine [Linux-VM mit Java](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu13-ubuntu-2004) und WildFly/JBoss 14 zu erstellen. 
+
 
 #### <a name="javascript"></a>[JavaScript](#tab/java-script)
 

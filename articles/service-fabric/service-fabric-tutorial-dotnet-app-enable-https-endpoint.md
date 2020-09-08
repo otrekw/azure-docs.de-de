@@ -4,12 +4,12 @@ description: In diesem Tutorial erfahren Sie, wie Sie einem ASP.NET Core-Front-E
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 6b8587982a8cbe496427960495055adbd68a07a7
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b309a13288c8ea95f453c1e80549a979e3f89921
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997284"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441526"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Tutorial: Hinzufügen eines HTTPS-Endpunkts zu einem ASP.NET Core-Front-End-Dienst mit Web-API mithilfe von Kestrel
 
@@ -238,7 +238,7 @@ In einem vorherigen Schritt haben Sie das Zertifikat in den Speicher `Cert:\Loca
 
 Um PowerShell über den Punkt **SetupEntryPoint** auszuführen, können Sie „PowerShell.exe“ in einer Batchdatei ausführen, die auf eine PowerShell-Datei verweist. Fügen Sie zunächst die Batchdatei dem Dienstprojekt hinzu.  Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **VotingWeb**, klicken Sie auf **Hinzufügen**->**Neues Element**, und fügen Sie eine neue Datei namens „Setup.bat“ hinzu.  Bearbeiten Sie die Datei *Setup.bat*, und fügen Sie den folgenden Befehl hinzu:
 
-```bat
+```cmd
 powershell.exe -ExecutionPolicy Bypass -Command ".\SetCertAccess.ps1"
 ```
 
