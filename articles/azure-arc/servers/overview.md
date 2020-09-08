@@ -1,16 +1,16 @@
 ---
 title: Übersicht über Server mit Azure Arc-Unterstützung (Vorschauversion)
-description: Hier erfahren Sie, wie Sie außerhalb von Azure gehostete Computer mithilfe von Servern mit Azure Arc-Unterstützung (Vorschauversion) wie eine Azure-Ressource verwalten.
+description: Hier erfahren Sie, wie Sie außerhalb von Azure gehostete Server mithilfe von Servern mit Azure Arc-Unterstützung (Vorschauversion) wie eine Azure-Ressource verwalten.
 keywords: Azure Automation, DSC, PowerShell, Desired State Configuration, Updateverwaltung, Änderungsnachverfolgung, Bestand, Runbooks, Python, grafisch, Hybrid
 ms.custom: references_regions
 ms.date: 08/06/2020
 ms.topic: overview
-ms.openlocfilehash: dfc4d8e046cef5af7c3eaf0d31ce2d6120dfc8f2
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: c368307df911f5143541bb5337eb76a208416909
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211314"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228086"
 ---
 # <a name="what-is-azure-arc-enabled-servers-preview"></a>Was sind Server mit Azure Arc-Unterstützung (Vorschauversion)?
 
@@ -51,4 +51,4 @@ Der Connected Machine-Agent sendet alle fünf Minuten eine reguläre Heartbeatn
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Bevor Sie Server mit Arc-Unterstützung (Vorschauversion) auf mehreren Hybridcomputern auswerten oder aktivieren, lesen Sie den Artikel [Übersicht über den Connected Machine-Agent](agent-overview.md), um die Anforderungen, technischen Details zum Agent und Bereitstellungsmethoden zu verstehen.
+Bevor Sie Server mit Arc-Unterstützung (Vorschauversion) auf mehreren Hybridcomputern auswerten oder aktivieren, lesen Sie [Übersicht über den Connected Machine-Agent](agent-overview.md), um die Anforderungen, technischen Details zum Agent und Bereitstellungsmethoden zu verstehen.

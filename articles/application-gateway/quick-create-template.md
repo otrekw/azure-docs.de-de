@@ -1,20 +1,20 @@
 ---
 title: 'Schnellstart: Weiterleiten von Webdatenverkehr mithilfe einer Resource Manager-Vorlage'
 titleSuffix: Azure Application Gateway
-description: Hier erfahren Sie, wie Sie eine Resource Manager-Vorlage zum Erstellen einer Azure Application Gateway-Instanz verwenden, mit der Webdatenverkehr an virtuelle Computer in einem Back-End-Pool weitergeleitet wird.
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie eine Resource Manager-Vorlage zum Erstellen einer Azure Application Gateway-Instanz verwenden, mit der Webdatenverkehr an virtuelle Computer in einem Back-End-Pool geleitet wird.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 05/28/2020
+ms.date: 08/27/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: ebcb51dc4de9283752d61831eb0cad801ec1ac4b
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: f492521469281615d4182294feaefffff688bd21
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705944"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961685"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---arm-template"></a>Schnellstart: Weiterleiten von Webdatenverkehr per Azure Application Gateway: ARM-Vorlage
 

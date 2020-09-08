@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 07/01/2020
-ms.openlocfilehash: c6ab5c2cae2bb966c2b040b40dbf36e56a54411b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6adbd83ddfbdb82d1054d4e74dd9492d08583ede
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496751"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89292536"
 ---
 # <a name="quickstart-create-a-demo-app-in-the-portal-azure-cognitive-search"></a>Schnellstart: Erstellen einer Demo-App im Portal (Azure Cognitive Search)
 
@@ -61,7 +61,7 @@ Der Assistent bietet ein einfaches Layout für gerenderte Suchergebnisse mit Pla
 
 1. Wählen Sie unter „Beschreibung“ ein Feld mit Details aus, auf deren Grundlage Benutzer ggf. besser entscheiden können, ob sie zu diesem speziellen Dokument navigieren möchten.
 
-   ![Datenquellenseite für Beispieldaten](media/search-create-app-portal/configure-results.png)
+   ![Konfigurieren von Ergebnissen für Beispieldaten](media/search-create-app-portal/configure-results.png)
 
 ## <a name="add-a-sidebar"></a>Hinzufügen einer Randleiste
 
@@ -111,4 +111,4 @@ Denken Sie bei Verwendung eines kostenlosen Diensts an die Beschränkung auf max
 Die Standard-App eignet sich zwar für eine erste Erkundung und kleinere Aufgaben, Sie sollten sich jedoch frühzeitig mit den APIs vertraut machen, um die Konzepte und den Workflow besser zu verstehen:
 
 > [!div class="nextstepaction"]
-> [Erstellen eines Index mit dem .NET SDK](https://docs.microsoft.com/azure/search/search-create-index-dotnet)
+> [Erstellen eines Index mit dem .NET SDK](./search-get-started-dotnet.md)

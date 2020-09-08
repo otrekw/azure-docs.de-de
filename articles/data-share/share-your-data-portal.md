@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: quickstart
 ms.date: 08/19/2020
-ms.openlocfilehash: 7dd81afb3189055c194b8a94b4bcbdf48f85d6f2
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 5ceaf949df88468b2239bd901f639ba6096b0d5f
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88658367"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269640"
 ---
 # <a name="quickstart-share-data-using-azure-data-share-in-the-azure-portal"></a>Schnellstart: Freigeben von Daten mithilfe von Azure Data Share über das Azure-Portal
 
@@ -47,7 +47,7 @@ Erstellen Sie eine Azure Data Share-Ressource in einer Azure-Ressourcengruppe.
 
 1. Wählen Sie nach Abschluss der Bereitstellung die Option **Zu Ressourcengruppe wechseln**.
 
-## <a name="create-a-data-share"></a>Erstellen einer Datenfreigabe
+## <a name="create-a-share"></a>Erstellen einer Freigabe
 
 1. Navigieren Sie zu Ihrer Seite mit der Data Share-Übersicht.
 
@@ -57,15 +57,15 @@ Erstellen Sie eine Azure Data Share-Ressource in einer Azure-Ressourcengruppe.
 
 1. Klicken Sie auf **Erstellen**.
 
-1. Geben Sie die Details für Ihre Datenfreigabe ein. Geben Sie einen Namen, die Art der Freigabe, eine Beschreibung der Freigabeinhalte und Nutzungsbedingungen (optional) an. 
+1. Geben Sie die Details für Ihre Freigabe ein. Geben Sie einen Namen, die Art der Freigabe, eine Beschreibung der Freigabeinhalte und Nutzungsbedingungen (optional) an. 
 
    ![EnterShareDetails](./media/enter-share-details.png "Eingeben der Details zur Freigabe") 
 
 1. Wählen Sie **Weiter**.
 
-1. Wählen Sie zum Hinzufügen von Datasets zu Ihrer Datenfreigabe die Option **Add Datasets** (Datasets hinzufügen). 
+1. Wählen Sie zum Hinzufügen von Datasets zu Ihrer Freigabe **Datasets hinzufügen** aus. 
 
-   ![Datasets](./media/datasets.png "Datasets")
+   ![Hinzufügen von Datasets zu Ihrer Freigabe](./media/datasets.png "Datasets")
 
 1. Wählen Sie den gewünschten Datasettyp für das Hinzufügen aus. Die angezeigte Liste der Datasettypen ist abhängig von der Art der Freigabe (Momentaufnahme oder direkt), die Sie im vorherigen Schritt ausgewählt haben. Bei der Freigabe über eine Azure SQL-Datenbank- oder Azure SQL Data Warehouse-Instanz werden Sie zur Eingabe von SQL-Anmeldeinformationen aufgefordert. Authentifizieren Sie sich unter Verwendung des Benutzers, den Sie im Rahmen der Voraussetzungen erstellt haben.
 

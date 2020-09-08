@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/18/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: eec99ae353d4e5ca1bede1afef135def96207c50
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: fab36a538cd9dfa17852c513974af062fa7a0ec2
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604699"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89304023"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Muss der Benutzer über eine Hub-and-Spoke-Anordnung mit SD-WAN/VPN-Geräten verfügen, um Azure Virtual WAN nutzen zu können?
 
@@ -249,9 +249,12 @@ Wenn eine ExpressRoute-Leitung mit einem virtuellen Hub verbunden ist, sind die 
 
 Das derzeitige Verhalten besteht darin, für VNET-zu-VNET-Konnektivität den ExpressRoute-Leitungspfad gegenüber Hub-zu-Hub vorzuziehen. In einem virtuellen WAN-Setup wird dies jedoch nicht empfohlen. Das Virtual WAN-Team arbeitet an einer Lösung, um die Bevorzugung von Hub-zu-Hub gegenüber dem ExpressRoute-Pfad zu ermöglichen. Es wird empfohlen, mehrere ExpressRoute-Leitungen (verschiedene Anbieter) mit einem Hub zu verbinden und die von Virtual WAN bereitgestellte Hub-zu-Hub-Konnektivität für den regionsübergreifenden Datenverkehr zu nutzen.
 
+### <a name="can-hubs-be-created-in-different-resource-group-in-virtual-wan"></a>Können Hubs in einer anderen Ressourcengruppe in Virtual WAN erstellt werden?
+Ja. Diese Option ist zurzeit nur über PowerShell verfügbar. Das Virtual WAN-Portal erfordert, dass sich die Hubs in derselben Ressourcengruppe wie die Virtual WAN-Ressource selbst befinden.
+
 ### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>Wird IPv6 in Virtual WAN unterstützt?
 
-IPv6 wird im Virtual WAN-Hub und seinen Gateways nicht unterstützt. Wenn Sie über ein VNET mit IPv6-Unterstützung verfügen und das VNET mit einem Virtual WAN verbinden möchten, wird dieses Szenario derzeit nicht unterstützt.
+IPv6 wird im Virtual WAN-Hub und seinen Gateways nicht unterstützt. Wenn Sie über ein VNET mit IPv4- und IPv6-Unterstützung verfügen und das VNET mit einer Virtual WAN-Instanz verbinden möchten, wird dieses Szenario derzeit nicht unterstützt. 
 
 ### <a name="what-is-the-recommended-api-version-to-be-used-by-scripts-automating-various-virtual-wan-functionalities"></a>Welche API-Version wird für die Verwendung durch Skripts empfohlen, mit denen verschiedene Virtual WAN-Funktionen automatisiert werden?
 

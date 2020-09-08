@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: be124bdde4427113d56f44f0c1fa19c600bd768e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f9277842339d7c4fa74e2e0f1febcf5916d86f4a
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496048"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180778"
 ---
 # <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>Was ist Azure Synapse Analytics (Vorschau für Arbeitsbereiche)?
 
@@ -24,7 +24,7 @@ Analysen im Unternehmensbereich stellen heutzutage immense Anforderungen an die 
 
 Solche Lösungen sind schwer zu erstellen, zu konfigurieren, zu schützen und zu pflegen, was die schnelle Extraktion hilfreicher Erkenntnisse verzögert.
 
-**Azure Synapse** ist ein integrierter Analysedienst zur schnelleren Gewinnung von Erkenntnissen in beliebigem Umfang und aus beliebigen Daten in Data Warehouses und Big Data-Analysesystemen. Er kombiniert die Vorteile der in Enterprise Data Warehousing genutzten **SQL**-Technologien mit **Spark**-Technologien aus der Big Data-Analyse sowie mit **Pipelines** zur Orchestrierung von Aktivitäten und Datenverschiebung.
+**Azure Synapse** ist ein integrierter Analysedienst zur schnelleren Gewinnung von Erkenntnissen in beliebigem Umfang und aus beliebigen Daten in Data Warehouses und Big Data-Analysesystemen. Er kombiniert die Vorteile der in Enterprise Data Warehousing genutzten **SQL**-Technologien mit **Spark**-Technologien aus der Big Data-Analyse sowie mit **Pipelines** für Datenintegration und ETL/ELT.
 
 Azure Synapse verfügt über eine webbasierte **Studio**-Benutzeroberfläche, die eine einzelne Umgebung und ein einzelnes Modell für die Verwaltung, Überwachung, Programmierung und Sicherheit bietet.
 
@@ -59,13 +59,13 @@ Azure Synapse beseitigt die herkömmlichen Technologiebarrieren bei der gemeinsa
 * SQL und Spark können zur direkten Erkundung und Analyse von gespeicherten Parquet-, CSV-, TSV- und JSON-Dateien im Data Lake verwendet werden.
 * Schnelles, skalierbares Laden und Entladen von Daten zwischen SQL- und Spark-Datenbanken
 
-### <a name="built-in-orchestration-via-pipelines"></a>Integrierte Orchestrierung über Pipelines
+### <a name="built-in-data-integration-via-pipelines"></a>Integrierte Datenintegration über Pipelines
 
-In Azure Synapse sind die gleiche Datenintegrationsengine und die gleichen Umgebungen integriert wie in Azure Data Factory, was die Erstellung umfangreicher Datenpipelines ganz ohne separate Orchestrierungsengine ermöglicht.
+In Azure Synapse sind die gleiche Datenintegrationsengine und die gleichen Umgebungen integriert wie in Azure Data Factory, was die Erstellung umfangreicher bedarfsorientierter ETL-Pipelines ermöglicht, ohne Synapse Analytics zu verlassen.
 
-* Verschieben von Daten zwischen Azure Synapse und mehr als 90 lokalen Datenquellen
-* Orchestrieren von Notebooks, Pipelines, Spark-Aufträgen, SQL-Skripts und gespeicherten Prozeduren
+* Erfassen von Daten aus über 90 Datenquellen
 * Kein Programmieraufwand für ETL dank Datenflussaktivitäten
+* Orchestrieren von Notebooks, Spark-Aufträgen, gespeicherten Prozeduren, SQL-Skripts und mehr
 
 ### <a name="unified-management-monitoring-and-security"></a>Einheitliche Verwaltung, Überwachung und Sicherheit
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/12/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: b199a50443445b983011d755c3ffacaa71131faf
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: bbb1378419c68db07be5ca14ca6834810f2fc9f5
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88893909"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055463"
 ---
 # <a name="explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Erkunden eines Azure Digital Twins-Beispielszenarios mit ADT Explorer
 
@@ -26,6 +26,10 @@ Diese Schnellstartanleitung umfasst folgende Hauptschritte:
 1. Hochladen vorgefertigter Modelle und Graphdaten zum Erstellen des Beispielszenarios
 1. Erkunden des erstellten Szenariographen
 1. Ändern des Graphen
+
+Der Beispielgraph, den Sie verwenden, stellt ein Gebäude mit zwei Etagen und zwei Räumen dar. Der Graph sieht wie folgt aus:
+
+:::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="Ansicht eines Graphen, der aus vier kreisförmigen Knoten besteht, die durch Pfeile verbunden sind. Ein mit „Floor1“ (Etage1) beschrifteter Kreis ist durch einen Pfeil mit der Beschriftung „contains“ (enthält) mit einem Kreis mit der Beschriftung „Room1“ (Raum1) verbunden, und ein mit „Floor0“ (Etage0) beschrifteter Kreis ist durch einen Pfeil mit der Beschriftung „contains“ (enthält) mit einem Kreis mit der Beschriftung „Room0“ (Raum0) verbunden. „Floor1“ und „Floor0“ sind nicht miteinander verbunden.":::
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -98,7 +102,7 @@ Klicken Sie im oberen Bereich des Fensters auf die Schaltfläche *Sign in* (Anme
 Geben Sie die relevanten Informationen ein, die Sie zuvor im Abschnitt [Voraussetzungen](#prerequisites) gesammelt haben:
 * Anwendungs-ID (Client)
 * Verzeichnis-ID (Mandant)
-* ADT-URL im Format *https://<instance host name>*
+* ADT-URL im Format *https://{Instanzhostname}*
 
 >[!NOTE]
 > Sie können jederzeit zu diesen Informationen zurückkehren und sie bearbeiten. Wählen Sie dazu das gleiche Symbol aus, um das Anmeldefeld aufzurufen. Die von Ihnen übergebenen Werte werden gespeichert.
@@ -170,7 +174,7 @@ Klicken Sie im Feld *GRAPH VIEW* (GRAPHANSICHT) auf das Symbol *Import Graph* (G
 
 :::image type="content" source="media/quickstart-adt-explorer/import-graph.png" alt-text="Feld „Graph View“ (Graphansicht) mit einem hervorgehobenen Symbol. Es zeigt einen auf eine Wolke gerichteten Pfeil." lightbox="media/quickstart-adt-explorer/import-graph.png":::
 
-Navigieren Sie in der Feldauswahl erneut zum Ordner *client/examples*, und wählen Sie die Tabellendatei _**buildingScenario.xlsx**_ aus. Diese Datei enthält eine Beschreibung des Beispielgraphen. Klicken Sie auf „OK“.
+Navigieren Sie im Dateiauswahlfeld zum Ordner *Azure_Digital_Twins_samples/AdtSampleApp/SampleClientApp*, und wählen Sie die Tabellenkalkulationsdatei _**buildingScenario.xlsx**_ aus. Diese Datei enthält eine Beschreibung des Beispielgraphen. Klicken Sie auf „OK“.
 
 Nach wenigen Sekunden wird von ADT Explorer eine Importansicht mit einer Vorschau des zu ladenden Graphen angezeigt.
 

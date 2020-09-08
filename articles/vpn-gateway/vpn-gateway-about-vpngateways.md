@@ -1,25 +1,24 @@
 ---
 title: Informationen zu Azure VPN Gateway
-description: Hier erfahren Sie, was VPN Gateway ist und wie Sie eine VPN Gateway-Instanz verwenden, um mit virtuellen Netzwerken eine Site-to-Site-, VNet-to-Vnet- oder Point-to-Site-Verbindung (IPsec/IKE) herzustellen
+description: Hier erfahren Sie, was VPN Gateway ist und wie Sie eine VPN Gateway-Instanz verwenden, um mit virtuellen Netzwerken eine Site-to-Site-, VNet-to-Vnet- oder Point-to-Site-Verbindung (IPsec/IKE) herzustellen.
 services: vpn-gateway
 author: cherylmc
 Customer intent: As someone with a basic network background, but is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
 ms.service: vpn-gateway
 ms.topic: overview
-ms.date: 08/25/2020
+ms.date: 08/27/2020
 ms.author: cherylmc
-ms.openlocfilehash: c7fbea977904145aa2e8851f45a4b70f9ce0c560
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.custom: contperfq1
+ms.openlocfilehash: 23d8d28a03217b1359462332da736f852cfaf8ea
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855612"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89015389"
 ---
 # <a name="what-is-vpn-gateway"></a>Was ist VPN Gateway?
 
 Ein VPN-Gateway ist eine spezielle Art von Gateway für virtuelle Netzwerke, das verwendet wird, um verschlüsselten Datenverkehr zwischen einem virtuellen Azure-Netzwerk und einem lokalen Standort über das öffentliche Internet zu senden. Ein VPN-Gateway kann aber auch verwendet werden, um verschlüsselten Datenverkehr zwischen virtuellen Azure-Netzwerken über das Microsoft-Netzwerk zu senden. Ein virtuelles Netzwerk kann jeweils nur über ein einzelnes VPN-Gateway verfügen. Sie können jedoch mehrere Verbindungen mit dem gleichen VPN-Gateway herstellen. Wenn Sie mehrere Verbindungen mit dem gleichen VPN-Gateway herstellen, wird die für das Gateway zur Verfügung stehende Bandbreite auf alle VPN-Tunnel aufgeteilt.
-
-VPN-Gateways können in Azure-Verfügbarkeitszonen bereitgestellt werden. So erzielen Sie Stabilität, Skalierbarkeit und eine höhere Verfügbarkeit für die Gateways des virtuellen Netzwerks. Durch die Bereitstellung von Gateways in Azure-Verfügbarkeitszonen werden die Gateways innerhalb einer Region physisch und logisch getrennt. Gleichzeitig wird die Konnektivität Ihres lokalen Netzwerks mit Azure vor Ausfällen auf Zonenebene geschützt. Unter [Informationen zu zonenredundanten Gateways für das virtuelle Netzwerk in Azure-Verfügbarkeitszonen](about-zone-redundant-vnet-gateways.md) erfahren Sie mehr dazu.
 
 ## <a name="what-is-a-virtual-network-gateway"></a><a name="whatis"></a>Was ist ein Gateway für virtuelle Netzwerke?
 
@@ -33,9 +32,15 @@ Die Erstellung eines Gateways des virtuellen Netzwerks kann bis zu 45 Minuten da
 
 Eine VPN Gateway-Verbindung basiert auf mehreren, mit spezifischen Einstellungen konfigurierten Ressourcen. Die meisten der Ressourcen können separat konfiguriert werden. Bei manchen ist allerdings eine bestimmte Reihenfolge zu beachten.
 
-### <a name="design-connection-topology-diagrams"></a><a name="diagrams"></a>Entwurf: Verbindungstopologiediagramme
+### <a name="design"></a><a name="diagrams"></a>Entwurf
 
-Wichtig: Für VPN-Gateway-Verbindungen sind verschiedene Konfigurationen verfügbar. Sie müssen ermitteln, welche Konfiguration am besten zu Ihren Anforderungen passt. Point-to-Site, Site-to-Site und parallel bestehende ExpressRoute-/Site-to-Site-Verbindungen weisen z. B. alle unterschiedliche Anweisungen und Konfigurationsanforderungen auf. Informationen zu Entwurfs- und Verbindungstopologiediagrammen finden Sie unter [Entwurf](design.md).
+Wichtig: Für VPN-Gateway-Verbindungen sind verschiedene Konfigurationen verfügbar. Sie müssen ermitteln, welche Konfiguration am besten zu Ihren Anforderungen passt. Point-to-Site, Site-to-Site und parallel bestehende ExpressRoute-/Site-to-Site-Verbindungen weisen z. B. alle unterschiedliche Anweisungen und Konfigurationsanforderungen auf. Informationen zum Entwurf und zum Anzeigen von Verbindungstopologiediagrammen finden Sie unter [Entwurf](design.md).
+
+### <a name="planning-table"></a><a name="planningtable"></a>Planungstabelle
+
+Die folgende Tabelle kann Ihnen dabei helfen, die beste Verbindungsoption für Ihre Lösung zu finden.
+
+[!INCLUDE [cross-premises](../../includes/vpn-gateway-cross-premises-include.md)]
 
 ### <a name="settings"></a><a name="settings"></a>Einstellungen
 
@@ -44,12 +49,6 @@ Die Einstellungen, die Sie für die einzelnen Ressourcen auswählen, sind für e
 ### <a name="deployment-tools"></a><a name="tools"></a>Bereitstellungstools
 
 Sie können zunächst mit einem Konfigurationstool wie dem Azure-Portal Ressourcen erstellen und konfigurieren. Später können Sie mit einem anderen Tool (beispielsweise PowerShell) zusätzliche Ressourcen konfigurieren oder ggf. vorhandene Ressourcen ändern. Derzeit können nicht alle Ressourcen und Ressourceneinstellungen über das Azure-Portal konfiguriert werden. Sollte ein bestimmtes Konfigurationstool benötigt werden, ist dies in den Anleitungen der Artikel zu den einzelnen Verbindungstopologien angegeben.
-
-### <a name="planning-table"></a><a name="planningtable"></a>Planungstabelle
-
-Die folgende Tabelle kann Ihnen dabei helfen, die beste Verbindungsoption für Ihre Lösung zu finden.
-
-[!INCLUDE [cross-premises](../../includes/vpn-gateway-cross-premises-include.md)]
 
 ## <a name="gateway-skus"></a><a name="gwsku"></a>Gateway-SKUs
 
@@ -61,6 +60,10 @@ Beim Erstellen eines Gateways des virtuellen Netzwerks geben Sie die gewünschte
 ### <a name="gateway-skus-by-tunnel-connection-and-throughput"></a><a name="benchmark"></a>Gateway-SKUs nach Tunnel, Verbindung und Durchsatz
 
 [!INCLUDE [Aggregated throughput by SKU](../../includes/vpn-gateway-table-gwtype-aggtput-include.md)]
+
+## <a name="availability-zones"></a><a name="availability"></a>Verfügbarkeitszonen
+
+VPN-Gateways können in Azure-Verfügbarkeitszonen bereitgestellt werden. So erzielen Sie Stabilität, Skalierbarkeit und eine höhere Verfügbarkeit für die Gateways des virtuellen Netzwerks. Durch die Bereitstellung von Gateways in Azure-Verfügbarkeitszonen werden die Gateways innerhalb einer Region physisch und logisch getrennt. Gleichzeitig wird die Konnektivität Ihres lokalen Netzwerks mit Azure vor Ausfällen auf Zonenebene geschützt. Unter [Informationen zu zonenredundanten Gateways für das virtuelle Netzwerk in Azure-Verfügbarkeitszonen](about-zone-redundant-vnet-gateways.md) erfahren Sie mehr dazu.
 
 ## <a name="pricing"></a><a name="pricing"></a>Preise
 

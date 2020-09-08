@@ -29,6 +29,8 @@
           href: quickstart-service-python.md
 - name: Tutorials
   items:
+    - name: Herstellen einer Verbindung mit einem Gerät mit mehreren Komponenten (C)
+      href: tutorial-multiple-components-c.md
     - name: Herstellen einer Verbindung mit einem Gerät mit mehreren Komponenten (C#)
       href: tutorial-multiple-components-csharp.md
     - name: Herstellen einer Verbindung mit einem Gerät mit mehreren Komponenten (Java)

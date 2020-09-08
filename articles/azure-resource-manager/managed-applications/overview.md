@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: overview
 ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: 0615830e525ab60bbb2167dd39d9c4bf14cc91b3
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 9bb3f0d57f7d47e4cb754305627c52003273ca09
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81391580"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377011"
 ---
 # <a name="azure-managed-applications-overview"></a>Übersicht über verwaltete Azure-Anwendungen
 
@@ -71,13 +71,13 @@ Der Verbraucher hat uneingeschränkten Zugriff auf die Ressourcengruppe und verw
 
 Diese Ressourcengruppe enthält alle Ressourcen, die von der verwalteten Anwendung benötigt werden. Hierzu zählen beispielsweise die virtuellen Computer, Speicherkonten und virtuellen Netzwerke für die Lösung. Der Verbraucher hat eingeschränkten Zugriff auf diese Ressourcengruppe, da er nicht die einzelnen Ressourcen für die verwaltete Anwendung verwaltet. Der Zugriff des Herausgebers auf diese Ressourcengruppe entspricht der Rolle, die in der Definition der verwalteten Anwendung angegeben ist. Der Herausgeber kann für diese Ressourcengruppe beispielsweise die Rolle „Besitzer“ oder „Mitwirkender" anfordern. Der Zugriff gilt entweder permanent oder ist auf einen bestimmten Zeitraum beschränkt.
 
-Beim Veröffentlichen der [verwalteten Anwendung im Marketplace](publish-marketplace-app.md) kann der Herausgeber den Verbrauchern die Möglichkeit gewähren, bestimmte Aktionen an Ressourcen in der verwalteten Ressourcengruppe vorzunehmen. Beispielsweise kann der Herausgeber angeben, dass Verbraucher virtuelle Computer neu starten können. Alle anderen Aktionen, die über Leseaktionen hinausgehen, werden weiterhin verweigert.
+Beim Veröffentlichen der [verwalteten Anwendung im Marketplace](publish-marketplace-app.md) kann der Herausgeber den Verbrauchern die Möglichkeit gewähren, bestimmte Aktionen an Ressourcen in der verwalteten Ressourcengruppe vorzunehmen. Beispielsweise kann der Herausgeber angeben, dass Verbraucher virtuelle Computer neu starten können. Alle anderen Aktionen, die über Leseaktionen hinausgehen, werden weiterhin verweigert. Für Änderungen an Ressourcen in einer verwalteten Ressourcengruppe, die von einem Consumer mit zulässigen Aktionen vorgenommen werden, gelten die [Azure Policy](../../governance/policy/overview.md)-Zuweisungen innerhalb des Consumermandanten, der die verwaltete Ressourcengruppe einbezieht.
 
 Wenn der Verbraucher die verwaltete Anwendung löscht, wird auch die verwaltete Ressourcengruppe gelöscht.
 
 ## <a name="azure-policy"></a>Azure Policy
 
-Sie können eine [Azure-Richtlinie](../../governance/policy/overview.md) auf Ihre verwaltete Anwendung anwenden. Richtlinien werden angewendet, um sicherzustellen, dass die bereitgestellten Instanzen Ihrer verwalteten Anwendung die Daten- und Sicherheitsanforderungen erfüllen. Falls Ihre Anwendung mit sensiblen Daten interagiert, müssen Sie prüfen, wie diese Daten geschützt werden müssen. Interagiert Ihre Anwendung also beispielsweise mit Daten aus Office 365, wenden Sie eine Richtlinie an, um sicherzustellen, dass die Datenverschlüsselung aktiviert ist.
+Sie können eine [Azure Policy](../../governance/policy/overview.md)-Instanz anwenden, um Ihre verwaltete Anwendung zu überwachen. Richtliniendefinitionen werden angewendet, um sicherzustellen, dass die bereitgestellten Instanzen Ihrer verwalteten Anwendung die Daten- und Sicherheitsanforderungen erfüllen. Falls Ihre Anwendung mit sensiblen Daten interagiert, müssen Sie prüfen, wie diese Daten geschützt werden müssen. Interagiert Ihre Anwendung also beispielsweise mit Daten aus Office 365, wenden Sie eine Richtliniendefinition an, um sicherzustellen, dass die Datenverschlüsselung aktiviert ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -3,12 +3,12 @@ title: Sichern einer SharePoint-Farm in Azure mit MABS
 description: Verwenden Sie Azure Backup Server zum Sichern und Wiederherstellen Ihrer SharePoint-Daten. Dieser Artikel stellt die benötigten Informationen bereit, um Ihre SharePoint-Farm so zu konfigurieren, dass Sie die gewünschten Daten in Azure speichern können. Sie können geschützte SharePoint-Daten vom Datenträger oder aus Azure wiederherstellen.
 ms.topic: conceptual
 ms.date: 04/26/2020
-ms.openlocfilehash: 40997ad2153cdec867fb36ba3475829e18519592
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 837aabf739431eebaa6406770620329fe6345eb7
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514236"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89375396"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>Sichern einer SharePoint-Farm in Azure mit MABS
 
@@ -74,7 +74,7 @@ Um die SharePoint-Farm zu sichern, konfigurieren Sie den Schutz für SharePoint 
 
         Wenn sich die Administratoranmeldeinformationen für die SharePoint-Farm nach dem Ausführen von „ConfigureSharePoint.exe“ ändern, muss „ConfigureSharePoint.exe“ erneut ausgeführt werden.
 
-1. Um eine Schutzgruppe zu erstellen, klicken Sie auf **Schutz** > **Aktionen** > **Schutzgruppe erstellen**, um den **Assistenten zum Erstellen einer neuen Schutzgruppe** in der MABS-Konsole zu öffnen.
+1. Um eine Schutzgruppe zu erstellen, wählen Sie **Schutz** > **Aktionen** > **Schutzgruppe erstellen** aus, um den **Assistenten zum Erstellen einer neuen Schutzgruppe** in der MABS-Konsole zu öffnen.
 
 1. Wählen Sie unter **Schutzgruppentyp auswählen** die Option **Server** aus.
 
@@ -102,7 +102,7 @@ Um die SharePoint-Farm zu sichern, konfigurieren Sie den Schutz für SharePoint 
 
 1. Geben Sie auf der Seite **Onlinereplikation wählen** an, wie die erste vollständige Replikation der Daten erfolgt. Sie können eine Replikation über das Netzwerk wählen oder eine Offlinesicherung (sog. Offlineseeding) durchführen. Die Offlinesicherung erfolgt mithilfe der Importfunktion von Azure. [Weitere Informationen](./backup-azure-backup-import-export.md).
 
-1. Überprüfen Sie auf der Seite **Zusammenfassung** Ihre Einstellungen. Nach dem Klicken auf **Gruppe erstellen** erfolgt die erste Replikation der Daten. Nach Abschluss der Replikation wird der Status der Schutzgruppe auf der Seite **Status** als **OK** angezeigt. Die Sicherung erfolgt anschließend gemäß den Schutzgruppeneinstellungen.
+1. Überprüfen Sie auf der Seite **Zusammenfassung** Ihre Einstellungen. Nach Auswahl von **Gruppe erstellen** erfolgt die erste Replikation der Daten. Nach Abschluss der Replikation wird der Status der Schutzgruppe auf der Seite **Status** als **OK** angezeigt. Die Sicherung erfolgt anschließend gemäß den Schutzgruppeneinstellungen.
 
 ## <a name="monitoring"></a>Überwachung
 
@@ -114,17 +114,17 @@ Nach der Erstellung der Schutzgruppe erfolgt die erste Replikation, und MABS beg
 
 ### <a name="set-up-monitoring-notifications"></a>Einrichten der Überwachung von Benachrichtigungen
 
-1. Klicken Sie in der MABS-Verwaltungskonsole auf **Überwachung** > **Aktion** > **Optionen**.
+1. Wählen Sie in der MABS-Verwaltungskonsole **Überwachung** > **Aktion** > **Optionen** aus.
 
-2. Klicken Sie auf **SMTP-Server**, geben Sie den Servernamen, den Port und die E-Mail-Adresse ein, über die Benachrichtigungen gesendet werden. Die Adresse muss gültig sein.
+2. Wählen Sie **SMTP-Server** aus, geben Sie den Servernamen, den Port und die E-Mail-Adresse ein, über die Benachrichtigungen gesendet werden. Die Adresse muss gültig sein.
 
 3. Geben Sie unter **Authentifizierter SMTP-Server** einen Benutzernamen und ein Kennwort ein. Der Benutzername und das Kennwort müssen zum Domänenkontonamen der Person gehören, deren Absenderadresse im vorherigen Schritt beschrieben wurde. Andernfalls tritt bei der Benachrichtigungsübermittlung ein Fehler auf.
 
-4. Klicken Sie zum Testen der SMTP-Servereinstellungen auf **Test-E-Mail senden**, geben Sie die E-Mail-Adresse ein, an die die Testnachricht von MABS gesendet werden soll, und klicken Sie dann auf **OK**. Klicken Sie auf **Optionen** > **Benachrichtigungen**, und wählen Sie die Warnungstypen aus, über die Empfänger benachrichtigt werden möchten. Geben Sie im Feld **Empfänger** die E-Mail-Adressen aller Empfänger ein, an die MABS die Benachrichtigungskopien senden soll.
+4. Wählen Sie zum Testen der SMTP-Servereinstellungen **Test-E-Mail senden** aus, geben Sie die E-Mail-Adresse ein, an die die Testnachricht von MABS gesendet werden soll, und wählen Sie dann **OK** aus. Wählen Sie **Optionen** > **Benachrichtigungen** und dann die Warnungstypen aus, über die Empfänger benachrichtigt werden möchten. Geben Sie im Feld **Empfänger** die E-Mail-Adressen aller Empfänger ein, an die MABS die Benachrichtigungskopien senden soll.
 
 ### <a name="publish-operations-manager-alerts"></a>Veröffentlichen von Operations Manager-Warnungen
 
-1. Klicken Sie in der MABS-Verwaltungskonsole auf **Überwachung** > **Aktion** > **Optionen** > **Warnungsveröffentlichung** > **Aktive Warnungen veröffentlichen**.
+1. Wählen Sie in der MABS-Verwaltungskonsole **Überwachung** > **Aktion** > **Optionen** > **Warnungsveröffentlichung** > **Aktive Warnungen veröffentlichen** aus.
 
 2. Nach der Aktivierung der **Warnungsveröffentlichung** werden alle vorhandene MABS-Warnungen, die möglicherweise eine Benutzeraktion erfordern, im Ereignisprotokoll **MABS-Warnungen** veröffentlicht. Der Operations Manager-Agent, der auf dem MABS-Server installiert ist, veröffentlicht dann diese Warnungen für Operations Manager und setzt die Aktualisierung der Konsole fort, wenn neue Warnungen generiert werden.
 
@@ -146,10 +146,10 @@ Im folgenden Beispiel wurde *Recovering SharePoint item* versehentlich gelöscht
 5. Sie können auch andere Wiederherstellungspunkte durchsuchen und eine Datenbank oder ein Element für die Wiederherstellung auswählen. Wählen Sie **Datum > Wiederherstellungszeit** und anschließend die korrekte Option für **Datenbank > SharePoint-Farm > Wiederherstellungspunkt > Element**.
 
     ![MABS SharePoint Protection7](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection8.png)
-6. Klicken Sie mit der rechten Maustaste auf das Element, und wählen Sie **Wiederherstellen**, um den **Wiederherstellungs-Assistenten** zu öffnen. Klicken Sie auf **Weiter**.
+6. Klicken Sie mit der rechten Maustaste auf das Element, und wählen Sie **Wiederherstellen**, um den **Wiederherstellungs-Assistenten** zu öffnen. Wählen Sie **Weiter** aus.
 
     ![Wiederherstellungsauswahl prüfen](./media/backup-azure-backup-sharepoint/review-recovery-selection.png)
-7. Wählen Sie den gewünschten Wiederherstellungstyp aus, und klicken Sie anschließend auf **Weiter**.
+7. Wählen Sie den gewünschten Wiederherstellungstyp aus, und wählen Sie anschließend **Weiter** aus.
 
     ![Wiederherstellungstyp](./media/backup-azure-backup-sharepoint/select-recovery-type.png)
 
@@ -170,7 +170,7 @@ Im folgenden Beispiel wurde *Recovering SharePoint item* versehentlich gelöscht
     MABS verknüpft die Inhaltsdatenbank, die als Host für das SharePoint-Element fungiert, mit der temporären SQL Server-Instanz. MABS stellt das Element aus der Inhaltsdatenbank wieder her und platziert es am Stagingdateispeicherort auf MABS. Das am Stagingort wiederhergestellte Element muss nun an den Stagingort in der SharePoint-Farm exportiert werden.
 
     ![Staging Location2](./media/backup-azure-backup-sharepoint/staging-location2.png)
-10. Wählen Sie **Wiederherstellungsoptionen angeben**, und wenden Sie Sicherheitseinstellungen auf die SharePoint-Farm oder die Sicherheitseinstellungen des Wiederherstellungspunkts an. Klicken Sie auf **Weiter**.
+10. Wählen Sie **Wiederherstellungsoptionen angeben**, und wenden Sie Sicherheitseinstellungen auf die SharePoint-Farm oder die Sicherheitseinstellungen des Wiederherstellungspunkts an. Wählen Sie **Weiter** aus.
 
     ![Wiederherstellungsoptionen](./media/backup-azure-backup-sharepoint/recovery-options.png)
 
@@ -178,7 +178,7 @@ Im folgenden Beispiel wurde *Recovering SharePoint item* versehentlich gelöscht
     > Sie können auch die Nutzung der Netzwerkbandbreite drosseln. Dies minimiert die Auswirkungen auf den Produktionsserver während der Produktion.
     >
     >
-11. Überprüfen Sie die Zusammenfassung, und klicken Sie anschließend auf **Wiederherstellen** , um die Wiederherstellung der Datei zu initiieren.
+11. Überprüfen Sie die Zusammenfassung, und wählen Sie anschließend **Wiederherstellen** aus, um die Wiederherstellung der Datei zu initiieren.
 
     ![Wiederherstellungszusammenfassung](./media/backup-azure-backup-sharepoint/recovery-summary.png)
 12. Klicken Sie auf die Registerkarte **Überwachung** der **MABS-Administratorkonsole**, um den **Status** der Wiederherstellung anzuzeigen.
@@ -201,7 +201,7 @@ Im folgenden Beispiel wurde *Recovering SharePoint item* versehentlich gelöscht
    > Da die SharePoint-Farm mit langfristiger Aufbewahrung in Azure geschützt ist, sind auf dem MABS-Server keine Kataloginformationen (Metadaten) verfügbar. Wenn also eine Zeitpunktwiederherstellung einer SharePoint-Inhaltsdatenbank erforderlich ist, muss die SharePoint-Farm neu katalogisiert werden.
    >
    >
-3. Klicken Sie auf **die entsprechende** Option.
+3. Wählen Sie **Neu katalogisieren** aus.
 
     ![MABS SharePoint Protection10](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection12.png)
 
@@ -212,7 +212,7 @@ Im folgenden Beispiel wurde *Recovering SharePoint item* versehentlich gelöscht
     Nach Abschluss der Katalogisierung ändert sich der Status in *Erfolgreich*. Klicken Sie auf **Schließen**.
 
     ![MABS SharePoint Protection12](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection14.png)
-4. Klicken Sie auf das SharePoint-Objekt, das auf der MABS-Registerkarte **Wiederherstellung** angezeigt wird, um die Struktur der Inhaltsdatenbank abzurufen. Klicken Sie mit der rechten Maustaste auf das Element, und klicken Sie dann auf **Wiederherstellen**.
+4. Wählen Sie das SharePoint-Objekt aus, das auf der MABS-Registerkarte **Wiederherstellung** angezeigt wird, um die Struktur der Inhaltsdatenbank abzurufen. Klicken Sie mit der rechten Maustaste auf das Element, und wählen Sie **Wiederherstellen** aus.
 
     ![MABS SharePoint Protection13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
 5. Führen Sie nun die weiter oben in diesem Artikel beschriebenen Wiederherstellungsschritte für die Wiederherstellung einer SharePoint-Inhaltsdatenbank vom Datenträger aus.
@@ -247,7 +247,7 @@ Im folgenden Verfahren wird das Beispiel für eine Serverfarm mit zwei Front-End
 
 1. Ändern Sie auf *Server2* an der Eingabeaufforderung das Verzeichnis in `_MABS installation location_\bin\`, und führen Sie **ConfigureSharepoint** aus. Weitere Informationen zu ConfigureSharePoint finden Sie unter [Konfigurieren der Sicherung](#configure-backup).
 
-1. Wählen Sie die Schutzgruppe aus, zu der die Serverfarm gehört, und klicken Sie dann auf **Schutzgruppe ändern**.
+1. Wählen Sie die Schutzgruppe aus, zu der die Serverfarm gehört, und wählen Sie dann **Schutzgruppe ändern** aus.
 
 1. Erweitern Sie im Assistenten zum Ändern von Schutzgruppen *Server2* auf der Seite **Gruppenmitglieder auswählen**, wählen Sie die Serverfarm aus, und schließen Sie dann den Assistenten ab.
 

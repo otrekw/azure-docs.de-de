@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 03/04/2020
+ms.date: 08/27/2020
 ms.author: aahi
-ms.openlocfilehash: 1e9928359f314ed57004df0264ac843871083eba
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: a3c538f3a9e7a2d8d71fff38fb927dbcdf725732
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84141856"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000956"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Worum handelt es sich bei der Textanalyse-API?
 
@@ -82,26 +82,7 @@ Für eine bessere Auffindbarkeit wurde dieser Abschnitt in einen separaten Artik
 
 ## <a name="data-limits"></a>Datengrenzwerte
 
-Alle Endpunkte der Textanalyse-API akzeptieren unformatierte Textdaten. Der aktuelle Grenzwert liegt bei 5.120 Zeichen für jedes Dokument. Wenn Sie größere Dokumente analysieren müssen, können Sie diese in kleinere Blöcke aufteilen.
-
-| Begrenzung | Wert |
-|------------------------|---------------|
-| Maximale Größe eines einzelnen Dokuments | 5\.120 Zeichen (von [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) gemessen) |
-| Maximale Größe der gesamte Anforderung | 1 MB |
-| Maximale Anzahl von Dokumenten in einer Anforderung | Bis zu 1.000 Dokumente ([variiert je nach Feature](concepts/data-limits.md)) |
-
-Ihr Ratenlimit variiert je nach Tarif.
-
-| Tarif          | Anforderungen pro Sekunde | Anforderungen pro Minute |
-|---------------|---------------------|---------------------|
-| S/Mehrere Dienste | 1000                | 1000                |
-| S0/F0         | 100                 | 300                 |
-| S1            | 200                 | 300                 |
-| S2            | 300                 | 300                 |
-| S3            | 500                 | 500                 |
-| S4            | 1000                | 1000                |
-
-Die Anforderungen werden für jede Textanalysefunktion separat gemessen. So können Sie beispielsweise die maximale Anzahl von Anforderungen für Ihren Tarif gleichzeitig an alle Funktionen senden.      
+Alle Endpunkte der Textanalyse-API akzeptieren unformatierte Textdaten. Weitere Informationen finden Sie im Artikel zu den [Datengrenzwerten](concepts/data-limits.md).
 
 ## <a name="unicode-encoding"></a>Unicode-Codierung
 

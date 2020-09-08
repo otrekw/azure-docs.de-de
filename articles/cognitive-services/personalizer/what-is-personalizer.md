@@ -1,24 +1,25 @@
 ---
 title: Was ist die Personalisierung?
-description: Die Personalisierung ist ein cloudbasierter API-Dienst, mit dem Sie die beste Benutzeroberfläche für Ihre Benutzer auswählen und dabei in Echtzeit von deren Verhalten lernen können.
+description: Die Personalisierung ist ein cloudbasierter Dienst, mit dem Sie die beste Benutzeroberfläche für Ihre Benutzer auswählen und dabei in Echtzeit von deren Verhalten lernen können.
 ms.topic: overview
-ms.date: 04/20/2020
-ms.openlocfilehash: cf046ada21c4920ea9e3853668a5928b2ca9f33a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 08/27/2020
+ms.custom: cog-serv-seo-aug-2020
+keywords: Personalisierung, Azure Personalisierung, Machine Learning
+ms.openlocfilehash: 93b1f0487818cf783cc4a19f79618cfe2285cbd1
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83586217"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055616"
 ---
 # <a name="what-is-personalizer"></a>Was ist die Personalisierung?
 
-[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
+Die Azure-Personalisierung ist ein cloudbasierter Dienst, mit dessen Hilfe Ihre Anwendungen für Benutzer den am besten geeigneten Inhalt anzeigen kann. Mit dem Personalisierungsdienst können Sie festlegen, welches Produkt Kunden vorgeschlagen werden soll, oder die optimale Position für eine Anzeige ermitteln. Nachdem der Inhalt für den Benutzer angezeigt wurde, überwacht das System das Echtzeitbenutzerverhalten und meldet dem Personalisierungsdienst eine Relevanzbewertung. Dies trägt zur kontinuierlichen Verbesserung des ML-Modells bei und unterstützt die Personalisierung bei der Wahl des besten Inhaltselements auf der Grundlage der empfangenen Kontextinformationen.
 
-Die Azure-Personalisierung ist ein cloudbasierter API-Dienst, mit dessen Hilfe Ihre Clientanwendung für jeden Benutzer jeweils den am besten geeigneten _Inhalt_ anzeigen kann. Der Dienst wählt basierend auf den gesamten Echtzeitinformationen, die Sie für den Inhalt und zum Kontext angeben, das beste Element aus den Inhaltselementen aus.
+> [!TIP]
+> Der Inhalt ist eine beliebige Informationseinheit, z. B. Text, Bilder, URLs, E-Mails oder andere Elemente, die zum Treffen einer Auswahl zum Anzeigen für Ihre Benutzer genutzt werden soll.
 
-Nachdem Sie das Inhaltselement für den Benutzer bereitgestellt haben, überwacht Ihr System das Benutzerverhalten und meldet eine Relevanzbewertung an die Personalisierung, damit basierend auf den erhaltenen Kontextinformationen noch besser der bestmögliche Inhalt ausgewählt werden kann.
-
-Der **Inhalt** kann eine beliebige Informationseinheit sein, z. B. Text, Bilder, URLs oder E-Mails, die zum Treffen einer Auswahl für Ihren Benutzer genutzt werden soll.
+Bevor Sie beginnen, können Sie die [Personalisierung mit dieser interaktiven Demo](https://personalizationdemo.azurewebsites.net/) ausprobieren.
 
 <!--
 ![What is personalizer animation](./media/what-is-personalizer.gif)
@@ -26,7 +27,7 @@ Der **Inhalt** kann eine beliebige Informationseinheit sein, z. B. Text, Bilder
 
 ## <a name="how-does-personalizer-select-the-best-content-item"></a>Wie wählt die Personalisierung das beste Inhaltselement aus?
 
-Für die Personalisierung wird das **vertiefende Lernen** verwendet, um anhand des gesamten Verhaltens und der Relevanzbewertungen aller Benutzer das beste Element (_Aktion_) auswählen zu können. Aktionen sind die Inhaltselemente, z. B. Nachrichtenartikel, bestimmte Filme oder Produkte, die zur Wahl stehen.
+Für die Personalisierung wird das **vertiefende Lernen** verwendet, um anhand des gesamten Verhaltens und der Relevanzbewertungen aller Benutzer das beste Element (_Aktion_) auswählen zu können. Aktionen sind die Inhaltselemente, z. B. Nachrichtenartikel, bestimmte Filme oder Produkte.
 
 Beim **Rangfolge**-Aufruf werden das Aktionselement, einschließlich der zugehörigen Features, und die Kontextfeatures verwendet, um das oberste Aktionselement auszuwählen:
 
@@ -34,27 +35,31 @@ Beim **Rangfolge**-Aufruf werden das Aktionselement, einschließlich der zugehö
 * **Kontextfeatures**: Features Ihrer Benutzer, des Kontexts oder der Umgebung bei der Nutzung Ihrer App.
 
 Im Feld für die **Relevanzaktion-ID** gibt der Rangfolge-Aufruf die ID dazu zurück, welches Inhaltselement (__Aktion__) dem Benutzer angezeigt werden soll.
-Die dem Benutzer angezeigte __Aktion__ wird mithilfe von Machine Learning-Modellen ausgewählt, um zu versuchen, die Relevanz im Laufe der Zeit möglichst stark zu erhöhen.
 
-Beispielszenarien:
+Die dem Benutzer angezeigte __Aktion__ wird mithilfe von Machine Learning-Modellen ausgewählt, um zu versuchen, die Relevanz im Laufe der Zeit möglichst stark zu erhöhen.
 
-|Inhaltstyp|**Aktionen (mit Features)**|**Kontextfeatures**|Zurückgegebene Relevanzaktion-ID<br>(anzuzeigender Inhalt)|
+### <a name="sample-scenarios"></a>Beispielszenarios
+
+Werfen Sie einen Blick auf einige Szenarien, in denen die Personalisierung dazu verwendet werden kann, die besten Inhalte zur Anzeige für einen Benutzer auszuwählen.
+
+|Inhaltstyp|Aktionen (mit Features)|Kontextfeatures|Zurückgegebene Relevanzaktion-ID<br>(anzuzeigender Inhalt)|
 |--|--|--|--|
 |Liste mit News|a. `The president...` (Inland, Politik, [Text])<br>b. `Premier League ...` (Weltweit, Sport, [Text, Bild, Video])<br> c. `Hurricane in the ...` (Regional, Wetter, [Text, Bild]|Gerät, von dem News gelesen werden<br>Monat oder Saison<br>|a `The president...`|
 |Liste mit Filmen|1. `Star Wars` (1977, [Aktion, Abenteuer, Fantasy], George Lucas)<br>2. `Hoop Dreams` (1994, [Dokumentation, Sport], Steve James<br>3. `Casablanca` (1942, [Romanze, Drama, Krieg], Michael Curtiz)|Gerät, auf dem der Film angeschaut wird<br>Displaygröße<br>Typ des Benutzers<br>|3. `Casablanca`|
 |Produktliste|i. `Product A` (3 kg, $$$$, Lieferung innerhalb von 24 Stunden)<br>ii. `Product B` (20 kg, $$, 2 Wochen Lieferzeit mit Zoll)<br>iii. `Product C` (3 kg, $$$, Lieferung innerhalb von 48 Stunden)|Gerät, über das der Einkauf erfolgt<br>Ausgabenebene des Benutzers<br>Monat oder Saison|ii. `Product B`|
 
-Für die Personalisierung wird das vertiefende Lernen genutzt, um die beste Aktion auszuwählen. Es wird eine _Relevanzaktion-ID_ verwendet, die auf einer Kombination der folgenden Elemente basiert:
-* Trainiertes Modell: Vom Personalisierungsdienst empfangene Informationen
+Für die Personalisierung wird das vertiefende Lernen genutzt, um die beste Aktion auszuwählen. Dazu wird eine sogenannte _Relevanzaktion-ID_ verwendet. Das Machine Learning-Modell verwendet Folgendes: 
+
+* Ein trainiertes Modell: Zuvor vom Personalisierungsdienst empfangene Informationen, die zum Verbessern des Machine Learning-Modells verwendet werden
 * Aktuelle Daten: Spezifische Aktionen mit Features und Kontextfeatures
 
-## <a name="when-to-call-personalizer"></a>Zeitpunkt zum Aufrufen der Personalisierung
+## <a name="when-to-use-personalizer"></a>Verwendung der Personalisierung
 
-Die **Rangfolge**-[API](https://go.microsoft.com/fwlink/?linkid=2092082) der Personalisierung wird _immer_ in Echtzeit aufgerufen, wenn Sie Inhalt anzeigen. Dies wird als **Ereignis** bezeichnet und durch eine _Ereignis-ID_ gekennzeichnet.
+Die **Rangfolge**-[API](https://go.microsoft.com/fwlink/?linkid=2092082) der Personalisierung wird jedes Mal aufgerufen, wenn Ihre Anwendung Inhalte darstellt. Dies wird als **Ereignis** bezeichnet und durch eine _Ereignis-ID_ gekennzeichnet.
 
 Die **Relevanz**-[API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) der Personalisierung kann in Echtzeit oder verzögert aufgerufen werden, um die jeweils am besten geeignete Anpassung an Ihre Infrastruktur zu erzielen. Sie bestimmen die Relevanzbewertung basierend auf Ihren Geschäftsanforderungen. Die Relevanzbewertung liegt zwischen 0 und 1. Dies kann ein einzelner Wert sein, z. B. „1“ für „Gut“ und „0“ für „Schlecht“. Sie können auch eine Zahl verwenden, die von einem Algorithmus ermittelt wird, den Sie anhand Ihrer Geschäftsziele und Metriken erstellt haben.
 
-## <a name="personalizer-content-requirements"></a>Inhaltsanforderungen für die Personalisierung
+## <a name="content-requirements"></a>Inhaltsanforderungen
 
 Verwenden Sie die Personalisierung, wenn für Ihren Inhalt Folgendes gilt:
 
@@ -67,7 +72,7 @@ Da für die Personalisierung die gesamten Informationen nahezu in Echtzeit genut
 * Protokollieren von Einstellungen oder des Verlaufs einzelner Benutzer
 * Erzwingen von bereinigtem Inhalt mit Bezeichnungen
 
-## <a name="how-to-design-and-implement-personalizer-for-your-client-application"></a>Entwerfen und Implementieren der Personalisierung für Ihre Clientanwendung
+## <a name="how-to-design-for-and-implement-personalizer"></a>Entwerfen für die und Implementieren der Personalisierung
 
 1. Führen Sie das [Entwerfen](concepts-features.md) und Planen für Inhalt, **_Aktionen_** und **_Kontext_** durch. Ermitteln Sie den Relevanzalgorithmus für die Bewertung der **_Relevanz_**.
 1. Jede von Ihnen erstellte [Personalisierungsressource](how-to-settings.md) wird als gesonderte Lernschleife angesehen. Die Schleife empfängt sowohl jeweils den Rangfolge- als auch den Relevanz-Aufruf für diesen Inhalt bzw. die Benutzererfahrung.
@@ -94,13 +99,28 @@ Da für die Personalisierung die gesamten Informationen nahezu in Echtzeit genut
         * Oder später in einem Offlinesystem
     1. [Werten Sie Ihre Schleife aus](concepts-offline-evaluation.md), indem Sie nach einer gewissen Nutzungsdauer eine Offlineauswertung durchführen. Bei der Offlineauswertung können Sie die Wirksamkeit des Personalisierungsdiensts testen und bewerten, ohne Ihren Code zu ändern oder die Benutzererfahrung zu beeinträchtigen.
 
+## <a name="complete-a-quickstart"></a>Abschließen einer Schnellstartanleitung
+
+Wir stellen Schnellstartanleitungen in C#, JavaScript und Python bereit. Jede Schnellstartanleitung enthält Informationen zu grundlegenden Entwurfsmustern und ist jeweils so konzipiert, dass Sie in weniger als zehn Minuten über ausführbaren Code verfügen. 
+
+* [Schnellstart: Personalisierungsclientbibliothek](sdk-learning-loop.md)
+
+Nachdem Sie Gelegenheit hatten, erste Schritte mit dem Personalisierungsdienst auszuführen, erfahren Sie in unseren Tutorials mehr dazu, wie Sie die Personalisierung in Webanwendungen, Chatbots oder in einer Azure Notebooks-Instanz verwenden.
+
+* [Tutorial: Verwenden der Personalisierung in einer .NET-Web-App](tutorial-use-personalizer-web-app.md)
+* [Tutorial: Verwenden der Personalisierung in einem .NET-Chatbot](tutorial-use-personalizer-chat-bot.md)
+* [Tutorial: Verwenden der Personalisierung in Azure Notebook](tutorial-use-azure-notebook-generate-loop-data.md)
+
+## <a name="reference"></a>Verweis 
+
+* [Personalisierung: C#/.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/personalizer?view=azure-dotnet)
+* [Personalisierung: Go SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/personalizer/v1.0/personalizer)
+* [Personalisierung: JavaScript SDK](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest)
+* [Personalisierung: Python SDK](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/personalizer?view=azure-python)
+* [REST-APIs](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank)
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-
-* [Funktionsweise der Personalisierung](how-personalizer-works.md)
-* [Was ist vertiefendes Lernen?](concepts-reinforcement-learning.md)
-* [Erfahren Sie mehr über Features und Aktionen für die Rangfolgeanforderung.](concepts-features.md)
-* [Erfahren Sie mehr über das Festlegen der Bewertung für die Relevanzanforderung.](concept-rewards.md)
-* [Schnellstarts](sdk-learning-loop.md)
-* [Tutorial](tutorial-use-azure-notebook-generate-loop-data.md)
-* [Verwenden der interaktiven Demo](https://personalizationdemo.azurewebsites.net/)
+> [!div class="nextstepaction"]
+> [Funktionsweise der Personalisierung](how-personalizer-works.md)
+> [Was ist vertiefendes Lernen?](concepts-reinforcement-learning.md)

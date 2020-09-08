@@ -1,20 +1,20 @@
 ---
 title: 'Schnellstart: Weiterleiten von Webdatenverkehr mit PowerShell'
 titleSuffix: Azure Application Gateway
-description: Es wird beschrieben, wie Sie die Azure PowerShell zum Erstellen einer Azure Application Gateway-Instanz verwenden, mit der Webdatenverkehr an virtuelle Computer in einem Back-End-Pool geleitet wird.
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Azure PowerShell zum Erstellen einer Azure Application Gateway-Instanz verwenden, mit der Webdatenverkehr an virtuelle Computer in einem Back-End-Pool geleitet wird.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 04/15/2020
+ms.date: 08/27/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 3e1ca14d967b0e88ea7eb559fd9962a3824ff9b0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 115f01bffc4664798682923cb83a99a23a8ce274
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81406212"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958336"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway-using-azure-powershell"></a>Schnellstart: Weiterleiten von Webdatenverkehr per Azure Application Gateway mithilfe von Azure PowerShell
 
@@ -24,14 +24,14 @@ Das Anwendungsgateway leitet den Webdatenverkehr Ihrer Anwendungen an bestimmte 
 
 Für diese Schnellstartanleitung kann auch die [Azure-Befehlszeilenschnittstelle](quick-create-cli.md) oder das [Azure-Portal](quick-create-portal.md) verwendet werden.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Azure PowerShell 1.0.0 oder höher](/powershell/azure/install-az-ps) (bei lokaler Ausführung von Azure PowerShell)
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="connect-to-azure"></a>Herstellen einer Verbindung mit Azure
 

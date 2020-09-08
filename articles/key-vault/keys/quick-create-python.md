@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: c590fea274900f580a5c8415f6b04c2f9108f74f
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 18ba00b39d8ffd703eb31b95d373e5b89e51c59b
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876936"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376824"
 ---
 # <a name="quickstart-azure-key-vault-keys-client-library-for-python"></a>Schnellstart: Azure Key Vault-Schlüsselclientbibliothek für Python
 
@@ -68,7 +68,7 @@ az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 
 ### <a name="create-a-service-principal"></a>Erstellen eines Dienstprinzipals
 
-Eine cloudbasierte .NET-Anwendung kann am einfachsten mit einer verwalteten Identität authentifiziert werden. Einzelheiten hierzu finden Sie unter [Verwenden einer verwalteten App Service-Identität für den Zugriff auf Azure Key Vault](../general/managed-identity.md). 
+Die Authentifizierung einer cloudbasierten Anwendung lässt sich am einfachsten mit einer verwalteten Identität bewerkstelligen. Einzelheiten hierzu finden Sie unter [Authentifizieren bei Azure Key Vault](../general/authentication.md). 
 
 Der Einfachheit halber wird in dieser Schnellstartanleitung eine Desktopanwendung erstellt, die die Verwendung eines Dienstprinzipals und einer Zugriffssteuerungsrichtlinie erfordert. Ihr Dienstprinzipal muss einen eindeutigen Namen im Format „http://&lt;eindeutiger Dienstprinzipalname&gt;“ haben.
 
@@ -235,6 +235,6 @@ print(" done.")
 
 In dieser Schnellstartanleitung haben Sie einen Schlüsseltresor erstellt, einen Schlüssel gespeichert und diesen Schlüssel abgerufen. Weitere Informationen zu Key Vault und zur Integration in Ihre Anwendungen finden Sie in den folgenden Artikeln:
 
-- [Was ist der Azure-Schlüsseltresor?](../general/overview.md)
-- [Entwicklerhandbuch zu Azure-Schlüsseltresor](../general/developers-guide.md)
+- [Übersicht über den Azure-Schlüsseltresor](../general/overview.md)
+- [Entwicklerhandbuch zu Azure Key Vault](../general/developers-guide.md)
 - [Bewährte Methoden zum Verwenden von Key Vault](../general/best-practices.md)

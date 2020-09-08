@@ -1,24 +1,24 @@
 ---
-title: 'Schnellstart: Erstellen eines Profils für hoch verfügbare Anwendungen – Azure CLI – Azure Traffic Manager'
+title: 'Schnellstart: Erstellen eines Profils für die Hochverfügbarkeit von Anwendungen – Azure CLI – Azure Traffic Manager'
 description: In diesem Schnellstartartikel wird beschrieben, wie Sie ein Traffic Manager-Profil erstellen, um eine hoch verfügbare Webanwendung zu entwickeln.
 services: traffic-manager
-author: rohinkoul
-mnager: twooley
+author: duongau
+mnager: kumud
 Customer intent: As an IT admin, I want to direct user traffic to ensure high availability of web applications.
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/29/2019
-ms.author: rohink
+ms.date: 08/26/2020
+ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1de651d5321fa3a0dea4da33c5d41839e67ad9dc
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 429d107a68c8631983bf791108f5091f31a480c3
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87491186"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89178079"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-cli"></a>Schnellstart: Erstellen eines Traffic Manager-Profils für eine hochverfügbare Webanwendung mit der Azure-Befehlszeilenschnittstelle
 
@@ -117,7 +117,7 @@ Fügen Sie die beiden Web-Apps dem Traffic Manager-Profil wie folgt als Traffic�
 
 Wenn der primäre Endpunkt nicht verfügbar ist, wird der Datenverkehr automatisch an den Failoverendpunkt weitergeleitet.
 
-Ersetzen Sie **<app1name_eastus>** und **<app2name_westeurope>** im folgenden Beispiel durch die App-Namen, die Sie im vorherigen Abschnitt für die jeweiligen Regionen erstellt haben. Ersetzen Sie darüber hinaus **<appspname_eastus>** und **<appspname_westeurope>** durch den Namen, den Sie im vorherigen Abschnitt zum Erstellen der App Service-Pläne verwendet haben, sowie **<profile_name>** durch den im vorherigen Abschnitt verwendeten Profilnamen. 
+Ersetzen Sie im folgenden Beispiel **<app1name_eastus>** und **<app2name_westeurope>** durch die App-Namen, die Sie im vorherigen Abschnitt für die einzelnen Regionen erstellt haben. Ersetzen Sie dann **<profile_name>** durch den im vorherigen Abschnitt verwendeten Profilnamen. 
 
 **Endpunkt „USA, Osten“**
 
@@ -174,7 +174,7 @@ az network traffic-manager endpoint create \
 
 In diesem Abschnitt überprüfen Sie den Domänennamen Ihres Traffic Manager-Profils. Außerdem konfigurieren Sie den primären Endpunkt so, dass er nicht verfügbar ist. Abschließend können Sie sehen, dass die Web-App weiterhin verfügbar ist. Dies liegt daran, dass Traffic Manager den Datenverkehr an den Failoverendpunkt sendet.
 
-Ersetzen Sie **<app1name_eastus>** und **<app2name_westeurope>** im folgenden Beispiel durch die App-Namen, die Sie im vorherigen Abschnitt für die jeweiligen Regionen erstellt haben. Ersetzen Sie darüber hinaus **<appspname_eastus>** und **<appspname_westeurope>** durch den Namen, den Sie im vorherigen Abschnitt zum Erstellen der App Service-Pläne verwendet haben, sowie **<profile_name>** durch den im vorherigen Abschnitt verwendeten Profilnamen.
+Ersetzen Sie im folgenden Beispiel **<app1name_eastus>** und **<app2name_westeurope>** durch die App-Namen, die Sie im vorherigen Abschnitt für die einzelnen Regionen erstellt haben. Ersetzen Sie dann **<profile_name>** durch den im vorherigen Abschnitt verwendeten Profilnamen.
 
 ### <a name="determine-the-dns-name"></a>Ermitteln des DNS-Namens
 

@@ -5,16 +5,16 @@ description: Informationen zu den Änderungen in der neuen Version von Azure Dig
 author: baanders
 ms.author: baanders
 ms.date: 3/12/2020
-ms.topic: overview
+ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: ad99dc3dc17e81c3b5da144b21519781353baa47
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 6d1786766fc61ed0edfdc53295a50ba212818fc0
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826822"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181424"
 ---
-# <a name="how-is-the-new-azure-digital-twins-different-from-the-previous-version-2018"></a>Worin unterscheidet sich die neue Version von Azure Digital Twins von der vorherigen Version (2018)?
+# <a name="what-is-the-new-azure-digital-twins-how-is-it-different-from-the-previous-version-2018"></a>Worum handelt es sich bei der neuen Version von Azure Digital Twins? Wie unterscheidet sie sich von der vorherigen Version (2018)?
 
 Die erste öffentliche Vorschau von Azure Digital Twins wurde im Oktober 2018 veröffentlicht. Wenngleich die wesentlichen Konzepte der vorherigen Version in der neuen Vorschauversion unverändert sind, wurden eine Vielzahl von Schnittstellen und Implementierungsdetails geändert, um den Dienst flexibler und zugänglicher zu machen. Grundlage für diese Änderungen war Feedback, das wir von Kunden erhalten haben.
 
@@ -44,5 +44,4 @@ Eine Liste der Einschränkungen, die während der öffentlichen Vorschau für Az
 
 Arbeiten Sie als Nächstes das erste Tutorial zu Azure Digital Twins durch, um sich näher mit der Funktionsweise vertraut zu machen:
 
-> [!div class="nextstepaction"]
-> [*Tutorial: Codieren einer Client-App*](tutorial-code.md)
+[*Tutorial: Codieren einer Client-App*](tutorial-code.md)

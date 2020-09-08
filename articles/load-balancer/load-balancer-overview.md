@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: allensu
-ms.openlocfilehash: 898f63cbfba082f8c268587bcd2ea7f575d07f81
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 602a36964d4a6d5f3660499570327db3479c980e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420327"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299200"
 ---
 # <a name="what-is-azure-load-balancer"></a>Was versteht man unter Azure Load Balancer?
 
@@ -74,6 +74,10 @@ Load Balancer Basic ist standardmäßig für das Internet geöffnet. Außerdem w
 Informationen zu den Preisen für Load Balancer Standard finden Sie unter [Load Balancer – Preise](https://azure.microsoft.com/pricing/details/load-balancer/).
 Basic Load Balancer wird kostenlos angeboten.
 Weitere Informationen finden Sie unter [SLA für Load Balancer](https://aka.ms/lbsla). Für Load Balancer Basic steht keine SLA zur Verfügung.
+
+## <a name="whats-new"></a>Neuigkeiten
+
+Abonnieren Sie den RSS-Feed, und zeigen Sie die neuesten Azure Load Balancer-Featureupdates auf der Seite [Azure-Updates](https://azure.microsoft.com/updates/?category=networking&query=load%20balancer) an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Unter [Upgraden einer öffentlichen Azure Load Balancer-Instanz](upgrade-basic-standard.md) erfahren Sie, wie Sie eine Load Balancer-Instanz im Tarif „Basic“ auf Load Balancer Standard aktualisieren.

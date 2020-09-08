@@ -3,21 +3,21 @@ title: Azure Front Door | Microsoft-Dokumentation
 description: Dieser Artikel enthält eine Übersicht zu Azure Front Door. Es wird beschrieben, ob dies die richtige Wahl für den Lastenausgleich des Benutzerdatenverkehrs für Ihre Anwendung ist.
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: duongau
 editor: ''
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/23/2019
-ms.author: sharadag
-ms.openlocfilehash: 081305170020aa35511ad574bd8c5575c192d577
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.date: 09/02/2020
+ms.author: duau
+ms.openlocfilehash: 003903a941b0d9ce36f28ce5e4d640e5746a7de3
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85322294"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378184"
 ---
 # <a name="what-is-azure-front-door"></a>Was ist Azure Front Door?
 Über Azure Front Door können Sie das globale Routing für Ihren Webdatenverkehr definieren, verwalten und überwachen, indem Sie eine Optimierung auf die bestmögliche Leistung und ein schnelles globales Failover durchführen, um die Hochverfügbarkeit sicherzustellen. Mit Front Door können Sie Ihre globalen Consumer- und Unternehmensanwendungen (in mehreren Regionen angeordnet) in stabile und hochleistungsfähige personalisierte moderne Anwendungen, APIs und Inhalte transformieren, mit denen über Azure eine globale Zielgruppe erreicht wird.
@@ -81,6 +81,10 @@ Das HTTP/2-Protokoll ermöglicht die Vollduplexkommunikation zwischen Anwendungs
 ## <a name="pricing"></a>Preise
 
 Preisinformationen finden Sie unter [Front Door – Preise](https://azure.microsoft.com/pricing/details/frontdoor/).
+
+## <a name="whats-new"></a>Neuigkeiten
+
+Abonnieren Sie den RSS-Feed, und zeigen Sie die neuesten Azure Load Balancer-Featureupdates auf der Seite [Azure-Updates](https://azure.microsoft.com/updates/?category=networking&query=Azure%20Front%20Door) an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
-ms.date: 04/20/2020
-ms.openlocfilehash: 1869671b465b7175cf3160c41debc66cbd0818ad
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.date: 08/24/2020
+ms.openlocfilehash: 9cfda93cb7f99851109ab7c4a4590517f785c8a1
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85367103"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89292978"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Übersicht über die Unternehmenssicherheit in Azure HDInsight
 
@@ -59,9 +59,9 @@ Der Administrator kann sämtliche Zugriffe auf die Ressourcen und Daten des HDIn
 
 Der Schutz von Daten ist wichtig, um die Sicherheits- und Compliance-Anforderungen des Unternehmens zu erfüllen. Sie sollten den Zugriff auf Daten durch nicht autorisierte Mitarbeitern nicht nur beschränken, sondern Sie sollten diesen auch verschlüsseln.
 
-Azure Storage und Data Lake Storage Gen1/Gen2 unterstützen die transparente serverseitige [Verschlüsselung von Daten](../../storage/common/storage-service-encryption.md) im Ruhezustand. Sichere HDInsight-Cluster funktionieren nahtlos mit serverseitiger Verschlüsselung ruhender Daten.
+HDInsight unterstützt die Verschlüsselung ruhender Daten mit plattformseitig und [kundenseitig verwalteten Schlüsseln](../disk-encryption.md). Die Verschlüsselung von Daten während der Übertragung erfolgt sowohl mit TLS als auch mit IPSec. Weitere Informationen finden Sie unter [Verschlüsselung während der Übertragung für Azure HDInsight](encryption-in-transit.md).
 
-### <a name="compliance"></a>Compliance
+### <a name="compliance"></a>Kompatibilität
 
 Azure-Complianceangebote basieren auf unterschiedlichen Arten von Zusicherungen, z. B. formalen Zertifizierungen, Nachweisen, Validierungen und Autorisierungen und Bewertungen, die von unabhängigen externen Prüfungsgesellschaften erstellt wurden, sowie Vertragsänderungen, Selbstbewertungen und Kundenleitfäden, die von Microsoft erstellt wurden. Informationen zur HDInsight-Compliance finden Sie im [Microsoft Trust Center](https://www.microsoft.com/trust-center) und in der [Übersicht der Microsoft Azure-Complianceangebote](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) (in englischer Sprache).
 
@@ -79,7 +79,7 @@ Die folgende Tabelle enthält Links zu Ressourcen für jede Art von Sicherheitsl
 |  | Aktivieren der Eigenschaft [Sichere Übertragung erforderlich](../../storage/common/storage-require-secure-transfer.md) für Speicherkonten | Kunde |
 |  | Konfigurieren von [Azure Storage-Firewalls](../../storage/common/storage-network-security.md) und virtuellen Netzwerken | Kunde |
 |  | Konfigurieren von [Azure Virtual Network-Dienstendpunkten](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) für Cosmos DB und [Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) | Kunde |
-|  | Sicherstellen, dass die [TLS-Verschlüsselung](../../storage/common/storage-security-tls.md) für Daten während der Übertragung aktiviert ist | Kunde |
+|  | Stellen Sie sicher, dass das Feature [Verschlüsselung während der Übertragung](./encryption-in-transit.md) für die Verwendung von TLS und IPSec für die clusterinterne Kommunikation aktiviert ist. | Kunde |
 |  | Konfigurieren von [Kunden verwalteter Schlüssel](../../storage/common/storage-encryption-keys-portal.md) für die Azure Storage-Verschlüsselung | Kunde |
 |  | Steuern des Zugriffs auf Ihre Daten durch Azure-Support mit [Kunden-Lockbox](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview) | Kunde |
 | Anwendungs- und Middleware-Sicherheit | Integrieren mit AAD-DS und [Konfigurieren der Authentifizierung](apache-domain-joined-configure-using-azure-adds.md) | Kunde |

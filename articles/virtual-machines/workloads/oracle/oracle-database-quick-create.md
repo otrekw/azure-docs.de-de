@@ -9,17 +9,17 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/02/2018
+ms.date: 08/28/2020
 ms.author: rogardle
-ms.openlocfilehash: ca40fcb6a2e483e656058835f187dc50bf7bc9ab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fb4403747a3681abd6023cdb9b5e62fd50af12c3
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074065"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179639"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Erstellen einer Oracle-Datenbank auf einem virtuellem Azure-Computer
 
@@ -82,7 +82,7 @@ ssh azureuser@<publicIpAddress>
 
 Die Oracle-Software ist bereits im Marketplace-Image installiert. Erstellen Sie wie folgt eine Beispieldatenbank. 
 
-1.  Wechseln Sie zum *Oracle*-Superuser, und initialisieren Sie anschließend den Listener für die Protokollierung:
+1.  Wechseln Sie zum *oracle*-Benutzer, und starten Sie den Oracle-Listener:
 
     ```bash
     $ sudo -su oracle
@@ -116,8 +116,13 @@ Die Oracle-Software ist bereits im Marketplace-Image installiert. Erstellen Sie 
     The listener supports no services
     The command completed successfully
     ```
+2. Erstellen eines Datenverzeichnisses für die Oracle-Datendateien
 
-2.  Erstellen Sie die Datenbank:
+    ```bash
+        mkdir /u01/app/oracle/oradata
+    ```
+
+3.  Erstellen Sie die Datenbank:
 
     ```bash
     dbca -silent \
@@ -136,28 +141,58 @@ Die Oracle-Software ist bereits im Marketplace-Image installiert. Erstellen Sie 
            -databaseType MULTIPURPOSE \
            -automaticMemoryManagement false \
            -storageType FS \
+           -datafileDestination "/u01/app/oracle/oradata/"
            -ignorePreReqs
     ```
 
     Es dauert einige Minuten, bis die Datenbank erstellt wurde.
 
-3. Festlegen von Oracle-Variablen
+    Es wird eine Ausgabe angezeigt, die in etwa wie folgt aussieht:
 
-Bevor Sie eine Verbindung herstellen, müssen Sie zwei Umgebungsvariablen festlegen: *ORACLE_HOME* und *ORACLE_SID*.
+    ```output
+        Copying database files
+        1% complete
+        2% complete
+        8% complete
+        13% complete
+        19% complete
+        27% complete
+        Creating and starting Oracle instance
+        29% complete
+        32% complete
+        33% complete
+        34% complete
+        38% complete
+        42% complete
+        43% complete
+        45% complete
+        Completing Database Creation
+        48% complete
+        51% complete
+        53% complete
+        62% complete
+        70% complete
+        72% complete
+        Creating Pluggable Databases
+        78% complete
+        100% complete
+        Look at the log file "/u01/app/oracle/cfgtoollogs/dbca/cdb1/cdb1.log" for further details.
+    ```
 
-```bash
-ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
-ORACLE_SID=cdb1; export ORACLE_SID
-```
+4. Festlegen von Oracle-Variablen
 
-Sie können ORACLE_HOME- und ORACLE_SID-Variablen auch der BASHRC-Datei hinzufügen. So werden die Umgebungsvariablen für zukünftige Anmeldungen gespeichert. Bestätigen Sie mithilfe des Editors Ihrer Wahl, dass die folgenden Anweisungen zur `~/.bashrc`-Datei hinzugefügt wurden.
+    Bevor Sie eine Verbindung herstellen, müssen Sie zwei Umgebungsvariablen festlegen: *ORACLE_HOME* und *ORACLE_SID*.
 
-```bash
-# Add ORACLE_HOME. 
-export ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1 
-# Add ORACLE_SID. 
-export ORACLE_SID=cdb1 
-```
+    ```bash
+        ORACLE_SID=cdb1; export ORACLE_SID
+    ```
+
+    Sie können ORACLE_HOME- und ORACLE_SID-Variablen auch der BASHRC-Datei hinzufügen. So werden die Umgebungsvariablen für zukünftige Anmeldungen gespeichert. Bestätigen Sie mithilfe des Editors Ihrer Wahl, dass die folgenden Anweisungen zur `~/.bashrc`-Datei hinzugefügt wurden.
+
+    ```bash
+    # Add ORACLE_SID. 
+    export ORACLE_SID=cdb1 
+    ```
 
 ## <a name="oracle-em-express-connectivity"></a>Konnektivität mit Oracle EM Express
 

@@ -1,23 +1,26 @@
 ---
 title: 'Schnellstart: Erkennen von Freihandeingaben mit der Freihanderkennungs-REST-API und C#'
 titleSuffix: Azure Cognitive Services
-description: In diesem Schnellstart erfahren Sie, wie Sie die Freihanderkennungs-REST-API verwenden, um Freihandstriche zu erkennen.
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie die Freihanderkennungs-REST-API und C# verwenden, um Freihandstriche zu erkennen.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 06/30/2020
+ms.date: 08/24/2020
 ms.author: aahi
-ms.openlocfilehash: f61566c3d5efa7f973141253353fde7e4893bc6e
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a4bb02f11c7a9a75ddc96e0ee8e9f4b868f8ade5
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986073"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051592"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>Schnellstart: Erkennen von Freihandeingaben mit der Freihanderkennungs-REST-API und C#
+
+[!INCLUDE [ink-recognizer-deprecation](../includes/deprecation-note.md)]
 
 In diesem Schnellstart werden die ersten Schritte zum Senden von Freihandstrichen an die Freihanderkennungs-API erläutert. Diese C#-Anwendung sendet eine API-Anforderung, die JSON-formatierte Freihandstrichdaten enthält, und erhält die Antwort.
 

@@ -13,18 +13,18 @@ ms.topic: quickstart
 ms.date: 12/24/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: a1adf167bb23b3d66f6dcbd07794145f7c817105
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b856381e8d085c6839effd1de6d9867b214d24ee
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322158"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020387"
 ---
 # <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>Schnellstart: Sammeln von Daten von einem Linux-Computer in einer Hybridumgebung mit Azure Monitor
 
 [Azure Monitor](../overview.md) kann Daten direkt von Ihren physischen oder virtuellen Linux-Computern in Ihrer Umgebung zur detaillierten Analyse und Korrelation in einem Log Analytics-Arbeitsbereich sammeln. Wenn Sie den [Log Analytics-Agent](../platform/log-analytics-agent.md) installieren, kann Azure Monitor Daten aus einem Datencenter oder einer anderen Cloudumgebung sammeln. Diese Schnellstartanleitung zeigt Ihnen, wie Sie in wenigen einfachen Schritten Daten von Ihrem Linux-Server konfigurieren und sammeln. Informationen zu virtuellen Azure-Linux-Computern finden Sie unter [Sammeln von Daten über virtuelle Azure-Computer](./quick-collect-azurevm.md).  
 
-Informationen zur unterstützten Konfiguration finden Sie unter [Unterstützte Windows-Betriebssysteme](../platform/log-analytics-agent.md#supported-linux-operating-systems) und [Netzwerkfirewall-Konfiguration](../platform/log-analytics-agent.md#network-requirements).
+Informationen zur unterstützten Konfiguration finden Sie unter [Unterstützte Betriebssysteme](../platform/agents-overview.md#supported-operating-systems) und [Netzwerkfirewall-Konfiguration](../platform/log-analytics-agent.md#network-requirements).
  
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 

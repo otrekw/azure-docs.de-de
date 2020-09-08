@@ -1,19 +1,19 @@
 ---
 title: 'Schnellstart: Erstellen einer Azure Firewall-Instanz sowie von IP-Adressgruppen: Resource Manager-Vorlage'
-description: Hier erfahren Sie, wie Sie mit einer Azure Resource Manager-Vorlage (ARM-Vorlage) eine Azure Firewall-Instanz und IP-Adressgruppen erstellen.
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mit einer Azure Resource Manager-Vorlage (ARM-Vorlage) eine Azure Firewall-Instanz und IP-Adressgruppen erstellen.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 04/06/2020
+ms.date: 08/28/2020
 ms.author: victorh
-ms.openlocfilehash: 97d1c14a61e98f98e45e25668841cee1ad9ce0d1
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 7966cbe44fc8984cf3c3d9e2d08a11bf599ff158
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705468"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079131"
 ---
 # <a name="quickstart-create-an-azure-firewall-and-ip-groups---arm-template"></a>Schnellstart: Erstellen einer Azure Firewall-Instanz sowie von IP-Adressgruppen: ARM-Vorlage
 

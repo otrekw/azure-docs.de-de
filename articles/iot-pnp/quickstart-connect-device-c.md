@@ -7,12 +7,12 @@ ms.date: 07/14/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 9011c56096d61e50ae3655a76a396ec3f2dd97c5
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 65b35c30d796f733e91c71e569634b61f9f7c52b
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352614"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959288"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-running-on-linux-or-windows-to-iot-hub-c"></a>Schnellstart: Verbinden einer unter Linux oder Windows ausgeführten IoT Plug & Play Preview-Beispielgeräteanwendung mit IoT Hub (C)
 
@@ -117,7 +117,10 @@ Sie verwenden das Geräte-SDK, um den enthaltenen Beispielcode zu erstellen:
 
 Gehen Sie folgendermaßen vor, um die Beispielanwendung im SDK auszuführen, mit der ein IoT Plug & Play-Gerät simuliert wird, das Telemetriedaten an Ihren IoT-Hub sendet:
 
-Erstellen Sie die Umgebungsvariable **IOTHUB_DEVICE_CONNECTION_STRING** zum Speichern der Geräteverbindungszeichenfolge, die Sie sich zuvor notiert haben.
+Erstellen Sie zwei Umgebungsvariablen, um das Beispiel für die Verwendung einer Verbindungszeichenfolge zur Verbindungsherstellung mit Ihrem IoT-Hub zu konfigurieren:
+
+- **IOTHUB_DEVICE_SECURITY_TYPE** mit dem Wert `"connectionString"`
+- **IOTHUB_DEVICE_CONNECTION_STRING** zum Speichern der zuvor notierten Geräteverbindungszeichenfolge
 
 Navigieren Sie im Ordner _cmake_ zu dem Ordner, der die ausführbare Datei enthält, und führen Sie diese aus:
 
@@ -137,9 +140,9 @@ cd  iothub_client\samples\pnp\pnp_simple_thermostat\Debug\pnp_simple_thermostat.
 
 Das Gerät ist jetzt bereit zum Empfangen von Befehlen und Eigenschaftsaktualisierungen, und es hat damit begonnen, Telemetriedaten an den Hub zu senden. Behalten Sie die Ausführung des Beispiels während der nächsten Schritte bei.
 
-## <a name="use-azure-iot-explorer-to-validate-the-code"></a>Verwenden von Azure IoT-Explorer zum Überprüfen des Codes
+## <a name="use-azure-iot-explorer-to-validate-the-code"></a>Überprüfen des Codes mithilfe von Azure IoT-Explorer
 
-Verwenden Sie nach dem Starten des Geräteclientbeispiels das Tool Azure IoT-Explorer zur Überprüfung, ob es funktioniert.
+Überprüfen Sie nach dem Start des Geräteclientbeispiels mithilfe von Azure IoT-Explorer, ob das Beispiel funktioniert.
 
 [!INCLUDE [iot-pnp-iot-explorer.md](../../includes/iot-pnp-iot-explorer.md)]
 

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 276b6cc8038a7ac8e0ddd27a3c3eb7c87f05ed1b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 5854ef57a08218fee4479eb9e075824f4a1ff781
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795897"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376382"
 ---
 # <a name="administrative-units-management-in-azure-active-directory-preview"></a>Verwalten von Verwaltungseinheiten in Azure Active Directory (Vorschau)
 
@@ -27,7 +27,7 @@ In diesem Artikel werden Verwaltungseinheiten in Azure Active Directory (Azure A
 
 Verwaltungseinheiten ermöglichen es Ihnen, Administratorberechtigungen zu erteilen, die auf eine von Ihnen definierte Abteilung, Region oder ein anderes Segment Ihrer Organisation beschränkt sind. Mithilfe von Verwaltungseinheiten können Sie Berechtigungen an regionale Administratoren delegieren oder Richtlinien auf granularer Ebene festlegen. Beispielsweise kann ein Benutzerkontoadministrator nur in seiner Verwaltungseinheit Profilinformationen aktualisieren, Kennwörter zurücksetzen und Benutzern Lizenzen zuweisen.
 
- Beispielsweise ist die [Helpdeskadministrator](directory-assign-admin-roles.md#helpdesk-administrator)-Rolle beim Delegieren an regionale Supportspezialisten auf die Verwaltung nur der Benutzer beschränkt, die sich in der von ihnen unterstützten Region befinden.
+Beispielsweise ist die [Helpdeskadministrator](directory-assign-admin-roles.md#helpdesk-administrator)-Rolle beim Delegieren an regionale Supportspezialisten auf die Verwaltung nur der Benutzer beschränkt, die sich in der von ihnen unterstützten Region befinden.
 
 ## <a name="deployment-scenario"></a>Bereitstellungsszenario
 
@@ -54,7 +54,7 @@ In dieser Vorschauversion können Sie Verwaltungseinheiten im Azure-Portal, mith
 
 Verwaltungseinheiten können zum logischen Gruppieren von Azure AD-Ressourcen verwendet werden. Beispielsweise kann es für eine Organisation mit einer global verteilten IT-Abteilung sinnvoll sein, Verwaltungseinheiten zu erstellen, die diese geografischen Begrenzungen definieren. In einem anderen Szenario, in dem eine multinationale Organisation über verschiedene „Unterorganisationen“ verfügt, die in ihrem Betrieb halbautonom sind, kann jede Unterorganisation durch eine Verwaltungseinheit dargestellt werden.
 
-Die Kriterien für die Erstellung von Verwaltungseinheiten richten sich nach den besonderen Anforderungen eines Unternehmens. Verwaltungseinheiten sind eine gängige Methode, um die Struktur übergreifend über M365-Dienste hinweg zu definieren. Wir empfehlen, bei der Vorbereitung der Verwaltungseinheiten deren Verwendung über M365-Dienste hinweg im Blick zu haben. Um Verwaltungseinheiten optimal zu nutzen, könnten Sie übergreifend über M365-Dienste gemeinsame Ressourcen in einer Verwaltungseinheit verknüpfen.
+Die Kriterien für die Erstellung von Verwaltungseinheiten richten sich nach den besonderen Anforderungen eines Unternehmens. Verwaltungseinheiten sind eine gängige Methode, um die Struktur in Microsoft 365-Diensten zu definieren. Wir empfehlen, bei der Vorbereitung der Verwaltungseinheiten deren Verwendung über Microsoft 365-Dienste hinweg im Blick zu haben. Um Verwaltungseinheiten optimal zu nutzen, könnten Sie in Microsoft 365-Diensten gemeinsame Ressourcen in einer Verwaltungseinheit verknüpfen.
 
 Sie können davon ausgehen, dass die Erstellung von Verwaltungseinheiten in der Organisation die folgenden Phasen durchläuft:
 
@@ -64,7 +64,7 @@ Sie können davon ausgehen, dass die Erstellung von Verwaltungseinheiten in der 
 
 ## <a name="currently-supported-scenarios"></a>Derzeit unterstützte Szenarien
 
-Globale Administratoren oder Administratoren für privilegierte Rollen können das Azure AD-Portal zum Erstellen von Verwaltungseinheiten, zum Hinzufügen von Benutzern als Mitglieder von Verwaltungseinheiten und zum anschließenden Zuweisen von IT-Mitarbeitern zu auf die Verwaltungseinheit bezogenen Administratorrollen verwenden. Die bereichsbezogenen Administratoren können dann das Office 365-Portal für die grundlegende Verwaltung von Benutzern in ihren Verwaltungseinheiten verwenden.
+Globale Administratoren oder Administratoren für privilegierte Rollen können das Azure AD-Portal zum Erstellen von Verwaltungseinheiten, zum Hinzufügen von Benutzern als Mitglieder von Verwaltungseinheiten und zum anschließenden Zuweisen von IT-Mitarbeitern zu auf die Verwaltungseinheit bezogenen Administratorrollen verwenden. Die Administratoren für Verwaltungseinheiten können dann Microsoft 365 Admin Center für die grundlegende Verwaltung von Benutzern in ihren Verwaltungseinheiten verwenden.
 
 Auch Gruppen können der Verwaltungseinheit als Mitglieder hinzugefügt werden. Ein auf den Bereich der Verwaltungseinheit bezogener Gruppenadministrator kann diese mithilfe von PowerShell und Microsoft Graph oder im Azure AD-Portal verwalten.
 
@@ -99,7 +99,7 @@ Auf den Bereich der Verwaltungseinheit bezogene Verwaltung der Gruppenlizenzieru
 >
 > Auf den Bereich der Verwaltungseinheit bezogene Administratoren können keine Regeln für dynamische Gruppenmitgliedschaften verwalten.
 
-Der mithilfe von Verwaltungseinheiten angewendete Bereich gilt nur für Verwaltungsberechtigungen. Verwaltungseinheiten verhindern nicht, dass Mitglieder oder Administratoren ihre [Standardbenutzerberechtigungen](../fundamentals/users-default-permissions.md) verwenden, um zu anderen Benutzern, Gruppen oder Ressourcen außerhalb der Verwaltungseinheit zu navigieren. Im Office 365-Portal werden Benutzer außerhalb der Verwaltungseinheiten eines bereichsbezogenen Administrators zwar herausgefiltert, können aber zu anderen Benutzern im Azure AD-Portal, in PowerShell und in anderen Microsoft-Diensten navigieren.
+Der mithilfe von Verwaltungseinheiten angewendete Bereich gilt nur für Verwaltungsberechtigungen. Verwaltungseinheiten verhindern nicht, dass Mitglieder oder Administratoren ihre [Standardbenutzerberechtigungen](../fundamentals/users-default-permissions.md) verwenden, um zu anderen Benutzern, Gruppen oder Ressourcen außerhalb der Verwaltungseinheit zu navigieren. In Microsoft 365 Admin Center werden Benutzer außerhalb der Verwaltungseinheiten eines bereichsbezogenen Administrators zwar herausgefiltert, können aber zu anderen Benutzern im Azure AD-Portal, in PowerShell und in anderen Microsoft-Diensten navigieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
