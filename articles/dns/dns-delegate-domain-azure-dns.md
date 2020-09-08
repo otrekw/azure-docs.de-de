@@ -7,18 +7,18 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: rohink
-ms.openlocfilehash: 8f29a2bbe0eb392927dd111b13e2260111ddd18e
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 207254164296d6ed3b0c412c4bf19322ca3ffc0c
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84710132"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077992"
 ---
 # <a name="tutorial-host-your-domain-in-azure-dns"></a>Tutorial: Hosten Ihrer Domäne in Azure DNS
 
 Sie können Azure DNS verwenden, um Ihre DNS-Domäne zu hosten und die DNS-Einträge zu verwalten. Indem Sie Ihre Domänen in Azure hosten, können Sie Ihre DNS-Einträge unter Verwendung der gleichen Anmeldeinformationen, APIs, Tools und Abrechnungsabläufe wie bei Ihren anderen Azure-Diensten verwalten.
 
-Nehmen wir an, Sie erwerben die Domäne „contoso.net“ von einer Domänennamen-Registrierungsstelle und erstellen dann eine Zone mit dem Namen „contoso.net“ in Azure DNS. Als Besitzer der Domäne bietet Ihre Registrierungsstelle Ihnen die Möglichkeit, die Namenservereinträge (NS-Einträge) für Ihre Domäne zu konfigurieren. Die Registrierungsstelle speichert die NS-Einträge in der übergeordneten Zone „.net“. Internetbenutzer auf der ganzen Welt, die DNS-Einträge in „contoso.net“ auflösen möchten, werden dann an Ihre Domäne in der Azure DNS-Zone weitergeleitet.
+Nehmen wir an, Sie erwerben die Domäne „contoso.net“ von einer Domänennamen-Registrierungsstelle und erstellen dann eine Zone mit dem Namen „contoso.net“ in Azure DNS. Als Besitzer der Domäne bietet Ihre Registrierungsstelle Ihnen die Möglichkeit, die Namenservereinträge (NS-Einträge) für Ihre Domäne zu konfigurieren. Die Registrierungsstelle speichert die NS-Einträge in der übergeordneten Zone „.NET“. Internetbenutzer auf der ganzen Welt, die DNS-Einträge in „contoso.net“ auflösen möchten, werden dann an Ihre Domäne in der Azure DNS-Zone weitergeleitet.
 
 
 In diesem Tutorial lernen Sie Folgendes:
@@ -36,7 +36,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Sie müssen über einen Domänennamen zum Testen verfügen, den Sie in Azure DNS hosten können. Sie müssen uneingeschränkte Kontrolle über diese Domäne haben. Das bedeutet, Sie müssen unter anderem die Namenservereinträge für die Domäne festlegen können.
 
-Die für dieses Tutorial verwendete Beispieldomäne lautet „contoso.net“. Verwenden Sie aber Ihren eigenen Domänennamen.
+In diesem Beispiel verweisen wir auf die übergeordnete Domäne **contoso.net**.
 
 ## <a name="create-a-dns-zone"></a>Erstellen einer DNS-Zone
 
@@ -45,14 +45,19 @@ Die für dieses Tutorial verwendete Beispieldomäne lautet „contoso.net“. Ve
    ![DNS-Zone](./media/dns-delegate-domain-azure-dns/openzone650.png)
 
 1. Wählen Sie **DNS-Zone erstellen** aus.
-1. Geben Sie auf der Seite **DNS-Zone erstellen** die folgenden Werte ein, und wählen Sie dann **Erstellen**:
+1. Geben Sie auf der Seite **DNS-Zone erstellen** die folgenden Werte ein, und wählen Sie dann **Erstellen**: z. B. **contoso.net**.
+      > [!NOTE] 
+      > Wenn die neue Zone, die Sie erstellen, eine untergeordnete Zone ist (z. B. übergeordnete Zone = contoso.net untergeordnete Zone = child.contoso.net), lesen Sie das Tutorial [Erstellen einer neuen untergeordneten DNS-Zone](./tutorial-public-dns-zones-child.md).
 
-   | **Einstellung** | **Wert** | **Details** |
-   |---|---|---|
-   |**Name**|[Ihr Domänenname] |Der von Ihnen erworbene Domänenname. In diesem Tutorial wird als Beispiel „contoso.net“ verwendet.|
-   |**Abonnement**|[Ihr Abonnement]|Wählen Sie ein Abonnement aus, in dem Sie die Zone erstellen möchten.|
-   |**Ressourcengruppe**|**Neu erstellen:** contosoRG|Erstellen Sie eine Ressourcengruppe. Der Name der Ressourcengruppe muss innerhalb des von Ihnen ausgewählten Abonnements eindeutig sein.<br>Der Standort der Ressourcengruppe hat keine Auswirkung auf die DNS-Zone. Der Standort der DNS-Zone ist immer „global“ und wird nicht angezeigt.|
-   |**Location**|East US||
+    | **Einstellung** | **Wert** | **Details** |
+    |--|--|--|
+    | **Projektdetails:**  |  |  |
+    | **Ressourcengruppe**    | ContosoRG | Erstellen Sie eine Ressourcengruppe. Der Name der Ressourcengruppe muss innerhalb des von Ihnen ausgewählten Abonnements eindeutig sein. Der Standort der Ressourcengruppe hat keine Auswirkung auf die DNS-Zone. Der Standort der DNS-Zone ist immer „global“ und wird nicht angezeigt. |
+    | **Instanzdetails:** |  |  |
+    | **Untergeordnete Zone**        | deaktiviert lassen | Da diese Zone **keine** [untergeordnete Zone](./tutorial-public-dns-zones-child.md) ist, sollten Sie diese Option nicht aktivieren. |
+    | **Name**              | contoso.net | Feld für den Namen der übergeordneten Zone      |
+    | **Location**          | East US | Dieses Feld basiert auf dem im Rahmen der Ressourcengruppenerstellung ausgewählten Speicherort.  |
+    
 
 ## <a name="retrieve-name-servers"></a>Abrufen von Namenservern
 

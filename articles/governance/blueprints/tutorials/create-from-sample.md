@@ -1,14 +1,14 @@
 ---
 title: 'Tutorial: Blaupausenbeispiel für neue Umgebung'
 description: In diesem Tutorial verwenden Sie ein Blaupausenbeispiel, um eine Blaupausendefinition zu erstellen, mit der zwei Ressourcengruppen eingerichtet werden und eine Rollenzuweisung für jede dieser Ressourcengruppen konfiguriert wird.
-ms.date: 03/25/2020
+ms.date: 08/27/2020
 ms.topic: tutorial
-ms.openlocfilehash: 79928822b41dfe0583afbeaf2f5f1a4a87dd3202
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 891240dcafe0cbfbfab4ff1fd415cba4abf682a5
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677088"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048731"
 ---
 # <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Tutorial: Erstellen einer Umgebung anhand eines Blaupausenbeispiels
 
@@ -122,7 +122,7 @@ Durch die Blaupausenzuweisung werden die in der Blaupausendefinition definierten
 
 1. Wählen Sie links die Seite **Zugewiesene Blaupausen** aus. Suchen Sie mithilfe der Filter nach der Blaupausenzuweisung _Assignment-two-rgs-with-role-assignments_, und wählen Sie sie aus.
 
-   Auf dieser Seite sehen Sie, dass die Zuweisung erfolgreich war. Zudem wird eine Liste der erstellten Ressourcen mit ihrem Blaupausensperrzustand angezeigt. Wenn die Zuweisung aktualisiert wird, werden in der Dropdownliste **Zuweisungsvorgang** Details zur Bereitstellung jeder Definitionsversion angezeigt. Sie können in der Liste auf jede erstellte Ressource klicken, um die Eigenschaftenseite der jeweiligen Ressource zu öffnen.
+   Auf dieser Seite sehen Sie, dass die Zuweisung erfolgreich war. Zudem wird eine Liste der erstellten Ressourcen mit ihrem Blaupausensperrzustand angezeigt. Wenn die Zuweisung aktualisiert wird, werden in der Dropdownliste **Zuweisungsvorgang** Details zur Bereitstellung jeder Definitionsversion angezeigt. Sie können in der Liste jede erstellte Ressource auswählen, um die Eigenschaftenseite der jeweiligen Ressource zu öffnen.
 
 1. Wählen Sie die Ressourcengruppe **ProductionRG** aus.
 

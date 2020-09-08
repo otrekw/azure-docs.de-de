@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
-ms.openlocfilehash: 5ff34b967e2ba42c01c904b8854ecfa04c394e17
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d20d527c35eac422efdc3719f153b6d7e8f4ef07
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551519"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017519"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-google-cloud-g-suite-connector"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Google Cloud (G Suite) Connector
 
@@ -225,15 +225,18 @@ In diesem Abschnitt ermöglichen Sie B.Simon die Verwendung des einmaligen Anmel
 
     b. Fügen Sie in Google Cloud (G Suite) Connector im Feld **URL der Anmeldeseite** den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    c. Fügen Sie in Google Cloud (G Suite) Connector im Feld **URL der Abmeldeseite** den Wert der **Abmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
+    c. Fügen Sie in Google Cloud (G Suite) Connector im Feld **URL der Abmeldeseite** den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    d. Fügen Sie in Google Cloud (G Suite) Connector im Feld **Kennwort-URL ändern** den Wert der **URL für Kennwortänderung** ein, den Sie aus dem Azure-Portal kopiert haben.
+    > [!NOTE]
+    > Google Cloud (G Suite) basiert auf dem SAML Logout-Protokoll. Daher müssen Sie im Feld **URL der Abmeldeseite** die SAML Logout-URL verwenden, d. h. den Wert der Anmelde-URL.
 
-    e. Laden Sie in Google Cloud (G Suite) Connector als **Verifizierungszertifikat** das Zertifikat hoch, das Sie aus dem Azure-Portal heruntergeladen haben.
+    d. Laden Sie in Google Cloud (G Suite) Connector als **Verifizierungszertifikat** das Zertifikat hoch, das Sie aus dem Azure-Portal heruntergeladen haben.   
 
-    f. Aktivieren/Deaktivieren Sie die Option **Use a domain specific issuer** (Domänenspezifischen Aussteller verwenden) gemäß dem Hinweis im obigen Abschnitt **Grundlegende SAML-Konfiguration** in Azure AD.
+    e. Aktivieren/Deaktivieren Sie die Option **Use a domain specific issuer** (Domänenspezifischen Aussteller verwenden) gemäß dem Hinweis im obigen Abschnitt **Grundlegende SAML-Konfiguration** in Azure AD.
 
-    g. Klicken Sie auf **Änderungen speichern**.
+    f. Fügen Sie in Google Cloud (G Suite) Connector im Feld **Kennwort-URL ändern** den Wert der **URL für Kennwortänderung** ein, den Sie aus dem Azure-Portal kopiert haben.
+
+    g. Klicken Sie auf **Speichern**.
 
 ### <a name="create-google-cloud-g-suite-connector-test-user"></a>Erstellen eines Google Cloud (G Suite) Connector-Testbenutzers
 

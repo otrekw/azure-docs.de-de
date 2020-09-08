@@ -3,12 +3,12 @@ title: 'Azure Event Hubs: Visualisieren von Datenanomalien in Echtzeitereignisse
 description: 'Tutorial: Visualisieren von Datenanomalien in Echtzeitereignissen, die an Microsoft Azure Event Hubs gesendet werden'
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 595c0e06750171c844249a77ecef16c84dc8ada5
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 1394f9bedfdfc3715090bdb8a9028d2654a1e4e3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85315622"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934054"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Tutorial: Visualisieren von Datenanomalien in Echtzeitereignissen, die an Azure Event Hubs gesendet werden
 
@@ -308,7 +308,7 @@ Klicken Sie im Stream Analytics-Auftrag auf **Starten**, **Jetzt** und dann erne
 
    ![Screenshot: Angeben des Datasets](./media/event-hubs-tutorial-visualize-anomalies/power-bi-dashboard-select-dataset.png)
 
-9. Wählen Sie als Visualisierungstyp die Option **Karte**. Klicken Sie unter **Felder** auf **Wert hinzufügen**, und wählen Sie dann **fraudulentuses**.
+9. Wählen Sie als Visualisierungstyp die Option **Karte**. Klicken Sie unter **Felder** auf **Wert hinzufügen**, und wählen Sie dann `fraudulentuses`.
 
    ![Screenshot: Angeben des Visualisierungstyps und der Felder](./media/event-hubs-tutorial-visualize-anomalies/power-bi-add-card-tile.png)
 
@@ -329,9 +329,9 @@ Klicken Sie im Stream Analytics-Auftrag auf **Starten**, **Jetzt** und dann erne
 
 12. Wählen Sie unter **Visualisierungstyp** die Option **Liniendiagramm**.
 
-13. Klicken Sie unter **Achse** auf **Wert hinzufügen**, und wählen Sie dann **windowend**. 
+13. Klicken Sie unter **Achse** auf **Wert hinzufügen**, und wählen Sie dann `windowend`. 
 
-14. Klicken Sie unter **Werte** auf **Wert hinzufügen**, und wählen Sie **fraudulentuses**.
+14. Klicken Sie unter **Werte** auf **Wert hinzufügen**, und wählen Sie dann `fraudulentuses`.
 
 15. Wählen Sie unter **Das anzuzeigende Zeitfenster** die letzten fünf Minuten aus. Klicken Sie auf **Weiter**.
 
@@ -378,6 +378,6 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 Fahren Sie mit dem nächsten Artikel fort, um mehr über Azure Event Hubs zu erfahren.
 
 > [!div class="nextstepaction"]
-> [Erste Schritte beim Senden von Nachrichten an Azure Event Hubs in .NET Standard](get-started-dotnet-standard-send-v2.md)
+> [Erste Schritte beim Senden von Nachrichten an Azure Event Hubs in .NET Standard](event-hubs-dotnet-standard-getstarted-send.md)
 
 [kostenloses Konto erstellen]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio

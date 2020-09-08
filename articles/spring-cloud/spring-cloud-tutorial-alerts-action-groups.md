@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: c31c52d278c1e40b18b3308ca154b934d060d403
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 856bace0c67c5afedd6305158326af46037e7f21
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071178"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299225"
 ---
 # <a name="tutorial-how-to-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>Tutorial: Überwachen von Spring Cloud-Ressourcen mithilfe von Warnungen und Aktionsgruppen
 
@@ -24,7 +24,7 @@ Zum Einrichten einer Warnungspipeline müssen zwei Schritte ausgeführt werden:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zusätzlich zu den Azure Spring-Anforderungen verwenden die Verfahren in diesem Tutorial eine bereitgestellte Azure Spring Cloud-Instanz.  Nutzen Sie einen [Schnellstart](spring-cloud-quickstart-launch-app-cli.md), um erste Schritte auszuführen.
+Zusätzlich zu den Azure Spring-Anforderungen verwenden die Verfahren in diesem Tutorial eine bereitgestellte Azure Spring Cloud-Instanz.  Nutzen Sie einen [Schnellstart](spring-cloud-quickstart.md), um erste Schritte auszuführen.
 
 Die folgenden Prozeduren initialisieren sowohl **Aktionsgruppe** als auch **Warnung** ausgehend von der Option **Warnungen** im linken Navigationsbereich einer Spring Cloud-Instanz. (Die Prozedur kann auch über die Seite **Monitor – Übersicht** im Azure-Portal gestartet werden.) 
 
@@ -76,11 +76,11 @@ Navigieren Sie zum Konfigurieren einer **Warnung** zurück zur Seite **Warnungen
 
 1. Wählen Sie eine Bedingung aus. In diesem Beispiel wird **System CPU Usage Percentage** (System-CPU-Auslastung in Prozent) verwendet.
 
-   ![Screenshot: „Neue Warnungsregel“ im Portal](media/alerts-action-groups/alerts-3-1.png)
+   ![Screenshot: „Neue Warnungsregel 2“ im Portal](media/alerts-action-groups/alerts-3-1.png)
 
 1. Scrollen Sie im Bereich **Signallogik konfigurieren** nach unten, um den zu überwachenden **Schwellenwert** festzulegen.
 
-   ![Screenshot: „Neue Warnungsregel“ im Portal](media/alerts-action-groups/alerts-3-2.png)
+   ![Screenshot: „Neue Warnungsregel 3“ im Portal](media/alerts-action-groups/alerts-3-2.png)
 
 1. Klicken Sie auf **Fertig**.
 
@@ -88,7 +88,7 @@ Ausführliche Informationen zu den für die Überwachung verfügbaren Bedingunge
 
  Klicken Sie unter **AKTIONEN** auf **Aktionsgruppe auswählen**. Wählen Sie im Bereich **AKTIONEN** die zuvor definierte **Aktionsgruppe** aus.
 
-   ![Screenshot: „Neue Warnungsregel“ im Portal](media/alerts-action-groups/alerts-3-3.png) 
+   ![Screenshot: „Neue Warnungsregel 4“ im Portal](media/alerts-action-groups/alerts-3-3.png) 
 
 1. Scrollen Sie nach unten, und geben Sie unter **WARNUNGSDETAILS** einen Namen für die Warnungsregel ein.
 
@@ -96,15 +96,15 @@ Ausführliche Informationen zu den für die Überwachung verfügbaren Bedingunge
 
 1. Klicken Sie auf **Warnungsregel erstellen**.
 
-   ![Screenshot: „Neue Warnungsregel“ im Portal](media/alerts-action-groups/alerts-3-4.png)
+   ![Screenshot: „Neue Warnungsregel 5“ im Portal](media/alerts-action-groups/alerts-3-4.png)
 
 Vergewissern Sie sich, dass die neue Warnungsregel aktiviert ist.
 
-   ![Screenshot: „Neue Warnungsregel“ im Portal](media/alerts-action-groups/alerts-4.png)
+   ![Screenshot: „Neue Warnungsregel 6“ im Portal](media/alerts-action-groups/alerts-4.png)
 
 Eine Regel kann auch über die Seite **Metriken** erstellt werden:
 
-   ![Screenshot: „Neue Warnungsregel“ im Portal](media/alerts-action-groups/alerts-5.png)
+   ![Screenshot: „Neue Warnungsregel 7“ im Portal](media/alerts-action-groups/alerts-5.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

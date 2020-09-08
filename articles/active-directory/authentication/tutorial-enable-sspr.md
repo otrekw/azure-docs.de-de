@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4cdeff5e08813140c45d0a30877c3789d1bc21b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 30a51f4b07f62b6e3491f74de78ea0d04bbb1775
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718848"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399972"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>Tutorial: Ermöglichen der Kontoentsperrung oder Kennwortzurücksetzung für Benutzer mit der Self-Service-Kennwortzurücksetzung von Azure Active Directory
 
@@ -37,7 +37,8 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Für dieses Tutorial benötigen Sie die folgenden Ressourcen und Berechtigungen:
 
-* Einen funktionierenden Azure AD-Mandanten mit mindestens einer aktivierten Azure AD Premium P1- oder -Testlizenz.
+* Einen funktionierenden Azure AD-Mandanten mit mindestens einer aktivierten Azure Active Directory Free-Lizenz oder -Testlizenz. Im Free-Tarif funktioniert SSPR nur für Cloudbenutzer in Azure AD.
+    * Für spätere Tutorials in dieser Reihe ist eine Azure AD Premium P1-Lizenz oder -Testlizenz für das lokale Kennwortrückschreiben erforderlich.
     * Erstellen Sie ggf. [ein kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Ein Konto mit Berechtigungen vom Typ *Globaler Administrator*
 * Ein Benutzer ohne Administratorrechte mit einem Ihnen bekannten Kennwort, wie z. B. *testuser*. In diesem Tutorial testen Sie SSPR für Endbenutzer mit diesem Konto.

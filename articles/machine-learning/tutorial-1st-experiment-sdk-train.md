@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: tutorial
 ms.author: sgilley
 author: sdgilley
-ms.date: 02/10/2020
+ms.date: 08/25/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: be8f0c85f62779dec9231a9f44155d4608e88b52
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: fb380e4b71ba68daf694ab725c41be64f066805e
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852700"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854927"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Tutorial: Trainieren Ihres ersten ML-Modells
 
@@ -43,21 +43,24 @@ In diesem Teil des Tutorials führen Sie den Code in der Jupyter Notebook-Beisp
 
 1. Öffnen Sie in Ihrem Ordner **tutorial-1st-experiment-sdk-train.ipynb**, wie in [Teil 1](tutorial-1st-experiment-sdk-setup.md#open) veranschaulicht.
 
-
-> [!Warning]
-> Erstellen Sie **kein** *neues* Notebook über die Jupyter-Schnittstelle! Das Notebook *tutorials/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb* enthält **sämtlichen Code und alle Daten**, die für dieses Tutorial benötigt werden.
+Erstellen Sie **kein** *neues* Notebook über die Jupyter-Schnittstelle! Das Notebook *tutorials/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb* enthält **sämtlichen Code und alle Daten**, die für dieses Tutorial benötigt werden.
 
 ## <a name="connect-workspace-and-create-experiment"></a>Herstellen einer Verbindung für den Arbeitsbereich und Erstellen des Experiments
 
-> [!Important]
-> Der Rest dieses Artikels enthält denselben Inhalt, den Sie auch im Notebook sehen.  
->
-> Wechseln Sie nun zur Jupyter Notebook-Instanz, wenn Sie während der Ausführung des Codes mitlesen möchten. 
-> Klicken Sie zum Ausführen einer einzelnen Codezelle in einem Notebook auf die gewünschte Codezelle, und drücken Sie **UMSCHALT+EINGABE**. Oder führen Sie das gesamte Notebook aus, indem Sie auf der oberen Symbolleiste **Alle ausführen** auswählen.
+<!-- nbstart https://raw.githubusercontent.com/Azure/MachineLearningNotebooks/master/tutorials/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb -->
 
-Importieren Sie die Klasse `Workspace`, und laden Sie Ihre Abonnementinformationen aus der Datei `config.json` mithilfe der Funktion `from_config().` Diese Funktion durchsucht standardmäßig das aktuelle Verzeichnis nach der JSON-Datei. Sie können jedoch auch einen Pfadparameter angeben, um auf die Datei zu verweisen: `from_config(path="your/file/path")`. Bei einem cloudbasierten Notebook-Server befindet sich die Datei automatisch im Stammverzeichnis.
+> [!TIP]
+> Inhalt von _tutorial-1st-experiment-sdk-train.ipynb_. Wechseln Sie nun zur Jupyter Notebook-Instanz, wenn Sie während der Ausführung des Codes mitlesen möchten. Klicken Sie zum Ausführen einer einzelnen Codezelle in einem Notebook auf die gewünschte Codezelle, und drücken Sie **UMSCHALT+EINGABE**. Oder führen Sie das gesamte Notebook aus, indem Sie auf der oberen Symbolleiste **Alle ausführen** auswählen.
 
-Falls durch den folgenden Code eine zusätzliche Authentifizierung angefordert wird, fügen Sie den Link einfach in einen Browser ein, und geben Sie das Authentifizierungstoken ein.
+
+Importieren Sie die Klasse `Workspace`, und laden Sie Ihre Abonnementinformationen aus der Datei `config.json` mithilfe der Funktion `from_config().` Diese Funktion durchsucht standardmäßig das aktuelle Verzeichnis nach der JSON-Datei. Sie können jedoch auch einen Pfadparameter angeben, um auf die Datei zu verweisen: `from_config(path="your/file/path")`. Wenn Sie dieses Notebook auf einem cloudbasierten Notebook-Server in Ihrem Arbeitsbereich ausführen, befindet sich die Datei automatisch im Stammverzeichnis.
+
+Falls durch den folgenden Code eine zusätzliche Authentifizierung angefordert wird, fügen Sie den Link einfach in einen Browser ein, und geben Sie das Authentifizierungstoken ein. Wenn mehrere Mandanten mit Ihrem Benutzer verknüpft sind, müssen Sie außerdem die folgenden Zeilen hinzufügen:
+```
+from azureml.core.authentication import InteractiveLoginAuthentication
+interactive_auth = InteractiveLoginAuthentication(tenant_id="your-tenant-id")
+Additional details on authentication can be found here: https://aka.ms/aml-notebook-auth 
+```
 
 ```python
 from azureml.core import Workspace
@@ -105,16 +108,16 @@ alphas = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
 for alpha in alphas:
     run = experiment.start_logging()
     run.log("alpha_value", alpha)
-
+    
     model = Ridge(alpha=alpha)
     model.fit(X=X_train, y=y_train)
     y_pred = model.predict(X=X_test)
     rmse = math.sqrt(mean_squared_error(y_true=y_test, y_pred=y_pred))
     run.log("rmse", rmse)
-
+    
     model_name = "model_alpha_" + str(alpha) + ".pkl"
     filename = "outputs/" + model_name
-
+    
     joblib.dump(value=model, filename=filename)
     run.upload_file(name=model_name, path_or_stream=filename)
     run.complete()
@@ -162,7 +165,7 @@ for run in experiment.get_runs():
     # each logged metric becomes a key in this returned dict
     run_rmse = run_metrics["rmse"]
     run_id = run_details["runId"]
-
+    
     if minimum_rmse is None:
         minimum_rmse = run_rmse
         minimum_rmse_runid = run_id
@@ -172,15 +175,15 @@ for run in experiment.get_runs():
             minimum_rmse_runid = run_id
 
 print("Best run_id: " + minimum_rmse_runid)
-print("Best run_id rmse: " + str(minimum_rmse))
+print("Best run_id rmse: " + str(minimum_rmse))    
 ```
-
 ```output
 Best run_id: 864f5ce7-6729-405d-b457-83250da99c80
 Best run_id rmse: 57.234760283951765
 ```
 
 Rufen Sie anhand der ID der besten Ausführung die entsprechende Ausführung ab. Verwenden Sie dazu den Konstruktor `Run` zusammen mit dem Experimentobjekt. Rufen Sie anschließend `get_file_names()` auf, um alle Dateien anzuzeigen, die für diese Ausführung zum Download zur Verfügung stehen. In diesem Fall wurde im Rahmen des Trainings für jede Ausführung nur eine einzelne Datei hochgeladen.
+
 
 ```python
 from azureml.core import Run
@@ -194,9 +197,11 @@ print(best_run.get_file_names())
 
 Rufen Sie `download()` für das Ausführungsobjekt auf, und geben Sie dabei den Namen der herunterzuladenden Modelldatei an. Diese Funktion verwendet standardmäßig das aktuelle Verzeichnis als Zielverzeichnis für den Download.
 
+
 ```python
 best_run.download_file(name="model_alpha_0.1.pkl")
 ```
+<!-- nbend -->
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 08/14/2020
-ms.openlocfilehash: 409f143ce67e301e3b2a973d8d2db80380fbd50e
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 104654a721912324cdc8ea636e8b4e75765e73f7
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258652"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268892"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Tutorial: Akzeptieren und Empfangen von Daten mithilfe von Azure Data Share  
 
@@ -38,7 +38,7 @@ Stellen Sie sicher, dass alle Voraussetzungen erfüllt sind, bevor Sie die Einla
 * Berechtigung zum Schreiben in das Speicherkonto (unter *Microsoft.Storage/storageAccounts/write*). Diese Berechtigung ist in der Rolle „Mitwirkender“ vorhanden. 
 * Berechtigung zum Hinzufügen einer Rollenzuweisung zum Speicherkonto (unter *Microsoft.Authorization/role assignments/write*). Diese Berechtigung ist in der Rolle „Besitzer“ vorhanden.  
 
-### <a name="receive-data-into-a-sql-based-source"></a>Empfangen von Daten in einer SQL-basierten Quelle:
+### <a name="receive-data-into-a-sql-based-target"></a>Empfangen von Daten in einem SQL-basierten Ziel:
 
 * Berechtigung zum Schreiben in Datenbanken auf dem SQL-Server (unter *Microsoft.Sql/servers/databases/write*). Diese Berechtigung ist in der Rolle „Mitwirkender“ vorhanden. 
 * Berechtigung zum Zugreifen auf die Azure SQL-Datenbank- oder Azure SQL Data Warehouse-Instanz für die verwaltete Identität der Datenfreigaberessource. Die Berechtigung kann mit folgenden Schritten gewährt werden: 
@@ -78,7 +78,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
    Wenn Sie eine Einladung direkt im Azure-Portal öffnen möchten, suchen Sie im Azure-Portal nach **Einladungen zu Data Share**. Dadurch gelangen Sie zur Liste der Data Share-Einladungen.
 
-   ![Einladungen](./media/invitations.png "Liste mit Einladungen") 
+   ![Liste mit Einladungen](./media/invitations.png "Liste mit Einladungen") 
 
 1. Wählen Sie die Freigabe aus, die Sie anzeigen möchten. 
 

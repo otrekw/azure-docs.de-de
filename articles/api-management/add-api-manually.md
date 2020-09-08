@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 644e29c3b5e37cd95280cfd2261e644b20bbda98
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6b8b7c0dbdce160a19b5bb5ecb67bf2fb0a204ee
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82203266"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89295261"
 ---
 # <a name="add-an-api-manually"></a>Manuelles Hinzufügen einer API
 
@@ -45,7 +45,7 @@ Bearbeiten Sie den folgenden Schnellstart: [Erstellen einer neuen Azure API Mana
 Zu diesem Zeitpunkt enthält API Management noch keine Vorgänge, die Vorgängen in Ihrer Back-End-API zugeordnet sind. Wenn Sie einen Vorgang aufrufen, der über das Back-End und nicht über API Management verfügbar gemacht wird, erhalten Sie den Fehler **404**.
 
 >[!NOTE] 
-> Wenn Sie eine API hinzufügen, macht APIM standardmäßig Vorgänge erst verfügbar, wenn Sie diese auf die Whitelist setzen. Dies gilt auch dann, wenn die API mit einem Back-End-Dienst verbunden ist. Um einen Vorgang Ihres Back-End-Diensts auf die Whitelist zu setzen, erstellen Sie einen APIM-Vorgang, der dem Back-End-Vorgang zugeordnet ist.
+> Wenn Sie eine API hinzufügen, macht APIM standardmäßig Vorgänge erst verfügbar, wenn Sie diese zulassen. Dies gilt auch dann, wenn die API mit einem Back-End-Dienst verbunden ist. Um einen Vorgang Ihres Back-End-Diensts zuzulassen, erstellen Sie einen APIM-Vorgang, der dem Back-End-Vorgang zugeordnet ist.
 
 ## <a name="add-and-test-an-operation"></a>Hinzufügen und Testen von Vorgängen
 

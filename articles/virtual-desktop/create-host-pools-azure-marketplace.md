@@ -3,15 +3,15 @@ title: 'Windows Virtual Desktop-Hostpool im Azure-Portal: Azure'
 description: Hier erfahren Sie, wie Sie einen Windows Virtual Desktop-Hostpool im Azure-Portal erstellen.
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 08/21/2020
+ms.date: 09/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 30101d4e9125b0ac283710ebb26205c2bb120766
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: b6d54c226dd3a156ff6164f87fc755aac3dd040c
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88755482"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322584"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Tutorial: Erstellen eines Hostpools mit dem Azure-Portal
 
@@ -47,6 +47,8 @@ Wenn Sie noch kein Azure-Abonnement haben, müssen Sie [ein Konto erstellen](htt
 Zum Erstellen des neuen Hostpools führen Sie zunächst die folgenden Schritte aus:
 
 1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com/) beim Azure-Portal an.
+   
+   >![HINWEIS] Wenn Sie sich beim US Gov-Portal anmelden, wechseln Sie stattdessen zu [https://portal.azure.us/](https://portal.azure.us/).
 
 2. Geben Sie **Windows Virtual Desktop** in die Suchleiste ein, und wählen Sie dann unter „Dienste“ den Eintrag **Windows Virtual Desktop** aus.
 
@@ -72,7 +74,7 @@ Zum Erstellen des neuen Hostpools führen Sie zunächst die folgenden Schritte a
       > [!div class="mx-imgBorder"]
       > ![Screenshot des Dropdownmenüs „Zuweisungstyp“. Der Benutzer hat „Automatisch“ ausgewählt.](media/assignment-type-field.png)
 
-9. Geben Sie bei Auswahl von **In Pool** die folgenden Informationen ein:
+9.  Geben Sie bei Auswahl von **In Pool** die folgenden Informationen ein:
 
      - Geben Sie für **Maximale Anzahl von Sitzungen** die Höchstanzahl von Benutzern ein, für die ein Lastenausgleich auf einem einzelnen Sitzungshost durchgeführt werden soll.
      - Wählen Sie für **Lastenausgleichsalgorithmus** je nach Nutzungsmuster „Breitenorientierter Lastenausgleich“ oder „Tiefenorientierter Lastenausgleich“ aus.
@@ -129,9 +131,11 @@ So richten Sie Ihre VM im Rahmen des Einrichtungsprozesses für den Hostpool ein
 
 7. Wählen Sie den gewünschten Typ für die Betriebssystemdatenträger Ihrer VMs aus: „SSD Standard“, „SSD Premium“ oder „HDD Standard“.
 
-8. Wählen Sie unter „Netzwerk und Sicherheit“ das **virtuelle Netzwerk** und das **Subnetz** aus, in dem Sie die von Ihnen erstellten virtuellen Computer platzieren möchten. Stellen Sie sicher, dass das virtuelle Netzwerk eine Verbindung mit dem Domänencontroller herstellen kann, da Sie die VMs im virtuellen Netzwerk der Domäne hinzufügen müssen. Wählen Sie als Nächstes aus, ob die VMs eine öffentliche IP-Adresse haben sollen. Wir empfehlen, **Nein** auszuwählen, weil eine private IP-Adresse sicherer ist.
+8. Wählen Sie unter „Netzwerk und Sicherheit“ das **virtuelle Netzwerk** und das **Subnetz** aus, in dem Sie die von Ihnen erstellten virtuellen Computer platzieren möchten. Stellen Sie sicher, dass das virtuelle Netzwerk eine Verbindung mit dem Domänencontroller herstellen kann, da Sie die VMs im virtuellen Netzwerk der Domäne hinzufügen müssen. Die DNS-Server des virtuellen Netzwerks, das Sie ausgewählt haben, sollten für die Verwendung der IP-Adresse des Domänencontrollers konfiguriert werden.
 
-9. Wählen Sie den gewünschten Sicherheitsgruppentyp aus: **Basic**, **Erweitert** oder **Keine**.
+9. Wählen Sie als Nächstes aus, ob die VMs eine öffentliche IP-Adresse haben sollen. Sie sollten **Nein** auswählen, weil eine private IP-Adresse sicherer ist.
+
+10. Wählen Sie den gewünschten Sicherheitsgruppentyp aus: **Basic**, **Erweitert** oder **Keine**.
 
     Bei Auswahl von **Basic** müssen Sie auswählen, ob ein Eingangsport geöffnet sein soll. Wählen Sie bei Auswahl von **Ja** in der Liste der Standardports einen Port aus, um eingehende Verbindungen zuzulassen.
 
@@ -143,11 +147,13 @@ So richten Sie Ihre VM im Rahmen des Einrichtungsprozesses für den Hostpool ein
 
     Wählen Sie bei Auswahl von **Erweitert** eine vorhandene Netzwerksicherheitsgruppe aus, die Sie bereits konfiguriert haben.
 
-10. Wählen Sie anschließend aus, ob die VMs einer bestimmten Domäne und Organisationseinheit beitreten sollen. Geben Sie bei Auswahl von **Ja** die jeweilige Domäne an. Sie können optional eine spezifische Organisationseinheit hinzufügen, in der die virtuellen Computer enthalten sein sollen. Wenn Sie **Nein** auswählen, werden die virtuellen Computer mit der Domäne verknüpft, die dem Suffix des **UPN für AD-Domänenbeitritt** entspricht.
+11. Wählen Sie anschließend aus, ob die VMs einer bestimmten Domäne und Organisationseinheit beitreten sollen. Geben Sie bei Auswahl von **Ja** die jeweilige Domäne an. Sie können optional eine spezifische Organisationseinheit hinzufügen, in der die virtuellen Computer enthalten sein sollen. Wenn Sie **Nein** auswählen, werden die virtuellen Computer mit der Domäne verknüpft, die dem Suffix des **UPN für AD-Domänenbeitritt** entspricht.
 
-11. Geben Sie unter „Administratorkonto“ die Anmeldeinformationen für den Active Directory-Domänenadministrator des virtuellen Netzwerks an, das Sie ausgewählt haben.
+  - Stellen Sie beim Angeben einer Organisationseinheit sicher, dass Sie den vollständigen Pfad (Distinguished Name) ohne Anführungszeichen verwenden.
 
-12. Klicken Sie auf **Weiter: Arbeitsbereich >** .
+12. Geben Sie unter „Administratorkonto“ die Anmeldeinformationen für den Active Directory-Domänenadministrator des virtuellen Netzwerks an, das Sie ausgewählt haben. Für dieses Konto kann die mehrstufige Authentifizierung(MFA) nicht aktiviert werden. Bei der Einbindung in eine Azure Active Directory Domain Services-Domäne (Azure AD DS) muss das Konto Teil der Gruppe „Azure AD DC-Administratoren“ sein, und das Kontokennwort muss in Azure AD DS gültig sein.
+
+13. Klicken Sie auf **Weiter: Arbeitsbereich >** .
 
 Damit sind Sie bereit für die nächste Phase der Einrichtung Ihres Hostpools: Registrieren Ihrer App-Gruppe in einem Arbeitsbereich.
 

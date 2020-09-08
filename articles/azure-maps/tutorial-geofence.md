@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: b88d9132ec1548c9d94fc418af35b55ac2836e96
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 3ea9923dd98a49b1533defa3e95616655b7ea78d
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121237"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299302"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Tutorial: Einrichten eines Geofence mit Azure Maps
 
@@ -258,15 +258,15 @@ Führen Sie die unten angegebenen Schritte aus, um ein Ereignisabonnement für d
 
 5. Wiederholen Sie die Schritte 1 bis 4 für den Logik-App-Ausgangsendpunkt, den Sie im vorherigen Abschnitt erstellt haben. Wählen Sie im dritten Schritt `Geofence Exited` als Ereignistyp aus.
 
-## <a name="use-search-geofence-get-api"></a>Verwenden der GET-API für die Geofencesuche
+## <a name="use-spatial-geofence-get-api"></a>Verwenden der Spatial Geofence-GET-API
 
-Als Nächstes verwenden wir die [GET-API für die Geofencesuche](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence), um E-Mail-Benachrichtigungen an den Baustellenleiter zu senden, wenn ein Gerät in den Geofencebereich gebracht oder daraus entfernt wird.
+Als Nächstes verwenden wir die [Spatial Geofence-GET-API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence), um E-Mail-Benachrichtigungen an den Baustellenleiter zu senden, wenn ein Gerät in den Geofencebereich gebracht oder daraus entfernt wird.
 
 Jedes Gerät verfügt über eine Geräte-ID (`deviceId`). In diesem Tutorial wird ein einzelnes Gerät mit der eindeutigen ID `device_1` nachverfolgt.
 
 Das folgende Diagramm zeigt die fünf Positionen des Geräts im Zeitverlauf – beginnend mit der *Startposition*, die sich außerhalb der Geofences befindet. Die *Startposition* ist in diesem Tutorial nicht definiert, da das Gerät dort nicht abgefragt wird.
 
-Wenn die [GET-API für die Geofencesuche](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) mit einer Geräteposition abgefragt wird, die angibt, dass das Gerät erstmals in den Geofencebereich gebracht oder daraus entfernt wurde, wird von Event Grid der entsprechende Logik-App-Endpunkt aufgerufen, um eine E-Mail-Benachrichtigung an den Baustellenleiter zu senden.
+Wenn die [Spatial Geofence-GET-API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) mit einer Geräteposition abgefragt wird, die angibt, dass das Gerät erstmals in den Geofencebereich gebracht oder daraus entfernt wurde, wird von Event Grid der entsprechende Logik-App-Endpunkt aufgerufen, um eine E-Mail-Benachrichtigung an den Baustellenleiter zu senden.
 
 In den folgenden Abschnitten werden jeweils HTTP GET-Anforderungen mit den fünf verschiedenen Positionskoordinaten des Geräts an die Geofencing-API übermittelt.
 

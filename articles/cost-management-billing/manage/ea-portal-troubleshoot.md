@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: d3199eb67e5672cd6f4a6d99219f184e7fbbdf6f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 5402ee3283e5ae11f43884b4002486e8bdefae2c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687398"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294406"
 ---
 # <a name="troubleshoot-azure-ea-portal-access"></a>Problembehandlung für den Zugriff auf das Azure EA-Portal
 
@@ -32,7 +32,7 @@ Das Azure EA-Portal wird verwendet, um Benutzern mit verschiedenen Authentifizi
 - Geschäfts- oder Schulkonto – Mandanten-übergreifend: Für Organisationen, die Active Directory mit Cloudverbund eingerichtet haben und über Konten in mehreren Mandanten verfügen.
 - Mischkonto: Diese Option ermöglicht das Hinzufügen von Benutzern mit einem Microsoft-Konto und/oder einem Geschäfts-, Schul- oder Unikonto.
 
-Das erste Geschäfts-, Schul- oder Unikonto, das der Registrierung hinzugefügt wird, bestimmt die _Standarddomäne_ (oder _Masterdomäne_). Wenn Sie ein Geschäfts-, Schul- oder Unikonto mit einem anderen Mandanten hinzufügen möchten, müssen Sie die Authentifizierungsebene unter der Registrierung in die mandantenübergreifende Authentifizierung ändern.
+Das erste Geschäfts-, Schul- oder Unikonto, das der Registrierung hinzugefügt wird, bestimmt die _Standarddomäne_. Wenn Sie ein Geschäfts-, Schul- oder Unikonto mit einem anderen Mandanten hinzufügen möchten, müssen Sie die Authentifizierungsebene unter der Registrierung in die mandantenübergreifende Authentifizierung ändern.
 
 So aktualisieren Sie die Authentifizierungsebene:
 

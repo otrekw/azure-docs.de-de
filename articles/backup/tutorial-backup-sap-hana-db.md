@@ -3,12 +3,12 @@ title: 'Tutorial: Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Compute
 description: In diesem Tutorial wird beschrieben, wie Sie SAP HANA-Datenbanken, die auf einem virtuellen Azure-Computer ausgeführt werden, in einem Azure Backup Recovery Services-Tresor sichern.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 50c71d58a2409d0062c414b4328eaf8a919e338b
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: b43fd5c432b06902de0a898fc4bb0f114143b3ba
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757488"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89375277"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Tutorial: Sichern von SAP HANA-Datenbanken auf einem virtuellen Azure-Computer
 
@@ -36,7 +36,9 @@ Führen Sie vor dem Konfigurieren von Sicherungen unbedingt die folgenden Schrit
   * Er sollte sich im Standardspeicher **hdbuserstore** befinden. Standard ist das Konto `<sid>adm`, unter dem SAP HANA installiert ist.
   * Für MDC sollte der Schlüssel auf den SQL-Port von **NAMESERVER** verweisen. Für SDC sollte er auf den SQL-Port von **INDEXSERVER** verweisen.
   * Es sollten Anmeldeinformationen zum Hinzufügen und Löschen von Benutzern vorhanden sein.
+  * Beachten Sie, dass dieser Schlüssel nach der erfolgreichen Ausführung des Vorregistrierungsskripts gelöscht werden kann.
 * Führen Sie das Skript für die SAP HANA-Sicherungskonfiguration (Vorregistrierungsskript) auf dem virtuellen Computer, auf dem HANA installiert ist, als Stammbenutzer aus. Mit [diesem Skript](https://aka.ms/scriptforpermsonhana) wird das HANA-System für die Sicherung vorbereitet. Weitere Informationen zum Vorregistrierungsskript finden Sie unter [Aufgaben des Vorregistrierungsskripts](#what-the-pre-registration-script-does).
+* Wenn Ihr HANA-Setup private Endpunkte verwendet, führen Sie das [Vorregistrierungsskript](https://aka.ms/scriptforpermsonhana) mit dem Parameter *-sn* oder *--skip-network-checks* aus.
 
 >[!NOTE]
 >Das Vorregistrierungsskript installiert **compat-unixODBC234** für SAP HANA-Workloads, die auf RHEL (7.4, 7.6 und 7.7) ausgeführt werden, sowie **unixODBC** für RHEL 8.1. [Dieses Paket befindet sich im Repository RHEL for SAP HANA (für RHEL 7 Server) Update Services für SAP-Lösungen (RPMs)](https://access.redhat.com/solutions/5094721).  Das Repository für ein Azure Marketplace RHEL-Image wäre **rhui-rhel-sap-hana-for-rhel-7-server-rhui-e4s-rpms**.
@@ -71,7 +73,7 @@ Wenn Sie Netzwerksicherheitsgruppen (NSG) verwenden, können Sie den ausgehenden
 
 1. Wählen Sie **Hinzufügen**. Geben Sie die erforderlichen Informationen zum Erstellen einer neuen Regel ein, wie unter [Einstellungen zu Sicherheitsregeln](../virtual-network/manage-network-security-group.md#security-rule-settings) beschrieben. Stellen Sie sicher, dass die Option **Ziel** auf *Diensttag* und **Zieldiensttag** auf *AzureBackup* festgelegt wurde.
 
-1. Klicken Sie auf **Hinzufügen**, um die neu erstellte Ausgangssicherheitsregel zu speichern.
+1. Wählen Sie **Hinzufügen** aus, um die neu erstellte Ausgangssicherheitsregel zu speichern.
 
 Auf ähnliche Weise können Sie ausgehende NSG-Sicherheitsregeln für Azure Storage und Azure AD erstellen. Weitere Informationen zu Diensttags finden Sie in [diesem Artikel](../virtual-network/service-tags-overview.md).
 
@@ -103,7 +105,7 @@ Beim Ausführen des Skripts für die Vorregistrierung wird Folgendes durchgefüh
 
 * Je nach Ihrer Linux-Distribution werden alle Pakete installiert bzw. aktualisiert, die vom Azure Backup-Agent benötigt werden.
 * Es werden Konnektivitätsprüfungen in ausgehender Richtung mit Azure Backup-Servern und abhängigen Diensten wie Azure Active Directory und Azure Storage durchgeführt.
-* Die Anmeldung bei Ihrem HANA-System erfolgt mit dem Benutzerschlüssel, der Teil der [Voraussetzungen](#prerequisites) ist. Der Benutzerschlüssel wird zum Erstellen eines Sicherungsbenutzers (AZUREWLBACKUPHANAUSER) im HANA-System verwendet und kann gelöscht werden, nachdem das Vorregistrierungsskript erfolgreich ausgeführt wurde.
+* Die Anmeldung bei Ihrem HANA-System erfolgt mit dem Benutzerschlüssel, der Teil der [Voraussetzungen](#prerequisites) ist. Der Benutzerschlüssel wird zum Erstellen eines Sicherungsbenutzers (AZUREWLBACKUPHANAUSER) im HANA-System verwendet und **kann gelöscht werden, nachdem das Vorregistrierungsskript erfolgreich ausgeführt wurde**.
 * AZUREWLBACKUPHANAUSER werden die folgenden erforderlichen Rollen und Berechtigungen zugewiesen:
   * DATABASE ADMIN (DATENBANKADMINISTRATOR, im Fall von MDC) und BACKUP ADMIN (SICHERUNGSADMINISTRATOR, im Fall von SDC): zum Erstellen neuer Datenbanken während der Wiederherstellung.
   * CATALOG READ: Lesen des Sicherungskatalogs
@@ -163,11 +165,11 @@ Der Recovery Services-Tresor wird jetzt erstellt.
 
 ## <a name="discover-the-databases"></a>Ermitteln der Datenbanken
 
-1. Klicken Sie im Tresor unter **Erste Schritte** auf **Sicherung**. Wählen Sie unter **Wo wird Ihre Workload ausgeführt?** den Eintrag **SAP HANA in Azure-VM** aus.
-2. Klicken Sie auf **Ermittlung starten**. Dadurch wird die Ermittlung nicht geschützter Linux-VMs in der Tresorregion initiiert. Der zu schützende virtuelle Azure-Computer wird angezeigt.
-3. Klicken Sie im Bereich **Virtuelle Computer auswählen** auf den Link zum Herunterladen des Skripts, das dem Azure Backup-Dienst die Berechtigungen zum Zugreifen auf die SAP HANA-VMs für die Ermittlung von Datenbanken erteilt.
+1. Wählen Sie im Tresor unter **Erste Schritte** die Option **Sicherung** aus. Wählen Sie unter **Wo wird Ihre Workload ausgeführt?** den Eintrag **SAP HANA in Azure-VM** aus.
+2. Wählen Sie **Ermittlung starten** aus. Dadurch wird die Ermittlung nicht geschützter Linux-VMs in der Tresorregion initiiert. Der zu schützende virtuelle Azure-Computer wird angezeigt.
+3. Wählen Sie im Bereich **Virtuelle Computer auswählen** den Link zum Herunterladen des Skripts aus, das dem Azure Backup-Dienst die Berechtigungen zum Zugreifen auf die SAP HANA-VMs für die Ermittlung von Datenbanken erteilt.
 4. Führen Sie das Skript auf jedem virtuellen Computer aus, auf dem die zu sichernden SAP HANA-Datenbanken gehostet werden.
-5. Wählen Sie nach dem Ausführen des Skripts auf der VM im Bereich **Virtuelle Computer auswählen** die VM aus. Klicken Sie dann auf **DBs ermitteln**.
+5. Wählen Sie nach dem Ausführen des Skripts auf der VM im Bereich **Virtuelle Computer auswählen** die VM aus. Wählen Sie dann **DBs ermitteln** aus.
 6. Azure Backup ermittelt alle SAP HANA-Datenbanken auf dem virtuellen Computer. Während der Ermittlung registriert Azure Backup den virtuellen Computer beim Tresor und installiert eine Erweiterung auf dem VM. Für die Datenbank wird kein Agent installiert.
 
    ![Ermitteln der Datenbanken](./media/tutorial-backup-sap-hana-db/database-discovery.png)
@@ -176,11 +178,11 @@ Der Recovery Services-Tresor wird jetzt erstellt.
 
 Nachdem die zu sichernden Datenbanken ermittelt wurden, aktivieren wir die Sicherung.
 
-1. Klicken Sie auf **Sicherung konfigurieren**.
+1. Wählen Sie **Sicherung konfigurieren** aus.
 
    ![Konfigurieren der Sicherung](./media/tutorial-backup-sap-hana-db/configure-backup.png)
 
-2. Wählen Sie unter **Elemente für die Sicherung auswählen** mindestens eine Datenbank aus, die Sie schützen möchten, und klicken Sie anschließend auf **OK**.
+2. Wählen Sie unter **Elemente für die Sicherung auswählen** mindestens eine Datenbank, die Sie schützen möchten, und anschließend **OK** aus.
 
    ![Auswählen von Elementen für die Sicherung](./media/tutorial-backup-sap-hana-db/select-items-to-backup.png)
 
@@ -188,9 +190,9 @@ Nachdem die zu sichernden Datenbanken ermittelt wurden, aktivieren wir die Siche
 
    ![Auswählen der Sicherungsrichtlinie](./media/tutorial-backup-sap-hana-db/backup-policy.png)
 
-4. Klicken Sie nach dem Erstellen der Richtlinie im Menü **Sicherung** auf **Sicherung aktivieren**.
+4. Wählen Sie nach dem Erstellen der Richtlinie im Menü **Sicherung** die Option **Sicherung aktivieren** aus.
 
-   ![Klicken auf „Sicherung aktivieren“](./media/tutorial-backup-sap-hana-db/enable-backup.png)
+   ![Auswählen von „Sicherung aktivieren“](./media/tutorial-backup-sap-hana-db/enable-backup.png)
 
 5. Verfolgen Sie den Fortschritt der Sicherungskonfiguration im Bereich **Benachrichtigungen** des Portals.
 
@@ -217,7 +219,7 @@ Legen Sie die Richtlinieneinstellungen wie folgt fest:
    * Wiederherstellungspunkte werden unter Berücksichtigung ihrer Beibehaltungsdauer mit einer Markierung versehen. Wenn Sie beispielsweise eine tägliche vollständige Sicherung wählen, wird pro Tag nur eine vollständige Sicherung ausgelöst.
    * Die Sicherung für einen bestimmten Tag wird auf Grundlage der wöchentlichen Beibehaltungsdauer und der entsprechenden Einstellung markiert und beibehalten.
    * Mit der monatlichen und jährlichen Beibehaltungsdauer verhält es sich ähnlich.
-4. Klicken Sie im Menü **Vollständige Sicherung** auf **OK**, um die Einstellungen zu übernehmen.
+4. Wählen Sie im Menü **Richtlinie für vollständige Sicherung** **OK** aus, um die Einstellungen zu übernehmen.
 5. Wählen Sie anschließend **Differenzielle Sicherung** aus, um eine Richtlinie für eine differenzielle Sicherung hinzuzufügen.
 6. Wählen Sie in **Richtlinie für differenzielle Sicherung** die Option **Aktivieren** aus, um die Einstellungen für Häufigkeit und Beibehaltung vorzunehmen. Wir haben eine differenzielle Sicherung mit den folgenden Angaben aktiviert: jeden **Sonntag** um **2:00 Uhr** mit einer Aufbewahrungsdauer von **30 Tagen**.
 
@@ -227,7 +229,7 @@ Legen Sie die Richtlinieneinstellungen wie folgt fest:
    >Inkrementelle Sicherungen werden derzeit nicht unterstützt.
    >
 
-7. Klicken Sie auf **OK**, um die Richtlinie zu speichern und zum Hauptmenü **Sicherungsrichtlinie** zurückzukehren.
+7. Wählen Sie **OK** aus, um die Richtlinie zu speichern und zum Hauptmenü **Sicherungsrichtlinie** zurückzukehren.
 8. Wählen Sie **Protokollsicherung** aus, um eine Richtlinie für eine Transaktionsprotokollsicherung hinzuzufügen.
    * **Protokollsicherung** ist standardmäßig auf **Aktivieren** festgelegt. Diese Option kann nicht deaktiviert werden, da SAP HANA alle Protokollsicherungen verwaltet.
    * Wir haben **2 Stunden** als Sicherungszeitplan und **15 Tage** als Aufbewahrungszeitraum angegeben.
@@ -238,8 +240,8 @@ Legen Sie die Richtlinieneinstellungen wie folgt fest:
    > Protokollsicherungen werden erst nach erfolgreichem Abschluss einer vollständigen Sicherung übertragen.
    >
 
-9. Klicken Sie auf **OK**, um die Richtlinie zu speichern und zum Hauptmenü **Sicherungsrichtlinie** zurückzukehren.
-10. Klicken Sie nach dem Definieren der Sicherungsrichtlinie auf **OK**.
+9. Wählen Sie **OK** aus, um die Richtlinie zu speichern und zum Hauptmenü **Sicherungsrichtlinie** zurückzukehren.
+10. Wählen Sie nach dem Definieren der Sicherungsrichtlinie **OK** aus.
 
 Sie haben nun erfolgreich eine Sicherung für Ihre SAP HANA-Datenbank(en) konfiguriert.
 

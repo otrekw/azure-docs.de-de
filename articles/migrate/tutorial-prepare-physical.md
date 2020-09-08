@@ -4,12 +4,12 @@ description: Es wird beschrieben, wie Sie die Bewertung/Migration von physischen
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 55e6039e5844c575808210cde7ee348f658b40ec
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: aba1608c9219e7e8dffe66344b04fa3f085b06f3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420786"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927373"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>Vorbereiten auf die Bewertung und Migration physischer Server zu Azure
 
@@ -40,6 +40,7 @@ Richten Sie Azure für die Verwendung mit Azure Migrate ein.
 **Erstellen eines Azure Migrate-Projekts** | Ihr Azure-Konto benötigt zum Erstellen eines Projekts Berechtigungen vom Typ „Mitwirkender“ oder „Besitzer“. 
 **Registrieren von Ressourcenanbietern (nur für die Bewertung)** | Azure Migrate verwendet eine schlanke Azure Migrate-Appliance, um Computer mit der Azure Migrate-Serverbewertung zu ermitteln und zu bewerten.<br/><br/> Bei der Applianceregistrierung werden Ressourcenanbieter bei dem Abonnement registriert, das in der Appliance ausgewählt wurde. [Weitere Informationen](migrate-appliance-architecture.md#appliance-registration)<br/><br/> Sie müssen über die Rolle „Mitwirkender“ oder „Besitzer“ für das Abonnement verfügen, um die Ressourcenanbieter zu registrieren.
 **Erstellen einer Azure AD-App (nur für die Bewertung)** | Bei der Registrierung der Appliance erstellt Azure Migrate eine Azure AD-App (Azure Active Directory) für die Kommunikation zwischen den auf der Appliance ausgeführten Agents und den entsprechenden Diensten in Azure. [Weitere Informationen](migrate-appliance-architecture.md#appliance-registration)<br/><br/> Sie benötigen Berechtigungen zum Erstellen von Azure AD-Apps (in der Rolle „Anwendungsentwickler“ verfügbar).
+**Erstellen einer Key Vault-Instanz** | Die Key Vault-Instanz wird als Teil der Applianceregistrierung erstellt und zur Verwaltung des Zertifikats verwendet, das während der Konfiguration auf die Appliance heruntergeladen wird.<br/><br/>Um Azure Migrate die Erstellung der Key Vault-Instanz zu ermöglichen, benötigt Ihr Azure-Konto Mitwirkender-Berechtigungen für die Ressourcengruppe, in der sich das Azure Migrate-Projekt befindet.
 
 
 ### <a name="assign-permissions-to-create-project"></a>Zuweisen von Berechtigungen für die Projekterstellung 

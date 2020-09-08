@@ -1,18 +1,18 @@
 ---
 title: 'Tutorial: Erstellen und Ändern einer Verbindung mit ExpressRoute'
-description: In diesem Tutorial wird das Erstellen, Bereitstellen, Überprüfen, Aktualisieren, Löschen und Aufheben der Bereitstellung einer ExpressRoute-Verbindung beschrieben.
+description: In diesem Tutorial erfahren Sie, wie Sie eine ExpressRoute-Verbindung erstellen, bereitstellen, überprüfen, aktualisieren, löschen und ihre Bereitstellung aufheben können.
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: tutorial
-ms.date: 10/20/2018
-ms.author: cherylmc
-ms.openlocfilehash: 686ac8013879eff8adc4476d56119bbb4a169900
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 09/01/2020
+ms.author: duau
+ms.openlocfilehash: 58c35b094d21dc562e61b4819c0d8e063908392d
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74813136"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322140"
 ---
 # <a name="tutorial-create-and-modify-an-expressroute-circuit"></a>Tutorial: Erstellen und Ändern einer ExpressRoute-Verbindung
 
@@ -25,7 +25,15 @@ ms.locfileid: "74813136"
 > * [PowerShell (klassisch)](expressroute-howto-circuit-classic.md)
 >
 
-In diesem Artikel wird beschrieben, wie Sie eine ExpressRoute-Verbindung mithilfe des Azure-Portals und des Azure Resource Manager-Bereitstellungsmodells erstellen. Außerdem können Sie den Status einer Verbindung überprüfen, die Verbindung aktualisieren oder löschen oder ihre Bereitstellung aufheben.
+In diesem Tutorial erfahren Sie, wie Sie eine ExpressRoute-Verbindung mithilfe des Azure-Portals und des Azure Resource Manager-Bereitstellungsmodells erstellen. Außerdem können Sie den Status einer Verbindung überprüfen, die Verbindung aktualisieren oder löschen oder ihre Bereitstellung aufheben.
+
+In diesem Tutorial lernen Sie Folgendes:
+
+> [!div class="checklist"]
+> * Erstellen Sie eine ExpressRoute-Verbindung.
+> * Abrufen des aktuellen Status einer Verbindung
+> * Ändern einer Verbindung
+> * Aufheben der Bereitstellung und Löschen einer Verbindung
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -47,38 +55,51 @@ Navigieren Sie in einem Browser zum [Azure-Portal](https://portal.azure.com) , u
 
 Sie können eine ExpressRoute-Verbindung erstellen, indem Sie die Option zum Erstellen einer neuen Ressource auswählen. 
 
-1. Wählen Sie im Menü des Azure-Portals oder auf der **Startseite** die Option **Ressource erstellen** aus. Wählen Sie **Netzwerk** > **ExpressRoute** aus, wie in der folgenden Abbildung gezeigt:
+1. Wählen Sie im Menü des Azure-Portals die Option **Ressource erstellen** aus. Wählen Sie **Netzwerk** > **ExpressRoute** aus, wie in der folgenden Abbildung gezeigt:
 
-   ![Erstellen Sie eine ExpressRoute-Verbindung.](./media/expressroute-howto-circuit-portal-resource-manager/create-an-expressroute-circuit.png)
+    :::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/create-expressroute-circuit-menu.png" alt-text="Erstellen Sie eine ExpressRoute-Verbindung.":::
 
-2. Nachdem Sie auf **ExpressRoute** geklickt haben, wird die Seite **ExpressRoute-Verbindung erstellen** angezeigt. Wenn Sie die Werte auf der Seite ausfüllen, stellen Sie sicher, dass Sie den richtigen SKU-Tarif (Standard oder Premium) sowie das richtige Abrechnungsmodell für die Datenmessung (Unbegrenzt oder Taktung) angeben.
+2. Nachdem Sie auf **ExpressRoute** geklickt haben, wird die Seite **ExpressRoute erstellen** angezeigt. Geben Sie **Ressourcengruppe**, **Region** und **Name** für die Verbindung an. Klicken Sie anschließend auf **Next: Konfiguration >** .
 
-   ![Konfigurieren von SKU-Tarif und Datenmessung](./media/expressroute-howto-circuit-portal-resource-manager/createcircuit.png)
+    :::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-create-basic.png" alt-text="Konfigurieren der Ressourcengruppe und der Region":::
 
-   * Der **Tarif** bestimmt, ob ein ExpressRoute Standard- oder ein ExpressRoute Premium-Add-On aktiviert wird. Sie können **Standard** für die Standard-SKU bzw. **Premium** für das Premium-Add-On angeben.
-   * **Datenabrechnung** bestimmt den Abrechnungstyp. Sie können **Taktung** für einen Volumentarif und **Unbegrenzt** für einen Tarif mit Datenflatrate auswählen. Beachten Sie, dass Sie den Abrechnungstyp von **Taktung** in **Unbegrenzt** ändern können.
+3. Wenn Sie die Werte auf der Seite ausfüllen, stellen Sie sicher, dass Sie den richtigen SKU-Tarif (Local, Standard oder Premium) sowie das richtige Abrechnungsmodell für die Datenmessung (Unbegrenzt oder Taktung) angeben.
 
-     > [!IMPORTANT]
-     > Sie können den Typ nicht von **Unbegrenzt** in **Taktung** ändern.
+    :::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-create-configuration.png" alt-text="Konfigurieren der Verbindung":::
+    
+    * Der **Porttyp** bestimmt, ob Sie eine Verbindung mit einem Dienstanbieter oder direkt mit dem globalen Netzwerk von Microsoft an einem Peeringstandort herstellen.
+    * **Neues erstellen oder aus klassischem** importieren bestimmt, ob eine neue Verbindung erstellt wird oder ob eine klassische Verbindung zu arm migriert wird.
+    * **Anbieter** ist der Internetdienst, von dem Sie den Dienst anfordern.
+    * Der **Peeringort** ist der physische Standort, an dem Ihr Peering mit Microsoft stattfindet.
 
-   * Der **Peeringort** ist der physische Standort, an dem Ihr Peering mit Microsoft stattfindet.
+    > [!IMPORTANT]
+    > Der Peeringstandort entspricht dem [physischen Standort](expressroute-locations.md), an dem Ihr Peering mit Microsoft stattfindet. Dieser ist **nicht** mit der Eigenschaft „Standort“ verknüpft, die sich auf den geografischen Standort des Azure-Netzwerkressourcenanbieters befindet. Obgleich sie nicht miteinander in Zusammenhang stehen, sollten Sie einen Netzwerkressourcenanbieter in geografischer Nähe des Peeringstandorts der Verbindung wählen.
 
-     > [!IMPORTANT]
-     > Der Peeringstandort entspricht dem [physischen Standort](expressroute-locations.md), an dem Ihr Peering mit Microsoft stattfindet. Dieser ist **nicht** mit der Eigenschaft „Standort“ verknüpft, die sich auf den geografischen Standort des Azure-Netzwerkressourcenanbieters befindet. Obgleich sie nicht miteinander in Zusammenhang stehen, sollten Sie einen Netzwerkressourcenanbieter in geografischer Nähe des Peeringstandorts der Verbindung wählen.
+    * **SKU** bestimmt, ob ein ExpressRoute Local-, ExpressRoute Standard- oder ExpressRoute Premium-Add-On aktiviert wird. Sie können **Local** für die Local-SKU, **Standard** für die Standard-SKU oder **Premium** für das Premium-Add-On angeben.
+    * **Abrechnungsmodell** bestimmt den Abrechnungstyp. Sie können **Taktung** für einen Volumentarif und **Unbegrenzt** für einen Tarif mit Datenflatrate auswählen. Beachten Sie, dass Sie den Abrechnungstyp von **Taktung** in **Unbegrenzt** ändern können.
+
+    > [!IMPORTANT]
+    > Sie können den Typ nicht von **Unbegrenzt** in **Taktung** ändern.
+
+    * **Klassische Vorgänge zulassen** ermöglicht, klassische virtuelle Netzwerke mit der Verbindung zu verknüpfen.
 
 ### <a name="3-view-the-circuits-and-properties"></a>3. Anzeigen von Verbindungen und Eigenschaften
 
 **Anzeigen aller Verbindungen**
 
-Sie können alle erstellten Verbindungen anzeigen, indem Sie im Menü auf der linken Seite **Alle Ressourcen** auswählen.
+Sie können alle erstellten Verbindungen anzeigen, indem Sie im Menü auf der linken Seite **Alle Dienste > Netzwerk > ExpressRoute-Leitungen** auswählen.
 
-![Verbindungen anzeigen](./media/expressroute-howto-circuit-portal-resource-manager/listresource.png)
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-menu.png" alt-text="ExpressRoute-Verbindungsmenü":::
+
+Alle Expressroute-Verbindungen, die im Abonnement erstellt werden, werden hier angezeigt.
+
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-list.png" alt-text="ExpressRoute-Verbindungsliste":::
 
 **Anzeigen der Eigenschaften**
 
-Sie können die Eigenschaften der Verbindung anzeigen, indem Sie die Verbindung auswählen. Auf der Seite **Übersicht** Ihrer Verbindung wird der Dienstschlüssel im Dienstschlüsselfeld angezeigt. Sie müssen den Dienstschlüssel für Ihre Verbindung kopieren und ihn an den Dienstanbieter übergeben, um den Bereitstellungsprozess abzuschließen. Der Verbindungsdienstschlüssel ist für Ihre Verbindung spezifisch.
+Sie können die Eigenschaften der Verbindung anzeigen, indem Sie die Verbindung auswählen. Auf der Seite **Übersicht** Ihrer Verbindung wird der Dienstschlüssel im Dienstschlüsselfeld angezeigt. Stellen Sie den Dienstschlüssel für Ihre Verbindung dem Dienstanbieter bereit, um den Bereitstellungsprozess abzuschließen. Der Dienstschlüssel ist für Ihre Verbindung spezifisch.
 
-![Eigenschaften anzeigen](./media/expressroute-howto-circuit-portal-resource-manager/servicekey1.png)
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-overview.png" alt-text="Anzeigen von Eigenschaften":::
 
 ### <a name="4-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>4. Senden Sie den Dienstschlüssel zur Bereitstellung an Ihren Konnektivitätsanbieter.
 
@@ -86,26 +107,26 @@ Auf dieser Seite bietet der **Anbieterstatus** Informationen zum aktuellen Zusta
 
 Wenn Sie eine neue ExpressRoute-Verbindung erstellen, weist die Verbindung folgenden Zustand auf:
 
-Anbieterstatus: Nicht bereitgestellt<BR>
-Schaltkreisstatus: Aktiviert
+Anbieterstatus: **Nicht bereitgestellt**<BR>
+Schaltkreisstatus: **Aktiviert**
 
-![Bereitstellung initiieren](./media/expressroute-howto-circuit-portal-resource-manager/status.png)
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-overview-provisioning-state.png" alt-text="Bereitstellung initiieren":::
 
 Die Verbindung wechselt in den folgenden Zustand, wenn sie vom Konnektivitätsanbieter für Sie aktiviert wird:
 
-Anbieterstatus: Bereitstellung<BR>
-Schaltkreisstatus: Aktiviert
+Anbieterstatus: **Bereitstellung**<BR>
+Schaltkreisstatus: **Aktiviert**
 
 Damit Sie eine ExpressRoute-Verbindung verwenden können, muss sie sich im folgenden Zustand befinden:
 
-Anbieterstatus: Bereitgestellt<BR>
-Schaltkreisstatus: Aktiviert
+Anbieterstatus: **Bereitgestellt**<BR>
+Schaltkreisstatus: **Aktiviert**
 
 ### <a name="5-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>5. Überprüfen Sie regelmäßig den Status und Zustand des Verbindungsschlüssels.
 
 Sie können die Eigenschaften der gewünschten Verbindung anzeigen, indem Sie die Verbindung auswählen. Überprüfen Sie den **Anbieterstatus**, und stellen Sie sicher, dass er in **Provisioned** geändert wurde, bevor Sie fortfahren.
 
-![Verbindungs- und Anbieterstatus](./media/expressroute-howto-circuit-portal-resource-manager/provisioned.png)
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/provisioned.png" alt-text="Verbindungs- und Anbieterstatus":::
 
 ### <a name="6-create-your-routing-configuration"></a>6. Erstellen Sie die Routingkonfiguration.
 
@@ -137,7 +158,7 @@ Sie können folgende Aufgaben ausführen, ohne Ausfallzeiten zu verursachen:
 * Sie können den Abrechnungsplan von *Datentaktung* zu *Datenflatrate* ändern.
 
   > [!IMPORTANT]
-  > Ein Ändern des Abrechnungsplans von „Datenflatrate“ in „Datentaktung“ (Volumentarif) wird nicht unterstützt.
+  > Ein Ändern des Abrechnungsplans von **Datenflatrate** in **Datentaktung** (Volumentarif) wird nicht unterstützt.
 
 * Sie können die Option *Klassische Vorgänge zulassen*aktivieren und deaktivieren.
   > [!IMPORTANT]
@@ -149,15 +170,19 @@ Sie können folgende Aufgaben ausführen, ohne Ausfallzeiten zu verursachen:
 
 Klicken Sie auf **Konfiguration**, um eine ExpressRoute-Verbindung zu bearbeiten.
 
-![Ändern der Verbindung](./media/expressroute-howto-circuit-portal-resource-manager/modify-circuit-configuration.png)
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-configuration.png" alt-text="Ändern der Verbindung":::
 
 ## <a name="deprovisioning-and-deleting-an-expressroute-circuit"></a><a name="delete"></a>Aufheben der Bereitstellung und Löschen einer ExpressRoute-Verbindung
 
-Sie können Ihre ExpressRoute-Verbindung löschen. Wählen Sie dazu das Symbol **Löschen** aus. Beachten Sie die folgenden Informationen:
+Wenn der Bereitstellungsstatus des ExpressRoute-Verbindungsdienstanbieters **Bereitstellung** oder **Bereitgestellt** lautet, arbeiten Sie mit Ihrem Dienstanbieter zusammen, um die Verbindungsbereitstellung auf Anbieterseite aufzuheben. Microsoft reserviert weiterhin Ressourcen für Sie und stellt Ihnen dies in Rechnung, bis der Dienstanbieter die Aufhebung der Verbindungsbereitstellung abgeschlossen hat und uns benachrichtigt.
 
-* Sie müssen die Verknüpfung aller virtuellen Netzwerke mit der ExpressRoute-Verbindung aufheben. Falls dieser Vorgang nicht erfolgreich ist, überprüfen Sie, ob noch virtuelle Netzwerke mit der Verbindung verknüpft sind.
-* Wenn der Bereitstellungsstatus des ExpressRoute-Verbindungsdienstanbieters **Bereitstellung** oder **Bereitgestellt** lautet, arbeiten Sie mit Ihrem Dienstanbieter zusammen, um die Verbindungsbereitstellung auf Anbieterseite aufzuheben. Microsoft reserviert weiterhin Ressourcen für Sie und stellt Ihnen dies in Rechnung, bis der Dienstanbieter die Aufhebung der Verbindungsbereitstellung abgeschlossen hat und uns benachrichtigt.
-* Wenn der Dienstanbieter die Bereitstellung der Verbindung aufgehoben hat (Bereitstellungsstatus des Dienstanbieters lautet **Nicht bereitgestellt**), können Sie die Verbindung löschen. Damit wird die Abrechnung für die Verbindung beendet.
+> [!NOTE]
+>* Sie müssen die Verknüpfung *aller virtuellen Netzwerke* mit der ExpressRoute-Verbindung vor dem Aufheben der Bereitstellung aufheben. Falls dieser Vorgang nicht erfolgreich ist, überprüfen Sie, ob noch virtuelle Netzwerke mit der Verbindung verknüpft sind.
+>* Wenn der Dienstanbieter die Bereitstellung der Verbindung aufgehoben hat (Bereitstellungsstatus des Dienstanbieters lautet **Nicht bereitgestellt**), können Sie die Verbindung löschen. Damit wird die Abrechnung für die Verbindung beendet.
+
+Sie können Ihre ExpressRoute-Verbindung löschen. Wählen Sie hierzu das Symbol **Löschen**. 
+
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-delete.png" alt-text="Löschen der Verbindung":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

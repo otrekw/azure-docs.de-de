@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/13/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: c7d452803d15bab77df8e85a861de914a5ed08d5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 85e198def03ab4f6d3e18047ccea0152f96694fd
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546059"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815037"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zendesk"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Zendesk
 
@@ -54,7 +54,7 @@ Zum Konfigurieren der Integration von Zendesk in Azure AD müssen Sie Zendesk au
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Zendesk** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **Zendesk** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-zendesk"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Zendesk
+## <a name="configure-and-test-azure-ad-sso-for-zendesk"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Zendesk
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Zendesk mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Zendesk eingerichtet werden.
 
@@ -149,50 +149,29 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Wenn Sie Zendesk manuell einrichten möchten, melden Sie sich in einem neuen Webbrowserfenster bei der Zendesk-Unternehmenswebsite als Administrator an, und führen Sie die folgenden Schritte aus:
 
-1. Klicken Sie auf **Administrator**.
+1. Klicken Sie im **Zendesk Admin Center** auf der Registerkarte **Security** (Sicherheit) auf **Security settings** (Sicherheitseinstellungen).
 
-1. Klicken Sie im linken Navigationsbereich auf **Einstellungen** und anschließend auf **Sicherheit**.
+    ![Security](./media/zendesk-tutorial/settings.png "Sicherheit")
 
-1. Führen Sie auf der Seite **Sicherheit** die folgenden Schritte aus:
+1. Wechseln Sie zur Seite **Single sign-on** (Einmaliges Anmelden), und klicken Sie in **SAML** auf **Edit** (Bearbeiten).
 
-    ![Security](./media/zendesk-tutorial/ic773089.png "Sicherheit")
+    ![Security](./media/zendesk-tutorial/saml-sso.png "Sicherheit")
 
-    ![Einmaliges Anmelden](./media/zendesk-tutorial/ic773090.png "Einmaliges Anmelden")
+1. Führen Sie auf der Seite **SSO** die folgenden Schritte aus.
 
-    a. Klicken Sie auf die Registerkarte **Admin & Agents**.
+    ![Einmaliges Anmelden](./media/zendesk-tutorial/saml-configuration.png "Einmaliges Anmelden")
 
-    b. Wählen Sie **Einmaliges Anmelden (SSO) und SAML** und anschließend **SAML** aus.
+    a. Fügen Sie in das Textfeld **SAML-SSO-URL** den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    c. Fügen Sie in das Textfeld **SAML-SSO-URL** den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
+    b. Fügen Sie in das Textfeld **Certificate Fingerprint** (Zertifikatsfingerabdruck) den Wert **Fingerabdruck** des Zertifikats ein, das Sie aus dem Azure-Portal kopiert haben.
 
-    d. Fügen Sie in das Textfeld **Remoteabmelde-URL** den Wert der **Abmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
+    c. Fügen Sie in das Textfeld **Remoteabmelde-URL** den Wert der **Abmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    e. Fügen Sie in das Textfeld **Certificate Fingerprint** (Zertifikatsfingerabdruck) den Wert **Fingerabdruck** des Zertifikats ein, das Sie aus dem Azure-Portal kopiert haben.
-
-    f. Klicken Sie auf **Speichern**.
+    d. Klicken Sie auf **Speichern**.
 
 ### <a name="create-zendesk-test-user"></a>Erstellen eines Zendesk-Testbenutzers
 
 In diesem Abschnitt wird in Zendesk eine Benutzerin namens Britta Simon erstellt. Zendesk unterstützt die automatische Benutzerbereitstellung, die standardmäßig aktiviert ist. Weitere Details zur Konfiguration der automatischen Benutzerbereitstellung finden Sie [hier](Zendesk-provisioning-tutorial.md).
-
-**Wenn Sie einen Benutzer manuell erstellen möchten, führen Sie die folgenden Schritte aus:**
-
-> [!NOTE]
-> **Endbenutzer**-Konten werden bei der Anmeldung automatisch bereitgestellt. **Agent**- und **Admin**-Konten müssen vor dem Anmelden manuell in **Zendesk** bereitgestellt werden.
-
-1. Melden Sie sich bei Ihrem **Zendesk**-Mandanten an.
-
-2. Wählen Sie die Registerkarte **Kundenliste** .
-
-3. Wählen Sie die Registerkarte **Benutzer** aus, und klicken Sie auf **Hinzufügen**.
-
-    ![Benutzer hinzufügen](./media/zendesk-tutorial/ic773632.png "Benutzer hinzufügen")
-4. Geben Sie **Name** und **E-Mail** eines vorhandenen Azure AD-Kontos ein, das Sie bereitstellen möchten, und klicken Sie dann auf **Speichern**.
-
-    ![Neuer Benutzer](./media/zendesk-tutorial/ic773633.png "Neuer Benutzer")
-
-> [!NOTE]
-> Sie können Azure AD-Benutzerkonten auch mit anderen Tools zum Erstellen von Zendesk-Benutzerkonten oder mit den APIs von Zendesk bereitstellen.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 

@@ -3,13 +3,13 @@ title: 'Tutorial: Sichern mehrerer virtueller Azure-Computer mit PowerShell'
 description: In diesem Tutorial wird erläutert, wie Sie mithilfe von Azure PowerShell mehrere virtuelle Azure-Computer in einem Recovery Services-Tresor sichern.
 ms.topic: tutorial
 ms.date: 03/05/2019
-ms.custom: mvc
-ms.openlocfilehash: a0f6bd2bebb0961388d4f81663167d9e579958a2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 33090a0156d147fee5ab362b284ec503039617c4
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513216"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181730"
 ---
 # <a name="back-up-azure-vms-with-powershell"></a>Sichern virtueller Azure-Computer mit PowerShell
 
@@ -58,7 +58,7 @@ Erstellen Sie den Tresor wie folgt:
     New-AzRecoveryServicesVault -Name myRSvault -ResourceGroupName "myResourceGroup" -Location "EastUS"
     ```
 
-2. Viele Azure Backup-Cmdlets benötigen das Recovery Services-Tresorobjekt als Eingabe. Aus diesem Grund sollte das zur Sicherung verwendete Recovery Services-Tresorobjekt in einer Variablen gespeichert werden.
+2. Viele Azure Backup-Cmdlets benötigen das Recovery Services-Tresorobjekt als Eingabe. Aus diesem Grund sollte das Backup Recovery Services-Tresorobjekt in einer Variablen gespeichert werden.
 
     ```powershell
     $vault1 = Get-AzRecoveryServicesVault –Name myRSVault

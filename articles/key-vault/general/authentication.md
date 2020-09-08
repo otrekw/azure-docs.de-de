@@ -3,190 +3,126 @@ title: Authentifizieren bei Azure Key Vault
 description: Es wird beschrieben, wie Sie sich bei Azure Key Vault authentifizieren.
 author: ShaneBala-keyvault
 ms.author: sudbalas
-ms.date: 06/08/2020
+ms.date: 08/27/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 6336a0d4d8aa9c781befed0470d9a190af5aa9eb
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 1ef5b2229aadc4be46361a7319351a1f27b28b63
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930858"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378972"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>Authentifizieren bei Azure Key Vault
 
-## <a name="overview"></a>Übersicht
+Mit Azure Key Vault können Sie in einem zentralen, sicheren Cloudrepository Geheimnisse speichern und ihre Verteilung steuern. So müssen Anmeldeinformationen nicht mehr in Anwendungen gespeichert werden. Anwendungen müssen sich nur zur Laufzeit bei Key Vault authentifizieren, um auf diese Geheimnisse zugreifen zu können.
 
-Azure Key Vault ist eine Lösung für die Verwaltung von Geheimnissen, mit der Sie die Speicherung von Anwendungsgeheimnissen zentralisieren und deren Verteilung steuern können. Mit Azure Key Vault entfällt die Notwendigkeit, Anmeldeinformationen in Anwendungen zu speichern. Ihre Anwendung kann sich beim Schlüsseltresor authentifizieren, um die erforderlichen Anmeldeinformationen abzurufen. In diesem Dokument werden die Grundlagen der Authentifizierung beim Schlüsseltresor behandelt.
+## <a name="app-identity-and-service-principals"></a>App-Identität und Dienstprinzipale
 
-Die Informationen führen zu einem besseren Verständnis der Funktionsweise der Schlüsseltresorauthentifizierung. In diesem Dokument wird der Authentifizierungsfluss beschrieben und das Gewähren des Zugriffs auf Ihren Schlüsseltresor veranschaulicht. Es enthält darüber hinaus ein Tutorial zum Abrufen eines im Schlüsseltresor gespeicherten Geheimnisses aus einer Python-Beispielanwendung.
+Die Authentifizierung mit Key Vault funktioniert in Verbindung mit [Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis), was für die Authentifizierung der Identität eines bestimmten **Sicherheitsprinzipals** zuständig ist.
 
-In diesem Dokument wird Folgendes behandelt:
+Ein Sicherheitsprinzipal ist ein Objekt, das Benutzer, Gruppen, Dienste oder Anwendungen darstellt, die Zugriff auf Azure-Ressourcen anfordern. Azure weist jedem Sicherheitsprinzipal eine eindeutige **Objekt-ID** zu.
 
-* Wichtige Konzepte
-* Registrierung des Sicherheitsprinzipals
-* Grundlegendes zum Key Vault-Authentifizierungsfluss
-* Gewähren des Zugriffs auf Key Vault für einen Dienstprinzipal
-* Tutorial (Python)
+* Ein **Benutzer** als Sicherheitsprinzipal identifiziert eine Person, die über ein Profil in Azure Active Directory verfügt.
 
-## <a name="key-concepts"></a>Wichtige Konzepte
+* Eine **Gruppe** als Sicherheitsprinzipal identifiziert eine Gruppe von Benutzern, die in Azure Active Directory erstellt wurden. Alle Rollen oder Berechtigungen, die der Gruppe zugewiesen werden, werden allen Benutzern in der Gruppe erteilt.
 
-### <a name="azure-active-directory-concepts"></a>Azure Active Directory-Konzepte
+* Ein **Dienstprinzipal** ist ein Typ des Sicherheitsprinzipals, der für eine Anwendung oder einen Dienst steht und sozusagen ein Codeabschnitt anstelle eines Benutzers oder einer Gruppe ist. Die Objekt-ID eines Dienstprinzipals wird als dessen **Client-ID** bezeichnet und verhält sich wie der Benutzername. Der **geheime Clientschlüssel** des Dienstprinzipals verhält sich wie sein Kennwort.
 
-* Azure Active Directory: Azure Active Directory (Azure AD, AAD) ist der cloudbasierte Identitäts- und Zugriffsverwaltungsdienst von Microsoft, mit dem sich Ihre Mitarbeiter anmelden und auf Ressourcen zugreifen können.
+Für Anwendungen gibt es zwei Möglichkeiten, einen Dienstprinzipal abzurufen:
 
-* Rollendefinition: Eine Rollendefinition ist eine Sammlung mit Berechtigungen.  AAD verfügt über Standardrollen („Besitzer“, „Mitwirkender“ oder „Leser“) mit Berechtigungsebenen, um Vorgänge wie das Lesen, Schreiben und Löschen für eine Azure-Ressource durchführen zu können. Rollen können auch von Benutzern erstellte benutzerdefinierte Definitionen sein, die bestimmte genauere Berechtigungen aufweisen.
+* Empfohlen: Aktivieren einer systemseitig zugewiesenen **verwalteten Identität** für die Anwendung.
 
-* Anwendungsregistrierung: Wenn Sie eine Azure AD-Anwendung registrieren, werden in Ihrem Azure AD-Mandanten zwei Objekte erstellt, und zwar ein Anwendungsobjekt und ein Dienstprinzipalobjekt. Stellen Sie sich das Anwendungsobjekt als globale Darstellung Ihrer Anwendung zur Verwendung über alle Mandanten hinweg und den Dienstprinzipal als lokale Darstellung zur Verwendung in einem bestimmten Mandanten vor.
+    Mit der verwalteten Identität verwaltet Azure intern den Dienstprinzipal der Anwendung und authentifiziert die Anwendung automatisch mit anderen Azure-Diensten. Die verwaltete Identität ist für Anwendungen verfügbar, die für eine Vielzahl von Diensten bereitgestellt werden.
 
-### <a name="security-principal-concepts"></a>Konzepte von Sicherheitsprinzipalen
+    Weitere Informationen finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](/azure/active-directory/managed-identities-azure-resources/overview). Weitere Informationen finden Sie unter [Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen](/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities), wo Sie Links zu Artikeln finden, in denen beschrieben wird, wie die verwaltete Identität für bestimmte Dienste (z. B. App Service, Azure Functions, Virtual Machines usw.) aktiviert wird.
 
-* Sicherheitsprinzipal: Ein Sicherheitsprinzipal ist ein Objekt, das einen Benutzer, eine Gruppe, einen Dienstprinzipal oder eine verwaltete Identität darstellt, der bzw. die Zugriff auf Azure-Ressourcen anfordert.
+* Wenn Sie die verwaltete Identität nicht verwenden können, **registrieren** Sie die Anwendung stattdessen bei Ihrem Azure AD-Mandanten gemäß Beschreibung in [Schnellstart: Registrieren einer Anwendung bei Microsoft Identity Platform](/azure/active-directory/develop/quickstart-register-app). Bei der Registrierung wird auch ein zweites Anwendungsobjekt erstellt, das die App für alle Mandanten identifiziert.
 
-* Benutzer: eine Person, die über ein Profil in Azure Active Directory verfügt.
+## <a name="authorize-a-service-principal-to-access-key-vault"></a>Autorisieren eines Dienstprinzipals für den Zugriff auf Key Vault
 
-* Gruppe: eine Reihe von Benutzern, die in Azure Active Directory erstellt wurden. Wenn Sie einer Gruppe eine Rolle zuweisen, verfügen alle Benutzer in dieser Gruppe über diese Rolle.
+Key Vault funktioniert mit zwei separaten Autorisierungsebenen:
 
-* Dienstprinzipal: eine Sicherheitsidentität, die von Anwendungen oder Diensten für den Zugriff auf bestimmte Azure-Ressourcen verwendet wird. Sie können sich dies als Benutzeridentität (Benutzername und Kennwort oder Zertifikat) für eine Anwendung vorstellen.
+- **Zugriffsrichtlinien** steuern, ob ein Benutzer, eine Gruppe oder ein Dienstprinzipal für den Zugriff auf Geheimnisse, Schlüssel und Zertifikate *innerhalb* einer vorhandenen Key Vault-Ressource autorisiert ist (manchmal auch als „Datenebene“-Vorgänge bezeichnet). Zugriffsrichtlinien werden in der Regel Benutzern, Gruppen und Anwendungen gewährt.
 
-* Verwaltete Identität: Eine Identität in Azure Active Directory, die automatisch von Azure verwaltet wird.
+    Informationen zum Zuweisen von Zugriffsrichtlinien finden Sie in den folgenden Artikeln:
 
-* Objekt-ID (Client-ID): Ein eindeutiger von Azure AD generierter Bezeichner, der während der ersten Bereitstellung an einen Dienstprinzipal gebunden wird.
+    - [Azure portal](assign-access-policy-portal.md)
+    - [Azure-Befehlszeilenschnittstelle](assign-access-policy-cli.md)
+    - [Azure PowerShell](assign-access-policy-portal.md)
 
-## <a name="security-principal-registration"></a>Registrierung des Sicherheitsprinzipals
+- **Rollenberechtigungen** steuern, ob ein Benutzer, eine Gruppe oder ein Dienstprinzipal autorisiert ist, eine Key Vault Ressource zu erstellen, zu löschen und anderweitig zu verwalten (manchmal auch als „Verwaltungsebene“-Vorgänge bezeichnet). Solche Rollen werden meistens nur Administratoren gewährt.
+ 
+    Informationen zum Zuweisen und Verwalten von Rollen finden Sie in den folgenden Artikeln:
 
-1. Der Administrator registriert einen Benutzer oder eine Anwendung (Dienstprinzipal) in Azure Active Directory.
+    - [Azure portal](/azure/role-based-access-control/role-assignments-portal)
+    - [Azure-Befehlszeilenschnittstelle](/azure/role-based-access-control/role-assignments-cli)
+    - [Azure PowerShell](/azure/role-based-access-control/role-assignments-powershell)
 
-2. Der Administrator erstellt eine Azure Key Vault-Instanz und konfiguriert die Zugriffsrichtlinien (ACLs).
+    Key Vault unterstützt derzeit die Rolle [Mitwirkender](/azure/role-based-access-control/built-in-roles#key-vault-contributor), die Verwaltungsvorgänge für Key Vault-Ressourcen ermöglicht. Eine Reihe anderer Rollen befinden sich zurzeit in der Vorschauphase. Sie können auch benutzerdefinierte Rollen erstellen, wie unter [Benutzerdefinierte Azure-Rollen](/azure/role-based-access-control/custom-roles) beschrieben.
 
-3. (Optional) Der Administrator konfiguriert die Azure Key Vault-Firewall.
-
-![IMAGE](../media/authentication-1.png)
-
-## <a name="understand-the-key-vault-authentication-flow"></a>Grundlegendes zum Key Vault-Authentifizierungsfluss
-
-1. Ein Dienstprinzipal führt einen Aufruf zur Authentifizierung bei AAD durch. Dies kann auf unterschiedliche Arten geschehen:
-    * Ein Benutzer kann sich beim Azure-Portal mit einem Benutzernamen und einem Kennwort anmelden.
-    * Von einer Anwendung wird eine Client-ID verwendet und für AAD ein geheimer Clientschlüssel oder ein Clientzertifikat vorgewiesen.
-    * Eine Azure-Ressource, z. B. ein virtueller Computer, verfügt über eine zugewiesene MSI und nimmt Kontakt mit dem IMDS-REST-Endpunkt auf, um ein Zugriffstoken zu erhalten.
-
-2. Wenn die Authentifizierung bei AAD erfolgreich ist, wird dem Dienstprinzipal ein OAuth-Token gewährt.
-3. Der Dienstprinzipal sendet einen Aufruf an Key Vault.
-4. Von der Azure Key Vault-Firewall wird ermittelt, ob der Aufruf zulässig ist.
-    * Szenario 1: Die Key Vault-Firewall ist deaktiviert, und der öffentliche Endpunkt (URI) des Schlüsseltresors ist über das öffentliche Internet erreichbar. Der Aufruf ist zulässig.
-    * Szenario 2: Die aufrufende Funktion ist ein vertrauenswürdiger Azure Key Vault-Dienst. Bestimmte Azure-Dienste können die Firewall des Schlüsseltresors umgehen, wenn die Option ausgewählt ist. [Azure Key Vault: Liste mit vertrauenswürdigen Diensten](https://docs.microsoft.com/azure/key-vault/general/overview-vnet-service-endpoints#trusted-services)
-    * Szenario 3: Die aufrufende Funktion ist in der Azure Key Vault-Firewall nach IP-Adresse, virtuellem Netzwerk oder Dienstendpunkt aufgelistet.
-    * Szenario 4: Die aufrufende Funktion kann Azure Key Vault über eine konfigurierte Private Link-Verbindung erreichen.
-    * Szenario 5: Die aufrufende Funktion ist nicht autorisiert, und die Antwort „Unzulässig“ wird zurückgegeben.
-5. Von Key Vault wird AAD aufgerufen, um das Zugriffstoken des Dienstprinzipals zu überprüfen.
-6. Key Vault überprüft, ob der Dienstprinzipal über ausreichende Zugriffsrichtlinienberechtigungen verfügt, um den angeforderten Vorgang durchführen zu können. In diesem Beispiel ist der Vorgang der Abruf des Geheimnisses.
-7. Key Vault stellt das Geheimnis für den Dienstprinzipal bereit.
-
-![IMAGE](../media/authentication-2.png)
-
-## <a name="grant-a-service-principal-access-to-key-vault"></a>Gewähren des Zugriffs auf Key Vault für einen Dienstprinzipal
-
-1. Erstellen Sie einen Dienstprinzipal, falls Sie noch keinen besitzen. [Erstellen eines Dienstprinzipals](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)
-2. Fügen Sie Ihrem Dienstprinzipal in den IAM-Einstellungen von Azure Key Vault eine Rollenzuweisung hinzu. Sie können die vorab zugewiesenen Rollen „Besitzer“, „Mitwirkender“ oder „Leser“ hinzufügen. Darüber hinaus können Sie auch benutzerdefinierte Rollen für Ihren Dienstprinzipal erstellen. Sie sollten das Prinzip der geringsten Rechte befolgen und jeweils nur die minimalen Zugriffsrechte gewähren, die für Ihren Dienstprinzipal benötigt werden. 
-3.  Konfigurieren Sie die Firewall für den Schlüsseltresor. Sie können die Firewall des Schlüsseltresors deaktiviert lassen und den Zugriff aus dem öffentlichen Internet zulassen (weniger sicher, einfacher zu konfigurieren). Sie können auch den Zugriff auf bestimmte IP-Adressbereiche, Dienstendpunkte, virtuelle Netzwerke oder private Endpunkte einschränken (sicherer).
-4.  Fügen Sie eine Zugriffsrichtlinie für Ihren Dienstprinzipal hinzu. Dies ist eine Liste mit Vorgängen, die von Ihrem Dienstprinzipal im Schlüsseltresor durchgeführt werden können. Sie sollten das Prinzip der geringsten Rechte befolgen und die Vorgänge begrenzen, die vom Dienstprinzipal durchgeführt werden können. Falls Sie aber nicht über ausreichende Berechtigungen verfügen, wird der Zugriff für den Dienstprinzipal verweigert.
-
-## <a name="tutorial"></a>Lernprogramm
-
-In diesem Tutorial wird beschrieben, wie Sie einen Dienstprinzipal für das Authentifizieren beim Schlüsseltresor und das Abrufen eines Geheimnisses einrichten. 
-
-### <a name="part-1--create-a-service-principal-in-the-azure-portal"></a>Teil 1:  Erstellen eines Dienstprinzipals im Azure-Portal
-
-1. Anmelden beim Azure-Portal
-1. Suchen Sie nach „Azure Active Directory“.
-1. Klicken Sie auf die Registerkarte „App-Registrierungen“.
-1. Klicken Sie auf „+ Neue Registrierung“.
-1. Erstellen Sie einen Namen für den Dienstprinzipal.
-1. Wählen Sie „Registrieren“ aus.
-
-Sie verfügen nun über einen registrierten Dienstprinzipal. Sie können ihn anzeigen, indem Sie die Option „App-Registrierungen“ auswählen. Ihr Dienstprinzipal wird nun einer Client-ID-GUID zugewiesen. Sie können sich dies wie einen „Benutzernamen“ für Ihren Dienstprinzipal vorstellen. Nun müssen Sie ein „Kennwort“ für Ihren Dienstprinzipal erstellen. Hierfür können Sie einen geheimen Clientschlüssel oder ein Clientzertifikat verwenden. Beachten Sie, dass die Verwendung eines geheimen Clientschlüssels für die Authentifizierung nicht sicher ist und nur zu Testzwecken erfolgen sollte. In diesem Tutorial wird veranschaulicht, wie Sie ein Clientzertifikat verwenden.
-
-### <a name="part-2-create-a-client-certificate-for-your-service-principal"></a>Teil 2: Erstellen eines Clientzertifikats für Ihren Dienstprinzipal
-
-1. Erstellen eines Zertifikats
-
-    * Option 1: Erstellen Sie ein Zertifikat über [OpenSSL](https://www.openssl.org/) (nur für Testzwecke, selbstsignierte Zertifikate sollten nicht in der Produktion verwendet werden).
-    * Option 2: Erstellen Sie über den Schlüsseltresor ein Zertifikat. [Erstellen eines Zertifikats in Azure Key Vault](https://docs.microsoft.com/azure/key-vault/certificates/certificate-scenarios#creating-your-first-key-vault-certificate)
-
-1. Herunterladen des Zertifikats im PEM-/PFX-Format
-1. Melden Sie sich beim Azure-Portal an, und navigieren Sie zu Azure Active Directory.
-1. Klicken Sie auf „App-Registrierungen“.
-1. Wählen Sie den in Teil 1 erstellten Dienstprinzipal aus.
-1. Klicken Sie auf die Registerkarte „Zertifikate und Geheimnisse“ Ihres Dienstprinzipals.
-1. Laden Sie das Zertifikat hoch, indem Sie die Schaltfläche „Zertifikat hochladen“ verwenden.
-
-### <a name="part-3-configure-an-azure-key-vault"></a>Teil 3: Konfigurieren einer Azure Key Vault-Instanz
-
-1. Erstellen Sie eine Azure Key Vault-Instanz ([Link](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#create-a-vault)).
-
-2. Konfigurieren Sie die IAM-Berechtigungen für Key Vault.
-    1. Navigieren zum Schlüsseltresor
-    1. Wählen Sie die Registerkarte „Zugriffssteuerung (IAM)“ aus.
-    1. Klicken Sie auf „Rollenzuweisung hinzufügen“.
-    1. Wählen Sie in der Dropdownliste die Option „Mitwirkender“ aus.
-    1. Geben Sie den Namen oder die Client-ID des von Ihnen erstellten Dienstprinzipals ein.
-    1. Klicken Sie auf „Rollenzuweisungen anzeigen“, um zu überprüfen, ob Ihr Dienstprinzipal aufgeführt ist.
-
-3. Konfigurieren Sie die Zugriffsrichtlinienberechtigungen für Key Vault.
-    1. Navigieren zum Schlüsseltresor
-    1. Wählen Sie unter „Einstellungen“ die Registerkarte „Zugriffsrichtlinien“ aus.
-    1. Wählen Sie den Link „+ Zugriffsrichtlinie hinzufügen“ aus.
-    1. Aktivieren Sie in der Dropdownliste „Geheimnisberechtigungen“ die Berechtigungen „Abrufen“ und „Auflisten“.
-    1. Wählen Sie Ihren Dienstprinzipal anhand des Namens oder der Client-ID aus.
-    1. Wählen Sie „Hinzufügen“ aus.
-    1. Wählen Sie „Speichern“ aus.
-
-4. Erstellen Sie in Ihrem Schlüsseltresor ein Geheimnis.
-    1. Navigieren zum Schlüsseltresor
-    1. Klicken Sie unter „Einstellungen“ auf die Registerkarte „Geheimnisse“.
-    1. Klicken Sie auf „+ Generieren/Importieren“.
-    1. Erstellen Sie einen Namen für das Geheimnis. In diesem Beispiel verwenden wir „test“ als Namen.
-    1. Erstellen Sie einen Wert für das Geheimnis. In diesem Beispiel wird der Wert auf „password123“ festgelegt.
-
-Wenn Sie nun Code über Ihren lokalen Computer ausführen, können Sie sich gegenüber dem Schlüsseltresor authentifizieren, indem Sie ein Zugriffstoken abrufen. Hierfür müssen Sie die Client-ID und einen Pfad zum Zertifikat vorweisen.
-
-### <a name="part-4-retrieve-the-secret-from-your-azure-key-vault-in-an-application-python"></a>Teil 4: Abrufen des Geheimnisses aus Ihrer Azure Key Vault-Instanz in einer Anwendung (Python)
-
-Verwenden Sie das folgende Codebeispiel, um zu testen, ob Ihre Anwendung mit dem von Ihnen konfigurierten Dienstprinzipal ein Geheimnis aus Ihrem Schlüsseltresor abrufen kann. 
-
-```python
-from azure.keyvault.secrets import SecretClient
-from azure.identity import CertificateCredential
+    Allgemeine Informationen zu Rollen finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](/azure/role-based-access-control/overview).
 
 
-tenant_id = ""                                             ##ENTER AZURE TENANT ID
-vault_url = "https://{VAULT NAME}.vault.azure.net/"        ##ENTER THE URL OF YOUR KEY VAULT
-client_id = ""                                             ##ENTER CLIENT ID OF SERVICE PRINCIPAL
-cert_path = r"C:\Users\{USERNAME}\{PATH}\{CERT_NAME}.pem"  ##ENTER PATH TO CERTIFICATE
+> [!IMPORTANT]
+> Um maximale Sicherheit zu gewährleisten, beachten Sie stets das Prinzip der geringsten Rechte, und legen Sie Zugriffsrichtlinien so spezifisch wie möglich fest, vergeben Sie Rollen so spezifisch wie möglich und beschränken Sie sich auf das Notwendige. 
+    
+## <a name="configure-the-key-vault-firewall"></a>Konfigurieren der Key Vault-Firewall
 
-def main():
+Standardmäßig ermöglicht Key Vault den Zugriff auf Ressourcen über öffentliche IP-Adressen. Der höheren Sicherheit willen können Sie auch den Zugriff auf bestimmte IP-Adressbereiche, Dienstendpunkte, virtuelle Netzwerke oder private Endpunkte einschränken.
 
-    #AUTHENTICATION TO AAD USING CLIENT ID AND CLIENT CERTIFICATE
-    token = CertificateCredential(tenant_id= tenant_id, client_id=client_id, certificate_path=cert_path)
+Weitere Informationen finden Sie unter [Zugreifen auf Azure Key Vault hinter einer Firewall](/azure/key-vault/general/access-behind-firewall).
 
-    #AUTHENTICATION TO KEY VAULT PRESENTING AAD TOKEN
-    client = SecretClient(vault_url=vault_url, credential=token)
 
-    #CALL TO KEY VAULT TO GET SECRET
-    secret = client.get_secret('{SECRET_NAME}')            ##ENTER NAME OF SECRET IN KEY VAULT
+## <a name="the-key-vault-authentication-flow"></a>Der Key Vault-Authentifizierungsfluss
 
-    #GET PLAINTEXT OF SECRET
-    print(secret.value)
+1. Ein Dienstprinzipal erfordert das Authentifizieren bei Azure AD, z. B.:
+    * Ein Benutzer meldet sich beim Azure-Portal mit einem Benutzernamen und einem Kennwort an.
+    * Eine Anwendung ruft eine Azure-REST-API auf und stellt eine Client-ID und einen geheimen Schlüssel oder ein Clientzertifikat bereit.
+    * Eine Azure-Ressource, z. B. ein virtueller Computer mit einer verwalteten Identität, kontaktiert den REST-Endpunkt des [Azure-Instanzmetadatendiensts](/azure/virtual-machines/windows/instance-metadata-service) (Azure Instance Metadata Service, IMDS), um ein Zugriffstoken abzurufen.
 
-#CALL MAIN()
-if __name__ == "__main__":
-    main()
-```
+1. Wenn die Authentifizierung bei Azure AD erfolgreich ist, wird dem Dienstprinzipal ein OAuth-Token gewährt.
 
-![IMAGE](../media/authentication-3.png)
+1. Der Dienstprinzipal ruft über den Key Vault-Endpunkt (URI) die Key Vault-REST-API auf.
 
+1. Die Key Vault-Firewall überprüft die folgenden Kriterien. Wenn ein Kriterium erfüllt ist, ist der Aufruf zulässig. Andernfalls wird der Aufruf blockiert, und eine unzulässige Antwort wird zurückgegeben.
+
+    * Die Firewall wird deaktiviert, und der öffentliche Key Vault-Endpunkt (URI) ist über das öffentliche Internet erreichbar.
+    * Bei der aufrufenden Funktion handelt es sich um einen [vertrauenswürdigen Key Vault-Dienst](/azure/key-vault/general/overview-vnet-service-endpoints#trusted-services), der die Firewall umgehen darf.
+    * Die aufrufende Funktion ist in der Firewall nach IP-Adresse, virtuellem Netzwerk oder Dienstendpunkt aufgelistet.
+    * Die aufrufende Funktion kann Key Vault über eine konfigurierte Private Link-Verbindung erreichen.    
+
+1. Wenn die Firewall den Aufruf zulässt, ruft Key Vault Azure AD auf, um das Zugriffstoken des Dienstprinzipals zu validieren.
+
+1. Key Vault überprüft, ob der Dienstprinzipal über die erforderliche Zugriffsrichtlinie für den angeforderten Vorgang verfügt. Wenn dies nicht der Fall ist, gibt Key Vault eine unzulässige Antwort zurück.
+
+1. Key Vault führt den angeforderten Vorgang aus und gibt das Ergebnis zurück.
+
+Das folgende Diagramm veranschaulicht den Prozess für eine Anwendung, die eine „Geheimnis abrufen“-API von Key Vault aufruft:
+
+![Der Azure Key Vault-Authentifizierungsfluss](../media/authentication/authentication-flow.png)
+
+## <a name="code-examples"></a>Codebeispiele
+
+Die folgende Tabelle ist mit verschiedenen Artikeln verknüpft, die veranschaulichen, wie Sie mit Key Vault im Anwendungscode arbeiten können, indem Sie die Azure SDK-Bibliotheken für die betreffende Sprache verwenden. Andere Benutzeroberflächen wie Azure CLI und Azure-Portal werden der Vollständigkeit halber einbezogen.
+
+| Key Vault-Geheimnisse | Key Vault-Schlüssel | Key Vault-Zertifikate |
+|  --- | --- | --- |
+| [Python](/azure/key-vault/secrets/quick-create-python) | [Python](/azure/key-vault/keys/quick-create-python) | [Python](/azure/key-vault/certificates/quick-create-python) | 
+| [.NET (SDK v4)](/azure/key-vault/secrets/quick-create-net) | -- | -- |
+| [.NET (SDK v3)](/azure/key-vault/secrets/quick-create-net-v3) | -- | -- |
+| [Java](/azure/key-vault/secrets/quick-create-java) | -- | -- |
+| [JavaScript](/azure/key-vault/secrets/quick-create-node) | -- | -- | 
+| | | |
+| [Azure portal](/azure/key-vault/secrets/quick-create-portal) | [Azure portal](/azure/key-vault/keys/quick-create-portal) | [Azure portal](/azure/key-vault/certificates/quick-create-portal) |
+| [Azure-Befehlszeilenschnittstelle](/azure/key-vault/secrets/quick-create-cli) | [Azure-Befehlszeilenschnittstelle](/azure/key-vault/keys/quick-create-cli) | [Azure-Befehlszeilenschnittstelle](/azure/key-vault/certificates/quick-create-cli) |
+| [Azure PowerShell](/azure/key-vault/secrets/quick-create-powershell) | [Azure PowerShell](/azure/key-vault/keys/quick-create-powershell) | [Azure PowerShell](/azure/key-vault/certificates/quick-create-powershell) |
+| [ARM-Vorlage](/azure/key-vault/secrets/quick-create-net) | -- | -- |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-1. Informieren Sie sich, wie Sie Fehler beheben, die bei der Authentifizierung beim Schlüsseltresor auftreten. [Leitfaden zur Problembehandlung für Key Vault](https://docs.microsoft.com/azure/key-vault/general/rest-error-codes)
+- [Behandeln von Problemen mit Schlüsseltresor-Zugriffsrichtlinien](troubleshooting-access-issues.md)
+- [Azure Key Vault: REST-API-Fehlercodes](rest-error-codes.md)
+- [Entwicklerhandbuch für Key Vault](developers-guide.md)
+- [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](/azure/role-based-access-control/overview)

@@ -3,12 +3,12 @@ title: Problembehandlung der Sicherung von Azure-Dateifreigaben
 description: Dieser Artikel enthält Informationen zum Behandeln von Problemen in Verbindung mit dem Schutz Ihrer Azure-Dateifreigaben.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: b6f4c74f6e2e8c463d1bcbd78d6ff79d3fb6ee56
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 4908b8ed97bad43d9d24427660a8691ee43d7eaf
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88889807"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376977"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Behandeln von Problemen beim Sichern von Azure-Dateifreigaben
 
@@ -51,7 +51,7 @@ Wiederholen Sie die Registrierung. Wenden Sie sich an den Support, wenn das Prob
 
 ### <a name="unable-to-delete-the-recovery-services-vault-after-unprotecting-a-file-share"></a>Nach dem Aufheben des Schutzes einer Dateifreigabe kann der Recovery Services-Tresor nicht gelöscht werden
 
-Öffnen Sie im Azure-Portal Ihren **Tresor** > **Sicherungsinfrastruktur** > **Speicherkonten**, und klicken Sie anschließend auf **Registrierung aufheben**, um die Speicherkonten aus dem Recovery Services-Tresor zu entfernen.
+Öffnen Sie im Azure-Portal Ihren **Tresor** und dann **Sicherungsinfrastruktur** > **Speicherkonten** aus. Wählen Sie **Registrierung aufheben** aus, um die Speicherkonten aus dem Recovery Services-Tresor zu entfernen.
 
 >[!NOTE]
 >Ein Recovery Services-Tresor kann nur nach dem Aufheben der Registrierung aller Speicherkonten gelöscht werden, die beim Tresor registriert wurden.
@@ -86,7 +86,7 @@ Fehlercode: AFSMaxSnapshotReached
 Fehlermeldung: Sie haben die maximale Anzahl von Momentaufnahmen für diese Dateifreigabe erreicht. Sie können weitere erstellen, sobald ältere abgelaufen sind.
 
 - Dieser Fehler kann auftreten, wenn Sie mehrere bedarfsgesteuerte Sicherungen für eine Dateifreigabe erstellen.
-- Pro Dateifreigabe sind maximal 200 Momentaufnahmen zulässig – einschließlich derer, die von Azure Backup erstellt werden. Ältere geplante Sicherungen (oder Momentaufnahmen) werden automatisch bereinigt. Bedarfsgesteuerte Sicherungen (oder Momentaufnahmen) müssen gelöscht werden, wenn die maximal zulässige Anzahl erreicht wird.
+- Pro Dateifreigabe sind maximal 200 Momentaufnahmen zulässig – einschließlich der von Azure Backup erstellten Momentaufnahmen. Ältere geplante Sicherungen (oder Momentaufnahmen) werden automatisch bereinigt. Bedarfsgesteuerte Sicherungen (oder Momentaufnahmen) müssen gelöscht werden, wenn die maximal zulässige Anzahl erreicht wird.
 
 Löschen Sie die bedarfsgesteuerten Sicherungen (Momentaufnahmen von Azure-Dateifreigaben) über das Azure Files-Portal.
 

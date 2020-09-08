@@ -4,15 +4,15 @@ description: In diesem Tutorial erfahren Sie, wie Sie ein Beispielmodell in Azur
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 05/19/2020
+ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 88ed58ea1eea80b4b890c31260fc65153377eaaa
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 5b84c2e50ae7f5038cf9cb8a96c0c51d6537c929
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "83697509"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230891"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>Tutorial: Hinzufügen eines Beispielmodells über das Portal
 
@@ -24,7 +24,7 @@ In diesem Tutorial fügen Sie eine tabellarische Adventure Works-Modelldatenbank
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-## <a name="before-you-begin"></a>Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
@@ -45,7 +45,7 @@ Melden Sie sich beim [Portal](https://portal.azure.com/) an.
 
 2. Vergewissern Sie sich unter **Neues Modell** > **Datenquelle auswählen**, dass **Beispieldaten** ausgewählt ist, und klicken Sie dann auf **Hinzufügen**.
 
-    ![Auswählen der Beispieldaten](./media/analysis-services-create-sample-model/aas-create-sample-data.png)
+    ![Auswählen des neuen Modells](./media/analysis-services-create-sample-model/aas-create-sample-data.png)
 
 3. Vergewissern Sie sich unter **Übersicht**, dass das Beispielmodell `adventureworks` hinzugefügt wurde.
 

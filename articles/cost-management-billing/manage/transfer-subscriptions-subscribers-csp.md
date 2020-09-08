@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: ffb72b4b06b8925cae57989a171d7efbd88c3866
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 52dd9d2f6299f8d574934e7baec54333d2ffc0c8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686604"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88997573"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>Übertragen von Azure-Abonnements zwischen Abonnenten und CSPs
 
@@ -24,6 +24,9 @@ In diesem Artikel werden allgemeine Schritte zum Übertragen von Azure-Abonnemen
 CSP-Partner mit direkter Abrechnung, die als [Azure Expert Managed Services Provider (MSP)](https://partner.microsoft.com/membership/azure-expert-msp) zertifiziert sind, können die Übertragung von Azure-Abonnements für ihre Kunden anfordern, die über ein direktes Enterprise Agreement (EA) verfügen. Abonnementübertragungen sind nur für Kunden zulässig, die eine Microsoft-Kundenvereinbarung (Microsoft Customer Agreement, MCA) akzeptiert und einen Azure-Plan erworben haben.
 
 Wenn die Anforderung genehmigt wird, kann der CSP seinen Kunden eine kombinierte Rechnung stellen. Weitere Informationen zum Übertragen von Abonnements durch CSPs finden Sie unter [Übernehmen des Abrechnungsbesitzes für Azure-Abonnements für Ihr MPA-Konto](mpa-request-ownership.md).
+
+>[!IMPORTANT]
+> Nachdem ein EA-Abonnement an einen CSP-Partner übertragen wurde, werden Kontingentsteigerungen, die zuvor auf das EA-Abonnement angewendet wurden, auf den Standardwert zurückgesetzt. Wenn nach der Übertragung des Abonnements ein zusätzliches Kontingent erforderlich ist, muss der CSP-Anbieter die Anforderung einer [Kontingenterhöhung](https://docs.microsoft.com/azure/azure-portal/supportability/regional-quota-requests) einreichen. 
 
 ## <a name="other-subscription-transfers-to-a-csp-partner"></a>Übertragungen anderer Abonnements an einen CSP-Partner
 

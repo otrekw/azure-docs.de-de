@@ -4,12 +4,12 @@ description: Es wird beschrieben, wie Sie die Bewertung/Migration von Hyper-V-VM
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 5f669de6bd8d767ca7b947fca883187dad9fe29d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 8ecb886b5d5cd9d6811788043b924880b4c366c4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86109619"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928920"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Vorbereiten auf die Bewertung und Migration von virtuellen Hyper-V-Computern zu Azure
 
@@ -38,6 +38,7 @@ In der Tabelle werden die Aufgaben zusammengefasst, die Sie in Azure ausführen 
 **Erstellen eines Azure Migrate-Projekts** | Ein Azure Migrate-Projekt stellt einen zentralen Ort zum Orchestrieren und Verwalten von Bewertungen und Migrationen mit Azure Migrate Tools, Microsoft-Tools und Angeboten von Drittanbietern bereit. | Ihr Azure-Konto benötigt die Berechtigung „Mitwirkender“ oder „Besitzer“ in der Ressourcengruppe, in der sich das Projekt befindet.
 **Appliance registrieren** | Azure Migrate verwendet eine einfache Azure Migrate-Appliance zum Ermitteln und Bewerten von Hyper-V VMs. [Weitere Informationen](migrate-appliance-architecture.md#appliance-registration) | Ihr Azure-Konto benötigt zum Registrieren der Appliance die Berechtigung „Mitwirkender“ oder „Besitzer“ für das Azure-Abonnement.
 **Erstellen der Azure AD-App** | Bei der Registrierung der Appliance erstellt Azure Migrate eine Azure AD-App (Azure Active Directory) für die Kommunikation zwischen den auf der Appliance ausgeführten Agents und Azure Migrate. | Für Ihr Azure-Konto sind Berechtigungen zum Erstellen von Azure AD-Apps erforderlich.
+**Erstellen einer Key Vault-Instanz** | Die Key Vault-Instanz wird als Teil der Applianceregistrierung erstellt und zur Verwaltung des Zertifikats verwendet, das während der Konfiguration auf die Appliance heruntergeladen wird.| Um Azure Migrate die Erstellung der Key Vault-Instanz zu ermöglichen, benötigt Ihr Azure-Konto Mitwirkender-Berechtigungen für die Ressourcengruppe, in der sich das Azure Migrate-Projekt befindet.
 **Erstellen eines virtuellen Computers** | Sie benötigen Berechtigungen zum Erstellen einer VM in der Ressourcengruppe und im virtuellen Netzwerk sowie zum Schreiben auf einen verwalteten Azure-Datenträger. | Ihr Azure-Konto benötigt die Rolle „Mitwirkender für virtuelle Computer“.
 
 
@@ -81,6 +82,7 @@ Der Mandanten-/globale Administrator kann wie folgt Berechtigungen erteilen:
 #### <a name="assign-application-developer-role"></a>Zuweisen der Rolle „Anwendungsentwickler“
 
 Der Mandantenadministrator/globale Administrator kann einem Konto die Rolle „Anwendungsentwickler“ zuweisen. [Weitere Informationen](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)
+
 
 ### <a name="assign-azure-account-permissions"></a>Zuweisen der Azure-Kontoberechtigungen
 
@@ -175,7 +177,7 @@ Bevor Sie im nächsten Tutorial die Azure Migrate-Appliance einrichten und mit 
 2. [Überprüfen](migrate-support-matrix-hyper-v-migration.md#hyper-v-vms) Sie die Anforderungen für Hyper-V-VMs, die Sie zu Azure migrieren möchten.
 3. Auf VMs sind einige Änderungen erforderlich, bevor Sie sie zu Azure migrieren.
     - Es ist wichtig, diese Änderungen vorzunehmen, bevor Sie mit der Migration beginnen. Wenn Sie den virtuellen Computer migrieren, bevor Sie die Änderung vorgenommen haben, wird der virtuelle Computer in Azure unter Umständen nicht gestartet.
-    - Überprüfen Sie die [Windows](prepare-for-migration.md#windows-machines)- und [Linux](prepare-for-migration.md#linux-machines)-Änderungen, die Sie vornehmen müssen.
+    - Überprüfen Sie die erforderlichen Änderungen für [Windows](prepare-for-migration.md#windows-machines) und [Linux](prepare-for-migration.md#linux-machines).
 
 
 

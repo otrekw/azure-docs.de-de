@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie virtuelle VMware-Computer auf die Bewert
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: mvc
-ms.openlocfilehash: 8b812924c0922d460c631baec8b0e13a9f45cd76
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 8d4d6ac1149c397442a8ca7dd01f46f04ffc89b4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86109574"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927305"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>Vorbereiten von VMware-VMs für die Bewertung und die Migration zu Azure
 
@@ -36,8 +36,8 @@ In der Tabelle werden die Aufgaben zusammengefasst, die in Azure ausgeführt wer
 --- | --- | ---
 **Erstellen eines Azure Migrate-Projekts** | Ein Azure Migrate-Projekt stellt einen zentralen Ort zum Orchestrieren und Verwalten von Bewertungen und Migrationen mit Azure Migrate Tools, Microsoft-Tools und Angeboten von Drittanbietern bereit. | Ihr Azure-Konto benötigt die Berechtigung „Mitwirkender“ oder „Besitzer“ in der Ressourcengruppe, in der sich das Projekt befindet.
 **Appliance registrieren** | Azure Migrate verwendet eine einfache Azure Migrate-Appliance, um virtuelle Computer zu ermitteln, mit dem Serverbewertungstool zu bewerten und unter Verwendung des Servermigrationstools per Migration ohne Agent zu migrieren. Weitere Informationen zur Registrierung finden Sie [hier](migrate-appliance-architecture.md#appliance-registration). | Ihr Azure-Konto benötigt zum Registrieren der Appliance die Berechtigung „Mitwirkender“ oder „Besitzer“ für das Azure-Abonnement.
-**Erstellen von Azure AD-Apps** | Von Azure Migrate werden im Zuge der Applianceregistrierung Azure Active Directory-Apps (Azure AD-Apps) erstellt. <br/><br/> – Die erste App wird für die Kommunikation zwischen den auf der Appliance ausgeführten Agents und Azure Migrate verwendet. <br/><br/> – Die zweite App wird ausschließlich für den Zugriff auf die im Abonnement des Benutzers erstellte Key Vault-Instanz für die Migration virtueller VMware-Computer ohne Agent verwendet.   | Für Ihr Azure-Konto sind Berechtigungen zum Erstellen von Azure AD-Apps erforderlich.
-**Erstellen einer Key Vault-Instanz** | Für die Migration von virtuellen VMware-Computer ohne Agent erstellt Azure Migrate eine Key Vault-Instanz, um Zugriffsschlüssel für das Replikationskonto in Ihrem Abonnement zu verwalten. | Um Azure Migrate die Erstellung der Key Vault-Instanz zu ermöglichen, müssen Berechtigungen („Besitzer“ oder „Mitwirkender“ und „Benutzerzugriffsadministrator“) für die Ressourcengruppe festgelegt werden, in der sich das Azure Migrate-Projekt befindet.
+**Erstellen von Azure AD-Apps** | Von Azure Migrate werden im Zuge der Applianceregistrierung zwei Azure Active Directory-Apps (Azure AD-Apps) erstellt. <br/><br/> – Die erste App wird für die Kommunikation zwischen den auf der Appliance ausgeführten Agents und Azure Migrate verwendet. <br/><br/> – Die zweite App wird ausschließlich für den Zugriff auf die im Abonnement des Benutzers erstellte Key Vault-Instanz für die Migration virtueller VMware-Computer ohne Agent verwendet.   | Für Ihr Azure-Konto sind [Berechtigungen](https://docs.microsoft.com/azure/migrate/tutorial-prepare-vmware#assign-permissions-to-create-azure-ad-apps) zum Erstellen von Azure AD-Apps erforderlich.
+**Erstellen einer Key Vault-Instanz** | – Die erste Key Vault-Instanz wird als Teil der Applianceregistrierung erstellt und zur Verwaltung des Zertifikats verwendet, das während der Konfiguration auf die Appliance heruntergeladen wird. <br/><br/> – Für die Migration von virtuellen VMware-Computern ohne Agent erstellt Azure Migrate eine weitere Key Vault-Instanz, um Zugriffsschlüssel für das Replikationskonto in Ihrem Abonnement zu verwalten.| Um Azure Migrate die Erstellung der Key Vault-Instanz zu ermöglichen, müssen Berechtigungen („Besitzer“ oder „Mitwirkender“ und „Benutzerzugriffsadministrator“) für die Ressourcengruppe festgelegt werden, in der sich das Azure Migrate-Projekt befindet.
 
 
 ### <a name="assign-permissions-to-create-project"></a>Zuweisen von Berechtigungen für die Projekterstellung

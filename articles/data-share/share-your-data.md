@@ -1,17 +1,17 @@
 ---
 title: 'Tutorial: Freigeben außerhalb Ihrer Organisation: Azure Data Share'
 description: 'Tutorial: Freigeben von Daten für Kunden und Partner mit Azure Data Share'
-author: joannapea
-ms.author: joanpo
+author: jifems
+ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
-ms.date: 07/30/2020
-ms.openlocfilehash: 1de793dc2f4f72efb67c954e60262c3d7f1b74fc
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.date: 08/28/2020
+ms.openlocfilehash: 4f3c9d739f959670700182baf80c4a08e53d8587
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87511972"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259063"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>Tutorial: Freigeben von Daten mithilfe von Azure Data Share  
 
@@ -73,7 +73,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 Erstellen Sie eine Azure Data Share-Ressource in einer Azure-Ressourcengruppe.
 
-1. Klicken Sie in der linken oberen Ecke des Portals auf die Schaltfläche **Ressource erstellen** (+).
+1. Wählen Sie im Portal links oben die Menüschaltfläche und dann **Ressource erstellen** (+) aus.
 
 1. Suchen Sie nach *Data Share*.
 
@@ -83,17 +83,17 @@ Erstellen Sie eine Azure Data Share-Ressource in einer Azure-Ressourcengruppe.
 
      **Einstellung** | **Empfohlener Wert** | **Feldbeschreibung**
     |---|---|---|
-    | Name | *datashareacount* | Geben Sie einen Namen für Ihr Data Share-Konto an. |
     | Subscription | Ihr Abonnement | Wählen Sie das Azure-Abonnement aus, das Sie für Ihr Data Share-Konto verwenden möchten.|
-    | Resource group | *test-resource-group* | Verwenden Sie eine vorhandene Ressourcengruppe, oder erstellen Sie eine neue Ressourcengruppe. |
-    | Position | *USA, Osten 2* | Wählen Sie eine Region für Ihr Data Share-Konto aus.
+    | Ressourcengruppe | *test-resource-group* | Verwenden Sie eine vorhandene Ressourcengruppe, oder erstellen Sie eine neue Ressourcengruppe. |
+    | Standort | *USA (Ost) 2* | Wählen Sie eine Region für Ihr Data Share-Konto aus.
+    | Name | *datashareaccount* | Geben Sie einen Namen für Ihr Data Share-Konto an. |
     | | |
 
-1. Wählen Sie **Erstellen**, um Ihr Data Share-Konto bereitzustellen. Die Bereitstellung eines neuen Data Share-Kontos dauert normalerweise maximal ca. 2 Minuten. 
+1. Wählen Sie **Überprüfen + erstellen** und dann **Erstellen** aus, um Ihr Data Share-Konto bereitzustellen. Die Bereitstellung eines neuen Data Share-Kontos dauert normalerweise maximal ca. 2 Minuten. 
 
 1. Wählen Sie nach Abschluss der Bereitstellung die Option **Zu Ressourcengruppe wechseln**.
 
-## <a name="create-a-data-share"></a>Erstellen einer Datenfreigabe
+## <a name="create-a-share"></a>Erstellen einer Freigabe
 
 1. Navigieren Sie zu Ihrer Seite mit der Data Share-Übersicht.
 
@@ -103,15 +103,15 @@ Erstellen Sie eine Azure Data Share-Ressource in einer Azure-Ressourcengruppe.
 
 1. Klicken Sie auf **Erstellen**.   
 
-1. Geben Sie die Details für Ihre Datenfreigabe ein. Geben Sie einen Namen, die Art der Freigabe, eine Beschreibung der Freigabeinhalte und Nutzungsbedingungen (optional) an. 
+1. Geben Sie die Details für Ihre Freigabe ein. Geben Sie einen Namen, die Art der Freigabe, eine Beschreibung der Freigabeinhalte und Nutzungsbedingungen (optional) an. 
 
     ![EnterShareDetails](./media/enter-share-details.png "Eingeben der Details zur Freigabe") 
 
 1. Wählen Sie **Weiter**.
 
-1. Wählen Sie zum Hinzufügen von Datasets zu Ihrer Datenfreigabe die Option **Add Datasets** (Datasets hinzufügen). 
+1. Zum Hinzufügen von Datasets zu Ihrer Freigabe wählen Sie **Datasets hinzufügen** aus. 
 
-    ![Datasets](./media/datasets.png "Datasets")
+    ![Hinzufügen von Datasets zu Ihrer Freigabe](./media/datasets.png "Datasets")
 
 1. Wählen Sie den gewünschten Datasettyp für das Hinzufügen aus. Die angezeigte Liste der Datasettypen ist abhängig von der Art der Freigabe (Momentaufnahme oder direkt), die Sie im vorherigen Schritt ausgewählt haben. Bei der Freigabe über eine Azure SQL-Datenbank- oder Azure SQL Data Warehouse-Instanz werden Sie zur Eingabe von SQL-Anmeldeinformationen aufgefordert. Authentifizieren Sie sich unter Verwendung des Benutzers, den Sie im Rahmen der Voraussetzungen erstellt haben.
 
@@ -135,7 +135,7 @@ Erstellen Sie eine Azure Data Share-Ressource in einer Azure-Ressourcengruppe.
 
 1. Wählen Sie **Weiter**.
 
-1. Überprüfen Sie auf der Registerkarte „Bewerten + erstellen“ die Angaben für Paketinhalt, Einstellungen, Empfänger und Synchronisierungseinstellungen. Klicken Sie auf **Erstellen**
+1. Überprüfen Sie auf der Registerkarte „Bewerten + erstellen“ die Angaben für Paketinhalt, Einstellungen, Empfänger und Synchronisierungseinstellungen. Klicken Sie auf **Erstellen**.
 
 Ihre Azure Data Share-Instanz wurde jetzt erstellt, und der Empfänger Ihrer Datenfreigabe kann Ihre Einladung nun akzeptieren. 
 

@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie mit Backup und Recovery Services einen Datent
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: 56ea3de451e625ef5c55f92daa1b86bd34b1c4c4
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: d93f3d24762f4b9a3da4a9e725d28810f6700fe0
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141345"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890670"
 ---
 # <a name="restore-a-vm-with-azure-cli"></a>Wiederherstellen eines virtuellen Computers mit der Azure CLI
 
@@ -59,7 +59,7 @@ az backup recoverypoint list \
 ## <a name="restore-a-vm-disk"></a>Wiederherstellen von VM-Datenträgern
 
 > [!IMPORTANT]
-> Es wird dringend empfohlen, mindestens die Version 2.0.74 der Azure-Befehlszeilenschnittstelle zu verwenden, um alle Vorteile einer schnellen Wiederherstellung nutzen zu können – einschließlich der Wiederherstellung verwalteter Datenträger. Es empfiehlt sich grundsätzlich, immer die neueste Version zu verwenden.
+> Es wird dringend empfohlen, mindestens die Version 2.0.74 der Azure-Befehlszeilenschnittstelle zu verwenden, um alle Vorteile einer schnellen Wiederherstellung nutzen zu können – einschließlich der Wiederherstellung verwalteter Datenträger. Es ist am besten, wenn Sie immer die neueste Version verwenden.
 
 ### <a name="managed-disk-restore"></a>Wiederherstellung verwalteter Datenträger
 
@@ -88,7 +88,7 @@ Wenn der gesicherte virtuelle Computer über verwaltete Datenträger verfügt un
     ```
 
     > [!WARNING]
-    > Ohne Angabe von „target-resource-group“ werden die verwalteten Datenträger als nicht verwaltete Datenträger für das angegebene Speicherkonto wiederhergestellt. Dies hat erhebliche Auswirkungen auf die Wiederherstellungszeit, da die Dauer der Datenträgerwiederherstellung ganz vom angegebenen Speicherkonto abhängt. Nur bei Angabe des Parameters „target-resource-group“ können Kunden die Vorteile einer sofortigen Wiederherstellung nutzen. Geben Sie den Parameter „target-resource-group“ nicht an, wenn verwaltete Datenträger als nicht verwaltete Datenträger wiederhergestellt werden sollen. In diesem Fall geben Sie stattdessen wie unten gezeigt den Parameter „restore-as-unmanaged-disk“ an. Dieser Parameter ist ab Az 3.4.0 verfügbar.
+    > Ohne Angabe von **target-resource-group** werden die verwalteten Datenträger als nicht verwaltete Datenträger für das angegebene Speicherkonto wiederhergestellt. Dies hat erhebliche Auswirkungen auf die Wiederherstellungszeit, da die Dauer der Datenträgerwiederherstellung ganz vom angegebenen Speicherkonto abhängt. Nur bei Angabe des Parameters „target-resource-group“ können Sie die Vorteile einer sofortigen Wiederherstellung nutzen. Geben Sie den Parameter **target-resource-group** nicht an, wenn verwaltete Datenträger als nicht verwaltete Datenträger wiederhergestellt werden sollen. In diesem Fall geben Sie stattdessen wie unten gezeigt den Parameter **restore-as-unmanaged-disk** an. Dieser Parameter ist ab Az 3.4.0 verfügbar.
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -101,11 +101,11 @@ Wenn der gesicherte virtuelle Computer über verwaltete Datenträger verfügt un
     --restore-as-unmanaged-disk
     ```
 
-Dadurch werden verwaltete Datenträger als nicht verwaltete Datenträger im angegebenen Speicherkonto wiederhergestellt, und die Funktion für die sofortige Wiederherstellung wird nicht genutzt. In zukünftigen Versionen der CLI wird die Angabe des Parameters „target-resource-group“ oder „restore-as-unmanaged-disk“ obligatorisch sein.
+Dadurch werden verwaltete Datenträger als nicht verwaltete Datenträger im angegebenen Speicherkonto wiederhergestellt, und die Funktion für die sofortige Wiederherstellung wird nicht genutzt. In zukünftigen Versionen der CLI wird die Angabe des Parameters **target-resource-group** oder **restore-as-unmanaged-disk** obligatorisch sein.
 
 ### <a name="unmanaged-disks-restore"></a>Wiederherstellung nicht verwalteter Datenträger
 
-Wenn der gesicherte virtuelle Computer über nicht verwaltete Datenträger verfügt und Sie Datenträger aus dem Wiederherstellungspunkt wiederherstellen möchten, müssen Sie zunächst ein Azure-Speicherkonto angeben. Dieses Speicherkonto dient zum Speichern der VM-Konfiguration und der Bereitstellungsvorlage für die spätere Bereitstellung des virtuellen Computers auf der Grundlage der wiederhergestellten Datenträger. Standardmäßig werden die nicht verwalteten Datenträger in ihren ursprünglichen Speicherkonten wiederhergestellt. Wenn der Benutzer alle nicht verwalteten Datenträger an einem zentralen Ort wiederherstellen möchte, kann das angegebene Speicherkonto auch als Stagingspeicherort für diese Datenträger verwendet werden.
+Wenn der gesicherte virtuelle Computer über nicht verwaltete Datenträger verfügt und Sie Datenträger aus dem Wiederherstellungspunkt wiederherstellen möchten, müssen Sie zunächst ein Azure-Speicherkonto angeben. Dieses Speicherkonto dient zum Speichern der VM-Konfiguration und der Bereitstellungsvorlage für die spätere Bereitstellung des virtuellen Computers auf der Grundlage der wiederhergestellten Datenträger. Standardmäßig werden die nicht verwalteten Datenträger in ihren ursprünglichen Speicherkonten wiederhergestellt. Wenn Sie alle nicht verwalteten Datenträger an einem zentralen Ort wiederherstellen möchten, kann das angegebene Speicherkonto auch als Stagingspeicherort für diese Datenträger verwendet werden.
 
 Der wiederhergestellte Datenträger wird in nachfolgenden Schritten zum Erstellen eines virtuellen Computers verwendet.
 

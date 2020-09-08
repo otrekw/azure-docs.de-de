@@ -10,16 +10,17 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b61ba7f160d012cc3d9ad9f477e969a626fdc38e
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5adc2a91df5d394fbed3ff10b0ebc5cb543a3ba3
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541418"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378014"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>Automatisieren der Rotation eines Geheimnisses für Ressourcen mit einem Satz mit Anmeldeinformationen für die Authentifizierung
 
-Die beste Möglichkeit zur Authentifizierung bei Azure-Diensten ist die Verwendung einer [verwalteten Identität](../general/managed-identity.md). Es gibt jedoch einige Szenarien, in denen dies nicht möglich ist. In diesen Fällen werden Zugriffsschlüssel oder Geheimnisse verwendet. Sie sollten Zugriffsschlüssel und Geheimnisse regelmäßig rotieren.
+Die beste Möglichkeit zur Authentifizierung bei Azure-Diensten ist die Verwendung einer [verwalteten Identität](../general/authentication.md). Es gibt jedoch einige Szenarien, in denen dies nicht möglich ist. In diesen Fällen werden Zugriffsschlüssel oder Geheimnisse verwendet. Sie sollten Zugriffsschlüssel und Geheimnisse regelmäßig rotieren.
 
 In diesem Tutorial wird gezeigt, wie Sie die regelmäßige Rotation von Geheimnissen für Datenbanken und Dienste automatisieren, bei denen ein Satz mit Anmeldeinformationen für die Authentifizierung verwendet wird. Genauer gesagt werden in diesem Tutorial in Azure Key Vault gespeicherte SQL Server-Kennwörter mithilfe einer Funktion rotiert, die durch eine Azure Event Grid-Benachrichtigung ausgelöst wird:
 
@@ -112,7 +113,7 @@ akvrotation-fnapp        akvrotation       eastus      Microsoft.Web/sites
 akvrotation-fnapp        akvrotation       eastus      Microsoft.insights/components
 ```
 
-Informationen zum Erstellen einer Funktions-App sowie zum Zugreifen auf Key Vault mit einer verwalteten Identität finden Sie unter [Erstellen einer Funktions-App im Azure-Portal](../../azure-functions/functions-create-function-app-portal.md) sowie unter [Bereitstellen der Key Vault-Authentifizierung mit einer verwalteten Identität](../general/managed-identity.md).
+Informationen zum Erstellen einer Funktions-App sowie zum Zugreifen auf Key Vault mit einer verwalteten Identität finden Sie unter [Erstellen einer Funktions-App im Azure-Portal](/azure/azure-functions/functions-create-function-app-portal), [Verwenden verwalteter Identitäten für App Service und Azure Functions](/azure/app-service/overview-managed-identity) und [Zuweisen einer Key Vault-Zugriffsrichtlinie im Azure-Portal](../general/assign-access-policy-portal.md).
 
 ### <a name="rotation-function"></a>Rotationsfunktion
 Die im vorherigen Schritt bereitgestellte Funktion verwendet ein Ereignis, um die Rotation eines Geheimnisses durch Aktualisieren von Key Vault und SQL-Datenbank zu initiieren. 

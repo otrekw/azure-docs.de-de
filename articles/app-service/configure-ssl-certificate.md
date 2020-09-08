@@ -6,18 +6,18 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 0dd0b86a11c7060040f8734c0102252f18d9f114
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: d45852326a7f771b2cf79e20c784e2c441fef0d6
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987170"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401485"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Hinzufügen eines TLS-/SSL-Zertifikats in Azure App Service
 
 Von [Azure App Service](overview.md) wird ein hochgradig skalierbarer Webhostingdienst mit Self-Patching bereitgestellt. In diesem Artikel erfahren Sie, wie Sie ein privates oder öffentliches Zertifikat in App Service erstellen, hochladen oder importieren. 
 
-Nach dem Hinzufügen eines Zertifikats zu Ihrer App Service- oder [Funktions-App](https://docs.microsoft.com/azure/azure-functions/) können Sie [damit einen benutzerdefinierten DNS-Namen schützen](configure-ssl-bindings.md) oder [es in Ihrem Anwendungscode verwenden](configure-ssl-certificate-in-code.md).
+Nach dem Hinzufügen eines Zertifikats zu Ihrer App Service- oder [Funktions-App](../azure-functions/index.yml) können Sie [damit einen benutzerdefinierten DNS-Namen schützen](configure-ssl-bindings.md) oder [es in Ihrem Anwendungscode verwenden](configure-ssl-certificate-in-code.md).
 
 In der folgenden Tabelle sind die Optionen zum Hinzufügen von Zertifikaten in App Service aufgeführt:
 
@@ -25,7 +25,7 @@ In der folgenden Tabelle sind die Optionen zum Hinzufügen von Zertifikaten in A
 |-|-|
 | Erstellen eines von App Service verwalteten Zertifikats (Vorschau) | Ein privates Zertifikat, das einfach zu verwenden ist, wenn Sie nur Ihre [benutzerdefinierte `www`-Domäne](app-service-web-tutorial-custom-domain.md) oder eine nicht „nackte“ Domäne in App Service schützen müssen. |
 | Erwerben eines App Service-Zertifikats | Ein von Azure verwaltetes privates Zertifikat. Es ermöglicht eine einfache automatisierte Zertifikatverwaltung und bietet flexible Verlängerungs- und Exportoptionen. |
-| Importieren eines Zertifikats aus Key Vault | Diese Option ist nützlich, wenn Sie [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) für die Verwaltung Ihrer [PKCS12-Zertifikate](https://wikipedia.org/wiki/PKCS_12) verwenden. Siehe [Anforderungen an private Zertifikate](#private-certificate-requirements) |
+| Importieren eines Zertifikats aus Key Vault | Diese Option ist nützlich, wenn Sie [Azure Key Vault](../key-vault/index.yml) für die Verwaltung Ihrer [PKCS12-Zertifikate](https://wikipedia.org/wiki/PKCS_12) verwenden. Siehe [Anforderungen an private Zertifikate](#private-certificate-requirements) |
 | Hochladen eines privaten Zertifikats | Wenn Sie bereits über ein privates Zertifikat von einem Drittanbieter verfügen, können Sie es hochladen. Siehe [Anforderungen an private Zertifikate](#private-certificate-requirements) |
 | Hochladen eines öffentlichen Zertifikats | Öffentliche Zertifikate werden nicht zum Schützen benutzerdefinierter Domänen verwendet. Sie können sie jedoch in Ihren Code laden, wenn sie für den Zugriff auf Remoteressourcen benötigt werden. |
 
@@ -33,7 +33,7 @@ In der folgenden Tabelle sind die Optionen zum Hinzufügen von Zertifikaten in A
 
 Im Rahmen dieser Schrittanleitung müssen Sie folgende Schritte durchführen:
 
-- [Erstellen Sie eine App Service-App](/azure/app-service/).
+- [Erstellen Sie eine App Service-App](./index.yml).
 - Nur kostenloses Zertifikat: Ordnen Sie App Service eine Unterdomäne (z. B. `www.contoso.com`) mit einem [CNAME-Eintrag](app-service-web-tutorial-custom-domain.md#map-a-cname-record) zu.
 
 ## <a name="private-certificate-requirements"></a>Anforderungen an private Zertifikate
@@ -123,6 +123,10 @@ Die folgende Tabelle unterstützt Sie bei der Konfiguration des Zertifikats. Kli
 | Zertifikat-SKU | Bestimmt den Typ des zu erstellenden Zertifikats, ganz gleich, ob es sich um ein Standardzertifikat oder ein [Platzhalterzertifikat](https://wikipedia.org/wiki/Wildcard_certificate) handelt. |
 | Rechtliche Bedingungen | Klicken Sie auf diese Option, um zu bestätigen, dass Sie mit den rechtlichen Bedingungen einverstanden sind. Die Zertifikate werden von GoDaddy abgerufen. |
 
+> [!NOTE]
+> Von Azure erworbene App Service-Zertifikate werden von GoDaddy ausgestellt. Bei einigen Domänen der obersten Ebene müssen Sie GoDaddy explizit als Zertifikataussteller zulassen, indem Sie einen [CAA-Domäneneintrag](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization) (Certification Authority Authorization) mit dem folgenden Wert erstellen: `0 issue godaddy.com`.
+> 
+
 ### <a name="store-in-azure-key-vault"></a>Speichern in Azure Key Vault
 
 Sobald der Zertifikatkaufvorgang abgeschlossen ist, müssen Sie noch ein paar Schritte ausführen, bevor Sie das Zertifikat verwenden können. 
@@ -131,7 +135,7 @@ Wählen Sie das Zertifikat auf der Seite [App Service-Zertifikate](https://porta
 
 ![Konfigurieren des Key Vault-Speichers eines App Service-Zertifikats](./media/configure-ssl-certificate/configure-key-vault.png)
 
-[Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) ist ein Azure-Dienst zum Schutz von kryptografischen Schlüsseln und Geheimnissen, die von Cloudanwendungen und -diensten verwendet werden. Dies ist der ideale Speicher für App Service-Zertifikate.
+[Key Vault](../key-vault/general/overview.md) ist ein Azure-Dienst zum Schutz von kryptografischen Schlüsseln und Geheimnissen, die von Cloudanwendungen und -diensten verwendet werden. Dies ist der ideale Speicher für App Service-Zertifikate.
 
 Klicken Sie auf der Seite **Key Vault-Status** auf **Key Vault-Repository**, um einen neuen Tresor zu erstellen oder einen vorhandenen Tresor auszuwählen. Wenn Sie einen neuen Tresor erstellen möchten, konfigurieren Sie mithilfe der folgende Tabelle den Tresor, und klicken Sie auf „Erstellen“. Erstellen Sie die neue Key Vault-Instanz im gleichen Abonnement und in der gleichen Ressourcengruppe wie Ihre App Service-App.
 
@@ -141,8 +145,8 @@ Klicken Sie auf der Seite **Key Vault-Status** auf **Key Vault-Repository**, um 
 | Resource group | Es wird empfohlen, die gleiche Ressourcengruppe wie bei Ihrem App Service-Zertifikat auszuwählen. |
 | Standort | Wählen Sie denselben Speicherort wie bei Ihrer App Service-App aus. |
 | Tarif | Weitere Informationen finden Sie unter [Key Vault – Preise](https://azure.microsoft.com/pricing/details/key-vault/). |
-| Zugriffsrichtlinien| Definiert die Anwendungen und den zulässigen Zugriff auf die Tresorressourcen. Sie können dies später konfigurieren, indem Sie die Schritte unter [Erteilen von Zugriff für mehrere Anwendungen auf einen Schlüsseltresor](../key-vault/general/group-permissions-for-apps.md) durchführen. |
-| Zugriff über virtuelles Netzwerk | Beschränkt den Tresorzugriff auf bestimmte virtuelle Azure-Netzwerke. Sie können dies später konfigurieren, indem Sie die Schritte unter [Konfigurieren von Azure Key Vault-Firewalls und virtuellen Netzwerken](../key-vault/general/network-security.md) durchführen. |
+| Zugriffsrichtlinien| Definiert die Anwendungen und den zulässigen Zugriff auf die Tresorressourcen. Sie können dies später konfigurieren, indem Sie die Schritte unter [Zuweisen einer Key Vault-Zugriffsrichtlinie im Azure-Portal](/azure/key-vault/general/assign-access-policy-portal) durchführen. |
+| Zugriff über virtuelles Netzwerk | Beschränkt den Tresorzugriff auf bestimmte virtuelle Azure-Netzwerke. Sie können dies später konfigurieren, indem Sie die Schritte unter [Konfigurieren von Azure Key Vault-Firewalls und virtuellen Netzwerken](/azure/key-vault/general/network-security) durchführen. |
 
 Wenn Sie den Tresor ausgewählt haben, schließen Sie die Seite **Key Vault-Repository**. Für die Option **Schritt 1: Speichern** sollte ein grünes Häkchen (erfolgreiche Ausführung) angezeigt werden. Lassen Sie die Seite für den nächsten Schritt geöffnet.
 
@@ -248,7 +252,7 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 
 Definieren Sie ein Kennwort für den Export, wenn Sie dazu aufgefordert werden. Dieses Kennwort verwenden Sie, wenn Sie Ihr TLS-/SSL-Zertifikat zu einem späteren Zeitpunkt in App Service hochladen.
 
-Wenn Sie IIS oder _Certreq.exe_ zum Generieren Ihrer Zertifikatanforderung verwendet haben, installieren Sie das Zertifikat auf dem lokalen Computer, und klicken Sie anschließend auf [Zertifikat nach PFX exportieren](https://technet.microsoft.com/library/cc754329(v=ws.11).aspx).
+Wenn Sie IIS oder _Certreq.exe_ zum Generieren Ihrer Zertifikatanforderung verwendet haben, installieren Sie das Zertifikat auf dem lokalen Computer, und klicken Sie anschließend auf [Zertifikat nach PFX exportieren](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754329(v=ws.11)).
 
 ### <a name="upload-certificate-to-app-service"></a>Hochladen eines Zertifikats in App Service
 
@@ -327,9 +331,9 @@ Wenn der Verlängerungsvorgang abgeschlossen ist, klicken Sie auf **Synchronisie
 
 ### <a name="export-certificate"></a>Exportieren des Zertifikats
 
-Bei einem App Service-Zertifikat handelt es sich um ein [Key Vault-Geheimnis](../key-vault/about-keys-secrets-and-certificates.md#key-vault-secrets). Sie können daher eine PFX-Kopie davon exportieren und für andere Azure-Dienste oder außerhalb von Azure verwenden.
+Bei einem App Service-Zertifikat handelt es sich um ein [Key Vault-Geheimnis](../key-vault/general/about-keys-secrets-certificates.md). Sie können daher eine PFX-Kopie davon exportieren und für andere Azure-Dienste oder außerhalb von Azure verwenden.
 
-Führen Sie zum Exportieren des App Service-Zertifikats als PFX-Datei die folgenden Befehle in [Cloud Shell](https://shell.azure.com) aus. Sie können sie auch lokal ausführen, wenn Sie die [Azure CLI installiert](https://docs.microsoft.com/cli/azure/install-azure-cli) haben. Ersetzen Sie die Platzhalter durch die Namen, die Sie beim [Erstellen des App Service-Zertifikats](#start-certificate-order) verwendet haben.
+Führen Sie zum Exportieren des App Service-Zertifikats als PFX-Datei die folgenden Befehle in [Cloud Shell](https://shell.azure.com) aus. Sie können sie auch lokal ausführen, wenn Sie die [Azure CLI installiert](/cli/azure/install-azure-cli) haben. Ersetzen Sie die Platzhalter durch die Namen, die Sie beim [Erstellen des App Service-Zertifikats](#start-certificate-order) verwendet haben.
 
 ```azurecli-interactive
 secretname=$(az resource show \
@@ -376,4 +380,4 @@ Nun können Sie das App Service-Zertifikat löschen. Wählen Sie im linken Navig
 * [Erzwingen von HTTPS](configure-ssl-bindings.md#enforce-https)
 * [Erzwingen von TLS 1.1/1.2](configure-ssl-bindings.md#enforce-tls-versions)
 * [Verwenden eines TLS-/SSL-Zertifikats in Ihrem Code in Azure App Service](configure-ssl-certificate-in-code.md)
-* [Häufig gestellte Fragen: App Service-Zertifikate](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)
+* [Häufig gestellte Fragen: App Service-Zertifikate](./faq-configuration-and-management.md)

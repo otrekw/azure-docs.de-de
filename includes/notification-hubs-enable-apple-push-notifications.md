@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/10/2020
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: a9e8574ea2d7222871c7f065383e6c0c62057dd3
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: 1cb7753f54e9c1334e35635c227f776041631f1d
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "81007861"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88864700"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>Erstellen der Zertifikatsignieranforderungsdatei
 
@@ -95,7 +95,7 @@ Die neuere Methode bietet eine Reihe von Vorteilen gegenüber der Verwendung von
     Der Bildschirm **Ein neues Zertifikat erstellen** wird angezeigt.
 
     > [!NOTE]
-    > In diesem Lernprogramm wird ein Entwicklungszertifikat verwendet. Derselbe Prozess wird auch zum Registrieren eines Produktionszertifikats durchgeführt. Achten Sie darauf, dass Sie denselben Zertifikattyp beim Senden von Benachrichtigungen verwenden.
+    > In diesem Tutorial wird ein Entwicklungszertifikat verwendet, mit dem Ihre App ein eindeutiges Gerätetoken generiert. Derselbe Prozess wird auch zum Registrieren eines Produktionszertifikats durchgeführt. Achten Sie darauf, dass Sie denselben Zertifikattyp beim Senden von Benachrichtigungen verwenden.
 
 3. Klicken Sie auf **Datei auswählen**, wechseln Sie zum Speicherort der in der ersten Aufgabe erstellten CSR-Datei, und doppelklicken Sie dann auf den Namen des Zertifikats, um es zu laden. Klicken Sie anschließend auf **Weiter**.
 
@@ -211,7 +211,7 @@ In diesem Abschnitt erstellen Sie einen Notification Hub und konfigurieren die A
 Wählen Sie unter **Benachrichtigungsdienste** die Option **Apple (APNs)** aus, und führen Sie dann je nach der Methode, die Sie im Abschnitt [Erstellen eines Zertifikats für Notification Hubs](#creating-a-certificate-for-notification-hubs) ausgewählt haben, die entsprechenden Schritte aus.  
 
 > [!NOTE]
-> Verwenden Sie **Produktion** nur dann als **Anwendungsmodus**, wenn Sie Pushbenachrichtigungen an Benutzer senden möchten, die Ihre App im Store erworben haben.
+> Wenn Sie Ihre App mit einem App Store- oder Ad-Hoc-Verteilungsprofil erstellen, verwenden Sie **Produktion** für **Anwendungsmodus**. So kann Ihr Gerät Pushbenachrichtigungen an Benutzer senden, die Ihre App im Store erworben haben.
 
 ### <a name="option-1-using-a-p12-push-certificate"></a>OPTION 1: Verwenden eines P12-Zertifikats
 

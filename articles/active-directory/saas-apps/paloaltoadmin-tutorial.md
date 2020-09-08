@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/12/2020
+ms.date: 08/17/2020
 ms.author: jeedes
-ms.openlocfilehash: 8bd41034d6d4cfa444ae4c0711fd46cb2924d009
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d8a4a4360265cabc179c8cd41d0a33a0575f55a6
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554076"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855025"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---admin-ui"></a>Tutorial: Azure Active Directory-Integration mit Palo Alto Networks - Admin UI
 
@@ -43,6 +43,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 * Palo Alto Networks - Admin UI unterstützt **SP**-initiiertes einmaliges Anmelden.
 * Palo Alto Networks – Admin UI unterstützt die **Just-in-Time**-Benutzerbereitstellung.
+* Nach dem Konfigurieren von Palo Alto Networks – Admin UI können Sie eine Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
 
 ## <a name="adding-palo-alto-networks---admin-ui-from-the-gallery"></a>Hinzufügen von Palo Alto Networks - Admin UI aus dem Katalog
 
@@ -55,8 +56,7 @@ Zum Konfigurieren der Integration von Palo Alto Networks - Admin UI in Azure AD 
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Palo Alto Networks - Admin UI** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **Palo Alto Networks - Admin UI** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
-
+## <a name="configure-and-test-azure-ad-sso"></a>Konfigurieren und Testen des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Palo Alto Networks - Admin UI anhand eines Testbenutzers mit dem Namen **B. Simon**.
 Für einmaliges Anmelden muss zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Palo Alto Networks - Admin UI eine Linkbeziehung eingerichtet werden.
 
@@ -116,6 +116,9 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Palo Alt
     | username | user.userprincipalname |
     | adminrole | customadmin |
     | | |
+
+    > [!NOTE]
+    > Der _adminrole_-Wert sollte mit dem in **Palo Alto Networks** wie in Schritt 9 erwähnt konfigurierten Rollennamen identisch sein. 
 
     > [!NOTE]
     > Weitere Informationen zu den Attributen finden Sie in den folgenden Artikeln:
@@ -272,5 +275,3 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Palo Alto Networks - Admin UI“ k
 - [Palo Alto Networks - Admin UI mit Azure AD ausprobieren](https://aad.portal.azure.com/)
 
 - [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [Schützen von Apps mit der App-Steuerung für bedingten Zugriff von Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

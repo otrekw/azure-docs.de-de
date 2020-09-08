@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: d6e4b77c6eba976de052295e4a0001924ad90644
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 05107d0246be2273c09e91573bd30a4108ac7795
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374200"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290326"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>Zuordnen einer bereits vorhandenen benutzerdefinierten Domäne zu Azure Spring Cloud
 DNS (Domain Name Service) wird verwendet, um Namen von Netzwerkknoten im gesamten Netzwerk zu speichern. In diesem Tutorial wird eine Domäne (beispielsweise „www.contoso.com“) mithilfe eines CNAME-Eintrags zugeordnet. Die benutzerdefinierte Domäne wird durch ein Zertifikat geschützt, und Sie erfahren, wie Sie Transport Layer Security (TLS) erzwingen, was auch als Secure Sockets Layer (SSL) bezeichnet wird. 
@@ -20,7 +20,7 @@ DNS (Domain Name Service) wird verwendet, um Namen von Netzwerkknoten im gesamte
 Zertifikate dienen zur Verschlüsselung von Webdatenverkehr. Diese TLS-/SSL-Zertifikate können in Azure Key Vault gespeichert werden. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* Eine in Azure Spring Cloud bereitgestellte Anwendung. Lesen Sie dazu entweder den Artikel [Schnellstart: Starten einer vorhandenen Azure Spring Cloud-Anwendung über das Azure-Portal](spring-cloud-quickstart-launch-app-portal.md), oder verwenden Sie eine bereits vorhandene App.
+* Eine in Azure Spring Cloud bereitgestellte Anwendung. Lesen Sie dazu entweder den Artikel [Schnellstart: Starten einer vorhandenen Azure Spring Cloud-Anwendung über das Azure-Portal](spring-cloud-quickstart.md), oder verwenden Sie eine bereits vorhandene App.
 * Ein Domänenname mit Zugriff auf die DNS-Registrierung für den Domänenanbieter (beispielsweise GoDaddy).
 * Ein privates Zertifikat (d. h. ihr selbst signiertes Zertifikat) von einem Drittanbieter. Das Zertifikat muss der Domäne entsprechen.
 * Eine bereitgestellte Instanz von [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview).
@@ -145,7 +145,7 @@ Wählen Sie in der Tabelle mit den benutzerdefinierten Domänen die Option **Add
 1. Wählen Sie unter **Zertifikat** Ihr Zertifikat aus, oder importieren Sie es.
 1. Klicken Sie auf **Speichern**.
 
-    ![Hinzufügen von SSL-Bindung](./media/custom-dns-tutorial/add-ssl-binding.png)
+    ![Hinzufügen von SSL-Bindung 1](./media/custom-dns-tutorial/add-ssl-binding.png)
 
 Sie können auch die Azure-Befehlszeilenschnittstelle verwenden, um die **SSL-Bindung hinzuzufügen**:
 ```
@@ -154,14 +154,14 @@ az spring-cloud app custom-domain update --domain-name <domain name> --certifica
 
 Nach erfolgreichem Hinzufügen der SSL-Bindung ist die Domäne sicher und wird mit folgendem Zustand gekennzeichnet: **Fehlerfrei**. 
 
-![Hinzufügen von SSL-Bindung](./media/custom-dns-tutorial/secured-domain-state.png)
+![Hinzufügen von SSL-Bindung 2](./media/custom-dns-tutorial/secured-domain-state.png)
 
 ## <a name="enforce-https"></a>Erzwingen von HTTPS
 Standardmäßig können Benutzer weiterhin über HTTP auf Ihre App zugreifen, alle HTTP-Anforderungen können jedoch an den HTTPS-Port umgeleitet werden.
 
 Wählen Sie im linken Navigationsbereich Ihrer App-Seite die Option **Benutzerdefinierte Domäne** aus. Legen Sie **Nur HTTPS** auf *True* fest.
 
-![Hinzufügen von SSL-Bindung](./media/custom-dns-tutorial/enforce-http.png)
+![Hinzufügen von SSL-Bindung 3](./media/custom-dns-tutorial/enforce-http.png)
 
 Sie können auch die Azure-Befehlszeilenschnittstelle verwenden, um HTTPS zu erzwingen:
 ```

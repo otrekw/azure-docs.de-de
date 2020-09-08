@@ -1,5 +1,5 @@
 ---
-title: Verbinden einer End-to-End-Lösung
+title: 'Tutorial: Erstellen einer End-to-End-Lösung'
 titleSuffix: Azure Digital Twins
 description: Tutorial zur Erstellung einer Azure Digital Twins-End-to-End-Lösung, die auf Gerätedaten basiert.
 author: baanders
@@ -7,22 +7,23 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 0407046dcafb0dcc1872d5083669e09b378a75cd
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: b22505d5152b005a054d36fafb965006d04b201e
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827326"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401774"
 ---
-# <a name="build-out-an-end-to-end-solution"></a>Erstellen einer End-to-End-Lösung
+# <a name="tutorial-build-out-an-end-to-end-solution"></a>Tutorial: Erstellen einer End-to-End-Lösung
 
 Für die Einrichtung einer vollständigen End-to-End-Lösung, die auf Livedaten aus Ihrer Umgebung basiert, können Sie für Ihre Azure Digital Twins-Instanz eine Verbindung mit anderen Azure-Diensten herstellen, um die Verwaltung von Geräten und Daten durchzuführen.
 
 In diesem Tutorial lernen Sie Folgendes:
-* Einrichten einer Azure Digital Twins-Instanz
-* Kennenlernen des Beispielszenarios für die Erstellung und Instanziieren der vorab geschriebenen Komponenten
-* Verwenden einer [Azure Functions](../azure-functions/functions-overview.md)-App zum Weiterleiten von simulierten Telemetriedaten von einem [IoT Hub](../iot-hub/about-iot-hub.md)-Gerät an Eigenschaften digitaler Zwillinge
-* Verteilen von Änderungen über den **Zwillingsgraphen** durch die Verarbeitung von Benachrichtigungen für digitale Zwillinge mit Azure Functions, Endpunkten und Routen
+> [!div class="checklist"]
+> * Einrichten einer Azure Digital Twins-Instanz
+> * Kennenlernen des Beispielszenarios für die Erstellung und Instanziieren der vorab geschriebenen Komponenten
+> * Verwenden einer [Azure Functions](../azure-functions/functions-overview.md)-App zum Weiterleiten von simulierten Telemetriedaten von einem [IoT Hub](../iot-hub/about-iot-hub.md)-Gerät an Eigenschaften digitaler Zwillinge
+> * Verteilen von Änderungen über den **Zwillingsgraphen** durch die Verarbeitung von Benachrichtigungen für digitale Zwillinge mit Azure Functions, Endpunkten und Routen
 
 [!INCLUDE [Azure Digital Twins tutorial: sample prerequisites](../../includes/digital-twins-tutorial-sample-prereqs.md)]
 
@@ -365,6 +366,8 @@ Speichern Sie die Namen, die Sie Ihrem Event Grid-Thema und Ihrem Azure Digital 
 
 Erstellen Sie als Nächstes eine Azure Digital Twins-Route, über die Ereignisse an den Azure Digital Twins-Endpunkt gesendet werden, den Sie gerade erstellt haben.
 
+[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
+
 ```azurecli
 az dt route create --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name <your-Azure-Digital-Twins-endpoint> --route-name <name-for-your-Azure-Digital-Twins-route>
 ```
@@ -433,7 +436,7 @@ Hier wird das in diesem Tutorial erstellte Szenario noch einmal zusammengefasst.
 
 Wenn Sie die in diesem Tutorial erstellten Ressourcen nicht mehr benötigen, können Sie die folgenden Schritte zum Löschen ausführen. 
 
-Bei Verwendung von Azure Cloud Shell können Sie alle Azure-Ressourcen in einer Ressourcengruppe mit dem Befehl [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) löschen. Hierdurch werden die Ressourcengruppe, die Azure Digital Twins-Instanz, der IoT-Hub und die Registrierung des Hubgeräts, das Event Grid-Thema und die zugehörigen Abonnements sowie beide Azure Functions-Apps (einschließlich zugeordneter Ressourcen, z. B. Speicher) entfernt.
+Bei Verwendung von [Azure Cloud Shell](https://shell.azure.com) können Sie alle Azure-Ressourcen in einer Ressourcengruppe mit dem Befehl [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) löschen. Hierdurch werden die Ressourcengruppe, die Azure Digital Twins-Instanz, der IoT-Hub und die Registrierung des Hubgeräts, das Event Grid-Thema und die zugehörigen Abonnements sowie beide Azure Functions-Apps einschließlich beider Funktionen zugeordneter Ressourcen wie Speicher entfernt.
 
 > [!IMPORTANT]
 > Das Löschen einer Ressourcengruppe kann nicht rückgängig gemacht werden. Die Ressourcengruppe und alle darin enthaltenen Ressourcen werden unwiderruflich gelöscht. Achten Sie daher darauf, dass Sie nicht versehentlich die falsche Ressourcengruppe oder die falschen Ressourcen löschen. 
@@ -448,14 +451,13 @@ Löschen Sie als Nächstes mit dem folgenden Befehl die Azure AD-App-Registrier
 az ad app delete --id <your-application-ID>
 ```
 
-Löschen Sie abschließend den Beispielordner des Projekts, den Sie heruntergeladen haben, von Ihrem lokalen Computer.
+Löschen Sie abschließend den Projektbeispielordner, den Sie auf Ihren lokalen Computer heruntergeladen haben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Tutorial haben Sie ein End-to-End-Szenario erstellt, mit dem veranschaulicht wird, wie eine Azure Digital Twins-Instanz auf Livedaten von Geräten basiert.
 
 Sehen Sie sich als Nächstes die Konzeptdokumentation an, um mehr über die Elemente zu erfahren, mit denen Sie in diesem Tutorial gearbeitet haben:
-* [*Konzepte: Grundlegendes zu Zwillingsmodellen in Azure Digital Twins*](concepts-models.md)
 
-In den Anleitungen können Sie sich auch ausführlicher über die Prozesse in diesem Tutorial informieren:
-* [*Gewusst wie: Verwenden der Azure Digital Twins-Befehlszeilenschnittstelle*](how-to-use-cli.md)
+> [!div class="nextstepaction"]
+> [*Konzepte: Grundlegendes zu Zwillingsmodellen in Azure Digital Twins*](concepts-models.md)

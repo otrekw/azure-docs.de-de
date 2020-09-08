@@ -10,12 +10,12 @@ author: peterclu
 ms.author: peterlu
 ms.date: 03/29/2020
 ms.custom: designer
-ms.openlocfilehash: c1d927583ecf0ac5684c607b7d203c3224fe87b1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c4fa5a2554f10a720c0f2241e17514e798cf7f4c
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318826"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88812936"
 ---
 # <a name="example-pipelines--datasets-for-azure-machine-learning-designer-preview"></a>Beispiele für Pipelines und Datasets für Azure Machine Learning-Designer (Vorschau)
 
@@ -55,9 +55,9 @@ So verwenden Sie ein Beispiel im Designer:
 
 1. Nach Abschluss der Pipelineausführung können Sie die Pipeline überprüfen und die Ausgabe der einzelnen Module anzeigen, um weitere Informationen zu erhalten. Führen Sie die folgenden Schritte aus, um die Modulausgaben anzuzeigen:
 
-   1. Wählen Sie ein Modul auf der Canvas aus.
+   1. Klicken Sie im Zeichenbereich mit der rechten Maustaste auf das Modul, dessen Ausgabe Sie sehen möchten.
+   1. Wählen Sie **Visualisieren** aus.
 
-   1. Wählen Sie rechts neben der Canvas im Bereich mit den Moduldetails die Option **Ausgaben und Protokolle** aus. Wählen Sie das Diagrammsymbol ![Visualisierungssymbol](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) aus, um die Ergebnisse der einzelnen Module anzuzeigen. 
 
    Verwenden Sie die Beispiele als Ausgangspunkt für einige der gängigsten Machine Learning-Szenarien.
 

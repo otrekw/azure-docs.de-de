@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 03/26/2020
-ms.openlocfilehash: b4167f8958f7a1613c4d48625f7a79a02c7588d0
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 4028d6732220dba4848c88306a501ce22af7487a
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543400"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144021"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Tutorial: Trainieren und Bereitstellen eines Modells über die Befehlszeilenschnittstelle
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -300,7 +300,7 @@ Die Datei „runconfig“ enthält außerdem Informationen zum Konfigurieren der
 > [!TIP]
 > Die Datei „runconfig“ kann manuell erstellt werden, die in diesem Beispiel wurde jedoch mithilfe der im Repository enthaltenen Datei `generate-runconfig.py` erstellt. Diese Datei erhält einen Verweis auf das registrierte Dataset, erstellt programmgesteuert eine Ausführungskonfiguration und speichert diese dann in der Datei.
 
-Weitere Informationen zu Dateien für Laufzeitkonfigurationen finden Sie unter [Einrichten von und Verwenden von Computezielen für das Modelltraining](how-to-set-up-training-targets.md#create-run-configuration-and-submit-run-using-azure-machine-learning-cli). Eine vollständige JSON-Referenz finden Sie in [runconfigschema.json](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json).
+Weitere Informationen zu Dateien für Laufzeitkonfigurationen finden Sie unter [Verwenden von Computezielen für das Modelltraining](how-to-set-up-training-targets.md#whats-a-run-configuration). Eine vollständige JSON-Referenz finden Sie in [runconfigschema.json](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json).
 
 ## <a name="submit-the-training-run"></a>Übermitteln der Trainingsausführung
 

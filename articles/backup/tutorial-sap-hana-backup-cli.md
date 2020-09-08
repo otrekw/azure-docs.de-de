@@ -4,12 +4,12 @@ description: In diesem Tutorial wird beschrieben, wie Sie SAP HANA-Datenbanken,
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a0b6683183d6bf73b5376c6320106373ffd4ba78
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: eb6b9f4d58a94cc8a4b9f70b5ead7d319a0d51b5
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762401"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007569"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Tutorial: Sichern von SAP HANA-Datenbanken auf einem virtuellen Azure-Computer über die Azure CLI
 
@@ -141,7 +141,7 @@ Name                                  Operation         Status     Item Name   S
 e0f15dae-7cac-4475-a833-f52c50e5b6c3  ConfigureBackup   Completed  hxe         2019-12-03T03:09:210831+00:00  
 ```
 
-Mit dem Cmdlet [az backup job list](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list) werden alle Sicherungsaufträge aufgelistet (geplant oder bedarfsgesteuert), die auf der geschützten Datenbank bereits ausgeführt wurden bzw. derzeit ausgeführt werden. Darüber hinaus sind auch andere Vorgänge aufgeführt, z. B. Durchführen der Registrierung, Konfigurieren einer Sicherung, Löschen von Sicherungsdaten usw.
+Mit dem Cmdlet [az backup job list](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list) werden alle Sicherungsaufträge aufgelistet (geplant oder bedarfsgesteuert), die auf der geschützten Datenbank bereits ausgeführt wurden bzw. derzeit ausgeführt werden. Darüber hinaus sind auch andere Vorgänge aufgeführt, z. B. Durchführen der Registrierung, Konfigurieren einer Sicherung, Löschen von Sicherungsdaten.
 
 >[!NOTE]
 >Azure Backup passt Änderungen an der Sommer- oder Winterzeit bei der Sicherung einer auf einem virtuellen Azure-Computer ausgeführten SAP HANA-Datenbank nicht automatisch an.

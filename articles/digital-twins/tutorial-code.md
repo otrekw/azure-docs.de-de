@@ -1,5 +1,5 @@
 ---
-title: Codieren einer Client-App
+title: 'Tutorial: Codieren einer Client-App'
 titleSuffix: Azure Digital Twins
 description: Tutorial zum Schreiben des Minimalcodes für eine Client-App mit dem .NET (C#) SDK.
 author: baanders
@@ -7,16 +7,23 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 52a22dd215769208b60f180b576ae5763d67eade
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: c000d48043a46ecdbdfee263cc5c8ce877f66b4b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723468"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923703"
 ---
-# <a name="coding-with-the-azure-digital-twins-apis"></a>Codieren mit den Azure Digital Twins-APIs
+# <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Tutorial: Codieren mit den Azure Digital Twins-APIs
 
 Entwickler, die mit Azure Digital Twins arbeiten, schreiben in der Regel eine Clientanwendung, um mit ihrer Azure Digital Twins-Dienstinstanz zu interagieren. Dieses Tutorial für Entwickler bietet eine Einführung in die Programmierung für den Azure Digital Twins-Dienst unter Verwendung der [Azure IoT Digital Twin-Clientbibliothek für .NET (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). Sie werden Schritt für Schritt und von Grund auf durch die Entwicklung einer Client-App für die C#-Konsole geleitet.
+
+> [!div class="checklist"]
+> * Einrichten des Projekts
+> * Erste Schritte mit dem Projektcode   
+> * Vollständiges Codebeispiel
+> * Bereinigen von Ressourcen
+> * Nächste Schritte
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -48,7 +55,7 @@ Als Nächstes fügen Sie zwei erforderliche Abhängigkeiten für die Arbeit mit 
 
 ```cmd/sh
 dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
-dotnet add package Azure.identity --version 1.1.1
+dotnet add package Azure.identity
 ```
 
 Die erste Abhängigkeit ist die [Azure IoT Digital Twin-Clientbibliothek für .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). Die zweite Abhängigkeit stellt Tools bereit, die die Authentifizierung bei Azure unterstützen.
@@ -419,7 +426,6 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Collections.Generic;
 using Azure;
-using Azure.DigitalTwins.Core.Models;
 using Azure.DigitalTwins.Core.Serialization;
 using System.Text.Json;
 
@@ -532,24 +538,7 @@ namespace minimal
  
 Die in diesem Tutorial verwendete Instanz kann im nächsten Tutorial wiederverwendet werden: [ *Erkunden von Azure Digital Twins mit einer Beispielclient-App*](tutorial-command-line-app.md). Wenn Sie auch das nächste Tutorial bearbeiten möchten, können Sie die hier eingerichtete Azure Digital Twins-Instanz beibehalten.
  
-Wenn Sie die in diesem Tutorial erstellten Ressourcen nicht mehr benötigen, folgen Sie den Schritten unten, um sie zu löschen.
-
-Bei Verwendung von [Azure Cloud Shell](https://shell.azure.com) können Sie alle Azure-Ressourcen in einer Ressourcengruppe mit dem Befehl [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) löschen. Dadurch werden die Ressourcengruppe und die Azure Digital Twins-Instanz entfernt.
-
-> [!IMPORTANT]
-> Das Löschen einer Ressourcengruppe kann nicht rückgängig gemacht werden. Die Ressourcengruppe und alle darin enthaltenen Ressourcen werden unwiderruflich gelöscht. Achten Sie daher darauf, dass Sie nicht versehentlich die falsche Ressourcengruppe oder die falschen Ressourcen löschen. 
-
-Öffnen Sie eine Azure Cloud Shell-Instanz, und führen Sie den folgenden Befehl aus, um die Ressourcengruppe und alle darin enthaltenen Elemente zu löschen.
-
-```azurecli-interactive
-az group delete --name <your-resource-group>
-```
-
-Löschen Sie als Nächstes mit dem folgenden Befehl die Azure Active Directory-App-Registrierung, die Sie für Ihre Client-App erstellt haben:
-
-```azurecli
-az ad app delete --id <your-application-ID>
-```
+[!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
 Löschen Sie abschließend den Projektordner, den Sie auf Ihrem lokalen Computer erstellt haben.
 
@@ -561,7 +550,3 @@ Fahren Sie mit dem nächsten Tutorial fort, um zu untersuchen, welche Möglichke
 
 > [!div class="nextstepaction"]
 > [*Tutorial: Erkunden von Azure Digital Twins mit einer Beispielclient-App*](tutorial-command-line-app.md)
-
-Sie können den Code aus diesem Tutorial auch ergänzen, indem Sie mithilfe der Gewusst-wie-Artikel weitere Verwaltungsvorgänge kennenlernen oder anhand der Konzeptdokumentation mehr über die Elemente erfahren, mit denen Sie im Tutorial gearbeitet haben.
-* [ *Verwalten von Azure Digital Twins-Modellen*](how-to-manage-model.md)
-* [ *Grundlegendes zu Zwillingsmodellen in Azure Digital Twins*](concepts-models.md)

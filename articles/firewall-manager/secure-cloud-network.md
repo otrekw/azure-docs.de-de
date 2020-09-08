@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 07/29/2020
+ms.date: 08/28/2020
 ms.author: victorh
-ms.openlocfilehash: 458ebe14e77c7b190a5c4cdd9b408396589d5d27
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 9da1340d08d4eaab3ba208c667861093ef0f799b
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420820"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079114"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-firewall-manager"></a>Tutorial: Schützen Ihres virtuellen Hubs mit Azure Firewall Manager
 
@@ -32,6 +32,10 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Bereitstellen der Server
 > * Erstellen einer Firewallrichtlinie und Schützen Ihres Hubs
 > * Testen der Firewall
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="create-a-hub-and-spoke-architecture"></a>Erstellen einer Hub-Spoke-Architektur
 
@@ -270,6 +274,10 @@ Testen Sie jetzt die Netzwerkregel.
 
 Somit haben Sie sich jetzt vergewissert, dass die Netzwerkregel der Firewall funktioniert:
 * Sie können einen Remotedesktop mit einem Server verbinden, der sich in einem anderen virtuellen Netzwerk befindet.
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie die Firewallressourcen getestet haben, löschen Sie die **fw-manager**-Ressourcengruppe, um alle firewallbezogenen Ressourcen zu löschen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

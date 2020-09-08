@@ -3,18 +3,18 @@ title: Verwalten von AWS-Kosten und -Nutzung in Azure Cost Management
 description: Dieser Artikel hilft Ihnen zu verstehen, wie Sie Ihre AWS-Kosten und -Nutzung mithilfe von Kostenanalysen und -budgets in Azure Cost Management verwalten.
 author: bandersmsft
 ms.author: banders
-ms.date: 07/24/2020
+ms.date: 08/28/2020
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: matrive
 ms.custom: ''
-ms.openlocfilehash: 4d6a961388c9794a7584e8529dac75d068f91ed4
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 7df27a6ed288555d0f4815223fd0bb6dddff6f44
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685016"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266189"
 ---
 # <a name="manage-aws-costs-and-usage-in-azure"></a>Verwalten von AWS-Kosten und -Nutzung in Azure
 
@@ -36,17 +36,18 @@ In den nächsten Abschnitten wird beschrieben, wie Sie die Bereiche verwenden, u
 
 ### <a name="view-aws-linked-accounts-under-a-management-group"></a>Anzeigen verknüpfter AWS-Konten unter einer Verwaltungsgruppe
 
-Die Anzeige der Kosten unter Verwendung des Verwaltungsgruppenbereichs ist die einzige Möglichkeit, aggregierte Kosten anzuzeigen, die aus verschiedenen Abonnements und verknüpften Konten stammen. Die Verwendung einer Verwaltungsgruppe ermöglicht eine cloudübergreifende Ansicht.
+Die Anzeige der Kosten unter Verwendung des Verwaltungsgruppenbereichs ist die einzige Möglichkeit, aggregierte Kosten anzuzeigen, die aus verschiedenen Azure-Abonnements und verknüpften AWS-Konten stammen. Die Verwendung einer Verwaltungsgruppe bietet eine cloudübergreifende Ansicht, um Kosten aus Azure und AWS zusammen anzuzeigen.
 
 Öffnen Sie in der Kostenanalyse die Bereichsauswahl, und wählen Sie die Verwaltungsgruppe aus, die Ihre verknüpften AWS-Konten enthält. Hier sehen Sie ein Beispielbild im Azure-Portal:
 
-![Beispiel der Ansicht „Bereich auswählen“](./media/aws-integration-manage/select-scope01.png)
-
-
+:::image type="content" source="./media/aws-integration-manage/select-scope01.png" alt-text="Beispiel der Ansicht „Bereich auswählen“ mit verknüpften Konten unter einer Verwaltungsgruppe" :::
 
 Hier sehen Sie ein Beispiel, in dem die Kosten der Verwaltungsgruppe in der Kostenanalyse dargestellt werden, gruppiert nach Anbieter (Azure und AWS).
 
-![Beispiel der Azure- und AWS-Kosten für ein Quartal in der Kostenanalyse](./media/aws-integration-manage/cost-analysis-aws-azure.png)
+:::image type="content" source="./media/aws-integration-manage/cost-analysis-aws-azure.png" alt-text="Beispiel der Azure- und AWS-Kosten für ein Quartal in der Kostenanalyse" lightbox="./media/aws-integration-manage/cost-analysis-aws-azure.png" :::
+
+> [!NOTE]
+> Verwaltungsgruppen werden derzeit nicht für Microsoft-Kundenvereinbarung-Kunden (Microsoft Customer Agreement, MCA) unterstützt. MCA-Kunden können den Connector erstellen und ihre AWS-Daten anzeigen. Allerdings können MCA-Kunden ihre Azure-Kosten und AWS-Kosten nicht zusammen in einer Verwaltungsgruppe anzeigen.
 
 ### <a name="view-aws-linked-account-costs"></a>Anzeigen der Kosten für verknüpfte AWS-Konten
 
@@ -54,21 +55,17 @@ Um die Kosten für verknüpfte AWS-Konten anzuzeigen, öffnen Sie die Bereichsau
 
 Hier sehen Sie ein Beispiel, das die Auswahl eines verknüpften AWS-Kontobereichs zeigt.
 
-![Beispiel der Ansicht „Bereich auswählen“](./media/aws-integration-manage/select-scope02.png)
-
-
+:::image type="content" source="./media/aws-integration-manage/select-scope02.png" alt-text="Beispiel der Ansicht „Bereich auswählen“ mit verknüpften AWS-Konten" :::
 
 ### <a name="view-aws-consolidated-account-costs"></a>Anzeigen der Kosten eines konsolidierten AWS­-Kontos
 
 Um die Kosten des konsolidierten AWS-Kontos anzuzeigen, öffnen Sie die Bereichsauswahl und wählen das konsolidierte AWS-Konto aus. Hier sehen Sie ein Beispiel, das die Auswahl eines konsolidierten AWS-Kontobereichs zeigt.
 
-![Beispiel der Ansicht „Bereich auswählen“](./media/aws-integration-manage/select-scope03.png)
-
-
+:::image type="content" source="./media/aws-integration-manage/select-scope03.png" alt-text="Beispiel der Ansicht „Bereich auswählen“ mit konsolidierten Konten" :::
 
 Dieser Bereich bietet eine aggregierte Ansicht aller verknüpften AWS-Konten, die dem konsolidierten AWS-Konto zugeordnet sind. Hier sehen Sie ein Beispiel der Kosten für ein konsolidiertes AWS-Konto, gruppiert nach Dienstnamen.
 
-![Beispiel der konsolidierten AWS-Kosten in der Kostenanalyse](./media/aws-integration-manage/cost-analysis-aws-consolidated.png)
+:::image type="content" source="./media/aws-integration-manage/cost-analysis-aws-consolidated.png" alt-text="Beispiel der konsolidierten AWS-Kosten in der Kostenanalyse" lightbox="./media/aws-integration-manage/cost-analysis-aws-consolidated.png" :::
 
 ### <a name="dimensions-available-for-filtering-and-grouping"></a>Zum Filtern und Gruppieren verfügbare Dimensionen
 
@@ -77,9 +74,9 @@ Die folgende Tabelle beschreibt die Dimensionen, die zum Gruppieren und Filtern 
 | Dimension | Amazon CUR-Header | Bereiche | Kommentare |
 | --- | --- | --- | --- |
 | Verfügbarkeitszone | lineitem/AvailabilityZone | All |   |
-| Position | product/Region | All |   |
+| Standort | product/Region | All |   |
 | Zähler |   | All |   |
-| Meter category | lineItem/ProductCode | All |   |
+| Kategorie für Messung | lineItem/ProductCode | All |   |
 | Meter subcategory | lineitem/UsageType | All |   |
 | Vorgang | lineItem/Operation | All |   |
 | Resource | lineItem/ResourceId | All |   |
@@ -89,7 +86,7 @@ Die folgende Tabelle beschreibt die Dimensionen, die zum Gruppieren und Filtern 
 | Dienstebene |   |   |   |
 | Abonnement-ID | lineItem/UsageAccountId | Konsolidiertes Konto und Verwaltungsgruppe |   |
 | Abonnementname | – | Konsolidiertes Konto und Verwaltungsgruppe | Kontonamen werden mithilfe der AWS-Organisations-API erfasst. |
-| Tag | resourceTags/\* | All | Das Präfix _user:_ wird aus benutzerdefinierten Tags entfernt, um cloudübergreifende Tags zu ermöglichen. Das Präfix _aws:_ bleibt unverändert. |
+| Tag | resourceTags | All | Das Präfix _user:_ wird aus benutzerdefinierten Tags entfernt, um cloudübergreifende Tags zu ermöglichen. Das Präfix _aws:_ bleibt unverändert. |
 | ID des Abrechnungskontos | bill/PayerAccountId | Verwaltungsgruppe |   |
 | Name des Abrechnungskontos | – | Verwaltungsgruppe | Kontonamen werden mithilfe der AWS-Organisations-API erfasst. |
 | Anbieter | – | Verwaltungsgruppe | AWS oder Azure. |
@@ -98,7 +95,7 @@ Die folgende Tabelle beschreibt die Dimensionen, die zum Gruppieren und Filtern 
 
 Verwenden Sie Budgets, um Kosten proaktiv zu verwalten und Verantwortung in Ihrer Organisation zu fördern. Budgets werden für die Bereiche des konsolidierten AWS-Kontos und des verknüpften AWS-Kontos festgelegt. Hier sehen Sie ein Beispiel des Budgets für ein konsolidiertes AWS-Konto in Azure Cost Management:
 
-![Beispiel, das Budgets für ein konsolidiertes AWS-Konto darstellt](./media/aws-integration-manage/budgets-aws-consolidated-account01.png)
+:::image type="content" source="./media/aws-integration-manage/budgets-aws-consolidated-account01.png" alt-text="Beispiel, das Budgets für ein konsolidiertes AWS-Konto darstellt" :::
 
 ## <a name="aws-data-collection-process"></a>Prozess der AWS-Datensammlung
 
@@ -110,15 +107,15 @@ Nach dem Einrichten des AWS-Connectors beginnen die Datenerfassungs- und -ermitt
 
 ## <a name="aws-integration-pricing"></a>AWS-Integration – Preise
 
-Jeder AWS-Connector erhält 90 kostenlose Testtage. Während der öffentlichen Vorschauphase fallen keine Kosten für das Anwendungsgateway an.
+Jeder AWS-Connector erhält 90 kostenlose Testtage.
 
 Der Listenpreis beträgt 1 % Ihrer AWS-Monatskosten. Jeden Monat werden die Kosten auf der Grundlage Ihrer fakturierten Kosten des Vormonats berechnet.
 
-Der Zugriff auf AWS-APIs kann zusätzliche Kosten verursachen.
+Der Zugriff auf AWS-APIs kann zusätzliche AWS-Kosten verursachen.
 
 ## <a name="aws-integration-limitations"></a>Einschränkungen für AWS-Integration
 
-- Azure Cost Management unterstützt keine Kostenberichte, die mehrere Währungstypen enthalten. Eine Fehlermeldung wird angezeigt, wenn Sie einen Bereich auswählen, der mehrere Währungen enthält.
+- Budgets in Cost Management unterstützen keine Verwaltungsgruppen mit mehreren Währungen. Für Verwaltungsgruppen mit mehreren Währungen wird keine Budgetauswertung angezeigt. Eine Fehlermeldung wird angezeigt, wenn Sie beim Erstellen eines Budgets eine Verwaltungsgruppe mit mehreren Währungen auswählen.
 - „AWS GovCloud (USA)“, „AWS Gov“ oder „AWS China“ werden von Cloudconnectors nicht unterstützt.
 - Azure Cost Management zeigt nur die AWS-_Nutzungskosten_ an. Steuern, Support, Rückerstattungen, RI, Gutschriften oder andere Gebührenarten werden noch nicht unterstützt.
 

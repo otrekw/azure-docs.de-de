@@ -4,12 +4,12 @@ description: In diesem Tutorial wird beschrieben, wie Sie gesicherte SAP HANA-Da
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 13cd6e33fbec261b52aae73b1b01fe26764885fe
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 3051eb9a6f0c395f8ec06d92d6501296ec39c768
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757352"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007297"
 ---
 # <a name="tutorial-manage-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Tutorial: Verwalten von SAP HANA-Datenbanken auf einem virtuellen Azure-Computer über die Azure CLI
 
@@ -119,7 +119,7 @@ Sie können den Schutz einer SAP HANA-Datenbank auf verschiedene Weise beenden:
 
 Wenn Sie die Wiederherstellungspunkte beibehalten, sollten Sie Folgendes beachten:
 
-* Alle Wiederherstellungspunkte werden unbegrenzt beibehalten, und die Bereinigung endet mit der Beendung des Schutzes unter Beibehaltung der Daten.
+* Alle Wiederherstellungspunkte werden unbegrenzt beibehalten, und die gesamte Bereinigung endet mit der Beendigung des Schutzes unter Beibehaltung der Daten.
 * Ihnen werden die geschützte Instanz und der verbrauchte Speicher in Rechnung gestellt.
 * Wenn Sie eine Datenquelle löschen, ohne die Sicherungen zu beenden, treten bei neuen Sicherungen Fehler auf.
 

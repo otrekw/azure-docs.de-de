@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 6d958cd2fa95cd3c3747afc80b47c17f55e4248a
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 251dbf6897f7efe56d968122c2ccad7093d39e44
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405533"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300050"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Tutorial: Erstellen einer Single-Page-Webanwendung mit der Bing-Websuche-API
 
@@ -443,7 +443,7 @@ Browsersicherheitsrichtlinien, z. B. CORS (Cross-Origin Resource Sharing), könn
 > [!NOTE]
 > In einer Webanwendung für eine Produktionsumgebung sollten Sie die Anforderung in jedem Fall serverseitig ausführen. Andernfalls muss der Abonnementschlüssel der Bing-Suche-API auf der Webseite hinterlegt werden, wo er im Quelltext für alle Benutzer zugänglich ist. Dies müssen Sie vermeiden, da ansonsten unbefugte Dritte Anforderungen unter Verwendung Ihres API-Abonnementschlüssels Anforderungen senden können, die Ihnen in Rechnung gestellt werden.
 
-Zu Entwicklungszwecken können Sie eine Anforderung über ein CORS-Proxy senden. In der Antwort eines solchen Proxytys befindet sich ein `Access-Control-Expose-Headers`-Header. Dieser enthält eine Whitelist mit Antwortheadern, die JavaScript zur Verfügung gestellt werden.
+Zu Entwicklungszwecken können Sie eine Anforderung über ein CORS-Proxy senden. In der Antwort eines solchen Proxytyps befindet sich ein `Access-Control-Expose-Headers`-Header. Dieser filtert Antwortheader, die JavaScript zur Verfügung gestellt werden.
 
 Die Installation eines CORS-Proxys, mit dem die Beispiel-App auf den Client-ID-Header zugreifen kann, ist schnell und unkompliziert. Führen Sie den folgenden Befehl aus:
 

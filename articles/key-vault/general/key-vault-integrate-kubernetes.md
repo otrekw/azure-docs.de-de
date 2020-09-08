@@ -1,19 +1,22 @@
 ---
 title: Integrieren von Azure Key Vault mit Kubernetes
 description: In diesem Tutorial greifen Sie auf Geheimnisse in Azure Key Vault zu und rufen sie daraus ab, indem Sie den Secrets Store CSI-Treiber (Container Storage Interface) für die Einbindung in Kubernetes-Pods verwenden.
-author: rkarlin
-ms.author: rkarlin
+author: ShaneBala-keyvault
+ms.author: sudbalas
 ms.service: key-vault
 ms.topic: tutorial
-ms.date: 06/04/2020
-ms.openlocfilehash: 1942576037c7367612580a04d4187ccf4655aade
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.date: 08/25/2020
+ms.openlocfilehash: bfcaf9d4b1d03457f2e4cddd2e0eaf9d9d58eee2
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685883"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869183"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Tutorial: Konfigurieren und Ausführen des Azure Key Vault-Anbieters für den Secrets Store CSI-Treiber auf Kubernetes
+
+> [!IMPORTANT]
+> Der CSI-Treiber ist ein Open-Source-Projekt, das vom technischen Support von Azure nicht unterstützt wird. Senden Sie Feedback und Probleme im Zusammenhang mit der Key Vault-Integration des CSI-Treibers über den GitHub-Link am unteren Rand der Seite. Dieses Tool wird den Benutzern zur Verfügung gestellt, damit sie es selbst in Clustern installieren und Feedback von unserer Community erhalten können.
 
 In diesem Tutorial greifen Sie auf Geheimnisse in Azure Key Vault zu und rufen sie daraus ab, indem Sie den Secrets Store CSI-Treiber (Container Storage Interface) für die Einbindung der Geheimnisse in Kubernetes-Pods verwenden.
 

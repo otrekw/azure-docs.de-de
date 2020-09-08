@@ -1,42 +1,54 @@
 ---
-title: 'Tutorial: Implementieren der räumlichen IoT-Analyse | Microsoft Azure Maps'
+title: 'Tutorial: Implementieren der räumlichen IoT-Analyse mit Microsoft Azure Maps'
 description: Hier wird beschrieben, wie Sie IoT Hub in Microsoft Azure Maps-Dienst-APIs integrieren.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 11/12/2019
+ms.date: 09/01/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 2bb5876424730e55d15cc52aeb98aa04af040821
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 4150464b5c59b631afea0c788b1e351dee5185f9
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133400"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299391"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>Tutorial: Implementieren der räumlichen IoT-Analyse mit Azure Maps
 
-Ein gängiges IoT-Szenario ist die Erfassung und Nachverfolgung relevanter Ereignisse in Raum und Zeit. Beispielszenarien wären etwa die Verwaltung von Fuhrparks, Assetnachverfolgung, Mobilität und Smart City-Anwendungen. In diesem Tutorial wird Schritt für Schritt ein Lösungsmuster unter Verwendung der Azure Maps-APIs erläutert. Relevante Ereignisse werden von IoT Hub unter Verwendung des von Event Grid bereitgestellten Ereignisabonnementmodells erfasst.
+Ein gängiges IoT-Szenario ist die Erfassung und Nachverfolgung relevanter Ereignisse in Raum und Zeit. Beispielszenarien wären etwa die Verwaltung von Fuhrparks, Assetnachverfolgung, Mobilität und Smart City-Anwendungen. In diesem Tutorial werden Sie durch eine Lösung geführt, die mit den Azure Maps-APIs die Bewegung gebrauchter Mietwagen nachverfolgt.
 
 In diesem Lernprogramm führen Sie folgende Schritte aus:
 
 > [!div class="checklist"]
-> * Erstellen Sie einen IoT Hub.
-> * Hochladen des Geofencebereichs in den Azure Maps-Datendienst per Datenupload-API
+> * Erstellen eines Azure Storage-Kontos zur Protokollierung der Autonachverfolgungsdaten.
+> * Hochladen eines Geofence per Datenupload-API in den Azure Maps-Datendienst.
+> * Erstellen einer IoT Hub-Instanz und Registrieren eines Geräts.
 > * Erstellen einer Funktion in Azure Functions und Implementieren von Geschäftslogik basierend auf einer räumlichen Azure Maps-Analyse
 > * Abonnieren von IoT-Gerätetelemetrieereignissen aus der Azure-Funktion per Event Grid
 > * Filtern der Telemetrieereignisse per IoT Hub-Nachrichtenrouting
-> * Erstellen eines Speicherkontos zum Speichern relevanter Ereignisdaten
-> * Simulieren eines IoT-Geräts in einem Fahrzeug
-    
 
-## <a name="use-case"></a>Anwendungsfall
+## <a name="prerequisites"></a>Voraussetzungen
 
-In diesem Tutorialszenario möchte ein Mietwagenunternehmen seine Mietfahrzeuge überwachen und Ereignisse für die Fahrzeuge protokollieren. Mietwagenunternehmen vermieten Fahrzeuge häufig für eine bestimmte geografische Region. Daher müssen sie die Position während der Vermietung nachverfolgen. Wenn ein Fahrzeug die ausgewählte geografische Region verlässt, muss dies protokolliert werden. Durch die Protokollierung der Daten wird die ordnungsgemäße Behandlung von Richtlinien, Gebühren und anderen geschäftlichen Aspekten sichergestellt.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-In unserem Anwendungsfall sind die Mietwagen mit IoT-Geräten ausgestattet, die regelmäßig Telemetriedaten an Azure IoT Hub senden. Die Telemetriedaten beinhalten den aktuellen Standort sowie die Information, ob der Motor des Fahrzeugs läuft. Das Schema für den Gerätestandort basiert auf dem [IoT Plug & Play-Schema für Geodaten](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v1-preview/schemas/geospatial.md). Das Gerätetelemetrieschema des Mietwagens sieht wie folgt aus:
+2. [Erstellen Sie ein Azure Maps-Konto](quick-demo-map-app.md#create-an-azure-maps-account).
+
+3. [Abrufen eines Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account) (auch primärer Schlüssel oder Abonnementschlüssel genannt) Weitere Informationen zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](how-to-manage-authentication.md).
+
+4. [Erstellen Sie eine Ressourcengruppe](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal#create-resource-groups). In diesem Tutorial nennen wir unsere Ressourcengruppe *ContosoRental*, aber Sie können einen beliebigen Namen auswählen.
+
+5. Laden Sie das [C#-Projekt rentalCarSimulation](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/tree/master/src/rentalCarSimulation) herunter.
+
+In diesem Tutorial wird die Anwendung [Postman](https://www.postman.com/) verwendet. Sie können aber auch eine andere API-Entwicklungsumgebung verwenden.
+
+## <a name="use-case-rental-car-tracking"></a>Anwendungsfall: Nachverfolgung von Mietwagen
+
+Dieses Tutorial veranschaulicht die folgenden Szenarios: Ein Autoverleihunternehmen möchte Standortinformationen, zurückgelegte Entfernung und Betriebsstatus seiner Mietfahrzeuge protokollieren. Außerdem möchte das Unternehmen diese Informationen immer dann speichern, wenn ein Auto die richtige autorisierte geografische Region verlässt.
+
+In unserem Anwendungsfall sind die Mietwagen mit IoT-Geräten ausgestattet, die regelmäßig Telemetriedaten an Azure IoT Hub senden. Die Telemetriedaten beinhalten den aktuellen Standort sowie die Information, ob der Motor des Fahrzeugs läuft. Das Schema für den Gerätestandort basiert auf dem [IoT Plug & Play-Schema für Geodaten](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v1-preview/schemas/geospatial.md). Das Gerätetelemetrieschema des Mietwagens sieht wie der folgende JSON-Code aus:
 
 ```JSON
 {
@@ -53,229 +65,182 @@ In unserem Anwendungsfall sind die Mietwagen mit IoT-Geräten ausgestattet, die 
             "iothub-enqueuedtime": "2019-06-18T00:17:20.608Z",
             "iothub-message-source": "Telemetry"
         },
-        "body": { 
-            "location": { 
+        "body": {
+            "location": {
                 "type": "Point",
                 "coordinates": [ -77.025988698005662, 38.9015330523316 ]
-            } 
-        } 
+            }
+        }
     }
 }
 ```
 
-Wir verwenden die Telemetriedaten eines fahrzeuginternen Geräts, um unser Ziel zu erreichen. Wir möchten Geofencingregeln ausführen. Und wir möchten darauf reagieren, wenn durch ein empfangenes Ereignis angegeben wird, dass das Fahrzeug bewegt wurde. Zu diesem Zweck abonnieren wir über Event Grid die Gerätetelemetrieereignisse von IoT Hub. 
+In diesem Tutorial wird nur ein Fahrzeug nachverfolgt. Nachdem wir die Azure-Dienste eingerichtet haben, müssen Sie das [C#-Projekt rentalCarSimulation](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/tree/master/src/rentalCarSimulation) herunterladen, um den Fahrzeugsimulator auszuführen. Der gesamte Prozess vom Ereignis bis zur Funktionsausführung wird in den folgenden Schritten zusammengefasst:
 
-Event Grid-Abonnements können auf mehrere Arten erstellt werden. In diesem Tutorial verwenden wir Azure Functions. Azure Functions reagiert auf in Event Grid veröffentlichte Ereignisse. Darüber hinaus wird Logik für ein Mietwagenunternehmen implementiert (basierend auf der räumlichen Azure Maps-Analyse). 
+1. Das Gerät im Fahrzeug sendet Telemetriedaten an den IoT-Hub.
 
-Durch den Code in der Azure-Funktion wird überprüft, ob das Fahrzeug den Geofencebereich verlassen hat. Falls ja, werden von der Azure-Funktion weitere Informationen gesammelt (etwa die Adresse des aktuellen Standorts). Mit der Funktion wird auch Logik implementiert, um aussagekräftige Ereignisdaten in einem Datenblobspeicher zu speichern und so eine Beschreibung der Ereignisumstände zu ermöglichen. 
+2. Wenn der Fahrzeugmotor läuft, veröffentlicht der IoT-Hub die Telemetriedaten im Event Grid.
 
-Die Ereignisumstände können sowohl für das Mietwagenunternehmen als auch für den Kunden hilfreich sein. Das folgende Diagramm enthält eine allgemeine Übersicht über das System.
+3. Eine Azure-Funktion wird aufgrund ihres Ereignisabonnements für Gerätetelemetrieereignisse ausgelöst.
 
- 
-  <center>
+4. Die Funktion protokolliert die Koordinaten der Position des Fahrzeuggeräts, den Zeitpunkt des Ereignisses und die Geräte-ID. Anschließend wird anhand der [Spatial Geofence-GET-API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) bestimmt, ob das Fahrzeug außerhalb des Geofence gefahren wurde. Wenn es die Geofencegrenzen überschritten hat, speichert die Funktion die vom Ereignis empfangenen Positionsdaten in unserem Blobcontainer. Außerdem fragt unsere Funktion die [inverse Adresssuche](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) ab, um die Koordinatenposition in eine Straße zu übersetzen und mit den restlichen Gerätestandortdaten zu speichern.
 
-  ![Systemübersicht](./media/tutorial-iot-hub-maps/system-diagram.png)
-  
-  </center>
+Das folgende Diagramm enthält eine allgemeine Übersicht über das System.
+
+   :::image type="content" source="./media/tutorial-iot-hub-maps/system-diagram.png" border="false" alt-text="Systemübersicht":::
 
 In der folgenden Abbildung ist der Geofencebereich blau eingefärbt. Die Route des Mietwagens ist als grüne Linie dargestellt.
 
-  ![Geofenceroute](./media/tutorial-iot-hub-maps/geofence-route.png)
+   :::image type="content" source="./media/tutorial-iot-hub-maps/geofence-route.png" border="false" alt-text="Geofenceroute":::
 
+## <a name="create-an-azure-storage-account"></a>Erstellen eines Azure-Speicherkontos
 
-## <a name="prerequisites"></a>Voraussetzungen 
+Zum Speichern von Nachverfolgungsdaten zu Verstößen des Fahrzeugs erstellen wir ein [universelles v2-Speicherkonto](https://docs.microsoft.com/azure/storage/common/storage-account-overview#general-purpose-v2-accounts) in Ihrer Ressourcengruppe. Wenn Sie noch keine Ressourcengruppe erstellt haben, befolgen Sie die Anweisungen in [Erstellen von Ressourcengruppe](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal#create-resource-groups). In diesem Tutorial nennen wir die Ressourcengruppe *ContosoRental*.
 
-### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
+Befolgen Sie zum Erstellen eines Speicherkontos die Anweisungen unter [Speicherkonto erstellen](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-portal). In diesem Tutorial nennen wir das Speicherkonto *contosorentalstorage*, Sie können es jedoch beliebig benennen.
 
-Um die Schritte in diesem Tutorial ausführen zu können, müssen Sie zunächst im Azure-Portal eine Ressourcengruppe erstellen. Gehen Sie zum Erstellen einer Ressourcengruppe wie folgt vor:
+Nachdem das Speicherkonto erfolgreich erstellt wurde, müssen wir einen Container zum Speichern von Protokollierungsdaten erstellen.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Navigieren Sie zum neu erstellten Speicherkonto. Klicken Sie im Abschnitt „Zusammenfassung“ auf den Link **Container**.
 
-2. Klicken Sie auf **Ressourcengruppen**.
-    
-   ![Ressourcengruppen](./media/tutorial-iot-hub-maps/resource-group.png)
+    :::image type="content" source="./media/tutorial-iot-hub-maps/containers.png" alt-text="Container für Blobspeicher":::
 
-3. Wählen Sie unter **Ressourcengruppe** die Option **Hinzufügen** aus.
-    
-   ![Hinzufügen von Ressourcengruppen](./media/tutorial-iot-hub-maps/add-resource-group.png) 
+2. Klicken Sie in der linken oberen Ecke auf die Schaltfläche **+ Container**. Rechts im Browser wird ein Fenster angezeigt. Nennen Sie Ihren Container *contoso-rental-logs*, und klicken Sie auf **Erstellen**.
 
-4. Geben Sie die folgenden Eigenschaftswerte ein:
-    * **Abonnement:** Wählen Sie Ihr Azure-Abonnement.
-    * **Ressourcengruppe:** Geben Sie „ContosoRental“ als Ressourcengruppennamen ein.
-    * **Region:** Wählen Sie eine Region für die Ressourcengruppe aus.  
+     :::image type="content" source="./media/tutorial-iot-hub-maps/container-new.png" alt-text="Erstellen eines Blobcontainers":::
 
-    ![Details zur Ressourcengruppe](./media/tutorial-iot-hub-maps/resource-details.png)
+3. Navigieren Sie in Ihrem Speicherkonto zum Blatt **Zugriffsschlüssel**, und kopieren Sie den **Namen des Speicherkontos** und den Wert des **Schlüssels** in den Abschnitt **key1**. Wir benötigen beide Werte im Abschnitt [Erstellen einer Azure-Funktion und Hinzufügen eines Event Grid-Abonnements](#create-an-azure-function-and-add-an-event-grid-subscription).
 
-    Wählen Sie **Überprüfen + erstellen** und auf der nächsten Seite die Option **Erstellen** aus.
+    :::image type="content" source="./media/tutorial-iot-hub-maps/access-keys.png" alt-text="Kopieren des Speicherkontonamens und -schlüssels":::
 
-### <a name="create-an-azure-maps-account"></a>Erstellen eines Azure Maps-Kontos 
+## <a name="upload-a-geofence"></a>Hochladen eines Geofence
 
-Um Geschäftslogik auf der Grundlage der räumlichen Azure Maps-Analyse implementieren zu können, muss in der erstellten Ressourcengruppe ein Azure Maps-Konto erstellt werden. Befolgen Sie die Anleitung zum [Erstellen eines Kontos](quick-demo-map-app.md#create-an-azure-maps-account), um ein Azure Maps-Kontoabonnement im Tarif S1 zu erstellen. Führen Sie die Schritte unter [Abrufen des Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account) aus, um den Primärschlüssel für Ihr Konto zu erhalten. Weitere Informationen zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](how-to-manage-authentication.md).
+Wir verwenden jetzt die [Postman-App](https://www.getpostman.com) zum [Hochladen des Geofence](https://docs.microsoft.com/azure/azure-maps/geofence-geojson) in den Azure Maps-Dienst. Der Geofence definiert den autorisierten geografischen Bereich für unser Mietfahrzeug.  Wir verwenden den Geofence in unserer Azure-Funktion, um zu bestimmen, ob ein Fahrzeug außerhalb des Geofencebereichs bewegt wurde.
 
+Öffnen Sie die Postman-App, und führen Sie die unten angegebenen Schritte aus, um die Geofencedaten mit der Datenupload-API von Azure Maps hochzuladen.  
 
+1. Öffnen Sie die Postman-App. Wählen Sie oben in der Postman-App **New** (Neu) aus. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Collection** (Sammlung) aus.  Geben Sie einen Namen für die Sammlung ein, und klicken Sie dann auf **Create** (Erstellen).
 
-### <a name="create-a-storage-account"></a>Speicherkonto erstellen
+2. Klicken Sie erneut auf **New** (Neu), um die Anforderung zu erstellen. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen (**Request name**) ein. Wählen Sie die im vorherigen Schritt erstellte Sammlung und anschließend **Save** (Speichern) aus.
 
-Sie erstellen zum Protokollieren von Ereignisdaten das universelle Konto **v2storage**, das Zugriff auf sämtliche Azure Storage-Dienste bietet: Blobs, Dateien, Warteschlangen, Tabellen und Datenträger.  Sie müssen dieses Speicherkonto in der Ressourcengruppe „ContosoRental“ platzieren, um Daten als Blobs speichern zu können. Befolgen Sie zum Erstellen eines Speicherkontos die Anleitung unter [Speicherkonto erstellen](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal). Als Nächstes müssen wir einen Container zum Speichern von Blobs erstellen. Führen Sie hierzu die folgenden Schritte aus:
-
-1. Navigieren Sie in Ihrem Speicherkonto (Blob, Datei, Tabelle, Warteschlange) zu „Container“.
-
-    ![Blobs](./media/tutorial-iot-hub-maps/blobs.png)
-
-2. Klicken Sie oben links auf die Containerschaltfläche, geben Sie Ihrem Container den Namen „contoso-rental-logs“, und klicken Sie auf „OK“.
-
-    ![blob-container](./media/tutorial-iot-hub-maps/blob-container.png)
-
-3. Navigieren Sie in Ihrem Speicherkonto zum Blatt **Zugriffsschlüssel**, und kopieren Sie den Namen des Speicherkontos und den Zugriffsschlüssel. Diese werden in einem späteren Schritt benötigt.
-
-    ![access-keys](./media/tutorial-iot-hub-maps/access-keys.png)
-
-
-Wir verfügen nun über ein Speicherkonto und einen Container zum Protokollieren von Ereignisdaten. Als Nächstes erstellen wir einen IoT-Hub.
-
-### <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
-
-IoT Hub ist ein verwalteter Dienst in der Cloud. Die IoT Hub-Instanz fungiert als zentraler Nachrichtenhub für die bidirektionale Kommunikation zwischen einer IoT-Anwendung und den Geräten, die von der Anwendung verwaltet werden. Erstellen Sie eine IoT Hub-Instanz in der Ressourcengruppe „ContosoRental“, um Gerätetelemetrienachrichten an eine Event Grid-Instanz weiterzuleiten. Richten Sie eine Nachrichtenroutenintegration ein, um Nachrichten basierend auf dem Motorstatus des Fahrzeugs zu filtern. Darüber hinaus senden wir Gerätetelemetrienachrichten jeweils an die Event Grid-Instanz, wenn das Fahrzeug bewegt wird.
-
-> [!Note] 
-> Die IoT Hub-Funktionalität zum Veröffentlichen von Gerätetelemetrieereignissen über Event Grid befindet sich in der öffentlichen Vorschauphase (Public Preview). Features in der öffentlichen Vorschauphase sind in allen Regionen verfügbar, mit Ausnahme von **„USA, Osten“, „USA, Westen“, „Europa, Westen“, „Azure Government“, „Azure China 21Vianet“** und **„Azure Deutschland“** . 
-
-Erstellen Sie eine IoT Hub-Instanz, indem Sie die Schritte im Abschnitt [Erstellen eines IoT Hubs](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-dotnet#create-an-iot-hub) ausführen.
-
-
-### <a name="register-a-device"></a>Registrieren eines Geräts 
-
-Zum Herstellen einer Verbindung mit der IoT Hub-Instanz muss ein Gerät registriert werden. Führen Sie die folgenden Schritte aus, um ein Gerät bei IoT Hub zu registrieren:
-
-1. Klicken Sie auf Ihrer IoT Hub-Instanz auf das Blatt „IoT-Geräte“ und auf „Neu“.
-
-    ![add-device](./media/tutorial-iot-hub-maps/add-device.png)
-
-2. Geben Sie Ihrem IoT-Gerät auf der Seite für die Geräteerstellung einen Namen, und klicken Sie auf „Speichern“.
-    
-    ![register-device](./media/tutorial-iot-hub-maps/register-device.png)
-
-3. Speichern Sie den Wert für **Primäre Verbindungszeichenfolge** Ihres Geräts zur Verwendung in einem späteren Schritt, in dem Sie einen Platzhalter durch diese Verbindungszeichenfolge ersetzen müssen.
-
-    ![add-device](./media/tutorial-iot-hub-maps/connection-string.png)
-
-## <a name="upload-geofence"></a>Hochladen der Geofencedaten
-
-Wir nutzen die [Postman-Anwendung](https://www.getpostman.com) zum [Hochladen der Geofencedaten](https://docs.microsoft.com/azure/azure-maps/geofence-geojson) in den Azure Maps-Dienst (unter Verwendung der Data Upload-API von Azure Maps). Alle Ereignisse, bei denen sich das Fahrzeug außerhalb dieses Geofencebereichs befindet, werden protokolliert.
-
-Öffnen Sie die Postman-App, und führen Sie die unten angegebenen Schritte aus, um die Geofencedaten mit der Data Upload-API von Azure Maps hochzuladen.  
-
-1. Klicken Sie in der Postman-App auf „New“ | „Create new“ („Neu“ | „Neu erstellen“), und wählen Sie anschließend „Request“ (Anfordern). Geben Sie einen Anforderungsnamen für das Hochladen von Geofencedaten ein, wählen Sie eine Sammlung oder einen Ordner zum Speichern aus, und klicken Sie auf „Save“ (Speichern).
-
-    ![Hochladen von Geofences mit Postman](./media/tutorial-iot-hub-maps/postman-new.png)
-
-2. Wählen Sie auf der Registerkarte „Builder“ (Generator) die POST-HTTP-Methode aus, und geben Sie die folgende URL ein, um eine POST-Anforderung zu senden.
+3. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **POST** aus, und geben Sie die folgende URL ein, um die Geofencedaten in die Datenupload-API hochzuladen. Stellen Sie sicher, dass Sie `{subscription-key}` durch Ihren primären Abonnementschlüssel ersetzen.
 
     ```HTTP
     https://atlas.microsoft.com/mapData/upload?subscription-key={subscription-key}&api-version=1.0&dataFormat=geojson
     ```
-    
+
     Der „geojson“-Wert für den Parameter `dataFormat` im URL-Pfad gibt das Format der hochzuladenden Daten an.
 
-3. Klicken Sie auf **Params**, und geben Sie die folgenden Schlüssel-Wert-Paare ein, die für die POST-Anforderungs-URL verwendet werden sollen. Ersetzen Sie den Abonnementschlüsselwert durch Ihren Azure Maps-Schlüssel.
-   
-    ![Schlüssel-Wert-Parameter: Postman](./media/tutorial-iot-hub-maps/postman-key-vals.png)
+4. Klicken Sie auf **Text**, und wählen Sie dann das Eingabeformat **roh** aus. Wählen Sie in der Dropdownliste anschließend **JSON** als Eingabeformat. Öffnen Sie die JSON-Datendatei [hier](https://raw.githubusercontent.com/Azure-Samples/iothub-to-azure-maps-geofencing/master/src/Data/geofence.json?token=AKD25BYJYKDJBJ55PT62N4C5LRNN4), und kopieren Sie den JSON-Code in den Textabschnitt. Klicken Sie auf **Send**.
 
-4. Klicken Sie auf **Text**, und wählen Sie dann das Rohdaten-Eingabeformat (**raw**) aus. Wählen Sie in der Dropdownliste anschließend **JSON (application/text)** (JSON (Anwendung/Text)) als Eingabeformat aus. Öffnen Sie die [hier](https://raw.githubusercontent.com/Azure-Samples/iothub-to-azure-maps-geofencing/master/src/Data/geofence.json?token=AKD25BYJYKDJBJ55PT62N4C5LRNN4) verfügbare JSON-Datendatei, und kopieren Sie den JSON-Code als hochzuladende Daten in den Abschnitt „body“ (Text). Klicken Sie anschließend auf **Send** (Senden).
-    
-    ![Bereitstellen von Daten](./media/tutorial-iot-hub-maps/post-json-data.png)
-    
-5. Sehen Sie sich die Antwortheader an. Bei einer erfolgreichen Anforderung enthält der Adressheader (**Location**) den Status-URI, um den aktuellen Status der Uploadanforderung zu überprüfen. Der Status-URI hat das folgende Format. 
+5. Klicken Sie auf die blaue Schaltfläche **Send** (Senden), und warten Sie, bis die Anforderung verarbeitet wurde. Navigieren Sie nach Abschluss der Anforderung zur Registerkarte **Headers** (Header) der Antwort. Kopieren Sie den Wert des Schlüssels **Location** (Speicherort). Hierbei handelt es sich um die Status-URL (`status URL`).
 
-   ```HTTP
-   https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0
-   ```
+    ```http
+    https://atlas.microsoft.com/mapData/operations/<operationId>?api-version=1.0
+    ```
 
-6. Kopieren Sie Ihren Status-URI, und fügen Sie an ihn den Parameter `subscription-key` an. Weisen Sie den Wert Ihres Azure Maps Konto-Kontoabonnementschlüssel dem Parameter `subscription-key` zu. Der Status-URI sollte das folgende Format haben, und `{Subscription-key}` muss durch Ihren Abonnementschlüssel ersetzt werden:
+6. Erstellen Sie zum Überprüfen des Status des API-Aufrufs eine **GET**-HTTP-Anforderung für `status URL`. An die URL muss zur Authentifizierung der primäre Abonnementschlüssel angefügt werden. Die **GET**-Anforderung sollte wie die folgende URL aussehen:
 
    ```HTTP
-   https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
-   ```
+   https://atlas.microsoft.com/mapData/<operationId>/status?api-version=1.0&subscription-key={subscription-key}
 
-7. Um den Wert von `udId` abzurufen, öffnen Sie in der Postman-App eine neue Registerkarte, wählen auf der Registerkarte „Builder“ (Generator) die HTTP-Methode „GET“ aus und führen eine GET-Anforderung für den Status-URI aus. Wenn der Datenupload erfolgreich ausgeführt wurde, erhalten Sie im Antworttext einen Wert für „udId“. Kopieren Sie die udId zur späteren Verwendung.
+7. When the **GET** HTTP request completes successfully, it will return a `resourceLocation`. The `resourceLocation` contains the unique `udid` for the uploaded content. You'll need to copy this `udid` for later use in this tutorial.
 
-   ```JSON
-   {
-    "udid" : "{udId}"
-   }
-   ```
+      ```json
+      {
+          "status": "Succeeded",
+          "resourceLocation": "https://atlas.microsoft.com/mapData/metadata/{udid}?api-version=1.0"
+      }
+      ```
 
+## <a name="create-an-azure-iot-hub"></a>Erstellen einer Azure IoT Hub-Instanz
 
-Als Nächstes erstellen wir eine Azure-Funktion in der Ressourcengruppe „ContosoRental“ und richten dann in IoT Hub eine Nachrichtenroute ein, um Gerätetelemetrienachrichten zu filtern.
+Azure IoT Hub ermöglicht eine äußerst sichere und zuverlässige bidirektionale Kommunikation zwischen Ihrer IoT-Anwendung und den verwalteten Geräten.  In unserem Szenario möchten wir Informationen von unserem Gerät im Fahrzeug erhalten, um die Position des Mietfahrzeugs zu ermitteln. In diesem Abschnitt erstellen wir einen IoT-Hub innerhalb der *ContosoRental*-Ressourcengruppe. Der IoT-Hub ist für das Veröffentlichen von Gerätetelemetrieereignissen verantwortlich.
 
+> [!NOTE]
+> Die Funktionalität des IoT-Hubs zum Veröffentlichen von Gerätetelemetrieereignissen über Event Grid befindet sich in der öffentlichen Vorschauphase (Public Preview). Features in der öffentlichen Vorschauphase sind in allen Regionen verfügbar, mit Ausnahme von **„USA, Osten“, „USA, Westen“, „Europa, Westen“, „Azure Government“, „Azure China 21Vianet“** und **„Azure Deutschland“**.
+
+Führen Sie zum Erstellen eines IoT-Hubs in der Ressourcengruppe *ContosoRental* die Schritte unter [Erstellen eines IoT-Hubs](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-dotnet#create-an-iot-hub) aus.
+
+## <a name="register-a-device-in-iot-hub"></a>Registrieren eines Geräts in einem IoT-Hub
+
+Geräte können nur dann eine Verbindung mit dem IoT-Hub herstellen, wenn sie in der IoT-Hub-Identitätsregistrierung registriert sind. In unserem Szenario erstellen wir ein einzelnes Gerät mit dem Namen *InVehicleDevice*. Um das Gerät im IoT-Hub zu erstellen und zu registrieren, führen Sie die Schritte in [Registrieren eines neuen Geräts beim IoT-Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal#register-a-new-device-in-the-iot-hub) aus. Stellen Sie sicher, dass Sie die **Primäre Verbindungszeichenfolge** Ihres Geräts kopieren, da wir sie in einem späteren Schritt verwenden werden.
 
 ## <a name="create-an-azure-function-and-add-an-event-grid-subscription"></a>Erstellen einer Azure-Funktion und Hinzufügen eines Event Grid-Abonnements
 
-Azure Functions ist ein serverloser Computedienst, mit dem wir Code bedarfsgesteuert ausführen können, ohne explizit eine Computeinfrastruktur bereitstellen oder verwalten zu müssen. Weitere Informationen zu Azure Functions finden Sie in der Dokumentation zu [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview). 
+Azure Functions ist ein serverloser Computedienst, mit dem Sie kleine Codeabschnitte („Funktionen“) ausführen können, ohne explizit eine Computeinfrastruktur bereitstellen oder verwalten zu müssen. Weitere Informationen zu Azure Functions finden Sie in der Dokumentation zu [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview).
 
-Für die Logik, die wir in der Funktion implementieren, werden die Standortdaten der Gerätetelemetrie im Fahrzeug genutzt, um den Geofencestatus zu bewerten. Wenn ein Fahrzeug den Geofencebereich verlässt, erfasst die Funktion weitere Informationen (beispielsweise die Adresse des Standorts) über die [API für die umgekehrte Adresssuche](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse). Diese API wandelt eine bestimmte Standortkoordinate in eine für Menschen lesbare Adresse um. 
+Eine Funktion wird durch ein bestimmtes Ereignis „ausgelöst“. In unserem Szenario erstellen wir eine Funktion, die durch einen Event Grid-Trigger ausgelöst wird. Wir erstellen die Beziehung zwischen Trigger und Funktion, indem wir ein Ereignisabonnement für IoT-Hub-Gerätetelemetrieereignisse erstellen. Wenn ein Gerätetelemetrieereignis auftritt, wird unsere Funktion als Endpunkt aufgerufen und empfängt die relevanten Daten für das [Gerät, das wir zuvor im IoT-Hub registriert haben](#register-a-device-in-iot-hub).
 
-Alle relevanten Ereignisinformationen werden dann im Blobspeicher gespeichert. In Schritt 5 unten wird auf den ausführbaren Code verwiesen, mit dem diese Logik implementiert wird. Führen Sie die unten angegebenen Schritte aus, um eine Azure-Funktion zu erstellen, mit der Datenprotokolle an den Blobcontainer im Blobspeicherkonto gesendet werden, und fügen Sie ein Event Grid-Abonnement hinzu.
+Der C#-Skriptcode, den die Funktion enthält, ist [hier](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/blob/master/src/Azure%20Function/run.csx) zu sehen.
 
-1. Wählen Sie im Dashboard des Azure-Portals die Option zum Erstellen einer Ressource aus. Wählen Sie in der Liste mit den verfügbaren Ressourcentypen die Option **Compute** und dann **Funktions-App** aus.
+Jetzt richten wir unsere Azure-Funktion ein.
 
-    ![create-resource](./media/tutorial-iot-hub-maps/create-resource.png)
+1. Klicken Sie im Dashboard des Azure-Portals auf **Ressource erstellen**. Geben Sie im Suchtextfeld **Funktionen-App** ein. Klicken Sie auf **Funktionen-App**. Klicken Sie auf **Erstellen**.
 
-2. Geben Sie Ihrer Funktions-App auf der Erstellungsseite **Funktions-App** einen Namen. Wählen Sie unter **Ressourcengruppe** die Option **Use existing** (Vorhandene verwenden) und anschließend in der Dropdownliste die Option „ContosoRental“ aus. Wählen Sie „.NET Core“ als Runtimestapel aus. Wählen Sie unter **Hosting** für **Speicherkonto** den Speicherkontonamen aus einem vorherigen Schritt aus. In diesem vorherigen Schritt haben wir dem Speicherkonto den Namen **v2storage** gegeben.  Wählen Sie dann **Bewerten + erstellen** aus.
-    
-    ![create-app](./media/tutorial-iot-hub-maps/rental-app.png)
+2. Geben Sie Ihrer Funktions-App auf der Erstellungsseite **Funktions-App** einen Namen. Wählen Sie unter **Ressourcengruppe** die Option *ContosoRental* in der Dropdownliste aus.  Wählen Sie *.NET Core* als **Runtimestapel** aus. Klicken Sie auf **Weiter: Hosting** im unteren Bereich der Seite.
 
-2. Überprüfen Sie die Details der Funktions-App, und wählen Sie „Erstellen“ aus.
+    :::image type="content" source="./media/tutorial-iot-hub-maps/rental-app.png" alt-text="Erstellen einer Funktions-App":::
 
-3. Nach der Erstellung der App müssen wir ihr eine Funktion hinzufügen. Navigieren Sie zur Funktions-App. Klicken Sie auf **Neue Funktion**, um eine Funktion hinzuzufügen, und wählen Sie als Entwicklungsumgebung die Option **Im Portal** aus. Wählen Sie anschließend **Weiter** aus.
+3. Wählen Sie als **Speicherkonto** das Speicherkonto aus, das Sie unter [Erstellen eines Azure-Speicherkontos](#create-an-azure-storage-account) erstellt haben. Klicken Sie auf **Überprüfen + erstellen**.
 
-    ![create-function](./media/tutorial-iot-hub-maps/function.png)
+4. Überprüfen Sie die Details der Funktions-App, und klicken Sie auf **Erstellen**.
 
-4. Wählen Sie **More templates** (Weitere Vorlagen), und klicken Sie auf **Finish and view templates** (Fertig stellen und Vorlagen anzeigen). 
+5. Nach der Erstellung der App müssen wir ihr eine Funktion hinzufügen. Navigieren Sie zur Funktions-App. Klicken Sie auf das Blatt **Funktionen**. Klicken Sie am oberen Seitenrand auf **+ Hinzufügen**. Der Funktionsvorlagenbereich wird angezeigt. Scrollen Sie im Bereich nach unten. Klicken Sie auf **Azure Event Grid-Trigger**.
 
-5. Wählen Sie die Vorlage mit einem **Azure Event Grid-Trigger** aus. Installieren Sie die Erweiterungen, wenn Sie dazu aufgefordert werden, geben Sie der Funktion einen Namen, und wählen Sie **Erstellen** aus.
+     >[!WARNING]
+    > Die Vorlagen **Azure Event Hub-Trigger** und **Azure Event Grid-Trigger** haben ähnliche Namen. Stellen Sie sicher, dass Sie die Vorlage **Azure Event Grid-Trigger** auswählen.
 
-    ![function-template](./media/tutorial-iot-hub-maps/eventgrid-funct.png)
-    
-    Der **Azure Event Hub-Trigger** und der **Azure Event Grid-Trigger** haben ähnliche Symbole. Stellen Sie sicher, dass Sie den **Azure Event Grid-Trigger** auswählen.
+    :::image type="content" source="./media/tutorial-iot-hub-maps/function-create.png" alt-text="Erstellen einer Funktion":::
 
-6. Kopieren Sie den [C#-Code](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/blob/master/src/Azure%20Function/run.csx) in Ihre Funktion.
- 
-7. Ersetzen Sie im C#-Skript die folgenden Parameter. Klicken Sie auf **Speichern**. Klicken Sie noch nicht auf **Ausführen**.
+6. Geben Sie der Funktion einen Namen. In diesem Tutorial verwenden wir den Namen *GetGeoFunction*, aber Sie können einen beliebigen Namen verwenden. Klicken Sie auf **Funktion erstellen**.
+
+7. Klicken Sie im Menü auf der linken Seite auf das Blatt **Code + Test**. Kopieren Sie das [C#-Skript](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/blob/master/src/Azure%20Function/run.csx), und fügen Sie es in das Codefenster ein.
+
+     :::image type="content" source="./media/tutorial-iot-hub-maps/function-code.png" alt-text="Kopieren/Einfügen von Code in das Funktionsfenster":::
+
+8. Ersetzen Sie im C#-Code die folgenden Parameter. Klicken Sie auf **Speichern**. Klicken Sie noch nicht auf **Testen/Ausführen**.
     * Ersetzen Sie **SUBSCRIPTION_KEY** durch den primären Abonnementschlüssel Ihres Azure Maps-Kontos.
-    * Ersetzen Sie **UDID** durch die udId des hochgeladenen Geofencebereichs. 
-    * Mit der Funktion **CreateBlobAsync** im Skript wird im Datenspeicherkonto ein Blob pro Ereignis erstellt. Ersetzen Sie **ACCESS_KEY**, **ACCOUNT_NAME** und **STORAGE_CONTAINER_NAME** durch den Zugriffsschlüssel, den Kontonamen und den Datenspeichercontainer Ihres Speicherkontos.
+    * Ersetzen Sie **UDID** durch die `udid` des in [Hochladen eines Geofence](#upload-a-geofence) hochgeladenen Geofencebereichs.
+    * Mit der Funktion **CreateBlobAsync** im Skript wird im Datenspeicherkonto ein Blob pro Ereignis erstellt. Ersetzen Sie **ACCESS_KEY**, **ACCOUNT_NAME** und **STORAGE_CONTAINER_NAME** durch den Zugriffsschlüssel, den Kontonamen und den Datenspeichercontainer Ihres Speicherkontos. Diese Werte wurden generiert, als Sie in [Erstellen eines Azure-Speicherkontos](#create-an-azure-storage-account) ein Speicherkonto erstellt haben.
 
-10. Klicken Sie auf **Event Grid-Abonnement hinzufügen**.
-    
-    ![add-event-grid](./media/tutorial-iot-hub-maps/add-egs.png)
+9. Klicken Sie im Menü auf der linken Seite auf das Blatt **Integration**. Klicken Sie im Diagramm auf **Event Grid-Trigger**. Geben Sie einen Namen für den Trigger ein, z. B. *eventCarTelemetry*, und klicken Sie auf **Event Grid-Abonnement erstellen**.
 
-11. Füllen Sie die Abonnementdetails aus. Geben Sie unter **DETAILS ZUM EREIGNISABONNEMENT** einen Namen für Ihr Ereignisabonnement ein. Wählen Sie als Ereignisschema die Option „Event Grid-Schema“ aus. Wählen Sie unter **THEMENDETAILS** den Thementyp „Azure IoT Hub-Konten“ aus. Wählen Sie das gleiche Abonnement aus, das Sie auch beim Erstellen der Ressourcengruppe verwendet haben, und wählen Sie „ContosoRental“ als Ressourcengruppe aus. Wählen Sie die von Ihnen erstellte IoT Hub-Instanz als Ressource aus. Wählen Sie **Gerätetelemetrie** als Ereignistyp aus. Nachdem Sie diese Optionen ausgewählt haben, sehen Sie, dass der Thementyp automatisch in „IoT Hub“ geändert wurde.
+     :::image type="content" source="./media/tutorial-iot-hub-maps/function-integration.png" alt-text="Hinzufügen eines Ereignisabonnements":::
 
-    ![event-grid-subscription](./media/tutorial-iot-hub-maps/af-egs.png)
- 
+10. Tragen Sie die Abonnementdetails ein. Benennen Sie das Ereignisabonnement. Wählen Sie für *Ereignisschema* die Option *Event Grid-Schema* aus. Wählen Sie für **Thementypen** die Option *Azure IoT Hub-Konten* aus. Wählen Sie für **Ressourcengruppe** die Ressourcengruppe aus, die Sie zu Beginn dieses Tutorials erstellt haben. Wählen Sie für **Ressource** den IoT-Hub aus, den Sie in [Erstellen einer Azure IoT Hub-Instanz](#create-an-azure-iot-hub) erstellt haben. Wählen Sie für **Nach Ereignistypen filtern** die Option *Gerätetelemetrie* aus. Nachdem Sie diese Optionen ausgewählt haben, sehen Sie, dass der **Thementyp** automatisch in *IoT Hub* geändert wurde. Für **Name des Systemthemas** können Sie denselben Namen wie für Ihre Ressource verwenden.  Klicken Sie abschließend auf **Endpunkt auswählen** im Abschnitt **Endpunktdetails**. Akzeptieren Sie alle Einstellungen, und klicken Sie auf **Auswahl bestätigen**.
+
+    :::image type="content" source="./media/tutorial-iot-hub-maps/function-create-event-subscription.png" alt-text="Erstellen eines Ereignisabonnements":::
+
+11. Überprüfen Sie Ihre Einstellungen. Stellen Sie sicher, dass der Endpunkt die Funktion angibt, die Sie am Anfang dieses Abschnitts erstellt haben. Klicken Sie auf **Erstellen**.
+
+    :::image type="content" source="./media/tutorial-iot-hub-maps/function-create-event-subscription-confirm.png" alt-text="Bestätigung des Erstellens eines Ereignisabonnements":::
+
+12. Nun befinden Sie sich wieder im Fenster **Trigger bearbeiten**. Klicken Sie auf **Speichern**.
 
 ## <a name="filter-events-using-iot-hub-message-routing"></a>Filtern von Ereignissen per IoT Hub-Nachrichtenrouting
 
-Nachdem Sie der Azure-Funktion ein Event Grid-Abonnement hinzugefügt haben, wird auf dem Blatt **Nachrichtenrouting** von IoT Hub eine Standardnachrichtenroute zu Event Grid angezeigt. Das Nachrichtenrouting ermöglicht es Ihnen, verschiedene Datentypen an verschiedene Endpunkte weiterzuleiten. Dadurch können Sie beispielsweise Gerätetelemetrienachrichten, Gerätelebenszyklusereignisse und Änderungsereignisse für Gerätezwillinge weiterleiten. Weitere Informationen zum IoT Hub-Nachrichtenrouting finden Sie unter [Verwenden des IoT Hub-Nachrichtenroutings zum Senden von D2C-Nachrichten an verschiedene Endpunkte](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c).
+Wenn Sie der Azure-Funktion ein Event Grid-Abonnement hinzufügen, wird automatisch eine Nachrichtenroute im angegebenen IoT-Hub erstellt. Das Nachrichtenrouting ermöglicht Ihnen, verschiedene Datentypen an verschiedene Endpunkte weiterzuleiten. Dadurch können Sie beispielsweise Gerätetelemetrienachrichten, Gerätelebenszyklusereignisse und Änderungsereignisse für Gerätezwillinge weiterleiten. Weitere Informationen zum IoT Hub-Nachrichtenrouting finden Sie unter [Verwenden des IoT Hub-Nachrichtenroutings zum Senden von D2C-Nachrichten an verschiedene Endpunkte](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c).
 
-![hub-EG-route](./media/tutorial-iot-hub-maps/hub-route.png)
+:::image type="content" source="./media/tutorial-iot-hub-maps/hub-route.png" alt-text="Nachrichtenrouting im IoT-Hub":::
 
-In unserem Beispielszenario möchten wir alle Nachrichten herausfiltern, bei denen der Mietwagen bewegt wird. Um diese Gerätetelemetrieereignisse für Event Grid zu veröffentlichen, filtern wird die Ereignisse, für die die Eigenschaft `Engine` auf **ON** festgelegt ist, mithilfe der Routingabfrage. Es gibt verschiedene Möglichkeiten zum Abfragen von IoT-Gerät-zu-Cloud-Nachrichten. Weitere Informationen zur Syntax für das Nachrichtenrouting finden Sie unter [Abfragesyntax für das IoT Hub-Nachrichtenrouting](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax). Klicken Sie zum Erstellen einer Routingabfrage auf die Route **RouteToEventGrid**, und ersetzen Sie die **Routingabfrage** durch **„Engine='ON'“** . Klicken Sie anschließend auf **Speichern**. IoT Hub veröffentlicht jetzt nur Gerätetelemetriedaten, wenn „Engine“ auf „ON“ festgelegt ist.
+In unserem Beispielszenario möchten wir nur dann Nachrichten empfangen, wenn das Mietfahrzeug bewegt wird. Wir erstellen eine Routingabfrage, um die Ereignisse zu filtern, bei denen die `Engine`-Eigenschaft gleich **ON** ist. Klicken Sie zum Erstellen einer Routingabfrage auf die Route **RouteToEventGrid**, und ersetzen Sie die **Routingabfrage** durch **„Engine='ON'“**. Klicken Sie anschließend auf **Speichern**. IoT Hub veröffentlicht jetzt nur Gerätetelemetriedaten, wenn „Engine“ auf „ON“ festgelegt ist.
 
-![hub-EG-filter](./media/tutorial-iot-hub-maps/hub-filter.png)
+:::image type="content" source="./media/tutorial-iot-hub-maps/hub-filter.png" alt-text="Filtern von Routingnachrichten":::
 
+>[!TIP]
+>Es gibt verschiedene Möglichkeiten zum Abfragen von IoT-Gerät-zu-Cloud-Nachrichten. Weitere Informationen zur Syntax für das Nachrichtenrouting finden Sie unter [Abfragesyntax für das IoT Hub-Nachrichtenrouting](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax).
 
 ## <a name="send-telemetry-data-to-iot-hub"></a>Senden von Telemetriedaten an IoT Hub
 
 Sobald unsere Azure-Funktion einsatzbereit ist, können wir Telemetriedaten an die IoT Hub-Instanz senden, von wo aus sie dann an Event Grid weitergeleitet werden. Wir verwenden hier eine C#-Anwendung, um Standortdaten für ein Gerät in einem Mietwagen zu simulieren. Zum Ausführen der Anwendung benötigen Sie auf Ihrem Entwicklungscomputer .NET Core SDK 2.1.0 oder höher. Führen Sie die folgenden Schritte aus, um simulierte Telemetriedaten an IoT Hub zu senden.
 
-1. Laden Sie das C#-Projekt [rentalCarSimulation](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/tree/master/src/rentalCarSimulation) herunter. 
+1. Wenn Sie dies noch nicht getan haben, laden Sie das C#-Projekt [rentalCarSimulation](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/tree/master/src/rentalCarSimulation) herunter.
 
 2. Öffnen Sie die Datei „simulatedCar.cs“ in einem Text-Editor Ihrer Wahl, und ersetzen Sie den Wert von `connectionString` durch den Wert, den Sie beim Registrieren des Geräts gespeichert haben. Speichern Sie anschließend die Änderungen der Datei.
- 
+
 3. Vergewissern Sie sich, dass auf Ihrem Computer .NET Core installiert ist. Navigieren Sie in Ihrem lokalen Terminalfenster zum Stammordner des C#-Projekts, und führen Sie den folgenden Befehl aus, um die erforderlichen Pakete für die simulierte Geräteanwendung zu installieren:
-    
+
     ```cmd/sh
     dotnet restore
     ```
@@ -288,21 +253,21 @@ Sobald unsere Azure-Funktion einsatzbereit ist, können wir Telemetriedaten an d
 
   Ihr lokales Terminal sollte wie folgt aussehen.
 
-  ![Terminalausgabe](./media/tutorial-iot-hub-maps/terminal.png)
+:::image type="content" source="./media/tutorial-iot-hub-maps/terminal.png" alt-text="Terminalausgabe":::
 
-Wenn Sie den Blobspeichercontainer jetzt öffnen, sollten vier Blobs für Standorte angezeigt werden, an denen sich das Fahrzeug außerhalb des Geofencebereichs befunden hat.
+Wenn Sie den Blobspeichercontainer jetzt öffnen, können Sie vier Blobs für Standorte sehen, an denen sich das Fahrzeug außerhalb des Geofencebereichs befunden hat.
 
-![Blobeingabe](./media/tutorial-iot-hub-maps/blob.png)
+:::image type="content" source="./media/tutorial-iot-hub-maps/blob.png" alt-text="Anzeigen von Blobs in einem Container":::
 
-In der Karte unten werden vier Punkte angezeigt, an denen sich das Fahrzeug außerhalb des Geofencebereichs befunden hat. Diese Protokollierung erfolgt in regelmäßigen Intervallen.
+Die folgende Karte zeigt vier Fahrzeugpositionspunkte außerhalb des Geofence. Jede Position wurde in regelmäßigen Zeitabständen protokolliert.
 
-![Anzeige von Verstößen auf Karte](./media/tutorial-iot-hub-maps/violation-map.png)
+:::image type="content" source="./media/tutorial-iot-hub-maps/violation-map.png" alt-text="Karte der Verstöße":::
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="explore-azure-maps-and-iot"></a>Erkunden von Azure Maps und IoT
 
 Informationen zu den in diesem Tutorial verwendeten Azure Maps-APIs finden Sie unter:
 
-* [Get Search Address Reverse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)
+* [Get Search Address Reverse (Suchadresse invers abrufen)](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)
 * [Get Geofence](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence)
 
 Eine vollständige Liste mit Azure Maps-REST-APIs finden Sie unter:
@@ -317,6 +282,9 @@ Eine Liste mit Geräten, die über eine Azure-Zertifizierung für IoT verfügen,
 
 * [Geräte mit Azure-Zertifizierung](https://catalog.azureiotsolutions.com/)
 
+## <a name="next-steps"></a>Nächste Schritte
+
 Weitere Informationen zum Senden von Telemetriedaten von einem Gerät an die Cloud (und umgekehrt) finden Sie unter:
 
-* [Senden von Telemetriedaten von einem Gerät](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-dotnet)
+> [!div class="nextstepaction"]
+> [Senden von Telemetriedaten von einem Gerät](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-dotnet)

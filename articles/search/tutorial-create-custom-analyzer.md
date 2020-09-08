@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/22/2020
-ms.openlocfilehash: a9c2a5beae8a9206554dd6c432c1d8442b652696
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e714c58827ebb4ee7e50696db27644fa65a73af1
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021884"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290309"
 ---
 # <a name="tutorial-create-a-custom-analyzer-for-phone-numbers"></a>Tutorial: Erstellen eines benutzerdefinierten Analysetools für Telefonnummern
 
@@ -21,7 +21,7 @@ ms.locfileid: "87021884"
 
 In einigen Fällen, z. B. bei einem Freitextfeld, verbessert bereits die Auswahl des richtigen [Sprachanalysetools](index-add-language-analyzers.md) die Suchergebnisse. Einige Szenarien, wie z. B. das genaue Suchen nach Telefonnummern, URLs oder E-Mails, erfordern jedoch möglicherweise die Verwendung benutzerdefinierter Analysetools.
 
-In diesem Tutorial werden Postman und die [REST-APIs](https://docs.microsoft.com/rest/api/searchservice/) von Azure Cognitive Search für die folgenden Aufgaben verwendet:
+In diesem Tutorial werden Postman und die [REST-APIs](/rest/api/searchservice/) von Azure Cognitive Search für die folgenden Aufgaben verwendet:
 
 > [!div class="checklist"]
 > * Erläutern der Funktionsweise von Analysetools
@@ -225,7 +225,7 @@ Wenn diese Ergebnisse verwirrend finden, sind Sie nicht allein. Im nächsten Abs
 
 ## <a name="4---debug-search-results"></a>4\. Debuggen der Suchergebnisse
 
-Um diese Suchergebnisse zu verstehen, ist es wichtig, zunächst zu verstehen, wie Analysetools funktionieren. Anschließend können wir das Standardanalysetool mit der [Textanalyse-API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) testen und dann ein Analysetool erstellen, das unseren Anforderungen entspricht.
+Um diese Suchergebnisse zu verstehen, ist es wichtig, zunächst zu verstehen, wie Analysetools funktionieren. Anschließend können wir das Standardanalysetool mit der [Textanalyse-API](/rest/api/searchservice/test-analyzer) testen und dann ein Analysetool erstellen, das unseren Anforderungen entspricht.
 
 ### <a name="how-analyzers-work"></a>Funktionsweise von Analysetools
 
@@ -239,7 +239,7 @@ Analysetools bestehen aus drei Komponenten:
 
 In der folgenden Abbildung sehen Sie, wie diese drei Komponenten zusammenwirken, um einen Satz in Token zu zerlegen:
 
-  ![Abbildung des Analysetoolvorgangs](media/tutorial-create-custom-analyzer/analyzers-explained.png)
+  ![Abbildung des Analysetoolvorgangs zum Zerlegen eines Satzes in Token](media/tutorial-create-custom-analyzer/analyzers-explained.png)
 
 Diese Token werden dann in einem invertierten Index gespeichert, der eine schnelle Volltextsuche ermöglicht.  Ein invertierter Index ermöglicht Volltextsuche, indem er alle eindeutigen Begriffe, die bei der lexikalischen Analyse extrahiert wurden, den Dokumenten zuordnet, in denen sie vorkommen. Ein Beispiel sehen Sie in der Abbildung unten:
 
@@ -251,7 +251,7 @@ Die gesamte Suche läuft auf die Suche nach den im invertierten Index gespeicher
 1. Der invertierte Index wird dann nach Dokumenten mit übereinstimmenden Begriffen gescannt.
 1. Schließlich wir die Rangfolge der abgerufenen Dokumente durch den [Ähnlichkeitsalgorithmus](index-ranking-similarity.md) ermittelt.
 
-  ![Abbildung des Analysetoolvorgangs](media/tutorial-create-custom-analyzer/query-architecture-explained.png)
+  ![Abbildung des Analysetoolvorgangs zum Ermitteln der Ähnlichkeitsrangfolge](media/tutorial-create-custom-analyzer/query-architecture-explained.png)
 
 Wenn die Abfragebegriffe nicht mit den Begriffen in Ihrem invertierten Index übereinstimmen, werden keine Ergebnisse zurückgegeben. Weitere Informationen zur Funktionsweise von Abfragen finden Sie im Artikel zur [Volltextsuche](search-lucene-query-architecture.md).
 
@@ -260,7 +260,7 @@ Wenn die Abfragebegriffe nicht mit den Begriffen in Ihrem invertierten Index üb
 
 ### <a name="test-analyzer-using-the-analyze-text-api"></a>Testen des Analysetools mit der Textanalyse-API
 
-Azure Cognitive Search stellt eine [Textanalyse-API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) zur Verfügung, die es Ihnen ermöglicht, Analysetools zu testen, um zu verstehen, wie sie Text verarbeiten.
+Azure Cognitive Search stellt eine [Textanalyse-API](/rest/api/searchservice/test-analyzer) zur Verfügung, die es Ihnen ermöglicht, Analysetools zu testen, um zu verstehen, wie sie Text verarbeiten.
 
 Die Textanalyse-API wird mithilfe der folgenden Anforderung aufgerufen:
 

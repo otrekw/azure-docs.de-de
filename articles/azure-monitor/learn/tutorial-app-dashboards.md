@@ -7,12 +7,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 07/3/2019
 ms.custom: mvc
-ms.openlocfilehash: 49984349ce8d9d1bc43778c0042dd21485eded15
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 1b6fdbdfaef601751961d022858545d731fe62a8
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829678"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88856009"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Erstellen benutzerdefinierter KPI-Dashboards mithilfe von Azure Application Insights
 
@@ -40,6 +40,9 @@ Für dieses Tutorial benötigen Sie Folgendes:
 Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 
 ## <a name="create-a-new-dashboard"></a>Erstellen eines neuen Dashboards
+> [!WARNING]
+> Wenn Sie Ihre Application Insights-Ressource in eine andere Ressourcengruppe oder ein anderes Abonnement verschieben, müssen Sie das Dashboard manuell aktualisieren, indem Sie die alten Kacheln entfernen und neue Kacheln aus der gleichen Application Insights-Ressource an einer neuen Position anheften. 
+
 Ein einzelnes Dashboard kann Ressourcen aus mehreren Anwendungen, Ressourcengruppen und Abonnements enthalten.  Starten Sie das Tutorial, indem Sie ein neues Dashboard für Ihre Anwendung erstellen.  
 
 1. Wählen Sie im Bereich „Dashboard“ die Option **Neues Dashboard**

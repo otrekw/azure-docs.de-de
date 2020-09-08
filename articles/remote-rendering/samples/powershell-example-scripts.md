@@ -5,12 +5,13 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
-ms.openlocfilehash: 07055025eff9ab81c7321624daed9b4a6e993a60
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: fbac172952c9feea92341dbc028567235b9250bc
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506510"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89075272"
 ---
 # <a name="example-powershell-scripts"></a>PowerShell-Beispielskripts
 
@@ -20,6 +21,9 @@ Azure Remote Rendering verfügt über die beiden folgenden REST-APIs:
 - [REST-API für Sitzungen](../how-tos/session-rest-api.md)
 
 Das [Repository mit den ARR-Beispielen](https://github.com/Azure/azure-remote-rendering) enthält im Ordner *Scripts* Beispielskripts für die Interaktion mit den REST-APIs des Diensts. In diesem Artikel wird die Nutzung beschrieben.
+
+> [!CAUTION]
+Zu häufiges Aufrufen von REST-API-Befehlen bewirkt, dass der Server eine Drosselung durchführt und schließlich einen Fehler zurückgibt. Die HTTP-Fehlercode-ID ist in diesem Fall 429 („zu viele Anforderungen“). Als Faustregel sollte eine Verzögerung von **5–10 Sekunden zwischen nachfolgenden Aufrufen** erfolgen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

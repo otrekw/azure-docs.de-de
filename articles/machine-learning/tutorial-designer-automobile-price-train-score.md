@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 4a925fb4352ac81e5879bb925ee1d743a77ffd5c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3992bbe466241eb388874905237dbe00f07b3752
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290288"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88812983"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Tutorial: Prognostizieren von Automobilpreisen mit dem Designer (Vorschau)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -104,13 +104,7 @@ Im Designer stehen mehrere Beispieldatasets zur Verfügung, mit denen Sie experi
 
 Sie können die Daten visualisieren, um sich mit dem zu verwendenden Dataset vertraut zu machen.
 
-1. Wählen Sie das Modul **Automobile price data (Raw)** (Automobilpreisdaten (Rohdaten)) aus.
-
-1. Wählen Sie rechts neben der Canvas im Bereich mit den Moduldetails die Option **Ausgaben und Protokolle** aus.
-
-1. Wählen Sie das Diagrammsymbol aus, um die Daten zu visualisieren.
-    
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/visualize-data.png"alt-text="Alternativtext hier einfügen.":::
+1. Klicken Sie mit der rechten Maustaste auf **Automobile Price Data (Raw)** , und wählen Sie **Visualisierung**.
 
 1. Wählen Sie die verschiedenen Spalten im Datenfenster aus, um Informationen zur jeweiligen Spalte zu erhalten.
 
@@ -291,9 +285,7 @@ Nachdem die Einrichtung Ihrer Pipeline jetzt abgeschlossen ist, können Sie eine
 
 Nach Abschluss der Ausführung können Sie sich die Ergebnisse ansehen. Sehen Sie sich zuerst die vom Regressionsmodell generierten Vorhersagen an.
 
-1. Wählen Sie das Modul **Score Model** (Modell bewerten) aus, um dessen Ausgabe anzuzeigen.
-
-1. Wählen Sie rechts neben der Canvas im Bereich mit den Moduldetails **Ausgaben und Protokolle** > Diagrammsymbol ![Visualisierungssymbol](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) aus, um die Ergebnisse anzuzeigen.
+1. Klicken Sie mit der rechten Maustaste auf das Modul **Score Model** und wählen Sie **Visualisieren** aus, um seine Ausgabe anzuzeigen.
 
     Hier sehen Sie die vorhergesagten Preise und die tatsächlichen Preise aus den Testdaten.
 
@@ -303,9 +295,7 @@ Nach Abschluss der Ausführung können Sie sich die Ergebnisse ansehen. Sehen Si
 
 Verwenden Sie das Modul **Evaluate Model** (Modell auswerten), um zu prüfen, wie gut das trainierte Modell beim Testdataset abgeschnitten hat.
 
-1. Wählen Sie das Modul **Evaluate Model** (Modell auswerten) aus, um dessen Ausgabe anzuzeigen.
-
-1. Wählen Sie rechts neben der Canvas im Bereich mit den Moduldetails **Ausgaben und Protokolle** > Diagrammsymbol ![Visualisierungssymbol](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) aus, um die Ergebnisse anzuzeigen.
+1. Klicken Sie mit der rechten Maustaste auf das Modul **Evaluate Model** und wählen Sie **Visualisieren** aus, um seine Ausgabe anzuzeigen.
 
 Die folgenden Statistiken werden für Ihr Modell angezeigt:
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc, devx-track-python
 ms.date: 04/07/2020
-ms.openlocfilehash: 0029761f8a1c48ab595dfa5bc2a87fca12d90e3d
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 753f45257f820f87f2e4bfb1893f581bee167a4a
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873924"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230924"
 ---
 # <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>Tutorial: Erstellen einer Apache Spark-Machine Learning-Anwendung in Azure HDInsight
 
@@ -41,7 +41,7 @@ Für die Anwendung werden die **HVAC.csv**-Beispieldaten genutzt, die standardm�
 
 In dieser Anwendung verwenden wir eine [ML-Pipeline](https://spark.apache.org/docs/2.2.0/ml-pipeline.html) von Spark, um eine Dokumentklassifizierung durchzuführen. ML-Pipelines bieten eine einheitliche Gruppe allgemeiner APIs, die auf Datenrahmen aufbauen. Mit diesen Datenrahmen können Benutzer praktische Pipelines für maschinelles Lernen erstellen und optimieren. In der Pipeline teilen Sie das Dokument in Wörter auf, konvertieren die Wörter in einen numerischen Featurevektor und erstellen dann mit den Featurevektoren und Beschriftungen ein Vorhersagemodell. Führen Sie die folgenden Schritte aus, um die Anwendung zu erstellen.
 
-1. Erstellen Sie ein Jupyter Notebook mit dem PySpark-Kernel. Informationen dazu finden Sie unter [Erstellen eines Jupyter Notebooks](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook).
+1. Erstellen Sie ein Jupyter Notebook mit dem PySpark-Kernel. Anweisungen hierzu finden Sie unter [Erstellen eines Jupyter Notebooks](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook-file).
 
 1. Importieren Sie die Typen, die für dieses Szenario benötigt werden. Fügen Sie den folgenden Codeausschnitt in eine leere Zelle ein, und drücken Sie **UMSCHALT+EINGABETASTE**.
 

@@ -1,15 +1,15 @@
 ---
 title: Continuous Integration mit Azure Pipelines
 description: Hier finden Sie Informationen zum kontinuierlichen Erstellen, Testen und Bereitstellen von Azure Resource Manager-Vorlagen.
-ms.date: 04/22/2020
+ms.date: 08/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b8163c357f184ac41ce72dc8c89fcc5030c3180d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: c793c8bcbc01cbef99de13ef6dd2f6ce61a50773
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118918"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892676"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Tutorial: Continuous Integration von Azure Resource Manager-Vorlagen mit Azure Pipelines
 
@@ -175,8 +175,8 @@ So erstellen Sie eine Pipeline mit einem Vorlagenbereitstellungsschritt:
     * **Standort**: Wählen Sie einen Ort für die Ressourcengruppe (beispielsweise **USA, Mitte**).
     * **Speicherort der Vorlage**: Wählen Sie **Verknüpftes Artefakt** aus. Dies bedeutet, dass die Aufgabe direkt im verbundenen Repository nach der Vorlagendatei sucht.
     * **Vorlage**: Geben Sie **CreateWebApp/azuredeploy.json** ein. Wenn Sie den Ordnernamen und den Dateinamen geändert haben, müssen Sie diesen Wert ändern.
-    * **Vorlagenparameter**: Lassen Sie dieses Feld leer. Sie geben die Parameterwerte in „**Vorlagenparameter überschreiben“ an.
-    * **overrideParameters**: Geben Sie **-projectName [Projektnamen eingeben] -linkedTemplateUri [URL der verknüpften Vorlage eingeben]** ein. Ersetzen Sie den Projektnamen und die URL der verknüpften Vorlage. Die URL der verknüpften Vorlage ist das, was Sie am Ende von [Erstellen eines GitHub-Repositorys](#create-a-github-repository) aufgeschrieben haben.
+    * **Vorlagenparameter**: Lassen Sie dieses Feld leer. Sie geben die Parameterwerte in **Vorlagenparameter überschreiben** an.
+    * **Vorlagenparameter überschreiben**: Geben Sie **-projectName [Projektnamen eingeben] -linkedTemplateUri [URL der verknüpften Vorlage eingeben]** ein. Ersetzen Sie den Projektnamen und die URL der verknüpften Vorlage. Die URL der verknüpften Vorlage ist das, was Sie am Ende von [Erstellen eines GitHub-Repositorys](#create-a-github-repository) aufgeschrieben haben. Sie beginnt mit **https://raw.githubusercontent.com** .
     * **Bereitstellungsmodus**: Wählen Sie **Inkrementell** aus.
     * **Bereitstellungsname**: Geben Sie **DeployPipelineTemplate** ein. Wählen Sie **Erweitert** aus, damit **Bereitstellungsname** angezeigt wird.
 

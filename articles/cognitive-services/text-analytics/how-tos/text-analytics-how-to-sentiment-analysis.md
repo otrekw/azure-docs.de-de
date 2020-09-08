@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 05/18/2020
+ms.date: 08/25/2020
 ms.author: aahi
-ms.openlocfilehash: acd8fae81baa7ad65b8d9c321c55a6311cbf4c72
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: a0557c3ccf6510ab3ee2ae29cbef1fc754473345
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84141244"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933017"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Gewusst wie: Standpunktermittlung mithilfe der Textanalyse-API
 
@@ -40,7 +40,7 @@ Die Standpunktanalyse unterstützt eine Vielzahl von Sprachen – weitere befind
 
 In Version 3 wendet die Standpunktanalyse Stimmungsbezeichnungen auf Texte an, die auf Satz- und Dokumentebene zurückgegeben werden, jeweils begleitet von einer Zuverlässigkeitsbewertung. 
 
-Die Bezeichnungen sind `positive`, `negative` und `neutral`. Auf Dokumentebene kann auch die Stimmungsbezeichnung `mixed` zurückgegeben werden. Die Stimmung des Dokuments wird unten bestimmt:
+Die Bezeichnungen sind *positiv*, *negativ* und *neutral*. Auf Dokumentebene kann auch die Stimmungsbezeichnung *gemischt* zurückgegeben werden. Die Stimmung des Dokuments wird unten bestimmt:
 
 | Stimmung von Sätzen                                                                            | Zurückgegebene Dokumentbezeichnung |
 |-----------------------------------------------------------------------------------------------|-------------------------|
@@ -49,7 +49,7 @@ Die Bezeichnungen sind `positive`, `negative` und `neutral`. Auf Dokumentebene k
 | Mindestens ein `negative`- und mindestens ein `positive`-Satz ist im Dokument enthalten.    | `mixed`                 |
 | Alle Sätze im Dokument sind `neutral`.                                                  | `neutral`               |
 
-Zuverlässigkeitsbewertungen liegen zwischen 1 und 0. Werte, die näher an 1 liegen, weisen auf eine höhere Zuverlässigkeit der Bezeichnungsklassifizierung hin, während niedrigere Bewertungen eine geringere Zuverlässigkeit bedeuten. Die Zuverlässigkeitsbewertungen in jedem Dokument oder Satz ergeben addiert 1.
+Zuverlässigkeitsbewertungen liegen zwischen 1 und 0. Werte, die näher an 1 liegen, weisen auf eine höhere Zuverlässigkeit der Bezeichnungsklassifizierung hin, während niedrigere Bewertungen eine geringere Zuverlässigkeit bedeuten. Für jedes Dokument oder jeden Satz werden die vorhergesagten Bewertungen, die den Bezeichnungen zugeordnet sind (positiv, negativ und neutral), bis zu 1 hinzugefügt.
 
 ### <a name="opinion-mining"></a>Opinion Mining
 

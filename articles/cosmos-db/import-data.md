@@ -4,14 +4,14 @@ description: 'Tutorial: Erfahren Sie, wie Sie das Open-Source-basierte Azure Cos
 author: deborahc
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 11/05/2019
+ms.date: 08/31/2020
 ms.author: dech
-ms.openlocfilehash: 5c9eb2409b67d71882406c21728fbf2429eb16a9
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 9992d6f1f9f1d0aad6f451d6a974f4df9f655881
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118762"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255986"
 ---
 # <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Tutorial: Migrieren Ihrer Daten zu Azure Cosmos DB mithilfe des Datenmigrationstools
 
@@ -40,6 +40,9 @@ Bevor Sie die Anweisungen in diesem Artikeln befolgen, müssen Sie die folgenden
 * **Erhöhung des Durchsatzes:** Die Dauer der Datenmigration richtet sich nach dem Durchsatzwert, den Sie für eine einzelne Sammlung oder eine Gruppe von Sammlungen einrichten. Achten Sie darauf, dass Sie den Durchsatz für größere Datenmigrationen erhöhen. Nachdem die Migration abgeschlossen ist, können Sie den Durchsatz wieder verringern, um Kosten zu sparen. Weitere Informationen zum Erhöhen des Durchsatzes im Azure-Portal finden Sie in den Artikeln zu den [Leistungsebenen](performance-levels.md) und [Tarifen](https://azure.microsoft.com/pricing/details/cosmos-db/) in Azure Cosmos DB.
 
 * **Erstellen von Azure Cosmos DB-Ressourcen:** Bevor Sie mit der Migration von Daten beginnen, erstellen Sie zunächst alle Ihre Sammlungen im Azure-Portal. Wenn Sie eine Migration zu einem Azure Cosmos DB-Konto mit Durchsatz auf Datenbankebene durchführen möchten, geben Sie beim Erstellen der Azure Cosmos-Container einen Partitionsschlüssel an.
+
+> [!IMPORTANT]
+> Um sicherzustellen, dass das Datenmigrationstool beim Herstellen einer Verbindung mit ihren Azure Cosmos-Konten Transport Layer Security (TLS) 1.2 verwendet, verwenden Sie die .NET Framework-Version 4.7, oder befolgen Sie die Anweisungen in [diesem Artikel](https://docs.microsoft.com/dotnet/framework/network-programming/tls).
 
 ## <a name="overview"></a><a id="Overviewl"></a>Übersicht
 
