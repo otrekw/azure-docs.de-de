@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 7b48ac1621c5c8788a4ecdb9ceb3af78f8e82a37
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 9e960914f86f2f9fc63a62d62fe1f923d21b9d31
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890500"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394617"
 ---
 # <a name="azure-security-baseline-for-backup"></a>Azure-Sicherheitsbaseline für Backup
 
@@ -480,11 +480,11 @@ Microsoft verwaltet die zugrunde liegende Infrastruktur für Azure Backup und ha
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Verwenden von Azure RBAC zum Steuern des Zugriffs auf Ressourcen
 
-**Leitfaden**: Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure ermöglicht eine präzise Zugriffsverwaltung für Azure. Mithilfe von RBAC können Sie Aufgaben in Ihrem Team verteilen und Benutzern nur den Zugriff gewähren, den sie zur Ausführung ihrer Aufgaben benötigen.
+**Leitfaden**: Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure ermöglicht eine präzise Zugriffsverwaltung für Azure. Mithilfe von Azure RBAC können Sie Aufgaben in Ihrem Team verteilen und Benutzern nur den Zugriff gewähren, den sie zur Ausführung ihrer Aufgaben benötigen.
 
 Azure Backup bietet drei integrierte Rollen, um Vorgänge der Sicherungsverwaltung zu steuern: Sicherungsmitwirkender, Sicherungsoperator und Benutzer mit Leseberechtigung für Sicherungsfunktionen. Sie können die integrierten Backup-Rollen zu Aktionen der Sicherungsverwaltung zuordnen.
 
-- [Konfigurieren von RBAC in Azure](../role-based-access-control/role-assignments-portal.md)
+- [Konfigurieren von Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
 - [Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten von Azure Backup-Wiederherstellungspunkten](./backup-rbac-rs-vault.md)
 
@@ -818,7 +818,9 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 - [Erstellen einer Key Vault-Instanz](../key-vault/secrets/quick-create-portal.md)
 
-- [Bereitstellen der Key Vault-Authentifizierung mit einer verwalteten Identität](../key-vault/general/managed-identity.md)
+* [Authentifizieren bei Key Vault](https://docs.microsoft.com/azure/key-vault/general/authentication)
+
+* [Zuweisen einer Key Vault-Zugriffsrichtlinie](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 

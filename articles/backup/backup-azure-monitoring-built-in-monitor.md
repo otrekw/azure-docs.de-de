@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie mehr über die Überwachungs- und Be
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 2fae7cfdb8b316341e01d15b43811d3f0e7638ef
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: d04f57c19e31b946f7c360edb796bc4f0f5fcf71
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827187"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377402"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Überwachen von Azure Backup-Workloads
 
@@ -100,10 +100,10 @@ Wenn die Häufigkeit auf eine stündliche Übersicht festgelegt und eine Warnung
 
 ## <a name="inactivating-alerts"></a>Deaktivieren von Warnungen
 
-Um eine aktive Warnung zu deaktivieren bzw. aufzulösen, können Sie das Listenelement auswählen, das der Warnung entspricht, die Sie deaktivieren möchten. Dadurch wird ein Bildschirm geöffnet, auf dem detaillierte Informationen zur Warnung angezeigt werden. Oberhalb der Warnung finden Sie eine Schaltfläche zum **Deaktivieren**. Wenn Sie auf diese Schaltfläche klicken, ändert sich der Status der Warnung zu **Inaktiv**. Sie können eine Warnung auch deaktivieren, indem Sie mit der rechten Maustaste auf das Listenelement klicken, das dieser Warnung entspricht, und dann **Deaktivieren** auswählen.
+Um eine aktive Warnung zu deaktivieren bzw. aufzulösen, können Sie das Listenelement auswählen, das der Warnung entspricht, die Sie deaktivieren möchten. Dadurch wird ein Bildschirm geöffnet, auf dem detaillierte Informationen zur Warnung angezeigt werden. Oberhalb der Warnung finden Sie eine Schaltfläche zum **Deaktivieren**. Wenn Sie diese Schaltfläche auswählen, ändert sich der Status der Warnung zu **Inaktiv**. Sie können eine Warnung auch deaktivieren, indem Sie mit der rechten Maustaste auf das Listenelement klicken, das dieser Warnung entspricht, und dann **Deaktivieren** auswählen.
 
 ![Deaktivieren einer Warnung zum Recovery Services-Tresor](media/backup-azure-monitoring-laworkspace/vault-alert-inactivation.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Monitor Azure backup workloads using Azure Monitor (Überwachen von Azure Backup-Workloads mithilfe von Azure Monitor)](backup-azure-monitoring-use-azuremonitor.md)
+[Überwachen von Azure Backup-Workloads mithilfe von Azure Monitor](backup-azure-monitoring-use-azuremonitor.md)

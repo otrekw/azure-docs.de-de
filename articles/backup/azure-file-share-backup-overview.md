@@ -3,12 +3,12 @@ title: Informationen zum Sichern von Azure-Dateifreigaben
 description: Erfahren Sie, wie Sie Azure-Dateifreigaben im Recovery Services-Tresor sichern.
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 7960040df4208ad021bca3406f6472d8c3206d81
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: e955df7662bd18ed1d1d4ec1f0aa6c9474c5386f
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892251"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378082"
 ---
 # <a name="about-azure-file-share-backup"></a>Informationen zum Sichern von Azure-Dateifreigaben
 
@@ -50,7 +50,13 @@ Bei der Sicherung von Azure-Dateifreigaben handelt es sich um eine native, cloud
 
 ## <a name="backup-costs"></a>Sicherungskosten
 
-Zurzeit werden Ihnen nur Gebühren für Momentaufnahmen in Rechnung gestellt, da Sicherungen von Azure-Dateifreigaben eine auf Momentaufnahmen basierte Lösung sind. Azure Storage-Gebühren für Momentaufnahmen werden zusammen mit der Azure Files-Nutzung entsprechend der [unter diesem Link](https://azure.microsoft.com/pricing/details/storage/files/) verfügbaren Preisinformationen abgerechnet.
+Mit der Lösung zum Sichern von Azure-Dateifreigaben sind zwei Kostenarten verbunden:
+
+1. **Kosten für Momentaufnahmenspeicher**: Azure Storage-Gebühren für Momentaufnahmen werden zusammen mit der Azure Files-Nutzung gemäß den [hier](https://azure.microsoft.com/pricing/details/storage/files/) genannten Preisangaben abgerechnet.
+
+2. **Gebühr für geschützte Instanzen**: Ab dem 1. September 2020 wird den Kunden eine Gebühr für geschützte Instanzen gemäß den [hier](https://azure.microsoft.com/pricing/details/backup/) genannten Preisangaben in Rechnung gestellt. Die Gebühr für geschützte Instanzen hängt von der Gesamtgröße der geschützten Dateifreigaben in einem Speicherkonto ab.
+
+Um detaillierte Schätzungen für die Sicherung von Azure-Dateianteilen zu erhalten, können Sie den detaillierten [Azure Backup-Cost Estimator](https://aka.ms/AzureBackupCostEstimates) herunterladen.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -3,12 +3,12 @@ title: Wiederherstellen von SQL Server-Datenbanken auf einem virtuellen Azure-Co
 description: In diesem Artikel erfahren Sie, wie Sie SQL Server-Datenbanken wiederherstellen, die auf einem virtuellen Azure-Computer ausgeführt und mit Azure Backup gesichert werden.
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 682540e498c7531777032b5375f0105c03ce4ec6
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: afb3ef7ac1d161c073ef715a9f7b1ec83bd8410a
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826555"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377980"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Wiederherstellen von SQL Server-Datenbanken auf virtuellen Azure-Computern
 
@@ -98,7 +98,7 @@ Die Wiederherstellung wird wie folgt durchgeführt:
 
         ![Zielpfade eingeben](./media/backup-azure-sql-database/target-paths.png)
 
-1. Klicken Sie auf **OK**, um die Wiederherstellung auszulösen. Verfolgen Sie den Fortschritt der Wiederherstellung im Bereich **Benachrichtigungen** oder im Tresor in der Ansicht **Wiederherstellungsaufträge**.
+1. Wählen Sie **OK** aus, um die Wiederherstellung auszulösen. Verfolgen Sie den Fortschritt der Wiederherstellung im Bereich **Benachrichtigungen** oder im Tresor in der Ansicht **Wiederherstellungsaufträge**.
 
     > [!NOTE]
     > Die Point-in-Time-Wiederherstellung ist nur für Transaktionsprotokollsicherungen für Datenbanken in einem vollständigen und massenprotokollierten Wiederherstellungsmodus verfügbar.
@@ -161,7 +161,7 @@ Wenn Sie **Vollständig und differenziell** als Wiederherstellungstyp ausgewähl
     ![Auswählen eines vollständigen Wiederherstellungspunkts](./media/backup-azure-sql-database/choose-full-recovery-point.png)
 
     >[!NOTE]
-    > Standardmäßig werden die Wiederherstellungspunkte der letzten 30 Tage angezeigt. Sie können Wiederherstellungspunkte anzeigen, die älter als 30 Tage sind, indem Sie auf **Filter** klicken und einen benutzerdefinierten Bereich auswählen.
+    > Standardmäßig werden die Wiederherstellungspunkte der letzten 30 Tage angezeigt. Sie können Wiederherstellungspunkte anzeigen, die älter als 30 Tage sind, indem Sie **Filter** und dann einen benutzerdefinierten Bereich auswählen.
 
 ### <a name="restore-databases-with-large-number-of-files"></a>Wiederherstellen von Datenbanken mit zahlreichen Dateien
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/11/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b679028a0d99d20497ad1f4e7d870c39b76a136
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: ecb53d661b1171f9c1b18d37d0bb35952645ba7e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88657066"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299710"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fortigate-ssl-vpn"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit FortiGate SSL VPN
 
@@ -67,8 +67,8 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD 
     1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
     1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
 1. **[Konfigurieren des einmaligen Anmeldens für FortiGate SSL VPN](#configure-fortigate-ssl-vpn-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-    1. **[Erstellen eines FortiGate SSL VPN-Testbenutzers](#create-fortigate-ssl-vpn-test-user)** , um eine Entsprechung von B. Simon in FortiGate SSL VPN zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
-1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
+    1. **Erstellen eines FortiGate SSL VPN-Testbenutzers** , um eine Entsprechung von B. Simon in FortiGate SSL VPN zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+1. **[Testen des einmaligen Anmeldens](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
@@ -142,26 +142,117 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
+### <a name="create-a-security-group-for-the-test-user"></a>Erstellen einer Sicherheitsgruppe für den Testbenutzer
+
+In diesem Abschnitt erstellen Sie in Azure Active Directory eine Sicherheitsgruppe für den Testbenutzer. Die Sicherheitsgruppe wird von FortiGate verwendet, um dem Benutzer Netzwerkzugriff über das VPN zu gewähren.
+
+1. Wählen Sie im linken Bereich des Azure-Portals **Azure Active Directory** und dann **Gruppen** aus.
+1. Wählen Sie am oberen Bildschirmrand die Option **Neue Gruppe** aus.
+1. Gehen Sie in den Eigenschaften für **Neue Gruppe** folgendermaßen vor:
+   1. Wählen Sie im Feld **Gruppentyp** die Option **Sicherheit** aus.
+   1. Geben Sie im Feld **Name** die Zeichenfolge `FortiGateAccess` ein.
+   1. Geben Sie im Feld **Gruppenbeschreibung** den Text `Group for granting FortiGate VPN access` ein.
+   1. Wählen Sie für die Einstellungen **Azure AD-Rollen können der Gruppe zugewiesen werden (Vorschau)** die Option **Nein** aus.
+   1. Wählen Sie im Feld **Mitgliedschaftstyp** die Option **Zugewiesen** aus.
+   1. Wählen Sie unter **Mitglieder** die Option **Keine Mitglieder ausgewählt** aus.
+   1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
+   1. Klicken Sie auf **Erstellen**.
+1. Nachdem Sie zum Blatt **Gruppen** in Azure Active Directory zurückgekehrt sind, suchen Sie die Gruppe **FortiGate-Zugriff**, und notieren Sie sich die **Objekt-ID** zur späteren Verwendung.
+
 ## <a name="configure-fortigate-ssl-vpn-sso"></a>Konfigurieren des einmaligen Anmeldens für FortiGate SSL VPN
 
-Befolgen Sie zum Konfigurieren des einmaligen Anmeldens aufseiten von **FortiGate SSL VPN** die Anweisungen in [diesem Dokument](https://aka.ms/AA9avum).
+### <a name="upload-the-base64-saml-certificate-to-the-fortigate-appliance"></a>Hochladen des Base64-SAML-Zertifikats für die FortiGate-Appliance
 
-> [!NOTE]
-> Weitere Informationen zum Konfigurieren von FortiGate SSL VPN finden Sie unter [diesem Link](https://docs.fortinet.com/document/fortigate/6.4.0/new-features/558169/saml-sp-for-vpn-authentication).
+Nach Abschluss der SAML-Konfiguration der FortiGate-App in Ihrem Mandanten haben Sie das Base64-codierte SAML-Zertifikat heruntergeladen. Dieses muss auf die FortiGate-Appliance hochgeladen werden:
 
-### <a name="create-fortigate-ssl-vpn-test-user"></a>Erstellen eines FortiGate SSL VPN-Testbenutzers
+1. Melden Sie sich beim Verwaltungsportal Ihrer FortiGate-Appliance an.
+1. Klicken Sie im Menü auf der linken Seite auf **System**.
+1. Klicken Sie unter **System** auf **Certificates** (Zertifikate).
+1. Klicken Sie auf **Import** -> **Remote Certificate** (Importieren > Remotezertifikat).
+1. Navigieren Sie zu dem Zertifikat, das bei der FortiGate-App-Bereitstellung im Azure-Mandanten heruntergeladen wurde, wählen Sie es aus, und klicken Sie auf **OK**.
 
-In diesem Abschnitt erstellen Sie in FortiGate SSL VPN einen Benutzer namens B. Simon. Arbeiten Sie mit dem  [FortiGate SSL VPN-Supportteam](mailto:tac_amer@fortinet.com) zusammen, um die Benutzer auf der FortiGate SSL VPN-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+Nachdem das Zertifikat hochgeladen wurde, notieren Sie sich den Namen, der unter **System** > **Certificates** > **Remote Certificate** (System > Zertifikate > Remotezertifikat) angezeigt wird. Der Standardname lautet „REMOTE_Cert_**N**“. **N** ist dabei eine ganze Zahl.
 
-## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
+### <a name="perform-fortigate-command-line-configuration"></a>Ausführen der Befehlszeilenkonfiguration für FortiGate
+
+Für die folgenden Schritte muss die Azure-Abmelde-URL konfiguriert sein. Diese URL enthält ein Fragezeichen (?). Damit dieses Zeichen erfolgreich übermittelt wird, sind einige zusätzliche Schritte erforderlich. Diese Schritte können nicht an der CLI-Konsole von FortiGate ausgeführt werden. Richten Sie stattdessen mithilfe eines Tools wie z. B. PuTTY eine SSH-Sitzung mit der FortiGate-Appliance ein. Wenn es sich bei Ihrer FortiGate-Appliance um eine Azure-VM handelt, können Sie die folgenden Schritte an der seriellen Konsole für Azure-VMs ausführen.
+
+Hierfür benötigen Sie die zuvor erfassten Werte:
+
+- Entitäts-ID
+- Antwort-URL
+- Abmelde-URL
+- Azure-Anmelde-URL
+- Azure AD-Bezeichner
+- Azure-Abmelde-URL
+- Name des Base64-SAML-Zertifikats (REMOTE_Cert_N)
+
+1. Richten Sie eine SSH-Sitzung mit der FortiGate-Appliance ein, und melden Sie sich mit einem FortiGate-Administratorkonto an.
+1. Führen Sie die folgenden Befehle aus:
+
+   ```console
+    config user saml
+    edit azure
+    set entity-id <Entity ID>
+    set single-sign-on-url <Reply URL>
+    set single-logout-url <Logout URL>
+    set idp-single-sign-on-url <Azure Login URL>
+    set idp-entity-id <Azure AD Identifier>
+    set idp-single-logout-url <Azure Logout URL>
+    set idp-cert <Base64 SAML Certificate Name>
+    set user-name username
+    set group-name group
+    end
+
+   ```
+
+   > [!NOTE]
+   > Die **Azure-Abmelde-URL** enthält das Zeichen `?`. Sie müssen eine spezielle Schlüsselsequenz eingeben, um die URL ordnungsgemäß an die serielle Konsole für FortiGate zu übermitteln. Die URL lautet in der Regel `https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0`.
+   >
+   > Geben Sie die Azure-Abmelde-URL folgendermaßen an der seriellen Konsole ein: `set idp-single-logout-url https://login.microsoftonline.com/common/wsfederation`.
+   > 
+   > Fügen Sie dann die restliche URL per STRG+V ein, um die Zeile zu vervollständigen: `set idp-single-logout-url https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0`.
+
+### <a name="configure-fortigate-for-group-matching"></a>Konfigurieren von FortiGate für den Gruppenabgleich
+
+In diesem Abschnitt konfigurieren Sie FortiGate so, dass die Objekt-ID der Sicherheitsgruppe erkannt wird, in der sich der Testbenutzer befindet. So kann FortiGate Entscheidungen basierend auf der Mitglied in dieser Gruppe treffen.
+
+Für diese Schritte benötigen Sie die Objekt-ID der zuvor erstellten Sicherheitsgruppe **FortiGateAccess**.
+
+1. Richten Sie eine SSH-Sitzung mit der FortiGate-Appliance ein, und melden Sie sich mit einem FortiGate-Administratorkonto an.
+1. Führen Sie die folgenden Befehle aus:
+
+   ```
+    config user group
+    edit FortiGateAccess
+    set member azure
+    config match
+    edit 1
+    set server-name azure
+    set group-name <Object Id>
+    next
+    end
+    next
+    end
+   ```
+
+### <a name="create-fortigate-vpn-portals-and-firewall-policy"></a>Erstellen von VPN-Portalen und einer Firewallrichtlinie in FortiGate
+
+In diesem Abschnitt konfigurieren Sie VPN-Portale und eine Firewallrichtlinie in FortiGate, um Zugriff auf die weiter oben erstellte Sicherheitsgruppe **FortiGateAccess** zu gewähren.
+
+Arbeiten Sie mit dem  [FortiGate-Supportteam](mailto:tac_amer@fortinet.com) zusammen, um die VPN-Portale und Firewallrichtlinie zur FortiGate-VPN-Plattform hinzuzufügen. Diese Schritt müssen abgeschlossen sein, bevor das einmalige Anmelden genutzt werden kann.
+
+## <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „FortiGate SSL VPN“ klicken, sollten Sie automatisch bei der FortiGate SSL VPN-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
+Für ein optimales Benutzererlebnis empfehlen Microsoft und FortiGate die Verwendung des Fortinet-VPN-Clients: FortiClient.
+
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

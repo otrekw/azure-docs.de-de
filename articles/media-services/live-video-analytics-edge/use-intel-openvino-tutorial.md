@@ -4,12 +4,12 @@ description: In diesem Tutorial wird ein von Intel bereitgestellter KI-Modellser
 ms.topic: tutorial
 ms.date: 07/24/2020
 titleSuffix: Azure
-ms.openlocfilehash: 2268300f711a939ed808d1f39bbde1653e8832c8
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 102c54d8f738c3e8e62c7092d0df6ec7d12b8a0c
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212354"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950254"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>Tutorial: Analysieren von Livevideos mithilfe der KI-Erweiterung für OpenVINO™ Model Server von Intel 
 
@@ -53,7 +53,7 @@ In diesem Lernprogramm lernen Sie Folgendes:
 ## <a name="about-openvino-model-server--ai-extension-from-intel"></a>Informationen zur KI-Erweiterung für OpenVINO™ Model Server von Intel
 Die Intel®-Distribution des [OpenVINO™-Toolkits](https://software.intel.com/content/www/us/en/develop/tools/openvino-toolkit.html) (Open Visual Inference and Neural network Optimization) ist ein kostenloses Softwarekit, das Entwickler und Data Scientists dabei unterstützt, Workloads für maschinelles Sehen zu beschleunigen, Deep Learning-Rückschlüsse und -Bereitstellungen zu optimieren und eine mühelose, heterogene Ausführung auf Intel®-Plattformen zwischen Edge und Cloud zu ermöglichen. Es umfasst das Intel® Deep Learning Deployment Toolkit mit Modelloptimierung und Rückschluss-Engine sowie das Repository [Open Model Zoo](https://github.com/openvinotoolkit/open_model_zoo) mit über 40 optimierten vortrainierten Modellen.
 
-Zur Erstellung komplexer Hochleistungslösungen für die Livevideoanalyse empfiehlt es sich, Live Video Analytics im IoT Edge-Modul mit einer leistungsfähigen Rückschluss-Engine zu kombinieren, die das Skalierungspotential am Edge nutzen kann. In diesem Tutorial werden Rückschlussanforderungen an die [KI-Erweiterung für OpenVINO™ Model Server von Intel](https://aka.ms/lva-intel-ovms) gesendet – ein Edge-Modul, das für die Zusammenarbeit mit Live Video Analytics in IoT Edge konzipiert wurde. Dieses Rückschlussservermodul enthält OpenVINO™ Model Server (OVMS) – einen auf dem OpenVINO™-Toolkit basierenden Rückschlussserver, der speziell für Workloads für maschinelles Sehen optimiert und für Intel-Architekturen entwickelt wurde. OVMS wurde mit einer Erweiterung für den unkomplizierten Austausch von Videoframes und Rückschlussergebnissen zwischen dem Rückschlussserver und Live Video Analytics im IoT Edge-Modul versehen, um die Ausführung eines beliebigen, von OpenVINO unterstützten Modells zu ermöglichen. (Zum Anpassen des Rückschlussservermoduls können Sie den Code [hier](https://github.com/openvinotoolkit/model_server/tree/master/extras/ams_wrapper) ändern.) Darüber hinaus steht ein breites Spektrum von Beschleunigungsmechanismen zur Auswahl, die über Intel-Hardware bereitgestellt werden. Hierzu zählen CPUs (Atom, Core, Xeon), FPGAs und VPUs.
+Zur Erstellung komplexer Hochleistungslösungen für die Livevideoanalyse empfiehlt es sich, Live Video Analytics im IoT Edge-Modul mit einer leistungsfähigen Rückschluss-Engine zu kombinieren, die das Skalierungspotential am Edge nutzen kann. In diesem Tutorial werden Rückschlussanforderungen an die [KI-Erweiterung für OpenVINO™ Model Server von Intel](https://aka.ms/lva-intel-ovms) gesendet – ein Edge-Modul, das für die Zusammenarbeit mit Live Video Analytics in IoT Edge konzipiert wurde. Dieses Rückschlussservermodul enthält OpenVINO™ Model Server (OVMS) – einen auf dem OpenVINO™-Toolkit basierenden Rückschlussserver, der speziell für Workloads für maschinelles Sehen optimiert und für Intel®-Architekturen entwickelt wurde. OVMS wurde mit einer Erweiterung für den unkomplizierten Austausch von Videoframes und Rückschlussergebnissen zwischen dem Rückschlussserver und Live Video Analytics im IoT Edge-Modul versehen. Damit können Sie ein beliebiges, vom OpenVINO™-Toolkit unterstütztes Modell ausführen. (Zum Anpassen des Rückschlussservermoduls ändern Sie den [Code](https://github.com/openvinotoolkit/model_server/tree/master/extras/ams_wrapper).) Darüber hinaus steht eine umfassende Palette an Beschleunigungsmechanismen zur Auswahl, die über Intel®-Hardware bereitgestellt werden. Hierzu zählen CPUs (Atom, Core, Xeon), FPGAs und VPUs.
 
 Das erste Release dieses Rückschlussservers bietet Zugriff auf folgende [Modelle](https://github.com/openvinotoolkit/model_server/tree/master/extras/ams_models):
 

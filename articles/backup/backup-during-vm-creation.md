@@ -3,12 +3,12 @@ title: Aktivieren der Sicherung beim Erstellen eines virtuellen Azure-Computers
 description: Hier wird beschrieben, wie die Sicherung beim Erstellen eines virtuellen Azure-Computers mit Azure Backup aktiviert wird.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: bbc00239a34fc0eb88991fcabd91c5a0eb7dbea7
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: ad81300545686d61f42cdd8684e502c937b4fd43
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892302"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377334"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Aktivieren der Sicherung beim Erstellen eines virtuellen Azure-Computers
 
@@ -28,12 +28,12 @@ Falls Sie noch nicht bei Ihrem Konto angemeldet sind, melden Sie beim [Azure-Por
 
 1. Klicken Sie im Azure-Portal auf **Ressource erstellen**.
 
-2. Klicken Sie im Azure Marketplace auf **Compute**, und wählen Sie dann ein VM-Image aus.
+2. Wählen Sie im Azure Marketplace **Compute** und dann ein VM-Image aus.
 
 3. Richten Sie die VM gemäß den Anweisungen für [Windows](../virtual-machines/windows/quick-create-portal.md) oder [Linux](../virtual-machines/linux/quick-create-portal.md) ein.
 
-4. Klicken Sie auf der Registerkarte **Verwaltung** unter **Backup aktivieren** auf **Ein**.
-5. Azure Backup führt Sicherungen in einen Recovery Services-Tresor durch. Klicken Sie auf **Neu erstellen**, wenn Sie über keinen vorhandenen Tresor verfügen.
+4. Wählen Sie auf der Registerkarte **Verwaltung** unter **Backup aktivieren** die Option **Ein** aus.
+5. Azure Backup führt Sicherungen in einen Recovery Services-Tresor durch. Wählen Sie **Neu erstellen** aus, wenn Sie über keinen vorhandenen Tresor verfügen.
 6. Akzeptieren Sie den vorgeschlagenen Tresornamen, oder geben Sie einen eigenen an.
 7. Geben Sie eine Ressourcengruppe an oder erstellen Sie sie, in der sich der Tresor befinden wird. Der Tresor der Ressourcengruppe kann sich von der VM-Ressourcengruppe unterscheiden.
 
@@ -76,8 +76,8 @@ Ihre VM-Sicherung wird in Übereinstimmung mit Ihrer Sicherungsrichtlinie ausgef
 
 Nachdem die VM erstellt wurde, gehen Sie wie folgt vor:
 
-1. Klicken Sie unter den VM-Eigenschaften auf **Sicherung**. Der VM-Status lautet „Erste Sicherung ausstehend“, bis die erste Sicherung ausgeführt wird.
-2. Klicken Sie auf **Jetzt sichern**, um eine On-Demand-Sicherung auszuführen.
+1. Wählen Sie unter den VM-Eigenschaften **Sicherung** aus. Der VM-Status lautet „Erste Sicherung ausstehend“, bis die erste Sicherung ausgeführt wird.
+2. Wählen Sie **Jetzt sichern** aus, um eine bedarfsgesteuerte Sicherung auszuführen.
 
     ![Ausführen einer On-Demand-Sicherung](./media/backup-during-vm-creation/run-backup.png)
 

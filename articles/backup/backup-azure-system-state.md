@@ -3,12 +3,12 @@ title: Sichern des Windows-Systemstatus in Azure
 description: Erfahren Sie, wie Sie den Systemstatus von Windows Server-Computern in Azure sichern.
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: 8ce30b93ebaecec1e69c6c6a6f1064c6cdd3d0f6
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 10d37bbafab6aa96986a5d7af88a509d4c8eac25
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824461"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376489"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>Sichern des Windows-Systemstatus in Azure
 
@@ -62,7 +62,7 @@ Sie haben einen Tresor erstellt und können ihn nun für das Sichern des Windows
 
     ![Konfigurieren von Dateien und Ordnern](./media/backup-azure-system-state/backup-goal-system-state.png)
 
-    Nach dem Klicken auf „OK“ erscheint ein Häkchen neben **Sicherungsziel**, und der Bereich **Vorbereiten der Infrastruktur** wird geöffnet.
+    Nachdem **OK** ausgewählt wurde, wird ein Häkchen neben **Sicherungsziel** angezeigt, und der Bereich **Infrastruktur vorbereiten** wird geöffnet.
 
     ![Sicherungsziel konfiguriert, dann Vorbereiten der Infrastruktur](./media/backup-try-azure-backup-in-10-mins/backup-goal-configed.png)
 

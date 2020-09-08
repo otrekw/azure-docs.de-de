@@ -3,12 +3,12 @@ title: Häufig gestellte Fragen zum Sichern von Azure Files
 description: In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zum Schützen von Azure-Dateifreigaben mit dem Azure Backup-Dienst.
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0db30de655bfc0b98baa81a4ef20532e697fc1f8
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: c62f8376b220911edd26edbe18955d0103440b81
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824728"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377419"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Fragen zum Sichern von Azure Files
 
@@ -30,7 +30,7 @@ Sehen Sie in der [Unterstützungsmatrix für die Sicherung von Azure-Dateifreiga
 
 Ja. Der Schutz von Azure-Dateifreigaben, die mit Synchronisierungsgruppen verbunden sind, ist aktiviert.
 
-### <a name="when-trying-to-back-up-file-shares-i-clicked-on-a-storage-account-for-discovering-the-file-shares-in-it-however-i-didnt-protect-them-how-do-i-protect-these-file-shares-with-any-other-vault"></a>Beim Sichern von Dateifreigaben habe ich auf ein Speicherkonto geklickt, um die darin enthaltenen Dateifreigaben zu ermitteln. Ich habe sie jedoch nicht geschützt. Wie schütze ich diese Dateifreigaben mit einem anderen Tresor?
+### <a name="when-trying-to-back-up-file-shares-i-selected-a-storage-account-to-discover-the-file-shares-in-it-however-i-didnt-protect-them-how-do-i-protect-these-file-shares-with-any-other-vault"></a>Beim Sichern von Dateifreigaben habe ich ein Speicherkonto ausgewählt, um die darin enthaltenen Dateifreigaben zu ermitteln. Ich habe sie jedoch nicht geschützt. Wie schütze ich diese Dateifreigaben mit einem anderen Tresor?
 
 Wenn Sie beim Sichern ein Speicherkonto auswählen, um die darin enthaltenen Dateifreigaben zu ermitteln, wird das Speicherkonto bei dem Tresor registriert, über den der Vorgang ausgeführt wird. Falls Sie die Dateifreigaben bei einem anderen Tresor registrieren möchten, [heben Sie die Registrierung des ausgewählten Speicherkontos bei diesem Tresor auf](manage-afs-backup.md#unregister-a-storage-account).
 

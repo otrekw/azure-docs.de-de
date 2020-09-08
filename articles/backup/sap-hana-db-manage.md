@@ -3,12 +3,12 @@ title: Verwalten von gesicherten SAP HANA-Datenbanken für Azure-VMs
 description: In diesem Artikel erfahren Sie mehr über allgemeine Aufgaben zum Verwalten und Überwachen von SAP HANA-Datenbanken, die auf virtuellen Azure-Computern ausgeführt werden.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 7e23ffc2fe39389725519f7b94a0fe6ffaecf69c
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: e257aa7771f6f76a4d53f16255c2f3cbb80c8967
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826700"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377453"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>Verwalten und Überwachen gesicherter SAP HANA-Datenbanken
 
@@ -41,7 +41,7 @@ Warnungen sind eine einfache Möglichkeit zum Überwachen von Sicherungen von SA
 
   ![Liste der Sicherungswarnungen](./media/sap-hana-db-manage/backup-alerts-list.png)
 
-* Klicken Sie auf die Warnungen, um weitere Details anzuzeigen:
+* Wählen Sie die Warnungen aus, um weitere Details anzuzeigen:
 
   ![Warnungsdetails](./media/sap-hana-db-manage/alert-details.png)
 
@@ -61,10 +61,12 @@ Mit Azure Backup wird die Verwaltung einer gesicherten SAP HANA-Datenbank mit ei
 
 Sicherungen werden gemäß dem Richtlinienzeitplan ausgeführt. Eine bedarfsgesteuerte Sicherung können Sie wie folgt ausführen:
 
-1. Klicken Sie im Tresormenü auf **Sicherungselemente**.
-2. Wählen Sie unter **Sicherungselemente** den virtuellen Computer aus, auf dem die SAP HANA-Datenbank ausgeführt wird, und klicken Sie dann auf **Jetzt sichern**.
-3. Wählen Sie in **Jetzt sichern** den Sicherungstyp aus, den Sie durchführen möchten. Klicken Sie dann auf **OK**. Diese Sicherung wird gemäß der diesem Sicherungselement zugeordneten Richtlinie aufbewahrt.
+1. Wählen Sie im Tresormenü die Option **Sicherungselemente** aus.
+2. Wählen Sie unter **Sicherungselemente** den virtuellen Computer aus, auf dem die SAP HANA-Datenbank ausgeführt wird, und wählen Sie dann **Jetzt sichern** aus.
+3. Wählen Sie in **Jetzt sichern** den Sicherungstyp aus, den Sie durchführen möchten. Klicken Sie anschließend auf **OK**. Diese Sicherung wird gemäß der diesem Sicherungselement zugeordneten Richtlinie aufbewahrt.
 4. Überwachen Sie die Portalbenachrichtigungen. Sie können den Auftragsstatus im Dashboard des Tresors unter **Sicherungsaufträge** > **In Bearbeitung** überwachen. Je nach Größe Ihrer Datenbank kann das Erstellen der ersten Sicherung einige Zeit dauern.
+
+Standardmäßig werden bedarfsgesteuerte Sicherungen 45 Tage lang aufbewahrt.
 
 ### <a name="hana-native-client-integration"></a>Integration von nativen HANA-Clients
 
@@ -112,7 +114,7 @@ Sie können die zugrunde liegende Richtlinie für ein SAP HANA-Sicherungselement
   ![Auswählen von „SAP HANA in Azure-VM“](./media/sap-hana-db-manage/sap-hana-in-azure-vm.png)
 
 * Wählen Sie das Sicherungselement aus, dessen zugrunde liegende Richtlinie Sie ändern möchten.
-* Klicken Sie die vorhandene Sicherungsrichtlinie.
+* Wählen Sie die vorhandene Sicherungsrichtlinie aus.
 
   ![Vorhandene Sicherungsrichtlinie auswählen](./media/sap-hana-db-manage/existing-backup-policy.png)
 

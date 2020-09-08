@@ -4,12 +4,12 @@ description: Verwenden Sie die rollenbasierte Zugriffssteuerung zum Verwalten de
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.openlocfilehash: 408e25b865c6d244118e505121492ccf22d19b64
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: c24d075dcb9ac36ce741db746d69aa9e61fac39d
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533460"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376127"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten von Azure Backup-Wiederherstellungspunkten
 
@@ -56,7 +56,7 @@ In der folgenden Tabelle sind die Aktionen der Sicherungsverwaltung und die ents
 | Löschen der registrierten lokalen Instanz von Windows Server/Client/SCDPM oder Azure Backup Server | Mitwirkender für Sicherungen | Recovery Services-Tresor |
 
 > [!IMPORTANT]
-> Wenn Sie als Teil der VM-Einstellungen den VM-Mitwirkenden in einem VM-Ressourcenbereich angeben und auf „Sicherung“ klicken, öffnet sich der Bildschirm „Sicherung aktivieren“, obwohl die VM bereits gesichert ist, da der Aufruf zur Überprüfung des Sicherungsstatus nur auf Abonnementebene funktioniert. Um dies zu vermeiden, navigieren Sie entweder zum Tresor und öffnen die Sicherungselementansicht der VM, oder geben Sie die Rolle „VM-Mitwirkender“ auf Abonnementebene an.
+> Wenn Sie als Teil der VM-Einstellungen den VM-Mitwirkenden in einem VM-Ressourcenbereich angeben und **Sicherung** auswählen, öffnet sich der Bildschirm **Sicherung aktivieren**, obwohl die VM bereits gesichert ist. Dies liegt daran, dass der Aufruf zur Überprüfung des Sicherungsstatus nur auf Abonnementebene funktioniert. Um dies zu vermeiden, navigieren Sie entweder zum Tresor und öffnen die Sicherungselementansicht der VM, oder geben Sie die Rolle „VM-Mitwirkender“ auf Abonnementebene an.
 
 ## <a name="minimum-role-requirements-for-the-azure-file-share-backup"></a>Mindestanforderungen an Rollen für die Sicherung von Azure-Dateifreigaben
 

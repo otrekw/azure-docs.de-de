@@ -3,12 +3,12 @@ title: Wiederherstellen des Systemstatus auf einem Windows Server-Computer
 description: Ausführliche Anleitung zum Wiederherstellen des Windows Server-Systemstatus aus einer Sicherung in Azure.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 9237d3d087da7f9e72813baa0056cd6b70f2c914
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 824ed5e71934af370211bfa8b4c266fe4323b4ad
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892540"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377436"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Wiederherstellen des Systemstatus von Windows Server
 
@@ -56,7 +56,7 @@ Die folgenden Schritte erläutern das Ausführen eines Rollbacks Ihrer Windows S
 
 8. Überprüfen Sie die Details der Wiederherstellung im Bereich **Bestätigung**, und wählen Sie dann **Wiederherstellen** aus.
 
-   ![Auf „Wiederherstellen“ klicken, um die Wiederherstellungsaktion zu bestätigen](./media/backup-azure-restore-system-state/confirm-recovery.png)
+   ![„Wiederherstellen“ auswählen, um die Wiederherstellungsaktion zu bestätigen](./media/backup-azure-restore-system-state/confirm-recovery.png)
 
 9. Kopieren Sie das Verzeichnis *WindowsImageBackup* am Wiederherstellungsziel auf ein weniger wichtiges Volume des Servers. Normalerweise ist das Windows-Betriebssystemvolume das wichtigste Volume.
 
@@ -104,7 +104,7 @@ In diesen Schritten wird folgende Terminologie verwendet:
 
 11. Überprüfen Sie die Details der Wiederherstellung im Bereich „Bestätigung“, und wählen Sie dann **Wiederherstellen** aus.
 
-    ![Auf die Schaltfläche „Wiederherstellen“ klicken, um den Wiederherstellungsprozess zu bestätigen](./media/backup-azure-restore-system-state/confirm-recovery.png)
+    ![Die Schaltfläche „Wiederherstellen“ auswählen, um den Wiederherstellungsprozess zu bestätigen](./media/backup-azure-restore-system-state/confirm-recovery.png)
 
 12. Kopieren Sie das Verzeichnis *WindowsImageBackup* auf ein weniger wichtiges Volume des Servers (z.B. „D:\)“. Normalerweise ist das Windows-Betriebssystemvolume das wichtigste Volume.
 

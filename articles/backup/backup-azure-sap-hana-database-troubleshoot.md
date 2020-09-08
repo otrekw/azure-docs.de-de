@@ -3,12 +3,12 @@ title: Problembehandlung bei Sicherungsfehlern in SAP HANA-Datenbanken
 description: Beschreibt, wie häufige Fehler behoben werden, die auftreten können, wenn Sie SAP HANA-Datenbanken mithilfe von Azure Backup sichern.
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 6216c39231ad17a55f0d428fe5e1f85e64cef403
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 5cdad55ef849b9ced31646466e2c2c170ebf0827
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826989"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377683"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Behandeln von Problemen beim Sichern von SAP HANA-Datenbanken in Azure
 
@@ -73,7 +73,7 @@ Informationen finden Sie in den Abschnitten zu den [Voraussetzungen](tutorial-ba
 
 | Fehlermeldung      | <span style="font-weight:normal">Ungültige backint-Konfiguration erkannt.</span>                       |
 | ------------------ | ------------------------------------------------------------ |
-| **Mögliche Ursachen**    | Die backint-Parameter sind nicht ordnungsgemäß für Azure Backup angegeben. |
+| **Mögliche Ursachen**    | Die Sicherungsparameter sind nicht ordnungsgemäß für Azure Backup angegeben. |
 | **Empfohlene Maßnahme** | Überprüfen Sie, ob die folgenden backint-Parameter festgelegt sind:<br/>\* [catalog_backup_using_backint:true]<br/>\* [enable_accumulated_catalog_backup:false]<br/>\* [parallel_data_backup_backint_channels:1]<br/>\* [log_backup_timeout_s:900)]<br/>\* [backint_response_timeout:7200]<br/>Wenn in HOST backint-Parameter vorhanden sind, entfernen Sie sie. Wenn Parameter auf HOST-Ebene nicht vorhanden sind, aber auf Datenbankebene manuell geändert wurden, setzen Sie sie wie oben beschrieben auf die entsprechenden Werte zurück. Oder führen Sie im Azure-Portal [Schutz beenden und Sicherungsdaten beibehalten](./sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) aus, und wählen Sie dann **Sicherung fortsetzen** aus. |
 
 ### <a name="usererrorincompatiblesrctargetsystemsforrestore"></a>UserErrorIncompatibleSrcTargetSystemsForRestore
@@ -165,7 +165,7 @@ Upgrades von SDC auf MDC, die keine SID-Änderung verursachen, können wie folgt
 - Führen Sie das Upgrade durch. Nach Abschluss des Vorgangs ist die HANA-System nun eine MDC-Instanz mit einer Systemdatenbank und einer Mandantendatenbank.
 - Führen Sie das [Vorregistrierungsskript](https://aka.ms/scriptforpermsonhana) erneut aus.
 - Registrieren Sie die Erweiterung im Azure-Portal erneut für den gleichen Computer (**Sicherung** -> **Details anzeigen** -> entsprechende Azure-VM auswählen -> erneut registrieren).
-- Klicken Sie auf **Datenbanken neu ermitteln** für denselben virtuellen Computer. Durch diese Aktion sollten die neuen Datenbanken in Schritt 3 als SYSTEMDB und Mandantendatenbank (nicht SDC) angezeigt werden.
+- Wählen Sie **Datenbanken neu ermitteln** für denselben virtuellen Computer aus. Durch diese Aktion sollten die neuen Datenbanken in Schritt 3 als SYSTEMDB und Mandantendatenbank (nicht SDC) angezeigt werden.
 - Die ältere SDC-Datenbank ist weiterhin im Tresor vorhanden, und die alten gesicherten Daten werden gemäß der Richtlinie aufbewahrt.
 - Konfigurieren der Sicherung für diese Datenbanken
 
@@ -178,7 +178,7 @@ Upgrades von SDC auf MDC, die eine SID-Änderung verursachen, können wie folgt 
 - Führen Sie das Upgrade durch. Nach Abschluss des Vorgangs ist die HANA-System nun eine MDC-Instanz mit einer Systemdatenbank und einer Mandantendatenbank.
 - Führen Sie das [Vorregistrierungsskript](https://aka.ms/scriptforpermsonhana) mit den richtigen Details (neue SID und MDC) erneut aus. Aufgrund einer Änderung der SID treten möglicherweise Probleme bei der Ausführung des Skripts auf. Wenden Sie sich an Azure Backup-Support, wenn Probleme auftreten.
 - Registrieren Sie die Erweiterung im Azure-Portal erneut für den gleichen Computer (**Sicherung** -> **Details anzeigen** -> entsprechende Azure-VM auswählen -> erneut registrieren).
-- Klicken Sie auf **Datenbanken neu ermitteln** für denselben virtuellen Computer. Durch diese Aktion sollten die neuen Datenbanken in Schritt 3 als SYSTEMDB und Mandantendatenbank (nicht SDC) angezeigt werden.
+- Wählen Sie **Datenbanken neu ermitteln** für denselben virtuellen Computer aus. Durch diese Aktion sollten die neuen Datenbanken in Schritt 3 als SYSTEMDB und Mandantendatenbank (nicht SDC) angezeigt werden.
 - Die ältere SDC-Datenbank ist weiterhin im Tresor vorhanden, und die alten gesicherten Daten werden gemäß der Richtlinie aufbewahrt.
 - Konfigurieren der Sicherung für diese Datenbanken
 

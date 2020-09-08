@@ -3,12 +3,12 @@ title: Wiederherstellen von Daten von einer Azure Backup Server-Instanz
 description: Stellen Sie die Daten wieder her, die Sie in einem Recovery Services-Tresor auf einer beliebigen, bei diesem Tresor registrierten Azure Backup Server-Instanz gesichert haben.
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: 93ae34184679b5144288a4c8cb4dabd90ae69fa1
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 0cce45fbaaedad4cfcee0cda768aae2fa294312b
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827442"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378065"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Wiederherstellen von Daten von Azure Backup Server
 
@@ -21,7 +21,7 @@ Mit Azure Backup Server können Sie die Daten wiederherstellen, die Sie in einem
 
 So stellen Sie Daten von einer Azure Backup Server-Instanz wieder her:
 
-1. Klicken Sie auf der Registerkarte **Wiederherstellung** der Azure Backup Server-Verwaltungskonsole auf **Externen DPM hinzufügen** (links oben auf dem Bildschirm).
+1. Wählen Sie auf der Registerkarte **Wiederherstellung** der Azure Backup Server-Verwaltungskonsole **Externen DPM hinzufügen** (links oben auf dem Bildschirm) aus.
 
     ![Externen DPM hinzufügen](./media/backup-azure-alternate-dpm-server/add-external-dpm.png)
 2. Laden Sie die neuen **Tresoranmeldeinformationen** des mit der **Azure Backup Server**-Instanz verknüpften Tresors herunter, wählen Sie die Azure Backup Server-Instanz aus der Liste der beim Recovery Services-Tresor registrierten Azure Backup Server-Instanzen aus, und geben Sie die **Verschlüsselungspassphrase** für den Server an, dessen Daten wiederhergestellt werden.
@@ -42,10 +42,10 @@ So stellen Sie Daten von einer Azure Backup Server-Instanz wieder her:
     Im unteren Bereich wird eine Liste von Dateien und Ordnern angezeigt, die Sie durchsuchen und an einem beliebigen Ort wiederherstellen können.
 
     ![Wiederherstellungspunkte des externen DPM-Servers](./media/backup-azure-alternate-dpm-server/external-dpm-recoverypoint.png)
-5. Klicken Sie mit der rechten Maustaste auf das entsprechende Element, und klicken Sie dann auf **Wiederherstellen**.
+5. Klicken Sie mit der rechten Maustaste auf das entsprechende Element, und wählen Sie dann **Wiederherstellen** aus.
 
     ![Externe DPM-Wiederherstellung](./media/backup-azure-alternate-dpm-server/recover.png)
-6. Überprüfen Sie die **Wiederherstellungsauswahl**. Überprüfen Sie Datum und Uhrzeit der wiederhergestellten Sicherungskopie sowie die Quelle, aus der die Sicherungskopie erstellt wurde. Wenn die Auswahl fehlerhaft ist, klicken Sie auf **Abbrechen**, und navigieren Sie zur Registerkarte "Wiederherstellung", um dort den richtigen Wiederherstellungspunkt auszuwählen. Wenn die Auswahl richtig ist, klicken Sie auf **Weiter**.
+6. Überprüfen Sie die **Wiederherstellungsauswahl**. Überprüfen Sie Datum und Uhrzeit der wiederhergestellten Sicherungskopie sowie die Quelle, aus der die Sicherungskopie erstellt wurde. Wenn die Auswahl fehlerhaft ist, wählen Sie **Abbrechen** aus, und navigieren Sie zur Registerkarte „Wiederherstellung“, um dort den richtigen Wiederherstellungspunkt auszuwählen. Wenn die Auswahl richtig ist, wählen Sie **Weiter** aus.
 
     ![Zusammenfassung zur externen DPM-Wiederherstellung](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-summary.png)
 7. Wählen Sie **An anderem Speicherort wiederherstellen** aus. Klicken Sie auf **Durchsuchen**, um den richtigen Speicherort für die Wiederherstellung auszuwählen.
@@ -53,16 +53,16 @@ So stellen Sie Daten von einer Azure Backup Server-Instanz wieder her:
     ![Alternativer Speicherort für externe DPM-Wiederherstellung](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-alternate-location.png)
 8. Wählen Sie die gewünschte Option aus: **Kopie erstellen**, **Überspringen** oder **Überschreiben**.
 
-   * **Kopie erstellen** erstellt eine Kopie der Datei, falls ein Namenskonflikt besteht.
-   * **Überspringen:** Bei einem Namenskonflikt wird die Datei nicht wiederhergestellt, sodass die ursprüngliche Datei beibehalten wird.
-   * **Überschreiben:** Bei einem Namenskonflikt wird die vorhandene Kopie der Datei überschrieben.
+   * **Kopie erstellen** – Erstellt eine Kopie der Datei, falls ein Namenskonflikt besteht.
+   * **Überspringen:** – Bei einem Namenskonflikt wird die Datei nicht wiederhergestellt, sodass die ursprüngliche Datei beibehalten wird.
+   * **Überschreiben:** – Bei einem Namenskonflikt wird die vorhandene Kopie der Datei überschrieben.
 
      Wählen Sie die entsprechende Option für **Sicherheit wiederherstellen** aus. Sie können die Sicherheitseinstellungen des Zielcomputers anwenden, auf dem die Daten wiederhergestellt werden, oder die Sicherheitseinstellungen, die für das Produkt zum Zeitpunkt der Erstellung des Wiederherstellungspunkts galten.
 
      Geben Sie an, ob eine **Benachrichtigung** gesendet wird, sobald die Wiederherstellung erfolgreich abgeschlossen ist.
 
      ![Benachrichtigungen für externe DPM-Wiederherstellung](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-notifications.png)
-9. Auf dem Bildschirm **Zusammenfassung** werden die bisher ausgewählten Optionen aufgelistet. Nach dem Klicken auf **Wiederherstellen** werden die Daten am entsprechenden lokalen Speicherort wiederhergestellt.
+9. Auf dem Bildschirm **Zusammenfassung** werden die bisher ausgewählten Optionen aufgelistet. Nachdem Sie **Wiederherstellen** ausgewählt haben, werden die Daten am entsprechenden lokalen Speicherort wiederhergestellt.
 
     ![Zusammenfassung der Optionen für die externe DPM-Wiederherstellung](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-options-summary.png)
 
@@ -72,7 +72,7 @@ So stellen Sie Daten von einer Azure Backup Server-Instanz wieder her:
    >
 
     ![Überwachen der Wiederherstellung](./media/backup-azure-alternate-dpm-server/monitoring-recovery.png)
-10. Klicken Sie auf der Registerkarte **Wiederherstellung** des DPM-Servers auf **Externen DPM löschen**, um die Ansicht des externen DPM-Servers zu entfernen.
+10. Wählen Sie auf der Registerkarte **Wiederherstellung** des DPM-Servers **Externen DPM löschen** aus, um die Ansicht des externen DPM-Servers zu entfernen.
 
     ![Löschen des externen DPM](./media/backup-azure-alternate-dpm-server/clear-external-dpm.png)
 

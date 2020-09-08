@@ -3,12 +3,12 @@ title: Wiederherstellen von Azure-Dateifreigaben
 description: Erfahren Sie, wie Sie das Azure-Portal verwenden, um eine vollständige Dateifreigabe oder bestimmte Dateien von einem von Azure Backup erstellten Wiederherstellungspunkt wiederherstellen.
 ms.topic: conceptual
 ms.date: 01/12/2020
-ms.openlocfilehash: bb846c4615377259a1c17653cc26e96f37dc32ec
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 35ca0936ae6efba716adb51f43326cdd5bfa2d98
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762822"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376773"
 ---
 # <a name="restore-azure-file-shares"></a>Wiederherstellen von Azure-Dateifreigaben
 
@@ -50,16 +50,16 @@ Sie können diese Wiederherstellungsoption verwenden, um die vollständige Datei
 
    ![Wiederherzustellende Freigabe auswählen](./media/restore-afs/restore-share.png)
 
-1. Nachdem Sie **Freigabe wiederherstellen** ausgewählt haben, wird der Bereich **Wiederherstellung** geöffnet. Um den Wiederherstellungspunkt auszuwählen, den Sie für den Wiederherstellungsvorgang nutzen möchten, klicken Sie unter dem Textfeld **Wiederherstellungspunkt** auf den Linktext **Auswählen**.
+1. Nachdem Sie **Freigabe wiederherstellen** ausgewählt haben, wird der Bereich **Wiederherstellung** geöffnet. Um den Wiederherstellungspunkt auszuwählen, den Sie für den Wiederherstellungsvorgang nutzen möchten, wählen Sie unter dem Textfeld **Wiederherstellungspunkt** den Linktext **Auswählen** aus.
 
-    ![Auswählen des Wiederherstellungspunkts durch Klicken auf „Auswählen“](./media/restore-afs/select-restore-point.png)
+    ![Wiederherstellungspunkt mit „Auswählen“ auswählen](./media/restore-afs/select-restore-point.png)
 
 1. Der Kontextbereich **Wiederherstellungspunkt auswählen** wird auf der rechten Seite geöffnet und listet die für die ausgewählte Dateifreigabe verfügbaren Wiederherstellungspunkte auf. Wählen Sie den Wiederherstellungspunkt aus, den Sie für die Wiederherstellung verwenden möchten, und wählen Sie **OK** aus.
 
     ![Auswählen eines Wiederherstellungspunkts](./media/restore-afs/restore-point.png)
 
     >[!NOTE]
-    >Standardmäßig werden im Bereich **Wiederherstellungspunkt a** Wiederherstellungspunkte der letzten 30 Tage aufgeführt. Wenn Sie sich die Wiederherstellungspunkte ansehen möchten, die während eines bestimmten Zeitraums erstellt wurden, geben Sie den Bereich an, indem Sie die entsprechende **Startzeit** und **Endzeit** auswählen und auf die Schaltfläche **Aktualisieren** klicken.
+    >Standardmäßig werden im Bereich **Wiederherstellungspunkt a** Wiederherstellungspunkte der letzten 30 Tage aufgeführt. Wenn Sie sich die Wiederherstellungspunkte ansehen möchten, die während eines bestimmten Zeitraums erstellt wurden, geben Sie den Bereich an, indem Sie die entsprechende **Startzeit** und **Endzeit** und dann die Schaltfläche **Aktualisieren** auswählen.
 
 1. Der nächste Schritt ist das Wählen des **Speicherorts für die Wiederherstellung**. Geben Sie im Abschnitt **Wiederherstellungsziel** an, wo oder wie die Daten wiederhergestellt werden sollen. Wählen Sie eine der beiden folgenden Optionen mithilfe der Umschaltfläche aus:
 
@@ -93,9 +93,9 @@ Sie können diese Wiederherstellungsoption verwenden, um einzelne Dateien oder O
 
     ![„Dateiwiederherstellung“ auswählen](./media/restore-afs/file-recovery.png)
 
-1. Nachdem Sie **Dateiwiederherstellung** ausgewählt haben, wird der Bereich **Wiederherstellung** geöffnet. Um den Wiederherstellungspunkt auszuwählen, den Sie für den Wiederherstellungsvorgang nutzen möchten, klicken Sie unter dem Textfeld **Wiederherstellungspunkt** auf den Linktext **Auswählen**.
+1. Nachdem Sie **Dateiwiederherstellung** ausgewählt haben, wird der Bereich **Wiederherstellung** geöffnet. Um den Wiederherstellungspunkt auszuwählen, den Sie für den Wiederherstellungsvorgang verwenden möchten, wählen Sie unter dem Textfeld **Wiederherstellungspunkt** den Linktext **Auswählen** aus.
 
-    ![Auswählen des Wiederherstellungspunkts durch Klicken auf „Auswählen“](./media/restore-afs/select-restore-point.png)
+    ![Wiederherstellungspunkt mit dem Link „Auswählen“ auswählen](./media/restore-afs/select-restore-point.png)
 
 1. Der Kontextbereich **Wiederherstellungspunkt auswählen** wird auf der rechten Seite geöffnet und listet die für die ausgewählte Dateifreigabe verfügbaren Wiederherstellungspunkte auf. Wählen Sie den Wiederherstellungspunkt aus, den Sie für die Wiederherstellung verwenden möchten, und wählen Sie **OK** aus.
 
@@ -112,7 +112,7 @@ Sie können diese Wiederherstellungsoption verwenden, um einzelne Dateien oder O
 
     ![Ursprünglicher Speicherort für Wiederherstellung auf Elementebene](./media/restore-afs/original-location-item-level.png)
 
-1. Klicken Sie auf die Schaltfläche **Datei auswählen**, um die Dateien oder Ordner auszuwählen, die Sie wiederherstellen möchten. Dadurch wird rechts ein Kontextbereich geöffnet, in dem der Inhalt des Wiederherstellungspunkts der Dateifreigabe angezeigt wird, den Sie für die Wiederherstellung ausgewählt haben.
+1. Wählen Sie die Schaltfläche **Datei auswählen** aus, um die Dateien oder Ordner auszuwählen, die Sie wiederherstellen möchten. Dadurch wird rechts ein Kontextbereich geöffnet, in dem der Inhalt des Wiederherstellungspunkts der Dateifreigabe angezeigt wird, den Sie für die Wiederherstellung ausgewählt haben.
 
     ![„Datei hinzufügen“ wählen](./media/restore-afs/add-file.png)
 
@@ -132,7 +132,7 @@ Sie können diese Wiederherstellungsoption verwenden, um einzelne Dateien oder O
 1. In der Dropdownliste **Dateifreigabe auswählen** werden die Dateifreigaben angezeigt, die in dem Speicherkonto vorhanden sind, das Sie in Schritt 2 ausgewählt haben. Wählen Sie die Dateifreigabe aus, in der Sie die gesicherten Inhalte wiederherstellen möchten.
 1. Geben Sie im Feld **Ordnername** den Namen eines Ordners ein, den Sie in der Zieldateifreigabe mit den wiederhergestellten Inhalten erstellen möchten.
 1. Wählen Sie aus, ob Daten bei Konflikten übersprungen oder überschrieben werden sollen.
-1. Klicken Sie auf die Schaltfläche **Datei auswählen**, um die Dateien oder Ordner auszuwählen, die Sie wiederherstellen möchten. Dadurch wird rechts ein Kontextbereich geöffnet, in dem der Inhalt des Wiederherstellungspunkts der Dateifreigabe angezeigt wird, den Sie für die Wiederherstellung ausgewählt haben.
+1. Wählen Sie die Schaltfläche **Datei auswählen** aus, um die Dateien oder Ordner auszuwählen, die Sie wiederherstellen möchten. Dadurch wird rechts ein Kontextbereich geöffnet, in dem der Inhalt des Wiederherstellungspunkts der Dateifreigabe angezeigt wird, den Sie für die Wiederherstellung ausgewählt haben.
 
     ![Elemente zum Wiederherstellen an einem alternativen Speicherort auswählen](./media/restore-afs/restore-to-alternate-location.png)
 

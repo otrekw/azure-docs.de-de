@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Probleme bei der Systemstat
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
-ms.openlocfilehash: 56593176e705176b87cf955eb116909c1912e723
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 7c8e68da1c5da7b25d1385a82bf7dcc2f876306d
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824269"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376280"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Problembehandlung bei der Systemstatussicherung
 
@@ -20,7 +20,7 @@ In diesem Artikel werden Lösungen für Probleme beschrieben, die beim Verwenden
 Sie sollten unbedingt die folgenden Prüfungsschritte durchführen, bevor Sie mit der Problembehandlung der Systemstatussicherung beginnen:
 
 - [Sicherstellen, dass der Microsoft Azure Recovery Services-Agent (MARS) auf dem neuesten Stand ist](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
-- [Sicherstellen, dass zwischen dem MARS-Agent und Azure Netzwerkkonnektivität besteht](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
+- [Stellen Sie sicher, dass zwischen dem MARS-Agent und Azure Netzwerkkonnektivität besteht.](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
 - Vergewissern Sie sich, dass Microsoft Azure Recovery Services ausgeführt wird (auf der Dienstkonsole). Führen Sie bei Bedarf einen Neustart durch, und wiederholen Sie den Vorgang.
 - [Sicherstellen, dass am Speicherort des Ablageordners 5 - 10% freier Volumespeicherplatz vorhanden ist](./backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
 - [Überprüfen, ob ein anderer Prozess oder Antivirensoftware in Azure Backup eingreift](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)
@@ -66,20 +66,20 @@ Führen Sie den folgenden Befehl aus, um Windows Server-Sicherung mithilfe von P
 
 Führen Sie die folgenden Schritte aus, um Windows Server-Sicherung mithilfe von Server-Manager zu installieren:
 
-1. Klicken Sie im **Server-Manager** auf **Rollen und Features hinzufügen**. Der **Assistent zum Hinzufügen von Rollen und Features** wird geöffnet.
+1. Wählen Sie im **Server-Manager** die Option **Rollen und Features hinzufügen** aus. Der **Assistent zum Hinzufügen von Rollen und Features** wird geöffnet.
 
     ![Dashboard](./media/backup-azure-system-state-troubleshoot/server_management.jpg)
 
-2. Wählen Sie **Installationstyp** aus, und klicken Sie auf **Weiter**.
+2. Wählen Sie **Installationstyp** und dann **Weiter** aus.
 
     ![Installationstyp](./media/backup-azure-system-state-troubleshoot/install_type.jpg)
 
-3. Wählen Sie einen Server aus dem Serverpool aus, und klicken Sie auf **Weiter**. Übernehmen Sie für „Serverrollen“ die Standardauswahl, und klicken Sie auf **Weiter**.
-4. Wählen Sie auf der Registerkarte **Features** das Feature **Windows Server-Sicherung** aus, und klicken Sie auf **Weiter**.
+3. Wählen Sie einen Server aus dem Serverpool und dann **Weiter** aus. Übernehmen Sie für „Serverrollen“ die Standardauswahl, und wählen Sie **Weiter** aus.
+4. Wählen Sie auf der Registerkarte **Features** das Feature **Windows Server-Sicherung** und dann **Weiter** aus.
 
     ![Auswählen des Fensters „Features“](./media/backup-azure-system-state-troubleshoot/features.png)
 
-5. Klicken Sie auf der Registerkarte **Bestätigung** auf **Installieren**, um den Installationsvorgang zu starten.
+5. Wählen Sie auf der Registerkarte **Bestätigung** die Option **Installieren** aus, um den Installationsvorgang zu starten.
 6. Auf der Registerkarte **Ergebnisse** wird angezeigt, dass die Installation des Features „Windows Server-Sicherung“ auf Ihrem Windows Server-Computer erfolgreich abgeschlossen wurde.
 
     ![Ergebnisse der Installation](./media/backup-azure-system-state-troubleshoot/results.jpg)
@@ -137,7 +137,7 @@ Wenn bei dem Auftrag ein Fehler auftritt, ist dies ein Hinweis auf ein Problem v
 
 | Symptom | Lösung
 | -- | --
-| - Fehler des MARS-Agents mit der folgenden Fehlermeldung: Fehler bei der Sicherung: Das Schattenkopievolume konnte nicht wachsen, weil auf Volumes mit Systemdateien nicht genügend Speicherplatz verfügbar war. <br/><br/> - In Volsnap-Systemereignisprotokollen ist das folgende Fehler-/Warnungsprotokoll vorhanden: „Es steht nicht genügend Speicherplatz auf Volume "C:" zur Verfügung, um den Schattenkopiespeicher für Schattenkopien von "C:" zu erhöhen. Möglicherweise werden aufgrund dieses Fehlers alle Schattenkopien auf Volume "C:" gelöscht.“ | - Geben Sie Speicherplatz auf dem im Ereignisprotokoll angegebenen Volume frei, damit genügend Speicherplatz zum Vergrößern des Schattenkopiespeichers verfügbar ist, während die Sicherung ausgeführt wird. <br/><br/> - Beim Konfigurieren des Speicherplatzes für Schattenkopien kann die für Schattenkopien verwendete Speicherplatzgröße eingeschränkt werden. Weitere Informationen finden Sie in [diesem Artikel](/windows-server/administration/windows-commands/vssadmin-resize-shadowstorage).
+| - Fehler des MARS-Agents mit der folgenden Fehlermeldung: Fehler bei der Sicherung: Das Schattenkopievolume konnte nicht wachsen, weil auf Volumes mit Systemdateien nicht genügend Speicherplatz verfügbar war. <br/><br/> - In Volsnap-Systemereignisprotokollen ist das folgende Fehler-/Warnungsprotokoll vorhanden: „Es steht nicht genügend Speicherplatz auf Volume "C:" zur Verfügung, um den Schattenkopiespeicher für Schattenkopien von "C:" zu erhöhen. Möglicherweise werden aufgrund dieses Fehlers alle Schattenkopien auf Volume "C:" gelöscht.“ | – Geben Sie Speicherplatz auf dem im Ereignisprotokoll angegebenen Volume frei, damit genügend Speicherplatz zum Vergrößern der Schattenkopien verfügbar ist, während die Sicherung ausgeführt wird. <br/><br/> - Beim Konfigurieren des Speicherplatzes für Schattenkopien kann die für Schattenkopien verwendete Speicherplatzgröße eingeschränkt werden. Weitere Informationen finden Sie in [diesem Artikel](/windows-server/administration/windows-commands/vssadmin-resize-shadowstorage).
 
 ### <a name="efi-partition-locked"></a>Gesperrte EFI-Partition
 
