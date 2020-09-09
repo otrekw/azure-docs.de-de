@@ -3,7 +3,7 @@ title: 'Schnellstart: Einrichten von Hochverfügbarkeit mit Azure Front Door Ser
 description: In dieser Schnellstartanleitung wird die Vorgehensweise zum Verwenden von Azure Front Door für globale Webanwendungen mit Hochverfügbarkeit und hoher Leistung beschrieben.
 services: front-door
 documentationcenter: ''
-author: sharad4u
+author: duongau
 editor: ''
 ms.assetid: ''
 ms.service: frontdoor
@@ -12,13 +12,13 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2020
-ms.author: sharadag
-ms.openlocfilehash: c1ce34bb7fc851d3f763241c9e92371b43ed1861
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.author: duau
+ms.openlocfilehash: 16ebfe7ae39d63f455e39c677acc61b31d40bb5a
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82133414"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569236"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>Schnellstart: Erstellen Sie eine „Front Door“ für eine hoch verfügbare globale Webanwendung.
 
@@ -165,5 +165,3 @@ Wiederholen Sie den Vorgang für die anderen beiden Gruppen.
 Fahren Sie mit dem nächsten Artikel fort, um zu erfahren, wie Sie Ihrer Front Door-Instanz eine benutzerdefinierte Domäne hinzufügen.
 > [!div class="nextstepaction"]
 > [Hinzufügen einer benutzerdefinierten Domäne](front-door-custom-domain.md)
-
-Weitere Informationen zum Weiterleiten von Datenverkehr finden unter [Datenverkehrsrouting in Azure Front Door Service](front-door-routing-methods.md).

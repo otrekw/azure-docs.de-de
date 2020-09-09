@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 08/20/2020
 ms.author: trbye
-ms.openlocfilehash: cc29eb959876a0c9c6f8c8e5dee2d18aaa5443ac
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 57577c840c93888b2b96971994724f085ad44ebe
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825354"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569304"
 ---
 # <a name="what-is-the-speech-service"></a>Worum handelt es sich beim Speech-Dienst?
 
@@ -90,7 +90,7 @@ Es dauert einen Moment, bis die neue Speech-Ressource bereitgestellt wird. Wähl
 
 Wir stellen Schnellstartanleitungen für die gängigsten Programmiersprachen bereit. Diese enthalten Informationen zu grundlegenden Entwurfsmustern und sind jeweils so konzipiert, dass Sie in weniger als zehn Minuten über ausführbaren Code verfügen. Die folgende Liste enthält Schnellstartanleitungen zu jedem Feature:
 
-* [Grundlegendes zur Spracherkennung](speech-to-text-basics.md)
+* [Grundlegendes zur Spracherkennung](get-started-speech-to-text.md)
 * [Schnellstartanleitung zur Sprachsynthese](get-started-text-to-speech.md)
 * [Grundlegendes zur Sprachübersetzung](speech-translation-basics.md)
 * [Schnellstart: Erkennen von Sprache, Absichten und Entitäten mit Language Understanding (LUIS)](quickstarts/intent-recognition.md)

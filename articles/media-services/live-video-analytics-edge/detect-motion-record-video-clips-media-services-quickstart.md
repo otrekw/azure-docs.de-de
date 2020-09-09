@@ -3,12 +3,12 @@ title: Erkennen von Bewegung, Aufzeichnen von Videos in Azure Media Services
 description: In diesem Schnellstart erfahren Sie, wie Sie Live Video Analytics in IoT Edge verwenden, um Bewegungen in einem Livevideostream zu erkennen und Videoclips in Azure Media Services aufzuzeichnen.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 972b85c00aa29cc39dafd03b9945e489680dd9a5
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: d4301a9c0c5684be04ee2cfbace60c1bb1904876
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067655"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569004"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>Schnellstart: Erkennen von Bewegung, Aufzeichnen von Video in Media Services
 
@@ -33,7 +33,8 @@ Sie können eine Anwendung wie [VLC Player](https://www.videolan.org/vlc/) start
 
 Nach Abschluss der nachfolgenden Schritte haben Sie mithilfe von Live Video Analytics in IoT Edge die Bewegung des Fahrzeugs erkannt und einen Videoclip aufgezeichnet, der ungefähr bei dieser 5-Sekunden-Marke beginnt. In der Abbildung unten ist der gesamte Ablauf visuell dargestellt.
 
-![Ereignisbasierte Videoaufzeichnung von Medienobjekten basierend auf Bewegungsereignissen](./media/quickstarts/topology.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/quickstarts/topology.svg" alt-text="Ereignisbasierte Videoaufzeichnung von Medienobjekten basierend auf Bewegungsereignissen":::
 
 ## <a name="use-direct-method-calls"></a>Verwenden von Aufrufen direkter Methoden
 
