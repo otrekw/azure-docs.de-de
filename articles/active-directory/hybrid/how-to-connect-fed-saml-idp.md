@@ -14,12 +14,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 274f603fa0d7a48b99a7caed5d465d44bc68e9ca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: aa9d2aa94970e7d17102e5a5696c6b61330aff80
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019963"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279957"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>Verwenden eines SAML 2.0-Identitätsanbieters (IdP, Identity Provider) für einmaliges Anmelden
 
@@ -178,7 +178,7 @@ Sie müssen die Kommunikation zwischen Ihrem SAML 2.0-Identitätsanbieter und Az
 ## <a name="install-windows-powershell-for-sign-on-with-saml-20-identity-provider"></a>Installieren von Windows PowerShell für einmaliges Anmelden mit dem SAML 2.0-Identitätsanbieter
 Nachdem Sie Ihren SAML 2.0-Identitätsanbieter für die Verwendung mit Azure AD-Anmeldung konfiguriert haben, besteht der nächste Schritt aus dem Herunterladen und Installieren des Azure Active Directory-Moduls für Windows PowerShell. Nach Abschluss der Installation verwenden Sie diese Cmdlets zum Konfigurieren Ihrer Azure AD-Domänen als Verbunddomänen.
 
-Das Azure Active Directory-Modul für Windows PowerShell ist ein Download zum Verwalten Ihrer Organisationsdaten in Azure AD. Dieses Modul installiert eine Reihe von Cmdlets in Windows PowerShell; Sie führen diese Cmdlets zum Einrichten des einmaligen Anmeldens für den Zugriff auf Azure AD aus, und somit auch auf alle Cloud-Dienste, die Sie abonniert haben. Anleitungen zum Herunterladen und Installieren der Cmdlets finden Sie unter [https://technet.microsoft.com/library/jj151815.aspx](https://technet.microsoft.com/library/jj151815.aspx).
+Das Azure Active Directory-Modul für Windows PowerShell ist ein Download zum Verwalten Ihrer Organisationsdaten in Azure AD. Dieses Modul installiert eine Reihe von Cmdlets in Windows PowerShell; Sie führen diese Cmdlets zum Einrichten des einmaligen Anmeldens für den Zugriff auf Azure AD aus, und somit auch auf alle Cloud-Dienste, die Sie abonniert haben. Anleitungen zum Herunterladen und Installieren der Cmdlets finden Sie unter [/previous-versions/azure/jj151815(v=azure.100)](/previous-versions/azure/jj151815(v=azure.100)).
 
 ## <a name="set-up-a-trust-between-your-saml-identity-provider-and-azure-ad"></a>Einrichten einer Vertrauensstellung zwischen Ihrem SAML-Identitätsanbieter und Azure AD
 Bevor ein Verbund für eine Azure AD-Domäne konfiguriert wird, muss zuerst eine benutzerdefinierte Domäne konfiguriert werden. Sie können keinen Verbund für die Standarddomäne erstellen, die von Microsoft bereitgestellt wird. Die Standarddomäne von Microsoft endet mit „onmicrosoft.com“.
@@ -238,19 +238,19 @@ Das folgende Verfahren führt Sie durch das Konvertieren einer vorhandenen Stand
     </IDPSSODescriptor>
     ``` 
 
-Weitere Informationen zu „Set-MsolDomainAuthentication“ finden Sie unter [https://technet.microsoft.com/library/dn194112.aspx](https://technet.microsoft.com/library/dn194112.aspx).
+Weitere Informationen zu „Set-MsolDomainAuthentication“ finden Sie unter: [/previous-versions/azure/dn194112(v=azure.100)](/previous-versions/azure/dn194112(v=azure.100)).
 
 >[!NOTE]
 >Sie müssen `$ecpUrl = "https://WS2012R2-0.contoso.com/PAOS"` nur verwenden, wenn Sie eine ECP-Erweiterung für Ihren Identitätsanbieter einrichten. Exchange Online-Clients mit Ausnahme von Outlook Web Application (OWA) basieren auf einem auf POST basierenden aktiven Endpunkt. Wenn Ihr SAML 2.0-STS einen aktiven Endpunkt implementiert, der der ECP-Implementierung von Shibboleth von einem aktiven Endpunkt ähnelt, können diese Rich Clients möglicherweise mit dem Exchange Online-Dienst interagieren.
 
-Nachdem der Verbund konfiguriert wurde, können Sie zurück zu „ohne Verbund“ (oder „verwaltet“) wechseln. Diese Änderungen benötigen jedoch bis zu zwei Stunden und erfordern die Zuweisung neuer zufälliger Kennwörter für die cloudbasierte Anmeldung für jeden Benutzer. Das Zurückwechseln zu „verwaltet“ ist in einigen Szenarios möglicherweise erforderlich, um einen Fehler in Ihren Einstellungen zurückzusetzen. Weitere Informationen zur Domänenkonvertierung finden Sie unter [https://msdn.microsoft.com/library/windowsazure/dn194122.aspx](https://msdn.microsoft.com/library/windowsazure/dn194122.aspx).
+Nachdem der Verbund konfiguriert wurde, können Sie zurück zu „ohne Verbund“ (oder „verwaltet“) wechseln. Diese Änderungen benötigen jedoch bis zu zwei Stunden und erfordern die Zuweisung neuer zufälliger Kennwörter für die cloudbasierte Anmeldung für jeden Benutzer. Das Zurückwechseln zu „verwaltet“ ist in einigen Szenarios möglicherweise erforderlich, um einen Fehler in Ihren Einstellungen zurückzusetzen. Weitere Informationen zur Domänenkonvertierung finden Sie unter: [/previous-versions/azure/dn194122(v=azure.100)](/previous-versions/azure/dn194122(v=azure.100)).
 
 ## <a name="provision-user-principals-to-azure-ad--office-365"></a>Bereitstellen von Benutzerprinzipalen für Azure AD/Office 365
 Bevor Sie Ihre Benutzer mit Office 365 authentifizieren können, müssen Sie Azure AD mit Benutzerprinzipalen bereitstellen, die mit der Assertion im SAML 2.0-Anspruch übereinstimmen. Wenn Azure AD diese Benutzerprinzipale im Voraus nicht bekannt sind, können sie nicht für die Verbundanmeldung verwendet werden. Azure AD Connect oder Windows PowerShell können zum Bereitstellen von Benutzerprinzipalen verwendet werden.
 
 Azure AD Connect kann zum Bereitstellen von Prinzipalen für Ihre Domänen in Ihrem Azure AD-Verzeichnis aus dem lokalen Active Directory verwendet werden. Ausführlichere Informationen finden Sie unter [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](whatis-hybrid-identity.md).
 
-Windows PowerShell kann auch zum automatischen Hinzufügen neuer Benutzer zu Azure AD und zum Synchronisieren von Änderungen aus dem lokalen Verzeichnis verwendet werden. Um Windows PowerShell-Cmdlets verwenden zu können, müssen Sie die [Azure Active Directory-Module](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) herunterladen.
+Windows PowerShell kann auch zum automatischen Hinzufügen neuer Benutzer zu Azure AD und zum Synchronisieren von Änderungen aus dem lokalen Verzeichnis verwendet werden. Um Windows PowerShell-Cmdlets verwenden zu können, müssen Sie die [Azure Active Directory-Module](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) herunterladen.
 
 Diese Prozedur zeigt, wie Azure AD ein einzelner Benutzer hinzugefügt wird.
 
@@ -270,7 +270,7 @@ Diese Prozedur zeigt, wie Azure AD ein einzelner Benutzer hinzugefügt wird.
       -UsageLocation "US" 
     ```
 
-Weitere Informationen zu „New-MsolUser“ finden Sie unter [https://technet.microsoft.com/library/dn194096.aspx](https://technet.microsoft.com/library/dn194096.aspx).
+Weitere Informationen zum Check-Out „New-MsolUser“ finden Sie unter [/previous-versions/azure/dn194096(v=azure.100)](/previous-versions/azure/dn194096(v=azure.100)).
 
 >[!NOTE]
 >Der Wert „UserPrinciplName“ muss mit dem Wert übereinstimmen, den Sie für „IDPEmail“ in Ihrem SAML 2.0-Anspruch senden, und der Wert „ImmutableID“ muss mit dem Wert übereinstimmen, der in Ihrer „NameID“-Assertion gesendet wurde.

@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f664f55f2870f4f0e06f3a96a3f2b7ae91e7a378
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: a76a20d2cbc8a7b12b283c2858a13e9343499335
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87796793"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321292"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Hinzufügen von Branding zur Azure Active Directory-Anmeldeseite Ihrer Organisation
 Verwenden Sie das Logo und benutzerdefinierte Farbschemas Ihrer Organisation, um Ihren Azure Active Directory-Anmeldeseiten (Azure AD) ein konsistentes Aussehen und Verhalten zu verleihen. Ihre Anmeldeseiten werden angezeigt, wenn sich Benutzer bei webbasierten Apps Ihrer Organisation wie Office 365 anmelden, die Azure AD als Identitätsanbieter verwenden.
@@ -80,7 +80,7 @@ Ihr benutzerdefiniertes Branding wird nicht sofort angezeigt, wenn Ihre Benutzer
 
         - **Hintergrundfarbe der Anmeldeseite.** Geben Sie die hexadezimale Farbe an (z. B. ist Weiß = #FFFFFF), die in Situationen mit niedriger Bandbreite anstelle Ihres Hintergrundbilds angezeigt werden soll. Wir empfehlen, dass Sie die primäre Farbe Ihres Bannerlogos oder die Farbe Ihrer Organisation verwenden.
 
-        - **Bild für quadratisches Logo.** Wählen Sie ein PNG- (bevorzugt) oder JPG-Bild des Logos Ihrer Organisation aus, das Benutzern während des Installationsprozesses für neue Windows 10 Enterprise-Geräte angezeigt werden soll. Dieses Bild wird nur für die Windows-Authentifizierung verwendet und wird nur auf Mandanten angezeigt, die [Windows Autopilot]( https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) für die Bereitstellung oder für Kennworteingabeseiten in anderen Windows 10-Erfahrungen verwenden. In einigen Fällen kann es auch im Zustimmungsdialogfeld angezeigt werden.
+        - **Bild für quadratisches Logo.** Wählen Sie ein PNG- (bevorzugt) oder JPG-Bild des Logos Ihrer Organisation aus, das Benutzern während des Installationsprozesses für neue Windows 10 Enterprise-Geräte angezeigt werden soll. Dieses Bild wird nur für die Windows-Authentifizierung verwendet und wird nur auf Mandanten angezeigt, die [Windows Autopilot]( /windows/deployment/windows-autopilot/windows-10-autopilot) für die Bereitstellung oder für Kennworteingabeseiten in anderen Windows 10-Erfahrungen verwenden. In einigen Fällen kann es auch im Zustimmungsdialogfeld angezeigt werden.
         
             Das Bild darf nicht größer als 240 x 240 Pixel sein und muss eine Dateigröße von weniger als 10 KB einhalten. Wir empfehlen, ein transparentes Bild zu verwenden, weil der Hintergrund unter Umständen nicht mit Ihrem Logohintergrund übereinstimmt. Wir empfehlen ferner, um das Bild herum keine Auffüllung vorzunehmen, da Ihr Logo sonst klein wirken könnte.
     
@@ -88,7 +88,7 @@ Ihr benutzerdefiniertes Branding wird nicht sofort angezeigt, wenn Ihre Benutzer
         
         - **Option zum angemeldet bleiben anzeigen.** Sie können Ihren Benutzern gestatten, bei Azure AD bis zur expliziten Abmeldung angemeldet zu bleiben. Wenn Sie **Nein** auswählen, wird diese Option ausgeblendet, und Benutzer müssen sich jedes Mal anmelden, wenn der Browser geschlossen und erneut geöffnet wird.
 
-            Weitere Informationen zum Konfigurieren der Option „Angemeldet bleiben“ und zur Problembehandlung finden Sie unter [Konfigurieren der Eingabeaufforderung „Angemeldet bleiben?“ für Azure AD-Konten](keep-me-signed-in.md).
+            Diese Funktionalität steht nur im Standardbrandingobjekt und nicht in einem sprachspezifischen Objekt zur Verfügung. Weitere Informationen zum Konfigurieren der Option „Angemeldet bleiben“ und zur Problembehandlung finden Sie unter [Konfigurieren der Eingabeaufforderung „Angemeldet bleiben?“ für Azure AD-Konten](keep-me-signed-in.md).
         
             >[!NOTE]
             >Einige Features von SharePoint Online und Office 2010 setzen voraus, dass Benutzer wählen können, angemeldet zu bleiben. Wenn Sie diese Option auf **Nein** festlegen, werden Benutzern unter Umständen zusätzliche und unerwartete Anmeldeaufforderungen angezeigt.
@@ -134,7 +134,7 @@ Sie können die Sprache Ihrer ursprünglichen Konfiguration nicht in eine andere
 
     Die Seite **Contoso – Unternehmensbranding** wird mit Ihrer neuen deutschen Konfiguration aktualisiert.
 
-    ![Seite „Contoso – Unternehmensbranding“ mit angezeigter Standardkonfiguration](media/customize-branding/company-branding-french-config.png)
+    ![Contoso – Seite „Unternehmensbranding“ mit der neuen Sprachkonfiguration](media/customize-branding/company-branding-french-config.png)
 
 ## <a name="add-your-custom-branding-to-pages"></a>Hinzufügen Ihres benutzerdefinierten Brandings zu Seiten
 Fügen Sie Ihr benutzerdefiniertes Branding zu Seiten hinzu, indem Sie das Ende der URL mit dem Text `?whr=yourdomainname` ändern. Diese Änderung funktioniert auf mehreren Seiten, einschließlich der Setupseite für mehrstufige Authentifizierung, der Setupseite für Self-Service-Kennwortzurücksetzung und der Anmeldeseite.

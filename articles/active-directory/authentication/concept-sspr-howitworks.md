@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fce07575fe95ffbd4fd906bcde7d76d89e50d48b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 393ed336018c7a0272c15adaa72633abd6b95d2f
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716315"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377198"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>So funktioniert's: Self-Service-Kennwortzurücksetzung in Azure AD
 
@@ -27,7 +27,7 @@ Mit der Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) 
 >
 > Wenn Ihr IT-Team die Möglichkeit zum Zurücksetzen Ihres eigenen Kennworts nicht aktiviert hat, wenden Sie sich an den Helpdesk, um weitere Unterstützung zu erhalten.
 
-## <a name="how-does-the-password-reset-portal-work"></a>Wie funktioniert das Portal für die Kennwortzurücksetzung?
+## <a name="how-does-the-password-reset-process-work"></a>Wie funktioniert der Vorgang zur Kennwortzurücksetzung?
 
 Ein Benutzer kann sein Kennwort über das [SSPR-Portal](https://aka.ms/sspr) zurücksetzen oder ändern. Dazu müssen jedoch zunächst die gewünschten Authentifizierungsmethoden registriert worden sein. Wenn ein Benutzer auf das SSPR-Portal zugreift, berücksichtigt die Azure-Plattform Folgendes:
 
@@ -58,6 +58,11 @@ Wenn das SSPR-Portal in der gewünschten Sprache angezeigt wird, wird der Benutz
   * Wenn das Kennwortrückschreiben nicht für den SSPR aktiviert ist und das Benutzerkennwort lokal verwaltet wird, wird der Benutzer aufgefordert, sich zum Zurückzusetzen des Kennworts an den Administrator zu wenden.
 
 Wenn alle vorherigen Überprüfungen erfolgreich abgeschlossen wurden, wird der Benutzer durch die Kennwortzurücksetzung oder -änderung geführt.
+
+> [!NOTE]
+> SSPR sendet im Rahmen des Vorgangs zur Kennwortzurücksetzung möglicherweise E-Mail-Benachrichtigungen an Benutzer. Diese E-Mails werden mithilfe des SMTP-Relaydiensts gesendet, der in mehreren Regionen in einem Aktiv/Aktiv-Modus betrieben wird.
+>
+> SMTP-Relaydienste empfangen und verarbeiten den E-Mail-Text, speichern ihn aber nicht. Der Text der SSPR-E-Mail, der möglicherweise vom Kunden bereitgestellte Informationen enthält, wird in den SMTP-Relaydienstprotokollen nicht gespeichert. Die Protokolle enthalten nur Protokollmetadaten.
 
 Nutzen Sie das folgende Tutorial, um sich mit SSPR vertraut zu machen:
 

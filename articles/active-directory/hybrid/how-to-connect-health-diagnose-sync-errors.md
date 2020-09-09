@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b15250804dd316000aa20d6b97e9cccbfc36e9ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c2bd2e72b05cc01b1a351880d565323662635364
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359091"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278682"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Diagnose und Behebung von Synchronisierungsfehlern aufgrund doppelter Attribute
 
@@ -58,7 +58,7 @@ Das Diagnosefeature unterstützt Benutzerobjekte mit den folgenden doppelten Att
 | OnPremiseSecurityIdentifier |  AttributeValueMustBeUnique (Wert für Attribut muss eindeutig sein) |
 
 >[!IMPORTANT]
-> Für den Zugriff auf dieses Feature ist die Berechtigung **Globaler Administrator** oder **Mitwirkender** aus den RBAC-Einstellungen erforderlich.
+> Für den Zugriff auf dieses Feature ist eine der Berechtigungen **Globaler Administrator** oder **Mitwirkender** aus Azure RBAC erforderlich.
 >
 
 Führen Sie die Schritte über das Azure-Portal aus, um die Details zu Synchronisierungsfehlern eingrenzen und spezifischere Lösungen bereitstellen zu können:
@@ -133,7 +133,7 @@ Nach den oben beschriebenen Schritten kann der Benutzer auf die ursprüngliche R
 
 ## <a name="failures-and-error-messages"></a>Fehler und Fehlermeldungen
 **Der Benutzer mit dem konfliktverursachenden Attribut wird in Azure Active Directory vorläufig gelöscht. Stellen Sie sicher, dass der Benutzer dauerhaft gelöscht wird, bevor Sie den Vorgang wiederholen.**  
-Der Benutzer mit dem konfliktverursachenden Attribut in Azure AD muss bereinigt werden, bevor Sie den Fix anwenden können. Lesen Sie die Informationen zum [endgültigen Löschen des Benutzers in Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-restore), bevor Sie die Anwendung des Fixes wiederholen. Darüber hinaus wird der Benutzer 30 Tage nach seiner vorläufigen Löschung automatisch endgültig gelöscht. 
+Der Benutzer mit dem konfliktverursachenden Attribut in Azure AD muss bereinigt werden, bevor Sie den Fix anwenden können. Lesen Sie die Informationen zum [endgültigen Löschen des Benutzers in Azure AD](../fundamentals/active-directory-users-restore.md), bevor Sie die Anwendung des Fixes wiederholen. Darüber hinaus wird der Benutzer 30 Tage nach seiner vorläufigen Löschung automatisch endgültig gelöscht. 
 
 **Die Aktualisierung des Quellankers für cloudbasierte Benutzer in Ihrem Mandanten wird nicht unterstützt.**  
 Cloudbasierte Benutzer in Azure AD dürfen keinen Quellanker besitzen. Die Aktualisierung des Quellankers wird in diesem Fall nicht unterstützt. Ein manueller Fix aus der lokalen Umgebung ist erforderlich. 
@@ -148,7 +148,7 @@ Cloudbasierte Benutzer in Azure AD dürfen keinen Quellanker besitzen. Die Aktua
 
 
 **F.** Welche Berechtigung benötigt ein Benutzer, um die Fehlerbehebung anwenden zu können?  
-**A.** **Globaler Administrator** oder **Mitwirkender** aus den RBAC-Einstellungen sind die Berechtigungen, die den Zugriff auf den Diagnose- und Problembehandlungsprozess ermöglichen.
+**A.** **Globaler Administrator** oder **Mitwirkender** aus Azure RBAC sind die Berechtigungen für den Zugriff auf den Diagnose- und Problembehandlungsprozess.
 
 
 **F.** Muss ich Azure AD Connect konfigurieren oder den Azure AD Connect Health-Agent für dieses Feature aktualisieren?  

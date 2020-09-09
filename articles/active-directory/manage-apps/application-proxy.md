@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 96ebfecf01ff147a874674861c7cb64cb3725d52
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 82e984b629c8d838ba179b25a78262eccf078a04
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88164919"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377861"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-ad-application-proxy"></a>Remotezugriff auf lokale Anwendungen über den Azure AD-Anwendungsproxy
 
@@ -57,6 +57,11 @@ Das folgende Diagramm zeigt, wie Azure AD und der Anwendungsproxy gemeinsam das 
 4. Wenn Sie das SSO konfiguriert haben, führt der Connector jede weitere erforderliche Authentifizierung im Namen des Benutzers durch.
 5. Der Connector sendet die Anforderung an die lokale Anwendung.
 6. Die Antwort wird über den Connector und den Anwendungsproxy-Dienst an den Benutzer gesendet.
+
+> [!NOTE]
+> Wie bei den meisten Azure AD Hybrid-Agents müssen Sie beim Anwendungsproxy-Connector keine eingehenden Verbindungen über Ihre Firewall öffnen. Der Benutzerdatenverkehr in Schritt 3 endet am Anwendungsproxy-Dienst (in Azure AD). Der Anwendungsproxy-Connector (lokal) ist für die restliche Kommunikation zuständig.
+>
+
 
 | Komponente | BESCHREIBUNG |
 | --------- | ----------- |

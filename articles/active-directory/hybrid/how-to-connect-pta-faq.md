@@ -16,12 +16,12 @@ ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 118abaef1fd1458057a7dbe28d5cd74ded55fe28
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7046ab3c30e120aaaf285c32e25fce03524a0cf4
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358292"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89280161"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory-Passthrough-Authentifizierung: Häufig gestellte Fragen
 
@@ -29,7 +29,7 @@ In diesem Artikel werden häufig gestellte Fragen zur Passthrough-Authentifizier
 
 ## <a name="which-of-the-methods-to-sign-in-to-azure-ad-pass-through-authentication-password-hash-synchronization-and-active-directory-federation-services-ad-fs-should-i-choose"></a>Welche der Methoden für die Anmeldung bei Azure AD (Passthrough-Authentifizierung, Kennworthashsynchronisierung oder Active Directory-Verbunddienste (AD FS)) sollte ich auswählen?
 
-Einen Vergleich der verschiedenen Azure AD-Anmeldemethoden und Informationen, wie Sie die richtige Anmeldemethode für Ihre Organisation wählen, finden Sie in [diesem Leitfaden](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn).
+Einen Vergleich der verschiedenen Azure AD-Anmeldemethoden und Informationen, wie Sie die richtige Anmeldemethode für Ihre Organisation wählen, finden Sie in [diesem Leitfaden](./choose-ad-authn.md).
 
 ## <a name="is-pass-through-authentication-a-free-feature"></a>Ist die Passthrough-Authentifizierung ein kostenloses Feature?
 
@@ -39,7 +39,7 @@ Die Passthrough-Authentifizierung ist ein kostenloses Feature. Sie benötigen f�
 
 Nein. Die Passthrough-Authentifizierung ist nur in der weltweiten Instanz von Azure AD verfügbar.
 
-## <a name="does-conditional-access-work-with-pass-through-authentication"></a>Funktioniert der [bedingte Zugriff](../active-directory-conditional-access-azure-portal.md) mit der Passthrough-Authentifizierung?
+## <a name="does-conditional-access-work-with-pass-through-authentication"></a>Funktioniert der [bedingte Zugriff](../conditional-access/overview.md) mit der Passthrough-Authentifizierung?
 
 Ja. Alle Funktionen mit bedingtem Zugriff, einschließlich Azure Multi-Factor Authentication, funktionieren mit der Passthrough-Authentifizierung.
 
@@ -113,7 +113,7 @@ Die Kommunikation zwischen den einzelnen Passthrough-Authentifizierungs-Agents u
 
 Solange ein Passthrough-Authentifizierungs-Agent ausgeführt wird, bleibt er aktiv und verarbeitet fortlaufend Anmeldeanforderungen von Benutzern. Wenn Sie einen Authentifizierungs-Agent deinstallieren möchten, wechseln Sie zu **Systemsteuerung > Programme > Programme und Funktionen**, und deinstallieren Sie die beiden Programme **Microsoft Azure AD Connect-Authentifizierungs-Agent** und **Microsoft Azure AD Connect Agent Updater**.
 
-Nach Abschluss des vorherigen Schritts sehen Sie auf dem Blatt „Passthrough-Authentifizierung“ im [Azure Active Directory-Admin Center](https://aad.portal.azure.com) den Authentifizierungs-Agent als **Inaktiv**. Dies entspricht dem _erwarteten_ Verhalten. Der Authentifizierungs-Agent wird nach einigen Tagen automatisch aus der Liste entfernt.
+Nach Abschluss des vorherigen Schritts sehen Sie auf dem Blatt „Passthrough-Authentifizierung“ im [Azure Active Directory-Admin Center](https://aad.portal.azure.com) den Authentifizierungs-Agent als **Inaktiv**. Dies entspricht dem _erwarteten_ Verhalten. Der Authentifizierungs-Agent wird nach 10 Tagen automatisch aus der Liste entfernt.
 
 ## <a name="i-already-use-ad-fs-to-sign-in-to-azure-ad-how-do-i-switch-it-to-pass-through-authentication"></a>Ich verwende bereits AD FS für die Anmeldung bei Azure AD. Wie kann ich zur Passthrough-Authentifizierung wechseln?
 
@@ -148,7 +148,7 @@ Nein, dieses Szenario wird _nicht_ unterstützt.
 
 ## <a name="why-do-i-need-a-cloud-only-global-administrator-account-to-enable-pass-through-authentication"></a>Warum benötige ich ein rein cloudbasiertes globales Administratorkonto, um die Passthrough-Authentifizierung zu aktivieren?
 
-Es wird empfohlen, die Passthrough-Authentifizierung mit einem rein cloudbasierten globalen Administratorkonto zu aktivieren oder zu deaktivieren. Erfahren Sie, wie Sie ein [rein cloudbasiertes Konto für den globalen Administrator hinzufügen](../active-directory-users-create-azure-portal.md). Auf diese Weise wird sichergestellt, dass Sie sich nicht aus Ihrem Mandanten aussperren.
+Es wird empfohlen, die Passthrough-Authentifizierung mit einem rein cloudbasierten globalen Administratorkonto zu aktivieren oder zu deaktivieren. Erfahren Sie, wie Sie ein [rein cloudbasiertes Konto für den globalen Administrator hinzufügen](../fundamentals/add-users-azure-active-directory.md). Auf diese Weise wird sichergestellt, dass Sie sich nicht aus Ihrem Mandanten aussperren.
 
 ## <a name="how-can-i-disable-pass-through-authentication"></a>Wie kann ich die Passthrough-Authentifizierung deaktivieren?
 
@@ -184,4 +184,3 @@ Mandanten, die nach dem 15. Juni 2015 erstellt wurden, synchronisieren UPN-Ände
 - [Ausführliche Informationen zur Sicherheit](how-to-connect-pta-security-deep-dive.md): Hier erhalten Sie ausführliche technische Informationen zur Pass-Through-Authentifizierung.
 - [Nahtloses einmaliges Anmelden mit Azure AD:](how-to-connect-sso.md) Erfahren Sie mehr über diese Ergänzungsfunktion.
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): Fordern Sie neue Features über das Azure Active Directory-Forum an.
-

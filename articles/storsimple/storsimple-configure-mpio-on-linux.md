@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 3ce84d3c03c2a24406629b8687c4fb8973809166
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 75ccfe7a8e62e519b1df89792211433260a6abf6
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183631"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294712"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>Konfigurieren von MPIO auf einem StorSimple-Host mit CentOS
 In diesem Artikel werden die Schritte erläutert, die zum Konfigurieren von Multipfad-E/A (Multipathing IO, MPIO) auf Ihrem CentOS 6.6-Hostserver ausgeführt werden müssen. Der Hostserver ist zur Gewährleistung von Hochverfügbarkeit über iSCSI-Initiatoren mit Ihrem Microsoft Azure StorSimple-Gerät verbunden. Nachfolgend wird im Detail beschrieben, wie Multipfadgeräte automatisch erkannt und wie die Einrichtung für StorSimple-Volumes durchgeführt wird.
@@ -377,9 +377,9 @@ Wiederholen Sie diesen Befehl für alle verbundenen Netzwerkschnittstellen auf d
 `iscsiadm -m node --login -T <TARGET_IQN>`
 
 
-Q. Ich bin nicht sicher, ob mein Gerät auf der Zulassungsliste befindet.
+Q. Ich bin nicht sicher, ob mein Gerät zulässig ist.
 
-A. Um zu überprüfen, ob sich Ihr Gerät auf der Zulassungsliste befindet, verwenden Sie den folgenden interaktiven Befehl für die Problembehandlung:
+A. Wenn Sie überprüfen möchten, ob Ihr Gerät zulässig ist, verwenden Sie den folgenden interaktiven Befehl zur Problembehandlung:
 
 ```console
 multipathd -k
@@ -449,4 +449,3 @@ Wenn Sie MPIO auf einem Linux-Host konfigurieren, müssen Sie möglicherweise au
 
 * [Einrichten von MPIO auf CentOS](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/index)
 * [Linux-Trainingshandbuch](http://linux-training.be/linuxsys.pdf)
-

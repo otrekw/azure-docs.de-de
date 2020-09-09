@@ -1,6 +1,6 @@
 ---
 title: Widerrufen des Benutzerzugriffs im Notfall in Azure Active Directory | Microsoft-Dokumentation
-description: Fügen Sie Benutzer in einem Massenvorgang im Azure Admin Center in Azure Active Directory hinzu.
+description: Widerrufen des gesamten Zugriffs für einen Benutzer in Azure Active Directory
 services: active-directory
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,12 +13,12 @@ ms.reviewer: krbain
 ms.date: 07/15/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cc4a29c9d4b5ae93df81de5b77cb6355947813d
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 76a2e4cb170ca5bee41c0ae8f3e0557eab19562e
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798413"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89147132"
 ---
 # <a name="revoke-user-access-in-azure-active-directory"></a>Widerrufen des Benutzerzugriffs in Azure Active Directory
 
@@ -38,7 +38,7 @@ Zugriffs- und Aktualisierungstoken werden häufig bei umfangreichen Clientanwend
 
 Azure AD wertet dann die Autorisierungsrichtlinien erneut aus. Wenn der Benutzer weiterhin autorisiert ist, stellt Azure AD ein neues Zugriffs- und Aktualisierungstoken aus.
 
-Zugriffstoken können ein Sicherheitsproblem darstellen, wenn der Zugriff innerhalb einer Zeitspanne widerrufen werden muss, die kürzer als die Gültigkeitsdauer des Token ist, die normalerweise etwa eine Stunde beträgt. Aus diesem Grund arbeitet Microsoft aktiv daran, [die kontinuierliche Auswertung](../fundamentals/concept-fundamentals-continuous-access-evaluation.md) des Zugriffs in Office 365-Anwendungen vorzunehmen, was dazu beiträgt, die Invalidierung von Zugriffstoken nahezu in Echtzeit zu gewährleisten.  
+Zugriffstoken können ein Sicherheitsproblem darstellen, wenn der Zugriff innerhalb einer Zeitspanne widerrufen werden muss, die kürzer als die Gültigkeitsdauer des Token ist, die normalerweise etwa eine Stunde beträgt. Aus diesem Grund arbeitet Microsoft aktiv daran, [die kontinuierliche Auswertung](../conditional-access/concept-continuous-access-evaluation.md) des Zugriffs in Office 365-Anwendungen vorzunehmen, was dazu beiträgt, die Invalidierung von Zugriffstoken nahezu in Echtzeit zu gewährleisten.  
 
 ## <a name="session-tokens-cookies"></a>Sitzungstoken (Cookies)
 

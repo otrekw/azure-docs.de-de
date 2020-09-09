@@ -15,12 +15,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b672cca97e70c97a5dccb1ca54daccd6c171932
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efab031ac2ad96524ce12e6d1c4a942f01ce2344
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85077980"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299965"
 ---
 # <a name="review-access-to-groups-and-applications-in-azure-ad-access-reviews"></a>Überprüfen des Zugriffs auf Gruppen und Anwendungen mit Azure AD-Zugriffsüberprüfungen
 
@@ -33,7 +33,7 @@ Sie können die Zugriffsüberprüfung über die Benachrichtigungs-E-Mail oder di
 - **E-Mail**:
 
 >[!IMPORTANT]
-> Beim Empfang von E-Mails kann es Verzögerungen geben, und in einigen Fällen kann es bis zu 24 Stunden dauern. Nehmen Sie azure-noreply@microsoft.com in Ihre Whitelist auf, um sicherzustellen, dass Sie alle E-Mails erhalten.
+> Beim Empfang von E-Mails kann es Verzögerungen geben, und in einigen Fällen kann es bis zu 24 Stunden dauern. Fügen Sie Ihrer Liste der sicheren Empfänger azure-noreply@microsoft.com hinzu, um sicherzustellen, dass Sie alle E-Mails empfangen.
 
 1. Achten Sie auf eine E-Mail von Microsoft, in der Sie zur Überprüfung des Zugriffs aufgefordert werden. Nachfolgend sehen Sie eine Beispiel-E-Mail, die zur Überprüfen des Zugriffs auf eine Gruppe auffordert.
 
@@ -129,7 +129,7 @@ Sie haben verschiedene Möglichkeiten, auf die neue Umgebung mit der aktualisier
 ### <a name="email"></a>Email
 
   >[!IMPORTANT]
-> Beim Empfang von E-Mails kann es Verzögerungen geben, und in einigen Fällen kann es bis zu 24 Stunden dauern. Nehmen Sie azure-noreply@microsoft.com in Ihre Whitelist auf, um sicherzustellen, dass Sie alle E-Mails erhalten.
+> Beim Empfang von E-Mails kann es Verzögerungen geben, und in einigen Fällen kann es bis zu 24 Stunden dauern. Fügen Sie Ihrer Liste der sicheren Empfänger azure-noreply@microsoft.com hinzu, um sicherzustellen, dass Sie alle E-Mails empfangen.
 
    1. Achten Sie auf eine E-Mail von Microsoft, in der Sie zur Überprüfung des Zugriffs aufgefordert werden. Nachstehend finden Sie ein Beispiel für eine solche E-Mail-Nachricht:
 
@@ -206,4 +206,3 @@ Um die Empfehlungen für alle Benutzer zu akzeptieren, stellen Sie sicher, dass 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Abschließen einer Zugriffsüberprüfung von Gruppen oder Anwendungen](complete-access-review.md)
-

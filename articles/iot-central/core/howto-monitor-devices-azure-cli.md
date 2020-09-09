@@ -9,12 +9,12 @@ ms.service: iot-central
 ms.custom: devx-track-azurecli
 services: iot-central
 manager: corywink
-ms.openlocfilehash: b9cf8b862f77af833016d6aabb0ccae7bea8e24a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 6395eba4a0c5f78fb26dad6d8db72645fa2c40e6
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497425"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319898"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>Überwachen der Gerätekonnektivität per Azure CLI
 
@@ -26,7 +26,7 @@ Verwenden Sie die IoT-Erweiterung der Azure CLI, um Meldungen anzuzeigen, die Ih
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-+ Die Azure CLI (Version 2.0.7 oder höher) muss installiert sein. Überprüfen Sie die Version der Azure CLI, indem Sie `az --version`ausführen. Informieren Sie sich in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure/install-azure-cli) über Installation und Aktualisierung.
++ Die Azure CLI (Version 2.7.0 oder höher) muss installiert sein. Überprüfen Sie die Version der Azure CLI, indem Sie `az --version`ausführen. Informieren Sie sich in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure/install-azure-cli) über Installation und Aktualisierung.
 + Ein Geschäfts-, Schul- oder Unikonto in Azure, hinzugefügt als Benutzer in einer IoT Central-Anwendung.
 
 ## <a name="install-the-iot-central-extension"></a>Installieren der IoT Central-Erweiterung
@@ -43,7 +43,7 @@ az extension add --name azure-iot
 az --version
 ```
 
-Sie sollten feststellen, dass die Version der Erweiterung „azure-iot“ 0.8.1 oder höher ist. Führen Sie andernfalls Folgendes aus:
+Die Version der Erweiterung „azure-iot“, 0.9.9 oder höher, sollte angezeigt werden. Führen Sie andernfalls Folgendes aus:
 
 ```azurecli
 az extension update --name azure-iot
@@ -68,14 +68,14 @@ Kopieren Sie in **Verwaltung/Anwendungseinstellungen** die **Anwendungs-ID**. Si
 Überwachen Sie die Nachrichten, die von ihren Geräten an die IoT Central-App gesendet werden. Zu der Ausgabe zählen auch alle Header und Anmerkungen.
 
 ```azurecli
-az iot central app monitor-events --app-id <app-id> --properties all
+az iot central diagnostics monitor-events --app-id <app-id> --properties all
 ```
 
 ### <a name="view-device-properties"></a>Anzeigen von Geräteeigenschaften
 Zeigen Sie die aktuellen Lesen- und Lesen/Schreiben-Geräteeigenschaften für ein bestimmtes Gerät an.
 
 ```azurecli
-az iot central device-twin show --app-id <app-id> --device-id <device-id>
+az iot central device twin show --app-id <app-id> --device-id <device-id>
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

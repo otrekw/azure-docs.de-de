@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 06/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: b9514bea1f9c34f0ed36bf530a7129b6fea46c4f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 07a1e81f2fe63ea8d34f362627ad79ab6729f3f0
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501966"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229122"
 ---
 # <a name="point-in-time-restore-for-block-blobs-preview"></a>Point-in-Time-Wiederherstellung für Blockblobs (Vorschau)
 
@@ -56,7 +56,7 @@ Point-in-Time-Wiederherstellung erfordert, dass die folgenden Azure Storage-Feat
 
 - [Vorläufiges Löschen](soft-delete-overview.md)
 - [Änderungsfeed (Vorschau)](storage-blob-change-feed.md)
-- [Blobversionsverwaltung (Vorschau)](versioning-overview.md)
+- [Blobversionsverwaltung](versioning-overview.md)
 
 Aktivieren Sie diese Features für das Speicherkonto, bevor Sie Point-in-Time-Wiederherstellung aktivieren. Stellen Sie sicher, dass Sie sich für die Vorschauversionen von „Änderungsfeed“ und „Blobversionsverwaltung“ registrieren, bevor Sie diese aktivieren.
 
@@ -105,7 +105,7 @@ Register-AzProviderFeature -FeatureName RestoreBlobRanges -ProviderNamespace Mic
 # Register for change feed (preview)
 Register-AzProviderFeature -FeatureName Changefeed -ProviderNamespace Microsoft.Storage
 
-# Register for blob versioning (preview)
+# Register for Blob versioning
 Register-AzProviderFeature -FeatureName Versioning -ProviderNamespace Microsoft.Storage
 
 # Refresh the Azure Storage provider namespace

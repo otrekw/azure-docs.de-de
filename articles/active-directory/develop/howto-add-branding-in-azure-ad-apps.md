@@ -1,7 +1,7 @@
 ---
 title: Brandingrichtlinien für Apps | Azure
 titleSuffix: Microsoft identity platform
-description: Eine umfassende Anleitung zu entwicklerorientierten Ressourcen für Azure Active Directory
+description: Hier erfahren Sie mehr zu Brandingrichtlinien für Anwendungen für Microsoft Identity Platform.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 08/31/2020
 ms.author: ryanwi
-ms.reviewer: arielgo
+ms.reviewer: arielgo, jiml
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: cf72a8863976d8a678fbdfb6d369c0423b59acf2
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 5e62472fdccd2ee71a0ef725f34a75492d1b8ffa
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117293"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226640"
 ---
 # <a name="branding-guidelines-for-applications"></a>Brandingrichtlinien für Anwendungen
 
-Wenn Sie Anwendungen mit Azure Active Directory (Azure AD) entwickeln, müssen Sie Ihre Kunden entsprechend anweisen, wenn sie ihr Geschäfts-, Schul- oder Unikonto (verwaltet in Azure AD) oder ihr persönliches Konto für die Registrierung und Anmeldung bei Ihrer Anwendung verwenden möchten.
+Wenn Sie Anwendungen mit der Microsoft Identity Platform entwickeln, müssen Sie Ihre Kunden entsprechend anweisen, wenn sie ihr Geschäfts-, Schul- oder Unikonto (verwaltet in Azure AD) oder ihr persönliches Konto für die Registrierung und Anmeldung bei Ihrer Anwendung verwenden möchten.
 
 In diesem Artikel werden die folgenden Themen behandelt:
 
@@ -38,7 +38,7 @@ Microsoft verwaltet zwei Arten von Benutzerkonten:
 - **Persönliche Konten** (ehemals Windows Live ID). Diese Konten stellen die Beziehung zwischen *einzelnen* Benutzern und Microsoft dar und werden für den Zugriff auf Verbrauchergeräte und -dienste von Microsoft verwendet. Konten dieser Art sind für den persönlichen Gebrauch vorgesehen.
 - **Geschäfts- oder Schulkonten.** Diese Konten werden von Microsoft für Unternehmen verwaltet, die Azure Active Directory verwenden. Konten dieser Art dienen zur Anmeldung bei Office 365 und anderen Unternehmensdiensten von Microsoft.
 
-Geschäfts- oder Schulkonten von Microsoft werden den Endbenutzern (Angestellten, Schülern/Studenten, Behördenmitarbeitern) üblicherweise von der jeweiligen Organisation (Unternehmen, Bildungseinrichtung, Behörde) zugewiesen. Diese Konten werden direkt in der Cloud (über die Azure AD-Plattform) verwaltet oder über ein lokales Verzeichnis wie z.B. Windows Server Active Directory mit Azure AD synchronisiert. Microsoft fungiert als *Verwaltungsberechtigter* des Geschäfts- oder Schulkontos, die Konten gehören aber der Organisation und werden auch von dieser gesteuert.
+Geschäfts- oder Schulkonten von Microsoft werden den Endbenutzern (Angestellten, Schülern/Studenten, Behördenmitarbeitern) üblicherweise von der jeweiligen Organisation (Unternehmen, Bildungseinrichtung, Behörde) zugewiesen. Diese Konten werden direkt in der Cloud (über die Azure AD-Plattform) verwaltet oder über ein lokales Verzeichnis wie z. B. Windows Server Active Directory mit Azure AD synchronisiert. Microsoft fungiert als *Verwaltungsberechtigter* des Geschäfts- oder Schulkontos, die Konten gehören aber der Organisation und werden auch von dieser gesteuert.
 
 ## <a name="referring-to-azure-ad-accounts-in-your-application"></a>Verweisen auf Azure AD-Konten in Ihrer Anwendung
 
