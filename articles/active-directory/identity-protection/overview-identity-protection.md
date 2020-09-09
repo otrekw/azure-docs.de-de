@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f6ec9c1fb5ae359ca88b48dea97c6a00c0f2b40
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: ffe7f58f27d028dd114f548521feeeb74bb12cf1
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815180"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437699"
 ---
 # <a name="what-is-identity-protection"></a>Was ist Identity Protection?
 
@@ -102,17 +102,17 @@ Administratoren für bedingten Zugriff können auch Richtlinien erstellen, bei d
 
 [!INCLUDE [Active Directory P2 license](../../../includes/active-directory-p2-license.md)]
 
-| Funktion | Details | Azure AD Premium P2 | Azure AD Premium P1 | Azure AD Free-/Office 365-Apps |
+| Funktion | Details  | Azure AD Free-/Office 365-Apps | Azure AD Premium P1|Azure AD Premium P2 |
 | --- | --- | --- | --- | --- |
-| Risikorichtlinien | Benutzerrisiko-Richtlinie (über Identity Protection) | Ja | Nein | Nein |
-| Risikorichtlinien | Anmelderisiko-Richtlinie (über Identity Protection oder bedingten Zugriff) | Ja | Nein | Nein |
-| Sicherheitsberichte | Übersicht | Ja | Nein | Nein |
-| Sicherheitsberichte | Riskante Benutzer | Vollzugriff | Eingeschränkte Informationen | Eingeschränkte Informationen |
-| Sicherheitsberichte | Riskante Anmeldungen | Vollzugriff | Eingeschränkte Informationen | Eingeschränkte Informationen |
-| Sicherheitsberichte | Risikoerkennungen | Vollzugriff | Eingeschränkte Informationen | Nein |
-| Benachrichtigungen | Warnungen zu erkannten gefährdeten Benutzern | Ja | Nein | Nein |
-| Benachrichtigungen | Wöchentliche Übersicht | Ja | Nein | Nein |
-| | Richtlinie für MFA-Registrierung | Ja | Nein | Nein |
+| Risikorichtlinien | Benutzerrisiko-Richtlinie (über Identity Protection)  | Nein | Nein |Ja | 
+| Risikorichtlinien | Anmelderisiko-Richtlinie (über Identity Protection oder bedingten Zugriff)  | Nein |  Nein |Ja |
+| Sicherheitsberichte | Übersicht |  Nein | Nein |Ja |
+| Sicherheitsberichte | Riskante Benutzer  | Eingeschränkte Informationen | Eingeschränkte Informationen | Vollzugriff|
+| Sicherheitsberichte | Riskante Anmeldungen  | Eingeschränkte Informationen | Eingeschränkte Informationen | Vollzugriff|
+| Sicherheitsberichte | Risikoerkennungen   | Nein | Eingeschränkte Informationen| Vollzugriff|
+| Benachrichtigungen | Warnungen zu erkannten gefährdeten Benutzern  | Nein | Nein |Ja |
+| Benachrichtigungen | Wöchentliche Übersicht| Nein | Nein | Ja | 
+| | Richtlinie für MFA-Registrierung | Nein | Nein | Ja |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

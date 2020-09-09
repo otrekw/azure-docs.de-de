@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/30/2020
 ms.author: aahi
-ms.openlocfilehash: fd3f53520c3cd865fcbd0e38fffdfb14ecf03392
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 8d66b653f78de5b2dee1a42227fe64152ccc6fe9
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88246031"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89464214"
 ---
 Hier erfahren Sie etwas über die ersten Schritte mit der Anomalieerkennungs-Clientbibliothek für Python. Führen Sie die nachfolgenden Schritte zum Installieren des Pakets aus, und testen Sie den Beispielcode für grundlegende Aufgaben. Mit dem Anomalieerkennungsdienst können Sie Anomalien in Zeitreihendaten ermitteln, da unabhängig von der Branche, dem Szenario oder der Datenmenge automatisch die am besten geeigneten Modelle für Ihre Daten angewandt werden.
 
@@ -60,7 +60,7 @@ pip install --upgrade azure-cognitiveservices-anomalydetector
 
 Der Anomalieerkennungsclient ist ein [AnomalyDetectorClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python)-Objekt, das sich mit Ihrem Schlüssel bei Azure authentifiziert. Der Client stellt zwei Methoden zur Anomalieerkennung bereit: Für ein gesamtes Dataset mithilfe von [entire_detect()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#entire-detect-body--custom-headers-none--raw-false----operation-config-) und für den letzten Datenpunkt mithilfe von [Last_detect()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#last-detect-body--custom-headers-none--raw-false----operation-config-).
 
-Zeitreihendaten werden als eine Reihe von [Points](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.point(class)?view=azure-python) in einem [Request](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.request(class)?view=azure-python)-Objekt gesendet. Das `Request`-Objekt enthält Eigenschaften zum Beschreiben der Daten (z.B. [Granularity](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.granularity?view=azure-python)) sowie Parameter für die Anomalieerkennung.
+Zeitreihendaten werden als eine Reihe von [Points](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.point?view=azure-python) in einem [Request](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.request?view=azure-python)-Objekt gesendet. Das `Request`-Objekt enthält Eigenschaften zum Beschreiben der Daten (z.B. [Granularity](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.granularity?view=azure-python)) sowie Parameter für die Anomalieerkennung.
 
 Die Antwort der Anomalieerkennung ist je nach der verwendeten Methode ein [LastDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-python)- oder [EntireDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python)-Objekt.
 
@@ -88,11 +88,11 @@ Laden Sie die Beispieldaten für diesen Schnellstart von [GitHub](https://github
 
 Die Zeitreihendaten werden als CSV-Datei formatiert und an die Anomalieerkennungs-API gesendet.
 
-Laden Sie die Datendatei mit der `read_csv()`-Methode der Pandas-Bibliothek, und erstellen Sie eine leere Listenvariable zum Speichern der Datenreihe. Durchlaufen Sie die Datei, und fügen Sie die Daten als [Point](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.point%28class%29?view=azure-python)-Objekt an. Dieses Objekt enthält den Zeitstempel und den numerischen Wert aus den Zeilen der CSV-Datendatei.
+Laden Sie die Datendatei mit der `read_csv()`-Methode der Pandas-Bibliothek, und erstellen Sie eine leere Listenvariable zum Speichern der Datenreihe. Durchlaufen Sie die Datei, und fügen Sie die Daten als [Point](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.point?view=azure-python)-Objekt an. Dieses Objekt enthält den Zeitstempel und den numerischen Wert aus den Zeilen der CSV-Datendatei.
 
 [!code-python[Load the data file](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=loadDataFile)]
 
-Erstellen Sie ein [Request](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.request%28class%29?view=azure-python)-Objekt mit der Zeitreihe und der [Granularity](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.granularity?view=azure-python) (oder Periodizität) der zugehörigen Datenpunkte. Beispiel: `Granularity.daily`.
+Erstellen Sie ein [Request](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.request?view=azure-python)-Objekt mit der Zeitreihe und der [Granularity](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.granularity?view=azure-python) (oder Periodizität) der zugehörigen Datenpunkte. Beispiel: `Granularity.daily`.
 
 [!code-python[Create the request object](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=request)]
 

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 55ed71c6947c70ac797656f2f18cf71dd8aaae9d
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: a09f20b2c392dbf219750a76e9570239227dc865
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852479"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458560"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-python"></a>Schnellstart: Verwenden von Azure Service Bus-Warteschlangen mit Python
 
@@ -81,7 +81,7 @@ Weitere Informationen zu Kontingenten finden Sie unter [Service Bus-Kontingente]
 Der Warteschlangenclient empfängt Nachrichten aus einer Warteschlange mithilfe der `get_receiver`-Methode für das **ServiceBusClient**-Objekt. Im folgenden Codebeispiel wird ein Warteschlangenclient erstellt und eine Testnachricht aus der `taskqueue`-Warteschlange empfangen. Ersetzen Sie `<connectionstring>` durch den Wert der primären Service Bus-Verbindungszeichenfolge. 
 
 ```python
-from azure.servicebus import QueueClient, Message
+from azure.servicebus import QueueClient
 
 # Create the QueueClient
 queue_client = QueueClient.from_connection_string("<connectionstring>", "taskqueue")

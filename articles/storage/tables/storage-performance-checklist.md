@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 10/10/2019
 ms.subservice: tables
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9a60683b8dbf809bc3e91ffd8720b545db4c361d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 9d3f7d5f496634f10b48e7509c21cd634fd92d3c
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89008674"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458331"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>Checkliste zu Leistung und Skalierbarkeit für Table Storage
 
@@ -106,7 +106,7 @@ Bei der Bandbreite liegt das Problem häufig in der Clientkapazität. Größere 
 
 Bedenken Sie wie bei jeder Netzwerknutzung, dass Netzwerkbedingungen, die zu Fehlern und Paketverlusten führen, den effektiven Durchsatz verringern.  Die Verwendung von WireShark oder NetMon kann bei der Diagnose dieses Problems helfen.  
 
-### <a name="location"></a>Standort
+### <a name="location"></a>Position
 
 In jeder verteilten Umgebung wird die beste Leistung erzielt, indem der Client in der Nähe des Servers platziert wird. Zum Zugriff auf den Azure-Speicher mit der niedrigsten Latenz befindet sich der beste Standort für den Client innerhalb derselben Azure-Region. Wenn Sie beispielsweise über eine Azure-Web-App verfügen, die Azure Storage verwendet, sollten Sie beide in derselben Region bereitstellen (z. B. „USA, Westen“ oder „Asien, Südosten“). Durch die räumliche Zusammenlegung von Ressourcen werden die Wartezeit und die Kosten verringert, da die Bandbreitennutzung innerhalb einer Region kostenlos ist.  
 
@@ -197,7 +197,7 @@ In diesem Abschnitt finden Sie verschiedene Schnellkonfigurationseinstellungen, 
 
 Ab Speicherdienstversion 2013-08-15 unterstützt der Tabellenspeicherdienst die Verwendung von JSON anstelle des XML-basierten AtomPub-Formats für die Übertragung von Tabellendaten. Die Verwendung von JSON kann die Nutzlast um bis zu 75 % verringern und die Anwendungsleistung deutlich verbessern.
 
-Weitere Informationen finden Sie im Eintrag [Microsoft Azure-Tabellen: Einführung in JSON](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx) und [Nutzlastformat für Tabellenspeicherdienstvorgänge](https://msdn.microsoft.com/library/azure/dn535600.aspx).
+Weitere Informationen finden Sie im Eintrag [Microsoft Azure-Tabellen: Einführung in JSON](https://docs.microsoft.com/archive/blogs/windowsazurestorage/windows-azure-tables-introducing-json) und [Nutzlastformat für Tabellenspeicherdienstvorgänge](https://msdn.microsoft.com/library/azure/dn535600.aspx).
 
 ### <a name="disable-nagle"></a>Deaktivieren des Nagle-Algorithmus
 

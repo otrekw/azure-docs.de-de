@@ -9,12 +9,12 @@ ms.topic: overview
 ms.custom: sqldbrb=1
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 5fcc50670973c361d830e4e6bbf2ce26101b8582
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: f8c7e2cfb17ca48a67a009f532a9cbb6894cc05d
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213367"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442597"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure Private Link für Azure SQL-Datenbank und Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -22,7 +22,7 @@ ms.locfileid: "88213367"
 Private Link ermöglicht die Verbindungsherstellung mit verschiedenen PaaS-Diensten in Azure über einen **privaten Endpunkt**. Eine Liste der PaaS-Dienste, die die Private Link-Funktion unterstützen, finden Sie in der [Private Link-Dokumentation](../../private-link/index.yml). Ein privater Endpunkt ist eine private IP-Adresse in einem bestimmten [VNET](../../virtual-network/virtual-networks-overview.md) und Subnetz.
 
 > [!IMPORTANT]
-> Dieser Artikel betrifft Azure SQL-Datenbank und Azure Synapse Analytics (vormals Azure SQL Data Warehouse). Der Einfachheit halber wird der Begriff „Datenbank“ verwendet, wenn auf Datenbanken sowohl in Azure SQL-Datenbank als auch in Azure Synapse Analytics verwiesen wird. Ebenso bezieht sich der Begriff „Server“ auf den [logischen SQL-Server](logical-servers.md), der Azure SQL-Datenbank und Azure Synapse Analytics hostet. Dieser Artikel gilt *nicht* für **Azure SQL Managed Instance**.
+> Dieser Artikel betrifft Azure SQL-Datenbank und Azure Synapse Analytics (vormals SQL Data Warehouse). Der Einfachheit halber wird der Begriff „Datenbank“ verwendet, wenn auf Datenbanken sowohl in Azure SQL-Datenbank als auch in Azure Synapse Analytics verwiesen wird. Ebenso bezieht sich der Begriff „Server“ auf den [logischen SQL-Server](logical-servers.md), der Azure SQL-Datenbank und Azure Synapse Analytics hostet. Dieser Artikel gilt *nicht* für **Azure SQL Managed Instance**.
 
 ## <a name="data-exfiltration-prevention"></a>Verhinderung der Datenexfiltration
 

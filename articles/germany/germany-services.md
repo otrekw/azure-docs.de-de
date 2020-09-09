@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2019
 ms.author: ralfwi
-ms.openlocfilehash: 82481bbdbfb1b20886865e3f71ec4dc9ebdd0465
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: d0c8295f0755b174251dfd2686a24cbdaf9d500f
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77647467"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442812"
 ---
 # <a name="available-services-in-azure-germany"></a>Verfügbare Dienste in Azure Deutschland
 
@@ -87,7 +87,7 @@ Die in den folgenden Tabellen als Azure Resource Manager-fähig angegebenen Dien
 | Dienst | Ressourcen-Manager | Portal |
 | --- | --- | --- |
 | [SQL-Datenbank](./germany-services-database.md#sql-database) | Ja | Ja |
-| SQL Data Warehouse | Ja | Ja |
+| Azure Synapse Analytics | Ja | Ja |
 | SQL Server Stretch Database | Ja | Ja |
 | [Azure Cache for Redis](./germany-services-database.md#azure-cache-for-redis) | Ja | Ja |
 | Azure Cosmos DB | Ja | Ja |

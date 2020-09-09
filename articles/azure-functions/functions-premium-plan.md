@@ -3,15 +3,15 @@ title: Premium-Tarif für Azure Functions
 description: Details und Konfigurationsoptionen (VNet, kein Kaltstart, unbegrenzte Ausführungsdauer) für den Premium-Plan (Premium-Tarif) für Azure Functions.
 author: jeffhollan
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 08/28/2020
 ms.author: jehollan
 ms.custom: references_regions
-ms.openlocfilehash: 5ab506c57a78c67b33b888f1f50d83fe9813d0af
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4f6e2008cad66ce7cd68016d3873ecbc18b1961c
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506195"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145747"
 ---
 # <a name="azure-functions-premium-plan"></a>Premium-Tarif für Azure Functions
 
@@ -36,21 +36,42 @@ Nach Erstellung des Plans können Sie mithilfe von [az functionapp create](/cli/
 
 Die folgenden Features sind für Funktions-Apps verfügbar, die für einen Premium-Plan bereitgestellt werden.
 
-### <a name="pre-warmed-instances"></a>Vorab aufgewärmte Instanzen
+### <a name="always-ready-instances"></a>Jederzeit bereite Instanzen
 
 Wenn für einen bestimmten Tag keine Ereignisse und Ausführungen im Verbrauchsplan aufgeführt werden, wird Ihre App möglicherweise auf null Instanzen abskaliert. Wenn neue Ereignisse eingehen, muss eine neue Instanz zum Ausführen Ihrer App eingerichtet werden.  Das Einrichten einer neuen Instanz kann je nach App einige Zeit dauern.  Diese zusätzliche Wartezeit beim ersten Aufruf wird häufig als App-Kaltstart bezeichnet.
 
-Im Premium-Plan können Sie Ihre App in einem „vorab aufgewärmten“ Zustand für eine angegebene Anzahl von Instanzen vorhalten, bis zur Größe Ihres Mindestplans.  Mit vorab aufgewärmten Instanzen können Sie eine App auch vor hoher Last vorab skalieren. Erfolgt eine Erweiterung für die App, wird die App zunächst in die vorab aufgewärmten Instanzen skaliert. In Vorbereitung auf den nächsten Skalierungsvorgang werden sofort weitere Instanzen gepuffert und aufgewärmt. Dadurch, dass es einen Puffer mit vorab aufgewärmten Instanzen gibt, können Sie Kaltstartwartezeiten effektiv vermeiden.  Vorab aufgewärmte Instanzen ist ein Feature für den Premium-Plan, und Sie müssen während der gesamten Zeit, in der der Plan aktiv ist, mindestens eine Instanz aktiv und verfügbar halten.
+Im Premium-Plan können Sie Ihre App jederzeit bereit für eine angegebene Anzahl von Instanzen vorhalten.  Die maximale Anzahl von jederzeit bereiten Instanzen beträgt 20.  Wenn Ereignisse mit dem Auslösen der App beginnen, werden Sie zuerst an die jederzeit bereiten Instanzen weitergeleitet.  Wenn die Funktion aktiv wird, werden zusätzliche Instanzen als Puffer „vorgewärmt“.  Dieser Puffer verhindert einen Kaltstart für neue Instanzen, die während der Skalierung erforderlich sind.  Diese gepufferten Instanzen werden als [vorgewärmte Instanzen](#pre-warmed-instances) aufgerufen.  Durch die Kombination aus jederzeit bereiten Instanzen und einem vorgewärmten Puffer kann Ihre App einen Kaltstart effektiv vermeiden.
 
-Sie können die Anzahl der vorab aufgewärmten Instanzen im Azure-Portal konfigurieren, indem Sie Ihre **Funktions-App** auswählen, zur Registerkarte **Plattformfeatures** wechseln und die **Aufskalieren**-Optionen auswählen. Im Bearbeitungsfenster für eine Funktions-App gelten vorab aufgewärmte Instanzen speziell für diese App, aber die Mindestanzahl und die maximale Anzahl von Instanzen gelten für Ihren gesamten Plan.
+> [!NOTE]
+> Jeder Premium-Tarif verfügt immer über mindestens eine aktive und in Rechnung gestellte Instanz.
+
+Sie können die Anzahl der jederzeit bereiten Instanzen im Azure-Portal konfigurieren, indem Sie Ihre **Funktions-App** auswählen, zur Registerkarte **Plattformfeatures** wechseln und die Optionen zum **Aufskalieren** auswählen. Im Bearbeitungsfenster der Funktions-App sind jederzeit bereite Instanzen für diese App spezifisch.
 
 ![Einstellungen für elastisches Skalieren](./media/functions-premium-plan/scale-out.png)
 
-Sie können vorab aufgewärmte Instanzen für eine App auch mit der Azure CLI konfigurieren.
+Sie können jederzeit bereite Instanzen für eine App auch mit der Azure CLI konfigurieren.
 
 ```azurecli-interactive
-az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.preWarmedInstanceCount=<desired_prewarmed_count> --resource-type Microsoft.Web/sites
+az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.minimumElasticInstanceCount=<desired_always_ready_count> --resource-type Microsoft.Web/sites 
 ```
+
+#### <a name="pre-warmed-instances"></a>Vorab aufgewärmte Instanzen
+
+Bei vorab aufgewärmten Instanzen handelt es sich um die Anzahl von Instanzen, die während Skalierungs- und Aktivierungsereignissen als Puffer vorgewärmt werden.  Vorab aufgewärmte Instanzen setzen die Pufferung fort, bis der Grenzwert für maximale horizontale Skalierung erreicht wird.  Die standardmäßige Anzahl vorab aufgewärmten Instanzen ist 1 und sollte für die meisten Szenarien auch 1 bleiben.  Wenn eine App eine lange Aufwärmphase aufweist (z. B. ein benutzerdefiniertes Containerimage), möchten Sie diesen Puffer möglicherweise vergrößern.  Eine vorab aufgewärmte Instanz wird erst dann aktiv, wenn alle aktiven Instanzen ausreichend ausgelastet wurden.
+
+Sehen Sie sich dieses Beispiel an, wie jederzeit bereite Instanzen und vorab aufgewärmte Instanzen zusammenarbeiten.  Für eine Premium-Funktions-App sind fünf jederzeit bereite Instanzen konfiguriert, und die Standardeinstellung bietet eine vorab aufgewärmte Instanz.  Wenn sich die App im Leerlauf befindet und keine Ereignisse als Auslöser vorhanden sind, wird die App für fünf Instanzen bereitgestellt und ausgeführt.  
+
+Sobald der erste Trigger eingeht, werden die fünf jederzeit bereiten Instanzen aktiv, und es wird eine zusätzliche vorab aufgewärmte Instanz zugeordnet.  Die App wird nun mit sechs bereitgestellten Instanzen ausgeführt: mit den fünf jetzt aktiven, jederzeit bereiten Instanzen und dem sechsten vorab aufgewärmten und inaktiven Puffer.  Wenn die Ausführungsrate weiterhin zunimmt, sind die fünf aktiven Instanzen schließlich ausgelastet.  Wenn die Plattform eine Skalierung über fünf Instanzen hinaus beschließt, erfolgt diese in die vorab aufgewärmte Instanz.  Wenn dies geschieht, gibt es nun sechs aktive Instanzen, und eine siebte Instanz wird sofort bereitgestellt und füllt den vorab aufgewärmten Puffer auf.  Diese Sequenz der Skalierung und Vorabaufwärmung wird fortgesetzt, bis die maximale Anzahl von Instanzen für die App erreicht ist.  Über den maximalen Wert hinaus werden keine Instanzen vorab aufgewärmt oder aktiviert.
+
+Sie können die Anzahl der vorab aufgewärmten Instanzen für eine App ändern, indem Sie die Azure CLI verwenden.
+
+```azurecli-interactive
+az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.preWarmedInstanceCount=<desired_prewarmed_count> --resource-type Microsoft.Web/sites 
+```
+
+#### <a name="maximum-instances-for-an-app"></a>Maximale Anzahl von Instanzen für eine App
+
+Zusätzlich zur [Maximalen Anzahl von Instanzen des Tarifs](#plan-and-sku-settings) können Sie einen maximale Anzahl pro App konfigurieren.  Die maximale Anzahl pro App kann mit der [App-Skalierungsgrenze](./functions-scale.md#limit-scale-out) konfiguriert werden.
 
 ### <a name="private-network-connectivity"></a>Private Netzwerkkonnektivität
 
@@ -68,16 +89,13 @@ Weitere Informationen zur Funktionsweise von Skalierung finden Sie unter [Skalie
 
 ### <a name="longer-run-duration"></a>Längere Ausführungsdauer
 
-Azure Functions in einem Verbrauchsplan sind auf 10 Minuten für eine einzelne Ausführung beschränkt.  Im Premium-Plan wird die Ausführungsdauer standardmäßig auf 30 Minuten festgelegt, um Endlosausführungen zu verhindern. Sie können jedoch [die Konfiguration „host.json“ ändern](./functions-host-json.md#functiontimeout), um die Ausführungsdauer für Apps im Premium-Tarif auf unbegrenzt (garantierte 60 Minuten) festzulegen.
+Azure Functions in einem Verbrauchsplan sind auf 10 Minuten für eine einzelne Ausführung beschränkt.  Im Premium-Plan wird die Ausführungsdauer standardmäßig auf 30 Minuten festgelegt, um Endlosausführungen zu verhindern. Sie können jedoch [die Konfiguration von „host.json“ ändern](./functions-host-json.md#functiontimeout), um die Dauer für Apps im Premium-Tarif auf unbegrenzt (garantierte 60 Minuten) festzulegen.
 
 ## <a name="plan-and-sku-settings"></a>Plan- und SKU-Einstellungen
 
-Wenn Sie den Plan erstellen, konfigurieren Sie zwei Einstellungen: die Mindestanzahl von Instanzen (oder Plangröße) und den maximalen Burstgrenzwert.  So viele Instanzen, wie die Mindestanzahl von Instanzen angibt, werden reserviert und immer ausgeführt.
+Wenn Sie den Plan erstellen, konfigurieren Sie zwei Einstellungen für die Plangröße: die Mindestanzahl von Instanzen (oder Plangröße) und den maximalen Burstgrenzwert.
 
-> [!IMPORTANT]
-> Ihnen wird jede Instanz, die entsprechend der Mindestanzahl von Instanzen zugeordnet ist, in Rechnung gestellt, unabhängig davon, ob Funktionen ausgeführt werden oder nicht.
-
-Wenn Ihre App mehr Instanzen erfordert, als Ihre Plangröße vorgibt, kann diese aufskaliert werden, bis die Anzahl von Instanzen den maximalen Burstgrenzwert erreicht hat.  Instanzen, die sich außerhalb Ihrer Plangröße befinden, werden Ihnen nur in Rechnung gestellt, während sie ausgeführt werden und für Sie bereitgestellt sind.  Es wird versucht, ein Erweitern Ihrer App bis zu deren definiertem maximalen Grenzwert bestmöglich vorzunehmen, während die im Plan festgelegte Mindestanzahl von Instanzen für Ihre App garantiert ist.
+Wenn Ihre App Instanzen über die jederzeit bereiten Instanzen hinaus erfordert, kann die Aufskalierung fortgesetzt werden, bis die Anzahl von Instanzen den maximalen Burstgrenzwert erreicht.  Instanzen, die sich außerhalb Ihrer Plangröße befinden, werden Ihnen nur in Rechnung gestellt, während sie ausgeführt werden und für Sie bereitgestellt sind.  Wir bemühen uns, Ihre App bis auf den definierten maximalen Grenzwert zu skalieren.
 
 Sie können die Plangröße und die Maximalwerte im Azure-Portal konfigurieren, indem Sie die **Aufskalieren**-Optionen im Plan oder eine Funktions-App auswählen, die für diesen Plan bereitgestellt ist (unter **Plattformfeatures**).
 
@@ -85,6 +103,19 @@ Sie können auch den maximalen Burstgrenzwert über die Azure-Befehlszeilenschni
 
 ```azurecli-interactive
 az resource update -g <resource_group> -n <premium_plan_name> --set properties.maximumElasticWorkerCount=<desired_max_burst> --resource-type Microsoft.Web/serverfarms 
+```
+
+Die Mindestanzahl für jeden Plan beträgt mindestens eine Instanz.  Die tatsächliche Mindestanzahl von Instanzen wird basierend auf den jederzeit bereiten Apps im Plan automatisch konfiguriert, die von Apps im Plan angefordert werden.  Wenn App A z. B. fünf jederzeit bereite Instanzen anfordert und App B zwei jederzeit bereite Instanzen im gleichen Plan anfordert, wird die Mindestplangröße als fünf berechnet.  App A wird in allen 5 Instanzen ausgeführt, App B nur in 2 Instanzen.
+
+> [!IMPORTANT]
+> Ihnen wird jede Instanz, die entsprechend der Mindestanzahl von Instanzen zugeordnet ist, in Rechnung gestellt, unabhängig davon, ob Funktionen ausgeführt werden oder nicht.
+
+In den meisten Fällen sollte dieser automatisch berechnete Mindestwert ausreichen.  Eine Skalierung über den Mindestwert hinaus erfolgt jedoch nach bestem Bemühen.  Es ist möglich (wenn auch unwahrscheinlich), dass sich die horizontale Skalierung zu einem bestimmten Zeitpunkt verzögert, wenn keine weiteren Instanzen verfügbar sind.  Wenn Sie einen Mindestwert festlegen, der höher als der automatisch berechnete Mindestwert ist, reservieren Sie Instanzen vor dem horizontalen Hochskalieren.
+
+Die Erhöhung des berechneten Mindestwerts für einen Plan kann mit der Azure CLI erfolgen.
+
+```azurecli-interactive
+az resource update -g <resource_group> -n <premium_plan_name> --set sku.capacity=<desired_min_instances> --resource-type Microsoft.Web/serverfarms 
 ```
 
 ### <a name="available-instance-skus"></a>Verfügbare Instanz-SKUs

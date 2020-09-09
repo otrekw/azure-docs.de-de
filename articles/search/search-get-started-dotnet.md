@@ -10,18 +10,18 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7901254463ef052f3c13b2c9fc49c31bd8ebc454
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ffcb2c741838b1292eaf0793cd625c99d252068c
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020863"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462070"
 ---
 # <a name="quickstart-create-a-search-index-using-the-azuresearchdocuments-client-library"></a>Schnellstart: Erstellen eines Suchindexes mithilfe Clientbibliothek „Azure.Search.Documents“
 
 Verwenden Sie die neue [Clientbibliothek „Azure.Search.Documents“ (Version 11)](/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet), um eine .NET Core-Konsolenanwendung in C# zu erstellen, die einen Suchindex erstellt, lädt und abfragt.
 
-[Laden Sie den Quellcode herunter](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart-v11), um mit einem fertigen Projekt zu beginnen, oder führen Sie die Schritte in diesem Artikel aus, um ein eigenes zu erstellen.
+[Laden Sie den Quellcode herunter](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart/v11), um mit einem fertigen Projekt zu beginnen, oder führen Sie die Schritte in diesem Artikel aus, um ein eigenes zu erstellen.
 
 > [!NOTE]
 > Suchen Sie nach einer früheren Version? Dann finden Sie Informationen unter [Erstellen eines Suchindexes mithilfe von Microsoft.Azure.Search V10](search-get-started-dotnet-v10.md).

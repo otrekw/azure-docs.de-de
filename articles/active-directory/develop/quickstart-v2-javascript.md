@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-javascript
-ms.openlocfilehash: 1e537c6f61a7c461b2a9edb4097fba95f5c66a6f
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: ed94b44972ffc8c53ce96c0240f11ad44535531b
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120523"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434604"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Schnellstart: Anmelden von Benutzern und Abrufen eines Zugriffstokens in einer JavaScript-SPA
 
@@ -151,7 +151,7 @@ In diesem Schnellstart erfahren Sie anhand eines Codebeispiels, wie in einer Jav
 Führen Sie das Projekt mit einem Webserver unter Verwendung von [Node.js](https://nodejs.org/en/download/) aus:
 
 1. Führen Sie über das Projektverzeichnis den folgenden Befehl aus, um den Server zu starten:
-    ```batch
+    ```cmd
     npm install
     npm start
     ```
@@ -179,7 +179,7 @@ Wählen Sie **Anmelden** aus, wenn die Anwendung im Browser geladen wurde. Bei d
 
 Wenn Sie Node.js installiert haben, können Sie die aktuelle Version auch über Node.js-Paket-Manager (npm) herunterladen:
 
-```batch
+```cmd
 npm install msal
 ```
 
