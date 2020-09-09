@@ -3,12 +3,12 @@ title: Verwenden von Azure DevTest Labs zu Schulungszwecken | Microsoft Docs
 description: Dieser Artikel enthält ausführliche Schritte, die Sie befolgen können, um ein Lab für das Training in Azure DevTest Labs einzurichten.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 1a4b39d104d2ffdb45c23db2ad16cc4ee4627fb9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2de9550c62f04286a4f9ad42238bfefb9846477
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85484144"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294848"
 ---
 # <a name="use-azure-devtest-labs-for-training"></a>Verwenden von Azure DevTest Labs zu Schulungszwecken
 Azure DevTest Labs kann außer zum Entwickeln und Testen auch zum Implementieren zahlreicher gängiger Szenarien verwendet werden. Eines dieser Szenarien ist das Einrichten eines Labs zu Schulungszwecken. Mit Azure DevTest Labs können Sie ein Lab erstellen, in dem Sie benutzerdefinierte Vorlagen bereitstellen, mit denen jeder Lab-Benutzer identische und isolierte Umgebungen zu Schulungszwecken erstellen kann. Sie können durch das Anwenden von Richtlinien sicherstellen, dass Schulungsumgebungen für jeden Lab-Benutzer nur bei Bedarf verfügbar sind und genügend Ressourcen – z.B. virtuelle Computer – enthalten, die zur Schulung erforderlich sind. Schließlich können Sie das Lab problemlos für Benutzer freigeben, die dann mit einem Klick darauf zugreifen können.
@@ -44,7 +44,7 @@ In diesem Artikel erfahren Sie mehr zu verschiedenen Azure DevTest Labs-Features
    
    | Aufgabe | Lerninhalt |
    | --- | --- |
-   | [Konfigurieren von Azure Marketplace-Images](devtest-lab-configure-marketplace-images.md) |Erfahren Sie, wie Sie Azure Marketplace-Images der Positivliste hinzufügen; dabei werden nur die Images zur Auswahl zur Verfügung gestellt, die Sie für die Schulung verwenden möchten. |
+   | [Konfigurieren von Azure Marketplace-Images](devtest-lab-configure-marketplace-images.md) |Erfahren Sie, wie Sie Azure Marketplace-Images zulassen; dabei werden nur die Images zur Auswahl zur Verfügung gestellt, die Sie für die Schulung verwenden möchten. |
    | [Erstellen eines benutzerdefinierten Images](devtest-lab-create-template.md) |Erstellen Sie ein benutzerdefiniertes Image, indem Sie die für die Schulung erforderliche Software vorinstallieren, sodass Lab-Benutzer mithilfe des benutzerdefinierten Images schnell einen virtuellen Computer erstellen können. |
 3. **Erstellen von wiederverwendbaren Vorlagen für Schulungscomputer** 
    
@@ -91,4 +91,3 @@ In diesem Artikel erfahren Sie mehr zu verschiedenen Azure DevTest Labs-Features
    | [Erstellen eines Labs mithilfe einer Resource Manager-Vorlage](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |Erstellen Sie Labs in Azure DevTest Labs mithilfe von Resource Manager-Vorlagen. |
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
-
