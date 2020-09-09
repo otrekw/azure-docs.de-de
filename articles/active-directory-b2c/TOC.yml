@@ -69,6 +69,8 @@
           href: tokens-overview.md
         - name: Anfordern eines Zugriffstokens
           href: access-tokens.md
+    - name: Richtlinienschlüssel
+      href: policy-keys-overview.md
     - name: Benutzerflow und Richtlinie
       items:
         - name: Benutzerabläufe

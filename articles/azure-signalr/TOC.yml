@@ -35,6 +35,8 @@
   items:
     - name: Ausführliche Informationen zu Azure SignalR Service
       href: signalr-concept-internals.md
+    - name: Dienstmodus
+      href: concept-service-mode.md
     - name: Skalieren von ASP.NET Core SignalR
       href: signalr-concept-scale-aspnet-core.md
     - name: Serverlos
@@ -101,7 +103,7 @@
       href: 'https://docs.microsoft.com/aspnet/core/signalr'
     - name: Azure SignalR Service-Protokoll
       href: 'https://github.com/Azure/azure-signalr/blob/dev/specs/ServiceProtocol.md'
-    - name: Integrierte Azure Policy-Aktionen
+    - name: Azure Policy-Integrationen
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
 - name: Ressourcen

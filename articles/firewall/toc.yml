@@ -4,14 +4,6 @@
   items:
     - name: Was ist Azure Firewall?
       href: overview.md
-- name: Tutorials
-  items:
-    - name: Bereitstellen und konfigurieren
-      href: tutorial-firewall-deploy-portal.md
-    - name: Bereitstellen in einem Hybridnetzwerk
-      href: tutorial-hybrid-portal.md
-    - name: Filtern von eingehendem Datenverkehr mit DNAT
-      href: tutorial-firewall-dnat.md
 - name: Schnellstarts
   expanded: true
   items:
@@ -24,6 +16,14 @@
     - name: 'Bereitstellen mit Verfügbarkeitszonen: ARM-Vorlage'
       displayName: Resource Manager
       href: deploy-template.md
+- name: Tutorials
+  items:
+    - name: Bereitstellen und konfigurieren
+      href: tutorial-firewall-deploy-portal.md
+    - name: Bereitstellen in einem Hybridnetzwerk
+      href: tutorial-hybrid-portal.md
+    - name: Filtern von eingehendem Datenverkehr mit DNAT
+      href: tutorial-firewall-dnat.md
 - name: Beispiele
   items:
     - name: Azure PowerShell

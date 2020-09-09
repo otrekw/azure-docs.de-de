@@ -13,12 +13,12 @@ metadata:
   ms.topic: hub-page
   ms.date: 03/24/2020
   ms.author: trbye
-  ms.openlocfilehash: 17cc7914c8e02d3b38e2527e1c0bff3afb885b0b
-  ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+  ms.openlocfilehash: 7b64ef2739b8e6531f7531f9a135b7fb5ffe3467
+  ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/28/2020
-  ms.locfileid: "89055095"
+  ms.lasthandoff: 09/09/2020
+  ms.locfileid: "89568017"
 highlightedContent:
   items:
   - title: Worum handelt es sich beim Speech-Dienst?
@@ -37,15 +37,15 @@ conceptualContent:
   items:
   - title: Spracherkennung
     links:
+    - itemType: overview
+      text: Informationen zur Spracherkennung
+      url: speech-to-text.md
     - itemType: quickstart
-      text: Erkennen von Spracheingaben per Mikrofon
-      url: quickstarts/speech-to-text-from-microphone.md
-    - itemType: quickstart
-      text: Erkennen von Sprache aus einer Audiodatei
-      url: quickstarts/speech-to-text-from-file.md
+      text: Erste Schritte mit der Spracherkennung
+      url: get-started-speech-to-text.md
     - itemType: how-to-guide
-      text: Grundlegendes zur Spracherkennung
-      url: speech-to-text-basics.md
+      text: Verbessern der Genauigkeit mit Custom Speech
+      url: how-to-custom-speech.md
     footerLink:
       text: Weitere Informationen
       url: index-speech-to-text.yml

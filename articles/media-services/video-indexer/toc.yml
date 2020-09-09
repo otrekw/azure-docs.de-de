@@ -102,10 +102,11 @@
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Regions
+      displayName: location
       href: regions.md
     - name: Häufig gestellte Fragen
       href: faq.md
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942'
     - name: Versionshinweise
       href: release-notes.md
