@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 08/28/2020
+ms.date: 09/08/2020
 ms.author: victorh
-ms.openlocfilehash: 9da1340d08d4eaab3ba208c667861093ef0f799b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 9d1e2d257074555e7a2e78930e1f9be6cd4d90fe
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079114"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536001"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-firewall-manager"></a>Tutorial: Schützen Ihres virtuellen Hubs mit Azure Firewall Manager
 
@@ -109,30 +109,6 @@ Jetzt können Sie das Peering für die virtuellen Hub-and-Spoke-Netzwerke durchf
 8. Klicken Sie auf **Erstellen**.
 
 Wiederholen Sie diesen Vorgang, um das virtuelle Netzwerk **Spoke-02** zu verbinden: Verbindungsname – **hub-spoke-02**
-
-### <a name="configure-the-hub-and-spoke-routing"></a>Konfigurieren der Hub-and-Spoke-Routenplanung
-
-Öffnen Sie vom Azure-Portal aus eine Cloud Shell, und führen Sie die folgende Azure PowerShell aus, um das erforderliche Hub-and-Spoke-Routing zu konfigurieren. Bei Spoke-/Branch-Verbindungen mit Peering muss die Weitergabe auf **NONE** festgelegt werden. Dadurch wird die Any-to-Any-Kommunikation zwischen den Spokes verhindert und der Datenverkehr stattdessen mithilfe der Standardroute an die Firewall weitergeleitet.
-
-```azurepowershell
-$noneRouteTable = Get-AzVHubRouteTable -ResourceGroupName fw-manager `
-                  -HubName hub-01 -Name noneRouteTable
-$vnetConns = Get-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
-             -ParentResourceName hub-01
-
-$vnetConn = $vnetConns[0]
-$vnetConn.RoutingConfiguration.PropagatedRouteTables.Ids = @($noneRouteTable)
-$vnetConn.RoutingConfiguration.PropagatedRouteTables.Labels = @("none")
-Update-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
-   -ParentResourceName hub-01 -Name $vnetConn.Name `
-   -RoutingConfiguration $vnetConn.RoutingConfiguration
-
-$vnetConn = $vnetConns[1]
-$vnetConn.RoutingConfiguration.PropagatedRouteTables.Ids = @($noneRouteTable)
-$vnetConn.RoutingConfiguration.PropagatedRouteTables.Labels = @("none")
-Update-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
-   -ParentResourceName hub-01 -Name $vnetConn.Name -RoutingConfiguration $vnetConn.RoutingConfiguration
-```
 
 ## <a name="deploy-the-servers"></a>Bereitstellen der Server
 

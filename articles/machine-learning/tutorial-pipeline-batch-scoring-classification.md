@@ -11,12 +11,12 @@ ms.author: laobri
 ms.reviewer: laobri
 ms.date: 03/11/2020
 ms.custom: contperfq4, devx-track-python
-ms.openlocfilehash: 600b19ffac61f8f7c7336f114c6b52c6bc88b5ad
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: c981bed2b30f47223a1fd562d4a5d0fff96e3adf
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89489509"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646976"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Tutorial: Erstellen einer Azure Machine Learning-Pipeline für die Batchbewertung
 
@@ -142,7 +142,7 @@ model = Model.register(model_path="models/inception_v3.ckpt",
 
 Machine Learning-Pipelines können nicht lokal ausgeführt werden, daher führen Sie sie in Cloudressourcen oder auf *Remotecomputezielen* aus. Ein Remotecomputeziel ist eine wiederverwendbare virtuelle Compute-Umgebung, in der Sie Experimente und Machine Learning-Workflows ausführen. 
 
-Führen Sie den folgenden Code aus, um ein GPU-fähiges Ziel vom Typ [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) zu erstellen, und fügen Sie es an Ihren Arbeitsbereich an. Weitere Informationen zu Computezielen finden Sie in [diesem Konzeptartikel](https://docs.microsoft.com/azure/machine-learning/concept-compute-target).
+Führen Sie den folgenden Code aus, um ein GPU-fähiges Ziel vom Typ [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py&preserve-view=true) zu erstellen, und fügen Sie es an Ihren Arbeitsbereich an. Weitere Informationen zu Computezielen finden Sie in [diesem Konzeptartikel](https://docs.microsoft.com/azure/machine-learning/concept-compute-target).
 
 
 ```python
@@ -305,7 +305,7 @@ Ein Pipelineschritt ist ein Objekt, das alles kapselt, was Sie zum Ausführen ei
 * Eingabe- und Ausgabedaten sowie ggf. benutzerdefinierte Parameter
 * Verweis auf ein Skript oder eine SDK-Logik, die während des Schritts ausgeführt werden soll
 
-Mehrere Klassen erben von der übergeordneten Klasse [`PipelineStep`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py). Sie können Klassen auswählen, um bestimmte Frameworks oder Stapel zum Erstellen eines Schritts zu verwenden. In diesem Beispiel wird die Klasse `ParallelRunStep` verwendet, um Ihre Schrittlogik mithilfe eines benutzerdefinierten Python-Skripts zu definieren. Wenn es sich bei einem Argument für Ihr Skript um eine Eingabe für den Schritt oder um eine Ausgabe des Schritts handelt, muss es *sowohl* im Array `arguments`*als auch* im Parameter `input` bzw. `output` definiert werden. 
+Mehrere Klassen erben von der übergeordneten Klasse [`PipelineStep`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py&preserve-view=true). Sie können Klassen auswählen, um bestimmte Frameworks oder Stapel zum Erstellen eines Schritts zu verwenden. In diesem Beispiel wird die Klasse `ParallelRunStep` verwendet, um Ihre Schrittlogik mithilfe eines benutzerdefinierten Python-Skripts zu definieren. Wenn es sich bei einem Argument für Ihr Skript um eine Eingabe für den Schritt oder um eine Ausgabe des Schritts handelt, muss es *sowohl* im Array `arguments`*als auch* im Parameter `input` bzw. `output` definiert werden. 
 
 In Szenarien mit mehreren Schritten wird ein Objektverweis im Array `outputs` als *Eingabe* für einen nachfolgenden Pipelineschritt verfügbar.
 
@@ -329,7 +329,7 @@ batch_score_step = ParallelRunStep(
 )
 ```
 
-Eine Liste mit allen Klassen für verschiedene Schritttypen finden Sie im [Schrittpaket](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py).
+Eine Liste mit allen Klassen für verschiedene Schritttypen finden Sie im [Schrittpaket](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py&preserve-view=true).
 
 ## <a name="submit-the-pipeline"></a>Übermitteln der Pipeline
 
@@ -386,9 +386,9 @@ published_pipeline
 
 Um die Pipeline über den REST-Endpunkt ausführen zu können, benötigen Sie einen OAuth2-Bearer-Authentifizierungsheader. Im folgenden Beispiel wird zur Veranschaulichung eine interaktive Authentifizierung verwendet. In den meisten Produktionsszenarios, die eine automatisierte oder monitorlose Authentifizierung erfordern, wird dagegen eine Dienstprinzipalauthentifizierung verwendet, wie in [diesem Artikel](how-to-setup-authentication.md) beschrieben.
 
-Für die Dienstprinzipalauthentifizierung muss eine *App-Registrierung* in *Azure Active Directory* erstellt werden. Sie generieren zunächst einen geheimen Clientschlüssel und gewähren dem Dienstprinzipal anschließend *Rollenzugriff* auf Ihren Machine Learning-Arbeitsbereich. Verwenden Sie zur Verwaltung des Authentifizierungsflusses die Klasse [`ServicePrincipalAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py). 
+Für die Dienstprinzipalauthentifizierung muss eine *App-Registrierung* in *Azure Active Directory* erstellt werden. Sie generieren zunächst einen geheimen Clientschlüssel und gewähren dem Dienstprinzipal anschließend *Rollenzugriff* auf Ihren Machine Learning-Arbeitsbereich. Verwenden Sie zur Verwaltung des Authentifizierungsflusses die Klasse [`ServicePrincipalAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py&preserve-view=true). 
 
-[`InteractiveLoginAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.interactiveloginauthentication?view=azure-ml-py) und `ServicePrincipalAuthentication` erben jeweils von `AbstractAuthentication`. In beiden Fällen wird die Funktion [`get_authentication_header()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.abstractauthentication?view=azure-ml-py#get-authentication-header--) auf die gleiche Weise verwendet, um den Header abzurufen:
+[`InteractiveLoginAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.interactiveloginauthentication?view=azure-ml-py&preserve-view=true) und `ServicePrincipalAuthentication` erben jeweils von `AbstractAuthentication`. In beiden Fällen wird die Funktion [`get_authentication_header()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.abstractauthentication?view=azure-ml-py#&preserve-view=trueget-authentication-header--) auf die gleiche Weise verwendet, um den Header abzurufen:
 
 ```python
 from azureml.core.authentication import InteractiveLoginAuthentication

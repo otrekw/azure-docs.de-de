@@ -11,12 +11,12 @@ ms.author: tracych
 author: tracychms
 ms.date: 08/14/2020
 ms.custom: Build2020, devx-track-python
-ms.openlocfilehash: 04d1e531f3041ef0a6231607cc795c67168ebf2e
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 0fb46f4b9fd29c47e9cd38920665b2791f678847
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651198"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647219"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Ausführen von Batchrückschlüssen für große Datenmengen mithilfe von Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -67,7 +67,7 @@ ws = Workspace.from_config()
 
 ### <a name="create-a-compute-target"></a>Erstellen eines Computeziels
 
-In Azure Machine Learning bezieht sich *Compute* (oder *Computeziel*) auf die Computer oder Cluster, die die Berechnungsschritte in Ihrer Machine Learning-Pipeline durchführen. Führen Sie den folgenden Code aus, um ein CPU-basiertes Ziel vom Typ [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) zu erstellen:
+In Azure Machine Learning bezieht sich *Compute* (oder *Computeziel*) auf die Computer oder Cluster, die die Berechnungsschritte in Ihrer Machine Learning-Pipeline durchführen. Führen Sie den folgenden Code aus, um ein CPU-basiertes Ziel vom Typ [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py&preserve-view=true) zu erstellen:
 
 ```python
 from azureml.core.compute import AmlCompute, ComputeTarget
@@ -134,9 +134,9 @@ def_data_store = ws.get_default_datastore()
 
 ### <a name="create-the-data-inputs"></a>Erstellen der Dateneingaben
 
-Die Eingaben für Batchrückschluss sind die Daten, die Sie für die Parallelverarbeitung partitionieren möchten. Eine Pipeline für Batchrückschluss akzeptiert Dateneingaben durch [`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py).
+Die Eingaben für Batchrückschluss sind die Daten, die Sie für die Parallelverarbeitung partitionieren möchten. Eine Pipeline für Batchrückschluss akzeptiert Dateneingaben durch [`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py&preserve-view=true).
 
-`Dataset` dient der Untersuchung, Transformation und Verwaltung von Daten in Azure Machine Learning. Es gibt zwei Typen: [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) und [`FileDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py). In diesem Beispiel verwenden Sie `FileDataset` als Eingaben. `FileDataset` gibt Ihnen die Möglichkeit, die Dateien herunterzuladen oder in Ihrer Computeinstanz bereitzustellen. Durch Erstellen eines Datasets erstellen Sie einen Verweis auf den Speicherort der Datenquelle. Wenn Sie Unterklassen-Transformationen auf das Dataset angewendet haben, werden diese ebenfalls im Dataset gespeichert. Die Daten verbleiben an ihrem Speicherort, sodass keine zusätzlichen Speicherkosten anfallen.
+`Dataset` dient der Untersuchung, Transformation und Verwaltung von Daten in Azure Machine Learning. Es gibt zwei Typen: [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) und [`FileDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py&preserve-view=true). In diesem Beispiel verwenden Sie `FileDataset` als Eingaben. `FileDataset` gibt Ihnen die Möglichkeit, die Dateien herunterzuladen oder in Ihrer Computeinstanz bereitzustellen. Durch Erstellen eines Datasets erstellen Sie einen Verweis auf den Speicherort der Datenquelle. Wenn Sie Unterklassen-Transformationen auf das Dataset angewendet haben, werden diese ebenfalls im Dataset gespeichert. Die Daten verbleiben an ihrem Speicherort, sodass keine zusätzlichen Speicherkosten anfallen.
 
 Weitere Informationen zu Azure Machine Learning-Datasets finden Sie unter [Erstellen von und Zugreifen auf Datasets (Vorschauversion) in Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets).
 
@@ -147,7 +147,7 @@ path_on_datastore = mnist_blob.path('mnist/')
 input_mnist_ds = Dataset.File.from_files(path=path_on_datastore, validate=False)
 ```
 
-Um beim Ausführen der Batch-Rückschlusspipeline dynamische Dateneingaben zu verwenden, können Sie das Eingabe-`Dataset` als [`PipelineParameter`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py) definieren. Sie können das Eingabedataset bei jeder erneuten Übermittlung einer Ausführung der Batch-Rückschlusspipeline angeben.
+Um beim Ausführen der Batch-Rückschlusspipeline dynamische Dateneingaben zu verwenden, können Sie das Eingabe-`Dataset` als [`PipelineParameter`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py&preserve-view=true) definieren. Sie können das Eingabedataset bei jeder erneuten Übermittlung einer Ausführung der Batch-Rückschlusspipeline angeben.
 
 ```python
 from azureml.data.dataset_consumption_config import DatasetConsumptionConfig
@@ -159,7 +159,7 @@ input_mnist_ds_consumption = DatasetConsumptionConfig("minist_param_config", pip
 
 ### <a name="create-the-output"></a>Erstellen der Ausgabe
 
-Objekte vom Typ [`PipelineData`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) dienen zur Übertragung von Zwischendaten zwischen Pipelineschritten. In diesem Beispiel wird es für Rückschlussausgaben verwendet.
+Objekte vom Typ [`PipelineData`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true) dienen zur Übertragung von Zwischendaten zwischen Pipelineschritten. In diesem Beispiel wird es für Rückschlussausgaben verwendet.
 
 ```python
 from azureml.pipeline.core import Pipeline, PipelineData
@@ -353,7 +353,7 @@ parallelrun_step = ParallelRunStep(
 ```
 ### <a name="create-and-run-the-pipeline"></a>Erstellen und Ausführen der Pipeline
 
-Führen Sie die Pipeline nun aus. Erstellen Sie zunächst ein Objekt vom Typ [`Pipeline`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) mit einem Verweis auf Ihren Arbeitsbereich sowie mit dem erstellten Pipelineschritt. Der Parameter `steps` ist ein Array mit Schritten. In diesem Fall ist nur ein Schritt für den Batchrückschluss vorhanden. Wenn Sie Pipelines mit mehreren Schritten erstellen möchten, müssen Sie die Schritte in der gewünschten Reihenfolge in diesem Array platzieren.
+Führen Sie die Pipeline nun aus. Erstellen Sie zunächst ein Objekt vom Typ [`Pipeline`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py&preserve-view=true) mit einem Verweis auf Ihren Arbeitsbereich sowie mit dem erstellten Pipelineschritt. Der Parameter `steps` ist ein Array mit Schritten. In diesem Fall ist nur ein Schritt für den Batchrückschluss vorhanden. Wenn Sie Pipelines mit mehreren Schritten erstellen möchten, müssen Sie die Schritte in der gewünschten Reihenfolge in diesem Array platzieren.
 
 Verwenden Sie als Nächstes die Funktion `Experiment.submit()`, um die Pipeline für die Ausführung zu übermitteln.
 
@@ -371,7 +371,7 @@ pipeline_run = experiment.submit(pipeline)
 Ein Batchrückschlussauftrag kann sehr lange dauern. In diesem Beispiel wird der Fortschritt mithilfe eines Jupyter-Widgets überwacht. Weitere Möglichkeiten zum Überwachen des Auftragsstatus:
 
 * Azure Machine Learning Studio 
-* Konsolenausgabe des Objekts [`PipelineRun`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.run.pipelinerun?view=azure-ml-py)
+* Konsolenausgabe des Objekts [`PipelineRun`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.run.pipelinerun?view=azure-ml-py&preserve-view=true)
 
 ```python
 from azureml.widgets import RunDetails
