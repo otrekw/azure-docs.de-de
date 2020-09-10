@@ -8,14 +8,14 @@ manager: johndeu
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 08/10/2020
 ms.author: kumud
-ms.openlocfilehash: d789d74f79fa691a2d5b374530450d966e0c40ed
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f9eedba6c8aee5c8aab73e2ed598a4511b4c5982
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047259"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020455"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-website"></a>Anpassen eines Sprachmodells mit der Video Indexer-Website
 
@@ -133,7 +133,9 @@ Video Indexer unterstützt die automatische Anpassung von Sprachmodellen basiere
 
     ![Anpassen der Transkriptbearbeitung des Sprachmodells – Video Indexer](./media/customize-language-model/edits.png)
 
-    Video Indexer erfasst alle Zeilen, die von Ihnen in der Transkription Ihres Videos korrigiert werden, und fügt sie automatisch zu einer Textdatei namens „Aus Transkriptbearbeitungen“ hinzu. Diese Bearbeitungen werden verwendet, um das spezifische Sprachmodell, mit dem dieses Video indiziert wurde, neu zu trainieren.
+    Video Indexer erfasst alle Zeilen, die von Ihnen in der Transkription Ihres Videos korrigiert werden, und fügt sie automatisch zu einer Textdatei namens „Aus Transkriptbearbeitungen“ hinzu. Diese Bearbeitungen werden verwendet, um das spezifische Sprachmodell, mit dem dieses Video indiziert wurde, neu zu trainieren. 
+    
+    Die Änderungen, die in der Zeitleiste des [Widgets](video-indexer-embed-widgets.md) vorgenommen wurden, sind ebenfalls enthalten.
     
     Wenn Sie bei der Indizierung dieses Videos kein Sprachmodell angegeben haben, werden alle Bearbeitungen für dieses Video in einem Standardsprachenmodell namens „Kontoanpassungen“ innerhalb der erkannten Sprache des Videos gespeichert.
     

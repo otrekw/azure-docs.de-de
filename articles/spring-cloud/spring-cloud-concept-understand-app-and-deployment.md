@@ -7,18 +7,20 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 81e1925810f374da6f02bf6c3a013b00b5bb9a2c
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: a1f6d318c123b5907a8c434bb097fb86a351f5d1
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263823"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297534"
 ---
 # <a name="understand-app-and-deployment-in-azure-spring-cloud"></a>Grundlegendes zu Apps und Bereitstellungen in Azure Spring Cloud
 
-**App** und **Bereitstellung** sind die beiden wichtigsten Konzepte im Ressourcenmodell von Azure Spring Cloud. In Azure Spring Cloud ist eine *App* eine Abstraktion einer Geschäfts-App oder eines Microservice.  Eine Version des Codes oder der Binärdatei, die als die *App* bereitgestellt wird, wird in einer *Bereitstellung* ausgeführt.
+**App** und **Bereitstellung** sind die beiden wichtigsten Konzepte im Ressourcenmodell von Azure Spring Cloud. In Azure Spring Cloud ist eine *App* eine Abstraktion einer Geschäfts-App oder eines Microservice.  Eine Version des Codes oder der Binärdatei, die als die *App* bereitgestellt wird, wird in einer *Bereitstellung* ausgeführt.  Apps werden in einer *Azure Spring Cloud-Dienstinstanz* (kurz *Dienstinstanz*) ausgeführt, wie im Folgenden beschrieben.
 
  ![Apps und Bereitstellungen](./media/spring-cloud-app-and-deployment/app-deployment-rev.png)
+
+Sie können über mehrere Dienstinstanzen innerhalb eines einzelnen Azure-Abonnements verfügen, es ist jedoch am einfachsten, wenn sich alle Apps, aus denen eine Geschäfts-App oder ein Microservice besteht, innerhalb einer einzelnen Azure Spring Cloud-Dienstinstanz befinden.
 
 Der Standardtarif der Azure Spring Cloud ermöglicht, dass eine App eine Produktionsbereitstellung und eine Stagingbereitstellung hat, sodass Sie damit auf einfache Weise eine Blue/Green-Bereitstellung durchführen können.
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3c7e4887610f30113b81421396500416d04c5e5e
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: e9a78690128c2406277ab4e8fb6e6e4625d2787f
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078494"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89280093"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>Einrichten einer Azure Digital Twins-Instanz und der Authentifizierung (CLI)
 
@@ -118,7 +118,7 @@ Als Nächstes laden Sie diese Datei in Cloud Shell hoch. Klicken Sie im Cloud Sh
 :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Cloud Shell-Fenster: Auswahl der Option „Hochladen“":::
 Navigieren Sie zu der eben erstellten Datei *manifest.json*, und wählen Sie „Öffnen“ aus.
 
-Führen Sie den folgenden Befehl aus, um eine App-Registrierung zu erstellen (und ersetzen Sie dabei die Platzhalter):
+Führen Sie als nächstes den folgenden Befehl aus, um eine App-Registrierung mit einer Antwort-URL (*Öffentlicher Client/nativ (Mobil und Desktop)* ) von `http://localhost` zu erstellen. Ersetzen Sie Platzhalter nach Bedarf:
 
 ```azurecli
 az ad app create --display-name <name-for-your-app-registration> --native-app --required-resource-accesses manifest.json --reply-url http://localhost
@@ -150,5 +150,9 @@ Notieren Sie sich die *Anwendungs-ID (Client)* und die *Verzeichnis-ID (Mandant)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie, wie Sie Ihre Clientanwendung mit Ihrer Instanz verbinden, indem Sie den Authentifizierungscode der Clientanwendung schreiben:
+Testen Sie einzelne REST-API-Aufrufe für Ihre Instanz mithilfe der Befehle der Azure Digital Twins-CLI: 
+* [az dt reference](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest)
+* [*Gewusst wie: Verwenden der Azure Digital Twins-Befehlszeilenschnittstelle*](how-to-use-cli.md)
+
+Unter folgendem Link erfahren Sie außerdem, wie Sie eine Verbindung zwischen Ihrer Clientanwendung und Ihrer Instanz herstellen, indem Sie den Authentifizierungscode der Client-App schreiben:
 * [*Verwenden Schreiben von App-Authentifizierungscode*](how-to-authenticate-client.md)

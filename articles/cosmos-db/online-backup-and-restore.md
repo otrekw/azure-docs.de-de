@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 54bbd5d45e14c1d345570eea9dc5469f77694154
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: f8ec215458e8ebfafb87209516f167d628e98389
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853933"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047627"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Onlinesicherung und bedarfsgesteuerte Wiederherstellung in Azure Cosmos DB
 
@@ -57,7 +57,7 @@ Gehen Sie anhand der folgenden Schritte vor, um die Standardsicherungsoptionen f
 
    * **Beibehaltung der Sicherung:** Dies stellt den Aufbewahrungszeitraum für die einzelnen Sicherungen dar. Sie können die Zeit in Stunden oder Tagen konfigurieren. Der minimale Aufbewahrungszeitraum darf nicht kürzer als das Zweifache des Sicherungsintervalls (in Stunden) und nicht länger als 720 Stunden sein.
 
-   * **Aufbewahrte Kopien der Daten:** Standardmäßig werden zwei Sicherungskopien Ihrer Daten kostenlos angeboten. Wenn Sie zusätzliche Kopien benötigen, müssen Sie über das Azure-Portal eine Supportanfrage erstellen. Die zusätzlichen Kopien werden Ihnen dann in Rechnung gestellt. Im Abschnitt „Speichernutzung“ auf der Seite [Preise](https://azure.microsoft.com/pricing/details/cosmos-db/) finden Sie den genauen Preis für zusätzliche Kopien.
+   * **Aufbewahrte Kopien der Daten:** Standardmäßig werden zwei Sicherungskopien Ihrer Daten kostenlos angeboten. Wenn Sie mehr als zwei Kopien benötigen, fallen zusätzliche Gebühr an. Im Abschnitt „Speichernutzung“ auf der Seite [Preise](https://azure.microsoft.com/pricing/details/cosmos-db/) finden Sie den genauen Preis für zusätzliche Kopien.
 
    :::image type="content" source="./media/online-backup-and-restore/configure-backup-interval-retention.png" alt-text="Konfigurieren des Sicherungsintervalls und des Aufbewahrungszeitraums für ein vorhandenes Azure Cosmos-Konto" border="true":::
 

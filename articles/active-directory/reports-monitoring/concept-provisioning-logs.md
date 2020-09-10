@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 08/25/2020
+ms.date: 09/01/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2a45e6cff7d62dd8841d9d482f799be6977340e
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 16b2ab39e9bcd6dff44387edc60be9bfc649f224
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826870"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229870"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Bereitstellungsberichte im Azure Active Directory-Portal (Vorschau)
 
@@ -34,8 +34,8 @@ Die Architektur für die Berichterstellung in Azure Active Directory (Azure AD) 
     - **Bereitstellungsprotokolle:** enthalten Systemaktivitäten zu Benutzern, Gruppen und Rollen, die mit dem Azure AD-Bereitstellungsdienst bereitgestellt werden. 
 
 - **Security** 
-    - **Riskante Anmeldungen**: Eine [riskante Anmeldung](concept-risky-sign-ins.md) ist ein Indikator für einen Anmeldeversuch von einem Benutzer, der nicht der rechtmäßige Besitzer eines Benutzerkontos ist.
-    - **Benutzer mit Risikomarkierung**: Ein [Benutzer mit Risikomarkierung](concept-user-at-risk.md) ist ein Indikator für ein ggf. kompromittiertes Benutzerkonto.
+    - **Riskante Anmeldungen**: Eine [riskante Anmeldung](../identity-protection/overview-identity-protection.md) ist ein Indikator für einen Anmeldeversuch von einem Benutzer, der nicht der rechtmäßige Besitzer eines Benutzerkontos ist.
+    - **Benutzer mit Risikomarkierung**: Ein [Benutzer mit Risikomarkierung](../identity-protection/overview-identity-protection.md) ist ein Indikator für ein ggf. kompromittiertes Benutzerkonto.
 
 In diesem Thema erhalten Sie einen Überblick über den Bereitstellungsbericht.
 
@@ -218,7 +218,7 @@ Die Registerkarte **Zusammenfassung** bietet eine Übersicht über die Vorgänge
 
 - Die Protokollanalyse wird derzeit nicht unterstützt.
 
-- Wenn Sie über den Kontext einer App auf die Bereitstellungsprotokolle zugreifen, werden Ereignisse nicht automatisch für die jeweilige App gefiltert, wie das bei Überwachungsprotokollen der Fall ist.
+- Möglicherweise werden übersprungene Ereignisse für Benutzer aufgeführt, die nicht dem Gültigkeitsbereich angehören. Dies entspricht dem erwarteten Verhalten, insbesondere dann, wenn der Synchronisierungsbereich auf alle Benutzer und Gruppen festgelegt ist. Der Dienst wertet alle Objekte im Mandanten aus, auch solche, die außerhalb des Gültigkeitsbereichs liegen. 
 
 ## <a name="error-codes"></a>Fehlercodes
 
@@ -226,28 +226,26 @@ Anhand der folgenden Tabelle können Sie besser verstehen, wie Sie mögliche Feh
 
 |Fehlercode|BESCHREIBUNG|
 |---|---|
-|Conflict, EntryConflict|Korrigieren Sie die in Konflikt stehenden Attributwerte entweder in Azure AD oder in der Anwendung, oder überprüfen Sie die Konfiguration der übereinstimmenden Attribute, wenn das in Konflikt stehende Benutzerkonto hätte abgeglichen und übernommen werden sollen. Weitere Informationen zum Konfigurieren von übereinstimmenden Attributen finden Sie in der folgenden [Dokumentation](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes).|
+|Conflict, EntryConflict|Korrigieren Sie die in Konflikt stehenden Attributwerte entweder in Azure AD oder in der Anwendung, oder überprüfen Sie die Konfiguration der übereinstimmenden Attribute, wenn das in Konflikt stehende Benutzerkonto hätte abgeglichen und übernommen werden sollen. Weitere Informationen zum Konfigurieren von übereinstimmenden Attributen finden Sie in der folgenden [Dokumentation](../app-provisioning/customize-application-attributes.md).|
 |TooManyRequests|Die Ziel-App hat diesen Versuch zum Aktualisieren des Benutzers abgelehnt, weil sie überlastet ist und zu viele Anforderungen empfängt. Sie brauchen nichts zu tun. Dieser Versuch wird automatisch wiederholt. Außerdem wurde Microsoft über dieses Problem informiert.|
 |InternalServerError |Die Ziel-App hat einen unerwarteten Fehler zurückgegeben. Möglicherweise gibt es ein Dienstproblem mit der Zielanwendung, das ein ordnungsgemäßes Funktionieren verhindert. Dieser Versuch wird automatisch in 40 Minuten wiederholt.|
-|InsufficientRights, MethodNotAllowed, NotPermitted, Unauthorized| Azure AD konnte sich zwar bei der Zielanwendung authentifizieren, war aber nicht zum Ausführen der Aktualisierung autorisiert. Überprüfen Sie alle Anweisungen, die von der Zielanwendung bereitgestellt werden, sowie das entsprechende [Tutorial](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) für die Anwendung.|
+|InsufficientRights, MethodNotAllowed, NotPermitted, Unauthorized| Azure AD konnte sich zwar bei der Zielanwendung authentifizieren, war aber nicht zum Ausführen der Aktualisierung autorisiert. Überprüfen Sie alle Anweisungen, die von der Zielanwendung bereitgestellt werden, sowie das entsprechende [Tutorial](../saas-apps/tutorial-list.md) für die Anwendung.|
 |UnprocessableEntity|Die Zielanwendung hat eine unerwartete Antwort zurückgegeben. Die Konfiguration der Zielanwendung ist möglicherweise nicht korrekt, oder es gibt ein Dienstproblem mit der Zielanwendung, das ein ordnungsgemäßes Funktionieren verhindert.|
 |WebExceptionProtocolError |Beim Herstellen einer Verbindung mit der Zielanwendung ist ein HTTP-Protokollfehler aufgetreten. Sie brauchen nichts zu tun. Dieser Versuch wird automatisch in 40 Minuten wiederholt.|
-|InvalidAnchor|Ein Benutzer, der zuvor vom Bereitstellungsdienst erstellt oder abgeglichen wurde, ist nicht mehr vorhanden. Stellen Sie sicher, dass der Benutzer vorhanden ist. Um einen erneuten Abgleich aller Benutzer zu erzwingen, verwenden Sie die Microsoft Graph-API, um [den Auftrag neu zu starten](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http). Beachten Sie, dass durch den Neustart der Bereitstellung ein Startzyklus auslöst wird, der einige Zeit dauern kann. Außerdem wird der Cache gelöscht, der vom Bereitstellungsdienst für den Betrieb verwendet wird. Dies bedeutet, dass alle Benutzer und Gruppen im Mandanten erneut ausgewertet werden müssen. Möglicherweise werden auch bestimmte Bereitstellungsereignisse gelöscht.|
-|NotImplemented | Die Ziel-App hat eine unerwartete Antwort zurückgegeben. Die Konfiguration der App ist möglicherweise nicht korrekt, oder es gibt ein Dienstproblem mit der Ziel-App, das deren ordnungsgemäßes Funktionieren verhindert. Überprüfen Sie alle Anweisungen, die von der Zielanwendung bereitgestellt werden, sowie das entsprechende [Tutorial](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) für die Anwendung. |
-|MandatoryFieldsMissing, MissingValues |Der Benutzer konnte nicht erstellt werden, da erforderliche Werte fehlten. Korrigieren Sie die fehlenden Attributwerte im Quelldatensatz, oder überprüfen Sie die Konfiguration der übereinstimmenden Attribute, um sicherzustellen, dass die erforderlichen Felder nicht ausgelassen wurden. [Erfahren Sie mehr](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) über das Konfigurieren von übereinstimmenden Attributen.|
-|SchemaAttributeNotFound |Der Vorgang konnte nicht durchgeführt werden, da ein Attribut angegeben wurde, das in der Zielanwendung nicht vorhanden ist. In der [Dokumentation](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) finden Sie Informationen zum Anpassen von Attributen. Stellen Sie außerdem sicher, dass Ihre Konfiguration korrekt ist.|
+|InvalidAnchor|Ein Benutzer, der zuvor vom Bereitstellungsdienst erstellt oder abgeglichen wurde, ist nicht mehr vorhanden. Stellen Sie sicher, dass der Benutzer vorhanden ist. Um einen erneuten Abgleich aller Benutzer zu erzwingen, verwenden Sie die Microsoft Graph-API, um [den Auftrag neu zu starten](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta). Beachten Sie, dass durch den Neustart der Bereitstellung ein Startzyklus auslöst wird, der einige Zeit dauern kann. Außerdem wird der Cache gelöscht, der vom Bereitstellungsdienst für den Betrieb verwendet wird. Dies bedeutet, dass alle Benutzer und Gruppen im Mandanten erneut ausgewertet werden müssen. Möglicherweise werden auch bestimmte Bereitstellungsereignisse gelöscht.|
+|NotImplemented | Die Ziel-App hat eine unerwartete Antwort zurückgegeben. Die Konfiguration der App ist möglicherweise nicht korrekt, oder es gibt ein Dienstproblem mit der Ziel-App, das deren ordnungsgemäßes Funktionieren verhindert. Überprüfen Sie alle Anweisungen, die von der Zielanwendung bereitgestellt werden, sowie das entsprechende [Tutorial](../saas-apps/tutorial-list.md) für die Anwendung. |
+|MandatoryFieldsMissing, MissingValues |Der Benutzer konnte nicht erstellt werden, da erforderliche Werte fehlten. Korrigieren Sie die fehlenden Attributwerte im Quelldatensatz, oder überprüfen Sie die Konfiguration der übereinstimmenden Attribute, um sicherzustellen, dass die erforderlichen Felder nicht ausgelassen wurden. [Erfahren Sie mehr](../app-provisioning/customize-application-attributes.md) über das Konfigurieren von übereinstimmenden Attributen.|
+|SchemaAttributeNotFound |Der Vorgang konnte nicht durchgeführt werden, da ein Attribut angegeben wurde, das in der Zielanwendung nicht vorhanden ist. In der [Dokumentation](../app-provisioning/customize-application-attributes.md) finden Sie Informationen zum Anpassen von Attributen. Stellen Sie außerdem sicher, dass Ihre Konfiguration korrekt ist.|
 |InternalError |Im Azure AD-Bereitstellungsdienst ist ein interner Dienstfehler aufgetreten. Sie brauchen nichts zu tun. Dieser Versuch wird automatisch in 40 Minuten wiederholt.|
 |InvalidDomain |Der Vorgang konnte aufgrund eines Attributwerts mit einem ungültigen Domänennamen nicht ausgeführt werden. Aktualisieren Sie den Domänennamen für den Benutzer, oder fügen Sie ihn der Liste zulässiger Domänen in der Zielanwendung hinzu. |
 |Timeout |Der Vorgang konnte nicht abgeschlossen werden, da die Antwort der Zielanwendung zu lange gedauert hat. Sie brauchen nichts zu tun. Dieser Versuch wird automatisch in 40 Minuten wiederholt.|
 |LicenseLimitExceeded|Der Benutzer konnte in der Zielanwendung nicht erstellt werden, da für diesen Benutzer keine Lizenzen verfügbar sind. Erwerben Sie entweder zusätzliche Lizenzen für die Zielanwendung, oder überprüfen Sie die Konfiguration der Benutzerzuweisungen und Attributzuordnungen, um sicherzustellen, dass die richtigen Attribute den richtigen Benutzern zugewiesen sind.|
-|DuplicateTargetEntries  |Der Vorgang konnte nicht abgeschlossen werden, da in der Zielanwendung mehr als ein Benutzer mit den konfigurierten übereinstimmenden Attributen gefunden wurde. Entfernen Sie entweder den doppelten Benutzer aus der Zielanwendung, oder konfigurieren Sie die Attributzuordnungen neu, wie [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) beschrieben.|
-|DuplicateSourceEntries | Der Vorgang konnte nicht abgeschlossen werden, da mehr als ein Benutzer mit den konfigurierten übereinstimmenden Attributen gefunden wurde. Entfernen Sie entweder den doppelten Benutzer, oder konfigurieren Sie die Attributzuordnungen neu, wie [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) beschrieben.|
+|DuplicateTargetEntries  |Der Vorgang konnte nicht abgeschlossen werden, da in der Zielanwendung mehr als ein Benutzer mit den konfigurierten übereinstimmenden Attributen gefunden wurde. Entfernen Sie entweder den doppelten Benutzer aus der Zielanwendung, oder konfigurieren Sie die Attributzuordnungen neu, wie [hier](../app-provisioning/customize-application-attributes.md) beschrieben.|
+|DuplicateSourceEntries | Der Vorgang konnte nicht abgeschlossen werden, da mehr als ein Benutzer mit den konfigurierten übereinstimmenden Attributen gefunden wurde. Entfernen Sie entweder den doppelten Benutzer, oder konfigurieren Sie die Attributzuordnungen neu, wie [hier](../app-provisioning/customize-application-attributes.md) beschrieben.|
 |ImportSkipped | Nachdem jeder Benutzer ausgewertet wurde, wird versucht, die Benutzer aus dem Quellsystem zu importieren. Dieser Fehler tritt häufig auf, wenn für den zu importierenden Benutzer die in den Attributzuordnungen definierte Übereinstimmungseigenschaft fehlt. Wenn für das Benutzerobjekt zum entsprechenden Attribut kein Wert vorhanden ist, können keine Bereichs-, Vergleichs- oder Exportänderungen ausgewertet werden. Beachten Sie, dass dieser Fehler nicht darauf hinweist, dass sich der Benutzer im Gültigkeitsbereich befindet, da der Bereich für den Benutzer noch nicht ausgewertet wurde.|
 |EntrySynchronizationSkipped | Der Bereitstellungsdienst hat das Quellsystem erfolgreich abgefragt und den Benutzer identifiziert. Es wurden keine weiteren Aktionen für den Benutzer durchgeführt, und er wurde übersprungen. Dieses Überspringen kann darauf zurückzuführen sein, dass sich der Benutzer außerhalb des Gültigkeitsbereichs befand oder dass er bereits im Zielsystem vorhanden ist und keine Änderungen erforderlich sind.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Überprüfen des Status der Benutzerbereitstellung](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)
-* [Problem beim Konfigurieren der Benutzerbereitstellung für eine Azure AD-Kataloganwendung](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem)
-
-
+* [Überprüfen des Status der Benutzerbereitstellung](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)
+* [Problem beim Konfigurieren der Benutzerbereitstellung für eine Azure AD-Kataloganwendung](../app-provisioning/application-provisioning-config-problem.md)

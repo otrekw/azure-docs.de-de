@@ -1,6 +1,6 @@
 ---
-title: Kopieren von Daten aus und in Snowflake
-description: Erfahren Sie, wie Sie Daten mithilfe von Azure Data Factory aus und in Snowflake kopieren.
+title: Kopieren und Transformieren von Daten in Snowflake
+description: Erfahren Sie, wie Sie Daten in Snowflake mithilfe von Data Factory kopieren und transformieren.
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -10,31 +10,34 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 07/30/2020
-ms.openlocfilehash: 48248b07b64278d5c8d4f297bf83df813aa486fe
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.date: 08/28/2020
+ms.openlocfilehash: fa8bb310d6a088db92b3dfd8eb6d2f584e9ffab7
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87529499"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181883"
 ---
-# <a name="copy-data-from-and-to-snowflake-by-using-azure-data-factory"></a>Kopieren von Daten aus und in Snowflake mithilfe von Azure Data Factory
+# <a name="copy-and-transform-data-in-snowflake-by-using-azure-data-factory"></a>Kopieren und Transformieren von Daten in Snowflake mithilfe von Azure Data Factory
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus und in Snowflake zu kopieren. Weitere Informationen zu Data Factory finden Sie im [Einführungsartikel](introduction.md).
+In diesem Artikel wird beschrieben, wie Sie Daten mithilfe der Kopieraktivität in Azure Data Factory aus und in Snowflake kopieren sowie Daten mithilfe des Tools „Datenfluss“ in Snowflake transformieren. Weitere Informationen zu Data Factory finden Sie im [Einführungsartikel](introduction.md).
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
 Dieser Snowflake-Connector wird für die folgenden Aktivitäten unterstützt:
 
 - [Kopieraktivität](copy-activity-overview.md) mit einer Tabelle zur [unterstützten Quellen/Senken-Matrix](copy-activity-overview.md)
+- [Mapping Data Flow](concepts-data-flow-overview.md)
 - [Lookup-Aktivität](control-flow-lookup-activity.md)
 
 Für die Kopieraktivität unterstützt dieser Snowflake-Connector die folgenden Funktionen:
 
 - Kopieren von Daten aus Snowflake unter Verwendung des Snowflake-Befehls [COPY into [Speicherort]](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html), um optimale Leistung zu erzielen.
-- Kopieren von Daten in Snowflake unter Verwendung des Snowflake-Befehls [COPY into [Tabelle]](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html), um optimale Leistung zu erzielen. Snowflake in Azure wird unterstützt.
+- Kopieren von Daten in Snowflake unter Verwendung des Snowflake-Befehls [COPY into [Tabelle]](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html), um optimale Leistung zu erzielen. Snowflake in Azure wird unterstützt. 
+
+Snowflake als Senke wird nicht unterstützt, wenn Sie den Azure Synapse Analytics-Arbeitsbereich verwenden.
 
 ## <a name="get-started"></a>Erste Schritte
 
@@ -105,8 +108,8 @@ Folgende Eigenschaften werden für das Snowflake-Dataset unterstützt.
 | Eigenschaft  | BESCHREIBUNG                                                  | Erforderlich                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | type      | Die „type“-Eigenschaft des Datasets muss auf **SnowflakeTable** festgelegt werden. | Ja                         |
-| schema | Name des Schemas. |Quelle: Nein, Senke: Ja  |
-| table | Name der Tabelle/Ansicht. |Quelle: Nein, Senke: Ja  |
+| schema | Name des Schemas. Beim Schemanamen wird Groß-/Kleinschreibung beachtet. |Quelle: Nein, Senke: Ja  |
+| table | Name der Tabelle/Ansicht. Beim Tabellennamen wird in Azure Data Factory Groß-/Kleinschreibung beachtet. |Quelle: Nein, Senke: Ja  |
 
 **Beispiel:**
 
@@ -143,7 +146,7 @@ Beim Kopieren von Daten aus Snowflake werden die folgenden Eigenschaften im Absc
 | Eigenschaft                     | BESCHREIBUNG                                                  | Erforderlich |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
 | type                         | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **SnowflakeSource** festgelegt werden. | Ja      |
-| Abfrage          | Gibt die SQL-Abfrage an, mit der Daten aus Snowflake gelesen werden.<br>Die Ausführung der gespeicherten Prozedur wird nicht unterstützt. | Nein       |
+| Abfrage          | Gibt die SQL-Abfrage an, mit der Daten aus Snowflake gelesen werden. Wenn der Name des Schemas, der Tabelle und Spalten Kleinbuchstaben enthält, geben Sie den Objektbezeichner in der Abfrage an, z. B. `select * from "schema"."myTable"`.<br>Die Ausführung der gespeicherten Prozedur wird nicht unterstützt. | Nein       |
 | exportSettings | Erweiterte Einstellungen, die zum Abrufen von Daten aus Snowflake verwendet werden. Sie können die vom Befehl „COPY into“ unterstützten Einstellungen konfigurieren, die Data Factory beim Aufrufen der Anweisung durchläuft. | Nein       |
 | ***Unter `exportSettings`:*** |  |  |
 | type | Der Typ des Exportbefehls, festgelegt auf **SnowflakeExportCopyCommand**. | Ja |
@@ -194,7 +197,7 @@ Wenn der Senkendatenspeicher und das Format die in diesem Abschnitt beschriebene
         "typeProperties": {
             "source": {
                 "type": "SnowflakeSource",
-                "sqlReaderQuery": "SELECT * FROM MyTable",
+                "sqlReaderQuery": "SELECT * FROM MYTABLE",
                 "exportSettings": {
                     "type": "SnowflakeExportCopyCommand",
                     "additionalCopyOptions": {
@@ -305,7 +308,7 @@ Wenn der Quelldatenspeicher und das Format die in diesem Abschnitt beschriebenen
 
    -  `additionalColumns` ist nicht angegeben.
    - Wenn es sich bei der Quelle um einen Ordner handelt, wird `recursive` auf TRUE festgelegt.
-   - `prefix`, `modifiedDateTimeStart` und `modifiedDateTimeEnd` sind nicht angegeben.
+   - `prefix`, `modifiedDateTimeStart`, `modifiedDateTimeEnd` und `enablePartitionDiscovery` sind nicht angegeben.
 
 **Beispiel:**
 
@@ -396,6 +399,83 @@ Um diese Funktion verwenden zu können, erstellen Sie einen [mit Azure Blob Stor
 ]
 ```
 
+## <a name="mapping-data-flow-properties"></a>Eigenschaften von Mapping Data Flow
+
+Beim Transformieren von Daten im Zuordnungsdatenfluss können Sie in Snowflake Tabellen lesen und in diese schreiben. Weitere Informationen finden Sie unter [Quellentransformation](data-flow-source.md) und [Senkentransformation](data-flow-sink.md) in Zuordnungsdatenflüssen. Sie können ein Snowflake-Dataset oder [Inlinedataset](data-flow-source.md#inline-datasets) als Quell- und Senkentyp verwenden.
+
+### <a name="source-transformation"></a>Quellentransformation
+
+In der folgenden Tabelle sind die von einer Snowflake-Quelle unterstützten Eigenschaften aufgeführt. Sie können diese Eigenschaften auf der Registerkarte **Quelloptionen** bearbeiten. Der Connector verwendet die [interne Datenübertragung](https://docs.snowflake.com/en/user-guide/spark-connector-overview.html#internal-data-transfer) von Snowflake.
+
+| Name | BESCHREIBUNG | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| Tabelle | Wenn Sie „Tabelle“ als Eingabe auswählen, ruft der Datenfluss alle Daten aus der Tabelle ab, die im Snowflake-Dataset oder bei Verwendung des Inlinedatasets in den Quelloptionen angegeben ist. | Nein | String | *(nur für Inlinedataset)*<br>tableName<br>schemaName |
+| Abfrage | Wenn Sie „Abfrage“ als Eingabe auswählen, geben Sie eine Abfrage zum Abrufen von Daten aus Snowflake ein. Diese Einstellung überschreibt jede Tabelle, die Sie im Dataset ausgewählt haben.<br>Wenn der Name des Schemas, der Tabelle und Spalten Kleinbuchstaben enthält, geben Sie den Objektbezeichner in der Abfrage an, z. B. `select * from "schema"."myTable"`. | Nein | String | Abfrage |
+
+#### <a name="snowflake-source-script-examples"></a>Beispiele für Snowflake-Quellskripts
+
+Wenn Sie das Snowflake-Dataset als Quelltyp verwenden, sieht das zugehörige Datenflussskript wie folgt aus:
+
+```
+source(allowSchemaDrift: true,
+    validateSchema: false,
+    query: 'select * from MYTABLE',
+    format: 'query') ~> SnowflakeSource
+```
+
+Wenn Sie ein Inlinedataset verwenden, sieht das zugehörige Datenflussskript wie folgt aus:
+
+```
+source(allowSchemaDrift: true,
+    validateSchema: false,
+    format: 'query',
+    query: 'select * from MYTABLE',
+    store: 'snowflake') ~> SnowflakeSource
+```
+
+### <a name="sink-transformation"></a>Senkentransformation
+
+In der folgenden Tabelle sind die von einer Snowflake-Senke unterstützten Eigenschaften aufgeführt. Sie können diese Eigenschaften auf der Registerkarte **Einstellungen** bearbeiten. Bei Verwendung eines Inlinedatasets werden zusätzliche Einstellungen angezeigt. Diese entsprechen den Eigenschaften, die im Abschnitt zu den [Dataseteigenschaften](#dataset-properties) beschrieben sind. Der Connector verwendet die [interne Datenübertragung](https://docs.snowflake.com/en/user-guide/spark-connector-overview.html#internal-data-transfer) von Snowflake.
+
+| Name | BESCHREIBUNG | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| Updatemethode | Geben Sie an, welche Vorgänge für das Snowflake-Ziel zulässig sind.<br>Um Aktualisierungs-, Upsert- oder Löschaktionen auf Zeilen anzuwenden, muss eine [Zeilenänderungstransformation](data-flow-alter-row.md) zum Kennzeichnen von Zeilen für diese Aktionen erfolgen. | Ja | `true` oder `false` | deletable <br/>insertable <br/>updateable <br/>upsertable |
+| Schlüsselspalten | Für Update-, Upsert- und Löschvorgänge muss mindestens eine Schlüsselspalte festgelegt werden, um die Zeile zu bestimmen, die geändert werden soll. | Nein | Array | keys |
+| Aktion table | Bestimmt, ob die Zieltabelle vor dem Schreiben neu erstellt werden soll oder alle Zeilen aus der Zieltabelle entfernt werden sollen.<br>- **Keine**: Es wird keine Aktion an der Tabelle vorgenommen.<br>- **Neu erstellen**: Die Tabelle wird gelöscht und neu erstellt. Erforderlich, wenn eine neue Tabelle dynamisch erstellt wird.<br>- **Abschneiden**: Alle Zeilen werden aus der Zieltabelle entfernt. | Nein | `true` oder `false` | Neu erstellen<br/>truncate |
+
+#### <a name="snowflake-sink-script-examples"></a>Beispiele für Snowflake-Senkenskripts
+
+Wenn Sie das Snowflake-Dataset als Senkentyp verwenden, sieht das zugehörige Datenflussskript wie folgt aus:
+
+```
+IncomingStream sink(allowSchemaDrift: true,
+    validateSchema: false,
+    deletable:true,
+    insertable:true,
+    updateable:true,
+    upsertable:false,
+    keys:['movieId'],
+    format: 'table',
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> SnowflakeSink
+```
+
+Wenn Sie ein Inlinedataset verwenden, sieht das zugehörige Datenflussskript wie folgt aus:
+
+```
+IncomingStream sink(allowSchemaDrift: true,
+    validateSchema: false,
+    format: 'table',
+    tableName: 'table',
+    schemaName: 'schema',
+    deletable: true,
+    insertable: true,
+    updateable: true,
+    upsertable: false,
+    store: 'snowflake',
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> SnowflakeSink
+```
 
 ## <a name="lookup-activity-properties"></a>Eigenschaften der Lookup-Aktivität
 

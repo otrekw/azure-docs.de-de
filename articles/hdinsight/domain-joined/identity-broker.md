@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 12/12/2019
-ms.openlocfilehash: ff7cb3c03edf9b421347815311796896caaffd70
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 6ef76f3dafc02e89008ae164e3d868c628291766
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086601"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89075306"
 ---
 # <a name="use-id-broker-preview-for-credential-management"></a>Verwenden des Identitätsbrokers (Vorschauversion) für die Verwaltung von Anmeldeinformationen
 
@@ -98,6 +98,8 @@ Nach dem Aktivieren des Identitätsbrokers müssen Sie dennoch einen Kennworthas
 
 Für die SSH-Authentifizierung muss der Hash in Azure AD DS verfügbar sein. Wenn Sie SSH nur für administrative Szenarien verwenden möchten, können Sie ein ausschließliches Cloudkonto erstellen und für die SSH-Verbindung mit dem Cluster verwenden. Andere Benutzer können weiterhin Ambari- oder HDInsight-Tools (z. B. das IntelliJ-Plug-In) verwenden, ohne dass der Kennworthash in Azure AD DS verfügbar ist.
 
+Informationen zum Behandeln von Authentifizierungsfehlern finden Sie in diesem [Handbuch](https://docs.microsoft.com/azure/hdinsight/domain-joined/domain-joined-authentication-issues).
+
 ## <a name="clients-using-oauth-to-connect-to-hdinsight-gateway-with-id-broker-setup"></a>Clients, die OAuth zum Herstellen einer Verbindung mit dem HDInsight-Gateway mithilfe des Identitätsbrokersetups verwenden
 
 Im Identitätsbrokersetup können benutzerdefinierte Apps und Clients aktualisiert werden, die eine Verbindung mit dem Gateway herstellen, um zuerst das erforderliche OAuth-Token abzurufen. Sie können die Schritte in diesem [Dokument](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app) ausführen, um das Token mit den folgenden Informationen abzurufen:
@@ -105,6 +107,12 @@ Im Identitätsbrokersetup können benutzerdefinierte Apps und Clients aktualisie
 *   OAuth-Ressourcen-URI: `https://hib.azurehdinsight.net` 
 * AppId: 7865c1d2-f040-46cc-875f-831a1ef6a28a
 *   Berechtigung: (Name: Cluster.ReadWrite, id: 8f89faa0-ffef-4007-974d-4989b39ad77d)
+
+Nachdem Sie das OAuth-Token abgerufen haben, können Sie dieses im Autorisierungsheader für die HTTP-Anforderung an das Clustergateway (z. B. <clustername>-int.azurehdinsight.net) verwenden. Ein cURL-Beispielbefehl für die Livy-API könnte wie folgt aussehen:
+    
+```bash
+curl -k -v -H "Authorization: TOKEN" -H "Content-Type: application/json" -X POST -d '{ "file":"wasbs://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://<clustername>-int.azurehdinsight.net/livy/batches" -H "X-Requested-By: UPN"
+``` 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

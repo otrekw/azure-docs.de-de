@@ -7,20 +7,26 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 03/03/2020
-ms.openlocfilehash: f1a539096ac1a154ca37bbe6703f820787f927fb
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 08/11/2020
+ms.openlocfilehash: 4f7db88da646c9787c70d04ff7e3478a27a09275
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82778259"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401638"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight-Verwaltungs-IP-Adressen
 
+Dieser Artikel enthält die IP-Adressen, die von den Integritäts- und Verwaltungsdiensten von Azure HDInsight verwendet werden. Wenn Sie Netzwerksicherheitsgruppen (NSGs) oder benutzerdefinierte Routen (User Defined Routes, UDRs) verwenden, müssen Sie möglicherweise einige dieser IP-Adressen zur Liste der zulässigen Adressen für eingehenden Netzwerkdatenverkehr hinzufügen.
+
+## <a name="introduction"></a>Einführung
+ 
 > [!Important]
-> In den meisten Fällen können Sie jetzt das Feature [Diensttag](hdinsight-service-tags.md) für Netzwerksicherheitsgruppen verwenden, statt IP-Adressen manuell hinzuzufügen. Neue Regionen werden nur für Diensttags hinzugefügt und die statischen IP-Adressen werden schließlich eingestellt.
+> In den meisten Fällen können Sie jetzt [Diensttags](hdinsight-service-tags.md) für Netzwerksicherheitsgruppen verwenden, statt IP-Adressen manuell hinzuzufügen. IP-Adressen werden für neue Azure-Regionen nicht veröffentlicht und nur veröffentlichte Azure-Diensttags aufweisen. Die statischen IP-Adressen für Verwaltungs-IP-Adressen werden nach und nach als veraltet markiert.
 
 Wenn Sie Netzwerksicherheitsgruppen (NSG) oder benutzerdefinierte Routen (User-Defined Routes, UDRs) zum Steuern von eingehendem Datenverkehr auf Ihrem HDInsight-Cluster verwenden, müssen Sie sicherstellen, dass der Cluster mit kritischen Integritäts- und Verwaltungsdiensten von Azure kommunizieren kann.  Einige der IP-Adressen für diese Dienste sind regionsspezifisch, und einige gelten für alle Azure-Regionen. Unter Umständen müssen Sie auch Datenverkehr über den Azure DNS-Dienst zulassen, wenn Sie kein benutzerdefiniertes DNS verwenden.
+
+Wenn Sie IP-Adressen für eine hier nicht aufgeführte Region benötigen, können Sie die [Ermittlungs-API für Diensttags](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) verwenden, um IP-Adressen für Ihre Region zu finden. Wenn Sie die API nicht verwenden können, laden Sie die [JSON-Datei mit Diensttags](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) herunter, und suchen Sie nach der gewünschten Region.
 
 In den folgenden Abschnitten werden die spezifischen IP-Adressen erläutert, die zugelassen werden müssen.
 

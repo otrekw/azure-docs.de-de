@@ -5,15 +5,15 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 8/26/2019
+ms.date: 09/01/2020
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: 568739ebdce632ae955da5e1cec12635c86af57c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 783e48139cf057bb17278d98e3683cb2b4cbad89
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522855"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279549"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Problembehandlung für Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -821,7 +821,7 @@ Die folgende Tabelle gilt für Azure Batch.
 
 - **Meldung**: `User name and password cannot be null or empty to connect to the HDInsight cluster.`
 
-- **Ursache:** Der Benutzername oder das Kennwort ist leer.
+- **Ursache:** Entweder der Benutzername oder das Kennwort ist leer.
 
 - **Empfehlung**: Geben Sie die korrekten Anmeldeinformationen für die Verbindung mit HDI an, und versuchen Sie es erneut.
 
@@ -1053,6 +1053,11 @@ Verwenden Sie **Fiddler** zum Erstellen einer HTTP-Sitzung der überwachten Weba
 1. Wechseln Sie zu: **Datei** > **Speichern** > **Alle Sitzungen**.
 
 Weitere Informationen finden Sie unter [Erste Schritte mit Fiddler](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/ConfigureFiddler).
+
+## <a name="general"></a>Allgemein
+
+### <a name="activity-stuck-issue"></a>Problem mit hängen gebliebener Aktivität
+Wenn Sie beobachten, dass die Aktivität viel länger läuft als gewöhnlich und kaum vorankommt, ist sie möglicherweise hängen geblieben. Sie können versuchen, die Aktivität abzubrechen und zu wiederholen, um zu sehen, ob das hilft. Wenn es sich um eine Kopieraktivität handelt, können Sie sich unter [Problembehandlung für die Leistung der Kopieraktivität](copy-activity-performance-troubleshooting.md) über die Leistungsüberwachung und Problembehandlung informieren. Wenn es sich um einen Datenfluss handelt, informieren Sie sich unter [Leistung von Zuordnungsdatenflüssen](concepts-data-flow-performance.md) und im Leitfaden für die Optimierung.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -11,28 +11,29 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/28/2020
-ms.openlocfilehash: bdb7ba30d9fa2d0bd1eff9368d6e30e516b53895
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 9ce139131e2c6cbfd73f9160b986d9886ae4844b
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192728"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181951"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Konfigurieren von Azure Private Link für einen Azure Machine Learning-Arbeitsbereich (Vorschauversion)
 
 In diesem Dokument erfahren Sie, wie Sie Azure Private Link mit Ihrem Azure Machine Learning-Arbeitsbereich verwenden. 
 
 > [!IMPORTANT]
-> Die Verwendung von Azure Private Link mit dem Azure Machine Learning-Arbeitsbereich befindet sich derzeit in der öffentlichen Vorschau. Diese Funktionalität ist nur in den Regionen **USA, Osten** und **USA, Westen 2** verfügbar. Diese Vorschau wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Die Verwendung von Azure Private Link mit dem Azure Machine Learning-Arbeitsbereich befindet sich derzeit in der öffentlichen Vorschau. Diese Funktionalität ist nur in den Regionen **USA, Osten**, **USA, Süden-Mitte** und **USA, Westen 2** verfügbar. Diese Vorschau wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Azure Private Link ermöglicht Ihnen das Herstellen einer Verbindung mit Ihrem Arbeitsbereich über einen privaten Endpunkt. Bei einem privaten Endpunkt handelt es sich um eine Gruppe privater IP-Adressen in Ihrem virtuellen Netzwerk. Sie können dann den Zugriff auf Ihren Arbeitsbereich so einschränken, dass er nur über die privaten IP-Adressen erfolgt. Private Link hilft dabei, das Risiko einer Datenexfiltration zu verringern. Weitere Informationen zu privaten Endpunkten finden Sie im Artikel zu [Azure Private Link](/azure/private-link/private-link-overview).
 
 > [!IMPORTANT]
 > Azure Private Link hat keine Auswirkungen auf die Azure-Steuerungsebene (Verwaltungsvorgänge) aus, etwa das Löschen des Arbeitsbereichs oder das Verwalten von Computeressourcen. Beispiele: Erstellen, Aktualisieren oder Löschen eines Computeziels. Diese Vorgänge werden ganz normal über das öffentliche Internet ausgeführt.
 >
-> Die Vorschauversion von Azure Machine Learning-Computeinstanzen wird in einem Arbeitsbereich, in dem Private Link aktiviert ist, nicht unterstützt.
->
 > Wenn Sie Mozilla Firefox verwenden, treten möglicherweise Probleme beim Zugriff auf den privaten Endpunkt für Ihren Arbeitsbereich auf. Dieses Problem kann im Zusammenhang mit DNS über HTTPS in Mozilla auftreten. Die Verwendung von Microsoft Edge von Google Chrome wird als Problemumgehung empfohlen.
+
+> [!TIP]
+> Die Azure Machine Learning-Computeinstanz kann mit einem Arbeitsbereich und einem privaten Endpunkt verwendet werden. Diese Funktion befindet sich derzeit in den Regionen **USA, Osten**, **USA, Süden-Mitte** und **USA, Westen 2** in der öffentlichen Vorschau.
 
 ## <a name="create-a-workspace-that-uses-a-private-endpoint"></a>Erstellen eines Arbeitsbereichs, der einen privaten Endpunkt verwendet
 

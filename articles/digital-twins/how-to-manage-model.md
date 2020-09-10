@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ff89b38de1ff62ddea328a49b998692e8039341f
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 9e782ee8e4afda1f8891979b6e50f99f3e0f1cc7
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661553"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299540"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Verwalten von Azure Digital Twins-Modellen
 
@@ -166,6 +166,30 @@ Der Aufruf `RetrieveModelWithDependencies` gibt nicht nur das angeforderte Model
 
 Modelle werden nicht unbedingt genau in dem Dokumentformat zurückgegeben, in dem sie hochgeladen wurden. Azure Digital Twins gewährleistet nur, dass das Rückgabeformat semantisch gleichwertig ist. 
 
+### <a name="update-models"></a>Aktualisieren von Modellen
+
+Nachdem ein Modell in Ihre Instanz hochgeladen wurde, ist die gesamte Modellschnittstelle unveränderlich. Dies bedeutet, dass es kein herkömmliches „Bearbeiten“ von Modellen gibt.
+
+Wenn Sie stattdessen Änderungen an einem Modell in Azure Digital Twins vornehmen möchten, besteht die Möglichkeit, eine **neuere Version** desselben Modells hochzuladen. Während der Vorschau erlaubt Ihnen das Ansteigen einer Modellversion nur das Entfernen von Feldern, nicht das Hinzufügen neuer Felder (um neue Felder hinzuzufügen, sollten Sie einfach [ein brandneues Modell erstellen](#create-models)).
+
+Um eine neue Version eines bestehenden Modells zu erstellen, beginnen Sie mit der DTDL des ursprünglichen Modells. Aktualisieren Sie die Felder, die Sie ändern möchten.
+
+Markieren Sie diese dann als neuere Version des Modells, indem Sie das `id`-Feld des Modells aktualisieren. Der letzte Abschnitt der Modell-ID, nach dem `;`, stellt die Modellnummer dar. Um anzuzeigen, dass es sich jetzt um eine aktualisierte Version dieses Modells handelt, erhöhen Sie die Zahl am Ende des `id`-Werts auf eine beliebige Zahl, die größer als die aktuelle Versionsnummer ist.
+
+Wenn Ihre frühere Modell-ID z. B. so aussah:
+
+```json
+"@id": "dtmi:com:contoso:PatientRoom;1",
+```
+
+Version 2 dieses Modells könnte wie folgt aussehen:
+
+```json
+"@id": "dtmi:com:contoso:PatientRoom;2",
+```
+
+Laden Sie dann die neue Version des Modells auf Ihre Instanz hoch. Es wird die alte Version ersetzen, und neue Zwillinge, die Sie mit diesem Modell erstellen, werden die aktualisierte Version verwenden.
+
 ### <a name="remove-models"></a>Entfernen von Modellen
 
 Ebenso gibt es zwei Möglichkeiten, Modelle aus dem Dienst zu entfernen:
@@ -249,6 +273,8 @@ Azure Digital Twins geht dagegen nicht vor. Deshalb sollten Sie darauf achten, T
 ## <a name="manage-models-with-cli"></a>Verwalten von Modellen mit der CLI
 
 Modelle können auch mit der Azure Digital Twins-CLI verwaltet werden. Die Befehle finden Sie unter [*Vorgehensweise: Verwenden der Azure Digital Twins-Befehlszeilenschnittstelle*](how-to-use-cli.md).
+
+[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

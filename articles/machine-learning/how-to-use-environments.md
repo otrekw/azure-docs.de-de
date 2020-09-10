@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 3368a42248e084476eb27318abbcd1ca9fbfdacf
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 11bd5f7397664d183f27337f7ca36d0123ee63f5
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927543"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397065"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>Erstellen und Verwenden von Softwareumgebungen in Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -86,7 +86,6 @@ from azureml.core.environment import Environment
 Environment(name="myenv")
 ```
 
-Beim Definieren einer eigenen Umgebung müssen Sie `azureml-defaults` mit der Version >= 1.0.45 als pip-Abhängigkeit auflisten. Dieses Paket enthält die erforderlichen Funktionen zum Hosten des Modells als Webdienst.
 
 ### <a name="use-conda-and-pip-specification-files"></a>Verwenden von Conda- und pip-Spezifikationsdateien
 
@@ -142,8 +141,6 @@ run = myexp.submit(config=runconfig)
 # Show each step of run 
 run.wait_for_completion(show_output=True)
 ```
-
-In ähnlicher Weise können Sie, wenn Sie ein [`Estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py)-Objekt für das Training verwenden, die Estimator-Instanz direkt als Lauf übermitteln, ohne eine Umgebung anzugeben. Das `Estimator`-Objekt kapselt die Umgebung und das Computeziel bereits ein.
 
 ## <a name="add-packages-to-an-environment"></a>Hinzufügen von Paketen zu einer Umgebung
 
@@ -364,33 +361,12 @@ run = exp.submit(runconfig)
 
 Wenn Sie in Ihrer Ausführungskonfiguration keine Umgebung angeben, erstellt der Dienst eine Standardumgebung für Sie, wenn Sie Ihren Lauf übermitteln.
 
-### <a name="use-an-estimator-for-training"></a>Verwenden einer Estimator-Instanz für das Training
-
-Wenn Sie für das Training einen [Estimator](how-to-train-ml-models.md) verwenden, können Sie die Estimator-Instanz direkt übermitteln. Sie kapselt bereits die Umgebung und das Computeziel.
-
-Der folgende Code verwendet einen Estimator für einen Trainingslauf auf einem Einzelknoten. Er wird bei einem Remotecompute für ein `scikit-learn`-Modell ausgeführt. Dabei wird davon ausgegangen, dass Sie zuvor ein Computezielobjekt `compute_target` und ein Datenspeicherobjekt `ds` erstellt haben.
-
-```python
-from azureml.train.estimator import Estimator
-
-script_params = {
-    '--data-folder': ds.as_mount(),
-    '--regularization': 0.8
-}
-
-sk_est = Estimator(source_directory='./my-sklearn-proj',
-                   script_params=script_params,
-                   compute_target=compute_target,
-                   entry_script='train.py',
-                   conda_packages=['scikit-learn'])
-
-# Submit the run 
-run = experiment.submit(sk_est)
-```
-
 ## <a name="use-environments-for-web-service-deployment"></a>Verwenden von Umgebungen für die Webdienstbereitstellung
 
 Sie können Umgebungen verwenden, wenn Sie Ihr Modell als Webdienst bereitstellen. Diese Funktion ermöglicht einen reproduzierbaren, verbundenen Workflow. In diesem Workflow können Sie das Modell trainieren, testen und bereitstellen, indem Sie die gleichen Bibliotheken sowohl für das Trainingscompute als auch für das Rückschlusscompute verwenden.
+
+
+Beim Definieren einer eigenen Umgebung für die Webdienstbereitstellung müssen Sie `azureml-defaults` mit der Version >= 1.0.45 als pip-Abhängigkeit auflisten. Dieses Paket enthält die erforderlichen Funktionen zum Hosten des Modells als Webdienst.
 
 Zum Bereitstellen eines Webdiensts kombinieren Sie die Umgebung, das Rückschlusscompute, das Bewertungsskript und das registrierte Modell in Ihrem Bereitstellungsobjekt [`deploy()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-). Weitere Informationen finden Sie unter [Wie und wo Modelle bereitgestellt werden](how-to-deploy-and-where.md).
 

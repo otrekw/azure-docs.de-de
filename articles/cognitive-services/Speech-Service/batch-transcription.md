@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 08/28/2020
 ms.author: wolfma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5be3b4ce5d89a15009f2b9b31183400890dbefb5
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 3b9a491f7546fbaa8722498b164bfa56353dfcfc
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918943"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050181"
 ---
 # <a name="how-to-use-batch-transcription"></a>Verwenden von Batch-Transkription
 
@@ -170,7 +170,7 @@ Verwenden Sie diese optionalen Eigenschaften zum Konfigurieren der Transkription
       `destinationContainerUrl`
    :::column-end:::
    :::column span="2":::
-      Optionale URL mit [Dienst-SAS](../../storage/common/storage-sas-overview.md) zu einem beschreibbaren Container in Azure. Das Ergebnis wird in diesem Container gespeichert. Wenn keine Angabe erfolgt, speichert Microsoft die Ergebnisse in einem von Microsoft verwalteten Speichercontainer. Wenn die Transkription durch Aufruf von [Transkription löschen](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription) gelöscht wird, werden die Ergebnisdaten ebenfalls gelöscht.
+      Optionale URL mit [Dienst-Ad-hoc-SAS](../../storage/common/storage-sas-overview.md) zu einem beschreibbaren Container in Azure. Das Ergebnis wird in diesem Container gespeichert. SAS mit gespeicherter Zugriffsrichtlinie wird **nicht** unterstützt. Wenn keine Angabe erfolgt, speichert Microsoft die Ergebnisse in einem von Microsoft verwalteten Speichercontainer. Wenn die Transkription durch Aufruf von [Transkription löschen](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription) gelöscht wird, werden die Ergebnisdaten ebenfalls gelöscht.
 :::row-end:::
 
 ### <a name="storage"></a>Storage

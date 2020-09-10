@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: 54a55789cf867c97cf2384b48f1e5545ee54dafc
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.date: 09/02/2020
+ms.openlocfilehash: a33bc5816ded7cdca75737b02add0a6ca8821700
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773405"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400193"
 ---
 # <a name="control-network-traffic-in-azure-hdinsight"></a>Steuern des Netzwerkdatenverkehrs in Azure HDInsight
 
@@ -32,7 +32,11 @@ Wenn Sie planen, **Netzwerksicherheitsgruppen** zum Steuern des Netzwerkdatenver
 
 1. Identifizieren Sie die Azure-Region, die Sie für HDInsight verwenden möchten.
 
-2. Identifizieren Sie die von HDInsight für Ihre Region benötigten Diensttags. Weitere Informationen finden Sie unter [NSG-Diensttags (Netzwerksicherheitsgruppen) für Azure HDInsight](hdinsight-service-tags.md).
+2. Identifizieren Sie die von HDInsight für Ihre Region benötigten Diensttags. Es gibt mehrere Möglichkeiten zum Abrufen dieser Diensttags:
+    1. Konsultieren Sie die Liste der veröffentlichten Diensttags unter [Diensttags von Netzwerksicherheitsgruppen für Azure HDInsight](hdinsight-service-tags.md). 
+    2. Wenn Ihre Region nicht in der Liste enthalten ist, verwenden Sie die [Ermittlungs-API für Diensttags](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview), um ein Diensttag für Ihre Region zu finden.
+    3. Wenn Sie die API nicht verwenden können, laden Sie die [JSON-Datei mit Diensttags](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) herunter, und suchen Sie nach der gewünschten Region.
+
 
 3. Erstellen oder ändern Sie die Netzwerksicherheitsgruppen für das Subnetz, in dem Sie HDInsight installieren möchten.
 
@@ -51,10 +55,6 @@ Die Tunnelerzwingung ist eine benutzerdefinierte Routingkonfiguration, bei der f
 Kunden, die an der Einrichtung der Tunnelerzwingung interessiert sind, sollten [benutzerdefinierte Metastores](./hdinsight-use-external-metadata-stores.md) verwenden und die entsprechenden Verbindungen vom Clustersubnetz oder dem lokalen Netzwerk zu diesen benutzerdefinierten Metastores einrichten.
 
 Ein Beispiel für die UDR-Einrichtung mit Azure Firewall finden Sie unter [Konfigurieren von Einschränkungen des ausgehenden Netzwerkdatenverkehrs für Azure HDInsight-Cluster](hdinsight-restrict-outbound-traffic.md).
-
-## <a name="required-ip-addresses"></a>Erforderliche IP-Adressen
-
-Sie sollten sich den Abschnitt [HDInsight-Verwaltungs-IP-Adressen](hdinsight-management-ip-addresses.md) ansehen, wenn Sie Netzwerksicherheitsgruppen oder benutzerdefinierte Routen zum Steuern von Datenverkehr verwenden.
 
 ## <a name="required-ports"></a>Erforderliche Ports
 

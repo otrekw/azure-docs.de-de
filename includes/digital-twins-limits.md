@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 6/9/2020
 ms.author: baanders
-ms.openlocfilehash: 22b00b41c7fce0af57fd9f92b0f42bbd9412afda
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 2ea607b22bfa1eebdf6b63adcd14a5d1bb1ca9d0
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87771196"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89303936"
 ---
 ### <a name="functional-limits"></a>Funktionale Grenzwerte
 
@@ -42,7 +42,7 @@ Diese Tabelle gibt die Ratenbegrenzungen verschiedener APIs an.
 | Modelle-API | Anzahl der Anforderungen pro Sekunde | 100 | Ja |
 | Digital Twins-API | Anzahl der Anforderungen pro Sekunde | 1\.000 | Ja |
 | Abfrage-API | Anzahl der Anforderungen pro Sekunde | 500 | Ja |
-| Abfrage-API | Abfrageeinheiten pro Sekunde | 4\.000 | Ja |
+| Abfrage-API | [Abfrageeinheiten](../articles/digital-twins/concepts-query-units.md) pro Sekunde | 4\.000 | Ja |
 | Ereignisrouten-API | Anzahl der Anforderungen pro Sekunde | 100 | Ja |
 
 ### <a name="other-limits"></a>Andere Limits

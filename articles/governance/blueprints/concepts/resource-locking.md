@@ -1,14 +1,14 @@
 ---
 title: Grundlagen von Ressourcensperren
 description: Erfahren Sie, wie Sie die Sperrfunktionen in Azure Blueprints verwenden, um beim Zuweisen einer Blauphase die Ressourcen zu schützen.
-ms.date: 03/25/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 94ed8efd0d6c654cba129dfc69fbfe5add7a0824
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 5e60724a276bce94770c5fdc33ee0c8b4e7712fe
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383590"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051501"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Grundlegendes zur Ressourcensperre in Azure Blueprint
 
@@ -28,7 +28,7 @@ Für Ressourcen, die von Artefakten in einer Blaupausenzuweisung erstellt wurden
 |-|-|-|-|
 |Nicht sperren|*|Nicht gesperrt|Ressourcen werden nicht durch Azure Blueprints geschützt. Dieser Zustand wird auch für Ressourcen verwendet, die einem Ressourcengruppenartefakt mit dem Zustand **Schreibgeschützt** oder **Nicht löschen** außerhalb einer Blaupausenzuweisung hinzugefügt wurden.|
 |Nur Leseberechtigung|Resource group|Bearbeiten/Löschen nicht möglich|Die Ressourcengruppe ist schreibgeschützt, und Tags der Ressourcengruppe können nicht geändert werden. Ressourcen mit dem Zustand **Nicht gesperrt** können dieser Ressourcengruppe hinzugefügt bzw. darin verschoben, geändert oder gelöscht werden.|
-|Nur Leseberechtigung|Keine Ressourcengruppe|Nur Leseberechtigung|Die Ressource kann in keiner Weise geändert oder gelöscht werden.|
+|Nur Leseberechtigung|Keine Ressourcengruppe|Nur Leseberechtigung|Die Ressource kann in keiner Weise geändert werden. Es können keine Änderungen und Löschungen vorgenommen werden.|
 |Nicht löschen|*|Löschen nicht möglich|Die Ressourcen können geändert, aber nicht gelöscht werden. Ressourcen mit dem Zustand **Nicht gesperrt** können dieser Ressourcengruppe hinzugefügt bzw. darin verschoben, geändert oder gelöscht werden.|
 
 ## <a name="overriding-locking-states"></a>Außerkraftsetzen von Zuständen
@@ -182,8 +182,8 @@ Während **excludedPrincipals** explizit sein muss, können **excludedActions**-
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Führen Sie die Schritte im Tutorial [Schützen neuer Ressourcen](../tutorials/protect-new-resources.md) aus.
-- Erfahren Sie mehr über den [Lebenszyklus von Blaupausen](lifecycle.md).
-- Machen Sie sich mit der Verwendung [statischer und dynamischer Parameter](parameters.md) vertraut.
-- Erfahren Sie, wie Sie die [Abfolge von Blaupausen](sequencing-order.md) anpassen können.
+- Erfahren Sie mehr über den [Lebenszyklus von Blaupausen](./lifecycle.md).
+- Machen Sie sich mit der Verwendung [statischer und dynamischer Parameter](./parameters.md) vertraut.
+- Erfahren Sie, wie Sie die [Abfolge von Blaupausen](./sequencing-order.md) anpassen können.
 - Lernen Sie, wie Sie [vorhandene Zuweisungen aktualisieren](../how-to/update-existing-assignments.md).
 - Beheben Sie Probleme bei der Blaupausenzuweisung mithilfe des [allgemeinen Leitfadens zur Problembehandlung](../troubleshoot/general.md).

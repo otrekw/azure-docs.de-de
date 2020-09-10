@@ -6,13 +6,13 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: debbc47204aca2fbea1307bd4b692921725e5fd0
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 37ebd1702ed8ef059b38378b89f5a5cb61748568
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563907"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231298"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale"></a>Azure-Sicherheitsbaseline für Azure Database for PostgreSQL (Hyperscale)
 
@@ -347,13 +347,13 @@ In einigen Fällen erfordern Anwendungen von Drittanbietern eine lokale Zertifik
 
 **Verantwortlichkeit**: Shared
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6: Verwenden der rollenbasierten Zugriffssteuerung zum Steuern des Zugriffs auf Ressourcen
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Verwenden von Azure RBAC zum Steuern des Zugriffs auf Ressourcen
 
-**Leitfaden**: Verwenden Sie die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure, um den Zugriff auf die Hyperscale (Citus)-Steuerungsebene (z. B. Azure-Portal) zu steuern. RBAC wirkt sich nicht auf Benutzerberechtigungen in der Datenbank aus.
+**Leitfaden**: Verwenden Sie die rollenbasierte Zugriffssteuerung von Azure (Azure RBAC), um den Zugriff auf die Hyperscale (Citus)-Steuerungsebene (z. B. Azure-Portal) zu steuern. Azure RBAC wirkt sich nicht auf Benutzerberechtigungen in der Datenbank aus.
 
 Verwenden Sie zum Ändern von Benutzerberechtigungen auf Datenbankebene PostgreSQL-Standardbefehle mithilfe eines Tools wie PgAdmin oder psql.
 
-- [Konfigurieren von RBAC in Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+- [Konfigurieren von Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
 - [Erstellen von Benutzern in Azure Database for PostgreSQL: Hyperscale (Citus)](https://docs.microsoft.com/azure/postgresql/howto-hyperscale-create-users)
 

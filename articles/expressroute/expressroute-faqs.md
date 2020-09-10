@@ -2,17 +2,17 @@
 title: Häufig gestellte Fragen zu Azure ExpressRoute | Microsoft-Dokumentation
 description: Die FAQs zu ExpressRoute enthalten Informationen zu unterstützten Azure-Diensten, Kosten, Daten und Verbindungen, SLAs, Anbietern und Standorten, Bandbreite sowie zusätzliche technische Details.
 services: expressroute
-author: jaredr80
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
-ms.author: jaredro
-ms.openlocfilehash: 8309c98e9ae45650f65fcd54676cc7655934039d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: duau
+ms.openlocfilehash: fe7fd6d7a7511b1b1c6a218878fc185f83b1a2cd
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537121"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89396691"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – FAQ
 
@@ -217,13 +217,13 @@ Ja. Bei einer standardmäßigen ExpressRoute-Verbindung sind bis zu 10 Verbindun
 
 ### <a name="i-have-multiple-azure-subscriptions-that-contain-virtual-networks-can-i-connect-virtual-networks-that-are-in-separate-subscriptions-to-a-single-expressroute-circuit"></a>Ich habe mehrere Azure-Abonnements, die Virtual Networks enthalten. Kann ich Virtual Networks, die sich in unterschiedlichen Abonnements befinden, mit einer ExpressRoute-Verbindung verbinden?
 
-Ja. Sie können bis zu 10 virtuelle Netzwerke im selben Abonnement wie die Verbindung oder verschiedene Abonnements über eine einzige ExpressRoute-Leitung verbinden. Dieses Limit kann durch das Aktivieren des ExpressRoute Premium-Features erhöht werden.
+Ja. Sie können bis zu 10 virtuelle Netzwerke im selben Abonnement wie die Verbindung oder verschiedene Abonnements über eine einzige ExpressRoute-Leitung verbinden. Dieses Limit kann durch das Aktivieren des ExpressRoute Premium-Features erhöht werden. Beachten Sie, dass Verbindungs- und Bandbreitengebühren für die dedizierte Verbindung dem Besitzer der ExpressRoute-Verbindung in Rechnung gestellt werden. Außerdem nutzen alle virtuellen Netzwerke dieselbe Bandbreite.
 
 Weitere Informationen finden Sie unter [Freigeben einer ExpressRoute-Verbindung für mehrere Abonnements](expressroute-howto-linkvnet-arm.md).
 
 ### <a name="i-have-multiple-azure-subscriptions-associated-to-different-azure-active-directory-tenants-or-enterprise-agreement-enrollments-can-i-connect-virtual-networks-that-are-in-separate-tenants-and-enrollments-to-a-single-expressroute-circuit-not-in-the-same-tenant-or-enrollment"></a>Ich verfüge über mehrere Azure-Abonnements, die unterschiedlichen Azure Active Directory-Mandanten oder Enterprise Agreement-Registrierungen zugeordnet sind. Kann ich virtuelle Netzwerke in separaten Mandanten und Registrierungen mit einer einzelnen ExpressRoute-Verbindung verbinden, die sich nicht im gleichen Mandanten bzw. nicht in der gleichen Registrierung befindet?
 
-Ja. ExpressRoute-Autorisierungen können ohne zusätzliche Konfigurationsschritte über die Grenzen von Abonnements, Mandanten und Registrierungen hinweg verwendet werden. 
+Ja. ExpressRoute-Autorisierungen können ohne zusätzliche Konfigurationsschritte über die Grenzen von Abonnements, Mandanten und Registrierungen hinweg verwendet werden. Beachten Sie, dass Verbindungs- und Bandbreitengebühren für die dedizierte Verbindung dem Besitzer der ExpressRoute-Verbindung in Rechnung gestellt werden. Außerdem nutzen alle virtuellen Netzwerke dieselbe Bandbreite.
 
 Weitere Informationen finden Sie unter [Freigeben einer ExpressRoute-Verbindung für mehrere Abonnements](expressroute-howto-linkvnet-arm.md).
 

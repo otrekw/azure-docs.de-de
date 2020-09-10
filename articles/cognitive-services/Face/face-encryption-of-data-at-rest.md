@@ -1,20 +1,20 @@
 ---
 title: Verschlüsselung für ruhende Daten des Gesichtserkennungsdiensts
 titleSuffix: Azure Cognitive Services
-description: Verschlüsselung für ruhende Daten des Gesichtserkennungsdiensts.
+description: Microsoft bietet von Microsoft verwaltete Verschlüsselungsschlüssel an und ermöglicht Ihnen auch die Verwaltung Ihrer Cognitive Services-Abonnements mit Ihren eigenen Schlüsseln, den so genannten kundenseitig verwalteten Schlüsseln (Customer Managed Keys, CMK). In diesem Artikel erfahren Sie mehr über die Datenverschlüsselung im Ruhezustand für die Gesichtserkennung und wie Sie CMK aktivieren und verwalten können.
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 03/11/2020
+ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: 33495dd5b092cb51b3421e7204f3b529077d63b3
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: eab90fc2cb30ae8e9f1c19bdbefc6fbc88c32f76
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309032"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079267"
 ---
 # <a name="face-service-encryption-of-data-at-rest"></a>Verschlüsselung für ruhende Daten des Gesichtserkennungsdiensts
 
@@ -24,15 +24,6 @@ Der Gesichtserkennungsdienst verschlüsselt Ihre Daten beim Speichern in der Clo
 
 > [!IMPORTANT]
 > Vom Kunden verwaltete Schlüssel sind nur im Tarif E0 verfügbar. Wenn Sie die Möglichkeit haben möchten, von Kunden verwaltete Schlüssel zu verwenden, füllen Sie das [Formular zum Anfordern von kundenseitig verwalteten Schlüsseln für den Gesichtserkennungsdienst](https://aka.ms/cogsvc-cmk) aus, und reichen Sie es ein. Nach ca. 3–5 Werktagen erhalten Sie eine Rückmeldung zum Status Ihrer Anforderung. Je nach Bedarf können Sie in einer Warteschlange platziert und genehmigt werden, sobald Platz verfügbar ist. Nachdem Ihre Verwendung von CMK mit dem Gesichtserkennungsdienst genehmigt wurde, müssen Sie eine neue Gesichtserkennungsressource erstellen und als Tarif „E0“ auswählen. Nachdem die Gesichtserkennungsressource mit dem Tarif „E0“ erstellt wurde, können Sie mit Azure Key Vault Ihre verwaltete Identität einrichten.
-
-## <a name="regional-availability"></a>Regionale Verfügbarkeit
-
-Kundenseitig verwaltete Schlüssel sind zurzeit in den folgenden Regionen verfügbar:
-
-* USA, Süden-Mitte
-* USA, Westen 2
-* East US
-* US Government, Virginia
 
 [!INCLUDE [cognitive-services-cmk](../includes/configure-customer-managed-keys.md)]
 

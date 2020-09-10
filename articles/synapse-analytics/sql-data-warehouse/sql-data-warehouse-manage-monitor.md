@@ -11,12 +11,12 @@ ms.date: 03/24/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: synapse-analytics
-ms.openlocfilehash: 7678fedeb3df3b9d27fba603db8f66b692729506
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9eb1006bdba6c69136c972359bb13420a04f4180
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211696"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048023"
 ---
 # <a name="monitor-your-azure-synapse-analytics-sql-pool-workload-using-dmvs"></a>Überwachen der Workload Ihres SQL-Pools von Azure Synapse Analytics mit DMVs
 
@@ -102,8 +102,8 @@ Wenn ein DSQL-Plan mehr Zeit in Anspruch nimmt als erwartet, kann die Ursache ei
 
 Um weitere Informationen zu einem Einzelschritt zu erhalten, beachten Sie die Spalte *operation_type* des Abfrageschritts mit langer Laufzeit, und beachten Sie den **Schrittindex**:
 
-* Fahren Sie für **SQL-Vorgänge** mit Schritt 3a fort: OnOperation, RemoteOperation, ReturnOperation.
-* Fahren Sie für **Datenverschiebungsvorgänge** mit Schritt 3b fort: ShuffleMoveOperation, BroadcastMoveOperation, TrimMoveOperation, PartitionMoveOperation, MoveOperation, CopyOperation.
+* Fahren Sie für **SQL-Vorgänge** mit Schritt 3 fort: OnOperation, RemoteOperation, ReturnOperation.
+* Fahren Sie für **Datenverschiebungsvorgänge** mit Schritt 4 fort: ShuffleMoveOperation, BroadcastMoveOperation, TrimMoveOperation, PartitionMoveOperation, MoveOperation, CopyOperation.
 
 ### <a name="step-3-investigate-sql-on-the-distributed-databases"></a>SCHRITT 3: Untersuchen von SQL auf den verteilten Datenbanken
 

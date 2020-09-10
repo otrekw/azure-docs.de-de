@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/10/2020
-ms.openlocfilehash: 0d8e2ee684bc08ec23e052229d50b7e9d62c0ecb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 09/02/2020
+ms.openlocfilehash: 5a40328274fbc776ea02efa0a86422763794d5be
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328021"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378813"
 ---
 # <a name="azure-ad-and-transactable-saas-offers-in-the-commercial-marketplace"></a>Azure AD und transaktionsfähige SaaS-Angebote im kommerziellen Marketplace
 
@@ -88,5 +88,6 @@ Die Schritte 7 bis 9 sind optional für die Benutzerverwaltung. Sie bieten Her
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Erstellen eines SaaS-Angebots im kommerziellen Marketplace](./partner-center-portal/create-new-saas-offer.md)
-- [Erstellen der Landing Page für Ihr transaktionsfähiges SaaS-Angebot im kommerziellen Marketplace](./azure-ad-transactable-saas-landing-page.md)
+- [Erstellen der Landing Page für Ihr transaktionsfähiges SaaS-Angebot im kommerziellen Marketplace](azure-ad-transactable-saas-landing-page.md)
+- [Erstellen der Landing Page für Ihr kostenloses SaaS-Angebot oder Ihr SaaS-Testangebot im kommerziellen Marketplace](azure-ad-free-or-trial-landing-page.md)
+- [Erstellen eines SaaS-Angebots im kommerziellen Marketplace](create-new-saas-offer.md)

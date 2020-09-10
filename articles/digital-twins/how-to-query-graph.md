@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: e7be96fcab0807ac8c6500c3b360f9380b4d2b28
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: e6236d9ed5ed75b6b5e10914e668de545c48fc2c
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824949"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055633"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Abfragen des Zwillingsdiagramms von Azure Digital Twins
 
@@ -24,9 +24,21 @@ Im weiteren Verlauf dieses Artikels finden Sie Beispiele für die Verwendung die
 
 ## <a name="query-syntax"></a>Abfragesyntax
 
-Dieser Abschnitt enthält einige Beispielabfragen, die die Struktur der Abfragesprache veranschaulichen und mögliche Abfragevorgänge durchführen.
+Dieser Abschnitt enthält Beispiele für Abfragen, die die Struktur der Abfragesprache veranschaulichen und mögliche Abfragevorgänge mit [digitalen Zwillingen](concepts-twins-graph.md) durchführen.
 
-Abrufen von [digitalen Zwillingen](concepts-twins-graph.md) nach Eigenschaften (einschließlich ID und Metadaten):
+### <a name="select-top-items"></a>Auswählen der obersten Elemente
+
+Mithilfe der `Select TOP`-Klausel können Sie die verschiedenen obersten Elemente in einer Abfrage auswählen.
+
+```sql
+SELECT TOP (5)
+FROM DIGITALTWINS
+WHERE ...
+```
+
+### <a name="query-by-property"></a>Abfrage nach Eigenschaft
+
+Abrufen von digitalen Zwillingen nach **Eigenschaften** (einschließlich ID und Metadaten):
 ```sql
 SELECT  * 
 FROM DigitalTwins T  
@@ -38,24 +50,29 @@ AND T.Temperature = 70
 > [!TIP]
 > Die ID eines digitalen Zwillings wird mithilfe des Metadatenfelds `$dtId` abgefragt.
 
-Sie können auch Zwillinge über ihre *Tageigenschaften* abrufen, wie unter [Hinzufügen von Tags zu digitalen Zwillingen](how-to-use-tags.md) beschrieben:
+Sie können Zwillinge auch auf der Grundlage abrufen, **ob eine bestimmte Eigenschaft definiert ist**. Hier folgt eine Abfrage, die Zwillinge abruft, die eine definierte *Location*-Eigenschaft aufweisen:
+
+```sql
+SELECT *
+FROM DIGITALTWINS WHERE IS_DEFINED(Location)
+```
+
+Dies kann Ihnen helfen, Zwillinge anhand ihrer *Tageigenschaften* abzurufen, wie unter [Hinzufügen von Tags zu digitalen Zwillingen](how-to-use-tags.md) beschrieben. Hier folgt eine Abfrage, bei der alle Zwillinge *rot* markiert werden:
+
 ```sql
 select * from digitaltwins where is_defined(tags.red) 
 ```
 
-### <a name="select-top-items"></a>Auswählen der obersten Elemente
-
-Mithilfe der `Select TOP`-Klausel können Sie die verschiedenen obersten Elemente in einer Abfrage auswählen.
+Sie können Zwillinge auch auf der Grundlage des **Typs einer Eigenschaft** abrufen. Hier folgt eine Abfrage, die Zwillinge abruft, deren *Temperature*-Eigenschaft eine Zahl ist:
 
 ```sql
-SELECT TOP (5)
-FROM DIGITALTWINS
-WHERE property = 42
+SELECT * FROM DIGITALTWINS T
+WHERE IS_NUMBER(T.Temperature)
 ```
 
 ### <a name="query-by-model"></a>Abfrage nach Modell
 
-Der `IS_OF_MODEL`-Operator kann verwendet werden, um anhand des [Modells](concepts-models.md) des Zwillings zu filtern. Er unterstützt Vererbung und weist mehrere Überladungsoptionen auf.
+Der `IS_OF_MODEL`-Operator kann verwendet werden, um anhand des [**Modells**](concepts-models.md) des Zwillings zu filtern. Er unterstützt Vererbung und weist mehrere Überladungsoptionen auf.
 
 Die einfachste Verwendung von `IS_OF_MODEL` nimmt nur einen `twinTypeName`-Parameter entgegen: `IS_OF_MODEL(twinTypeName)`.
 Hier ist eine Beispielabfrage, die in diesem Parameter einen Wert übergibt:
@@ -87,7 +104,7 @@ SELECT ROOM FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:sample:thing;1', ex
 
 ### <a name="query-based-on-relationships"></a>Abfrage basierend auf Beziehungen
 
-Für Abfragen anhand der Beziehungen von digitalen Zwillingen weist die Azure Digital Twins-Abfragesprache eine besondere Syntax auf.
+Für Abfragen anhand der **Beziehungen** von digitalen Zwillingen weist die Azure Digital Twins-Abfragesprache eine besondere Syntax auf.
 
 Beziehungen werden in der `FROM`-Klausel in den Abfragebereich übernommen. Ein wichtiger Unterschied zu „klassischen“ SQL-artigen Sprachen besteht darin, dass die Ausdrücke in dieser `FROM`-Klausel keine Tabellen sind. Stattdessen drückt die `FROM`-Klausel einen entitätsübergreifenden Beziehungsdurchlauf aus, der mit einer Azure Digital Twins-Version von `JOIN` geschrieben wird. 
 
@@ -117,7 +134,8 @@ WHERE T.$dtId = 'ABC'
 
 #### <a name="query-the-properties-of-a-relationship"></a>Abfragen der Eigenschaften einer Beziehung
 
-Ähnlich wie die Eigenschaften digitaler Zwillinge über DTDL beschrieben werden, können Beziehungen ebenfalls über Eigenschaften verfügen. Die Azure Digital Twins-Abfragesprache ermöglicht das Filtern und Projizieren von Beziehungen, indem der Beziehung innerhalb der `JOIN`-Klausel ein Alias zugewiesen wird. 
+Ähnlich wie die Eigenschaften digitaler Zwillinge über DTDL beschrieben werden, können Beziehungen ebenfalls über Eigenschaften verfügen. Sie können Zwillinge **auf der Grundlage der Eigenschaften ihrer Beziehungen** abfragen.
+Die Azure Digital Twins-Abfragesprache ermöglicht das Filtern und Projizieren von Beziehungen, indem der Beziehung innerhalb der `JOIN`-Klausel ein Alias zugewiesen wird. 
 
 Als Beispiel sei eine *servicedBy*-Beziehung angenommen, die über die *reportedCondition*-Eigenschaft verfügt. In der nachstehenden Abfrage erhält diese Beziehung den Alias „R“, um auf die zugehörige-Eigenschaft zu verweisen.
 
@@ -142,10 +160,20 @@ SELECT LightBulb
 FROM DIGITALTWINS Room 
 JOIN LightPanel RELATED Room.contains 
 JOIN LightBulb RELATED LightPanel.contains 
-WHERE IS_OF_MODEL(LightPanel, ‘dtmi:contoso:com:lightpanel;1’) 
-AND IS_OF_MODEL(LightBulb, ‘dtmi:contoso:com:lightbulb ;1’) 
-AND Room.$dtId IN [‘room1’, ‘room2’] 
+WHERE IS_OF_MODEL(LightPanel, 'dtmi:contoso:com:lightpanel;1') 
+AND IS_OF_MODEL(LightBulb, 'dtmi:contoso:com:lightbulb ;1') 
+AND Room.$dtId IN ['room1', 'room2'] 
 ```
+
+### <a name="other-compound-query-examples"></a>Weitere zusammengesetzte Abfragebeispiele
+
+Mithilfe von Kombinationsoperatoren können Sie jeden der oben genannten Abfragetypen **kombinieren**, um mehr Details in eine einzelne Abfrage einzubeziehen. Hier folgen einige zusätzliche Beispiele für zusammengesetzte Abfragen, die mehr als einen Typ von Zwillingsdeskriptor gleichzeitig abfragen.
+
+| BESCHREIBUNG | Abfrage |
+| --- | --- |
+| Von den Geräten, über die *Room 123* verfügt, geben Sie die MxChip-Geräte zurück, die die Rolle des Operators übernehmen | `SELECT device`<br>`FROM DigitalTwins space`<br>`JOIN device RELATED space.has`<br>`WHERE space.$dtid = 'Room 123'`<br>`AND device.$metadata.model = 'dtmi:contosocom:DigitalTwins:MxChip:3'`<br>`AND has.role = 'Operator'` |
+| Rufen Sie Zwillinge ab, die eine Beziehung namens *Enthält* mit einem anderen Zwilling aufweisen, der die ID *id1* besitzt | `SELECT Room`<br>`FROM DIGITIALTWINS Room`<br>`JOIN Thermostat ON Room.Contains`<br>`WHERE Thermostat.$dtId = 'id1'` |
+| Rufen Sie alle Räume dieses Raummodells ab, die in *floor11* enthalten sind | `SELECT Room`<br>`FROM DIGITALTWINS Floor`<br>`JOIN Room RELATED Floor.Contains`<br>`WHERE Floor.$dtId = 'floor11'`<br>`AND IS_OF_MODEL(Room, 'dtmi:contosocom:DigitalTwins:Room;1')` |
 
 ## <a name="run-queries-with-an-api-call"></a>Ausführen von Abfragen mit einem API-Aufruf
 

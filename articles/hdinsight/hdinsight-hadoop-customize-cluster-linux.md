@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
-ms.date: 04/21/2020
-ms.openlocfilehash: 383c64c585f05869e1d01b5c99693fcf560cdedc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/02/2020
+ms.openlocfilehash: b30a7822511dc6b4c3ae7e852cba49ebff6e24ad
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006670"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400856"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Anpassen von Azure HDInsight-Clustern mithilfe von Skriptaktionen
 
@@ -73,6 +73,8 @@ Eine Skriptaktion ist ein Bash-Skript, das auf den Knoten in einem HDInsight-Clu
 * Sie werden mit Stammebenenberechtigungen auf den Clusterknoten ausgeführt.
 
 * Sie können über das Azure-Portal, Azure PowerShell, die Azure CLI oder das HDInsight .NET SDK verwendet werden.
+
+* Skriptaktionen zum Entfernen oder Ändern von Dienstdateien auf der VM können die Dienstintegrität und -verfügbarkeit beeinträchtigen.
 
 Der Cluster protokolliert den Verlauf aller Skripts, die ausgeführt wurden. Der Verlauf ist hilfreich, wenn Sie die ID eines Skripts für die Herauf- oder Herabstufung von Vorgängen benötigen.
 
@@ -143,7 +145,7 @@ In diesem Abschnitt werden die verschiedenen Verwendungsmöglichkeiten von Skrip
 
 ### <a name="use-a-script-action-during-cluster-creation-from-the-azure-portal"></a>Verwenden einer Skriptaktion während der Clustererstellung im Azure-Portal
 
-1. Beginnen Sie mit dem Erstellen eines Clusters wie unter [Erstellen von Linux-basierten Clustern in HDInsight mit dem Azure-Portal](hdinsight-hadoop-create-linux-clusters-portal.md) beschrieben. Wählen Sie in der Registerkarte **Konfiguration + Preise** **+ Skriptaktion hinzufügen** aus.
+1. Beginnen Sie mit dem Erstellen eines Clusters wie unter [Erstellen von Linux-basierten Clustern in HDInsight mit dem Azure-Portal](hdinsight-hadoop-create-linux-clusters-portal.md) beschrieben. Wählen Sie in der Registerkarte **Konfiguration + Preise****+ Skriptaktion hinzufügen** aus.
 
     ![Azure-Portal – Aktion „Clusterskript“](./media/hdinsight-hadoop-customize-cluster-linux/azure-portal-cluster-configuration-scriptaction.png)
 
@@ -322,7 +324,7 @@ Das folgende Beispielskript veranschaulicht, wie die Cmdlets zum Höherstufen un
 | Get-Help | BESCHREIBUNG |
 | --- | --- |
 | [`az hdinsight script-action delete`](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-delete) |Löscht eine angegebene permanente Skriptaktion des Clusters. Mit diesem Befehl werden die mit einem Skript durchgeführten Aktionen nicht rückgängig gemacht, sondern nur das Persistenzflag entfernt.|
-|[`az hdinsight script-action execute`](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-execute)|Führt Skriptaktionen für den angegebenen HDInsight-Cluster aus.|
+|[`az hdinsight script-action execute`](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-execute)|Ausführen von Skriptaktionen für den angegebenen HDInsight-Cluster|
 | [`az hdinsight script-action list`](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-list) |Listet alle permanenten Skriptaktionen für den angegebenen Cluster auf. |
 |[`az hdinsight script-action list-execution-history`](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-list-execution-history)|Listet den Ausführungsverlauf aller Skripts für den angegebenen Cluster auf.|
 |[`az hdinsight script-action promote`](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-promote)|Stuft die angegebene Ad-hoc-Skriptausführung auf ein permanentes Skript hoch.|

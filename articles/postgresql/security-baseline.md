@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 475933bcc9219808087671d49778cc3696d8c815
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 94121765cf9a19c25d4edc9ffa6119f0ee33d491
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500792"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397048"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql-single-server"></a>Azure-Sicherheitsbaseline für Azure Database for PostgreSQL-Einzelserver
 
@@ -549,9 +549,9 @@ Grundlegendes zum Schutz von Kundendaten in Azure: https://docs.microsoft.com/az
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Verwenden von Azure RBAC zum Steuern des Zugriffs auf Ressourcen
 
-**Leitfaden**: Verwenden Sie die rollenbasierte Zugriffssteuerung (Azure RBAC) von Azure, um den Zugriff auf die Azure Database for PostgreSQL-Steuerungsebene (z. B. Azure-Portal) zu steuern. Verwenden Sie für den Zugriff auf die Datenebene (in der Datenbank selbst) SQL-Abfragen, um Benutzer zu erstellen und Benutzerberechtigungen zu konfigurieren. RBAC wirkt sich nicht auf Benutzerberechtigungen in der Datenbank aus.
+**Leitfaden**: Verwenden Sie die rollenbasierte Zugriffssteuerung (Azure RBAC) von Azure, um den Zugriff auf die Azure Database for PostgreSQL-Steuerungsebene (z. B. Azure-Portal) zu steuern. Verwenden Sie für den Zugriff auf die Datenebene (in der Datenbank selbst) SQL-Abfragen, um Benutzer zu erstellen und Benutzerberechtigungen zu konfigurieren. Azure RBAC wirkt sich nicht auf Benutzerberechtigungen in der Datenbank aus.
 
-Konfigurieren von RBAC in Azure: https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
+Konfigurieren von Azure RBAC: https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
 
 Konfigurieren des Benutzerzugriffs mit SQL für Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/howto-create-users
 
@@ -622,7 +622,7 @@ Featureabdeckung für Azure PaaS-Dienste in Azure Security Center: https://docs.
 
 ### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3: Bereitstellen der automatisierten Lösung für die Patchverwaltung von Drittanbietersoftware
 
-**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -896,9 +896,11 @@ Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/g
 
 Integration mit verwalteten Azure-Identitäten: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-Erstellen einer Key Vault-Instanz: https://docs.microsoft.com/azure/key-vault/quick-create-portal
+Erstellen einer Key Vault-Instanz: https://docs.microsoft.com/azure/key-vault/general/quick-create-portal
 
-Bereitstellen der Key Vault-Authentifizierung mit einer verwalteten Identität: https://docs.microsoft.com/azure/key-vault/managed-identity
+Authentifizieren bei Key Vault: https://docs.microsoft.com/azure/key-vault/general/authentication
+
+Zuweisen einer Key Vault-Zugriffsrichtlinie: https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
 **Azure Security Center-Überwachung**: Ja
 

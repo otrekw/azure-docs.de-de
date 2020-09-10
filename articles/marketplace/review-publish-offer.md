@@ -8,60 +8,51 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 08/12/2020
-ms.openlocfilehash: 53e5331ab36d5466bd5cdb495ac505dae29e57bf
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: eff1db3aca2cab77d18698634b84e8e1b1c99f7e
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142297"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89375878"
 ---
-# <a name="review-and-publish-an-offer-to-the-commercial-marketplace"></a>Überprüfen und Veröffentlichen eines Angebots im kommerziellen Marketplace
+# <a name="how-to-review-and-publish-an-offer-to-the-commercial-marketplace"></a>Überprüfen und Veröffentlichen eines Angebots im kommerziellen Marketplace
 
-In diesem Artikel erfahren Sie, wie Sie mithilfe des Partner Centers Ihr Angebot für die Vorschau übermitteln, eine Vorschau Ihres Angebots anzeigen und es dann im kommerziellen Microsoft-Marketplace veröffentlichen. Außerdem wird erläutert, wie Sie den Veröffentlichungsstatus überprüfen, während das Angebot die Veröffentlichungsschritte durchläuft. Sie müssen bereits ein Angebot erstellt haben, das Sie veröffentlichen möchten.
+In diesem Artikel erfahren Sie, wie Sie mithilfe des Partner Centers Ihr Angebot für die Veröffentlichung übermitteln, eine Vorschau Ihres Angebots anzeigen und es dann im kommerziellen Marketplace veröffentlichen. Außerdem wird erläutert, wie Sie den Veröffentlichungsstatus überprüfen, während das Angebot die Veröffentlichungsschritte durchläuft. Sie müssen bereits ein Angebot erstellt haben, das Sie veröffentlichen möchten.
 
-## <a name="go-to-your-offer-in-the-commercial-marketplace"></a>Wechseln zu Ihrem Angebot im kommerziellen Marketplace
+## <a name="offer-status"></a>Angebotsstatus
 
-1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
-2. Wählen Sie im linken Navigationsmenü **Kommerzieller Marketplace** > **Übersicht** aus.
-3. Auf der Registerkarte **Übersicht** unter **Angebote** wird in der Spalte **Status** für jedes Angebot einer der folgenden Statuswerte angezeigt.
+Sie können den Status Ihres Angebots im [Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) im Dashboard des kommerziellen Marketplace auf der Registerkarte **Übersicht** überprüfen. In der Spalte **Status** wird für jedes Angebot einer der folgenden Statuswerte angezeigt.
 
-    | Status | BESCHREIBUNG |
-    | ------------ | ------------- |
-    | Entwurf | Angebot wurde erstellt, wird aber nicht veröffentlicht. |
-    | Veröffentlichung wird durchgeführt | Das Angebot durchläuft den Veröffentlichungsvorgang. |
-    | Eingreifen erforderlich | Wir haben während der Zertifizierung oder einer anderen Veröffentlichungsphase ein kritisches Problem festgestellt. |
-    | Vorschau | Wir haben das Angebot zertifiziert. Nun muss es abschließend durch den Herausgeber verifiziert werden. Wählen Sie **Live schalten** aus, um das Angebot live zu veröffentlichen. |
-    | Live | Das Angebot ist im Marketplace live geschaltet und kann von Kunden angezeigt und erworben werden. |
-    | Ausstehender Verkaufsstopp | Der Herausgeber hat „Verkaufsstopp“ für ein Angebot oder einen Plan ausgewählt, aber die Aktion ist noch nicht abgeschlossen. |
-    | Im Marketplace nicht verfügbar | Ein zuvor im Marketplace veröffentlichtes Angebot wurde entfernt. |
-    |||
+| Status | BESCHREIBUNG |
+| ------------ | ------------- |
+| Entwurf | Angebot wurde erstellt, wird aber nicht veröffentlicht. |
+| Veröffentlichung wird durchgeführt | Das Angebot durchläuft den Veröffentlichungsvorgang. |
+| Eingreifen erforderlich | Wir haben während der Zertifizierung oder einer anderen Veröffentlichungsphase ein kritisches Problem festgestellt. |
+| Vorschau | Wir haben das Angebot zertifiziert. Nun muss es abschließend durch den Herausgeber verifiziert werden. Wählen Sie **Live schalten** aus, um das Angebot live zu veröffentlichen. |
+| Live | Das Angebot ist im Marketplace live geschaltet und kann von Kunden angezeigt und erworben werden. |
+| Ausstehender Verkaufsstopp | Der Herausgeber hat „Verkaufsstopp“ für ein Angebot oder einen Plan ausgewählt, aber die Aktion ist noch nicht abgeschlossen. |
+| Im Marketplace nicht verfügbar | Ein zuvor im Marketplace veröffentlichtes Angebot wurde entfernt. |
+|||
 
-4. Wählen Sie in der Spalte **Angebotsalias** das Angebot aus, das Sie in der Vorschau anzeigen und veröffentlichen möchten.
+## <a name="validation-and-publishing-steps"></a>Schritte für die Validierung und Veröffentlichung
 
-## <a name="submit-your-offer-to-preview"></a>Übermitteln des Angebots für die Vorschau
-
-1. Um Ihr Angebot für die Vorschau zu übermitteln, wählen Sie oben rechts im Portal **Überprüfen und veröffentlichen** aus. Die Seite **Überprüfen und veröffentlichen** wird angezeigt.
-1. Stellen Sie sicher, dass auf jeder Seite in der Spalte **Status** der Eintrag **Abgeschlossen** angezeigt wird. Die drei möglichen Statuswerte lauten wie folgt:
+Wenn Sie bereit sind, ein Angebot für die Veröffentlichung zu übermitteln, wählen Sie oben rechts im Portal **Überprüfen und veröffentlichen** aus. Auf der Seite **Überprüfen und veröffentlichen** wird der Status jeder Seite für Ihr Angebot angezeigt. Folgende Werte sind möglich:
 
    - **Nicht gestartet**: Die Seite ist unvollständig.
    - **Unvollständig**: Auf der Seite fehlen erforderliche Informationen, oder sie enthält Fehler, die korrigiert werden müssen. Sie müssen zur Seite zurückkehren und diese aktualisieren.
    - **Abgeschlossen**: Die Seite ist vollständig. Alle erforderlichen Daten wurden angegeben, und es liegen keine Fehler vor.
 
-1. Wenn eine der Seiten einen anderen Status als **Abgeschlossen** aufweist, wählen Sie in der Spalte **Seite** den Namen der Seite aus, beheben das Problem, speichern die Seite und wählen dann erneut **Überprüfen und veröffentlichen** aus, um zu dieser Seite zurückzukehren.
-1. Nachdem alle Seiten abgeschlossen sind, stellen Sie dem Zertifizierungsteam unter **Hinweise für Zertifizierung** Testanweisungen zur Verfügung, um sicherzustellen, dass Ihre App ordnungsgemäß getestet wird. Stellen Sie alle ergänzenden Anmerkungen bereit, die das Verständnis Ihrer App unterstützen.
-1. Um das Angebot zur Veröffentlichung einzureichen, wählen Sie **Veröffentlichen** aus. Die Seite **Angebotsübersicht** wird mit dem Veröffentlichungsstatus angezeigt.
+Wenn eine der Seiten einen anderen Status als **Abgeschlossen** aufweist, müssen Sie das Problem auf dieser Seite beheben und dann zur Seite **Überprüfen und veröffentlichen** zurückkehren, um sich zu vergewissern, dass der Status nun **Abgeschlossen** lautet. Einige Angebotstypen müssen getestet werden. In diesem Fall wird ein Feld **Hinweise zur Zertifizierung** angezeigt, in dem Sie Testanweisungen für das Zertifizierungsteam und ergänzende Hinweise angeben müssen, die das Verständnis Ihrer App erleichtern.
 
-## <a name="validation-and-publishing-steps"></a>Schritte für die Validierung und Veröffentlichung
-
-Nachdem Sie **Veröffentlichen** ausgewählt haben, werden nacheinander der Validierungs- und Veröffentlichungsprozess ausgeführt. In dieser Tabelle ist der häufigste Veröffentlichungsprozess dargestellt:
+Wenn alle Seiten vollständig sind und Sie die geeigneten Testhinweise eingegeben haben, wählen Sie **Veröffentlichen** aus, um die Validierungs- und Veröffentlichungsprozesse zu starten. Die Phasen und der gesamte Ablauf können je nach veröffentlichtem Angebotstyp variieren. In der folgenden Tabelle ist ein möglicher Veröffentlichungsablauf dargestellt. Die einzelnen Phasen werden in den folgenden Abschnitten ausführlicher erläutert.
 
 | Phase | Ablauf |
 | ------------ | ------------- | ------------- |
-| Automatisierte Validierung | Wir verarbeiten eine Reihe automatisierter Validierungen. |
-| Zertifizierung | Wir führen manuelle Validierungen durch. |
-| Erstellung einer Vorschau | Die Listungsseite für Ihre Angebotsvorschau steht allen zur Verfügung, die über den Vorschaulink verfügen. Wenn Ihr Angebot über Microsoft vertrieben wird (also transaktionsfähig ist), kann nur die auf der Seite **Vorschauzielgruppe** Ihres Angebots angegebene Zielgruppe das Angebot erwerben und zu Testzwecken darauf zugreifen. |
-| Abzeichnung des Verlegers | Wir senden Ihnen eine E-Mail mit der Aufforderung, Ihr Angebot in der Vorschau zu überprüfen und zu genehmigen. |
-| Veröffentlichen | Wir stellen anhand einiger Schritte sicher, dass das Vorschauangebot im kommerziellen Marketplace live veröffentlicht wird. |
+| [Automatisierte Validierung](#automated-validation-phase) | Wir verarbeiten eine Reihe automatisierter Validierungen. |
+| [Zertifizierung](#certification-phase) | Wir führen manuelle Validierungen durch. |
+| [Erstellung einer Vorschau](#preview-creation-phase) | Die Listungsseite für Ihre Angebotsvorschau steht allen zur Verfügung, die über den Vorschaulink verfügen. Wenn Ihr Angebot über Microsoft vertrieben wird (also transaktionsfähig ist), kann nur die auf der Seite **Vorschauzielgruppe** Ihres Angebots angegebene Zielgruppe das Angebot erwerben und zu Testzwecken darauf zugreifen. |
+| [Abzeichnung des Verlegers](#publisher-sign-off-phase) | Wir senden Ihnen eine E-Mail mit der Aufforderung, Ihr Angebot in der Vorschau zu überprüfen und zu genehmigen. |
+| [Veröffentlichen](#publish-phase) | Wir stellen anhand einiger Schritte sicher, dass das Vorschauangebot im kommerziellen Marketplace live veröffentlicht wird. |
 |||
 
 ## <a name="automated-validation-phase"></a>Phase „Automatisierte Validierung“
@@ -102,7 +93,7 @@ Bei jedem Angebotstyp wird eine Reihe von Standardberechtigungskriterien geprüf
 
 #### <a name="content-validation"></a>Validierung von Inhalten
 
-Die bei der Erstellung Ihres Angebots eingegebenen Informationen werden auf Qualität und Relevanz geprüft. Bei diesen Prüfungen werden Ihre Eingaben für die Listungsdetails für Marketplace, Preise, Verfügbarkeit, zugehörige Pläne usw. geprüft. Damit Ihr Angebot die Listungskriterien von Azure Marketplace und Microsoft AppSource erfüllt, wird es auf folgende Voraussetzungen geprüft:
+Die bei der Erstellung Ihres Angebots eingegebenen Informationen werden auf Qualität und Relevanz geprüft. Bei diesen Prüfungen werden Ihre Eingaben für die Listungsdetails für Marketplace, Preise, Verfügbarkeit, zugehörige Pläne usw. geprüft. Damit Ihr Angebot die Listungskriterien von Microsoft AppSource und Azure Marketplace erfüllt, wird es auf folgende Voraussetzungen überprüft:
 
 - Titel, der das Angebot genau beschreibt
 - Verständlich formulierte Beschreibungen mit umfassender Übersicht und einem Wertversprechen
@@ -141,21 +132,18 @@ Wenn das Angebot für Ihre Prüfung und Genehmigung bereit ist, senden wir Ihnen
 
 Im folgenden Screenshot ist die Seite **Angebotsübersicht** für ein SaaS-Angebot zu sehen. Die auf dieser Seite angezeigten Validierungsschritte variieren je nach Angebotstyp und der Auswahl, die Sie beim Erstellen des Angebots getroffen haben.
 
-![Veranschaulicht die Seite „Angebotsübersicht“ für ein Angebot im Partner Center. Die Schaltfläche „Live schalten“ und Vorschaulinks sind dargestellt.](./partner-center-portal/media/publish-status-publisher-signoff.png)
+![Veranschaulicht die Seite „Angebotsübersicht“ für ein Angebot im Partner Center. Die Schaltfläche „Live schalten“ und Vorschaulinks sind dargestellt.](./media/publish-status-publisher-signoff.png)
 
-### <a name="to-preview-your-offer-and-sign-off"></a>So können Sie Ihr Angebot in der Vorschau anzeigen und genehmigen
+### <a name="previewing-and-approving-your-offer"></a>Vorschau und Genehmigung Ihres Angebots
 
-1. Wählen Sie auf der Seite **Angebotsübersicht** den Link unter der Schaltfläche **Live schalten** aus, um Ihr Angebot in der Vorschau anzuzeigen.
+> [!IMPORTANT]
+> Um den gesamten Flow vom Kauf bis zur Einrichtung zu überprüfen, erwerben Sie Ihr Angebot, während es sich in der Vorschau befindet. Benachrichtigen Sie zunächst Microsoft mit einem [Supportticket](https://aka.ms/marketplacesupport), um sicherzustellen, dass wir keine Gebühren erheben.
 
-   > [!NOTE]
-   > Abhängig von den Optionen, die Sie beim Erstellen Ihres Angebots ausgewählt haben, ist ein Link für die AppSource-Vorschau, die Azure Marketplace-Vorschau oder beide verfügbar. Wenn Sie sich für den Verkauf Ihres Angebots über Microsoft entschieden haben, können alle Mitglieder der Vorschauzielgruppe den Kauf und die Bereitstellung Ihres Angebots testen, um sicherzustellen, dass es Ihre Anforderungen in dieser Phase erfüllt.
+Auf der Seite **Angebotsübersicht** werden unter der Schaltfläche **Live schalten** Vorschaulinks angezeigt. Abhängig von den Optionen, die Sie beim Erstellen Ihres Angebots ausgewählt haben, ist ein Link für die AppSource-Vorschau, die Azure Marketplace-Vorschau oder beide verfügbar. Wenn Sie sich für den Verkauf Ihres Angebots über Microsoft entschieden haben, können alle Mitglieder der Vorschauzielgruppe den Kauf und die Bereitstellung Ihres Angebots testen, um sicherzustellen, dass es Ihre Anforderungen in dieser Phase erfüllt.
 
-1. Wenn Sie nach der Vorschauphase Änderungen am Angebot vornehmen möchten, können Sie es bearbeiten und erneut übermitteln, um eine neue Vorschau zu veröffentlichen. Weitere Informationen finden Sie unter [Aktualisieren eines bestehenden Commercial Marketplace-Angebots](./partner-center-portal/update-existing-offer.md).
+Nachdem Sie Ihre Vorschau genehmigt haben, wählen Sie **Live schalten** aus, um Ihr Angebot live im kommerziellen Marketplace zu veröffentlichen. 
 
-1. Nachdem Sie Ihre Vorschau genehmigt haben, wählen Sie **Live schalten** aus, um Ihr Angebot live im kommerziellen Marketplace zu veröffentlichen.
-
-   > [!TIP]
-   > Wenn Ihr Angebot bereits live geschaltet und im Marketplace für die Öffentlichkeit verfügbar ist, werden alle von Ihnen vorgenommenen Aktualisierungen erst dann live geschaltet, wenn Sie **Live schalten** auswählen.
+Wenn Sie nach der Vorschauphase Änderungen am Angebot vornehmen möchten, können Sie es bearbeiten und die Veröffentlichungsanforderung erneut übermitteln. Wenn Ihr Angebot bereits live geschaltet und im Marketplace für die Öffentlichkeit verfügbar ist, werden alle von Ihnen vorgenommenen Aktualisierungen erst dann live geschaltet, wenn Sie *Live schalten* auswählen. Weitere Informationen finden Sie unter [Aktualisieren eines bestehenden Angebots im kommerziellen Marketplace](./partner-center-portal/update-existing-offer.md).
 
 ## <a name="publish-phase"></a>Phase „Veröffentlichung“
 
@@ -183,10 +171,6 @@ Nachdem Sie sich entschieden haben, Ihr Angebot live zu schalten und im kommerzi
 
 Nachdem die Validierungsprüfungen abgeschlossen wurden, wird Ihr Angebot im Marketplace live geschaltet.
 
-### <a name="reporting-usage-of-preview-and-other-internal-usage"></a>Melden der Nutzung der Vorschau und anderer interner Nutzungen
+## <a name="next-steps"></a>Nächste Schritte
 
-Um den gesamten Flow vom Kauf bis zur Einrichtung zu überprüfen, erwerben Sie Ihr Angebot, während es sich in der Vorschau befindet. Benachrichtigen Sie zunächst Microsoft mit einem [Supportticket](https://aka.ms/marketplacesupport), um sicherzustellen, dass wir keine Gebühren erheben.
-
-## <a name="next-step"></a>Nächster Schritt
-
-[Zugreifen auf Analysen für den kommerziellen Marketplace in Partner Center](./partner-center-portal/analytics.md)
+[Zugreifen auf Analysen für den kommerziellen Marketplace in Partner Center](partner-center-portal/analytics.md)

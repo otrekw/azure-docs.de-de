@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: e3e54b037485a85d836e7e7e67c9af2d9d140986
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: fd49ddcb59e0d0f3a706f566cf0c011116b1501a
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856811"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229224"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>Erstellen von HDInsight-Clustern mit Azure Data Lake Storage Gen1 mithilfe des Azure-Portals
 
@@ -85,18 +85,11 @@ In diesem Abschnitt konfigurieren Sie den Data Lake Storage Gen1-Zugriff aus HDI
 Im Azure-Portal können Sie einen vorhandenen Dienstprinzipal verwenden oder einen neuen erstellen.
 
 So erstellen Sie einen Dienstprinzipal im Azure-Portal:
-
-1. Wählen Sie auf dem Blatt „Speicher“ die Option **Data Lake Store-Zugriff** aus.
-1. Wählen Sie auf dem Blatt **Data Lake Storage Gen1-Zugriff** die Option **Neu erstellen** aus.
-1. Wählen Sie **Dienstprinzipal** aus, und befolgen Sie die Anweisungen zum Erstellen eines Dienstprinzipals.
-1. Laden Sie das Zertifikat herunter, wenn Sie es künftig wiederverwenden möchten. Das Herunterladen des Zertifikats ist nützlich, wenn Sie den gleichen Dienstprinzipal beim Erstellen eines zusätzlichen HDInsight-Clusters verwenden möchten.
-
-    ![Hinzufügen eines Dienstprinzipals zu HDInsight-Cluster](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.2.png "Dienstprinzipal für HDInsight-Cluster hinzufügen")
-
-1. Wählen Sie **Zugriff** aus, um den Zugriff auf den Ordner zu konfigurieren.  Siehe [Konfigurieren von Dateiberechtigungen](#configure-file-permissions).
+1. Informationen zur Verwendung von Azure Active Directory finden Sie unter [Erstellen von Dienstprinzipalen und Zertifikaten](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
 So verwenden Sie einen im Azure-Portal vorhandenen Dienstprinzipal:
 
+1. Der Dienstprinzipal sollte Besitzerberechtigungen für das Speicherkonto besitzen. Weitere Informationen finden Sie unter [Einrichten von Berechtigungen für den Dienstprinzipal als Besitzer des Speicherkontos](#configure-serviceprincipal-permissions).
 1. Wählen Sie **Data Lake Store-Zugriff** aus.
 1. Wählen Sie auf dem Blatt **Data Lake Storage Gen1-Zugriff** die Option **Vorhandenen verwenden** aus.
 1. Wählen Sie **Dienstprinzipal** und dann den vorhandenen Dienstprinzipal aus.
@@ -105,6 +98,10 @@ So verwenden Sie einen im Azure-Portal vorhandenen Dienstprinzipal:
     ![Hinzufügen eines Dienstprinzipals zu HDInsight-Cluster](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.5.png "Dienstprinzipal für HDInsight-Cluster hinzufügen")
 
 1. Wählen Sie **Zugriff** aus, um den Zugriff auf den Ordner zu konfigurieren.  Siehe [Konfigurieren von Dateiberechtigungen](#configure-file-permissions).
+
+### <a name="set-up-permissions-for-the-service-principal-to-be-owner-on-the-storage-account"></a><a name="configure-serviceprincipal-permissions"></a>Einrichten von Berechtigungen für den Dienstprinzipal als Besitzer des Speicherkontos
+1. Klicken Sie auf dem Blatt „Zugriffssteuerung (IAM)“ des Speicherkontos auf „Rollenzuweisung hinzufügen“. 
+2. Wählen Sie auf dem Blatt „Rollenzuweisung hinzufügen“ für die Rolle die Option „Besitzer“ und dann den SPN aus, und klicken Sie auf „Speichern“.
 
 ### <a name="configure-file-permissions"></a><a name="configure-file-permissions"></a>Konfigurieren von Dateiberechtigungen
 

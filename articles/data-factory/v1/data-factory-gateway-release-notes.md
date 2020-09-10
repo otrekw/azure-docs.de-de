@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 405beb5cb8c2e74951aa54ba371be04d290ad3a2
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: d8324b0b861829b02b589f8145121559114b7435
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194472"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89289578"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Versionshinweise für Datenverwaltungsgateway
 > [!NOTE]
@@ -39,14 +39,14 @@ Die Anmerkungen zu dieser Version werden hier nicht länger beibehalten. Die neu
 ## <a name="earlier-versions"></a>Frühere Versionen
 ## <a name="21063477"></a>2.10.6347.7
 ### <a name="enhancements-"></a>Verbesserungen
-- Sie können DNS-Einträge hinzufügen, um Service Bus auf die Positivliste zu setzen, anstatt alle Azure-IP-Adressen der Firewall auf eine Positivliste zu setzen (sofern erforderlich). Sie finden den entsprechenden DNS-Eintrag im Azure-Portal („Data Factory“ > „Verfassen und bereitstellen“ > „Gateways“ > „serviceUrls“ (in JSON)).
+- Sie können DNS-Einträge hinzufügen, um Service Bus zuzulassen, anstatt alle Azure-IP-Adressen durch Ihre Firewall zuzulassen (falls erforderlich). Sie finden den entsprechenden DNS-Eintrag im Azure-Portal („Data Factory“ > „Verfassen und bereitstellen“ > „Gateways“ > „serviceUrls“ (in JSON)).
 - Der HDFS-Connector unterstützt jetzt das selbstsignierte öffentliche Zertifikat, indem das Überspringen der TLS-Validierung zugelassen wird.
 - Behoben: Problem aufgrund eines Offlinezustands des Gateways während des Updates (aufgrund von Uhrabweichungen)
 
 
 ## <a name="2963132"></a>2.9.6313.2
 ### <a name="enhancements-"></a>Verbesserungen
--   Sie können DNS-Einträge hinzufügen, um Service Bus auf die Positivliste zu setzen, statt alle Azure IP-Adressen der Firewall auf eine Positivliste zu setzen (sofern erforderlich). Ausführlichere Informationen finden Sie hier.
+-   Sie können DNS-Einträge hinzufügen, um Service Bus zuzulassen, anstatt alle Azure-IP-Adressen durch Ihre Firewall zuzulassen (falls erforderlich). Ausführlichere Informationen finden Sie hier.
 -   Sie können jetzt Daten in einen bzw. aus einem einzelnen Blockblob von bis zu 4,75 TB kopieren. Dies ist die unterstützte maximale Größe eines Blockblobs. (Der frühere Grenzwert betrug 195 GB.)
 -   Behoben: Fehler „Nicht genügend Arbeitsspeicher“ beim Entzippen mehrerer kleiner Dateien während der Kopieraktivität.
 -   Behoben: Fehler „Index außerhalb des gültigen Bereichs“ beim Kopieren aus DocumentDB in SQL Server mit der Idempotenz-Funktion.

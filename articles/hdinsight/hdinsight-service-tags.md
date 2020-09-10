@@ -6,19 +6,21 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 04/15/2020
-ms.openlocfilehash: 5608d0cd83e506bc6b30337db5148f344f59f80e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 08/11/2020
+ms.openlocfilehash: 112f915f533627ccdc0ac6efe38caacc80b254bc
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81410852"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399955"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Diensttags von Netzwerksicherheitsgruppen für Azure HDInsight
 
 Azure HDInsight-Diensttags für Netzwerksicherheitsgruppen (NSGs) sind Gruppen von IP-Adressen für Integritäts- und Verwaltungsdienste. Diese Gruppen reduzieren die Komplexität beim Erstellen von Sicherheitsregeln. [Diensttags](../virtual-network/security-overview.md#service-tags) lassen eingehendem Datenverkehr von bestimmten IP-Adressen zu, ohne dass alle [Verwaltungs-IP-Adressen](hdinsight-management-ip-addresses.md) in Ihre Netzwerksicherheitsgruppe eingegeben werden müssen.
 
 Der HDInsight-Dienst verwaltet diese Diensttags. Sie können kein eigenes Diensttag erstellen oder ein vorhandenes Tag ändern. Microsoft verwaltet die Adresspräfixe, die dem Diensttag entsprechen, und aktualisiert das Diensttag automatisch, wenn sich die Adressen ändern.
+
+Wenn Sie eine bestimmte Region verwenden möchten und das Diensttag noch nicht auf dieser Seite dokumentiert ist, können Sie mithilfe der [Ermittlungs-API für Diensttags](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) Ihr Diensttag finden. Sie können auch die [JSON-Datei mit Diensttags](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) herunterladen und nach Ihrer gewünschten Region durchsuchen.
 
 ## <a name="get-started-with-service-tags"></a>Erste Schritte mit Diensttags
 

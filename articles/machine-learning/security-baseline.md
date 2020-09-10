@@ -6,13 +6,13 @@ ms.service: machine-learning
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 9d288c8d3f521467c8d15e027e2530ff879b37af
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 4a7132221d2db58e4dea0e41f2761f4f395b9632
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642493"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401400"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Azure-Sicherheitsbaseline für Azure Machine Learning
 
@@ -94,7 +94,7 @@ Stellen Sie die Azure Firewall an allen Netzwerkgrenzen der Organisation mit akt
 
 **Leitfaden**: Stellen Sie die Firewalllösung Ihrer Wahl an allen Netzwerkgrenzen Ihrer Organisation bereit, um schädlichen Datenverkehr zu erkennen und/oder zu blockieren.
 
-Wählen Sie ein Angebot aus Azure Marketplace aus, das IDS-/IPS-Funktionen mit Funktionen zur Nutzlastuntersuchung unterstützt.  Wenn Nutzlastuntersuchung keine Anforderung ist, kann Azure Firewall Threat Intelligence verwendet werden. Die auf Azure Firewall Threat Intelligence basierende Filterung wird verwendet, um bei bekannten böswilligen IP-Adressen und Domänen zu warnen und/oder Datenverkehr zu und von diesen zu blockieren. Die IP-Adressen und Domänen stammen aus dem Microsoft Threat Intelligence-Feed.
+Wählen Sie ein Angebot aus Azure Marketplace aus, das IDS-/IPS-Funktionen mit Funktionen zur Nutzlastuntersuchung unterstützt.  Wenn Nutzlastuntersuchung keine Anforderung ist, kann Azure Firewall Threat Intelligence verwendet werden. Die auf Azure Firewall Threat Intelligence basierende Filterung wird verwendet, um bei bekannten böswilligen IP-Adressen und Domänen zu warnen und/oder Datenverkehr zu und von diesen Adressen oder Domänen zu blockieren. Die IP-Adressen und Domänen stammen aus dem Microsoft Threat Intelligence-Feed.
 
 - [Bereitstellen von Azure Firewall](../firewall/tutorial-firewall-deploy-portal.md)
 
@@ -270,9 +270,9 @@ Alternativ dazu können Sie auch Daten in Azure Sentinel aktivieren und integrie
 
 Azure Machine Learning bietet unterschiedliche Unterstützung für verschiedene Computeressourcen und sogar Ihre eigenen Computeressourcen. Aktivieren Sie für Computeressourcen, die sich im Besitz Ihrer Organisation befinden, Antischadsoftware-Ereigniserfassung für Microsoft Antimalware für Azure Cloud Services und Virtual Machines.
 
-- [Konfigurieren von Microsoft Antimalware für einen virtuellen Computer](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmmicrosoftantimalwareextension?view=azuresmps-4.0.0)
+- [Konfigurieren von Microsoft Antimalware für einen virtuellen Computer](/powershell/module/servicemanagement/azure.service/set-azurevmmicrosoftantimalwareextension)
 
-- [Konfigurieren der Microsoft Antimalware-Erweiterung für Clouddienste](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azureserviceantimalwareextension?view=azuresmps-4.0.0)
+- [Konfigurieren der Microsoft Antimalware-Erweiterung für Clouddienste](/powershell/module/servicemanagement/azure.service/set-azureserviceantimalwareextension?view=azuresmps-4.0.0)
 
 - [Grundlegendes zu Microsoft Antimalware](../security/fundamentals/antimalware.md)
 
@@ -979,7 +979,9 @@ Verwenden Sie Azure Key Vault anstelle von Klartext in Ihren Trainingsskripts, u
 
 - [Erstellen einer Key Vault-Instanz](/azure/key-vault/quick-create-portal)
 
-- [Bereitstellen der Key Vault-Authentifizierung mit einer verwalteten Identität](/azure/key-vault/managed-identity)
+- [Authentifizieren bei Key Vault](https://docs.microsoft.com/azure/key-vault/general/authentication)
+
+- [Zuweisen einer Key Vault-Zugriffsrichtlinie](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -1120,7 +1122,7 @@ Aktivieren Sie vorläufiges Löschen und den Löschschutz in Key Vault, um Schl�
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2: Erstellen eines Verfahrens zur Bewertung und Priorisierung von Vorfällen
 
-**Leitfaden**: Azure Security Center weist jeder Warnung einen Schweregrad zu, damit Sie priorisieren können, welche Warnungen zuerst untersucht werden sollen. Der Schweregrad basiert darauf, wie zuversichtlich Security Center in Bezug auf den Befund oder die Analyse ist, die zum Auslösen der Warnung verwendet wird, sowie auf dem Zuverlässigkeitsgrad, dass hinter der Aktivität, die zu der Warnung führte, eine böswillige Absicht stand.
+**Leitfaden**: Azure Security Center weist jeder Warnung einen Schweregrad zu, damit Sie priorisieren können, welche Warnungen zuerst untersucht werden sollen. Der Schweregrad basiert darauf, wie sicher Security Center in Bezug auf den Befund oder die Analyse ist, die zum Auslösen der Warnung verwendet wird, sowie auf dem Zuverlässigkeitsgrad, dass hinter der Aktivität, die zu der Warnung führte, eine böswillige Absicht stand.
 
 Markieren Sie Abonnements außerdem mithilfe von Tags, und erstellen Sie ein Benennungssystem, um Azure-Ressourcen eindeutig zu identifizieren und zu kategorisieren, insbesondere solche, die vertrauliche Daten verarbeiten. Die Priorisierung der Behebung von Warnungen basierend auf der Wichtigkeit der Azure-Ressourcen und der Umgebung, in der der Vorfall aufgetreten ist, liegt in Ihrer Verantwortung.
 

@@ -3,12 +3,12 @@ title: 'Mediengraphkonzept: Azure'
 description: Mit einem Mediengraph können Sie definieren, von welchem Ort Medien erfasst, wie diese verarbeitet und wohin die Ergebnisse übermittelt werden sollen. Dieser Artikel bietet eine detaillierte Beschreibung des Konzepts eines Mediengraphs.
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 8c6775da6804b5079c89cae73d4621dd8067e90a
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 6be741ee38cc8f1980fe9aa96883f9aacc1be8e2
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798838"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048420"
 ---
 # <a name="media-graph"></a>Mediendiagramm
 
@@ -37,19 +37,28 @@ Die Werte für die Parameter in der Topologie werden angegeben, wenn Sie Graphin
 
 ## <a name="media-graph-states"></a>Zustände von Mediengraphen  
 
-Ein Mediengraph kann sich in einem der folgenden Zustände befinden:
+Der Lebenszyklus von Graphtopologien und Graphinstanzen ist im folgenden Zustandsdiagramm dargestellt.
 
-* Inaktiv: Stellt den Zustand dar, in dem ein Mediengraph konfiguriert aber nicht aktiv ist.
-* Wird aktiviert: Der Zustand, wenn ein Mediengraph instanziiert wird (also der Übergangszustand zwischen inaktiv und aktiv).
-* Aktiv: Der Zustand, wenn ein Mediengraph aktiv ist. 
+![Lebenszyklus von Graphtopologie und Graphinstanz](./media/media-graph/graph-topology-lifecycle.svg)
 
-    > [!NOTE]
-    >  Mediengraphen können aktiv sein, ohne dass Daten über sie fließen (beispielsweise wenn die Videoquelle offline geschaltet wird).
-* Wird deaktiviert: Dies ist der Zustand, in dem ein Mediengraph von aktiv zu inaktiv wechselt.
+Sie beginnen mit [der Erstellung einer Graphtopologie](direct-methods.md#graphtopologyset). Dann erstellen Sie für jeden Livevideofeed, den Sie mit dieser Topologie verarbeiten möchten, [eine Graphinstanz](direct-methods.md#graphinstanceset). 
 
-Das Diagramm unten veranschaulicht den Zustandsautomaten von Mediengraphen.
+Die Graphinstanz weist den Zustand `Inactive` (im Leerlauf) auf.
 
-![Zustandsautomat von Mediengraphen](./media/media-graph/media-graph-state-machine.png)
+Wenn Sie bereit sind, den Livevideofeed in die Graphinstanz zu senden, [aktivieren](direct-methods.md#graphinstanceactivate) Sie ihn. Die Graphinstanz durchläuft kurz den Übergangszustand `Activating` und wechselt bei Erfolg in den `Active`-Zustand. Im Zustand `Active` werden Medien verarbeitet (wenn die Graphinstanz Eingabedaten erhält).
+
+> [!NOTE]
+>  Eine Graphinstanz kann aktiv sein, ohne dass Daten über sie fließen (z. B. wenn die Kamera offline geschaltet wird).
+> Ihr Azure-Abonnement wird in Rechnung gestellt, wenn sich die Graphinstanz im aktiven Zustand befindet.
+
+Sie können den Prozess der Erstellung und Aktivierung weiterer Graphinstanzen für dieselbe Topologie wiederholen, wenn Sie weitere Livevideofeeds verarbeiten müssen.
+
+Wenn Sie mit der Verarbeitung des Livevideofeeds fertig sind, können Sie die Graphinstanz [deaktivieren](direct-methods.md#graphinstancedeactivate). Die Graphinstanz wechselt kurz zu einem Übergangszustand `Deactivating`, löscht alle Daten, über die sie verfügt, und kehrt dann zum Zustand `Inactive` zurück.
+
+Sie können eine Graphinstanz nur [löschen](direct-methods.md#graphinstancedelete), wenn sie sich im Zustand `Inactive` befindet.
+
+Nachdem alle Graphinstanzen, die sich auf eine bestimmte Graphtopologie beziehen, gelöscht worden sind, können Sie [die Graphtopologie löschen](direct-methods.md#graphtopologydelete).
+
 
 ## <a name="sources-processors-and-sinks"></a>Quellen, Prozessoren und Senken  
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/09/2020
-ms.openlocfilehash: 29caccd666294add98882d080a2a0fd3bd9dd660
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 827871bdac689d1f5e8acb64d3565ca3c6da39be
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036622"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89292519"
 ---
 # <a name="archived-release-notes"></a>Archivierte Versionshinweise
 
@@ -779,7 +779,7 @@ Dieses Release stellt Hive 1.2.1 und Hive 2.1.0 mit den folgenden Patches bereit
 
 -   [*HIVE-17621*](https://issues.apache.org/jira/browse/HIVE-17621): Hive-site settings are ignored during HCatInputFormat split-calculation. (Einstellungen für Hive-site werden während HCatInputFormat::getSplits() ignoriert.)
 
--   [*HIVE-17629*](https://issues.apache.org/jira/browse/HIVE-17629): CachedStore: Have a whitelist/blacklist config to allow selective caching of tables/partitions and allow read while prewarming. (Erhalten einer Whitelist/Blacklist-Konfiguration, um die selektive Zwischenspeicherung von Tabellen/Partitionen und das Lesen beim Vorwärmen zuzulassen.)
+-   [*HIVE-17629*](https://issues.apache.org/jira/browse/HIVE-17629): CachedStore: Have a whitelist/blacklist config to allow selective caching of tables/partitions and allow read while prewarming. (Vorhalten einer genehmigten/nicht genehmigten Konfiguration, um die selektive Zwischenspeicherung von Tabellen/Partitionen und das Lesen beim Vorwärmen zuzulassen.)
 
 -   [*HIVE-17636*](https://issues.apache.org/jira/browse/HIVE-17636): Add multiple\_agg.q test for blobstores. (Hinzufügen von „multiple_agg.q“ für Blobspeicher.)
 

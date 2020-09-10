@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/21/2020
+ms.date: 08/31/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8acdf714f459ae604ccd7788b021aee3ee037935
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 19b65554801a22954499219e43ed021a7cc8c121
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87482582"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258434"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Übersicht über Token in Azure Active Directory B2C
 
@@ -119,7 +119,7 @@ Der Header des Tokens enthält Informationen zum Schlüssel und zur Verschlüsse
 }
 ```
 
-Der Wert des Anspruchs **alg** ist der Algorithmus, mit dem das Token signiert wurde. Der Wert des Anspruchs **kid** ist der öffentliche Schlüssel, mit dem das Token signiert wurde. Azure AD B2C kann ein Token jederzeit mithilfe eines beliebigen Paars aus öffentlichen und privaten Schlüsseln aus einer Gruppe signieren. Die möglichen Schlüsselgruppen werden von Azure AD B2C regelmäßig rotiert. Ihre Anwendung muss daher über eine automatische Verarbeitung dieser Schlüsseländerungen verfügen. Die von Azure AD B2C verwendeten öffentlichen Schlüssel müssen alle 24 Stunden auf Änderungen überprüft werden.
+Der Wert des Anspruchs **alg** ist der Algorithmus, mit dem das Token signiert wurde. Der Wert des Anspruchs **kid** ist der öffentliche Schlüssel, mit dem das Token signiert wurde. Azure AD B2C kann ein Token jederzeit mithilfe eines beliebigen Paars aus öffentlichen und privaten Schlüsseln aus einer Gruppe signieren. Die möglichen Schlüsselgruppen werden von Azure AD B2C regelmäßig rotiert. Ihre Anwendung muss daher über eine automatische Verarbeitung dieser Schlüsseländerungen verfügen. Die von Azure AD B2C verwendeten öffentlichen Schlüssel müssen alle 24 Stunden auf Änderungen überprüft werden. Um unerwartete Schlüsseländerungen zu behandeln, sollte Ihre Anwendung so geschrieben sein, dass die öffentlichen Schlüssel erneut abgerufen werden, wenn ein unerwarteter **kid**-Wert empfangen wird.
 
 Azure AD B2C verfügt über einen OpenID Connect-Metadatenendpunkt. Über diesen Endpunkt können Anwendungen zur Laufzeit Informationen zu Azure AD B2C anfordern. Diese Informationen umfassen Endpunkte, Tokeninhalte und Token-Signaturschlüssel. Ihr Azure AD B2C-Mandant enthält ein JSON-Metadatendokument für jede Richtlinie. Beim Metadatendokument handelt es sich um ein JSON-Objekt, das zahlreiche nützliche Informationen enthält, Die Metadaten enthalten **jwks_uri**, um den Ort anzugeben, an dem sich die Gruppe von öffentlichen Schlüsseln zum Signieren von Token befinden. Dieser Ort ist hier angegeben. Es wird jedoch empfohlen, ihn dynamisch mithilfe des Metadatendokuments abzurufen und dabei **jwks_uri** zu analysieren:
 

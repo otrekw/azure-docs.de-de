@@ -2,23 +2,23 @@
 title: ExpressRoute für Cloudlösungsanbieter | Microsoft-Dokumentation
 description: Dieser Artikel enthält Informationen für Cloudlösungsanbieter, die Azure-Dienste und ExpressRoute in ihre Angebote integrieren möchten.
 services: expressroute
-author: richcar
+author: duongau
 ms.service: expressroute
 ms.topic: article
 ms.date: 10/10/2016
-ms.author: ricarlse
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 99b51610e41aaf8358e7e3069d38dfd8c68ae422
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: ec3f8f71713abb818f29458748eb0054390f474e
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446770"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89396674"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>ExpressRoute für Cloudlösungsanbieter (Cloud Solution Providers, CSPs)
 Mit den von Microsoft bereitgestellten Diensten mit Hyperskalierung können traditionelle Wiederverkäufer und Distributoren (CSPs) schnell neue Dienste und Lösungen für Ihre Kunden bereitstellen, ohne in die Entwicklung dieser neuen Dienste investieren zu müssen. Microsoft stellt zudem Programme und APIs zur direkten Verwaltung dieser neuen Dienste bereit, sodass der Cloudlösungsanbieter (Cloud Solution Provider, CSP) Microsoft Azure-Ressourcen im Auftrag Ihrer Kunden verwalten kann. Eine dieser Ressourcen ist ExpressRoute. Mit ExpressRoute kann der CSP vorhandene Kundenressourcen mit Azure-Diensten verknüpfen. ExpressRoute ist eine private Hochgeschwindigkeitsverbindung für die Kommunikation mit Diensten in Azure. 
 
-Sie besteht aus einem Verbindungspaar für Hochverfügbarkeit, das den Abonnements einzelner Kunden zugeordnet ist und nicht von mehreren Kunden gemeinsam genutzt werden kann. Jede Verbindung muss in einem anderen Router enden, um Hochverfügbarkeit zu gewährleisten.
+ExpressRoute besteht aus einem Verbindungspaar für Hochverfügbarkeit, das den Abonnements einzelner Kunden zugeordnet ist und nicht von mehreren Kunden gemeinsam genutzt werden kann. Jede Verbindung muss in einem anderen Router enden, um Hochverfügbarkeit zu gewährleisten.
 
 > [!NOTE]
 > Bandbreite und Verbindung sind bei ExpressRoute gedeckelt. Bei umfangreichen/komplexen Implementierungen werden daher mehrere ExpressRoute-Verbindungen für einen einzelnen Kunden benötigt.
@@ -28,19 +28,19 @@ Sie besteht aus einem Verbindungspaar für Hochverfügbarkeit, das den Abonnemen
 Microsoft Azure stellt eine immer größere Anzahl von Diensten bereit, die Sie Ihren Kunden anbieten können. ExpressRoute bietet Zugriff auf die Microsoft Azure-Umgebung mit hoher Geschwindigkeit und geringer Wartezeit, sodass Sie und Ihre Kunden von diesen Diensten profitieren können.
 
 ## <a name="microsoft-azure-management"></a>Verwaltung von Microsoft Azure
-Microsoft stellt Cloudlösungsanbietern APIs zur Verfügung, die sich programmatisch in Ihre eigenen Dienstverwaltungssysteme integrieren lassen und so die Verwaltung der Azure-Kundenabonnements ermöglichen. Die unterstützten Verwaltungsfunktionen finden Sie [hier](https://msdn.microsoft.com/library/partnercenter/dn974944.aspx).
+Microsoft stellt CSPs APIs zur Verfügung, die sich programmgesteuert in Ihre eigenen Dienstverwaltungssysteme integrieren lassen und so die Verwaltung der Azure-Kundenabonnements ermöglichen. Die unterstützten Verwaltungsfunktionen finden Sie [hier](https://msdn.microsoft.com/library/partnercenter/dn974944.aspx).
 
 ## <a name="microsoft-azure-resource-management"></a>Verwaltung von Microsoft Azure-Ressourcen
-Die Verwaltung des Abonnements wird durch den Vertrag geregelt, den Sie mit Ihrem Kunden geschlossen haben. Der Cloud-Lösungsanbieter kann die Erstellung und Verwaltung von Ressourcen direkt verwalten, oder der Kunde kann die Kontrolle über das Microsoft Azure-Abonnement erhalten und die Azure-Ressourcen nach Bedarf erstellen. Wenn der Kunde die Erstellung von Ressourcen unter seinem Microsoft Azure-Abonnement selbst verwaltet, verwendet er entweder das *Durchleitungsmodell* oder das *Direktverbindungsmodell*. Diese Modelle werden im Anschluss ausführlich beschrieben.  
+Die Verwaltung des Abonnements wird durch den Vertrag geregelt, den Sie mit Ihrem Kunden geschlossen haben. Der Cloud-Lösungsanbieter kann die Erstellung und Verwaltung von Ressourcen direkt verwalten, oder der Kunde kann die Kontrolle über das Microsoft Azure-Abonnement erhalten und die Azure-Ressourcen nach Bedarf erstellen. Wenn der Kunde die Erstellung von Ressourcen unter seinem Microsoft Azure-Abonnement selbst verwaltet, verwendet er eines von zwei Modellen: „*Durchleitungsmodell*“ oder „*Direktverbindungsmodell*“. Diese Modelle werden im Anschluss ausführlich beschrieben.  
 
 ### <a name="connect-through-model"></a>Durchleitungsmodell
 ![alt text](./media/expressroute-for-cloud-solution-providers/connect-through.png)  
 
 Beim Durchleitungsmodell stellt der CSP eine direkte Verbindung zwischen Ihrem Datencenter und dem Azure-Abonnement Ihres Kunden her. Die direkte Verbindung wird unter Verwendung von ExpressRoute hergestellt und verbindet Ihr Netzwerk mit Azure. Anschließend stellt Ihr Kunde eine Verbindung mit Ihrem Netzwerk her. In diesem Szenario muss der Kunde durch das CSP-Netzwerk geschleust werden, um auf die Azure-Dienste zugreifen zu können. 
 
-Falls der Kunde über weitere Azure-Abonnements verfügt, die nicht von Ihnen verwaltet werden, verwendet er das öffentliche Internet oder eine eigene private Verbindung, um eine Verbindung mit diesen Diensten herzustellen, die nicht im Rahmen des CSP-Abonnements bereitgestellt werden. 
+Wenn der Kunde über weitere Azure-Abonnements verfügt, die nicht von Ihnen verwaltet werden, verwendet er das öffentliche Internet oder eine eigene private Verbindung, um eine Verbindung mit diesen Diensten herzustellen, die nicht im Rahmen des CSP-Abonnements bereitgestellt werden. 
 
-Für durch den CSP verwaltete Azure-Dienste wird vorausgesetzt, dass der CSP über einen zuvor eingerichteten Kundenidentitätsspeicher verfügt. Dieser Identitätsspeicher wird dann in Azure Active Directory repliziert, um die Verwaltung des CSP-Abonnements per AOBO (Administrate-On-Behalf-Of) zu ermöglichen. Zentrale Faktoren für dieses Szenario sind etwa, dass ein bestimmter Partner oder Dienstanbieter eine Beziehung mit dem Kunden etabliert hat, der Kunde aktuell Dienste des Anbieters nutzt oder der Partner eine Kombination aus vom Anbieter gehosteten und von Azure gehosteten Lösungen anbieten möchte, um für Flexibilität zu sorgen und Kundenherausforderungen zu bewältigen, die der CSP nicht alleine bewältigen kann. Dieses Modell wird in der **Abbildung** weiter unten veranschaulicht.
+Für durch den CSP verwaltete Azure-Dienste wird vorausgesetzt, dass der CSP über einen zuvor eingerichteten Kundenidentitätsspeicher verfügt. Dieser Identitätsspeicher wird dann in Azure Active Directory repliziert, um die Verwaltung des CSP-Abonnements per AOBO (Administrate-On-Behalf-Of) zu ermöglichen. Zentrale Faktoren für dieses Szenario sind etwa, dass ein bestimmter Partner oder Dienstanbieter eine Beziehung mit dem Kunden etabliert hat, der Kunde aktuell Dienste des Anbieters nutzt oder der Partner eine Kombination aus vom Anbieter gehosteten und von Azure gehosteten Lösungen anbieten möchte, um für Flexibilität zu sorgen und Kundenherausforderungen zu bewältigen, die der CSP allein nicht bewältigen kann. Dieses Modell wird in der **Abbildung** weiter unten veranschaulicht.
 
 ![alt text](./media/expressroute-for-cloud-solution-providers/connect-through-model.png)
 
@@ -54,7 +54,7 @@ Beim Direktverbindungsmodell stellt der Dienstanbieter mithilfe von ExpressRoute
 > 
 > 
 
-Für dieses Verbindungsszenario ist es erforderlich, dass der Kunde die Verbindung direkt über ein Kundennetzwerk herstellt, um auf das vom CSP verwaltete Azure-Abonnement zuzugreifen. Die hierfür verwendete direkte Netzwerkverbindung wird entweder vollständig oder teilweise vom Kunden erstellt, besessen und verwaltet. Für diese Kunden wird angenommen, dass beim Anbieter derzeit kein Kundenidentitätsspeicher eingerichtet wurde. Der Anbieter unterstützt den Kunden beim Replizieren des aktuellen Identitätsspeichers in Azure Active Directory für die Verwaltung des Abonnements per AOBO. Zentrale Faktoren für dieses Szenario sind etwa, dass ein bestimmter Partner oder Dienstanbieter eine Beziehung mit dem Kunden etabliert hat, der Kunde aktuell Dienste des Anbieters nutzt oder der Partner Dienste bereitstellen möchte, die ausschließlich auf von Azure gehosteten Lösungen basieren, sodass kein Anbieterdatencenter und keine Infrastruktur benötigt werden.
+Für dieses Verbindungsszenario ist es erforderlich, dass der Kunde die Verbindung direkt über ein Kundennetzwerk herstellt, um auf das vom CSP verwaltete Azure-Abonnement zuzugreifen. Die hierfür verwendete direkte Netzwerkverbindung wird entweder vollständig oder teilweise vom Kunden erstellt und verwaltet oder befindet sich in dessen Besitz. Bei diesen Kunden wird angenommen, dass beim Anbieter derzeit kein Identitätsspeicher für Kunden eingerichtet wurde. Der Anbieter unterstützt den Kunden beim Replizieren des aktuellen Identitätsspeichers in Azure Active Directory für die Verwaltung des Abonnements per AOBO. Zentrale Faktoren für dieses Szenario sind etwa, dass ein bestimmter Partner oder Dienstanbieter eine Beziehung mit dem Kunden etabliert hat, der Kunde aktuell Dienste des Anbieters nutzt oder der Partner Dienste bereitstellen möchte, die ausschließlich auf von Azure gehosteten Lösungen basieren, sodass kein Anbieterdatencenter und keine Infrastruktur benötigt werden.
 
 ![alt text](./media/expressroute-for-cloud-solution-providers/connect-to-model.png)
 
@@ -62,10 +62,10 @@ Die Entscheidung für eine dieser beiden Optionen hängt von den Anforderungen I
 
 * **Rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)** : RBAC basiert auf Azure Active Directory.  Weitere Informationen zu Azure RBAC finden Sie [hier](../role-based-access-control/role-assignments-portal.md).
 * **Netzwerk** : Behandelt die verschiedenen Netzwerkthemen in Microsoft Azure.
-* **Azure Active Directory (Azure AD)** : Azure AD stellt die Identitätsverwaltung für Microsoft Azure und SaaS-Drittanbieteranwendungen bereit. Weitere Informationen zu Azure AD finden Sie [hier](https://azure.microsoft.com/documentation/services/active-directory/).  
+* **Azure Active Directory (Azure AD)** : Azure AD stellt die Identitätsverwaltung für Microsoft Azure und SaaS-Drittanbieteranwendungen bereit. Weitere Informationen zu Azure AD finden Sie [hier](https://azure.microsoft.com/documentation/services/active-directory/).  
 
 ## <a name="network-speeds"></a>Netzwerkgeschwindigkeiten
-ExpressRoute unterstützt Netzwerkgeschwindigkeiten zwischen 50 Mbit/s und 10 Gbit/s. Dadurch können Kunden eine für ihre individuelle Umgebung benötigte Netzwerkbandbreite erwerben.
+ExpressRoute unterstützt Netzwerkgeschwindigkeiten von 50 MB/s bis 10 GB/s. Dadurch können Kunden eine für ihre individuelle Umgebung benötigte Netzwerkbandbreite erwerben.
 
 > [!NOTE]
 > Die Netzwerkbandbreite kann bedarfsgerecht ohne Unterbrechung der Kommunikation erhöht werden. Zur Verringerung der Netzwerkgeschwindigkeit muss die Verbindung dagegen getrennt und mit der geringeren Netzwerkgeschwindigkeit erneut hergestellt werden.  
@@ -86,7 +86,7 @@ Bei einer Direktverbindungskonfiguration verfügt Ihr Kunde bereits über eine V
 Sie können den Kunden beim Einrichten der Verbindung und beim Konfigurieren der Routen unterstützen, um den Ressourcen in Ihren Datencentern die Kommunikation mit den Kundenressourcen in Ihrem Datencenter (oder mit den in Azure gehosteten Ressourcen) zu ermöglichen.
 
 ## <a name="expressroute-routing-domains"></a>ExpressRoute-Routingdomänen
-ExpressRoute bietet drei Routingdomänen: öffentliches Peering, privates Peering und Microsoft-Peering. Jede der Routingdomänen ist mit identischen Routern in einer Aktiv/Aktiv-Konfiguration für Hochverfügbarkeit konfiguriert. Ausführlichere Informationen zu ExpressRoute-Routingdomänen finden Sie [hier](expressroute-circuit-peerings.md).
+ExpressRoute bietet drei Routingdomänen: öffentliches Peering, privates Peering und Microsoft-Peering. Jede Routingdomäne ist mit identischen Routern in einer Aktiv/Aktiv-Konfiguration für Hochverfügbarkeit konfiguriert. Ausführlichere Informationen zu ExpressRoute-Routingdomänen finden Sie [hier](expressroute-circuit-peerings.md).
 
 Sie können benutzerdefinierte Routenfilter definieren, um nur die gewünschten oder benötigten Routen zuzulassen. Weitere Informationen sowie eine Anleitung zum Vornehmen dieser Änderungen finden Sie im Artikel [Erstellen und Ändern des Routings für eine ExpressRoute-Verbindung mithilfe von PowerShell](expressroute-howto-routing-classic.md). Hier finden Sie auch ausführlichere Informationen zu Routingfiltern.
 
@@ -118,9 +118,9 @@ Benutzerdefinierte Routen ermöglichen die Steuerung des ausgehenden Datenverkeh
 Je nach verwendetem Modell (Direktverbindung oder Durchleitung) definiert Ihr Kunde die Sicherheitsrichtlinien in seinem virtuellen Netzwerk selbst oder teilt dem CSP seine Sicherheitsanforderungen mit, damit dieser seine virtuellen Netzwerke einrichten kann. Folgende Sicherheitskriterien können definiert werden:
 
 1. **Kundenisolation** : Die Azure-Plattform sorgt für Kundenisolation, indem Kunden-ID und Informationen zum virtuellen Netzwerk in einer sicheren Datenbank gespeichert und zur Kapselung des jeweiligen Datenverkehrs eines Kunden in einem GRE-Tunnel verwendet werden.
-2. **Netzwerksicherheitsgruppen-Regeln** dienen zum Definieren des zulässigen ein- und ausgehenden Datenverkehrs für die Subnetze innerhalb virtueller Azure-Netzwerke. Standardmäßig enthält die NSG Blockierungsregeln, die eingehenden Datenverkehr aus dem Internet blockieren, und Zulassungsregeln für Datenverkehr innerhalb eines virtuellen Netzwerks. Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie [hier](https://azure.microsoft.com/blog/network-security-groups/).
+2. **Netzwerksicherheitsgruppen-Regeln** dienen zum Definieren des zulässigen ein- und ausgehenden Datenverkehrs für die Subnetze innerhalb virtueller Azure-Netzwerke. Standardmäßig enthält die NSG Blockierungsregeln, die Datenverkehr zwischen dem Internet und dem VNET blockieren, und Zulassungsregeln für Datenverkehr innerhalb eines VNETs. Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie [hier](https://azure.microsoft.com/blog/network-security-groups/).
 3. **Tunnelerzwingung** : Dient dazu, für das Internet bestimmten Datenverkehr aus Azure über die ExpressRoute-Verbindung an das lokale Datencenter umzuleiten. Weitere Informationen zur Tunnelerzwingung finden Sie [hier](expressroute-routing.md#advertising-default-routes).  
-4. **Verschlüsselung**: ExpressRoute-Verbindungen werden zwar nur für einen bestimmten Kunden verwendet, aber es besteht die Möglichkeit, dass die Sicherheitsmaßnahmen des Netzwerkanbieters überwunden werden, sodass ein Eindringling Zugang zum Paketdatenverkehr erhält. Als Gegenmaßnahme kann ein Kunde oder CSP den über die Verbindung abgewickelten Datenverkehr durch Definieren von IPSec-Tunnelmodusrichtlinien für den gesamten Datenverkehr zwischen den lokalen Ressourcen und Azure verschlüsseln. Weitere Informationen finden Sie weiter oben in Abbildung 5 (ExpressRoute-Sicherheit; optionaler IPSec-Tunnelmodus für Kunde 1). Alternativ kann an jedem Endpunkt der ExpressRoute-Verbindung ein Firewallgerät verwendet werden. Hierzu müssen zur Verschlüsselung des Datenverkehrs über die ExpressRoute-Verbindung an beiden Enden zusätzliche Firewall-VMs/-geräte von Drittanbietern installiert werden.
+4. **Verschlüsselung**: ExpressRoute-Verbindungen werden zwar nur für einen bestimmten Kunden verwendet, aber es besteht die Möglichkeit, dass die Sicherheitsmaßnahmen des Netzwerkanbieters überwunden werden, sodass ein Eindringling Zugang zum Paketdatenverkehr erhält. Als Gegenmaßnahme kann ein Kunde oder CSP den über die Verbindung abgewickelten Datenverkehr durch Definieren von IPSec-Tunnelmodusrichtlinien für den gesamten Datenverkehr zwischen den lokalen Ressourcen und Azure verschlüsseln. Weitere Informationen finden Sie weiter oben in Abbildung 5 (ExpressRoute-Sicherheit; optionaler IPSec-Tunnelmodus für Kunde 1). Alternativ kann an jedem Endpunkt der ExpressRoute-Verbindung ein Firewallgerät verwendet werden. Hierzu müssen zur Verschlüsselung des Datenverkehrs über die ExpressRoute-Verbindung an beiden Enden zusätzliche Firewall-VMs/-Appliances von Drittanbietern installiert werden.
 
 ![alt text](./media/expressroute-for-cloud-solution-providers/expressroute-security.png)  
 

@@ -3,24 +3,26 @@ title: LiveEvent-Typen in Azure Media Services | Microsoft-Dokumentation
 description: In Azure Media Services kann ein Liveereignis entweder auf eine *Pass-Through*- oder *Livecodierung* festgelegt werden. Dieser Artikel enthält eine detaillierte Tabelle, in der Liveereignistypen verglichen werden.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
-ms.date: 06/13/2019
-ms.author: juliako
-ms.openlocfilehash: 793ddb8c99a4e21c176374f7cb3445d1a7d8fca0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: c79d45cfac22f41f05071b619c444e7b7ab7956a
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090058"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397303"
 ---
 # <a name="live-event-types-comparison"></a>Vergleich von Liveereignistypen
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 In Azure Media Services kann ein [Liveereignis](/rest/api/media/liveevents) entweder auf eine *Pass-Through*- (ein lokaler Liveencoder sendet einen Stream mit mehreren Bitraten) oder *Livecodierung* (ein lokaler Liveencoder sendet einen Stream mit Einzelbitrate) festgelegt werden. 
 
@@ -84,8 +86,7 @@ Hat der Beitragsfeed eine Auflösung von 720p oder höher, bewirkt die Voreinste
 | 200 |340 |192 |30 |High |
 
 > [!NOTE]
-> Wenn Sie die Voreinstellung für Livecodierung anpassen müssen, öffnen Sie ein Supportticket über das Azure-Portal. Geben Sie hierbei die gewünschte Tabelle mit den Angaben zur Auflösung und zu den Bitraten an. Vergewissern Sie sich, dass nur eine Ebene mit 720p und maximal sechs Ebenen vorhanden sind. Geben Sie außerdem an, dass Sie eine Voreinstellung für einen „Standard“-Liveencoder anfordern.
-> Die speziellen Werte der Bitraten und Auflösungen können im Laufe der Zeit angepasst werden.
+> Wenn Sie die Voreinstellung für Livecodierung anpassen müssen, öffnen Sie ein Supportticket über das Azure-Portal. Geben Sie hierbei die gewünschte Tabelle mit den Angaben zur Videoauflösung und zu den Bitraten an. Die Anpassung der Bitrate der Audiocodierung wird nicht unterstützt. Vergewissern Sie sich, dass nur eine Ebene mit 720p und maximal sechs Ebenen vorhanden sind. Geben Sie außerdem an, dass Sie eine Voreinstellung anfordern.
 
 ### <a name="output-video-streams-for-default1080p"></a>Videoausgabedatenströme für „Default1080p“
 
@@ -101,8 +102,7 @@ Hat der Beitragsfeed eine Auflösung von 1080p oder höher, bewirkt die Voreinst
 | 200 |320 |180 |30 |High |
 
 > [!NOTE]
-> Wenn Sie die Voreinstellung für Livecodierung anpassen müssen, öffnen Sie ein Supportticket über das Azure-Portal. Geben Sie hierbei die gewünschte Tabelle mit den Angaben zur Auflösung und zu den Bitraten an. Vergewissern Sie sich, dass nur eine Ebene mit 1080p und maximal sechs Ebenen vorhanden sind. Geben Sie außerdem an, dass Sie eine Voreinstellung für einen „Premium1080p“-Liveencoder anfordern.
-> Die speziellen Werte der Bitraten und Auflösungen können im Laufe der Zeit angepasst werden.
+> Wenn Sie die Voreinstellung für Livecodierung anpassen müssen, öffnen Sie ein Supportticket über das Azure-Portal. Geben Sie hierbei die gewünschte Tabelle mit den Angaben zur Auflösung und zu den Bitraten an. Vergewissern Sie sich, dass nur eine Ebene mit 1080p und maximal sechs Ebenen vorhanden sind. Geben Sie außerdem an, dass Sie eine Voreinstellung für einen „Premium1080p“-Liveencoder anfordern. Die speziellen Werte der Bitraten und Auflösungen können im Laufe der Zeit angepasst werden.
 
 ### <a name="output-audio-stream-for-default720p-and-default1080p"></a>Audioausgabedatenstrom für „Default720p“ und „Default1080p“
 

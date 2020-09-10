@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 4873c1c998f62b6180df73a04852704665a4125d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 01b6a72dfe3180324919fd712412ae88578c641b
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075833"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047451"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Azure Synapse Analytics: Versionshinweise
 
@@ -39,6 +39,13 @@ Vergewissern Sie sich für die Tooloptimierungen, dass die richtige Version inst
 >
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
+
+## <a name="aug-2020"></a>August 2020
+
+| Verbesserungen beim Dienst | Details |
+| --- | --- |
+|**Workloadverwaltung – Portalbenutzeroberfläche**|Benutzer können ihre Workloadverwaltungseinstellungen über das Azure-Portal konfigurieren und verwalten. Außerdem können [Arbeitsauslastungsgruppen](/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-portal) und [Workloadklassifizierer](/azure/synapse-analytics/sql-data-warehouse/quickstart-create-a-workload-classifier-portal) mit Wichtigkeit konfiguriert werden.|
+|**Verbesserte Ansicht für den Tabellenzuordnungskatalog**|Die neue Katalogansicht [sys.pdw_permanent_table_mappings](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=sqlallproducts-allversions) ordnet **object_ids** von permanenten Benutzertabellen zu ihren physischen Tabellennamen zu.|
 
 ## <a name="july-2020"></a>Juli 2020
 

@@ -1,14 +1,14 @@
 ---
 title: Details der Struktur von Richtliniendefinitionen
 description: Beschreibt, wie Richtliniendefinitionen verwendet werden, um Konventionen für Azure-Ressourcen in Ihrer Organisation einzurichten.
-ms.date: 08/17/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: ba6b8160eefb0a59bc8273989c27a3a8501a79b7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 076493fa8fd54e9585d09a3dd352eabdee652f18
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547799"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079029"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktur von Azure Policy-Definitionen
 
@@ -651,6 +651,13 @@ Die Liste der Aliase wächst ständig. Um zu ermitteln, welche Aliase derzeit vo
   # Use Get-AzPolicyAlias to list aliases for a Namespace (such as Azure Compute -- Microsoft.Compute)
   (Get-AzPolicyAlias -NamespaceMatch 'compute').Aliases
   ```
+
+  > [!NOTE]
+  > Zum Suchen von Aliasen, die mit dem [Modify](./effects.md#modify)-Effekt verwendet werden können, verwenden Sie in Azure PowerShell **4.6.0** oder höher den folgenden Befehl:
+  >
+  > ```azurepowershell-interactive
+  > Get-AzPolicyAlias | Select-Object -ExpandProperty 'Aliases' | Where-Object { $_.DefaultMetadata.Attributes -eq 'Modifiable' }
+  > ```
 
 - Azure CLI
 

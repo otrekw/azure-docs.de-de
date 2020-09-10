@@ -7,13 +7,13 @@ manager: diviso
 services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: b9d91921fc375a1209e8fa8df6e3c6ff56e55be0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/26/2020
+ms.openlocfilehash: f15686cf07bae4aee41095c970cd8a474724c2ed
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046712"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230975"
 ---
 # <a name="visualize-data-from-azure-time-series-insights-in-power-bi"></a>Visualisieren der Daten von Azure Time Series Insights in Power BI
 
@@ -52,20 +52,20 @@ Gehen Sie wie folgt vor, um die Azure Time Series Insights-Umgebung mit Power B
 
 Erste Schritte:
 
-1. Öffnen Sie Azure Time Series Insights Gen2-Explorer, und stellen Sie Ihre Daten zusammen.
+1. Öffnen Sie Azure Time Series Insights-Explorer, und stellen Sie Ihre Daten zusammen.
 1. Nachdem Sie eine Ansicht erstellt haben, mit der Sie zufrieden sind, navigieren Sie zum Dropdownmenü **Weitere Aktionen**, und wählen Sie dann **Mit Power BI verbinden** aus.
 
-    [![Export von Azure Time Series Insights Gen2-Explorer](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
+    [![Azure Time Series Insights-Explorer-Export](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
 
 1. Legen Sie Ihre Parameter auf dieser Registerkarte fest:
 
    1. Geben Sie einen relativen Zeitrahmen für die Anzeige an. Wenn Sie mit Ihrer bestehenden Ansicht zufrieden sind, belassen Sie diese als **Vorhandener Zeitrahmen**.
-   
-   1. Wählen Sie zwischen **aggregierten Ereignissen** und **Rohereignissen**. 
-   
+
+   1. Wählen Sie zwischen **aggregierten Ereignissen** und **Rohereignissen**.
+
        > [!NOTE]
-       > Sie können Ihre Daten jederzeit später in Power BI aggregieren, aber nach der Aggregation nicht zu Rohdaten zurückkehren. 
-       
+       > Sie können Ihre Daten jederzeit später in Power BI aggregieren, aber nach der Aggregation nicht zu Rohdaten zurückkehren.
+
        > [!NOTE]
        > Für Daten der Ebene „Rohereignisse“ gilt ein Grenzwert von 250.000 für die Ereignisanzahl.
 
@@ -89,7 +89,7 @@ Erste Schritte:
     [![Verbinden von Power BI mit Azure Time Series Insights](media/how-to-connect-power-bi/connect-to-time-series-insights.png)](media/how-to-connect-power-bi/connect-to-time-series-insights.png#lightbox)
 
     Alternativ können Sie auch zur Registerkarte **Azure** navigieren, **Azure Time Series Insights (Beta)** und dann **Verbinden** auswählen.
-    
+
 1. Es wird ein Dialogfeld mit einer Meldung angezeigt, in dem Sie um die Berechtigung zum Herstellen von Verbindungen mit Ressourcen von Drittanbietern gebeten werden. Wählen Sie **Weiter** aus.
 
     [![Auswählen von „Benutzerdefinierte Abfrage erstellen“](media/how-to-connect-power-bi/confirm-the-connection.png)](media/how-to-connect-power-bi/confirm-the-connection.png#lightbox)
@@ -112,17 +112,17 @@ Nachdem Sie die Daten jetzt in Power BI importiert haben, ist es an der Zeit, ei
 
     [![Auswählen der Ansicht „Bericht“](media/how-to-connect-power-bi/select-the-report-view.png)](media/how-to-connect-power-bi/select-the-report-view.png#lightbox)
 
-1.  Wählen Sie in der Spalte **Visualisierungen** das gewünschte visuelle Element aus. Wählen Sie z. B. **Liniendiagramm** aus. Dadurch wird Ihrem Canvas ein leeres Liniendiagramm hinzugefügt.
+1. Wählen Sie in der Spalte **Visualisierungen** das gewünschte visuelle Element aus. Wählen Sie z. B. **Liniendiagramm** aus. Dadurch wird Ihrem Canvas ein leeres Liniendiagramm hinzugefügt.
 
-1.  Wählen Sie in der Liste **Felder** die Option **_Timestamp** aus, und ziehen Sie sie in das Feld **Achse**, um Elemente entlang der X-Achse anzuzeigen. Stellen Sie sicher, dass als Wert für die **Achse** zu **_Timestamp** gewechselt wird (Standard ist **Datumshierarchie**).
+1. Wählen Sie in der Liste **Felder** die Option **_Timestamp** aus, und ziehen Sie sie in das Feld **Achse**, um Elemente entlang der X-Achse anzuzeigen. Stellen Sie sicher, dass als Wert für die **Achse** zu **_Timestamp** gewechselt wird (Standard ist **Datumshierarchie**).
 
     [![Auswählen der Ansicht „Bericht“](media/how-to-connect-power-bi/select-timestamp.png)](media/how-to-connect-power-bi/select-timestamp.png#lightbox)
 
-1.  Wählen Sie erneut in der Liste **Felder** die Option **TimeSeriesId** aus, und ziehen Sie sie in das Feld **Werte**, um Elemente entlang der Y-Achse anzuzeigen.
+1. Wählen Sie erneut in der Liste **Felder** die Option **TimeSeriesId** aus, und ziehen Sie sie in das Feld **Werte**, um Elemente entlang der Y-Achse anzuzeigen.
 
     [![Erstellen eines Liniendiagramms](media/how-to-connect-power-bi/power-bi-line-chart.png)](media/how-to-connect-power-bi/power-bi-line-chart.png#lightbox)
 
-1.  Um ein weiteres Diagramm zum Canvas hinzuzufügen, klicken Sie an eine beliebige Stelle auf dem Canvas außerhalb des Liniendiagramms, und wiederholen Sie diesen Vorgang.
+1. Um ein weiteres Diagramm zum Canvas hinzuzufügen, klicken Sie an eine beliebige Stelle auf dem Canvas außerhalb des Liniendiagramms, und wiederholen Sie diesen Vorgang.
 
     [![Erstellen zusätzlicher freizugebender Diagramme](media/how-to-connect-power-bi/power-bi-additional-charts.png)](media/how-to-connect-power-bi/power-bi-additional-charts.png#lightbox)
 

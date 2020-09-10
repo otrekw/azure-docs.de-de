@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 0587a179b98a410cdba46b7817d86567f275f25d
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: fd0412459e7d6e51b6abdccbc8782d157acee6b9
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826819"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319796"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Versionshinweise zu Azure HDInsight
 
@@ -49,7 +49,7 @@ Ab dem 1. Juli 2020 können Kunden in HDInsight 4.0 keine neuen Kafka-Cluster 
 
 ## <a name="behavior-changes"></a>Verhaltensänderungen
 ### <a name="ambari-stack-version-change"></a>Änderung der Ambari-Stapelversion
-Mit diesem Release wurde die Ambari-Version von 2.x.x.x in 4.1 geändert. Sie können die Ambari-Version in der Ambari-Benutzeroberfläche über „About“ (Info) abrufen.
+In diesem Release ändert sich die Ambari-Version von 2.x.x.x in 4.1. Sie können die Stapelversion (HDInsight 4.1) in Ambari überprüfen: Ambari > User > Versions.
 
 ## <a name="upcoming-changes"></a>Bevorstehende Änderungen
 Es stehen keine Breaking Changes an, um die Sie sich kümmern müssen.

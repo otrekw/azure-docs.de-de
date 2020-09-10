@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 7/14/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: bda07d0e14ddc630bde4fdc9c869704154c1e6cc
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 870aded1a7b00cbfbe96aff4997561b15be4141c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236351"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290094"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Integrieren von Azure Digital Twins in Azure Time Series Insights
 
@@ -72,6 +72,11 @@ Das Azure Digital Twins-Tutorial [ *Erstellen einer End-to-End-Lösung*](./tutor
     ```
 
 5. Erstellen Sie eine [Route](concepts-route-events.md#create-an-event-route) in Azure Digital Twins, um Ereignisse zur Aktualisierung von Zwillingen an Ihren Endpunkt zu senden. Der Filter in dieser Route erlaubt nur das Weitergeben von Nachrichten über Zwillingsaktualisierungen an Ihren Endpunkt.
+
+    >[!NOTE]
+    >Zurzeit besteht ein **bekanntes Problem** in Cloud Shell, das sich auf diese Befehlsgruppen auswirkt: `az dt route`, `az dt model`, `az dt twin`.
+    >
+    >Problemlösung: Führen Sie vor Ausführung des Befehls das Cmdlet `az login` in Cloud Shell aus, oder verwenden Sie die [lokale Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) anstelle von Cloud Shell. Weitere Informationen hierzu finden Sie unter [*Problembehandlung: Bekannte Probleme in Azure Digital Twins*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell).
 
     ```azurecli
     az dt route create -n <your Azure Digital Twins instance name> --endpoint-name <Event Hub endpoint from above> --route-name <name for your route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
@@ -207,6 +212,8 @@ Als nächstes richten Sie eine Time Series Insights-Instanz ein, um die Daten au
 ## <a name="begin-sending-iot-data-to-azure-digital-twins"></a>Beginnen mit dem Senden von IoT-Daten an Azure Digital Twins
 
 Um mit dem Senden von Daten an Time Series Insights zu beginnen, müssen Sie mit dem Aktualisieren der Eigenschaften des digitalen Zwillings in Azure Digital Twins mit sich ändernden Datenwerten beginnen. Verwenden Sie den Befehl [az dt twin update](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest#ext-azure-iot-az-dt-twin-update).
+
+[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
 
 Wenn Sie das End-to-End-Tutorial verwenden ([ *Erstellen einer End-to-End-Lösung*](tutorial-end-to-end.md)) beim Einrichten der Umgebung verwenden, können Sie mit dem Senden simulierter IoT-Daten beginnen, indem Sie das *DeviceSimulator*-Projekt aus dem Beispiel ausführen. Die Anweisungen finden Sie im Abschnitt [*Konfigurieren und Ausführen der Simulation*](tutorial-end-to-end.md#configure-and-run-the-simulation) des Tutorials.
 

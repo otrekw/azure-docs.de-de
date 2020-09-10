@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 06/16/2020
-ms.openlocfilehash: 5878ea6a554439c261399706eec708b06ed59b11
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 5b6d1ee41434d8aebac81d38ced9cadd93e51ba8
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225371"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181441"
 ---
 # <a name="issues-and-solutions-during-virtual-machine-certification"></a>Probleme und ihre Behebung bei der Zertifizierung virtueller Computer 
 
@@ -84,7 +84,7 @@ Wenn Sie Visual Studio oder ein lizenziertes Office-Produkt installieren möchte
 
 Weitere Informationen zum Auswählen einer genehmigten Basis finden Sie unter [Erstellen der technischen Ressourcen für Ihre Azure-VM](create-azure-vm-technical-asset.md#create-a-vm-image-using-an-approved-base).
 
-## <a name="tool-kit-test-case-execution-failed"></a>Fehler beim Ausführen des Toolkit-Testfalls
+## <a name="tool-kit-test-case-execution-failed"></a>Fehler beim Ausführen des Toolkit-Testfalls 
 
 Mit dem Microsoft Certification-Toolkit können Sie Testfälle ausführen und überprüfen, ob Ihre VHD oder Ihr Image mit der Azure-Umgebung kompatibel ist.
 
@@ -113,7 +113,7 @@ Die folgende Tabelle enthält allgemeine Fehler, die beim Ausführen der obigen 
  
 |Szenario|Testfall|Fehler|Lösung|
 |---|---|---|---|
-|1|Testfall zur Überprüfung der Linux-Agent-Version|Die mindestens erforderliche Linux-Agent-Version ist 2.241 oder höher. Diese Anforderung gilt seit dem 1. Mai 2020.|Das Image muss mit der erforderlichen Version aktualisiert werden, um [die Anforderung zu senden](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).|
+|1|Testfall zur Überprüfung der Linux-Agent-Version|Die mindestens erforderliche Linux-Agent-Version ist 2.2.41 oder höher. Diese Anforderung gilt seit dem 1. Mai 2020.|Aktualisieren Sie die Version des Linux-Agents auf 2.241 oder höher. Weitere Informationen finden Sie auf der [Seite mit Updates für die Linux-Agent-Version](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).|
 |2|Bashverlauf-Testfall|Es wird ein Fehler angezeigt, wenn die Größe des Bashverlaufs in Ihrem gesendeten Image 1 Kilobyte (KB) überschreitet. Die Größe ist auf 1 KB beschränkt, um sicherzustellen, dass keine potenziell sensiblen Informationen in der Bashverlaufsdatei erfasst werden.|Um dieses Problem zu beheben, binden Sie die VHD auf einer beliebigen anderen funktionierenden VM ein, und nehmen Sie Änderungen vor (löschen Sie z. B. die Verlaufsdateien vom Typ *.bash*), um die Größe auf 1 KB oder weniger zu reduzieren.|
 |3|Testfall für erforderliche Kernelparameter|Dieser Fehler wird angezeigt, wenn der Wert für **console** nicht auf **ttyS0** festgelegt ist. Überprüfen Sie die Änderung, indem Sie den folgenden Befehl ausführen:<br>`cat /proc/cmdline`|Legen Sie den Wert für **console** auf **ttyS0** fest, und senden Sie die Anforderung noch einmal.|
 |4|Testfall für das Client-Alive-Intervall|Wird im Toolkit-Ergebnis für diesen Testfall ein Fehler zurückgegeben, ist für **ClientAliveInterval** ein unzulässiger Wert vorhanden.|Legen Sie den Wert für **ClientAliveInterval** auf maximal 235 fest, und senden Sie die Anforderung noch einmal.|
@@ -363,7 +363,8 @@ Herausgeber müssen sich unter Angabe der folgenden Informationen an den [Market
    4.    Version: die Version des VM-Angebots, für das eine Ausnahme angefordert wird
    5.   Ausnahmetyp: Tests, gesperrte VM, benutzerdefinierte Vorlagen
    6.   Grund für die Anforderung: der Grund für diese Ausnahme und Informationen zu den auszuschließenden Tests 
-   7.   Anlage: Fügen Sie alle relevanten Belege an. Fügen Sie bei gesperrten VMs den Testbericht und bei benutzerdefinierten Vorlagen die benutzerdefinierte ARM-Vorlage als Anlage an. Wenn Sie den Testbericht für gesperrte VMs und die benutzerdefinierte ARM-Vorlage für benutzerdefinierte Vorlagen nicht anfügen, wird die Anforderung abgelehnt.
+   7. Zeitachse: das Datum, bis zu dem die Ausnahme angefordert wurde 
+   8.   Anlage: Fügen Sie alle relevanten Belege an. Fügen Sie bei gesperrten VMs den Testbericht und bei benutzerdefinierten Vorlagen die benutzerdefinierte ARM-Vorlage als Anlage an. Wenn Sie den Testbericht für gesperrte VMs und die benutzerdefinierte ARM-Vorlage für benutzerdefinierte Vorlagen nicht anfügen, wird die Anforderung abgelehnt.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

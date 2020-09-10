@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: f202a9d616809d1f14366350d8d60ef2bc06b96b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: d924c019d5ee231f3c9d66a56c4d98857bc89abc
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934513"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055548"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Verbessern der Synthese mit Markupsprache für Sprachsynthese (Speech Synthesis Markup Language, SSML)
 
@@ -192,33 +192,38 @@ speechConfig!.setPropertyTo(
 > [!IMPORTANT]
 > Die Anpassung der Sprechstile funktioniert nur bei neuronalen Stimmen.
 
-Standardmäßig synthetisiert der Sprachanalysedienst Text mithilfe einer neutralen Sprechweise sowohl bei Standard- als auch neuronalen Stimmen. Bei neuronalen Stimmen können Sie mithilfe des Elements `mstts:express-as` die Sprechweise anpassen, um verschiedene Emotionen wie Fröhlichkeit, Mitgefühl oder Gelassenheit auszudrücken, oder die Stimme für verschiedene Szenarien wie Kundenservice, Nachrichtenpräsentation oder Sprach-Assistent optimieren. Dies ist ein optionales Element und für den Speech-Dienst eindeutig.
+Standardmäßig synthetisiert der Sprachanalysedienst Text mithilfe einer neutralen Sprechweise sowohl bei Standard- als auch neuronalen Stimmen. Bei neuronalen Stimmen können Sie mithilfe des Elements `mstts:express-as` die Sprechweise anpassen, um verschiedene Emotionen wie Fröhlichkeit, Mitgefühl oder Gelassenheit auszudrücken, oder die Stimme für verschiedene Szenarien wie Kundenservice, Nachrichtenpräsentation oder Sprach-Assistent optimieren. Dies ist ein optionales Element und für den Speech-Dienst eindeutig.
 
 Anpassungen der Sprechweise werden derzeit bei diesen neuronalen Stimmen unterstützt:
 * `en-US-AriaNeural`
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
 
-Änderungen werden auf Satzebene angewendet, und die Sprechweise variiert je nach Stimme. Wenn keine Sprechweise unterstützt wird, gibt der Dienst Sprache in der neutralen Standardsprechweise zurück.
+Änderungen werden auf Satzebene angewendet, und die Sprechweise variiert je nach Stimme. Wenn keine Sprechweise unterstützt wird, gibt der Dienst Sprache in der neutralen Standardsprechweise zurück. Sie können die für jede Stimme unterstützten Sprechweisen über die [Voice List-API](rest-text-to-speech.md#get-a-list-of-voices) abfragen.
+
+Für die chinesische Stimme XiaoxiaoNeural kann die Intensität der Sprechweise weiter verändert werden, um besser zu Ihrem Anwendungsfall zu passen. Sie können mit `styledegree` eine kräftigere oder sanftere Sprechweise angeben, um die Sprache ausdrucksstärker oder gedämpfter zu gestalten.
 
 **Syntax**
 
 ```xml
-<mstts:express-as style="string"></mstts:express-as>
+<mstts:express-as style="string" styledegree="value"></mstts:express-as>
 ```
+> [!NOTE]
+> Zurzeit unterstützt `styledegree` nur XiaoxiaoNeural. 
 
 **Attribute**
 
 | attribute | BESCHREIBUNG | Erforderlich/optional |
 |-----------|-------------|---------------------|
 | `style` | Gibt die Sprechweise an. Sprechweisen sind derzeit stimmenspezifisch. | Erforderlich, wenn die Sprechweise für eine neuronale Stimme angepasst wird. Bei Verwendung von `mstts:express-as` muss die Sprechweise angegeben werden. Bei Angabe eines ungültigen Werts wird dieses Element ignoriert. |
+| `styledegree` | Gibt die Intensität der Sprechweise an. **Zulässige Werte**: 0,01 bis 2 (einschließlich). Der Standardwert ist 1, d. h. die vordefinierte Intensität für die Sprechweise. Die minimale Einheit ist 0,01, was zu einer leichten Tendenz zur Zielsprechweise führt. Ein Wert von 2 führt zu einer Verdoppelung der standardmäßigen Intensität der Sprechweise.  | Optional (Zurzeit unterstützt `styledegree` nur XiaoxiaoNeural.)|
 
 Ermitteln Sie anhand dieser Tabelle, welche Sprechweisen für die einzelnen neuronalen Stimmen unterstützt werden.
 
 | Sprache                   | Style                     | BESCHREIBUNG                                                 |
 |-------------------------|---------------------------|-------------------------------------------------------------|
-| `en-US-AriaNeural`      | `style="newscast-formal"` | Ein formaler, souveräner und verbindlicher Tone für die Mitteilung von Nachrichten|
-|                         | `style="newscast-casual"` | Ein gewandter und ungezwungener Ton für die Mitteilung allgemeiner Nachrichten       |
+| `en-US-AriaNeural`      | `style="newscast-formal"` | Formaler, souveräner und verbindlicher Ton für die Mitteilung von Nachrichten |
+|                         | `style="newscast-casual"` | Gewandter und ungezwungener Ton für die Mitteilung allgemeiner Nachrichten        |
 |                         | `style="customerservice"` | Freundlicher und hilfsbereiter Ton für den Kundensupport  |
 |                         | `style="chat"`            | Lockerer und zwangloser Ton                         |
 |                         | `style="cheerful"`        | Positiver und fröhlicher Ton                         |
@@ -226,6 +231,16 @@ Ermitteln Sie anhand dieser Tabelle, welche Sprechweisen für die einzelnen neur
 | `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | Formeller und professioneller Ton für Nachrichten |
 |                         | `style="customerservice"` | Freundlicher und hilfsbereiter Ton für den Kundensupport  |
 |                         | `style="assistant"`       | Herzlicher und zwangloser Ton für digitale Assistenten    |
+|                         | `style="chat"`            | Lockerer und zwangloser Ton für Smalltalk           |
+|                         | `style="calm"`            | Kühle, gesammelte und gelassene Haltung beim Sprechen Ton, Tonhöhe und Intonation sind im Vergleich zu anderen Sprachtypen viel einheitlicher                                |
+|                         | `style="cheerful"`        | Optimistischer und enthusiastischer Ton mit höherer Tonhöhe und stimmlicher Energie                         |
+|                         | `style="sad"`             | Trauriger Ton mit höherer Tonhöhe, geringerer Intensität und geringerer stimmlicher Energie Häufige Indikatoren für diese Emotion wären Wimmern oder Weinen während der Rede            |
+|                         | `style="angry"`           | Wütender und verärgerter Ton mit geringerer Tonhöhe, höherer Intensität und höherer stimmlicher Energie Der Sprecher ist in einem Zustand, in dem er wütend, unzufrieden und beleidigt ist.       |
+|                         | `style="fearful"`         | Ängstlicher und nervöser Ton mit höherer Tonhöhe, höherer stimmlicher Energie und höherem Tempo Der Sprecher befindet sich in einem Zustand der Anspannung und Beunruhigung.                          |
+|                         | `style="disgruntled"`     | Verächtlicher und klagender Ton Eine Rede mit dieser Emotion zeugt von Unmut und Verachtung.              |
+|                         | `style="serious"`         | Strenger und gebieterischer Ton Der Sprecher klingt oft steifer und viel weniger entspannt mit festem Rhythmus.          |
+|                         | `style="affectionate"`    | Warmer und herzlicher Ton mit höherer Tonhöhe und stimmlicher Energie Der Sprecher ist in einem Zustand, in dem er die Aufmerksamkeit der Zuhörer auf sich zieht. Die „Persönlichkeit“ des Sprechers ist oft von liebenswerter Art.          |     
+|                         | `style="gentle"`          | Sanfter, höflicher und angenehmer Ton mit geringerer Tonhöhe und stimmlicher Energie         |   
 |                         | `style="lyrical"`         | Melodischer und gefühlvoller Ton zum Ausdrücken von Emotionen         |   
 | `zh-CN-YunyangNeural`   | `style="customerservice"` | Freundlicher und hilfsbereiter Ton für den Kundensupport  | 
 
@@ -239,6 +254,18 @@ Dieser SSML-Codeausschnitt veranschaulicht, wie die Sprechweise mithilfe des `<m
     <voice name="en-US-AriaNeural">
         <mstts:express-as style="cheerful">
             That'd be just amazing!
+        </mstts:express-as>
+    </voice>
+</speak>
+```
+
+Dieser SSML-Codeausschnitt veranschaulicht, wie das Attribut `styledegree` verwendet wird, um die Intensität der Sprechweise für XiaoxiaoNeural zu ändern.
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis"
+       xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="zh-CN">
+    <voice name="zh-CN-XiaoxiaoNeural">
+        <mstts:express-as style="sad" styledegree="2">
+            快走吧，路上一定要注意安全，早去早回。
         </mstts:express-as>
     </voice>
 </speak>

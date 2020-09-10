@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Recovery Services-Tresore z
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: 0c0b7b25eeecad8e8c519d37139551590a51a29e
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 81c6fd47ccea2ea17a20535df04931727c23be6f
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892353"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177192"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Erstellen und Konfigurieren von Recovery Services-Tresoren
 
@@ -37,7 +37,7 @@ Azure Backup übernimmt automatisch die Speicherung für den Tresor. Sie müssen
    - Erfahren Sie mehr über [Georedundanz](../storage/common/storage-redundancy.md) and [lokale Redundanz](../storage/common/storage-redundancy.md).
 
 >[!NOTE]
->Die Speicherreplikationseinstellungen für den Tresor sind nicht relevant für das Sichern von Azure-Dateifreigaben, weil die aktuelle Lösung auf Momentaufnahmen basiert und keine Daten in den Tresor übertragen werden. Momentaufnahmen werden im gleichen Speicherkonto gespeichert wie die gesicherte Dateifreigabe.
+>Die Speicherreplikationseinstellungen für den Tresor sind für das Sichern von Azure-Dateifreigaben nicht relevant, da die aktuelle Lösung auf Momentaufnahmen basiert und keine Daten in den Tresor übertragen werden. Momentaufnahmen werden im gleichen Speicherkonto gespeichert wie die gesicherte Dateifreigabe.
 
 ## <a name="set-cross-region-restore"></a>Festlegen der bereichsübergreifenden Wiederherstellung
 

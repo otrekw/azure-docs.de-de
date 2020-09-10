@@ -4,15 +4,15 @@ description: Hier finden Sie Informationen zum Behandeln von Azure Files-Problem
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 05/31/2019
+ms.date: 08/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: e9384dd3865b106488dc8ec303b060736f23ded7
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 3bd059e59bebe9ae1ecc8f2f00dd63f873e08944
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797784"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269368"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Behandeln von Azure Files-Problemen unter Windows
 
@@ -344,14 +344,13 @@ $StorageAccountName = "<storage-account-name-here>"
 Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName -Verbose
 ```
 Das Cmdlet führt diese nachfolgenden Überprüfungen der Reihe nach durch und bietet Anleitungen zu Fehlern:
-1. CheckPort445Connectivity: Überprüfen Sie, ob Port 445 für SMB-Verbindungen geöffnet ist
-2. CheckDomainJoined: Überprüfen Sie, ob der Clientcomputer Mitglied der AD-Domäne ist
-3. CheckADObject: Vergewissern Sie sich, dass in Active Directory ein Objekt vorhanden ist, das das Speicherkonto darstellt und den richtigen SPN (Dienstprinzipalnamen) aufweist.
-4. CheckGetKerberosTicket: Versuch, ein Kerberos-Ticket für die Verbindung mit dem Speicherkonto zu erhalten 
-5. CheckADObjectPasswordIsCorrect: Sicherstellen, dass das für die AD-Identität konfigurierte Kennwort, das das Speicherkonto darstellt, mit dem kerb1- oder kerb2-Schlüssel des Speicherkontos übereinstimmt
-6. CheckSidHasAadUser: Überprüfung, ob der angemeldete AD-Benutzer mit Azure AD synchronisiert ist. Wenn Sie nachschlagen möchten, ob ein bestimmter AD-Benutzer mit Azure AD synchronisiert ist, können Sie den Benutzernamen und die Domäne in den Eingabeparametern angeben.
-7. CheckAadUserHasSid: Überprüfen Sie, ob ein Azure AD-Benutzer über eine SID in AD verfügt. Für diese Überprüfung muss ein Benutzer die Objekt-ID des Azure AD-Benutzers mit dem Parameter „-ObjectId“ eingeben. 
-8. CheckStorageAccountDomainJoined: Überprüfung der Eigenschaften des Speicherkontos, um festzustellen, ob AD-Authentifizierung aktiviert wurde und die AD-Eigenschaften des Kontos aufgefüllt wurden.
+1. CheckADObjectPasswordIsCorrect: Sicherstellen, dass das für die AD-Identität konfigurierte Kennwort, das das Speicherkonto darstellt, mit dem kerb1- oder kerb2-Schlüssel des Speicherkontos übereinstimmt. Wenn das Kennwort falsch ist, können Sie [Update-AzStorageAccountADObjectPassword](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-update-password) ausführen, um das Kennwort zurückzusetzen. 
+2. CheckADObject: Vergewissern Sie sich, dass in Active Directory ein Objekt vorhanden ist, das das Speicherkonto darstellt und den richtigen SPN (Dienstprinzipalnamen) aufweist. Wenn der SPN nicht ordnungsgemäß eingerichtet ist, führen Sie das Cmdlet „Set-AD“ aus, das im Debug-Cmdlet zurückgegeben wird, um den SPN zu konfigurieren.
+3. CheckDomainJoined: Überprüfen Sie, ob der Clientcomputer Mitglied der AD-Domäne ist. Wenn Ihr Computer nicht in die AD-Domäne eingebunden ist, finden Sie weitere Informationen in diesem [Artikel](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain#:~:text=To%20join%20a%20computer%20to%20a%20domain&text=Navigate%20to%20System%20and%20Security,join%2C%20and%20then%20click%20OK) mit Anweisungen zum Domänenbeitritt.
+4. CheckPort445Connectivity: Überprüfen Sie, ob Port 445 für SMB-Verbindungen geöffnet ist. Wenn der erforderliche Port nicht geöffnet ist, finden Sie im Tool zur Problembehandlung [AzFileDiagnostics.ps1](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) Informationen zu Konnektivitätsproblemen mit Azure Files.
+5. CheckSidHasAadUser: Überprüfung, ob der angemeldete AD-Benutzer mit Azure AD synchronisiert ist. Wenn Sie nachschlagen möchten, ob ein bestimmter AD-Benutzer mit Azure AD synchronisiert ist, können Sie den Benutzernamen und die Domäne in den Eingabeparametern angeben. 
+6. CheckGetKerberosTicket: Versuch, ein Kerberos-Ticket für die Verbindung mit dem Speicherkonto zu erhalten. Wenn kein gültiges Kerberos-Token vorhanden ist, führen Sie das Cmdlet „klist get cifs/storage-account-name.file.core.windows.net“ aus, und betrachten Sie den Fehlercode, um die Ursache für den Fehler beim Ticketabruf zu ermitteln.
+7. CheckStorageAccountDomainJoined: Überprüfung, ob die AD-Authentifizierung aktiviert wurde und die AD-Eigenschaften des Kontos eingegeben wurden. Wenn dies nicht der Fall ist, finden Sie [hier](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-enable) eine Anleitung zum Aktivieren der AD DS-Authentifizierung für Azure Files. 
 
 ## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>Berechtigungen auf Verzeichnis-/Dateiebene (Windows-ACLs) können nicht mit Windows-Datei-Explorer konfiguriert werden
 

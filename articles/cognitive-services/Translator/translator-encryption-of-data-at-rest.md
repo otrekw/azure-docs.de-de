@@ -1,20 +1,20 @@
 ---
 title: Übersetzerverschlüsselung für ruhende Daten
 titleSuffix: Azure Cognitive Services
-description: Übersetzerverschlüsselung für ruhende Daten.
+description: Microsoft bietet Ihnen die Möglichkeit, Ihre Abonnements für Cognitive Services mit Ihren eigenen Schlüsseln, so genannten kundenseitig verwalteten Schlüsseln (Customer-Managed-Keys, CMK), zu verwalten. In diesem Artikel erfahren Sie mehr über die Datenverschlüsselung im Ruhezustand für den Übersetzer und wie Sie CMK aktivieren und verwalten können.
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 05/26/2020
+ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: bc328efd648eb3dd522f5233e2a5c440911ac58c
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: ce7ff6ae134835de23a0d2670e8b4f44783654f8
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310834"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079199"
 ---
 # <a name="translator-encryption-of-data-at-rest"></a>Übersetzerverschlüsselung für ruhende Daten
 
@@ -34,7 +34,7 @@ Für Abonnements, die nur von Microsoft verwaltete Verschlüsselungsschlüssel u
 
 ## <a name="customer-managed-keys-with-azure-key-vault"></a>Von Kunden verwaltete Schlüssel mit Azure Key Vault
 
-Es gibt auch eine Option zum Verwalten Ihres Abonnements mit Ihren eigenen Schlüsseln. Kundenseitig verwaltete Schlüssel (Customer-Managed Keys, CMK) werden auch als Bring Your Own Key (BYOK) bezeichnet und bieten eine größere Flexibilität beim Erstellen, Rotieren, Deaktivieren und Widerrufen von Zugriffssteuerungen. Außerdem können Sie die zum Schutz Ihrer Daten verwendeten Verschlüsselungsschlüssel überwachen.
+Standardmäßig verwendet Ihr Abonnement von Microsoft verwaltete Verschlüsselungsschlüssel. Es gibt auch die Option zum Verwalten Ihres Abonnements mit Ihren eigenen Schlüsseln (kundenseitig verwaltete Schlüssel, CMK). Kundenseitig verwaltete Schlüssel (CMK) bieten größere Flexibilität beim Erstellen, Rotieren, Deaktivieren und Widerrufen von Zugriffssteuerungen. Außerdem können Sie die zum Schutz Ihrer Daten verwendeten Verschlüsselungsschlüssel überwachen. Wenn für Ihr Abonnement CMK konfiguriert ist, wird darüber hinaus die doppelte Verschlüsselung bereitgestellt, mit der eine zweite Schutzebene zur Verfügung steht, während Sie den Verschlüsselungsschlüssel über Ihren Azure Key Vault kontrollieren können.
 
 > [!IMPORTANT]
 > Kundenseitig verwaltete Schlüssel sind für alle Tarife für den Übersetzerdienst verfügbar. Wenn Sie die Möglichkeit haben möchten, von Kunden verwaltete Schlüssel zu verwenden, füllen Sie das [Formular zum Anfordern von kundenseitig verwalteten Schlüsseln für den Übersetzerdienst](https://aka.ms/cogsvc-cmk) aus, und reichen Sie es ein. Nach ca. 3–5 Werktagen erhalten Sie eine Rückmeldung zum Status Ihrer Anforderung. Je nach Bedarf können Sie in einer Warteschlange platziert und genehmigt werden, sobald Platz verfügbar ist. Nachdem Ihre Verwendung von CMK mit dem Übersetzerdienst genehmigt wurde, müssen Sie eine neue Übersetzerressource erstellen. Nachdem die Übersetzerressource erstellt wurde, können Sie mit Azure Key Vault Ihre verwaltete Identität einrichten.
@@ -44,8 +44,6 @@ Führen Sie die folgenden Schritte aus, um kundenseitig verwaltete Schlüssel f�
 1. Erstellen Sie Ihre neue regionale Translator- oder Cognitive Services-Ressource. Dies funktioniert nicht mit einer globalen Ressource.
 2. Aktivieren Sie die verwaltete Identität im Azure-Portal, und fügen Sie Ihre Informationen zum vom Kunden verwalteten Schlüssel hinzu.
 3. Erstellen Sie einen neuen Arbeitsbereich im benutzerdefinierten Translator, und ordnen Sie diese Abonnementinformationen zu.
-
-[!INCLUDE [cognitive-services-cmk](../includes/cognitive-services-cmk-regions.md)]
 
 ### <a name="enable-customer-managed-keys"></a>Aktivieren von vom Kunden verwalteten Schlüsseln
 

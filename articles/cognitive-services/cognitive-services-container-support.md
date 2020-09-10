@@ -8,17 +8,22 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 05/07/2020
+ms.date: 9/01/2020
 ms.author: aahi
-ms.openlocfilehash: 69984f9dbd94bcdca2e272a5bdebbb7fc1464dae
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 501cdde95cfdf0277fe3e260e8cc929664af257e
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104406"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321435"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Containerunterstützung in Azure Cognitive Services
 
+![Rechtliche Hinweise ](./media/cognitive-services-container-support/banner.png)
+<!--
+> [!IMPORTANT]
+> On June 11, 2020, Microsoft announced that it will not sell facial recognition technology to police departments in the United States until strong regulation, grounded in human rights, has been enacted. As such, customers may not use facial recognition features or features included in Azure Services, such as Face or Video Indexer, if a customer is, or is allowing use of such services by or for, a police department in the United States.
+-->
 Dank der Containerunterstützung in Azure Cognitive Services können Entwickler die gleichen umfangreichen APIs verwenden wie in Azure und dabei flexibel entscheiden, wo die mit [Docker-Containern](https://www.docker.com/what-container) verbundenen Dienste bereitgestellt und gehostet werden. Die Containerunterstützung ist derzeit für einige Dienste von Azure Cognitive Services verfügbar, einschließlich:
 
 > [!div class="checklist"]
@@ -60,6 +65,7 @@ Azure Cognitive Services-Container bieten den folgenden Satz von Docker-Containe
 | [Spracherkennungsdienst-API][sp-containers-cstt] | F0, S0 | **Benutzerdefinierte Spracherkennung** | Wandelt fortlaufende Sprache in Echtzeit in Text um und verwendet dazu ein benutzerdefiniertes Modell. |
 | [Spracherkennungsdienst-API][sp-containers-tts] | F0, S0 | **Sprachsynthese** | Konvertiert Text in natürlich klingende Sprache. |
 | [Spracherkennungsdienst-API][sp-containers-ctts] | F0, S0 | **Benutzerdefinierte Sprachsynthese** | Konvertiert Text in natürlich klingende Sprache und verwendet dazu ein benutzerdefiniertes Modell. |
+| [Spracherkennungsdienst-API][sp-containers-ntts] | F0, S0 | **Text-zu-Sprache (neuronal)** | Konvertiert Text mithilfe von Deep Neural Network-Technologie in natürlich klingende Sprache, die eine natürlichere synthetische Sprache ermöglicht. |
 | [Textanalyse][ta-containers-keyphrase] | F0, S | **Schlüsselbegriffserkennung** ([Bild](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) | Extrahiert die Schlüsselbegriffe, um die wichtigsten Punkte zu ermitteln. Wenn der eingegebene Text beispielsweise „Das Essen war köstlich, und es gab hervorragendes Personal“ lautet, gibt die API die Kernpunkte „Essen“ und „hervorragendes Personal“ zurück. |
 | [Textanalyse][ta-containers-language] | F0, S | **Sprachenerkennung** ([Bild](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) | Erkennt die Sprache von Eingabetexten für bis zu 120 Sprachen und meldet einen einzigen Sprachcode für jedes Dokument, das auf Anforderung gesendet wird. Der Sprachcode ist mit einem Wert kombiniert, der die Stärke der Bewertung angibt. |
 | [Textanalyse][ta-containers-sentiment] | F0, S | **Standpunktanalyse v3** ([Image](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)) | Analysiert unformatierten Text auf Hinweise auf positive oder negative Stimmungen. Von dieser Version der Standpunktanalyse werden für jedes Dokument und jeden darin enthaltenen Satz Stimmungsbezeichnungen (beispielsweise *Positiv* oder *Negativ*) zurückgegeben. |

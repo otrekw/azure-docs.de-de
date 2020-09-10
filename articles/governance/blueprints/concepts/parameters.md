@@ -1,14 +1,14 @@
 ---
 title: Verwenden von Parametern für das Erstellen dynamischer Blaupausen
 description: Hier erhalten Sie Informationen zu statischen und dynamischen Parametern und dazu, wie Sie sie zum Erstellung sicherer und dynamischer Blaupausen verwenden können.
-ms.date: 04/15/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 831dd69f58130247518ee7465bc1059aed61b319
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: b9c80a50ebb4be8dc530c73544a704035d777225
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970636"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051558"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Erstellen dynamischer Blaupausen mithilfe von Parametern
 
@@ -55,11 +55,11 @@ Ein Parameterwert, der in der Definition einer Blaupause definiert ist, wird als
 
 1. Wählen Sie auf der Seite links die Option **Blaupausendefinitionen**.
 
-1. Klicken Sie auf eine vorhandene Blaupause, und klicken Sie anschließend auf **Blaupause bearbeiten**, oder klicken Sie auf **+ Blaupause erstellen**, und geben Sie die Informationen auf der Registerkarte **Grundlagen** ein.
+1. Wählen Sie eine vorhandene Blaupause aus, und wählen Sie anschließend **Blaupause bearbeiten** aus, ODER wählen Sie **+ Blaupause erstellen** aus, und geben Sie die Informationen auf der Registerkarte **Grundlagen** ein.
 
-1. Klicken Sie auf **Weiter: Artefakte**, oder klicken Sie auf die Registerkarte **Artefakte**.
+1. Klicken Sie auf **Weiter: Artefakte**, ODER wählen Sie die Registerkarte **Artefakte** aus.
 
-1. Bei Artefakten, die der Blaupause mit Parameteroptionen hinzugefügt werden, wird **X von Y Parametern aufgefüllt** in der Spalte **Parameter** angezeigt. Klicken Sie auf die Artefaktzeile, um die Artefaktparameter zu bearbeiten.
+1. Bei Artefakten, die der Blaupause mit Parameteroptionen hinzugefügt werden, wird **X von Y Parametern aufgefüllt** in der Spalte **Parameter** angezeigt. Wählen Sie die Artefaktzeile aus, um die Artefaktparameter zu bearbeiten.
 
    :::image type="content" source="../media/parameters/parameter-column.png" alt-text="Blaupausenparameter in einer Blaupausendefinition" border="false":::
 
@@ -172,7 +172,7 @@ Das Gegenteil eines statischen Parameters ist ein **dynamischer Parameter**. Die
 
 1. Wählen Sie auf der Seite links die Option **Blaupausendefinitionen**.
 
-1. Klicken Sie mit der rechten Maustaste auf die Blaupause, die Sie zuweisen möchten. Wählen Sie **Blaupause zuweisen** aus, oder klicken Sie auf die Blaupause, die Sie zuweisen möchten, und klicken Sie dann auf die Schaltfläche **Blaupause zuweisen**.
+1. Klicken Sie mit der rechten Maustaste auf die Blaupause, die Sie zuweisen möchten. Wählen Sie **Blaupause zuweisen** aus, ODER wählen Sie die Blaupause aus, die Sie zuweisen möchten, und verwenden Sie dann die Schaltfläche **Blaupause zuweisen**.
 
 1. Auf der Seite **Blaupause zuweisen** finden Sie den Abschnitt **Artefaktparameter**. Für jedes Artefakt mit mindestens einem **dynamischen Parameter** werden das Artefakt und die zugehörigen Konfigurationsoptionen angezeigt. Geben Sie erforderliche Werte für die Parameter an, bevor Sie die Blaupause zuweisen. Im folgenden Beispiel ist _Name_ ein **dynamischer Parameter**, der definiert werden muss, um die Blaupausenzuweisung abzuschließen.
 
@@ -234,8 +234,8 @@ Zum Festlegen von **dynamischen Parametern** während der Zuweisung wird der jew
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen finden Sie in der Liste der [Blaupausenfunktionen](../reference/blueprint-functions.md).
-- Erfahren Sie mehr über den [Lebenszyklus von Blaupausen](lifecycle.md).
-- Erfahren Sie, wie Sie die [Abfolge von Blaupausen](sequencing-order.md) anpassen können.
-- Erfahren Sie, wie Sie [Ressourcen in Blaupausen sperren](resource-locking.md) können.
+- Erfahren Sie mehr über den [Lebenszyklus von Blaupausen](./lifecycle.md).
+- Erfahren Sie, wie Sie die [Abfolge von Blaupausen](./sequencing-order.md) anpassen können.
+- Erfahren Sie, wie Sie [Ressourcen in Blaupausen sperren](./resource-locking.md) können.
 - Lernen Sie, wie Sie [vorhandene Zuweisungen aktualisieren](../how-to/update-existing-assignments.md).
 - Beheben Sie Probleme bei der Blaupausenzuweisung mithilfe des [allgemeinen Leitfadens zur Problembehandlung](../troubleshoot/general.md).

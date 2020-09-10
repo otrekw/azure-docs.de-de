@@ -5,13 +5,13 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2020
-ms.openlocfilehash: 0ebd3d97c3d7a2218bcfd821e1cc81c6bd74adf6
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.date: 09/02/2020
+ms.openlocfilehash: a6b1bd016248212967a4fe78274d5ba72c5df0fe
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605774"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400312"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kontingente im Azure Cosmos DB-Dienst
 
@@ -118,6 +118,7 @@ Abhängig von der API, die Sie verwenden, kann ein Azure Cosmos-Container entwed
 | Maximale Anzahl von Pfaden in Indizierungsrichtlinie| 100 <sup>*</sup>|
 | Maximale Anzahl von eindeutigen Schlüsseln pro Container|10 <sup>*</sup>|
 | Maximale Anzahl von Pfaden pro UNIQUE KEY-Einschränkung|16 <sup>*</sup>|
+| Maximaler TTL-Wert |2147483647|
 
 <sup>*</sup> Sie können jeden dieser Grenzwerte pro Container erhöhen, indem Sie sich an den Azure-Support wenden.
 
@@ -136,6 +137,7 @@ Abhängig von der API, die Sie verwenden, kann ein Azure Cosmos-Element ein Doku
 | Maximale Länge des Eigenschaftswerts | Praktisch unbegrenzt |
 | Maximale Länge des Zeichenfolgen-Eigenschaftswerts | Praktisch unbegrenzt |
 | Maximale Länge des numerischen Eigenschaftswerts | IEEE754 mit doppelter Genauigkeit 64-Bit |
+| Maximaler TTL-Wert |2147483647|
 
 Mit Ausnahme von Längeneinschränkungen bei Partitionsschlüssel- und ID-Werten sowie der Einschränkung der Gesamtgröße auf 2 MB gibt es bei den Elementnutzlasten keine Einschränkungen (also etwa für die Anzahl von Eigenschaften und die Schachtelungstiefe). Sie müssen möglicherweise eine Indizierungsrichtlinie für Container mit großen oder komplexen Elementstrukturen konfigurieren, um den RU-Verbrauch zu reduzieren. Unter [Modellieren und Partitionieren von Daten in Azure Cosmos DB anhand eines praktischen Beispiels](how-to-model-partition-example.md) finden Sie ein praktisches Beispiel und Muster zum Verwalten großer Elemente.
 

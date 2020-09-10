@@ -8,12 +8,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 465543e639514753bc0a6762dbbeb888d490ccd2
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 4d307b2a16262645919423ef89c0d87636639bf1
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705043"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378711"
 ---
 # <a name="marketplace-rewards"></a>Marketplace-Prämien
 
@@ -36,9 +36,9 @@ In Partner Center können Sie auf der Seite [Marketplace-Prämien](https://partn
 Die Schritte für den Einstieg sind einfach:
 
 1. Veröffentlichen Sie ein Angebot bei Microsoft AppSource oder im Azure Marketplace.
-2. Navigieren Sie zum Partner Center-[Dashboard](https://partner.microsoft.com/dashboard/directory), und wählen Sie auf der Seite für Marketplace-Prämien die Registerkarte für Verkaufs- und Marketingvorteile aus, um die Liste der Vorteile anzuzeigen **.**
-3. Um einen Verkaufs- und Marketingvorteil zu aktivieren, müssen Sie zunächst einen Marketingkontakt zuweisen. Dieser Kontakt erhält dann weitere Informationen zu Ihren Marketplace-Prämien.
-4. Zum Hinzufügen oder Aktualisieren Ihrer Marketingkontaktinformationen navigieren Sie auf der Seite für Marketplace-Prämien zum oberen Bereich der Registerkarte für Verkaufs- und Marketingvorteile, und wählen Sie dann **Hinzufügen, aktualisieren oder ändern** aus.  Gehen Sie anschließend wie folgt vor:
+1. Navigieren Sie im Partner Center zur Seite für [Marketplace-Prämien](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace), und wählen Sie die Registerkarte für **Verkaufs- und Marketingvorteile** aus, um die Liste der Vorteile anzuzeigen.
+1. Um einen Verkaufs- und Marketingvorteil zu aktivieren, müssen Sie zunächst einen Marketingkontakt zuweisen. Dieser Kontakt erhält dann weitere Informationen zu Ihren Marketplace-Prämien.
+1. Zum Hinzufügen oder Aktualisieren Ihrer Marketingkontaktinformationen navigieren Sie auf der Seite für Marketplace-Prämien zum oberen Bereich der Registerkarte für Verkaufs- und Marketingvorteile, und wählen Sie dann **Hinzufügen, aktualisieren oder ändern** aus.  Gehen Sie anschließend wie folgt vor:
 
     1. Wählen Sie in der Liste einen Benutzer aus. Wenn der Benutzer, den Sie zuweisen möchten, nicht in der Liste enthalten ist, können Sie unter **Kontoeinstellungen** neue Benutzer hinzufügen.
     1. Geben Sie eine E-Mail-Adresse für den Benutzer an, die nicht mit der E-Mail-Adresse des Partner Center-Kontos Ihres Unternehmens identisch ist. Wir senden Anweisungen zur Nutzung Ihres Vorteils im Rahmen des Marketplace-Prämienprogramms an die E-Mail-Adresse des genannten Marketingkontakts.
@@ -48,7 +48,7 @@ Die Schritte für den Einstieg sind einfach:
 ## <a name="technical-benefits"></a>Technische Vorteile
 
 1. Sie können Ihren technischen Vorteil nutzen, um während der Presales-, Entwurfs-, Bereitstellungs- und App-Entwicklungsphasen Ihrer Cloud- und Hybridlösungen technische Unterstützung anzufordern. Zum Anfordern von Unterstützung füllen Sie das Anforderungsformular aus, und wählen Sie dann **Anforderung übermitteln** aus.
-2. Informationen zur Nutzung der Vorteile von Azure Sponsorship erhalten Sie per E-Mail, sobald Sie diese Vorteile entsperren.
+1. Informationen zur Nutzung der Vorteile von Azure Sponsorship erhalten Sie per E-Mail, sobald Sie diese Vorteile entsperren.
 
 >[!NOTE]
 >Wenn Ihr Angebot seit mehr als vier Wochen live geschaltet ist und Sie keine Nachricht erhalten haben, informieren Sie sich im Partner Center, wer der Besitzer des Angebots in Ihrem Unternehmen ist. Dieser sollte die Kommunikation und die nächsten Schritte erhalten haben. Wenn Sie den Besitzer nicht ermitteln können oder dieser Ihr Unternehmen verlassen hat, öffnen Sie unter https://aka.ms/marketplacepublishersupport ein Supportticket.

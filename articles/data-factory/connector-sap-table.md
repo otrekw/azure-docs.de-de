@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/03/2020
-ms.openlocfilehash: a6eaa5519607d5d5e9a49851e1c55f9b60b554ea
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.date: 09/01/2020
+ms.openlocfilehash: 608694c07894c8bdff8b1101d607e07ea4383764
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87529720"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279828"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Kopieren von Daten aus einer SAP-Tabelle mithilfe von Azure Data Factory
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einer SAP-Tabelle zu kopieren. Weitere Informationen finden Sie im Artikel [Übersicht über die Kopieraktivität](copy-activity-overview.md).
@@ -48,6 +49,12 @@ Dieser SAP-Tabellenconnector unterstützt insbesondere Folgendes:
 - Kopieren von Daten mithilfe von Standardauthentifizierung oder Secure Network Communications (SNC), falls SNC konfiguriert ist.
 - Herstellen einer Verbindung mit einem SAP-Anwendungsserver oder einem SAP-Nachrichtenserver.
 - Abrufen von Daten über die standardmäßige oder benutzerdefinierte RFC.
+
+Die Version 7.01 oder höher verweist auf die SAP NetWeaver-Version statt auf die SAP ECC-Version. Beispielsweise verfügt SAP ECC 6.0 EHP 7 im Allgemeinen über die NetWeaver-Version > = 7.4. Falls Sie sich bezüglich Ihrer Umgebung unsicher sind, finden Sie hier die Schritte zur Bestätigung der Version aus Ihrem SAP-System:
+1.  Stellen Sie per SAP GUI eine Verbindung mit dem SAP-System her. 
+2.  Wechseln Sie zu **System** -> **Status**. 
+3.  Überprüfen Sie die Version von SAP_BASIS, und stellen Sie sicher, dass sie mindestens 701 ist.  
+      ![Überprüfen von SAP_BASIS](./media/connector-sap-table/sap-basis.png)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -226,7 +233,7 @@ Beim Kopieren von Daten aus einer SAP-Tabelle werden die folgenden Eigenschaften
 | `partitionUpperBound`              | Der Höchstwert der in `partitionColumnName` angegebenen Spalte, der zum Fortsetzen der Partitionierung verwendet wird. | Nein       |
 | `partitionLowerBound`              | Der Mindestwert der in `partitionColumnName` angegebenen Spalte, der zum Fortsetzen der Partitionierung verwendet wird. (Hinweis: `partitionLowerBound` kann nicht „0“ sein, wenn die Partitionsoption `PartitionOnInt` lautet.) | Nein       |
 | `maxPartitionsNumber`              | Die maximale Anzahl von Partitionen, in welche die Daten aufgeteilt werden können.     | Nein       |
-| `sapDataColumnDelimiter` | Das als Trennzeichen verwendete einzelne Zeichen, das an SAP RFC übergeben wird, um die Ausgabedaten aufzuteilen. | Nein |
+| `sapDataColumnDelimiter` | Das als Trennzeichen verwendete einzelne Zeichen, das an SAP RFC übergeben wird, um die Ausgabedaten aufzuteilen. | Nein |
 
 >[!TIP]
 >Wenn Ihre SAP-Tabelle eine große Menge an Daten enthält, z.B. mehrere Milliarden Zeilen, verwenden Sie `partitionOption` und `partitionSetting`, um die Daten in kleinere Partitionen aufzuteilen. In diesem Fall werden die Daten pro Partition gelesen, und jede Datenpartition wird über einen einzelnen RFC-Aufruf von Ihrem SAP-Server abgerufen.<br/>

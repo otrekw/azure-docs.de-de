@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/25/2020
-ms.openlocfilehash: 4890013fe584c49caa9e358c924911255a7f5d33
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.date: 08/28/2020
+ms.openlocfilehash: cd14a183ae1434af83c96b7f8d6575186412b534
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815962"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051218"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopieren und Transformieren von Daten in Azure Synapse Analytics (früher Azure SQL Data Warehouse) mithilfe von Azure Data Factory
 
@@ -504,7 +504,7 @@ Falls die Anforderungen nicht erfüllt werden, überprüft Azure Data Factory di
 
 3. Wenn es sich bei der Quelle um einen Ordner handelt, muss `recursive` in der Kopieraktivität auf „true“ festgelegt werden.
 
-4. `wildcardFolderPath`, `wildcardFilename`, `modifiedDateTimeStart`, `modifiedDateTimeEnd` und `additionalColumns` werden nicht angegeben.
+4. `wildcardFolderPath`, `wildcardFilename`, `modifiedDateTimeStart`, `modifiedDateTimeEnd`, `prefix`, `enablePartitionDiscovery` und `additionalColumns` werden nicht angegeben.
 
 >[!NOTE]
 >Wenn es sich bei der Quelle um einen Ordner handelt, beachten Sie, dass PolyBase Dateien aus dem Ordner und seinen Unterordnern und keine Daten aus Dateien abruft, bei denen der Dateiname mit einem Unterstrich (_) oder einem Punkt (.) beginnt, wie [hier dokumentiert – LOCATION-Argument](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest#arguments-2).
@@ -684,7 +684,7 @@ Das Verwenden der COPY-Anweisung unterstützt die folgende Konfiguration:
 
 3. Wenn es sich bei der Quelle um einen Ordner handelt, muss `recursive` beim Kopiervorgang auf „TRUE“ festgelegt sein, und `wildcardFilename` muss `*` sein. 
 
-4. `wildcardFolderPath`, `wildcardFilename` (anders als `*`), `modifiedDateTimeStart`, `modifiedDateTimeEnd` und `additionalColumns` sind nicht angegeben.
+4. `wildcardFolderPath`, `wildcardFilename` (anders als `*`), `modifiedDateTimeStart`, `modifiedDateTimeEnd`, `prefix`, `enablePartitionDiscovery` und `additionalColumns` werden nicht angegeben.
 
 Die folgenden Einstellungen der COPY-Anweisung werden unter `allowCopyCommand` in der Kopieraktivität unterstützt:
 

@@ -12,19 +12,19 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 27d56958120d0eddebe30dc410805909fe507f7c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 526a4f9f5542074107700b54dcf3d2a591b08b70
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319574"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144035"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Verzeichnisse zum Speichern und Schreiben von Dateien für Azure Machine Learning-Experimente
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In diesem Artikel erfahren Sie, wo Sie Ihre Eingabedateien speichern sollten, und wohin Sie Ausgabedateien Ihrer Experimente schreiben sollten, um Speicherlimitfehler und Experimentlatenz zu vermeiden.
 
-Bei Beginn von Trainingsausführungen auf einem [Computeziel](how-to-set-up-training-targets.md) sind sie von externen Umgebungen isoliert. Der Zweck dieses Entwurfs besteht darin, die Reproduzierbarkeit und Portabilität des Experiments sicherzustellen. Wenn Sie dasselbe Skript auf demselben bzw. einem anderen Computeziel zweimal ausführen, erhalten Sie die gleichen Ergebnisse. Mit diesem Entwurf können Sie Computeziele als zustandslose Berechnungsressourcen betrachten, die jeweils keine Affinität zu den Aufträgen aufweisen, die nach deren Abschluss ausgeführt werden.
+Bei Beginn von Trainingsausführungen auf einem [Computeziel](concept-compute-target.md) sind sie von externen Umgebungen isoliert. Der Zweck dieses Entwurfs besteht darin, die Reproduzierbarkeit und Portabilität des Experiments sicherzustellen. Wenn Sie dasselbe Skript auf demselben bzw. einem anderen Computeziel zweimal ausführen, erhalten Sie die gleichen Ergebnisse. Mit diesem Entwurf können Sie Computeziele als zustandslose Berechnungsressourcen betrachten, die jeweils keine Affinität zu den Aufträgen aufweisen, die nach deren Abschluss ausgeführt werden.
 
 ## <a name="where-to-save-input-files"></a>Speicherort von Eingabedateien
 
@@ -79,4 +79,4 @@ Wenn Sie keinen Datenspeicher benötigen, schreiben Sie Dateien in die Ordner `.
 
 * Erfahren Sie mehr über das [Zugreifen auf Daten aus Ihren Datenspeichern](how-to-access-data.md).
 
-* Erfahren Sie mehr über das [Einrichten von Computezielen für das Modelltraining](how-to-set-up-training-targets.md).
+* Erfahren Sie mehr über die Erstellung von Computezielen mit dem [Python SDK](how-to-create-attach-compute-sdk.md) oder mit [Studio](how-to-create-attach-compute-studio.md).

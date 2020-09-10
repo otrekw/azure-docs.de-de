@@ -1,7 +1,7 @@
 ---
 title: Experimentnachverfolgung und Bereitstellen von Modellen
 titleSuffix: Azure Data Science Virtual Machine
-description: Erfahren Sie, wie Sie Experimente aus DSVM mit Azure Machine Learning Service und/oder MLFlow nachverfolgen und protokollieren können.
+description: Erfahren Sie, wie Sie Experimente von der Data Science Virtual Machine mit Azure Machine Learning und/oder MLFlow nachverfolgen und protokollieren können.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -9,14 +9,14 @@ author: samkemp
 ms.author: samkemp
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 687cd6570a9518be6f398a40fcd2d0e10a9634f2
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 205aed1811c3d9d21a10be7bc4f01c73eb7295b7
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88817169"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254791"
 ---
-# <a name="track-experiments-and-deploy-models-in-azureml"></a>Nachverfolgen von Experimenten und Bereitstellen von Modellen in AzureML
+# <a name="track-experiments-and-deploy-models-in-azure-machine-learning"></a>Nachverfolgen von Experimenten und Bereitstellen von Modellen in Azure Machine Learning
 
 Verbessern Sie den Modellerstellungsvorgang, indem Sie Ihre Experimente nachverfolgen und Ausführungsmetriken überwachen. In diesem Artikel erfahren Sie, wie Sie Ihrem Trainingsskript mit der [MLflow](https://mlflow.org/)-API Protokollierungscode hinzufügen und das Experiment in Azure Machine Learning nachverfolgen können.
 
@@ -131,7 +131,7 @@ In diesem Abschnitt zeigen wir, wie Modelle, die auf einer DSVM trainiert wurden
 
 ### <a name="step-1-create-inference-compute"></a>Schritt 1: Erstellen von Rückschlusscompute
 
-Klicken Sie im Menü auf der linken Seite in [AzureML Studio](https://ml.azure.com) auf __Compute__ und dann auf die Registerkarte __Rückschlusscluster__. Klicken Sie dann auf __+ Neu__, wie unten gezeigt:
+Klicken Sie im Menü auf der linken Seite in [AzureML Studio](https://ml.azure.com) auf __Compute__ und dann auf die Registerkarte __Rückschlusscluster__. Klicken Sie als nächstes auf __+ Neu__, wie unten besprochen:
 
 ![Erstellen von Rückschlusscompute](./media/how-to-track-experiments/mlflow-experiments-6.png)
 
@@ -167,7 +167,7 @@ Klicken Sie anschließend im Modelldetailbereich auf die Schaltfläche __Bereits
 
 ![Bereitstellen](./media/how-to-track-experiments/mlflow-experiments-4.png)
 
-Wir stellen das Modell für den Rückschlusscluster (Azure Kubernetes Service) bereit, den wir in Schritt 1 erstellt haben. Geben Sie die folgenden Details ein, indem Sie einen Namen für den Dienst und den Namen des AKS-Computeclusters (in Schritt 1 erstellt) angeben. Außerdem wird empfohlen, die __CPU-Reservekapazität__ auf 1 (von 0,1) und die __Speicherreservekapazität__ auf 1 (von 0,5) zu erhöhen. Sie können dies durch Klicken auf __Erweitert__ und Ausfüllen der Details erreichen. Klicken Sie auf __Bereitstellen__.
+Wir stellen das Modell für den Rückschlusscluster (Azure Kubernetes Service) bereit, den wir in Schritt 1 erstellt haben. Geben Sie die folgenden Details ein, indem Sie einen Namen für den Dienst und den Namen des AKS-Computeclusters (in Schritt 1 erstellt) angeben. Außerdem wird empfohlen, die __CPU-Reservekapazität__ auf 1 (von 0,1) und die __Speicherreservekapazität__ auf 1 (von 0,5) zu erhöhen. Sie können dies durch Klicken auf __Erweitert__ und Ausfüllen der Details erhöhen. Klicken Sie auf __Bereitstellen__.
 
 ![Details zur Bereitstellung](./media/how-to-track-experiments/mlflow-experiments-5.png)
 
@@ -177,9 +177,9 @@ Wenn das Modell erfolgreich bereitgestellt wurde, sollten Sie Folgendes sehen (u
 
 ![Nutzen des Modells](./media/how-to-track-experiments/mlflow-experiments-8.png)
 
-Sie sollten bemerken, dass sich der Bereitstellungszustand aus __Im Übergang__ in __Fehlerfrei__ ändert. Darüber hinaus stellt dieser Detailabschnitt den REST-Endpunkt und Swagger-URLs bereit, mit denen ein Anwendungsentwickler Ihr ML-Modell in seine Apps integrieren kann.
+Sie sollten erkennen, dass sich der Bereitstellungszustand aus __Im Übergang__ in __Fehlerfrei__ ändert. Darüber hinaus stellt dieser Detailabschnitt den REST-Endpunkt und Swagger-URLs bereit, mit denen ein Anwendungsentwickler Ihr ML-Modell in seine Apps integrieren kann.
 
-Sie können den Endpunkt mithilfe von [Postman](https://www.postman.com/)testen. Alternativ können Sie das AzureML SDK verwenden:
+Sie können den Endpunkt mithilfe von [Postman](https://www.postman.com/) testen. Alternativ können Sie das AzureML SDK verwenden:
 
 ```python
 from azureml.core import Webservice
@@ -200,7 +200,7 @@ print(output)
 
 ### <a name="step-4-clean-up"></a>Schritt 4: Bereinigung
 
-Sie sollten die in Schritt 1 erstellten Rückschlusscomputeressourcen löschen, damit keine laufenden Computegebühren anfallen. Klicken Sie im Menü auf der linken Seite von Azure Machine Learning Studio auf „Compute > Rückschlusscluster“. Wählen Sie dann „Compute > Löschen“ aus.
+Löschen Sie die in Schritt 1 erstellten Rückschlusscomputeressourcen, damit keine laufenden Computegebühren anfallen. Klicken Sie im Menü auf der linken Seite von Azure Machine Learning Studio auf „Compute > Rückschlusscluster“. Wählen Sie dann „Compute > Löschen“ aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

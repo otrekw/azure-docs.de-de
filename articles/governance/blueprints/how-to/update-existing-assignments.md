@@ -1,14 +1,14 @@
 ---
 title: Aktualisieren einer vorhandenen Zuweisung über das Portal
 description: Hier werden die Mechanismen beim Aktualisieren einer vorhandenen Blaupausenzuweisung in Azure Blueprints über das Portal erläutert.
-ms.date: 04/15/2020
+ms.date: 08/27/2020
 ms.topic: how-to
-ms.openlocfilehash: 03c954517662c1f54fcca9fbb96ebdf48afdedef
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 888ebbf0149f8f75f867bb17115988cb20d25df2
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85969463"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051422"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Aktualisieren einer vorhandenen Blaupausenzuweisung
 
@@ -24,12 +24,11 @@ Wenn eine Blaupause zugewiesen ist, kann die Zuweisung aktualisiert werden. Es g
 
 1. Wählen Sie auf der Seite links die Option **Zugewiesene Blaupausen**.
 
-1. Klicken Sie in der Liste der Blaupausen auf die Blaupausenzuweisung. Klicken Sie anschließend auf die Schaltfläche **Zuweisung aktualisieren**, ODER klicken Sie mit der rechten Maustaste auf die Blaupausenzuweisung, und wählen Sie **Zuweisung aktualisieren** aus.
+1. Wählen Sie in der Liste der Blaupausen die Blaupausenzuweisung aus. Verwenden Sie anschließend die Schaltfläche **Zuweisung aktualisieren**, ODER klicken Sie mit der rechten Maustaste auf die Blaupausenzuweisung, und wählen Sie **Zuweisung aktualisieren** aus.
 
    :::image type="content" source="../media/update-existing-assignments/update-assignment.png" alt-text="Aktualisieren einer vorhandenen Blaupausenzuweisung" border="false":::
 
-1. Die Seite **Blaupause zuweisen** wird geladen, und alle Werte der ursprünglichen Zuweisung sind bereits eingetragen.
-   Sie können die **Version der Blaupausendefinition**, den Zustand von **Zuweisung sperren** sowie die dynamischen Parameter für die Blaupausendefinition ändern. Klicken Sie nach dem Vornehmen der Änderungen auf **Zuweisen**.
+1. Die Seite **Blaupause zuweisen** wird geladen, während alle Werte der ursprünglichen Zuweisung bereits eingetragen sind. Sie können die **Version der Blaupausendefinition**, den Zustand von **Zuweisung sperren** sowie die dynamischen Parameter für die Blaupausendefinition ändern. Wählen Sie **Zuweisen** aus, nachdem die Änderungen abgeschlossen sind.
 
 1. Überprüfen Sie auf der Detailseite für die aktualisierte Zuweisung den neuen Status. In diesem Beispiel wurde der Zuweisung **Wird gesperrt** hinzugefügt.
 

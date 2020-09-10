@@ -6,17 +6,17 @@ ms.service: azure-policy
 ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 7871099e3e05613bec29a4bfc0824dd9647431e7
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 6c6bd3ab87013aba04f43c95b3a986a64f2bc394
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85937450"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231468"
 ---
 # <a name="azure-policy-security-baseline-for-azure-security-benchmark"></a>Azure Policy-Sicherheitsbaseline für den Vergleichstest für die Azure-Sicherheit
 
-Diese Sicherheitsbaseline wendet Empfehlungen des [Vergleichstests für die Azure-Sicherheit](../../../security/benchmarks/overview.md) auf Azure Policy an. Der Vergleichstest für die Azure-Sicherheit enthält Empfehlungen dazu, Sie Ihre Cloudlösungen in Azure schützen können. Der Inhalt wird nach den vom Vergleichstest für die Azure-Sicherheit definierten und den entsprechenden für Azure Policy geltenden Empfehlungen nach **Compliancebereichen** und **Sicherheitskontrollen** gruppiert. Nicht auf Azure Policy anwendbare **Steuerungen** wurden ausgeschlossen. Zum Anzeigen der vollständigen Zuordnung von Azure Policy zum Vergleichstest für die Azure-Sicherheit sehen Sie sich die [vollständige Zuordnungsdatei der Azure Policy-Sicherheitsbaseline](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines) an.
+Diese Sicherheitsbaseline wendet Empfehlungen des [Vergleichstests für die Azure-Sicherheit](../../../security/benchmarks/overview.md) auf Azure Policy an. Der Azure-Sicherheitsvergleichstest enthält Empfehlungen zum Schutz Ihrer Cloudlösungen in Azure. Der Inhalt wird nach den vom Vergleichstest für die Azure-Sicherheit definierten und den entsprechenden für Azure Policy geltenden Empfehlungen nach **Compliancebereichen** und **Sicherheitskontrollen** gruppiert. Nicht auf Azure Policy anwendbare **Steuerungen** wurden ausgeschlossen. Zum Anzeigen der vollständigen Zuordnung von Azure Policy zum Vergleichstest für die Azure-Sicherheit sehen Sie sich die [vollständige Zuordnungsdatei der Azure Policy-Sicherheitsbaseline](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines) an.
 
 Eine Zuordnung der Steuerungen im Vergleichstest für die Azure-Sicherheit zu den integrierten Richtliniendefinitionen über die integrierte Initiative finden Sie unter [Integrationen zur Einhaltung gesetzlicher Bestimmungen: Vergleichstest für die Azure-Sicherheit](../samples/azure-security-benchmark.md).
 
@@ -72,13 +72,13 @@ Sie können auch eine Lösung für Just-in-Time-/Just-Enough-Zugriff aktivieren,
 
 *Weitere Informationen finden Sie unter [Sicherheitskontrolle: Datenschutz](../../../security/benchmarks/security-control-data-protection.md).*
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6: Verwenden der rollenbasierten Zugriffssteuerung zum Steuern des Zugriffs auf Ressourcen
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Verwenden von Azure RBAC zum Steuern des Zugriffs auf Ressourcen
 
-**Leitfaden**: Verwenden Sie die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure Active Directory, um den Zugriff auf Azure Policy zu steuern.
+**Leitfaden**: Steuern Sie den Zugriff auf Azure Policy mithilfe der rollenbasierten Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC).
 
-* [RBAC-Berechtigungen in Azure Policy](../overview.md#rbac-permissions-in-azure-policy)
+* [Azure RBAC-Berechtigungen in Azure Policy](../overview.md#rbac-permissions-in-azure-policy)
 
-* [Konfigurieren von RBAC in Azure](../../../role-based-access-control/role-assignments-portal.md)
+* [Konfigurieren von Azure RBAC](../../../role-based-access-control/role-assignments-portal.md)
 
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar

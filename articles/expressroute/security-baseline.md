@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: f5c81897f74163191de4b167ffa56225ca0698ca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 69a47820d2afaf24f413aabf2c59a40c032070c1
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079041"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231383"
 ---
 # <a name="azure-security-baseline-for-expressroute"></a>Azure-Sicherheitsbaseline für ExpressRoute
 
@@ -240,13 +240,13 @@ Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden
 
 **Leitfaden**: Verwalten Sie einen Bestand der Benutzerkonten, die über Administratorzugriff auf die Steuerungsebene (Azure-Portal) Ihrer Azure ExpressRoute-Ressourcen verfügen.
 
-Sie können die Identitäts- und Zugriffssteuerung (Identity and Access control, IAM) im Azure-Portal für Ihr Abonnement verwenden, um die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) zu konfigurieren. Die Rollen werden Benutzern, Gruppen, Dienstprinzipalen und verwalteten Identitäten in Active Directory zugewiesen.
+Sie können die Identitäts- und Zugriffssteuerung (IAM) im Azure-Portal für Ihr Abonnement verwenden, um die rollenbasierte Zugriffssteuerung von Azure (Azure RBAC) zu konfigurieren. Die Rollen werden Benutzern, Gruppen, Dienstprinzipalen und verwalteten Identitäten in Active Directory zugewiesen.
 
 Darüber hinaus können Partner, die die Resource Manager-API für ExpressRoute-Partner nutzen, die rollenbasierte Zugriffssteuerung auf die expressRouteCrossConnection-Ressource anwenden. Diese Steuerelemente können Berechtigungen definieren, für die Benutzerkonten die expressRouteCrossConnection-Ressource ändern und Peeringkonfigurationen hinzufügen/aktualisieren/löschen können.
 
-* [Grundlegendes zu RBAC in Azure](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Grundlegendes zu Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
-* [Einsatz von RBAC in der Resource Manager-API für ExpressRoute-Partner](https://docs.microsoft.com/azure/expressroute/cross-connections-api-development)
+* [Einsatz von Azure RBAC in der Resource Manager-API für ExpressRoute-Partner](https://docs.microsoft.com/azure/expressroute/cross-connections-api-development)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -351,7 +351,7 @@ Verwenden Sie zusätzlich Azure AD-Risikoerkennungen, um Warnungen und Berichte 
 
 * [Verwenden von Zugriffsüberprüfungen für Azure-Identitäten](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
 
-**Azure Security Center-Überwachung:** Ja
+**Azure Security Center-Überwachung**: Ja
 
 **Verantwortlichkeit**: Kunde
 
@@ -381,7 +381,7 @@ Sie können diesen Prozess optimieren, indem Sie Diagnoseeinstellungen für Azur
 
 * [Durchführen des Onboardings für Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
 
-**Azure Security Center-Überwachung:** Zurzeit nicht verfügbar
+**Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
@@ -453,17 +453,17 @@ So konfigurieren Sie Site-to-Site-IPsec über ExpressRoute: https://docs.microso
 
 **Verantwortlichkeit**: Nicht verfügbar
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6: Verwenden der rollenbasierten Zugriffssteuerung zum Steuern des Zugriffs auf Ressourcen
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Verwenden von Azure RBAC zum Steuern des Zugriffs auf Ressourcen
 
-**Leitfaden**: Sie können die Identitäts- und Zugriffssteuerung (Identity and Access control, IAM) im Azure-Portal für Ihr Abonnement verwenden, um die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) zu konfigurieren. Die Rollen werden Benutzern, Gruppen, Dienstprinzipalen und verwalteten Identitäten in Active Directory zugewiesen. Sie können für Einzelbenutzer und Gruppen integrierte oder benutzerdefinierte Rollen verwenden.
+**Leitfaden**: Sie können die Identitäts- und Zugriffssteuerung (IAM) im Azure-Portal für Ihr Abonnement verwenden, um die rollenbasierte Zugriffssteuerung von Azure (Azure RBAC) zu konfigurieren. Die Rollen werden Benutzern, Gruppen, Dienstprinzipalen und verwalteten Identitäten in Active Directory zugewiesen. Sie können für Einzelbenutzer und Gruppen integrierte oder benutzerdefinierte Rollen verwenden.
 
 In Azure ExpressRoute sind Rollen für Verbindungsbesitzer und Verbindungsbenutzer vorhanden. Leitungsbenutzer sind Besitzer virtueller Netzwerkgateways, die sich nicht im selben Abonnement wie die ExpressRoute-Leitung befinden. Der Besitzer der Verbindung hat die Möglichkeit, Autorisierungen jederzeit zu ändern und aufzuheben. Das Aufheben einer Autorisierung führt dazu, dass alle Verbindungen aus dem Abonnement gelöscht werden, dessen Zugriff aufgehoben wurde. Verbindungsbenutzer können Autorisierungen einlösen (eine Autorisierung für jedes virtuelle Netzwerk).
 
 Darüber hinaus können Partner, die die Resource Manager-API für ExpressRoute-Partner nutzen, die rollenbasierte Zugriffssteuerung auf die expressRouteCrossConnection-Ressource anwenden. Diese Steuerelemente können Berechtigungen definieren, für die Benutzerkonten die expressRouteCrossConnection-Ressource ändern und Peeringkonfigurationen hinzufügen/aktualisieren/löschen können.
 
-* [Grundlegendes zu RBAC in Azure](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Grundlegendes zu Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
-* [Einsatz von RBAC in der Resource Manager-API für ExpressRoute-Partner](https://docs.microsoft.com/azure/expressroute/cross-connections-api-development)
+* [Einsatz von Azure RBAC in der Resource Manager-API für ExpressRoute-Partner](https://docs.microsoft.com/azure/expressroute/cross-connections-api-development)
 
 * [Grundlegendes zu Verwaltungsrollen in ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager#connect-a-vnet-to-a-circuit---different-subscription)
 
@@ -519,7 +519,7 @@ Darüber hinaus können Partner, die die Resource Manager-API für ExpressRoute-
 
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2: Bereitstellen der automatisierten Lösung für die Patchverwaltung von Betriebssystemen
 
-**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -677,7 +677,7 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 ### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12: Einschränken der Möglichkeiten der Benutzer, Skripte innerhalb von Computeressourcen auszuführen
 
-**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -749,7 +749,7 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6: Sicheres Speichern von benutzerdefinierten Betriebssystemimages
 
-**Leitfaden**: Nicht zutreffend; diese Leitlinie ist für Computeressourcen vorgesehen.
+**Leitfaden**: Nicht zutreffend. Diese Leitlinie ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -769,7 +769,7 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 ### <a name="78-deploy-configuration-management-tools-for-operating-systems"></a>7.8: Bereitstellen von Konfigurationsverwaltungstools für Betriebssysteme
 
-**Leitfaden**: Nicht zutreffend; diese Leitlinie ist für Computeressourcen vorgesehen.
+**Leitfaden**: Nicht zutreffend. Diese Leitlinie ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -787,7 +787,7 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10: Implementieren der automatisierten Konfigurationsüberwachung für Betriebssysteme
 
-**Leitfaden**: Nicht zutreffend; diese Leitlinie ist für Computeressourcen vorgesehen.
+**Leitfaden**: Nicht zutreffend. Diese Leitlinie ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 

@@ -1,14 +1,14 @@
 ---
 title: Funktionsweise von Auswirkungen
 description: Die Azure Policy-Definitionen haben verschiedene Auswirkungen, mit denen festgelegt wird, wie die Konformität verwaltet und gemeldet wird.
-ms.date: 08/17/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0cfa8215d828de6d5426c3883ca1968e7a7cb542
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7eb1178bbf767f6962c797da4474af81d576545a
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544722"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079658"
 ---
 # <a name="understand-azure-policy-effects"></a>Grundlegendes zu Azure Policy-Auswirkungen
 
@@ -479,14 +479,33 @@ Beispiel: Gatekeeper v2-Zugangskontrollregel, um nur die angegebenen Containerim
 
 ## <a name="modify"></a>Ändern
 
-„Modify“ wird verwendet, um Tags während der Erstellung oder Aktualisierung einer Ressource hinzuzufügen, zu aktualisieren oder zu entfernen. Ein häufiges Beispiel ist die Aktualisierung von Tags für Ressourcen wie „costCenter“. Für eine Modify-Richtlinie sollte `mode` immer auf _Indexed_ festgelegt sein, es sei denn, die Zielressource ist eine Ressourcengruppe. Bestehende, nicht konforme Ressourcen können mit einem [Wartungstask](../how-to/remediate-resources.md) bereinigt werden. Eine einzelne Modify-Regel kann eine beliebige Anzahl von Vorgängen aufweisen.
+„Modify“ wird verwendet, um Eigenschaften oder Tags während der Erstellung oder Aktualisierung einer Ressource hinzuzufügen, zu aktualisieren oder zu entfernen.
+Ein häufiges Beispiel ist die Aktualisierung von Tags für Ressourcen wie „costCenter“. Bestehende, nicht konforme Ressourcen können mit einem [Wartungstask](../how-to/remediate-resources.md) bereinigt werden. Eine einzelne Modify-Regel kann eine beliebige Anzahl von Vorgängen aufweisen.
+
+Die folgenden Vorgänge werden von „Modify“ unterstützt:
+
+- Hinzufügen, Ersetzen oder Entfernen von Ressourcentags. Für Tags sollte `mode` bei einer Modify-Richtlinie auf _Indexed_ festgelegt sein, es sei denn, die Zielressource ist eine Ressourcengruppe.
+- Hinzufügen oder Ersetzen des Werts eines verwalteten Identitätstyps (`identity.type`) von virtuellen Computern und VM-Skalierungsgruppen
+- Hinzufügen oder Ersetzen der Werte bestimmter Aliase (Vorschau)
+  - Verwenden Sie `Get-AzPolicyAlias | Select-Object -ExpandProperty 'Aliases' | Where-Object { $_.DefaultMetadata.Attributes -eq 'Modifiable' }`
+    in Azure PowerShell **4.6.0** oder höher, um eine Liste der Aliase abzurufen, die mit „Modify“ verwendet werden können.
 
 > [!IMPORTANT]
-> Modify ist derzeit nur für die Verwendung mit Tags vorgesehen. Wenn Sie Tags verwalten, wird empfohlen, „Modify“ anstelle von „Append“ zu verwenden, da „Modify“ zusätzliche Vorgangstypen und die Möglichkeit bietet, vorhandene Ressourcen zu korrigieren. „Append“ wird jedoch empfohlen, wenn Sie keine verwaltete Identität erstellen können.
+> Wenn Sie Tags verwalten, wird empfohlen, „Modify“ anstelle von „Append“ zu verwenden, da „Modify“ zusätzliche Vorgangstypen und die Möglichkeit bietet, vorhandene Ressourcen zu korrigieren. Allerdings wird „Append“ empfohlen, wenn Sie keine verwaltete Identität erstellen können oder der Alias für die Ressourceneigenschaft von „Modify“ noch nicht unterstützt wird.
 
 ### <a name="modify-evaluation"></a>Auswertung von „Modify“
 
-Die Auswertung von „Modify“ erfolgt vor der Anforderungsverarbeitung durch einen Ressourcenanbieter während der Erstellung oder Aktualisierung einer Ressource. Mit „Modify“ werden Tags einer Ressource hinzugefügt oder aktualisiert, wenn die **if**-Bedingung der Richtlinienregel erfüllt ist.
+Die Auswertung von „Modify“ erfolgt vor der Anforderungsverarbeitung durch einen Ressourcenanbieter während der Erstellung oder Aktualisierung einer Ressource. Die Modify-Vorgänge werden auf den Anforderungsinhalt angewendet, wenn die **if**-Bedingung der Richtlinienregel erfüllt wird. Jeder Modify-Vorgang kann eine Bedingung angeben, die bestimmt, wann er angewendet wird. Vorgänge mit Bedingungen, die _false_ ergeben, werden übersprungen.
+
+Wenn ein Alias angegeben wird, werden die folgenden zusätzlichen Überprüfungen durchgeführt, um sicherzustellen, dass der Anforderungsinhalt vom Modify-Vorgang nicht in einer Weise geändert wird, dass er vom Ressourcenanbieter abgelehnt wird:
+
+- Die Eigenschaft, der der Alias zugeordnet ist, wird in der API-Version der Anforderung als „Modifiable“ gekennzeichnet.
+- Der Tokentyp im Modify-Vorgang entspricht dem erwarteten Tokentyp für die Eigenschaft in der API-Version der Anforderung.
+
+Wenn eine dieser Überprüfungen fehlschlägt, greift die Richtlinienauswertung auf den angegebenen **conflictEffect** zurück.
+
+> [!IMPORTANT]
+> Es wird empfohlen, dass Definitionen von „Modify“, die Aliase enthalten, _audit_ **conflict effect** verwenden, um fehlerhafte Anforderungen unter Verwendung von API-Versionen zu vermeiden, deren zugeordnete Eigenschaft nicht „Modifiable“ lautet. Wenn sich derselbe Alias zwischen API-Versionen unterschiedlich verhält, können bedingte Modify-Vorgänge verwendet werden, um den für die einzelnen API-Versionen verwendeten Modify-Vorgang zu bestimmen.
 
 Wenn eine Richtliniendefinition mit Auswirkung „Modify“ im Rahmen eines Auswertungszyklus ausgeführt wird, werden keine Änderungen an bereits vorhandenen Ressourcen durchgeführt. Stattdessen werden alle Ressourcen mit Erfüllung der **if**-Bedingung als nicht konform markiert.
 
@@ -498,7 +517,7 @@ Die **details**-Eigenschaft der Modify-Auswirkung enthält alle Untereigenschaft
   - Diese Eigenschaft muss ein Array von Zeichenfolgen enthalten, das mit der Rollen-ID der rollenbasierten Zugriffssteuerung übereinstimmt, auf die das Abonnement zugreifen kann. Weitere Informationen finden Sie unter [Korrigieren nicht konformer Ressourcen](../how-to/remediate-resources.md#configure-policy-definition).
   - Die definierte Rolle muss alle Vorgänge einbeziehen, die der Rolle [Mitwirkender](../../../role-based-access-control/built-in-roles.md#contributor) erteilt wurden.
 - **conflictEffect** (optional)
-  - Bestimmt, welche Richtliniendefinition verwendet wird, wenn die gleiche Eigenschaft durch mehrere Richtliniendefinitionen geändert wird.
+  - Bestimmt, welche Richtliniendefinition verwendet wird, wenn dieselbe Eigenschaft durch mehrere Richtliniendefinitionen geändert wird oder wenn der Modify-Vorgang für den angegebenen Alias nicht funktioniert.
     - Bei neuen oder aktualisierten Ressourcen hat die Richtliniendefinition mit _deny_ Vorrang. Von Richtliniendefinitionen mit _audit_ werden alle Vorgänge (**operations**) übersprungen. Sind mehrere Richtliniendefinitionen mit _deny_ vorhanden, wird die Anforderung als Konflikt abgelehnt. Enthalten alle Richtliniendefinitionen _audit_, wird keiner der Vorgänge (**operations**) der in Konflikt stehenden Richtliniendefinitionen verarbeitet.
     - Falls bei vorhandenen Ressourcen mehrere Richtliniendefinition _deny_ enthalten, lautet der Konformitätsstatus _Konflikt_. Ist _deny_ in maximal einer Richtliniendefinition enthalten, wird von den einzelnen Zuweisungen jeweils der Konformitätsstatus _Nicht konform_ zurückgegeben.
   - Verfügbare Werte: _audit_, _deny_, _disabled_
@@ -513,6 +532,9 @@ Die **details**-Eigenschaft der Modify-Auswirkung enthält alle Untereigenschaft
     - **value** (optional)
       - Der Wert, auf den das Tag festgelegt werden soll.
       - Diese Eigenschaft ist erforderlich, wenn **operation**_addOrReplace_ oder _Add_ ist.
+    - **condition** (optional)
+      - Eine Zeichenfolge mit einem Azure Policy-Sprachausdruck und [Richtlinienfunktionen](./definition-structure.md#policy-functions), der _true_ oder _false_ ergibt.
+      - Die folgenden Richtlinienfunktionen werden nicht unterstützt: `field()`, `resourceGroup()`, `subscription()`
 
 ### <a name="modify-operations"></a>Vorgänge für „Modify“
 
@@ -548,9 +570,9 @@ Die **operation**-Eigenschaft hat die folgenden Optionen:
 
 |Vorgang |BESCHREIBUNG |
 |-|-|
-|addOrReplace |Fügt das definierte Tag und den Wert zur Ressource hinzu, auch wenn das Tag bereits mit einem anderen Wert vorhanden ist. |
-|Hinzufügen |Fügt der Ressource das definierte Tag und den definierten Wert hinzu. |
-|Remove (Entfernen) |Entfernt das definierte Tag aus der Ressource. |
+|addOrReplace |Fügt die definierte Eigenschaft oder das definierte Tag und den Wert zur Ressource hinzu, auch wenn die Eigenschaft oder das Tag bereits mit einem anderen Wert vorhanden ist. |
+|Hinzufügen |Fügt der Ressource die definierte Eigenschaft oder das definierte Tag und den Wert hinzu. |
+|Remove (Entfernen) |Entfernt die definierte Eigenschaft oder das definierte Tag aus der Ressource. |
 
 ### <a name="modify-examples"></a>Beispiele für „Modify“
 
@@ -593,6 +615,28 @@ Beispiel 2: Entfernen Sie das `env`-Tag, und fügen Sie das `environment`-Tag hi
                 "operation": "addOrReplace",
                 "field": "tags['environment']",
                 "value": "[parameters('tagValue')]"
+            }
+        ]
+    }
+}
+```
+
+Beispiel 3: Sicherstellen, dass ein Speicherkonto keinen öffentlichen Zugriff auf Blobs zulässt. Der Modify-Vorgang wird nur bei der Auswertung von Anforderungen mit einer API-Version größer oder gleich 2019-04-01 angewendet:
+
+```json
+"then": {
+    "effect": "modify",
+    "details": {
+        "roleDefinitionIds": [
+            "/providers/microsoft.authorization/roleDefinitions/17d1049b-9a84-46fb-8f53-869881c3d3ab"
+        ],
+        "conflictEffect": "audit",
+        "operations": [
+            {
+                "condition": "[greaterOrEquals(requestContext().apiVersion, '2019-04-01')]",
+                "operation": "addOrReplace",
+                "field": "Microsoft.Storage/storageAccounts/allowBlobPublicAccess",
+                "value": false
             }
         ]
     }

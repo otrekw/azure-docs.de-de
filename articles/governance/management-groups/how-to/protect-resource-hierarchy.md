@@ -1,14 +1,14 @@
 ---
 title: Schützen der Ressourcenhierarchie – Azure Governance
 description: Erfahren Sie, wie Sie Ihre Ressourcenhierarchie mit Hierarchieeinstellungen schützen, unter anderem durch Festlegen der Standardverwaltungsgruppe.
-ms.date: 08/10/2020
+ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2dd6791e152ba3ef02f6e6f710589cbe7d3442bc
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: e73a72339b58a30a3fc5b1008ea1b70e449f77c7
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056617"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401692"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>Schützen der Ressourcenhierarchie
 
@@ -31,7 +31,26 @@ Standardmäßig wird ein neues Abonnement, das in einem Mandanten hinzugefügt w
 
 Dadurch dass die Standardverwaltungsgruppe für neue Abonnements definiert werden kann, können organisationsweite Governancekonstrukte in der Stammverwaltungsgruppe angewandt werden, und eine separate Verwaltungsgruppe kann mit Richtlinienzuweisungen oder Azure-Rollenzuweisungen definiert werden, die sich für ein neues Abonnement besser eignen.
 
-Zum Konfigurieren dieser Einstellung wird der REST-API-Endpunkt mit den [Hierarchieeinstellungen](/rest/api/resources/hierarchysettings) aufgerufen. Verwenden Sie hierzu den folgenden REST-API-URI und das folgende Textformat. Ersetzen Sie `{rootMgID}` durch die ID der Stammverwaltungsgruppe und `{defaultGroupID}` durch die ID der Verwaltungsgruppe, die zur Standardverwaltungsgruppe werden soll:
+### <a name="set-default-management-group-in-portal"></a>Festlegen der Standardverwaltungsgruppe im Portal
+
+Führen Sie die folgenden Schritte aus, um diese Einstellung im Azure-Portal zu konfigurieren:
+
+1. Verwenden Sie die Suchleiste, um „Verwaltungsgruppen“ zu suchen und diese auszuwählen.
+
+1. Wählen Sie in der Stammverwaltungsgruppe neben dem Namen der Verwaltungsgruppe **Details** aus.
+
+1. Wählen Sie unter **Einstellungen** die Option **Hierarchieeinstellungen** aus.
+
+1. Wählen Sie die Schaltfläche **Change default management group** (Standardverwaltungsgruppe ändern) aus.
+
+   > [!NOTE]
+   > Wenn die Schaltfläche **Change default management group** (Standardverwaltungsgruppe ändern) deaktiviert ist, ist entweder die angezeigte Verwaltungsgruppe nicht die Stammverwaltungsgruppe, oder Ihr Sicherheitsprinzipal verfügt nicht über die erforderlichen Berechtigungen, um die Hierarchieeinstellungen zu ändern.
+
+1. Wählen Sie eine Verwaltungsgruppe aus Ihrer Hierarchie aus, und verwenden Sie die Schaltfläche **Auswählen**.
+
+### <a name="set-default-management-group-with-rest-api"></a>Festlegen der Standardverwaltungsgruppe mit der REST-API
+
+Zum Konfigurieren dieser Einstellung mit der REST-API wird der Endpunkt mit den [Hierarchieeinstellungen](/rest/api/resources/hierarchysettings) aufgerufen. Verwenden Sie hierzu den folgenden REST-API-URI und das folgende Textformat. Ersetzen Sie `{rootMgID}` durch die ID der Stammverwaltungsgruppe und `{defaultGroupID}` durch die ID der Verwaltungsgruppe, die zur Standardverwaltungsgruppe werden soll:
 
 - REST-API-URI
 
@@ -55,7 +74,24 @@ Wenn Sie die Standardverwaltungsgruppe wieder auf die Stammverwaltungsgruppe fes
 
 Jeder Benutzer kann standardmäßig neue Verwaltungsgruppen innerhalb eines Mandanten erstellen. Administratoren eines Mandanten können diese Berechtigungen nur für bestimmte Benutzer bereitstellen, um die Konsistenz und Konformität in der Verwaltungsgruppenhierarchie aufrechtzuerhalten. Wenn diese Einstellung aktiviert ist, benötigt ein Benutzer den Vorgang `Microsoft.Management/managementGroups/write` in der Stammverwaltungsgruppe, um neue untergeordnete Verwaltungsgruppen erstellen zu können.
 
-Zum Konfigurieren dieser Einstellung wird der REST-API-Endpunkt mit den [Hierarchieeinstellungen](/rest/api/resources/hierarchysettings) aufgerufen. Verwenden Sie hierzu den folgenden REST-API-URI und das folgende Textformat. Bei diesem Wert handelt es sich um einen _booleschen_ Wert. Geben Sie daher entweder **true** oder **false** für den Wert an. Mit dem Wert **true** wird folgende Methode zum Schutz der Verwaltungsgruppenhierarchie aktiviert:
+### <a name="set-default-management-group-in-portal"></a>Festlegen der Standardverwaltungsgruppe im Portal
+
+Führen Sie die folgenden Schritte aus, um diese Einstellung im Azure-Portal zu konfigurieren:
+
+1. Verwenden Sie die Suchleiste, um „Verwaltungsgruppen“ zu suchen und diese auszuwählen.
+
+1. Wählen Sie in der Stammverwaltungsgruppe neben dem Namen der Verwaltungsgruppe **Details** aus.
+
+1. Wählen Sie unter **Einstellungen** die Option **Hierarchieeinstellungen** aus.
+
+1. Legen Sie die Option **Require permissions for creating new management groups** (Berechtigungen zum Erstellen neuer Verwaltungsgruppen anfordern) auf „Ein“ fest.
+
+   > [!NOTE]
+   > Wenn die Umschaltfläche **Require permissions for creating new management groups** (Berechtigungen zum Erstellen neuer Verwaltungsgruppen anfordern) deaktiviert ist, ist entweder die angezeigte Verwaltungsgruppe nicht die Stammverwaltungsgruppe, oder Ihr Sicherheitsprinzipal verfügt nicht über die erforderlichen Berechtigungen, um die Hierarchieeinstellungen zu ändern.
+
+### <a name="set-require-authorization-with-rest-api"></a>Festlegen einer erforderlichen Autorisierung mit der Rest-API
+
+Zum Konfigurieren dieser Einstellung mit der REST-API wird der Endpunkt mit den [Hierarchieeinstellungen](/rest/api/resources/hierarchysettings) aufgerufen. Verwenden Sie hierzu den folgenden REST-API-URI und das folgende Textformat. Bei diesem Wert handelt es sich um einen _booleschen_ Wert. Geben Sie daher entweder **true** oder **false** für den Wert an. Mit dem Wert **true** wird folgende Methode zum Schutz der Verwaltungsgruppenhierarchie aktiviert:
 
 - REST-API-URI
 

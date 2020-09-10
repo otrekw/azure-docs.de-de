@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 2a4cba847610ab7d6119c04f9e3b1c32a192d6c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 28b3bc5adfc3c2e83de658947193b6046a455c32
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255789"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231502"
 ---
 # <a name="azure-security-baseline-for-network-watcher"></a>Azure-Sicherheitsbaseline für Network Watcher
 
@@ -46,7 +46,7 @@ Weitere Informationen finden Sie in der [Übersicht über Azure-Sicherheitsbasel
 
 **Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Webanwendungen gedacht, die in Azure App Service oder auf Computeressourcen ausgeführt werden.
 
-**Azure Security Center-Überwachung:** Nicht verfügbar
+**Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Nicht verfügbar
 
@@ -78,7 +78,7 @@ Weitere Informationen finden Sie in der [Übersicht über Azure-Sicherheitsbasel
 
 **Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Webanwendungen gedacht, die in Azure App Service oder auf Computeressourcen ausgeführt werden.
 
-**Azure Security Center-Überwachung:** Nicht verfügbar
+**Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Nicht verfügbar
 
@@ -234,9 +234,9 @@ Network Watcher muss aktiviert sein
 
 **Leitfaden**: Verwalten Sie einen Bestand der Benutzerkonten, die über Administratorzugriff auf die Steuerungsebene (Azure-Portal) von Azure Network Watcher verfügen. Damit die Network Watcher-Funktionen verwendet werden kann, muss das Konto, mit dem Sie sich bei Azure anmelden, den internen Rollen „Besitzer“, „Mitwirkender“ oder „Netzwerkmitwirkender“ oder einer benutzerdefinierten Rolle zugewiesen werden, die den Aktionen für die einzelnen Network Watcher-Funktionen zugeordnet sind.
 
-Sie können die Identitäts- und Zugriffssteuerung (Identity and Access control, IAM) im Azure-Portal für Ihr Abonnement verwenden, um die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) zu konfigurieren. Die Rollen werden Benutzern, Gruppen, Dienstprinzipalen und verwalteten Identitäten in Active Directory zugewiesen.
+Sie können die Identitäts- und Zugriffssteuerung (IAM) im Azure-Portal für Ihr Abonnement verwenden, um die rollenbasierte Zugriffssteuerung von Azure (Azure RBAC) zu konfigurieren. Die Rollen werden Benutzern, Gruppen, Dienstprinzipalen und verwalteten Identitäten in Active Directory zugewiesen.
 
-* [Grundlegendes zu RBAC in Azure](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Grundlegendes zu Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
 * [Erforderliche RBAC-Berechtigungen (Role-Based Access Control) für die Verwendung von Network Watcher-Funktionen](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions)
 
@@ -443,15 +443,15 @@ Sie können diesen Prozess optimieren, indem Sie Diagnoseeinstellungen für Azur
 
 **Verantwortlichkeit**: Nicht verfügbar
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6: Verwenden der rollenbasierten Zugriffssteuerung zum Steuern des Zugriffs auf Ressourcen
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Verwenden von Azure RBAC zum Steuern des Zugriffs auf Ressourcen
 
-**Leitfaden**: Sie können die Identitäts- und Zugriffssteuerung (Identity and Access control, IAM) im Azure-Portal für Ihr Abonnement verwenden, um die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) zu konfigurieren. Die Rollen werden Benutzern, Gruppen, Dienstprinzipalen und verwalteten Identitäten in Active Directory zugewiesen. Sie können für Einzelbenutzer und Gruppen integrierte oder benutzerdefinierte Rollen verwenden.
+**Leitfaden**: Sie können die Identitäts- und Zugriffssteuerung (IAM) im Azure-Portal für Ihr Abonnement verwenden, um die rollenbasierte Zugriffssteuerung von Azure (Azure RBAC) zu konfigurieren. Die Rollen werden Benutzern, Gruppen, Dienstprinzipalen und verwalteten Identitäten in Active Directory zugewiesen. Sie können für Einzelbenutzer und Gruppen integrierte oder benutzerdefinierte Rollen verwenden.
 
 Damit die Network Watcher-Funktionen verwendet werden kann, muss das Konto, mit dem Sie sich bei Azure anmelden, den internen Rollen „Besitzer“, „Mitwirkender“ oder „Netzwerkmitwirkender“ oder einer benutzerdefinierten Rolle zugewiesen werden, die den Aktionen für die einzelnen Network Watcher-Funktionen zugeordnet sind.
 
-* [Konfigurieren von RBAC in Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+* [Konfigurieren von Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
-* [Grundlegendes zu RBAC-Berechtigungen in Network Watcher](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions)
+* [Grundlegendes zu Azure RBAC-Berechtigungen in Network Watcher](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -667,7 +667,7 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 **Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Webanwendungen gedacht, die in Azure App Service oder auf Computeressourcen ausgeführt werden.
 
-**Azure Security Center-Überwachung:** Nicht verfügbar
+**Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Nicht verfügbar
 

@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: d33b9b4cb50c1be7b316aad2a736bfd6fb074833
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0cf0ef97cc1e06906a529c577e9c2578e5091ef4
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075678"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050725"
 ---
 # <a name="ingestion-rules"></a>Datenerfassungsregeln
 ### <a name="json-flattening-escaping-and-array-handling"></a>JSON-Vereinfachung, Verwenden von Escapezeichen und Arraybehandlung
@@ -25,17 +25,17 @@ Ihre Azure Time Series Insights Gen2-Umgebung erstellt dynamisch die Spalten Ihr
 >
 > * Lesen Sie die unten aufgeführten Regeln sorgfältig, bevor Sie eine [Zeitreihen-ID-Eigenschaft](time-series-insights-update-how-to-id.md) und/oder die [Zeitstempeleigenschaft(en)](concepts-streaming-ingestion-event-sources.md#event-source-timestamp) für Ihre Ereignisquelle auswählen. Befindet sich Ihre TS-ID oder Ihr Zeitstempel in einem geschachtelten Objekt, oder enthält Ihre TS-ID oder Ihr Zeitstempel mindestens eines der folgenden Sonderzeichen, müssen Sie sicherstellen, dass der von Ihnen angegebene Eigenschaftsname mit dem Spaltennamen übereinstimmt, *nachdem* die Erfassungsregeln angewendet wurden. Sehen Sie sich dazu Beispiel [B](concepts-json-flattening-escaping-rules.md#example-b) weiter unten an.
 
-| Regel | JSON-Beispiel |Spaltenname im Speicher |
-|---|---|---|
-| Der Azure Time Series Insights Gen2-Datentyp wird an das Ende Ihres Spaltennamens als „_\<dataType\>“ angehängt. | ```"type": "Accumulated Heat"``` | type_string |
-| Die [Zeitstempeleigenschaft](concepts-streaming-ingestion-event-sources.md#event-source-timestamp) für eine Ereignisquelle wird in Azure Time Series Insights Gen2 als „timestamp“ im Speicher gespeichert, und der Wert wird in UTC gespeichert. Sie können Ihre Zeitstempeleigenschaft für Ereignisquellen anpassen, um die Anforderungen Ihrer Lösung zu erfüllen, aber der Spaltenname lautet in Warm und Cold Storage „timestamp“. Andere JSON-Eigenschaften mit Typ „datetime“, die nicht den Zeitstempel einer Ereignisquelle angeben, werden mit „_datetime“ im Spaltennamen gespeichert, wie dies in der obigen Regel beschrieben ist.  | ```"ts": "2020-03-19 14:40:38.318"``` | timestamp |
-| Für JSON-Eigenschaftsnamen, die die Sonderzeichen „.“, „[“, „\“ oder „'“ enthalten, werden „['“ und „']“ als Escapezeichen verwendet.  |  ```"id.wasp": "6A3090FD337DE6B"``` | ['id.wasp']_string |
-| Zwischen „['“ und „']“ werden bei einfachen Anführungszeichen und umgekehrten Schrägstrichen ebenfalls Escapezeichen verwendet. Ein einfaches Anführungszeichen wird als „\’“ und ein umgekehrter Schrägstrich wird als „\\\“ geschrieben. | ```"Foo's Law Value": "17.139999389648"``` | ['Foo\'s Law Value']_double |
-| Geschachtelte JSON-Objekte werden mit einem Punkt als Trennzeichen vereinfacht. Es wird Schachteln bis zu 10 Ebenen unterstützt. |  ```"series": {"value" : 316 }``` | series.value_long |
-| Arrays von primitiven Typen werden mit dem Typ „dynamic“ gespeichert. |  ```"values": [154, 149, 147]``` | values_dynamic |
+| Regel | JSON-Beispiel | [Syntax des Zeitreihenausdrucks](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax) | Spaltenname für Eigenschaft in Parquet
+|---|---|---|---|
+| Der Azure Time Series Insights Gen2-Datentyp wird an das Ende Ihres Spaltennamens als „_\<dataType\>“ angehängt. | ```"type": "Accumulated Heat"``` | `$event.type.String` |`type_string` |
+| Die [Zeitstempeleigenschaft](concepts-streaming-ingestion-event-sources.md#event-source-timestamp) für eine Ereignisquelle wird in Azure Time Series Insights Gen2 als „timestamp“ im Speicher gespeichert, und der Wert wird in UTC gespeichert. Sie können Ihre Zeitstempeleigenschaft für Ereignisquellen anpassen, um die Anforderungen Ihrer Lösung zu erfüllen, aber der Spaltenname lautet in Warm und Cold Storage „timestamp“. Andere JSON-Eigenschaften mit Typ „datetime“, die nicht den Zeitstempel einer Ereignisquelle angeben, werden mit „_datetime“ im Spaltennamen gespeichert, wie dies in der obigen Regel beschrieben ist.  | ```"ts": "2020-03-19 14:40:38.318"``` |  `$event.$ts` | `timestamp` |
+| Für JSON-Eigenschaftsnamen, die die Sonderzeichen „.“, „[“, „\“ oder „'“ enthalten, werden „['“ und „']“ als Escapezeichen verwendet.  |  ```"id.wasp": "6A3090FD337DE6B"``` |  `$event['id.wasp'].String` | `['id.wasp']_string` |
+| Zwischen „['“ und „']“ werden bei einfachen Anführungszeichen und umgekehrten Schrägstrichen ebenfalls Escapezeichen verwendet. Ein einfaches Anführungszeichen wird als „\’“ und ein umgekehrter Schrägstrich wird als „\\\“ geschrieben. | ```"Foo's Law Value": "17.139999389648"``` | `$event['Foo\'s Law Value'].Double` | `['Foo\'s Law Value']_double` |
+| Geschachtelte JSON-Objekte werden mit einem Punkt als Trennzeichen vereinfacht. Es wird Schachteln bis zu 10 Ebenen unterstützt. |  ```"series": {"value" : 316 }``` | `$event.series.value.Long`, `$event['series']['value'].Long` oder `$event.series['value'].Long` |  `series.value_long` |
+| Arrays von primitiven Typen werden mit dem Typ „dynamic“ gespeichert. |  ```"values": [154, 149, 147]``` | Dynamische Typen können nur über die [GetEvents](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents)-API abgerufen werden. | `values_dynamic` |
 | Arrays, die Objekte enthalten, haben je nach Objektinhalt zwei Verhaltensweisen: Befinden sich entweder die TS-ID(s) oder die Zeitstempeleigenschaft(en) innerhalb der Objekte in einem Array, wird das Array so aufgelöst, dass die anfängliche JSON-Nutzlast mehrere Ereignisse erzeugt. Dies ermöglicht es Ihnen, mehrere Ereignisse in einer JSON-Struktur zu stapeln. Alle Eigenschaften der obersten Ebene, die Peers im Array sind, werden mit jedem aufgelösten Objekt gespeichert. Befinden sich Ihre TS-ID(s) und der Zeitstempel *nicht* im Array, wird es vollständig mit dem Typ „dynamic“ gespeichert. | Siehe dazu die Beispiele [A](concepts-json-flattening-escaping-rules.md#example-a), [B](concepts-json-flattening-escaping-rules.md#example-b) und [C](concepts-json-flattening-escaping-rules.md#example-c) weiter unten.
-| Arrays, die gemischte Elemente enthalten, werden nicht vereinfacht. |  ```"values": ["foo", {"bar" : 149}, 147]``` | values_dynamic |
-| Der Name einer JSON-Eigenschaft kann maximal 512 Zeichen lang sein. Hat ein Name mehr als 512 Zeichen, wird er auf 512 Zeichen gekürzt, und es wird „'_<'hashCode'>'“ angefügt. **Beachten Sie**, dass dies auch für Eigenschaftsnamen gilt, die aus einem vereinfachten Objekt verkettet wurden, was einen geschachtelten Objektpfad kennzeichnet. |``"data.items.datapoints.values.telemetry<...continuing to over 512 chars>" : 12.3440495`` | data.items.datapoints.values.telemetry<...fortgesetzt bis 512 Zeichen>_912ec803b2ce49e4a541068d495ab570_double |
+| Arrays, die gemischte Elemente enthalten, werden nicht vereinfacht. |  ```"values": ["foo", {"bar" : 149}, 147]``` | Dynamische Typen können nur über die [GetEvents](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents)-API abgerufen werden. | `values_dynamic` |
+| Der Name einer JSON-Eigenschaft kann maximal 512 Zeichen lang sein. Hat ein Name mehr als 512 Zeichen, wird er auf 512 Zeichen gekürzt, und es wird „'_<'hashCode'>'“ angefügt. **Beachten Sie**, dass dies auch für Eigenschaftsnamen gilt, die aus einem vereinfachten Objekt verkettet wurden, was einen geschachtelten Objektpfad kennzeichnet. |``"data.items.datapoints.values.telemetry<...continuing to over 512 chars>" : 12.3440495`` |`"$event.data.items.datapoints.values.telemetry<...continuing to include all chars>.Double"` | `data.items.datapoints.values.telemetry<...continuing to 512 chars>_912ec803b2ce49e4a541068d495ab570_double` |
 
 ## <a name="understanding-the-dual-behavior-for-arrays"></a>Die zwei Verhaltensweisen für Arrays
 
