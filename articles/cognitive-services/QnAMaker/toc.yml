@@ -24,6 +24,8 @@
   items:
     - name: Integrieren in Power Virtual Agent
       href: Tutorials/integrate-with-power-virtual-assistant-fallback-topic.md
+    - name: Erstellen eines FAQ-Bots mit Azure Bot Service
+      href: Tutorials/create-faq-bot-with-azure-bot-service.md
     - name: Mit Batchdatei testen
       href: Quickstarts/batch-testing.md
 - name: Konzepte
@@ -91,7 +93,7 @@
         - name: Migrieren zu einer neuen Wissensdatenbank
           href: Tutorials/migrate-knowledge-base.md
           displayName: 'metadata, pair'
-        - name: Test
+        - name: Testversion der Wissensdatenbank
           href: How-To/test-knowledge-base.md
     - name: Verwalten von Frage-Antwort-Paaren
       items:
@@ -227,7 +229,7 @@
   items:
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Verschlüsselung
       href: qna-maker-encryption-of-data-at-rest.md

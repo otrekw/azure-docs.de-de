@@ -5,7 +5,7 @@
   items:
     - name: Lösungsarchitektur
       href: architecture.md
-    - name: Sicherheitslösung für Azure RTOS
+    - name: Sicherheitsmodul für Azure RTOS
       href: iot-security-azure-rtos.md
     - name: Sicherheits-Agents
       href: security-agent-architecture.md
@@ -23,6 +23,8 @@
 - name: Schnellstarts
   expanded: true
   items:
+    - name: Konfigurieren des Sicherheitsmoduls für Azure RTOS
+      href: quickstart-azure-rtos-security-module.md
     - name: Durchführen des Onboardings für Azure Security Center für IoT in IoT Hub
       href: quickstart-onboard-iot-hub.md
     - name: Konfigurieren Ihrer Lösung
@@ -37,6 +39,12 @@
       href: quickstart-investigate-security-alerts.md
 - name: Konzepte
   items:
+    - name: Sicherheitsmodul für Azure RTOS
+      items:
+        - name: Grundlegendes zum Sicherheitsmodul für Azure RTOS
+          href: concept-rtos-security-module.md
+        - name: 'Sicherheitsmodul für Azure RTOS: Warnungen und Empfehlungen'
+          href: concept-rtos-security-alerts-recommendations.md
     - name: Authentifizierung von Sicherheits-Agents
       href: concept-security-agent-authentication-methods.md
     - name: Sicherheitsmodul
@@ -55,6 +63,8 @@
       href: concept-pricing.md
 - name: Anleitungen
   items:
+    - name: Arbeiten mit dem Sicherheitsmodul für Azure RTOS
+      href: how-to-azure-rtos-security-module.md
     - name: Welchen Agent sollte ich bereitstellen?
       items:
         - name: Auswählen eines Agents für die Bereitstellung
@@ -87,13 +97,29 @@
       href: how-to-configure-with-sentinel.md
     - name: Anpassen Ihrer Lösung
       href: how-to-customize-solution.md
-- name: Ressourcen
+- name: Referenzen
   items:
+    - name: 'Sicherheitsmodul für Azure RTOS: API'
+      href: azure-rtos-security-module-api.md
     - name: Häufig gestellte Fragen
       href: resources-frequently-asked-questions.md
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
-    - name: 'Azure-Blog zu Sicherheit, Datenschutz und Compliance'
-      href: 'https://docs.microsoft.com/archive/blogs/azuresecurity/'
+- name: Ressourcen
+  items:
+    - name: Ausbauen von Sicherheitskenntnissen mit Microsoft Learn
+      href: 'https://docs.microsoft.com/learn/browse/?term=securityS&terms=securityS'
+    - name: Dokumentation zu Azure Security Center
+      href: 'https://docs.microsoft.com/azure/security-center/'
+    - name: Dokumentation zur Azure-Sicherheit
+      href: 'https://docs.microsoft.com/azure/security/'
+    - name: Azure RTOS-Sicherheitsmodul in Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-rtos+azure-iot-security-module'
+    - name: "Azure\_IoT-Blog zu Sicherheit, Datenschutz und Compliance"
+      href: 'https://techcommunity.microsoft.com/t5/iot-security/bd-p/IoTSecurity'
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/regions/services/'
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/security-center/'
+    - name: Videos
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=security-center&service=internet-of-things&page=1&sort=newest'

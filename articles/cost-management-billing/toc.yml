@@ -114,6 +114,8 @@
           href: understand/mca-overview.md
         - name: Abrechnungskonten für Microsoft-Partnervereinbarung
           href: understand/mpa-overview.md
+        - name: Übertragen von Abonnements zwischen Partnern (Vorschau)
+          href: manage/azure-plan-subscription-transfer-partners.md
 - name: Anleitungen
   items:
     - name: Konfigurieren der Kostenverwaltung und Abrechnung

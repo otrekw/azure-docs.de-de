@@ -1,6 +1,6 @@
 ---
 title: Abfragen von geschachtelten Parquet-Typen mit SQL On-Demand (Vorschauversion)
-description: In diesem Artikel erfahren Sie, wie Sie geschachtelte Parquet-Typen abfragen können.
+description: In diesem Artikel erfahren Sie, wie Sie geschachtelte Parquet-Typen mit SQL On-Demand abfragen können (Vorschauversion).
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,24 +9,24 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: fb56c4da77ddeb87ebc3724a3b138994e4da98e7
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: f58adf124634ce1b4326f0026718688f0eb1dc7b
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489689"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89076734"
 ---
-# <a name="query-nested-types-in-parquet-and-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Abfragen von geschachtelten Typen in Parquet und JSON-Dateien mit SQL On-Demand (Vorschauversion) in Azure Synapse Analytics
+# <a name="query-nested-types-in-parquet-and-json-files-by-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Abfragen von geschachtelten Typen in Parquet und JSON-Dateien mit SQL On-Demand (Vorschauversion) in Azure Synapse Analytics
 
-In diesem Artikel erfahren Sie, wie Sie eine Abfrage mit SQL On-Demand (Vorschauversion) in Azure Synapse Analytics schreiben können. Diese Abfrage liest geschachtelte Parquet-Typen.
+In diesem Artikel erfahren Sie, wie Sie eine Abfrage mit SQL On-Demand (Vorschauversion) in Azure Synapse Analytics schreiben können. Die Abfrage liest geschachtelte Parquet-Typen.
 Bei geschachtelten Typen handelt es sich um komplexe Strukturen zur Darstellung von Objekten oder Arrays. Geschachtelte Typen können in folgenden Formaten gespeichert werden: 
-- In [PARQUET](query-parquet-files.md). Dabei können mehrere komplexe Spalten mit Arrays und Objekten vorhanden sein.
+- In [Parquet](query-parquet-files.md). Dabei können mehrere komplexe Spalten mit Arrays und Objekten vorhanden sein.
 - In hierarchischen [JSON-Dateien](query-json-files.md). Dabei können komplexe JSON-Dokumente als einzelne Spalte gelesen werden.
-- In einer CosmosDB-Sammlung. Dabei kann jedes Dokument komplexe geschachtelte Eigenschaften enthalten (aktuell in der geschlossenen öffentlichen Vorschau verfügbar).
+- In Azure Cosmos DB-Sammlungen (aktuell in der geschlossenen öffentlichen Vorschau verfügbar). Dabei kann jedes Dokument komplexe geschachtelte Eigenschaften enthalten.
 
-Synapse SQL On-Demand formatiert alle geschachtelten Typen als JSON-Objekte und -Arrays. Folglich können Sie [komplexe Objekte mit JSON-Funktionen extrahieren oder ändern](https://docs.microsoft.com/sql/relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server) oder [JSON-Daten mit der OPENJSON-Funktion](https://docs.microsoft.com/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server) analysieren. 
+Azure Synapse SQL On-Demand formatiert alle geschachtelten Typen als JSON-Objekte und -Arrays. Somit können Sie [komplexe Objekte mithilfe von JSON-Funktionen extrahieren oder ändern](https://docs.microsoft.com/sql/relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server) bzw. [JSON-Daten mithilfe der OPENJSON-Funktion analysieren](https://docs.microsoft.com/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server). 
 
-Nachfolgend ist eine Beispielabfrage gezeigt, mit der Skalar- und Objektwerte aus der JSON-Datei [COVID-19 Open Research Dataset](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) mit geschachtelten Objekten extrahiert werden. 
+Hier folgt ein Beispiel für eine Abfrage, die Skalar- und Objektwerte aus der JSON-Datei [COVID-19 Open Research Dataset](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) extrahiert, die geschachtelte Objekte enthält: 
 
 ```sql
 SELECT
@@ -45,15 +45,15 @@ FROM
 Die Funktion `JSON_VALUE` gibt einen Skalarwert aus dem Feld unter dem angegebenen Pfad zurück. Die Funktion `JSON_QUERY` gibt ein als JSON formatiertes Objekt aus dem Feld unter dem angegebenen Pfad zurück.
 
 > [!IMPORTANT]
-> In diesem Beispiel wird eine Datei aus [COVID-19 Open Research Dataset](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) verwendet. Weitere Informationen finden Sie in der Lizenz und Datenstruktur auf dieser Seite.
+> In diesem Beispiel wird eine Datei aus dem COVID-19 Open Research Dataset verwendet. [Die Lizenz und die Struktur der Daten finden Sie hier](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Der erste Schritt besteht in der **Erstellung einer Datenbank** mit einer Datenquelle, die einen Verweis enthält. Initialisieren Sie dann die Objekte, indem Sie das [Setupskript](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) für diese Datenbank ausführen. Mit diesem Setupskript werden die Datenquellen, die für die gesamte Datenbank gültigen Anmeldeinformationen und externe Dateiformate erstellt, die in diesen Beispielen verwendet werden.
+Der erste Schritt ist die Erstellung einer Datenbank, in der die Datenquelle erstellt wird. Anschließend initialisieren Sie die Objekte, indem Sie ein [Setupskript](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) für die Datenbank ausführen. Mit dem Setupskript werden die Datenquellen, die für die gesamte Datenbank gültigen Anmeldeinformationen und externe Dateiformate erstellt, die in den Beispielen verwendet werden.
 
 ## <a name="project-nested-or-repeated-data"></a>Projizieren von geschachtelten oder wiederholten Daten
 
-Eine PARQUET-Datei kann über mehrere Spalten mit komplexen Typen verfügen. Die Werte aus diesen Spalten werden als JSON-Text formatiert und als VARCHAR-Spalte zurückgegeben. Mit der folgenden Abfrage wird die Datei *structExample.parquet* gelesen und gezeigt, wie die Werte der geschachtelten Spalten gelesen werden sollen: 
+Eine Parquet-Datei kann über mehrere Spalten mit komplexen Typen verfügen. Die Werte aus diesen Spalten werden als JSON-Text formatiert und als VARCHAR-Spalten zurückgegeben. Mit der folgenden Abfrage wird die Datei structExample.parquet gelesen und gezeigt, wie die Werte der geschachtelten Spalten gelesen werden sollen: 
 
 ```sql
 SELECT
@@ -73,14 +73,14 @@ FROM
     ) AS [r];
 ```
 
-Diese Abfrage gibt das folgende Ergebnis zurück, wobei der Inhalt der einzelnen geschachtelten Objekte als JSON-Text zurückgegeben wird:
+Diese Abfrage gibt folgendes Ergebnis zurück. Der Inhalt jedes geschachtelten Objekts wird als JSON-Text zurückgegeben.
 
 | DateStruct    | TimeStruct    | TimestampStruct   | DecimalStruct | FloatStruct |
 | --- | --- | --- | --- | --- |
 |{"Date":"2009-04-25"}| {"Time":"20:51:54.3598000"}|    {"Timestamp":"5501-04-08 12:13:57.4821000"}|    {"Decimal":11143412.25350}| {"Float":0.5}|
 |{"Date":"1916-04-29"}| {"Time":"00:16:04.6778000"}|    {"Timestamp":"1990-06-30 20:50:52.6828000"}|    {"Decimal":1963545.62800}|  {"Float":-2.125}|
 
-Die folgende Abfrage liest die Datei *justSimpleArray.parquet*. Sie projiziert alle Spalten aus der Parquet-Datei einschließlich geschachtelter oder wiederholter Daten.
+Die folgende Abfrage liest die Datei justSimpleArray.parquet. Sie projiziert alle Spalten aus der Parquet-Datei einschließlich geschachtelter und wiederholter Daten.
 
 ```sql
 SELECT
@@ -102,7 +102,7 @@ Bei dieser Abfrage wird das folgende Ergebnis zurückgegeben:
 
 ## <a name="read-properties-from-nested-object-columns"></a>Lesen von Eigenschaften aus Spalten mit geschachtelten Objekten
 
-Mit der Funktion `JSON_VALUE` können Sie Werte aus einer Spalte als JSON-formatierten Text zurückgeben:
+Mit der Funktion `JSON_VALUE` können Sie Werte aus Spalten als JSON-formatierten Text zurückgeben:
 
 ```sql
 SELECT
@@ -121,11 +121,11 @@ Das Ergebnis ist in der folgenden Tabelle gezeigt:
 | --- | --- | --- | --- |
 | Supplementary Information An eco-epidemiolo... | Julien   | - Figure S1 : Phylogeny of... | `{    "paper_id": "000b7d1517ceebb34e1e3e817695b6de03e2fa78",    "metadata": {        "title": "Supplementary Information An eco-epidemiological study of Morbilli-related paramyxovirus infection in Madagascar bats reveals host-switching as the dominant macro-evolutionary mechanism",        "authors": [            {                "first": "Julien"` |
 
-Im Gegensatz zu JSON-Dateien, die in den meisten Fällen eine einzelne Spalte mit komplexen JSON-Objekten zurückgeben, können PARQUET-Dateien mehrere komplexe Spalten enthalten. Sie können die Eigenschaften der geschachtelten Spalte mit der Funktion `JSON_VALUE` für jede Spalte lesen. Mit `OPENROWSET` können Sie die Pfade der geschachtelten Eigenschaften direkt in der `WITH`-Klausel angeben. Pfade können als Name der Spalte angegeben werden. Alternativ können Sie nach dem Spaltentyp einen [JSON-Pfadausdruck](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server) hinzufügen.
+Im Gegensatz zu JSON-Dateien, die in den meisten Fällen eine einzelne Spalte zurückgeben, die ein komplexes JSON-Objekt enthält, können Parquet-Dateien mehrere komplexe Spalten aufweisen. Sie können die Eigenschaften der geschachtelten Spalten mit der Funktion `JSON_VALUE` für jede Spalte lesen. Mit `OPENROWSET` können Sie die Pfade der geschachtelten Eigenschaften direkt in einer `WITH`-Klausel angeben. Sie können die Pfade als Namen einer Spalte festlegen, oder Sie können einen [JSON-Pfadausdruck](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server) hinter dem Spaltentyp hinzufügen.
 
-Die folgende Abfrage liest die Datei *structBeispiel.parquet* und zeigt, wie Elemente einer geschachtelten Spalte an die Oberfläche gebracht werden: Es gibt zwei Möglichkeiten, auf einen geschachtelten Wert zu verweisen:
-- Durch Angeben des Pfadausdrucks des geschachtelten Werts nach der Typspezifikation
-- Durch Formatieren des Spaltennamens als geschachtelten Wert mithilfe von „.“ zum Verweisen auf die Felder
+Die folgende Abfrage liest die Datei structBeispiel.parquet und zeigt, wie Elemente einer geschachtelten Spalte an die Oberfläche gebracht werden: Es gibt zwei Möglichkeiten, auf einen geschachtelten Wert zu verweisen:
+- Durch Angeben des Pfadausdrucks des geschachtelten Werts nach der Typspezifikation.
+- Durch Formatieren des Spaltennamens als geschachtelten Pfad mithilfe von „.“ zum Verweisen auf die Felder.
 
 ```sql
 SELECT
@@ -147,7 +147,7 @@ FROM
 
 ## <a name="access-elements-from-repeated-columns"></a>Zugreifen auf Elemente aus wiederholten Spalten
 
-Die folgende Abfrage liest die Datei *justSimpleArray.parquet* und verwendet [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), um ein **skalares** Element aus einer sich wiederholenden Spalte, z. B. einem Array oder einer Zuordnung, abzurufen:
+Die folgende Abfrage liest die Datei „justSimpleArray.parquet“ und verwendet [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), um ein skalares Element aus einer sich wiederholenden Spalte, z. B. einem Array oder einer Zuordnung, abzurufen:
 
 ```sql
 SELECT
@@ -163,7 +163,7 @@ FROM
     ) AS [r];
 ```
 
-Das Ergebnis ist in der folgenden Tabelle gezeigt:
+Das Ergebnis lautet wie folgt:
 
 |SimpleArray    | FirstElement  | SecondElement | ThirdElement |
 | --- | --- | --- | --- |
@@ -172,7 +172,7 @@ Das Ergebnis ist in der folgenden Tabelle gezeigt:
 
 ## <a name="access-sub-objects-from-complex-columns"></a>Zugreifen auf Teilobjekte aus komplexen Spalten
 
-Die folgende Abfrage liest die Datei *mapExample.parquet* und verwendet [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), um ein **nicht skalares** Element aus einer sich wiederholenden Spalte, z. B. einem Array oder einer Zuordnung, abzurufen:
+Die folgende Abfrage liest die Datei „mapExample.parquet“ und verwendet [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), um ein nicht skalares Element aus einer sich wiederholenden Spalte, z. B. einem Array oder einer Zuordnung, abzurufen:
 
 ```sql
 SELECT
@@ -186,7 +186,7 @@ FROM
     ) AS [r];
 ```
 
-Sie können auch explizit auf die Spalten verweisen, die in der `WITH`-Klausel zurückgegeben werden sollen:
+Sie können auch explizit auf die Spalten verweisen, die in einer `WITH`-Klausel zurückgegeben werden sollen:
 
 ```sql
 SELECT DocId,
@@ -201,7 +201,7 @@ FROM
     WITH (DocId bigint, MapOfPersons VARCHAR(max)) AS [r];
 ```
 
-Die Struktur `MapOfPersons` wird als `VARCHAR`-Spalte zurückgegeben und als JSON-Zeichenfolge formatiert.
+Die Struktur `MapOfPersons` wird als VARCHAR-Spalte zurückgegeben und als JSON-Zeichenfolge formatiert.
 
 ## <a name="project-values-from-repeated-columns"></a>Projizieren von Werten aus wiederholten Spalten
 

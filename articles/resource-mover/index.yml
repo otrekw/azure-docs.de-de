@@ -1,0 +1,48 @@
+### YamlMime:Landing
+title: Dokumentation zu Azure Resource Mover
+summary: Verschieben Sie Azure-Ressourcen zwischen Azure-Regionen im Azure Resource Mover-Hub.
+metadata:
+  title: Dokumentation zum Azure Resource Manager
+  description: Hier finden Sie Tutorials und Informationen zum Verschieben von Ressourcen zwischen Azure-Regionen.
+  ms.service: resource-move
+  ms.topic: landing-page
+  ms.collection: collection
+  author: rayne-wiselman
+  ms.author: raynew
+  ms.date: 09/09/2020
+  keywords: azure resource mover, azure regions, move across regions
+  ms.openlocfilehash: 4dec18e3000373953c93ee99a6b5500ffb515807
+  ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 09/10/2020
+  ms.locfileid: "89652131"
+landingContent:
+- title: Informationen zu Azure Resource Mover
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Resource Mover?
+      url: ./overview.md
+    - text: Auswählen eines Tools zum Verschieben von Ressourcen
+      url: ./select-move-tool.md
+    - text: Häufig gestellte Fragen
+      url: ./common-questions.md
+- title: Erste Schritte
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Verschieben virtueller Azure-Computer in eine andere Region
+      url: ./tutorial-move-region-virtual-machines.md
+    - text: Verschieben von Azure SQL-Datenbanken und Pools für elastische Datenbanken in eine andere Region
+      url: ./tutorial-move-region-sql.md
+- title: Weitere Informationen
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Informationen zum Verschiebungsvorgang
+      url: ./about-move-process.md
+    - text: Sehen Sie sich die Unterstützungsmatrix für die Verschiebung von virtuellen Azure-Computern an.
+      url: ./support-matrix-move-region-azure-vm.md
+    - text: Sehen Sie sich die Unterstützungsmatrix für die Verschiebung von Azure SQL-Ressourcen an.
+      url: ./support-matrix-move-region-sql.md

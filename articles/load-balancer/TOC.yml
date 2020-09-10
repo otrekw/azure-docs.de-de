@@ -81,6 +81,8 @@
       href: load-balancer-standard-virtual-machine-scale-sets.md
 - name: Anleitung
   items:
+    - name: Portaleinstellungen
+      href: manage.md
     - name: VM-Skalierungsgruppen
       items:
         - name: 'Verwendung mit einer vorhandenen Azure Load Balancer-Instanz: Portal'

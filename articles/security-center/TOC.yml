@@ -136,7 +136,11 @@
       items:
         - name: Umsetzen von Empfehlungen
           href: security-center-remediate-recommendations.md
+        - name: Verhindern von Fehlkonfigurationen mit den Optionen zum Erzwingen/Ablehnen
+          displayName: recommendations
+          href: prevent-misconfigurations.md
         - name: Stärken des Sicherheitsstatus
+          displayName: recommendations
           href: security-center-monitoring.md
         - name: Referenzliste der Empfehlungen
           href: recommendations-reference.md

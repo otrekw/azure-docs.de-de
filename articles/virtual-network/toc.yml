@@ -96,7 +96,7 @@
         - name: Netzwerksicherheitsgruppen
           items:
             - name: Übersicht
-              href: security-overview.md
+              href: network-security-groups-overview.md
             - name: Funktionsweise
               href: network-security-group-how-it-works.md
         - name: Anwendungssicherheitsgruppen
