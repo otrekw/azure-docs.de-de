@@ -12,12 +12,12 @@ author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: e78044faabfd5ff3dccb1e7ea04149fbef212c01
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 7a52dcabb448c39d9ae4e4edb4f5b7f701be6603
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843707"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228884"
 ---
 # <a name="devops-for-a-data-ingestion-pipeline"></a>DevOps für eine Datenerfassungspipeline
 
@@ -64,7 +64,7 @@ Beispielsweise würde der Code in einem Azure DevOps-, GitHub- oder GitLab-Repos
 Die Data Engineers arbeiten mit dem Python-Notebookquellcode entweder lokal in einer IDE (z. B. [Visual Studio Code](https://code.visualstudio.com)) oder direkt im Databricks-Arbeitsbereich. Sobald die Codeänderungen abgeschlossen sind, werden sie nach einer Branchingrichtlinie im Repository zusammengeführt.
 
 > [!TIP] 
-> Es wurde empfohlen, den Code in `.py`-Dateien anstatt im Jupyter-Notebookformat `.ipynb` zu speichern. Dadurch wird die Lesbarkeit des Codes verbessert, und es werden automatische Codequalitätsprüfungen im CI-Prozess ermöglicht.
+> Sie sollten den Code in `.py`-Dateien anstatt im Jupyter-Notebookformat `.ipynb` speichern. Dadurch wird die Lesbarkeit des Codes verbessert, und es werden automatische Codequalitätsprüfungen im CI-Prozess ermöglicht.
 
 ### <a name="azure-data-factory-source-code"></a>Azure Data Factory-Quellcode
 

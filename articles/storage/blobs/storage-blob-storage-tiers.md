@@ -3,17 +3,17 @@ title: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“ für Blobs – Az
 description: In diesem Artikel erhalten Sie Informationen zu den Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“ für Blobspeicher in Azure. Außerdem erhalten Sie Informationen zu Speicherkonten, die Ebenen unterstützen. Zudem vergleichen Sie Blockblobspeicheroptionen.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 03/23/2019
+ms.date: 08/27/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: a46597087a3eee03f7c5b8d1c9746f968ea1980d
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 59a0433a3b22877808fbe2b8371258e00f214d10
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849725"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226181"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“
 
@@ -69,6 +69,9 @@ Beispielszenarien für die Verwendung der Archivzugriffsebene:
 - Originaldaten (Rohdaten), die auch nach der Umwandlung in ein endgültiges verwendbares Format erhalten bleiben müssen
 - Compliance- und Archivdaten, die über einen langen Zeitraum gespeichert werden müssen und selten verwendet werden
 
+> [!NOTE]
+> Die Archivspeicherebene wird derzeit nicht für ZRS-, GZRS- oder RA-GZRS-Konten unterstützt.
+
 ## <a name="account-level-tiering"></a>Tiering auf Kontoebene
 
 Ein Konto kann Blobs aus allen drei Zugriffsebenen enthalten. Für Blobs, denen keine explizite Ebene zugewiesen ist, wird die Ebene von der Zugriffsebeneneinstellung des Kontos abgeleitet. Wenn die Zugriffsebene vom Konto stammt, sehen Sie, dass die Eigenschaft **access tier inferred** (Abgeleitete Zugriffsebene) des Blobs auf TRUE festgelegt ist und die Eigenschaft **Access Tier** (Zugriffsebene) mit der Kontoebene übereinstimmt. Im Azure-Portal wird die Eigenschaft _access tier inferred_ (Abgeleitete Zugriffsebene) zusammen mit der Blobzugriffsebene als **Heiß (abgeleitet)** oder **Kalt (abgeleitet)** angezeigt.
@@ -120,7 +123,7 @@ Die folgende Tabelle enthält eine Gegenüberstellung des Premium-Leistungsblock
 | **Verfügbarkeit**                          | 99,9 %                     | 99,9 %        | 99 %                 | Offline           |
 | **Verfügbarkeit** <br> **(RA-GRS-Lesevorgänge)**  | –                       | 99,99 %       | 99,9 %               | Offline           |
 | **Nutzungsgebühren**                         | Höhere Speicherkosten, niedrigere Zugriffs- und Transaktionskosten | Höhere Speicherkosten, geringere Zugriffs- und Transaktionskosten | Geringere Speicherkosten, höhere Zugriffs- und Transaktionskosten | Niedrigste Speicherkosten, höchste Zugriffs- und Transaktionskosten |
-| **Mindestobjektgröße**                   | –                       | –          | Nicht zutreffend                 | –               |
+| **Mindestobjektgröße**                   | –                       | Nicht zutreffend          | –                 | –               |
 | **Mindestspeicherdauer**              | –                       | –          | 30 Tage<sup>1</sup> | 180 Tage
 | **Latenz** <br> **(Zeit bis zum ersten Byte)** | Einstellige Millisekunden | Millisekunden | Millisekunden        | Stunden<sup>2</sup> |
 
@@ -153,7 +156,7 @@ In diesem Abschnitt werden die folgenden Szenarien unter Verwendung des Azure-Po
 
 1. Klicken Sie oben auf **Speichern** .
 
-![Ändern der Speicherkontoebene](media/storage-tiers/account-tier.png)
+![Ändern der Standardkontoebene im Azure-Portal](media/storage-tiers/account-tier.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Das folgende PowerShell-Skript kann zum Ändern der Kontoebene verwendet werden. Die Variable `$rgName` muss mit Ihrem Ressourcengruppennamen initialisiert werden. Die Variable `$accountName` muss mit Ihrem Speicherkontonamen initialisiert werden. 
@@ -183,7 +186,7 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 
 1. Wählen Sie unten **Speichern** aus.
 
-![Ändern der Speicherkontoebene](media/storage-tiers/blob-access-tier.png)
+![Ändern der Blobebene im Azure-Portal](media/storage-tiers/blob-access-tier.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Das folgende PowerShell-Skript kann zum Ändern der Blobebene verwendet werden. Die Variable `$rgName` muss mit Ihrem Ressourcengruppennamen initialisiert werden. Die Variable `$accountName` muss mit Ihrem Speicherkontonamen initialisiert werden. Die Variable `$containerName` muss mit Ihrem Containernamen initialisiert werden. Die Variable `$blobName` muss mit Ihrem Blobnamen initialisiert werden. 
@@ -216,6 +219,8 @@ Für alle Speicherkonten wird ein Blockblobspeicher-Preismodell verwendet, das a
 - **Datenübertragungskosten bei Georeplikation:** Diese Gebühr gilt nur für Konten mit konfigurierter Georeplikation (einschließlich GRS und RA-GRS). Die Datenübertragung für die Georeplikation wird pro Gigabyte abgerechnet.
 - **Kosten für ausgehende Datenübertragungen:** Ausgehende Datenübertragungen (Daten, die aus einer Azure-Region übertragen werden) werden genau wie bei allgemeinen Speicherkonten nach Bandbreitennutzung pro Gigabyte abgerechnet.
 - **Änderung der Zugriffsebene:** Bei Änderungen der Kontozugriffsebene fallen entsprechende Änderungsgebühren für alle im Konto gespeicherten Blobs vom Typ _access tier inferred_ (Abgeleitete Zugriffsebene) an, für die keine explizite Ebene festgelegt ist. Informationen zum Ändern der Zugriffsebene für ein einzelnes Blob finden Sie unter [Abrechnung für das Blobebenentiering](#blob-level-tiering-billing).
+
+    Wenn Sie die Zugriffsebene für ein Blob ändern, wenn die Versionsverwaltung aktiviert ist, oder wenn das Blob über Momentaufnahmen verfügt, kann dies zu zusätzlichen Kosten führen. Weitere Informationen zur Abrechnung bei aktivierter Blobversionsverwaltung und zum expliziten Ändern der Ebene eines Blobs finden Sie in der Dokumentation zur Blobversionsverwaltung unter [Preise und Abrechnung](versioning-overview.md#pricing-and-billing). Weitere Informationen zur Abrechnung, wenn ein Blob über Momentaufnahmen verfügt und Sie die Ebene des Blobs explizit ändern, finden Sie in der Dokumentation zu Blobmomentaufnahmen unter [Preise und Abrechnung](snapshots-overview.md#pricing-and-billing).
 
 > [!NOTE]
 > Weitere Informationen zu den Preisen für Blockblobs finden Sie auf der Seite [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/blobs/). Weitere Informationen zu den Kosten für ausgehende Datenübertragungen finden Sie auf der Seite [Datenübertragungen – Preisdetails](https://azure.microsoft.com/pricing/details/data-transfers/).

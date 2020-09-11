@@ -8,12 +8,12 @@ ms.author: victliu
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a1304ad05e05285aa75167ec21519ec90d157662
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 9e8625724f67caac99ae799674f9db9399e11ad8
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922887"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294253"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-managed-instance"></a>Konfigurieren einer Verbindung eines Indexers der kognitiven Azure-Suche mit einer verwalteten SQL-Datenbank-Instanz
 
@@ -27,7 +27,7 @@ Erstellen Sie eine verwaltete SQL-Instanz mit der ausgewählten Option **Öffent
 ## <a name="enable-azure-sql-managed-instance-public-endpoint"></a>Aktivieren einer verwalteten Azure SQL-Instanz mit öffentlichem Endpunkt
 Sie können den öffentlichen Endpunkt auch auf einer vorhandenen verwalteten SQL-Instanz unter **Sicherheit** > **Virtuelles Netzwerk** > **Öffentlicher Endpunkt**  > **Aktivieren** aktivieren.
 
-   ![Öffentlichen Endpunkt aktivieren](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/mi-vnet.png "Aktivieren des öffentlichen Endpunkts")
+   ![Aktivieren eines öffentlichen Endpunkts mit verwalteter Instanz – VNET](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/mi-vnet.png "Aktivieren des öffentlichen Endpunkts")
 
 ## <a name="verify-nsg-rules"></a>Überprüfen von NSG-Regeln
 Überprüfen Sie, ob die Netzwerksicherheitsgruppe die richtigen **Eingangssicherheitsregeln** hat, die Verbindungen von Azure-Diensten erlauben.

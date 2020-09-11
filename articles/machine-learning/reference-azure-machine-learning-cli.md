@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 06/22/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5a532ec11cdcd97bd1f72c40f603bce7cc4b12c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f037ea30a1507d4736db7f837e5286701db030e0
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611763"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146679"
 ---
 # <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>Installieren und Verwenden der CLI-Erweiterung für Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -150,15 +150,49 @@ Die folgenden Befehle veranschaulichen, wie Sie mit der CLI Ressourcen verwalten
 
     Weitere Informationen finden Sie unter [az ml computetarget attach aks](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/attach?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-attach-aks).
 
-+ Erstellen Sie ein neues AMLcompute-Ziel.
+### <a name="compute-clusters"></a>Computecluster
+
++ Erstellen Sie einen neuen verwalteten Computecluster.
 
     ```azurecli-interactive
     az ml computetarget create amlcompute -n cpu --min-nodes 1 --max-nodes 1 -s STANDARD_D3_V2
     ```
 
-    Weitere Informationen finden Sie unter [az ml computetarget create amlcompute](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute).
 
-+ <a id="computeinstance"></a>Verwalten von Computeinstanzen.  In allen untenstehenden Beispielen lautet der Name der Computeinstanz **cpu**.
+
++ Erstellen eines neuen verwalteten Computeclusters mit einer verwalteten Identität
+
+  + Benutzerseitig zugewiesene verwaltete Identität
+
+    ```azurecli
+    az ml computetarget create amlcompute --name cpu-cluster --vm-size Standard_NC6 --max-nodes 5 --assign-identity '/subscriptions/<subcription_id>/resourcegroups/<resource_group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<user_assigned_identity>'
+    ```
+
+  + Systemseitig zugewiesene verwaltete Identität
+
+    ```azurecli
+    az ml computetarget create amlcompute --name cpu-cluster --vm-size Standard_NC6 --max-nodes 5 --assign-identity '[system]'
+    ```
++ Hinzufügen einer verwalteten Identität zu einem vorhandenen Cluster:
+
+    + Benutzerseitig zugewiesene verwaltete Identität
+        ```azurecli
+        az ml computetarget amlcompute identity assign --name cpu-cluster '/subscriptions/<subcription_id>/resourcegroups/<resource_group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<user_assigned_identity>'
+        ```
+    + Systemseitig zugewiesene verwaltete Identität
+
+        ```azurecli
+        az ml computetarget amlcompute identity assign --name cpu-cluster '[system]'
+        ```
+
+Weitere Informationen finden Sie unter [az ml computetarget create amlcompute](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute).
+
+[!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-managed-identity-note.md)]
+
+<a id="computeinstance"></a>
+
+### <a name="compute-instance"></a>Compute-Instanz
+Verwalten von Computeinstanzen.  In allen untenstehenden Beispielen lautet der Name der Computeinstanz **cpu**.
 
     + Erstellen Sie eine neue computeinstance-Klasse.
 
@@ -225,6 +259,36 @@ Die folgenden Befehle veranschaulichen, wie Sie mit der CLI Ressourcen verwalten
     ```
 
     Weitere Informationen finden Sie unter [az ml experiment list](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/experiment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-experiment-list).
+
+### <a name="hyperdrive-run"></a>HyperDrive-Ausführung
+
+Sie können HyperDrive mit der Azure CLI verwenden, um Parameteroptimierungsausführungen auszuführen. Erstellen Sie zunächst eine HyperDrive-Konfigurationsdatei im folgenden Format. Weitere Informationen zu den Hyperparameter-Optimierungsparametern finden Sie im Artikel [Optimieren von Hyperparametern für Ihr Modell](how-to-tune-hyperparameters.md).
+
+```yml
+# hdconfig.yml
+sampling: 
+    type: random # Supported options: Random, Grid, Bayesian
+    parameter_space: # specify a name|expression|values tuple for each parameter.
+    - name: --penalty # The name of a script parameter to generate values for.
+      expression: choice # supported options: choice, randint, uniform, quniform, loguniform, qloguniform, normal, qnormal, lognormal, qlognormal
+      values: [0.5, 1, 1.5] # The list of values, the number of values is dependent on the expression specified.
+policy: 
+    type: BanditPolicy # Supported options: BanditPolicy, MedianStoppingPolicy, TruncationSelectionPolicy, NoTerminationPolicy
+    evaluation_interval: 1 # Policy properties are policy specific. See the above link for policy specific parameter details.
+    slack_factor: 0.2
+primary_metric_name: Accuracy # The metric used when evaluating the policy
+primary_metric_goal: Maximize # Maximize|Minimize
+max_total_runs: 8 # The maximum number of runs to generate
+max_concurrent_runs: 2 # The number of runs that can run concurrently.
+max_duration_minutes: 100 # The maximum length of time to run the experiment before cancelling.
+```
+
+Fügen Sie diese Datei den Laufzeitkonfigurationsdateien hinzu. Übermitteln Sie dann eine HyperDrive-Ausführung:
+```azurecli
+az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configuration-name <hdconfig> my_train.py
+```
+
+Beachten Sie den Abschnitt *arguments* in der Laufzeitkonfiguration and *parameter space* in der HyperDrive-Konfiguration. Diese Abschnitte enthalten die Befehlszeilenargumente, die an das Trainingsskript übergeben werden sollen. Der Wert in der Laufzeitkonfiguration bleibt für jede Iteration gleich, während der Bereich in der HyperDrive-Konfiguration iteriert wird. Geben Sie nicht das gleiche Argument in beiden Dateien an.
 
 ## <a name="dataset-management"></a>Datasetverwaltung
 

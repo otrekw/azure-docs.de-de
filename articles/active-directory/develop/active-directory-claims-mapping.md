@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 1cd2b7550d47ecc92f8ca7f5531fab923e13930c
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: e1c931b37cbe155d62aaffe47e36d84afa547638
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853359"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068642"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Gewusst wie: Anpassen von in Token ausgegebenen Ansprüchen für eine bestimmte App in einem Mandanten (Vorschau)
 
@@ -302,7 +302,7 @@ Das ID-Element identifiziert, welche Eigenschaft in der Quelle den Wert für den
 | Benutzer | streetaddress | Anschrift |
 | Benutzer | postalcode | Postleitzahl |
 | Benutzer | preferredlanguange | Bevorzugte Sprache |
-| Benutzer | onpremisesuserprincipalname | Lokaler UPN |
+| Benutzer | onpremisesuserprincipalname | Lokaler UPN |*
 | Benutzer | mailNickname | E-Mail-Kontoname |
 | Benutzer | extensionattribute1 | Erweiterungsattribut 1 |
 | Benutzer | extensionattribute2 | Erweiterungsattribut 2 |
@@ -340,6 +340,8 @@ Das ID-Element identifiziert, welche Eigenschaft in der Quelle den Wert für den
 
 - „JwtClaimType“ muss den Namen des Anspruchs enthalten, der in JWTs ausgegeben werden soll.
 - SamlClaimType muss den URI des Anspruchs enthalten, der in den SAML-Token ausgegeben werden soll.
+
+* **onPremisesUserPrincipalName-Attribut:** Bei Verwendung einer alternativen ID wird das lokale Attribut userPrincipalName mit dem Azure AD-Attribut onPremisesUserPrincipalName synchronisiert. Dieses Attribut ist nur verfügbar, wenn eine alternative ID konfiguriert ist, aber auch über MS Graph Beta verfügbar: https://graph.microsoft.com/beta/me/.
 
 > [!NOTE]
 > Namen und URIs der Ansprüche im eingeschränkten Anspruchssatz können nicht für die Anspruchstypelemente verwendet werden. Weitere Informationen finden Sie im Abschnitt „Ausnahmen und Einschränkungen“ weiter unten in diesem Artikel.

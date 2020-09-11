@@ -1,44 +1,43 @@
 ---
 title: Steuerliche Aspekte für den kommerziellen Microsoft-Marketplace
 Description: In den folgenden Tabellen finden Sie Informationen zu Ihren Vertriebsländern bzw. -regionen, um die steuerlichen Aspekte der Preisauswahl, die Auswirkungen auf die Auszahlung und die Steuerverantwortung besser verstehen zu können.
-ms.topic: conceptual
+ms.topic: article
 ms.service: marketplace
-ms.date: 05/04/2020
+ms.date: 09/02/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: b0ada7047241e74095fd5b81a261c15295a08737
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 82e70c128b64f0574050c17d5e40509995488666
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319931"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378337"
 ---
 # <a name="tax-details-for-commercial-marketplace-publishers"></a>Steuerliche Aspekte für kommerzielle Marketplace-Herausgeber
 
 Für ein besseres Verständnis der steuerlichen Aspekte bei der Preisauswahl und der Steuerverantwortung gemäß der [Microsoft Azure Marketplace-Herausgebervereinbarung](https://go.microsoft.com/fwlink/p/?LinkID=699560) (Microsoft Azure Marketplace Publisher Agreement) bzw. der modernen Herausgebervereinbarung sind in den folgenden Tabellen die jeweiligen Vertriebsländer bzw. -regionen aufgeführt.
 
-> [!NOTE]
-> Die Regulierung zur Markterweiterung (Commerce Expansion Adjustment) hat in einigen wenigen Ländern/Regionen möglicherweise Auswirkungen auf die Auszahlung. Weitere Einzelheiten zur Regulierung zur Markterweiterung (Commerce Expansion Adjustment) und die betroffenen Märkte finden Sie in der [Microsoft Azure Marketplace-Herausgebervereinbarung](https://go.microsoft.com/fwlink/p/?LinkID=699560) und in der Liste der betroffenen Länder/Regionen.
+Die Regulierung zur Markterweiterung (Commerce Expansion Adjustment) hat in einigen wenigen Ländern/Regionen möglicherweise Auswirkungen auf die Auszahlung. Weitere Einzelheiten zur Regulierung zur Markterweiterung (Commerce Expansion Adjustment) und die betroffenen Märkte finden Sie in der [Microsoft Azure Marketplace-Herausgebervereinbarung](https://go.microsoft.com/fwlink/p/?LinkID=699560) und in der Liste der betroffenen Länder/Regionen.
 
 > [!IMPORTANT]
 > Die Steuerverantwortung in Händlerländern/-regionen und die Gegebenheiten (wie [weiter unten](#reseller-countriesregions) beschrieben) werden ungeachtet der Informationen in der folgenden Tabelle in Anhang A der [Microsoft Azure Marketplace-Herausgebervereinbarung](https://go.microsoft.com/fwlink/p/?LinkID=699560) behandelt.
 > Beachten Sie, dass die Spalte **Auszahlungsauswirkungen** nur für Herausgeber gilt. Die in dieser Spalte aufgeführten Steuersätze können jederzeit geändert werden, und Microsoft kann nicht garantieren, dass die Sätze in den folgenden Tabellen stets genau sind.
 
-| Land/Region                   | Steuerliche Aspekte der Preisauswahl                                                                                                             | Auszahlungsauswirkung                    | Steuerverantwortung |
-|----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------|--------------------|
+| Land/Region  | Steuerliche Aspekte der Preisauswahl  | Auszahlungsauswirkung  | Steuerverantwortung |
+|---|---|---|---|
 | Afghanistan                      | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern.                                                                   | Preis abzüglich Store-Gebühr                 | Herausgeber          |
 | Albanien                          | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern.                                                                   | Preis abzüglich Store-Gebühr                 | Herausgeber          |
 | Algerien                          | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern.                                                                   | Preis abzüglich Store-Gebühr                 | Herausgeber          |
 | Amerikanisch-Samoa                   | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern.                                                                   | Preis abzüglich Store-Gebühr                 | Herausgeber          |
 | Andorra                          | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern.                                                                   | Preis abzüglich Store-Gebühr                 | Herausgeber          |
-| Anguilla                         | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern.                                                                   | Preis abzüglich Store-Gebühr                 | Herausgeber          |
 | Angola                           | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern.                                                                   | Preis abzüglich Store-Gebühr                 | Herausgeber          |
+| Anguilla                         | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern.                                                                   | Preis abzüglich Store-Gebühr                 | Herausgeber          |
 | Antarktis                       | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern.                                                                   | Preis abzüglich Store-Gebühr                 | Herausgeber          |
 | Antigua und Barbuda              | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern.                                                                   | Preis abzüglich Store-Gebühr                 | Herausgeber          |
 | Argentinien                        | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern.  | Preis abzüglich Store-Gebühr  | Herausgeber          |
 | Armenien                          | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern.                                                                   | Preis abzüglich 20 % Steuern, abzüglich Store-Gebühr       | Microsoft          |
 | Aruba                      | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern.                                                                   | Preis abzüglich Store-Gebühr                 | Herausgeber          |
-| Australien                        | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern.                                                             | Preis abzüglich 10 % Steuern, abzüglich Store-Gebühr             | Microsoft          |
+| Australien                        | Der ausgewählte Preis schließt sämtliche anwendbaren Steuern aus.*        | Preis abzüglich Store-Gebühr*        | Microsoft          |
 | Österreich                          | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern. Steuern werden vor der Auszahlung vom Preis abgezogen.       | Preis abzüglich 20 % Steuern, abzüglich Store-Gebühr     | Microsoft          |
 | Aserbaidschan                       | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern.                                                                   | Preis abzüglich Store-Gebühr                 | Herausgeber          |
 | Bahamas                      | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern.                                                                   | Preis abzüglich Store-Gebühr                 | Herausgeber          |
@@ -83,7 +82,7 @@ Für ein besseres Verständnis der steuerlichen Aspekte bei der Preisauswahl und
 | Kroatien                          | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern. Steuern werden vor der Auszahlung vom Preis abgezogen.       | Preis abzüglich 25 % Steuern, abzüglich Store-Gebühr   | Microsoft          |
 | Curaçao                          | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern.                                                                   | Preis abzüglich Store-Gebühr                 | Herausgeber          |
 | Zypern                           | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern. Steuern werden vor der Auszahlung vom Preis abgezogen.       | Preis abzüglich 19 % Steuern, abzüglich Store-Gebühr  | Microsoft          |
-| Tschechische Republik                   | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern. Steuern werden vor der Auszahlung vom Preis abgezogen.       | Preis abzüglich 21 % Steuern, abzüglich Store-Gebühr   | Microsoft        |
+| Tschechien                          | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern. Steuern werden vor der Auszahlung vom Preis abgezogen.       | Preis abzüglich 21 % Steuern, abzüglich Store-Gebühr   | Microsoft        |
 | Dänemark                          | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern. Steuern werden vor der Auszahlung vom Preis abgezogen.       | Preis abzüglich 25 % Steuern, abzüglich Store-Gebühr   | Microsoft          |
 | Dschibuti                         | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern.                                                                   | Preis abzüglich Store-Gebühr                 | Herausgeber          |
 | Dominica                         | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern.                                                                   | Preis abzüglich Store-Gebühr                 | Herausgeber          |
@@ -148,7 +147,6 @@ Für ein besseres Verständnis der steuerlichen Aspekte bei der Preisauswahl und
 | Litauen                        | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern. Steuern werden vor der Auszahlung vom Preis abgezogen.              | Preis abzüglich 21 % Steuern, abzüglich Store-Gebühr | Microsoft          |
 | Luxemburg                       | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern. Steuern werden vor der Auszahlung vom Preis abgezogen.              | Preis abzüglich 17 % Steuern, abzüglich Store-Gebühr | Microsoft          |
 | Macau (SAR)                        | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern.                                                                   | Preis abzüglich Store-Gebühr                 | Herausgeber          |
-| Nordmazedonien                | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern.                                                                   | Preis abzüglich Store-Gebühr                 | Herausgeber          |
 | Madagaskar                       | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern.                                                                   | Preis abzüglich Store-Gebühr                 | Herausgeber          |
 | Malawi                           | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern.                                                                   | Preis abzüglich Store-Gebühr                 | Herausgeber          |
 | Malaysia                         | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern.                                                                   | Preis abzüglich Store-Gebühr                 | Herausgeber          |
@@ -180,6 +178,7 @@ Für ein besseres Verständnis der steuerlichen Aspekte bei der Preisauswahl und
 | Nigeria                          | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern.                                                                   | Preis abzüglich Store-Gebühr                 | Herausgeber          |
 | Niue                             | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern.                                                                   | Preis abzüglich Store-Gebühr                 | Herausgeber          |
 | Norfolkinsel                   | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern.                                                                   | Preis abzüglich Store-Gebühr                 | Herausgeber          |
+| Nordmazedonien                | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern.                                                                   | Preis abzüglich Store-Gebühr                 | Herausgeber          |
 | Nördliche Marianen         | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern.                                                                   | Preis abzüglich Store-Gebühr                 | Herausgeber          |
 | Norwegen                           | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern. Steuern werden vor der Auszahlung vom Preis abgezogen.              | Preis abzüglich 25 % Steuern, abzüglich Store-Gebühr | Microsoft          |
 | Oman                             | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern.                                                                   | Preis abzüglich Store-Gebühr                 | Herausgeber          |
@@ -258,10 +257,12 @@ Für ein besseres Verständnis der steuerlichen Aspekte bei der Preisauswahl und
 | Sambia                           | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern.                                                                   | Preis abzüglich Store-Gebühr                 | Herausgeber          |
 | Simbabwe                         | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern.                                                                   | Preis abzüglich Store-Gebühr                 | Herausgeber          |
 
+\* Für Bestellungen über alle Kundenbestellszenarien, mit Ausnahme des Szenarios „Enterprise Agreement“.
+
 Die folgenden Informationen gelten nur für Azure Marketplace-Herausgeber, ungeachtet etwaiger oben gemachter anderslautender Angaben:
 
-| Land/Region                   | Steuerliche Aspekte der Preisauswahl                                                                                                             | Steuerverwaltung                    |
-|----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------|
+| Land/Region | Steuerliche Aspekte der Preisauswahl | Steuerverwaltung |
+| --- |--- | --- |
 | Australien (für Bestellungen über alle Kundenbestellszenarien, mit Ausnahme des Szenarios „Enterprise Agreement“) | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern. | Microsoft |
 | Australien (nur für Bestellungen über das Kundenbestellszenario „Enterprise Agreement“) | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern. | Herausgeber |
 | Brasilien | Der ausgewählte Preis ist der endgültige Verkaufspreis und umfasst sämtliche anwendbaren Steuern. | Herausgeber (**siehe „Händlerländer/-regionen“** ) |
@@ -287,6 +288,6 @@ Folgendes gilt nur für Azure Marketplace-Herausgeber:
 | Brasilien (für Bestellungen über alle Kundenbestellszenarien, mit Ausnahme von CSP) |
 | Mexiko (nur für Bestellungen über das Kundenbestellszenario „Enterprise Agreement“) |
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="next-step"></a>Nächster Schritt
 
 [Einrichten von Auszahlungskonten und Steuerformularen](set-up-your-payout-account-tax-forms.md)

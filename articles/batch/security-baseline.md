@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 76312a55262d316c679bde2a69e8b98844addcb0
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 1eb24871817f365efe58b8e687563727df74493c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963868"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400975"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Azure-Sicherheitsbaseline für Batch
 
@@ -46,7 +46,7 @@ Aktivieren der NSG-Flussprotokolle:
 
 https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
-So aktivieren Sie Traffic Analytics:
+Aktivieren und Verwenden von Traffic Analytics:
 
 https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
@@ -596,13 +596,13 @@ https://docs.microsoft.com/azure/storage/common/storage-security-guide
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Verwenden von Azure RBAC zum Steuern des Zugriffs auf Ressourcen
 
-**Leitfaden**: Verwenden Sie rollenbasierte Zugriffssteuerung (RBAC) von Azure Active Directory (AAD), um den Zugriff auf die Verwaltungsebene von Azure-Ressourcen (einschließlich Batch-Konto, Batch-Pools und Speicherkonten) zu steuern.
+**Leitfaden**: Verwenden Sie rollenbasierte Zugriffssteuerung von Azure (Azure RBAC), um den Zugriff auf die Verwaltungsebene von Azure-Ressourcen (einschließlich Batch-Konto, Batch-Pools und Speicherkonten) zu steuern.
 
 Grundlegendes zu Azure RBAC:
 
 https://docs.microsoft.com/azure/role-based-access-control/overview
 
-Konfigurieren von RBAC in Azure:
+Konfigurieren von Azure RBAC:
 
 https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
 
@@ -942,13 +942,13 @@ https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6: Sicheres Speichern von benutzerdefinierten Betriebssystemimages
 
-**Leitfaden**: Wenn Sie benutzerdefinierte Images für Ihre Azure Batch-Pools verwenden, verwenden Sie rollenbasierte Zugriffssteuerung (RBAC), um sicherzustellen, dass nur autorisierte Benutzer auf die Images zugreifen können.
+**Leitfaden**: Wenn Sie benutzerdefinierte Images für Ihre Azure Batch-Pools verwenden, verwenden Sie rollenbasierte Zugriffssteuerung von Azure (Azure RBAC), um sicherzustellen, dass nur autorisierte Benutzer auf die Images zugreifen können.
 
-Grundlegendes zu RBAC in Azure:
+Grundlegendes zu Azure RBAC:
 
 https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles
 
-Konfigurieren von RBAC in Azure:
+Konfigurieren von Azure RBAC:
 
 https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal
 
@@ -1014,15 +1014,19 @@ Integration mit verwalteten Azure-Identitäten:
 
 https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-Erstellen einer Azure Key Vault-Instanz:
+Erstellen einer Key Vault-Instanz:
 
-https://docs.microsoft.com/azure/key-vault/quick-create-portal
+https://docs.microsoft.com/azure/key-vault/general/quick-create-portal
 
-Bereitstellen der Key Vault-Authentifizierung mit einer verwalteten Identität:
+Authentifizieren bei Key Vault:
 
-https://docs.microsoft.com/azure/key-vault/managed-identity
+https://docs.microsoft.com/azure/key-vault/general/authentication
 
-**Azure Security Center-Überwachung:** Ja
+Zuweisen einer Key Vault-Zugriffsrichtlinie:
+
+https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
+
+**Azure Security Center-Überwachung**: Ja
 
 **Verantwortlichkeit**: Kunde
 

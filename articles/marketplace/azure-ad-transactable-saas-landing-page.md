@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 07/10/2020
-ms.openlocfilehash: 737e2fc682e630775b763dd2f22f904d895a120f
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.date: 09/02/2020
+ms.openlocfilehash: 9db013d13098fc6aa4552459a2189e0ad8fc3ea6
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921265"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378796"
 ---
 # <a name="build-the-landing-page-for-your-transactable-saas-offer-in-the-commercial-marketplace"></a>Erstellen der Landing Page für Ihr transaktionsfähiges SaaS-Angebot im kommerziellen Marketplace
 
@@ -38,15 +38,15 @@ Die Landing Page beinhaltet üblicherweise Folgendes:
 In den folgenden Abschnitten werden Sie durch die Schritte zum Erstellen einer Landing Page geleitet:
 
 1. [Erstellen einer Azure AD-App-Registrierung](#create-an-azure-ad-app-registration) für die Landing Page.
-2. [Verwenden eines Codebeispiels als Ausgangspunkt](#use-a-code-sample-as-a-starting-point) für Ihre App.
-3. [Auflösen des Identifizierungstokens des Marketplace-Kaufs](#resolve-the-marketplace-purchase-identification-token), der vom kommerziellen Marketplace zur URL hinzugefügt wurde.
-4. [Lesen von Informationen aus Ansprüchen, die im ID-Token codiert sind](#read-information-from-claims-encoded-in-the-id-token), das nach der Anmeldung aus Azure AD abgerufen und mit der Anforderung gesendet wurde.
-5. [Verwenden der Microsoft Graph-API](#use-the-microsoft-graph-api) zum Sammeln zusätzlicher Informationen (nach Bedarf).
-6. [Verwenden von zwei Azure AD-Apps, um die Sicherheit in einer Produktionsumgebung zu verbessern](#use-two-azure-ad-apps-to-improve-security-in-production).
+1. [Verwenden eines Codebeispiels als Ausgangspunkt](#use-a-code-sample-as-a-starting-point) für Ihre App.
+1. [Verwenden von zwei Azure AD-Apps, um die Sicherheit in einer Produktionsumgebung zu verbessern](#use-two-azure-ad-apps-to-improve-security-in-production).
+1. [Auflösen des Identifizierungstokens des Marketplace-Kaufs](#resolve-the-marketplace-purchase-identification-token), der vom kommerziellen Marketplace zur URL hinzugefügt wurde.
+1. [Lesen von Informationen aus Ansprüchen, die im ID-Token codiert sind](#read-information-from-claims-encoded-in-the-id-token), das nach der Anmeldung aus Azure AD abgerufen und mit der Anforderung gesendet wurde.
+1. [Verwenden der Microsoft Graph-API](#use-the-microsoft-graph-api) zum Sammeln zusätzlicher Informationen (nach Bedarf)
 
 ## <a name="create-an-azure-ad-app-registration"></a>Erstellen einer Azure AD-App-Registrierung
 
-Der kommerzielle Marketplace ist vollständig in Azure AD integriert. Käufer authentifizieren sich mit einem [Azure AD-Konto oder einem Microsoft-Konto (MSA)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology), um den Marketplace zu nutzen. Nach dem Kauf wechselt der Käufer vom kommerziellen Marketplace zu Ihrer Landing Page-URL, um das Abonnement Ihrer SaaS-Anwendung zu aktivieren und zu verwalten. Sie müssen es dem Käufer ermöglichen, sich mit dem einmaligen Anmelden von Azure AD bei Ihrer Anwendung anzumelden. (Die Landing Page-URL ist auf der Seite [Technische Konfiguration](partner-center-portal/offer-creation-checklist.md#technical-configuration-page) des Angebots angegeben.)
+Der kommerzielle Marketplace ist vollständig in Azure AD integriert. Käufer authentifizieren sich mit einem [Azure AD-Konto oder einem Microsoft-Konto (MSA)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology), um den Marketplace zu nutzen. Nach dem Kauf wechselt der Käufer vom kommerziellen Marketplace zu Ihrer Landing Page-URL, um das Abonnement Ihrer SaaS-Anwendung zu aktivieren und zu verwalten. Sie müssen es dem Käufer ermöglichen, sich mit dem einmaligen Anmelden von Azure AD bei Ihrer Anwendung anzumelden. (Die Landing Page-URL ist auf der Seite [Technische Konfiguration](plan-saas-offer.md#technical-information) des Angebots angegeben.)
 
 Zur Verwendung der Identität muss zunächst sichergestellt werden, dass Ihre Landing Page als Azure AD-Anwendung registriert ist. Durch die Registrierung der Anwendung können Sie Azure AD zum Authentifizieren von Benutzern und Anfordern des Zugriffs auf Benutzerressourcen verwenden. Sie kann als Definition der Anwendung betrachtet werden, durch die der Dienst weiß, wie basierend auf den Einstellungen der App Token für die App ausgestellt werden sollen.
 
@@ -82,7 +82,7 @@ Dadurch kann die Lösung auch in Szenarien verwendet werden, die auf dem Prinzip
 Wenn der Käufer auf Ihre Landing Page weitergeleitet wird, wird dem URL-Parameter ein Token hinzugefügt. Dieses Token unterscheidet sich sowohl vom Token, das von Azure AD ausgestellt wird, als auch vom Zugriffstoken, das für die Dienst-zu-Dienst-Authentifizierung verwendet wird. Vielmehr wird dieses Token als Eingabe für den Auflösungsaufruf der [SaaS-Fulfillment-APIs](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) verwendet, um die Einzelheiten des Abonnements abzurufen. Wie bei allen Aufrufen der SaaS-Fulfillment-APIs wird Ihre Dienst-zu-Dienst-Anforderung mit einem Zugriffstoken authentifiziert, das auf der Azure AD-Anwendungs-ID (Benutzer) der App für die Dienst-zu-Dienst-Authentifizierung basiert.
 
 > [!NOTE]
-> In den meisten Fällen sollte dieser Aufruf von einer zweiten Anwendung mit einem einzelnen Mandanten erfolgen. Weitere Informationen finden Sie unter [Verwenden von zwei Azure AD-Apps, um die Sicherheit in einer Produktionsumgebung zu verbessern](#use-two-azure-ad-apps-to-improve-security-in-production) in diesem Artikel.
+> In den meisten Fällen sollte dieser Aufruf von einer zweiten Anwendung mit einem einzelnen Mandanten erfolgen. Weitere Informationen finden Sie unter [Verwenden von zwei Azure AD-Apps, um die Sicherheit in einer Produktionsumgebung zu verbessern](#use-two-azure-ad-apps-to-improve-security-in-production) weiter oben in diesem Artikel.
 
 ### <a name="request-an-access-token"></a>Anfordern eines Zugriffstokens
 
@@ -131,4 +131,4 @@ Die meisten Apps, die in Azure AD registriert sind, erteilen delegierte Berecht
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Erstellen eines SaaS-Angebots im kommerziellen Marketplace](./partner-center-portal/create-new-saas-offer.md)
+- [Erstellen eines SaaS-Angebots im kommerziellen Marketplace](create-new-saas-offer.md)

@@ -1,20 +1,20 @@
 ---
 title: Verschlüsselung für ruhende Daten des Language Understanding-Diensts
 titleSuffix: Azure Cognitive Services
-description: Verschlüsselung für ruhende Daten des Language Understanding-Diensts.
+description: Microsoft bietet von Microsoft verwaltete Verschlüsselungsschlüssel an und ermöglicht Ihnen auch die Verwaltung Ihrer Cognitive Services-Abonnements mit Ihren eigenen Schlüsseln, den so genannten kundenseitig verwalteten Schlüsseln (Customer Managed Keys, CMK). In diesem Artikel erfahren Sie mehr über die Datenverschlüsselung im Ruhezustand für Language Understanding (LUIS), und wie Sie CMK aktivieren und verwalten können.
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: 4fc816c3894120a5d1b356d91ebebbc56f21b530
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: ce6561652801d52e5600ddc63e573070281da3f2
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85052694"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078128"
 ---
 # <a name="language-understanding-service-encryption-of-data-at-rest"></a>Verschlüsselung für ruhende Daten des Language Understanding-Diensts
 
@@ -26,7 +26,7 @@ Daten werden mittels [FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2)-kon
 
 ## <a name="about-encryption-key-management"></a>Informationen zur Verwaltung von Verschlüsselungsschlüsseln
 
-Standardmäßig verwendet Ihr Abonnement von Microsoft verwaltete Verschlüsselungsschlüssel. Es gibt auch eine Option zum Verwalten Ihres Abonnements mit ihren eigenen Schlüsseln. Kundenseitig verwaltete Schlüssel (CMK) bieten größere Flexibilität beim Erstellen, Rotieren, Deaktivieren und Widerrufen von Zugriffssteuerungen. Außerdem können Sie die zum Schutz Ihrer Daten verwendeten Verschlüsselungsschlüssel überwachen.
+Standardmäßig verwendet Ihr Abonnement von Microsoft verwaltete Verschlüsselungsschlüssel. Optional können Sie Ihr Abonnement auch mit Ihren eigenen Schlüsseln (kundenseitig verwaltete Schlüssel, CMK) verwalten. Kundenseitig verwaltete Schlüssel (CMK) bieten größere Flexibilität beim Erstellen, Rotieren, Deaktivieren und Widerrufen von Zugriffssteuerungen. Außerdem können Sie die zum Schutz Ihrer Daten verwendeten Verschlüsselungsschlüssel überwachen.
 
 ## <a name="customer-managed-keys-with-azure-key-vault"></a>Von Kunden verwaltete Schlüssel mit Azure Key Vault
 
@@ -39,10 +39,6 @@ Sie müssen Azure Key Vault zum Speichern Ihrer vom Kunden verwalteten Schlüsse
 Wenn Sie die Möglichkeit haben möchten, von Kunden verwaltete Schlüssel zu verwenden, füllen Sie das  [Formular zum Anfordern von kundenseitig verwalteten Schlüsseln für den LUIS-Dienst](https://aka.ms/cogsvc-cmk) aus, und reichen Sie es ein. Nach ca. 3–5 Werktagen erhalten Sie eine Rückmeldung zum Status Ihrer Anforderung. Je nach Bedarf können Sie in einer Warteschlange platziert und genehmigt werden, sobald Platz verfügbar ist. Nachdem Ihre Verwendung von CMK mit LUIS genehmigt haben, müssen Sie im Azure-Portal eine neue Language Understanding-Ressource erstellen und E0 als Tarif auswählen. Die neue SKU funktioniert genauso wie die bereits verfügbare F0-SKU, mit Ausnahme von CMK. Benutzer können kein Upgrade von F0 auf die neue E0-SKU durchführen.
 
 ![Bild eines LUIS-Abonnements](../media/cognitive-services-encryption/luis-subscription.png)
-
-### <a name="regional-availability"></a>Regionale Verfügbarkeit
-
-Kundenseitig verwaltete Schlüssel sind in allen [Erstellungsregionen](luis-reference-regions.md) verfügbar. 
 
 ### <a name="limitations"></a>Einschränkungen
 

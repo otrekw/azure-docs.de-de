@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/22/2019
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: cc950c4915a57dd949941fbb9802c51a47c9a00d
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 1a645a333db9b24005639f4adbb2913a2b887b66
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607152"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055667"
 ---
 # <a name="marketplace-insights-dashboard-in-partner-center"></a>Dashboard mit Marketplace-Erkenntnissen in Partner Center
 
@@ -67,6 +67,9 @@ Sie können Metriken des kommerziellen Marketplace auf verschiedene Arten anzeig
 ## <a name="marketplace-insights-summary"></a>Marketplace-Erkenntnisse – Zusammenfassung
 
 Im Abschnitt „Marketplace-Erkenntnisse – Zusammenfassung“ wird die Anzahl der **Seitenbesuche**, **Handlungsaufforderungen** und **unterschiedlichen Besucher** für den ausgewählten Datumsbereich angezeigt.
+
+>[!NOTE]
+>Das Marketplace Insights-Dashboard bietet Clickstreamdaten, die nicht mit Leads korreliert werden dürfen, die auf dem Leadzielendpunkt generiert werden.
 
 ### <a name="page-visits"></a>Seitenbesuche
 
@@ -142,5 +145,5 @@ Diese Tabelle enthält eine Listenansicht der Seitenbesuche und Handlungsaufford
 - Informationen zu Metriken zur Nutzung und zur getakteten Abrechnung für VM-Angebote finden Sie unter [Dashboard „Nutzung“ in Analysen für den kommerziellen Marketplace](./usage-dashboard.md).
 - Ausführliche Informationen zu Ihren Kunden, einschließlich Wachstumstrends, finden Sie unter [Dashboard „Kunde“ in Analysen für den kommerziellen Marketplace](./customer-dashboard.md).
 - Eine Liste Ihrer Downloadanforderungen der letzten 30 Tagen finden Sie unter [Dashboard „Downloads“ in Analysen für den kommerziellen Marketplace](./downloads-dashboard.md).
-- Eine konsolidierte Ansicht des Kundenfeedbacks für Angebote im Azure Marketplace und in AppSource finden Sie unter [Dashboard „Bewertungen und Prüfungen“ in Analysen für den kommerziellen Marketplace](./ratings-reviews.md).
+- Eine konsolidierte Ansicht des Kundenfeedbacks für Angebote in Azure Marketplace und AppSource finden Sie unter [Dashboard „Bewertungen und Prüfungen“ in Analysen für den kommerziellen Marketplace](./ratings-reviews.md).
 - Häufig gestellte Fragen zu Analysen für den kommerziellen Marketplace und ein umfassendes Wörterbuch mit Datenbegriffen finden Sie unter [Häufig gestellte Fragen und Terminologie zu Analysen für den kommerziellen Marketplace](./faq-terminology.md).

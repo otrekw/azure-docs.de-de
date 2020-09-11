@@ -3,12 +3,12 @@ title: Ersetzen Ihrer Bandinfrastruktur
 description: Hier erfahren Sie, wie Azure Backup eine Semantik bereitstellt, die derjenigen von Bandsicherungen ähnelt, damit Sie Ihre Daten in Azure sichern und wiederherstellen können.
 ms.topic: conceptual
 ms.date: 04/30/2017
-ms.openlocfilehash: 4174868d391eda70ce4921deee63b8bacf672b4c
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 695cc2644521384527ecd871f3613a078e987aa7
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757233"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378439"
 ---
 # <a name="move-your-long-term-storage-from-tape-to-the-azure-cloud"></a>Verschieben langfristiger Speicher von Bändern in die Azure-Cloud
 
@@ -62,7 +62,7 @@ Die Gesamtzahl der Wiederherstellungspunkte beträgt 56.
 
 ## <a name="advanced-configuration"></a>Erweiterte Konfiguration
 
-Durch Klicken auf **Ändern** im Bildschirm oben können Kunden noch flexiblere Aufbewahrungszeitpläne angeben.
+Durch Auswahl von **Ändern** im Bildschirm oben können Kunden noch flexiblere Aufbewahrungszeitpläne angeben.
 
 ![Fenstern zum Ändern der Richtlinie](./media/backup-azure-backup-cloud-as-tape/modify.png)
 

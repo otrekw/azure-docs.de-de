@@ -2,7 +2,7 @@
 title: Microsoft Identity Platform und SAML-Bearerassertionsflow | Azure
 description: Erfahren Sie, wie Sie Daten mithilfe des SAML-Bearerassertionsflows aus Microsoft Graph abrufen, ohne den Benutzer zur Eingabe von Anmeldeinformationen aufzufordern.
 services: active-directory
-author: umeshbarapatre
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -11,13 +11,12 @@ ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: kenwith
 ms.reviewer: paulgarn
-ms.custom: aaddev
-ms.openlocfilehash: e0db5bec00ce864536b3559eda160acdada5e157
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 6e7e4dd6383b1f264ff2da7893d9f86a3708217d
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88114692"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89227915"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Microsoft Identity Platform und OAuth 2.0-SAML-Bearerassertionsflow
 Mit dem OAuth 2.0-SAML-Bearerassertionsflow können Sie ein OAuth-Zugriffstoken mithilfe einer SAML-Assertion anfordern, wenn ein Client eine vorhandene Vertrauensstellung verwenden muss. Die auf die SAML-Assertion angewandte Signatur stellt die Authentifizierung der autorisierten App bereit. Eine SAML-Assertion ist ein XML-Sicherheitstoken, das von einem Identitätsanbieter ausgegeben und von einem Dienstanbieter genutzt wird. Der Dienstanbieter identifiziert basierend auf den Inhalten des Tokens den Antragsteller der Assertion für sicherheitsrelevante Zwecke.
@@ -28,7 +27,7 @@ Der SAML-Bearerassertionsflow ist nützlich beim Abrufen von Daten aus Microsoft
 
 Für Anwendungen, in denen eine interaktive browserbasierte Anmeldung durchgeführt wird, um eine SAML-Assertion abzurufen, und in denen dann der Zugriff auf eine OAuth-geschützte API (z. B. Microsoft Graph) hinzugefügt werden soll, können Sie eine OAuth-Anforderung erstellen, um ein Zugriffstoken für die API abzurufen. Wenn der Browser an Azure AD umgeleitet wird, um den Benutzer zu authentifizieren, ruft der Browser die Sitzung von der SAML-Anmeldung ab, und der Benutzer muss keine Anmeldeinformationen eingeben.
 
-Der OAuth-SAML-Bearerassertionsflow wird auch für Benutzer unterstützt, die sich mit Identitätsanbietern authentifizieren, z. B. mit Active Directory-Verbunddiensten (AD FS) im Verbund mit Azure Active Directory.  Die von AD FS abgerufene SAML-Assertion kann in einem OAuth-Flow zur Authentifizierung des Benutzers verwendet werden.
+Der OAuth-SAML-Bearerassertionsflow wird nur für Benutzer unterstützt, die sich mit Identitätsanbietern authentifizieren, z. B. mit Active Directory-Verbunddiensten (AD FS) im Verbund mit Azure Active Directory.  Die von AD FS abgerufene SAML-Assertion kann in einem OAuth-Flow zur Authentifizierung des Benutzers verwendet werden.
 
 ![OAuth-Flow](./media/v2-saml-bearer-assertion/1.png)
 

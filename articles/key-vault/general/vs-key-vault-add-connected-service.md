@@ -5,16 +5,16 @@ services: key-vault
 author: ghogen
 manager: jillfra
 ms.service: key-vault
-ms.custom: vs-azure
+ms.custom: vs-azure, devx-track-csharp
 ms.topic: how-to
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: 52c9584ca94117db58a5427c46269d7f2612861a
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: d0d0465e2e60945649958911c508e06aee877ac9
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588482"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378864"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Hinzufügen von Key Vault zu Ihrer Webanwendung mithilfe der Option „Verbundene Dienste“ in Visual Studio
 
@@ -201,6 +201,6 @@ Betrifft die Projektdatei (.NET-Verweise) und `packages.config` (NuGet-Verweise)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie dieses Tutorial befolgt haben, sind Ihre Key Vault-Berechtigungen so eingerichtet, dass sie mit Ihrem eigenen Azure-Abonnement ausgeführt werden, aber das ist für ein Produktionsszenario möglicherweise nicht wünschenswert. Sie können eine verwaltete Identität erstellen, um Key Vault-Zugriff für Ihre App zu verwalten. Weitere Informationen finden Sie unter [Bereitstellen von Key Vault-Authentifizierung mit einer verwalteten Identität](/azure/key-vault/managed-identity).
+Wenn Sie dieses Tutorial befolgt haben, sind Ihre Key Vault-Berechtigungen so eingerichtet, dass sie mit Ihrem eigenen Azure-Abonnement ausgeführt werden, aber das ist für ein Produktionsszenario möglicherweise nicht wünschenswert. Sie können eine verwaltete Identität erstellen, um Key Vault-Zugriff für Ihre App zu verwalten. Weitere Informationen finden Sie unter [Authentifizieren bei Key Vault](/azure/key-vault/general/authentication) und [Zuweisen einer Key Vault-Zugriffsrichtlinie](/azure/key-vault/general/assign-access-policy-portal).
 
 Weitere Informationen zur Key Vault-Entwicklung finden Sie im [Key Vault-Entwicklerhandbuch](developers-guide.md).

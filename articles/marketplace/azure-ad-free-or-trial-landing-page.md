@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 08/06/2020
-ms.openlocfilehash: 96e23c22568229ec5f5ba2365747e261b7e471ad
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.date: 08/03/2020
+ms.openlocfilehash: 655caa05eff16bcf3e598dccd3c9845928b2fcff
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921383"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378830"
 ---
 # <a name="build-the-landing-page-for-your-free-or-trial-saas-offer-in-the-commercial-marketplace"></a>Erstellen der Landing Page für Ihr kostenloses SaaS-Angebot oder Ihr SaaS-Testangebot im kommerziellen Marketplace
 
@@ -21,7 +21,7 @@ In diesem Artikel werden Sie durch die erforderlichen Schritte zum Erstellen ein
 
 ## <a name="overview"></a>Übersicht
 
-Eine Landing Page dient als Einstiegspunkt für Ihr SaaS-Angebot (Software-as-a-Service). Nachdem sich der Kunde entschieden hat, Ihre App zu erwerben, wird er im kommerziellen Marketplace zur Landing Page geleitet, um das Abonnement für Ihre SaaS-Anwendung zu aktivieren und zu konfigurieren. Wenn Sie ein SaaS-Angebot (Software-as-a-Service) im Partner Center erstellen, können Sie wählen, ob Sie [über Microsoft verkaufen](partner-center-portal/create-new-saas-offer.md) möchten oder nicht. Wenn Sie Ihr Angebot nur im kommerziellen Microsoft-Marketplace auflisten und nicht über Microsoft verkaufen möchten, haben Sie die Möglichkeit anzugeben, wie potenzielle Kunden mit dem Angebot interagieren können. Wenn Sie die Auflistungsoption **Jetzt abrufen (kostenlos)** oder **Kostenlose Testversion** aktivieren, müssen Sie eine Landing Page-URL angeben, über die der Benutzer auf das kostenlose Abonnement oder die kostenlose Testversion zugreifen kann.
+Eine Landing Page dient als Einstiegspunkt für Ihr SaaS-Angebot (Software-as-a-Service). Nachdem sich der Kunde entschieden hat, Ihre App zu erwerben, wird er im kommerziellen Marketplace zur Landing Page geleitet, um das Abonnement für Ihre SaaS-Anwendung zu aktivieren und zu konfigurieren. Wenn Sie ein SaaS-Angebot (Software-as-a-Service) im Partner Center erstellen, können Sie wählen, ob Sie [über Microsoft verkaufen](plan-saas-offer.md#listing-options) möchten oder nicht. Wenn Sie Ihr Angebot nur im kommerziellen Microsoft-Marketplace auflisten und nicht über Microsoft verkaufen möchten, haben Sie die Möglichkeit anzugeben, wie potenzielle Kunden mit dem Angebot interagieren können. Wenn Sie die Auflistungsoption **Jetzt abrufen (kostenlos)** oder **Kostenlose Testversion** aktivieren, müssen Sie eine Landing Page-URL angeben, über die der Benutzer auf das kostenlose Abonnement oder die kostenlose Testversion zugreifen kann.
 
 Der Zweck der Landing Page besteht darin, den Benutzer auf einfache Weise zu empfangen, damit er die kostenlose Testversion oder das kostenlose Abonnement aktivieren kann. Sie nutzen Azure Active Directory (Azure AD) und Microsoft Graph, um das einmalige Anmelden (Single Sign-On, SSO) für den Benutzer zu aktivieren und um wichtige Informationen zum Benutzer abzurufen. Anhand dieser Informationen (u. a. der Name, die E-Mail-Adresse und das Unternehmen des Benutzers) können Sie die kostenlose Testversion oder das kostenlose Abonnement aktivieren.
 
@@ -38,12 +38,12 @@ In den folgenden Abschnitten dieses Artikels werden Sie durch die Schritte zum E
 
 1. [Erstellen einer Azure AD-App-Registrierung](#create-an-azure-ad-app-registration) für die Landing Page
 2. [Verwenden eines Codebeispiels als Ausgangspunkt](#use-a-code-sample-as-a-starting-point) für Ihre App
-3. [Lesen von Informationen aus Ansprüchen, die im ID-Token codiert sind](#read-information-from-claims-encoded-in-the-id-token), das nach der Anmeldung von Azure AD empfangen und mit der Anforderung gesendet wurde
+3. [Lesen von Informationen aus Ansprüchen, die im ID-Token codiert sind](#read-information-from-claims-encoded-in-the-id-token), das nach der Anmeldung von Azure AD empfangen und mit der Anforderung gesendet wurde.
 4. [Verwenden der Microsoft Graph-API](#use-the-microsoft-graph-api) zum Sammeln zusätzlicher Informationen (nach Bedarf)
 
 ## <a name="create-an-azure-ad-app-registration"></a>Erstellen einer Azure AD-App-Registrierung
 
-Der kommerzielle Marketplace ist vollständig in Azure AD integriert. Benutzer authentifizieren sich mit einem [Azure AD-Konto oder einem Microsoft-Konto (MSA)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology), um den Marketplace zu nutzen. Nach dem Erwerb einer kostenlosen Testversion oder eines kostenlosen Abonnements über Ihr reines Auflistungsangebot wechselt der Benutzer vom kommerziellen Marketplace zu Ihrer Landing Page-URL, um sein Abonnement für Ihre SaaS-Anwendung zu aktivieren und zu verwalten. Sie müssen es dem Benutzer ermöglichen, sich mit dem einmaligen Anmelden in Azure AD bei Ihrer Anwendung anzumelden. (Die Landing Page-URL ist auf der Seite [Technische Konfiguration](partner-center-portal/offer-creation-checklist.md#technical-configuration-page) des Angebots angegeben.)
+Der kommerzielle Marketplace ist vollständig in Azure AD integriert. Benutzer authentifizieren sich mit einem [Azure AD-Konto oder einem Microsoft-Konto (MSA)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology), um den Marketplace zu nutzen. Nach dem Erwerb einer kostenlosen Testversion oder eines kostenlosen Abonnements über Ihr reines Auflistungsangebot wechselt der Benutzer vom kommerziellen Marketplace zu Ihrer Landing Page-URL, um sein Abonnement für Ihre SaaS-Anwendung zu aktivieren und zu verwalten. Sie müssen es dem Benutzer ermöglichen, sich mit dem einmaligen Anmelden in Azure AD bei Ihrer Anwendung anzumelden. (Die Landing Page-URL ist auf der Seite [Technische Konfiguration](plan-saas-offer.md#technical-information) des Angebots angegeben.)
 
 Zur Verwendung der Identität muss zunächst sichergestellt werden, dass Ihre Landing Page als Azure AD-Anwendung registriert ist. Durch die Registrierung der Anwendung können Sie Azure AD zum Authentifizieren von Benutzern und Anfordern des Zugriffs auf Benutzerressourcen verwenden. Sie kann als Definition der Anwendung betrachtet werden, durch die der Dienst angewiesen wird, wie basierend auf den App-Einstellungen Token für die App ausgestellt werden sollen.
 
@@ -103,4 +103,4 @@ Die meisten Apps, die in Azure AD registriert sind, erteilen delegierte Berecht
 > Konten des MSA-Mandanten (mit Mandanten-ID `9188040d-6c67-4c5b-b112-36a304b66dad`) geben keine weiteren Informationen zurück als die bereits mit dem ID-Token erfassten Informationen. Sie können diesen Aufruf der Graph-API für diese Konten überspringen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Erstellen eines SaaS-Angebots im kommerziellen Marketplace](./partner-center-portal/create-new-saas-offer.md)
+- [Erstellen eines SaaS-Angebots im kommerziellen Marketplace](create-new-saas-offer.md)

@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: how-to
-ms.date: 06/15/2020
+ms.date: 08/31/2020
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77ba802d5e337851b3b5141695e5b2f0c6456719
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: fb7ab83bc9939d2f0b4b0ff0860ea97a0b07f12f
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902353"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321241"
 ---
 # <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>Zuweisen von Administrator- und anderen Rollen zu Benutzern mithilfe von Azure Active Directory
 
@@ -28,10 +28,10 @@ Weitere Informationen zu den verfügbaren Azure AD-Rollen finden Sie unter [Zuw
 
 ## <a name="assign-roles"></a>Zuweisen von Rollen
 
-Eine gängige Methode zum Zuweisen von Azure AD-Rollen zu einem Benutzer ist die Nutzung der Seite **Zugewiesene Rollen** für einen Benutzer. Sie können auch die Benutzerberechtigung zur Just-In-Time-Erhöhung für eine Rolle mit Privileged Identity Management (PIM) konfigurieren. Weitere Informationen zur Verwendung von PIM finden Sie unter [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management).
+Eine gängige Methode zum Zuweisen von Azure AD-Rollen zu einem Benutzer ist die Nutzung der Seite **Zugewiesene Rollen** für einen Benutzer. Sie können auch die Benutzerberechtigung zur Just-In-Time-Erhöhung für eine Rolle mit Privileged Identity Management (PIM) konfigurieren. Weitere Informationen zur Verwendung von PIM finden Sie unter [Privileged Identity Management](../privileged-identity-management/index.yml).
 
 > [!Note]
-> Wenn Sie über einen Azure AD Premium P2-Lizenzplan verfügen und PIM bereits nutzen, werden alle Rollenverwaltungsaufgaben in [Privileged Identity Management](../users-groups-roles/directory-manage-roles-portal.md) ausgeführt.
+> Wenn Sie über einen Azure AD Premium P2-Lizenzplan verfügen und PIM bereits nutzen, werden alle Rollenverwaltungsaufgaben in [Privileged Identity Management](../users-groups-roles/directory-manage-roles-portal.md) ausgeführt. Diese Funktion ist zurzeit auf das Zuweisen jeweils nur einer Rolle beschränkt. Sie können derzeit nicht mehrere Rollen auswählen und einem Benutzer gleichzeitig zuweisen.
 >
 > ![In PIM verwaltete Azure AD-Rollen für Benutzer, die PIM bereits nutzen und über eine Premium P2-Lizenz verfügen](./media/active-directory-users-assign-role-azure-portal/pim-manages-roles-for-p2.png)
 
@@ -79,6 +79,6 @@ Wenn Sie die Rollenzuweisung für einen Benutzer entfernen müssen, können Sie 
 
 - [Hinzufügen oder Ändern von Profilinformationen](active-directory-users-profile-azure-portal.md)
 
-- [Hinzufügen von Gastbenutzern aus einem anderen Verzeichnis](../b2b/what-is-b2b.md)
+- [Hinzufügen von Gastbenutzern aus einem anderen Verzeichnis](../external-identities/what-is-b2b.md)
 
 Informationen zu anderen Aufgaben der Benutzerverwaltung finden Sie unter [Dokumentation zur Azure Active Directory-Benutzerverwaltung](../users-groups-roles/index.yml).

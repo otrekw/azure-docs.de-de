@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 883d0afac5623838e9dde068964b36cfe3b44380
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b9d5a9e071cc1b2ac81e8cacea8c974181fbb3b6
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281989"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070393"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -263,6 +263,8 @@ Kopieren einer Teilmenge der Buckets unter Verwendung eines Platzhaltersymbols (
 **--include-path** string: schließt nur diese Pfade beim Kopieren ein. Diese Option unterstützt keine Platzhalterzeichen (*). Überprüft das Präfix des relativen Pfads (z. B. `myFolder;myFolder/subDirName/file.pdf`).
 
 **--include-pattern** string: schließt nur diese Dateien beim Kopieren ein. Diese Option unterstützt Platzhalterzeichen (*). Trennen Sie Dateien durch `;` voneinander ab.
+
+**--list-of-versions** string  Gibt eine Datei an, bei der jede Versions-ID in einer separaten Zeile steht. Stellen Sie sicher, dass die Quelle auf ein einzelnes Blob verweisen muss und dass alle in der Datei mit diesem Flag angegebenen Versions-IDs nur zum Quellblob gehören dürfen. AzCopy lädt die angegebenen Versionen in den bereitgestellten Zielordner herunter. Weitere Informationen finden Sie unter [Herunterladen früherer Versionen eines Blobs](storage-use-azcopy-blobs.md#download-previous-versions-of-a-blob).
 
 **--log-level** string: definiert, wie ausführlich die Protokolldatei sein soll. Verfügbare Stufen: INFO (alle Anforderungen/Antworten), WARNING (langsame Antworten), ERROR (nur fehlgeschlagene Anforderungen) und NONE (keine Ausgabeprotokolle). (Standardwert: `INFO`) 
 

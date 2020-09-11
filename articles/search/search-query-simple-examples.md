@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: afc9f8e29cf27734787da9cab3e3456e5414d9ac
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 3c469d7274bb90e194478af2464cb352efe7490c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918025"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294865"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>Erstellen einer einfachen Abfrage in Azure Cognitive Search
 
@@ -37,13 +37,13 @@ Sie benötigen lediglich Postman oder ein gleichwertiges Tool zum Senden einer H
 
 Nachdem Sie den Anforderungsheader angegeben haben, können Sie ihn für alle Abfragen in diesem Artikel wiederverwenden, indem Sie lediglich die Zeichenfolge **search=** austauschen. 
 
-  ![Postman-Anforderungsheader](media/search-query-lucene-examples/postman-header.png)
+  ![Festlegen von Parametern für Postman-Anforderungsheader](media/search-query-lucene-examples/postman-header.png)
 
 ### <a name="set-the-request-url"></a>Festlegen der Anforderungs-URL
 
 Die Anforderung ist ein GET-Befehl, der mit einer URL gekoppelt ist, die den Azure Cognitive Search-Endpunkt und die Suchzeichenfolge enthält.
 
-  ![Postman-Anforderungsheader](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
+  ![Postman-Anforderungsheader GET](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
 
 Die URL-Komposition umfasst die folgenden Elemente:
 

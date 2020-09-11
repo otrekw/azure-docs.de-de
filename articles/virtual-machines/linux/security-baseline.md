@@ -6,13 +6,13 @@ ms.service: virtual-machines-linux
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 97b2189020beffda32cc70dc66f028bec834eee5
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 627c0c77cc206cd1b3210fcfc7b2a9bbc3c6daea
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003260"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401094"
 ---
 # <a name="azure-security-baseline-for-linux-virtual-machines"></a>Azure-Sicherheitsbaseline für Virtuelle Linux-Computer
 
@@ -980,7 +980,9 @@ In den meisten Fällen sind die Microsoft-Basisvorlagen in Kombination mit Azure
 
 * [Erstellen einer Key Vault-Instanz](../../key-vault/secrets/quick-create-portal.md)
 
-* [Bereitstellen der Key Vault-Authentifizierung mit einer verwalteten Identität](../../key-vault/general/managed-identity.md)
+* [Authentifizieren bei Key Vault](../../key-vault/general/authentication.md)
+
+* [Zuweisen einer Key Vault-Zugriffsrichtlinie](../../key-vault/general/assign-access-policy-portal.md)
 
 **Azure Security Center-Überwachung**: Ja
 

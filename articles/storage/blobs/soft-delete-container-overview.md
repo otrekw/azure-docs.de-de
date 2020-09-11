@@ -10,12 +10,12 @@ ms.date: 08/25/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 60c7ac6a86c963a4a133f06ba6d9d602cb9090d0
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: f41caf61ac23b05ba0ff95d785be2e7449adf75d
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854542"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228629"
 ---
 # <a name="soft-delete-for-containers-preview"></a>Vorläufiges Löschen für Container (Vorschau)
 
@@ -25,7 +25,7 @@ Microsoft empfiehlt die Aktivierung der folgenden Datenschutzfeatures, um den vo
 
 - Vorläufiges Löschen von Containern zum Schutz vor versehentlichem Löschen oder Überschreiben eines Containers. Informationen zum Aktivieren des vorläufigen Löschens für Container finden Sie unter [Aktivieren und Verwalten des vorläufigen Löschens für Container (Vorschau)](soft-delete-container-enable.md).
 - Vorläufiges Löschen von Blobs zum Schutz vor versehentlichem Löschen oder Überschreiben eines einzelnen Blobs. Informationen zum Aktivieren des vorläufigen Löschens von Blobs finden Sie unter [Vorläufiges Löschen für Blobs](soft-delete-blob-overview.md).
-- Blobversionsverwaltung (Vorschau) zum automatischen Verwalten früherer Versionen eines Blobs. Wenn Blobversionsverwaltung aktiviert ist, können Sie eine frühere Version eines Blobs wiederherstellen, um Daten wiederherzustellen, wenn diese irrtümlich geändert oder gelöscht wurden. Informationen zum Aktivieren der Blobversionsverwaltung finden Sie unter [Aktivieren und Verwalten der Blobversionsverwaltung (Vorschau)](versioning-enable.md).
+- Blobversionsverwaltung zum automatischen Verwalten früherer Versionen eines Blobs. Wenn Blobversionsverwaltung aktiviert ist, können Sie eine frühere Version eines Blobs wiederherstellen, um Daten wiederherzustellen, wenn diese irrtümlich geändert oder gelöscht wurden. Informationen zum Aktivieren der Blobversionsverwaltung finden Sie unter [Aktivieren und Verwalten der Blobversionsverwaltung (Vorschau)](versioning-enable.md).
 
 > [!WARNING]
 > Das Löschen eines Speicherkontos kann nicht rückgängig gemacht werden. Vorläufiges Löschen schützt nicht vor dem Löschen eines Speicherkontos. Konfigurieren Sie eine **CannotDelete**-Sperre für die Speicherkontoressource, um ein versehentliches Löschen des Speicherkontos zu verhindern. Weitere Informationen zum Sperren von Azure-Ressourcen finden Sie unter [Sperren von Ressourcen, um unerwartete Änderungen zu verhindern](../../azure-resource-manager/management/lock-resources.md).
@@ -123,4 +123,4 @@ Für das Aktivieren des vorläufigen Löschens von Containern fallen keine zusä
 
 - [Aktivieren und Verwalten des vorläufigen Löschens für Container (Vorschau)](soft-delete-container-enable.md)
 - [Vorläufiges Löschen für Blobs](soft-delete-blob-overview.md)
-- [Blobversionsverwaltung (Vorschau)](versioning-overview.md)
+- [Blobversionsverwaltung](versioning-overview.md)

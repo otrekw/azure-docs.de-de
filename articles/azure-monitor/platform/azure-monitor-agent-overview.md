@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: ff70beef89f6db240db244de1e11e54193858be0
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: bf4974fdd0c587bd537c63a454b5d5efeb54415b
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705774"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378490"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Übersicht über den Azure Monitor-Agent (Vorschauversion)
 Der Azure Monitor-Agent (AMA) sammelt Überwachungsdaten aus dem Gastbetriebssystem virtueller Computer und übermittelt sie an Azure Monitor. Dieser Artikel enthält eine Übersicht über den Azure Monitor-Agent sowie Informationen zur Installation und zur Konfiguration der Datensammlung.
@@ -93,7 +93,7 @@ Der Azure Monitor-Agent unterstützt aktuell folgende Betriebssysteme:
   - Ubuntu 14.04 LTS, 16.04 LTS, 18.04 LTS
 
 > [!IMPORTANT]
-> <sup>1</sup>Bei diesen Distributionen muss „syslog“ entfernt und „syslog-ng“ installiert werden, um Syslog-Daten zu senden.
+> <sup>1</sup>Für diese Verteilungen zum Senden von Syslog-Daten müssen Sie den rsyslog-Dienst einmal nach der Installation des Agents neu starten.
 
 
 ## <a name="security"></a>Sicherheit

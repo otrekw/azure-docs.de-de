@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: 5c74aa48b18661236eb55278d1e5a05215b2432c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0feeec3b5b87e415f25f4cb75e53d9001b022445
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80877574"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319252"
 ---
 # <a name="configure-speech-service-containers"></a>Konfigurieren von Containern für den Speech-Dienst
 
-Mit Speech-Containern können Kunden eine Speech-basierte Anwendungsarchitektur erstellen, die sowohl von widerstandsfähigen Cloudfunktionen als auch von der Edgeposition profitieren kann. Derzeit werden die vier Speech-Container **speech-to-text**, **custom-speech-to-text**, **text-to-speech** und **custom-text-to-speech** unterstützt.
+Mit Speech-Containern können Kunden eine Speech-basierte Anwendungsarchitektur erstellen, die sowohl von widerstandsfähigen Cloudfunktionen als auch von der Edgeposition profitieren kann. Derzeit werden die fünf Speech-Container **speech-to-text**, **custom-speech-to-text**, **text-to-speech**, **neural-text-to-speech** und **custom-text-to-speech** unterstützt.
 
 Die Runtimeumgebung für **Speech**-Container wird über die Argumente des Befehls `docker run` konfiguriert. Dieser Container verfügt über mehrere erforderliche Einstellungen sowie einige optionale Einstellungen. Es sind noch viele [Beispiele](#example-docker-run-commands) für den Befehl verfügbar. Die containerspezifischen Einstellungen sind die für die Abrechnung.
 
@@ -104,7 +104,7 @@ Die Einstellung für die Volumebereitstellung besteht aus drei durch Doppelpunkt
 Mit diesem Befehl wird das Verzeichnis _C:\input_ vom Hostcomputer in das Verzeichnis _/usr/local/models_ des Containers eingebunden.
 
 > [!IMPORTANT]
-> Die Einstellungen der Volumebereitstellung gelten nur für die benutzerdefinierten Container **speech-to-text** und **text-to-speech**. Die Standardcontainer **speech-to-text** und **text-to-speech** verwenden keine Volumebereitstellungen.
+> Die Einstellungen der Volumebereitstellung gelten nur für die benutzerdefinierten Container **speech-to-text** und **text-to-speech**. Die Container **speech-to-text**, **Neural Text-to-speech** und **Text-to-speech** verwenden keine Volumebereitstellungen.
 
 ## <a name="example-docker-run-commands"></a>Beispiele für den Befehl „docker run“
 
@@ -224,6 +224,29 @@ docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
 -v {VOLUME_MOUNT}:/usr/local/models \
 containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech \
 ModelId={MODEL_ID} \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY} \
+Logging:Console:LogLevel:Default=Information
+```
+
+## <a name="neural-text-to-speech"></a>[Text-zu-Sprache (neuronal)](#tab/ntts)
+
+### <a name="basic-example-for-neural-text-to-speech"></a>Einfaches Beispiel für Text-zu-Sprache (neuronal)
+
+```Docker
+docker run --rm -it -p 5000:5000 --memory 12g --cpus 6 \
+containerpreview.azurecr.io/microsoft/cognitive-services-neural-text-to-speech \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+```
+
+### <a name="logging-example-for-neural-text-to-speech"></a>Protokollierungsbeispiel für Text-zu-Sprache (neuronal)
+
+```Docker
+docker run --rm -it -p 5000:5000 --memory 12g --cpus 6 \
+containerpreview.azurecr.io/microsoft/cognitive-services-neural-text-to-speech \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY} \

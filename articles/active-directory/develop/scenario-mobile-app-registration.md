@@ -1,7 +1,7 @@
 ---
 title: Registrieren mobiler Apps, die Web-APIs aufrufen | Azure
 titleSuffix: Microsoft identity platform
-description: Erfahren Sie, wie Sie eine mobile App erstellen, die Web-APIs aufruft (Codekonfiguration der App).
+description: Erfahren Sie, wie Sie eine mobile App erstellen, die Web-APIs aufruft (Registrierung der App).
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: f24b3c9256f759b87c705aae9b93c2d6bc74d30c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93dcfad34e5881cda52a69ceb99d52d9a905befb
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82652642"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047672"
 ---
 # <a name="register-mobile-apps-that-call-web-apis"></a>Registrieren mobiler Apps, die Web-APIs aufrufen
 
@@ -40,7 +40,7 @@ Sie können Benutzer außerdem mithilfe von Identitäten aus sozialen Netzwerken
 
 Weitere Informationen finden Sie unter [Scenarios and supported authentication flows (Szenarien und unterstützte Authentifizierungsabläufe)](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows) und [Scenarios and supported platforms and languages (Szenarien und unterstützte Plattformen und Sprachen)](authentication-flows-app-scenarios.md#scenarios-and-supported-platforms-and-languages).
 
-## <a name="platform-configuration-and-redirect-uris"></a>Plattformkonfiguration und Umleitungs-URIs  
+## <a name="platform-configuration-and-redirect-uris"></a>Plattformkonfiguration und Umleitungs-URIs
 
 ### <a name="interactive-authentication"></a>Interaktive Authentifizierung
 
@@ -72,20 +72,20 @@ Wenn Sie die Schritte ausgeführt haben, wird der Umleitungs-URI berechnet, wie 
 
 Wenn Sie den Umleitungs-URI stattdessen manuell konfigurieren möchten, können Sie dazu das Anwendungsmanifest verwenden. Dies ist das empfohlene Format für das Manifest:
 
-- **iOS:** `msauth.<BUNDLE_ID>://auth` 
+- **iOS:** `msauth.<BUNDLE_ID>://auth`
   - Geben Sie z.B. `msauth.com.yourcompany.appName://auth` ein.
 - **Android:** `msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
   - Sie können den Android-Signaturhash über den KeyTool-Befehl mit dem Release- oder Debugschlüssel generieren.
 
 ### <a name="username-password-authentication"></a>Authentifizierung mit Benutzername/Kennwort
 
-Wenn Ihre App ausschließlich die Authentifizierung über Benutzernamen und Kennwort verwendet, brauchen Sie für Ihre Anwendung keinen Umleitungs-URI zu registrieren. Dieser Ablauf führt einen Roundtrip zum Microsoft Identity Platform-Endpunkt, Version 2.0, aus. Ihre Anwendung wird nicht über einen bestimmten URI zurückgerufen. 
+Wenn Ihre App ausschließlich die Authentifizierung über Benutzernamen und Kennwort verwendet, brauchen Sie für Ihre Anwendung keinen Umleitungs-URI zu registrieren. Dieser Ablauf führt einen Roundtrip zum Microsoft Identity Platform-Endpunkt, Version 2.0, aus. Ihre Anwendung wird nicht über einen bestimmten URI zurückgerufen.
 
 Allerdings müssen Sie Ihre Anwendung als öffentliche Clientanwendung identifizieren. Beginnen Sie zu diesem Zweck im Abschnitt **Authentifizierung** Ihrer Anwendung. Wählen Sie im Unterabschnitt **Erweiterte Einstellungen** im Abschnitt **Standardclienttyp** neben **Hiermit wird eine Anwendung als öffentlicher Client eingestuft** **Ja** aus.
 
 ## <a name="api-permissions"></a>API-Berechtigungen
 
-Mobile Anwendungen rufen APIs für angemeldete Benutzer auf. Ihre Anwendung muss delegierte Berechtigungen anfordern. Diese Berechtigungen werden auch als Bereiche bezeichnet. Je nach der gewünschten Erfahrung können Sie delegierte Berechtigung statisch über das Azure-Portal anfordern. Alternativ können Sie sie auch dynamisch zur Laufzeit anfordern. 
+Mobile Anwendungen rufen APIs für angemeldete Benutzer auf. Ihre Anwendung muss delegierte Berechtigungen anfordern. Diese Berechtigungen werden auch als Bereiche bezeichnet. Je nach der gewünschten Erfahrung können Sie delegierte Berechtigung statisch über das Azure-Portal anfordern. Alternativ können Sie sie auch dynamisch zur Laufzeit anfordern.
 
 Wenn Sie Berechtigungen statisch registrieren, sind sie für Administratoren leicht zu genehmigen. Die statische Registrierung stellt das empfohlene Verfahren dar.
 

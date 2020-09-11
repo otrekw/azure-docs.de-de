@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 562a0fbd64fca530598a58599160dbdd7e479557
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: b470fa72518f805c10403931280bdec96bda0fbe
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485523"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226538"
 ---
 # <a name="azure-security-baseline-for-azure-application-gateway"></a>Azure-Sicherheitsbaseline für Azure Application Gateway
 
@@ -156,7 +156,7 @@ Sie müssen eingehenden Internetdatenverkehr für die NSGs, die Ihren Azure Appl
 
 **Leitfaden**: Definieren und implementieren Sie Standardsicherheitskonfigurationen für die Netzwerkeinstellungen Ihrer Azure Application Gateway-Bereitstellungen. Verwenden Sie Azure Policy-Aliasse im Namespace „Microsoft.Network“, um benutzerdefinierte Richtlinien zum Überwachen oder Erzwingen der Netzwerkkonfiguration Ihrer Azure Application Gateway- und Azure Virtual Network-Instanzen sowie Ihrer NSGs zu erstellen. Sie können auch integrierte Richtliniendefinitionen verwenden.
 
-Sie können auch Azure Blueprints verwenden, um umfangreiche Azure-Bereitstellungen zu vereinfachen, indem wichtige Umgebungsartefakte, z. B. Azure Resource Manager-Vorlagen, rollenbasierte Zugriffssteuerung (RBAC) und Richtlinien, gemeinsam in einer Blaupausendefinition gepackt werden. Sie können die Blaupause ganz einfach auf neue Abonnements und Umgebungen anwenden und die Steuerung und Verwaltung durch die Versionsverwaltung optimieren.
+Sie können auch Azure Blueprints verwenden, um umfangreiche Azure-Bereitstellungen zu vereinfachen, indem wichtige Umgebungsartefakte, z. B. Azure Resource Manager-Vorlagen, rollenbasierte Zugriffssteuerung von Azure (Azure RBAC) und Richtlinien gemeinsam in einer Blaupausendefinition gepackt werden. Sie können die Blaupause ganz einfach auf neue Abonnements und Umgebungen anwenden und die Steuerung und Verwaltung durch die Versionsverwaltung optimieren.
 
 * [Konfigurieren und Verwalten von Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -561,11 +561,11 @@ Microsoft verwaltet die zugrunde liegende Infrastruktur für Azure Application G
 
 **Verantwortlichkeit**: Nicht verfügbar
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6: Verwenden der rollenbasierten Zugriffssteuerung zum Steuern des Zugriffs auf Ressourcen
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Verwenden von Azure RBAC zum Steuern des Zugriffs auf Ressourcen
 
-**Leitfaden**: Integrieren Sie die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure Active Directory (AD), um den Zugriff auf die Steuerungsebene (Azure-Portal) von Azure Application Gateway zu steuern.
+**Leitfaden**: Steuern Sie mit der rollenbasierten Zugriffssteuerung in Azure (Role-Based Access Control, RBAC) den Zugriff auf die Steuerungsebene von Azure Application Gateway (Azure-Portal).
 
-* [Konfigurieren von RBAC in Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+* [Konfigurieren von Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 

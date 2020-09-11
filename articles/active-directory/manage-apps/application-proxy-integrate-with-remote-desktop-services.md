@@ -1,6 +1,6 @@
 ---
 title: Veröffentlichen von Remotedesktops mit dem Azure AD-App-Proxy | Microsoft-Dokumentation
-description: Hier finden Sie grundlegende Informationen zu Azure AD-Anwendungsproxy-Connectors.
+description: Erläutert das Konfigurieren des App-Proxys mit RDS
 services: active-directory
 documentationcenter: ''
 author: kenwith
@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.custom: it-pro
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9cba74c773e1f141db14e06cf0cda8b31d06ba4f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7ffdccf9cf3b6de4ba15d6076d7a5b9e0a93f464
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019521"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89396759"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Veröffentlichen des Remotedesktops per Azure AD-Anwendungsproxy
 
@@ -135,7 +135,7 @@ Die in diesem Artikel erläuterte Konfiguration dient dem Zugriff auf RDS über 
 
 | Authentifizierungsmethode | Unterstützte Clientkonfiguration |
 | --------------------- | ------------------------------ |
-| Vorauthentifizierung    | Web Access für Remotedesktop: Windows 7/10 mit dem Internet Explorer + RDS-ActiveX-Add-On |
+| Vorauthentifizierung    | Web Access für Remotedesktop: Windows 7/10 mit Internet Explorer oder [Edge Chromium IE-Modus](https://docs.microsoft.com/deployedge/edge-ie-mode) + RDS-ActiveX-Add-On |
 | Vorauthentifizierung    | Remotedesktop-Webclient: HTML5-kompatibler Webbrowser, z. B. Microsoft Edge, Internet Explorer 11, Google Chrome, Safari oder Mozilla Firefox (mindestens Version 55.0) |
 | Passthrough | Alle anderen Betriebssysteme, die die Microsoft-Remotedesktopanwendung unterstützen |
 

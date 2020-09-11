@@ -10,18 +10,18 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: kumud
-ms.openlocfilehash: a1b2738e3be2e2b8a388ef80ca94764cdae99b08
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e0df698cb431e5e26c69047a9f464904f0546487
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047361"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294236"
 ---
 # <a name="customize-a-brands-model-in-video-indexer"></a>Anpassen eines Markenmodells in Video Indexer
 
 Video Indexer unterstützt die Markenerkennung aus Sprache und visuellem Text während der Indizierung und Neuindizierung von Video- und Audioinhalten. Das Feature zur Erkennung von Marken identifiziert Erwähnungen von Produkten, Diensten und Unternehmen, die von der Markendatenbank von Bing vorgeschlagen werden. Wenn Microsoft beispielsweise in einem Video- oder Audioinhalt erwähnt wird oder im visuellen Text in einem Video angegeben wird, erkennt Video Indexer dies als Marke im Inhalt. Marken werden über den Kontext eindeutig von anderen Begriffen unterschieden.
 
-Die Markenerkennung ist in einer Vielzahl von Geschäftsszenarien nützlich, z. B. bei der Archivierung und Erkennung von Inhalten, bei kontextabhängiger Werbung, Social Media-Analysen, Wettbewerbsanalyse im Einzelhandel und vielem mehr. Die Markenerkennung von Video Indexer ermöglicht es Ihnen, die Erwähnungen von Marken in Sprache und visuellem Text über die Markendatenbank von Bing und durch Anpassungen zu indizieren, indem Sie ein benutzerdefiniertes Markenmodell für jedes Video Indexer-Konto erstellen. Das Feature für benutzerdefinierte Markenmodelle ermöglicht das Auswählen, ob Video Indexer Marken aus der Bing-Markendatenbank erkennt, bestimmte Marken von der Erkennung ausschließt (im Wesentlichen eine Blockliste von Marken erstellt) und Marken einbezieht, die Teil Ihres Modells sein sollten, die möglicherweise nicht in der Bing-Markendatenbank enthalten sind (im Wesentlichen Erstellung einer Whitelist von Marken). Das von Ihnen erstellte benutzerdefinierte Markenmodell ist nur in dem Konto verfügbar, in dem Sie das Modell erstellt haben.
+Die Markenerkennung ist in einer Vielzahl von Geschäftsszenarien nützlich, z. B. bei der Archivierung und Erkennung von Inhalten, bei kontextabhängiger Werbung, Social Media-Analysen, Wettbewerbsanalyse im Einzelhandel und vielem mehr. Die Markenerkennung von Video Indexer ermöglicht es Ihnen, die Erwähnungen von Marken in Sprache und visuellem Text über die Markendatenbank von Bing und durch Anpassungen zu indizieren, indem Sie ein benutzerdefiniertes Markenmodell für jedes Video Indexer-Konto erstellen. Das Feature für benutzerdefinierte Markenmodelle ermöglicht das Auswählen, ob Video Indexer Marken aus der Bing-Markendatenbank erkennt, bestimmte Marken von der Erkennung ausschließt (im Wesentlichen Erstellung einer Liste nicht zulässiger Marken) und Marken einbezieht, die Teil Ihres Modells sein sollten, die möglicherweise nicht in der Bing-Markendatenbank enthalten sind (im Wesentlichen Erstellung einer Liste zulässiger Marken). Das von Ihnen erstellte benutzerdefinierte Markenmodell ist nur in dem Konto verfügbar, in dem Sie das Modell erstellt haben.
 
 ## <a name="out-of-the-box-detection-example"></a>Beispiel zur vorkonfigurierten Erkennung
 

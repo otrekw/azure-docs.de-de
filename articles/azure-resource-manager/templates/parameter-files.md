@@ -2,13 +2,13 @@
 title: Erstellen einer Parameterdatei
 description: Erstellen einer Parameterdatei zum Übergeben von Werten während der Bereitstellung einer Azure Resource Manager-Vorlage
 ms.topic: conceptual
-ms.date: 06/19/2020
-ms.openlocfilehash: 8039b63978e52b69b0f8ffb4dd4e052769f3c5e6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/01/2020
+ms.openlocfilehash: 2b6d942b21594fa608127bb8f403e72295671005
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082935"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276642"
 ---
 # <a name="create-resource-manager-parameter-file"></a>Erstellen einer Resource Manager-Parameterdatei
 
@@ -148,6 +148,8 @@ Sehen Sie sich abschließend die zulässigen Werte und die Einschränkungen an, 
 }
 ```
 
+Ihre Parameterdatei kann nur Werte für Parameter enthalten, die in der Vorlage definiert sind. Wenn die Parameterdatei zusätzliche Parameter enthält, die nicht mit den Parametern in der Vorlage identisch sind, erhalten Sie eine Fehlermeldung.
+
 ## <a name="parameter-type-formats"></a>Parametertypformate
 
 Im folgenden Beispiel sind die Formate der unterschiedlichen Parametertypen dargestellt.
@@ -184,10 +186,30 @@ Im folgenden Beispiel sind die Formate der unterschiedlichen Parametertypen darg
 
 ## <a name="deploy-template-with-parameter-file"></a>Bereitstellen der Vorlage mit einer Parameterdatei
 
-Siehe:
+Um eine lokale Parameterdatei mit Azure CLI zu übergeben, verwenden Sie @ und den Namen der Parameterdatei.
 
-- [Bereitstellen von Ressourcen mit ARM-Vorlagen und der Azure CLI](./deploy-cli.md#parameters)
-- [Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure PowerShell](./deploy-powershell.md#pass-parameter-values)
+```azurecli
+az deployment group create \
+  --name ExampleDeployment \
+  --resource-group ExampleGroup \
+  --template-file storage.json \
+  --parameters @storage.parameters.json
+```
+
+Weitere Informationen finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und der Azure CLI](./deploy-cli.md#parameters).
+
+Um eine lokale Parameterdatei mit Azure PowerShell zu übergeben, verwenden Sie den `TemplateParameterFile`-Parameter.
+
+```azurepowershell
+New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
+  -TemplateFile c:\MyTemplates\azuredeploy.json `
+  -TemplateParameterFile c:\MyTemplates\storage.parameters.json
+```
+
+Weitere Informationen finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure PowerShell](./deploy-powershell.md#pass-parameter-values).
+
+> [!NOTE]
+> Es ist nicht möglich, eine Parameterdatei mit dem benutzerdefinierten Vorlagenblatt im Portal zu verwenden.
 
 ## <a name="file-name"></a>Dateiname
 
@@ -199,7 +221,7 @@ Erstellen Sie mehr als eine Parameterdatei, wenn Sie die Bereitstellung in unter
 
 Sie können Inlineparameter und eine lokale Parameterdatei im selben Bereitstellungsvorgang verwenden. Sie können beispielsweise einige Werte in der lokalen Parameterdatei angeben und weitere Werte während der Bereitstellung inline hinzufügen. Wenn Sie Werte für einen Parameter sowohl in der lokalen Parameterdatei als auch inline bereitstellen, haben die Inlinewerte Vorrang.
 
-Sie können eine externe Parameterdatei verwenden, indem Sie den URI der Datei bereitstellen. In diesem Fall können Sie keine anderen Werte übergeben, weder inline noch aus einer lokalen Datei. Alle Inlineparameter werden ignoriert. Stellen Sie alle Parameterwerte in der externen Datei bereit.
+Sie können eine externe Parameterdatei verwenden, indem Sie den URI der Datei bereitstellen. Bei Verwendung einer externen Parameterdatei können Sie keine anderen Werte (weder inline noch aus einer lokalen Datei) übergeben. Alle Inlineparameter werden ignoriert. Stellen Sie alle Parameterwerte in der externen Datei bereit.
 
 ## <a name="parameter-name-conflicts"></a>Parameternamenskonflikte
 

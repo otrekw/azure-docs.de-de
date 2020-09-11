@@ -13,16 +13,16 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f816c95b5e210e86e2215cadf8407f442d69ebe
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 1c5efbbd5f9f5dfe701deb50b51605ab324c081a
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475876"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401672"
 ---
 # <a name="create-a-role-assignable-group-in-azure-active-directory"></a>Erstellen einer Gruppe in Azure Active Directory für das Zuweisen von Rollen
 
-Eine Rolle kann nur einer Gruppe zugewiesen werden, die mit der isAssignableToRole-Eigenschaft mit dem Wert TRUE oder die im Azure AD-Portal mit aktivierter Option **Azure AD-Rollen können der Gruppe zugewiesen werden** erstellt wurde. Mit diesem Gruppenattribut ist es möglich, der Gruppe eine Rolle in Azure Active Directory (Azure AD) zuzuweisen. In diesem Artikel wird beschrieben, wie Sie diesen besonderen Gruppentyp erstellen.
+Eine Rolle kann nur einer Gruppe zugewiesen werden, die mit der isAssignableToRole-Eigenschaft mit dem Wert TRUE oder die im Azure AD-Portal mit aktivierter Option **Azure AD-Rollen können der Gruppe zugewiesen werden** erstellt wurde. Mit diesem Gruppenattribut ist es möglich, der Gruppe eine Rolle in Azure Active Directory (Azure AD) zuzuweisen. In diesem Artikel wird beschrieben, wie Sie diesen besonderen Gruppentyp erstellen. **Hinweis:** Eine Gruppe, deren isAssignableToRole-Eigenschaft auf „true“ festgelegt ist, kann nicht den dynamischen Mitgliedschaftstyp aufweisen. Weitere Informationen finden Sie unter [Verwenden von Cloudgruppen zum Verwalten von Rollenzuweisungen in Azure Active Directory (Vorschau)](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-groups-concept).
 
 ## <a name="using-azure-ad-admin-center"></a>Mithilfe von Azure AD Admin Center
 

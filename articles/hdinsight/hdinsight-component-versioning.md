@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 08/13/2020
-ms.openlocfilehash: 5c3586e9ba405cb5a7338b8f7f22858a238b9271
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 15d7b11ed49880a81e52c48a93a72e1491a5b645
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717250"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394328"
 ---
 # <a name="apache-components-and-versions-available-for-azure-hdinsight"></a>Für Azure HDInsight verfügbare Apache-Komponenten und -Versionen
 
@@ -78,7 +78,7 @@ Die Tabelle enthält die im Azure-Portal und über andere Bereitstellungsmethode
 | HDInsight-Version | Betriebssystem des virtuellen Computers | Veröffentlichungsdatum | Supportablaufdatum | Deaktivierungstermin | Hochverfügbarkeit |  Verfügbarkeit im Azure-Portal |
 | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 4.0 |Ubuntu 16.0.4 LTS |24. September 2018 | | |Ja |Ja |
-| HDInsight 3.6 |Ubuntu 16.0.4 LTS |4\. April 2017      | *31. Juni 2021 |31. Juni 2021 |Ja |Ja |
+| HDInsight 3.6 |Ubuntu 16.0.4 LTS |4\. April 2017      | *30. Juni 2021 |30. Juni 2021 |Ja |Ja |
 
 *Wir verlängern den Supportzeitraum für bestimmte HDInsight 3.6-Clustertypen.
 

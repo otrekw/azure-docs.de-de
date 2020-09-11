@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: ff3e5431481cba0d2d806d60ba5d7a291d1b2b69
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 6ff56ba6dc85901c8cdc7a9b06fbc261feb8792d
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810115"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055327"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>JavaScript-Entwicklerhandbuch für Azure Functions
 
@@ -183,15 +183,38 @@ Verwenden Sie zum Definieren des Datentyps für eine Eingabebindung die `dataTyp
 Optionen für `dataType` sind `binary`, `stream` und `string`.
 
 ## <a name="context-object"></a>context-Objekt
-Die Laufzeit verwendet ein `context`-Objekt, um Daten an Ihre und von Ihrer Funktion zu übergeben und Ihnen die Kommunikation mit der Laufzeit zu ermöglichen. Das context-Objekt kann zum Lesen und Festlegen von Daten von Bindungen, zum Schreiben von Protokollen und für den `context.done`-Rückruf verwendet werden, wenn die exportierte Funktion asynchron ist.
 
-Das `context`-Objekt ist immer der erste Parameter in einer Funktion. Es sollte angegeben werden, da es wichtige Methoden wie `context.done` und `context.log` enthält. Sie können dem Objekt einen beliebigen Namen geben (also etwa `ctx` oder `c`).
+Die Laufzeit verwendet ein `context`-Objekt, um Daten an Ihre Funktion und die Laufzeit und von Ihrer Funktion und der Laufzeit zu übergeben. Das zum Lesen und Festlegen von Daten aus Bindungen und zum Schreiben in Protokolle verwendete `context`-Objekt wird immer als erster Parameter an eine Funktion übergeben.
+
+Für Funktionen mit synchronem Code schließt das Kontextobjekt den `done`-Rückruf ein, den Sie durchführen, wenn die Verarbeitung der Funktion abgeschlossen ist. `done` muss beim Schreiben von asynchronem Code nicht explizit aufgerufen werden. Der `done`-Rückruf wird implizit durchgeführt.
 
 ```javascript
-// You must include a context, but other arguments are optional
-module.exports = function(ctx) {
-    // function logic goes here :)
-    ctx.done();
+module.exports = (context) => {
+
+    // function logic goes here
+
+    context.log("The function has executed.");
+
+    context.done();
+};
+```
+
+Der Kontext, der an die Funktion übertragen wird, macht eine `executionContext`-Eigenschaft verfügbar. Dieses Objekt hat folgende Eigenschaften:
+
+| Eigenschaftenname  | type  | BESCHREIBUNG |
+|---------|---------|---------|
+| `invocationId` | String | Stellt einen eindeutigen Bezeichner für den jeweiligen Funktionsaufruf bereit. |
+| `functionName` | String | Gibt den Namen der Funktion an, die ausgeführt wird. |
+| `functionDirectory` | String | Stellt das Funktionen-App-Verzeichnis bereit. |
+
+Im folgenden Beispiel wird gezeigt, wie die `invocationId` zurückgegeben wird.
+
+```javascript
+module.exports = (context, req) => {
+    context.res = {
+        body: context.executionContext.invocationId
+    };
+    context.done();
 };
 ```
 

@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: scottwhi
-ms.openlocfilehash: 7d16b0755fae91979802e50cb2ebbf4324ce2c45
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 3aa8d691eb62b94c5784d8a6efc35b53a3762d7f
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921147"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294117"
 ---
 # <a name="sending-requests-to-the-bing-autosuggest-api"></a>Senden von Anforderungen an die Bing-Vorschlagssuche-API
 
@@ -64,7 +64,7 @@ Eine Liste aller Anforderungs- und Antwortheader finden Sie unter [Header](https
 > [!NOTE]
 > Wenn Sie die Bing-Vorschlagssuche-API über JavaScript aufrufen, verhindern die integrierten Sicherheitsfunktionen Ihres Browsers möglicherweise den Zugriff auf die Werte dieser Header.
 
-Um dieses Problem zu lösen, können Sie die Anforderung der Bing-Vorschlagssuche-API über einen CORS-Proxy senden. In der Antwort eines solchen Proxys befindet sich ein `Access-Control-Expose-Headers`-Header. Dieser enthält eine Whitelist mit Antwortheadern und stellt diese JavaScript zur Verfügung.
+Um dieses Problem zu lösen, können Sie die Anforderung der Bing-Vorschlagssuche-API über einen CORS-Proxy senden. In der Antwort eines solchen Proxys befindet sich ein `Access-Control-Expose-Headers`-Header, mit dem die Antwortheader gefiltert und für JavaScript verfügbar gemacht werden.
 
 Die Installation eines CORS-Proxys, mit dem die [Tutorial-App](../tutorials/autosuggest.md) auf die optionalen Clientheader zugreifen kann, ist schnell und unkompliziert. [Installieren Sie Node.js](https://nodejs.org/en/download/), falls Sie dies noch nicht getan haben. Geben Sie dann an einer Eingabeaufforderung den folgenden Befehl ein.
 

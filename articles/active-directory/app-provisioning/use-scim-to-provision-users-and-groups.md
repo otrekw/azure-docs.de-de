@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/07/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: be33841206fa30a5b4975a604af1b5d9e38551a8
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 3f21fa2df32644ff1c415db656fc3b0beed03965
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690254"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89292774"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Erstellen eines SCIM-Endpunkts und Konfigurieren der Benutzerbereitstellung mit Azure AD
 
@@ -153,7 +153,7 @@ Im Rahmen der [SCIM 2.0-Protokollspezifikation](http://www.simplecloud.info/#Spe
 * Unterstützt das Abfragen von Benutzern nach ID und nach Manager gemäß Abschnitt 3.4.2 des SCIM-Protokolls.  
 * Unterstützt das Abfragen von Gruppen nach ID und nach Mitglied gemäß Abschnitt 3.4.2 des SCIM-Protokolls.  
 * Akzeptiert ein einzelnes Bearertoken für die Authentifizierung und Autorisierung von Azure AD für Ihre Anwendung.
-* Unterstützt das vorläufige Löschen eines Benutzers `active=false` und das Wiederherstellen des Benutzers `active=true`.
+* Unterstützt das vorläufige Löschen eines Benutzers `active=false` und das Wiederherstellen des Benutzers `active=true` (das Benutzerobjekt sollte in einer Anforderung zurückgegeben werden, unabhängig davon, ob der Benutzer aktiv ist oder nicht). Der Benutzer sollte nur dann nicht zurückgegeben werden, wenn er endgültig aus der Anwendung gelöscht wurde. 
 
 Befolgen Sie bei der Implementierung eines SCIM-Endpunkts die folgenden allgemeinen Richtlinien, um die Kompatibilität mit Azure AD sicherzustellen:
 
@@ -746,7 +746,7 @@ TLS 1.2-Verschlüsselungssammlungen (Minimum):
 - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 
 ### <a name="ip-ranges"></a>IP-Bereiche
-Der Azure AD-Bereitstellungsdienst wird zurzeit unter den IP-Bereichen für AzureActiveDirectory und AzureActiveDirectoryDomainServices betrieben, die [hier](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all) aufgelistet sind. Es wird zurzeit daran gearbeitet, dies auf die IP-Bereiche für AzureActiveDirectory zu beschränken. 
+Der Azure AD-Bereitstellungsdienst wird zurzeit unter den IP-Bereichen für AzureActiveDirectory betrieben, die [hier](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all) aufgelistet sind. Sie können die unter dem Tag AzureActiveDirectory aufgeführten IP-Adressbereiche hinzufügen, um den Datenverkehr vom Azure AD-Bereitstellungsdienst in Ihre Anwendung zuzulassen. 
 
 ## <a name="step-3-build-a-scim-endpoint"></a>Schritt 3: Erstellen eines SCIM-Endpunkts
 

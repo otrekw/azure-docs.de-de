@@ -7,16 +7,16 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/21/2020
 keywords: Pullgeheimnis, ARO, OpenShift, Red Hat
-ms.openlocfilehash: 3351052db63f095bfca5f0b91f26e1013319c582
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 769b7589fb6496fc2f4123665ad1f6fe61d0cce2
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094920"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294746"
 ---
 # <a name="add-or-update-your-red-hat-pull-secret-on-an-azure-red-hat-openshift-4-cluster"></a>Hinzufügen oder Aktualisieren Ihres Red Hat-Pullgeheimnisses für einen Azure Red Hat OpenShift 4-Cluster
 
-In diesem Leitfaden wird beschrieben, wie Sie Ihr Red Hat-Pullgeheimnis für einen vorhandenen Azure Red Hat OpenShift 4.x-Cluster hinzufügen oder aktualisieren.
+In diesem Leitfaden wird beschrieben, wie Sie Ihr Red Hat-Pullgeheimnis für einen vorhandenen Azure Red Hat OpenShift (ARO) 4.x-Cluster hinzufügen oder aktualisieren.
 
 Beim erstmaligen Erstellen eines Clusters können Sie Ihr Pullgeheimnis hinzufügen. Weitere Informationen zum Erstellen eines ARO-Clusters mit einem Red Hat-Pullgeheimnis finden Sie unter [Erstellen eines Azure Red Hat OpenShift 4-Clusters](tutorial-create-cluster.md#get-a-red-hat-pull-secret-optional).
 
@@ -29,13 +29,13 @@ Wenn Sie einen ARO-Cluster erstellen, ohne ein Red Hat-Pullgeheimnis hinzuzufüg
 
 In diesem Abschnitt wird Schritt für Schritt erläutert, wie Sie dieses Pullgeheimnis mit zusätzlichen Werten aus Ihrem Red Hat-Pullgeheimnis aktualisieren.
 
-1. Rufen Sie das Geheimnis mit dem Namen `pull-secret` im Namespace „openshift-config“ ab, und speichern Sie es in einer separaten Datei, indem Sie den folgenden Befehl ausführen: 
+1. Rufen Sie das Geheimnis mit dem Namen `pull-secret` im Namespace `openshift-config` ab, und speichern Sie es in einer separaten Datei, indem Sie den folgenden Befehl ausführen: 
 
     ```console
     oc get secrets pull-secret -n openshift-config -o template='{{index .data ".dockerconfigjson"}}' | base64 -d > pull-secret.json
     ```
 
-    Die Ausgabe sollte in etwa wie folgt aussehen (der tatsächliche Geheimniswert wurde hier entfernt):
+    Die Ausgabe sollte in etwa wie folgt aussehen. (Beachten Sie, dass der tatsächliche geheime Wert entfernt wurde.)
 
     ```json
     {
@@ -47,7 +47,7 @@ In diesem Abschnitt wird Schritt für Schritt erläutert, wie Sie dieses Pullgeh
     }
     ```
 
-2. Navigieren Sie zum [Manager-Portal für Ihren Red Hat OpenShift-Cluster](https://cloud.redhat.com/openshift/install/azure/aro-provisioned), und klicken Sie auf **Download pull secret** (Pullgeheimnis herunterladen). Ihr Red Hat-Pullgeheimnis sieht wie im folgenden Beispiel dargestellt aus (die tatsächlichen Geheimniswerte wurden hier entfernt):
+2. Navigieren Sie zum [Manager-Portal für Ihren Red Hat OpenShift-Cluster](https://cloud.redhat.com/openshift/install/azure/aro-provisioned), und wählen Sie **Download pull secret** (Pullgeheimnis herunterladen) aus. Ihr Red Hat-Pullgeheimnis sieht wie folgt aus. (Beachten Sie, dass die tatsächlichen geheimen Werte entfernt wurde.)
 
     ```json
     {
@@ -75,7 +75,7 @@ In diesem Abschnitt wird Schritt für Schritt erläutert, wie Sie dieses Pullgeh
 3. Bearbeiten Sie die Pullgeheimnisdatei, die Sie aus Ihrem Cluster abgerufen haben, indem Sie die Einträge aus Ihrem Red Hat-Pullgeheimnis hinzufügen. 
 
     > [!IMPORTANT]
-    > Wenn Sie den Eintrag `cloud.openshift.com` aus Ihrem Red Hat-Pullgeheimnis hinzufügen, beginnt Ihr Cluster, Telemetriedaten an Red Hat zu senden. Schließen Sie diesen Abschnitt nur ein, wenn Sie Telemetriedaten senden möchten. Andernfalls lassen Sie den folgenden Abschnitt aus.
+    > Wenn Sie den Eintrag `cloud.openshift.com` aus Ihrem Red Hat-Pullgeheimnis hinzufügen, beginnt Ihr Cluster, Telemetriedaten an Red Hat zu senden. Schließen Sie diesen Abschnitt nur ein, wenn Sie Telemetriedaten senden möchten. Andernfalls lassen Sie den folgenden Abschnitt aus.    
     > ```json
     > {
     >         "cloud.openshift.com": {
@@ -86,13 +86,14 @@ In diesem Abschnitt wird Schritt für Schritt erläutert, wie Sie dieses Pullgeh
 
     > [!CAUTION]
     > Entfernen oder ändern Sie nicht den Eintrag `arosvc.azurecr.io` in Ihrem Pullgeheimnis. Dieser Abschnitt ist für die korrekte Funktion Ihres Clusters erforderlich.
+
     ```json
     "arosvc.azurecr.io": {
                 "auth": "<my-aroscv.azurecr.io-secret>"
             }
     ```
 
-    Die endgültige Datei sollte wie folgt aussehen (die tatsächlichen Geheimniswerte wurden hier entfernt):
+    Ihre endgültige Datei sollte folgendermaßen aussehen. (Beachten Sie, dass die tatsächlichen geheimen Werte entfernt wurde.)
 
     ```json
     {
@@ -120,7 +121,8 @@ In diesem Abschnitt wird Schritt für Schritt erläutert, wie Sie dieses Pullgeh
     }
     ```
 
-4. Stellen Sie sicher, dass Ihre JSON-Datei gültig ist. Es gibt viele Möglichkeiten, dies zu überprüfen. Im folgenden Beispiel wird jq verwendet:
+4. Stellen Sie sicher, dass Ihre JSON-Datei gültig ist. Es gibt viele Möglichkeiten, die JSON-Datei zu überprüfen. Im folgenden Beispiel wird jq verwendet:
+
     ```json
     cat pull-secret.json | jq
     ```
@@ -130,7 +132,7 @@ In diesem Abschnitt wird Schritt für Schritt erläutert, wie Sie dieses Pullgeh
 
 ## <a name="add-your-pull-secret-to-your-cluster"></a>Hinzufügen Ihres Pullgeheimnisses zum Cluster
 
-Führen Sie den folgenden Befehl aus, um Ihr Pullgeheimnis zu aktualisieren:
+Führen Sie den folgenden Befehl aus, um Ihr Pullgeheimnis zu aktualisieren.
 
 > [!NOTE]
 > Durch die Ausführung dieses Befehls werden Ihre Clusterknoten aktualisiert und nacheinander neu gestartet. 
@@ -153,7 +155,7 @@ oc edit configs.samples.operator.openshift.io/cluster -o yaml
 
 Ändern Sie die Werte für `spec.architectures.managementState` und `status.architecture.managementState` von `Removed` in `Managed`. 
 
-Der folgende YAML-Codeausschnitt zeigt nur die relevanten Abschnitte der bearbeiteten YAML-Datei.
+Der folgende YAML-Codeausschnitt zeigt nur die relevanten Abschnitte der bearbeiteten YAML-Datei:
 
 ```yaml
 apiVersion: samples.operator.openshift.io/v1
@@ -183,7 +185,7 @@ oc edit operatorhub cluster -o yaml
 
 Ändern Sie die Werte für `Spec.Sources.Disabled` und `Status.Sources.Disabled` für alle Quellen, die Sie aktivieren möchten, von `true` in `false`.
 
-Der folgende YAML-Codeausschnitt zeigt nur die relevanten Abschnitte der bearbeiteten YAML-Datei.
+Der folgende YAML-Codeausschnitt zeigt nur die relevanten Abschnitte der bearbeiteten YAML-Datei:
 
 ```yaml
 Name:         cluster

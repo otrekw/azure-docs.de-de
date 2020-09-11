@@ -11,19 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 147c6016c56d45fadca4f4b8e583bce54006ef07
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 59f83d232874a7702598b6ea5fdd458c101e7e79
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922100"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266577"
 ---
 # <a name="custom-controls-preview"></a>Benutzerdefinierte Steuerelemente (Vorschau)
 
 „Benutzerdefinierte Steuerelemente“ ist eine Vorschaufunktion von Azure Active Directory. Wenn Sie benutzerdefinierte Steuerelemente verwenden, werden Ihre Benutzer zu kompatiblen Diensten umgeleitet, um Authentifizierungsanforderungen außerhalb von Azure Active Directory zu genügen. Um die Bedingungen dieses Steuerelements zu erfüllen, wird der Browser eines Benutzers an den externen Dienst umgeleitet, die erforderliche Authentifizierung wird durchgeführt, dann wird der Browser wieder an Azure Active Directory umgeleitet. Azure Active Directory überprüft die Antwort, und wenn der Benutzer erfolgreich authentifiziert oder überprüft wurde, verbleibt der Benutzer im Vorgangsfluss des bedingten Zugriffs.
 
 > [!NOTE]
-> Weitere Informationen zu den geplanten Änderungen an der Funktion „Benutzerdefiniertes Steuerelemente“ finden Sie unter den [Neuerungen](../fundamentals/whats-new.md#upcoming-changes-to-custom-controls) für Februar 2020.
+> Weitere Informationen zu den geplanten Änderungen an der Funktion „Benutzerdefiniertes Steuerelement“ finden Sie im [Archiv für Neuerungen in Azure Active Directory](../fundamentals/whats-new-archive.md#upcoming-changes-to-custom-controls) für Februar 2020.
 
 ## <a name="creating-custom-controls"></a>Erstellen von benutzerdefinierten Steuerelementen
 
@@ -53,7 +53,7 @@ Um ein benutzerdefiniertes Steuerelement zu bearbeiten, müssen Sie das aktuelle
 
 ## <a name="known-limitations"></a>Bekannte Einschränkungen
 
-Es ist nicht möglich, benutzerdefinierte Steuerelemente mit der Identity Protection-Automatisierung zu verwenden, für die Azure Multi-Factor Authentication erforderlich ist. Diese Funktion kann auch nicht mit der Self-Service-Kennwortzurücksetzung (SSPR) in Azure AD, bei der Anspruchsanforderungen der mehrstufigen Authentifizierung erfüllt werden, zum Heraufstufen von Rollen in Privileged Identity Management (PIM) oder im Rahmen der Registrierung von Intune-Geräten eingesetzt werden.
+Es ist nicht möglich, benutzerdefinierte Steuerelemente mit der Identity Protection-Automatisierung zu verwenden, für die Azure Multi-Factor Authentication erforderlich ist. Sie können auch nicht mit der Self-Service-Kennwortzurücksetzung (SSPR) in Azure AD, bei der Anspruchsanforderungen der mehrstufigen Authentifizierung erfüllt werden, zum Heraufstufen von Rollen in Privileged Identity Management (PIM) oder im Rahmen der Registrierung von Intune-Geräten oder beim Einbinden von Geräten in Azure AD eingesetzt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

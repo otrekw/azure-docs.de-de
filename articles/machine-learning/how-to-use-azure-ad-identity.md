@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 02/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: f76e149339e80ddeba8431afffbd677a4b595ec3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 71acb76eb98409485bd6f29334a7ae10b16db276
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319472"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378626"
 ---
 # <a name="use-azure-ad-identity-with-your-machine-learning-web-service-in-azure-kubernetes-service"></a>Verwenden der Azure AD-Identität mit Ihrem Machine Learning-Webdienst in Azure Kubernetes Service
 
@@ -153,7 +153,7 @@ secret = secret_client.get_secret(my_secret_name)
 ```
 
 > [!IMPORTANT]
-> In diesem Beispiel wird DefaultAzureCredential verwendet. Informationen, wie Sie Ihrer Identität Zugriff mithilfe einer bestimmten Zugriffsrichtlinie gewähren, finden Sie unter [Teil 4: Abrufen des Geheimnisses aus Ihrem Azure Key Vault](../key-vault/general/authentication.md#part-4-retrieve-the-secret-from-your-azure-key-vault-in-an-application-python).
+> In diesem Beispiel wird DefaultAzureCredential verwendet. Informationen zum Gewähren des Zugriffs für Ihre Identität mithilfe einer bestimmten Zugriffsrichtlinie finden Sie unter [Zuweisen einer Key Vault-Zugriffsrichtlinie](/azure/key-vault/general/assign-access-policy-cli).
 
 ### <a name="access-blob-from-your-web-service"></a>Zugreifen auf das Blob über Ihren Webdienst
 

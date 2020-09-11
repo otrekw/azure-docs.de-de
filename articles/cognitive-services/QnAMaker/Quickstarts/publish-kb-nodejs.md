@@ -5,12 +5,12 @@ ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-javascript
 ms.topic: how-to
-ms.openlocfilehash: 447b8a07f6bbda42be4def96ee8f1244fa752526
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: a891e806c54d8d88eea1021c95923ffdc90c36f9
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245586"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266424"
 ---
 # <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>Schnellstart: QnA Maker-REST-APIs für Node.js
 
@@ -76,11 +76,15 @@ Mit diesen Codeausschnitten wird veranschaulicht, wie folgende Vorgänge mit den
 
 ## <a name="add-the-dependencies"></a>Hinzufügen der Abhängigkeiten
 
-Erstellen Sie eine Datei mit dem Namen `rest-apis.js`, und fügen Sie die folgende _requires_-Anweisung hinzu, um HTTP-Anforderungen zu senden.
+Erstellen Sie eine Datei namens `rest-apis.js`, und fügen Sie die folgenden Abhängigkeiten hinzu:
 
-```javascript
-const request = require("requestretry");
-```
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="dependencies":::
+
+## <a name="add-utility-functions"></a>Hinzufügen von Hilfsfunktionen
+
+Fügen Sie die folgenden Hilfsfunktionen hinzu.
+
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="utility":::
 
 ## <a name="add-azure-resource-information"></a>Hinzufügen von Azure-Ressourceninformationen
 
@@ -91,7 +95,7 @@ Legen Sie die folgenden Umgebungsvariablen fest:
 * `QNAMAKER_RESOURCE_KEY`: Der **Schlüssel** ist eine Zeichenfolge mit 32 Zeichen und im Azure-Portal in der QnA Maker-Ressource auf der **Schnellstartseite** verfügbar. Diese Ressource ist nicht mit dem Vorhersageendpunktschlüssel identisch.
 * `QNAMAKER_AUTHORING_ENDPOINT` – Der Authoring Endpoint (Erstellungsendpunkt) im Format `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` enthält Ihren **Ressourcennamen**. Diese Ressource ist nicht die gleiche URL, die zum Abfragen des Vorhersageendpunkts verwendet wird.
 
-[!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=authorization)]
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="authorization":::
 
 ## <a name="create-a-knowledge-base"></a>Erstellen einer Wissensdatenbank
 
@@ -103,13 +107,13 @@ In einer Wissensdatenbank sind Frage-Antwort-Paare gespeichert, die aus einem JS
 
 Verwenden Sie die [REST-API, um eine Wissensdatenbank zu erstellen](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create).
 
-[!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=createKb)]
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="createKb":::
 
 ## <a name="replace-a-knowledge-base"></a>Ersetzen einer Wissensdatenbank
 
 Verwenden Sie die [REST-API, um eine Wissensdatenbank zu ersetzen](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/replace).
 
-[!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=replaceKb)]
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="replaceKb":::
 
 ## <a name="publish-a-knowledge-base"></a>Veröffentlichen einer Wissensdatenbank
 
@@ -117,14 +121,13 @@ Veröffentlichen der Wissensdatenbank Mit diesem Prozess wird die Wissensdatenba
 
 Verwenden Sie die [REST-API, um eine Wissensdatenbank zu veröffentlichen](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish).
 
-
-[!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=publish)]
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="publishKb":::
 
 ## <a name="download-the-knowledge-base"></a>Herunterladen der Wissensdatenbank
 
 Verwenden Sie die [REST-API, um eine Wissensdatenbank herunterzuladen](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/download).
 
-[!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=download)]
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="downloadKb":::
 
 ## <a name="delete-a-knowledge-base"></a>Löschen einer Wissensdatenbank
 
@@ -132,7 +135,7 @@ Löschen Sie die Wissensdatenbank, wenn Sie die Nutzung beendet haben.
 
 Verwenden Sie die [REST-API, um eine Wissensdatenbank zu löschen](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/delete).
 
-[!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=deleteKb)]
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="deleteKb":::
 
 ## <a name="get-status-of-an-operation"></a>Abrufen des Status eines Vorgangs
 
@@ -140,9 +143,13 @@ Bei zeitintensiven Prozessen, z. B. dem Erstellungsprozess, wird eine Vorgangs-
 
 Verwenden Sie die [REST-API zum Überwachen von Vorgängen in einer Wissensdatenbank](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails).
 
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="operationDetails":::
 
-[!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=operationDetails)]
+## <a name="add-main-method"></a>Hinzufügen der Main-Methode
 
+Fügen Sie die folgende `main`-Methode hinzu.
+
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="main":::
 
 ## <a name="run-the-application"></a>Ausführen der Anwendung
 

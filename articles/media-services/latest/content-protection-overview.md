@@ -4,25 +4,27 @@ titleSuffix: Azure Media Services
 description: Erfahren Sie mehr über den Schutz von Inhalten mit dynamischer Verschlüsselung, Streamingprotokollen und Verschlüsselungstypen in Azure Media Services.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 03/17/2020
-ms.author: juliako
-ms.custom: seodec18
-ms.openlocfilehash: 0be481d90562ca611b021e2f05d9109eb51958c8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: d0f040961bfb72082f8c5accb86999d489a93de5
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023261"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401383"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>Schützen Sie Ihren Inhalt mit der dynamischen Verschlüsselung von Media Services
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Verwenden Sie Azure Media Services, um Ihre Medien ab dem Zeitpunkt, an dem sie Ihren Computer verlassen, während des gesamten Prozesses der Speicherung, Verarbeitung und Übermittlung sichern. Mit Media Services können Sie Ihre zu übermittelnden Live- und On-Demand-Inhalte dynamisch mit Advanced Encryption Standard (AES-128) oder einem der drei wichtigsten DRM-Systeme verschlüsseln: Microsoft PlayReady, Google Widevine und Apple FairPlay. Media Services bietet auch einen Dienst für die Übermittlung von AES-Schlüsseln und DRM-Lizenzen (PlayReady, Widevine und FairPlay) an autorisierte Clients. Inhalt, der mit einem unverschlüsselten AES-Schlüssel verschlüsselt und per HTTPS gesendet wird, bleibt verschlüsselt, bis er den Client erreicht. 
 
@@ -154,6 +156,10 @@ Das Smooth Streaming-Protokoll unterstützt folgende Containerformate und Versch
 |---|---|---|
 |fMP4|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=cbc)`|
 |fMP4 | CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=cenc)`|
+|fMP4 | PIFF 1.1 (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=piff)`|
+
+> [!NOTE]
+> PIFF 1.1-Unterstützung wird als abwärtskompatible Lösung für ein Smart TV-Gerät (Samsung, LG) bereitgestellt, das die frühe „Silverlight“-Version von Common Encryption implementiert hat. Sie sollten das PIFF-Format nur dann verwenden, wenn es zur Unterstützung älterer, von 2009 bis 2015 ausgelieferter Samsung- oder LG-Smart TV-Geräte verwendet werden muss, die die PIFF 1.1-Version der PlayReady-Verschlüsselung unterstützten. 
 
 ### <a name="browsers"></a>Browser
 

@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: 0e2aee194d3c97655dd4ec5aaeea46fb607c4c5e
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 327fa1d7eb73d8e65bb4f81c1dff0fe2bec2913b
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210965"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319565"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>Die Datei „CreateUiDefinition.json“ für die Benutzeroberfläche zum Erstellen verwalteter Azure-Anwendungen
 
@@ -25,6 +25,7 @@ Die Vorlage sieht wie folgt aus:
     "version": "0.1.2-preview",
     "parameters": {
         "config": {
+            "isWizard": false,
             "basics": { }
         },
         "basics": [ ],
@@ -35,7 +36,7 @@ Die Vorlage sieht wie folgt aus:
 }
 ```
 
-Ein CreateUiDefinition-Element enthält immer drei Eigenschaften: 
+Eine `CreateUiDefinition` enthält immer drei Eigenschaften:
 
 * handler
 * version
@@ -43,41 +44,19 @@ Ein CreateUiDefinition-Element enthält immer drei Eigenschaften:
 
 Der Handler muss immer `Microsoft.Azure.CreateUIDef` lauten, und die neueste unterstützte Version ist `0.1.2-preview`.
 
-Das Schema der parameters-Eigenschaft hängt von der Kombination aus den angegebenen Werten für „handler“ und „version“ ab. Für verwaltete Anwendungen lauten die unterstützten Eigenschaften `basics`, `steps`, `outputs` und `config`. Die Eigenschaften „basics“ und „steps“ enthalten die [Elemente ](create-uidefinition-elements.md) (wie Textfelder und Dropdownfelder), die im Azure-Portal angezeigt werden sollen. Mit der outputs-Eigenschaft werden die Ausgabewerte der angegebenen Elemente den Parametern der Azure Resource Manager-Vorlage zugeordnet. Sie verwenden `config` nur, wenn Sie das Standardverhalten des `basics`-Schritts außer Kraft setzen müssen.
+Das Schema der parameters-Eigenschaft hängt von der Kombination aus den angegebenen Werten für „handler“ und „version“ ab. Für verwaltete Anwendungen lauten die unterstützten Eigenschaften `config`, `basics`, `steps` und `outputs`. Sie verwenden `config` nur, wenn Sie das Standardverhalten des `basics`-Schritts außer Kraft setzen müssen. Die Eigenschaften „basics“ und „steps“ enthalten die [Elemente ](create-uidefinition-elements.md) (wie Textfelder und Dropdownfelder), die im Azure-Portal angezeigt werden sollen. Mit der outputs-Eigenschaft werden die Ausgabewerte der angegebenen Elemente den Parametern der Azure Resource Manager-Vorlage zugeordnet.
 
 Die Aufnahme von `$schema` wird empfohlen, ist aber optional. Wenn ein Wert angegeben wird, muss der Wert für `version` der Version im `$schema`-URI entsprechen.
 
 Sie können einen JSON-Editor zum Erstellen von „createUiDefinition“ verwenden, und sie dann in der [Sandbox für „createUiDefinition“](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade) testen, um eine Vorschau davon anzuzeigen. Weitere Informationen zur Sandbox finden Sie unter [Testen Ihrer Portaloberfläche für Azure Managed Applications](test-createuidefinition.md).
 
-## <a name="basics"></a>Grundlagen
-
-Der **Basics**-Schritt ist der erste Schritt, der generiert wird, wenn das Azure-Portal die Datei analysiert. Standardmäßig kann der Benutzer im Basics-Schritt das Abonnement, die Ressourcengruppe und den Speicherort für die Bereitstellungsvorlage auswählen.
-
-:::image type="content" source="./media/create-uidefinition-overview/basics.png" alt-text="Basics-Standard":::
-
-In diesem Abschnitt können Sie weitere Elemente hinzufügen. Fügen Sie nach Möglichkeit Elemente hinzu, die bereitstellungsweite Parameter abfragen, z. B. den Namen eines Clusters oder Administratoranmeldeinformationen.
-
-Das folgende Beispiel zeigt ein Textfeld, das den Standardelementen hinzugefügt wurde.
-
-```json
-"basics": [
-    {
-        "name": "textBox1",
-        "type": "Microsoft.Common.TextBox",
-        "label": "Textbox on basics",
-        "defaultValue": "my text value",
-        "toolTip": "",
-        "visible": true
-    }
-]
-```
-
 ## <a name="config"></a>Config
 
-Sie geben das Config-Element an, wenn Sie das Standardverhalten für die Basics-Schritte überschreiben müssen. Im folgenden Beispiel wird die verfügbare Eigenschaft gezeigt.
+Die `config`-Eigenschaft ist optional. Verwenden Sie sie entweder, um das Standardverhalten des Grundlagenschritts zu überschreiben oder die Schnittstelle als Schritt-für-Schritt-Assistent festzulegen. Wenn `config` verwendet wird, handelt es sich hierbei um die erste Eigenschaft im `parameters`-Abschnitt der Datei **createUiDefinition.json**. Im folgenden Beispiel wird die verfügbare Eigenschaft gezeigt.
 
 ```json
 "config": {
+    "isWizard": false,
     "basics": {
         "description": "Customized description with **markdown**, see [more](https://www.microsoft.com).",
         "subscription": {
@@ -124,15 +103,50 @@ Sie geben das Config-Element an, wenn Sie das Standardverhalten für die Basics-
 },
 ```
 
-Geben Sie für `description` eine markdownaktivierte Zeichenfolge an, in der Ihre Ressource beschrieben wird. Mehrzeilige Formate und Verknüpfungen werden unterstützt.
+### <a name="wizard"></a>Assistent
 
-Geben Sie für `location` die Eigenschaften für das Standort-Steuerelement an, das Sie überschreiben möchten. Alle nicht überschriebenen Eigenschaften werden auf ihre Standardwerte festgelegt. `resourceTypes` akzeptiert ein Array von Zeichenfolgen, das vollqualifizierte Ressourcentypnamen enthält. Die Standortoptionen sind ausschließlich auf Regionen beschränkt, die die Ressourcentypen unterstützen.  `allowedValues`  akzeptiert ein Array von Regionszeichenfolgen. Nur diese Regionen werden in der Dropdownliste angezeigt. Sie können sowohl `allowedValues` als auch   `resourceTypes` festlegen. Das Ergebnis ist die Schnittmenge beider Listen. Schließlich kann die `visible`-Eigenschaft verwendet werden, um das Standortdropdown bedingt oder vollständig zu deaktivieren.  
+Die `isWizard`-Eigenschaft ermöglicht Ihnen, eine erfolgreiche Überprüfung jedes Schritts zu erzwingen, bevor mit dem nächsten Schritt fortgefahren wird. Wenn die `isWizard`-Eigenschaft nicht angegeben wird, ist der Standardwert **false**, und die schrittweise Validierung ist nicht erforderlich.
+
+Wenn `isWizard` aktiviert, d. h. auf **true** festgelegt ist, ist die Registerkarte **Grundlagen** verfügbar, und alle anderen Registerkarten sind deaktiviert. Wenn die Schaltfläche **Weiter** ausgewählt ist, zeigt das Symbol der Registerkarte an, ob die Validierung einer Registerkarte erfolgreich oder fehlerhaft war. Nachdem die erforderlichen Felder der Registerkarte ausgefüllt und überprüft wurden, ermöglicht die Schaltfläche **Weiter** die Navigation zur nächsten Registerkarte. Wenn alle Registerkarten die Überprüfung bestanden haben, können Sie auf der Seite **Überprüfen und erstellen** die Schaltfläche **Erstellen** auswählen, um die Bereitstellung zu starten.
+
+:::image type="content" source="./media/create-uidefinition-overview/tab-wizard.png" alt-text="Registerkarten-Assistent":::
+
+### <a name="override-basics"></a>Überschreiben von Grundlagen
+
+Mit der Grundlagenkonfiguration können Sie den Grundlagenschritt anpassen.
+
+Geben Sie für `description` eine markdownaktivierte Zeichenfolge an, in der Ihre Ressource beschrieben wird. Mehrzeilige Formate und Verknüpfungen werden unterstützt.
 
 Die Elemente `subscription` und `resourceGroup` ermöglichen es Ihnen, zusätzliche Validierungen anzugeben. Die Syntax zum Angeben von Validierungen ist identisch mit der benutzerdefinierten Validierung für ein [Textfeld](microsoft-common-textbox.md). Sie können auch `permission`-Validierungen für das Abonnement oder die Ressourcengruppe angeben.  
 
 Das Abonnement-Steuerelement (subscription) akzeptiert eine Liste mit Ressourcenanbieter-Namespaces. Beispielsweise können Sie **Microsoft.Compute** angeben. Es zeigt eine Fehlermeldung an, wenn der Benutzer ein Abonnement auswählt, das den Ressourcenanbieter nicht unterstützt. Der Fehler tritt auf, wenn der Ressourcenanbieter für dieses Abonnement nicht registriert ist und der Benutzer nicht über die Berechtigung zum Registrieren des Ressourcenanbieters verfügt.  
 
 Das Ressourcengruppen-Steuerelement verfügt über eine Option für `allowExisting`. Wenn diese `true` ist, können die Benutzer Ressourcengruppen auswählen, die bereits über Ressourcen verfügen. Dieses Flag lässt sich am besten auf Projektmappenvorlagen anwenden, bei denen das Standardverhalten erfordert, dass Benutzer eine neue oder leere Ressourcengruppe auswählen müssen. In den meisten anderen Szenarien ist die Angabe dieser Eigenschaft nicht erforderlich.  
+
+Geben Sie für `location` die Eigenschaften für das Standort-Steuerelement an, das Sie überschreiben möchten. Alle nicht überschriebenen Eigenschaften werden auf ihre Standardwerte festgelegt. `resourceTypes` akzeptiert ein Array von Zeichenfolgen, das vollqualifizierte Ressourcentypnamen enthält. Die Standortoptionen sind ausschließlich auf Regionen beschränkt, die die Ressourcentypen unterstützen.  `allowedValues`  akzeptiert ein Array von Regionszeichenfolgen. Nur diese Regionen werden in der Dropdownliste angezeigt. Sie können sowohl `allowedValues` als auch   `resourceTypes` festlegen. Das Ergebnis ist die Schnittmenge beider Listen. Schließlich kann die `visible`-Eigenschaft verwendet werden, um das Standortdropdown bedingt oder vollständig zu deaktivieren.  
+
+## <a name="basics"></a>Grundlagen
+
+Der **Basics**-Schritt ist der erste Schritt, der generiert wird, wenn das Azure-Portal die Datei analysiert. Standardmäßig kann der Benutzer im Basics-Schritt das Abonnement, die Ressourcengruppe und den Speicherort für die Bereitstellungsvorlage auswählen.
+
+:::image type="content" source="./media/create-uidefinition-overview/basics.png" alt-text="Basics-Standard":::
+
+In diesem Abschnitt können Sie weitere Elemente hinzufügen. Fügen Sie nach Möglichkeit Elemente hinzu, die bereitstellungsweite Parameter abfragen, z. B. den Namen eines Clusters oder Administratoranmeldeinformationen.
+
+Das folgende Beispiel zeigt ein Textfeld, das den Standardelementen hinzugefügt wurde.
+
+```json
+"basics": [
+    {
+        "name": "textBox1",
+        "type": "Microsoft.Common.TextBox",
+        "label": "Textbox on basics",
+        "defaultValue": "my text value",
+        "toolTip": "",
+        "visible": true
+    }
+]
+```
 
 ## <a name="steps"></a>Schritte
 

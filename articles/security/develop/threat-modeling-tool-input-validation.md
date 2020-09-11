@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 5782c8b96534722a1e03ce619504e513a1c5e048
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3bb944badfbdffd703672f9e78619c70a148aae2
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87539797"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89293352"
 ---
 # <a name="security-frame-input-validation--mitigations"></a>Sicherheitsrahmen: Eingabeüberprüfung | Risikominderung 
 | Produkt/Dienst | Artikel |
@@ -396,7 +397,7 @@ Im vorigen Codebeispiel darf der Eingabewert darf nicht mehr als 11 Zeichen umfa
 | **Zutreffende Technologien** | Allgemein, MVC5, MVC6 |
 | **Attribute**              | –  |
 | **Referenzen**              | [Hinzufügen einer Überprüfung](https://www.asp.net/mvc/overview/getting-started/introduction/adding-validation), [Überprüfen von Modelldaten in einer MVC-Anwendung](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx), [Richtlinien für Ihre ASP.NET MVC-Anwendungen](https://msdn.microsoft.com/magazine/dd942822.aspx) |
-| **Schritte** | <p>Alle Eingabeparameter müssen überprüft werden, bevor sie in der Anwendung verwendet werden, um sicherzustellen, dass die Anwendung vor schädlichen Benutzereingaben geschützt ist. Überprüfen Sie die Eingabewerte mit regulären Ausdrucksüberprüfungen auf Serverseite mit einer Whitelist-Überprüfungsstrategie. Durch unbereinigte Benutzereingaben bzw. an die Methode übergebene Parameter kann das Risiko der Codeeinschleusung steigen.</p><p>Bei Webanwendungen können auch Formularfelder, Abfragezeichenfolgen, Cookies, HTTP-Header und Webdienstparameter mögliche Einstiegspunkte darstellen.</p><p>Die folgenden Eingabeüberprüfungen müssen bei der Modellbindung ausgeführt werden:</p><ul><li>Die Modelleigenschaften sollten mit der RegularExpression-Anmerkung versehen werden, um zulässige Zeichen und die maximal zulässige Länge zu akzeptieren.</li><li>Die Controllermethoden sollten die ModelState-Gültigkeit prüfen.</li></ul>|
+| **Schritte** | <p>Alle Eingabeparameter müssen überprüft werden, bevor sie in der Anwendung verwendet werden, um sicherzustellen, dass die Anwendung vor schädlichen Benutzereingaben geschützt ist. Überprüfen Sie die Eingabewerte mit Überprüfungen regulärer Ausdrücke auf Serverseite mit einer Überprüfungsstrategie, die auf einer Zulassungsliste basiert. Durch unbereinigte Benutzereingaben bzw. an die Methode übergebene Parameter kann das Risiko der Codeeinschleusung steigen.</p><p>Bei Webanwendungen können auch Formularfelder, Abfragezeichenfolgen, Cookies, HTTP-Header und Webdienstparameter mögliche Einstiegspunkte darstellen.</p><p>Die folgenden Eingabeüberprüfungen müssen bei der Modellbindung ausgeführt werden:</p><ul><li>Die Modelleigenschaften sollten mit der RegularExpression-Anmerkung versehen werden, um zulässige Zeichen und die maximal zulässige Länge zu akzeptieren.</li><li>Die Controllermethoden sollten die ModelState-Gültigkeit prüfen.</li></ul>|
 
 ## <a name="sanitization-should-be-applied-on-form-fields-that-accept-all-characters-eg-rich-text-editor"></a><a id="richtext"></a>Anwenden der Bereinigung auf Felder, die alle Zeichen akzeptieren, z.B. Rich-Text-Editor
 
@@ -440,7 +441,7 @@ Verwenden Sie nicht `innerHtml`, sondern `innerText`. Verwenden Sie zudem nicht 
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | –  |
 | **Referenzen**              | [Das OAuth 2.0-Autorisierungsframework – Offene Redirectors](https://tools.ietf.org/html/rfc6749#section-10.15) |
-| **Schritte** | <p>Anwendungsentwürfe, die eine Umleitung zu einem vom Benutzer bereitgestellten Speicherort erfordern, müssen die möglichen Umleitungsziele auf eine vordefinierte Liste „sicherer“ Standorte oder Domänen einschränken. Alle Umleitungen in der Anwendung müssen geschlossen/sicher sein.</p><p>Gehen Sie dazu folgendermaßen vor:</p><ul><li>Identifizieren Sie alle Umleitungen.</li><li>Implementieren Sie für jede Umleitung eine entsprechende Gegenmaßnahme. Entsprechende Gegenmaßnahmen wären z. B. eine Umleitungswhitelist oder Benutzerbestätigung. Verwendet eine Website oder ein Dienst mit offener Umleitung Facebook/OAuth/OpenID-Identitätsanbieter, so können Angreifer die Anmeldetoken von Benutzern stehlen und deren Identität annehmen. Dies zählt zu den inhärenten Risiken bei Verwendung von OAuth, die in RFC 6749 „Das OAuth 2.0-Autorisierungsframework“ im Abschnitt 10.15 zu offenen Redirectors dokumentiert sind. Zudem können Anmeldeinformationen von Benutzern durch Spear-Phishing-Angriffe mit offenen Umleitungen gestohlen werden.</li></ul>|
+| **Schritte** | <p>Anwendungsentwürfe, die eine Umleitung zu einem vom Benutzer bereitgestellten Speicherort erfordern, müssen die möglichen Umleitungsziele auf eine vordefinierte Liste „sicherer“ Standorte oder Domänen einschränken. Alle Umleitungen in der Anwendung müssen geschlossen/sicher sein.</p><p>Gehen Sie dazu folgendermaßen vor:</p><ul><li>Identifizieren Sie alle Umleitungen.</li><li>Implementieren Sie für jede Umleitung eine entsprechende Gegenmaßnahme. Entsprechende Gegenmaßnahmen wären z. B. eine Umleitungszulassungsliste oder Benutzerbestätigung. Verwendet eine Website oder ein Dienst mit offener Umleitung Facebook/OAuth/OpenID-Identitätsanbieter, so können Angreifer die Anmeldetoken von Benutzern stehlen und deren Identität annehmen. Dies zählt zu den inhärenten Risiken bei Verwendung von OAuth, die in RFC 6749 „Das OAuth 2.0-Autorisierungsframework“ im Abschnitt 10.15 zu offenen Redirectors dokumentiert sind. Zudem können Anmeldeinformationen von Benutzern durch Spear-Phishing-Angriffe mit offenen Umleitungen gestohlen werden.</li></ul>|
 
 ## <a name="implement-input-validation-on-all-string-type-parameters-accepted-by-controller-methods"></a><a id="string-method"></a>Implementieren der Eingabeüberprüfung für alle Zeichenfolgentypparameter, die von Controllermethoden akzeptiert werden
 

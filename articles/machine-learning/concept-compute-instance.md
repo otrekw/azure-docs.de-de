@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: c72777bf2a4415a7f773f82a21a121f5e58f2ec0
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 5c5326310887cd5756ae264a35aafe7e771a7863
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651914"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226793"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Was ist eine Azure Machine Learning-Compute-Instanz?
 
@@ -24,7 +24,7 @@ Compute-Instanzen vereinfachen den Einstieg in die Azure Machine Learning-Entwic
 
 Nutzen Sie eine Compute-Instanz als Ihre vollständig konfigurierte und verwaltete Entwicklungsumgebung in der Cloud für maschinelles Lernen. Sie können auch als Computeziel für Entwicklungs- und Testzwecke für Training und Rückschluss verwendet werden.  
 
-Verwenden Sie für das Modelltraining in Produktionsqualität einen [Azure Machine Learning-Computecluster](how-to-set-up-training-targets.md#amlcompute) mit Skalierungsmöglichkeiten dank mehrerer Knoten. Verwenden Sie für die Modellimplementierung in Produktionsqualität den [Azure Kubernetes Service-Cluster](how-to-deploy-azure-kubernetes-service.md).
+Verwenden Sie für das Modelltraining in Produktionsqualität einen [Azure Machine Learning-Computecluster](how-to-create-attach-compute-sdk.md#amlcompute) mit Skalierungsmöglichkeiten dank mehrerer Knoten. Verwenden Sie für die Modellimplementierung in Produktionsqualität den [Azure Kubernetes Service-Cluster](how-to-deploy-azure-kubernetes-service.md).
 
 ## <a name="why-use-a-compute-instance"></a>Gründe für eine Compute-Instanz
 
@@ -138,18 +138,7 @@ Diese Aktionen können von RBAC gesteuert werden:
 
 ### <a name="create-a-compute-instance"></a><a name="create"></a>Erstellen einer Compute-Instanz
 
-Erstellen Sie in Ihrem Arbeitsbereich im Azure Machine Learning Studio eine neue Compute-Instanz entweder im Abschnitt **Compute** oder im Abschnitt **Notebooks**, wenn Sie bereit sind, eines Ihrer Notebooks auszuführen.
-
-:::image type="content" source="media/concept-compute-instance/create-compute-instance.png" alt-text="Erstellen einer neuen Compute-Instanz":::
-
-
-|Feld  |BESCHREIBUNG  |
-|---------|---------|
-|Computename     |  <li>Der Name ist erforderlich und muss zwischen 3 und 24 Zeichen lang sein.</li><li>Gültige Zeichen sind Groß- und Kleinbuchstaben, Ziffern und das Zeichen **-** .</li><li>Der Name muss mit einem Buchstaben beginnen.</li><li>Der Name muss auf allen vorhandenen Compute-Instanzen innerhalb einer Azure-Region eindeutig sein. Sie erhalten eine Warnung, wenn der von Ihnen gewählte Name nicht eindeutig ist.</li><li>Wenn ein **-** -Zeichen verwendet wird, muss darauf im Namen mindestens ein Buchstabe folgen.</li>     |
-|Typ des virtuellen Computers |  Wählen Sie CPU oder GPU aus. Dieser Typ kann nach der Erstellung nicht mehr geändert werden.     |
-|Größe des virtuellen Computers     |  Die Größe der unterstützten virtuellen Computer kann in Ihrer Region eingeschränkt sein. Überprüfen Sie die [Verfügbarkeitsliste](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).     |
-|Aktivieren/Deaktivieren des SSH-Zugriffs     |   Der SSH-Zugriff ist standardmäßig deaktiviert.  Der SSH-Zugriff kann nach der Erstellung nicht mehr geändert werden. Stellen Sie sicher, dass Sie den Zugriff aktivieren, wenn Sie das interaktive Debuggen mit [VS Code Remote](how-to-set-up-vs-code-remote.md) planen.   |
-|Erweiterte Einstellungen     |  Optional. Konfigurieren Sie ein virtuelles Netzwerk. Geben Sie **Ressourcengruppe**, **Virtuelles Netzwerk** und **Subnetz** an, um die Compute-Instanz innerhalb von Azure Virtual Network (VNET) zu erstellen. Weitere Informationen finden Sie unter diesen [Netzwerkanforderungen](how-to-enable-virtual-network.md#compute-instance) für VNET.        |
+Erstellen Sie in Ihrem Arbeitsbereich im Azure Machine Learning Studio [eine neue Compute-Instanz](how-to-create-attach-compute-studio.md#compute-instance) entweder im Abschnitt **Compute** oder im Abschnitt **Notebooks**, wenn Sie bereit sind, eines Ihrer Notebooks auszuführen. 
 
 Sie können auch eine Instanz
 * direkt in der [integrierten Notebookumgebung](tutorial-1st-experiment-sdk-setup.md#azure) erstellen.
@@ -158,7 +147,7 @@ Sie können auch eine Instanz
 * Mit dem Azure Machine Learning SDK
 * Über die [CLI-Erweiterung für Azure Machine Learning](reference-azure-machine-learning-cli.md#computeinstance)
 
-Die dedizierten Kerne pro Region pro VM-Familienkontingent und das gesamte regionale Kontingent, das für die Erstellung von Compute-Instanzen gilt. ist vereinheitlicht und wird mit dem Computeclusterkontingent für das Azure Machine Learning-Training gemeinsam genutzt. Das Beenden der Compute-Instanz gibt keine Kontingente frei, um sicherzustellen, dass Sie die Compute-Instanz erneut starten können.
+Das Kontingent dedizierter Kerne pro Region pro VM-Familie und gesamte regionale Kontingent, das für die Erstellung von Compute-Instanzen gilt, ist einheitlich und wird mit dem Kontingent für Azure Machine Learning-Trainingcomputecluster gemeinsam genutzt. Das Beenden der Compute-Instanz gibt keine Kontingente frei, um sicherzustellen, dass Sie die Compute-Instanz erneut starten können.
 
 ## <a name="compute-target"></a>Computeziel
 

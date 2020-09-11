@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/1/2020
 ms.author: adamwa
-ms.openlocfilehash: a9145c7c26f4d6caa1679052035b36f1ae88f878
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 948fbcd57514f4ef77483b05c60324e867e0e3ed
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714779"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89293641"
 ---
 # <a name="design-assistant-experiences-for-windows-10"></a>Entwerfen von Assistenten für Windows 10
 
@@ -118,9 +118,9 @@ Viele PCs sind portierbar, jedoch nicht immer in Reichweite des Kunden. Sie werd
 
 Daher sollten für die Assistenten die Anweisungen in diesem Abschnitt befolgt werden, um die Sicherheit zu gewährleisten. Interaktionen auf dem Sperrbildschirm erfolgen, wenn der Windows-Benutzer nicht authentifiziert ist. Dies bedeutet, dass im Allgemeinen **Eingaben in den Assistenten ebenfalls als nicht authentifiziert** behandelt werden sollen.
 
-- Assistenten sollten **eine Funktionen-Whitelist implementieren, um Funktionen zu erkennen, auf die ohne Risiko auf dem Sperrbildschirm zugegriffen werden kann**.
+- Assistenten sollten **eine Zulassungsliste für Funktionen implementieren, um Funktionen zu erkennen, auf die ohne Risiko auf dem Sperrbildschirm zugegriffen werden kann**.
 - Technologien der Sprecheridentifikation können bei der Minderung einiger Risiken genutzt werden, die Sprecheridentifikation ersetzt jedoch nicht die Windows-Authentifizierung.
-- Die Funktionen-Whitelist sollte drei Klassen von Aktionen oder Funktionen beinhalten:
+- Die Zulassungsliste für Funktionen sollte drei Klassen von Aktionen oder Funktionen beinhalten:
 
 | **Aktionsklasse** | **Beschreibung** | **Beispiele (keine vollständige Liste)** |
 | --- | --- | --- |
@@ -130,7 +130,7 @@ Daher sollten für die Assistenten die Anweisungen in diesem Abschnitt befolgt w
 
 Im Fall von Contoso sind allgemeine öffentliche Börseninformationen ohne Authentifizierung sicher. Kundenspezifische Informationen, z. B. die Anzahl der im Besitz befindlichen Aktien, sind mit Sprecheridentifikation wahrscheinlich sicher. Das Kaufen oder Verkaufen von Aktien sollte jedoch nie ohne Windows-Authentifizierung zugelassen werden.
 
-Für zusätzliche Sicherheit **werden Weblinks und andere Arten des Startens einer App durch eine andere App immer von Windows blockiert, bis sich der Kunde anmeldet**. Als letztes Mittel der Risikominderung behält sich Microsoft das Recht vor, eine Anwendung aus der Whitelist der aktivierten Assistenten zu entfernen, wenn ein schwerwiegendes Sicherheitsproblem nicht rechtzeitig behoben wird.
+Für zusätzliche Sicherheit **werden Weblinks und andere Arten des Startens einer App durch eine andere App immer von Windows blockiert, bis sich der Kunde anmeldet**. Als letztes Mittel der Risikominderung behält sich Microsoft das Recht vor, eine Anwendung aus der Zulassungsliste der aktivierten Assistenten zu entfernen, wenn ein schwerwiegendes Sicherheitsproblem nicht rechtzeitig behoben wird.
 
 ## <a name="design-guidance-for-voice-activation-preview"></a>Entwurfsleitfaden für die Sprachaktivierungsvorschau
 

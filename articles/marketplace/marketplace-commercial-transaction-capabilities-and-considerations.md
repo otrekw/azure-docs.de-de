@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 04a984a2dfa473502fd9e534e52b60b33be52757
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 1b0600b164186097bc41a7e4d655e32bb2d0acbd
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88704959"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318776"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Transaktionsfunktionen im kommerziellen Marketplace
 
@@ -144,6 +144,8 @@ In diesem Szenario stellt Microsoft 100,00 USD für Ihre Softwarelizenz in Rech
 |Microsoft zahlt Ihnen 80% Ihrer Lizenzkosten <br> \* Für jede qualifizierte SaaS-App zahlt Microsoft 90 % Ihrer Lizenzkosten.   |   80,00 USD pro Monat <br> \* 90,00 USD pro Monat    |
 |Microsoft behält 20% Ihrer Lizenzkosten ein <br> \* Für jede qualifizierte SaaS-App behält Microsoft 10 % Ihrer Lizenzkosten.  |  20,00 USD pro Monat <br> \* 10,00 USD     |
 
+### <a name="reduced-service-fee"></a>Reduzierte Servicegebühr
+
 Für bestimmte Angebote, die Sie im kommerziellen Marketplace veröffentlichen, senkt Microsoft die Marketplace-Dienstgebühr von 20 % (wie in der [Microsoft-Herausgebervereinbarung](https://go.microsoft.com/fwlink/?LinkID=699560) angegeben) auf 10 %. Damit Ihre Angebote qualifiziert sind, müssen sie von Microsoft als gefördert für Azure IP-Co-Selling gekennzeichnet worden sein. Die Anforderungen für die Berechtigung müssen mindestens fünf (5) Arbeitstage vor dem Ende eines jeden Kalendermonats erfüllt sein, damit die reduzierte Marketplace-Dienstgebühr für den Monat in Anspruch genommen werden kann. Die gesenkte Marketplace-Dienstgebühr gilt für Azure IP-Co-Selling-Anreize für SaaS, VMs, verwaltete Apps und andere qualifizierte transaktionsfähige IaaS-Angebote, die über den kommerziellen Marketplace bereitgestellt werden.
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>Rechnungsstellung für den Kunden, Zahlung, Abrechnung und Inkasso
@@ -183,6 +185,7 @@ In diesem Abschnitt werden die Transaktionsanforderungen für verschiedene Angeb
 
 - Für die Veröffentlichungsoption „Transaktion“ sind unabhängig vom Preismodell des Angebots ein Microsoft-Konto und Finanzinformationen erforderlich.
 - Obligatorische Finanzinformationen sind beispielsweise ein Auszahlungskonto und ein Steuerprofil.
+- Der Herausgeber muss sich in einem [unterstützten Land oder einer unterstützten Region](sell-from-countries.md) befinden.
 
 Weitere Informationen zum Einrichten dieser Konten finden Sie unter [Verwalten Ihres Kontos im kommerziellen Marketplace in Partner Center](partner-center-portal/manage-account.md).
 

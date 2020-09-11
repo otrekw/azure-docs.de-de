@@ -8,30 +8,31 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 09/02/2020
 ms.author: aahi
-ms.openlocfilehash: dc17c25a84c3d0af39bfa7a8902bdc1d93f201e8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b242530b09f399a84f10a40ea35e21c1119f52b1
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88518321"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321019"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Installieren und Ausführen von Containern für den Speech-Dienst (Vorschau)
 
 Container ermöglichen es Ihnen, einige der Speech-Dienst-APIs in Ihrer eigenen Umgebung auszuführen. Container eignen sich hervorragend für bestimmte Sicherheits- und Datengovernanceanforderungen. In diesem Artikel erfahren Sie, wie Sie einen Speech-Container herunterladen, installieren und ausführen.
 
-Mit Speech-Containern können Kunden eine Speech-basierte Anwendungsarchitektur erstellen, die sowohl für stabile Cloudfunktionen als auch für das Edge optimiert ist. Es stehen vier verschiedene Container zur Verfügung. Die beiden Standardcontainer sind **Spracherkennung** und **Sprachsynthese**. Die beiden benutzerdefinierten Container sind **Benutzerdefinierte Spracherkennung** und **Benutzerdefinierte Sprachsynthese**. Speech-Container haben denselben [Preis](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) wie die cloudbasierten Azure Speech-Dienste.
+Mit Speech-Containern können Kunden eine Speech-basierte Anwendungsarchitektur erstellen, die sowohl für stabile Cloudfunktionen als auch für das Edge optimiert ist. Es stehen fünf verschiedene Container zur Verfügung. Die beiden Standardcontainer sind **Spracherkennung** und **Sprachsynthese**. Die beiden benutzerdefinierten Container sind **Benutzerdefinierte Spracherkennung** und **Benutzerdefinierte Sprachsynthese**. Der **Text-zu-Sprache (neuronal)** -Container bietet durch die Verwendung eines erweiterten Modells natürlichere Äußerungen. Speech-Container haben denselben [Preis](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) wie die cloudbasierten Azure Speech-Dienste.
 
 > [!IMPORTANT]
 > Alle Speech-Container werden zurzeit im Rahmen einer [öffentlichen eingeschränkten Vorschau](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services) angeboten. Wenn Speech-Container in die allgemeine Verfügbarkeit übergehen, erfolgt eine entsprechende Ankündigung.
 
 | Funktion | Features | Neueste Version |
 |--|--|--|
-| Spracherkennung | Analysiert die Stimmung und transkribiert kontinuierliche Echtzeitsprach- oder Batchaudioaufzeichnungen mit Zwischenergebnissen.  | 2.3.1 |
-| Benutzerdefinierte Spracherkennung | Verwendet ein benutzerdefiniertes Modell aus dem [Custom Speech-Portal](https://speech.microsoft.com/customspeech) und transkribiert kontinuierliche Echtzeitsprach- oder Batchaudioaufzeichnungen in Text mit Zwischenergebnissen. | 2.3.1 |
-| Text-zu-Sprache | Konvertiert Text in natürlich klingende Sprache mit Nur-Text-Eingaben oder SSML (Speech Synthesis Markup Language, Markupsprache für Sprachsynthese). | 1.5.0 |
-| Benutzerdefinierte Sprachsynthese | Verwendet ein benutzerdefiniertes Modell aus dem [Custom Voice-Portal](https://aka.ms/custom-voice-portal) und konvertiert Text in natürlich klingende Sprache mit Nur-Text-Eingaben oder SSML (Speech Synthesis Markup Language, Markupsprache für Sprachsynthese). | 1.5.0 |
+| Spracherkennung | Analysiert die Stimmung und transkribiert kontinuierliche Echtzeitsprach- oder Batchaudioaufzeichnungen mit Zwischenergebnissen.  | 2.4.0 |
+| Benutzerdefinierte Spracherkennung | Verwendet ein benutzerdefiniertes Modell aus dem [Custom Speech-Portal](https://speech.microsoft.com/customspeech) und transkribiert kontinuierliche Echtzeitsprach- oder Batchaudioaufzeichnungen in Text mit Zwischenergebnissen. | 2.4.0 |
+| Text-zu-Sprache | Konvertiert Text in natürlich klingende Sprache mit Nur-Text-Eingaben oder SSML (Speech Synthesis Markup Language, Markupsprache für Sprachsynthese). | 1.6.0 |
+| Benutzerdefinierte Sprachsynthese | Verwendet ein benutzerdefiniertes Modell aus dem [Custom Voice-Portal](https://aka.ms/custom-voice-portal) und konvertiert Text in natürlich klingende Sprache mit Nur-Text-Eingaben oder SSML (Speech Synthesis Markup Language, Markupsprache für Sprachsynthese). | 1.6.0 |
+| Text-zu-Sprache (neuronal) | Konvertiert Text mithilfe von Deep Neural Network-Technologie in natürlich klingende Sprache, die eine natürlichere synthetische Sprache ermöglicht. | 1.1.0 |
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services/) erstellen, bevor Sie beginnen.
 
@@ -44,6 +45,7 @@ Für die Verwendung von Speech-Containern müssen folgende Voraussetzungen erfü
 | Docker-Engine | Die Docker-Engine muss auf einem [Hostcomputer](#the-host-computer) installiert sein. Für die Docker-Umgebung stehen Konfigurationspakete für [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) und [Linux](https://docs.docker.com/engine/installation/#supported-platforms) zur Verfügung. Eine Einführung in Docker und Container finden Sie in der [Docker-Übersicht](https://docs.docker.com/engine/docker-overview/).<br><br> Docker muss so konfiguriert werden, dass die Container eine Verbindung mit Azure herstellen und Abrechnungsdaten an Azure senden können. <br><br> **Unter Windows** muss Docker auch für die Unterstützung von Linux-Containern konfiguriert werden.<br><br> |
 | Kenntnisse zu Docker | Sie sollten über Grundkenntnisse der Konzepte von Docker, einschließlich Registrierungen, Repositorys, Container und Containerimages, verfügen und die grundlegenden `docker`-Befehle kennen. |
 | Speech-Ressource | Um diese Container zu verwenden, benötigen Sie Folgendes:<br><br>Eine Azure-Ressource vom Typ _Speech_, um den entsprechenden API-Schlüssel und den URI des Endpunkts zu erhalten. Beide Werte stehen im Azure-Portal auf den Seiten „Übersicht“ und „Schlüssel“ von **Speech** zur Verfügung. Beide sind zum Starten des Containers erforderlich.<br><br>**{API_KEY}** : Einer der beiden verfügbaren Ressourcenschlüssel auf der Seite **Schlüssel**<br><br>**{ENDPOINT_URI}** : Der Endpunkt, der auf der Seite **Übersicht** angegeben ist |
+
 
 ## <a name="request-access-to-the-container-registry"></a>Anfordern des Zugriffs auf die Containerregistrierung
 
@@ -74,31 +76,13 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 Die folgende Tabelle beschreibt die minimale und empfohlene Zuordnung von Ressourcen für jeden Speech-Container.
 
-# <a name="speech-to-text"></a>[Spracherkennung](#tab/stt)
-
 | Container | Minimum | Empfohlen |
 |-----------|---------|-------------|
 | Spracherkennung | 2 Kerne, 2 GB Arbeitsspeicher | 4 Kerne, 4 GB Arbeitsspeicher |
-
-# <a name="custom-speech-to-text"></a>[Benutzerdefinierte Spracherkennung](#tab/cstt)
-
-| Container | Minimum | Empfohlen |
-|-----------|---------|-------------|
 | Benutzerdefinierte Spracherkennung | 2 Kerne, 2 GB Arbeitsspeicher | 4 Kerne, 4 GB Arbeitsspeicher |
-
-# <a name="text-to-speech"></a>[Sprachsynthese](#tab/tts)
-
-| Container | Minimum | Empfohlen |
-|-----------|---------|-------------|
 | Text-zu-Sprache | Ein Kern, 2 GB Arbeitsspeicher | 2 Kerne, 3 GB Arbeitsspeicher |
-
-# <a name="custom-text-to-speech"></a>[Benutzerdefinierte Sprachsynthese](#tab/ctts)
-
-| Container | Minimum | Empfohlen |
-|-----------|---------|-------------|
 | Benutzerdefinierte Sprachsynthese | Ein Kern, 2 GB Arbeitsspeicher | 2 Kerne, 3 GB Arbeitsspeicher |
-
-***
+| Text-zu-Sprache (neuronal) | 6 Kerne, 12 GB Arbeitsspeicher | 8 Kerne, 16 GB Arbeitsspeicher |
 
 * Jeder Kern muss eine Geschwindigkeit von mindestens 2,6 GHz aufweisen.
 
@@ -128,6 +112,12 @@ Containerimages für Speech stehen in der folgenden Container Registry zur Verf�
 | Container | Repository |
 |-----------|------------|
 | Text-zu-Sprache | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech:latest` |
+
+# <a name="neural-text-to-speech"></a>[Text-zu-Sprache (neuronal)](#tab/ntts)
+
+| Container | Repository |
+|-----------|------------|
+| Text-zu-Sprache (neuronal) | `containerpreview.azurecr.io/microsoft/cognitive-services-neural-text-to-speech:latest` |
 
 # <a name="custom-text-to-speech"></a>[Benutzerdefinierte Sprachsynthese](#tab/ctts)
 
@@ -165,7 +155,7 @@ Alle Tags, mit Ausnahme von `latest`, haben das folgende Format und beachten die
 Das folgende Tag ist ein Beispiel für das Format:
 
 ```
-2.3.1-amd64-en-us-preview
+2.4.0-amd64-en-us-preview
 ```
 
 Informationen zu allen unterstützten Gebietsschemas des Containers **Spracherkennung** finden Sie unter [Imagetags für Spracherkennung](../containers/container-image-tags.md#speech-to-text).
@@ -207,13 +197,45 @@ Alle Tags, mit Ausnahme von `latest`, haben das folgende Format und beachten die
 Das folgende Tag ist ein Beispiel für das Format:
 
 ```
-1.5.0-amd64-en-us-ariarus-preview
+1.6.0-amd64-en-us-ariarus-preview
 ```
 
 Informationen zu allen unterstützten Gebietsschemas und den entsprechenden Stimmen des Containers **Sprachsynthese** finden Sie unter [Imagetags für Sprachsynthese](../containers/container-image-tags.md#text-to-speech).
 
 > [!IMPORTANT]
-> Beim Erstellen einer HTTP POST-Anforderung für die *standardmäßige Sprachsynthese* erfordert die Meldung der [Speech Synthesis Markup Language (SSML)](speech-synthesis-markup.md) ein `voice`-Element mit einem `name`-Attribut. Der Wert ist das entsprechende Gebietsschema des Containers und die Stimme, auch bekannt als „[Kurzname](language-support.md#standard-voices)“. Das Tag `latest` beispielsweise weist den Sprachnamen `en-US-AriaRUS` auf.
+> Beim Erstellen einer HTTP POST-Anforderung für die *Sprachsynthese* erfordert die Meldung der [Speech Synthesis Markup Language (SSML)](speech-synthesis-markup.md) ein `voice`-Element mit einem `name`-Attribut. Der Wert ist das entsprechende Gebietsschema des Containers und die Stimme, auch bekannt als „[Kurzname](language-support.md#standard-voices)“. Das Tag `latest` beispielsweise weist den Sprachnamen `en-US-AriaRUS` auf.
+
+# <a name="neural-text-to-speech"></a>[Text-zu-Sprache (neuronal)](#tab/ntts)
+
+#### <a name="docker-pull-for-the-neural-text-to-speech-container"></a>Docker-Pullvorgang für den „Text-zu-Sprache (neuronal)“-Container
+
+Verwenden Sie den Befehl [docker pull](https://docs.docker.com/engine/reference/commandline/pull/), um ein Containerimage aus der Registrierung der Containervorschau herunterzuladen.
+
+```Docker
+docker pull containerpreview.azurecr.io/microsoft/cognitive-services-neural-text-to-speech:latest
+```
+
+> [!IMPORTANT]
+> Das Tag `latest` pullt das Gebietsschema `en-US` und die Stimme `arianeural`. Weitere Gebietsschemas finden Sie unter [Gebietsschemas für „Text-zu-Sprache (neuronal)“](#neural-text-to-speech-locales).
+
+#### <a name="neural-text-to-speech-locales"></a>Gebietsschemas für „Text-zu-Sprache (neuronal)“
+
+Alle Tags, mit Ausnahme von `latest`, haben das folgende Format und beachten die Groß-/Kleinschreibung:
+
+```
+<major>.<minor>.<patch>-<platform>-<locale>-<voice>-<prerelease>
+```
+
+Das folgende Tag ist ein Beispiel für das Format:
+
+```
+1.1.0-amd64-en-us-arianeural-preview
+```
+
+Informationen zu allen unterstützten Gebietsschemas und den entsprechenden Stimmen des Containers **Text-zu-Sprache (neuronal)** finden Sie unter [Imagetags für „Text-zu-Sprache (neuronal)“](../containers/container-image-tags.md#neural-text-to-speech).
+
+> [!IMPORTANT]
+> Beim Erstellen einer HTTP POST-Anforderung für *Text-zu-Sprache (neuronal)* erfordert die Meldung der [Speech Synthesis Markup Language (SSML)](speech-synthesis-markup.md) ein `voice`-Element mit einem `name`-Attribut. Der Wert ist das entsprechende Gebietsschema des Containers und die Stimme, auch bekannt als „[Kurzname](language-support.md#neural-voices)“. Das Tag `latest` beispielsweise weist den Sprachnamen `en-US-AriaNeural` auf.
 
 # <a name="custom-text-to-speech"></a>[Benutzerdefinierte Sprachsynthese](#tab/ctts)
 
@@ -243,7 +265,7 @@ Verwenden Sie den Befehl [docker run](https://docs.docker.com/engine/reference/c
 
 # <a name="speech-to-text"></a>[Spracherkennung](#tab/stt)
 
-Zum Ausführen des Containers für die *Spracherkennung* führen Sie den folgenden `docker run`-Befehl aus.
+Zum Ausführen des Containers für die standardmäßige *Spracherkennung* führen Sie den folgenden `docker run`-Befehl aus.
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 4 \
@@ -341,7 +363,7 @@ Dieser Befehl:
 
 # <a name="text-to-speech"></a>[Sprachsynthese](#tab/tts)
 
-Zum Ausführen des Containers für die *Sprachsynthese* führen Sie den folgenden `docker run`-Befehl aus.
+Zum Ausführen des Containers für die standardmäßige *Sprachsynthese* führen Sie den folgenden `docker run`-Befehl aus.
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
@@ -353,8 +375,27 @@ ApiKey={API_KEY}
 
 Dieser Befehl:
 
-* Führt einen Container für die *Sprachsynthese* aus dem Containerimage aus.
+* Führt einen Container für die standardmäßige *Sprachsynthese* aus dem Containerimage aus.
 * Ordnet 1 CPU-Kern und 2 GB Arbeitsspeicher zu.
+* Macht den TCP-Port 5000 verfügbar und ordnet eine Pseudo-TTY-Verbindung für den Container zu.
+* Entfernt den Container automatisch, nachdem er beendet wurde. Das Containerimage ist auf dem Hostcomputer weiterhin verfügbar.
+
+# <a name="neural-text-to-speech"></a>[Text-zu-Sprache (neuronal)](#tab/ntts)
+
+Zum Ausführen des Containers für *Text-zu-Sprache (neuronal)* führen Sie den folgenden `docker run`-Befehl aus.
+
+```bash
+docker run --rm -it -p 5000:5000 --memory 12g --cpus 6 \
+containerpreview.azurecr.io/microsoft/cognitive-services-neural-text-to-speech \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+```
+
+Dieser Befehl:
+
+* Führt einen Container für *Text-zu-Sprache (neuronal)* aus dem Containerimage aus.
+* Belegt 6 CPU-Kerne und 12 GB Arbeitsspeicher.
 * Macht den TCP-Port 5000 verfügbar und ordnet eine Pseudo-TTY-Verbindung für den Container zu.
 * Entfernt den Container automatisch, nachdem er beendet wurde. Das Containerimage ist auf dem Hostcomputer weiterhin verfügbar.
 
@@ -413,16 +454,20 @@ Dieser Befehl:
 
 | Container | SDK-Host-URL | Protocol |
 |--|--|--|
-| Spracherkennung und benutzerdefinierte Spracherkennung | `ws://localhost:5000` | WS |
-| Sprachsynthese und benutzerdefinierte Sprachsynthese | `http://localhost:5000` | HTTP |
+| Standardmäßige und benutzerdefinierte Spracherkennung | `ws://localhost:5000` | WS |
+| Sprachsynthese (standardmäßig, benutzerdefiniert und neuronal) | `http://localhost:5000` | HTTP |
 
 Weitere Informationen zur Verwendung der Protokolle WSS und HTTPS finden Sie unter [Containersicherheit](../cognitive-services-container-support.md#azure-cognitive-services-container-security).
+
+### <a name="speech-to-text-standard-and-custom"></a>Spracherkennung (standardmäßig und benutzerdefiniert)
 
 [!INCLUDE [Query Speech-to-text container endpoint](includes/speech-to-text-container-query-endpoint.md)]
 
 #### <a name="analyze-sentiment"></a>Analysieren von Stimmungen
 
 Wenn Sie Ihre Anmeldeinformationen für die Textanalyse-API [in den Container](#analyze-sentiment-on-the-speech-to-text-output) eingegeben haben, können Sie das Speech SDK verwenden, um Spracherkennungsanforderungen mit Standpunktanalyse zu senden. Sie können die API-Antworten so konfigurieren, dass sie entweder ein *einfaches* oder *detailliertes* Format verwenden.
+> [!NOTE]
+> Bei v1.13 des Speech Service Python SDK ist ein Problem mit der Standpunktanalyse bekannt. Verwenden Sie v1.12.x oder früher, wenn Sie eine Standpunktanalyse im Speech Service Python SDK verwenden.
 
 # <a name="simple-format"></a>[Einfaches Format](#tab/simple-format)
 
@@ -535,7 +580,7 @@ speech_config.set_service_property(
 )
 ```
 
-### <a name="text-to-speech-or-custom-text-to-speech"></a>Sprachsynthese oder benutzerdefinierte Sprachsynthese
+### <a name="text-to-speech-standard-neural-and-custom"></a>Sprachsynthese (standardmäßig, neuronal und benutzerdefiniert)
 
 [!INCLUDE [Query Text-to-speech container endpoint](includes/text-to-speech-container-query-endpoint.md)]
 
@@ -578,6 +623,7 @@ In diesem Artikel haben Sie die Konzepte und den Workflow zum Herunterladen, Ins
   * *Benutzerdefinierte Spracherkennung*
   * *Sprachsynthese*
   * *Benutzerdefinierte Sprachsynthese*
+  * *Text-zu-Sprache (neuronal)*
 * Containerimages werden aus der Containerregistrierung in Azure heruntergeladen.
 * Containerimages werden in Docker ausgeführt.
 * Geben Sie den Host-URI des Containers an, unabhängig davon, ob Sie die Rest-API (nur Sprachsynthese) oder das SDK (Spracherkennung oder Sprachsynthese) verwenden. 

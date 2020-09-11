@@ -4,12 +4,12 @@ description: Erfahren Sie etwas über das Verwalten und Überwachen von MARS-Age
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: b46303bdb7fc6c39aafd3046a4bcbc5e0ba75766
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: b3b648ca27a407640b42932fe2ed7c32f5109114
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88893067"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145568"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Verwalten von MARS-Agent-Sicherungen (Microsoft Azure Recovery Services) mit dem Azure Backup-Dienst
 
@@ -173,7 +173,7 @@ Eine Passphrase wird zum Verschlüsseln und Entschlüsseln von Daten während de
 
 In diesem Abschnitt wird ein Szenario besprochen, in dem Ihr Quellcomputer, der mit MARS geschützt war, nicht mehr verfügbar ist, weil er gelöscht, beschädigt, mit Malware/Bransomware infiziert oder außer Betrieb genommen wurde.
 
-Für diese Computer stellt der Azure Backup-Dienst sicher, dass der letzte Wiederherstellungspunkt gemäß den in der Sicherungsrichtlinie festgelegten Aufbewahrungsregeln nicht abläuft (d. h. nicht gelöscht wird). Daher ist eine sichere Wiederherstellung des Computers möglich.  Beachten Sie die folgenden Szenarien, die Sie für die gesicherten Daten ausführen können:
+Für diese Computer stellt der Azure Backup-Dienst sicher, dass der aktuellste Wiederherstellungspunkt gemäß den in der Sicherungsrichtlinie festgelegten Aufbewahrungsregeln nicht abläuft (d. h. nicht gelöscht wird). Daher ist eine sichere Wiederherstellung des Computers möglich.  Beachten Sie die folgenden Szenarien, die Sie für die gesicherten Daten ausführen können:
 
 ### <a name="scenario-1-the-source-machine-is-unavailable-and-you-no-longer-need-to-retain-backup-data"></a>Szenario 1: Der Quellcomputer ist nicht verfügbar, und Sie müssen die Sicherungsdaten nicht mehr beibehalten.
 

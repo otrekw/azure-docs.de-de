@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: erhopf
-ms.openlocfilehash: 4c448b8ed50863457da69db3f74b959f04e26ec1
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: c2b96193204c6938338594054bc3cd4715008313
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131853"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055310"
 ---
 # <a name="speech-service-whats-new-in-docs"></a>Sprachdienst: Neues in der Dokumentation
 
@@ -48,9 +48,6 @@ Informationen zu Updates des Sprachdiensts, des Speech SDK, des Speech Devices S
 * [Schnellstart: Einrichten der Entwicklungsumgebung](quickstarts/setup-platform.md): JavaScript-Anweisungen wurden zur Dokumentation hinzugefügt.
 * [Schnellstart: Synthetisieren von Sprache in eine Audiodatei](quickstarts/text-to-speech-audio-file.md): JavaScript-Anweisungen wurden zur Dokumentation hinzugefügt.
 * [Schnellstart: Synthetisieren von Sprache über einen Lautsprecher](quickstarts/text-to-speech.md): JavaScript-Anweisungen wurden zur Dokumentation hinzugefügt.
-* [Schnellstart: Übersetzen von Sprache in Sprache](quickstarts/translate-speech-to-speech.md): JavaScript-Anweisungen wurden zur Dokumentation hinzugefügt.
-* [Schnellstart: Übersetzen von gesprochener Sprache in mehrere Sprachen](quickstarts/translate-speech-to-text-multiple-languages.md): JavaScript-Anweisungen wurden zur Dokumentation hinzugefügt.
-* [Schnellstart: Übersetzen von Sprache in Text](quickstarts/translate-speech-to-text.md): JavaScript-Anweisungen wurden zur Dokumentation hinzugefügt.
 * [Was ist ein Schlüsselwort?](custom-keyword-overview.md): Der Abschnitt zu den ersten Schritten sowie die Links wurden aktualisiert.
 * [Angeben der Quellsprache für die Spracherkennung](how-to-specify-source-language.md): JavaScript- und Objective-C-Anweisungen wurden zur Dokumentation hinzugefügt.
 
@@ -77,7 +74,7 @@ Diese Tabelle wird monatlich aktualisiert und enthält nur die im Mai eröffnete
 |[54743](https://github.com/MicrosoftDocs/azure-docs/issues/54743)|fifteenjoy|Running Speech service containers fail (Fehler beim Ausführen von Containern des Sprachdiensts)|13.05.2020|Öffnen|Problem|
 |[54550](https://github.com/MicrosoftDocs/azure-docs/issues/54550)|manish-95|Example for Pronunciation file (Beispiel für Aussprachedatei)|11.05.2020|Öffnen|Problem|
 |[54522](https://github.com/MicrosoftDocs/azure-docs/issues/54522)|pjmlp|Java sample is incorrect. (Fehler im Java-Beispiel)|10.05.2020|Öffnen|Problem|
-|[54387](https://github.com/MicrosoftDocs/azure-docs/issues/54387)|ziadhassan7|Can't get pronounciation Score (Aussprachebewertung kann nicht abgerufen werden)|08.05.2020|Geschlossen|Problem|
+|[54387](https://github.com/MicrosoftDocs/azure-docs/issues/54387)|ziadhassan7|Can't get pronunciation Score (Aussprachebewertung kann nicht abgerufen werden)|08.05.2020|Geschlossen|Problem|
 |[54382](https://github.com/MicrosoftDocs/azure-docs/issues/54382)|jgtellez1|YAML file template (YAML-Dateivorlage)|07.05.2020|Geschlossen|Problem|
 |[54208](https://github.com/MicrosoftDocs/azure-docs/issues/54208)|paparush|C# Sample Code does not prompt user to speak. (Im C#-Beispielcode wird der Benutzer nicht zur Spracheingabe aufgefordert)|06.05.2020|Geschlossen|Problem|
 |[54132](https://github.com/MicrosoftDocs/azure-docs/pull/54132)|anthonsu|Upgrade TTS from v1.3 to v1.4 (TTS-Upgrade von Version 1.3 auf Version 1.4)|05.05.2020|Geschlossen|Pull Request|

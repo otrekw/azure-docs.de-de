@@ -1,26 +1,27 @@
 ---
 title: Erstellen und Verwalten einer Blobmomentaufnahme in .NET
 titleSuffix: Azure Storage
-description: Hier erfahren Sie, wie Sie eine schreibgeschützte Blobmomentaufnahme erstellen, um Blobdaten zu einem bestimmten Zeitpunkt zu sichern.
+description: Hier erfahren Sie, wie Sie mit der .NET-Clientbibliothek eine schreibgeschützte Blobmomentaufnahme erstellen, um Blobdaten zu einem bestimmten Zeitpunkt zu sichern.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/02/2020
+ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 9404cc8037b9cd7ef3e6f74265ce803177eb0465
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: fb57e7260a056afe023455149f610ff492c98c12
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185280"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226130"
 ---
 # <a name="create-and-manage-a-blob-snapshot-in-net"></a>Erstellen und Verwalten einer Blobmomentaufnahme in .NET
 
 Eine Momentaufnahme ist eine schreibgeschützte Version eines Blobs, die zu einem bestimmten Zeitpunkt erstellt wird. In diesem Artikel wird die Erstellung und Verwaltung von Blobmomentaufnahmen unter Verwendung der [Azure Storage-Clientbibliothek für .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet) beschrieben.
 
-Weitere Informationen zu Blobmomentaufnahmen in Azure Storage finden Sie unter [Erstellen und Verwalten einer Blobmomentaufnahme in .NET](snapshots-overview.md).
+Weitere Informationen zu Blobmomentaufnahmen in Azure Storage finden Sie unter [Blobmomentaufnahmen](snapshots-overview.md).
 
 ## <a name="create-a-snapshot"></a>Erstellen einer Momentaufnahme
 
@@ -161,5 +162,5 @@ await blockBlob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Blobmomentaufnahmen](snapshots-overview.md)
-- [Blobversionen (Vorschau)](versioning-overview.md)
+- [Blobversionen](versioning-overview.md)
 - [Vorläufiges Löschen für Blobs](storage-blob-soft-delete.md)

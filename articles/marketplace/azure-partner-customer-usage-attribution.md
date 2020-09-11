@@ -6,14 +6,14 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
-ms.date: 04/14/2020
+ms.date: 09/01/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: c5fc239c32037354547c6818fd507a7a8cfd3657
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 50e9eb6d5024d83e841532ed64e84b477a261c9a
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031284"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320969"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Zuordnung der Nutzung durch Partner und Kunden des kommerziellen Marketplace
 
@@ -97,9 +97,9 @@ Um einen global eindeutigen Bezeichner (GUID) hinzuzufügen, nehmen Sie an der H
 
 1. Öffnen Sie die Resource Manager-Vorlage.
 
-1. Fügen Sie eine neue Ressource in der Hauptvorlagendatei hinzu. Die Ressource darf sich nur in der Datei **mainTemplate.json** oder **azuredeploy.json** befinden, nicht in geschachtelten oder verknüpften Vorlagen.
+1. Fügen Sie eine neue Ressource vom Typ [Microsoft.Resources/deployments](https://docs.microsoft.com/azure/templates/microsoft.resources/deployments) in der Hauptvorlagendatei hinzu. Die Ressource darf sich nur in der Datei **mainTemplate.json** oder **azuredeploy.json** befinden, nicht in geschachtelten oder verknüpften Vorlagen.
 
-1. Geben Sie den GUID-Wert nach dem Präfix `pid-` ein (Beispiel: pid-eb7927c8-dd66-43e1-b0cf-c346a422063).
+1. Geben Sie den GUID-Wert nach dem Präfix `pid-` als Namen der Ressource ein. Wenn die GUID z. B. eb7927c8-dd66-43e1-b0cf-c346a422063 lautet, ist der Ressourcenname _pid-eb7927c8-dd66-43e1-b0cf-c346a422063_.
 
 1. Überprüfen Sie die Vorlage auf Fehler.
 
@@ -112,11 +112,11 @@ Um einen global eindeutigen Bezeichner (GUID) hinzuzufügen, nehmen Sie an der H
 Um die Überwachung von Ressourcen für Ihre Vorlage zu aktivieren, müssen Sie im Abschnitt „Resources“ die folgende zusätzliche Ressource hinzufügen. Stellen Sie sicher, dass Sie den unten stehenden Beispielcode mit Ihren eigenen Eingaben ändern, wenn Sie ihn zur Hauptvorlagendatei hinzufügen.
 Die Ressource muss nur in der Datei **mainTemplate.json** oder **azuredeploy.json** hinzugefügt werden, nicht in geschachtelten oder verknüpften Vorlagen.
 
-```
+```json
 // Make sure to modify this sample code with your own inputs where applicable
 
 { // add this resource to the resources section in the mainTemplate.json (do not add the entire file)
-    "apiVersion": "2018-02-01",
+    "apiVersion": "2020-06-01",
     "name": "pid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX", // use your generated GUID here
     "type": "Microsoft.Resources/deployments",
     "properties": {
@@ -153,6 +153,20 @@ Bei Python wird das Attribut **config** verwendet. Sie können das Attribut nur 
 
 > [!NOTE]
 > Fügen Sie das Attribut für jeden Client hinzu. Es gibt keine globale statische Konfiguration. Sie können eine Clientfactory markieren, um sicherzustellen, dass jeder Client nachverfolgt wird. Weitere Informationen finden Sie im [Clientfactory-Beispiel auf GitHub](https://github.com/Azure/azure-cli/blob/7402fb2c20be2cdbcaa7bdb2eeb72b7461fbcc30/src/azure-cli-core/azure/cli/core/commands/client_factory.py#L70-L79).
+
+#### <a name="example-the-net-sdk"></a>Beispiel: .NET SDK
+
+Stellen Sie für .NET sicher, dass Sie den Benutzer-Agent festlegen. Die [Microsoft.Azure.Management.Fluent](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.fluent?view=azure-dotnet)-Bibliothek kann verwendet werden, um den Benutzer-Agent mit folgendem Code (Beispiel in C#) festzulegen:
+
+```csharp
+
+var azure = Microsoft.Azure.Management.Fluent.Azure
+    .Configure()
+    // Add your pid in the user agent header
+    .WithUserAgent("pid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX", String.Empty) 
+    .Authenticate(/* Credentials created via Microsoft.Azure.Management.ResourceManager.Fluent.SdkContext.AzureCredentialsFactory */)
+    .WithSubscription("<subscription ID>");
+```
 
 #### <a name="tag-a-deployment-by-using-the-azure-powershell"></a>Markieren einer Bereitstellung mithilfe von Azure PowerShell
 
@@ -339,7 +353,7 @@ Sie können ein mit einer benutzerdefinierten virtuellen Festplatte ein VM-Angeb
 
 **Warum ist das Aktualisieren der Eigenschaft *contentVersion* für die Hauptvorlage fehlgeschlagen?**
 
-Es liegt wahrscheinlich ein Fehler vor, bei dem die Vorlage mithilfe der TemplateLink-Eigenschaft einer anderen Vorlage bereitgestellt wurde, die eine ältere contentVersion-Eigenschaft erwartet. Verwenden Sie als Problemumgehung die Metadateneigenschaft:
+Es liegt wahrscheinlich ein Fehler vor in Fällen, in denen die Vorlage mithilfe einer TemplateLink-Eigenschaft einer anderen Vorlage bereitgestellt wird, die aus irgendeinem Grund eine ältere contentVersion-Eigenschaft erwartet. Verwenden Sie als Problemumgehung die Metadateneigenschaft:
 
 ```
 "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",

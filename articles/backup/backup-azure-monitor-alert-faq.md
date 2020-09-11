@@ -4,12 +4,12 @@ description: In diesem Artikel finden Sie Antworten auf häufige Fragen zu den B
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 670314d8703889016431838a9f5b0a6dc56b84b8
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: cf6929b9b926a6e6469f3fa789a19e60d5883d21
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892557"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181492"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Azure Backup-Überwachungswarnungen – häufig gestellte Fragen
 
@@ -19,7 +19,7 @@ In diesem Artikel werden häufig gestellte Fragen zur Azure Backup-Überwachung 
 
 ### <a name="how-do-i-check-if-reporting-data-has-started-flowing-into-a-log-analytics-la-workspace"></a>Wie überprüfe ich, ob bereits Berichtsdaten an einen Log Analytics-Arbeitsbereich (LA) übermittelt werden?
 
-Navigieren Sie zum LA-Arbeitsbereich, den Sie konfiguriert haben, navigieren Sie zum Menüelement **Protokolle**, und führen Sie die Abfrage „CoreAzureBackup | take 1“ aus. Wenn ein Datensatz zurückgegeben wird, bedeutet dies, dass Daten an den Arbeitsbereich übertragen wurden. Der erste Datenpush kann bis zu 24 Stunden dauern.
+Navigieren Sie zu dem LA-Arbeitsbereich, den Sie konfiguriert haben. Navigieren Sie zum Menüelement **Protokolle**, und führen Sie die Abfrage `CoreAzureBackup | take 1` aus. Wenn ein Datensatz zurückgegeben wird, bedeutet dies, dass Daten an den Arbeitsbereich übertragen wurden. Der erste Datenpush kann bis zu 24 Stunden dauern.
 
 ### <a name="what-is-the-frequency-of-data-push-to-an-la-workspace"></a>Wie oft erfolgt ein Datenpush an einen LA-Arbeitsbereich?
 
@@ -52,11 +52,11 @@ Wenn Sie ein [Azure Lighthouse](https://azure.microsoft.com/services/azure-light
 
 ### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Wie lange dauert es, bis der Auftragsstatus des Azure Backup-Agents im Portal angezeigt wird?
 
-Es kann bis zu 15 Minuten dauern, bis der Status des Azure Backup-Agent-Auftrags im Azure-Portal angezeigt wird.
+Es kann bis zu 15 Minuten dauern, bis der Auftragsstatus des Azure Backup-Agents im Azure-Portal angezeigt wird.
 
 ### <a name="when-a-backup-job-fails-how-long-does-it-take-to-raise-an-alert"></a>Wie lange dauert es, bis eine Warnung ausgelöst wird, wenn ein Sicherungsauftrag nicht erfolgreich ist?
 
-Innerhalb von 20 Minuten nach dem Azure-Sicherungsfehler wird eine Warnung ausgelöst.
+Innerhalb von 20 Minuten nach dem Azure Backup-Fehler wird eine Warnung ausgelöst.
 
 ### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>Kann es vorkommen, dass eine E-Mail nicht gesendet wird, wenn Benachrichtigungen konfiguriert sind?
 

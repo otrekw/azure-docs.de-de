@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: f611eefc50fede2ef4d738cd5abfd6afcc08b9ff
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 286f813c825bcc05ce8e9fa43df5dc0299625277
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120778"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068472"
 ---
 # <a name="publisher-verification-preview"></a>Herausgeberüberprüfung (Vorschauversion)
 
@@ -42,13 +42,13 @@ Für die Herausgeberüberprüfung bestehen bestimmte Voraussetzungen, von denen 
 
 -  Eine MPN-ID für ein gültiges [Microsoft Partner Network](https://partner.microsoft.com/membership)-Konto, für das der [Überprüfungsvorgang](/partner-center/verification-responses) abgeschlossen wurde. Bei diesem MPN-Konto muss es sich um das [globale Partnerkonto (Partner Global Account, PGA)](/partner-center/account-structure#the-top-level-is-the-partner-global-account-pga) für Ihre Organisation handeln. 
 
--  Ein Azure AD-Mandant mit einer DNS-verifizierten [benutzerdefinierten Domäne](../fundamentals/add-custom-domain.md). Die benutzerdefinierte Domäne muss der Domäne der E-Mail-Adresse entsprechen, die bei der Überprüfung im vorherigen Schritt verwendet wurde. 
+-  Eine in einem Azure AD-Mandanten registrierte App, wobei eine [Herausgeberdomäne](howto-configure-publisher-domain.md) konfiguriert ist.
 
--  Eine in einem Azure AD-Mandanten registrierte App, wobei eine [Herausgeberdomäne](howto-configure-publisher-domain.md) konfiguriert ist, die dieselbe zuvor verwendete Domäne verwendet. 
+-  Die Domäne der E-Mail-Adresse, die bei der MPN-Kontoüberprüfung verwendet wird, muss entweder mit der für die App konfigurierten Herausgeberdomäne oder einer DNS-verifizierten, dem Azure AD-Mandanten hinzugefügten [benutzerdefinierten Domäne](../fundamentals/add-custom-domain.md) übereinstimmen. 
 
 -  Der die Überprüfung durchführende Benutzer muss autorisiert sein, Änderungen an der App-Registrierung in Azure AD und am MPN-Konto in Partner Center vorzunehmen. 
 
-    -  In Azure AD muss dieser Benutzer entweder der Besitzer der App sein oder über eine der folgenden [Rollen](../users-groups-roles/directory-assign-admin-roles.md) verfügen: „Anwendungsadministrator“, „Cloudanwendungsadministrator“ oder „Globaler Administrator“. 
+    -  In Azure AD muss dieser Benutzer ein Mitglied einer der folgenden [Rollen](../users-groups-roles/directory-assign-admin-roles.md) sein: „Anwendungsadministrator“, „Cloudanwendungsadministrator“ oder „Globaler Administrator“. 
 
     -  In Partner Center muss dieser Benutzer über die folgenden [Rollen](/partner-center/permissions-overview) verfügen: „MPN-Administrator“, „Kontoadministrator“ oder „Globaler Administrator“ (dies ist eine freigegebene Rolle, die in Azure AD verwaltet wird).
     

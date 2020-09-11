@@ -9,12 +9,12 @@ ms.author: nibaccam
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: 52716e070437dd7a6b3b880a5a7f3a4afafe8738
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 8c2867fc5d57cf9ad6eb6bf2d90e02c61e320120
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995009"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146656"
 ---
 # <a name="distributed-training-with-azure-machine-learning"></a>Verteiltes Training mit Azure Machine Learning
 
@@ -50,7 +50,7 @@ Bei Modellparallelität müssen die Workerknoten nur die freigegebenen Parameter
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie, wie Sie mit der Python-SDK [Trainingsumgebungen einrichten](how-to-set-up-training-targets.md).
+* Erfahren Sie, wie Sie [Computeziele für das Modelltraining](how-to-set-up-training-targets.md) mit dem Python SDK verwenden.
 * Ein technisches Beispiel finden Sie im [Referenzarchitekturszenario](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/training-deep-learning).
 * [Trainieren von ML-Modellen mit TensorFlow](how-to-train-tensorflow.md)
 * [Trainieren von ML-Modellen mit PyTorch](how-to-train-pytorch.md) 

@@ -1,39 +1,41 @@
 ---
-title: Bewährte Methoden für den Azure Maps-Routendienst | Microsoft Azure Maps
+title: Bewährte Methoden für den Azure Maps-Routendienst in Microsoft Azure Maps
 description: Erfahren Sie, wie Sie mit dem Routendienst von Microsoft Azure Maps Fahrzeuge effizient leiten.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 03/11/2020
+ms.date: 09/02/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 79e9096030aada9fa368bb2e78af323139c0586c
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: b957453758b9b8e34989877516a9083f06a85ed8
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132210"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400778"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Bewährte Methoden für den Azure Maps-Routendienst
 
 Die Wegbeschreibungs- und Routenmatrix-APIs im [Routendienst](https://docs.microsoft.com/rest/api/maps/route) von Azure Maps können verwendet werden, um die geschätzten Ankunftszeiten (Estimated Arrival Times, ETAs) für jede angeforderte Wegstrecke zu berechnen. Die Wegbeschreibungs-APIs berücksichtigen Faktoren wie Echtzeit-Verkehrsinformationen und Verkehrsdaten aus der Vergangenheit, wie etwa die typischen Reisegeschwindigkeiten am angeforderten Wochentag zur angeforderten Tageszeit. Die APIs geben die kürzesten oder schnellsten verfügbaren Routen zu mehreren Zielen zugleich in der Reihenfolge der Eingabe oder in einer für Zeit oder Entfernung optimierten Reihenfolge zurück. Benutzer können darüber hinaus auch spezielle Routen und Details für Wanderer, Radfahrer und Nutzfahrzeuge anfordern, wie etwa LKWs. In diesem Artikel werden die bewährten Methoden zum Aufrufen des Azure Maps-[Routendiensts](https://docs.microsoft.com/rest/api/maps/route) erläutert, und Sie erfahren, wie Sie die folgenden Schritte ausführen:
 
-* Wählen zwischen den Wegbeschreibungs-APIs und der Matrix-Routenplanungs-API
-* Anfordern von zurückliegenden und vorhergesagten Reisezeiten, basierend auf Echtzeitdaten und Verkehrsdaten aus der Vergangenheit
-* Anfordern von Routendetails, wie Zeit und Entfernung, für die gesamte Route und jede Teilstrecke der Route
-* Anfordern der Route für ein Nutzfahrzeug, z. B. einen LKW
-* Anfordern von Verkehrsinformationen für eine Route, wie Staus und Mautinformationen
-* Anfordern einer Route, die aus einem oder mehreren Stopps (Wegpunkten) besteht
-* Optimieren einer Route mit einem oder mehreren Stopps, um die beste Reihenfolge für den Besuch der einzelnen Stopps (Wegpunkte) zu erhalten.
-* Optimieren alternativer Routen mithilfe von Unterstützungspunkten. Beispielsweise können alternative Routen angeboten werden, die eine Ladestation für Elektromobilität passieren.
-* Verwenden des [Routendiensts](https://docs.microsoft.com/rest/api/maps/route) mit dem Azure Maps-Web-SDK
+> [!div class="checklist"]
+> * Wählen zwischen den Wegbeschreibungs-APIs und der Matrix-Routenplanungs-API
+> * Anfordern von zurückliegenden und vorhergesagten Reisezeiten, basierend auf Echtzeitdaten und Verkehrsdaten aus der Vergangenheit
+> * Anfordern von Routendetails, wie Zeit und Entfernung, für die gesamte Route und jede Teilstrecke der Route
+> * Anfordern der Route für ein Nutzfahrzeug, z. B. einen LKW
+> * Anfordern von Verkehrsinformationen für eine Route, wie Staus und Mautinformationen
+> * Anfordern einer Route, die aus einem oder mehreren Stopps (Wegpunkten) besteht
+> * Optimieren einer Route mit einem oder mehreren Stopps, um die beste Reihenfolge für den Besuch der einzelnen Stopps (Wegpunkte) zu erhalten.
+> * Optimieren alternativer Routen mithilfe von Unterstützungspunkten. Beispielsweise können alternative Routen angeboten werden, die eine Ladestation für Elektromobilität passieren.
+> * Verwenden des [Routendiensts](https://docs.microsoft.com/rest/api/maps/route) mit dem Azure Maps-Web-SDK
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die Azure Maps-APIs aufrufen zu können, benötigen Sie ein Azure Maps-Konto mit zugehörigem Schlüssel. Weitere Informationen finden Sie unter [Erstellen eines Kontos](quick-demo-map-app.md#create-an-azure-maps-account) und [Abrufen eines Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account). Der Primärschlüssel wird auch als primärer Abonnementschlüssel oder Abonnementschlüssel bezeichnet.
+1. [Erstellen eines Azure Maps-Kontos](quick-demo-map-app.md#create-an-azure-maps-account)
+2. [Abrufen eines Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account) (auch primärer Schlüssel oder Abonnementschlüssel genannt)
 
-Informationen zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](./how-to-manage-authentication.md). Weitere Informationen zur Abdeckung des Routendiensts finden Sie unter [Abgedeckter Routingbereich](routing-coverage.md).
+Weitere Informationen zur Abdeckung des Routendiensts finden Sie unter [Abgedeckter Routingbereich](routing-coverage.md).
 
 In diesem Artikel wird die [Postman-App](https://www.postman.com/downloads/) zum Generieren von REST-Aufrufen verwendet, Sie können aber eine beliebige API-Entwicklungsumgebung verwenden.
 
@@ -133,43 +135,23 @@ Standardmäßig gibt der Routendienst ein Array von Koordinaten zurück. Die Ant
 
 Die folgende Abbildung stellt das `points`-Element dar.
 
-<center>
-
-![Punktliste](media/how-to-use-best-practices-for-routing/points-list-is-hidden-img.png)
-
-</center>
+![Points-Element](media/how-to-use-best-practices-for-routing/points-list-is-hidden-img.png)
 
 Erweitern Sie das `point`-Element, um die Liste der Koordinaten für den Weg anzuzeigen:
 
-<center>
-
-![Punktliste](media/how-to-use-best-practices-for-routing/points-list-img.png)
-
-</center>
+![Erweitertes Points-Element](media/how-to-use-best-practices-for-routing/points-list-img.png)
 
 Die Wegbeschreibungs-APIs unterstützen verschiedene Formate von Anweisungen, die durch Angeben des **instructionsType**-Parameters verwendet werden können. Um Anweisungen für die einfache Verarbeitung im Computer zu formatieren, verwenden Sie **instructionsType=coded**. Verwenden Sie **instructionsType=tagged**, um die Anweisungen als Text für den Benutzer anzuzeigen. Ferner können Anweisungen als Text formatiert werden, wobei einige Elemente der Anweisungen gekennzeichnet werden und die Anweisung mit einer besonderen Formatierung dargestellt wird. Weitere Informationen finden Sie unter [Liste der unterstützten Anweisungstypen](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#routeinstructionstype).
 
 Wenn Anweisungen angefordert werden, gibt die Antwort ein neues Element mit dem Namen `guidance` zurück. Das `guidance`-Element enthält zwei Informationsarten: Streckenabschnitts-Wegbeschreibungen und zusammengefasste Anweisungen.
 
-<center>
-
 ![Anweisungstyp](media/how-to-use-best-practices-for-routing/instructions-type-img.png)
-
-</center>
 
 Das `instructions`-Element enthält Streckenabschnitts-Wegbeschreibungen für die Reise, und `instructionGroups` enthält zusammengefasste Anweisungen. Jede Anweisungszusammenfassung deckt ein Segment der Reise ab, das mehrere Straßen umfassen kann. Die APIs können Details für die Abschnitte einer Route zurückgeben, z. B. den Koordinatenbereich eines Verkehrsstaus oder die aktuelle Geschwindigkeit des fließenden Verkehrs.
 
-<center>
-
 ![Streckenabschnittsanweisungen](media/how-to-use-best-practices-for-routing/instructions-turn-by-turn-img.png)
 
-</center>
-
-<center>
-
 ![Zusammengefasste Anweisungen](media/how-to-use-best-practices-for-routing/instructions-summary-img.png)
-
-</center>
 
 ## <a name="request-a-route-for-a-commercial-vehicle"></a>Anfordern einer Route für ein Nutzfahrzeug
 
@@ -185,11 +167,7 @@ https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-M
 
 Die Routen-API gibt Wegbeschreibungen zurück, die die Abmessungen des LKWs und das Gefahrgut berücksichtigen. Sie können die Wegbeschreibungen lesen, indem Sie das `guidance`-Element erweitern.
 
-<center>
-
 ![LKW mit Gefahrgut der Klasse 1](media/how-to-use-best-practices-for-routing/truck-with-hazwaste-img.png)
-
-</center>
 
 ### <a name="sample-query"></a>Beispielabfrage
 
@@ -201,11 +179,11 @@ https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-M
 
 Die Antwort unten bezieht sich auf einen LKW, der Gefahrgut der Klasse 9 transportiert, das weniger gefährlich ist als Gefahrgut der Klasse 1. Wenn Sie das `guidance` Element erweitern, um die Anweisungen zu lesen, werden Sie bemerken, dass die Anweisungen nicht gleich sind. Es gibt mehr Streckenanweisungen für den LKW, der das Gefahrgut der Klasse 1 befördert.
 
-<center>
+
 
 ![LKW mit Gefahrgut der Klasse 9](media/how-to-use-best-practices-for-routing/truck-with-hazwaste9-img.png)
 
-</center>
+
 
 ## <a name="request-traffic-information-along-a-route"></a>Anfordern von Verkehrsinformationen auf einer Route
 
@@ -221,19 +199,11 @@ https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-M
 
 Die Antwort enthält die Abschnitte, die entlang der angegebenen Koordinaten hinsichtlich der Verkehrsverhältnisse geeignet sind.
 
-<center>
-
 ![Verkehrsabschnitte](media/how-to-use-best-practices-for-routing/traffic-section-type-img.png)
-
-</center>
 
 Diese Option kann verwendet werden, um die Abschnitte beim Rendern der Karte einzufärben, wie in der folgenden Abbildung dargestellt: 
 
-<center>
-
-![Verkehrsabschnitte](media/how-to-use-best-practices-for-routing/show-traffic-sections-img.png)
-
-</center>
+![Auf der Karte gerenderte farbige Abschnitte](media/how-to-use-best-practices-for-routing/show-traffic-sections-img.png)
 
 ## <a name="calculate-and-optimize-a-multi-stop-route"></a>Berechnen und Optimieren einer Route mit mehreren Stopps
 
@@ -257,19 +227,13 @@ https://atlas.microsoft.com/route/directions/json?api-version=1.0&subscription-k
 
 Die Antwort beschreibt die Länge des Wegs mit 140.851 Metern und gibt an, dass das Zurücklegen dieser Strecke 9.991 Sekunden erfordern würde.
 
-<center>
-
 ![Nicht optimierte Antwort](media/how-to-use-best-practices-for-routing/non-optimized-response-img.png)
-
-</center>
 
 Die folgende Abbildung zeigt die Route, die sich aus dieser Abfrage ergibt. Dies ist eine der möglichen Routen. Hinsichtlich Zeit oder Entfernung ist es nicht die optimale Route.
 
-<center>
-
 ![Nicht optimierte Abbildung](media/how-to-use-best-practices-for-routing/non-optimized-image-img.png)
 
-</center>
+
 
 Die Reihenfolge der Wegpunkte ist: 0, 1, 2, 3, 4, 5 und 6.
 
@@ -283,19 +247,11 @@ https://atlas.microsoft.com/route/directions/json?api-version=1.0&subscription-k
 
 Die Antwort beschreibt die Länge des Wegs mit 91.814 Metern und gibt an, dass das Zurücklegen dieser Strecke 7.797 Sekunden erfordern würde. Sowohl Reiseentfernung als auch Reisezeit sind hier geringer, da die API die optimierte Route zurückgegeben hat.
 
-<center>
-
-![Nicht optimierte Antwort](media/how-to-use-best-practices-for-routing/optimized-response-img.png)
-
-</center>
+![Optimierte Antwort](media/how-to-use-best-practices-for-routing/optimized-response-img.png)
 
 Die folgende Abbildung zeigt die Route, die sich aus dieser Abfrage ergibt.
 
-<center>
-
-![Nicht optimierte Abbildung](media/how-to-use-best-practices-for-routing/optimized-image-img.png)
-
-</center>
+![Optimierte Abbildung](media/how-to-use-best-practices-for-routing/optimized-image-img.png)
 
 Die optimale Route hat die folgende Reihenfolge der Wegpunkte: 0, 5, 1, 2, 4, 3 und 6.
 
@@ -315,11 +271,7 @@ Beim Aufrufen der [Post Route Directions-API](https://docs.microsoft.com/rest/ap
 
 Die Abbildung unten stellt ein Beispiel für das Rendern alternativer Routen mit angegebenen Abweichungsgrenzwerten für Dauer und Entfernung dar.
 
-<center>
-
 ![Alternative Routen](media/how-to-use-best-practices-for-routing/alternative-routes-img.png)
-
-</center>
 
 ## <a name="use-the-routing-service-in-a-web-app"></a>Verwenden des Routingdiensts in einer Web-App
 

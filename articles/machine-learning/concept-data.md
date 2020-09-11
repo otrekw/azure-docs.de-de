@@ -1,7 +1,7 @@
 ---
 title: Sicherer Datenzugriff in der Cloud
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie Sie eine sichere Verbindung mit Ihren Daten von Azure Machine Learning herstellen und wie Sie Datasets und Datenspeicher für ML-Aufgaben verwenden. Datenspeicher können für die Speicherung von Daten aus einem Azure-Blob, Azure Data Lake Gen 1 und 2, SQL-DB, Databricks u. a. verwendet werden.
+description: Erfahren Sie, wie Sie eine sichere Verbindung mit Ihren Daten von Azure Machine Learning herstellen und wie Sie Datasets und Datenspeicher für ML-Aufgaben verwenden. Datenspeicher können für die Speicherung von Daten aus einem Azure-Blob, Azure Data Lake Gen 1 und 2, SQL-DB und Azure Databricks verwendet werden.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,24 +9,24 @@ ms.topic: conceptual
 ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
-ms.date: 04/24/2020
+ms.date: 08/31/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: dadd3a8316efc5bf090a84a738c8f6da223d4572
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 958a433cc76f00010fe6fd431d8bea4fe6380a9c
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651793"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146688"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Sicherer Datenzugriff in Azure Machine Learning
 
 Azure Machine Learning macht es einfach, eine Verbindung mit Ihren Daten in der Cloud herzustellen.  Es wird eine Abstraktionsschicht über dem zugrunde liegenden Speicherdienst bereitgestellt, sodass Sie sicher auf Ihre Daten zugreifen und diese bearbeiten können, ohne für Ihren Speichertyp spezifischen Code schreiben zu müssen. Azure Machine Learning bietet auch folgende Datenfunktionen:
 
+*    Interoperabilität mit Pandas und Spark DataFrames
 *    Versionsverwaltung und Nachverfolgung der Datenherkunft
 *    Datenbeschriftung 
 *    Überwachung von Datenabweichungen
-*    Interoperabilität mit Pandas und Spark DataFrames
-
+    
 ## <a name="data-workflow"></a>Datenworkflow
 
 Wenn Sie bereit sind, die Daten in ihrer cloudbasierten Speicherlösung zu verwenden, wird der folgende Datenübermittlungsworkflow empfohlen. Dieser Workflow setzt voraus, dass Sie über ein [Azure-Speicherkonto](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) und Daten in einem cloudbasierten Speicherdienst in Azure verfügen. 
@@ -67,13 +67,19 @@ Unterstützte cloudbasierte Speicherdienste in Azure, die als Datenspeicher regi
 
 ## <a name="datasets"></a>Datasets
 
-Azure Machine Learning-Datasets sind Verweise auf die Daten in Ihrem Speicherdienst. Es handelt sich nicht um Kopien Ihrer Daten, sodass keine zusätzlichen Speicherkosten anfallen und die Integrität Ihrer Originaldatenquellen nicht gefährdet ist.
+Azure Machine Learning-Datasets sind Verweise auf die Daten in Ihrem Speicherdienst. Sie sind keine Kopien Ihrer Daten. Durch Erstellen eines Azure Machine Learning-Datasets erstellen Sie einen Verweis auf den Speicherort der Datenquelle sowie eine Kopie der zugehörigen Metadaten. 
 
- [Erstellen Sie ein Dataset](how-to-create-register-datasets.md), um auf Daten in Ihrem Speicher zuzugreifen und die Daten in einem nutzbaren Objekt für Machine Learning-Aufgaben zusammenzustellen. Registrieren Sie das Dataset in Ihrem Arbeitsbereich, um es freizugeben und in verschiedenen Experimenten ohne Datenerfassungskomplexität wiederzuverwenden.
+Da Datasets nur langsam ausgewertet werden und die Daten am vorhandenen Speicherort verbleiben, profitieren Sie von folgenden Vorteilen:
 
-Datasets können aus lokalen Dateien, öffentlichen URLs, [Azure Open Datasets](https://azure.microsoft.com/services/open-datasets/) oder Azure-Speicherdiensten in Datenspeichern erstellt werden. Um ein Dataset aus einem In-Memory-Pandas-Dataframe zu erstellen, schreiben Sie die Daten in eine lokale Datei, z. B. eine Parquet-Datei, und erstellen Ihr Dataset aus dieser Datei.  
+* Es entstehen keine zusätzlichen Speicherkosten.
+* Sie laufen nicht Gefahr, unabsichtlich Ihre ursprünglichen Datenquellen zu ändern.
+* Der ML-Workflow wird verbessert und beschleunigt.
 
-Wir unterstützen zwei Arten von Datasets: 
+[Erstellen Sie ein Dataset](how-to-create-register-datasets.md), um auf Daten in Ihrem Speicher zuzugreifen und die Daten in einem nutzbaren Objekt für Machine Learning-Aufgaben zusammenzustellen. Registrieren Sie das Dataset in Ihrem Arbeitsbereich, um es freizugeben und in verschiedenen Experimenten ohne Datenerfassungskomplexität wiederzuverwenden.
+
+Datasets können aus lokalen Dateien, öffentlichen URLs, [Azure Open Datasets](https://azure.microsoft.com/services/open-datasets/) oder Azure-Speicherdiensten in Datenspeichern erstellt werden. 
+
+Die folgenden beiden Datasettypen stehen zur Verfügung: 
 
 + Ein [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) verweist auf eine einzelne Datei oder auf mehrere Dateien in Ihren Datenspeichern oder öffentlichen URLs. Wenn Ihre Daten bereits bereinigt und für Trainingsexperimente bereit sind, können Sie Dateien, auf die von FileDatasets verwiesen wird, auf Ihr Computeziel [herunterladen oder sie einbinden](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets).
 
