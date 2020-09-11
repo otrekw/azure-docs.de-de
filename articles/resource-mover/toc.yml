@@ -24,8 +24,22 @@
       href: support-matrix-move-region-sql.md
 - name: Anleitungen
   items:
-    - name: Entfernen von Ressourcen aus einer Sammlung für die Verschiebung
-      href: remove-move-resources.md
+    - name: Regionsübergreifendes Verschieben
+      items:
+        - name: Regionsübergreifendes Verschieben mit PowerShell
+          href: move-region-powershell.md
+        - name: Verschieben von virtuellen Azure-Computern in Verfügbarkeitszonen
+          href: move-region-availability-zone.md
+        - name: Regionsübergreifendes Verschieben (von Ressourcengruppe)
+          href: move-region-within-resource-group.md
+    - name: Verwalten von Regionsverschiebungen
+      items:
+        - name: Ändern der Zieleinstellungen für eine Regionsverschiebung
+          href: modify-target-settings.md
+        - name: Verschieben von Ressourcen aus einer Sammlung für die Regionsverschiebung
+          href: remove-move-resources.md
+        - name: 'Verwalten von Ressourcen, die vom Prozess für die Regionsverschiebung erstellt wurden'
+          href: manage-resources-created-move-process.md
 - name: Ressourcen
   items:
     - name: Migration im Cloud Adoption Framework

@@ -30,6 +30,8 @@
         - name: Leitfaden zur Veröffentlichung nach Angebotstyp
           href: ./publisher-guide-by-offer-type.md
           items:
+            - name: Planen eines SaaS-Angebots
+              href: ./plan-saas-offer.md
             - name: Virtuelle Computer
               href: ./marketplace-virtual-machines.md
             - name: 'Azure-Apps: Lösungsvorlagen'

@@ -317,6 +317,8 @@
           href: disk-encryption.md
         - name: Disk Storage-Reservierungen
           href: ../../cost-management-billing/reservations/understand-disk-reservations.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+        - name: Leistung von virtuellen Computern und Datenträgern
+          href: disk-performance-windows.md
         - name: Entwerfen für hohe Leistung
           href: ../premium-storage-performance.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Datenträgerbursting

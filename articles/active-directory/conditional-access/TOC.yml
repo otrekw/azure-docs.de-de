@@ -52,8 +52,8 @@
   items:
     - name: Planen der Bereitstellung für bedingten Zugriff
       href: plan-conditional-access.md
-    - name: Bewährte Methoden
-      href: best-practices.md
+    - name: APIs für bedingten Zugriff
+      href: howto-conditional-access-apis.md
     - name: Allgemeine Richtlinien für bedingten Zugriff
       items:
         - name: Blockieren älterer Authentifizierungsmethoden
@@ -92,6 +92,8 @@
       href: terms-of-use.md
     - name: Steuerelemente für Anmeldehäufigkeit und Browserpersistenz
       href: howto-conditional-access-session-lifetime.md
+    - name: Bewährte Methoden
+      href: best-practices.md
     - name: Problembehandlung
       items:
         - name: Beheben von Problemen bei der Anmeldung

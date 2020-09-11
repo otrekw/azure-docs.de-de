@@ -213,8 +213,10 @@
               href: howto-mfa-nps-extension-errors.md
     - name: Problembehandlung
       items:
-        - name: SSPR
-          href: active-directory-passwords-troubleshoot.md
+        - name: Self-Service-Kennwortzurücksetzung (SSPR)
+          href: troubleshoot-sspr.md
+        - name: SSPR-Rückschreiben
+          href: troubleshoot-sspr-writeback.md
         - name: Häufig gestellte Fragen zu SSPR
           href: active-directory-passwords-faq.md
         - name: Häufig gestellte Fragen zu MFA

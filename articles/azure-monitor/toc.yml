@@ -1136,7 +1136,21 @@
           displayname: Workbooks
           href: platform/workbooks-overview.md
         - name: Visualisierungen
-          href: platform/workbooks-visualizations.md
+          items:
+            - name: Text
+              href: platform/workbooks-text-visualizations.md
+            - name: Diagramm
+              href: platform/workbooks-chart-visualizations.md
+            - name: Raster
+              href: platform/workbooks-grid-visualizations.md
+            - name: Tile
+              href: platform/workbooks-tile-visualizations.md
+            - name: Struktur
+              href: platform/workbooks-tree-visualizations.md
+            - name: Graph
+              href: platform/workbooks-graph-visualizations.md
+            - name: Gestapelte Säule
+              href: platform/workbooks-composite-bar.md
         - name: Datenquellen
           href: platform/workbooks-data-sources.md
         - name: Parameter

@@ -293,8 +293,10 @@
       href: azure-monitor-overview.md
     - name: Anbieter von Azure Monitor für SAP-Lösungen
       href: azure-monitor-providers.md
-    - name: Konfigurieren von Azure Monitor für SAP-Lösungen
+    - name: 'Konfigurieren von Azure Monitor für SAP-Lösungen: Portal'
       href: azure-monitor-sap-quickstart.md
+    - name: 'Konfigurieren von Azure Monitor für SAP-Lösungen: Azure PowerShell'
+      href: azure-monitor-sap-quickstart-powershell.md
     - name: Häufig gestellte Fragen zu Azure Monitor für SAP-Lösungen
       href: azure-monitor-faq.md
 - name: Verweis

@@ -11,51 +11,53 @@ metadata:
   ms.collection: collection
   author: j-martens
   ms.author: jmartens
-  ms.date: 08/17/2020
+  ms.date: 09/17/2020
   ms.custom: contperfq1
-  ms.openlocfilehash: 63e1e9216a5150b957a34e15def9726167694978
-  ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+  ms.openlocfilehash: 19aba3cd915ac980f2f21e2457365fb6768d10c2
+  ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/16/2020
-  ms.locfileid: "88258709"
+  ms.lasthandoff: 09/10/2020
+  ms.locfileid: "89668803"
 landingContent:
-- title: Erste Schritte mit Machine Learning
+- title: 'Erste Schritte: Code First'
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Verwenden von Python-Notebooks
+    - text: Erste Schritte (Python)
       url: tutorial-1st-experiment-sdk-setup.md
-    - text: Mit AutoML (kein Code/wenig Code)
-      url: tutorial-first-experiment-automated-ml.md
-    - text: Im Designer (Drag & Drop)
-      url: tutorial-designer-automobile-price-train-score.md
-    - text: Verwenden von RStudio
+    - text: Batchrückschluss mit ML-Pipelines (Python)
+      url: tutorial-pipeline-batch-scoring-classification.md
+    - text: Erste Schritte (R)
       url: tutorial-1st-r-experiment.md
+- title: 'Erste Schritte: Wenig oder kein Code'
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Machine Learning Studio
+      url: overview-what-is-machine-learning-studio.md
+    - text: Was ist automatisiertes maschinelles Lernen (AutoML)?
+      url: concept-automated-ml.md
+    - text: Worum handelt es sich beim Drag & Drop-Designer?
+      url: concept-designer.md
+  - linkListType: tutorial
+    links:
+    - text: Erste Schritte mit AutoML
+      url: tutorial-first-experiment-automated-ml.md
+    - text: Erste Schritte im Designer
+      url: tutorial-designer-automobile-price-train-score.md
+  - linkListType: reference
+    links:
+    - text: Designeralgorithmen und -module
+      url: algorithm-module-reference/module-reference.md
 - title: Bereitstellen Ihres ML-Modells in Azure
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Bereitstellen des lokalen Modells in der Cloud
+    - text: Bereitstellen Ihres Modells in der Cloud
       url: how-to-deploy-existing-model.md
-- title: Verwenden von AutoML oder Drag & Drop in Studio
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Was ist automatisiertes maschinelles Lernen (AutoML)?
-      url: concept-automated-ml.md
-    - text: Was ist der Designer (Drag & Drop)?
-      url: concept-designer.md
-    - text: Auswählen eines Algorithmus
-      url: how-to-select-algorithms.md
-  - linkListType: tutorial
-    links:
-    - text: 'AutoML: Erstellen eines Klassifizierungsmodells'
-      url: tutorial-first-experiment-automated-ml.md
-    - text: 'Der Designer: Vorhersagen von Fahrzeugpreisen'
-      url: tutorial-designer-automobile-price-train-score.md
-    - text: Beschriften von Bildern zur Klassifizierung
-      url: tutorial-labeling.md
+    - text: Nachverfolgen und Bereitstellen von MLflow-Modellen
+      url: how-to-use-mlflow.md
 - title: 'MLOps: Bereitstellen und Verwalten von Modellen'
   linkLists:
   - linkListType: how-to-guide
@@ -64,51 +66,11 @@ landingContent:
       url: concept-model-management-and-deployment.md
     - text: Bereitstellungsanleitung und -ort
       url: how-to-deploy-and-where.md
-    - text: Echtzeitvorhersage
-      url: how-to-consume-web-service.md
-    - text: Batchvorhersage
-      url: how-to-use-parallel-run-step.md
-    - text: Repository für MLOps-Beispiele
-      url: https://github.com/microsoft/MLOps
-- title: Trainieren mit dem Python SDK
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Erstellen Ihres ersten ML-Experiments
-      url: tutorial-1st-experiment-sdk-setup.md
-    - text: Vorhersagen von Preisen für Taxifahrten mit AutoML
-      url: tutorial-auto-train-models.md
-    - text: Erstellen von Azure ML-Pipelines
-      url: tutorial-pipeline-batch-scoring-classification.md
-    - text: Klassifizieren von Bildern
-      url: tutorial-train-models-with-aml.md
-  - linkListType: how-to-guide
-    links:
-    - text: Einrichten Ihrer Umgebung
-      url: how-to-configure-environment.md
-    - text: Trainieren von Scikit-learn-Modellen
-      url: how-to-train-scikit-learn.md
-    - text: Trainieren von TensorFlow-Modellen
-      url: how-to-train-tensorflow.md
-    - text: Trainieren von PyTorch-Modellen
-      url: how-to-train-pytorch.md
-    - text: Trainieren von Keras-Modellen
-      url: how-to-train-keras.md
-    - text: Was sind ML-Pipelines?
-      url: concept-ml-pipelines.md
-- title: Zu Referenzdokumentation wechseln
-  linkLists:
   - linkListType: reference
     links:
-    - text: SDK für Python
+    - text: Python SDK
       url: https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py
-    - text: Designeralgorithmen und -module
-      url: algorithm-module-reference/module-reference.md
     - text: REST-API
       url: https://docs.microsoft.com/rest/api/azureml/
     - text: Machine Learning-CLI
       url: https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest
-    - text: KI-Referenzarchitekturen (GitHub)
-      url: https://github.com/Microsoft/AI
-    - text: SDK für R
-      url: https://azure.github.io/azureml-sdk-for-r/reference/index.html
