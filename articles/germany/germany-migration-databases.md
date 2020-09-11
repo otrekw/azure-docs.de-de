@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 05/27/2020
 ms.topic: how-to
 ms.custom: bfmigrate
-ms.openlocfilehash: 9c9a236f4b9572bfd2af9b4274ae7a2a118dac8e
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 8ec7f2245bf1206e414ba0e2b2847e0fcc2b6433
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85981128"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89438145"
 ---
 # <a name="migrate-database-resources-to-global-azure"></a>Migrieren von Datenbankressourcen zu Azure weltweit
 
@@ -48,9 +48,9 @@ Weitere Informationen finden Sie unter:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="sql-data-warehouse"></a>SQL Data Warehouse
+## <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
-Wenn Sie Azure SQL Data Warehouse-Ressourcen von Azure Deutschland zu Azure weltweit migrieren möchten, führen Sie die unter „Azure SQL-Datenbank“ beschriebenen Schritte aus.
+Wenn Sie Azure Synapse Analytics-Ressourcen von Azure Deutschland zu Azure weltweit migrieren möchten, führen Sie die unter „Azure SQL-Datenbank“ beschriebenen Schritte aus.
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
