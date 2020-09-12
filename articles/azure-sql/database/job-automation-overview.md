@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 03/10/2020
-ms.openlocfilehash: 537c989271800c15444d5323cfce8e133c8eeeba
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 8c9bdb059008a3d9e33631c3101cb7b459660119
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984641"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436781"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Automatisieren von Verwaltungsaufgaben mithilfe von Datenbankaufträgen
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -51,7 +51,7 @@ Folgende Auftragsplanungstechnologien stehen zur Verfügung:
 - **SQL-Agent-Aufträge** sind eine klassische und bewährte SQL Server-Auftragsplanungskomponente, die in Azure SQL Managed Instance verfügbar ist. In Azure SQL-Datenbank stehen keine SQL-Agent-Aufträge zur Verfügung.
 - **Aufträge für die elastische Datenbank (Vorschau)** sind Auftragsplanungsdienste, die benutzerdefinierte Aufträge in einer oder mehreren Datenbanken in Azure SQL-Datenbank ausführen.
 
-Zwischen dem SQL-Agent (lokal und als Teil von SQL Managed Instance verfügbar) und dem Datenbank-Agent für elastische Aufträge (für Einzeldatenbanken in Azure SQL-Datenbank und Datenbanken in SQL Data Warehouse verfügbar) gibt es einige Unterschiede.
+Zwischen dem SQL-Agent (lokal und als Teil von SQL Managed Instance verfügbar) und dem Datenbank-Agent für elastische Aufträge (für Einzeldatenbanken in Azure SQL-Datenbank und Datenbanken in Azure Synapse Analytics verfügbar) gibt es einige Unterschiede.
 
 | |Elastische Aufträge |SQL-Agent |
 |---------|---------|---------|

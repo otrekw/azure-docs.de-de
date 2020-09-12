@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 0c2f840333f066afaa22883fb0f5d67072a5c822
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: d4652ca62a82d14c7e44466161ae9b463818a71f
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85504864"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433978"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Schnellstart: Erstellen einer Data Factory und Pipeline mit dem .NET SDK
 
@@ -318,7 +318,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 
 Erstellen und starten Sie die Anwendung, und überprüfen Sie dann die Pipelineausführung.
 
-Die Konsole druckt den Status der Erstellung der Data Factory, des verknüpften Diensts, der Datasets, der Pipeline und der Pipelineausführung aus. Danach wird der Status der Pipelineausführung überprüft. Warten Sie, bis Sie die Ausführungsdetails der Kopieraktivität mit der Größe der gelesen/geschriebenen Daten sehen. Verwenden Sie anschließend Tools wie z.B. [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/), um zu überprüfen, ob die Blobs wie von Ihnen in den Variablen angegeben aus „inputBlobPath“ in „outputBlobPath“ kopiert werden.
+Die Konsole druckt den Status der Erstellung der Data Factory, des verknüpften Diensts, der Datasets, der Pipeline und der Pipelineausführung aus. Danach wird der Status der Pipelineausführung überprüft. Warten Sie, bis Sie die Ausführungsdetails der Kopieraktivität mit der Größe der gelesen/geschriebenen Daten sehen. Überprüfen Sie anschließend mit Tools wie z. B. [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/), ob die Blobs – wie von Ihnen in den Variablen angegeben – aus „inputBlobPath“ in „outputBlobPath“ kopiert werden.
 
 ### <a name="sample-output"></a>Beispielausgabe
 
