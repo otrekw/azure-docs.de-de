@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 09/30/2019
-ms.openlocfilehash: 937b836582cfcbf11564aa28b11cd8647afa835c
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 1840bf93cbca73e593465c999b416e7cbd7af201
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84191109"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536311"
 ---
 # <a name="what-is-azure-data-factory"></a>Was ist Azure Data Factory?
 
@@ -28,11 +28,11 @@ Beispiel: Angenommen, bei einem Spieleunternehmen fallen durch Spiele in der Clo
 
 Zum Analysieren dieser Protokolle benötigt das Unternehmen Referenzdaten (beispielsweise Informationen zu den Kunden, zum Spiel und zur Marketingkampagne), die in einem lokalen Datenspeicher gespeichert sind. Das Unternehmen möchte diese Daten aus dem lokalen Datenspeicher zusammen mit zusätzlichen Protokolldaten aus einem Clouddatenspeicher nutzen. 
 
-Zur Auswertung möchte das Unternehmen die gesamten Daten mithilfe eines Spark-Clusters in der Cloud (Azure HDInsight) verarbeiten und die transformierten Dateien in einem cloudbasierten Data Warehouse wie Azure SQL Data Warehouse veröffentlichen, um basierend darauf komfortabel einen Bericht erstellen zu können. Dieser Workflow soll automatisiert und nach einem täglichen Zeitplan überwacht und verwaltet werden. Darüber hinaus soll der Workflow ausgeführt werden, wenn Dateien in einem Blobspeichercontainer eintreffen.
+Zur Auswertung möchte das Unternehmen die gesamten Daten mithilfe eines Spark-Clusters in der Cloud (Azure HDInsight) verarbeiten und die transformierten Dateien in einem cloudbasierten Data Warehouse wie Azure Synapse Analytics (vormals SQL Data Warehouse) veröffentlichen, um – darauf basierend – einen Bericht bequem erstellen zu können. Dieser Workflow soll automatisiert und nach einem täglichen Zeitplan überwacht und verwaltet werden. Darüber hinaus soll der Workflow ausgeführt werden, wenn Dateien in einem Blobspeichercontainer eintreffen.
 
 Die Azure Data Factory-Plattform ist die richtige Lösung für solche Datenszenarien. Sie ist der *cloudbasierte ETL- und Datenintegrationsdienst, mit dem Sie datengesteuerte Workflows erstellen können, um Datenverschiebungen und -transformationen bedarfsgesteuert zu orchestrieren*. Mit Azure Data Factory können Sie datengesteuerte Workflows (so genannte Pipelines) erstellen und planen, die Daten aus unterschiedlichen Datenspeichern erfassen. Sie können komplexe ETL-Prozesse erstellen, bei denen Daten visuell mit Datenflüssen oder mit Computediensten wie Azure HDInsight Hadoop, Azure Databricks und Azure SQL-Datenbank transformiert werden. 
 
-Darüber hinaus können Sie Ihre transformierten Daten in Datenspeichern, z. B. Azure SQL Data Warehouse, veröffentlichen, damit diese von BI-Anwendungen (Business Intelligence) genutzt werden können. Über Azure Data Factory können Rohdaten letztendlich in aussagekräftigen Datenspeichern und Data Lakes organisiert und für bessere geschäftliche Entscheidungen genutzt werden.
+Außerdem können Sie Ihre transformierten Daten in Datenspeichern, z. B. Azure Synapse Analytics, veröffentlichen, damit sie von BI-Anwendungen (Business Intelligence) genutzt werden können. Über Azure Data Factory können Rohdaten letztendlich in aussagekräftigen Datenspeichern und Data Lakes organisiert und für bessere geschäftliche Entscheidungen genutzt werden.
 
 ![Übersicht über Data Factory](media/data-flow/overview.png)
 
@@ -62,7 +62,15 @@ Data Factory verfügt über vollständige Unterstützung von CI/CD für Ihre Dat
 Nachdem Sie Ihre Pipeline für die Datenintegration erfolgreich erstellt und bereitgestellt haben und einen geschäftlichen Nutzen aus den optimierten Daten ziehen können, können Sie die geplanten Aktivitäten und Pipelines auf Erfolgs- und Fehlerraten überwachen. Azure Data Factory bietet integrierte Unterstützung für die Pipelineüberwachung per Azure Monitor, API, PowerShell, Azure Monitor-Protokolle und Integritätsbereiche im Azure-Portal.
 
 ## <a name="top-level-concepts"></a>Allgemeine Konzepte
-Ein Azure-Abonnement kann über mindestens eine Azure Data Factory-Instanz (bzw. Data Factory) verfügen. Azure Data Factory besteht aus vier Hauptkomponenten. Zusammen stellen sie die Plattform dar, auf der Sie datengesteuerte Workflows mit Schritten zum Verschieben und Transformieren von Daten zusammenstellen können.
+Ein Azure-Abonnement kann über mindestens eine Azure Data Factory-Instanz (bzw. Data Factory) verfügen. Azure Data Factory besteht aus den folgenden Hauptkomponenten:
+- Pipelines
+- Aktivitäten
+- Datasets
+- Verknüpfte Dienste
+- Datenflüsse
+- Integration Runtimes
+
+Zusammen stellen sie die Plattform dar, auf der Sie datengesteuerte Workflows mit Schritten zum Verschieben und Transformieren von Daten zusammenstellen können.
 
 ### <a name="pipeline"></a>Pipeline
 Eine Data Factory kann eine oder mehrere Pipelines aufweisen. Bei einer Pipeline handelt es sich um eine logische Gruppierung von Aktivitäten zur Durchführung einer Arbeitseinheit. Gemeinsam führen die Aktivitäten einer Pipeline eine Aufgabe durch. Eine Pipeline kann beispielsweise eine Gruppe mit Aktivitäten enthalten, die Daten aus einem Azure-Blob erfasst, und anschließend eine Hive-Abfrage in einem HDInsight-Cluster ausführen, um die Daten zu partitionieren. 

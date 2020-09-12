@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/08/2019
+ms.date: 09/06/2020
 ms.author: mlottner
-ms.openlocfilehash: 04505527428a6bb312c6fb7a12c116947fbd7cf6
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: e6ab713715cacc799d2b980c2bce2a2a15b76887
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81310853"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505453"
 ---
 # <a name="quickstart-configure-your-iot-solution"></a>Schnellstart: Konfigurieren Ihrer IoT-Lösung
 
@@ -45,8 +45,8 @@ Nachdem Sie alle Ressourcenbeziehungen definiert haben, stellt Azure Security Ce
 Gehen Sie wie folgt vor, um Ihrer IoT-Lösung neue Ressourcen hinzuzufügen:
 
 1. Öffnen Sie im Azure-Portal Ihre Instanz von **IoT Hub**.
-1. Öffnen Sie **Ressourcen** (im linken Menü unter **Sicherheit**).
-1. Wählen Sie **Bearbeiten** und anschließend die Ressourcengruppen aus, die zu Ihrer IoT-Lösung gehören.
+1. Wählen Sie im linken Menü im Abschnitt **Sicherheit** die Option **Einstellungen** aus, und öffnen Sie sie. Wählen Sie anschließend **Überwachte Ressourcen** aus.
+1. Wählen Sie **Bearbeiten** und dann die überwachten Ressourcen aus, die zu ihrer IoT-Lösung gehören.
 1. Klicken Sie auf **Hinzufügen**.
 
 Glückwunsch! Sie haben Ihrer IoT-Lösung eine neue Ressourcengruppe hinzugefügt.

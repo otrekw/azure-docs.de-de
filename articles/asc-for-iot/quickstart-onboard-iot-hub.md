@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/08/2019
+ms.date: 09/06/2020
 ms.author: mlottner
-ms.openlocfilehash: 0d3e4ad63baf6883aa8fadaca5b1f2d28fa14881
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 1538143c33991c5dc91a096c7df4297bc18e5af5
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81310753"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504042"
 ---
 # <a name="quickstart-onboard-azure-security-center-for-iot-service-in-iot-hub"></a>Schnellstart: Durchführen des Onboardings für den Dienst „Azure Security Center für IoT“ in IoT Hub
 
@@ -52,8 +52,8 @@ Zum Schutz Ihrer IoT-Lösung werden standardmäßig IP-Adressen von eingehenden 
 
 So aktivieren oder deaktivieren Sie die Erfassung von IP-Adressdaten:
 
-1. Öffnen Sie Ihre IoT Hub-Instanz, und wählen Sie im Menü **Sicherheit** die Option **Übersicht** aus.
-1. Wählen Sie den Bildschirm **Einstellungen** aus, und ändern Sie die Einstellungen für Geolocation und/oder IP-Behandlung gemäß Ihren Anforderungen.
+1. Öffnen Sie Ihren IoT Hub, und wählen Sie im Menü **Sicherheit** die Option **Einstellungen** aus.
+1. Wählen Sie den Bildschirm **Datensammlung** aus, und ändern Sie die Einstellungen für Geolocation und/oder Verarbeitung von IP-Adressen entsprechend Ihren Anforderungen.
 
 ### <a name="log-analytics-creation"></a>Log Analytics-Erstellung
 
@@ -61,8 +61,8 @@ Wenn Azure Security Center für IoT aktiviert ist, wird ein Azure Log Analytic
 
 So ändern Sie die Arbeitsbereichskonfiguration von Log Analytics:
 
-1. Öffnen Sie Ihre IoT Hub-Instanz, und wählen Sie im Menü **Sicherheit** die Option **Übersicht** aus.
-1. Wählen Sie den Bildschirm **Einstellungen** aus, und ändern Sie die Arbeitsbereichskonfiguration der Log Analytics-Einstellungen gemäß Ihren Anforderungen.
+1. Öffnen Sie Ihren IoT Hub, und wählen Sie im Menü **Sicherheit** die Option **Einstellungen** aus.
+1. Wählen Sie den Bildschirm **Datensammlung** aus, und ändern Sie die Arbeitsbereichskonfiguration der Log Analytics-Einstellungen entsprechend Ihren Anforderungen.
 
 ### <a name="customize-your-iot-security-solution"></a>Anpassen Ihrer IoT-Sicherheitslösung
 
@@ -70,8 +70,8 @@ Durch Aktivieren der Lösung „Azure Security Center für IoT“ werden standar
 
 So aktivieren oder deaktivieren Sie den Dienst „Azure Security Center für IoT“ für eine bestimmte IoT Hub-Instanz:
 
-1. Öffnen Sie Ihre IoT Hub-Instanz, und wählen Sie im Menü **Sicherheit** die Option **Übersicht** aus.
-1. Wählen Sie den Bildschirm **Einstellungen** aus, und ändern Sie die Sicherheitseinstellungen eines beliebigen IoT-Hubs in Ihrem Azure-Abonnement gemäß Ihren Anforderungen.
+1. Öffnen Sie Ihren IoT Hub, und wählen Sie im Menü **Sicherheit** die Option **Einstellungen** aus.
+1. Wählen Sie den Bildschirm **Datensammlung** aus, und ändern Sie die Sicherheitseinstellungen eines beliebigen IoT-Hubs in Ihrem Azure-Abonnement entsprechend Ihren Anforderungen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
