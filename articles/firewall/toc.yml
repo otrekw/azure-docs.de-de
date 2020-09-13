@@ -28,8 +28,6 @@
   items:
     - name: Azure PowerShell
       href: sample-powershell.md
-    - name: Azure Monitor-Protokolle
-      href: log-analytics-samples.md
 - name: Konzepte
   items:
     - name: Azure Firewall-Features
@@ -88,6 +86,8 @@
       href: dns-settings.md
     - name: Diagnoseprotokolle überwachen
       href: firewall-diagnostics.md
+    - name: Azure Monitor-Protokolle
+      href: log-analytics-samples.md
 - name: Verweis
   items:
     - name: Azure CLI
