@@ -23,7 +23,7 @@
     - name: Erstellen einer Blaupause – ARM-Vorlage
       displayName: 'assign, compliance, resource manager'
       href: ../../azure-resource-manager/templates/deploy-to-subscription.md?toc=/azure/governance/blueprints/toc.json&bc=/azure/governance/blueprints/breadcrumb/toc.json#azure-blueprints
-- name: Tutorials
+- name: Lernprogramme
   items:
     - name: Erstellen aus einem Blaupausenbeispiel
       displayName: 'template, resource group, rbac, role assignment'
@@ -41,9 +41,15 @@
       href: ./samples/azure-security-benchmark.md
     - name: ISM PROTECTED der australischen Regierung
       items:
+        - name: Übersicht
+          displayName: 'standards, Australian, Government, ISM, PROTECTED'
+          href: ./samples/ism-protected/index.md
         - name: Steuerungszuordnung
           displayName: 'standards, Australian, Government, ISM, PROTECTED'
           href: ./samples/ism-protected/control-mapping.md
+        - name: Schritte zum Bereitstellen
+          displayName: 'standards, Australian, Government, ISM, PROTECTED'
+          href: ./samples/ism-protected/deploy.md
     - name: Canada Federal PBMM
       items:
         - name: Übersicht

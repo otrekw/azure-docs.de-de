@@ -106,8 +106,6 @@
   items:
     - name: Anmelden beim Portal „Meine Apps“ und Verwenden dieses Portals
       href: my-apps-portal-end-user-access.md
-    - name: Aktualisieren Ihrer Profil- und Kontoinformationen
-      href: my-apps-portal-end-user-update-profile.md
     - name: Aktualisieren Ihrer Gruppeninformationen
       href: my-apps-portal-end-user-groups.md
     - name: Organisieren von Apps mit Sammlungen

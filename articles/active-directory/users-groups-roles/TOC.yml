@@ -16,7 +16,7 @@
       href: groups-quickstart-expiration.md
     - name: Festlegen einer Benennungsrichtlinie für Gruppen
       href: groups-quickstart-naming-policy.md
-- name: Tutorials
+- name: Lernprogramme
   items:
     - name: Erstellen einer dynamischen Gruppe
       href: groups-dynamic-tutorial.md
@@ -175,8 +175,6 @@
               href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
             - name: Zuweisen von benutzerdefinierten Rollen in PowerShell
               href: roles-assign-powershell.md
-            - name: Benutzerdefinierte Rollen für Unternehmens-Apps
-              href: custom-enterprise-apps.md
             - name: Benutzerdefinierte Rollenberechtigungen
               href: roles-custom-available-permissions.md
             - name: Delegieren von App-Administratorberechtigungen
