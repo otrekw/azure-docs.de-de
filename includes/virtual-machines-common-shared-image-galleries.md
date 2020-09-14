@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 07/08/2020
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: c2dffe576bfb52981b331c02b3f24ec2507ec349
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 662afb902c97e164cc24bc664b854db118904210
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86501956"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89494282"
 ---
 Katalog mit freigegebenen Images ist ein Dienst, der Ihnen hilft, Ihre Images zu strukturieren und organisieren. Kataloge mit freigegebenen Images stellen Folgendes bereit:
 
@@ -196,7 +196,7 @@ Sie können einen Katalog mit freigegebenen Images mithilfe von Vorlagen erstell
 * [Welche Gebühren fallen für die Verwendung des Katalogs mit geteilten Images an?](#what-are-the-charges-for-using-the-shared-image-gallery)
 * [Welche API-Version sollte ich verwenden, um einen Katalog mit geteilten Images, eine Imagedefinition und eine Imageversion zu erstellen?](#what-api-version-should-i-use-to-create-shared-image-gallery-and-image-definition-and-image-version)
 * [Welche API-Version sollte ich verwenden, um einen Katalog mit geteilten Images oder eine Skalierungsgruppe für virtuelle Computer aus der Imageversion zu erstellen?](#what-api-version-should-i-use-to-create-shared-vm-or-virtual-machine-scale-set-out-of-the-image-version)
-* [Kann ich meine VM-Skalierungsgruppe aktualisieren, die mithilfe eines verwalteten Images erstellt wurde, um Shared Image Gallery-Images zu verwenden?]
+* [Kann ich meine VM-Skalierungsgruppe aktualisieren, die mithilfe eines verwalteten Images erstellt wurde, um Shared Image Gallery-Images zu verwenden?](#can-i-update-my-virtual-machine-scale-set-created-using-managed-image-to-use-shared-image-gallery-images)
 
 ### <a name="how-can-i-list-all-the-shared-image-gallery-resources-across-subscriptions"></a>Wie kann ich alle Ressourcen eines Katalogs mit geteilten Images über Abonnements hinweg auflisten?
 

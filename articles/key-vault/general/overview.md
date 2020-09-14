@@ -11,12 +11,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 98f681494ca73bd2698cd3068441cf02cd6730ac
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 500648b3037a81b39f474538ec062ef922b6e2df
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190542"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421644"
 ---
 # <a name="about-azure-key-vault"></a>Informationen zu Azure Key Vault
 
@@ -25,7 +25,7 @@ Mit Azure Key Vault lassen sich folgende Probleme lösen:
 - **Geheimnisverwaltung**: Azure Key Vault ermöglicht die sichere Speicherung und präzise Steuerung des Zugriffs auf Token, Kennwörter, Zertifikate, API-Schlüssel und andere Geheimnisse.
 - **Schlüsselverwaltung**: Azure Key Vault kann auch als Schlüsselverwaltungslösung verwendet werden. Azure Key Vault vereinfacht das Erstellen und Verwalten der zur Verschlüsselung Ihrer Daten verwendeten Verschlüsselungsschlüssel. 
 - **Zertifikatverwaltung**: Darüber hinaus können Sie mit dem Azure Key Vault-Dienst komfortabel öffentliche und private SSL-/TLS-Zertifikate (Secure Sockets Layer/Transport Layer Security) für die Verwendung mit Azure und Ihren internen verbundenen Ressourcen bereitstellen und verwalten. 
-- **Speichern von Geheimnissen mit Unterstützung durch Hardwaresicherheitsmodule**: Die Geheimnisse und Schlüssel können per Software oder mit HSMs geschützt werden, die mit FIPS 140-2 Level 2 konform sind.
+- **Speichern von Geheimnissen, die von Hardwaresicherheitsmodulen unterstützt werden**: Die Geheimnisse, Schlüssel und Zertifikate im Speicher werden entweder mit einem Softwareschlüssel (Standard-Tarif) oder einem nach FIPS 140-2 Level 2 validierten HSM-Schlüssel (Premium-Tarif) verschlüsselt. 
 
 ## <a name="why-use-azure-key-vault"></a>Gründe für die Verwendung von Azure Key Vault
 

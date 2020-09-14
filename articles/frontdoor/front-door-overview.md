@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/02/2020
 ms.author: duau
-ms.openlocfilehash: 003903a941b0d9ce36f28ce5e4d640e5746a7de3
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 5741e41e3c1474cef5cf49270fd40bbdf4fcaffb
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378184"
+ms.locfileid: "89399411"
 ---
 # <a name="what-is-azure-front-door"></a>Was ist Azure Front Door?
 Über Azure Front Door können Sie das globale Routing für Ihren Webdatenverkehr definieren, verwalten und überwachen, indem Sie eine Optimierung auf die bestmögliche Leistung und ein schnelles globales Failover durchführen, um die Hochverfügbarkeit sicherzustellen. Mit Front Door können Sie Ihre globalen Consumer- und Unternehmensanwendungen (in mehreren Regionen angeordnet) in stabile und hochleistungsfähige personalisierte moderne Anwendungen, APIs und Inhalte transformieren, mit denen über Azure eine globale Zielgruppe erreicht wird.
@@ -84,7 +84,7 @@ Preisinformationen finden Sie unter [Front Door – Preise](https://azure.micros
 
 ## <a name="whats-new"></a>Neuigkeiten
 
-Abonnieren Sie den RSS-Feed, und zeigen Sie die neuesten Azure Load Balancer-Featureupdates auf der Seite [Azure-Updates](https://azure.microsoft.com/updates/?category=networking&query=Azure%20Front%20Door) an.
+Abonnieren Sie den RSS-Feed, und zeigen Sie die neuesten Azure Front Door-Featureupdates auf der Seite [Azure-Updates](https://azure.microsoft.com/updates/?category=networking&query=Azure%20Front%20Door) an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

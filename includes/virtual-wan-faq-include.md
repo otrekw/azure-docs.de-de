@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 08/18/2020
+ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: fab36a538cd9dfa17852c513974af062fa7a0ec2
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 2519baa01fa9d8a13dd2e7855f9da3ec7f9093f9
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89304023"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89570169"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Muss der Benutzer über eine Hub-and-Spoke-Anordnung mit SD-WAN/VPN-Geräten verfügen, um Azure Virtual WAN nutzen zu können?
 
@@ -83,7 +83,7 @@ Es gibt zwei Optionen zum Hinzufügen von DNS-Servern für die P2S-Clients. Die 
 
 ### <a name="for-user-vpn-point-to-site--how-many-clients-are-supported"></a>Für Benutzer-VPN (Point-to-Site): Wie viele Clients werden unterstützt?
 
-Jedes P2S-Gateway eines Benutzer-VPN verfügt über zwei Instanzen, und jede Instanz unterstützt jeweils eine bestimmte maximale Anzahl von Benutzern, wenn sich die Skalierungseinheit ändert. Für Skalierungseinheit 1 bis 3 werden 500 Verbindungen, für Skalierungseinheit 4 bis 6 werden 1000 Verbindungen, für Skalierungseinheit 7 bis 12 werden 5000 Verbindungen und für Skalierungseinheit 13-20 werden bis zu 10.000 Verbindungen unterstützt. 
+Jedes P2S-Gateway eines Benutzer-VPN verfügt über zwei Instanzen, und jede Instanz unterstützt jeweils eine bestimmte maximale Anzahl von Benutzern, wenn sich die Skalierungseinheit ändert. Für Skalierungseinheit 1 bis 3 werden 500 Verbindungen, für Skalierungseinheit 4 bis 6 werden 1.000 Verbindungen, für Skalierungseinheit 7 bis 12 werden 5.000 Verbindungen, und für Skalierungseinheit 13 bis 18 werden bis zu 10.000 Verbindungen unterstützt. 
 
 Angenommen, der Benutzer wählt eine Skalierungseinheit aus. Jede Skalierungseinheit steht für ein bereitgestelltes Aktiv/Aktiv-Gateway, und jede Instanz (in diesem Fall zwei) unterstützt bis zu 500 Verbindungen. Da Sie 500 Verbindungen * 2 pro Gateway erhalten können, bedeutet dies nicht, dass Sie 1000 (statt der 500) für diese Skalierungseinheit einplanen. Möglicherweise müssen Instanzen gewartet werden, wobei die Konnektivität für die zusätzlichen 500 unterbrochen werden kann, wenn Sie die empfohlene Anzahl von Verbindungen überschreiten. Planen Sie darüber hinaus auch Ausfallzeit ein, falls Sie für die Skalierungseinheit das Hoch- oder Herunterskalieren durchführen oder die Point-to-Site-Konfiguration auf dem VPN-Gateway ändern möchten.
 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 464c0fee31f86ba6ffa1dbecc7b2dd659cd86685
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: c633cc973cb9e4d4f0375dec638e278c48c6709c
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89255527"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500231"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-using-azure-cli-and-python"></a>Bereitstellen von virtuellen Computern auf Ihrem Azure Stack Edge-GPU-Gerät über die Azure CLI und Python
 
@@ -60,13 +60,13 @@ Bevor Sie mit dem Erstellen und Verwalten eines virtuellen Computers auf Ihrem A
 
     2. Aktivieren Sie Compute auf der Netzwerkschnittstelle. Azure Stack Edge erstellt und verwaltet einen virtuellen Switch, der dieser Netzwerkschnittstelle entspricht.
 
-    Wenn Sie sich für die Verwendung einer anderen Netzwerkschnittstelle für Compute entscheiden, stellen Sie Folgendes sicher:
+    <!--If you decide to use another network interface for compute, make sure that you:
 
-    - Löschen Sie alle virtuellen Computer, die Sie mithilfe von Azure Resource Manager bereitgestellt haben.
+    - Delete all the VMs that you have deployed using Azure Resource Manager.
 
-    - Löschen Sie alle virtuellen Netzwerkschnittstellen und das virtuelle Netzwerk, das dieser Netzwerkschnittstelle zugeordnet ist.
+    - Delete all virtual network interfaces and the virtual network associated with this network interface.
 
-    - Sie können jetzt eine weitere Netzwerkschnittstelle für Compute aktivieren.
+    - You can now enable another network interface for compute.-->
 
 3. Sie haben alle Zertifikate auf Ihrem Azure Stack Edge-Gerät und im vertrauenswürdigen Speicher des Clients erstellt und installiert. Führen Sie das unter [Schritt 2: Erstellen und Installieren von Zertifikaten](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates) beschriebene Verfahren aus.
 
@@ -342,7 +342,8 @@ Bevor Sie mit dem Erstellen und Verwalten eines virtuellen Computers auf Ihrem A
    ]
    PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2>
    ```
-
+   Notieren Sie sich die Werte `id` und `tenantId`, da diese Ihrer Azure Resource Manager-Abonnement-ID bzw. Ihrer Azure Resource Manager-Mandanten-ID entsprechen und in einem späteren Schritt verwendet werden.
+       
    Die folgenden Umgebungsvariablen müssen so festgelegt werden, dass sie als *Dienstprinzipal* funktionieren:
 
    ```
@@ -352,7 +353,7 @@ Bevor Sie mit dem Erstellen und Verwalten eines virtuellen Computers auf Ihrem A
    $ENV:ARM_SUBSCRIPTION_ID = "A4257FDE-B946-4E01-ADE7-674760B8D1A3"
    ```
 
-   Die Azure Resource Manager-Mandanten-ID, die Azure Resource Manager-Client-ID und die Azure Resource Manager-Abonnement-ID sind alle hartcodiert und verfügen über dieselben Werte für alle Azure Stack Edge-Geräte. Der geheime Azure Resource-Clientschlüssel ist das Azure Resource Manager-Kennwort, das Sie festgelegt haben.
+   Ihre Azure Resource Manager-Client-ID ist hartcodiert. Ihre Azure Resource Manager-Mandanten-ID und Azure Resource Manager-Abonnement-ID sind beide in der Ausgabe Befehls `az login` vorhanden, den Sie zuvor ausgeführt haben. Der geheime Azure Resource-Clientschlüssel ist das Azure Resource Manager-Kennwort, das Sie festgelegt haben.
 
    Weitere Informationen finden Sie unter [Azure Resource Manager-Kennwort](azure-stack-edge-j-series-set-azure-resource-manager-password.md).
 

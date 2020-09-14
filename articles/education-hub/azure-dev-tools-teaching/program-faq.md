@@ -7,14 +7,14 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.topic: overview
 ms.date: 06/30/2020
-ms.openlocfilehash: e28638e8daec5dcc283d61474d63ec41ec56ae63
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d52dd19667da005de54bbf9b4d30207976511c7d
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87100872"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567808"
 ---
-# <a name="frequently-asked-questions-about-azure-dev-tools-for-teaching"></a>Häufig gestellte Fragen zu Azure Dev Tools für den Unterricht
+# <a name="frequently-asked-questions-about-the-education-hub"></a>Häufig gestellte Fragen zu Education Hub
 
 In diesem Artikel finden Sie Antworten auf einige häufig gestellte Fragen zu Azure for Students, Azure for Students Starter und Azure Dev Tools für den Unterricht.
 
@@ -152,6 +152,11 @@ Azure-Kursguthaben decken nur die Nutzung ab dem Zeitpunkt ab, zu dem Sie das Az
 Wenn Sie ein bestimmtes Abonnement auf dem Blatt „Abonnements“ im Azure-Portal anzeigen, erkennen Sie **Angebotsname** als eine der Eigenschaften. Der Angebotsname lautet **Azure Sponsorship**, wenn er mit Ihrem Kursguthaben verbunden ist. Wenn **Azure Sponsorship** nicht angezeigt wird, wenden Sie sich an den Support, um das Abonnement umzuwandeln.
 
 ## <a name="azure-dev-tools-for-teaching"></a>Azure Dev Tools für den Unterricht
+
+### <a name="who-is-eligible-to-purchase-microsoft-azure-dev-tools-for-teaching"></a>Wer ist berechtigt, Microsoft Azure Dev Tools für den Unterricht zu erwerben?
+
+Nur akademische Einrichtungen, die eine Volumenlizenzvereinbarung (VL) von Microsoft erworben haben, können sich bei Azure Dev Tools für den Unterricht registrieren.  Wenn Sie zurzeit Kunde von Dev Tools für den Unterricht ohne Volumenlizenzvereinbarung sind, können Sie Ihr Abonnement weiterhin erneuern. Weitere Informationen zu Volumenlizenzvereinbarungen für akademische Einrichtungen finden Sie unter https://aka.ms/ees. 
+
 
 ### <a name="what-products-are-included-in-the-azure-dev-tools-for-teaching-subscription"></a>Welche Produkte sind im Abonnement für Azure Dev Tools für den Unterricht enthalten?
 

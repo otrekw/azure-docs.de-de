@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 09/04/2020
 ms.author: alkohli
-ms.openlocfilehash: 83332c3bfa0b2b99d7333fa679fb8d398aecf8bd
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: fd87cbef4c667d9da1f93b448a2a67e6e90307b7
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268909"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500282"
 ---
 # <a name="create-custom-vm-images-for-your-azure-stack-edge-device"></a>Erstellen benutzerdefinierter VM-Images für Ihr Azure Stack Edge-Gerät
 
@@ -52,7 +52,22 @@ Führen Sie die folgenden Schritte aus, um ein Linux-VM-Image zu erstellen:
 
 1. Erstellen eines virtuellen Linux-Computers. Weitere Informationen finden Sie unter [Tutorial: Erstellen und Verwalten virtueller Linux-Computer mit der Azure-Befehlszeilenschnittstelle](../virtual-machines/linux/tutorial-manage-vm.md).
 
-2. [Laden Sie einen vorhandenen Betriebssystemdatenträger herunter.](../virtual-machines/linux/download-vhd.md)
+1. Heben Sie die Bereitstellung der VM auf. Verwenden Sie den Azure VM-Agent zum Löschen computerspezifischer Dateien und Daten. Verwenden Sie auf dem virtuellen Linux-Quellcomputer den Befehl `waagent` mit dem Parameter `-deprovision+user`. Weitere Informationen finden Sie unter [Verstehen und Verwenden des Azure Linux-Agents](../virtual-machines/extensions/agent-linux.md).
+
+    1. Stellen Sie mit einem SSH-Client eine Verbindung mit Ihrem virtuellen Linux-Computer her.
+    2. Geben Sie im SSH-Fenster den folgenden Befehl ein:
+       
+        ```bash
+        sudo waagent -deprovision+user
+        ```
+       > [!NOTE]
+       > Führen Sie diesen Befehl nur auf einem virtuellen Computer aus, den Sie als Image erfassen möchten. Die Ausführung dieses Befehls garantiert nicht, dass alle vertraulichen Informationen aus dem Image gelöscht werden oder dass es für eine erneute Verteilung geeignet ist. Der Parameter `+user` entfernt auch das zuletzt bereitgestellte Benutzerkonto. Wenn die Anmeldeinformationen des Benutzerkontos auf dem virtuellen Computer verbleiben sollen, verwenden Sie nur `-deprovision`.
+     
+    3. Geben Sie **y** ein, um fortzufahren. Sie können den Parameter `-force` hinzufügen, um diesen Bestätigungsschritt zu vermeiden.
+    4. Geben Sie nach der Ausführung dieses Befehls den Befehl **exit** ein, um den SSH-Client zu schließen.  Der virtuelle Computer wird zu diesem Zeitpunkt immer noch ausgeführt.
+
+
+1. [Laden Sie einen vorhandenen Betriebssystemdatenträger herunter.](../virtual-machines/linux/download-vhd.md)
 
 Verwenden Sie diese virtuelle Festplatte, um jetzt einen virtuellen Computer zu erstellen und auf dem Azure Stack Edge-Gerät bereitzustellen. Sie können die folgenden zwei Azure Marketplace-Images verwenden, um benutzerdefinierte Linux-Images zu erstellen:
 

@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 07/22/2020
+ms.date: 09/04/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: b4fe93eefac13ac123212c093f0c7880ebd137ac
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: dac00d732389304eabb776219c31c975aabdbdbe
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424659"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89487170"
 ---
 ## <a name="azure-security-benchmark"></a>Vergleichstest für die Azure-Sicherheit
 
@@ -21,4 +21,19 @@ Weitere Informationen dazu, wie die verfügbaren Azure Policy-Build-Ins für all
 |Domain |Steuerungs-ID |Steuerungstitel |Richtlinie<br /><sub>(Azure-Portal)</sub> |Version der Richtlinie<br /><sub>(GitHub)</sub>  |
 |---|---|---|---|---|
 |Netzwerksicherheit |1.1 |Schützen von Ressourcen mithilfe von Netzwerksicherheitsgruppen oder Azure Firewall in Virtual Network |[Container Registry sollte einen VNET-Dienstendpunkt verwenden.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4857be7-912a-4c75-87e6-e30292bcdf78) |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_ContainerRegistry_Audit.json) |
+
+## <a name="hipaa-hitrust-92"></a>HIPAA HITRUST 9.2
+
+Weitere Informationen dazu, wie die verfügbaren Azure Policy-Integrationen für alle Azure-Dienste diesem Konformitätsstandard entsprechen, finden Sie unter [Einhaltung gesetzlicher Bestimmungen in Azure Policy: HIPAA HITRUST 9.2](../../../../articles/governance/policy/samples/hipaa-hitrust-9-2.md).
+Weitere Informationen zu diesem Compliancestandard finden Sie unter [HIPAA HITRUST 9.2](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html).
+
+|Domain |Steuerungs-ID |Steuerungstitel |Richtlinie<br /><sub>(Azure-Portal)</sub> |Version der Richtlinie<br /><sub>(GitHub)</sub>  |
+|---|---|---|---|---|
+|Trennung in Netzwerken |0805.01m1Organizational.12 - 01.m |Mit den Sicherheitsgateways der Organisation (z. B. Firewalls) werden Sicherheitsrichtlinien erzwungen, und sie sind für die Filterung von Datenverkehr zwischen Domänen und die Blockierung von unberechtigtem Zugriff konfiguriert. Außerdem werden sie genutzt, um die Trennung zwischen internen kabelgebundenen, internen drahtlosen sowie externen Netzwerksegmenten (z. B. dem Internet), z. B. DMZ, zu verwalten und die Zugriffssteuerungsrichtlinien für die einzelnen Domänen zu erzwingen. |[Container Registry sollte einen VNET-Dienstendpunkt verwenden.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4857be7-912a-4c75-87e6-e30292bcdf78) |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_ContainerRegistry_Audit.json) |
+|Trennung in Netzwerken |0806.01m2Organizational.12356 - 01.m |Das Netzwerk der Organisation ist logisch und physisch segmentiert mit einem definierten Sicherheitsperimeter und einem abgestuften Satz von Steuerungen, einschließlich Subnetzwerken für öffentlich zugängliche Systemkomponenten, die logisch vom internen Netzwerk getrennt sind, basierend auf organisatorischen Anforderungen; und der Datenverkehr wird auf der Grundlage der erforderlichen Funktionalität und der Klassifizierung der Daten/Systeme auf der Grundlage einer Risikobewertung und ihrer jeweiligen Sicherheitsanforderungen gesteuert. |[Container Registry sollte einen VNET-Dienstendpunkt verwenden.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4857be7-912a-4c75-87e6-e30292bcdf78) |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_ContainerRegistry_Audit.json) |
+|Trennung in Netzwerken |0894.01m2Organizational.7 - 01.m |Bei der Migration von physischen Servern, Anwendungen oder Daten zu virtualisierten Servern werden Netzwerke von Netzwerken auf Produktionsebene getrennt. |[Container Registry sollte einen VNET-Dienstendpunkt verwenden.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4857be7-912a-4c75-87e6-e30292bcdf78) |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_ContainerRegistry_Audit.json) |
+|Netzwerksteuerungen |0868.09m3Organizational.18 - 09.m |Die Organisation erstellt eine Firewallkonfiguration, um den ein- und ausgehenden Datenverkehr auf das für die abgedeckte Datenumgebung erforderliche Maß zu beschränken. |[Container Registry sollte einen VNET-Dienstendpunkt verwenden.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4857be7-912a-4c75-87e6-e30292bcdf78) |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_ContainerRegistry_Audit.json) |
+|Netzwerksteuerungen |0869.09m3Organizational.19 - 09.m |Die Konfigurationsdateien des Routers sind gesichert und werden synchronisiert. |[Container Registry sollte einen VNET-Dienstendpunkt verwenden.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4857be7-912a-4c75-87e6-e30292bcdf78) |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_ContainerRegistry_Audit.json) |
+|Netzwerksteuerungen |0870.09m3Organizational.20 - 09.m |Der Zugriff auf alle Proxys wird verweigert, mit Ausnahme der Hosts, Ports und Dienste, die ausdrücklich erforderlich sind. |[Container Registry sollte einen VNET-Dienstendpunkt verwenden.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4857be7-912a-4c75-87e6-e30292bcdf78) |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_ContainerRegistry_Audit.json) |
+|Netzwerksteuerungen |0871.09m3Organizational.22 - 09.m |Autorisierende DNS-Server werden in interne und externe Rollen aufgeteilt. |[Container Registry sollte einen VNET-Dienstendpunkt verwenden.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4857be7-912a-4c75-87e6-e30292bcdf78) |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_ContainerRegistry_Audit.json) |
 
