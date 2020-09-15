@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 07/22/2020
+ms.date: 09/04/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: b257063e46a978ac61a3425151940b5c74c2da62
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 5113695dd4a6bfdea28a4044945b1ee4145ebf37
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374428"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484787"
 ---
 ## <a name="azure-security-benchmark"></a>Vergleichstest für die Azure-Sicherheit
 
@@ -21,6 +21,21 @@ Weitere Informationen dazu, wie die verfügbaren Azure Policy-Build-Ins für all
 |Domain |Steuerungs-ID |Steuerungstitel |Richtlinie<br /><sub>(Azure-Portal)</sub> |Version der Richtlinie<br /><sub>(GitHub)</sub>  |
 |---|---|---|---|---|
 |Datenschutz |4.4 |Verschlüsseln aller vertraulichen Informationen während der Übertragung |[Für Azure Cache for Redis dürfen nur sichere Verbindungen aktiviert sein.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F22bee202-a82f-4305-9a2a-6d7f44d4dedb) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_AuditSSLPort_Audit.json) |
+
+## <a name="hipaa-hitrust-92"></a>HIPAA HITRUST 9.2
+
+Weitere Informationen dazu, wie die verfügbaren Azure Policy-Integrationen für alle Azure-Dienste diesem Konformitätsstandard entsprechen, finden Sie unter [Einhaltung gesetzlicher Bestimmungen in Azure Policy: HIPAA HITRUST 9.2](../../../../articles/governance/policy/samples/hipaa-hitrust-9-2.md).
+Weitere Informationen zu diesem Konformitätsstandard finden Sie unter [HIPAA HITRUST 9.2](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html).
+
+|Domain |Steuerungs-ID |Steuerungstitel |Richtlinie<br /><sub>(Azure-Portal)</sub> |Version der Richtlinie<br /><sub>(GitHub)</sub>  |
+|---|---|---|---|---|
+|Steuerung von Netzwerkverbindungen |0809.01n2Organizational.1234 - 01.n |Netzwerkdatenverkehr wird entsprechend der Zugriffssteuerungsrichtlinie der Organisation per Firewall und andere netzwerkbezogene Einschränkungen für jeden Netzwerkzugriffspunkt oder die verwaltete Schnittstelle des externen Telekommunikationsdiensts gesteuert. |[Für Azure Cache for Redis dürfen nur sichere Verbindungen aktiviert sein.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F22bee202-a82f-4305-9a2a-6d7f44d4dedb) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_AuditSSLPort_Audit.json) |
+|Steuerung von Netzwerkverbindungen |0810.01n2Organizational.5 - 01.n |Die übertragenen Informationen sind geschützt und werden mindestens über geöffnete öffentliche Netzwerke verschlüsselt. |[Für Azure Cache for Redis dürfen nur sichere Verbindungen aktiviert sein.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F22bee202-a82f-4305-9a2a-6d7f44d4dedb) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_AuditSSLPort_Audit.json) |
+|Steuerung von Netzwerkverbindungen |0811.01n2Organizational.6 - 01.n |Ausnahmen von der Datenverkehrsflussrichtlinie werden mit einer unterstützenden Unternehmens-/Geschäftsanforderung und einer Dauer der Ausnahme dokumentiert sowie mindestens jährlich geprüft. Ausnahmen bei der Datenverkehrsflussrichtlinie werden entfernt, wenn sie von einer expliziten Unternehmens-/Geschäftsanforderung nicht mehr unterstützt werden. |[Für Azure Cache for Redis dürfen nur sichere Verbindungen aktiviert sein.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F22bee202-a82f-4305-9a2a-6d7f44d4dedb) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_AuditSSLPort_Audit.json) |
+|Steuerung von Netzwerkverbindungen |0812.01n2Organizational.8 - 01.n |Remotegeräte, die eine andere Verbindung als eine Remoteverbindung herstellen, dürfen mit externen Ressourcen (Remoteressourcen) nicht kommunizieren. |[Für Azure Cache for Redis dürfen nur sichere Verbindungen aktiviert sein.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F22bee202-a82f-4305-9a2a-6d7f44d4dedb) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_AuditSSLPort_Audit.json) |
+|Steuerung von Netzwerkverbindungen |0814.01n1Organizational.12 - 01.n |Die Möglichkeit von Benutzern, eine Verbindung mit dem internen Netzwerk herzustellen, wird entsprechend der Zugriffssteuerungsrichtlinie und der Anforderungen von klinischen Anwendungen und Geschäftsanwendungen mit einer Richtlinie zur standardmäßigen Verweigerung von Programmen und ausnahmebasierten Zulassung auf verwalteten Schnittstellen eingeschränkt. |[Für Azure Cache for Redis dürfen nur sichere Verbindungen aktiviert sein.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F22bee202-a82f-4305-9a2a-6d7f44d4dedb) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_AuditSSLPort_Audit.json) |
+|Identifizierung von Risiken in Bezug auf externe Parteien |1451.05iCSPOrganizational.2 - 05.i |Clouddienstanbieter entwerfen und implementieren Steuerungen, um Risiken in Bezug auf die Datensicherheit zu entschärfen und zu minimieren, indem eine entsprechende Aufgabentrennung, rollenbasierte Zugriffssteuerung und Zugriff mit den geringsten Rechten für das gesamte Personal der Lieferkette genutzt werden. |[Für Azure Cache for Redis dürfen nur sichere Verbindungen aktiviert sein.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F22bee202-a82f-4305-9a2a-6d7f44d4dedb) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_AuditSSLPort_Audit.json) |
+|Onlinetransaktionen |0946.09y2Organizational.14 - 09.y |Die Organisation erzwingt die Nutzung der Verschlüsselung zwischen den an einer Transaktion beteiligten Parteien und die Verwendung von elektronischen Signaturen. |[Für Azure Cache for Redis dürfen nur sichere Verbindungen aktiviert sein.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F22bee202-a82f-4305-9a2a-6d7f44d4dedb) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_AuditSSLPort_Audit.json) |
 
 ## <a name="nist-sp-800-171-r2"></a>NIST SP 800-171 R2
 

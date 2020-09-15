@@ -2,26 +2,12 @@
   href: index.yml
 - name: Übersetzer
   items:
-    - name: Übersicht
-      items:
-        - name: Worum handelt es sich bei Translator?
-          href: translator-info-overview.md
-        - name: Sprachunterstützung
-          href: 'https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization'
-    - name: Schnellstarts
-      items:
-        - name: Text übersetzen
-          href: quickstart-translate.md
-        - name: Transliteration von Text
-          href: quickstart-transliterate.md
-        - name: Sprache erkennen
-          href: quickstart-detect.md
-        - name: Nachschlagen von Wortübersetzungen
-          href: quickstart-dictionary.md
-        - name: Abrufen der unterstützten Sprachen
-          href: quickstart-languages.md
-        - name: Bestimmen der Satzlänge
-          href: quickstart-sentences.md
+    - name: Worum handelt es sich bei Translator?
+      href: translator-info-overview.md
+    - name: Schnellstart
+      href: quickstart-translator.md
+    - name: Sprachunterstützung
+      href: 'https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization'
     - name: Tutorials
       items:
         - name: Erstellen einer WPF-App für Translator (C#)

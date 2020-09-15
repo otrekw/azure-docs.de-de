@@ -13,12 +13,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 10/14/2019
   ms.author: erhopf
-  ms.openlocfilehash: 26fc174ef0993339487a2edcc32cbb4fd864f96e
-  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+  ms.openlocfilehash: 275f4d4228e28e3f8c31263001b48fa28d46e353
+  ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 05/19/2020
-  ms.locfileid: "83592745"
+  ms.lasthandoff: 09/15/2020
+  ms.locfileid: "90090005"
 landingContent:
 - title: Übersetzer
   linkLists:
@@ -40,18 +40,8 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Text übersetzen
-      url: quickstart-translate.md
-    - text: Transliteration von Text
-      url: quickstart-transliterate.md
-    - text: Spracherkennung
-      url: quickstart-detect.md
-    - text: Wörterbuchsuche
-      url: quickstart-dictionary.md
-    - text: Bestimmen der Satzlänge
-      url: quickstart-sentences.md
-    - text: Auflisten unterstützter Sprachen
-      url: quickstart-languages.md
+    - text: Schnellstart
+      url: quickstart-translator.md
   - linkListType: tutorial
     links:
     - text: Erstellen einer WPF-Übersetzungs-App, C#
