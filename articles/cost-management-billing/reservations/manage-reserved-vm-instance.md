@@ -8,12 +8,12 @@ ms.reviewer: yashesvi
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: f67cbb70d7064b894b9042bba42f48e4fb6a6b5e
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: d032937fe79b9f51818ce8917c36fa1cc30397c0
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684778"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400125"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Verwalten von Reservierungen für Azure-Ressourcen
 
@@ -73,7 +73,7 @@ So delegieren Sie die Zugriffsverwaltung für eine Reservierung:
 
 ## <a name="split-a-single-reservation-into-two-reservations"></a>Aufteilten einer einzelnen Reservierung in zwei Reservierungen
 
- Wenn Sie mehrere Ressourceninstanzen innerhalb einer Reservierung erworben haben, können Sie Instanzen innerhalb dieser Reservierung verschiedenen Abonnements zuweisen. Standardmäßig weisen alle Instanzen einen Bereich auf: ein Einzelabonnement oder „Freigegeben“. Beispiel: Sie haben zehn Reservierungsinstanzen erworben und den Bereich auf das Abonnement A festgelegt. Sie können nun den Bereich für sieben Reservierungen in Abonnement A und die restlichen drei in Abonnement B ändern. Durch die Aufteilung einer Reservierung können Sie Instanzen für eine präzise Bereichsverwaltung verteilen. Sie können die Zuordnung zu Abonnements vereinfachen, indem Sie den Bereich „Freigegeben“ auswählen. Aus Gründen der Kostenverwaltung oder der Budgetierung können Sie jedoch bestimmten Abonnements Mengen zuordnen.
+ Wenn Sie mehrere Ressourceninstanzen innerhalb einer Reservierung erworben haben, können Sie Instanzen innerhalb dieser Reservierung verschiedenen Abonnements zuweisen. Standardmäßig verfügen alle Instanzen über einen Bereich: entweder ein Einzelabonnement, eine Ressourcengruppe oder einen freigegebenen Bereich. Beispiel: Sie haben eine Reservierung für zehn VM-Instanzen erworben und den Bereich auf das Abonnement A festgelegt. Sie möchten nun den Bereich für sieben VM-Instanzen in Abonnement A und für die restlichen drei in Abonnement B ändern. Dies ist durch die Aufteilung einer Reservierung möglich. Nach dem Aufteilen einer Reservierung wird die ursprüngliche Reservierungs-ID storniert, und es werden zwei neue Reservierungen erstellt. Die Aufteilung wirkt sich nicht auf die Reservierungsreihenfolge aus. Durch die Aufteilung erfolgt keine neue kommerzielle Transaktion, und die neuen Reservierungen haben dasselbe Enddatum wie die aufgeteilte Reservierung.
 
  Sie können eine Reservierung mithilfe von PowerShell, der CLI oder über die API in zwei Reservierungen aufteilen.
 

@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: d55916539f64fc70560565bd5caf6254aac5a908
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 30fa6e0489c1f2c33e02286280e7508239c1c1d2
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684863"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567910"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Zahlen für Ihr Azure-Abonnement auf Rechnung
 
@@ -67,7 +67,7 @@ Wenn Sie zur Zahlung auf Rechnung wechseln, bedeutet dies, dass Sie Ihre Rechnun
      Spezifische Region und Serie des Abonnements:<br>
 
     - Der **Firmenname** und die **Firmenadresse** sollten mit den Informationen übereinstimmen, die Sie für das Azure-Konto bereitgestellt haben. Einzelheiten zum Anzeigen oder Aktualisieren der Informationen finden Sie unter [Ändern von Profilinformationen für Ihr Azure-Konto](change-azure-account-profile.md).
-    - Fügen Sie im Azure-Portal die Informationen zu Ihrem Rechnungskontakt hinzu, bevor das Guthabenlimit genehmigt werden kann. Die Kontaktdetails sollten im Zusammenhang mit der Kreditorenbuchhaltung oder der Finanzabteilung des Unternehmens stehen. Wechseln Sie zum [Azure-Kontocenter](https://account.azure.com/Profile), wenn Sie die Informationen zum Rechnungskontakt aktualisieren möchten.
+    - Fügen Sie im Azure-Portal die Informationen zu Ihrem Rechnungskontakt hinzu, bevor das Guthabenlimit genehmigt werden kann. Die Kontaktdetails sollten im Zusammenhang mit der Kreditorenbuchhaltung oder der Finanzabteilung des Unternehmens stehen. Wechseln Sie zum [Azure-Portal](https://portal.azure.com), wenn Sie die Informationen zum Rechnungskontakt aktualisieren möchten.
 
 6. Überprüfen Sie Ihre Kontaktdaten und Ihre bevorzugte Kontaktmethode, und wählen Sie dann **Erstellen** aus.
 

@@ -8,18 +8,18 @@ ms.date: 07/24/2020
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.openlocfilehash: 8f3e4762b0c0286a47b407595cf73b66bef8d750
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: dc4d319e0e6b55af8af460fa8a56b9ef24a53341
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682840"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89487350"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Verknüpfen einer Partner-ID mit Ihren Azure-Konten
 
-Microsoft-Partner stellen Dienste bereit, die Kunden beim Erreichen ihrer Geschäftsziele und der Ziele beim Einsatz von Microsoft-Produkten unterstützen. Wenn die Partner Azure-Dienste im Auftrag des Kunden verwalten, konfigurieren und unterstützen, benötigen sie als Benutzer Zugriff auf die Umgebung des Kunden. Mit dem Partnerzuordnungstyp „Partner Admin Link“ (PAL) können Partner Ihre Partnernetzwerk-ID mit den für die Bereitstellung von Diensten verwendeten Anmeldeinformationen verknüpfen.
+Microsoft-Partner stellen Dienste bereit, die Kunden beim Erreichen ihrer Geschäftsziele und der Ziele beim Einsatz von Microsoft-Produkten unterstützen. Wenn die Partner Azure-Dienste im Auftrag des Kunden verwalten, konfigurieren und unterstützen, benötigen sie als Benutzer Zugriff auf die Umgebung des Kunden. Mit dem Partner Admin Link (PAL) können Partner ihre Partnernetzwerk-ID mit den für die Bereitstellung von Diensten verwendeten Anmeldeinformationen verknüpfen.
 
-Mithilfe von PAL kann Microsoft Partner ermitteln und würdigen, die zum Erfolg von Azure-Kunden beitragen. Die Zuordnung von Einfluss und Umsatz Ihrer Organisation basiert dabei auf den Berechtigungen des Kontos (Azure-Rolle) sowie auf dem Umfang (Abonnement, Ressourcengruppe, Ressource).
+Mithilfe des PALs kann Microsoft Partner ermitteln und würdigen, die zum Erfolg von Azure-Kunden beitragen. Microsoft kann den Einfluss und den Verbrauch in Azure basierend auf den Berechtigungen des Kontos (Azure-Rolle) sowie auf dem Umfang (Abonnement, Ressourcengruppe, Ressource) Ihrem Unternehmen zuordnen.
 
 ## <a name="get-access-from-your-customer"></a>Erlangen des Zugriffs seitens Ihres Kunden
 
@@ -133,10 +133,11 @@ Ja. Eine verknüpfte Partner-ID kann geändert, hinzugefügt oder entfernt werde
 
 Die Verknüpfung zwischen der Partner-ID und dem Konto erfolgt für jeden Kundenmandanten. Verknüpfen Sie die Partner-ID für jeden Kundenmandanten.
 
+Wenn Sie jedoch Kundenressourcen über Azure Lighthouse verwalten, sollten Sie den Link im Mandanten Ihres Dienstanbieters erstellen und dabei ein Konto verwenden, das Zugriff auf die Kundenressourcen hat. Weitere Informationen finden Sie im Thema zum [Verknüpfen der Partner-ID, um Partner Earned Credit (PEC) für delegierte Ressourcen zu aktivieren](../../lighthouse/how-to/partner-earned-credit.md).
+
 **Können andere Partner oder Kunden die Verknüpfung mit der Partner-ID bearbeiten oder entfernen?**
 
 Die Verknüpfung wird auf Benutzerkontoebene zugeordnet. Nur Sie können die Verknüpfung mit der Partner-ID bearbeiten oder entfernen. Weder der Kunde noch andere Partner können die Verknüpfung mit der Partner-ID ändern.
-
 
 **Welche MPN-ID muss ich verwenden, wenn mein Unternehmen über mehrere MPN-IDs verfügt?**
 
@@ -158,10 +159,11 @@ Der Kunde wird aus folgenden Gründen in den Berichten nicht angezeigt:
 
 Ja, Sie können Ihre Partner-ID mit Azure Stack verknüpfen.
 
-**Wie kann ich meine Partner-ID verknüpfen, wenn mein Unternehmen über [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview) auf Kundenressourcen zugreift?**
+**Wie kann ich meine Partner-ID verknüpfen, wenn mein Unternehmen über [Azure Lighthouse](../../lighthouse/overview.md) auf Kundenressourcen zugreift?**
 
-Wenn Sie Kunden in die delegierte Azure-Ressourcenverwaltung integrieren, indem Sie [ein Angebot für verwaltete Dienste im Azure Marketplace veröffentlichen](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers), wird Ihre MPN-ID automatisch zugeordnet. Wenn Sie [Kunden durch Bereitstellen von Azure Resource Manager-Vorlagen integrieren](https://docs.microsoft.com/azure/lighthouse/how-to/onboard-customer), müssen Sie Ihre MPN-ID (Microsoft Partner Network) mindestens einem Benutzerkonto zuordnen, das Zugriff auf die einzelnen integrierten Abonnements hat. Dieser Schritt muss in Ihrem Dienstanbietermandanten ausgeführt werden. Der Einfachheit halber empfiehlt es sich, ein Dienstprinzipalkonto in Ihrem Mandanten zu erstellen, das Ihrer MPN-ID zugeordnet ist, und diesem Konto Lesezugriff auf jeden integrierten Kunden zu gewähren. In diesem Beispiel wird die RBAC-Rolle „Leser“ verwendet. Dabei handelt es sich um eine der Rollen, die nicht für vom Partner erworbenes Guthaben (Partner Earned Credit, PEC) berechtigt sind. Weitere Informationen zu Rollen finden Sie unter [Rollen und Berechtigungen für vom Partner erworbenes Guthaben](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3QuW2).
+Wenn Sie Kunden in die delegierte Azure-Ressourcenverwaltung integrieren, indem Sie [ein Angebot für verwaltete Dienste im Azure Marketplace veröffentlichen](../../lighthouse/how-to/publish-managed-services-offers.md), wird Ihre MPN-ID automatisch zugeordnet.
 
+Wenn Sie das [Kundenonboarding durch die Bereitstellung von Azure Resource Manager-Vorlagen durchführen](../../lighthouse/how-to/onboard-customer.md), müssen Sie Ihre MPN-ID mindestens einem Benutzerkonto zuordnen, das Zugriff auf die einzelnen Abonnements im Rahmen des Onboardings hat. Dieser Schritt muss im Mandanten Ihres Dienstanbieters und nicht in jedem einzelnen Kundenmandanten ausgeführt werden. Der Einfachheit halber empfehlen wir, ein Dienstprinzipalkonto in Ihrem Mandanten zu erstellen, es mit Ihrer MPN-ID zu verknüpfen und dem Konto dann Zugriff auf jeden Kunden zu gewähren, für den Sie mit einer [integrierten Azure-Rolle, die für PEC (Partner Earned Credit) berechtigt ist](/partner-center/azure-roles-perms-pec), ein Onboarding durchführen. Weitere Informationen finden Sie im Thema zum [Verknüpfen der Partner-ID, um Partner Earned Credit (PEC) für delegierte Ressourcen zu aktivieren](../../lighthouse/how-to/partner-earned-credit.md).
 
 **Wie kann ich meinem Kunden Partner Admin Link (PAL) erklären?**
 
@@ -173,4 +175,4 @@ Bei der PAL-Zuordnung zu vorhandenen Anmeldeinformationen werden keine neuen Kun
 
 **Wird hierdurch die Sicherheit der Azure-Umgebung eines Kunden beeinträchtigt?**
 
-Bei der PAL-Zuordnung wird lediglich die MPN-ID des Partners den bereits bereitgestellten Anmeldeinformationen hinzugefügt. Es werden keine Berechtigungen (Azure-Rolle) geändert und keine zusätzlichen Daten von Azure-Diensten an den Partner oder an Microsoft gesendet. 
+Bei der PAL-Zuordnung wird lediglich die MPN-ID des Partners den bereits bereitgestellten Anmeldeinformationen hinzugefügt. Es werden keine Berechtigungen (Azure-Rolle) geändert und keine zusätzlichen Daten von Azure-Diensten an den Partner oder an Microsoft gesendet.

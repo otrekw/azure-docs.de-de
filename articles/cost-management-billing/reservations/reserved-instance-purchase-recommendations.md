@@ -7,13 +7,13 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 08/04/2020
-ms.openlocfilehash: 813cf91195a43a2fc68236febe114c67eb5a3378
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.date: 09/02/2020
+ms.openlocfilehash: 869009d7dd26685842da3c948fbdc058a38feb21
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684608"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398425"
 ---
 # <a name="reservation-recommendations"></a>Reservierungsempfehlungen
 
@@ -25,6 +25,7 @@ Im Anschluss erfahren Sie, wie Empfehlungen berechnet werden:
 2. Auf der Grundlage der Nutzungsdaten simuliert die Engine Ihre Kosten mit und ohne Reservierungen.
 3. Die Kosten werden für unterschiedliche Mengen simuliert, und die Menge mit der maximalen Einsparung wird empfohlen.
 4. Falls Ihre Ressourcen regelmäßig heruntergefahren werden, können von der Simulation keine Einsparungen ermittelt werden, und es wird keine Kaufempfehlung abgegeben.
+5. Bei der Berechnung von Empfehlungen werden alle speziellen Rabatte berücksichtigt, die bei Ihren bedarfsgesteuerten Nutzungsraten möglicherweise gelten.
 
 ## <a name="recommendations-in-the-azure-portal"></a>Empfehlungen im Azure-Portal
 
@@ -52,11 +53,11 @@ Wenn Sie Einsparungen durch Reservierungen maximieren möchten, versuchen Sie, R
 
 Empfehlungen für den Reservierungserwerb stehen in Azure Advisor zur Verfügung. Berücksichtigen Sie dabei Folgendes:
 
-- Von Advisor werden nur Empfehlungen für Einzelabonnementbereiche abgegeben.
-- Empfehlungen werden unter Berücksichtigung des Trends der Nutzung über die letzten 30  Tage berechnet.
+- Von Advisor werden nur Empfehlungen für Einzelabonnementbereiche abgegeben. Wenn Sie Empfehlungen für den gesamten Abrechnungsbereich (Abrechnungskonto oder Abrechnungsprofil) anzeigen möchten, wechseln Sie zum Azure-Portal und wählen „Reservierungen“ und „Hinzufügen“ aus, und wählen Sie den Typ aus, für den Sie die Empfehlungen anzeigen möchten.
+- Bei den im Advisor verfügbaren Empfehlungen wird der Nutzungstrend der letzten 30 Tage berücksichtigt.
 - Die Menge und Einsparung von Empfehlungen ist – soweit verfügbar – eine 3-jährige Reservierung. Wenn für den Dienst keine 3-jährige Reservierung verkauft wird, wird die Empfehlung mit einem Reservierungspreis für 1 Jahr berechnet.
-- Empfehlungen berücksichtigen alle speziellen Rabatte, die es bei Ihren bedarfsgesteuerten Nutzungsraten möglicherweise gibt.
-- Wenn Sie eine Reservierung mit gemeinsam genutztem Bereich erwerben, kann es bis zu 30 Tage dauern, bis Advisor-Empfehlungen für den Reservierungserwerb nicht mehr angezeigt werden.
+- Bei der Berechnung von Empfehlungen werden alle speziellen Rabatte berücksichtigt, die bei Ihren bedarfsgesteuerten Nutzungsraten möglicherweise gelten.
+- Wenn Sie eine Reservierung mit gemeinsam genutztem Bereich erwerben, kann es bis zu fünf Tage dauern, bis Advisor-Empfehlungen für den Reservierungserwerb nicht mehr angezeigt werden.
 
 ## <a name="other-expected-api-behavior"></a>Sonstiges erwartetes API-Verhalten
 

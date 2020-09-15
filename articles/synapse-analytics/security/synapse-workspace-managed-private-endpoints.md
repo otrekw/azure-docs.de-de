@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: ecca67cab486c8f3524c8c8d4c221d52689cf62a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dedf0795e72c4bdace430ba2dd07ade9d792f13c
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87070107"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459538"
 ---
 # <a name="synapse-managed-private-endpoints-preview"></a>Verwaltete private Endpunkte in Synapse (Vorschau)
 
@@ -23,7 +23,7 @@ In diesem Artikel erfahren Sie mehr über verwaltete private Endpunkte in Azure 
 
 Verwaltete private Endpunkte sind private Endpunkte, die in der verwalteten Microsoft Azure Virtual Network-Instanz des Arbeitsbereichs erstellt werden und einen privaten Link zu Azure-Ressourcen herstellen. Azure Synapse verwaltet diese privaten Endpunkte für Sie.
 
-Azure Synapse unterstützt private Links. Mit einem privaten Link können Sie über Ihr virtuelles Azure-Netzwerk sicher auf Azure-Dienste (z. B. Azure Storage, Azure Cosmos DB und Azure SQL Data Warehouse) und auf in Azure gehostete Kunden-/Partnerdienste zugreifen.
+Azure Synapse unterstützt private Links. Mit einem privaten Link können Sie über Ihr Azure Virtual Network sicher auf Azure-Dienste (z. B. Azure Storage und Azure Cosmos DB) und auf in Azure gehostete Kunden-/Partnerdienste zugreifen.
 
 Bei der Verwendung eines privaten Links wird der Datenverkehr zwischen Ihrem virtuellen Netzwerk und einem Arbeitsbereich vollständig über das Microsoft-Backbone-Netzwerk übertragen. Private Link schützt vor einer möglichen Datenexfiltration. Ein privater Link zu einer Ressource wird durch die Erstellung eines privaten Endpunkts eingerichtet.
 

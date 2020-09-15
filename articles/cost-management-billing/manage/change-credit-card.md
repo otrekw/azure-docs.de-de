@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: e5adf007294ea4be0f5716a4614e0639f840fa75
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: c7622c4916b186a39aad9dafb54a1e2404458794
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684931"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569355"
 ---
 # <a name="add-update-or-remove-a-credit-card-for-azure"></a>Hinzufügen, Aktualisieren oder Entfernen einer Kreditkarte für Azure
 
@@ -190,7 +190,7 @@ Wenn Sie [auf Rechnung zahlen](pay-by-invoice.md), senden Sie Ihre Zahlung an de
 
 ### <a name="how-do-i-change-the-tax-id"></a>Wie ändere ich die Steuernummer?
 
-Aktualisieren Sie zum Hinzufügen oder Aktualisieren der Steuernummer Ihr Profil im [Azure-Kontocenter](https://account.azure.com/Profile), und wählen Sie anschließend die Option **Steuereintrag**. Diese Steuernummer wird auf Ihrer Rechnung angezeigt und für die Berechnung von Steuerbefreiungen verwendet.
+Aktualisieren Sie zum Hinzufügen oder Aktualisieren der Steuernummer Ihr Profil im [Azure-Portal](https://portal.azure.com), und wählen Sie anschließend **Steuereintrag** aus. Diese Steuernummer wird auf Ihrer Rechnung angezeigt und für die Berechnung von Steuerbefreiungen verwendet.
 
 ## <a name="check-the-type-of-your-account"></a>Überprüfen Sie den Typ Ihres Abrechnungskontos.
 

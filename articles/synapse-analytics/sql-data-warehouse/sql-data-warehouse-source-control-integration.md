@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: afb1108bacadd16007e1f53186107ea8458d96e9
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 84abfea39cb7311e7cd60346d936c08c28c334d4
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85205117"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441320"
 ---
 # <a name="source-control-integration-for-sql-pool"></a>Integration der Quellcodeverwaltung für den SQL-Pool
 
@@ -29,19 +29,27 @@ In diesem Tutorial wird erläutert, wie Sie Ihr SSDT-Datenbankprojekt (SQL Serve
 
 ## <a name="set-up-and-connect-to-azure-devops"></a>Einrichten von Azure DevOps und Herstellen einer Verbindung
 
-1. Erstellen Sie in Ihrer Azure DevOps-Organisation ein Projekt, das Ihr SSDT-Datenbankprojekt über ein Azure-Repository hostet.
+1. Erstellen Sie in Ihrer Azure DevOps-Organisation ein Projekt, von dem Ihr SSDT-Datenbankprojekt über ein Azure-Repository gehostet wird.
 
    ![Erstellen des Projekts](./media/sql-data-warehouse-source-control-integration/1-create-project-azure-devops.png "Projekt erstellen")
 
-2. Öffnen Sie Visual Studio, und stellen Sie mit Ihrer Azure DevOps-Organisation und Ihrem Projekt aus Schritt 1 eine Verbindung her, indem Sie „Verbindungen verwalten“ auswählen
+2. Öffnen Sie Visual Studio, und stellen Sie mit Ihrer Azure DevOps-Organisation und Ihrem Projekt aus Schritt 1 eine Verbindung her, indem Sie **Verbindung verwalten** auswählen.
 
    ![Verwalten von Verbindungen](./media/sql-data-warehouse-source-control-integration/2-manage-connections.png "Verwalten von Verbindungen")
 
-   ![Herstellen einer Verbindung](./media/sql-data-warehouse-source-control-integration/3-connect.png "Verbinden")
+3. Stellen Sie eine Verbindung mit Ihrem Projekt her, indem Sie **Verbindungen verwalten** und dann **Verbindung mit einem Projekt herstellen** auswählen.
+ ![Connect1](./media/sql-data-warehouse-source-control-integration/3-connect-project.png "Verbinden")
 
-3. Klonen Sie das Azure-Repository aus Ihrem Projekt auf dem lokalen Computer.
+
+4. Suchen Sie das Projekt, das Sie in Schritt 1 erstellt haben, und wählen Sie **Verbinden** aus.
+![Connect2](./media/sql-data-warehouse-source-control-integration/3.5-connect.png "Verbinden")
+
+
+3. Klonen Sie das Azure-DevOps-Repository aus Ihrem Projekt auf dem lokalen Computer.
 
    ![Klonen des Repositorys](./media/sql-data-warehouse-source-control-integration/4-clone-repo.png "Repository klonen")
+
+Weitere Informationen zum Verbinden von Projekten mithilfe von Visual Studio finden Sie im Thema zum [Herstellen einer Verbindung mit Projekten im Team Explorer](https://docs.microsoft.com/visualstudio/ide/connect-team-project?view=vs-2019). Anleitungen zum Klonen eines Repositorys mithilfe von Visual Studio finden Sie im Artikel [Klonen eines vorhandenen Git-Repositorys](https://docs.microsoft.com/azure/devops/repos/git/clone?view=azure-devops&tabs=visual-studio). 
 
 ## <a name="create-and-connect-your-project"></a>Erstellen und Verbinden Ihres Projekts
 
@@ -53,7 +61,7 @@ In diesem Tutorial wird erläutert, wie Sie Ihr SSDT-Datenbankprojekt (SQL Serve
 
    ![Importieren des Projekts](./media/sql-data-warehouse-source-control-integration/6-import-new-project.png "Importieren des Projekts")  
 
-3. Committen Sie im Team Explorer in Visual Studio alle Änderungen im lokalen Git-Repository.
+3. Committen Sie im Team Explorer in Visual Studio Ihre Änderungen im lokalen Git-Repository.
 
    ![Commit](./media/sql-data-warehouse-source-control-integration/6.5-commit-push-changes.png "Commit")  
 
@@ -69,11 +77,11 @@ In diesem Tutorial wird erläutert, wie Sie Ihr SSDT-Datenbankprojekt (SQL Serve
 
    ![Überprüfen der Aktualisierungsspalte](./media/sql-data-warehouse-source-control-integration/8-validation-update-column.png "Überprüfen der Aktualisierungsspalte")
 
-2. Committen und Pushen der Änderung von Ihrem lokalen Repository in das Azure-Repository
+2. Committen und pushen Sie die Änderung von Ihrem lokalen Repository in das Azure-Repository.
 
    ![Pushen der Änderungen](./media/sql-data-warehouse-source-control-integration/9-push-column-change.png "Änderungen pushen")
 
-3. Überprüfen, ob die Änderung in Ihr Azure-Repository gepusht wurde
+3. Überprüfen Sie, ob die Änderung in Ihr Azure-Repository gepusht wurde.
 
    ![Überprüfen](./media/sql-data-warehouse-source-control-integration/10-verify-column-change-pushed.png "Überprüfen der Änderungen")
 
