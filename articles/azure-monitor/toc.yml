@@ -564,7 +564,7 @@
               href: platform/itsmc-overview.md
             - name: IT Service Management-Verbindungen
               href: platform/itsmc-connections.md
-            - name: Integration des sicheren Exports
+            - name: Integrieren mit sicherem Export
               href: platform/it-service-management-connector-secure-webhook-connections.md
             - name: Erstellen von Service Manager-Web-Apps
               href: platform/itsmc-service-manager-script.md
@@ -988,7 +988,7 @@
       items:
         - name: Übersicht
           href: insights/container-insights-overview.md
-        - name: Häufig gestellte Fragen
+        - name: FAQ
           href: faq.md#azure-monitor-for-containers
         - name: Aktivieren der Überwachung
           items:

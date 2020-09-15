@@ -10,14 +10,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/05/2018
+ms.date: 09/09/2020
 ms.author: duau
-ms.openlocfilehash: 3956a843e67dba82486f350fc4380d4c8f6065f1
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: bbd45a4190cfa1199568c23cc346b9ccacc20ac5
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399819"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648870"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Tutorial: Konfigurieren von HTTPS in einer benutzerdefinierten Front Door-Domäne
 
@@ -219,7 +219,27 @@ Sollte vor dem Übermitteln der Anforderung ein Fehler auftreten, wird die folge
 We encountered an unexpected error while processing your HTTPS request. Please try again and contact support if the issue persists.
 </code>
 
+## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
+1. *Wer ist der Zertifikatanbieter, und welche Art von Zertifikat wird verwendet?*
+
+    Ein dediziertes/einzelnes Zertifikat von DigiCert wird für Ihre benutzerdefinierte Domäne verwendet. 
+
+2. *Basiert TLS/SSL auf IP oder auf SNI?*
+
+    Azure Front Door verwendet SNI-basiertes TLS/SSL.
+
+3. *Was passiert, wenn ich die Domänenüberprüfungs-E-Mail von DigiCert nicht erhalte?*
+
+    Wenn Sie einen CNAME-Eintrag für Ihre benutzerdefinierte Domäne haben, der direkt auf Ihren Endpunkt-Hostnamen verweist (und wenn Sie den afdverify-Unterdomänennamen nicht verwenden), erhalten Sie keine Bestätigungs-E-Mail für die Domäne. Die Bestätigung erfolgt automatisch. Wenden Sie sich andernfalls an den Microsoft-Support, falls Sie nicht über einen CNAME-Eintrag verfügen und innerhalb von 24 Stunden keine E-Mail erhalten.
+
+4. *Ist ein SAN-Zertifikat weniger sicher als ein dediziertes Zertifikat?*
+    
+    Ein SAN-Zertifikat bietet die gleichen Verschlüsselungs- und Sicherheitsstandards wie ein dediziertes Zertifikat. Zur Verbesserung der Serversicherheit verwenden alle ausgestellten TLS-/SSL-Zertifikate SHA-256.
+
+5. *Benötige ich einen CAA-Datensatz (Certificate Authority Authorization) bei meinem DNS-Anbieter?*
+
+    Nein. Ein CAA-Datensatz ist momentan nicht erforderlich. Wenn Sie allerdings über einen solchen Datensatz verfügen, muss er DigiCert als gültige Zertifizierungsstelle enthalten.
 
 ## <a name="clean-up-resources---disable-https"></a>Bereinigen von Ressourcen – Deaktivieren von HTTPS
 
@@ -247,30 +267,15 @@ Die folgende Tabelle zeigt den Status des Vorgangs zum Deaktivieren von HTTPS. N
 | 2: Aufheben der Zertifikatbereitstellung | Das Zertifikat wird gelöscht. |
 | 3: Abschließen | Das Zertifikat wurde gelöscht. |
 
-## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
-
-1. *Wer ist der Zertifikatanbieter, und welche Art von Zertifikat wird verwendet?*
-
-    Ein dediziertes/einzelnes Zertifikat von DigiCert wird für Ihre benutzerdefinierte Domäne verwendet. 
-
-2. *Basiert TLS/SSL auf IP oder auf SNI?*
-
-    Azure Front Door verwendet SNI-basiertes TLS/SSL.
-
-3. *Was passiert, wenn ich die Domänenüberprüfungs-E-Mail von DigiCert nicht erhalte?*
-
-    Wenn Sie einen CNAME-Eintrag für Ihre benutzerdefinierte Domäne haben, der direkt auf Ihren Endpunkt-Hostnamen verweist (und wenn Sie den afdverify-Unterdomänennamen nicht verwenden), erhalten Sie keine Bestätigungs-E-Mail für die Domäne. Die Bestätigung erfolgt automatisch. Wenden Sie sich andernfalls an den Microsoft-Support, falls Sie nicht über einen CNAME-Eintrag verfügen und innerhalb von 24 Stunden keine E-Mail erhalten.
-
-4. *Ist ein SAN-Zertifikat weniger sicher als ein dediziertes Zertifikat?*
-    
-    Ein SAN-Zertifikat bietet die gleichen Verschlüsselungs- und Sicherheitsstandards wie ein dediziertes Zertifikat. Zur Verbesserung der Serversicherheit verwenden alle ausgestellten TLS-/SSL-Zertifikate SHA-256.
-
-5. *Benötige ich einen CAA-Datensatz (Certificate Authority Authorization) bei meinem DNS-Anbieter?*
-
-    Nein. Ein CAA-Datensatz ist momentan nicht erforderlich. Wenn Sie allerdings über einen solchen Datensatz verfügen, muss er DigiCert als gültige Zertifizierungsstelle enthalten.
-
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über das [Erstellen einer Front Door-Instanz](quickstart-create-front-door.md).
-- Informieren Sie sich über die [Funktionsweise von Azure Front Door Service](front-door-routing-architecture.md).
+In diesem Tutorial haben Sie Folgendes gelernt:
+
+* Hochladen eines Zertifikats in Key Vault
+* Überprüfen einer Domäne
+* Aktivieren von HTTPS für eine benutzerdefinierte Domäne
+
+Informationen zum Einrichten einer Geofilterungsrichtlinie für Front Door finden Sie im nächsten Tutorial:
+
+> [!div class="nextstepaction"]
+> [Geofilterung in einer Domäne für Azure Front Door](front-door-geo-filtering.md)

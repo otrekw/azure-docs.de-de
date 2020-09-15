@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: 226cf29b1a94b4508a9d68f02b7400a18eba4bc2
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 24990087507dee09bc38418f40c72911386e5efb
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587853"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469115"
 ---
 # <a name="tutorial-connect-to-an-azure-red-hat-openshift-4-cluster"></a>Tutorial: Herstellen einer Verbindung mit einem Azure Red Hat OpenShift 4-Cluster
 
@@ -23,9 +23,9 @@ In diesem Tutorial (Teil 2 von 3) stellen Sie als kubeadmin-Benutzer über die 
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-In den vorherigen Tutorials wurde ein Azure Red Hat OpenShift-Cluster erstellt. Falls Sie diese Schritte nicht ausgeführt haben und dies jetzt nachholen möchten, sollten Sie mit [Tutorial 1: Erstellen eines Azure Red Hat OpenShift 4-Clusters](tutorial-create-cluster.md) beginnen.
+In den vorherigen Tutorials wurde ein Azure Red Hat OpenShift-Cluster erstellt. Falls Sie diese Schritte noch nicht ausgeführt haben und dies jetzt nachholen möchten, sollten Sie mit [Tutorial 1: Erstellen eines Azure Red Hat OpenShift 4-Clusters](tutorial-create-cluster.md) beginnen.
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial Version 2.6.0 oder höher der Azure CLI ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens Version 2.6.0 der Azure CLI ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="connect-to-the-cluster"></a>Herstellen einer Verbindung mit dem Cluster
 
@@ -37,7 +37,7 @@ az aro list-credentials \
   --resource-group $RESOURCEGROUP
 ```
 
-Die folgende Beispielausgabe zeigt, dass sich das Kennwort in `kubeadminPassword` befindet.
+Die folgende Beispielausgabe zeigt das Kennwort in `kubeadminPassword`.
 
 ```json
 {

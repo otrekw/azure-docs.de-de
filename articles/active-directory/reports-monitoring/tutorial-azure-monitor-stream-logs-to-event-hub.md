@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cf35b2c15c0d85c93e69ef4e3b6c76932cbd75d
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 0443dcb2bf3bd58f2474c507c9f9594fb6d8a7f0
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229377"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469183"
 ---
 # <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>Tutorial: Streamen von Azure Active Directory-Protokollen an einen Azure Event Hub
 
@@ -60,8 +60,8 @@ Sie benötigen Folgendes, um dieses Feature verwenden zu können:
 7. Klicken Sie auf **OK**, um die Event Hub-Konfiguration zu beenden.
 
 8. Führen Sie einen oder beide der folgenden Schritte aus:
-    * Aktivieren Sie das Kontrollkästchen **AuditLogs**, um Überwachungsprotokolle an das Speicherkonto zu senden. 
-    * Aktivieren Sie das Kontrollkästchen **SignInLogs**, um Anmeldeprotokolle an das Speicherkonto zu senden.
+    * Aktivieren Sie das Kontrollkästchen **AuditLogs**, um Überwachungsprotokolle an den Event Hub zu senden. 
+    * Aktivieren Sie das Kontrollkästchen **SignInLogs**, um Anmeldeprotokolle an den Event Hub zu senden.
 
 9. Klicken Sie auf **Speichern**, um die Einstellung zu speichern.
 

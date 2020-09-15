@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: a581678fdd05dade336f7ca9fcbcf5ad4c92d49a
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: f4b43129db5288275434253545861f3eae218e82
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300169"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89503787"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Tutorial: Erstellen eines Azure Red Hat OpenShift 4-Clusters
 
@@ -22,9 +22,9 @@ In diesem Tutorial (Teil 1 von 3) bereiten Sie Ihre Umgebung auf die Erstellung 
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens Version 2.6.0 der Azure CLI ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens Version 2.6.0 der Azure CLI ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-Für Azure Red Hat OpenShift sind mindestens 40 Kerne erforderlich, um einen OpenShift-Cluster zu erstellen und auszuführen. Das standardmäßige Azure-Ressourcenkontingent für ein neues Azure-Abonnement erfüllt diese Anforderung nicht. Weitere Informationen zum Anfordern einer Erhöhung des Ressourcenlimits finden Sie unter [Standardkontingent: Erhöhen der Grenzwerte nach VM-Serie](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests) beschrieben.
+Für Azure Red Hat OpenShift sind mindestens 40 Kerne erforderlich, um einen OpenShift-Cluster zu erstellen und auszuführen. Das standardmäßige Azure-Ressourcenkontingent für ein neues Azure-Abonnement erfüllt diese Anforderung nicht. Weitere Informationen zum Anfordern einer Erhöhung des Ressourcenlimits finden Sie unter [Standardkontingent: Erhöhen der Grenzwerte nach VM-Serie](../azure-portal/supportability/per-vm-quota-requests.md) beschrieben.
 
 ### <a name="verify-your-permissions"></a>Überprüfen von Berechtigungen
 
@@ -35,13 +35,31 @@ Für Azure Red Hat OpenShift sind mindestens 40 Kerne erforderlich, um einen Op
 |**Benutzerzugriffsadministrator**|X|X| |
 |**Mitwirkender**|X|X|X|
 
-### <a name="register-the-resource-provider"></a>Registrieren des Ressourcenanbieters
+### <a name="register-the-resource-providers"></a>Registrieren der Ressourcenanbieter
 
-Als Nächstes müssen Sie den Ressourcenanbieter `Microsoft.RedHatOpenShift` in Ihrem Abonnement registrieren.
+1. Wenn Sie über mehrere Azure-Abonnements verfügen, geben Sie die gewünschte Abonnement-ID an:
 
-```azurecli-interactive
-az provider register -n Microsoft.RedHatOpenShift --wait
-```
+    ```azurecli-interactive
+    az account set --subscription <SUBSCRIPTION ID>
+    ```
+
+1. Registrieren des `Microsoft.RedHatOpenShift`-Ressourcenanbieters
+
+    ```azurecli-interactive
+    az provider register -n Microsoft.RedHatOpenShift --wait
+    ```
+    
+1. Registrieren des `Microsoft.Compute`-Ressourcenanbieters
+
+    ```azurecli-interactive
+    az provider register -n Microsoft.Compute --wait
+    ```
+    
+1. Registrieren des `Microsoft.Storage`-Ressourcenanbieters
+
+    ```azurecli-interactive
+    az provider register -n Microsoft.Storage --wait
+    ```
 
 ### <a name="get-a-red-hat-pull-secret-optional"></a>Abrufen eines Red Hat-Pullgeheimnisses (optional)
 
@@ -88,7 +106,7 @@ Als Nächstes erfahren Sie, wie Sie ein virtuelles Netzwerk mit zwei leeren Subn
 
 1. **Erstellen Sie eine Ressourcengruppe.**
 
-    Eine Azure-Ressourcengruppe ist eine logische Gruppe, in der Azure-Ressourcen bereitgestellt und verwaltet werden. Wenn Sie eine Ressourcengruppe erstellen, müssen Sie einen Speicherort angeben. An diesem Speicherort werden die Metadaten der Ressourcengruppe gespeichert. Darüber hinaus werden dort die Ressourcen in Azure ausgeführt, wenn Sie während der Ressourcenerstellung keine andere Region angeben. Erstellen Sie mit dem Befehl [az group create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) eine Ressourcengruppe.
+    Eine Azure-Ressourcengruppe ist eine logische Gruppe, in der Azure-Ressourcen bereitgestellt und verwaltet werden. Wenn Sie eine Ressourcengruppe erstellen, müssen Sie einen Speicherort angeben. An diesem Speicherort werden die Metadaten der Ressourcengruppe gespeichert. Darüber hinaus werden dort die Ressourcen in Azure ausgeführt, wenn Sie während der Ressourcenerstellung keine andere Region angeben. Erstellen Sie mit dem Befehl [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create) eine Ressourcengruppe.
     
 > [!NOTE]
 > Azure Red Hat Openshift ist nicht in allen Regionen verfügbar, in denen eine Azure-Ressourcengruppe erstellt werden kann. Wo Azure Red Hat Openshift unterstützt wird, erfahren Sie unter [Available Regions](https://docs.openshift.com/aro/4/welcome/index.html#available-regions) (Verfügbare Regionen).
@@ -167,7 +185,7 @@ Als Nächstes erfahren Sie, wie Sie ein virtuelles Netzwerk mit zwei leeren Subn
     --service-endpoints Microsoft.ContainerRegistry
     ```
 
-5. **[Deaktivieren Sie Richtlinien für private Endpunkte](https://docs.microsoft.com/azure/private-link/disable-private-link-service-network-policy) im Mastersubnetz.** Dies ist erforderlich, um eine Verbindung mit dem Cluster herzustellen und um diesen zu verwalten.
+5. **[Deaktivieren Sie Richtlinien für private Endpunkte](../private-link/disable-private-link-service-network-policy.md) im Mastersubnetz.** Dies ist erforderlich, um eine Verbindung mit dem Cluster herzustellen und um diesen zu verwalten.
 
     ```azurecli-interactive
     az network vnet subnet update \

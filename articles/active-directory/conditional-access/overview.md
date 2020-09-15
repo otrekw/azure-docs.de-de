@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 6475fc61502a82844605ba267db5f8da984c8de6
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 7285325d92949a331833968b8f71fbeffd6543f4
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948877"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437903"
 ---
 # <a name="what-is-conditional-access"></a>Was ist bedingter Zugriff?
 
@@ -95,6 +95,8 @@ Erfahren Sie, wie andere Organisationen mit dem bedingten Azure AD-Zugriff auto
 [!INCLUDE [Active Directory P1 license](../../../includes/active-directory-p1-license.md)]
 
 Kunden mit [Microsoft 365 Business Premium-Lizenzen](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) haben auch Zugriff auf Funktionen für bedingten Zugriff. 
+
+[Anmelderisiko](concept-conditional-access-conditions.md#sign-in-risk) setzt den Zugriff auf [Identity Protection](../identity-protection/overview-identity-protection.md) voraus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

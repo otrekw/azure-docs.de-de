@@ -1,18 +1,18 @@
 ---
 title: 'Tutorial: Senden von Event Hubs-Daten an Data Warehouse – Event Grid'
-description: 'Tutorial: Hier wird erläutert, wie Daten mithilfe von Azure Event Grid und Event Hubs zu einem SQL Data Warehouse migriert werden. Zum Abrufen einer Capture-Datei wird eine Azure-Funktion verwendet.'
+description: 'Tutorial: Hier wird erläutert, wie Daten mithilfe von Azure Event Grid und Event Hubs zu Azure Synapse Analytics migriert werden. Zum Abrufen einer Capture-Datei wird eine Azure-Funktion verwendet.'
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1c4a1943981fc3e9f1df0fafff540e24ee3631e9
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d45fcedb570e384b851a7ac815ca175c67cc00a0
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007450"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89435030"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Tutorial: Streamen von Big Data in ein Data Warehouse
-Bei Azure [Event Grid](overview.md) handelt es sich um einen intelligenten Ereignisroutingdienst, der es Ihnen ermöglicht, auf Benachrichtigungen (Ereignisse) von Apps und Diensten zu reagieren. Er kann beispielsweise eine Azure-Funktion auslösen, um Event Hubs-Daten zu verarbeiten, die in Azure Blob Storage oder Azure Data Lake Storage erfasst wurden, und die Daten zu anderen Datenrepositorys migrieren. Das [Beispiel für Event Hubs und Event Grid](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) veranschaulicht, wie Sie Event Hubs mit Event Grid für die nahtlose Migration von erfassten Event Hubs-Daten vom Blobspeicher zu einem SQL Data Warehouse verwenden.
+Bei Azure [Event Grid](overview.md) handelt es sich um einen intelligenten Ereignisroutingdienst, der es Ihnen ermöglicht, auf Benachrichtigungen (Ereignisse) von Apps und Diensten zu reagieren. Er kann beispielsweise eine Azure-Funktion auslösen, um Event Hubs-Daten zu verarbeiten, die in Azure Blob Storage oder Azure Data Lake Storage erfasst wurden, und die Daten zu anderen Datenrepositorys migrieren. Das [Beispiel für die Integration von Event Hubs und Event Grid](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) veranschaulicht, wie Sie Event Hubs mit Event Grid für die nahtlose Migration von erfassten Event Hubs-Daten vom Blobspeicher zu einer Azure Synapse Analytics-Instanz (vormals SQL Data Warehouse) verwenden.
 
 ![Anwendungsübersicht](media/event-grid-event-hubs-integration/overview.png)
 
@@ -22,12 +22,12 @@ Dieses Diagramm zeigt den Workflow der Lösung, die Sie in diesem Tutorial erste
 2. Wenn die Datenerfassung abgeschlossen ist, wird ein Ereignis erzeugt und an ein Azure Event Grid gesendet. 
 3. Das Event Grid leitet diese Ereignisdaten an eine Azure-Funktions-App weiter.
 4. Die Funktions-App verwendet die Blob-URL in den Event-Daten, um den Blob aus dem Speicher abzurufen. 
-5. Die Funktions-App migriert die Blob-Daten in ein Azure SQL Data Warehouse. 
+5. Die Funktions-App migriert die Blobdaten zu einer Azure Synapse Analytics-Instanz. 
 
 In diesem Artikel führen Sie die folgenden Schritte aus:
 
 > [!div class="checklist"]
-> * Verwenden Sie eine Azure Resource Manager-Vorlage für die Bereitstellung der Infrastruktur: einen Event-Hub, ein Speicherkonto, eine Funktions-App, ein SQL Data Warehouse.
+> * Verwenden Sie eine Azure Resource Manager-Vorlage für die Bereitstellung der Infrastruktur: einen Event-Hub, ein Speicherkonto, eine Funktions-App, eine Synapse Analytics-Instanz.
 > * Erstellen Sie eine Tabelle im Data Warehouse.
 > * Fügen Sie Code zur Funktions-App hinzu.
 > * Abonnieren Sie das Ereignis. 
@@ -52,7 +52,7 @@ In diesem Schritt stellen Sie die erforderliche Infrastruktur mit einer [Resourc
 * App Service-Plan zum Hosten der Funktions-App
 * Funktions-App zum Verarbeiten des Ereignisses
 * SQL Server zum Hosten des Data Warehouse
-* SQL Data Warehouse zum Speichern der migrierten Daten
+* Azure Synapse Analytics zum Speichern der migrierten Daten
 
 ### <a name="launch-azure-cloud-shell-in-azure-portal"></a>Starten von Azure Cloud Shell im Azure-Portal
 
@@ -97,7 +97,7 @@ In diesem Schritt stellen Sie die erforderliche Infrastruktur mit einer [Resourc
           "tags": null
         }
         ```
-2. Stellen Sie alle im vorherigen Abschnitt genannten Ressourcen (Event Hub, Speicherkonto, Funktions-App, SQL Data Warehouse) bereit, indem Sie den folgenden CLI-Befehl ausführen: 
+2. Stellen Sie alle im vorherigen Abschnitt genannten Ressourcen (Event Hub, Speicherkonto, Funktions-App, Azure Synapse Analytics) bereit, indem Sie den folgenden CLI-Befehl ausführen: 
     1. Kopieren Sie den folgenden Befehl in das Cloud Shell-Fenster. Alternativ können Sie auch in einen Editor Ihrer Wahl kopieren/einfügen, Werte festlegen und dann den Befehl in die Cloud Shell kopieren. 
 
         ```azurecli
@@ -112,7 +112,7 @@ In diesem Schritt stellen Sie die erforderliche Infrastruktur mit einer [Resourc
         3. Name für den Event Hub. Sie können den Wert unverändert lassen (hubdatamigration).
         4. Name für den SQL Server.
         5. Name und Kennwort des SQL-Benutzers 
-        6. Name für das SQL Data Warehouse.
+        6. Name für Azure Synapse Analytics
         7. Name des Speicherkontos. 
         8. Name der Funktionen-App. 
     3.  Drücken Sie **EINGABETASTE** i, Cloud Shell-Fenster zum Ausführen des Befehls. Dieser Vorgang kann einige Zeit in Anspruch nehmen, da Sie zahlreiche Ressourcen erstellen. Stellen Sie im Ergebnis des Befehls sicher, dass es keine Fehler gegeben hat. 
@@ -131,7 +131,7 @@ In diesem Schritt stellen Sie die erforderliche Infrastruktur mit einer [Resourc
         ```
     2. Geben Sie einen Namen für die **Ressourcengruppe** an.
     3. Drücken Sie die EINGABETASTE. 
-3. Stellen Sie alle im vorherigen Abschnitt genannten Ressourcen (Event Hub, Speicherkonto, Funktions-App, SQL Data Warehouse) bereit, indem Sie den folgenden Befehl ausführen:
+3. Stellen Sie alle im vorherigen Abschnitt genannten Ressourcen (Event Hub, Speicherkonto, Funktions-App, Azure Synapse Analytics) bereit, indem Sie den folgenden Befehl ausführen:
     1. Kopieren Sie den folgenden Befehl in das Cloud Shell-Fenster. Alternativ können Sie auch in einen Editor Ihrer Wahl kopieren/einfügen, Werte festlegen und dann den Befehl in die Cloud Shell kopieren. 
 
         ```powershell
@@ -143,7 +143,7 @@ In diesem Schritt stellen Sie die erforderliche Infrastruktur mit einer [Resourc
         3. Name für den Event Hub. Sie können den Wert unverändert lassen (hubdatamigration).
         4. Name für den SQL Server.
         5. Name und Kennwort des SQL-Benutzers 
-        6. Name für das SQL Data Warehouse.
+        6. Name für Azure Synapse Analytics
         7. Name des Speicherkontos. 
         8. Name der Funktionen-App. 
     3.  Drücken Sie **EINGABETASTE** i, Cloud Shell-Fenster zum Ausführen des Befehls. Dieser Vorgang kann einige Zeit in Anspruch nehmen, da Sie zahlreiche Ressourcen erstellen. Stellen Sie im Ergebnis des Befehls sicher, dass es keine Fehler gegeben hat. 
@@ -162,13 +162,13 @@ Schließen Sie die Cloud Shell, indem Sie die Schaltfläche **Cloud Shell** im P
 
     ![Ressourcen in der Ressourcengruppe](media/event-grid-event-hubs-integration/resources-in-resource-group.png)
 
-### <a name="create-a-table-in-sql-data-warehouse"></a>Erstellen einer Tabelle in SQL Data Warehouse
+### <a name="create-a-table-in-azure-synapse-analytics"></a>Erstellen einer Tabelle in Azure Synapse Analytics
 Erstellen Sie in Ihrem Data Warehouse durch Ausführen des Skripts [CreateDataWarehouseTable.sql](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql) eine Tabelle. Verwenden Sie zum Ausführen des Skripts Visual Studio oder den Abfrage-Editor im Portal. Die folgenden Schritte veranschaulichen die Verwendung des Query-Editors: 
 
 1. Wählen Sie in der Liste der Ressourcen in der Ressourcengruppe Ihren **Synapse SQL-Pool (Data Warehouse)** aus. 
-2. Wählen Sie auf der Seite „SQL Data Warehouse“ im linken Menü **Abfrage-Editor (Vorschauversion)** aus. 
+2. Wählen Sie auf der Seite „Azure Synapse Analytics“ im linken Menü **Abfrage-Editor (Vorschauversion)** aus. 
 
-    ![Seite „SQL Data Warehouse“](media/event-grid-event-hubs-integration/sql-data-warehouse-page.png)
+    ![Seite „Azure Synapse Analytics“](media/event-grid-event-hubs-integration/sql-data-warehouse-page.png)
 2. Geben Sie den Namen für **Benutzer** und **Kennwort** für die SQL Server ein, und wählen **OK**. Unter Umständen müssen Sie Ihre Client-IP-Adresse der Firewall hinzufügen, um sich bei SQL Server anzumelden. 
 
     ![SQL Server-Authentifizierung](media/event-grid-event-hubs-integration/sql-server-authentication.png)
@@ -258,7 +258,7 @@ Nach dem Veröffentlichen der Funktion können Sie das Ereignis abonnieren.
         ![Event Grid-Abonnement erstellen](media/event-grid-event-hubs-integration/create-event-subscription.png)
 
 ## <a name="run-the-app-to-generate-data"></a>Ausführen der App zum Generieren von Daten
-Sie haben nun Event Hub, SQL Data Warehouse, die Azure-Funktions-App und das Ereignisabonnement fertig eingerichtet. Vor dem Ausführen einer Anwendung, die Daten für Event Hubs generiert, müssen Sie einige Werte konfigurieren.
+Sie haben nun Event Hub, Azure Synapse Analytics, die Azure-Funktions-App und das Ereignisabonnement fertig eingerichtet. Vor dem Ausführen einer Anwendung, die Daten für Event Hubs generiert, müssen Sie einige Werte konfigurieren.
 
 1. Navigieren Sie im Azure-Portal zu der Ressourcengruppe, die Sie zuvor erstellt haben. 
 2. Wähen Sie den Event Hubs-Namespace aus.

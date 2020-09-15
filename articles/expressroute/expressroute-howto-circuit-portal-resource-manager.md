@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: tutorial
 ms.date: 09/01/2020
 ms.author: duau
-ms.openlocfilehash: 58c35b094d21dc562e61b4819c0d8e063908392d
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: e0ba14cd5db47c12435b2de35d0753b402c947ea
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322140"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566261"
 ---
 # <a name="tutorial-create-and-modify-an-expressroute-circuit"></a>Tutorial: Erstellen und Ändern einer ExpressRoute-Verbindung
 
@@ -75,7 +75,10 @@ Sie können eine ExpressRoute-Verbindung erstellen, indem Sie die Option zum Ers
     > [!IMPORTANT]
     > Der Peeringstandort entspricht dem [physischen Standort](expressroute-locations.md), an dem Ihr Peering mit Microsoft stattfindet. Dieser ist **nicht** mit der Eigenschaft „Standort“ verknüpft, die sich auf den geografischen Standort des Azure-Netzwerkressourcenanbieters befindet. Obgleich sie nicht miteinander in Zusammenhang stehen, sollten Sie einen Netzwerkressourcenanbieter in geografischer Nähe des Peeringstandorts der Verbindung wählen.
 
-    * **SKU** bestimmt, ob ein ExpressRoute Local-, ExpressRoute Standard- oder ExpressRoute Premium-Add-On aktiviert wird. Sie können **Local** für die Local-SKU, **Standard** für die Standard-SKU oder **Premium** für das Premium-Add-On angeben.
+    * **SKU** bestimmt, ob ein ExpressRoute Local-, ExpressRoute Standard- oder ExpressRoute Premium-Add-On aktiviert wird. Sie können **Local** für die Local-SKU, **Standard** für die Standard-SKU oder **Premium** für das Premium-Add-On angeben. Beachten Sie, dass Sie die SKU ändern können, um das Premium-Add-On zu aktivieren.
+    > [!IMPORTANT]
+    > Es ist nicht möglich, die SKU von **Standard/Premium** in **Local** zu ändern.
+    
     * **Abrechnungsmodell** bestimmt den Abrechnungstyp. Sie können **Taktung** für einen Volumentarif und **Unbegrenzt** für einen Tarif mit Datenflatrate auswählen. Beachten Sie, dass Sie den Abrechnungstyp von **Taktung** in **Unbegrenzt** ändern können.
 
     > [!IMPORTANT]
@@ -150,6 +153,10 @@ Sie können bestimmte Eigenschaften einer ExpressRoute-Verbindung ändern, ohne 
 Sie können folgende Aufgaben ausführen, ohne Ausfallzeiten zu verursachen:
 
 * Aktivieren oder deaktivieren Sie ein ExpressRoute Premium-Add-On für Ihre ExpressRoute-Verbindung.
+
+> [!IMPORTANT]
+  > Die Änderung der SKU von **Standard/Premium** in **Local** wird nicht unterstützt.
+
 * Erhöhen Sie die Bandbreite der ExpressRoute-Verbindung, sofern Kapazität am Port vorhanden ist.
 
   > [!IMPORTANT]

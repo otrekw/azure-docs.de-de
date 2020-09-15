@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: 44d77c36b9aacb8a2f06fd7a0f167cffa06ae4eb
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: ad3dd64bb55ccd657b74bacff3e4441ce63f0cf7
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716111"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569372"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>Erstellen und Zusammenführen einer Zertifikatsignieranforderung in Key Vault
 
@@ -102,6 +102,9 @@ Beispiel
 
 - **Fehlertyp „Der öffentliche Schlüssel des Endentitätszertifikats im angegebenen X.509-Zertifikatinhalt stimmt nicht mit dem öffentlichen Teil des angegebenen privaten Schlüssels überein. Überprüfen Sie die Gültigkeit des Zertifikats.“** . Dieser Fehler kann auftreten, wenn Sie die CSR nicht mit derselben initialisierten CSR-Anforderung zusammenführen. Bei jeder CSR-Erstellung wird ein privater Schlüssel erstellt, der beim Zusammenführen der signierten Anforderung abgeglichen werden muss.
     
+- Wird beim Zusammenführen einer CSR die gesamte Kette zusammengeführt?
+    Ja, die gesamte Kette wird zusammengeführt, vorausgesetzt, der Benutzer hat eine P7B-Datei zum Zusammenführen zurückgegeben.
+
 - Wenn das ausgestellte Zertifikat im Azure-Portal den Status „Deaktiviert“ hat, fahren Sie mit der Anzeige des **Zertifikatvorgangs** fort, um die Fehlermeldung für dieses Zertifikat zu überprüfen.
 
 Weitere Informationen finden Sie unter den [Zertifikatvorgängen in der Referenz zur REST-API für Azure Key Vault](/rest/api/keyvault). Informationen zum Einrichten von Berechtigungen finden Sie unter [Tresore – Erstellen oder Aktualisieren](/rest/api/keyvault/vaults/createorupdate) und [Vaults – Aktualisieren der Zugriffsrichtlinie](/rest/api/keyvault/vaults/updateaccesspolicy).

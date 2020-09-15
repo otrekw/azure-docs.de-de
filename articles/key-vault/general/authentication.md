@@ -7,18 +7,18 @@ ms.date: 08/27/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 1ef5b2229aadc4be46361a7319351a1f27b28b63
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: d247e657e93afd0c43ecee1154c542398304d8dd
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378972"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89481374"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>Authentifizieren bei Azure Key Vault
 
 Mit Azure Key Vault können Sie in einem zentralen, sicheren Cloudrepository Geheimnisse speichern und ihre Verteilung steuern. So müssen Anmeldeinformationen nicht mehr in Anwendungen gespeichert werden. Anwendungen müssen sich nur zur Laufzeit bei Key Vault authentifizieren, um auf diese Geheimnisse zugreifen zu können.
 
-## <a name="app-identity-and-service-principals"></a>App-Identität und Dienstprinzipale
+## <a name="app-identity-and-security-principals"></a>App-Identität und Sicherheitsprinzipale
 
 Die Authentifizierung mit Key Vault funktioniert in Verbindung mit [Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis), was für die Authentifizierung der Identität eines bestimmten **Sicherheitsprinzipals** zuständig ist.
 
@@ -40,7 +40,7 @@ Für Anwendungen gibt es zwei Möglichkeiten, einen Dienstprinzipal abzurufen:
 
 * Wenn Sie die verwaltete Identität nicht verwenden können, **registrieren** Sie die Anwendung stattdessen bei Ihrem Azure AD-Mandanten gemäß Beschreibung in [Schnellstart: Registrieren einer Anwendung bei Microsoft Identity Platform](/azure/active-directory/develop/quickstart-register-app). Bei der Registrierung wird auch ein zweites Anwendungsobjekt erstellt, das die App für alle Mandanten identifiziert.
 
-## <a name="authorize-a-service-principal-to-access-key-vault"></a>Autorisieren eines Dienstprinzipals für den Zugriff auf Key Vault
+## <a name="authorize-a-security-principal-to-access-key-vault"></a>Autorisieren eines Sicherheitsprinzipals für den Zugriff auf Key Vault
 
 Key Vault funktioniert mit zwei separaten Autorisierungsebenen:
 

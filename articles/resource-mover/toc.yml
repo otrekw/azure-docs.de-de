@@ -18,9 +18,9 @@
   items:
     - name: Übersicht über die Verschiebung
       href: about-move-process.md
-    - name: Unterstützungsmatrix für die Azure-VM-Regionsverschiebung
+    - name: 'Unterstützung: Verschieben von Azure-VMs zwischen Regionen'
       href: support-matrix-move-region-azure-vm.md
-    - name: "Unterstützungsmatrix für die Azure\_SQL-Regionsverschiebung"
+    - name: "Unterstützung: Verschieben von Azure\_SQL zwischen Regionen"
       href: support-matrix-move-region-sql.md
 - name: Anleitungen
   items:
@@ -34,11 +34,11 @@
           href: move-region-within-resource-group.md
     - name: Verwalten von Regionsverschiebungen
       items:
-        - name: Ändern der Zieleinstellungen für eine Regionsverschiebung
+        - name: Ändern der Zieleinstellungen
           href: modify-target-settings.md
-        - name: Verschieben von Ressourcen aus einer Sammlung für die Regionsverschiebung
+        - name: Entfernen von Ressourcen aus einer Sammlung für die Verschiebung
           href: remove-move-resources.md
-        - name: 'Verwalten von Ressourcen, die vom Prozess für die Regionsverschiebung erstellt wurden'
+        - name: Verwalten von während der Verschiebung erstellten Ressourcen
           href: manage-resources-created-move-process.md
 - name: Ressourcen
   items:

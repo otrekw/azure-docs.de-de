@@ -83,6 +83,8 @@
           href: troubleshoot-critical-service-failed-boot-error.md
         - name: 'Behandeln von Startfehlern: Status nicht gefunden'
           href: boot-error-status-not-found.md
+        - name: 'Problembehandlung: Windows konnte die Systemkonfiguration nicht abschließen.'
+          href: windows-could-not-configure-system.md
         - name: "Behandeln von Problemen mit der Windows\_Update-Installationskapazität"
           href: windows-update-installation-capacity.md
         - name: Kein startbarer Datenträger

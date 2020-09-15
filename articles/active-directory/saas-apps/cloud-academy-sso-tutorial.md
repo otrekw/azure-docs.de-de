@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Cloud Academy - SSO | Microsoft-Dokumentation'
-description: Hier erfahren Sie, wie Sie einmaliges Anmelden zwischen Azure Active Directory und Cloud Academy - SSO konfigurieren.
+title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Cloud Academy - SSO'
+description: In diesem Tutorial erfahren Sie, wie Sie einmaliges Anmelden zwischen Azure Active Directory und Cloud Academy - SSO konfigurieren.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -11,169 +11,167 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 88e626f9b3069b3b43d525914c017caf763a9047
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 37ed9bb09b6b15af0c32f489cbc3c02ec27c2827
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551760"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461951"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cloud-academy---sso"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Cloud Academy - SSO
+# <a name="tutorial-azure-active-directory-single-sign-on-integration-with-cloud-academy---sso"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Cloud Academy - SSO
 
 In diesem Tutorial erfahren Sie, wie Sie Cloud Academy - SSO in Azure Active Directory (Azure AD) integrieren. Die Integration von Cloud Academy - SSO in Azure AD ermöglicht Folgendes:
 
-* Steuern Sie in Azure AD, wer Zugriff auf Cloud Academy - SSO hat.
-* Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Cloud Academy - SSO anzumelden.
+* Steuern Sie mithilfe von Azure AD, wer auf Cloud Academy - SSO zugreifen kann.
+* Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Cloud Academy - SSO anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Worum handelt es sich beim einmaligen Anmelden (Single Sign-On, SSO)?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für die ersten Schritte benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
-* Abonnement für Cloud Academy - SSO, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
+* Ein Abonnement für Cloud Academy - SSO, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
 
-## <a name="scenario-description"></a>Beschreibung des Szenarios
+## <a name="tutorial-description"></a>Beschreibung des Tutorials
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Cloud Academy - SSO unterstützt **SP-initiiertes** einmaliges Anmelden.
+Cloud Academy - SSO unterstützt SP-initiiertes einmaliges Anmelden.
 
-* Nach dem Konfigurieren von Cloud Academy - SSO können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von Cloud Academy - SSO können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Sitzungssteuerungen basieren auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
 
-## <a name="adding-cloud-academy---sso-from-the-gallery"></a>Hinzufügen von Cloud Academy - SSO aus dem Katalog
+## <a name="add-cloud-academy---sso-from-the-gallery"></a>Hinzufügen von Cloud Academy - SSO aus dem Katalog
 
-Zum Konfigurieren der Integration von Cloud Academy - SSO in Azure AD müssen Sie Cloud Academy - SSO aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
+Zum Konfigurieren der Integration von Cloud Academy - SSO in Azure AD müssen Sie Cloud Academy - SSO aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen:
 
 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
-1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
-1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
-1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
+1. Wählen Sie im linken Bereich **Azure Active Directory** aus.
+1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
+1. Wählen Sie zum Hinzufügen einer Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Cloud Academy - SSO** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **Cloud Academy - SSO** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
 
 ## <a name="configure-and-test-azure-ad-sso-for-cloud-academy---sso"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Cloud Academy - SSO
 
-Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Cloud Academy - SSO mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Cloud Academy - SSO eingerichtet werden.
+Sie konfigurieren und testen das einmalige Anmelden von Azure AD mit Cloud Academy - SSO mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Cloud Academy - SSO eingerichtet werden.
 
-Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Cloud Academy - SSO die folgenden Schritte aus:
+Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Cloud Academy - SSO diese allgemeinen Schritte aus:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
-    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
-    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
-1. **[Konfigurieren des einmaligen Anmeldens für Cloud Academy - SSO](#configure-cloud-academy-sso-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-    1. **[Erstellen eines Testbenutzers für Cloud Academy - SSO](#create-cloud-academy-sso-test-user)** , um eine Entsprechung von B. Simon in Cloud Academy - SSO zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
-1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
+    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD zu testen.
+    1. **[Gewähren der Zugriffsberechtigungen für den Testbenutzer](#grant-access-to-the-test-user)** , um dem Benutzer die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
+1. **[Konfigurieren des einmaligen Anmeldens für Cloud Academy - SSO](#configure-single-sign-on-for-cloud-academy)** auf der Anwendungsseite
+    1. **[Erstellen eines Testbenutzers für Cloud Academy - SSO](#create-a-cloud-academy-test-user)** als Pendant zur Azure AD-Darstellung des Benutzers
+1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
-Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
+Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren:
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Cloud Academy - SSO** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Cloud Academy - SSO** im Abschnitt **Verwalten** die Option **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Wählen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** das Stiftsymbol für **Grundlegende SAML-Konfiguration** aus, um die Einstellungen zu bearbeiten:
 
-   ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
+   ![Screenshot: Stiftsymbol zum Bearbeiten der grundlegenden SAML-Konfiguration](common/edit-urls.png)
 
-1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
+1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** im Feld **Anmelde-URL** die URL `https://cloudacademy.com/login/enterprise/` ein.
 
-    Geben Sie im Textfeld **Anmelde-URL** die URL ein: `https://cloudacademy.com/login/enterprise/`.
+1. Wählen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** die Kopierschaltfläche aus, um die **App-Verbundmetadaten-URL** zu kopieren. Speichern Sie die URL.
 
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **App-Verbundmetadaten-URL** zu kopieren, und speichern Sie sie auf Ihrem Computer.
-
-    ![Downloadlink für das Zertifikat](common/copy-metadataurl.png)
+    ![Screenshot: Schaltfläche „Kopieren“ für die App-Verbundmetadaten-URL](common/copy-metadataurl.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
 In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
 
-1. Wählen Sie im linken Bereich des Microsoft Azure-Portals **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
+1. Wählen Sie im linken Bereich des Azure-Portals den Dienst **Azure Active Directory** aus. Wählen Sie **Benutzer** und dann **Alle Benutzer** aus.
 1. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
-1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
-   1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
-   1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
-   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
+1. Führen Sie in den **Benutzereigenschaften** die folgenden Schritte aus:
+   1. Geben Sie im Feld **Name** den Namen **B.Simon** ein.  
+   1. Geben Sie im Feld **Benutzername** Folgendes ein: \<username>@\<companydomain>.\<extension>. Beispiel: `B.Simon@contoso.com`.
+   1. Aktivieren Sie **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
    1. Klicken Sie auf **Erstellen**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+### <a name="grant-access-to-the-test-user"></a>Gewähren von Zugriff für den Testbenutzer
 
 In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Cloud Academy - SSO gewähren.
 
 1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste **Cloud Academy - SSO** aus.
-1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
+1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus:
 
-   ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
+   ![Screenshot: Option „Benutzer und Gruppen“](common/users-groups-blade.png)
 
-1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Wählen Sie die Schaltfläche **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus:
 
-    ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
+    ![Screenshot: Schaltfläche „Benutzer hinzufügen“](common/add-assign-user.png)
 
-1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
-1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
-1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste **Benutzer** den Eintrag **B. Simon** aus, und klicken Sie dann am unteren Bildschirmrand auf die Schaltfläche **Auswählen**.
+1. Falls Sie in der SAML-Assertion einen Rollenwert erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer aus der Liste aus. Klicken Sie am unteren Bildschirmrand auf die Schaltfläche **Auswählen**.
+1. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Option **Zuweisen** aus.
 
-## <a name="configure-cloud-academy-sso-sso"></a>Konfigurieren des einmaligen Anmeldens für Cloud Academy - SSO
+## <a name="configure-single-sign-on-for-cloud-academy"></a>Konfigurieren des einmaligen Anmeldens für Cloud Academy
 
-1. Melden Sie sich in einem anderen Webbrowserfenster bei der Unternehmenswebsite von Cloud Academy - SSO als Administrator an.
+1. Melden Sie sich in einem anderen Browserfenster bei der Unternehmenswebsite von Cloud Academy - SSO als Administrator an.
 
-1. Klicken Sie auf den Namen des Unternehmens, und wählen Sie im Menü **Settings & Integrations** (Einstellungen und Integrationen) aus.
+1. Wählen Sie den Namen Ihres Unternehmens und anschließend im angezeigten Menü **Settings & Integrations** (Einstellungen und Integrationen) aus:
 
-    ![Konfiguration ](./media/cloud-academy-sso-tutorial/config-1.PNG)
+    ![Screenshot: Option „Settings & Integrations“ (Einstellungen und Integrationen)](./media/cloud-academy-sso-tutorial/config-1.PNG)
 
-1. Navigieren Sie auf der Seite **Settings & Integrations** (Einstellungen und Integrationen) zur Registerkarte **Integrations** (Integrationen), und klicken Sie auf die Karte **SSO**.
+1. Wählen Sie auf der Seite **Settings & Integrations** (Einstellungen und Integrationen) auf der Registerkarte **Integrations** (Integrationen) die Karte **SSO** aus:
 
-    ![Konfiguration ](./media/cloud-academy-sso-tutorial/config-2.PNG)
+    ![Screenshot: Karte „SSO“ auf der Registerkarte „Integrations“ (Integrationen)](./media/cloud-academy-sso-tutorial/config-2.PNG)
 
-1. Führen Sie auf der folgenden Seite die folgenden Schritte aus:
+1. Führen Sie auf dieser Seite die folgenden Schritte aus:
 
-    ![Konfiguration ](./media/cloud-academy-sso-tutorial/config-3.PNG)
+    ![Screenshot: Seite „Integrations“ (Integrationen) > SSO](./media/cloud-academy-sso-tutorial/config-3.PNG)
 
-    a. Fügen Sie im Textfeld **Entity ID URL** (Entitäts-ID-URL) den Wert der **Entitäts-ID** ein, den Sie aus dem Azure-Portal kopiert haben.
+    a. Geben Sie in das Feld **Entity ID URL** (Entitäts-ID-URL) den Wert der Entitäts-ID ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    b. Fügen Sie im Textfeld **SSO URL** (SSO-URL) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
+    b. Fügen Sie im Feld **SSO URL** (SSO-URL) den Wert der Anmelde-URL ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    c. Öffnen Sie das aus dem Azure-Portal heruntergeladene **Zertifikat (Base64)** im Editor, und fügen Sie den Inhalt in das Textfeld **Certificate** (Zertifikat) ein.
+    c. Öffnen Sie das aus dem Azure-Portal heruntergeladene Base64-Zertifikat in Editor. Fügen Sie den Inhalt in das Feld **Certificate** (Zertifikat) ein.
 
-    d. Übernehmen Sie im Textfeld **Name ID Format** (Format der Namens-ID) den Standardwert `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+    d. Übernehmen Sie im Feld **Name ID Format** (Format der Namens-ID) den Standardwert `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
 
-1. Klicken Sie auf die Schaltfläche **Speichern**.
+1. Wählen Sie **Speichern** aus.
 
     > [!NOTE]
-    > Weitere Informationen zum Konfigurieren von Cloud Academy - SSO finden Sie im [Supportartikel](https://support.cloudacademy.com/hc/articles/360043908452-Setting-Up-Single-Sign-On).
+    > Weitere Informationen zum Konfigurieren von Cloud Academy - SSO finden Sie im Artikel zum [Einrichten des einmaligen Anmeldens](https://support.cloudacademy.com/hc/articles/360043908452-Setting-Up-Single-Sign-On).
 
-### <a name="create-cloud-academy-sso-test-user"></a>Erstellen eines Testbenutzers für Cloud Academy - SSO
+### <a name="create-a-cloud-academy-test-user"></a>Erstellen eines Cloud Academy-Testbenutzers
 
-1. Melden Sie sich bei **Cloud Academy - SSO** an.
+1. Melden Sie sich bei Cloud Academy - SSO an.
 
-1. Klicken Sie auf den Namen des Unternehmens, und wählen Sie im Menü **Members** (Mitglieder) aus.
+1. Wählen Sie den Namen Ihres Unternehmens und anschließend im angezeigten Menü **Members** (Mitglieder) aus:
 
-    ![ Testbenutzer erstellen ](./media/cloud-academy-sso-tutorial/create-user.PNG)
+    ![Screenshot: Option „Members“ (Mitglieder)](./media/cloud-academy-sso-tutorial/create-user.PNG)
 
-1. Klicken Sie auf **Invite Members** (Mitglieder einladen), und wählen Sie **Invite a Single Member** (Einzelnes Mitglied einladen) aus.
+1. Wählen Sie **Invite Members** (Mitglieder einladen) und dann **Invite a Single Member** (Einzelnes Mitglied einladen) aus:
 
-    ![ Testbenutzer erstellen ](./media/cloud-academy-sso-tutorial/create-user-1.PNG)
+    ![Screenshot: Option „Invite a single Member“ (Einzelnes Mitglied einladen)](./media/cloud-academy-sso-tutorial/create-user-1.PNG)
 
-1. Füllen Sie die erforderlichen Felder aus, und klicken Sie auf **Invite** (Einladen).
+1. Geben Sie Werte in die erforderlichen Felder ein, und wählen Sie dann **Invite** (Einladen) aus:
 
-    ![ Testbenutzer erstellen ](./media/cloud-academy-sso-tutorial/create-user-2.PNG)
+    ![Screenshot: Dialogfeld zum Einladen eines Mitglieds](./media/cloud-academy-sso-tutorial/create-user-2.PNG)
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+Testen Sie die Azure AD-Konfiguration für einmaliges Anmelden (SSO) über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Cloud Academy - SSO“ klicken, sollten Sie automatisch bei der Instanz von Cloud Academy - SSO angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich die Kachel „Cloud Academy - SSO“ auswählen, sollten Sie automatisch bei der Instanz von Cloud Academy - SSO angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Cloud Academy - SSO mit Azure AD ausprobieren](https://aad.portal.azure.com/)
 

@@ -3,12 +3,12 @@ title: 'Tutorial: Erstellen einer benutzerdefinierten Richtliniendefinition'
 description: In diesem Tutorial erstellen Sie eine benutzerdefinierte Richtliniendefinition für Azure Policy, um benutzerdefinierte Geschäftsregeln für Ihre Azure-Ressourcen zu erzwingen.
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: 5eee969257f5cf640ce82fbda9877974207c87af
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 72282cbc5ed1877cf3f61b792235e8dc2f72fffe
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044616"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649820"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Tutorial: Erstellen einer benutzerdefinierten Richtliniendefinition
 
@@ -73,7 +73,7 @@ Es gibt mehrere Möglichkeiten, sich eine [Resource Manager-Vorlage](../../../az
 Am einfachsten finden Sie Eigenschaften, indem Sie sich eine vorhandene Ressource desselben Typs ansehen. Ressourcen, die bereits mit der zu erzwingenden Einstellung konfiguriert sind, enthalten auch den Wert für den Vergleich.
 Sehen Sie sich im Azure-Portal die Seite **Exportvorlage** (unter **Einstellungen**) für die jeweilige Ressource an.
 
-:::image type="content" source="../media/create-custom-policy-definition/export-template.png" alt-text="Seite zum Exportieren der Vorlage für eine vorhandene Ressource" border="false":::
+:::image type="content" source="../media/create-custom-policy-definition/export-template.png" alt-text="Screenshot: Seite „Exportvorlage“ für eine vorhandene Ressource im Azure-Portal" border="false":::
 
 Wenn Sie so für ein Speicherkonto vorgehen, wird eine Vorlage bereitgestellt, die der Vorlage in diesem Beispiel ähnelt:
 

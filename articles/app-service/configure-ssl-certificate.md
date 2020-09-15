@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: d45852326a7f771b2cf79e20c784e2c441fef0d6
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: c8ede3c4a186b4b24d56651deb8172fdcde8e5ed
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401485"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420879"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Hinzufügen eines TLS-/SSL-Zertifikats in Azure App Service
 
@@ -188,6 +188,13 @@ Nach Abschluss des Vorgangs wird das Zertifikat in der Liste **Private Schlüsse
 
 Wenn Sie Ihre Zertifikate mit Azure Key Vault verwalten, können Sie ein PKCS12-Zertifikat aus Key Vault in App Service importieren, sofern es die [Anforderungen erfüllt](#private-certificate-requirements).
 
+### <a name="authorize-app-service-to-read-from-the-vault"></a>Autorisieren von App Service für das Lesen aus dem Tresor
+Der App Service-Ressourcenanbieter hat standardmäßig keinen Zugriff auf den Schlüsseltresor. Damit Sie einen Schlüsseltresor für eine Zertifikatbereitstellung verwenden können, müssen Sie [den Lesezugriff des Ressourcenanbieters auf den Schlüsseltresor autorisieren](../key-vault/general/group-permissions-for-apps.md#grant-access-to-your-key-vault). 
+
+`abfa0a7c-a6b6-4736-8310-5855508787cd` ist der Dienstprinzipalname des Ressourcenanbieters für App Service. Er lautet für alle Azure-Abonnements gleich. Verwenden Sie für die Azure Government-Cloudumgebung stattdessen `6a02c803-dafd-4136-b4c3-5a6f318b4714` als Dienstprinzipalnamen des Ressourcenanbieters.
+
+### <a name="import-a-certificate-from-your-vault-to-your-app"></a>Importieren eines Zertifikats aus dem Tresor in Ihre App
+
 Wählen Sie im <a href="https://portal.azure.com" target="_blank">Azure-Portal</a> im linken Menü **App Services** >  **\<app-name>** aus.
 
 Wählen Sie im linken Navigationsbereich Ihrer App **TLS-/SSL-Einstellungen** > **Private Schlüsselzertifikate (PFX)**  > **Key Vault-Zertifikat importieren** aus.
@@ -205,6 +212,9 @@ Die folgende Tabelle unterstützt Sie beim Auswählen des Zertifikats:
 Nach Abschluss des Vorgangs wird das Zertifikat in der Liste **Private Schlüsselzertifikate** angezeigt. Tritt beim Importieren ein Fehler auf, erfüllt das Zertifikat nicht die [Anforderungen für App Service](#private-certificate-requirements).
 
 ![Import des Key Vault-Zertifikats abgeschlossen](./media/configure-ssl-certificate/import-app-service-cert-finished.png)
+
+> [!NOTE]
+> Wenn Sie Ihr Zertifikat in Key Vault mit einem neuen Zertifikat aktualisieren, synchronisiert App Service Ihr Zertifikat automatisch innerhalb von 48 Stunden.
 
 > [!IMPORTANT] 
 > Sie müssen noch eine Zertifikatsbindung erstellen, um eine benutzerdefinierte Domäne mit diesem Zertifikat zu schützen. Führen Sie die Schritte unter [Erstellen einer Bindung](configure-ssl-bindings.md#create-binding) aus.
@@ -366,7 +376,7 @@ Nun können Sie das App Service-Zertifikat löschen. Wählen Sie im linken Navig
 
 ## <a name="automate-with-scripts"></a>Automatisieren mit Skripts
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
 [!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to a web app")] 
 

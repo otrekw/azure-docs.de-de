@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: 1ba293890f6a6fd165e03486d7da375f2ac53ab1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a86a7ee600d7443e5ba8cb4f30db0c48c8170327
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326443"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612176"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Erstellen eines Datenbeschriftungsprojekts und Exportieren der Beschriftungen 
 
@@ -78,7 +78,7 @@ Erstellen eines Datasets aus Dateien, die Sie bereits in einem Azure-Blobspeiche
 
 1. Wählen Sie **Dataset erstellen** > **Aus Datenspeicher**.
 1. Weisen Sie Ihrem Dataset einen **Namen** zu.
-1. Wählen Sie **Datei** als **Dataset-Typ** aus.  
+1. Wählen Sie **Datei** als **Dataset-Typ** aus.  Als Datasettypen werden nur Dateien unterstützt.
 1. Wählen Sie den Datenspeicher aus.
 1. Wenn Ihre Daten sich in einem Unterordner des Blobspeichers befinden, klicken Sie auf **Durchsuchen**, um den Ordnerpfad auszuwählen.
     * Fügen Sie „/**“ an den Pfad an, um alle Dateien in den Unterordnern des ausgewählten Pfads einzubeziehen.

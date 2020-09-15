@@ -1,6 +1,6 @@
 ---
 title: Massenkopieren von Daten mithilfe des Azure-Portals
-description: In diesem Artikel wird erklärt, wie Sie Azure Data Factory und Kopieraktivität zum Kopieren von Daten per Massenvorgang aus einem Quelldatenspeicher in einen Zieldatenspeicher verwenden.
+description: Verwenden Sie Azure Data Factory und die Copy-Aktivität zum Kopieren von Daten per Massenvorgang aus einem Quelldatenspeicher in einen Zieldatenspeicher.
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/22/2020
-ms.openlocfilehash: 29bdedd5ae40db57809c11500af404d308366ca7
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: a047872f519de1873c03998fd1d3a9c273ce9fa1
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86081637"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442853"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>Massenkopieren mehrerer Tabellen mithilfe von Azure Data Factory im Azure-Portal
 
@@ -45,7 +45,7 @@ In diesem Szenario verfügen Sie über mehrere Tabellen aus der Azure SQL-Datenb
 ![Workflow](media/tutorial-bulk-copy-portal/tutorial-copy-multiple-tables.png)
 
 * Die erste Pipeline ruft die Liste mit den Tabellen ab, die in die Senkendatenspeicher kopiert werden sollen.  Sie können stattdessen auch eine Metadatentabelle mit den Tabellen verwalten, die in die Senkendatenspeicher kopiert werden sollen. Die Pipeline löst anschließend eine weitere Pipeline aus, die wiederum jede Tabelle in der Datenbank durchläuft und den Datenkopiervorgang ausführt.
-* Die zweite Pipeline führt den eigentlichen Kopiervorgang aus. Dazu wird die Liste mit den Tabellen als Parameter verwendet. Kopieren Sie für jede Tabelle in der Liste die jeweilige Tabelle aus der Azure SQL-Datenbank-Instanz in die entsprechende Tabelle in Azure Synapse Analytics (ehemals SQL DW). Verwenden Sie für eine optimale Leistung das [gestaffelte Kopieren über Blob Storage und PolyBase](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse). In diesem Beispiel wird die Liste mit den Tabellen von der ersten Pipeline als Wert für den Parameter übergeben. 
+* Die zweite Pipeline führt den eigentlichen Kopiervorgang aus. Dazu wird die Liste mit den Tabellen als Parameter verwendet. Kopieren Sie für jede Tabelle in der Liste die jeweilige Tabelle aus der Azure SQL-Datenbank-Instanz in die entsprechende Tabelle in Azure Synapse Analytics (ehemals SQL DW). Verwenden Sie für eine optimale Leistung das [gestaffelte Kopieren über Blob Storage und PolyBase](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics). In diesem Beispiel wird die Liste mit den Tabellen von der ersten Pipeline als Wert für den Parameter übergeben. 
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -62,7 +62,7 @@ Erstellen Sie in SQL-Datenbank eine Datenbank mit den AdventureWorks LT-Beispiel
 
 **Vorbereiten der Azure Synapse Analytics-Senke (ehemals SQL DW)** :
 
-1. Wenn Sie noch keine Azure Synapse Analytics-Instanz (ehemals SQL DW) erstellt haben, finden Sie die Anleitung dazu im Artikel [Erstellen eines SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md).
+1. Wenn Sie über keinen Azure Synapse Analytics-Arbeitsbereich (vormals SQL DW) verfügen, führen Sie die Schritte im Artikel [Erste Schritte mit Azure Synapse Analytics](..\synapse-analytics\get-started.md) aus, um einen Arbeitsbereich zu erstellen.
 
 1. Erstellen Sie entsprechende Tabellenschemas in Azure Synapse Analytics (ehemals SQL DW). In einem späteren Schritt können Sie Daten mit Azure Data Factory migrieren/kopieren.
 

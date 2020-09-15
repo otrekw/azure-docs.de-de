@@ -2,14 +2,14 @@
 title: Analysieren von Livevideos mithilfe der KI-Erweiterung für OpenVINO™ Model Server von Intel
 description: In diesem Tutorial wird ein von Intel bereitgestellter KI-Modellserver verwendet, um den Livevideofeed einer (simulierten) IP-Kamera zu analysieren.
 ms.topic: tutorial
-ms.date: 07/24/2020
+ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: 102c54d8f738c3e8e62c7092d0df6ec7d12b8a0c
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 95dbf555cc6b8f8edb1bc9dca2e10d3ef72eb9db
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950254"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567577"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>Tutorial: Analysieren von Livevideos mithilfe der KI-Erweiterung für OpenVINO™ Model Server von Intel 
 
@@ -30,6 +30,7 @@ In diesem Tutorial werden ein virtueller Azure-Computer als IoT Edge-Gerät und
 > Bei der Installation von Azure IoT Tools werden Sie unter Umständen aufgefordert, Docker zu installieren. Sie können diese Aufforderung ignorieren.
 
 ## <a name="review-the-sample-video"></a>Überprüfen des Beispielvideos
+
 Beim Einrichten der Azure-Ressourcen wird ein kurzes Parkplatzvideo auf den virtuellen Linux-Computer in Azure kopiert, den Sie als IoT Edge-Gerät verwenden. In dieser Schnellstartanleitung wird die Videodatei verwendet, um einen Livestream zu simulieren.
 
 Öffnen Sie eine Anwendung wie etwa den [VLC Media Player](https://www.videolan.org/vlc/). Drücken Sie STRG+N, und fügen Sie dann einen Link zum [Video](https://lvamedia.blob.core.windows.net/public/lots_015.mkv) ein, um die Wiedergabe zu starten. Das Video zeigt Fahrzeuge auf einem Parkplatz. Die meisten davon sind geparkt. Ein einzelnes Fahrzeug bewegt sich.
@@ -38,7 +39,8 @@ In dieser Schnellstartanleitung werden Live Video Analytics in IoT Edge und die
 
 ## <a name="overview"></a>Übersicht
 
-![Übersicht](./media/use-intel-openvino-tutorial/topology.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/use-intel-openvino-tutorial/topology.png" alt-text="Übersicht":::
 
 In diesem Diagramm ist der Fluss der Signale in diesem Schnellstart dargestellt. Ein [Edge-Modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) simuliert eine IP-Kamera, die einen RTSP-Server (Real-Time Streaming Protocol) hostet. Der Knoten einer [RTSP-Quelle](media-graph-concept.md#rtsp-source) ruft den Videofeed von diesem Server ab und sendet Video-Einzelbilder an den Knoten des [Bildfrequenzfilterprozessors](media-graph-concept.md#frame-rate-filter-processor). Dieser Prozessor begrenzt die Bildfrequenz des Videostreams, der den Knoten des [HTTP-Erweiterungsprozessors](media-graph-concept.md#http-extension-processor) erreicht. 
 
@@ -46,7 +48,7 @@ Der HTTP-Erweiterungsknoten übernimmt dabei die Rolle eines Proxys. Er wandelt 
 
 In diesem Lernprogramm lernen Sie Folgendes:
 
-1. Erstellen, Bereitstellen und Ändern des Mediengraphen 
+1. Erstellen, Bereitstellen und Ändern des Mediengraphen
 1. Interpretieren der Ergebnisse
 1. Bereinigen der Ressourcen
 

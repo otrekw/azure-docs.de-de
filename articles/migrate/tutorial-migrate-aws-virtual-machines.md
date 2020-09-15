@@ -4,12 +4,12 @@ description: In diesem Artikel wird beschrieben, wie Sie virtuelle AWS-Computer 
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 72579c103102196e641244600ce9add64d6e20a4
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 6c4b53e3c3673b913e4afbfb65801d83f0640bd3
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419009"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651835"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Ermitteln, Bewerten und Migrieren von virtuellen AWS-Computern (Amazon Web Services) zu Azure
 
@@ -43,12 +43,17 @@ Gehen Sie zum Erstellen einer Bewertung wie folgt vor:
 1. Führen Sie die Schritte des [Tutorials](./tutorial-prepare-physical.md) aus, um Azure einzurichten und Ihre AWS-VMs auf eine Bewertung vorzubereiten. Beachten Sie dabei Folgendes:
 
     - Azure Migrate verwendet bei der Ermittlung von AWS-Instanzen die Kennwortauthentifizierung. Die Kennwortauthentifizierung wird von AWS-Instanzen nicht standardmäßig unterstützt. Damit Sie eine Instanz ermitteln können, müssen Sie die Kennwortauthentifizierung aktivieren.
-        - Lassen Sie für Windows-Computer WinRM-Port 5986 (HTTPS) und 5985 (HTTP) zu. Dadurch werden WMI-Remoteaufrufe ermöglicht. Bei der Einrichtung von 
+        - Lassen Sie für Windows-Computer WinRM-Port 5985 (HTTP) zu. Dadurch werden WMI-Remoteaufrufe ermöglicht.
         - Für Linux-Computer:
             1. Melden Sie sich bei jedem Linux-Computer an.
             2. Öffnen Sie die Datei „sshd_config“: vi /etc/ssh/sshd_config.
             3. Suchen Sie in der Datei die Zeile **PasswordAuthentication**, und ändern Sie den Wert in **yes**.
             4. Speichern Sie die Datei, und schließen Sie sie. Starten Sie den SSH-Dienst neu.
+    - Wenn Sie einen Stammbenutzer zum Ermitteln Ihrer virtuellen Linux-Computer verwenden, stellen Sie sicher, dass die Stammanmeldung auf den virtuellen Computern zulässig ist.
+        1. Melden Sie sich bei jedem Linux-Computer an.
+        2. Öffnen Sie die Datei „sshd_config“: vi /etc/ssh/sshd_config.
+        3. Suchen Sie in der Datei die Zeile **PermitRootLogin**, und ändern Sie den Wert in **yes**.
+        4. Speichern Sie die Datei, und schließen Sie sie. Starten Sie den SSH-Dienst neu.
 
 2. Führen Sie anschließend die Schritte dieses [Tutorials](./tutorial-assess-physical.md) aus, um ein Azure Migrate-Projekt und eine Azure Migrate-Appliance einzurichten, um Ihre AWS-VMs zu ermitteln und zu bewerten.
 

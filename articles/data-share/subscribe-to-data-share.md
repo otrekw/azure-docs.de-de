@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 08/14/2020
-ms.openlocfilehash: 104654a721912324cdc8ea636e8b4e75765e73f7
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: ce47bc5e880f15eaa1bbf07477673d2475e5a10a
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268892"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489917"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Tutorial: Akzeptieren und Empfangen von Daten mithilfe von Azure Data Share  
 
@@ -41,7 +41,7 @@ Stellen Sie sicher, dass alle Voraussetzungen erfüllt sind, bevor Sie die Einla
 ### <a name="receive-data-into-a-sql-based-target"></a>Empfangen von Daten in einem SQL-basierten Ziel:
 
 * Berechtigung zum Schreiben in Datenbanken auf dem SQL-Server (unter *Microsoft.Sql/servers/databases/write*). Diese Berechtigung ist in der Rolle „Mitwirkender“ vorhanden. 
-* Berechtigung zum Zugreifen auf die Azure SQL-Datenbank- oder Azure SQL Data Warehouse-Instanz für die verwaltete Identität der Datenfreigaberessource. Die Berechtigung kann mit folgenden Schritten gewährt werden: 
+* Berechtigung zum Zugreifen auf die Azure SQL-Datenbank- oder Azure Synapse Analytics-Instanz für die verwaltete Identität der Datenfreigaberessource. Die Berechtigung kann mit folgenden Schritten gewährt werden: 
     1. Legen Sie sich selbst als Azure Active Directory-Administrator für den SQL-Server fest.
     1. Stellen Sie mithilfe von Azure Active Directory eine Verbindung mit der Azure SQL-Datenbank-/Data Warehouse-Instanz her.
     1. Führen Sie mithilfe des Abfrage-Editors (Vorschauversion) das folgende Skript aus, um die verwaltete Data Share-Identität als „db_datareader, db_datawriter, db_ddladmin“ hinzuzufügen. Sie müssen mithilfe von Active Directory und nicht über die SQL Server-Authentifizierung eine Verbindung herstellen. 

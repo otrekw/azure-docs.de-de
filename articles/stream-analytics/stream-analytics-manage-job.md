@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/03/2019
-ms.openlocfilehash: 577a80f04ad186ab1575fa78db3fa59402d6058f
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: a265bc2ed131dc0bb69d89f767ab60225d30ee8e
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "83697398"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612059"
 ---
 # <a name="tutorial-analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Tutorial: Analysieren von Telefonanrufdaten mit Stream Analytics und Visualisieren der Ergebnisse in einem Power BI-Dashboard
 
@@ -185,7 +185,7 @@ Der letzte Schritt umfasst das Definieren einer Ausgabesenke für den Auftrag, i
 
    ![Konfigurieren der Azure Stream Analytics-Ausgabe](media/stream-analytics-manage-job/configure-stream-analytics-output.png)
 
-4. Nachdem Sie **Autorisieren** ausgewählt haben, werden Sie in einem Popupfenster aufgefordert, Anmeldeinformationen für die Authentifizierung Ihres Power BI-Kontos anzugeben. Nachdem die Autorisierung erfolgreich abgeschlossen wurde, können Sie die Einstellungen speichern, indem Sie **Speichern** wählen.
+4. Nachdem Sie **Autorisieren** ausgewählt haben, werden Sie in einem Popupfenster aufgefordert, Anmeldeinformationen für die Authentifizierung Ihres Power BI-Kontos anzugeben. Nachdem die Autorisierung erfolgreich abgeschlossen wurde, können Sie die Einstellungen speichern, indem Sie **Speichern** wählen. Informationen zur Verwendung von verwalteten Identitäten finden Sie unter [Verwenden von verwalteten Identitäten zum Authentifizieren von Azure Stream Analytics-Aufträgen in Power BI](powerbi-output-managed-identity.md).
 
 ## <a name="define-a-query-to-analyze-input-data"></a>Definieren einer Abfrage zum Analysieren von Eingabedaten
 

@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie die Notfallwiederherstellung für lokale Hype
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.custom: MVC
-ms.openlocfilehash: f32103adce184a67cec9e5a778ac1d1e6f330f4d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: c806f968bc6530879f64ddbf6fd4c7d45aa7a8d3
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86130234"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442819"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>Einrichten der Notfallwiederherstellung von lokalen Hyper-V-VMs in VMM-Clouds nach Azure
 
@@ -83,7 +83,11 @@ Installieren Sie den Agent auf jedem Hyper-V-Host, auf dem sich virtuelle Comput
 Konfigurieren Sie im Setup-Assistenten für den Microsoft Azure Recovery Services-Agent die folgenden Einstellungen:
 
 1. **Voraussetzungsüberprüfung**: Wählen Sie **Weiter** aus. Alle fehlenden Komponenten werden automatisch installiert.
-1. **Installationseinstellungen**: Übernehmen Sie den Installationsspeicherort und den Cachespeicherort. Das Cachelaufwerk benötigt mindestens 5 GB Speicherplatz. Es wird empfohlen, ein Laufwerk mit mindestens 600 GB freiem Speicherplatz zu verwenden. Wählen Sie dann **Installieren** aus.
+1. **Installationseinstellungen**: Akzeptieren Sie den Installationsspeicherort. Wählen Sie dann **Installieren** aus.
+
+    >[!NOTE]
+    >Der **Cachespeicherort** ist für Azure Site Recovery nicht erforderlich.
+
 1. **Installation**: Wählen Sie nach Abschluss der Installation **Schließen** aus, um den Assistenten zu beenden.
 
    ![Agent installieren](./media/hyper-v-vmm-azure-tutorial/mars-install.png)

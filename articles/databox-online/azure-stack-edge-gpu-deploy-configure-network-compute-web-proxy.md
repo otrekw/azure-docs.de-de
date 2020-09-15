@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 08/28/2020
+ms.date: 09/03/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 6e7dbc2b96a53d220554e07228a5e30857d12d9c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: cc111f0df889efd1d3720e2ec0e4aaa452efd801
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89262973"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461866"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-with-gpu"></a>Tutorial: Konfigurieren des Netzwerks für ein Azure Stack Edge-Gerät mit GPU
 
@@ -104,7 +104,11 @@ Befolgen Sie diese Schritte, um Compute zu aktivieren und das Computenetzwerk zu
     
 3. Weisen Sie **IP-Adressen für Kubernetes-Knoten** zu. Diese statischen IP-Adressen gelten für die Compute-VM. 
 
-    Für ein Gerät mit *n*-Knoten wird ein zusammenhängender Bereich von mindestens *n+1* IPv4-Adressen für die Compute-VM unter Verwendung der Start- und End-IP-Adresse bereitgestellt. Da es sich bei Azure Stack Edge um ein Gerät mit einem Knoten handelt, werden mindestens zwei zusammenhängende IPv4-Adressen bereitgestellt. 
+    Für ein Gerät mit *n*-Knoten wird ein zusammenhängender Bereich von mindestens *n+1* IPv4-Adressen für die Compute-VM unter Verwendung der Start- und End-IP-Adresse bereitgestellt. Da es sich bei Azure Stack Edge um ein Gerät mit einem Knoten handelt, werden mindestens zwei zusammenhängende IPv4-Adressen bereitgestellt.
+
+    > [!IMPORTANT]
+    > Kubernetes in Azure Stack Edge verwendet das Subnetz 172.27.0.0/16 für den Pod und das Subnetz 172.28.0.0/16 für den Dienst. Stellen Sie sicher, dass diese in Ihrem Netzwerk nicht verwendet werden. Werden diese Subnetze bereits in Ihrem Netzwerk verwendet, können Sie sie ändern, indem Sie das Cmdlet `Set-HcsKubeClusterNetworkInfo` über die PowerShell-Schnittstelle des Geräts ausführen. Weitere Informationen finden Sie unter [Ändern des Pod- und Dienstsubnetzes in Kubernetes](azure-stack-edge-gpu-connect-powershell-interface.md#change-kubernetes-pod-and-service-subnets).
+
 
 4. Weisen Sie **externe Dienst-IP-Adressen für Kubernetes** zu. Dies sind auch die IP-Adressen für den Lastenausgleich. Diese zusammenhängenden IP-Adressen sind für Dienste, die Sie außerhalb des Kubernetes-Clusters verfügbar machen möchten. Sie legen den statischen IP-Adressenbereich abhängig von der Anzahl der verfügbar gemachten Dienste fest. 
     

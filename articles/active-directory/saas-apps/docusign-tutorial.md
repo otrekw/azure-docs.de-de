@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/21/2020
+ms.date: 08/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 6736edd615f99ed987e7d1618c449ff7a819c497
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c91f9d38922cc1bddf252fde59291c2f233e1aa2
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536069"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650197"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit DocuSign
 
@@ -61,7 +61,7 @@ Zum Konfigurieren der Integration von DocuSign in Azure AD müssen Sie DocuSign 
 1. Wählen Sie im Ergebnisbereich **DocuSign** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-docusign"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für DocuSign
+## <a name="configure-and-test-azure-ad-sso-for-docusign"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für DocuSign
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit DocuSign mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in DocuSign eingerichtet werden.
 
@@ -94,9 +94,12 @@ Führen Sie die folgenden Schritte aus, um einmaliges Anmelden von Azure AD im 
 
     `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2`
 
-    c. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein:
+    c. Geben Sie in das Textfeld **Antwort-URL** eines der folgenden URL-Formate ein:
     
-    `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login`
+    | Antwort-URL |
+    |-------------|
+    |`https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login/<IDPID>`|
+    |`https://<subdomain>.docusign.net/SAML/`|
 
     > [!NOTE]
     > Die Werte in Klammern sind Platzhalter. Ersetzen Sie diese Werte durch die tatsächlichen Werte für Anmelde-URL, Bezeichner und Antwort-URL. Ausführliche Informationen hierzu finden Sie weiter unten in diesem Tutorial im Abschnitt „View SAML 2.0 Endpoints“ (SAML 2.0-Endpunkte anzeigen).

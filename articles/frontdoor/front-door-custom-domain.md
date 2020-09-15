@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/10/2018
 ms.author: duau
-ms.openlocfilehash: f0d4ab9e3ecba8af1f6775389a4837e8c90eb14d
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: ee9a883cbd69826e30d6f2416d588792a8c17b1c
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399768"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648800"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>Tutorial: Hinzufügen einer benutzerdefinierten Domäne für Ihre „Front Door“
 In diesem Tutorial erfahren Sie, wie Sie Ihrer Azure Front Door Service-Konfiguration eine benutzerdefinierte Domäne hinzufügen. Wenn Sie Azure Front Door für die Anwendungsbereitstellung verwenden, ist eine benutzerdefinierte Domäne erforderlich, sofern Ihr eigener Domänenname in der Endbenutzeranforderung sichtbar sein soll. Die Verwendung eines sichtbaren Domänennamens kann für Ihre Kunden komfortabel und für Branding-Zwecke hilfreich sein.
@@ -37,11 +37,11 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie die Schritte in diesem Tutorial ausführen können, müssen Sie zunächst eine Azure Front Door Service-Konfiguration erstellen. Weitere Informationen finden Sie unter [Quickstart: Erstellen einer „Front Door“](quickstart-create-front-door.md).
+* Bevor Sie die Schritte in diesem Tutorial ausführen können, müssen Sie zunächst eine Azure Front Door Service-Konfiguration erstellen. Weitere Informationen finden Sie unter [Quickstart: Erstellen einer „Front Door“](quickstart-create-front-door.md).
 
-Wenn Sie nicht bereits über eine benutzerdefinierte Domäne verfügen, müssen Sie zunächst bei einem Domänenanbieter eine erwerben. Informationen hierzu finden Sie beispielsweise unter [Kaufen eines benutzerdefinierten Domänennamens für Azure-Web-Apps](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain).
+* Wenn Sie nicht bereits über eine benutzerdefinierte Domäne verfügen, müssen Sie zunächst bei einem Domänenanbieter eine erwerben. Informationen hierzu finden Sie beispielsweise unter [Kaufen eines benutzerdefinierten Domänennamens für Azure-Web-Apps](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain).
 
-Wenn Sie Azure zum Hosten Ihrer [DNS-Domänen](https://docs.microsoft.com/azure/dns/dns-overview) verwenden, müssen Sie das Domain Name System (DNS) des Domänenanbieters an eine Azure DNS-Instanz delegieren. Weitere Informationen finden Sie unter [Delegieren einer Domäne an Azure DNS](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns). Fahren Sie andernfalls mit [Erstellen eines CNAME-DNS-Eintrags](#create-a-cname-dns-record) fort, wenn Sie für Ihre DNS-Domäne einen Domänenanbieter verwenden.
+* Wenn Sie Azure zum Hosten Ihrer [DNS-Domänen](https://docs.microsoft.com/azure/dns/dns-overview) verwenden, müssen Sie das Domain Name System (DNS) des Domänenanbieters an eine Azure DNS-Instanz delegieren. Weitere Informationen finden Sie unter [Delegieren einer Domäne an Azure DNS](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns). Fahren Sie andernfalls mit [Erstellen eines CNAME-DNS-Eintrags](#create-a-cname-dns-record) fort, wenn Sie für Ihre DNS-Domäne einen Domänenanbieter verwenden.
 
 
 ## <a name="create-a-cname-dns-record"></a>Erstellen eines CNAME-DNS-Eintrags
@@ -202,7 +202,11 @@ In den obigen Schritten haben Sie Ihrer Azure Front Door Service-Konfiguration e
 
 In diesem Tutorial haben Sie Folgendes gelernt:
 
-> [!div class="checklist"]
-> - Erstellen eines CNAME-DNS-Eintrags
-> - Zuordnen der benutzerdefinierten Domäne zu Ihrer Azure Front Door Service-Konfiguration
-> - Überprüfen der benutzerdefinierten Domäne
+* Erstellen eines CNAME-DNS-Eintrags
+* Zuordnen der benutzerdefinierten Domäne zu Ihrer Azure Front Door Service-Konfiguration
+* Überprüfen der benutzerdefinierten Domäne
+
+Im nächsten Tutorial erfahren Sie, wie Sie HTTPS für Ihre benutzerdefinierte Domäne aktivieren:
+
+> [!div class="nextstepaction"]
+> [Aktivieren von HTTPS für eine benutzerdefinierte Domäne](front-door-custom-domain.md)

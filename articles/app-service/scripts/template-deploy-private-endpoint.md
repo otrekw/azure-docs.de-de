@@ -1,5 +1,5 @@
 ---
-title: Mit dieser Azure Resource Manager-Vorlage können Sie einen privaten Endpunkt für Ihre Web-App bereitstellen.
+title: Verwenden einer Azure-Ressourcen-Manager-Vorlage zum Bereitstellen eines privaten Endpunkts für eine Web-App
 description: Hier erfahren Sie, wie Sie mithilfe einer ARM-Vorlage einen privaten Endpunkt für Ihre Web-App bereitstellen.
 author: ericgre
 ms.assetid: 49e460d0-7759-4ceb-b5a4-f1357e4fde56
@@ -8,16 +8,16 @@ ms.date: 07/08/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: ff2d59ed569037f34e24a69ffafa0df237a3de34
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: acf7198477ce0c55f9321fd3f8e57294a60c0961
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524827"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89652017"
 ---
-# <a name="create-an-app-service-app-and-deploy-private-endpoint-using-azure-resource-manager-template"></a>Erstellen einer App Service-App und Bereitstellen eines privaten Endpunkts mithilfe einer Azure Resource Manager-Vorlage
+# <a name="create-an-app-service-app-and-deploy-a-private-endpoint-by-using-an-azure-resource-manager-template"></a>Erstellen einer App Service-App und Bereitstellen eines privaten Endpunkts mithilfe einer Azure Resource Manager-Vorlage
 
-In dieser Schnellstartanleitung erstellen Sie mithilfe einer Azure Resource Manager-Vorlage eine Web-App und machen sie mit einem privaten Endpunkt verfügbar.
+In dieser Schnellstartanleitung erstellen Sie mithilfe einer Azure Resource Manager-Vorlage (ARM-Vorlage) eine Web-App und machen sie mit einem privaten Endpunkt verfügbar.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -37,13 +37,10 @@ Mit dieser Vorlage wird ein privater Endpunkt für eine Azure-Web-App erstellt.
 
 So stellen Sie die Azure Resource Manager-Vorlage in Azure bereit:
 
-1. Wählen Sie **Bereitstellung in Azure** aus, um sich bei Azure anzumelden und die Vorlage zu öffnen. Die Vorlage erstellt das VNET, die Web-App, den privaten Endpunkt und die private DNS-Zone.
-
-   [Bereitstellen in Azure](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-private-endpoint-webapp%2Fazuredeploy.json)
-
+1. Wählen Sie den folgenden Link aus, um sich bei Azure anzumelden und die Vorlage zu öffnen:  [Bereitstellung in Microsoft Azure:](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-private-endpoint-webapp%2Fazuredeploy.json) Die Vorlage erstellt das virtuelle Netzwerk, die Web-App, den privaten Endpunkt und die private DNS-Zone.
 2. Wählen Sie Ihre Ressourcengruppe aus, oder erstellen Sie sie.
-3. Geben Sie den Namen Ihrer Web-App, den App Service-Plan und den privaten Endpunkt ein.
-5. Lesen Sie die Geschäftsbedingungen. Wenn Sie einverstanden sind, wählen Sie „Ich stimme den oben genannten Geschäftsbedingungen zu“ > „Kaufen“ aus. Die Bereitstellung kann mehrere Minuten dauern.
+3. Geben Sie den Namen Ihrer Web-App, den Azure App Service-Plan und den privaten Endpunkt ein.
+5. Lesen Sie die Geschäftsbedingungen. Wenn Sie einverstanden sind, wählen Sie **Ich stimme den oben genannten Geschäftsbedingungen zu** > **Kaufen** aus. Die Bereitstellung kann einige Minuten dauern.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

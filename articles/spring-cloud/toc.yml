@@ -47,6 +47,8 @@
       href: spring-cloud-tutorial-managed-identities-key-vault.md
     - name: Bereitstellen von Azure Spring Cloud im virtuellen Netzwerk
       href: spring-cloud-tutorial-deploy-in-azure-virtual-network.md
+    - name: Verwenden einer verwalteten Identität zum Aufrufen von Azure Functions über eine Azure Spring Cloud-App
+      href: spring-cloud-tutorial-managed-identities-functions.md
 - name: Konzepte
   items:
     - name: Grundlegendes zu Apps und Bereitstellungen

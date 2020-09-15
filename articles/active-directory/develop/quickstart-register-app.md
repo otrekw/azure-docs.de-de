@@ -1,77 +1,133 @@
 ---
-title: 'Schnellstart: Registrieren von Apps bei Microsoft Identity Platform | Azure'
-description: In dieser Schnellstartanleitung erfahren Sie, wie Sie eine Anwendung hinzufügen und bei Microsoft Identity Platform registrieren.
+title: 'Schnellstart: Registrieren einer App bei Microsoft Identity Platform | Azure'
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie eine Anwendung bei Microsoft Identity Platform registrieren.
 services: active-directory
-author: rwike77
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 03/12/2020
-ms.author: ryanwi
-ms.custom: aaddev, identityplatformtop40
+ms.date: 09/03/2020
+ms.author: marsma
+ms.custom: aaddev, identityplatformtop40, contperfq1
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 65fff06b4a2d28bbc276920ccbaba90d814d03f3
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 5f34215d57bd5dae8c9a5e6e8f4630b7ed0c827e
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115355"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436712"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Schnellstart: Registrieren einer Anwendung bei Microsoft Identity Platform
 
-In dieser Schnellstartanleitung wird eine Anwendung mithilfe von **App-Registrierungen** im Azure-Portal registriert. 
+In dieser Schnellstartanleitung registrieren Sie eine App im Azure-Portal, damit Microsoft Identity Platform die Authentifizierungs- und Autorisierungsdienste für Ihre Anwendung und deren Benutzer bereitstellen kann.
 
-Ihre App wird bei einem Azure Active Directory-Mandanten registriert, um sie in Microsoft Identity Platform zu integrieren. Unternehmensentwickler und SaaS-Anbieter (Software-as-a-Service) können kommerzielle Clouddienste oder Branchenanwendungen entwickeln, die in Microsoft Identity Platform integriert werden können. Die Integration ermöglicht eine sichere Anmeldung und Autorisierung für solche Dienste.
+Jede Anwendung, für die Microsoft Identity Platform die Identitäts- und Zugriffsverwaltung ausführen soll, muss registriert werden. Durch die Registrierung wird eine Vertrauensstellung zwischen Ihrer Anwendung und Microsoft Identity Platform als Identitätsanbieter hergestellt. Dabei spielt es keine Rolle, ob es sich um eine Clientanwendung (z. B. Web-App oder mobile App) oder um eine Web-API handelt, die eine Client-App unterstützt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-* Ein [Azure AD-Mandant](quickstart-create-new-tenant.md).
+* Ein Azure-Konto mit einem aktiven Abonnement ([kostenloses Azure-Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F))
+* Abschluss von [Schnellstart: Einrichten eines Mandanten](quickstart-create-new-tenant.md)
 
-## <a name="register-a-new-application-using-the-azure-portal"></a>Registrieren einer neuen Anwendung mit dem Azure-Portal
+## <a name="register-an-application"></a>Registrieren einer Anwendung
 
-1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
-1. Wenn Sie mit Ihrem Konto Zugriff auf mehrere Mandanten haben, können Sie Ihr Konto rechts oben auswählen. Legen Sie Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten fest.
-1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus. Wählen Sie unter **Verwalten** die Option **App-Registrierungen** aus.
-1. Wählen Sie **Neue Registrierung** aus.
-1. Geben Sie unter **Anwendung registrieren** einen aussagekräftigen Anwendungsnamen ein, der Benutzern angezeigt werden soll.
-1. Geben Sie an, von wem die Anwendung verwendet werden kann:
+Beim Registrieren Ihrer Anwendung wird eine Vertrauensstellung zwischen Ihrer App und Microsoft Identity Platform erstellt. Die Vertrauensstellung ist unidirektional: Ihre App vertraut Microsoft Identity Platform und nicht umgekehrt.
+
+Führen Sie die folgenden Schritte aus, um die App-Registrierung zu erstellen:
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/quickstart-register-app/portal-01-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, für den Sie eine Anwendung registrieren möchten.
+1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
+1. Wählen Sie unter **Verwalten** die Option **App-Registrierungen** und dann **Neue Registrierung** aus.
+1. Geben Sie einen **Namen** für Ihre Anwendung ein. Benutzern Ihrer App wird wahrscheinlich dieser Namen angezeigt. Sie können ihn später ändern.
+1. Geben Sie an, wer die Anwendung verwenden kann (wird manchmal auch als *Zielgruppe für die Anmeldung* bezeichnet).
 
     | Unterstützte Kontotypen | BESCHREIBUNG |
     |-------------------------|-------------|
-    | **Nur Konten in diesem Organisationsverzeichnis** | Wählen Sie diese Option aus, wenn Sie eine Branchenanwendung erstellen. Falls Sie die Anwendung nicht in einem Verzeichnis registrieren, ist diese Option nicht verfügbar.<br><br>Diese Option ist für reine Azure AD-Apps mit einem einzelnen Mandanten vorgesehen.<br><br>Sofern Sie die App nicht außerhalb eines Verzeichnisses registrieren, ist dies die Standardoption. Wird die App außerhalb eines Verzeichnisses registriert, werden standardmäßig mehrinstanzenfähige Azure AD-Konten und persönliche Microsoft-Konten verwendet. |
-    | **Konten in einem beliebigen Organisationsverzeichnis** | Wählen Sie diese Option, wenn Sie alle Kunden aus dem Unternehmens- und Bildungsbereich ansprechen möchten.<br><br>Diese Option ist für reine Azure AD-Apps mit mehreren Mandanten vorgesehen.<br><br>Wenn Sie die App als reine Azure AD-App mit einem einzelnen Mandanten registriert haben, können Sie sie über die Seite **Authentifizierung** in eine Azure AD-App mit mehreren Mandanten umwandeln (und umgekehrt). |
-    | **Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten** | Verwenden Sie diese Option, um die breiteste Kundengruppe anzusprechen.<br><br>Diese Option ist für Azure AD-Apps mit mehreren Mandanten und für persönliche Microsoft-Konten vorgesehen.<br><br>Falls Sie die App als Azure AD-App mit mehreren Mandanten und für persönliche Microsoft-Konten registriert haben, können Sie diese Einstellung nicht über die Benutzeroberfläche ändern. In diesem Fall müssen die unterstützten Kontotypen mithilfe des Anwendungsmanifest-Editors geändert werden. |
+    | **Nur Konten in diesem Organisationsverzeichnis** | Wählen Sie diese Option aus, wenn Sie eine Anwendung nur für Benutzer (oder Gäste) in *Ihrem* Mandanten erstellen.<br><br>Bei dieser Anwendung, die häufig auch als *branchenspezifische Anwendung* bezeichnet wird, handelt es sich um eine **Einzelmandantenanwendung** in Microsoft Identity Platform. |
+    | **Konten in einem beliebigen Organisationsverzeichnis** | Wählen Sie diese Option aus, wenn Sie möchten, dass Benutzer in *einem beliebigen* Azure AD-Mandanten Ihre Anwendung verwenden können. Diese Option eignet sich beispielsweise beim Erstellen von SaaS-Anwendungen (Software-as-a-Service), die Sie für mehrere Organisationen bereitstellen möchten.<br><br>Diese Anwendung wird in Microsoft Identity Platform als **mehrinstanzenfähige Anwendung** bezeichnet. |
+    | **Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten** | Verwenden Sie diese Option, um die breiteste Kundengruppe anzusprechen.<br><br>Durch Auswahl dieser Option registrieren Sie eine **mehrinstanzenfähige** Anwendung, die auch Benutzer mit **persönlichen Microsoft-Konten** unterstützen kann. |
+    | **Persönliche Microsoft-Konten** | Wählen Sie diese Option aus, wenn Sie eine Anwendung nur für Benutzer mit persönlichen Microsoft-Konten erstellen. Zu persönlichen Microsoft-Konten zählen Skype-, Xbox-, Live- und Hotmail-Konten. |
 
-1. Wählen Sie unter **Umleitungs-URI (optional)** die Art der App aus, die Sie erstellen: **Web** oder **Öffentlicher Client/nativ (mobil und Desktop)** . Geben Sie anschließend den Umleitungs-URI oder die Antwort-URL für Ihre Anwendung ein.
+1. Geben Sie unter **Umleitungs-URI (optional)** nichts ein. Im nächsten Abschnitt werden Sie einen Umleitungs-URI konfigurieren.
+1. Wählen Sie **Registrieren** aus, um die anfängliche App-Registrierung abzuschließen.
 
-    * Geben Sie für Webanwendungen die Basis-URL Ihrer App an. `https://localhost:31544` kann beispielsweise die URL für eine Web-App sein, die auf einem lokalen Computer ausgeführt wird. Benutzer können diese URL nutzen, um sich an einer Webclientanwendung anzumelden.
-    * Geben Sie für öffentliche Clientanwendungen den URI an, der von Azure AD zum Zurückgeben von Tokenantworten verwendet wird. Geben Sie einen für Ihre Anwendung spezifischen Wert ein (beispielsweise `myapp://auth`).
+    :::image type="content" source="media/quickstart-register-app/portal-02-app-reg-01.png" alt-text="Screenshot des Azure-Portals in einem Webbrowser mit dem Bereich „Anwendung registrieren“.":::
 
-    Beispiele für Webanwendungen oder native Anwendungen finden Sie in den Schnellstartanleitungen unter [Microsoft Identity Platform](./index.yml).
+Wenn die Registrierung abgeschlossen ist, wird im Azure-Portal für die App-Registrierung der Bereich **Übersicht** angezeigt, der die **Anwendungs-ID (Client)** enthält. Dieser Wert, der auch einfach als *Client-ID* bezeichnet wird, sorgt für eine eindeutige Identifizierung Ihrer Anwendung in Microsoft Identity Platform.
 
-1. Wenn Sie so weit sind, klicken Sie auf **Registrieren**.
+Die Client-ID wird auch vom Code Ihrer Anwendung (oder üblicherweise von einer in Ihrer Anwendung verwendeten Authentifizierungsbibliothek) als ein Kriterium bei der Überprüfung der von Microsoft Identity Platform empfangenen Sicherheitstoken verwendet.
 
-    ![Bildschirm zum Registrieren einer neuen Anwendung im Azure-Portal](./media/quickstart-add-azure-ad-app-preview/new-app-registration.png)
+:::image type="content" source="media/quickstart-register-app/portal-03-app-reg-02.png" alt-text="Screenshot des Azure-Portals in einem Webbrowser mit dem Bereich „Übersicht“ einer App-Registrierung.":::
 
-Azure AD weist Ihrer App eine eindeutige Anwendungs-ID (oder Client-ID) zu. Im Portal wird die Seite **Übersicht** für Ihre Anwendung geöffnet. Wenn Sie Ihrer Anwendung Funktionen hinzufügen möchten, können Sie weitere Konfigurationsoptionen wie Branding, Zertifikate und Geheimnisse, API-Berechtigungen und Ähnliches auswählen.
+## <a name="add-a-redirect-uri"></a>Hinzufügen eines Umleitungs-URI
 
-![Beispiel der Übersichtsseite einer neu registrierten App](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png)
+Ein Umleitungs-URI ist die Adresse, an die Microsoft Identity Platform den Client eines Benutzers umleitet und nach der Authentifizierung die Sicherheitstoken sendet.
+
+In einer Webanwendung für die Produktion beispielsweise ist der Umleitungs-URI häufig ein öffentlicher Endpunkt (z. B. `https://contoso.com/auth-response`), auf dem Ihre App ausgeführt wird. Bei der Entwicklung wird häufig auch der Endpunkt hinzugefügt, auf dem Sie Ihre App lokal ausführen, z. B. `https://127.0.0.1/auth-response`.
+
+Durch Konfigurieren Ihrer [Plattformeinstellungen](#configure-platform-settings) können Sie Umleitungs-URIs für Ihre registrierten Anwendungen hinzufügen und ändern.
+
+### <a name="configure-platform-settings"></a>Konfigurieren von Plattformeinstellungen
+
+Die Einstellungen für jeden Anwendungstyp (einschließlich Umleitungs-URIs) werden unter **Plattformkonfigurationen** im Azure-Portal konfiguriert. Bei einigen Plattformen (z. B. **Web**- und **Single-Page-Webanwendungen**) müssen Sie manuell einen Umleitungs-URI angeben. Bei anderen Plattformen (z. B. mobile Anwendungen und Desktopanwendungen) stehen Umleitungs-URIs zur Auswahl, die beim Konfigurieren anderer Einstellungen für Sie generiert wurden.
+
+So konfigurieren Sie Anwendungseinstellungen auf Basis der Zielplattform oder des Zielgeräts
+
+1. Wählen Sie im Azure-Portal unter **App-Registrierungen** Ihre Anwendung aus.
+1. Wählen Sie unter **Verwalten** die Option **Authentifizierung** aus.
+1. Wählen Sie unter **Plattformkonfigurationen** die Option **Plattform hinzufügen** aus.
+1. Wählen Sie unter **Plattformen konfigurieren** die Kachel für Ihren Anwendungstyp (Plattform) aus, um die Einstellungen zu konfigurieren.
+
+    :::image type="content" source="media/quickstart-register-app/portal-04-app-reg-03-platform-config.png" alt-text="Screenshot des Plattformkonfigurationsbereichs im Azure-Portal" border="false":::
+
+    | Plattform | Konfigurationseinstellungen |
+    | -------- | ---------------------- |
+    | **Web** | Geben Sie einen **Umleitungs-URI** für Ihre App ein. Dabei handelt es sich um die Adresse, an die Microsoft Identity Platform den Client eines Benutzers umleitet und nach der Authentifizierung die Sicherheitstoken sendet.<br/><br/>Wählen Sie diese Plattform für Standardwebanwendungen aus, die auf einem Server ausgeführt werden. |
+    | **Einzelseitenanwendung** | Geben Sie einen **Umleitungs-URI** für Ihre App ein. Dabei handelt es sich um die Adresse, an die Microsoft Identity Platform den Client eines Benutzers umleitet und nach der Authentifizierung die Sicherheitstoken sendet.<br/><br/>Wählen Sie diese Plattform aus, wenn Sie eine clientseitige Web-App in JavaScript oder mit einem Framework wie Angular, Vue.js, React.js oder Blazor WebAssembly erstellen. |
+    | **iOS/macOS** | Geben Sie die **Bundle-ID** der App ein, die sich in XCode in der Datei *Info.plist* oder in den Buildeinstellungen befindet.<br/><br/>Bei der Angabe einer Bundle-ID wird ein Umleitungs-URI für Sie generiert. |
+    | **Android** | Geben Sie den **Paketnamen** der App ein, der sich in der Datei *AndroidManifest.xml* befindet. Generieren Sie den **Signaturhash**, und geben Sie ihn ein.<br/><br/>Bei der Angabe dieser Einstellungen wird ein Umleitungs-URI für Sie generiert. |
+    | **Mobile Anwendungen und Desktopanwendungen** | Wählen Sie einen der **vorgeschlagenen Umleitungs-URIs** aus, oder geben Sie einen **benutzerdefinierten Umleitungs-URI an**.<br/>Für Desktopanwendungen empfehlen wir Folgendes:<br/>`https://login.microsoftonline.com/common/oauth2/nativeclient`<br/><br/>Wählen Sie diese Plattform für mobile Anwendungen aus, die weder die aktuelle Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL) noch einen Broker verwenden. Wählen Sie diese Plattform auch für Desktopanwendungen aus. |
+1. Wählen Sie **Konfigurieren** aus, um die Plattformkonfiguration abzuschließen.
+
+### <a name="redirect-uri-restrictions"></a>Einschränkungen bei Umleitungs-URIs
+
+Beim Format der Umleitungs-URIs, die Sie einer App-Registrierung hinzufügen, gibt es bestimmte Einschränkungen. Einzelheiten zu diesen Einschränkungen finden Sie unter [Einschränkungen für Umleitungs-URI/Antwort-URL](reply-url.md).
+
+## <a name="add-credentials"></a>Hinzufügen von Anmeldeinformationen
+
+Anmeldeinformationen werden von vertraulichen Clientanwendungen verwendet, die auf eine Web-API zugreifen. Beispiele für vertrauliche Clients sind Web-Apps, andere Web-APIs oder Daemon- oder Dienstanwendungen. Mit den Anmeldeinformationen kann sich Ihre Anwendung selbst authentifizieren und benötigt zur Laufzeit keine Interaktion durch einen Benutzer.
+
+Sie können Ihrer vertraulichen Client-App-Registrierung sowohl Zertifikate als auch geheime Clientschlüssel (Zeichenfolge) als Anmeldeinformationen hinzufügen.
+
+:::image type="content" source="media/quickstart-register-app/portal-05-app-reg-04-credentials.png" alt-text="Screenshot des Azure-Portals mit dem Bereich „Zertifikate und Geheimnisse“ einer App-Registrierung":::
+
+### <a name="add-a-certificate"></a>Hinzufügen eines Zertifikats
+
+Zertifikate (manchmal auch als *öffentlicher Schlüssel* bezeichnet) werden als Anmeldeinformationstyp empfohlen, da sie eine höhere Sicherheitsstufe als ein geheimer Clientschlüssel bieten.
+
+1. Wählen Sie im Azure-Portal unter **App-Registrierungen** Ihre Anwendung aus.
+1. Wählen Sie **Zertifikate & Geheimnisse** > **Zertifikat hochladen** aus.
+1. Wählen Sie die Datei aus, die Sie hochladen möchten. Die Datei muss einen der folgenden Dateitypen aufweisen: CER, PEM, CRT.
+1. Wählen Sie **Hinzufügen**.
+
+### <a name="add-a-client-secret"></a>Geheimen Clientschlüssel hinzufügen
+
+Der geheime Clientschlüssel (auch als *Anwendungskennwort* bezeichnet) ist ein Zeichenfolgenwert, der anstelle eines Zertifikats von Ihrer App für die Identifizierung verwendet werden kann. Dieser Anmeldeinformationstyp ist der einfacher zu verwendende Typ, der häufig bei der Entwicklung eingesetzt, aber als unsicherer als ein Zertifikat betrachtet wird. Für Ihre Anwendungen, die in der Produktion eingesetzt werden, sollten Sie Zertifikate verwenden.
+
+1. Wählen Sie im Azure-Portal unter **App-Registrierungen** Ihre Anwendung aus.
+1. Wählen Sie **Zertifikate und Geheimnisse** >  **Neuer geheimer Clientschlüssel** aus.
+1. Fügen Sie eine Beschreibung für Ihren geheimen Clientschlüssel hinzu.
+1. Wählen Sie eine Dauer aus.
+1. Wählen Sie **Hinzufügen**.
+1. **Notieren Sie den Wert des geheimen Schlüssels**, der in Ihrem Clientanwendungscode verwendet werden soll. Er wird *nie wieder angezeigt*, nachdem Sie diese Seite verlassen haben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zum Zugreifen auf Web-APIs finden Sie unter [Schnellstart: Konfigurieren einer Clientanwendung für den Zugriff auf Web-APIs](quickstart-configure-app-access-web-apis.md)
+Clientanwendungen müssen in der Regel auf Ressourcen in einer Web-API zugreifen. Neben dem Schutz Ihrer Clientanwendung mit Microsoft Identity Platform können Sie die Plattform zum Autorisieren eines bereichsbezogenen, berechtigungsbasierten Zugriffs auf Ihre Web-API verwenden.
 
-* Informationen zu den Berechtigungen finden Sie unter [Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt](v2-permissions-and-consent.md).
+Fahren Sie mit dem nächsten Schnellstart in der Serie fort, erstellen Sie eine weitere App-Registrierung für Ihre Web-API, und machen Sie deren Bereiche verfügbar.
 
-* Informationen zum Verfügbarmachen von Web-APIs finden Sie unter [Schnellstart: Konfigurieren einer Anwendung für das Verfügbarmachen von Web-APIs](quickstart-configure-app-expose-web-apis.md).
-
-* Informationen zum Verwalten unterstützter Konten finden Sie unter [Schnellstart: Ändern der von einer Anwendung unterstützten Konten](quickstart-modify-supported-accounts.md).
-
-* Informationen zum Erstellen einer App und zum Hinzufügen von Funktionen finden Sie in den Schnellstartanleitungen unter [Microsoft Identity Platform](./index.yml).
-
-* Um mehr über die beiden Azure AD-Objekte, die eine registrierte Anwendung darstellen, und die Beziehung zwischen ihnen zu erfahren, lesen Sie [Anwendungsobjekte und Dienstprinzipalobjekte](app-objects-and-service-principals.md).
-
-* Weitere Informationen zu Brandingrichtlinien für die App-Entwicklung finden Sie unter [Brandingrichtlinien für Anwendungen](howto-add-branding-in-azure-ad-apps.md).
+> [!div class="nextstepaction"]
+> [Konfigurieren einer Anwendung für das Verfügbarmachen einer Web-API](quickstart-configure-app-expose-web-apis.md)

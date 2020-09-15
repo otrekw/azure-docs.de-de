@@ -12,16 +12,16 @@ ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: b8eec0d95144c012d3034e3f2c7c6e8adc921651
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6cc4fdb82e98c30ca33eec58675f2175dfcc2607
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510173"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612785"
 ---
 # <a name="tutorial---configure-the-rolling-deployment-strategy-for-azure-linux-virtual-machines"></a>Tutorial: Konfigurieren der Strategie für parallele Bereitstellungen für virtuelle Linux-Computer in Azure
 
-Azure DevOps ist ein integrierter Azure-Dienst, bei dem alle Teile des DevOps-Prozesses für alle Azure-Ressourcen automatisiert werden. Unabhängig davon, ob für Ihre App virtuelle Computer, Web-Apps, Kubernetes oder andere Ressourcen genutzt werden, gilt Folgendes: Sie können Infrastructure-as-a-Code (IaaC), Continuous Integration, fortlaufende Tests, Continuous Delivery und fortlaufende Überwachung mit Azure und Azure DevOps implementieren.
+Azure DevOps ist ein integrierter Azure-Dienst, bei dem alle Teile des DevOps-Prozesses für alle Azure-Ressourcen automatisiert werden. Unabhängig davon, ob für Ihre App virtuelle Computer, Web-Apps, Kubernetes oder andere Ressourcen genutzt werden, gilt Folgendes: Sie können Infrastructure-as-Code (IaC), Continuous Integration, fortlaufende Tests, Continuous Delivery und fortlaufende Überwachung mit Azure und Azure DevOps implementieren.
 
 ![Azure-Portal mit ausgewählter Option „Azure DevOps“ unter „Dienste“](media/tutorial-devops-azure-pipelines-classic/azdevops-view.png)
 

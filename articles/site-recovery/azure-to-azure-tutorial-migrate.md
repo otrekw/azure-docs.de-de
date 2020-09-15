@@ -2,18 +2,18 @@
 title: Verschieben von Azure-IaaS-VMs in eine andere Region mit Azure Site Recovery
 description: Verwenden Sie Azure Site Recovery, um virtuelle Azure IaaS-Computer von einer Azure-Region zu einer anderen zu migrieren.
 services: site-recovery
-author: rajani-janaki-ram
+author: Sharmistha-Rai
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 01/28/2019
-ms.author: rajanaki
+ms.author: sharrai
 ms.custom: MVC
-ms.openlocfilehash: 3cbf3eda97bd1ba6b71c4bc7910e942e39224e30
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e8f14b86678f7d395f445438d7e869168b13e54b
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076110"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425924"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Verschieben virtueller Azure-Computer in eine andere Region
 
@@ -88,7 +88,7 @@ Die folgenden Schritte zeigen, wie Sie den virtuellen Computer mithilfe von Azur
 1. Geben Sie in **Name** den Anzeigenamen **ContosoVMVault** ein. Wenn Sie mehrere Abonnements haben, wählen Sie das gewünschte aus.
 1. Erstellen Sie die Ressourcengruppe **ContosoRG**.
 1. Geben Sie eine Azure-Region an. Eine Liste der unterstützten Regionen finden Sie in den Informationen zur geografischen Verfügbarkeit unter [Azure Site Recovery – Preise](https://azure.microsoft.com/pricing/details/site-recovery/).
-1. Wählen Sie unter **Recovery Services-Tresore** die Optionen **Übersicht** > **ContosoVMVault** >  **+ Replizieren** aus.
+1. Wählen Sie unter **Recovery Services-Tresore** die Optionen **Übersicht** > **ContosoVMVault** > **Replizierte Elemente** >  **+Replizieren** aus.
 1. Wählen Sie unter **Quelle** die Option **Azure**.
 1. Wählen Sie unter **Quellstandort** die Azure-Quellregion aus, in der Ihre VMs derzeit ausgeführt werden.
 1. Wählen Sie das Ressourcen-Manager-Bereitstellungsmodell. Wählen Sie dann das **Quellabonnement** und die **Quellressourcengruppe** aus.

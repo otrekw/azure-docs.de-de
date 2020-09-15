@@ -3,12 +3,12 @@ title: 'Fortlaufende Videoaufzeichnung in der Cloud und Wiedergabe aus der Cloud
 description: In diesem Tutorial erfahren Sie, wie Sie Azure Live Video Analytics in Azure IoT Edge für die fortlaufende Videoaufzeichnung in der Cloud verwenden und einen beliebigen Teil dieses Videos mit Azure Media Services streamen.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 60b93aac3a0da4bbc49f83c5cbd43191693cae50
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c94f87068d003fc260d861cb99c60326d4a53258
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043484"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566794"
 ---
 # <a name="tutorial-continuous-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Tutorial: Fortlaufende Videoaufzeichnung in der Cloud und Wiedergabe aus der Cloud
 
@@ -61,7 +61,8 @@ Wie im Artikel zum [Mediengraph-Konzept](media-graph-concept.md) erläutert, kö
  
  Für eine fortlaufende Videoaufzeichnung muss das Video mit einer RTSP-fähigen Kamera fortlaufend in einem [Azure Media Services-Medienobjekt](terminology.md#asset) aufgezeichnet werden. Dieses Diagramm ist eine grafische Darstellung dieses Mediengraphs.
 
-![Mediendiagramm](./media/continuous-video-recording-tutorial/continuous-video-recording-overview.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/continuous-video-recording-tutorial/continuous-video-recording-overview.svg" alt-text="Mediendiagramm":::
 
 In diesem Tutorial wird ein mithilfe des [Live555-Medienservers](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) erstelltes Edge-Modul verwendet, um eine RTSP-Kamera zu simulieren. Innerhalb des Mediengraphs wird ein Knoten vom Typ [RTSP-Quelle](media-graph-concept.md#rtsp-source) verwendet, um den Livefeed abzurufen, und das Video wird an einen Knoten vom Typ [ Medienobjektsenke](media-graph-concept.md#asset-sink) gesendet, um es in einem Medienobjekt aufzuzeichnen.
 
@@ -352,7 +353,7 @@ Sie können das durch den Mediengraph erstellte Media Services-Medienobjekt unt
 1. Suchen Sie Ihr Media Services-Konto unter den Ressourcen in Ihrem Abonnement, und öffnen Sie den Kontobereich.
 1. Wählen Sie in der **Media Services**-Liste **Medienobjekte** aus.
 
-    ![Objekte](./media/continuous-video-recording-tutorial/assets.png)
+    ![Media Services-Medienobjekte](./media/continuous-video-recording-tutorial/assets.png)
 1. Sie finden ein Medienobjekt mit dem Namen „sampleAsset-CVRToAMSAsset-Sample-Graph-1“ aufgeführt. Dies ist das Benennungsmuster, das in ihrer Graphtopologiedatei gewählt wurde.
 1. Wählen Sie das Medienobjekt aus.
 1. Klicken Sie auf der Detailseite des Medienobjekts unter dem Textfeld **Streaming-URL** auf **Neu erstellen**.

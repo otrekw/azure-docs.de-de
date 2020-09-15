@@ -2,16 +2,16 @@
 title: 'Tutorial: Exportieren einer Vorlage aus dem Azure-Portal'
 description: Erfahren Sie, wie Sie eine exportierte Vorlage verwenden, um die Vorlagenentwicklung abzuschließen.
 author: mumian
-ms.date: 03/27/2020
+ms.date: 09/09/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4042ed29b143ab160883ca46ecb1cc17d2e0c761
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7aaeb7af3876c2603208faaf46bead01199906cd
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497153"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650063"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Tutorial: Verwenden einer exportieren Vorlage aus dem Azure-Portal
 
@@ -62,7 +62,7 @@ Diese Vorlage eignet sich gut für die Bereitstellung von Speicherkonten, Sie so
 
    Die Funktion zum Exportieren von Vorlagen erfasst den aktuellen Zustand einer Ressource und generiert eine Vorlage für deren Bereitstellung. Das Exportieren einer Vorlage kann hilfreich sein, um schnell den JSON-Code zu erhalten, den Sie benötigen, um eine Ressource bereitzustellen.
 
-1. Kopieren Sie die Definition **Microsoft.Web/serverfarms** und die Parameterdefinition in Ihre Vorlage.
+1. Sehen Sie sich die Definition **Microsoft.Web/serverfarms** und die Parameterdefinition in der exportierten Vorlage an. Diese Abschnitte müssen nicht kopiert werden. Sie können diese exportierte Vorlage einfach als Beispiel dafür verwenden, wie Sie diese Ressource Ihrer Vorlage hinzufügen möchten.
 
     ![Exportieren einer Resource Manager-Vorlage aus dem Portal: exportierte Vorlage](./media/template-tutorial-export-template/resource-manager-template-exported-template.png)
 
@@ -73,7 +73,7 @@ Diese Vorlage eignet sich gut für die Bereitstellung von Speicherkonten, Sie so
 
 Mit der exportierten Vorlage erhalten Sie den größten Teil des benötigten JSON-Code, müssen ihn aber für Ihre Vorlage anpassen. Achten Sie besonders auf Unterschiede in den Parametern und Variablen zwischen Ihrer Vorlage und der exportierten Vorlage. Der Exportprozess kennt natürlich nicht die Parameter und Variablen, die Sie bereits in ihrer Vorlage definiert haben.
 
-Im folgenden Beispiel sind Ihre Ergänzungen der Vorlage hervorgehoben. Sie enthält den exportierten Code sowie einige Änderungen. Zuerst wird der Name des Parameters entsprechend ihrer Namenskonvention geändert. Zweitens wird der location-Parameter für den Standort des App Service-Plans verwendet. Drittens wird der **Name** innerhalb des Objekts **properties**, entfernt, da dieser Wert mit der **name**-Eigenschaft auf Ressourcenebene redundant ist.
+Im folgenden Beispiel sind Ihre Ergänzungen der Vorlage hervorgehoben. Sie enthält den exportierten Code sowie einige Änderungen. Zuerst wird der Name des Parameters entsprechend ihrer Namenskonvention geändert. Zweitens wird der location-Parameter für den Standort des App Service-Plans verwendet. Drittens werden einige der Eigenschaften entfernt, bei denen der Standardwert in Ordnung ist.
 
 Kopieren Sie die gesamte Datei, und ersetzen Sie Ihre Vorlage durch den Inhalt der Datei.
 

@@ -18,12 +18,32 @@
           href: common-questions-server-migration.md
 - name: Tutorials
   items:
-    - name: Bewerten und Migrieren von virtuellen VMware-Computern
+    - name: Entdecken
       items:
-        - name: Vorbereiten von VMware auf die Bewertung und Migration
-          href: tutorial-prepare-vmware.md
-        - name: Bewerten von virtuellen VMware-Computern für die Migration
-          href: tutorial-assess-vmware.md
+        - name: Ermitteln von virtuellen VMware-Computern
+          href: tutorial-discover-vmware.md
+        - name: Ermitteln von virtuellen Hyper-V-Computern
+          href: tutorial-discover-hyper-v.md
+        - name: Ermitteln von physischen Servern
+          href: tutorial-discover-physical.md
+        - name: Ermitteln von AWS-Instanzen
+          href: tutorial-discover-aws.md
+        - name: Ermitteln importierter Server
+          href: tutorial-discover-import.md
+    - name: Bewerten
+      items:
+        - name: Bewerten von virtuellen VMware-Computern für die Migration zu virtuellen Azure-Computern
+          href: tutorial-assess-vmware-azure-vm.md
+        - name: Bewerten von virtuellen VMware-Computern für die Migration zu AVS
+          href: tutorial-assess-vmware-azure-vmware-solution.md
+        - name: Bewerten von virtuellen Hyper-V-Computern für die Migration zu Azure
+          href: tutorial-assess-hyper-v.md
+        - name: Bewerten von physischen Servern für die Migration zu Azure
+          href: tutorial-assess-physical.md
+        - name: Bewerten von AWS-Instanzen für die Migration zu Azure
+          href: tutorial-assess-aws.md
+    - name: Migrate
+      items:
         - name: Migrieren von virtuellen VMware-Computern
           items:
             - name: Informationen zu Migrationsoptionen für virtuelle VMware-Computer
@@ -32,30 +52,12 @@
               href: tutorial-migrate-vmware.md
             - name: Migrieren von virtuellen VMware-Computern mit Agent-basierter Migration
               href: tutorial-migrate-vmware-agent.md
-    - name: Bewerten und Migrieren von virtuellen Hyper-V-Computern
-      items:
-        - name: Vorbereiten von Hyper-V auf die Bewertung und Migration
-          href: tutorial-prepare-hyper-v.md
-        - name: Bewerten von virtuellen Hyper-V-Computern für die Migration
-          href: tutorial-assess-hyper-v.md
         - name: Migrieren von virtuellen Hyper-V-Computern
           href: tutorial-migrate-hyper-v.md
-    - name: Bewerten und Migrieren physischer Server
-      items:
-        - name: Vorbereiten der Bewertung und Migration physischer Server
-          href: tutorial-prepare-physical.md
-        - name: Bewerten physischer Server
-          href: tutorial-assess-physical.md
         - name: Migrieren physischer Server
           href: tutorial-migrate-physical-virtual-machines.md
-    - name: Bewerten und Migrieren von virtuellen AWS-Computern
-      items:
-        - name: 'Ermitteln, Bewerten und Migrieren von virtuellen AWS-Computern (Amazon Web Services) zu Azure'
+        - name: Migrieren von AWS-Instanzen
           href: tutorial-migrate-aws-virtual-machines.md
-    - name: Bewerten importierter Server für die Migration
-      items:
-        - name: Bewerten importierter Server für die Migration
-          href: tutorial-assess-import.md
 - name: Konzepte
   items:
     - name: Erstellen eines Migrationsplans mit Azure Migrate

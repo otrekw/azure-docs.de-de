@@ -4,29 +4,29 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 11/03/2016
 ms.author: cephalin
-ms.openlocfilehash: 66d3397fae24ee2546dae4eb5d7c9d188f9ede99
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2f490a5b12484a91e963d068810b292d7761521a
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78944110"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484295"
 ---
 > [!NOTE]
 > Mithilfe von Azure DNS können Sie einen benutzerdefinierten DNS-Namen für Azure App Service erstellen. Weitere Informationen finden Sie unter [Bereitstellen von benutzerdefinierten Domäneneinstellungen für einen Azure-Dienst mit Azure DNS](../articles/dns/dns-custom-domain.md#app-service-web-apps).
 >
 >
 
-Melden Sie sich bei der Website Ihres Domänenanbieters an.
+1. Melden Sie sich bei der Website Ihres Domänenanbieters an.
 
-Suchen Sie die Seite für die Verwaltung von DNS-Einträgen. Da jeder Domänenanbieter eine eigene Benutzeroberfläche für DNS-Einträge hat, finden Sie Informationen dazu jeweils in der Dokumentation des Anbieters. Suchen Sie nach Bereichen der Website, die mit **Domänenname**, **DNS** oder **Namenserververwaltung** gekennzeichnet sind. 
+1. Suchen Sie die Seite für die Verwaltung von DNS-Einträgen. Da jeder Domänenanbieter eine eigene Benutzeroberfläche für DNS-Einträge hat, finden Sie Informationen dazu jeweils in der Dokumentation des Anbieters. Suchen Sie nach Bereichen der Website, die mit **Domänenname**, **DNS** oder **Namenserververwaltung** gekennzeichnet sind.
 
-Die Seite für DNS-Einträge erreichen Sie häufig in Ihren Kontoinformationen über einen Link wie **Eigene Domänen**. Navigieren Sie auf diese Seite, und suchen Sie nach einem Link, der beispielsweise den Namen **Zonendatei**, **DNS-Einträge** oder **Erweiterte Konfiguration** hat.
+   Die Seite für DNS-Einträge erreichen Sie häufig in Ihren Kontoinformationen über einen Link wie **Eigene Domänen**. Navigieren Sie zu dieser Seite, und suchen Sie nach einem Link, der beispielsweise den Namen **Zonendatei**, **DNS-Einträge** oder **Erweiterte Konfiguration** hat.
 
-Der folgende Screenshot zeigt ein Beispiel für eine Seite mit DNS-Einträgen:
+   Der folgende Screenshot zeigt ein Beispiel für eine Seite mit DNS-Einträgen:
 
-![Beispielseite mit DNS-Einträgen](./media/app-service-web-access-dns-records-no-h/example-record-ui.png)
+   ![Screenshot: Beispiel für eine Seite mit DNS-Einträgen](./media/app-service-web-access-dns-records-no-h/example-record-ui.png)
 
-Im Beispielscreenshot würden Sie die Option **Add** (Hinzufügen) wählen, um einen Eintrag zu erstellen. Einige Anbieter verfügen über unterschiedliche Links, um unterschiedliche Arten von Einträgen hinzuzufügen. Informationen hierzu finden Sie ebenfalls in der Dokumentation des Anbieters.
+1. Auf dem Beispielscreenshot wählen Sie die Option **Add** (Hinzufügen) aus, um einen Eintrag zu erstellen. Einige Anbieter verfügen über unterschiedliche Links, um unterschiedliche Arten von Einträgen hinzuzufügen. Informationen hierzu finden Sie ebenfalls in der Dokumentation des Anbieters.
 
 > [!NOTE]
-> Bei einigen Anbietern wie GoDaddy werden Änderungen an DNS-Einträgen erst wirksam, wenn Sie einen gesonderten Link **Änderungen speichern** wählen. 
+> Bei einigen Anbietern wie GoDaddy werden Änderungen an DNS-Einträgen erst wirksam, wenn Sie einen gesonderten Link **Änderungen speichern** wählen.

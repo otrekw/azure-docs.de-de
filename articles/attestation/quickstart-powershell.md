@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 70e86e01a9d37a27620d451bcd5d035dfcb4573d
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 538aa29ab66fce48da944dbdf9ea79d5c8f7f330
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89236980"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421287"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-powershell"></a>Schnellstart: Einrichten von Azure Attestation mithilfe von Azure PowerShell
 
@@ -20,7 +20,7 @@ Führen Sie die folgenden Schritte aus, um einen Nachweisanbieter mithilfe von A
 
 Beachten Sie, dass im PowerShell-Katalog die TLS-Versionen (Transport Layer Security) 1.0 und 1.1 als veraltet markiert sind. Empfohlen wird TLS 1.2 oder eine höhere Version. Daher werden unter Umständen die folgenden Fehler angezeigt:
 
-- WARNUNG: Unable to resolve package source „https://www.powershellgallery.com/api/v2“ (Die Paketquelle „https://www.powershellgallery.com/api/v2“ kann nicht aufgelöst werden.)
+- WARNUNG: Unable to resolve package source "https://www.powershellgallery.com/api/v2" (Die Paketquelle "https://www.powershellgallery.com/api/v2" kann nicht aufgelöst werden.)
 - PackageManagement\Install-Package: No match was found for the specified search criteria and module name (Für die angegebenen Suchkriterien und den angegebenen Modulnamen wurde keine Übereinstimmung gefunden.) 
 
 Führen Sie den folgenden Befehl vor den Befehlen vom Typ „Install-Module“ aus, um weiterhin mit dem PowerShell-Katalog zu interagieren.
@@ -159,26 +159,27 @@ TagsTable:
 
 Nachweisanbieter können mithilfe des Cmdlets „Remove-AzAttestation“ gelöscht werden.  
 
-``azurepowershell Remove-AzAttestation -Name $attestationProvider -ResourceGroupName $attestationResourceGroup
+```powershell
+Remove-AzAttestation -Name $attestationProvider -ResourceGroupName $attestationResourceGroup
 ```
 
-## Policy management
+## <a name="policy-management"></a>Richtlinienverwaltung
 
-In order to manage policies, an Azure AD user requires the following permissions for "Actions":
+Für die Verwaltung von Richtlinien benötigt ein Azure AD-Benutzer die folgenden Berechtigungen für „Aktionen“:
 - Microsoft.Attestation/attestationProviders/attestation/read
 - Microsoft.Attestation/attestationProviders/attestation/write
 - Microsoft.Attestation/attestationProviders/attestation/delete
 
-These permissions can be assigned to an AD user through a role such as "Owner" (wildcard permissions), "Contributor" (wildcard permissions) or "Attestation Contributor" (specific permissions for Azure Attestation only).  
+Diese Berechtigungen können einem AD-Benutzer über eine Rolle wie „Besitzer“ (Platzhalterberechtigungen), „Mitwirkender“ (Platzhalterberechtigungen) oder „Mitwirkender an Nachweis“ (spezifische Berechtigungen nur für Azure Attestation) zugewiesen werden.  
 
-In order to read policies, an Azure AD user requires the following permission for "Actions":
+Für das Lesen von Richtlinien benötigt ein Azure AD-Benutzer die folgenden Berechtigungen für „Aktionen“:
 - Microsoft.Attestation/attestationProviders/attestation/read
 
-This permission can be assigned to an AD user through a role such as "Reader" (wildcard permissions) or "Attestation Reader" (specific permissions for Azure Attestation only).
+Diese Berechtigung kann einem AD-Benutzer über eine Rolle wie „Leser“ (Platzhalterberechtigungen) oder „Nachweisleser“ (spezifische Berechtigungen nur für Azure Attestation) zugewiesen werden.
 
-Below PowerShell cmdlets provide policy management for an attestation provider (one TEE at a time).
+Die folgenden PowerShell-Cmdlets ermöglichen die Richtlinienverwaltung für einen Nachweisanbieter (jeweils eine TEE):
 
-Get-AzAttestationPolicy returns the current policy for the specified TEE. The cmdlet displays policy in both text and JWT format of the policy.
+„Get-AzAttestationPolicy“ gibt die aktuelle Richtlinie für die angegebene TEE zurück. Das Cmdlet zeigt die Richtlinie sowohl im Text- als auch im JWT-Format der Richtlinie an.
 
 ```powershell
 $teeType = "<tee Type>"

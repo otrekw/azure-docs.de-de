@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: duau
-ms.openlocfilehash: 71219eea1c7cdeeefbf63e5a5715fb10fcf68682
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 53773d7c616edec067e1ed1778b7ce6b500ee936
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401077"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462614"
 ---
 # <a name="tutorial-configure-the-geographic-traffic-routing-method-using-traffic-manager"></a>Tutorial: Konfigurieren der geografischen Routingmethode für Datenverkehr mithilfe von Traffic Manager
 
@@ -39,8 +39,7 @@ Die geografische Routingmethode für Datenverkehr ermöglicht das Leiten von Dat
 
 1. Suchen Sie auf der Suchleiste des Portals nach dem Namen des erstellten Traffic Manager-Profils, und klicken Sie auf das Ergebnis, wenn es angezeigt wird.
 2. Navigieren Sie in Traffic Manager zu **Einstellungen** -> **Endpunkte**.
-3. Klicken Sie auf **Hinzufügen**, um **Endpunkt hinzufügen** anzuzeigen.
-3. Klicken Sie auf **Hinzufügen**, und füllen Sie **Endpunkt hinzufügen** wie folgt aus:
+3. Klicken Sie auf **Hinzufügen**, und füllen Sie im angezeigten Bereich **Endpunkt hinzufügen** die Werte wie folgt aus:
 4. Wählen Sie je nach dem Typ des hinzugefügten Endpunkts **Typ** aus. Für geografische Routingprofile, die in Produktionsumgebungen verwendet werden, empfehlen wir dringend die Verwendung von geschachtelten Endpunkttypen, die ein untergeordnetes Profil mit mehr als einem Endpunkt enthalten. Weitere Details finden Sie unter [Häufig gestellte Fragen zu geografischen Routingmethoden für Datenverkehr](traffic-manager-FAQs.md).
 5. Geben Sie einen **Namen** an, den Sie zur Bezeichnung des Endpunkts verwenden möchten.
 6. Bestimmte Felder auf dieser Seite sind vom Typ des hinzugefügten Endpunkts abhängig:

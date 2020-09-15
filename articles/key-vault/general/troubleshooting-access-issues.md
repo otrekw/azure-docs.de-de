@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 6884062bc5107ecb1e31fc6826a9d847e4d31e89
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: d77cc4cc65eb73aa85a1d54202627cd18d5747b3
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400431"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595987"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Behandeln von Problemen mit Schlüsseltresor-Zugriffsrichtlinien
 
@@ -25,6 +25,14 @@ Nachdem Sie einen oder mehrere Schlüsseltresore erstellt haben, möchten Sie ve
 ### <a name="how-can-i-monitor-vault-availability-service-latency-periods-or-other-performance-metrics-for-key-vault"></a>Wie kann ich die Tresorverfügbarkeit, Dienstwartezeiten oder andere Leistungsmetriken für einen Schlüsseltresor überwachen?
 
 Wenn Sie damit beginnen, Ihren Dienst zu skalieren, steigt die Anzahl von Anforderungen, die an Ihren Schlüsseltresor gesendet werden. Dies kann die Latenz Ihrer Anforderungen erhöhen und in extremen Fällen zu einer Drosselung Ihrer Anforderungen führen – was sich auf die Leistung Ihres Diensts auswirkt. Sie können Schlüsseltresor-Leistungsmetriken überwachen und Warnungen für bestimmte Schwellenwerte konfigurieren. Eine ausführliche Anleitung zum Konfigurieren der Überwachung finden Sie [hier](https://docs.microsoft.com/azure/key-vault/general/alert).
+
+### <a name="i-am-not-able-to-modify-access-policy-how-can-it-be-enabled"></a>Ich kann die Zugriffsrichtlinie nicht ändern. Wie kann sie aktiviert werden?
+Der Benutzer muss über ausreichende AAD-Berechtigungen verfügen, um die Zugriffsrichtlinie zu ändern. In diesem Fall muss der Benutzer über die höhere Rolle „Mitwirkender“ verfügen.
+
+### <a name="i-am-seeing-unkwown-policy-error-what-does-that-mean"></a>Mir wird der Fehler „Unbekannte Richtlinie“ angezeigt. Was bedeutet das?
+Es gibt zwei verschiedene Gründe dafür, dass im Abschnitt „Unbekannt“ eine Zugriffsrichtlinie angezeigt wird:
+* Es gibt einen Benutzer, der zuvor Zugriff hatte, und aus irgendeinem Grund ist der Benutzer nicht vorhanden.
+* Eine Zugriffsrichtlinie wird über PowerShell, aber für die Anwendungsobjekt-ID und nicht für den Dienstprinzipal hinzugefügt.
 
 ### <a name="how-can-i-assign-access-control-per-key-vault-object"></a>Wie kann ich die Zugriffssteuerung pro Schlüsseltresorobjekt zuweisen? 
 
