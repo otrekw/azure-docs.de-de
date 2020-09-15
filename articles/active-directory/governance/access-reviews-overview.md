@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.subservice: compliance
-ms.date: 08/18/2020
+ms.date: 09/08/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: c69a5e153377eee86eaf0c43d6c982dee2938ddf
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: b454ced085ec3d73f3ca0f761abb6c5de44244ab
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783670"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594338"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Was sind Azure AD-Zugriffsüberprüfungen?
 
@@ -45,7 +45,7 @@ Mit Azure AD können Sie mit internen Benutzern Ihrer Organisation und mit exter
 ## <a name="when-should-you-use-access-reviews"></a>Wann sollten Sie Zugriffsüberprüfungen verwenden?
 
 - **Zu viele Benutzer in privilegierten Rollen:** Sie sollten überprüfen, wie viele Benutzer über Administratorzugriff verfügen, wie viele dieser Benutzer globale Administratoren sind und ob es eingeladene Gäste oder Partner gibt, die nicht entfernt wurden, nachdem ihnen eine administrative Aufgabe zugewiesen wurde. Sie können die Rollenzuweisung für Benutzer in [Azure AD-Rollen](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) wie globale Administratoren oder in [Azure-Ressourcenrollen](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) wie Benutzerzugriffsadministratoren in [Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) erneut bestätigen.
-- **Falls die Automatisierung nicht möglich ist:** Sie können Regeln für dynamische Mitgliedschaften für Sicherheits- oder Office 365-Gruppen erstellen. Was geschieht aber, wenn die Personaldaten nicht in Azure AD gespeichert sind oder die Benutzer nach dem Verlassen der Gruppe weiterhin Zugriff benötigen, um ihre Nachfolger einzuarbeiten? Dann können Sie eine Überprüfung für diese Gruppe erstellen, um sicherzustellen, dass die Benutzer, die weiterhin Zugriff benötigen, auch weiterhin Zugriff haben.
+- **Falls die Automatisierung nicht möglich ist:** Sie können Regeln für dynamische Mitgliedschaften für Sicherheits- oder Microsoft 365-Gruppen erstellen. Was geschieht aber, wenn die Personaldaten nicht in Azure AD gespeichert sind oder die Benutzer nach dem Verlassen der Gruppe weiterhin Zugriff benötigen, um ihre Nachfolger einzuarbeiten? Dann können Sie eine Überprüfung für diese Gruppe erstellen, um sicherzustellen, dass die Benutzer, die weiterhin Zugriff benötigen, auch weiterhin Zugriff haben.
 - **Wenn eine Gruppe zu einem neuen Zweck verwendet wird:** Wenn Sie über eine Gruppe verfügen, die mit Azure AD synchronisiert wird, oder wenn Sie die Salesforce-Anwendung für alle Benutzer in der Gruppe „Vertriebsteam“ aktivieren möchten, wäre es sinnvoll, den Besitzer der Gruppe zu bitten, die Gruppenmitgliedschaft zu überprüfen, bevor die Gruppe in einem anderen Risikokontext verwendet wird.
 - **Zugriff auf unternehmenskritische Daten:** Bei bestimmten Ressourcen kann es zu Überwachungszwecken erforderlich sein, die Mitarbeiter außerhalb der IT-Abteilung zu bitten, sich regelmäßig abzumelden und zu begründen, warum sie Zugriff benötigen.
 - **Zum Verwalten einer Richtlinienausnahmeliste:** Im Idealfall halten sich alle Benutzer an die Zugriffsrichtlinien, um den Zugriff auf die Ressourcen Ihrer Organisation zu schützen. Es kann aber auch Geschäftsszenarien geben, in denen Ausnahmen erforderlich sind. Als IT-Administrator können Sie diese Aufgabe verwalten, das Übersehen von Richtlinienausnahmen vermeiden und Prüfern den Nachweis erbringen, dass diese Ausnahmen regelmäßig überprüft werden.
@@ -94,8 +94,10 @@ Anhand der folgenden Beispielszenarien für Lizenzen können Sie die Anzahl der 
 | Ein Administrator erstellt eine Zugriffsüberprüfung von Gruppe A mit 75 Benutzern und 1 Gruppenbesitzer und weist den Gruppenbesitzer als Reviewer zu. | 1 Lizenz für den Gruppenbesitzer als Reviewer | 1 |
 | Ein Administrator erstellt eine Zugriffsüberprüfung von Gruppe B mit 500 Benutzern und 3 Gruppenbesitzern und weist die 3 Gruppenbesitzer als Reviewer zu. | 3 Lizenzen für jeden Gruppenbesitzer als Reviewer | 3 |
 | Ein Administrator erstellt eine Zugriffsüberprüfung für Gruppe B mit 500 Benutzern. Er legt sie als Selbstüberprüfung fest. | 500 Lizenzen für jeden Benutzer als Selbstprüfer | 500 |
-| Ein Administrator erstellt eine Zugriffsüberprüfung für Gruppe C mit 50 Mitgliedsbenutzern und 25 Gastbenutzern. Er legt sie als Selbstüberprüfung fest. | 50 Lizenzen für jeden Benutzer als Selbstprüfer<br/>(Gastbenutzer sind im erforderlichen Verhältnis von 1:5 abgedeckt.) | 50 |
-| Ein Administrator erstellt eine Zugriffsüberprüfung für Gruppe D mit 6 Mitgliedsbenutzern und 108 Gastbenutzern. Er legt sie als Selbstüberprüfung fest. | 6 Lizenzen für jeden Benutzer als Selbstprüfer + 16 zusätzliche Lizenzen, um alle 108 Gastbenutzer im erforderlichen Verhältnis von 1:5 abzudecken. 6 Lizenzen, die 6 \* 5 = 30 Gastbenutzer abdecken. Für die restlichen (108 - 6 \* 5) = 78 Gastbenutzer sind 78 / 5 = 16 zusätzliche Lizenzen erforderlich. Insgesamt sind also 6 + 16 = 22 Lizenzen erforderlich. | 22 |
+| Ein Administrator erstellt eine Zugriffsüberprüfung für Gruppe C mit 50 Mitgliedsbenutzern und 25 Gastbenutzern. Er legt sie als Selbstüberprüfung fest. | 50 Lizenzen für jeden Benutzer als Selbstprüfer.* | 50 |
+| Ein Administrator erstellt eine Zugriffsüberprüfung für Gruppe D mit 6 Mitgliedsbenutzern und 108 Gastbenutzern. Er legt sie als Selbstüberprüfung fest. | 6 Lizenzen für jeden Benutzer als Selbstprüfer. Für Gastbenutzer erfolgt die Abrechnung basierend auf den monatlich aktiven Benutzern (Monthly Active Users, MAU). Es sind keine zusätzlichen Lizenzen erforderlich. *  | - |
+
+\* Die Preise für Azure AD External Identities (Gastbenutzer) basieren auf den monatlich aktiven Benutzern (Monthly Active Users, MAU). Dies ist die Anzahl eindeutiger Benutzer mit Authentifizierungsaktivität innerhalb eines Kalendermonats. Dieses Modell ersetzt das Abrechnungsmodell im Verhältnis 1:5, das bis zu fünf Gastbenutzer pro Azure AD Premium-Lizenz in Ihrem Mandanten zuließ. Wenn Ihr Mandant mit einem Abonnement verknüpft ist und Sie External Identities-Features für die Zusammenarbeit mit Gastbenutzern verwenden, erfolgt Ihre Abrechnung automatisch nach dem MAU-basierten Abrechnungsmodell. Weitere Informationen finden Sie unter „Abrechnungsmodell für Azure AD External Identities“.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

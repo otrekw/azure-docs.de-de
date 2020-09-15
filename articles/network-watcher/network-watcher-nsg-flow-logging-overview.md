@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: b73727e6bd824b80fbc3897055d71f6b9c632a61
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c0001add9ddbafb67dc7ac305c5fc171a8e24a51
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084363"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070580"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen
 
@@ -294,7 +294,7 @@ Der folgende Text ist ein Beispiel für ein Datenflussprotokoll. Wie Sie sehen k
 ```
 **Erläuterungen zum Protokolltupel**
 
-![Übersicht über Datenflussprotokolle](./media/network-watcher-nsg-flow-logging-overview/tuple.png)
+![Datenflussprotokolltupel](./media/network-watcher-nsg-flow-logging-overview/tuple.png)
 
 **Beispiel für Bandbreitenberechnung**
 
@@ -365,7 +365,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 **Aktivieren für kritische VNETs/Subnetze**: Datenflussprotokolle sollten für alle kritischen VNETs/Subnetze in Ihrem Abonnement als bewährte Methode für Überwachbarkeit und Sicherheit aktiviert werden. 
 
-**Aktivieren der NSG-Datenflussprotokollierung für alle Netzwerksicherheitsgruppen (NSGs), die einer Ressource angefügt sind**: Datenflussprotokollierung in Azure wird für die einzelne NSG-Ressource konfiguriert. Ein Flow wird nur einer einzigen NSG-Regel zugeordnet. In Szenarien, in denen mehrere NSGs verwendet werden, empfehlen wir, die NSG-Datenflussprotokollierung für alle auf das Subnetz oder die Netzwerkschnittstelle einer Ressource angewendeten Netzwerksicherheitsgruppen zu aktivieren, um sicherzustellen, dass der gesamte Datenverkehr aufgezeichnet wird. Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie unter [Auswertung von Datenverkehr](../virtual-network/security-overview.md#how-traffic-is-evaluated).
+**Aktivieren der NSG-Datenflussprotokollierung für alle Netzwerksicherheitsgruppen (NSGs), die einer Ressource angefügt sind**: Datenflussprotokollierung in Azure wird für die einzelne NSG-Ressource konfiguriert. Ein Flow wird nur einer einzigen NSG-Regel zugeordnet. In Szenarien, in denen mehrere NSGs verwendet werden, empfehlen wir, die NSG-Datenflussprotokollierung für alle auf das Subnetz oder die Netzwerkschnittstelle einer Ressource angewendeten Netzwerksicherheitsgruppen zu aktivieren, um sicherzustellen, dass der gesamte Datenverkehr aufgezeichnet wird. Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie unter [Auswertung von Datenverkehr](../virtual-network/network-security-group-how-it-works.md).
 
 **Speicherbereitstellung**: Speicher sollte in Abstimmung mit dem erwarteten Datenflussprotokoll-Volumen bereitgestellt werden.
 

@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 039f7343bcef64db9ad9eae558cd3e97f3678c59
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 1163531fb5a6aa7158bd81ff9095ed1ee29e73c1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799280"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004900"
 ---
 # <a name="business-card-concepts"></a>Konzepte zu Visitenkarten
 
-Bei der Azure-Formularerkennung können Schlüssel-Wert-Paare aus Visitenkarten mithilfe eines der vordefinierten Modelle analysiert und extrahiert werden. Die Visitenkarten-API kombiniert leistungsstarke Funktionen zur optischen Zeichenerkennung (Optical Character Recognition, OCR) mit unserem Modell zur Visitenkartenerfassung, um die wichtigsten Informationen auf Visitenkarten zu extrahieren (in englischer Sprache). Dabei werden persönliche Kontaktinformationen, der Firmenname, die Position und weitere Details extrahiert. Die vordefinierte Visitenkarten-API ist in der Vorschauversion der Formularerkennung (v2.1) öffentlich verfügbar. 
+Mit der Azure-Formularerkennung können Kontaktinformationen aus Visitenkarten mithilfe eines der vordefinierten Modelle analysiert und extrahiert werden. Die Visitenkarten-API kombiniert leistungsstarke Funktionen zur optischen Zeichenerkennung (Optical Character Recognition, OCR) mit unserem Modell zur Visitenkartenerfassung, um die wichtigsten Informationen auf Visitenkarten zu extrahieren (in englischer Sprache). Dabei werden persönliche Kontaktinformationen, der Firmenname, die Position und weitere Details extrahiert. Die vordefinierte Visitenkarten-API ist in der Vorschauversion der Formularerkennung (v2.1) öffentlich verfügbar. 
 
 ## <a name="what-does-the-business-card-api-do"></a>Wozu wird die Visitenkarten-API eingesetzt?
 
@@ -27,10 +27,11 @@ Die Visitenkarten-API extrahiert wichtige Felder von Visitenkarten und gibt dies
 
 ![FOTT- und JSON-Ausgabe mit Contoso-Logo](./media/business-card-english.jpg)
 
-### <a name="fields-extracted"></a>Extrahierte Felder: 
+### <a name="fields-extracted"></a>Extrahierte Felder:
+
 * Kontaktnamen 
-* First Name (Vorname) 
-* Last Name (Nachname) 
+  * Vornamen
+  * Nachnamen
 * Firmennamen 
 * Departments 
 * Positionen 
@@ -43,7 +44,7 @@ Die Visitenkarten-API extrahiert wichtige Felder von Visitenkarten und gibt dies
   * Geschäftliche Telefonnummern 
   * Weitere Telefonnummern 
 
-Darüber hinaus gibt die Visitenkarten-API den gesamten erkannten Text auf der Visitenkarte zurück. Diese OCR-Ausgabe ist in der JSON-Antwort enthalten.  
+Darüber hinaus kann die Visitenkarten-API auch den gesamten erkannten Text auf der Visitenkarte zurückgeben. Diese OCR-Ausgabe ist in der JSON-Antwort enthalten.  
 
 ### <a name="input-requirements"></a>Eingabeanforderungen 
 
@@ -51,7 +52,7 @@ Darüber hinaus gibt die Visitenkarten-API den gesamten erkannten Text auf der V
 
 ## <a name="the-analyze-business-card-operation"></a>Der Vorgang zur Analyse der Visitenkarte
 
-Beim Vorgang zur [Analyse der Visitenkarte](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync) wird ein Bild oder eine PDF-Version einer Visitenkarte als Eingabe verwendet, um die relevanten Werte und Textelemente zu extrahieren. Bei diesem Aufruf wird ein Antwortheaderfeld namens `Operation-Location` zurückgegeben. Der `Operation-Location`-Wert ist eine URL, die die Ergebnis-ID enthält, die im nächsten Schritt verwendet werden soll.
+Beim Vorgang zur [Analyse der Visitenkarte](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync) wird ein Bild oder eine PDF-Version einer Visitenkarte als Eingabe verwendet, um die relevanten Werte zu extrahieren. Bei diesem Aufruf wird ein Antwortheaderfeld namens `Operation-Location` zurückgegeben. Der `Operation-Location`-Wert ist eine URL, die die Ergebnis-ID enthält, die im nächsten Schritt verwendet werden soll.
 
 |Antwortheader| Ergebnis-URL |
 |:-----|:----|
@@ -63,18 +64,15 @@ Im zweiten Schritt wird der Vorgang zum [Abrufen des Ergebnisses der Visitenkart
 
 |Feld| type | Mögliche Werte |
 |:-----|:----:|:----|
-|status | Zeichenfolge | notStarted: Der Analysevorgang wurde noch nicht gestartet. |
-| |  | running: Der Analysevorgang wird ausgeführt. |
-| |  | failed: Beim Analysevorgang ist ein Fehler aufgetreten. |
-| |  | succeeded: Der Analysevorgang war erfolgreich. |
+|status | Zeichenfolge | notStarted: Der Analysevorgang wurde noch nicht gestartet.<br /><br />running: Der Analysevorgang wird ausgeführt.<br /><br />failed: Beim Analysevorgang ist ein Fehler aufgetreten.<br /><br />succeeded: Der Analysevorgang war erfolgreich.|
 
-Wenn im Feld **status** der Wert **succeeded** angezeigt wird, enthält die JSON-Antwort die Ergebnisse der Visitenkartenanalyse und Texterkennung. Das Ergebnis der Visitenkartenerfassung ist als Wörterbuch benannter Feldwerte organisiert, wobei jeder Wert den extrahierten Text, den normalisierten Wert, den Begrenzungsrahmen, den Vertrauensgrad und die entsprechenden Wortelemente enthält. Das Ergebnis der Texterkennung ist als eine Hierarchie von Zeilen und Wörtern mit Text, Begrenzungsrahmen und Informationen zum Vertrauensgrad organisiert.
+Wenn im Feld **status** der Wert **succeeded** angezeigt wird, enthält die JSON-Antwort die Ergebnisse der Visitenkartenanalyse und optional die der Texterkennung, sofern diese angefordert wurde. Das Ergebnis der Visitenkartenerfassung ist als Wörterbuch benannter Feldwerte organisiert, wobei jeder Wert den extrahierten Text, den normalisierten Wert, den Begrenzungsrahmen, den Vertrauensgrad und die entsprechenden Wortelemente enthält. Das Ergebnis der Texterkennung ist als eine Hierarchie von Zeilen und Wörtern mit Text, Begrenzungsrahmen und Informationen zum Vertrauensgrad organisiert.
 
 ![Beispielausgabe für eine Visitenkarte](./media/business-card-results.png)
 
 ### <a name="sample-json-output"></a>JSON-Beispielausgabe
 
-Eine erfolgreiche JSON-Antwort sieht in etwa wie folgendes Beispiel aus: Der readResults-Knoten enthält den gesamten erkannten Text. Der Text ist nach Seite, dann nach Zeile und dann nach einzelnen Wörtern sortiert. Der documentResults-Knoten enthält die visitenkartenspezifischen Werte, die vom Modell erkannt wurden. Er enthält nützliche Schlüssel-Wert-Paare wie Vorname, Nachname, Firmenname usw.
+Eine erfolgreiche JSON-Antwort sieht in etwa wie folgendes Beispiel aus: Der readResults-Knoten enthält den gesamten erkannten Text. Der Text ist nach Seite, dann nach Zeile und dann nach einzelnen Wörtern sortiert. Der documentResults-Knoten enthält die visitenkartenspezifischen Werte, die vom Modell erkannt wurden. Er enthält nützliche Kontaktinformationen wie Vorname, Nachname, Firmenname usw.
 
 ```json
 {
@@ -394,5 +392,4 @@ Die Visitenkarten-API unterstützt zudem die [AI Builder-Funktion zur Verarbeit
 - Befolgen Sie die Schnellstartanleitung für erste Schritte: [Python-Schnellstart für die Visitenkarten-API](./quickstarts/python-business-cards.md)
 - Erfahren Sie mehr über die [Formularerkennungs-REST-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync).
 - Weitere Informationen zur [Formularerkennung](overview.md).
-
 

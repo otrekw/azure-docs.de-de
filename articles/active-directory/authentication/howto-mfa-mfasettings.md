@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 8b695bad791388dc51123a118344b8fda0f54ca8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1bc3f7887c9d257f5971b867ff9b7b1dd970fa87
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027698"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179402"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurieren von Azure Multi-Factor Authentication-Einstellungen
 
@@ -242,12 +242,9 @@ Das Feature _Vertrauenswürdige IPs_ von Azure MFA umgeht MFA-Eingabeaufforderun
 
 Wenn Ihre Organisation die NPS-Erweiterung bereitstellt, um MFA für lokale Anwendungen bereitzustellen, beachten Sie, dass als Quell-IP-Adresse immer die des NPS-Servers angezeigt wird, über den der Authentifizierungsversuch verläuft.
 
-| Azure AD-Mandantentyp | Optionen des Features „Vertrauenswürdige IPs“ |
-|:--- |:--- |
-| Verwaltet |**Bestimmter Bereich von IP-Adressen**: Administratoren geben einen Bereich von IP-Adressen an, die die zweistufige Überprüfung für Benutzer, die sich über das Intranet des Unternehmens anmelden, umgehen können. Es können maximal 50 vertrauenswürdige IP-Adressbereiche konfiguriert werden.|
-| Im Verbund |**Alle Verbundbenutzer**: Alle Verbundbenutzer, die sich von innerhalb der Organisation aus anmelden, können die zweistufige Überprüfung umgehen. Die Benutzer umgehen die Überprüfung mithilfe eines durch Active Directory-Verbunddienste (AD FS) ausgestellten Anspruchs.<br/>**Bestimmter Bereich von IP-Adressen**: Administratoren geben einen Bereich von IP-Adressen an, die die zweistufige Überprüfung für Benutzer, die sich über das Intranet des Unternehmens anmelden, umgehen können. |
+| Azure AD-Mandantentyp | Featureoptionen für vertrauenswürdige IP-Adressen | |:--- |:--- |zweistufig | Verwaltet |**Festgelegter Bereich von IP-Adressen**: Administratoren geben einen Bereich von IP-Adressen an, die die mehrstufige Authentifizierung für Benutzer, die sich über das Intranet des Unternehmens anmelden, umgehen können. Es können maximal 50 vertrauenswürdige IP-Adressbereiche konfiguriert werden.| | Verbund |**Alle Verbundbenutzer**: Alle Verbundbenutzer, die sich von der Organisation aus anmelden, können die mehrstufige Authentifizierung umgehen. Die Benutzer umgehen die Überprüfung mithilfe eines durch Active Directory-Verbunddienste (AD FS) ausgestellten Anspruchs.<br/>**Bestimmter Bereich von IP-Adressen**: Administratoren geben einen Bereich von IP-Adressen an, die die mehrstufige Authentifizierung für Benutzer, die sich über das Intranet des Unternehmens anmelden, umgehen können. |
 
-Die Umgehung über vertrauenswürdige IPs funktioniert nur innerhalb des Intranets eines Unternehmens. Wenn Sie die Option **Alle Verbundbenutzer** ausgewählt haben und sich ein Benutzer von außerhalb des Unternehmensintranets anmeldet, muss sich der Benutzer mit der zweistufigen Überprüfung authentifizieren. Dies ist auch der Fall, wenn der Benutzer einen AD FS-Anspruch vorweisen kann.
+Die Umgehung über vertrauenswürdige IPs funktioniert nur innerhalb des Intranets eines Unternehmens. Wenn Sie die Option **Alle Verbundbenutzer** ausgewählt haben und sich ein Benutzer von außerhalb des Unternehmensintranets anmeldet, muss sich der Benutzer mit der mehrstufige Authentifizierung authentifizieren. Dies ist auch der Fall, wenn der Benutzer einen AD FS-Anspruch vorweisen kann.
 
 ### <a name="end-user-experience-inside-of-corpnet"></a>Endbenutzererfahrung innerhalb des Unternehmensnetzwerks
 
@@ -278,14 +275,14 @@ Führen Sie die folgenden Schritte aus, um vertrauenswürdige IP-Adressen mit Ri
 1. Wählen Sie **Durch MFA bestätigte IPs konfigurieren** aus.
 1. Wählen Sie auf der Seite **Diensteinstellungen** unter **Vertrauenswürdige IPs** eine der folgenden beiden Optionen aus:
 
-   * **Für Anforderungen von Partnerbenutzern, die aus meinem Intranet stammen**: Aktivieren Sie das Kontrollkästchen, um diese Option auszuwählen. Alle Verbundbenutzer, die sich vom Unternehmensnetzwerk aus anmelden, umgehen die zweistufige Überprüfung mithilfe eines von AD FS ausgestellten Anspruchs. Stellen Sie sicher, dass AD FS über eine Regel zum Hinzufügen des Intranetanspruchs zum entsprechenden Datenverkehr verfügt. Wenn die Regel nicht vorhanden ist, erstellen Sie die folgende Regel in AD FS:
+   * **Für Anforderungen von Partnerbenutzern, die aus meinem Intranet stammen**: Aktivieren Sie das Kontrollkästchen, um diese Option auszuwählen. Alle Verbundbenutzer, die sich vom Unternehmensnetzwerk aus anmelden, umgehen die mehrstufige Authentifizierung mithilfe eines von AD FS ausgestellten Anspruchs. Stellen Sie sicher, dass AD FS über eine Regel zum Hinzufügen des Intranetanspruchs zum entsprechenden Datenverkehr verfügt. Wenn die Regel nicht vorhanden ist, erstellen Sie die folgende Regel in AD FS:
 
       `c:[Type== "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork"] => issue(claim = c);`
 
    * **Für Anforderungen aus einem bestimmten Bereich öffentlicher IPs**: Geben Sie zum Auswählen dieser Option die IP-Adressen in der CIDR-Notation im Textfeld ein.
       * Verwenden Sie für IP-Adressen im Bereich xxx.xxx.xxx.1 bis xxx.xxx.xxx.254 die Notation **xxx.xxx.xxx.0/24**.
       * Verwenden Sie für eine einzelne IP-Adresse die Notation **xxx.xxx.xxx.xxx/32**.
-      * Sie können bis zu 50 IP-Adressbereiche eingeben. Benutzer, die sich über diese IP-Adressen anmelden, umgehen die zweistufige Überprüfung.
+      * Sie können bis zu 50 IP-Adressbereiche eingeben. Benutzer, die sich über diese IP-Adressen anmelden, umgehen die mehrstufige Authentifizierung.
 
 1. Wählen Sie **Speichern** aus.
 
@@ -298,20 +295,20 @@ Wenn Sie keine Richtlinien für bedingten Zugriff verwenden möchten, um vertrau
 1. Klicken Sie unter „Multi-Factor Authentication“ auf **Diensteinstellungen**.
 1. Wählen Sie auf der Seite **Diensteinstellungen** unter **Vertrauenswürdige IPs** eine (oder beide) der folgenden zwei Optionen aus:
 
-   * **Für Anforderungen von Partnerbenutzern in meinem Intranet**: Aktivieren Sie das Kontrollkästchen, um diese Option auszuwählen. Alle Verbundbenutzer, die sich vom Unternehmensnetzwerk aus anmelden, umgehen die zweistufige Überprüfung mithilfe eines von AD FS ausgestellten Anspruchs. Stellen Sie sicher, dass AD FS über eine Regel zum Hinzufügen des Intranetanspruchs zum entsprechenden Datenverkehr verfügt. Wenn die Regel nicht vorhanden ist, erstellen Sie die folgende Regel in AD FS:
+   * **Für Anforderungen von Partnerbenutzern in meinem Intranet**: Aktivieren Sie das Kontrollkästchen, um diese Option auszuwählen. Alle Verbundbenutzer, die sich vom Unternehmensnetzwerk aus anmelden, umgehen die mehrstufige Authentifizierung mithilfe eines von AD FS ausgestellten Anspruchs. Stellen Sie sicher, dass AD FS über eine Regel zum Hinzufügen des Intranetanspruchs zum entsprechenden Datenverkehr verfügt. Wenn die Regel nicht vorhanden ist, erstellen Sie die folgende Regel in AD FS:
 
       `c:[Type== "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork"] => issue(claim = c);`
 
    * **Für Anforderungen aus einem angegebenen Bereich von IP-Adresssubnetzen**: Geben Sie zum Auswählen dieser Option die IP-Adressen in der CIDR-Notation im Textfeld ein.
       * Verwenden Sie für IP-Adressen im Bereich xxx.xxx.xxx.1 bis xxx.xxx.xxx.254 die Notation **xxx.xxx.xxx.0/24**.
       * Verwenden Sie für eine einzelne IP-Adresse die Notation **xxx.xxx.xxx.xxx/32**.
-      * Sie können bis zu 50 IP-Adressbereiche eingeben. Benutzer, die sich über diese IP-Adressen anmelden, umgehen die zweistufige Überprüfung.
+      * Sie können bis zu 50 IP-Adressbereiche eingeben. Benutzer, die sich über diese IP-Adressen anmelden, umgehen die mehrstufige Authentifizierung.
 
 1. Wählen Sie **Speichern** aus.
 
 ## <a name="verification-methods"></a>Überprüfungsmethoden
 
-Sie können im Diensteinstellungsportal auswählen, welche Überprüfungsmethoden für Ihre Benutzer verfügbar sind. Wenn Ihre Benutzer ihre Konten für Azure Multi-Factor Authentication registrieren, wählen sie ihre bevorzugte Überprüfungsmethode aus den Optionen aus, die Sie aktiviert haben. Anleitungen zum Benutzerregistrierungsprozess finden Sie unter [Einrichten meines Kontos für die zweistufige Überprüfung](../user-help/multi-factor-authentication-end-user-first-time.md).
+Sie können im Diensteinstellungsportal auswählen, welche Überprüfungsmethoden für Ihre Benutzer verfügbar sind. Wenn Ihre Benutzer ihre Konten für Azure Multi-Factor Authentication registrieren, wählen sie ihre bevorzugte Überprüfungsmethode aus den Optionen aus, die Sie aktiviert haben. Anleitungen zum Benutzerregistrierungsprozess finden Sie unter [Einrichten meines Kontos für die mehrstufige Authentifizierung](../user-help/multi-factor-authentication-end-user-first-time.md).
 
 Die folgenden Überprüfungsmethoden stehen zur Auswahl:
 
@@ -336,25 +333,25 @@ Führen Sie die folgenden Schritte aus, um Überprüfungsmethoden zu aktivieren 
 
 ## <a name="remember-multi-factor-authentication"></a>Speichern der Multi-Factor Authentication
 
-Mit dem Feature _Multi-Factor Authentication speichern_ können Benutzer nachfolgende Überprüfungen für eine angegebene Anzahl von Tagen umgehen, nachdem sie sich mithilfe von Multi-Factor Authentication erfolgreich bei einem Gerät angemeldet haben. Bei Verwendung dieses Features wird die Benutzerfreundlichkeit verbessert, da der Benutzer auf einem Gerät seltener eine mehrstufige Authentifizierung durchführen muss.
+Mit dem Feature _Multi-Factor Authentication speichern_ können Benutzer nachfolgende Überprüfungen für eine angegebene Anzahl von Tagen umgehen, nachdem sie sich mithilfe von Multi-Factor Authentication erfolgreich bei einem Gerät angemeldet haben. Wählen Sie eine Dauer von mindestens 90 Tagen aus, um die Benutzerfreundlichkeit zu verbessern und die Häufigkeit zu minimieren, mit der ein Benutzer die MFA auf demselben Gerät ausführen muss.
 
 > [!IMPORTANT]
 > Wenn ein Konto oder Gerät gefährdet ist, kann das Speichern von Multi-Factor Authentication für vertrauenswürdige Geräte die Sicherheit beeinträchtigen. Wenn ein Unternehmenskonto kompromittiert oder ein vertrauenswürdiges Gerät verloren geht oder gestohlen wird, sollten Sie [MFA-Sitzungen widerrufen](howto-mfa-userdevicesettings.md).
 >
-> Durch die Wiederherstellungsaktion wird der vertrauenswürdige Status aller Geräte widerrufen, und der Benutzer muss wieder die zweistufige Überprüfung ausführen. Sie können Ihre Benutzer auch anweisen, Multi-Factor Authentication auf ihren eigenen Geräten wie unter [Verwalten der Einstellungen für die zweistufige Überprüfung](../user-help/multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device) beschrieben wiederherzustellen.
+> Durch die Wiederherstellungsaktion wird der vertrauenswürdige Status aller Geräte widerrufen, und der Benutzer muss wieder die mehrstufige Authentifizierung ausführen. Sie können Ihre Benutzer auch anweisen, Multi-Factor Authentication auf ihren eigenen Geräten wie unter [Verwalten der Einstellungen für die mehrstufige Authentifizierung](../user-help/multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device) beschrieben wiederherzustellen.
 
 ### <a name="how-the-feature-works"></a>Funktionsweise des Features
 
 Durch das Feature „Multi-Factor Authentication speichern“ wird ein permanentes Cookie im Browser festgelegt, wenn ein Benutzer die Option **Die nächsten X Tage nicht erneut fragen** auswählt. Der Benutzer wird von diesem Browser bis zum Ablauf des Cookies nicht erneut zur Multi-Factor Authentication aufgefordert. Wenn der Benutzer einen anderen Browser auf dem gleichen Gerät öffnet oder seine Cookies löscht, wird er wieder zur Überprüfung aufgefordert.
 
-Die Option **Die nächsten X Tage nicht erneut fragen** wird in Nicht-Browseranwendungen nicht angezeigt, unabhängig davon, ob diese die moderne Authentifizierung unterstützen. Diese Apps verwenden _Aktualisierungstoken_, die jede Stunde neue Zugriffstoken bereitstellen. Bei der Überprüfung eines Aktualisierungstokens überprüft Azure AD, ob die letzte zweistufige Überprüfung innerhalb der angegebenen Anzahl von Tagen durchgeführt wurde.
+Die Option **Die nächsten X Tage nicht erneut fragen** wird in Nicht-Browseranwendungen nicht angezeigt, unabhängig davon, ob diese die moderne Authentifizierung unterstützen. Diese Apps verwenden _Aktualisierungstoken_, die jede Stunde neue Zugriffstoken bereitstellen. Bei der Überprüfung eines Aktualisierungstokens überprüft Azure AD, ob die letzte mehrstufige Authentifizierung innerhalb der angegebenen Anzahl von Tagen durchgeführt wurde.
 
-Mit dem Feature reduziert sich die Anzahl der Authentifizierungen für Web-Apps, die normalerweise jedes Mal dazu auffordern. Das Feature erhöht die Anzahl der Authentifizierungen für Clients mit moderner Authentifizierung, die normalerweise alle 90 Tage zur Authentifizierung auffordern. Die Anzahl der Authentifizierungen kann sich auch erhöhen, wenn mit bedingten Zugriffsrichtlinien kombiniert wird.
+Mit dem Feature reduziert sich die Anzahl der Authentifizierungen für Web-Apps, die normalerweise jedes Mal dazu auffordern. Das Feature erhöht die Anzahl der Authentifizierungen für Clients mit moderner Authentifizierung, die normalerweise alle 90 Tage zur Authentifizierung auffordern, wenn eine kürzere Dauer konfiguriert ist. Die Anzahl der Authentifizierungen kann sich auch erhöhen, wenn mit bedingten Zugriffsrichtlinien kombiniert wird.
 
 > [!IMPORTANT]
-> Die Funktion **Multi-Factor Authentication speichern** ist nicht kompatibel mit dem AD FS-Feature **Angemeldet bleiben**, bei dem Benutzer die zweistufige Überprüfung für AD FS über Azure Multi-Factor Authentication Server oder eine Lösung zur mehrstufigen Authentifizierung von Drittanbietern ausführen.
+> Das Feature **Multi-Factor Authentication speichern** ist nicht kompatibel mit dem AD FS-Feature **Angemeldet bleiben**, bei dem Benutzer die mehrstufige Authentifizierung für AD FS über Azure Multi-Factor Authentication Server oder eine Lösung zur mehrstufigen Authentifizierung von Drittanbietern ausführen.
 >
-> Wenn Ihre Benutzer in AD FS **Angemeldet bleiben** auswählen und ihr Gerät außerdem als für Multi-Factor Authentication vertrauenswürdig markieren, werden sie nach Ablauf der Anzahl von Tagen, die unter **Multi-Factor Authentication speichern** angegeben wurde, nicht automatisch überprüft. Azure AD fordert eine neue zweistufige Überprüfung an, aber AD FS gibt ein Token mit dem ursprünglichen Multi-Factor Authentication-Anspruch und Datum zurück, statt die zweistufige Überprüfung erneut durchzuführen. **Durch diese Reaktion entsteht eine Schleife bei der Überprüfung zwischen Azure AD und AD FS.**
+> Wenn Ihre Benutzer in AD FS **Angemeldet bleiben** auswählen und ihr Gerät außerdem als für Multi-Factor Authentication vertrauenswürdig markieren, werden sie nach Ablauf der Anzahl von Tagen, die unter **Multi-Factor Authentication speichern** angegeben wurde, nicht automatisch überprüft. Azure AD fordert eine neue mehrstufige Authentifizierung an, aber AD FS gibt ein Token mit dem ursprünglichen Multi-Factor Authentication-Anspruch und -Datum zurück, statt die mehrstufige Authentifizierung erneut durchzuführen. **Durch diese Reaktion entsteht eine Schleife bei der Überprüfung zwischen Azure AD und AD FS.**
 >
 > Das Feature **Multi-Factor Authentication speichern** ist nicht mit B2B-Benutzern kompatibel und wird B2B-Benutzer nicht angezeigt, wenn sie sich bei den eingeladenen Mandanten anmelden.
 >
@@ -367,7 +364,7 @@ Führen Sie die folgenden Schritte aus, um die Option zum Speichern des MFA-Stat
 1. Wählen Sie **Multi-Factor Authentication** aus.
 1. Klicken Sie unter „Multi-Factor Authentication“ auf **Diensteinstellungen**.
 1. Wählen Sie auf der Seite **Diensteinstellungen** unter **Multi-Factor Authentication speichern** die Option **Benutzern das Speichern der mehrstufigen Authentifizierung auf vertrauenswürdigen Geräten ermöglichen** aus.
-1. Legen Sie fest, für wie viele Tage die vertrauenswürdigen Geräte die zweistufige Überprüfung umgehen können. Der Standardwert ist 14 Tage.
+1. Legen Sie fest, für wie viele Tage vertrauenswürdige Geräte die mehrstufige Authentifizierung umgehen können. Für eine optimale Benutzerleistung verlängern Sie die Dauer auf mindestens *90* Tage.
 1. Wählen Sie **Speichern** aus.
 
 ### <a name="mark-a-device-as-trusted"></a>Markieren eines Geräts als vertrauenswürdig

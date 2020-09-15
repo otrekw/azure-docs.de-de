@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/25/2020
+ms.date: 08/28/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 704d4c1b4e4e4229f35526748494aaac2e351f99
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 0f26c83f87811acc5853f1bff5303cd37092b33f
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871376"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89075952"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Verwenden von Azure zum Hosten und Ausführen von SAP-Workloadszenarien
 
@@ -88,6 +88,7 @@ Informationen zur Integration von Azure-Diensten in SAP-Komponenten finden Sie u
 
 ## <a name="change-log"></a>Änderungsprotokoll
 
+- 28.08.2020: Änderung an [Hochverfügbarkeit für SAP NetWeaver auf Azure-VMs unter SLES mit ANF](./high-availability-guide-suse-netapp-files.md) vorgenommen, um einen Tippfehler zu korrigieren
 - 25.08.2020: Es wurden Änderungen an den Artikeln [Hochverfügbarkeitsleitfaden für SAP ASCS/SCS mit WSFC und freigegebenem Datenträger](./sap-high-availability-guide-wsfc-shared-disk.md), [Vorbereiten der Azure-Infrastruktur auf SAP ASCS/SCS mit WSFC und freigegebenem Datenträger](./sap-high-availability-infrastructure-wsfc-shared-disk.md) und [Installieren von SAP NetWeaver-Hochverfügbarkeit mit WSFC und freigegebenem Datenträger](./sap-high-availability-guide-wsfc-shared-disk.md) vorgenommen, um die Option der Verwendung eines freigegebenen Azure-Datenträgers vorzustellen und die SAP ERS2-Architektur zu dokumentieren.
 - 25.08.2020: Veröffentlichung von [Multi-SID-Hochverfügbarkeitsleitfaden für SAP ASCS/SCS mit WSFC und freigegebenem Azure-Datenträger](./sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md)
 - 25.08.2020: Es wurden Änderungen an den Artikeln [Hochverfügbarkeitsleitfaden für SAP ASCS/SCS mit WSFC und Azure NetApp Files (SMB)](./high-availability-guide-windows-netapp-files-smb.md), [Vorbereiten der Azure-Infrastruktur auf SAP ASCS/SCS mit WSFC und freigegebenem Datenträger](./sap-high-availability-infrastructure-wsfc-file-share.md), [Multi-SID-Hochverfügbarkeitsleitfaden für SAP ASCS/SCS mit WSFC und Dateifreigabe](./sap-ascs-ha-multi-sid-wsfc-shared-disk.md) und [Multi-SID-Hochverfügbarkeitsleitfaden für SAP ASCS/SCS mit WSFC und SOFS-Dateifreigabe](./sap-ascs-ha-multi-sid-wsfc-file-share.md) vorgenommen, nachdem Inhalte in den Hochverfügbarkeitsleitfäden für SAP ASCS/SCS mit WSFC und Dateifreigabe aktualisiert und umstrukturiert wurden. 

@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: bde1ff4003ba69a4c5449996f4e18d646e6ecff6
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 796ef0b82c15940ce9200e0b50916ca657f10b99
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498343"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393892"
 ---
 # <a name="azure-security-baseline-for-cognitive-services"></a>Azure-Sicherheitsbaseline für Cognitive Services
 
@@ -151,7 +151,7 @@ Sie können auch Anwendungssicherheitsgruppen (ASG) verwenden, um eine komplexe 
 
 **Leitfaden**: Definieren und implementieren Sie mit Azure Policy Standardsicherheitskonfigurationen für Netzwerkressourcen, die Ihrem Azure Cognitive Services-Container zugeordnet sind. Verwenden Sie Azure Policy-Aliase in den Namespaces „Microsoft.CognitiveServices“ und „Microsoft.Network“, um benutzerdefinierte Richtlinien zum Überwachen oder Erzwingen der Netzwerkkonfiguration Ihrer Azure Cache for Redis-Instanzen zu erstellen.
 
-Sie können auch Azure Blueprints verwenden, um umfangreiche Azure-Bereitstellungen zu vereinfachen, indem wichtige Umgebungsartefakte, z. B. Azure Resource Manager-Vorlagen, rollenbasierte Zugriffssteuerung (RBAC) und Richtlinien, gemeinsam in einer Blaupausendefinition gepackt werden. Sie können die Blaupause leicht auf neue Abonnements und Umgebungen anwenden und die Steuerung und Verwaltung durch die Versionsverwaltung optimieren.
+Sie können auch Azure Blueprints verwenden, um umfangreiche Azure-Bereitstellungen zu vereinfachen, indem wichtige Umgebungsartefakte, z. B. Azure Resource Manager-Vorlagen, rollenbasierte Zugriffssteuerung von Azure (Azure RBAC) und Richtlinien, gemeinsam in einer Blaupausendefinition gepackt werden. Sie können die Blaupause leicht auf neue Abonnements und Umgebungen anwenden und die Steuerung und Verwaltung durch die Versionsverwaltung optimieren.
 
 * [Konfigurieren und Verwalten von Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -532,9 +532,9 @@ Für die zugrundeliegende Plattform, die von Microsoft verwaltet wird, behandelt
 
 **Verantwortlichkeit**: Shared
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6: Verwenden der rollenbasierten Zugriffssteuerung zum Steuern des Zugriffs auf Ressourcen
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Verwenden von Azure RBAC zum Steuern des Zugriffs auf Ressourcen
 
-**Leitfaden**: Integrieren Sie die rollenbasierte Zugriffssteuerung (RBAC) in Azure Active Directory, um den Zugriff auf die Steuerungsebene von Azure Cognitive Services (d. h. das Azure-Portal) zu steuern.
+**Leitfaden**: Integrieren Sie die rollenbasierte Zugriffssteuerung (Azure RBAC) in Azure, um den Zugriff auf die Steuerungsebene von Azure Cognitive Services (d. h. das Azure-Portal) zu steuern.
 
 * [Konfigurieren von Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
@@ -872,7 +872,9 @@ Verwenden Sie darüber hinaus Azure Resource Graph, um Ressourcen in Ihren Abonn
 
 * [Erstellen einer Key Vault-Instanz](https://docs.microsoft.com/azure/key-vault/quick-create-portal)
 
-* [Bereitstellen der Key Vault-Authentifizierung mit einer verwalteten Identität](https://docs.microsoft.com/azure/key-vault/managed-identity)
+* [Authentifizieren bei Key Vault](https://docs.microsoft.com/azure/key-vault/general/authentication)
+
+* [Zuweisen einer Key Vault-Zugriffsrichtlinie](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
 
 **Azure Security Center-Überwachung**: Ja
 

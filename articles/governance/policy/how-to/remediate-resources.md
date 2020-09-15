@@ -1,18 +1,18 @@
 ---
 title: Korrigieren nicht konformer Ressourcen
 description: Dieser Leitfaden führt Sie schrittweise durch den Korrekturprozess von Ressourcen, die mit Richtlinien in Azure Policy nicht konform sind.
-ms.date: 06/09/2020
+ms.date: 08/27/2020
 ms.topic: how-to
-ms.openlocfilehash: be55f16734a94acfcc89d632f4cb79f550fa74d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1274b049d7ce19601968697b22da38f0eb2cb5ff
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84636307"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958744"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Korrigieren nicht konformer Ressourcen mit Azure Policy
 
-Ressourcen, die mit der Richtlinie **deployIfNotExists** oder **modify** nicht konform sind, können über die **Wiederherstellung** in einen konformen Zustand versetzt werden. Die Wiederherstellung erfolgt durch die Anweisung an Azure Policy, den **deployIfNotExists**-Effekt oder das Tag **operations** der zugewiesenen Richtlinie auf Ihre vorhandenen Ressourcen anzuwenden. Dies gilt unabhängig davon, ob die Zuweisung an eine Verwaltungsgruppe, ein Abonnement, eine Ressourcengruppe oder eine einzelne Ressource erfolgt. Dieser Artikel zeigt die Schritte, die erforderlich sind, um die Korrektur mithilfe von Azure Policy zu verstehen und durchzuführen.
+Ressourcen, die mit der Richtlinie **deployIfNotExists** oder **modify** nicht konform sind, können über die **Wiederherstellung** in einen konformen Zustand versetzt werden. Die Wiederherstellung erfolgt durch die Anweisung an Azure Policy, den Effekt **deployIfNotExists** oder die **Änderungsvorgänge** der zugewiesenen Richtlinie auf Ihre vorhandenen Ressourcen anzuwenden. Dies gilt unabhängig davon, ob die Zuweisung an eine Verwaltungsgruppe, ein Abonnement, eine Ressourcengruppe oder eine einzelne Ressource erfolgt. Dieser Artikel zeigt die Schritte, die erforderlich sind, um die Korrektur mithilfe von Azure Policy zu verstehen und durchzuführen.
 
 ## <a name="how-remediation-security-works"></a>Sicherheit durch Wiederherstellung
 

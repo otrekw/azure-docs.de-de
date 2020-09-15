@@ -9,12 +9,12 @@ tags: Lucene query analyzer syntax
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9d3f8208af9d5997f5a9e025a54b54b5b035fb85
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 8e8c32f5596e469de5402a1f712d234a806a69e4
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934972"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297993"
 ---
 # <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>Verwenden der „vollständigen“ Lucene-Suchsyntax (erweiterte Abfragen in der kognitiven Azure-Suche)
 
@@ -40,13 +40,13 @@ Sie benötigen lediglich Postman oder ein gleichwertiges Tool zum Senden einer H
 
 Nachdem Sie den Anforderungsheader angegeben haben, können Sie ihn für alle Abfragen in diesem Artikel wiederverwenden, indem Sie lediglich die Zeichenfolge **search=** austauschen. 
 
-  ![Postman-Anforderungsheader](media/search-query-lucene-examples/postman-header.png)
+  ![Festlegen von Parametern für Postman-Anforderungsheader](media/search-query-lucene-examples/postman-header.png)
 
 ### <a name="set-the-request-url"></a>Festlegen der Anforderungs-URL
 
 Die Anforderung ist ein GET-Befehl, der mit einer URL gekoppelt ist, die den Azure Cognitive Search-Endpunkt und die Suchzeichenfolge enthält.
 
-  ![Postman-Anforderungsheader](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
+  ![Postman-Anforderungsheader GET](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
 
 Die URL-Komposition umfasst die folgenden Elemente:
 
@@ -111,7 +111,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 
 Die Antwort auf diese Abfrage sollte etwa wie im folgenden Screenshot aussehen.
 
-  ![Postman-Beispielantwort](media/search-query-lucene-examples/postman-sample-results.png)
+  ![Postman-Beispielantwort mit Bewertungen](media/search-query-lucene-examples/postman-sample-results.png)
 
 Möglicherweise ist Ihnen die Suchbewertung in der Antwort aufgefallen. Zu einer einheitlichen Bewertung von „1“ kommt es, wenn kein Rang vorhanden ist, weil es entweder keine Volltextsuche war oder weil keine Kriterien angewandt wurden. Bei einer NULL-Suche ohne Kriterien werden Zeilen in willkürlicher Reihenfolge zurückgegeben. Wenn Sie tatsächliche Suchkriterien einfügen, werden aussagekräftige Werte für die Suchbewertungen angezeigt.
 
@@ -137,7 +137,7 @@ $select=business_title, posting_type&search=business_title:(senior NOT junior) A
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&$select=business_title&search=business_title:(senior NOT junior)
 ```
 
-  ![Postman-Beispielantwort](media/search-query-lucene-examples/intrafieldfilter.png)
+  ![Postman-Beispielantwort für Suchausdruck](media/search-query-lucene-examples/intrafieldfilter.png)
 
 Sie können einen feldbezogenen Suchvorgang mit der **fieldName:searchExpression**-Syntax definieren, wobei es sich bei dem Suchausdruck um ein einzelnes Wort, einen einfachen Ausdruck oder einen komplexeren Ausdruck in Klammern handeln kann, optional mit booleschen Operatoren. Einige Beispiele für Änderungen sind in der folgenden Liste aufgeführt:
 

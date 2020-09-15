@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/26/2017
-ms.openlocfilehash: 0fc4fb91653f4a764540df0a7bc0cf0deee30fe6
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 3fe98160cc10eb3607b8309a9a263d63380dcfb5
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080829"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89073215"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Erstellen benutzerdefinierter APIs, die über Azure Logic Apps aufgerufen werden können
 
@@ -37,7 +37,7 @@ Sie können Ihre APIs in [Azure App Service](../app-service/overview.md) hosten,
 > * [Python](../app-service/quickstart-python.md)
 > * [Ruby](../app-service/quickstart-ruby.md)
 >
-> API-App-Beispiele für Logik-Apps finden Sie im [Azure Logic Apps GitHub-Repository](https://github.com/logicappsio) oder [Blog](https://aka.ms/logicappsblog).
+> API-App-Beispiele für Logik-Apps finden Sie im [GitHub-Repository für Azure Logic Apps](https://github.com/logicappsio).
 
 ## <a name="how-do-custom-apis-differ-from-custom-connectors"></a>Wie unterscheiden sich benutzerdefinierte APIs von benutzerdefinierten Connectors?
 

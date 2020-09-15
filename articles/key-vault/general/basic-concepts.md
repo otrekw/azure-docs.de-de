@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7c64835ced558727718690138c3e7a7666cf0809
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: dfb1ca4fc8f550c8ed6955adaca9082f0b6b79e6
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167297"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89379000"
 ---
 # <a name="azure-key-vault-basic-concepts"></a>Grundlegende Konzepte von Azure Key Vault
 
@@ -33,7 +33,7 @@ Hier sind weitere wichtige Begriffe:
 
 - **Ressourcengruppe**: Eine Ressourcengruppe ist ein Container, der verwandte Ressourcen für eine Azure-Lösung enthält. Die Ressourcengruppe kann alle Ressourcen für die Lösung oder nur die Ressourcen enthalten, die Sie als Gruppe verwalten möchten. Sie entscheiden in Abhängigkeit davon, was für Ihre Organisation am sinnvollsten ist, wie Sie die Ressourcen den Ressourcengruppen zuordnen möchten.
 
-- **Dienstprinzipal**: Ein Azure-Dienstprinzipal ist eine Sicherheitsidentität, die durch von Benutzern erstellte Apps, Dienste und Automatisierungstools verwendet wird, um auf bestimmte Azure-Ressourcen zuzugreifen. Das Konzept lässt sich als „Benutzeridentität“ (Benutzername und Kennwort oder Zertifikat) mit einer bestimmten Rolle und streng kontrollierten Berechtigungen beschreiben. Ein Dienstprinzipal sollte – im Gegensatz zu einer allgemeinen Benutzeridentität – nur für bestimmte Dinge zuständig sein. Wenn Sie ihm nur die Berechtigungen gewähren, die er zum Ausführen seiner Verwaltungsaufgaben benötigt, verbessert das die Sicherheit.
+- **Sicherheitsprinzipal:** Ein Azure-Sicherheitsprinzipal ist eine Sicherheitsidentität, die durch von Benutzern erstellte Apps, Dienste und Automatisierungstools verwendet wird, um auf bestimmte Azure-Ressourcen zuzugreifen. Das Konzept lässt sich als „Benutzeridentität“ (Benutzername und Kennwort oder Zertifikat) mit einer bestimmten Rolle und streng kontrollierten Berechtigungen beschreiben. Ein Sicherheitsprinzipal sollte – im Gegensatz zu einer allgemeinen Benutzeridentität – nur für bestimmte Dinge zuständig sein. Wenn Sie ihm nur die Berechtigungen gewähren, die er zum Ausführen seiner Verwaltungsaufgaben benötigt, verbessert das die Sicherheit. Ein Sicherheitsprinzipal, der mit einer Anwendung oder einem Dienst verwendet wird, wird als **Dienstprinzipal** bezeichnet.
 
 - [Azure Active Directory (Azure AD)](../../active-directory/active-directory-whatis.md): Azure AD ist der Active Directory-Dienst für einen Mandanten. Jedes Verzeichnis verfügt über mindestens eine Domäne. Einem Verzeichnis können viele Abonnements zugeordnet sein, aber nur ein Mandant.
 

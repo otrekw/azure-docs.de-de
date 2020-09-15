@@ -3,31 +3,33 @@ title: Warten und Reagieren auf Ereignisse
 description: Automatisieren Sie mithilfe von Azure Logic Apps Workflows, die basierend auf Ereignissen an einem Dienstendpunkt ausgelöst, angehalten und fortgesetzt werden.
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 03/06/2020
+ms.date: 08/27/2020
 tags: connectors
-ms.openlocfilehash: 0a3fb9a8a72b384d2af4af38bdc382e541ddf535
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 7c6f3c4e3e4a2a29fe6a02c03043e3dfb81a2010
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656276"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89227898"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Erstellen und Ausführen automatisierter ereignisbasierter Workflows mithilfe von HTTP-Webhooks in Azure Logic Apps
 
-Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und dem integrierten HTTP-Webhookconnector können Sie Workflows automatisieren, die auf der Grundlage bestimmter Ereignisse warten und ausgeführt werden, die an einem HTTP- oder HTTPS-Endpunkt auftreten, indem Sie Logik-Apps erstellen. So können Sie beispielsweise eine Logik-App erstellen, die einen Dienstendpunkt überwacht, indem sie auf ein bestimmtes Ereignis wartet, bevor sie den Workflow auslöst und die angegebenen Aktionen ausführt, anstatt diesen Endpunkt regelmäßig zu überprüfen oder *abzufragen*.
+Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und dem integrierten HTTP-Webhookconnector können Sie automatisierte Aufgaben und Workflows erstellen, die einen Dienstendpunkt abonnieren, auf bestimmte Ereignisse warten und basierend auf diesen Ereignissen ausgeführt werden, statt regelmäßig den Endpunkt zu überprüfen oder *abzurufen*.
 
-Hier sind einige Beispiele für ereignisbasierte Workflows:
+Hier sind einige Beispiele für webhookbasierte Workflows:
 
 * Warten, dass ein Element von einem [Azure Event Hub](https://github.com/logicappsio/EventHubAPI) eintrifft, bevor die Ausführung einer Logik-App ausgelöst wird.
 * Warten auf eine Genehmigung, bevor ein Workflow fortgesetzt wird.
 
+Dieser Artikel zeigt, wie Sie den Webhooktrigger und die Webhookaktion verwenden, damit Ihre Logik-App Ereignisse an einem Dienstendpunkt empfangen und darauf antworten kann.
+
 ## <a name="how-do-webhooks-work"></a>Wie funktionieren Webhooks?
 
-Ein HTTP-Webhooktrigger ist ereignisbasiert und erfordert nicht, dass regelmäßig auf neue Elemente geprüft wird oder diese abgefragt werden. Wenn Sie eine Logik-App speichern, die mit einem Webhooktrigger gestartet wird, oder Ihre Logik-App von „deaktiviert“ in „aktiviert“ ändern, *abonniert* der Webhooktrigger einen angegebenen Dienst oder Endpunkt, indem er eine *Rückruf-URL* bei diesem Dienst oder Endpunkt registriert. Der Trigger wartet dann darauf, dass der Dienst oder Endpunkt die URL aufruft, wodurch die Ausführung der Logik-App beginnt. Die Logik-App wird ähnlich wie der [Anforderungstrigger](connectors-native-reqres.md) sofort ausgelöst, wenn das angegebene Ereignis eintritt. Der Trigger *kündigt das Abonnement* des Diensts oder Endpunkts, wenn Sie ihn entfernen und Ihre Logik-App speichern oder wenn Sie Ihre Logik-App von „aktiviert“ in „deaktiviert“ ändern.
+Ein Webhooktrigger ist ereignisbasiert und erfordert nicht, dass regelmäßig auf neue Elemente geprüft wird oder diese abgerufen werden. Wenn Sie eine Logik-App speichern, die mit einem Webhooktrigger gestartet wird, oder Ihre Logik-App von „deaktiviert“ in „aktiviert“ ändern, *abonniert* der Webhooktrigger den angegebenen Dienst oder Endpunkt, indem er eine *Rückruf-URL* bei diesem Endpunkt registriert. Der Trigger wartet dann darauf, dass der Dienstendpunkt die URL aufruft, wodurch die Ausführung der Logik-App beginnt. Die Logik-App wird ähnlich wie der [Anforderungstrigger](connectors-native-reqres.md) sofort ausgelöst, wenn das angegebene Ereignis eintritt. Der Webhooktrigger *kündigt das Abonnement* des Dienstendpunkts, wenn Sie ihn entfernen und Ihre Logik-App speichern oder wenn Sie Ihre Logik-App von „aktiviert“ in „deaktiviert“ ändern.
 
-Eine Webhookaktion ist ebenfalls ereignisbasiert und *abonniert* den angegebenen Dienst oder Endpunkt durch die Registrierung einer *Rückruf-URL* bei diesem Dienst oder Endpunkt. Die Webhookaktion hält den Workflow der Logik-App an und wartet, bis der Dienst oder der Endpunkt die URL aufruft, bevor die Logik-App die Ausführung fortsetzt. Die Aktionslogik-App *kündigt das Abonnement* für den Dienst oder Endpunkt in den folgenden Fällen:
+Eine Webhookaktion ist ebenfalls ereignisbasiert und *abonniert* den angegebenen Dienstendpunkt durch die Registrierung einer *Rückruf-URL* bei diesem Endpunkt. Die Webhookaktion hält den Workflow der Logik-App an und wartet, bis der Dienstendpunkt die URL aufruft, bevor die Logik-App die Ausführung fortsetzt. Die Webhookaktion *kündigt das Abonnement* für den Dienstendpunkt in folgenden Fällen:
 
 * Wenn die Webhookaktion erfolgreich abgeschlossen wurde
 * Wenn die Logik-App während des Wartens auf eine Antwort abgebrochen wird
@@ -35,27 +37,16 @@ Eine Webhookaktion ist ebenfalls ereignisbasiert und *abonniert* den angegebenen
 
 Die Aktion zum [**Senden einer Genehmigungs-E-Mail**](connectors-create-api-office365-outlook.md) von Office 365 Outlook ist ein Beispiel für eine Webhookaktion, die diesem Muster folgt. Sie können dieses Muster mithilfe der Webhookaktion auf jeden Dienst erweitern.
 
-> [!NOTE]
-> Azure Logic Apps erzwingt Transport Layer Security (TLS) 1.2, wenn der Rückruf auf den HTTP-Webhook-Trigger oder eine Aktion empfangen wird. Wenn TLS-Handshakefehler auftreten, sollten Sie sicherstellen, dass Sie TLS 1.2 verwenden. Für eingehende Aufrufe werden folgende Verschlüsselungssammlungen unterstützt:
->
-> * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
-> * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
-> * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-> * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-> * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
-> * TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
-> * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
-> * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
-
 Weitere Informationen finden Sie in den folgenden Themen:
 
-* [Triggerparameter des HTTP-Webhooks](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger)
 * [Webhooks und Abonnements](../logic-apps/logic-apps-workflow-actions-triggers.md#webhooks-and-subscriptions)
 * [Erstellen von benutzerdefinierten APIs, die einen Webhook unterstützen](../logic-apps/logic-apps-create-api-app.md)
 
+Informationen zu Verschlüsselung, Sicherheit und Autorisierung für eingehende Aufrufe Ihrer Logik-App, etwa [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security) (früher bekannt als Secure Sockets Layer (SSL)) oder [Azure Active Directory Open Authentication (Azure AD OAuth)](../active-directory/develop/index.yml), finden Sie unter [Sicherer Zugriff und Daten: Zugriff für eingehende Aufrufe anforderungsbasierter Trigger](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests).
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+* Ein Azure-Konto und ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 * Die URL für einen bereits bereitgestellten Endpunkt oder eine API, die das Webhookmuster für das Abonnieren und Kündigen von Abonnements für [Webhooktrigger in Logik-Apps](../logic-apps/logic-apps-create-api-app.md#webhook-triggers) oder [Webhookaktionen in Logik-Apps](../logic-apps/logic-apps-create-api-app.md#webhook-actions) je nach Bedarf unterstützt.
 
@@ -147,11 +138,7 @@ Diese integrierte Aktion ruft den Abonnementendpunkt im Zieldienst auf und regis
 
    Wenn diese Aktion nun ausgeführt wird, ruft Ihre Logik-App den Abonnementendpunkt im Zieldienst auf und registriert die Rückruf-URL. Die Logik-App hält dann den Workflow an und wartet darauf, dass der Zieldienst eine `HTTP POST`-Anforderung an die Rückruf-URL sendet. Wenn dieses Ereignis eintritt, übergibt die Aktion alle Daten in der Anforderung an den Workflow. Wenn der Vorgang erfolgreich abgeschlossen wird, kündigt die Aktion das Abonnement des Endpunkts, und Ihre Logik-App setzt die Ausführung des verbleibenden Workflows fort.
 
-## <a name="connector-reference"></a>Connector-Referenz
-
-Weitere Informationen zu Triggern und Aktionsparametern, die einander ähnlich sind, finden Sie unter [HTTP-Webhookparameter](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger).
-
-### <a name="output-details"></a>Ausgabedetails
+## <a name="trigger-and-action-outputs"></a>Ausgaben aus Triggern und Aktionen
 
 Hier finden Sie weitere Informationen zu den Ausgaben aus einem HTTP-Webhooktrigger oder einer -aktion, die diese Informationen zurückgeben:
 
@@ -173,6 +160,11 @@ Hier finden Sie weitere Informationen zu den Ausgaben aus einem HTTP-Webhooktrig
 | 500 | Interner Serverfehler. Unbekannter Fehler. |
 |||
 
+## <a name="connector-reference"></a>Connector-Referenz
+
+Weitere Informationen zu Triggern und Aktionsparametern, die einander ähnlich sind, finden Sie unter [HTTP-Webhookparameter](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zu anderen [Logic Apps-Connectors](../connectors/apis-list.md)
+* [Sicherer Zugriff und Daten: Zugriff für eingehende Aufrufe anforderungsbasierter Trigger](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)
+* [Connectors für Logic Apps](../connectors/apis-list.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: d4ed88dea0d230fd3488621c217ef9ea086310d5
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 8ee9712c01c8ab6b36f595829c3ccc5ae392ff35
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691478"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276761"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Verwenden von adaptiven Anwendungssteuerungen zum Verringern der Angriffsfläche Ihres Computers
 
@@ -76,7 +76,7 @@ Wählen Sie die Empfehlung aus, oder öffnen Sie die Seite der adaptiven Anwendu
     - **Empfohlen**: Gruppen von Computern, auf denen die gleichen Anwendungen konsistent ausgeführt werden, und für die keine Zulassungsliste konfiguriert ist. Sie sollten die adaptive Anwendungssteuerung für diese Gruppen zu aktivieren.
     
       > [!TIP]
-      > Wenn ein Gruppenname mit dem Präfix „REVIEWGROUP“ angezeigt wird, enthält er Computer mit einer teilweise konsistenten Liste von Anwendungen. Security Center kann kein Muster sehen, empfiehlt aber, diese Gruppe zu überprüfen, um festzustellen, ob _Sie_ einige Regeln für die adaptive Anwendungssteuerung wie in [Bearbeiten der Regel für die adaptive Anwendungssteuerung einer Gruppe](#editing-a-groups-adaptive-application-controls-rule) beschrieben manuell definieren können.
+      > Wenn ein Gruppenname mit dem Präfix „REVIEWGROUP“ angezeigt wird, enthält er Computer mit einer teilweise konsistenten Liste von Anwendungen. Security Center kann kein Muster sehen, empfiehlt aber, diese Gruppe zu überprüfen, um festzustellen, ob _Sie_ einige Regeln für die adaptive Anwendungssteuerung wie in [Bearbeiten der Regel für die adaptive Anwendungssteuerung einer Gruppe](#edit-a-groups-adaptive-application-controls-rule) beschrieben manuell definieren können.
       >
       > Sie können auch Computer aus dieser Gruppe in andere Gruppen verschieben, wie in [Verschieben eines Computers aus einer Gruppe in eine andere](#move-a-machine-from-one-group-to-another) beschrieben.
 
@@ -115,7 +115,7 @@ Wählen Sie die Empfehlung aus, oder öffnen Sie die Seite der adaptiven Anwendu
 
 
 
-## <a name="editing-a-groups-adaptive-application-controls-rule"></a>Bearbeiten der Regeln für die adaptive Anwendungssteuerung einer Gruppe
+## <a name="edit-a-groups-adaptive-application-controls-rule"></a>Bearbeiten der Regeln für die adaptive Anwendungssteuerung einer Gruppe
 
 Sie können die Zulassungsliste für eine Gruppe von Computern aufgrund bekannter Änderungen in Ihrer Organisation bearbeiten. 
 
@@ -150,7 +150,7 @@ So bearbeiten Sie die Regeln für eine Gruppe von Computern:
 
 
 
-## <a name="responding-to-the-allowlist-rules-in-your-adaptive-application-control-policy-should-be-updated-recommendation"></a>Antwort auf die Empfehlung „Zulassungslistenregeln in der Richtlinie für die adaptive Anwendungssteuerung müssen aktualisiert werden“
+## <a name="respond-to-the-allowlist-rules-in-your-adaptive-application-control-policy-should-be-updated-recommendation"></a>Antwort auf die Empfehlung „Zulassungslistenregeln in der Richtlinie für die adaptive Anwendungssteuerung müssen aktualisiert werden“
 
 Diese Empfehlung wird angezeigt, wenn das maschinelle Lernen von Security Center das potenziell legitime Verhalten identifiziert, das bisher noch nicht zugelassen wurde. Die Empfehlung schlägt neue Regeln für vorhandene Definitionen vor, um die Anzahl der falsch positiven Warnungen zu reduzieren.
 
@@ -167,7 +167,7 @@ So beheben Sie die Probleme:
 
 
 
-## <a name="auditing-alerts-and-violations"></a>Überwachen von Warnungen und Verstößen
+## <a name="audit-alerts-and-violations"></a>Überwachen von Warnungen und Verstößen
 
 1. Wählen Sie im Security Center-Menü **Adaptive Anwendungssteuerung** aus.
 
@@ -199,7 +199,7 @@ Wenn Sie einen Computer aus einer Gruppe in eine andere Gruppen verschieben, än
 
 
 
-## <a name="managing-application-controls-via-the-rest-api"></a>Verwalten der Anwendungssteuerung über die REST-API 
+## <a name="manage-application-controls-via-the-rest-api"></a>Verwalten der Anwendungssteuerung über die REST-API 
 
 Verwenden Sie die REST-API, um Ihre adaptive Anwendungssteuerung programmgesteuert zu verwalten. 
 

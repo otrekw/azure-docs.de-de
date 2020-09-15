@@ -3,13 +3,13 @@ title: 'Azure-Ressourcenprotokolle: Unterstützte Dienste und Schemas'
 description: Erläuterung der unterstützten Dienste und Ereignisschemas für Azure-Ressourcenprotokolle.
 ms.subservice: logs
 ms.topic: reference
-ms.date: 06/15/2020
-ms.openlocfilehash: fd2dc4030816ab0b31befe46ac60d5e96fdae917
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.date: 09/01/2020
+ms.openlocfilehash: 133847abada718acbf42baf723e598c132d64e14
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782123"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89392611"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Allgemeines und dienstspezifisches Schema für Azure-Ressourcenprotokolle
 
@@ -54,9 +54,6 @@ Das Schema für Ressourcenprotokolle variiert abhängig von der Ressource und de
 | Anwendungsgateways |[Protokollierung für Application Gateway](../../application-gateway/application-gateway-diagnostics.md) |
 | Azure-Automatisierung |[Protokollanalysen für Azure Automation](../../automation/automation-manage-send-joblogs-log-analytics.md) |
 | Azure Batch |[Azure Batch-Protokollierung](../../batch/batch-diagnostics.md) |
-| Azure Database for MySQL | [Azure Database for MySQL-Diagnoseprotokolle](../../mysql/concepts-server-logs.md#diagnostic-logs) |
-| Azure Database for PostgreSQL | [Azure Database for PostgreSQL-Protokolle](../../postgresql/concepts-server-logs.md#resource-logs) |
-| Azure-Daten-Explorer | [Azure Data Explorer-Protokolle](/azure/data-explorer/using-diagnostic-logs) |
 | Cognitive Services | [Protokollierung für Azure Cognitive Services](../../cognitive-services/diagnostic-logging.md) |
 | Containerregistrierung | [Protokollierung für Azure Container Registry](../../container-registry/container-registry-diagnostics-audit-logs.md) |
 | Content Delivery Network | [Azure-Protokolle für CDN](../../cdn/cdn-azure-diagnostic-logs.md) |
@@ -64,7 +61,11 @@ Das Schema für Ressourcenprotokolle variiert abhängig von der Ressource und de
 | Data Factory | [Überwachen von Data Factorys mit Azure Monitor](../../data-factory/monitor-using-azure-monitor.md) |
 | Data Lake Analytics |[Zugreifen auf Protokolle für Azure Data Lake Analytics](../../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
 | Data Lake Store |[Zugreifen auf Protokolle für Azure Data Lake Store](../../data-lake-store/data-lake-store-diagnostic-logs.md) |
-| Azure Databricks | [Diagnoseprotokollierung in Azure Databricks](https://github.com/MicrosoftDocs/databricks-pr/blob/live/databricks/administration-guide/account-settings/azure-diagnostic-logs.md) |
+| Azure-Daten-Explorer | [Azure Data Explorer-Protokolle](/azure/data-explorer/using-diagnostic-logs) |
+| Azure Database for MySQL | [Azure Database for MySQL-Diagnoseprotokolle](../../mysql/concepts-server-logs.md#diagnostic-logs) |
+| Azure Database for PostgreSQL | [Azure Database for PostgreSQL-Protokolle](../../postgresql/concepts-server-logs.md#resource-logs) |
+| Azure Databricks | [Diagnoseprotokollierung in Azure Databricks](https://docs.microsoft.com/azure/databricks/administration-guide/account-settings/azure-diagnostic-logs) |
+| Azure Digital Twins | [Einrichten der Azure Digital Twins-Diagnose](../../digital-twins/troubleshoot-diagnostics.md#log-schemas)
 | Event Hubs |[Azure Event Hubs-Protokolle](../../event-hubs/event-hubs-diagnostic-logs.md) |
 | ExpressRoute | Schema nicht verfügbar. |
 | Azure Firewall | Schema nicht verfügbar. |
@@ -84,6 +85,7 @@ Das Schema für Ressourcenprotokolle variiert abhängig von der Ressource und de
 | Traffic Manager | [Traffic Manager-Protokollschema](../../traffic-manager/traffic-manager-diagnostic-logs.md) |
 | Virtuelle Netzwerke | Schema nicht verfügbar. |
 | Gateways für virtuelle Netzwerke | Schema nicht verfügbar. |
+
 
 
 ## <a name="next-steps"></a>Nächste Schritte

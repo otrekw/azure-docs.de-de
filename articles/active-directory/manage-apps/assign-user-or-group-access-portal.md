@@ -1,6 +1,6 @@
 ---
-title: Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure AD
-description: Auswählen einer Unternehmens-App zum Zuweisen eines Benutzers oder einer Gruppe in der Azure Active Directory-Vorschau
+title: Verwalten von Benutzerzuweisungen für eine App in Azure Active Directory
+description: Erfahren Sie, wie Sie Benutzer und Gruppen für eine App zuweisen und deren Zuweisung aufheben, indem Sie Azure Active Directory für die Identitätsverwaltung verwenden.
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -11,21 +11,18 @@ ms.topic: how-to
 ms.date: 02/21/2020
 ms.author: kenwith
 ms.reviewer: luleon
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7875bfc55d4530f7f56a96599491cab4a98ced04
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: a8509797e78b70a60ffad4ba01d5a936f8b76f97
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642026"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322295"
 ---
-# <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory
+# <a name="manage-user-assignment-for-an-app-in-azure-active-directory"></a>Verwalten von Benutzerzuweisungen für eine App in Azure Active Directory
 
-Dieser Artikel zeigt Ihnen, wie Sie Benutzer oder Gruppen in Azure Active Directory (Azure AD) Unternehmensanwendungen zuordnen können, und zwar entweder im Azure-Portal oder über PowerShell. Wenn Sie einen Benutzer einer Anwendung zuweisen, wird diese unter [Meine Apps](https://myapps.microsoft.com/) für den Benutzer angezeigt, um den Zugriff zu erleichtern. Wenn die Anwendung Rollen verfügbar macht, können Sie dem Benutzer auch eine bestimmte Rolle zuweisen.
+In diesem Artikel wird gezeigt, wie Sie Benutzer und Gruppen in Azure Active Directory (Azure AD) Unternehmensanwendungen zuweisen können, und zwar entweder im Azure-Portal oder über PowerShell. Wenn Sie einen Benutzer einer Anwendung zuweisen, wird diese unter [Meine Apps](https://myapps.microsoft.com/) für den Benutzer angezeigt, um den Zugriff zu erleichtern. Wenn die Anwendung Rollen verfügbar macht, können Sie dem Benutzer auch eine bestimmte Rolle zuweisen.
 
 Für eine bessere Kontrolle können bestimmte Arten von Unternehmensanwendungen so konfiguriert werden, dass [eine Benutzerzuweisung](#configure-an-application-to-require-user-assignment) erforderlich ist. 
-
-Um [einen Benutzer oder eine Gruppe einer Unternehmens-App zuzuweisen](#assign-users-or-groups-to-an-app-via-the-azure-portal), müssen Sie sich als globaler Administrator, Anwendungsadministrator, Cloudanwendungsadministrator oder als der zugewiesene Besitzer der Unternehmens-App anmelden.
 
 > [!IMPORTANT]
 > Wenn Sie einer Anwendung eine Gruppe zuweisen, haben nur die Benutzer in der Gruppe Zugriff. Die Zuweisung wird nicht an geschachtelte Gruppen weitergegeben.
@@ -47,60 +44,29 @@ Wenn die Zuweisung *nicht erforderlich* ist, entweder weil Sie diese Option auf 
 
 Diese Einstellung hat keine Auswirkung darauf, ob eine Anwendung in „Meine Apps“ angezeigt wird. Anwendungen werden im Zugriffsbereich „Meine Apps“ von Benutzern angezeigt, sobald Sie der Anwendung einen Benutzer oder eine Gruppe zugewiesen haben. Hintergrundinformationen finden Sie unter [Verwaltung des Zugriffs auf Apps](what-is-access-management.md).
 
-
 So fordern Sie eine Benutzerzuweisung für eine Anwendung an
-
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) mit einem Administratorkonto oder als Besitzer der Anwendung an.
-
 2. Wählen Sie **Azure Active Directory** aus. Wählen Sie im linken Navigationsmenü **Unternehmensanwendungen** aus.
-
 3. Wählen Sie die Anwendung in der Liste aus. Wenn die Anwendung nicht angezeigt wird, beginnen Sie mit der Eingabe ihres Namens in das Suchfeld. Oder verwenden Sie die Filtersteuerelemente, um den Anwendungstyp, Status oder die Sichtbarkeit auszuwählen, und wählen Sie dann **Übernehmen** aus.
-
 4. Wählen Sie im Navigationsmenü auf der linken Seite **Eigenschaften** aus.
-
 5. Vergewissern Sie sich, dass **Benutzerzuweisung erforderlich?** auf **Ja** festgelegt ist.
-
    > [!NOTE]
    > Wenn der Umschalter **Benutzerzuweisung erforderlich?** nicht verfügbar ist, können Sie mit PowerShell die Eigenschaft appRoleAssignmentRequired auf den Dienstprinzipal festlegen.
-
 6. Wählen Sie oben auf der Seite die Schaltfläche **Speichern** aus.
 
-## <a name="assign-users-or-groups-to-an-app-via-the-azure-portal"></a>Zuweisen von Benutzern und Gruppen zu einer App im Azure-Portal
+## <a name="assign-or-unassign-users-and-groups-for-an-app-using-the-azure-portal"></a>Zuweisen von Benutzern und Gruppen für eine App und Aufheben ihrer Zuweisung über das Azure-Portal
+Weitere Informationen zum Zuweisen eines Benutzers oder einer Gruppe und das Aufheben ihrer Zuweisung über das Azure-Portal finden Sie in der [Schnellstartreihe zur Anwendungsverwaltung](add-application-portal-assign-users.md). 
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als globaler Administrator, Anwendungsadministrator, Cloudanwendungsadministrator oder als der zugewiesene Besitzer der Unternehmens-App an.
-2. Wählen Sie **Azure Active Directory** aus. Wählen Sie im linken Navigationsmenü **Unternehmensanwendungen** aus.
-3. Wählen Sie die Anwendung in der Liste aus. Wenn die Anwendung nicht angezeigt wird, beginnen Sie mit der Eingabe ihres Namens in das Suchfeld. Oder verwenden Sie die Filtersteuerelemente, um den Anwendungstyp, Status oder die Sichtbarkeit auszuwählen, und wählen Sie dann **Übernehmen** aus.
-4. Wählen Sie im Navigationsmenü auf der linken Seite **Benutzer und Gruppen** aus.
-   > [!NOTE]
-   > Wenn Sie Microsoft-Anwendungen wie Office 365-Apps Benutzer zuweisen möchten, unterstützen einige dieser Apps PowerShell. 
-5. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**.
-6. Wählen Sie im Bereich **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
-7. Wählen Sie den Benutzer oder die Gruppe aus, den bzw. die Sie der Anwendung zuordnen möchten, oder beginnen Sie mit der Eingabe des Namens des Benutzers oder der Gruppe in das Suchfeld. Sie können mehrere Benutzer und Gruppen auswählen. Ihre Auswahl wird unter **Ausgewählte Elemente** angezeigt.
-8. Klicken Sie abschließend auf **Auswählen**.
-
-   ![Zuweisen eines Benutzers oder einer Gruppe zur App](./media/assign-user-or-group-access-portal/assign-users.png)
-
-9. Wählen Sie im Bereich **Benutzer und Gruppen** mindestens einen Benutzer oder eine Gruppe aus der Liste aus, und wählen Sie dann am unteren Rand des Bereichs die Schaltfläche **Auswählen** aus.
-10. Falls von der Anwendung unterstützt, können Sie dem Benutzer oder der Gruppe eine Rolle zuweisen. Wählen Sie im Bereich **Zuweisung hinzufügen** die Option **Rolle auswählen** aus. Wählen Sie dann im Bereich **Rolle auswählen** eine Rolle aus, die den ausgewählten Benutzern oder Gruppen zugeordnet werden soll. Wählen Sie anschließend unten im Bereich **OK** aus. 
-
-    > [!NOTE]
-    > Wenn die Anwendung die Rollenauswahl nicht unterstützt, wird die Standardzugriffsrolle zugewiesen. In diesem Fall verwaltet die Anwendung die Zugriffsebene von Benutzern.
-
-2. Wählen Sie im Bereich **Zuweisung hinzufügen** unten die Schaltfläche **Zuweisen** aus.
-
-## <a name="assign-users-or-groups-to-an-app-via-powershell"></a>Zuweisen von Benutzern und Gruppen zu einer App über PowerShell
-
+## <a name="assign-users-and-groups-to-an-app-using-powershell"></a>Zuweisen von Benutzern und Gruppen zu einer App mithilfe von PowerShell
 1. Öffnen Sie eine Windows PowerShell-Eingabeaufforderung mit erhöhten Rechten.
-
    > [!NOTE]
    > Sie müssen das AzureAD-Modul installieren (verwenden Sie den Befehl `Install-Module -Name AzureAD`). Wenn Sie zum Installieren eines NuGet-Moduls oder des neuen Azure Active Directory V2-PowerShell-Moduls aufgefordert werden, geben Sie „J“ ein, und drücken Sie die EINGABETASTE.
-
-1. Führen Sie `Connect-AzureAD` aus, und melden Sie sich mit dem Benutzerkonto eines globalen Administrators an.
-1. Weisen Sie mithilfe des folgenden Skripts einer Anwendung einen Benutzer und eine Rolle zu:
+2. Führen Sie `Connect-AzureAD` aus, und melden Sie sich mit dem Benutzerkonto eines globalen Administrators an.
+3. Weisen Sie mithilfe des folgenden Skripts einer Anwendung einen Benutzer und eine Rolle zu:
 
     ```powershell
     # Assign the values to the variables
-    $username = "<You user's UPN>"
+    $username = "<Your user's UPN>"
     $app_name = "<Your App's display name>"
     $app_role_name = "<App role display name>"
 
@@ -112,7 +78,6 @@ So fordern Sie eine Benutzerzuweisung für eine Anwendung an
     # Assign the user to the app role
     New-AzureADUserAppRoleAssignment -ObjectId $user.ObjectId -PrincipalId $user.ObjectId -ResourceId $sp.ObjectId -Id $appRole.Id
     ```
-
 Weitere Informationen zum Zuweisen eines Benutzers zu einer Anwendungsrolle finden Sie in der Dokumentation zu [New-AzureADUserAppRoleAssignment](https://docs.microsoft.com/powershell/module/azuread/new-azureaduserapproleassignment?view=azureadps-2.0).
 
 Wenn Sie eine Gruppe einer Unternehmens-App zuweisen möchten, müssen Sie `Get-AzureADUser` durch `Get-AzureADGroup` und `New-AzureADUserAppRoleAssignment` durch `New-AzureADGroupAppRoleAssignment` ersetzen.
@@ -130,33 +95,52 @@ In diesem Beispiel wird die Benutzerin Britta Simon mithilfe von PowerShell der 
     $username = "britta.simon@contoso.com"
     $app_name = "Workplace Analytics"
     ```
-
-1. In diesem Beispiel kennen wir den genauen Namen der Anwendungsrolle nicht, die wir Britta Simon zuweisen möchten. Führen Sie die folgenden Befehle aus, um den Benutzer ($user) und den Dienstprinzipal ($sp) abzurufen. Verwenden Sie dabei die Anzeigenamen für den Benutzer-UPN und den Dienstprinzipal.
+2. In diesem Beispiel kennen wir den genauen Namen der Anwendungsrolle nicht, die wir Britta Simon zuweisen möchten. Führen Sie die folgenden Befehle aus, um den Benutzer ($user) und den Dienstprinzipal ($sp) abzurufen. Verwenden Sie dabei die Anzeigenamen für den Benutzer-UPN und den Dienstprinzipal.
 
     ```powershell
     # Get the user to assign, and the service principal for the app to assign to
     $user = Get-AzureADUser -ObjectId "$username"
     $sp = Get-AzureADServicePrincipal -Filter "displayName eq '$app_name'"
     ```
-
-1. Führen Sie den Befehl `$sp.AppRoles` aus, um die für die Workplace Analytics-Anwendung verfügbaren Rollen anzuzeigen. In diesem Beispiel möchten wir Britta Simon die Rolle „Analyst (Limited access)“ (Analyst (Eingeschränkter Zugriff)) zuweisen.
-
+3. Führen Sie den Befehl `$sp.AppRoles` aus, um die für die Workplace Analytics-Anwendung verfügbaren Rollen anzuzeigen. In diesem Beispiel möchten wir Britta Simon die Rolle „Analyst (Limited access)“ (Analyst (Eingeschränkter Zugriff)) zuweisen.
    ![Zeigt die für Benutzer mit Workplace Analytics-Rolle verfügbaren Rollen an](./media/assign-user-or-group-access-portal/workplace-analytics-role.png)
-
-1. Weisen Sie den Rollennamen der Variablen `$app_role_name` zu.
+4. Weisen Sie den Rollennamen der Variablen `$app_role_name` zu.
 
     ```powershell
     # Assign the values to the variables
     $app_role_name = "Analyst (Limited access)"
     $appRole = $sp.AppRoles | Where-Object { $_.DisplayName -eq $app_role_name }
     ```
-
-1. Führen Sie den folgenden Befehl aus, um den Benutzer der App-Rolle zuzuweisen:
+5. Führen Sie den folgenden Befehl aus, um den Benutzer der App-Rolle zuzuweisen:
 
     ```powershell
     # Assign the user to the app role
     New-AzureADUserAppRoleAssignment -ObjectId $user.ObjectId -PrincipalId $user.ObjectId -ResourceId $sp.ObjectId -Id $appRole.Id
     ```
+
+## <a name="unassign-users-and-groups-from-an-app-using-powershell"></a>Aufheben der Zuweisung von Benutzern und Gruppen zu einer App mithilfe von PowerShell
+
+1. Öffnen Sie eine Windows PowerShell-Eingabeaufforderung mit erhöhten Rechten.
+   > [!NOTE]
+   > Sie müssen das AzureAD-Modul installieren (verwenden Sie den Befehl `Install-Module -Name AzureAD`). Wenn Sie zum Installieren eines NuGet-Moduls oder des neuen Azure Active Directory V2-PowerShell-Moduls aufgefordert werden, geben Sie „J“ ein, und drücken Sie die EINGABETASTE.
+2. Führen Sie `Connect-AzureAD` aus, und melden Sie sich mit dem Benutzerkonto eines globalen Administrators an.
+3. Entfernen Sie mithilfe des folgenden Skripts einen Benutzer und eine Rolle aus einer Anwendung:
+
+    ```powershell
+    # Store the proper parameters
+    $user = get-azureaduser -ObjectId <objectId>
+    $spo = Get-AzureADServicePrincipal -ObjectId <objectId>
+
+    #Get the ID of role assignment 
+    $assignments = Get-AzureADServiceAppRoleAssignment -ObjectId $spo.ObjectId | Where {$_.PrincipalDisplayName -eq $user.DisplayName}
+
+    #if you run the following, it will show you what is assigned what
+    $assignments | Select *
+
+    #To remove the App role assignment run the following command.
+    Remove-AzureADServiceAppRoleAssignment -ObjectId $spo.ObjectId -AppRoleAssignmentId $assignments[assignment #].ObjectId
+    ```
+
 
 ## <a name="related-articles"></a>Verwandte Artikel
 

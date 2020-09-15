@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: efcc4aebf16fccc70af7c77f0e8481d24f13b9cd
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 0e83f63e3c39f2aa20cd46f098185aba523e2478
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935261"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950475"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Previewfunktionen in Azure Cognitive Search
 
@@ -35,7 +35,7 @@ Previewfunktionen, die in die allgemeine Verfügbarkeit übergehen, werden aus d
 |  [**Azure Data Lake Storage Gen2-Indexer**](search-howto-index-azure-data-lake-storage.md) | Indexerdatenquelle | Indizieren von Inhalten und Metadaten aus Data Lake Storage Gen2.| [Registrierung](https://aka.ms/azure-cognitive-search/indexer-preview) ist erforderlich, damit Unterstützung für Ihr Abonnement im Back-End aktiviert werden kann. Greifen Sie auf diese Datenquelle mithilfe von [Datenquelle erstellen (REST)](/rest/api/searchservice/create-data-source) in api-version=2020-06-30-Preview oder api-version=2019-05-06-Preview zu. |
 | [**moreLikeThis**](search-more-like-this.md) | Abfrage | Sucht Dokumente, die für ein bestimmtes Dokument relevant sind. Dieses Feature war in früheren Vorschauversionen enthalten. | Fügen Sie diesen Abfrageparameter mithilfe von Aufrufen von [Dokumente durchsuchen (REST)](/rest/api/searchservice/search-documents) in api-version=2020-06-30-Preview, 2019-05-06-Preview, 2016-09-01-Preview, 2017-11-11-Preview hinzu. |
 
-## <a name="calling-preview-rest-apis"></a>Aufrufen von Vorschau-Rest-APIs
+## <a name="how-to-call-a-preview-rest-api"></a>Aufrufen einer Vorschau-REST-API
 
 Die kognitive Azure-Suche bietet immer zuerst Vorabversionen experimenteller Funktionen über die REST-API, dann über Vorabversionen des .NET SDK.
 
@@ -47,12 +47,14 @@ Auch wenn einige Previewfunktionen im Portal und im .NET SDK verfügbar sein kö
 
 + Für Verwaltungsvorgänge lautet die aktuelle Vorschauversion [ **`2019-10-01-Preview`** ](/rest/api/searchmanagement/index-2019-10-01-preview).
 
-Ältere Vorschauversionen sind zwar noch betriebsbereit, veralten jedoch mit der Zeit. Wenn Ihr Code `api-version=2019-05-06-Preview`, `api-version=2016-09-01-Preview` oder `api-version=2017-11-11-Preview` aufruft, sind diese Aufrufe noch gültig. Allerdings wird nur die neueste Vorschauversion mit Verbesserungen aktualisiert. 
+Ältere Vorschauversionen sind zwar noch betriebsbereit, veralten jedoch mit der Zeit. Wenn Ihr Code `api-version=2019-05-06-Preview`, `api-version=2016-09-01-Preview` oder `api-version=2017-11-11-Preview` aufruft, sind diese Aufrufe noch gültig. Allerdings wird nur die neueste Vorschauversion mit Verbesserungen aktualisiert.
 
 Die folgende Beispielsyntax veranschaulicht einen Aufruf der API-Vorschauversion.
 
 ```HTTP
-GET https://[service name].search.windows.net/indexes/[index name]/docs?search=*&api-version=2020-06-30-Preview
+POST https://[service name].search.windows.net/indexes/hotels-idx/docs/search?api-version=2020-06-30-Preview  
+  Content-Type: application/json  
+  api-key: [admin key]
 ```
 
 Der Dienst für die kognitive Azure-Suche ist in mehreren Versionen verfügbar. Weitere Informationen finden Sie unter [API-Versionen](search-api-versions.md).

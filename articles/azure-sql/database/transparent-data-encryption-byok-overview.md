@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: cf0fec1f081a232abc88941e3dd785fb7617fb57
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 04a3499da15bc226fe2cada2283d7a115036a48c
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387114"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318289"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL Transparent Data Encryption mithilfe eines kundenseitig verwalteten Schlüssels
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -132,6 +132,11 @@ Nachdem der Zugriff auf den Schlüssel wiederhergestellt wurde, erfordert die Wi
 - Wenn der Schlüsselzugriff innerhalb von 8 Stunden wiederhergestellt wird, erfolgt die automatische Reparatur der Datenbank innerhalb der nächsten Stunde.
 
 - Wenn der Schlüsselzugriff nach mehr als 8 Stunden wiederhergestellt wird, ist keine automatische Reparatur möglich. Die erneute Aktivierung der Datenbank erfordert zusätzliche Schritte im Portal und kann abhängig von der Größe der Datenbank sehr lange dauern. Wenn die Datenbank wieder online ist, gehen zuvor konfigurierte Einstellungen auf Serverebene wie die Konfiguration der [Failovergruppe](auto-failover-group-overview.md), der Verlauf der Point-in-Time-Wiederherstellung und Tags **verloren**. Daher empfiehlt es sich, ein Benachrichtigungssystem zu implementieren, das es Ihnen ermöglicht, Probleme beim Zugriff auf zugrunde liegende Schlüssel innerhalb von 8 Stunden zu erkennen und zu beheben.
+
+Nachfolgend sehen Sie die zusätzlichen Schritte, die im Portal ausgeführt werden müssen, um eine Datenbank, auf die nicht zugegriffen werden kann, wieder online zu schalten:
+
+![TDE-BYOK-Datenbank, auf die nicht zugegriffen werden kann](./media/transparent-data-encryption-byok-overview/customer-managed-tde-inaccessible-database.jpg)
+
 
 ### <a name="accidental-tde-protector-access-revocation"></a>Versehentliches Sperren des Zugriffs auf die TDE-Schutzvorrichtung
 

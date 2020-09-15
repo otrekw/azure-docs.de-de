@@ -3,12 +3,12 @@ title: Übersicht über Sicherheitsfeatures
 description: Erfahren Sie mehr über die Sicherheitsfunktionen in Azure Backup, die Ihnen helfen, Ihre Sicherungsdaten zu schützen und die Sicherheitsanforderungen Ihres Unternehmens zu erfüllen.
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: f9a505723b40df61665a99e898d59ecfb8c03fd5
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 62f4e6783d4c2c2e09b7b4cbb41ae98ac2779ebe
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890466"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012550"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Übersicht über Sicherheitsfeatures in Azure Backup
 

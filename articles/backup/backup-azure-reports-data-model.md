@@ -3,12 +3,12 @@ title: Datenmodell für Azure Backup-Diagnoseereignisse
 description: Dieses Datenmodell bezieht sich auf den ressourcenspezifischen Modus zum Senden von Diagnoseereignissen an Log Analytics (LA).
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 8cc671152485bc2781a80f96e48b81263dea221b
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: adc1442b674b9a6e947ef65967a2c2f1359e7d8a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892523"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017582"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Datenmodell für Azure Backup-Diagnoseereignisse
 
@@ -135,8 +135,8 @@ Diese Tabelle enthält Details zu auftragsbezogenen Feldern.
 | JobUniqueId                    | Text          | Eindeutige ID zur Bezeichnung des Auftrags                                |
 | ProtectedContainerUniqueId     | Text          | Eindeutiger Bezeichner des geschützten Servers, der dem Auftrag zugeordnet ist |
 | RecoveryJobDestination         | Text          | Ziel eines Wiederherstellungsauftrags, an dem die Daten wiederhergestellt werden   |
-| RecoveryJobRPDateTime          | Datetime      | Datum und Uhrzeit, wann der Wiederherstellungspunkt, der wiederhergestellt wird, erstellt wurde |
-| RecoveryJobLocation            | Text          | Ort, an dem der Wiederherstellungspunkt, der wiederhergestellt wird, gespeichert wurde |
+| RecoveryJobRPDateTime          | Datetime      | Datum und Uhrzeit der Erstellung des Wiederherstellungspunkts, der wiederhergestellt wird |
+| RecoveryJobLocation            | Text          | Speicherort des Wiederherstellungspunkts, der wiederhergestellt wird |
 | RecoveryLocationType           | Text          | Typ des Wiederherstellungsspeicherorts                                |
 | SchemaVersion                  | Text          | Aktuelle Version des Schemas, z. B. **V2**            |
 | State                          | Text          | Aktueller Status des Auftragsobjekts, z.B. „Aktiv“, „Gelöscht“ |

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 02/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 79db3db5a46700f55c1dc759443cae194660372d
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 87bb2cc53ce056552e8f44aac4ade96e603a8787
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007640"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230040"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-ios-client"></a>Herstellen einer Verbindung mit Windows Virtual Desktop mithilfe des iOS-Clients
 
@@ -36,6 +36,7 @@ Abonnieren Sie einen Feed wie folgt:
 2. Geben Sie die Feed-URL in das Feld **Feed-URL** ein. Die Feed-URL kann eine URL oder eine E-Mail-Adresse sein.
    - Wenn Sie eine URL verwenden, verwenden Sie die URL, die Ihr Administrator Ihnen mitgeteilt hat. Normalerweise lautet die URL <https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery>.
    - Um E-Mail zu verwenden, gib deine E-Mail-Adresse ein. Dies weist den Client an, nach einer URL zu suchen, die Ihrer E-Mail-Adresse zugeordnet ist, wenn der Administrator den Server auf diese Weise konfiguriert hat.
+   - Verwenden Sie <https://rdweb.wvd.azure.us/api/arm/feeddiscovery>, um eine Verbindung über das US Gov-Portal herzustellen.
 3. Tippen Sie auf **Weiter**.
 4. Geben Sie Ihre Anmeldeinformationen ein, wenn Sie dazu aufgefordert werden.
    - Geben Sie als **Benutzername** den Benutzernamen mit der Berechtigung für den Zugriff auf Ressourcen an.

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e2c516371ada59501edd89491a07014ef949eba
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: f0313c27666cda785b24f23436f6ad727f337ca8
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604393"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259352"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Geräteidentität und Desktopvirtualisierung
 
@@ -68,7 +68,7 @@ Bevor Sie die Geräteidentitäten in Azure AD für Ihre VDI-Umgebung konfigurier
 
 <sup>4</sup> Eine Identitätsinfrastruktur-Umgebung des Typs **Verwaltet** ist eine Umgebung mit Azure AD als Identitätsanbieter und wird entweder mit [Kennworthashsynchronisierung (PHS)](../hybrid/whatis-phs.md) oder [Passthrough-Authentifizierung (PTA)](../hybrid/how-to-connect-pta.md) und [nahtloser einmaliger Anmeldung](../hybrid/how-to-connect-sso.md) bereitgestellt.
 
-<sup>5</sup> **Die Unterstützung nicht beständiger Versionen für aktuelle Windows-Geräte** erfordert zusätzliche Überlegungen, wie unten im Leitfaden beschrieben.
+<sup>5</sup> **Die Unterstützung nicht beständiger Versionen für aktuelle Windows-Geräte** erfordert zusätzliche Überlegungen, wie unten im Leitfaden beschrieben. Für dieses Szenario ist Windows 10 1803, Windows Server 2019 oder Windows Server (halbjährlicher Kanal) ab Version 1803 erforderlich.
 
 <sup>6</sup> **Die Unterstützung nicht beständiger Versionen für kompatible Windows-Geräte** erfordert zusätzliche Überlegungen, wie unten im Leitfaden beschrieben.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: memildin
-ms.openlocfilehash: dd694fd013069c33e4f3af2c81447e014d41b691
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1af99f6317ac5888478c7df08fcc31478ef1ccef
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519224"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180846"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Integrieren von Sicherheitslösungen in Azure Security Center
 Dieses Dokument unterstützt Sie bei der Verwaltung von bereits mit Azure Security Center verbundenen Sicherheitslösungen sowie beim Hinzufügen neuer Lösungen.
@@ -35,10 +35,7 @@ Derzeit umfassen die integrierten Sicherheitslösungen Sicherheitsrisikobewertun
 > [!NOTE]
 > Security Center installiert den Log Analytics-Agent nicht auf virtuellen Appliances von Partnern, da die meisten Sicherheitsanbieter die Ausführung externer Agents auf ihren Appliances untersagen.
 
-Weitere Informationen zur Integration von Qualys-Scan-Tools für Sicherheitsrisiken, einschließlich einer integrierten Überprüfung, die für Kunden mit Standard-Tarif zur Verfügung steht, finden Sie unter: 
-
-- [Integrierte Überprüfung auf Sicherheitsrisiken für virtuelle Computer](built-in-vulnerability-assessment.md).
-- [Bereitstellen einer Partnerlösung zur Überprüfung auf Sicherheitsrisiken](partner-vulnerability-assessment.md).
+Weitere Informationen zur Integration von Qualys-Scantools für Sicherheitsrisiken, einschließlich einer integrierten Überprüfung, die Kunden im Standard-Tarif zur Verfügung steht, finden Sie unter [Sicherheitsrisikobewertungen für Ihre virtuellen Azure-Computer](deploy-vulnerability-assessment-vm.md).
 
 Azure Security Center bietet auch eine Sicherheitsrisikoanalyse für Folgendes:
 

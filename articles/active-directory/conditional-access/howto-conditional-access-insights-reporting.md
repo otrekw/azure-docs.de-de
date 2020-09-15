@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 05/01/2020
+ms.date: 08/27/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 678c32703501c4d0b66321cfc3518631ffa28c0c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3c2364eae0d04da8f8e6fe38ae80db7adb8666ce
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253272"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049416"
 ---
 # <a name="conditional-access-insights-and-reporting"></a>Erkenntnisse und Berichterstellung zum bedingten Zugriff
 
@@ -97,6 +97,22 @@ Zeigen Sie die Aufschlüsselung der Benutzer und Anmeldungen für die jeweiligen
 
 Sie können unten im Dashboard auch die Anmeldungen eines bestimmten Benutzers überprüfen. Die Abfrage auf der linken Seite zeigt die häufigsten Benutzer an. Wenn Sie einen Benutzer auswählen, wird die Abfrage nach rechts gefiltert.  
 
+> [!NOTE]
+> Wählen Sie beim Herunterladen der Anmeldeprotokolle das JSON-Format aus, um nur berichtsspezifische Ergebnisdaten für den bedingten Zugriff einzubeziehen.
+
+## <a name="configure-a-conditional-access-policy-in-report-only-mode"></a>Konfigurieren einer Richtlinie für bedingten Zugriff im reinen Berichtsmodus
+
+Gehen Sie wie folgt vor, um eine Richtlinie für bedingten Zugriff im reinen Berichtsmodus zu konfigurieren:
+
+1. Melden Sie sich als Administrator für bedingten Zugriff, Sicherheitsadministrator oder globaler Administrator beim **Azure-Portal** an.
+1. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff**.
+1. Wählen Sie eine vorhandene Richtlinie aus, oder erstellen Sie eine neue Richtlinie.
+1. Legen Sie unter **Richtlinie aktivieren** die Umschaltfläche auf den Modus **Nur Bericht** fest.
+1. Wählen Sie **Speichern** aus.
+
+> [!TIP]
+> Wenn Sie den Status **Richtlinie aktivieren** einer vorhandenen Richtlinie von **Ein** in **Nur melden** ändern, wird dadurch die vorhandene Richtlinienerzwingung deaktiviert. 
+
 ## <a name="troubleshooting"></a>Problembehandlung
 
 ### <a name="why-are-queries-failing-due-to-a-permissions-error"></a>Warum schlagen Abfragen aufgrund eines Berechtigungsfehlers fehl?
@@ -111,6 +127,10 @@ Um auf die Arbeitsmappe zuzugreifen, benötigen Sie die richtigen Berechtigungen
 ![Problembehandlung bei fehlgeschlagenen Abfragen](./media/howto-conditional-access-insights-reporting/query-troubleshoot-sign-in-logs.png)
 
 Weitere Informationen zum Streamen von Azure AD Anmeldeprotokollen in einen Log Analytics-Arbeitsbereich finden Sie im Artikel [Integrieren von Azure AD-Protokollen in Azure Monitor-Protokolle](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md).
+
+### <a name="why-are-the-queries-in-the-workbook-failing"></a>Warum können die Abfragen in der Arbeitsmappe nicht ausgeführt werden?
+
+Kunden haben festgestellt, dass Abfragen manchmal nicht ausgeführt werden, wenn der Arbeitsmappe falsche oder mehrere Arbeitsbereiche zugeordnet sind. Um dieses Problem zu beheben, klicken Sie oben in der Arbeitsmappe auf **Bearbeiten**, und klicken Sie dann auf das Zahnradsymbol „Einstellungen“. Wählen Sie nicht der Arbeitsmappe zugeordnete Arbeitsbereiche aus, und entfernen Sie diese Arbeitsbereiche. Jeder Arbeitsmappe sollte nur ein Arbeitsbereich zugeordnet sein.
 
 ### <a name="why-is-the-conditional-access-policies-parameter-is-empty"></a>Warum ist der Parameter für Richtlinien für bedingten Zugriff leer?
 
@@ -134,4 +154,8 @@ Sie können die Arbeitsmappe bearbeiten und anpassen, indem Sie zu **Azure Activ
  
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Nur-Bericht-Modus des bedingten Zugriffs](concept-conditional-access-report-only.md)
+- [Nur-Bericht-Modus des bedingten Zugriffs](concept-conditional-access-report-only.md)
+
+- Weitere Informationen zu Azure AD-Arbeitsmappen finden Sie im Artikel [Verwenden von Azure Monitor-Arbeitsmappen für Azure Active Directory-Berichte](../reports-monitoring/howto-use-azure-monitor-workbooks.md).
+
+- [Allgemeine Richtlinien für bedingten Zugriff](concept-conditional-access-policy-common.md)

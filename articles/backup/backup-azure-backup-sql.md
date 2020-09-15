@@ -3,12 +3,12 @@ title: Sichern von SQL Server in Azure als eine DPM-Workload
 description: Eine Einführung in die Sicherung von SQL Server-Datenbanken mithilfe des Azure Backup-Diensts
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: ef8ffcb2445a7be27f7fd3da2115f76fe961fd74
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: e7877d9104fe1263368083eaabd99eae3bdc657b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876307"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017310"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>Sichern von SQL Server in Azure als eine DPM-Workload
 
@@ -38,7 +38,7 @@ Zum Sichern und Wiederherstellen einer SQL Server-Datenbank in Azure führen Si
   * Von DPM wird ein Failover erkannt und der Schutz der Datenbank fortgesetzt.
   * Mehrere Standorte umfassende Clusterkonfigurationen für eine Instanz von SQL Server werden von DPM unterstützt.
 * Wenn Sie Datenbanken schützen, für die die Funktion "AlwaysOn" verwendet wird, gelten für DPM folgende Einschränkungen:
-  * Die Sicherungsrichtlinie für Verfügbarkeitsgruppen, die in SQL Server ausgehend von den Sicherungspräferenzen festgelegt wird, wird von DPM wie folgt berücksichtigt:
+  * Die Sicherungsrichtlinie für Verfügbarkeitsgruppen, die in SQL Server ausgehend von den Sicherungspräferenzen festgelegt wurde, wird von DPM wie folgt berücksichtigt:
     * Sekundär bevorzugen: Sicherungen müssen für ein sekundäres Replikat ausgeführt werden, es sei denn, das primäre Replikat ist als einziges Replikat online. Wenn mehrere sekundäre Replikate verfügbar sind, wird der Knoten mit der höchsten Sicherungspriorität für die Sicherung ausgewählt. Wenn nur das primäre Replikat verfügbar ist, muss die Sicherung für das primäre Replikat stattfinden.
     * Nur sekundäre: Die Sicherung darf nicht für das primäre Replikat ausgeführt werden. Wenn nur das primäre Replikat online ist, darf keine Sicherung ausgeführt werden.
     * Primär: Sicherungen müssen immer für das primäre Replikat ausgeführt werden.

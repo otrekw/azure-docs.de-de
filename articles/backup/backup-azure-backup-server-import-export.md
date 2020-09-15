@@ -3,12 +3,12 @@ title: Offlinesicherung für DPM und Azure Backup Server
 description: Mit Azure Backup können Sie Daten unter Verwendung des Azure Import/Export-Diensts aus dem Netzwerk senden. In diesem Artikel wird der Offlinesicherungsworkflow für DPM und Azure Backup Server erläutert.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: 221424871aa4f022e199c98e95024ec20e55d803
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 368ae846a24ec04ee4b7da9b5971c00180be611d
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890075"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378456"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>Offlinesicherungsworkflow für DPM und Azure Backup Server (MABS)
 
@@ -51,10 +51,10 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind, bevor Sie 
 * Erstellen Sie ein Azure Storage-Konto in dem Abonnement, in dem sich auch der Recovery Services-Tresor befindet.
 * Vergewissern Sie sich, dass Sie über die [erforderlichen Berechtigungen](../active-directory/develop/howto-create-service-principal-portal.md) für die Erstellung der Azure Active Directory-Anwendung verfügen. Der Workflow zur Offlinesicherung erstellt eine Azure Active Directory-Anwendung in dem Abonnement, das dem Azure Storage-Konto zugeordnet ist. Die Anwendung dient dazu, Azure Backup sicheren und bereichsbezogenen Zugriff auf den Azure-Importdienst zu ermöglichen, der für den Workflow zur Offlinesicherung erforderlich ist.
 * Registrieren Sie den Ressourcenanbieter „Microsoft.ImportExport“ bei dem Abonnement mit dem Azure Storage-Konto. So registrieren Sie den Ressourcenanbieter:
-    1. Klicken Sie im Hauptmenü auf **Abonnements**.
+    1. Wählen Sie im Hauptmenü die Option **Abonnements** aus.
     2. Wählen Sie bei Verwendung mehrerer Abonnements das Abonnement aus, das Sie für die Offlinesicherung verwenden. Falls Sie nur ein einzelnes Abonnement verwenden, wird Ihr Abonnement angezeigt.
-    3. Klicken Sie im Abonnementmenü auf **Ressourcenanbieter**, um die Anbieterliste anzuzeigen.
-    4. Scrollen Sie in der Anbieterliste nach unten zu „Microsoft.ImportExport“. Falls der Status „NotRegistered“ lautet, klicken Sie auf **Registrieren**.
+    3. Wählen Sie im Abonnementmenü die Option **Ressourcenanbieter** aus, um die Anbieterliste anzuzeigen.
+    4. Scrollen Sie in der Anbieterliste nach unten zu „Microsoft.ImportExport“. Ist „NotRegistered“ unter „Status“ angegeben, wählen Sie **Registrieren** aus.
 
        ![Registrieren des Ressourcenanbieters](./media/backup-azure-backup-server-import-export/register-import-export.png)
 
@@ -68,7 +68,7 @@ In diesem Abschnitt wird erläutert, wie Sie den Workflow zur Offlinesicherung d
 
 ## <a name="initiate-offline-backup"></a>Initiieren der Offlinesicherung
 
-1. Wenn Sie eine neue Schutzgruppe mit Onlineschutz erstellen oder einer vorhandenen Schutzgruppe Onlineschutz hinzufügen, wird der folgende Bildschirm angezeigt. Um die anfängliche Onlinereplikationsmethode auszuwählen, wählen Sie **Übertragung über eigenen Datenträger** aus, und klicken Sie dann auf **Weiter**.
+1. Wenn Sie eine neue Schutzgruppe mit Onlineschutz erstellen oder einer vorhandenen Schutzgruppe Onlineschutz hinzufügen, wird der folgende Bildschirm angezeigt. Um die anfängliche Onlinereplikationsmethode auszuwählen, wählen Sie **Übertragung über eigenen Datenträger** und dann **Weiter** aus.
 
     ![Importbildschirm](./media/backup-azure-backup-server-import-export/create-new-protection-group.png)
 
@@ -160,7 +160,7 @@ Das folgende Verfahren dient zum Aktualisieren der Versanddetails für den Azure
 * Die Details für den Rückversand Ihrer Datenträger.
 
    1. Melden Sie sich bei Ihrem Azure-Abonnement an.
-   2. Klicken Sie im Hauptmenü auf **Alle Dienste**, und geben Sie im Dialogfeld „Alle Dienste“ den Text „Import“ ein. Wenn die Option **Import-/Exportaufträge** erscheint, klicken Sie darauf.
+   2. Wählen Sie im Hauptmenü **Alle Dienste** aus, und geben Sie im Dialogfeld „Alle Dienste“ den Begriff „Import“ ein. Wenn die Option **Import-/Exportaufträge** angezeigt wird, wählen Sie sie aus.
        ![Versandinformationen eingeben](./media/backup-azure-backup-server-import-export/search-import-job.png)
 
        Das Menü **Import-/Exportaufträge** wird geöffnet, und eine Liste mit allen Import-/Exportaufträgen im ausgewählten Abonnement wird angezeigt.
@@ -169,11 +169,11 @@ Das folgende Verfahren dient zum Aktualisieren der Versanddetails für den Azure
 
        ![Versandinformationen überprüfen](./media/backup-azure-backup-server-import-export/import-job-found.png)
 
-   4. Klicken Sie im Einstellungsmenü für den Importauftrag auf **Versandinformationen verwalten**, und geben Sie die Details für den Rückversand an.
+   4. Wählen Sie im Einstellungsmenü für den Importauftrag **Versandinformationen verwalten** aus, und geben Sie die Details für den Rückversand an.
 
        ![Versandinformationen speichern](./media/backup-azure-backup-server-import-export/shipping-info.png)
 
-   5. Wenn Sie die Nachverfolgungsnummer von Ihrem Transportunternehmen erhalten haben, klicken Sie auf der Übersichtsseite des Azure-Importauftrags auf das Banner, und geben Sie folgende Details ein:
+   5. Wenn Sie die Nachverfolgungsnummer von Ihrem Transportunternehmen erhalten haben, wählen Sie auf der Übersichtsseite des Azure-Importauftrags das Banner aus, und geben Sie folgende Details ein:
 
       > [!IMPORTANT]
       > Die Angaben zum Transportunternehmen und die Nachverfolgungsnummer müssen innerhalb von zwei Wochen nach Erstellung des Azure-Importauftrags aktualisiert werden. Andernfalls wird der Auftrag unter Umständen gelöscht, und die Datenträger werden nicht verarbeitet.

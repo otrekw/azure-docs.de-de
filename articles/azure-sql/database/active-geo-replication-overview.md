@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 04/28/2020
-ms.openlocfilehash: 10c0d3d5f043d31454810b55e808cd6df01467a4
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.date: 08/27/2020
+ms.openlocfilehash: a269796c072a235e4ecd47731ca37a774750a3cf
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448748"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018364"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Erstellen und Verwenden der aktiven Georeplikation: Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -178,7 +178,8 @@ Der Client, der die Änderungen durchführt, benötigt Netzwerkzugriff auf den p
 
 ### <a name="on-the-master-of-the-secondary-server"></a>Auf dem Master des sekundären Servers
 
-1. Fügen Sie die IP-Adresse der Zulassungsliste des Clients hinzu, der die Änderungen durchführt. Dabei muss es sich um genau die gleiche IP-Adresse des primären Servers handeln.
+1. Fügen Sie die IP-Clientadresse für den sekundären Server der Zulassungsliste in den Firewallregeln hinzu. Überprüfen Sie, ob exakt dieselbe IP-Clientadresse, die auf dem primären Server hinzugefügt wurde, auch auf dem sekundären Server hinzugefügt wurde. Dieser Schritt ist erforderlich, bevor Sie den Befehl ALTER DATABASE ADD SECONDARY ausführen, um die Georeplikation zu initiieren.
+
 1. Erstellen Sie dieselbe Anmeldung wie auf dem primären Server, und verwenden Sie dabei denselben Benutzernamen, dasselbe Kennwort und dieselbe SID:
 
    ```sql

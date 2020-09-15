@@ -7,12 +7,12 @@ ms.author: dobett
 ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
-ms.openlocfilehash: 4c95c5eccb5ff804adeae94074136c6242678127
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 2bf48b6808fccb1f4344e66a2b8f1fc2d4c52ef6
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816064"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322448"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>Behandeln von Problemen, warum Daten von Ihren Geräten nicht in Azure IoT Central angezeigt werden
 
@@ -57,7 +57,7 @@ az set account --subscription <your-subscription-id>
 Verwenden Sie den folgenden Befehl, um die vom Gerät gesendeten Telemetriedaten zu überwachen:
 
 ```cmd/bash
-az iot central app monitor-events --app-id <app-id> --device-id <device-name>
+az iot central diagnostics monitor-events --app-id <app-id> --device-id <device-name>
 ```
 
 Wenn das Gerät erfolgreich mit IoT Central verbunden wurde, sehen Sie eine Ausgabe ähnlich der folgenden:
@@ -82,7 +82,7 @@ Filtering on device: device-001
 Um die Eigenschaftsaktualisierungen zu überwachen, die Ihr Gerät mit IoT Central austauscht, verwenden Sie den folgenden Vorschaubefehl:
 
 ```cmd/bash
-az iot central app monitor-properties --app-id <app-id> --device-id <device-name>
+az iot central diagnostics monitor-properties --app-id <app-id> --device-id <device-name>
 ```
 
 Wenn das Gerät erfolgreich Eigenschaftsaktualisierungen sendet, wird eine Ausgabe ähnlich der folgenden angezeigt:
@@ -95,8 +95,6 @@ version : 32
 rocessorArchitecture': 'ARM', 'swVersion': '1.0.0'}
 ```
 
-### <a name="interpreting-terminal-output"></a>Interpretieren der Terminalausgabe
-
 Wenn Sie sehen, dass Daten in Ihrem Terminal angezeigt werden, dann gelangen die Daten bis zu Ihrer IoT Central-Anwendung.
 
 Wenn nach einigen Minuten keine Daten angezeigt werden, versuchen Sie, die Taste `Enter` oder `return` auf Ihrer Tastatur zu drücken, falls die Ausgabe blockiert ist.
@@ -108,7 +106,7 @@ Wenn auf Ihrem Terminal immer noch keine Daten angezeigt werden, ist es wahrsche
 Wenn Ihre Daten nicht auf dem Monitor angezeigt werden, überprüfen Sie den Bereitstellungsstatus Ihres Geräts, indem Sie den folgenden Befehl ausführen:
 
 ```cmd/bash
-az iot central app device registration-info --app-id <app-id> --device-id <device-name>
+az iot central device registration-info --app-id <app-id> --device-id <device-name>
 ```
 
 Die folgende Ausgabe zeigt ein Beispiel für ein Gerät, das für die Verbindung blockiert ist:
@@ -178,16 +176,14 @@ Um zu ermitteln, welchen Kategorien Ihr Problem zuzuordnen ist, führen Sie den 
 - Verwenden Sie den Vorschaubefehl, um die Telemetrie zu überprüfen
 
     ```cmd/bash
-    az iot central app validate-messages --app-id <app-id> --device-id <device-name>
+    az iot central diagnostics validate-messages --app-id <app-id> --device-id <device-name>
     ```
 
 - Verwenden Sie zur Überprüfung von Eigenschaftsaktualisierungen den Vorschaubefehl
 
     ```cmd/bash
-    az iot central app validate-properties --app-id <app-id> --device-id <device-name>
+    az iot central diagnostics validate-properties --app-id <app-id> --device-id <device-name>
     ```
-
-- Wenn Sie die Verwendung einer grafischen Benutzeroberfläche (GUI) vorziehen, verwenden Sie die Ansicht **Rohdaten** von IoT Central, um zu prüfen, ob etwas nicht modelliert wird. Die Ansicht **Rohdaten** erkennt nicht, ob das Gerät fehlerhaften JSON-Code sendet.
 
 Wenn Sie zum ersten Mal einen `validate`-Befehl ausführen, werden Sie möglicherweise aufgefordert, die `uamqp`-Bibliothek zu installieren.
 
@@ -205,9 +201,9 @@ Exiting after 300 second(s), or 10 message(s) have been parsed (whichever happen
 tatype 'double'. Data '56'. All dates/times/datetimes/durations must be ISO 8601 compliant.
 ```
 
-:::image type="content" source="media/troubleshoot-connection/raw-data-view.png" alt-text="Screenshot der Ansicht „Rohdaten“":::
+Wenn Sie die Verwendung einer grafischen Benutzeroberfläche (GUI) vorziehen, verwenden Sie die Ansicht **Rohdaten** von IoT Central, um zu prüfen, ob etwas nicht modelliert wird. Die Ansicht **Rohdaten** erkennt nicht, ob das Gerät fehlerhaften JSON-Code sendet.
 
-### <a name="interpreting-terminal-output"></a>Interpretieren der Terminalausgabe
+:::image type="content" source="media/troubleshoot-connection/raw-data-view.png" alt-text="Screenshot der Ansicht „Rohdaten“":::
 
 Wenn Sie das Problem erkannt haben, müssen Sie möglicherweise die Gerätefirmware aktualisieren oder eine neue Gerätevorlage erstellen, die bisher nicht modellierte Daten modelliert.
 
@@ -215,9 +211,6 @@ Wenn Sie sich dafür entschieden haben, eine neue Vorlage zu erstellen, die die 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie das Problem mit Hilfe dieses Leitfadens nicht lösen und beheben können, öffnen Sie ein Supportticket. Azure-Kunden können Supportanfragen im Azure-Portal erstellen und verwalten.
-
-- [Azure portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
-- [Azure-Portal für die US-Regierung](https://portal.azure.us/)
+Wenn Sie weitere Hilfe benötigen, können Sie sich über das [MSDN-Azure-Forum oder das Stack Overflow-Forum](https://azure.microsoft.com/support/community/) mit Azure-Experten in Verbindung setzen. Alternativ können Sie ein [Azure-Supportticket](https://portal.azure.com/#create/Microsoft.Support) erstellen.
 
 Weitere Informationen finden Sie unter [Support- und Hilfeoptionen für Azure IoT](../../iot-fundamentals/iot-support-help.md).

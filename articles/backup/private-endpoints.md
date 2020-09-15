@@ -3,12 +3,12 @@ title: Private Endpunkte
 description: Erfahren Sie mehr über den Prozess zum Erstellen privater Endpunkte für Azure Backup und die Szenarien, in denen private Endpunkte dazu beitragen, die Sicherheit Ihrer Ressourcen zu gewährleisten.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 4f41eee7a84308eb9f4da56f087b2c36e09148f0
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 0a875dfedbf7a3b76b479fd4f23b74a7ced47252
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890891"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179231"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Private Endpunkte für Azure Backup
 
@@ -240,7 +240,7 @@ Dazu müssen Sie Einträge für jeden FQDN in Ihrem privaten Endpunkt in Ihre pr
 Sobald die privaten Endpunkte, die für den Tresor in Ihrem VNET erstellt wurden, genehmigt sind, können Sie sie für Sicherungen und Wiederherstellungen nutzen.
 
 >[!IMPORTANT]
->Vergewissern Sie sich, dass Sie alle zuvor im Dokument erwähnten Schritte erfolgreich abgeschlossen haben, ehe Sie fortfahren. Zur Erinnerung: Sie müssen die Schritte in der folgenden Checkliste ausgeführt haben:
+>Vergewissern Sie sich vor dem Fortfahren, dass Sie alle zuvor im Dokument erwähnten Schritte erfolgreich abgeschlossen haben. Zur Erinnerung: Sie müssen die Schritte in der folgenden Checkliste ausgeführt haben:
 >
 >1. (Neuen) Recovery Services-Tresor erstellt
 >1. Den Tresor für die Nutzung der systemseitig zugewiesenen verwalteten Identität aktiviert

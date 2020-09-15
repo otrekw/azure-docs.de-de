@@ -3,12 +3,12 @@ title: Konfigurieren von Azure Backup-Berichten
 description: Konfigurieren und Anzeigen von Berichten für Azure Backup mithilfe von Log Analytics und Azure-Arbeitsmappen
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 4e5e9258540e5cdab14e438cde96cd89aad7498d
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 0ede2c8507032811eda26cfcb4d90f18578f3700
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826853"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180285"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurieren von Azure Backup-Berichten
 
@@ -109,11 +109,11 @@ Verwenden Sie diese Registerkarte, um potenzielle Möglichkeiten zur Kostenoptim
 
 ###### <a name="inactive-resources"></a>Inaktive Ressourcen
 
-Mithilfe dieser Ansicht können Sie die Sicherungselemente identifizieren, für die über einen beträchtlichen Zeitraum hinweg keine erfolgreiche Sicherung vorhanden war. Dies kann entweder bedeuten, dass der zugrunde liegende Computer, der gesichert wird, nicht mehr vorhanden ist (was zum Ausfall der Sicherungen führt), oder es besteht ein Problem mit dem Computer, das verhindert, dass Sicherungen zuverlässig erstellt werden.
+Mithilfe dieser Ansicht können Sie die Sicherungselemente identifizieren, für die über einen beträchtlichen Zeitraum hinweg keine erfolgreiche Sicherung vorhanden war. Dies kann entweder bedeuten, dass der zugrunde liegende Computer, der gesichert wird, nicht mehr vorhanden ist (was zum Ausfall der Sicherungen führt), oder es besteht ein Problem mit dem Computer, das zuverlässige Sicherungen verhindert.
 
 Navigieren Sie zur Registerkarte **Optimieren**, und wählen Sie die Kachel **Inaktive Ressourcen** aus, um inaktive Ressourcen anzuzeigen. Wenn Sie diese Kachel auswählen, wird ein Raster angezeigt, das Details zu allen inaktiven Ressourcen enthält, die im ausgewählten Bereich vorhanden sind. Standardmäßig zeigt das Raster Elemente an, für die in den letzten sieben Tagen kein Wiederherstellungspunkt vorhanden ist. Wenn Sie inaktive Ressourcen für einen anderen Zeitbereich suchen möchten, können Sie den Filter **Zeichenbereich** oben auf der Registerkarte anpassen.
 
-Nachdem Sie eine inaktive Ressource identifiziert haben, können Sie das Problem weiter untersuchen, indem Sie zum Sicherungselementdashboard oder zum Azure-Ressourcenbereich für diese Ressource navigieren (sofern zutreffend). Abhängig von Ihrem Szenario können Sie entweder die Sicherung für den Computer abbrechen (wenn er nicht mehr vorhanden ist) und unnötige Sicherungen löschen, wodurch Kosten eingespart werden, oder Sie können Probleme auf dem Computer beheben, um sicherzustellen, dass Sicherungen zuverlässig erstellt werden.
+Nachdem Sie eine inaktive Ressource identifiziert haben, können Sie das Problem weiter untersuchen, indem Sie zum Sicherungselement-Dashboard oder zum Azure-Ressourcenbereich für diese Ressource navigieren (sofern zutreffend). Abhängig von Ihrem Szenario können Sie entweder die Sicherung für den Computer abbrechen (wenn er nicht mehr vorhanden ist) und unnötige Sicherungen löschen, wodurch Kosten eingespart werden, oder Sie können Probleme auf dem Computer beheben, um sicherzustellen, dass Sicherungen zuverlässig erstellt werden.
 
 ![Registerkarte „Optimieren“: Inaktive Ressourcen](./media/backup-azure-configure-backup-reports/optimize-inactive-resources.png)
 
@@ -175,7 +175,7 @@ Die Widgets im Backup-Bericht werden von Kusto-Abfragen unterstützt, die in den
 
 - Die frühere Power BI-Vorlagen-App für die Berichterstellung, die Daten aus einem Azure Storage-Konto bezogen hat, wird bald eingestellt. Wir empfehlen, dass Sie mit dem Senden von Tresordiagnosedaten an Log Analytics beginnen, um Berichte anzeigen zu können.
 
-- Darüber hinaus wird auch das [V1-Schema](./backup-azure-diagnostics-mode-data-model.md#v1-schema-vs-v2-schema) zum Senden von Diagnosedaten an ein Speicherkonto oder einen LA-Arbeitsbereich bald eingestellt. D. h., wenn Sie benutzerdefinierte Abfragen oder Automatisierungen auf der Grundlage des V1-Schemas geschrieben haben, sollten Sie diese Abfragen so aktualisieren, dass sie das derzeit unterstützte V2-Schema verwenden.
+- Darüber hinaus wird auch das [V1-Schema](./backup-azure-diagnostics-mode-data-model.md#v1-schema-vs-v2-schema) zum Senden von Diagnosedaten an ein Speicherkonto oder einen LA-Arbeitsbereich bald eingestellt. Wenn Sie also benutzerdefinierte Abfragen oder Automatisierungen auf der Grundlage des V1-Schemas geschrieben haben, sollten Sie diese Abfragen so aktualisieren, dass sie das derzeit unterstützte V2-Schema verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

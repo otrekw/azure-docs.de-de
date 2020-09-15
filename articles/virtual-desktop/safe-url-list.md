@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d75d6ecf73dece6dad43367a7f869a1b8ec3d86b
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: f9f68d3734cd7de83a2ddd376caefa410c619d61
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135860"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291108"
 ---
 # <a name="safe-url-list"></a>Liste der sicheren URLs
 
@@ -60,7 +60,7 @@ In der folgenden Tabelle sind optionale URLs aufgeführt, auf die Ihre virtuelle
 >
 >1. Registrieren Sie Ihre virtuellen Computer für den Windows Virtual Desktop-Hostpool.
 >2. Öffnen Sie die **Ereignisanzeige**, navigieren Sie dann zu **Windows-Protokolle** > **Anwendung** > **WVD-Agent**, und suchen Sie nach der Ereignis-ID 3701.
->3. Nehmen Sie die URLs, die Sie unter der Ereignis-ID 3701 finden, in eine Whitelist auf. Die URLs unter der Ereignis-ID 3701 sind regionsspezifisch. Sie müssen den Freigabeprozess mit den relevanten URLs für jede Region wiederholen, in der Sie Ihre virtuellen Computer bereitstellen möchten.
+>3. Heben Sie die Blockierung von URLs auf, die Sie unter der Ereignis-ID 3701 finden. Die URLs unter der Ereignis-ID 3701 sind regionsspezifisch. Sie müssen den Freigabeprozess mit den relevanten URLs für jede Region wiederholen, in der Sie Ihre virtuellen Computer bereitstellen möchten.
 
 ## <a name="remote-desktop-clients"></a>Remotedesktopclients
 

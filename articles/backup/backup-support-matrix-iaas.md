@@ -4,12 +4,12 @@ description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und 
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: 6cb9f53bceb6caaac77dddd6828c46842e53d257
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: c50a19acceeb68ead4d86a59bbe8275ae97ecb5f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825255"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019588"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 
@@ -146,7 +146,7 @@ Sicherung von über ein benutzerdefiniertes Image bereitgestellten VMs (Drittanb
 Sicherung von zu Azure migrierten VMs| Unterstützt.<br/><br/> Für die Sicherung des virtuellen Computers muss der VM-Agent auf dem migrierten Computer installiert werden.
 Sichern der Konsistenz mehrerer virtueller Computer | Azure Backup bietet keine mehrere VMs übergreifende Konsistenz von Daten und Anwendungen.
 Sichern mit [Diagnoseeinstellungen](../azure-monitor/platform/platform-logs-overview.md)  | Nicht unterstützt. <br/><br/> Wenn die Wiederherstellung der Azure-VM mit Diagnoseeinstellungen mithilfe der Option [Neu erstellen](backup-azure-arm-restore-vms.md#create-a-vm) ausgelöst wird, tritt bei der Wiederherstellung ein Fehler auf.
-Wiederherstellen von an Zonen angehefteten virtuellen Computern | Unterstützt (für virtuelle Computer, die nach Januar 2019 gesichert wurden und bei denen es [Verfügbarkeitszonen](https://azure.microsoft.com/global-infrastructure/availability-zones/) gibt).<br/><br/>Wir unterstützen derzeit die Wiederherstellung in derselben Zone, die in virtuellen Computern angeheftet ist. Wenn aber die Zone nicht verfügbar ist, schlägt die Wiederherstellung fehl.
+Wiederherstellen von an Zonen angehefteten virtuellen Computern | Unterstützt (für VMs, die nach Januar 2019 gesichert wurden und bei denen es [Verfügbarkeitszonen](https://azure.microsoft.com/global-infrastructure/availability-zones/) gibt).<br/><br/>Wir unterstützen derzeit die Wiederherstellung in derselben Zone, die in virtuellen Computern angeheftet ist. Wenn aber die Zone nicht verfügbar ist, schlägt die Wiederherstellung fehl.
 Gen2-VMS | Unterstützt <br> Azure Backup unterstützt die Sicherung und Wiederherstellung von [Gen2-VMS](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/). Bei Wiederherstellung über einen Wiederherstellungspunkt werden diese VMs als [Gen2-VMs](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/) wiederhergestellt.
 Sicherung virtueller Azure-Computer mit Sperren | Wird für nicht verwaltete virtuelle Computer nicht unterstützt. <br><br> Wird für verwaltete virtuelle Computer unterstützt.
 [Spot-VMs](../virtual-machines/spot-vms.md) | Nicht unterstützt. Azure Backup stellt Spot-VMs als reguläre Azure-VMs wieder her.

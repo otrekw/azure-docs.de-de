@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 996793f2851949f7474312a18ccff04e88db2232
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: a26581b61a4b99bd11f48a3d431a1bb85148d66b
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259159"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393427"
 ---
 # <a name="azure-security-baseline-for-container-instances"></a>Azure-Sicherheitsbaseline für Container Instances
 
@@ -155,7 +155,7 @@ Sie können auch Anwendungssicherheitsgruppen verwenden, um eine komplexe Sicher
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9: Beibehalten von Standardsicherheitskonfigurationen für Netzwerkgeräte
 
-**Leitfaden**: Sie können umfangreiche Azure-Bereitstellungen auch mithilfe von Azure Blueprints vereinfachen, indem Sie wichtige Umgebungsartefakte wie Azure Resource Manager-Vorlagen, RBAC-Steuerelemente und Richtlinien in einer einzigen Blaupausendefinition verpacken. Sie können die Blaupause auf neue Abonnements anwenden sowie die Steuerung und Verwaltung durch die Versionsverwaltung optimieren. 
+**Leitfaden**: Sie können umfangreiche Azure-Bereitstellungen auch mithilfe von Azure Blueprints vereinfachen, indem Sie wichtige Umgebungsartefakte wie Azure Resource Manager-Vorlagen, Azure RBAC-Kontrollen und Richtlinien in einer einzigen Blaupausendefinition packen. Sie können die Blaupause auf neue Abonnements anwenden sowie die Steuerung und Verwaltung durch die Versionsverwaltung optimieren. 
 
 * [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -557,9 +557,9 @@ Für die zugrundeliegende Plattform, die von Microsoft verwaltet wird, behandelt
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Verwenden von Azure RBAC zum Steuern des Zugriffs auf Ressourcen
 
-**Leitfaden**: Verwenden Sie Azure AD-RBAC, um den Zugriff auf Daten und Ressourcen in Azure Container Instances zu steuern. 
+**Leitfaden**: Verwenden Sie die rollenbasierte Azure-Zugriffssteuerung (Azure RBAC), um den Zugriff auf Daten und Ressourcen in Azure Container Instances zu steuern. 
 
-* [Konfigurieren von RBAC in Azure](../role-based-access-control/role-assignments-portal.md)
+* [Konfigurieren von Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
@@ -923,13 +923,13 @@ Verwenden Sie eine benutzerdefinierte oder Drittanbieterlösung zum Patchen von 
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6: Sicheres Speichern von benutzerdefinierten Betriebssystemimages
 
-**Leitfaden**: Speichern Sie Containerimages in Azure Container Registry, und stellen Sie mithilfe von RBAC sicher, dass nur autorisierte Benutzer auf die Images zugreifen können.
+**Leitfaden**: Speichern Sie Containerimages in Azure Container Registry, und stellen Sie mithilfe von Azure RBAC sicher, dass nur autorisierte Benutzer auf die Images zugreifen können.
 
-* [Grundlegendes zu RBAC in Azure](../role-based-access-control/rbac-and-directory-admin-roles.md)
+* [Grundlegendes zu Azure RBAC](../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-* [Grundlegendes zu RBAC für Container Registry](../container-registry/container-registry-roles.md)
+* [Grundlegendes zu Azure RBAC für Container Registry](../container-registry/container-registry-roles.md)
 
-* [Konfigurieren von RBAC in Azure](../role-based-access-control/quickstart-assign-role-user-portal.md)
+* [Konfigurieren von Azure RBAC](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
@@ -988,7 +988,9 @@ Verwenden Sie Azure Policy, um den Typ der Ressourcen, die in ihren Abonnements 
 
 * [Erstellen einer Key Vault-Instanz](../key-vault/secrets/quick-create-portal.md)
 
-* [Bereitstellen der Key Vault-Authentifizierung mit einer verwalteten Identität](../key-vault/general/managed-identity.md)
+* [Authentifizieren bei Key Vault](../key-vault/general/authentication.md)
+
+* [Zuweisen einer Key Vault-Zugriffsrichtlinie](../key-vault/general/assign-access-policy-portal.md)
 
 * [Verwenden von verwalteten Identitäten mit Azure Container Instances](./container-instances-managed-identity.md)
 

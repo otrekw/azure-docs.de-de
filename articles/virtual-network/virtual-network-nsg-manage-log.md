@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
-ms.openlocfilehash: c56b5ac1c1aa6fa5894d1aedcb94fe4694c2db28
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 221f7577b3181b1535ab9f544073dac4d031fe66
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696030"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319439"
 ---
 # <a name="resource-logging-for-a-network-security-group"></a>Ressourcenprotokollierung für eine Netzwerksicherheitsgruppe
 
@@ -24,7 +24,7 @@ Eine Netzwerksicherheitsgruppe (NSG) umfasst Regeln, die Datenverkehr an ein Sub
 Wenn Sie die Protokollierung für eine NSG aktivieren, können Sie die folgenden Typen von Ressourcenprotokollinformationen erfassen:
 
 * **Ereignis:** Es werden Einträge protokolliert, für die auf Grundlage der MAC-Adresse NSG-Regeln auf VMs angewendet werden.
-* **Regelzähler:** Enthält Einträge darüber, wie oft jede NSG-Regel angewendet wurde, um Datenverkehr zuzulassen oder zu verweigern. Der Status für diese Regeln wird alle 60 Sekunden erfasst.
+* **Regelzähler:** Enthält Einträge darüber, wie oft jede NSG-Regel angewendet wurde, um Datenverkehr zuzulassen oder zu verweigern. Der Status für diese Regeln wird alle 300 Sekunden erfasst.
 
 Ressourcenprotokolle sind nur für NSGs verfügbar, die über das Azure Resource Manager-Bereitstellungsmodell bereitgestellt wurden. Sie können die Ressourcenprotokollierung nicht für NSGs aktivieren, die über das klassische Bereitstellungsmodell bereitgestellt wurden. Zum besseren Verständnis der beiden Modelle lesen Sie den Artikel [Azure Resource Manager-Bereitstellung im Vergleich zur klassischen Bereitstellung: Grundlegendes zu Bereitstellungsmodellen und zum Status von Ressourcen](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 

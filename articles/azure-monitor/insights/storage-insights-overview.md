@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: 7daba35b9247443c84cedad03f252ea6858da236
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 6d6754594a321d297d983f9bd7e90ce074857919
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327343"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961974"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>Überwachen Ihres Speicherdiensts mit Azure Monitor für Storage
 
@@ -54,11 +54,11 @@ Führen Sie die folgenden Schritte aus, um die Nutzung und Verfügbarkeit Ihrer 
 
 ### <a name="overview-workbook"></a>Arbeitsmappe „Übersicht“
 
-In der Arbeitsmappe **Übersicht** für das ausgewählte Abonnement zeigt die Tabelle interaktive Speichermetriken und den Dienstverfügbarkeitsstatus für bis zu 10 Speicherkonten an, die innerhalb des Abonnements gruppiert sind. Sie können die Ergebnisse anhand der Optionen filtern, die Sie in den folgenden Dropdownlisten auswählen:
+In der Arbeitsmappe **Übersicht** für das ausgewählte Abonnement werden in der Tabelle interaktive Speichermetriken und der Dienstverfügbarkeitsstatus für bis zu 5 Speicherkonten angezeigt, die innerhalb des Abonnements gruppiert sind. Sie können die Ergebnisse anhand der Optionen filtern, die Sie in den folgenden Dropdownlisten auswählen:
 
 * **Abonnements** – Es werden nur Abonnements mit Speicherkonten aufgelistet.  
 
-* **Speicherkonten** – Standardmäßig sind 10 Speicherkonten vorab ausgewählt. Wenn Sie in der Bereichsauswahl alle oder mehrere Speicherkonten auswählen, werden bis zu 200 Speicherkonten zurückgegeben. Wenn Sie beispielsweise insgesamt 573 Speicherkonten in drei ausgewählten Abonnements haben, werden nur 200 Konten angezeigt. 
+* **Speicherkonten** – standardmäßig sind 5 Speicherkonten vorab ausgewählt. Wenn Sie in der Bereichsauswahl alle oder mehrere Speicherkonten auswählen, werden bis zu 200 Speicherkonten zurückgegeben. Wenn Sie beispielsweise insgesamt 573 Speicherkonten in drei ausgewählten Abonnements haben, werden nur 200 Konten angezeigt. 
 
 * **Zeitbereich** – Standardmäßig werden die Informationen aus den letzten 4 Stunden basierend auf der entsprechenden Auswahl angezeigt.
 

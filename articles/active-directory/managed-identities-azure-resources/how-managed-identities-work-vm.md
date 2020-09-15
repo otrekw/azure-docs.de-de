@@ -3,7 +3,7 @@ title: Verwendung verwalteter Identitäten für Azure-Ressourcen zusammen mit vi
 description: Hier finden Sie eine Beschreibung dazu, wie verwaltete Identitäten für Azure-Ressourcen zusammen mit virtuellen Azure-Computern verwendet werden.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.assetid: 0232041d-b8f5-4bd2-8d11-27999ad69370
@@ -13,14 +13,14 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 06/11/2020
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b61fd2f9bc36743754a43b05629a798f0305d4e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b93f45b05e6d7773afc2f750fd1a9a034c01ca1e
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609208"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89178670"
 ---
 # <a name="how-managed-identities-for-azure-resources-work-with-azure-virtual-machines"></a>Verwendung verwalteter Identitäten für Azure-Ressourcen zusammen mit virtuellen Azure-Computern
 
@@ -55,7 +55,7 @@ Das folgende Diagramm zeigt, wie verwaltete Dienstidentitäten mit virtuellen Az
 
 3. Azure Resource Manager aktualisiert den Identitätsendpunkt von Azure Instance Metadata Service mit der Client-ID und dem Zertifikat des Dienstprinzipals, um die Identität auf der VM zu konfigurieren.
 
-4. Wenn der virtuelle Computer über eine Identität verfügt, verwenden wir die Dienstprinzipalinformationen, um ihm Zugriff auf Azure-Ressourcen zu gewähren. Verwenden Sie zum Aufrufen von Azure Resource Manager die rollenbasierte Zugriffssteuerung (RBAC) in Azure AD, um dem VM-Dienstprinzipal die entsprechende Rolle zuzuweisen. Gewähren Sie Ihrem Code zum Aufrufen von Key Vault Zugriff auf das spezifische Geheimnis oder den spezifischen Schlüssel in Key Vault.
+4. Wenn der virtuelle Computer über eine Identität verfügt, verwenden wir die Dienstprinzipalinformationen, um ihm Zugriff auf Azure-Ressourcen zu gewähren. Verwenden Sie zum Aufrufen von Azure Resource Manager die rollenbasierte Zugriffssteuerung (RBAC) in Azure, um dem VM-Dienstprinzipal die entsprechende Rolle zuzuweisen. Gewähren Sie Ihrem Code zum Aufrufen von Key Vault Zugriff auf das spezifische Geheimnis oder den spezifischen Schlüssel in Key Vault.
 
 5. Der auf dem virtuellen Computer ausgeführte Code kann ein Token vom Azure IMDS-Endpunkt (Instance Metadata Service) anfordern, auf das nur von dem virtuellen Computer aus zugegriffen werden kann: `http://169.254.169.254/metadata/identity/oauth2/token`
     - Der Ressourcenparameter gibt den Dienst an, an den das Token gesendet wird. Verwenden Sie `resource=https://management.azure.com/` für die Authentifizierung bei Azure Resource Manager.
@@ -73,7 +73,7 @@ Das folgende Diagramm zeigt, wie verwaltete Dienstidentitäten mit virtuellen Az
 
 3. Azure Resource Manager empfängt eine Anforderung zum Konfigurieren der vom Benutzer zugewiesenen verwalteten Identität auf einer VM und aktualisiert den Identitätsendpunkt von Azure Instance Metadata Service mit der Client-ID und dem Zertifikat des Dienstprinzipals der vom Benutzer zugewiesenen verwalteten Identität.
 
-4. Nachdem die vom Benutzer zugewiesene verwaltete Identität erstellt wurde, werden die Dienstprinzipalinformationen verwendet, um der Identität Zugriff auf Azure-Ressourcen zu gewähren. Verwenden Sie zum Aufrufen von Azure Resource Manager die RBAC in Azure AD, um dem Dienstprinzipal der vom Benutzer zugewiesenen Identität die entsprechende Rolle zuzuweisen. Gewähren Sie Ihrem Code zum Aufrufen von Key Vault Zugriff auf das spezifische Geheimnis oder den spezifischen Schlüssel in Key Vault.
+4. Nachdem die vom Benutzer zugewiesene verwaltete Identität erstellt wurde, werden die Dienstprinzipalinformationen verwendet, um der Identität Zugriff auf Azure-Ressourcen zu gewähren. Verwenden Sie Azure RBAC zum Aufrufen von Azure Resource Manager, um dem Dienstprinzipal der vom Benutzer zugewiesenen Identität die entsprechende Rolle zuzuweisen. Gewähren Sie Ihrem Code zum Aufrufen von Key Vault Zugriff auf das spezifische Geheimnis oder den spezifischen Schlüssel in Key Vault.
 
    > [!Note]
    > Sie können diesen Schritt auch vor Schritt 3 ausführen.

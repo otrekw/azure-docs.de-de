@@ -3,12 +3,12 @@ title: Bewährte Methoden
 description: Erhalten Sie Informationen über bewährte Methoden und nützliche Tipps für das Entwickeln Ihrer Azure Batch-Lösung.
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8f557403426fe4e37287acb681c91069e90fb926
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: ca6e491586fd653f39da7466ea116109000facd6
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88191801"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146537"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch: bewährte Methoden
 
@@ -29,12 +29,12 @@ In diesem Artikel werden bewährte Methoden für die effektive und effiziente Ve
     Es ist nicht garantiert, dass einzelne Knoten immer verfügbar sind. Wenn auch ungewöhnlich, so können Hardwareausfälle, Betriebssystemupdates und eine Menge anderer Probleme dazu führen, dass einzelne Knoten offline sind. Wenn Ihr Batch-Workload deterministischen, garantierten Fortschritt erfordert, sollten Sie Pools mit mehreren Knoten zuordnen.
 
 - **Verwenden Sie Ressourcennamen nicht wieder.**
-    Batch-Ressourcen (Aufträge, Pools usw.) kommen und gehen häufig im Laufe der Zeit. Beispielsweise erstellen Sie vielleicht am Montag einen Pool, den Sie am Dienstag löschen, um dann am Donnerstag einen weiteren Pool zu erstellen. Jeder neue Ressource, die Sie erstellen, sollte einen eindeutigen Name erhalten, den Sie zuvor noch nicht verwendet haben. Hierzu können Sie eine GUID (entweder als vollständiger Ressourcennamen oder als Teil davon) verwenden oder die Erstellungszeit der Ressource in den Ressourcennamen einbetten. Batch unterstützt [DisplayNam-](/dotnet/api/microsoft.azure.batch.jobspecification.displayname?view=azure-dotnet), womit Sie einer Ressource einen von Menschen lesbaren Namen geben können, auch wenn die tatsächliche Ressourcen-ID nicht wirklich menschenfreundlich ist. Durch die Verwendung eindeutiger Namen können Sie leichter unterscheiden, welche spezifische Ressource in Protokollen und Metriken etwas bewirkt hat. Außerdem entfällt hierdurch jede eventuelle Mehrdeutigkeit, wenn Sie jemals eine Supportanfrage für eine Ressource einreichen müssen.
+    Batch-Ressourcen (Aufträge, Pools usw.) kommen und gehen häufig im Laufe der Zeit. Beispielsweise erstellen Sie vielleicht am Montag einen Pool, den Sie am Dienstag löschen, um dann am Donnerstag einen weiteren Pool zu erstellen. Jeder neue Ressource, die Sie erstellen, sollte einen eindeutigen Name erhalten, den Sie zuvor noch nicht verwendet haben. Hierzu können Sie eine GUID (entweder als vollständiger Ressourcennamen oder als Teil davon) verwenden oder die Erstellungszeit der Ressource in den Ressourcennamen einbetten. Batch unterstützt [DisplayNam-](/dotnet/api/microsoft.azure.batch.jobspecification.displayname), womit Sie einer Ressource einen von Menschen lesbaren Namen geben können, auch wenn die tatsächliche Ressourcen-ID nicht wirklich menschenfreundlich ist. Durch die Verwendung eindeutiger Namen können Sie leichter unterscheiden, welche spezifische Ressource in Protokollen und Metriken etwas bewirkt hat. Außerdem entfällt hierdurch jede eventuelle Mehrdeutigkeit, wenn Sie jemals eine Supportanfrage für eine Ressource einreichen müssen.
 
 - **Kontinuität während Wartung und Ausfall von Pools.**
     Es ist optimal, wenn Ihre Aufträge Pools dynamisch verwenden. Wenn Ihre Aufträge denselben Pool für alles verwenden, besteht die Möglichkeit, dass Ihre Aufträge nicht ausgeführt werden, wenn ein Problem mit dem Pool auftritt. Dies ist besonders wichtig für zeitkritische Workloads. Um dieses Problem zu beheben, wählen oder erstellen Sie einen Pool dynamisch, wenn Sie die einzelnen Aufträge planen, oder implementieren Sie eine Methode, um den Poolnamen außer Kraft zu setzen, sodass fehlerhafte Pools umgangen werden können.
 
-- **Geschäftskontinuität während Poolverwaltung und -ausfall**: Es gibt viele mögliche Ursachen, die möglicherweise verhindern, dass ein Pool auf die gewünschte Größe anwächst, z. B. interne Fehler, Kapazitätseinschränkungen usw. Aus diesem Grund sollten Sie bereit sein, Aufträge nötigenfalls einem anderen Pool zuzuweisen (möglicherweise mit einer anderen VM-Größe; Batch unterstützt dies mittels [UpdateJob](/dotnet/api/microsoft.azure.batch.protocol.joboperationsextensions.update?view=azure-dotnet)). Vermeiden Sie die Verwendung einer statischen Pool-ID mit der Erwartung, dass Sie nie gelöscht und nie geändert wird.
+- **Geschäftskontinuität während Poolverwaltung und -ausfall**: Es gibt viele mögliche Ursachen, die möglicherweise verhindern, dass ein Pool auf die gewünschte Größe anwächst, z. B. interne Fehler, Kapazitätseinschränkungen usw. Aus diesem Grund sollten Sie bereit sein, Aufträge nötigenfalls einem anderen Pool zuzuweisen (möglicherweise mit einer anderen VM-Größe; Batch unterstützt dies mittels [UpdateJob](/dotnet/api/microsoft.azure.batch.protocol.joboperationsextensions.update)). Vermeiden Sie die Verwendung einer statischen Pool-ID mit der Erwartung, dass Sie nie gelöscht und nie geändert wird.
 
 ### <a name="pool-lifetime-and-billing"></a>Lebensdauer und Abrechnung für Pools
 
@@ -63,7 +63,7 @@ Wenn Sie einen Azure Batch-Pool mithilfe der Konfiguration des virtuellen Comput
 
 ### <a name="third-party-images"></a>Images von Drittanbietern
 
-Pools können mithilfe von auf Azure Marketplace veröffentlichten Images von Drittanbietern erstellt werden. Bei Batch-Konten im Benutzerabonnementmodus kann beim Erstellen eines Pools mit bestimmten Images von Drittanbietern der Fehler „Fehler bei der Zuweisung aufgrund der Prüfung der Berechtigung zum Kauf über den Marketplace“ auftreten. Akzeptieren Sie die vom Herausgeber des Images festgelegten Bedingungen, um diesen Fehler zu beheben. Sie können dazu [Azure Powershell](https://docs.microsoft.com/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms?view=azurermps-6.13.0) oder [Azure CLI](https://docs.microsoft.com/cli/azure/vm/image/terms?view=azure-cli-latest) verwenden.
+Pools können mithilfe von auf Azure Marketplace veröffentlichten Images von Drittanbietern erstellt werden. Bei Batch-Konten im Benutzerabonnementmodus kann beim Erstellen eines Pools mit bestimmten Images von Drittanbietern der Fehler „Fehler bei der Zuweisung aufgrund der Prüfung der Berechtigung zum Kauf über den Marketplace“ auftreten. Akzeptieren Sie die vom Herausgeber des Images festgelegten Bedingungen, um diesen Fehler zu beheben. Sie können dazu [Azure Powershell](https://docs.microsoft.com/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms) oder die [Azure CLI](https://docs.microsoft.com/cli/azure/vm/image/terms) verwenden.
 
 ### <a name="azure-region-dependency"></a>Abhängigkeit von Azure-Regionen
 
@@ -83,7 +83,7 @@ Vermeiden Sie deshalb, eine Batch-Lösung zu entwerfen, die Tausende gleichzeiti
 
 Ein Batch-Auftrag hat eine unbegrenzte Lebensdauer, bis er aus dem System gelöscht wird. Sein Zustand bestimmt, ob er mehr Aufgaben für die Planung annehmen kann oder nicht.
 
-Ein Auftrag wechselt nicht automatisch in den Zustand „Abgeschlossen“, es sei denn, er wurde explizit beendet. Dies kann automatisch über die Eigenschaft [onAllTasksComplete](/dotnet/api/microsoft.azure.batch.common.onalltaskscomplete?view=azure-dotnet) oder [maxWallClockTime-](/rest/api/batchservice/job/add#jobconstraints) ausgelöst werden.
+Ein Auftrag wechselt nicht automatisch in den Zustand „Abgeschlossen“, es sei denn, er wurde explizit beendet. Dies kann automatisch über die Eigenschaft [onAllTasksComplete](/dotnet/api/microsoft.azure.batch.common.onalltaskscomplete) oder [maxWallClockTime-](/rest/api/batchservice/job/add#jobconstraints) ausgelöst werden.
 
 Es gibt ein standardmäßiges [Kontingent für aktive Aufträge und die Zeitplanung von Aufträgen](batch-quota-limit.md#resource-quotas). Aufträge und Auftragszeitpläne im Zustand „Abgeschlossen“ werden nicht auf dieses Kontingent angerechnet.
 
@@ -99,7 +99,7 @@ Batch verfügt über integrierte Unterstützung für Azure Storage zum Hochladen
 
 ### <a name="manage-task-lifetime"></a>Verwalten der Lebensdauer von Aufgaben
 
-Löschen Sie Aufgaben, wenn Sie nicht mehr benötigt werden, oder legen Sie eine Einschränkung durch eine [retentionTime](/dotnet/api/microsoft.azure.batch.taskconstraints.retentiontime?view=azure-dotnet)-Aufgabe fest. Wenn eine `retentionTime` festgelegt wird, bereinigt Batch automatisch den von der Aufgabe verwendeten Speicherplatz, wenn die `retentionTime` abläuft.
+Löschen Sie Aufgaben, wenn Sie nicht mehr benötigt werden, oder legen Sie eine Einschränkung durch eine [retentionTime](/dotnet/api/microsoft.azure.batch.taskconstraints.retentiontime)-Aufgabe fest. Wenn eine `retentionTime` festgelegt wird, bereinigt Batch automatisch den von der Aufgabe verwendeten Speicherplatz, wenn die `retentionTime` abläuft.
 
 Durch das Löschen von Aufgaben werden zwei Dinge erreicht. Es wird sichergestellt, dass sich nicht übermäßig Aufgaben im Auftrag ansammeln, was das Abfragen/Auffinden der Aufgabe erschweren kann, an der Sie interessiert sind (da Sie die abgeschlossenen Aufgaben filtern müssen). Es werden ferner die entsprechenden Aufgabendaten auf dem Knoten bereinigt (sofern `retentionTime` nicht bereits erreicht wurde). Dies hilft sicherzustellen, dass Ihre Knoten nicht mit Aufgabendaten aufgefüllt werden und der Speicherplatz knapp wird.
 
@@ -113,7 +113,7 @@ Batch unterstützt das Überabonnieren von Aufgaben auf Knoten (Ausführen von m
 
 ### <a name="design-for-retries-and-re-execution"></a>Entwerfen für Wiederholungsversuche und erneute Ausführung
 
-Aufgaben können von Batch automatisch wiederholt werden. Es gibt zwei Arten von Wiederholungsversuchen: benutzergesteuert und intern. Benutzergesteuerte Wiederholungsversuche werden über die [maxTaskRetryCount](/dotnet/api/microsoft.azure.batch.taskconstraints.maxtaskretrycount?view=azure-dotnet) der Aufgabe angegeben. Wenn ein in der Aufgabe angegebenes Programm mit einem Exitcode ungleich 0 (null) beendet wird, wird die Aufgabe so oft, wie im Wert `maxTaskRetryCount` angegeben, wiederholt.
+Aufgaben können von Batch automatisch wiederholt werden. Es gibt zwei Arten von Wiederholungsversuchen: benutzergesteuert und intern. Benutzergesteuerte Wiederholungsversuche werden über die [maxTaskRetryCount](/dotnet/api/microsoft.azure.batch.taskconstraints.maxtaskretrycount) der Aufgabe angegeben. Wenn ein in der Aufgabe angegebenes Programm mit einem Exitcode ungleich 0 (null) beendet wird, wird die Aufgabe so oft, wie im Wert `maxTaskRetryCount` angegeben, wiederholt.
 
 Zwar ist dies selten, doch eine Aufgabe kann aufgrund von Fehlern auf dem Computeknoten intern wiederholt werden, z. B. wenn der interne Zustand nicht aktualisiert werden kann oder ein Fehler auf dem Knoten auftritt, während die Aufgabe ausgeführt wird. Die Aufgabe wird, falls möglich, auf demselben Computeknoten bis zu einem internen Limit wiederholt, bevor die Aufgabe aufgegeben und dann zur Neuplanung durch Batch verzögert wird, potenziell auf einem anderen Computeknoten.
 
@@ -192,7 +192,7 @@ Wenn Ihre Anforderungen HTTP-Antworten auf 5xx-Ebene empfangen und ein „Connec
 
 ### <a name="retry-requests-automatically"></a>Automatisches Wiederholen von Anforderungen
 
-Stellen Sie sicher, dass für Ihre Batch-Dienstclients geeignete Wiederholungsrichtlinien vorhanden sind, um Ihre Anforderungen auch während des normalen Betriebs und nicht ausschließlich während der Dienstwartungszeiten zu wiederholen. Diese Wiederholungsrichtlinien sollten ein Intervall von mindestens 5 Minuten umfassen. Automatische Wiederholungsfunktionen werden mit verschiedenen Batch-SDKs bereitgestellt, etwa in der [RetryPolicyProvider-Klasse von .NET](/dotnet/api/microsoft.azure.batch.retrypolicyprovider?view=azure-dotnet).
+Stellen Sie sicher, dass für Ihre Batch-Dienstclients geeignete Wiederholungsrichtlinien vorhanden sind, um Ihre Anforderungen auch während des normalen Betriebs und nicht ausschließlich während der Dienstwartungszeiten zu wiederholen. Diese Wiederholungsrichtlinien sollten ein Intervall von mindestens 5 Minuten umfassen. Automatische Wiederholungsfunktionen werden mit verschiedenen Batch-SDKs bereitgestellt, etwa in der [RetryPolicyProvider-Klasse von .NET](/dotnet/api/microsoft.azure.batch.retrypolicyprovider).
 
 ### <a name="static-public-ip-addresses"></a>Statische öffentliche IP-Adressen
 

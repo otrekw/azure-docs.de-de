@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 08/13/2020
+ms.date: 08/31/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a2bb8b98bfb936421c0522d4637a288d20a708b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 09664de9ab2040ad04127ee1556c21244ac6bc2d
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795404"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269674"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Berechtigungen der Administratorrolle in Azure Active Directory
 
@@ -27,7 +27,7 @@ Mithilfe von Azure Active Directory (Azure AD) können Sie Administratoren mit e
 
 ## <a name="limit-use-of-global-administrator"></a>Einschränken der Verwendung der Rolle „Globaler Administrator“
 
-Benutzer, denen die Rolle „Globaler Administrator“ zugewiesen ist, können alle administrativen Einstellungen in Ihrer Azure AD-Organisation lesen und ändern. Standardmäßig wird der Person, die sich für ein Azure-Abonnement registriert, die Rolle „Globaler Administrator“ für die Azure AD-Organisation zugewiesen. Nur globale Administratoren und Administratoren für privilegierte Rollen können Administratorrollen delegieren. Um das Risiko für Ihr Unternehmen zu verringern, wird empfohlen, diese Rolle möglichst wenigen Personen in Ihrer Organisation zuzuweisen.
+Benutzer, denen die Rolle „Globaler Administrator“ zugewiesen ist, können alle administrativen Einstellungen in Ihrer Azure AD-Organisation lesen und ändern. Wenn ein Benutzer sich für einen Microsoft-Clouddienst registriert, wird standardmäßig ein Azure AD-Mandant erstellt, und der Benutzer wird Mitglied der Rolle „Globaler Administrator“. Wenn Sie einem vorhandenen Mandanten ein Abonnement hinzufügen, werden Sie nicht der Rolle „Globaler Administrator“ zugewiesen. Nur globale Administratoren und Administratoren für privilegierte Rollen können Administratorrollen delegieren. Um das Risiko für Ihr Unternehmen zu verringern, wird empfohlen, diese Rolle möglichst wenigen Personen in Ihrer Organisation zuzuweisen.
 
 Als bewährte Methode wird empfohlen, diese Rolle weniger als fünf Personen in Ihrer Organisation zuzuweisen. Im Folgenden finden Sie einige Möglichkeiten zum Verringern der Verwendung der Rolle „Globaler Administrator“, die Sie nutzen können, wenn diese Rolle in Ihrer Organisation mehr als fünf Adminisratoren zugewiesen ist.
 
@@ -56,19 +56,12 @@ Die folgenden Administratorrollen sind verfügbar:
 
 Benutzer mit dieser Rolle können alle Aspekte von Unternehmensanwendungen, Anwendungsregistrierungen und Anwendungsproxyeinstellungen erstellen und verwalten. Beachten Sie, dass Benutzer, denen diese Rolle zugewiesen wurde, bei der Erstellung neuer Anwendungsregistrierungen oder Unternehmensanwendungen nicht als Besitzer hinzugefügt werden.
 
-Anwendungsadministratoren können Anmeldeinformationen von Anwendungen verwalten, die es ihnen ermöglichen, die Identität der Anwendung zu wechseln. So können Benutzer, die dieser Rolle zugewiesen sind, nur Anmeldeinformationen von Anwendungen verwalten, die entweder keinen Azure AD-Rollen oder nur folgenden Administratorrollen zugeordnet sind:
-
-* Anwendungsadministrator
-* Anwendungsentwickler
-* Cloudanwendungsadministrator
-* Rolle „Verzeichnis lesen“
-
-Wenn eine Anwendung einer anderen Rolle zugeordnet ist, die oben nicht aufgeführt ist, kann der Anwendungsadministrator die Anmeldeinformationen dieser Anwendung nicht verwalten.
-
 Diese Rolle ermöglicht auch die _Zustimmung_ zu delegierten Berechtigungen und Anwendungsberechtigungen mit Ausnahme von Berechtigungen für Microsoft Graph-API.
 
 > [!IMPORTANT]
 > Aufgrund dieser Ausnahme können Sie zwar Berechtigungen für _andere_ Apps (z. B. nicht von Microsoft stammenden Apps oder Apps, die Sie registriert haben) zustimmen, jedoch nicht Berechtigungen für Azure AD selbst. Sie können diese Berechtigungen weiterhin als Teil der App-Registrierung _anfordern_, aber für das _Erteilen_ (d. h. die Zustimmung) dieser Berechtigungen ist ein Azure AD-Administrator erforderlich. Dies bedeutet, dass ein böswilliger Benutzer seine Berechtigungen nicht problemlos erhöhen kann, z. B. könnte er versuchen, eine App zu erstellen, die in das gesamte Verzeichnis schreiben kann, und sich durch die Berechtigungen dieser App selbst zu einem globalen Administrator zu machen.
+>
+>Diese Rolle ermöglicht die Verwaltung von Anmeldeinformationen für Anwendungen. Benutzer, die dieser Rolle zugewiesen sind, können einer Anwendung Anmeldeinformationen hinzufügen und diese Anmeldeinformationen verwenden, um die Anwendung zu imitieren. Wenn der Identität der Anwendung der Zugriff auf eine Ressource gewährt wurde, z. B. die Berechtigung, Benutzer oder andere Objekte zu erstellen oder zu aktualisieren, kann ein dieser Rolle zugewiesener Benutzer diese Aktionen ausführen, während er die Identität der Anwendung annimmt. Diese Fähigkeit, die Identität der Anwendung anzunehmen, bedeutet ggf. eine Rechteerweiterung im Vergleich zu den Rollenzuweisungen des Benutzers. Beachten Sie, dass das Zuweisen eines Benutzers zur Anwendungsadministratorrolle ihm die Möglichkeit gibt, die Identität einer Anwendung anzunehmen.
 
 ### <a name="application-developer"></a>[Anwendungsentwickler](#application-developer-permissions)
 
@@ -125,15 +118,11 @@ Tätigt Käufe, verwaltet Abonnements und Supporttickets und überwacht die Dien
 
 ### <a name="cloud-application-administrator"></a>[Cloudanwendungsadministrator](#cloud-application-administrator-permissions)
 
-Benutzer mit dieser Rolle haben die gleichen Berechtigungen wie die Rolle des Anwendungsadministrators, mit Ausnahme der Möglichkeit, den Anwendungsproxy zu verwalten. Diese Rolle ermöglicht die Erstellung und Verwaltung aller Aspekte von Unternehmensanwendungen und Anwendungsregistrierungen. Diese Rolle ermöglicht auch die Zustimmung zu delegierten Berechtigungen und Anwendungsberechtigungen mit Ausnahme von Berechtigungen für Microsoft Graph-API. Benutzer, denen diese Rolle zugewiesen wurde, werden bei der Erstellung neuer Anwendungsregistrierungen oder Unternehmensanwendungen nicht als Besitzer hinzugefügt.
+Benutzer mit dieser Rolle haben die gleichen Berechtigungen wie die Rolle des Anwendungsadministrators, mit Ausnahme der Möglichkeit, den Anwendungsproxy zu verwalten. Diese Rolle ermöglicht die Erstellung und Verwaltung aller Aspekte von Unternehmensanwendungen und Anwendungsregistrierungen. Diese Rolle ermöglicht auch die Zustimmung zu delegierten Berechtigungen und Anwendungsberechtigungen mit Ausnahme von Microsoft Graph und Azure AD Graph. Benutzer, denen diese Rolle zugewiesen wurde, werden bei der Erstellung neuer Anwendungsregistrierungen oder Unternehmensanwendungen nicht als Besitzer hinzugefügt.
 
-Cloudanwendungsadministratoren können Anmeldeinformationen von Anwendungen verwalten, die es ihnen ermöglichen, die Identität der Anwendung zu wechseln. So können Benutzer, die dieser Rolle zugewiesen sind, nur Anmeldeinformationen von Anwendungen verwalten, die entweder keinen Azure AD-Rollen oder nur folgenden Administratorrollen zugeordnet sind:
+> [!IMPORTANT]
+> Diese Rolle ermöglicht die Verwaltung von Anmeldeinformationen für Anwendungen. Benutzer, die dieser Rolle zugewiesen sind, können einer Anwendung Anmeldeinformationen hinzufügen und diese Anmeldeinformationen verwenden, um die Anwendung zu imitieren. Wenn der Identität der Anwendung der Zugriff auf eine Ressource gewährt wurde, z. B. die Berechtigung, Benutzer oder andere Objekte zu erstellen oder zu aktualisieren, kann ein dieser Rolle zugewiesener Benutzer diese Aktionen ausführen, während er die Identität der Anwendung annimmt. Diese Fähigkeit, die Identität der Anwendung anzunehmen, bedeutet ggf. eine Rechteerweiterung im Vergleich zu den Rollenzuweisungen des Benutzers. Beachten Sie, dass das Zuweisen eines Benutzers zur Cloudanwendungsadministrator-Rolle ihm die Möglichkeit gibt, die Identität einer Anwendung anzunehmen.
 
-* Anwendungsentwickler
-* Cloudanwendungsadministrator
-* Rolle „Verzeichnis lesen“
-
-Wenn eine Anwendung einer anderen Rolle zugeordnet ist, die oben nicht aufgeführt ist, kann der Cloudanwendungsadministrator die Anmeldeinformationen dieser Anwendung nicht verwalten.
 
 ### <a name="cloud-device-administrator"></a>[Cloudgeräteadministrator](#cloud-device-administrator-permissions)
 
@@ -1991,6 +1980,6 @@ Geräteeinbindung am Arbeitsplatz | Als veraltet markiert | [Dokumentation zu ve
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zum Zuweisen eines Benutzers als Administrator eines Azure-Abonnements finden Sie unter [Verwalten des Zugriffs mit Azure-Rollen (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)
+* Weitere Informationen zum Zuweisen eines Benutzers als Administrator eines Azure-Abonnements finden Sie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md).
 * Informationen zum Steuern des Zugriffs auf Ressourcen in Microsoft Azure finden Sie unter [Grundlegendes zu den verschiedenen Rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 * Ausführliche Informationen zur Beziehung zwischen Abonnements und einem Azure AD-Mandanten oder eine Anleitung zum Zuordnen oder Hinzufügen eines Abonnements finden Sie unter [Zuordnen oder Hinzufügen eines Azure-Abonnements zu Ihrem Azure Active Directory-Mandanten](../fundamentals/active-directory-how-subscriptions-associated-directory.md).

@@ -7,8 +7,10 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Erstellen einer „Front Door“
+    - name: 'Erstellen einer Front Door-Instanz: Portal'
       href: quickstart-create-front-door.md
+    - name: 'Erstellen einer Front Door-Instanz: ARM-Vorlage'
+      href: quickstart-create-front-door-template.md
 - name: Tutorials
   items:
     - name: Hinzufügen einer benutzerdefinierten Domäne für Ihre „Front Door“

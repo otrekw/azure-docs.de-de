@@ -12,24 +12,24 @@ ms.workload: iaas-sql-server
 ms.date: 05/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 8def7c52f2b1005419a29d35ef122b48f34fdee4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 04f502183b8240515ee136ce27d99bd4b5d6277c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669000"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010170"
 ---
 # <a name="manage-sql-server-vms-in-azure-by-using-the-azure-portal"></a>Verwalten von SQL Server-VMs in Azure über das Azure-Portal
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Im [Azure-Portal](https://portal.azure.com) ist die Ressource **SQL-VMs** ein unabhängiger Verwaltungsdienst. Sie können damit alle SQL Server-VMs gleichzeitig anzeigen und Einstellungen für SQL Server ändern: 
+Im [Azure-Portal](https://portal.azure.com) ist die Ressource [**Virtuelle SQL-Computer**](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) ein unabhängiger Verwaltungsdienst zum Verwalten von SQL Server auf Azure-VMs. Sie können damit alle SQL Server-VMs gleichzeitig anzeigen und Einstellungen für SQL Server ändern: 
 
 ![Ressource „Virtuelle SQL-Computer“](./media/manage-sql-vm-portal/sql-vm-manage.png)
 
 
 ## <a name="remarks"></a>Bemerkungen
 
-- Es wird empfohlen, die Ressource **SQL-VMs** zum Anzeigen und Verwalten Ihrer SQL Server-VMs in Azure zu verwenden. Derzeit unterstützt die Ressource **SQL-VMs** jedoch noch nicht die Verwaltung von SQL Server-VMs, deren [Support abgelaufen](sql-server-2008-extend-end-of-support.md) ist. Um Einstellungen für Ihre SQL Server-VMs mit abgelaufenem Support zu verwalten, verwenden Sie stattdessen die veraltete [Registerkarte „SQL Server-Konfiguration“](#access-the-sql-server-configuration-tab). 
+- Es wird empfohlen, die Ressource [**Virtuelle SQL-Computer**](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) zum Anzeigen und Verwalten Ihrer SQL Server-VMs in Azure zu verwenden. Derzeit unterstützt die Ressource **SQL-VMs** jedoch noch nicht die Verwaltung von SQL Server-VMs, deren [Support abgelaufen](sql-server-2008-extend-end-of-support.md) ist. Um Einstellungen für Ihre SQL Server-VMs mit abgelaufenem Support zu verwalten, verwenden Sie stattdessen die veraltete [Registerkarte „SQL Server-Konfiguration“](#access-the-sql-server-configuration-tab). 
 - Die Ressource **SQL-VMs** ist nur für SQL Server-VMs verfügbar, die [mit dem SQL-VM-Ressourcenanbieter registriert](sql-vm-resource-provider-register.md) wurden. 
 
 
@@ -51,7 +51,7 @@ Führen Sie zum Zugreifen auf die Ressource **SQL-VMs** folgende Schritte aus:
    Durch Auswählen der SQL Server-VM wird die Ressource **SQL-VMs** geöffnet: 
 
 
-   ![Ressource „Virtuelle SQL-Computer“](./media/manage-sql-vm-portal/sql-vm-resource.png)
+   ![Anzeigen der Ressource „Virtuelle SQL-Computer“](./media/manage-sql-vm-portal/sql-vm-resource.png)
 
 > [!TIP]
 > Die Ressource **Virtuelle SQL-Computer** ist für SQL Server-Einstellungen vorgesehen. Wählen Sie im Feld **Virtueller Computer** den Namen des virtuellen Computers aus, um VM-spezifische Einstellungen zu öffnen, die nicht ausschließlich für SQL Server gelten. 

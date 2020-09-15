@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/22/2020
 ms.author: memildin
-ms.openlocfilehash: 6f11de7f38ff97b1141afa48c26788a171727cb6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 065c6661ffc9f618a5dfd32a9f45d26569a56003
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559566"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278172"
 ---
 # <a name="using-custom-security-policies"></a>Verwenden benutzerdefinierter Sicherheitsrichtlinien
 
@@ -69,7 +69,7 @@ Wie in der [Azure Policy-Dokumentation](https://docs.microsoft.com/azure/governa
 
     [![Benutzerdefinierte Empfehlungen](media/custom-security-policies/custom-policy-recommendations.png)](media/custom-security-policies/custom-policy-recommendations-in-context.png#lightbox)
 
-## <a name="enhancing-your-custom-recommendations-with-detailed-information"></a>Verbessern der benutzerdefinierten Empfehlungen mit ausführlichen Informationen
+## <a name="enhance-your-custom-recommendations-with-detailed-information"></a>Verbessern der benutzerdefinierten Empfehlungen mit ausführlichen Informationen
 
 Die integrierten Empfehlungen, die mit Azure Security Center bereitgestellt werden, enthalten Details wie Schweregrade und Korrekturanweisungen. Wenn Sie Ihren benutzerdefinierten Empfehlungen diese Art von Informationen hinzufügen möchten, damit Sie im Azure-Portal oder wenn Sie auf Ihre Empfehlungen zugreifen angezeigt werden, müssen Sie die REST-API verwenden. 
 

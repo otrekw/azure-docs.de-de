@@ -7,12 +7,13 @@ ms.date: 07/15/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
-ms.openlocfilehash: c850fccf5a86df4c35ce4db53b5b40d5e8588210
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 35a93669bf301b3be1d560a0777751c12f3c9d14
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089412"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001908"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development"></a>Verwenden des Azurite-Emulators für die lokale Azure Storage-Entwicklung
 
@@ -327,7 +328,7 @@ Wenn Sie die Azure SDKs verwenden, starten Sie Azurite mit den `--oauth basic an
 
 ### <a name="well-known-storage-account-and-key"></a>Bekannte Speicherkonten und Schlüssel
 
-Azurite akzeptiert dasselbe bekannte Konto und den Schlüssel, die auch vom älteren Azure-Speicheremulator verwendet werden.
+Azurite akzeptiert dasselbe bekannte Konto und den Schlüssel, die auch vom früheren Azure Storage-Emulator verwendet werden.
 
 - Kontoname: `devstoreaccount1`
 - Kontoschlüssel: `Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==`
@@ -561,5 +562,5 @@ Wir freuen uns über Beiträge und Vorschläge für Azurite. Auf der Seite des [
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Unter [Verwenden des Azure-Speicheremulators für Entwicklung und Tests](storage-use-emulator.md) wird der veraltete Azure-Speicheremulator beschrieben, der durch Azurite ersetzt wird.
+- Unter [Verwenden des Azure-Speicheremulators für Entwicklung und Tests](storage-use-emulator.md) wird der veraltete Azure Storage-Emulator beschrieben, der durch Azurite ersetzt wird.
 - Unter [Konfigurieren von Azure Storage-Verbindungszeichenfolgen](storage-configure-connection-string.md) finden Sie eine Erläuterung des Aufbaus einer gültigen Azure Storage-Verbindungszeichenfolge.

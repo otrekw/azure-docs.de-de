@@ -3,22 +3,21 @@ title: 'Empfangen von Ereignissen unter Verwendung von Event Processor Host: Azu
 description: Dieser Artikel beschreibt den Event Processor Host in Azure Event Hubs, der die parallele Verwaltung von Prüfpunkten, Leases und das Lesen von Ereignissen vereinfacht.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 41778425a0ec6ba1732c8e604dead2deb7c97f12
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a05f2172b266301919d0a800fb863b8f0dbe5884
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936179"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319501"
 ---
 # <a name="event-processor-host"></a>Ereignisprozessorhost
 > [!NOTE]
-> Dieser Artikel bezieht sich auf die alte Version des Azure Event Hubs SDK. Informationen dazu, wie Sie Ihren Code zu der neueren Version des SDK migrieren, finden Sie in diesen Migrationsleitfäden. 
+> Dieser Artikel bezieht sich auf die alte Version des Azure Event Hubs SDK. Eine aktuelle Version des SDK finden Sie unter [Ausgleichen der Partitionsauslastung über mehrere Instanzen der Anwendung hinweg](event-processor-balance-partition-load.md). Informationen dazu, wie Sie Ihren Code zu der neueren Version des SDK migrieren, finden Sie in diesen Migrationsleitfäden. 
 > - [.NET](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)
 > - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md)
 > - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md)
 > - [Java-Skript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md)
->
-> Siehe auch [Ausgleichen der Partitionsauslastung über mehrere Instanzen der Anwendung hinweg](event-processor-balance-partition-load.md).
 
 Azure Event Hubs ist ein leistungsfähiger Dienst zur Erfassung von Telemetriedaten, der zum Streamen von Millionen von Ereignissen zu geringen Kosten verwendet werden kann. In diesem Artikel wird beschrieben, wie erfasste Ereignisse mithilfe des *Ereignisprozessorhosts* (Event Processor Host, EPH) genutzt und verarbeitet werden. Dabei handelt es sich um einen intelligenten Consumer-Agent, der die Verwaltung von Prüfpunkten, Leasing und parallelen Ereignislesern vereinfacht.  
 
@@ -88,6 +87,8 @@ Anschließend wird eine [EventProcessorHost](/dotnet/api/microsoft.azure.eventhu
 
 Schließlich registrieren die Consumer die [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost)-Instanz bei dem Event Hubs-Dienst. Die Registrierung einer Ereignisprozessorklasse mit einer Instanz von EventProcessorHost startet die Ereignisverarbeitung. Durch die Registrierung wird der Event Hubs-Dienst angewiesen, dass eine Verarbeitung der Ereignisse aus einigen zugehörigen Partitionen durch die Consumeranwendung zu erwarten ist, uns dass der [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor)-Implementierungscode bei jedem Übertragen von zu verarbeitenden Ereignissen aufgerufen werden soll. 
 
+> [!NOTE]
+> Bei „consumerGroupName“ muss die Groß-/Kleinschreibung beachtet werden.  Änderungen an „consumerGroupName“ können dazu führen, dass alle Partitionen ab Beginn des Streams gelesen werden.
 
 ### <a name="example"></a>Beispiel
 
@@ -112,8 +113,8 @@ Der Besitz einer Partition durch eine EPH-Instanz (oder einen Consumer) wird üb
 | $Default | 0 | Consumer\_VM3 | 2018-04-15T01:23:45 | 156 |
 | $Default | 1 | Consumer\_VM4 | 2018-04-15T01:22:13 | 734 |
 | $Default | 2 | Consumer\_VM0 | 2018-04-15T01:22:56 | 122 |
-| decodiert werden: |   |   |   |   |
-| decodiert werden: |   |   |   |   |
+| : |   |   |   |   |
+| : |   |   |   |   |
 | $Default | 15 | Consumer\_VM3 | 2018-04-15T01:22:56 | 976 |
 
 In diesem Beispiel übernimmt jeder Host den Besitz einer Partition für eine bestimmte Dauer (Leasedauer). Wenn bei einem Host ein Fehler auftritt (virtueller Computer wird heruntergefahren), läuft die Lease ab. Andere Hosts versuchen, den Besitz der Partition zu übernehmen. Einer der Hosts ist erfolgreich. Bei diesem Prozess wird die Lease für die Partition mit einem neuen Besitzer zurückgesetzt. Auf diese Weise kann nur jeweils ein einzelner Leser Daten von einer bestimmten Partition in einer Consumergruppe lesen.
@@ -151,11 +152,11 @@ Wie zuvor erläutert, wird das Konzept der automatischen Skalierung von [EventPr
 
 Zusätzlich verwendet eine Überladung von [RegisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.registereventprocessorasync?view=azure-dotnet#Microsoft_Azure_EventHubs_Processor_EventProcessorHost_RegisterEventProcessorAsync__1_Microsoft_Azure_EventHubs_Processor_EventProcessorOptions_) ein [EventProcessorOptions](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.registereventprocessorasync?view=azure-dotnet#Microsoft_Azure_EventHubs_Processor_EventProcessorHost_RegisterEventProcessorAsync__1_Microsoft_Azure_EventHubs_Processor_EventProcessorOptions_)-Objekt als Parameter. Verwenden Sie diesen Parameter, um das Verhalten von [EventProcessorHost.UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync) zu steuern. [EventProcessorOptions](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions) definiert vier Eigenschaften und ein Ereignis:
 
-- [MaxBatchSize](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.maxbatchsize): Die maximale Größe der Sammlung, die bei einem Aufruf von [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) empfangen werden soll. Mit dieser Größe wird nicht die minimale, sondern nur die maximale Größe definiert. Wenn weniger zu empfangende Nachrichten vorliegen, wird **ProcessEventsAsync** mit den jeweiligen verfügbaren Nachrichten ausgeführt.
-- [PrefetchCount](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.prefetchcount): Ein Wert, der vom zugrunde liegenden AMQP-Kanal verwendet wird, um zu ermitteln, wie viele Nachrichten der Client maximal empfangen soll. Dieser Wert muss größer oder gleich [MaxBatchSize](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.maxbatchsize) sein.
+- [MaxBatchSize:](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.maxbatchsize) die maximale Größe der Sammlung, die bei einem Aufruf von [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) empfangen werden soll. Mit dieser Größe wird nicht die minimale, sondern nur die maximale Größe definiert. Wenn weniger zu empfangende Nachrichten vorliegen, wird **ProcessEventsAsync** mit den jeweiligen verfügbaren Nachrichten ausgeführt.
+- [PrefetchCount:](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.prefetchcount) ein Wert, der von dem zugrunde liegenden AMQP-Kanal verwendet wird, um zu ermitteln, wie viele Nachrichten der Client maximal empfangen soll. Dieser Wert muss größer oder gleich [MaxBatchSize](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.maxbatchsize) sein.
 - [InvokeProcessorAfterReceiveTimeout](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.invokeprocessorafterreceivetimeout): Wenn dieser Parameter auf **TRUE** festgelegt ist, wird [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) aufgerufen, wenn für den zugrunde liegenden Aufruf zum Empfangen von Ereignissen für eine Partition ein Timeout auftritt. Diese Methode eignet sich für zeitbasierte Aktionen während inaktiver Zeiträume der Partition.
-- [InitialOffsetProvider](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.initialoffsetprovider): Ermöglicht das Festlegen eines Funktionszeigers oder Lambdaausdrucks, der aufgerufen wird, um den anfänglichen Offset anzugeben, wenn ein Leser mit dem Lesen einer Partition beginnt. Ohne Angabe dieses Offsets beginnt der Leser bei dem ältesten Ereignis, es sei denn, eine JSON-Datei mit einem Offset wurde bereits in dem Speicherkonto gespeichert, das für den Konstruktor [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) angegeben ist. Diese Methode ist nützlich, wenn Sie das Verhalten für den Start des Lesers ändern möchten. Wenn diese Methode aufgerufen wird, enthält der Objektparameter die Partitions-ID, für die der Leser gestartet wird.
-- [ExceptionReceivedEventArgs](/dotnet/api/microsoft.azure.eventhubs.processor.exceptionreceivedeventargs): Ermöglicht, dass Sie Benachrichtigungen zu allen zugrunde liegenden Ausnahmen empfangen, die in [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) auftreten. Wenn Vorgänge nicht wie erwartet ausgeführt werden, ist dieses Ereignis ein guter Ausgangspunkt für die Überprüfung.
+- [InitialOffsetProvider:](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.initialoffsetprovider) ermöglicht das Festlegen eines Funktionszeigers oder Lambdaausdrucks, der aufgerufen wird, um den anfänglichen Offset anzugeben, wenn ein Leser mit dem Lesen einer Partition beginnt. Ohne Angabe dieses Offsets beginnt der Leser bei dem ältesten Ereignis, es sei denn, eine JSON-Datei mit einem Offset wurde bereits in dem Speicherkonto gespeichert, das für den Konstruktor [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) angegeben ist. Diese Methode ist nützlich, wenn Sie das Verhalten für den Start des Lesers ändern möchten. Wenn diese Methode aufgerufen wird, enthält der Objektparameter die Partitions-ID, für die der Leser gestartet wird.
+- [ExceptionReceivedEventArgs:](/dotnet/api/microsoft.azure.eventhubs.processor.exceptionreceivedeventargs) ermöglicht, dass Sie Benachrichtigungen über alle zugrunde liegenden Ausnahmen empfangen, die in [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) auftreten. Wenn Vorgänge nicht wie erwartet ausgeführt werden, ist dieses Ereignis ein guter Ausgangspunkt für die Überprüfung.
 
 ## <a name="epoch"></a>Epochen
 

@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e72e3cb3ccc6273a9b698475c5e5aa0bb87b8b7
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 4a83d1a4bdc2496f874a963b8858192273260cc8
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828794"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276268"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health-Vorgänge
 In diesem Thema werden die verschiedenen Vorgänge beschrieben, die Sie mit Azure Active Directory (Azure AD) Connect Health durchführen können.
@@ -103,8 +103,8 @@ Beim Löschen einer Dienstinstanz sind folgende Punkte zu beachten:
    <br><br>
 
 [//]: # (Beginn des RBAC-Abschnitts)
-## <a name="manage-access-with-role-based-access-control"></a>Verwalten des Zugriffs per rollenbasierter Zugriffssteuerung
-Die [rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) für Azure AD Connect Health ermöglicht den Zugriff auf andere Benutzer und Gruppen als die globalen Administratoren. Mit der rollenbasierten Zugriffssteuerung werden den entsprechenden Benutzern und Gruppen Rollen zugewiesen, und es ist ein Mechanismus zum Einschränken der globalen Administratoren in Ihrem Verzeichnis vorhanden.
+## <a name="manage-access-with-azure-rbac"></a>Verwalten des Zugriffs mit Azure RBAC
+Die [rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) für Azure AD Connect Health ermöglicht den Zugriff auf andere Benutzer und Gruppen als die globalen Administratoren. Mit Azure RBAC werden den entsprechenden Benutzern und Gruppen Rollen zugewiesen und ein Mechanismus zum Einschränken der globalen Administratoren in Ihrem Verzeichnis angewandt.
 
 ### <a name="roles"></a>Rollen
 Azure AD Connect Health unterstützt die folgenden integrierten Rollen:
@@ -135,12 +135,12 @@ Um einem Benutzer Zugriff auf der Ebene *Alle Dienstinstanzen* innerhalb von Azu
    ![Screenshot: Seitenleiste für Azure AD Connect Health-Ressourcen](./media/how-to-connect-health-operations/startRBAC.png)
 2. Wählen Sie **Hinzufügen**.
 3. Wählen Sie im Bereich **Rolle auswählen** eine Rolle aus (z.B. **Besitzer**).<br>
-   ![Screenshot: Rollenbasierte Zugriffssteuerung von Azure AD Connect Health – Fenster „Benutzer“](./media/how-to-connect-health-operations/RBAC_add.png)
+   ![Screenshot: Azure AD Connect Health und Konfigurationsmenü von Azure RBAC](./media/how-to-connect-health-operations/RBAC_add.png)
 4. Geben Sie den Namen oder die Kennung des entsprechenden Benutzers oder der Gruppe ein. Sie können einen oder mehrere Benutzer oder Gruppen gleichzeitig auswählen. Klicken Sie auf **Auswählen**.
-   ![Screenshot: Rollenbasierte Zugriffssteuerung von Azure AD Connect Health – Fenster „Benutzer“](./media/how-to-connect-health-operations/RBAC_select_users.png)
+   ![Screenshot: Azure AD Connect Health und Rollenliste von Azure RBAC](./media/how-to-connect-health-operations/RBAC_select_users.png)
 5. Klicken Sie auf **OK**.<br>
 6. Nach Abschluss der Rollenzuweisung werden die Benutzer und Gruppen in der Liste angezeigt.<br>
-   ![Screenshot: Rollenbasierte Zugriffssteuerung von Azure AD Connect Health – Fenster „Benutzer“ mit hervorgehobenen neuen Benutzern](./media/how-to-connect-health-operations/RBAC_user_list.png)
+   ![Screenshot: Azure AD Connect Health und Azure RBAC mit hervorgehobenen neuen Benutzern](./media/how-to-connect-health-operations/RBAC_user_list.png)
 
 Jetzt haben die aufgeführten Benutzer und Gruppen gemäß ihren zugewiesenen Rollen Zugriff.
 
@@ -153,7 +153,7 @@ Jetzt haben die aufgeführten Benutzer und Gruppen gemäß ihren zugewiesenen Ro
 #### <a name="step-3-share-the-blade-location-with-users-or-groups"></a>Schritt 3: Freigeben des Blattspeicherorts für Benutzer oder Gruppen
 1. Nachdem Sie Berechtigungen zugewiesen haben, können Benutzer [hier](https://aka.ms/aadconnecthealth) auf Azure AD Connect Health zugreifen.
 2. Auf dem Blatt können Benutzer das Blatt oder einzelne Teile davon im Dashboard anheften. Hierfür wird einfach das Symbol **An Dashboard anheften** verwendet.<br>
-   ![Screenshot: Rollenbasierte Zugriffssteuerung von Azure AD Connect Health – Blatt zum Anheften mit Hervorhebung des entsprechenden Symbols](./media/how-to-connect-health-operations/RBAC_pin_blade.png)
+   ![Screenshot: Azure AD Connect Health und Azure RBAC mit dem Blatt zum Anheften mit Hervorhebung des entsprechenden Symbols](./media/how-to-connect-health-operations/RBAC_pin_blade.png)
 
 > [!NOTE]
 > Ein Benutzer, dem die Rolle „Leser“ zugewiesen ist, kann die Azure AD Connect Health-Erweiterung nicht über den Azure Marketplace abrufen. Der Benutzer kann den hierfür erforderlichen Erstellungsvorgang nicht durchführen. Dieser Benutzer kann aber trotzdem auf das Blatt zugreifen, indem er den obigen Link verwendet. Für nachfolgende Verwendungen kann der Benutzer das Blatt an das Dashboard anheften.
@@ -161,13 +161,13 @@ Jetzt haben die aufgeführten Benutzer und Gruppen gemäß ihren zugewiesenen Ro
 >
 
 ### <a name="remove-users-or-groups"></a>Entfernen von Benutzern oder Gruppen
-Sie können Benutzer oder Gruppen entfernen, die der rollenbasierten Zugriffssteuerung von Azure AD Connect Health hinzugefügt wurden. Klicken Sie hierfür einfach mit der rechten Maustaste auf den Benutzer oder die Gruppe, und wählen Sie **Entfernen**.<br>
-![Screenshot: Rollenbasierte Zugriffssteuerung von Azure AD Connect Health – Fenster „Benutzer“ mit Hervorhebung von „Entfernen“](./media/how-to-connect-health-operations/RBAC_remove.png)
+Sie können Benutzer oder Gruppen entfernen, die Azure AD Connect Health und Azure RBAC hinzugefügt wurden. Klicken Sie hierfür einfach mit der rechten Maustaste auf den Benutzer oder die Gruppe, und wählen Sie **Entfernen**.<br>
+![Screenshot: Azure AD Connect Health und Azure RBAC mit hervorgehobener Option „Entfernen“](./media/how-to-connect-health-operations/RBAC_remove.png)
 
 [//]: # (Ende des RBAC-Abschnitts)
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Azure AD Connect Health](whatis-hybrid-identity-health.md)
+* [Azure AD Connect Health](./whatis-azure-ad-connect.md)
 * [Installieren des Azure AD Connect Health-Agents](how-to-connect-health-agent-install.md)
 * [Verwenden von Azure AD Connect Health mit AD FS](how-to-connect-health-adfs.md)
 * [Verwenden von Azure AD Connect Health für die Synchronisierung](how-to-connect-health-sync.md)

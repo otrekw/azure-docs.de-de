@@ -10,18 +10,18 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: cc0efc0a076ddc3fc9425999f1e38b4a32dec7a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46572853cf882df4d6909297dd058d5ccaf782e1
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79477339"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144769"
 ---
 # <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>Erstellen eines freigegebenen Pools von Data Science Virtual Machine-Instanzen
 
 In diesem Artikel erfahren Sie, wie Sie einen freigegebenen Pool von Data Science Virtual Machine-Instanzen (DSVMs) für ein Team erstellen. Zu den Vorteilen des Verwendens eines freigegebenen Pools gehören die bessere Ressourcennutzung, das einfachere Freigeben und die einfachere Zusammenarbeit sowie die effektivere Verwaltung der DSVM-Ressourcen.
 
-Zum Erstellen eines DSVM-Pools können Sie zahlreiche Methoden und Technologien verwenden. Die Schwerpunkte dieses Artikels liegen auf Pools für interaktive virtuelle Computer (Virtual Machines, VMs). Eine alternative verwaltete Computeinfrastruktur ist Azure Machine Learning Compute. Weitere Informationen finden Sie unter [Einrichten von Computezielen](../how-to-set-up-training-targets.md#amlcompute).
+Zum Erstellen eines DSVM-Pools können Sie zahlreiche Methoden und Technologien verwenden. Die Schwerpunkte dieses Artikels liegen auf Pools für interaktive virtuelle Computer (Virtual Machines, VMs). Eine alternative verwaltete Computeinfrastruktur ist Azure Machine Learning Compute. Weitere Informationen finden Sie unter [Erstellen von Computezielen mit dem Python SDK](../how-to-create-attach-compute-sdk.md).
 
 ## <a name="interactive-vm-pool"></a>Interaktiver VM-Pool
 

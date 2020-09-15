@@ -12,12 +12,12 @@ ms.date: 04/24/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.openlocfilehash: 298c5b96951ed616b324535cf3fe2585180789a1
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 781aa48442d80e55128314dd1e271532162df32c
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117242"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89178823"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft Identity Platform – Glossar für Entwickler
 
@@ -164,7 +164,7 @@ Mithilfe von Rollen kann ein [Ressourcenserver](#resource-server) ähnlich wie m
 
 Bei Rollen handelt es sich um ressourcendefinierte Zeichenfolgen (wie etwa „Ausgabengenehmiger“, „Schreibgeschützt“, „Directory.ReadWrite.All“). Sie werden im [Azure-Portal][AZURE-portal] über das [Anwendungsmanifest](#application-manifest) der Ressource verwaltet und in der [appRoles-Eigenschaft][Graph-Sp-Resource] der Ressource gespeichert. Über das Azure-Portal können Benutzer zu Benutzerrollen zugewiesen und [Clientanwendungsberechtigungen](#permissions) für den Zugriff auf eine Anwendungsrolle konfiguriert werden.
 
-Ausführliche Informationen zu den Anwendungsrollen, die von der Microsoft Graph-API verfügbar gemacht werden, finden Sie unter [Graph-API-Berechtigungsbereiche][Graph-Perm-Scopes]. Ein Beispiel einer schrittweisen Implementierung finden Sie unter [Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten des Zugriffs auf Ihre Azure-Abonnementressourcen][AAD-RBAC].
+Ausführliche Informationen zu den Anwendungsrollen, die von der Microsoft Graph-API verfügbar gemacht werden, finden Sie unter [Graph-API-Berechtigungsbereiche][Graph-Perm-Scopes]. Ein ausführliches Implementierungsbeispiel finden Sie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe des Azure-Portals][AAD-RBAC].
 
 ## <a name="scopes"></a>Bereiche
 

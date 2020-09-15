@@ -10,13 +10,13 @@ ms.author: daperlov
 ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
-ms.date: 04/30/2020
-ms.openlocfilehash: 4de682bd315eef100bdbf8dd24faa128c5b8c2a1
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.date: 08/31/2020
+ms.openlocfilehash: 582a9eb4c98e89602e35e2ee424a00adc54a88e3
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815809"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229547"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Continuous Integration und Continuous Delivery in Azure Data Factory
 
@@ -335,6 +335,16 @@ Nachfolgend ist die aktuelle Standardvorlage für die Parametrisierung dargestel
 
 ```json
 {
+    "Microsoft.DataFactory/factories": {
+        "properties": {
+            "globalParameters": {
+                "*": {
+                    "value": "="
+                }
+            }
+        },
+        "location": "="
+    },
     "Microsoft.DataFactory/factories/pipelines": {
     },
     "Microsoft.DataFactory/factories/dataflows": {
@@ -390,7 +400,6 @@ Nachfolgend ist die aktuelle Standardvorlage für die Parametrisierung dargestel
             "typeProperties": {
                 "scope": "="
             }
-
         }
     },
     "Microsoft.DataFactory/factories/linkedServices": {
@@ -427,7 +436,8 @@ Nachfolgend ist die aktuelle Standardvorlage für die Parametrisierung dargestel
                     "aadResourceId": "=",
                     "sasUri": "|:-sasUri:secureString",
                     "sasToken": "|",
-                    "connectionString": "|:-connectionString:secureString"
+                    "connectionString": "|:-connectionString:secureString",
+                    "hostKeyFingerprint": "="
                 }
             }
         },
@@ -450,8 +460,8 @@ Nachfolgend ist die aktuelle Standardvorlage für die Parametrisierung dargestel
                     "fileName": "="
                 }
             }
-        }}
-}
+        }
+    }
 ```
 
 ### <a name="example-parameterizing-an-existing-azure-databricks-interactive-cluster-id"></a>Beispiel: Parametrisieren der ID eines vorhandenen interaktiven Azure Databricks-Clusters
@@ -460,6 +470,16 @@ Im folgenden Beispiel wird das Hinzufügen eines einzelnen Werts zur Standardvor
 
 ```json
 {
+    "Microsoft.DataFactory/factories": {
+        "properties": {
+            "globalParameters": {
+                "*": {
+                    "value": "="
+                }
+            }
+        },
+        "location": "="
+    },
     "Microsoft.DataFactory/factories/pipelines": {
     },
     "Microsoft.DataFactory/factories/dataflows": {
@@ -625,6 +645,8 @@ Wenn Sie die Git-Integration mit Ihrer Data Factory verwenden und über eine CI/
 
     - Data Factory-Entitäten sind voneinander abhängig. Beispielsweise hängen Trigger von Pipelines ab, während Pipelines von Datasets und anderen Pipelines abhängig sind. Die selektive Veröffentlichung einer Teilmenge von Ressourcen kann ggf. zu unerwartetem Verhalten und Fehlern führen.
     - In den seltenen Fällen, in denen Sie eine selektive Veröffentlichung durchführen müssen, können Sie die Verwendung eines Hotfix erwägen. Weitere Informationen finden Sie unter [Hotfix für Produktionsumgebung](#hotfix-production-environment).
+
+- Das Azure Data Factory-Team rät davon ab, RBAC-Steuerelemente einzelnen Entitäten (Pipelines, Datasets, usw.) in einer Data Factory zuzuweisen. Wenn ein Entwickler beispielsweise Zugriff auf eine Pipeline oder ein Dataset hat, sollte er in der Lage sein, auf alle Pipelines oder Datasets in der Data Factory zuzugreifen. Wenn Sie der Meinung sind, dass Sie viele RBAC-Rollen innerhalb einer Data Factory implementieren müssen, ziehen Sie die Bereitstellung einer zweiten Data Factory in Betracht.
 
 -   Sie können nicht aus privaten Branches veröffentlichen.
 

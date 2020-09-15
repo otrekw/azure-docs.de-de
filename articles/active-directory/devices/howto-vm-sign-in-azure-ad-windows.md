@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e707393bda3d8820ccf94abed83beb1317027d5
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 42b980f809074c275a5e62098d4162e4cb4340a0
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005021"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259369"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Anmelden bei einem virtuellen Windows-Computer in Azure mit der Azure Active Directory-Authentifizierung (Vorschau)
 
@@ -191,9 +191,9 @@ az role assignment create \
 
 Weitere Informationen zur Verwendung der rollenbasierten Zugriffssteuerung (Azure RBAC) zum Verwalten des Zugriffs auf Ihre Azure-Abonnementressourcen finden Sie in folgenden Artikeln:
 
-- [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe der Azure-Befehlszeilenschnittstelle](/azure/role-based-access-control/role-assignments-cli)
-- [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal](/azure/role-based-access-control/role-assignments-portal)
-- [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe von Azure PowerShell](/azure/role-based-access-control/role-assignments-powershell)
+- [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe der Azure-Befehlszeilenschnittstelle](../../role-based-access-control/role-assignments-cli.md)
+- [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md)
+- [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe von Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
 
 ## <a name="using-conditional-access"></a>Verwenden von bedingtem Zugriff
 
@@ -329,7 +329,7 @@ Beim Initiieren einer Remotedesktopverbindung mit dem virtuellen Computer wird d
 
 ![Die Konfiguration Ihres Kontos lässt die Verwendung dieses Geräts nicht zu.](./media/howto-vm-sign-in-azure-ad-windows/rbac-role-not-assigned.png)
 
-Überprüfen Sie, ob Sie für den virtuellen Computer [RBAC-Richtlinien konfiguriert](../../virtual-machines/linux/login-using-aad.md) haben, mit denen dem Benutzer die Rolle „VM-Administratoranmeldung“ oder „VM-Benutzeranmeldung“ zugewiesen wird:
+Überprüfen Sie, ob Sie für den virtuellen Computer [Azure RBAC-Richtlinien konfiguriert](../../virtual-machines/linux/login-using-aad.md) haben, mit denen dem Benutzer die Rolle „VM-Administratoranmeldung“ oder „VM-Benutzeranmeldung“ zugewiesen wird:
  
 #### <a name="unauthorized-client"></a>Nicht autorisierter Client
 
@@ -339,7 +339,7 @@ Beim Initiieren einer Remotedesktopverbindung mit dem virtuellen Computer wird d
 
 ![Mit den Anmeldeinformationen konnte keine Verbindung hergestellt werden](./media/howto-vm-sign-in-azure-ad-windows/your-credentials-did-not-work.png)
 
-Vergewissern Sie sich, dass der Windows 10-PC, den Sie zum Initiieren der Remotedesktopverbindung verwenden, über Azure AD regulär oder hybrid im selben Azure AD-Verzeichnis eingebunden ist, in dem auch der virtuelle Computer eingebunden ist. Weitere Informationen zur Geräteidentität finden Sie im Artikel [Was ist eine Geräteidentität](/azure/active-directory/devices/overview).
+Vergewissern Sie sich, dass der Windows 10-PC, den Sie zum Initiieren der Remotedesktopverbindung verwenden, über Azure AD regulär oder hybrid im selben Azure AD-Verzeichnis eingebunden ist, in dem auch der virtuelle Computer eingebunden ist. Weitere Informationen zur Geräteidentität finden Sie im Artikel [Was ist eine Geräteidentität](./overview.md).
 
 > [!NOTE]
 > Im Build 20H1 für Windows 10 wurde Unterstützung für einen für Azure AD registrierten Computer hinzugefügt, um RDP-Verbindungen zu Ihrer VM zu initiieren. Bei Verwendung eines für Azure AD registrierten (nicht über Azure AD regulär oder hybrid eingebundenen) Computers als RDP-Client zum Initiieren von Verbindungen zu Ihrer VM müssen Sie Anmeldeinformationen im Format AzureAD\UPn (z. B. AzureAD\john@contoso.com) eingeben.
@@ -367,4 +367,4 @@ Geben Sie Feedback zu dieser Previewfunktion, oder melden Sie Probleme bei der V
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure Active Directory finden Sie unter [Was ist Azure Active Directory?](/azure/active-directory/fundamentals/active-directory-whatis).
+Weitere Informationen zu Azure Active Directory finden Sie unter [Was ist Azure Active Directory?](../fundamentals/active-directory-whatis.md).

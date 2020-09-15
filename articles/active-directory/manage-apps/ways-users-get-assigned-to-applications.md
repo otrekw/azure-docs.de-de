@@ -1,64 +1,45 @@
 ---
-title: Zuweisen von Benutzern zu Anwendungen | Microsoft-Dokumentation
-description: Informationen zum Zuweisen von Benutzern zu einer Anwendung in Ihrem Mandanten
+title: Informationen dazu, wie Benutzer Apps in Azure Active Directory zugewiesen werden
+description: Hier erfahren Sie, wie Benutzer einer App zugewiesen werden, die Azure Active Directory für die Identitätsverwaltung verwendet.
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: troubleshooting
+ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: kenwith
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 516bffa7057f8fee3b8e38d46f3b2da905880044
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 243e5ece0d0a14cb7e3ade409ee68510cef64a9c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88639935"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397099"
 ---
-# <a name="how-to-assign-users-to-applications"></a>Zuweisen von Benutzern zu Anwendungen
-
+# <a name="understand-how-users-are-assigned-to-apps-in-azure-active-directory"></a>Informationen dazu, wie Benutzer Apps in Azure Active Directory zugewiesen werden
 In diesem Artikel erhalten Sie Informationen zum Zuweisen von Benutzern zu einer Anwendung in Ihrem Mandanten.
 
 ## <a name="how-do-users-get-assigned-to-an-application-in-azure-ad"></a>Wie werden Benutzer einer Anwendung in Azure AD zugewiesen?
-
 Damit Benutzer Zugriff auf eine Anwendung haben, müssen sie dieser zunächst zugewiesen werden. Die Zuweisung kann durch einen Administrator, einen Vertreter des Unternehmens oder manchmal auch durch den Benutzer selbst erfolgen. Nachfolgend sind die verschiedenen Möglichkeiten aufgeführt, wie Benutzer Anwendungen zugewiesen werden können:
 
-1.  Ein Administrator [weist einen Benutzer](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) direkt der Anwendung zu.
-
-2.  Ein Administrator [weist eine Gruppe](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal), der der Benutzer als Mitglied angehört, der Anwendung zu. Dies kann die folgenden Gruppen umfassen:
-
+*  Ein Administrator [weist einen Benutzer](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) direkt der Anwendung zu.
+*  Ein Administrator [weist eine Gruppe](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal), der der Benutzer als Mitglied angehört, der Anwendung zu. Dies kann die folgenden Gruppen umfassen:
     * Eine Gruppe, die lokal synchronisiert wurde
-
     * Eine in der Cloud erstellte statische Sicherheitsgruppe
-
     * Eine in der Cloud erstellte [dynamische Sicherheitsgruppe](https://docs.microsoft.com/azure/active-directory/active-directory-groups-dynamic-membership-azure-portal)
-
     * Eine in der Cloud erstellte Office 365-Gruppe
-
     * Die Gruppe [Alle Benutzer](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-dedicated-groups)
-
-3.  Ein Administrator aktiviert den [Self-Service-Anwendungszugriff](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access), damit ein Benutzer eine Anwendung mithilfe der Funktion **App hinzufügen** in [Meine Apps](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **ohne Genehmigung des Unternehmens** hinzufügen kann.
-
-4.  Ein Administrator aktiviert den [Self-Service-Anwendungszugriff](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access), damit ein Benutzer eine Anwendung mithilfe der Funktion **App hinzufügen** in [Meine Apps](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) hinzufügen kann, jedoch nur **mit vorheriger Genehmigung durch festgelegte genehmigende Personen des Unternehmens**.
-
-5.  Ein Administrator aktiviert die [Self-Service-Gruppenverwaltung](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management), damit ein Benutzer einer Gruppe, der eine Anwendung zugewiesen ist, **ohne Genehmigung des Unternehmens** beitreten kann.
-
-6.  Ein Administrator aktiviert die [Self-Service-Gruppenverwaltung](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management), damit ein Benutzer einer Gruppe, der eine Anwendung zugewiesen ist, beitreten kann, jedoch nur **mit vorheriger Genehmigung durch festgelegte genehmigende Personen des Unternehmens**.
-
-7.  Ein Administrator weist einem Benutzer direkt eine Lizenz für eine Erstanbieteranwendung zu, z.B. für [Microsoft Office 365](https://products.office.com/).
-
-8.  Ein Administrator weist einer Gruppe, der der Benutzer als Mitglied angehört, eine Lizenz für eine Erstanbieteranwendung zu, z.B. für [Microsoft Office 365](https://products.office.com/).
-
-9.  Ein [Administrator gibt seine Zustimmung für eine Anwendung](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview), sodass diese von allen Benutzern verwendet werden kann. Ein Benutzer meldet sich dann bei der Anwendung an.
-
-10. Ein Benutzer [gibt selbst seine Zustimmung zu einer Anwendung](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview), indem er sich bei der Anwendung anmeldet.
+*  Ein Administrator aktiviert den [Self-Service-Anwendungszugriff](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access), damit ein Benutzer eine Anwendung mithilfe der Funktion **App hinzufügen** in [Meine Apps](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **ohne Genehmigung des Unternehmens** hinzufügen kann.
+*  Ein Administrator aktiviert den [Self-Service-Anwendungszugriff](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access), damit ein Benutzer eine Anwendung mithilfe der Funktion **App hinzufügen** in [Meine Apps](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) hinzufügen kann, jedoch nur **mit vorheriger Genehmigung durch festgelegte genehmigende Personen des Unternehmens**.
+*  Ein Administrator aktiviert die [Self-Service-Gruppenverwaltung](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management), damit ein Benutzer einer Gruppe, der eine Anwendung zugewiesen ist, **ohne Genehmigung des Unternehmens** beitreten kann.
+*  Ein Administrator aktiviert die [Self-Service-Gruppenverwaltung](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management), damit ein Benutzer einer Gruppe, der eine Anwendung zugewiesen ist, beitreten kann, jedoch nur **mit vorheriger Genehmigung durch festgelegte genehmigende Personen des Unternehmens**.
+*  Ein Administrator weist einem Benutzer direkt eine Lizenz für eine Erstanbieteranwendung zu, z.B. für [Microsoft Office 365](https://products.office.com/).
+*  Ein Administrator weist einer Gruppe, der der Benutzer als Mitglied angehört, eine Lizenz für eine Erstanbieteranwendung zu, z.B. für [Microsoft Office 365](https://products.office.com/).
+*  Ein [Administrator gibt seine Zustimmung für eine Anwendung](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview), sodass diese von allen Benutzern verwendet werden kann. Ein Benutzer meldet sich dann bei der Anwendung an.
+* Ein Benutzer [gibt selbst seine Zustimmung zu einer Anwendung](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview), indem er sich bei der Anwendung anmeldet.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Verwalten von Anwendungen mit Azure Active Directory](what-is-application-management.md)
+* [Schnellstartserie zur Anwendungsverwaltung](view-applications-portal.md)
+* [Worum handelt es sich bei der Anwendungsverwaltung?](what-is-application-management.md)
+* [Worum handelt es sich beim einmaligen Anmelden?](what-is-single-sign-on.md)

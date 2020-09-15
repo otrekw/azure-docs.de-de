@@ -1,6 +1,7 @@
 ---
-title: Erstellen, Ändern oder Löschen einer öffentlichen Azure-IP-Adresse | Microsoft-Dokumentation
-description: Erstellen, ändern oder löschen Sie eine öffentliche IP-Adresse. Erfahren Sie auch, wie eine öffentliche IP-Adresse eine Ressource mit eigenen konfigurierbaren Einstellungen ist.
+title: Verwalten öffentlicher IP-Adressen | Microsoft-Dokumentation
+titleSuffix: Azure Virtual Network
+description: Verwalten öffentlicher IP-Adressen  Erfahren Sie auch, wie eine öffentliche IP-Adresse eine Ressource mit eigenen konfigurierbaren Einstellungen ist.
 services: virtual-network
 documentationcenter: na
 author: asudbring
@@ -16,14 +17,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: kumud
-ms.openlocfilehash: 4c0766dc063932c5fdd41a4e21ac11befd84a0e5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7beff39ed2c37eeb0f07571ba6d611d23a3221e7
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87265125"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89292026"
 ---
-# <a name="create-change-or-delete-a-public-ip-address"></a>Erstellen, Ändern oder Löschen einer öffentlichen IP-Adresse
+# <a name="manage-public-ip-addresses"></a>Verwalten öffentlicher IP-Adressen
 
 Sie erhalten Informationen über öffentliche IP-Adressen und darüber, wie Sie diese erstellen, ändern und löschen können. Eine öffentliche IP-Adresse ist eine Ressource mit eigenen konfigurierbaren Einstellungen. Das Zuweisen einer öffentlichen IP-Adresse an eine Azure-Ressource, die öffentliche IP-Adressen unterstützt, ermöglicht Folgendes:
 - Eingehende Kommunikation aus dem Internet an die Ressource, z.B. Azure Virtual Machines (VM), Azure Application Gateways, Azure Load Balancers, Azure VPN Gateways und weitere. Sie können mit einigen Ressourcen wie z.B. virtuellen Computern aus dem Internet auch dann kommunizieren, wenn einem virtuellem Computer keine öffentliche IP-Adresse zugewiesen ist, sofern der virtuelle Computer Teil eines Lastenausgleich-Back-End-Pools und dem Lastenausgleich eine öffentliche IP-Adresse zugewiesen ist. Ob einer Ressource für einen bestimmten Azure-Dienst eine öffentliche IP-Adresse zugewiesen werden kann, oder ob über die öffentliche IP-Adresse einer anderen Azure-Ressource damit kommuniziert werden kann, erfahren Sie in der Dokumentation für den jeweiligen Dienst.

@@ -1,25 +1,27 @@
 ---
-title: Azure-Sprechererkennungsdienst
+title: 'Übersicht über die Sprechererkennung: Speech-Dienst'
 titleSuffix: Azure Cognitive Services
-description: Die Sprechererkennung von Azure Cognitive Services bietet Algorithmen, mit denen Sprecher anhand ihrer individuellen Stimmmerkmale überprüft und identifiziert werden. Die Sprechererkennung wird verwendet, um herauszufinden, wer spricht.
+description: Die Sprechererkennung bietet Algorithmen, mit denen Sprecher anhand ihrer individuellen Stimmmerkmale mithilfe von Sprachbiometrie überprüft und identifiziert werden. Die Sprechererkennung wird verwendet, um herauszufinden, wer spricht. Dieser Artikel bietet einen Überblick über die Vorteile und Funktionen des Sprechererkennungsdiensts.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/27/2020
+ms.date: 09/02/2020
 ms.author: trbye
-ms.openlocfilehash: a333a61a28fabddc2e8101fdf3290c52f3db59ae
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.custom: cog-serv-seo-aug-2020
+keywords: Sprechererkennung, Sprachbiometrie
+ms.openlocfilehash: 2c5b73b93c22ef27d7b68455f5e1e5108f25c984
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84780884"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397258"
 ---
-# <a name="what-is-the-azure-speaker-recognition-service"></a>Was ist der Azure-Sprechererkennungsdienst?
+# <a name="what-is-speaker-recognition"></a>Was ist Sprechererkennung?
 
-Die Sprechererkennungsdienst bietet Algorithmen, mit denen Sprecher anhand ihrer individuellen Stimmmerkmale überprüft und identifiziert werden. Die Sprechererkennung wird verwendet, um herauszufinden, wer spricht. Wenn Sie Audiotrainingsdaten für einen einzelnen Sprechers bereitstellen, wird basierend auf den eindeutigen Stimmmerkmalen des Sprechers ein Registrierungsprofil erstellt. Sie können anschließend Sprachbeispiele mit diesem Profil abgleichen, um zu überprüfen, ob es sich um denselben Sprecher handelt (Sprecherüberprüfung), oder Sprachbeispiele mit einer *Gruppe* von registrierten Sprecherprofilen abgleichen, um herauszufinden, ob es eine Übereinstimmung mit einem Profil gibt (Sprecheridentifikation). Im Gegensatz dazu gruppiert die [Sprecherdiarisierung](batch-transcription.md#speaker-separation-diarization) Audiosegmente nach Sprecher in einen Batchvorgang.
+Der Dienst „Sprechererkennung“ bietet Algorithmen, mit denen Sprecher anhand ihrer individuellen Stimmmerkmale mithilfe von Sprachbiometrie überprüft und identifiziert werden. Die Sprechererkennung wird verwendet, um herauszufinden, wer spricht. Wenn Sie Audiotrainingsdaten für einen einzelnen Sprechers bereitstellen, wird basierend auf den eindeutigen Stimmmerkmalen des Sprechers ein Registrierungsprofil erstellt. Sie können anschließend Sprachbeispiele mit diesem Profil abgleichen, um zu überprüfen, ob es sich um denselben Sprecher handelt (Sprecherüberprüfung), oder Sprachbeispiele mit einer *Gruppe* von registrierten Sprecherprofilen abgleichen, um herauszufinden, ob es eine Übereinstimmung mit einem Profil gibt (Sprecheridentifikation). Im Gegensatz dazu gruppiert die [Sprecherdiarisierung](batch-transcription.md#speaker-separation-diarization) Audiosegmente nach Sprecher in einen Batchvorgang.
 
 ## <a name="speaker-verification"></a>Sprecherüberprüfung
 

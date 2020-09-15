@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7c119b56d33908dbc0e53d588f3ac4ea155c8de
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 0847329bc1bc1a2d6242a9485453a3daf315c3fe
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799088"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318317"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Häufig gestellte Fragen zu Azure Active Directory
 Azure Active Directory (Azure AD) ist eine umfassende IDaaS-Lösung (Identity as a Service) für sämtliche Aspekte von Identität, Zugriffsverwaltung und Sicherheit.
@@ -51,7 +51,7 @@ Kostenpflichtige Azure AD-Dienste wie Enterprise Mobility + Security ergänzen a
 
 **A:** Der Person, die sich für ein Azure-Abonnement registriert, wird standardmäßig die Rolle „Besitzer“ für Azure-Ressourcen zugewiesen. Ein Besitzer kann entweder ein Microsoft-Konto oder ein Geschäfts-, Schul- oder Unikonto aus dem Verzeichnis verwenden, dem das Azure-Abonnement zugeordnet ist.  Diese Rolle ist zum Verwalten von Diensten im Azure-Portal berechtigt.
 
-Anderen Benutzern, die sich mithilfe des gleichen Abonnements anmelden und auf die Dienste zugreifen müssen, können Sie die geeignete [integrierte Rolle](../../role-based-access-control/built-in-roles.md) zuweisen. Weitere Informationen finden Sie unter [Verwalten des Zugriffs mithilfe von RBAC und Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
+Anderen Benutzern, die sich mithilfe des gleichen Abonnements anmelden und auf die Dienste zugreifen müssen, können Sie die geeignete [integrierte Rolle](../../role-based-access-control/built-in-roles.md) zuweisen. Zusätzliche Informationen finden Sie unter [Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe des Azure-Portals](../../role-based-access-control/role-assignments-portal.md).
 
 Der Person, die sich für ein Azure-Abonnement registriert, wird standardmäßig die globale Administratorrolle für das Verzeichnis zugewiesen. Der globale Administrator hat Zugriff auf alle Azure AD-Verzeichnisfunktionen. Azure AD weist eine andere Gruppe von Administratorrollen zum Verwalten der Features für Verzeichnisse und Identitäten. Diese Administratoren haben Zugriff auf verschiedene Funktionen im Azure-Portal. Die Rolle des Administrators bestimmt, welche Aktionen er ausführen kann. Mögliche Aktionen sind beispielsweise das Erstellen oder Bearbeiten von Benutzern, das Zuweisen von Administratorrollen zu anderen Personen, das Zurücksetzen von Benutzerkennwörtern sowie das Verwalten von Benutzerlizenzen oder Domänen.  Weitere Informationen zu Azure AD-Verzeichnisadministratoren und deren Rollen finden Sie unter [Zuweisen eines Benutzers zu Administratorrollen in Azure Active Directory](active-directory-users-assign-role-azure-portal.md) und [Zuweisen von Administratorrollen in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).
 
@@ -92,14 +92,14 @@ Weitere Informationen finden Sie unter [Integrieren Ihrer lokalen Identitäten i
 
 **A:** Ja. Für Self-Service-Aktionen und den Anwendungszugriff der Benutzer stellt Azure AD den [Azure AD-Zugriffsbereich](https://myapps.microsoft.com) bereit. Für Office 365-Kunden stehen viele dieser Funktionen bereits im [Office 365-Portal](https://portal.office.com) zur Verfügung.
 
-Weitere Informationen finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
+Weitere Informationen finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ---
 **F: Unterstützt mich Azure AD bei der Verwaltung meiner lokalen Infrastruktur?**
 
 **A:** Ja. In der Premium Edition von Azure AD ist Azure AD Connect Health enthalten. Azure AD Connect Health unterstützt Sie bei der Überwachung Ihrer lokalen Identitätsinfrastruktur und Synchronisierungsdienste und vermittelt Ihnen wichtige Einblicke.  
 
-Ausführlichere Informationen finden Sie unter [Überwachen Ihrer lokalen Identitätsinfrastruktur und Synchronisierung von Diensten in der Cloud](../hybrid/whatis-hybrid-identity-health.md).  
+Ausführlichere Informationen finden Sie unter [Überwachen Ihrer lokalen Identitätsinfrastruktur und Synchronisierung von Diensten in der Cloud](../hybrid/whatis-azure-ad-connect.md).  
 
 ---
 ## <a name="password-management"></a>Kennwortverwaltung
@@ -112,7 +112,7 @@ Ausführlichere Informationen finden Sie unter [Überwachen Ihrer lokalen Identi
 
 **A:** Kennwörter werden in Echtzeit zurückgeschrieben.
 
-Weitere Informationen finden Sie unter [Erste Schritte mit der Kennwortverwaltung](../authentication/quickstart-sspr.md).
+Weitere Informationen finden Sie unter [Erste Schritte mit der Kennwortverwaltung](../authentication/tutorial-enable-sspr.md).
 
 ---
 **F: Kann ich die Funktion „Kennwort zurückschreiben“ für Kennwörter verwenden, die von einem Administrator verwaltet werden?**
@@ -184,8 +184,8 @@ Weitere Informationen finden Sie unter [End-user experiences for applications in
 
 Weitere Informationen finden Sie unter
 
-* [Authentifizierungsszenarien für Azure AD](../develop/authentication-scenarios.md)
-* [Active Directory-Authentifizierungsprotokolle](https://msdn.microsoft.com/library/azure/dn151124.aspx)
+* [Authentifizierungsszenarien für Azure AD](../develop/authentication-vs-authorization.md)
+* [Active Directory-Authentifizierungsprotokolle](/previous-versions/azure/dn151124(v=azure.100))
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ---

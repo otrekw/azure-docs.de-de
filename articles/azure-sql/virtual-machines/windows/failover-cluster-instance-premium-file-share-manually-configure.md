@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: befab4dfb8d414743b70c535d041112bd9ccb700
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: cbc6b2af98905a09324a58c92cafca0075d8a01d
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964142"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055139"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>Erstellen einer FCI mit einer Premium-Dateifreigabe (SQL Server auf Azure-VMs)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -204,7 +204,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="configure-connectivity"></a>Konfigurieren von Konnektivität 
 
-Um Datenverkehr ordnungsgemäß an den aktuellen primären Knoten zu leiten, konfigurieren Sie die für Ihre Umgebung geeignete Konnektivitätsoption. Sie können einen [Azure-Lastenausgleich](hadr-vnn-azure-load-balancer-configure.md) erstellen oder bei Verwendung von SQL Server 2019 und Windows Server 2019 stattdessen eine Vorschau des Features für [verteilte Netzwerknamen](hadr-distributed-network-name-dnn-configure.md) anzeigen. 
+Um Datenverkehr ordnungsgemäß an den aktuellen primären Knoten zu leiten, konfigurieren Sie die für Ihre Umgebung geeignete Konnektivitätsoption. Sie können einen [Azure-Lastenausgleich](hadr-vnn-azure-load-balancer-configure.md) erstellen oder bei Verwendung von SQL Server 2019 und Windows Server 2016 (oder höher) stattdessen eine Vorschau des Features für [verteilte Netzwerknamen](hadr-distributed-network-name-dnn-configure.md) anzeigen. 
 
 ## <a name="limitations"></a>Einschränkungen
 

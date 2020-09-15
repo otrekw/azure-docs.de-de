@@ -7,20 +7,22 @@ ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: b2ae94da3d9b2dee62bc031c4a32d17b43be00a6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 79d3829eaea15c8e7909b98b83d1327cd90e4544
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021272"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260322"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Vorbereiten einer Java Spring-Anwendung für die Bereitstellung in Azure Spring Cloud
 
 In diesem Thema wird gezeigt, wie Sie eine vorhandene Java Spring-Anwendung für die Bereitstellung in Azure Spring Cloud vorbereiten. Bei ordnungsgemäßer Konfiguration bietet Azure Spring Cloud stabile Dienste zur Überwachung, Skalierung und Aktualisierung Ihrer Java Spring Cloud-Anwendung.
 
+Bevor Sie dieses Beispiel ausführen, können Sie den [grundlegenden Schnellstart](spring-cloud-quickstart.md) ausprobieren.
+
 In anderen Beispielen wird erläutert, wie eine Anwendung in Azure Spring Cloud bereitgestellt wird, wenn die POM-Datei konfiguriert ist. 
-* [Starten der App über das Azure-Portal](spring-cloud-quickstart-launch-app-portal.md)
-* [Starten der App über die Azure-Befehlszeilenschnittstelle](spring-cloud-quickstart-launch-app-cli.md)
+* [Starten Ihrer ersten App](spring-cloud-quickstart.md)
+* [Erstellen und Ausführen von Microservices](spring-cloud-quickstart-sample-app-introduction.md)
 
 In diesem Artikel werden die erforderlichen Abhängigkeiten erläutert und wie diese zur POM-Datei hinzugefügt werden.
 
@@ -39,8 +41,8 @@ Azure Spring Cloud unterstützt ausschließlich Spring Boot-Anwendungen der Vers
 Spring Boot-Version | Spring Cloud-Version
 ---|---
 2.1 | Greenwich.RELEASE
-2.2 | Hoxton.RELEASE
-2.3 | Hoxton.SR5
+2.2 | Hoxton.SR8
+2.3 | Hoxton.SR8
 
 ### <a name="dependencies-for-spring-boot-version-21"></a>Abhängigkeiten für die Spring Boot-Version 2.1
 
@@ -60,7 +62,7 @@ Für Spring Boot-Version 2.1 fügen Sie die folgenden Abhängigkeiten zur POM-Da
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Greenwich.SR4</version>
+                <version>Greenwich.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -86,7 +88,7 @@ Für Spring Boot-Version 2.2 fügen Sie die folgenden Abhängigkeiten zur POM-Da
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Hoxton.SR1</version>
+                <version>Hoxton.SR8</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -111,7 +113,7 @@ Für Spring Boot-Version 2.3 fügen Sie der POM-Datei der Anwendung die folgend
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Hoxton.SR5</version>
+                <version>Hoxton.SR8</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -120,49 +122,23 @@ Für Spring Boot-Version 2.3 fügen Sie der POM-Datei der Anwendung die folgend
 ```
 ## <a name="azure-spring-cloud-client-dependency"></a>Azure Spring Cloud-Clientabhängigkeit
 
-Azure Spring Cloud hostet und verwaltet Spring Cloud-Komponenten. Die Komponenten beinhalten Spring Cloud-Dienstregistrierung und Spring Cloud-Konfigurationsserver. Schließen Sie die Azure Spring Cloud-Clientbibliothek in Ihre Abhängigkeiten ein, um die Kommunikation mit der Azure Spring Cloud-Dienstinstanz zu ermöglichen.
+Azure Spring Cloud hostet und verwaltet Spring Cloud-Komponenten. Die Komponenten beinhalten Spring Cloud-Dienstregistrierung und Spring Cloud-Konfigurationsserver. Es wird empfohlen, Spring Boot 2.2 oder 2.3 zu verwenden. Bei Spring Boot 2.1 müssen Sie die Azure Spring Cloud-Clientbibliothek in Ihre Abhängigkeiten einschließen, um die Kommunikation mit der Azure Spring Cloud-Dienstinstanz zu ermöglichen.
 
 Die folgende Tabelle enthält die korrekten Azure Spring Cloud-Versionen für Ihre App mit Spring Boot und Spring Cloud:
 
-Spring Boot-Version | Spring Cloud-Version | Azure Spring Cloud-Version
+Spring Boot-Version | Spring Cloud-Version | Azure Spring Cloud-Clientstarterversion
 ---|---|---
-2.1 | Greenwich.RELEASE | 2.1
-2.2 | Hoxton.RELEASE | 2.2
-2.3 | Hoxton.SR5 | 2.3
+2.1 | Greenwich.RELEASE | 2.1.2
+2.2 | Hoxton.SR8 | Nicht erforderlich
+2.3 | Hoxton.SR8 | Nicht erforderlich
 
-Schließen Sie eine der folgenden Abhängigkeiten in die Datei „pom.xml“ ein. Wählen Sie die Abhängigkeit aus, deren Azure Spring Cloud-Version Ihrer eigenen Version entspricht.
-
-### <a name="dependency-for-azure-spring-cloud-version-21"></a>Abhängigkeit für die Azure Spring Cloud-Version 2.1
-
-Für Spring Boot-Version 2.1 fügen Sie die folgende Abhängigkeit zur POM-Datei der Anwendung hinzu.
+Schließen Sie bei Verwendung von Spring Boot 2.1. die folgende Abhängigkeit in die Datei „pom.xml“ ein:
 
 ```xml
 <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
         <version>2.1.2</version>
-</dependency>
-```
-
-### <a name="dependency-for-azure-spring-cloud-version-22"></a>Abhängigkeit für die Azure Spring Cloud-Version 2.2
-
-Für Spring Boot-Version 2.2 fügen Sie die folgende Abhängigkeit zur POM-Datei der Anwendung hinzu.
-
-```xml
-<dependency>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.2.1</version>
-</dependency>
-```
-
-Für Spring Boot-Version 2.3 fügen Sie der POM-Datei der Anwendung die folgende Abhängigkeit hinzu.
-
-```xml
-<dependency>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.3.0</version>
 </dependency>
 ```
 

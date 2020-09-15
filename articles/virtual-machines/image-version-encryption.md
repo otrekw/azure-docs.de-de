@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 08/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 21e6dc5a975f43456a077559eebafd975cea66a1
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 91f485d03717ab80bac26abd16da165d7b0dead7
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816489"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291924"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Vorschau: Verwenden von kundenseitig verwalteten Schlüsseln zum Verschlüsseln von Images
 
@@ -149,7 +149,7 @@ az provider register -n Microsoft.Compute
 ```
 
 
-Um einen Datenträgerverschlüsselungssatz für eine Imageversion anzugeben, verwenden Sie [az image gallery create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create) mit dem Parameter `--target-region-encryption`. Das Format für `--target-region-encryption` ist eine durch Leerzeichen getrennte Liste mit Schlüsseln für die Verschlüsselung der Datenträger für Betriebssystem und Daten. Diese sollte wie folgt aussehen: `<encryption set for the OS disk>,<Lun number of the data disk>, <encryption set for the data disk>, <Lun number for the second data disk>, <encryption set for the second data disk>`. 
+Um einen Datenträgerverschlüsselungssatz für eine Imageversion anzugeben, verwenden Sie [az image gallery create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create) mit dem Parameter `--target-region-encryption`. Das Format für `--target-region-encryption` ist eine durch Komma getrennte Liste mit Schlüsseln für die Verschlüsselung der Datenträger für Betriebssystem und Daten. Diese sollte wie folgt aussehen: `<encryption set for the OS disk>,<Lun number of the data disk>,<encryption set for the data disk>,<Lun number for the second data disk>,<encryption set for the second data disk>`. 
 
 Wenn die Quelle des Betriebssystemdatenträgers ein verwalteter Datenträger oder eine VM ist, verwenden Sie `--managed-image`, um die Quelle für die Imageversion anzugeben. In diesem Beispiel ist die Quelle ein verwaltetes Image, das sowohl über einen Datenträger für das Betriebssystem als auch über einen Datenträger für Daten bei LUN 0 verfügt. Der Betriebssystemdatenträger wird mit DiskEncryptionSet1 verschlüsselt, der Datenträger für Daten mit DiskEncryptionSet2.
 

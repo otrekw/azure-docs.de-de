@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 759a5fa2be5a3df50160d2fd0ac4231c9f49329b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: b773fb887d3663a2af2e340912e378c7fccaba4a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718950"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003540"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Planen und Bereitstellen des lokalen Azure AD-Kennwortschutzes
 
@@ -50,6 +50,8 @@ Es ist auch möglich, dass eine stärkere Kennwortüberprüfung die vorhandene A
 
 Nachdem das Feature für einen angemessenen Zeitraum im Überwachungsmodus ausgeführt wurde, können Sie die Konfiguration von *Überwachen* auf *Erzwingen* umstellen, um sicherere Kennwörter zu verlangen. Eine zusätzliche Überwachung während dieser Zeit wird empfohlen.
 
+Beachten Sie unbedingt, dass der Azure AD-Kennwortschutz Kennwörter nur bei der Änderung oder Festlegung überprüfen kann. Kennwörter, die vor der Bereitstellung des Azure AD-Kennwortschutzes in Active Directory akzeptiert und gespeichert wurden, werden niemals überprüft und funktionieren unverändert. Im Lauf der Zeit werden alle Benutzer und Konten auf die Verwendung von Kennwörtern umgestellt, die vom Azure AD-Kennwortschutz überprüft wurden, da die bestehenden Kennwörter normal ablaufen. Konten, die mit „Kennwort läuft nie ab“ konfiguriert wurden, sind davon ausgenommen.
+
 ### <a name="multiple-forest-considerations"></a>Überlegungen zur Gesamtstruktur
 
 Für die Bereitstellung des Azure AD-Kennwortschutzes in mehreren Gesamtstrukturen gibt es keine zusätzlichen Anforderungen.
@@ -74,7 +76,7 @@ Die üblichen Probleme, die mit Hochverfügbarkeit einhergehen, werden durch den
 
 Eine angemessene Aktualisierungshäufigkeit für Kennwortrichtlinien in einer umfangreichen Bereitstellung liegt für gewöhnlich in der Größenordnung von Tagen, nicht Stunden oder weniger. Kurze Ausfälle der Proxyserver haben daher keinen wesentlichen Einfluss auf den Azure AD-Kennwortschutz.
 
-## <a name="deployment-requirements"></a>Bereitstellungsanforderungen
+## <a name="deployment-requirements"></a>Anforderungen für die Bereitstellung
 
 Weitere Informationen zur Lizenzierung finden Sie unter [Azure AD-Kennwortschutz – Lizenzanforderungen](concept-password-ban-bad.md#license-requirements).
 

@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 711903b106bf6ff7d8f669e2b1d3489057e09fbc
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 5c100c1b65b2af1201dfc3b52a6d90b2ed26d454
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783296"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460813"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Was ist Azure AD Identity Governance?
 
@@ -68,7 +68,7 @@ In der Vergangenheit wurde der privilegierte Zugriff von anderen Anbietern als e
 
 ![Privilegierter Zugriffslebenszyklus](./media/identity-governance-overview/privileged-access-lifecycle.png)
 
-[Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) bietet zusätzliche Steuerungen für die Sicherung der Zugriffsrechte für Ressourcen in Azure AD, Azure und anderen Microsoft Online Services.  Zusätzlich zur mehrstufigen Authentifizierung und zum bedingten Zugriff stehen Ihnen mit den Funktionen für Just-in-Time-Zugriff und Warnungen für Rollenänderungen von Azure AD PIM umfassende Governancekontrollen zum Schützen der Ressourcen Ihres Unternehmens (Verzeichnis-, Office 365- und Azure-Ressourcenrollen) zur Verfügung. Wie bei anderen Formen des Zugriffs können Organisationen mithilfe von Zugriffsüberprüfungen eine periodische erneute Zertifizierung für alle Benutzer mit Administratorrollen konfigurieren.
+[Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) bietet zusätzliche Steuerungen für die Sicherung der Zugriffsrechte für Ressourcen in Azure AD, Azure und anderen Microsoft Online Services.  Zusätzlich zur mehrstufigen Authentifizierung und zum bedingten Zugriff stehen Ihnen mit den Funktionen für Just-In-Time-Zugriff und Warnungen für Rollenänderungen von Azure AD PIM umfassende Governancekontrollen zum Schützen der Ressourcen Ihres Unternehmens (Verzeichnis, Microsoft 365 und Azure-Ressourcenrollen) zur Verfügung. Wie bei anderen Formen des Zugriffs können Organisationen mithilfe von Zugriffsüberprüfungen eine periodische erneute Zertifizierung für alle Benutzer mit Administratorrollen konfigurieren.
 
 ## <a name="getting-started"></a>Erste Schritte
 

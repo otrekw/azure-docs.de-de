@@ -7,23 +7,22 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 3/5/2020
 ms.author: matjazl
-ms.openlocfilehash: 46a55b83b38593a514d40a9f75d99739a1efb8a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ed4e471764fbf8ecc9b82a7d614ae52b97360f1
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84871020"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267257"
 ---
-# <a name="configure-export-setting-and-export-the-data-to-a-storage-account"></a>Konfigurieren von Exporteinstellungen und Exportieren der Daten in ein Speicherkonto
+# <a name="configure-export-setting-and-set-up-the-storage-account"></a>Konfigurieren von Exporteinstellungen und Einrichten des Speicherkontos
 
 Azure API for FHIR unterstützt den Befehl „$export“, mit dem Sie die Daten aus dem Azure API for FHIR-Konto in ein Speicherkonto exportieren können.
 
-Zum Durchführen eines Exports in Azure API for FHIR sind vier Schritte erforderlich:
+Zum Konfigurieren eines Exports in Azure API for FHIR sind drei Schritte erforderlich:
 
 1. Aktivieren der verwalteten Identität für den Azure API for FHIR-Dienst
 2. Erstellen eines Azure-Speicherkontos (falls noch nicht geschehen) und Zuweisen der Berechtigung für das Speicherkonto an Azure API for FHIR
 3. Auswählen des Speicherkontos in Azure API for FHIR als Speicherkonto für den Export
-4. Ausführen des Exports durch Aufrufen des Befehls „$export“ in Azure API for FHIR
 
 ## <a name="enabling-managed-identity-on-azure-api-for-fhir"></a>Aktivieren der verwalteten Identität für Azure API for FHIR
 
@@ -51,18 +50,11 @@ Nun kann der nächste Schritt ausgeführt werden, in dem Sie das Speicherkonto i
 
 ## <a name="selecting-the-storage-account-for-export"></a>Auswählen des Speicherkontos für „$export“
 
-Im letzte Schritt vor dem Aufrufen des Befehls „$export“ wird das Azure-Speicherkonto zugewiesen, in das die Daten von Azure API for FHIR exportiert werden. Navigieren Sie hierzu im Azure-Portal im Azure API for FHIR-Dienst zum Blatt „Integration", und wählen Sie das Speicherkonto aus. 
+Im letzten Schritt vor dem Aufrufen des Befehls „$export“ wird das Azure-Speicherkonto zugewiesen, in das die Daten von Azure API for FHIR exportiert werden. Navigieren Sie hierzu im Azure-Portal im Azure API for FHIR-Dienst zum Blatt „Integration", und wählen Sie das Speicherkonto aus.
 
 ![Aktivieren der verwalteten Identität](media/export-data/fhir-export-storage.png)
 
 Anschließend können Sie die Daten mit dem Befehl „$export“ exportieren.
-
-## <a name="exporting-the-data-using-export-command"></a>Exportieren der Daten mit dem Befehl „$export“
-
-Nachdem Sie Azure API for FHIR für den Export konfiguriert haben, können Sie nun den Befehl „$export“ verwenden, um die Daten aus dem Dienst in das angegebene Speicherkonto zu exportieren. Informationen zum Aufrufen des Befehls „$export“ auf dem FHIR-Server finden Sie in der Dokumentation zur Spezifikation von „$export“ unter [https://hl7.org/Fhir/uv/bulkdata/export/index.html](https://hl7.org/Fhir/uv/bulkdata/export/index.html).
-
-> [!IMPORTANT]
-> Beachten Sie, dass Azure API for FHIR derzeit nur den Export auf Systemebene unterstützt, wie es in der Exportspezifikation unter [https://hl7.org/Fhir/uv/bulkdata/export/index.html](https://hl7.org/Fhir/uv/bulkdata/export/index.html) definiert ist. Außerdem werden derzeit keine Abfrageparameter bei „$export“ unterstützt.
 
 >[!div class="nextstepaction"]
 >[Zusätzliche Einstellungen](azure-api-for-fhir-additional-settings.md)

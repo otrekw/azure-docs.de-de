@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: f2c5b6ef0792e418d873d84341a0fffc356c799e
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 14184c09cc9d5eebab7f33323cd8ce587fdf9e88
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509279"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89014590"
 ---
 # <a name="troubleshoot"></a>Problembehandlung
 
@@ -34,6 +34,14 @@ Stellen Sie sicher, dass Ihre Firewalls (auf dem Gerät, in Routern usw.) die fo
 Vergewissern Sie sich, dass Ihre GPU-Hardware Videodecodierung unterstützt. Weitere Informationen finden Sie unter [Entwicklungs-PC](../overview/system-requirements.md#development-pc).
 
 Wenn Sie an einem Laptop mit zwei GPUs arbeiten, kann es vorkommen, dass die GPU, die Sie standardmäßig für Ausführungen verwenden, keine Funktion für die Hardwarevideodecodierung bietet. Versuchen Sie in diesem Fall, die Verwendung der anderen GPU durch die App zu erzwingen. Dies ist häufig in den Einstellungen des GPU-Treibers möglich.
+
+## <a name="retrieve-sessionconversion-status-fails"></a>Fehler beim Abrufen des Sitzungs-/Konvertierungsstatus
+
+Das zu häufige Senden von REST-API-Befehlen bewirkt, dass der Server eine Drosselung durchführt und schließlich einen Fehler zurückgibt. Der HTTP-Statuscode für die Drosselung lautet 429 („Zu viele Anforderungen“). Als Faustregel sollte eine Verzögerung von **5–10 Sekunden zwischen nachfolgenden Aufrufen** erfolgen.
+
+Beachten Sie, dass dieses Limit nicht nur direkte REST-API-Aufrufe betrifft, sondern auch die C#-/C++-Entsprechungen wie `Session.GetPropertiesAsync`, `Session.RenewAsync` oder `Frontend.GetAssetConversionStatusAsync`.
+
+Wenn eine serverseitige Drosselung auftritt, ändern Sie den Code so, dass die Aufrufe seltener durchgeführt werden. Der Server setzt den Drosselungsstatus jede Minute zurück, sodass der Code nach einer Minute sicher erneut ausgeführt werden kann.
 
 ## <a name="h265-codec-not-available"></a>H.265-Codec nicht verfügbar
 

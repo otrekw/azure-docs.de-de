@@ -3,12 +3,12 @@ title: Ändern von Azure Service Fabric-Clustereinstellungen
 description: Dieser Artikel beschreibt die Fabric-Einstellungen und Fabric-Upgraderichtlinien, die Sie anpassen können.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 05b0b132f45e1cc7fbb136c46a7596f480941178
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: fbd6c9503e409473a87c58202eb88d77716441f9
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682992"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055119"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Anpassen von Service Fabric-Clustereinstellungen
 Dieser Artikel beschreibt die verschiedenen Fabric-Einstellungen, die Sie für Ihren Service Fabric-Cluster anpassen können. Für in Azure gehostete Cluster können Sie Einstellungen über das [Azure-Portal](https://portal.azure.com) oder mithilfe einer Azure Resource Manager-Vorlage anpassen. Weitere Informationen finden Sie unter [Aktualisieren der Konfiguration eines Azure-Clusters](service-fabric-cluster-config-upgrade-azure.md). Für eigenständige Cluster passen Sie die Einstellungen durch Aktualisieren der Datei *ClusterConfig.json* und ein Konfigurationsupgrade in Ihrem Cluster an. Weitere Informationen finden Sie unter [Aktualisieren der Konfiguration eines eigenständigen Clusters](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -423,14 +423,14 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |AzureStorageMaxConnections | Ganze Zahl, Standardwert 5000 |Dynamisch|Die maximale Anzahl gleichzeitiger Verbindungen mit Azure Storage. |
 |AzureStorageMaxWorkerThreads | Ganze Zahl, Standardwert 25 |Dynamisch|Die maximale Anzahl von parallelen Workerthreads. |
 |AzureStorageOperationTimeout | Zeit in Sekunden, Standardwert 6000 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Timeout für den Abschluss des xstore-Vorgangs. |
-|CleanupApplicationPackageOnProvisionSuccess|Boolesch, Standardwert FALSE |Dynamisch|Aktiviert oder deaktiviert die automatische Bereinigung von Anwendungspaketen nach der erfolgreichen Bereitstellung. |
-|CleanupUnusedApplicationTypes|Boolesch, Standardwert ist „false“ |Dynamisch|Wenn diese Konfiguration aktiviert wird, ermöglicht sie das automatische Aufheben der Registrierung nicht genutzter Versionen von Anwendungstypen, wobei die letzten drei nicht genutzten Versionen übersprungen werden. Damit wird der vom Imagespeicher verbrauchte Speicherplatz auf dem Datenträger reduziert. Die automatische Bereinigung wird am Ende der erfolgreichen Bereitstellung für den spezifischen Anwendungstyp ausgelöst und auch regelmäßig einmal pro Tag für alle Anwendungstypen ausgeführt. Die Anzahl nicht verwendeter Versionen, die übersprungen werden sollen, kann über den Parameter MaxUnusedAppTypeVersionsToKeep konfiguriert werden. |
-|DisableChecksumValidation | Boolesch, Standardwert „false“ |statischen| Diese Konfiguration ermöglicht es, die Prüfsummenüberprüfung während der Anwendungsbereitstellung zu aktivieren oder zu deaktivieren. |
-|DisableServerSideCopy | Boolesch, Standardwert „false“ |statischen|Diese Konfiguration aktiviert oder deaktiviert serverseitiges Kopieren des Anwendungspakets in ImageStore während der Anwendungsbereitstellung. |
-|ImageCachingEnabled | Boolesch, Standardwert „true“ |statischen|Diese Konfiguration ermöglicht es, das Zwischenspeichern zu aktivieren oder zu deaktivieren. |
-|ImageStoreConnectionString |SecureString |statischen|Die Verbindungszeichenfolge für das Stammverzeichnis für ImageStore. |
-|ImageStoreMinimumTransferBPS | Ganze Zahl, Standardwert 1024 |Dynamisch|Die minimale Übertragungsrate zwischen dem Cluster und ImageStore. Dieser Wert wird verwendet, um das Timeout zu bestimmen, wenn auf den externen ImageStore zugegriffen wird. Ändern Sie diesen Wert nur, wenn die Latenz zwischen dem Cluster und ImageStore hoch ist, damit der Cluster mehr Zeit für Downloads aus dem externen ImageStore erhält. |
-|MaxUnusedAppTypeVersionsToKeep | Ganze Zahl, Standardwert 3 |Dynamisch|Diese Konfiguration definiert die Anzahl der nicht verwendeten Versionen von Anwendungstypen, die bei der Bereinigung übersprungen werden sollen. Dieser Parameter gilt nur, wenn der Parameter CleanupUnusedApplicationTypes aktiviert ist. |
+|CleanupApplicationPackageOnProvisionSuccess|Boolesch, Standardwert FALSE |Dynamisch|Aktiviert oder deaktiviert die automatische Bereinigung von Anwendungspaketen nach der erfolgreichen Bereitstellung.
+
+*Die bewährte Methode ist die Verwendung von `true`.* | |CleanupUnusedApplicationTypes|Boolesch, Standardwert FALSE |Dynamisch| Wenn diese Konfiguration aktiviert wird, ermöglicht sie das automatische Aufheben der Registrierung nicht genutzter Versionen von Anwendungstypen, wobei die letzten drei nicht genutzten Versionen übersprungen werden. Damit wird der vom Imagespeicher belegte Speicherplatz auf dem Datenträger reduziert. Die automatische Bereinigung wird am Ende der erfolgreichen Bereitstellung für den spezifischen Anwendungstyp ausgelöst und auch regelmäßig einmal pro Tag für alle Anwendungstypen ausgeführt. Die Anzahl nicht verwendeter Versionen, die übersprungen werden sollen, kann über den Parameter MaxUnusedAppTypeVersionsToKeep konfiguriert werden. 
+
+*Die bewährte Methode ist die Verwendung von `true`.*
+| |DisableChecksumValidation | Boolesch, Standardwert FALSE |Statisch| Diese Konfiguration ermöglicht es, die Prüfsummenüberprüfung während der Anwendungsbereitstellung zu aktivieren oder zu deaktivieren. | |DisableServerSideCopy | Boolesch, Standardwert FALSE |Statisch| Diese Konfiguration aktiviert oder deaktiviert serverseitiges Kopieren des Anwendungspakets in ImageStore während der Anwendungsbereitstellung. | |ImageCachingEnabled | Boolesch, Standardwert TRUE |Statisch| Diese Konfiguration ermöglicht es, das Zwischenspeichern zu aktivieren oder zu deaktivieren. | |ImageStoreConnectionString |SecureString |Statisch| Die Verbindungszeichenfolge für das Stammverzeichnis für ImageStore. | |ImageStoreMinimumTransferBPS | Ganze Zahl, Standardwert 1024 |Dynamisch| Die minimale Übertragungsrate zwischen dem Cluster und ImageStore. Dieser Wert wird verwendet, um das Timeout zu bestimmen, wenn auf den externen ImageStore zugegriffen wird. Ändern Sie diesen Wert nur, wenn die Latenz zwischen dem Cluster und ImageStore hoch ist, damit der Cluster mehr Zeit für Downloads aus dem externen ImageStore erhält. | |MaxUnusedAppTypeVersionsToKeep | Ganze Zahl, Standardwert 3 |Dynamisch| Diese Konfiguration definiert die Anzahl der nicht verwendeten Versionen von Anwendungstypen, die bei der Bereinigung übersprungen werden sollen. Dieser Parameter gilt nur, wenn der Parameter CleanupUnusedApplicationTypes aktiviert ist.
+
+*Als allgemeine bewährte Methode wird die Verwendung des Standardwerts (`3`) empfohlen.* |
 
 
 ## <a name="metricactivitythresholds"></a>MetricActivityThresholds

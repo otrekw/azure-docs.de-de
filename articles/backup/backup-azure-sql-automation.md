@@ -4,12 +4,12 @@ description: Sichern und Wiederherstellen von SQL-Datenbanken auf virtuellen Azu
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 1fe3af3b2a12cf6fdfc0e71d36d36046858c50af
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: b355aaa465132e86c636c68552f3d650b51b08f1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892421"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004985"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>Sichern und Wiederherstellen von SQL-Datenbanken auf virtuellen Azure-Computern mit PowerShell
 
@@ -380,7 +380,7 @@ $AnotherInstanceWithLogConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConf
 
 ##### <a name="restore-as-files"></a>Wiederherstellen als Dateien
 
-Um die Sicherungsdaten als BAK-Dateien und nicht als Datenbank wiederherzustellen, wählen Sie die Option **Als Dateien wiederherstellen** aus. Die gesicherte SQL-Datenbank kann auf allen virtuellen Zielcomputern wieder hergestellt werden, die für diesen Tresor registriert sind.
+Um die Sicherungsdaten als BAK-Dateien und nicht als Datenbank wiederherzustellen, wählen Sie die Option **Als Dateien wiederherstellen** aus. Die gesicherte SQL-Datenbank kann auf allen virtuellen Zielcomputern wiederhergestellt werden, die für diesen Tresor registriert sind.
 
 ```powershell
 $TargetContainer= Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -FriendlyName "VM name" -VaultId $vaultID
@@ -582,7 +582,7 @@ $SQLContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppC
 
 Sie müssen beachten, dass Azure Backup nur vom Benutzer ausgelöste Aufträge in der SQL-Sicherung nachverfolgt. Geplante Sicherungen (einschließlich Protokollsicherungen) werden im Portal oder in PowerShell nicht angezeigt. Wenn jedoch Fehler bei geplanten Aufträgen auftreten, wird eine [Sicherungswarnung](backup-azure-monitoring-built-in-monitor.md#backup-alerts-in-recovery-services-vault) generiert und im Portal angezeigt. [Verwenden Sie Azure Monitor](backup-azure-monitoring-use-azuremonitor.md) zum Nachverfolgen aller geplanten Aufträge und anderer relevanter Informationen.
 
-Benutzer können bedarfsgesteuerte bzw. vom Benutzer ausgelöste Vorgänge anhand der Auftrags-ID nachverfolgen, die in der [Ausgabe](#on-demand-backup) asynchroner Aufträge (z.B. einer Sicherung) zurückgegeben wird. Mit dem PowerShell-Cmdlet [Get-AzRecoveryServicesBackupJobDetail](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjobdetail) können Sie einen Auftrag und seine Details nachverfolgen.
+Benutzer können bedarfsgesteuerte bzw. vom Benutzer ausgelöste Vorgänge anhand der Auftrags-ID nachverfolgen, die in der [Ausgabe](#on-demand-backup) asynchroner Aufträge (z. B. einer Sicherung) zurückgegeben ist. Mit dem PowerShell-Cmdlet [Get-AzRecoveryServicesBackupJobDetail](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjobdetail) können Sie einen Auftrag und seine Details nachverfolgen.
 
 ```powershell
  Get-AzRecoveryServicesBackupJobDetails -JobId 2516bb1a-d3ef-4841-97a3-9ba455fb0637 -VaultId $targetVault.ID

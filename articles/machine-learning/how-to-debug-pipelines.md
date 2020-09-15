@@ -5,34 +5,47 @@ description: Debuggen Sie Ihre Azure Machine Learning-Pipelines in Python. Lerne
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-author: likebupt
-ms.author: keli19
-ms.date: 03/18/2020
+author: lobrien
+ms.author: laobri
+ms.date: 08/28/2020
 ms.topic: conceptual
 ms.custom: troubleshooting, devx-track-python
-ms.openlocfilehash: ac8896bae4b3bf36ee6e943581bbf6791401c821
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 0f051e5b5711cec9fd8e72ec2b84c18f80430a0a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904648"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018058"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Debuggen und Problembehandlung für Machine Learning-Pipelines
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In diesem Artikel erfahren Sie, wie Sie das Debuggen und die Problembehandlung für [Machine Learning-Pipelines](concept-ml-pipelines.md) im [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) und im [Azure Machine Learning Designer (Vorschau)](https://docs.microsoft.com/azure/machine-learning/concept-designer) durchführen. Folgendes wird vermittelt:
+In diesem Artikel erfahren Sie, wie Sie [Pipelines des maschinellen Lernens](concept-ml-pipelines.md) im [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) und im [Azure Machine Learning-Designer (Vorschauversion)](https://docs.microsoft.com/azure/machine-learning/concept-designer) debuggen und Probleme mit ihnen behandeln. 
 
-* Debuggen mithilfe des Azure Machine Learning SDK
-* Debuggen mithilfe des Azure Machine Learning-Designers
-* Debuggen mithilfe von Application Insights
-* Interaktives Debuggen mithilfe von Visual Studio Code (VS Code) und Python Tools für Visual Studio (PTVSD)
+## <a name="troubleshooting-tips"></a>Tipps zur Problembehandlung
 
-## <a name="azure-machine-learning-sdk"></a>Azure Machine Learning SDK
-Die folgenden Abschnitte bieten einen Überblick über häufige Fallstricke beim Erstellen von Pipelines und verschiedene Strategien zum Debuggen von Code, der in einer Pipeline ausgeführt wird. Verwenden Sie die folgenden Tipps, wenn Sie Schwierigkeiten haben, eine Pipeline wie erwartet auszuführen.
+Die folgende Tabelle enthält häufige Probleme bei der Pipelinentwicklung mit möglichen Lösungen.
 
-### <a name="testing-scripts-locally"></a>Lokales Testen von Skripts
+| Problem | Mögliche Lösung |
+|--|--|
+| Daten können nicht in das Verzeichnis `PipelineData` übergeben werden | Stellen Sie sicher, dass Sie im Skript ein Verzeichnis erstellt haben, das dem entspricht, wo Ihre Pipeline die Schrittausgabedaten erwartet. In den meisten Fällen definiert ein Eingabeargument das Ausgabeverzeichnis, und dann erstellen Sie das Verzeichnis explizit. Verwenden Sie `os.makedirs(args.output_dir, exist_ok=True)`, um das Ausgabeverzeichnis zu erstellen. Im [Tutorial](tutorial-pipeline-batch-scoring-classification.md#write-a-scoring-script) finden Sie ein Beispiel für ein Bewertungsskript, das dieses Entwurfsmuster zeigt. |
+| Fehler bei Abhängigkeiten | Wenn in Ihrer Remotepipeline Abhängigkeitsfehler angezeigt werden, die beim lokalen Testen nicht aufgetreten sind, vergewissern Sie sich, dass die Abhängigkeiten und Versionen Ihrer Remoteumgebung mit denen in Ihrer Testumgebung übereinstimmen. (Siehe [Erstellen, Zwischenspeichern und Wiederverwenden von Umgebungen](https://docs.microsoft.com/azure/machine-learning/concept-environments#environment-building-caching-and-reuse))|
+| Mehrdeutige Fehler bei Computezielen | Versuchen Sie, Computeziele zu löschen und neu zu erstellen. Die Neuerstellung von Computezielen erfolgt schnell und kann vorübergehende Probleme beheben. |
+| Pipeline verwendet Schritte nicht wieder | Die Wiederverwendung von Schritten ist standardmäßig aktiviert, aber stellen Sie sicher, dass Sie sie in einem Pipelineschritt nicht deaktiviert haben. Wenn die Wiederverwendung deaktiviert ist, wird der Parameter `allow_reuse` im Schritt auf `False` festgelegt. |
+| Pipeline wird unnötigerweise erneut ausgeführt | Um sicherzustellen, dass Schritte nur dann erneut ausgeführt werden, wenn die zugrunde liegenden Daten oder Skripts geändert werden, entkoppeln Sie Ihre Quellcodeverzeichnisse für die einzelnen Schritte. Wenn Sie dasselbe Quellverzeichnis für mehrere Schritte verwenden, kann es zu unnötigen Wiederholungen kommen. Verwenden Sie den Parameter `source_directory` in einem Pipelineschrittobjekt, um auf Ihr isoliertes Verzeichnis für diesen Schritt zu verweisen, und stellen Sie sicher, dass Sie nicht denselben `source_directory`-Pfad für mehrere Schritte verwenden. |
 
-Einer der häufigsten Fehler in einer Pipeline ist, dass ein angefügtes Skript (Skript zur Datenbereinigung, Bewertungsskript usw.) nicht wie vorgesehen ausgeführt wird oder Laufzeitfehler im Remotecomputekontext enthält, die in Ihrem Arbeitsbereich in Azure Machine Learning Studio schwierig zu debuggen sind. 
+
+## <a name="debugging-techniques"></a>Debuggingverfahren
+
+Es gibt drei Haupttechniken zum Debuggen von Pipelines: 
+
+* Debuggen der einzelnen Pipelineschritte auf dem lokalen Computer
+* Verwenden von Protokollierung und Application Insights zum Isolieren und Diagnostizieren der Problemursache
+* Anfügen eines Remotedebuggers an eine in Azure ausgeführte Pipeline
+
+### <a name="debug-scripts-locally"></a>Lokales Testen von Skripts
+
+Einer der häufigsten Fehler in einer Pipeline besteht darin, dass das Domänenskript nicht wie beabsichtigt ausgeführt wird oder Laufzeitfehler im Remotecomputekontext enthält, die schwierig zu debuggen sind.
 
 Pipelines selbst können nicht lokal ausgeführt werden. Wenn Sie jedoch die Skripts isoliert auf dem lokalen Computer ausführen, können Sie schneller debuggen, da Sie nicht auf den Compute- und Umgebungserstellungsprozess warten müssen. Hierfür ist ein gewisser Entwicklungsaufwand erforderlich:
 
@@ -49,41 +62,9 @@ Nachdem Sie ein Skript für die Ausführung in Ihrer lokalen Umgebung eingericht
 > [!TIP] 
 > Wenn Sie sichergestellt haben, dass ihr Skript erwartungsgemäß ausgeführt wird, empfiehlt es sich, das Skript nun in einer Einzelschritt-Pipeline auszuführen, anstatt zu versuchen, das Skript in einer Pipeline mit mehreren Schritten auszuführen.
 
-### <a name="debugging-scripts-from-remote-context"></a>Debuggen von Skripts aus Remotekontext
+## <a name="configure-write-to-and-review-pipeline-logs"></a>Konfigurieren und Überprüfen von Pipelineprotokollen sowie Schreiben in diese
 
 Das lokale Testen von Skripts ist eine hervorragende Möglichkeit, wichtige Codefragmente und eine komplexe Logik zu debuggen, bevor Sie mit dem Erstellen einer Pipeline beginnen. Aber irgendwann werden Sie Skripts wahrscheinlich während der eigentlichen Pipelineausführung selbst debuggen müssen, insbesondere bei der Diagnose von Verhaltensweisen, die während der Interaktion zwischen Pipelineschritten auftreten. Wir empfehlen die großzügige Verwendung von `print()`-Anweisungen in Ihren Schrittskripts, damit Sie den Objektzustand und die erwarteten Werte während der Remoteausführung sehen können, ähnlich wie beim Debuggen von JavaScript-Code.
-
-Die Protokolldatei `70_driver_log.txt` enthält: 
-
-* Alle während der Ausführung Ihres Skripts ausgegebenen Anweisungen
-* Die Stapelüberwachung für das Skript 
-
-Um diese und andere Protokolldateien im Portal zu finden, klicken Sie zunächst in Ihrem Arbeitsbereich auf die Pipelineausführung.
-
-![Seite „Pipelineausführungsliste“](./media/how-to-debug-pipelines/pipelinerun-01.png)
-
-Navigieren Sie zur Detailseite der Pipelineausführung.
-
-![Detailseite der Pipelineausführung](./media/how-to-debug-pipelines/pipelinerun-02.png)
-
-Klicken Sie auf das Modul für den jeweiligen Schritt. Navigieren Sie zur Registerkarte **Protokolle**. Andere Protokolle enthalten Informationen zum Erstellungsvorgang für Ihr Umgebungsimage und zu Skripts zur Vorbereitung von Schritten.
-
-![Registerkarte „Protokoll“ auf der Detailseite der Pipelineausführung](./media/how-to-debug-pipelines/pipelinerun-03.png)
-
-> [!TIP]
-> Ausführungen für *veröffentlichte Pipelines* finden Sie auf der Registerkarte **Endpunkte** in Ihrem Arbeitsbereich. Ausführungen für *nicht veröffentlichte Pipelines* finden Sie unter **Experimente** oder **Pipelines**.
-
-### <a name="troubleshooting-tips"></a>Tipps zur Problembehandlung
-
-Die folgende Tabelle enthält häufige Probleme bei der Pipelinentwicklung mit möglichen Lösungen.
-
-| Problem | Mögliche Lösung |
-|--|--|
-| Daten können nicht in das Verzeichnis `PipelineData` übergeben werden | Stellen Sie sicher, dass Sie im Skript ein Verzeichnis erstellt haben, das dem entspricht, wo Ihre Pipeline die Schrittausgabedaten erwartet. In den meisten Fällen definiert ein Eingabeargument das Ausgabeverzeichnis, und dann erstellen Sie das Verzeichnis explizit. Verwenden Sie `os.makedirs(args.output_dir, exist_ok=True)`, um das Ausgabeverzeichnis zu erstellen. Im [Tutorial](tutorial-pipeline-batch-scoring-classification.md#write-a-scoring-script) finden Sie ein Beispiel für ein Bewertungsskript, das dieses Entwurfsmuster zeigt. |
-| Fehler bei Abhängigkeiten | Wenn Sie Skripts lokal entwickelt und getestet haben, aber beim Ausführen auf einem Remotecomputer in der Pipeline Abhängigkeitsprobleme auftreten, stellen Sie sicher, dass Ihre Abhängigkeiten und Versionen der Computeumgebung mit Ihrer Testumgebung übereinstimmen. (Siehe [Erstellen, Zwischenspeichern und Wiederverwenden von Umgebungen](https://docs.microsoft.com/azure/machine-learning/concept-environments#environment-building-caching-and-reuse))|
-| Mehrdeutige Fehler bei Computezielen | Das Löschen und erneute Erstellen von Computezielen kann bestimmte Probleme mit Computezielen beheben. |
-| Pipeline verwendet Schritte nicht wieder | Die Wiederverwendung von Schritten ist standardmäßig aktiviert, aber stellen Sie sicher, dass Sie sie in einem Pipelineschritt nicht deaktiviert haben. Wenn die Wiederverwendung deaktiviert ist, wird der Parameter `allow_reuse` im Schritt auf `False` festgelegt. |
-| Pipeline wird unnötigerweise erneut ausgeführt | Um sicherzustellen, dass Schritte nur dann erneut ausgeführt werden, wenn sich die zugrunde liegenden Daten oder Skripts ändern, entkoppeln Sie Ihre Verzeichnisse für die einzelnen Schritte. Wenn Sie dasselbe Quellverzeichnis für mehrere Schritte verwenden, kann es zu unnötigen Wiederholungen kommen. Verwenden Sie den Parameter `source_directory` in einem Pipelineschrittobjekt, um auf Ihr isoliertes Verzeichnis für diesen Schritt zu verweisen, und stellen Sie sicher, dass Sie nicht denselben `source_directory`-Pfad für mehrere Schritte verwenden. |
 
 ### <a name="logging-options-and-behavior"></a>Protokollierungsoptionen und -verhalten
 
@@ -127,13 +108,37 @@ logger.warning("I am an OpenCensus warning statement, find me in Application Ins
 logger.error("I am an OpenCensus error statement with custom dimensions", {'step_id': run.id})
 ``` 
 
-## <a name="azure-machine-learning-designer-preview"></a>Azure Machine Learning-Designer (Vorschauversion)
+### <a name="finding-and-reading-pipeline-log-files"></a>Suchen und Lesen von Pipelineprotokolldateien
 
-Dieser Abschnitt bietet eine Übersicht zur Problembehandlung für Pipelines im Designer. Die **70_driver_log**-Dateien für die im Designer erstellten Pipelines finden Sie entweder auf der Seite zur Dokumenterstellung oder auf der Detailseite zur Pipelineausführung.
+Die Protokolldatei `70_driver_log.txt` enthält: 
+
+* Alle während der Ausführung Ihres Skripts ausgegebenen Anweisungen
+* Die Stapelüberwachung für das Skript 
+
+Um diese und andere Protokolldateien im Portal zu finden, klicken Sie zunächst in Ihrem Arbeitsbereich auf die Pipelineausführung.
+
+![Seite „Pipelineausführungsliste“](./media/how-to-debug-pipelines/pipelinerun-01.png)
+
+Navigieren Sie zur Detailseite der Pipelineausführung.
+
+![Detailseite der Pipelineausführung](./media/how-to-debug-pipelines/pipelinerun-02.png)
+
+Klicken Sie auf das Modul für den jeweiligen Schritt. Navigieren Sie zur Registerkarte **Protokolle**. Andere Protokolle enthalten Informationen zum Erstellungsvorgang für Ihr Umgebungsimage und zu Skripts zur Vorbereitung von Schritten.
+
+![Registerkarte „Protokoll“ auf der Detailseite der Pipelineausführung](./media/how-to-debug-pipelines/pipelinerun-03.png)
+
+> [!TIP]
+> Ausführungen für *veröffentlichte Pipelines* finden Sie auf der Registerkarte **Endpunkte** in Ihrem Arbeitsbereich. Ausführungen für *nicht veröffentlichte Pipelines* finden Sie unter **Experimente** oder **Pipelines**.
+
+Weitere Informationen zur Protokollierung und Ablaufverfolgung von einem `ParallelRunStep` finden Sie unter [Debugging und Problembehandlung von ParallelRunStep](how-to-debug-parallel-run-step.md).
+
+## <a name="logging-in-azure-machine-learning-designer-preview"></a>Anmelden beim Azure Machine Learning-Designer (Vorschauversion)
+
+Die **70_driver_log**-Dateien für die im Designer erstellten Pipelines finden Sie entweder auf der Seite zur Dokumenterstellung oder auf der Detailseite zur Pipelineausführung.
 
 ### <a name="enable-logging-for-real-time-endpoints"></a>Aktivieren der Protokollierung für Echtzeitendpunkte
 
-Für die Problembehandlung und das Debuggen von Echtzeitendpunkten im Designer müssen Sie die Application Insight-Protokollierung mithilfe des SDKs aktivieren. Mithilfe der Protokollierung können Sie Probleme bei der Modellimplementierung und -verwendung behandeln und debuggen. Weitere Informationen finden Sie unter [Protokollierung für bereitgestellte Modelle](how-to-enable-logging.md#logging-for-deployed-models). 
+Für die Problembehandlung und das Debuggen von Echtzeitendpunkten im Designer müssen Sie die Application Insights-Protokollierung mithilfe des SDK aktivieren. Mithilfe der Protokollierung können Sie Probleme bei der Modellimplementierung und -verwendung behandeln und debuggen. Weitere Informationen finden Sie unter [Protokollierung für bereitgestellte Modelle](how-to-enable-logging.md#logging-for-deployed-models). 
 
 ### <a name="get-logs-from-the-authoring-page"></a>Abrufen von Protokollen auf der Seite zur Dokumenterstellung
 
@@ -163,7 +168,7 @@ Sie finden die Protokolldateien bestimmter Ausführungen auch auf der Detailseit
 ## <a name="application-insights"></a>Application Insights
 Weitere Informationen zur Verwendung der OpenCensus-Python-Bibliothek in diesem Zusammenhang finden Sie in diesem Handbuch: [Debugging und Problembehandlung für Pipelines des maschinellen Lernens in Application Insights](how-to-debug-pipelines-application-insights.md)
 
-## <a name="visual-studio-code"></a>Visual Studio Code
+## <a name="interactive-debugging-with-visual-studio-code"></a>Interaktives Debuggen mit Visual Studio Code
 
 In einigen Fällen muss der in Ihrer ML-Pipeline verwendete Python-Code ggf. interaktiv debugged werden. Mit Visual Studio Code (VS Code) und debugpy können Sie am den Code anfügen, während er in der Trainingsumgebung ausgeführt wird. Weitere Informationen finden Sie im [Leitfaden zum interaktiven Debuggen in VS Code](how-to-debug-visual-studio-code.md#debug-and-troubleshoot-machine-learning-pipelines).
 

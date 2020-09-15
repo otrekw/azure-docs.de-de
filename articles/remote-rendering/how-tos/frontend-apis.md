@@ -5,16 +5,21 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2010
 ms.topic: how-to
-ms.openlocfilehash: 699344f9343c17d449fa48e05b2c3474b524d695
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 0488f467a036957bf2341aab63919a105f383bdf
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88891469"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003523"
 ---
 # <a name="use-the-azure-frontend-apis-for-authentication"></a>Verwenden der Azure-Front-End-APIs für die Authentifizierung
 
-In diesem Abschnitt wird die Verwendung der C#-API für die Authentifizierung beschrieben.
+In diesem Abschnitt wird die Verwendung der API für Authentifizierung und Sitzungsverwaltung beschrieben.
+
+> [!CAUTION]
+Die in diesem Kapitel beschriebenen Funktionen geben intern REST-Aufrufe auf dem Server aus. Wie bei allen REST-Aufrufen bewirkt das zu häufige Senden dieser Befehle, dass der Server eine Drosselung durchführt und schließlich einen Fehler zurückgibt. Der Wert des Members `SessionGeneralContext.HttpResponseCode` lautet in diesem Fall 429 („Zu viele Anforderungen“). Als Faustregel sollte eine Verzögerung von **5–10 Sekunden zwischen nachfolgenden Aufrufen** erfolgen.
+
 
 ## <a name="azurefrontendaccountinfo"></a>AzureFrontendAccountInfo
 

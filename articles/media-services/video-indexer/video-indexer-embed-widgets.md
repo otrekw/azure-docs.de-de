@@ -8,15 +8,15 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 03/26/2020
+ms.date: 08/10/2020
 ms.author: juliako
 ms.custom: devx-track-javascript
-ms.openlocfilehash: afc49e959061bcd2327f1c3a4f988c9ed6e5ce11
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 5f418384d4ec1272600df2488dc71d2102d6a24d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87414019"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011802"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>Einbetten von Video Indexer-Widgets in Ihre Apps
 
@@ -102,6 +102,17 @@ Um Funktionen zur Bearbeitung von Erkenntnissen in Ihrem eingebetteten Widget be
 Das Widget „Kognitive Erkenntnisse“ kann mit einem Video in Ihrer App interagieren. In diesem Abschnitt wird veranschaulicht, wie Sie diese Interaktion erreichen.
 
 ![Video Indexer-Widget „Kognitive Erkenntnisse“](./media/video-indexer-embed-widgets/video-indexer-widget03.png)
+
+### <a name="flow-overview"></a>Übersicht über den Ablauf
+
+Beim Bearbeiten der Transkripte findet der folgende Flow statt:
+
+1. Sie bearbeiten das Transkript auf der Zeitachse.
+1. Video Indexer ruft diese Updates ab und speichert sie im Bereich [Aus Transkriptbearbeitungen](customize-language-model-with-website.md#customize-language-models-by-correcting-transcripts) des Sprachmodells.
+1. Die Beschriftungen werden aktualisiert:
+
+    * Wenn Sie das Player-Widget von Video Indexer verwenden, wird es automatisch aktualisiert.
+    * Wenn Sie einen externen Player verwenden, erhalten Sie eine neue Beschriftungsdatei über das **Abrufen von Videobeschriftungen**.
 
 ### <a name="cross-origin-communications"></a>Ursprungsübergreifende Kommunikation
 

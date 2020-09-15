@@ -3,12 +3,12 @@ title: Allgemeine Fragen zu VMware-Notfallwiederherstellung mit Azure Site Recov
 description: Hier erhalten Sie Antworten auf allgemeine Fragen zur Notfallwiederherstellung von lokalen virtuellen VMware-Computern in Azure mithilfe von Azure Site Recovery.
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 603dc77e6f2a53abb1d65688ced77e58297b8ab5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1d61b8556038959f6acab447fc0510830b1dd943
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086148"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89054970"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Allgemeine Fragen zur VMware-zu-Azure-Replikation
 
@@ -114,7 +114,7 @@ Site Recovery repliziert lokale virtuelle VMware-Computer und physische Server i
 
 Nein. Seit März 2019 können Sie im Azure-Portal die Replikation nur in verwalteten Azure-Datenträgern durchführen.
 
-Die Replikation von neuen virtuellen Computern in einem Speicherkonto ist nur über PowerShell oder die REST-API (Version 2018-01-10 oder 2016-08-10) verfügbar.
+Die Replikation von neuen virtuellen Computern in einem Speicherkonto ist nur über PowerShell ([Version 1.4.5 des Az.RecoveryServices-Moduls](https://www.powershellgallery.com/packages/Az.RecoveryServices/1.4.5)) oder die REST-API (Version 2018-01-10 oder 2016-08-10) verfügbar. [Hier](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell) erfahren Sie, wie Sie die Replikation mithilfe der PowerShell-Befehle einrichten.
 
 ### <a name="what-are-the-benefits-of-replicating-to-managed-disks"></a>Welche Vorteile hat die Replikation auf verwalteten Datenträgern?
 

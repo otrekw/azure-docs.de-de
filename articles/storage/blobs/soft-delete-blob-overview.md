@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 07/15/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 2e390c9d5d2fa7c6551ed661c6c25096732eefd5
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: a6fc1d6b831ae794907c59ab1af3328902f3a70a
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88057066"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230108"
 ---
 # <a name="soft-delete-for-blobs"></a>Vorläufiges Löschen für Blobs
 
-Vorläufiges Löschen für Blobs schützt Ihre Daten vor versehentlichem oder irrtümlichem Ändern oder Löschen. Wenn vorläufiges Löschen für Blobs für ein Speicherkonto aktiviert ist, können Blobs, Blobversionen (Vorschau) und Momentaufnahmen in diesem Speicherkonto nach ihrer Löschung innerhalb eines von Ihnen angegebenen Aufbewahrungszeitraums wiederhergestellt werden.
+Vorläufiges Löschen für Blobs schützt Ihre Daten vor versehentlichem oder irrtümlichem Ändern oder Löschen. Wenn vorläufiges Löschen von Blobs für ein Speicherkonto aktiviert ist, können Blobs, Blobversionen und Momentaufnahmen in diesem Speicherkonto nach ihrer Löschung innerhalb eines von Ihnen angegebenen Aufbewahrungszeitraums wiederhergestellt werden.
 
 Wenn die Möglichkeit besteht, dass Ihre Daten von einer Anwendung oder einem anderen Benutzer des Speicherkontos versehentlich geändert oder gelöscht werden, empfiehlt Microsoft, vorläufiges Löschen zu aktivieren. Weitere Informationen zum Aktivieren des vorläufigen Löschens finden Sie unter [Aktivieren und Verwalten des vorläufigen Löschens für Blobs](soft-delete-enable.md).
 
@@ -28,7 +28,7 @@ Wenn die Möglichkeit besteht, dass Ihre Daten von einer Anwendung oder einem an
 
 Wenn vorläufiges Löschen für Blobs für ein Speicherkonto aktiviert ist, können Sie Objekte nach dem Löschen innerhalb des angegebenen Datenaufbewahrungszeitraums wiederherstellen. Dieser Schutz erstreckt sich auf alle Blobs (Blockblobs, Anfügeblobs oder Seitenblobs), die infolge einer Überschreibung gelöscht werden.
 
-Wenn Daten in einem vorhandenen Blob oder einer vorhandenen Momentaufnahme gelöscht werden, während vorläufiges Löschen für Blobs aktiviert ist, Blobversionsverwaltung (Vorschau) hingegen nicht, wird eine vorläufig gelöschte Momentaufnahme generiert, um den Status der überschriebenen Daten zu speichern. Nachdem die angegebene Beibehaltungsdauer abgelaufen ist, wird das Objekt dauerhaft gelöscht.
+Wenn Daten in einem vorhandenen Blob oder einer vorhandenen Momentaufnahme gelöscht werden, während vorläufiges Löschen für Blobs aktiviert ist, Blobversionsverwaltung hingegen nicht, wird eine vorläufig gelöschte Momentaufnahme generiert, um den Status der überschriebenen Daten zu speichern. Nachdem die angegebene Beibehaltungsdauer abgelaufen ist, wird das Objekt dauerhaft gelöscht.
 
 Wenn Blobversionsverwaltung und vorläufiges Löschen von Blobs für das Speicherkonto aktiviert sind, wird durch das Löschen eines Blobs eine neue Version anstelle einer vorläufig gelöschten Momentaufnahme erstellt. Die neue Version wird nicht vorläufig gelöscht und nicht entfernt, wenn die Beibehaltungsdauer für vorläufiges Löschen abläuft. Vorläufig gelöschte Versionen eines Blobs können innerhalb der Beibehaltungsdauer wiederhergestellt werden, indem der Vorgang [Undelete Blob](/rest/api/storageservices/undelete-blob) aufgerufen wird. Das Blob kann anschließend aus einer seiner Versionen wiederhergestellt werden, indem der Vorgang [Copy Blob](/rest/api/storageservices/copy-blob) aufgerufen wird. Weitere Informationen zur gemeinsamen Verwendung von Blobversionsverwaltung und vorläufigem Löschen finden Sie unter [Blobversionsverwaltung und vorläufiges Löschen](versioning-overview.md#blob-versioning-and-soft-delete).
 
@@ -194,4 +194,4 @@ Es ist möglich, vorläufiges Löschen unabhängig von der API-Version zu nutzen
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Aktivieren von „Vorläufiges Löschen“ für Blobs](soft-delete-enable.md)
-- [Blobversionsverwaltung (Vorschau)](versioning-overview.md)
+- [Blobversionsverwaltung](versioning-overview.md)

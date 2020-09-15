@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 07/29/2020
-ms.openlocfilehash: 2ff8d962479188ddf324dc5ff75d22eac4fed3d6
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: f60fba6a0b3a4d891fe19b7d75ab9c9fde278629
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826768"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393801"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Geografische Verfügbarkeit und Unterstützung von Währungen für den kommerziellen Marketplace
 
@@ -57,7 +57,7 @@ Angebote im kommerziellen Marketplace können in 141 geografischen Regionen gem�
 | Kroatien                             | HR        | EUR          |
 | Curaçao                             | CW        | USD          |
 | Zypern                              | CY        | EUR          |
-| Tschechische Republik                      | CZ        | EUR          |
+| Tschechien                      | CZ        | EUR          |
 | Dänemark                             | DK        | DKK          |
 | Dominikanische Republik                  | DO        | USD          |
 | Ecuador                             | EC        | USD          |
@@ -99,7 +99,6 @@ Angebote im kommerziellen Marketplace können in 141 geografischen Regionen gem�
 | Litauen                           | LT        | EUR          |
 | Luxemburg                          | LU        | EUR          |
 | Macau (SAR)                           | MO        | USD          |
-| Nordmazedonien                     | MK        | USD          |
 | Malaysia                            | MY        | USD          |
 | Malta                               | MT        | EUR          |
 | Mauritius                           | MU        | USD          |
@@ -115,6 +114,7 @@ Angebote im kommerziellen Marketplace können in 141 geografischen Regionen gem�
 | Neuseeland                         | NZ        | NZD          |
 | Nicaragua                           | NI        | USD          |
 | Nigeria                             | NG        | USD          |
+| Nordmazedonien                     | MK        | USD          |
 | Norwegen                              | Nein        | NOK          |
 | Oman                                | OM        | USD          |
 | Pakistan                            | PK        | USD          |
@@ -166,7 +166,7 @@ Angebote im kommerziellen Marketplace können in 141 geografischen Regionen gem�
 | Simbabwe                            | ZW        | USD          |
 |   |   |   |
 
-\* Für Kunden in Brasilien wird im Marketplace über Cloud Solution Provider (CSP) die Währung USD verwendet.
+\* Für Kunden in Brasilien wird im kommerziellen Marketplace für Cloud Solution Provider (CSP) die Währung USD verwendet.
 
 \** Nur kostenlose und BYOL-VM-Images.
 
@@ -190,7 +190,7 @@ Microsoft erhält Zahlungen von Kunden in deren lokaler Währung und bezahlt Sie
 
 Einzelne Preise (die, je nachdem, wie sie festgelegt wurden, möglicherweise durch die Wechselkurse am Tag ihrer Speicherung beeinflusst wurden) können über eine API abgerufen werden. Bei Währungsinformationen ist dies nicht möglich.
 
-Ausführliche Informationen zur Eingabe von Preisen für bestimmte Angebotstypen finden Sie in den folgenden Artikeln:
+Ausführliche Informationen zum Eingen von Preisen für bestimmte Angebotstypen finden Sie in den folgenden Artikeln:
 
 - [Erstellen eines Azure-Anwendungsangebots](partner-center-portal/create-new-azure-apps-offer.md)
 - [Erstellen eines Azure-Containerangebots](partner-center-portal/create-azure-container-offer.md)

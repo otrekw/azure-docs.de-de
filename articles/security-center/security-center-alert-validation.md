@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: cf732b92c1a208dd4c312ae442969ef958a021b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf73b3949b0a0dc1e76ebdebb191af0a33ce22ff
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791179"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180472"
 ---
-# <a name="alert-validation-eicar-test-file-in-azure-security-center"></a>Warnungsüberprüfung (EICAR-Testdatei) in Azure Security Center
+# <a name="alert-validation-in-azure-security-center"></a>Warnungsüberprüfung in Azure Security Center
 In diesem Dokument erfahren Sie, wie Sie überprüfen, ob Ihr System ordnungsgemäß für Azure Security Center-Warnungen konfiguriert ist.
 
 ## <a name="what-are-security-alerts"></a>Was sind Sicherheitswarnungen?

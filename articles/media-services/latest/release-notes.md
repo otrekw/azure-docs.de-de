@@ -3,22 +3,24 @@ title: 'Azure Media Services v3: Versionshinweise | Microsoft-Dokumentation'
 description: Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben, bietet dieser Artikel Informationen zu Azure Media Services v3.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 06/03/2020
-ms.author: juliako
-ms.openlocfilehash: 53e337cf4ccbabf7f0b7a227632ba5e996e2b4f3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 055a3e9ec360e5b2c29cedd0f26c976c269f92bb
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072135"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400618"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Versionshinweise zu Azure Media Services v3
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 >Sie können eine Benachrichtigung erhalten, wann auf dieser Seite Updates vorhanden sind, indem Sie die URL `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+release+notes%22&locale=en-us` kopieren und in Ihren RSS-Feedreader einfügen.
 
@@ -35,6 +37,18 @@ Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben,
 > Sie können das [Azure-Portal](https://portal.azure.com/) für Folgendes nutzen: Verwalten von v3-[Liveereignissen](live-events-outputs-concept.md), Anzeigen von v3-[Objekten](assets-concept.md) und -Aufträgen sowie Abrufen von Informationen über das Zugreifen auf APIs und Verschlüsseln von Inhalten. Verwenden Sie für alle anderen Verwaltungsaufgaben (etwa für die Verwaltung von Transformationen und Aufträgen) die [REST-API](https://aka.ms/ams-v3-rest-ref), die [CLI](https://aka.ms/ams-v3-cli-ref) oder eines der unterstützten [SDKs](media-services-apis-overview.md#sdks).
 >
 > Weitere Informationen finden Sie in den häufig gestellten Fragen im Abschnitt über [Einschränkungen im Azure-Portal im Zusammenhang mit Media Services v3](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3).
+
+
+## <a name="august-2020"></a>August 2020
+
+### <a name="dynamic-encryption"></a>Dynamische Verschlüsselung
+Unterstützung für die ältere PlayReady Protected Interoperable File Format-Verschlüsselung (PIFF 1.1) ist jetzt in Dynamic Packager verfügbar. Dies bietet Unterstützung für ältere Smart TV-Geräte von Samsung und LG, die die frühen Entwürfe der von Microsoft veröffentlichten Common Encryption-Standards (CENC) implementiert haben.  Das PIFF 1.1-Format ist auch als das Verschlüsselungsformat bekannt, das zuvor von der Silverlight-Clientbibliothek unterstützt wurde. Heutzutage besteht das einzige Anwendungsszenario für dieses Verschlüsselungsformat in älteren Smart TV-Geräten, da es in einigen Regionen eine nicht unerheblich Anzahl von Smart TVs gibt, die nur Smooth Streaming mit PIFF 1.1-Verschlüsselung unterstützen. 
+
+Wenn Sie die neue PIFF 1.1-Verschlüsselungsunterstützung verwenden möchten, ändern Sie den Verschlüsselungswert im URL-Pfad des Streaminglocators in „piff“. Weitere Informationen finden Sie unter [Übersicht über den Inhaltsschutz](content-protection-overview.md).
+Beispiel: `https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=piff)`|
+
+> [!NOTE]
+> PIFF 1.1-Unterstützung wird als abwärtskompatible Lösung für ein Smart TV-Gerät (Samsung, LG) bereitgestellt, das die frühe „Silverlight“-Version von Common Encryption implementiert hat. Sie sollten das PIFF-Format nur dann verwenden, wenn es zur Unterstützung älterer, von 2009 bis 2015 ausgelieferter Samsung- oder LG-Smart TV-Geräte verwendet werden muss, die die PIFF 1.1-Version der PlayReady-Verschlüsselung unterstützten. 
 
 ## <a name="july-2020"></a>Juli 2020
 

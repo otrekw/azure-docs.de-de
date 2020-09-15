@@ -9,12 +9,13 @@ ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 01706b3f6850d49240b9c84997cbbec528045200
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 3343f0e21cdf8873447bd448c200102940b632e8
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923873"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077091"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Verwenden von PowerShell zum Verwalten von Verzeichnissen, Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2
 
@@ -125,6 +126,8 @@ $dir.Owner
 $dir.Properties
 $dir.Properties.Metadata
 ```
+> [!NOTE]
+> Lassen Sie zum Abrufen des Stammverzeichnisses des Containers den Parameter `-Path` weg.
 
 ## <a name="rename-or-move-a-directory"></a>Umbenennen oder Verschieben eines Verzeichnisses
 
@@ -202,7 +205,8 @@ $properties.Group
 $properties.Owner
 ```
 
-Um den Inhalt eines Containers aufzulisten, lassen Sie den Parameter `-Path` im Befehl weg.
+> [!NOTE]
+> Um den Inhalt des Stammverzeichnisses des Containers aufzulisten, lassen Sie den Parameter `-Path` weg.
 
 ## <a name="upload-a-file-to-a-directory"></a>Hochladen einer Datei in ein Verzeichnis
 
@@ -227,6 +231,9 @@ $file1.Properties
 $file1.Properties.Metadata
 
 ```
+
+> [!NOTE]
+> Lassen Sie zum Hochladen einer Datei in das Stammverzeichnis des Containers den Parameter `-Path` weg.
 
 ## <a name="show-file-properties"></a>Anzeigen von Dateieigenschaften
 

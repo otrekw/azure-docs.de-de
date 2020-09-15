@@ -1,28 +1,29 @@
 ---
-title: Aktivieren und Verwalten der Blobversionsverwaltung (Vorschau)
+title: Aktivieren und Verwalten von Blobversionsverwaltung
 titleSuffix: Azure Storage
-description: Hier erfahren Sie, wie Sie die Blobversionsverwaltung (Vorschau) im Azure-Portal oder mithilfe einer Azure Resource Manager-Vorlage aktivieren können.
+description: Erfahren Sie, wie Sie Blobversionsverwaltung im Azure-Portal und mit einer Azure Resource Manager-Vorlage aktivieren können.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/10/2020
+ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 85e8ccd03bd20ed9bb572d482dbc7a06b8af725c
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 1df7afb5a029ff7770a64d6bf698a462c8ab9735
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067272"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230669"
 ---
-# <a name="enable-and-manage-blob-versioning-preview"></a>Aktivieren und Verwalten der Blobversionsverwaltung (Vorschau)
+# <a name="enable-and-manage-blob-versioning"></a>Aktivieren und Verwalten von Blobversionsverwaltung
 
-Sie können Blob Storage-Versionsverwaltung (Vorschau) aktivieren, um frühere Versionen eines Objekts automatisch zu verwalten.  Wenn Blobversionsverwaltung aktiviert ist, können Sie eine frühere Version eines Blobs wiederherstellen, um Daten wiederherzustellen, wenn diese irrtümlich geändert oder gelöscht wurden.
+Sie können die Blob Storage-Versionsverwaltung aktivieren, um frühere Versionen eines Objekts automatisch zu verwalten.  Wenn Blobversionsverwaltung aktiviert ist, können Sie eine frühere Version eines Blobs wiederherstellen, um Daten wiederherzustellen, wenn diese irrtümlich geändert oder gelöscht wurden.
 
-In diesem Artikel wird gezeigt, wie Sie die Blobversionsverwaltung für das Speicherkonto über das Azure-Portal oder mithilfe einer Azure Resource Manager-Vorlage aktivieren oder deaktivieren können.
+In diesem Artikel wird gezeigt, wie Sie die Blobversionsverwaltung für das Speicherkonto über das Azure-Portal oder mithilfe einer Azure Resource Manager-Vorlage aktivieren oder deaktivieren können. Informationen zur Blobversionsverwaltung finden Sie unter [Blobversionsverwaltung](versioning-overview.md).
 
-Sie müssen sich für die Vorschau registrieren, bevor Sie die Blobversionsverwaltung aktivieren können. Weitere Informationen zur Blobversionsverwaltung, einschließlich der erforderlichen Schritte zum Registrieren für die Vorschau, finden Sie unter [Blobversionsverwaltung (Vorschau)](versioning-overview.md).
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="enable-blob-versioning"></a>Aktivieren der Blobversionsverwaltung
 
@@ -72,7 +73,7 @@ Weitere Informationen zum Bereitstellen von Ressourcen mit Vorlagen im Azure-Por
 
 ## <a name="modify-a-blob-to-trigger-a-new-version"></a>Ändern eines Blobs zum Auslösen einer neuen Version
 
-Das folgende Codebeispiel zeigt, wie Sie die Erstellung einer neuen Version mit der Azure Storage-Clientbibliothek für .NET Version [12.5.0-preview.5](https://www.nuget.org/packages/Azure.Storage.Blobs/12.5.0-preview.5) oder höher auslösen. Stellen Sie vor dem Ausführen dieses Beispiels sicher, dass Sie Versionsverwaltung für Ihr Speicherkonto aktiviert haben.
+Im folgenden Codebeispiel wird veranschaulicht, wie Sie die Erstellung einer neuen Version mit der Azure Storage-Clientbibliothek für .NET ab Version [12.5.1](https://www.nuget.org/packages/Azure.Storage.Blobs/12.5.1) auslösen. Stellen Sie vor dem Ausführen dieses Beispiels sicher, dass Sie Versionsverwaltung für Ihr Speicherkonto aktiviert haben.
 
 Im Beispiel wird ein Blockblob erstellt, und anschließend werden die Metadaten des Blobs aktualisiert. Durch Aktualisieren der Metadaten des Blobs wird die Erstellung einer neuen Version ausgelöst. Das Beispiel ruft die anfängliche Version und die aktuelle Version ab und zeigt, dass nur die aktuelle Version die Metadaten enthält.
 
@@ -158,5 +159,5 @@ static void PrintMetadata(Response<BlobProperties> propertiesResponse)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Blobversionsverwaltung (Vorschau)](versioning-overview.md)
+- [Blobversionsverwaltung](versioning-overview.md)
 - [Vorläufiges Löschen für Azure Storage-Blobs](soft-delete-overview.md)

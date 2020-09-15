@@ -6,13 +6,13 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 7c331fcbb013243cbd724d0c9337ce80fa1bedbd
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 581e30508b508d5a36f2d5695043ac7bd782a2d5
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752697"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394379"
 ---
 # <a name="azure-security-baseline-for-event-grid"></a>Azure-Sicherheitsbaseline für Event Grid
 
@@ -804,7 +804,9 @@ Verwenden Sie verwaltete Identitäten in Verbindung mit Azure Key Vault, um die 
 
 - [Erstellen einer Key Vault-Instanz](/azure/key-vault/quick-create-portal)
 
-- [Bereitstellen der Key Vault-Authentifizierung mit einer verwalteten Identität](/azure/key-vault/managed-identity)
+- [Authentifizieren bei Key Vault](../key-vault/general/authentication.md)
+
+- [Zuweisen einer Key Vault-Zugriffsrichtlinie](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure Security Center-Überwachung**: Ja
 

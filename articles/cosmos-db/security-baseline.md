@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 3431ad88a27da9d83b75ed3661d6129f157b9b1f
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 051f6e6ef15cc94e2b607c74e666bae9c91c1160
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531505"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401621"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>Azure-Sicherheitsbaseline für Cosmos DB
 
@@ -890,9 +890,11 @@ Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/g
 
 Integration mit verwalteten Azure-Identitäten: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-Erstellen einer Key Vault-Instanz: https://docs.microsoft.com/azure/key-vault/quick-create-portal
+Erstellen einer Key Vault-Instanz: https://docs.microsoft.com/azure/key-vault/general/quick-create-portal
 
-Bereitstellen der Key Vault-Authentifizierung mit einer verwalteten Identität: https://docs.microsoft.com/azure/key-vault/managed-identity
+Authentifizieren bei Key Vault: https://docs.microsoft.com/azure/key-vault/general/authentication
+
+Zuweisen einer Key Vault-Zugriffsrichtlinie: https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
 **Azure Security Center-Überwachung**: Ja
 

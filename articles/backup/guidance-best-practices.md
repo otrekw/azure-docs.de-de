@@ -3,12 +3,12 @@ title: Leitfaden und bewährte Methoden
 description: Bewährte Methoden und Anleitungen zum Sichern von Cloudworkloads und lokalen Workloads in der Cloud
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 6daa3051a00093f74b8b5dac5c81befe006107a4
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: db6eec5351a9015b136226610d2bb3deb8bdc651
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825578"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000361"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Sichern von Cloudworkloads und lokalen Workloads in der Cloud
 
@@ -90,7 +90,7 @@ Vergewissern Sie sich vor dem Konfigurieren von Sicherungen im Tresor, dass die 
 
 ## <a name="backup-policy-considerations"></a>Überlegungen zur Sicherungsrichtlinie
 
-Die Azure Backup-Richtlinie umfasst zwei Aspekte: *Zeitplan* (wann die Sicherung erfolgen soll) und *Aufbewahrung* (wie lange die Sicherung aufbewahrt werden soll). Sie können die Richtlinie auf der Grundlage der Art der zu sichernden Daten, der RTO/RPO-Anforderungen, der operativen oder behördlichen Complianceanforderungen und des Workloadtyps (z. B. VM, Datenbank, Dateien) definieren. [Hier erhalten Sie weitere Informationen](backup-architecture.md#backup-policy-essentials).
+Die Azure Backup-Richtlinie umfasst zwei Aspekte: *Zeitplan* (wann die Sicherung erfolgen soll) und *Aufbewahrung* (wie lange die Sicherung aufbewahrt werden soll). Sie können die Richtlinie auf der Grundlage der Art der zu sichernden Daten, der RTO-/RPO-Anforderungen, der operativen oder behördlichen Complianceanforderungen und des Workloadtyps (z. B. VM, Datenbank, Dateien) definieren. [Hier erhalten Sie weitere Informationen](backup-architecture.md#backup-policy-essentials).
 
 Berücksichtigen Sie beim Erstellen einer Sicherungsichtlinien die folgenden Richtlinien:
 
@@ -212,9 +212,9 @@ Die Funktionen des Azure Backup-Diensts bieten Ihnen die Flexibilität, Ihre Kos
 
 * Selektive Sicherung von Datenträgern: „Datenträger ausschließen“ (Previewfunktion) bietet eine effiziente und kostengünstige Möglich, kritische Daten selektiv zu sichern. Sichern Sie beispielsweise nur einen Datenträger, wenn Sie die übrigen, an einen virtuellen Computer angeschlossenen Datenträger nicht sichern möchten. Dies ist auch nützlich, wenn Sie über mehrere Sicherungslösungen verfügen. Wenn Sie Ihre Datenbanken oder Daten zum Beispiel mit einer Workloadsicherungslösung (SQL Server-Datenbank in Azure VM-Sicherung) sichern und für ausgewählte Datenträger eine Sicherung auf Azure VM-Ebene verwenden möchten.
 
-* Azure Backup erstellt Momentaufnahmen von virtuellen Azure-Computern und speichert diese zur Verbesserung der Erstellung eines Wiederherstellungspunkts und zur Beschleunigung von Wiederherstellungsvorgängen zusammen mit den Datenträgern. Dies wird als „Sofortige Wiederherstellung“ bezeichnet. Standardmäßig werden Momentaufnahmen der sofortigen Wiederherstellung zwei Tage lang aufbewahrt. Mit diesem Feature kann eine Wiederherstellung über diese Momentaufnahmen mit reduzierten Wiederherstellungszeiten durchgeführt werden. Reduziert die erforderliche Zeit zum Transformieren und Zurückkopieren von Daten aus dem Tresor. Aus diesem Grund werden Ihnen Speicherkosten angezeigt, die den Momentaufnahmen aus diesem Zeitraum entsprechen. [Hier erhalten Sie weitere Informationen](backup-instant-restore-capability.md#configure-snapshot-retention).
+* Azure Backup erstellt Momentaufnahmen von virtuellen Azure-Computern und speichert diese zur Verbesserung der Erstellung eines Wiederherstellungspunkts und zur Beschleunigung von Wiederherstellungsvorgängen zusammen mit den Datenträgern. Dies wird als „Sofortige Wiederherstellung“ bezeichnet. Standardmäßig werden Momentaufnahmen der sofortigen Wiederherstellung zwei Tage lang aufbewahrt. Mit diesem Feature kann eine Wiederherstellung über diese Momentaufnahmen mit reduzierten Wiederherstellungszeiten durchgeführt werden. Es reduziert die erforderliche Zeit zum Transformieren und Zurückkopieren von Daten aus dem Tresor. Aus diesem Grund werden Ihnen Speicherkosten angezeigt, die den Momentaufnahmen aus diesem Zeitraum entsprechen. [Hier erhalten Sie weitere Informationen](backup-instant-restore-capability.md#configure-snapshot-retention).
 
-* Der Speicherreplikationstyp des Azure Backup-Tresors ist standardmäßig auf „Georedundant“ (GRS) festgelegt. Diese Option kann nach dem Starten des Schutzes von Elementen nicht mehr geändert werden. Georedundanter Speicher (GRS) bietet ein höheres Maß an Datenbeständigkeit als lokal redundanter Speicher (LRS), ermöglicht die Aktivierung der regionsübergreifenden Wiederherstellung und ist teurer. Prüfen Sie die Kompromisse zwischen geringeren Kosten und einer höheren Datenbeständigkeit, die für Ihr Szenario am besten geeignet ist. [Weitere Informationen finden Sie hier](backup-create-rs-vault.md#set-storage-redundancy)
+* Der Speicherreplikationstyp des Azure Backup-Tresors ist standardmäßig auf „Georedundant“ (GRS) festgelegt. Diese Option kann nach dem Starten des Schutzes von Elementen nicht mehr geändert werden. Georedundanter Speicher (GRS) bietet ein höheres Maß an Datenbeständigkeit als lokal redundanter Speicher (LRS), ermöglicht die Aktivierung der regionsübergreifenden Wiederherstellung und ist teurer. Überprüfen Sie die Kompromisse zwischen geringeren Kosten und einer höheren Datenbeständigkeit, und entscheiden Sie, was für Ihr Szenario am besten geeignet ist. [Weitere Informationen finden Sie hier](backup-create-rs-vault.md#set-storage-redundancy)
 
 * Wenn Sie sowohl den in einer VM ausgeführten Workload als auch die VM selbst schützen, prüfen Sie, ob dieser doppelte Schutz erforderlich ist.
 

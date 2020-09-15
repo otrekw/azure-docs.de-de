@@ -4,19 +4,19 @@ description: Verwenden Sie Azure IoT Edge zum Erstellen eines transparenten oder
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 02/25/2019
+ms.date: 08/21/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: d7c924af297d9a315b61351b69d2fe6346bc1178
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 0589779de2ddb0bc75dde3b57d6444634b879f86
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232626"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017021"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>Verwendung eines IoT Edge-Geräts als Gateway
 
@@ -24,13 +24,31 @@ Gateways in IoT Edge-Lösungen bieten Gerätekonnektivität und Edgeanalysen fü
 
 ## <a name="patterns"></a>Muster
 
-Es gibt drei Muster für die Verwendung eines IoT Edge-Geräts als Gateway: transparent, Protokollübersetzung und Identitätsübersetzung:
+Es gibt drei Muster für die Verwendung eines IoT Edge-Geräts als Gateway: transparent, Protokollübersetzung und Identitätsübersetzung.
 
-* **Transparent**: Geräte, die theoretisch eine Verbindung mit dem IoT Hub herstellen könnten, können stattdessen eine Verbindung mit einem Gatewaygerät herstellen. Die nachgeschalteten Geräte verfügen über ihre eigenen IoT Hub-Identitäten und verwenden MQTT-, AMQP- oder HTTP-Protokolle. Das Gateway übergibt einfach die Kommunikation zwischen den Geräten und IoT Hub. Weder die Geräte noch die Benutzer, die damit über IoT Hub interagieren, wissen, dass ein Gateway ihre Kommunikation vermittelt. Dieses „Nichtwissen“ bedeutet, dass das Gateway als *transparent* betrachtet wird. Einzelheiten zum Verwenden eines IoT Edge-Geräts als transparentes Gateway finden Sie unter [Erstellen eines transparenten Gateways](how-to-create-transparent-gateway.md).
-* **Protokollübersetzung** (auch „transparentes Gatewaymuster“): Geräte, die MQTT, AMQP oder HTTP nicht unterstützen, können Daten über ein Gatewaygerät selbst an IoT Hub senden. Das Gateway versteht das Protokoll, das von den nachgeschalteten Geräten verwendet wird, und ist das einzige Gerät, das eine Identität in IoT Hub hat. Alle Informationen scheinen von einem Gerät – dem Gateway – zu stammen. Nachgeschaltete Geräte müssen zusätzliche identifizierende Informationen in ihre Nachrichten einbetten, wenn Cloudanwendungen die Daten pro Gerät analysieren möchten. Außerdem sind IoT Hub-Grundtypen wie Zwillinge und Methoden nur für das Gatewaygerät und nicht für nachgeschaltete Geräte verfügbar.
-* **Identitätsübersetzung**: Geräte, die keine Verbindung mit IoT Hub herstellen können, können stattdessen eine Verbindung mit einem Gatewaygerät herstellen. Das Gateway stellt die IoT Hub-Identitäts- und -Protokollübersetzungen im Auftrag der nachgeschalteten Geräte bereit. Das Gateway ist intelligent genug, um das von den nachgeschalteten Geräten verwendete Protokoll zu verstehen, ihnen Identität bereitzustellen und IoT Hub-Grundtypen zu übersetzen. Nachgeschaltete Geräte werden in IoT Hub als erstrangige Geräte mit Zwillingen und Methoden angezeigt. Ein Benutzer kann mit den Geräten in IoT Hub interagieren, weiß jedoch nichts vom zwischengeschalteten Gatewaygerät.
+Ein wichtiger Unterschied zwischen den Mustern besteht darin, dass ein transparentes Gateway Nachrichten zwischen Downstreamgeräten und IoT Hub weiterleitet, ohne dass zusätzliche Verarbeitungsschritte erforderlich sind. Protokollübersetzung und Identitätsübersetzung erfordern hingegen eine Verarbeitung auf dem Gateway, um die Kommunikation zu ermöglichen.
+
+Alle Gateways können IoT Edge-Module verwenden, um Analysen oder Vorverarbeitungsschritte am Edge auszuführen, bevor die Nachrichten von Downstreamgeräten an IoT Hub übergeben werden.
 
 ![Diagramm – Transparente, Protokoll- und Identitätsgatewaymuster](./media/iot-edge-as-gateway/edge-as-gateway.png)
+
+### <a name="transparent-pattern"></a>Transparentes Muster
+
+In einem *transparenten* Muster können Geräte, die theoretisch eine Verbindung mit IoT Hub herstellen könnten, stattdessen eine Verbindung mit einem Gatewaygerät herstellen. Die nachgeschalteten Geräte verfügen über eigene IoT Hub-Identitäten und arbeiten mit dem MQTT-, AMQP- oder HTTP-Protokoll. Das Gateway übergibt einfach die Kommunikation zwischen den Geräten und IoT Hub. Weder die Geräte noch die Benutzer, die damit über IoT Hub interagieren, wissen, dass ein Gateway ihre Kommunikation vermittelt. Dieses fehlende Wissen bedeutet, dass das Gateway als *transparent* betrachtet wird.
+
+Die IoT Edge-Runtime schließt Funktionen für transparente Gateways ein. Weitere Informationen finden Sie unter [Konfigurieren eines IoT Edge-Geräts als transparentes Gateway](how-to-create-transparent-gateway.md).
+
+### <a name="protocol-translation-pattern"></a>Protokollübersetzungsmuster
+
+Ein Gateway mit *Protokollübersetzung* wird im Vergleich zum transparenten Gatewaymuster auch als *nicht transparentes* (opakes) Gateway bezeichnet. In diesem Muster können Geräte, die MQTT, AMQP und HTTP nicht unterstützen, Daten über ein Gatewaygerät an IoT Hub senden. Das Gateway versteht das Protokoll, das von den nachgeschalteten Geräten verwendet wird, und ist das einzige Gerät, das eine Identität in IoT Hub hat. Alle Informationen scheinen von einem Gerät – dem Gateway – zu stammen. Nachgeschaltete Geräte müssen zusätzliche identifizierende Informationen in ihre Nachrichten einbetten, wenn Cloudanwendungen die Daten pro Gerät analysieren möchten. Darüber hinaus sind IoT Hub-Grundtypen wie Zwillinge und Methoden nur für Gatewaygeräte, nicht jedoch für nachgeschaltete Geräte verfügbar.
+
+Die IoT Edge-Runtime bietet keine Protokollübersetzungsfunktionen. Dieses Muster erfordert benutzerdefinierte Module oder Module von Drittanbietern, die häufig für die verwendete Hardware und das verwendete Protokoll spezifisch sind. Im [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules) stehen mehrere Protokollübersetzungsmodule zur Auswahl.
+
+### <a name="identity-translation-pattern"></a>Identitätsübersetzungsmuster
+
+Bei einem Gatewaymuster mit *Identitätsübersetzung* können Geräte, die keine Verbindung mit IoT Hub herstellen können, stattdessen eine Verbindung mit einem Gatewaygerät herstellen. Das Gateway stellt für die nachgeschalteten Geräte eine IoT Hub-Identität bereit und übernimmt die Protokollübersetzung. Das Gateway ist intelligent genug, um das von den nachgeschalteten Geräten verwendete Protokoll zu verstehen, ihnen Identität bereitzustellen und IoT Hub-Grundtypen zu übersetzen. Nachgeschaltete Geräte werden in IoT Hub als erstrangige Geräte mit Zwillingen und Methoden angezeigt. Ein Benutzer kann mit den Geräten in IoT Hub interagieren, ohne zu merken, dass ein Gatewaygerät zwischengeschaltet ist.
+
+Die IoT Edge-Runtime bietet keine Identitätsübersetzungsfunktionen. Dieses Muster erfordert benutzerdefinierte Module oder Module von Drittanbietern, die häufig für die verwendete Hardware und das verwendete Protokoll spezifisch sind. Ein Beispiel, in dem das Identitätsübersetzungsmuster verwendet wird, finden Sie unter [Azure IoT Edge LoRaWAN Starter Kit](https://github.com/Azure/iotedge-lorawan-starterkit).
 
 ## <a name="use-cases"></a>Anwendungsfälle
 
@@ -42,7 +60,7 @@ Alle Gatewaymuster bieten folgende Vorteile:
 * **Glättung des Datenverkehrs**: Das IoT Edge-Gerät implementiert automatisch exponentielles Backoff, wenn IoT Hub den Datenverkehr drosselt, wobei die Nachrichten lokal beibehalten werden. Durch diesen Vorteil wird Ihre Lösung unempfindlich gegenüber Spitzen im Datenverkehr.
 * **Offlineunterstützung**: Das Gatewaygerät speichert Nachrichten und Zwillingsupdates, die nicht an IoT Hub übermittelt werden können.
 
-Ein Gateway, das Protokolle übersetzt, kann auch Edgeanalysen, Geräteisolierung sowie eine Glättung des Datenverkehrs ausführen und bietet Offlineunterstützung für vorhandene Geräte und neue Geräte mit eingeschränkten Ressourcen. Zahlreiche vorhandene Geräte erzeugen Daten, aus denen geschäftliche Erkenntnissen gewonnen werden können; sie wurden jedoch nicht speziell für Cloudkonnektivität konzipiert. Nicht transparente Gateways ermöglichen das Entsperren und Verwenden dieser Daten in einer IoT-Lösung.
+Ein Gateway, das eine Protokollübersetzung durchführt, kann vorhandene Geräte und neue Geräte unterstützen, die über eingeschränkte Ressourcen verfügen. Zahlreiche vorhandene Geräte erzeugen Daten, aus denen geschäftliche Erkenntnissen gewonnen werden können; sie wurden jedoch nicht speziell für Cloudkonnektivität konzipiert. Nicht transparente Gateways ermöglichen das Entsperren und Verwenden dieser Daten in einer IoT-Lösung.
 
 Ein Gateway, das Identitätsübersetzungen vornimmt, bietet die Vorteile der Protokollübersetzung und ermöglicht außerdem die vollständige Verwaltbarkeit von nachgeschalteten Geräten über die Cloud. Alle Geräte in Ihrer IoT-Lösung werden unabhängig vom jeweiligen Protokoll in IoT Hub angezeigt.
 
@@ -61,7 +79,7 @@ Bei Verwendung eines nicht transparenten Gatewaymusters (Protokollübersetzung) 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie, wie Sie ein transparentes Gateway einrichten:
+Informieren Sie sich über die drei Schritte zum Einrichten eines transparenten Gateways:
 
 * [Konfigurieren eines IoT Edge-Geräts als transparentes Gateway](how-to-create-transparent-gateway.md)
 * [Authentifizieren eines nachgeschalteten Geräts bei Azure IoT Hub](how-to-authenticate-downstream-device.md)

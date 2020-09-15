@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: fd195fee513b2eed9049c7841f791d73a41b876b
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: f067d4c777bb9a49ac2cc50595046249479a8f7a
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87366832"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393835"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mariadb"></a>Azure-Sicherheitsbaseline für Azure Database for MariaDB
 
@@ -522,9 +522,9 @@ Grundlegendes zum Schutz von Kundendaten in Azure: https://docs.microsoft.com/az
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Verwenden von Azure RBAC zum Steuern des Zugriffs auf Ressourcen
 
-**Leitfaden**: Verwenden Sie Azure AD RBAC, um den Zugriff auf die Azure-Datenbank für die MariaDB-Verwaltungsebene (Azure-Portal/Azure Resource Manager) zu steuern. Verwenden Sie für den Zugriff auf die Datenebene (in der Datenbank selbst) SQL-Abfragen, um Benutzer zu erstellen und Benutzerberechtigungen zu konfigurieren.
+**Leitfaden**: Verwenden Sie die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC, Role-Based Access Control), um den Zugriff auf die Verwaltungsebene von Azure Database for MariaDB (Azure-Portal/Azure Resource Manager) zu steuern. Verwenden Sie für den Zugriff auf die Datenebene (in der Datenbank selbst) SQL-Abfragen, um Benutzer zu erstellen und Benutzerberechtigungen zu konfigurieren.
 
-Konfigurieren von RBAC in Azure: https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
+Konfigurieren von Azure RBAC: https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
 
 Konfigurieren des Benutzerzugriffs mit SQL für MariaDB: https://docs.microsoft.com/azure/mariadb/howto-create-users
 
@@ -588,7 +588,7 @@ Erstellen von Warnungen für Azure-Aktivitätsprotokollereignisse: https://docs.
 
 ### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3: Bereitstellen der automatisierten Lösung für die Patchverwaltung von Drittanbietersoftware
 
-**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -749,7 +749,7 @@ Konfigurieren des bedingten Zugriffs, um den Zugriff auf Azure Resource Manager 
 
 ### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12: Einschränken der Möglichkeiten der Benutzer, Skripte innerhalb von Computeressourcen auszuführen
 
-**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -786,7 +786,7 @@ Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/g
 
 ### <a name="72-establish-secure-operating-system-configurations"></a>7.2: Einrichten sicherer Betriebssystemkonfigurationen
 
-**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -808,7 +808,7 @@ Grundlegendes zu Azure Policy-Auswirkungen: https://docs.microsoft.com/azure/gov
 
 ### <a name="74-maintain-secure-operating-system-configurations"></a>7.4: Verwalten sicherer Betriebssystemkonfigurationen
 
-**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -828,7 +828,7 @@ Dokumentation zu Azure Repos: https://docs.microsoft.com/azure/devops/repos/inde
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6: Sicheres Speichern von benutzerdefinierten Betriebssystemimages
 
-**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -848,7 +848,7 @@ Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/g
 
 ### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8: Bereitstellen von Verwaltungstools für Systemkonfigurationen für Betriebssysteme
 
-**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -868,7 +868,7 @@ Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/g
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10: Implementieren der automatisierten Konfigurationsüberwachung für Betriebssysteme
 
-**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -880,11 +880,11 @@ Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/g
 
 Integration mit verwalteten Azure-Identitäten: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-Erstellen einer Key Vault-Instanz: https://docs.microsoft.com/azure/key-vault/quick-create-portal
+Erstellen einer Key Vault-Instanz: https://docs.microsoft.com/azure/key-vault/general/quick-create-portal
 
-Bereitstellen der Key Vault-Authentifizierung mit einer verwalteten Identität: https://docs.microsoft.com/azure/key-vault/managed-identity 
+Authentifizieren bei Key Vault: https://docs.microsoft.com/azure/key-vault/general/authentication
 
-
+Zuweisen einer Key Vault-Zugriffsrichtlinie: https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -1003,7 +1003,7 @@ Grundlegendes zu Sicherung und Wiederherstellung in Azure Database for MariaDB: 
 Grundlegendes zu Sicherung und Wiederherstellung in Azure Database for MariaDB: https://docs.microsoft.com/azure/mariadb/concepts-backup
 
 
-**Azure Security Center-Überwachung:** Ja
+**Azure Security Center-Überwachung**: Ja
 
 **Verantwortlichkeit**: Kunde
 
@@ -1053,7 +1053,7 @@ Kennzeichnen Sie außerdem die Abonnements (z. B. Produktion, Nicht-Produktion)
 
 - Festlegen der Kontaktinformationen in Azure Security Center: https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
 
-**Azure Security Center-Überwachung:** Ja
+**Azure Security Center-Überwachung**: Ja
 
 **Verantwortlichkeit**: Kunde
 

@@ -5,22 +5,26 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 06/22/2020
+ms.date: 08/31/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13bbea166d699acead932b1ad6779720f82090e6
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 0019f7d8195dc39127b992a31ebd8c33e55452f6
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919674"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179350"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-multi-factor-authentication"></a>Optimieren von Aufforderungen für die erneute Authentifizierung und Grundlegendes zur Sitzungslebensdauer für Azure Multi-Factor Authentication
 
 Azure Active Directory (Azure AD) verfügt über mehrere Einstellungen, mit denen bestimmt wird, wie oft Benutzer sich erneut authentifizieren müssen. Diese erneute Authentifizierung kann einstufig wie etwa mit einem Kennwort, mit FIDO oder mit Microsoft Authenticator (kennwortlos) oder mithilfe der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) erfolgen. Sie können diese Einstellungen für die erneute Authentifizierung nach Bedarf für Ihre Umgebung und die gewünschte Benutzererfahrung konfigurieren.
+
+Die Standardkonfiguration von Azure AD sieht für die Anmeldehäufigkeit von Benutzern ein rollierendes Zeitfenster von 90 Tagen vor. Benutzer zur Angabe von Anmeldeinformationen aufzufordern, kann häufig sinnvoll erscheinen, sich aber nachteilig auswirken. Wenn Benutzer darin geschult werden, ihre Anmeldeinformationen ohne Nachdenken einzugeben, können sie diese versehentlich in einer böswilligen Eingabeaufforderung für Anmeldeinformationen angeben.
+
+Es klingt vielleicht beunruhigend, keine erneute Anmeldung von einem Benutzer zu fordern, tatsächlich wird die Sitzung bei einer Verletzung der IT-Richtlinien jedoch widerrufen. Zu den Beispielen zählen eine Kennwortänderung, ein nicht konformes Gerät oder eine Kontodeaktivierung. Sie können [Benutzersitzungen auch explizit mit PowerShell widerrufen](/powershell/module/azuread/revoke-azureaduserallrefreshtoken).
 
 In diesem Artikel werden die empfohlenen Konfigurationen und die Funktionsweise der verschiedenen Einstellungen sowie deren Interaktion erläutert.
 
@@ -35,6 +39,7 @@ Damit Sie Ihren Benutzern die richtige Balance zwischen Sicherheit und Benutzerf
 * Wenn Sie über Lizenzen für Office 365-Apps oder den kostenlosen Azure AD-Tarif verfügen:
     * Aktivieren Sie das einmalige Anmelden (Single Sign-on, SSO) über mehrere Anwendungen hinweg mithilfe von [verwalteten Geräten](../devices/overview.md) oder [nahtlosem einmaligem Anmelden](../hybrid/how-to-connect-sso.md).
     * Lassen Sie die Option *Remain signed-in* (Angemeldet bleiben) aktiviert, und weisen Sie Ihre Benutzer an, sie zu akzeptieren.
+* Stellen Sie in Szenarien mit mobilen Geräten sicher, dass Ihre Benutzer die Microsoft Authenticator-App verwenden. Diese App wird als Broker für andere Azure AD-Verbund-Apps verwendet und reduziert die Authentifizierungsaufforderungen auf dem Gerät.
 
 Unsere Untersuchungen zeigen, dass diese Einstellungen für die meisten Mandanten geeignet sind. Einige Kombinationen dieser Einstellungen, wie z. B. *Remember MFA* (MFA speichern) und *Remain signed-in* (Angemeldet bleiben), können dazu führen, dass Ihre Benutzer zu oft aufgefordert werden, sich zu authentifizieren. Reguläre Aufforderungen für die erneute Authentifizierung sind schlecht für die Produktivität der Benutzer und machen diese unter Umständen anfälliger für Angriffe.
 
@@ -71,11 +76,11 @@ Weitere Informationen zum Konfigurieren der Option, mit der Benutzer angemeldet 
 
 ### <a name="remember-multi-factor-authentication"></a>Speichern der Multi-Factor Authentication  
 
-Mit dieser Einstellung können Sie Werte zwischen 1 und 60 Tagen konfigurieren und ein persistentes Cookie im Browser festlegen, wenn ein Benutzer die Option **Die nächsten X Tage nicht erneut fragen** auswählt.
+Mit dieser Einstellung können Sie Werte zwischen 1 und 365 Tagen konfigurieren und ein persistentes Cookie im Browser festlegen, wenn ein Benutzer die Option **Die nächsten X Tage nicht erneut fragen** auswählt.
 
 ![Screenshot der Beispielaufforderung zum Genehmigen einer Anmeldeanforderung](./media/concepts-azure-multi-factor-authentication-prompts-session-lifetime/approve-sign-in-request.png)
 
-Mit dieser Einstellung wird die Anzahl der Authentifizierungen für Web-Apps verringert, und die Anzahl der Authentifizierungen für moderne Authentifizierungsclients wie etwa Office-Clients wird erhöht. Diese Clients geben normalerweise nur nach einer Kennwortzurücksetzung oder nach einer 90-tägigen Inaktivität eine Anforderung aus. Der Höchstwert für *Remember MFA* (MFA speichern) beträgt 60 Tage. In Verbindung mit **Remain signed-in** (Angemeldet bleiben) oder Richtlinien für den bedingten Zugriff kann sich dadurch die Anzahl der Authentifizierungsanforderungen erhöhen.
+Mit dieser Einstellung wird die Anzahl der Authentifizierungen für Web-Apps verringert, und die Anzahl der Authentifizierungen für moderne Authentifizierungsclients wie etwa Office-Clients wird erhöht. Diese Clients geben normalerweise nur nach einer Kennwortzurücksetzung oder nach einer 90-tägigen Inaktivität eine Anforderung aus. Wenn Sie diesen Wert jedoch auf weniger als 90 Tage festlegen, werden die MFA-Standardaufforderungen für Office-Clients verkürzt und die Häufigkeit für erneute Authentifizierungen erhöht. In Verbindung mit **Remain signed-in** (Angemeldet bleiben) oder Richtlinien für den bedingten Zugriff kann sich dadurch die Anzahl der Authentifizierungsanforderungen erhöhen.
 
 Wenn Sie *Remember MFA* (MFA speichern) verwenden und über Azure AD Premium 1-Lizenzen verfügen, empfiehlt sich ggf. eine Migration dieser Einstellungen zur Anmeldehäufigkeit mit bedingtem Zugriff. Oder verwenden Sie stattdessen die Option *Keep me signed in?* (Angemeldet bleiben?).
 

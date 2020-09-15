@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd189db10b599c0bc6bd5a3dbae2b1bc21b53b0c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 033752eed30e898f5306154f73a9ca6741c1f81c
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795914"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179571"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD
 
@@ -310,11 +310,11 @@ Wenn Ihr Azure Active Directory-Mandant mit einem lokalen Active Directory verbu
 
 #### <a name="inventory-your-privileged-accounts-within-hosted-virtual-machines"></a>Inventarisieren Ihrer privilegierten Konten auf gehosteten virtuellen Computern
 
-In der Regel müssen Sie Benutzern keine uneingeschränkten Berechtigungen für Ihre sämtlichen Azure-Abonnements oder -Ressourcen erteilen. Verwenden Sie Azure AD-Administratorrollen, um nur den Zugriff zu gewähren, den die Benutzer für ihre Arbeit benötigen. Mit Azure AD-Administratorrollen können Sie einem Administrator nur die Verwaltung virtueller Computer in einem Abonnement gestatten, während ein anderer im gleichen Abonnement SQL-Datenbanken verwalten kann. Weitere Informationen finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](../../role-based-access-control/overview.md).
+In der Regel müssen Sie Benutzern keine uneingeschränkten Berechtigungen für Ihre sämtlichen Azure-Abonnements oder -Ressourcen erteilen. Verwenden Sie Azure AD-Administratorrollen, um nur den Zugriff zu gewähren, den die Benutzer für ihre Arbeit benötigen. Mit Azure AD-Administratorrollen können Sie einem Administrator nur die Verwaltung virtueller Computer in einem Abonnement gestatten, während ein anderer im gleichen Abonnement SQL-Datenbanken verwalten kann. Weitere Informationen finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung in Azure?](../../role-based-access-control/overview.md).
 
 #### <a name="implement-pim-for-azure-ad-administrator-roles"></a>Implementieren von PIM für Azure AD-Administratorrollen
 
-Verwenden Sie Privileged Identity Management mit Azure AD-Administratorrollen zum Verwalten, Steuern und Überwachen des Zugriffs auf Azure-Ressourcen. PIM bietet Schutz durch Herabsetzen der Gefährdungszeit für Berechtigungen und bietet mithilfe von Berichten und Warnungen einen größeren Einblick in die Verwendung dieser Berechtigungen. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf Azure-Ressourcen mit Privileged Identity Management](../../role-based-access-control/best-practices.md).
+Verwenden Sie Privileged Identity Management mit Azure AD-Administratorrollen zum Verwalten, Steuern und Überwachen des Zugriffs auf Azure-Ressourcen. PIM bietet Schutz durch Herabsetzen der Gefährdungszeit für Berechtigungen und bietet mithilfe von Berichten und Warnungen einen größeren Einblick in die Verwendung dieser Berechtigungen. Weitere Informationen finden Sie unter [Was ist Azure AD Privileged Identity Management?](../privileged-identity-management/pim-configure.md).
 
 #### <a name="use-azure-log-integrations-to-send-relevant-azure-logs-to-your-siem-systems"></a>Verwenden von Azure-Protokollintegrationen zum Senden von relevanten Azure-Protokollen an Ihre SIEM-Systeme
 

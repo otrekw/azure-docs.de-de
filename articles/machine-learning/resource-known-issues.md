@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
 ms.date: 08/13/2020
-ms.openlocfilehash: 02c733c7849c89f9d48ddbe75ffbb2235e1be58e
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 4dced0e0597e4df2fe215c9f4b85e3e8defd92c3
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757284"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230380"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Bekannte Probleme und Problembehandlung in Azure Machine Learning
 
@@ -185,6 +185,8 @@ Manchmal kann es hilfreich sein, Diagnoseinformationen bereitstellen zu können,
 
 * **Probleme beim Erstellen von AmlCompute**: In seltenen Fällen kann es vorkommen, dass Benutzer, die vor dem allgemein verfügbaren Release ihren Azure Machine Learning-Arbeitsbereich über das Azure-Portal erstellt haben, AmlCompute nicht in diesem Arbeitsbereich erstellen können. In einem solchen Fall können Sie entweder eine Supportanfrage für den Dienst erstellen oder über das Portal oder das SDK einen neuen Arbeitsbereich erstellen und die Blockierung dadurch umgehend aufheben.
 
+* **Azure Container Registry unterstützt derzeit keine Unicode-Zeichen in Ressourcengruppennamen:** Möglicherweise treten bei ACR-Anforderungen Fehler auf, da der zugehörige Ressourcengruppenname Unicode-Zeichen enthält. Um dieses Problem zu beheben, wird empfohlen, eine ACR-Instanz in einer Ressourcengruppe mit abweichendem Namen zu erstellen.
+
 ## <a name="work-with-data"></a>Arbeiten mit Daten
 
 ### <a name="overloaded-azurefile-storage"></a>Überladener AzureFile-Speicher
@@ -316,6 +318,26 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 ## <a name="automated-machine-learning"></a>Automatisiertes maschinelles Lernen
 
+* **Das letzte Upgrade der AutoML-Abhängigkeiten auf neuere Versionen führt zu Inkompatibilität:**  Ab Version 1.13.0 des SDK werden Modelle in älteren SDKs nicht mehr geladen, da die in den früheren Paketen angehefteten Versionen mit den neueren, jetzt angehefteten Versionen nicht kompatibel sind. Es wird ein Fehler wie der folgende angezeigt:
+  * Das Modul wurde nicht gefunden: Beispiel: `No module named 'sklearn.decomposition._truncated_svd`,
+  * Importfehler: Beispiel: `ImportError: cannot import name 'RollingOriginValidator'`,
+  * Attributfehler: Ex. `AttributeError: 'SimpleImputer' object has no attribute 'add_indicator`
+  
+  Um dieses Problem zu umgehen, führen Sie je nach Ihrer AutoML SDK-Trainingsversion einen der beiden folgenden Schritte aus:
+  1. Wenn Ihre AutoML SDK-Trainingsversion größer als 1.13.0 ist, benötigen Sie `pandas == 0.25.1` und `sckit-learn==0.22.1`. Wenn die Version nicht übereinstimmt, führen Sie ein Upgrade von scikit-learn oder Pandas auf die richtige Version durch, wie nachstehend dargestellt:
+  
+  ```bash
+     pip install --upgrade pandas==0.25.1
+     pip install --upgrade scikit-learn==0.22.1
+  ```
+  
+  2. Wenn Ihre AutoML SDK-Trainingsversion kleiner als oder gleich 1.12.0 ist, benötigen Sie `pandas == 0.23.4` und `sckit-learn==0.20.3`. Wenn die Version nicht übereinstimmt, führen Sie ein Downgrade von scikit-learn oder Pandas auf die richtige Version durch, wie nachstehend dargestellt:
+  
+  ```bash
+    pip install --upgrade pandas==0.23.4
+    pip install --upgrade scikit-learn==0.20.3
+  ```
+ 
 * **TensorFlow**: Ab der SDK-Version 1.5.0 installiert das automatisierte maschinelle Lernen TensorFlow-Modelle nicht mehr standardmäßig. Wenn Sie TensorFlow installieren und bei Ihren automatisierten ML-Experimenten verwenden möchten, installieren Sie „tensorflow==1.12.0“ über CondaDependecies. 
  
    ```python

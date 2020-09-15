@@ -39,6 +39,8 @@
       href: use-prediction-api.md
     - name: Verwenden des intelligenten Beschriftungserstellers
       href: suggested-tags.md
+    - name: Rollenbasierte Zugriffssteuerung
+      href: role-based-access-control.md
     - name: Exportieren von Modellen
       items:
         - name: Exportieren des Modells auf Mobilgeräte

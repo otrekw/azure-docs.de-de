@@ -1,25 +1,25 @@
 ---
-title: Blobversionsverwaltung (Vorschau)
+title: Blobversionsverwaltung
 titleSuffix: Azure Storage
-description: Die Blob Storage-Versionsverwaltung (Vorschau) verwaltet automatisch vorherige Versionen eines Objekts und identifiziert diese durch Zeitstempel. Sie können frühere Versionen eines Blobs wiederherstellen, um Daten wiederherzustellen, wenn diese irrtümlich geändert oder gelöscht wurden.
+description: Die Blob Storage-Versionsverwaltung verwaltet automatisch vorherige Versionen eines Objekts und identifiziert diese durch Zeitstempel. Sie können frühere Versionen eines Blobs wiederherstellen, um Daten wiederherzustellen, wenn diese irrtümlich geändert oder gelöscht wurden.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 494c1fc1c1c91538240258ab0517c7ff79bdfa74
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 2e3cfd27d36558587ca35cc1c573999a48092b0d
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056532"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297664"
 ---
-# <a name="blob-versioning-preview"></a>Blobversionsverwaltung (Vorschau)
+# <a name="blob-versioning"></a>Blobversionsverwaltung
 
-Sie können Blob Storage-Versionsverwaltung (Vorschau) aktivieren, um frühere Versionen eines Objekts automatisch zu verwalten.  Wenn Blobversionsverwaltung aktiviert ist, können Sie eine frühere Version eines Blobs wiederherstellen, um Daten wiederherzustellen, wenn diese irrtümlich geändert oder gelöscht wurden.
+Sie können die Blob Storage-Versionsverwaltung aktivieren, um frühere Versionen eines Objekts automatisch zu verwalten.  Wenn Blobversionsverwaltung aktiviert ist, können Sie eine frühere Version eines Blobs wiederherstellen, um Daten wiederherzustellen, wenn diese irrtümlich geändert oder gelöscht wurden.
 
 Blobversionsverwaltung ist für das Speicherkonto aktiviert und gilt für alle Blobs im Speicherkonto. Nachdem Sie Blobversionsverwaltung für ein Speicherkonto aktiviert haben, werden durch Azure Storage automatisch Versionen für jedes Blob im Speicherkonto verwaltet.
 
@@ -30,6 +30,8 @@ Informationen zum Aktivieren der Blobversionsverwaltung finden Sie unter [Aktivi
 > [!IMPORTANT]
 > Blobversionsverwaltung kann Ihnen nicht bei der Wiederherstellung nach dem versehentlichen Löschen eines Speicherkontos oder Containers helfen. Um das versehentliche Löschen des Speicherkontos zu verhindern, konfigurieren Sie eine **CannotDelete**-Sperre für die Speicherkontoressource. Weitere Informationen zum Sperren von Azure-Ressourcen finden Sie unter [Sperren von Ressourcen, um unerwartete Änderungen zu verhindern](../../azure-resource-manager/management/lock-resources.md).
 
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
+
 ## <a name="how-blob-versioning-works"></a>Funktionsweise der Blobversionsverwaltung
 
 Eine Version erfasst den Zustand eines Blobs zu einem bestimmten Zeitpunkt. Wenn Blobversionsverwaltung für ein Speicherkonto aktiviert ist, erstellt Azure Storage automatisch jedes Mal eine neue Version eines Blobs, wenn dieses Blob geändert oder gelöscht wird.
@@ -39,6 +41,10 @@ Wenn Sie ein Blob mit aktivierter Versionsverwaltung erstellen, entspricht das n
 Wenn Sie ein Blob mit aktivierter Versionsverwaltung löschen, erstellt Azure Storage eine Version, die den Zustand des Blobs vor dem Löschen erfasst. Die aktuelle Version des Blobs wird dann gelöscht, aber die Versionen des Blobs bleiben erhalten, sodass sie bei Bedarf wiederhergestellt werden können. 
 
 Blobversionen sind unveränderlich. Inhalte oder Metadaten einer vorhandenen Blobversion können nicht geändert werden.
+
+Die Blobversionsverwaltung ist für Speicherkonten vom Typ „Universell V2“, Blockblobs und Blobs verfügbar. Speicherkonten mit einem hierarchischen Namespace, die für die Verwendung mit Azure Data Lake Storage Gen2 aktiviert sind, werden derzeit nicht unterstützt.
+
+Version 2019-10-10 und höher der Azure Storage-REST-API unterstützt die Blobversionsverwaltung.
 
 ### <a name="version-id"></a>Versions-ID
 
@@ -106,7 +112,7 @@ Verwenden Sie Bloblebenszyklusverwaltung, um den Prozess des Verschiebens von Bl
 
 ## <a name="enable-or-disable-blob-versioning"></a>Aktivieren/Deaktivieren von Blobversionsverwaltung
 
-Informationen zum Aktivieren oder Deaktivieren von Blobversionsverwaltung finden Sie unter [Aktivieren oder Deaktivieren von Blobversionsverwaltung](versioning-enable.md).
+Informationen zum Aktivieren und Deaktivieren der Blobversionsverwaltung finden Sie unter [Aktivieren und Verwalten der Blobversionsverwaltung](versioning-enable.md).
 
 Durch Deaktivierung von Blobversionsverwaltung werden vorhandene Blobs, Versionen oder Momentaufnahmen nicht gelöscht. Wenn Sie Blobversionsverwaltung deaktivieren, kann auf alle vorhandenen Versionen in Ihrem Speicherkonto weiterhin zugegriffen werden. Anschließend werden keine weiteren neuen Versionen erstellt.
 
@@ -116,7 +122,7 @@ Sie können Versionen mithilfe der Versions-ID lesen oder löschen, nachdem Vers
 
 Die folgende Abbildung zeigt, wie durch das Ändern eines Blobs nach dem Deaktivieren von Versionsverwaltung ein Blob ohne Versionsangabe erstellt wird. Alle vorhandenen Versionen, die dem Blob zugeordnet sind, bleiben erhalten.
 
-:::image type="content" source="media/versioning-overview/modify-base-blob-versioning-disabled.png" alt-text="Abbildung, die zeigt, wie das Basisblob nach dem Deaktivieren von Versionsverwaltung geändert wird":::
+:::image type="content" source="media/versioning-overview/modify-base-blob-versioning-disabled.png" alt-text="Abbildung, die zeigt, wie das Basisblob nach dem Deaktivieren der Versionsverwaltung geändert wird":::
 
 ## <a name="blob-versioning-and-soft-delete"></a>Blobversionsverwaltung und vorläufiges Löschen
 
@@ -194,134 +200,99 @@ In der folgenden Tabelle werden die Berechtigungen aufgeführt, die für eine SA
 |----------------|----------------|------------------------|
 | Löschen         | x              | Löschen einer Blobversion. |
 
-## <a name="about-the-preview"></a>Informationen zur Vorschau
-
-Blobversionsverwaltung ist als Vorschau in den folgenden Regionen verfügbar:
-
-- USA (Ost) 2
-- USA (Mitte)
-- Nordeuropa
-- Europa, Westen
-- Frankreich, Mitte
-- Kanada, Osten
-- Kanada, Mitte
-
-> [!IMPORTANT]
-> Die Vorschau der Blobversionsverwaltung ist nur für die Verwendung in nicht produktiven Systemen bestimmt. Produktions-SLAs (Service Level Agreements, Vereinbarungen zum Servicelevel) sind derzeit nicht verfügbar.
-
-Version 2019-10-10 und höher der Azure Storage-REST-API unterstützt die Blobversionsverwaltung.
-
-### <a name="storage-account-support"></a>Speicherkontounterstützung
-
-Blobversionsverwaltung ist für die folgenden Typen von Speicherkonten verfügbar:
-
-- Speicherkonten vom Typ „Universell V2“
-- Blockblob-Speicherkonten
-- Blob-Speicherkonten
-
-Wenn Ihr Speicherkonto vom Typ „Universell V1“ ist, verwenden Sie das Azure-Portal, um ein Upgrade auf ein Konto vom Typ „Universell V2“ durchzuführen. Weitere Informationen zu Speicherkonten finden Sie unter [Azure-Speicherkonto – Übersicht](../common/storage-account-overview.md).
-
-Speicherkonten mit einem hierarchischen Namespace, die für die Verwendung mit Azure Data Lake Storage Gen2 aktiviert sind, werden derzeit nicht unterstützt.
-
-### <a name="register-for-the-preview"></a>Registrieren für die Vorschau
-
-Um sich für die Vorschauversion der Blobversionsverwaltung zu registrieren, verwenden Sie PowerShell oder die Azure CLI, um eine Anforderung zum Registrieren des Features bei Ihrem Abonnement zu übermitteln. Nachdem die Anforderung genehmigt wurde, können Sie Blobversionsverwaltung mit allen neuen oder vorhandenen allgemeinen Speicherkonten vom Typ „Universell V2“, mit Blob Storage- oder Blockblob-Speicherkonten vom Typ „Premium“ aktivieren.
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-Rufen Sie für die Registrierung mit PowerShell den Befehl [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) auf.
-
-```powershell
-# Register for blob versioning (preview)
-Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName Versioning
-
-# Refresh the Azure Storage provider namespace
-Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
-```
-
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
-
-Zum Registrieren bei Azure CLI rufen Sie den Befehl „[az feature register](/cli/azure/feature#az-feature-register)“ auf.
-
-```azurecli
-az feature register --namespace Microsoft.Storage --name Versioning
-az provider register --namespace 'Microsoft.Storage'
-```
-
----
-
-### <a name="check-the-status-of-your-registration"></a>Überprüfen des Registrierungsstatus
-
-Verwenden Sie PowerShell oder die Azure CLI, um den Status Ihrer Registrierung zu überprüfen.
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-Um den Status Ihrer Registrierung mit PowerShell zu überprüfen, rufen Sie den Befehl [Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) auf.
-
-```powershell
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName Versioning
-```
-
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
-
-Um den Status Ihrer Registrierung über die Azure-Befehlszeilenschnittstelle zu überprüfen, rufen Sie den Befehl [az feature](/cli/azure/feature#az-feature-show) auf.
-
-```azurecli
-az feature show --namespace Microsoft.Storage --name Versioning
-```
-
----
-
 ## <a name="pricing-and-billing"></a>Preise und Abrechnung
 
 Wenn Sie Blobversionsverwaltung aktivieren, kann dies zu zusätzlichen Kosten für Datenspeicher für Ihr Konto führen. Wenn Sie beim Entwurf Ihrer Anwendung berücksichtigen, wie diese Gebühren auflaufen, können Sie die Kosten minimieren.
 
-Blobversionen werden wie Blobmomentaufnahmen mit den gleichen Gebühren abgerechnet wie aktive Daten. Wenn eine Version Blöcke oder Seiten mit dem Basisblob gemeinsam verwendet, bezahlen Sie nur für zusätzliche Blöcke oder Seiten, die nicht von der Version und dem Basisblob gemeinsam genutzt werden.
+Blobversionen werden wie Blobmomentaufnahmen mit den gleichen Gebühren abgerechnet wie aktive Daten. Die Abrechnung von Versionen hängt davon ab, ob Sie die Dienstebene explizit für das Basisblob oder für eine seiner Versionen (oder Momentaufnahmen) festgelegt haben. Weitere Informationen zu Blobebenen finden Sie unter [Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“](storage-blob-storage-tiers.md).
+
+Wenn Sie die Dienstebene eines Blobs oder einer Version nicht geändert haben, werden Ihnen die eindeutigen Datenblöcke in diesem Blob, seinen Versionen und allen ggf. vorhandenen Momentaufnahmen in Rechnung gestellt. Weitere Informationen finden Sie unter [Abrechnung bei nicht explizit festgelegter Blobebene](#billing-when-the-blob-tier-has-not-been-explicitly-set).
+
+Wenn Sie die Dienstebene eines Blobs oder einer Version geändert haben, wird Ihnen das gesamte Objekt in Rechnung gestellt, unabhängig davon, ob sich das Blob und die Version wieder auf derselben Dienstebene befinden. Weitere Informationen finden Sie unter [Abrechnung bei explizit festgelegter Blobebene](#billing-when-the-blob-tier-has-been-explicitly-set).
 
 > [!NOTE]
 > Das Aktivieren von Versionsverwaltung für häufig überschriebene Daten kann zu höheren Gebühren für die Speicherkapazität und einer höheren Latenz bei Auflistungsvorgängen führen. Um diese Probleme zu vermeiden, speichern Sie häufig überschrieben Daten in einem separaten Speicherkonto mit deaktivierter Versionsverwaltung.
 
-### <a name="important-billing-considerations"></a>Wichtige Überlegungen zur Abrechnung
+Weitere Informationen zu Abrechnungsdetails für Blobmomentaufnahmen finden Sie unter [Blobmomentaufnahmen](snapshots-overview.md).
 
-Beachten Sie die folgenden Punkte, wenn Sie Blobversionsverwaltung aktivieren:
+### <a name="billing-when-the-blob-tier-has-not-been-explicitly-set"></a>Abrechnung bei nicht explizit festgelegter Blobebene
 
-- Für Ihr Speicherkonto fallen Gebühren für eindeutige Blöcke oder Seiten an, die im Blob oder in einer vorherigen Version des Blobs enthalten sind. Ihrem Konto werden erst dann zusätzliche Gebühren für Versionen angerechnet, die einem Blob zugeordnet sind, wenn Sie das Blob aktualisieren, auf dem sie basieren. Sobald Sie das Blob aktualisieren, entstehen Abweichungen früheren Versionen. In diesem Fall werden für alle eindeutigen Blöcke oder Seiten in jedem Blob bzw. jeder Version Gebühren berechnet.
-- Wenn Sie einen Block innerhalb eines Block-BLOBs ersetzen, wird dieser Block anschließend als eindeutiger Block berechnet. Dies gilt auch, wenn der Block dieselbe Block-ID und dieselben Daten enthält wie in der Version. Nachdem ein erneuter Commit für den Block ausgeführt wurde, weicht er von seinem Pendant in den Versionen ab, und Ihnen werden die Daten des Blocks berechnet. Gleiches gilt für eine Seite in einem Seitenblob, die mit identischen Daten aktualisiert wird.
-- Blob Storage kann nicht feststellen, ob zwei Blöcke identische Daten enthalten. Jeder hochgeladene Block, für den ein Commit ausgeführt wird, wird als eindeutig behandelt, selbst wenn die enthaltenen Daten und die Block-ID identisch sind. Da Gebühren jeweils für eindeutige Blöcke anfallen, ist zu berücksichtigen, dass beim Aktualisieren eines Blobs mit aktivierter Versionsverwaltung zusätzliche eindeutige Blöcke generiert werden, für die zusätzliche Gebühren entstehen.
-- Wenn Blobversionsverwaltung aktiviert ist, entwerfen Sie Aktualisierungsvorgänge für Blockblobs, damit Sie die geringstmögliche Anzahl von Blöcken aktualisieren. Die Schreibvorgänge, die eine differenzierte Steuerung von Blöcken ermöglichen, sind [Put Block](/rest/api/storageservices/put-block) und [Put Block List](/rest/api/storageservices/put-block-list). Der Vorgang [Put Blob](/rest/api/storageservices/put-blob) hingegen ersetzt den gesamten Inhalt eines Blobs und kann zu zusätzlichen Kosten führen.
+Wenn Sie die Blobebene für ein Basisblob oder eine der zugehörigen Versionen nicht explizit festgelegt haben, werden Ihnen die eindeutigen Blöcke oder Seiten im Blob, seinen Versionen und ggf. vorhandenen Momentaufnahmen in Rechnung gestellt. Daten, die von einem Blob und seinen Versionen gemeinsam genutzt werden, werden nur einmal in Rechnung gestellt. Wenn ein Blob aktualisiert wird, unterscheiden sich die Daten im Basisblob von den in den zugehörigen Versionen gespeicherten Daten, und die eindeutigen Daten werden pro Block oder Seite abgerechnet.
 
-### <a name="versioning-billing-scenarios"></a>Abrechnungsszenarien für Versionsverwaltung
+Wenn Sie einen Block innerhalb eines Block-BLOBs ersetzen, wird dieser Block anschließend als eindeutiger Block berechnet. Dies gilt auch, wenn der Block dieselbe Block-ID und dieselben Daten enthält wie in der früheren Version. Nachdem der Block erneut committet wurde, weicht er von seinem Pendant in den früheren Versionen ab, und Ihnen werden die Daten des Blocks berechnet. Gleiches gilt für eine Seite in einem Seitenblob, die mit identischen Daten aktualisiert wird.
 
-Die folgenden Szenarien veranschaulichen, wie Gebühren für ein Blockblob und zugehörige Versionen berechnet werden.
+Blob Storage kann nicht feststellen, ob zwei Blöcke identische Daten enthalten. Jeder hochgeladene Block, für den ein Commit ausgeführt wird, wird als eindeutig behandelt, selbst wenn die enthaltenen Daten und die Block-ID identisch sind. Da Gebühren jeweils für eindeutige Blöcke anfallen, sollten Sie berücksichtigen, dass beim Aktualisieren eines Blobs mit aktivierter Versionsverwaltung zusätzliche eindeutige Blöcke generiert werden, für die zusätzliche Kosten entstehen.
+
+Wenn die Blobversionsverwaltung aktiviert ist, rufen Sie Aktualisierungsvorgänge für Blockblobs auf, damit Sie die geringstmögliche Anzahl von Blöcken aktualisieren. Die Schreibvorgänge, die eine differenzierte Steuerung von Blöcken ermöglichen, sind [Put Block](/rest/api/storageservices/put-block) und [Put Block List](/rest/api/storageservices/put-block-list). Der Vorgang [Put Blob](/rest/api/storageservices/put-blob) hingegen ersetzt den gesamten Inhalt eines Blobs und kann zu zusätzlichen Kosten führen.
+
+Die folgenden Szenarien veranschaulichen, wie Gebühren für ein Blockblob und zugehörige Versionen berechnet werden, wenn die Blobebene nicht explizit festgelegt wurde.
 
 #### <a name="scenario-1"></a>Szenario 1
 
 In Szenario 1 ist eine frühere Version des Blobs vorhanden. Das Blob wurde nicht aktualisiert, seit die Version erstellt wurde, sodass Gebühren nur für die eindeutigen Blöcke 1, 2 und 3 anfallen.
 
-![Azure Storage-Ressourcen](./media/versioning-overview/versions-billing-scenario-1.png)
+![Abbildung 1: Abrechnung für eindeutige Blöcke im Basisblob und in der vorherigen Version](./media/versioning-overview/versions-billing-scenario-1.png)
 
 #### <a name="scenario-2"></a>Szenario 2
 
 In Szenario 2 wurde ein Block (Block 3 in der Abbildung) im Blob aktualisiert. Obwohl der aktualisierte Block die gleichen Daten und dieselbe ID enthält, ist er nicht identisch mit Block 3 in der vorherigen Version. Daher wird das Konto mit Gebühren für vier Blöcke belastet:
 
-![Azure Storage-Ressourcen](./media/versioning-overview/versions-billing-scenario-2.png)
+![Abbildung 2: Abrechnung für eindeutige Blöcke im Basisblob und in der vorherigen Version](./media/versioning-overview/versions-billing-scenario-2.png)
 
 #### <a name="scenario-3"></a>Szenario 3
 
 In Szenario 3 wurde das Blob aktualisiert, die Version jedoch nicht. Block 3 wurde im Basisblob durch Block 4 ersetzt, die vorherige Version enthält aber immer noch Block 3. Daher wird das Konto mit Gebühren für vier Blöcke belastet:
 
-![Azure Storage-Ressourcen](./media/versioning-overview/versions-billing-scenario-3.png)
+![Abbildung 3: Abrechnung für eindeutige Blöcke im Basisblob und in der vorherigen Version](./media/versioning-overview/versions-billing-scenario-3.png)
 
 #### <a name="scenario-4"></a>Szenario 4
 
-In Szenario 4 wurde das Basis-Blob vollständig aktualisiert und enthält keinen der ursprünglichen Blöcke. Folglich werden dem Konto alle acht eindeutigen Blöcke in Rechnung gestellt: vier im Basisblob und vier in der vorherigen Version. Dieses Szenario kann eintreten, wenn Sie in ein Blob mit dem Vorgang „Put Blob“ schreiben, da dabei der gesamte Inhalt des Basisblobs ersetzt wird.
+In Szenario 4 wurde das Basis-Blob vollständig aktualisiert und enthält keinen der ursprünglichen Blöcke. Folglich werden dem Konto alle acht eindeutigen Blöcke in Rechnung gestellt: vier im Basisblob und vier in der vorherigen Version. Dieses Szenario kann eintreten, wenn Sie in ein Blob mit dem Vorgang [Put Blob](/rest/api/storageservices/put-blob) schreiben, da dabei der gesamte Inhalt des Basisblobs ersetzt wird.
 
-![Azure Storage-Ressourcen](./media/versioning-overview/versions-billing-scenario-4.png)
+![Abbildung 4: Abrechnung für eindeutige Blöcke im Basisblob und in der vorherigen Version](./media/versioning-overview/versions-billing-scenario-4.png)
 
-## <a name="see-also"></a>Weitere Informationen
+### <a name="billing-when-the-blob-tier-has-been-explicitly-set"></a>Abrechnung bei explizit festgelegter Blobebene
 
-- [Aktivieren von Blobversionsverwaltung](versioning-enable.md)
+Wenn Sie die Dienstebene für ein Blob oder eine Version (oder Momentaufnahme) explizit festgelegt haben, wird Ihnen der gesamte Inhalt des Objekts auf der neuen Dienstebene in Rechnung gestellt, unabhängig davon, ob es Blöcke mit einem Objekt auf der ursprünglichen Dienstebene gemeinsam nutzt. Ihnen wird auch der vollständige Inhalt der ältesten Version auf der ursprünglichen Dienstebene in Rechnung gestellt. Bei allen anderen früheren Versionen oder Momentaufnahmen, die auf der ursprünglichen Dienstebene verbleiben, erfolgt die Abrechnung nach eindeutigen Blöcken, die sie eventuell gemeinsam nutzen, wie unter [Abrechnung bei nicht explizit festgelegter Blobebene](#billing-when-the-blob-tier-has-not-been-explicitly-set) beschrieben.
+
+#### <a name="moving-a-blob-to-a-new-tier"></a>Verschieben eines Blobs auf eine neue Dienstebene
+
+In der folgenden Tabelle wird das Abrechnungsverhalten für ein Blob oder eine Version beschrieben, wenn dieses oder diese auf eine neue Dienstebene verschoben wird.
+
+| Wenn die Blobebene explizit festgelegt wird für: | Wird Folgendes in Rechnung gestellt: |
+|-|-|
+| Ein Basisblob mit einer früheren Version | Das Basisblob auf der neuen Dienstebene und die älteste Version auf der ursprünglichen Dienstebene sowie alle eindeutigen Blöcke in anderen Versionen.<sup>1</sup> |
+| Ein Basisblob mit einer früheren Version und einer Momentaufnahme | Das Basisblob auf der neuen Dienstebene, die älteste Version auf der ursprünglichen Dienstebene und die älteste Momentaufnahme sowie alle eindeutigen Blöcke in anderen Versionen oder Momentaufnahmen.<sup>1</sup> |
+| Eine frühere Version | Die Version auf der neuen Dienstebene und das Basisblob auf der ursprünglichen Dienstebene sowie alle eindeutigen Blöcke in anderen Versionen.<sup>1</sup> |
+
+<sup>1</sup> Wenn andere frühere Versionen oder Momentaufnahmen nicht von der ursprünglichen Dienstebene verschoben wurden, werden diese Versionen oder Momentaufnahmen basierend auf der Anzahl der eindeutigen Blöcke abgerechnet, wie in [Abrechnung bei nicht explizit festgelegter Blobebene](#billing-when-the-blob-tier-has-not-been-explicitly-set) beschrieben.
+
+Im folgenden Diagramm wird veranschaulicht, wie Objekte in Rechnung gestellt werden, wenn ein Blob mit Versionsangabe auf eine andere Dienstebene verschoben wird.
+
+:::image type="content" source="media/versioning-overview/versioning-billing-tiers.png" alt-text="Diagramm der Abrechnung von Objekten, wenn ein Blob mit Versionsangabe explizit auf eine Dienstebene verschoben wird":::
+
+Das explizite Festlegen der Dienstebene für ein Blob, eine Version oder eine Momentaufnahme kann nicht rückgängig gemacht werden. Wenn Sie ein Blob auf eine neue Dienstebene verschieben und dann wieder auf die ursprüngliche Dienstebene zurück verschieben, wird Ihnen der gesamte Inhalt des Objekts in Rechnung gestellt, auch wenn es Blöcke mit anderen Objekten auf der ursprünglichen Dienstebene gemeinsam nutzt.
+
+Vorgänge, mit denen die Dienstebene eines Blobs, einer Version oder einer Momentaufnahme explizit festgelegt wird:
+
+- [Set Blob Tier](/rest/api/storageservices/set-blob-tier)
+- [Put Blob](/rest/api/storageservices/put-blob) mit der angegebenen Dienstebene
+- [Put Block List](/rest/api/storageservices/put-block-list) mit der angegebenen Dienstebene
+- [Copy Blob](/rest/api/storageservices/copy-blob) mit der angegebenen Dienstebene
+
+#### <a name="deleting-a-blob-when-soft-delete-is-enabled"></a>Löschen eines Blobs mit aktiviertem vorläufigem Löschen
+
+Wenn das vorläufige Löschen für Blobs aktiviert ist und Sie ein Basisblob löschen oder überschreiben, dessen Dienstebene explizit festgelegt wurde, werden alle früheren Versionen des vorläufig gelöschten Blobs mit ihrem vollständigen Inhalt abgerechnet. Weitere Informationen zur gemeinsamen Verwendung von Blobversionsverwaltung und vorläufigem Löschen finden Sie unter [Blobversionsverwaltung und vorläufiges Löschen](#blob-versioning-and-soft-delete).
+
+In der folgenden Tabelle wird das Abrechnungsverhalten für ein vorläufig gelöschtes Blob in den beiden Fällen mit aktivierter und deaktivierter Versionsverwaltung beschrieben. Wenn die Versionsverwaltung aktiviert ist, wird beim vorläufigen Löschen eines Blobs eine Version erstellt. Wenn die Versionsverwaltung deaktiviert ist, wird durch das vorläufige Löschen eines Blobs eine Momentaufnahme mit vorläufigem Löschen erstellt.
+
+| Wenn Sie ein Basisblob überschreiben, dessen Dienstebene explizit festgelegt wurde: | Wird Folgendes in Rechnung gestellt: |
+|-|-|
+| Vorläufiges Löschen und Versionsverwaltung wurden für das Blob aktiviert. | Alle vorhandenen Versionen mit ihrem vollständigen Inhalt – unabhängig von der Dienstebene |
+| Vorläufiges Löschen für das Blob wurde aktiviert, aber die Versionsverwaltung wurde deaktiviert. | Alle vorhandenen Momentaufnahmen mit vorläufigem Löschen mit ihrem vollständigen Inhalt – unabhängig von der Dienstebene |
+
+## <a name="see-also"></a>Siehe auch
+
+- [Aktivieren und Verwalten der Blobversionsverwaltung](versioning-enable.md)
 - [Erstellen einer Momentaufnahme eines Blobs](/rest/api/storageservices/creating-a-snapshot-of-a-blob)
 - [Vorläufiges Löschen für Azure Storage-Blobs](storage-blob-soft-delete.md)

@@ -3,12 +3,12 @@ title: Offlinesicherung mit Azure Data Box für DPM und MABS
 description: Sie können Azure Data Box verwenden, um anfängliche Sicherungsdaten offline von DPM und MABS zu erstellen.
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: 33515cdd943f3816328bfd77d831288c5ee0a608
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 3755a4cc77455b37ae1545247992a3c8c4f25653
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890024"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177685"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>Offlineseeding mit Azure Data Box für DPM und MABS (Vorschau)
 
@@ -149,7 +149,7 @@ Geben Sie als alternative Quelle Folgendes an: *WIM:D:\Sources\Install.wim:4*
           – Azure.Storage       *4.6.1*<br>
      >  - Die Azure AD-Anwendung wird als *AzureOfflineBackup_\<object GUID of the user>* registriert.
 
-13. Wählen Sie den Data Box-Auftrag aus, für den Sie Ihren Data Box-Datenträger entpackt, verbunden und entsperrt haben. Wählen Sie **Weiter** aus.
+13. Wählen Sie den Data Box-Auftrag aus, für den Sie Ihren Data Box-Datenträger entpackt, verbunden und entsperrt haben. Wählen Sie **Weiter** aus.
 
     ![Auswählen der Databox](./media/offline-backup-azure-data-box-dpm-mabs/select-databox.png)
 

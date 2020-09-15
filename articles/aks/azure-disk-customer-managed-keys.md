@@ -3,39 +3,25 @@ title: Verwenden eines kundenseitig verwalteten Schlüssels zum Verschlüsseln v
 description: Bring Your Own Key(BYOK) zum Verschlüsseln von AKS-Datenträgern für Betriebssystem und Daten.
 services: container-service
 ms.topic: article
-ms.date: 07/17/2020
-ms.openlocfilehash: 5725bc9a4d16b93ba36ac800d25e3c30f090c2df
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.date: 09/01/2020
+ms.openlocfilehash: 8687d95878cde7d0ed3308d67f26ffc266abad1e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88796883"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297755"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Bring Your Own Key (BYOK) mit Azure-Datenträgern in Azure Kubernetes Service (AKS)
 
-Azure Storage verschlüsselt alle Daten in einem ruhenden Speicherkonto. Standardmäßig werden Daten mit von Microsoft verwalteten Schlüsseln verschlüsselt. Für zusätzliche Kontrolle über die Verschlüsselungsschlüssel können Sie [kundenseitig verwaltete Schlüssel][customer-managed-keys] bereitstellen, die für die ruhende Verschlüsselung der Datenträger für Betriebssystem und Daten für Ihre AKS-Cluster verwendet werden sollen.
+Azure Storage verschlüsselt alle Daten in einem ruhenden Speicherkonto. Standardmäßig werden Daten mit von Microsoft verwalteten Schlüsseln verschlüsselt. Für zusätzliche Kontrolle über die Verschlüsselungsschlüssel können Sie kundenseitig verwaltete Schlüssel bereitstellen, die für die ruhende Verschlüsselung der Datenträger für Betriebssystem und Daten für Ihre AKS-Cluster verwendet werden sollen. Erfahren Sie mehr über kundenseitig verwaltete Schlüssel unter [Linux][customer-managed-keys-linux] und [Windows][customer-managed-keys-windows].
 
-## <a name="before-you-begin"></a>Voraussetzungen
+## <a name="limitations"></a>Einschränkungen
+* Die Unterstützung der Datenträgerverschlüsselung ist auf AKS-Cluster mit Version 1.17 und höher von Kubernetes beschränkt.
+* Die Verschlüsselung von Datenträgern für das Betriebssystem und für Daten mit kundenseitig verwalteten Schlüsseln kann nur beim Erstellen eines AKS-Clusters aktiviert werden.
 
-* In diesem Artikel wird vorausgesetzt, dass Sie einen *neuen AKS-Cluster* erstellen.
-
+## <a name="prerequisites"></a>Voraussetzungen
 * Sie müssen vorläufiges Löschen und den Schutz vor endgültigem Löschen für *Azure Key Vault* aktivieren, wenn Sie Key Vault zum Verschlüsseln von verwalteten Datenträgern verwenden.
-
-* Sie benötigen Version 2.0.79 oder höher der Azure-Befehlszeilenschnittstelle sowie die Erweiterung „aks-preview 0.4.26“.
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
-
-## <a name="install-latest-aks-cli-preview-extension"></a>Installieren der neuesten AKS-CLI-Vorschauerweiterung
-
-Um kundenseitig verwaltete Schlüssel zu verwenden, benötigen Sie mindestens Version 0.4.26 der CLI-Erweiterung *aks-preview*. Installieren Sie die Azure CLI-Erweiterung *aks-preview* mit dem Befehl [az extension add][az-extension-add], und suchen Sie dann mit dem Befehl [az extension update][az-extension-update] nach verfügbaren Updates:
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
+* Sie benötigen mindestens Version 2.11.1 der Azure-Befehlszeilenschnittstelle.
 
 ## <a name="create-an-azure-key-vault-instance"></a>Erstellen einer Azure Key Vault-Instanz
 
@@ -155,11 +141,6 @@ az aks get-credentials --name myAksCluster --resource-group myResourceGroup --ou
 kubectl apply -f byok-azure-disk.yaml
 ```
 
-## <a name="limitations"></a>Einschränkungen
-
-* Verschlüsselung des Datenträgers für Daten wird mit Version 1.17 und höher von Kubernetes unterstützt
-* Verschlüsselung mit kundenseitig verwalteten Schlüsseln ist derzeit nur für neue AKS-Cluster vorgesehen, ein Upgrade vorhandener Cluster ist nicht möglich.
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 Lesen Sie [Bewährte Methoden für AKS-Clustersicherheit][best-practices-security].
@@ -171,6 +152,7 @@ Lesen Sie [Bewährte Methoden für AKS-Clustersicherheit][best-practices-securit
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [best-practices-security]: ./operator-best-practices-cluster-security.md
 [byok-azure-portal]: ../storage/common/storage-encryption-keys-portal.md
-[customer-managed-keys]: ../virtual-machines/windows/disk-encryption.md#customer-managed-keys
+[customer-managed-keys-windows]: ../virtual-machines/windows/disk-encryption.md#customer-managed-keys
+[customer-managed-keys-linux]: ../virtual-machines/linux/disk-encryption.md#customer-managed-keys
 [key-vault-generate]: ../key-vault/general/manage-with-cli2.md
 [supported-regions]: ../virtual-machines/windows/disk-encryption.md#supported-regions

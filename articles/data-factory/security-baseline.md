@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 771f692ade9c7616eb7d217b4728a8c80d2aeac5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 0711c25187a15c48e1e9b19b7c99b1e528c7b199
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044174"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393546"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Azure-Sicherheitsbaseline für Azure Data Factory
 
@@ -598,15 +598,15 @@ Die Features zur Datenermittlung und -klassifizierung sind noch nicht für ander
 
 **Verantwortlichkeit**: Kunde
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6: Verwenden der rollenbasierten Zugriffssteuerung zum Steuern des Zugriffs auf Ressourcen
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Verwenden von Azure RBAC zum Steuern des Zugriffs auf Ressourcen
 
-**Leitfaden**: Integrieren Sie die rollenbasierte Zugriffssteuerung (RBAC) in Azure Active Directory (AD), um den Zugriff auf die Steuerungsebene (das Azure-Portal) von Azure Data Factory zu steuern.
+**Leitfaden**: Verwenden Sie die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC), um den Zugriff auf die Steuerungsebene (Azure-Portal) von Azure Data Factory zu steuern.
 
 Damit Sie Data Factory-Instanzen erstellen können, muss das Benutzerkonto, mit dem Sie sich bei Azure anmelden, ein Mitglied der Rolle „Mitwirkender“ oder „Besitzer“ oder ein Administrator des Azure-Abonnements sein.
 
-Weitere Informationen zur rollenbasierten Zugriffssteuerung für Ihre Data Factory-Datenquellen wie Azure SQL-Datenbank finden Sie in der Sicherheitsbaseline für den jeweiligen Dienst.
+Weitere Informationen zu Azure RBAC für Ihre Data Factory-Datenquellen wie Azure SQL-Datenbank finden Sie in der Sicherheitsbaseline für den jeweiligen Dienst.
 
-* [Konfigurieren von RBAC in Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+* [Konfigurieren von Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
 * [Roles and permissions for Azure Data Factory](https://docs.microsoft.com/azure/data-factory/concepts-roles-permissions) (Rollen und Berechtigungen für Azure Data Factory)
 
@@ -984,15 +984,15 @@ In den meisten Fällen sind die Microsoft-Basisvorlagen in Kombination mit Azure
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6: Sicheres Speichern von benutzerdefinierten Betriebssystemimages
 
-**Leitfaden**: Wenn Sie benutzerdefinierte Images verwenden, sollten Sie durch die Nutzung der rollenbasierten Zugriffssteuerung (RBAC) sicherstellen, dass nur autorisierte Benutzer auf die Images zugreifen können. Speichern Sie Containerimages in Azure Container Registry, und verwenden Sie RBAC, um sicherzustellen, dass nur autorisierte Benutzer auf die Images zugreifen können.
+**Leitfaden**: Wenn benutzerdefinierte Images verwendet werden, sollten Sie durch die Nutzung der rollenbasierten Zugriffssteuerung von Azure (Azure RBAC) sicherstellen, dass nur autorisierte Benutzer auf die Images zugreifen können. Speichern Sie Containerimages in Azure Container Registry, und verwenden Sie Azure RBAC, um sicherzustellen, dass nur autorisierte Benutzer auf die Images zugreifen können.
 
 Mit der Data Factory-Rolle „Mitwirkender“ können Data Factorys und untergeordnete Ressourcen erstellt und verwaltet werden.
 
-* [Grundlegendes zu RBAC in Azure](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
+* [Grundlegendes zu Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
 
-* [Grundlegendes zu RBAC für Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
+* [Grundlegendes zu Azure RBAC für Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
 
-* [Konfigurieren von RBAC in Azure](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
+* [Konfigurieren von Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
 
 * [Roles and permissions for Azure Data Factory](https://docs.microsoft.com/azure/data-factory/concepts-roles-permissions) (Rollen und Berechtigungen für Azure Data Factory)
 
@@ -1050,7 +1050,9 @@ Sie können Anmeldeinformationen oder Geheimniswerte auch in Azure Key Vault spe
 
 * [Erstellen einer Key Vault-Instanz](https://docs.microsoft.com/azure/key-vault/quick-create-portal)
 
-* [Bereitstellen der Key Vault-Authentifizierung mit einer verwalteten Identität](https://docs.microsoft.com/azure/key-vault/managed-identity)
+* [Authentifizieren bei Key Vault](https://docs.microsoft.com/azure/key-vault/general/authentication)
+
+* [Zuweisen einer Key Vault-Zugriffsrichtlinie](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
 
 * [Verwenden von Azure Key Vault-Geheimnissen in Pipelineaktivitäten](https://docs.microsoft.com/azure/data-factory/how-to-use-azure-key-vault-secrets-pipeline-activities)
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 284f8c8432d732fdfa7e16b43a47578437bcf0ba
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a5e69fe855f0c1e99dc3672425d9aeea13d4e827
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202252"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297789"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Antwortstruktur und Antworttypen der Bing-Websuche-API  
 
@@ -445,7 +445,7 @@ Es ist besonders wichtig, die Client-ID beizubehalten und mit nachfolgenden Anfo
 
 Wenn Sie jedoch die Bing-Websuche-API von JavaScript aus aufrufen, kann es sein, dass die in Ihrem Browser integrierten Sicherheitsfunktionen (CORS) unterbinden, dass Sie auf die Werte dieser Header zuzugreifen können.
 
-Um Zugriff auf die Header zu erhalten, können Sie die Bing-Websuche-API über einen CORS-Proxy anfordern. In der Antwort eines solchen Proxys befindet sich ein `Access-Control-Expose-Headers`-Header. Dieser enthält eine Whitelist mit Antwortheadern, die JavaScript zur Verfügung gestellt werden.
+Um Zugriff auf die Header zu erhalten, können Sie die Bing-Websuche-API über einen CORS-Proxy anfordern. In der Antwort eines solchen Proxys befindet sich ein `Access-Control-Expose-Headers`-Header, mit dem die Antwortheader gefiltert und für JavaScript verfügbar gemacht werden.
 
 Die Installation eines CORS-Proxys, mit dem die [Tutorial-App](tutorial-bing-web-search-single-page-app.md) auf die optionalen Clientheader zugreifen kann, ist schnell und unkompliziert. [Installieren Sie Node.js](https://nodejs.org/en/download/), falls Sie dies noch nicht getan haben. Geben Sie dann an einer Eingabeaufforderung den folgenden Befehl ein.
 

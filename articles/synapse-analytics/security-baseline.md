@@ -6,13 +6,13 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 7f05e4fb0443107370f9182706bd35b45771e0f2
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: bbec83c655d568b43b319f30a96da0a8fc1effe8
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210894"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230652"
 ---
 # <a name="azure-security-baseline-for-synapse-analytics"></a>Azure-Sicherheitsbaseline für Synapse Analytics
 
@@ -138,7 +138,7 @@ Bei Verwendung von Dienstendpunkten für Ihren Azure Synapse SQL-Pool ist eine a
 
 **Leitfaden**: Definieren und implementieren Sie Netzwerksicherheitskonfigurationen für Ressourcen im Zusammenhang mit Ihrem SQL-Pool mit Azure Policy. Sie können den Namespace „Microsoft.Sql“ verwenden, um benutzerdefinierte Richtliniendefinitionen zu definieren, oder die integrierten Richtliniendefinitionen, die für den Netzwerkschutz in Bezug auf Azure SQL-Datenbank/-Server ausgelegt sind. Ein Beispiel für eine geeignete integrierte Netzwerksicherheitsrichtlinie für Azure SQL-Datenbank-Server ist: „SQL Server sollte einen VNET-Dienstendpunkt verwenden“.
 
-Verwenden Sie Azure Blueprints, um umfangreiche Azure-Bereitstellungen zu vereinfachen, indem wichtige Umgebungsartefakte, z. B. Azure Resource Manager-Vorlagen, rollenbasierte Zugriffssteuerung (RBAC) und Richtlinien, gemeinsam in einer Blaupausendefinition verpackt werden. Sie können die Blaupause leicht auf neue Abonnements und Umgebungen anwenden und die Steuerung und Verwaltung durch die Versionsverwaltung optimieren.
+Verwenden Sie Azure Blueprints, um umfangreiche Azure-Bereitstellungen zu vereinfachen, indem wichtige Umgebungsartefakte, z. B. Azure Resource Manager-Vorlagen, rollenbasierte Zugriffssteuerung von Azure (Azure RBAC) und Richtlinien, gemeinsam in einer Blaupausendefinition gepackt werden. Sie können die Blaupause leicht auf neue Abonnements und Umgebungen anwenden und die Steuerung und Verwaltung durch die Versionsverwaltung optimieren.
 
 * [Konfigurieren und Verwalten von Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -582,7 +582,7 @@ Außerdem können Sie eine Richtlinie für die dynamische Datenmaskierung (DDM) 
 
 **Verantwortlichkeit**: Kunde
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6: Verwenden der rollenbasierten Zugriffssteuerung zum Steuern des Zugriffs auf Ressourcen
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Verwenden von Azure RBAC zum Steuern des Zugriffs auf Ressourcen
 
 **Leitfaden**: Verwenden Sie die rollenbasierte Zugriffssteuerung von Azure (Azure RBAC), um den Zugriff auf Azure SQL-Datenbanken in Ihrem Synapse SQL-Pool zu verwalten.
 

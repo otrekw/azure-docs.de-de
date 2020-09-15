@@ -5,17 +5,18 @@ services: data-factory
 author: ceespino
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 8/03/2020
+ms.date: 09/02/2020
 ms.author: ceespino
 ms.reviewer: daperlov
-ms.openlocfilehash: 9a96c385c25eea1c5e217665f162de402a73e558
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: e0c5ab4f6d36a24ff9f59ec373291e00669e1e92
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87567818"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320118"
 ---
 # <a name="troubleshoot-azure-data-factory-ux-issues"></a>Problembehandlung bei der Azure Data Factory-Benutzeroberfläche
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel werden die gängigen Problembehandlungsmethoden für die Azure Data Factory (ADF)-Benutzeroberfläche beschrieben.
@@ -34,21 +35,28 @@ In der ADF-Benutzeroberfläche werden Browsercookies verwendet, um die Benutzers
 #### <a name="allow-all-cookies"></a>Alle Cookies zulassen
 
 1. Navigieren Sie in Ihrem Browser zu **chrome://settings/cookies**.
-1. Wählen Sie die Option für **Alle Cookies zulassen** (![Chrome-Allow-All-Cookies](media/data-factory-ux-troubleshoot-guide/chrome-allow-all-cookies.png)) aus.
+1. Wählen Sie die Option **Alle Cookies zulassen** aus. 
+
+    ![Alle Cookies in Chrome zulassen](media/data-factory-ux-troubleshoot-guide/chrome-allow-all-cookies.png)
 1. Aktualisieren Sie die ADF-Benutzeroberfläche, und versuchen Sie es erneut.
 
 #### <a name="only-allow-adf-ux-to-use-cookies"></a>Die Verwendung von Cookies nur für die ADF-Benutzeroberfläche zulassen
 Wenn Sie nicht alle Cookies zulassen möchten, können Sie sie optional nur für die ADF-Benutzeroberfläche zulassen:
 1. Navigieren Sie zu **chrome://settings/cookies**.
-1. Klicken Sie auf **Hinzufügen** und unter **Sites that can always use cookies** (Websites, die immer Cookies verwenden können) auf die Option ![Add ADF UX to allowed sites](media/data-factory-ux-troubleshoot-guide/chrome-only-adf-cookies-1.png) (ADF-Benutzeroberfläche zugelassenen Websites hinzufügen).
-1. Fügen Sie die Website **adf.azure.com** hinzu, aktivieren Sie die Option **Alle Cookies**, und speichern Sie. ![Alle Cookies von der Website der ADF-Benutzeroberfläche zulassen](media/data-factory-ux-troubleshoot-guide/chrome-only-adf-cookies-2.png)
-1. Aktualisieren Sie die ADF-Benutzeroberfläche, und versuchen Sie es erneut.
+1. Wählen Sie unter der Option **Sites that can always use cookies** (Websites, die immer Cookies verwenden können) **Hinzufügen** aus. 
 
+    ![Hinzufügen der ADF-Benutzeroberfläche zu zugelassenen Websites in Chrome](media/data-factory-ux-troubleshoot-guide/chrome-only-adf-cookies-1.png)
+1. Fügen Sie die Website **adf.azure.com** hinzu, aktivieren Sie die Option **Alle Cookies**, und speichern Sie. 
+
+    ![Alle Cookies von der Website der ADF-Benutzeroberfläche zulassen](media/data-factory-ux-troubleshoot-guide/chrome-only-adf-cookies-2.png)
+1. Aktualisieren Sie die ADF-Benutzeroberfläche, und versuchen Sie es erneut.
 
 ### <a name="microsoft-edge"></a>Microsoft Edge
 
 1. Navigieren Sie in Ihrem Browser zu **edge://settings/content/cookies**.
-1. Vergewissern Sie sich, dass **Allow sites to save and read cookie data** (Für Websites das Speichern und Lesen von Cookiedaten zulassen) aktiviert und die Option **Cookies von Drittanbietern blockieren** deaktiviert ist. ![Alle Cookies in Edge zulassen](media/data-factory-ux-troubleshoot-guide/edge-allow-all-cookies.png)
+1. Stellen Sie sicher, dass **Allow sites to save and read cookie data** (Für Websites das Speichern und Lesen von Cookiedaten zulassen) aktiviert und die Option **Cookies von Drittanbietern blockieren** deaktiviert ist. 
+
+    ![Alle Cookies in Edge zulassen](media/data-factory-ux-troubleshoot-guide/edge-allow-all-cookies.png)
 1. Aktualisieren Sie die ADF-Benutzeroberfläche, und versuchen Sie es erneut.
 
 #### <a name="only-allow-adf-ux-to-use-cookies"></a>Die Verwendung von Cookies nur für die ADF-Benutzeroberfläche zulassen
@@ -56,8 +64,42 @@ Wenn Sie nicht alle Cookies zulassen möchten, können Sie sie optional nur für
 Wenn Sie nicht alle Cookies zulassen möchten, können Sie sie optional nur für die ADF-Benutzeroberfläche zulassen:
 
 1. Navigieren Sie zu **edge://settings/content/cookies**.
-1. Klicken Sie im Abschnitt **Zulassen** auf **Hinzufügen**, und fügen Sie die Website **adf.azure.com** hinzu. ![Hinzufügen der ADF-Benutzeroberfläche zu zugelassenen Websites](media/data-factory-ux-troubleshoot-guide/edge-allow-adf-cookies.png)
+1. Wählen Sie im Abschnitt **Zulassen** die Option **Hinzufügen** aus, und fügen Sie die Website **adf.azure.com** hinzu. 
+
+    ![Hinzufügen der ADF-Benutzeroberfläche zu zugelassenen Websites in Edge](media/data-factory-ux-troubleshoot-guide/edge-allow-adf-cookies.png)
 1. Aktualisieren Sie die ADF-Benutzeroberfläche, und versuchen Sie es erneut.
+
+## <a name="connection-failed-on-adf-ux"></a>Fehler bei der Verbindung mit der ADF-Benutzeroberfläche
+
+In manchen Fällen wird auf der ADF-Benutzeroberfläche „Fehler bei Verbindung“ angezeigt (siehe Screenshot unten), nachdem Sie auf **Verbindung testen**, **Vorschau** usw. geklickt haben.
+
+![Fehler bei der Verbindung](media/data-factory-ux-troubleshoot-guide/connection-failed.png)
+
+In diesem Fall können Sie den gleichen Vorgang mit dem InPrivate-Browsermodus in Ihrem Browser ausprobieren.
+
+Wenn es dann weiterhin nicht funktioniert, drücken Sie die Taste F12, um **Entwicklertools** zu öffnen. Wechseln Sie zur Registerkarte **Netzwerk**, aktivieren Sie **Cache deaktivieren**, wiederholen Sie den Vorgang, bei dem der Fehler aufgetreten ist, und suchen Sie nach der fehlerhaften Anforderung (rot).
+
+![Fehlerhafte Anforderung](media/data-factory-ux-troubleshoot-guide/failed-request.png)
+
+Suchen Sie anschließend den **Hostnamen** (in diesem Fall **dpnortheurope.svc.datafactory.azure.com**) in der **Anforderungs-URL** der fehlerhaften Anforderung.
+
+Geben Sie den **Hostnamen** direkt in der Adressleiste Ihres Browsers ein. Wenn im Browser 404 angezeigt wird, bedeutet dies in der Regel, dass Ihre Clientseite in Ordnung ist und das Problem auf der ADF-Dienstseite vorliegt. Übermitteln Sie ein Supportticket mit der **Aktivitäts-ID** aus der Fehlermeldung der ADF-Benutzeroberfläche.
+
+![Ressource nicht gefunden](media/data-factory-ux-troubleshoot-guide/status-code-404.png)
+
+Wenn dies nicht der Fall ist oder unten im Browser ein ähnlicher Fehler angezeigt wird, bedeutet dies in der Regel, dass ein clientseitiges Problem vorliegt. Befolgen Sie die weiteren Schritte zur Problembehandlung.
+
+![Clientseitiger Fehler](media/data-factory-ux-troubleshoot-guide/client-side-error.png)
+
+Öffnen Sie die **Eingabeaufforderung**, und geben Sie **nslookup dpnortheurope.svc.datafactory.azure.com** ein. Das Ergebnis sieht normalerweise in etwa wie folgt aus:
+
+![Befehlsantwort 1](media/data-factory-ux-troubleshoot-guide/command-response-1.png)
+
+Wenn eine normale DNS-Antwort angezeigt wird, wenden Sie sich an den lokalen IT-Support, um die Firewalleinstellungen in Bezug darauf zu überprüfen, ob die HTTPS-Verbindung mit diesem Hostnamen blockiert ist. Wenn das Problem nicht behoben werden kann, übermitteln Sie ein Supportticket mit der **Aktivitäts-ID** aus der Fehlermeldung der ADF-Benutzeroberfläche.
+
+Wenn etwas anderes angezeigt wird, bedeutet dies in der Regel, dass beim DNS-Server ein Fehler mit der Auflösung des DNS-Namens vorliegt. Eine Problemumgehung besteht beispielsweise im Ändern des Internetdienstanbieters (Internet Service Provider, ISP) oder des DNS (z. B. in den Google-DNS 8.8.8.8). Wenn das Problem weiterhin besteht, prüfen Sie **nslookup datafactory.azure.com** und **nslookup azure.com**, um zu sehen, auf welcher Ebene die DNS-Auflösung fehlgeschlagen ist, und übermitteln Sie alle Informationen an Ihren lokalen IT-Support oder Ihren ISP zur Problembehandlung. Wenn der Support der Meinung ist, dass das Problem weiterhin aufseiten von Microsoft vorliegt, übermitteln Sie ein Supportticket mit der **Aktivitäts-ID** aus der Fehlermeldung ADF-Benutzeroberfläche.
+
+![Befehlsantwort 2](media/data-factory-ux-troubleshoot-guide/command-response-2.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

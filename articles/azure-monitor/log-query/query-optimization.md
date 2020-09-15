@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: ec5717135ec7bbf2236b5f5672dbf0b5d1413b44
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: efbc0ba4ef39be6a2a8598ad006cb3aea090974c
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88565722"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177742"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Optimieren von Protokollabfragen in Azure Monitor
 Azure Monitor-Protokolle verwendet [Azure Data Explorer (ADX)](/azure/data-explorer/), um Protokolldaten zu speichern und Abfragen zum Analysieren dieser Daten auszuführen. Es werden die ADX-Cluster für Sie erstellt, verwaltet und gepflegt sowie für Ihre Protokollanalyse-Workload optimiert. Wenn Sie eine Abfrage ausführen, wird diese optimiert und an den entsprechenden ADX-Cluster weitergeleitet, der die Arbeitsbereichsdaten speichert. Sowohl Azure Monitor-Protokolle als auch Azure Data Explorer nutzen eine Vielzahl automatischer Mechanismen zur Abfrageoptimierung. Automatische Optimierungen bieten zwar eine deutliche Steigerung, aber in einigen Fällen können Sie damit die Abfrageleistung erheblich verbessern. In diesem Artikel werden Leistungsaspekte sowie verschiedene Verfahren zur Behebung von Leistungsproblemen erläutert.
@@ -52,6 +52,8 @@ Die folgenden Abfrageleistungsindikatoren sind für jede ausgeführte Abfrage ve
 
 ## <a name="total-cpu"></a>CPU gesamt
 Die tatsächliche CPU-Computezeit, die für die Verarbeitung dieser Abfrage auf allen Abfrageverarbeitungsknoten aufgewendet wurde. Da die meisten Abfragen auf einer großen Anzahl von Knoten ausgeführt werden, ist dieser Wert in der Regel viel höher als die tatsächliche Ausführungsdauer der Abfrage. 
+
+Abfragen, die mehr als 100 CPU-Sekunden nutzen, werden als Abfragen mit übermäßigem Ressourcenverbrauch betrachtet. Abfragen, die mehr als 1.000 CPU-Sekunden nutzen, werden als missbräuchliche Abfragen betrachtet und möglicherweise gedrosselt.
 
 Die Abfrageverarbeitungszeit beinhaltet Folgendes:
 - Datenabruf: Das Abrufen alter Daten beansprucht mehr Zeit als das Abrufen neuer Daten.
@@ -177,6 +179,8 @@ SecurityEvent
 
 Ein kritischer Faktor bei der Verarbeitung der Abfrage ist die Menge an Daten, die für die Abfrageverarbeitung überprüft und verwendet werden. Azure Data Explorer verwendet aggressive Optimierungen, mit denen das Datenvolumen im Vergleich zu anderen Datenplattformen drastisch reduziert wird. Dennoch gibt es kritische Faktoren in der Abfrage, die sich auf das verwendete Datenvolumen auswirken können.
 
+Abfragen, die mehr als 2.000 KB Daten verarbeiten, werden als Abfragen mit übermäßigem Ressourcenverbrauch betrachtet. Abfragen, die mehr als 20.000 KB Daten verarbeiten, werden als missbräuchliche Abfragen betrachtet und möglicherweise gedrosselt.
+
 In Azure Monitor-Protokolle wird die Spalte **TimeGenerated** als Methode zum Indizieren der Daten verwendet. Wenn Sie die **TimeGenerated**-Werte auf einen möglichst kleinen Bereich beschränken, wird die Abfrageleistung wesentlich verbessert, da die Menge der zu verarbeitenden Daten erheblich eingeschränkt wird.
 
 ### <a name="avoid-unnecessary-use-of-search-and-union-operators"></a>Vermeiden der unnötigen Verwendung von search- und union-Operatoren
@@ -300,6 +304,8 @@ SecurityEvent
 
 Alle Protokolle in Azure Monitor-Protokolle werden gemäß der Spalte **TimeGenerated** partitioniert. Die Anzahl der Partitionen, auf die zugegriffen wird, stehen in direktem Bezug zur Zeitspanne. Eine Verringerung des Zeitbereichs ist die effizienteste Methode, um eine schnelle Abfrageausführung zu gewährleisten.
 
+Abfragen mit einer Zeitspanne von mehr als 15 Tagen werden als Abfragen mit übermäßigem Ressourcenverbrauch betrachtet. Abfragen mit einer Zeitspanne von mehr als 90 Tagen werden als missbräuchliche Abfragen betrachtet und möglicherweise gedrosselt.
+
 Der Zeitbereich kann mithilfe der Zeitbereichsauswahl im Log Analytics-Bildschirm festgelegt werden, wie es unter [Protokollabfragebereich und Zeitbereich in Azure Monitor Log Analytics](scope.md#time-range) beschrieben ist. Dies ist die empfohlene Methode, da der ausgewählte Zeitbereich mithilfe der Abfragemetadaten an das Back-End übermittelt wird. 
 
 Eine alternative Methode ist das explizite Einschließen einer [where](/azure/kusto/query/whereoperator)-Bedingung für **TimeGenerated** in die Abfrage. Sie sollten diese Methode verwenden, da dann auch bei Verwendung der Abfrage über eine andere Schnittstelle eine feste Zeitspanne gewährleistet ist.
@@ -389,6 +395,9 @@ Es gibt mehrere Fälle, in denen das System keine genaue Messung des Zeitbereich
 ## <a name="age-of-processed-data"></a>Alter der verarbeiteten Daten
 Azure Data Explorer verwendet mehrere Speicherebenen: In-Memory, lokale SSD-Datenträger und wesentlich langsamere Azure-Blobs. Je neuer die Daten sind, desto höher ist die Wahrscheinlichkeit, dass sie auf einer leistungsfähigeren Ebene mit geringerer Latenz gespeichert sind, wodurch Abfragedauer und CPU-Auslastung reduziert werden. Abgesehen von den Daten selbst verfügt das System auch über einen Cache für Metadaten. Je älter die Daten sind, desto geringer ist die Wahrscheinlichkeit, dass deren Metadaten im Cache gespeichert sind.
 
+Abfragen, die Daten mit einem Alter von mehr als 14 Tagen verarbeiten, werden als Abfragen mit übermäßigem Ressourcenverbrauch betrachtet.
+
+
 Zwar müssen für einige Abfragen alte Daten verwendet werden, doch gibt es auch Fälle, in denen alte Daten versehentlich verwendet werden. Dies geschieht, wenn Abfragen ohne Angabe eines Zeitbereichs in den Metadaten ausgeführt werden und nicht alle Tabellenverweise Filter für die Spalte **TimeGenerated** enthalten. In diesen Fällen überprüft das System alle Daten, die in dieser Tabelle gespeichert sind. Wenn eine lange Datenaufbewahrungsdauer festgelegt ist, kann diese lange Zeitbereiche und damit Daten umfassen, die den gesamten Aufbewahrungszeitraum abdecken.
 
 Hier einige Beispiele für solche Fälle:
@@ -408,6 +417,8 @@ Es gibt mehrere Situationen, in denen eine einzelne Abfrage über verschiedene R
 Für eine regionsübergreifende Abfrageausführung muss das System im Back-End große Zwischendatenblöcke serialisieren und übertragen, die in der Regel wesentlich größer sind als die letztendlichen Ergebnisse der Abfrage. Außerdem wird die Fähigkeit des Systems beschränkt, Optimierungen und Heuristik durchzuführen sowie Caches zu nutzen.
 Wenn es keinen wirklichen Grund für das Durchsuchen all dieser Regionen gibt, sollten Sie den Bereich so anpassen, dass er weniger Regionen umfasst. Wenn der Ressourcenbereich minimiert ist, aber dennoch viele Bereiche verwendet werden, kann eine Fehlkonfiguration die Ursache sein. Beispielsweise werden Überwachungsprotokolle und Diagnoseeinstellungen an verschiedene Arbeitsbereiche in unterschiedlichen Regionen gesendet oder es sind mehrere Konfigurationen für Diagnoseeinstellungen vorhanden. 
 
+Abfragen, die sich über mehr als 3 Regionen erstrecken, werden als Abfragen mit übermäßigem Ressourcenverbrauch betrachtet. Abfragen, die sich über mehr als 6 Regionen erstrecken, werden als missbräuchliche Abfragen betrachtet und möglicherweise gedrosselt.
+
 > [!IMPORTANT]
 > Wenn eine Abfrage über mehrere Regionen ausgeführt wird, sind die CPU- und Datenmessungen nicht exakt, und die Messungen werden nur für eine der Regionen dargestellt.
 
@@ -420,6 +431,8 @@ Die Verwendung mehrerer Arbeitsbereiche kann folgende Ursachen haben:
 - Eine Abfrage mit Ressourcenbereich ruft Daten ab, und die Daten sind in mehreren Arbeitsbereichen gespeichert.
  
 Für eine regions- und clusterübergreifende Ausführung von Abfragen muss das System im Back-End große Zwischendatenblöcke serialisieren und übertragen, die in der Regel wesentlich größer sind als die letztendlichen Ergebnisse der Abfrage. Außerdem wird die Fähigkeit des Systems beschränkt, Optimierungen und Heuristik durchzuführen sowie Caches zu nutzen.
+
+Abfragen, die sich über mehr als 5 Arbeitsbereiche erstrecken, werden als Abfragen mit übermäßigem Ressourcenverbrauch betrachtet. Abfragen können sich nicht über mehr als 100 Arbeitsbereiche erstrecken.
 
 > [!IMPORTANT]
 > In einigen Szenarien mit mehreren Arbeitsbereichen sind die CPU- und Datenmessungen nicht exakt und die Messungen werden nur für wenige der Arbeitsbereiche dargestellt.

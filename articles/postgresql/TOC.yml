@@ -4,6 +4,10 @@
   items:
     - name: Worum handelt es sich bei Azure DB for PostgreSQL?
       href: overview.md
+    - name: Dienstupdates
+      items:
+        - name: SSL-Stammzertifikat läuft ab.
+          href: concepts-certificate-rotation.md
 - name: Schnellstarts
   expanded: true
   items:

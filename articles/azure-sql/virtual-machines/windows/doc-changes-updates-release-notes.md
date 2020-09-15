@@ -10,18 +10,25 @@ ms.service: virtual-machines-sql
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 01/06/2020
-ms.openlocfilehash: df1e1e90b35c29678151d4f9159195f829022a62
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.date: 08/20/2020
+ms.openlocfilehash: 5f0ba27a0964f08b32e1af19d6f578b3f41ee300
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236623"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006413"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Dokumentationsänderungen für SQL Server auf virtuellen Azure-Computern
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 In Azure können Sie einen virtuellen Computer (VM) mit einem integrierten SQL Server-Image bereitstellen. In diesem Artikel werden die Dokumentationsänderungen zusammengefasst, die mit neuen Funktionen und Verbesserungen in den neuesten Releases von [SQL Server in Azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/sql-server/) in Zusammenhang stehen. 
+
+## <a name="august-2020"></a>August 2020
+
+| Änderungen | Details |
+| --- | --- |
+| **Konfigurieren von Verfügbarkeitsgruppen im Portal** | Es ist jetzt möglich, [Verfügbarkeitsgruppen über das Azure-Portal zu konfigurieren](availability-group-azure-portal-configure.md). Dieses Feature befindet sich in der Vorschauphase und wird derzeit bereitgestellt. Wenn Ihre gewünschte Region nicht verfügbar ist, überprüfen Sie sie in Kürze erneut. | 
+
 
 ## <a name="july-2020"></a>Juli 2020
 

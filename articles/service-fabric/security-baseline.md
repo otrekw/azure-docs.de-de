@@ -6,13 +6,13 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: a3641994098834b47412598b25b3effb2be7d276
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 9054fa72ee4204d7a09e6ce8de4fe6d4ed4dac81
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836716"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89227711"
 ---
 # <a name="azure-security-baseline-for-service-fabric"></a>Azure-Sicherheitsbaseline für Service Fabric
 
@@ -546,7 +546,7 @@ Für die zugrundeliegende Plattform, die von Microsoft verwaltet wird, behandelt
 
 **Verantwortlichkeit**: Shared
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6: Verwenden der rollenbasierten Zugriffssteuerung zum Steuern des Zugriffs auf Ressourcen
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Verwenden von Azure RBAC zum Steuern des Zugriffs auf Ressourcen
 
 **Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für andere Ressourcen als Computeressourcen bestimmt, die für die Speicherung von Daten ausgelegt sind.
 
@@ -868,13 +868,13 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in Ihren Abonnements abzufrage
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6: Sicheres Speichern von benutzerdefinierten Betriebssystemimages
 
-**Leitfaden**: Wenn Sie benutzerdefinierte Images verwenden, nutzen Sie RBAC, um sicherzustellen, dass nur autorisierte Benutzer auf die Images zugreifen können. Speichern Sie Containerimages in Azure Container Registry, und verwenden Sie RBAC, um sicherzustellen, dass nur autorisierte Benutzer auf die Images zugreifen können.
+**Leitfaden**: Wenn benutzerdefinierte Images verwendet werden, sollten Sie durch die Nutzung der rollenbasierten Zugriffssteuerung von Azure (Azure RBAC) sicherstellen, dass nur autorisierte Benutzer auf die Images zugreifen können. Speichern Sie Containerimages in Azure Container Registry, und verwenden Sie Azure RBAC, um sicherzustellen, dass nur autorisierte Benutzer auf die Images zugreifen können.
 
-* [Grundlegendes zu RBAC in Azure](../role-based-access-control/rbac-and-directory-admin-roles.md)
+* [Grundlegendes zu Azure RBAC](../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-* [Grundlegendes zu RBAC für Container Registry](../container-registry/container-registry-roles.md)
+* [Grundlegendes zu Azure RBAC für Container Registry](../container-registry/container-registry-roles.md)
 
-* [Konfigurieren von RBAC in Azure](../role-based-access-control/quickstart-assign-role-user-portal.md)
+* [Konfigurieren von Azure RBAC](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 

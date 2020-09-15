@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie ein Service Fabric-Cluster durc
 ms.topic: article
 ms.date: 08/06/2020
 ms.author: pepogors
-ms.openlocfilehash: b34f3f77dab6c4dcd8b7653f552c32a669d257c9
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: a18a40cc9e467b089ea9d6be3d0ca81a21d2c474
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854625"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228714"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type-by-adding-a-node-type"></a>Hochskalieren eines primären Knotentyps eines Service Fabric-Clusters durch Hinzufügen eines Knotentyps
 Dieser Artikel beschreibt, wie Sie den primären Knotentyp eines Service Fabric-Clusters durch Hinzugefügt eine zusätzlicher Knotentyps zum Cluster hochskalieren können. Ein Service Fabric-Cluster enthält eine per Netzwerk verbundene Gruppe von virtuellen oder physischen Computern, auf denen Ihre Microservices bereitgestellt und verwaltet werden. Ein physischer oder virtueller Computer, der Teil eines Clusters ist, wird als Knoten bezeichnet. VM-Skalierungsgruppen sind eine Azure-Computeressource, mit der Sie eine Sammlung von virtuellen Computern als Gruppe bereitstellen und verwalten können. Jeder Knotentyp, der in einem Azure-Cluster definiert ist, wird [als separate Skalierungsgruppe eingerichtet](service-fabric-cluster-nodetypes.md). Jeder Knotentyp kann dann separat verwaltet werden.
@@ -31,7 +31,7 @@ Im Folgenden wird der Vorgang zum Aktualisieren der VM-Größe und des Betriebss
 ### <a name="deploy-the-initial-service-fabric-cluster"></a>Bereitstellen des anfänglichen Service Fabric-Clusters 
 Wenn Sie das Beispiel parallel absolvieren möchten, stellen Sie den anfänglichen Cluster mit einem einzelnen primären Knotentyp und einer einzelnen Skalierungsgruppe [Service Fabric – anfänglicher Cluster](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-1.json) bereit. Sie können diesen Schritt überspringen, wenn Sie bereits einen vorhandenen Service Fabric-Cluster bereitgestellt haben. 
 
-1. Melden Sie sich bei Ihrem Azure-Konto an. 
+1. Melden Sie sich beim Azure-Konto an. 
 ```powershell
 # sign in to your Azure account and select your subscription
 Login-AzAccount -SubscriptionId "<your subscription ID>"
@@ -124,6 +124,134 @@ Betriebssystem-SKU
     "version": "[parameters('vmImageVersion1')]"
 }
 ```
+
+Der folgende Codeausschnitt ist ein Beispiel für eine neue VM-Skalierungsgruppenressource, die zum Erstellen eines neuen Knotentyps für einen Service Fabric-Cluster verwendet wird. Nehmen Sie unbedingt alle zusätzlichen Erweiterungen mit auf, die für Ihre Workload erforderlich sind. 
+
+```json
+    {
+      "apiVersion": "[variables('vmssApiVersion')]",
+      "type": "Microsoft.Compute/virtualMachineScaleSets",
+      "name": "[variables('vmNodeType1Name')]",
+      "location": "[variables('computeLocation')]",
+      "dependsOn": [
+        "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]",
+        "[concat('Microsoft.Network/loadBalancers/', concat('LB','-', parameters('clusterName'),'-',variables('vmNodeType1Name')))]",
+        "[concat('Microsoft.Storage/storageAccounts/', variables('supportLogStorageAccountName'))]",
+        "[concat('Microsoft.Storage/storageAccounts/', variables('applicationDiagnosticsStorageAccountName'))]"
+      ],
+      "properties": {
+        "overprovision": "[variables('overProvision')]",
+        "upgradePolicy": {
+          "mode": "Automatic"
+        },
+        "virtualMachineProfile": {
+          "extensionProfile": {
+            "extensions": [
+              {
+                "name": "[concat('ServiceFabricNodeVmExt_',variables('vmNodeType1Name'))]",
+                "properties": {
+                  "type": "ServiceFabricNode",
+                  "autoUpgradeMinorVersion": true,
+                  "protectedSettings": {
+                    "StorageAccountKey1": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key1]",
+                    "StorageAccountKey2": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key2]"
+                  },
+                  "publisher": "Microsoft.Azure.ServiceFabric",
+                  "settings": {
+                    "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
+                    "nodeTypeRef": "[variables('vmNodeType1Name')]",
+                    "dataPath": "D:\\SvcFab",
+                    "durabilityLevel": "Bronze",
+                    "enableParallelJobs": true,
+                    "nicPrefixOverride": "[variables('subnet1Prefix')]",
+                    "certificate": {
+                      "thumbprint": "[parameters('certificateThumbprint')]",
+                      "x509StoreName": "[parameters('certificateStoreValue')]"
+                    }
+                  },
+                  "typeHandlerVersion": "1.0"
+                }
+              }
+            ]
+          },
+          "networkProfile": {
+            "networkInterfaceConfigurations": [
+              {
+                "name": "[concat(variables('nicName'), '-1')]",
+                "properties": {
+                  "ipConfigurations": [
+                    {
+                      "name": "[concat(variables('nicName'),'-',1)]",
+                      "properties": {
+                        "loadBalancerBackendAddressPools": [
+                          {
+                            "id": "[variables('lbPoolID1')]"
+                          }
+                        ],
+                        "loadBalancerInboundNatPools": [
+                          {
+                            "id": "[variables('lbNatPoolID1')]"
+                          }
+                        ],
+                        "subnet": {
+                          "id": "[variables('subnet1Ref')]"
+                        }
+                      }
+                    }
+                  ],
+                  "primary": true
+                }
+              }
+            ]
+          },
+          "osProfile": {
+            "adminPassword": "[parameters('adminPassword')]",
+            "adminUsername": "[parameters('adminUsername')]",
+            "computernamePrefix": "[variables('vmNodeType1Name')]",
+            "secrets": [
+              {
+                "sourceVault": {
+                  "id": "[parameters('sourceVaultValue')]"
+                },
+                "vaultCertificates": [
+                  {
+                    "certificateStore": "[parameters('certificateStoreValue')]",
+                    "certificateUrl": "[parameters('certificateUrlValue')]"
+                  }
+                ]
+              }
+            ]
+          },
+          "storageProfile": {
+            "imageReference": {
+              "publisher": "[parameters('vmImagePublisher1')]",
+              "offer": "[parameters('vmImageOffer1')]",
+              "sku": "[parameters('vmImageSku1')]",
+              "version": "[parameters('vmImageVersion1')]"
+            },
+            "osDisk": {
+              "caching": "ReadOnly",
+              "createOption": "FromImage",
+              "managedDisk": {
+                "storageAccountType": "[parameters('storageAccountType')]"
+              }
+            }
+          }
+        }
+      },
+      "sku": {
+        "name": "[parameters('vmNodeType1Size')]",
+        "capacity": "[parameters('nt1InstanceCount')]",
+        "tier": "Standard"
+      },
+      "tags": {
+        "resourceType": "Service Fabric",
+        "clusterName": "[parameters('clusterName')]"
+      }
+    },
+
+```
+
 5. Fügen Sie dem Cluster einen neuen Knotentyp hinzu, der auf die oben erstellte VM-Skalierungsgruppe verweist. Die **isPrimary**-Eigenschaft für diesen Knotentyp sollte auf „true“ festgelegt werden. 
 ```json
 "name": "[variables('vmNodeType1Name')]",
@@ -339,7 +467,7 @@ Nur für Cluster mit der Dauerhaftigkeit „Silber“ und höher aktualisieren S
 ```
 10. Entfernen Sie alle anderen Ressourcen im Zusammenhang mit dem ursprünglichen Knotentyp aus der ARM-Vorlage. Eine Vorlage, aus der alle diese ursprünglichen Ressourcen entfernt sind, finden Sie unter [Service Fabric – Neuer Knotentypcluster](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-4.json).
 
-11. Stellen Sie die geänderte Azure Resource Manager-Vorlage bereit. ** Dieser Schritt dauert eine Weile, in der Regel bis zu zwei Stunden. Durch dieses Upgrade ändern sich die Einstellungen für InfrastructureService. Daher ist ein Neustart des Knotens erforderlich. In diesem Fall wird „forceRestart“ ignoriert. Der Parameter „upgradeReplicaSetCheckTimeout“ gibt die maximale Zeit an, die Service Fabric wartet, bis sich eine Partition in einem sicheren Zustand befindet, sofern dies noch nicht der Fall ist. Sobald die Sicherheitsprüfungen für alle Partitionen eines Knotens absolviert sind, fährt Service Fabric mit dem Upgrade auf diesem Knoten fort. Der Wert für den Parameter „upgradeTimeout“ kann auf 6 Stunden verkürzt werden, aber für maximale Sicherheit sollten 12 Stunden gewählt werden.
+11. Stellen Sie die geänderte Azure Resource Manager-Vorlage bereit. ** Dieser Schritt dauert eine Weile, in der Regel bis zu zwei Stunden. Durch dieses Upgrade ändern sich die Einstellungen für „InfrastructureService“. Daher ist ein Neustart des Knotens erforderlich. In diesem Fall wird „forceRestart“ ignoriert. Der Parameter „upgradeReplicaSetCheckTimeout“ gibt die maximale Zeit an, die Service Fabric wartet, bis sich eine Partition in einem sicheren Zustand befindet, sofern dies noch nicht der Fall ist. Sobald die Sicherheitsprüfungen für alle Partitionen eines Knotens absolviert sind, fährt Service Fabric mit dem Upgrade auf diesem Knoten fort. Der Wert für den Parameter „upgradeTimeout“ kann auf 6 Stunden verkürzt werden, aber für maximale Sicherheit sollten 12 Stunden gewählt werden.
 Überprüfen Sie dann, ob die Service Fabric-Ressource im Portal als „bereit“ angezeigt wird. 
 
 ```powershell

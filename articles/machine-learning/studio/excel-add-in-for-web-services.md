@@ -9,12 +9,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 29fe1a7a05085d8751e249d58b64b31e6ff3dac1
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: fd406535b00ed0e25f44d875ee9b5fe716971bab
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432484"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950050"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>Excel-Add-In für (klassische) Azure Machine Learning Studio-Webdienste
 
@@ -28,7 +28,10 @@ Mit Excel können Webdienste auf einfache Weise direkt aufgerufen werden, ohne d
 1. Öffnen Sie die [Excel-Beispieldatei](https://aka.ms/amlexcel-sample-2), die das Excel-Add-In und Daten zu den Passagieren auf der Titanic enthält. 
  
     > [!NOTE]
-    > Es wird eine Liste der Webdienste angezeigt, die der Datei zugeordnet sind, und unten ein Kontrollkästchen für die automatische Vorhersage. Wenn Sie die automatische Vorhersage aktivieren, werden die Vorhersagen **aller** Ihrer Dienste bei jeder Änderung in den Eingaben aktualisiert. Wenn die Option nicht aktiviert ist, müssen Sie zum Aktualisieren auf "Predict All" (Alle vorhersagen) klicken. Informationen zum Aktivieren der automatischen Vorhersage auf Dienstebene finden Sie unter Schritt 6.
+    > - Es wird eine Liste der Webdienste angezeigt, die der Datei zugeordnet sind, und unten ein Kontrollkästchen für die automatische Vorhersage. Wenn Sie die automatische Vorhersage aktivieren, werden die Vorhersagen **aller** Ihrer Dienste bei jeder Änderung in den Eingaben aktualisiert. Wenn die Option nicht aktiviert ist, müssen Sie zum Aktualisieren auf "Predict All" (Alle vorhersagen) klicken. Informationen zum Aktivieren der automatischen Vorhersage auf Dienstebene finden Sie unter Schritt 6.
+    > - Das Azure Machine Learning-Add-In für Excel ruft beim Laden den Office Store für Add-Ins auf. Wenn Ihre Organisation den Zugriff auf den Office Store für Add-Ins untersagt, wird beim Laden des Add-Ins ein Fehler angezeigt. Stellen Sie in diesem Fall das Azure Machine Learning-Add-In für Excel über Microsoft 365 Admin Center bereit. Rufen Sie dann das Add-In auf, und fügen Sie den Webdienst manuell hinzu, indem Sie die URL und den API-Schlüssel einfügen.
+
+ 
 
 2. Wählen Sie den Webdienst aus, indem Sie darauf klicken – in diesem Beispiel ist das „Titanic Survivor Predictor (Excel-Add-In-Beispiel) [Ergebnis]“.
    

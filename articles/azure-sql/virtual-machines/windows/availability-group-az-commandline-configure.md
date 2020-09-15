@@ -9,16 +9,16 @@ ms.service: virtual-machines-sql
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 07/15/2020
+ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6ce142f196da9207dd26b1917190ebdcba50fe74
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a74a791c8c6a95c71faf1f4a0ce6eaacd7c68901
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528108"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002996"
 ---
 # <a name="configure-an-availability-group-for-sql-server-on-azure-vm-powershell--az-cli"></a>Konfigurieren einer Verfügbarkeitsgruppe für SQL Server auf einem virtuellen Azure-Computer (PowerShell und Azure CLI)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -35,7 +35,7 @@ Zum Konfigurieren einer Always On-Verfügbarkeitsgruppe müssen folgende Voraus
 - Eine Ressourcengruppe mit einem Domänencontroller. 
 - Mindestens ein in eine Domäne eingebundener [virtueller Azure-Computer mit der Enterprise Edition von SQL Server 2016 (oder höher)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision), der sich in der *gleichen* Verfügbarkeitsgruppe oder *anderen* Verfügbarkeitszonen befindet, die beim [SQL-VM-Ressourcenanbieter registriert wurden](sql-vm-resource-provider-register.md).  
 - Die aktuelle Version von [PowerShell](/powershell/scripting/install/installing-powershell) oder der [Azure CLI](/cli/azure/install-azure-cli). 
-- Zwei verfügbare (nicht von einer Entität verwendete) IP-Adressen. Eine wird für den internen Lastenausgleich verwendet. Die andere ist für den Verfügbarkeitsgruppenlistener innerhalb des Subnetzes vorgesehen, in dem sich auch die Verfügbarkeitsgruppe befindet. Wenn ein vorhandener Lastenausgleich verwendet wird, wird nur eine verfügbare IP-Adresse für den Verfügbarkeitsgruppenlistener benötigt. 
+- Zwei verfügbare (nicht von einer Entität verwendete) IP-Adressen. Eine wird für den internen Lastenausgleich verwendet. Die andere ist für den Verfügbarkeitsgruppenlistener innerhalb des Subnetzes vorgesehen, in dem sich auch die Verfügbarkeitsgruppe befindet. Wenn ein vorhandener Lastenausgleich verwendet wird, ist nur eine verfügbare IP-Adresse für den Verfügbarkeitsgruppenlistener erforderlich. 
 
 ## <a name="permissions"></a>Berechtigungen
 
@@ -44,7 +44,7 @@ Sie benötigen die folgenden Kontoberechtigungen, um die Always On-Verfügbarke
 - Ein vorhandenes Domänenbenutzerkonto mit der Berechtigung zum **Erstellen von Computerobjekten** in der Domäne. Beispielsweise verfügt ein Domänenadministratorkonto in der Regel über ausreichende Berechtigungen (Beispiel: account@domain.com). _Dieses Konto muss auch Teil der lokalen Administratorgruppe auf allen virtuellen Computern sein, um den Cluster zu erstellen._
 - Das Domänenbenutzerkonto, das SQL Server steuert. 
  
-## <a name="step-1-create-a-storage-account-as-a-cloud-witness"></a>Schritt 1: Erstellen eines Speicherkontos als Cloudzeuge
+## <a name="create-a-storage-account-as-a-cloud-witness"></a>Erstellen eines Speicherkontos als Cloudzeuge
 Der Cluster benötigt ein Speicherkonto, das als Cloudzeuge fungieren kann. Sie können ein beliebiges vorhandenes Speicherkonto verwenden oder ein neues Speicherkonto erstellen. Wenn Sie ein vorhandenes Speicherkonto verwenden möchten, fahren Sie mit dem nächsten Absatz fort. 
 
 Das Speicherkonto wird mit dem folgenden Codeausschnitt erstellt: 
@@ -77,11 +77,10 @@ New-AzStorageAccount -ResourceGroupName <resource group name> -Name <name> `
     -SkuName Standard_LRS -Location <region> -Kind StorageV2 `
     -AccessTier Hot -EnableHttpsTrafficOnly
 ```
+
 ---
 
-
-
-## <a name="step-2-define-windows-failover-cluster-metadata"></a>Schritt 2: Definieren von Metadaten für den Windows-Failovercluster
+## <a name="define-windows-failover-cluster-metadata"></a>Definieren von Metadaten für den Windows-Failovercluster
 
 Die Azure CLI-Befehlsgruppe [az sql vm group](https://docs.microsoft.com/cli/azure/sql/vm/group?view=azure-cli-latest) verwaltet die Metadaten des Windows Server-Failoverclusterdiensts (WSFC), der die Verfügbarkeitsgruppe hostet. Zu den Clustermetadaten gehören die Active Directory-Domäne, Clusterkonten, als Cloudzeugen zu verwendende Speicherkonten und die SQL Server-Version. Verwenden Sie [az sql vm group create](https://docs.microsoft.com/cli/azure/sql/vm/group?view=azure-cli-latest#az-sql-vm-group-create), um die Metadaten für den WSFC zu definieren, sodass der Cluster beim Hinzufügen der ersten SQL Server-VM wie definiert erstellt wird. 
 
@@ -126,7 +125,7 @@ $group = New-AzSqlVMGroup -Name <name> -Location <regio>
 
 ---
 
-## <a name="step-3-add-sql-server-vms-to-the-cluster"></a>Schritt 3: Hinzufügen von SQL Server-VMs zum Cluster
+## <a name="add-vms-to-the-cluster"></a>Hinzufügen von VMs zum Cluster
 
 Beim Hinzufügen der ersten SQL Server-VM zum Cluster wird der Cluster erstellt. Der Befehl [az sql vm add-to-group](https://docs.microsoft.com/cli/azure/sql/vm?view=azure-cli-latest#az-sql-vm-add-to-group) erstellt den Cluster mit dem zuvor gegebenen Namen, installiert die Clusterrolle in den SQL Server-VMs und fügt sie dem Cluster hinzu. Nachfolgende Verwendungen des Befehls `az sql vm add-to-group` fügen dem neu erstellten Cluster weitere SQL Server-VMs hinzu. 
 
@@ -185,14 +184,14 @@ Update-AzSqlVM -ResourceId $sqlvm2.ResourceId -SqlVM $sqlvmconfig2
 
 ---
 
-## <a name="step-4-create-the-availability-group"></a>Schritt 4: Erstellen der Verfügbarkeitsgruppe
+## <a name="create-availability-group"></a>Erstellen der Verfügbarkeitsgruppe
 
 Erstellen Sie die Verfügbarkeitsgruppe wie gewohnt manuell mithilfe von [SQL Server Management Studio](/sql/database-engine/availability-groups/windows/use-the-availability-group-wizard-sql-server-management-studio), [PowerShell](/sql/database-engine/availability-groups/windows/create-an-availability-group-sql-server-powershell) oder [Transact-SQL](/sql/database-engine/availability-groups/windows/create-an-availability-group-transact-sql). 
 
 >[!IMPORTANT]
 > Erstellen Sie zu diesem Zeitpunkt *keinen* Listener, da dieser Schritt in den folgenden Abschnitten mithilfe der Azure CLI ausgeführt wird.  
 
-## <a name="step-5-create-the-internal-load-balancer"></a>Schritt 5: Erstellen des internen Lastenausgleichs
+## <a name="create-internal-load-balancer"></a>Erstellen eines internen Lastenausgleichs
 
 Für den Always On-Verfügbarkeitsgruppenlistener ist eine interne Azure Load Balancer-Instanz erforderlich. Der interne Lastenausgleich stellt eine Floating IP-Adresse für den Verfügbarkeitsgruppenlistener bereit, um Failovervorgänge und Verbindungswiederherstellungen zu beschleunigen. Wenn die SQL Server-VMs in einer Verfügbarkeitsgruppe Teil des gleichen Verfügbarkeitssatzes sind, können Sie einen Lastenausgleich im Tarif „Basic“ verwenden. Andernfalls benötigen einen Lastenausgleich im Tarif „Standard“.  
 
@@ -228,7 +227,7 @@ New-AzLoadBalancer -name sqlILB -ResourceGroupName <resource group name> `
 >[!IMPORTANT]
 > Die öffentliche IP-Adressressource für die einzelnen SQL Server-VMs muss über eine Standard-SKU verfügen, um mit dem Load Balancer „Standard“ kompatibel zu sein. Um die SKU der öffentlichen IP-Ressource Ihrer VM zu ermitteln, navigieren Sie zu **Ressourcengruppe**, und wählen Sie die Ressource **Öffentliche IP-Adresse** für die gewünschte SQL Server-VM aus. Der Wert befindet sich im Bereich **Übersicht** unter **SKU**.  
 
-## <a name="step-6-create-the-availability-group-listener"></a>Schritt 6: Erstellen des Verfügbarkeitsgruppenlisteners
+## <a name="create-listener"></a>Erstellen des Listeners
 
 Nachdem die Verfügbarkeitsgruppe manuell erstellt wurde, können Sie den Listener mithilfe von [az sql vm ag-listener](/cli/azure/sql/vm/group/ag-listener?view=azure-cli-latest#az-sql-vm-group-ag-listener-create) erstellen. 
 
@@ -283,7 +282,7 @@ New-AzAvailabilityGroupListener -Name <listener name> -ResourceGroupName <resour
 
 ---
 
-## <a name="modify-the-number-of-replicas-in-an-availability-group"></a>Ändern der Anzahl von Replikaten in einer Verfügbarkeitsgruppe
+## <a name="modify-number-of-replicas"></a>Ändern der Anzahl von Replikaten 
 Beim Bereitstellen einer Verfügbarkeitsgruppe auf SQL Server-VMs, die in Azure gehostet sind, muss zusätzliche Komplexität berücksichtigt werden. Der Ressourcenanbieter und die Gruppe der virtuellen Computer verwalten nun die Ressourcen. Beim Hinzufügen oder Entfernen von Replikaten zur bzw. aus der Verfügbarkeitsgruppe ist daher das Aktualisieren der Metadaten des Listeners mit Informationen zu den SQL Server-VMs als zusätzlicher Schritt auszuführen. Beim Ändern der Anzahl von Replikaten in der Verfügbarkeitsgruppe muss außerdem der Befehl [az sql vm group ag-listener update](/cli/azure/sql/vm/group/ag-listener?view=azure-cli-2018-03-01-hybrid#az-sql-vm-group-ag-listener-update) verwendet werden, um den Listener mit den Metadaten der SQL Server-VMs zu aktualisieren. 
 
 
@@ -408,7 +407,7 @@ So entfernen Sie ein Replikat aus der Verfügbarkeitsgruppe:
 
 ---
 
-## <a name="remove-the-availability-group-listener"></a>Entfernen des Verfügbarkeitsgruppenlisteners
+## <a name="remove-listener"></a>Entfernen des Listeners
 Wenn Sie den mit der Azure CLI konfigurierten Verfügbarkeitsgruppenlistener wieder entfernen möchten, müssen Sie dies über den SQL-VM-Ressourcenanbieter tun. Da der Listener über den SQL-VM-Ressourcenanbieter registriert wurde, reicht das Löschen über SQL Server Management Studio nicht aus. 
 
 Die beste Methode besteht darin, ihn über den SQL-VM-Ressourcenanbieter zu löschen, indem Sie in der Azure CLI den folgenden Codeausschnitt verwenden. Dadurch werden die Metadaten des Verfügbarkeitsgruppenlisteners aus dem SQL-VM-Ressourcenanbieter entfernt. Außerdem wird der Listener physisch aus der Verfügbarkeitsgruppe gelöscht. 
@@ -431,6 +430,65 @@ az sql vm group ag-listener delete --group-name <cluster name> --name <listener 
 
 Remove-AzAvailabilityGroupListener -Name <Listener> `
    -ResourceGroupName <Resource Group Name> -SqlVMGroupName <cluster name>
+```
+
+---
+
+## <a name="remove-cluster"></a>Entfernen des Clusters
+
+Entfernen Sie alle Knoten aus dem Cluster, um ihn zu zerstören, und entfernen Sie dann die Clustermetadaten aus dem SQL-VM-Ressourcenanbieter. Verwenden Sie hierzu die Azure-Befehlszeilenschnittstelle oder PowerShell. 
+
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Entfernen Sie zunächst alle virtuellen SQL Server-VMs aus dem Cluster: 
+
+```azurecli-interactive
+# Remove the VM from the cluster metadata
+# example: az sql vm remove-from-group --name SQLVM2 --resource-group SQLVM-RG
+
+az sql vm remove-from-group --name <VM1 name>  --resource-group <resource group name>
+az sql vm remove-from-group --name <VM2 name>  --resource-group <resource group name>
+```
+
+Wenn es sich hierbei um die einzigen VMs im Cluster handelt, wird der Cluster zerstört. Wenn sich neben den entfernten SQL Server-VMs noch andere VMs im Cluster befinden, werden die anderen VMs nicht entfernt, und der Cluster wird nicht zerstört. 
+
+Entfernen Sie als Nächstes die Clustermetadaten aus dem SQL-VM-Ressourcenanbieter: 
+
+```azurecli-interactive
+# Remove the cluster from the SQL VM RP metadata
+# example: az sql vm group delete --name Cluster --resource-group SQLVM-RG
+
+az sql vm group delete --name <cluster name> Cluster --resource-group <resource group name>
+```
+
+
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Entfernen Sie zunächst alle virtuellen SQL Server-VMs aus dem Cluster. Dadurch werden die Knoten physisch aus dem Cluster entfernt, und der Cluster wird zerstört: 
+
+```powershell-interactive
+# Remove the SQL VM from the cluster
+# example: $sqlvm = Get-AzSqlVM -Name SQLVM3 -ResourceGroupName SQLVM-RG
+#  $sqlvm. SqlVirtualMachineGroup = ""
+#  Update-AzSqlVM -ResourceId $sqlvm -SqlVM $sqlvm
+
+$sqlvm = Get-AzSqlVM -Name <VM Name> -ResourceGroupName <Resource Group Name>
+   $sqlvm. SqlVirtualMachineGroup = ""
+   
+   Update-AzSqlVM -ResourceId $sqlvm -SqlVM $sqlvm
+```
+
+Wenn es sich hierbei um die einzigen VMs im Cluster handelt, wird der Cluster zerstört. Wenn sich neben den entfernten SQL Server-VMs noch andere VMs im Cluster befinden, werden die anderen VMs nicht entfernt, und der Cluster wird nicht zerstört. 
+
+Entfernen Sie als Nächstes die Clustermetadaten aus dem SQL-VM-Ressourcenanbieter: 
+
+```powershell-interactive
+# Remove the cluster metadata
+# example: Remove-AzSqlVMGroup -ResourceGroupName "SQLVM-RG" -Name "Cluster"
+
+Remove-AzSqlVMGroup -ResourceGroupName "<resource group name>" -Name "<cluster name> "
 ```
 
 ---

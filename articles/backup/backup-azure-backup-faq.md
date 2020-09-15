@@ -3,12 +3,12 @@ title: Antworten auf häufig gestellte Fragen
 description: 'Antworten auf häufig gestellte Fragen zu: Azure Backup-Features wie Azure Recovery Services-Tresoren, zu sicherbaren Elementen sowie zu Funktionsweise, Verschlüsselung und Grenzwerten. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: ea4cc792100edf59188a9be99c384747267dc0d8
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 16ee9fa94f8c6d5ee97c35833b4cee908750bc0a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892761"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017735"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – häufig gestellte Fragen
 
@@ -56,7 +56,7 @@ Wenn Sie die Sicherung bereits konfiguriert haben und von GRS zu LRS wechseln m�
 ### <a name="can-i-do-an-item-level-restore-ilr-for-vms-backed-up-to-a-recovery-services-vault"></a>Kann ich für virtuelle Computer, die in einem Recovery Services-Tresor gesichert wurden, eine Wiederherstellung auf Elementebene durchführen?
 
 - Die Wiederherstellung auf Elementebene wird für virtuelle Azure-Computer unterstützt, die von der Azure-VM-Sicherung gesichert wurden. Weitere Informationen finden Sie in [diesem Artikel](backup-azure-restore-files-from-vm.md).
-- Die Wiederherstellung auf Elementebene wird für Online-Wiederherstellungspunkte lokaler virtueller Computer, die von Azure Backup Server oder System Center DPM gesichert wurden, nicht unterstützt.
+- Die Wiederherstellung auf Elementebene wird nicht für Online-Wiederherstellungspunkte lokaler virtueller Computer unterstützt, die von Azure Backup Server (MABS) oder System Center DPM gesichert wurden.
 
 ## <a name="azure-backup-agent"></a>Azure Backup-Agent
 

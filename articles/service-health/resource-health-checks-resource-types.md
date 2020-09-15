@@ -3,12 +3,12 @@ title: Durch Azure Resource Health unterstützte Ressourcentypen | Microsoft-Dok
 description: Durch Azure Resource Health unterstützte Ressourcentypen
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 2c002ab89b1cae4db6d3337908bb401039cb2295
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: d797b9fb9b843f114e01820fa666e56749c7983f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611941"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230159"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Ressourcentypen und Integritätsprüfungen in Azure Resource Health
 Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource Health ausgeführten Überprüfungen.
@@ -22,6 +22,11 @@ Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource H
 |Ausgeführte Überprüfungen|
 |---|
 |<ul><li>Ist der API Management-Dienst aktiv und wird ausgeführt?</li></ul>|
+
+## <a name="microsoftappplatformspring"></a>Microsoft.AppPlatform/Spring
+|Ausgeführte Überprüfungen|
+|---|
+|<ul><li>Ist die Azure Spring Cloud-Instanz verfügbar?</li></ul>|
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 |Ausgeführte Überprüfungen|
@@ -62,6 +67,11 @@ Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource H
 |Ausgeführte Überprüfungen|
 |---|
 |<ul><li>Hostet der Server diese VM funktionstüchtig?</li><li>Ist das Starten des Hostbetriebssystems abgeschlossen?</li><li>Ist der VM-Container bereitgestellt und hochgefahren?</li><li>Besteht Netzwerkkonnektivität zwischen Host und Speicherkonto?</li><li>Ist das Starten des Gastbetriebssystems abgeschlossen?</li><li>Gibt es eine laufende geplante Wartung?</li><li>Wurde die Hosthardware heruntergestuft und ein baldiger Ausfall vorhergesagt?</li></ul>|
+
+## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft.ContainerService/managedClusters
+|Ausgeführte Überprüfungen|
+|---|
+|<ul><li>Ist der Cluster aktiv und wird ausgeführt?</li><li>Sind Kerndienste im Cluster verfügbar?</li><li>Sind alle Clusterknoten bereit?</li><li>Ist der Dienstprinzipal aktuell und gültig?</li></ul>|
 
 ## <a name="microsoftdatafactoryfactories"></a>Microsoft.datafactory/factories
 |Ausgeführte Überprüfungen|
@@ -124,10 +134,20 @@ Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource H
 |---|
 |<ul><li>Sind Kerndienste für den HDInsight-Cluster verfügbar?</li><li>Kann der HDInsight-Cluster auf den Schlüssel für die BYOK-Verschlüsselung ruhender Daten zugreifen?</li></ul>|
 
+## <a name="microsoftiotcentraliotapps"></a>Microsoft.IoTCentral/IoTApps
+|Ausgeführte Überprüfungen|
+|---|
+|<ul><li>Ist die IoT Central-Anwendung verfügbar?</li></ul>|
+
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults
 |Ausgeführte Überprüfungen|
 |---|
 |<ul><li>Sind an den Schlüsseltresor gerichtete Anforderungen aufgrund von Problemen mit der Azure Key Vault-Plattform nicht erfolgreich?</li><li>Werden an den Schlüsseltresor gerichtete Anforderungen aufgrund von übermäßig vielen Anforderungen des Kunden gedrosselt?</li></ul>|
+
+## <a name="microsoftkustoclusters"></a>Microsoft.Kusto/clusters
+|Ausgeführte Überprüfungen|
+|---|
+|<ul><li>Treten beim Cluster niedrige Erfolgsraten bei der Erfassung auf?</li><li>Treten beim Cluster hohe Latenzen bei der Erfassung auf?</li><li>Treten beim Cluster viele Abfragefehler auf?</li></ul>|
 
 ## <a name="microsoftmachinelearningwebservices"></a>Microsoft.MachineLearning/webServices
 |Ausgeführte Überprüfungen|
@@ -164,6 +184,11 @@ Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource H
 |---|
 |<ul><li>Sind die Endpunkte des Lastenausgleichs verfügbar?</li></ul>|
 
+## <a name="microsoftnetworktrafficmanagerprofiles"></a>Microsoft.network/trafficmanagerprofiles
+|Ausgeführte Überprüfungen|
+|---|
+|<ul><li>Gibt es Probleme, die sich auf das Traffic Manager-Profil auswirken?</li></ul>|
+
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.network/virtualNetworkGateways
 |Ausgeführte Überprüfungen|
 |---|
@@ -183,11 +208,6 @@ Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource H
 |Ausgeführte Überprüfungen|
 |---|
 |<ul><li>Wird die Kapazitätsressource ausgeführt?</li><li>Werden alle Workloads ausgeführt?</li></ul>|
-
-## <a name="microsoftpowerbiworkspacecollections"></a>Microsoft.PowerBI/workspaceCollections
-|Ausgeführte Überprüfungen|
-|---|
-|<ul><li>Ist das Host-BS funktionstüchtig?</li><li>Ist die workspaceCollection von außerhalb des Rechenzentrums erreichbar?</li><li>Ist der Power BI-Ressourcenanbieter verfügbar?</li><li>Ist der Power BI-Dienst in der entsprechenden Region verfügbar?</li></ul>|
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.Search/searchServices
 |Ausgeführte Überprüfungen|

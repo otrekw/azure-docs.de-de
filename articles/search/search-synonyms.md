@@ -7,13 +7,13 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/12/2020
-ms.openlocfilehash: dce3c484a16918931df80d5201fad090b2c0cb2e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 08/26/2020
+ms.openlocfilehash: aad953483749d676844221f7e519f50c50b63ad4
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922632"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948639"
 ---
 # <a name="synonyms-in-azure-cognitive-search"></a>Synonyme in der kognitiven Azure-Suche
 
@@ -92,6 +92,21 @@ Eine explizite Zuordnung wird durch einen Pfeil gekennzeichnet „=>“. Eine Be
 
 ```
 Washington, Wash., WA => WA
+```
+
+Wenn Sie Synonyme definieren müssen, die Kommas enthalten, können Sie diese wie in diesem Beispiel mit einem umgekehrten Schrägstrich als Escapezeichen versehen:
+
+```
+WA\, USA, WA, Washington
+```
+
+Da der umgekehrte Schrägstrich selbst ein Sonderzeichen in anderen Sprachen wie JSON und C# ist, müssen Sie ihn wahrscheinlich mit einem doppelten Escapezeichen versehen. Beispielsweise würde der JSON-Code, der für die obige Synonymzuordnung an die REST-API gesendet wird, wie folgt aussehen:
+
+```json
+    {
+       "format":"solr",
+       "synonyms": "WA\\, USA, WA, Washington"
+    }
 ```
 
 #### <a name="list-synonym-maps-under-your-service"></a>Listen Sie Synonymzuordnungen unter Ihrem Dienst auf.

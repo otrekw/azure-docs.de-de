@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie mithilfe von Java Funktionen entwickeln könn
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java
-ms.openlocfilehash: ffdb6ee9747c76e7f4a6ff3e2f7b65ae96f53fb4
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 1dd98ede537321403053e2e7c8a5f4f7272665d4
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810087"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144922"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Java-Entwicklerhandbuch für Azure Functions
 
@@ -144,14 +144,16 @@ Die folgende Tabelle zeigt die aktuell von den jeweiligen Hauptversionen der Fun
 
 | Functions-Version | Java-Versionen (Windows) | Java-Versionen (Linux) |
 | ----- | ----- | --- |
-| 3.x | 11 (Vorschau)<br/>8<sup>\*</sup> | 11 (Vorschau)<br/>8 |
+| 3.x | 11 (Vorschau)<br/>8 | 11 (Vorschau)<br/>8 |
 | 2.x | 8 | – |
 
-<sup>\*</sup> Dies ist die aktuelle Standardversion der Datei „pom.xml“, die vom Maven-Archetyp generiert wird.
+Wenn Sie keine Java-Version für die Bereitstellung angeben, wird der Maven-Archetyp bei der Bereitstellung in Azure standardmäßig auf Java 8 festgelegt.
 
 ### <a name="specify-the-deployment-version"></a>Angeben des Bereitstellungsversion
 
-Derzeit generiert der Maven-Archetyp eine Datei „pom.xml“ für Java 8. Die folgenden Elemente in „pom.xml“ müssen aktualisiert werden, um eine Funktions-App zu erstellen, die Java 11 ausführt.
+Mithilfe des Parameters `-DjavaVersion` können Sie die Java-Version steuern, auf die der Maven-Archetyp ausgerichtet ist. Der Wert dieses Parameters kann `8` oder `11` sein. Die Unterstützung für Java 11 befindet sich derzeit in der Vorschauphase. 
+
+Der Maven-Archetyp generiert eine Datei vom Typ „pom.xml“ für die angegebene Java-Version. Die folgenden Elemente in „pom.xml“ geben die zu verwendende Java-Version an:
 
 | Element |  Java 8-Wert | Java 11-Wert | BESCHREIBUNG |
 | ---- | ---- | ---- | --- |
@@ -206,7 +208,7 @@ Sie können weitere Argumente in einer App-Einstellung namens `JAVA_OPTS` angebe
 
 Verwenden Sie im [Azur-Portal](https://portal.azure.com) die Registerkarte [Anwendungseinstellungen](functions-how-to-use-azure-function-app-settings.md#settings), um die Einstellung `JAVA_OPTS` hinzuzufügen.
 
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+### <a name="azure-cli"></a>Azure CLI
 
 Mit dem Befehl [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) können Sie `JAVA_OPTS` wie im folgenden Beispiel einstellen:
 

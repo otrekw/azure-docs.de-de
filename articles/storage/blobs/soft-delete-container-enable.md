@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 08/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f79b198b512547b1d93fbbd458af8251b109e62f
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: c2ce40f7d8a8d08e191fce11c98bd780e0c2fda1
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066660"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230074"
 ---
 # <a name="enable-and-manage-soft-delete-for-containers-preview"></a>Aktivieren und Verwalten des vorläufigen Löschens für Container (Vorschau)
 
@@ -22,7 +22,7 @@ Das Feature des vorläufigen Löschens von Containern (Vorschau) schützt Ihre D
 
 Wenn die Möglichkeit besteht, dass Ihre Daten von einer Anwendung oder einem anderen Benutzer des Speicherkontos versehentlich geändert oder gelöscht werden, empfiehlt Microsoft, das vorläufige Löschen für Container zu aktivieren. In diesem Artikel wird gezeigt, wie Sie das vorläufige Löschen für Container aktivieren. Weitere Informationen zum Feature des vorläufigen Löschens für Container sowie zur Registrierung für die Vorschau finden Sie unter [Vorläufiges Löschen für Container (Vorschau)](soft-delete-container-overview.md).
 
-Um einen vollumfänglichen Datenschutz zu erzielen, empfiehlt Microsoft auch die Aktivierung des vorläufigen Löschens für Blobs sowie der Blobversionsverwaltung (Vorschau). Informationen zum Aktivieren des vorläufigen Löschens für Blobs finden Sie unter [Aktivieren und Verwalten des vorläufigen Löschens für Blobs](soft-delete-blob-enable.md). Informationen zum Aktivieren der Blobversionsverwaltung finden Sie unter [Blobversionsverwaltung (Vorschau)](versioning-overview.md).
+Um einen vollumfänglichen Datenschutz zu erzielen, empfiehlt Microsoft auch die Aktivierung des vorläufigen Löschens für Blobs sowie die Blobversionsverwaltung. Informationen zum Aktivieren des vorläufigen Löschens für Blobs finden Sie unter [Aktivieren und Verwalten des vorläufigen Löschens für Blobs](soft-delete-blob-enable.md). Informationen zum Aktivieren der Blobversionsverwaltung finden Sie unter [Blobversionsverwaltung](versioning-overview.md).
 
 ## <a name="enable-container-soft-delete"></a>Aktivieren des vorläufigen Löschens von Containern
 
@@ -101,4 +101,4 @@ Sie können einen vorläufig gelöschten Container und dessen Inhalte innerhalb 
 
 - [Vorläufiges Löschen für Container (Vorschau)](soft-delete-container-overview.md)
 - [Vorläufiges Löschen für Blobs](soft-delete-blob-overview.md)
-- [Blobversionsverwaltung (Vorschau)](versioning-overview.md)
+- [Blobversionsverwaltung](versioning-overview.md)

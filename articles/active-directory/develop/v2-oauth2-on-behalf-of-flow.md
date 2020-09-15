@@ -13,12 +13,12 @@ ms.date: 08/7/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3abef3324bee61f2d7eb96c80750ad589b15f342
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 018d67b3e4e730cd46eb524a8927b3a6d68d74e8
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987034"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958659"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft Identity Platform und der On-Behalf-Of-Fluss von OAuth2.0
 
@@ -153,7 +153,7 @@ Das folgende Beispiel zeigt eine erfolgreiche Antwort auf eine Anforderung eines
 ```
 
 > [!NOTE]
-> Das obige Zugriffstoken ist ein Token mit v1.0-Formatierung für Microsoft Graph. Dies liegt daran, dass das Tokenformat auf der **Ressource** basiert, auf die zugegriffen wird, und nicht mit den Endpunkten in Zusammenhang steht, die für deren Anforderung verwendet werden. Microsoft Graph akzeptiert entsprechend seiner Einrichtung v1.0-Token. Microsoft Identity Platform erzeugt daher v1.0-Zugriffstoken, wenn ein Client Token für Microsoft Graph anfordert. Andere Apps können signalisieren, dass sie Token im v2.0- oder v1.0-Format oder sogar proprietäre oder verschlüsselte Tokenformate bevorzugen.  Die Endpunkte der Versionen 1.0 und 2.0 können jedes beliebige Tokenformat ausgeben. Dadurch kann die Ressource immer das richtige Tokenformat abrufen, unabhängig davon, wie oder wo das Token vom Client angefordert wurde. 
+> Das obige Zugriffstoken ist ein Token mit v1.0-Formatierung für Microsoft Graph. Dies liegt daran, dass das Tokenformat auf der **Ressource** basiert, auf die zugegriffen wird, und nicht mit den Endpunkten in Zusammenhang steht, die für deren Anforderung verwendet werden. Microsoft Graph akzeptiert entsprechend seiner Einrichtung v1.0-Token. Microsoft Identity Platform erzeugt daher v1.0-Zugriffstoken, wenn ein Client Token für Microsoft Graph anfordert. Andere Apps können signalisieren, dass sie Token im v2.0- oder v1.0-Format oder sogar proprietäre oder verschlüsselte Tokenformate bevorzugen.  Die Endpunkte der Versionen 1.0 und 2.0 können jedes beliebige Tokenformat ausgeben. Dadurch kann die Ressource immer das richtige Tokenformat abrufen, unabhängig davon, wie oder wo das Token vom Client angefordert wurde. 
 >
 > Nur Anwendungen sollten Zugriffstoken betrachten. Clients **dürfen sie nicht** überprüfen. Das Überprüfen von Zugriffstoken für andere Apps in Ihrem Code hat zur Folge, dass Ihre App unerwartet angehalten wird, wenn diese das Format ihrer Token ändert oder mit deren Verschlüsselung beginnt. 
 

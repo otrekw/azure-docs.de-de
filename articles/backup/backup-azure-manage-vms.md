@@ -3,12 +3,12 @@ title: Verwalten und Überwachen von Azure-VM-Sicherungen
 description: Erfahren Sie mehr über das Verwalten und Überwachen von Azure-VM-Sicherungen mit dem Azure Backup-Dienst.
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: a3349d30d5913781fb3348e7f5622366b3abc1d0
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 5a677221f16d00c19ee7083b72540ac7e1bb9cd0
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892166"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145432"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Verwalten von Azure-VM-Sicherungen mit dem Azure Backup-Dienst
 
@@ -121,7 +121,7 @@ Sie haben zwei Möglichkeiten, den Schutz einer virtuellen Maschine zu beenden:
 * **Schutz beenden und Sicherungsdaten löschen**. Mit dieser Option werden alle zukünftigen Sicherungsaufträge zum Schutz Ihres virtuellen Computers beendet und alle Wiederherstellungspunkte gelöscht. Sie können den virtuellen Computer nicht wiederherstellen und auch nicht die Option *Sicherung fortsetzen* verwenden.
 
 >[!NOTE]
->Wenn Sie eine Datenquelle löschen, ohne die Sicherungen zu beenden, treten bei neuen Sicherungen Fehler auf. Alte Wiederherstellungspunkte laufen gemäß der Richtlinie ab. Ein letzter Wiederherstellungspunkt wird jedoch immer beibehalten, bis Sie die Sicherungen beenden und die Daten löschen.
+>Wenn Sie eine Datenquelle löschen, ohne die Sicherungen zu beenden, treten bei neuen Sicherungen Fehler auf. Alte Wiederherstellungspunkte laufen gemäß der Richtlinie ab. Der letzte Wiederherstellungspunkt wird jedoch immer beibehalten, bis Sie die Sicherungen beenden und die Daten löschen.
 >
 
 ### <a name="stop-protection-and-retain-backup-data"></a>Schutz beenden und Sicherungsdaten beibehalten
@@ -186,8 +186,8 @@ Zum Schutz Ihrer Daten bietet Azure Backup ein Feature für vorläufiges Lösche
 
 ### <a name="backup-item-where-primary-data-source-no-longer-exists"></a>Sichern eines Elements, bei dem die primäre Datenquelle nicht mehr vorhanden ist
 
-* Wenn für Azure Backup konfigurierte Azure-VMs entweder gelöscht oder verschoben werden, ohne den Schutz zu beenden, schlagen geplante Sicherungsaufträge und bedarfsgesteuerte (Ad-hoc-) Sicherungsaufträge mit dem Fehler „UserErrorVmNotFoundV2“ fehl. Die Vorüberprüfung der Sicherung wird nur bei fehlgeschlagenen bedarfsgesteuerten Sicherungsaufträgen als kritisch angezeigt (fehlerhafte geplante Aufträge werden nicht angezeigt).
-* Diese Sicherungselemente bleiben in dem System aktiv, das die vom Benutzer festgelegte Sicherungs-und Aufbewahrungsrichtlinie einhält. Die gesicherten Daten für diese Azure-VMs werden gemäß der Aufbewahrungsrichtlinie beibehalten. Die abgelaufenen Wiederherstellungspunkte (mit Ausnahme des letzten Wiederherstellungspunkts) werden gemäß der Aufbewahrungsdauer bereinigt, die in der Sicherungsrichtlinie festgelegt wurde.
+* Wenn für Azure Backup konfigurierte Azure-VMs entweder gelöscht oder verschoben werden, ohne den Schutz zu beenden, schlagen geplante Sicherungsaufträge und bedarfsgesteuerte (Ad-hoc-)Sicherungsaufträge mit dem Fehler „UserErrorVmNotFoundV2“ fehl. Die Vorüberprüfung der Sicherung wird nur bei fehlgeschlagenen bedarfsgesteuerten Sicherungsaufträgen als kritisch angezeigt (fehlerhafte geplante Aufträge werden nicht angezeigt).
+* Diese Sicherungselemente bleiben in dem System aktiv, das die vom Benutzer festgelegte Sicherungs-und Aufbewahrungsrichtlinie einhält. Die gesicherten Daten für diese Azure-VMs werden gemäß der Aufbewahrungsrichtlinie beibehalten. Die abgelaufenen Wiederherstellungspunkte (mit Ausnahme des letzten Wiederherstellungspunkts) werden gemäß des Aufbewahrungszeitraums bereinigt, der in der Sicherungsrichtlinie festgelegt wurde.
 * Wir empfehlen das Löschen der Sicherungselemente, bei denen die primäre Datenquelle nicht mehr vorhanden ist. Auf diese Weise werden zusätzliche Kosten vermieden, wenn das Sicherungselement oder die Daten für die Löschressourcen nicht mehr benötigt werden, da der letzte Wiederherstellungspunkt dauerhaft beibehalten und dem Benutzer entsprechend den geltenden Preisen eine Gebühr für die Sicherung berechnet wird.
 
 ## <a name="next-steps"></a>Nächste Schritte

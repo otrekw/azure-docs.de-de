@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 417ca42e014c0bb197d7dd834b960f25fcfdf468
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a58b00018f6ac89f024661d8d3f50ea5249e620b
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056814"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182121"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Verwenden einer öffentlichen Instanz von Load Balancer Standard in Azure Kubernetes Service (AKS)
 
@@ -267,16 +267,15 @@ Erwägen Sie die Verwendung eines niedrigen Timeoutwerts, z. B. vier Minuten, f
 *outboundIPs* \* 64.000 \> *nodeVMs* \* *desiredAllocatedOutboundPorts*.
  
 Wenn Sie beispielsweise drei *nodeVMs* und 50.000 *desiredAllocatedOutboundPorts* verwenden, benötigen Sie mindestens drei *outboundIPs*. Wir empfehlen Ihnen, über Ihren Bedarf hinaus weitere IP-Kapazität in ausgehender Richtung bereitzustellen. Darüber hinaus müssen Sie die automatische Clusterskalierung und die Möglichkeit von Knotenpoolupgrades berücksichtigen, wenn Sie die IP-Kapazität in ausgehender Richtung berechnen. Überprüfen Sie für die automatische Clusterskalierung die aktuelle und die maximale Knotenanzahl, und verwenden Sie den höheren Wert. Berücksichtigen Sie für Upgrades eine zusätzliche Knoten-VM für jeden Knotenpool, für den Upgrades zulässig sind.
- 
+
 - Wenn Sie *IdleTimeoutInMinutes* auf einen anderen Wert als den Standardwert von 30 Minuten festlegen, sollten Sie berücksichtigen, wie lange Sie für Ihre Workloads eine ausgehende Verbindung benötigen. Berücksichtigen Sie auch, dass der Standardtimeoutwert für einen Load Balancer mit der SKU *Standard*, der außerhalb von AKS verwendet wird, 4 Minuten beträgt. Ein *IdleTimeoutInMinutes*-Wert, der Ihre spezifische AKS-Workload genauer widerspiegelt, kann zu einer Verringerung der SNAT-Auslastung beitragen. Hierzu kann es kommen, wenn nicht mehr verwendete Verbindungen vorhanden sind.
 
 > [!WARNING]
 > Durch das Ändern der Werte für *AllocatedOutboundPorts* und *IdleTimeoutInMinutes* kann sich das Verhalten der Ausgangsregel für Ihren Lastenausgleich erheblich ändern. Dies sollte nicht leichtfertig durchgeführt werden, ohne die möglichen Nachteile und die Verbindungsmuster Ihrer Anwendung zu kennen. Lesen Sie unten den Abschnitt zur [SNAT-Problembehandlung][troubleshoot-snat] und die Informationen zu [Load Balancer-Ausgangsregeln][azure-lb-outbound-rules-overview] und [ausgehenden Verbindungen in Azure][azure-lb-outbound-connections], bevor Sie diese Werte aktualisieren, damit Sie mit den Auswirkungen Ihrer Änderungen vertraut sind.
 
-
 ## <a name="restrict-inbound-traffic-to-specific-ip-ranges"></a>Beschränken des eingehenden Datenverkehrs auf bestimmte IP-Adressbereiche
 
-Die Netzwerksicherheitsgruppe (NSG), die dem virtuellen Netzwerk für den Lastenausgleich zugeordnet ist, verfügt standardmäßig über eine Regel, die den gesamten eingehenden externen Datenverkehr zulässt. Sie können diese Regel ändern, um nur bestimmte IP-Adressbereiche für eingehenden Datenverkehr zuzulassen. Im folgenden Manifest wird *loadBalancerSourceRanges* verwendet, um einen neuen IP-Adressbereich für eingehenden externen Datenverkehr anzugeben:
+Im folgenden Manifest wird *loadBalancerSourceRanges* verwendet, um einen neuen IP-Adressbereich für eingehenden externen Datenverkehr anzugeben:
 
 ```yaml
 apiVersion: v1
@@ -292,6 +291,9 @@ spec:
   loadBalancerSourceRanges:
   - MY_EXTERNAL_IP_RANGE
 ```
+
+> [!NOTE]
+> Eingehender, externer Datenverkehr wird vom Lastenausgleich an das virtuelle Netzwerk für Ihren AKS-Cluster geleitet. Das virtuelle Netzwerk verfügt über eine Netzwerksicherheitsgruppe (NSG), die den gesamten eingehenden Datenverkehr vom Lastenausgleich zulässt. Diese NSG verwendet ein [Diensttag][service-tags] vom Typ *LoadBalancer*, um den Datenverkehr vom Lastenausgleich zuzulassen.
 
 ## <a name="maintain-the-clients-ip-on-inbound-connections"></a>Beibehalten der IP-Adresse des Clients bei eingehenden Verbindungen
 
@@ -315,14 +317,14 @@ spec:
 
 Hier ist eine Liste mit Anmerkungen angegeben, die für Kubernetes-Dienste vom Typ `LoadBalancer` unterstützt werden. Diese Anmerkungen gelten nur für eingehende Datenflüsse (**INBOUND**):
 
-| Anmerkung | Wert | Beschreibung
+| Anmerkung | Wert | BESCHREIBUNG
 | ----------------------------------------------------------------- | ------------------------------------- | ------------------------------------------------------------ 
 | `service.beta.kubernetes.io/azure-load-balancer-internal`         | `true` oder `false`                     | Geben Sie an, ob es ein interner Lastenausgleich sein soll. Wenn Sie nichts angeben, wird standardmäßig „Öffentlich“ verwendet.
 | `service.beta.kubernetes.io/azure-load-balancer-internal-subnet`  | Name des Subnetzes                    | Geben Sie an, an welches Subnetz der interne Lastenausgleich gebunden werden soll. Wenn Sie nichts angeben, wird standardmäßig das in der Cloudkonfigurationsdatei konfigurierte Subnetz verwendet.
 | `service.beta.kubernetes.io/azure-dns-label-name`                 | Name der DNS-Bezeichnung von öffentlichen IP-Adressen   | Geben Sie den Namen der DNS-Bezeichnung für den **öffentlichen** Dienst an. Wenn die Zeichenfolge leer ist, wird der DNS-Eintrag in der öffentlichen IP-Adresse nicht verwendet.
 | `service.beta.kubernetes.io/azure-shared-securityrule`            | `true` oder `false`                     | Geben Sie an, dass der Dienst mit einer Azure-Sicherheitsregel verfügbar gemacht werden sollte, die mit einem anderen Dienst gemeinsam verwendet werden kann. Dies ermöglicht einen Austausch in Bezug auf die Spezifizität von Regeln, um die Anzahl von Diensten zu erhöhen, die verfügbar gemacht werden können. Diese Anmerkung basiert auf dem Azure-Feature [Ergänzte Sicherheitsregeln](../virtual-network/security-overview.md#augmented-security-rules) von Netzwerksicherheitsgruppen. 
 | `service.beta.kubernetes.io/azure-load-balancer-resource-group`   | Name der Ressourcengruppe            | Geben Sie die Ressourcengruppe von öffentlichen IP-Adressen des Lastenausgleichs an, die sich nicht in derselben Ressourcengruppe wie die Clusterinfrastruktur (Knotenressourcengruppe) befinden.
-| `service.beta.kubernetes.io/azure-allowed-service-tags`           | Liste mit zulässigen Diensttags          | Geben Sie eine Liste mit den zulässigen [Diensttags](../virtual-network/security-overview.md#service-tags) an (mit Kommas als Trennzeichen).
+| `service.beta.kubernetes.io/azure-allowed-service-tags`           | Liste mit zulässigen Diensttags          | Geben Sie eine Liste mit den zulässigen [Diensttags][service-tags] an (mit Kommas als Trennzeichen).
 | `service.beta.kubernetes.io/azure-load-balancer-tcp-idle-timeout` | TCP-Leerlauftimeouts in Minuten          | Geben Sie die Dauer in Minuten für Leerlauftimeouts von TCP-Verbindungen ein, die für den Lastenausgleich auftreten. Der Standard- und Minimalwert ist 4. Der Maximalwert ist 30. Dieser Wert muss eine ganze Zahl sein.
 |`service.beta.kubernetes.io/azure-load-balancer-disable-tcp-reset` | `true`                                | Deaktivieren von `enableTcpReset` für SLB
 
@@ -424,3 +426,4 @@ Informieren Sie sich in der [Dokumentation zum internen AKS-Lastenausgleich](int
 [requirements]: #requirements-for-customizing-allocated-outbound-ports-and-idle-timeout
 [use-multiple-node-pools]: use-multiple-node-pools.md
 [troubleshoot-snat]: #troubleshooting-snat
+[service-tags]: ../virtual-network/security-overview.md#service-tags

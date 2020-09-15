@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.subservice: compliance
-ms.date: 08/25/2020
+ms.date: 09/08/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: dbcd8ab2f2825e18943436dcc1a9ca4ff38e2d8d
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 2ce5f0c9b340e1b81fcf002ee70e7ec1cc74d38c
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871206"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594321"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Was ist die Azure AD-Berechtigungsverwaltung?
 
@@ -153,7 +153,7 @@ Für die folgenden Aufgaben sind **keine** Azure AD Premium P2-Lizenzen erforde
 - Für Benutzer, an die administrative Aufgaben (z. B. Katalogersteller, Katalogbesitzer und Zugriffspaketmanager) delegiert wurden, sind keine Lizenzen erforderlich.
 - Für Gäste, die Zugriffspakete anfordern **können**, aber **kein** Zugriffspaket anfordern, sind keine Lizenzen erforderlich.
 
-Für jede bezahlte Azure AD Premium P2-Lizenz, die Sie für Ihre Mitgliedsbenutzer (Mitarbeiter) erwerben, können Sie mit Azure AD B2B bis zu fünf Gastbenutzer einladen. Diese Gastbenutzer können auch Azure AD Premium P2-Features nutzen. Weitere Informationen finden Sie unter [Leitfaden zur Lizenzierung von Azure Active Directory B2B-Kollaboration](../external-identities/licensing-guidance.md).
+Die Preise für Azure AD External Identities (Gastbenutzer) basieren auf den monatlich aktiven Benutzern (Monthly Active Users, MAU). Dies ist die Anzahl eindeutiger Benutzer mit Authentifizierungsaktivität innerhalb eines Kalendermonats. Dieses Modell ersetzt das Abrechnungsmodell im Verhältnis 1:5, das bis zu fünf Gastbenutzer pro Azure AD Premium-Lizenz in Ihrem Mandanten zuließ. Wenn Ihr Mandant mit einem Abonnement verknüpft ist und Sie External Identities-Features für die Zusammenarbeit mit Gastbenutzern verwenden, erfolgt Ihre Abrechnung automatisch nach dem MAU-basierten Abrechnungsmodell. Weitere Informationen finden Sie unter [Abrechnungsmodell für Azure AD External Identities](../external-identities/external-identities-pricing.md).
 
 Weitere Informationen zu Lizenzen finden Sie unter [Zuweisen oder Entfernen von Lizenzen im Azure Active Directory-Portal](../fundamentals/license-users-groups.md).
 

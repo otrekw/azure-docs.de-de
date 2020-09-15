@@ -4,12 +4,12 @@ description: Azure-Funktion zur sofortigen Wiederherstellung und häufig gestell
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: ddc8e8fa460943c09f80ebb462b1dbd578f9b23b
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 69348a9902224f9f73f80d5b1900143c885d20ee
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892625"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000378"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Verbesserte Sicherungs- und Wiederherstellungsleistung mit der Azure Backup-Funktion zur sofortigen Wiederherstellung
 
@@ -37,7 +37,7 @@ Ein Wiederherstellungspunkt gilt erst dann als erstellt, wenn die Phasen 1 und 2
 
 ![Sicherungsauftrag im VM-Sicherungsstapel, Resource Manager-Bereitstellungsmodell – Speicher und Tresor](./media/backup-azure-vms/instant-rp-flow.png)
 
-Standardmäßig werden Momentaufnahmen zwei Tage lang aufbewahrt. Mit diesem Feature kann die Wiederherstellung über diese Momentaufnahmen mit reduzierten Wiederherstellungszeiten durchgeführt werden. Reduziert die erforderliche Zeit zum Transformieren und Zurückkopieren von Daten aus dem Tresor.
+Standardmäßig werden Momentaufnahmen zwei Tage lang aufbewahrt. Mit diesem Feature kann die Wiederherstellung über diese Momentaufnahmen mit reduzierten Wiederherstellungszeiten durchgeführt werden. Es reduziert die erforderliche Zeit zum Transformieren und Zurückkopieren von Daten aus dem Tresor.
 
 ## <a name="feature-considerations"></a>Überlegungen zum Feature
 
@@ -108,9 +108,9 @@ Wenn der Wiederherstellungstyp „Momentaufnahme und Tresor“ ist, erfolgt die 
 
 Das neue Modell lässt das Löschen des Wiederherstellungspunkts (Tarif 2) nur zu, wenn die Momentaufnahme (Tarif 1) gelöscht wird. Es empfiehlt sich, den Aufbewahrungszeitraum für den Wiederherstellungspunkt (Tarif2) auf einen höheren Wert als den Aufbewahrungszeitraum der Momentaufnahme festzulegen.
 
-### <a name="why-is-my-snapshot-existing-even-after-the-set-retention-period-in-backup-policy"></a>Warum ist meine Momentaufnahme auch nach Ablauf des in der Sicherungsrichtlinie festgelegten Aufbewahrungszeitraum noch vorhanden?
+### <a name="why-does-my-snapshot-still-exist-even-after-the-set-retention-period-in-backup-policy"></a>Warum ist meine Momentaufnahme auch nach Ablauf des in der Sicherungsrichtlinie festgelegten Aufbewahrungszeitraums noch vorhanden?
 
-Wenn der Wiederherstellungspunkt eine Momentaufnahme aufweist und diese der letzte verfügbare Wiederherstellungspunkt ist, wird sie bis zur nächsten erfolgreichen Sicherung aufbewahrt. Dies entspricht der aktuellen Version der Richtlinie für die automatische Speicherbereinigung (Garbage Collection, GC). Diese gibt vor, dass immer mindestens ein aktueller Wiederherstellungspunkt vorhanden sein muss, falls alle weiteren Sicherungen aufgrund eines Problems auf dem virtuellen Computer fehlschlagen. In normalen Szenarien werden Wiederherstellungspunkte innerhalb von 24 Stunden nach ihrem Ablauf bereinigt.
+Wenn der Wiederherstellungspunkt eine Momentaufnahme aufweist und diese der letzte verfügbare Wiederherstellungspunkt ist, wird sie bis zur nächsten erfolgreichen Sicherung aufbewahrt. Dies entspricht der festgelegten Richtlinie für die Garbage Collection (GC). Diese gibt an, dass immer mindestens ein letzter Wiederherstellungspunkt vorhanden sein muss, falls alle nachfolgenden Sicherungen aufgrund eines Problems auf der VM zu Fehlern führen. In normalen Szenarien werden Wiederherstellungspunkte spätestens 24 Stunden nach ihrem Ablauf bereinigt.
 
 ### <a name="i-dont-need-instant-restore-functionality-can-it-be-disabled"></a>Ich benötige keine sofortige Wiederherstellung. Kann ich sie deaktivieren?
 

@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: e73f53fe983c1ebe77044993a281847ad362a840
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 379cecf8e810b8689533d5c162e983b762fc76a4
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496772"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393580"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mysql"></a>Azure-Sicherheitsbaseline für Azure Database for MySQL
 
@@ -547,9 +547,9 @@ Grundlegendes zum Schutz von Kundendaten in Azure: https://docs.microsoft.com/az
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Verwenden von Azure RBAC zum Steuern des Zugriffs auf Ressourcen
 
-**Leitfaden**: Verwenden Sie die rollenbasierte Zugriffssteuerung von Azure (Azure RBAC), um den Zugriff auf die Azure Database for MySQL-Steuerungsebene (z. B. Azure-Portal) zu steuern. Verwenden Sie für den Zugriff auf die Datenebene (in der Datenbank selbst) SQL-Abfragen, um Benutzer zu erstellen und Benutzerberechtigungen zu konfigurieren. RBAC wirkt sich nicht auf Benutzerberechtigungen in der Datenbank aus.
+**Leitfaden**: Verwenden Sie die rollenbasierte Zugriffssteuerung von Azure (Azure RBAC), um den Zugriff auf die Azure Database for MySQL-Steuerungsebene (z. B. Azure-Portal) zu steuern. Verwenden Sie für den Zugriff auf die Datenebene (in der Datenbank selbst) SQL-Abfragen, um Benutzer zu erstellen und Benutzerberechtigungen zu konfigurieren. Azure RBAC wirkt sich nicht auf Benutzerberechtigungen in der Datenbank aus.
 
-Konfigurieren von RBAC in Azure: https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
+Konfigurieren von Azure RBAC: https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
 
 Konfigurieren des Benutzerzugriffs mit SQL für Azure Database for MySQL: https://docs.microsoft.com/azure/mysql/howto-create-users
 
@@ -892,9 +892,11 @@ Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/g
 
 Integration mit verwalteten Azure-Identitäten: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-Erstellen einer Key Vault-Instanz: https://docs.microsoft.com/azure/key-vault/quick-create-portal
+Erstellen einer Key Vault-Instanz: https://docs.microsoft.com/azure/key-vault/general/quick-create-portal
 
-Bereitstellen der Key Vault-Authentifizierung mit einer verwalteten Identität: https://docs.microsoft.com/azure/key-vault/managed-identity
+Authentifizieren bei Key Vault: https://docs.microsoft.com/azure/key-vault/general/authentication
+
+Zuweisen einer Key Vault-Zugriffsrichtlinie: https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
 **Azure Security Center-Überwachung**: Ja
 

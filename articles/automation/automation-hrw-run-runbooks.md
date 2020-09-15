@@ -3,14 +3,14 @@ title: Ausführen von Azure Automation-Runbooks in einem Hybrid Runbook Worker
 description: In diesem Artikel erfahren Sie, wie Sie Runbooks auf Computern in Ihrem lokalen Rechenzentrum oder bei Ihrem Cloudanbieter mit dem Hybrid Runbook Worker ausführen.
 services: automation
 ms.subservice: process-automation
-ms.date: 01/29/2019
+ms.date: 08/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 22ab982abe9f73aa77cb9bb2c8d3eaa383bc42fb
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 13c982dcfab21371ea6017f730065cc5ced4b79e
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186213"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959568"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>Ausführen von Runbooks in einer Hybrid Runbook Worker-Instanz
 
@@ -304,6 +304,14 @@ Wenn Sie ein Runbook mit PowerShell starten, verwenden Sie das Cmdlet [Start-AzA
 ```azurepowershell-interactive
 Start-AzAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" -RunOn "MyHybridGroup"
 ```
+
+## <a name="logging"></a>Protokollierung
+
+Zur Unterstützung der Problembehandlung bei Runbooks, die auf einem Hybrid Runbook Worker ausgeführt werden, werden Protokolle lokal am folgenden Speicherort gespeichert:
+
+* Unter Windows unter `C:\ProgramData\Microsoft\System Center\Orchestrator\<version>\SMA\Sandboxes` mit einer ausführlichen Protokollierung des Laufzeitprozesses des Auftrags. Allgemeine Runbook-Auftragsstatusereignisse werden in das Ereignisprotokoll **Application and Services Logs\Microsoft-Automation\Operations** geschrieben.
+
+* Unter Linux finden Sie die Benutzerprotokolle für Hybrid Worker unter `/home/nxautomation/run/worker.log` und die Systemprotokolle für Runbook Worker unter `/var/opt/microsoft/omsagent/run/automationworker/worker.log`.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

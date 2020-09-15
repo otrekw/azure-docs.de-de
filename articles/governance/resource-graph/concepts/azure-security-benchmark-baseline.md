@@ -6,13 +6,13 @@ ms.service: resource-graph
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: d2ef76a054642807f0d72a758ae084a19557caf8
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: a85fdf1e1e27b1ce5abb0c7890b717d48ba3bd3f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009000"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230448"
 ---
 # <a name="azure-resource-graph-security-baseline-for-azure-security-benchmark"></a>Azure Resource Graph-Sicherheitsbaseline für Azure-Sicherheitsvergleichstest
 
@@ -41,13 +41,13 @@ Diese Sicherheitsbaseline wendet Empfehlungen des [Azure-Sicherheitsvergleichste
 
 *Weitere Informationen finden Sie unter [Sicherheitskontrolle: Datenschutz](../../../security/benchmarks/security-control-data-protection.md).*
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6: Verwenden der rollenbasierten Zugriffssteuerung zum Steuern des Zugriffs auf Ressourcen
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Verwenden von Azure RBAC zum Steuern des Zugriffs auf Ressourcen
 
-**Leitfaden**: Steuern Sie den Zugriff auf Daten und Ressourcen mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC). Für die Verwendung von Azure Resource Graph ist auch entsprechender Zugriff auf die abzufragenden Ressourcen erforderlich. Dabei sollte es sich um reinen Lesezugriff handeln, und dieser sollte lediglich den erforderlichen Mitarbeitern gewährt werden.
+**Leitfaden**: Steuern Sie den Zugriff auf Daten und Ressourcen mithilfe der rollenbasierten Zugriffssteuerung (Azure Role-Based Access Control, Azure RBAC). Für die Verwendung von Azure Resource Graph ist auch entsprechender Zugriff auf die abzufragenden Ressourcen erforderlich. Dabei sollte es sich um reinen Lesezugriff handeln, und dieser sollte lediglich den erforderlichen Mitarbeitern gewährt werden.
 
 * [Berechtigungen in Azure Resource Graph](../overview.md#permissions-in-azure-resource-graph)
 
-* [Konfigurieren von RBAC in Azure](../../../role-based-access-control/role-assignments-rest.md)
+* [Konfigurieren von Azure RBAC](../../../role-based-access-control/role-assignments-rest.md)
 
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar

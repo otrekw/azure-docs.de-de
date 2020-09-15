@@ -4,18 +4,18 @@ description: Enthält Antworten auf häufig gestellte Fragen zur Sicherung von S
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: d69a2aff900dc3185aafbcb2d655a29d2fff06e3
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: c1efbc44ae1e4bea96c063e4dc734f1cc53a42ac
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890554"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180098"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Häufig gestellte Fragen zu SQL Server-Datenbanken, die auf einer Azure VM-Sicherungsinstanz ausgeführt werden
 
 In diesem Artikel werden häufige Fragen zum Sichern von SQL Server-Datenbanken beantwortet, die auf virtuellen Azure-Computern (VMs) ausgeführt werden und für die der Dienst [Azure Backup](backup-overview.md) genutzt wird.
 
-## <a name="can-i-use-azure-backup-for-iaas-vm-as-well-as-sql-server-on-the-same-machine"></a>Kann ich Azure Backup für IaaS-VM und SQL Server auf demselben Computer verwenden?
+## <a name="can-i-use-azure-backup-for-iaas-vm-as-well-as-sql-server-on-the-same-machine"></a>Kann ich Azure Backup für IaaS-VMs und SQL Server auf demselben Computer verwenden?
 
 Ja – sowohl die VM-Sicherung als auch die SQL-Sicherung können sich auf demselben virtuellen Computer befinden. In diesem Fall lösen wir auf dem virtuellen Computer intern eine vollständige Kopiesicherung aus, damit die Protokolle nicht abgeschnitten werden.
 

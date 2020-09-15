@@ -101,6 +101,8 @@
           href: unresponsive-vm-apply-windows-update.md
         - name: 'Der virtuelle Computer reagiert nicht, während die Überwachungskonfigurationsrichtlinie angewendet wird.'
           href: vm-unresponsive-applying-audit-configuration-policy.md
+        - name: 'Der virtuelle Computer reagiert nicht, während die Standarddomänencontroller-Richtlinie angewendet wird.'
+          href: vm-unresponsive-domain-controllers-policy.md
         - name: 'Der virtuelle Computer reagiert nicht, wenn eine Gruppenrichtlinie angewendet wird.'
           href: unresponsive-vm-apply-group-policy.md
         - name: 'Der virtuelle Computer reagiert nicht, wenn eine Sicherheitsrichtlinie angewendet wird.'

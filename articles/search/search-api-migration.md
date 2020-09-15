@@ -7,28 +7,28 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: 06e25e1426f206a4542444f57954ed4859a11142
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 08/26/2020
+ms.openlocfilehash: 0f1050bf58e0cd8d9a601d60a4c5dc22a5420483
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927135"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949030"
 ---
-# <a name="upgrade-to-the-latest-azure-cognitive-search-service-rest-api-version"></a>Aktualisieren auf die aktuelle Version der REST-API für den Dienst für die kognitive Azure-Suche
+# <a name="upgrade-to-the-latest-rest-api-in-azure-cognitive-search"></a>Ausführen eines Upgrades auf die aktuelle Version der REST-API in Azure Cognitive Search
 
-Wenn Sie eine frühere Version der [Search-REST-API](/rest/api/searchservice/) verwenden, unterstützt dieser Artikel Sie beim Upgrade Ihrer Anwendung auf die neueste allgemein verfügbare API-Version 2020-06-30.
+Wenn Sie eine frühere Version der [**Search-REST-API**](/rest/api/searchservice/) verwenden, unterstützt dieser Artikel Sie beim Upgrade Ihrer Anwendung auf die neueste allgemein verfügbare API-Version **2020-06-30**.
 
-Version 2020-06-30 der REST-API enthält einige Änderungen im Vergleich zu früheren Versionen. Sie sind größtenteils abwärtskompatibel, daher sollte das Ändern von Code nur minimalen Aufwand bedeuten, abhängig davon, welche Version Sie zuvor verwendet haben. Unter [Schritte zum Upgrade](#UpgradeSteps) sind die erforderlichen Änderungen am Code zur Verwendung der neuen Funktionen beschrieben.
+Version 2020-06-30 enthält ein wichtiges neues Feature ([Wissensspeicher](knowledge-store-concept-intro.md)) und führt einige geringfügige Behavior Changes ein. Daher ist diese Version größtenteils abwärtskompatibel, sodass nur minimale Codeänderungen erforderlich sein sollten, wenn Sie ein Upgrade von der vorherigen Version (2019-05-06) ausführen.
 
 > [!NOTE]
-> Eine Dienstinstanz für die kognitive Azure-Suche unterstützt eine Reihe von REST-API-Versionen, einschließlich früherer Versionen. Sie können diese API-Versionen weiterhin verwenden, es wird jedoch empfohlen, den Code zur neuesten Version zu migrieren, damit Sie auf neue Funktionen zugreifen können.
+> Eine Suchdienst unterstützt eine Reihe von REST-API-Versionen, einschließlich früherer Versionen. Sie können diese API-Versionen weiterhin verwenden, es wird jedoch empfohlen, den Code zur neuesten Version zu migrieren, damit Sie auf neue Funktionen zugreifen können. Im Lauf der Zeit werden die alten Versionen der REST-API als veraltet markiert und [nicht mehr unterstützt](search-api-versions.md#unsupported-versions).
 
 <a name="UpgradeSteps"></a>
 
 ## <a name="how-to-upgrade"></a>Aktualisieren
 
-Beim Upgrade auf neue Versionen müssen Sie wahrscheinlich keine Änderungen an Ihrem Code vornehmen, außer die Versionsnummer zu ändern. Nur in folgenden Situationen müssen Sie möglicherweise Code ändern:
+Beim Upgrade auf eine neue Version müssen Sie wahrscheinlich keine Änderungen an Ihrem Code vornehmen, außer die Versionsnummer zu ändern. Nur in folgenden Situationen müssen Sie möglicherweise Code ändern:
 
 * Der Code erzeugt Fehler, wenn nicht erkannte Eigenschaften in einer API-Antwort zurückgegeben werden. Standardmäßig sollte die Anwendung Eigenschaften ignorieren, die sie nicht versteht.
 
@@ -63,7 +63,7 @@ Version 2019-05-06 ist der Vorgänger des neuesten allgemein verfügbaren Relea
 
 ### <a name="breaking-changes"></a>Aktuelle Änderungen
 
-Vorhandener Code, der für frühere API-Versionen geschrieben wurde, bricht mit der API-Version 2019-05-06 ab, wenn der Code folgende Funktionalität enthält:
+Vorhandener Code, der für frühere API-Versionen geschrieben wurde, wird ab API-Version 2019-05-06 unterbrochen, wenn der Code folgende Funktionen enthält:
 
 #### <a name="indexer-for-azure-cosmos-db---datasource-is-now-type-cosmosdb"></a>Indexer für Azure Cosmos DB: Datenquelle ist jetzt „type“: „cosmosdb“
 

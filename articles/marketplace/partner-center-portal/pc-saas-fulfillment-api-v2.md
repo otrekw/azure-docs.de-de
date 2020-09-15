@@ -7,20 +7,20 @@ ms.topic: reference
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: f40da30ff0d702078861367dea810cc8ca1ab91b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4a98207ef5b03f77a4f741894ec210f7551c5933
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87305141"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378133"
 ---
-# <a name="saas-fulfillment-apis-version-2-in-microsoft-commercial-marketplace"></a>SaaS-Fulfillment-APIs (Version 2) im kommerziellen Microsoft-Marketplace
+# <a name="saas-fulfillment-apis-version-2-in-the-commercial-marketplace"></a>SaaS-Fulfillment-APIs (Version 2) im kommerziellen Marketplace
 
 In diesem Artikel werden die APIs ausführlich beschrieben, mit denen Partner ihre SaaS-Angebote in Microsoft AppSource und im Azure Marketplace verkaufen können. Ein Herausgeber muss die Integration in diese APIs implementieren, um ein transaktionsfähiges SaaS-Angebot im Partner Center zu veröffentlichen.
 
 ## <a name="managing-the-saas-subscription-life-cycle"></a>Verwalten des Lebenszyklus von SaaS-Abonnements
 
-Azure Marketplace verwaltet den gesamten Lebenszyklus eines SaaS-Abonnements nach dem Erwerb durch den Endkunden.  Es werden die Angebotsseite, Fulfillment-APIs, Vorgangs-APIs und der Webhook als Mechanismus verwendet, um die tatsächliche Aktivierung und Nutzung des SaaS-Abonnements, Aktualisierungen und die Kündigung des Abonnements zu steuern.  Die Abrechnung für den Endkunden basiert auf dem Status des SaaS-Abonnements, das Microsoft verwaltet. 
+Der kommerzielle Marketplace verwaltet den gesamten Lebenszyklus eines SaaS-Abonnements nach dem Erwerb durch den Endkunden.  Es werden die Angebotsseite, Fulfillment-APIs, Vorgangs-APIs und der Webhook als Mechanismus verwendet, um die tatsächliche Aktivierung und Nutzung des SaaS-Abonnements, Aktualisierungen und die Kündigung des Abonnements zu steuern.  Die Abrechnung für den Endkunden basiert auf dem Status des SaaS-Abonnements, das Microsoft verwaltet. 
 
 ### <a name="states-of-a-saas-subscription"></a>Zustände eines SaaS-Abonnements
 
@@ -35,7 +35,7 @@ Nachdem ein Endkunde (oder CSP) ein SaaS-Angebot im Marketplace erworben hat, so
 Ablauf für die Kontoerstellung:
 
 1. Der Kunde muss auf die Schaltfläche **Konfigurieren** klicken, die nach dem erfolgreichen Kauf in Microsoft AppSource oder im Azure-Portal für ein SaaS-Angebot verfügbar ist. Diese kann auch in der E-Mail enthalten sein, die der Kunde kurz nach dem Kauf erhält.
-2. Anschließend benachrichtigt Microsoft den Partner über den Kauf, indem die URL der Angebotsseite mit dem Tokenparameter (dem Identifizierungstoken für den Marketplace-Kauf) auf der neuen Browserregisterkarte geöffnet wird.
+2. Anschließend benachrichtigt Microsoft den Partner über den Kauf, indem die URL der Angebotsseite mit dem Tokenparameter (dem Identifizierungstoken für den Kauf im kommerziellen Marketplace) auf der neuen Browserregisterkarte geöffnet wird.
 
 Ein Beispiel für einen solchen Aufruf ist `https://contoso.com/signup?token=<blob>`, wobei die URL der Angebotsseite für dieses SaaS-Angebot im Partner Center als `https://contoso.com/signup` konfiguriert ist. Dieses Token stellt dem Herausgeber eine ID bereit, die den SaaS-Kauf und den Kunden eindeutig identifiziert.
 
@@ -46,12 +46,12 @@ Die URL der Angebotsseite muss rund um die Uhr aktiv sein und jederzeit neue Auf
 
 Anschließend muss das *Token* vom Herausgeber zurück an Microsoft übergeben werden, indem die [SaaS-Auflösungs-API](#resolve-a-purchased-subscription) als Wert des Headerparameters `x-ms-marketplace-token header` aufgerufen wird.  Durch den Aufruf der Auflösungs-API wird das Token durch die Details des SaaS-Kaufs ersetzt, z. B. die eindeutige ID des Kaufs, die ID des erworbenen Angebots, die ID des erworbenen Plans usw.
 
-Auf der Angebotsseite sollte der Kunde über einmaliges Anmelden (Single Sign-On, SSO) in Azure Active Directory (AAD) am neuen oder vorhandenen SaaS-Konto angemeldet sein.
+Auf der Angebotsseite sollte der Kunde über einmaliges Anmelden (Single Sign-On, SSO) von Azure Active Directory (Azure AD) beim neuen oder vorhandenen SaaS-Konto angemeldet sein.
 
 Der Herausgeber sollte die SSO-Anmeldung implementieren, um die von Microsoft für diesen Ablauf benötigte Benutzerfunktion bereitzustellen.  Stellen Sie sicher, dass Sie beim Konfigurieren von SSO eine mehrinstanzenfähige Azure AD-Anwendung verwenden und sowohl Geschäfts-, Schul- oder Unikonten als auch persönliche Microsoft-Konten zulassen.  Diese Anforderung gilt nur für die Angebotsseite und für Benutzer, die an den SaaS-Dienst weitergeleitet werden, wenn sie bereits mit Microsoft-Anmeldeinformationen angemeldet sind. Sie gilt nicht für alle Anmeldungen beim SaaS-Dienst.
 
 > [!NOTE]
->Wenn die SSO-Anmeldung erfordert, dass ein Administrator die Berechtigung für eine App erteilt, muss in der Beschreibung des Angebots im Partner Center angegeben sein, dass ein Zugriff auf Administratorebene erforderlich ist. Dadurch wird den [Zertifizierungsrichtlinien für den Marketplace](https://docs.microsoft.com/legal/marketplace/certification-policies#10003-authentication-options) entsprochen.
+>Wenn die SSO-Anmeldung erfordert, dass ein Administrator die Berechtigung für eine App erteilt, muss in der Beschreibung des Angebots im Partner Center angegeben sein, dass ein Zugriff auf Administratorebene erforderlich ist. Dadurch wird den [Zertifizierungsrichtlinien für den kommerziellen Marketplace](https://docs.microsoft.com/legal/marketplace/certification-policies#10003-authentication-options) entsprochen.
 
 Nach der Anmeldung sollte der Kunde die SaaS-Konfiguration auf Herausgeberseite vervollständigen. Anschließend muss der Herausgeber die [API zum Aktivieren des Abonnements](#activate-a-subscription) aufrufen, um ein Signal an den Marketplace zu senden, dass die Bereitstellung des SaaS-Kontos abgeschlossen ist.
 Dadurch wird der Abrechnungszeitraum des Kunden gestartet. Wird die API zum Aktivieren des Abonnements nicht erfolgreich aufgerufen, wird dem Kunden der Kauf nicht in Rechnung gestellt.
@@ -69,14 +69,14 @@ Wenn das SaaS-Abonnement bereits aktiv ist und der Kunde die SaaS-Funktion **Ver
 
 Diese Aktion bedeutet, dass eine Aktualisierung für ein vorhandenes aktives SaaS-Abonnement sowohl von Microsoft als auch vom Herausgeber verarbeitet wird. Eine solche Aktualisierung kann auf folgende Arten initiiert werden:
 
-* vom Kunden über den Marketplace
-* vom CSP über den Marketplace
-* vom Kunden über die SaaS-Website des Herausgebers (gilt nicht für vom CSP getätigte Käufe)
+- vom Kunden über den kommerziellen Marketplace
+- vom CSP über den kommerziellen Marketplace
+- vom Kunden über die SaaS-Website des Herausgebers (gilt nicht für vom CSP getätigte Käufe)
 
 Für ein SaaS-Abonnement sind zwei Arten von Aktualisierungen verfügbar:
 
-1. Aktualisierung des Plans, wenn der Kunde einen anderen Plan für das Abonnement auswählt
-1. Aktualisierung der Menge, wenn der Kunde die Anzahl erworbener Arbeitsplätze für das Abonnement ändert
+- Aktualisierung des Plans, wenn der Kunde einen anderen Plan für das Abonnement auswählt
+- Aktualisierung der Menge, wenn der Kunde die Anzahl erworbener Arbeitsplätze für das Abonnement ändert
 
 Nur ein aktives Abonnement kann aktualisiert werden. Während das Abonnement aktualisiert wird, lautet der Status auf Microsoft-Seite weiterhin „Aktiv“.
 
@@ -976,6 +976,6 @@ Supportoptionen für Herausgeber finden Sie unter [Support für das Programm „
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Optionen für SaaS-Angebote im Marketplace finden Sie unter [Marketplace-Messungsdienst-APIs](marketplace-metering-service-apis.md).
+Weitere Optionen für SaaS-Angebote im kommerziellen Marketplace finden Sie unter [APIs für getaktete Abrechnung im Marketplace](marketplace-metering-service-apis.md).
 
 Überprüfen und verwenden Sie das [SaaS SDK](https://github.com/Azure/Microsoft-commercial-marketplace-transactable-SaaS-offer-SDK), das auf den in diesem Dokument beschriebenen APIs basiert.

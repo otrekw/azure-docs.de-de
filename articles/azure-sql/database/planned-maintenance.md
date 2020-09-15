@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: carlrab
 ms.date: 08/25/2020
-ms.openlocfilehash: 85459f357032a7f9944d50e3e4f3929015c6dcfd
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 4c7b78f14602632068a19d520aeeb940b543be61
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869116"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948214"
 ---
 # <a name="plan-for-azure-maintenance-events-in-azure-sql-database-and-azure-sql-managed-instance"></a>Planen von Azure-Wartungsereignissen in Azure SQL-Datenbank und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -24,6 +24,8 @@ ms.locfileid: "88869116"
 Es wird beschrieben, wie Sie Ereignisse der geplanten Wartung in Ihrer Datenbank für Azure SQL-Datenbank und für verwaltete Azure SQL-Instanzen vorbereiten.
 
 ## <a name="what-is-a-planned-maintenance-event"></a>Was ist ein geplantes Wartungsereignis?
+
+Damit die Dienste Azure SQL-Datenbank und Azure SQL Managed Instance sicher, konform, stabil und leistungsfähig bleiben, werden nahezu fortlaufend Updates über die Dienstkomponenten ausgeführt. Dank der modernen und robusten Dienstarchitektur und innovativer Technologien wie [Hotpatching](https://aka.ms/azuresqlhotpatching) sind die meisten Updates in Bezug auf die Dienstverfügbarkeit vollständig transparent und stellen keine Beeinträchtigung dar. Trotzdem verursachen einige Arten von Updates kurze Dienstunterbrechungen und erfordern eine besondere Behandlung. 
 
 Für jede Datenbank halten Azure SQL-Datenbank und verwaltete Azure SQL-Instanzen ein bestimmtes Quorum an Datenbankreplikaten vor, von denen eines das primäre Replikat ist. Zu jeder Zeit muss ein primäres Replikat online in Betrieb sein, und mindestens ein sekundäres Replikat muss fehlerfrei sein. Während der geplanten Wartung werden die Mitglieder des Datenbankquorums nacheinander mit der Absicht offline geschaltet, dass ein antwortendes primäres Replikat und mindestens ein sekundäres Replikat online vorhanden ist, um sicherzustellen, dass es keine Ausfallzeiten des Clients auftreten. Wenn das primäre Replikat offline geschaltet werden muss, erfolgt ein Neukonfigurations-/Failoverprozess, bei dem ein sekundäres Replikat zum neuen primären Replikat wird.  
 

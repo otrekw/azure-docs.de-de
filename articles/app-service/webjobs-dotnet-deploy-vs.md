@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp, vs-azure
 ms.date: 07/30/2020
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 14bb693ccaa1b1d16a1d07b7ee1cdeb4493960f5
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: de10903be86b52b3415b57a53be81e7fd1661f63
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212878"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226028"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio"></a>Entwickeln und Bereitstellen von WebJobs mit Visual Studio
 
@@ -55,7 +55,7 @@ Stellen Sie ein Projekt als eigenständigen WebJob bereit, oder verknüpfen Sie 
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-Installation von Visual Studio 2017 oder Visual Studio 2019 mit der [Azure-Entwicklungsworkload](https://docs.microsoft.com/visualstudio/install/install-visual-studio#step-4---choose-workloads)
+Installation von Visual Studio 2017 oder Visual Studio 2019 mit der [Azure-Entwicklungsworkload](/visualstudio/install/install-visual-studio#step-4---choose-workloads)
 
 ### <a name="enable-webjobs-deployment-for-an-existing-console-app-project"></a><a id="convert"></a> Aktivieren der WebJobs-Bereitstellung für ein vorhandenes Konsolen-App-Projekt
 
@@ -184,9 +184,9 @@ WebJob-Bereitstellungsinformationen:
 
 Der Typ eines WebJobs kann entweder *Ausgelöst* oder *Fortlaufend* sein:
 
-- Ausgelöst (Standardtyp): Ein ausgelöster WebJob wird basierend auf einem Bindungsereignis, nach einem [Zeitplan](#scheduling-a-triggered-webjob) oder bei manuellem Auslösen (bedarfsgesteuert) gestartet. Er wird auf allen Instanzen ausgeführt, auf denen die Web-App ausgeführt wird, jedoch können Sie den WebJob optional auf eine einzelne Instanz beschränken.
+- Ausgelöst (Standardtyp): Ein ausgelöster WebJob wird basierend auf einem Bindungsereignis, nach einem [Zeitplan](#scheduling-a-triggered-webjob) oder bei manuellem Auslösen (bedarfsgesteuert) gestartet. Er wird in einer einzelnen Instanz ausgeführt, in der die Web-App ausgeführt wird.
 
-- Fortlaufend: Ein [fortlaufender](#continuous-execution) WebJob wird sofort nach Erstellung des WebJobs gestartet. Diese Art von WebJob eignet sich am besten für ungebundene oder langfristige Aufträge. Wenn der Auftrag beendet ist, können Sie ihn neu starten.  
+- Fortlaufend: Ein [fortlaufender](#continuous-execution) WebJob wird sofort nach Erstellung des WebJobs gestartet. Er wird standardmäßig für alle skalierten Web-App-Instanzen ausgeführt, kann jedoch über *settings.job* so konfiguriert werden, dass er als einzelne Instanz ausgeführt wird.
 
 [!INCLUDE [webjobs-alwayson-note](../../includes/webjobs-always-on-note.md)]
 

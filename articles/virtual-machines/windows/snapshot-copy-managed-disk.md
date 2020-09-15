@@ -1,6 +1,6 @@
 ---
-title: Erstellen einer Momentaufnahme einer virtuellen Festplatte in Azure
-description: Erfahren Sie, wie eine Kopie eines virtuellen Azure-Computers als Sicherung oder für die Behandlung von Problemen erstellen.
+title: Erstellen einer Momentaufnahme einer virtuellen Festplatte über das Portal oder PowerShell
+description: Erfahren Sie, wie eine Kopie einer Azure-VM als Sicherung oder für die Behandlung von Problemen über das Portal oder PowerShell erstellen.
 author: roygara
 manager: twooley
 ms.service: virtual-machines-windows
@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: e5ecb99c7f64d81d57c5d6d2cb25967913a752b4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c0fddca70ca09f0a3abb3c84672e20a42551ecd5
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074129"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322312"
 ---
-# <a name="create-a-snapshot"></a>Erstellen einer Momentaufnahme
+# <a name="create-a-snapshot-using-the-portal-or-powershell"></a>Erstellen einer Momentaufnahme über das Portal oder PowerShell
 
 Eine Momentaufnahme ist eine vollständige, schreibgeschützte Kopie einer virtuellen Festplatte (Virtual Hard Drive, VHD). Sie können eine Momentaufnahme eines Betriebssystem- oder VHD-Datenträgers zur Verwendung als Sicherung oder zum Beheben von VM-Problemen erstellen.
 

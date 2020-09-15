@@ -3,12 +3,12 @@ title: Grundlegendes zur Abfragesprache
 description: Beschreibt Resource Graph-Tabellen und die verfügbaren Kusto-Datentypen, -Operatoren und -Funktionen, die mit Azure Resource Graph verwendet werden können.
 ms.date: 08/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4d7ca949e9eef075adb130bb84b2617749950bec
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 965fb6a009306ccebc5daa34ec4ec8d70157e56c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798549"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299047"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Grundlegendes zur Azure Resource Graph-Abfragesprache
 
@@ -142,7 +142,7 @@ Es folgt eine Liste der von Resource Graph unterstützten tabellarischen KQL-Ope
 Der Bereich der Abonnements, aus denen Ressourcen von einer Abfrage zurückgegeben werden, hängt von der Methode des Zugriffs auf Resource Graph ab. Azure CLI und Azure PowerShell füllen die Liste der Abonnements, die in die Anforderung eingeschlossen werden sollen, basierend auf dem Kontext des autorisierten Benutzers auf. Die Liste der Abonnements kann jeweils manuell mit dem Parameter **subscriptions** bzw. **Subscription** definiert werden.
 In der REST-API und allen anderen SDKs muss die Liste der Abonnements, aus denen Ressourcen eingeschlossen werden sollen, explizit als Teil der Anforderung definiert werden.
 
-Als **Vorschau** fügt die REST-API-Version `2020-04-01-preview` eine Eigenschaft hinzu, um die Abfrage auf eine [Verwaltungsgruppe](../../management-groups/overview.md) zu beschränken. In dieser Vorschau-API ist außerdem die Abonnementeigenschaft optional. Wenn weder eine Verwaltungsgruppe noch eine Abonnementliste definiert ist, umfasst der Abfragebereich alle Ressourcen, auf die der authentifizierte Benutzer zugreifen kann. Die neue Eigenschaft `managementGroupId` übernimmt die Verwaltungsgruppen-ID, die sich von dem Namen der Verwaltungsgruppe unterscheidet. Wenn `managementGroupId` angegeben ist, werden Ressourcen aus den ersten 5000 Abonnements in oder unter der angegebenen Verwaltungsgruppenhierarchie eingeschlossen. `managementGroupId` kann nicht gleichzeitig mit `subscriptions` verwendet werden.
+Als **Vorschau** fügt die REST-API-Version `2020-04-01-preview` eine Eigenschaft hinzu, um die Abfrage auf eine [Verwaltungsgruppe](../../management-groups/overview.md) zu beschränken. In dieser Vorschau-API ist außerdem die Abonnementeigenschaft optional. Wenn weder eine Verwaltungsgruppe noch eine Abonnementliste definiert ist, umfasst der Abfragebereich alle Ressourcen, auf die der authentifizierte Benutzer zugreifen kann, einschließlich delegierter [Azure Lighthouse](../../../lighthouse/concepts/azure-delegated-resource-management.md)-Ressourcen. Die neue Eigenschaft `managementGroupId` übernimmt die Verwaltungsgruppen-ID, die sich von dem Namen der Verwaltungsgruppe unterscheidet. Wenn `managementGroupId` angegeben ist, werden Ressourcen aus den ersten 5000 Abonnements in oder unter der angegebenen Verwaltungsgruppenhierarchie eingeschlossen. `managementGroupId` kann nicht gleichzeitig mit `subscriptions` verwendet werden.
 
 Beispiel: Abfragen aller Ressourcen in der Hierarchie der Verwaltungsgruppe mit Namen „My Management Group“ mit der ID „myMG“
 

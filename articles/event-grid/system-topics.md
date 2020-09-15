@@ -2,13 +2,13 @@
 title: Systemthemen in Azure Event Grid
 description: Hier werden die Systemthemen in Azure Event Grid beschrieben.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 655ec5f0ad23b3902c1c99ba75eef2ef428911eb
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 08/27/2020
+ms.openlocfilehash: f5ca472ab5141207222987d476284813c2aacf56
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119921"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019095"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Systemthemen in Azure Event Grid
 Ein Systemthema in Event Grid stellt ein oder mehrere Ereignisse dar, die von Azure-Diensten wie Azure Storage und Azure Event Hubs veröffentlicht wurden. Beispielsweise kann ein Systemthema **alle Blobereignisse** oder nur für ein **bestimmtes Speicherkonto** veröffentlichte **Bloberstellungs-** und **Bloblöschungsereignisse** darstellen. Wenn in diesem Beispiel ein Blob in das Speicherkonto hochgeladen wird, veröffentlicht der Dienst Azure Storage ein **Bloberstellungsereignis** im Systemthema in Event Grid. Event Grid leitet dieses Ereignis dann an die [Abonnenten](event-handlers.md) des Themas weiter, die es empfangen und verarbeiten. 
@@ -57,7 +57,7 @@ Beim Erstellen von Systemthemen tritt ein Fehler auf, wenn Sie Azure-Richtlinien
 ## <a name="location-and-resource-group-for-a-system-topic"></a>Ort und Ressourcengruppe für ein Systemthema
 Für Azure-Ereignisquellen, die sich in einer bestimmten Region bzw. einem bestimmten Speicherort befinden, wird das Systemthema am gleichen Speicherort erstellt wie die Azure-Ereignisquelle. Wenn Sie beispielsweise ein Ereignisabonnement für Azure Blob Storage in der Region „USA, Osten“ erstellen, wird das Systemthema in „USA, Osten“ erstellt. Für globale Azure-Ereignisquellen wie Azure-Abonnements, Ressourcengruppen oder Azure Maps erstellt Event Grid das Systemthema an einem **globalen** Speicherort. 
 
-Im Allgemeinen wird das Systemthema in derselben Ressourcengruppe erstellt, in der sich auch die Azure-Ereignisquelle befindet. Für Ereignisabonnements, die im Bereich des Azure-Abonnements erstellt wurden, wird das Systemthema unter der Ressourcengruppe **Default-EventGrid** erstellt. Wenn die Ressourcengruppe nicht vorhanden ist, wird diese von Azure Event Grid vor dem Systemthema erstellt. 
+Im Allgemeinen wird das Systemthema in derselben Ressourcengruppe erstellt, in der sich auch die Azure-Ereignisquelle befindet. Für Ereignisabonnements, die im Bereich des Azure-Abonnements erstellt wurden, wird das Systemthema in der Ressourcengruppe **Default-EventGrid** in der Region **USA, Westen 2** erstellt. Wenn die Ressourcengruppe nicht vorhanden ist, wird diese von Azure Event Grid vor dem Systemthema erstellt. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie in folgenden Artikeln: 

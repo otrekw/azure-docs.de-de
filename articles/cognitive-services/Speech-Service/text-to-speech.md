@@ -1,27 +1,29 @@
 ---
-title: Text-zu-Sprache – Speech-Dienst
+title: 'Übersicht über die Sprachsynthese: Speech-Dienst'
 titleSuffix: Azure Cognitive Services
-description: Das Feature Text-zu-Sprache in Speech-Dienst ermöglicht es Ihren Anwendungen, Tools oder Geräten, Text in natürliche, menschenähnliche synthetisierte Sprache umzuwandeln. Wählen Sie voreingestellte Stimmen aus, oder erstellen Sie Ihre eigene benutzerdefinierte Stimme.
+description: Das Feature Text-zu-Sprache in Speech-Dienst ermöglicht es Ihren Anwendungen, Tools oder Geräten, Text in natürliche, menschenähnliche synthetisierte Sprache umzuwandeln. Dieser Artikel bietet einen Überblick über die Vorteile und Funktionen des Sprachsynthesediensts.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 09/01/2020
 ms.author: trbye
-ms.openlocfilehash: 42d5ca12e91de5e0e906fb017183ea684b63b49c
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.custom: cog-serv-seo-aug-2020
+keywords: Sprachsynthese
+ms.openlocfilehash: 8b8430135ffd15e8331b654628236a315f10cce3
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167707"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401179"
 ---
 # <a name="what-is-text-to-speech"></a>Was ist Text-zu-Sprache?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Text-zu-Sprache im Speech-Dienst ermöglicht es Ihren Anwendungen, Tools oder Geräten, Text in menschenähnliche synthetisierte Sprache zu konvertieren. Wählen Sie aus Standard- und neuronalen Stimmen, oder erstellen Sie eine benutzerdefinierte Stimme, die für Ihr Produkt oder Ihre Marke exklusiv ist. Mehr als 75 Standardstimmen sind in mehr als 45 Sprachen und Gebietsschemas verfügbar, und 5 neuronale Stimmen sind in einer ausgewählten Anzahl von Sprachen und Gebietsschemas verfügbar. Eine vollständige Liste der unterstützten Stimmen, Sprachen und Gebietsschemas finden Sie unter [unterstützte Sprachen](language-support.md#text-to-speech).
+In dieser Übersicht erfahren Sie mehr über die Vorteile und Funktionen des Sprachsynthesediensts, der Ihren Anwendungen, Tools oder Geräten das Konvertieren von Text in menschenähnliche synthetisierte Sprache ermöglicht. Wählen Sie aus Standard- und neuronalen Stimmen, oder erstellen Sie eine benutzerdefinierte Stimme, die für Ihr Produkt oder Ihre Marke exklusiv ist. Mehr als 75 Standardstimmen sind in mehr als 45 Sprachen und Gebietsschemas verfügbar, und 5 neuronale Stimmen sind in einer ausgewählten Anzahl von Sprachen und Gebietsschemas verfügbar. Eine vollständige Liste der unterstützten Stimmen, Sprachen und Gebietsschemas finden Sie unter [unterstützte Sprachen](language-support.md#text-to-speech).
 
 > [!NOTE]
 > Die Bing-Spracheingabe wurde am 15. Oktober 2019 eingestellt. Wenn Ihre Anwendungen, Tools oder Produkte die Bing-Spracheingabe-APIs oder Custom Speech verwenden, finden Sie in den nachfolgend aufgelisteten Leitfäden Informationen zur Migration zum Speech-Dienst.

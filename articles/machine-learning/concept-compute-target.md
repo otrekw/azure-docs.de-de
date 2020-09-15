@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: 27c129af9fbf3e76c6c57fbf084596876b51955b
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 805141dedddcd915d266c9651fc51732fb51e1b0
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141924"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146730"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Was sind Computeziele in Azure Machine Learning? 
 
@@ -33,7 +33,7 @@ Azure Machine Learning bietet unterschiedliche Unterstützung für verschiedene 
 
 [!INCLUDE [aml-compute-target-train](../../includes/aml-compute-target-train.md)]
 
-Erfahren Sie mehr über das [Einrichten und Verwenden eines Computeziels für das Modelltraining](how-to-set-up-training-targets.md).
+Erfahren Sie mehr über das [Verwenden eines Computeziels für das Modelltraining](how-to-set-up-training-targets.md).
 
 ## <a name="deployment-targets"></a><a name="deploy"></a>Bereitstellungsziele
 
@@ -46,10 +46,10 @@ Erfahren Sie, [wo und wie Sie Ihr Modell auf einem Computeziel bereitstellen](ho
 <a name="amlcompute"></a>
 ## <a name="azure-machine-learning-compute-managed"></a>Azure Machine Learning-Computeressource (verwaltet)
 
-Eine verwaltete Computeressource wird von Azure Machine Learning erstellt und verwaltet. Diese Computeressource ist für Machine Learning-Workloads optimiert. Azure Machine Learning-Computecluster und -[Compute-Instanzen](concept-compute-instance.md) sind die einzigen verwalteten Computeressourcen. Möglicherweise werden künftig weitere verwaltete Computeressourcen hinzugefügt.
+Eine verwaltete Computeressource wird von Azure Machine Learning erstellt und verwaltet. Diese Computeressource ist für Machine Learning-Workloads optimiert. Azure Machine Learning-Computecluster und -[Compute-Instanzen](concept-compute-instance.md) sind die einzigen verwalteten Computeressourcen. 
 
 Sie können Azure Machine Learning-Compute-Instanzen oder -Computecluster erstellen mithilfe von:
-* Azure Machine Learning Studio
+* [Azure Machine Learning Studio](how-to-create-attach-compute-studio.md)
 * Azure-Portal
 * Python SDK-Klassen [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py) und [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py)
 * [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets) (Vorschau)
@@ -68,7 +68,7 @@ Nach der Erstellung sind diese Computeressourcen im Gegensatz zu anderen Arten v
 
 
 > [!NOTE]
-> Wenn sich ein Computecluster im Leerlauf befindet, wird er automatisch auf 0 Knoten skaliert. Es entstehen also keine Kosten, wenn der Cluster nicht verwendet wird.  Eine Compute*instanz* ist jedoch immer verfügbar und wird nicht automatisch skaliert.  Sie sollten [Computeinstanzen anhalten](tutorial-1st-experiment-sdk-train.md#stop-the-compute-instance), wenn Sie sie nicht verwenden, um unnötige Kosten zu vermeiden.
+> Wenn sich ein Computecluster im Leerlauf befindet, wird er automatisch auf 0 Knoten skaliert. Es entstehen also keine Kosten, wenn der Cluster nicht verwendet wird.  Eine Compute*instanz* ist jedoch immer verfügbar und wird nicht automatisch skaliert.  Sie sollten [Computeinstanzen anhalten](tutorial-1st-experiment-sdk-train.md#stop-the-compute-instance), wenn Sie sie nicht verwenden, um unnötige Kosten zu vermeiden. 
 
 ### <a name="supported-vm-series-and-sizes"></a>Unterstützte VM-Serien und -Größen
 
@@ -107,5 +107,5 @@ Ein nicht verwaltetes Computeziel wird *nicht* von Azure Machine Learning verwal
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Artikel werden folgende Themen erläutert:
-* [Einrichten eines Computeziels für das Modelltraining](how-to-set-up-training-targets.md)
+* [Einrichten und Verwenden von Computezielen für das Modelltraining](how-to-set-up-training-targets.md)
 * [Bereitstellen Ihres Modells auf einem Computeziel](how-to-deploy-and-where.md)

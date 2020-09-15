@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: fb10effce8b94a6443e1daa8dadaa99111da0d4e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a9ac55802e4bcc435bb4bd6fd4af8977db9fd293
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094989"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950458"
 ---
 # <a name="streaming-ingestion-throughput-limits"></a>Durchsatzlimits für Datenstromerfassung
 
@@ -34,7 +34,7 @@ Standardmäßig kann Azure Time Series Insights Gen2 eingehende Daten mit einer 
 
 > [!TIP]
 >
-> * Die Umgebungsunterstützung für Erfassungsgeschwindigkeiten von bis zu 16 MBit/s kann auf Anfrage bereitgestellt werden.
+> * Die Umgebungsunterstützung für Erfassungsgeschwindigkeiten von bis zu 8 MBit/s kann auf Anfrage bereitgestellt werden.
 > * Falls Sie einen höheren Durchsatz benötigen, können Sie sich an uns wenden, indem Sie über das Azure-Portal ein Supportticket senden.
  
 * **Beispiel 1:**
@@ -42,16 +42,16 @@ Standardmäßig kann Azure Time Series Insights Gen2 eingehende Daten mit einer 
     Contoso Shipping verfügt über 100.000 Geräte, die dreimal pro Minute ein Ereignis ausgeben. Die Größe eines Ereignisses beträgt 200 Byte. Als Azure Time Series Insights Gen2-Ereignisquelle wird eine IoT Hub-Instanz mit vier Partitionen genutzt.
 
     * Die Erfassungsrate für die Azure Time Series Insights Gen2-Umgebung lautet wie folgt: **100.000 Geräte · 200 Byte/Ereignis · (3/60 Ereignis/s) = 1 MBit/s**.
-    * Die Erfassungsrate pro Partition wäre 0,25 Mbit/s.
+    * Unter der Annahme ausgeglichener Partitionen wäre die Erfassungsrate pro Partition 0,25 MBit/s.
     * Die Erfassungsrate von Contoso Shipping läge damit innerhalb der Skalierungseinschränkungen.
 
 * **Beispiel 2:**
 
-    Contoso Fleet Analytics verfügt über 60.000 Geräte, die jede Sekunde ein Ereignis ausgeben. Als Azure Time Series Insights Gen2-Ereignisquelle wird eine Event Hub-Instanz mit vier Partitionen genutzt. Die Größe eines Ereignisses beträgt 200 Byte.
+    Contoso Fleet Analytics verfügt über 40.000 Geräte, die jede Sekunde ein Ereignis ausgeben. Als Azure Time Series Insights Gen2-Ereignisquelle wird eine Event Hub-Instanz mit zwei Partitionen genutzt. Die Größe eines Ereignisses beträgt 200 Byte.
 
-    * Die Erfassungsrate der Umgebung wäre wie folgt: **60.000 Geräte x 200 Byte/Ereignis x 1 Ereignis/s = 12 MBit/s**.
-    * Die Rate pro Partition wäre dann 3 MBit/s.
-    * Die Erfassungsrate von Contoso Fleet Analytics liegt über den Umgebungs- und Partitionsgrenzwerten. Eine Anforderung an Azure Time Series Insights Gen2 kann über das Azure-Portal übermittelt werden, um die Erfassungsrate für die Umgebung zu erhöhen. Außerdem kann ein Event Hub mit einer größeren Anzahl Partitionen erstellt werden, um die Grenzwerte einzuhalten.
+    * Die Erfassungsrate der Umgebung wäre wie folgt: **40.000 Geräte × 200 Byte/Ereignis × 1 Ereignis/s = 8 MBit/s**.
+    * Unter der Annahme ausgeglichener Partitionen wäre die Rate pro Partition 4 MBit/s.
+    * Die Erfassungsrate von Contoso Fleet Analytics liegt über den Umgebungs- und Partitionsgrenzwerten. Eine Anforderung an Azure Time Series Insights Gen2 kann über das Azure-Portal übermittelt werden, um die Erfassungsrate für die Umgebung zu erhöhen. Außerdem kann ein Event Hub mit einer größeren Anzahl von Partitionen erstellt werden, um die Grenzwerte einzuhalten.
 
 ## <a name="hub-partitions-and-per-partition-limits"></a>Hub-Partitionen und Limits pro Partition
 

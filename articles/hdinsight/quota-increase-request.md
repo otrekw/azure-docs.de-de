@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/07/2020
-ms.openlocfilehash: 4de32bad763c0bbf0e143a7ce639efec8c9c41ae
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f8411176e0979bdb894983bcf866abd0e1109e21
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079614"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291666"
 ---
 # <a name="requesting-quota-increases-for-azure-hdinsight"></a>Anfordern einer Erhöhung von Kontingenten für Azure HDInsight
 
@@ -65,7 +65,7 @@ Gehen Sie wie folgt vor, um eine Kontingenterhöhung anzufordern:
 1. Wählen Sie auf der Registerkarte **Überprüfen + erstellen** die Option **Erstellen** aus.
 
 > [!NOTE]  
-> Wenn Sie das HDInsight-Kernkontingent in einer privaten Region erhöhen müssen, [senden Sie eine Whitelist-Anforderung](https://aka.ms/canaryintwhitelist).
+> Wenn Sie das HDInsight-Kernkontingent in einer privaten Region erhöhen müssen, [senden Sie eine Anforderung für eine genehmigte Liste](https://aka.ms/canaryintwhitelist).
 
 Sie können [sich an den Support wenden, um eine Erhöhung von Kernkontingenten anzufordern](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request).
 

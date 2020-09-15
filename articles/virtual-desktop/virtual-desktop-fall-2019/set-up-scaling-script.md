@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f4092b9d5ee7453533561f5921781fee4d1823eb
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: fd14af6c95654708f339f4a68cd333d0e3162553
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005583"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078179"
 ---
 # <a name="scale-windows-virtual-desktop-classic-session-hosts-using-azure-automation"></a>Skalieren von Windows Virtual Desktop-Sitzungshosts (klassisch) mit Azure Automation
 
@@ -21,10 +21,6 @@ ms.locfileid: "88005583"
 Sie können die Gesamtkosten für die Bereitstellung von Windows Virtual Desktop verringern, indem Sie Ihre virtuellen Computer (VMs) skalieren. Das bedeutet, dass Sie die Sitzungshost-VMs außerhalb der Spitzenzeiten herunterfahren und ihre Zuordnung aufheben und sie dann während der Spitzenzeiten wieder einschalten und erneut zuordnen.
 
 In diesem Artikel erfahren Sie mehr über das mit dem Azure Automation-Konto und Azure Logic Apps erstellte Skalierungstool, mit dem die VMs der Sitzungshosts in Ihrer Windows Virtual Desktop-Umgebung automatisch skaliert werden. Um zu erfahren, wie Sie das Skalierungstool verwenden, fahren Sie mit dem Abschnitt [Voraussetzungen](#prerequisites) fort.
-
-## <a name="report-issues"></a>Melden von Problemen
-
-Problemberichte für das Skalierungstool werden derzeit auf GitHub anstatt auf der Microsoft-Support-Seite verarbeitet. Wenn ein Problem mit dem Skalierungstool auftritt, rufen Sie die erforderlichen Informationen aus den Beschreibungen im Abschnitt [Melden von Problemen](#reporting-issues) ab, und öffnen Sie auf der [GitHub-Seite von RDS](https://github.com/Azure/RDS-Templates/issues?q=is%3Aissue+is%3Aopen+label%3A4a-WVD-scaling-logicapps) ein GitHub-Problem mit der Bezeichnung „4a-WVD-scaling-logicapps“.
 
 ## <a name="how-the-scaling-tool-works"></a>Funktionsweise des Skalierungstools
 
@@ -362,3 +358,7 @@ Wenn Sie sich für die Verwendung von Log Analytics entschieden haben, können S
     | where logmessage_s contains "ERROR:" or logmessage_s contains "WARN:"
     | project TimeStampUTC = TimeGenerated, TimeStampLocal = TimeStamp_s, HostPool = hostpoolName_s, LineNumAndMessage = logmessage_s, AADTenantId = TenantId
     ```
+
+## <a name="report-issues"></a>Melden von Problemen
+
+Problemberichte für das Skalierungstool werden derzeit vom Microsoft-Support bearbeitet. Wenn Sie einen Problembericht erstellen, befolgen Sie die Anweisungen unter [Melden von Problemen](#reporting-issues). Wenn Sie Feedback zum Tool haben oder neue Features anfordern möchten, öffnen Sie auf der [GitHub-Seite für RDS](https://github.com/Azure/RDS-Templates/issues?q=is%3Aissue+is%3Aopen+label%3A4-WVD-scaling-tool) ein GitHub-Problem mit der Bezeichnung „4-WVD-scaling-tool“.

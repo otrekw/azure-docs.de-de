@@ -1,23 +1,24 @@
 ---
 title: Verwenden des Ethereum-Blockchain-Connectors mit Azure Logic Apps – Azure Blockchain Service
 description: Es wird beschrieben, wie Sie den Ethereum-Blockchain-Connector mit Azure Logic Apps zum Auslösen von Smart Contract-Funktionen und zum Reagieren auf Smart Contract-Ereignisse verwenden.
-ms.date: 10/14/2019
+ms.date: 08/31/2020
 ms.topic: how-to
-ms.reviewer: chrisseg
-ms.openlocfilehash: 61dbda7cd7f486c7a8d838084875b34803833502
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.reviewer: caleteet
+ms.openlocfilehash: 4364d2f616c8eaadedf12baf4bf77810eec69fdb
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077030"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230533"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>Verwenden des Ethereum-Blockchain-Connectors mit Azure Logic Apps
 
-Verwenden Sie den [Ethereum-Blockchain-Connector](/connectors/blockchainethereum/) mit [Azure Logic Apps](../../logic-apps/index.yml) zum Ausführen von Smart Contract-Funktionen sowie zum Reagieren auf Smart Contract-Ereignisse. Angenommen, Sie möchten einen REST-basierten Microservice erstellen, der Informationen von einem Blockchainledger zurückgibt. Mithilfe einer Logik-App können Sie HTTP-Anforderungen akzeptieren, die in einem Blockchainledger gespeicherte Informationen abfragen.
+Verwenden Sie den [Ethereum-Blockchain-Connector](/connectors/blockchainethereum/) mit [Azure Logic Apps](../../logic-apps/index.yml) zum Ausführen von Smart Contract-Funktionen sowie zum Reagieren auf Smart Contract-Ereignisse. In diesem Artikel wird erläutert, wie Sie mit dem Ethereum Blockchain-Connector Blockchaininformationen an einen anderen Dienst senden oder eine Blockchainfunktion aufrufen. Angenommen, Sie möchten einen REST-basierten Microservice erstellen, der Informationen von einem Blockchainledger zurückgibt. Mithilfe einer Logik-App können Sie HTTP-Anforderungen akzeptieren, die in einem Blockchainledger gespeicherte Informationen abfragen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Führen Sie den optionalen [Schnellstart: Herstellen einer Verbindung mit einem Azure Blockchain Service-Konsortiumsnetzwerk mithilfe von Visual Studio Code](connect-vscode.md) durch. Im Schnellstart werden Schritt für Schritt die Installation des [Azure Blockchain Development Kit für Ethereum](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) und die Einrichtung Ihrer Blockchain-Entwicklungsumgebung beschrieben.
+- Führen Sie den optionalen [Schnellstart: Herstellen einer Verbindung mit einem Azure Blockchain Service-Konsortiumsnetzwerk mithilfe von Visual Studio Code](connect-vscode.md) durch. Im Schnellstart werden Schritt für Schritt die Installation des [Azure Blockchain Development Kit für Ethereum](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) und die Einrichtung Ihrer Blockchain-Entwicklungsumgebung beschrieben.
+- Wenn Sie noch nicht mit Azure Logic Apps vertraut sind, sollten Sie die Microsoft Learn-Module [Einführung in Azure Logic Apps](/learn/modules/intro-to-logic-apps/) und [Aufrufen einer API von einem Logic Apps-Workflow mithilfe eines benutzerdefinierten Connectors](/learn/modules/logic-apps-and-custom-connectors/) in Betracht ziehen.
 
 ## <a name="create-a-logic-app"></a>Erstellen einer Logik-App
 
@@ -33,7 +34,7 @@ Azure Logic Apps hilft Ihnen beim Planen und Automatisieren von Geschäftsprozes
 
 Jede Logik-App muss mit einem Trigger beginnen, der ausgelöst wird, wenn ein bestimmtes Ereignis eintritt oder eine bestimmte Bedingung erfüllt wird. Bei jeder Auslösung des Triggers erstellt die Logic Apps-Engine eine Logik-App-Instanz, mit der Ihr Workflow gestartet und ausgeführt wird.
 
-Der Ethereum-Blockchain-Connector verfügt über einen Trigger und mehrere Aktionen. Welche Trigger oder Aktionen Sie verwenden, hängt von Ihrem Szenario ab.
+Der Ethereum-Blockchain-Connector verfügt über einen Trigger und mehrere Aktionen. Welche Trigger oder Aktionen Sie verwenden, hängt von Ihrem Szenario ab. Befolgen Sie den Abschnitt in diesem Artikel, der am besten zu Ihrem Szenario passt.
 
 Gehen Sie für Ihren Workflow wie folgt vor:
 
@@ -128,7 +129,7 @@ Die folgenden Schritte generieren beispielsweise eine REST-basierte Microservice
 
     ![Designeransicht mit Auswahl von „Verbindungen“](./media/ethereum-logic-app/microservice-logic-app.png)
 
-1. Sie können Ihre Logik-App jetzt verwenden. Um den REST-basierten Microservice zu testen, geben Sie eine HTTP-POST-Anforderung an die Logik-App-Anforderungs-URL aus. Kopieren Sie den Inhalt der **HTTP-POST-URL** aus dem Schritt **Beim Empfang einer HTTP-Anforderung**.
+1. Sie können Ihre Logik-App jetzt verwenden. Um den REST-basierten Microservice zu testen, geben Sie eine HTTP-POST-Anforderung an die Logik-App-Anforderungs-URL aus. Kopieren Sie den Inhalt der **HTTP POST-URL** aus dem Schritt **Beim Empfang einer HTTP-Anforderung**.
 
     ![Bereich des Designers für Logik-Apps mit der HTTP POST-URL](./media/ethereum-logic-app/post-url.png)
 

@@ -3,16 +3,16 @@ title: Verwalten eines Kontos im kommerziellen Marketplace in Microsoft Partner 
 description: Erfahren Sie, wie Sie ein Konto im kommerziellen Marketplace in Microsoft Partner Center verwalten.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
-ms.date: 04/27/2020
-ms.openlocfilehash: 8362019365aab002929cc3414e6ca742952fc8ae
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 08/27/2020
+ms.openlocfilehash: 7438351aa9849e3110952043eff8f7d860b5b7de
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320016"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89015831"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>Verwalten Ihres Kontos im kommerziellen Marketplace in Partner Center
 
@@ -91,16 +91,18 @@ Sie können Ihre Steuerformulare elektronisch in Partner Center ausfüllen und �
 In verschiedenen Ländern und Regionen gelten unterschiedliche Steueranforderungen. Wie viele Steuern Sie genau abführen müssen, hängt von den Ländern und Regionen ab, in denen Sie Ihre Angebote verkaufen. Microsoft zahlt in einigen Ländern/Regionen Mehrwertsteuer und Verbrauchssteuer für Sie. Diese Länder/Regionen werden beim Auflisten Ihres Angebots angegeben. Abhängig davon, wo Sie registriert sind, müssen Sie in anderen Ländern/Regionen möglicherweise die Mehrwert- und Verbrauchssteuer für Ihre Verkäufe direkt an die örtliche Steuerbehörde abführen. Darüber hinaus können Ihre erhaltenen Verkaufserlöse unter Umständen als Einkommen steuerbar sein. Es wird dringend empfohlen, sich an die entsprechende Behörde für Ihr Land bzw. Ihre Region zu wenden. Diese kann Ihnen am besten dabei helfen, die richtige Besteuerung für Ihre Microsoft-Verkaufstransaktionen zu bestimmen.
 
 ##### <a name="withholding-rates"></a>Quellensteuer
+
 Die Informationen, die Sie in den Steuerformularen übermitteln, bestimmen die entsprechende Quellensteuer. Der Quellensteuer betrifft nur Verkäufe in die USA. Verkäufe an Orte außerhalb der USA unterliegen nicht der Quellensteuer. Die Quellensteuer variiert, aber bei den meisten Entwicklern, die außerhalb der USA registriert sind, liegt der Standardwert bei 30 %. Sie haben die Möglichkeit, diesen Wert zu reduzieren, wenn Ihr Land/Ihre Region ein Einkommenssteuerabkommen mit den USA geschlossen hat.
 
 ##### <a name="tax-treaty-benefits"></a>Begünstigungen durch Steuerabkommen
+
 Wenn Sie sich außerhalb der USA befinden, können Sie möglicherweise von Begünstigungen durch Steuerabkommen profitieren. Diese Begünstigungen unterschieden sich je nach Land/Region und ermöglichen Ihnen unter Umständen, den Steuerbetrag zu reduzieren, den Microsoft einbehält. Begünstigungen durch Steuerabkommen können Sie in Anspruch nehmen, indem Sie Teil II des Formulars W-8BEN ausfüllen. Es wird empfohlen, mit den entsprechenden Ressourcen in Ihrem Land oder in Ihrer Region zu kommunizieren, um zu ermitteln, ob diese Begünstigungen für Sie infrage kommen.
 
 [Erfahren Sie mehr über Steuerdetails für Entwickler von Windows-Apps/-Spielen und Azure Marketplace-Herausgeber](https://docs.microsoft.com/windows/uwp/publish/tax-details-for-paid-apps).
 
 #### <a name="payout-hold-status"></a>Aufbewahrungsstatus für Auszahlungen
 
-Standardmäßig sendet Microsoft Zahlungen auf monatlicher Basis. Allerdings haben Sie die Möglichkeit, Ihre Auszahlungen zurückzuhalten, sodass keine Zahlungen an Ihr Konto gesendet werden. Wenn Sie Ihre Auszahlungen zurückhalten möchten, werden wir weiterhin alle Ihre Umsätze erfassen und die Details in Ihrer **Auszahlungszusammenfassung** aufführen. Allerdings werden wir keine Zahlungen auf Ihr Konto überweisen, bis Sie die Haltesperre aufheben. 
+Standardmäßig sendet Microsoft Zahlungen auf monatlicher Basis. Sie können Ihre Auszahlungen jedoch zurückhalten, sodass keine Zahlungen an Ihr Konto gesendet werden. Wenn Sie Ihre Auszahlungen zurückhalten möchten, werden wir weiterhin alle Ihre Umsätze erfassen und die Details in Ihrer **Auszahlungszusammenfassung** aufführen. Allerdings werden wir keine Zahlungen auf Ihr Konto überweisen, bis Sie die Haltesperre aufheben.
 
 Um Ihre Zahlungen zurückzuhalten, wechseln Sie zu **Kontoeinstellungen**. Stellen Sie unter **Finanzielle Details** im Abschnitt **Aufbewahrungsstatus für Auszahlungen** den Schieberegler auf **Ein**. Sie können den Aufbewahrungsstatus für Auszahlungen jederzeit ändern, aber beachten Sie, dass sich Ihre Entscheidung auf die nächste monatliche Auszahlung auswirkt. Wenn Sie zum Beispiel die Auszahlung für April zurückhalten möchten, legen Sie den Aufbewahrungsstatus für Auszahlungen vor Ende März auf **Ein** fest.
 
@@ -123,8 +125,8 @@ Es empfiehlt sich, für jedes Produkt eine eindeutige GUID für jedes Angebot un
 
 Wenn Sie ein Produkt mithilfe einer Vorlage bereitstellen und das Produkt sowohl im Azure Marketplace als auch auf GitHub verfügbar ist, können Sie zwei unterschiedliche GUIDs erstellen und registrieren:
 
-*    Produkt A im Azure Marketplace
-*    Produkt A auf GitHub
+- Produkt A im Azure Marketplace
+- Produkt A auf GitHub
 
 Die Berichterstellung erfolgt über den Partnerwert (Microsoft-Partner-ID) und die GUIDs. Sie können GUIDs auch auf einer detaillierteren Ebene nachverfolgen und an jedem Plan innerhalb Ihres Angebots ausrichten.
 
@@ -138,7 +140,7 @@ Die Abrechnungsadresse ist von Ihrer juristischen Entität bereits ausgefüllt. 
 
 ## <a name="multi-user-account-management"></a>Kontoverwaltung für mehrere Benutzer
 
-Partner Center nutzt [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) für den Zugriff auf und die Verwaltung von Mehrbenutzerkonten. Das Azure AD Ihrer Organisation wird im Rahmen des Registrierungsprozesses automatisch mit Ihrem Partner Center-Konto verknüpft.
+Partner Center nutzt [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) für den Zugriff auf Mehrbenutzerkonten und deren Verwaltung. Das Azure AD Ihrer Organisation wird im Rahmen des Registrierungsprozesses automatisch mit Ihrem Partner Center-Konto verknüpft.
 
 ## <a name="manage-users"></a>Verwalten von Benutzern
 
@@ -162,13 +164,13 @@ So fügen Sie Ihrem Partner Center-Konto Benutzer hinzu, die bereits im [Geschä
 1. Wechseln Sie zu **Benutzer** (unter **Kontoeinstellungen**), und wählen Sie **Benutzer hinzufügen** aus.
 2. Wählen Sie einen oder mehrere Benutzer aus der angezeigten Liste aus. Über das Suchfeld können Sie bestimmte Benutzer suchen.
 \* Wenn Sie mehrere Benutzer auswählen, die Ihrem Partner Center-Konto hinzugefügt werden sollen, müssen Sie diesen dieselbe Rolle oder denselben Satz benutzerdefinierter Berechtigungen zuweisen. Um mehrere Benutzer mit unterschiedlichen Rollen/Berechtigungen hinzuzufügen, wiederholen Sie diese Schritte für jede Rolle bzw. für jeden Satz benutzerdefinierter Berechtigungen.
-3. Wenn Sie die Auswahl von Benutzern abgeschlossen haben, klicken Sie auf **Ausgewählte hinzufügen**.
+3. Wenn Sie die Auswahl von Benutzern abgeschlossen haben, wählen Sie **Ausgewählte hinzufügen** aus.
 4. Geben Sie im Abschnitt **Rollen** die Rolle(n) oder die benutzerdefinierten Berechtigungen für den oder die ausgewählten Benutzer an.
 5. Wählen Sie **Speichern** aus.
 
 ### <a name="create-new-users"></a>Erstellen neuer Benutzer
 
-Um neue Benutzerkonten zu erstellen, benötigen Sie ein Konto mit den Berechtigungen [**Globaler Administrator**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md). 
+Um neue Benutzerkonten zu erstellen, benötigen Sie ein Konto mit den Berechtigungen [**Globaler Administrator**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md).
 
 1. Wechseln Sie zu **Benutzer** (unter **Kontoeinstellungen**), und wählen Sie **Benutzer hinzufügen** und dann **Neue Benutzer erstellen** aus.
 1. Geben Sie einen Vornamen, einen Nachnamen und einen Benutzernamen für jeden neuen Benutzer ein. 
@@ -185,7 +187,7 @@ Wenn Sie einen neuen Benutzer in Partner Center erstellen, wird für diesen Benu
 Um Benutzer per E-Mail einzuladen, die derzeit nicht zum Geschäftskonto (Azure AD-Mandant) Ihres Unternehmens gehören, benötigen Sie ein Konto mit Berechtigungen als [**globaler Administrator**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md).
 
 1. Wechseln Sie zu **Benutzer** (unter **Kontoeinstellungen**), und wählen Sie dann **Benutzer hinzufügen** und anschließend **Benutzer per E-Mail einladen** aus.
-2. Geben Sie eine oder mehrere E-Mail-Adressen (bis zu 10) getrennt durch Kommas oder Semikolons ein.
+2. Geben Sie bis zu 10 E-Mail-Adressen getrennt durch Kommas oder Semikolons ein.
 3. Geben Sie im Abschnitt **Rollen** die Rolle(n) oder die benutzerdefinierten Berechtigungen für den Benutzer an.
 4. Wählen Sie **Speichern** aus.
 
@@ -202,7 +204,7 @@ Um einen Benutzer aus Ihrem Geschäftskonto (Azure AD-Mandant) zu entfernen, wec
 
 ### <a name="change-a-user-password"></a>Ändern eines Benutzerkennworts
 
-Ein Benutzer kann sein Kennwort bei Bedarf selbst ändern, sofern Sie beim Erstellen des Benutzerkontos eine **E-Mail-Adresse zur Kenntwortwiederherstellung** angegeben haben. Sie können das Kennwort eines Benutzers auch aktualisieren, indem Sie die folgenden Schritte ausführen. Um das Kennwort eines Benutzers im Geschäftskonto (Azure AD-Mandant) Ihres Unternehmens zu ändern, müssen Sie bei einem Konto mit den Berechtigungen als [**globaler Administrator**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md) angemeldet sein. Beachten Sie, dass hierdurch das Kennwort des Benutzers in Ihrem Azure AD-Mandanten sowie das Kennwort geändert werden, das er zum Zugriff auf Partner Center verwendet.
+Ein Benutzer kann sein Kennwort bei Bedarf selbst ändern, sofern Sie beim Erstellen des Benutzerkontos eine **E-Mail-Adresse zur Kenntwortwiederherstellung** angegeben haben. Sie können das Kennwort eines Benutzers auch aktualisieren, indem Sie die folgenden Schritte ausführen. Um das Kennwort eines Benutzers im Geschäftskonto (Azure AD-Mandant) Ihres Unternehmens zu ändern, müssen Sie bei einem Konto mit den Berechtigungen als [**globaler Administrator**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md) angemeldet sein. Hierdurch werden das Kennwort des Benutzers in Ihrem Azure AD-Mandanten und das Kennwort geändert, das er zum Zugriff auf Partner Center verwendet.
 
 1. Wählen Sie auf der Seite **Benutzer** (unter **Kontoeinstellungen**) den Namen des Benutzerkontos aus, das Sie bearbeiten möchten.
 2. Wählen Sie unten auf der Seite die Schaltfläche **Kennwort zurücksetzen** aus.
@@ -219,7 +221,7 @@ So fügen Sie Ihrem Partner Center-Konto eine Gruppe hinzu, die bereits im Gesch
 1. Wählen Sie auf der Seite **Benutzer** (unter **Kontoeinstellungen**) die Option **Gruppen hinzufügen** aus.
 2. Wählen Sie eine oder mehrere Gruppen aus der angezeigten Liste aus. Über das Suchfeld können Sie bestimmte Gruppen suchen.
 Wenn Sie mehrere Gruppen auswählen, die Ihrem Partner Center-Konto hinzugefügt werden sollen, müssen Sie diesen dieselbe Rolle oder denselben Satz benutzerdefinierter Berechtigungen zuweisen. Um mehrere Gruppen mit unterschiedlichen Rollen/Berechtigungen hinzuzufügen, wiederholen Sie diese Schritte für jede Rolle bzw. für jeden Satz benutzerdefinierter Berechtigungen.
-3. Wenn Sie die Auswahl von Gruppen abgeschlossen haben, klicken Sie auf **Ausgewählte hinzufügen**.
+3. Wenn Sie die Auswahl von Gruppen abgeschlossen haben, wählen Sie **Ausgewählte hinzufügen** aus.
 4. Geben Sie im Abschnitt **Rollen** die Rolle(n) oder die benutzerdefinierten Berechtigungen für die ausgewählten Gruppen an. Alle Mitglieder der Gruppe erhalten Zugriff auf Ihr Partner Center-Konto mit den Berechtigungen, die Sie der Gruppe gewähren, unabhängig von den Rollen und Berechtigungen, die ihren jeweiligen einzelnen Konten zugewiesen sind.
 5. Wählen Sie **Speichern** aus.
 
@@ -234,10 +236,10 @@ So fügen Sie Ihrem Partner Center-Konto eine neue Gruppe hinzu
 3. Geben Sie den Anzeigenamen für die neue Gruppe ein.
 4. Geben Sie die Rolle(n) oder die benutzerdefinierten Berechtigungen für die Gruppe an. Alle Mitglieder der Gruppe erhalten Zugriff auf Ihr Partner Center-Konto mit den Berechtigungen, die Sie hier gewähren, unabhängig von den Rollen und Berechtigungen, die ihren jeweiligen einzelnen Konten zugewiesen sind.
 5. Wählen Sie aus der angezeigten Liste Benutzer für die neue Gruppe aus. Über das Suchfeld können Sie bestimmte Benutzer suchen.
-6. Wenn Sie alle Benutzer ausgewählt haben, klicken Sie auf **Ausgewählte hinzufügen**, um sie der neuen Gruppe hinzuzufügen.
+6. Wenn Sie alle Benutzer ausgewählt haben, wählen Sie **Ausgewählte hinzufügen** aus, um sie der neuen Gruppe hinzuzufügen.
 7. Wählen Sie **Speichern** aus.
 
-Beachten Sie, dass diese neue Gruppe im Geschäftskonto (Azure AD-Mandant) Ihrer Organisation und nicht nur in Ihrem Partner Center-Konto erstellt wird.
+Diese neue Gruppe wird im Geschäftskonto (Azure AD-Mandant) Ihrer Organisation erstellt und nicht nur in Ihrem Partner Center-Konto.
 
 ### <a name="remove-a-group"></a>Entfernen einer Gruppe
 
@@ -253,18 +255,18 @@ So fügen Sie Anwendungen hinzu, die bereits im Azure Active Directory Ihres Unt
 
 1. Wählen Sie auf der Seite **Benutzer** (unter **Kontoeinstellungen**) die Option **Azure AD-Anwendungen hinzufügen** aus.
 2. Wählen Sie eine oder mehrere Azure AD-Anwendungen aus der angezeigten Liste aus. Über das Suchfeld können Sie bestimmte Azure AD-Anwendungen suchen. Wenn Sie mehrere Azure AD-Anwendungen auswählen, die Ihrem Partner Center-Konto hinzugefügt werden sollen, müssen Sie diesen dieselbe Rolle oder denselben Satz benutzerdefinierter Berechtigungen zuweisen. Um mehrere Azure AD-Anwendungen mit unterschiedlichen Rollen/Berechtigungen hinzuzufügen, wiederholen Sie diese Schritte für jede Rolle bzw. für jeden Satz benutzerdefinierter Berechtigungen.
-3. Wenn Sie alle Azure AD-Anwendungen ausgewählt haben, klicken Sie auf **Ausgewählte hinzufügen**.
+3. Wenn Sie alle Azure AD-Anwendungen ausgewählt haben, wählen Sie **Ausgewählte hinzufügen** aus.
 4. Geben Sie im Abschnitt **Rollen** die Rolle(n) oder die benutzerdefinierten Berechtigungen für die ausgewählten Azure AD-Anwendungen an.
 5. Wählen Sie **Speichern** aus.
 
 ### <a name="add-new-azure-ad-applications"></a>Hinzufügen neuer Azure AD-Anwendungen
 
-Wenn Sie einem neuen Azure AD-Anwendungskonto Partner Center-Zugriff gewähren möchten, erstellen Sie dieses im Abschnitt **Benutzer**. Beachten Sie, dass hierdurch ein neues Konto im Geschäftskonto (Azure AD-Mandant) Ihres Unternehmens und nicht nur in Ihrem Partner Center-Konto erstellt wird. Wenn Sie diese Azure AD-Anwendung in erster Linie für die Partner Center-Authentifizierung verwenden und die Benutzer keinen direkten Zugriff benötigen, können Sie alle gültigen Adressen für die **Antwort-URL** und den **App-ID-URI** eingeben, sofern diese Werte noch nicht von einer anderen Azure AD-Anwendung in Ihrem Verzeichnis verwendet werden.
+Wenn Sie einem neuen Azure AD-Anwendungskonto Partner Center-Zugriff gewähren möchten, erstellen Sie dieses im Abschnitt **Benutzer**. Hierdurch wird ein neues Konto im Geschäftskonto (Azure AD-Mandant) Ihres Unternehmens und nicht nur in Ihrem Partner Center-Konto erstellt. Wenn Sie diese Azure AD-Anwendung in erster Linie für die Partner Center-Authentifizierung verwenden und die Benutzer keinen direkten Zugriff benötigen, können Sie alle gültigen Adressen für die **Antwort-URL** und den **App-ID-URI** eingeben, sofern diese Werte noch nicht von einer anderen Azure AD-Anwendung in Ihrem Verzeichnis verwendet werden.
 
 1. Wählen Sie auf der Seite **Benutzer** (unter **Kontoeinstellungen**) die Option **Azure AD-Anwendungen hinzufügen** aus.
 2. Wählen Sie auf der nächsten Seite **Neue Azure AD-Anwendung** aus.
 3. Geben Sie die **Antwort-URL** für die neue Azure AD-Anwendung ein. Dies ist die URL, über die sich die Benutzer anmelden und Ihre Azure AD-Anwendung verwenden können (auch bekannt als App-URL oder Anmelde-URL). Die **Antwort-URL** darf nicht länger als 256 Zeichen sein und muss in Ihrem Verzeichnis eindeutig sein.
-4. Geben Sie den **App-ID-URI** für die neue Azure AD-Anwendung ein. Dies ist ein logischer Bezeichner für die Azure AD-Anwendung, der angezeigt wird, wenn eine Anforderung für einmaliges Anmelden an Azure AD gesendet wird. Beachten Sie, dass der **App ID-URI** für jede Azure AD-Anwendung in Ihrem Verzeichnis eindeutig sein muss. Diese ID darf nicht länger als 256 Zeichen sein. Weitere Informationen zum App-ID-URI finden Sie unter [Integrieren von Anwendungen in Azure Active Directory](../../active-directory/develop/quickstart-modify-supported-accounts.md#change-the-application-registration-to-support-different-accounts).
+4. Geben Sie den **App-ID-URI** für die neue Azure AD-Anwendung ein. Dies ist ein logischer Bezeichner für die Azure AD-Anwendung, der angezeigt wird, wenn eine Anforderung für einmaliges Anmelden an Azure AD gesendet wird. Der **App-ID-URI** muss für jede Azure AD-Anwendung in Ihrem Verzeichnis eindeutig sein. Diese ID darf nicht länger als 256 Zeichen sein. Weitere Informationen zum App-ID-URI finden Sie unter [Integrieren von Anwendungen in Azure Active Directory](../../active-directory/develop/quickstart-modify-supported-accounts.md#change-the-application-registration-to-support-different-accounts).
 5. Geben Sie im Abschnitt **Rollen** die Rolle(n) oder die benutzerdefinierten Berechtigungen für die Azure AD-Anwendung an.
 6. Wählen Sie **Speichern** aus.
 
@@ -278,7 +280,7 @@ Um eine Anwendung aus Ihrem Geschäftskonto (Azure AD-Mandant) zu entfernen, wec
 
 Wenn Ihre Azure AD-Anwendung Daten in Microsoft Azure AD liest und schreibt, benötigt sie einen Schlüssel. Sie können Schlüssel für eine Azure AD-Anwendung erstellen, indem Sie die zugehörigen Informationen in Partner Center bearbeiten. Außerdem können Sie nicht mehr benötigte Schlüssel entfernen.
 
-1. Wählen Sie auf der Seite **Benutzer** (unter **Kontoeinstellungen**) den Namen der Azure AD-Anwendung aus. Alle aktiven Schlüssel der Azure AD-Anwendung werden angezeigt, einschließlich des Datums, an dem der Schlüssel erstellt wurde, und des Ablaufdatums. 
+1. Wählen Sie auf der Seite **Benutzer** (unter **Kontoeinstellungen**) den Namen der Azure AD-Anwendung aus. Alle aktiven Schlüssel der Azure AD-Anwendung werden angezeigt, einschließlich des Datums, an dem der Schlüssel erstellt wurde, und des Ablaufdatums (50).
 2. Um einen Schlüssel zu entfernen, der nicht mehr benötigt wird, wählen Sie **Entfernen** aus.
 3. Wählen Sie zum Hinzufügen eines neuen Schlüssels **Neuen Schlüssel hinzufügen** aus.
 4. In einem Bildschirm werden die **Client-ID** und die **Schlüsselwerte** angezeigt. Da Sie nach Verlassen der Seite nicht mehr auf diese Informationen zugreifen können, sollten Sie sie unbedingt drucken oder kopieren.
@@ -286,8 +288,10 @@ Wenn Ihre Azure AD-Anwendung Daten in Microsoft Azure AD liest und schreibt, ben
 
 ## <a name="define-user-roles-and-permissions"></a>Definieren von Benutzerrollen und Berechtigungen
 
-Im Programm „Kommerzieller Marketplace“ für Partner Center können den Benutzern Ihres Unternehmens die folgenden Rollen und Berechtigungen zugewiesen werden:
+Im Programm für den kommerziellen Marketplace in Partner Center können den Benutzern Ihres Unternehmens die folgenden Rollen und Berechtigungen zugewiesen werden:
 
+- **Besitzer**
+  - Dies ist die Person, die das Konto ursprünglich erstellt hat und die über vollständigen Zugriff darauf verfügt, einschließlich der Möglichkeit, alle Kontobenutzer zu erstellen und zu bearbeiten und alle Finanz- und Kontoeinstellungen zu ändern. Ein Konto weist in der Regel nur einen Besitzer auf.
 - **Manager**
   - Kann auf alle Microsoft-Kontofeatures mit Ausnahme von Steuer- und Auszahlungseinstellungen zugreifen
   - Kann Benutzer, Rollen und Geschäftskonten (Mandanten) verwalten

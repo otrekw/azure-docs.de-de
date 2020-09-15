@@ -4,16 +4,16 @@ description: In diesem Artikel erfahren Sie, wie Sie Sicherungsrichtlinien (Zeit
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: 6a045ff1653c58a3a583b6c64941fff26f480861
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: e4e6f5b5cf28c3830a91a494ea60680eee1546f6
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826391"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179605"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Erstellen von Azure Recovery Services-Sicherungsrichtlinien mit der REST-API
 
-Die Schritte zum Erstellen einer Sicherungsrichtlinie für einen Azure Recovery Services-Tresor sind in der Dokumentation [Schutzrichtlinien – Erstellen oder Aktualisieren](/rest/api/backup/protectionpolicies/createorupdate) beschrieben. Wir nutzen dieses Dokument als Referenz zum Erstellen einer Richtlinie für die Sicherung von Azure-VMs.
+Die Schritte zum Erstellen einer Sicherungsrichtlinie für einen Azure Recovery Services-Tresor sind in der Dokumentation [Schutzrichtlinien – Erstellen oder Aktualisieren](/rest/api/backup/protectionpolicies/createorupdate) beschrieben. Nutzen Sie dieses Dokument als Referenz zum Erstellen einer Richtlinie für die Sicherung von Azure-VMs.
 
 ## <a name="create-or-update-a-policy"></a>Erstellen oder Aktualisieren einer Richtlinie
 

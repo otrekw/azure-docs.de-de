@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
-ms.openlocfilehash: 2fa87e860d0f5f5117840b9e230e383cdd6aae7c
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: ad3197f20428ec751b4e3520af72dc5f8eb9ad28
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187556"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180354"
 ---
 # <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Problembehandlung bei Fehlern im Zusammenhang mit Azure Windows-VM-Erweiterungen
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
@@ -63,6 +63,7 @@ Extensions:  {
 ```
 
 ## <a name="troubleshooting-extension-failures"></a>Problembehandlung bei Erweiterungsfehlern
+
 ### <a name="rerun-the-extension-on-the-vm"></a>Erneutes Ausführen der Erweiterung auf dem virtuellen Computer
 Wenn Sie mithilfe der benutzerdefinierten Skripterweiterung Skripts auf dem virtuellen Computer ausführen, könnten ab und an Fehler auftreten, bei denen der virtuelle Computer erfolgreich erstellt wurde, das Skript jedoch fehlgeschlagen ist. Unter diesen Bedingungen empfiehlt es sich, die Erweiterung zu entfernen und die Vorlage erneut auszuführen, um den Fehler zu beheben.
 Hinweis: In Zukunft wird diese Funktionalität verbessert, damit es nicht mehr notwendig ist, die Erweiterung zu deinstallieren.
@@ -74,3 +75,28 @@ Remove-AzVMExtension -ResourceGroupName $RGName -VMName $vmName -Name "myCustomS
 
 Nachdem die Erweiterung entfernt wurde, kann die Vorlage erneut ausgeführt werden, um die Skripts auf dem virtuellen Computer auszuführen.
 
+### <a name="trigger-a-new-goalstate-to-the-vm"></a>Auslösen eines neuen GoalState für die VM
+Möglicherweise stellen Sie fest, dass eine Erweiterung nicht ausgeführt wurde oder aufgrund eines fehlenden „Microsoft Azure CRP Certificate Generator“ nicht ausgeführt werden kann. (Dieses Zertifikat wird verwendet, um den Transport der geschützten Einstellungen der Erweiterung abzusichern.)
+Dieses Zertifikat wird automatisch erneut generiert, indem der Windows-Gast-Agent im virtuellen Computer neu gestartet wird:
+- Öffnen Sie den Task-Manager.
+- Navigieren Sie zur Registerkarte „Details“.
+- Suchen Sie den Prozess „WindowsAzureGuestAgent.exe“.
+- Klicken Sie mit der rechten Maustaste darauf, und wählen Sie „Task beenden“ aus. Der Prozess wird automatisch neu gestartet.
+
+
+Sie können auch einen neuen GoalState für die VM auslösen, indem Sie ein „leeres Update“ ausführen:
+
+Azure PowerShell:
+
+```azurepowershell
+$vm = Get-AzureRMVM -ResourceGroupName <RGName> -Name <VMName>  
+Update-AzureRmVM -ResourceGroupName <RGName> -VM $vm  
+```
+
+Azure CLI:
+
+```azurecli
+az vm update -g <rgname> -n <vmname>
+```
+
+Wenn ein „leeres Update“ nicht funktioniert, können Sie der VM einen neuen leeren Datenträger für Daten aus dem Azure-Verwaltungsportal hinzufügen und diesen später entfernen, nachdem das Zertifikat wieder hinzugefügt wurde.

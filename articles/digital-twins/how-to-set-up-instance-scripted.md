@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 86597521f762237b5c4bc9a7a5268d7dae1303b4
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 63bc46f679b71f6965cda8f9db800a125683c093
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587972"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89298282"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Einrichten einer Azure Digital Twins-Instanz und -Authentifizierung (per Skript)
 
@@ -55,9 +55,16 @@ Im Folgenden sind die Schritte zum Ausführen des Bereitstellungsskripts in Clou
     * Für die Instanz: einen Namen für die *Ressourcengruppe*. Sie können eine vorhandene Ressourcengruppe verwenden oder einen neuen Namen einer zu erstellenden Ressourcengruppe eingeben.
     * Für die Instanz: einen *Namen* für Ihre Azure Digital Twins-Instanz. Der Name der neuen Instanz muss innerhalb der Region für Ihr Abonnement eindeutig sein (d. h., wenn Ihr Abonnement eine weitere Azure Digital Twins-Instanz in der Region aufweist, die bereits den von Ihnen ausgewählten Namen verwendet, werden Sie aufgefordert, einen anderen Namen auszuwählen).
     * Für die App-Registrierung: einen *Azure AD-Anwendungsanzeigenamen*, der der Registrierung zugeordnet werden soll. Über diese App-Registrierung konfigurieren Sie die Zugriffsberechtigungen für die [Azure Digital Twins-APIs](how-to-use-apis-sdks.md). Ihre Client-App wird später für die App-Registrierung authentifiziert. Daraufhin werden ihr die konfigurierten Zugriffsberechtigungen für die APIs erteilt.
-    * Für die App-Registrierung: eine *Antwort-URL der Azure AD-Anwendung* für die Azure AD-Anwendung. Sie können `http://localhost` verwenden.
+    * Für die App-Registrierung: eine *Antwort-URL der Azure AD-Anwendung* für die Azure AD-Anwendung. Verwenden Sie `http://localhost`. Das Skript richtet einen *URI für einen öffentlichen Client bzw. einen nativen URI (mobil und Desktop)* für sie ein.
 
 Dieses Skript erstellt eine Azure Digital Twins-Instanz, weist Ihrem Azure-Benutzer die Rolle *Azure Digital Twins-Besitzer (Vorschau)* auf der Instanz zu und richtet eine Azure AD-App-Registrierung für die Verwendung durch Ihre Client-App ein.
+
+>[!NOTE]
+>Zurzeit gibt es ein **bekanntes Problem** beim skriptgesteuerten Setup, bei dem einige Benutzer (insbesondere Benutzer mit persönlichen [Microsoft-Konten (MSAs)](https://account.microsoft.com/account)) möglicherweise feststellen, dass die **Rollenzuweisung für _Azure Digital Twins-Besitzer (Vorschauversion)_ nicht erstellt wurde**.
+>
+>Sie können die Rollenzuweisung über den Abschnitt [*Überprüfen der Benutzerrollenzuweisung*](#verify-user-role-assignment) weiter unten in diesem Artikel überprüfen und bei Bedarf die Rollenzuweisung manuell über das [Azure-Portal](how-to-set-up-instance-portal.md#set-up-user-access-permissions) oder mithilfe der [Befehlszeilenschnittstelle](how-to-set-up-instance-cli.md#set-up-user-access-permissions) manuell einrichten.
+>
+>Weitere Informationen zu diesem Problem finden Sie unter [*Problembehandlung: Bekannte Probleme in Azure Digital Twins*](troubleshoot-known-issues.md#missing-role-assignment-after-scripted-setup).
 
 Im Folgenden finden Sie einen Auszug aus dem Ausgabeprotokoll des Skripts:
 
@@ -127,5 +134,9 @@ Vergewissern Sie sich zunächst, dass die Azure Digital Twins-Berechtigungseinst
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie, wie Sie Ihre Clientanwendung mit Ihrer Instanz verbinden, indem Sie den Authentifizierungscode der Clientanwendung schreiben:
+Testen Sie einzelne REST-API-Aufrufe für Ihre Instanz mithilfe der Befehle der Azure Digital Twins-CLI: 
+* [az dt reference](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest)
+* [*Gewusst wie: Verwenden der Azure Digital Twins-Befehlszeilenschnittstelle*](how-to-use-cli.md)
+
+Unter folgendem Link erfahren Sie außerdem, wie Sie eine Verbindung zwischen Ihrer Clientanwendung und Ihrer Instanz herstellen, indem Sie den Authentifizierungscode der Client-App schreiben:
 * [*Verwenden Schreiben von App-Authentifizierungscode*](how-to-authenticate-client.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 3ead0ea58c6860519f027eb6a7450df37396bd89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60e4ca80faa2c8787a13d87ab06cad9243299e50
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80885173"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291948"
 ---
 # <a name="scenario-single-page-application"></a>Szenario: Einseitige Anwendung
 
@@ -35,11 +35,17 @@ Sie können Ihre erste Anwendung erstellen, indem Sie die Schritte des JavaScrip
 
 ## <a name="overview"></a>Übersicht
 
-Viele moderne Webanwendungen werden als clientseitige Single-Page-Webanwendungen (SPAs) erstellt. Entwickler schreiben diese mithilfe von JavaScript oder einem SPA-Framework wie Angular, Vue.js oder React.js. Diese Anwendungen werden in einem Webbrowser ausgeführt und weisen andere Authentifizierungsmerkmale als herkömmliche serverseitige Webanwendungen auf. 
+Viele moderne Webanwendungen werden als clientseitige Single-Page-Webanwendungen (SPAs) erstellt. Entwickler schreiben diese mithilfe von JavaScript oder eines SPA-Frameworks wie Angular, Vue oder React. Diese Anwendungen werden in einem Webbrowser ausgeführt und weisen andere Authentifizierungsmerkmale als herkömmliche serverseitige Webanwendungen auf. 
 
-Microsoft Identity Platform ermöglicht Single-Page-Webanwendungen mithilfe des [impliziten OAuth 2.0-Flusses](./v2-oauth2-implicit-grant-flow.md) das Anmelden von Benutzern und Abrufen von Token für den Zugriff auf Back-End-Dienste oder Web-APIs. Durch den impliziten Flow kann die Anwendung ID-Token abrufen, um den authentifizierten Benutzer darzustellen, sowie Zugriffstoken, die zum Aufrufen geschützter APIs erforderlich sind.
+Microsoft Identity Platform bietet **zwei** Optionen, um Single-Page-Webanwendungen das Anmelden von Benutzern und Abrufen von Token für den Zugriff auf Back-End-Dienste oder -Web-APIs zu ermöglichen:
 
-![Single-Page-Webanwendungen](./media/scenarios/spa-app.svg)
+- [OAuth 2.0-Autorisierungscodefluss (mit PKCE)](./v2-oauth2-auth-code-flow.md). Der Autorisierungscodefluss ermöglicht es der Anwendung, einen Autorisierungscode für **ID-Token** auszutauschen, um den authentifizierten Benutzer darzustellen, sowie **Zugriffstoken** auszutauschen, die zum Aufrufen geschützter APIs erforderlich sind. Darüber hinaus werden **Aktualisierungstoken** zurückgegeben, die langfristigen Zugriff auf Ressourcen im Auftrag von Benutzern bereitstellen, ohne dass eine Interaktion mit diesen Benutzern erforderlich ist. Dies ist die **empfohlene** Vorgehensweise.
+
+![Autorisierungsfluss für Single-Page-Webanwendungen](./media/scenarios/spa-app-auth.svg)
+
+- [Impliziter OAuth 2.0-Fluss](./v2-oauth2-implicit-grant-flow.md). Der Fluss für die implizite Genehmigung ermöglicht der Anwendung das Abrufen von **ID-** und **Zugriffstoken**. Im Gegensatz zum Autorisierungscodefluss gibt der Fluss für die implizite Genehmigung kein **Aktualisierungstoken** zurück.
+
+![Impliziter Fluss für Single-Page-Webanwendungen](./media/scenarios/spa-app.svg)
 
 Dieser Authentifizierungsfluss umfasst keine Anwendungsszenarios, die plattformübergreifende JavaScript-Frameworks verwenden, z. B. Electron und React-Native. Sie erfordern weitere Funktionen für die Interaktion mit den nativen Plattformen.
 
@@ -47,9 +53,9 @@ Dieser Authentifizierungsfluss umfasst keine Anwendungsszenarios, die plattform�
 
 Zum Aktivieren dieses Szenarios für Anwendung benötigen Sie Folgendes:
 
-* Eine Anwendungsregistrierung bei Azure Active Directory (Azure AD). Diese Registrierung umfasst das Aktivieren des impliziten Flusses und das Festlegen eines Umleitungs-URI, an den Token zurückgegeben werden.
+* Eine Anwendungsregistrierung bei Azure Active Directory (Azure AD). Die Registrierungsschritte unterscheiden sich beim Fluss für die implizite Genehmigung und beim Autorisierungscodefluss.
 * Sie benötigen eine Anwendungskonfiguration mit den registrierten Anwendungseigenschaften, wie z. B. der Anwendungs-ID.
-* Die müssen die Microsoft-Authentifizierungsbibliothek (MSAL) für den Authentifizierungsfluss zum Anmelden und Abrufen von Token verwenden.
+* Sie müssen die Microsoft-Authentifizierungsbibliothek für JavaScript (MSAL.js) für den Authentifizierungsfluss zum Anmelden und Abrufen von Token verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

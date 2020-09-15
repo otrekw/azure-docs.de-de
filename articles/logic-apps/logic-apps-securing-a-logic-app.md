@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 08/20/2020
-ms.openlocfilehash: 883eede5296f3f280bf30c9a459c02a9243f9081
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.date: 08/27/2020
+ms.openlocfilehash: 9dc63de56a71ab07f513efefe2cf068f6a7be7b0
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719528"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276047"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Schützen des Zugriffs und der Daten in Azure Logic Apps
 
@@ -19,11 +19,11 @@ Azure Logic Apps nutzt [Azure Storage](../storage/index.yml) zum Speichern und a
 
 Um den Zugriff stärker zu steuern und vertrauliche Daten in Azure Logic Apps zu schützen, können Sie zusätzliche Sicherheit in diesen Bereichen einrichten:
 
-* [Zugriff auf anforderungsbasierte Trigger](#secure-triggers)
+* [Zugriff für eingehende Aufrufe anforderungsbasierter Trigger](#secure-inbound-requests)
 * [Zugriff auf Logik-App-Vorgänge](#secure-operations)
 * [Zugriff auf Eingaben und Ausgaben von Ausführungsverläufen](#secure-run-history)
 * [Zugriff auf Parametereingaben](#secure-action-parameters)
-* [Zugriff auf Dienste und Systeme, die von Logik-Apps aus aufgerufen werden](#secure-outbound-requests)
+* [Zugriff für ausgehende Aufrufe anderer Dienste und Systeme](#secure-outbound-requests)
 * [Blockieren des Erstellens von Verbindungen für bestimmte Connectors](#block-connections)
 * [Isolationsanleitung für Logik-Apps](#isolation-logic-apps)
 * [Azure-Sicherheitsbaseline für Azure Logic Apps](../logic-apps/security-baseline.md)
@@ -34,18 +34,29 @@ Weitere Informationen zur Sicherheit in Azure finden Sie in diesen Themen:
 * [Azure-Datenverschlüsselung ruhender Daten](../security/fundamentals/encryption-atrest.md)
 * [Einführung zum Azure Security-Vergleichstest](../security/benchmarks/overview.md)
 
-<a name="secure-triggers"></a>
+<a name="secure-inbound-requests"></a>
 
-## <a name="access-to-request-based-triggers"></a>Zugriff auf anforderungsbasierte Trigger
+## <a name="access-for-inbound-calls-to-request-based-triggers"></a>Zugriff für eingehende Aufrufe anforderungsbasierter Trigger
 
-Wenn Ihre Logik-App einen anforderungsbasierten Trigger verwendet, der eingehende Aufrufe oder Anforderungen empfängt, z. B. den Trigger [Anforderung](../connectors/connectors-native-reqres.md) oder [Webhook](../connectors/connectors-native-webhook.md), können Sie den Zugriff so einschränken, dass nur autorisierte Clients die Logik-App aufrufen können. Alle von einer Logik-App empfangenen Anforderungen werden mit dem Transport Layer Security-Protokoll (TLS), zuvor als Secure Sockets Layer (SSL) bezeichnet, verschlüsselt und gesichert.
+Eingehende Aufrufe, die eine Logik-App über einen anforderungsbasierten Trigger wie [Anforderung](../connectors/connectors-native-reqres.md) oder [HTTP-Webhook](../connectors/connectors-native-webhook.md) empfängt, unterstützen Verschlüsselung und werden mit [TLS 1.2 (Transport Layer Security)](https://en.wikipedia.org/wiki/Transport_Layer_Security) (zuvor als Secure Sockets Layer (SSL) bezeichnet) geschützt. Logic Apps erzwingt diese Version beim Empfang eines eingehenden Aufrufs des Anforderungstriggers oder eines Rückrufs an den HTTP-Webhooktrigger bzw. die entsprechende Aktion. Wenn TLS-Handshakefehler auftreten, sollten Sie sicherstellen, dass Sie TLS 1.2 verwenden. Weitere Informationen finden Sie unter [Lösen des TLS 1.0-Problems](/security/solving-tls1-problem).
 
-Mit diesen Optionen können Sie den Zugriff auf diesen Triggertyp absichern:
+Eingehende Anrufe unterstützen die folgenden Cipher Suites:
 
-* [Generieren von Shared Access Signatures](#sas)
+* TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+* TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+* TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+* TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+* TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+* TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+* TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+* TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+
+Im Folgenden finden Sie weitere Möglichkeiten zum Einschränken des Zugriffs auf Trigger, die eingehende Aufrufe Ihrer Logik-App empfangen, sodass nur autorisierte Clients Ihre Logik-App aufrufen können:
+
+* [Generieren von Shared Access Signatures (SAS)](#sas)
 * [Aktivieren der Azure Active Directory Open Authentication (Azure AD OAuth)](#enable-oauth)
+* [Verfügbarmachen Ihrer Logik-App mit Azure API Management](#azure-api-management)
 * [Einschränken eingehender IP-Adressen](#restrict-inbound-ip-addresses)
-* [Hinzufügen von Azure Active Directory OAuth oder anderen Sicherheitsfeatures](#add-authentication)
 
 <a name="sas"></a>
 
@@ -108,9 +119,21 @@ Schließen Sie in den Textkörper die `KeyType`-Eigenschaft als `Primary` oder a
 
 <a name="enable-oauth"></a>
 
-### <a name="enable-azure-active-directory-oauth"></a>Aktivieren von Azure Active Directory OAuth
+### <a name="enable-azure-active-directory-open-authentication-azure-ad-oauth"></a>Aktivieren der Azure Active Directory Open Authentication (Azure AD OAuth)
 
-Wenn Ihre Logik-App mit einem [Anforderungstrigger](../connectors/connectors-native-reqres.md) beginnt, können Sie [Azure Active Directory Open Authentication](../active-directory/develop/index.yml) (Azure AD OAuth) aktivieren, indem Sie eine Autorisierungsrichtlinie für eingehende Aufrufe an den Anforderungstrigger definieren oder hinzufügen. Wenn Ihre Logik-App eine eingehende Anforderung empfängt, die ein Authentifizierungstoken enthält, vergleicht Azure Logic Apps die Ansprüche des Tokens mit den Ansprüchen in den einzelnen Autorisierungsrichtlinien. Wenn eine Übereinstimmung zwischen den Ansprüchen des Tokens und allen Ansprüchen in mindestens einer Richtlinie vorliegt, ist die Autorisierung für die eingehende Anforderung erfolgreich. Das Token kann mehr Ansprüche als von der Autorisierungsrichtlinie angegeben aufweisen.
+Wenn Ihre Logik-App mit einem [Anforderungstrigger](../connectors/connectors-native-reqres.md) beginnt, können Sie [Azure Active Directory Open Authentication](../active-directory/develop/index.yml) (Azure AD OAuth) aktivieren, indem Sie eine Autorisierungsrichtlinie für eingehende Aufrufe an den Anforderungstrigger definieren oder hinzufügen.
+
+Bevor Sie diese Authentifizierung aktivieren, berücksichtigen Sie die folgenden Überlegungen:
+
+* Der eingehende Aufruf des Anforderungstriggers kann nur ein einziges Autorisierungsschema für Azure AD OAuth verwenden, entweder über ein Authentifizierungstoken, das nur für den Anforderungstrigger unterstützt wird, oder über eine [SAS-URL (Shared Access Signature)](#sas). Sie können nicht beide Schemas verwenden.
+
+  Durch die Verwendung eines Schemas wird das andere Schema nicht deaktiviert, die gleichzeitige Verwendung beider Schemas führt jedoch zu einem Fehler, da der Dienst nicht weiß, welches Schema ausgewählt werden soll. Außerdem werden für OAuth-Token nur Autorisierungsschemas vom Typ [Bearer](../active-directory/develop/active-directory-v2-protocols.md#tokens) unterstützt, die nur für den Anforderungstrigger unterstützt werden. Das Authentifizierungstoken muss im Autorisierungsheader `Bearer-type` angegeben werden.
+
+* Ihre Logik-App ist auf eine maximale Anzahl von Autorisierungsrichtlinien beschränkt. Jede Autorisierungsrichtlinie verfügt auch über eine maximale Anzahl von [Ansprüchen](../active-directory/develop/developer-glossary.md#claim). Weitere Informationen finden Sie unter [Grenzwerte und Konfiguration für Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#authentication-limits).
+
+* Eine Autorisierungsrichtlinie muss mindestens den Anspruch **Aussteller** enthalten, dem ein Wert ab `https://sts.windows.net/` oder `https://login.microsoftonline.com/` (OAuth V2) als Azure AD-Aussteller-ID zugeordnet ist. Weitere Informationen zu Zugriffstoken finden Sie unter [Microsoft Identity Platform-Zugriffstoken](../active-directory/develop/access-tokens.md).
+
+Wenn Ihre Logik-App eine eingehende Anforderung mit einem OAuth-Authentifizierungstoken empfängt, vergleicht Azure Logic Apps die Ansprüche des Tokens mit den Ansprüchen in den einzelnen Autorisierungsrichtlinien. Wenn eine Übereinstimmung zwischen den Ansprüchen des Tokens und allen Ansprüchen in mindestens einer Richtlinie vorliegt, ist die Autorisierung für die eingehende Anforderung erfolgreich. Das Token kann mehr Ansprüche als von der Autorisierungsrichtlinie angegeben aufweisen.
 
 Angenommen, Ihre Logik-App verfügt über eine Autorisierungsrichtlinie, die zwei Anspruchstypen erfordert, **Aussteller** und **Zielgruppe**. Dieses Beispiel eines [Zugriffstokens](../active-directory/develop/access-tokens.md) enthält beide Anspruchstypen:
 
@@ -155,16 +178,6 @@ Angenommen, Ihre Logik-App verfügt über eine Autorisierungsrichtlinie, die zwe
 }
 ```
 
-#### <a name="considerations-for-enabling-azure-oauth"></a>Überlegungen zum Aktivieren von Azure OAuth
-
-Bevor Sie diese Authentifizierung aktivieren, berücksichtigen Sie die folgenden Überlegungen:
-
-* Bei einem eingehenden Aufruf Ihrer Logik-App kann nur ein Autorisierungsschema verwendet werden, entweder Azure AD OAuth oder [Shared Access Signature (SAS)](#sas). Durch die Verwendung eines Schemas wird das andere Schema nicht deaktiviert. Die gleichzeitige Verwendung beider Schemas führt jedoch zu einem Fehler, da der Dienst nicht weiß, welches Schema ausgewählt werden soll. Nur Autorisierungsschemata vom [Typ „Bearer“](../active-directory/develop/active-directory-v2-protocols.md#tokens) werden für OAuth-Token unterstützt, die nur für den Anforderungstrigger unterstützt werden.
-
-* Ihre Logik-App ist auf eine maximale Anzahl von Autorisierungsrichtlinien beschränkt. Jede Autorisierungsrichtlinie verfügt auch über eine maximale Anzahl von [Ansprüchen](../active-directory/develop/developer-glossary.md#claim). Weitere Informationen finden Sie unter [Grenzwerte und Konfiguration für Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#authentication-limits).
-
-* Eine Autorisierungsrichtlinie muss mindestens den Anspruch **Aussteller** enthalten, dem ein Wert ab `https://sts.windows.net/` oder `https://login.microsoftonline.com/` (OAuth V2) als Azure AD-Aussteller-ID zugeordnet ist. Weitere Informationen zu Zugriffstoken finden Sie unter [Microsoft Identity Platform-Zugriffstoken](../active-directory/develop/access-tokens.md).
-
 <a name="define-authorization-policy-portal"></a>
 
 #### <a name="define-authorization-policy-in-azure-portal"></a>Definieren einer Autorisierungsrichtlinie im Azure-Portal
@@ -184,7 +197,7 @@ Um Azure AD OAuth für Ihre Logik-App im Azure-Portal zu aktivieren, führen Sie
    | Eigenschaft | Erforderlich | BESCHREIBUNG |
    |----------|----------|-------------|
    | **Richtlinienname** | Ja | Der Name, den Sie für die Autorisierungsinstanz verwenden möchten |
-   | **Ansprüche** | Ja | Die Anspruchstypen und -werte, die ihre Logik-App von eingehenden Aufrufen akzeptiert. Im Folgenden finden Sie die verfügbaren Anspruchstypen: <p><p>- **Aussteller** <br>- **Zielgruppe** <br>- **Betreff** <br>- **JWT-ID** (JSON Web Token-ID) <p><p>Die Liste **Ansprüche** muss mindestens den Anspruch **Aussteller** enthalten, dem ein Wert ab `https://sts.windows.net/` oder `https://login.microsoftonline.com/` als Azure AD-Aussteller-ID zugeordnet ist. Weitere Informationen zu diesen Anspruchstypen finden Sie unter [Ansprüche in Sicherheitstoken von Azure AD](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens). Sie können auch Ihren eigenen Anspruchstyp und -wert angeben. |
+   | **Ansprüche** | Ja | Die Anspruchstypen und -werte, die ihre Logik-App von eingehenden Aufrufen akzeptiert. Im Folgenden finden Sie die verfügbaren Anspruchstypen: <p><p>- **Aussteller** <br>- **Zielgruppe** <br>- **Betreff** <br>- **JWT-ID** (JSON Web Token-ID) <p><p>Die Liste der **Ansprüche** muss mindestens den Anspruch **Aussteller** enthalten, dem als Azure AD-Aussteller-ID ein Wert zugeordnet ist, der mit `https://sts.windows.net/` oder `https://login.microsoftonline.com/` beginnt. Weitere Informationen zu diesen Anspruchstypen finden Sie unter [Ansprüche in Sicherheitstoken von Azure AD](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens). Sie können auch Ihren eigenen Anspruchstyp und -wert angeben. |
    |||
 
 1. Zum Hinzufügen eines weiteren Anspruchs wählen Sie eine der folgenden Optionen aus:
@@ -203,6 +216,9 @@ Um Azure AD OAuth für Ihre Logik-App im Azure-Portal zu aktivieren, führen Sie
 
 Um Azure AD OAuth in der ARM-Vorlage für die Bereitstellung Ihrer Logik-App zu aktivieren, fügen Sie im Abschnitt `properties` für die [Ressourcendefinition Ihrer Logik-App](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#logic-app-resource-definition) ein `accessControl`-Objekt hinzu, falls keines vorhanden ist, das ein `triggers`-Objekt enthält. Fügen Sie im `triggers`-Objekt ein `openAuthenticationPolicies`-Objekt hinzu, in dem Sie eine oder mehrere Autorisierungsrichtlinien definieren, indem Sie die folgende Syntax befolgen:
 
+> [!NOTE]
+> Das Array `claims` muss mindestens den Anspruch `iss` enthalten, dem als Azure AD-Aussteller-ID ein Wert zugeordnet ist, der mit `https://sts.windows.net/` oder `https://login.microsoftonline.com/` beginnt. Weitere Informationen zu diesen Anspruchstypen finden Sie unter [Ansprüche in Sicherheitstoken von Azure AD](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens). Sie können auch Ihren eigenen Anspruchstyp und -wert angeben.
+
 ```json
 "resources": [
    {
@@ -220,7 +236,7 @@ Um Azure AD OAuth in der ARM-Vorlage für die Bereitstellung Ihrer Logik-App zu
                         "claims": [
                            {
                               "name": "<claim-name>",
-                              "values": "<claim-value>"
+                              "value": "<claim-value>"
                            }
                         ]
                      }
@@ -241,6 +257,12 @@ Um Azure AD OAuth in der ARM-Vorlage für die Bereitstellung Ihrer Logik-App zu
 ```
 
 Weitere Informationen zum `accessControl`-Abschnitt finden Sie unter [Einschränken eingehender IP-Adressbereiche in Azure Resource Manager-Vorlagen](#restrict-inbound-ip-template) und [Microsoft.Logic-Workflows-Vorlagenreferenz](/azure/templates/microsoft.logic/2019-05-01/workflows).
+
+<a name="azure-api-management"></a>
+
+### <a name="expose-your-logic-app-with-azure-api-management"></a>Verfügbarmachen Ihrer Logik-App mit Azure API Management
+
+Um Ihrer Logik-App weitere [Authentifizierungsprotokolle](../active-directory/develop/authentication-vs-authorization.md) hinzuzufügen, können Sie den Dienst [Azure API Management](../api-management/api-management-key-concepts.md) verwenden. Dieser Dienst hilft Ihnen, Ihre Logik-App als API verfügbar zu machen. Er bietet außerdem umfassende Überwachung, Sicherheit, Richtlinien und Dokumentation für alle Endpunkte. Mit API Management können Sie einen öffentlichen oder privaten Endpunkt für die Logik-App verfügbar machen. Um den Zugriff auf diesen Endpunkt zu autorisieren, können Sie Azure AD OAuth, [Clientzertifikate](#client-certificate-authentication) oder andere Sicherheitsstandards verwenden. Wenn API Management eine Anforderung empfängt, sendet der Dienst die Anforderung an Ihre Logik-App und setzt dazu alle erforderlichen Transformationen oder Einschränkungen um. Damit nur API Management Ihre Logik-App aufrufen kann, können Sie [die eingehenden IP-Adressen Ihrer Logik-App einschränken](#restrict-inbound-ip).
 
 <a name="restrict-inbound-ip"></a>
 
@@ -311,12 +333,6 @@ Wenn Sie die [Bereitstellung von Logik-Apps mithilfe einer Resource Manager-Vorl
    "outputs": {}
 }
 ```
-
-<a name="add-authentication"></a>
-
-### <a name="add-azure-active-directory-open-authentication-or-other-security"></a>Hinzufügen von Azure Active Directory Open Authentication oder anderen Sicherheitsfeatures
-
-Um Ihrer Logik-App weitere [Authentifizierungsprotokolle](../active-directory/develop/authentication-vs-authorization.md) hinzuzufügen, können Sie den Dienst [Azure API Management](../api-management/api-management-key-concepts.md) verwenden. Dieser Dienst hilft Ihnen, Ihre Logik-App als API verfügbar zu machen. Er bietet außerdem umfassende Überwachung, Sicherheit, Richtlinien und Dokumentation für alle Endpunkte. Mit API Management können Sie einen öffentlichen oder privaten Endpunkt für die Logik-App verfügbar machen. Um den Zugriff auf diesen Endpunkt zu autorisieren, können Sie [Azure Active Directory Open Authentication](#azure-active-directory-oauth-authentication) (Azure AD OAuth), [Clientzertifikate](#client-certificate-authentication) oder andere Sicherheitsstandards verwenden. Wenn API Management eine Anforderung empfängt, sendet der Dienst die Anforderung an Ihre Logik-App und setzt dazu alle erforderlichen Transformationen oder Einschränkungen um. Damit nur API Management Ihre Logik-App auslösen kann, können Sie die Einstellungen für den eingehenden IP-Bereich Ihrer Logik-App anpassen.
 
 <a name="secure-operations"></a>
 
@@ -719,13 +735,21 @@ Diese Beispielvorlage weist mehrere sichere Parameterdefinitionen auf, die den T
 
 <a name="secure-outbound-requests"></a>
 
-## <a name="access-to-services-and-systems-called-from-logic-apps"></a>Zugriff auf Dienste und Systeme, die von Logik-Apps aus aufgerufen werden
+## <a name="access-for-outbound-calls-to-other-services-and-systems"></a>Zugriff für ausgehende Aufrufe anderer Dienste und Systeme
 
-Hier sind einige Möglichkeiten, wie Sie Endpunkte schützen können, die Anrufe oder Anforderungen von Ihrer Logik-App empfangen:
+Basierend auf den Funktionen des Zielendpunkts unterstützen ausgehende Aufrufe, die vom [HTTP-Trigger oder der HTTP-Aktion](../connectors/connectors-native-http.md) gesendet werden, Verschlüsselung und sind mit [TLS (Transport Layer Security) 1.0, 1.1 oder 1.2](https://en.wikipedia.org/wiki/Transport_Layer_Security) (zuvor als Secure Sockets Layer (SSL) bezeichnet) geschützt. Logic Apps handelt mit dem Zielendpunkt die Verwendung der höchstmöglichen unterstützten Version aus. Wenn der Zielendpunkt z. B. 1.2 unterstützt, verwendet der HTTP-Trigger bzw. die HTTP-Aktion zuerst 1.2. Andernfalls verwendet der Connector die nächsthöhere unterstützte Version.
 
-* Fügen Sie für ausgehende Anforderungen eine Authentifizierung hinzu.
+Im Folgenden finden Sie Informationen zu selbst signierten TLS/SSL-Zertifikaten:
 
-  Wenn Sie einen HTTP-basierten Trigger oder eine Aktion verwenden, der bzw. die ausgehende Aufrufe auslöst (etwa HTTP), können Sie der Anforderung, die von Ihrer Logik-App gesendet wird, eine Authentifizierung hinzufügen. Beispielsweise können Sie diese Authentifizierungstypen auswählen:
+* Für Logik-Apps in der globalen Azure-Umgebung mit mehren Mandanten lässt der HTTP-Connector keine selbstsignierten TLS/SSL-Zertifikate zu. Wenn Ihre Logik-App per HTTP einen Server aufruft und ein selbstsigniertes TLS/SSL-Zertifikat vorlegt, schlägt der HTTP-Aufruf mit einem `TrustFailure`-Fehler fehl.
+
+* Für Logik-Apps in einer [Integrationsdienstumgebung (Integration Service Environment, ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) erlaubt der HTTP-Connector hingegen selbstsignierte Zertifikate bei TLS/SSL-Handshakes. Sie müssen jedoch zunächst die [Unterstützung für selbstsignierte Zertifikate für eine vorhandene oder eine neue ISE mithilfe der Logic Apps-REST-API aktivieren](../logic-apps/create-integration-service-environment-rest-api.md#request-body) und das öffentliche Zertifikat am `TrustedRoot`-Speicherort installieren.
+
+Im Folgenden finden Sie weitere Möglichkeiten, wie Sie Endpunkte, die Aufrufe von Ihrer Logik-App verarbeiten, besser schützen können:
+
+* [Fügen Sie für ausgehende Anforderungen eine Authentifizierung hinzu](#add-authentication-outbound).
+
+  Wenn Sie den HTTP-Trigger bzw. die HTTP-Aktion zum Senden ausgehender Aufrufe verwenden, können Sie der von Ihrer Logik-App gesendeten Anforderung eine Authentifizierung hinzufügen. Beispielsweise können Sie diese Authentifizierungstypen auswählen:
 
   * [Standardauthentifizierung](#basic-authentication)
 
@@ -734,8 +758,6 @@ Hier sind einige Möglichkeiten, wie Sie Endpunkte schützen können, die Anrufe
   * [Active Directory OAuth-Authentifizierung](#azure-active-directory-oauth-authentication)
 
   * [Authentifizierung der verwalteten Identität](#managed-identity-authentication)
-
-  Weitere Informationen finden Sie weiter unten in diesem Thema unter [Hinzufügen der Authentifizierung zu ausgehenden Aufrufen](#add-authentication-outbound).
 
 * Schränken Sie den Zugriff von IP-Adressen von Logik-Apps ein.
 
@@ -776,7 +798,7 @@ Hier sind einige Möglichkeiten, wie Sie Endpunkte schützen können, die Anrufe
 
 <a name="add-authentication-outbound"></a>
 
-## <a name="add-authentication-to-outbound-calls"></a>Hinzufügen der Authentifizierung zu ausgehenden Aufrufen
+### <a name="add-authentication-to-outbound-calls"></a>Hinzufügen der Authentifizierung zu ausgehenden Aufrufen
 
 HTTP- und HTTP-Endpunkte unterstützen verschiedene Arten der Authentifizierung. Bei einigen Triggern und Aktionen, die Sie zum Senden ausgehender Aufrufe oder Anforderungen an diese Endpunkte verwenden, können Sie einen Authentifizierungstyp angeben. Im Logik-App-Designer besitzen Trigger und Aktionen, die die Auswahl eines Authentifizierungstyps unterstützen, eine Eigenschaft **Authentifizierung**. Diese Eigenschaft wird jedoch möglicherweise nicht immer standardmäßig angezeigt. In diesen Fällen öffnen Sie für den Trigger oder die Aktion die Liste **Neuen Parameter hinzufügen**, und wählen Sie **Authentifizierung** aus.
 
@@ -869,7 +891,7 @@ Weitere Informationen zum Absichern von Diensten mithilfe der Clientzertifikatau
 
 ### <a name="azure-active-directory-open-authentication"></a>Azure Active Directory Open Authentication
 
-Bei Anforderungstriggern können Sie nach der [Einrichtung von Azure AD-Autorisierungsrichtlinien](#enable-oauth) mit [Azure Active Directory Open Authentication](../active-directory/develop/index.yml) (Azure AD OAuth) eingehende Anrufe für Ihre Logik-App authentifizieren. Geben Sie für alle anderen Trigger und Aktionen, die Ihnen den **Active Directory OAuth**-Authentifizierungstyp zur Auswahl bereitstellen, die folgenden Eigenschaftswerte an:
+Bei Anforderungstriggern können Sie nach der [Einrichtung von Azure AD-Autorisierungsrichtlinien](#enable-oauth) eingehende Anrufe für Ihre Logik-App mit [Azure Active Directory Open Authentication (Azure AD OAuth)](../active-directory/develop/index.yml) authentifizieren. Geben Sie für alle anderen Trigger und Aktionen, die Ihnen den **Active Directory OAuth**-Authentifizierungstyp zur Auswahl bereitstellen, die folgenden Eigenschaftswerte an:
 
 | Eigenschaft (Designer) | Eigenschaft (JSON) | Erforderlich | Wert | BESCHREIBUNG |
 |---------------------|-----------------|----------|-------|-------------|

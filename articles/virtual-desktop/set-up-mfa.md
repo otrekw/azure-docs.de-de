@@ -3,15 +3,15 @@ title: 'Einrichten von Azure Multi-Factor Authentication für Windows Virtual De
 description: Erfahren Sie, wie Sie Azure Multi-Factor Authentication einrichten, um die Sicherheit in Windows Virtual Desktop zu erhöhen.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 07/15/2020
+ms.date: 08/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5e42ca0a0d0ff9d9df3dc42f1e165d1035d56d6a
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: e8e723aa26ab08c8a09e75f506802101dc07f7e8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009459"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017775"
 ---
 # <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>Aktivieren von Azure Multi-Factor Authentication für Windows Virtual Desktop
 
@@ -47,29 +47,36 @@ Hier erfahren Sie, wie Sie eine Richtlinie für bedingten Zugriff erstellen, die
 6. Wählen Sie unter **Einschließen** **Benutzer und Gruppen auswählen** > **Benutzer und Gruppen** aus, und wählen Sie die Gruppe aus, die Sie in der [Voraussetzungsphase](#prerequisites) erstellt haben.
 7. Wählen Sie **Fertig**aus.
 8. Wählen Sie unter **Cloud-Apps oder -Aktionen** > **Einschließen** die Option **Apps auswählen** aus.
-9. Wählen Sie eine der folgenden Gruppen von Apps aus, je nachdem, welche Version von Windows Virtual Desktop Sie verwenden.
-   - Wenn Sie Windows Virtual Desktop (klassisch) verwenden, wählen Sie diese beiden Apps aus:
+9. Wählen Sie eine der folgenden Apps aus, je nach der verwendeten Version von Windows Virtual Desktop.
+   - Wenn Sie Windows Virtual Desktop (klassisch) verwenden, wählen Sie diese App aus:
        - **Windows Virtual Desktop** (App-ID 5a0aa725-4958-4b0c-80a9-34562e23f3b7)
-       - **Windows Virtual Desktop Client** (App-ID fa4345a4-a730-4230-84a8-7d9651b86739)
-   - Wenn Sie Windows Virtual Desktop verwenden, wählen Sie stattdessen diese beiden Apps aus:
+   - Wenn Sie Windows Virtual Desktop verwenden, wählen Sie stattdessen diese App aus:
        -  **Windows Virtual Desktop** (App-ID 9cdead84-a844-4324-93f2-b2e6bb768d07)
-       -  **Windows Virtual Desktop-Client** (App-ID a85cf173-4192-42f8-81fa-777a763e6e2c)
 
    >[!IMPORTANT]
-   > Die Windows Virtual Desktop-Client-Apps werden für den Webclient verwendet. Wählen Sie jedoch nicht die App namens Windows Virtual Desktop Azure Resource Manager-Anbieter (50e95039-b200-4007-bc97-8d5790743a63) aus. Diese App wird nur zum Abrufen des Benutzerfeeds verwendet und sollte keine MFA aufweisen.
+   > Wählen Sie nicht die App namens Windows Virtual Desktop Azure Resource Manager-Anbieter (50e95039-b200-4007-bc97-8d5790743a63) aus. Diese App wird nur zum Abrufen des Benutzerfeeds verwendet und sollte keine MFA aufweisen.
 
-1. Nachdem Sie Ihre App ausgewählt haben, wählen Sie **Auswählen** und dann **Fertig** aus.
+10. Wechseln Sie zu **Bedingungen** > **Client-Apps**, und wählen Sie dann aus, wo Sie die Richtlinie anwenden möchten:
+    
+    - Aktivieren Sie **Browser**, wenn die Richtlinie auf den Webclient angewandt werden soll.
+    - Aktivieren Sie **Mobile Apps und Desktopclients**, wenn die Richtlinie auf andere Clients angewandt werden soll.
+    - Aktivieren Sie beide Kontrollkästchen, wenn die Richtlinie auf alle Clients angewandt werden soll.
+   
+    > [!div class="mx-imgBorder"]
+    > ![Screenshot des Seite „Apps“ des Clients. Der Benutzer hat das Kontrollkästchen „Mobile Apps und Desktopclients“ aktiviert.](media/select-apply.png)
 
-   > [!div class="mx-imgBorder"]
-   > ![Screenshot der Seite „Cloud-Apps oder -aktionen“. Die Windows Virtual Desktop- und Windows Virtual Desktop-Client-Apps werden rot hervorgehoben.](media/cloud-apps-enterprise.png)
+11. Nachdem Sie Ihre App ausgewählt haben, wählen Sie **Auswählen** und dann **Fertig** aus.
 
-   >[!NOTE]
-   >Um die App-ID der auszuwählenden App zu finden, wechseln Sie zu **Unternehmensanwendungen**, und wählen Sie **Microsoft-Anwendungen** aus dem Dropdownmenü für den Anwendungstyp aus.
+    > [!div class="mx-imgBorder"]
+    > ![Screenshot der Seite „Cloud-Apps oder -aktionen“. Die Windows Virtual Desktop- und Windows Virtual Desktop-Client-Apps werden rot hervorgehoben.](media/cloud-apps-enterprise.png)
 
-10. Wählen Sie unter **Zugriffssteuerung** > **Erteilen** die Option **Zugriff erteilen**, dann **Mehrstufige Authentifizierung erforderlich** und anschließend **Auswählen** aus.
-11. Wählen Sie unter **Zugriffssteuerung** > **Sitzung** die Option **Anmeldehäufigkeit** aus, legen Sie den Wert auf **1** und die Einheit auf **Stunden** fest, und wählen Sie dann **Auswählen** aus.
-12. Bestätigen Sie die Einstellungen und legen Sie **Richtlinie aktivieren** auf **Ein** fest.
-13. Wählen Sie **Erstellen** aus, um die Richtlinie zu aktivieren.
+    >[!NOTE]
+    >Um die App-ID der auszuwählenden App zu finden, wechseln Sie zu **Unternehmensanwendungen**, und wählen Sie **Microsoft-Anwendungen** aus dem Dropdownmenü für den Anwendungstyp aus.
+
+12. Wählen Sie unter **Zugriffssteuerung** > **Erteilen** die Option **Zugriff erteilen**, dann **Mehrstufige Authentifizierung erforderlich** und anschließend **Auswählen** aus.
+13. Wählen Sie unter **Zugriffssteuerung** > **Sitzung** die Option **Anmeldehäufigkeit** aus, legen Sie den Wert auf **1** und die Einheit auf **Stunden** fest, und wählen Sie dann **Auswählen** aus.
+14. Bestätigen Sie die Einstellungen und legen Sie **Richtlinie aktivieren** auf **Ein** fest.
+15. Wählen Sie **Erstellen** aus, um die Richtlinie zu aktivieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

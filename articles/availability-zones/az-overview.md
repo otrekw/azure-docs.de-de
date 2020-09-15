@@ -4,15 +4,15 @@ description: In diesem Artikel erhalten Sie Informationen zu Regionen und Verfü
 author: cynthn
 ms.service: azure
 ms.topic: article
-ms.date: 04/28/2020
+ms.date: 08/27/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: 78f50abf68412d2edcb7a6504c8e5c1b788e5901
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b9a400862280cbbc219e87695e363c0ec2e75ee6
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85413160"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018670"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Regionen und Verfügbarkeitszonen in Azure
 
@@ -92,46 +92,45 @@ Wie bereits erwähnt wurde, klassifiziert Azure Dienste in drei Kategorien: grun
 > | Grundlegend | Hauptdienst | Spezialisiert |
 > | --- | --- | --- |
 > | Azure Storage | API Management | Azure-API für FHIR |
-> | Application Gateway | App Configuration | Azure Blockchain-Dienst |
-> | Azure Backup | App Service | Azure Blueprint |
-> | Azure Cosmos DB | Automation | Azure Database for MariaDB |
-> | Azure Data Lake Storage Gen2 | Azure Active Directory Domain Services | Dediziertes HSM von Azure |
-> | Azure ExpressRoute | Azure Analysis Services | Azure Dev Spaces |
-> | Azure SQL-Datenbank | Azure Bastion | Azure Digital Twins |
-> | Cloud Services | Azure Cache for Redis | Azure Lab Services |
-> | Cloud Services: Av2-Serie | Azure Cognitive Search | Azure NetApp Files |
-> | Cloud Services: Dv2-Serie | Azure-Daten-Explorer | Azure Quantum |
-> | Cloud Services: Dv3-Serie | Azure Data Share | Azure Time Series Insights |
-> | Cloud Services: Ev3-Serie | Azure Database for MySQL | Azure VMware Solution by CloudSimple |
-> | Cloud Services: IPs auf Instanzebene | Azure Database for PostgreSQL | Cloud Services: A8–A11 (Rechenintensiv) |
-> | Cloud Services: Reservierte IP | Azure Database Migration Service | Cloud Services: G-Serie |
-> | Disk Storage | Azure Databricks | Cloud Services: H-Serie |
-> | Event Hubs | Azure DDoS Protection | Cognitive Services: Anomalieerkennung |
-> | Key Vault | Azure DevTest Labs | Cognitive Services: Custom Vision |
+> | Application Gateway | App Configuration | Azure Analysis Services |
+> | Azure Backup | App Service | Azure Blockchain-Dienst |
+> | Azure Cosmos DB | Automation | Azure Blueprints |
+> | Azure Data Lake Storage Gen2 | Azure Active Directory Domain Services | Azure Database for MariaDB |
+> | Azure ExpressRoute | Azure Bastion | Dediziertes HSM von Azure |
+> | Azure SQL-Datenbank | Azure Cache for Redis | Azure Dev Spaces |
+> | Cloud Services | Azure Cognitive Search | Azure Digital Twins |
+> | Cloud Services: Av2-Serie | Azure-Daten-Explorer | Azure Lab Services |
+> | Cloud Services: Dv2-Serie | Azure Data Share | Azure NetApp Files |
+> | Cloud Services: Dv3-Serie | Azure Database for MySQL | Azure Quantum |
+> | Cloud Services: Ev3-Serie | Azure Database for PostgreSQL | Azure Spring Cloud-Dienst |
+> | Cloud Services: IPs auf Instanzebene | Azure Database Migration Service | Azure Time Series Insights |
+> | Cloud Services: Reservierte IP | Azure Databricks | Azure VMware Solution by CloudSimple |
+> | Disk Storage | Azure DDoS Protection | Cloud Services: G-Serie |
+> | Event Hubs | Azure DevTest Labs | Cloud Services: H-Serie |
+> | Key Vault | Azure Firewall | Cognitive Services: Custom Vision |
 > | Load Balancer | Azure Firewall Manager | Cognitive Services: Sprechererkennung |
-> | Service Bus | Azure Firewall | Data Box Heavy |
-> | Service Fabric | Azure-Funktionen | Data Catalog |
-> | Virtual Machine Scale Sets | Azure HPC Cache | Data Factory: Data Factory (V1) |
-> | Virtual Machines | Azure IoT Hub | Data Lake Analytics |
-> | VMs: Av2-Serie | Azure Kubernetes Service (AKS) | Machine Learning Studio |
-> | VMs: Bs-Serie | Azure Machine Learning | Microsoft Genomics |
-> | VMs: DSv2-Serie | Azure Private Link | Remote Rendering |
-> | VMs: DSv3-Serie | Azure Red Hat OpenShift | Spatial Anchors |
+> | Service Bus | Azure-Funktionen | Data Box Heavy |
+> | Service Fabric | Azure HPC Cache | Data Catalog |
+> | Virtual Machine Scale Sets | Azure IoT Hub | Data Factory: Data Factory (V1) |
+> | Virtual Machines | Azure Kubernetes Service (AKS) | Data Lake Analytics |
+> | VMs: Av2-Serie | Azure Machine Learning | Machine Learning Studio |
+> | VMs: Bs-Serie | Azure Private Link | Microsoft Genomics |
+> | VMs: DSv2-Serie | Azure Red Hat OpenShift | Remote Rendering |
+> | VMs: DSv3-Serie | Azure SignalR-Dienst | Spatial Anchors |
 > | VMs: Dv2-Serie | Azure Site Recovery | StorSimple |
-> | VMs: Dv3-Serie | Azure Spring Cloud-Dienst | Video Indexer |
-> | VMs: ESv3-Serie | Azure Stack Hub | VMs: A8–A11 (Rechenintensiv) |
-> | VMs: Ev3-Serie | Azure Stream Analytics | VMs: DASv4-Serie |
-> | VMs: F-Serie | Azure Synapse Analytics | VMs: DAv4-Serie |
-> | VMs: FS-Serie | Azure SignalR Service | VMs: DCsv2-Serie |
-> | VMs: IPs auf Instanzebene | Batch | VMs: EASv4-Serie |
-> | VMs: Reservierte IP | Cloud Services: M-Serie | VMs: EAv4-Serie |
-> | Virtual Network | Cognitive Services | VMs: G-Serie |
-> | VPN Gateway | Cognitive Services: Maschinelles Sehen | VMs: GS-Serie |
-> |  | Cognitive Services: Content Moderator | VMs: HBv1-Serie |
-> |  | Cognitive Services: Gesicht | VMs: HBv2-Serie |
+> | VMs: Dv3-Serie | Azure Stack Hub | Video Indexer |
+> | VMs: ESv3-Serie | Azure Stream Analytics | VMs: DASv4-Serie |
+> | VMs: Ev3-Serie | Azure Synapse Analytics | VMs: DAv4-Serie |
+> | VMs: F-Serie | Batch | VMs: DCsv2-Serie |
+> | VMs: FS-Serie | Cloud Services: M-Serie | VMs: EASv4-Serie |
+> | VMs: IPs auf Instanzebene | Cognitive Services | VMs: EAv4-Serie |
+> | VMs: Reservierte IP | Cognitive Services: Maschinelles Sehen | VMs: G-Serie |
+> | Virtual Network | Cognitive Services: Content Moderator | VMs: GS-Serie |
+> | VPN Gateway | Cognitive Services: Gesicht | VMs: HBv1-Serie |
+> |  | Cognitive Services: Formularerkennung | VMs: HBv2-Serie |
 > |  | Cognitive Services: Language Understanding | VMs: HCv1-Serie |
-> |  | Cognitive Services: Spracherkennungsdienste | VMs: H-Serie |
-> |  | Cognitive Services: QnA Maker | VMs: LS-Serie |
+> |  | Cognitive Services: QnA Maker | VMs: H-Serie |
+> |  | Cognitive Services: Spracherkennungsdienste | VMs: LS-Serie |
 > |  | Container Instances | VMs: LSv2-Serie |
 > |  | Containerregistrierung | VMs: Mv2-Serie |
 > |  | Data Factory | VMs: NC-Serie |
@@ -146,6 +145,14 @@ Wie bereits erwähnt wurde, klassifiziert Azure Dienste in drei Kategorien: grun
 > |  | File Storage (Premium) | Visual Studio App Center |
 > |  | Speicher: Archivspeicher |  |
 > |  | Disk Storage Ultra |  |
+> |  | VMs: Ddsv4-Serie |  |
+> |  | VMs: Ddv4-Serie |  |
+> |  | VMs: Dsv4-Serie |  |
+> |  | VMs: Dv4-Serie |  |
+> |  | VMs: Edsv4-Serie |  |
+> |  | VMs: Edv4-Serie |  |
+> |  | VMs: Esv4-Serie |  |
+> |  | VMs: Ev4-Serie |  |
 > |  | VMs: Fsv2-Serie |  |
 > |  | VMs: M-Serie |  |
 > |  | Virtuelles WAN |  |

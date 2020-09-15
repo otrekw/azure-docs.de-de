@@ -16,12 +16,12 @@ ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0c8134cdb72f8bff74fa68dff81fc9d6f1f5ccc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 491c0aef74b44c0452b4d8d002a81928d80f360b
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830450"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276438"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Erneuern von Verbundzertifikaten für Office 365 und Azure Active Directory
 ## <a name="overview"></a>Übersicht
@@ -140,7 +140,7 @@ In diesen Szenarien müssen Sie bei jeder Aktualisierung der Tokensignaturzertif
 ### <a name="step-1-ensure-that-ad-fs-has-new-token-signing-certificates"></a>Schritt 1: Sicherstellen, dass AD FS über neue Tokensignaturzertifikate verfügt
 **Nicht standardmäßige Konfiguration**
 
-Wenn Sie eine nicht dem Standard entsprechende Konfiguration von AD FS nutzen, bei der **AutoCertificateRollover** auf **False** festgelegt ist, verwenden Sie wahrscheinlich benutzerdefinierte Zertifikate (nicht selbstsigniert). Weitere Informationen zur Erneuerung der AD FS-Tokensignaturzertifikate finden Sie unter [Anleitung für Kunden, die keine selbstsignierten AD FS-Zertifikate verwenden](https://msdn.microsoft.com/library/azure/JJ933264.aspx#BKMK_NotADFSCert).
+Wenn Sie eine nicht dem Standard entsprechende Konfiguration von AD FS nutzen, bei der **AutoCertificateRollover** auf **False** festgelegt ist, verwenden Sie wahrscheinlich benutzerdefinierte Zertifikate (nicht selbstsigniert). Weitere Informationen zur Erneuerung der AD FS-Tokensignaturzertifikate finden Sie unter [Zertifikatanforderungen für Verbunddienste](/windows-server/identity/ad-fs/design/certificate-requirements-for-federation-servers).
 
 **Die Verbundmetadaten sind nicht öffentlich verfügbar.**
 
@@ -188,4 +188,4 @@ Standardmäßig ist AD FS so konfiguriert, dass die Zertifikate für die Tokensi
 
 Azure AD versucht 30 Tage vor Ablauf des aktuellen Zertifikats, ein neues Zertifikat von Ihren Verbunddienstmetadaten abzurufen. Falls zu diesem Zeitpunkt kein neues Zertifikat verfügbar ist, setzt Azure AD die Überwachung der Metadaten in regelmäßigen täglichen Intervallen fort. Sobald das neue Zertifikat in den Metadaten verfügbar ist, werden die Verbundeinstellungen für die Domäne mit den neuen Zertifikatsinformationen aktualisiert. Sie können mit `Get-MsolDomainFederationSettings` überprüfen, ob das neue Zertifikat in NextSigningCertificate/SigningCertificate angezeigt wird.
 
-Weitere Informationen zu Tokensignaturzertifikaten in AD FS finden Sie unter [Abrufen und Konfigurieren von Tokensignaturzertifikaten und Tokenentschlüsselungszertifikaten für AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ts-td-certs-ad-fs)
+Weitere Informationen zu Tokensignaturzertifikaten in AD FS finden Sie unter [Abrufen und Konfigurieren von Tokensignaturzertifikaten und Tokenentschlüsselungszertifikaten für AD FS](/windows-server/identity/ad-fs/operations/configure-ts-td-certs-ad-fs)

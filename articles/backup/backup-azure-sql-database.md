@@ -3,12 +3,12 @@ title: Sichern von SQL Server-Datenbanken in Azure
 description: In diesem Artikel erfahren Sie, wie Sie SQL Server in Azure sichern. In diesem Artikel wird auch die SQL Server-Wiederherstellung beschrieben.
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: d8cdafe215d9271151d8dacee114d40108e907bd
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 3627162ef2f4330a4b6a78625b5e07bdcf56419b
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892438"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376535"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Informationen zur SQL Server-Sicherung auf virtuellen Azure-Computern
 
@@ -91,7 +91,7 @@ Fügen Sie der SQL Server-Instanz die Anmeldungen **NT AUTHORITY\SYSTEM** und **
 
 1. Wechseln Sie im Objekt-Explorer zur SQL Server-Instanz.
 2. Navigieren Sie zu „Sicherheit -> Anmeldungen“.
-3. Klicken Sie mit der rechten Maustaste auf „Anmeldungen“, und klicken Sie dann auf *Neue Anmeldung...* .
+3. Klicken Sie mit der rechten Maustaste auf „Anmeldungen“, und wählen Sie *Neue Anmeldung...* aus.
 
     ![Neue Anmeldung mit SSMS](media/backup-azure-sql-database/sql-2k8-new-login-ssms.png)
 
@@ -101,13 +101,13 @@ Fügen Sie der SQL Server-Instanz die Anmeldungen **NT AUTHORITY\SYSTEM** und **
 
 5. Wechseln Sie zu *Serverrollen*, und wählen Sie die Rollen *Öffentlich* und *sysadmin* aus.
 
-    ![Wählen von Rollen in SSMS](media/backup-azure-sql-database/sql-2k8-server-roles-ssms.png)
+    ![Auswählen von Rollen in SSMS](media/backup-azure-sql-database/sql-2k8-server-roles-ssms.png)
 
 6. Wechseln Sie zu *Status*. *Erteilen* Sie die Berechtigung zum Herstellen der Verbindung mit der Datenbank-Engine, und melden Sie sich als *Aktiviert* an.
 
     ![Erteilen von Berechtigungen in SSMS](media/backup-azure-sql-database/sql-2k8-grant-permission-ssms.png)
 
-7. Klicken Sie auf OK.
+7. Wählen Sie „OK“ aus.
 8. Wiederholen Sie die gleiche Schrittreihenfolge (1-7 oben), um die Anmeldung „NT Service\AzureWLBackupPluginSvc“ zur SQL Server-Instanz hinzuzufügen. Wenn die Anmeldung bereits vorhanden ist, stellen Sie sicher, dass sie die Serverrolle „sysadmin“ hat und ihr unter „Status“ die Berechtigung zum Herstellen der Verbindung mit der Datenbank-Engine erteilt und „Anmeldung“ auf „Aktiviert“ festgelegt wurde.
 9. Führen Sie nach dem Erteilen der Berechtigung im Portal eine **erneute Ermittlung von Datenbanken** durch: Tresor **->** Sicherungsinfrastruktur **->** Workload in Azure VM:
 

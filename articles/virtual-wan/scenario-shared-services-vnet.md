@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/07/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6045c491ea68d759b2a1739e20aa2f12b8520c87
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: c72ff14246f3f96980fe1de2fdef16794bf23e4e
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006484"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399989"
 ---
 # <a name="scenario-route-to-shared-services-vnets"></a>Szenario: Routen zu VNETs für gemeinsame Dienste
 
@@ -24,7 +24,7 @@ Weitere Informationen zum Routing für virtuelle Hubs finden Sie unter [Informat
 
 ## <a name="design"></a><a name="design"></a>Entwurf
 
-Wir können eine Konnektivitätsmatrix verwenden, um die Anforderungen dieses Szenarios zusammenzufassen. Jede Zelle in der Matrix beschreibt, ob eine Virtual WAN-Verbindung (die Seite „From“ des Flows, die Zeilenheader in der Tabelle) ein Zielpräfix (die Seite „To“ des Flows, die kursiv gesetzten Spaltenheader in der Tabelle) für einen bestimmten Datenverkehrsfluss lernt.
+Wir können eine Konnektivitätsmatrix verwenden, um die Anforderungen dieses Szenarios zusammenzufassen. Jede Zelle in der Matrix beschreibt, ob eine Virtual WAN-Verbindung (die Seite „From“ des Flows, die Zeilenheader in der Tabelle) ein Zielpräfix (die Seite „To“ des Flows, die kursiv gesetzten Spaltenheader in der Tabelle) für einen bestimmten Datenverkehrsfluss lernt. Ein „X“ bedeutet, dass die Konnektivität von Virtual WAN bereitgestellt wird:
 
 **Konnektivitätsmatrix**
 

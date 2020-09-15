@@ -2,15 +2,15 @@
 title: Testfälle für das Testtoolkit
 description: Beschreibt die Tests, die vom Resource Manager-Vorlagen-Testtoolkit ausgeführt werden.
 ms.topic: conceptual
-ms.date: 06/19/2020
+ms.date: 09/02/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 5c18a2658ba1af9370699004860d1743603e8143
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dda8e92c17029126e7f473a6aee03acfc970e04b
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255777"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378116"
 ---
 # <a name="default-test-cases-for-arm-template-test-toolkit"></a>Standardtestfälle für das Resource Manager-Vorlagen-Testtoolkit
 
@@ -100,6 +100,37 @@ Im nächsten Beispiel ist der Test **erfolgreich**:
         "type": "SecureString"
     }
 }
+```
+
+## <a name="environment-urls-cant-be-hardcoded"></a>Umgebungs-URLs können nicht hartcodiert werden.
+
+Testname: **DeploymentTemplate Must Not Contain Hardcoded Uri**
+
+Die Umgebungs-URLs in der Vorlage dürfen nicht hartcodiert werden. Verwenden Sie stattdessen die [Umgebungsfunktion](template-functions-deployment.md#environment), um diese URLs während der Bereitstellung dynamisch abzurufen. Eine Liste der blockierten URL-Hosts finden Sie im Artikel zum [Testfall](https://github.com/Azure/arm-ttk/blob/master/arm-ttk/testcases/deploymentTemplate/DeploymentTemplate-Must-Not-Contain-Hardcoded-Uri.test.ps1).
+
+Im folgenden Beispiel ist der Test **nicht erfolgreich**, weil die URL hartcodiert ist.
+
+```json
+"variables":{
+    "AzureURL":"https://management.azure.com"
+}
+```
+
+Der Test ist auch bei Verwendung von [concat](template-functions-string.md#concat) oder [uri](template-functions-string.md#uri) **nicht erfolgreich**.
+
+```json
+"variables":{
+    "AzureSchemaURL1": "[concat('https://','gallery.azure.com')]",
+    "AzureSchemaURL2": "[uri('gallery.azure.com','test')]"
+}
+```
+
+Im folgenden Beispiel ist der Test **erfolgreich**.
+
+```json
+"variables": {
+    "AzureSchemaURL": "[environment().gallery]"
+},
 ```
 
 ## <a name="location-uses-parameter"></a>Verwendung eines Parameters für den Speicherort
@@ -351,7 +382,7 @@ Diese Warnung wird auch ausgegeben, wenn Sie nur einen der Werte angeben, d. h.
 
 ## <a name="artifacts-parameter-defined-correctly"></a>Korrekte Definition von Artefaktparametern
 
-Testname: **artifacts-parameter**
+Testname: **artifacts parameter**
 
 Wenn Sie Parameter für `_artifactsLocation` und `_artifactsLocationSasToken` hinzufügen, müssen Sie die richtigen Standardwerte und Typen verwenden. Die folgenden Bedingungen müssen erfüllt sein, damit dieser Test erfolgreich ist:
 
@@ -514,9 +545,9 @@ Dieser Test gilt für Folgendes:
 
 Bei `reference` und `list*` ist der Test **nicht erfolgreich**, wenn Sie `concat` zum Erstellen der Ressourcen-ID verwenden.
 
-## <a name="dependson-cant-be-conditional"></a>Keine bedingten dependsOn-Eigenschaften
+## <a name="dependson-best-practices"></a>dependsOn best practices
 
-Testname: **DependsOn Must Not Be Conditional**
+Testname: **DependsOn Best Practices**
 
 Verwenden Sie beim Festlegen der Bereitstellungsabhängigkeiten nicht die [if](template-functions-logical.md#if)-Funktion, um eine Bedingung zu testen. Wenn eine Ressource von einer Ressource abhängig ist, die [bedingt bereitgestellt](conditional-resource-deployment.md) wird, legen Sie die Abhängigkeit wie bei jeder beliebigen Ressource fest. Wenn eine bedingte Ressource nicht bereitgestellt wurde, entfernt Azure Resource Manager sie automatisch aus den erforderlichen Abhängigkeiten.
 
@@ -572,7 +603,7 @@ Wenn Ihre Vorlage eine VM mit einem Image enthält, müssen Sie sicherstellen, d
 
 ## <a name="use-stable-vm-images"></a>Verwendung stabiler VM-Images
 
-Testname: **Virtual-Machines-Should-Not-Be-Preview**
+Testname: **Virtual Machines Should Not Be Preview**
 
 Für VMs sollten keine Vorschauimages verwendet werden.
 

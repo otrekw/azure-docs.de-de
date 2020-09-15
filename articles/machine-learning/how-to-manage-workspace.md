@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 12/27/2019
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: e1f97fddb07e56946e37c04d9b9685412782c560
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: e2f13cbdca9d6372677bbba24d60f4a73436cfd7
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88659754"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179272"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Erstellen und Verwalten von Azure Machine Learning-Arbeitsbereichen im Azure-Portal
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -51,7 +51,7 @@ Zum Erstellen eines Arbeitsbereichs benötigen Sie ein Azure-Abonnement. Wenn Si
 
     ![Konfigurieren des Arbeitsbereichs](./media/how-to-manage-workspace/select-edition.png)
 
-1. Wählen Sie **Überprüfen + erstellen** aus, nachdem die Konfiguration des Arbeitsbereichs abgeschlossen ist.
+1. Wählen Sie **Überprüfen + erstellen** aus, nachdem die Konfiguration des Arbeitsbereichs abgeschlossen ist. Verwenden Sie optional die Abschnitte [Netzwerk](#networking) und [Erweitert](#advanced), um weitere Einstellungen für den Arbeitsbereich zu konfigurieren.
 2. Überprüfen Sie die Einstellungen, und nehmen Sie zusätzliche Änderungen oder Korrekturen vor. Wenn Sie mit den Einstellungen zufrieden sind, wählen Sie **Erstellen** aus.
 
    > [!Warning] 
@@ -61,15 +61,65 @@ Zum Erstellen eines Arbeitsbereichs benötigen Sie ein Azure-Abonnement. Wenn Si
  
  1. Um den neuen Arbeitsbereich anzuzeigen, wählen Sie **Zu Ressource wechseln** aus.
 
-### <a name="download-a-configuration-file"></a>Herunterladen einer Konfigurationsdatei
 
-1. Wenn Sie eine [Compute-Instanz](tutorial-1st-experiment-sdk-setup.md#azure) erstellen, überspringen Sie diesen Schritt.
+### <a name="networking"></a>Netzwerk
 
-1. Wenn Sie Code in Ihrer lokalen Umgebung verwenden möchten, der auf diesen Arbeitsbereich verweist, wählen Sie im Abschnitt **Übersicht** des Arbeitsbereichs die Option **„config.json“ herunterladen** aus.  
+> [!IMPORTANT]
+> Weitere Informationen zur Verwendung eines privaten Endpunkts und eines virtuellen Netzwerks mit Ihrem Arbeitsbereich finden Sie unter [Netzwerkisolation und Datenschutz](how-to-enable-virtual-network.md).
 
-   ![Herunterladen von „config.json“](./media/how-to-manage-workspace/configure.png)
-   
-   Legen Sie die Datei in der Verzeichnisstruktur mit Ihren Python-Skripts oder Jupyter Notebooks ab. Sie kann sich im selben Verzeichnis, in einem Unterverzeichnis namens *.azureml* oder in einem übergeordneten Verzeichnis befinden. Bei der Erstellung einer Compute-Instanz wird diese Datei automatisch dem richtigen Verzeichnis auf dem virtuellen Computer hinzugefügt.
+1. Bei der standardmäßigen Netzwerkkonfiguration wird ein __öffentlicher Endpunkt__ verwendet, der über das öffentliche Internet zugänglich ist. Um den Zugriff auf Ihren Arbeitsbereich auf ein von Ihnen erstelltes virtuelles Azure-Netzwerk zu beschränken, können Sie __Privater Endpunkt__ (Vorschauversion) als __Konnektivitätsmethode__ auswählen und dann über __+ Hinzufügen__ den Endpunkt konfigurieren.
+
+   > [!IMPORTANT]
+   > Das Verwenden eines privaten Endpunkts mit Azure Machine Learning-Arbeitsbereichen befindet sich derzeit in der Public Preview. Diese Vorschau wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+   :::image type="content" source="media/how-to-manage-workspace/select-private-endpoint.png" alt-text="Auswahl des privaten Endpunkts":::
+
+1. Legen Sie im Formular __Privaten Endpunkt erstellen__ den Speicherort, den Namen und das zu verwendende virtuelle Netzwerk fest. Wenn Sie den Endpunkt mit einer privaten DNS-Zone verwenden möchten, klicken Sie auf __In private DNS-Zone integrieren__, und wählen Sie im Feld __Private DNS-Zone__ die gewünschte Zone aus. Klicken Sie auf __OK__, um den Endpunkt zu erstellen. 
+
+   :::image type="content" source="media/how-to-manage-workspace/create-private-endpoint.png" alt-text="Erstellen des privaten Endpunkts":::
+
+1. Wenn Sie die Netzwerkkonfiguration abgeschlossen haben, können Sie auf __Überprüfen und erstellen__ klicken oder mit der optionalen Konfiguration unter __Erweitert__ fortfahren.
+
+    > [!WARNING]
+    > Wenn Sie einen privaten Endpunkt erstellen, wird eine neue private DNS-Zone namens __privatelink.api.azureml.ms__ erstellt. Diese enthält einen Link zum virtuellen Netzwerk. Wenn Sie mehrere Arbeitsbereiche mit privaten Endpunkten in derselben Ressourcengruppe erstellen, kann nur das virtuelle Netzwerk für den ersten privaten Endpunkt zur DNS-Zone hinzugefügt werden. Um den virtuellen Netzwerken, die von den zusätzlichen Arbeitsbereichen bzw. privaten Endpunkten verwendet werden, Einträge hinzuzufügen, führen Sie folgende Schritte aus:
+    > 
+    > 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Ressourcengruppe aus, die den Arbeitsbereich enthält. Wählen Sie dann die Ressource namens __privatelink.api.azureml.ms__ für die private DNS-Zone aus.
+    > 2. Klicken Sie unter __Einstellungen__ auf __VNET-Verknüpfungen__.
+    > 3. Wählen Sie __Hinzufügen__. Geben Sie auf der Seite __VNET-Verknüpfung hinzufügen__ einen eindeutigen __Linknamen__ an, und wählen Sie dann das __virtuelle Netzwerk__ aus, das hinzugefügt werden soll. Klicken Sie auf __OK__, um die Netzwerkverknüpfung hinzuzufügen.
+    >
+    > Weitere Informationen finden Sie unter [DNS-Konfiguration für private Azure-Endpunkte](/azure/private-link/private-endpoint-dns).
+
+### <a name="advanced"></a>Erweitert
+
+Standardmäßig werden Metriken und Metadaten für den Arbeitsbereich in einer Azure Cosmos DB-Instanz gespeichert, die von Microsoft verwaltet wird. Diese Daten werden mit von Microsoft verwalteten Schlüsseln verschlüsselt. 
+
+Wählen Sie __Arbeitsbereich mit hohen geschäftlichen Auswirkungen__ aus, um die von Microsoft in Ihrem Arbeitsbereich gesammelten Daten zu beschränken.
+
+> [!IMPORTANT]
+> Die Auswahl von „starken geschäftlichen Auswirkungen“ kann nur beim Erstellen eines Arbeitsbereichs erfolgen. Diese Einstellung kann nach dem Erstellen des Arbeitsbereichs nicht mehr geändert werden.
+
+Wenn Sie eine __Enterprise__-Version von Azure Machine Learning erstellen, können Sie stattdessen einen eigenen Schlüssel angeben. Hierdurch wird die Azure Cosmos DB-Instanz erstellt, die Metriken und Metadaten in Ihrem Azure-Abonnement speichert. Führen Sie die folgenden Schritte aus, um Ihren eigenen Schlüssel zu verwenden:
+
+> [!IMPORTANT]
+> Vor diesen Schritten müssen Sie zunächst die folgenden Aktionen ausführen:
+>
+> 1. Autorisieren Sie die __Machine Learning-App__ (in der Identitäts- und Zugriffsverwaltung) mit den Berechtigungen für Mitwirkende in Ihrem Abonnement.
+> 1. Befolgen Sie die Schritte in [Konfigurieren von kundenseitig verwalteten Schlüsseln](/azure/cosmos-db/how-to-setup-cmk), um:
+>     * Registrieren des Azure Cosmos DB-Anbieters
+>     * Erstellen und Konfigurieren einer Azure Key Vault-Instanz
+>     * Generieren eines Schlüssels
+>
+>     Sie müssen die Azure Cosmos DB-Instanz nicht manuell erstellen. Es wird eine während der Erstellung des Arbeitsbereichs für Sie erstellt. Diese Azure Cosmos DB-Instanz wird in einer separaten Ressourcengruppe mit einem Namen erstellt, der auf diesem Muster basiert: `<your-resource-group-name>_<GUID>`.
+>
+> Diese Einstellung kann nach dem Erstellen des Arbeitsbereichs nicht mehr geändert werden. Wenn Sie die von Ihrem Arbeitsbereich verwendete Azure Cosmos DB löschen, müssen Sie auch den Arbeitsbereich löschen, der sie verwendet.
+
+1. Klicken Sie auf __Kundenseitig verwalteter Schlüssel__ und dann auf __Klicken Sie hier, um einen Schlüssel auszuwählen__.
+
+    :::image type="content" source="media/how-to-manage-workspace/advanced-workspace.png" alt-text="Kundenseitig verwaltete Schlüssel":::
+
+1. Wählen Sie im Formular __Schlüssel aus Azure Key Vault auswählen__ eine vorhandene Azure Key Vault-instanz, einen darin enthaltenen Schlüssel sowie die Schlüsselversion aus. Dieser Schlüssel wird zum Verschlüsseln der in Azure Cosmos DB gespeicherten Daten verwendet. Klicken Sie abschließend auf die Schaltfläche __Auswählen__, um diesen Schlüssel zu verwenden.
+
+   :::image type="content" source="media/how-to-manage-workspace/select-key-vault.png" alt-text="Auswählen des Schlüssels":::
 
 ## <a name="upgrade-to-enterprise-edition"></a><a name="upgrade"></a>Upgrade auf Enterprise Edition
 
@@ -87,7 +137,17 @@ Sie können Ihren Arbeitsbereich von der Basic Edition auf die Enterprise Editio
 
 
 > [!IMPORTANT]
-> Es ist nicht möglich, einen Enterprise Edition-Arbeitsbereich in einen Basic Edition-Arbeitsbereich herabzustufen. 
+> Es ist nicht möglich, einen Enterprise Edition-Arbeitsbereich in einen Basic Edition-Arbeitsbereich herabzustufen.
+
+### <a name="download-a-configuration-file"></a>Herunterladen einer Konfigurationsdatei
+
+1. Wenn Sie eine [Compute-Instanz](tutorial-1st-experiment-sdk-setup.md#azure) erstellen, überspringen Sie diesen Schritt.
+
+1. Wenn Sie Code in Ihrer lokalen Umgebung verwenden möchten, der auf diesen Arbeitsbereich verweist, wählen Sie im Abschnitt **Übersicht** des Arbeitsbereichs die Option **„config.json“ herunterladen** aus.  
+
+   ![Herunterladen von „config.json“](./media/how-to-manage-workspace/configure.png)
+   
+   Legen Sie die Datei in der Verzeichnisstruktur mit Ihren Python-Skripts oder Jupyter Notebooks ab. Sie kann sich im selben Verzeichnis, in einem Unterverzeichnis namens *.azureml* oder in einem übergeordneten Verzeichnis befinden. Bei der Erstellung einer Compute-Instanz wird diese Datei automatisch dem richtigen Verzeichnis auf dem virtuellen Computer hinzugefügt.
 
 ## <a name="find-a-workspace"></a><a name="view"></a>Suchen nach einem Arbeitsbereich
 

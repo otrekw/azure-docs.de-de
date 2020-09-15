@@ -12,12 +12,12 @@ ms.date: 12/27/2019
 ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a725eefd678720f2d9b8763277b02452819155b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f7dc1d4b0f6678f02c4f5d152edf2ae9af063d1
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763192"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89392441"
 ---
 # <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>Verwalten der Einwilligung zu Anwendungen und Auswerten von Einwilligungsanforderungen
 
@@ -100,7 +100,7 @@ Unter [Erteilen einer mandantenweiten Administratoreinwilligung für eine Anwend
 
 ### <a name="granting-consent-on-behalf-of-a-specific-user"></a>Erteilen einer Einwilligung im Namen eines bestimmten Benutzers
 
-Anstatt die Einwilligung für die gesamte Organisation zu erteilen, kann ein Administrator auch die [Microsft Graph-API](https://docs.microsoft.com/graph/use-the-api) verwenden, um eine Einwilligung für delegierte Berechtigungen im Namen eines einzelnen Benutzers zu erteilen. Weitere Informationen finden Sie unter [Zugreifen im Namen eines Benutzers](https://docs.microsoft.com/graph/auth-v2-user).
+Anstatt die Einwilligung für die gesamte Organisation zu erteilen, kann ein Administrator auch die [Microsoft Graph-API](https://docs.microsoft.com/graph/use-the-api) verwenden, um eine Einwilligung für delegierte Berechtigungen im Namen eines einzelnen Benutzers zu erteilen. Weitere Informationen finden Sie unter [Zugreifen im Namen eines Benutzers](https://docs.microsoft.com/graph/auth-v2-user).
 
 ## <a name="limiting-user-access-to-applications"></a>Beschränken des Benutzerzugriffs auf Anwendungen
 
@@ -108,13 +108,25 @@ Der Zugriff von Benutzern auf Anwendungen kann auch dann noch eingeschränkt wer
 
 Eine umfassendere Übersicht, einschließlich der Behandlung weiterer komplexer Szenarien, finden Sie unter [Verwenden von Azure AD für die Anwendungszugriffsverwaltung](what-is-access-management.md).
 
+## <a name="disable-all-future-user-consent-operations-to-any-application"></a>Deaktivieren aller zukünftigen Vorgänge für die Benutzereinwilligung für jede Anwendung
+
+Die Deaktivierung der Benutzerzustimmung für das gesamte Verzeichnis führt dazu, dass Endbenutzer keiner Anwendung zustimmen können. Administratoren können weiterhin im Namen von Benutzern zustimmen. Weitere Informationen zur Zustimmung zu Anwendungen sowie zum Aktivieren bzw. Deaktivieren der Zustimmung finden Sie unter [Grundlegendes zur Benutzer- und Administratorzustimmung](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview).
+
+Führen Sie die folgenden Schritte aus, um **alle zukünftigen Vorgänge der Benutzerzustimmung in Ihrem gesamten Verzeichnis zu deaktivieren**:
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
+3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
+4.  Klicken Sie im Navigationsmenü auf **Benutzer und Gruppen**.
+5.  Klicken Sie auf **Benutzereinstellungen**.
+6.  Deaktivieren Sie alle zukünftigen Vorgänge der Benutzerzustimmung, indem Sie **Benutzer können Apps Zugriff auf ihre Daten gewähren** auf **Nein** festlegen und dann auf die Schaltfläche **Speichern** klicken.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Fünf Schritte zum Sichern Ihrer Identitätsinfrastruktur](https://docs.microsoft.com/azure/security/fundamentals/steps-secure-identity#before-you-begin-protect-privileged-accounts-with-mfa)
 
-[Konfigurieren des Workflows für die Administratoreinwilligung](configure-admin-consent-workflow.md)
+[Konfigurieren des Workflows für die Administratoreinwilligung (Vorschau)](configure-admin-consent-workflow.md)
 
-[Konfigurieren der Art und Weise, wie Endbenutzer Anwendungen zustimmen können](configure-user-consent.md)
+[Konfigurieren der Art der Benutzereinwilligung für eine Anwendung in Azure Active Directory](configure-user-consent.md)
 
 [Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt](../develop/active-directory-v2-scopes.md)
 

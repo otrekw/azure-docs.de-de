@@ -3,12 +3,12 @@ title: Azure Relay – häufig gestellte Fragen | Microsoft-Dokumentation
 description: Dieser Artikel bietet Antworten auf einige häufig gestellte Fragen im Zusammenhang mit dem Azure Relay-Dienst.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 40e6f830e2314f7c8f36fcd25d24a41cc256bef2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d967d926c6ab59e027fe4d4cf98e8418a8ff9bc
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317023"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299285"
 ---
 # <a name="azure-relay-faqs"></a>Azure Relay – häufig gestellte Fragen
 
@@ -119,8 +119,8 @@ Eine Beschreibung häufig auftretender Ausnahmen und der vorgeschlagenen Aktione
 ### <a name="what-is-a-shared-access-signature-and-which-languages-can-i-use-to-generate-a-signature"></a>Was ist eine Shared Access Signature, und welche Sprachen kann ich zum Generieren einer Signatur verwenden?
 Bei Shared Access Signatures handelt es sich um einen Authentifizierungsmechanismus, der auf sicheren Hashes (SHA-256) oder URIs basiert. Informationen zum Generieren eigener Signaturen in Node.js, PHP, Python, Java, C und C# finden Sie im Artikel [Service Bus-Authentifizierung mit Shared Access Signatures][Shared Access Signatures].
 
-### <a name="is-it-possible-to-whitelist-relay-endpoints"></a>Ist es möglich, Relayendpunkte in eine Whitelist aufzunehmen?
-Ja. Der Relayclient stellt mithilfe vollqualifizierter Domänennamen Verbindungen mit dem Azure Relay-Dienst her. Kunden können einen Eintrag für `*.servicebus.windows.net` für Firewalls hinzufügen, die DNS-Whitelists unterstützen.
+### <a name="is-it-possible-to-allow-only-some-relay-endpoints"></a>Ist es möglich, nur einige Relayendpunkte zuzulassen?
+Ja. Der Relayclient stellt mithilfe vollqualifizierter Domänennamen Verbindungen mit dem Azure Relay-Dienst her. Kunden können in Firewalls, die DNS-Genehmigungseinträge unterstützen, einen Eintrag für `*.servicebus.windows.net` hinzufügen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Erstellen eines Namespaces](relay-create-namespace-portal.md)

@@ -224,12 +224,10 @@
               href: log-query/get-started-queries.md
         - name: Protokolldaten
           items:
-            - name: Protokolldatenstruktur
-              href: log-query/logs-structure.md
             - name: Abfragebereich
               href: log-query/scope.md
-            - name: Standardeigenschaften
-              href: platform/log-standard-properties.md
+            - name: Standardspalten
+              href: platform/log-standard-columns.md
             - name: Computergruppen
               href: platform/computer-groups.md
         - name: Abfragesprache

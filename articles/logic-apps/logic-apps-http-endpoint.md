@@ -1,44 +1,39 @@
 ---
-title: Aufrufen, Auslösen oder Schachteln von Logik-Apps
+title: Abrufen, Auslösen oder Schachteln von Logik-Apps mithilfe von Anforderungstriggern
 description: Einrichten von HTTPS-Endpunkten zum Aufrufen, Auslösen oder Schachteln von Logik-App-Workflows in Azure Logic Apps
 services: logic-apps
 ms.workload: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 05/28/2020
-ms.openlocfilehash: d8211127d7c886b86f97e83a61b3b3ebb055851e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/27/2020
+ms.openlocfilehash: 5032676848536f0b9498cf4beecf86277484a901
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078663"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230805"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>Aufrufen, Auslösen oder Schachteln von Logik-Apps mithilfe von HTTPS-Endpunkten in Azure Logic Apps
 
-Damit Ihre Logik-App über eine URL aufgerufen werden und Ihre Logik-App eingehende Anforderungen aus anderen Diensten empfangen kann, können Sie einen synchronen HTTPS-Endpunkt nativ als Trigger in dieser Logik-App verfügbar machen. Wenn Sie diese Funktion einrichten, können Sie Ihre Logik-App auch in anderen Logik-Apps schachteln, wodurch Sie ein Muster aus aufrufbaren Endpunkten erstellen können.
-
-Zum Einrichten eines aufrufbaren Endpunkts können Sie jeden der folgenden Triggertypen verwenden, die es Logik-Apps ermöglichen, eingehende Anforderungen zu empfangen:
+Damit Ihre Logik-App über eine URL aufgerufen werden und eingehende Anforderungen von anderen Diensten empfangen kann, können Sie einen synchronen HTTPS-Endpunkt nativ als anforderungsbasierten Trigger in dieser Logik-App verfügbar machen. Mit dieser Funktion können Sie Ihre Logik-App aus anderen Logik-Apps aufrufen und ein Muster für aufrufbare Endpunkte erstellen. Um einen aufrufbaren Endpunkt für die Verarbeitung eingehender Aufrufe einzurichten, können Sie einen der folgenden Triggertypen verwenden:
 
 * [Anforderung](../connectors/connectors-native-reqres.md)
 * [HTTP Webhook](../connectors/connectors-native-webhook.md)
 * Verwaltete Connectortrigger vom Typ [ApiConnectionWebhook](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger), die eingehende HTTPS-Anforderungen empfangen können
 
-> [!NOTE]
-> Die vorliegenden Beispiele verwenden einen Anforderungstrigger, Sie können aber auch jeden anderen auf HTTPS-Anforderungen basierenden Trigger aus der Liste oben verwenden. Alle Prinzipien gelten gleichermaßen für diese anderen Triggertypen.
+In diesem Artikel wird gezeigt, wie Sie einen aufrufbaren Endpunkt in Ihrer Logik-App mithilfe des Anforderungstriggers erstellen und ihn aus einer anderen Logik-App aufrufen. Alle Prinzipien gelten genauso für die anderen Triggertypen, mit denen Sie eingehende Anforderungen empfangen können.
 
-Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md) und [Schnellstart: Erstellen Ihres ersten automatisierten Workflows mit Azure Logic Apps – Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Informationen zu Verschlüsselung, Sicherheit und Autorisierung für eingehende Aufrufe Ihrer Logik-App, etwa [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security) (früher bekannt als Secure Sockets Layer (SSL)) oder [Azure Active Directory Open Authentication (Azure AD OAuth)](../active-directory/develop/index.yml), finden Sie unter [Sicherer Zugriff und Daten: Zugriff für eingehende Aufrufe anforderungsbasierter Trigger](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+* Ein Azure-Konto und ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
-* Die Logik-App, in der Sie den Trigger zum Erstellen des aufrufbaren Endpunkts verwenden möchten. Sie können entweder mit einer leeren Logik-App beginnen oder eine vorhandene Logik-App verwenden, in der Sie den aktuellen Trigger ersetzen möchten. Dieses Beispiel beginnt mit einer leeren Logik-App.
+* Die Logik-App, in der Sie den Trigger zum Erstellen des aufrufbaren Endpunkts verwenden möchten. Sie können mit einer leeren Logik-App beginnen oder eine vorhandene Logik-App verwenden, in der Sie den aktuellen Trigger ersetzen. Dieses Beispiel beginnt mit einer leeren Logik-App. Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md) und [Schnellstart: Erstellen Ihres ersten automatisierten Workflows mit Azure Logic Apps – Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="create-a-callable-endpoint"></a>Erstellen eines aufrufbaren Endpunkts
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Erstellen Sie im Logik-App-Designer eine leere Logik-App, und öffnen Sie sie.
-
-   Dieses Beispiel verwendet einen Anforderungstrigger, Sie können aber auch jeden anderen Trigger verwenden, der eingehende HTTPS-Anforderungen empfangen kann. Alle Prinzipien gelten gleichermaßen für diese Trigger. Weitere Informationen zum Anforderungstrigger finden Sie unter [Empfangen von und Antworten auf HTTPS-Aufrufe mittels Azure Logic Apps](../connectors/connectors-native-reqres.md).
 
 1. Wählen Sie unter dem Suchfeld die Option **Integriert** aus. Geben Sie im Suchfeld den Begriff `request` als Filter ein. Wählen Sie in der Liste der Trigger die Option **Beim Empfang einer HTTP-Anforderung** aus.
 
@@ -408,3 +403,4 @@ Um die JSON-Definition der Antwortaktion und die vollständige JSON-Definition I
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Empfangen von und Antworten auf HTTPS-Aufrufe mittels Azure Logic Apps](../connectors/connectors-native-reqres.md)
+* [Schützen des Zugriffs und der Daten in Azure Logic Apps – Zugriff – Zugriff auf anforderungsbasierte Trigger für eingehende Aufrufe](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)

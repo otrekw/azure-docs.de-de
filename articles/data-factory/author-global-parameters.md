@@ -7,13 +7,13 @@ ms.workload: data-services
 ms.topic: conceptual
 author: djpmsft
 ms.author: daperlov
-ms.date: 08/05/2020
-ms.openlocfilehash: 052f502ed27db9ade0fd2916f91d6922c52a5a98
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.date: 08/31/2020
+ms.openlocfilehash: 96fba5c27115dab65f26be80ce03bef35abcdb92
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87854125"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230828"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Globale Parameter in Azure Data Factory
 
@@ -43,11 +43,26 @@ Globale Parameter können in jedem [Pipelineausdruck](control-flow-expression-la
 
 ## <a name="global-parameters-in-cicd"></a><a name="cicd"></a> Globale Parameter in CI/CD
 
-Globale Parameter verfügen über einen eindeutigen CI/CD-Prozess, der relativ zu anderen Entitäten in Azure Data Factory erfolgt. Beim Veröffentlichen einer Factory oder Exportieren einer ARM-Vorlage mit globalen Parametern wird der Ordner *globalParameters* mit der Datei *Ihr_Factory-Name_GlobalParameters.json* erstellt. Bei dieser Datei handelt es sich um ein JSON-Objekt, das jeden globalen Parametertyp und -wert der veröffentlichten Factory enthält.
+Es gibt zwei Möglichkeiten, globale Parameter in Ihre Continuous Integration- und Continuous Deployment-Lösung zu integrieren:
+
+* Einschließen globaler Parameter in die ARM-Vorlage
+* Bereitstellen globaler Parameter über ein PowerShell-Skript
+
+Für die meisten Anwendungsfälle empfiehlt es sich, globale Parameter in die ARM-Vorlage einzuschließen. Dies ist nativ in die in der [Dokumentation zu CI/CD](continuous-integration-deployment.md) beschriebenen Lösung integriert. Globale Parameter werden standardmäßig als ARM-Vorlagenparameter hinzugefügt, da sie häufig zwischen Umgebungen geändert werden. Sie können das Einschließen globaler Parameter in die ARM-Vorlage über den Verwaltungshub aktivieren.
+
+![Einschließen in eine ARM-Vorlage](media/author-global-parameters/include-arm-template.png)
+
+Durch das Hinzufügen globaler Parameter zur ARM-Vorlage wird eine Einstellung auf Factoryebene hinzugefügt, die andere Einstellungen auf Factoryebene in anderen Umgebungen außer Kraft setzen kann, z. B. einen kundenseitig verwalteten Schlüssel oder eine Git-Konfiguration. Wenn Sie diese Einstellungen in einer erweiterten Umgebung aktiviert haben, z. B. vom Typ UAT (Benutzerakzeptanztests) oder PRODUKTION, ist es besser, globale Parameter über ein PowerShell-Skript anhand der unten hervorgehobenen Schritte bereitzustellen.
+
+### <a name="deploying-using-powershell"></a>Bereitstellen mithilfe von PowerShell
+
+In den folgenden Schritten wird beschrieben, wie Sie globale Parameter über PowerShell bereitstellen. Dies ist nützlich, wenn die Zielfactory eine Einstellung auf Factoryebene aufweist, z. B. einen kundenseitig verwalteten Schlüssel.
+
+Beim Veröffentlichen einer Factory oder Exportieren einer ARM-Vorlage mit globalen Parametern wird der Ordner *globalParameters* mit der Datei *Ihr_Factory-Name_GlobalParameters.json* erstellt. Bei dieser Datei handelt es sich um ein JSON-Objekt, das jeden globalen Parametertyp und -wert der veröffentlichten Factory enthält.
 
 ![Veröffentlichen von globalen Parametern](media/author-global-parameters/global-parameters-adf-publish.png)
 
-Bei einer Bereitstellung in einer neuen Umgebung, z. B. vom Typ TEST oder PRODUKTION, empfehlen wir Ihnen die Erstellung einer Kopie dieser Datei mit den globalen Parametern und die Überschreibung der entsprechenden umgebungsspezifischen Werte. Beim erneuten Veröffentlichen wird die ursprüngliche Datei mit den globalen Parametern überschrieben, aber die Kopie für die andere Umgebung bleibt erhalten.
+Bei einer Bereitstellung in einer neuen Umgebung, z. B. vom Typ TEST oder PRODUKTION, werden das Erstellen einer Kopie dieser Datei mit den globalen Parametern und das Überschreiben der entsprechenden umgebungsspezifischen Werte empfohlen. Beim erneuten Veröffentlichen wird die ursprüngliche Datei mit den globalen Parametern überschrieben, aber die Kopie für die andere Umgebung bleibt erhalten.
 
 Wenn Sie beispielsweise über eine Factory mit dem Namen „ADF-DEV“ und einen globalen Parameter vom Typ „Zeichenfolge“ mit dem Namen „environment“ und dem Wert „dev“ verfügen, wird beim Veröffentlichen eine Datei mit dem Namen *ADF-DEV_GlobalParameters.json* generiert. Wenn Sie die Bereitstellung für eine Testfactory mit dem Namen „ADF_TEST“ durchführen, sollten Sie eine Kopie der JSON-Datei erstellen (z. B. mit dem Namen „ADF-TEST_GlobalParameters.json“) und die Parameterwerte durch die umgebungsspezifischen Werte ersetzen. Der Parameter „environment“ verfügt nun ggf. über den Wert „test“. 
 

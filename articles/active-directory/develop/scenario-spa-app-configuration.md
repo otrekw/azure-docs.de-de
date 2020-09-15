@@ -11,25 +11,26 @@ ms.workload: identity
 ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: f159105046231ba5fb4e458cdd70d930a411a920
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: b42d720a425b92ec9002f7c2b9797a91f70dafe2
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80882334"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003023"
 ---
 # <a name="single-page-application-code-configuration"></a>Single-Page-Webanwendung: Codekonfiguration
 
 Erfahren Sie, wie Sie den Code für Ihre Single-Page-Webanwendung (SPA) konfigurieren.
 
-## <a name="msal-libraries-that-support-implicit-flow"></a>MSAL-Bibliotheken, die den impliziten Flow unterstützen
+## <a name="msal-libraries-for-spas-and-supported-authentication-flows"></a>MSAL-Bibliotheken für SPAs und unterstützte Authentifizierungsflows
 
-Die Microsoft Identity Platform stellt die folgenden Microsoft-Authentifizierungsbibliotheken (Microsoft Authentication Library, MSAL) zur Unterstützung des impliziten Flows mithilfe von empfohlenen branchenüblichen Sicherheitsmethoden bereit:
+Microsoft Identity Platform stellt die folgende Microsoft Authentication Library für JavaScript (MSAL.js) zur Unterstützung des impliziten Flows und des Autorisierungscodeflows mit PKCE mithilfe von empfohlenen branchenüblichen Sicherheitsmethoden bereit:
 
-| MSAL-Bibliothek | BESCHREIBUNG |
-|--------------|--------------|
-| ![MSAL.js](media/sample-v2-code/logo_js.png) <br/> [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)  | Einfache JavaScript-Bibliothek zur Verwendung in einer beliebigen clientseitigen Web-App, die über JavaScript- oder SPA-Frameworks wie Angular, Vue.js und React.js erstellt wurde. |
-| ![MSAL Angular](media/sample-v2-code/logo_angular.png) <br/> [MSAL Angular](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | Wrapper der MSAL.js-Kernbibliothek für eine einfachere Verwendung in Single-Page-Webanwendungen, die über das Angular-Framework erstellt wurden. |
+| MSAL-Bibliothek | Flow | BESCHREIBUNG |
+|--------------|------|-------------|
+| ![MSAL.js](media/sample-v2-code/logo_js.png) <br/> [MSAL.js (2.x)](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser) | Autorisierungscodeflow (PKCE) | Einfache JavaScript-Bibliothek zur Verwendung in einer beliebigen clientseitigen Web-App, die über JavaScript- oder SPA-Frameworks wie Angular, Vue.js und React.js erstellt wurde. |
+| ![MSAL.js](media/sample-v2-code/logo_js.png) <br/> [MSAL.js (1.x)](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core) | Impliziter Flow | Einfache JavaScript-Bibliothek zur Verwendung in einer beliebigen clientseitigen Web-App, die über JavaScript- oder SPA-Frameworks wie Angular, Vue.js und React.js erstellt wurde. |
+| ![MSAL Angular](media/sample-v2-code/logo_angular.png) <br/> [MSAL Angular](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | Impliziter Flow | Wrapper der MSAL.js-Kernbibliothek für eine einfachere Verwendung in Single-Page-Webanwendungen, die über das Angular-Framework erstellt wurden. |
 
 ## <a name="application-code-configuration"></a>Codekonfiguration der Anwendung
 
@@ -41,10 +42,9 @@ In einer MSAL-Bibliothek werden die Anwendungsregistrierungsinformationen währe
 // Configuration object constructed.
 const config = {
     auth: {
-        clientId: 'your_app_id',
-        redirectUri: "your_app_redirect_uri" //defaults to application start page
+        clientId: 'your_client_id'
     }
-}
+};
 
 // create UserAgentApplication instance
 const userAgentApplication = new UserAgentApplication(config);

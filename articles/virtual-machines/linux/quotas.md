@@ -4,19 +4,22 @@ description: Erfahren Sie mehr über vCPU-Kontingente für Azure.
 author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/31/2018
 ms.author: cynthn
-ms.openlocfilehash: 684c665d57127b7ca52771c0498ef370293e4003
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 028da1fa9d2b16b4d87c345d8435c99b565e1774
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292302"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949693"
 ---
-# <a name="virtual-machine-vcpu-quotas"></a>vCPU-Kontingente für virtuelle Computer
+# <a name="check-vcpu-quotas-using-the-azure-cli"></a>Überprüfen von vCPU-Kontingenten mithilfe der Azure-Befehlszeilenschnittstelle
 
 Die vCPU-Kontingente für virtuelle Computer und die VM-Skalierungsgruppen werden bei jedem Abonnement und in jeder Region in zwei Ebenen angeordnet. „Regionale vCPUs gesamt“ bilden die erste Ebene, die zweite Ebene besteht aus den Kernen der verschiedenen VM-Größenfamilien, z.B. vCPUs der D-Serie. Bei jeder Bereitstellung eines neuen virtuellen Computers dürfen die vCPUs für den virtuellen Computer das vCPU-Kontingent für die VM-Größenfamilie bzw. das regionale vCPU-Gesamtkontingent nicht überschreiten. Wird eines dieser Kontingente überschritten, wird die VM-Bereitstellung nicht zugelassen. Es gibt auch ein Kontingent für die Gesamtanzahl der virtuellen Computer in der Region. Die Details zu den einzelnen Kontingenten können Sie entweder im [Azure-Portal](https://portal.azure.com) auf der Seite **Abonnement** im Bereich **Nutzung + Kontingente** anzeigen oder die Werte mithilfe der Azure-Befehlszeilenschnittstelle abfragen.
+
+> [!NOTE]
+> Das Kontingent wird anhand der Gesamtanzahl der verwendeten Kerne (zugeordnet und nicht zugeordnet) berechnet. Wenn Sie zusätzliche Kerne benötigen, [fordern Sie eine Erhöhung des Kontingents an](../../azure-portal/supportability/resource-manager-core-quotas-request.md), oder löschen Sie nicht mehr benötigte VMs. 
 
 
 ## <a name="check-usage"></a>Überprüfen der Nutzung

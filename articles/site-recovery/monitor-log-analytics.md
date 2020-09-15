@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 766d0a763f7d69ec58851116e18510235f39b364
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7d11fa8605d9cd5f335b6be56097caf7a5222bbd
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495062"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006940"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Überwachen von Site Recovery mit Azure Monitor-Protokollen
 
@@ -62,9 +62,9 @@ Sie können die Änderungsdateninformationen und die Quelldaten-Uploadrateninfor
 1. Wechseln Sie zum Log Analytics-Arbeitsbereich, und klicken Sie auf **Erweiterte Einstellungen**.
 2. Klicken Sie auf die Seite **Verbundene Quellen**, und wählen Sie dann **Windows-Server** aus.
 3. Laden Sie den Windows-Agent (64 Bit) auf den Prozessserver herunter. 
-4. [Abrufen von Arbeitsbereichs-ID und Schlüssel](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key)
+4. [Abrufen von Arbeitsbereichs-ID und Schlüssel](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key)
 5. [Konfigurieren des Agents für die Verwendung von TLS 1.2](../azure-monitor/platform/agent-windows.md#configure-agent-to-use-tls-12)
-6. [Schließen Sie die Installation des Agents ab](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard), indem Sie die erhaltene Arbeitsbereichs-ID und den Schlüssel angeben.
+6. [Schließen Sie die Installation des Agents ab](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard), indem Sie die erhaltene Arbeitsbereichs-ID und den Schlüssel angeben.
 7. Nachdem die Installation abgeschlossen ist, wechseln Sie in den Log Analytics-Arbeitsbereich, und klicken Sie auf **Erweiterte Einstellungen**. Wechseln Sie zur Seite **Daten**, und klicken Sie dann auf **Windows-Leistungsindikatoren**. 
 8. Klicken Sie auf **„+“** , um die folgenden beiden Indikatoren mit dem Stichprobenintervall von 300 Sekunden hinzuzufügen:
 

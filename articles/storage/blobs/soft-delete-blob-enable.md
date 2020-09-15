@@ -9,17 +9,17 @@ ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 83827c7a39b2833ce1301e78a0bef4e6d61ec62b
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.custom: devx-track-azurecli, devx-track-csharp
+ms.openlocfilehash: 07e306c6c428a0e3a3f64a29a2574cb0378bb81f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185297"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230227"
 ---
 # <a name="enable-and-manage-soft-delete-for-blobs"></a>Aktivieren und Verwalten des vorläufigen Löschens für Blobs
 
-Vorläufiges Löschen von Blobs schützt Ihre Daten vor versehentlichem oder irrtümlichem Ändern oder Löschen. Wenn vorläufiges Löschen von Blobs für ein Speicherkonto aktiviert ist, können Blobs, Blobversionen (Vorschau) und Momentaufnahmen in diesem Speicherkonto nach ihrer Löschung innerhalb eines von Ihnen angegebenen Aufbewahrungszeitraums wiederhergestellt werden.
+Vorläufiges Löschen von Blobs schützt Ihre Daten vor versehentlichem oder irrtümlichem Ändern oder Löschen. Wenn vorläufiges Löschen von Blobs für ein Speicherkonto aktiviert ist, können Blobs, Blobversionen und Momentaufnahmen in diesem Speicherkonto nach ihrer Löschung innerhalb eines angegebenen Aufbewahrungszeitraums wiederhergestellt werden.
 
 Wenn die Möglichkeit besteht, dass Ihre Daten von einer Anwendung oder einem anderen Benutzer des Speicherkontos versehentlich geändert oder gelöscht werden, empfiehlt Microsoft, vorläufiges Löschen von Blobs zu aktivieren. In diesem Artikel wird gezeigt, wie Sie vorläufiges Löschen für Blobs aktivieren. Ausführlichere Informationen zum vorläufigen Löschen von Blobs finden Sie unter [Vorläufiges Löschen für Blobs](soft-delete-blob-overview.md).
 
@@ -195,4 +195,4 @@ blockBlob.StartCopy(copySource);
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Vorläufiges Löschen für Blobspeicher](soft-delete-overview.md)
-- [Blobversionsverwaltung (Vorschau)](versioning-overview.md)
+- [Blobversionsverwaltung](versioning-overview.md)

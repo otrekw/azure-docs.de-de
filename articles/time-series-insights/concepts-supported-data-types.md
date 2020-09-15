@@ -8,26 +8,36 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/12/2020
-ms.openlocfilehash: e6fd405d1969a2f40a5f0c3466a57fbec60723e9
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.date: 08/31/2020
+ms.openlocfilehash: 4e6586453469797458bc60fc7499a45a9aad9b9b
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141158"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226742"
 ---
 # <a name="supported-data-types"></a>Unterstützte Datentypen
 
 In der folgenden Tabelle sind die von Azure Time Series Insights Gen2 unterstützten Datentypen aufgeführt.
 
-| Datentyp | BESCHREIBUNG | Beispiel | Spaltenname für Eigenschaft in Parquet
-|---|---|---|---|
-| **bool** | Ein Datentyp, der diese beiden Zustände aufweisen kann: `true` oder `false`. | `"isQuestionable" : true` | isQuestionable_bool
-| **datetime** | Stellt einen Zeitpunkt dar, der üblicherweise als Datum und Uhrzeit ausgedrückt wird. Wird im Format [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) ausgedrückt. Datetime-Eigenschaften werden immer im UTC-Format gespeichert. Zeitzonenverschiebungen werden, sofern korrekt formatiert, angewendet, und der resultierende Wert wird in UTC gespeichert. Weitere Informationen über die Zeitstempel-Eigenschaft einer Umgebung und die Datetime-Verschiebungen finden Sie in [diesem](concepts-streaming-ingestion-event-sources.md#event-source-timestamp) Abschnitt. | `"eventProcessedLocalTime": "2020-03-20T09:03:32.8301668Z"` | eventProcessedLocalTime_datetime
-| **double** | Eine 64-Bit-Zahl mit doppelter Genauigkeit  | `"value": 31.0482941` | value_double
-| **long** | Eine 64-Bit-Ganzzahl mit Vorzeichen  | `"value" : 31` | value_long
-| **string** | Textwerte müssen aus gültigen Zeichen in UTF-8 bestehen. NULL und leere Zeichenfolgen werden gleich behandelt. |  `"site": "DIM_MLGGG"` | site_string
-| **dynamic** | Ein komplexer (nicht primitiver) Typ, der entweder aus einem Array oder einer Eigenschaftensammlung (Wörterbuch) besteht. Derzeit werden nur JSON-Arrays, die Primitive als Zeichenfolgen enthalten, oder Arrays von Objekten, die nicht die TS-ID oder Zeitstempel-Eigenschaft(en) enthalten, mit dem Typ „dynamic“ gespeichert. Lesen Sie diesen [Artikel](./concepts-json-flattening-escaping-rules.md), um zu erfahren, wie Objekte vereinfacht und Arrays möglicherweise aufgelöst werden. Auf Nutzlasteigenschaften, die mit diesem Typ gespeichert werden, kann über den Azure Time Series Insights Gen2-Explorer und die `GetEvents` Abfrage-API zugegriffen werden. |  `"values": "[197, 194, 189, 188]"` | values_dynamic
+| Datentyp | BESCHREIBUNG | Beispiel | [Syntax des Zeitreihenausdrucks](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax) | Spaltenname für Eigenschaft in Parquet
+|---|---|---|---|---|
+| **bool** | Ein Datentyp, der diese beiden Zustände aufweisen kann: `true` oder `false`. | `"isQuestionable" : true` | `$event.isQuestionable.Bool` oder `$event['isQuestionable'].Bool` | `isQuestionable_bool`
+| **datetime** | Stellt einen Zeitpunkt dar, der üblicherweise als Datum und Uhrzeit ausgedrückt wird. Wird im Format [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) ausgedrückt. Datetime-Eigenschaften werden immer im UTC-Format gespeichert. Zeitzonenverschiebungen werden, sofern korrekt formatiert, angewendet, und der resultierende Wert wird in UTC gespeichert. Weitere Informationen über die Zeitstempel-Eigenschaft einer Umgebung und die Datetime-Verschiebungen finden Sie in [diesem](concepts-streaming-ingestion-event-sources.md#event-source-timestamp) Abschnitt. | `"eventProcessedLocalTime": "2020-03-20T09:03:32.8301668Z"` |  Wenn „eventProcessedLocalTime“ der Zeitstempel für die Ereignisquelle ist: `$event.$ts`. Wenn es sich um eine andere JSON-Eigenschaft handelt: `$event.eventProcessedLocalTime.DateTime` oder `$event['eventProcessedLocalTime'].DateTime` | `eventProcessedLocalTime_datetime`
+| **double** | Eine 64-Bit-Zahl mit doppelter Genauigkeit  | `"value": 31.0482941` | `$event.value.Double` oder `$event['value'].Double` |  `value_double`
+| **long** | Eine 64-Bit-Ganzzahl mit Vorzeichen  | `"value" : 31` | `$event.value.Long` oder `$event['value'].Long` |  `value_long`
+| **string** | Textwerte müssen aus gültigen Zeichen in UTF-8 bestehen. NULL und leere Zeichenfolgen werden gleich behandelt. |  `"site": "DIM_MLGGG"`| `$event.site.String` oder `$event['site'].String`| `site_string`
+| **dynamic** | Ein komplexer (nicht primitiver) Typ, der entweder aus einem Array oder einer Eigenschaftensammlung (Wörterbuch) besteht. Derzeit werden nur JSON-Arrays, die Primitive als Zeichenfolgen enthalten, oder Arrays von Objekten, die nicht die TS-ID oder Zeitstempel-Eigenschaft(en) enthalten, mit dem Typ „dynamic“ gespeichert. Lesen Sie diesen [Artikel](./concepts-json-flattening-escaping-rules.md), um zu erfahren, wie Objekte vereinfacht und Arrays möglicherweise aufgelöst werden. Auf die Nutzlasteigenschaften, die als dieser Typ gespeichert sind, kann nur durch Auswählen von `Explore Events` im TSI-Explorer zum Anzeigen von Rohereignissen oder über die [`GetEvents`](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents) -Abfrage-API für die clientseitige Analyse zugegriffen werden. |  `"values": "[197, 194, 189, 188]"` | Verweise auf dynamische Typen in einem Zeitreihenausdruck werden noch nicht unterstützt. | `values_dynamic`
+
+> [!NOTE]
+> 64-Bit-Ganzzahlwerte werden unterstützt. Die größte Zahl, die vom Azure Time Series Insights-Explorer sicher ausgedrückt werden kann, ist aufgrund von JavaScript-Einschränkungen folgende: 9.007.199.254.740.991 (2^53-1). Wenn Sie in Ihrem Datenmodell mit größeren Zahlen arbeiten, können Sie die Größe verringern, indem Sie eine [Zeitreihenmodellvariable](/concepts-variables#numeric-variables) erstellen und den Wert [konvertieren](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#conversion-functions).
+
+> [!NOTE]
+> Der Typ **Zeichenfolge** lässt keine NULL-Werte zu:
+>
+> * Ein in einer [Zeitreihenabfrage](https://docs.microsoft.com/rest/api/time-series-insights/reference-query-apis) ausgedrückter [Zeitreihenausdruck (Time Series Expression, TSX)](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax), der den Wert einer leeren Zeichenfolge ( **''** ) mit **NULL** vergleicht, weist das gleiche Verhalten auf: `$event.siteid.String = NULL` entspricht `$event.siteid.String = ''`.
+> * Die API gibt möglicherweise **NULL**-Werte zurück, auch wenn ursprüngliche Ereignisse leere Zeichenfolgen enthielten.
+> * Verwenden Sie keine Abhängigkeit von **NULL**-Werten in Spalten vom Typ **Zeichenfolge**, um Vergleiche oder Auswertungen durchzuführen. Behandeln Sie sie wie leere Zeichenfolgen.
 
 ## <a name="sending-mixed-data-types"></a>Senden von gemischten Datentypen
 

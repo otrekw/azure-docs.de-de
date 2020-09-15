@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d67dbc0eedba8cc32c188636032d96b31f45adf
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: a39871fd6e2aef2e5120030d17192bb32ba2613b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717777"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003472"
 ---
 # <a name="azure-ad-password-protection-on-premises-frequently-asked-questions"></a>Häufig gestellte Fragen zum Azure AD-Kennwortschutz in lokalen Umgebungen
 
@@ -47,6 +47,14 @@ Bei einer Kennwortänderung wählt ein Benutzer ein neues Kennwort aus, nachdem 
 Bei einer Kennwortfestlegung (manchmal als Kennwortzurücksetzung bezeichnet) ersetzt ein Administrator das Kennwort für ein Konto durch ein neues Kennwort, z. B. durch Verwendung des Active Directory-Verwaltungstools „Benutzer und Computer“. Für diesen Vorgang sind hohe Berechtigungen (normalerweise Domänenadministrator) erforderlich. Außerdem kennt die Person, die den Vorgang durchführt, in der Regel das alte Kennwort nicht. Kennwortfestlegungen finden häufig in Helpdesk-Szenarien statt, z.B. bei der Unterstützung eines Benutzers, der sein Kennwort vergessen hat. Ein anderes Beispiel ist die erstmalige Erstellung eines neuen Benutzerkontos mit einem Kennwort.
 
 Die Richtlinie zur Kennwortüberprüfung ist identisch, unabhängig davon, ob eine Kennwortänderung oder eine Kennwortfestlegung durchgeführt wird. Mit dem DC-Agent-Dienst für den Azure AD-Kennwortschutz werden verschiedene Ereignisse protokolliert, um Sie darüber zu informieren, ob ein Vorgang zum Ändern oder zum Festlegen eines Kennworts durchgeführt wurde.  Siehe dazu [Überwachung und Protokollierung beim Azure AD-Kennwortschutz](./howto-password-ban-bad-on-premises-monitor.md).
+
+**F: Überprüft der Azure AD-Kennwortschutz vorhandene Kennwörter nach der Installation?**
+
+Nein. Der Azure AD-Kennwortschutz kann die Kennwortrichtlinie nur bei einer Änderung oder Festlegung von Klartextkennwörtern erzwingen. Nachdem ein Kennwort von Active Directory akzeptiert wurde, werden nur authentifizierungsprotokollspezifische Hashs dieses Kennworts beibehalten. Das Klartextkennwort wird niemals persistent gespeichert, sodass der Azure AD-Kennwortschutz vorhandene Kennwörter nicht überprüfen kann.
+
+Nach der Erstbereitstellung des Azure AD-Kennwortschutzes werden alle Benutzer und Konten letztendlich auf die Verwendung von Kennwörtern umgestellt, die vom Azure AD-Kennwortschutz überprüft wurden, da die bestehenden Kennwörter im Lauf der Zeit normal ablaufen. Dieser Prozess kann bei Bedarf durch einen einmaligen manuellen Ablauf der Kennwörter von Benutzerkonten beschleunigt werden.
+
+Bei Konten, die mit „Kennwort läuft nie ab“ konfiguriert wurden, wird nie eine Kennwortänderung erzwungen. Dies ist ausschließlich manuell möglich.
 
 **F: Warum werden doppelte Kennwortablehnungsereignisse protokolliert bei dem Versuch, mithilfe des Snap-Ins zur Verwaltung von Active Directory-Benutzern und -Computern ein schwaches Kennwort festzulegen?**
 
@@ -80,7 +88,7 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 
 Sollte DFSR von Ihrer Domäne noch nicht verwendet werden, muss die Domäne vor der Installation des Azure AD-Kennwortschutzes für die Verwendung von DFSR migriert werden. Weitere Informationen finden Sie unter dem folgenden Link:
 
-[Migrationshandbuch für die SYSVOL-Replikation: Replikation von FRS zu DFS](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
+[Anleitung zur SYSVOL-Replikationsmigration: FRS- zu DFS-Replikation](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
 
 > [!WARNING]
 > Die DC-Agent-Software für den Azure AD-Kennwortschutz wird derzeit auf Domänencontrollern in Domänen installiert, von denen noch FRS für die SYSVOL-Replikation verwendet wird. Die Software funktioniert in dieser Umgebung allerdings NICHT ordnungsgemäß. Dies macht sich unter anderem durch nicht erfolgreich replizierte Einzeldateien sowie durch scheinbar erfolgreiche SYSVOL-Wiederherstellungsprozeduren bemerkbar, bei denen jedoch nicht alle Dateien repliziert werden. Es empfiehlt sich, die Domäne baldmöglichst für die Verwendung von DFSR zu migrieren, um von den DFSR-Vorteilen zu profitieren und die Blockierung der Bereitstellung des Azure AD-Kennwortschutzes aufzuheben. Zukünftige Versionen der Software werden automatisch deaktiviert, wenn sie in einer Domäne ausgeführt werden, die noch FRS verwendet.
@@ -147,11 +155,11 @@ Nein. Die Fehlermeldung, die Benutzern angezeigt wird, wenn ein Kennwort von ein
 
 Die folgenden Links gehören nicht zur grundlegenden Dokumentation zum Azure AD-Kennwortschutz, sind aber eine nützliche Quelle für zusätzliche Informationen zu diesem Feature.
 
-[Der Azure AD-Kennwortschutz ist jetzt allgemein verfügbar.](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-is-now-generally-available/ba-p/377487)
+[Der Azure AD-Kennwortschutz ist jetzt allgemein verfügbar!](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-is-now-generally-available/ba-p/377487)
 
 [Email Phishing Protection Guide – Part 15: Implement the Microsoft Azure AD Password Protection Service (for On-Premises too!)](http://kmartins.com/2018/10/14/email-phishing-protection-guide-part-15-implement-the-microsoft-azure-ad-password-protection-service-for-on-premises-too/) (Leitfaden zum Schutz von E-Mail-Phishing, Teil 15: Implementieren des Microsoft Azure AD-Kennwortschutzdiensts [auch für lokale Umgebungen!])
 
-[Azure AD Password Protection and Smart Lockout are now in Public Preview!](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-and-Smart-Lockout-are-now-in-Public/ba-p/245423#M529) (Azure AD-Kennwortschutz und intelligente Sperren jetzt in der öffentlichen Vorschau!)
+[Azure AD-Kennwortschutz und intelligente Sperre jetzt in der öffentlichen Vorschau!](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-and-Smart-Lockout-are-now-in-Public/ba-p/245423#M529)
 
 ## <a name="microsoft-premierunified-support-training-available"></a>Training zu Microsoft Premier und Unified Support verfügbar
 

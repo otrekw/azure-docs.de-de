@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: victorh
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: f10bb1f4065f3bdb517fcad4f3eb6caa331c5233
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: dc3daf28a4e8dd4ebf1fcedddd1a46986ac80cc4
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87273200"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400601"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatische Skalierung und zonenredundantes Application Gateway v2 
 
@@ -47,87 +47,7 @@ Bei der v2-SKU basiert das Preismodell auf der Nutzung und ist nicht mehr an die
 
 Jede Kapazitätseinheit setzt sich maximal zusammen aus: 1 Compute-Einheit, 2500 permanente Verbindungen und 2,22 MBit/s Durchsatz.
 
-Leitfaden für Compute-Einheit:
-
-- **Standard_v2**: Jede Compute-Einheit kann ungefähr 50 Verbindungen pro Sekunde mit TLS-Zertifikat mit RSA-Schlüssel (2048 Bit) unterhalten.
-- **WAF_v2**: Jede Compute-Einheit kann etwa 10 gleichzeitige Anforderungen pro Sekunde für eine 70/30%-Kombination des Datenverkehrs mit 70 % Anforderungen, weniger als 2 KB GET/POST und höher unterstützen. Die WAF-Leistung ist derzeit nicht von der Antwortgröße betroffen.
-
-> [!NOTE]
-> Jede Instanz kann derzeit etwa 10 Kapazitätseinheiten unterstützen.
-> Die Anzahl der Anforderungen, die eine Compute-Einheit verarbeiten kann, hängt von verschiedenen Kriterien wie Größe des TLS-Zertifikatschlüssels, Schlüsselaustauschalgorithmus, erneutes Generieren von Headern und – im Fall von WAF – Größe der eingehenden Anforderung ab. Es wird empfohlen, Anwendungstests auszuführen, um die Anforderungsrate pro Compute-Einheit zu ermitteln. Sowohl Kapazitätseinheit als auch Compute-Einheit werden vor Beginn der Abrechnung als Metrik zur Verfügung gestellt.
-
-Die folgende Tabelle enthält die Beispielpreise und dient lediglich zur Veranschaulichung.
-
-**Preise in der Region „USA, Osten“** :
-
-|              SKU-Name                             | Festpreis ($/Std)  | Preis nach Kapazitätseinheit ($/KE-Std)   |
-| ------------------------------------------------- | ------------------- | ------------------------------- |
-| Standard_v2                                       |    0,20             | 0,0080                          |
-| WAF_v2                                            |    0,36             | 0,0144                          |
-
-Weitere Preisinformationen finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/application-gateway/). 
-
-**Beispiel 1**
-
-Es wird ein Application Gateway Standard_v2 ohne automatische Skalierung im manuellen Skalierungsmodus mit fester Kapazität von fünf Instanzen bereitgestellt.
-
-Festpreis = 744 (Stunden) * 0,20 $ = 148,8 $ <br>
-Kapazitätseinheiten = 744 (Stunden) * 10 Kapazitätseinheiten pro Instanz * 5 Instanzen * 0,008 $ pro Kapazitätseinheitsstunde = 297,6 $
-
-Gesamtpreis = 148,8 $ + 297,6 $ = 446,4 $
-
-**Beispiel 2**
-
-Es wird ein Application Gateway Standard_v2 für einen Monat mit null Mindestinstanzen bereitgestellt, und dieses empfängt während dieser Zeit 25 neue TLS-Verbindungen/Sekunde mit einer Datenübertragung von durchschnittlich 8,88 MBit/s. Bei kurzlebigen Verbindungen ist der Preis wie folgt:
-
-Festpreis = 744 (Stunden) * 0,20 $ = 148,8 $
-
-Preis nach Kapazitätseinheit = 744 (Stunden) * Max. (25/50 Compute-Einheit für Verbindungen/Sekunde, 8,88/2,22 Kapazitätseinheit für Durchsatz) * 0,008 $ = 744 * 4 * 0,008 = 23,81 $
-
-Gesamtpreis = 148,8 $ + 23,81 $ = 172,61 $
-
-Wie Sie sehen können, werden Ihnen lediglich vier Kapazitätseinheiten berechnet, nicht die gesamte Instanz. 
-
-> [!NOTE]
-> Die Max-Funktion gibt den größten Wert in einem Wertepaar zurück.
-
-
-**Beispiel 3**
-
-Es wird ein Application Gateway Standard_v2 für einen Monat mit mindestens fünf Instanzen bereitgestellt. Unter der Voraussetzung, dass kein Datenverkehr besteht und dass die Verbindungen kurzlebig sind, ist der Preis wie folgt:
-
-Festpreis = 744 (Stunden) * 0,20 $ = 148,8 $
-
-Preis nach Kapazitätseinheit = 744 (Stunden) * Max. (0/50 Compute-Einheit für Verbindungen/Sekunde, 0/2,22 Kapazitätseinheit für Durchsatz) * 0,008 $ = 744 * 50 * 0,008 = 297,60 $
-
-Gesamtpreis = 148,80 $ + 297,60 $ = 446,40 $
-
-In diesem Fall werden Ihnen die gesamten fünf Instanzen in Rechnung gestellt, auch wenn kein Datenverkehr vorhanden ist.
-
-**Beispiel 4**
-
-Es wird ein Application Gateway Standard_v2 für einen Monat mit mindestens fünf Instanzen bereitgestellt, aber diesmal gibt es eine durchschnittliche Datenübertragung von 125 MBit/s und 25 neue TLS-Verbindungen pro Sekunde. Unter der Voraussetzung, dass kein Datenverkehr besteht und dass die Verbindungen kurzlebig sind, ist der Preis wie folgt:
-
-Festpreis = 744 (Stunden) * 0,20 $ = 148,8 $
-
-Preis nach Kapazitätseinheit = 744 (Stunden) * Max. (25/50 Compute-Einheit für Verbindungen/Sekunde, 125/2,22 Kapazitätseinheit für Durchsatz) * 0,008 $ = 744 * 57 * 0,008 = 339,26 $
-
-Gesamtpreis = 148,80 $ + 339,26 $ = 488,06 $
-
-In diesem Fall werden Ihnen die ganzen fünf Instanzen zuzüglich sieben Kapazitätseinheiten (das sind 7/10 einer Instanz) in Rechnung gestellt.  
-
-**Beispiel 5**
-
-Es wird ein Application Gateway WAF_v2 für einen Monat bereitgestellt. Während dieses Zeitraums empfängt es 25 neue TLS-Verbindungen/Sekunde mit einer Datenübertragung von durchschnittlich 8,88 MBit/s und gibt 80 Anforderungen pro Sekunde aus. Bei kurzlebigen Verbindungen und unter der Voraussetzung, dass die Berechnung der Compute-Einheiten für die Anwendung 10 RPS pro Compute-Einheit unterstützt, ist der Preis wie folgt:
-
-Festpreis = 744 (Stunden) * 0,36 $ = 267,84 $
-
-Preis nach Kapazitätseinheit = 744 (Stunden) * Max. (Compute-Einheit Max. (25/50 für Verbindungen/Sekunde, 80/10 WAF-RPS), 8,88/2,22 Kapazitätseinheit für Durchsatz) * 0,0144 $ = 744 * 8 * 0,0144 = 85,71 $
-
-Gesamtpreis = 267,84 $ + 85,71 $ = 353,55 $
-
-> [!NOTE]
-> Die Max-Funktion gibt den größten Wert in einem Wertepaar zurück.
+Weitere Informationen finden Sie unter [Grundlegendes zu Preisen für Azure Application Gateway und Web Application Firewall](understanding-pricing.md).
 
 ## <a name="scaling-application-gateway-and-waf-v2"></a>Skalierung von Application Gateway und WAF v2
 

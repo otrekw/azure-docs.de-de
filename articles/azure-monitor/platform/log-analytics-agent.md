@@ -5,24 +5,19 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/06/2020
-ms.openlocfilehash: d507db415a2438c97444ca008f0c9b182306242b
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.date: 08/21/2020
+ms.openlocfilehash: fb58728e005ad70ac5392aa9e3e6a254ed317276
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121526"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016330"
 ---
 # <a name="log-analytics-agent-overview"></a>Übersicht über den Log Analytics-Agent
-Der Azure Log Analytics-Agent wurde für die umfassende Verwaltung von virtuellen Computern in einer beliebigen Cloud, von lokalen Computern und von Computern entwickelt, die von [System Center Operations Manager](/system-center/scom/) überwacht werden. Die Windows- und Linux-Agents senden erfasste Protokolldaten aus verschiedenen Quellen an Ihren Log Analytics-Arbeitsbereich in Azure Monitor, ebenso wie individuelle Protokolle oder Metriken (gemäß Definition in einer Überwachungslösung). Der Log Analytics-Agent unterstützt auch Erkenntnisse und andere Dienste in Azure Monitor wie etwa [Azure Monitor für VMs](../insights/vminsights-enable-overview.md), [Azure Security Center](../../security-center/index.yml) und [Azure Automation](../../automation/automation-intro.md).
-
-Dieser Artikel enthält eine ausführliche Übersicht über den Agent sowie Informationen zu System- und Netzwerkanforderungen und zu den verschiedenen Bereitstellungsmethoden.
+Der Azure Log Analytics-Agent sammelt Telemetrie von virtuellen Windows- und Linux-Computern in allen Clouds, lokalen Computern und von [System Center Operations Manager](/system-center/scom/) überwachten Computern und sendet die gesammelten Daten an Ihren Log Analytics-Arbeitsbereich in Azure Monitor. Der Log Analytics-Agent unterstützt auch Erkenntnisse und andere Dienste in Azure Monitor wie etwa [Azure Monitor für VMs](../insights/vminsights-enable-overview.md), [Azure Security Center](../../security-center/index.yml) und [Azure Automation](../../automation/automation-intro.md). Dieser Artikel enthält eine ausführliche Übersicht über die Anforderungen an den Agent, das System und das Netzwerk sowie über Bereitstellungsmethoden.
 
 > [!NOTE]
 > Der Log Analytics-Agent wird ggf. auch als Microsoft Monitoring Agent (MMA) oder als OMS-Linux-Agent bezeichnet.
-
-> [!NOTE]
-> Die Azure-Diagnoseerweiterung ist einer der Agents, die zum Erfassen von Überwachungsdaten aus dem Gastbetriebssystem von Computeressourcen verfügbar sind. Unter [Übersicht über die Azure Monitor-Agents](agents-overview.md) finden Sie eine Beschreibung der verschiedenen Agents sowie Informationen zur Wahl der geeigneten Agents für Ihre Anforderungen.
 
 ## <a name="comparison-to-azure-diagnostics-extension"></a>Vergleich mit der Azure-Diagnoseerweiterung
 Die [Azure-Diagnoseerweiterung](diagnostics-extension-overview.md) in Azure Monitor kann ebenfalls zum Erfassen von Überwachungsdaten aus dem Gastbetriebssystem virtueller Azure-Computer verwendet werden. Je nach Ihren Anforderungen können Sie eine der Möglichkeiten oder beide nutzen. Einen ausführlichen Vergleich der Azure Monitor-Agents finden Sie unter [Übersicht über die Azure Monitor-Agents](agents-overview.md). 
@@ -30,11 +25,16 @@ Die [Azure-Diagnoseerweiterung](diagnostics-extension-overview.md) in Azure Moni
 Beachten Sie die folgenden Hauptunterschiede:
 
 - Die Azure-Diagnoseerweiterung kann nur mit virtuellen Azure-Computern verwendet werden. Der Log Analytics-Agent kann mit virtuellen Computern in Azure, anderen Clouds und lokal verwendet werden.
-- Die Azure-Diagnoseerweiterung sendet Daten an Azure Storage, [Azure Monitor-Metriken](data-platform-metrics.md) (nur Windows) und Event Hubs. Der Log Analytics-Agent erfasst Daten für [Azure Monitor-Protokolle](data-platform-logs.md).
+- Die Azure-Diagnoseerweiterung sendet Daten an Azure Storage, [Azure Monitor-Metriken](data-platform-metrics.md) (nur Windows) und Event Hubs. Der Log Analytics-Agent sendet Daten an [Azure Monitor-Protokolle](data-platform-logs.md).
 - Der Log Analytics-Agent ist für [Lösungen](../monitor-reference.md#insights-and-core-solutions), [Azure Monitor für VMs](../insights/vminsights-overview.md) und andere Dienste wie [Azure Security Center](../../security-center/index.yml) erforderlich.
 
 ## <a name="costs"></a>Kosten
 Für den Log Analytics-Agent fallen keine Kosten an, möglicherweise aber für die erfassten Daten. Ausführliche Informationen zu den Kosten von Daten, die in einem Log Analytics-Arbeitsbereich erfasst werden, finden Sie unter [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](manage-cost-storage.md).
+
+## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
+
+ Eine Liste der Windows- und Linux-Betriebssystemversionen, die vom Log Analytics-Agent unterstützt werden, finden Sie unter [Unterstützte Betriebssysteme](agents-overview.md#supported-operating-systems). 
+
 
 ## <a name="data-collected"></a>Gesammelte Daten
 Die folgende Tabelle enthält die Arten von Daten, mit denen Sie einen Log Analytics-Arbeitsbereich konfigurieren können, damit sie von allen verbundenen Agents erfasst werden. Unter [Was wird von Azure Monitor überwacht?](../monitor-reference.md) finden Sie eine Liste mit Erkenntnissen und wichtigen Lösungen sowie mit anderen Lösungen, die den Log Analytics-Agent verwenden, um andere Arten von Daten zu erfassen.
@@ -48,150 +48,62 @@ Die folgende Tabelle enthält die Arten von Daten, mit denen Sie einen Log Anal
 | [Benutzerdefinierte Protokolle](data-sources-custom-logs.md)           | Ereignisse aus Textdateien auf Windows- und Linux-Computern |
 
 ## <a name="data-destinations"></a>Datenziele
-Der Log Analytics-Agent sendet Daten an einen Log Analytics-Arbeitsbereich in Azure Monitor. Der Windows-Agent kann mehrfach vernetzt werden, um Daten an mehrere Arbeitsbereiche und System Center Operations Manager-Verwaltungsgruppen zu senden. Der Linux-Agent kann nur Daten an ein einzelnes Ziel senden.
+Der Log Analytics-Agent sendet Daten an einen Log Analytics-Arbeitsbereich in Azure Monitor. Der Windows-Agent kann mehrfach vernetzt werden, um Daten an mehrere Arbeitsbereiche und System Center Operations Manager-Verwaltungsgruppen zu senden. Der Linux-Agent kann nur an ein einzelnes Ziel senden, entweder einen Arbeitsbereich oder eine Verwaltungsgruppe.
 
 ## <a name="other-services"></a>Sonstige Dienste
-Der Agent für Linux und Windows dient nicht zur Verbindungsherstellung mit Azure Monitor, sondern unterstützt auch Azure Automation, um die Hybrid Runbook-Workerrolle und andere Dienste wie [Änderungsnachverfolgung](../../automation/change-tracking.md), [Updateverwaltung](../../automation/update-management/update-mgmt-overview.md) und [Azure Security Center](../../security-center/security-center-intro.md) zu hosten. Weitere Informationen zur Hybrid Runbook Workerrolle finden Sie unter [Azure Automation Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md).  
+Der Agent für Linux und Windows dient nicht nur zum Herstellen einer Verbindung mit Azure Monitor. Andere Dienste wie Azure Security Center und Azure Sentinel setzen ebenfalls auf dem Agent und dessen verbundenem Log Analytics-Arbeitsbereich auf. Der Agent unterstützt auch Azure Automation zum Hosten der Hybrid Runbook Worker-Rolle und anderer Dienste wie [Änderungsnachverfolgung](../../automation/change-tracking.md), [Updateverwaltung](../../automation/update-management/update-mgmt-overview.md) und [Azure Security Center](../../security-center/security-center-intro.md). Weitere Informationen zur Hybrid Runbook Workerrolle finden Sie unter [Azure Automation Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md).  
 
-## <a name="installation-and-configuration"></a>Installation und Konfiguration
+## <a name="workspace-and-management-group-limitations"></a>Einschränkungen für Arbeitsbereich und Verwaltungsgruppe
 
-Wenn Sie die Log Analytics-Agents zum Sammeln von Daten verwenden, muss Ihnen zum Planen der Agent-Bereitstellung Folgendes bekannt sein:
+Ausführliche Informationen zum Herstellen einer Verbindung zwischen einem Agent und einer Operations Manager-Verwaltungsgruppe finden Sie unter [Konfigurieren des Agents zum Berichten an eine Operations Manager-Verwaltungsgruppe](agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group).
 
-* Um Daten von Windows-Agents zu sammeln, können Sie [jeden Agent so konfigurieren, dass er Berichte an einen oder mehrere Arbeitsbereiche übermittelt](agent-windows.md), auch wenn er Berichte parallel an eine System Center Operations Manager-Verwaltungsgruppe sendet. Der Windows-Agent kann Berichte an bis zu vier Arbeitsbereiche übermitteln.
-* Der Linux-Agent bietet keine Unterstützung für Multihosting und kann Berichte nur an einen einzelnen Arbeitsbereich übermitteln.
+* Windows-Agents können Verbindungen mit bis zu vier Arbeitsbereichen herstellen, auch wenn sie mit einer System Center Operations Manager-Verwaltungsgruppe verbunden sind.
+* Der Linux-Agent unterstützt kein Multi-Homing und kann nur eine Verbindung mit einem einzelnen Arbeitsbereich oder einer Verwaltungsgruppe herstellen.
+  
+
+## <a name="security-limitations"></a>Sicherheitseinschränkungen
+
 * Der Windows-Agent unterstützt den [FIPS 140-Standard](/windows/security/threat-protection/fips-140-validation), während der Linux-Agent diesen nicht unterstützt.  
 
-Wenn Sie System Center Operations Manager 2012 R2 oder höher verwenden, gilt Folgendes:
 
-* Jede Operations Manager-Verwaltungsgruppe kann [nur mit einem Arbeitsbereich verbunden sein](om-agents.md).
-* Linux-Computer, die Berichte an eine Verwaltungsgruppe senden, müssen so konfiguriert sein, dass die Berichte direkt an einen Log Analytics-Arbeitsbereich übermittelt werden. Wenn Ihre Linux-Computer Berichte bereits direkt an einen Arbeitsbereich übermitteln und Sie diese mit Operations Manager überwachen möchten, führen Sie die Schritte zum [Senden von Berichten an eine Operations Manager-Verwaltungsgruppe](agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group) aus.
-* Sie können den Log Analytics-Windows-Agent auf dem Windows-Computer installieren und so konfigurieren, dass er Berichte sowohl an die in einen Arbeitsbereich integrierte Operations Manager-Instanz als auch an einen anderen Arbeitsbereich sendet.
+## <a name="installation-options"></a>Installationsoptionen
 
+Abhängig von Ihren Anforderungen gibt es mehrere Möglichkeiten, um den Log Analytics-Agents zu installieren und Ihren Computer mit Azure Monitor zu verbinden. In den folgenden Abschnitten werden die möglichen Methoden für unterschiedliche Arten von virtuellen Computern aufgeführt.
 
-Abhängig von Ihren Anforderungen gibt es mehrere Möglichkeiten, um den Log Analytics-Agents zu installieren und Ihren Computer mit Azure Monitor zu verbinden. Die folgende Tabelle hebt die einzelnen Methoden hervor, um festzustellen, welche Methode in Ihrer Organisation am besten funktioniert.
+### <a name="azure-virtual-machine"></a>Virtueller Azure-Computer
 
-|`Source` | Methode | BESCHREIBUNG|
-|-------|-------------|-------------|
-|Azure VM| [Manuell über das Azure-Portal](../learn/quick-collect-azurevm.md?toc=%2fazure%2fazure-monitor%2ftoc.json) | Geben Sie virtuelle Computer für die Bereitstellung über den Log Analytics-Arbeitsbereich an. |
-| | Log Analytics-VM-Erweiterung für [Windows](../../virtual-machines/extensions/oms-windows.md) oder [Linux](../../virtual-machines/extensions/oms-linux.md) unter Verwendung der Azure-Befehlszeilenschnittstelle oder einer Azure Resource Manager-Vorlage | Die Erweiterung installiert den Log Analytics-Agent auf virtuellen Azure-Computern und registriert sie in einem vorhandenen Azure Monitor-Arbeitsbereich. |
-| | [Azure Monitor für VMs](../insights/vminsights-enable-overview.md) | Wenn Sie die Überwachung mit Azure Monitor für VMs aktivieren, werden die Log Analytics-Erweiterung und der Log Analytics-Agent installiert. |
-| | [Automatische Bereitstellung von Azure Security Center](../../security-center/security-center-enable-data-collection.md) | Azure Security Center kann den Log Analytics-Agent auf allen unterstützten und neu erstellten virtuellen Azure-Computern bereitstellen, wenn Sie die Überwachung auf Sicherheitslücken und Bedrohungen aktivieren. Wenn diese Option aktiviert ist, werden alle neuen oder vorhandenen VMs ohne installierten Agent bereitgestellt. |
-| Windows-Hybridcomputer| [Manuelle Installation](agent-windows.md) | Installieren Sie den Microsoft Monitoring-Agent über die Befehlszeile. |
-| | [Azure Automation DSC](agent-windows.md#install-the-agent-using-dsc-in-azure-automation) | Automatisieren Sie die Installation mit Azure Automation DSC. |
-| | [Resource Manager-Vorlage mit Azure Stack](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) | Verwenden Sie eine Azure Resource Manager-Vorlage, wenn Sie Microsoft Azure Stack in Ihrem Rechenzentrum bereitgestellt haben.| 
-| Linux-Hybridcomputer| [Manuelle Installation](../learn/quick-collect-linux-computer.md)|Installieren Sie den Agent für Linux durch Aufrufen eines Wrapperskripts, das auf GitHub gehostet wird. | 
-| System Center Operations Manager|[Integrieren von Operations Manager mit Log Analytics](./om-agents.md) | Konfigurieren Sie die Integration zwischen Operations Manager und Azure Monitor-Protokollen, um die gesammelten Daten von Windows-Computern weiterzuleiten, die Berichte für eine Verwaltungsgruppe erstellen.|  
+- [Azure Monitor für VMs](../insights/vminsights-enable-overview.md) bietet mehrere Methoden zum Aktivieren von Agents im großen Stil. Dies schließt die Installation des Log Analytics-Agents und des Dependency-Agents ein. 
+- [Azure Security Center kann den Log Analytics-Agent](../../security-center/security-center-enable-data-collection.md) auf allen unterstützten und neu erstellten Azure-VMs bereitstellen, wenn Sie die Überwachung auf Sicherheitslücken und Bedrohungen aktivieren.
+- Die Log Analytics-VM-Erweiterung für [Windows](../../virtual-machines/extensions/oms-windows.md) oder [Linux](../../virtual-machines/extensions/oms-linux.md) kann mit dem Azure-Portal, der Azure-Befehlszeilenschnittstelle, Azure PowerShell oder einer Azure Resource Manager-Vorlage installiert werden.
+- Führen Sie die Installation für einzelne virtuelle Azure-Computer [manuell über das Azure-Portal](../learn/quick-collect-azurevm.md?toc=%2fazure%2fazure-monitor%2ftoc.json) durch.
 
 
-## <a name="supported-windows-operating-systems"></a>Unterstützte Windows-Betriebssysteme
+### <a name="windows-virtual-machine-on-premises-or-in-another-cloud"></a>Virtueller Windows-Computer, lokal oder in einer anderen Cloud 
 
-Die folgenden Versionen des Windows-Betriebssystems werden für den Windows-Agent offiziell unterstützt:
+- Installieren Sie den Agent [manuell](agent-windows.md) über die Befehlszeile.
+- Automatisieren Sie die Installation mit [Azure Automation DSC](agent-windows.md#install-agent-using-dsc-in-azure-automation).
+- Verwenden Sie eine [Resource Manager-Vorlage mit Azure Stack](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win).
 
-* Windows Server 2019
-* Windows Server 2016, Version 1709 und 1803
-* Windows Server 2012, 2012 R2
-* Windows Server 2008 SP2 (x64), 2008 R2
-* Windows 10 Enterprise (einschließlich Multisession) und Pro
-* Windows 8 Enterprise und Pro 
-* Windows 7 SP1
+### <a name="linux-virtual-machine-on-premises-or-in-another-cloud"></a>Virtueller Linux-Computer, lokal oder in einer anderen Cloud
 
->[!NOTE]
->Während der Log Analytics-Agent für Windows für die Unterstützung von Serverüberwachungsszenarios konzipiert wurde, führen Sie möglicherweise den Windows-Client aus, um Workloads zu unterstützen, die für das Serverbetriebssystem konfiguriert und optimiert wurden. Der Agent unterstützt den Windows-Client, unsere Überwachungslösungen konzentrieren sich jedoch nicht auf Clientüberwachungsszenarios, sofern nicht explizit angegeben.
+- Installieren Sie den Agent [manuell](../learn/quick-collect-linux-computer.md) durch Aufrufen eines Wrapperskripts, das auf GitHub gehostet wird.
+- System Center Operations Manager|[Integrieren Sie Operations Manager mit Azure Monitor](./om-agents.md), um die gesammelten Daten von Windows-Computern weiterzuleiten, die Berichte für eine Verwaltungsgruppe erstellen.
 
-## <a name="supported-linux-operating-systems"></a>Unterstützte Linux-Betriebssysteme
+## <a name="workspace-id-and-key"></a>Arbeitsbereichs-ID und -Schlüssel
+Unabhängig von der verwendeten Installationsmethode benötigen Sie die Arbeitsbereichs-ID und den Schlüssel für den Log Analytics-Arbeitsbereich, mit dem der Agent eine Verbindung herstellen soll. Wählen Sie im Azure-Portal im Menü **Log Analytics-Arbeitsbereiche** den Arbeitsbereich aus. Wählen Sie dann **Agent-Verwaltung** im Abschnitt **Einstellungen** aus. 
 
-Dieser Abschnitt enthält Details zu den unterstützten Linux-Distributionen.
-
-Beginnend mit den nach August 2018 veröffentlichten Versionen gelten folgende Änderungen für unser Supportmodell:  
-
-* Es werden nur die Serverversionen und keine Clientversionen unterstützt.  
-* Die Unterstützung konzentriert sich auf die [von Azure unterstützten Linux-Distributionen](../../virtual-machines/linux/endorsed-distros.md). Beachten Sie, dass möglicherweise eine Verzögerung zwischen einer neuen von Azure unterstützten Linux-Distribution/Version und deren Unterstützung für den Log Analytics Linux-Agent besteht.
-* Alle Nebenversionen werden für jede aufgeführte Hauptversion unterstützt.
-* Versionen, für die der Support des Herstellers abgelaufen ist, werden nicht unterstützt.  
-* Neue Versionen von AMI werden nicht unterstützt.  
-* Nur Versionen, die standardmäßig SSL 1.x ausführen, werden unterstützt.
-
->[!NOTE]
->Wenn Sie eine Distribution oder eine Version verwenden, die derzeit nicht unterstützt wird und nicht auf unser Supportmodell abgestimmt ist, wird empfohlen, dieses Repository zu forken und dabei anzuerkennen, dass der Microsoft-Support bei geforkten Agent-Versionen keine Unterstützung bietet.
-
-
-### <a name="python-2-requirement"></a>Python 2-Anforderung
- Der Log Analytics-Agent erfordert Python 2. Wenn Ihr virtueller Computer eine Distribution verwendet, in der Python 2 nicht standardmäßig enthalten ist, müssen Sie die Sprache installieren. Mithilfe der folgenden Beispielbefehle wird Python 2 auf verschiedenen Distributionen installiert.
-
- - Red Hat, CentOS, Oracle: `yum install -y python2`
- - Ubuntu, Debian: `apt-get install -y python2`
- - SUSE: `zypper install -y python2`
-
-Die ausführbare python2-Datei muss mithilfe des folgenden Befehls mit dem Alias *python* versehen werden:
-
-1. Führen Sie den folgenden Befehl aus, um ggf. einen beliebigen aktuellen python-Alias anzuzeigen. Wenn dies der Fall ist, notieren Sie sich die Priorität für den nächsten Schritt.
- 
-    ```
-    sudo update-alternatives ––display python
-    ```
-
-2. Führen Sie den folgenden Befehl aus. Ersetzen Sie *\<priority\>* durch eine Zahl, die größer als die Priorität eines vorhandenen Links ist, oder 1, wenn derzeit keine Links vorhanden sind.
-
-    ```
-    sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 <priority>
-    ```
-
-### <a name="supported-distros"></a>Unterstützte Verteilungen
-
-Die folgenden Versionen des Linux-Betriebssystems werden für den Linux-Agent offiziell unterstützt:
-
-* Amazon Linux 2017.09 (x64)
-* CentOS Linux 6 (x64) und 7 (x64)  
-* Oracle Linux 6 und 7 (x64) 
-* Red Hat Enterprise Linux Server 6 (x64), 7 (x64) und 8 (x64)
-* Debian GNU/Linux 8 und 9 (x64)
-* Ubuntu 14.04 LTS (x86/x64), 16.04 LTS (x64) und 18.04 LTS (x64)
-* SUSE Linux Enterprise Server 12 (x64) und 15 (x64)
-
->[!NOTE]
->OpenSSL 1.1.0 wird nur auf x86_x64-Plattformen (64 Bit) unterstützt. OpenSSL vor Version 1.x wird auf keiner Plattform unterstützt.
->
-
-### <a name="agent-prerequisites"></a>Agent-Voraussetzungen
-
-In der folgenden Tabelle werden die Pakete hervorgehoben, die für unterstützte Linux-Distributionen erforderlich sind, auf denen der Agent installiert wird.
-
-|Erforderliches Paket |BESCHREIBUNG |Mindestversion |
-|-----------------|------------|----------------|
-|Glibc |    GNU C-Bibliothek | 2.5-12 
-|Openssl    | OpenSSL-Bibliotheken | 1.0.x oder 1.1.x |
-|Curl | cURL-Webclient | 7.15.5 |
-|Python | | 2.6+ oder 3.3+
-|Python-ctypes | | 
-|PAM | Module für austauschbare Authentifizierung | | 
-
->[!NOTE]
->Zum Sammeln von syslog-Nachrichten sind entweder rsyslog oder syslog-ng erforderlich. Der Standard-syslog-Daemon in Version 5 von Red Hat Enterprise Linux, CentOS und Oracle Linux-Version (sysklog) wird für die syslog-Ereigniserfassung nicht unterstützt. Der rsyslog-Daemon sollte installiert und so konfiguriert werden, dass er sysklog ersetzt, um syslog-Daten von dieser Version dieser Verteilung zu sammeln.
+[![Arbeitsbereichsdetails](media/log-analytics-agent/workspace-details.png)](media/log-analytics-agent/workspace-details.png#lightbox)
 
 ## <a name="tls-12-protocol"></a>TLS 1.2-Protokoll
 
 Um die Sicherheit von Daten bei der Übertragung an Azure Monitor-Protokolle sicherzustellen, wird dringend empfohlen, den Agent so zu konfigurieren, dass er mindestens TLS 1.2 (Transport Layer Security) verwendet. Bei älteren Versionen von TLS/Secure Sockets Layer (SSL) wurde ein Sicherheitsrisiko festgestellt. Sie funktionieren aus Gründen der Abwärtskompatibilität zwar noch, werden jedoch **nicht empfohlen**.  Weitere Informationen finden Sie unter [Senden von Daten über TLS 1.2](data-security.md#sending-data-securely-using-tls-12). 
 
-
-## <a name="sha-2-code-signing-support-requirement-for-windows"></a>Unterstützung der SHA-2-Codesignierung für Windows erforderlich
-Der Windows-Agent verwendet ab dem 2. November 2020 ausschließlich die SHA-2-Signierung. Diese Änderung betrifft Kunden, die den Log Analytics-Agent als Teil eines Azure-Diensts (Azure Monitor, Azure Automation, Azure-Updateverwaltung, Azure-Änderungsnachverfolgung, Azure Security Center, Azure Sentinel, Windows Defender ATP) auf einem älteren Betriebssystem verwenden. Die Änderung erfordert keine kundenseitige Aktion, es sei denn, Sie führen den Agent auf einer älteren Betriebssystemversion (Windows 7, Windows Server 2008 R2 und Windows Server 2008) aus. Kunden mit einer älteren Betriebssystemversion müssen vor dem 2. November 2020 die folgenden Aktionen auf ihren Computern durchführen, da die Agents andernfalls keine Daten mehr an ihre Log Analytics-Arbeitsbereiche senden:
-
-1. Installieren Sie das neueste Service Pack für Ihr Betriebssystem. Folgende Service Pack-Versionen sind erforderlich:
-    - Windows 7 SP1
-    - Windows Server 2008 SP2
-    - Windows Server 2008 R2 SP1
-
-2. Installieren Sie die Windows-Updates für die SHA-2-Signierung für Ihr Betriebssystem wie in [Unterstützung der SHA-2-Codesignierung für Windows und WSUS (2019)](https://support.microsoft.com/help/4472027/2019-sha-2-code-signing-support-requirement-for-windows-and-wsus) beschrieben.
-3. Aktualisieren Sie auf die aktuelle Version des Windows-Agents (10.20.18029).
-4. Es wird empfohlen, den Agent zur Verwendung von [TLS 1.2](agent-windows.md#configure-agent-to-use-tls-12) zu konfigurieren. 
-
-
 ## <a name="network-requirements"></a>Netzwerkanforderungen
-Der Agent für Linux und Windows kommuniziert in ausgehender Richtung über den TCP-Port 443 mit dem Azure Monitor-Dienst. Wenn der Computer für die Kommunikation über das Internet eine Firewall oder einen Proxyserver durchlaufen muss, sehen Sie sich die weiter unten angegebenen Anforderungen an, um sich mit der erforderlichen Netzwerkkonfiguration vertraut zu machen. Wenn Computer im Netzwerk aufgrund von IT-Sicherheitsrichtlinien keine Internetverbindung herstellen können, können Sie ein [Log Analytics-Gateway](gateway.md) einrichten und den Agent so konfigurieren, dass er die Verbindung mit Azure Monitor-Protokollen über das Gateway herstellt. Der Agent kann dann Konfigurationsinformationen empfangen und Daten senden, die je nach in Ihrem Arbeitsbereich aktivierten Datensammlungsregeln und Überwachungslösungen gesammelt werden.
+Der Agent für Linux und Windows kommuniziert über den ausgehenden TCP-Port 443 mit dem Azure Monitor-Dienst. Wenn der Computer für die Kommunikation über das Internet eine Firewall oder einen Proxyserver durchlaufen muss, sehen Sie sich die weiter unten angegebenen Anforderungen an, um sich mit der erforderlichen Netzwerkkonfiguration vertraut zu machen. Wenn Computer im Netzwerk aufgrund von IT-Sicherheitsrichtlinien keine Internetverbindung herstellen können, können Sie ein [Log Analytics-Gateway](gateway.md) einrichten und den Agent so konfigurieren, dass er die Verbindung mit Azure Monitor über das Gateway herstellt. Der Agent kann dann Konfigurationsinformationen empfangen und gesammelte Daten senden.
 
 ![Kommunikationsdiagramm des Log Analytics-Agents](./media/log-analytics-agent/log-analytics-agent-01.png)
 
-Die folgende Tabelle enthält die Proxy- und Firewall-Konfigurationsinformationen, die Linux- und Windows-Agenten benötigen, um mit Azure Monitor-Protokollen zu kommunizieren.
+Die folgende Tabelle enthält die erforderlichen Proxy- und Firewall-Konfigurationsinformationen für Linux- und Windows-Agents für die Kommunikation mit Azure Monitor-Protokollen.
 
 ### <a name="firewall-requirements"></a>Firewallanforderungen
 
@@ -213,9 +125,6 @@ Der Windows- und Linux-Agent unterstützt die Kommunikation mit Azure Monitor ü
 Für den Linux-Agent wird der Proxyserver während der Installation oder [nach der Installation](agent-manage.md#update-proxy-settings) durch Ändern der Konfigurationsdatei „proxy.conf“ angegeben.  Der Wert für die Proxykonfiguration des Linux-Agents weist die folgende Syntax auf:
 
 `[protocol://][user:password@]proxyhost[:port]`
-
-> [!NOTE]
-> Wenn Ihr Proxyserver keine Authentifizierung erfordert, muss der Linux-Agent trotzdem einen Pseudo-Benutzernamen und -Kennwort angeben. Dies kann ein beliebiger Benutzername oder ein beliebiges Kennwort sein.
 
 |Eigenschaft| BESCHREIBUNG |
 |--------|-------------|

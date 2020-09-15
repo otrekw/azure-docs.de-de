@@ -6,6 +6,10 @@
       href: overview.md
     - name: Welche MariaDB-Option sollte ich auswählen?
       href: select-right-deployment-type.md
+    - name: Dienstupdates
+      items:
+        - name: SSL-Stammzertifikat läuft ab.
+          href: concepts-certificate-rotation.md
 - name: Schnellstarts
   expanded: true
   items:

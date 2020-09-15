@@ -3,12 +3,12 @@ title: Verschlüsselung von Sicherungsdaten mit von Kunden verwalteten Schlüsse
 description: Hier erfahren Sie, wie Sie mit Azure Backup Sicherungsdaten mithilfe von kundenseitig verwalteten Schlüsseln (Customer-Managed Keys, CMK) verschlüsseln können.
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 55b994d287e4e2d3971b43359936815822bc18a4
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 5c0bddc6cdb8ec150a031541ced1abf1ebfb6f0f
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892642"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378286"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Verschlüsselung von Sicherungsdaten mit von Kunden verwalteten Schlüsseln
 
@@ -82,13 +82,13 @@ Sie müssen jetzt dem Recovery Services-Tresor gestatten, auf den Azure Key Vaul
 
     ![Schlüsselberechtigungen zuweisen](./media/encryption-at-rest-with-cmk/key-permissions.png)
 
-1. Wechseln Sie zu **Prinzipal auswählen**, und suchen Sie über das Suchfeld nach dem Namen oder der verwalteten Identität für den Tresor. Sobald der Tresor angezeigt wird, wählen Sie ihn aus, und klicken Sie unten im Bereich auf **Auswählen**.
+1. Wechseln Sie zu **Prinzipal auswählen**, und suchen Sie über das Suchfeld nach dem Namen oder der verwalteten Identität für den Tresor. Sobald der Tresor angezeigt wird, wählen Sie ihn und dann unten im Bereich **Auswählen** aus.
 
     ![Prinzipal auswählen](./media/encryption-at-rest-with-cmk/select-principal.png)
 
-1. Klicken Sie anschließend auf **Hinzufügen**, um die neue Zugriffsrichtlinie hinzuzufügen.
+1. Wählen Sie anschließend **Hinzufügen** aus, um die neue Zugriffsrichtlinie hinzuzufügen.
 
-1. Klicken Sie auf **Speichern**, um die Änderungen an der Zugriffsrichtlinie für den Azure Key Vault zu speichern.
+1. Wählen Sie **Speichern** aus, um die Änderungen an der Zugriffsrichtlinie von Azure Key Vault zu speichern.
 
 ### <a name="enable-soft-delete-and-purge-protection-on-the-azure-key-vault"></a>Aktivieren des vorläufigen Löschens und des Löschschutzes im Azure Key Vault
 
@@ -148,7 +148,7 @@ So weisen Sie den Schlüssel zu
 
     ![Verschlüsselungseinstellungen](./media/encryption-at-rest-with-cmk/encryption-settings.png)
 
-1. Klicken Sie unter **Verschlüsselungseinstellungen** auf **Aktualisieren**.
+1. Wählen Sie unter **Verschlüsselungseinstellungen** die Option **Aktualisieren** aus.
 
 1. Wählen Sie im Bereich „Verschlüsselungseinstellungen“ **Eigenen Schlüssel verwenden** aus, und geben Sie den Schlüssel mithilfe einer der folgenden Methoden an: **Stellen Sie sicher, dass es sich bei dem Schlüssel, den Sie verwenden möchten, um einen RSA 2048-Schlüssel handelt, der den Zustand „Aktiviert“ aufweist.**
 
@@ -160,7 +160,7 @@ So weisen Sie den Schlüssel zu
 
         ![Auswählen des Schlüssels aus dem Schlüsseltresor](./media/encryption-at-rest-with-cmk/key-vault.png)
 
-1. Klicken Sie auf **Speichern**.
+1. Wählen Sie **Speichern** aus.
 
 1. **Verfolgen des Aktualisierungsstatus für den Verschlüsselungsschlüssel:** Sie können den Status der Schlüsselzuweisung mithilfe des **Aktivitätsprotokolls** im Recovery Services-Tresor verfolgen. Der Status sollte nach kurzer Zeit in **Erfolgreich** geändert werden. Ihr Tresor verschlüsselt nun alle Daten mit dem angegebenen Schlüssel als KEK.
 
@@ -169,7 +169,7 @@ So weisen Sie den Schlüssel zu
     ![Status „Erfolgreich“](./media/encryption-at-rest-with-cmk/status-succeeded.png)
 
 >[!NOTE]
-> Den gleichen Prozess führen Sie aus, wenn Sie den Verschlüsselungsschlüssel aktualisieren oder ändern möchten. Wenn Sie den Schlüssel aktualisieren und einen Schlüssel aus einem anderen Key Vault verwenden möchten (der sich von dem derzeit verwendeten unterscheidet), stellen Sie Folgendes sicher:
+> Den gleichen Prozess führen Sie aus, wenn Sie den Verschlüsselungsschlüssel aktualisieren oder ändern möchten. Wenn Sie den Schlüssel aktualisieren und einen Schlüssel aus einer anderen Key Vault-Instanz verwenden möchten (der sich von dem derzeit verwendeten unterscheidet), stellen Sie Folgendes sicher:
 >
 > - Der Schlüsseltresor muss sich in derselben Region wie der Recovery Services-Tresor befinden.
 >
@@ -242,7 +242,7 @@ Nein, die CMK-Verschlüsselung kann nur für neue Tresore aktiviert werden. Dahe
 
 Nein, es darf in der Vergangenheit nicht versucht worden sein, Elemente im Tresor zu schützen.
 
-### <a name="i-have-a-vault-that-is-using-cmk-encryption-can-i-later-revert-to-encryption-using-platform-managed-keys-even-if-i-have-backup-items-protected-to-the-vault"></a>Ich verfüge über einen Tresor, der die CMK-Verschlüsselung verwendet. Kann ich später die Verschlüsselung mit plattformseitig verwalteten Schlüsseln wiederherstellen, selbst wenn ich Sicherungselemente im Tresor geschützt habe?
+### <a name="i-have-a-vault-thats-using-cmk-encryption-can-i-later-revert-to-encryption-using-platform-managed-keys-even-if-i-have-backup-items-protected-to-the-vault"></a>Ich verfüge über einen Tresor, der die CMK-Verschlüsselung verwendet. Kann ich später die Verschlüsselung mit plattformseitig verwalteten Schlüsseln wiederherstellen, selbst wenn ich Sicherungselemente im Tresor geschützt habe?
 
 Nein, wenn Sie die CMK-Verschlüsselung aktiviert haben, ist ein Wechsel zurück zu plattformseitig verwalteten Schlüsseln nicht möglich. Sie können die verwendeten Schlüssel gemäß Ihren Anforderungen ändern.
 

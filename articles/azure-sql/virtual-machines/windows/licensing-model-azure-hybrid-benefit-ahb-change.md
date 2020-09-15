@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f02f31e0fc8943682af77ca6f506d15f36e88146
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 208b900de20a89a9ecc819ef1254c08fcc628f82
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84668898"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010221"
 ---
 # <a name="change-the-license-model-for-a-sql-virtual-machine-in-azure"></a>Ändern des Lizenzierungsmodells für einen virtuellen SQL-Computer in Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -156,7 +156,9 @@ Das Ändern des Lizenzmodells
 
 ## <a name="known-errors"></a>Bekannte Fehler
 
-### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found"></a>Die Ressource „Microsoft.SqlVirtualMachine/SqlVirtualMachines/\<resource-group>“ unter der Ressourcengruppe „\<resource-group>“ wurde nicht gefunden.
+Überprüfen Sie die allgemein bekannten Fehler und ihre Lösungen. 
+
+**Die Ressource „Microsoft.SqlVirtualMachine/SqlVirtualMachines/\<resource-group>“ unter der Ressourcengruppe „\<resource-group>“ wurde nicht gefunden.**
 
 Dieser Fehler tritt auf, wenn Sie versuchen, das Lizenzierungsmodell auf einer SQL Server-VM zu ändern, die nicht beim SQL-VM-Ressourcenanbieter registriert wurde:
 
@@ -165,7 +167,7 @@ Dieser Fehler tritt auf, wenn Sie versuchen, das Lizenzierungsmodell auf einer S
 Sie müssen Ihr Abonnement beim Ressourcenanbieter registrieren und anschließend [Ihre SQL Server-VM beim Ressourcenanbieter registrieren](sql-vm-resource-provider-register.md). 
 
 
-### <a name="the-virtual-machine-vmname-has-more-than-one-nic-associated"></a>Der virtuelle Computer „\<vmname\>“ hat mehr als eine zugeordnete Netzwerkschnittstelle
+**Der virtuelle Computer „\<vmname\>“ hat mehr als eine zugeordnete Netzwerkschnittstelle**
 
 Dieser Fehler tritt auf virtuellen Computern auf, die über mehr als eine Netzwerkschnittstelle verfügen. Entfernen Sie eine der Netzwerkschnittstellen, bevor Sie das Lizenzierungsmodell ändern. Obwohl Sie die Netzwerkschnittstelle nach dem Ändern des Lizenzmodells wieder zur VM hinzufügen können, werden Vorgänge im Azure-Portal wie die automatische Sicherung und das automatische Patchen nicht mehr unterstützt. 
 

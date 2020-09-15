@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 32905383b046148893492640fe42fc721d1944dd
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 21e2b197c31a30ab8a249e2e8e398072a624154c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810240"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394090"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>Azure-Sicherheitsbaseline für Azure Functions
 
@@ -179,7 +179,7 @@ Als Alternative stehen verschiedene Marketplace-Optionen wie Barracuda WAF for A
 - Zugriff auf Funktions-App nur über HTTPS gestatten
 - In Ihrer Funktions-App sollte die neueste TLS-Version verwendet werden.
 
-Sie können auch Azure Blueprints verwenden, um umfangreiche Azure-Bereitstellungen zu vereinfachen, indem wichtige Umgebungsartefakte, z. B. Azure Resource Manager-Vorlagen, rollenbasierte Zugriffssteuerung (RBAC) und Richtlinien, gemeinsam in einer Blaupausendefinition gepackt werden. Sie können die Blaupause ganz einfach auf neue Abonnements und Umgebungen anwenden und die Steuerung und Verwaltung durch die Versionsverwaltung optimieren.
+Sie können auch Azure Blueprints verwenden, um umfangreiche Azure-Bereitstellungen zu vereinfachen. Dabei werden wichtige Umgebungsartefakte, z. B. Azure Resource Manager-Vorlagen, rollenbasierte Zugriffssteuerung von Azure (Azure RBAC) und Richtlinien, gemeinsam in einer Blaupausendefinition gepackt. Sie können die Blaupause ganz einfach auf neue Abonnements und Umgebungen anwenden und die Steuerung und Verwaltung durch die Versionsverwaltung optimieren.
 
 - [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -443,7 +443,7 @@ Verwenden Sie zusätzlich Azure AD-Risikoerkennungen, um Warnungen und Berichte 
 
 - [Azure Active Directory-Risikoerkennungen](../active-directory/identity-protection/overview-identity-protection.md)
 
-**Azure Security Center-Überwachung:** Ja
+**Azure Security Center-Überwachung**: Ja
 
 **Verantwortlichkeit**: Kunde
 
@@ -595,9 +595,9 @@ Für die zugrundeliegende Plattform, die von Microsoft verwaltet wird, behandelt
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Verwenden von Azure RBAC zum Steuern des Zugriffs auf Ressourcen
 
-**Leitfaden**: Integrieren Sie die rollenbasierte Zugriffssteuerung (RBAC) in Azure Active Directory (AD), um den Zugriff auf die Steuerungsebene (Azure-Portal) von Azure Functions zu steuern. 
+**Leitfaden**: Verwenden Sie die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC), um den Zugriff auf die Steuerungsebene (Azure-Portal) von Azure Functions zu steuern. 
 
-- [Konfigurieren von RBAC in Azure](../role-based-access-control/role-assignments-portal.md)
+- [Konfigurieren von Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -960,7 +960,9 @@ Erstellen einer internen App Service-Umgebung:
 
 - [Verwenden verwalteter Identitäten für App Service und Azure Functions](../app-service/overview-managed-identity.md)
 
-- [Bereitstellen der Key Vault-Authentifizierung mit einer verwalteten Identität](../key-vault/general/managed-identity.md)
+* [Authentifizieren bei Key Vault](../key-vault/general/authentication.md)
+
+* [Zuweisen einer Key Vault-Zugriffsrichtlinie](../key-vault/general/assign-access-policy-portal.md)
 
 - [Verwenden von Key Vault-Verweisen für App Service und Azure Functions](../app-service/app-service-key-vault-references.md)
 

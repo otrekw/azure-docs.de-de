@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.date: 07/16/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: dd85504ac2321310288efe5d0a1ef7dfcde60f21
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: c28e869bff1d0e921a1e5a952dbfcb21ee97d16b
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566062"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228323"
 ---
 # <a name="configure-object-replication-for-block-blobs-preview"></a>Konfigurieren der Objektreplikation für Blockblobs (Vorschau)
 
@@ -24,6 +24,8 @@ Die Objektreplikation (Vorschau) kopiert Blockblobs asynchron zwischen einem Que
 Wenn Sie die Objektreplikation konfigurieren, erstellen Sie eine Replikationsrichtlinie, in der das Quellspeicherkonto und das Zielkonto angegeben werden. Eine Replikationsrichtlinie enthält mindestens eine Regel, die einen Quellcontainer und einen Zielcontainer angibt sowie anzeigt, welche Blockblobs im Quellcontainer repliziert werden.
 
 In diesem Artikel wird beschrieben, wie Sie die Objektreplikation für Ihr Speicherkonto über das Azure-Portal, die PowerShell oder die Azure CLI konfigurieren. Sie können auch eine der Azure Storage-Ressourcenanbieter-Clientbibliotheken verwenden, um die Objektreplikation zu konfigurieren.
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="create-a-replication-policy-and-rules"></a>Erstellen einer Replikationsrichtlinie und von Regeln
 
@@ -34,7 +36,7 @@ Ein Speicherkonto kann als Quellkonto für bis zu zwei Zielkonten fungieren. Und
 Bevor Sie beginnen, achten Sie darauf, dass Sie sich für die folgenden Funktionsvorschauversionen registriert haben:
 
 - [Objektreplikation (Vorschau)](object-replication-overview.md)
-- [Blobversionsverwaltung (Vorschau)](versioning-overview.md)
+- [Blobversionsverwaltung](versioning-overview.md)
 - [Unterstützung für Änderungsfeeds in Azure Blob Storage (Vorschau)](storage-blob-change-feed.md)
 
 # <a name="azure-portal"></a>[Azure portal](#tab/portal)

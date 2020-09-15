@@ -3,17 +3,17 @@ title: Einrichten einer privaten Verbindung
 description: Richten Sie einen privaten Endpunkt in einer Containerregistrierung ein, und ermöglichen Sie den Zugriff auf ein virtuelles Netzwerk über eine private Verbindung. Der Zugriff auf private Links ist ein Feature der Dienstebene Premium.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 713b19e4a60e5dcad6cfd92d65f97af2e921c0e9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f21ea0db8d5aff306f2476e8f24191f60b532f34
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523841"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89298231"
 ---
 # <a name="connect-privately-to-an-azure-container-registry-using-azure-private-link"></a>Herstellen einer privaten Verbindung mit einer Azure-Containerregistrierung über Azure Private Link
 
 
-Beschränken Sie den Zugriff auf eine Registrierung, indem Sie den Registrierungsendpunkten private IP-Adressen eines virtuellen Netzwerks zuweisen und [Azure Private Link](../private-link/private-link-overview.md) verwenden. Der Netzwerkdatenverkehr zwischen den Clients im virtuellen Netzwerk und den privaten Endpunkten der Registrierung wird über das virtuelle Netzwerk und einen privaten Link im Microsoft-Backbonenetzwerk geleitet, und somit nicht im öffentlichen Internet verfügbar gemacht. Private Link ermöglicht auch einen Zugriff auf die private Registrierung aus einem lokalen System über ein privates Peering in [Azure ExpressRoute](../expressroute/expressroute-introduction.MD) oder ein [VPN-Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md).
+Beschränken Sie den Zugriff auf eine Registrierung, indem Sie den Registrierungsendpunkten private IP-Adressen eines virtuellen Netzwerks zuweisen und [Azure Private Link](../private-link/private-link-overview.md) verwenden. Der Netzwerkdatenverkehr zwischen den Clients im virtuellen Netzwerk und den privaten Endpunkten der Registrierung wird über das virtuelle Netzwerk und einen privaten Link im Microsoft-Backbonenetzwerk geleitet, und somit nicht im öffentlichen Internet verfügbar gemacht. Private Link ermöglicht auch den Zugriff auf die private Registrierung aus einem lokalen System über privates Peering mit [Azure ExpressRoute](../expressroute/expressroute-introduction.MD) oder ein [VPN-Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md).
 
 Sie können für den privaten Endpunkt der Registrierung [DNS-Einstellungen konfigurieren](../private-link/private-endpoint-overview.md#dns-configuration), sodass die Einstellungen zur zugeordneten privaten IP-Adresse der Registrierung aufgelöst werden. Dank DNS-Konfiguration können Clients und Dienste im Netzwerk weiterhin unter dem vollqualifizierten Domänennamen der Registrierung (beispielsweise *myregistry.azurecr.io*) auf die Registrierung zugreifen. 
 

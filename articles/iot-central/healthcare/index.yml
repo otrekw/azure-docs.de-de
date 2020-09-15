@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: 08c2a3d81b8e7ed051ea9b9d2d3b75c7f1257b01
-  ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+  ms.openlocfilehash: b59bfb72df88c80656935e15045933dcb13a139e
+  ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 07/28/2020
-  ms.locfileid: "87335578"
+  ms.lasthandoff: 09/11/2020
+  ms.locfileid: "90014615"
 landingContent:
 - title: Erstellen von Lösungen für das Gesundheitswesen
   linkLists:
@@ -27,18 +27,32 @@ landingContent:
     links:
     - text: Erstellen einer Lösung für die ständige Überwachung von Patienten
       url: tutorial-continuous-patient-monitoring.md
-- title: Herstellen einer Verbindung
+- title: Verbinden und Entwickeln von Geräten
   linkLists:
+  - linkListType: overview
+    links:
+    - text: Übersicht für Geräteentwickler
+      url: ../core/overview-iot-central-developer.md
   - linkListType: tutorial
     links:
-    - text: Einrichten einer Gerätevorlage
-      url: ../core/howto-set-up-template.md
-    - text: Verbinden eines Geräts
-      url: ../core/tutorial-connect-device.md
+    - text: Herstellen einer Verbindung mit einem Gerät (Node.js)
+      url: ../core/tutorial-connect-device-nodejs.md
+    - text: Herstellen einer Verbindung mit einem Gerät (Python)
+      url: ../core/tutorial-connect-device-python.md
+  - linkListType: concept
+    links:
+    - text: Gerätekonnektivität
+      url: ../core/concepts-get-connected.md
+    - text: Gerätevorlagen
+      url: ../core/concepts-device-templates.md
   - linkListType: how-to-guide
     links:
-    - text: Herstellen einer Verbindung mit anderen IoT-Clouds
-      url: ../core/howto-build-iotc-device-bridge.md
+    - text: Einrichten einer Vorlage
+      url: ../core/howto-set-up-template.md
+    - text: Herstellen einer Verbindung mit einem Azure Sphere-Gerät
+      url: ../core/howto-connect-sphere.md
+    - text: Behandeln von Problemen mit der Gerätekonnektivität
+      url: ../core/troubleshoot-connection.md
 - title: In Verbindung bleiben
   linkLists:
   - linkListType: tutorial

@@ -4,22 +4,24 @@ titleSuffix: Azure Media Services
 description: Erfahren Sie mehr über das Streamen von Inhalten mit CDN-Integration sowie den Vorabruf und den CDN-Vorabruf mit Ursprungsunterstützung.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
-ms.date: 02/13/2020
-ms.author: juliako
-ms.openlocfilehash: b60a86d09e5d6f7d1108595253349bbd0784e4d3
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: e1ea0a43783fb7abdc17655e3a3431d125d426f8
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799348"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291278"
 ---
 # <a name="stream-content-with-cdn-integration"></a>Streamen von Inhalten mit CDN-Integration
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Content Delivery Network (CDN) bietet Entwicklern eine globale Lösung zur schnellen Übermittlung von Inhalten mit hoher Bandbreite an Benutzer. Hierzu werden Inhalte auf physischen Knoten zwischengespeichert, die strategisch auf der ganzen Welt verteilt sind.  
 
@@ -29,14 +31,19 @@ Der beliebte Inhalt wird direkt über den CDN-Cache bereitgestellt, sofern das V
 
 Sie müssen zudem die Funktionsweise des adaptiven Streamings berücksichtigen. Jedes einzelne Videofragment wird als eigene Entität zwischengespeichert. Stellen Sie sich beispielsweise die erste Wiedergabe eines bestimmten Videos vor. Wenn der Betrachter sich nur einige wenige Sekunden hier und dort ansieht, werden nur die von ihm angesehenen Videofragmente im CDN zwischengespeichert. Mit dem adaptiven Streaming gibt es normalerweise 5 bis 7 unterschiedliche Videobitraten. Wenn ein Benutzer eine Bitrate ansieht und ein anderer Benutzer eine andere Bitrate, werden die Bitraten jeweils separat im CDN zwischengespeichert. Auch wenn zwei Benutzer die gleiche Bitrate ansehen, kann es sein, dass das Streaming über unterschiedliche Protokolle erfolgt. Jedes Protokoll (HLS, MPEG-DASH, Smooth Streaming) wird separat zwischengespeichert. Somit werden jede Bitrate und jedes Protokoll separat zwischengespeichert, und nur die Videofragmente, die angefordert wurden, werden zwischengespeichert.
 
-Bei der Entscheidung, ob das CDN auf dem Media Services-[Streamingendpunkt](streaming-endpoint-concept.md) aktiviert werden soll, ist die Anzahl der erwarteten Viewer zu berücksichtigen. CDN ist nur hilfreich, wenn Sie viele Zuschauer für Ihre Inhalte erwarten. Wenn die Höchstzahl der gleichzeitigen Zuschauer unter 500 liegt, wird empfohlen, CDN zu deaktivieren, da sich das CDN am besten mit der Parallelität skalieren lässt.
+Mit Ausnahme der Testumgebung wird empfohlen, CDN sowohl für Standard- als auch für Premium-Streamingendpunkte zu aktivieren. Für jeden Streamingendpunkttyp gilt ein anderer Grenzwert für den unterstützten Durchsatz.
+Es ist schwierig, die maximale Anzahl gleichzeitiger Streams zu berechnen, die von einem Streamingendpunkt unterstützt werden, da verschiedene Faktoren berücksichtigt werden müssen. Dazu gehören:
+
+- Maximale Bitraten für das Streaming
+- Vorpuffer und Wechselverhalten des Players Player versuchen, Ursprungssegmente mittels Bursting zu übertragen, und nutzen die Ladegeschwindigkeit, um den adaptiven Bitratenwechsel zu berechnen. Ist ein Streamingendpunkt fast ausgelastet, können die Antwortzeiten variieren, und Player wechseln zu einer geringeren Qualität. Da sich dadurch die Last für die Streamingendpunktplayer verringert, wird die Qualität wieder hochskaliert, was unerwünschte Wechsel zur Folge hat.
+Im Großen und Ganzen ist es sicher, die maximale Anzahl gleichzeitiger Streams zu schätzen. Dabei wird der maximale Durchsatz des Streamingendpunkts durch die maximale Bitrate geteilt (vorausgesetzt, alle Player nutzen die höchste Bitrate). Beispielsweise können Sie einen Standard-Streamingendpunkt besitzen, der auf 600 MBit/s und die höchste Bitrate von 3 MBit/s beschränkt ist. In diesem Fall werden ungefähr 200 gleichzeitige Streams mit höchster Bitrate unterstützt. Berücksichtigen Sie auch die Anforderungen an die Audiobandbreite. Obwohl ein Audiostream unter Umständen nur mit 128 KBit/s gestreamt wird, erhöht sich der Gesamtwert des Streamings schnell, wenn Sie es mit der Anzahl gleichzeitiger Streams multiplizieren.
 
 In diesem Thema wird die Aktivierung der [CDN-Integration](#enable-azure-cdn-integration) erörtert. Es erläutert auch die Vorabrufe (aktives Zwischenspeichern) und das Konzept [Origin-Assist CDN-Prefetch](#origin-assist-cdn-prefetch) (Ursprungsunterstützung – CDN-Vorabruf).
 
 ## <a name="considerations"></a>Überlegungen
 
-* Der [Streamingendpunkt](streaming-endpoint-concept.md) `hostname` und die Streaming-URL ändern sich nicht, und zwar unabhängig davon, ob Sie CDN aktivieren oder nicht.
-* Wenn Sie Ihre Inhalte mit oder ohne CDN testen können möchten, erstellen Sie einen anderen Streamingendpunkt, für den kein CDN aktiviert ist.
+- Der [Streamingendpunkt](streaming-endpoint-concept.md) `hostname` und die Streaming-URL ändern sich nicht, und zwar unabhängig davon, ob Sie CDN aktivieren oder nicht.
+- Wenn Sie Ihre Inhalte mit oder ohne CDN testen können möchten, erstellen Sie einen anderen Streamingendpunkt, für den kein CDN aktiviert ist.
 
 ## <a name="enable-azure-cdn-integration"></a>Aktivieren der Azure CDN-Integration
 

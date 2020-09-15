@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: 9b23fbe55589bbbe6d560967119206fb1ea1d85c
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 50284f2c655f8c7b4bcae6876ac8cf2e2e6901b6
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607272"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378303"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Leitfaden zur Veröffentlichung nach Angebotstyp
 
@@ -33,7 +33,7 @@ Azure Marketplace-Angebotstypen werden in der folgenden Tabelle aufgeführt.
 | [**Virtuelle Computer**](./marketplace-virtual-machines.md) | Verwenden Sie den VM-Angebotstyp beim Bereitstellen einer virtuellen Appliance für das Abonnement Ihres Kunden. |
 | [**Lösungsvorlagen**](./marketplace-solution-templates.md) | Verwenden Sie den Angebotstyp der Lösungsvorlage (auch als Azure-Anwendung bezeichnet), wenn für Ihre Lösung neben einem einzelnen virtuellen Computer auch eine zusätzliche Bereitstellungs- und Konfigurationsautomatisierung erforderlich ist. In Lösungsvorlagen können viele verschiedene Arten von Azure-Ressourcen genutzt werden, einschließlich VMs u. a.  |
 | [**Verwaltete Anwendungen**](./marketplace-managed-apps.md) | Verwenden der Azure-App: Angebotstyp „Verwaltete App“, wenn die folgenden Bedingungen erforderlich sind: <br> <ul> <li> Sie stellen entweder eine Abonnement-basierte Lösung für Ihren Kunden mit einer VM oder eine vollständig IaaS-basierte Lösung bereit. </li> <li>Sie oder Ihr Kunde setzen voraus, dass die Lösung von einem Partner verwaltet wird. </li> <ul> |
-| [**SaaS-Anwendungen**](./partner-center-portal/create-new-saas-offer.md) | Verwenden Sie die SaaS-App-Angebotstypen, um Ihren Kunden die Möglichkeit zu geben, Ihre SaaS-basierte, technische Lösung als Abonnement zu kaufen. |
+| [**SaaS**](plan-saas-offer.md) | Verwenden Sie den SaaS-Angebotstyp (Software-as-a-Service), um Ihren Kunden die Möglichkeit zu geben, Ihre SaaS-basierte, technische Lösung als Abonnement zu kaufen. |
 | [**Container-Angebote**](./marketplace-containers.md) | Verwenden Sie den Angebotstyp „Container“, wenn Ihre Lösung ein Docker-Container-Image ist, das als Kubernetes-basierter Azure Container Service bereitgestellt wird. |
 | [**Azure IoT Edge-Module**](./iot-edge-module.md) | Azure IoT Edge-Module sind die kleinste von IoT Edge verwaltete Recheneinheit. Sie können Microsoft-Dienste (wie Azure Stream Analytics), Dienste von Drittanbietern oder Ihren eigenen lösungsspezifischen Code enthalten. |
 | [**Beratungsdienste**](./consulting-services.md) | Beratungsdienste unterstützen Kunden dabei, Verbindungen mit Diensten herzustellen, um die Nutzung von Azure-, Dynamics 365- oder Power Suite-Diensten zu unterstützen und zu erweitern.|
@@ -44,5 +44,5 @@ Informationen zu den Anforderungen für das einmalige Anmelden für die einzelne
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Berücksichtigen Sie im entsprechenden Artikel für Ihren Angebotstyp (in den folgenden Abschnitten) die erforderlichen Berechtigungen, um die Auswahl und Konfiguration Ihres Angebots abzuschließen.
-- Entnehmen Sie den Veröffentlichungsmustern der Onlineshops Beispiele für die Zuordnung Ihrer Lösung zu einem Angebotstyp und einer Konfiguration.
+- Berücksichtigen Sie im entsprechenden Artikel für Ihren Angebotstyp die Berechtigungsvoraussetzungen, um die Auswahl und Konfiguration Ihres Angebots abzuschließen.
+- Entnehmen Sie den Veröffentlichungsmustern der Storefronts Beispiele für die Zuordnung ihrer Lösung zu einem Angebotstyp und einer Konfiguration.

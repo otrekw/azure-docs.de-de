@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 07/27/2020
-ms.openlocfilehash: e3c5f6d7e04620cf36f6cd952467d47afd775b19
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.date: 08/27/2020
+ms.openlocfilehash: 449979443577d22f8cc2ec35ec770dd1e107bb76
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87824765"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998406"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>Aktivieren von Azure Monitor für VMs: Übersicht
 
@@ -78,86 +78,25 @@ Wenn Sie über keinen Log Analytics-Arbeitsbereich verfügen, können Sie einen 
 
 ## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 
-Die folgende Tabelle enthält die Windows- und Linux-Betriebssysteme, die von Azure Monitor für VMs unterstützt werden. Eine vollständige Liste mit ausführlicheren Informationen zu den größeren und kleineren Release- und unterstützen Kernelversionen des Linux-Betriebssystems ist weiter unten in diesem Abschnitt angegeben.
+Azure Monitor für VMs unterstützt alle Betriebssysteme, die den Log Analytics-Agent und den Dependency-Agent unterstützen. Eine vollständige Liste finden Sie unter [Übersicht über Azure Monitor-Agents](../platform/agents-overview.md#supported-operating-systems).
 
-|Betriebssystemversion |Leistung |Karten |
-|-----------|------------|-----|
-|Windows Server 2019 | X | X |
-|Windows Server 2016 1803 | X | X |
-|Windows Server 2016 | X | X |
-|Windows Server 2012 R2 | X | X |
-|Windows Server 2012 | X | X |
-|Windows Server 2008 R2 | X | X|
-|Windows 10 1803 | X | X |
-|Windows 8.1 | X | X |
-|Windows 8 | X | X |
-|Windows 7 SP1 | X | X |
-|Red Hat Enterprise Linux (RHEL) 6, 7| X | X| 
-|Ubuntu 18.04, 16.04 | X | X |
-|CentOS Linux 7, 6 | X | X |
-|SUSE Linux Enterprise Server (SLES) 12 | X | X |
-|Debian 9.4, 8 | X<sup>1</sup> | |
+In der folgenden Liste finden Sie Überlegungen zur Linux-Unterstützung des Dependency-Agents, der Azure Monitor für VMs unterstützt:
 
-<sup>1</sup> Das Leistungsfeature von Azure Monitor für VMs ist nur über Azure Monitor verfügbar. Es ist nicht direkt über den linken Bereich des virtuellen Azure-Computers verfügbar.
+- Es werden nur die Standardversion und SMP-Version des Linux-Kernels unterstützt.
+- Nicht-Standardversionen des Kernels, z. B. PAE (Physical Address Extension) und Xen, werden für keine Linux-Distribution unterstützt. Beispielsweise wird ein System mit der Versionszeichenfolge *2.6.16.21-0.8-xen* nicht unterstützt.
+- Benutzerdefinierte Kernels, einschließlich Neukompilierungen von Standardkernels, werden nicht unterstützt.
+- Für andere Debian-Distributionen als Version 9.4 wird das Zuordnungsfeature nicht unterstützt, und das Leistungsfeature ist nur über das Azure Monitor-Menü verfügbar. Es ist nicht direkt über den linken Bereich des virtuellen Azure-Computers verfügbar.
+- Der CentOSPlus-Kernel wird unterstützt.
+- Der Linux-Kernel muss für das Spectre-Sicherheitsrisiko gepatcht werden. Weitere Informationen erhalten Sie beim Anbieter der Linux-Distribution.
 
->[!NOTE]
->Für das Linux-Betriebssystem gilt Folgendes:
-> - Es werden nur die Standardversion und SMP-Version des Linux-Kernels unterstützt.
-> - Nicht-Standardversionen des Kernels, z. B. PAE (Physical Address Extension) und Xen, werden für keine Linux-Distribution unterstützt. Beispielsweise wird ein System mit der Versionszeichenfolge *2.6.16.21-0.8-xen* nicht unterstützt.
-> - Benutzerdefinierte Kernels, einschließlich Neukompilierungen von Standardkernels, werden nicht unterstützt.
-> - Der CentOSPlus-Kernel wird unterstützt.
-> - Der Linux-Kernel muss für das Spectre-Sicherheitsrisiko gepatcht werden. Weitere Informationen erhalten Sie beim Anbieter der Linux-Distribution.
 
-#### <a name="red-hat-linux-7"></a>Red Hat Linux 7
-
-| Betriebssystemversion | Kernelversion |
-|:--|:--|
-| 7.6 | 3.10.0-957 |
-| 7,5 | 3.10.0-862 |
-| 7.4 | 3.10.0-693 |
-
-#### <a name="red-hat-linux-6"></a>Red Hat Linux 6
-
-| Betriebssystemversion | Kernelversion |
-|:--|:--|
-| 6.10 | 2.6.32-754 |
-| 6.9 | 2.6.32-696 |
-
-#### <a name="centosplus"></a>CentOSPlus
-
-| Betriebssystemversion | Kernelversion |
-|:--|:--|
-| 6.10 | 2.6.32-754.3.5<br>2.6.32-696.30.1 |
-| 6.9 | 2.6.32-696.30.1<br>2.6.32-696.18.7 |
-
-#### <a name="ubuntu-server"></a>Ubuntu Server
-
-| Betriebssystemversion | Kernelversion |
-|:--|:--|
-| 18,04 | 5.3.0-1020<br>5.0 (enthält optimierten Azure-Kernel)<br>4.18 *<br>4.15* |
-| 16.04.3 | 4.15.* |
-| 16.04 | 4.13.\*<br>4.11.\*<br>4.10.\*<br>4.8.\*<br>4.4.\* |
-
-#### <a name="suse-linux-12-enterprise-server"></a>SUSE Linux 12 Enterprise Server
-
-| Betriebssystemversion | Kernelversion |
-|:--|:--|
-|12 SP4 | 4.12.* (enthält optimierten Azure-Kernel) |
-|12 SP3 | 4.4.* |
-|12 SP2 | 4.4.* |
-
-#### <a name="debian"></a>Debian 
-
-| Betriebssystemversion | Kernelversion |
-|:--|:--|
-| 9 | 4,9 | 
 
 ## <a name="supported-azure-arc-machines"></a>Unterstützte Azure Arc-Computer
 Azure Monitor für VMs ist für Azure Arc-fähige Server in Regionen verfügbar, in denen der Arc-Erweiterungsdienst verfügbar ist. Sie müssen Version 0.9 oder höher des Arc-Agents ausführen.
 
 | Verbundene Quelle | Unterstützt | BESCHREIBUNG |
 |:--|:--|:--|
-| Windows-Agents | Ja | Zusätzlich zum [Log Analytics-Agent für Windows](../platform/log-analytics-agent.md) benötigen Windows-Agents den Dependency-Agent. Weitere Informationen finden Sie unter [Unterstützte Betriebssysteme](#supported-operating-systems). |
+| Windows-Agents | Ja | Zusätzlich zum [Log Analytics-Agent für Windows](../platform/log-analytics-agent.md) benötigen Windows-Agents den Dependency-Agent. Weitere Informationen finden Sie unter [Unterstützte Betriebssysteme](../platform/agents-overview.md#supported-operating-systems). |
 | Linux-Agents | Ja | Zusätzlich zum [Log Analytics-Agent für Linux](../platform/log-analytics-agent.md) benötigen Linux-Agents den Dependency-Agent. Weitere Informationen finden Sie unter [Unterstützte Betriebssysteme](#supported-operating-systems). |
 | System Center Operations Manager-Verwaltungsgruppe | Nein | |
 
