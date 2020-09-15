@@ -1,5 +1,5 @@
 ---
-title: Was ist Translator? - Translator
+title: Worum handelt es sich bei Translator? - Translator
 titlesuffix: Azure Cognitive Services
 description: Integrieren Sie Translator in Ihre Anwendungen, Websites, Tools und in andere Lösungen, um Benutzererlebnisse in mehreren Sprachen bereitzustellen.
 services: cognitive-services
@@ -11,24 +11,22 @@ ms.topic: overview
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.custom: seodec18
-ms.openlocfilehash: 5da9e5b38b88a5a148bd3d85664daa523153086b
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 206e1bc86404fa41b84647c50482dbe63301c0af
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589450"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425958"
 ---
-# <a name="what-is-the-translator"></a>Was ist Translator?
+# <a name="what-is-translator"></a>Worum handelt es sich bei Translator?
 
-Translator lässt sich einfach in Ihre Anwendungen, Websites, Tools und Lösungen integrieren. Mit dieser App können Benutzererlebnisse in [mehr als 70 Sprachen](languages.md) bereitgestellt werden. Darüber hinaus kann sie auf jeder Hardwareplattform mit beliebigem Betriebssystem für Textübersetzung verwendet werden.
-
-Translator gehört zur [Azure Cognitive Services](https://docs.microsoft.com/azure/?pivot=products&panel=ai)-Sammlung von Machine Learning- und KI-Algorithmen in der Cloud, die Sie direkt in Ihren Entwicklungsprojekten verwenden können.
+Azure Cognitive Services Translator ist ein Clouddienst für maschinelle Übersetzung und gehört zur [Azure Cognitive Services](https://docs.microsoft.com/azure/?pivot=products&panel=ai)-Familie kognitiver APIs zur Erstellung intelligenter Apps. Translator lässt sich einfach in Ihre Anwendungen, Websites, Tools und Lösungen integrieren. Mit dieser App können Benutzererlebnisse in [mehr als 70 Sprachen](languages.md) bereitgestellt werden. Darüber hinaus kann sie auf jeder Hardwareplattform mit beliebigem Betriebssystem für Textübersetzung verwendet werden.
 
 ## <a name="about-microsoft-translator"></a>Informationen zu Microsoft Translator
 
-Translator ist ein cloudbasierter Dienst für die maschinelle Übersetzung. Das Herzstück dieses Diensts bildet der Translator-Dienst, der in zahlreichen Produkten und Diensten von Microsoft zum Einsatz kommt und in Anwendungen und Workflows von Tausenden von Unternehmen auf der ganzen Welt genutzt wird, die mit ihren Inhalten ein globales Publikum erreichen möchten.
+Azure Cognitive Services Translator ist ein cloudbasierter Dienst für die maschinelle Übersetzung. Translator kommt in zahlreichen Produkten und Diensten von Microsoft zum Einsatz und wird in Anwendungen und Workflows von Tausenden von Unternehmen auf der ganzen Welt genutzt, die mit ihren Inhalten ein globales Publikum erreichen möchten.
 
-Von Translator unterstützte Sprachübersetzung ist ebenfalls über den [Microsoft Speech-Dienst](https://docs.microsoft.com/azure/cognitive-services/speech-service/) verfügbar. Sie vereint Funktionen der Sprachübersetzungs-API und von Custom Speech Service  in einem einheitlichen und vollständig anpassbaren Dienst. Der Speech-Dienst ersetzt die Sprachübersetzungs-API, die am 15. Oktober 2019 eingestellt wird.
+Von Translator unterstützte Sprachübersetzung ist ebenfalls über den [Microsoft Speech-Dienst](https://docs.microsoft.com/azure/cognitive-services/speech-service/) verfügbar. Sie vereint Funktionen der Sprachübersetzungs-API und von Custom Speech Service  in einem einheitlichen und vollständig anpassbaren Dienst. 
 
 ## <a name="language-support"></a>Sprachunterstützung
 
@@ -46,7 +44,7 @@ Weitere Informationen zur Funktionsweise von NMT finden Sie [hier](https://www.m
 
 ## <a name="language-customization"></a>Sprachanpassung
 
-Benutzerdefinierter Translator ist eine Erweiterung des Microsoft Translator-Kerndiensts und kann in Verbindung mit Translator verwendet werden, um das neuronale Übersetzungssystem anzupassen und die Übersetzung für Ihre spezifische Terminologie und Ihren individuellen Stil anzupassen.
+Benutzerdefinierter Translator ist eine Erweiterung des Translator-Diensts und kann in Verbindung mit Translator verwendet werden, um das neuronale Übersetzungssystem anzupassen und die Übersetzung für Ihre spezifische Terminologie und Ihren individuellen Stil anzupassen.
 
 Mit Custom Translator können Sie Übersetzungssysteme erstellen, die Ihre unternehmens- oder branchenspezifische Terminologie verwenden. Mithilfe des Kategorieparameters können Sie Ihr benutzerdefiniertes Übersetzungssystem dann ganz einfach über den regulären Translator-Dienst in Ihre vorhandenen Anwendungen, Workflows und Websites sowie über verschiedene Gerätetypen hinweg integrieren.
 

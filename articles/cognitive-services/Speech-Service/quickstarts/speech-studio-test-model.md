@@ -1,25 +1,25 @@
 ---
-title: 'Schnellstart: Testen eines Modells mithilfe von Audiodateien – Speech Studio'
+title: Testen eines Modells mithilfe von Audiodateien – Speech Studio
 titleSuffix: Azure Cognitive Services
-description: In dieser Schnellstartanleitung verwenden Sie Speech Studio, um die Erkennung von Sprache in einer Audiodatei zu testen.
+description: In dieser Schrittanleitung verwenden Sie Speech Studio, um die Erkennung von Sprache in einer Audiodatei zu testen.
 services: cognitive-services
 author: v-demjoh
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 06/25/2020
+ms.date: 09/04/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 76fb933893b624e9b289ddf51d2a0373b51e58d1
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 9101944a567df5000d3584ed48eff24e4c5e0057
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391535"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565802"
 ---
-# <a name="quickstart-test-a-model-using-an-audio-file-in-speech-studio"></a>Schnellstart: Testen eines Modells mithilfe einer Audiodatei in Speech Studio
+# <a name="test-a-model-using-an-audio-file-in-speech-studio"></a>Testen eines Modells mithilfe einer Audiodatei in Speech Studio
 
-In dieser Schnellstartanleitung verwenden Sie Speech Studio, um Spracheingaben aus einer Audiodatei in Text zu konvertieren. Mithilfe von Speech Studio können Sie Spracherkennungsmodelle testen, vergleichen, verbessern und bereitstellen. Dafür können Sie zugehörigen Text, Audiomaterial mit menschenmarkierten Transkripten und Ausspracheanleitungen zur Verfügung stellen.
+In dieser Schrittanleitung verwenden Sie Speech Studio, um Spracheingaben aus einer Audiodatei in Text zu konvertieren. Mithilfe von Speech Studio können Sie Spracherkennungsmodelle testen, vergleichen, verbessern und bereitstellen. Dafür können Sie zugehörigen Text, Audiomaterial mit menschenmarkierten Transkripten und Ausspracheanleitungen zur Verfügung stellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

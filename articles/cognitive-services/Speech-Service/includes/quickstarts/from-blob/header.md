@@ -11,14 +11,14 @@ ms.topic: include
 ms.date: 03/13/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 514d1197c5e6d0f4c0f38faf24c6c2522d489820
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 9ced792ab076c312c827d4a74c08cfa7971b7e17
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81400888"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569413"
 ---
-In dieser Schnellstartanleitung verwenden Sie eine REST-API, um in einem Batchprozess Sprache aus Dateien zu erkennen. Ein Batchprozess führt die Sprachtranskription automatisch ohne Benutzerinteraktionen durch. So erhalten Sie ein einfaches Programmiermodell, ohne sich um Parallelität, benutzerdefinierte Sprachmodelle oder andere Details kümmern zu müssen. Der Prozess umfasst erweiterte Steueroptionen und ermöglicht eine effiziente Nutzung der Ressourcen des Azure Speech-Diensts.
+In dieser Schrittanleitung verwenden Sie die REST-API für die Batchtranskription, um Sprache aus Dateien in einem Batchprozess zu erkennen. Ein Batchprozess führt die Sprachtranskription automatisch ohne Benutzerinteraktionen durch. So erhalten Sie ein einfaches Programmiermodell, ohne sich um Parallelität, benutzerdefinierte Sprachmodelle oder andere Details kümmern zu müssen. Der Prozess umfasst erweiterte Steueroptionen und ermöglicht eine effiziente Nutzung der Ressourcen des Azure Speech-Diensts.
 
 Weitere Informationen zu den verfügbaren Optionen sowie zu Konfigurationsdetails finden Sie unter [Was ist die Batch-Transkription?](../../../batch-transcription.md).
 

@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 2b2b35e21cf9c8650b9dcf95cbd199c56cc23783
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 8f9ed14a0bcef346281c38146cbb2d9551633c15
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687298"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421521"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>Untersuchen und Bearbeiten der Beispieldateien
 
@@ -31,7 +31,50 @@ Als Teil der Voraussetzungen haben Sie den Beispielcode in einen Ordner herunter
     * `"topologyName"` : `"InferencingWithGrpcExtension"`
     * Bearbeiten Sie unter GraphTopologyDelete den Namen:
     * `"name"` : `"InferencingWithGrpcExtension"`
-    
+
+> [!NOTE]
+> <p>
+> <details>
+> <summary>Erweitern Sie diesen und prüfen Sie, wie der Knoten „MediaGraphGrpcExtension“ in der Topologie implementiert ist</summary>
+> <pre><code>
+> {
+>   "@type": "#Microsoft.Media.MediaGraphGrpcExtension",
+>   "name": "grpcExtension",
+>   "endpoint": {
+>       "@type": "#Microsoft.Media.MediaGraphUnsecuredEndpoint",
+>       "url": "${grpcExtensionAddress}",
+>       "credentials": {
+>           "@type": "#Microsoft.Media.MediaGraphUsernamePasswordCredentials",
+>           "username": "${grpcExtensionUserName}",
+>           "password": "${grpcExtensionPassword}"
+>       }
+>   },
+>   "dataTransfer": {
+>       "mode": "sharedMemory",
+>       "SharedMemorySizeMiB": "5"
+>   },
+>   "image": {
+>       "scale": {
+>           "mode": "${imageScaleMode}",
+>           "width": "${frameWidth}",
+>           "height": "${frameHeight}"
+>       },
+>       "format": {
+>           "@type": "#Microsoft.Media.MediaGraphImageFormatEncoded",
+>           "encoding": "${imageEncoding}",
+>           "quality": "${imageQuality}"
+>       }
+>   },
+>   "inputs": [
+>       {
+>           "nodeName": "motionDetection"
+>       }
+>   ]
+> }          
+> </code></pre>
+> </details>    
+> </p>
+
 ### <a name="generate-and-deploy-the-iot-edge-deployment-manifest"></a>Generieren und Bereitstellen des IoT Edge-Bereitstellungsmanifests
 
 1. Klicken Sie mit der rechten Maustaste auf die Datei *src/edge/* *deployment.grpcyolov3icpu.template.json*, und wählen Sie dann **IoT Edge-Bereitstellungsmanifest generieren** aus.

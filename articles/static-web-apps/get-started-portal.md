@@ -5,18 +5,18 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: quickstart
-ms.date: 08/13/2020
+ms.date: 09/03/2020
 ms.author: cshoe
-ms.openlocfilehash: e0b78c5e053c5668fbebd8ebaac91a90aa2b364f
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 7818754ca335f503c5afdc47d410cfe1d1029ab4
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752822"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434777"
 ---
 # <a name="quickstart-building-your-first-static-web-app-in-the-azure-portal"></a>Schnellstart: Erstellen Ihrer ersten statischen Web-App im Azure-Portal
 
-Azure Static Web Apps veröffentlicht eine Website in einer Produktionsumgebung, indem Apps aus einem GitHub-Repository erstellt werden. In dieser Schnellstartanleitung stellen Sie über das Azure-Portal eine Web-Anwendung in Azure Static Web Apps bereit.
+Azure Static Web Apps veröffentlicht eine Website in einer Produktionsumgebung, indem Apps aus einem GitHub-Repository erstellt werden. In dieser Schnellstartanleitung stellen Sie über das Azure-Portal eine Webanwendung in Azure Static Web Apps bereit.
 
 Falls Sie noch nicht über ein Azure-Abonnement verfügen, können Sie ein [kostenloses Testkonto](https://azure.microsoft.com/free) erstellen.
 
@@ -56,38 +56,39 @@ Geben Sie nach der Anmeldung mit GitHub die Informationen zum Repository ein.
 1. Wählen Sie Ihre bevorzugte _Organisation_ aus.
 1. Wählen Sie in der Dropdownliste _Repository_ den Eintrag **my-first-web-static-app** aus.
 1. Wählen Sie in der Dropdownliste _Branch_ den Eintrag **master** aus.
-1. Wählen Sie unten auf der Seite die Schaltfläche **Next: Erstellen >** , um die Buildkonfiguration zu bearbeiten.
-
-:::image type="content" source="media/getting-started-portal/next-build-button.png" alt-text="Schaltfläche „Weiter: Erstellen“":::
 
 > [!NOTE]
 > Wenn Sie keine Repositorys sehen, müssen Sie möglicherweise den Azure Static Web Apps in GitHub autorisieren. Navigieren Sie zu Ihrem GitHub-Repository, und wechseln Sie zu **Einstellungen > Anwendungen > Autorisierte OAuth-Apps**, wählen Sie **Azure Static Web Apps** und dann **Erteilen** aus. Bei Organisationsrepositorys müssen Sie Besitzer der Organisation sein, um die Berechtigungen erteilen zu können.
 
-1. Fügen Sie auf der Registerkarte _Erstellen_ die für Ihr bevorzugtes Front-End-Framework spezifischen Konfigurationsdetails hinzu.
+1. Fügen Sie im Abschnitt _Builddetails_ die für Ihr bevorzugtes Front-End-Framework spezifischen Konfigurationsdetails hinzu.
 
     # <a name="no-framework"></a>[Kein Framework](#tab/vanilla-javascript)
 
-    - Löschen Sie den Standardwert aus dem Feld _App-Speicherort_.
-    - Löschen Sie den Standardwert aus dem Feld _App-Speicherort_.
-    - Löschen Sie den Standardwert aus dem Feld _Speicherort für App-Artefakte_.
+    1. Wählen Sie **Benutzerdefiniert** aus der Dropdownliste _Buildvoreinstellungen_ aus.
+    1. Löschen Sie den Standardwert aus dem Feld _App-Speicherort_.
+    1. Löschen Sie den Standardwert aus dem Feld _App-Speicherort_.
+    1. Lassen Sie das Feld _Speicherort für App-Artefakte_ leer.
 
     # <a name="angular"></a>[Angular](#tab/angular)
 
-    - Löschen Sie den Standardwert aus dem Feld _App-Speicherort_.
-    - Löschen Sie den Standardwert aus dem Feld _App-Speicherort_.
-    - Geben Sie im Feld _Speicherort für App-Artefakte_ den Speicherort **dist/angular-basic** ein.
+    1. Wählen Sie **Angular** aus der Dropdownliste _Buildvoreinstellungen_ aus.
+    1. Belassen Sie den Standardwert im Feld _App-Speicherort_.
+    1. Löschen Sie den Standardwert aus dem Feld _App-Speicherort_.
+    1. Geben Sie im Feld _Speicherort für App-Artefakte_ den Speicherort **dist/angular-basic** ein.
 
     # <a name="react"></a>[React](#tab/react)
 
-    - Löschen Sie den Standardwert aus dem Feld _App-Speicherort_.
-    - Löschen Sie den Standardwert aus dem Feld _App-Speicherort_.
-    - Geben Sie im Feld _Speicherort für App-Artefakte_ den Speicherort **build** ein.
+    1. Wählen Sie **React** aus der Dropdownliste _Buildvoreinstellungen_ aus.
+    1. Belassen Sie den Standardwert im Feld _App-Speicherort_.
+    1. Löschen Sie den Standardwert aus dem Feld _App-Speicherort_.
+    1. Geben Sie im Feld _Speicherort für App-Artefakte_ den Speicherort **build** ein.
 
     # <a name="vue"></a>[Vue](#tab/vue)
 
-    - Löschen Sie den Standardwert aus dem Feld _App-Speicherort_.
-    - Löschen Sie den Standardwert aus dem Feld _App-Speicherort_.
-    - Geben Sie im Feld _Speicherort für App-Artefakte_ den Speicherort **dist** ein.
+    1. Wählen Sie **Vue.js** aus der Dropdownliste _Buildvoreinstellungen_ aus.
+    1. Belassen Sie den Standardwert im Feld _App-Speicherort_.
+    1. Löschen Sie den Standardwert aus dem Feld _App-Speicherort_.
+    1. Belassen Sie den Standardwert im Feld _Speicherort für App-Artefakte_.
 
     ---
 

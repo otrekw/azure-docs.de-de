@@ -1,25 +1,25 @@
 ---
-title: 'Schnellstart: Erkennen von Sprache aus einem Blobspeicher'
+title: Erkennen von Sprache aus einem Blobspeicher
 titleSuffix: Azure Cognitive Services
-description: In dieser Schnellstartanleitung verwenden Sie die REST-API zur Batchtranskription, um die in einem SAS-Blob gespeicherte Sprache asynchron zu erkennen.
+description: In dieser Schrittanleitung verwenden Sie die REST-API zur Batchtranskription, um die in einem SAS-Blob gespeicherte Sprache asynchron zu erkennen.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 06/25/2020
+ms.date: 09/04/2020
 ms.author: trbye
 ms.custom: devx-track-javascript, devx-track-csharp
 zone_pivot_groups: programming-languages-set-two-with-js
-ms.openlocfilehash: 3c6ae5a7635222b48ce097c6c517cebb60f961aa
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 28da97cb54c0147edc3d1609596b56db81546f18
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88926139"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569412"
 ---
-# <a name="quickstart-recognize-speech-stored-in-blob-storage"></a>Schnellstart: Erkennen von Sprache aus einem Blobspeicher
+# <a name="recognize-speech-stored-in-blob-storage"></a>Erkennen von Sprache aus einem Blobspeicher
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Header](../includes/quickstarts/from-blob/header.md)]

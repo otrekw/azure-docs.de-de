@@ -4,16 +4,19 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/07/2019
 ms.author: pafarley
-ms.openlocfilehash: fa13d9bdf73b87597d4eb01830ec2c76538521fe
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 874d76bebdfd3bd0daba1f83cb1f06c093f192ec
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73799847"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89411726"
 ---
 ## <a name="get-the-training-and-prediction-keys"></a>Abrufen der Trainings- und Vorhersageschlüssel
 
 Das Projekt benötigt gültige Abonnementschlüssel, um mit dem Dienst zu interagieren. Sie finden die Elemente auf der [Custom Vision-Website](https://customvision.ai). Melden Sie sich mit dem Konto an, das dem Azure-Konto zugeordnet ist, mit dem Ihre Custom Vision-Ressourcen erstellt wurden. Wählen Sie rechts oben auf der Startseite (die Seite mit der Option zum Hinzufügen eines neuen Projekts) das __Zahnradsymbol__ aus. Suchen Sie in der Liste nach Ihren Trainings- und Vorhersageressourcen, und erweitern Sie sie. Hier finden Sie Ihren Trainingsschlüssel, Ihren Vorhersageschlüssel und Ihre Vorhersageressourcen-ID. Speichern Sie diese Werte an einem temporären Speicherort.
+
+> [!NOTE]
+> Wenn Sie einen All-in-One-Schlüssel für Cognitive Services verwenden, um auf Custom Vision zuzugreifen, wird auf dem Einstellungsbildschirm nur ein Schlüssel angezeigt. In diesem Fall verwenden Sie denselben Schlüssel für Trainings- und Vorhersagevorgänge.
 
 ![Abbildung der Schlüsselbenutzeroberfläche](../media/csharp-tutorial/training-prediction-keys.png)
 

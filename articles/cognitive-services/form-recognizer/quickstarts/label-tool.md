@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 08/25/2020
 ms.author: pafarley
-ms.openlocfilehash: 6118f8109f44081c797cb09a6157abaf4044965e
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: e231bb7919f25210d7e5a2adff49dede6f0349a9
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377811"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89418958"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Trainieren eines Formularerkennungsmodells mit Beschriftungen mithilfe des Tools für die Beschriftung von Beispielen
 
@@ -225,7 +225,9 @@ Derzeit werden die folgenden Werttypen und Variationen unterstützt:
 > [!NOTE]
 > Siehe diese Regeln für die Datumsformatierung:
 > 
-> Die folgenden Zeichen können als DMY-Datumstrennzeichen (TMJ) verwendet werden: `, - / . \`. Leerzeichen können nicht als Trennzeichen verwendet werden. Beispiel:
+> Sie müssen ein Format (`dmy`, `mdy`, `ymd`) angeben, damit die Datumsformatierung funktioniert.
+>
+> Die folgenden Zeichen können als Datumstrennzeichen verwendet werden: `, - / . \`. Leerzeichen können nicht als Trennzeichen verwendet werden. Beispiel:
 > * 01.01.2020
 > * 01-01-2020
 > * 01/01/2020
@@ -234,11 +236,11 @@ Derzeit werden die folgenden Werttypen und Variationen unterstützt:
 > * 1-1-2020
 > * 1-01-20
 >
-> Wenn eine DMY-Datumszeichenfolge acht Ziffern hat, ist das Trennzeichen optional:
+> Wenn eine Datumszeichenfolge acht Ziffern hat, ist das Trennzeichen optional:
 > * 01012020
 > * 01 01 2020
 >
-> Der Monat kann auch als vollständiger oder Kurzname angegeben werden. Wenn der Name verwendet wird, sind Trennzeichen optional:
+> Der Monat kann auch als vollständiger oder Kurzname angegeben werden. Wenn der Name verwendet wird, sind Trennzeichen optional. Dieses Format kann jedoch weniger genau erkannt werden als andere.
 > * 01/Jan/2020
 > * 01Jan2020
 > * 01 Jan 2020

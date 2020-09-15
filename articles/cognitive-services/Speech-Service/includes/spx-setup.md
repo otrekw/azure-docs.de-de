@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: c92d6569e3c92d3bad3575599283c7796bd78225
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 2a0cb34c23ebee5ae16a8c0a272055880ceed388
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88068614"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89494336"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -22,9 +22,8 @@ Die einzige Voraussetzung ist ein Azure Speech-Abonnement. Informationen zum Ers
 
 Führen Sie diese Schritte aus, um die Speech-Befehlszeilenschnittstelle unter Windows zu installieren:
 
-1. Installieren Sie entweder [.NET Framework 4.7](https://dotnet.microsoft.com/download/dotnet-framework/net471) oder [.NET Core 3.0](https://dotnet.microsoft.com/download/dotnet-core/3.0)
-2. Laden Sie das [Zip-Archiv](https://aka.ms/speech/spx-zips.zip) der Speech-Befehlszeilenschnittstelle herunter, und extrahieren Sie es.
-3. Wechseln Sie in das Stammverzeichnis `spx-zips`, das Sie aus dem Download extrahiert haben, und extrahieren Sie das benötigte Unterverzeichnis (`spx-net471` für .NET Framework 4.7 oder `spx-netcore-win-x64` für .NET Core 3.0 auf einer x64-CPU).
+1. Laden Sie das [Zip-Archiv](https://aka.ms/speech/spx-zips.zip) der Speech-Befehlszeilenschnittstelle herunter, und extrahieren Sie es.
+2. Wechseln Sie in das Stammverzeichnis `spx-zips`, das Sie aus dem Download extrahiert haben, und extrahieren Sie das benötigte Unterverzeichnis (`spx-net471` für .NET Framework 4.7 oder `spx-netcore-win-x64` für .NET Core 3.0 auf einer x64-CPU).
 
 Wechseln Sie an der Eingabeaufforderung das Verzeichnis zu diesem Speicherort, und geben Sie dann `spx` ein, um die Hilfe zur Speech-Befehlszeilenschnittstelle anzuzeigen.
 
@@ -53,11 +52,13 @@ Geben Sie `spx` ein, um die Hilfe für die Speech-Befehlszeilenschnittstelle anz
 
 #### <a name="docker-install"></a>[Docker-Installation](#tab/dockerinstall)
 
+> [!NOTE]
+> <a href="https://www.docker.com/get-started" target="_blank">Docker Desktop für Ihre <span class="docon docon-navigate-external x-hidden-focus"></span></a>-Plattform muss installiert sein.
+
 Führen Sie die folgenden Schritte aus, um die Speech-CLI in einem Docker-Container zu installieren:
 
-1. Installieren Sie [Docker Desktop für Ihre Plattform](https://www.docker.com/get-started), und führen Sie die Anwendung aus.
 1. Geben Sie an einer neuen Eingabeaufforderung oder in einem Terminal den folgenden Befehl ein: `docker pull msftspeech/spx`
-1. Geben Sie diesen Befehl ein. Es sollten Hilfeinformationen für die Speech-CLI angezeigt werden: `docker run -it --rm msftspeech/spx help`
+2. Geben Sie diesen Befehl ein. Es sollten Hilfeinformationen für die Speech-CLI angezeigt werden: `docker run -it --rm msftspeech/spx help`
 
 ### <a name="mount-a-directory-in-the-container"></a>Einbinden eines Verzeichnisses in den Container
 

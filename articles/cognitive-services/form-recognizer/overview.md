@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 0df61c2ee42d468562efd67a2a66a90a5e4fda53
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 070796cd260e56bb51115a7ef33ced8455bfb6a9
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723559"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394396"
 ---
 # <a name="what-is-form-recognizer"></a>Was ist die Formularerkennung?
 
@@ -48,6 +48,7 @@ Die Formularerkennung verwendet die [Layout-API](#layout-api), um die erwarteten
 ## <a name="prebuilt-models"></a>Vordefinierte Modelle
 
 Die Formularerkennung enthält außerdem vordefinierte Modelle für eindeutige Formulartypen.
+
 ### <a name="prebuilt-receipt-model"></a>Vordefiniertes Belegmodell
 Das vordefinierte Belegmodell wird zum Lesen englischsprachiger Verkaufsbelege aus Australien, Kanada, Großbritannien, Indien und den USA verwendet – des Typs, der von Restaurants, Tankstellen, Einzelhandel usw. verwendet wird. Dieses Modell extrahiert wichtige Informationen wie Zeitpunkt und Datum der Transaktion, Händlerinformationen, Steuer- und Summenbeträge, Einzelposten und mehr. Darüber hinaus wird das vorgefertigte Belegmodell dazu trainiert, den gesamten Text eines Belegs zu erkennen und zurückzugeben. 
 
@@ -74,9 +75,11 @@ Befolgen Sie einen Schnellstart zum Extrahieren von Daten aus Ihren Formularen. 
     * [Trainieren ohne Beschriftungen: cURL](quickstarts/curl-train-extract.md)
     * [Trainieren ohne Beschriftungen: Python](quickstarts/python-train-extract.md)
     * [Trainieren mit Beschriftungen: Python](quickstarts/python-labeled-data.md)
-  * Extrahieren von Daten aus USA-Verkaufsbelegen
+  * Extrahieren von Daten aus Verkaufsbelegen
     * [Extrahieren von Verkaufsbelegdaten: cURL](quickstarts/curl-receipts.md)
     * [Extrahieren von Verkaufsbelegdaten: Python](quickstarts/python-receipts.md)
+  * Extrahieren von Daten aus Visitenkarten
+    * [Extrahieren von Visitenkartendaten – Python](quickstarts/python-business-cards.md)
   * Extrahieren von Text- und Tabellenstruktur aus Formularen
     * [Extrahieren von Layoutdaten: Python](quickstarts/python-layout.md)
 
@@ -90,6 +93,7 @@ Verwenden Sie die folgenden APIs zum Trainieren von Modellen und Extrahieren str
 | **Trainieren eines benutzerdefinierten Modells**| Trainieren eines neuen Modells zur Analyse Ihrer Formulare mit fünf Formularen gleichen Typs. Legen Sie den Parameter _useLabelFile_ auf `true` fest, um mit manuell beschrifteten Daten zu trainieren. |
 | **Analysieren des Formulars** |Analysieren eines einzelnen Dokuments, das als Stream übergeben wird, um Schlüssel-Wert-Paare und Tabellen aus dem Formular mit Ihrem benutzerdefinierten Modell zu extrahieren.  |
 | **Analysieren des Belegs** |Analysieren eines einzelnen Belegdokuments, um wichtige Informationen und anderen Belegtext zu extrahieren.|
+| **Analysieren von Visitenkarten** |Analysieren Sie eine Visitenkarte, um wichtige Informationen und Text zu extrahieren.|
 | **Analysieren des Layouts** |Analysieren des Layouts eines Formulars, um Text- und Tabellenstruktur zu extrahieren.|
 
 Sehen Sie sich die [Referenzdokumentation zur REST-API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) an, um mehr zu erfahren. Wenn Sie mit einer früheren Version der API vertraut sind, finden Sie im Artikel [Neuerungen](./whats-new.md) weitere Informationen zu den aktuellen Änderungen.

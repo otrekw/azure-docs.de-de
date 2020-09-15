@@ -3,12 +3,12 @@ title: 'Informationen zur Mediengrapherweiterung: Azure'
 description: Mit Live Video Analytics in IoT Edge können Sie die Mediengraph-Verarbeitungsfunktionen über einen Grapherweiterungsknoten erweitern.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 2e1ca730a6736776425cd70b323147b58e8eacbf
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 74929cc51a868d20952f1e25432f5343e4821d08
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716077"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569327"
 ---
 # <a name="media-graph-extension"></a>Mediengrapherweiterung
 
@@ -49,13 +49,14 @@ Verwenden Sie einen gRPC-Erweiterungsprozessorknoten daher in folgenden Fällen:
 Mithilfe von Mediengrapherweiterungen können Sie Rückschlussmodelle Ihrer Wahl für jede verfügbare Rückschlussruntime ausführen. Hierzu zählen etwa ONNX, TensorFlow, PyTorch und andere in Ihrem eigenen Docker-Container. Die benutzerdefinierte Rückschlusserweiterung sollte zusammen mit dem Live Video Analytics-Edgemodul bereitgestellt werden, um eine optimale Leistung zu erzielen, und wird dann über den in Ihrer Graphtopologie enthaltenen HTTP- oder gRPC-Erweiterungsprozessor aufgerufen. Darüber hinaus kann die Häufigkeit der Aufrufe für Ihre benutzerdefinierte Erweiterung gedrosselt werden, indem optional ein [Bewegungsmelderprozessor](media-graph-concept.md#motion-detection-processor) und ein [Bildfrequenzfilterprozessor](media-graph-concept.md#frame-rate-filter-processor) dem Medienerweiterungsprozessor vorgeschaltet werden.
 
 Das folgende Diagramm zeigt den Datenfluss im Überblick:
- 
-![Datenfluss](./media/media-graph-extension/data-flow.png)
+
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/media-graph-extension/analyze-live-video-with-AI-inference-service.svg" alt-text="KI-Rückschlussdienst":::
 
 ## <a name="samples"></a>Proben
 
-Sehen Sie sich einige unserer [Jupyter Notebook-Beispiele](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/notebooks/readme.md) für Live Video Analytics an. Diese Notebooks enthalten Schritt-für-Schritt-Anweisungen für Folgendes:
+Sehen Sie sich einige unserer [Jupyter Notebook-Beispiele](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/notebooks/readme.md) für Live Video Analytics an. In diesen Notebooks finden Sie schrittweise Anleitungen für **die Mediengrapherweiterungen**:
 
 * Erstellen eines Docker-Containerimages eines Erweiterungsdiensts
 * Bereitstellen des Erweiterungsdiensts als Container zusammen mit dem Live Video Analytics-Container
-* Verwenden eines Live Video Analytics-Mediengraphen mit einem Erweiterungsclient und Verweisen auf den gRPC-Endpunkt der Erweiterung
+* Verwenden eines Live Video Analytics-Mediengraphen mit einem Erweiterungsclient und Verweisen auf den Endpunkt der Erweiterung (HTTP/gRPC)

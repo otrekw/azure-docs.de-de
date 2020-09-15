@@ -38,7 +38,7 @@ Sehen Sie die [Liste der bekannten Probleme](resource-known-issues.md) an, um me
   + **azureml-automl-runtime**
     + Legen Sie Horovod für Text-DNNs so fest, dass immer FP16-Komprimierung verwendet wird.
     + Diese Version unterstützt Modelle, die größer als 4 GB sind.
-    + Problem behoben, bei dem bei AutoML der folgende Fehler auftritt: „ImportError: cannot import name `RollingOriginValidator`“ (Importfehler: der Name `RollingOriginValidator` kann nicht importiert werden).
+    + ImportError: cannot import name `RollingOriginValidator` (Importfehler: Der Name `RollingOriginValidator` kann nicht importiert werden.)
     + Aktualisierte AutoML-Abhängigkeiten: `scikit-learn` (jetzt 0.22.1), `pandas` (jetzt 0.25.1), `numpy` (jetzt 1.18.2).
   + **azureml-contrib-automl-dnn-forecasting**
     + Aktualisierte AutoML-Abhängigkeiten: `scikit-learn` (jetzt 0.22.1), `pandas` (jetzt 0.25.1), `numpy` (jetzt 1.18.2).
