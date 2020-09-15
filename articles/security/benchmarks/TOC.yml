@@ -2,11 +2,37 @@
   href: index.yml
 - name: Einführung
   href: introduction.md
-- name: Einstellungen für einmaliges Anmelden
+- name: Sicherheitssteuerelemente (v2)
   expanded: true
   items:
     - name: Übersicht über Azure-Sicherheitssteuerungen
       href: overview.md
+    - name: Netzwerksicherheit
+      href: security-controls-v2-network-security.md
+    - name: Identitätsverwaltung
+      href: security-controls-v2-identity-management.md
+    - name: Privilegierter Zugriff
+      href: security-controls-v2-privileged-access.md
+    - name: Datenschutz
+      href: security-controls-v2-data-protection.md
+    - name: Asset-Management
+      href: security-controls-v2-asset-management.md
+    - name: Protokollierung und Bedrohungserkennung
+      href: security-controls-v2-logging-threat-detection.md
+    - name: Reaktion auf Vorfälle
+      href: security-controls-v2-incident-response.md
+    - name: Status- und Sicherheitsrisikoverwaltung
+      href: security-controls-v2-posture-vulnerability-management.md
+    - name: Endpunktsicherheit
+      href: security-controls-v2-endpoint-security.md
+    - name: Sicherung und Wiederherstellung
+      href: security-controls-v2-backup-recovery.md
+    - name: Governance und Strategie
+      href: security-controls-v2-governance-strategy.md
+- name: Sicherheitssteuerelemente (v1)
+  items:
+    - name: Übersicht über Azure-Sicherheitssteuerelemente (v1)
+      href: overview-v1.md
     - name: Netzwerksicherheit
       href: security-control-network-security.md
     - name: Protokollierung und Überwachung

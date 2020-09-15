@@ -17,7 +17,9 @@
       href: get-started-create-service-instance.md
     - name: Erstellen einer Instanz – PowerShell
       href: powershell-create-service-instance.md
-- name: Lernprogramme
+    - name: 'Erstellen einer Instanz: Visual Studio Code'
+      href: vscode-create-service-instance.md
+- name: Tutorials
   items:
     - name: '1: Importieren Ihrer ersten API'
       href: import-and-publish.md
