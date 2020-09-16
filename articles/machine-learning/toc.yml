@@ -103,9 +103,9 @@
           displayName: studio
           href: concept-designer.md
         - name: Spickzettel zu Algorithmen
-          href: /azure/machine-learning/algorithm-cheat-sheet
+          href: algorithm-cheat-sheet.md
         - name: Auswählen von Algorithmen
-          href: /azure/machine-learning/how-to-select-algorithms
+          href: how-to-select-algorithms.md
     - name: Automatisiertes maschinelles Lernen
       items:
         - name: Übersicht über automatisiertes maschinelles Lernen

@@ -21,7 +21,19 @@
   expanded: true
   items:
     - name: Authentifizierungsmethoden
-      href: concept-authentication-methods.md
+      items:
+        - name: Übersicht
+          href: concept-authentication-methods.md
+        - name: Microsoft Authenticator-App
+          href: concept-authentication-authenticator-app.md
+        - name: OATH-Token
+          href: concept-authentication-oath-tokens.md
+        - name: Kennwortlos
+          href: concept-authentication-passwordless.md
+        - name: Telefonoptionen
+          href: concept-authentication-phone-options.md
+        - name: Sicherheitsfragen
+          href: concept-authentication-security-questions.md
     - name: Self-Service-Kennwortzurücksetzung
       items:
         - name: Funktionsweise der Kennwortzurücksetzung
@@ -46,8 +58,6 @@
           href: /office365/admin/security-and-compliance/set-up-multi-factor-authentication?view=o365-worldwide
         - name: Häufig gestellte Fragen
           href: multi-factor-authentication-faq.md
-    - name: Kennwortlose Authentifizierung
-      href: concept-authentication-passwordless.md
     - name: Kennwortschutz
       items:
         - name: Entfernen unsicherer Kennwörter in der Cloud

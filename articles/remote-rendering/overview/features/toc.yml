@@ -4,6 +4,8 @@
   href: debug-rendering.md
 - name: Hierarchische Zustandsüberschreibung
   href: override-hierarchical-state.md
+- name: Kamera
+  href: camera.md
 - name: Stagebereich
   href: stage-space.md
 - name: LSR (Late State Reprojection)
