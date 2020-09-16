@@ -1,14 +1,14 @@
 ---
 title: 'CAF-Blaupausenbeispiel für die Migrationslandezone: Übersicht'
 description: Übersicht und Architektur des Framework für die Cloudeinführung (Cloud Adoption Framework, CAF) für das Basisblaupausenbeispiel für die Azure-Migrationslandezone.
-ms.date: 04/15/2020
+ms.date: 09/14/2020
 ms.topic: sample
-ms.openlocfilehash: 6deb671070a742448560309b1b1a3572f5aa082d
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 6b8e3484690d263a43d3824c054b28344ea07fb1
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852309"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531677"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-migration-landing-zone-blueprint-sample"></a>Übersicht über das Microsoft Cloud Adoption Framework-Blaupausenbeispiel für die Azure-Migrationslandezone
 
@@ -20,7 +20,9 @@ Das [CAF-Basisblaupausenbeispiel](../caf-foundation/index.md) baut auf diesem Be
 
 Das CAF-Blaupausenbeispiel für die Migrationslandezone stellt grundlegende Infrastrukturressourcen in Azure bereit, die von Organisationen verwendet werden können, um ihr Abonnement für die Migration virtueller Computer vorzubereiten. Darüber hinaus unterstützt es Sie bei der Einrichtung der Governancekontrollen, die für die Verwaltung Ihrer Cloudressourcen erforderlich sind. In diesem Beispiel werden Ressourcen, Richtlinien und Vorlagen bereitgestellt und erzwungen, die Organisationen einen problemlosen Einstieg in Azure ermöglichen.
 
-:::image type="content" source="../../media/caf-blueprints/caf-migration-landing-zone-architecture.png" alt-text="CAF-Migrationszielzone: Die Abbildung veranschaulicht, was im Rahmen des CAF-Leitfadens für die erste Zielzone installiert wird." border="false":::
+:::image type="complex" source="../../media/caf-blueprints/caf-migration-landing-zone-architecture.png" alt-text="CAF-Migrationszielzone: Die Abbildung veranschaulicht, was im Rahmen des CAF-Leitfadens für die erste Zielzone installiert wird." border="false":::
+   Beschreibt eine Azure-Architektur, die durch Bereitstellen der CAF-Migrationsblaupause erreicht wird.  Dies gilt für ein Abonnement mit Ressourcengruppen, das aus einem virtuellen Azure-Netzwerk, einem Speicherkonto zum Speichern von Protokollen und einer Log Analytics-Instanz für die Speicherung im Speicherkonto besteht.  Außerdem werden eine konfigurierte Azure Key Vault-Instanz und die erstellte Azure Migrate-Ersteinrichtung dargestellt.  Der Zugriff auf alle diese Kerninfrastrukturen erfolgt mithilfe von Azure Active Directory.     
+:::image-end:::
 
 Diese Umgebung umfasst mehrere Azure-Dienste, die für die Bereitstellung einer sicheren, vollständig überwachten und unternehmensgerechten Governancelösung genutzt werden. Diese Umgebung besteht aus den folgenden Komponenten:
 

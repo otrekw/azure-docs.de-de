@@ -11,44 +11,56 @@
       items:
         - name: Azure-Portal
           href: quick-setup-auto-provision.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: quick-setup-auto-provision-cli.md
         - name: Azure RM-Vorlage
           href: quick-setup-auto-provision-rm.md
-    - name: Bereitstellen eines einzelnen Geräts
+    - name: Bereitstellen eines Geräts mit symmetrischem Schlüssel
       items:
-        - name: Nachweis des symmetrischen Schlüssels
-          items:
-            - name: C
-              href: quick-create-simulated-device-symm-key.md
-            - name: Java
-              href: quick-create-simulated-device-symmetric-key-java.md
-            - name: Python
-              href: quick-create-device-symmetric-key-python.md
-        - name: X.509-Zertifikatnachweis
-          items:
-            - name: C
-              href: quick-create-simulated-device-x509.md
-            - name: Java
-              href: quick-create-simulated-device-x509-java.md
-            - name: C#
-              href: quick-create-simulated-device-x509-csharp.md
-            - name: Node.js
-              href: quick-create-simulated-device-x509-node.md
-            - name: Python
-              href: quick-create-simulated-device-x509-python.md
-        - name: Nachweis für ein simuliertes TPM-Gerät
-          items:
-            - name: C
-              href: quick-create-simulated-device.md
-            - name: Java
-              href: quick-create-simulated-device-tpm-java.md
-            - name: C#
-              href: quick-create-simulated-device-tpm-csharp.md
-            - name: Node.js
-              href: quick-create-simulated-device-tpm-node.md
-            - name: Python
-              href: quick-create-simulated-device-tpm-python.md
+        - name: C
+          href: quick-create-simulated-device-symm-key.md
+        - name: Java
+          href: quick-create-simulated-device-symmetric-key-java.md
+        - name: Python
+          href: quick-create-device-symmetric-key-python.md
+    - name: Bereitstellen eines Geräts mit X.509-Zertifikat
+      items:
+        - name: C
+          href: quick-create-simulated-device-x509.md
+        - name: Java
+          href: quick-create-simulated-device-x509-java.md
+        - name: C#
+          href: quick-create-simulated-device-x509-csharp.md
+        - name: Node.js
+          href: quick-create-simulated-device-x509-node.md
+        - name: Python
+          href: quick-create-simulated-device-x509-python.md
+- name: Tutorials
+  items:
+    - name: 1. Bereitstellen von verschiedenen Geräten mit Registrierungsgruppen
+      href: how-to-legacy-device-symm-key.md
+    - name: 2. Bereitstellen von Geräten für mehrere Hubs
+      items:
+        - name: Verknüpfen mehrerer Hubs mit DPS
+          href: tutorial-provision-multiple-hubs.md
+        - name: Bereitstellen für Mehrinstanzenfähigkeit
+          href: how-to-provision-multitenant.md
+        - name: Verwenden benutzerdefinierter Zuordnungsrichtlinien
+          href: how-to-use-custom-allocation-policies.md
+- name: Proben
+  items:
+    - name: Beispiel für einen Nachweis für ein simuliertes TPM-Gerät
+      items:
+        - name: C
+          href: quick-create-simulated-device.md
+        - name: Java
+          href: quick-create-simulated-device-tpm-java.md
+        - name: C#
+          href: quick-create-simulated-device-tpm-csharp.md
+        - name: Node.js
+          href: quick-create-simulated-device-tpm-node.md
+        - name: Python
+          href: quick-create-simulated-device-tpm-python.md
     - name: Erstellen von Geräteregistrierungen mithilfe von DPS-APIs
       items:
         - name: Gruppenregistrierung mithilfe des X.509-Zertifikatnachweises
@@ -71,51 +83,33 @@
               href: quick-enroll-device-tpm-node.md
             - name: Python
               href: quick-enroll-device-tpm-python.md
-- name: Tutorials
-  items:
-    - name: '1: Einrichten von Cloudressourcen'
-      href: tutorial-set-up-cloud.md
-    - name: '2: Einrichten eines Geräts'
-      href: tutorial-set-up-device.md
-    - name: '3: Bereitstellen eines Geräts für einen IoT-Hub'
-      items:
-        - name: C
-          href: tutorial-provision-device-to-hub.md
-        - name: C#
-          href: tutorial-net-provision-device-to-hub.md
-    - name: '4: Bereitstellung von Geräten für mehrere Hubs'
-      href: tutorial-provision-multiple-hubs.md
-    - name: '5: Einrichten von Gruppenregistrierungen'
-      href: tutorial-group-enrollments.md
 - name: Konzepte
   items:
-    - name: Automatische Bereitstellung
-      href: concepts-auto-provisioning.md
-    - name: Erneute Bereitstellung
-      href: concepts-device-reprovision.md
-    - name: Geräte
-      href: concepts-device.md
-    - name: Sicherheit
-      href: concepts-security.md
-    - name: TLS-Unterstützung
-      href: tls-support.md
-    - name: VNET-Unterstützung
-      href: virtual-network-support.md
-    - name: Dienst
+    - name: DPS-Terminologie
       href: concepts-service.md
-    - name: Informationen zu DPS-IP-Adressen
-      href: iot-dps-understand-ip-address.md
-    - name: TPM-Nachweis
-      href: concepts-tpm-attestation.md
     - name: Nachweis des symmetrischen Schlüssels
       href: concepts-symmetric-key-attestation.md
+    - name: X.509-Zertifikatnachweis
+      href: concepts-x509-attestation.md
+    - name: TPM-Nachweis
+      href: concepts-tpm-attestation.md
+    - name: Rollen und Vorgänge
+      href: concepts-roles-operations.md
+    - name: VNET-Unterstützung
+      href: virtual-network-support.md
+    - name: Erneute Bereitstellung
+      href: concepts-device-reprovision.md
+    - name: Informationen zu DPS-IP-Adressen
+      href: iot-dps-understand-ip-address.md
+    - name: TLS-Unterstützung
+      href: tls-support.md
     - name: Sicherheitsmaßnahmen für Gerätehersteller
       href: concepts-device-oem-security-practices.md
-- name: Exemplarische Vorgehensweisen
+- name: Anleitungen
   items:
     - name: Herstellen einer Verbindung zwischen MXChip IoT DevKit und IoT Hub
       href: how-to-connect-mxchip-iot-devkit.md
-    - name: Verwalten der Konfiguration des Gerätebereitstellungsdiensts
+    - name: Verwalten des Gerätebereitstellungsdiensts
       items:
         - name: 'Verwalten von Registrierungen: Portal'
           href: how-to-manage-enrollments.md
@@ -131,14 +125,12 @@
           href: how-to-revoke-device-access-portal.md
         - name: Verwalten der Bereitstellungsaufhebung
           href: how-to-unprovision-devices.md
-    - name: Verwalten des Gerätebereitstellungsdiensts
-      items:
-        - name: Konfigurieren des Gerätebereitstellungsdiensts mithilfe der Azure-Befehlszeilenschnittstelle
-          href: how-to-manage-dps-with-cli.md
         - name: Steuern des Zugriffs auf Bereitstellungsdienst-APIs
           href: how-to-control-access.md
         - name: Konfigurieren der IP-Filterung
           href: iot-dps-ip-filtering.md
+        - name: Konfigurieren des Gerätebereitstellungsdiensts mithilfe der Azure-Befehlszeilenschnittstelle
+          href: how-to-manage-dps-with-cli.md
     - name: Bereitstellen von IoT Edge-Geräten
       items:
         - name: Linux
@@ -149,12 +141,6 @@
           maintainContext: true
     - name: Verwenden von Nachweismechanismen mit dem SDK
       href: use-hsm-with-sdk.md
-    - name: Bereitstellen für Mehrinstanzenfähigkeit
-      href: how-to-provision-multitenant.md
-    - name: Verwenden benutzerdefinierter Zuordnungsrichtlinien
-      href: how-to-use-custom-allocation-policies.md
-    - name: Verwenden symmetrischer Schlüssel mit Legacygeräten
-      href: how-to-legacy-device-symm-key.md
     - name: Verwenden von SDK-Tools für die Entwicklung
       href: how-to-use-sdk-tools.md
     - name: Senden zusätzlicher Daten von Geräten

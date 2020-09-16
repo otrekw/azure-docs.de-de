@@ -340,8 +340,16 @@
           href: virtual-machine-scale-sets-upgrade-scale-set.md
         - name: Netzwerke für Skalierungsgruppen
           href: virtual-machine-scale-sets-networking.md
-        - name: Automatische Betriebssystemupgrades
-          href: virtual-machine-scale-sets-automatic-upgrade.md
+        - name: Upgrades für Betriebssystemimages
+          items:
+            - name: Automatische Betriebssystemupgrades
+              href: virtual-machine-scale-sets-automatic-upgrade.md
+            - name: Wartungssteuerung
+              items:
+                - name: Übersicht (Vorschau)
+                  href: ../virtual-machines/virtual-machine-scale-sets-maintenance-control.md
+                - name: PowerShell (Vorschauversion)
+                  href: ../virtual-machines/virtual-machine-scale-sets-maintenance-control-powershell.md
         - name: Automatische Instanzreparaturen
           href: virtual-machine-scale-sets-automatic-instance-repairs.md
         - name: Instanzschutz
@@ -391,7 +399,7 @@
       href: /rest/api/virtualmachinescalesets/
     - name: Azure-Vorlagen
       href: /azure/templates/microsoft.compute/virtualmachinescalesets
-    - name: Integrierte Azure Policy-Aktionen
+    - name: Azure Policy-Integrationen
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
 - name: Ressourcen

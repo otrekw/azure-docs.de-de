@@ -28,8 +28,6 @@
           href: tutorial-discover-physical.md
         - name: Ermitteln von AWS-Instanzen
           href: tutorial-discover-aws.md
-        - name: Ermitteln importierter Server
-          href: tutorial-discover-import.md
     - name: Bewerten
       items:
         - name: Bewerten von virtuellen VMware-Computern für die Migration zu virtuellen Azure-Computern
@@ -42,6 +40,8 @@
           href: tutorial-assess-physical.md
         - name: Bewerten von AWS-Instanzen für die Migration zu Azure
           href: tutorial-assess-aws.md
+        - name: Bewerten importierter Server
+          href: tutorial-discover-import.md
     - name: Migrate
       items:
         - name: Migrieren von virtuellen VMware-Computern

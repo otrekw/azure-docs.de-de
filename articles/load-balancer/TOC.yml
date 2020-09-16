@@ -20,19 +20,11 @@
       href: quickstart-load-balancer-standard-internal-powershell.md
     - name: 'Erstellen eines internen Lastenausgleichs: Azure CLI'
       href: quickstart-load-balancer-standard-internal-cli.md
+    - name: 'Erstellen eines internen Lastenausgleichs: ARM-Vorlage'
+      href: quickstart-load-balancer-standard-internal-template.md
   expanded: true
 - name: Tutorials
   items:
-    - name: Interner Lastenausgleich
-      items:
-        - name: Internen Lastenausgleich erstellen – Portal
-          href: tutorial-load-balancer-standard-internal-portal.md
-        - name: Internen Lastenausgleich erstellen – Azure CLI
-          href: load-balancer-get-started-ilb-arm-cli.md
-        - name: Internen Lastenausgleich erstellen – Azure PowerShell
-          href: load-balancer-get-started-ilb-arm-ps.md
-        - name: Internen Lastenausgleich erstellen – ARM-Vorlage
-          href: load-balancer-get-started-ilb-arm-template.md
     - name: Durchführen eines verfügbarkeitszonenübergreifenden Lastenausgleichs für virtuelle Computer
       href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: Durchführen eines Lastenausgleichs für virtuelle Computer innerhalb einer bestimmten Verfügbarkeitszone

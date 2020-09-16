@@ -51,6 +51,18 @@
   href: code-samples.md
 - name: Konzepte
   items:
+    - name: Vergleichen von Lösungen für externe Identitäten
+      href: 'https://docs.microsoft.com/azure/active-directory/b2b/compare-with-b2c?toc=/azure/active-directory-b2c/TOC.json&bc=/azure/active-directory-b2c/bread/toc.json'
+    - name: Erlernen der Grundlagen
+      items:
+        - name: Authentifizierung und Autorisierung
+          href: 'https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization?toc=/azure/active-directory-b2c/TOC.json&bc=/azure/active-directory-b2c/bread/toc.json'
+        - name: Token
+          href: 'https://docs.microsoft.com/azure/active-directory/develop/security-tokens?toc=/azure/active-directory-b2c/TOC.json&bc=/azure/active-directory-b2c/bread/toc.json'
+        - name: Protokolle
+          href: 'https://docs.microsoft.com/azure/active-directory/develop/v2-app-types?toc=/azure/active-directory-b2c/TOC.json&bc=/azure/active-directory-b2c/bread/toc.json'
+        - name: Authentifizierungsbibliothek
+          href: 'https://docs.microsoft.com/azure/active-directory/develop/msal-overview?toc=/azure/active-directory-b2c/TOC.json&bc=/azure/active-directory-b2c/bread/toc.json'
     - name: Bewährte Methoden für Azure AD B2C
       href: best-practices.md
     - name: Anwendungstypen
@@ -341,9 +353,11 @@
                       href: aad-sspr-technical-profile.md
                     - name: Transformation von Ansprüchen
                       href: claims-transformation-technical-profile.md
-                    - name: Technisches Profil des bedingen Zugriffs
+                    - name: Bedingter Zugriff
                       href: conditional-access-technical-profile.md
                       displayName: ca
+                    - name: ID-Tokenhinweis
+                      href: id-token-hint.md
                     - name: JWT-Tokenaussteller
                       href: jwt-issuer-technical-profile.md
                     - name: OAuth1

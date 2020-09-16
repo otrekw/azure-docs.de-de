@@ -592,7 +592,7 @@
               href: disk-encryption-troubleshooting.md
             - name: Häufig gestellte Fragen zur Datenträgerverschlüsselung
               href: disk-encryption-faq.md
-            - name: 'Datenträgerverschlüsselung: vorherige Version (AAD)'
+            - name: 'Datenträgerverschlüsselung: vorherige Version (Azure AD)'
               items:
                 - name: Übersicht
                   href: disk-encryption-overview-aad.md
@@ -670,7 +670,7 @@
           href: nested-virtualization.md
         - name: Automatisches Patchen von VM-Gästen (Vorschau)
           href: automatic-vm-guest-patching.md
-    - name: Plattformwartung
+    - name: Wartungssteuerung
       items:
         - name: Wartungsbenachrichtigungen
           items:
@@ -682,11 +682,11 @@
               href: ../maintenance-notifications-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: PowerShell
               href: ../maintenance-notifications-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-        - name: Wartungssteuerung
+        - name: Plattformwartung
           items:
             - name: Übersicht
               href: ../maintenance-control.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: CLI
+            - name: Befehlszeilenschnittstelle (CLI)
               href: ../maintenance-control-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: PowerShell
               href: ../maintenance-control-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -696,6 +696,16 @@
           href: scheduled-events.md
         - name: Windows-Dienst für geplante Ereignisse
           href: scheduled-event-service.md
+        - name: Betriebssystemimage-Upgrades für VM-Skalierungsgruppen
+          items:
+            - name: Automatische Betriebssystemupgrades
+              href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Wartungssteuerung
+              items:
+                - name: Übersicht (Vorschau)
+                  href: ../virtual-machine-scale-sets-maintenance-control.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: PowerShell (Vorschauversion)
+                  href: ../virtual-machine-scale-sets-maintenance-control-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Überwachen virtueller Computer
       items:
         - name: Agents

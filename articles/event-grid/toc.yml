@@ -48,7 +48,7 @@
       href: resize-images-on-storage-blob-upload-event.md
     - name: Auslösen des Automation-Runbooks
       href: ensure-tags-exists-on-new-virtual-machines.md
-    - name: Senden einer E-Mail nach Hinzufügen eines IoT Hub-Geräts
+    - name: Senden einer E-Mail beim Trennen eines IoT Hub-Geräts
       href: publish-iot-hub-events-to-logic-apps.md
     - name: Reagieren auf Service Bus-Ereignisse
       href: ../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json
@@ -294,7 +294,7 @@
           href: /azure/templates/microsoft.eventgrid/topics
     - name: SDKs
       href: sdk-overview.md
-    - name: Integrierte Azure Policy-Aktionen
+    - name: Azure Policy-Integrationen
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
 - name: Ressourcen

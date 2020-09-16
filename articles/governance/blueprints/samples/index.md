@@ -1,14 +1,14 @@
 ---
 title: Index der Blaupausenbeispiele
 description: Index der Beispiele für Compliance und Standards für die Bereitstellung von Umgebungen, Richtlinien und Cloud Adoption Framework-Grundlagen mit Azure Blueprints.
-ms.date: 09/11/2020
+ms.date: 09/14/2020
 ms.topic: sample
-ms.openlocfilehash: 7ac95dee88cb244ecb4b60738daae26bb0d8831a
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: def5e51a3db7e0733e0d7e1ef5c6895aedb7128d
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031873"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530980"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints-Beispiele
 
@@ -42,7 +42,8 @@ In der folgenden Tabelle sind Links zu Beispielen für Azure Blueprints enthalte
 
 ## <a name="samples-strategy"></a>Strategie für Beispiele
 
-:::image type="content" source="../media/blueprint-samples-strategy.png" alt-text="Strategie für Blaupausenbeispiele" border="false":::
+:::image type="complex" source="../media/blueprint-samples-strategy.png" alt-text="Diagramm, in dem dargestellt ist, wo die Blaupausenbeispiele hinsichtlich Architekturkomplexität und Complianceanforderungen passen" border="false":::
+   Beschreibt ein Koordinatensystem, in dem die Architekturkomplexität auf der x-Achse und die Complianceanforderungen auf der y-Achse dargestellt ist.  Wenn sich die Architekturkomplexität erhöht und die Complianceanforderungen steigen, verwenden Sie die standardmäßigen Blaupausenbeispiele im Portal, die durch Region E markiert sind. Kunden, die die ersten Schritte mit Azure ausführen, nutzen die durch Region A und B bezeichneten, auf dem Cloud Adoption Framework (CAF) basierenden Basis- und Zielzonenblaupausen. Der verbleibende Platz wird benutzerdefinierten Blaupausen zugeordnet, die von Kunden erstellt werden, die Partner für die Regionen C, D und F sind. :::image-end:::
 
 Bei der CAF-Basisblaupause und der CAF-Blaupause für die Migrationslandezone wird davon ausgegangen, dass der Kunde ein vorhandenes, sauberes Einzelabonnement für die Migration lokaler Ressourcen und Workloads zu Azure vorbereitet.
 (Regionen A und B in der Abbildung)  
