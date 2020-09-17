@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: 98814060fb9ae669fc4e9a90fcda6319bbfaeacf
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: ede55196793e7eb19a5f64e539ee870ff0fada9d
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182543"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031415"
 ---
 # <a name="quickstart-use-ruby-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Schnellstart: Verwenden von Ruby zum Herstellen einer Verbindung mit einem Azure Database for PostgreSQL-Einzelserver sowie zum Abfragen von Daten
 
@@ -43,7 +43,7 @@ Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung m
 ## <a name="connect-and-create-a-table"></a>Herstellen einer Verbindung und Erstellen einer Tabelle
 Verwenden Sie den folgenden Code, um eine Verbindung herzustellen und eine Tabelle zu erstellen, indem Sie eine **CREATE TABLE**-SQL-Anweisung gefolgt von **INSERT INTO**-SQL-Anweisungen zum Hinzufügen von Zeilen zur Tabelle nutzen.
 
-Der Code verwendet ein [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection)-Objekt mit dem Konstruktor [new()](https://www.rubydoc.info/gems/pg/PG%2FConnection:initialize), um eine Verbindung mit Azure-Datenbank für PostgreSQL herzustellen. Anschließend wird die [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method)-Methode aufgerufen, um die Befehle DROP, CREATE TABLE und INSERT INTO auszuführen. Der Code führt mit der [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error)-Klasse eine Überprüfung auf Fehler durch. Anschließend wird die [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method)-Methode aufgerufen, um die Verbindung vor dem Beenden zu schließen.
+Der Code verwendet ein [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection)-Objekt mit dem Konstruktor [new()](https://www.rubydoc.info/gems/pg/PG/Connection#initialize-instance_method), um eine Verbindung mit Azure-Datenbank für PostgreSQL herzustellen. Anschließend wird die [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method)-Methode aufgerufen, um die Befehle DROP, CREATE TABLE und INSERT INTO auszuführen. Der Code führt mit der [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error)-Klasse eine Überprüfung auf Fehler durch. Anschließend wird die [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method)-Methode aufgerufen, um die Verbindung vor dem Beenden zu schließen.
 
 Ersetzen Sie die Zeichenfolgen `host`, `database`, `user` und `password` durch Ihre eigenen Werte. 
 
@@ -87,7 +87,7 @@ end
 ## <a name="read-data"></a>Lesen von Daten
 Verwenden Sie den folgenden Code, um die Daten mit einer **SELECT**-SQL-Anweisung zu verbinden und zu lesen. 
 
-Der Code verwendet ein [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection)-Objekt mit dem Konstruktor [new()](https://www.rubydoc.info/gems/pg/PG%2FConnection:initialize), um eine Verbindung mit Azure-Datenbank für PostgreSQL herzustellen. Anschließend wird die [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method)-Methode aufgerufen, um den SELECT-Befehl auszuführen, und die Ergebnisse werden in einem Resultset vorgehalten. Die Resultset-Sammlung wird mit der Schleife `resultSet.each do` durchlaufen, wobei sich die aktuellen Zeilenwerte in der Variablen `row` befinden. Der Code führt mit der [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error)-Klasse eine Überprüfung auf Fehler durch. Anschließend wird die [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method)-Methode aufgerufen, um die Verbindung vor dem Beenden zu schließen.
+Der Code verwendet ein [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection)-Objekt mit dem Konstruktor [new()](https://www.rubydoc.info/gems/pg/PG/Connection#initialize-instance_method), um eine Verbindung mit Azure-Datenbank für PostgreSQL herzustellen. Anschließend wird die [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method)-Methode aufgerufen, um den SELECT-Befehl auszuführen, und die Ergebnisse werden in einem Resultset vorgehalten. Die Resultset-Sammlung wird mit der Schleife `resultSet.each do` durchlaufen, wobei sich die aktuellen Zeilenwerte in der Variablen `row` befinden. Der Code führt mit der [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error)-Klasse eine Überprüfung auf Fehler durch. Anschließend wird die [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method)-Methode aufgerufen, um die Verbindung vor dem Beenden zu schließen.
 
 Ersetzen Sie die Zeichenfolgen `host`, `database`, `user` und `password` durch Ihre eigenen Werte. 
 
@@ -121,7 +121,7 @@ end
 ## <a name="update-data"></a>Aktualisieren von Daten
 Verwenden Sie den folgenden Code, um eine Verbindung herzustellen und die Daten per **UPDATE**-SQL-Anweisung zu aktualisieren.
 
-Der Code verwendet ein [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection)-Objekt mit dem Konstruktor [new()](https://www.rubydoc.info/gems/pg/PG%2FConnection:initialize), um eine Verbindung mit Azure-Datenbank für PostgreSQL herzustellen. Anschließend wird die [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method)-Methode aufgerufen, um den UPDATE-Befehl auszuführen. Der Code führt mit der [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error)-Klasse eine Überprüfung auf Fehler durch. Anschließend wird die [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method)-Methode aufgerufen, um die Verbindung vor dem Beenden zu schließen.
+Der Code verwendet ein [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection)-Objekt mit dem Konstruktor [new()](https://www.rubydoc.info/gems/pg/PG/Connection#initialize-instance_method), um eine Verbindung mit Azure-Datenbank für PostgreSQL herzustellen. Anschließend wird die [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method)-Methode aufgerufen, um den UPDATE-Befehl auszuführen. Der Code führt mit der [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error)-Klasse eine Überprüfung auf Fehler durch. Anschließend wird die [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method)-Methode aufgerufen, um die Verbindung vor dem Beenden zu schließen.
 
 Ersetzen Sie die Zeichenfolgen `host`, `database`, `user` und `password` durch Ihre eigenen Werte. 
 
@@ -155,7 +155,7 @@ end
 ## <a name="delete-data"></a>Löschen von Daten
 Verwenden Sie den folgenden Code, um die Daten mit einer **DELETE**-SQL-Anweisung zu verbinden und zu lesen. 
 
-Der Code verwendet ein [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection)-Objekt mit dem Konstruktor [new()](https://www.rubydoc.info/gems/pg/PG%2FConnection:initialize), um eine Verbindung mit Azure-Datenbank für PostgreSQL herzustellen. Anschließend wird die [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method)-Methode aufgerufen, um den UPDATE-Befehl auszuführen. Der Code führt mit der [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error)-Klasse eine Überprüfung auf Fehler durch. Anschließend wird die [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method)-Methode aufgerufen, um die Verbindung vor dem Beenden zu schließen.
+Der Code verwendet ein [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection)-Objekt mit dem Konstruktor [new()](https://www.rubydoc.info/gems/pg/PG/Connection#initialize-instance_method), um eine Verbindung mit Azure-Datenbank für PostgreSQL herzustellen. Anschließend wird die [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method)-Methode aufgerufen, um den UPDATE-Befehl auszuführen. Der Code führt mit der [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error)-Klasse eine Überprüfung auf Fehler durch. Anschließend wird die [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method)-Methode aufgerufen, um die Verbindung vor dem Beenden zu schließen.
 
 Ersetzen Sie die Zeichenfolgen `host`, `database`, `user` und `password` durch Ihre eigenen Werte. 
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 08/27/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 4929836b7fb617884008fafea50a10e0212fbd58
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 7c144ddac255087ae48ff2f1c5406ad66d670562
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961957"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601349"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Schnellstart: Weiterleiten von Webdatenverkehr per Azure Application Gateway – Azure-Portal
 
@@ -25,8 +25,6 @@ Das Anwendungsgateway leitet den Webdatenverkehr Ihrer Anwendungen an bestimmte 
 Diese Schnellstartanleitung steht auch für [Azure PowerShell](quick-create-powershell.md) und für die [Azure-Befehlszeilenschnittstelle](quick-create-cli.md) zur Verfügung.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -171,7 +169,7 @@ In diesem Beispiel installieren Sie IIS auf den virtuellen Computern nur, um zu 
 
 2. Führen Sie den folgenden Befehl aus, um IIS auf dem virtuellen Computer zu installieren. Ändern Sie bei Bedarf den Parameter *Location*: 
 
-    ```azurepowershell-interactive
+    ```azurepowershell
     Set-AzVMExtension `
       -ResourceGroupName myResourceGroupAG `
       -ExtensionName IIS `
@@ -196,7 +194,6 @@ In diesem Beispiel installieren Sie IIS auf den virtuellen Computern nur, um zu 
 4. Wählen Sie unter **Back-End-Ziele** > **Zieltyp** in der Dropdownliste die Option **Virtueller Computer** aus.
 
 5. Wählen Sie unter **Ziel** die virtuellen Computer **myVM** und **myVM2** und in den Dropdownlisten die zugehörigen Netzwerkschnittstellen aus.
-
 
    > [!div class="mx-imgBorder"]
    > ![Hinzufügen der Back-End-Server](./media/application-gateway-create-gateway-portal/application-gateway-backend.png)

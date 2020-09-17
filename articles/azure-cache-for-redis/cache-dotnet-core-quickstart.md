@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.custom: devx-track-csharp, mvc
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: bc045eba331c861801dceef7f00db42e851f8bb2
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 1cb35ce995a27030612499cc3147943112e1c50e
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211377"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662371"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>Schnellstart: Verwenden von Azure Cache for Redis mit einer .NET Core-App
 
@@ -23,7 +23,6 @@ In dieser Schnellstartanleitung integrieren Sie Azure Cache für Redis in eine .
 
 - Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
 - [.NET Core SDK](https://dotnet.microsoft.com/download)
-- [.NET Framework 4 oder höher](https://www.microsoft.com/net/download/dotnet-framework-runtime), das vom „StackEdchange.Redis“-Client benötigt wird.
 
 ## <a name="create-a-cache"></a>Erstellen eines Caches
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
@@ -34,7 +33,7 @@ Notieren Sie sich den **HOSTNAMEN** und den **primären** Zugriffsschlüssel. Si
 
 
 
-## <a name="create-a-console-app"></a>Erstellen einer Konsolen-App
+## <a name="create-a-console-app"></a>Erstellen einer Konsolenanwendung
 
 Öffnen Sie ein neues Befehlsfenster, und führen Sie den folgenden Befehl aus, um die .NET Core-Konsolen-App zu erstellen:
 
@@ -125,7 +124,7 @@ Fügen Sie *Program.cs* die folgende `using`-Anweisung hinzu:
 using StackExchange.Redis;
 ```
 
-Die Verbindung mit Azure Cache for Redis wird durch die Klasse `ConnectionMultiplexer` verwaltet. Diese Klasse sollte für Ihre gesamte Clientanwendung genutzt und wiederverwendet werden. Erstellen Sie nicht für jeden Vorgang eine neue Verbindung. 
+Die Verbindung mit Azure Cache for Redis wird durch die Klasse `ConnectionMultiplexer` verwaltet. Diese Klasse muss in Ihrer gesamten Clientanwendung freigegeben und wiederverwendet werden. Erstellen Sie nicht für jeden Vorgang eine neue Verbindung. 
 
 Fügen Sie in der Datei *Program.cs* der `Program`-Klasse Ihrer Konsolenanwendung die folgenden Member hinzu:
 
@@ -315,7 +314,7 @@ In dieser Schnellstartanleitung wurde beschrieben, wie Sie Azure Cache for Redis
 > [!div class="nextstepaction"]
 > [Erstellen einer ASP.NET-Web-App, die eine Azure Cache for Redis-Instanz verwendet](./cache-web-app-howto.md)
 
-Möchten Sie Ihre Cloudausgaben optimieren und dabei sparen?
+Möchten Sie Ihre Cloudausgaben optimieren und Geld sparen?
 
 > [!div class="nextstepaction"]
 > [Beginnen mit der Kostenanalyse mit Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

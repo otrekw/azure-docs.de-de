@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Dieser Artikel enthält eine Übersicht über Kubernetes mit Azure Arc-Unterstützung.
 keywords: Kubernetes, Arc, Azure, Container
 ms.custom: references_regions
-ms.openlocfilehash: 885c96b83edb83cfb62fc117d9b4406792827056
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: fb8a7b7c2e1e5b3de7d1ccdb4054e44825231458
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723723"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604800"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>Was ist Kubernetes mit Azure Arc-Unterstützung (Vorschauversion)?
 
@@ -51,12 +51,15 @@ Kubernetes mit Azure Arc-Unterstützung unterstützt diese Szenarien:
 
 * Anwenden von Richtlinien mit Azure Policy für Kubernetes 
 
+[!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
+
 ## <a name="supported-regions"></a>Unterstützte Regionen 
 
 Kubernetes mit Azure Arc-Unterstützung wird derzeit in diesen Regionen unterstützt: 
 
 * East US 
 * Europa, Westen
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

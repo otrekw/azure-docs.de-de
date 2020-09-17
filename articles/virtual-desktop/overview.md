@@ -3,15 +3,15 @@ title: Was ist Windows Virtual Desktop? - Azure
 description: Eine Übersicht über Windows Virtual Desktop.
 author: Heidilohr
 ms.topic: overview
-ms.date: 08/20/2020
+ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: cc5ad91c779a3445712db962fb97bab309eda973
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 08455d3033040d14c85e4c4170ae34a6d05cfac1
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661111"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527172"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Was ist Windows Virtual Desktop?
 
@@ -110,12 +110,10 @@ Die folgenden Remotedesktopclients unterstützen Windows Virtual Desktop:
 * [macOS](connect-macos.md)
 * [iOS](connect-ios.md)
 * [Android](connect-android.md)
+* Microsoft Store-Client
 
 > [!IMPORTANT]
 > Windows Virtual Desktop unterstützt nicht den RemoteApp-Client und den Client für Desktopverbindungen (RADC). Der Client für Remotedesktopverbindung (MSTSC) wird ebenfalls nicht unterstützt.
-
-> [!IMPORTANT]
-> Windows Virtual Desktop verfügt derzeit nicht über Unterstützung für den Remotedesktopclient aus dem Windows Store. Die Unterstützung für diesen Client wird in einer zukünftigen Version enthalten sein.
 
 Weitere Informationen zu URLs, die Sie für die Verwendung der Clients entsperren müssen, finden Sie in der [Liste sicherer URLs](safe-url-list.md).
 

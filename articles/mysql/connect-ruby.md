@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 79f3efad9ba5f6c0378f8b093a2f375275767659
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 15bbce208475a85e7be6efbadebcb4e43c2d8d17
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185841"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029102"
 ---
 # <a name="quickstart-use-ruby-to-connect-and-query-data-in-azure-database-for-mysql"></a>Schnellstart: Verwenden von Ruby zum Herstellen einer Verbindung und zum Abfragen von Daten in Azure Database for MySQL
 
@@ -72,7 +72,7 @@ Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung m
 ## <a name="connect-and-create-a-table"></a>Herstellen einer Verbindung und Erstellen einer Tabelle
 Verwenden Sie den folgenden Code, um eine Verbindung herzustellen und eine Tabelle zu erstellen, indem Sie eine SQL-Anweisung des Typs **CREATE TABLE** gefolgt von SQL-Anweisungen des Typs **INSERT INTO** zum Hinzufügen von Zeilen zur Tabelle nutzen.
 
-Im Code wird eine .new()-Methode der [mysql2::client](https://www.rubydoc.info/gems/mysql2/0.4.8)-Klasse verwendet, um eine Verbindung mit der Azure-Datenbank für MySQL herzustellen. Anschließend wird mehrfach die [query()](https://www.rubydoc.info/gems/mysql2/0.4.8#Usage)-Methode aufgerufen, um die Befehle DROP, CREATE TABLE und INSERT INTO auszuführen. Anschließend wird die [close()](https://www.rubydoc.info/gems/mysql2/0.4.8/Mysql2/Client#close-instance_method)-Methode aufgerufen, um die Verbindung vor dem Beenden zu schließen.
+Im Code wird eine .new()-Methode der [mysql2::client](https://www.rubydoc.info/gems/mysql2)-Klasse verwendet, um eine Verbindung mit der Azure-Datenbank für MySQL herzustellen. Anschließend wird mehrfach die [query()](https://www.rubydoc.info/gems/mysql2#Usage)-Methode aufgerufen, um die Befehle DROP, CREATE TABLE und INSERT INTO auszuführen. Anschließend wird die [close()](https://www.rubydoc.info/gems/mysql2/Mysql2/Client#close-instance_method)-Methode aufgerufen, um die Verbindung vor dem Beenden zu schließen.
 
 Ersetzen Sie die Zeichenfolgen `host`, `database`, `username` und `password` durch Ihre eigenen Werte. 
 ```ruby
@@ -117,7 +117,7 @@ end
 ## <a name="read-data"></a>Lesen von Daten
 Verwenden Sie den folgenden Code, um die Daten mit einer SQL-Anweisung des Typs **SELECT** zu verbinden und zu lesen. 
 
-Im Code wird eine „[mysql2::client](https://www.rubydoc.info/gems/mysql2/0.4.8) class.new()“-Methode verwendet, um eine Verbindung mit Azure Database for MySQL herzustellen. Anschließend wird die [query()](https://www.rubydoc.info/gems/mysql2/0.4.8#Usage)-Methode aufgerufen, um die SELECT-Befehle auszuführen. Anschließend wird die [close()](https://www.rubydoc.info/gems/mysql2/0.4.8/Mysql2/Client#close-instance_method)-Methode aufgerufen, um die Verbindung vor dem Beenden zu schließen.
+Im Code wird eine „[mysql2::client](https://www.rubydoc.info/gems/mysql2) class.new()“-Methode verwendet, um eine Verbindung mit Azure Database for MySQL herzustellen. Anschließend wird die [query()](https://www.rubydoc.info/gems/mysql2#Usage)-Methode aufgerufen, um die SELECT-Befehle auszuführen. Anschließend wird die [close()](https://www.rubydoc.info/gems/mysql2/Mysql2/Client#close-instance_method)-Methode aufgerufen, um die Verbindung vor dem Beenden zu schließen.
 
 Ersetzen Sie die Zeichenfolgen `host`, `database`, `username` und `password` durch Ihre eigenen Werte. 
 
@@ -156,7 +156,7 @@ end
 ## <a name="update-data"></a>Aktualisieren von Daten
 Verwenden Sie den folgenden Code, um die Daten mit einer SQL-Anweisung des Typs **UPDATE** zu verbinden und zu aktualisieren.
 
-Im Code wird eine .new()-Methode der [mysql2::client](https://www.rubydoc.info/gems/mysql2/0.4.8)-Klasse verwendet, um eine Verbindung mit der Azure-Datenbank für MySQL herzustellen. Anschließend wird die [query()](https://www.rubydoc.info/gems/mysql2/0.4.8#Usage)-Methode aufgerufen, um die UPDATE-Befehle auszuführen. Anschließend wird die [close()](https://www.rubydoc.info/gems/mysql2/0.4.8/Mysql2/Client#close-instance_method)-Methode aufgerufen, um die Verbindung vor dem Beenden zu schließen.
+Im Code wird eine .new()-Methode der [mysql2::client](https://www.rubydoc.info/gems/mysql2)-Klasse verwendet, um eine Verbindung mit der Azure-Datenbank für MySQL herzustellen. Anschließend wird die [query()](https://www.rubydoc.info/gems/mysql2#Usage)-Methode aufgerufen, um die UPDATE-Befehle auszuführen. Anschließend wird die [close()](https://www.rubydoc.info/gems/mysql2/Mysql2/Client#close-instance_method)-Methode aufgerufen, um die Verbindung vor dem Beenden zu schließen.
 
 Ersetzen Sie die Zeichenfolgen `host`, `database`, `username` und `password` durch Ihre eigenen Werte. 
 
@@ -193,7 +193,7 @@ end
 ## <a name="delete-data"></a>Löschen von Daten
 Verwenden Sie den folgenden Code, um die Daten mit einer SQL-Anweisung des Typs **DELETE** zu verbinden und zu lesen. 
 
-Im Code wird eine .new()-Methode der [mysql2::client](https://www.rubydoc.info/gems/mysql2/0.4.8)-Klasse verwendet, um eine Verbindung mit der Azure-Datenbank für MySQL herzustellen. Anschließend wird die [query()](https://www.rubydoc.info/gems/mysql2/0.4.8#Usage)-Methode aufgerufen, um die DELETE-Befehle auszuführen. Anschließend wird die [close()](https://www.rubydoc.info/gems/mysql2/0.4.8/Mysql2/Client#close-instance_method)-Methode aufgerufen, um die Verbindung vor dem Beenden zu schließen.
+Im Code wird eine .new()-Methode der [mysql2::client](https://www.rubydoc.info/gems/mysql2)-Klasse verwendet, um eine Verbindung mit der Azure-Datenbank für MySQL herzustellen. Anschließend wird die [query()](https://www.rubydoc.info/gems/mysql2#Usage)-Methode aufgerufen, um die DELETE-Befehle auszuführen. Anschließend wird die [close()](https://www.rubydoc.info/gems/mysql2/Mysql2/Client#close-instance_method)-Methode aufgerufen, um die Verbindung vor dem Beenden zu schließen.
 
 Ersetzen Sie die Zeichenfolgen `host`, `database`, `username` und `password` durch Ihre eigenen Werte. 
 

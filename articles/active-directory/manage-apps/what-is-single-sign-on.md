@@ -12,12 +12,12 @@ ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
 ms.custom: contperfq1
-ms.openlocfilehash: 6c7ac840dfba665c4691fc4d389d66f44b077bf7
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 1eaef57f46bf6373fdd2a73575bb028904ef108b
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89069467"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561649"
 ---
 # <a name="what-is-single-sign-on-sso"></a>Worum handelt es sich beim einmaligen Anmelden (Single Sign-On, SSO)?
 
@@ -53,7 +53,7 @@ Die Art der Implementierung des einmaligen Anmeldens richtet sich danach, wo die
 > [!TIP]
 > In der Cloud gehostete Apps werden auch als SaaS-Apps (Software-as-a-Service) bezeichnet. 
 
-Das einmalige Anmelden für in der Cloud gehostete Apps ist einfach. Sie informieren den Identitätsanbieter darüber, dass diese Vorgehensweise für die App genutzt wird. Anschließend konfigurieren Sie die App so, dass der Identitätsanbieter als vertrauenswürdig angesehen wird. Informationen dazu, wie Sie Azure AD als Identitätsanbieter für eine App verwenden, finden Sie unter [Schnellstartserie zur Anwendungsverwaltung](view-applications-portal.md).
+Das einmalige Anmelden für in der Cloud gehostete Apps ist einfach. Sie informieren den Identitätsanbieter darüber, dass diese Vorgehensweise für die App genutzt wird. Anschließend konfigurieren Sie die App so, dass der Identitätsanbieter als vertrauenswürdig angesehen wird. Informationen dazu, wie Sie Azure AD als Identitätsanbieter für eine App verwenden, finden Sie unter [Schnellstartserie zur Anwendungsverwaltung](add-application-portal.md).
 
 > [!TIP]
 > Die Ausdrücke „Cloud“ und „Internet“ werden häufig synonym verwendet. Der Grund hierfür sind die Netzwerkdiagramme. Es ist üblich, große Computernetzwerke in einem Diagramm in Form einer Wolke darzustellen, weil nicht alle Komponenten eingezeichnet werden können. Das Internet ist das bekannteste Netzwerk, und daher werden die Ausdrücke häufig als Synonyme gebraucht. Es können aber alle Computernetzwerke als Cloud bezeichnet werden.

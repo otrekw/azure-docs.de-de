@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 09/03/2020
 ms.author: cshoe
-ms.openlocfilehash: 7818754ca335f503c5afdc47d410cfe1d1029ab4
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 66335548381a6f7e3ebf93c97eb212255639644c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89434777"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604086"
 ---
 # <a name="quickstart-building-your-first-static-web-app-in-the-azure-portal"></a>Schnellstart: Erstellen Ihrer ersten statischen Web-App im Azure-Portal
 
@@ -65,7 +65,7 @@ Geben Sie nach der Anmeldung mit GitHub die Informationen zum Repository ein.
     # <a name="no-framework"></a>[Kein Framework](#tab/vanilla-javascript)
 
     1. Wählen Sie **Benutzerdefiniert** aus der Dropdownliste _Buildvoreinstellungen_ aus.
-    1. Löschen Sie den Standardwert aus dem Feld _App-Speicherort_.
+    1. Belassen Sie den Standardwert im Feld _App-Speicherort_.
     1. Löschen Sie den Standardwert aus dem Feld _App-Speicherort_.
     1. Lassen Sie das Feld _Speicherort für App-Artefakte_ leer.
 

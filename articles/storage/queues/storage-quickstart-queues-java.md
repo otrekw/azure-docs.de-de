@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Sie die Azure Queue Storage-Bibliothek v12 für J
 author: mhopkins-msft
 ms.custom: devx-track-java
 ms.author: mhopkins
-ms.date: 12/4/2019
+ms.date: 09/10/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: 753c245631d2fbdc8122f955c1db6562a1554031
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9b9f68737ca714c0661ffb008347149235886c68
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319370"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015023"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>Schnellstart: Azure Queue Storage-Clientbibliothek v12 für Java
 
@@ -30,17 +30,17 @@ Mit der Azure Queue Storage-Clientbibliothek v12 für Java können Sie Folgendes
 
 Zusätzliche Ressourcen:
 
-* [API-Referenzdokumentation](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/index.html)
+* [API-Referenzdokumentation](/java/api/overview/azure/storage-queue-readme)
 * [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue)
 * [Maven-Paket](https://mvnrepository.com/artifact/com.azure/azure-storage-queue)
-* [Beispiele](https://docs.microsoft.com/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+* [Beispiele](/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* [Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable), Version 8 oder höher
+* [Java Development Kit (JDK)](/java/azure/jdk/), Version 8 oder höher
 * [Apache Maven](https://maven.apache.org/download.cgi)
 * Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
-* Azure Storage-Konto – [Erstellen eines Speicherkontos](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Azure Storage-Konto – [Erstellen eines Speicherkontos](/azure/storage/common/storage-quickstart-create-account)
 
 ## <a name="setting-up"></a>Einrichten
 
@@ -161,10 +161,10 @@ Im folgenden Diagramm ist die Beziehung zwischen diesen Ressourcen dargestellt.
 
 Verwenden Sie die folgenden Java-Klassen zur Interaktion mit folgenden Ressourcen:
 
-* [QueueClientBuilder](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClientBuilder.html): Die `QueueClientBuilder`-Klasse konfiguriert und instanziiert ein `QueueClient`-Objekt.
-* [QueueServiceClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueServiceClient.html): Mit dem `QueueServiceClient` können Sie alle Warteschlangen in Ihrem Speicherkonto verwalten.
-* [QueueClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html): Mit der `QueueClient`-Klasse können Sie eine einzelne Warteschlange und die darin enthaltenen Nachrichten verwalten und bearbeiten.
-* [QueueMessageItem](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/models/QueueMessageItem.html): Die `QueueMessageItem`-Klasse repräsentiert die einzelnen Objekte, die beim Aufrufen von [receiveMessages](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#receiveMessages-java.lang.Integer-) in einer Warteschlange zurückgegeben werden.
+* [QueueClientBuilder](/java/api/com.azure.storage.queue.queueclientbuilder): Die `QueueClientBuilder`-Klasse konfiguriert und instanziiert ein `QueueClient`-Objekt.
+* [QueueServiceClient](/java/api/com.azure.storage.queue.queueserviceclient): Mit dem `QueueServiceClient` können Sie alle Warteschlangen in Ihrem Speicherkonto verwalten.
+* [QueueClient](/java/api/com.azure.storage.queue.queueclient): Mit der `QueueClient`-Klasse können Sie eine einzelne Warteschlange und die darin enthaltenen Nachrichten verwalten und bearbeiten.
+* [QueueMessageItem](/java/api/com.azure.storage.queue.models.queuemessageitem): Die `QueueMessageItem`-Klasse repräsentiert die einzelnen Objekte, die beim Aufrufen von [receiveMessages](/java/api/com.azure.storage.queue.queueclient.receivemessages) in einer Warteschlange zurückgegeben werden.
 
 ## <a name="code-examples"></a>Codebeispiele
 
@@ -204,7 +204,7 @@ Legen Sie einen Namen für die neue Warteschlange fest. Der folgende Code hängt
 > Warteschlangennamen dürfen nur Kleinbuchstaben, Ziffern und Bindestriche enthalten und müssen mit einem Buchstaben oder einer Ziffer beginnen. Vor und nach jedem Bindestrich muss ein Zeichen stehen, das kein Bindestrich ist. Der Name muss außerdem zwischen 3 und 63 Zeichen lang sein. Weitere Informationen zum Benennen von Warteschlangen finden Sie unter [Benennen von Warteschlangen und Metadaten](/rest/api/storageservices/naming-queues-and-metadata).
 
 
-Erstellen Sie eine Instanz der [QueueClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html)-Klasse. Rufen Sie dann die [create](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#create--)-Methode auf, um die Warteschlange in Ihrem Speicherkonto zu erstellen.
+Erstellen Sie eine Instanz der [QueueClient](/java/api/com.azure.storage.queue.queueclient)-Klasse. Rufen Sie dann die [create](/java/api/com.azure.storage.queue.queueclient.create)-Methode auf, um die Warteschlange in Ihrem Speicherkonto zu erstellen.
 
 Fügen Sie diesen Code am Ende der `main`-Methode hinzu:
 
@@ -227,7 +227,7 @@ queueClient.create();
 
 ### <a name="add-messages-to-a-queue"></a>Hinzufügen von Nachrichten zu einer Warteschlange
 
-Der folgende Codeausschnitt fügt der Warteschlange durch Aufrufen der [sendMessage](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#sendMessage-java.lang.String-)-Methode Nachrichten hinzu. Darüber hinaus wird ein [SendMessageResult](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/models/SendMessageResult.html) gespeichert, das von einem `sendMessage`-Aufruf zurückgegeben wird. Das Ergebnis wird später im Programm zum Aktualisieren der Nachricht verwendet.
+Der folgende Codeausschnitt fügt der Warteschlange durch Aufrufen der [sendMessage](/java/api/com.azure.storage.queue.queueclient.sendmessage)-Methode Nachrichten hinzu. Darüber hinaus wird ein [SendMessageResult](/java/api/com.azure.storage.queue.models.sendmessageresult) gespeichert, das von einem `sendMessage`-Aufruf zurückgegeben wird. Das Ergebnis wird später im Programm zum Aktualisieren der Nachricht verwendet.
 
 Fügen Sie diesen Code am Ende der `main`-Methode hinzu:
 
@@ -244,7 +244,7 @@ SendMessageResult result = queueClient.sendMessage("Third message");
 
 ### <a name="peek-at-messages-in-a-queue"></a>Einsehen von Nachrichten in einer Warteschlange
 
-Durch Aufrufen der [peekMessages](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#peekMessages-java.lang.Integer-java.time.Duration-com.azure.core.util.Context-)-Methode können Sie die Nachrichten in der Warteschlange einsehen. Die `peelkMessages`-Methode ruft mindestens eine Nachricht vom Anfang der Warteschlange ab, ändert aber nicht die Sichtbarkeit der Nachricht.
+Durch Aufrufen der [peekMessages](/java/api/com.azure.storage.queue.queueclient.peekmessages)-Methode können Sie die Nachrichten in der Warteschlange einsehen. Die `peelkMessages`-Methode ruft mindestens eine Nachricht vom Anfang der Warteschlange ab, ändert aber nicht die Sichtbarkeit der Nachricht.
 
 Fügen Sie diesen Code am Ende der `main`-Methode hinzu:
 
@@ -258,7 +258,7 @@ queueClient.peekMessages(10, null, null).forEach(
 
 ### <a name="update-a-message-in-a-queue"></a>Aktualisieren einer Nachricht in einer Warteschlange
 
-Aktualisieren Sie den Inhalt einer Nachricht, indem Sie die [updateMessage](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#updateMessage-java.lang.String-java.lang.String-java.lang.String-java.time.Duration-)-Methode aufrufen. Die `updateMessage`-Methode kann das Sichtbarkeitstimeout und den Inhalt einer Nachricht ändern. Beim Nachrichteninhalt muss es sich um eine UTF-8-codierte Zeichenfolge handeln, die bis zu 64 KB groß sein darf. Übergeben Sie die Nachrichten-ID und die pop-Bestätigung zusammen mit dem neuen Inhalt für die Nachricht mithilfe des weiter oben im Code gespeicherten `SendMessageResult`-Objekts. Die Nachrichten-ID und die pop-Bestätigung identifizieren die Nachricht, die aktualisiert werden soll.
+Aktualisieren Sie den Inhalt einer Nachricht, indem Sie die [updateMessage](/java/api/com.azure.storage.queue.queueclient.updatemessage)-Methode aufrufen. Die `updateMessage`-Methode kann das Sichtbarkeitstimeout und den Inhalt einer Nachricht ändern. Beim Nachrichteninhalt muss es sich um eine UTF-8-codierte Zeichenfolge handeln, die bis zu 64 KB groß sein darf. Übergeben Sie die Nachrichten-ID und die pop-Bestätigung zusammen mit dem neuen Inhalt für die Nachricht mithilfe des weiter oben im Code gespeicherten `SendMessageResult`-Objekts. Die Nachrichten-ID und die pop-Bestätigung identifizieren die Nachricht, die aktualisiert werden soll.
 
 ```java
 System.out.println("\nUpdating the third message in the queue...");
@@ -273,7 +273,7 @@ queueClient.updateMessage(result.getMessageId(),
 
 ### <a name="receive-and-delete-messages-from-a-queue"></a>Empfangen und Löschen von Nachrichten aus einer Warteschlange
 
-Laden Sie zuvor hinzugefügte Nachrichten durch Aufrufen der [receiveMessages](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#receiveMessages-java.lang.Integer-java.time.Duration-java.time.Duration-com.azure.core.util.Context-)-Methode herunter. Der Beispielcode löscht auch Nachrichten aus der Warteschlange, nachdem sie empfangen und verarbeitet wurden. In diesem Fall besteht die Verarbeitung nur darin, dass die Nachricht in der Konsole angezeigt wird.
+Laden Sie zuvor hinzugefügte Nachrichten durch Aufrufen der [receiveMessages](/java/api/com.azure.storage.queue.queueclient.receivemessages)-Methode herunter. Der Beispielcode löscht auch Nachrichten aus der Warteschlange, nachdem sie empfangen und verarbeitet wurden. In diesem Fall besteht die Verarbeitung nur darin, dass die Nachricht in der Konsole angezeigt wird.
 
 Die App wird angehalten und wartet auf Benutzereingaben, indem `System.console().readLine();` aufgerufen wird, bevor die Nachrichten empfangen und gelöscht werden. Überprüfen Sie im [Azure-Portal](https://portal.azure.com), ob die Ressourcen ordnungsgemäß erstellt wurden, bevor sie gelöscht werden. Alle Nachrichten, die nicht explizit gelöscht werden, werden schlussendlich wieder in der Warteschlange angezeigt und ggf. erneut verarbeitet.
 
@@ -298,7 +298,7 @@ queueClient.receiveMessages(10).forEach(
 
 ### <a name="delete-a-queue"></a>Löschen einer Warteschlange
 
-Der folgende Code bereinigt die von der App erstellten Ressourcen, indem die Warteschlange mithilfe der [delete](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#delete--)-Methode gelöscht wird.
+Der folgende Code bereinigt die von der App erstellten Ressourcen, indem die Warteschlange mithilfe der [delete](/java/api/com.azure.storage.queue.queueclient.delete)-Methode gelöscht wird.
 
 Fügen Sie diesen Code am Ende der `main`-Methode hinzu:
 
@@ -372,7 +372,7 @@ In dieser Schnellstartanleitung haben Sie gelernt, wie Sie mithilfe von Java-Cod
 Tutorials, Beispiele, Schnellstartanleitungen und weiteres Dokumentationsmaterial finden Sie hier:
 
 > [!div class="nextstepaction"]
-> [Azure für Java-Cloudentwickler](https://docs.microsoft.com/azure/developer/java/)
+> [Azure für Java-Cloudentwickler](/azure/developer/java/)
 
 * Weitere Beispiel-Apps für Azure Queue Storage finden Sie bei den [
 Beispielen für die Azure Queue Storage SDK-Clientbibliothek v12 für Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue).
