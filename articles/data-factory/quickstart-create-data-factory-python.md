@@ -1,6 +1,6 @@
 ---
 title: 'Schnellstart: Erstellen einer Azure Data Factory mithilfe von Python'
-description: Erstellen Sie eine Azure Data Factory-Instanz, um Daten von einem Speicherort in einem Azure Blob-Speicher an einen anderen Speicherort zu kopieren.
+description: Mithilfe einer Data Factory-Instanz können Sie Daten von einem Speicherort in einem Azure Blob-Speicher an einen anderen Speicherort kopieren.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -13,12 +13,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 7fd82e83c97c933173f168b7d79d5b6d6a3243b9
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: e511b8b5505f1fa8713d81d0ce959df32ef28503
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873295"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439111"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Schnellstart: Erstellen einer Data Factory und Pipeline mithilfe von Python
 
@@ -32,7 +32,7 @@ In diesem Schnellstart erstellen Sie eine Data Factory mit Python. Die Pipeline 
 
 Azure Data Factory ist ein cloudbasierter Datenintegrationsdienst, mit dem Sie datengesteuerte Workflows erstellen können, um die Datenverschiebung und Datentransformation zu orchestrieren und zu automatisieren. Mit Azure Data Factory können Sie datengesteuerte Workflows – sogenannte Pipelines – erstellen und planen.
 
-Pipelines können Daten aus unterschiedlichen Datenspeichern erfassen. Pipelines verarbeiten oder transformieren Daten mithilfe von Compute Services wie Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics und Azure Machine Learning. Pipelines veröffentlichen Ausgabedaten für Datenspeicher wie Azure SQL Data Warehouse für BI-Anwendungen (Business Intelligence).
+Pipelines können Daten aus unterschiedlichen Datenspeichern erfassen. Pipelines verarbeiten oder transformieren Daten mithilfe von Compute Services wie Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics und Azure Machine Learning. Pipelines veröffentlichen Ausgabedaten für Datenspeicher wie Azure Synapse Analytics (vormals SQL Data Warehouse) für BI-Anwendungen (Business Intelligence).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

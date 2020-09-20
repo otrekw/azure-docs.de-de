@@ -1072,6 +1072,8 @@
               href: troubleshoot-not-found.md
             - name: Problembehandlung bei einem Fehler vom Typ „Nicht autorisiert“
               href: troubleshoot-unauthorized.md
+            - name: SDK-Verfügbarkeit in Umgebungen mit mehreren Regionen
+              href: troubleshoot-sdk-availability.md
         - name: .NET
           items:
             - name: 'Allgemeine Problembehandlung: .NET SDK'

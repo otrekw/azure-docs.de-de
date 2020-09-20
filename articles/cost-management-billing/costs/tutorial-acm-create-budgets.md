@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: fab6422300dd3db7dd0d02055721bd57354668bf
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 32aad7bc350c2ee8ca55d340623c3c3e44820d43
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322278"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527138"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Tutorial: Erstellen und Verwalten von Azure-Budgets
 
@@ -106,7 +106,7 @@ Nachdem Sie den Budgetbetrag konfiguriert haben, klicken Sie auf **Weiter**, um 
 
 Wenn Sie E-Mails erhalten möchten, fügen Sie azure-noreply@microsoft.com der Liste mit genehmigten Absendern hinzu, damit E-Mails nicht im Junk-E-Mail-Ordner landen. Weitere Informationen zu Benachrichtigungen finden Sie unter [Verwenden von Kostenwarnungen](../../cost-management/cost-mgt-alerts-monitor-usage-spending.md).
 
-Im nachstehenden Beispiel wird eine E-Mail-Warnung generiert, wenn 90% des Budgets erreicht sind. Wenn Sie ein Budget mit der API für Budgets erstellen, können Sie Personen auch Rollen zuweisen, damit sie Warnungen erhalten. Das Zuweisen von Rollen zu Personen wird im Azure-Portal nicht unterstützt. Weitere Informationen zur Budgets-API von Azure finden Sie unter [API für Budgets](/rest/api/consumption/budgets).
+Im nachstehenden Beispiel wird eine E-Mail-Warnung generiert, wenn 90% des Budgets erreicht sind. Wenn Sie ein Budget mit der API für Budgets erstellen, können Sie Personen auch Rollen zuweisen, damit sie Warnungen erhalten. Das Zuweisen von Rollen zu Personen wird im Azure-Portal nicht unterstützt. Weitere Informationen zur Budgets-API von Azure finden Sie unter [API für Budgets](/rest/api/consumption/budgets). Informationen zum Senden einer E-Mail-Warnung in einer anderen Sprache finden Sie unter [Unterstützte Gebietsschemas für Budgetwarnungs-E-Mails](manage-automation.md#supported-locales-for-budget-alert-emails).
 
 Bei Warnungslimits wird ein Bereich von 0,01 bis 1000 % des von Ihnen angegebenen Budgetschwellenwerts unterstützt.
 

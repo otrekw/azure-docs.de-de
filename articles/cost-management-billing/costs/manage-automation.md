@@ -3,17 +3,17 @@ title: Verwalten der Azure-Kosten mithilfe einer Automatisierung
 description: In diesem Artikel wird erläutert, wie Sie Azure-Kosten mithilfe einer Automatisierung verwalten können.
 author: bandersmsft
 ms.author: banders
-ms.date: 08/19/2020
+ms.date: 09/14/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
-ms.reviewer: adwise
-ms.openlocfilehash: a5ab84794884cc0c87bd766be7a0fa2fe4c52aa9
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.reviewer: matrive
+ms.openlocfilehash: eb6ed73305d55b4f76464a4567c6b53715b10c3a
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684404"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526645"
 ---
 # <a name="manage-costs-with-automation"></a>Verwalten der Kosten per Automatisierung
 
@@ -161,6 +161,70 @@ Bei einem GET-Aufruf für die API für Budgets werden nicht die aktuellen, in de
 ### <a name="automate-budget-creation"></a>Automatisieren der Budgeterstellung
 
 Die Budgeterstellung kann mithilfe der [API für Budgets](/rest/api/consumption/budgets) automatisiert werden. Alternativ können Sie für die Budgeterstellung auch eine [Budgetvorlage](quick-create-budget-template.md) verwenden. Vorlagen sind eine einfache Methode, um Azure-Bereitstellungen zu standardisieren und gleichzeitig sicherzustellen, dass die Kostenkontrolle ordnungsgemäß konfiguriert ist und erzwungen wird.
+
+#### <a name="supported-locales-for-budget-alert-emails"></a>Unterstützte Gebietsschemas für Budgetwarnungs-E-Mails
+
+Mit Budgets werden Sie benachrichtigt, wenn die Kosten einen festgelegten Schwellenwert überschreiten. Sie können bis zu fünf E-Mail-Empfänger pro Budget festlegen. Empfänger erhalten die E-Mail-Warnungen innerhalb von 24 Stunden nach der Überschreitung des Budgetschwellenwerts. Der Empfänger soll jedoch möglicherweise eine E-Mail in einer anderen Sprache erhalten. Sie können die folgenden Sprachkulturcodes mit der Budgets-API verwenden. Legen Sie den Kulturcode mit dem Parameter `locale` ähnlich wie im folgenden Beispiel fest.
+
+```json
+{
+  "eTag": "\"1d681a8fc67f77a\"",
+  "properties": {
+    "timePeriod": {
+      "startDate": "2020-07-24T00:00:00Z",
+      "endDate": "2022-07-23T00:00:00Z"
+    },
+    "timeGrain": "BillingMonth",
+    "amount": 1,
+    "currentSpend": {
+      "amount": 0,
+      "unit": "USD"
+    },
+    "category": "Cost",
+    "notifications": {
+      "actual_GreaterThan_10_Percent": {
+        "enabled": true,
+        "operator": "GreaterThan",
+        "threshold": 20,
+        "locale": "en-us",
+        "contactEmails": [
+          "user@contoso.com"
+        ],
+        "contactRoles": [],
+        "contactGroups": [],
+        "thresholdType": "Actual"
+      }
+    }
+  }
+}
+
+```
+
+Von einem Kulturcode unterstützte Sprachen:
+
+| Kulturcode| Sprache |
+| --- | --- |
+| de-de | Englisch (USA) |
+| ja-jp | Japanisch (Japan) |
+| zh-cn | Chinesisch (vereinfacht, China) |
+| de-DE | Deutsch (Deutschland) |
+| es-ES | Spanisch (Spanien, international) |
+| fr-FR | Französisch (Frankreich) |
+| it-it | Italienisch (Italien) |
+| ko-KR | Koreanisch (Korea) |
+| pt-br | Portugiesisch (Brasilien) |
+| ru-RU | Russisch (Russische Föderation) |
+| zh-tw | Chinesisch (traditionell, Taiwan) |
+| cs-CZ | Tschechisch (Tschechische Republik) |
+| pl-PL | Polnisch (Polen) |
+| tr-TR | Türkisch (Türkei) |
+| da-DK | Dänisch (Dänemark) |
+| dn-gb | Walisisch (Großbritannien) |
+| hu-hu | Ungarisch (Ungarn) |
+| nb-bo | Norwegisch Bokmål (Norwegen) |
+| nl-NL | Niederländisch (Niederlande) |
+| pt-pt | Portugiesisch (Portugal) |
+| sv-SE | Schwedisch (Schweden) |
 
 #### <a name="common-budgets-api-configurations"></a>Gängige Konfigurationen für die API für Budgets
 

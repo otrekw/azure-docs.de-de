@@ -33,6 +33,12 @@
       href: azure-netapp-files-cost-model.md
     - name: Richtlinien für die Azure NetApp Files-Netzwerkplanung
       href: azure-netapp-files-network-topologies.md
+    - name: Regionsübergreifende Replikation
+      items:
+        - name: Grundlegendes zur regionsübergreifenden Replikation
+          href: cross-region-replication-introduction.md
+        - name: 'Regionsübergreifende Replikation: Anforderungen und Überlegungen'
+          href: cross-region-replication-requirements-considerations.md
     - name: Lösungen
       items:
         - name: Lösungsarchitekturen mit Azure NetApp Files
@@ -81,6 +87,16 @@
       href: azure-netapp-files-resize-capacity-pools-or-volumes.md
     - name: Dynamisches Ändern der Dienstebene eines Volumes
       href: dynamic-change-volume-service-level.md
+    - name: Verwalten der regionsübergreifenden Replikation
+      items:
+        - name: Erstellen eines Replikationspeerings
+          href: cross-region-replication-create-peering.md
+        - name: Anzeigen des Integritätsstatus der Replikationsbeziehung
+          href: cross-region-replication-display-health-status.md
+        - name: Verwalten der Notfallwiederherstellung
+          href: cross-region-replication-manage-disaster-recovery.md
+        - name: Löschen von Replikationen
+          href: cross-region-replication-delete.md
     - name: Entwickeln
       items:
         - name: REST-API
@@ -91,6 +107,10 @@
           href: azure-netapp-files-sdk-cli.md
         - name: Beheben von Fehlern mit Azure NetApp Files-Ressourcenanbietern
           href: azure-netapp-files-troubleshoot-resource-provider-errors.md
+    - name: Problembehandlung
+      items:
+        - name: Problembehandlung für die regionsübergreifende Replikation
+          href: troubleshoot-cross-region-replication.md
 - name: Verweis
   items:
     - name: REST

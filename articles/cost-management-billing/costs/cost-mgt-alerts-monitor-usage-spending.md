@@ -3,17 +3,17 @@ title: Überwachen von Verbrauch und Ausgaben mit Kostenwarnungen
 description: In diesem Artikel wird beschrieben, wie Sie Verbrauch und Ausgaben in Azure Cost Management mithilfe von Kostenwarnungen überwachen können.
 author: bandersmsft
 ms.author: banders
-ms.date: 07/24/2020
+ms.date: 09/03/2020
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: aeeb630cf15aedd62c085e2070e08fd223656094
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 72e9fd0d5a178897cf84b2babe4c02f7ef920841
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683435"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531337"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>Verwenden von Kostenwarnungen zum Überwachen von Verbrauch und Ausgaben
 
@@ -25,17 +25,19 @@ Mit Budgetwarnungen werden Sie benachrichtigt, wenn Ausgaben basierend auf Verbr
 
 Im Azure-Portal werden Budgets nach Kosten definiert. Bei Verwendung der Azure Consumption-API werden Budgets nach Kosten oder nach Verbrauch definiert. Budgetwarnungen unterstützen kostenbasierte sowie nutzungsbasierte Budgets. Budgetwarnungen werden immer automatisch generiert, wenn die Warnungsbedingungen für das Budget erfüllt sind. Sie können alle Kostenwarnungen im Azure-Portal anzeigen. Immer wenn eine Warnung generiert wird, wird sie in den Kostenwarnungen angezeigt. Außerdem wird eine Warnung per E-Mail an alle Personen in der Liste der Warnungsempfänger für das Budget gesendet.
 
+Sie können die Budget-API verwenden, um E-Mail-Warnungen in einer anderen Sprache zu senden. Weitere Informationen finden Sie unter [Unterstützte Gebietsschemas für Budgetwarnungs-E-Mails](manage-automation.md#supported-locales-for-budget-alert-emails).
+
 ## <a name="credit-alerts"></a>Guthabenwarnungen
 
-Mit Guthabenwarnungen werden Sie benachrichtigt, wenn die Zahlungsverpflichtungen des Azure-Guthabens genutzt werden. Zahlungsverpflichtungen betreffen Organisationen mit Enterprise Agreements. Guthabenwarnungen werden bei 90 % und bei 100 % Ihres Azure-Guthabens generiert. Immer wenn eine Warnung generiert wird, wird sie in den Kostenwarnungen und in den an die Kontobesitzer gesendeten E-Mails aufgeführt.
+Sie erhalten Warnungen, wenn Ihr Azure-Guthaben aufgebraucht ist. Das betrifft nur Organisationen mit Enterprise Agreement. Guthabenwarnungen werden automatisch generiert, wenn 90 % oder 100 % Ihres Guthabens aufgebraucht sind. Wenn eine Warnung generiert wird, wird das bei den Kostenwarnungen und in der E-Mail widergespiegelt, die an die Kontobesitzer gesendet wird.
 
-## <a name="department-spending-quota-alerts"></a>Warnungen zum Ausgabenkontingent für Abteilungen
+## <a name="department-spending-quota-alerts"></a>Warnungen bei Ausgabenkontingenten für Abteilungen
 
-Mit Warnungen zum Ausgabenkontingent für Abteilungen werden Sie benachrichtigt, wenn die Ausgaben einer Abteilung einen festgelegten Schwellenwert des Kontingents erreichen. Ausgabenkontingente werden im EA-Portal konfiguriert. Immer wenn ein Schwellenwert erreicht wird, wird eine E-Mail an Abteilungsbesitzer generiert, und die Warnung wird in den Kostenwarnungen angezeigt. Beispielsweise bei 50 % oder 75 % des Kontingents.
+Dank der Warnungen bei Ausgabenkontingenten für Abteilungen werden Sie benachrichtig, sobald die Ausgaben einer Abteilung einen bestimmten Schwellenwert eines Kontingents erreichen. Ausgabenkontingente werden im EA-Portal konfiguriert. Wenn ein Schwellenwert erreicht wird, wird eine E-Mail an die Abteilungseigentümer geschickt und es erfolgt eine Anzeige in den Kostenwarnungen. Beispielsweise bei 50 % oder 75 % des Kontingents.
 
-## <a name="supported-alert-features-by-offer-categories"></a>Unterstützte Warnungsfunktionen nach Angebotskategorien
+## <a name="supported-alert-features-by-offer-categories"></a>Unterstützte Warnungsfeatures nach Angebotskategorien
 
-Die Unterstützung von Warnungstypen hängt von der Art Ihres Azure-Kontos ab (Microsoft-Angebot). Die folgende Tabelle zeigt die Warnungsfunktionen, die von verschiedenen Microsoft-Angeboten unterstützt werden. Die vollständige Liste der Microsoft-Angebote finden Sie unter [Grundlegendes zu Cost Management-Daten](understand-cost-mgt-data.md).
+Welche Warnungstypen unterstützt werden, hängt vom Typ Ihres Azure-Kontos ab (Microsoft-Angebot). Die folgende Tabelle zeigt die Warnungsfunktionen, die von verschiedenen Microsoft-Angeboten unterstützt werden. Die vollständige Liste der Microsoft-Angebote finden Sie unter [Grundlegendes zu Cost Management-Daten](understand-cost-mgt-data.md).
 
 | Warnungstyp | Enterprise Agreement | Microsoft-Kundenvereinbarung | Direkt via Internet/Nutzungsbasierte Zahlung |
 |---|---|---|---|
@@ -47,17 +49,17 @@ Die Unterstützung von Warnungstypen hängt von der Art Ihres Azure-Kontos ab (M
 
 ## <a name="view-cost-alerts"></a>Anzeigen von Kostenwarnungen
 
-Um Kostenwarnungen anzuzeigen, öffnen Sie im Azure-Portal den gewünschten Bereich, und wählen Sie im Menü **Budgets** aus. Verwenden Sie **Bereich**, um in einen anderen Bereich zu wechseln. Wählen Sie im Menü **Kostenwarnungen** aus. Weitere Informationen zu Bereichen finden Sie unter [Verstehen von und Arbeiten mit Bereichen](understand-work-scopes.md).
+Um sich die Kostenwarnungen anzeigen zu lassen, öffnen Sie den gewünschten Bereich im Azure-Portal, und wählen Sie im Menü **Budgets** aus. Verwenden Sie das ovale Steuerelement **Bereich**, um zu einem anderen Bereich zu wechseln. Klicken Sie im Menü auf **Kostenwarnungen**. Weitere Informationen zu Bereichen finden Sie unter [Verstehen von und Arbeiten mit Bereichen](understand-work-scopes.md).
 
 ![Beispielabbildung für in Cost Management angezeigte Warnungen](./media/cost-mgt-alerts-monitor-usage-spending/budget-alerts-fullscreen.png)
 
-Die Gesamtanzahl der aktiven und geschlossenen Warnungen wird auf der Seite der Kostenwarnungen angezeigt.
+Die Gesamtzahl aktiver und geschlossener Warnungen wird auf der Seite „Kostenwarnungen“ angezeigt.
 
-Für alle Warnungen wird der jeweilige Warnungstyp angezeigt. In einer Budgetwarnung wird der Grund für die Generierung und der Name des entsprechenden Budgets angezeigt. Jede Warnung enthält das Datum, an dem sie erstellt wurde, den jeweiligen Status und den Bereich (Abonnement oder Verwaltungsgruppe), auf den sich die Warnung bezieht.
+Bei allen Warnungen ist auch der Warnungstyp angegeben. In einer Budgetwarnung wird der Grund für die Generierung und der Name des entsprechenden Budgets angezeigt. Jede Warnung enthält das Datum, an dem sie erstellt wurde, den jeweiligen Status und den Bereich (Abonnement oder Verwaltungsgruppe), auf den sich die Warnung bezieht.
 
-Mögliche Werte für den Status sind **Aktiv** und **Geschlossen**. Der Status „Aktiv“ gibt an, dass die Warnung weiterhin relevant ist. Der Status „Geschlossen“ gibt an, dass ein Benutzer die Warnung markiert und als nicht mehr relevant festgelegt hat.
+Mögliche Werte für den Status sind **Aktiv** und **Geschlossen**. Der Status „Aktiv“ gibt an, dass die Warnung weiterhin relevant ist. Der Status „Dismissed“ (Verworfen) gibt an, dass eine Person die Warnung als nicht mehr relevant gekennzeichnet hat.
 
-Wählen Sie eine Warnung in der Liste aus, um die zugehörigen Details anzuzeigen. In den Warnungsdetails werden weitere Informationen zu der Warnung angezeigt. Budgetwarnungen enthalten einen Link zu dem Budget. Wenn für eine Budgetwarnung eine Empfehlung verfügbar ist, wird auch ein Link zu der Empfehlung angezeigt. Budgetwarnungen, Guthabenwarnungen und Warnungen zum Ausgabenkontingent für Abteilungen enthalten einen Link zu der Kostenanalyse, in der Sie die Kosten für den Bereich der Warnung überprüfen können. Im folgenden Beispiel werden die Ausgaben für eine Abteilung mit Warnungsdetails angezeigt.
+Sie können eine Warnung aus der Liste auswählen, um sich ihre Details anzeigen zu lassen. Hier finden Sie weitere Informationen zur Warnung. Budgetwarnungen enthalten einen Link zum Budget. Wenn für eine Budgetwarnung eine Empfehlung vorhanden ist, wird auch ein Link zur Empfehlung angezeigt. Budgetwarnungen, Guthabenwarnungen und Warnungen zum Ausgabenkontingent für Abteilungen enthalten einen Link zu der Kostenanalyse, in der Sie die Kosten für den Bereich der Warnung überprüfen können. Im folgenden Beispiel werden die Ausgaben für eine Abteilung mit Warnungsdetails angezeigt.
 
 ![Beispielabbildung für die Ausgaben einer Abteilung mit Warnungsdetails](./media/cost-mgt-alerts-monitor-usage-spending/dept-spending-selected-with-credits.png)
 
