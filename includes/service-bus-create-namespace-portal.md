@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: dc80141d796b66dd7e610342166f7b88df58f530
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2c309340155bc626d4da94d74aee9be51bde510
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75928205"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606881"
 ---
 ## <a name="create-a-namespace-in-the-azure-portal"></a>Erstellen eines Namespace im Azure-Portal
 Um mit der Verwendung von Service Bus-Nachrichtenentitäten in Azure beginnen zu können, müssen Sie zuerst einen Namespace mit einem in Azure eindeutigen Namen erstellen. Ein Namespace ist ein Bereichscontainer für die Adressierung von Service Bus-Ressourcen innerhalb Ihrer Anwendung.
@@ -53,10 +53,10 @@ Beim Erstellen eines neuen Namespace wird automatisch eine SAS-Regel (Shared Acc
 2. Klicken Sie im Namespacefenster auf **Richtlinien für gemeinsamen Zugriff**.
 3. Klicken Sie im Bildschirm **Richtlinien für gemeinsamen Zugriff** auf **RootManageSharedAccessKey**.
    
-    ![connection-info](./media/service-bus-create-namespace-portal/connection-info.png)
+    ![Screenshot: Fenster „Richtlinien für gemeinsamen Zugriff“ mit einer hervorgehobenen Richtlinie](./media/service-bus-create-namespace-portal/connection-info.png)
 4. Klicken Sie im Fenster **Richtlinie: RootManageSharedAccessKey** neben **Primäre Verbindungszeichenfolge** auf die Schaltfläche „Kopieren“, um die Verbindungszeichenfolge zur späteren Verwendung in die Zwischenablage zu kopieren. Fügen Sie diesen Wert in den Editor oder an einem anderen temporären Speicherort ein.
    
-    ![connection-string](./media/service-bus-create-namespace-portal/connection-string.png)
+    ![Screenshot: SAS-Richtlinie namens „RootManageSharedAccessKey“, die Schlüssel und Verbindungszeichenfolgen enthält](./media/service-bus-create-namespace-portal/connection-string.png)
 5. Wiederholen Sie den vorherigen Schritt, um den Wert von **Primärschlüssel** zu kopieren und zur späteren Verwendung an einem temporären Speicherort einzufügen.
 
 <!--Image references-->
