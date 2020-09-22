@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/01/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 34553c1b211b9e2c4b13a083f5c3a6732fb65472
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4aee41bc0188676ac0bd168474f1842199af9620
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502697"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595235"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Weiterleiten von Webdatenverkehr basierend auf der URL mit der Azure-Befehlszeilenschnittstelle
 
@@ -23,13 +23,12 @@ Als IT-Administrator, der Webdatenverkehr verwaltet, möchten Sie Ihren Kunden o
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
-> [!div class="checklist"]
-> * Erstellen einer Ressourcengruppe für die benötigten Netzwerkressourcen
-> * Erstellen der Netzwerkressourcen
-> * Erstellen eines Anwendungsgateways für den Datenverkehr aus Ihrer Anwendung
-> * Angeben von Serverpools und Routingregeln für die verschiedenen Arten von Datenverkehr
-> * Erstellen einer Skalierungsgruppe für jeden Pool, damit der Pool automatisch skaliert werden kann
-> * Testen, ob die verschiedenen Arten von Datenverkehr an den richtigen Pool weitergeleitet werden
+* Erstellen einer Ressourcengruppe für die benötigten Netzwerkressourcen
+* Erstellen der Netzwerkressourcen
+* Erstellen eines Anwendungsgateways für den Datenverkehr aus Ihrer Anwendung
+* Angeben von Serverpools und Routingregeln für die verschiedenen Arten von Datenverkehr
+* Erstellen einer Skalierungsgruppe für jeden Pool, damit der Pool automatisch skaliert werden kann
+* Testen, ob die verschiedenen Arten von Datenverkehr an den richtigen Pool weitergeleitet werden
 
 Dieses Verfahren kann auch mit [Azure PowerShell](tutorial-url-route-powershell.md) oder mit dem [Azure-Portal](create-url-route-portal.md) durchgearbeitet werden.
 

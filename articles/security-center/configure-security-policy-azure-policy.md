@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: c218b5dc8ca3bfa0358a9b6a0d4867696762a8d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7a81b3016f86c6fd7de646ccbdbf533685471ac3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77430940"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894796"
 ---
 # <a name="configure-a-security-policy-in-azure-policy-using-the-rest-api"></a>Konfigurieren einer Sicherheitsrichtlinie in Azure Policy über die REST-API
 
@@ -124,7 +124,7 @@ In diesem Beispiel wird gezeigt, wie Sie eine Zuweisung entfernt wird:
 |Systemupdates |Fehlende Systemupdates in Azure Security Center überwachen |systemUpdatesMonitoringEffect|
 |Speicherverschlüsselung |Fehlende Blobverschlüsselung für Speicherkonten überwachen |storageEncryptionMonitoringEffect|
 |JIT-Netzwerkzugriff |Möglichen Just-In-Time-Netzwerkzugriff in Azure Security Center überwachen |jitNetworkAccessMonitoringEffect |
-|Adaptive Anwendungssteuerungen |Mögliche App-Whitelist in Azure Security Center überwachen |adaptiveApplicationControlsMonitoringEffect|
+|Adaptive Anwendungssteuerungen |Mögliche App-Positivlisten in Azure Security Center überwachen |adaptiveApplicationControlsMonitoringEffect|
 |Netzwerksicherheitsgruppen |Zu wenig einschränkenden Netzwerkzugriff in Azure Security Center überwachen |networkSecurityGroupsMonitoringEffect| 
 |Sicherheitskonfigurationen |Betriebssystem-Sicherheitsrisiken in Azure Security Center überwachen |systemConfigurationsMonitoringEffect| 
 |Endpoint Protection |Fehlenden Endpoint Protection-Schutz in Azure Security Center überwachen |endpointProtectionMonitoringEffect |

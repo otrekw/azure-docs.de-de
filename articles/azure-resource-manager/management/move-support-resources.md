@@ -2,13 +2,13 @@
 title: Unterstützung des Verschiebevorgangs nach Ressourcentyp
 description: Eine Liste von Azure-Ressourcentypen, die in eine neue Ressourcengruppe oder ein neues Abonnement verschoben werden können.
 ms.topic: conceptual
-ms.date: 07/13/2020
-ms.openlocfilehash: 16197210326d73284a4a83edc7876e4faddded86
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/08/2020
+ms.openlocfilehash: 69fcb271ac94df3faf8e9e37c1ef30a6c0681441
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079508"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566125"
 ---
 # <a name="move-operation-support-for-resources"></a>Unterstützung des Verschiebevorgangs für Ressourcen
 
@@ -744,7 +744,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | quotas | Nein | Nein |
 > | resourcetypes | Nein | Nein |
 > | validatesubscriptionmoveavailability | Nein | Nein |
-> | virtualmachines | Ja | Nein |
+> | virtualmachines | Ja | Ja |
 > | virtualmachines/diagnosticsettings | Nein | Nein |
 > | virtualmachines/metricdefinitions | Nein | Nein |
 > | virtualmachines/metrics | Nein | Nein |
@@ -2789,7 +2789,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | locations/jobagentoperationresults | Nein | Nein |
 > | locations/longtermretentionbackupazureasyncoperation | Nein | Nein |
 > | locations/longtermretentionbackupoperationresults | Nein | Nein |
-> | locations/longtermretentionbackups | Nein | Nein |
+> | locations/longtermretentionbackups | Ja | Ja |
 > | locations/longtermretentionmanagedinstancebackupazureasyncoperation | Nein | Nein |
 > | locations/longtermretentionmanagedinstancebackupoperationresults | Nein | Nein |
 > | locations/longtermretentionmanagedinstancebackups | Nein | Nein |
@@ -2872,7 +2872,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | servers/databases/auditingsettings | Nein | Nein |
 > | servers/databases/auditrecords | Nein | Nein |
 > | servers/databases/automatictuning | Nein | Nein |
-> | servers/databases/backuplongtermretentionpolicies | Nein | Nein |
+> | servers/databases/backuplongtermretentionpolicies | Ja | Ja |
 > | servers/databases/backupshorttermretentionpolicies | Nein | Nein |
 > | servers/databases/connectionpolicies | Nein | Nein |
 > | servers/databases/datamaskingpolicies | Nein | Nein |

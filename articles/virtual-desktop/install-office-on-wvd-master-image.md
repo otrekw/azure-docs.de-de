@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 05/02/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3e53d8bf8f7cb024b468983f596d3d1bd5c91ee7
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 1596dd8c03ba546c47429183e5d237579f1634f1
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007300"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442921"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>Installieren von Office für ein VHD-Masterimage
 
@@ -56,7 +56,7 @@ Folgendes wird dagegen von dieser XML-Beispielkonfigurationsdatei nicht erledigt
 
 Das Office-Bereitstellungstool enthält die Datei „setup.exe“. Führen Sie den folgenden Befehl auf einer Befehlszeile aus, um Office zu installieren:
 
-```batch
+```cmd
 Setup.exe /configure configuration.xml
 ```
 
@@ -90,7 +90,7 @@ Im folgenden XML-Beispiel wird das Release aus dem monatlichen Enterprise-Kanal 
 
 Nach der Installation von Office können Sie das Standardverhalten von Office aktualisieren. Führen Sie die folgenden Befehle einzeln oder in einer Batchdatei aus, um das Verhalten zu aktualisieren.
 
-```batch
+```cmd
 rem Mount the default user registry hive
 reg load HKU\TempDefault C:\Users\Default\NTUSER.DAT
 rem Must be executed with default registry hive mounted.
@@ -121,37 +121,37 @@ Hier ist beschrieben, wie Sie OneDrive im Modus „Pro Computer“ installieren:
 
 3. Wenn Sie durch Auslassen von **\<ExcludeApp ID="OneDrive" /\>** Office mit OneDrive installiert haben, deinstallieren Sie alle vorhandenen OneDrive-Einzelbenutzerinstallationen durch Ausführen des folgenden Befehls in einer Eingabeaufforderung mit erhöhten Rechten:
 
-    ```batch
+    ```cmd
     "[staged location]\OneDriveSetup.exe" /uninstall
     ```
 
 4. Führen Sie diesen Befehl an einer Eingabeaufforderung mit erhöhten Rechten aus, um den Registrierungswert **AllUsersInstall** festzulegen:
 
-    ```batch
+    ```cmd
     REG ADD "HKLM\Software\Microsoft\OneDrive" /v "AllUsersInstall" /t REG_DWORD /d 1 /reg:64
     ```
 
 5. Führen Sie diesen Befehl aus, um OneDrive im Modus „Pro Computer“ zu installieren:
 
-    ```batch
+    ```cmd
     Run "[staged location]\OneDriveSetup.exe" /allusers
     ```
 
 6. Führen Sie diesen Befehl aus, um OneDrive mit der Anmeldung für alle Benutzer zu starten:
 
-    ```batch
+    ```cmd
     REG ADD "HKLM\Software\Microsoft\Windows\CurrentVersion\Run" /v OneDrive /t REG_SZ /d "C:\Program Files (x86)\Microsoft OneDrive\OneDrive.exe /background" /f
     ```
 
 7. Aktivieren Sie die Option **Silently configure user account** (Benutzerkonto im Hintergrund konfigurieren), indem Sie den folgenden Befehl ausführen.
 
-    ```batch
+    ```cmd
     REG ADD "HKLM\SOFTWARE\Policies\Microsoft\OneDrive" /v "SilentAccountConfig" /t REG_DWORD /d 1 /f
     ```
 
 8. Sie können bekannte Windows-Ordner umleiten und in OneDrive verschieben, indem Sie den folgenden Befehl ausführen.
 
-    ```batch
+    ```cmd
     REG ADD "HKLM\SOFTWARE\Policies\Microsoft\OneDrive" /v "KFMSilentOptIn" /t REG_SZ /d "<your-AzureAdTenantId>" /f
     ```
 

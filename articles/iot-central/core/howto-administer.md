@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 7b77ea9e0e1f322cb5ef0bc63885c3ccce1b76f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 37a3725fb7684a9e87f1936ef0ce8cc79de03894
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158679"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594661"
 ---
 # <a name="change-iot-central-application-settings"></a>Ändern der Einstellungen für eine Azure IoT Central-Anwendung
 
@@ -45,7 +45,7 @@ Verwenden Sie die Schaltfläche **Löschen**, um Ihre IoT Central-Anwendung daue
 
 Azure Resource Manager SDK-Pakete für IoT Central sind für Node, Python, C#, Ruby, Java und Go verfügbar. Mit diesen Paketen können Sie IoT Central-Anwendungen erstellen, auflisten, aktualisieren oder löschen. Die Pakete enthalten Hilfsprogramme zum Verwalten von Authentifizierung und Fehlerbehandlung.
 
-Beispiele zur Verwendung der Azure Resource Manager SDKs finden Sie unter [https://github.com/emgarten/iotcentral-arm-sdk-examples](https://github.com/emgarten/iotcentral-arm-sdk-examples).
+Beispiele zur Verwendung der Azure Resource Manager SDKs finden Sie unter [https://github.com/Azure-Samples/azure-iot-central-arm-sdk-samples](https://github.com/Azure-Samples/azure-iot-central-arm-sdk-samples).
 
 Weitere Informationen finden Sie in den folgenden GitHub-Repositorys und -Paketen:
 

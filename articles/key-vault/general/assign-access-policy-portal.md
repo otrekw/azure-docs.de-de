@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c9fd2df1af3a9f15ca8a53a0094734188dd30bf1
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: d16d14ff51cb9a7e71193d93c6755a8e4cb93ed0
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89380473"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89481408"
 ---
 # <a name="assign-a-key-vault-access-policy-using-the-azure-portal"></a>Zuweisen einer Key Vault-Zugriffsrichtlinie über das Azure-Portal
 
@@ -41,7 +41,7 @@ Weitere Informationen zum Erstellen von Gruppen in Azure Active Directory über 
 
     ![Auswählen des Dienstprinzipals für die Zugriffsrichtlinie](../media/authentication/assign-policy-portal-03.png)
 
-    Wenn Sie für die App eine verwaltete Identität verwenden, suchen Sie nach dem Namen der App, und wählen Sie ihn aus. (Weitere Informationen zu verwalteten Identitäten und Dienstprinzipalen finden Sie unter [Authentifizierung mit Key Vault: App-Identität und Dienstprinzipale](authentication.md#app-identity-and-service-principals).)
+    Wenn Sie für die App eine verwaltete Identität verwenden, suchen Sie nach dem Namen der App, und wählen Sie ihn aus. (Weitere Informationen zu verwalteten Identitäten und Dienstprinzipalen finden Sie unter [Authentifizierung mit Key Vault: App-Identität und Dienstprinzipale](authentication.md#app-identity-and-security-principals).)
  
 1.  Wählen Sie im Bereich **Zugriffsrichtlinie hinzufügen** die Option **Hinzufügen** aus, um die Zugriffsrichtlinie zu speichern.
 

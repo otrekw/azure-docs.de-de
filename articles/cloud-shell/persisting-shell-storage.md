@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2020
 ms.author: damaerte
-ms.openlocfilehash: 37005a722d4a1962b4f6e1ddb8bb1c7a1229d28a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16345ae479be70ffb1eaae95196a43ec99ca1586
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81273289"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89470135"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Beibehalten von Dateien in Azure Cloud Shell
 Cloud Shell nutzt Azure-Dateispeicher, um Dateien sitzungsübergreifend beizubehalten. Beim ersten Start fordert Cloud Shell Sie auf, eine neue oder vorhandene Dateifreigabe zu verknüpfen, um Dateien sitzungsübergreifend beizubehalten.
@@ -83,7 +83,7 @@ Wenn eine sekundäre Speicherregion verwendet wird, befindet sich das zugehörig
 Ein Benutzer kann `(Get-CloudDrive | Get-AzStorageAccount).Location` in PowerShell ausführen, um den Speicherort seiner Dateifreigabe anzuzeigen.
 
 ## <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>Beschränken der Ressourcenerstellung mit einer Azure-Ressourcenrichtlinie
-Speicherkonten, die Sie in Cloud Shell erstellen, erhalten das Tag `ms-resource-usage:azure-cloud-shell`. Wenn Sie nicht möchten, dass Benutzer Speicherkonten in Cloud Shell erstellen, können Sie eine [Azure-Ressourcenrichtlinie für Tags](../azure-policy/json-samples.md) erstellen, die durch das jeweilige Tag ausgelöst werden.
+Speicherkonten, die Sie in Cloud Shell erstellen, erhalten das Tag `ms-resource-usage:azure-cloud-shell`. Wenn Sie nicht möchten, dass Benutzer Speicherkonten in Cloud Shell erstellen, können Sie eine [Azure-Ressourcenrichtlinie für Tags](../governance/policy/samples/index.md) erstellen, die durch das jeweilige Tag ausgelöst werden.
 
 ## <a name="how-cloud-shell-storage-works"></a>Funktionsweise von Cloud Shell-Speicher 
 Cloud Shell nutzt die beiden folgenden Methoden zum Beibehalten von Dateien: 
@@ -170,4 +170,4 @@ Hinweis: Wenn Sie eine Funktion in einer Datei definieren und diese über die Po
 ## <a name="next-steps"></a>Nächste Schritte
 [Cloud Shell-Schnellstart](quickstart.md) <br>
 [Einführung in Microsoft Azure Storage](../storage/files/storage-files-introduction.md) <br>
-[Weitere Informationen zu Speichertags](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) <br>
+[Weitere Informationen zu Speichertags](../azure-resource-manager/management/tag-resources.md) <br>

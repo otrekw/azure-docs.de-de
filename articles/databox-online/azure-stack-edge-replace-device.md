@@ -1,6 +1,6 @@
 ---
-title: Ersetzen Ihres Azure Stack Edge-Geräts | Microsoft-Dokumentation
-description: Hier wird beschrieben, wie Sie ein Azure Stack Edge-Ersatzgerät erhalten.
+title: Ersetzen Ihres Azure Stack Edge Pro-Geräts | Microsoft-Dokumentation
+description: Hier wird beschrieben, wie Sie ein Azure Stack Edge Pro-Ersatzgerät erhalten.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: alkohli
-ms.openlocfilehash: 5d5e8cc3a959c7800019107d2c682e144449b46c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ec16a2b42b818e96399b8fdbad4a0951f84ef825
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094872"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893897"
 ---
-# <a name="replace-your-azure-stack-edge-device"></a>Ersetzen Ihres Azure Stack Edge-Geräts
+# <a name="replace-your-azure-stack-edge-pro-device"></a>Ersetzen Ihres Azure Stack Edge Pro-Geräts
 
-In diesem Artikel wird beschrieben, wie Sie ein Azure Stack Edge-Ersatzgerät erhalten. Es wird ein Ersatzgerät benötigt, wenn das vorhandene Gerät einen Hardwarefehler aufweist oder ein Upgrade erforderlich ist. 
+In diesem Artikel wird beschrieben, wie Sie ein Azure Stack Edge Pro-Ersatzgerät erhalten. Es wird ein Ersatzgerät benötigt, wenn das vorhandene Gerät einen Hardwarefehler aufweist oder ein Upgrade erforderlich ist. 
 
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
@@ -33,7 +33,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 Wenn Ihr vorhandenes Gerät einen Hardwarefehler hat, öffnen Sie ein Supportticket. Der Microsoft-Support prüft dann, ob ein Ersatzteil für die betreffende Instanz verfügbar oder ein Hardwareupgrade nötig ist. In beiden Fällen bestellt der Support ein Ersatzgerät.
 
-1. Öffnen Sie ein Supportticket beim Microsoft-Support, um anzugeben, dass Sie das Gerät zurückgeben möchten. Wählen Sie als Problemtyp **Azure Stack Edge-Hardware** aus.
+1. Öffnen Sie ein Supportticket beim Microsoft-Support, um anzugeben, dass Sie das Gerät zurückgeben möchten. Wählen Sie den Problemtyp **Azure Stack Edge Pro-Hardware** aus.
 
     ![Öffnen eines Supporttickets](media/azure-stack-edge-replace-device/open-support-ticket-1.png)  
 
@@ -47,7 +47,7 @@ Führen Sie die folgenden Schritte zum Erstellen einer Ressource aus.
 
 1. Führen Sie die Schritte in [Erstellen einer neuen Ressource](azure-stack-edge-deploy-prep.md#create-a-new-resource) aus, um eine Ressource für das Ersatzgerät zu erstellen. 
 
-2. Achten Sie dabei darauf, das Kontrollkästchen für die Option **Ich habe ein Azure Stack Edge-Gerät** zu aktivieren. 
+2. Aktivieren Sie unbedingt das Kontrollkästchen für die Option **Ich habe ein Azure Stack Edge Pro-Gerät**. 
 
     ![Ressource für Ersatzgerät](media/azure-stack-edge-replace-device/replace-resource-1.png)  
 
@@ -71,4 +71,4 @@ Gehen Sie wie folgt vor, um das Originalgerät zurückzugeben:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informieren Sie sich, wie Sie [ein Azure Stack Edge-Gerät zurückgeben](azure-stack-edge-return-device.md) können.
+- Informieren Sie sich darüber, wie Sie [ein Azure Stack Edge Pro-Gerät zurückgeben](azure-stack-edge-return-device.md) können.

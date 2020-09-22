@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: c009a98931240e92527035e51fdce3f1c92f5212
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1afa5df20c9bcbf63f8ad9f527e54f622eba3d19
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79477594"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893799"
 ---
 # <a name="filter-based-feature-selection"></a>Filter Based Feature Selection
 
-In diesem Artikel wird die Verwendung des Moduls „Filter Based Feature Selection“ (Filterbasierte Featureauswahl) im Azure Machine Learning-Designer (Vorschauversion) beschrieben. Dieses Modul unterstützt Sie bei der Identifizierung der Spalten mit der größten Vorhersagekraft in Ihrem Eingabedataset. 
+In diesem Artikel wird die Verwendung des Moduls „Filter Based Feature Selection“ (Filterbasierte Featureauswahl) im Azure Machine Learning-Designer beschrieben. Dieses Modul unterstützt Sie bei der Identifizierung der Spalten mit der größten Vorhersagekraft in Ihrem Eingabedataset. 
 
 Grundsätzlich bezieht sich *Feature Selection* (Featureauswahl) auf die Anwendung statistischer Tests auf Eingaben, wenn eine Ausgabe angegeben ist. Das Ziel besteht in der Bestimmung der Spalten, die für die Ausgabe aussagekräftiger sind. Das Modul „Filter Based Feature Selection“ (Filterbasierte Featureauswahl) stellt mehrere Algorithmen für die Featureauswahl bereit. Es beinhaltet Korrelationsmethoden wie Pearson-Korrelation und Chi-Quadrat-Werte. 
 

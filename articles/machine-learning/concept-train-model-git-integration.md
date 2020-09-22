@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
-ms.openlocfilehash: 154d28e4df9bad68f3c5e93208ccf62ba2721663
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: bd77af133b88e1ba93054dbb7e0f896d8d418f89
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144820"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893562"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Git-Integration für Azure Machine Learning
 
@@ -70,12 +70,10 @@ Die Git-Informationen sind in den Eigenschaften für einen Trainingslauf gespeic
 
 ### <a name="azure-portal"></a>Azure-Portal
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) Ihren Arbeitsbereich aus.
+1. Wählen Sie im [Studioportal](https://ml.azure.com) Ihren Arbeitsbereich aus.
 1. Wählen Sie __Experimente__ und dann eins Ihrer Experimente aus.
 1. Wählen Sie einen der Läufe in der Spalte __Ausführungsanzahl__ aus.
-1. Wählen Sie __Protokolle__ aus, und erweitern Sie dann die Einträge __logs__ und __azureml__. Wählen Sie den Link aus, der mit __###\_azure__ beginnt.
-
-    ![Eintrag „###_azure“ im Portal](./media/concept-train-model-git-integration/azure-machine-learning-logs.png)
+1. Wählen Sie __Ausgaben und Protokolle__ aus, und erweitern Sie dann die Einträge __logs__ und __azureml__. Wählen Sie den Link aus, der mit __###\_azure__ beginnt.
 
 Die protokollierten Informationen enthalten Text, der so ähnlich aussieht wie der folgende JSON-Code:
 
@@ -98,7 +96,7 @@ Die protokollierten Informationen enthalten Text, der so ähnlich aussieht wie d
 
 ### <a name="python-sdk"></a>Python SDK
 
-Nach dem Übermitteln eines Trainingslaufs wird ein [Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py)-Objekt zurückgegeben. Das `properties`-Attribut dieses Objekts enthält die protokollierten Git-Informationen. Beispielsweise ruft der folgende Code den Commithash ab:
+Nach dem Übermitteln eines Trainingslaufs wird ein [Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true)-Objekt zurückgegeben. Das `properties`-Attribut dieses Objekts enthält die protokollierten Git-Informationen. Beispielsweise ruft der folgende Code den Commithash ab:
 
 ```python
 run.properties['azureml.git.commit']

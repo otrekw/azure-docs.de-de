@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: terrylan
-ms.openlocfilehash: 6058b0d72eafe3a44ebdbabf291af05c08e772b3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7c317a0b4fea0c981b227bace00c1b8924fd582c
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038272"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536381"
 ---
 # <a name="security-recommendations-for-azure-marketplace-images"></a>Sicherheitsempfehlungen für Azure Marketplace-Images
 
@@ -65,11 +65,3 @@ Führen Sie vor der Übermittlung immer eine Sicherheitsrisikoerkennung für Ihr
 
 Auch wenn Ihre Organisation über keine Images im Azure Marketplace verfügt, sollten Sie die Konfiguration Ihrer Windows- und Linux-Images anhand dieser Empfehlungen überprüfen.
 
-## <a name="contacting-customers"></a>Kontaktieren von Kunden
-
-So identifizieren Sie Kunden und deren Kontakt-E-Mails
-
-1.  Wählen Sie im Cloud-Partnerportal auf der linken Schiene **Insights-** aus.
-2.  Verwenden Sie auf der Registerkarte **Aufträge und Nutzung** die Felder **Startdatum** und **Enddatum**, um die Verwendung innerhalb des erforderlichen Datumsbereichs abzufragen. Dies zeigt, welche Azure-Abonnements an den einzelnen Tagen für das Angebot verwendet wurden. Exportieren Sie diese Daten. 
-3.  In ähnlicher Weise können Sie auf der Registerkarte **Kunden** ihre Kundenbasis abfragen und exportieren.
-4.  Vergleichen Sie die Abonnement-ID aus Schritt 2 mit der Abonnement-ID aus Schritt 3, um die erforderlichen Kundeninformationen zu finden.

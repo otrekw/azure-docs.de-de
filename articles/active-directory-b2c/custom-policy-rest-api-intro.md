@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fe328de9460efb743037f697c7f564e2c628278d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc2b72779460c2b7e3999204ace50ca57388b9a2
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85388934"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594185"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-custom-policy"></a>Integrieren von REST-API-Anspruchsaustauschvorgängen in Ihre benutzerdefinierte Azure AD B2C-Richtlinie
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Das Identity Experience Framework (IEF), das Azure Active Directory B2C (Azure AD B2C) zugrunde liegt, kann im Rahmen einer User Journey mit RESTful-APIs integriert werden. In diesem Artikel wird gezeigt, wie Sie eine User Journey erstellen, die mithilfe eines [technischen RESTful-Profils](https://identitydivision.visualstudio.com/defaultcollection/Identity%20CXP/_git/GTP?path=%2Fyoelh%2Fdocs%2Frest-api%2Frestful-technical-profile.md&version=GBmaster) mit einem RESTful-Dienst interagiert.
+Das Identity Experience Framework (IEF), das Azure Active Directory B2C (Azure AD B2C) zugrunde liegt, kann im Rahmen einer User Journey mit RESTful-APIs integriert werden. In diesem Artikel wird gezeigt, wie Sie eine User Journey erstellen, die mithilfe eines [technischen RESTful-Profils](restful-technical-profile.md) mit einem RESTful-Dienst interagiert.
 
 Mit Azure AD B2C können Sie einer User Journey Ihre eigene Geschäftslogik hinzufügen, indem Sie Ihren eigenen RESTful-Dienst aufrufen. Das Identity Experience Framework kann Daten an Ihren RESTful-Dienst senden und von ihm empfangen, um Ansprüche auszutauschen. Beispielsweise können Sie folgende Aktionen ausführen:
 
@@ -125,9 +125,9 @@ Die Ausgabeansprüche sollten wie folgt aussehen:
 
 ```xml
 <OutputClaims>
-  <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="contacts.0.person.name" />
-  <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="contacts.0.person.emails.0.email" />
-  <OutputClaim ClaimTypeReferenceId="loyaltyNumber" PartnerClaimType="contacts.0.person.loyaltyNumber" />
+  <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="contacts[0].person.name" />
+  <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="contacts[0].person.emails[0].email" />
+  <OutputClaim ClaimTypeReferenceId="loyaltyNumber" PartnerClaimType="contacts[0].person.loyaltyNumber" />
 </OutputClaims>
 ```
 

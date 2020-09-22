@@ -3,15 +3,15 @@ title: Was wird von Azure Monitor überwacht?
 description: Eine Referenz aller Dienste und anderer Ressourcen, die von Azure Monitor überwacht werden.
 ms.subservice: ''
 ms.topic: conceptual
-author: bwren
-ms.author: bwren
-ms.date: 06/15/2020
-ms.openlocfilehash: 48eb8674a7d3f0fbeb8cc012debfc8a08752d5ff
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+author: rboucher
+ms.author: robb
+ms.date: 08/15/2020
+ms.openlocfilehash: 1841c4eb8975c865c5f15a0e8fe3a6b5f0522820
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080863"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89435404"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Was wird von Azure Monitor überwacht?
 In diesem Artikel werden die verschiedenen Anwendungen und Dienste beschrieben, die von Azure Monitor überwacht werden. 
@@ -120,7 +120,7 @@ In der folgenden Tabelle sind Azure-Dienste und die damit in Azure Monitor erfas
 |IoT Hub | Ja | Ja | Nein |  |
 |Key Vault | Ja | Ja | [Ja](./insights/key-vault-insights-overview.md) |  |
 |Kubernetes Service (AKS) | Nein | Nein | [Ja](insights/container-insights-overview.md)  |  |
-|Load Balancer | Ja | Ja | Nein |  |
+|Load Balancer | Ja | Nein | Nein |  |
 |Logic Apps | Ja | Ja | Nein |  |
 |Machine Learning Service | Nein | Nein | Nein |  |
 |Verwaltete Anwendungen  | Nein | Nein | Nein |  |
@@ -151,7 +151,7 @@ In der folgenden Tabelle sind Azure-Dienste und die damit in Azure Monitor erfas
 |Signup Portal | Nein | Nein | Nein |  |
 |Site Recovery | Nein | Ja | Nein |  |
 |Spring Cloud Service | Nein | Nein | Nein |  |
-|SQL Data Warehouse | Ja | Ja | Nein |  |
+|Azure Synapse Analytics | Ja | Ja | Nein |  |
 |SQL-Datenbank | Ja | Ja | Nein |  |
 |SQL Server Stretch Database | Ja | Ja | Nein |  |
 |Stapel | Nein | Nein | Nein |  |

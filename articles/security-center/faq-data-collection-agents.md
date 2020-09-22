@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 0bcf81e0c762dd2a8e63ae242fec77d30f5b2c3d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 78668eaadca872d7c25ab909fad5b9838bbc01d3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011853"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894814"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Häufig gestellte Fragen: Datensammlung, Agents und Arbeitsbereiche
 
@@ -29,9 +29,9 @@ Security Center erfasst Daten von Ihren virtuellen Azure-Computern (virtual mach
 
 Nein. Von Security Center erstellte Arbeitsbereiche sind zwar für die knotenbasierte Abrechnung von Azure Monitor-Protokollen konfiguriert, es fallen jedoch keine Kosten für Azure Monitor-Protokolle an. Die Abrechnung von Security Center basiert immer auf Ihrer Security Center-Sicherheitsrichtlinie und den installierten Lösungen in einem Arbeitsbereich:
 
-- **Free-Tarif**: Security Center aktiviert die Lösung „SecurityCenterFree“ im Standardarbeitsbereich. Für den Free-Tarif entstehen keine Kosten.
+- **Azure Defender aus**: Security Center aktiviert die Lösung „SecurityCenterFree“ im Standardarbeitsbereich. Wenn Azure Defender deaktiviert ist, entstehen Ihnen keine Kosten.
 
-- **Standard-Tarif**: Security Center aktiviert die Lösung „Security“ im Standardarbeitsbereich.
+- **Azure Defender ein**: Security Center aktiviert die Lösung „Security“ im Standardarbeitsbereich.
 
 Weitere Informationen zu Preisen finden Sie unter [Security Center – Preise](https://azure.microsoft.com/pricing/details/security-center/).
 
@@ -164,7 +164,7 @@ Wenn Sie die Microsoft Monitoring-Erweiterung entfernen, kann Security Center ke
 
 Sie können die automatische Bereitstellung für Ihre Abonnements in der Sicherheitsrichtlinie deaktivieren, dies wird jedoch nicht empfohlen. Die Deaktivierung der automatischen Bereitstellung schränkt die Empfehlungen und Warnungen von Security Center ein. So deaktivieren Sie die automatische Bereitstellung:
 
-1. Wenn Ihr Abonnement für den Standard-Tarif konfiguriert ist, öffnen Sie die Sicherheitsrichtlinie für dieses Abonnement, und wählen Sie den Tarif **Free** aus.
+1. Wenn für Ihr Abonnement Azure Defender aktiviert ist, öffnen Sie die Sicherheitsrichtlinie für dieses Abonnement, und wählen Sie **Azure Defender aus** aus.
 
    ![Tarif][1]
 

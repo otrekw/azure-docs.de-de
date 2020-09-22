@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: 8ee9712c01c8ab6b36f595829c3ccc5ae392ff35
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: bbabceeea2fd009efe1098e37a0b1c9dcb8a48aa
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89276761"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894722"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Verwenden von adaptiven Anwendungssteuerungen zum Verringern der Angriffsfläche Ihres Computers
 
@@ -50,8 +50,8 @@ Durch die Definition von Listen mit bekannten sicheren Anwendungen und das Gener
 
 |Aspekt|Details|
 |----|:----|
-|Status des Release:|Allgemeine Verfügbarkeit|
-|Preise:|Standard-Tarif|
+|Status des Release:|Allgemein verfügbar (Generally Available, GA)|
+|Preise:|Erfordert [Azure Defender für Server](defender-for-servers-introduction.md)|
 |Unterstützte Computer:|![Ja](./media/icons/yes-icon.png) Azure- und Nicht-Azure-Computer, auf denen Windows und Linux ausgeführt wird<br>![Ja](./media/icons/yes-icon.png) [Azure Arc](https://docs.microsoft.com/azure/azure-arc/)-Computer|
 |Erforderliche Rollen und Berechtigungen:|**Sicherheitsleseberechtigter**- und **Leseberechtigter**-Rollen können Gruppen und Listen der bekannten sicheren Anwendungen anzeigen<br>**Mitwirkender**- und **Sicherheitsadministrator**-Rollen können Gruppen und Listen der bekannten sicheren Anwendungen bearbeiten|
 |Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) National/Sovereign (US Gov, China Gov, andere Gov-Clouds)|
@@ -65,7 +65,9 @@ Wenn Security Center Gruppen von Computern in ihren Abonnements identifiziert ha
 
 Wählen Sie die Empfehlung aus, oder öffnen Sie die Seite der adaptiven Anwendungssteuerung, um die Liste der empfohlenen, bekannten sicheren Anwendungen und Gruppen von Computern anzuzeigen.
 
-1. Wählen Sie im Security Center-Menü **Adaptive Anwendungssteuerung** aus.
+1. Öffnen Sie das Azure Defender-Dashboard, und wählen Sie im Bereich „Erweiterter Schutz“ die Option **Adaptive Anwendungssteuerungen** aus.
+
+    :::image type="content" source="./media/security-center-adaptive-application/opening-adaptive-application-control.png" alt-text="Öffnen von „Adaptive Anwendungssteuerungen“ über das Azure-Dashboard" lightbox="./media/security-center-adaptive-application/opening-adaptive-application-control.png":::
 
     Die Seite **Adaptive Anwendungssteuerung** wird geöffnet, auf der Ihre VMs auf den folgenden Registerkarten gruppiert sind:
 
@@ -86,7 +88,7 @@ Wählen Sie die Empfehlung aus, oder öffnen Sie die Seite der adaptiven Anwendu
       - Es handelt sich um einen Windows-Computer mit einer bereits vorhandenen [AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/applocker-overview)-Richtlinie, die entweder durch ein Gruppenrichtlinienobjekt oder eine lokale Sicherheitsrichtlinie aktiviert ist.
 
       > [!TIP]
-      > Security Center benötigt mindestens die Daten von zwei Wochen, um die eindeutigen Empfehlungen pro Gruppe von Computern zu definieren. Computer, die vor kurzem erstellt wurden oder zu Abonnements gehören, die erst kürzlich mit dem Standard-Tarif aktiviert wurden, werden auf der Registerkarte **Keine Empfehlung** angezeigt.
+      > Security Center benötigt mindestens die Daten von zwei Wochen, um die eindeutigen Empfehlungen pro Gruppe von Computern zu definieren. Computer, die vor kurzem erstellt wurden oder zu Abonnements gehören, die erst kürzlich mit Azure Defender aktiviert wurden, werden auf der Registerkarte **Keine Empfehlung** angezeigt.
 
 
 1. Öffnen Sie die Registerkarte **Empfohlen**. Die Gruppen von Computern mit empfohlenen Zulassungslisten werden angezeigt.
@@ -121,7 +123,7 @@ Sie können die Zulassungsliste für eine Gruppe von Computern aufgrund bekannte
 
 So bearbeiten Sie die Regeln für eine Gruppe von Computern:
 
-1. Wählen Sie im Security Center-Menü **Adaptive Anwendungssteuerung** aus.
+1. Öffnen Sie das Azure Defender-Dashboard, und wählen Sie im Bereich „Erweiterter Schutz“ die Option **Adaptive Anwendungssteuerungen** aus.
 
 1. Wählen Sie auf der Registerkarte **Konfiguriert** die Gruppe mit der Regel aus, die Sie bearbeiten möchten.
 
@@ -169,7 +171,7 @@ So beheben Sie die Probleme:
 
 ## <a name="audit-alerts-and-violations"></a>Überwachen von Warnungen und Verstößen
 
-1. Wählen Sie im Security Center-Menü **Adaptive Anwendungssteuerung** aus.
+1. Öffnen Sie das Azure Defender-Dashboard, und wählen Sie im Bereich „Erweiterter Schutz“ die Option **Adaptive Anwendungssteuerungen** aus.
 
 1. Wenn Sie Gruppen mit Computern anzeigen möchten, bei denen kürzlich Warnungen aufgetreten sind, überprüfen Sie die auf der Registerkarte **Konfiguriert** aufgelisteten Gruppen.
 
@@ -184,6 +186,8 @@ So beheben Sie die Probleme:
 ## <a name="move-a-machine-from-one-group-to-another"></a>Verschieben eines Computers aus einer Gruppe in eine andere
 
 Wenn Sie einen Computer aus einer Gruppe in eine andere Gruppen verschieben, ändert sich die angewandte Anwendungssteuerungsrichtlinie in die Einstellungen der Gruppe, in die die Verschiebung erfolgt. Sie können einen Computer auch aus einer konfigurierten Gruppe in eine nicht konfigurierte Gruppe verschieben. Dadurch werden alle auf den Computer angewendeten Anwendungssteuerungsregeln entfernt.
+
+1. Öffnen Sie das Azure Defender-Dashboard, und wählen Sie im Bereich „Erweiterter Schutz“ die Option **Adaptive Anwendungssteuerungen** aus.
 
 1. Wählen Sie auf der Seite **Adaptive Anwendungssteuerung** auf der Registerkarte **Konfiguriert** die Gruppe aus, die den Computer enthält, der verschoben werden soll.
 

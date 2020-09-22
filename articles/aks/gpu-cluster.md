@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 08/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 27c284ff7e806c9f194005ed26c05e99c4697083
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 4dfaa329dd0472b52de2d3306e6a3b61f660e666
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757641"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89443057"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Verwenden von GPUs für computeintensive Workloads in Azure Kubernetes Service (AKS)
 
@@ -162,7 +162,7 @@ az extension update --name aks-preview
 
 Konfigurieren Sie den Cluster beim Erstellen so, dass das spezielle AKS-GPU-Image verwendet wird. Verwenden Sie das `--aks-custom-headers`-Flag für die GPU-Agent-Knoten im neuen Cluster, um das spezielle AKS-GPU-Image zu verwenden.
 
-```azure-cli
+```azurecli
 az aks create --name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
 ```
 
@@ -173,7 +173,7 @@ Wenn Sie einen Cluster mit regulären AKS-Images erstellen möchten, lassen Sie 
 
 Konfigurieren Sie einen neuen Knotenpool, um das spezielle AKS-GPU-Image zu verwenden. Verwenden Sie das `--aks-custom-headers`-Flag für die GPU-Agent-Knoten im neuen Knotenpool, um das spezielle AKS-GPU-Image zu verwenden.
 
-```azure-cli
+```azurecli
 az aks nodepool add --name gpu --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
 ```
 
@@ -181,7 +181,7 @@ Wenn Sie einen Knotenpool mit regulären AKS-Images erstellen möchten, lassen S
 
 > [!NOTE]
 > Wenn Ihre GPU-SKU virtuelle Computer der 2. Generation erfordert, können Sie Folgendes erstellen:
-> ```azure-cli
+> ```azurecli
 > az aks nodepool add --name gpu --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6s_v2 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true,usegen2vm=true
 > ```
 

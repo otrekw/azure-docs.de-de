@@ -8,12 +8,12 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
 ms.date: 05/01/2020
-ms.openlocfilehash: 5f29e616c0643914ca28921eee481105a5feb0c5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2d89782b836db0daaf75c0337ad3b7f475824177
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047091"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90882888"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>Tutorial: Verwenden von Video Indexer mit Logic Apps und Power Automate
 
@@ -21,12 +21,15 @@ Die [REST-API für Video Indexer v2](https://api-portal.videoindexer.ai/docs/ser
 
 Zur weiteren Vereinfachung der Integration werden Connectors für [Logic Apps](https://azure.microsoft.com/services/logic-apps/) und [Power Automate](https://preview.flow.microsoft.com/connectors/shared_videoindexer-v2/video-indexer-v2/) unterstützt, die mit unserer API kompatibel sind. Mit den Connectors können Sie benutzerdefinierte Workflows einrichten, um auf effektive Weise für eine große Zahl von Video- und Audiodateien Erkenntnisse zu indizieren und zu extrahieren, ohne auch nur eine Codezeile zu schreiben. Wenn Sie die Connectors für Ihre Integration verwenden, haben Sie außerdem einen besseren Überblick über die Integrität Ihres Workflows und können ihn leicht debuggen.  
 
-Damit Sie schnell mit der Verwendung der Video Indexer-Connectors beginnen können, ist hier eine exemplarische Vorgehensweise für eine Lösung mit Logic Apps und Power Automate beschrieben, die Sie einrichten können. 
+Damit Sie schnell mit der Verwendung der Video Indexer-Connectors beginnen können, ist hier eine exemplarische Vorgehensweise für eine Lösung mit Logic Apps und Power Automate beschrieben, die Sie einrichten können. In diesem Tutorial erfahren Sie, wie Sie Flows mithilfe von Logic Apps einrichten.
 
-In diesem Tutorial lernen Sie Folgendes:
+Das in diesem Tutorial beschriebene Szenario „Automatisches Hochladen und Indizieren Ihres Videos“ umfasst zwei verschiedene Flows, die zusammenarbeiten. 
+* Der erste Workflow wird ausgelöst, wenn ein Blob in einem Azure Storage-Konto hinzugefügt oder geändert wird. Hierbei wird die neue Datei in Video Indexer mit einer Rückruf-URL hochgeladen, um eine Benachrichtigung senden zu können, nachdem der Indizierungsvorgang abgeschlossen ist. 
+* Der zweite Workflow wird basierend auf der Rückruf-URL ausgelöst, und die extrahierten Erkenntnisse werden als JSON-Datei in Azure Storage gespeichert. Dieser Ansatz mit zwei Workflows wird verwendet, um das effektive asynchrone Hochladen und Indizieren von größeren Dateien zu unterstützen. 
+
+In diesem Tutorial wird eine Logik-App verwendet, um Folgendes zu zeigen:
 
 > [!div class="checklist"]
-> * Automatisches Hochladen und Indizieren Ihres Videos
 > * Einrichten des Workflows für den Dateiupload
 > * Einrichten des Workflows für die JSON-Extraktion
 
@@ -34,19 +37,13 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zunächst benötigen Sie auch ein Video Indexer-Konto sowie Zugriff auf die APIs über einen API-Schlüssel. 
+* Zunächst benötigen Sie ein Video Indexer-Konto sowie [Zugriff auf die APIs per API-Schlüssel](video-indexer-use-apis.md). 
+* Sie benötigen außerdem ein Azure Storage-Konto. Notieren Sie sich den Zugriffsschlüssel für Ihr Storage-Konto. Erstellen Sie zwei Container: einen zum Speichern von Videos und einen zum Speichern der von Video Indexer generierten Erkenntnisse.  
+* Als Nächstes müssen Sie – entweder für Logic Apps oder Power Automate – zwei separate Workflows öffnen (je nachdem, was Sie verwenden). 
 
-Sie benötigen außerdem ein Azure Storage-Konto. Notieren Sie sich den Zugriffsschlüssel für Ihr Storage-Konto. Erstellen Sie zwei Container: einen zum Speichern von Videos und einen zum Speichern der von Video Indexer generierten Erkenntnisse.  
+## <a name="set-up-the-first-flow---file-upload"></a>Einrichten des ersten Flows: Dateiupload   
 
-Als Nächstes müssen Sie – entweder für Logic Apps oder Power Automate – zwei separate Workflows öffnen (je nachdem, was Sie verwenden).  
-
-## <a name="upload-and-index-your-video-automatically"></a>Automatisches Hochladen und Indizieren Ihres Videos 
-
-Dieses Szenario umfasst zwei unterschiedliche Workflows, die zusammenarbeiten. Der erste Workflow wird ausgelöst, wenn ein Blob in einem Azure Storage-Konto hinzugefügt oder geändert wird. Hierbei wird die neue Datei in Video Indexer mit einer Rückruf-URL hochgeladen, um eine Benachrichtigung senden zu können, nachdem der Indizierungsvorgang abgeschlossen ist. Der zweite Workflow wird basierend auf der Rückruf-URL ausgelöst, und die extrahierten Erkenntnisse werden als JSON-Datei in Azure Storage gespeichert. Dieser Ansatz mit zwei Workflows wird verwendet, um das effektive asynchrone Hochladen und Indizieren von größeren Dateien zu unterstützen. 
-
-### <a name="set-up-the-file-upload-flow"></a>Einrichten des Workflows für den Dateiupload 
-
-Der erste Workflow wird jeweils ausgelöst, wenn in Ihrem Azure Storage-Container ein Blob hinzugefügt wird. Nach dem Auslösen wird ein SAS-URI erstellt, den Sie verwenden können, um das Video in Video Indexer hochzuladen und zu indizieren. Erstellen Sie zunächst den folgenden Workflow. 
+Der erste Workflow wird jeweils ausgelöst, wenn in Ihrem Azure Storage-Container ein Blob hinzugefügt wird. Nach dem Auslösen wird ein SAS-URI erstellt, den Sie verwenden können, um das Video in Video Indexer hochzuladen und zu indizieren. In diesem Abschnitt wird der folgende Flow erstellt: 
 
 ![Workflow für Dateiupload](./media/logic-apps-connector-tutorial/file-upload-flow.png)
 
@@ -56,15 +53,17 @@ Zum Einrichten des ersten Workflows müssen Sie Ihren Video Indexer-API-Schlüss
 
 ![Verbindungsname und API-Schlüssel](./media/logic-apps-connector-tutorial/connection-name-api-key.png)
 
-Wenn Sie eine Verbindung mit Ihren Azure Storage- und Video Indexer-Konten herstellen können, können Sie zum Trigger „Wenn ein Blob hinzugefügt oder geändert wird“ navigieren und den Container auswählen, der Ihre Videodateien enthalten soll. 
+Wenn Sie eine Verbindung mit Ihrem Azure Storage- und Ihrem Video Indexer-Konto herstellen können, suchen Sie im **Designer für Logik-Apps** nach dem Trigger „Wenn ein Blob hinzugefügt oder geändert wird“, und wählen Sie ihn aus. Wählen Sie den Container aus, in dem Sie Ihre Videodateien platzieren. 
 
-![Container](./media/logic-apps-connector-tutorial/container.png)
+![Screenshot: Dialogfeld „Wenn ein Blob hinzugefügt oder geändert wird“, in dem Sie einen Container auswählen können](./media/logic-apps-connector-tutorial/container.png)
 
-Navigieren Sie als Nächstes zur Aktion „SAS-URI nach Pfad erstellen“, und wählen Sie in den Optionen für dynamischen Inhalt den Pfad zur Dateiliste aus.  
+Suchen Sie als Nächstes nach der Aktion „SAS-URI nach Pfad erstellen“, und wählen Sie sie aus. Wählen Sie im Dialogfeld für die Aktion in den Optionen für dynamischen Inhalt den Pfad zur Dateiliste aus.  
+
+Fügen Sie außerdem einen neuen Parameter vom Typ „Protokoll für gemeinsamen Zugriff“ hinzu. Wählen Sie „HttpsOnly“ als Wert für den Parameter aus.
 
 ![SAS-URI nach Pfad](./media/logic-apps-connector-tutorial/sas-uri-by-path.jpg)
 
-Geben Sie [Standort und ID für Ihr Konto](./video-indexer-use-apis.md#account-id) an, um das Token für das Video Indexer-Konto abzurufen.
+Geben Sie den [Standort Ihres Kontos](regions.md) und die [Konto-ID](./video-indexer-use-apis.md#account-id) an, um das Token für das Video Indexer-Konto abzurufen.
 
 ![Abrufen des Tokens für den Kontozugriff](./media/logic-apps-connector-tutorial/account-access-token.png)
 
@@ -78,7 +77,7 @@ Sie können den Standardwert für die anderen Parameter verwenden oder den Wert 
 
 Klicken Sie auf „Speichern“. Wir fahren nun mit dem Konfigurieren des zweiten Workflows fort, bei dem die Erkenntnisse extrahiert werden, nachdem das Hochladen und Indizieren abgeschlossen ist. 
 
-## <a name="set-up-the-json-extraction-flow"></a>Einrichten des Workflows für die JSON-Extraktion 
+## <a name="set-up-the-second-flow---json-extraction"></a>Einrichten des zweiten Flows: JSON-Extraktion  
 
 Nach Abschluss des Hochladens und Indizierens aus dem ersten Workflow wird eine HTTP-Anforderung mit der richtigen Rückruf-URL gesendet, um den zweiten Workflow auszulösen. Anschließend werden die von Video Indexer generierten Erkenntnisse abgerufen. In diesem Beispiel wird die Ausgabe Ihres Indizierungsauftrags auf Ihrer Azure Storage-Instanz gespeichert.  Es liegt aber an Ihnen, was Sie mit der Ausgabe machen.  
 
@@ -90,7 +89,7 @@ Zum Einrichten dieses Workflows müssen Sie erneut Ihren Video Indexer-API-Schl�
 
 Für Ihren Trigger wird ein Feld für die HTTP POST-URL angezeigt. Die URL wird erst generiert, nachdem Sie Ihren Workflow gespeichert haben. Sie benötigen die URL dann später aber noch. Wir kommen dann darauf zurück. 
 
-Geben Sie [Standort und ID für Ihr Konto](./video-indexer-use-apis.md#account-id) an, um das Token für das Video Indexer-Konto abzurufen.  
+Geben Sie den [Standort Ihres Kontos](regions.md) und die [Konto-ID](./video-indexer-use-apis.md#account-id) an, um das Token für das Video Indexer-Konto abzurufen.  
 
 Navigieren Sie zur Aktion „Get Video Index“ (Videoindex abrufen), und geben Sie die erforderlichen Parameter an. Geben Sie als Video-ID den folgenden Ausdruck ein: triggerOutputs()['queries']['id'] 
 
@@ -104,13 +103,13 @@ Navigieren Sie zur Aktion „Create blob“ (Blob erstellen), und wählen Sie de
 
 Bei diesem Ausdruck wird die Ausgabe der Aktion „Get Video Index“ (Videoindex abrufen) aus diesem Workflow verwendet. 
 
-Klicken Sie auf „Flow speichern“. 
+Klicken Sie auf **Flow speichern**. 
 
 Nachdem der Workflow gespeichert wurde, wird im Trigger eine HTTP POST-URL erstellt. Kopieren Sie die URL aus dem Trigger. 
 
 ![Speichern des URL-Triggers](./media/logic-apps-connector-tutorial/save-url-trigger.png)
 
-Navigieren Sie nun zurück zum ersten Workflow, und fügen Sie die URL aus der Aktion „Upload video and index“ (Video hochladen und indizieren) als Parameter für die Rückruf-URL ein. 
+Kehren Sie zum ersten Flow zurück, und fügen Sie die URL aus der Aktion „Upload video and index“ (Video hochladen und indizieren) als Parameter für die Rückruf-URL ein. 
 
 Stellen Sie sicher, dass beide Workflows gespeichert wurden und alles bereit ist! 
 

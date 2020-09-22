@@ -3,12 +3,12 @@ title: Ereignisbasierte Videoaufzeichnung – Azure
 description: Ereignisbasierte Videoaufzeichnung (EVR) bezeichnet den Vorgang des Aufzeichnen von Videos mit Auslösung durch ein Ereignis. Das betreffende Ereignis kann bei der Verarbeitung des Videosignals selbst (z. B. Erkennung einer Bewegung) entstehen oder von einer unabhängigen Quelle (z. B. Öffnen einer Tür) stammen.  In diesem Artikel werden einige Anwendungsfälle im Zusammenhang mit der ereignisbasierten Videoaufzeichnung beschrieben.
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 0a6f7ca4233c195c7494fc6f63e7dfb5bf654c17
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: f3efd2b9be41928ab4721d6db4aa84c0f1f57e2f
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84260743"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568490"
 ---
 # <a name="event-based-video-recording"></a>Ereignisbasierte Videoaufzeichnung  
  
@@ -34,7 +34,8 @@ In diesem Anwendungsfall können Sie Videoclips nur aufzeichnen, wenn im Video B
 
 Die folgende Abbildung zeigt eine grafische Darstellung eines Mediengraphs zu diesem Anwendungsfall. Die JSON-Darstellung der Graphtopologie eines solchen Mediengraphs finden Sie [hier](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/evr-motion-assets/topology.json).
 
-![Videoaufzeichnung auf der Grundlage der Erkennung von Bewegung](./media/event-based-video-recording/motion-detection.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/event-based-video-recording/motion-detection.svg" alt-text="Videoaufzeichnung auf der Grundlage der Erkennung von Bewegung":::
 
 In der Abbildung zeichnet der Knoten der RTSP-Quelle den Livevideofeed von der Kamera auf und überträgt ihn an einen Knoten des [Bewegungserkennungsprozessors](media-graph-concept.md#motion-detection-processor). Sobald im Livevideo eine Bewegung erkannt wird, generiert der Knoten des Bewegungserkennungsprozessors ein Ereignis, das an den Knoten des [Signalgateprozessors](media-graph-concept.md#signal-gate-processor) sowie an den Knoten der IoT Hub-Nachrichtensenke gesendet wird. Der letztere Knoten sendet die Ereignisse an den IoT Edge-Hub. Von dort aus können sie zum Auslösen von Warnungen an andere Ziele weitergeleitet werden. 
 
@@ -44,7 +45,8 @@ Ein Ereignis vom Knoten der Bewegungserkennung steuert den Knoten des Signalgate
 
 In diesem Anwendungsfall können Signale von einem anderen IoT-Sensor verwendet werden, um die Aufzeichnung von Videos auszulösen. Die folgende Abbildung zeigt eine grafische Darstellung eines Mediengraphs zu diesem Anwendungsfall. Die JSON-Darstellung der Graphtopologie eines solchen Mediengraphs finden Sie [hier](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/evr-hubMessage-files/topology.json).
 
-![Videoaufzeichnung auf der Grundlage von Ereignissen aus anderen Quellen](./media/event-based-video-recording/other-sources.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/event-based-video-recording/other-sources.svg" alt-text="Videoaufzeichnung auf der Grundlage von Ereignissen aus anderen Quellen":::
 
 In der Abbildung sendet der externe Sensor Ereignisse an den IoT Edge-Hub. Die Ereignisse werden über den Knoten der [IoT Hub-Nachrichtenquelle](media-graph-concept.md#iot-hub-message-source) an den Knoten des Signalgateprozessors weitergeleitet. Das Verhalten des Knotens des Signalgateprozessors ist mit dem vorherigen Anwendungsfall identisch: Der Knoten öffnet sich, und der Livevideofeed wird über den Knoten der RTSP-Quelle an den Knoten der Dateisenke (oder an den Knoten der Medienobjektsenke) weitergeleitet, wenn er durch das externe Ereignis angesteuert wird. 
 
@@ -54,7 +56,8 @@ Wenn Sie einen Knoten der Dateisenke verwenden, wird das Video im lokalen Dateis
 
 In diesem Anwendungsfall können Sie Videoclips auf der Grundlage eines Signals von einem externen logischen System aufzeichnen. Ein Beispiel für einen Anwendungsfall dieser Art ist die Aufzeichnung eines Videoclips, wenn im Videofeed des Verkehrs auf einer Schnellstraße ein LKW erkannt wird. Die folgende Abbildung zeigt eine grafische Darstellung eines Mediengraphs zu diesem Anwendungsfall. Die JSON-Darstellung der Graphtopologie eines solchen Mediengraphs finden Sie [hier](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json).
 
-![Videoaufzeichnung auf der Grundlage eines externen Rückschlussmoduls](./media/event-based-video-recording/external-inferencing-module.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/event-based-video-recording/external-inferencing-module.svg" alt-text="Videoaufzeichnung auf der Grundlage eines externen Rückschlussmoduls":::
 
 In der Abbildung zeichnet der Knoten der RTSP-Quelle den Livevideofeed von der Kamera auf und überträgt ihn an zwei Branchen: einer enthält den Knoten des [Signalgateprozessors](media-graph-concept.md#signal-gate-processor), und der andere verwendet einen Knoten der [HTTP-Erweiterung](media-graph-concept.md), um Daten an ein externes Logikmodul zu senden. Mithilfe des Knotens der HTTP-Erweiterung kann der Mediengraph Bildframes (im Format JPEG, BMP oder PNG) per REST an einen externen Rückschlussdienst senden. Dieser Signalpfad unterstützt in der Regel nur niedrige Frameraten (< 5 BpS). Mit dem Knoten des [Prozessors für den Frameratenfilter](media-graph-concept.md#frame-rate-filter-processor) können Sie die Framerate des Videos reduzieren, das an den Knoten der HTTP-Erweiterung gesendet wird.
 

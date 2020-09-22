@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: 9ce2ea7da562372e5c1c25d4c0fe9ab410b02a1d
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: dff69f00833cc3f8004befd330d144f4da0e332d
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903406"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566584"
 ---
 # <a name="request-limits-for-translator"></a>Anforderungsgrenzwerte für Translator
 
@@ -31,7 +31,7 @@ In der folgenden Tabelle sind Arrayelement- und Zeichengrenzwerte für jeden Vor
 |:----|:----|:----|:----|
 | Translate | 10.000    | 100   | 10.000 |
 | Transliterate | 5\.000 | 10    | 5\.000 |
-| Detect | 10.000 | 100 |   50.000 |
+| Detect | 50.000 | 100 |   50.000 |
 | BreakSentence | 50.000    | 100 | 50.000 |
 | Wörterbuchsuche| 100 |  10  | 1\.000 |
 | Wörterbuchbeispiele | 100 für Text und 100 für Übersetzung (200 insgesamt)| 10|   2\.000 |

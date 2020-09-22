@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: 2af52d1e7c211ccc0b5c18ed1ecda66d46d80786
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f3a3ba3ee908204668ad9d7201ddfddec0a26f28
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806498"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595943"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>Behandeln von App Service-Problemen in Application Gateway
 
@@ -23,9 +23,8 @@ Es wird beschrieben, wie Sie Probleme diagnostizieren und beheben, die ggf. auft
 
 In diesem Artikel erfahren Sie, wie Sie die folgenden Probleme beheben:
 
-> [!div class="checklist"]
-> * Die App-Dienst-URL wird im Browser verfügbar gemacht, wenn eine Umleitung durchgeführt wird.
-> * Die ARRAffinity-Cookiedomäne des App-Diensts ist auf den App-Dienst-Hostnamen „example.azurewebsites.net“ festgelegt, und nicht auf den ursprünglichen Host.
+* Die App-Dienst-URL wird im Browser verfügbar gemacht, wenn eine Umleitung durchgeführt wird.
+* Die ARRAffinity-Cookiedomäne des App-Diensts ist auf den App-Dienst-Hostnamen „example.azurewebsites.net“ festgelegt, und nicht auf den ursprünglichen Host.
 
 Wenn eine Back-End-Anwendung eine Umleitungsantwort sendet, empfiehlt es sich u.U., den Client an eine andere als die von der Back-End-Anwendung angegebene URL umzuleiten. Dies kann ratsam sein, wenn ein App-Dienst hinter einem Anwendungsgateway gehostet wird und erfordert, dass der Client eine Umleitung zu seinem relativen Pfad durchführt. Ein Beispiel ist eine Umleitung von „contoso.azurewebsites.net/path1“ zu „contoso.azurewebsites.net/path2“. 
 

@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 08/28/2020
-ms.openlocfilehash: 2cb06b6802fdc4cebd04f687266f5ac08dde82c0
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: e813921727ee08bf9a76c0a2dbfe15f45fe4db79
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269874"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89490070"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Freigeben und Empfangen von Daten aus Azure SQL-Datenbank und Azure Synapse Analytics
 
@@ -34,7 +34,7 @@ Wenn Daten in einer Tabelle empfangen werden und die Zieltabelle noch nicht vorh
 
 ### <a name="prerequisites-for-sql-source"></a>Voraussetzungen für SQL-Quellen
 
-* Eine Azure SQL-Datenbank- oder Azure Synapse Analytics-Instanz (ehemals Azure SQL Data Warehouse) mit Tabellen und Ansichten, die Sie freigeben möchten.
+* Eine Azure SQL-Datenbank- oder Azure Synapse Analytics-Instanz (ehemals SQL Data Warehouse) mit Tabellen und Ansichten, die Sie freigeben möchten
 * Berechtigung zum Schreiben in die Datenbanken in SQL Server (unter *Microsoft.Sql/servers/databases/write*). Diese Berechtigung ist in der Rolle „Mitwirkender“ vorhanden.
 * Berechtigung der Datenfreigabe für den Zugriff auf Data Warehouse. Die Berechtigung kann mit folgenden Schritten gewährt werden: 
     1. Legen Sie sich selbst als Azure Active Directory-Administrator für den SQL-Server fest.
@@ -150,7 +150,7 @@ Wenn Sie Daten in Azure Storage empfangen möchten, finden Sie nachfolgend eine 
 Wenn Sie Daten in Azure SQL-Datenbank oder Azure Synapse Analytics empfangen möchten, finden Sie nachfolgend eine Liste mit Voraussetzungen, die erfüllt sein müssen.
 
 * Berechtigung zum Schreiben in Datenbanken auf dem SQL-Server (unter *Microsoft.Sql/servers/databases/write*). Diese Berechtigung ist in der Rolle „Mitwirkender“ vorhanden. 
-* Berechtigung zum Zugreifen auf die Azure SQL-Datenbank- oder Azure SQL Data Warehouse-Instanz für die verwaltete Identität der Datenfreigaberessource. Die Berechtigung kann mit folgenden Schritten gewährt werden: 
+* Berechtigung zum Zugreifen auf die Azure SQL-Datenbank- oder Azure Synapse Analytics-Instanz für die verwaltete Identität der Datenfreigaberessource. Die Berechtigung kann mit folgenden Schritten gewährt werden: 
     1. Legen Sie sich selbst als Azure Active Directory-Administrator für den SQL-Server fest.
     1. Stellen Sie mithilfe von Azure Active Directory eine Verbindung mit der Azure SQL-Datenbank-/Data Warehouse-Instanz her.
     1. Führen Sie mithilfe des Abfrage-Editors (Vorschauversion) das folgende Skript aus, um die verwaltete Data Share-Identität als „db_datareader, db_datawriter, db_ddladmin“ hinzuzufügen. Sie müssen mithilfe von Active Directory und nicht über die SQL Server-Authentifizierung eine Verbindung herstellen. 

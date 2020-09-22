@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 03/19/2020
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: 7a0e29d3fc90d50f23247a9c11cd4846aa4fb158
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8763c07ee91f228f63880c2be16497a7a78c6453
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806028"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595269"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-redirection-using-azure-powershell"></a>Erstellen eines Anwendungsgateways mit Umleitung auf URL-Pfadbasis mithilfe von Azure PowerShell
 
@@ -20,11 +20,10 @@ Sie können mit Azure PowerShell [Routingregeln auf URL-Pfadbasis](application-g
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
-> [!div class="checklist"]
-> * Einrichten des Netzwerks
-> * Erstellen eines Anwendungsgateways
-> * Hinzufügen der Listener und Routingregeln
-> * Erstellen von VM-Skalierungsgruppen für Back-End-Pools
+* Einrichten des Netzwerks
+* Erstellen eines Anwendungsgateways
+* Hinzufügen der Listener und Routingregeln
+* Erstellen von VM-Skalierungsgruppen für Back-End-Pools
 
 Das folgende Beispiel zeigt Websitedatenverkehr, der von den Ports 8080 und 8081 gesendet und an die gleichen Back-End-Pools geleitet wird:
 

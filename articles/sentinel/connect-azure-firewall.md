@@ -9,12 +9,12 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 08/30/2020
 ms.author: yelevin
-ms.openlocfilehash: 167cfe6b8fb1394291866e51ec14ec91bf9035a1
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 05a2869152def0fc9a44defaa21f0643d9fdbb08
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89183505"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504875"
 ---
 # <a name="connect-data-from-azure-firewall"></a>Verknüpfen von Daten aus Azure Firewall
 
@@ -40,7 +40,7 @@ Informieren Sie sich ausführlicher über das [Überwachen von Azure Firewall-Pr
 
 1. Aktivieren Sie **Diagnoseprotokolle** für alle Firewalls, deren Protokolle Sie verbinden möchten:
 
-    1. Wählen Sie den Link [Open Azure Firewall resource >](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Network%2FazureFirewalls) (Azure Firewall-Ressource öffnen >) aus.
+    1. Wählen Sie den Link **Open Azure Firewall resource >** (Azure Firewall-Ressource öffnen >) aus.
 
     1. Wählen Sie im Navigationsmenü für **Firewalls** die Option **Diagnoseeinstellungen** aus.
 

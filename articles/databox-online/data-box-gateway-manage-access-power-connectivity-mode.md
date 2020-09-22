@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: how-to
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 98431e7a451aa54dfdee2126d4ce94b8b0b0fb84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1035b0afee9821020673acbc813b31cba3e2fd90
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339211"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893951"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>Verwalten des Zugriffs, der Energieeinstellungen und des Konnektivitätsmodus für Azure Data Box Gateway
 
@@ -57,16 +57,16 @@ Beim Workflow zum Zurücksetzen muss der Benutzer das alte Kennwort nicht kennen
 
 ## <a name="manage-resource-access"></a>Verwalten des Ressourcenzugriffs
 
-Für das Erstellen Ihrer Azure Stack Edge-/Data Box Gateway-, IoT Hub- und Azure Storage-Ressourcen müssen Sie mindestens über Berechtigungen als Mitwirkender auf einer Ressourcengruppenebene verfügen. Außerdem müssen die entsprechenden Ressourcenanbieter registriert sein. Für sämtliche Vorgänge mit Aktivierungsschlüssel und Anmeldeinformationen sind zudem Berechtigungen für die Azure Active Directory-Graph-API erforderlich. Diese werden in den folgenden Abschnitten beschrieben.
+Für das Erstellen Ihrer Azure Stack Edge Pro-, Data Box Gateway-, IoT Hub- und Azure Storage-Ressourcen müssen Sie mindestens über Berechtigungen als Mitwirkender auf Ressourcengruppenebene verfügen. Außerdem müssen die entsprechenden Ressourcenanbieter registriert sein. Für sämtliche Vorgänge mit Aktivierungsschlüssel und Anmeldeinformationen sind zudem Berechtigungen für die Azure Active Directory-Graph-API erforderlich. Diese werden in den folgenden Abschnitten beschrieben.
 
 ### <a name="manage-microsoft-graph-api-permissions"></a>Verwalten von Microsoft Graph-API-Berechtigungen
 
-Wenn Sie den Aktivierungsschlüssel für das Azure Stack Edge-Gerät generieren oder Vorgänge ausführen, die Anmeldeinformationen erfordern, müssen Sie über Berechtigungen für die Microsoft Graph-API verfügen. Im Anschluss folgen einige Beispiele für Vorgänge, die Anmeldeinformationen erfordern:
+Wenn Sie den Aktivierungsschlüssel für das Azure Stack Edge Pro-Gerät generieren oder Vorgänge ausführen, die Anmeldeinformationen erfordern, müssen Sie über Berechtigungen für die Microsoft Graph-API verfügen. Im Anschluss folgen einige Beispiele für Vorgänge, die Anmeldeinformationen erfordern:
 
 -  Erstellen einer Freigabe mit einem zugeordneten Speicherkonto
 -  Erstellen eines Benutzers, der auf die Freigaben auf dem Gerät zugreifen kann
 
-Sie müssen über `User`-Zugriff auf den Active Directory-Mandanten verfügen, da Sie die Aktion `Read all directory objects` ausführen können müssen. Gastbenutzer sind nicht zur Aktion `Read all directory objects` berechtigt. Für Gastbenutzer tritt bei Vorgängen wie dem Generieren eines Aktivierungsschlüssels, dem Erstellen einer Freigabe auf Ihrem Azure Stack Edge-Gerät oder dem Erstellen eines Benutzers jeweils ein Fehler auf.
+Sie müssen über `User`-Zugriff auf den Active Directory-Mandanten verfügen, da Sie die Aktion `Read all directory objects` ausführen können müssen. Gastbenutzer sind nicht zur Aktion `Read all directory objects` berechtigt. Für Gastbenutzer tritt bei Vorgängen wie dem Generieren eines Aktivierungsschlüssels, dem Erstellen einer Freigabe auf Ihrem Azure Stack Edge Pro-Gerät oder dem Erstellen eines Benutzers jeweils ein Fehler auf.
 
 Weitere Informationen dazu, wie Sie Benutzern Zugriff auf die Microsoft Graph-API gewähren, finden Sie unter [Referenz zu Microsoft Graph-Berechtigungen](https://docs.microsoft.com/graph/permissions-reference).
 
@@ -89,7 +89,7 @@ Führen Sie den folgenden Befehl aus, um eine Liste mit den registrierten Ressou
 Get-AzResourceProvider -ListAvailable |where {$_.Registrationstate -eq "Registered"}
 ```
 
-Für das Azure Stack Edge-Gerät sollte `Microsoft.DataBoxEdge` registriert werden. Zum Registrieren von `Microsoft.DataBoxEdge` muss der Abonnementadministrator den folgenden Befehl ausführen:
+Für das Azure Stack Edge Pro-Gerät sollte `Microsoft.DataBoxEdge` registriert werden. Zum Registrieren von `Microsoft.DataBoxEdge` muss der Abonnementadministrator den folgenden Befehl ausführen:
 
 ```PowerShell
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge

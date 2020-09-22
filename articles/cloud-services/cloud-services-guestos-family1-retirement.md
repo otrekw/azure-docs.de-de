@@ -9,12 +9,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 5/21/2017
 ms.author: raiye
-ms.openlocfilehash: f08352d4a79b8c27b2c163516f44edf578fbe3a7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c930636f9af45edc66670c3f757333fef8e8756e
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092642"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458823"
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>Deaktivierungsinformationen für die Azure-Gastbetriebssystemfamilie 1
 Die Deaktivierung der Betriebssystemfamilie 1 wurde erstmals am 1. Juni 2013 angekündigt.
@@ -32,7 +32,7 @@ Ihre Clouddienste sind betroffen, wenn eine der folgenden Bedingungen zutrifft:
 2. In der Datei "ServiceConfiguration.cscfg" Ihres Clouddiensts ist kein expliziter Wert für "osFamily" angegeben. In diesem Fall verwendet das System aktuell den Standardwert "1".
 3. Im Azure-Portal ist der Wert Ihrer Gastbetriebssystemfamilie als „Windows Server 2008“ angegeben.
 
-Um herauszufinden, welcher Ihrer Clouddienste unter welcher Betriebssystemfamilie ausgeführt wird, können Sie das folgende Skript in Azure PowerShell ausführen. Sie müssen jedoch zuerst [Azure PowerShell einrichten](/powershell/azure/). Weitere Informationen zum Skript finden Sie unter [Azure Guest OS Family 1 End of Life: June 2014](https://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx) (Einstellung der Azure-Gastbetriebssystemfamilie 1: Juni 2014).
+Um herauszufinden, welcher Ihrer Clouddienste unter welcher Betriebssystemfamilie ausgeführt wird, können Sie das folgende Skript in Azure PowerShell ausführen. Sie müssen jedoch zuerst [Azure PowerShell einrichten](/powershell/azure/). Weitere Informationen zum Skript finden Sie unter [Azure Guest OS Family 1 End of Life: June 2014](https://docs.microsoft.com/archive/blogs/ryberry/azure-guest-os-family-1-end-of-life-june-2014) (Einstellung der Azure-Gastbetriebssystemfamilie 1: Juni 2014).
 
 ```Powershell
 foreach($subscription in Get-AzureSubscription) {

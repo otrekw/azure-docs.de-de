@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2a10a32a98a240f740f48f7b25e6fa6ac3f2e873
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 175b2268727364040640b319c24019bdf9b48df9
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009510"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433703"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Vorbereiten und Anpassen eines VHD-Masterimages
 
@@ -93,7 +93,7 @@ So deaktivieren Sie „Automatische Updates“ über lokale Gruppenrichtlinien:
 
 Sie können auch den folgenden Befehl an einer Eingabeaufforderung ausführen, um automatische Updates zu deaktivieren.
 
-```batch
+```cmd
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v NoAutoUpdate /t REG_DWORD /d 1 /f
 ```
 
@@ -101,7 +101,7 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v NoAutoUpd
 
 Führen Sie diesen Befehl aus, um ein Startlayout für Windows 10-PCs anzugeben.
 
-```batch
+```cmd
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v SpecialRoamingOverrideAllowed /t REG_DWORD /d 1 /f
 ```
 
@@ -119,7 +119,7 @@ Führen Sie die Umleitung für Zeitzonen wie folgt durch:
 
 Sie können diesen Befehl auch auf dem Masterimage ausführen, um Zeitzonen umzuleiten:
 
-```batch
+```cmd
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fEnableTimeZoneRedirection /t REG_DWORD /d 1 /f
 ```
 
@@ -132,7 +132,7 @@ Für Windows Virtual Desktop-Sitzungshosts, für die Windows 10 Enterprise oder
 
 Sie können die Einstellung auch über die Registrierung ändern, indem Sie den folgenden Befehl ausführen:
 
-```batch
+```cmd
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy" /v 01 /t REG_DWORD /d 0 /f
 ```
 
@@ -153,19 +153,19 @@ In diesem Abschnitt wird die Konfiguration der Anwendungen und Betriebssysteme b
 
 Führen Sie diesen Befehl aus, um unter Windows 10 Enterprise (mehrere Sitzungen) über den Feedback-Hub Telemetriedaten zu erfassen:
 
-```batch
+```cmd
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v AllowTelemetry /t REG_DWORD /d 3 /f
 ```
 
 Führen Sie den folgenden Befehl aus, um Watson-Abstürze zu beheben:
 
-```batch
+```cmd
 remove CorporateWerServer* from Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting
 ```
 
 Geben Sie die folgenden Befehle in den Registrierungs-Editor ein, um Probleme mit der Unterstützung der 5k-Auflösung zu beheben. Sie müssen die Befehle ausführen, bevor Sie den parallelen Stapel aktivieren können.
 
-```batch
+```cmd
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MaxMonitors /t REG_DWORD /d 4 /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MaxXResolution /t REG_DWORD /d 5120 /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MaxYResolution /t REG_DWORD /d 2880 /f

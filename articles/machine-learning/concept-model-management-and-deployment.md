@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: d1d14fa9730e3ddd47378a45ff7a1442bdee69ac
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 394d048ce5978c2789e47b984abebaf30dec5f93
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543383"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893571"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: Verwaltung, Bereitstellung und Überwachung von Modellen mit Azure Machine Learning
 
@@ -158,7 +158,7 @@ Bei Azure ML können Sie den End-to-End-Überwachungspfad Ihrer gesamten ML-Ress
 > [!TIP]
 > Während einige Informationen zu Modellen und Datasets automatisch erfasst werden, können Sie mithilfe von __Tags__ zusätzliche Informationen hinzufügen. Wenn Sie in Ihrem Arbeitsbereich nach registrierten Modellen und Datasets suchen, können Sie Tags als Filter verwenden.
 >
-> Die Zuordnung eines Datasets zu einem registrierten Modell ist ein optionaler Schritt. Informationen zum Referenzieren eines Datasets beim Registrieren eines Modells finden Sie in der Referenz zur [Model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py)-Klasse.
+> Die Zuordnung eines Datasets zu einem registrierten Modell ist ein optionaler Schritt. Informationen zum Referenzieren eines Datasets beim Registrieren eines Modells finden Sie in der Referenz zur [Model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py&preserve-view=true)-Klasse.
 
 
 ## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>Benachrichtigen, Automatisieren und Warnen bei Ereignissen im ML-Lebenszyklus
@@ -184,7 +184,7 @@ Es gibt keine allgemeingültige Antwort auf die Frage „Woher weiß ich, ob ich
 - Vergleichen der Ergebnisse des neuen Modells mit denen des alten Modells
 - Verwenden von vordefinierten Kriterien, um zu entscheiden, ob das alte Modell ersetzt werden soll 
 
-Ein Thema der oben genannten Schritte ist, dass das erneute Trainieren automatisch und nicht ad hoc erfolgen sollte. [Azure Machine Learning-Pipelines](concept-ml-pipelines.md) sind eine gute Antwort für die Erstellung von Workflows in Bezug auf Datenvorbereitung, Training, Überprüfung und Bereitstellung. Lesen Sie [Erneutes Trainieren von Modellen mit dem Azure Machine Learning-Designer (Vorschau)](how-to-retrain-designer.md), um zu sehen, wie Pipelines und der Azure Machine Learning-Designer in ein Szenario für erneutes Trainieren passen. 
+Ein Thema der oben genannten Schritte ist, dass das erneute Trainieren automatisch und nicht ad hoc erfolgen sollte. [Azure Machine Learning-Pipelines](concept-ml-pipelines.md) sind eine gute Antwort für die Erstellung von Workflows in Bezug auf Datenvorbereitung, Training, Überprüfung und Bereitstellung. Lesen Sie [Erneutes Trainieren von Modellen mit dem Azure Machine Learning-Designer](how-to-retrain-designer.md), um zu sehen, wie Pipelines und der Azure Machine Learning-Designer in ein Szenario für erneutes Trainieren passen. 
 
 ## <a name="automate-the-ml-lifecycle"></a>Automatisieren des ML-Lebenszyklus 
 

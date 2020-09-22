@@ -3,16 +3,16 @@ title: Erstellen eines Kontos im kommerziellen Marketplace in Partner Center
 description: Erfahren Sie, wie Sie ein Konto im kommerziellen Microsoft-Marketplace in Partner Center erstellen.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/01/2020
 author: parthpandyaMSFT
 ms.author: parthp
-ms.openlocfilehash: 862922ff3d0e09d1d1fdc864886852aed910c7df
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 64788544971eaa7738013ab1a0475771c13bab88
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326646"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647655"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Erstellen eines Kontos im kommerziellen Marketplace in Partner Center
 

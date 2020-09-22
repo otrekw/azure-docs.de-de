@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 08/10/2020
-ms.openlocfilehash: 806c19100594f449288d810b68d072dd7de23646
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: bf62fa995724b8e1fff757e89945cc39db3d9842
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88189819"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893703"
 ---
 # <a name="score-svd-recommender"></a>Bewerten des SVD-Empfehlungsmoduls
 
-In diesem Artikel wird die Verwendung des Moduls „Score SVD Recommender“ (SVD-Empfehlungsmodul bewerten) im Azure Machine Learning-Designer (Vorschauversion) beschrieben. Verwenden Sie dieses Modul zum Erstellen von Vorhersagen mit einem trainierten Empfehlungsmodell, das auf dem SVD-Algorithmus (Singular Value Decomposition, Singulärwertzerlegung) basiert.
+In diesem Artikel wird die Verwendung des Moduls Score SVD Recommender im Azure Machine Learning-Designer beschrieben. Verwenden Sie dieses Modul zum Erstellen von Vorhersagen mit einem trainierten Empfehlungsmodell, das auf dem SVD-Algorithmus (Singular Value Decomposition, Singulärwertzerlegung) basiert.
 
 Das SVD-Empfehlungsmodel kann zwei verschiedene Arten von Vorhersagen generieren:
 

@@ -10,12 +10,12 @@ author: ramakoni1
 ms.author: ramakoni
 ms.reviewer: carlrab,vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: e1a018b06b7ee7230612d2ee6a582214a817547b
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 4a1cfcbf110ab375a0fb357c1856fd0567a1c57a
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985223"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459418"
 ---
 # <a name="troubleshooting-connectivity-issues-and-other-errors-with-azure-sql-database-and-azure-sql-managed-instance"></a>Beheben von Konnektivitätsproblemen und anderen Fehlern mit Azure SQL-Datenbank und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -194,7 +194,7 @@ Verwenden Sie zum Beheben dieses Problems die folgenden Methoden:
 2. Bestimmen Sie den **Eingabepuffer** für „Blockiert andere Prozesse“.
 3. Optimieren Sie die Abfrage „Blockiert andere Prozesse“.
 
-   Eine ausführliche Problembehandlung finden Sie unter [Wird meine Abfrage in der Cloud einwandfrei ausgeführt?](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx)
+   Eine ausführliche Problembehandlung finden Sie unter [Wird meine Abfrage in der Cloud einwandfrei ausgeführt?](https://docs.microsoft.com/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud)
 
 Wenn die Datenbank trotz Berücksichtigung von Blockierungen und zeitintensiven Abfragen konsistent an ihre Grenzen stößt, sollten Sie ein Upgrade auf eine Edition mit mehr Ressourcen ([Editionen](https://azure.microsoft.com/pricing/details/sql-database/)) in Betracht ziehen.
 
@@ -261,7 +261,7 @@ Wenn diese Fehlermeldung wiederholt auftritt, führen Sie die folgenden Schritte
 
 Sie sollten auch Batchverarbeitung für Ihre Abfragen in Erwägung ziehen. Weitere Informationen finden Sie unter [Gewusst wie: Verbessern der Leistung von SQL-Datenbankanwendungen mithilfe von Batchverarbeitung](https://docs.microsoft.com/azure/sql-database/sql-database-use-batching-to-improve-performance).
 
-Eine ausführliche Problembehandlung finden Sie unter [Wird meine Abfrage in der Cloud einwandfrei ausgeführt?](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx)
+Eine ausführliche Problembehandlung finden Sie unter [Wird meine Abfrage in der Cloud einwandfrei ausgeführt?](https://docs.microsoft.com/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud)
 
 ### <a name="error-40551-the-session-has-been-terminated-because-of-excessive-tempdb-usage"></a>Fehler 40551: Die Sitzung wurde aufgrund übermäßiger TEMPDB-Auslastung beendet
 
@@ -292,7 +292,7 @@ Versuchen Sie, die Anzahl der Zeilen zu verringern, die sofort ausgeführt werde
 
 Um dieses Problem zu umgehen, versuchen Sie, die Abfrage zu optimieren.
 
-Eine ausführliche Problembehandlung finden Sie unter [Wird meine Abfrage in der Cloud einwandfrei ausgeführt?](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx)
+Eine ausführliche Problembehandlung finden Sie unter [Wird meine Abfrage in der Cloud einwandfrei ausgeführt?](https://docs.microsoft.com/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud)
 
 ### <a name="table-of-additional-resource-governance-error-messages"></a>Tabelle mit zusätzlichen Fehlermeldungen bezüglich Ressourcenkontrolle
 
@@ -356,7 +356,7 @@ System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
 ClientConnectionId:<Client connection ID>
 ```
 
-Wenn die Ausnahme durch Abfrageprobleme ausgelöst wird, ähnelt der Aufrufstapel dem folgenden (beachten Sie den Verweis auf die **SqlCommand**-Klasse). [Optimieren Sie Ihre Abfragen](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx) in dieser Situation.
+Wenn die Ausnahme durch Abfrageprobleme ausgelöst wird, ähnelt der Aufrufstapel dem folgenden (beachten Sie den Verweis auf die **SqlCommand**-Klasse). [Optimieren Sie Ihre Abfragen](https://docs.microsoft.com/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud) in dieser Situation.
 
 ```
   at System.Data.SqlClient.SqlCommand.ExecuteReader()

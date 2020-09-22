@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: damaerte
-ms.openlocfilehash: 766245dcfe42c16106df6beed938fe2f04af05cc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f824bddf833a1e2c01a3b779abc2c5252d8e0547
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286661"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468656"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Übersicht über Azure Cloud Shell
 
@@ -33,7 +33,7 @@ Es gibt drei Möglichkeiten, auf Cloud Shell zuzugreifen:
 
     ![Symbol zum Starten von Cloud Shell über das Azure-Portal](media/overview/portal-launch-icon.png)
 
-- **Codeausschnitte:** Klicken Sie unter [docs.microsoft.com](https://docs.microsoft.com) und [Microsoft Learn](https://docs.microsoft.com/learn/) auf die Schaltfläche **Try It** (Ausprobieren), die in den Codeausschnitten für die Azure CLI und Azure PowerShell angezeigt werden:
+- **Codeausschnitte:** Klicken Sie unter [docs.microsoft.com]() und [Microsoft Learn](/learn/) auf die Schaltfläche **Try It** (Ausprobieren), die in den Codeausschnitten für die Azure CLI und Azure PowerShell angezeigt werden:
 
     ```azurecli-interactive
     az account show
@@ -87,8 +87,8 @@ Cloud Shell ist ein flexibles Tool mit verschiedenen Zugriffsmöglichkeiten:
 
 * [portal.azure.com](https://portal.azure.com)
 * [shell.azure.com](https://shell.azure.com)
-* [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure)
-* [Azure PowerShell-Dokumentation](https://docs.microsoft.com/powershell/azure/)
+* [Azure CLI-Dokumentation](/cli/azure)
+* [Azure PowerShell-Dokumentation](/powershell/azure/)
 * [Azure Mobile App](https://azure.microsoft.com/features/azure-portal/mobile-app/)
 * [Azure-Kontoerweiterung für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
@@ -111,7 +111,7 @@ Erfahren Sie mehr darüber, wie Sie ein [neues oder vorhandenes Speicherkonto](p
 * Cloud Shell stellt $HOME dauerhaft unter Verwendung eines 5-GB-Images bereit, das sich in Ihrer Dateifreigabe befindet.
 * Berechtigungen werden auf einen normalen Linux-Benutzer in Bash festgelegt.
 
-Weitere Informationen erhalten Sie unter [Bash in Cloud Shell](features.md) und [PowerShell in Cloud Shell](features-powershell.md).
+Weitere Informationen erhalten Sie unter [Bash in Cloud Shell](features.md) und [PowerShell in Cloud Shell](./features.md).
 
 ## <a name="pricing"></a>Preise
 

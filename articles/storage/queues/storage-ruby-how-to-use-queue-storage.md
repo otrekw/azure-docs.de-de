@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: ac47747f7789b23801900804522681e5a4b10e5a
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: c29b864fb3a547599f32c00c9e8c27cbdb0e0a92
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078698"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459605"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>Verwenden des Warteschlangenspeichers mit Ruby
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -151,7 +151,7 @@ azure_queue_service.delete_queue("test-queue")
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie sich nun mit den Grundlagen des Warteschlangenspeichers vertraut gemacht haben, folgen Sie diesen Links, um zu erfahren, wie komplexere Speicheraufgaben ausgeführt werden.
 
-* Besuchen Sie den [Blog des Azure-Speicherteams](https://blogs.msdn.com/b/windowsazurestorage/)
+* Besuchen Sie den [Blog des Azure-Speicherteams](https://docs.microsoft.com/archive/blogs/windowsazurestorage/)
 * Besuchen Sie das [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) -Repository auf GitHub
 
 Einen Vergleich zwischen dem in diesem Artikel erläuterten Azure-Warteschlangendienst und den im Artikel [Verwenden von Service Bus-Warteschlangen](https://azure.microsoft.com/develop/ruby/how-to-guides/service-bus-queues/) erörterten Azure Service Bus-Warteschlangen finden Sie unter [Azure-Warteschlangen und Service Bus-Warteschlangen – Vergleich und Gegenüberstellung](../../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md).

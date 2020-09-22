@@ -6,16 +6,16 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: ad03538cafcce9c1d660d0f2ac5eb3c6ae5f4f38
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 775aa44043e9c8900bd0c040ab603736314ea34e
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84694904"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469982"
 ---
 # <a name="create-an-azure-ad-tenant-for-azure-red-hat-openshift"></a>Erstellen eines Azure AD-Mandanten für Azure Red Hat OpenShift
 
-Für Microsoft Azure Red Hat OpenShift ist ein [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)-Mandant (Azure AD-Mandant) erforderlich, in dem Sie Ihren Cluster erstellen. Ein *Mandant* ist eine dedizierte Instanz von Azure AD, die Unternehmen oder App-Entwicklern bereitgestellt wird, wenn diese sich für Azure, Microsoft Intune oder Microsoft 365 registrieren und damit eine Geschäftsbeziehung mit Microsoft eingehen. Jeder Azure AD-Mandant unterscheidet sich von anderen Azure AD-Mandanten und verfügt über eigene Identitäten für Geschäfts-, Schul- oder Unikonten sowie über eigene App-Registrierungen.
+Für Microsoft Azure Red Hat OpenShift ist ein [Azure Active Directory](../active-directory/develop/quickstart-create-new-tenant.md)-Mandant (Azure AD-Mandant) erforderlich, in dem Sie Ihren Cluster erstellen. Ein *Mandant* ist eine dedizierte Instanz von Azure AD, die Unternehmen oder App-Entwicklern bereitgestellt wird, wenn diese sich für Azure, Microsoft Intune oder Microsoft 365 registrieren und damit eine Geschäftsbeziehung mit Microsoft eingehen. Jeder Azure AD-Mandant unterscheidet sich von anderen Azure AD-Mandanten und verfügt über eigene Identitäten für Geschäfts-, Schul- oder Unikonten sowie über eigene App-Registrierungen.
 
 Wenn Sie noch keinen Azure AD-Mandanten besitzen, können Sie mit den folgenden Schritten einen erstellen.
 
@@ -39,7 +39,7 @@ So erstellen Sie einen Mandanten:
 
 ## <a name="resources"></a>Ressourcen
 
-Weitere Informationen zu [Azure AD-Mandanten](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) finden Sie in der [Azure Active Directory-Dokumentation](https://docs.microsoft.com/azure/active-directory/).
+Weitere Informationen zu [Azure AD-Mandanten](../active-directory/develop/quickstart-create-new-tenant.md) finden Sie in der [Azure Active Directory-Dokumentation](../active-directory/index.yml).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
