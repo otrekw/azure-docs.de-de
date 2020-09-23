@@ -3,12 +3,12 @@ title: Einrichten einer privaten Verbindung
 description: Richten Sie einen privaten Endpunkt in einer Containerregistrierung ein, und ermöglichen Sie den Zugriff auf ein virtuelles Netzwerk über eine private Verbindung. Der Zugriff auf private Links ist ein Feature der Dienstebene Premium.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: f21ea0db8d5aff306f2476e8f24191f60b532f34
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: da07d35ad944db8e9b8a7bac0602fff23cd222d8
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298231"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488744"
 ---
 # <a name="connect-privately-to-an-azure-container-registry-using-azure-private-link"></a>Herstellen einer privaten Verbindung mit einer Azure-Containerregistrierung über Azure Private Link
 
@@ -17,13 +17,9 @@ Beschränken Sie den Zugriff auf eine Registrierung, indem Sie den Registrierung
 
 Sie können für den privaten Endpunkt der Registrierung [DNS-Einstellungen konfigurieren](../private-link/private-endpoint-overview.md#dns-configuration), sodass die Einstellungen zur zugeordneten privaten IP-Adresse der Registrierung aufgelöst werden. Dank DNS-Konfiguration können Clients und Dienste im Netzwerk weiterhin unter dem vollqualifizierten Domänennamen der Registrierung (beispielsweise *myregistry.azurecr.io*) auf die Registrierung zugreifen. 
 
-Diese Funktion ist auf der Dienstebene **Premium** der Containerregistrierung verfügbar. Weitere Informationen zu den Tarifen des Registrierungsdiensts und zu den Einschränkungen finden Sie unter [Azure Container Registry-Tarife](container-registry-skus.md).
+Diese Funktion ist auf der Dienstebene **Premium** der Containerregistrierung verfügbar. Zurzeit können maximal 10 private Endpunkte für eine Registrierung eingerichtet werden. Weitere Informationen zu den Tarifen des Registrierungsdiensts und zu den Einschränkungen finden Sie unter [Azure Container Registry-Tarife](container-registry-skus.md).
 
-
-## <a name="things-to-know"></a>Wichtige Hinweise
-
-* Zurzeit ist die Überprüfung von Images mit Azure Security Center in einer Registrierung, die mit einem privaten Endpunkt konfiguriert ist, nicht verfügbar.
-* Zurzeit können maximal 10 private Endpunkte für eine Registrierung eingerichtet werden.
+[!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

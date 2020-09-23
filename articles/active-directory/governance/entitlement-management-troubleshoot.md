@@ -16,12 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 216cff03ac6ce64dee9aae1e9daa4a86385eeb0e
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: e230d3a4029d97a328280f581c126c7ec2d0bdb3
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783330"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460795"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Problembehandlung bei der Azure AD-Berechtigungsverwaltung
 
@@ -47,7 +47,7 @@ In diesem Artikel werden einige Punkte beschrieben, die Sie überprüfen sollten
 
 * Wenn Sie ein Teammitglied entfernen, wird es auch aus der Microsoft 365-Gruppe entfernt. Das Entfernen aus der Chatfunktion des Teams kann etwas länger dauern. Weitere Informationen finden Sie unter [Gruppenmitgliedschaft](/microsoftteams/office-365-groups#group-membership).
 
-* Stellen Sie sicher, dass Ihr Verzeichnis nicht für Multi-Geo-Funktionen konfiguriert ist. Die Berechtigungsverwaltung unterstützt aktuell keine Multi-Geo-Standorte für SharePoint Online. SharePoint Online-Standorte müssen sich am standardmäßigen geografischen Standort befinden, um mit der Berechtigungsverwaltung gesteuert werden zu können. Weitere Informationen finden Sie unter [Multi-Geo-Funktionen in OneDrive und SharePoint Online](/Office365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365).
+* Stellen Sie sicher, dass Ihr Verzeichnis nicht für Multi-Geo-Funktionen konfiguriert ist. Die Berechtigungsverwaltung unterstützt aktuell keine Multi-Geo-Standorte für SharePoint Online. SharePoint Online-Standorte müssen sich am standardmäßigen geografischen Standort befinden, um mit der Berechtigungsverwaltung gesteuert werden zu können. Weitere Informationen finden Sie unter [Multi-Geo-Funktionen in OneDrive und SharePoint Online](/Microsoft 365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365).
 
 ## <a name="access-packages"></a>Zugriffspakete
 

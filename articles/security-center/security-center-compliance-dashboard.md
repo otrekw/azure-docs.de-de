@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2019
 ms.author: memildin
-ms.openlocfilehash: a636acab42d14925f507568e8a9fff4693c8f71c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7f235f9255df49c096e224e1754ad2bbdf664423
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519642"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895816"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>Tutorial: Verbessern der Einhaltung gesetzlicher Vorschriften
 ---
@@ -35,8 +35,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Durchlaufen der in diesem Tutorial behandelten Features müssen Sie den Tarif „Standard“ von Security Center verwenden. Sie können Security Center Standard kostenlos testen.
-Weitere Informationen finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/security-center/). Unter [Schnellstarthandbuch zu Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-get-started) wird Schritt für Schritt beschrieben, wie Sie das Upgrade auf den Tarif „Standard“ durchführen.
+Zum Durchlaufen der in diesem Tutorial behandelten Features muss [Azure Defender](azure-defender.md) aktiviert sein. Azure Defender kann 30 Tage lang kostenlos getestet werden.
 
 ##  <a name="assess-your-regulatory-compliance"></a>Bewerten der Einhaltung gesetzlicher Bestimmungen
 
@@ -72,13 +71,13 @@ Mit den Informationen im Dashboard für die Einhaltung gesetzlicher Bestimmungen
 
 1.  Sie können eine bestimmte Ressource auswählen, um weitere Details anzuzeigen und die Empfehlung für diese Ressource zu lösen. <br>Auf der Registerkarte zum **Azure CIS-Standard** können Sie beispielsweise auf die Empfehlung **Sichere Übertragung zum Speicherkonto erforderlich** klicken.
 
-    ![Konformitätsempfehlung](./media/security-center-compliance-dashboard/compliance-recommendation.png)
+    ![Auswählen der Empfehlung **Sichere Übertragung an Speicherkonto erforderlich**](./media/security-center-compliance-dashboard/compliance-recommendation.png)
 
 1. Wenn Sie durch die Empfehlungsinformationen klicken und eine fehlerhafte Ressource auswählen, gelangen Sie direkt zur Aktivierung der **sicheren Speicherübertragung** im Azure-Portal.
 
     Weitere Informationen zur Anwendung der Empfehlungen finden Sie unter [Implementieren von Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md).
 
-    ![Konformitätsempfehlung](./media/security-center-compliance-dashboard/compliance-remediate-recommendation.png)
+    ![Speicherkontokonfiguration](./media/security-center-compliance-dashboard/compliance-remediate-recommendation.png)
 
 1.  Nachdem Sie Lösungsmaßnahmen für die Empfehlungen ergriffen haben, sind die Auswirkungen im Bericht im Dashboard zur Einhaltung gesetzlicher Bestimmungen sichtbar, weil sich Ihre Compliancebewertung verbessert hat.
 

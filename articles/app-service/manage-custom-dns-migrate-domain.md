@@ -6,12 +6,12 @@ ms.assetid: 10da5b8a-1823-41a3-a2ff-a0717c2b5c2d
 ms.topic: article
 ms.date: 08/25/2020
 ms.custom: seodec18
-ms.openlocfilehash: c51745b7760573aa3c6ae067e9a6c1cc315f8e56
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: e1b50675bef0f883ff617b3098a742d3491b3c13
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871393"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484296"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Migrieren eines aktiven DNS-Namens zu Azure App Service
 
@@ -40,7 +40,7 @@ Wenn Sie dann Ihren benutzerdefinierten DNS-Namen von der alten Website zur App 
 
 ### <a name="get-domain-verification-id"></a>Abrufen der Verifizierungs-ID für eine Domäne
 
-Um die Domänenverifizierungs-ID für Ihre App abzurufen, befolgen Sie die Schritte unter [Abrufen der Verifizierungs-ID für eine Domäne](app-service-web-tutorial-custom-domain.md#get-domain-verification-id).
+Um die Domänenverifizierungs-ID für Ihre App abzurufen, befolgen Sie die Schritte unter [Abrufen der Verifizierungs-ID für eine Domäne](app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id).
 
 ### <a name="create-domain-verification-record"></a>Erstellen eines Domänenüberprüfungseintrags
 
@@ -48,9 +48,9 @@ Fügen Sie zum Überprüfen des Domänenbesitzes einen TXT-Eintrag für die Dom�
 
 | DNS-Beispieleintrag | TXT-Host | TXT-Wert |
 | - | - | - |
-| \@ (Stamm) | _asuid_ | [Domänenverifizierungs-ID für Ihre App](app-service-web-tutorial-custom-domain.md#get-domain-verification-id) |
-| www (Unterdomäne) | _asuid.www_ | [Domänenverifizierungs-ID für Ihre App](app-service-web-tutorial-custom-domain.md#get-domain-verification-id) |
-| \* (Platzhalter) | _asuid_ | [Domänenverifizierungs-ID für Ihre App](app-service-web-tutorial-custom-domain.md#get-domain-verification-id) |
+| \@ (Stamm) | _asuid_ | [Domänenverifizierungs-ID für Ihre App](app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id) |
+| www (Unterdomäne) | _asuid.www_ | [Domänenverifizierungs-ID für Ihre App](app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id) |
+| \* (Platzhalter) | _asuid_ | [Domänenverifizierungs-ID für Ihre App](app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id) |
 
 Beachten Sie auf der Seite mit den DNS-Einträgen den Eintragstyp des DNS-Namens, den Sie migrieren möchten. App Service unterstützt Zuordnungen von CNAME- und A-Einträgen.
 

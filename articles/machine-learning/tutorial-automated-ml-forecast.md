@@ -10,20 +10,17 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
 ms.date: 07/10/2020
-ms.openlocfilehash: a244372168cb34f190bd584634bf108f2b5215a5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bbd6f2021a20ff488402bb9d1367feb57c34f582
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092284"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896659"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>Tutorial: Vorhersage des Bedarfs mithilfe von automatisiertem maschinellem Lernen
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+
 
 In diesem Tutorial wird automatisiertes maschinelles Lernen (automatisiertes ML) in Azure Machine Learning Studio verwendet, um ein Zeitreihenvorhersagemodell zur Vorhersage der Mietnachfrage für einen Bike-Sharing-Dienst zu erstellen.
-
->[!IMPORTANT]
-> Die Umgebung für automatisiertes ML in Azure Machine Learning Studio befindet sich in der Vorschauphase. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
 
 Ein Beispiel für ein Klassifizierungsmodell finden Sie in [Tutorial: Erstellen eines Klassifizierungsmodells mit automatisiertem maschinellem Lernen in Azure Machine Learning](tutorial-first-experiment-automated-ml.md).
 
@@ -38,8 +35,8 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Azure Machine Learning-Arbeitsbereich (Enterprise Edition). Sollten Sie über keinen Arbeitsbereich verfügen, [erstellen Sie einen Enterprise Edition-Arbeitsbereich](how-to-manage-workspace.md). 
-    * Automatisiertes maschinelles Lernen in Azure Machine Learning Studio steht nur für Enterprise Edition-Arbeitsbereiche zur Verfügung. 
+* Ein Azure Machine Learning-Arbeitsbereich. Weitere Informationen finden Sie unter [Erstellen eines Azure Machine Learning-Arbeitsbereichs](how-to-manage-workspace.md). 
+
 * Laden Sie die Datendatei [bike-no.csv](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/bike-no.csv) herunter.
 
 ## <a name="get-started-in-azure-machine-learning-studio"></a>Erste Schritte in Azure Machine Learning Studio

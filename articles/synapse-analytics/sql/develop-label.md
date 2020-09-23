@@ -6,17 +6,17 @@ author: filippopovic
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 47b476cbc6997ca5ec63968bdc269e2273662100
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 596b18332fc490f72ad185699fc59bf4521eca69
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427078"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032179"
 ---
 # <a name="use-query-labels-in-synapse-sql"></a>Verwenden von Abfragebezeichnungen in Synapse SQL
 In diesem Artikel finden Sie wichtige Tipps zur Verwendung von Abfragebezeichnungen in Synapse SQL.

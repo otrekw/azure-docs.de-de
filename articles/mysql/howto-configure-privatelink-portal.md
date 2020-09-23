@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 37c5a0fb1addf9f84c8a237b4d185d140553535e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 1a99a91152f8308af122677ad3b8df3fb5005dbb
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825972"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896182"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>Erstellen und Verwalten von Private Link für Azure Database for MySQL im Portal
 
@@ -134,7 +134,7 @@ In diesem Abschnitt erstellen Sie einen MySQL-Server und fügen diesem einen pri
 
 2. Wählen Sie unter **Privat Link-Center – Übersicht** bei der Option **Build a private connection to a service** (Private Verbindung mit einem Dienst herstellen) **Start** aus.
 
-    ![Übersicht über Private Link](media/concepts-data-access-and-security-private-link/privatelink-overview.png)
+    :::image type="content" source="media/concepts-data-access-and-security-private-link/privatelink-overview.png" alt-text="Übersicht über Private Link":::
 
 1. Geben Sie unter **Privaten Endpunkt erstellen – Grundlagen** die folgenden Informationen ein, oder wählen Sie sie aus:
 
@@ -178,7 +178,7 @@ In diesem Abschnitt erstellen Sie einen MySQL-Server und fügen diesem einen pri
 1. Klicken Sie auf **Überprüfen + erstellen**. Sie werden zur Seite **Überprüfen und erstellen** weitergeleitet, auf der Azure Ihre Konfiguration überprüft. 
 2. Wenn die Meldung **Überprüfung erfolgreich** angezeigt wird, wählen Sie **Erstellen** aus. 
 
-    ![Erstellter Private Link](media/concepts-data-access-and-security-private-link/show-mysql-private-link.png)
+    :::image type="content" source="media/concepts-data-access-and-security-private-link/show-mysql-private-link.png" alt-text="Erstellter Private Link":::
 
     > [!NOTE] 
     > Der FQDN in der DNS-Einstellung des Kunden wird nicht in die konfigurierte private IP-Adresse aufgelöst. Sie müssen eine DNS-Zone für den konfigurierten FQDN einrichten, wie [hier](../dns/dns-operations-recordsets-portal.md) gezeigt.
@@ -226,7 +226,7 @@ Stellen Sie nach der Erstellung von **myVm** über das Internet eine Verbindung 
 
 3. Testen Sie die Verbindung über den privaten Link für den MySQL-Server mit einem beliebigen verfügbaren Client. Im folgenden Beispiel wird für diesen Vorgang [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) verwendet.
 
-4. Geben Sie in **Neue Verbindung** diese Informationen ein, oder wählen Sie sie aus:
+4. Geben Sie in **Neue Verbindung** die folgenden Informationen ein, oder wählen Sie sie aus:
 
     | Einstellung | Wert |
     | ------- | ----- |
@@ -243,7 +243,7 @@ Stellen Sie nach der Erstellung von **myVm** über das Internet eine Verbindung 
 
 7. (Optional) Erstellen Sie Informationen, oder fragen Sie sie vom MySQL-Server ab.
 
-8. Schließen Sie die Remotedesktopverbindung mit myVm.
+8. Schließen Sie die Remotedesktopverbindung mit „myVm“.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 Wenn Sie Ihre Arbeit mit dem privaten Endpunkt, dem MySQL-Server und dem virtuellen Computer abgeschlossen haben, löschen Sie die Ressourcengruppe und alle darin enthaltenen Ressourcen:
