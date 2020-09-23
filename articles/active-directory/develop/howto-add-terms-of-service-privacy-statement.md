@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 517d6f7f06025b35dd27fa69d1de1b4139de6c8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 73c4931533e3926086320531a0800a572d13808c
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478007"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89535771"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Gewusst wie: Konfigurieren von Nutzungsbedingungen und Datenschutzbestimmungen für eine App
 
@@ -58,7 +58,7 @@ Nachdem die Nutzungsbedingungen und Datenschutzbestimmungen fertig konfiguriert 
 ### <a name="using-the-azure-portal"></a><a name="azure-portal"></a>Verwenden des Azure-Portals
 Führen Sie im Azure-Portal die folgenden Schritte aus.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, wählen Sie den richtigen AzureAD-Mandanten aus (nicht B2C).
 2. Navigieren Sie zum Abschnitt **App-Registrierungen**, und wählen Sie Ihre App aus.
 3. Öffnen Sie den Bereich **Branding**.
 4. Füllen Sie die Felder **URL zu den Vertragsbedingungen** und **URL zur Datenschutzerklärung** aus.
@@ -69,6 +69,11 @@ Führen Sie im Azure-Portal die folgenden Schritte aus.
 ### <a name="using-the-app-object-json"></a><a name="app-object-json"></a>Verwenden des JSON-Codes des App-Objekts
 
 Wenn Sie direkt den JSON-Code des App-Objekts ändern möchten, können Sie über den Manifest-Editor im Azure-Portal oder App-Registrierungsportal Links zu den Nutzungsbedingungen und Datenschutzbestimmungen Ihrer App einfügen.
+
+1. Navigieren Sie zum Abschnitt **App-Registrierungen**, und wählen Sie Ihre App aus.
+2. Öffnen Sie den Bereich **Manifest**.
+3. STRG+F, suchen Sie nach „informationalUrls“. Geben Sie die Informationen ein.
+4. Speichern Sie die Änderungen.
 
 ```json
     "informationalUrls": { 

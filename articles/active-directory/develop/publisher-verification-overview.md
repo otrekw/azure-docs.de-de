@@ -1,6 +1,6 @@
 ---
 title: Übersicht über die Herausgeberüberprüfung – Microsoft Identity Platform | Azure
-description: Hier erhalten Sie eine Übersicht über das Herausgeberüberprüfungsprogramm (Vorschauversion) für die Microsoft Identity Platform. Darin werden die Vorteile, die Programmanforderungen und häufig gestellte Fragen aufgeführt. Wenn eine Anwendung als durch den Herausgeber verifiziert markiert ist, bedeutet dies, dass der Herausgeber seine Identität mithilfe eines Microsoft Partner Network-Kontos überprüft hat, für das der Überprüfungsvorgang abgeschlossen wurde, und dieses MPN-Konto seiner Anwendungsregistrierung zugeordnet hat.
+description: Hier erhalten Sie eine Übersicht über das Programm zur Herausgeberüberprüfung für die Microsoft Identity Platform. Darin werden die Vorteile, die Programmanforderungen und häufig gestellte Fragen aufgeführt. Wenn eine Anwendung als durch den Herausgeber verifiziert markiert ist, bedeutet dies, dass der Herausgeber seine Identität mithilfe eines Microsoft Partner Network-Kontos überprüft hat, für das der Überprüfungsvorgang abgeschlossen wurde, und dieses MPN-Konto seiner Anwendungsregistrierung zugeordnet hat.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,16 +12,16 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 286f813c825bcc05ce8e9fa43df5dc0299625277
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 0c30b5305fb5496db86a20be7a37f36b894ecc8b
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89068472"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089750"
 ---
-# <a name="publisher-verification-preview"></a>Herausgeberüberprüfung (Vorschauversion)
+# <a name="publisher-verification"></a>Herausgeberüberprüfung
 
-Die Herausgeberüberprüfung (Vorschauversion) unterstützt Administratoren und Endbenutzer dabei, die Authentizität von Anwendungsentwicklern zu verstehen, die in die Microsoft Identity Platform integriert sind. Wenn eine Anwendung als durch den Herausgeber verifiziert markiert ist, bedeutet dies, dass der Herausgeber seine Identität mithilfe eines [Microsoft Partner Network](https://partner.microsoft.com/membership)-Kontos überprüft hat, für das der [Überprüfungsvorgang](/partner-center/verification-responses) abgeschlossen wurde, und dieses MPN-Konto seiner Anwendungsregistrierung zugeordnet hat. 
+Die Herausgeberüberprüfung unterstützt Administratoren und Endbenutzer dabei, die Authentizität von Anwendungsentwicklern zu verstehen, die in die Microsoft Identity Platform integriert sind. Wenn eine Anwendung als durch den Herausgeber verifiziert markiert ist, bedeutet dies, dass der Herausgeber seine Identität mithilfe eines [Microsoft Partner Network](https://partner.microsoft.com/membership)-Kontos überprüft hat, für das der [Überprüfungsvorgang](/partner-center/verification-responses) abgeschlossen wurde, und dieses MPN-Konto seiner Anwendungsregistrierung zugeordnet hat. 
 
 In der Azure AD-Zustimmungsaufforderung und auf anderen Bildschirmen wird ein blauer Überprüfungsbadge angezeigt: ![Zustimmungsaufforderung](./media/publisher-verification-overview/consent-prompt.png)
 
@@ -33,7 +33,7 @@ Die Herausgeberüberprüfung bietet die folgenden Vorteile:
 
 - **Verbessertes Branding**: In der Azure AD-[Zustimmungsaufforderung](application-consent-experience.md), auf der Seite „Unternehmens-Apps“ und auf weiteren von Endbenutzern und Administratoren verwendeten Benutzeroberflächen wird ein Überprüfungsbadge angezeigt. 
 
-- **Reibungslosere Einführung in Unternehmen**: Administratoren können neue Benutzerzustimmungsrichtlinien konfigurieren, und der Status der Herausgeberüberprüfung stellt eines der wichtigsten Richtlinienkriterien dar. 
+- **Reibungslosere Einführung in Unternehmen**: Administratoren können [Benutzerzustimmungsrichtlinien](../manage-apps/configure-user-consent.md) konfigurieren, wobei der Status der Herausgeberüberprüfung eines der wichtigsten Richtlinienkriterien darstellt. 
 
 - **Verbesserte Risikobewertung**: Die Erkennungen von Microsoft für „riskante“ Zustimmungsanforderungen enthalten die Herausgeberüberprüfung als Signal. 
 
@@ -52,6 +52,8 @@ Für die Herausgeberüberprüfung bestehen bestimmte Voraussetzungen, von denen 
 
     -  In Partner Center muss dieser Benutzer über die folgenden [Rollen](/partner-center/permissions-overview) verfügen: „MPN-Administrator“, „Kontoadministrator“ oder „Globaler Administrator“ (dies ist eine freigegebene Rolle, die in Azure AD verwaltet wird).
     
+-  Der Benutzer, der die Überprüfung durchführt, muss sich mit [mehrstufiger Authentifizierung](../authentication/howto-mfa-getstarted.md) anmelden.
+
 -  Der Herausgeber stimmt den [Microsoft Identity Platform-Nutzungsbedingungen für Entwickler](/legal/microsoft-identity-platform/terms-of-use) zu.
 
 Entwickler, die diese Voraussetzungen bereits erfüllt haben, können innerhalb weniger Minuten überprüft werden. Wenn die Anforderungen nicht erfüllt sind, ist die Einrichtung kostenlos. 

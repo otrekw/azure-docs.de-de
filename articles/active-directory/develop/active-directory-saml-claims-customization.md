@@ -13,12 +13,12 @@ ms.date: 10/22/2019
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: f35e5971374f54940396f602a23ffa0ae3abd015
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 5de505ff9573fb186ca2bbe4f5bd6783022eb3ef
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552831"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421457"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Anpassen von Ansprüchen im SAML-Token für Unternehmensanwendungen
 
@@ -88,11 +88,11 @@ Sie können in Azure AD definierten Ansprüchen einen beliebigen konstanten (sta
 
 1. Geben Sie als **Quellattribut** den konstanten Wert (ohne Anführungszeichen) entsprechend Ihrer Organisation ein, und klicken Sie auf **Speichern**.
 
-    ![Öffnen des Abschnitts „Benutzerattribute und Ansprüche“ im Azure-Portal](./media/active-directory-saml-claims-customization/organization-attribute.png)
+    ![Abschnitt „Organisationsattribute und Ansprüche“ im Azure-Portal](./media/active-directory-saml-claims-customization/organization-attribute.png)
 
 1. Der konstante Wert wird wie unten dargestellt angezeigt.
 
-    ![Öffnen des Abschnitts „Benutzerattribute und Ansprüche“ im Azure-Portal](./media/active-directory-saml-claims-customization/edit-attributes-claims.png)
+    ![Abschnitt „Attribute und Ansprüche bearbeiten“ im Azure-Portal](./media/active-directory-saml-claims-customization/edit-attributes-claims.png)
 
 ### <a name="special-claims---transformations"></a>Besondere Ansprüche – Transformationen
 
@@ -121,7 +121,7 @@ So wenden Sie eine Transformation auf ein Benutzerattribut an
 2. Wählen Sie in der Dropdownliste der Transformationen die Funktion aus. Abhängig von der ausgewählten Funktion müssen Sie Parameter und einen konstanten Wert angeben, die in der Transformation ausgewertet werden sollen. Weitere Informationen zu den verfügbaren Funktionen finden Sie in der folgenden Tabelle.
 3. Wenn Sie mehrere Transformationen anwenden möchten, klicken Sie auf **Transformation hinzufügen**. Sie können maximal zwei Transformationen auf einen Anspruch anwenden. Beispielsweise könnten Sie zuerst das E-Mail-Präfix von `user.mail`extrahieren. Dann könnten Sie die Zeichenfolge in Großbuchstaben umwandeln.
 
-   ![NameID-Wert (Wert für Namensbezeichner) bearbeiten](./media/active-directory-saml-claims-customization/sso-saml-multiple-claims-transformation.png)
+   ![Transformieren mehrerer Ansprüche](./media/active-directory-saml-claims-customization/sso-saml-multiple-claims-transformation.png)
 
 Zum Transformieren von Ansprüchen können Sie die folgenden Funktionen verwenden.
 
@@ -129,8 +129,8 @@ Zum Transformieren von Ansprüchen können Sie die folgenden Funktionen verwende
 |----------|-------------|
 | **ExtractMailPrefix()** | Entfernt das Domänensuffix aus der E-Mail-Adresse oder dem Benutzerprinzipalnamen. Dadurch wird nur der erste Teil des Benutzernamens übergeben (z.B. „joe_smith“ anstelle von joe_smith@contoso.com). |
 | **Join()** | Erstellt einen neuen Wert durch Verknüpfen von zwei Attributen. Optional können Sie ein Trennzeichen zwischen den beiden Attributen verwenden. Bei der NameID-Anspruchstransformation beschränkt sich die Verknüpfung auf eine verifizierte Domäne. Wenn der ausgewählte Wert für die Benutzer-ID über eine Domäne verfügt, wird der Benutzername extrahiert, an den ausgewählte überprüfte Domäne angefügt werden soll. Wenn Sie z.B. die E-Mail-Adresse (joe_smith@contoso.com) als Wert für die Benutzer-ID und „contoso.onmicrosoft.com“ als überprüfte Domäne verwenden, erhalten Sie joe_smith@contoso.onmicrosoft.com. |
-| **ToLower()** | Konvertiert die Zeichen des ausgewählten Attributs in Kleinbuchstaben. |
-| **ToUpper()** | Konvertiert die Zeichen des ausgewählten Attributs in Großbuchstaben. |
+| **ToLowercase()** | Konvertiert die Zeichen des ausgewählten Attributs in Kleinbuchstaben. |
+| **ToUppercase()** | Konvertiert die Zeichen des ausgewählten Attributs in Großbuchstaben. |
 | **Contains()** | Gibt ein Attribut oder eine Konstante aus, wenn die Eingabe dem angegebenen Wert entspricht. Andernfalls können Sie eine andere Ausgabe angeben, wenn keine Übereinstimmung vorhanden ist.<br/>Beispiel: Sie möchten einen Anspruch ausgeben, dessen Wert die E-Mail-Adresse des Benutzers ist, wenn er die Domäne „@contoso.com“ enthält, andernfalls soll der Benutzerprinzipalname ausgegeben werden. Hierzu konfigurieren Sie die folgenden Werte:<br/>*Parameter 1 (Eingabe)* : user.email<br/>*Wert*: „@contoso.com“<br/>Parameter 2 (Ausgabe): user.email<br/>Parameter 3 (Ausgabe, wenn keine Übereinstimmung vorhanden ist): user.userprincipalname |
 | **EndWith()** | Gibt ein Attribut oder eine Konstante aus, wenn die Eingabe mit dem angegebenen Wert endet. Andernfalls können Sie eine andere Ausgabe angeben, wenn keine Übereinstimmung vorhanden ist.<br/>Beispiel: Sie möchten einen Anspruch ausgeben, dessen Wert der Mitarbeiter-ID des Benutzers entspricht, wenn die Mitarbeiter-ID mit „000“ endet. Andernfalls soll ein Erweiterungsattribut ausgegeben werden. Hierzu konfigurieren Sie die folgenden Werte:<br/>*Parameter 1 (Eingabe)* : user.employeeid<br/>*Value*: „000“<br/>Parameter 2 (Ausgabe): user.employeeid<br/>Parameter 3 (Ausgabe, wenn keine Übereinstimmung vorhanden ist): user.extensionattribute1 |
 | **StartWith()** | Gibt ein Attribut oder eine Konstante aus, wenn die Eingabe mit dem angegebenen Wert beginnt. Andernfalls können Sie eine andere Ausgabe angeben, wenn keine Übereinstimmung vorhanden ist.<br/>Beispiel: Sie möchten einen Anspruch ausgeben, bei dem der Wert der Mitarbeiter-ID des Benutzer entspricht, wenn das Land bzw. die Region mit „US“ beginnt. Andernfalls soll ein Erweiterungsattribut ausgegeben werden. Hierzu konfigurieren Sie die folgenden Werte:<br/>*Parameter 1 (Eingabe)* : user.country<br/>*Value*: „US“<br/>Parameter 2 (Ausgabe): user.employeeid<br/>Parameter 3 (Ausgabe, wenn keine Übereinstimmung vorhanden ist): user.extensionattribute1 |

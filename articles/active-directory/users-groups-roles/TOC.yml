@@ -16,7 +16,7 @@
       href: groups-quickstart-expiration.md
     - name: Festlegen einer Benennungsrichtlinie für Gruppen
       href: groups-quickstart-naming-policy.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Erstellen einer dynamischen Gruppe
       href: groups-dynamic-tutorial.md
@@ -165,18 +165,24 @@
           href: directory-manage-roles-portal.md
         - name: Benutzerdefinierte Rollen
           items:
-            - name: Benutzerdefinierte Rollen
+            - name: Übersicht über benutzerdefinierte Rollen
               href: roles-custom-overview.md
             - name: Erstellen einer benutzerdefinierten Rolle
               href: roles-create-custom.md
             - name: Anzeigen der Zuweisungen von benutzerdefinierten Rollen
               href: roles-view-assignments.md
-            - name: "Zuweisen von Rollen im Azure\_AD Admin Center"
+            - name: Zuweisen benutzerdefinierter Rollen im Azure-Portal
               href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
             - name: Zuweisen von benutzerdefinierten Rollen in PowerShell
               href: roles-assign-powershell.md
+            - name: Zuweisen benutzerdefinierter Rollen für Unternehmens-Apps
+              href: custom-enterprise-apps.md
             - name: Benutzerdefinierte Rollenberechtigungen
-              href: roles-custom-available-permissions.md
+              items:
+                - name: App-Registrierungsberechtigungen
+                  href: roles-custom-available-permissions.md
+                - name: Berechtigungen für Unternehmens-Apps
+                  href: custom-enterprise-app-permissions.md
             - name: Delegieren von App-Administratorberechtigungen
               href: roles-delegate-app-roles.md
         - name: Verwenden von Gruppen zum Verwalten von Rollenzuweisungen

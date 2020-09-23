@@ -13,12 +13,12 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: d89f0d08fec0b0f341094d422b1091de5a61055e
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: bccdb830fba4d55266dc9eff8f06c5ac4e3f2a34
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115763"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706182"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Wie und warum werden Anwendungen zu Azure AD hinzugefügt?
 
@@ -70,9 +70,9 @@ Der Dienstprinzipal kann Folgendes enthalten:
 
 * Anmeldung von Benutzern bei einer in Azure AD integrierten Drittanbieteranwendung
   * Bei der Anmeldung werden die Benutzer aufgefordert, der Anwendung neben weiteren Berechtigungen auch die Berechtigung für den Zugriff auf deren Profil zu gewähren. Der erste Benutzer, der hierzu seine Zustimmung erteilt, bewirkt, dass dem Verzeichnis ein Dienstprinzipal hinzugefügt wird, der die Anwendung darstellt.
-* Anmeldung von Benutzern bei Microsoft-Onlinediensten wie [Office 365](https://products.office.com/)
-  * Wenn Sie Office 365 abonnieren oder ein Testabonnement starten, werden im Verzeichnis ein oder mehrere Dienstprinzipale erstellt, die die verschiedenen Dienste darstellen, mit denen die Funktionen von Office 365 bereitgestellt werden.
-  * Manche Office 365-Dienste wie beispielsweise SharePoint erstellen fortlaufend neue Dienstprinzipale, um eine sichere Kommunikation zwischen den Komponenten (einschließlich Workflows) zu ermöglichen.
+* Anmeldung von Benutzern bei Microsoft-Onlinediensten wie [Microsoft 365](https://products.office.com/)
+  * Wenn Sie Microsoft 365 abonnieren oder ein Testabonnement starten, werden im Verzeichnis ein oder mehrere Dienstprinzipale erstellt, die die verschiedenen Dienste darstellen, mit denen die Funktionen von Microsoft 365 bereitgestellt werden.
+  * Manche Microsoft 365-Dienste wie beispielsweise SharePoint erstellen fortlaufend neue Dienstprinzipale, um eine sichere Kommunikation zwischen den Komponenten (einschließlich Workflows) zu ermöglichen.
 * Hinzufügen einer Anwendung aus dem App-Katalog durch einen Administrator (dadurch wird ebenfalls ein zugrunde liegendes Anwendungsobjekt erstellt)
 * Hinzufügen einer Anwendung zur Verwendung des [Azure AD-Anwendungsproxys](../manage-apps/application-proxy.md)
 * Verbinden einer Anwendung für einmaliges Anmelden über SAML oder einmaliges Anmelden (SSO) per Kennwort
@@ -116,7 +116,7 @@ Anwendungen werden Azure AD hinzugefügt, damit sie die von Azure AD bereitgeste
 * Einmaliges Anmelden (SSO) durch Verbund oder Kennwort
 * Benutzerbereitstellung und -synchronisierung
 * Rollenbasierte Zugriffssteuerung – Definition von Anwendungsrollen für rollenbasierte Autorisierungsprüfungen in einer Anwendung mithilfe des Verzeichnisses
-* OAuth-Autorisierungsdienste – werden von Office 365 und anderen Microsoft-Anwendungen zum Autorisieren des Zugriffs auf APIs und Ressourcen verwendet
+* OAuth-Autorisierungsdienste – werden von Microsoft 365 und anderen Microsoft-Anwendungen zum Autorisieren des Zugriffs auf APIs und Ressourcen verwendet
 * Anwendungsveröffentlichung und Proxy – Veröffentlichung einer Anwendung aus einem privaten Netzwerk im Internet
 
 ## <a name="who-has-permission-to-add-applications-to-my-azure-ad-instance"></a>Wer hat die Berechtigung zum Hinzufügen von Anwendungen zu meiner Azure AD-Instanz?

@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: e1c931b37cbe155d62aaffe47e36d84afa547638
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 4fca84c8e5aa562572792968d0438a61be5ab91b
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89068642"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601468"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Gewusst wie: Anpassen von in Token ausgegebenen Ansprüchen für eine bestimmte App in einem Mandanten (Vorschau)
 
@@ -301,7 +301,7 @@ Das ID-Element identifiziert, welche Eigenschaft in der Quelle den Wert für den
 | Benutzer | companyname| Name der Organisation |
 | Benutzer | streetaddress | Anschrift |
 | Benutzer | postalcode | Postleitzahl |
-| Benutzer | preferredlanguange | Bevorzugte Sprache |
+| Benutzer | preferredlanguage | Bevorzugte Sprache |
 | Benutzer | onpremisesuserprincipalname | Lokaler UPN |*
 | Benutzer | mailNickname | E-Mail-Kontoname |
 | Benutzer | extensionattribute1 | Erweiterungsattribut 1 |
