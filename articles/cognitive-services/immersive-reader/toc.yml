@@ -1,14 +1,9 @@
 - name: Dokumentation zum plastischen Reader
   href: index.yml
-- name: Übersicht
-  items:
-    - name: Worum handelt es sich beim plastischen Reader?
-      href: Overview.md
-- name: Schnellstarts
-  expanded: true
-  items:
-    - name: Verwenden der Clientbibliothek
-      href: ./quickstarts/client-libraries.md
+- name: Worum handelt es sich beim plastischen Reader?
+  href: Overview.md
+- name: Schnellstart
+  href: ./quickstarts/client-libraries.md
 - name: Tutorials
   items:
     - name: Starten des plastischen Readers (Android)

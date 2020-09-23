@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 4bd5b2d3715376aaca689c4589c3aab41a78f514
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: d25c8908b46608ac64bcf135404a070740413fe0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120907"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907385"
 ---
 # <a name="restart-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Neustarten eines Azure Database for PostgreSQL-Einzelservers im Azure-Portal
 In diesem Thema wird erläutert, wie Sie einen Azure Database for PostgreSQL-Server neu starten können. Es kann vorkommen, dass Sie Ihren Server zu Wartungszwecken neu starten müssen. In diesem Fall kommt es zu einem kurzen Ausfall, weil der Vorgang vom Server ausgeführt wird.
@@ -32,19 +32,19 @@ Mit den folgenden Schritten wird der PostgreSQL-Server neu gestartet:
 
 2. Klicken Sie auf der Seite **Übersicht** des Servers auf der Symbolleiste auf **Neu starten**.
 
-   ![Azure Database for PostgreSQL – Übersicht – Schaltfläche „Neu starten“](./media/howto-restart-server-portal/2-server.png)
+   :::image type="content" source="./media/howto-restart-server-portal/2-server.png" alt-text="Azure Database for PostgreSQL – Übersicht – Schaltfläche „Neu starten“":::
 
 3. Klicken Sie auf **Ja**, um den Neustart des Servers zu bestätigen.
 
-   ![Azure Database for PostgreSQL – Neustart bestätigen](./media/howto-restart-server-portal/3-restart-confirm.png)
+   :::image type="content" source="./media/howto-restart-server-portal/3-restart-confirm.png" alt-text="Azure Database for PostgreSQL – Neustart bestätigen":::
 
 4. Beachten Sie, dass sich der Serverstatus in „Wird neu gestartet“ ändert.
 
-   ![Azure Database for PostgreSQL – Status „Wird neu gestartet“](./media/howto-restart-server-portal/4-restarting-status.png)
+   :::image type="content" source="./media/howto-restart-server-portal/4-restarting-status.png" alt-text="Azure Database for PostgreSQL – Status „Wird neu gestartet“":::
 
 5. Vergewissern Sie sich, dass der Neustart des Servers erfolgreich war.
 
-   ![Azure Database for PostgreSQL – Erfolgreicher Neustart](./media/howto-restart-server-portal/5-restart-success.png)
+   :::image type="content" source="./media/howto-restart-server-portal/5-restart-success.png" alt-text="Azure Database for PostgreSQL – Erfolgreicher Neustart":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

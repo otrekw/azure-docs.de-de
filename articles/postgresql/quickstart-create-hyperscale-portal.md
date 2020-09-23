@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 08/17/2020
-ms.openlocfilehash: 977082b7f9055b90ee5c93913154934741d93772
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1a16283f3d04c9ad331a04c3a36b49055635d76e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547697"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906485"
 ---
 # <a name="quickstart-create-a-hyperscale-citus-server-group-in-the-azure-portal"></a>Schnellstart: Erstellen einer Hyperscale (Citus)-Servergruppe im Azure-Portal
 
@@ -138,6 +138,5 @@ In den vorherigen Schritten haben Sie Azure-Ressourcen in einer Servergruppe ers
 
 In diesem Schnellstart haben Sie erfahren, wie Sie eine Hyperscale-Servergruppe (Citus) bereitstellen. Sie haben mithilfe von psql eine Verbindung mit ihr hergestellt, haben ein Schema erstellt und Daten verteilt.
 
-Als Nächstes arbeiten Sie ein Tutorial zum Erstellen skalierbarer mehrinstanzenfähiger Anwendungen durch.
-> [!div class="nextstepaction"]
-> [Entwerfen einer mehrinstanzenfähigen Datenbank](https://aka.ms/hyperscale-tutorial-multi-tenant)
+- Tutorial zum [Erstellen skalierbarer mehrinstanzenfähiger Anwendungen](https://aka.ms/hyperscale-tutorial-multi-tenant)
+- Bestimmen der besten [Anfangsgröße](howto-hyperscale-scaling.md#picking-initial-size) für Ihre Servergruppe

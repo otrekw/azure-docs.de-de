@@ -1,6 +1,6 @@
 ---
-title: Machine Learning und KI mit ONNX in Azure SQL Edge (Vorschau)
-description: Beim maschinellen Lernen in Azure SQL Edge (Vorschau) werden Modelle im ONNX-Format (Open Neural Network Exchange) unterstützt. ONNX ist ein offenes Format, das Sie zum Austauschen von Modellen zwischen verschiedenen Frameworks und Tools für maschinelles Lernen verwenden können.
+title: Maschinelles Lernen und KI mit ONNX in Azure SQL Edge
+description: Beim maschinellen Lernen in Azure SQL Edge werden Modelle im ONNX-Format (Open Neural Network Exchange) unterstützt. ONNX ist ein offenes Format, das Sie zum Austauschen von Modellen zwischen verschiedenen Frameworks und Tools für maschinelles Lernen verwenden können.
 keywords: SQL Edge bereitstellen
 services: sql-edge
 ms.service: sql-edge
@@ -9,16 +9,16 @@ ms.topic: conceptual
 author: dphansen
 ms.author: davidph
 ms.date: 05/19/2020
-ms.openlocfilehash: 2db6c728ac35c6fc2f1fee1a602725371e448104
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47c040b0fad0211af413141a5b16b587d41d3b08
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85368055"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907144"
 ---
-# <a name="machine-learning-and-ai-with-onnx-in-sql-edge-preview"></a>Machine Learning und KI mit ONNX in SQL Edge (Vorschau)
+# <a name="machine-learning-and-ai-with-onnx-in-sql-edge"></a>Machine Learning und KI mit ONNX in SQL Edge
 
-Beim maschinellen Lernen in Azure SQL Edge (Vorschau) werden Modelle im [ONNX-Format (Open Neural Network Exchange)](https://onnx.ai/) unterstützt. ONNX ist ein offenes Format, das Sie zum Austauschen von Modellen zwischen verschiedenen [Frameworks und Tools für maschinelles Lernen](https://onnx.ai/supported-tools) verwenden können.
+Beim maschinellen Lernen in Azure SQL Edge werden Modelle im [ONNX-Format (Open Neural Network Exchange)](https://onnx.ai/) unterstützt. ONNX ist ein offenes Format, das Sie zum Austauschen von Modellen zwischen verschiedenen [Frameworks und Tools für maschinelles Lernen](https://onnx.ai/supported-tools) verwenden können.
 
 ## <a name="overview"></a>Übersicht
 
@@ -55,4 +55,4 @@ Die Modelleingaben sollten so strukturiert werden, dass jede Eingabe in das Mode
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Bereitstellen von SQL Edge über das Azure-Portal](deploy-portal.md)
-- [Bereitstellen eines ONNX-Modells in Azure SQL Edge (Vorschau)](deploy-onnx.md)
+- [Bereitstellen eines ONNX-Modells in Azure SQL Edge](deploy-onnx.md)

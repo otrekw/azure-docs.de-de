@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/23/2018
 ms.author: robinsh
-ms.openlocfilehash: e7253747d95917e34725cc7c6c034b1306f65e50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69372e4c212e2ce81bcd4c91d460aa191a1d3476
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708075"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087846"
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli"></a>Erstellen eines IoT Hubs mit der Azure-Befehlszeilenschnittstelle
 
@@ -44,21 +44,21 @@ Verwenden Sie die Azure CLI zum Erstellen einer Ressourcengruppe, und fügen Sie
 
 1. Wenn Sie einen IoT Hub erstellen, müssen Sie ihn in einer Ressourcengruppe erstellen. Verwenden Sie entweder eine vorhandene Ressourcengruppe, oder führen Sie den folgenden [Befehl zum Erstellen einer Ressourcengruppe](https://docs.microsoft.com/cli/azure/resource) aus:
     
-   ```azurecli
+   ```azurecli-interactive
    az group create --name {your resource group name} --location westus
    ```
 
    > [!TIP]
    > Im vorherigen Beispiel wird die Ressourcengruppe am Standort „USA, Westen“ erstellt. Mit dem folgenden Befehl können Sie eine Liste mit verfügbaren Standorten anzeigen: 
    >
-   >``` bash
-   >az account list-locations -o table
-   >```
+   > ```azurecli-interactive
+   > az account list-locations -o table
+   > ```
    >
 
 2. Führen Sie den folgenden [Befehl zum Erstellen einer IoT Hub-Instanz](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-create) in Ihrer Ressourcengruppe aus, und verwenden Sie dabei einen global eindeutigen Namen für Ihre IoT Hub-Instanz:
     
-   ```azurecli
+   ```azurecli-interactive
    az iot hub create --name {your iot hub name} \
       --resource-group {your resource group name} --sku S1
    ```
@@ -74,14 +74,14 @@ Mit dem vorherigen Befehl wird ein kostenpflichtiger IoT Hub im S1-Tarif erstell
 
 Führen Sie zum [Löschen einer IoT Hub-Instanz](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-delete) den folgenden Befehl aus:
 
-```azurecli
+```azurecli-interactive
 az iot hub delete --name {your iot hub name} -\
   -resource-group {your resource group name}
 ```
 
 Führen Sie zum [Löschen einer Ressourcengruppe und aller dazugehörigen Ressourcen](https://docs.microsoft.com/cli/azure/group#az-group-delete) den folgenden Befehl aus:
 
-```azurecli
+```azurecli-interactive
 az group delete --name {your resource group name}
 ```
 

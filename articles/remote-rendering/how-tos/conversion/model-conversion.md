@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: db05c7a5a45221485ecb62c2c90d56be52d5ef48
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49d3fd953d069f4368d28e26265114e574e8100a
+ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808611"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89506660"
 ---
 # <a name="convert-models"></a>Konvertieren von Modellen
 
@@ -58,4 +58,5 @@ Informationen zu den verschiedenen Konvertierungsoptionen finden Sie in [diesem 
 - [Verwenden von Azure Blob Storage für die Modellkonvertierung](blob-storage.md)
 - [REST-API für die Modellkonvertierung](conversion-rest-api.md)
 - [Konfigurieren der Modellkonvertierung](configure-model-conversion.md)
+- [Festlegen des Layouts von Dateien für die Konvertierung](layout-files-for-conversion.md)
 - [Materialzuordnung für Modellformate](../../reference/material-mapping.md)

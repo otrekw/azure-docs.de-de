@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/17/2020
-ms.openlocfilehash: 52f333a8e39dfd8f68666e6438a7d40414b6f958
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 445cd7c55de58b6e5266f76a06d2cbabc75c18b4
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701416"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907179"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Streamen von Daten als Eingabe in Stream Analytics
 
@@ -30,7 +30,7 @@ Stream Analytics unterstützt die Komprimierung für alle Datenstrom-Eingabequel
 
 ## <a name="create-edit-or-test-inputs"></a>Erstellen, Bearbeiten oder Testen von Eingaben
 
-Mit dem [Azure-Portal](stream-analytics-quick-create-portal.md), [Visual Studio](stream-analytics-quick-create-vs.md) und [Visual Studio Code](quick-create-vs-code.md) können Sie Eingaben hinzufügen und anzeigen oder vorhandene Eingaben für Ihren Streamingauftrag bearbeiten. Sie können auch Tests für Eingabeverbindungen und [Abfragen](stream-analytics-manage-job.md#test-your-query) anhand von Beispieldaten über das Azure-Portal, [Visual Studio](stream-analytics-vs-tools-local-run.md) und [Visual Studio Code](visual-studio-code-local-run.md) ausführen. Beim Schreiben einer Abfrage listen Sie die Eingabe in der FROM-Klausel auf. Sie erhalten die Liste mit den verfügbaren Eingaben im Portal über die Seite **Abfrage**. Wenn Sie mehrere Eingaben verwenden möchten, können Sie sie per `JOIN` verknüpfen oder mehrere `SELECT`-Abfragen schreiben.
+Mit dem [Azure-Portal](stream-analytics-quick-create-portal.md), [Visual Studio](stream-analytics-quick-create-vs.md) und [Visual Studio Code](quick-create-visual-studio-code.md) können Sie Eingaben hinzufügen und anzeigen oder vorhandene Eingaben für Ihren Streamingauftrag bearbeiten. Sie können auch Tests für Eingabeverbindungen und [Abfragen](stream-analytics-manage-job.md#test-your-query) anhand von Beispieldaten über das Azure-Portal, [Visual Studio](stream-analytics-vs-tools-local-run.md) und [Visual Studio Code](visual-studio-code-local-run.md) ausführen. Beim Schreiben einer Abfrage listen Sie die Eingabe in der FROM-Klausel auf. Sie erhalten die Liste mit den verfügbaren Eingaben im Portal über die Seite **Abfrage**. Wenn Sie mehrere Eingaben verwenden möchten, können Sie sie per `JOIN` verknüpfen oder mehrere `SELECT`-Abfragen schreiben.
 
 
 ## <a name="stream-data-from-event-hubs"></a>Streamen von Daten aus Event Hubs
@@ -143,7 +143,7 @@ Eingaben im CSV-Format müssen über eine Überschriftenzeile verfügen, um Feld
 > [!NOTE]
 > Stream Analytics unterstützt das Hinzufügen von Inhalten zu einer vorhandenen Blobdatei nicht. Stream Analytics zeigt jede Datei nur einmal an. Des Weiteren werden alle Änderungen, die in der Datei vorgenommen wurden, nachdem der Auftrag die Daten gelesen hat, nicht verarbeitet. Die Methode, alle Daten für eine Blobdatei auf einmal hochzuladen und dann zusätzliche neuere Ereignisse einer anderen, neuen Blobdatei hinzuzufügen, hat sich bewährt.
 
-In Szenarien, in denen fortlaufend viele Blobs hinzugefügt werden und Stream Analytics die Blobs beim Hinzufügen verarbeitet, kann es in seltenen Fällen vorkommen, dass einige Blobs aufgrund der Granularität von `BlobLastModifiedTime`übersprungen werden. Sie können dies entschärfen, indem Sie Blobs in einem Abstand von mindestens zwei Sekunden hochladen. Wenn diese Option nicht praktikabel ist, können Sie Event Hubs verwenden, um große Mengen von Ereignissen zu streamen.
+In Szenarien, in denen fortlaufend viele Blobs hinzugefügt werden und Stream Analytics die Blobs beim Hinzufügen verarbeitet, kann es in seltenen Fällen vorkommen, dass einige Blobs aufgrund der Granularität von `BlobLastModifiedTime` übersprungen werden. Sie können dies entschärfen, indem Sie Blobs in einem Abstand von mindestens zwei Sekunden hochladen. Wenn diese Option nicht praktikabel ist, können Sie Event Hubs verwenden, um große Mengen von Ereignissen zu streamen.
 
 ### <a name="configure-blob-storage-as-a-stream-input"></a>Konfigurieren von Blob Storage als Datenstromeingabe 
 

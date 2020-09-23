@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/19/2020
-ms.openlocfilehash: d3a9f88325f03d0252adf51c5bf221b131d7d33b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de9f4517d134b4a42603291110c6b19f69403412
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84751716"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907033"
 ---
 # <a name="group-data-into-bins-module"></a>Modul „Gruppieren von Daten in Containern“
 
-In diesem Artikel wird beschrieben, wie das Modul „Gruppieren von Daten in Containern“ in Azure Machine Learning Designer (Vorschauversion) verwendet werden kann, um Zahlen zu gruppieren oder die Verteilung fortlaufender Daten zu ändern.
+In diesem Artikel wird beschrieben, wie das Modul „Gruppieren von Daten in Containern“ in Azure Machine Learning Designer verwendet werden kann, um Zahlen zu gruppieren oder die Verteilung fortlaufender Daten zu ändern.
 
 Das Modul „Gruppieren von Daten in Containern“ unterstützt mehrere Optionen für die Quantisierung von Daten. Sie können die Festlegung der Randwerte der Quantisierung und die Aufteilung der Werte auf die Container anpassen. Beispielsweise können Sie folgende Aktionen ausführen:  
 
@@ -50,7 +50,7 @@ Da es so viele Möglichkeiten zur Gruppierung von Daten gibt, die alle anpassbar
 
 ## <a name="how-to-configure-group-data-into-bins"></a>Konfigurieren von „Gruppieren von Daten in Containern“
 
-1. Fügen Sie im Designer (Vorschauversion) das Modul **Gruppieren von Daten in Containern** zu Ihrer Pipeline hinzu. Sie finden dieses Modul in der Kategorie **Data Transformation** (Datentransformation).
+1. Fügen Sie im Designer das Modul **Gruppieren von Daten in Containern** zu Ihrer Pipeline hinzu. Sie finden dieses Modul in der Kategorie **Data Transformation** (Datentransformation).
 
 2. Verbinden Sie das Dataset, das die zu gruppierenden numerischen Daten enthält. Die Quantisierung kann nur auf Spalten angewendet werden, die numerische Daten enthalten. 
 

@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
-ms.date: 04/08/2019
-ms.openlocfilehash: fcad4f02f3fdfcbdc95617da7344d06feb70d1af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.reviewer: ''
+ms.date: 09/21/2020
+ms.openlocfilehash: 38f52178ec9c736f3ee51839678401753365d48d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84343250"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907057"
 ---
 # <a name="what-is-azure-sql-database"></a>Was ist Azure SQL-Datenbank?
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,6 +29,9 @@ Mithilfe von Azure SQL-Datenbank können Sie eine hochverfügbare und hochleistu
 Azure SQL-Datenbank basiert auf der neuesten stabilen Version der [Microsoft SQL Server-Datenbank-Engine](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json). Sie können erweiterte Funktionen zur Abfrageverarbeitung verwenden, wie z. B. [hochleistungsfähige In-Memory-Technologien](../in-memory-oltp-overview.md) und [intelligente Abfrageverarbeitung](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json). Tatsächlich werden die neuesten SQL Server-Funktionen zunächst in Azure SQL-Datenbank und erst dann für SQL Server selbst veröffentlicht. Sie verfügen stets über die neuesten Features von SQL Server, die in Millionen Datenbanken getestet wurden, ohne den Mehraufwand für Patches oder Updates. 
 
 SQL-Datenbank bietet zwei Kaufmodelle, mit denen sich die Leistung komfortabel definieren und skalieren lässt: ein [V-Kern-basiertes Kaufmodell](service-tiers-vcore.md) und ein [DTU-basiertes Kaufmodell](service-tiers-dtu.md). Bei Azure SQL-Datenbank handelt es sich um einen vollständig verwalteten Dienst mit eingebauter Hochverfügbarkeit, Sicherungs- und anderen gängigen Wartungsvorgängen. Microsoft kümmert sich um das Patchen und Aktualisieren des SQL- und Betriebssystemcodes. Sie müssen sich nicht um die zugrunde liegende Infrastruktur kümmern.
+
+Wenn Sie noch nicht mit Azure SQL-Datenbank vertraut sind, sehen Sie sich die das Video mit der *Übersicht über Azure SQL-Datenbank* aus der detaillierten [Azure SQL-Videoserie](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner) an:
+> [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/Azure-SQL-Database-Overview-7-of-61/player]
 
 ## <a name="deployment-models"></a>Bereitstellungsmodelle
 
@@ -162,11 +165,8 @@ SQL-Datenbank bietet eine Reihe von [integrierten Sicherheits- und Konformitäts
 
 ### <a name="advance-threat-protection"></a>Advance Threat Protection
 
-Advanced Data Security ist ein einheitliches Paket für erweiterte SQL-Sicherheitsfunktionen. Dazu zählen die Funktion zur Ermittlung und Klassifizierung sensibler Daten, die Verwaltung von Datenbankrisiken und die Erkennung ungewöhnlicher Aktivitäten, die eine Bedrohung für Ihre Datenbank darstellen können. Hier können Sie diese Funktionen an einer Stelle aktivieren und verwalten.
+Azure Defender für SQL ist ein einheitliches Paket für erweiterte SQL-Sicherheitsfunktionen. Es umfasst Funktionen zur Verwaltung von Datenbankrisiken und Erkennung ungewöhnlicher Aktivitäten, die eine Bedrohung für Ihre Datenbank darstellen können. Hier können Sie diese Funktionen an einer Stelle aktivieren und verwalten.
 
-- [Datenermittlung und -klassifizierung](data-discovery-and-classification-overview.md):
-
-  Dieses Feature bietet in Azure SQL-Datenbank integrierte Funktionen zum Ermitteln, Klassifizieren, Bezeichnen und Schützen sensibler Daten in Ihren Datenbanken. Es kann Einblicke in den Zustand Ihrer Datenbankklassifizierung bereitstellen und den Zugriff auf sensible Daten innerhalb der Datenbank und außerhalb ihrer Grenzen verfolgen.
 - [Sicherheitsrisikobewertung:](sql-vulnerability-assessment.md)
 
   Dieser Dienst kann potenzielle Schwachstellen in der Datenbank ermitteln, nachverfolgen und Sie bei der Beseitigung unterstützen. Er bietet Einblicke in Ihren Sicherheitsstatus, enthält umsetzbare Schritte zum Beheben von Sicherheitsproblemen und verbessert Ihre Datenbanksicherheit.
@@ -182,6 +182,10 @@ Die [Überwachung](../../azure-sql/database/auditing-overview.md) verfolgt Daten
 
 Azure SQL-Datenbank ermöglicht den Schutz Ihrer Daten mithilfe der folgenden Verschlüsselungsmöglichkeiten. Verschlüsseln von Daten während der Übertragung durch [Transport Layer Security (TLS)](https://support.microsoft.com/kb/3135244). Verschlüsseln von ruhenden Daten mittels [transparenter Datenverschlüsselung](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql). Verschlüsseln von Daten bei der Nutzung durch [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine).
 
+### <a name="data-discovery-and-classification"></a>Datenermittlung und -klassifizierung
+
+[Datenermittlung und -klassifizierung](data-discovery-and-classification-overview.md) bietet in Azure SQL-Datenbank integrierte Funktionen zum Ermitteln, Klassifizieren, Bezeichnen und Schützen sensibler Daten in Ihren Datenbanken. Es kann Einblicke in den Zustand Ihrer Datenbankklassifizierung bereitstellen und den Zugriff auf sensible Daten innerhalb der Datenbank und außerhalb ihrer Grenzen verfolgen.
+
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory-Integration und Multi-Factor Authentication
 
 SQL-Datenbank ermöglicht über die [Azure Active Directory-Integration](authentication-aad-overview.md) eine zentrale Verwaltung von Identitäten der Datenbankbenutzer und anderer Microsoft-Dienste. Diese Funktion vereinfacht die Berechtigungsverwaltung und erhöht die Sicherheit. Azure Active Directory unterstützt die [mehrstufige Authentifizierung](authentication-mfa-ssms-overview.md), um die Daten- und Anwendungssicherheit zu erhöhen, während gleichzeitig einmaliges Anmelden unterstützt wird.
@@ -193,10 +197,10 @@ SQL-Datenbank sorgt für einfachere und produktivere Abläufe beim Erstellen und
 |Tool|BESCHREIBUNG|
 |:---|:---|
 |[Azure-Portal](https://portal.azure.com/)|Eine webbasierte Anwendung für die Verwaltung aller Azure-Dienste.|
-|[Azure Data Studio](/sql/azure-data-studio/)|Dies ist ein plattformübergreifendes Datenbanktool, das unter Windows, MacOS und Linux ausgeführt werden kann.|
+|[Azure Data Studio](/sql/azure-data-studio/)|Dies ist ein plattformübergreifendes Datenbanktool, das unter Windows, macOS und Linux ausgeführt werden kann.|
 |[SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)|Eine kostenlose, herunterladbare Clientanwendung für die Verwaltung beliebiger SQL-Infrastrukturen – von SQL Server bis Azure SQL-Datenbank.|
 |[SQL Server Data Tools in Visual Studio](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)|Dies ist eine kostenlos herunterladbare Clientanwendung, mit der Sie relationale SQL Server-Datenbanken, Datenbanken in Azure SQL-Datenbank, Integration Services-Pakete, Analysis Services-Datenmodelle und Reporting Services-Berichte erstellen können.|
-|[Visual Studio Code](https://code.visualstudio.com/docs)|Kostenloser, herunterladbarer Open-Source-Code-Editor für Windows, macOS und Linux. Dieser Editor unterstützt Erweiterungen, etwa die [Erweiterung MSSQLSERVER](https://aka.ms/mssql-marketplace), zum Abfragen von Microsoft SQL Server, Azure SQL-Datenbank und Azure SQL Data Warehouse.|
+|[Visual Studio Code](https://code.visualstudio.com/docs)|Kostenloser, herunterladbarer Open-Source-Code-Editor für Windows, macOS und Linux. Dieser Editor unterstützt Erweiterungen, etwa die [Erweiterung mssql](https://aka.ms/mssql-marketplace), zum Abfragen von Microsoft SQL Server, Azure SQL-Datenbank und Azure Synapse Analytics (früher Azure SQL Data Warehouse).|
 
 Azure SQL-Datenbank unterstützt unter macOS, Linux und Windows das Erstellen von Anwendungen mit Python, Java, Node.js, PHP, Ruby und .NET. SQL-Datenbank unterstützt dieselben [Verbindungsbibliotheken](connect-query-content-reference-guide.md#libraries) wie SQL Server.
 

@@ -8,24 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 06/30/2020
+ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: devx-track-python
-ms.openlocfilehash: 38c2b3cdf40f1924a36ffd84d9dc5f9b2f7f319d
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 7bfe10ea5e0e95bcabf02243bb8b7172a5aec08d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245705"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906745"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-python"></a>Schnellstart: Erkennen von Anomalien in Zeitreihendaten mithilfe der Anomalieerkennungs-REST-API und Python
 
-Dieser Schnellstart unterstützt Sie bei den ersten Schritten in den zwei Erkennungsmodi der Anomalieerkennungs-API, um Anomalien in Ihren Zeitreihendaten zu erkennen. Diese Python-Anwendung sendet zwei API-Anforderungen mit Zeitreihendaten im JSON-Format und erhält entsprechende Antworten.
+Dieser Schnellstart unterstützt Sie bei den ersten Schritten in den zwei Erkennungsmodi der Anomalieerkennungs-API, um Anomalien in Ihren Zeitreihendaten zu erkennen. Diese Python-Anwendung sendet API-Anforderungen mit Zeitreihendaten im JSON-Format und erhält entsprechende Antworten.
 
 | API-Anforderung                                        | Anwendungsausgabe                                                                                                                         |
 |----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
 | Erkennen von Anomalien als Batch                        | Die JSON-Antwort enthält den Anomaliestatus (und weitere Daten) für jeden Datenpunkt in den Zeitreihendaten sowie die Positionen aller erkannten Anomalien. |
-| Erkennen des Anomaliestatus des letzten Datenpunkts | Die JSON-Antwort enthält den Anomaliestatus (und weitere Daten) für den letzten Datenpunkt in den Zeitreihendaten.                                                                                                                                         |
+| Erkennen des Anomaliestatus des letzten Datenpunkts | Die JSON-Antwort enthält den Anomaliestatus (und weitere Daten) für den letzten Datenpunkt in den Zeitreihendaten.|
+| Erkennen von Änderungspunkten, die auf neue Datentrends hindeuten | Die JSON-Antwort, die die erkannten Änderungspunkte in den Zeitreihendaten enthält. |
 
  Diese Anwendung ist zwar in Python geschrieben, an sich ist die API aber ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist. Den Quellcode für diesen Schnellstart finden Sie auf [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/python-detect-anomalies.py).
 
@@ -54,6 +55,7 @@ Dieser Schnellstart unterstützt Sie bei den ersten Schritten in den zwei Erkenn
     |---------|---------|
     |Batcherkennung    | `/anomalydetector/v1.0/timeseries/entire/detect`        |
     |Erkennung am letzten Datenpunkt     | `/anomalydetector/v1.0/timeseries/last/detect`        |
+    | Erkennen von Änderungspunkten | `/anomalydetector/v1.0/timeseries/changepoint/detect`   |
 
     [!code-python[initial endpoint and key variables](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=vars)]
 
@@ -85,11 +87,23 @@ Dieser Schnellstart unterstützt Sie bei den ersten Schritten in den zwei Erkenn
 
 ## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>Erkennen des Anomaliestatus des letzten Datenpunkts
 
-1. Erstellen Sie eine Methode namens `detect_latest()`, um zu ermitteln, ob der letzte Datenpunkt in der Zeitreihe eine Anomalie ist. Rufen Sie die oben erstellte Methode `send_request()` mit dem Endpunkt, der URL, dem Abonnementschlüssel und den JSON-Daten auf.
+1. Erstellen Sie eine Methode namens `detect_latest()`, um zu ermitteln, ob der letzte Datenpunkt in der Zeitreihe eine Anomalie ist. Rufen Sie die obige Methode `send_request()` mit dem Endpunkt, der URL, dem Abonnementschlüssel und den JSON-Daten auf.
 
 2. Rufen Sie für das Ergebnis `json.dumps()` auf, um es zu formatieren, und geben Sie es in der Konsole aus.
 
     [!code-python[Latest point detection](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=detectLatest)]
+
+## <a name="detect-change-points-in-the-data"></a>Erkennen von Änderungspunkten in den Daten
+
+1. Erstellen Sie eine Methode namens `detect_change_point()`, um Anomalien in allen Daten als Batch zu erkennen. Rufen Sie die oben erstellte Methode `send_request()` mit dem Endpunkt, der URL, dem Abonnementschlüssel und den JSON-Daten auf.
+
+2. Rufen Sie für das Ergebnis `json.dumps()` auf, um es zu formatieren, und geben Sie es in der Konsole aus.
+
+3. Wenn die Antwort ein Feld vom Typ `code` enthält, geben Sie den Fehlercode und die Fehlermeldung aus.
+
+4. Andernfalls suchen Sie nach den Positionen der Anomalien im Dataset. Das Feld `isChangePoint` der Antwort enthält einen booleschen Wert, der angibt, ob es sich bei einem bestimmten Datenpunkt um eine Anomalie handelt. Gehen Sie die Liste durch, und geben Sie den Index aller `True`-Werte aus. Diese Werte entsprechen den Indizes der Trendänderungspunkte, sofern welche gefunden wurden.
+
+    [!code-python[detect change points](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=detectChangePoint)]
 
 ## <a name="send-the-request"></a>Senden der Anforderung
 
@@ -102,5 +116,6 @@ Rufen Sie die oben erstellten Methoden zur Anomalieerkennung auf.
 Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Klicken Sie unten auf die Links, um die JSON-Antwort auf GitHub anzuzeigen:
 * [Beispielantwort für die Batcherkennung](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/batch-response.json)
 * [Beispielantwort für die Erkennung des letzten Punkts](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/latest-point-response.json)
+* [Beispielantwort für die Erkennung eines Änderungspunkts](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/change-point-sample.json)
 
 [!INCLUDE [anomaly-detector-next-steps](../includes/quickstart-cleanup-next-steps.md)]

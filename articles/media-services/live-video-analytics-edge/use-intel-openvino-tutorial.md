@@ -4,18 +4,21 @@ description: In diesem Tutorial wird ein von Intel bereitgestellter KI-Modellser
 ms.topic: tutorial
 ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: 95dbf555cc6b8f8edb1bc9dca2e10d3ef72eb9db
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: e620da1a4f0b7f782d478314fb0e2e83ab9a124a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89567577"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906631"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>Tutorial: Analysieren von Livevideos mithilfe der KI-Erweiterung für OpenVINO™ Model Server von Intel 
 
-In diesem Tutorial erfahren Sie, wie Sie die KI-Erweiterung für OpenVINO™ Model Server von Intel verwenden, um einen Livevideofeed einer (simulierten) IP-Kamera zu analysieren. Es wird gezeigt, wie Sie über diesen Rückschlussserver auf Modelle für die Objekterkennung (Person, Fahrzeug oder Fahrrad) sowie auf ein Modell für die Klassifizierung von Fahrzeugen zugreifen. Eine Teilmenge der Frames aus dem Livevideofeed wird an diesen Rückschlussserver gesendet, und die Ergebnisse werden an den IoT Edge-Hub übermittelt. 
+In diesem Tutorial erfahren Sie, wie Sie die KI-Erweiterung für OpenVINO™ Model Server von Intel verwenden, um einen Livevideofeed einer (simulierten) IP-Kamera zu analysieren. Es wird gezeigt, wie Sie über diesen Rückschlussserver auf Modelle für die Objekterkennung (Person, Fahrzeug oder Fahrrad) sowie auf ein Modell für die Klassifizierung von Fahrzeugen zugreifen. Eine Teilmenge der Frames aus dem Livevideofeed wird an diesen Rückschlussserver gesendet, und die Ergebnisse werden an den IoT Edge-Hub übermittelt.
 
-In diesem Tutorial werden ein virtueller Azure-Computer als IoT Edge-Gerät und ein simulierter Livevideostream verwendet. Es basiert auf Beispielcode, der in C# geschrieben ist, und baut auf der Schnellstartanleitung [Erkennen von Bewegung und Ausgeben von Ereignissen](detect-motion-emit-events-quickstart.md) auf. 
+In diesem Tutorial werden ein virtueller Azure-Computer als IoT Edge-Gerät und ein simulierter Livevideostream verwendet. Es basiert auf Beispielcode, der in C# geschrieben ist, und baut auf der Schnellstartanleitung [Erkennen von Bewegung und Ausgeben von Ereignissen](detect-motion-emit-events-quickstart.md) auf.
+
+> [!NOTE]
+> Für dieses Tutorial muss ein x86-64-Computer als Edgegerät verwendet werden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -40,7 +43,7 @@ In dieser Schnellstartanleitung werden Live Video Analytics in IoT Edge und die
 ## <a name="overview"></a>Übersicht
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/use-intel-openvino-tutorial/topology.png" alt-text="Übersicht":::
+> :::image type="content" source="./media/use-intel-openvino-tutorial/http-extension-with-vino.svg" alt-text="Übersicht":::
 
 In diesem Diagramm ist der Fluss der Signale in diesem Schnellstart dargestellt. Ein [Edge-Modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) simuliert eine IP-Kamera, die einen RTSP-Server (Real-Time Streaming Protocol) hostet. Der Knoten einer [RTSP-Quelle](media-graph-concept.md#rtsp-source) ruft den Videofeed von diesem Server ab und sendet Video-Einzelbilder an den Knoten des [Bildfrequenzfilterprozessors](media-graph-concept.md#frame-rate-filter-processor). Dieser Prozessor begrenzt die Bildfrequenz des Videostreams, der den Knoten des [HTTP-Erweiterungsprozessors](media-graph-concept.md#http-extension-processor) erreicht. 
 
@@ -53,6 +56,7 @@ In diesem Lernprogramm lernen Sie Folgendes:
 1. Bereinigen der Ressourcen
 
 ## <a name="about-openvino-model-server--ai-extension-from-intel"></a>Informationen zur KI-Erweiterung für OpenVINO™ Model Server von Intel
+
 Die Intel®-Distribution des [OpenVINO™-Toolkits](https://software.intel.com/content/www/us/en/develop/tools/openvino-toolkit.html) (Open Visual Inference and Neural network Optimization) ist ein kostenloses Softwarekit, das Entwickler und Data Scientists dabei unterstützt, Workloads für maschinelles Sehen zu beschleunigen, Deep Learning-Rückschlüsse und -Bereitstellungen zu optimieren und eine mühelose, heterogene Ausführung auf Intel®-Plattformen zwischen Edge und Cloud zu ermöglichen. Es umfasst das Intel® Deep Learning Deployment Toolkit mit Modelloptimierung und Rückschluss-Engine sowie das Repository [Open Model Zoo](https://github.com/openvinotoolkit/open_model_zoo) mit über 40 optimierten vortrainierten Modellen.
 
 Zur Erstellung komplexer Hochleistungslösungen für die Livevideoanalyse empfiehlt es sich, Live Video Analytics im IoT Edge-Modul mit einer leistungsfähigen Rückschluss-Engine zu kombinieren, die das Skalierungspotential am Edge nutzen kann. In diesem Tutorial werden Rückschlussanforderungen an die [KI-Erweiterung für OpenVINO™ Model Server von Intel](https://aka.ms/lva-intel-ovms) gesendet – ein Edge-Modul, das für die Zusammenarbeit mit Live Video Analytics in IoT Edge konzipiert wurde. Dieses Rückschlussservermodul enthält OpenVINO™ Model Server (OVMS) – einen auf dem OpenVINO™-Toolkit basierenden Rückschlussserver, der speziell für Workloads für maschinelles Sehen optimiert und für Intel®-Architekturen entwickelt wurde. OVMS wurde mit einer Erweiterung für den unkomplizierten Austausch von Videoframes und Rückschlussergebnissen zwischen dem Rückschlussserver und Live Video Analytics im IoT Edge-Modul versehen. Damit können Sie ein beliebiges, vom OpenVINO™-Toolkit unterstütztes Modell ausführen. (Zum Anpassen des Rückschlussservermoduls ändern Sie den [Code](https://github.com/openvinotoolkit/model_server/tree/master/extras/ams_wrapper).) Darüber hinaus steht eine umfassende Palette an Beschleunigungsmechanismen zur Auswahl, die über Intel®-Hardware bereitgestellt werden. Hierzu zählen CPUs (Atom, Core, Xeon), FPGAs und VPUs.

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 71a41a3a8d137fdf9d4f41c975e7be6c148078e1
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: ef5802d0c5e35b9c12db1f40782ba5f190ad1883
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875441"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907197"
 ---
 # <a name="service-bus-topics-output-from-azure-stream-analytics"></a>Ausgabe von Service Bus-Themen für Azure Stream Analytics
 
@@ -49,7 +49,7 @@ Sie können Abfragespalten als Benutzereigenschaften an Ihre ausgehenden Nachric
 
 ## <a name="system-properties"></a>Systemeigenschaften
 
-Sie können Abfragespalten als [Systemeigenschaften](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties) an Ihre ausgehenden Service Bus-Warteschlangen- oder Themenmeldungen anfügen. Diese Spalten werden nicht in die Nutzlast eingefügt. Stattdessen wird die entsprechende BrokeredMessage-[Systemeigenschaft](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties) mit den Werten der Abfragespalte aufgefüllt.
+Sie können Abfragespalten als [Systemeigenschaften](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties&preserve-view=true) an Ihre ausgehenden Service Bus-Warteschlangen- oder Themenmeldungen anfügen. Diese Spalten werden nicht in die Nutzlast eingefügt. Stattdessen wird die entsprechende BrokeredMessage-[Systemeigenschaft](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties&preserve-view=true) mit den Werten der Abfragespalte aufgefüllt.
 Diese Systemeigenschaften werden unterstützt: `MessageId, ContentType, Label, PartitionKey, ReplyTo, SessionId, CorrelationId, To, ForcePersistence, TimeToLive, ScheduledEnqueueTimeUtc`.
 
 Zeichenfolgenwerte dieser Spalten werden als entsprechender Systemeigenschaftswert-Typ analysiert, und alle Analysefehler werden als Datenfehler behandelt.
@@ -76,4 +76,4 @@ Dadurch wird die `MessageId` für Service Bus-Warteschlangenmeldungen mit den We
 * [Schnellstart: Erstellen eines Azure Stream Analytics-Auftrags mithilfe einer ARM-Vorlage](quick-create-azure-resource-manager.md)
 * [Schnellstart: Erstellen eines Stream Analytics-Auftrags mit Azure PowerShell](stream-analytics-quick-create-powershell.md)
 * [Schnellstart: Erstellen eines Azure Stream Analytics-Auftrags mithilfe von Visual Studio](stream-analytics-quick-create-vs.md)
-* [Schnellstart: Erstellen eines Azure Stream Analytics-Auftrags in Visual Studio Code](quick-create-vs-code.md)
+* [Schnellstart: Erstellen eines Azure Stream Analytics-Auftrags in Visual Studio Code](quick-create-visual-studio-code.md)

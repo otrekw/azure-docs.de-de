@@ -10,12 +10,12 @@ author: luisquintanilla
 ms.author: luquinta
 ms.date: 07/09/2020
 ms.custom: contperfq4
-ms.openlocfilehash: 7d209b3434eae20b4c9a7b328f5c15032315b178
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a13bec5fa557bed1b9ce84836588e6a3e501ddf5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203550"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906693"
 ---
 # <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension-preview"></a>Trainieren und Bereitstellen eines TensorFlow-Modells für die Bildklassifizierung mit der Azure Machine Learning-Erweiterung für Visual Studio Code (Vorschauversion)
 
@@ -61,7 +61,7 @@ Als Erstes müssen Sie einen Arbeitsbereich erstellen, damit Sie eine Anwendung 
 1. Wählen Sie **Eine neue Ressourcengruppe erstellen** aus. 
 1. Nennen Sie Ihre Ressourcengruppe **TeamWorkspace-rg**, und drücken Sie die EINGABETASTE. 
 1. Wählen Sie einen Standort für Ihren Arbeitsbereich aus. Wählen Sie am besten einen Standort aus, der dem Standort, an dem Sie Ihr Modell bereitstellen möchten, am nächsten gelegen ist. Beispiel: „USA, Westen 2“.
-1. Wenn Sie zum Auswählen des Arbeitsbereichstyps aufgefordert werden, wählen Sie **Basic** aus, um einen Basic-Arbeitsbereich zu erstellen. Weitere Informationen zu verschiedenen Arbeitsbereichsangeboten finden Sie in der Übersicht über [Azure Machine Learning](./overview-what-is-azure-ml.md#sku).
+1. Wenn Sie aufgefordert werden, den Typ des Arbeitsbereichs auszuwählen, wählen Sie **Einfach** aus.
 
 Jetzt wird eine Anforderung an Azure zum Erstellen eines neuen Arbeitsbereichs in Ihrem Konto gesendet. Nach einigen Minuten wird der neue Arbeitsbereich in Ihrem Abonnementknoten angezeigt. 
 
