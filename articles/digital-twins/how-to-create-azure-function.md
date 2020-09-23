@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6c7c1d09373ac1fb661d28dc4ca201c5d13605ca
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: a0f5a921ad9eba82f27b3a8945643737b6d76030
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89292109"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89614072"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>Verbinden von Azure Functions-Apps für die Verarbeitung von Daten
 
@@ -58,7 +58,7 @@ Wenn Sie das SDK verwenden möchten, müssen Sie die folgenden Pakete in Ihr Pro
     
 Dazu können Sie mit der rechten Maustaste auf das Projekt klicken und in der Liste _NuGet-Pakete verwalten_ auswählen. Wählen Sie dann in dem sich öffnenden Fenster die Registerkarte _Durchsuchen_ aus und suchen Sie nach den folgenden Paketen. Wählen Sie _Installieren_ aus, und _akzeptieren_ Sie die Lizenzvereinbarung zur Installation der Pakete.
 
-* `Azure.DigitalTwins.Core` (Version `1.0.0-preview.2`)
+* `Azure.DigitalTwins.Core`
 * `Azure.Identity` 
 
 Damit die Konfiguration der Azure SDK-Pipeline für Azure Functions ordnungsgemäß eingerichtet werden kann, benötigen Sie auch die folgenden Pakete. Wiederholen Sie denselben Vorgang wie oben, um alle Pakete zu installieren.
@@ -70,7 +70,7 @@ Damit die Konfiguration der Azure SDK-Pipeline für Azure Functions ordnungsgem�
 
 ```cmd/sh
 dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
-dotnet add package Azure.identity --version 1.1.1
+dotnet add package Azure.identity --version 1.2.2
 dotnet add package System.Net.Http
 dotnet add package Azure.Core.Pipeline
 ```

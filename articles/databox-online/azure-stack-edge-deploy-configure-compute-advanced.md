@@ -1,6 +1,6 @@
 ---
-title: Tutorial zum Filtern und Analysieren von Daten für die erweiterte Bereitstellung mit Compute in Azure Stack Edge | Microsoft-Dokumentation
-description: Hier wird beschrieben, wie Sie die Computerolle in Azure Stack Edge konfigurieren und verwenden, um Daten vor dem Senden an Azure für einen erweiterten Bereitstellungsablauf zu transformieren.
+title: Tutorial zum Filtern und Analysieren von Daten für die erweiterte Bereitstellung mit Compute in Azure Stack Edge Pro | Microsoft-Dokumentation
+description: Hier wird beschrieben, wie Sie die Computerolle in Azure Stack Edge Pro konfigurieren und verwenden, um Daten vor dem Senden an Azure für einen erweiterten Bereitstellungsablauf zu transformieren.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,17 +8,17 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge for advanced deployment flow so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 59983530d93885f28dfb1625ca6d58fe572609b8
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro for advanced deployment flow so I can use it to transform the data before sending it to Azure.
+ms.openlocfilehash: f62eec29aebdcc98569134e0c3b75457467bc014
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080480"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903685"
 ---
-# <a name="tutorial-transform-data-with-azure-stack-edge-for-advanced-deployment-flow"></a>Tutorial: Transformieren von Daten mit Azure Stack Edge für den erweiterten Bereitstellungsablauf
+# <a name="tutorial-transform-data-with-azure-stack-edge-pro-for-advanced-deployment-flow"></a>Tutorial: Transformieren von Daten mit Azure Stack Edge Pro für den erweiterten Bereitstellungsablauf
 
-In diesem Tutorial wird beschrieben, wie Sie eine Computerolle für einen erweiterten Bereitstellungsablauf auf Ihrem Azure Stack Edge-Gerät konfigurieren. Nach dem Konfigurieren der Computerolle kann Azure Stack Edge Daten vor dem Senden an Azure transformieren.
+In diesem Tutorial wird beschrieben, wie Sie eine Computerolle für einen erweiterten Bereitstellungsablauf auf Ihrem Azure Stack Edge Pro-Gerät konfigurieren. Nach dem Konfigurieren der Computerolle kann Azure Stack Edge Pro Daten vor dem Senden an Azure transformieren.
 
 Compute kann für einfachen oder erweiterten Bereitstellungsablauf auf Ihrem Gerät konfiguriert werden.
 
@@ -43,14 +43,14 @@ In diesem Tutorial lernen Sie Folgendes:
  
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Stellen Sie Folgendes sicher, bevor Sie eine Computerolle auf Ihrem Azure Stack Edge-Gerät einrichten:
+Stellen Sie Folgendes sicher, bevor Sie eine Computerolle auf Ihrem Azure Stack Edge Pro-Gerät einrichten:
 
-- Das Azure Stack Edge-Gerät wurde aktiviert, wie unter [Tutorial: Verbinden, Einrichten und Aktivieren von Azure Stack Edge](azure-stack-edge-deploy-connect-setup-activate.md) beschrieben.
+- Das Azure Stack Edge Pro-Gerät wurde aktiviert, wie unter [Verbinden, Einrichten und Aktivieren von Azure Stack Edge Pro](azure-stack-edge-deploy-connect-setup-activate.md) beschrieben.
 
 
 ## <a name="configure-compute"></a>Konfigurieren der Computeumgebung
 
-Um die Computeumgebung in Ihrer Azure Stack Edge-Instanz zu konfigurieren, erstellen Sie eine IoT Hub-Ressource.
+Sie erstellen eine IoT Hub-Ressource, um die Computeumgebung in Ihrer Azure Stack Edge Pro-Instanz zu konfigurieren.
 
 1. Navigieren Sie im Azure-Portal für Ihre Azure Stack Edge-Ressource zu **Übersicht**. Wählen Sie im Bereich auf der rechten Seite auf der Kachel **Compute** die Option **Erste Schritte**.
 
@@ -150,9 +150,9 @@ Für die erweiterte Bereitstellung in diesem Tutorial benötigen Sie zwei Freiga
 
 ## <a name="add-a-module"></a>Hinzufügen eines Moduls
 
-Auf diesem Edgegerät sind keine benutzerdefinierten Module vorhanden. Sie können ein benutzerdefiniertes oder ein vorgefertigtes Modul hinzufügen. Informationen zum Erstellen eines benutzerdefinierten Moduls finden Sie unter [Entwickeln eines C#-IoT Edge-Moduls zum Verschieben von Dateien in Azure Stack Edge](azure-stack-edge-create-iot-edge-module.md).
+Auf diesem Edgegerät sind keine benutzerdefinierten Module vorhanden. Sie können ein benutzerdefiniertes oder ein vorgefertigtes Modul hinzufügen. Informationen zum Erstellen eines benutzerdefinierten Moduls finden Sie unter [Entwickeln eines C#-Moduls für Ihr Azure Stack Edge Pro-Gerät](azure-stack-edge-create-iot-edge-module.md).
 
-In diesem Abschnitt fügen Sie dem IoT Edge-Gerät, das Sie unter [Entwickeln eines C#-IoT Edge-Moduls zum Verschieben von Dateien in Azure Stack Edge](azure-stack-edge-create-iot-edge-module.md) erstellt haben, ein benutzerdefiniertes Modul hinzu. Dieses benutzerdefinierte Modul verwendet Dateien von einer lokalen Edgefreigabe auf dem Edgegerät und verschiebt sie auf eine Edgefreigabe (Cloudfreigabe) auf dem Gerät. Die Cloudfreigabe überträgt die Dateien dann per Pushvorgang an das Azure-Speicherkonto, das der Cloudfreigabe zugeordnet ist.
+In diesem Abschnitt fügen Sie dem IoT Edge-Gerät, das Sie unter [Entwickeln eines C#-Moduls für Ihr Azure Stack Edge Pro-Gerät](azure-stack-edge-create-iot-edge-module.md) erstellt haben, ein benutzerdefiniertes Modul hinzu. Dieses benutzerdefinierte Modul verwendet Dateien von einer lokalen Edgefreigabe auf dem Edgegerät und verschiebt sie auf eine Edgefreigabe (Cloudfreigabe) auf dem Gerät. Die Cloudfreigabe überträgt die Dateien dann per Pushvorgang an das Azure-Speicherkonto, das der Cloudfreigabe zugeordnet ist.
 
 1. Navigieren Sie zu **Edgecomputing > Erste Schritte**. Wählen Sie auf der Kachel **Module hinzufügen** als Szenariotyp die Option **Erweitert** aus. Wählen Sie **Zu IoT Hub wechseln** aus.
 
@@ -175,7 +175,7 @@ In diesem Abschnitt fügen Sie dem IoT Edge-Gerät, das Sie unter [Entwickeln e
 4. Führen Sie unter **Module hinzufügen** die folgenden Schritte aus:
 
     1. Geben Sie für das benutzerdefinierte Modul in den Containerregistrierungseinstellungen den Namen, die Adresse, den Benutzernamen und das Kennwort ein.
-    Der Name, die Adresse und die aufgeführten Anmeldeinformationen werden verwendet, um Module mit einer übereinstimmenden URL abzurufen. Wählen Sie zum Bereitstellen dieses Moduls unter **Bereitstellungsmodule** die Option **IoT Edge-Modul**. Dieses IoT Edge-Modul ist ein Docker-Container, den Sie auf dem IoT Edge-Gerät bereitstellen können, das Ihrem Azure Stack Edge-Gerät zugeordnet ist.
+    Der Name, die Adresse und die aufgeführten Anmeldeinformationen werden verwendet, um Module mit einer übereinstimmenden URL abzurufen. Wählen Sie zum Bereitstellen dieses Moduls unter **Bereitstellungsmodule** die Option **IoT Edge-Modul**. Dieses IoT Edge-Modul ist ein Docker-Container, den Sie auf dem IoT Edge-Gerät bereitstellen können, das Ihrem Azure Stack Edge Pro-Gerät zugeordnet ist.
 
         ![Seite „Module festlegen“](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-4.png) 
  
@@ -183,7 +183,7 @@ In diesem Abschnitt fügen Sie dem IoT Edge-Gerät, das Sie unter [Entwickeln e
      
         |Feld  |Wert  |
         |---------|---------|
-        |Name     | Ein eindeutiger Name für das Modul. Dieses Modul ist ein Docker-Container, den Sie auf dem IoT Edge-Gerät bereitstellen können, das Ihrer Azure Stack Edge-Instanz zugeordnet ist.        |
+        |Name     | Ein eindeutiger Name für das Modul. Dieses Modul ist ein Docker-Container, den Sie auf dem IoT Edge-Gerät bereitstellen können, das Ihrer Azure Stack Edge Pro-Instanz zugeordnet ist.        |
         |Image-URI     | Der Image-URI für das entsprechende Containerimage für das Modul.        |
         |Anmeldeinformationen erforderlich     | Wenn dieses Kontrollkästchen aktiviert ist, werden ein Benutzername und ein Kennwort verwendet, um Module mit einer übereinstimmenden URL abzurufen.        |
     
@@ -270,7 +270,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Hinzufügen eines Computemoduls
 > * Überprüfen der Datentransformation und -übertragung
 
-Weitere Informationen zum Verwalten Ihres Azure Stack Edge-Geräts finden Sie im folgenden Artikel:
+Weitere Informationen zum Verwalten Ihres Azure Stack Edge Pro-Geräts finden Sie im folgenden Artikel:
 
 > [!div class="nextstepaction"]
-> [Verwalten des Zugriffs, der Energieeinstellungen und des Konnektivitätsmodus für Azure Stack Edge](azure-stack-edge-manage-access-power-connectivity-mode.md)
+> [Verwenden der lokalen Webbenutzeroberfläche zur Verwaltung eines Azure Stack Edge Pro-Geräts](azure-stack-edge-manage-access-power-connectivity-mode.md)

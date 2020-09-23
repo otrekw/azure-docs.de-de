@@ -1,6 +1,6 @@
 ---
-title: 'Azure Stack Edge: Verwalten von Bandbreitenzeitplänen | Microsoft-Dokumentation'
-description: In diesem Thema wird beschrieben, wie Sie Bandbreitenzeitpläne für Ihre Azure Stack Edge-Ressource über das Azure-Portal verwalten.
+title: 'Azure Stack Edge Pro: Verwalten von Bandbreitenzeitplänen | Microsoft-Dokumentation'
+description: In diesem Artikel wird beschrieben, wie Sie Bandbreitenzeitpläne für Ihr Azure Stack Edge Pro-Gerät über das Azure-Portal verwalten.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/22/2019
 ms.author: alkohli
-ms.openlocfilehash: 9e5361c1082424a76699affee653b4b9fc798116
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9247ae6e6cfc276c871689df826935c519620573
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339756"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908136"
 ---
-# <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge"></a>Verwalten von Bandbreitenzeitplänen für Ihre Azure Stack Edge-Ressource über das Azure-Portal  
+# <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge-pro"></a>Verwalten von Bandbreitenzeitplänen für Ihr Azure Stack Edge Pro-Gerät über das Azure-Portal  
 
-In diesem Artikel wird beschrieben, wie Sie Benutzer für Ihre Azure Stack Edge-Ressource verwalten. Mithilfe von Bandbreitenzeitplänen können Sie die Nutzung der Netzwerkbandbreite durch mehrere tageszeitbasierte Zeitpläne konfigurieren. Diese Zeitpläne können auf die Upload- und Downloadvorgänge zwischen Ihrem Gerät und der Cloud angewendet werden.
+In diesem Artikel wird beschrieben, wie Sie Benutzer auf Ihrem Azure Stack Edge Pro-Gerät verwalten. Mithilfe von Bandbreitenzeitplänen können Sie die Nutzung der Netzwerkbandbreite durch mehrere tageszeitbasierte Zeitpläne konfigurieren. Diese Zeitpläne können auf die Upload- und Downloadvorgänge zwischen Ihrem Gerät und der Cloud angewendet werden.
 
-Sie können die Bandbreitenzeitpläne für Ihre Azure Stack Edge-Ressource über das Azure-Portal hinzufügen, ändern oder löschen.
+Sie können die Bandbreitenzeitpläne für Ihr Azure Stack Edge Pro-Gerät über das Azure-Portal hinzufügen, ändern oder löschen.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
@@ -71,7 +71,7 @@ Führen Sie die folgenden Schritte aus, um einen Bandbreitenzeitplan zu bearbeit
 
 ## <a name="delete-a-schedule"></a>Löschen eines Zeitplans
 
-Führen Sie die folgenden Schritte aus, um einen mit Ihrem Azure Stack Edge-Gerät verknüpften Bandbreitenzeitplan zu löschen:
+Führen Sie die folgenden Schritte aus, um einen mit Ihrem Azure Stack Edge Pro-Gerät verknüpften Bandbreitenzeitplan zu löschen.
 
 1. Wechseln Sie im Azure-Portal zu Ihrer Azure Stack Edge-Ressource und dann zu **Bandbreite**.  
 

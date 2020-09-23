@@ -1,6 +1,6 @@
 ---
-title: Herstellen einer Verbindung mit und Verwalten von Microsoft Azure Stack Edge-Geräten über die Windows PowerShell-Schnittstelle | Microsoft-Dokumentation
-description: Beschreibt, wie Sie Azure Stack Edge über die Windows PowerShell-Schnittstelle verbinden und dann verwalten.
+title: Herstellen einer Verbindung mit und Verwalten von Microsoft Azure Stack Edge Pro-Geräten über die Windows PowerShell-Schnittstelle | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie über die Windows PowerShell-Schnittstelle eine Verbindung mit einem Azure Stack Edge Pro-Gerät herstellen und dieses anschließend verwalten.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 06/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 973c618b46d1b6be902d9629ca63ee120cae6855
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6b0fe7e9e096b252d33d25c4a70305e57d206b1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85313223"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894430"
 ---
-# <a name="manage-an-azure-stack-edge-device-via-windows-powershell"></a>Verwalten eines Azure Stack Edge-Geräts mithilfe von Windows PowerShell
+# <a name="manage-an-azure-stack-edge-pro-device-via-windows-powershell"></a>Verwalten eines Azure Stack Edge Pro-Geräts über Windows PowerShell
 
-Azure Stack Edge ist eine Lösung, mit der Sie Daten verarbeiten und über ein Netzwerk an Azure senden können. In diesem Artikel werden einige der Konfigurations- und Verwaltungsaufgaben für Ihr Azure Stack Edge-Gerät beschrieben. Sie können das Azure-Portal, die lokale Webbenutzeroberfläche oder die Windows PowerShell-Schnittstelle verwenden, um Ihr Gerät zu verwalten.
+Azure Stack Edge Pro ist eine Lösung, mit der Sie Daten verarbeiten und über ein Netzwerk an Azure senden können. In diesem Artikel werden einige der Konfigurations- und Verwaltungsaufgaben für Ihr Azure Stack Edge Pro-Gerät beschrieben. Sie können das Azure-Portal, die lokale Webbenutzeroberfläche oder die Windows PowerShell-Schnittstelle verwenden, um Ihr Gerät zu verwalten.
 
 Der Schwerpunkt dieses Artikels liegt auf den Aufgaben, die mithilfe der PowerShell-Schnittstelle ausgeführt werden. 
 
@@ -94,4 +94,4 @@ Schließen Sie das PowerShell-Fenster, um die PowerShell-Remotesitzung zu beende
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Stellen Sie [Azure Stack Edge](azure-stack-edge-deploy-prep.md) im Azure-Portal bereit.
+- Stellen Sie [Azure Stack Edge Pro](azure-stack-edge-deploy-prep.md) im Azure-Portal bereit.

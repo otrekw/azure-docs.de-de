@@ -1,24 +1,24 @@
 ---
-title: Tutorial zum Konfigurieren von Zertifikaten für ein Azure Stack Edge-Gerät mit GPU im Azure-Portal | Microsoft-Dokumentation
-description: Im Tutorial zur Bereitstellung eines Azure Stack Edge-Geräts mit GPU erfahren Sie, wie Sie Zertifikate auf Ihrem physischen Gerät konfigurieren.
+title: Tutorial zum Konfigurieren von Zertifikaten für ein Azure Stack Edge Pro-Gerät mit GPU im Azure-Portal | Microsoft-Dokumentation
+description: Im Tutorial zur Bereitstellung eines Azure Stack Edge Pro-Geräts mit GPU erfahren Sie, wie Sie Zertifikate auf Ihrem physischen Gerät konfigurieren.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 08/29/2020
+ms.date: 09/10/2020
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to configure certificates for Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 80a857f80fd2c164637e591fbab43123659cd2f7
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+Customer intent: As an IT admin, I need to understand how to configure certificates for Azure Stack Edge Pro so I can use it to transfer data to Azure.
+ms.openlocfilehash: 5be484c613c4a18e86df7b5a83f95ca75aec6077
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268175"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903225"
 ---
-# <a name="tutorial-configure-certificates-for-your-azure-stack-edge-with-gpu"></a>Tutorial: Konfigurieren von Zertifikaten für Ihr Azure Stack Edge-Gerät mit GPU
+# <a name="tutorial-configure-certificates-for-your-azure-stack-edge-pro-with-gpu"></a>Tutorial: Konfigurieren von Zertifikaten für Ihr Azure Stack Edge Pro-Gerät mit GPU
 
-In diesem Tutorial wird erläutert, wie Sie Zertifikate für Ihr Azure Stack Edge-Gerät mit eingebauter GPU auf der lokalen Webbenutzeroberfläche konfigurieren können.
+In diesem Tutorial wird erläutert, wie Sie Zertifikate für Ihr Azure Stack Edge Pro-Gerät mit eingebauter GPU auf der lokalen Webbenutzeroberfläche konfigurieren.
 
 Die für diesen Schritt benötigte Zeit kann je nach der von Ihnen gewählten Option und der Einrichtung des Zertifikatflows in Ihrer Umgebung variieren.
 
@@ -31,65 +31,80 @@ In diesem Tutorial lernen Sie Folgendes kennen:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Überprüfen Sie Folgendes, bevor Sie ein Azure Stack Edge-Gerät mit GPU konfigurieren und einrichten:
+Überprüfen Sie Folgendes, bevor Sie ein Azure Stack Edge Pro-Gerät mit GPU konfigurieren und einrichten:
 
-* Sie haben Ihr physisches Gerät gemäß der Anleitung unter [Tutorial: Installieren von Azure Stack Edge](azure-stack-edge-gpu-deploy-install.md) installiert.
+* Sie haben Ihr physisches Gerät gemäß der Anleitung unter [Installieren von Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-install.md) installiert.
 * Wenn Sie beabsichtigen, eigene Zertifikate zu nutzen:
-    - Sie müssen Ihre Zertifikate im entsprechenden Format einschließlich des Signaturkettenzertifikats bereithalten.
+    - Sie müssen Ihre Zertifikate im entsprechenden Format einschließlich des Signaturkettenzertifikats bereithalten. Einzelheiten zu Zertifikaten finden Sie unter [Verwalten von Zertifikaten](azure-stack-edge-j-series-manage-certificates.md).
+
 <!--    - If your device is deployed in Azure Government or Azure Government Secret or Azure Government top secret cloud and not deployed in Azure public cloud, a signing chain certificate is required before you can activate your device. 
     For details on certificate, go to [Manage certificates](azure-stack-edge-j-series-manage-certificates.md).-->
 
 
 ## <a name="configure-certificates-for-device"></a>Konfigurieren von Zertifikaten für ein Gerät
 
-
-1. Wählen Sie auf der Kachel **Sicherheit** für Zertifikate **Konfigurieren** aus. 
-
-    ![Seite „Zertifikate“ auf der lokalen Webbenutzeroberfläche](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-1.png)
-
-2. Je nachdem, ob Sie den Gerätenamen oder die DNS-Domäne auf der Kachel **Geräteeinrichtung** geändert haben, können Sie für Ihre Zertifikate eine der folgenden Optionen wählen.
+1. Zertifikate werden auf der Seite **Zertifikate** konfiguriert. Abhängig davon, ob Sie den Gerätenamen oder die DNS-Domäne auf der Seite **Gerät** geändert haben, können Sie für Ihre Zertifikate eine der folgenden Optionen auswählen.
 
     - Wenn Sie den Gerätenamen oder die DNS-Domäne im vorherigen Schritt nicht geändert haben und keine eigenen Zertifikate bereitstellen möchten, können Sie diesen Schritt überspringen und mit dem nächsten Schritt fortfahren. Fürs Erste hat das Gerät automatisch selbstsignierte Zertifikate generiert. 
 
         ![Seite „Zertifikate“ auf der lokalen Webbenutzeroberfläche](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-2.png)
 
-    - Wenn Sie den Gerätenamen oder die DNS-Domäne geändert haben, können Sie Ihr Gerät mit einer der folgenden Optionen erfolgreich aktivieren: 
-    
-        - **Generieren aller Gerätezertifikate**. Die Gerätezertifikate dürfen nur für Tests und nicht für Workloads in der Produktion verwendet werden.** Weitere Informationen finden Sie unter [Generieren von Gerätezertifikaten auf Ihrem Azure Stack Edge-Gerät](#generate-device-certificates).
+    - Wenn Sie den Gerätenamen oder die DNS-Domäne geändert haben, wird als Status der Zertifikate **Nicht gültig** angezeigt. 
 
-        - **Bereitstellen eines eigenen Zertifikats**. Sie können Ihre eigenen signierten Endpunktzertifikate und die entsprechenden Signaturketten nutzen. Sie fügen zunächst die Signaturkette hinzu und laden dann die Endpunktzertifikate hoch. **Wir empfehlen, dass Sie für Produktionsworkloads immer Ihre eigenen Zertifikate bereitstellen.** Weitere Informationen finden Sie unter [Bereitstellen eigener Zertifikate auf einem Azure Stack Edge-Gerät](#bring-your-own-certificates).
+        ![Seite „Zertifikate“ auf der lokalen Webbenutzeroberfläche](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-1.png)    
+
+        Wählen Sie ein Zertifikat aus, um die Statusdetails anzuzeigen.
+
+        ![Seite „Zertifikate“ auf der lokalen Webbenutzeroberfläche](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-1a.png)  
+
+        Der Grund dafür ist, dass die Zertifikate nicht den aktualisierten Gerätenamen oder die aktualisierte DNS-Domäne aufweisen (diese werden für „Antragstellername“ und „Alternativer Antragstellername“ verwendet). Wählen Sie zur erfolgreichen Aktivierung Ihres Geräts eine der folgenden Optionen aus: 
+    
+        - **Generieren aller Gerätezertifikate**. Diese Gerätezertifikate sollten nur zu Testzwecken und nicht mit Produktionsworkloads verwendet werden. Weitere Informationen finden Sie unter [Generieren von Gerätezertifikaten auf einem Azure Stack Edge Pro-Gerät](#generate-device-certificates).
+
+        - **Bereitstellen eines eigenen Zertifikats**. Sie können Ihre eigenen signierten Endpunktzertifikate und die entsprechenden Signaturketten nutzen. Sie fügen zunächst die Signaturkette hinzu und laden dann die Endpunktzertifikate hoch. **Wir empfehlen, dass Sie für Produktionsworkloads immer Ihre eigenen Zertifikate bereitstellen.** Weitere Informationen finden Sie unter [Bereitstellen eigener Zertifikate auf einem Azure Stack Edge Pro-Gerät](#bring-your-own-certificates).
     
         - Sie können einige Ihrer eigenen Zertifikate bereitstellen und einige Gerätezertifikate generieren. Über die Option **Zertifikate generieren** werden nur die Gerätezertifikate neu generiert.
 
-    - Wenn Sie den Gerätenamen oder die DNS-Domäne geändert haben und keine Zertifikate generieren oder Ihre eigenen Zertifikate bereitstellen, wird die Aktivierung blockiert.
+    - Wenn Sie den Gerätenamen oder die DNS-Domäne geändert haben und keine Zertifikate generieren oder Ihre eigenen Zertifikate bereitstellen, wird die **Aktivierung blockiert**.
 
 
 ### <a name="generate-device-certificates"></a>Generieren von Gerätezertifikaten
 
 Befolgen Sie diese Schritte, um Gerätezertifikate zu generieren.
 
-Führen Sie diese Schritte aus, um die Azure Stack Edge-Gerätezertifikate neu zu generieren und herunterzuladen:
+Führen Sie diese Schritte aus, um die Azure Stack Edge Pro-Gerätezertifikate neu zu generieren und herunterzuladen:
 
 1. Navigieren Sie auf der lokalen Benutzeroberfläche Ihres Geräts zu **Konfiguration > Zertifikate**. Wählen Sie **Zertifikate generieren** aus.
 
     ![Zertifikat generieren und herunterladen 1](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-3.png)
 
-2. Wählen Sie im Abschnitt **Gerätezertifikate generieren** die Option **Generieren** aus.
+2. Wählen Sie im Abschnitt **Gerätezertifikate generieren** die Option **Generieren** aus. 
 
     ![Zertifikat generieren und herunterladen 2](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-4.png)
 
-    Die Gerätezertifikate werden nun generiert und zugewiesen. 
+    Die Gerätezertifikate werden nun generiert und zugewiesen. Der Vorgang zum Generieren und Anwenden der Zertifikate dauert einige Minuten.
     
     > [!IMPORTANT]
     > Während der Vorgang zum Generieren von Zertifikaten läuft, dürfen Sie keine eigenen Zertifikate bereitstellen. Versuchen Sie, diese über die Option **+ Zertifikat hinzufügen** hinzuzufügen.
 
-    Sie werden benachrichtigt, sobald der Vorgang erfolgreich abgeschlossen wurde. Starten Sie Ihren Browser neu, um potenzielle Cacheprobleme zu vermeiden. 
+    Sie werden benachrichtigt, sobald der Vorgang erfolgreich abgeschlossen wurde. **Starten Sie Ihren Browser neu, um potenzielle Cacheprobleme zu vermeiden.**
     
     ![Zertifikat generieren und herunterladen 4](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-5.png)
 
-3. Auf der Seite **Zertifikate** sehen Sie, dass die Spalte **Herunterladen** jetzt ausgefüllt ist und dass Links zum Herunterladen der neu generierten Zertifikate verfügbar sind. 
+3. Nach der Zertifikatgenerierung: 
 
-    ![Zertifikat generieren und herunterladen 5](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-6.png)
+    - Der Status aller Zertifikate lautet **Gültig**. 
+
+        ![Zertifikat generieren und herunterladen 5](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-6.png)
+
+    - Sie können einen bestimmten Zertifikatnamen auswählen und die Zertifikatdetails anzeigen. 
+
+        ![Zertifikat generieren und herunterladen 6](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-6a.png)
+
+    - Die Spalte **Download** ist jetzt gefüllt. Diese Spalte enthält Links zum Herunterladen der neu generierten Zertifikate. 
+
+        ![Zertifikat generieren und herunterladen 7](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-6b.png)
+
 
 4. Wählen Sie den Downloadlink für ein Zertifikat aus, und speichern Sie das Zertifikat bei Aufforderung. 
 
@@ -105,7 +120,7 @@ Führen Sie diese Schritte aus, um die Azure Stack Edge-Gerätezertifikate neu z
 
 Sie müssen diese Zertifikate auf dem Clientsystem installieren, das Sie für den Zugriff auf die Endpunkte auf dem Azure Stack Edge-Gerät verwenden. Diese Zertifikate schaffen ein Vertrauensverhältnis zwischen Client und Gerät.
 
-Zum Importieren und Installieren dieser Zertifikate auf dem Client, den Sie für den Zugriff auf das Gerät verwenden, folgen Sie den Schritten unter [Importieren von Zertifikaten auf den Clients, die auf Ihr Azure Stack Edge-Gerät zugreifen](azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device). 
+Zum Importieren und Installieren dieser Zertifikate auf dem Client, den Sie für den Zugriff auf das Gerät verwenden, folgen Sie den Schritten unter [Importieren von Zertifikaten auf Clients, die auf Ihr Azure Stack Edge Pro-Gerät zugreifen](azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device). 
 
 Wenn Sie Azure Storage-Explorer verwenden, müssen Sie Zertifikate im PEM-Format auf Ihrem Client installieren und die vom Gerät generierten Zertifikate in das PEM-Format konvertieren. 
 
@@ -138,15 +153,19 @@ Befolgen Sie diese Schritte, um Ihre eigenen Zertifikate einschließlich Signatu
 
     ![Seite „Zertifikate“ auf der lokalen Webbenutzeroberfläche](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-4.png)
 
+    Sie können jederzeit ein Zertifikat auswählen und die Details anzeigen, um sicherzustellen, dass die Informationen mit Ihrem hochgeladenen Zertifikat übereinstimmen.
+
+    ![Seite „Zertifikate“ auf der lokalen Webbenutzeroberfläche](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-6.png)
+
     Die Seite „Zertifikate“ muss aktualisiert werden, um die neu hinzugefügten Zertifikate widerzuspiegeln.
 
-    ![Seite „Zertifikate“ auf der lokalen Webbenutzeroberfläche](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-6.png)  
+    ![Seite „Zertifikate“ auf der lokalen Webbenutzeroberfläche](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-7.png)  
 
     > [!NOTE]
     > Mit Ausnahme der öffentlichen Azure-Cloud sind für alle Cloudkonfigurationen (Azure Government oder Azure Stack) Signaturkettenzertifikate erforderlich, die vor der Aktivierung bereitgestellt werden müssen.
 
 
-Ihr Gerät kann jetzt aktiviert werden.
+Ihr Gerät kann jetzt aktiviert werden. Wählen Sie **< Zurück zu „Erste Schritte“** aus.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -158,7 +177,7 @@ In diesem Tutorial lernen Sie Folgendes kennen:
 > * Voraussetzungen
 > * Konfigurieren von Zertifikaten für ein physisches Gerät
 
-Weitere Informationen zum Aktivieren Ihres Azure Stack Edge-Geräts finden Sie unter:
+Informationen zum Aktivieren Ihres Azure Stack Edge Pro-Geräts finden Sie unter:
 
 > [!div class="nextstepaction"]
-> [Aktivieren des Azure Stack Edge-Geräts](./azure-stack-edge-gpu-deploy-activate.md)
+> [Aktivieren eines Azure Stack Edge Pro-Geräts](./azure-stack-edge-gpu-deploy-activate.md)

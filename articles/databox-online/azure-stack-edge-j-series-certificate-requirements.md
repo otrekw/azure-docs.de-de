@@ -1,6 +1,6 @@
 ---
-title: Zertifikatsanforderungen und Problembehandlung mit Azure Stack Edge | Microsoft-Dokumentation
-description: Beschreibt die Zertifikatsanforderungen und die Problembehandlung von Zertifikatsfehlern mit Azure Stack Edge-Geräten.
+title: Zertifikatsanforderungen und Problembehandlung bei Azure Stack Edge Pro | Microsoft-Dokumentation
+description: Beschreibt die Zertifikatsanforderungen und die Problembehandlung von Zertifikatsfehlern bei Azure Stack Edge Pro-Geräten.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.author: alkohli
-ms.openlocfilehash: b24b745a53b632ce32cda37058363bf974d400b3
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: e67b507baf1c3271a7fe32318597722e52fd3890
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268261"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891379"
 ---
 # <a name="certificate-requirements"></a>Zertifikatanforderungen
 
-In diesem Artikel werden die Zertifikatsanforderungen beschrieben, die erfüllt sein müssen, damit Zertifikate auf Ihrem Azure Stack Edge-Gerät installiert werden können. Die Anforderungen beziehen sich auf die PFX-Zertifikate, die ausstellende Zertifizierungsstelle, den Namen des Zertifikatantragstellers und den alternativen Antragstellernamen sowie die unterstützten Zertifikatsalgorithmen.
+In diesem Artikel werden die Zertifikatsanforderungen beschrieben, die erfüllt sein müssen, damit Zertifikate auf Ihrem Azure Stack Edge Pro-Gerät installiert werden können. Die Anforderungen beziehen sich auf die PFX-Zertifikate, die ausstellende Zertifizierungsstelle, den Namen des Zertifikatantragstellers und den alternativen Antragstellernamen sowie die unterstützten Zertifikatsalgorithmen.
 
 ## <a name="certificate-issuing-authority"></a>Zertifizierungsstelle für Zertifikate
 
@@ -64,13 +64,13 @@ Zertifikate müssen die folgenden Anforderungen in Bezug auf den Namen des Zerti
     
 ## <a name="pfx-certificate"></a>PFX-Zertifikat
 
-Die auf Ihrem Azure Stack Edge-Gerät installierten PFX-Zertifikate müssen die folgenden Anforderungen erfüllen:
+Die auf Ihrem Azure Stack Edge Pro-Gerät installierten PFX-Zertifikate müssen die folgenden Anforderungen erfüllen:
 
 * Wenn Sie Ihre Zertifikate von der SSL-Zertifizierungsstelle erhalten, stellen Sie sicher, dass Sie die vollständige Signaturkette für die Zertifikate erhalten.
 
 * Stellen Sie beim Exportieren von PFX-Zertifikaten sicher, dass Sie die Option **Include all certificates in the chain, if possible** (Wenn möglich, alle Zertifikate in der Kette einbeziehen) ausgewählt haben.
 
-* Verwenden Sie ein PFX-Zertifikat für Endpunkte, lokale Benutzeroberflächen, Knoten, VPN und WLAN, da für Azure Stack Edge sowohl der öffentliche als auch der private Schlüssel benötigt werden. Für den privaten Schlüssel muss das Schlüsselattribut des lokalen Computers festgelegt sein.
+* Verwenden Sie ein PFX-Zertifikat für Endpunkte, lokale Benutzeroberflächen, Knoten, VPN und WLAN, da für Azure Stack Edge Pro sowohl der öffentliche als auch der private Schlüssel benötigt werden. Für den privaten Schlüssel muss das Schlüsselattribut des lokalen Computers festgelegt sein.
 
 * Die PFX-Verschlüsselung des Zertifikats sollte mit 3DES erfolgen. Dies ist die Standardverschlüsselung, die beim Exportieren von einem Windows 10-Client oder einem Windows Server 2016-Zertifikatspeicher verwendet wird. Weitere Informationen zu 3DES finden Sie unter [Triple DES](https://en.wikipedia.org/wiki/Triple_DES).
 
@@ -78,7 +78,7 @@ Die auf Ihrem Azure Stack Edge-Gerät installierten PFX-Zertifikate müssen die 
 
 * Die PFX-Zertifikatdateien müssen die Werte *Serverauthentifizierung (1.3.6.1.5.5.7.3.1)* und *Clientauthentifizierung (1.3.6.1.5.5.7.3.2)* im Feld *Erweiterte Schlüsselverwendung* aufweisen.
 
-* Bei Verwendung des Azure Stack Readiness Checker-Tools müssen die Kennwörter aller PFX-Zertifikatdateien zum Zeitpunkt der Bereitstellung identisch sein. Weitere Informationen finden Sie unter [Erstellen von Zertifikaten für Azure Stack Edge-Geräte mit dem Azure Stack Hub Readiness Checker-Tool](azure-stack-edge-j-series-create-certificates-tool.md).
+* Bei Verwendung des Azure Stack Readiness Checker-Tools müssen die Kennwörter aller PFX-Zertifikatdateien zum Zeitpunkt der Bereitstellung identisch sein. Weitere Informationen finden Sie unter [Erstellen von Zertifikaten für Azure Stack Edge Pro-Geräte mit dem Azure Stack Hub Readiness Checker-Tool](azure-stack-edge-j-series-create-certificates-tool.md).
 
 * Für die PFX-Zertifikatdatei muss ein komplexes Kennwort verwendet werden. Notieren Sie sich dieses Kennwort, da es später als Bereitstellungsparameter benötigt wird.
 
@@ -86,9 +86,9 @@ Weitere Informationen finden Sie unter [Exportieren von PFX-Zertifikaten mit pri
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Verwenden von Zertifikaten mit Azure Stack Edge](azure-stack-edge-j-series-manage-certificates.md)
+[Verwenden von Zertifikaten mit Azure Stack Edge Pro](azure-stack-edge-j-series-manage-certificates.md)
 
-[Erstellen von Zertifikaten für Azure Stack Edge-Geräte mit dem Azure Stack Hub Readiness Checker-Tool](azure-stack-edge-j-series-create-certificates-tool.md)
+[Erstellen von Zertifikaten für Azure Stack Edge Pro-Geräte mit dem Azure Stack Hub Readiness Checker-Tool](azure-stack-edge-j-series-create-certificates-tool.md)
 
 [Exportieren von PFX-Zertifikaten mit privatem Schlüssel](azure-stack-edge-j-series-manage-certificates.md#export-certificates-as-pfx-format-with-private-key)
 

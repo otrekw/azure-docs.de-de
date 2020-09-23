@@ -1,6 +1,6 @@
 ---
-title: Bereitstellen einer zustandslosen Kubernetes-Anwendung auf einem Azure Stack Edge-GPU-Gerät mit kubectl | Microsoft-Dokumentation
-description: Beschreibt die Erstellung und Verwaltung der Bereitstellung einer zustandslosen Kubernetes-Anwendung mit kubectl auf einem Microsoft Azure Stack Edge-Gerät.
+title: Bereitstellen einer zustandslosen Kubernetes-Anwendung auf einem Azure Stack Edge Pro-GPU-Gerät mit kubectl | Microsoft-Dokumentation
+description: Hier wird die Erstellung und Verwaltung der Bereitstellung einer zustandslosen Kubernetes-Anwendung mit kubectl auf einem Microsoft Azure Stack Edge Pro-Gerät beschrieben.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 27502c58481444a9dc14120bf447d4614d051ccc
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 91a2d08bf9eea2f5af0f6893712515cb2feeab8a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268858"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890726"
 ---
-# <a name="deploy-a-kubernetes-stateless-application-via-kubectl-on-your-azure-stack-edge-gpu-device"></a>Bereitstellen einer zustandslosen Kubernetes-Anwendung auf einem Azure Stack Edge-GPU-Gerät mit kubectl
+# <a name="deploy-a-kubernetes-stateless-application-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>Bereitstellen einer zustandslosen Kubernetes-Anwendung auf einem Azure Stack Edge Pro-GPU-Gerät mit kubectl
 
 In diesem Artikel wird beschrieben, wie Sie eine zustandslose Anwendung mit kubectl-Befehlen auf einem bestehenden Kubernetes-Cluster bereitstellen können. Dieser Artikel führt Sie auch durch den Prozess der Erstellung und Einrichtung von Pods in Ihrer zustandslosen Anwendung.
 
@@ -23,13 +23,13 @@ In diesem Artikel wird beschrieben, wie Sie eine zustandslose Anwendung mit kube
 
 Bevor Sie einen Kubernetes-Cluster erstellen und das `kubectl`-Befehlszeilentool verwenden können, müssen Sie Folgendes sicherstellen:
 
-- Sie verfügen über Anmeldeinformationen für ein Azure Stack Edge-Gerät mit einem Knoten.
+- Sie verfügen über Anmeldeinformationen für ein Azure Stack Edge Pro-Gerät mit einem Knoten.
 
-- Windows PowerShell 5.0 oder höher ist auf einem Windows-Clientsystem installiert, um auf das Azure Stack Edge-Gerät zuzugreifen. Sie können auch einen anderen Client mit einem unterstützten Betriebssystem verwenden. In diesem Artikel wird die Vorgehensweise bei Verwendung eines Windows-Clients beschrieben. Informationen zum Herunterladen der neuesten Version von Windows PowerShell finden Sie unter [Installieren von Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
+- Windows PowerShell 5.0 oder höher ist auf einem Windows-Clientsystem installiert, um auf das Azure Stack Edge Pro-Gerät zuzugreifen. Sie können auch einen anderen Client mit einem unterstützten Betriebssystem verwenden. In diesem Artikel wird die Vorgehensweise bei Verwendung eines Windows-Clients beschrieben. Informationen zum Herunterladen der neuesten Version von Windows PowerShell finden Sie unter [Installieren von Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
 
-- Compute ist auf dem Azure Stack Edge-Gerät aktiviert. Wechseln Sie zur Seite **Compute** der lokalen Benutzeroberfläche des Geräts, um den Computevorgang zu aktivieren. Wählen Sie dann eine Netzwerkschnittstelle aus, die Sie für Compute aktivieren möchten. Wählen Sie **Aktivieren** aus. Das Aktivieren des Computevorgangs führt zur Erstellung eines virtuellen Switches auf Ihrem Gerät für diese Netzwerkschnittstelle. Weitere Informationen finden Sie unter [Aktivieren des Computingnetzwerks auf Ihrem Azure Stack Edge-Gerät](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md).
+- Compute ist auf dem Azure Stack Edge Pro-Gerät aktiviert. Wechseln Sie zur Seite **Compute** der lokalen Benutzeroberfläche des Geräts, um den Computevorgang zu aktivieren. Wählen Sie dann eine Netzwerkschnittstelle aus, die Sie für Compute aktivieren möchten. Wählen Sie **Aktivieren** aus. Das Aktivieren des Computevorgangs führt zur Erstellung eines virtuellen Switches auf Ihrem Gerät für diese Netzwerkschnittstelle. Weitere Informationen finden Sie unter [Aktivieren des Computingnetzwerks auf Ihrem Azure Stack Edge Pro-Gerät](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md).
 
-- Auf Ihrem Azure Stack Edge-Gerät wird ein Kubernetes-Clusterserver mit Version v1.9 oder höher ausgeführt. Weitere Informationen finden Sie unter [Erstellen und Verwalten eines Kubernetes-Clusters auf einem Microsoft Azure Stack Edge-Gerät](azure-stack-edge-gpu-create-kubernetes-cluster.md).
+- Auf Ihrem Azure Stack Edge Pro-Gerät wird ein Kubernetes-Clusterserver mit Version v1.9 oder höher ausgeführt. Weitere Informationen finden Sie unter [Erstellen und Verwalten eines Kubernetes-Clusters auf einem Microsoft Azure Stack Edge Pro-Gerät](azure-stack-edge-gpu-create-kubernetes-cluster.md).
 
 - Sie haben `kubectl` installiert.
 
@@ -43,7 +43,7 @@ Bevor wir beginnen, sollten Sie Folgendes ausgeführt haben:
 4. Die Benutzerkonfiguration in `C:\Users\<username>\.kube` gespeichert.
 5. `kubectl` installiert.
 
-Jetzt können Sie mit der Ausführung und Verwaltung zustandsloser Anwendungen und deren Bereitstellung auf einem Azure Stack Edge-Gerät beginnen. Bevor Sie mit der Verwendung von `kubectl` beginnen, müssen Sie überprüfen, ob Sie die richtige Version von `kubectl` verwenden.
+Jetzt können Sie mit der Ausführung und Verwaltung zustandsloser Anwendungsbereitstellungen auf einem Azure Stack Edge Pro-Gerät beginnen. Bevor Sie mit der Verwendung von `kubectl` beginnen, müssen Sie überprüfen, ob Sie die richtige Version von `kubectl` verwenden.
 
 ### <a name="verify-you-have-the-correct-version-of-kubectl-and-set-up-configuration"></a>Überprüfen Sie, ob Sie die richtige Version von kubectl besitzen, und richten Sie die Konfiguration ein.
 
@@ -109,7 +109,7 @@ Ein Pod ist die grundlegende Ausführungseinheit einer Kubernetes-Anwendung, die
 
 Der Typ der zustandslosen Anwendung, die Sie erstellen, ist eine nginx-Webserverbereitstellung.
 
-Alle kubectl-Befehle, die Sie zum Erstellen und Verwalten zustandsloser Anwendungsbereitstellungen verwenden, müssen den mit der Konfiguration verbundenen Namespace angeben. Sie haben den Namespace erstellt, während Sie mit dem Cluster auf dem Azure Stack Edge-Gerät im Tutorial [Erstellen und Verwalten eines Kubernetes-Clusters auf einem Microsoft Azure Stack Edge-Gerät](azure-stack-edge-gpu-create-kubernetes-cluster.md) mit `New-HcsKubernetesNamespace` verbunden waren.
+Alle kubectl-Befehle, die Sie zum Erstellen und Verwalten zustandsloser Anwendungsbereitstellungen verwenden, müssen den mit der Konfiguration verbundenen Namespace angeben. Sie haben den Namespace erstellt, während Sie mit dem Cluster auf dem Azure Stack Edge Pro-Gerät im Tutorial [Erstellen und Verwalten eines Kubernetes-Clusters auf einem Microsoft Azure Stack Edge Pro-Gerät](azure-stack-edge-gpu-create-kubernetes-cluster.md) mit `New-HcsKubernetesNamespace` verbunden waren.
 
 Um den Namespace in einem kubectl-Befehl anzugeben, verwenden Sie `kubectl <command> -n <namespace-string>`.
 

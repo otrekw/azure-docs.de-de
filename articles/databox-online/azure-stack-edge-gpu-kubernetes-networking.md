@@ -1,6 +1,6 @@
 ---
-title: Grundlegendes zum Kubernetes-Netzwerk auf einem Azure Stack Edge-Gerät | Microsoft-Dokumentation
-description: In diesem Artikel wird die Funktionsweise von Kubernetes-Netzwerken auf Azure Stack Edge-Geräten beschrieben.
+title: Grundlegendes zum Kubernetes-Netzwerk auf einem Azure Stack Edge Pro-Gerät | Microsoft-Dokumentation
+description: Hier wird die Funktionsweise von Kubernetes-Netzwerken auf Azure Stack Edge Pro-Geräten beschrieben.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 4eab89710e031ead0a3758afd2367e60d26f395b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 001304ad6eda27db2285aaa9ad8b28929e2a04f8
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268124"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899311"
 ---
-# <a name="kubernetes-networking-in-your-azure-stack-edge-gpu-device"></a>Kubernetes-Netzwerke auf Ihrem Azure Stack Edge-GPU-Gerät
+# <a name="kubernetes-networking-in-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes-Netzwerke auf Ihrem Azure Stack Edge Pro-GPU-Gerät
 
-Wenn Sie die Computerolle konfigurieren, wird auf Ihrem Azure Stack Edge-Gerät ein Kubernetes-Cluster erstellt. Sobald der Kubernetes-Cluster erstellt wurde, können innerhalb des Kubernetes-Clusters Containeranwendungen in Pods bereitgestellt werden. Für die Pods in Ihrem Kubernetes-Cluster werden unterschiedliche Netzwerkfunktionen genutzt. 
+Wenn Sie die Computerolle konfigurieren, wird auf Ihrem Azure Stack Edge Pro-Gerät ein Kubernetes-Cluster erstellt. Sobald der Kubernetes-Cluster erstellt wurde, können innerhalb des Kubernetes-Clusters Containeranwendungen in Pods bereitgestellt werden. Für die Pods in Ihrem Kubernetes-Cluster werden unterschiedliche Netzwerkfunktionen genutzt. 
 
-In diesem Artikel werden die Netzwerkfunktionen in einem Kubernetes-Cluster sowohl allgemein als auch im Kontext Ihres Azure Stack Edge-Geräts beschrieben. 
+In diesem Artikel werden die Netzwerkfunktionen in einem Kubernetes-Cluster sowohl allgemein als auch im Kontext Ihres Azure Stack Edge Pro-Geräts beschrieben. 
 
 ## <a name="networking-requirements"></a>Netzwerkanforderungen
 
@@ -59,9 +59,9 @@ For discovery of applications within the cluster, Kubernetes cluster has a
 When an application or the end user would first use the IP address associated with the service of type load balancer to discover the service. Then it would use the label select `app = WS` to discover the pods associated with the application. The `kube-proxy` component would then distribute the traffic and ensure that it hits one of the web server application pods. If the web server app wanted to talk to the database app, then it would simply use the name of the service and using the name and the DNS server pod, resolve the name to an IP address. Again using labels and label selector, it would discover the pods associated with the database application. The `kube-proxy` would then distribute the traffic across each of the database app nodes.-->
 
 
-## <a name="kubernetes-networking-on-azure-stack-edge"></a>Kubernetes-Netzwerke auf Azure Stack Edge-Geräten
+## <a name="kubernetes-networking-on-azure-stack-edge-pro"></a>Kubernetes-Netzwerke auf Azure Stack Edge Pro-Geräten
 
-Zur Bereitstellung der Netzwerkfunktionen auf Ihrem Azure Stack Edge-Gerät werden Calico, Metallb und Core DNS installiert. 
+Zur Bereitstellung der Netzwerkfunktionen auf Ihrem Azure Stack Edge Pro-Gerät werden die Komponenten Calico, Metallb und Core DNS installiert. 
 
 - **Calico** weist jedem Pod eine IP-Adresse aus einem privaten IP-Adressbereich zu und konfiguriert Netzwerkfunktionen für diese Pods, um die Kommunikation zwischen Pods auf verschiedenen Knoten zu ermöglichen. 
 - **Metallb** wird in einem Pod innerhalb des Clusters ausgeführt und weist Diensten vom Typ Lastenausgleich eine IP-Adresse zu. Die IP-Adressen für den Lastenausgleich werden aus dem Dienst-IP-Adressbereich ausgewählt, der über die lokale Benutzeroberfläche angegeben wird. 
@@ -80,8 +80,8 @@ Die IP-Adresszuweisung gilt für:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Konfigurieren der Kubernetes-Netzwerkfunktionen auf Ihrem Azure Stack Edge-Gerät finden Sie hier:
+Lesen Sie die folgenden Artikel, um Informationen zum Konfigurieren der Kubernetes-Netzwerkfunktionen auf Ihrem Azure Stack Edge Pro-Gerät zu erhalten:
 
-- [Externes Bereitstellen einer zustandslosen Anwendung auf Ihrem Azure Stack Edge-Gerät über IoT Edge](azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md).
+- [Externes Bereitstellen einer zustandslosen Anwendung auf Ihrem Azure Stack Edge Pro-Gerät über IoT Edge](azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md).
 
-- [Externes Bereitstellen einer zustandslosen Anwendung auf Ihrem Azure Stack Edge-Gerät über kuebctl](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md).
+- [Externes Bereitstellen einer zustandslosen Anwendung auf Ihrem Azure Stack Edge Pro-Gerät über kuebctl](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md).

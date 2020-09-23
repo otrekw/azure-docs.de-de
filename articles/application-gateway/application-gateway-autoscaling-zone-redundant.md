@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: victorh
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: dc3daf28a4e8dd4ebf1fcedddd1a46986ac80cc4
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: cbd15819fc03eb80b3647f6ffede93f851e295d4
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400601"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649751"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatische Skalierung und zonenredundantes Application Gateway v2 
 
@@ -100,7 +100,7 @@ In diesem Abschnitt werden die Features und Einschränkungen der v2-SKU beschrie
 |--|--|
 |Authentifizierungszertifikat|Wird nicht unterstützt.<br>Weitere Informationen finden Sie unter [Übersicht über End-to-End-TLS mit Application Gateway](ssl-overview.md#end-to-end-tls-with-the-v2-sku).|
 |Mischen von Standard_v2 und Standardanwendungsgateway in demselben Subnetz|Nicht unterstützt|
-|Benutzerdefinierte Route im Application Gateway-Subnetz|Unterstützt (spezifische Szenarien). In der Vorschauversion.<br> Weitere Informationen zu unterstützten Szenarien finden Sie unter [Application Gateway-Konfiguration: Übersicht](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet).|
+|Benutzerdefinierte Route im Application Gateway-Subnetz|Unterstützt (spezifische Szenarien). In der Vorschauversion.<br> Weitere Informationen zu unterstützten Szenarien finden Sie unter [Application Gateway-Konfiguration: Übersicht](configuration-infrastructure.md#supported-user-defined-routes).|
 |NSG für Eingangsportbereich| - 65200 bis 65535 für Standard_v2-SKU<br>- 65503 bis 65534 für Standard-SKU.<br>Weitere Informationen finden Sie in den [häufig gestellten Fragen](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet).|
 |Leistungsprotokolle in Azure-Diagnose|Wird nicht unterstützt.<br>Es sollten Azure-Metriken verwendet werden.|
 |Abrechnung|Die Abrechnung soll planmäßig am 1. Juli 2019 beginnen.|
