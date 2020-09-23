@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f90f5f4298fcca77e293965ddd377598bcfd1930
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 93922986dfe0b2b4e8ba0923931df601cc12428b
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077318"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532527"
 ---
 # <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>Verwenden von Azure AD als Identitätsanbieter für vCenter in einer privaten CloudSimple-Cloud
 
@@ -64,7 +64,7 @@ Optional können Sie auch andere Azure AD-Features konfigurieren.  Diese sind ni
 3. Konfigurieren Sie die Administratorgruppe zum Verwalten der Azure AD Domain Services wie unter [Aktivieren von Azure Active Directory Domain Services mit dem Azure-Portal](../active-directory-domain-services/tutorial-create-instance.md) beschrieben.
 4. Aktualisieren Sie die DNS-Einstellungen für Ihre Azure AD Domain Services wie unter [Aktivieren von Azure Active Directory Domain Services](../active-directory-domain-services/tutorial-create-instance.md) beschrieben.  Wenn Sie über das Internet eine Verbindung mit AD herstellen möchten, richten Sie den DNS-Eintrag für die öffentliche IP-Adresse der Azure AD Domain Services mit dem Domänennamen ein.
 5. Aktivieren Sie die Kennworthashsynchronisierung für Benutzer.  In diesem Schritt wird die Synchronisierung der Kennworthashes, die für die NTLM- (NT LAN Manager) und Kerberos-Authentifizierung erforderlich sind, mit Azure AD Domain Services aktiviert. Nach der Einrichtung der Kennworthashsynchronisierung können sich Benutzer mit ihren Unternehmensanmeldeinformationen bei der verwalteten Domäne anmelden. Weitere Informationen finden Sie unter [Aktivieren der Kennworthashsynchronisierung für Azure Active Directory Domain Services](../active-directory-domain-services/tutorial-create-instance.md).
-    1. Wenn reine Cloudbenutzer vorhanden sind, müssen diese ihr Kennwort über den <a href="http://myapps.microsoft.com/" target="_blank">Azure AD-Zugriffsbereich</a> ändern, um sicherzustellen, dass Kennworthashes in dem Format gespeichert werden, das von NTLM oder Kerberos benötigt wird.  Befolgen Sie die Anleitungen unter [Aktivieren der Kennworthashsynchronisierung mit Ihrer verwalteten Domäne für reine Cloudbenutzerkonten](../active-directory-domain-services/tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds).  Dieser Schritt muss für einzelne Benutzer und alle neuen Benutzer durchgeführt werden, die in Ihrem Azure AD-Verzeichnis mithilfe des Azure-Portals oder mit Azure AD-PowerShell-Cmdlets erstellt werden. Benutzer, die Zugriff auf Azure AD Domain Services benötigen, müssen den <a href="http://myapps.microsoft.com/" target="_blank">Azure AD-Zugriffsbereich</a> verwenden und auf ihr Profil zugreifen, um das Kennwort zu ändern.
+    1. Wenn reine Cloudbenutzer vorhanden sind, müssen diese ihr Kennwort über den <a href="https://myapps.microsoft.com/" target="_blank">Azure AD-Zugriffsbereich</a> ändern, um sicherzustellen, dass Kennworthashes in dem Format gespeichert werden, das von NTLM oder Kerberos benötigt wird.  Befolgen Sie die Anleitungen unter [Aktivieren der Kennworthashsynchronisierung mit Ihrer verwalteten Domäne für reine Cloudbenutzerkonten](../active-directory-domain-services/tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds).  Dieser Schritt muss für einzelne Benutzer und alle neuen Benutzer durchgeführt werden, die in Ihrem Azure AD-Verzeichnis mithilfe des Azure-Portals oder mit Azure AD-PowerShell-Cmdlets erstellt werden. Benutzer, die Zugriff auf Azure AD Domain Services benötigen, müssen den <a href="https://myapps.microsoft.com/" target="_blank">Azure AD-Zugriffsbereich</a> verwenden und auf ihr Profil zugreifen, um das Kennwort zu ändern.
 
         > [!NOTE]
         > Falls Ihr Unternehmen über reine Cloudbenutzerkonten verfügt, müssen alle Benutzer, die Azure Active Directory Domain Services verwenden möchten, ihre Kennwörter ändern. Ein reines Cloudbenutzerkonto ist ein Konto, das in Ihrem Azure AD-Verzeichnis über das Azure-Portal oder mithilfe von Azure AD PowerShell-Cmdlets erstellt wurde. Solche Benutzerkonten werden nicht von einem lokalen Verzeichnis aus synchronisiert.

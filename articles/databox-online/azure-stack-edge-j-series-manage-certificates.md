@@ -1,6 +1,6 @@
 ---
-title: Verwenden von Zertifikaten mit Azure Stack Edge-GPU | Microsoft-Dokumentation
-description: Beschreibt die Verwendung von Zertifikaten mit Azure Stack Edge-GPU-Geräten, einschließlich der Gründe für die Verwendung, welche Typen und wie Sie Zertifikate auf Ihr Gerät hochladen können.
+title: Verwenden von Zertifikaten mit Azure Stack Edge Pro-GPU | Microsoft-Dokumentation
+description: Hier wird die Verwendung von Zertifikaten mit Azure Stack Edge Pro-GPU-Geräten beschrieben. Dabei werden die Gründe für die Verwendung und die möglichen Typen erörtert, und Sie erfahren, wie Sie Zertifikate auf Ihr Gerät hochladen können.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,28 +8,28 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: bf7f9236c8f0835d0041b4b0c454a492330ef878
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 59924312fe0483d11d0f70ce83b8f6e4b0e198dc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268875"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890754"
 ---
-# <a name="use-certificates-with-azure-stack-edge-gpu-device"></a>Verwenden von Zertifikaten mit Azure Stack Edge-GPU-Gerät
+# <a name="use-certificates-with-azure-stack-edge-pro-gpu-device"></a>Verwenden von Zertifikaten mit einem Azure Stack Edge Pro-GPU-Gerät
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-In diesem Artikel werden die Arten von Zertifikaten beschrieben, die auf Ihrem Azure Stack Edge-Gerät installiert werden können. Der Artikel enthält auch die Details für jeden Zertifikattyp zusammen mit dem Verfahren zum Installieren und Identifizieren des Ablaufdatums. 
+In diesem Artikel werden die Zertifikattypen beschrieben, die auf Ihrem Azure Stack Edge Pro-Gerät installiert werden können. Der Artikel enthält auch die Details für jeden Zertifikattyp zusammen mit dem Verfahren zum Installieren und Identifizieren des Ablaufdatums. 
 
 ## <a name="about-certificates"></a>Informationen zu Zertifikaten
 
 Ein Zertifikat stellt eine Verbindung zwischen einem **öffentlichen Schlüssel** und einer Entität (z. B. Domänenname) her, die durch eine vertrauenswürdige dritte Instanz (z. B. eine  **Zertifizierungsstelle**) **signiert** (verifiziert) wurde.  Ein Zertifikat bietet eine bequeme Möglichkeit, vertrauenswürdige öffentliche Verschlüsselungsschlüssel zu verteilen. Zertifikate stellen damit sicher, dass Ihre Kommunikation vertrauenswürdig ist und dass Sie verschlüsselte Informationen an den richtigen Server senden. 
 
-Wenn Ihr Azure Stack Edge-Gerät anfänglich konfiguriert ist, werden automatisch selbstsignierte Zertifikate generiert. Optional können Sie Ihre eigenen Zertifikate vorlegen. Es gibt Richtlinien, die Sie befolgen müssen, wenn Sie Ihre eigenen Zertifikate verwenden möchten.
+Bei der Erstkonfiguration Ihres Azure Stack Edge Pro-Geräts werden automatisch selbstsignierte Zertifikate generiert. Optional können Sie Ihre eigenen Zertifikate vorlegen. Es gibt Richtlinien, die Sie befolgen müssen, wenn Sie Ihre eigenen Zertifikate verwenden möchten.
 
 ## <a name="types-of-certificates"></a>Zertifikattypen
 
-Die verschiedenen Arten von Zertifikaten, die auf dem Azure Stack Edge-Gerät verwendet werden, lauten wie folgt: 
+Auf Ihrem Azure Stack Edge Pro-Gerät werden die folgenden verschiedenen Zertifikattypen verwendet: 
 - Signaturzertifikate
     - Stamm-CA
     - Fortgeschrittene Anfänger
@@ -68,7 +68,7 @@ Diese Zertifikate können Stammzertifikate oder die Zwischenzertifikate sein. Di
 
 ## <a name="node-certificates"></a>Knotenzertifikate
 
-<!--Your Azure Stack Edge device could be a 1-node device or a 4-node device.--> Alle Knoten im Gerät kommunizieren ständig miteinander und müssen daher über eine Vertrauensstellung verfügen. Knotenzertifikate bieten eine Möglichkeit, diese Vertrauensstellung herzustellen. Knotenzertifikate kommen auch ins Spiel, wenn Sie eine Remoteverbindung mit dem Geräteknoten über eine PowerShell-Remotesitzung über HTTPS herstellen.
+<!--Your Azure Stack Edge Pro device could be a 1-node device or a 4-node device.--> Alle Knoten im Gerät kommunizieren ständig miteinander und müssen daher über eine Vertrauensstellung verfügen. Knotenzertifikate bieten eine Möglichkeit, diese Vertrauensstellung herzustellen. Knotenzertifikate kommen auch ins Spiel, wenn Sie eine Remoteverbindung mit dem Geräteknoten über eine PowerShell-Remotesitzung über HTTPS herstellen.
 
 ### <a name="caveats"></a>Vorbehalte
 
@@ -121,9 +121,9 @@ Sie können über einen Browser auf die lokale Webbenutzeroberfläche Ihres Ger�
 
 ## <a name="iot-edge-device-certificates"></a>IoT Edge-Gerätezertifikate
 
-Ihr Azure Stack Edge-Gerät ist ebenfalls ein IoT-Gerät, bei dem der Computevorgang durch ein angeschlossenes IoT Edge-Gerät aktiviert wird. Für jede sichere Kommunikation zwischen diesem IoT Edge-Gerät und den Downstreamgeräten, die sich mit ihm verbinden können, können Sie auch IoT Edge-Zertifikate hochladen. 
+Ihr Azure Stack Edge Pro-Gerät ist auch ein IoT-Gerät, bei dem Compute durch ein damit verbundenes IoT Edge-Gerät aktiviert wird. Für jede sichere Kommunikation zwischen diesem IoT Edge-Gerät und den Downstreamgeräten, die sich mit ihm verbinden können, können Sie auch IoT Edge-Zertifikate hochladen. 
 
-Das Gerät verfügt über selbstsignierte Zertifikate, die verwendet werden können, wenn Sie nur das Computeszenario mit dem Gerät verwenden möchten. Wenn das Azure Stack Edge-Gerät jedoch an Downstreamgeräte angeschlossen ist, dann müssen Sie Ihre eigenen Zertifikate bereitstellen.
+Das Gerät verfügt über selbstsignierte Zertifikate, die verwendet werden können, wenn Sie nur das Computeszenario mit dem Gerät verwenden möchten. Wenn das Azure Stack Edge Pro-Gerät jedoch mit Downstreamgeräten verbunden ist, müssen Sie Ihre eigenen Zertifikate bereitstellen.
 
 Es gibt drei IoT Edge-Zertifikate, die Sie installieren müssen, um diese Vertrauensstellung zu aktivieren:
 
@@ -140,7 +140,7 @@ Weitere Informationen zu IoT Edge-Zertifikaten finden Sie unter [Details zu Azur
 
 ## <a name="support-session-certificates"></a>Supportsitzungszertifikate
 
-Wenn bei Ihrem Azure Stack Edge-Gerät Probleme auftreten, kann zur Behebung dieser Probleme eine Remotesitzung des PowerShell-Supports auf dem Gerät geöffnet werden. Sie können ein Zertifikat hochladen, um eine sichere, verschlüsselte Kommunikation über diese Supportsitzung zu ermöglichen.
+Wenn auf Ihrem Azure Stack Edge Pro-Gerät Probleme auftreten, kann zur Behebung dieser Probleme eine Remotesitzung des PowerShell-Supports auf dem Gerät geöffnet werden. Sie können ein Zertifikat hochladen, um eine sichere, verschlüsselte Kommunikation über diese Supportsitzung zu ermöglichen.
 
 ### <a name="caveats"></a>Vorbehalte
 
@@ -155,7 +155,7 @@ Wenn bei Ihrem Azure Stack Edge-Gerät Probleme auftreten, kann zur Behebung die
 
 <!--## VPN certificates
 
-If VPN is configured on your Azure Stack Edge device, then you will also need a certificate for any communication that occurs over the VPN channel. You can bring your own VPN certificate to ensure the communication is trusted.
+If VPN is configured on your Azure Stack Edge Pro device, then you will also need a certificate for any communication that occurs over the VPN channel. You can bring your own VPN certificate to ensure the communication is trusted.
 
 ### Caveats
 
@@ -262,7 +262,7 @@ $DeviceSerial = "HWDC1T2"
 New-SelfSignedCertificate -Type Custom -DnsName "$AppName.$domain","$DeviceSerial.$domain","management.$AppName.$domain","login.$AppName.$domain","*.blob.$AppName.$domain" -Subject "CN=$AppName.$domain" -KeyExportPolicy Exportable  -HashAlgorithm sha256 -KeyLength 2048  -CertStoreLocation "Cert:\LocalMachine\My" -Signer $cert -KeySpec KeyExchange -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.1")
 ```
 
-Nachdem die Zertifikate erstellt wurden, besteht der nächste Schritt darin, die Zertifikate auf Ihr Azure Stack Edge-Gerät hochzuladen.
+Nachdem die Zertifikate erstellt wurden, besteht der nächste Schritt darin, die Zertifikate auf Ihr Azure Stack Edge Pro-Gerät hochzuladen.
 
 
 ## <a name="upload-certificates"></a>Hochladen von Zertifikaten 
@@ -401,7 +401,7 @@ Die Sicherungskopie der PFX-Datei wird jetzt an dem von Ihnen gewählten Ort ges
 
 ## <a name="supported-certificate-algorithms"></a>Unterstützte Zertifikatalgorithmen
 
- Nur die RSA-Zertifikate (Rivest-Shamir-Adleman) werden von Ihrem Azure Stack Edge-Gerät unterstützt. Wenn ECDSA-Zertifikate (Elliptic Curve Digital Signature Algorithm) verwendet werden, ist das Geräteverhalten unbestimmt.
+ Von Ihrem Azure Stack Edge Pro-Gerät werden nur die RSA-Zertifikate (Rivest-Shamir-Adleman) unterstützt. Wenn ECDSA-Zertifikate (Elliptic Curve Digital Signature Algorithm) verwendet werden, ist das Geräteverhalten unbestimmt.
 
  Zertifikate, die einen öffentlichen RSA-Schlüssel enthalten, werden als RSA-Zertifikate bezeichnet. Zertifikate, die einen öffentlichen ECC-Schlüssel (Elliptic Curve Cryptographic) enthalten, werden als ECDSA-Zertifikate (Elliptic Curve Digital Signature Algorithm) bezeichnet. 
 
@@ -418,4 +418,4 @@ Zeigen Sie das Ablaufdatum des Zertifikats auf der Seite **Zertifikate** auf der
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Bereitstellen Ihres Azure Stack Edge-Geräts](azure-stack-edge-gpu-deploy-prep.md)
+[Bereitstellen Ihres Azure Stack Edge Pro-Geräts](azure-stack-edge-gpu-deploy-prep.md)

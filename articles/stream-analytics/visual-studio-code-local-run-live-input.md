@@ -6,12 +6,12 @@ author: su-jie
 ms.author: sujie
 ms.date: 11/14/2019
 ms.topic: how-to
-ms.openlocfilehash: 1b2268426b66ddb9ffdd48d6901ab991e76cb95c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 944c1a8cc4606c5e614f17cd0590331826527a7c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037442"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892182"
 ---
 # <a name="test-stream-analytics-queries-locally-against-live-stream-input-by-using-visual-studio-code"></a>Lokales Testen von Stream Analytics-Abfragen unter Verwendung einer Livestreameingabe mithilfe von Visual Studio Code
 
@@ -21,39 +21,39 @@ Mit Azure Stream Analytics-Tools für Visual Studio Code können Sie Ihre Stream
 
 * Installieren Sie das [.NET Core SDK](https://dotnet.microsoft.com/download), und starten Sie Visual Studio Code neu.
 
-* Informieren Sie sich anhand [dieser Schnellstartanleitung](quick-create-vs-code.md), wie Sie mithilfe von Visual Studio Code einen Stream Analytics-Auftrag erstellen.
+* Informieren Sie sich anhand [dieser Schnellstartanleitung](quick-create-visual-studio-code.md), wie Sie mithilfe von Visual Studio Code einen Stream Analytics-Auftrag erstellen.
 
 ## <a name="define-a-live-stream-input"></a>Definieren einer Livestreameingabe
 
 1. Klicken Sie in Ihrem Stream Analytics-Projekt mit der rechten Maustaste auf den Ordner **Inputs**. Wählen Sie anschließend **ASA: Eingabe hinzufügen** im Kontextmenü aus.
 
-   ![Hinzufügen einer Eingabe aus dem Ordner „Inputs“](./media/quick-create-vs-code/add-input-from-inputs-folder.png)
+   ![Hinzufügen einer Eingabe aus dem Ordner „Inputs“](./media/quick-create-visual-studio-code/add-input-from-inputs-folder.png)
 
    Drücken Sie alternativ **STRG+UMSCHALT+P**, um die Befehlspalette zu öffnen, und geben Sie **ASA: Eingabe hinzufügen** ein.
 
-   ![Hinzufügen einer Stream Analytics-Eingabe in Visual Studio Code](./media/quick-create-vs-code/add-input.png)
+   ![Hinzufügen einer Stream Analytics-Eingabe in Visual Studio Code](./media/quick-create-visual-studio-code/add-input.png)
 
 2. Wählen Sie in der Dropdownliste einen Eingabequellentyp aus.
 
-   ![Auswählen von „IoT Hub“ als Eingabeoption](./media/quick-create-vs-code/iot-hub.png)
+   ![Auswählen von „IoT Hub“ als Eingabeoption](./media/quick-create-visual-studio-code/iot-hub.png)
 
 3. Wenn Sie die Eingabe über die Befehlspalette hinzugefügt haben, wählen Sie das Stream Analytics-Abfrageskript aus, von dem die Eingabe verwendet werden soll. Es sollte automatisch mit dem Dateipfad zu **myASAproj.asaql** aufgefüllt werden.
 
-   ![Auswählen eines Stream Analytics-Skripts in Visual Studio Code](./media/quick-create-vs-code/asa-script.png)
+   ![Auswählen eines Stream Analytics-Skripts in Visual Studio Code](./media/quick-create-visual-studio-code/asa-script.png)
 
 4. Wählen Sie im Dropdownmenü die Option **Aus Ihren Azure-Abonnements auswählen** aus.
 
-    ![Auswählen aus Abonnements](./media/quick-create-vs-code/add-input-select-subscription.png)
+    ![Auswählen aus Abonnements](./media/quick-create-visual-studio-code/add-input-select-subscription.png)
 
 5. Konfigurieren Sie die neu generierte JSON-Datei. Sie können das CodeLens-Feature verwenden, um sich bei der Eingabe einer Zeichenfolge, der Auswahl aus einer Dropdownliste oder der direkten Änderung von Text in der Datei unterstützen zu lassen. Der folgende Screenshot zeigt **Select from your Subscriptions** (Aus Ihren Abonnements auswählen) als Beispiel.
 
-   ![Konfigurieren von Eingaben in Visual Studio Code](./media/quick-create-vs-code/configure-input.png)
+   ![Konfigurieren von Eingaben in Visual Studio Code](./media/quick-create-visual-studio-code/configure-input.png)
 
 ## <a name="preview-input"></a>Anzeigen einer Eingabevorschau
 
 Wählen Sie in Ihrer Liveeingabe-Konfigurationsdatei in der oberen Zeile die Option **Datenvorschau** aus, um sich zu vergewissern, dass Eingabedaten eingehen. Eingabedaten von einem IoT-Hub gehen ein und werden im Vorschaufenster angezeigt. Es dauert möglicherweise ein paar Sekunden, bis die Vorschau angezeigt wird.
 
- ![Anzeigen einer Vorschau der Liveeingabe](./media/quick-create-vs-code/preview-live-input.png)
+ ![Anzeigen einer Vorschau der Liveeingabe](./media/quick-create-visual-studio-code/preview-live-input.png)
 
 ## <a name="run-queries-locally"></a>Lokales Ausführen von Abfragen
 

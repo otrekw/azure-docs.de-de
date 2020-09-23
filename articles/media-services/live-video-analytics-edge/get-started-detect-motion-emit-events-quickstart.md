@@ -3,12 +3,12 @@ title: 'Erste Schritte mit Live Video Analytics in IoT Edge: Azure'
 description: In dieser Schnellstartanleitung wird veranschaulicht, wie Sie in die Nutzung von Live Video Analytics in IoT Edge einsteigen. Es wird beschrieben, wie Sie in einem Livevideostream Bewegung erkennen.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: c7e5efa19c27c3f56f9653ed933c7ad290d18408
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 0d1aaf34ad38b50403a3cbefbc953f9140f2fe82
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89568046"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884942"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Schnellstart: Erste Schritte: Live Video Analytics in IoT Edge
 
@@ -84,6 +84,9 @@ Befolgen Sie die unten angegebene Anleitung, um mit der Azure IoT Tools-Erweiter
 Wenn die Verbindung erfolgreich hergestellt wird, wird die Liste mit den Edgegeräten angezeigt. Es sollte mindestens ein Gerät mit dem Namen **lva-sample-device** angezeigt werden. Sie können nun über das Kontextmenü Ihre IoT Edge-Geräte verwalten und mit Azure IoT Hub interagieren. Erweitern Sie unter **lva-sample-device** den Knoten **Module**, um die auf dem Edgegerät bereitgestellten Module anzuzeigen.
 
 ![Knoten „lva-sample-device“](./media/quickstarts/lva-sample-device-node.png)
+
+> [!TIP]
+> Wenn Sie [Live Video Analytics in IoT Edge manuell auf einem IoT Edge-Gerät (z. B. einem ARM64-Gerät) bereitgestellt haben](deploy-iot-edge-device.md), wird das Modul unter Azure IoT Hub unter diesem Gerät angezeigt. Sie können dieses Modul auswählen. Führen Sie dann die folgenden restlichen Schritte aus.
 
 ## <a name="use-direct-method-calls"></a>Verwenden von Aufrufen direkter Methoden
 

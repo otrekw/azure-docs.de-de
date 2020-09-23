@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 2192531aec7800314c6748740262f8746da0c4fc
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: b24514ed477d1acd31dbc4ef0daa3aa89b8739f9
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956371"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530827"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Mehrere Front-Ends für Azure Load Balancer
 
@@ -163,6 +163,7 @@ Der Floating IP-Regeltyp bildet die Grundlage für mehrere Load Balancer-Konfigu
 
 * Konfigurationen mit mehreren Front-Ends werden nur für IaaS-VMs unterstützt.
 * Bei der Floating IP-Regel muss die Anwendung die primäre IP-Konfiguration für ausgehende SNAT-Datenflüsse verwenden. Wenn Ihre Anwendung an die Front-End-IP-Adresse gebunden ist, die an der Loopbackschnittstelle im Gastbetriebssystem konfiguriert ist, ist die Azure-SNAT für ausgehenden Datenverkehr nicht verfügbar, um den ausgehenden Datenfluss umzuschreiben, und beim Datenfluss tritt ein Fehler auf.  Lesen Sie die Informationen unter [Ausgehende Verbindungen in Azure](load-balancer-outbound-connections.md).
+* Floating IP wird für sekundäre IP-Konfigurationen in Szenarien mit internem Lastenausgleich derzeit nicht unterstützt.
 * Öffentliche IP-Adressen haben Auswirkungen auf die Abrechnung. Weitere Informationen finden Sie unter [Preise für IP-Adressen](https://azure.microsoft.com/pricing/details/ip-addresses/)
 * Es gelten Grenzwerte für Abonnements. Weitere Informationen finden Sie unter [Einschränkungen für Dienste](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) .
 

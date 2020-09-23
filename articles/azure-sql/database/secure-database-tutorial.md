@@ -7,15 +7,15 @@ ms.subservice: security
 ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
-ms.reviewer: carlrab
-ms.date: 09/03/2019
+ms.reviewer: ''
+ms.date: 09/21/2020
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: 12c3a35e12e3f432345ea788893d0d0ae6e6433f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: bec60875561a9d821642d850c27e47d4f906aba3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496915"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885409"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>Tutorial: Schützen einer Datenbank in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,7 +27,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > - Erstellen von Firewallregeln auf Server- und Datenbankebene
 > - Konfigurieren eines Azure AD-Administrators (Azure Active Directory)
 > - Verwalten des Benutzerzugriffs mit SQL-Authentifizierung, Azure AD-Authentifizierung und sicheren Verbindungszeichenfolgen
-> - Aktivieren von Sicherheitsfeatures (beispielsweise Advanced Data Security, Überwachung, Datenmaskierung und Verschlüsselung)
+> - Aktivieren von Sicherheitsfeatures (beispielsweise Azure Defender für SQL, Überwachung, Datenmaskierung und Verschlüsselung)
 
 Azure SQL-Datenbank bietet folgende Möglichkeiten, um Daten zu schützen:
 
@@ -233,30 +233,30 @@ So kopieren Sie eine sichere Verbindungszeichenfolge:
 
 ## <a name="enable-security-features"></a>Aktivieren der Sicherheitsfeatures
 
-Azure SQL-Datenbank bietet Sicherheitsfeatures, die über das Azure-Portal zur Verfügung stehen. Diese Features sind sowohl für die Datenbank als auch für den Server verfügbar (mit Ausnahme der Datenmaskierung, die nur für die Datenbank zur Verfügung steht). Weitere Informationen finden Sie unter [Advanced Threat Protection für Azure SQL-Datenbank](advanced-data-security.md), [Erste Schritte bei der Überwachung von SQL-Datenbank](../../azure-sql/database/auditing-overview.md), [Dynamische Datenmaskierung für SQL-Datenbank](dynamic-data-masking-overview.md) und [Transparente Datenverschlüsselung für SQL-Datenbank und Data Warehouse](transparent-data-encryption-tde-overview.md).
+Azure SQL-Datenbank bietet Sicherheitsfeatures, die über das Azure-Portal zur Verfügung stehen. Diese Features sind sowohl für die Datenbank als auch für den Server verfügbar (mit Ausnahme der Datenmaskierung, die nur für die Datenbank zur Verfügung steht). Weitere Informationen finden Sie unter [Azure Defender für SQL](azure-defender-for-sql.md), [Erste Schritte bei der Überwachung von SQL-Datenbank](../../azure-sql/database/auditing-overview.md), [Dynamische Datenmaskierung für SQL-Datenbank](dynamic-data-masking-overview.md) und [Transparente Datenverschlüsselung für SQL-Datenbank und Data Warehouse](transparent-data-encryption-tde-overview.md).
 
-### <a name="advanced-data-security"></a>Advanced Data Security
+### <a name="azure-defender-for-sql"></a>Azure Defender für SQL
 
-Das Advanced Data Security-Feature erkennt potenzielle Bedrohungen in Echtzeit und stellt Sicherheitswarnungen zu anomalen Aktivitäten bereit. Benutzer können diese verdächtigen Ereignisse mithilfe des Überwachungsfeatures untersuchen und so ermitteln, ob es sich bei dem Ereignis um einen Zugriffsversuch, um eine Verletzung der Datensicherheit oder um einen Missbrauch von Daten in der Datenbank handelt. Benutzern stehen zudem eine Sicherheitsübersicht mit Sicherheitsrisikobewertung sowie das Tool zur Datenermittlung und -klassifizierung zur Verfügung.
+Das Feature Azure Defender für SQL erkennt potenzielle Bedrohungen in Echtzeit und stellt Sicherheitswarnungen zu anomalen Aktivitäten bereit. Benutzer können diese verdächtigen Ereignisse mithilfe des Überwachungsfeatures untersuchen und so ermitteln, ob es sich bei dem Ereignis um einen Zugriffsversuch, um eine Verletzung der Datensicherheit oder um einen Missbrauch von Daten in der Datenbank handelt. Benutzern stehen zudem eine Sicherheitsübersicht mit Sicherheitsrisikobewertung sowie das Tool zur Datenermittlung und -klassifizierung zur Verfügung.
 
 > [!NOTE]
 > Ein Bespiel für eine Bedrohung ist die Einschleusung von SQL-Befehlen. Dabei schleusen Angreifer schädliche SQL-Befehle in Eingaben von Anwendungen ein. Dies kann dazu führen, dass die Anwendung unwissentlich die schädlichen SQL-Befehle ausführt und Angreifern Zugriff auf die Datenbank gewährt, die dann die darin enthaltenen Daten entwenden oder manipulieren können.
 
-So aktivieren Sie Advanced Data Security:
+So aktivieren Sie Azure Defender für SQL
 
 1. Wählen Sie im Azure-Portal im Menü auf der linken Seite die Option **SQL-Datenbanken** und anschließend auf der Seite **SQL-Datenbanken** Ihre Datenbank aus.
 
 1. Wählen Sie auf der Seite **Übersicht** den Link **Servername** aus. Die Serverseite wird geöffnet.
 
-1. Navigieren Sie auf der Seite **SQL Server** zum Abschnitt **Sicherheit**, und wählen Sie **Advanced Data Security** aus.
+1. Navigieren Sie auf der Seite **SQL Server** zum Abschnitt **Sicherheit**, und wählen Sie **Security Center** aus.
 
-   1. Wählen Sie unter **Advanced Data Security** die Option **EIN** aus, um das Feature zu aktivieren. Wählen Sie ein Speicherkonto zum Speichern der Ergebnisse der Sicherheitsrisikobewertung aus. Klicken Sie dann auf **Speichern**.
+   1. Wählen Sie **EIN** unter **Azure Defender für SQL** aus, um das Feature zu aktivieren. Wählen Sie ein Speicherkonto zum Speichern der Ergebnisse der Sicherheitsrisikobewertung aus. Klicken Sie dann auf **Speichern**.
 
       ![Navigationsbereich](./media/secure-database-tutorial/threat-settings.png)
 
       Sie können auch E-Mail-Adressen für den Empfang von Sicherheitswarnungen sowie Speicherdetails und Bedrohungserkennungstypen konfigurieren.
 
-1. Kehren Sie zur Seite **SQL-Datenbanken** Ihrer Datenbank zurück, und wählen Sie im Abschnitt **Sicherheit** die Option **Advanced Data Security** aus. Hier finden Sie verschiedene Sicherheitsindikatoren für die Datenbank.
+1. Kehren Sie zur Seite **SQL-Datenbanken** der Datenbank zurück, und wählen Sie im Abschnitt **Sicherheit** die Option **Security Center** aus. Hier finden Sie verschiedene Sicherheitsindikatoren für die Datenbank.
 
     ![Bedrohungsstatus](./media/secure-database-tutorial/threat-status.png)
 
@@ -347,7 +347,7 @@ In diesem Tutorial haben Sie gelernt, wie Sie mit wenigen einfachen Schritten di
 > - Erstellen von Firewallregeln auf Server- und Datenbankebene
 > - Konfigurieren eines Azure AD-Administrators (Azure Active Directory)
 > - Verwalten des Benutzerzugriffs mit SQL-Authentifizierung, Azure AD-Authentifizierung und sicheren Verbindungszeichenfolgen
-> - Aktivieren von Sicherheitsfeatures (beispielsweise Advanced Data Security, Überwachung, Datenmaskierung und Verschlüsselung)
+> - Aktivieren von Sicherheitsfeatures (beispielsweise Azure Defender für SQL, Überwachung, Datenmaskierung und Verschlüsselung)
 
 Im nächsten Tutorial erfahren Sie, wie Sie eine geografische Verteilung implementieren.
 

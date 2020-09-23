@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: tutorial
 ms.date: 08/21/2020
-ms.openlocfilehash: 887017f60deb832bd5c53f28bde4b57a3d82bde5
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: fd74bfca73323209012dfd1fda61bbaada84092f
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918042"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530691"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>Tutorial: Abfragen eines Cognitive Search-Index über Power Apps
 
@@ -31,7 +31,7 @@ Sollten Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* [Power Apps-Konto](http://make.powerapps.com)
+* [Power Apps-Konto](https://make.powerapps.com)
 
 * [Index „hotels-sample“](search-get-started-portal.md)
 
@@ -41,7 +41,7 @@ Sollten Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses 
 
 Ein Connector in Power Apps ist eine Datenquellenverbindung. In diesem Schritt erstellen Sie einen benutzerdefinierten Connector, um eine Verbindung mit einem Suchindex in der Cloud herzustellen.
 
-1. Führen Sie die [Anmeldung](http://make.powerapps.com) bei Power Apps durch.
+1. Führen Sie die [Anmeldung](https://make.powerapps.com) bei Power Apps durch.
 
 1. Erweitern Sie auf der linken Seite **Daten** > **Benutzerdefinierte Connectors**.
  

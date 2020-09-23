@@ -4,14 +4,14 @@ description: Hier erfahren Sie, wie Sie eine Azure HPC Cache-Instanz erstellen.
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 07/10/2020
+ms.date: 09/03/2020
 ms.author: v-erkel
-ms.openlocfilehash: a988f08b2b6e30543c112b20e5b374130ceddc47
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5b1062556f1f971690f835274be15c11b072eca9
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092489"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612062"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Erstellen einer Azure HPC Cache-Instanz
 
@@ -29,7 +29,7 @@ Klicken Sie auf das Bild unten, um eine [Videodemonstration](https://azure.micro
 
 ![Screenshot: Projektdetailseite im Azure-Portal](media/hpc-cache-create-basics.png)
 
-Wählen Sie auf der Seite **Projektdetails** das Abonnement und die Ressourcengruppe zum Hosten des Caches aus. Achten Sie darauf, dass sich das Abonnement in der [Zugriffsliste](hpc-cache-prerequisites.md#azure-subscription) befindet.
+Wählen Sie auf der Seite **Projektdetails** das Abonnement und die Ressourcengruppe zum Hosten des Caches aus.<!-- Make sure the subscription is on the [access](hpc-cache-prerequisites.md#azure-subscription) list.  -->
 
 Legen Sie unter **Dienstdetails** den Cachenamen sowie folgende weitere Attribute fest:
 
@@ -132,7 +132,7 @@ nets/<cache_subnet_name>"``
 
   | Cachegröße | Standard_2G | Standard_4G | Standard_8G |
   |------------|-------------|-------------|-------------|
-  | 3\.072 GB    | ja         | nein          | nein          |
+  | 3\.072 GB    | ja         | Nein          | nein          |
   | 6144 GB    | ja         | ja         | nein          |
   | 12288 GB   | ja         | ja         | ja         |
   | 24576 GB   | nein          | ja         | ja         |

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: d18d4aa4bf9306bcdd667faa53f0d888c090e2fd
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 50d2d974815e0921d99154bce67f604b7314970d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875457"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892030"
 ---
 # <a name="event-hubs-output-from-azure-stream-analytics"></a>Event Hubs-Ausgabe für Azure Stream Analytics
 
@@ -38,7 +38,7 @@ Die folgende Tabelle enthält die Parameter, die zur Konfiguration von Datenstr�
 
 ## <a name="partitioning"></a>Partitionierung
 
-Die Partitionierung variiert je nach Partitionsausrichtung. Wenn der Partitionsschlüssel für die Event Hub-Ausgabe gleichmäßig mit dem (vorherigen) Upstream-Abfrageschritt ausgerichtet ist, entspricht die Anzahl der Writer der Anzahl der Partitionen in der Event Hub-Ausgabe. Jeder Writer verwendet die [EventHubSender-Klasse](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet), um Ereignisse an die jeweilige Partition zu senden. Wenn der Partitionsschlüssel für die Event Hub-Ausgabe nicht mit dem (vorherigen) Upstream-Abfrageschritt ausgerichtet ist, entspricht die Anzahl der Writer der Anzahl der Partitionen in diesem vorherigen Schritt. Jeder Writer verwendet die [SendBatchAsync-Klasse](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) in **EventHubClient**, um Ereignisse an alle Ausgabepartitionen zu senden. 
+Die Partitionierung variiert je nach Partitionsausrichtung. Wenn der Partitionsschlüssel für die Event Hub-Ausgabe gleichmäßig mit dem (vorherigen) Upstream-Abfrageschritt ausgerichtet ist, entspricht die Anzahl der Writer der Anzahl der Partitionen in der Event Hub-Ausgabe. Jeder Writer verwendet die [EventHubSender-Klasse](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet&preserve-view=true), um Ereignisse an die jeweilige Partition zu senden. Wenn der Partitionsschlüssel für die Event Hub-Ausgabe nicht mit dem (vorherigen) Upstream-Abfrageschritt ausgerichtet ist, entspricht die Anzahl der Writer der Anzahl der Partitionen in diesem vorherigen Schritt. Jeder Writer verwendet die [SendBatchAsync-Klasse](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet&preserve-view=true) in **EventHubClient**, um Ereignisse an alle Ausgabepartitionen zu senden. 
 
 ## <a name="output-batch-size"></a>Ausgabebatchgröße
 
@@ -55,4 +55,4 @@ Sie können Abfragespalten als Benutzereigenschaften an Ihre ausgehenden Nachric
 * [Schnellstart: Erstellen eines Azure Stream Analytics-Auftrags mithilfe einer ARM-Vorlage](quick-create-azure-resource-manager.md)
 * [Schnellstart: Erstellen eines Stream Analytics-Auftrags mit Azure PowerShell](stream-analytics-quick-create-powershell.md)
 * [Schnellstart: Erstellen eines Azure Stream Analytics-Auftrags mithilfe von Visual Studio](stream-analytics-quick-create-vs.md)
-* [Schnellstart: Erstellen eines Azure Stream Analytics-Auftrags in Visual Studio Code](quick-create-vs-code.md)
+* [Schnellstart: Erstellen eines Azure Stream Analytics-Auftrags in Visual Studio Code](quick-create-visual-studio-code.md)

@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
-ms.date: 8/10/2020
-ms.openlocfilehash: 5b1a5da688b162c85d2be8580e29dc6ee9db6d40
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 9/18/2020
+ms.openlocfilehash: fef873d5122fefb48c85281f71e206f95f3fbe48
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906482"
+ms.locfileid: "90986722"
 ---
 # <a name="server-group-size"></a>Größe der Servergruppe
 
@@ -60,9 +60,6 @@ SELECT rebalance_table_shards('distributed_table_name');
 Die `rebalance_table_shards`-Funktion gleicht alle Tabellen in der [Zusammenstellungs](concepts-hyperscale-colocation.md)gruppe der im Argument genannten Tabelle aus. Daher müssen Sie die Funktion nicht für jede verteilte Tabelle aufrufen, sondern einfach nur für eine repräsentative Tabelle aus jeder Zusammenstellungsgruppe.
 
 ### <a name="increase-or-decrease-vcores-on-nodes"></a>Erhöhen und Verringern der Anzahl von virtuellen Kernen auf Knoten
-
-> [!NOTE]
-> Diese Funktion steht derzeit als Vorschau zur Verfügung. Um eine Änderung der virtuellen Kerne für Knoten in der Servergruppe anzufordern, [wenden Sie sich an den Azure-Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 Zusätzlich zum Hinzufügen neuer Knoten können Sie die Funktionen vorhandener Knoten erweitern. Das Anpassen der Computekapazität nach oben und unten kann für Leistungsexperimente und kurz- oder langfristige Änderungen der Datenverkehrsanforderungen nützlich sein.
 
