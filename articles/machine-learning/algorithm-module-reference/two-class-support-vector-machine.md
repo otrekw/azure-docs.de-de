@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: 912d6b80914232d1a2ed2b1fe987ebdf949a1abc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1dc2f8bdf6ed2823b44d25bdf65766b1f7ae060c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82136497"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907672"
 ---
 # <a name="two-class-support-vector-machine-module"></a>Modul „Zweiklassige Support Vector Machine“
 
-In diesem Artikel wird ein Modul in Azure Machine Learning-Designer (Vorschauversion) beschrieben.
+In diesem Artikel wird ein Modul im Azure Machine Learning-Designer beschrieben.
 
 Verwenden Sie dieses Modul, um ein Modell zu erstellen, das auf dem Algorithmus der Support Vector Machine basiert. 
 

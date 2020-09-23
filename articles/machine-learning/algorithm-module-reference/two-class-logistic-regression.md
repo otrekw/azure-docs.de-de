@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: d746b942f624fc83515ba29b0a092c2e592f1f25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 525293c7ae3d0af49f6deaa0ce9d3cb037d9ba38
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137619"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907702"
 ---
 # <a name="two-class-logistic-regression-module"></a>Modul „Two-Class Logistic Regression“ (Logistische Regression mit zwei Klassen)
 
-In diesem Artikel wird ein Modul in Azure Machine Learning-Designer (Vorschauversion) beschrieben.
+In diesem Artikel wird ein Modul im Azure Machine Learning-Designer beschrieben.
 
 Verwenden Sie dieses Modul, um ein logistisches Regressionsmodell zu erstellen, mit dem Sie zwei (und nur zwei) Ergebnisse vorhersagen können. 
 

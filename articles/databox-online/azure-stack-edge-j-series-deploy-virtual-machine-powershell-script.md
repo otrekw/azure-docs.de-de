@@ -1,6 +1,6 @@
 ---
-title: Bereitstellen von VMs auf Ihrem Azure Stack Edge GPU-Gerät über Azure PowerShell
-description: Hier erfahren Sie, wie virtuelle Computer (VMs) auf einem Azure Stack Edge GPU-Gerät mit Azure PowerShell erstellt und verwaltet werden.
+title: Bereitstellen von VMs auf Ihrem Azure Stack Edge Pro-GPU-Gerät über Azure PowerShell
+description: Hier erfahren Sie, wie virtuelle Computer (VMs) auf einem Azure Stack Edge Pro-Gerät mit Azure PowerShell erstellt und verwaltet werden.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,26 +8,26 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: ab303dd42d9064a9fa1392e27adc361d5b761cf0
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5ed6de28f1e1b0545ebd675c30249e2f2b4747e9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89256122"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890648"
 ---
-# <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-via-azure-powershell-script"></a>Bereitstellen von VMs auf Ihrem Azure Stack Edge GPU-Gerät mithilfe eines Azure PowerShell-Skripts
+# <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell-script"></a>Bereitstellen von VMs auf Ihrem Azure Stack Edge Pro-GPU-Gerät mithilfe eines Azure PowerShell-Skripts
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-In diesem Tutorial wird beschrieben, wie Sie eine VM auf Ihrem Azure Stack Edge-Gerät mithilfe eines Azure PowerShell-Skripts erstellen und verwalten.
+In diesem Tutorial wird beschrieben, wie Sie eine VM auf Ihrem Azure Stack Edge Pro-Gerät mithilfe eines Azure PowerShell-Skripts erstellen und verwalten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie mit dem Erstellen und Verwalten einer VM auf Ihrem Azure Stack Edge-Gerät mit diesem Skript beginnen, müssen Sie sicherstellen, dass Sie die in den folgenden Schritten aufgeführten Voraussetzungen erfüllt haben:
+Bevor Sie mit dem Erstellen und Verwalten einer VM auf Ihrem Azure Stack Edge Pro-Gerät mithilfe dieses Skripts beginnen, müssen Sie sicherstellen, dass Sie die in den folgenden Schritten aufgeführten Voraussetzungen erfüllen:
 
-### <a name="for-azure-stack-edge-device-via-the-local-web-ui"></a>Für Azure Stack Edge-Gerät über die lokale Webbenutzeroberfläche
+### <a name="for-azure-stack-edge-pro-device-via-the-local-web-ui"></a>Für Azure Stack Edge Pro-Gerät über die lokale Webbenutzeroberfläche
 
-1. Sie haben die Netzwerkeinstellungen auf dem Azure Stack Edge-Gerät wie in [Schritt 1: Konfigurieren des Azure Stack Edge-Geräts](azure-stack-edge-j-series-connect-resource-manager.md#step-1-configure-azure-stack-edge-device) angegeben durchgeführt.
+1. Sie haben die Netzwerkeinstellungen auf dem Azure Stack Edge Pro-Gerät wie unter [Schritt 1: Konfigurieren des Azure Stack Edge Pro-Geräts](azure-stack-edge-j-series-connect-resource-manager.md#step-1-configure-azure-stack-edge-pro-device) angegeben festgelegt.
 
 2. Sie haben eine Netzwerkschnittstelle für Compute erstellt. Diese IP-Adresse der Netzwerkschnittstelle wird verwendet, um einen virtuellen Switch für die VM-Bereitstellung zu erstellen. Die folgenden Schritte führen Sie durch den Prozess:
 
@@ -36,9 +36,9 @@ Bevor Sie mit dem Erstellen und Verwalten einer VM auf Ihrem Azure Stack Edge-Ge
         > [!IMPORTANT] 
         > Sie können nur einen Port für Compute konfigurieren.
 
-    2. Aktivieren Sie Compute für die Netzwerkschnittstelle. Azure Stack Edge erstellt und verwaltet einen virtuellen Switch, der dieser Netzwerkschnittstelle entspricht.
+    2. Aktivieren Sie Compute für die Netzwerkschnittstelle. Azure Stack Edge Pro erstellt und verwaltet einen virtuellen Switch, der dieser Netzwerkschnittstelle entspricht.
 
-3. Sie haben alle Zertifikate auf Ihrem Azure Stack Edge-Gerät und im vertrauenswürdigen Stammspeicher des Clients erstellt und installiert. Führen Sie das unter [Schritt 2: Erstellen und Installieren von Zertifikaten](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates) beschriebene Verfahren aus.
+3. Sie haben alle Zertifikate auf Ihrem Azure Stack Edge Pro-Gerät und im vertrauenswürdigen Stammspeicher Ihres Clients erstellt und installiert. Führen Sie das unter [Schritt 2: Erstellen und Installieren von Zertifikaten](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates) beschriebene Verfahren aus.
 
 ### <a name="for-your-windows-client"></a>Für den Windows-Client
 

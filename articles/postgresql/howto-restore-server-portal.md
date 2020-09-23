@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 6/30/2020
-ms.openlocfilehash: 7683d3472d382707de538874035c8448f589bf82
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 9ff62a568af4f60318ba0e5bdf2144bb43c9d2b1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110809"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884301"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Sichern und Wiederherstellen eines Servers in Azure Database for PostgreSQL (Einzelserver) mithilfe des Azure-Portals
 
@@ -28,7 +28,7 @@ Bei der Erstellung des Servers treffen Sie im Fenster **Tarif** die Entscheidung
 
 Bei der Erstellung eines Servers über das Azure-Portal wählen Sie im Fenster **Tarif** entweder **Lokal redundant** oder **Georedundant** für die Sicherungen Ihres Servers aus. Außerdem wählen Sie in diesem Fenster die **Aufbewahrungszeit für Sicherung** aus. Hier wird angegeben, wie lange die Sicherungen gespeichert werden sollen (in Tagen).
 
-   ![Tarif – Auswählen der Sicherungsredundanz](./media/howto-restore-server-portal/pricing-tier.png)
+   :::image type="content" source="./media/howto-restore-server-portal/pricing-tier.png" alt-text="Tarif – Auswählen der Sicherungsredundanz":::
 
 Weitere Informationen zum Festlegen dieser Werte während der Erstellung finden Sie unter [Erstellen eines Azure Database for PostgreSQL-Servers im Azure-Portal](quickstart-create-server-database-portal.md).
 
@@ -37,7 +37,7 @@ Die Option „Aufbewahrungszeit für Sicherung“ kann für einen Server mit den
 2. Wählen Sie Ihre Azure Database for PostgreSQL-Server aus. Mit dieser Aktion wird die Seite **Übersicht** geöffnet.
 3. Wählen Sie im Menü unter **EINSTELLUNGEN** die Option **Tarif**. Mit dem Schieberegler können Sie die **Aufbewahrungszeit für Sicherung** auf einen Wert zwischen 7 und 35 Tagen festlegen.
 Im folgenden Screenshot wurde der Wert auf 34 Tage erhöht.
-![Erhöhung der Aufbewahrungszeit für Sicherung](./media/howto-restore-server-portal/3-increase-backup-days.png)
+:::image type="content" source="./media/howto-restore-server-portal/3-increase-backup-days.png" alt-text="Erhöhung der Aufbewahrungszeit für Sicherung":::
 
 4. Klicken Sie auf **OK**, um die Änderung zu bestätigen.
 
@@ -53,11 +53,11 @@ Mithilfe der folgenden Schritte wird der Status des Beispielservers zu einem bes
 
 2. Klicken Sie in der Symbolleiste auf der Seite **Übersicht** des Servers auf **Wiederherstellen**.
 
-   ![Azure-Datenbank für PostgreSQL – Übersicht – Schaltfläche „Wiederherstellen“](./media/howto-restore-server-portal/2-server.png)
+   :::image type="content" source="./media/howto-restore-server-portal/2-server.png" alt-text="Azure-Datenbank für PostgreSQL – Übersicht – Schaltfläche „Wiederherstellen“":::
 
 3. Geben Sie im Formular „Wiederherstellen“ die erforderlichen Informationen ein:
 
-   ![Azure-Datenbank für PostgreSQL – Wiederherstellungsinformationen](./media/howto-restore-server-portal/3-restore.png)
+   :::image type="content" source="./media/howto-restore-server-portal/3-restore.png" alt-text="Azure-Datenbank für PostgreSQL – Wiederherstellungsinformationen":::
    - **Wiederherstellungspunkt**: Wählen Sie den Zeitpunkt aus, für den der Zustand wiederhergestellt werden soll.
    - **Zielserver**: Geben Sie einen Namen für den neuen Server an.
    - **Standort**: Sie können die Region nicht auswählen. Standardmäßig ist dieser Wert mit dem Wert für den Quellserver identisch.

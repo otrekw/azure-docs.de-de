@@ -9,15 +9,15 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: 9d83a9ffb9dc334ef959b7a8039b9a9c4a1fced7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 51a9b0ec0fc19b6b6efa0453d698a5a978dacabc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137453"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907832"
 ---
 # <a name="linear-regression-module"></a>Modul „Linear Regression“
-In diesem Artikel wird ein Modul in Azure Machine Learning-Designer (Vorschauversion) beschrieben.
+In diesem Artikel wird ein Modul im Azure Machine Learning-Designer beschrieben.
 
 Verwenden Sie dieses Modul, um ein lineares Regressionsmodell für den Einsatz in einer Pipeline zu erstellen.  Bei der linearen Regression wird versucht, eine lineare Beziehung zwischen einer oder mehreren unabhängigen Variablen und einem numerischen Ergebnis oder einer abhängigen Variablen herzustellen. 
 
@@ -25,7 +25,7 @@ Mit diesem Modul können Sie eine lineare Regressionsmethode definieren und ansc
 
 ## <a name="about-linear-regression"></a>Informationen zur linearen Regression
 
-Lineare Regression ist eine gängige statistische Methode, die beim maschinellen Lernen eingesetzt und um viele neue Methoden zum Anpassen der Linie und Messen von Fehlern erweitert wurde. Im einfachsten Sinne ist Regression die Vorhersage eines numerischen Zielwerts. Lineare Regression ist immer noch eine gute Wahl, wenn Sie ein einfaches Modell für eine einfache prädiktive Aufgabe benötigen. Lineare Regression funktioniert auch gut bei hochdimensionalen, spärlichen Datasets mit wenig Komplexität.
+Lineare Regression ist eine gängige statistische Methode, die beim maschinellen Lernen eingesetzt und um viele neue Methoden zum Anpassen der Linie und Messen von Fehlern erweitert wurde. Einfach ausgedrückt ist die Regression die Vorhersage eines numerischen Zielwerts. Lineare Regression ist immer noch eine gute Wahl, wenn Sie ein einfaches Modell für eine einfache prädiktive Aufgabe benötigen. Lineare Regression funktioniert auch gut bei hochdimensionalen, spärlichen Datasets mit wenig Komplexität.
 
 Neben der linearen Regression unterstützt Azure Machine Learning eine Vielzahl von Regressionsmodellen. Allerdings kann der Begriff „Regression“ lose interpretiert werden, und einige Arten von Regression, die in anderen Tools geboten werden, werden nicht unterstützt.
 

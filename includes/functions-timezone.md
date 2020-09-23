@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: b4fbeb6baa4516ca4cf3ca6194195fae2c688b07
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: dba7a3cc7a68d360fd6e56511b71ae364f624646
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165656"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569276"
 ---
 Als Standardzeitzone wird in Verbindung mit den CRON-Ausdrücken die Coordinated Universal Time (UTC) verwendet. Wenn Sie möchten, dass Ihr CRON-Ausdruck auf einer anderen Zeitzone basiert, erstellen Sie eine App-Einstellung für die Funktionen-App mit dem Namen `WEBSITE_TIME_ZONE`. 
 
@@ -12,7 +12,7 @@ Der Wert dieser Einstellung hängt davon ab, unter welchem Betriebssystem und Pl
 
 |Betriebssystem |Plan |Wert |
 |-|-|-|
-| **Windows** |All | Legen Sie den Wert auf den Namen der gewünschten Zeitzone fest (gemäß [Microsoft-Zeitzonenindex](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-vista/cc749073(v=ws.10) ). |
+| **Windows** |All | Legen Sie den Wert auf den Namen der gewünschten Zeitzone gemäß [Microsoft Time Zone Index](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-vista/cc749073(v=ws.10)) (Microsoft-Zeitzonenindex) fest. |
 | **Linux** |Premium<br/>Dediziert |Legen Sie den Wert auf den Namen der gewünschten Zeitzone fest (gemäß [tz-Datenbank](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)). |
 
 > [!NOTE]

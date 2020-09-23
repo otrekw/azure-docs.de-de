@@ -1,18 +1,18 @@
 ---
 title: Netzwerksicherheitsgruppen mit Azure Site Recovery | Microsoft-Dokumentation
 description: Beschreibt, wie Sie Netzwerksicherheitsgruppen mit Azure Site Recovery für Notfallwiederherstellung und Migration verwenden.
-author: mayurigupta13
+author: Harsha-CS
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.author: mayg
-ms.openlocfilehash: eb5ba99133f5726c44164b0ba45b7ab5d94e292f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: harshacs
+ms.openlocfilehash: 904bc63ed2a135cdcadad75e96acd6fe3ca39039
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80292360"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069678"
 ---
 # <a name="network-security-groups-with-azure-site-recovery"></a>Netzwerksicherheitsgruppen mit Azure Site Recovery
 

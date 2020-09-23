@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 1/8/2019
-ms.openlocfilehash: 8a1b38b9f673669adb0b5fcf67d9d560c24d5c2a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 84f5a8f638e4a9525b330277ff1eaa26ba035e1a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825955"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907405"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>Erstellen von Benutzern in Azure Database for PostgreSQL: Hyperscale (Citus)
 
@@ -48,11 +48,11 @@ Wie bereits erwähnt, verfügt das `citus`-Administratorkonto nicht über die Be
 
 1. Navigieren Sie zur Seite **Rollen** für Ihre Hyperscale-Servergruppe, und klicken Sie auf **+ Hinzufügen**:
 
-   ![Die Seite „Rollen“](media/howto-hyperscale-create-users/1-role-page.png)
+   :::image type="content" source="media/howto-hyperscale-create-users/1-role-page.png" alt-text="Die Seite „Rollen“":::
 
 2. Geben Sie den Rollennamen und das Kennwort ein. Klicken Sie auf **Speichern**.
 
-   ![Hinzufügen einer Rolle](media/howto-hyperscale-create-users/2-add-user-fields.png)
+   :::image type="content" source="media/howto-hyperscale-create-users/2-add-user-fields.png" alt-text="Hinzufügen einer Rolle":::
 
 Der Benutzer wird auf dem Koordinatorknoten der Servergruppe erstellt und an alle Workerknoten weitergegeben. Über das Azure-Portal erstellte Rollen weisen das `LOGIN`-Attribut auf. Dies bedeutet, dass es sich um echte Benutzer handelt, die sich bei der Datenbank anmelden können.
 
@@ -77,7 +77,7 @@ GRANT SELECT ON ALL TABLES IN SCHEMA public TO db_user;
 
 Um einen Benutzer zu aktualisieren, navigieren Sie zur Seite **Rollen** für Ihre Hyperscale-Servergruppe, und klicken Sie auf die Auslassungspunkte ( **...** ) neben dem Benutzer. Die Auslassungspunkte öffnen ein Menü, in dem der Benutzer gelöscht oder sein Kennwort zurückgesetzt werden kann.
 
-   ![Bearbeiten einer Rolle](media/howto-hyperscale-create-users/edit-role.png)
+   :::image type="content" source="media/howto-hyperscale-create-users/edit-role.png" alt-text="Bearbeiten einer Rolle":::
 
 Die Rolle `citus` ist privilegiert und kann nicht gelöscht werden.
 

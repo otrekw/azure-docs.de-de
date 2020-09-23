@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 11/20/2019
-ms.openlocfilehash: 908a61a00f0e33016074a6f985271ac94157fdf4
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 02a50a94b0b07d1755abe78c567df7ff5c7eda92
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854997"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907448"
 ---
 # <a name="manage-an-azure-database-for-postgresql-server-using-the-azure-portal"></a>Verwalten eines Azure Database for PostgreSQL-Servers über das Azure-Portal
 
@@ -37,7 +37,7 @@ Sie können von „Universell“ zu „Arbeitsspeicheroptimiert“ skalieren und
 
 2. Wählen Sie je nach Skalierung **Universell** oder **Arbeitsspeicheroptimiert** aus.
 
-   ![Screenshot des Azure-Portals für die Auswahl der Dienstebenen „Basic“, „Universell“ oder „Arbeitsspeicheroptimiert“ in Azure Database for PostgreSQL](./media/howto-create-manage-server-portal/change-pricing-tier.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/change-pricing-tier.png" alt-text="Screenshot des Azure-Portals für die Auswahl der Dienstebenen „Basic“, „Universell“ oder „Arbeitsspeicheroptimiert“ in Azure Database for PostgreSQL":::
 
    > [!NOTE]
    > Das Ändern der Tarife löst einen Neustart des Servers aus.
@@ -50,7 +50,7 @@ Sie können von „Universell“ zu „Arbeitsspeicheroptimiert“ skalieren und
 
 2. Ändern Sie die Einstellung **Virtuelle Kerne**, indem Sie den Schieberegler auf den gewünschten Wert ziehen.
 
-   ![Screenshot des Azure-Portals für die Auswahl der Option für die virtuellen Kerne in Azure Database for PostgreSQL](./media/howto-create-manage-server-portal/scaling-compute.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/scaling-compute.png" alt-text="Screenshot des Azure-Portals für die Auswahl der Option für die virtuellen Kerne in Azure Database for PostgreSQL":::
 
    > [!NOTE]
    > Das Skalieren der virtuellen Kerne löst einen Neustart des Servers aus.
@@ -63,7 +63,7 @@ Sie können von „Universell“ zu „Arbeitsspeicheroptimiert“ skalieren und
 
 2. Ändern Sie die Einstellung **Speicher**, indem Sie den Schieberegler auf den gewünschten Wert ziehen.
 
-   ![Screenshot des Azure-Portal für die Auswahl der Speicherskalierung in Azure Database for PostgreSQL](./media/howto-create-manage-server-portal/scaling-storage.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/scaling-storage.png" alt-text="Screenshot des Azure-Portal für die Auswahl der Speicherskalierung in Azure Database for PostgreSQL":::
 
    > [!NOTE]
    > Der Speicher kann nicht herunterskaliert werden.
@@ -76,11 +76,11 @@ Sie können das Kennwort für die Administratorrolle über das Azure-Portal änd
 
 1. Wählen Sie Ihren Server im Azure-Portal aus. Wählen Sie im Fenster **Übersicht** die Option **Kennwort zurücksetzen** aus.
 
-   ![Screenshot des Azure-Portals für das Zurücksetzen des Kennworts in Azure Database for PostgreSQL](./media/howto-create-manage-server-portal/overview-reset-password.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/overview-reset-password.png" alt-text="Screenshot des Azure-Portals für das Zurücksetzen des Kennworts in Azure Database for PostgreSQL":::
 
 2. Geben Sie ein neues Kennwort ein, und bestätigen Sie es. Im Textfeld werden Sie nach den Anforderungen an die Kennwortkomplexität gefragt.
 
-   ![Screenshot des Azure-Portals für das Zurücksetzen des Kennworts und das Speichern in Azure Database for PostgreSQL](./media/howto-create-manage-server-portal/reset-password.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/reset-password.png" alt-text="Screenshot des Azure-Portals für das Zurücksetzen des Kennworts und das Speichern in Azure Database for PostgreSQL":::
 
 3. Wählen Sie **OK** aus, um das neue Kennwort zu speichern.
 
@@ -90,11 +90,11 @@ Sie können Ihren Server löschen, wenn Sie ihn nicht mehr benötigen.
 
 1. Wählen Sie Ihren Server im Azure-Portal aus. Wählen Sie im Fenster **Übersicht** die Option **Löschen** aus.
 
-   ![Screenshot des Azure-Portals für das Löschen des Servers in Azure Database for PostgreSQL](./media/howto-create-manage-server-portal/overview-delete.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/overview-delete.png" alt-text="Screenshot des Azure-Portals für das Löschen des Servers in Azure Database for PostgreSQL":::
 
 2. Geben Sie den Namen des Servers in das Eingabefeld ein, um zu bestätigen, dass dies der Server ist, den Sie löschen möchten.
 
-   ![Screenshot des Azure-Portals für das Bestätigen der Löschung des Servers in Azure Database for PostgreSQL](./media/howto-create-manage-server-portal/confirm-delete.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/confirm-delete.png" alt-text="Screenshot des Azure-Portals für das Bestätigen der Löschung des Servers in Azure Database for PostgreSQL":::
 
    > [!NOTE]
    > Das Löschen eines Servers kann nicht mehr rückgängig gemacht werden.

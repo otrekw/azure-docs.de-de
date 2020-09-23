@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: 38606f424e38fc68519181f485b5b698d0705d6a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0cde479e50c67006a9ef1668ba68b211c3a9af93
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79477577"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907911"
 ---
 # <a name="join-data"></a>Verknüpfen von Daten
 
-In diesem Artikel erfahren Sie, wie Sie das Modul **Join Data** (Daten verknüpfen) in Azure Machine Learning-Designer (Vorschauversion) verwenden, um zwei Datasets mithilfe eines datenbankähnlichen Join-Vorgangs zusammenzuführen.  
+In diesem Artikel erfahren Sie, wie Sie das Modul **Join Data** (Daten verknüpfen) in Azure Machine Learning-Designer verwenden, um zwei Datasets mithilfe eines datenbankähnlichen Join-Vorgangs zusammenzuführen.  
 
 ## <a name="how-to-configure-join-data"></a>Konfigurieren von „Join Data“ (Daten verknüpfen)
 

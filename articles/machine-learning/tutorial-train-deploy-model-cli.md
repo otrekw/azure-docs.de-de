@@ -9,19 +9,19 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 03/26/2020
-ms.openlocfilehash: 4028d6732220dba4848c88306a501ce22af7487a
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 07edfa2bca25a9f3e8d985cfe36987ff04ca950f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144021"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906644"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Tutorial: Trainieren und Bereitstellen eines Modells über die Befehlszeilenschnittstelle
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 In diesem Tutorial verwenden Sie die Machine Learning-Erweiterung für die Azure-Befehlszeilenschnittstelle, um ein Modell zu trainieren, zu registrieren und bereitzustellen.
 
-Die Python-Trainingsskripts in diesem Tutorial verwenden [scikit-learn](https://scikit-learn.org/), um ein Basismodell zu trainieren. Der Schwerpunkt dieses Tutorials liegt nicht auf den Skripts oder dem Modell, sondern auf der Verwendung der Befehlszeilenschnittstelle für die Arbeit mit Azure Machine Learning.
+Die Python-Trainingsskripts in diesem Tutorial verwenden [scikit-learn](https://scikit-learn.org/), um ein einfaches Modell zu trainieren. Der Schwerpunkt dieses Tutorials liegt nicht auf den Skripts oder dem Modell, sondern auf der Verwendung der Befehlszeilenschnittstelle für die Arbeit mit Azure Machine Learning.
 
 Erfahren Sie, wie Sie die folgenden Maßnahmen durchführen:
 
@@ -75,7 +75,7 @@ Das Repository enthält die folgenden Dateien, mit denen das trainierte Modell a
 
 ## <a name="connect-to-your-azure-subscription"></a>Verbinden mit Ihrem Azure-Abonnement
 
-Ihnen stehen mehrere Möglichkeiten zur Verfügung, sich über die CLI bei Ihrem Azure-Abonnement zu authentifizieren. Die grundlegendste ist die interaktive Authentifizierung mithilfe eines Browsers. Öffnen Sie zur interaktiven Authentifizierung eine Befehlszeile oder ein Terminal, und verwenden Sie den folgenden Befehl:
+Ihnen stehen mehrere Möglichkeiten zur Verfügung, sich über die CLI bei Ihrem Azure-Abonnement zu authentifizieren. Am einfachsten ist die interaktive Authentifizierung mithilfe eines Browsers. Öffnen Sie zur interaktiven Authentifizierung eine Befehlszeile oder ein Terminal, und verwenden Sie den folgenden Befehl:
 
 ```azurecli-interactive
 az login
@@ -101,7 +101,7 @@ az extension update -n azure-cli-ml
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Eine Ressourcengruppe ist ein grundlegender Container mit Ressourcen auf der Azure-Plattform. Wenn Sie mit Azure Machine Learning arbeiten, enthält die Ressourcengruppe Ihren Azure Machine Learning-Arbeitsbereich. Sie enthält auch andere Azure-Dienste, die vom Arbeitsbereich verwendet werden. Wenn Sie Ihr Modell z. B. mit einer cloudbasierten Computeressource trainieren, wird diese Ressource in der Ressourcengruppe erstellt.
+Eine Ressourcengruppe ist ein Container mit Ressourcen auf der Azure-Plattform. Wenn Sie mit Azure Machine Learning arbeiten, enthält die Ressourcengruppe Ihren Azure Machine Learning-Arbeitsbereich. Sie enthält auch andere Azure-Dienste, die vom Arbeitsbereich verwendet werden. Wenn Sie Ihr Modell z. B. mit einer cloudbasierten Computeressource trainieren, wird diese Ressource in der Ressourcengruppe erstellt.
 
 Um __eine neue Ressourcengruppe zu erstellen__, verwenden Sie den folgenden Befehl. Ersetzen Sie `<resource-group-name>` durch den Namen, der für diese Ressourcengruppe verwendet werden soll. Ersetzen Sie `<location>` durch die Azure-Region, die für diese Ressourcengruppe verwendet werden soll:
 

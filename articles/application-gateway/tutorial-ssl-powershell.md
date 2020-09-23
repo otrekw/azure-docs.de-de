@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 21e242d0a6a5aa2efa011289200654e71bd58662
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 67d22535f44d4d1b39b6c305fa0670d2d08be0c3
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89071447"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595800"
 ---
 # <a name="create-an-application-gateway-with-tls-termination-using-azure-powershell"></a>Erstellen eines Anwendungsgateways mit TLS-Terminierung mithilfe von Azure PowerShell
 
@@ -22,11 +22,10 @@ Sie können mit Azure PowerShell ein [Anwendungsgateway](overview.md) mit einem 
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
-> [!div class="checklist"]
-> * Erstellen eines selbstsignierten Zertifikats
-> * Einrichten eines Netzwerks
-> * Erstellen eines Anwendungsgateways mit dem Zertifikat
-> * Erstellen einer VM-Skalierungsgruppe mit dem standardmäßigen Back-End-Pool
+* Erstellen eines selbstsignierten Zertifikats
+* Einrichten eines Netzwerks
+* Erstellen eines Anwendungsgateways mit dem Zertifikat
+* Erstellen einer VM-Skalierungsgruppe mit dem standardmäßigen Back-End-Pool
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 

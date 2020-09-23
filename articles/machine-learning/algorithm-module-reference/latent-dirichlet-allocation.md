@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/05/2020
-ms.openlocfilehash: 2fa969b6dd89000b4d669bc5d42aa09b3cf3a2b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9f239ea69aaf71e591a447feb300c13a45ba1a4
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84751693"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907845"
 ---
 # <a name="latent-dirichlet-allocation-module"></a>Modul „Latent Dirichlet Allocation“
 
-In diesem Artikel wird beschrieben, wie Sie das Modul „Latent Dirichlet Allocation“ im Azure Machine Learning-Designer (Vorschauversion) verwenden, um andernfalls nicht klassifizierten Text in Kategorien zu gruppieren. 
+In diesem Artikel wird beschrieben, wie Sie das Modul „Latent Dirichlet Allocation“ im Azure Machine Learning-Designer verwenden, um andernfalls nicht klassifizierten Text in Kategorien zu gruppieren. 
 
 Latent Dirichlet Allocation (LDA) wird häufig bei der Verarbeitung natürlicher Sprache (Natural Language Processing) verwendet, um ähnliche Texte zu finden. Ein anderer häufig verwendeter Begriff ist *Themenmodellierung*.
 
@@ -75,7 +75,7 @@ Dieses Modul erfordert ein Dataset mit einer Textspalte, die unformatiert oder v
     + Werte in der Feature-Themen-Matrix werden als Wahrscheinlichkeit dargestellt durch `P(word|topic)`.
 
     > [!NOTE] 
-    > Im Azure Machine Learning-Designer (Vorschauversion) unterstützt die scikit-learn-Bibliothek ab Version 0.19 keine nicht normalisierte *doc_topic_distr*-Ausgabe mehr. In diesem Modul kann der Parameter **Normalize** nur auf die Ausgabe der *Feature-Themen-Matrix* angewendet werden. Die Ausgabe eines *transformierten Datasets* ist immer normalisiert.
+    > Im Azure Machine Learning-Designer unterstützt die scikit-learn-Bibliothek ab Version 0.19 keine nicht normalisierte *doc_topic_distr*-Ausgabe mehr. In diesem Modul kann der Parameter **Normalize** nur auf die Ausgabe der *Feature-Themen-Matrix* angewendet werden. Die Ausgabe eines *transformierten Datasets* ist immer normalisiert.
 
 7. Wählen Sie die Option **Show all options** (Alle Optionen anzeigen) aus, und legen Sie sie auf **TRUE** fest, wenn Sie die folgenden erweiterten Parameter festlegen möchten.
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/30/2020
+ms.date: 09/04/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0c30d5c072c66e04b97cae2f88e4c8ef96b32779
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 30c64e4cf467f4e505327414e15b23ee2c6d1543
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116206"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89611654"
 ---
 # <a name="define-a-saml-identity-provider-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen Profils für einen SAML-Identitätsanbieter in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -152,7 +152,6 @@ Das **OutputClaimsTransformations**-Element darf eine Sammlung von **OutputClaim
 | WantsSignedAssertions | Nein | Gibt an, ob das technische Profil verlangt, dass alle eingehenden Assertionsanweisungen signiert werden. Mögliche Werte: `true` oder `false`. Standardwert: `true`. Wenn der Wert auf `true` festgelegt ist, müssen alle Assertionsbereiche für `saml:Assertion` signiert werden, die vom Identitätsanbieter an Azure AD B2C gesendet werden. Wenn der Wert auf `false` festgelegt ist, sollte der Identitätsanbieter die Assertionsanweisungen nicht signieren. Wenn er dies allerdings doch tut, überprüft Azure AD B2C die Signatur nicht. Diese Metadaten steuern außerdem das Metadatenflag **WantsAssertionsSigned**, das in den Metadaten des technischen Azure AD B2C-Profils ausgegeben wird, das für den Identitätsanbieter freigegeben wird. Wenn Sie die Assertionsvalidierung deaktivieren, sollten Sie auch die Validierung der Antwortsignatur deaktivieren (weitere Informationen finden Sie unter **ResponsesSigned**). |
 | ResponsesSigned | Nein | Mögliche Werte: `true` oder `false`. Standardwert: `true`. Wenn der Wert auf `false` festgelegt ist, sollte der Identitätsanbieter die SAML-Antwort nicht signieren. Wenn er dies allerdings doch tut, überprüft Azure AD B2C die Signatur nicht. Wenn der Wert auf `true` festgelegt ist, wird die vom Identitätsanbieter an Azure AD B2C gesendete SAML-Antwort signiert und muss überprüft werden. Wenn Sie die Validierung der SAML-Antwort deaktivieren, sollten Sie auch die Validierung der Assertionssignatur deaktivieren (weitere Informationen finden Sie unter **WantsSignedAssertions**). |
 | WantsEncryptedAssertions | Nein | Gibt an, ob das technische Profil verlangt, dass alle eingehenden Assertionsanweisungen verschlüsselt werden. Mögliche Werte: `true` oder `false`. Standardwert: `false`. Wenn der Wert auf `true` festgelegt ist, müssen die vom Identitätsanbieter an Azure AD B2C gesendeten Assertionsanweisungen signiert, und der kryptografische **SamlAssertionDecryption**-Schlüssel muss angegeben werden. Wenn der Wert auf `true` festgelegt ist, umfassen die Metadaten des technischen Azure AD B2C-Profils den **Verschlüsselungsbereich**. Der Identitätsanbieter liest die Metadaten und verschlüsselt die SAML-Antwortassertion mit dem öffentlichen Schlüssel, der in den Metadaten des technischen Azure AD B2C-Profils enthalten ist. Wenn Sie die Assertionsverschlüssung aktivieren, müssen Sie möglicherweise gleichzeitig auch die Validierung der Antwortsignatur deaktivieren (weitere Informationen finden Sie unter **ResponsesSigned**). |
-| IdpInitiatedProfileEnabled | Nein | Gibt an, ob ein Profil für die einmalige Anmeldung aktiviert ist, das vom Profil des SAML-Identitätsanbieter initiiert wurde. Mögliche Werte: `true` oder `false`. Der Standardwert lautet `false`. In dem von Identitätsanbieter initiierten Flow wird der Benutzer extern authentifiziert, und eine nicht angeforderte Antwort wird an Azure AD B2C gesendet, woraufhin das Token verwendet, die Orchestrierungsschritte ausgeführt und anschließend eine Antwort an die anspruchsbasierte Anwendung gesendet wird. |
 | NameIdPolicyFormat | Nein | Gibt Einschränkungen für die Namens-ID an, die zum Darstellen des angeforderten Antragstellers verwendet werden. Wenn keine Angabe erfolgt, kann ein beliebiger ID-Typ, der vom Identitätsanbieter für den angeforderten Antragsteller unterstützt wird, verwendet werden. z. B. `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`. **NameIdPolicyFormat** kann mit **NameIdPolicyAllowCreate** verwendet werden. Suchen Sie in der Dokumentation Ihres Identitätsanbieters nach Anweisungen dazu, welche Richtlinien für Namens-IDs unterstützt werden. |
 | NameIdPolicyAllowCreate | Nein | Bei Verwendung von **NameIdPolicyFormat** können Sie auch die `AllowCreate`-Eigenschaft von **NameIDPolicy** angeben. Der Wert dieser Metadaten ist `true` oder `false` und gibt an, ob der Identitätsanbieter während des Anmeldeflows ein neues Konto erstellen darf. Weitere Informationen und Anleitungen dazu finden Sie in der Dokumentation zu Ihrem Identitätsanbieter. |
 | AuthenticationRequestExtensions | Nein | Optionale Erweiterungselemente zur Protokollnachricht, die zwischen Azure AD BC und dem betreffenden Identitätsanbieter vereinbart wurden. Die Erweiterung wird im XML-Format angezeigt. Sie fügen die XML-Daten im CDATA-Element `<![CDATA[Your IDP metadata]]>` hinzu. Sehen Sie in der Dokumentation Ihres Identitätsanbieters nach, ob das Erweiterungselement unterstützt wird. |

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 773815cd64af2a398001bac91e14cca0b204ca8e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 84c68125ab7e8256b8ca949a0f4b49c5ccd5162f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832062"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884642"
 ---
 # <a name="private-link-for-azure-database-for-postgresql-single-server"></a>Private Link für Azure Database for PostgreSQL-Einzelserver
 
@@ -68,25 +68,25 @@ Nachdem der Netzwerkadministrator den privaten Endpunkt (PE) erstellt hat, kann 
     * Liste mit allen privaten Endpunktverbindungen (Private Endpoint Connections, PECs)
     * Der entsprechende erstellte private Endpunkt (PE)
 
-![Auswählen des privaten Endpunkts im Portal](media/concepts-data-access-and-security-private-link/select-private-link-portal.png)
+:::image type="content" source="media/concepts-data-access-and-security-private-link/select-private-link-portal.png" alt-text="Auswählen des privaten Endpunkts im Portal":::
 
 * Wählen Sie eine einzelne PEC aus der Liste aus.
 
-![Auswählen des privaten Endpunkts mit ausstehender Genehmigung](media/concepts-data-access-and-security-private-link/select-private-link.png)
+:::image type="content" source="media/concepts-data-access-and-security-private-link/select-private-link.png" alt-text="Auswählen des privaten Endpunkts mit ausstehender Genehmigung":::
 
 * Der PostgreSQL-Serveradministrator kann eine PEC genehmigen oder ablehnen und optional eine kurze Textantwort hinzufügen.
 
-![Auswählen der Nachricht für den privaten Endpunkt](media/concepts-data-access-and-security-private-link/select-private-link-message.png)
+:::image type="content" source="media/concepts-data-access-and-security-private-link/select-private-link-message.png" alt-text="Auswählen der Nachricht für den privaten Endpunkt":::
 
 * Nach der Genehmigung oder Ablehnung wird der entsprechende Zustand zusammen mit dem Antworttext in der Liste angezeigt.
 
-![Auswählen des Endstatus des privaten Endpunkts](media/concepts-data-access-and-security-private-link/show-private-link-approved-connection.png)
+:::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-approved-connection.png" alt-text="Auswählen des Endstatus des privaten Endpunkts":::
 
 ## <a name="use-cases-of-private-link-for-azure-database-for-postgresql"></a>Anwendungsfälle von Private Link für Azure Database for PostgreSQL
 
 Clients können eine Verbindung mit dem privaten Endpunkt über das gleiche VNET, über das mittels Peering verbundene VNET in der gleichen Region oder regionsübergreifend über eine VNET-zu-VNET-Verbindung herstellen. Darüber hinaus können Clients von der lokalen Umgebung aus eine Verbindung über ExpressRoute, privates Peering oder VPN-Tunneling herstellen. Die gängigen Anwendungsfälle sind im folgenden Diagramm vereinfacht dargestellt:
 
-![Übersicht zum Auswählen des privaten Endpunkts](media/concepts-data-access-and-security-private-link/show-private-link-overview.png)
+:::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-overview.png" alt-text="Übersicht zum Auswählen des privaten Endpunkts":::
 
 ### <a name="connecting-from-an-azure-vm-in-peered-virtual-network-vnet"></a>Herstellen einer Verbindung über einen virtuellen Azure-Computer in einem virtuellen Netzwerk (VNET) mit Peering
 Konfigurieren Sie das [VNET-Peering](https://docs.microsoft.com/azure/virtual-network/tutorial-connect-virtual-networks-powershell), um über einen virtuellen Azure-Computer in einem VNET mit Peering eine Verbindung mit dem Azure Database for PostgreSQL-Einzelserver herzustellen.

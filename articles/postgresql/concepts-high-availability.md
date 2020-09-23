@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/15/2020
-ms.openlocfilehash: 16ce5b42e35ff3d650ba18aa95ab80b83fdbfdad
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0d723e1613e96f0aea243eace8ece3f0473e3742
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547680"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884442"
 ---
 # <a name="high-availability-in-azure-database-for-postgresql--single-server"></a>Hochverfügbarkeit in Azure Database for PostgreSQL (Einzelserver)
 Der Dienst Azure Database for PostgreSQL (Einzelserver) bietet eine garantierte hohe Verfügbarkeit mit der finanziell abgesicherten Vereinbarung zum Servicelevel (Service Level Agreement, SLA) über [99,99 %](https://azure.microsoft.com/support/legal/sla/postgresql) Uptime. Azure Database for PostgreSQL bietet Hochverfügbarkeit sowohl bei geplanten Ereignissen wie benutzerseitig initiierten Skalierungscomputevorgängen als auch bei ungeplanten Ereignissen wie Ausfällen von zugrunde liegender Hardware oder Software oder Netzwerkausfällen. Der Dienst kann auch nach den kritischsten Umständen schnell wiederhergestellt werden, wodurch sichergestellt ist, dass es bei dessen Verwendung zu so gut wie keiner Anwendungsdowntime kommt.
@@ -29,7 +29,7 @@ Azure Database for PostgreSQL eignet sich für das Ausführen von unternehmenskr
 ## <a name="planned-downtime-mitigation"></a>Minimierung von geplanter Downtime
 Azure Database for PostgreSQL ist so konzipiert, dass bei geplanten Vorgängen mit Downtime Hochverfügbarkeit gewährleistet ist. 
 
-![Übersicht über die elastische Skalierung in Azure PostgreSQL](./media/concepts-high-availability/azure-postgresql-elastic-scaling.png)
+:::image type="content" source="./media/concepts-high-availability/azure-postgresql-elastic-scaling.png" alt-text="Übersicht über die elastische Skalierung in Azure PostgreSQL":::
 
 1. Sekundenschnelles Hoch- und Herunterskalieren von PostgreSQL-Datenbankservern
 2. Ein Gateway, das als Proxy fungiert und Clientverbindungen an den richtigen Datenbankserver weiterleitet
@@ -49,7 +49,7 @@ Hier finden Sie einige Szenarien mit geplanter Wartung:
 Ungeplante Downtime kann aufgrund von unvorhergesehenen Fehlern auftreten, darunter Fehler in der zugrunde liegenden Hardware, Netzwerkprobleme und Softwarefehler. Wenn der Datenbankserver unerwartet ausfällt, wird automatisch innerhalb weniger Sekunden ein neuer Datenbankserver bereitgestellt. Der Remotespeicher wird automatisch an den neuen Datenbankserver angefügt. Die PostgreSQL-Engine führt den Wiederherstellungsvorgang mithilfe von WAL-Dateien und Datenbankdateien durch und öffnet den Datenbankserver, sodass Clients eine Verbindung herstellen können. Nicht committete Transaktionen gehen verloren und müssen von der Anwendung erneut ausgeführt werden. Ungeplante Downtime kann zwar nicht vermieden werden, Azure Database for PostgreSQL minimiert diese jedoch durch automatisches Ausführen von Wiederherstellungsvorgängen sowohl auf Ebene der Datenbankserver als auch auf der Speicherebene, ohne dass ein menschliches Eingreifen erforderlich ist. 
 
 
-![Übersicht über Hochverfügbarkeit in Azure PostgreSQL](./media/concepts-high-availability/azure-postgresql-built-in-high-availability.png)
+:::image type="content" source="./media/concepts-high-availability/azure-postgresql-built-in-high-availability.png" alt-text="Übersicht über Hochverfügbarkeit in Azure PostgreSQL":::
 
 1. Azure PostgreSQL-Server mit schnell skalierenden Funktionen
 2. Ein Gateway, das als Proxy fungiert und Clientverbindungen an den richtigen Datenbankserver weiterleitet

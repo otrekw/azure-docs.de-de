@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 831c50fe608e3f7de18b4d8917bb2f98a0e78308
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 0db0a705d97743bb199550bc74ade8e270c7472c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502000"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907475"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-portal"></a>Datenverschlüsselung für Azure Database for PostgreSQL-Einzelserver im Azure-Portal
 
@@ -44,11 +44,11 @@ Erfahren Sie, wie Sie über das Azure-Portal die Datenverschlüsselung für Azur
 
 1. Wählen Sie in Key Vault **Zugriffsrichtlinien** > **Zugriffsrichtlinie hinzufügen** aus.
 
-   ![Screenshot von Key Vault mit hervorgehobenen Optionen „Zugriffsrichtlinien“ und „Zugriffsrichtlinie hinzufügen“](media/concepts-data-access-and-security-data-encryption/show-access-policy-overview.png)
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-access-policy-overview.png" alt-text="Screenshot von Key Vault mit hervorgehobenen Optionen „Zugriffsrichtlinien“ und „Zugriffsrichtlinie hinzufügen“":::
 
 2. Wählen Sie **Schlüsselberechtigungen** und anschließend **Abrufen**, **Packen** und **Entpacken** aus. Wählen Sie dann den **Prinzipal** aus (der Name des PostgreSQL-Servers). Wenn Ihr Serverprinzipal nicht in der Liste der vorhandenen Prinzipale enthalten ist, müssen Sie ihn registrieren. Wenn Sie erstmalig versuchen, die Datenverschlüsselung einzurichten, und der Vorgang mit einem Fehler abgebrochen wird, werden Sie aufgefordert, Ihren Serverprinzipal zu registrieren.  
 
-   ![Zugriffsrichtlinienübersicht](media/concepts-data-access-and-security-data-encryption/access-policy-wrap-unwrap.png)
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/access-policy-wrap-unwrap.png" alt-text="Zugriffsrichtlinienübersicht":::
 
 3. Wählen Sie **Speichern** aus.
 
@@ -56,11 +56,11 @@ Erfahren Sie, wie Sie über das Azure-Portal die Datenverschlüsselung für Azur
 
 1. Wählen Sie in Azure Database for PostgreSQL die Option **Datenverschlüsselung** aus, um den vom Kunden verwalteten Schlüssel einzurichten.
 
-   ![Screenshot von Azure Database for PostgreSQL mit hervorgehobener Option „Datenverschlüsselung“](media/concepts-data-access-and-security-data-encryption/data-encryption-overview.png)
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/data-encryption-overview.png" alt-text="Screenshot von Azure Database for PostgreSQL mit hervorgehobener Option „Datenverschlüsselung“":::
 
 2. Sie können entweder einen Schlüsseltresor und ein Schlüsselpaar auswählen oder einen Schlüsselbezeichner eingeben.
 
-   ![Screenshot von Azure Database for PostgreSQL mit hervorgehobenen Optionen zur Datenverschlüsselung](media/concepts-data-access-and-security-data-encryption/setting-data-encryption.png)
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/setting-data-encryption.png" alt-text="Screenshot von Azure Database for PostgreSQL mit hervorgehobenen Optionen zur Datenverschlüsselung":::
 
 3. Wählen Sie **Speichern** aus.
 
@@ -72,28 +72,28 @@ Nachdem Azure Database for PostgreSQL mit dem vom Kunden verwalteten Schlüssel,
 
 1. Wählen Sie auf Ihrem Server **Übersicht** > **Wiederherstellung** aus.
 
-   ![Screenshot von Azure Database for PostgreSQL mit hervorgehobenen Optionen „Übersicht“ und „Wiederherstellung“](media/concepts-data-access-and-security-data-encryption/show-restore.png)
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-restore.png" alt-text="Screenshot von Azure Database for PostgreSQL mit hervorgehobenen Optionen „Übersicht“ und „Wiederherstellung“":::
 
    Wählen Sie alternativ für einen replikationsfähigen Server unter **Einstellungen** die Option **Replikation** aus.
 
-   ![Screenshot von Azure Database for PostgreSQL mit hervorgehobener Option „Replikation“](media/concepts-data-access-and-security-data-encryption/postgresql-replica.png)
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/postgresql-replica.png" alt-text="Screenshot von Azure Database for PostgreSQL mit hervorgehobener Option „Replikation“":::
 
 2. Nachdem der Wiederherstellungsvorgang abgeschlossen wurde, ist der neu erstellte Server mit dem Schlüssel des primären Servers verschlüsselt. Allerdings sind die Features und Optionen auf dem Server deaktiviert, und auf den Server kann nicht zugegriffen werden. Da der Identität des neuen Servers noch keine Berechtigung für den Zugriff auf den Schlüsseltresor erteilt wurde, wird auf diese Weise jegliche Datenbearbeitung verhindert.
 
-   ![Screenshot von Azure Database for PostgreSQL mit hervorgehobenem Status „Kein Zugriff“](media/concepts-data-access-and-security-data-encryption/show-restore-data-encryption.png)
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-restore-data-encryption.png" alt-text="Screenshot von Azure Database for PostgreSQL mit hervorgehobenem Status „Kein Zugriff“":::
 
 3. Um den Server zugänglich zu machen, überprüfen Sie den Schlüssel auf dem wiederhergestellten Server erneut. Wählen Sie dazu **Datenverschlüsselung** > **Schlüssel erneut überprüfen** aus.
 
    > [!NOTE]
    > Beim ersten Versuch, den Schlüssel erneut zu überprüfen, tritt ein Fehler auf, da dem Dienstprinzipal des neuen Servers Zugriff auf den Schlüsseltresor gewährt werden muss. Um den Dienstprinzipal zu generieren, wählen Sie **Schlüssel erneut überprüfen** aus. Dies führt zwar zu einem Fehler, doch der Dienstprinzipal wird generiert. Führen Sie anschließend [diese Schritte](#set-the-right-permissions-for-key-operations) weiter oben in diesem Artikel aus.
 
-   ![Screenshot von Azure Database for PostgreSQL mit hervorgehobenem Schritt zur erneuten Überprüfung des Schlüssels](media/concepts-data-access-and-security-data-encryption/show-revalidate-data-encryption.png)
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-revalidate-data-encryption.png" alt-text="Screenshot von Azure Database for PostgreSQL mit hervorgehobenem Schritt zur erneuten Überprüfung des Schlüssels":::
 
    Sie müssen dem Schlüsseltresor Zugriff auf den neuen Server gewähren.
 
 4. Nachdem Sie den Dienstprinzipal registriert haben, müssen Sie den Schlüssel erneut überprüfen, damit der Server wieder normal funktioniert.
 
-   ![Screenshot von Azure Database for PostgreSQL mit wiederhergestellter Funktionalität](media/concepts-data-access-and-security-data-encryption/restore-successful.png)
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/restore-successful.png" alt-text="Screenshot von Azure Database for PostgreSQL mit wiederhergestellter Funktionalität":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

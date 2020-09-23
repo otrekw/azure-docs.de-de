@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 8dc430febb25283ab5bd32496bb2f71ba19c895b
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 6ed463cbda3ceb560f907529dc8de54a772932ea
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035857"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085075"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>Tutorial: Suchen nach Points of Interest in der Nähe mit Azure Maps
 
@@ -186,7 +186,7 @@ In diesem Abschnitt wird veranschaulicht, wie mit der [Such-API](https://docs.mi
    var searchURL = new atlas.service.SearchURL(pipeline); 
    ```
 
-   `SubscriptionKeyCredential` erstellt ein `SubscriptionKeyCredentialPolicy`-Element, um HTTP-Anforderungen für Azure Maps mit dem Abonnementschlüssel zu authentifizieren. `atlas.service.MapsURL.newPipeline()` verwendet die Richtlinie `SubscriptionKeyCredential` und erstellt eine [Pipeline](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest)-Instanz. `searchURL` stellt eine URL zu [Suchvorgängen](https://docs.microsoft.com/rest/api/maps/search) von Azure Maps dar.
+   `SubscriptionKeyCredential` erstellt ein `SubscriptionKeyCredentialPolicy`-Element, um HTTP-Anforderungen für Azure Maps mit dem Abonnementschlüssel zu authentifizieren. `atlas.service.MapsURL.newPipeline()` verwendet die Richtlinie `SubscriptionKeyCredential` und erstellt eine [Pipeline](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline)-Instanz. `searchURL` stellt eine URL zu [Suchvorgängen](https://docs.microsoft.com/rest/api/maps/search) von Azure Maps dar.
 
 2. Fügen Sie als Nächstes den folgenden Skriptblock hinzu, um die Suchabfrage zu erstellen. Hier wird der Dienst für die Fuzzysuche (eine einfache Such-API des Suchdiensts) verwendet. Der Dienst für die Fuzzysuche behandelt die meisten Fuzzyeingaben – etwa Adressen, Orte und POIs (Points of Interest). Dieser Code sucht im angegebenen Radius der Längen- und Breitengradangaben nach nahegelegenen Tankstellen. Eine GeoJSON-Funktionssammlung aus der Antwort wird dann mit der `geojson.getFeatures()`-Methode extrahiert und der Datenquelle hinzugefügt, und die Daten werden über die Symbolebene automatisch auf der Karte gerendert. Im letzten Teil des Skripts wird die Kameraansicht der Karte mithilfe des Begrenzungsrahmens der Ergebnisse und unter Verwendung der Karteneigenschaft [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) festgelegt.
 
