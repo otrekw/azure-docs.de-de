@@ -11,19 +11,19 @@ ms.reviewer: larryfr
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-csharp
-ms.openlocfilehash: 56cd2117a352626cf59023d62ea8c931401389c5
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5427d62f93eb6284ecda9a0762e3d8c4e99c06e2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018092"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890099"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Nutzen eines als Webdienst bereitgestellten Azure Machine Learning-Modells
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Durch die Bereitstellung eines Azure Machine Learning-Modells als Webdienst wird ein REST-API-Endpunkt erstellt. Sie können Daten an diesen Endpunkt senden und die vom Modell zurückgegebene Vorhersage empfangen. In diesem Dokument erfahren Sie, wie Sie Clients für den Webdienst mithilfe von C#, Go, Java und Python erstellen.
 
-Sie erstellen einen Webdienst, wenn Sie ein Modell in Ihrer lokalen Umgebung oder für Azure Container Instances, Azure Kubernetes Service oder Field Programmable Gate Arrays (FPGA) bereitstellen. Der URI für den Zugriff auf den Webdienst kann über das [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) abgerufen werden. Wenn die Authentifizierung aktiviert ist, können Sie das SDK auch zum Abrufen der Authentifizierungsschlüssel oder -token verwenden.
+Sie erstellen einen Webdienst, wenn Sie ein Modell in Ihrer lokalen Umgebung oder für Azure Container Instances, Azure Kubernetes Service oder Field Programmable Gate Arrays (FPGA) bereitstellen. Der URI für den Zugriff auf den Webdienst kann über das [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) abgerufen werden. Wenn die Authentifizierung aktiviert ist, können Sie das SDK auch zum Abrufen der Authentifizierungsschlüssel oder -token verwenden.
 
 Dies ist der allgemeine Workflow zum Erstellen eines Clients, der einen Machine Learning-Webdienst verwendet:
 
@@ -39,7 +39,7 @@ Dies ist der allgemeine Workflow zum Erstellen eines Clients, der einen Machine 
 > [!NOTE]
 > Verwenden Sie das Azure Machine Learning SDK zum Abrufen der Webdienstinformationen. Dies ist ein Python SDK. Sie können eine beliebige Sprache verwenden, um einen Client für den Dienst zu erstellen.
 
-Die [azureml.core.Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py)-Klasse stellt die erforderlichen Informationen zum Erstellen eines Clients bereit. Die folgenden `Webservice`-Eigenschaften sind hilfreich, wenn Sie eine Clientanwendung erstellen:
+Die [azureml.core.Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py&preserve-view=true)-Klasse stellt die erforderlichen Informationen zum Erstellen eines Clients bereit. Die folgenden `Webservice`-Eigenschaften sind hilfreich, wenn Sie eine Clientanwendung erstellen:
 
 * `auth_enabled`: Wenn Schlüsselauthentifizierung aktiviert ist `True`, andernfalls `False`.
 * `token_auth_enabled`: Wenn Tokenauthentifizierung aktiviert ist `True`, andernfalls `False`.
@@ -57,7 +57,7 @@ Es gibt drei Möglichkeiten zum Abrufen dieser Informationen für bereitgestellt
     print(service.swagger_uri)
     ```
 
-* Mit `Webservice.list` können Sie eine Liste bereitgestellter Webdienste für Modelle in Ihrem Arbeitsbereich abrufen. Sie können Filter hinzufügen, um die Liste der zurückgegebenen Informationen einzugrenzen. Weitere Informationen zu den möglichen Filtern finden Sie in der Referenzdokumentation [Webservice.list](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py).
+* Mit `Webservice.list` können Sie eine Liste bereitgestellter Webdienste für Modelle in Ihrem Arbeitsbereich abrufen. Sie können Filter hinzufügen, um die Liste der zurückgegebenen Informationen einzugrenzen. Weitere Informationen zu den möglichen Filtern finden Sie in der Referenzdokumentation [Webservice.list](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py&preserve-view=true).
 
     ```python
     services = Webservice.list(ws)
@@ -113,7 +113,7 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> Wenn Sie einen Schlüssel erneut generieren müssen, verwenden Sie [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py).
+> Wenn Sie einen Schlüssel erneut generieren müssen, verwenden Sie [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py&preserve-view=true).
 
 #### <a name="authentication-with-tokens"></a>Authentifizierung mit Tokens
 
@@ -501,7 +501,7 @@ Die zurückgegebenen Ergebnisse ähneln dem folgenden JSON-Dokument:
 
 ## <a name="web-service-schema-openapi-specification"></a>Webdienst Schema (OpenAPI-Spezifikation)
 
-Wenn Sie automatische Schemagenerierung mit Ihrer Bereitstellung verwendet haben, können Sie die Adresse der OpenAPI-Spezifikation für den Dienst mithilfe der [swagger_uri](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri)-Eigenschaft abrufen. (Beispiel: `print(service.swagger_uri)`.) Verwenden Sie eine GET-Anforderung, oder öffnen Sie den URI in einem Browser, um die Spezifikation abzurufen.
+Wenn Sie automatische Schemagenerierung mit Ihrer Bereitstellung verwendet haben, können Sie die Adresse der OpenAPI-Spezifikation für den Dienst mithilfe der [swagger_uri](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#&preserve-view=trueswagger-uri)-Eigenschaft abrufen. (Beispiel: `print(service.swagger_uri)`.) Verwenden Sie eine GET-Anforderung, oder öffnen Sie den URI in einem Browser, um die Spezifikation abzurufen.
 
 Das folgende JSON-Dokument ist ein Beispiel für ein Schema (OpenAPI-Spezifikation), das für eine Bereitstellung generiert wurde:
 
@@ -643,7 +643,7 @@ Ein Hilfsprogramm, das Clientbibliotheken aus der Spezifikation erstellen kann, 
 
 
 > [!TIP]
-> Sie können das JSON-Schemadokument abrufen, nachdem Sie den Dienst bereitgestellt haben. Verwenden Sie die [swagger_uri](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri)-Eigenschaft des bereitgestellten Webdiensts (beispielsweise `service.swagger_uri`), um den URI für die Swagger-Datei des lokalen Webdiensts abzurufen.
+> Sie können das JSON-Schemadokument abrufen, nachdem Sie den Dienst bereitgestellt haben. Verwenden Sie die [swagger_uri](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#&preserve-view=trueswagger-uri)-Eigenschaft des bereitgestellten Webdiensts (beispielsweise `service.swagger_uri`), um den URI für die Swagger-Datei des lokalen Webdiensts abzurufen.
 
 ## <a name="consume-the-service-from-power-bi"></a>Nutzen des Diensts aus Power BI
 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 73e8f0de9f879498acb71e97fa47c81b3447252d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: edf35fada4233fbe43bc7f859c2414bfb8130714
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84749615"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905724"
 ---
 # <a name="train-anomaly-detection-model-module"></a>Modul „Trainieren eines Anomalieerkennungsmodells“
 
-In diesem Artikel wird beschrieben, wie Sie das Modul „Trainieren eines Anomalieerkennungsmodells“ im Azure Machine Learning-Designer (Vorschauversion) verwenden, um ein trainiertes Modell zur Erkennung von Anomalien zu erstellen.
+In diesem Artikel wird beschrieben, wie Sie das Modul „Train Anomaly Detection Model“ (Trainieren eines Anomalieerkennungsmodells) im Azure Machine Learning-Designer verwenden, um ein trainiertes Modell zur Anomalieerkennung zu erstellen.
 
 Als Eingabe für dieses Modul werden mehrere Modellparameter für das Anomalieerkennungsmodell sowie ein Dataset ohne Bezeichnung verwendet. Es gibt ein trainiertes Anomalieerkennungsmodell sowie einen Satz von Bezeichnungen für die Trainingsdaten zurück.  
 
@@ -53,5 +53,5 @@ Nach Abschluss des Trainings:
 
 Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 
 
-Eine Liste mit Fehlern, die bei den Designer-Modulen auftreten können, finden Sie unter [Ausnahmen und Fehlercodes für den Designer (Preview)](designer-error-codes.md).
+Eine Liste mit Fehlern, die bei den Designer-Modulen auftreten können, finden Sie unter [Ausnahmen und Fehlercodes für den Designer](designer-error-codes.md).
 '

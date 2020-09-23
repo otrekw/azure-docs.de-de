@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: memildin
 ms.date: 08/20/2020
-ms.openlocfilehash: ecef318978194ac3773c54e2d9c960781086de65
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 6c8a3d6c291435a379a637707a42f9ad7fe8dc00
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687219"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906353"
 ---
 # <a name="quickstart-create-an-automatic-response-to-a-specific-security-alert-using-an-azure-resource-manager-template-arm-template"></a>Schnellstart: Erstellen einer automatischen Antwort auf eine bestimmte Sicherheitswarnung mithilfe einer ARM-Vorlage (Azure Resource Manager)
 
@@ -73,9 +73,7 @@ Weitere von der Community bereitgestellte Security Center-Schnellstartvorlagen 
 1. Öffnen Sie **Security Center** über das [Azure-Portal](https://portal.azure.com).
 1. Wählen Sie auf der oberen Menüleiste das Filtersymbol aus, und wählen Sie das Abonnement aus, in dem Sie die neue Workflowautomatisierung bereitgestellt haben.
 1. Öffnen Sie auf der Seitenleiste von Security Center **Workflowautomatisierung**, und suchen Sie nach der neuen Automatisierung.
-
-    :::image type="content" source="./media/quickstart-automation-alert/validating-template-run.png" alt-text="Alternativer Bildtext" lightbox="./media/quickstart-automation-alert/validating-template-run.png":::
-
+    :::image type="content" source="./media/quickstart-automation-alert/validating-template-run.png" alt-text="Liste konfigurierter Automatisierungen" lightbox="./media/quickstart-automation-alert/validating-template-run.png":::
     >[!TIP]
     > Wenn Ihr Abonnement viele Workflowautomatisierungen enthält, verwenden Sie die Option **Nach Name filtern**. 
 
@@ -86,11 +84,9 @@ Löschen Sie die Workflowautomatisierung mithilfe des Azure-Portals, wenn Sie si
 1. Öffnen Sie **Security Center** über das [Azure-Portal](https://portal.azure.com).
 1. Wählen Sie auf der oberen Menüleiste das Filtersymbol aus, und wählen Sie das Abonnement aus, in dem Sie die neue Workflowautomatisierung bereitgestellt haben.
 1. Öffnen Sie auf der Seitenleiste von Security Center **Workflowautomatisierung**, und suchen Sie nach der zu löschenden Automatisierung.
-
-    :::image type="content" source="./media/quickstart-automation-alert/deleting-workflow-automation.png" alt-text="Alternativer Bildtext" lightbox="./media/quickstart-automation-alert/deleting-workflow-automation.png":::
-
+    :::image type="content" source="./media/quickstart-automation-alert/deleting-workflow-automation.png" alt-text="Schritte zum Entfernen einer Workflowautomatisierung" lightbox="./media/quickstart-automation-alert/deleting-workflow-automation.png":::
 1. Aktivieren Sie das Kontrollkästchen für das zu löschende Element.
-1. Wählen Sie auf der Symbolleiste die Option „Löschen“ aus.
+1. Wählen Sie auf der Symbolleiste die Option **Löschen** aus.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

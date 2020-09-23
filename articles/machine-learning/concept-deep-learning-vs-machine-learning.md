@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 03/05/2020
-ms.openlocfilehash: b024010583ba1c6e0ffdf663f7335011ce212bf1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 177f1992eb0cd93ad871ef3a181460417b1ef523
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81414582"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905140"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>Deep Learning im Vergleich zu maschinellem Lernen
 
@@ -96,7 +96,7 @@ Die gängigsten Typologien künstlicher neuronaler Netze werden in den folgenden
 
 ### <a name="feedforward-neural-network"></a>Neuronales feedforward-Netz
 
-Das neuronale Feedforward-Netz ist die grundlegendste Art von künstlichen neuronalen Netzen. In einem Feedforward-Netz werden Informationen nur in einer Richtung von der Eingabeschicht an die Ausgabeschicht übertragen. In neuronalen feedforward-Netzen werden Eingaben transformiert, indem sie eine Reihe von Zwischenschichten durchlaufen. Jede Schicht besteht aus einer Reihe von Neuronen, wobei jede Schicht vollständig mit allen Neuronen in der vorherigen Schicht verbunden ist. Die letzte vollständig verbundene Schicht (die Ausgabeschicht) stellt die generierten Vorhersagen dar.
+Das neuronale Feedforward-Netz ist die einfachste Art von künstlichen neuronalen Netzen. In einem Feedforward-Netz werden Informationen nur in einer Richtung von der Eingabeschicht an die Ausgabeschicht übertragen. In neuronalen feedforward-Netzen werden Eingaben transformiert, indem sie eine Reihe von Zwischenschichten durchlaufen. Jede Schicht besteht aus einer Reihe von Neuronen, wobei jede Schicht vollständig mit allen Neuronen in der vorherigen Schicht verbunden ist. Die letzte vollständig verbundene Schicht (die Ausgabeschicht) stellt die generierten Vorhersagen dar.
 
 ### <a name="recurrent-neural-network"></a>Recurrent Neural Network
 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: 7550bb7c6bbf7602245f9a9f1ac006ce693b36a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 63c61b12ad68a3add2e7b40ab0bec38d3c2835e5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79477645"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898566"
 ---
 # <a name="cross-validate-model"></a>Durchführen einer Kreuzvalidierung für ein Modell
 
-In diesem Artikel wird die Verwendung des Moduls „Cross Validate Model“ im Azure Machine Learning-Designer (Vorschauversion) beschrieben. Die *Kreuzvalidierung* ist ein Verfahren, das häufig beim maschinellen Lernen verwendet wird, um gleichzeitig die Variabilität eines Datasets und die Zuverlässigkeit eines mit diesen Daten trainierten Modells zu bewerten.  
+In diesem Artikel wird die Verwendung des Moduls „Cross Validate Model“ im Azure Machine Learning-Designer beschrieben. Die *Kreuzvalidierung* ist ein Verfahren, das häufig beim maschinellen Lernen verwendet wird, um gleichzeitig die Variabilität eines Datasets und die Zuverlässigkeit eines mit diesen Daten trainierten Modells zu bewerten.  
 
 Für das Modul „Cross Validate Model“ wird als Eingabe ein bezeichnetes Dataset und ein untrainiertes Klassifizierungs- oder Regressionsmodell verwendet. Das Dataset wird in eine bestimmte Anzahl von Teilmengen (*Folds*) aufgeteilt, für jeden Fold wird ein Modell erstellt, und anschließend wird ein Satz von Genauigkeitsstatistiken für jeden Fold zurückgegeben. Indem Sie die Genauigkeitsstatistiken für alle Folds vergleichen, können Sie die Qualität des Datasets interpretieren. Sie können dann ermitteln, ob das Modell anfällig für Datenabweichungen ist.  
 

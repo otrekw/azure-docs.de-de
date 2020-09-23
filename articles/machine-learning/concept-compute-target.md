@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: 805141dedddcd915d266c9651fc51732fb51e1b0
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 3e1832d656ea2bad772a686e52a357c1daf0ded5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146730"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883198"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Was sind Computeziele in Azure Machine Learning? 
 
@@ -51,7 +51,7 @@ Eine verwaltete Computeressource wird von Azure Machine Learning erstellt und ve
 Sie können Azure Machine Learning-Compute-Instanzen oder -Computecluster erstellen mithilfe von:
 * [Azure Machine Learning Studio](how-to-create-attach-compute-studio.md)
 * Azure-Portal
-* Python SDK-Klassen [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py) und [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py)
+* Python SDK-Klassen [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py&preserve-view=true) und [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py&preserve-view=true)
 * [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets) (Vorschau)
 * Resource Manager-Vorlage Eine Beispielvorlage finden Sie unter [Erstellen einer Azure Machine Learning Compute-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-amlcompute).
 * Machine-Learning-[Erweiterung für die Azure CLI](reference-azure-machine-learning-cli.md#resource-management)  
@@ -68,7 +68,7 @@ Nach der Erstellung sind diese Computeressourcen im Gegensatz zu anderen Arten v
 
 
 > [!NOTE]
-> Wenn sich ein Computecluster im Leerlauf befindet, wird er automatisch auf 0 Knoten skaliert. Es entstehen also keine Kosten, wenn der Cluster nicht verwendet wird.  Eine Compute*instanz* ist jedoch immer verfügbar und wird nicht automatisch skaliert.  Sie sollten [Computeinstanzen anhalten](tutorial-1st-experiment-sdk-train.md#stop-the-compute-instance), wenn Sie sie nicht verwenden, um unnötige Kosten zu vermeiden. 
+> Wenn sich ein Computecluster im Leerlauf befindet, wird er automatisch auf 0 Knoten skaliert. Es entstehen also keine Kosten, wenn der Cluster nicht verwendet wird.  Eine Compute*instanz* ist jedoch immer verfügbar und wird nicht automatisch skaliert.  Sie sollten [Computeinstanzen anhalten](concept-compute-instance.md#managing-a-compute-instance), wenn Sie sie nicht verwenden, um unnötige Kosten zu vermeiden. 
 
 ### <a name="supported-vm-series-and-sizes"></a>Unterstützte VM-Serien und -Größen
 

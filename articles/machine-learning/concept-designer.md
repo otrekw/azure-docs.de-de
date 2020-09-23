@@ -1,5 +1,5 @@
 ---
-title: Erstellen von ML-Modellen mit dem Designer (Vorschau)
+title: Erstellen von ML-Modellen mit dem Designer
 titleSuffix: Azure Machine Learning
 description: Hier erhalten Sie Informationen zu Terminologie, Konzepten und Workflows des Designers für Azure Machine Learning.
 services: machine-learning
@@ -10,15 +10,15 @@ ms.author: peterlu
 author: peterclu
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 181f0d62f160a6644e0423be052012521752525f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c92351131a60b571a102b85f7d11b79ab29d939e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012942"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883119"
 ---
-# <a name="what-is-azure-machine-learning-designer-preview"></a>Was ist der Azure Machine Learning-Designer (Vorschau)? 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+# <a name="what-is-azure-machine-learning-designer"></a>Was ist der Azure Machine Learning-Designer? 
+
 
 Mit dem Azure Machine Learning-Designer können Sie [Datasets](#datasets) und [Module](#module) auf einem interaktiven Zeichenbereich visuell miteinander verbinden, um Machine Learning-Modelle zu erstellen. Informationen zu den ersten Schritten mit dem Designer finden Sie hier: [Tutorial: Prognostizieren von Automobilpreisen mit dem Designer](tutorial-designer-automobile-price-train-score.md).
 
@@ -114,7 +114,7 @@ Veröffentlichte Pipelines sind flexibel und können zum Trainieren oder erneute
 
 Eine veröffentliche Pipeline wird auf den Computeressourcen ausgeführt, die Sie im Pipelineentwurf für jedes Modul definieren.
 
-Der Designer erstellt dasselbe [PublishedPipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline?view=azure-ml-py)-Objekt wie das SDK.
+Der Designer erstellt dasselbe [PublishedPipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline?view=azure-ml-py&preserve-view=true)-Objekt wie das SDK.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

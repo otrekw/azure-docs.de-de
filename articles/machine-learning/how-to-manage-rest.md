@@ -10,18 +10,18 @@ ms.subservice: core
 ms.date: 01/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: d5343e6c21da4c30dc18c8692b41dd66eb9566a4
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 39000a34d1d19026ce406eeb996f89d1acc7ea04
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846699"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897364"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>Erstellen, Ausführen und Löschen von Azure ML-Ressourcen mithilfe von REST
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Es gibt verschiedene Möglichkeiten zur Verwaltung Ihrer Azure ML-Ressourcen. Sie können das [-Portal](https://portal.azure.com/), die [Befehlszeilenschnittstelle (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) oder das [Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) verwenden. Sie können auch die REST-API verwenden. Die REST-API verwendet HTTP-Verben in einer Standardmethode zum Erstellen, Abrufen, Aktualisieren und Löschen von Ressourcen. Die REST-API funktioniert mit jeder Sprache oder jedem Tool, die bzw. das HTTP-Anforderungen ausführen kann. Durch die unkomplizierte Struktur von REST sind diese APIs häufig eine gute Wahl in Skriptumgebungen sowie für MLOps-Automatisierung. 
+
+Es gibt verschiedene Möglichkeiten zur Verwaltung Ihrer Azure ML-Ressourcen. Sie können das [-Portal](https://portal.azure.com/), die [Befehlszeilenschnittstelle (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) oder das [Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) verwenden. Sie können auch die REST-API verwenden. Die REST-API verwendet HTTP-Verben in einer Standardmethode zum Erstellen, Abrufen, Aktualisieren und Löschen von Ressourcen. Die REST-API funktioniert mit jeder Sprache oder jedem Tool, die bzw. das HTTP-Anforderungen ausführen kann. Durch die unkomplizierte Struktur von REST sind diese APIs häufig eine gute Wahl in Skriptumgebungen sowie für MLOps-Automatisierung. 
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
@@ -423,5 +423,5 @@ Der Azure Machine Learning-Arbeitsbereich verwendet für einige Operationen die 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erkunden der vollständigen [AzureML REST-API-Referenz](https://docs.microsoft.com/rest/api/azureml/).
-- Erfahren Sie, wie Sie mithilfe von Studio und Designer [Automobilpreise mit dem Designer (Vorschau)](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-train-score) vorhersagen können.
+- Lernen Sie, wie Sie den Designer zum [Prognostizieren von Automobilpreisen mit dem Designer](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-train-score) verwenden.
 - Erkunden von [Azure Machine Learning mit Jupyter-Notebooks](https://docs.microsoft.com/azure//machine-learning/samples-notebooks).

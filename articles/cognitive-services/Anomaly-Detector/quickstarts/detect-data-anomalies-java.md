@@ -8,26 +8,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 06/30/2020
+ms.date: 09/03/2020
 ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: e8fdc703b094ace83e70b736c1eb0d15c461adba
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 6c37ac4a8e43f8e11e37186e2438c4803556339e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88243869"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905770"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-java"></a>Schnellstart: Erkennen von Anomalien in Zeitreihendaten mithilfe der Anomalieerkennungs-REST-API und Java
 
-Dieser Schnellstart unterstützt Sie bei den ersten Schritten in den zwei Erkennungsmodi der Anomalieerkennungs-API, um Anomalien in Ihren Zeitreihendaten zu erkennen. Diese Java-Anwendung sendet zwei API-Anforderungen mit Zeitreihendaten im JSON-Format und erhält entsprechende Antworten.
+Dieser Schnellstart unterstützt Sie bei den ersten Schritten in den zwei Erkennungsmodi der Anomalieerkennungs-API, um Anomalien in Ihren Zeitreihendaten zu erkennen. Diese Java-Anwendung sendet API-Anforderungen mit Zeitreihendaten im JSON-Format und erhält entsprechende Antworten.
 
 | API-Anforderung                                        | Anwendungsausgabe                                                                                                                         |
 |----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
 | Erkennen von Anomalien als Batch                        | Die JSON-Antwort enthält den Anomaliestatus (und weitere Daten) für jeden Datenpunkt in den Zeitreihendaten sowie die Positionen aller erkannten Anomalien. |
-| Erkennen des Anomaliestatus des letzten Datenpunkts | Die JSON-Antwort enthält den Anomaliestatus (und weitere Daten) für den letzten Datenpunkt in den Zeitreihendaten.                                                                                                                                         |
+| Erkennen des Anomaliestatus des letzten Datenpunkts | Die JSON-Antwort enthält den Anomaliestatus (und weitere Daten) für den letzten Datenpunkt in den Zeitreihendaten.   |
+| Erkennen von Änderungspunkten, die auf neue Datentrends hindeuten | Die JSON-Antwort, die die erkannten Änderungspunkte in den Zeitreihendaten enthält. |
 
- Diese Anwendung ist in Java geschrieben, die API ist jedoch ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist. Den Quellcode für diesen Schnellstart finden Sie auf [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/java-detect-anomalies.java).
+Diese Anwendung ist in Java geschrieben, die API ist jedoch ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist. Den Quellcode für diesen Schnellstart finden Sie auf [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/java-detect-anomalies.java).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -56,6 +57,7 @@ Dieser Schnellstart unterstützt Sie bei den ersten Schritten in den zwei Erkenn
     |---------|---------|
     |Batcherkennung    | `/anomalydetector/v1.0/timeseries/entire/detect`        |
     |Erkennung am letzten Datenpunkt     | `/anomalydetector/v1.0/timeseries/last/detect`        |
+    | Erkennen von Änderungspunkten | `/anomalydetector/v1.0/timeseries/changepoint/detect`   |
 
     [!code-java[Initial key and endpoint variables](~/samples-anomaly-detector/quickstarts/java-detect-anomalies.java?name=vars)]
 
@@ -91,6 +93,17 @@ Erstellen Sie eine Methode namens `detectAnomaliesLatest()`, um den Anomaliestat
 
 [!code-java[Latest point detection method](~/samples-anomaly-detector/quickstarts/java-detect-anomalies.java?name=detectLatest)]
 
+
+## <a name="detect-change-points-in-the-data"></a>Erkennen von Änderungspunkten in den Daten
+
+1. Erstellen Sie eine Methode namens `detectChangePoints()`, um Anomalien in allen Daten als Batch zu erkennen. Rufen Sie die oben erstellte Methode `sendRequest()` mit dem Endpunkt, der URL, dem Abonnementschlüssel und den JSON-Daten auf. Rufen Sie das Ergebnis ab, und geben Sie es in der Konsole aus.
+
+2. Wenn die Antwort ein Feld vom Typ `code` enthält, geben Sie den Fehlercode und die Fehlermeldung aus.
+
+3. Suchen Sie andernfalls nach den Positionen der Änderungspunkte im Dataset. Das Feld `isChangePoint` der Antwort enthält einen booleschen Wert, der angibt, ob es sich bei einem bestimmten Datenpunkt um einen Trendänderungspunkt handelt. Rufen Sie das JSON-Array ab und durchlaufen Sie es, um den Index aller Werte vom Typ `true` auszugeben. Diese Werte entsprechen den Indizes der Trendänderungspunkte, sofern welche gefunden wurden.
+
+    [!code-java[detect change points](~/samples-anomaly-detector/quickstarts/java-detect-anomalies.java?name=detectChangePoint)]
+
 ## <a name="load-your-time-series-data-and-send-the-request"></a>Laden der Zeitreihendaten und Senden der Anforderung
 
 1. Lesen Sie in der Hauptmethode Ihrer Anwendung die JSON-Datei mit den Daten ein, die den Anforderungen hinzugefügt werden.
@@ -104,5 +117,6 @@ Erstellen Sie eine Methode namens `detectAnomaliesLatest()`, um den Anomaliestat
 Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Klicken Sie unten auf die Links, um die JSON-Antwort auf GitHub anzuzeigen:
 * [Beispielantwort für die Batcherkennung](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/batch-response.json)
 * [Beispielantwort für die Erkennung des letzten Punkts](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/latest-point-response.json)
+* [Beispielantwort für die Erkennung eines Änderungspunkts](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/change-point-sample.json)
 
 [!INCLUDE [anomaly-detector-next-steps](../includes/quickstart-cleanup-next-steps.md)]

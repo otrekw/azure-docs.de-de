@@ -8,67 +8,47 @@ ms.subservice: core
 ms.reviewer: jmartens
 ms.author: larryfr
 author: blackmist
-ms.date: 07/23/2020
+ms.date: 09/15/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: ae66447e128b07ce942b8c2fcc66347a31cfe83f
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: a36f69c9956dd05c5fbd85d7e37b90c0b1e4c21e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87848858"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897648"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Überwachen und Erfassen von Daten von ML-Webdienst-Endpunkten
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In diesem Artikel erfahren Sie, wie Sie Daten von Modellen erfassen, die in Webdienstendpunkten in Azure Kubernetes Service (AKS) oder Azure Container Instances (ACI) bereitgestellt wurden, und wie Sie diese Modelle überwachen, indem Sie Protokolle abfragen und Azure Application Insights mit einer der folgenden Methoden aktivieren: 
-* [Python-SDK für Azure Machine Learning](#python)
-* [Azure Machine Learning Studio](#studio) unter https://ml.azure.com
 
-Sie können nicht nur die Ausgabedaten und Antworten eines Endpunkts erfassen, sondern auch Folgendes überwachen:
-
+In diesem Artikel erfahren Sie, wie Sie Daten von Modellen erfassen, die in Webdienst-Endpunkten in Azure Kubernetes Service (AKS) oder Azure Container Instances (ACI) bereitgestellt wurden. Verwenden Sie [Azure Application Insights](../azure-monitor/app/app-insights-overview.md), um die folgenden Daten von einem Endpunkt zu erfassen:
+* Ausgabedaten
+* Antworten
 * Anforderungsraten, Antwortzeiten und Fehlerraten
 * Abhängigkeitsraten, Antwortzeiten und Fehlerraten
 * Ausnahmen
 
-[Weitere Informationen zu Azure Application Insights](../azure-monitor/app/app-insights-overview.md) 
-
-
+Im Notebook [enable-app-insights-in-production-service.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/enable-app-insights-in-production-service/enable-app-insights-in-production-service.ipynb) werden die in diesem Artikel behandelten Konzepte veranschaulicht.
+ 
+[!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
+ 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
+* Ein Azure-Abonnement. Testen Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree).
 
-* Ein Azure Machine Learning-Arbeitsbereich, ein lokales Verzeichnis mit Ihren Skripts und das Azure Machine Learning SDK für Python müssen installiert sein. Informationen zum Erfüllen dieser Voraussetzungen finden Sie unter [Konfigurieren einer Entwicklungsumgebung](how-to-configure-environment.md).
+* Ein Azure Machine Learning-Arbeitsbereich, ein lokales Verzeichnis mit Ihren Skripts und das Azure Machine Learning SDK für Python müssen installiert sein. Weitere Informationen finden Sie unter [Konfiguration einer Entwicklungsumgebung](how-to-configure-environment.md).
 
-* Ein trainiertes Machine Learning-Modell, das in Azure Kubernetes Service (AKS) oder Azure Container Instance (ACI) bereitgestellt werden soll. Wenn Sie keines besitzen, sehen Sie sich das Tutorial zum [Trainieren eines Imageklassifizierungsmodells](tutorial-train-models-with-aml.md) an.
-
-## <a name="query-logs-for-deployed-models"></a>Abfragen von Protokollen für bereitgestellte Modelle
-
-Um Protokolle aus einem zuvor bereitgestellten Webdienst abzurufen, laden Sie den Dienst, und verwenden Sie die `get_logs()`-Funktion. Die Protokolle können ausführliche Informationen zu allen Fehlern enthalten, die während der Bereitstellung aufgetreten sind.
-
-```python
-from azureml.core.webservice import Webservice
-
-# load existing web service
-service = Webservice(name="service-name", workspace=ws)
-logs = service.get_logs()
-```
-
-## <a name="web-service-metadata-and-response-data"></a>Meta- und -Antwortdaten eines Webdiensts
-
-> [!IMPORTANT]
-> Azure Application Insights protokolliert nur Nutzlasten von bis zu 64 KB. Bei Erreichen dieses Grenzwerts treten unter Umständen Fehler auf (etwa aufgrund von unzureichendem Arbeitsspeicher), oder es werden ggf. keine Informationen protokolliert.
-
-Fügen Sie der Datei „score.py“ Anweisungen vom Typ `print` hinzu, um Informationen für eine an den Webdienst gerichtete Anforderung zu protokollieren. Jede Anweisung vom Typ `print` hat einen Eintrag in der Ablaufverfolgungstabelle in Application Insights unter der Meldung `STDOUT` zur Folge. Der Inhalt der Anweisung `print` befindet sich unter `customDimensions` und anschließend unter `Contents` in der Ablaufverfolgungstabelle. Wenn Sie eine JSON-Zeichenfolge ausgeben, wird in der Ablaufverfolgungsausgabe unter `Contents`eine hierarchische Datenstruktur generiert.
-
-Sie können Azure Application Insights für den Zugriff auf diese Daten direkt abfragen oder zur längeren Aufbewahrung oder weiteren Verarbeitung einen [fortlaufenden Export](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) in ein Speicherkonto einrichten. Modelldaten können dann im Azure Machine Learning-Dienst zum Einrichten von Bezeichnungen, erneuten Trainings, Erklärungen, Datenanalysen oder zu anderen Zwecken verwendet werden. 
-
+* Ein trainiertes Modell für maschinelles Lernen. Weitere Informationen finden Sie im Tutorial zum [Trainieren eines Imageklassifizierungsmodells](tutorial-train-models-with-aml.md).
 
 <a name="python"></a>
 
-## <a name="use-python-sdk-to-configure"></a>Verwenden des Python SDK zum Konfigurieren 
+## <a name="configure-logging-with-the-python-sdk"></a>Konfigurieren der Protokollierung mit dem Python SDK
+
+In diesem Abschnitt erfahren Sie, wie Sie die Application Insights-Protokollierung mit dem Python SDK aktivieren. 
 
 ### <a name="update-a-deployed-service"></a>Aktualisieren eines bereitgestellten Diensts
+
+Führen Sie die folgenden Schritte aus, um einen vorhandenen Webdienst zu aktualisieren:
 
 1. Suchen Sie den Dienst in Ihrem Arbeitsbereich. Der Wert für `ws` ist der Name des Arbeitsbereichs.
 
@@ -84,12 +64,17 @@ Sie können Azure Application Insights für den Zugriff auf diese Daten direkt a
 
 ### <a name="log-custom-traces-in-your-service"></a>Protokollieren von benutzerdefinierten Ablaufverfolgungen in Ihrem Dienst
 
-Wenn Sie benutzerdefinierte Ablaufverfolgungen protokollieren möchten, führen Sie den im Dokument [Bereitstellung: wie und wo?](how-to-deploy-and-where.md) beschriebenen Standardbereitstellungsprozess für AKS oder ACI aus. Führen Sie dann die folgenden Schritte aus:
+> [!IMPORTANT]
+> Azure Application Insights protokolliert nur Nutzlasten von bis zu 64 KB. Bei Erreichen dieses Grenzwerts treten unter Umständen Fehler auf (etwa aufgrund von unzureichendem Arbeitsspeicher), oder es werden ggf. keine Informationen protokolliert. Sind die Daten, die Sie protokollieren möchten, größer als 64 KB, speichern Sie sie stattdessen in Blob Storage, wie unter [Sammeln von Daten für Modelle in der Produktion](how-to-enable-data-collection.md) beschrieben.
+>
+> In komplexeren Situationen wie der Modellnachverfolgung in einer AKS-Bereitstellungwird die Verwendung einer Drittanbieterbibliothek wie [OpenCensus](https://opencensus.io) empfohlen.
 
-1. Wenn Sie Daten während des Rückschließens an Application Insights senden möchten, aktualisieren Sie die Bewertungsdatei durch Hinzufügen von print-Anweisungen. Wenn Sie komplexere Informationen wie etwa die Anforderungsdaten und die Antwort protokollieren möchten, verwenden Sie eine JSON-Struktur. Von der folgenden Beispieldatei „score.py“ werden die Initialisierungszeit des Modells, die Ein- und Ausgabe während des Rückschließens sowie die Zeit protokolliert, zu der Fehler auftreten:
+Um benutzerdefinierte Ablaufverfolgungen zu protokollieren, führen Sie den Standardbereitstellungsprozess für AKS oder ACI im Dokument [Wie und wo Modelle bereitgestellt werden](how-to-deploy-and-where.md) aus. Führen Sie dann die folgenden Schritte aus:
 
-    > [!IMPORTANT]
-    > Azure Application Insights protokolliert nur Nutzlasten von bis zu 64 KB. Bei Erreichen dieses Grenzwerts treten unter Umständen Fehler auf (etwa aufgrund von unzureichendem Arbeitsspeicher), oder es werden ggf. keine Informationen protokolliert. Sind die Daten, die Sie protokollieren möchten, größer als 64 KB, speichern Sie sie stattdessen in Blob Storage, wie unter [Sammeln von Daten für Modelle in der Produktion](how-to-enable-data-collection.md) beschrieben.
+1. Aktualisieren Sie die Bewertungsdatei, indem Sie print-Anweisungen hinzufügen, um Daten während des Rückschließens an Application Insights zu senden. Um komplexere Informationen wie etwa die Anforderungsdaten und die Antwort zu protokollieren, verwenden Sie eine JSON-Struktur. 
+
+    Mit der folgenden Beispieldatei `score.py` werden die Initialisierung des Modells, die Ein- und Ausgabe während des Rückschließens sowie die Zeit protokolliert, zu der Fehler auftreten.
+
     
     ```python
     import pickle
@@ -133,15 +118,14 @@ Wenn Sie benutzerdefinierte Ablaufverfolgungen protokollieren möchten, führen 
             return error
     ```
 
-2. Aktualisieren Sie die Dienstkonfiguration.
+2. Aktualisieren Sie die Dienstkonfiguration, und stellen Sie sicher, dass Sie Application Insights aktivieren.
     
     ```python
     config = Webservice.deploy_configuration(enable_app_insights=True)
     ```
 
-3. Erstellen Sie ein Image, und stellen Sie es in [AKS oder ACI](how-to-deploy-and-where.md) bereit.
+3. Erstellen Sie ein Image, und stellen Sie es in AKS oder ACI bereit. Weitere Informationen finden Sie unter [Bereitstellen von Modellen mit dem Azure Machine Learning Service](how-to-deploy-and-where.md).
 
-Weitere Informationen zur Protokollierung und Datensammlung finden Sie unter [Aktivieren der Protokollierung in Azure Machine Learning](how-to-enable-logging.md) und [Sammeln von Daten von Modellen in der Produktion](how-to-enable-data-collection.md).
 
 ### <a name="disable-tracking-in-python"></a>Deaktivieren der Nachverfolgung in Python
 
@@ -154,13 +138,13 @@ Verwenden Sie den folgenden Code, um Azure Application Insights zu deaktivieren:
 
 <a name="studio"></a>
 
-## <a name="use-azure-machine-learning-studio-to-configure"></a>Verwenden von Azure Machine Learning Studio für die Konfiguration
+## <a name="configure-logging-with-azure-machine-learning-studio"></a>Konfigurieren der Protokollierung mit Azure Machine Learning Studio
 
-Sie können Azure Application Insights auch über Azure Machine Learning Studio aktivieren, wenn Sie Ihr Modell mit den folgenden Schritten bereitstellen möchten:
+Sie können Azure Application Insights auch in Azure Machine Learning Studio aktivieren. Sobald Ihr Modell als Webdienst bereitgestellt werden kann, führen Sie die folgenden Schritte aus, um Application Insights zu aktivieren:
 
-1. Melden Sie sich unter https://ml.azure.com/ bei Ihrem Arbeitsbereich an.
+1. Melden Sie sich unter https://ml.azure.com bei Studio an.
 1. Navigieren Sie zu **Modelle**, und wählen Sie das bereitzustellende Modell aus.
-1. Wählen Sie **+ Bereitstellen** aus.
+1. Wählen Sie **+ Bereitstellen** aus.
 1. Füllen Sie das Formular **Modell bereitstellen** aus.
 1. Erweitern Sie das Menü **Erweitert**.
 
@@ -171,17 +155,30 @@ Sie können Azure Application Insights auch über Azure Machine Learning Studio 
 
 ## <a name="view-metrics-and-logs"></a>Anzeigen von Metriken und Protokollen
 
-Die Daten Ihres Diensts werden in Ihrem Azure Application Insights-Konto in der Ressourcengruppe gespeichert, in der sich auch Azure Machine Learning befindet.
-So zeigen Sie sie an:
+### <a name="query-logs-for-deployed-models"></a>Abfragen von Protokollen für bereitgestellte Modelle
+
+Sie können die `get_logs()`-Funktion verwenden, um Protokolle aus einem zuvor bereitgestellten Webdienst abzurufen. Die Protokolle können ausführliche Informationen zu allen Fehlern enthalten, die während der Bereitstellung aufgetreten sind.
+
+```python
+from azureml.core.webservice import Webservice
+
+# load existing web service
+service = Webservice(name="service-name", workspace=ws)
+logs = service.get_logs()
+```
+
+### <a name="view-logs-in-the-studio"></a>Anzeigen von Protokollen in Studio
+
+Azure Application Insights speichert die Dienstprotokolle in der gleichen Ressourcengruppe wie der Azure Machine Learning-Arbeitsbereich. Führen Sie die folgenden Schritte aus, um die Daten mit Studio anzuzeigen:
 
 1. Wechseln Sie zu Ihrem Azure Machine Learning-Arbeitsbereich im [Studio](https://ml.azure.com/).
 1. Wählen Sie **Endpunkte**.
-1. Wählen Sie den bereitgestellten Dienst aus.
-1. Scrollen Sie nach unten, um die **Application Insights-URL** zu finden, und wählen Sie den Link aus.
+1. Testen Sie den bereitgestellten Dienst.
+1. Wählen Sie den Link **Application Insights-URL** aus.
 
     [![Suchen der Application Insights-URL](./media/how-to-enable-app-insights/appinsightsloc.png)](././media/how-to-enable-app-insights/appinsightsloc.png#lightbox)
 
-1. Wählen Sie in Application Insights auf der Registerkarte **Übersicht** oder im Abschnitt __Überwachung__ in der Liste auf der linken Seite die Option __Protokolle__ aus.
+1. Wählen Sie in Application Insights auf der Registerkarte **Übersicht** oder im Abschnitt __Überwachung__ die Option __Protokolle__ aus.
 
     [![Registerkarte „Übersicht“ im Abschnitt „Überwachung“](./media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
@@ -195,27 +192,31 @@ So zeigen Sie sie an:
 
    [![Ablaufverfolgungsdaten](./media/how-to-enable-app-insights/model-data-trace.png)](././media/how-to-enable-app-insights/model-data-trace.png#lightbox)
 
-Weitere Informationen zu Azure Application Insights finden Sie unter [Was ist Application Insights?](../azure-monitor/app/app-insights-overview.md).
+Weitere Informationen zur Verwendung von Azure Application Insights finden Sie unter [Was ist Application Insights?](../azure-monitor/app/app-insights-overview.md)
 
-## <a name="export-data-for-further-processing-and-longer-retention"></a>Exportieren von Daten zur weiteren Verarbeitung und längeren Aufbewahrung
+## <a name="web-service-metadata-and-response-data"></a>Meta- und -Antwortdaten eines Webdiensts
+
+> [!IMPORTANT]
+> Azure Application Insights protokolliert nur Nutzlasten von bis zu 64 KB. Bei Erreichen dieses Grenzwerts treten unter Umständen Fehler auf (etwa aufgrund von unzureichendem Arbeitsspeicher), oder es werden ggf. keine Informationen protokolliert.
+
+Zum Protokollieren von Informationen zu Webdienstanforderungen fügen Sie der Datei „score.py“ `print`-Anweisungen hinzu. Jede `print`-Anweisung erstellt einen Eintrag in der Application Insights-Ablaufverfolgungstabelle unter der Meldung `STDOUT`. Application Insights speichert die Ausgaben der `print`-Anweisungen in `customDimensions` und in der Ablaufverfolgungstabelle `Contents`. Durch Ausgeben von JSON-Zeichenfolgen wird in der Ablaufverfolgungsausgabe unter `Contents` eine hierarchische Datenstruktur generiert.
+
+## <a name="export-data-for-retention-and-processing"></a>Exportieren von Daten für die Aufbewahrung und die Verarbeitung
 
 >[!Important]
-> Azure Application Insights unterstützt nur Exporte in einen Blobspeicher. Weitere Beschränkungen für diese Exportfunktion finden Sie unter [Exportieren von Telemetriedaten aus App Insights](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry#continuous-export-advanced-storage-configuration).
+> Azure Application Insights unterstützt nur Exporte in einen Blobspeicher. Weitere Informationen zu den Beschränkungen dieser Implementierung finden Sie unter [Exportieren von Telemetriedaten aus App Insights](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry#continuous-export-advanced-storage-configuration).
 
-Sie können den [fortlaufenden Export](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) von Azure Application Insights verwenden, um Nachrichten an ein unterstütztes Speicherkonto zu senden, für das eine längere Aufbewahrungsdauer festgelegt werden kann. Die Daten werden im JSON-Format gespeichert und können ganz einfach zum Extrahieren von Modelldaten analysiert werden. 
-
-Die Daten können bei Bedarf mit Azure Data Factory, Azure ML-Pipelines oder anderen Datenverarbeitungstools transformiert werden. Nach der Transformation der Daten können Sie sie im Azure Machine Learning-Arbeitsbereich als Dataset registrieren. Informationen dazu finden Sie unter [Erstellen und Registrieren von Datasets](how-to-create-register-datasets.md).
+Verwenden Sie den [fortlaufenden Export](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) von Application Insights, um Daten in ein Blobspeicherkonto zu exportieren, für das Sie die Aufbewahrungseinstellungen definieren können. Application Insights exportiert die Daten im JSON-Format. 
 
 :::image type="content" source="media/how-to-enable-app-insights/continuous-export-setup.png" alt-text="Fortlaufendem Export":::
 
-
-## <a name="example-notebook"></a>Notebook mit Beispielen
-
-Im Notebook [enable-app-insights-in-production-service.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/enable-app-insights-in-production-service/enable-app-insights-in-production-service.ipynb) werden die in diesem Artikel behandelten Konzepte veranschaulicht. 
- 
-[!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zum Bereitstellen Ihrer Modelle in Webdienst-Endpunkten sowie zum Aktivieren von Azure Application Insights zum Nutzen der Datenerfassung und Endpunktüberwachung finden Sie unter [Bereitstellen eines Modells in einem Azure Kubernetes Service-Cluster](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-azure-kubernetes-service) bzw. [Bereitstellen eines Modells in Azure Container Instances](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-azure-container-instance).
-* Unter [MLOps: Verwalten, Bereitstellen und Überwachen von Modellen mit Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/concept-model-management-and-deployment) erfahren Sie, wie Sie von Modellen in der Produktion erfasste Daten nutzen. Solche Daten können Sie dabei unterstützen, Ihren Machine Learning-Prozess kontinuierlich zu verbessern.
+In diesem Artikel haben Sie gelernt, wie Sie die Protokollierung aktivieren und Protokolle für Webdienst-Endpunkte anzeigen. In den folgenden Artikeln werden die nächsten Schritte erläutert:
+
+
+* [Bereitstellen eines Modells in einem AKS-Cluster](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-azure-kubernetes-service)
+
+* [Bereitstellen eines Modells in Azure Container Instances](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-azure-container-instance)
+
+* [MLOps: Verwalten, Bereitstellen und Überwachen von Modellen mit Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/concept-model-management-and-deployment) erfahren Sie, wie Sie von Modellen in der Produktion erfasste Daten nutzen. Solche Daten können Sie dabei unterstützen, Ihren Machine Learning-Prozess kontinuierlich zu verbessern.

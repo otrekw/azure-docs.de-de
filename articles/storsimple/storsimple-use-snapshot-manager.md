@@ -3,7 +3,7 @@ title: Benutzeroberfläche des StorSimple Snapshot Managers | Microsoft Docs
 description: Beschreibt die Benutzeroberfläche des StorSimple Snapshot Managers und erläutert, wie dieser zum Verwalten von Sicherungsaufträgen und des Sicherungskatalogs verwendet wird.
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: timlt
 editor: ''
 ms.assetid: c7d91892-2881-41a2-a7a2-908dc3646493
@@ -13,14 +13,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: twooley
+ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: 1706ae4005c337fdffb45683133e5682a56a0de5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ead24b89dba889a4bb8f11d57eb687e7790aebfb
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513733"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055910"
 ---
 # <a name="use-storsimple-snapshot-manager-user-interface-to-manage-backup-jobs-and-backup-catalog"></a>Verwenden der Benutzeroberfläche des StorSimple Snapshot Managers zum Verwalten von Sicherungsaufträgen und Sicherungskatalog
 

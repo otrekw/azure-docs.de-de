@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: 361199bd380b126ec41fb8a5587a2ebd78cd6f24
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0cc367b86507d6d819608795851052e8a0c1c73b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84447610"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890305"
 ---
 # <a name="score-model"></a>Bewerten eines Modells
 
-In diesem Artikel wird ein Modul in Azure Machine Learning-Designer (Vorschauversion) beschrieben.
+In diesem Artikel wird ein Modul im Azure Machine Learning-Designer beschrieben.
 
 Verwenden Sie dieses Modul zum Generieren von Vorhersagen mithilfe eines trainierten Klassifizierungs- oder Regressionsmodells.
 

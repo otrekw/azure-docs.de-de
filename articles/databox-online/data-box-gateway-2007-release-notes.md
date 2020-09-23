@@ -2,18 +2,18 @@
 title: Versionshinweise zu Azure Stack Edge und Azure Data Box Gateway in Release 2007 | Microsoft-Dokumentation
 description: In diesem Artikel werden offene Probleme und Lösungen für Azure Stack Edge und Data Box Gateway in Release 2007 beschrieben.
 services: databox
-author: twooley
+author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
 ms.date: 07/14/2020
-ms.author: twooley
-ms.openlocfilehash: f9a08cda1466dbe284a0ac3c0e34b109be236883
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.author: alkohli
+ms.openlocfilehash: 85614ab6455e149d64b7d1b9774c37c764bb600f
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783925"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055876"
 ---
 # <a name="azure-stack-edge-and-azure-data-box-gateway-2007-release-notes"></a>Versionshinweise zu Azure Stack Edge und Azure Data Box Gateway in Release 2007
 

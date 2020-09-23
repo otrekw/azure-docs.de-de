@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: 7ff135911742c49c2c52ce30d1dca00bc89b3a56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a64d5cebfd8e70e2f54a66193a7041c47887c54a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84450094"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898909"
 ---
 # <a name="apply-image-transformation"></a>Anwenden einer Bildtransformation 
 
-In diesem Artikel wird die Verwendung des Moduls „Anwenden einer Bildtransformation“ in Azure Machine Learning-Designer (Vorschau) zum Ändern eines Eingabe-Bildverzeichnisses auf der Grundlage einer zuvor festgelegten Bildtransformation beschrieben.  
+In diesem Artikel wird die Verwendung des Moduls „Anwenden einer Bildtransformation“ im Azure Machine Learning-Designer zum Ändern eines Eingabebildverzeichnisses auf der Grundlage einer zuvor festgelegten Bildtransformation beschrieben.  
 
 Sie müssen eine Verbindung mit einem Modul [Initialisieren einer Bildtransformation](init-image-transformation.md) herstellen, um die Transformation festzulegen, dann können Sie eine solche Transformation auf das Eingabe-Bildverzeichnis des Moduls „Anwenden einer Bildtransformation“ anwenden.
 

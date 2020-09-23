@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: duau
-ms.openlocfilehash: 73efae90f4403d1fbab3319ce0288761d3867340
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 3428f092c4b2356e9ea6afa54d1a03fc8b4f9f05
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89396164"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566176"
 ---
 # <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>Erstellen einer ExpressRoute-Verbindung mithilfe einer Azure Resource Manager-Vorlage
 
@@ -63,7 +63,7 @@ So erstellen Sie eine ExpressRoute-Verbindung durch Bereitstellen einer Vorlage:
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-   * Der **SKU-Tarif** bestimmt, ob eine ExpressRoute-Verbindung eine [lokale](expressroute-faqs.md#expressroute-local), Standard- oder [Premium](expressroute-faqs.md#expressroute-premium)-Verbindung ist. Sie können *Lokal*, *Standard oder *Premium* angeben.
+   * Der **SKU-Tarif** bestimmt, ob eine ExpressRoute-Verbindung eine [lokale](expressroute-faqs.md#expressroute-local), Standard- oder [Premium](expressroute-faqs.md#expressroute-premium)-Verbindung ist. Sie können *Lokal*, *Standard oder *Premium* angeben. Es ist nicht möglich, die SKU von *Standard/Premium* in *Local* zu ändern.
    * Die **SKU-Familie** bestimmt den Abrechnungstyp. Sie können *Metereddata* für einen Volumentarif und *Unlimiteddata* für einen Plan mit Datenflatrate auswählen. Sie können den Abrechnungstyp von *Metereddata* in *Unlimiteddata* ändern, nicht jedoch umgekehrt (*Unlimiteddata* in *Metereddata*). Eine *lokale* Verbindung kann nur vom Typ *Unlimiteddata* sein.
    * Der **Peeringort** ist der physische Standort, an dem Ihr Peering mit Microsoft stattfindet.
 

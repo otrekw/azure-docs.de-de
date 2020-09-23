@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-python, devx-track-javascript
-ms.openlocfilehash: 2dc701b15b0fd30af0f4a28e39153c0ee77ae128
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 289a33d6544e3b8930059ad58115673193a1c89b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850337"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905805"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>Herstellen einer Verbindung zwischen Anwendungen und Azure-Datenbank für MySQL
 In diesem Thema sind alle von Azure Database for MySQL unterstützten Typen von Verbindungszeichenfolgen sowie Vorlagen und Beispiele aufgeführt. Ihre Verbindungszeichenfolge enthält unter Umständen andere Parameter und Einstellungen.
@@ -63,7 +63,7 @@ client = Mysql2::Client.new(username: {username@servername}, password: {your_pas
 ```
 
 ## <a name="get-the-connection-string-details-from-the-azure-portal"></a>Abrufen von Details zur Verbindungszeichenfolge aus dem Azure-Portal
-Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Azure Database for MySQL-Server, und klicken Sie dann auf **Verbindungszeichenfolgen**, um die Zeichenfolgenliste für Ihre Instanz abzurufen: ![Bereich „Verbindungszeichenfolgen“ im Azure-Portal](./media/howto-connection-strings/connection-strings-on-portal.png)
+Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Azure Database for MySQL-Server, und klicken Sie dann auf **Verbindungszeichenfolgen**, um die Zeichenfolgenliste für Ihre Instanz abzurufen: :::image type="content" source="./media/howto-connection-strings/connection-strings-on-portal.png" alt-text="Bereich „Verbindungszeichenfolgen“ im Azure-Portal":::
 
 Die Zeichenfolge enthält Details wie Treiber, Server und andere Parameter für die Datenbankverbindung. Passen Sie diese Beispiele mit Ihren eigenen Parametern an, z.B. Ihrem Datenbanknamen und Ihrem Kennwort. Sie können diese Zeichenfolge dann verwenden, um eine Verbindung zwischen Ihrem Code sowie Ihren Anwendungen und dem Server herzustellen.
 

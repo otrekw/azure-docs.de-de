@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 31d3c95ffe94d6ff4ea6deee2fe87d3132e4550e
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 5f3270bbed5042ef89d5818523005dfc31589945
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89393223"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566142"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>Erstellen und Ändern einer ExpressRoute-Verbindung mit der CLI
 
@@ -142,7 +142,7 @@ Das folgende Beispiel zeigt, wie Sie eine ExpressRoute-Verbindung mit 200 MBit/
 
 Stellen Sie sicher, dass Sie die richtige SKU-Ebene und die richtige SKU-Familie angeben.
 
-* Der SKU-Tarif bestimmt, ob eine ExpressRoute-Verbindung eine [lokale](expressroute-faqs.md#expressroute-local), Standard- oder [Premium](expressroute-faqs.md#expressroute-premium)-Verbindung ist. Sie können *Lokal*, *Standard* oder *Premium* angeben.
+* Der SKU-Tarif bestimmt, ob eine ExpressRoute-Verbindung eine [lokale](expressroute-faqs.md#expressroute-local), Standard- oder [Premium](expressroute-faqs.md#expressroute-premium)-Verbindung ist. Sie können *Lokal*, *Standard* oder *Premium* angeben. Es ist nicht möglich, die SKU von *Standard/Premium* in *Local* zu ändern.
 * Die SKU-Familie bestimmt den Abrechnungstyp. Sie können *Metereddata* für einen Volumentarif und *Unlimiteddata* für einen Plan mit Datenflatrate auswählen. Sie können den Abrechnungstyp von *Metereddata* in *Unlimiteddata* ändern, nicht jedoch umgekehrt (*Unlimiteddata* in *Metereddata*). Eine *lokale* Verbindung kann nur vom Typ *Unlimiteddata* sein.
 
 
@@ -280,7 +280,7 @@ Verknüpfen Sie anschließend ein virtuelles Netzwerk mit Ihrer ExpressRoute-Ver
 
 Sie können bestimmte Eigenschaften einer ExpressRoute-Verbindung ändern, ohne die Konnektivität zu beeinträchtigen. Sie können ohne Ausfallzeiten folgende Änderungen vornehmen:
 
-* Sie können ein ExpressRoute Premium-Add-On für Ihre ExpressRoute-Verbindung aktivieren oder deaktivieren.
+* Sie können ein ExpressRoute Premium-Add-On für Ihre ExpressRoute-Verbindung aktivieren oder deaktivieren. Die Änderung der SKU von *Standard/Premium* in *Local* wird nicht unterstützt.
 * Sie können die Bandbreite der ExpressRoute-Verbindung erhöhen, sofern Kapazität am Port vorhanden ist. Ein Downgrade der Bandbreite einer Verbindung wird allerdings nicht unterstützt.
 * Sie können den Abrechnungstarif von „Volumentarif“ in „Unbegrenzte Daten“ ändern. Eine Änderung des Abrechnungstarifs von „Unbegrenzte Daten“ in „Volumentarif“ wird jedoch nicht unterstützt.
 * Sie können die Option *Klassische Vorgänge zulassen*aktivieren und deaktivieren.

@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 08/24/2020
-ms.openlocfilehash: 171c53aa36ecc854cf32a64f9f2639a7086c24e5
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 21cd1491da4374babaff8b5b4b451a3cce874368
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782582"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898835"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>Modul „Boosted Decision Tree Regression“ (Regression bei verstärktem Entscheidungsbaum)
 
-In diesem Artikel wird ein Modul in Azure Machine Learning-Designer (Vorschauversion) beschrieben.
+In diesem Artikel wird ein Modul im Azure Machine Learning-Designer beschrieben.
 
 Verwenden Sie dieses Modul, um mithilfe von Verstärkung ein Ensemble von Regressionsbäumen zu erstellen. *Verstärkung* bedeutet, dass jeder Baum von früheren Bäumen abhängig ist. Der Algorithmus lernt durch Anpassung der übrigen, früher trainierten Bäume. Daher führt die Verstärkung in einem Ensemble von Entscheidungsbäumen meist zu höherer Genauigkeit, allerdings mit dem minimalen Risiko einer geringeren Abdeckung.  
 

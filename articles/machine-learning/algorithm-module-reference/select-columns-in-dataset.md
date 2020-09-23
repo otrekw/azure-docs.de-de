@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 714148815fa4ff543ecbf86ab21e8d51fe775543
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7926d5dd33df5538713f8de152dbbace2bc29864
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77153773"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890294"
 ---
 # <a name="select-columns-in-dataset-module"></a>Modul „Select Columns in Dataset“ (Spalten im Dataset auswählen)
 
-In diesem Artikel wird ein Modul in Azure Machine Learning-Designer (Vorschauversion) beschrieben.
+In diesem Artikel wird ein Modul im Azure Machine Learning-Designer beschrieben.
 
 Wählen Sie mit diesem Modul eine Teilmenge von Spalten aus, die in nachfolgenden Vorgängen verwendet werden sollen. Das Modul entfernt die Spalten nicht physisch aus dem Quelldatensatz, sondern erstellt eine Teilmenge von Spalten ähnlich der *Sicht* oder *Projektion* einer Datenbank.
 
