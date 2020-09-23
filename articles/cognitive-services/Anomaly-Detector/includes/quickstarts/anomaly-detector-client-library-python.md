@@ -6,23 +6,24 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 06/30/2020
+ms.date: 09/10/2020
 ms.author: aahi
-ms.openlocfilehash: 8d66b653f78de5b2dee1a42227fe64152ccc6fe9
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 98f68af11cf21cb795e7741585e55c195c066995
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89464214"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "91024820"
 ---
 Hier erfahren Sie etwas über die ersten Schritte mit der Anomalieerkennungs-Clientbibliothek für Python. Führen Sie die nachfolgenden Schritte zum Installieren des Pakets aus, und testen Sie den Beispielcode für grundlegende Aufgaben. Mit dem Anomalieerkennungsdienst können Sie Anomalien in Zeitreihendaten ermitteln, da unabhängig von der Branche, dem Szenario oder der Datenmenge automatisch die am besten geeigneten Modelle für Ihre Daten angewandt werden.
 
 Mit der Anomalieerkennungs-Clientbibliothek für Python ist Folgendes möglich:
 
-* Erkennung von Anomalien in Ihrem gesamten Zeitreihen-Dataset als Batchanforderung
+* Erkennen von Anomalien in Ihrem gesamten Zeitreihendataset als Batchanforderung
 * Erkennen des Anomaliestatus des letzten Datenpunkts in Ihrer Zeitreihe
+* Erkennen von Trendänderungspunkten in Ihrem Dataset
 
-[Bibliotheksreferenzdokumentation](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector?view=azure-python) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-anomalydetector) | [Paket (PyPi)](https://pypi.org/project/azure-cognitiveservices-anomalydetector/) | [Codebeispiele auf GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/python-sdk-sample.py)
+[Bibliotheksreferenzdokumentation](https://go.microsoft.com/fwlink/?linkid=2090370) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-anomalydetector) | [Paket (PyPi)](https://pypi.org/project/azure-ai-anomalydetector/) | [Codebeispiele auf GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/python-sdk-sample.py)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -44,7 +45,7 @@ Mit der Anomalieerkennungs-Clientbibliothek für Python ist Folgendes möglich:
 
 [!code-python[import declarations](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=imports)]
 
-Erstellen Sie für Ihren Schlüssel Variablen wie eine Umgebungsvariable, den Pfad zu einer Zeitreihen-Datendatei und den Azure-Speicherort Ihres Abonnements. Beispiel: `westus2`.
+Erstellen Sie Variablen für Ihren Schlüssel als Umgebungsvariable, den Pfad zu einer Zeitreihendatendatei und den Azure-Speicherort Ihres Abonnements. Beispiel: `westus2`.
 
 [!code-python[Vars for the key, path location and data path](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=initVars)]
 
@@ -53,16 +54,16 @@ Erstellen Sie für Ihren Schlüssel Variablen wie eine Umgebungsvariable, den Pf
 Nach der Installation von Python, können Sie die Clientbibliothek mit Folgendem installieren:
 
 ```console
-pip install --upgrade azure-cognitiveservices-anomalydetector
+pip install --upgrade azure-ai-anomalydetector
 ```
 
 ## <a name="object-model"></a>Objektmodell
 
-Der Anomalieerkennungsclient ist ein [AnomalyDetectorClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python)-Objekt, das sich mit Ihrem Schlüssel bei Azure authentifiziert. Der Client stellt zwei Methoden zur Anomalieerkennung bereit: Für ein gesamtes Dataset mithilfe von [entire_detect()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#entire-detect-body--custom-headers-none--raw-false----operation-config-) und für den letzten Datenpunkt mithilfe von [Last_detect()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#last-detect-body--custom-headers-none--raw-false----operation-config-).
+Der Anomalieerkennungsclient ist ein [AnomalyDetectorClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python)-Objekt, das sich mit Ihrem Schlüssel bei Azure authentifiziert. Der Client kann die Anomalieerkennung mithilfe von [entire_detect()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#entire-detect-body--custom-headers-none--raw-false----operation-config-) für ein gesamtes Dataset bzw. mithilfe von [Last_detect()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#last-detect-body--custom-headers-none--raw-false----operation-config-) für den letzten Datenpunkt ausführen. Mit der Funktion [ChangePointDetectAsync](https://go.microsoft.com/fwlink/?linkid=2090370) werden Punkte erkannt, die Änderungen in einem Trend markieren.
 
 Zeitreihendaten werden als eine Reihe von [Points](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.point?view=azure-python) in einem [Request](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.request?view=azure-python)-Objekt gesendet. Das `Request`-Objekt enthält Eigenschaften zum Beschreiben der Daten (z.B. [Granularity](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.granularity?view=azure-python)) sowie Parameter für die Anomalieerkennung.
 
-Die Antwort der Anomalieerkennung ist je nach der verwendeten Methode ein [LastDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-python)- oder [EntireDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python)-Objekt.
+Die Antwort der Anomalieerkennung ist je nach der verwendeten Methode ein [LastDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-python)-, [EntireDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python)- oder [ChangePointDetectResponse](https://go.microsoft.com/fwlink/?linkid=2090370)-Objekt.
 
 ## <a name="code-examples"></a>Codebeispiele
 
@@ -72,6 +73,7 @@ Diese Codeausschnitte veranschaulichen, wie folgende Vorgänge mit der Anomaliee
 * [Laden eines Zeitreihendatasets aus einer Datei](#load-time-series-data-from-a-file)
 * [Erkennen von Anomalien im gesamten Dataset](#detect-anomalies-in-the-entire-data-set)
 * [Erkennen des Anomaliestatus des letzten Datenpunkts](#detect-the-anomaly-status-of-the-latest-data-point)
+* [Erkennen der Änderungspunkte im Dataset](#detect-change-points-in-the-data-set)
 
 ## <a name="authenticate-the-client"></a>Authentifizieren des Clients
 
@@ -107,6 +109,12 @@ Rufen Sie die API zum Erkennen von Anomalien in den gesamten Zeitreihendaten mit
 Rufen Sie mithilfe der [last_detect()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#last-detect-body--custom-headers-none--raw-false----operation-config-)-Methode des Clients die Anomalieerkennungs-API auf, um festzustellen, ob Ihr letzter Datenpunkt eine Anomalie ist, und speichern Sie das zurückgegebene [LastDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-python)-Objekt. Der `is_anomaly`-Wert der Antwort ist ein Boolescher Wert, der den Anomaliestatus dieses Punktes angibt.  
 
 [!code-python[Batch anomaly detection sample](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=latestPointDetection)]
+
+## <a name="detect-change-points-in-the-data-set"></a>Erkennen von Änderungspunkten im Dataset
+
+Rufen Sie die API auf, um Änderungspunkte in den Zeitreihendaten mit der Methode [detect_change_point()](https://go.microsoft.com/fwlink/?linkid=2090370) des Clients zu erkennen. Speichern Sie das zurückgegebene [ChangePointDetectResponse](https://go.microsoft.com/fwlink/?linkid=2090370)-Objekt. Durchlaufen Sie die `is_change_point`-Liste der Antwort, und geben Sie den Index aller `true`-Werte aus. Diese Werte stimmen mit den Indizes der Trendänderungspunkte überein, sofern welche gefunden wurden.
+
+[!code-python[detect change points](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=changePointDetection)]
 
 ## <a name="run-the-application"></a>Ausführen der Anwendung
 

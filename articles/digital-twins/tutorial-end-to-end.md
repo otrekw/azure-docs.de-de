@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: b22505d5152b005a054d36fafb965006d04b201e
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 0b7e277518337072659bf5ccddd3436c05ff5201
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401774"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563793"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Tutorial: Erstellen einer End-to-End-Lösung
 
@@ -162,13 +162,13 @@ Um für die Funktions-App den Zugriff auf Azure Digital Twins zu ermöglichen, m
 
 Verwenden Sie in Azure Cloud Shell den folgenden Befehl, um eine Anwendungseinstellung festzulegen, die von Ihrer Funktions-App zum Verweisen auf Ihre Azure Digital Twins-Instanz verwendet wird.
 
-```azurecli-interactive
+```azurecli
 az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-Azure-Digital-Twins-instance-URL>"
 ```
 
 Verwenden Sie den folgenden Befehl, um die vom System verwaltete Identität zu erstellen. Beachten Sie in der Ausgabe das Feld *principalId*.
 
-```azurecli-interactive
+```azurecli
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>
 ```
 
@@ -203,7 +203,7 @@ Azure Digital Twins ist für die Zusammenarbeit mit [IoT Hub](../iot-hub/about-i
 
 Verwenden Sie in Azure Cloud Shell diesen Befehl, um einen neuen IoT-Hub zu erstellen:
 
-```azurecli-interactive
+```azurecli
 az iot hub create --name <name-for-your-IoT-hub> -g <your-resource-group> --sku S1
 ```
 
@@ -242,7 +242,7 @@ In diesem Abschnitt wird eine Darstellung des Geräts in IoT Hub mit der ID *the
 
 Erstellen Sie per Azure Cloud Shell ein Gerät in IoT Hub, indem Sie den folgenden Befehl verwenden:
 
-```azurecli-interactive
+```azurecli
 az iot hub device-identity create --device-id thermostat67 --hub-name <your-IoT-hub-name> -g <your-resource-group>
 ```
 
@@ -330,7 +330,7 @@ In diesem Abschnitt erstellen Sie ein Event Grid-Thema und erstellen dann in Azu
 
 Führen Sie in Azure Cloud Shell den folgenden Befehl aus, um ein Event Grid-Thema zu erstellen:
 
-```azurecli-interactive
+```azurecli
 az eventgrid topic create -g <your-resource-group> --name <name-for-your-event-grid-topic> -l <region>
 ```
 
@@ -441,7 +441,7 @@ Bei Verwendung von [Azure Cloud Shell](https://shell.azure.com) können Sie alle
 > [!IMPORTANT]
 > Das Löschen einer Ressourcengruppe kann nicht rückgängig gemacht werden. Die Ressourcengruppe und alle darin enthaltenen Ressourcen werden unwiderruflich gelöscht. Achten Sie daher darauf, dass Sie nicht versehentlich die falsche Ressourcengruppe oder die falschen Ressourcen löschen. 
 
-```azurecli-interactive
+```azurecli
 az group delete --name <your-resource-group>
 ```
 

@@ -4,15 +4,15 @@ description: Erfahren Sie mehr über die erforderlichen Schritte zum Aktivieren 
 author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
-ms.date: 08/24/2020
-ms.openlocfilehash: d6d6731ae087604e0a53a6721bb76dfba5fbf40c
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.date: 09/10/2020
+ms.openlocfilehash: 196be1caf91b6f1f1731d7c4afbfe72482c8f2ac
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783840"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894549"
 ---
-# <a name="workspace-based-application-insights-resources-preview"></a>Arbeitsbereichsbasierte Application Insights-Ressourcen (Vorschau)
+# <a name="workspace-based-application-insights-resources"></a>Arbeitsbereichsbasierte Application Insights-Ressourcen
 
 Arbeitsbereichsbasierte Ressourcen unterstützen die vollständige Integration zwischen Application Insights und Log Analytics. Sie können jetzt Ihre Application Insights-Telemetriedaten an einen gemeinsamen Log Analytics-Arbeitsbereich senden, über den Sie auf alle Features von Log Analytics zugreifen und gleichzeitig Anwendungs-, Infrastruktur- und Plattformprotokolle an einem einzigen konsolidierten Speicherort sammeln können.
 
@@ -21,7 +21,19 @@ Damit ist auch eine gemeinsame rollenbasierte Zugriffssteuerung über Ihre Resso
 > [!NOTE]
 > Die Abrechnung der Datenerfassung und -aufbewahrung für arbeitsbereichsbasierte Application Insights-Ressourcen erfolgt über den Log Analytics-Arbeitsbereich, in dem sich die Daten befinden. [Erfahren Sie mehr]( ./pricing.md#workspace-based-application-insights) über die Abrechnung für arbeitsbereichsbasierte Application Insights-Ressourcen.
 
-Um die neue Funktion zu testen, melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und erstellen Sie eine Application Insights-Ressource:
+## <a name="new-capabilities"></a>Neue Funktionen
+
+Mithilfe des arbeitsbereichsbasierten Application Insights können Sie die neuesten Funktionen von Azure Monitor und Log Analytics nutzen, einschließlich:
+
+* [CMK (Customer-Managed Keys, kundenseitig verwaltete Schlüssel)](../platform/customer-managed-keys.md) bietet Verschlüsselung im Ruhezustand für Ihre Daten mit Verschlüsselungsschlüsseln, auf die nur Sie Zugriff haben.
+* Mit [Azure Private Link](../platform/private-link-security.md) können Sie Azure-PaaS-Dienste über private Endpunkte sicher mit Ihrem virtuellen Netzwerk verknüpfen.
+* [Bring your own Storage (BYOS) für Profiler und Momentaufnahmedebugger](./profiler-bring-your-own-storage.md) verleiht Ihnen vollständige Kontrolle über die Richtlinie zur Verschlüsselung ruhender Daten, die Richtlinie zur Lebensdauerverwaltung und den Netzwerkzugriff auf alle Daten, die Application Insights Profiler und dem Momentaufnahmedebugger zugeordnet sind. 
+* Mit [Kapazitätsreservierungsstufen](../platform/manage-cost-storage.md#pricing-model) können Sie im Vergleich zur nutzungsbasierten Zahlung bis zu 25 % sparen. 
+* Schnellere Datenerfassung über Log Analytics-Streamingerfassung.
+
+## <a name="create-workspace-based-resource"></a>Erstellen einer arbeitsbereichsbasierten Ressource
+
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und erstellen Sie eine Application Insights-Ressource:
 
 ![Arbeitsbereichsbasierte Application Insights-Ressource](./media/create-workspace-resource/create-workspace-based.png)
 
@@ -36,7 +48,7 @@ Nachdem Ihre Ressource erstellt wurde, sehen Sie die Informationen zum entsprech
 Durch Klicken auf den blauen Linktext gelangen Sie zum zugeordneten Log Analytics-Arbeitsbereich, wo Sie die neue einheitliche Umgebung für Arbeitsbereichsabfragen nutzen können.
 
 > [!NOTE]
-> Wir stellen auf der Application Insights-Benutzeroberfläche weiterhin vollständige Abwärtskompatibilität für Ihre klassischen Ressourcenabfragen, Arbeitsmappen und protokollbasierten Warnungen von Application Insights bereit. Um die [neue arbeitsbereichsbasierte Tabellenstruktur und das neue Tabellenschema](apm-tables.md) anzuzeigen und abzufragen, müssen Sie zuerst zu Ihrem Log Analytics-Arbeitsbereich navigieren. Während der Vorschau erhalten Sie durch Auswahl der Option **Protokolle** in den Application Insights-Bereichen Zugriff auf die klassische Application Insights-Benutzeroberfläche für Abfragen.
+> Wir stellen auf der Application Insights-Benutzeroberfläche weiterhin vollständige Abwärtskompatibilität für Ihre klassischen Ressourcenabfragen, Arbeitsmappen und protokollbasierten Warnungen von Application Insights bereit. Um die [neue arbeitsbereichsbasierte Tabellenstruktur und das neue Tabellenschema](apm-tables.md) anzuzeigen und abzufragen, müssen Sie zuerst zu Ihrem Log Analytics-Arbeitsbereich navigieren. Durch Auswahl der Option **Protokolle (Analytics)** in den Application Insights-Bereichen erhalten Sie Zugriff auf die klassische Application Insights-Benutzeroberfläche für Abfragen.
 
 ## <a name="copy-the-connection-string"></a>Verbindungszeichenfolge kopieren
 
@@ -185,14 +197,6 @@ Der PowerShell-Befehl `New-AzApplicationInsights` unterstützt derzeit nicht die
 
 ```
 
-## <a name="new-capabilities"></a>Neue Funktionen
-
-Mithilfe des arbeitsbereichsbasierten Application Insights können Sie die neuesten Funktionen von Azure Monitor nutzen, einschließlich:
-
-* [CMK (Customer-Managed Keys, kundenseitig verwaltete Schlüssel)](../platform/customer-managed-keys.md) bietet Verschlüsselung im Ruhezustand für Ihre Daten mit Verschlüsselungsschlüsseln, auf die nur Sie Zugriff haben.
-* Mit [Azure Private Link](../platform/private-link-security.md) können Sie Azure-PaaS-Dienste über private Endpunkte sicher mit Ihrem virtuellen Netzwerk verknüpfen.
-* [Bring your own Storage (BYOS) für Profiler und Momentaufnahmedebugger](./profiler-bring-your-own-storage.md) verleiht Ihnen vollständige Kontrolle über die Richtlinie zur Verschlüsselung ruhender Daten, die Richtlinie zur Lebensdauerverwaltung und den Netzwerkzugriff auf alle Daten, die Application Insights Profiler und dem Momentaufnahmedebugger zugeordnet sind. 
-
 ## <a name="modifying-the-associated-workspace"></a>Ändern des zugeordneten Arbeitsbereichs
 
 Nach dem Erstellen einer arbeitsbereichsbasierten Application Insights-Ressource können Sie den zugeordneten Log Analytics-Arbeitsbereich ändern.
@@ -207,8 +211,3 @@ Die Legacyfunktion für den fortlaufenden Export wird für arbeitsbereichsbasier
 
 * [Untersuchen von Metriken](../platform/metrics-charts.md)
 * [Schreiben von Analytics-Abfragen](../log-query/log-query-overview.md)
-
-[api]: ./api-custom-events-metrics.md
-[diagnostic]: ./diagnostic-search.md
-[metrics]: ../platform/metrics-charts.md
-[start]: ./app-insights-overview.md

@@ -1,23 +1,23 @@
 ---
-title: Überwachen von Key Vault mit Azure Monitor für Key Vault (Vorschauversion) | Microsoft-Dokumentation
+title: Überwachen von Key Vault mit Azure Monitor für Key Vault | Microsoft-Dokumentation
 description: Dieser Artikel enthält Informationen zu Azure Monitor für Key Vault-Instanzen.
 services: azure-monitor
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 04/13/2019
-ms.openlocfilehash: c669946ab76fcaeaaa6fd681f521408643c5a63c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.date: 09/10/2020
+ms.openlocfilehash: 4aeb97f112f0c95329b1449fe9c1423fdd5bd0d6
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88531258"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894516"
 ---
-# <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault-preview"></a>Überwachen Ihres Schlüsseltresordiensts mit Azure Monitor für Key Vault (Vorschauversion)
-Azure Monitor für Key Vault (Vorschauversion) ermöglicht eine umfassende Überwachung Ihrer Schlüsseltresore. Zu diesem Zweck wird eine einheitliche Darstellung der Anforderungen, Leistung, Fehler und Wartezeit im Zusammenhang mit Key Vault bereitgestellt.
-In diesem Artikel erfahren Sie, wie Sie das Onboarding von Azure Monitor für Key Vault (Vorschauversion) durchführen und die Umgebung anpassen.
+# <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault"></a>Überwachen Ihres Schlüsseltresordiensts mit Azure Monitor für Key Vault
+Azure Monitor für Key Vault ermöglicht eine umfassende Überwachung Ihrer Schlüsseltresore. Zu diesem Zweck wird eine einheitliche Darstellung der Anforderungen, Leistung, Fehler und Wartezeit im Zusammenhang mit Key Vault bereitgestellt.
+In diesem Artikel erfahren Sie, wie Sie das Onboarding von Azure Monitor für Key Vault durchführen und die Umgebung anpassen.
 
-## <a name="introduction-to-azure-monitor-for-key-vault-preview"></a>Einführung in Azure Monitor für Key Vault (Vorschauversion)
+## <a name="introduction-to-azure-monitor-for-key-vault"></a>Einführung in Azure Monitor für Key Vault
 
 Bevor Sie sich mit der Umgebung befassen, sollten Sie sich mit der Darstellung und Visualisierung von Informationen vertraut machen.
 -    **Perspektive im gewünschten Umfang** mit einer Momentaufnahme der Leistung auf der Grundlage der Anforderungen, einer Aufschlüsselung von Fehlern sowie einer Übersicht über die Vorgänge und die Wartezeit.
@@ -49,7 +49,7 @@ Führen Sie die folgenden Schritte aus, um die Nutzung und Vorgänge Ihrer Schl�
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-2. Wählen Sie im linken Bereich des Azure-Portals **Monitor** und im Abschnitt „Erkenntnisse“ die Option **Schlüsseltresore (Vorschau)** aus.
+2. Wählen Sie im linken Bereich des Azure-Portals **Monitor** und im Abschnitt „Erkenntnisse“ die Option **Schlüsseltresore** aus.
 
 ![Screenshot: Übersicht mit mehreren Diagrammen](./media/key-vaults-insights-overview/overview.png)
 
@@ -77,23 +77,13 @@ In der Arbeitsmappe werden erfolgreiche Vorgänge (2xx-Statuscodes), Authentifiz
 
 Informationen zum besseren Verständnis der einzelnen Statuscodes finden Sie in der [Dokumentation zu Status- und Antwortcodes von Azure Key Vault](../../key-vault/general/authentication-requests-and-responses.md).
 
-## <a name="operations--latency-workbook"></a>Arbeitsmappe „Vorgänge und Wartezeit“
-
-Wählen Sie oben auf der Seite die Option **Vorgänge und Wartezeit** aus, um die Registerkarte **Vorgänge und Wartezeit** zu öffnen. Auf dieser Registerkarte können Sie das Onboarding Ihrer Schlüsseltresore für die Überwachung durchführen. Ausführlichere Schritte finden Sie im Abschnitt [Konfigurieren Ihrer Schlüsseltresore für die Überwachung](#configuring-your-key-vaults-for-monitoring).
-
-Sie sehen, wie viele Schlüsseltresore für die Protokollierung aktiviert sind. Wenn mindestens ein Tresor ordnungsgemäß konfiguriert wurde, werden Tabellen mit den Vorgängen und Statuscodes für die einzelnen Schlüsseltresore angezeigt. Durch Klicken auf den Detailbereich einer Zeile erhalten Sie zusätzliche Informationen zum jeweiligen Vorgang.
-
-![Screenshot: Diagramme für Vorgänge und Wartezeit](./media/key-vaults-insights-overview/logs.png)
-
-Sollten in diesem Abschnitt keine Daten angezeigt werden, informieren Sie sich im Abschnitt weiter oben, wie Sie Protokolle für Azure Key Vault aktivieren, oder lesen Sie weiter unten den Abschnitt zur Problembehandlung.
-
 ## <a name="view-from-a-key-vault-resource"></a>Anzeigen über eine Key Vault-Ressource
 
 Sie können direkt von einem Schlüsseltresor aus auf Azure Monitor für Key Vault zugreifen:
 
 1. Wählen Sie im Azure-Portal die Option „Schlüsseltresore“ aus.
 
-2. Wählen Sie in der Liste einen Schlüsseltresor aus. Wählen Sie im Abschnitt „Überwachung“ die Option „Insights (Vorschau)“ aus.
+2. Wählen Sie in der Liste einen Schlüsseltresor aus. Wählen Sie im Abschnitt „Überwachung“ die Option „Insights“ aus.
 
 Alternativ können Sie auch in der Arbeitsmappe auf der Azure Monitor-Ebene den Ressourcennamen eines Schlüsseltresors auswählen, um auf diese Sichten zuzugreifen.
 
@@ -150,7 +140,7 @@ Anpassungen werden in einer benutzerdefinierten Arbeitsmappe gespeichert, um zu 
 
 Sie können den Bereich der Übersichts- oder Fehlerarbeitsmappe für mehrere Abonnements und Schlüsseltresore bei jeder Ausführung auf mindestens ein bestimmtes Abonnement oder mindestens einen bestimmten Schlüsseltresor festlegen. Führen Sie dazu die folgenden Schritte aus:
 
-1. Wählen Sie im Portal die Option **Monitor** und anschließend im linken Bereich die Option **Schlüsseltresore (Vorschau)** aus.
+1. Wählen Sie im Portal die Option **Monitor** und anschließend im linken Bereich die Option **Schlüsseltresore** aus.
 2. Wählen Sie in der Arbeitsmappe **Übersicht** in der Befehlsleiste den Befehl **Bearbeiten** aus.
 3. Wählen Sie in der Dropdownliste **Abonnements** mindestens ein Abonnement aus, das Sie als Standard verwenden möchten. Beachten Sie, dass die Arbeitsmappe die Auswahl von bis zu 10 Abonnements unterstützt.
 4. Wählen Sie in der Dropdownliste **Schlüsseltresore** mindestens ein Konto aus, das Sie als Standard verwenden möchten. Beachten Sie, dass die Arbeitsmappe die Auswahl von bis zu insgesamt 200 Speicherkonten unterstützt.
@@ -160,11 +150,11 @@ Sie können den Bereich der Übersichts- oder Fehlerarbeitsmappe für mehrere Ab
 
 Allgemeine Anleitungen zur Problembehandlung finden Sie im Artikel zur [Problembehandlung für arbeitsmappenbasierte Erkenntnisse](troubleshoot-workbooks.md).
 
-Dieser Abschnitt unterstützt Sie bei der Diagnose und Behandlung einiger bekannter Probleme, die bei der Verwendung von Azure Monitor für Key Vault (Vorschauversion) auftreten können. In der Liste unten finden Sie die für Ihre spezifische Fragestellung relevanten Informationen.
+Dieser Abschnitt unterstützt Sie bei der Diagnose und Behandlung einiger bekannter Probleme, die bei der Verwendung von Azure Monitor für Key Vault auftreten können. In der Liste unten finden Sie die für Ihre spezifische Fragestellung relevanten Informationen.
 
 ### <a name="resolving-performance-issues-or-failures"></a>Beheben von Leistungsproblemen oder Fehlern
 
-Informationen zur Behandlung schlüsseltresorbezogener Probleme, die Sie mit Azure Monitor für Key Vault (Vorschauversion) identifizieren, finden Sie in der [Dokumentation zu Azure Key Vault](../../key-vault/index.yml).
+Informationen zur Behandlung schlüsseltresorbezogener Probleme, die Sie mit Azure Monitor für Key Vault identifizieren, finden Sie in der [Dokumentation zu Azure Key Vault](../../key-vault/index.yml).
 
 ### <a name="why-can-i-only-see-200-key-vaults"></a>Warum werden nur 200 Schlüsseltresore angezeigt?
 
@@ -191,16 +181,6 @@ Dies hängt vom gewählten Zeitbereich ab, da wir das Aggregationsintervall „A
 ### <a name="what-is-the-time-range-when-any-part-of-the-workbook-is-pinned"></a>Welcher Zeitbereich wird verwendet, wenn ein Teil der Arbeitsmappe angeheftet wird?
 
 Der Zeitbereich hängt von den Dashboardeinstellungen ab.
-
-### <a name="why-do-i-not-see-any-data-for-my-key-vault-under-the-operations--latency-sections"></a>Warum werden in den Abschnitten von „Vorgänge und Wartezeit“ keine Daten für meine Key Vault-Instanz angezeigt?
-
-Zum Anzeigen Ihrer protokollbasierten Daten müssen Protokolle für die einzelnen Schlüsseltresore aktiviert werden, die Sie überwachen möchten. Dies kann in den Diagnoseeinstellungen für den jeweiligen Schlüsseltresor konfiguriert werden. Die Daten müssen an einen bestimmten Log Analytics-Arbeitsbereich gesendet werden.
-
-### <a name="i-have-already-enabled-logs-for-my-key-vault-why-am-i-still-unable-to-see-my-data-under-operations--latency"></a>Ich habe bereits Protokolle für meine Key Vault-Instanz aktiviert, unter „Vorgänge und Wartezeit“ werden aber trotzdem keine Daten angezeigt. Woran liegt das?
-
-Diagnoseprotokolle sind aktuell nicht rückwirkend. Daten werden also erst angezeigt, nachdem Aktionen für Ihre Schlüsseltresore ausgeführt wurden. Dies kann es eine Weile (zwischen einigen Stunden und einem Tag) dauern – je nachdem, wie aktiv Ihr Schlüsseltresor ist.
-
-Wenn Sie zahlreiche Schlüsseltresore und Abonnements ausgewählt haben, können die Daten außerdem unter Umständen aufgrund von Abfrageeinschränkungen nicht angezeigt werden. Verringern Sie ggf. die Anzahl ausgewählter Abonnements oder Schlüsseltresore, damit Ihre Daten angezeigt werden können. 
 
 ### <a name="what-if-i-want-to-see-other-data-or-make-my-own-visualizations-how-can-i-make-changes-to-the-key-vault-insights"></a>Was kann ich tun, wenn ich andere Daten anzeigen oder eigene Visualisierungen erstellen möchte? Wie kann ich Änderungen an den Key Vault-Erkenntnissen vornehmen?
 

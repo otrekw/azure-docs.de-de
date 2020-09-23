@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Vorhersagen von Autopreisen mit dem Designer (Vorschau)'
+title: 'Tutorial: Vorhersagen von Autopreisen mit dem Designer'
 titleSuffix: Azure Machine Learning
 description: Hier erfahren Sie, wie Sie ein Machine Learning-Modell mit einer Drag & Drop-Benutzeroberfläche trainieren, bewerten und bereitstellen. Dieses Tutorial ist der erste Teil einer zweiteiligen Reihe über das Prognostizieren von Automobilpreisen mithilfe der linearen Regression.
 author: peterclu
@@ -10,15 +10,15 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 3992bbe466241eb388874905237dbe00f07b3752
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 55d950435522a18eafda69d152619426fe54d87f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88812983"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896705"
 ---
-# <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Tutorial: Prognostizieren von Automobilpreisen mit dem Designer (Vorschau)
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+# <a name="tutorial-predict-automobile-price-with-the-designer"></a>Tutorial: Prognostizieren von Automobilpreisen mit dem Designer
+
 
 In diesem zweiteiligen Tutorial erfahren Sie, wie Sie mithilfe des Designers von Azure Machine Learning ein Machine Learning-Modell trainieren und bereitstellen, das den Preis eines beliebigen Autos prognostiziert. Bei dem Designer handelt es sich um ein Drag & Drop-Tool, mit dem Sie ganz ohne Programmieraufwand Machine Learning-Modelle erstellen können.
 
@@ -49,10 +49,6 @@ Für die Erstellung einer Azure Machine Learning-Pipeline benötigen Sie einen A
 ### <a name="create-a-new-workspace"></a>Erstellen eines neuen Arbeitsbereichs
 
 Um den Designer verwenden zu können, benötigen Sie zunächst einen Azure Machine Learning-Arbeitsbereich. Der Arbeitsbereich ist die Ressource der obersten Ebene für Azure Machine Learning und bietet einen zentralen Ort für die Arbeit mit allen Artefakten, die Sie in Azure Machine Learning erstellen.
-
-Wenn Sie über einen Azure Machine Learning-Arbeitsbereich mit einer Enterprise Edition verfügen, können Sie [mit dem nächsten Abschnitt fortfahren](#create-the-pipeline).
-
-[!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal-enterprise.md)]
 
 ### <a name="create-the-pipeline"></a>Erstellen der Pipeline
 
@@ -94,7 +90,7 @@ Sie können ein **Standardcomputeziel** für die gesamte Pipeline festlegen, wod
 
 Im Designer stehen mehrere Beispieldatasets zur Verfügung, mit denen Sie experimentieren können. Verwenden Sie für dieses Tutorial **Automobile Price Data (Raw)** (Automobilpreisdaten (Rohdaten)). 
 
-1. Links neben der Pipelinecanvas befindet sich eine Palette mit Datasets und Modulen. Wählen Sie **Datasets** aus, und sehen Sie sich die verfügbaren Beispieldatasets im Abschnitt **Beispiele** an.
+1. Links neben der Pipelinecanvas befindet sich eine Palette mit Datasets und Modulen. Wählen Sie **Beispieldatasets** aus, um die verfügbaren Beispieldatasets anzuzeigen.
 
 1. Wählen Sie das Dataset **Automobile Price Data (Raw)** (Automobilpreisdaten (Rohdaten)) aus, und ziehen Sie es auf die Canvas.
 

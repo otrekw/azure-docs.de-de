@@ -3,17 +3,17 @@ title: Azure Blob Storage-Referenz
 description: Hier finden Sie die Referenz zur Azure Blob Storage-API, Infodateien und Clientbibliothekspakete.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 06/02/2020
+ms.date: 09/10/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: ripohane
-ms.openlocfilehash: 477170cf3c2bab54efc5ef74495f39fb89f62c77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b8e4cada8ac2570fa32d55e35cbcdb214d5b5188
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84976692"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018155"
 ---
 # <a name="azure-blob-storage-reference"></a>Azure Blob Storage-Referenz
 
@@ -50,7 +50,7 @@ Die folgende Tabelle enthält die Referenz- und Beispieldokumentation zu Java-AP
 
 |  Version  | Referenzdokumentation | Paket | Schnellstart |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12.x | [Azure Storage: Blobs](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html) | [Maven-Paket](https://mvnrepository.com/artifact/com.azure/azure-storage-blob) | [Schnellstart: Verwalten von Blobs per Java v12 SDK](/azure/storage/blobs/storage-quickstart-blobs-java) |
+| 12.x | [Azure Storage: Blobs](/java/api/overview/azure/storage-blob-readme) | [Maven-Paket](https://mvnrepository.com/artifact/com.azure/azure-storage-blob) | [Schnellstart: Verwalten von Blobs per Java v12 SDK](/azure/storage/blobs/storage-quickstart-blobs-java) |
 | 8.x | [com.microsoft.azure.storage.blob](/java/api/com.microsoft.azure.storage.blob) | [Maven-Paket](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) | [Schnellstart: Verwalten von Blobs mit Java SDK, Version 8](/azure/storage/blobs/storage-quickstart-blobs-java-legacy) |
 
 ### <a name="storage-management"></a>Speicherverwaltung
@@ -67,8 +67,8 @@ Die folgende Tabelle enthält die Referenz- und Beispieldokumentation zu Python-
 
 |  Version  | Referenzdokumentation | Paket | Schnellstart |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12.x | [Azure Storage-Clientbibliotheken v12 für Python](/azure/developer/python/sdk/storage/overview?view=storage-py-v12) | [Paket (PyPI)](https://pypi.org/project/azure-storage-blob/) | [Schnellstart: Verwalten von Blobs per Python v12 SDK](/azure/storage/blobs/storage-quickstart-blobs-python) |
-| 2.x | [Azure Storage-Clientbibliotheken v2 für Python](/azure/developer/python/sdk/storage/overview?view=storage-py-v2) | [Paket (PyPI)](https://pypi.org/project/azure-storage-blob/2.1.0/) | [Schnellstart: Verwalten von Blobs per Python v2.1 SDK](/azure/storage/blobs/storage-quickstart-blobs-python-legacy) |
+| 12.x | [Azure Storage-Clientbibliotheken v12 für Python](/azure/developer/python/sdk/storage/overview) | [Paket (PyPI)](https://pypi.org/project/azure-storage-blob/) | [Schnellstart: Verwalten von Blobs per Python v12 SDK](/azure/storage/blobs/storage-quickstart-blobs-python) |
+| 2.x | [Azure Storage-Clientbibliotheken v2 für Python](/azure/developer/python/sdk/storage/overview?view=storage-py-v2&preserve-view=true) | [Paket (PyPI)](https://pypi.org/project/azure-storage-blob/2.1.0/) | [Schnellstart: Verwalten von Blobs per Python v2.1 SDK](/azure/storage/blobs/storage-quickstart-blobs-python-legacy) |
 
 ## <a name="javascript-client-libraries"></a>JavaScript-Clientbibliotheken
 
@@ -77,7 +77,7 @@ Die folgende Tabelle enthält die Referenz- und Beispieldokumentation zu JavaScr
 |  Version  | Referenzdokumentation | Paket | Schnellstart |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12.x | [Azure Storage Blob-Clientbibliothek für JavaScript](/javascript/api/overview/azure/storage-blob-readme) | [Paket (npm)](https://www.npmjs.com/package/@azure/storage-blob) | [Schnellstart: Verwalten von Blobs per JavaScript v12 SDK in Node.js](/azure/storage/blobs/storage-quickstart-blobs-nodejs) <br/> [Schnellstart: Verwalten von Blobs mit dem JavaScript v12 SDK in einem Browser](/azure/storage/blobs/quickstart-blobs-javascript-browser) |
-| 10.x | [@azure/storage-blob](/javascript/api/@azure/storage-blob/?view=azure-node-legacy) | [Paket (npm)](https://www.npmjs.com/package/@azure/storage-blob/v/10.5.0) | [Schnellstart: Verwalten von Blobs per JavaScript v10 SDK in Node.js](/azure/storage/blobs/storage-quickstart-blobs-nodejs-legacy) <br/> [Schnellstart: Verwalten von Blobs per JavaScript v10 SDK im Browser](/azure/storage/blobs/storage-quickstart-blobs-javascript-client-libraries-legacy)|
+| 10.x | [@azure/storage-blob](/javascript/api/@azure/storage-blob/?view=azure-node-legacy&preserve-view=true) | [Paket (npm)](https://www.npmjs.com/package/@azure/storage-blob/v/10.5.0) | [Schnellstart: Verwalten von Blobs per JavaScript v10 SDK in Node.js](/azure/storage/blobs/storage-quickstart-blobs-nodejs-legacy) <br/> [Schnellstart: Verwalten von Blobs per JavaScript v10 SDK im Browser](/azure/storage/blobs/storage-quickstart-blobs-javascript-client-libraries-legacy)|
 
 ## <a name="rest-apis"></a>REST-APIs
 
@@ -107,8 +107,9 @@ Die folgende Tabelle enthält Links zur neuesten Version der Referenzen.
 
 | Version | Plattform |
 | ------- | -------- |
-|  3.x  | [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/?view=azps-3.8.0) |
-|  2.x  | [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/?view=azps-2.8.0) |
+|  4.x  | [PowerShell](/powershell/module/az.storage/?view=azps-4.6.1&preserve-view=true) |
+|  3.x  | [PowerShell](/powershell/module/az.storage/?view=azps-3.8.0&preserve-view=true) |
+|  2.x  | [PowerShell](/powershell/module/az.storage/?view=azps-2.8.0&preserve-view=true) |
 
 ## <a name="azure-cli"></a>Azure CLI
 

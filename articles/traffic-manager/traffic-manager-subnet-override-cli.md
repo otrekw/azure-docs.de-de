@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: traffic-manager
 ms.date: 09/18/2019
 ms.author: duau
-ms.openlocfilehash: b66f1f0061f697349afae21f5f9c63a4089c2794
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: c43b85f3c4b8d1b750e9f97e0be812bee683c702
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401706"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90600788"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-cli"></a>Außerkraftsetzung für Traffic Manager-Subnetz mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -43,8 +43,7 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für die
 ## <a name="update-the-traffic-manager-endpoint-with-subnet-override"></a>Aktualisieren Sie den Traffic Manager-Endpunkt mit der Außerkraftsetzung des Subnetzes.
 Verwenden Sie die Azure-Befehlszeilenschnittstelle, um Ihren Endpunkt mit [az network traffic-manager endpoint update](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update) zu aktualisieren.
 
-```azurecli
-
+```azurecli-interactive
 ### Add a range of IPs ###
 az network traffic-manager endpoint update \
     --name MyEndpoint \
@@ -60,22 +59,21 @@ az network traffic-manager endpoint update \
     --resource-group MyResourceGroup \
     --subnets 9.10.11.0:24 \
     --type AzureEndpoints
-
 ```
 
 Sie können die IP-Adressbereiche entfernen, indem Sie [az network traffic-manager endpoint update](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update) mit der Option **--remove** ausführen.
 
-```azurecli
-
+```azurecli-interactive
 az network traffic-manager endpoint update \
     --name MyEndpoint \
     --profile-name MyTmProfile \
     --resource-group MyResourceGroup \
     --remove subnets \
     --type AzureEndpoints
-
 ```
+
 ## <a name="next-steps"></a>Nächste Schritte
+
 Informieren Sie sich ausführlicher über [Traffic Manager-Routingmethoden](traffic-manager-routing-methods.md).
 
 Weitere Informationen zur [Routingmethode „Subnetz“ für Datenverkehr](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#subnet-traffic-routing-method)

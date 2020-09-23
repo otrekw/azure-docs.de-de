@@ -1,14 +1,14 @@
 ---
 title: Abrufen von Daten zur Richtlinienkonformität
 description: Azure Policy-Auswertungen und -Effekte bestimmen die Konformität. Erfahren Sie, wie Sie Konformitätsinformationen Ihrer Azure-Ressourcen abrufen.
-ms.date: 08/10/2020
+ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 7795bba9fec79ee13600d9c72f68e9c763b169e4
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 2ab75bdab0dcf910da91eb60b5f0cf23892d6c51
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054651"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895425"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Abrufen von Compliancedaten von Azure-Ressourcen
 
@@ -30,11 +30,13 @@ Die Ergebnisse eines abgeschlossenen Auswertungszyklus stehen im Ressourcenanbie
 
 Auswertungen zugewiesener Richtlinien und Initiativen geschehen im Zuge unterschiedlicher Ereignisse:
 
-- Eine Richtlinie oder Initiative wird einem Bereich neu zugewiesen. Es dauert etwa 30 Minuten, bis die Zuweisung auf den definierten Bereich angewendet wird. Sobald sie angewendet wird, startet der Auswertungszyklus für Ressourcen innerhalb dieses Bereich für die neu zugewiesene Richtlinie oder Initiative. Je nach den Auswirkungen, die von der Richtlinie oder Initiative verwendet werden, werden Ressourcen als „konform“ oder „nicht konform“ markiert. Eine große Richtlinie oder Initiative, die für einen großen Ressourcenbereich angewendet wird, kann einige Zeit in Anspruch nehmen. Es kann leider keine exakte Dauer des Auswertungszyklus angegeben werden. Sobald er abgeschlossen ist, sind aktualisierte Konformitätsergebnisse im Portal und den SDKs verfügbar.
+- Eine Richtlinie oder Initiative wird einem Bereich neu zugewiesen. Es dauert etwa 30 Minuten, bis die Zuweisung auf den definierten Bereich angewendet wird. Sobald sie angewendet wird, startet der Auswertungszyklus für Ressourcen innerhalb dieses Bereich für die neu zugewiesene Richtlinie oder Initiative. Je nach den Auswirkungen, die von der Richtlinie oder Initiative verwendet werden, werden Ressourcen als „konform“ oder „nicht konform“ oder „Ausnahme“ markiert. Eine große Richtlinie oder Initiative, die für einen großen Ressourcenbereich angewendet wird, kann einige Zeit in Anspruch nehmen. Es kann leider keine exakte Dauer des Auswertungszyklus angegeben werden. Sobald er abgeschlossen ist, sind aktualisierte Konformitätsergebnisse im Portal und den SDKs verfügbar.
 
 - Eine Richtlinie oder Initiative, die bereits einem Bereich zugewiesen ist, wird aktualisiert. Der Auswertungszyklus und die zeitliche Steuerung für dieses Szenario entspricht denjenigen von Neuzuweisungen zu einem Bereich.
 
 - Eine Ressource wird in einem Bereich mit einer Zuweisung über Azure Resource Manager, die REST-API oder ein unterstütztes SDK bereitgestellt oder aktualisiert. In diesem Szenario werden nach etwa 15 Minuten die Informationen über das betroffene Ereignis (Anfügen, Überwachen, Verweigern, Bereitstellen) und den Konformitätsstatus für die jeweilige Ressource im Portal und den SDKs verfügbar. Dieses Ereignis löst keine Auswertung anderer Ressourcen aus.
+
+- Eine [Richtlinienausnahme](../concepts/exemption-structure.md) wird erstellt, aktualisiert oder gelöscht. In diesem Szenario wird die entsprechende Zuweisung für den definierten Ausnahmebereich ausgewertet.
 
 - Standard-Konformitätsauswertungszyklus. Zuweisungen werden alle 24 Stunden automatisch neu ausgewertet. Eine große Richtlinie oder Initiative mit vielen Ressourcen kann einige Zeit in Anspruch nehmen. Es kann leider keine exakte Dauer des Auswertungszyklus angegeben werden. Sobald er abgeschlossen ist, sind aktualisierte Konformitätsergebnisse im Portal und den SDKs verfügbar.
 
@@ -127,8 +129,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 
 ## <a name="how-compliance-works"></a>Funktionsweise der Konformität
 
-In einer Zuweisung ist eine Ressource **nicht konform**, wenn dafür die Richtlinien- oder Initiativenregeln nicht eingehalten werden.
-Die folgende Tabelle gibt Aufschluss über das Zusammenspiel zwischen den verschiedenen Richtlinienauswirkungen, der Bedingungsauswertung und dem resultierenden Konformitätszustand:
+In einer Zuweisung ist eine Ressource **nicht konform**, wenn dafür die Richtlinien- oder Initiativenregeln nicht eingehalten werden und wenn sie keine _Ausnahme_ ist. Die folgende Tabelle gibt Aufschluss über das Zusammenspiel zwischen den verschiedenen Richtlinienauswirkungen, der Bedingungsauswertung und dem resultierenden Konformitätszustand:
 
 | Ressourcenzustand | Wirkung | Richtlinienauswertung | Konformitätszustand |
 | --- | --- | --- | --- |
@@ -137,29 +138,33 @@ Die folgende Tabelle gibt Aufschluss über das Zusammenspiel zwischen den versch
 | Neu | Audit, AuditIfNotExist\* | True | Nicht konform |
 | Neu | Audit, AuditIfNotExist\* | False | Konform |
 
-\* Für die Auswirkungen „Append“, „DeployIfNotExist“ und „AuditIfNotExist“ muss die IF-Anweisung auf TRUE festgelegt sein.
-Für die Auswirkungen muss die Existenzbedingung außerdem auf FALSE festgelegt sein, damit sie nicht konform sind. Bei TRUE löst die IF-Bedingung die Auswertung der Existenzbedingung für die zugehörigen Ressourcen aus.
+\* Für die Auswirkungen „Modify“, „Append“, „DeployIfNotExist“ und „AuditIfNotExist“ muss die IF-Anweisung auf TRUE festgelegt sein. Für die Auswirkungen muss die Existenzbedingung außerdem auf FALSE festgelegt sein, damit sie nicht konform sind. Bei TRUE löst die IF-Bedingung die Auswertung der Existenzbedingung für die zugehörigen Ressourcen aus.
 
 Angenommen, Sie verfügen über die Ressourcengruppe ContosoRG mit einigen Speicherkonten (rot hervorgehoben), die in öffentlichen Netzwerken verfügbar gemacht werden.
 
-:::image type="content" source="../media/getting-compliance-data/resource-group01.png" alt-text="In öffentlichen Netzwerken verfügbar gemachte Speicherkonten" border="false":::
+:::image type="complex" source="../media/getting-compliance-data/resource-group01.png" alt-text="Diagramm der Speicherkonten, die für öffentliche Netzwerke in der Ressourcengruppe „ContosoRG“ verfügbar gemacht werden." border="false":::
+   Im Diagramm werden Bilder für fünf Speicherkonten in der Ressourcengruppe „ContosoRG“ angezeigt.  Die Speicherkonten 1 und 3 sind blau, und die Speicherkonten zwei, vier und fünf sind rot.
+:::image-end:::
 
-In diesem Beispiel ist Vorsicht aufgrund von Sicherheitsrisiken geboten. Nachdem Sie nun eine Richtlinienzuweisung erstellt haben, wird sie für alle Speicherkonten in der Ressourcengruppe „ContosoRG“ ausgewertet. Sie überprüft die drei nicht konformen Speicherkonten und ändert den Status daher jeweils in **nicht konform**.
+In diesem Beispiel ist Vorsicht aufgrund von Sicherheitsrisiken geboten. Nachdem Sie nun eine Richtlinienzuweisung erstellt haben, wird sie für alle eingeschlossenen und nicht ausgenommenen Speicherkonten in der Ressourcengruppe „ContosoRG“ ausgewertet. Sie überprüft die drei nicht konformen Speicherkonten und ändert den Status daher jeweils in **nicht konform**.
 
-:::image type="content" source="../media/getting-compliance-data/resource-group03.png" alt-text="Überwachte nicht konforme Speicherkonten" border="false":::
+:::image type="complex" source="../media/getting-compliance-data/resource-group03.png" alt-text="Diagramm der Speicherkontenkonformität in der Ressourcengruppe „ContosoRG“" border="false":::
+   Im Diagramm werden Bilder für fünf Speicherkonten in der Ressourcengruppe „ContosoRG“ angezeigt. Unter den Speicherkonten 1 und 3 befinden sich jetzt grüne Häkchen, und unter den Speicherkonten 2, 4 und 5 werden jetzt rote Warnzeichen angezeigt.
+:::image-end:::
 
-Neben **Konform** und **Nicht konform** können Richtlinien und Ressourcen drei andere Zustände aufweisen:
+Neben **Konform** und **Nicht konform** können Richtlinien und Ressourcen vier weitere Zustände aufweisen:
 
-- **Steht in Konflikt**: Mindestens zwei Richtlinien mit in Konflikt stehenden Regeln sind vorhanden. Beispielsweise zwei Richtlinien, die das gleiche Tag mit unterschiedlichen Werten anfügen.
+- **Ausnahme**: Die Ressource befindet sich im Bereich einer Zuweisung, verfügt jedoch über eine [definierte Ausnahme](../concepts/exemption-structure.md).
+- **Steht in Konflikt**: Mindestens zwei Richtliniendefinitionen mit in Konflikt stehenden Regeln sind vorhanden. Beispielsweise zwei Definitionen, die das gleiche Tag mit unterschiedlichen Werten anfügen.
 - **Nicht gestartet**: Der Auswertungszyklus für die Richtlinie oder Ressource wurde noch nicht gestartet.
 - **Nicht registriert**: Der Azure Policy-Ressourcenanbieter wurde nicht registriert, oder das angemeldete Konto hat keine Berechtigung zum Lesen von Konformitätsdaten.
 
-Azure Policy verwendet die Felder **type** und **name** in der Definition der Richtlinienregel, um zu ermitteln, ob eine Ressource übereinstimmend ist. Falls ja, wird sie als anwendbar angesehen und hat entweder den Status **Konform** oder **Nicht konform**. Wenn entweder **type** oder **name** die einzige Eigenschaft in der Definition ist, werden alle Ressourcen als anwendbar angesehen und ausgewertet.
+Azure Policy verwendet die Felder **type** und **name** in der Definition der Richtlinienregel, um zu ermitteln, ob eine Ressource übereinstimmend ist. Falls ja, wird sie als anwendbar angesehen und hat entweder den Zustand **Konform**, **Nicht konform** oder **Ausnahme**. Wenn entweder **type** oder **name** die einzige Eigenschaft in der Definition ist, werden alle eingeschlossenen und nicht ausgenommenen Ressourcen als anwendbar angesehen und ausgewertet.
 
-Der Prozentsatz der Konformität wird ermittelt, indem die **konformen** Ressourcen durch _Ressourcen gesamt_ geteilt werden.
-_Ressourcen gesamt_ ist als Summe der Ressourcen mit dem Zustand **Konform**, **Nicht konform** und **Konflikt** definiert. Die Gesamtzahl für die Konformität ist die Summe der einzelnen Ressourcen, die **konform** sind, geteilt durch die Summe aller einzelnen Ressourcen. Die Abbildung unten enthält 20 einzelne Ressourcen, die zutreffen, und nur eine davon ist **nicht konform**. Daher lautet der Gesamtwert für die Ressourcenkonformität 95 % (19 von 20).
+Der Prozentsatz der Konformität wird ermittelt, indem die **konformen** und **ausgenommen** Ressourcen durch _Ressourcen gesamt_ geteilt werden. _Ressourcen gesamt_ ist als Summe der Ressourcen mit dem Zustand **Konform**, **Nicht konform**, **Ausnahme** und **Konflikt** definiert. Die Gesamtzahl für die Konformität ist die Summe der einzelnen Ressourcen mit dem Zustand **Konform** oder **Ausnahme**, dividiert durch die Summe aller einzelnen Ressourcen. Die Abbildung unten enthält 20 einzelne Ressourcen, die zutreffen, und nur eine davon ist **nicht konform**.
+Daher lautet der Gesamtwert für die Ressourcenkonformität 95 % (19 von 20).
 
-:::image type="content" source="../media/getting-compliance-data/simple-compliance.png" alt-text="Beispiel für Richtlinienkonformität auf der Seite „Konformität“" border="false":::
+:::image type="content" source="../media/getting-compliance-data/simple-compliance.png" alt-text="Screenshot der Richtlinienkonformitätsdetails auf der Seite „Konformität“" border="false":::
 
 > [!NOTE]
 > Die Einhaltung gesetzlicher Bestimmungen in Azure Policy ist eine Funktion in der Vorschauversion. Complianceeigenschaften von SDK und Seiten im Portal unterscheiden sich für aktivierte Initiativen. Weitere Informationen finden Sie unter [Einhaltung gesetzlicher Bestimmungen](../concepts/regulatory-compliance.md).
@@ -168,11 +173,11 @@ _Ressourcen gesamt_ ist als Summe der Ressourcen mit dem Zustand **Konform**, **
 
 Im Azure-Portal ist eine grafische Benutzeroberfläche zum Anzeigen und Verstehen des Konformitätsstatus Ihrer Umgebung dargestellt. Auf der Seite **Richtlinie** stellt die Option **Übersicht** Details für verfügbare Bereiche zur Konformität für Richtlinien und Initiativen bereit. Neben dem Konformitätsstatus und der Anzahl pro Zuweisung ist ein Diagramm enthalten, das die Konformität der letzten sieben Tage anzeigt. Die Seite **Konformität** enthält im Grunde genommen die gleichen Informationen (mit Ausnahme des Diagramms), stellt jedoch zusätzliche Optionen zum Filtern und Sortieren bereit.
 
-:::image type="content" source="../media/getting-compliance-data/compliance-page.png" alt-text="Beispiel der Azure-Seite für Richtlinienkonformität" border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-page.png" alt-text="Screenshot der Seite „Konformität“, Filteroptionen und Details" border="false":::
 
-Da eine Richtlinie oder Initiative unterschiedlichen Bereichen zugewiesen werden kann, finden Sie in der Tabelle den Bereich für jede Zuweisung und den Typ der Definition, die zugewiesen wurde. Die Anzahl der nicht konformen Ressourcen und Richtlinien für jede Zuweisung wird ebenfalls bereitgestellt. Wenn Sie auf eine Richtlinie oder Initiative in der Tabelle klicken, erhalten Sie weitere Informationen zur Konformität für eine bestimmte Zuweisung.
+Da eine Richtlinie oder Initiative unterschiedlichen Bereichen zugewiesen werden kann, finden Sie in der Tabelle den Bereich für jede Zuweisung und den Typ der Definition, die zugewiesen wurde. Die Anzahl der nicht konformen Ressourcen und Richtlinien für jede Zuweisung wird ebenfalls bereitgestellt. Wenn Sie eine Richtlinie oder Initiative in der Tabelle auswählen, erhalten Sie weitere Informationen zur Konformität für eine bestimmte Zuweisung.
 
-:::image type="content" source="../media/getting-compliance-data/compliance-details.png" alt-text="Beispiel der Azure-Seite für Details zur Richtlinienkonformität" border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-details.png" alt-text="Screenshot der Seite „Kompatibilitätsdetails“, einschließlich der Anzahl und Ressourcenkonformitätsdetails" border="false":::
 
 Die Liste der Ressourcen auf der Registerkarte **Ressourcenkonformität** zeigt den Bewertungsstatus der vorhandenen Ressourcen für die aktuelle Zuweisung. Die Registerkarte ist standardmäßig auf **Nicht konform** festgelegt, kann aber gefiltert werden.
 Ereignisse (Anfügung, Überwachung, Verweigerung, Bereitstellung), die durch die Anforderung zum Erstellen einer Ressource ausgelöst wurden, werden auf der Registerkarte **Ereignisse** angezeigt.
@@ -180,15 +185,15 @@ Ereignisse (Anfügung, Überwachung, Verweigerung, Bereitstellung), die durch di
 > [!NOTE]
 > Bei einer AKS-Engine-Richtlinie ist die angezeigte Ressource die Ressourcengruppe.
 
-:::image type="content" source="../media/getting-compliance-data/compliance-events.png" alt-text="Beispiel für Ereignisse auf der Azure-Seite für Richtlinienkonformität" border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-events.png" alt-text="Screenshot der Registerkarte „Ereignisse“ auf der Seite „Kompatibilitätsdetails“" border="false":::
 
 Wenn Sie bei Ressourcen im [Ressourcenanbietermodus](../concepts/definition-structure.md#resource-provider-modes) auf der Registerkarte **Ressourcenkonformität** die Ressource auswählen oder mit der rechten Maustaste auf die Zeile klicken und **Konformitätsdetails anzeigen** auswählen, wird die Seite mit Details zur Komponentenkompatibilität geöffnet. Diese Seite bietet auch Registerkarten, auf denen die Richtlinien angezeigt werden, die dieser Ressource, Ereignissen, Komponentenereignissen und dem Änderungsverlauf zugewiesen sind.
 
-:::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="Beispiel der Azure Policy-Seite mit Details zur Komponentenkompatibilität" border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="Screenshot der Registerkarte „Komponentenkonformität“ und Konformitätsdetails für eine Zuweisung im Ressourcenanbietermodus" border="false":::
 
 Wenn Sie sich wieder auf der Seite für Ressourcenkonformität befinden, klicken Sie mit der rechten Maustaste auf die Zeile des Ereignisses, über das Sie gern mehr Details erhalten möchten, und wählen Sie **Aktivitätsprotokolle anzeigen** aus. Die Seite des Aktivitätsprotokolls wird geöffnet und wird durch die Suche gefiltert. Die Details für die Zuweisung und Ereignisse werden angezeigt. Das Aktivitätsprotokoll stellt zusätzlichen Kontext sowie Informationen über diese Ereignisse bereit.
 
-:::image type="content" source="../media/getting-compliance-data/compliance-activitylog.png" alt-text="Beispiel des Richtlinienkonformitäts-Aktivitätsprotokolls von Azure" border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-activitylog.png" alt-text="Screenshot des Aktivitätsprotokolls für Azure Policy -Aktivitäten und -Auswertungen" border="false":::
 
 ### <a name="understand-non-compliance"></a>Grundlagen der Nichtkompatibilität
 
@@ -639,7 +644,7 @@ Trent Baker
 
 Wenn Sie über einen [Log Analytics-Arbeitsbereich](../../../azure-monitor/log-query/log-query-overview.md) mit `AzureActivity` aus der [Log Analytics-Aktivitätslösung](../../../azure-monitor/platform/activity-log.md) verfügen, die mit Ihrem Abonnement verknüpft ist, können Sie auch nicht kompatible Ergebnisse aus dem Auswertungszyklus mithilfe einfacher Kusto-Abfragen und über die Tabelle `AzureActivity` anzeigen. Mithilfe von Details in Azure Monitor-Protokollen können Warnmeldungen konfiguriert werden, um Verstöße gegen die Konformität zu überwachen.
 
-:::image type="content" source="../media/getting-compliance-data/compliance-loganalytics.png" alt-text="Azure-Richtlinienkonformität mithilfe von Azure Monitor-Protokollen" border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-loganalytics.png" alt-text="Screenshot der Azure Monitor-Protokolle, in denen Azure Policy-Aktionen in der Tabelle „AzureActivity“ angezeigt werden" border="false":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

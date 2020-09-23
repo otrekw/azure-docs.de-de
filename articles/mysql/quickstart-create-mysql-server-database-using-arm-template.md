@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 05/19/2020
-ms.openlocfilehash: 47c203eaea0c3fc2a39267ed78eb603c4836cd2b
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 97a16bd81fd79646fb3693ec2dc4b8a40b9a6a3b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660280"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896157"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql-server"></a>Schnellstart: Erstellen eines Azure Database for MySQL-Servers mithilfe einer ARM-Vorlage
 
@@ -22,7 +22,7 @@ Azure Database for MySQL ist ein verwalteter Dienst, mit dem Sie hochverfügbare
 
 Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
 
-[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-mysql-with-vnet%2fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Bereitstellen in Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-mysql-with-vnet%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -66,7 +66,7 @@ Weitere Azure Database for MySQL-Vorlagenbeispiele finden Sie im [Schnellstartvo
 
 Wählen Sie den folgenden Link aus, um die Azure Database for MySQL-Servervorlage im Azure-Portal bereitzustellen:
 
-[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-mysql-with-vnet%2fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Bereitstellen in Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-mysql-with-vnet%2fazuredeploy.json)
 
 Gehen Sie auf der Seite **Deploy Azure Database for MySQL with VNet** (Azure Database for MySQL mit VNET bereitstellen) wie folgt vor:
 
@@ -76,7 +76,7 @@ Gehen Sie auf der Seite **Deploy Azure Database for MySQL with VNet** (Azure Dat
 
 3. Geben Sie Werte für **Servername**, **Administratoranmeldung** und **Kennwort für die Administratoranmeldung** ein.
 
-    ![Fenster „Deploy Azure Database for MySQL with VNet“ (Azure Database for MySQL mit VNET bereitstellen) unter „Azure-Schnellstartvorlage“ im Azure-Portal](./media/quickstart-create-mysql-server-database-using-arm-template/deploy-azure-database-for-mysql-with-vnet.png)
+    :::image type="content" source="./media/quickstart-create-mysql-server-database-using-arm-template/deploy-azure-database-for-mysql-with-vnet.png" alt-text="Fenster „Deploy Azure Database for MySQL with VNet“ (Azure Database for MySQL mit VNET bereitstellen) unter „Azure-Schnellstartvorlage“ im Azure-Portal":::
 
 4. Ändern Sie ggf. die anderen Standardeinstellungen:
 

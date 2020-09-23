@@ -1,13 +1,13 @@
 ---
-ms.openlocfilehash: 97c21ca300ee070b2cebaa01a585c1618899b1eb
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: fa0c2f5bb00122b40fb4f4ea06b7cf55c0248904
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687267"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "91025278"
 ---
 
-![Übersicht](../../../media/quickstarts/overview-grpc.png)
+![Übersicht](../../../media/quickstarts/gRPC-extension.svg)
 
 In diesem Diagramm ist der Fluss der Signale in diesem Schnellstart dargestellt. Ein [Edge-Modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) simuliert eine IP-Kamera, die einen RTSP-Server (Real-Time Streaming Protocol) hostet. Der Knoten einer [RTSP-Quelle](../../../media-graph-concept.md#rtsp-source) ruft den Videofeed von diesem Server ab und sendet Videoframes an den Knoten des [Bewegungserkennungsprozessors](../../../media-graph-concept.md#motion-detection-processor). Dieser Prozessor erkennt Bewegung und überträgt bei Erkennung Videoframes an den Knoten des [gRPC-Erweiterungsprozessors](../../../media-graph-concept.md#grpc-extension-processor).
 

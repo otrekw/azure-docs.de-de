@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: efd51e90bb14f3d97b76eb6ac45b384192bb8da0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2d596b6d0e291d197146bf5e00827d82b74c125c
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87311567"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434536"
 ---
 # <a name="single-page-application-app-registration"></a>Single-Page-Webanwendung: App-Registrierung
 
@@ -32,7 +32,7 @@ Führen Sie für MSAL.js 1.0- und für MSAL.js 2.0-basierte Anwendungen zunäc
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wenn Ihr Konto Zugriff auf mehrere Mandanten hat, wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann den Mandanten aus, der die App-Registrierung enthalten soll, die Sie erstellen möchten.
 1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
 1. Wählen Sie unter **Verwalten** die Option **App-Registrierungen** aus.
-1. Wählen Sie **Neue Registrierung** aus, geben Sie einen **Namen** für die Anwendung ein, und wählen Sie die **Unterstützten Kontotypen** für die Anwendung aus. Geben Sie **KEINEN** **Umleitungs-URI** ein. Eine Beschreibung der verschiedenen Kontotypen finden Sie unter [Registrieren einer neuen Anwendung mit dem Azure-Portal](quickstart-register-app.md#register-a-new-application-using-the-azure-portal).
+1. Wählen Sie **Neue Registrierung** aus, geben Sie einen **Namen** für die Anwendung ein, und wählen Sie die **Unterstützten Kontotypen** für die Anwendung aus. Geben Sie **KEINEN** **Umleitungs-URI** ein. Eine Beschreibung der verschiedenen Kontotypen finden Sie unter [Registrieren einer neuen Anwendung mit dem Azure-Portal](quickstart-register-app.md).
 1. Wählen Sie **Registrieren** aus, um die App-Registrierung zu erstellen.
 
 Konfigurieren Sie als Nächstes die App-Registrierung mit einem **Umleitungs-URI**, um anzugeben, wohin die Microsoft Identity Platform den Client zusammen mit allen Sicherheitstoken umleiten soll. Führen Sie die Schritte aus, die für die in Ihrer Anwendung verwendete Version von MSAL.js gelten:

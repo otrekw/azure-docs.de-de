@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 7/13/2020
-ms.openlocfilehash: 4ca64a7793d229e7910fb122fb33996b1ac0c4fe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1dc7bc8e119de7c8fdcf09713286be2633457486
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094971"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895875"
 ---
 # <a name="logs-in-azure-database-for-postgresql---hyperscale-citus"></a>Protokolle in Azure Database for PostgreSQL: Hyperscale (Citus)
 
@@ -22,15 +22,15 @@ PostgreSQL-Protokolle sind auf jedem Knoten einer Hyperscale-Servergruppe (Citus
 
 Öffnen Sie den Knoten im Azure-Portal, um auf PostgreSQL-Protokolle für einen Hyperscale-Koordinator- (Citus) oder -Workerknoten zuzugreifen:
 
-![Liste der Knoten](media/howto-hyperscale-logging/choose-node.png)
+:::image type="content" source="media/howto-hyperscale-logging/choose-node.png" alt-text="Liste der Knoten":::
 
 Öffnen Sie für den ausgewählten Knoten die **Diagnoseeinstellungen**, und klicken Sie auf **+ Diagnoseeinstellung hinzufügen**.
 
-![Schaltfläche „Diagnoseeinstellungen hinzufügen“](media/howto-hyperscale-logging/diagnostic-settings.png)
+:::image type="content" source="media/howto-hyperscale-logging/diagnostic-settings.png" alt-text="Schaltfläche „Diagnoseeinstellungen hinzufügen“":::
 
 Wählen Sie einen Namen für die neuen Diagnoseeinstellungen aus, und aktivieren Sie das Feld **PostgreSQLLogs**.  Wählen Sie aus, welche(s) Ziel(e) die Protokolle empfangen sollen.
 
-![PostgreSQL-Protokolle auswählen](media/howto-hyperscale-logging/diagnostic-create-setting.png)
+:::image type="content" source="media/howto-hyperscale-logging/diagnostic-create-setting.png" alt-text="PostgreSQL-Protokolle auswählen":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 
