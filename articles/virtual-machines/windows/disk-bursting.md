@@ -1,25 +1,30 @@
 ---
 title: Verwaltetes Datenträgerbursting
-description: Erfahren Sie mehr über Datenträgerbursting für Azure-Datenträger und Datenträgerbursting für virtuelle Azure-Computer.
+description: Hier erfahren Sie mehr über Datenträgerbursting für Azure-Datenträger und Datenträgerbursting für virtuelle Azure-Computer.
 author: albecker1
 ms.author: albecker
-ms.date: 04/27/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 25aa9fc166e831acd2ed0389bbbe4d2dc7e04b19
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.custom: references_regions
+ms.openlocfilehash: ab54b68ab3f7984ee18a39cf3a81fa663af54dee
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594421"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889104"
 ---
 # <a name="disk-bursting"></a>Datenträgerbursting
 [!INCLUDE [managed-disks-bursting](../../../includes/managed-disks-bursting.md)]
 
 ## <a name="virtual-machine-level-bursting"></a>Bursting auf VM-Ebene
-Bingunterstützung auf VM-Ebene ist in allen Regionen in der öffentlichen Cloud für diese unterstützten Größen aktiviert: 
+Burstingunterstützung auf VM-Ebene ist in allen Regionen in der öffentlichen Cloud für die folgenden unterstützten Größen aktiviert: 
 - [Lsv2-Serie](../lsv2-series.md)
+
+Bursting auf VM-Ebene ist auch in „USA, Westen-Mitte“ für die folgenden unterstützten Größen erhältlich:
+- [Dsv3-Serie](../dv3-dsv3-series.md)
+- [Esv3-Serie](../ev3-esv3-series.md)
 
 Bursting ist für virtuelle Computer, die diese Technologie unterstützen, standardmäßig aktiviert.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2020
 ms.author: memildin
-ms.openlocfilehash: a1184269dec54ad6d70ae763b682e08a67282d9e
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: d08984165f59f15e9feb739a719d80e7dc3902a4
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89276540"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905462"
 ---
 # <a name="azure-security-center-data-security"></a>Azure Security Center-Datensicherheit
 Azure Security Center erfasst und verarbeitet sicherheitsbezogene Daten (einschließlich Konfigurationsinformationen, Metadaten, Ereignisprotokolle und Ähnliches), um Kunden bei der Vermeidung, Erkennung und Behandlung von Bedrohungen zu unterstützen. Microsoft hält strenge Compliance- und Sicherheitsrichtlinien ein – angefangen bei der Codierung bis hin zum Betreiben von Diensten.
@@ -70,13 +70,13 @@ Bei virtuellen Computern und Servern, die in anderen Umgebungen ausgeführt werd
 Wenn Sie Security Center in Azure aktivieren, wird die Datensammlung für alle Ihre Azure-Abonnements aktiviert. Sie können die Datensammlung für Ihre Abonnements auch in Azure Security Center im Abschnitt „Sicherheitsrichtlinie“ aktivieren. Wenn die Datensammlung aktiviert ist, stellt Azure Security Center den Log Analytics-Agent auf allen vorhandenen unterstützten virtuellen Azure-Computern sowie auf allen neuen virtuellen Computern bereit, die erstellt werden.
 Der Log Analytics-Agent sucht in ETW-Ablaufverfolgungen ([Event Tracing for Windows, Ereignisablaufverfolgung für Windows](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx)) nach verschiedenen sicherheitsbezogenen Konfigurationen und Ereignissen. Außerdem löst das Betriebssystem während der Ausführung des Computers Ereignisprotokollereignisse aus. Beispiele für Daten dieser Art: Betriebssystemtyp und -version, Betriebssystemprotokolle (Windows-Ereignisprotokolle), ausgeführte Prozesse, Computername, IP-Adressen, angemeldeter Benutzer und Mandanten-ID. Der Log Analytics-Agent liest Ereignisprotokolleinträge und ETW-Ablaufverfolgungen und kopiert diese zur Analyse in Ihren Arbeitsbereich bzw. in Ihre Arbeitsbereiche. Der Log Analytics-Agent ermöglicht auch Prozesserstellungsereignisse und die Befehlszeilenüberwachung.
 
-Wenn Sie Azure Security Center Free verwenden, können Sie die Datensammlung von virtuellen Computern in der Sicherheitsrichtlinie deaktivieren. Die Datensammlung ist für Abonnements des Standard-Tarifs erforderlich. Momentaufnahmen von VM-Datenträgern sowie die Artefaktsammlung sind auch bei deaktivierter Datensammlung aktiviert.
+Wenn Sie nicht Azure Defender verwenden, können Sie die Datensammlung von virtuellen Computern auch in der Sicherheitsrichtlinie deaktivieren. Die Datensammlung ist für Abonnements erforderlich, die durch Azure Defender geschützt werden. Momentaufnahmen von VM-Datenträgern sowie die Artefaktsammlung sind auch bei deaktivierter Datensammlung aktiviert.
 
 ## <a name="data-consumption"></a>Nutzung der Daten
 
 Kunden können wie nachfolgend gezeigt Security Center-Daten aus verschiedenen Datenströmen nutzen:
 
-* **Azure-Aktivität**: Alle Sicherheitswarnungen, von Security Center genehmigte [Just-In-Time](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)-Anforderungen und alle von [adaptiven Anwendungssteuerungen](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application) generierten Warnungen.
+* **Azure-Aktivität:** Alle Sicherheitswarnungen, von Security Center genehmigte [Just-In-Time](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)-Anforderungen und alle von [adaptiven Anwendungssteuerungen](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application) generierten Warnungen
 * **Azure Monitor-Protokolle:** alle Sicherheitswarnungen.
 
 
@@ -90,4 +90,4 @@ In diesem Dokument haben Sie erfahren, wie Daten in Azure Security Center verwal
 * [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md) : Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
 * [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md) : Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
 * [Überwachen von Partnerlösungen mit Azure Security Center](security-center-partner-solutions.md) : Erfahren Sie, wie der Integritätsstatus Ihrer Partnerlösungen überwacht wird.
-* [Azure Security Blog](https://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Azure-Sicherheit und -Compliance.
+* [Azure Security Blog](https://docs.microsoft.com/archive/blogs/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Azure-Sicherheit und -Compliance.

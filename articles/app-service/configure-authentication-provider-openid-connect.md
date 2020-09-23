@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie einen OpenID Connect-Anbieter als Identitäts
 ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
-ms.openlocfilehash: 89164061a968e37f928f8c21f5323c418e85361f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: e8112f2dc20175e81cfa8388440b2d9aef6a419c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87413917"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983875"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-login-using-an-openid-connect-provider-preview"></a>Konfigurieren Ihrer App Service- oder Azure Functions-App für die Anmeldung über einen OpenID Connect-Anbieter (Vorschau)
 
@@ -53,7 +53,7 @@ Wenn Sie kein Konfigurationsmetadatendokument verwenden können, müssen Sie die
 Dieser Abschnitt führt Sie durch die Aktualisierung der Konfiguration für Ihren neuen IdP. Im Folgenden ist eine Beispielkonfiguration aufgeführt.
 
 1. Fügen Sie innerhalb des Objekts `identityProviders` ein Objekt `openIdConnectProviders` hinzu, sofern noch keines vorhanden ist.
-1. Fügen Sie innerhalb des Objekts `openIdConnectProviders` einen Schlüssel für den neuen Anbieter hinzu. Dies ist ein Anzeigename, der in der übrigen Konfiguration für Verweise auf den Anbieter verwendet wird. Wenn beispielsweise alle Anforderungen bei diesem Anbieter authentifiziert werden sollen, legen Sie `globalValidation.unauthenticatedClientAction` auf „RedirectToLoginPage“ fest, und stellen Sie `globalValidation.unauthenticatedClientAction` auf diesen Anzeigenamen ein.
+1. Fügen Sie innerhalb des Objekts `openIdConnectProviders` einen Schlüssel für den neuen Anbieter hinzu. Dies ist ein Anzeigename, der in der übrigen Konfiguration für Verweise auf den Anbieter verwendet wird. Wenn beispielsweise alle Anforderungen bei diesem Anbieter authentifiziert werden sollen, legen Sie `globalValidation.unauthenticatedClientAction` auf „RedirectToLoginPage“ fest, und stellen Sie `redirectToProvider` auf diesen Anzeigenamen ein.
 1. Weisen Sie dem Schlüssel ein Objekt mit einem darin enthaltenen Objekt `registration` und optional ein Objekt `login` zu:
     
     ```json

@@ -1,6 +1,6 @@
 ---
-title: 'Azure Stack Edge-GPU: Freigabeverwaltung | Microsoft-Dokumentation'
-description: Hier wird beschrieben, wie Sie Freigaben für Ihre Azure Stack Edge-GPU-Ressource über das Azure-Portal verwalten.
+title: Azure Stack Edge Pro-GPU-Freigabeverwaltung | Microsoft-Dokumentation
+description: Hier wird beschrieben, wie Sie im Azure-Portal Freigaben für Ihr Azure Stack Edge Pro-GPU-Gerät verwalten.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,22 +8,22 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 6448ac002482751052310532989278e3b88b5915
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 44f22f365699ddc345849df78d6e27c2703d785b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268841"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904692"
 ---
-# <a name="use-the-azure-portal-to-manage-shares-on-your-azure-stack-edge"></a>Verwalten von Freigaben für Ihre Azure Stack Edge-Ressource über das Azure-Portal
+# <a name="use-the-azure-portal-to-manage-shares-on-your-azure-stack-edge-pro"></a>Verwalten von Freigaben für Ihr Azure Stack Edge Pro-Gerät im Azure-Portal
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-In diesem Artikel wird beschrieben, wie Sie Freigaben für Ihre Azure Stack Edge-Ressource verwalten. Sie können die Azure Stack Edge-Ressource über das Azure-Portal oder die lokale Webbenutzeroberfläche verwalten. Verwenden Sie das Azure-Portal, um Freigaben hinzuzufügen, zu löschen oder zu aktualisieren oder um Speicherschlüssel für das Speicherkonto zu synchronisieren, das den Freigaben zugeordnet ist.
+In diesem Artikel wird beschrieben, wie Sie Freigaben für Ihr Azure Stack Edge Pro-Gerät verwalten. Sie können das Azure Stack Edge Pro-Gerät im Azure-Portal oder über die lokale Webbenutzeroberfläche verwalten. Verwenden Sie das Azure-Portal, um Freigaben hinzuzufügen, zu löschen oder zu aktualisieren oder um Speicherschlüssel für das Speicherkonto zu synchronisieren, das den Freigaben zugeordnet ist.
 
 ## <a name="about-shares"></a>Informationen zu Freigaben
 
-Wenn Sie Daten an Azure übertragen möchten, müssen Sie Freigaben für Ihre Azure Stack Edge-Ressource erstellen. Die Freigaben, die Sie auf dem Azure Stack Edge-Gerät hinzufügen, können lokale Freigaben oder Freigaben sein, die Daten per Pushvorgang in die Cloud übertragen.
+Wenn Sie Daten an Azure übertragen möchten, müssen Sie Freigaben für Ihr Azure Stack Edge Pro-Gerät erstellen. Bei den Freigaben, die Sie auf dem Azure Stack Edge Pro-Gerät hinzufügen, kann es sich um lokale Freigaben oder Freigaben handeln, die Daten per Pushvorgang in die Cloud übertragen.
 
  - **Lokale Freigaben**: Verwenden Sie diese Freigaben, wenn die Daten lokal auf dem Gerät verarbeitet werden sollen.
  - **Freigaben**: Verwenden Sie diese Freigaben, wenn die Gerätedaten automatisch in Ihr Speicherkonto in der Cloud gepusht werden sollen. Alle Cloudfunktionen, z. B. **Aktualisieren** und **Speicherkontoschlüssel synchronisieren**, werden auf die Freigaben angewendet.
@@ -74,7 +74,7 @@ Gehen Sie im Azure-Portal wie folgt vor, um eine Freigabe zu erstellen:
 3. Wählen Sie einen **Typ** für die Freigabe aus. Zur Auswahl stehen **SMB** und **NFS** (Standardeinstellung: SMB). „SMB“ ist die Standardeinstellung für Windows-Clients, und „NFS“ wird für Linux-Clients verwendet. Die angezeigten Optionen für SMB- und NFS-Dateifreigaben unterscheiden sich geringfügig.
 
    > [!IMPORTANT]
-   > Stellen Sie sicher, dass für das von Ihnen genutzte Azure Storage-Konto keine Unveränderlichkeitsrichtlinien festgelegt sind, falls Sie es mit einem Azure Stack Edge- oder Data Box Gateway-Gerät verwenden. Weitere Informationen finden Sie unter [Festlegen und Verwalten von Unveränderlichkeitsrichtlinien für Blobspeicher](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
+   > Stellen Sie sicher, dass für das von Ihnen verwendete Azure Storage-Konto keine Unveränderlichkeitsrichtlinien festgelegt sind, wenn Sie es mit einem Azure Stack Edge Pro- oder Data Box Gateway-Gerät verwenden. Weitere Informationen finden Sie unter [Festlegen und Verwalten von Unveränderlichkeitsrichtlinien für Blobspeicher](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
 
 4. Verwenden Sie den lokalen Bereitstellungspunkt, um von Edgecomputingmodulen aus leicht auf die Freigaben zugreifen zu können. Wählen Sie **Freigabe mit Edgecomputing verwenden**, damit das Edgemodul die Computeressource mit dem lokalen Bereitstellungspunkt nutzen kann.
 
@@ -96,7 +96,7 @@ Gehen Sie im Azure-Portal wie folgt vor, um eine Freigabe zu erstellen:
 
 ## <a name="mount-a-share"></a>Einbinden einer Dateifreigabe
 
-Wenn Sie eine Freigabe erstellt haben, bevor Sie Compute für Ihr Azure Stack Edge-Gerät konfiguriert haben, müssen Sie sie einbinden. Gehen Sie wie folgt vor, um eine Freigabe einzubinden.
+Wenn Sie eine Freigabe erstellt haben, bevor Sie Compute für Ihr Azure Stack Edge Pro-Gerät konfiguriert haben, müssen Sie die Freigabe einbinden. Gehen Sie wie folgt vor, um eine Freigabe einzubinden.
 
 
 1. Wechseln Sie im Azure-Portal zu Ihrer Azure Stack Edge-Ressource und dann zu **Gateway > Freigaben**. Wählen Sie in der Liste mit den Freigaben die Freigabe aus, die Sie einbinden möchten. Für die ausgewählte Freigabe wird in der Spalte **Für Compute verwendet** der Status **Deaktiviert** angezeigt.

@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: 9673b3260425fd9244c635beaf77d367a14cac54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63ae7115f905523a3aac131fd7e77b56eb695243
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809917"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890255"
 ---
 # <a name="split-image-directory"></a>Teilen des Bildverzeichnisses
 
-In diesem Artikel wird beschrieben, wie Sie das Modul „Split Image Directory“ (Teilen des Bildverzeichnisses) im Azure Machine Learning-Designer (Vorschauversion) verwenden, um die Bilder eines Bildverzeichnisses in zwei unterschiedliche Gruppen aufzuteilen.
+In diesem Artikel wird beschrieben, wie Sie das Modul „Split Image Directory“ (Teilen des Bildverzeichnisses) im Azure Machine Learning-Designer verwenden, um die Bilder eines Bildverzeichnisses in zwei unterschiedliche Gruppen aufzuteilen.
 
 Dieses Modul ist besonders hilfreich, wenn Sie Bilddaten in Trainings- und Testsätze aufteilen müssen. 
 

@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 93401ee32da8218fa53568a3f46cae3805a5d939
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 18bbecbe811a9f0bc6a56194830c7e92d8770979
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875318"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890181"
 ---
 # <a name="data-ingestion-options-for-azure-machine-learning-workflows"></a>Optionen für die Datenerfassung für Azure Machine Learning-Workflows
 
@@ -25,7 +25,7 @@ In diesem Artikel lernen Sie die Vor- und Nachteile von Optionen zur Datenerfass
 Folgende Optionen stehen zur Auswahl:
 + [Azure Data Factory](#azure-data-factory)-Pipelines, die speziell zum Extrahieren, Laden und Transformieren von Daten erstellt wurden
 
-+ [Azure Machine Learning Python SDK](#azure-machine-learning-python-sdk), das eine benutzerdefinierte Codelösung für grundlegende Datenerfassungsaufgaben bietet.
++ [Azure Machine Learning Python SDK](#azure-machine-learning-python-sdk), das eine benutzerdefinierte Codelösung für Datenerfassungsaufgaben bietet.
 
 + Eine Kombination beider Optionen
 
@@ -70,7 +70,7 @@ Konfigurieren eigener Python-Skripts | Unterstützt das Auslösen von Datenquell
 Datenvorbereitung als Teil jeder Modelltrainingsausführung|Erfordert Entwicklungsfähigkeiten zum Erstellen eines Skripts für die Datenerfassung
 Unterstützt Datenvorbereitungsskripts für verschiedene Computeziele, einschließlich [Azure Machine Learning-Compute](concept-compute-target.md#azure-machine-learning-compute-managed) |Bietet keine Benutzeroberfläche für die Erstellung des Erfassungsmechanismus
 
-In der folgenden Abbildung besteht die Azure Machine Learning-Pipeline aus zwei Schritten: Datenerfassung und Modelltraining. Der Schritt der Datenerfassung umfasst Aufgaben, die mithilfe von Python-Bibliotheken und dem Python-SDK durchgeführt werden können, z. B. das Extrahieren von Daten aus lokalen/webseitigen Quellen und grundlegende Datentransformationen wie die Imputation fehlender Werte. Der Trainingsschritt verwendet dann die vorbereiteten Daten als Eingabe für Ihr Trainingsskript, um Ihr Machine Learning-Modell zu trainieren. 
+In der folgenden Abbildung besteht die Azure Machine Learning-Pipeline aus zwei Schritten: Datenerfassung und Modelltraining. Der Schritt der Datenerfassung umfasst Aufgaben, die mithilfe von Python-Bibliotheken und dem Python-SDK durchgeführt werden können, z. B. das Extrahieren von Daten aus lokalen/webseitigen Quellen und Datentransformationen wie die Imputation fehlender Werte. Der Trainingsschritt verwendet dann die vorbereiteten Daten als Eingabe für Ihr Trainingsskript, um Ihr Machine Learning-Modell zu trainieren. 
 
 ![Azure-Pipeline und SDK-Datenerfassung](media/concept-data-ingestion/data-ingest-option-two.png)
 

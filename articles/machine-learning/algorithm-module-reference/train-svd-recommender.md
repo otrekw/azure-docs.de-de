@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 417ef716c391126982809574fc16f6681115cac3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a5740e851fbd8f7ba82e179f7e5299d6c7090596
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79477407"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890250"
 ---
 # <a name="train-svd-recommender"></a>Train SVD Recommender
 
-In diesem Artikel wird die Verwendung des Moduls „Train SVD Recommender“ im Azure Machine Learning-Designer (Vorschauversion) beschrieben. Verwenden Sie dieses Modul, um ein Empfehlungsmodell zu trainieren, das auf dem SVD-Algorithmus (Singular Value Decomposition, Singulärwertzerlegung) basiert.  
+In diesem Artikel wird die Verwendung des Moduls Train SVD Recommender im Azure Machine Learning-Designer beschrieben. Verwenden Sie dieses Modul, um ein Empfehlungsmodell zu trainieren, das auf dem SVD-Algorithmus (Singular Value Decomposition, Singulärwertzerlegung) basiert.  
 
 Das Modul „Train SVD Recommender“ liest ein Dataset mit „user-item-rating-Tripeln“ (dreiteiliges Element mit „Benutzer-Element-Bewertung“). Es gibt ein trainiertes SVD-Empfehlungsmodul zurück. Mithilfe des trainierten Modells können Sie dann Bewertungen vorhersagen oder Empfehlungen generieren, indem Sie das Modul [Score SVD Recommender](score-svd-recommender.md) verwenden.  
 

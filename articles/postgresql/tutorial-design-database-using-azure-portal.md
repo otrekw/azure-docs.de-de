@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: d7ddb286285de9be089c0a5176e33b7108021c77
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7e98c34198c0821dac59f849267a920a87c48a54
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75459956"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905648"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Tutorial: Entwerfen einer Azure Database for PostgreSQL – Einzelserver unter Verwendung des Azure-Portals
 
@@ -38,15 +38,15 @@ Eine Azure-Datenbank für PostgreSQL-Server wird mit einer definierten Gruppe vo
 Führen Sie die folgenden Schritte aus, um eine Azure-Datenbank für PostgreSQL-Server zu erstellen:
 1. Klicken Sie im Azure-Portal links oben auf **Ressource erstellen**.
 2. Wählen Sie auf der Seite **Neu** die Option **Datenbanken** und dann auf der Seite **Datenbanken** die Option **Azure-Datenbank für PostgreSQL** aus.
-   ![Azure-Datenbank für PostgreSQL – Erstellen der Datenbank](./media/tutorial-design-database-using-azure-portal/1-create-database.png)
+   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/1-create-database.png" alt-text="Azure-Datenbank für PostgreSQL – Erstellen der Datenbank":::
 
 3. Wählen Sie die Bereitstellungsoption **Einzelserver** aus.
 
-   ![Auswählen der Bereitstellungsoption für einen Azure Database for PostgreSQL-Einzelserver](./media/tutorial-design-database-using-azure-portal/select-deployment-option.png)
+   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/select-deployment-option.png" alt-text="Auswählen der Bereitstellungsoption „Einzelserver“ für Azure Database for PostgreSQL":::
 
 4. Füllen Sie dann das Formular **Grundlagen** mit den folgenden Informationen aus:
 
-    ![Erstellen eines Servers](./media/tutorial-design-database-using-azure-portal/create-basics.png)
+    :::image type="content" source="./media/tutorial-design-database-using-azure-portal/create-basics.png" alt-text="Erstellen eines Servers":::
 
     Einstellung|Empfohlener Wert|BESCHREIBUNG
     ---|---|---
@@ -64,7 +64,7 @@ Führen Sie die folgenden Schritte aus, um eine Azure-Datenbank für PostgreSQL-
    > Ziehen Sie die Verwendung des Tarifs „Basic“ in Betracht, wenn geringe Compute- und E/A-Leistung für Ihre Workload angemessen ist. Beachten Sie, dass im Tarif „Basic“ erstellte Server später nicht auf „Universell“ oder „Arbeitsspeicheroptimiert“ skaliert werden können. Weitere Informationen hierzu finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/postgresql/).
    > 
 
-    ![Der Bereich „Tarif“](./media/quickstart-create-database-portal/2-pricing-tier.png)
+    :::image type="content" source="./media/quickstart-create-database-portal/2-pricing-tier.png" alt-text="Der Bereich „Tarif“":::
 
     > [!TIP]
     > Ist **Automatische Vergrößerung** aktiviert, erhöht Ihr Server den Speicher, wenn Sie sich dem zugeordneten Grenzwert nähern. Ihre Workload wird dadurch nicht beeinträchtigt.
@@ -73,7 +73,7 @@ Führen Sie die folgenden Schritte aus, um eine Azure-Datenbank für PostgreSQL-
 
 6. Klicken Sie auf der Symbolleiste auf das Symbol **Benachrichtigungen** (eine Glocke), um den Bereitstellungsprozess zu überwachen. Nach Abschluss der Bereitstellung können Sie auf **An Dashboard anheften** klicken, um auf Ihrem Azure-Portal-Dashboard eine Kachel für diesen Server zu erstellen, über die Sie direkt zur **Übersicht** des Servers gelangen. Wenn Sie auf **Zu Ressource wechseln** klicken, wird die **Übersicht** des Servers geöffnet.
 
-    ![Der Bereich „Benachrichtigungen“](./media/quickstart-create-database-portal/3-notifications.png)
+    :::image type="content" source="./media/quickstart-create-database-portal/3-notifications.png" alt-text="Der Bereich „Benachrichtigungen“":::
    
    Standardmäßig werden **postgres**-Datenbanken unter dem Server erstellt. Die [postgres](https://www.postgresql.org/docs/9.6/static/app-initdb.html)-Datenbank ist eine Standarddatenbank für die Verwendung durch Benutzer, Hilfsprogramme und Drittanbieteranwendungen. (Die andere Standarddatenbank ist **azure_maintenance**. Ihre Funktion besteht darin, die Prozesse verwalteter Dienste von Benutzeraktionen zu trennen. Sie können auf diese Datenbank nicht zugreifen.
 
@@ -84,13 +84,13 @@ Der Azure Database for PostgreSQL-Dienst verwendet eine Firewall auf der Servere
 
 1. Klicken Sie nach Abschluss der Bereitstellung im linken Menü auf **Alle Ressourcen**, und geben Sie den Namen **mydemoserver** ein, um nach dem neu erstellten Server zu suchen. Klicken Sie auf den im Suchergebnis aufgelisteten Servernamen. Die Seite **Übersicht** für Ihren Server wird geöffnet und enthält Optionen für die weitere Konfiguration.
 
-   ![Azure-Datenbank für PostgreSQL – Suchen nach dem Server](./media/tutorial-design-database-using-azure-portal/4-locate.png)
+   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/4-locate.png" alt-text="Azure-Datenbank für PostgreSQL – Suchen nach dem Server":::
 
 2. Wählen Sie auf der Serverseite die Option **Verbindungssicherheit** aus. 
 
 3. Klicken Sie in das Textfeld unter **Regelname**, und fügen Sie eine neue Firewallregel hinzu, um den IP-Adressbereich für die Konnektivität anzugeben. Geben Sie den IP-Adressbereich ein. Klicken Sie auf **Speichern**.
 
-   ![Azure-Datenbank für PostgreSQL – Erstellen von Firewallregeln](./media/tutorial-design-database-using-azure-portal/5-firewall-2.png)
+   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/5-firewall-2.png" alt-text="Azure-Datenbank für PostgreSQL – Erstellen einer Firewallregel":::
 
 4. Klicken Sie auf **Speichern** und dann auf **X**, um die Seite **Verbindungssicherheit** zu schließen.
 
@@ -104,13 +104,13 @@ Als Sie den Azure Database for PostgreSQL-Server erstellt haben, wurde auch die 
 
 1. Klicken Sie im Azure-Portal im linken Menü auf **Alle Ressourcen**, und suchen Sie nach dem Server, den Sie gerade erstellt haben.
 
-   ![Azure-Datenbank für PostgreSQL – Suchen nach dem Server](./media/tutorial-design-database-using-azure-portal/4-locate.png)
+   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/4-locate.png" alt-text="Azure-Datenbank für PostgreSQL – Suchen nach dem Server":::
 
 2. Klicken Sie auf den Servernamen **mydemoserver**.
 
 3. Wählen Sie die Seite **Übersicht** des Servers aus. Notieren Sie sich den **Servernamen** und den **Anmeldenamen des Serveradministrators**.
 
-   ![Azure-Datenbank für PostgreSQL-Server – Anmeldename des Serveradministrators](./media/tutorial-design-database-using-azure-portal/6-server-name.png)
+   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/6-server-name.png" alt-text="Azure-Datenbank für PostgreSQL-Server – Anmeldename des Serveradministrators":::
 
 
 ## <a name="connect-to-postgresql-database-using-psql"></a>Herstellen einer Verbindung mit einer PostgreSQL-Datenbank mithilfe von psql
@@ -190,11 +190,11 @@ Stellen Sie sich vor, Sie haben versehentlich diese Tabelle gelöscht. Dies ist 
 
 1. Klicken Sie auf der Seite **Übersicht** von Azure Database for PostgreSQL für Ihren Server auf der Symbolleiste auf **Wiederherstellen**. Die Seite **Wiederherstellen** wird geöffnet.
 
-   ![Azure-Portal – Optionen des Wiederherstellungsformulars](./media/tutorial-design-database-using-azure-portal/9-azure-portal-restore.png)
+   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/9-azure-portal-restore.png" alt-text="Azure-Portal – Optionen des Wiederherstellungsformulars":::
 
 2. Geben Sie im Formular **Wiederherstellen** die erforderlichen Informationen ein:
 
-   ![Azure-Portal – Optionen des Wiederherstellungsformulars](./media/tutorial-design-database-using-azure-portal/10-azure-portal-restore.png)
+   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/10-azure-portal-restore.png" alt-text="Azure-Portal – Optionen des Wiederherstellungsformulars":::
 
    - **Wiederherstellungspunkt**: Wählen Sie einen Zeitpunkt vor der Änderung des Servers aus.
    - **Zielserver**: Geben Sie einen neuen Servernamen für die Wiederherstellung ein.

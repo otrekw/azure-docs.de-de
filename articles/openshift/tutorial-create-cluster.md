@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: f4b43129db5288275434253545861f3eae218e82
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.openlocfilehash: 1ba383b99b8265e01cf757bfb1589a86a934e0e3
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89503787"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053870"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Tutorial: Erstellen eines Azure Red Hat OpenShift 4-Clusters
 
@@ -104,20 +104,22 @@ Als Nächstes erfahren Sie, wie Sie ein virtuelles Netzwerk mit zwei leeren Subn
    CLUSTER=cluster                 # the name of your cluster
    ```
 
-1. **Erstellen Sie eine Ressourcengruppe.**
+2. **Erstellen Sie eine Ressourcengruppe.**
 
-    Eine Azure-Ressourcengruppe ist eine logische Gruppe, in der Azure-Ressourcen bereitgestellt und verwaltet werden. Wenn Sie eine Ressourcengruppe erstellen, müssen Sie einen Speicherort angeben. An diesem Speicherort werden die Metadaten der Ressourcengruppe gespeichert. Darüber hinaus werden dort die Ressourcen in Azure ausgeführt, wenn Sie während der Ressourcenerstellung keine andere Region angeben. Erstellen Sie mit dem Befehl [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create) eine Ressourcengruppe.
+Eine Azure-Ressourcengruppe ist eine logische Gruppe, in der Azure-Ressourcen bereitgestellt und verwaltet werden. Wenn Sie eine Ressourcengruppe erstellen, müssen Sie einen Speicherort angeben. An diesem Speicherort werden die Metadaten der Ressourcengruppe gespeichert. Darüber hinaus werden dort die Ressourcen in Azure ausgeführt, wenn Sie während der Ressourcenerstellung keine andere Region angeben. Erstellen Sie mit dem Befehl [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create) eine Ressourcengruppe.
     
-> [!NOTE]
+> [!NOTE] 
 > Azure Red Hat Openshift ist nicht in allen Regionen verfügbar, in denen eine Azure-Ressourcengruppe erstellt werden kann. Wo Azure Red Hat Openshift unterstützt wird, erfahren Sie unter [Available Regions](https://docs.openshift.com/aro/4/welcome/index.html#available-regions) (Verfügbare Regionen).
 
-    ```azurecli-interactive
-    az group create --name $RESOURCEGROUP --location $LOCATION
-    ```
+```azurecli-interactive
+az group create \
+  --name $RESOURCEGROUP \
+  --location $LOCATION
+```
 
-    The following example output shows the resource group created successfully:
+Die folgende Beispielausgabe zeigt, dass die Ressourcengruppe erfolgreich erstellt wurde:
 
-    ```json
+```json
     {
     "id": "/subscriptions/<guid>/resourceGroups/aro-rg",
     "location": "eastus",
@@ -128,24 +130,24 @@ Als Nächstes erfahren Sie, wie Sie ein virtuelles Netzwerk mit zwei leeren Subn
     },
     "tags": null
     }
-    ```
+```
 
-2. **Erstellen Sie ein virtuelles Netzwerk.**
+3. **Erstellen Sie ein virtuelles Netzwerk.**
 
-    Für Azure Red Hat OpenShift-Cluster mit OpenShift 4 ist ein virtuelles Netzwerk mit zwei leeren Subnetzen für die Master- und Workerknoten erforderlich.
+Für Azure Red Hat OpenShift-Cluster mit OpenShift 4 ist ein virtuelles Netzwerk mit zwei leeren Subnetzen für die Master- und Workerknoten erforderlich.
 
-    Erstellen Sie ein neues virtuelles Netzwerk in derselben Ressourcengruppe, die Sie zuvor erstellt haben:
+Erstellen Sie ein neues virtuelles Netzwerk in derselben Ressourcengruppe, die Sie zuvor erstellt haben:
 
-    ```azurecli-interactive
-    az network vnet create \
-    --resource-group $RESOURCEGROUP \
-    --name aro-vnet \
-    --address-prefixes 10.0.0.0/22
-    ```
+```azurecli-interactive
+az network vnet create \
+   --resource-group $RESOURCEGROUP \
+   --name aro-vnet \
+   --address-prefixes 10.0.0.0/22
+```
 
-    Die folgende Beispielausgabe zeigt, dass das virtuelle Netzwerk erfolgreich erstellt wurde:
+Die folgende Beispielausgabe zeigt, dass das virtuelle Netzwerk erfolgreich erstellt wurde:
 
-    ```json
+```json
     {
     "newVNet": {
         "addressSpace": {
@@ -161,9 +163,9 @@ Als Nächstes erfahren Sie, wie Sie ein virtuelles Netzwerk mit zwei leeren Subn
         "type": "Microsoft.Network/virtualNetworks"
     }
     }
-    ```
+```
 
-3. **Fügen Sie ein leeres Subnetz für die Masterknoten hinzu.**
+4. **Fügen Sie ein leeres Subnetz für die Masterknoten hinzu.**
 
     ```azurecli-interactive
     az network vnet subnet create \
@@ -174,7 +176,7 @@ Als Nächstes erfahren Sie, wie Sie ein virtuelles Netzwerk mit zwei leeren Subn
     --service-endpoints Microsoft.ContainerRegistry
     ```
 
-4. **Fügen Sie ein leeres Subnetz für die Workerknoten hinzu.**
+5. **Fügen Sie ein leeres Subnetz für die Workerknoten hinzu.**
 
     ```azurecli-interactive
     az network vnet subnet create \
@@ -185,7 +187,7 @@ Als Nächstes erfahren Sie, wie Sie ein virtuelles Netzwerk mit zwei leeren Subn
     --service-endpoints Microsoft.ContainerRegistry
     ```
 
-5. **[Deaktivieren Sie Richtlinien für private Endpunkte](../private-link/disable-private-link-service-network-policy.md) im Mastersubnetz.** Dies ist erforderlich, um eine Verbindung mit dem Cluster herzustellen und um diesen zu verwalten.
+6. **[Deaktivieren Sie Richtlinien für private Endpunkte](../private-link/disable-private-link-service-network-policy.md) im Mastersubnetz.** Dies ist erforderlich, um eine Verbindung mit dem Cluster herzustellen und um diesen zu verwalten.
 
     ```azurecli-interactive
     az network vnet subnet update \

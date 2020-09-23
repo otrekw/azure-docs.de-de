@@ -1,19 +1,19 @@
 ---
 title: Einrichten des Azure Import/Export-Tools (V1) | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Sie das Tool für die Laufwerkvorbereitung und Reparatur für den Azure Import/Export-Dienst einrichten. Dieser Artikel bezieht sich auf Version 1 des Import/Export-Tools.
-author: twooley
+author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
 ms.date: 01/15/2017
-ms.author: twooley
+ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: f2aeb010d0c6f62284f1347bd90b952be50c665e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e03601bc929354a69e7f9027db5ac9b7697c3c82
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88530799"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054074"
 ---
 # <a name="setting-up-the-azure-importexport-tool-v1"></a>Einrichten des Azure Import/Export-Tools Version 1
 Das Microsoft Azure Import/Export-Tool ist das Tool für die Laufwerkvorbereitung und Reparatur, das Sie für den Microsoft Azure Import/Export-Dienst verwenden können. Sie können das Tool für die folgenden Funktionen verwenden:  

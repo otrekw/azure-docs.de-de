@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: memildin
-ms.openlocfilehash: 4a62520a9807cd99b5c353c32bb13058fc471a84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a3dd1c0df32e7d6a67e63c9e148327d30f0082c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84771358"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904720"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Roadmap für Azure Security Center-Bereitschaft
 Dieses Dokument enthält eine Roadmap für die Bereitschaft, die Ihnen als Hilfe bei den ersten Schritten mit Azure Security Center dient.
@@ -29,12 +29,12 @@ Azure Security Center ermöglicht eine einheitliche Sicherheitsverwaltung und er
 Verwenden Sie für die ersten Schritte mit Security Center die folgenden Ressourcen:
 
 Artikel
-* [Einführung in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
-* [Schnellstarthandbuch zu Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-get-started)
+- [Einführung in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
+- [Schnellstarthandbuch zu Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-get-started)
 
 Videos
-* [Kurzes Einführungsvideo](https://azure.microsoft.com/resources/videos/introduction-to-azure-security-center/)
-* [Overview of Security Center Prevention, Detection and Response Capabilities](https://azure.microsoft.com/resources/videos/azurecon-2015-new-azure-security-center-helps-you-prevent-detect-and-respond-to-threats/) (Übersicht über Präventions-, Erkennungs- und Antwortfunktionen für Security Center)
+- [Kurzes Einführungsvideo](https://azure.microsoft.com/resources/videos/introduction-to-azure-security-center/)
+- [Overview of Security Center Prevention, Detection and Response Capabilities](https://azure.microsoft.com/resources/videos/azurecon-2015-new-azure-security-center-helps-you-prevent-detect-and-respond-to-threats/) (Übersicht über Präventions-, Erkennungs- und Antwortfunktionen für Security Center)
 
 ## <a name="planning-and-operations"></a>Planung und Betrieb
 
@@ -42,20 +42,16 @@ Zur optimalen Nutzung von Security Center sollten Sie verstanden haben, wie der 
 
 Verwenden Sie die folgenden Ressourcen als Hilfe bei der Planung und beim Betrieb.
 
-Artikel
-* [Planungs- und Betriebshandbuch für Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
+- [Planungs- und Betriebshandbuch für Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
 
 
 ### <a name="onboarding-computers-to-security-center"></a>Onboarding von Computern für Security Center
-Security Center erkennt automatisch alle Azure-Abonnements oder -Arbeitsbereiche, für die Security Center Standard nicht aktiviert ist. Dazu zählen unter anderem Azure-Abonnements mit Security Center Free sowie Arbeitsbereiche, für die die Sicherheitslösung nicht aktiviert ist.
+Security Center erkennt automatisch alle Azure-Abonnements oder -Arbeitsbereiche, die nicht durch Azure Defender geschützt werden. Dazu zählen unter anderem Azure-Abonnements mit Security Center Free sowie Arbeitsbereiche, für die die Sicherheitslösung nicht aktiviert ist.
 
 Verwenden Sie die folgenden Ressourcen als Hilfe während des Onboarding-Prozesses.
 
-Artikel
-* [Integrieren von Azure Security Center Standard für erhöhte Sicherheit](https://docs.microsoft.com/azure/security-center/security-center-onboarding)
-
-Video
-* [Azure Security Center Hybrid – Übersicht](https://youtu.be/NMa4L_M597k)
+- [Integrieren Azure-fremder Computer](quickstart-onboard-machines.md)
+- [Azure Security Center Hybrid – Übersicht](https://youtu.be/NMa4L_M597k)
 
 ## <a name="mitigating-security-issues-using-security-center"></a>Beheben von Sicherheitsproblemen mit Security Center
 Security Center erfasst, analysiert und vereinigt automatisch Protokolldaten von Ihren Azure-Ressourcen, vom Netzwerk und von verbundenen Partnerlösungen, z.B. Lösungen zum Schutz von Firewalls und Endpunkten, um echte Bedrohungen zu erkennen und falsch positive Ergebnisse zu reduzieren.
@@ -63,14 +59,13 @@ Security Center erfasst, analysiert und vereinigt automatisch Protokolldaten von
 Verwenden Sie die folgenden Ressourcen als Hilfe beim Verwalten von Sicherheitswarnungen und Schützen Ihrer Ressourcen.
 
 Artikel    
-* [Überwachen der Sicherheitsintegrität in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-monitoring)
-* [Schützen von Computern und Anwendungen im Azure Security Center](security-center-virtual-machine-protection.md)
-* [Schützen Ihres Netzwerks in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
-* [Schützen des Azure SQL-Diensts und Ihrer Daten in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-sql-service-recommendations)
+- [Überwachen der Sicherheitsintegrität in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-monitoring)
+- [Schützen Ihres Netzwerks in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+- [Schützen des Azure SQL-Diensts und Ihrer Daten in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-sql-service-recommendations)
 
 
 Video    
-* [Beheben von Sicherheitsproblemen mit Azure Security Center](https://channel9.msdn.com/Blogs/Azure-Security-Videos/Mitigating-Security-Issues-using-Azure-Security-Center)
+- [Beheben von Sicherheitsproblemen mit Azure Security Center](https://channel9.msdn.com/Blogs/Azure-Security-Videos/Mitigating-Security-Issues-using-Azure-Security-Center)
 
 ### <a name="security-center-for-incident-response"></a>Verwenden von Security Center zum Reagieren auf Vorfälle
 Zur Reduzierung von Kosten und Schäden ist es wichtig, dass ein Plan zur Reaktion auf Vorfälle vorhanden ist, bevor es zu einem Angriff kommt. Sie können Azure Security Center in unterschiedlichen Phasen einer Reaktion auf Vorfälle nutzen.
@@ -119,6 +114,4 @@ Artikel
 ## <a name="community-resources"></a>Communityressourcen
 
 * [Security Center UserVoice](https://feedback.azure.com/forums/347535-azure-security-center)
-* [Frageseite von Microsoft Q&A zu Security Center](https://docs.microsoft.com/answers/topics/azure-security-center.html)
-
-
+* [Q&A-Seite für Security Center](https://docs.microsoft.com/answers/topics/azure-security-center.html)

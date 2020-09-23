@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1a426a579fa56fca880eb9689adc2aeb7a21407d
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 9cb1a2074e7ec64ed16f1f7c9a1f70bf2307b5c3
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300921"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033488"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices-classic-editor"></a>Continuous Integration und Continuous Deployment für Azure IoT Edge-Geräte (klassischer Editor)
 
@@ -86,7 +86,7 @@ In diesem Abschnitt erstellen Sie eine neue Buildpipeline. Sie konfigurieren die
 
    * Wenn Sie Ihre Module auf der Plattform amd64 für Windows 1809-Container erstellen möchten, müssen Sie [einen selbstgehosteten Agent unter Windows einrichten](https://docs.microsoft.com/azure/devops/pipelines/agents/v2-windows?view=vsts).
 
-   * Wenn Sie Ihre Module auf der Plattform arm32v7 oder arm64 für Linux-Container erstellen möchten, müssen Sie [einen selbstgehosteten Agent unter Linux einrichten](https://blogs.msdn.microsoft.com/iotdev/2018/11/13/setup-azure-iot-edge-continuous-integration-continuous-deployment-pipeline-with-arm-agent/).
+   * Wenn Sie Ihre Module auf der Plattform arm32v7 oder arm64 für Linux-Container erstellen möchten, müssen Sie [einen selbstgehosteten Agent unter Linux einrichten](https://devblogs.microsoft.com/iotdev/setup-azure-iot-edge-ci-cd-pipeline-with-arm-agent).
 
     ![Konfigurieren der Build-Agent-Spezifikation](./media/how-to-continuous-integration-continuous-deployment-classic/configure-env.png)
 

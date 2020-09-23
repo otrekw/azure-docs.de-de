@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 4/13/2020
-ms.openlocfilehash: 51b05ea016880d04fd6a2123962afefbdb229be1
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 69368500a99b47238e74a960fdd5381c0339430a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86101782"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905871"
 ---
 # <a name="configure-and-access-slow-query-logs-from-the-azure-portal"></a>Konfigurieren von und Zugreifen auf Protokolle für langsame Abfragen im Azure-Portal
 
@@ -28,7 +28,7 @@ Konfigurieren Sie den Zugriff auf das MySQL-Protokoll für langsame Abfragen.
 2. Wählen Sie Ihren Server für Azure Database for MySQL aus.
 
 3. Wählen Sie im Abschnitt **Überwachung** in der Randleiste die Option **Serverprotokolle** aus. 
-   ![Screenshot der Optionen für Serverprotokolle](./media/howto-configure-server-logs-in-portal/1-select-server-logs-configure.png)
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/1-select-server-logs-configure.png" alt-text="Screenshot der Optionen für Serverprotokolle":::
 
 4. Um die Serverparameter anzuzeigen, wählen Sie **Klicken Sie hier, um Protokolle zu aktivieren und Protokollparameter zu konfigurieren** aus.
 
@@ -53,7 +53,7 @@ Nachdem die Protokollierung begonnen hat, können Sie eine Liste der verfügbare
 
 3. Wählen Sie im Abschnitt **Überwachung** in der Randleiste die Option **Serverprotokolle** aus. Die Seite zeigt eine Liste der Protokolldateien an.
 
-   ![Screenshot der Seite „Serverprotokolle“ mit hervorgehobener Liste der Protokolle](./media/howto-configure-server-logs-in-portal/4-server-logs-list.png)
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/4-server-logs-list.png" alt-text="Screenshot der Seite „Serverprotokolle“ mit hervorgehobener Liste der Protokolle":::
 
    > [!TIP]
    > Die Namenskonvention des Protokolls ist **mysql-slow-<Name_Ihres_Servers>-jjjjmmtthh.log**. Das im Dateinamen verwendete Datum und die Uhrzeit geben den Zeitpunkt an, zu dem das Protokoll ausgestellt wurde. Die Protokolldateien werden alle 24 Stunden oder bei Erreichen einer Größe von 7,5 GB rotiert. 
@@ -62,23 +62,23 @@ Nachdem die Protokollierung begonnen hat, können Sie eine Liste der verfügbare
 
 5. Um einzelne Protokolldateien herunterzuladen, wählen Sie das Pfeilsymbol nach unten neben den einzelnen Protokolldateien in der Tabellenzeile aus.
 
-   ![Screenshot der Seite „Serverprotokolle“ mit hervorgehobenem Pfeilsymbol nach unten](./media/howto-configure-server-logs-in-portal/5-download.png)
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/5-download.png" alt-text="Screenshot der Seite „Serverprotokolle“ mit hervorgehobenem Pfeilsymbol nach unten":::
 
 ## <a name="set-up-diagnostic-logs"></a>Einrichten von Diagnoseprotokollen
 
 1. Wählen Sie auf der Randleiste im Abschnitt **Überwachung** die Option **Diagnoseeinstellungen** > **Diagnoseeinstellungen hinzufügen** aus.
 
-   ![Screenshot der Optionen für Diagnoseeinstellungen](./media/howto-configure-server-logs-in-portal/add-diagnostic-setting.png)
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/add-diagnostic-setting.png" alt-text="Screenshot der Optionen für Diagnoseeinstellungen":::
 
 1. Geben Sie einen Namen für die Diagnoseeinstellung ein.
 
 1. Geben Sie an, an welche Datensenken die langsamen Abfrageprotokolle gesendet werden sollen (Speicherkonto, Event Hub oder Log Analytics-Arbeitsbereich).
 
 1. Wählen Sie als Protokolltyp **MySqlSlowLogs** aus.
-![Screenshot der Konfigurationsoptionen für Diagnoseeinstellungen](./media/howto-configure-server-logs-in-portal/configure-diagnostic-setting.png)
+:::image type="content" source="./media/howto-configure-server-logs-in-portal/configure-diagnostic-setting.png" alt-text="Screenshot der Konfigurationsoptionen für Diagnoseeinstellungen":::
 
 1. Nachdem Sie die Datensenken für die langsamen Abfrageprotokolle konfiguriert haben, wählen Sie **Speichern** aus.
-![Screenshot der Konfigurationsoptionen für Diagnoseeinstellungen mit hervorgehobener Option „Speichern“](./media/howto-configure-server-logs-in-portal/save-diagnostic-setting.png)
+:::image type="content" source="./media/howto-configure-server-logs-in-portal/save-diagnostic-setting.png" alt-text="Screenshot der Konfigurationsoptionen für Diagnoseeinstellungen mit hervorgehobener Option „Speichern“":::
 
 1. Greifen Sie auf die langsamen Abfrageprotokolle zu, indem Sie sie in den von Ihnen konfigurierten Datensenken einsehen. Es kann bis zu 10 Minuten dauern, bis die Protokolle angezeigt werden.
 

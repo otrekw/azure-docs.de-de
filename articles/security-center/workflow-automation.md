@@ -6,16 +6,16 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 08/13/2020
+ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: ff358f3c90edfcdabb5a1225ad1efa122818b070
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 7933cc692ebc3b40e5f608a917dce51f5298fbe3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89375260"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904659"
 ---
-# <a name="workflow-automation"></a>Workflowautomatisierung
+# <a name="create-automatic-responses-to-alerts-and-recommendations-with-workflow-automation"></a>Erstellen automatischer Reaktionen auf Warnungen und Empfehlungen mit der Workflowautomatisierung
 
 Jedes Sicherheitsprogramm umfasst mehrere Workflows für die Reaktion auf Vorfälle. Diese Prozesse können das Benachrichtigen relevanter Stakeholder, das Starten eines Change Management-Prozesses und das Anwenden spezifischer Korrekturschritte umfassen. Sicherheitsexperten empfehlen, möglichst viele Schritte dieser Verfahren zu automatisieren. Durch Automatisierung wird der Aufwand reduziert. Außerdem können Sie so die Sicherheit erhöhen, indem Sie sicherstellen, dass die Prozessschritte schnell, konsistent und gemäß Ihren vordefinierten Anforderungen ausgeführt werden.
 
@@ -30,8 +30,8 @@ In diesem Artikel wird die Funktion zur Workflowautomatisierung von Azure Securi
 
 |Aspekt|Details|
 |----|:----|
-|Status des Release:|Allgemein verfügbar|
-|Preise:|Free-Tarif|
+|Status des Release:|Allgemein verfügbar (Generally Available, GA)|
+|Preise:|Kostenlos|
 |Erforderliche Rollen und Berechtigungen:|Rolle **Sicherheitsadministrator** oder **Besitzer** für die Ressourcengruppe<br>Außerdem sind Schreibberechtigungen für die Zielressource erforderlich<br><br>Damit Sie Azure Logic Apps-Workflows verwenden können, benötigen Sie zudem die folgenden Logic Apps-Rollen/-Berechtigungen:<br> Die Berechtigungen der Rolle - [Logik-App-Operator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) oder der Lese-/Triggerzugriff für Logik-Apps sind erforderlich. (Diese Rolle kann keine Logik-Apps erstellen oder bearbeiten, sondern nur vorhandene *ausführen*.)<br> Die Berechtigungen der Rolle - [Logik-App-Mitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor) sind für die Erstellung und Änderung von Logik-Apps erforderlich.<br>Wenn Sie Logik-App-Connectors verwenden möchten, benötigen Sie möglicherweise zusätzliche Anmeldeinformationen für die Anmeldung bei den jeweiligen Diensten (z. B. Ihren Instanzen von Outlook, Teams oder Slack).|
 |Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Ja](./media/icons/yes-icon.png) China Gov/andere Gov-Clouds|
 |||
@@ -42,7 +42,7 @@ In diesem Artikel wird die Funktion zur Workflowautomatisierung von Azure Securi
 
 1. Wählen Sie auf der Seitenleiste in Security Center **Workflowautomatisierung** aus.
 
-    [![Liste der Workflowautomatisierungen](media/workflow-automation/list-of-workflow-automations.png)](media/workflow-automation/list-of-workflow-automations.png#lightbox)
+    :::image type="content" source="./media/workflow-automation/list-of-workflow-automations.png" alt-text="Liste der Workflowautomatisierungen":::
 
     Auf dieser Seite können Sie neue Automatisierungsregeln erstellen sowie vorhandene aktivieren, deaktivieren oder löschen.
 
@@ -53,7 +53,7 @@ In diesem Artikel wird die Funktion zur Workflowautomatisierung von Azure Securi
     1. Die Trigger zum Auslösen dieses automatischen Workflows. Sie könnten beispielsweise Ihre Logik-App ausführen, wenn eine Sicherheitswarnung generiert wird, die „SQL“ enthält.
     1. Die Logik-App, die ausgeführt wird, wenn die Triggerbedingungen erfüllt sind 
 
-        [![Liste der Workflowautomatisierungen](media/workflow-automation/add-workflow.png)](media/workflow-automation/add-workflow.png#lightbox)
+        :::image type="content" source="./media/workflow-automation/add-workflow.png" alt-text="Bereich „Workflowautomatisierung hinzufügen“":::
 
 1. Klicken Sie im Abschnitt „Aktionen“ auf **Erstellen Sie eine neue**, um mit der Erstellung der Logik-App zu beginnen.
 
@@ -101,7 +101,7 @@ Um die unformatierten Ereignisschemas der Sicherheitswarnungen oder Empfehlungse
 
 In diesem Artikel haben Sie gelernt, wie Sie Logik-Apps erstellen, deren Ausführung in Security Center automatisieren und sie manuell ausführen. 
 
-Weitere verwandte Informationen finden Sie auf hier: 
+Verwandte Informationen finden Sie hier: 
 
 - [Das Microsoft Learn-Modul über die Verwendung der Workflowautomatisierung zur Automatisierung einer Sicherheitsreaktion](https://docs.microsoft.com/learn/modules/resolve-threats-with-azure-security-center/)
 - [Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md)

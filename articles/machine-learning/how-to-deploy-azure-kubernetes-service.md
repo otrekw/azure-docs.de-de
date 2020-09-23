@@ -6,41 +6,32 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to
+ms.custom: how-to, contperfq1
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 06/23/2020
-ms.openlocfilehash: 6c85a7315fe05bb4fedabd176295523c2fa95d81
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.date: 09/01/2020
+ms.openlocfilehash: c7c3825d97a5566a43346febc7bbf86a4b242b54
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855233"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905695"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Bereitstellen eines Modells in einem Azure Kubernetes Service-Cluster
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Erfahren Sie, wie Sie ein Modell mit Azure Machine Learning als Webdienst in Azure Kubernetes Service (AKS) bereitstellen. Azure Kubernetes Service ist gut für umfangreiche Produktionsbereitstellungen geeignet. Verwenden Sie Azure Kubernetes Service, wenn Sie eine oder mehrere der folgenden Funktionen benötigen:
 
 - __Schnelle Antwortzeiten__
 - __Autoskalierung__ des bereitgestellten Diensts
+- __Logging__
+- __Modelldatensammlung__
+- __Authentifizierung__
+- __TLS-Terminierung__
 - Optionen für die __Hardwarebeschleunigung__, beispielsweise GPU und FPGA (Field-Programmable Gate Arrays)
 
-> [!IMPORTANT]
-> Das Azure Machine Learning SDK bietet keine Clusterskalierung. Weitere Informationen zum Skalieren der Knoten in einem AKS-Cluster finden Sie unter 
-- [Skalieren der Anzahl der Knoten in einem Azure Kubernetes Service-Cluster (AKS)](../aks/scale-cluster.md)
-- [Automatisches Skalieren eines Clusters zur Erfüllung von Anwendungsanforderungen in Azure Kubernetes Service (AKS)](../aks/cluster-autoscaler.md)
-
-Bei der Bereitstellung in Azure Kubernetes Service führen Sie die Bereitstellung in einem AKS-Cluster durch, der __mit Ihrem Arbeitsbereich verbunden ist__. Es gibt zwei Möglichkeiten, einen AKS-Cluster mit Ihrem Arbeitsbereich zu verbinden:
-
-* Erstellen Sie den AKS-Cluster mit dem Azure Machine Learning SDK, der Machine Learning CLI oder [Azure Machine Learning Studio](https://ml.azure.com). Bei diesem Vorgang wird der Cluster mit dem Arbeitsbereich verbunden.
-* Fügen Sie einen vorhandenen AKS-Cluster an Ihren Azure Machine Learning-Arbeitsbereich an. Ein Cluster kann mit dem Azure Machine Learning SDK, der Machine Learning CLI oder Azure Machine Learning Studio angefügt werden.
-
-Der AKS-Cluster und der AML-Arbeitsbereich können sich in unterschiedlichen Ressourcengruppen befinden.
-
-> [!IMPORTANT]
-> Die Erstellung bzw. der Anfügevorgang muss nur einmal durchgeführt werden. Nachdem ein AKS-Cluster mit dem Arbeitsbereich verbunden wurde, können sie ihn für Bereitstellungen einsetzen. Wenn Sie den AKS-Cluster nicht mehr benötigen, können Sie ihn trennen oder löschen. Nach dem Trennen oder Löschen ist eine Bereitstellung im Cluster nicht mehr möglich.
+Bei der Bereitstellung in Azure Kubernetes Service führen Sie die Bereitstellung in einem AKS-Cluster durch, der __mit Ihrem Arbeitsbereich verbunden ist__. Informationen zum Verbinden eines AKS-Clusters mit Ihrem Arbeitsbereich finden Sie unter [Erstellen und Anfügen eines Azure Kubernetes Service-Clusters](how-to-create-attach-kubernetes.md).
 
 > [!IMPORTANT]
 > Es wird empfohlen, Debugvorgänge vor der Bereitstellung im Webdienst lokal durchzuführen. Weitere Informationen finden Sie unter [Lokal debuggen](https://docs.microsoft.com/azure/machine-learning/how-to-troubleshoot-deployment#debug-locally).
@@ -53,7 +44,7 @@ Der AKS-Cluster und der AML-Arbeitsbereich können sich in unterschiedlichen Res
 
 - Ein Machine Learning-Modell, das in Ihrem Arbeitsbereich registriert ist. Wenn Sie über kein registriertes Modell verfügen, finden Sie hier weitere Informationen: [Wie und wo Modelle bereitgestellt werden](how-to-deploy-and-where.md).
 
-- Die [Azure CLI-Erweiterung für Machine Learning Service](reference-azure-machine-learning-cli.md), das [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) oder die [Visual Studio Code-Erweiterung für Azure Machine Learning](tutorial-setup-vscode-extension.md).
+- Die [Azure CLI-Erweiterung für Machine Learning Service](reference-azure-machine-learning-cli.md), das [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) oder die [Visual Studio Code-Erweiterung für Azure Machine Learning](tutorial-setup-vscode-extension.md).
 
 - Bei den in diesem Artikel verwendeten __Python__-Codeausschnitten wird davon ausgegangen, dass die folgenden Variablen festgelegt sind:
 
@@ -65,170 +56,42 @@ Der AKS-Cluster und der AML-Arbeitsbereich können sich in unterschiedlichen Res
 
 - Bei den in diesem Artikel verwendeten __CLI__-Ausschnitten wird davon ausgegangen, dass Sie ein `inferenceconfig.json`-Dokument erstellt haben. Weitere Informationen zum Erstellen dieses Dokuments finden Sie unter [Wie und wo Modelle bereitgestellt werden](how-to-deploy-and-where.md).
 
-- Wenn in Ihrem Cluster anstelle eines Load Balancer Basic (BLB) ein Load Balancer Standard (SLB) bereitgestellt werden muss, erstellen Sie im AKS-Portal, mit der CLI oder über das SDK einen Cluster, und fügen Sie diesen Cluster an den AML-Arbeitsbereich an.
+- Ein Azure Kubernetes Service-Cluster, der mit Ihrem Arbeitsbereich verbunden ist. Weitere Informationen finden Sie unter [Erstellen und Anfügen eines Azure Kubernetes Service-Clusters](how-to-create-attach-kubernetes.md).
 
-- Wenn Sie über eine Azure Policy verfügen, die die Erstellung von öffentlichen IP-Adressen einschränkt, tritt bei der AKS-Clustererstellung ein Fehler auf. AKS erfordert eine öffentliche IP-Adresse für [ausgehenden Datenverkehr](https://docs.microsoft.com/azure/aks/limit-egress-traffic). Außerdem finden Sie in diesem Artikel Anleitungen zum Sperren von aus dem Cluster über die öffentliche IP-Adresse ausgehenden Datenverkehr mit Ausnahme einiger FQDN. Es gibt 2 Möglichkeiten, eine öffentliche IP-Adresse zu aktivieren:
-  - Der Cluster kann die öffentliche IP-Adresse verwenden, die standardmäßig mit dem BLB oder SLB erstellt wird, oder
-  - der Cluster kann ohne öffentliche IP-Adresse erstellt werden, und anschließend wird eine öffentliche IP-Adresse mit einer Firewall mit einer benutzerdefinierten Route konfiguriert, die [hier](https://docs.microsoft.com/azure/aks/egress-outboundtype) dokumentiert ist. 
-  
-  Die AML-Steuerungsebene kommuniziert nicht mit dieser öffentlichen IP-Adresse. Sie kommuniziert mit der AKS-Steuerungsebene für Bereitstellungen. 
+    - Wenn Sie Modelle auf GPU-Knoten oder FPGA-Knoten (oder einer bestimmten SKU) bereitstellen möchten, müssen Sie einen Cluster mit der jeweiligen SKU erstellen. Das Erstellen eines sekundären Knotenpools in einem vorhandenen Cluster und Bereitstellen von Modellen im sekundären Knotenpool wird nicht unterstützt.
 
-- Wenn Sie einen AKS-Cluster anfügen, der über einen [autorisierten IP-Adressbereich mit Zugriff auf den API-Server](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges) verfügt, aktivieren Sie die IP-Adressbereiche der AML-Steuerungsebene für den AKS-Cluster. Die AML-Steuerungsebene wird für Regionspaare bereitgestellt und stellt Rückschlusspods im AKS-Cluster bereit. Ohne Zugriff auf den API-Server können die Rückschlusspods nicht bereitgestellt werden. Verwenden Sie die [IP-Adressbereiche](https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519) für beide [Regionspaare]( https://docs.microsoft.com/azure/best-practices-availability-paired-regions), wenn Sie die IP-Adressbereiche in einem AKS-Cluster aktivieren.
+## <a name="understand-the-deployment-processes"></a>Grundlegendes zu Bereitstellungsvorgängen
 
+Das Wort „Bereitstellung“ wird sowohl in Kubernetes als auch bei Azure Machine Learning verwendet. „Bereitstellung“ hat in diesen beiden Kontexten jedoch unterschiedliche Bedeutungen. In Kubernetes ist eine `Deployment` eine konkrete Entität, die mit einer deklarativen YAML-Datei angegeben wird. Eine Kubernetes-`Deployment` verfügt über einen definierten Lebenszyklus und konkrete Beziehungen zu anderen Kubernetes-Entitäten, z. B. `Pods` und `ReplicaSets`. Informationen zu Kubernetes in Form von Dokumenten und Videos finden Sie unter [Was ist Kubernetes?](https://aka.ms/k8slearning).
 
-  Autorisierte IP-Adressbereiche funktionieren nur mit Load Balancer Standard.
- 
- - Der Computename MUSS innerhalb eines Arbeitsbereichs eindeutig sein
-   - Der Name ist erforderlich und muss zwischen 3 und 24 Zeichen lang sein.
-   - Gültige Zeichen sind Groß- und Kleinbuchstaben, Ziffern und das Zeichen -.
-   - Der Name muss mit einem Buchstaben beginnen.
-   - Der Name muss auf allen vorhandenen Compute-Instanzen innerhalb einer Azure-Region eindeutig sein. Sie erhalten eine Warnung, wenn der von Ihnen gewählte Name nicht eindeutig ist.
-   
- - Wenn Sie Modelle auf GPU-Knoten oder FPGA-Knoten (oder einer bestimmten SKU) bereitstellen möchten, müssen Sie einen Cluster mit der jeweiligen SKU erstellen. Das Erstellen eines sekundären Knotenpools in einem vorhandenen Cluster und Bereitstellen von Modellen im sekundären Knotenpool wird nicht unterstützt.
+In Azure Machine Learning wird „Bereitstellung“ allgemeiner für das Verfügbarmachen und Bereinigen Ihrer Projektressourcen verwendet. Folgende Schritte werden in Azure Machine Learning als Teil der Bereitstellung betrachtet:
 
-## <a name="create-a-new-aks-cluster"></a>Erstellen eines neuen AKS-Clusters
+1. Zippen der Dateien in Ihrem Projektordner, wobei die in „.amlignore“ oder „.gitignore“ angegebenen Dateien ignoriert werden
+1. Zentrales Hochskalieren Ihres Computeclusters (bezieht sich auf Kubernetes)
+1. Erstellen oder Herunterladen des Dockerfiles auf den Serverknoten (bezieht sich auf Kubernetes)
+    1. Das System berechnet einen Hashwert aus: 
+        - Dem Basisimage 
+        - Benutzerdefinierten Docker-Schritten (siehe [Bereitstellen eines Modells mithilfe eines benutzerdefinierten Docker-Basisimages](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image))
+        - Der Conda-Definitions-YAML-Datei (siehe [Erstellen und Verwenden von Softwareumgebungen in Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments))
+    1. Das System verwendet diesen Hash als Schlüssel in einer Suche nach der Azure Container Registry (ACR) für den Arbeitsbereich.
+    1. Wenn er nicht gefunden wird, wird nach einer Übereinstimmung in der globalen ACR gesucht.
+    1. Wenn keine gefunden wird, erstellt das System ein neues Image (das zwischengespeichert und an die ACR des Arbeitsbereichs übermittelt wird).
+1. Herunterladen der gezippten Projektdatei in den temporären Speicher auf dem Serverknoten
+1. Entzippen der Projektdatei
+1. Ausführen von `python <entry script> <arguments>` auf dem Serverknoten
+1. Speichern von Protokollen, Modelldateien und anderen Dateien, die in dem Speicherkonto, das dem Arbeitsbereich zugeordnet ist, in `./outputs` geschrieben werden
+1. Zentrales Herunterskalieren von Compute, einschließlich Entfernen des temporären Speichers (bezieht sich auf Kubernetes)
 
-**Geschätzter Zeitaufwand**: Ca. zehn Minuten.
+### <a name="azure-ml-router"></a>Azure ML-Router
 
-Das Erstellen oder Anfügen eines AKS-Clusters ist ein für Ihren Arbeitsbereich einmaliger Vorgang. Sie können diesen Cluster für mehrere Bereitstellungen wiederverwenden. Wenn Sie den Cluster oder die Ressourcengruppe löschen, die ihn enthält, müssen Sie bei der nächsten Bereitstellung einen neuen Cluster erstellen. Sie können an Ihren Arbeitsbereich mehrere AKS-Cluster anfügen.
- 
-Azure Machine Learning unterstützt jetzt die Verwendung von Azure Kubernetes Service mit aktiviertem Private Link-Dienst.
-Informationen zum Erstellen eines privaten AKS-Clusters finden Sie [hier](https://docs.microsoft.com/azure/aks/private-clusters).
-
-> [!TIP]
-> Wenn Sie Ihren AKS-Cluster mithilfe einer Azure Virtual Network-Instanz schützen möchten, müssen Sie zuerst das virtuelle Netzwerk erstellen. Weitere Informationen finden Sie unter [Sichern von Azure ML-Experiment- und Rückschlussaufträgen in einem virtuellen Azure-Netzwerk](how-to-enable-virtual-network.md#aksvnet).
-
-Wenn Sie einen AKS-Cluster nicht für die Produktion, sondern für die __Entwicklung__, zur __Validierung__ und für __Tests__ erstellen möchten, können Sie den __Clusterzweck__ auf __Dev/Test__ festlegen.
-
-> [!WARNING]
-> Wenn Sie `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST` festlegen, ist der Cluster, der erstellt wird, nicht für Produktionsdatenverkehr geeignet und kann Rückschlusszeiten erhöhen. Entwicklungs- und Testcluster garantieren auch keine Fehlertoleranz. Wir empfehlen mindestens zwei virtuelle CPUs für Entwicklungs-/Testcluster.
-
-Die folgenden Beispiele veranschaulichen, wie ein neuer AKS-Cluster mit SDK und CLI erstellt wird:
-
-**Verwenden des SDK**
-
-```python
-from azureml.core.compute import AksCompute, ComputeTarget
-
-# Use the default configuration (you can also provide parameters to customize this).
-# For example, to create a dev/test cluster, use:
-# prov_config = AksCompute.provisioning_configuration(cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST)
-prov_config = AksCompute.provisioning_configuration()
-# Example configuration to use an existing virtual network
-# prov_config.vnet_name = "mynetwork"
-# prov_config.vnet_resourcegroup_name = "mygroup"
-# prov_config.subnet_name = "default"
-# prov_config.service_cidr = "10.0.0.0/16"
-# prov_config.dns_service_ip = "10.0.0.10"
-# prov_config.docker_bridge_cidr = "172.17.0.1/16"
-
-aks_name = 'myaks'
-# Create the cluster
-aks_target = ComputeTarget.create(workspace = ws,
-                                    name = aks_name,
-                                    provisioning_configuration = prov_config)
-
-# Wait for the create process to complete
-aks_target.wait_for_completion(show_output = True)
-```
+Die Front-End-Komponente (azureml-fe), die eingehende Rückschlussanforderungen an bereitgestellte Dienste weiterleitet, wird automatisch nach Bedarf skaliert. Die Skalierung von azureml-fe basiert dem Zweck und der Größe (Anzahl der Knoten) des AKS-Clusters. Clusterzweck und -knoten werden konfiguriert, wenn Sie einen [AKS-Cluster erstellen oder anfügen](how-to-create-attach-kubernetes.md). Pro Cluster gibt es einen azureml-fe-Dienst, der möglicherweise auf mehreren Pods ausgeführt wird.
 
 > [!IMPORTANT]
-> Für [`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py) müssen Sie, wenn Sie benutzerdefinierte Werte für `agent_count` und `vm_size` auswählen, und wenn `cluster_purpose` nicht gleich `DEV_TEST` ist, sicherstellen, dass `agent_count` multipliziert mit `vm_size` größer als oder gleich 12 virtuellen CPUs ist. Wenn Sie beispielsweise für `vm_size` „Standard_D3_v2“ verwenden, das 4 virtuelle CPUs hat, müssen Sie für `agent_count` einen Wert von mindestens 3 wählen.
->
-> Das Azure Machine Learning-SDK bietet keine Unterstützung zur Skalierung eines AKS-Clusters. Die Knoten in Ihrem Cluster können Sie über die Benutzeroberfläche Ihres AKS-Clusters in Azure Machine Learning Studio skalieren. Sie können nur die Knotenanzahl ändern, nicht die VM-Größe des Clusters.
+> Wenn Sie einen Cluster verwenden, der als __Dev/Test__ konfiguriert ist, wird der Self-Scaler **deaktiviert**.
 
-Weitere Informationen zu den in diesem Beispiel verwendeten Klassen, Methoden und Parametern finden Sie in den folgenden Referenzdokumenten:
+Azureml-fe wird sowohl (vertikal) hochskaliert, um mehr Kerne zu verwenden, als auch (horizontal) aufskaliert, um mehr Pods zu verwenden. Wenn Sie die Entscheidung zum zentralen Hochskalieren treffen, wird die Zeit herangezogen, die zum Weiterleiten eingehender Rückschlussanforderungen benötigt wird. Wenn diese Zeit den Schwellenwert überschreitet, erfolgt eine Hochskalierung. Wenn die Zeit zum Weiterleiten eingehender Anforderungen weiterhin den Schwellenwert überschreitet, erfolgt eine Aufskalierung.
 
-* [AksCompute.ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py)
-* [AksCompute.provisioning_configuration](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
-* [ComputeTarget.create](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py#create-workspace--name--provisioning-configuration-)
-* [ComputeTarget.wait_for_completion](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py#wait-for-completion-show-output-false-)
-
-**Verwenden der CLI**
-
-```azurecli
-az ml computetarget create aks -n myaks
-```
-
-Weitere Informationen finden Sie unter [az ml computetarget create aks](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-aks).
-
-## <a name="attach-an-existing-aks-cluster"></a>Anfügen eines vorhandenen AKS-Clusters
-
-**Geschätzter Zeitaufwand:** Ca. fünf Minuten.
-
-Wenn Sie in Ihrem Azure-Abonnement bereits über einen AKS-Cluster verfügen und dieser maximal die Version 1.17.hat, können Sie ihn für die Bereitstellung Ihres Image verwenden.
-
-> [!TIP]
-> Der vorhandene AKS-Cluster kann sich in einer anderen Azure-Region befinden als Ihr Azure Machine Learning-Arbeitsbereich.
->
-> Wenn Sie Ihren AKS-Cluster mithilfe einer Azure Virtual Network-Instanz schützen möchten, müssen Sie zuerst das virtuelle Netzwerk erstellen. Weitere Informationen finden Sie unter [Sichern von Azure ML-Experiment- und Rückschlussaufträgen in einem virtuellen Azure-Netzwerk](how-to-enable-virtual-network.md#aksvnet).
-
-Wenn Sie einen AKS-Cluster an einen Arbeitsbereich anfügen, können Sie durch Festlegen des Parameters `cluster_purpose` bestimmen, wie Sie den Cluster verwenden möchten.
-
-Wenn Sie den Parameter `cluster_purpose` nicht bzw. `cluster_purpose = AksCompute.ClusterPurpose.FAST_PROD` festlegen, muss der Cluster über mindestens 12 virtuelle CPUs verfügen.
-
-Wenn Sie `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST` festlegen, muss der Cluster nicht über 12 virtuelle CPUs verfügen. Wir empfehlen mindestens zwei virtuelle CPUs für Entwicklung/Tests. Ein Cluster, der für Entwicklung/Tests konfiguriert ist, eignet sich jedoch nicht für Produktionsdatenverkehr und kann Rückschlusszeiten erhöhen. Entwicklungs- und Testcluster garantieren auch keine Fehlertoleranz.
-
-> [!WARNING]
-> Erstellen Sie nicht mehrere gleichzeitige Verknüpfungen für einen AKS-Cluster in Ihrem Arbeitsbereich. Verwenden Sie beispielsweise beim Verknüpfen eines AKS-Clusters mit einem Arbeitsbereich nicht zwei unterschiedliche Namen. Jede neue Verknüpfung führt zu einem Fehler der vorherigen vorhandenen Verknüpfungen.
->
-> Falls Sie einen AKS-Cluster erneut verknüpfen möchten (etwa zum Ändern der TLS-Einstellung oder einer anderen Clusterkonfigurationseinstellung), müssen Sie zuerst die vorhandene Verknüpfung mithilfe von [AksCompute.detach()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#detach--) entfernen.
-
-Weitere Informationen zum Erstellen eines AKS-Clusters mithilfe der Azure-CLI oder des Portals finden Sie in den folgenden Artikeln:
-
-* [Erstellen eines AKS-Clusters (CLI)](https://docs.microsoft.com/cli/azure/aks?toc=%2Fazure%2Faks%2FTOC.json&bc=%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest#az-aks-create)
-* [Schnellstart: Bereitstellen eines AKS-Clusters (Azure Kubernetes Service) über das Azure-Portal](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest)
-* [Erstellen eines AKS-Clusters (ARM-Vorlage auf Azure-Schnellstartvorlagen)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aks-azml-targetcompute)
-
-Das folgende Beispiel veranschaulicht das Anfügen eines vorhandenen AKS-Clusters an Ihren Arbeitsbereich:
-
-**Verwenden des SDK**
-
-```python
-from azureml.core.compute import AksCompute, ComputeTarget
-# Set the resource group that contains the AKS cluster and the cluster name
-resource_group = 'myresourcegroup'
-cluster_name = 'myexistingcluster'
-
-# Attach the cluster to your workgroup. If the cluster has less than 12 virtual CPUs, use the following instead:
-# attach_config = AksCompute.attach_configuration(resource_group = resource_group,
-#                                         cluster_name = cluster_name,
-#                                         cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST)
-attach_config = AksCompute.attach_configuration(resource_group = resource_group,
-                                         cluster_name = cluster_name)
-aks_target = ComputeTarget.attach(ws, 'myaks', attach_config)
-
-# Wait for the attach process to complete
-aks_target.wait_for_completion(show_output = True)
-```
-
-Weitere Informationen zu den in diesem Beispiel verwendeten Klassen, Methoden und Parametern finden Sie in den folgenden Referenzdokumenten:
-
-* [AksCompute.attach_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
-* [AksCompute.ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py)
-* [AksCompute.attach](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py#attach-workspace--name--attach-configuration-)
-
-**Verwenden der CLI**
-
-Um einen vorhandenen Cluster mithilfe der CLI anzufügen, müssen Sie die Ressourcen-ID des vorhandenen Clusters abrufen. Verwenden Sie zum Abrufen dieses Werts den folgenden Befehl. Ersetzen Sie `myexistingcluster` durch den Namen Ihres AKS-Clusters. Ersetzen Sie `myresourcegroup` durch die Ressourcengruppe, die den Cluster enthält:
-
-```azurecli
-az aks show -n myexistingcluster -g myresourcegroup --query id
-```
-
-Dieser Befehl gibt einen Wert zurück, der in etwa wie folgt aussieht:
-
-```text
-/subscriptions/{GUID}/resourcegroups/{myresourcegroup}/providers/Microsoft.ContainerService/managedClusters/{myexistingcluster}
-```
-
-Um den vorhandenen Cluster an Ihren Arbeitsbereich anzufügen, verwenden Sie den folgenden Befehl. Ersetzen Sie `aksresourceid` durch den Wert, der über den vorherigen Befehl zurückgegeben wurde. Ersetzen Sie `myresourcegroup` durch die Ressourcengruppe, die Ihren Arbeitsbereich enthält. Ersetzen Sie `myworkspace` durch den Namen Ihres Arbeitsbereichs.
-
-```azurecli
-az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w myworkspace
-```
-
-Weitere Informationen finden Sie unter [az ml computetarget attach aks](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/attach?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-attach-aks).
+Beim Herunter- und Abskalieren wird die CPU-Auslastung verwendet. Wenn der Schwellenwert für die CPU-Auslastung erreicht ist, wird das Front-End zuerst herunterskaliert. Wenn die CPU-Auslastung auf den Schwellenwert für die Abskalierung sinkt, erfolgt eine Abskalierung. Ein Hoch- und Aufskalieren erfolgt nur, wenn genügend Clusterressourcen verfügbar sind.
 
 ## <a name="deploy-to-aks"></a>Bereitstellen für AKS
 
@@ -237,8 +100,9 @@ Um ein Modell für Azure Kubernetes Service bereitzustellen, erstellen Sie eine 
 > [!NOTE]
 > Die Anzahl der bereitzustellenden Modelle ist auf 1.000 Modelle pro Bereitstellung (pro Container) beschränkt.
 
+<a id="using-the-cli"></a>
 
-### <a name="using-the-sdk"></a>Verwenden des SDK
+# <a name="python"></a>[Python](#tab/python)
 
 ```python
 from azureml.core.webservice import AksWebservice, Webservice
@@ -257,12 +121,12 @@ print(service.get_logs())
 
 Weitere Informationen zu den in diesem Beispiel verwendeten Klassen, Methoden und Parametern finden Sie in den folgenden Referenzdokumenten:
 
-* [AksCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute?view=azure-ml-py)
-* [AksWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py)
-* [Model.deploy](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)
-* [Webservice.wait_for_deployment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#wait-for-deployment-show-output-false-)
+* [AksCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute?view=azure-ml-py&preserve-view=true)
+* [AksWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py&preserve-view=true)
+* [Model.deploy](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)
+* [Webservice.wait_for_deployment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#&preserve-view=truewait-for-deployment-show-output-false-)
 
-### <a name="using-the-cli"></a>Verwenden der CLI
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Verwenden Sie für die Bereitstellung mit der CLI den folgenden Befehl. Ersetzen Sie `myaks` durch den Namen des AKS-Computeziels. Ersetzen Sie `mymodel:1` durch den Namen und die Version des registrierten Modells. Ersetzen Sie `myservice` durch den Namen, den dieser Dienst erhalten soll:
 
@@ -274,36 +138,57 @@ az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json 
 
 Weitere Informationen finden Sie in der [az ml model deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy)-Referenz.
 
-### <a name="using-vs-code"></a>Verwenden von VS Code
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Informationen zur Verwendung von VS Code finden Sie im Artikel zum [Bereitstellen von AKS über die VS Code-Erweiterung](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model).
 
 > [!IMPORTANT]
 > Für die Bereitstellung über VS Code muss der AKS-Cluster im Vorfeld erstellt oder an Ihren Arbeitsbereich angefügt werden.
 
-### <a name="understand-the-deployment-processes"></a>Grundlegendes zu Bereitstellungsvorgängen
+---
 
-Das Wort „Bereitstellung“ wird sowohl in Kubernetes als auch bei Azure Machine Learning verwendet. „Bereitstellung“ hat in diesen beiden Kontexten jedoch unterschiedliche Bedeutungen. In Kubernetes ist eine `Deployment` eine konkrete Entität, die mit einer deklarativen YAML-Datei angegeben wird. Eine Kubernetes-`Deployment` verfügt über einen definierten Lebenszyklus und konkrete Beziehungen zu anderen Kubernetes-Entitäten, z. B. `Pods` und `ReplicaSets`. Informationen zu Kubernetes in Form von Dokumenten und Videos finden Sie unter [Was ist Kubernetes?](https://aka.ms/k8slearning).
+### <a name="autoscaling"></a>Automatische Skalierung
 
-In Azure Machine Learning wird „Bereitstellung“ allgemeiner für das Verfügbarmachen und Bereinigen Ihrer Projektressourcen verwendet. Folgende Schritte werden in Azure Machine Learning als Teil der Bereitstellung betrachtet:
+Die Komponente, die die automatische Skalierung für Implementierungen von Azure ML-Modellen behandelt, ist azureml-fe, einem intelligenten Anforderungsrouter. Da er von allen Rückschlussanforderungen durchlaufen wird, verfügt er über die zum automatischen Skalieren der bereitgestellten Modelle erforderlichen Daten.
 
-1. Zippen der Dateien in Ihrem Projektordner, wobei die in „.amlignore“ oder „.gitignore“ angegebenen Dateien ignoriert werden
-1. Zentrales Hochskalieren Ihres Computeclusters (bezieht sich auf Kubernetes)
-1. Erstellen oder Herunterladen des Dockerfiles auf den Serverknoten (bezieht sich auf Kubernetes)
-    1. Das System berechnet einen Hashwert aus: 
-        - Dem Basisimage 
-        - Benutzerdefinierten Docker-Schritten (siehe [Bereitstellen eines Modells mithilfe eines benutzerdefinierten Docker-Basisimages](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image))
-        - Der Conda-Definitions-YAML-Datei (siehe [Erstellen und Verwenden von Softwareumgebungen in Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments))
-    1. Das System verwendet diesen Hash als Schlüssel in einer Suche nach der Azure Container Registry (ACR) für den Arbeitsbereich.
-    1. Wenn er nicht gefunden wird, wird nach einer Übereinstimmung in der globalen ACR gesucht.
-    1. Wenn keine gefunden wird, erstellt das System ein neues Image (das zwischengespeichert und bei der ACR des Arbeitsbereichs registriert wird).
-1. Herunterladen der gezippten Projektdatei in den temporären Speicher auf dem Serverknoten
-1. Entzippen der Projektdatei
-1. Ausführen von `python <entry script> <arguments>` auf dem Serverknoten
-1. Speichern von Protokollen, Modelldateien und anderen Dateien, die in dem Speicherkonto, das dem Arbeitsbereich zugeordnet ist, in `./outputs` geschrieben werden
-1. Zentrales Herunterskalieren von Compute, einschließlich Entfernen des temporären Speichers (bezieht sich auf Kubernetes)
+> [!IMPORTANT]
+> * **Aktivieren Sie die horizontale automatische Kubernetes-Podskalierung (HPA) nicht für Modellbereitstellungen**. Dies würde dazu führen, dass die beiden Komponenten für die automatische Skalierung miteinander konkurrieren würden. Azureml-fe ist für die automatische Skalierung von Modellen konzipiert, die von Azure ML bereitgestellt wurden, wobei HPA die Modellauslastung anhand einer generischen Metrik wie der CPU-Auslastung oder einer benutzerdefinierten Metrikkonfiguration erraten oder näherungsweise ermitteln müsste.
+> 
+> * **Azureml-fe skaliert die Anzahl der Knoten in einem AKS-Cluster nicht**, da dies zu unerwarteten Kostensteigerungen führen könnte. Stattdessen erfolgt eine **Skalierung der Anzahl der Replikate für das Modell** innerhalb der physischen Clustergrenzen. Wenn Sie die Anzahl der Knoten im Cluster skalieren müssen, können Sie den Cluster manuell skalieren oder die [Autoskalierung von AKS-Clustern konfigurieren](/azure/aks/cluster-autoscaler).
 
-Wenn Sie AKS verwenden, wird das zentrale Hoch- und Herunterskalieren von Compute durch Kubernetes gesteuert. Dabei wird das Dockerfile verwendet, das wie oben beschrieben erstellt oder erhalten wurde. 
+Die automatische Skalierung kann durch Festlegen von `autoscale_target_utilization`, `autoscale_min_replicas` und `autoscale_max_replicas` für den AKS-Webdienst gesteuert werden. Die Aktivierung der automatischen Skalierung wird im folgenden Beispiel veranschaulicht:
+
+```python
+aks_config = AksWebservice.deploy_configuration(autoscale_enabled=True, 
+                                                autoscale_target_utilization=30,
+                                                autoscale_min_replicas=1,
+                                                autoscale_max_replicas=4)
+```
+
+Skalierungsentscheidungen werden auf der Grundlage der Auslastung der aktuellen Containerreplikate getroffen. Zur Ermittlung der aktuellen Auslastung wird die Anzahl ausgelasteter Replikate (Replikate, die eine Anforderung verarbeiten) durch die Gesamtanzahl aktueller Replikate geteilt. Übersteigt dieser Wert `autoscale_target_utilization`, werden weitere Replikate erstellt. Ist der Wert niedriger, wird die Replikatanzahl verringert. Die Zielauslastung ist standardmäßig auf 70 Prozent festgelegt.
+
+Entscheidungen zum Hinzufügen von Replikaten sind eifrig und schnell (ungefähr 1 Sekunde). Die Entscheidung, Replikate zu entfernen, erfolgt zurückhaltend (etwa 1 Minute).
+
+Die erforderlichen Replikate können mithilfe des folgenden Codes berechnet werden:
+
+```python
+from math import ceil
+# target requests per second
+targetRps = 20
+# time to process the request (in seconds)
+reqTime = 10
+# Maximum requests per container
+maxReqPerContainer = 1
+# target_utilization. 70% in this example
+targetUtilization = .7
+
+concurrentRequests = targetRps * reqTime / targetUtilization
+
+# Number of container replicas
+replicas = ceil(concurrentRequests / maxReqPerContainer)
+```
+
+Weitere Informationen zum Festlegen von `autoscale_target_utilization`, `autoscale_max_replicas` und `autoscale_min_replicas` finden Sie in der Modulreferenz zu [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py).
 
 ## <a name="deploy-models-to-aks-using-controlled-rollout-preview"></a>Bereitstellen von Modellen in AKS mithilfe eines kontrollierten Rollouts (Vorschau)
 
@@ -395,7 +280,6 @@ endpoint.delete_version(version_name="versionb")
 
 ```
 
-
 ## <a name="web-service-authentication"></a>Webdienstauthentifizierung
 
 Bei der Bereitstellung in Azure Kubernetes Service ist die __schlüsselbasierte__ Authentifizierung standardmäßig aktiviert. Sie können auch die __tokenbasierte__ Authentifizierung aktivieren. Die tokenbasierte Authentifizierung erfordert, dass Clients ein Azure Active Directory-Konto verwenden, um ein Authentifizierungstoken anzufordern, mit dem Anforderungen an den bereitgestellten Dienst gesendet werden.
@@ -418,7 +302,7 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> Wenn Sie einen Schlüssel erneut generieren müssen, verwenden Sie [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py).
+> Wenn Sie einen Schlüssel erneut generieren müssen, verwenden Sie [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py&preserve-view=true).
 
 ### <a name="authentication-with-tokens"></a>Authentifizierung mit Tokens
 
@@ -444,7 +328,7 @@ print(token)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Schützen von Experimenten und Rückschlüssen in einem virtuellen Netzwerk](how-to-enable-virtual-network.md)
+* [Schützen von Rückschlussumgebungen mit Azure Virtual Network](how-to-secure-inferencing-vnet.md)
 * [Wie man ein Modell mit einem benutzerdefinierten Docker-Image bereitstellt](how-to-deploy-custom-docker-image.md)
 * [Problembehandlung von Bereitstellungen von Azure Machine Learning Service mit AKS und ACI](how-to-troubleshoot-deployment.md)
 * [Aktualisieren des Webdiensts](how-to-deploy-update-web-service.md)
