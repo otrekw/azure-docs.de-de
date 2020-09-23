@@ -603,7 +603,7 @@
       items:
         - name: Onlinesicherung und bedarfsgesteuerte Wiederherstellung
           href: online-backup-and-restore.md
-        - name: Kompatibilität
+        - name: Compliance
           href: compliance.md
         - name: "Azure\_Policy-Unterstützung"
           href: policy.md
@@ -768,6 +768,8 @@
                   href: ../dms/tutorial-mongodb-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
                 - name: Leitfaden zur Migrationsnachbereitung
                   href: mongodb-post-migration.md
+            - name: "Durchführen des Upgrades von MongoDB\_3.2 auf\_3.6"
+              href: mongodb-version-upgrade.md
             - name: Abrufen der Verbindungszeichenfolge
               href: connect-mongodb-account.md
             - name: Herstellen einer Verbindung mithilfe von Studio 3T
@@ -1108,7 +1110,7 @@
           href: how-to-migrate-from-change-feed-library.md
         - name: "Änderungsfeed: Async\_Java-Beispiel"
           href: create-sql-api-java-changefeed.md
-    - name: Analytics mit Azure Synapse Link
+    - name: Analytics und BI mit Azure Synapse Link
       items:
         - name: Konfigurieren von Azure Synapse Link
           href: configure-synapse-link.md
@@ -1116,6 +1118,8 @@
           href: ../synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Abfragen mit Azure Synapse Spark
           href: ../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+        - name: Verwenden von Power BI mit Synapse Link
+          href: synapse-link-power-bi.md
     - name: Integrierte Analysen mit Apache Spark
       items:
         - name: Spark-Connector in Azure Databricks
@@ -1198,12 +1202,16 @@
           href: monitor-cosmos-db-reference.md
         - name: Anwendungsprotokollierung mit Logic Apps
           href: ../logic-apps/logic-apps-scenario-error-and-exception-handling.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
-    - name: Lokale Entwicklung
+    - name: Lokales Entwickeln mit Emulator
       items:
-        - name: Verwenden des Emulators
+        - name: Installieren und Verwenden des Emulators
           href: local-emulator.md
-        - name: Exportieren von Zertifikaten
+        - name: Exportieren von Emulatorzertifikaten
           href: local-emulator-export-ssl-certificates.md
+        - name: Befehlszeilenparameter für den Emulator
+          href: emulator-command-line-parameters.md
+        - name: Behandeln von Emulatorproblemen
+          href: troubleshoot-local-emulator.md
         - name: Visual Studio Code-Erweiterung
           href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
     - name: Einrichten der Azure DevOps-CI/CD-Pipeline

@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/09/2020
-ms.openlocfilehash: 0e83f63e3c39f2aa20cd46f098185aba523e2478
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.date: 09/22/2020
+ms.openlocfilehash: ac0b04db783571b6ef31161adaf18b4220244c6a
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950475"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969817"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Previewfunktionen in Azure Cognitive Search
 
@@ -23,9 +23,8 @@ Previewfunktionen, die in die allgemeine Verfügbarkeit übergehen, werden aus d
 
 |Funktion&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Category | BESCHREIBUNG | Verfügbarkeit  |
 |---------|------------------|-------------|---------------|
-| [**AML-Skill (Azure Machine Learning)** ](cognitive-search-aml-skill.md) | KI-Anreicherung| Ein neuer Skilltyp zum Integrieren eines Rückschlussendpunkts aus Azure Machine Learning. Erste Schritte mit [diesem Tutorial](cognitive-search-tutorial-aml-custom-skill.md). | Verwenden Sie [Search-REST-API 2020-06-30-Preview](/rest/api/searchservice/) oder 2019-05-06-Preview. Ebenfalls im Portal im Skillsetentwurf verfügbar. Dabei wird davon ausgegangen, das die Dienste Cognitive Search und Azure ML im gleichen Abonnement bereitgestellt wurden. |
-| [**featuresMode-Parameter**](/rest/api/searchservice/search-documents#featuresmode) | Relevanz (Bewertung) | Erweiterung der Relevanzbewertung um Details: Ähnlichkeitsbewertung pro Feld, Ausdruckshäufigkeit pro Feld und Anzahl der zugeordneten eindeutigen Token pro Feld. Sie können diese Datenpunkte in [benutzerdefinierten Bewertungslösungen](https://github.com/Azure-Samples/search-ranking-tutorial) verwenden. | Fügen Sie diesen Abfrageparameter mithilfe von [Dokumente durchsuchen (REST)](/rest/api/searchservice/search-documents) in api-version=2020-06-30-Preview oder 2019-05-06-Preview hinzu. |
-| [**Verwaltete Dienstidentität**](search-howto-managed-identities-data-sources.md) | Indexer, Sicherheit| Registrieren Sie einen Suchdienst bei Azure Active Directory, um ihn zu einem vertrauenswürdigen Dienst zu machen, und verwenden Sie dann RBAC-Berechtigungen für Azure-Datenquellen, um den schreibgeschützten Zugriff durch einen Indexer zuzulassen. | Greifen Sie auf diese Funktion beim Verwenden des Portals oder mit [Datenquelle erstellen (REST)](/rest/api/searchservice/create-data-source) in api-version=2020-06-30-Preview oder api-version=2019-05-06-Preview zu. |
+| [**AML-Skill (Azure Machine Learning)** ](cognitive-search-aml-skill.md) | KI-Anreicherung| Ein neuer Skilltyp zum Integrieren eines Rückschlussendpunkts aus Azure Machine Learning. Erste Schritte mit [diesem Tutorial](cognitive-search-tutorial-aml-custom-skill.md). | Verwenden Sie [Search-REST-API 2020-06-30-Preview](https://docs.microsoft.com/rest/api/searchservice/) oder 2019-05-06-Preview. Ebenfalls im Portal im Skillsetentwurf verfügbar. Dabei wird davon ausgegangen, das die Dienste Cognitive Search und Azure ML im gleichen Abonnement bereitgestellt wurden. |
+| [**featuresMode-Parameter**](https://docs.microsoft.com/rest/api/searchservice/search-documents#featuresmode) | Relevanz (Bewertung) | Erweiterung der Relevanzbewertung um Details: Ähnlichkeitsbewertung pro Feld, Ausdruckshäufigkeit pro Feld und Anzahl der zugeordneten eindeutigen Token pro Feld. Sie können diese Datenpunkte in [benutzerdefinierten Bewertungslösungen](https://github.com/Azure-Samples/search-ranking-tutorial) verwenden. | Fügen Sie diesen Abfrageparameter mithilfe von [Dokumente durchsuchen (REST)](https://docs.microsoft.com/rest/api/searchservice/search-documents) in api-version=2020-06-30-Preview oder 2019-05-06-Preview hinzu. |
 | [**Debugsitzungen**](cognitive-search-debug-session.md) | Portal, KI-Anreicherung (Skillset) | Ein in die Sitzung integrierter Skillset-Editor, der zum Untersuchen und Beheben von Problemen bei einem Skillset verwendet wird. Während einer Debugsitzung angewendete Korrekturen können in einem Skillset im Dienst gespeichert werden. | Nur im Portal mithilfe von Links zur Seitenmitte zum Öffnen einer Debugsitzung. |
 | [**Natives vorläufiges Löschen von Blobs**](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection) | Indexer, Azure-Blobs| Der Azure Blob Storage-Indexer in Azure Cognitive Search erkennt Blobs, die sich im vorläufig gelöschten Zustand befinden. Das entsprechende Suchdokument wird während der Indizierung entfernt. | Fügen Sie diese Konfigurationseinstellung mithilfe von [Indexer erstellen (REST)](/rest/api/searchservice/create-indexer) in api-version=2020-06-30-Preview oder api-version=2019-05-06-Preview hinzu. |
 | [**Skill für benutzerdefinierte Entitätssuche**](cognitive-search-skill-custom-entity-lookup.md ) | KI-Anreicherung (Skillset) | Eine kognitive Fähigkeit, die nach Text aus einer benutzerdefinierten Liste von Wörtern und Ausdrücken sucht. Mithilfe dieser Liste werden alle Dokumente mit übereinstimmenden Entitäten mit einer Bezeichnung markiert. Die Qualifikation unterstützt auch einen gewissen Grad an Fuzzyübereinstimmung, der für die Suche nach ähnlichen, aber nicht exakten Übereinstimmungen verwendet werden kann. | Verweisen Sie auf diesen Preview-Skill über den Skillset-Editor im Portal oder mithilfe von [Skillset erstellen (REST)](/rest/api/searchservice/create-skillset) in api-version=2020-06-30-Preview oder api-version=2019-05-06-Preview. |
