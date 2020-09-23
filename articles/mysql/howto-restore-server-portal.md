@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/30/2020
-ms.openlocfilehash: 1a10d61c5dc35a19a8b02769a517d9f1c7aac601
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 7c9e7cda862fe1112cce7ed8cff270843f0a8475
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119224"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902789"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-portal"></a>Sichern und Wiederherstellen eines Servers in Azure Database for MySQL mit dem Azure-Portal
 
@@ -32,7 +32,7 @@ Bei der Erstellung des Servers treffen Sie im Fenster **Tarif** die Entscheidung
 
 Bei der Erstellung eines Servers über das Azure-Portal wählen Sie im Fenster **Tarif** entweder **Lokal redundant** oder **Georedundant** für die Sicherungen Ihres Servers aus. Außerdem wählen Sie in diesem Fenster die **Aufbewahrungszeit für Sicherung** aus. Hier wird angegeben, wie lange die Sicherungen gespeichert werden sollen (in Tagen).
 
-   ![Tarif – Auswählen der Sicherungsredundanz](./media/howto-restore-server-portal/pricing-tier.png)
+   :::image type="content" source="./media/howto-restore-server-portal/pricing-tier.png" alt-text="Tarif – Auswählen der Sicherungsredundanz":::
 
 Weitere Informationen zum Festlegen dieser Werte während der Erstellung finden Sie unter [Erstellen eines Servers für Azure Database for MySQL über das Azure-Portal](quickstart-create-mysql-server-database-using-azure-portal.md).
 
@@ -41,7 +41,7 @@ Die Option „Aufbewahrungszeit für Sicherung“ kann auf einem Server mit den 
 2. Wählen Sie Ihren Server für Azure Database for MySQL aus. Mit dieser Aktion wird die Seite **Übersicht** geöffnet.
 3. Wählen Sie im Menü unter **EINSTELLUNGEN** die Option **Tarif**. Mit dem Schieberegler können Sie die **Aufbewahrungszeit für Sicherung** auf einen Wert zwischen 7 und 35 Tagen festlegen.
 Im folgenden Screenshot wurde der Wert auf 34 Tage erhöht.
-![Erhöhung der Aufbewahrungszeit für Sicherung](./media/howto-restore-server-portal/3-increase-backup-days.png)
+:::image type="content" source="./media/howto-restore-server-portal/3-increase-backup-days.png" alt-text="Erhöhung der Aufbewahrungszeit für Sicherung":::
 
 4. Klicken Sie auf **OK**, um die Änderung zu bestätigen.
 
@@ -57,11 +57,11 @@ Mithilfe der folgenden Schritte wird der Status des Beispielservers zu einem bes
 
 2. Klicken Sie in der Symbolleiste auf der Seite **Übersicht** des Servers auf **Wiederherstellen**.
 
-   ![Azure Database for MySQL – Übersicht – Schaltfläche „Wiederherstellen“](./media/howto-restore-server-portal/2-server.png)
+   :::image type="content" source="./media/howto-restore-server-portal/2-server.png" alt-text="Azure Database for MySQL – Übersicht – Schaltfläche „Wiederherstellen“":::
 
 3. Geben Sie im Formular „Wiederherstellen“ die erforderlichen Informationen ein:
 
-   ![Azure Database for MySQL – Wiederherstellungsinformationen](./media/howto-restore-server-portal/3-restore.png)
+   :::image type="content" source="./media/howto-restore-server-portal/3-restore.png" alt-text="Azure Database for MySQL – Wiederherstellungsinformationen":::
    - **Wiederherstellungspunkt**: Wählen Sie den Zeitpunkt aus, für den der Zustand wiederhergestellt werden soll.
    - **Zielserver**: Geben Sie einen Namen für den neuen Server an.
    - **Standort**: Sie können die Region nicht auswählen. Standardmäßig ist dieser Wert mit dem Wert für den Quellserver identisch.
@@ -72,6 +72,12 @@ Mithilfe der folgenden Schritte wird der Status des Beispielservers zu einem bes
 5. Suchen Sie nach Abschluss der Wiederherstellung den neuen erstellten Server, um zu überprüfen, ob die Daten wie erwartet wiederhergestellt wurden.
 
 Der neue Server, der durch die Point-in-Time-Wiederherstellung erstellt wurde, verfügt über den gleichen Serveradministrator-Anmeldenamen (und das dazugehörige Kennwort), der für den vorhandenen Server zum gewählten Zeitpunkt gültig war. Sie können das Kennwort auf der Seite **Übersicht** des neuen Servers ändern.
+
+Zusätzlich gibt es nach Abschluss des Wiederherstellungsvorgangs zwei Serverparameter, die nach dem Wiederherstellungsvorgang auf Standardwerte zurückgesetzt werden (und nicht vom primären Server übernommen werden)
+*   time_zone: Dieser Wert wird auf den DEFAULT-Wert **SYSTEM** festgelegt.
+*   event_scheduler: Dieser Wert wird auf dem wiederhergestellten Server auf **OFF** festgelegt.
+
+Sie müssen den Wert vom primären Server kopieren und ihn auf dem wiederhergestellten Server festlegen, indem Sie den [Serverparameter](howto-server-parameters.md) erneut konfigurieren.
 
 Der neue Server, der während einer Wiederherstellung erstellt wird, weist nicht die VNET-Dienstendpunkte auf, die auf dem ursprünglichen Server vorhanden waren. Diese Regeln müssen separat für diesen neuen Server eingerichtet werden. Firewallregeln vom ursprünglichen Server werden wiederhergestellt.
 

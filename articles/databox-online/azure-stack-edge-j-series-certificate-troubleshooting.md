@@ -1,6 +1,6 @@
 ---
-title: Problembehandlung für Zertifikate mit Azure Stack Edge mit GPU | Microsoft-Dokumentation
-description: Beschreibt die Problembehandlung von Zertifikatsfehlern mit Azure Stack Edge GPU-Geräten.
+title: Beheben von Problemen mit Zertifikaten bei Azure Stack Edge Pro mit GPU | Microsoft-Dokumentation
+description: Beschreibt die Problembehandlung von Zertifikatsfehlern mit Azure Stack Edge Pro-GPU-Geräten.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 05338fb70bfa390ff3bd9e14e938edeb40938aeb
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: a0918c6cebd50231a9664811bb467e04d2d2bfd9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269436"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891327"
 ---
 # <a name="troubleshooting-certificate-errors"></a>Problembehandlung für Zertifikate
 
-Dieser Artikel enthält Informationen zur Problembehandlung von allgemeinen Zertifikatsfehlern beim Installieren von Zertifikaten auf einem Azure Stack Edge-Gerät.
+Dieser Artikel enthält Informationen zur Problembehandlung allgemeiner Zertifikatsfehler beim Installieren von Zertifikaten auf einem Azure Stack Edge Pro-Gerät.
 
 ## <a name="common-certificate-errors"></a>Häufige Zertifikatsfehler
 

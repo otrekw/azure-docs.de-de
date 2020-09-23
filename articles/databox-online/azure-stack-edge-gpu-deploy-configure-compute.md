@@ -1,6 +1,6 @@
 ---
-title: Tutorial zum Filtern und Analysieren von Daten mit Compute in Azure Stack Edge-Gerät mit GPU | Microsoft-Dokumentation
-description: Hier wird beschrieben, wie Sie die Computerolle für ein Azure Stack Edge-Gerät mit GPU konfigurieren und verwenden, um Daten vor dem Senden an Azure zu transformieren.
+title: Tutorial zum Filtern und Analysieren von Daten mit der Computerolle auf einem Azure Stack Edge Pro-Gerät mit GPU | Microsoft-Dokumentation
+description: In diesem Thema wird beschrieben, wie Sie die Computerolle für ein Azure Stack Edge Pro-Gerät mit GPU konfigurieren und verwenden, um Daten vor dem Senden an Azure zu transformieren.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,19 +8,19 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: f4a8786c8d86f43d3433dd51fe7696fd523025a9
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
+ms.openlocfilehash: 95c59cff1f47fe720e2dbc65c5b0a69a09be2f2f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89293551"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903181"
 ---
-# <a name="tutorial-configure-compute-on-azure-stack-edge-gpu-device"></a>Tutorial: Konfigurieren der Computerolle auf einem Azure Stack Edge-Gerät mit GPU
+# <a name="tutorial-configure-compute-on-azure-stack-edge-pro-gpu-device"></a>Tutorial: Konfigurieren der Computerolle auf einem Azure Stack Edge Pro-Gerät mit GPU
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-In diesem Tutorial wird beschrieben, wie Sie auf Ihrem Azure Stack Edge-Gerät eine Computerolle konfigurieren und einen Kubernetes-Cluster erstellen. 
+In diesem Tutorial wird beschrieben, wie Sie auf Ihrem Azure Stack Edge Pro-Gerät eine Computerolle konfigurieren und einen Kubernetes-Cluster erstellen. 
 
 Dieser Vorgang kann ca. 20 bis 30 Minuten dauern.
 
@@ -34,16 +34,16 @@ In diesem Tutorial lernen Sie Folgendes:
  
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Stellen Sie Folgendes sicher, bevor Sie eine Computerolle auf Ihrem Azure Stack Edge-Gerät einrichten:
+Stellen Sie Folgendes sicher, bevor Sie eine Computerolle auf Ihrem Azure Stack Edge Pro-Gerät einrichten:
 
-- Sie haben das Azure Stack Edge-Gerät, wie im [Tutorial: Verbinden, Einrichten und Aktivieren von Azure Stack Edge](azure-stack-edge-gpu-deploy-activate.md) beschrieben, aktiviert.
+- Sie haben das Azure Stack Edge Pro-Gerät aktiviert, wie unter [Aktivieren von Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-activate.md) beschrieben.
 - Stellen Sie sicher, dass Sie die Anweisungen unter [Aktivieren des Computenetzwerks](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md#enable-compute-network) befolgt und diese Schritte ausgeführt haben:
     - Aktivieren einer Netzwerkschnittstelle für Compute
     - Zuweisen von IP-Adressen für Kubernetes-Knoten und externer Dienst-IP-Adressen für Kubernetes
 
 ## <a name="configure-compute"></a>Konfigurieren der Computeumgebung
 
-Um Compute auf Ihrem Azure Stack Edge-Gerät zu konfigurieren, erstellen Sie im Azure-Portal eine IoT Hub-Ressource.
+Zur Konfiguration der Computerolle auf Ihrem Azure Stack Edge Pro-Gerät erstellen Sie im Azure-Portal eine IoT Hub-Ressource.
 
 1. Navigieren Sie im Azure-Portal für Ihre Azure Stack Edge-Ressource zu **Übersicht**. Wählen Sie im Bereich auf der rechten Seite auf der Kachel **Compute** die Option **Erste Schritte**.
 
@@ -72,17 +72,17 @@ Um Compute auf Ihrem Azure Stack Edge-Gerät zu konfigurieren, erstellen Sie im 
     ![Erste Schritte mit Compute](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-5.png)
 
     > [!NOTE]
-    > Wird das Dialogfeld **Compute konfigurieren** geschlossen, bevor die IoT Hub-Instanz mit dem Azure Stack Edge-Gerät verknüpft wird, wird die IoT Hub-Instanz erstellt, aber nicht in der Computekonfiguration angezeigt. 
+    > Wird das Dialogfeld **Compute konfigurieren** geschlossen, bevor die IoT Hub-Instanz mit dem Azure Stack Edge Pro-Gerät verknüpft wurde, wird die IoT Hub-Instanz erstellt, aber nicht in der Computekonfiguration angezeigt. 
     
 Wenn die Edge-Computerolle auf dem Edge-Gerät eingerichtet ist, werden zwei Geräte erstellt: ein IoT-Gerät und ein IoT Edge-Gerät. Beide Geräte können in der IoT Hub-Ressource angezeigt werden. Auf diesem IoT Edge-Gerät wird auch eine IoT Edge-Runtime ausgeführt. Derzeit ist für Ihr IoT Edge-Gerät nur die Linux-Plattform verfügbar.
 
 Die Computekonfiguration kann 20-30 Minuten dauern, da im Hintergrund virtuelle Computer und Kubernetes-Cluster erstellt werden. 
 
-Nachdem Sie Compute erfolgreich im Azure Portal konfiguriert haben, sind ein Kubernetes-Cluster und ein Standardbenutzer vorhanden, die dem IoT-Namespace (einem von Azure Stack Edge kontrollierter Systemnamespace) zugeordnet sind. 
+Nachdem Sie die Computerolle erfolgreich im Azure-Portal konfiguriert haben, sind ein Kubernetes-Cluster und ein Standardbenutzer vorhanden, die dem IoT-Namespace (einem von Azure Stack Edge Pro kontrollierten Systemnamespace) zugeordnet sind. 
 
 ## <a name="get-kubernetes-endpoints"></a>Abrufen der Kubernetes-Endpunkte
 
-Um einen Client für den Zugriff auf den Kubernetes-Cluster zu konfigurieren, benötigen Sie den Kubernetes-Endpunkt. Führen Sie die folgenden Schritte aus, um den Endpunkt „Kubernetes-API“ auf der lokalen Benutzeroberfläche Ihres Azure Stack Edge-Geräts abzurufen.
+Um einen Client für den Zugriff auf den Kubernetes-Cluster zu konfigurieren, benötigen Sie den Kubernetes-Endpunkt. Führen Sie die folgenden Schritte aus, um den Kubernetes-API-Endpunkt über die lokale Benutzeroberfläche Ihres Azure Stack Edge Pro-Geräts abzurufen.
 
 1. Navigieren Sie auf der lokalen Webbenutzeroberfläche Ihres Geräts zur Seite **Geräte**.
 2. Kopieren Sie unter **Geräteendpunkte** den Dienstendpunkt **Kubernetes-API**. Dieser Endpunkt ist eine Zeichenfolge im folgenden Format: `https://compute.<device-name>.<DNS-domain>[Kubernetes-cluster-IP-address]`. 
@@ -117,7 +117,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Abrufen der Kubernetes-Endpunkte
 
 
-Weitere Informationen zum Verwalten Ihres Azure Stack Edge-Geräts finden Sie im folgenden Artikel:
+Weitere Informationen zum Verwalten Ihres Azure Stack Edge Pro-Geräts finden Sie im folgenden Artikel:
 
 > [!div class="nextstepaction"]
-> [Verwenden der lokalen Webbenutzeroberfläche zum Verwalten von Azure Stack Edge](azure-stack-edge-manage-access-power-connectivity-mode.md)
+> [Verwenden der lokalen Webbenutzeroberfläche zum Verwalten von Azure Stack Edge Pro](azure-stack-edge-manage-access-power-connectivity-mode.md)

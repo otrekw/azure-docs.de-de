@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: 207172f10277589af2b22ae2f41b07234a0925b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e618395a2a4a11b4afb311d612cf5d0e27503dc6
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79477713"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898863"
 ---
 # <a name="module-assign-data-to-clusters"></a>Modul: Assign Data to Clusters
 
-Dieser Artikel beschreibt die Verwendung des Moduls *Assign Data to Clusters* im Azure Machine Learning-Designer (Vorschau). Das Modul generiert Vorhersagen durch ein Clusteringmodell, das mit dem *k-Means-Algorithmus* trainiert wurde.
+Dieser Artikel beschreibt die Verwendung des Moduls *Assign Data to Clusters* im Azure Machine Learning-Designer. Das Modul generiert Vorhersagen durch ein Clusteringmodell, das mit dem *k-Means-Algorithmus* trainiert wurde.
 
 Das Modul „Assign Data to Clusters“ gibt ein Dataset zurück, das die wahrscheinlichen Zuweisungen für jeden neuen Datenpunkt enthält. 
 

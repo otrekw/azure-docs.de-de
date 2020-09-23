@@ -39,6 +39,10 @@
       href: powershell-samples.md
 - name: Konzepte
   items:
+    - name: Regionsübergreifender Lastenausgleich
+      href: cross-region-overview.md
+    - name: Neuigkeiten
+      href: whats-new.md
     - name: Komponenten
       href: components.md
     - name: Konzepte

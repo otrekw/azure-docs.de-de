@@ -9,12 +9,12 @@ metadata:
   author: laurenhughes
   ms.author: lahugh
   ms.date: 07/21/2020
-  ms.openlocfilehash: 35138e4e5569ddfa46cb60c742e7ae0b3868c8cd
-  ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+  ms.openlocfilehash: 98d96c36e8ec801c2a8a5a87d0075f2d9b57bd98
+  ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/04/2020
-  ms.locfileid: "87563329"
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90984963"
 landingContent:
 - title: Informationen zu Azure Kubernetes Service (AKS)
   linkLists:
@@ -36,7 +36,7 @@ landingContent:
       url: concepts-security.md
     - text: Netzwerk
       url: concepts-network.md
-    - text: Speicher
+    - text: Storage
       url: concepts-storage.md
     - text: Skalieren
       url: concepts-scale.md
@@ -50,14 +50,14 @@ landingContent:
       url: kubernetes-walkthrough-portal.md
     - text: Resource Manager-Vorlage
       url: kubernetes-walkthrough-rm-template.md
-- title: Entwickeln und Debuggen von Anwendungen mit einem lokalen Prozess und Kubernetes
+- title: Entwickeln und Debuggen von Anwendungen mit Bridge to Kubernetes
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Verwenden des lokalen Prozesses mit Kubernetes und Visual Studio Code (Vorschau)
-      url: https://code.visualstudio.com/docs/containers/local-process-kubernetes
-    - text: Verwenden des lokalen Prozesses mit Kubernetes und Visual Studio (Vorschau)
-      url: /visualstudio/containers/local-process-kubernetes
+    - text: Verwenden von Bridge to Kubernetes mit Visual Studio Code
+      url: https://code.visualstudio.com/docs/containers/bridge-to-kubernetes
+    - text: Verwenden von Bridge to Kubernetes mit Visual Studio
+      url: /visualstudio/containers/bridge-to-kubernetes
 - title: Bereitstellen, Verwalten und Aktualisieren von Anwendungen
   linkLists:
   - linkListType: tutorial

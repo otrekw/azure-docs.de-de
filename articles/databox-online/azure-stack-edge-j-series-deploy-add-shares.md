@@ -1,6 +1,6 @@
 ---
-title: Tutorial zum Übertragen von Daten an Freigaben mit Azure Stack Edge GPU | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie Freigaben auf einem Azure Stack Edge-Gerät mit GPU hinzufügen und eine Verbindung mit diesen Freigaben herstellen.
+title: Tutorial zum Übertragen von Daten an Freigaben mit Azure Stack Edge Pro-Geräten mit GPU | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie Freigaben auf einem Azure Stack Edge Pro-Gerät mit GPU hinzufügen und eine Verbindung mit diesen Freigaben herstellen.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,19 +8,19 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 4d7453ba34a7bc1dd26d0201f604c9028974c1a2
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge Pro so I can use it to transfer data to Azure.
+ms.openlocfilehash: 3c0a72c9daa72cffcfe2e5e45bbb6214a13e0a7f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268926"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891110"
 ---
-# <a name="tutorial-transfer-data-via-shares-with-azure-stack-edge-gpu"></a>Tutorial: Übertragen von Daten an Freigaben auf einem Azure Stack Edge-Gerät mit GPU
+# <a name="tutorial-transfer-data-via-shares-with-azure-stack-edge-pro-gpu"></a>Tutorial: Übertragen von Daten über Freigaben mit einem Azure Stack Edge Pro-Gerät mit GPU
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-In diesem Tutorial erfahren Sie, wie Sie auf Ihrem Azure Stack Edge-Gerät Freigaben hinzufügen und eine Verbindung mit diesen Freigaben herstellen. Nachdem die Freigaben hinzugefügt wurden, kann Azure Stack Edge Daten an Azure übertragen.
+In diesem Tutorial erfahren Sie, wie Sie auf Ihrem Azure Stack Edge Pro-Gerät Freigaben hinzufügen und eine Verbindung mit diesen Freigaben herstellen. Nachdem die Freigaben hinzugefügt wurden, kann Azure Stack Edge Pro Daten an Azure übertragen.
 
 Dieser Vorgang kann bis zu zehn Minuten dauern.
 
@@ -33,11 +33,11 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Vergewissern Sie sich, dass Folgendes erfüllt ist, bevor Sie Ihrem Azure Stack Edge-Gerät Freigaben hinzufügen:
+Vergewissern Sie sich, dass Folgendes erfüllt ist, bevor Sie Ihrem Azure Stack Edge Pro-Gerät Freigaben hinzufügen:
 
-* Sie haben Ihr physisches Gerät gemäß der Anleitung unter [Tutorial: Installieren von Azure Stack Edge](azure-stack-edge-gpu-deploy-install.md) installiert.
+* Sie haben Ihr physisches Gerät gemäß der Anleitung unter [Installieren von Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-install.md) installiert.
 
-* Das physische Gerät wurde aktiviert, wie unter [Aktivieren Ihres Azure Stack Edge-Geräts](azure-stack-edge-gpu-deploy-activate.md) beschrieben.
+* Sie haben das physische Gerät wie unter [Aktivieren Ihres Azure Stack Edge Pro-Geräts](azure-stack-edge-gpu-deploy-activate.md) beschrieben aktiviert.
 
 ## <a name="add-a-share"></a>Hinzufügen einer Freigabe
 
@@ -66,7 +66,7 @@ Gehen Sie wie folgt vor, um eine Freigabe zu erstellen:
     Der ausgewählte Diensttyp hängt von dem Format ab, in dem die Daten in Azure verwendet werden sollen. In diesem Beispiel sollen die Daten als Blobblöcke in Azure gespeichert werden. Daher wählen wir **Blockblob** aus. Bei Verwendung von **Seitenblob** müssen Ihre Daten ganzzahlige Vielfache von 512 Bytes sein. VHDX-Daten sind beispielsweise immer ganzzahlige Vielfache von 512 Bytes.
 
    > [!IMPORTANT]
-   > Stellen Sie sicher, dass für das von Ihnen genutzte Azure Storage-Konto keine Unveränderlichkeitsrichtlinien festgelegt sind, falls Sie es mit einem Azure Stack Edge- oder Data Box Gateway-Gerät verwenden. Weitere Informationen finden Sie unter [Festlegen und Verwalten von Unveränderlichkeitsrichtlinien für Blobspeicher](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
+   > Stellen Sie sicher, dass für das von Ihnen verwendete Azure Storage-Konto keine Unveränderlichkeitsrichtlinien festgelegt sind, falls Sie es mit einem Azure Stack Edge Pro- oder Data Box Gateway-Gerät verwenden. Weitere Informationen finden Sie unter [Festlegen und Verwalten von Unveränderlichkeitsrichtlinien für Blobspeicher](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
 
     e. Erstellen Sie einen neuen Blobcontainer, oder wählen Sie in der Dropdownliste einen vorhandenen Blobcontainer aus. Geben Sie bei Erstellung eines Blobcontainers einen Containernamen an. Wenn ein Container noch nicht vorhanden ist, wird er im Speicherkonto mit dem neu erstellten Freigabenamen angelegt.
    
@@ -120,7 +120,7 @@ Gehen Sie auf dem Windows-Client, den Sie zum Herstellen der Verbindung mit dem 
 
 ### <a name="connect-to-an-smb-share"></a>Herstellen einer Verbindung mit einer SMB-Freigabe
 
-Stellen Sie auf dem Windows Server-Client, der mit Ihrem Azure Stack Edge-Gerät verbunden ist, eine Verbindung mit einer SMB-Freigabe her, indem Sie die folgenden Befehle eingeben:
+Stellen Sie auf dem Windows Server-Client, der mit Ihrem Azure Stack Edge Pro-Gerät verbunden ist, eine Verbindung mit einer SMB-Freigabe her, indem Sie die folgenden Befehle eingeben:
 
 
 1. Geben Sie in einem Befehlsfenster den folgenden Befehl ein:
@@ -158,7 +158,7 @@ Stellen Sie auf dem Windows Server-Client, der mit Ihrem Azure Stack Edge-Gerä
 
 ### <a name="connect-to-an-nfs-share"></a>Herstellen einer Verbindung mit einer NFS-Freigabe
 
-Führen Sie auf dem mit Ihrem Azure Stack Edge-Gerät verbundenen Linux-Client die folgenden Schritte aus:
+Führen Sie auf dem mit Ihrem Azure Stack Edge Pro-Gerät verbundenen Linux-Client die folgenden Schritte aus:
 
 1. Stellen Sie sicher, dass der NFSv4-Client auf dem Client installiert ist. Verwenden Sie zum Installieren des NFS-Clients den folgenden Befehl:
 
@@ -166,7 +166,7 @@ Führen Sie auf dem mit Ihrem Azure Stack Edge-Gerät verbundenen Linux-Client d
 
     Weitere Informationen finden Sie unter [Install NFSv4 client](https://help.ubuntu.com/community/NFSv4Howto) (Installieren des NFSv4-Clients).
 
-2. Führen Sie nach der Installation des NFS-Clients den folgenden Befehl aus, um die NFS-Freigabe einzubinden, die Sie auf Ihrem Azure Stack Edge-Gerät erstellt haben:
+2. Führen Sie nach der Installation des NFS-Clients den folgenden Befehl aus, um die NFS-Freigabe einzubinden, die Sie auf Ihrem Azure Stack Edge Pro-Gerät erstellt haben:
 
    `sudo mount -t nfs -o sec=sys,resvport <device IP>:/<NFS share on device> /home/username/<Folder on local Linux computer>`
 
@@ -176,7 +176,7 @@ Führen Sie auf dem mit Ihrem Azure Stack Edge-Gerät verbundenen Linux-Client d
     > Durch Verwendung der Option `sync` beim Einbinden von Freigaben werden die Übertragungsraten großer Dateien verbessert.
     > Vergewissern Sie sich vor dem Einbinden der Freigaben, dass die Verzeichnisse, die als Bereitstellungspunkte auf Ihrem lokalen Computer fungieren, bereits erstellt wurden. Diese Verzeichnisse dürfen keine Dateien oder Unterordner enthalten.
 
-    Das folgende Beispiel zeigt, wie Sie über NFS eine Verbindung mit einer Freigabe auf Ihrem Azure Stack Edge-Gerät herstellen. Die Geräte-IP lautet `10.10.10.60`. Die Freigabe `mylinuxshare2` wird in „ubuntuVM“ eingebunden. Der Bereitstellungspunkt der Freigabe ist `/home/azurestackedgeubuntuhost/edge`.
+    Das folgende Beispiel zeigt, wie Sie über NFS eine Verbindung mit einer Freigabe auf Ihrem Azure Stack Edge Pro-Gerät herstellen. Die Geräte-IP lautet `10.10.10.60`. Die Freigabe `mylinuxshare2` wird in „ubuntuVM“ eingebunden. Der Bereitstellungspunkt der Freigabe ist `/home/azurestackedgeubuntuhost/edge`.
 
     `sudo mount -t nfs -o sec=sys,resvport 10.10.10.60:/mylinuxshare2 /home/azurestackedgeubuntuhost/Edge`
 
@@ -188,15 +188,15 @@ Führen Sie auf dem mit Ihrem Azure Stack Edge-Gerät verbundenen Linux-Client d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial wurden unter anderem folgende Azure Stack Edge-Themen behandelt:
+In diesem Tutorial wurden unter anderem folgende Azure Stack Edge Pro-Themen behandelt:
 
 > [!div class="checklist"]
 > * Hinzufügen einer Freigabe
 > * Herstellen einer Verbindung mit einer Freigabe
 
-Um zu erfahren, wie Sie Ihre Daten mit Azure Stack Edge transformieren, fahren Sie mit dem nächsten Tutorial fort:
+Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie Ihre Daten mithilfe von Azure Stack Edge Pro transformieren:
 
 > [!div class="nextstepaction"]
-> [Transformieren von Daten mit Azure Stack Edge](./azure-stack-edge-j-series-deploy-configure-compute.md)
+> [Transformieren von Daten mit Azure Stack Edge Pro](./azure-stack-edge-j-series-deploy-configure-compute.md)
 
 
