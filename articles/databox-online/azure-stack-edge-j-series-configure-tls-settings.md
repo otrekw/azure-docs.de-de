@@ -1,6 +1,6 @@
 ---
-title: Konfigurieren von TLS 1.2 auf Windows-Clients, die auf ein Azure Stack Edge-GPU-Gerät zugreifen
-description: In diesem Artikel wird beschrieben, wie Sie TLS 1.2 auf Windows-Clients konfigurieren, die auf ein Azure Stack Edge-GPU-Gerät zugreifen.
+title: Konfigurieren von TLS 1.2 auf Windows-Clients mit Zugriff auf ein Azure Stack Edge Pro-GPU-Gerät
+description: In diesem Artikel wird beschrieben, wie Sie TLS 1.2 auf Windows-Clients konfigurieren, die auf ein Azure Stack Edge Pro-GPU-Gerät zugreifen.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: bf6b591ef3158a5944b1ebeb37dd0ef5935f7215
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 9a6b0910fcfd2a632f2520a2fe683b15592017cf
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268501"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891168"
 ---
-# <a name="configure-tls-12-on-windows-clients-accessing-azure-stack-edge-device"></a>Konfigurieren von TLS 1.2 auf Windows-Clients, die auf ein Azure Stack Edge-Gerät zugreifen
+# <a name="configure-tls-12-on-windows-clients-accessing-azure-stack-edge-pro-device"></a>Konfigurieren von TLS 1.2 auf Windows-Clients mit Zugriff auf ein Azure Stack Edge Pro-Gerät
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Wenn Sie über einen Windows-Client auf Ihr Azure Stack Edge-Gerät zugreifen, muss auf dem Client TLS 1.2 konfiguriert werden. In diesem Artikel finden Sie Ressourcen und Richtlinien für die Konfiguration von TLS 1.2 auf Ihrem Windows-Client. 
+Wenn Sie über einen Windows-Client auf Ihr Azure Stack Edge Pro-Gerät zugreifen, muss auf dem Client TLS 1.2 konfiguriert werden. In diesem Artikel finden Sie Ressourcen und Richtlinien für die Konfiguration von TLS 1.2 auf Ihrem Windows-Client. 
 
 Die hier aufgeführten Richtlinien basieren auf Tests, die auf einem Client mit Windows Server 2016 durchgeführt wurden.
 

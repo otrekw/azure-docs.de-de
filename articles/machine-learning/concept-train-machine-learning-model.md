@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: d0341e5a4d5dc036a4c3f90b2a25003137602694
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: b0a0420b470ee6bf0c7fbb9885e496eaabaf7ef4
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144837"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893541"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Trainieren von Modellen mit Azure Machine Learning
 
@@ -32,7 +32,7 @@ Azure Machine Learning bietet verschiedene Methoden zum Trainieren von Modellen,
 
 + [Azure Machine Learning SDK für R](#r-sdk): Das SDK für R verwendet das Paket „reticulate“ zur Bindung an das Python-SDK von Azure Machine Learning. Dadurch erhalten Sie Zugriff auf die im Python-SDK implementierten Kernobjekte und -methoden aus jeder R-Umgebung.
 
-+ **Designer**: Azure Machine Learning-Designer (Vorschauversion) bietet einen einfachen Einstiegspunkt in das maschinelle Lernen zum Erstellen von Proof of Concepts oder für Benutzer mit wenig Programmiererfahrung. Sie ermöglicht es Ihnen, Modelle per Drag & Drop über eine webbasierte Benutzeroberfläche zu trainieren. Sie können Python-Code als Teil des Designs verwenden oder Modelle trainieren, ohne Code zu schreiben.
++ **Designer**: Azure Machine Learning-Designer bietet einen einfachen Einstiegspunkt in das maschinelle Lernen zum Erstellen von Proof of Concepts oder für Benutzer mit wenig Programmiererfahrung. Sie ermöglicht es Ihnen, Modelle per Drag & Drop über eine webbasierte Benutzeroberfläche zu trainieren. Sie können Python-Code als Teil des Designs verwenden oder Modelle trainieren, ohne Code zu schreiben.
 
 + **CLI**: Die Befehlszeilenschnittstelle für das maschinelle Lernen stellt Befehle für häufige Aufgaben mit Azure Machine Learning bereit und wird häufig für **Skripting- und Automatisierungsaufgaben** verwendet. Nachdem Sie z. B. ein Trainingsskript oder eine Pipeline erstellt haben, können Sie mit der Befehlszeilenschnittstelle einen Trainingsdurchlauf starten, der sich nach einem Zeitplan oder nach der Aktualisierung der für das Training verwendeten Datendateien richtet. Für Trainingsmodelle werden Befehle bereitgestellt, die Trainingsaufträge übermitteln. Sie kann Aufträge über Laufzeitkonfigurationen oder Pipelines übermitteln.
 
@@ -42,13 +42,13 @@ Jede dieser Trainingsmethoden kann verschiedene Arten von Computeressourcen für
 
 Das Azure Machine Learning SDK für Python ermöglicht es Ihnen, Workflows für maschinelles Lernen mit Azure Machine Learning zu erstellen und auszuführen. Sie können mit dem Dienst über eine interaktive Python-Sitzung, Jupyter Notebooks, Visual Studio Code oder eine andere integrierte Entwicklungsumgebung (IDE) interagieren.
 
-* [Was ist das Azure Machine Learning SDK für Python?](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
-* [Installieren/Aktualisieren des SDKs](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
+* [Was ist das Azure Machine Learning SDK für Python?](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)
+* [Installieren/Aktualisieren des SDKs](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
 * [Konfigurieren einer Entwicklungsumgebung für Azure Machine Learning](how-to-configure-environment.md)
 
 ### <a name="run-configuration"></a>Laufzeitkonfiguration
 
-Ein allgemeiner Trainingsauftrag mit Azure Machine Learning kann mit der [Laufzeitkonfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) definiert werden. Die Laufzeitkonfiguration wird dann zusammen mit Ihren Trainingsskripts verwendet, um ein Modell auf einem Computeziel zu trainieren.
+Ein allgemeiner Trainingsauftrag mit Azure Machine Learning kann mit der [Laufzeitkonfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py&preserve-view=true) definiert werden. Die Laufzeitkonfiguration wird dann zusammen mit Ihren Trainingsskripts verwendet, um ein Modell auf einem Computeziel zu trainieren.
 
 Sie können mit einer Laufzeitkonfiguration für Ihren lokalen Computer beginnen und dann bei Bedarf zu einer Laufzeitkonfiguration für ein cloudbasiertes Computeziel wechseln. Wenn Sie das Computeziel ändern, wird nur die von Ihnen verwendete Laufzeitkonfiguration geändert. Eine Ausführung protokolliert auch Informationen zum Trainingsauftrag wie Eingaben, Ausgaben und Protokolle.
 

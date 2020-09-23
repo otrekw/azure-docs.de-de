@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/13/2020
-ms.openlocfilehash: 5f00164e90d625c5343103290e9272f15d164cd8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6d59d2fabb0b74ef12e33f55467b0ba68e0b7386
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094994"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907954"
 ---
 # <a name="fast-forest-quantile-regression"></a>Schnelle gesamtstrukturbasierte Quantilregression
 
-In diesem Artikel wird ein Modul in Azure Machine Learning-Designer (Vorschauversion) beschrieben.
+In diesem Artikel wird ein Modul im Azure Machine Learning-Designer beschrieben.
 
 Verwenden Sie dieses Modul zur Erstellung eines Modells für die schnelle gesamtstrukturbasierte Quantilregression in einer Pipeline. Die schnelle gesamtstrukturbasierte Quantilregression ist nützlich, wenn Sie mehr über die Verteilung des vorausberechneten Werts wissen möchten und keinen einzelnen mittleren Vorhersagewert erhalten möchten. Diese Methode hat zahlreiche Anwendungsmöglichkeiten, so z. B.:  
   
@@ -32,7 +32,7 @@ Dieser Regressionsalgorithmus ist eine **überwachte** Lernmethode, d. h. sie e
 
 ## <a name="more-about-quantile-regression"></a>Weitere Informationen zur Quantilregression
 
-Es gibt viele verschiedene Arten von Regression. Im Prinzip bedeutet Regression das Anpassen eines Modells an ein Ziel, das als numerischer Vektor ausgedrückt ist. Allerdings haben Statistiker zunehmend elaboriertere Methoden für die Regression entwickelt.
+Es gibt viele verschiedene Arten von Regression. Einfach gesagt bedeutet Regression das Anpassen eines Modells an ein Ziel, das als numerischer Vektor ausgedrückt ist. Allerdings haben Statistiker zunehmend elaboriertere Methoden für die Regression entwickelt.
 
 Die einfachste Definition von *Quantil* ist ein Wert, der eine Datenmenge in gleich große Gruppen unterteilt. Somit markieren die Quantilwerte die Grenzen zwischen Gruppen. Statistisch gesehen sind Quantile Werte, die in regelmäßigen Abständen anhand des Kehrwerts der kumulativen Verteilungsfunktion einer zufälligen Variable bestimmt werden.
 

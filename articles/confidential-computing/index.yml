@@ -1,0 +1,115 @@
+### YamlMime:Landing
+title: Dokumentation zu Azure Confidential Computing
+summary: Azure Confidential Computing bietet Lösungen, die die Isolation Ihrer vertraulichen Daten ermöglichen, während diese in der Cloud verarbeitet werden. Hier erfahren Sie anhand von Konzepten, Tutorials und Codebeispielen, wie Sie Anwendungen auf der Grundlage einer Confidential Computing-Infrastruktur erstellen und bereitstellen. Verwenden Sie Confidential Computing-basierte Microsoft-Produkte, um Ihre Workloads bestmöglich zu schützen.
+metadata:
+  title: Azure Confidential Computing
+  description: Hier erfahren Sie, wie Azure Confidential Computing zum Schutz verwendeter Daten beiträgt und wie Sie vertrauliche Workloads in der Cloud erstellen.
+  ms.service: virtual-machines
+  ms.subservice: workloads
+  ms.topic: landing-page
+  author: JBCook
+  ms.author: jencook
+  ms.date: 09/22/2020
+  ms.openlocfilehash: abe5104ff5425103baaca72efdc960a34ffc6a73
+  ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90991991"
+landingContent:
+- title: Informationen zu Azure Confidential Computing
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Azure Confidential Computing?
+      url: overview.md
+    - text: Szenarien
+      url: use-cases-scenarios.md
+  - linkListType: concept
+    links:
+    - text: Virtuelle Computer
+      url: confidential-computing-enclaves.md
+    - text: Containercompute in AKS
+      url: confidential-containers.md
+    - text: Anwendungsentwicklung
+      url: application-development.md
+    - text: Nachweis
+      url: attestation.md
+  - linkListType: reference
+    links:
+    - text: Virtuelle Intel SGX-Computer
+      url: ../virtual-machines/dcv2-series.md
+- title: Virtuelle Computer
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Virtuelle Intel SGX-Computer
+      url: confidential-computing-enclaves.md
+  - linkListType: concept
+    links:
+    - text: Lösungen auf virtuellen Computern
+      url: virtual-machine-solutions.md
+  - linkListType: quickstart
+    links:
+    - text: Bereitstellen im Azure-Portal
+      url: quick-create-portal.md
+    - text: Bereitstellen im Azure Marketplace
+      url: quick-create-marketplace.md
+  - linkListType: reference
+    links:
+    - text: Häufig gestellte Fragen zu virtuellen Computern für Confidential Computing
+      url: faq.md
+    - text: Preise
+      url: https://azure.microsoft.com/pricing/details/virtual-machines/linux/#DC1s-C8s%20v2
+    - text: Verfügbarkeit
+      url: https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines
+- title: Containercompute
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: AKS-Knoten (Azure Kubernetes Service) für Confidential Computing (Vorschauversion)
+      url: confidential-nodes-aks-overview.md
+  - linkListType: concept
+    links:
+    - text: Vertrauliche Container
+      url: confidential-containers.md
+    - text: Enclave-fähige Container
+      url: enclave-aware-containers.md
+    - text: Out-of-Proc-Nachweis
+      url: confidential-nodes-out-of-proc-attestation.md
+  - linkListType: quickstart
+    links:
+    - text: Einfache Enclave-Container-App in AKS
+      url: confidential-nodes-aks-get-started.md
+  - linkListType: sample
+    links:
+    - text: Beispiele für vertrauliche Container (unveränderte Container in SGX)
+      url: https://github.com/Azure-Samples/confidential-container-samples
+    - text: Beispiele für Enclave-fähige Container
+      url: https://github.com/Azure-Samples/enclave-aware-container-samples
+  - linkListType: reference
+    links:
+    - text: Häufig gestellte Fragen zu vertraulichen Knoten in AKS
+      url: confidential-nodes-aks-overview.md
+    - text: Informationen zu Azure Kubernetes Service (AKS)
+      url: ../aks/intro-kubernetes.md
+- title: Vertrauliche Clouddienste
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Microsoft Azure Attestation
+      url: ../attestation/overview.md
+    - text: ONNX-Runtime für vertrauliches Rückschließen
+      url: https://aka.ms/confidentialinference
+- title: Erstellen mit Confidential Computing
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Demo mit vertraulichen Gesundheitsdaten in AKS
+      url: https://github.com/Azure-Samples/confidential-container-samples
+    - text: Bestätigte gegenseitige TLS mit Open Enclave in AKS
+      url: https://github.com/Azure-Samples/enclave-aware-container-samples
+  - linkListType: reference
+    links:
+    - text: OE SDK (Open Enclave)
+      url: https://aka.ms/oesdkGitHubRepo

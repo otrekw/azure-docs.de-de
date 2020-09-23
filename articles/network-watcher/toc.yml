@@ -31,6 +31,8 @@
       href: connection-monitor-preview.md
     - name: Diagnostizieren von Problemen mit dem Filter für VM-Netzwerkdatenverkehr
       href: network-watcher-ip-flow-verify-overview.md
+    - name: Diagnostizieren von NSG-Regeln und Datenverkehrsfilterung
+      href: network-watcher-network-configuration-diagnostics-overview.md
     - name: Diagnostizieren von VM-Routingproblemen
       href: network-watcher-next-hop-overview.md
     - name: Diagnostizieren von Problemen mit der ausgehenden VM-Kommunikation

@@ -109,7 +109,7 @@
           href: howto-run-a-job.md
     - name: Transformieren
       items:
-        - name: Exportieren von Daten in Cloudziele (Vorschau)
+        - name: Exportieren von Daten in Cloudziele
           href: howto-export-data.md
         - name: Exportieren von Daten in Cloudziele (Legacy)
           href: howto-export-data-legacy.md

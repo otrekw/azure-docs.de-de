@@ -1,33 +1,33 @@
 ---
-title: Microsoft Azure Stack Edge – Übersicht | Microsoft-Dokumentation
-description: Beschreibt Azure Stack Edge, eine Speicherlösung, die ein physisches Gerät für die netzwerkbasierte Übertragung nach Azure verwendet.
+title: Microsoft Azure Stack Edge Pro – Übersicht | Microsoft-Dokumentation
+description: Beschreibt Azure Stack Edge Pro, eine Speicherlösung, die ein physisches Gerät für die netzwerkbasierte Übertragung nach Azure verwendet.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 11/04/2019
+ms.date: 09/09/2020
 ms.author: alkohli
-ms.openlocfilehash: c44d15e36135b8cf8c97484718d4600f8ba03521
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 7030030699668b3d316743955dabfb2cc175f6e1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82564236"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893877"
 ---
-# <a name="what-is-azure-stack-edge"></a>Was ist Azure Stack Edge?
+# <a name="what-is-azure-stack-edge-pro-with-fpga"></a>Was ist Azure Stack Edge Pro mit FPGA?
 
 [!INCLUDE [data-box-edge-gateway-rename-note](../../includes/data-box-edge-gateway-rename-note.md)]
 
-Azure Stack Edge ist ein KI-fähiges Edgecomputinggerät mit Netzwerkfunktionen für die Datenübertragung. Dieser Artikel bietet Ihnen einen Überblick über die Azure Stack Edge-Lösung, ihre Vorteile, ihre wichtigsten Funktionen und die Szenarien, in denen Sie dieses Gerät bereitstellen können.
+Azure Stack Edge Pro mit FPGA ist ein KI-fähiges Edgecomputinggerät mit Netzwerkfunktionen für die Datenübertragung. Dieser Artikel bietet Ihnen einen Überblick über die Azure Stack Edge Pro-Lösung mit FPGA. Dabei werden die Vorteile der Lösung, ihre wichtigsten Funktionen und die Szenarien beschrieben, in denen Sie das Gerät bereitstellen können.
 
-Azure Stack Edge ist eine HaaS-Lösung (Hardware-as-a-Service). Microsoft liefert Ihnen ein cloudseitig verwaltetes Gerät mit einem integrierten FPGA (Field Programmable Gate Array), das beschleunigte KI-Rückschlüsse ermöglicht und alle Funktionen eines Netzwerkspeichergateways bietet. 
+Azure Stack Edge Pro mit FPGA ist eine HaaS-Lösung (Hardware-as-a-Service). Microsoft liefert Ihnen ein cloudseitig verwaltetes Gerät mit einem integrierten FPGA (Field Programmable Gate Array), das beschleunigte KI-Rückschlüsse ermöglicht und alle Funktionen eines Netzwerkspeichergateways bietet. 
 
 ## <a name="use-cases"></a>Anwendungsfälle
 
-Dies sind die verschiedenen Szenarien, in denen Azure Stack Edge für schnelle Machine Learning-Rückschlüsse (ML) am Edge sowie für die Vorverarbeitung von Daten verwendet werden kann, bevor diese an Azure gesendet werden.
+Dies sind die verschiedenen Szenarien, in denen Azure Stack Edge Pro für schnelle ML-Rückschlüsse (Machine Learning) am Edge sowie für die Vorverarbeitung von Daten verwendet werden kann, bevor diese an Azure gesendet werden.
 
-- **Rückschluss mit Azure Machine Learning**: Mit Azure Stack Edge können Sie ML-Modelle ausführen, um schnell Ergebnisse zu erzielen, auf die Sie reagieren können, bevor die Daten in die Cloud übertragen werden. Das gesamte Dataset kann optional übertragen werden, um Ihre ML-Modelle weiter zu trainieren und zu verbessern. Weitere Informationen zur Verwendung der Azure ML-Modelle mit Hardwarebeschleunigung auf dem Azure Stack Edge-Gerät finden Sie unter [Bereitstellen von Azure ML-Modellen mit Hardwarebeschleunigung auf Azure Stack Edge](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server).
+- **Rückschlüsse mit Azure Machine Learning**: Mit Azure Stack Edge Pro können Sie ML-Modelle ausführen, um schnell Ergebnisse zu erzielen, auf die Sie reagieren können, bevor die Daten in die Cloud übertragen werden. Das gesamte Dataset kann optional übertragen werden, um Ihre ML-Modelle weiter zu trainieren und zu verbessern. Weitere Informationen zur Verwendung der Azure ML-Modelle mit Hardwarebeschleunigung auf dem Azure Stack Edge Pro-Gerät finden Sie unter [Bereitstellen von Azure ML-Modellen mit Hardwarebeschleunigung auf Azure Stack Edge Pro](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server).
 
 - **Vorverarbeiten von Daten**: Transformieren Sie Daten vor dem Senden an Azure, um einen aussagekräftigeren Datensatz zu erstellen. Die Vorverarbeitung ermöglicht Folgendes: 
 
@@ -36,11 +36,11 @@ Dies sind die verschiedenen Szenarien, in denen Azure Stack Edge für schnelle M
     - Teilmengen von Daten zur Optimierung von Speicher und Bandbreite oder für die weitere Analyse.
     - Analysieren von und Reagieren auf IoT-Ereignisse. 
 
-- **Übertragen von Daten über das Netzwerk an Azure**: Verwenden Sie Azure Stack Edge, um Daten einfach und schnell nach Azure zu übertragen. Dadurch werden weitere Berechnungen und Analysen oder eine Archivierung ermöglicht. 
+- **Übertragen von Daten über das Netzwerk an Azure**: Verwenden Sie Azure Stack Edge Pro, um Daten einfach und schnell an Azure zu übertragen. Dadurch werden weitere Berechnungen und Analysen oder eine Archivierung ermöglicht. 
 
 ## <a name="key-capabilities"></a>Wichtige Funktionen
 
-Azure Stack Edge bietet die folgenden Funktionen:
+Azure Stack Edge Pro bietet die folgenden Funktionen:
 
 |Funktion |BESCHREIBUNG  |
 |---------|---------|
@@ -50,7 +50,7 @@ Azure Stack Edge bietet die folgenden Funktionen:
 |Datenzugriff     | Direkter Datenzugriff aus Azure Storage-Blobs und Azure Files über Cloud-APIs zur zusätzlichen Datenverarbeitung in der Cloud. Lokaler Cache auf dem Gerät wird für schnellen Zugriff auf zuletzt verwendete Dateien verwendet.|
 |Von der Cloud verwaltet     |Das Gerät und der Dienst werden über das Azure-Portal verwaltet.  |
 |Hochladen von Daten im Offlinemodus     | Der Modus „Getrennt“ unterstützt Szenarien für das Hochladen von Daten im Offlinemodus.|
-|Unterstützte Protokolle     | Für die Datenerfassung werden die Standardprotokolle SMB und NFS unterstützt. <br> Weitere Informationen zu den unterstützten Versionen finden Sie unter [Systemanforderungen für Azure Stack Edge](azure-stack-edge-system-requirements.md).|
+|Unterstützte Protokolle     | Für die Datenerfassung werden die Standardprotokolle SMB und NFS unterstützt. <br> Weitere Informationen zu den unterstützten Versionen finden Sie unter [Systemanforderungen für Azure Stack Edge Pro](azure-stack-edge-system-requirements.md).|
 |Datenaktualisierung     | Möglichkeit, lokale Dateien mit den neuesten Informationen aus der Cloud zu aktualisieren.|
 |Verschlüsselung    | BitLocker-Unterstützung zur lokalen Verschlüsselung von Daten und zur sicheren Datenübertragung in die Cloud über *HTTPS*.|
 |Bandbreiteneinschränkung| Drosselung, um die Bandbreitennutzung während der Spitzenzeiten einzuschränken.|
@@ -58,32 +58,32 @@ Azure Stack Edge bietet die folgenden Funktionen:
 
 ## <a name="components"></a>Komponenten
 
-Die Azure Stack Edge-Lösung umfasst die Azure Stack Edge-Ressource, ein physisches Azure Stack Edge-Gerät und eine lokale Webbenutzeroberfläche.
+Die Azure Stack Edge Pro-Lösung umfasst die Azure Stack Edge-Ressource, ein physisches Azure Stack Edge Pro-Gerät und eine lokale Webbenutzeroberfläche.
 
-* **Physisches Azure Stack Edge-Gerät**: Ein von Microsoft bereitgestellter 1U-Rackserver, der konfiguriert werden kann, um Daten an Azure zu senden.
+* **Physisches Azure Stack Edge Pro-Gerät**: ein von Microsoft bereitgestellter 1U-Rackserver, der für das Senden von Daten an Azure konfiguriert werden kann.
     
-* **Azure Stack Edge-Ressource:** Eine Ressource im Azure-Portal, mit der Sie ein Azure Stack Edge-Gerät über eine zentrale Webbenutzeroberfläche verwalten können, auf die von verschiedenen geografischen Standorten aus zugegriffen werden kann. Verwenden Sie die Azure Stack Edge-Ressource, um Ressourcen zu erstellen und zu verwalten, Geräte und Warnungen anzuzeigen und zu verwalten sowie Freigaben zu verwalten.  
+* **Azure Stack Edge-Ressource**: eine Ressource im Azure-Portal, mit der Sie ein Azure Stack Edge Pro-Gerät über eine zentrale Webbenutzeroberfläche verwalten können, auf die von verschiedenen geografischen Standorten aus zugegriffen werden kann. Verwenden Sie die Azure Stack Edge-Ressource, um Ressourcen zu erstellen und zu verwalten, Geräte und Warnungen anzuzeigen und zu verwalten sowie Freigaben zu verwalten.  
 
     <!--![The Azure Stack Edge service in Azure portal](media/data-box-overview/data-box-Edge-service1.png)-->
 
-    Weitere Informationen finden Sie unter [Erstellen eines Auftrags für ein Azure Stack Edge-Gerät](azure-stack-edge-deploy-prep.md#create-a-new-resource).
+    Weitere Informationen finden Sie unter [Erstellen eines Auftrags für ein Azure Stack Edge Pro-Gerät](azure-stack-edge-deploy-prep.md#create-a-new-resource).
 
-* **Lokale Webbenutzeroberfläche für Azure Stack Edge**: Mithilfe der lokalen Webbenutzeroberfläche können Sie Diagnosen ausführen, das Azure Stack Edge-Gerät herunterfahren und neu starten, Kopierprotokolle anzeigen und den Microsoft-Support kontaktieren, um eine Serviceanfrage zu stellen.
+* **Lokale Webbenutzeroberfläche für Azure Stack Edge Pro**: Mithilfe der lokalen Webbenutzeroberfläche können Sie Diagnosen ausführen, das Azure Stack Edge Pro-Gerät herunterfahren und neu starten, Kopierprotokolle anzeigen und den Microsoft-Support kontaktieren, um eine Serviceanfrage zu stellen.
 
-    <!--![The Azure Stack Edge local web UI](media/data-box-Edge-overview/data-box-Edge-local-web-ui.png)-->
+    <!--![The Azure Stack Edge Pro local web UI](media/data-box-Edge-overview/data-box-Edge-local-web-ui.png)-->
 
-    Informationen zur Verwendung der webbasierten Benutzeroberfläche finden Sie unter [Verwenden der webbasierten Benutzeroberfläche zum Verwalten Ihres Azure Stack Edge-Geräts](azure-stack-edge-manage-access-power-connectivity-mode.md).
+    Informationen zur Verwendung der webbasierten Benutzeroberfläche finden Sie unter [Verwenden der webbasierten Benutzeroberfläche zum Verwalten Ihres Azure Stack Edge Pro-Geräts](azure-stack-edge-manage-access-power-connectivity-mode.md).
 
 ## <a name="region-availability"></a>Regionale Verfügbarkeit
 
-Das physische Azure Stack Edge-Gerät, die Azure-Ressource und das Zielspeicherkonto, an das Sie Daten übertragen, müssen sich nicht in derselben Region befinden.
+Das physische Azure Stack Edge Pro-Gerät, die Azure-Ressource und das Zielspeicherkonto, an das Sie Daten übertragen, müssen sich nicht in derselben Region befinden.
 
-- **Ressourcenverfügbarkeit**: Eine Liste aller Regionen, in denen die Azure Stack Edge-Ressource verfügbar ist, finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Azure Stack Edge kann auch in der Azure Government-Cloud bereitgestellt werden. Weitere Informationen finden Sie unter [What is Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) (Was ist Azure Government?).
+- **Ressourcenverfügbarkeit**: Eine Liste aller Regionen, in denen die Azure Stack Edge-Ressource verfügbar ist, finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Azure Stack Edge Pro kann auch in der Azure Government-Cloud bereitgestellt werden. Weitere Informationen finden Sie unter [What is Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) (Was ist Azure Government?).
     
-- **Zielspeicherkonten**: Die Speicherkonten, in denen die Daten gespeichert werden, sind in allen Azure-Regionen verfügbar. Die Regionen, in denen die Speicherkonten Azure Stack Edge-Daten speichern, sollten sich in der Nähe des Gerätestandorts befinden, um optimale Leistung zu erzielen. Ein weit entfernt vom Gerät befindliches Speicherkonto führt zu langen Wartezeiten und einer langsameren Leistung.
+- **Zielspeicherkonten**: Die Speicherkonten, in denen die Daten gespeichert werden, sind in allen Azure-Regionen verfügbar. Für eine optimale Leistung sollten sich die Regionen, in denen die Speicherkonten Azure Stack Edge Pro-Daten speichern, in der Nähe des Gerätestandorts befinden. Ein weit entfernt vom Gerät befindliches Speicherkonto führt zu langen Wartezeiten und einer langsameren Leistung.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Sehen Sie sich die [Azure Stack Edge-Systemanforderungen](azure-stack-edge-system-requirements.md) an.
-- Machen Sie sich mit den [Einschränkungen für Azure Stack Edge](azure-stack-edge-limits.md) vertraut.
-- Stellen Sie [Azure Stack Edge](azure-stack-edge-deploy-prep.md) im Azure-Portal bereit.
+- Überprüfen Sie die [Systemanforderungen für Azure Stack Edge Pro](azure-stack-edge-system-requirements.md).
+- Machen Sie sich mit den [Einschränkungen von Azure Stack Edge Pro](azure-stack-edge-limits.md) vertraut.
+- Stellen Sie [Azure Stack Edge Pro](azure-stack-edge-deploy-prep.md) im Azure-Portal bereit.

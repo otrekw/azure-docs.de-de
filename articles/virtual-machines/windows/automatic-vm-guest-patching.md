@@ -5,14 +5,14 @@ author: mayanknayar
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 09/09/2020
 ms.author: manayar
-ms.openlocfilehash: 720f9dfc09d27a18460037bfbbd15ae4bfc88707
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 47ac9fa91f391442691661a3ba03dd1f0d918601
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89236578"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669061"
 ---
 # <a name="preview-automatic-vm-guest-patching-for-windows-vms-in-azure"></a>Vorschau: Automatische VM-Gastpatches für Windows-VMs in Azure
 
@@ -192,7 +192,7 @@ PUT on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/
 Verwenden Sie das Cmdlet [Set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem), um beim Erstellen oder Aktualisieren einer VM automatische VM-Gastpatches zu aktivieren.
 
 ```azurepowershell-interactive
-Set-AzVMOperatingSystem -VM $$VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -ProvisionVMAgent -EnableAutoUpdate -PatchMode "AutomaticByPlatform"
+Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -ProvisionVMAgent -EnableAutoUpdate -PatchMode "AutomaticByPlatform"
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0

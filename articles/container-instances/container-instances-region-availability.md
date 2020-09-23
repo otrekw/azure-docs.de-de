@@ -3,13 +3,12 @@ title: Ressourcenverfügbarkeit in verschiedenen Region
 description: Verfügbarkeit von Compute- und Arbeitsspeicherressourcen für den Azure Container Instances-Dienst in verschiedenen Azure-Regionen
 ms.topic: article
 ms.date: 04/27/2020
-ms.author: danlep
-ms.openlocfilehash: 591d7dd07ea3717303589cdc070623068c4d3864
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 97baa5199a1803bd967c0b55c846908ea5a2ddcf
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500605"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565428"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Ressourcenverfügbarkeit für Azure Container Instances in Azure-Regionen
 

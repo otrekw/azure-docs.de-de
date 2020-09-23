@@ -1,0 +1,84 @@
+### YamlMime:Landing
+title: Dokumentation zu verwaltetem HSM von Azure Key Vault
+summary: Hier erfahren Sie, wie Sie mithilfe eines verwalteten HSM Schlüssel für den Zugriff auf und die Verschlüsselung von Cloudressourcen, Apps und Lösungen erstellen und verwalten. Tutorials, API-Referenzen und mehr.
+metadata:
+  title: Azure-Dokumentation zu verwaltetem HSM
+  description: Hier erfahren Sie, wie Sie mithilfe eines verwalteten HSM Schlüssel für den Zugriff auf und die Verschlüsselung von Cloudressourcen, Apps und Lösungen erstellen und verwalten. Tutorials, API-Referenzen und mehr.
+  services: key-vault
+  ms.service: key-vault
+  ms.topic: landing-page
+  author: msmbaldwin
+  ms.author: mbaldwin
+  manager: rkarlin
+  ms.date: 09/15/2020
+  ms.openlocfilehash: d17d119528c04b270e9dffe5b824bafcc89472dc
+  ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90991981"
+landingContent:
+- title: Informationen zum verwalteten HSM von Azure Key Vault (Vorschauversion)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist verwaltetes HSM von Azure Key Vault?
+      url: overview.md
+    - text: REST-API-Übersicht
+      url: ../general/about-keys-secrets-certificates.md
+    - text: Unterstützte Schlüssel und Algorithmen
+      url: ../keys/about-keys.md
+- title: Konzept
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Bewährte Methoden für verwaltetes HSM
+      url: best-practices.md
+    - text: Zugriffssteuerung für verwaltetes HSM
+      url: access-control.md
+    - text: Sicherheitsdomäne
+      url: security-domain.md
+    - text: Lokale integrierte RBAC-Rollen
+      url: built-in-roles.md
+- title: Erste Schritte
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure CLI
+      url: quick-create-cli.md
+    - text: Azure Resource Manager
+      url: quick-create-template.md
+- title: Anleitungen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Verwalten mit der Azure CLI
+      url: key-management.md
+    - text: Rollenverwaltung für verwaltetes HSM
+      url: role-management.md
+    - text: Schützen des Zugriffs auf Ihr verwaltetes HSM
+      url: secure-your-managed-hsm.md
+- title: Tutorials
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Sichern und Wiederherstellen
+      url: backup-restore.md
+    - text: Notfallwiederherstellung
+      url: disaster-recovery-guide.md
+    - text: Importieren von durch HSM geschützten Schlüsseln (Übersicht)
+      url: hsm-protected-keys-byok.md
+    - text: Konfigurieren der Protokollierung für Ihre verwalteten HSMs
+      url: logging.md
+- title: Weitere Informationen zu Key Vault
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Übersicht über Key Vault
+      url: ../general/overview.md
+    - text: Grundlegende Schlüsseltresorkonzepte
+      url: ../general/basic-concepts.md
+    - text: 'Vorläufiges Löschen: Übersicht'
+      url: ../general/soft-delete-overview.md
+    - text: Sicherheitsübersicht
+      url: ../general/overview-security.md

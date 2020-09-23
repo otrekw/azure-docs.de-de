@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 15224afac33a3e236c2d1ed9f60515bdc2f34c4f
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: fe07d6d54296a3c55cb0b2cadb4d4ae0a311873b
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036792"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089563"
 ---
 # <a name="change-the-style-of-the-map"></a>Ändern des Kartenstils
 
@@ -82,7 +82,7 @@ Der Kartenbasisstil kann mithilfe der `setStyle`-Funktion und durch Festlegen de
 map.setStyle({ style: 'satellite' });
 ```
 
-Im folgenden Code wird nach dem Laden einer Karteninstanz der Kartenstil mithilfe der Funktion [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setstyle-styleoptions-) von `grayscale_dark` auf `satellite` aktualisiert.
+Im folgenden Code wird nach dem Laden einer Karteninstanz der Kartenstil mithilfe der Funktion [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#setstyle-styleoptions-) von `grayscale_dark` auf `satellite` aktualisiert.
 
 <br/>
 
@@ -97,14 +97,14 @@ Die Stilauswahl weist zwei verschiedene Layoutoptionen auf: `icon` und `list`. A
 
 Das folgende Bild zeigt das im `icon`-Layout angezeigte Stilauswahl-Steuerelement.
 
-:::image type="content" source="./media/choose-map-style/style-picker-icon-layout.png" alt-text="Listenlayout in der Stilauswahl":::
+:::image type="content" source="./media/choose-map-style/style-picker-icon-layout.png" alt-text="Symbollayout in der Stilauswahl":::
 
 Das folgende Bild zeigt das im `list`-Layout angezeigte Stilauswahl-Steuerelement.
 
 :::image type="content" source="./media/choose-map-style/style-picker-list-layout.png" alt-text="Listenlayout in der Stilauswahl":::
 
 > [!IMPORTANT]
->Standardmäßig listet das Stilauswahl-Steuerelement alle im S0-Tarif von Azure Maps verfügbaren Stile auf. Soll die Liste weniger Stile enthalten, können Sie an die Option `mapStyle` der Stilauswahl ein Array mit den Stilen übergeben, die in der Liste angezeigt werden sollen. Wenn Sie S1 verwenden und alle verfügbaren Stile anzeigen möchten, legen Sie die Option `mapStyles` der Stilauswahl auf `"all"` fest.
+> Standardmäßig listet das Stilauswahl-Steuerelement alle im S0-Tarif von Azure Maps verfügbaren Stile auf. Soll die Liste weniger Stile enthalten, können Sie an die Option `mapStyle` der Stilauswahl ein Array mit den Stilen übergeben, die in der Liste angezeigt werden sollen. Wenn Sie S1 verwenden und alle verfügbaren Stile anzeigen möchten, legen Sie die Option `mapStyles` der Stilauswahl auf `"all"` fest.
 
 Im folgenden Code wird gezeigt, wie Sie die standardmäßige Liste der Basisstile `mapStyles` außer Kraft setzen können. In diesem Beispiel legen wir die `mapStyles`-Option so fest, dass die Basisstile aufgelistet werden, die vom Stilauswahl-Steuerelement angezeigt werden sollen.
 

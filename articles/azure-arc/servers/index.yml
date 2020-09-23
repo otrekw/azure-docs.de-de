@@ -1,20 +1,20 @@
 ### YamlMime:Landing
-title: Azure Arc-Server (Vorschauversion)
-summary: Azure Arc-Server
+title: Server mit Azure Arc-Unterstützung
+summary: Server mit Azure Arc-Unterstützung
 metadata:
-  title: Azure Arc-Server
+  title: Server mit Azure Arc-Unterstützung
   description: Informationen zur Verwaltung lokaler Computer in Azure
   author: mgoedtel
   ms.service: azure-arc
   ms.topic: landing-page
   ms.date: 06/26/2020
   ms.author: magoedte
-  ms.openlocfilehash: 9080f5bb770f5cb86284b5816c340a614843038c
-  ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+  ms.openlocfilehash: f03e869e884fff8a1d196817b658c28bbdc55ca9
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/24/2020
-  ms.locfileid: "88763760"
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90908113"
 landingContent:
 - title: Verbinden von Computern mit Azure mithilfe von Servern mit Azure Arc-Aktivierung
   linkLists:
@@ -22,7 +22,7 @@ landingContent:
     links:
     - text: Was sind Server mit Azure Arc-Aktivierung?
       url: overview.md
-  - linkListType: quickstart
+  - linkListType: get-started
     links:
     - text: Verbinden von Computern mit Azure Arc über das Azure-Portal
       url: onboard-portal.md
@@ -30,3 +30,9 @@ landingContent:
       url: onboard-service-principal.md
     - text: Verbinden von Computern mit Azure mithilfe von PowerShell DSC
       url: onboard-dsc.md
+- title: Zehnminütige Schnellstartanleitungen
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Bereitstellen von Server-Agents mit Arc-Unterstützung
+      url: ./learn/quick-enable-hybrid-vm.md

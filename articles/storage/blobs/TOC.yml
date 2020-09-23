@@ -137,14 +137,14 @@
             - name: "Azure\_Storage-Verschlüsselung ruhender Daten"
               href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
               items:
-                - name: Von Kunden verwaltete Schlüssel mit Azure Key Vault
-                  href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Kundenseitig bereitgestellte Schlüssel in der Anforderung
-                  href: ../common/encryption-customer-provided-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Verschlüsselung mit kundenseitig verwalteten Schlüsseln
+                  href: ../common/customer-managed-keys-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Verschlüsselung in der Anforderung mit kundenseitig bereitgestellten Schlüsseln
+                  href: encryption-customer-provided-keys.md
+                - name: Verschlüsselungsbereiche
+                  href: encryption-scope-overview.md
             - name: Unveränderliche Blobs
               href: storage-blob-immutable-storage.md
-            - name: Erweiterter Schutz vor Bedrohungen
-              href: ../common/storage-advanced-threat-protection.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Integrierte Sicherheitskontrollen
               href: ../common/storage-security-controls.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Verwenden von privaten Azure-Endpunkten
@@ -380,19 +380,17 @@
                   items:
                     - name: Überprüfen des Verschlüsselungsschlüsselmodells für das Konto
                       href: ../common/storage-encryption-key-model-get.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Konfigurieren der von Kunden verwalteten Verschlüsselungsschlüssel
+                    - name: Konfigurieren der Verschlüsselung mit von Kunden verwalteten Schlüsseln
                       items:
-                        - name: Portal
-                          href: ../common/storage-encryption-keys-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                        - name: PowerShell
-                          href: ../common/storage-encryption-keys-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                        - name: Azure CLI
-                          href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                        - name: Speichern kundenseitig verwalteter Schlüssel in einem Schlüsseltresor
+                          href: ../common/customer-managed-keys-configure-key-vault.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                        - name: Speichern kundenseitig verwalteter Schlüssel in einem verwalteten HSM
+                          href: ../common/customer-managed-keys-configure-key-vault-hsm.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Angeben eines Verschlüsselungsschlüssels bei einer Anforderung
                   href: storage-blob-customer-provided-key.md
                 - name: Verwalten von Verschlüsselungsbereichen
                   href: encryption-scope-manage.md
-                - name: Aktivieren der Infrastrukturverschlüsselung für ein Speicherkonto
+                - name: Aktivieren der Infrastrukturverschlüsselung für das Konto
                   href: ../common/infrastructure-encryption-enable.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Konfigurieren der clientseitigen Verschlüsselung
               items:
@@ -414,6 +412,8 @@
                       href: ../common/transport-layer-security-configure-minimum-version.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                     - name: Konfigurieren der TLS-Version für eine Clientanwendung
                       href: ../common/transport-layer-security-configure-client-version.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Konfigurieren von Azure Defender für Bedrohungsschutz
+              href: ../common/azure-defender-storage-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Festlegen und Verwalten von Unveränderlichkeitsrichtlinien
               href: storage-blob-immutability-policies-manage.md
         - name: Verwalten der Datenredundanz

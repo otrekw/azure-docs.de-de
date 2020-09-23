@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: 081da2b3f6fbe97ebce21940d7e0ca8978793b15
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 83281a9dde0b29a9f8bfc2bd90114227bf9e769f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652099"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886377"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Was ist automatisiertes maschinelles Lernen (AutoML)?
 
@@ -78,8 +78,6 @@ Mithilfe von **Azure Machine Learning** können Sie automatisierte ML-Trainingse
 
    * Wenn Sie nur über eingeschränkte oder gar keine Erfahrung mit Code verfügen, testen Sie die Studioweboberfläche von Azure Machine Learning unter [https://ml.azure.com](https://ml.azure.com/).  
    * Informieren Sie sich als Python-Entwickler über das [Python SDK von Azure Machine Learning](how-to-configure-auto-train.md). 
-
-    [!INCLUDE [aml-applies-to-enterprise-sku](../../includes/aml-applies-to-enterprise-sku-inline.md)]  
     
 1. **Angeben der Quelle und des Formats der bezeichneten Trainingsdaten**: NumPy-Arrays oder Pandas-Datenrahmen.
 
@@ -172,25 +170,25 @@ Wägen Sie die folgenden Vor- und Nachteile gegeneinander ab, wenn Sie zwischen 
 
 ### <a name="feature-availability"></a>Verfügbarkeit von Funktionen 
 
- Wie in der folgenden Tabelle gezeigt stehen Ihnen mehr Features zur Verfügung, wenn Sie Remotecompute verwenden. Einige dieser Features sind nur in Unternehmensarbeitsbereichen verfügbar.
+ Wie in der folgenden Tabelle gezeigt stehen Ihnen mehr Features zur Verfügung, wenn Sie Remotecompute verwenden. 
 
-| Funktion                                                    | Remote | Lokal | Erforderlich <br>Unternehmensarbeitsbereich |
-|------------------------------------------------------------|--------|-------|-------------------------------|
-| Datenstreaming (Unterstützung großer Datenmengen, bis zu 100 GB)          | ✓      |       | ✓                             |
-| DNN-BERT-basierte Textfeaturisierung und -training             | ✓      |       | ✓                             |
-| Direkt einsatzbereite GPU-Unterstützung (Training und Rückschlüsse)        | ✓      |       | ✓                             |
-| Unterstützung von Bildklassifizierung und Bezeichnungen                  | ✓      |       | ✓                             |
-| Auto-ARIMA-, Prophet- und ForecastTCN-Modelle für Vorhersagen | ✓      |       | ✓                             |
-| Mehrere parallele Ausführungen/Iterationen                       | ✓      |       | ✓                             |
-| Erstellen von Modellen mit Interpretierbarkeit in der AutoML Studio-Webbenutzeroberfläche      | ✓      |       | ✓                             |
-| Anpassung des Feature Engineering in der AutoML Studio-Webbenutzeroberfläche                        | ✓      |       | ✓                              |
-| Azure ML-Hyperparameteroptimierung                             | ✓      |       |                               |
-| Unterstützung von Azure ML-Pipelineworkflows                         | ✓      |       |                               |
-| Fortsetzen einer Ausführung                                             | ✓      |       |                               |
-| Vorhersagen                                                | ✓      | ✓     | ✓                             |
-| Erstellen und Ausführen von Experimenten in Notebooks                    | ✓      | ✓     |                               |
-| Registrieren und Visualisieren der Informationen und Metriken von Experimenten auf der Benutzeroberfläche | ✓      | ✓     |                               |
-| Schutzmaßnahmen für Daten                                            | ✓      | ✓     |                               |
+| Funktion                                                    | Remote | Lokal | 
+|------------------------------------------------------------|--------|-------|
+| Datenstreaming (Unterstützung großer Datenmengen, bis zu 100 GB)          | ✓      |       | 
+| DNN-BERT-basierte Textfeaturisierung und -training             | ✓      |       |
+| Direkt einsatzbereite GPU-Unterstützung (Training und Rückschlüsse)        | ✓      |       |
+| Unterstützung von Bildklassifizierung und Bezeichnungen                  | ✓      |       |
+| Auto-ARIMA-, Prophet- und ForecastTCN-Modelle für Vorhersagen | ✓      |       | 
+| Mehrere parallele Ausführungen/Iterationen                       | ✓      |       |
+| Erstellen von Modellen mit Interpretierbarkeit in der AutoML Studio-Webbenutzeroberfläche      | ✓      |       |
+| Anpassung des Feature Engineering in der AutoML Studio-Webbenutzeroberfläche| ✓      |       |
+| Azure ML-Hyperparameteroptimierung                             | ✓      |       |
+| Unterstützung von Azure ML-Pipelineworkflows                         | ✓      |       |
+| Fortsetzen einer Ausführung                                             | ✓      |       |
+| Vorhersagen                                                | ✓      | ✓     |
+| Erstellen und Ausführen von Experimenten in Notebooks                    | ✓      | ✓     |
+| Registrieren und Visualisieren der Informationen und Metriken von Experimenten auf der Benutzeroberfläche | ✓      | ✓     |
+| Schutzmaßnahmen für Daten                                            | ✓      | ✓     |
 
 ## <a name="many-models"></a>Viele Modelle 
 
@@ -204,9 +202,9 @@ Die Erstellung eines Modells __für jede Instanz oder jede Einzelperson__ kann i
 
 ## <a name="automl-in-azure-machine-learning"></a>AutoML in Azure Machine Learning
 
-Azure Machine Learning bietet zwei Möglichkeiten für die Arbeit mit automatisiertem maschinellen Lernen
+Azure Machine Learning bietet zwei Möglichkeiten für die Arbeit mit automatisiertem maschinellen Lernen:
 
-* Für Kunden mit Codierungserfahrung, [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 
+* Für Kunden mit Codierungserfahrung, [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) 
 
 * Für Kunden mit begrenzten oder keinen Codierungserfahrungen, Azure Machine Learning Studio unter [https://ml.azure.com](https://ml.azure.com/)  
 
@@ -289,9 +287,9 @@ Anleitungsartikel bieten zusätzliche Informationen zu den Funktionen von AutoML
 
 Überprüfen Sie detaillierte Codebeispiele und Anwendungsfälle im [GitHub-Notebook-Repository für Beispiele zum automatisierten maschinellen Lernen](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/).
 
-### <a name="python-sdk-reference"></a>Referenz zum Python SDK 
+### <a name="python-sdk-reference"></a>Referenz zum Python SDK
 
-Vertiefen Sie Ihre Kenntnisse über SDK-Entwurfsmuster und Klassenspezifikationen mit der [AutoML-Klassenreferenzdokumentation](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py). 
+Vertiefen Sie Ihre Kenntnisse über SDK-Entwurfsmuster und Klassenspezifikationen mit der [AutoML-Klassenreferenzdokumentation](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true). 
 
 > [!Note]
 > Die Funktionen des automatisierten maschinellen Lernens sind auch in anderen Lösungen von Microsoft verfügbar: [ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview), [HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md), [Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated) und [SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)

@@ -1,0 +1,28 @@
+- name: Automatische Azure-Verwaltung
+  href: automanage-virtual-machines.md
+- name: Schnellstarts
+  expanded: true
+  items:
+    - name: Aktivieren auf virtuellen Computern im Azure-Portal
+      href: quick-create-virtual-machines-portal.md
+- name: Konzepte
+  expanded: true
+  items:
+    - name: Virtuelle Computer
+      href: automanage-virtual-machines.md
+    - name: Bewährte Methoden für virtuelle Computer
+      href: virtual-machines-best-practices.md
+- name: Anleitung
+  expanded: true
+  items:
+    - name: Erstellen benutzerdefinierter Einstellungen
+      href: virtual-machines-custom-preferences.md
+    - name: Aktivieren auf virtuellen Computern per Azure Policy
+      href: virtual-machines-policy-enable.md
+- name: Ressourcen
+  expanded: true
+  items:
+    - name: Häufig gestellte Fragen
+      href: faq.md
+    - name: Framework für die Cloudeinführung (Cloud Adoption Framework)
+      href: 'https://docs.microsoft.com/azure/cloud-adoption-framework/manage/azure-server-management'

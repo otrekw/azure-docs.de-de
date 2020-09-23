@@ -8,21 +8,19 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 07/08/2020
-ms.openlocfilehash: 437c2b8e42ed5128cc716eee23b8702ec012b481
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.date: 09/22/2020
+ms.openlocfilehash: 7185adf559f429feb0ada60fef65e1edb106da66
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890913"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907639"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Was ist ein Azure Machine Learning-Arbeitsbereich?
 
 Der Arbeitsbereich ist die Ressource der obersten Ebene für Azure Machine Learning und ein zentraler Ort für die Arbeit mit allen Artefakten, die Sie während der Nutzung von Azure Machine Learning erstellen.  Im Arbeitsbereich wird der Verlauf aller Trainingsläufe gespeichert, einschließlich Protokollen, Metriken, Ausgabe und einer Momentaufnahme Ihrer Skripts. Anhand dieser Informationen ermitteln Sie, welcher Trainingslauf das beste Modell ergibt.  
 
 Sobald Sie ein fertiges Modell haben, registrieren Sie es im Arbeitsbereich. Anschließend verwenden Sie das registrierte Modell und die Bewertungsskripts, um das Modell in Azure Container Instances, in Azure Kubernetes Service oder in einem FPGA (Field Programmable Gate Array) als REST-basierten HTTP-Endpunkt bereitzustellen. Sie können das Modell auch als Modul auf einem Azure IoT Edge-Gerät bereitstellen.
-
-Welche Preise und Features verfügbar sind, hängt davon ab, ob [Basic oder Enterprise Edition](overview-what-is-azure-ml.md#sku) für den Arbeitsbereich ausgewählt ist. Sie wählen die Edition aus, wenn Sie [den Arbeitsbereich erstellen](#create-workspace).  Sie können auch von Basic auf Enterprise Edition [upgraden](#upgrade).
 
 ## <a name="taxonomy"></a>Taxonomie 
 
@@ -53,8 +51,8 @@ Sie können auf folgende Arten mit Ihrem Arbeitsbereich arbeiten:
 
 + Im Web:
     + [Azure Machine Learning-Studio](https://ml.azure.com) 
-    + [Azure Machine Learning Designer (Vorschauversion)](concept-designer.md): nur in [Enterprise Edition](overview-what-is-azure-ml.md#sku)-Arbeitsbereichen verfügbar
-+ In jeder Python-Umgebung mit dem [Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
+    + [Azure Machine Learning-Designer](concept-designer.md) 
++ In jeder Python-Umgebung mit dem [Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)
 + In jeder R-Umgebung mit dem [Azure Machine Learning SDK für R (Vorschau)](https://azure.github.io/azureml-sdk-for-r/reference/index.html)
 + Über die Befehlszeile mit der [CLI-Erweiterung](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli) für Azure Machine Learning
 + [Azure Machine Learning-VS Code-Erweiterung](how-to-manage-resources-vscode.md#workspaces)
@@ -80,7 +78,6 @@ Sie können auch die folgenden Arbeitsbereichsverwaltungsaufgaben ausführen:
 |---------------------------|---------|---------|------------|------------|------------|
 | Erstellen eines Arbeitsbereichs        | **&check;**     | | **&check;** | **&check;** | **&check;** |
 | Verwalten des Arbeitsbereichszugriffs    | **&check;**   || |  **&check;**    ||
-| Upgrade auf Enterprise Edition    | **&check;** | **&check;**  | |     ||
 | Erstellen und Verwalten von Computeressourcen    | **&check;**   | **&check;** | **&check;** |  **&check;**   ||
 | Erstellen einer Notebook-VM |   | **&check;** | |     ||
 
@@ -89,44 +86,45 @@ Sie können auch die folgenden Arbeitsbereichsverwaltungsaufgaben ausführen:
 
 ## <a name="create-a-workspace"></a><a name='create-workspace'></a> Erstellen eines Arbeitsbereichs
 
-Wenn Sie einen Arbeitsbereich erstellen, entscheiden Sie, ob Sie ihn mit [Basic oder Enterprise Edition](overview-what-is-azure-ml.md#sku) erstellen. Die-Edition bestimmt die im Arbeitsbereich verfügbaren Features (Funktionen). Neben anderen Features bietet die Enterprise Edition Ihnen Zugriff auf [Azure Machine Learning Designer](concept-designer.md) und die Studio-Version zum Erstellen von [automatisierten Machine Learning-Experimenten](tutorial-first-experiment-automated-ml.md).  Weitere Informationen, auch zu den Preisen, finden Sie unter [Machine Learning Studio – Preise](https://azure.microsoft.com/pricing/details/machine-learning/).
-
 Es gibt mehrere Möglichkeiten zum Erstellen eines Arbeitsbereichs:  
 
 * Im [Azure-Portal](how-to-manage-workspace.md) steht eine Point-and-Click-Benutzeroberfläche zur Verfügung, über die Sie die einzelnen Schritte ausführen können.
-* Verwenden Sie das [Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace), um ohne weitere Vorbereitung einen Arbeitsbereich auf der Grundlage von Python-Skripts oder Jupiter Notebooks zu erstellen.
+* Verwenden Sie das [Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#&preserve-view=trueworkspace), um ohne weitere Vorbereitung einen Arbeitsbereich auf der Grundlage von Python-Skripts oder Jupiter Notebooks zu erstellen.
 * Nutzen Sie eine [Azure Resource Manager-Vorlage](how-to-create-workspace-template.md) oder die [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md), wenn Sie die Erstellung automatisieren oder mit Unternehmenssicherheitsstandards anpassen müssen.
 * Verwenden Sie die [VS Code-Erweiterung](how-to-manage-resources-vscode.md#create-a-workspace), wenn Sie mit Visual Studio Code arbeiten.
 
 > [!NOTE]
 > Für den Namen des Arbeitsbereichs wird die Groß-/Kleinschreibung nicht beachtet.
 
-## <a name="upgrade-to-enterprise-edition"></a><a name="upgrade"></a> Upgrade auf Enterprise Edition
-
-Sie können über das Azure-Portal [Ihren Arbeitsbereich von Basic auf Enterprise Edition upgraden](how-to-manage-workspace.md#upgrade). Es ist nicht möglich, einen Enterprise Edition-Arbeitsbereich in einen Basic Edition-Arbeitsbereich herabzustufen. 
-
 ## <a name="associated-resources"></a><a name="resources"></a> Zugeordnete Ressourcen
 
 Wenn Sie einen neuen Arbeitsbereich erstellen, werden darin automatisch mehrere Azure-Ressourcen erstellt, die vom Arbeitsbereich verwendet werden:
 
++ [Azure Storage-Konto](https://azure.microsoft.com/services/storage/): Wird als Standarddatenspeicher für den Arbeitsbereich verwendet.  Jupyter-Notebooks, die mit Ihren Azure Machine Learning-Compute-Instanzen verwendet werden, werden ebenfalls hier gespeichert. 
+  
+  > [!IMPORTANT]
+  > Beim Speicherkonto handelt es sich standardmäßig um ein Konto vom Typ „Universell V1“. Nach der Erstellung des Arbeitsbereichs können Sie ein [Upgrade auf „Universell V2“ durchführen](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade). Aktivieren Sie keinen hierarchischen Namespace für das Speicherkonto, nachdem Sie ein Upgrade auf Universell v2 ausgeführt haben.
+
+  Wenn Sie ein vorhandenes Azure Storage-Konto verwenden möchten, darf es sich nicht um ein Premium-Konto (Premium_LRS oder Premium_GRS) handeln. Es darf auch keinen hierarchischen Namespace aufweisen (mit Azure Data Lake Storage Gen2 verwendet). Weder Storage Premium noch hierarchische Namespaces werden mit dem _Standardspeicherkonto_ des Arbeitsbereichs unterstützt. Sie können Storage Premium noch hierarchische Namespaces mit _nicht standardmäßigen_ Speicherkonten verwenden.
+  
 + [Azure Container Registry](https://azure.microsoft.com/services/container-registry/): Registriert die Docker-Container, die Sie während des Trainings und bei der Modellbereitstellung verwenden. Um Kosten zu minimieren, wird ACR **verzögert geladen**, bis Bereitstellungsimages erstellt sind.
-+ [Azure Storage-Konto](https://azure.microsoft.com/services/storage/): Wird als Standarddatenspeicher für den Arbeitsbereich verwendet.  Jupyter-Notebooks, die mit Ihren Azure Machine Learning-Compute-Instanzen verwendet werden, werden ebenfalls hier gespeichert.
+
 + [Azure Application Insights](https://azure.microsoft.com/services/application-insights/): Speichert Überwachungsinformationen zu Ihren Modellen.
+
 + [Azure Key Vault](https://azure.microsoft.com/services/key-vault/): Speichert Geheimnisse, die von Computezielen verwendet werden, sowie andere vertrauliche Informationen, die vom Arbeitsbereich benötigt werden.
 
 > [!NOTE]
 > Neben dem Erstellen neuer Versionen können Sie auch vorhandene Azure-Dienste verwenden.
 
-### <a name="azure-storage-account"></a>Azure-Speicherkonto
+<a name="wheres-enterprise"></a>
 
-Das standardmäßig mit dem Arbeitsbereich erstellte Azure Storage-Konto ist ein Universell v1-Konto. Sie können dieses nach dem Erstellen des Arbeitsbereichs auf Universell v2 aktualisieren. Befolgen Sie hierzu die Schritte unter [Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Allgemein v2“](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
+## <a name="what-happened-to-enterprise-edition"></a>Was ist mit der Enterprise Edition passiert?
 
-> [!IMPORTANT]
-> Aktivieren Sie keinen hierarchischen Namespace für das Speicherkonto, nachdem Sie ein Upgrade auf Universell v2 ausgeführt haben.
+Ab September 2020 sind alle Funktionen, die in den Enterprise Edition-Arbeitsbereichen verfügbar waren, auch in den Basic Edition-Arbeitsbereichen verfügbar. Neue Enterprise-Arbeitsbereiche können nicht mehr erstellt werden.  Alle SDK-, CLI- oder Azure Resource Manager-Aufrufe, die den Parameter `sku` verwenden, funktionieren weiterhin, es wird jedoch ein Basic-Arbeitsbereich bereitgestellt.
 
-Wenn Sie ein vorhandenes Azure Storage-Konto verwenden möchten, darf es sich nicht um ein Premium-Konto (Premium_LRS oder Premium_GRS) handeln. Es darf auch keinen hierarchischen Namespace aufweisen (mit Azure Data Lake Storage Gen2 verwendet). Weder Storage Premium noch hierarchische Namespaces werden mit dem _Standardspeicherkonto_ des Arbeitsbereichs unterstützt. Sie können Storage Premium noch hierarchische Namespaces mit _nicht standardmäßigen_ Speicherkonten verwenden.
+Ab dem 21. Dezember werden alle Enterprise Edition-Arbeitsbereiche automatisch auf die Basic Edition festgelegt, die über die gleichen Funktionen verfügt. Während dieses Vorgangs tritt keine Downtime auf. Am 1. Januar 2021 wird die Enterprise Edition offiziell eingestellt. 
 
-
+In beiden Editionen sind Kunden für die Kosten der verbrauchten Azure-Ressourcen verantwortlich und müssen keine zusätzlichen Gebühren für Azure Machine Learning bezahlen. Ausführlichere Informationen finden Sie auf der [Preisseite für Azure Machine Learning](https://azure.microsoft.com/pricing/details/machine-learning/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -137,5 +135,5 @@ Informationen zu den ersten Schritten mit Azure Machine Learning finden Sie unte
 + [Verwalten eines Arbeitsbereichs](how-to-manage-workspace.md)
 + [Tutorial: Erste Schritte beim Erstellen Ihres ersten ML-Experiments mit dem Python SDK](tutorial-1st-experiment-sdk-setup.md)
 + [Tutorial: Erste Schritte mit Azure Machine Learning mit dem R SDK](tutorial-1st-r-experiment.md)
-+ [Tutorial: Erstellen Ihres ersten Klassifizierungsmodells mit automatisiertem maschinellem Lernen](tutorial-first-experiment-automated-ml.md) (nur in [Enterprise Edition](overview-what-is-azure-ml.md#sku)-Arbeitsbereichen verfügbar)
-+ [Tutorial: Prognostizieren von Automobilpreisen mit dem Designer](tutorial-designer-automobile-price-train-score.md) (nur in [Enterprise Edition](overview-what-is-azure-ml.md#sku)-Arbeitsbereichen verfügbar)
++ [Tutorial: Erstellen Ihres ersten Klassifizierungsmodells mit automatisiertem maschinellen Lernen](tutorial-first-experiment-automated-ml.md) 
++ [Tutorial: Prognostizieren von Automobilpreisen mit dem Designer](tutorial-designer-automobile-price-train-score.md)

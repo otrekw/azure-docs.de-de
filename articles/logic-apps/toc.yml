@@ -61,10 +61,14 @@
       items:
         - name: Erstellen auf der Grundlage von vorgefertigten Vorlagen
           href: logic-apps-create-logic-apps-from-templates.md
+        - name: Verwalten von Azure-Ressourcen durch Erstellen von Automatisierungsaufgaben
+          href: create-automation-tasks-azure-resources.md
         - name: Migrieren von BizTalk Services
           href: logic-apps-move-from-mabs.md
         - name: Exportieren von Flows aus Power Automate und Bereitstellen in Azure Logic Apps
           href: export-from-microsoft-flow-logic-app-template.md
+        - name: Erstellen zustandsbehafteter oder zustandsloser Workflows in Visual Studio Code
+          href: create-stateful-stateless-workflows-visual-studio-code.md
         - name: Steuern der Workflowausführung
           items:
             - name: Bedingungsanweisungen
@@ -166,8 +170,8 @@
               href: logic-apps-enterprise-integration-edifact-decode.md
             - name: Verarbeiten von EDIFACT-Dateien mit UNH2.5-Segmenten
               href: logic-apps-enterprise-integration-edifact_inputfile_unh2.5.md
-        - name: Austauschen von RosettaNet-Nachrichten
-          href: logic-apps-enterprise-integration-rosettanet.md
+            - name: Austauschen von RosettaNet-Nachrichten
+              href: logic-apps-enterprise-integration-rosettanet.md
         - name: Austauschen von X12-Nachrichten
           href: logic-apps-enterprise-integration-x12.md
           items:
@@ -312,7 +316,7 @@
         - name: Verwalten von Logik-Apps – Visual Studio
           href: manage-logic-apps-with-visual-studio.md
         - name: Verwalten von Integrationskonten
-          href: ./logic-apps-enterprise-integration-create-integration-account.md
+          href: logic-apps-enterprise-integration-create-integration-account.md
         - name: Verwalten von Integrationsdienstumgebungen
           href: ise-manage-integration-service-environment.md
         - name: Verschieben von Logik-App-Ressourcen
@@ -393,7 +397,7 @@
           href: logic-apps-track-integration-account-x12-tracking-schema.md
         - name: Benutzerdefiniertes Nachverfolgungsschema
           href: logic-apps-track-integration-account-custom-tracking-schema.md
-    - name: Integrierte Azure Policy-Aktionen
+    - name: Azure Policy-Integrationen
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
 - name: Ressourcen

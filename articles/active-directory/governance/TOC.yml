@@ -60,7 +60,7 @@
               href: entitlement-management-catalog-create.md
             - name: Delegieren an Zugriffspaketmanager
               href: entitlement-management-delegate-managers.md
-        - name: Zugriffspaketmanager
+        - name: Zugriffspaketmanager und Zugriffspaket-Zuweisungsmanager
           items:
             - name: Erstellen eines neuen Zugriffspakets
               href: entitlement-management-access-package-create.md
@@ -68,8 +68,10 @@
               href: entitlement-management-access-package-settings.md
             - name: Ändern von Ressourcenrollen
               href: entitlement-management-access-package-resources.md
-            - name: Ändern von Anforderungs- und Genehmigungseinstellungen
+            - name: Ändern von Anforderungseinstellungen
               href: entitlement-management-access-package-request-policy.md
+            - name: Ändern von Genehmigungseinstellungen
+              href: entitlement-management-access-package-approval-policy.md
             - name: Ändern von Lebenszykluseinstellungen
               href: entitlement-management-access-package-lifecycle-policy.md
             - name: Anzeigen von Anforderungen
