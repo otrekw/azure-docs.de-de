@@ -1,40 +1,38 @@
 ---
 title: Verwenden von Unterdrückungsregeln für Warnungen, um falsch positive oder andere unerwünschte Sicherheitswarnungen in Azure Security Center zu unterdrücken.
-description: In diesem Artikel wird erläutert, wie Sie mithilfe der Unterdrückungsregeln von Azure Security Center unerwünschte Sicherheitswarnungen ausblenden können.
+description: In diesem Artikel wird erläutert, wie Sie mithilfe der Unterdrückungsregeln von Azure Security Center unerwünschte Azure Defender-Warnungen ausblenden.
 author: memildin
 manager: rkarlin
 services: security-center
 ms.author: memildin
-ms.date: 05/04/2020
+ms.date: 09/10/2020
 ms.service: security-center
 ms.topic: conceptual
-ms.openlocfilehash: 341373c9a8429f335f3064db7a94973d34e0ca1c
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 0d4c2ddc6b18d2f6767fb3a2761bc6a247e101a1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042499"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904889"
 ---
-# <a name="suppress-alerts-from-azure-security-centers-threat-protection"></a>Unterdrücken von Warnungen aus dem Threat Protection-Modul von Azure Security Center
+# <a name="suppress-alerts-from-azure-defender"></a>Unterdrücken von Warnungen von Azure Defender
 
-Auf dieser Seite wird erläutert, wie Sie mithilfe von Unterdrückungsregeln für Warnungen falsch positive oder andere unerwünschte Sicherheitswarnungen in Azure Security Center unterdrücken können.
+Auf dieser Seite wird erläutert, wie Sie mithilfe von Unterdrückungsregeln für Warnungen False Positives oder andere unerwünschte Sicherheitswarnungen von Azure Defender unterdrücken können.
 
 ## <a name="availability"></a>Verfügbarkeit
 
 |Aspekt|Details|
 |----|:----|
 |Status des Release:|Vorschau|
-|Preise:|Free-Tarif<br>(Die meisten Sicherheitswarnungen gelten nur für den Standard-Tarif)|
+|Preise:|Kostenlos<br>(Die meisten Sicherheitswarnungen sind nur in Azure Defender verfügbar.)|
 |Erforderliche Rollen und Berechtigungen:|**Sicherheitsadministrator** und **Besitzer** können Regeln erstellen und löschen.<br>**Sicherheitsleseberechtigter** und **Leser** können Regeln anzeigen.|
 |Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) National/Sovereign (US Gov, China Gov, andere Gov)|
 |||
 
 
-
-
 ## <a name="what-are-suppression-rules"></a>Was sind Warnungsunterdrückungsregeln?
 
-Die Threat Protection-Komponenten von Azure Security Center erkennen Bedrohungen in allen Bereichen Ihrer Umgebung und generieren Sicherheitswarnungen.
+Die verschiedenen Azure Defender-Pläne erkennen Bedrohungen in einem bestimmten Bereich Ihrer Umgebung und generieren entsprechende Sicherheitswarnungen.
 
 Wenn eine einzelne Warnung nicht interessant oder relevant ist, können Sie sie manuell verwerfen. Alternativ können Sie die Funktion „Unterdrückungsregeln“ verwenden, um ähnliche Warnungen zukünftig automatisch zu verwerfen. In der Regel verwenden Sie eine Unterdrückungsregel in folgenden Fällen:
 
@@ -45,16 +43,15 @@ Wenn eine einzelne Warnung nicht interessant oder relevant ist, können Sie sie 
 Mit Unterdrückungsregeln definieren Sie die Kriterien, nach denen Warnungen automatisch verworfen werden sollen.
 
 > [!CAUTION]
-> Durch Unterdrücken von Sicherheitswarnungen wird der Bedrohungsschutz von Security Center verringert. Sie sollten die potenziellen Auswirkungen der Unterdrückungsregeln sorgfältig überprüfen und diese über einen bestimmten Zeitraum überwachen.
+> Durch das Unterdrücken von Sicherheitswarnungen wird die Effektivität des Bedrohungsschutzes von Azure Defender verringert. Sie sollten die potenziellen Auswirkungen der Unterdrückungsregeln sorgfältig überprüfen und diese über einen bestimmten Zeitraum überwachen.
 
-![Warnungsunterdrückungsregel erstellen](media\alerts-suppression-rules\create-suppression-rule.gif)
+:::image type="content" source="./media/alerts-suppression-rules/create-suppression-rule.gif" alt-text="Warnungsunterdrückungsregel erstellen":::
 
 ## <a name="create-a-suppression-rule"></a>Erstellen einer Unterdrückungsregel
 
 Es gibt einige Möglichkeiten, wie Sie Regeln zum Unterdrücken unerwünschter Sicherheitswarnungen erstellen können:
 
 - Warnungen auf Verwaltungsgruppenebene können Sie mithilfe von Azure Policy unterdrücken.
-
 - Um Warnungen auf Abonnementebene zu unterdrücken, können Sie wie im Folgenden erläutert das Azure-Portal oder die REST-API verwenden.
 
 Mit Unterdrückungsregeln können nur Warnungen verworfen werden, die für die ausgewählten Abonnements bereits ausgelöst wurden.
@@ -72,39 +69,32 @@ So erstellen Sie eine Regel direkt im Azure-Portal
         ![Schaltfläche „Neue Unterdrückungsregel erstellen“](media/alerts-suppression-rules/create-new-suppression-rule.png)
 
 1. Geben Sie im Bereich „Neue Unterdrückungsregel (Vorschau)“ Details zur neuen Regel ein.
-
-    - Mit der Regel kann die Warnung für **alle Ressourcen** verworfen werden, sodass zukünftig keine derartige Regel mehr angezeigt wird. 
-    
+    - Mit der Regel kann die Warnung für **alle Ressourcen** verworfen werden, sodass zukünftig keine derartige Regel mehr angezeigt wird.     
     - Mit der Regel kann die Warnung **nach bestimmten Kriterien** verworfen werden, z. B. wenn die Warnung sich auf eine bestimmte IP-Adresse, einen Prozessnamen, ein Benutzerkonto, eine Azure-Ressource oder einen Standort bezieht.
 
     > [!TIP]
     > Wenn Sie die Seite für die neue Regel über eine bestimmte Warnung geöffnet haben, werden die Warnung und das Abonnement automatisch in der neuen Regel konfiguriert. Wenn Sie den Link **Neue Unterdrückungsregel erstellen** verwendet haben, entsprechen die ausgewählten Abonnements dem aktuellen Filter im Portal.
 
     [![Bereich zum Erstellen von Unterdrückungsregeln](media/alerts-suppression-rules/new-suppression-rule-pane.png)](media/alerts-suppression-rules/new-suppression-rule-pane.png#lightbox)
-
 1. Geben Sie Details zur Regel ein:
-
     - **Name:** ein Name für die Regel. Regelnamen müssen mit einem Buchstaben oder einer Ziffer beginnen, müssen zwischen 2 und 50 Zeichen lang sein und dürfen keine anderen Symbole als Bindestriche (-) oder Unterstriche (_) enthalten. 
     - **Status:** „Aktiviert“ oder „Deaktiviert“.
     - **Grund:** Wählen Sie einen der integrierten Gründe oder „Sonstiger“ aus, wenn diese Ihren Anforderungen nicht entsprechen.
     - **Ablaufdatum:** ein Ablaufdatum und eine Ablaufzeit für die Regel. Regeln können bis zu sechs Monate lang gelten.
-
 1. Optional können Sie die Regel über die Schaltfläche **Simulate** (Simulieren) testen, um zu sehen, wie viele Warnungen verworfen werden, wenn die Regel aktiv ist.
-
 1. Speichern Sie die Regel. 
+
 
 ## <a name="edit-a-suppression-rules"></a>Bearbeiten einer Unterdrückungsregel
 
 Die erstellten Regeln können Sie auf der Seite der Unterdrückungsregeln bearbeiten.
 
 1. Wählen Sie oben auf der Security Center-Seite für Sicherheitswarnungen den Link **Unterdrückungsregeln** aus.
-
 1. Die Seite der Unterdrückungsregeln wird mit allen Regeln für das ausgewählte Abonnement geöffnet.
 
     [![Liste der Unterdrückungsregeln](media/alerts-suppression-rules/suppression-rules-page.png)](media/alerts-suppression-rules/suppression-rules-page.png#lightbox)
 
 1. Um eine einzelne Regel zu bearbeiten, öffnen Sie das Menü mit den Auslassungspunkten (...) für die Regel, und wählen Sie **Bearbeiten** aus.
-
 1. Nehmen Sie die gewünschten Änderungen vor, und wählen Sie dann **Anwenden** aus. 
 
 ## <a name="delete-a-suppression-rule"></a>Löschen einer Unterdrückungsregel
@@ -112,13 +102,9 @@ Die erstellten Regeln können Sie auf der Seite der Unterdrückungsregeln bearbe
 Wenn Sie eine oder mehrere der erstellten Regeln löschen möchten, verwenden Sie die Seite „Unterdrückungsregeln“.
 
 1. Wählen Sie oben auf der Security Center-Seite für Sicherheitswarnungen den Link **Unterdrückungsregeln** aus.
-
 1. Die Seite der Unterdrückungsregeln wird mit allen Regeln für das ausgewählte Abonnement geöffnet.
-
 1. Um eine einzelne Regel zu löschen, öffnen Sie das Menü mit den Auslassungspunkten (...) für die Regel, und wählen Sie **Löschen** aus.
-
 1. Wenn Sie mehrere Regeln löschen möchten, aktivieren Sie die Kontrollkästchen für die zu löschenden Regeln, und wählen Sie **Löschen** aus.
-
     ![Löschen einer oder mehrerer Unterdrückungsregeln](media/alerts-suppression-rules/delete-multiple-alerts.png)
 
 ## <a name="view-suppressed-alerts"></a>Anzeigen unterdrückter Warnungen
@@ -160,7 +146,6 @@ Ausführliche Informationen und Verwendungsbeispiele finden Sie in der [API-Doku
 
 In diesem Artikel wurden Unterdrückungsregeln in Azure Security Center beschrieben, mit denen unerwünschte Warnungen automatisch verworfen werden.
 
-Weitere Informationen zu Sicherheitswarnungen in Azure Security Center finden Sie auf den folgenden Seiten:
+Weitere Informationen zu Sicherheitswarnungen in Azure Defender finden Sie auf den folgenden Seiten:
 
-- [Sicherheitswarnungen und Kill Chain für Absichten:](alerts-reference.md) Referenzleitfaden für die Sicherheitswarnungen, die im Threat Protection-Modul von Azure Security Center möglicherweise angezeigt werden.
-- [Bedrohungsschutz in Azure Security Center:](threat-protection.md) Beschreibung der zahlreichen Aspekte Ihrer Umgebung, die über das Threat Protection-Modul von Azure Security Center überwacht werden.
+- [Sicherheitswarnungen und Kill Chain für Absichten:](alerts-reference.md) Eine Referenzanleitung zu den Sicherheitswarnungen, die Sie möglicherweise von Azure Defender erhalten.

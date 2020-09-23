@@ -1,6 +1,6 @@
 ---
-title: 'Upgrade auf den Standard-Tarif: Azure Security Center'
-description: In dieser Schnellstartanleitung wird veranschaulicht, wie Sie zur Erzielung von zusätzlicher Sicherheit ein Upgrade auf den Security Center-Tarif „Standard“ durchführen.
+title: 'Upgraden auf Azure Defender: Azure Security Center'
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie ein Upgrade auf Azure Defender von Security Center durchführen, um die Sicherheit zu verbessern.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,104 +14,91 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: 550c9ff57b9c558f2f175165c7f06ead45991be9
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: e51d0bfb79eab4db9bb571cc0f4ee70ada352d92
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88226010"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895778"
 ---
-# <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>Schnellstart: Einbinden Ihres Azure-Abonnements in Security Center Standard
-Azure Security Center bietet einheitliche Funktionen für die Sicherheitsverwaltung und den Schutz vor Bedrohungen für Ihre Hybrid Cloud-Workloads. Während der Free-Tarif nur eingeschränkte Sicherheit für Ihre Azure-Ressourcen bietet, erweitert der Standard-Tarif diese Funktionen auf lokale Umgebungen und andere Clouds. Security Center Standard hilft Ihnen, Sicherheitsrisiken zu finden und zu beseitigen, Zugriffs- und Anwendungssteuerungen anzuwenden, um böswillige Aktivitäten zu blockieren, Bedrohungen mithilfe von Analysen und intelligenter Funktionen zu erkennen und bei Angriffen schnell zu reagieren. Sie können Security Center Standard kostenlos testen. Weitere Informationen finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/security-center/).
+# <a name="quickstart-setting-up-azure-security-center"></a>Schnellstart: Einrichten von Azure Security Center
 
-In diesem Artikel führen Sie zur Erzielung von zusätzlicher Sicherheit ein Upgrade auf den Standard-Tarif durch und installieren den Log Analytics-Agent auf Ihren virtuellen Computern, um Sicherheitslücken und Bedrohungen ausfindig zu machen.
+Azure Security Center bietet einheitliche Funktionen für die Sicherheitsverwaltung und den Schutz vor Bedrohungen für Ihre Hybrid Cloud-Workloads. Die kostenlosen Features bieten lediglich eingeschränkte Sicherheit für Ihre Azure-Ressourcen. Durch Aktivieren von Azure Defender können Sie diese Funktionen auf lokale Umgebungen und andere Clouds ausweiten. Azure Defender hilft Ihnen dabei, Sicherheitsrisiken zu finden und zu beseitigen, Zugriffs- und Anwendungssteuerungen anzuwenden, um böswillige Aktivitäten zu blockieren, Bedrohungen mithilfe von Analysen und intelligenten Funktionen zu erkennen und bei Angriffen schnell zu reagieren. Sie können Azure Defender kostenlos testen. Weitere Informationen finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/security-center/).
+
+In diesem Artikel führen Sie zur Verbesserung der Sicherheit ein Upgrade auf Azure Defender durch und installieren den Log Analytics-Agent auf Ihren Computern, um Sicherheitslücken und Bedrohungen ausfindig zu machen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Für den Einstieg in Security Center benötigen Sie ein Microsoft Azure-Abonnement. Wenn Sie nicht über ein Abonnement verfügen, können Sie sich für ein [kostenloses Testkonto](https://azure.microsoft.com/pricing/free-trial/) registrieren.
 
-Um ein Abonnement auf den Standard-Tarif zu aktualisieren, muss Ihnen die Rolle „Abonnementbesitzer“, „Mitwirkender des Abonnements“ oder „Sicherheitsadministrator“ zugewiesen sein.
+Wenn Sie Azure Defender für ein Abonnement aktivieren möchten, muss Ihnen die Rolle „Abonnementbesitzer“, „Mitwirkender des Abonnements“ oder „Sicherheitsadministrator“ zugewiesen sein.
 
-## <a name="enable-your-azure-subscription"></a>Aktivieren Ihres Azure-Abonnements
+
+## <a name="open-security-center-for-the-first-time"></a>Erstmaliges Öffnen von Security Center
 
 1. Melden Sie sich beim [Azure-Portal](https://azure.microsoft.com/features/azure-portal/) an.
 
-1. Wählen Sie im Menü **Microsoft Azure** die Option **Security Center**. **Security Center – Übersicht** wird geöffnet.
+1. Wählen Sie im Menü des Portals die Option **Security Center** aus. 
 
-   ![Übersicht über das Security Center][2]
+    Daraufhin wird die Übersichtsseite von Security Center geöffnet.
 
-In der **Security Center – Übersicht** erhalten Sie einen vereinheitlichten Überblick über den Sicherheitsstatus Ihrer Hybrid Cloud-Workloads und können so die Sicherheit Ihrer Workloads ermitteln und bewerten sowie Risiken identifizieren und mindern. Das Security Center aktiviert automatisch alle Ihre Azure-Abonnements, die Sie oder ein anderer Abonnementbenutzer nicht zuvor dem Free-Tarif zugeordnet haben.
+    :::image type="content" source="./media/security-center-get-started/overview.png" alt-text="Übersichtsdashboard von Security Center" lightbox="./media/security-center-get-started/overview.png":::
 
-Sie können die Liste der Abonnements einsehen und filtern, indem Sie auf den Menüeintrag **Abonnements** klicken. Das Security Center beginnt anschließend mit der Bewertung der Sicherheit dieser Abonnements, um Sicherheitsrisiken auszumachen. Um die Arten von Beurteilungen anzupassen, können Sie die Sicherheitsrichtlinie ändern. Eine Sicherheitsrichtlinie definiert die gewünschte Konfiguration Ihrer Workloads und trägt zur Erfüllung unternehmensbezogener oder gesetzlicher Sicherheitsanforderungen bei.
+In der **Security Center – Übersicht** erhalten Sie einen vereinheitlichten Überblick über den Sicherheitsstatus Ihrer Hybrid Cloud-Workloads und können so die Sicherheit Ihrer Workloads ermitteln und bewerten sowie Risiken identifizieren und mindern. Security Center aktiviert automatisch und kostenlos alle Ihre Azure-Abonnements, für die zuvor kein Onboarding von Ihnen oder von einem anderen Abonnementbenutzer durchgeführt wurde.
+
+Sie können die Liste der Abonnements anzeigen und filtern, indem Sie das Menüelement **Abonnements** auswählen. Die Anzeige wird angepasst, um den Sicherheitsstatus der ausgewählten Abonnements widerzuspiegeln. 
 
 Innerhalb weniger Minuten nach dem ersten Start von Security Center wird Ihnen Folgendes angezeigt:
 
-- **Empfehlungen** für Möglichkeiten zur Verbesserung der Sicherheit Ihrer Azure-Abonnements. Wenn Sie auf die Kachel **Empfehlungen** klicken, wird eine priorisierte Liste eingeblendet.
-- Ein Bestand an Ressourcen vom Typ **Compute und Apps**, **Netzwerk**, **Datensicherheit** und **Identität und Zugriff**, die nun von Security Center zusammen mit dem jeweiligen Sicherheitsstatus bewertet werden.
+- **Empfehlungen** zur Verbesserung der Sicherheit Ihrer verbundenen Ressourcen.
+- Die Ressourcen, die nun von Security Center bewertet werden, sowie der jeweilige Sicherheitsstatus.
 
-Damit Sie den vollen Nutzen aus Security Center ziehen können, müssen Sie die folgenden Schritte ausführen, um auf den Standard-Tarif zu aktualisieren und den Log Analytics-Agent zu installieren.
+Aktivieren Sie Azure Defender, und installieren Sie den Log Analytics-Agent, um optimal von Security Center zu profitieren:
 
 
-## <a name="upgrade-to-the-standard-tier"></a>Upgrade auf den Standard-Tarif
+## <a name="enable-azure-defender"></a>Aktivieren von Azure Defender
 
-Für die Zwecke des Schnellstarts und der Tutorials für Security Center müssen Sie ein Upgrade auf den Standard-Tarif durchführen. Von Security Center Standard gibt es eine kostenlose Testversion. Weitere Informationen finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/security-center/). 
+Für die Security Center-Schnellstartanleitungen -Tutorials muss Azure Defender aktiviert werden. Sie können eine kostenlose 30-Tage-Testversion nutzen. Weitere Informationen finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/security-center/). 
 
 1. Wählen Sie auf der Security Center-Randleiste die Option **Erste Schritte** aus.
- 
-   ![Erste Schritte](./media/security-center-get-started/get-started-upgrade-tab.png)
+
+    :::image type="content" source="./media/security-center-get-started/get-started-upgrade-tab.png" alt-text="Registerkarte „Upgrade“ der Seite für die ersten Schritte"::: 
 
     Auf der Registerkarte **Upgrade** werden für das Onboarding geeignete Abonnements und Arbeitsbereiche aufgeführt.
 
-1. Wählen Sie in der Liste **Arbeitsbereiche zur Aktivierung des Standard-Tarifs auswählen** die zu aktualisierenden Arbeitsbereiche aus.
+1. Wählen Sie in der Liste **Arbeitsbereiche für die Aktivierung von Azure Defender auswählen** die Arbeitsbereiche aus, für die das Upgrade durchgeführt werden soll.
+   - Wenn Sie Abonnements und Arbeitsbereiche auswählen, die nicht für eine Testversion geeignet sind, wird für diese im nächsten Schritt ein Upgrade durchgeführt, und es fallen ab diesem Zeitpunkt Kosten an.
+   - Wenn Sie einen Arbeitsbereich auswählen, der für eine kostenlose Testversion geeignet ist, wird im nächsten Schritt eine Testversion gestartet.
+1. Wählen Sie **Upgrade ausführen** aus, um Azure Defender zu aktivieren.
 
+## <a name="enable-automatic-data-collection"></a>Aktivieren der automatischen Datensammlung
+Security Center sammelt Daten von Ihren Computern, um sie auf Sicherheitslücken und Bedrohungen zu überwachen. Die Daten werden mit dem Log Analytics-Agent gesammelt. Der Agent liest verschiedene sicherheitsrelevante Konfigurationen und Ereignisprotokolle auf dem Computer und kopiert die Daten zur Analyse in den Arbeitsbereich. Standardmäßig erstellt Security Center einen neuen Arbeitsbereich für Sie.
 
-    > [!TIP]
-    > Wenn Sie einen Arbeitsbereich auswählen, der für eine kostenlose Testversion geeignet ist, wird im nächsten Schritt eine Testversion gestartet. Falls Arbeitsbereiche nicht für eine Testversion geeignet sind, wird ein Upgrade durchgeführt, und es fallen Gebühren an.
-
-1. Wählen Sie **Upgrade** aus, um die ausgewählten Arbeitsbereiche auf den Standard-Tarif zu aktualisieren.
-
-
-## <a name="automate-data-collection"></a>Automatisieren der Datensammlung
-Security Center sammelt Daten von Ihren virtuellen Azure-Computern (VMs) und Azure-fremden Computern, um sie auf Sicherheitslücken und Bedrohungen zu überwachen. Die Daten werden mit dem Log Analytics-Agent gesammelt. Der Agent liest verschiedene sicherheitsrelevante Konfigurationen und Ereignisprotokolle auf dem Computer und kopiert die Daten zur Analyse in den Arbeitsbereich. Standardmäßig erstellt Security Center einen neuen Arbeitsbereich für Sie.
-
-Bei aktivierter automatischer Bereitstellung wird der Log Analytics-Agent von Security Center auf allen unterstützten und neu erstellten virtuellen Azure-Computern installiert. Die automatische Bereitstellung wird dringend empfohlen.
+Bei aktivierter automatischer Bereitstellung wird der Log Analytics-Agent von Security Center auf allen unterstützten und neu erstellten Computern installiert. Die automatische Bereitstellung wird dringend empfohlen.
 
 So aktivieren Sie die automatische Bereitstellung des Log Analytics-Agents:
 
-1. Klicken Sie im Hauptmenü von „Security Center“ auf **Preise & Einstellungen**.
-1. Klicken Sie in der Zeile des Abonnements auf das Abonnement, dessen Einstellungen Sie ändern möchten.
-1. Wählen Sie auf der Registerkarte **Datensammlung** für **Automatische Bereitstellung** **Aktivieren** aus.
-1. Wählen Sie **Speichern** aus.
----
-  ![Aktivieren der automatischen Bereitstellung][6]
+1. Wählen Sie im Menü von Security Center **Preise und Einstellungen** aus.
+1. Wählen Sie das relevante Abonnement aus.
+1. Legen Sie auf der Seite **Datensammlung** die Option **Automatische Bereitstellung** auf **Ein** fest.
+1. Klicken Sie auf **Speichern**.
 
-Mit diesen neuen Einblicken in Ihre Azure-VMs kann Security Center zusätzliche Empfehlungen in Bezug auf den Status von Systemupdates, Sicherheitskonfigurationen für Betriebssysteme und des Endgeräteschutzes geben sowie zusätzliche Sicherheitswarnungen generieren.
+    :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="Aktivieren der automatischen Bereitstellung des Log Analytics-Agents":::
 
-  ![Empfehlungen][8]
+>[!TIP]
+> Wenn ein Arbeitsbereich bereitgestellt werden muss, kann die Installation des Agents bis zu 25 Minuten dauern.
 
-## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Andere Schnellstartanleitungen und Tutorials in dieser Sammlung bauen auf dieser Schnellstartanleitung auf. Wenn Sie planen, mit den nachfolgenden Schnellstartanleitungen und Tutorials fortzufahren, sollten Sie weiter den Standard-Tarif nutzen und die automatische Bereitstellung aktiviert lassen. Gehen Sie wie folgt vor, falls Sie nicht fortfahren oder zum Free-Tarif zurückkehren möchten:
-
-1. Kehren Sie zum Hauptmenü von Security Center zurück, und wählen Sie die Option **Preise & Einstellungen** aus.
-2. Klicken Sie auf das Abonnement, das Sie in den Free-Tarif ändern möchten.
-3. Wählen Sie **Tarif** und anschließend **Free** aus, um für das Abonnement vom Tarif „Standard“ zu „Free“ zu wechseln.
-5. Wählen Sie **Speichern** aus.
-
-Gehen Sie wie folgt vor, um die automatische Bereitstellung zu deaktivieren:
-
-1. Kehren Sie zum Hauptmenü von Security Center zurück, und wählen Sie die Option **Preise & Einstellungen** aus.
-2. Klicken Sie auf das Abonnement, für das Sie die automatische Bereitstellung deaktivieren möchten.
-3. Wählen Sie auf der Registerkarte **Datensammlung** für **Automatische Bereitstellung** **Deaktivieren** aus.
-4. Wählen Sie **Speichern** aus.
+Nachdem der Agent auf Ihren Computern bereitgestellt wurde, kann Security Center zusätzliche Empfehlungen im Zusammenhang mit dem Status von Systemupdates, mit Sicherheitskonfigurationen für Betriebssysteme und mit dem Endgeräteschutz geben sowie zusätzliche Sicherheitswarnungen generieren.
 
 >[!NOTE]
-> Wenn Sie die automatische Bereitstellung deaktivieren, wird der Log Analytics-Agent nicht von virtuellen Azure-Computern entfernt, auf denen der Agent bereitgestellt wurde. Wenn Sie die automatische Bereitstellung deaktivieren, schränkt dies die Sicherheitsüberwachung für Ihre Ressourcen ein.
->
+> Wenn Sie die automatische Bereitstellung auf **Aus** festlegen, wird der Log Analytics-Agent nicht von virtuellen Azure-Computern entfernt, auf denen er bereits bereitgestellt wurde. Wenn Sie die automatische Bereitstellung deaktivieren, schränkt dies die Sicherheitsüberwachung für Ihre Ressourcen ein.
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Schnellstart haben Sie ein Upgrade auf den Standard-Tarif durchgeführt und den Log Analytics-Agent bereitgestellt, um für Ihre Hybrid Cloud-Workloads für ein einheitliches Sicherheitsmanagement und für Bedrohungsschutz zu sorgen. Wenn Sie mehr darüber erfahren möchten, wie Sie Security Center verwenden können, fahren Sie mit dem Schnellstart für das Einbinden von Windows-Computern fort, die lokal und in anderen Clouds installiert sind.
+In dieser Schnellstartanleitung haben Sie Azure Defender aktiviert und den Log Analytics-Agent bereitgestellt, um ein einheitliches Sicherheitsmanagement und Bedrohungsschutz für Ihre Hybrid Cloud-Workloads zu erhalten. Wenn Sie mehr darüber erfahren möchten, wie Sie Security Center verwenden können, fahren Sie mit dem Schnellstart für das Einbinden von Windows-Computern fort, die lokal und in anderen Clouds installiert sind.
 
 > [!div class="nextstepaction"]
-> [Schnellstart: Einbinden von Windows-Computern in Azure Security Center](quick-onboard-windows-computer.md)
+> [Schnellstart: Durchführen des Onboardings für Azure-fremde Computer](quickstart-onboard-machines.md)
 
 Möchten Sie Ihre Cloudausgaben optimieren und Geld sparen?
 

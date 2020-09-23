@@ -11,22 +11,19 @@ ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 09dd444d0d7409ca86955d2854aec82f07db0c4d
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 10c0200aae5ffa432c2da037d58d455fc28e8acd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185399"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904955"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Erstellen, Überprüfen und Bereitstellen von automatisierten Machine Learning-Modellen mit Azure Machine Learning
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+
 
 In diesem Artikel erfahren Sie, wie Sie automatisierte Machine Learning-Modelle ohne eine einzige Codezeile in Azure Machine Learning Studio erstellen, untersuchen und bereitstellen.
 
->[!IMPORTANT]
-> Die Umgebung für automatisiertes ML in Azure Machine Learning Studio befindet sich in der Vorschauphase. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-
- Automatisiertes Machine Learning ist ein Prozess, bei dem der beste Machine Learning-Algorithmus für Ihre spezifischen Daten für Sie ausgewählt wird. Dieser Prozess ermöglicht Ihnen die schnelle Erstellung von Machine Learning-Modellen. [Weitere Informationen zu automatisiertem Machine Learning](concept-automated-ml.md).
+Automatisiertes Machine Learning ist ein Prozess, bei dem der beste Machine Learning-Algorithmus für Ihre spezifischen Daten für Sie ausgewählt wird. Dieser Prozess ermöglicht Ihnen die schnelle Erstellung von Machine Learning-Modellen. [Weitere Informationen zu automatisiertem Machine Learning](concept-automated-ml.md).
  
 Ein End-to-End-Beispiel finden Sie im [Tutorial zum Erstellen eines Klassifizierungsmodells mit der Oberfläche für automatisiertes maschinelles Lernen von Azure Machine Learning](tutorial-first-experiment-automated-ml.md). 
 
@@ -36,7 +33,7 @@ Wenn Sie eine auf Python-Code basierende Umgebung bevorzugen, [konfigurieren Sie
 
 * Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
 
-* Ein Azure Machine Learning-Arbeitsbereich mit dem Typ **Enterprise Edition**. Weitere Informationen finden Sie unter [Erstellen eines Azure Machine Learning-Arbeitsbereichs](how-to-manage-workspace.md).  Informationen zum Upgraden eines vorhandenen Arbeitsbereichs auf Enterprise Edition finden Sie unter [Upgrade auf Enterprise Edition](how-to-manage-workspace.md#upgrade).
+* Ein Azure Machine Learning-Arbeitsbereich. Weitere Informationen finden Sie unter [Erstellen eines Azure Machine Learning-Arbeitsbereichs](how-to-manage-workspace.md). 
 
 ## <a name="get-started"></a>Erste Schritte
 
@@ -69,7 +66,7 @@ Andernfalls wird eine Liste ihrer letzten automatisierten Machine Learning-Exper
 
     1. Wählen Sie **Weiter** aus, um das Formular **Datenspeicher- und Dateiauswahl** zu öffnen. In diesem Formular wählen Sie aus, wo das Dataset hochgeladen werden soll. Dies kann der Standardspeichercontainer sein, der automatisch mit Ihrem Arbeitsbereich erstellt wird, oder ein Speichercontainer, den Sie für das Experiment auswählen. 
     
-        1. Wenn sich Ihre Daten hinter einem virtuellen Netzwerk befinden, müssen Sie die Funktion zum **Überspringen der Überprüfung** aktivieren, um sicherzustellen, dass der Arbeitsbereich auf Ihre Daten zugreifen kann. Weitere Informationen zur Netzwerkisolation und zum Datenschutz finden Sie [hier](how-to-enable-virtual-network.md#machine-learning-studio). 
+        1. Wenn sich Ihre Daten hinter einem virtuellen Netzwerk befinden, müssen Sie die Funktion zum **Überspringen der Überprüfung** aktivieren, um sicherzustellen, dass der Arbeitsbereich auf Ihre Daten zugreifen kann. Weitere Informationen finden Sie unter [Verwenden von Azure Machine Learning Studio in einem virtuellen Azure-Netzwerk](how-to-enable-studio-virtual-network.md). 
     
     1. Wählen Sie **Durchsuchen** aus, um die Datendatei für das Dataset hochzuladen. 
 
@@ -120,11 +117,14 @@ Andernfalls wird eine Liste ihrer letzten automatisierten Machine Learning-Exper
 
 1. Wählen Sie auf dem Formular **Aufgabentyp und Einstellungen** den Aufgabentyp aus: Klassifizierung, Regression oder Prognose (Vorhersage). Weitere Informationen finden Sie unter [Unterstützte Aufgabentypen](concept-automated-ml.md#when-to-use-automl-classify-regression--forecast).
 
-    1. Für eine **Klassifizierung** können Sie auch Deep Learning aktivieren, das für Textfeaturisierungen verwendet wird.
+    1. Für die **Klassifizierung** können Sie auch Deep Learning aktivieren.
+    
+        Wenn Deep Learning aktiviert ist, ist die Überprüfung auf _train_validation split_ beschränkt. [Erfahren Sie mehr zu Überprüfungsoptionen](how-to-configure-cross-validation-data-splits.md).
+
 
     1. Für **Vorhersagen** haben Sie folgende Möglichkeiten: 
     
-        1. Aktivieren von Deep Learning
+        1. Aktivieren Sie Deep Learning.
     
         1. Auswählen der *Zeitspalte*: Diese Spalte enthält die zu verwendenden Zeitdaten.
 
@@ -135,10 +135,10 @@ Andernfalls wird eine Liste ihrer letzten automatisierten Machine Learning-Exper
     Zusätzliche Konfigurationen|BESCHREIBUNG
     ------|------
     Primary metric (Primäre Metrik)| Die wichtigste Metrik, die für die Bewertung Ihres Modells verwendet wird. [Weitere Informationen zur Modellmetriken](how-to-configure-auto-train.md#primary-metric).
-    Explain best model (Bestes Modell erläutern) | Wählen Sie diese Option aus, um die Erläuterungsfähigkeit des empfohlenen besten Modells anzuzeigen oder zu deaktivieren.
-    Blocked algorithm (Blockierter Algorithmus)| Wählen Sie Algorithmen aus, die Sie aus den Trainingsauftrag ausschließen möchten.
+    Explain best model (Bestes Modell erläutern) | Wählen Sie diese Option aus, um die Erläuterungen für das empfohlene beste Modell anzuzeigen oder zu deaktivieren. <br> Diese Funktion ist derzeit nicht für [bestimmte Vorhersagealgorithmen](how-to-machine-learning-interpretability-automl.md#interpretability-during-training-for-the-best-model) verfügbar. 
+    Blocked algorithm (Blockierter Algorithmus)| Wählen Sie Algorithmen aus, die Sie aus den Trainingsauftrag ausschließen möchten. <br><br> Das Zulassen von Algorithmen ist nur für [SDK-Experimente](how-to-configure-auto-train.md#supported-models) verfügbar. <br> Weitere Informationen finden Sie auf der Seite zu den [unterstützten Modellen für einzelne Aufgabentypen](https://docs.microsoft.com/python/api/azureml-automl-core/azureml.automl.core.shared.constants.supportedmodels?view=azure-ml-py&preserve-view=true).
     Beendigungskriterium| Wenn eines dieser Kriterien erfüllt ist, wird der Trainingsauftrag beendet. <br> *Training job time (hours)* Trainingsauftragszeit (Stunden): Gibt an, wie lange der Trainingsauftrag ausgeführt werden soll. <br> *Metric score threshold* (Metrischer Bewertungsschwellenwert):  Die Metrikmindestbewertung für alle Pipelines. Auf diese Weise wird sichergestellt, dass Sie nicht mehr Zeit für den Trainingsauftrag aufwenden als nötig, wenn Sie eine definierte Zielmetrik verwenden, die Sie erreichen möchten.
-    Überprüfen| Wählen Sie eine der Optionen für Kreuzvalidierung aus, die im Trainingsauftrag verwendet werden soll. [Weitere Informationen zur Kreuzvalidierung](how-to-configure-cross-validation-data-splits.md#prerequisites).
+    Überprüfen| Wählen Sie eine der Optionen für Kreuzvalidierung aus, die im Trainingsauftrag verwendet werden soll. <br> [Weitere Informationen zur Kreuzvalidierung](how-to-configure-cross-validation-data-splits.md#prerequisites).<br> <br>Für Vorhersagen wird nur die k-fache Kreuzvalidierung unterstützt.
     Parallelität| *Max concurrent iterations* (Maximale Anzahl gleichzeitiger Iterationen): Die maximale Anzahl von Pipelines (Iterationen), die im Trainingsauftrag getestet werden. Der Auftrag wird nicht häufiger als die angegebene Anzahl von Iterationen ausgeführt.
 
 1. (Optional) Anzeigen von Featurisierungseinstellungen: Wenn Sie im Formular **Additional configuration settings** (Zusätzliche Konfigurationseinstellungen) die Option **Automatische Featurisierung** aktivieren, werden standardmäßige Featurisierungstechniken angewendet. Diese Standardeinstellungen können unter **Featurisierungseinstellungen anzeigen** geändert und entsprechend angepasst werden. Informationen zum Anpassen von Featurisierungen finden Sie [hier](#customize-featurization). 
@@ -177,13 +177,13 @@ Im Formular **Featurisierung** können Sie die automatische Featurisierung aktiv
 
 In der folgenden Tabelle sind die derzeit in Studio verfügbaren Anpassungen zusammengefasst: 
 
-Spalte| Anpassung
+Column| Anpassung
 ---|---
 Enthalten | Gibt an, welche Spalten in das Training einbezogen werden sollen.
 Featuretyp| Dient zum Ändern des Werttyps für die ausgewählte Spalte.
 Imputation mit| Dient zum Auswählen des Werts, mit dem fehlende Werte in Ihren Daten imputiert werden sollen.
 
-![Azure Machine Learning Studio: Formular für den Aufgabentyp](media/how-to-use-automated-ml-for-ml-models/custom-featurization.png)
+![Benutzerdefinierte Featurisierung für Azure Machine Learning Studio](media/how-to-use-automated-ml-for-ml-models/custom-featurization.png)
 
 ## <a name="run-experiment-and-view-results"></a>Ausführen des Experiments und Anzeigen der Ergebnisse
 
@@ -237,7 +237,7 @@ Automatisiertes maschinelles Lernen unterstützt Sie dabei, das Modell bereitzus
     Das Menü *Erweitert* enthält Standard-Bereitstellungsfeatures wie [Datensammlung](how-to-enable-app-insights.md) und Einstellungen für die Ressourcenauslastung. Wenn Sie diese Standardeinstellungen überschreiben möchten, verwenden Sie dafür dieses Menü.
 
 1. Klicken Sie auf **Bereitstellen**. Die Bereitstellung kann bis zu 20 Minuten dauern.
-    Wenn die Bereitstellung beginnt, wird die Registerkarte **Modellzusammenfassung** angezeigt. Der Bereitstellungsstatus wird im Abschnitt **Bereitstellungsstatus** angezeigt. 
+    Sobald die Bereitstellung beginnt, wird die Registerkarte **Modellzusammenfassung** angezeigt. Der Status der Bereitstellung wird im Abschnitt **Bereitstellungsstatus** angezeigt. 
 
 Nun haben Sie einen einsatzfähigen Webdienst, mit dem Vorhersagen generiert werden können! Sie können die Vorhersagen testen, indem Sie den Dienst über die [in Power BI integrierte Azure Machine Learning-Unterstützung](how-to-consume-web-service.md#consume-the-service-from-power-bi) abfragen.
 

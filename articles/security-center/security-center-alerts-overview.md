@@ -10,18 +10,18 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: memildin
-ms.openlocfilehash: bd52cb9ba10cbbc7823cf631cea146cdccdad4e1
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: b2d5731ea9e8f2fb13d234fc9d951e221c0ab3e5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89278138"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905475"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Sicherheitswarnungen in Azure Security Center
 
 Für die vielen verschiedenen Ressourcentypen stehen in Azure Security Center unterschiedliche Warnungen zur Verfügung. Security Center generiert Warnungen sowohl für in Azure bereitgestellte Ressourcen als auch für Ressourcen, die lokal und in Hybrid Cloud-Umgebungen bereitgestellt wurden.
 
-Sicherheitswarnungen werden durch erweiterte Erkennungen ausgelöst und sind nur im Standard-Tarif von Azure Security Center verfügbar. Eine kostenlose Testversion ist verfügbar. Über die Seite **Preise und Einstellungen** können Sie ein Upgrade ausführen. Weitere Informationen zu Security Center-Preisen finden Sie [hier](https://azure.microsoft.com/pricing/details/security-center/).
+Sicherheitswarnungen werden durch erweiterte Erkennungen ausgelöst und sind nur in Azure Defender verfügbar. Eine kostenlose Testversion ist verfügbar. Über die Seite **Preise und Einstellungen** können Sie ein Upgrade ausführen. Weitere Informationen zu Security Center-Preisen finden Sie [hier](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="respond-to-todays-threats"></a>Reagieren auf heutige Bedrohungen <a name="respond-threats"> </a>
 
@@ -45,7 +45,7 @@ Dank Incidents bietet Ihnen Security Center eine zentrale Ansicht für einen Ang
 
 ## <a name="how-does-security-center-detect-threats"></a>Wie funktioniert die Bedrohungserkennung von Security Center? <a name="detect-threats"> </a>
 
-Microsoft-Sicherheitsexperten suchen ständig nach neuen Bedrohungen. Aufgrund der globalen Präsenz von Microsoft in der Cloud und in lokalen Umgebungen haben sie Zugriff auf umfassende Telemetriedaten. Diese weit reichende und verschiedenartige Sammlung von Datasets ermöglicht die Erkennung neuer Angriffsmuster und Trends für lokale Privatkunden- und Unternehmensprodukte sowie für seine Onlinedienste. Auf diese Weise können die Erkennungsalgorithmen von Security Center schnell aktualisiert werden, wenn Angreifer neue und immer anspruchsvollere Exploit-Verfahren nutzen. So können Sie mit der rasanten Entwicklung von Bedrohungen Schritt halten.
+Microsoft-Sicherheitsexperten suchen ständig nach neuen Bedrohungen. Aufgrund der globalen Präsenz in der Cloud und in lokalen Umgebungen haben wir Zugriff auf umfassende Telemetriedaten. Mithilfe dieser weit reichenden und verschiedenartigen Sammlung von Datasets können wir neue Angriffsmuster und Trends für unsere lokalen Privatkunden- und Unternehmensprodukte sowie für unsere Onlinedienste erkennen. Auf diese Weise können die Erkennungsalgorithmen von Security Center schnell aktualisiert werden, wenn Angreifer neue und immer anspruchsvollere Exploit-Verfahren nutzen. So können Sie mit der rasanten Entwicklung von Bedrohungen Schritt halten.
 
 Security Center sammelt, analysiert und integriert Protokolldaten Ihrer Azure-Ressourcen und aus dem Netzwerk, um echte Bedrohungen zu erkennen und falsch positive Ergebnisse zu reduzieren. Dies funktioniert auch mit verbundenen Partnerlösungen wie Firewalls und Lösungen zum Schutz von Endpunkten. Security Center analysiert diese Informationen und korreliert sie häufig mit Informationen aus mehreren Quellen, um Bedrohungen zu identifizieren.
 
@@ -90,6 +90,5 @@ Diese kombinierten Verfahren führen zu neuen und verbesserten Erkennungsergebni
 
 In diesem Artikel wurden die unterschiedlichen Arten von Sicherheitswarnungen in Security Center beschrieben. Weitere Informationen finden Sie unter
 
-* [Bedrohungsschutz in Azure Security Center:](threat-protection.md) eine Kurzbeschreibung der Quellen von Sicherheitswarnungen, die in Azure Security Center angezeigt werden 
-* **Sicherheitswarnungen im Azure-Aktivitätsprotokoll:** Sicherheitswarnungen und -incidents sind nicht nur im Azure-Portal oder programmgesteuert verfügbar, sondern werden auch im [Azure-Aktivitätsprotokoll](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view) als Ereignisse überwacht. Weitere Informationen zum Ereignisschema finden Sie unter [Sicherheitswarnungen im Azure-Aktivitätsprotokoll](https://go.microsoft.com/fwlink/?linkid=2114113).
+- **Sicherheitswarnungen im Azure-Aktivitätsprotokoll:** Sicherheitswarnungen und -incidents sind nicht nur im Azure-Portal oder programmgesteuert verfügbar, sondern werden auch im [Azure-Aktivitätsprotokoll](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view) als Ereignisse überwacht. Weitere Informationen zum Ereignisschema finden Sie unter [Sicherheitswarnungen im Azure-Aktivitätsprotokoll](https://go.microsoft.com/fwlink/?linkid=2114113).
 

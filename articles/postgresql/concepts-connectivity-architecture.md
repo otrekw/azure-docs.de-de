@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: f03b5e93e4ed5155f6a713c152fbcf34dc873674
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 64be7f01cc9cc7ae77af5386be7a11cd16785dd1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065878"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90882407"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Verbindungsarchitektur in Azure Database for PostgreSQL
 In diesem Artikel wird die Verbindungsarchitektur von Azure Database for PostgreSQL beschrieben, und Sie erfahren, wie Datenverkehr von Clients innerhalb und außerhalb von Azure an Ihre Azure Database for PostgreSQL-Datenbankinstanz weitergeleitet wird.
@@ -19,7 +19,7 @@ In diesem Artikel wird die Verbindungsarchitektur von Azure Database for Postgre
 ## <a name="connectivity-architecture"></a>Verbindungsarchitektur
 Die Verbindung mit Ihrer Azure Database for PostgreSQL-Instanz wird über ein Gateway hergestellt, das eingehende Verbindungen an den physischen Ort weiterleitet, an dem sich Ihr Server in unseren Clustern befindet. Das folgende Diagramm veranschaulicht den Datenverkehrsfluss.
 
-![Übersicht über die Verbindungsarchitektur](./media/concepts-connectivity-architecture/connectivity-architecture-overview-proxy.png)
+:::image type="content" source="./media/concepts-connectivity-architecture/connectivity-architecture-overview-proxy.png" alt-text="Übersicht über die Verbindungsarchitektur":::
 
 Ein Client, der eine Verbindung mit der Datenbank herstellt, erhält eine mit dem Gateway verknüpfte Verbindungszeichenfolge. Dieses Gateway besitzt eine öffentliche IP-Adresse, die an Port 5432 lauscht. Innerhalb des Datenbankclusters wird der Datenverkehr an die entsprechende Azure Database for PostgreSQL-Instanz weitergeleitet. Für die Verbindungsherstellung mit Ihrem Server (etwa von Unternehmensnetzwerken aus) muss daher die clientseitige Firewall geöffnet werden, damit ausgehender Datenverkehr unsere Gateways erreichen kann. Weiter unten finden Sie eine vollständige, nach Region aufgeschlüsselte Liste der IP-Adressen, die von unseren Gateways verwendet werden.
 

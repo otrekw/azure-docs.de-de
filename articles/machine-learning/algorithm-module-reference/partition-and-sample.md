@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 0392a05df485b45b1244f4542ed55af1837dca3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a1f0a0dff4eb8a1aad0cd5e142959a636827a541
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79477509"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898491"
 ---
 # <a name="partition-and-sample-module"></a>Modul „Partition and Sample“
 
-In diesem Artikel wird ein Modul in Azure Machine Learning-Designer (Vorschauversion) beschrieben.
+In diesem Artikel wird ein Modul im Azure Machine Learning-Designer beschrieben.
 
 Sie können das Modul „Partition and Sample“ verwenden, um eine Stichprobenentnahme für ein Dataset durchzuführen oder Partitionen anhand Ihres Datasets zu erstellen.
 

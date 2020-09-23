@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: db0e2f90ee45d4e1c0173cbc037084793a66e149
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69c18c24ae9a8eb4c1fd54c1f8530e126a40b004
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84449984"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898518"
 ---
 # <a name="densenet"></a>DenseNet
 
-In diesem Artikel wird beschrieben, wie Sie mit dem **DenseNet**-Modul in Azure Machine Learning-Designer (Vorschauversion) ein Bildklassifizierungsmodell mithilfe des DenseNet-Algorithmus erstellen.  
+In diesem Artikel wird beschrieben, wie Sie mit dem **DenseNet**-Modul im Azure Machine Learning-Designer ein Bildklassifizierungsmodell mithilfe des DenseNet-Algorithmus erstellen.  
 
 Dieser Klassifizierungsalgorithmus ist eine überwachte Lernmethode und erfordert ein Dataset mit Bezeichnungen. Weitere Anweisungen zum Abrufen eines Bildverzeichnisses mit Bezeichnungen finden Sie im Modul [Konvertieren in ein Bildverzeichnis](convert-to-image-directory.md). Sie können das Modell trainieren, indem Sie das Modell und das Bildverzeichnis mit Bezeichnungen als Eingaben für [Trainieren eines PyTorch-Modells](train-pytorch-model.md) angeben. Mit dem trainierten Modell können Sie anschließend Werte für neue Eingabebeispiele mithilfe von [Bewerten eines Bildmodells](score-image-model.md) vorhersagen.
 

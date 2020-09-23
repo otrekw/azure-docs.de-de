@@ -11,15 +11,15 @@ ms.reviewer: larryfr
 ms.date: 06/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 04ae1788dfd3050fdd2042f88a8e1829e9063ad3
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 7c98bfe4adb9cbbcc1009c530ba875511ea9ec01
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87851357"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905120"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Bereitstellen eines Machine Learning-Modells in Azure App Service (Vorschauversion)
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Hier erfahren Sie, wie Sie ein Modell in Azure Machine Learning als Web-App in Azure App Service bereitstellen.
 
@@ -54,7 +54,7 @@ Weitere Informationen zu den Features von Azure App Service finden Sie unter [Ap
 
 ## <a name="prepare-for-deployment"></a>Vorbereiten der Bereitstellung
 
-Vor der Bereitstellung müssen Sie die Elemente definieren, die zum Ausführen des Modells als Webdienst erforderlich sind. Im Folgenden werden die allgemeinen für eine Bereitstellung erforderlichen Elemente beschrieben:
+Vor der Bereitstellung müssen Sie die Elemente definieren, die zum Ausführen des Modells als Webdienst erforderlich sind. Die folgende Liste beschreibt die wesentlichen für eine Bereitstellung erforderlichen Elemente:
 
 * Ein __Eingabeskript__. Dieses Skript akzeptiert Anforderungen, bewertet die Anforderung mithilfe des Modells und gibt die Ergebnisse zurück.
 
@@ -75,7 +75,7 @@ Vor der Bereitstellung müssen Sie die Elemente definieren, die zum Ausführen d
 Diese Entitäten werden in einer __Rückschlusskonfiguration__ gekapselt. Die Rückschlusskonfiguration verweist auf das Eingabeskript und andere Abhängigkeiten.
 
 > [!IMPORTANT]
-> Beim Erstellen einer Rückschlusskonfiguration zur Verwendung mit Azure App Service müssen Sie ein [Environment](https://docs.microsoft.com//python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py)-Objekt verwenden. Beachten Sie, dass Sie beim Definieren einer benutzerdefinierten Umgebung azureml-defaults mit Version > = 1.0.45 als Pip-Abhängigkeit hinzufügen müssen. Dieses Paket enthält die erforderlichen Funktionen zum Hosten des Modells als Webdienst. Im folgenden Beispiel wird veranschaulicht, wie ein Environment-Objekt erstellt und mit einer Rückschlusskonfiguration verwendet wird:
+> Beim Erstellen einer Rückschlusskonfiguration zur Verwendung mit Azure App Service müssen Sie ein [Environment](https://docs.microsoft.com//python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py&preserve-view=true)-Objekt verwenden. Beachten Sie, dass Sie beim Definieren einer benutzerdefinierten Umgebung azureml-defaults mit Version > = 1.0.45 als Pip-Abhängigkeit hinzufügen müssen. Dieses Paket enthält die erforderlichen Funktionen zum Hosten des Modells als Webdienst. Im folgenden Beispiel wird veranschaulicht, wie ein Environment-Objekt erstellt und mit einer Rückschlusskonfiguration verwendet wird:
 >
 > ```python
 > from azureml.core.environment import Environment
@@ -101,7 +101,7 @@ Weitere Informationen zur Rückschlusskonfiguration finden Sie unter [Bereitstel
 
 ## <a name="create-the-image"></a>Erstellen des Images
 
-Verwenden Sie [Model.package](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config-none--generate-dockerfile-false-), um das Docker-Image zu erstellen, das in Azure App Service bereitgestellt wird. Der folgende Codeausschnitt veranschaulicht, wie ein neues Image aus dem Modell und der Rückschlusskonfiguration erstellt wird:
+Verwenden Sie [Model.package](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=truepackage-workspace--models--inference-config-none--generate-dockerfile-false-), um das Docker-Image zu erstellen, das in Azure App Service bereitgestellt wird. Der folgende Codeausschnitt veranschaulicht, wie ein neues Image aus dem Modell und der Rückschlusskonfiguration erstellt wird:
 
 > [!NOTE]
 > Im Codeausschnitt wird davon ausgegangen, dass `model` ein registriertes Modell und `inference_config` die Konfiguration für die Rückschlussumgebung enthält. Weitere Informationen finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md).

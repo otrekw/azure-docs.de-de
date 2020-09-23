@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2020
 ms.author: yelevin
-ms.openlocfilehash: 8439c8f7aa4e75abd727d2ce2e80d98e6fce5411
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c67f517ffd3704644fbe8041f3ac1e7b0d1f09c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563946"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904556"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>Verknüpfen von Microsoft Cloud App Security-Daten 
 
@@ -48,7 +48,7 @@ Wenn Cloud App Security bereitgestellt ist und Daten erhält, können die Warnun
 
 1. Klicken Sie auf **Apply Changes**.
 
-1. Sie können auswählen, ob die Warnungen von Azure Security Center Incidents in Azure Sentinel generieren sollen. Wählen Sie unter **Incidents erstellen** die Option **Aktiviert** aus, um die Standardanalyseregel zu aktivieren, die automatisch Incidents aus Warnungen erstellt. Anschließend können Sie diese Regel unter **Analytics** auf der Registerkarte **Aktive Regeln** bearbeiten.
+1. Sie können auswählen, ob durch die Azure Defender-Benachrichtigungen von Azure Security Center automatisch Incidents in Azure Sentinel generiert werden sollen. Wählen Sie unter **Incidents erstellen** die Option **Aktiviert** aus, um die Standardanalyseregel zu aktivieren, die automatisch Incidents aus Warnungen erstellt. Anschließend können Sie diese Regel unter **Analytics** auf der Registerkarte **Aktive Regeln** bearbeiten.
 
 1. Geben Sie im Abfragefenster `SecurityAlert` ein, um das entsprechende Schema in Log Analytics für Cloud App Security-Warnungen zu verwenden. Geben Sie für das Cloud Discovery-Protokollschema `McasShadowItReporting` ein.
 

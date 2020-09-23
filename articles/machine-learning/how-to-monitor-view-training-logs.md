@@ -11,16 +11,16 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: d06186b2ce4d8bb9143663d41f03b9508e4bd00e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6f557ac8476224cdb8414b2a45952d8f7d34513d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005954"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905004"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>Überwachen und Anzeigen von ML-Ausführungsprotokollen und -metriken
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 In diesem Artikel erfahren Sie, wie Sie Azure Machine Learning-Ausführungen überwachen und die zugehörigen Protokolle anzeigen. Bevor Sie Protokolle anzeigen können, müssen Sie sie zuerst aktivieren. Weitere Informationen hierzu finden Sie unter [Aktivieren der Protokollierung in Azure ML-Trainingsausführungen](how-to-track-experiments.md).
 
@@ -58,7 +58,7 @@ Sobald eine Ausführung abgeschlossen ist, wird sie nicht mehr auf dieser Seite 
 
 ## <a name="monitor-runs-using-the-jupyter-notebook-widget"></a>Überwachen von Ausführungen mit dem Jupyter Notebook-Widget
 
-Wenn Sie Ausführungen mithilfe der **ScriptRunConfig**-Methode übermitteln, können Sie den Fortschritt der Ausführung mit dem [Jupyter-Widget](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) anzeigen. Ebenso wie die Übermittlung der Ausführung ist das Widget asynchron und stellt alle 10 bis 15 Sekunden Liveupdates bereit, bis der Auftrag abgeschlossen ist.
+Wenn Sie Ausführungen mithilfe der **ScriptRunConfig**-Methode übermitteln, können Sie den Fortschritt der Ausführung mit dem [Jupyter-Widget](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true) anzeigen. Ebenso wie die Übermittlung der Ausführung ist das Widget asynchron und stellt alle 10 bis 15 Sekunden Liveupdates bereit, bis der Auftrag abgeschlossen ist.
 
 Zeigen Sie das Jupyter-Widget an, während Sie darauf warten, dass die Ausführung abgeschlossen wird.
     
@@ -129,7 +129,7 @@ Verwenden Sie die folgenden Methoden in den Protokollierungs-APIs, um die Visual
 
 Probieren Sie diese nächsten Schritte aus, um zu erfahren, wie Sie Azure Machine Learning verwenden können:
 
-* Erfahren Sie, wie Sie [Experimente nachverfolgen und Protokolle im Azure Machine Learning-Designer (Vorschauversion) aktivieren](how-to-track-designer-experiments.md).
+* Erfahren Sie, wie Sie [Experimente nachverfolgen und Protokolle im Azure Machine Learning-Designer aktivieren](how-to-track-designer-experiments.md).
 
 * Ein Beispiel für die Registrierung des besten Modells und dessen Bereitstellung finden Sie im Tutorial [Trainieren eines Bildklassifizierungsmodells mit Azure Machine Learning](tutorial-train-models-with-aml.md).
 

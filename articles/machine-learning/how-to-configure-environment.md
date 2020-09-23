@@ -11,15 +11,15 @@ ms.reviewer: larryfr
 ms.date: 12/27/2019
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: a6e603ad5698e7a6a57799def8a0f2de28e0cada
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 4ccf89a4dcb2c91cfdd96b20d74b7f31596b6249
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144888"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898267"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurieren einer Entwicklungsumgebung für Azure Machine Learning
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 In diesem Artikel erfahren Sie, wie Sie eine Entwicklungsumgebung für die Arbeit mit Azure Machine Learning konfigurieren. Azure Machine Learning ist plattformunabhängig. Die einzige zwingende Anforderung an die Entwicklungsumgebung ist Python 3. Außerdem wird eine isolierte Umgebung wie Anaconda oder Virtualenv empfohlen.
 
@@ -61,7 +61,7 @@ Für eine Compute-Instanz muss nichts installiert oder konfiguriert werden.  In 
 
 Weitere Informationen zu Compute-Instanzen, einschließlich der Installation von Paketen, finden Sie unter [Compute-Instanzen](concept-compute-instance.md).
 
-Um zu verhindern, dass weitere Compute-Gebühren anfallen, [stoppen Sie die Compute-Instanz](tutorial-1st-experiment-sdk-train.md#clean-up-resources).
+Um zu verhindern, dass weitere Compute-Gebühren anfallen, [stoppen Sie die Compute-Instanz](tutorial-1st-experiment-bring-data.md#clean-up-resources).
 
 ## <a name="data-science-virtual-machine"></a><a id="dsvm"></a>Data Science Virtual Machine
 
@@ -185,7 +185,7 @@ Wenn Sie einen lokalen Computer verwenden (dabei kann es sich auch um einen virt
    >
    >   `pip install --upgrade azureml-sdk\[notebooks,automl\]`
 
-   Die Installation des SDK nimmt mehrere Minuten in Anspruch. Weitere Informationen zu den Installationsoptionen finden Sie in der [Installationsanleitung](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
+   Die Installation des SDK nimmt mehrere Minuten in Anspruch. Weitere Informationen zu den Installationsoptionen finden Sie in der [Installationsanleitung](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true).
 
 1. Installieren Sie weitere Pakete für Ihre Machine Learning-Experimente.
 
@@ -361,7 +361,7 @@ Um in Ihrem Code auf diese Datei zuzugreifen, verwenden Sie `ws=Workspace.from_c
 
 Sie können die Konfigurationsdatei auf drei Arten erstellen:
 
-* **Verwenden Sie [ws.write_config](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)** zum Schreiben einer Datei vom Typ *config.json*. Diese Datei enthält die Konfigurationsinformationen für Ihren Arbeitsbereich. Sie können die Datei *config.json* in andere Entwicklungsumgebungen herunterladen oder kopieren.
+* **Verwenden Sie [ws.write_config](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)** zum Schreiben einer Datei vom Typ *config.json*. Diese Datei enthält die Konfigurationsinformationen für Ihren Arbeitsbereich. Sie können die Datei *config.json* in andere Entwicklungsumgebungen herunterladen oder kopieren.
 
 * **Datei herunterladen**: Wählen Sie im [Azure-Portal](https://ms.portal.azure.com) im Abschnitt **Übersicht** Ihres Arbeitsbereichs **config.json herunterladen** aus.
 
@@ -389,4 +389,4 @@ Sie können die Konfigurationsdatei auf drei Arten erstellen:
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Trainieren eines Modells](tutorial-train-models-with-aml.md) in Azure Machine Learning mit der MNIST-Datenbank
-- Anzeigen der Referenz [Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
+- Anzeigen der Referenz [Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)

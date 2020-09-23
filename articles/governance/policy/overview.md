@@ -1,14 +1,14 @@
 ---
 title: Übersicht zu Azure-Richtlinien
 description: Azure Policy ist ein Dienst in Azure, mit dem Sie Richtliniendefinitionen in Ihrer Azure-Umgebung erstellen, zuweisen und verwalten können.
-ms.date: 06/17/2020
+ms.date: 09/22/2020
 ms.topic: overview
-ms.openlocfilehash: 2ac8c175f586d9649e35328a483be918276c115d
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 662a7510013e2008d8c16cf21376b11c247e0bc0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044191"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905978"
 ---
 # <a name="what-is-azure-policy"></a>Was ist Azure Policy?
 
@@ -18,8 +18,7 @@ Häufige Anwendungsfälle für Azure Policy sind die Implementierung von Governa
 
 ## <a name="overview"></a>Übersicht
 
-Azure Policy wertet Ressourcen in Azure aus, indem die Eigenschaften dieser Ressourcen mit Geschäftsregeln verglichen werden. Diese im [JSON-Format](./concepts/definition-structure.md) beschriebenen Geschäftsregeln werden als [Richtliniendefinitionen](#policy-definition) bezeichnet. Um die Verwaltung zu vereinfachen, können mehrere Geschäftsregeln gruppiert werden, um eine [Richtlinieninitiative](#initiative-definition) (manchmal auch als _policySet_ bezeichnet) zu bilden. Nachdem Ihre Geschäftsregeln erstellt wurden, wird die Richtliniendefinition oder -initiative jedem von Azure unterstützten Ressourcenbereich [zugewiesen](#assignments), z. B. [Verwaltungsgruppen](../management-groups/overview.md), Abonnements, [Ressourcengruppen](../../azure-resource-manager/management/overview.md#resource-groups) oder einzelnen Ressourcen. Die Zuweisung gilt für alle Ressourcen innerhalb des [Bereichs](../../azure-resource-manager/management/overview.md#understand-scope) dieser Zuweisung.
-Unterbereiche können ggf. ausgeschlossen werden.
+Azure Policy wertet Ressourcen in Azure aus, indem die Eigenschaften dieser Ressourcen mit Geschäftsregeln verglichen werden. Diese im [JSON-Format](./concepts/definition-structure.md) beschriebenen Geschäftsregeln werden als [Richtliniendefinitionen](#policy-definition) bezeichnet. Um die Verwaltung zu vereinfachen, können mehrere Geschäftsregeln gruppiert werden, um eine [Richtlinieninitiative](#initiative-definition) (manchmal auch als _policySet_ bezeichnet) zu bilden. Nachdem Ihre Geschäftsregeln erstellt wurden, wird die Richtliniendefinition oder -initiative jedem von Azure unterstützten Ressourcenbereich [zugewiesen](#assignments), z. B. [Verwaltungsgruppen](../management-groups/overview.md), Abonnements, [Ressourcengruppen](../../azure-resource-manager/management/overview.md#resource-groups) oder einzelnen Ressourcen. Die Zuweisung gilt für alle Ressourcen innerhalb des [Resource Manager-Bereichs](../../azure-resource-manager/management/overview.md#understand-scope) dieser Zuweisung. Unterbereiche können ggf. ausgeschlossen werden. Weitere Informationen finden Sie unter [Erläuterungen zum Bereich in Azure Policy](./concepts/scope.md).
 
 Azure Policy verwendet ein [JSON-Format](./concepts/definition-structure.md) zum Erstellen der Logik, die anhand der Auswertung bestimmt, ob eine Ressource konform ist. Definitionen enthalten Metadaten und die Richtlinienregel. Die definierte Regel kann Funktionen, Parameter, logische Operatoren, Bedingungen und Eigenschaften[aliase](./concepts/definition-structure.md#aliases) verwenden, um genau dem gewünschten Szenario zu entsprechen. Die Richtlinienregel bestimmt, welche Ressourcen im Bereich der Zuweisung ausgewertet werden.
 

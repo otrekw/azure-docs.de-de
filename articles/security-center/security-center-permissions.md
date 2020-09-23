@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: memildin
-ms.openlocfilehash: e5728b220f12c3305aa896e64010fc7e5828d6fb
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: ed73c4781b9fd9926e12910ca1eb2f71d2b99245
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067221"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904830"
 ---
 # <a name="permissions-in-azure-security-center"></a>Berechtigungen in Azure Security Center
 
@@ -44,7 +44,7 @@ In der folgenden Tabelle sind die Rollen und zulässigen Aktionen von Security C
 |:--- |:---:|:---:|:---:|:---:|:---:|
 |Sicherheitsrichtlinie bearbeiten|-|✔|-|-|✔|
 |Initiativen hinzufügen/zuweisen (einschließlich Standards für die Einhaltung gesetzlicher Bestimmungen)|-|-|-|-|✔|
-|Tarif für Abonnement ändern|-|✔|-|-|✔|
+|Aktivieren/Deaktivieren von Azure Defender|-|✔|-|-|✔|
 |Automatische Bereitstellung aktivieren/deaktivieren|-|✔|-|✔|✔|
 |Sicherheitsempfehlungen für eine Ressource anwenden</br> (und [Schnelle Problembehebung](security-center-remediate-recommendations.md#quick-fix-remediation) verwenden)|-|-|✔|✔|✔|
 |Warnungen verwerfen|-|✔|-|✔|✔|

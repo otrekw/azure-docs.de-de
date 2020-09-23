@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: bb7ebee67d65ab37dc037437b7c35d8c19c53096
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7f9677bfd793e7ff21ff2c6c7e6760b630dc074b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137024"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898537"
 ---
 # <a name="decision-forest-regression-module"></a>Modul „Entscheidungswaldregression“
 
-In diesem Artikel wird ein Modul in Azure Machine Learning-Designer (Vorschauversion) beschrieben.
+In diesem Artikel wird ein Modul im Azure Machine Learning-Designer beschrieben.
 
 Verwenden Sie dieses Modul, um auf der Grundlage eines Ensembles von Entscheidungsstrukturen ein Regressionsmodell zu erstellen.
 

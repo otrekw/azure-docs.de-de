@@ -3,7 +3,7 @@ title: Verwalten von Geräten mit dem StorSimple Snapshot Manager | Microsoft Do
 description: Beschreibt, wie das MMC-Snap-In StorSimple Snapshot Manager zum Herstellen von Verbindungen mit StorSimple-Geräten und zu deren Verwaltung verwendet wird.
 services: storsimple
 documentationcenter: ''
-author: twooley
+author: alkohli
 manager: timlt
 editor: ''
 ms.assetid: 966ecbe3-a7fa-4752-825f-6694dd949946
@@ -13,13 +13,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/05/2017
-ms.author: twooley
-ms.openlocfilehash: ab9f34995cea0dee39fa002f0472298a31b9a48e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: dbb7e835d110bcb6cb81fd5425a2aafbb578e692
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513979"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054849"
 ---
 # <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>Verwenden des StorSimple Snapshot Managers zum Verbinden und Verwalten von StorSimple-Geräten
 ## <a name="overview"></a>Übersicht

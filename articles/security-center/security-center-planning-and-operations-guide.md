@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: e9e67dc0da7f81f73d8237769e7aea90f9bc1585
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e5d483af44116274019851f049d6222adfd8dbcd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833418"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904841"
 ---
 # <a name="planning-and-operations-guide"></a>Leitfaden zu Planung und Betrieb
 Dieses Handbuch ist für IT-Experten, IT-Architekten, Informationssicherheitsanalysten und Cloudadministratoren konzipiert, die mit Azure Security Center arbeiten möchte.
@@ -120,7 +120,7 @@ Security Center-Richtlinien enthalten folgende Komponenten:
 - [Datensammlung:](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection) Agent-Bereitstellung und Datensammlungseinstellungen.
 - [Sicherheitsrichtlinie:](https://docs.microsoft.com/azure/security-center/security-center-policies) Eine Azure-Richtlinie, die festlegt, welche Kontrollen von Security Center überwacht und empfohlen werden. Sie können aber auch [Azure Policy](../governance/policy/overview.md) verwenden, um neue Definitionen zu erstellen, zusätzliche Richtlinien zu definieren und verwaltungsgruppenübergreifende Richtlinien zuzuweisen.
 - [E-Mail-Benachrichtigungen:](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details) Sicherheitskontakte und Benachrichtigungseinstellungen.
-- [Tarif:](https://docs.microsoft.com/azure/security-center/security-center-pricing) Der gewählte Tarif (Free oder Standard) bestimmt, welche Security Center-Features für Ressourcen innerhalb des Gültigkeitsbereichs verfügbar sind. (Kann für Abonnements, Ressourcengruppen und Arbeitsbereiche angegeben werden.)
+- [Tarif:](https://docs.microsoft.com/azure/security-center/security-center-pricing) Der Tarif mit oder ohne Azure Defender bestimmt, welche Security Center-Features für Ressourcen innerhalb des Gültigkeitsbereichs verfügbar sind. (Kann für Abonnements, Ressourcengruppen und Arbeitsbereiche angegeben werden.)
 
 > [!NOTE]
 > Die Angabe eines Sicherheitskontakts stellt sicher, dass Azure bei einem Sicherheitsvorfall die richtige Person in Ihrer Organisation erreicht. Weitere Informationen zur Aktivierung dieser Empfehlung finden Sie unter [Bereitstellen von Sicherheitskontaktinformationen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details) .
@@ -158,12 +158,12 @@ Sie können das Azure-Portal durchsuchen, um eine Liste Ihrer Log Analytics-Arbe
 Für Arbeitsbereiche, die von Azure Security Center erstellt wurden, werden die Daten 30 Tage lang beibehalten. Bei vorhandenen Arbeitsbereichen basiert die Vermerkdauer auf dem Tarif des Arbeitsbereichs. Sie können auch einen bereits vorhandenen Arbeitsbereich verwenden.
 
 > [!NOTE]
-> Microsoft unternimmt große Anstrengungen, um den Datenschutz und die Sicherheit dieser Daten zu gewährleisten. Microsoft hält strenge Compliance- und Sicherheitsrichtlinien ein – angefangen bei der Codierung bis hin zum Betreiben von Diensten. Weitere Informationen zur Behandlung von Daten und zum Datenschutz finden Sie unter [Azure Security Center-Datensicherheit](security-center-data-security.md).
+> Microsoft unternimmt große Anstrengungen, um für den Datenschutz und die Sicherheit dieser Daten zu sorgen. Microsoft hält strenge Compliance- und Sicherheitsrichtlinien ein – angefangen bei der Codierung bis hin zum Betreiben von Diensten. Weitere Informationen zur Behandlung von Daten und zum Datenschutz finden Sie unter [Azure Security Center-Datensicherheit](security-center-data-security.md).
 >
 
 ## <a name="onboarding-non-azure-resources"></a>Integration Azure-fremder Ressourcen
 
-Security Center kann den Sicherheitsstatus Ihrer Azure-fremden Computer überwachen. Dazu müssen die entsprechenden Ressourcen jedoch zunächst integriert werden. Weitere Informationen zur Integration Azure-fremder Ressourcen finden Sie unter [Integrieren von Azure Security Center Standard für erhöhte Sicherheit](https://docs.microsoft.com/azure/security-center/security-center-onboarding#onboard-non-azure-computers).
+Security Center kann den Sicherheitsstatus Ihrer Azure-fremden Computer überwachen. Dazu müssen die entsprechenden Ressourcen jedoch zunächst integriert werden. Weitere Informationen zum Integrieren Azure-fremder Ressourcen finden Sie im Artikel zum [Integrieren Azure-fremder Computer](quickstart-onboard-machines.md).
 
 ## <a name="ongoing-security-monitoring"></a>Kontinuierliche Sicherheitsüberwachung
 Nach Konfiguration und Anwendung der Security Center-Empfehlungen müssen Sie sich Gedanken zu den Betriebsprozessen von Security Center machen.
@@ -191,7 +191,7 @@ Außerdem sollten Sie die vorhandenen Ressourcen regelmäßig auf Konfigurations
 
 Im Rahmen Ihrer Sicherheitsmaßnahmen sollten Sie auch vorbeugende Maßnahmen zur Beschränkung des Zugriffs auf virtuelle Computer ergreifen und die Anwendungen überwachen, die auf virtuellen Computern ausgeführt werden. Die Sperrung des eingehenden Datenverkehrs für Ihre virtuellen Azure-Computer trägt zur Verringerung der Angriffsfläche bei und ermöglicht gleichzeitig eine komfortable bedarfsgerechte Verbindungsherstellung mit virtuellen Computern. Verwenden Sie das Feature [JIT-VM-Zugriff](https://docs.microsoft.com/azure/security-center/security-center-just-in-time), um den Zugriff auf Ihre virtuellen Computer zu härten.
 
-Sie können [adaptive Anwendungssteuerungen](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application) verwenden, um einzugrenzen, welche Anwendungen auf Ihren in Azure befindlichen virtuellen Computern ausgeführt werden können. Neben anderen Vorteilen verbessert dies die Möglichkeiten, ihre virtuellen Computer vor Schadsoftware zu schützen. Über Verwenden von maschinellem Lernen werden in Security Center Prozesse analysiert, die auf den virtuellen Computer ausgeführt werden. Aus den Analysen können dann Whitelistregeln erstellt werden.
+Sie können [adaptive Anwendungssteuerungen](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application) verwenden, um einzugrenzen, welche Anwendungen auf Ihren in Azure befindlichen virtuellen Computern ausgeführt werden können. Neben anderen Vorteilen verbessert dies die Möglichkeiten, ihre virtuellen Computer vor Schadsoftware zu schützen. Unter Verwendung des maschinellen Lernens werden in Security Center Prozesse analysiert, die auf den virtuellen Computer ausgeführt werden. Aus den Analysen können dann Regeln für Zulassungslisten erstellt werden.
 
 
 ## <a name="incident-response"></a>Reaktion auf Vorfälle
@@ -199,7 +199,7 @@ Security Center erkennt Bedrohungen, wenn diese entstehen, und macht Sie darauf 
 
 Dieser Artikel soll Ihnen zwar nicht als Hilfe beim Erstellen eines eigenen Reaktionsplans für Sicherheitsvorfälle dienen, aber wir verwenden Microsoft Azure Security Response im Cloudlebenszyklus als Grundlage für die Phasen der Reaktionen auf Vorfälle. Die Phasen sind in der folgenden Abbildung dargestellt:
 
-![Verdächtige Aktivitäten](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-1.png)
+![Phasen der Reaktion auf Vorfälle im Cloudlebenszyklus](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-1.png)
 
 > [!NOTE]
 > Zu diesem Zweck können Sie den [Computer Security Incident Handling Guide](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf) des NIST (National Institute of Standards and Technology) verwenden.
@@ -237,4 +237,4 @@ In diesem Dokument haben Sie erfahren, wie Sie die Einführung von Security Cent
 * [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md) : Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
 * [Überwachen von Partnerlösungen mit Azure Security Center](security-center-partner-solutions.md) : Erfahren Sie, wie der Integritätsstatus Ihrer Partnerlösungen überwacht wird.
 * [Azure Security Center – Häufig gestellte Fragen:](faq-general.md) Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
-* [Azure Security Blog](https://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Azure-Sicherheit und -Compliance.
+* [Azure Security Blog](https://docs.microsoft.com/archive/blogs/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Azure-Sicherheit und -Compliance.

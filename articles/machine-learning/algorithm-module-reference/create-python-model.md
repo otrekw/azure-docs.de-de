@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/18/2020
-ms.openlocfilehash: 59a335e41116818e41579488cc6931ed1534c9ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03f80ebeb7b30d8c0fe14060335541d77b7523b0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84984884"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898629"
 ---
 # <a name="create-python-model-module"></a>Modul „Create Python Model“
 
-In diesem Artikel wird ein Modul in Azure Machine Learning-Designer (Vorschauversion) beschrieben.
+In diesem Artikel wird ein Modul im Azure Machine Learning-Designer beschrieben.
 
 Erfahren Sie, wie Sie das „Create Python Model“-Modul verwenden, um anhand eines Python-Skripts ein untrainiertes Modell zu erstellen. Sie können das Modell auf der Grundlage jedes Lernmodells erstellen, das in einem Python-Paket in der Azure Machine Learning-Designer-Umgebung enthalten ist. 
 

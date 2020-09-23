@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2018
 ms.author: memildin
-ms.openlocfilehash: e6dfc0eb704b0b35ab4e181076d8f97fd3e8c9d7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e367851c4d709acbc0eb94a47d7e20d4d3c1cc46
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080749"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904811"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>Automatisieren der Integration von Azure Security Center mithilfe von PowerShell
 
@@ -29,9 +29,9 @@ Integrieren Sie Azure Security Center mithilfe von PowerShell, um die Integratio
 
 Dieser Artikel enthält ein PowerShell-Beispielskript, das zur abonnementübergreifenden Einführung von Security Center angepasst und verwendet werden kann. 
 
-In diesem Beispiel aktivieren Sie Security Center für ein Abonnement mit der ID d07c0080-170c-4c24-861d-9c817742786c und wenden die empfohlenen Einstellungen für hohen Schutz an. Dazu implementieren Sie den Standard-Tarif von Security Center, der erweiterte Funktionen für Bedrohungsschutz und Erkennung bietet:
+In diesem Beispiel aktivieren Sie Security Center für ein Abonnement mit der ID d07c0080-170c-4c24-861d-9c817742786c und wenden die empfohlenen Einstellungen für hohen Schutz an. Dazu aktivieren Sie Azure Defender, der erweiterte Funktionen für Bedrohungsschutz und Erkennung bietet:
 
-1. Legen Sie die [Schutzstufe „Standard“ von Security Center](https://azure.microsoft.com/pricing/details/security-center/) fest. 
+1. Aktivieren Sie [Azure Defender](azure-defender.md). 
  
 2. Legen Sie den Log Analytics-Arbeitsbereich fest, an den der Log Analytics-Agent die Daten sendet, die auf den mit dem Abonnement verknüpften virtuellen Computern erfasst werden. In diesem Beispiel wird ein vorhandener benutzerdefinierter Arbeitsbereich (myWorkspace) verwendet.
 
@@ -61,7 +61,7 @@ Diese Schritte sollten vor der Ausführung der Security Center-Cmdlets ausgefüh
 
     ```Register-AzResourceProvider -ProviderNamespace 'Microsoft.Security'```
 
-1. Optional: Legen Sie die Abdeckungsebene (Tarif) der Abonnements fest (wird keine Angabe gemacht, wird als Tarif „Free“ festgelegt):
+1. Optional: Legen Sie die Abdeckungsebene (Azure Defender ein/aus) der Abonnements fest. Wenn keine definiert, ist Defender deaktiviert:
 
     ```Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"```
 

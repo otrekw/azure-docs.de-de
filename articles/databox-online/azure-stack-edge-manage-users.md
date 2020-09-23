@@ -1,6 +1,6 @@
 ---
-title: 'Azure Stack Edge: Verwalten von Benutzern | Microsoft-Dokumentation'
-description: Hier wird beschrieben, wie Sie Benutzer für Ihre Azure Stack Edge-Ressource über das Azure-Portal verwalten.
+title: 'Azure Stack Edge Pro: Verwalten von Benutzern | Microsoft-Dokumentation'
+description: In diesem Artikel wird beschrieben, wie Sie die Benutzer Ihres Azure Stack Edge Pro-Geräts im Azure-Portal verwalten.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 1012ce417fb4952878dada29a9080c70954ed21f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3fb82e95d9d7dcfdf59bd05f91beff8e1184955e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339636"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904391"
 ---
-# <a name="use-the-azure-portal-to-manage-users-on-your-azure-azure-stack-edge"></a>Verwalten von Benutzern für Ihre Azure Stack Edge-Ressource über das Azure-Portal
+# <a name="use-the-azure-portal-to-manage-users-on-your-azure-azure-stack-edge-pro"></a>Verwalten von Benutzern Ihres Azure Stack Edge Pro-Geräts im Azure-Portal
 
-In diesem Artikel wird beschrieben, wie Sie Benutzer für Ihre Azure Stack Edge-Ressource verwalten. Sie können die Azure Stack Edge-Ressource über das Azure-Portal oder die lokale Webbenutzeroberfläche verwalten. Verwenden Sie das Azure-Portal, um Benutzer hinzuzufügen, zu ändern oder zu löschen.
+In diesem Artikel wird beschrieben, wie Sie Benutzer Ihres Azure Stack Edge Pro-Geräts verwalten. Sie können das Azure Stack Edge Pro-Gerät im Azure-Portal oder über die lokale Webbenutzeroberfläche verwalten. Verwenden Sie das Azure-Portal, um Benutzer hinzuzufügen, zu ändern oder zu löschen.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
