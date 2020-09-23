@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/29/2019
+ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 4042f7b9d0f6fdf293f338c89d5783fe266c4edf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f9c400b55b0da47495db4f1ff4ceb86aa39fe2cc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77581683"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885843"
 ---
 # <a name="remove-azure-sentinel-from-your-workspace"></a>Entfernen von Azure Sentinel aus Ihrem Arbeitsbereich
 
@@ -48,13 +48,13 @@ Nach Abschluss der Verbindungstrennung beginnt der Offboardingprozess.
 
 -   AWS
 
--   Sicherheitswarnungen für Microsoft-Dienste (Azure ATP, Microsoft Cloud App Security mit Cloud Discovery-Schatten-IT-Berichterstellung, Azure AD Identity Protection, Microsoft Defender ATP, Azure Security Center)
+-   Sicherheitsbenachrichtigungen von Microsoft-Diensten: Microsoft Defender for Identity (*ehemals Azure ATP*), Microsoft Cloud App Security mit Cloud Discovery-Schatten-IT-Berichterstellung, Azure AD Identity Protection, Microsoft Defender für Endpunkt (*ehemals Microsoft Defender ATP*), Azure Defender-Benachrichtigungen aus dem Azure Security Center
 
 -   Threat Intelligence
 
--   Häufig verwendete Sicherheitsprotokolle (z. B. CEF-basierte Protokolle, Barracuda und Syslog) (Wenn Sie über Azure Security Center verfügen, werden diese Protokolle weiterhin erfasst.)
+-   Häufig verwendete Sicherheitsprotokolle (z. B. CEF-basierte Protokolle, Barracuda und Syslog) (Wenn Sie Azure Defender-Benachrichtigungen aus dem Azure Security Center erhalten, werden diese Protokolle weiterhin erfasst.)
 
--   Windows-Sicherheitsereignisse (Wenn Sie über Azure Security Center verfügen, werden diese Protokolle weiterhin erfasst.)
+-   Windows-Sicherheitsereignisse (Wenn Sie Azure Defender-Benachrichtigungen aus dem Azure Security Center erhalten, werden diese Protokolle weiterhin erfasst.)
 
 Innerhalb der ersten 48 Stunden kann auf die Daten und Analyseregeln (einschließlich Automatisierungskonfiguration in Echtzeit) in Azure Sentinel nicht mehr zugegriffen werden, und sie können auch nicht mehr abgefragt werden.
 

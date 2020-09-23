@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: 07fb91f081719a2e51cff45be67bbe9f362123f6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4535e6bf11f8c2abf20b1b323925c3fc3299d362
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066071"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971792"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Erstellen von Azure Resource Manager-Vorlagen, um die Bereitstellung für Azure Logic Apps zu automatisieren
 
@@ -60,14 +60,14 @@ Diese Beispiele veranschaulichen das Erstellen und Bereitstellen von Logik-Apps 
 
 1. Der einfachste Weg zum Installieren des LogicAppTemplate-Moduls aus dem [PowerShell-Katalog](https://www.powershellgallery.com/packages/LogicAppTemplate) besteht darin, den folgenden Befehl auszuführen:
 
-   ```text
-   PS> Install-Module -Name LogicAppTemplate
+   ```powershell
+   Install-Module -Name LogicAppTemplate
    ```
 
    Um auf die neueste Version zu aktualisieren, führen Sie den folgenden Befehl aus:
 
-   ```text
-   PS> Update-Module -Name LogicAppTemplate
+   ```powershell
+   Update-Module -Name LogicAppTemplate
    ```
 
 Wenn Sie manuell installieren möchten, führen Sie die Schritte in GitHub für [LogicAppTemplateCreator](https://github.com/jeffhollan/LogicAppTemplateCreator) aus.
@@ -80,28 +80,43 @@ Wenn Sie den `Get-LogicAppTemplate`-Befehl mit diesem Tool ausführen, geht der 
 
 ### <a name="generate-template-with-powershell"></a>Generieren einer Vorlage mit PowerShell
 
-Um Ihre Vorlage nach dem Installieren von LogicAppTemplate-Modul und [Azure CLI](/cli/azure/?view=azure-cli-latest) zu generieren, führen Sie den folgenden PowerShell-Befehl aus:
+Um Ihre Vorlage nach dem Installieren von LogicAppTemplate-Modul und [Azure CLI](/cli/azure/) zu generieren, führen Sie den folgenden PowerShell-Befehl aus:
 
-```text
-PS> Get-LogicAppTemplate -Token (az account get-access-token | ConvertFrom-Json).accessToken -LogicApp <logic-app-name> -ResourceGroup <Azure-resource-group-name> -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json
+```powershell
+$parameters = @{
+    Token = (az account get-access-token | ConvertFrom-Json).accessToken
+    LogicApp = '<logic-app-name>'
+    ResourceGroup = '<Azure-resource-group-name>'
+    SubscriptionId = $SubscriptionId
+    Verbose = $true
+}
+
+Get-LogicAppTemplate @parameters | Out-File C:\template.json
 ```
 
 Um der Empfehlung für das Weiterreichen eines Tokens aus dem [Azure Resource Manager-Clienttool](https://github.com/projectkudu/ARMClient) zu folgen, führen Sie stattdessen diesen Befehl aus, wobei `$SubscriptionId` Ihre Azure-Abonnement-ID ist:
 
-```text
-PS> armclient token $SubscriptionId | Get-LogicAppTemplate -LogicApp <logic-app-name> -ResourceGroup <Azure-resource-group-name> -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json
+```powershell
+$parameters = @{
+    LogicApp = '<logic-app-name>'
+    ResourceGroup = '<Azure-resource-group-name>'
+    SubscriptionId = $SubscriptionId
+    Verbose = $true
+}
+
+armclient token $SubscriptionId | Get-LogicAppTemplate @parameters | Out-File C:\template.json
 ```
 
 Nach dem Extrahieren können Sie eine Parameterdatei aus ihrer Vorlage erstellen, indem Sie den folgenden Befehl ausführen:
 
-```text
-PS> Get-ParameterTemplate -TemplateFile $filename | Out-File '<parameters-file-name>.json'
+```powershell
+Get-ParameterTemplate -TemplateFile $filename | Out-File '<parameters-file-name>.json'
 ```
 
 Zum Extrahieren mit Azure Key Vault-Verweisen (nur statisch) führen Sie den folgenden Befehl aus:
 
-```text
-PS> Get-ParameterTemplate -TemplateFile $filename -KeyVault Static | Out-File $fileNameParameter
+```powershell
+Get-ParameterTemplate -TemplateFile $filename -KeyVault Static | Out-File $fileNameParameter
 ```
 
 | Parameter | Erforderlich | BESCHREIBUNG |

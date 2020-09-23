@@ -5,23 +5,31 @@ description: Azure Cognitive Services sind Clouddienste mit REST-APIs und Client
 services: cognitive-services
 author: nitinme
 manager: nitinme
-keywords: Cognitive Services, kognitive Intelligenz, Cognitives Services, KI als Dienst, kognitive Lösungen, kognitive künstliche Intelligenz, kognitive Software, KI Dienste, kognitive KI, kognitives Verstehen
+keywords: Cognitive Services, kognitive Intelligenz, kognitive Lösungen, KI-Dienste, kognitives Verständnis, kognitive Features
 ms.service: cognitive-services
 ms.subservice: ''
 ms.topic: overview
 ms.date: 08/28/2020
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 3d7f5926991239786d9b37dffecc05cd8983bf3f
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: bcb3fdbe12a2704e585a9b13484c2528c9cdc559
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89381288"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894436"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Was ist Azure Cognitive Services?
 
-Azure Cognitive Services sind Clouddienste mit REST-APIs und Clientbibliothek-SDKs, die Entwicklern beim Erstellen intelligenter Anwendungen helfen, ohne dass direkte KI- oder Data Science-Fähigkeiten oder -Kenntnisse erforderlich sind. Mit Azure Cognitive Services können Entwickler ganz einfach kognitive Funktionen in ihre Anwendungen integrieren. Das Ziel von Azure Cognitive Services ist es, Entwicklern zu helfen, Anwendungen zu entwickeln, die sehen, hören, sprechen, verstehen und sogar schlussfolgern können. Der Katalog der Dienste innerhalb von Azure Cognitive Services kann in fünf Hauptkategorien unterteilt werden: Bildanalyse, Spracheingabe, Sprache, Websuche und Entscheidungen.
+Azure Cognitive Services sind cloudbasierte Dienste mit REST-APIs und Clientbibliothek-SDKs, die Entwickler bei der Erstellung intelligenter Anwendungen unterstützen, ohne dass direkte KI- oder Data Science-Fähigkeiten oder -Kenntnisse erforderlich sind. Mit Cognitive Services können Entwickler ganz einfach kognitive Features in ihre Anwendungen integrieren – mit kognitiven Lösungen, die sehen, hören, sprechen, verstehen und sogar schlussfolgern können.
+
+Der Katalog von KI-Diensten mit kognitivem Verständnis umfasst fünf Hauptkategorien:
+
+* Bildanalyse
+* Spracheingabe
+* Sprache
+* Websuche
+* Entscheidung
 
 Die aktuelle Liste neuer Dokumentationen finden Sie unter [Cognitive Services-Dokumentation: Neuerungen vom 1. Juli 2020 bis zum 31. Juli 2020](whats-new-docs.md).
 
@@ -80,7 +88,17 @@ Die aktuelle Liste neuer Dokumentationen finden Sie unter [Cognitive Services-Do
 |:-----------|:------------------|
 |[Anomalieerkennung](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/ "Anomalieerkennung") (Vorschauversion)|Die Anomalieerkennung bietet Ihnen die Möglichkeit, Abweichungen in Ihren Zeitreihendaten zu überwachen und zu erkennen.|
 |[Content Moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview "Content Moderator")|Der Content Moderator bietet die Überwachung auf möglicherweise anstößige, unerwünschte und risikobehaftete Inhalte.|
+|[Metrics Advisor](https://docs.microsoft.com/azure/cognitive-services/metrics-advisor) (Vorschauversion) | Metrics Advisor bietet eine anpassbare Anomalieerkennung für multivariate Zeitreihendaten sowie ein umfassendes Webportal, das Sie bei der Verwendung des Diensts unterstützt.
 |[Personalisierung](https://docs.microsoft.com/azure/cognitive-services/personalizer/ "Personalisierung")|Mit der Personalisierung können Sie die beste Benutzeroberfläche für Ihre Benutzer auswählen und dabei in Echtzeit von deren Verhalten lernen.|
+
+## <a name="learn-with-the-quickstarts"></a>Lernen mit den Schnellstartanleitungen
+
+Nutzen Sie praktische Schnellstartanleitungen, um zu erfahren, wie Sie eine Cognitive Services-Ressource mithilfe von Folgendem erstellen:
+
+* [Azure portal](cognitive-services-apis-create-account.md?tabs=multiservice%2Cwindows "Azure-Portal")
+* [Azure-Befehlszeilenschnittstelle](cognitive-services-apis-create-account-cli.md?tabs=windows "Azure CLI")
+* [Azure SDK-Clientbibliotheken](cognitive-services-apis-create-account-cli.md?tabs=windows "cognitive-services-apis-create-account-client-library?pivots=programming-language-csharp")
+* [Azure Resource Manager-Vorlagen](resource-manager-template.md?tabs=portal "Azure Resource Manager-Vorlagen")
 
 ## <a name="subscription-management"></a>Abonnementverwaltung
 
@@ -118,7 +136,10 @@ Informationen zum Datenschutz und zur Datenverwaltung finden Sie im [Trust Cente
 
 ## <a name="support"></a>Support
 
-Cognitive Services bietet mehrere [Unterstützungsoptionen](cognitive-services-support-options.md "Supportoptionen").
+Cognitive Services bietet mehrere [Supportoptionen](cognitive-services-support-options.md "Supportoptionen").
+
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 
