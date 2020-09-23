@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f195d4096baaa1d6a03b4b6c7c589ccef8fbd036
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 9991bae3d5c8487cc80cca0bf9a249e715b5c521
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651725"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650698"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Prüfliste für die Planung und Bereitstellung von SAP-Workloads in Azure
 
@@ -213,7 +213,7 @@ In dieser Phase stellen Sie in der Regel Entwicklungssysteme, Komponententestsys
 12. Zeichnen Sie beim Anwenden der Workload den Ressourcenverbrauch der Systeme in Azure auf. Vergleichen Sie diesen Verbrauch mit Aufzeichnungen aus Ihrer alten Plattform. Passen Sie die VM-Dimensionierung künftiger Bereitstellungen an, wenn Sie große Unterschiede verzeichnen. Beachten Sie, dass beim Downsizing auch die Speicher- und Netzwerkbandbreiten von virtuellen Computern reduziert werden.
     - [Größen für virtuelle Windows-Computer in Azure](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     - [Größen für virtuelle Linux-Computer in Azure](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 
-13. Experimentieren Sie mit Systemfunktionen und -prozessen für das Kopieren. Das Ziel besteht darin, Ihnen das Kopieren eines Bereitstellungssystems oder Testsystems zu erleichtern, damit Projektteams schnell an neue Systeme gelangen können. Erwägen Sie den Einsatz von [SAP LaMa](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+Landscape+Management+%28SAP+LaMa%29+at+a+Glance) für diese Aufgaben.
+13. Experimentieren Sie mit Systemfunktionen und -prozessen für das Kopieren. Das Ziel besteht darin, Ihnen das Kopieren eines Bereitstellungssystems oder Testsystems zu erleichtern, damit Projektteams schnell an neue Systeme gelangen können. 
 14. Optimieren und verfeinern Sie den rollenbasierten Zugriff, die Berechtigungen und die Prozesse Ihres Teams in Azure, um eine sichere Trennung der Aufgaben zu erreichen. Vergewissern Sie sich im gleichen Zug, dass alle Teams ihre Aufgaben in der Azure-Infrastruktur verrichten können.
 15. Überprüfen, testen und dokumentieren Sie die Verfahren für Hochverfügbarkeit und Notfallwiederherstellung, damit Ihre Mitarbeiter diese Aufgaben ausführen können. Identifizieren Sie Mängel, und übernehmen Sie neue Azure-Funktionen in Ihre Bereitstellungen
 

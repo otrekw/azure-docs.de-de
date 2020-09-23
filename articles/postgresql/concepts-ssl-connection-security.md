@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 615e8c80d194bb37feac1c09af22d2aa5d4aa3fc
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 872daf3a208452e8b7ec27b2326e394b416a1c5f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142712"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902038"
 ---
 # <a name="configure-tls-connectivity-in-azure-database-for-postgresql---single-server"></a>Konfigurieren der TLS-Konnektivität in Azure Database for PostgreSQL (Einzelserver)
 
@@ -33,7 +33,7 @@ Sie können die Erzwingung von TLS-Verbindungen optional deaktivieren. Microsoft
 
 Rufen Sie Ihren Azure-Datenbank für PostgreSQL-Server auf, und klicken Sie auf **Verbindungssicherheit**. Verwenden Sie die Umschaltfläche, um die Einstellung **SSL-Verbindung erzwingen** zu aktivieren/deaktivieren. Klicken Sie dann auf **Speichern**.
 
-![Verbindungssicherheit: Erzwingung von TLS/SSL deaktivieren](./media/concepts-ssl-connection-security/1-disable-ssl.png)
+:::image type="content" source="./media/concepts-ssl-connection-security/1-disable-ssl.png" alt-text="Verbindungssicherheit: Erzwingung von TLS/SSL deaktivieren":::
 
 Bestätigen Sie die Einstellung auf der Seite **Übersicht**, indem Sie den Indikator für den **SSL-Erzwingungsstatus** anzeigen.
 

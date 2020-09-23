@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 4c00639c02f8834a24a3828ac5b8ba828d0e1733
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 82c5d87be084e85b6de9f890bd042babca9df476
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282822"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090498"
 ---
 # <a name="use-the-drawing-tools-module"></a>Verwenden des Zeichentools-Moduls
 
-Das Web SDK für Azure Maps stellt ein *Zeichentools-Modul* bereit. Dieses Modul vereinfacht das Zeichnen und Bearbeiten von Formen auf der Karte mit einem Eingabegerät wie einer Maus oder einem Touchscreen. Die Kernklasse dieses Moduls ist der [Zeichnungs-Manager](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-). Der Zeichnungs-Manager stellt alle Funktionen zur Verfügung, die zum Zeichnen und Bearbeiten von Formen auf der Karte benötigt werden. Er kann direkt verwendet werden und ist in eine benutzerdefinierte Symbolleisten-Benutzeroberfläche integriert. Sie können auch die integrierte [Zeichnen-Symbolleisten](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest)-Klasse verwenden. 
+Das Web SDK für Azure Maps stellt ein *Zeichentools-Modul* bereit. Dieses Modul vereinfacht das Zeichnen und Bearbeiten von Formen auf der Karte mit einem Eingabegerät wie einer Maus oder einem Touchscreen. Die Kernklasse dieses Moduls ist der [Zeichnungs-Manager](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#setoptions-drawingmanageroptions-). Der Zeichnungs-Manager stellt alle Funktionen zur Verfügung, die zum Zeichnen und Bearbeiten von Formen auf der Karte benötigt werden. Er kann direkt verwendet werden und ist in eine benutzerdefinierte Symbolleisten-Benutzeroberfläche integriert. Sie können auch die integrierte [Zeichnen-Symbolleisten](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar)-Klasse verwenden. 
 
 ## <a name="loading-the-drawing-tools-module-in-a-webpage"></a>Laden des Zeichentools-Moduls auf eine Webseite
 
@@ -44,13 +44,13 @@ Das Web SDK für Azure Maps stellt ein *Zeichentools-Modul* bereit. Dieses Modul
 
 ## <a name="use-the-drawing-manager-directly"></a>Direktes Verwenden des Zeichnungs-Managers
 
-Sobald das Zeichentools-Modul in Ihre Anwendung geladen ist, können Sie die Zeichen- und Bearbeitungsfunktionen mit dem [Zeichnungs-Manager](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-) aktivieren. Sie können Optionen für den Zeichnungs-Manager festlegen, während Sie ihn instanziieren, oder alternativ die Funktion `drawingManager.setOptions()` verwenden.
+Sobald das Zeichentools-Modul in Ihre Anwendung geladen ist, können Sie die Zeichen- und Bearbeitungsfunktionen mit dem [Zeichnungs-Manager](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#setoptions-drawingmanageroptions-) aktivieren. Sie können Optionen für den Zeichnungs-Manager festlegen, während Sie ihn instanziieren, oder alternativ die Funktion `drawingManager.setOptions()` verwenden.
 
 ### <a name="set-the-drawing-mode"></a>Festlegen des Zeichenmodus
 
 Mit dem folgenden Code wird eine Instanz des Zeichnungs-Managers erstellt und die Option für den **Zeichnungsmodus** festgelegt. 
 
-```Javascript
+```javascript
 //Create an instance of the drawing manager and set drawing mode.
 drawingManager = new atlas.drawing.DrawingManager(map,{
     mode: "draw-polygon"
@@ -76,7 +76,7 @@ Der Zeichnungs-Manager unterstützt drei verschiedene Arten der Interaktion mit 
 
 Der folgende Code aktiviert den Polygon-Zeichenmodus und legt den Typ von Zeichnungsinteraktion, dem der Zeichnungs-Manager entsprechen soll, auf `freehand` fest. 
 
-```Javascript
+```javascript
 //Create an instance of the drawing manager and set drawing mode.
 drawingManager = new atlas.drawing.DrawingManager(map,{
     mode: "draw-polygon",
@@ -122,10 +122,10 @@ Erfahren Sie, wie die weiteren Funktionen des Zeichentools-Moduls verwendet werd
 Erfahren Sie mehr zu den in diesem Artikel verwendeten Klassen und Methoden:
 
 > [!div class="nextstepaction"]
-> [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
-> [Zeichnungs-Manager](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest)
+> [Zeichnungs-Manager](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager)
 
 > [!div class="nextstepaction"]
-> [Zeichnungssymbolleiste](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest)
+> [Zeichnungssymbolleiste](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar)

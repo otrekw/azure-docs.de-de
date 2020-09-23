@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
-ms.openlocfilehash: 9b8d7f241f79b087f318c9c416dcadf92838b084
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 894fc4066ad408f0749e7a982011d82b205e6fec
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85126211"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901350"
 ---
 # <a name="security-alerts-schemas"></a>Schemas für Sicherheitswarnungen
 
-Benutzer des Standardtarifs von Azure Security Center erhalten Sicherheitswarnungen, wenn Security Center Bedrohungen für ihre Ressourcen erkennt.
+Wenn für Ihr Abonnement Azure Defender aktiviert ist, erhalten Sie Sicherheitswarnungen, wenn Security Center Bedrohungen für Ressourcen erkennt.
 
 Sie können diese Sicherheitswarnungen auf der Seite **Bedrohungsschutz** von Azure Security Center oder mithilfe externer Tools anzeigen, wie z. B.:
 

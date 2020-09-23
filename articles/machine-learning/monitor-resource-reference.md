@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 04/27/2020
-ms.openlocfilehash: e9a43f4a7da39869e002e2da9fb9638381e57cb8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 405b0aa051d0d1142d7dd4ccbf2bca4ef9cc3545
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82856036"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650594"
 ---
 # <a name="azure-machine-learning-monitoring-data-reference"></a>Überwachen von Azure Machine Learning-Daten – Referenz
 
@@ -195,7 +195,7 @@ Die folgenden Dimensionen sind Dimensionen, mit denen Ausführungsmetriken gefil
 | Dimension | BESCHREIBUNG |
 | ---- | ---- |
 | ComputeType | Der für die Ausführung verwendete Computetyp |
-| PipelineStepType | Der Typ des [PipelineStep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?view=azure-ml-py)-Objekts, das in der Ausführung verwendet wurde |
+| PipelineStepType | Der Typ des [PipelineStep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?view=azure-ml-py&preserve-view=true)-Objekts, das in der Ausführung verwendet wurde |
 | PublishedPipelineId | Die ID der veröffentlichten Pipeline, die in der Ausführung verwendet wurde |
 | RunType | Der Typ der Ausführung. |
 

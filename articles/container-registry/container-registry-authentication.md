@@ -3,12 +3,12 @@ title: Authentifizierungsoptionen für die Registrierung
 description: Hier erfahren Sie mehr über Authentifizierungsoptionen für eine private Azure-Containerregistrierung wie z. B. das Anmelden mit einer Azure Active Directory-Identität, mithilfe von Dienstprinzipalen sowie mittels optionalen Administratoranmeldeinformationen.
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: 3d2379b2b2384342fb84ba1b610caa609300aa0c
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 7c8176d0cdca5d74ed3201071f83ed1181d94b8d
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926319"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657089"
 ---
 # <a name="authenticate-with-an-azure-container-registry"></a>Authentifizieren mit einer Azure-Containerregistrierung
 
@@ -53,7 +53,7 @@ In einigen Fällen müssen Sie sich möglicherweise mit `az acr login` authentif
 Führen Sie für dieses Szenario `az acr login` zuerst mit dem Parameter `--expose-token` aus. Diese Option macht ein Zugriffstoken verfügbar, anstatt sich über die Docker CLI anzumelden.
 
 ```azurecli
-az acr login -name <acrName> --expose-token
+az acr login --name <acrName> --expose-token
 ```
 
 Die Ausgabe zeigt das hier abgekürzte Zugriffstoken an:

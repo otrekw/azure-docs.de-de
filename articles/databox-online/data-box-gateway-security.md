@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 2711160534270f38845ab7b48234f4a441c236b4
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 45506b87bf13b44e035655dbdf0fac03ea50612c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195869"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893854"
 ---
 # <a name="azure-data-box-gateway-security-and-data-protection"></a>Azure Data Box Gateway: Sicherheit und Schutz von Daten
 
@@ -38,7 +38,7 @@ Der Data Box Gateway-Dienst ist ein in Azure gehosteter Verwaltungsdienst. Der D
 
 Das Data Box Gateway-Gerät ist ein virtuelles Gerät, das im Hypervisor eines angegebenen lokalen Systems bereitgestellt wird. Das Gerät hilft dabei, Daten an Azure senden. Für Ihr Gerät gilt Folgendes:
 
-- Es benötigt einen Aktivierungsschlüssel für den Zugriff auf den Azure Stack Edge/Data Box Gateway-Dienst.
+- Es benötigt einen Aktivierungsschlüssel für den Zugriff auf den Azure Stack Edge Pro-/Data Box Gateway-Dienst.
 - Es ist jederzeit durch ein Gerätekennwort geschützt.
 <!---  secure boot enabled.
 - Runs Windows Defender Device Guard. Device Guard allows you to run only trusted applications that you define in your code integrity policies.-->
@@ -85,7 +85,7 @@ In diesem Abschnitt werden die Data Box Gateway-Sicherheitsfeatures für Daten w
 
 Zum Schutz virtueller Datenträger auf Ihrem virtuellen Data Box Gateway-Computer wird die Aktivierung von BitLocker empfohlen. Standardmäßig ist BitLocker nicht aktiviert. Weitere Informationen finden Sie unter
 
-- [Einstellungen für die Verschlüsselungsunterstützung in Hyper-V-Manager](h https://docs.microsoft.com/windows-server/virtualization/hyper-v/learn-more/generation-2-virtual-machine-security-settings-for-hyper-v#encryption-support-settings-in-hyper-v-manager)
+- [Einstellungen für die Verschlüsselungsunterstützung in Hyper-V-Manager](hhttps://docs.microsoft.com/windows-server/virtualization/hyper-v/learn-more/generation-2-virtual-machine-security-settings-for-hyper-v#encryption-support-settings-in-hyper-v-manager)
 - [BitLocker-Unterstützung auf einem virtuellen Computer](https://kb.vmware.com/s/article/2036142)
 
 ## <a name="manage-personal-information"></a>Verwalten persönlicher Informationen

@@ -1,6 +1,6 @@
 ---
-title: Tutorial zum Konfigurieren von Netzwerkeinstellungen für ein Azure Stack Edge-Gerät mit GPU im Azure-Portal | Microsoft-Dokumentation
-description: Im Tutorial zur Bereitstellung eines Azure Stack Edge-Geräts mit GPU erfahren Sie, wie Sie Netzwerk-, Computenetzwerk- und Webproxyeinstellungen für Ihr physisches Gerät konfigurieren.
+title: Tutorial zum Konfigurieren von Netzwerkeinstellungen für ein Azure Stack Edge Pro-Gerät mit GPU im Azure-Portal | Microsoft-Dokumentation
+description: Im Tutorial zur Bereitstellung eines Azure Stack Edge Pro-Geräts mit GPU erfahren Sie, wie Sie Netzwerk-, Computenetzwerk- und Webproxyeinstellungen für Ihr physisches Gerät konfigurieren.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,17 +8,17 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 09/03/2020
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: cc111f0df889efd1d3720e2ec0e4aaa452efd801
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
+ms.openlocfilehash: c3ce12a91a0cf13bda000f7f729f6249fd04600c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461866"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894007"
 ---
-# <a name="tutorial-configure-network-for-azure-stack-edge-with-gpu"></a>Tutorial: Konfigurieren des Netzwerks für ein Azure Stack Edge-Gerät mit GPU
+# <a name="tutorial-configure-network-for-azure-stack-edge-pro-with-gpu"></a>Tutorial: Konfigurieren des Netzwerks für Azure Stack Edge Pro mit GPU
 
-In diesem Tutorial wird erläutert, wie Sie das Netzwerk für Ihr Azure Stack Edge-Gerät mit eingebauter GPU auf der lokalen Webbenutzeroberfläche konfigurieren.
+In diesem Tutorial wird erläutert, wie Sie das Netzwerk für Ihr Azure Stack Edge Pro-Gerät mit eingebauter GPU über die lokale Webbenutzeroberfläche konfigurieren.
 
 Der Verbindungsvorgang dauert ca. 20 Minuten.
 
@@ -34,10 +34,10 @@ In diesem Tutorial lernen Sie Folgendes kennen:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Überprüfen Sie Folgendes, bevor Sie ein Azure Stack Edge-Gerät mit GPU konfigurieren und einrichten:
+Überprüfen Sie Folgendes, bevor Sie ein Azure Stack Edge Pro-Gerät mit GPU konfigurieren und einrichten:
 
-* Sie haben Ihr physisches Gerät gemäß der Anleitung unter [Tutorial: Installieren von Azure Stack Edge](azure-stack-edge-gpu-deploy-install.md) installiert.
-* Sie haben, wie unter [Herstellen einer Verbindung mit Azure Stack Edge](azure-stack-edge-gpu-deploy-connect.md), beschrieben, eine Verbindung mit der lokale Webbenutzeroberfläche des Geräts hergestellt.
+* Sie haben Ihr physisches Gerät gemäß der Anleitung unter [Installieren von Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-install.md) installiert.
+* Sie haben, wie unter [Herstellen einer Verbindung mit Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-connect.md), beschrieben, eine Verbindung mit der lokalen Webbenutzeroberfläche des Geräts hergestellt.
 
 
 ## <a name="configure-network"></a>Netzwerk konfigurieren
@@ -86,23 +86,23 @@ Führen Sie diese Schritte aus, um das Netzwerk für Ihr Gerät zu konfigurieren
      > * Wir empfehlen, die lokale IP-Adresse der Netzwerkschnittstelle nicht von statisch auf DHCP umzustellen, es sei denn, Sie haben eine andere IP-Adresse für die Verbindung zum Gerät. Wenn Sie eine Netzwerkschnittstelle verwenden und zu DHCP wechseln, gibt es keine Möglichkeit, die DHCP-Adresse zu bestimmen. Wenn Sie zu einer DHCP-Adresse wechseln möchten, warten Sie, bis sich das Gerät im Dienst aktiviert hat, und nehmen Sie dann die Änderung vor. Sie können dann die IPs aller Adapter im Azure-Portal in den **Geräteeigenschaften** für Ihren Dienst anzeigen.
 
 
-    Nachdem Sie die Netzwerkeinstellungen konfiguriert und angewendet haben, kehren Sie zu **Erste Schritte** zurück.
+    Nachdem Sie die Netzwerkeinstellungen konfiguriert und angewendet haben, wählen Sie „Weiter: Compute“ aus, um das Computenetzwerk zu konfigurieren.
 
 ## <a name="enable-compute-network"></a>Computenetzwerk aktivieren
 
-Befolgen Sie diese Schritte, um Compute zu aktivieren und das Computenetzwerk zu konfigurieren.
+Befolgen Sie diese Schritte, um Compute zu aktivieren und das Computenetzwerk zu konfigurieren. 
 
-1. Navigieren Sie auf der lokalen Webbenutzeroberfläche Ihres Geräts zur Seite **Erste Schritte**. Wählen Sie auf der Kachel **Netzwerk** die Option **Computenetzwerk** aus.  
+<!--1. Go to the **Get started** page in the local web UI of your device. On the **Network** tile, select **Compute network**.  
 
-    ![Seite „Compute“ auf der lokalen Benutzeroberfläche](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/compute-network-1.png)
+    ![Compute page in local UI 1](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/compute-network-1.png)-->
 
-2. Wählen Sie auf der Seite **Compute** eine Netzwerkschnittstelle aus, die Sie für Compute aktivieren möchten. 
+1. Wählen Sie auf der Seite **Compute** eine Netzwerkschnittstelle aus, die Sie für Compute aktivieren möchten. 
 
-    ![Seite „Compute“ auf der lokalen Benutzeroberfläche](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/compute-network-2.png)
+    ![Seite „Compute“ auf der lokalen Benutzeroberfläche 2](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/compute-network-2.png)
 
-2. Wählen Sie im Dialogfeld **Netzwerkeinstellungen** die Option **Aktivieren** aus. Wenn Sie Compute aktivieren, wird auf Ihrem Gerät an dieser Netzwerkschnittstelle ein virtueller Switch erstellt. Der virtuelle Switch wird für die Compute-Infrastruktur auf dem Gerät verwendet. 
+1. Wählen Sie im Dialogfeld **Netzwerkeinstellungen** die Option **Aktivieren** aus. Wenn Sie Compute aktivieren, wird auf Ihrem Gerät an dieser Netzwerkschnittstelle ein virtueller Switch erstellt. Der virtuelle Switch wird für die Compute-Infrastruktur auf dem Gerät verwendet. 
     
-3. Weisen Sie **IP-Adressen für Kubernetes-Knoten** zu. Diese statischen IP-Adressen gelten für die Compute-VM. 
+1. Weisen Sie **IP-Adressen für Kubernetes-Knoten** zu. Diese statischen IP-Adressen gelten für die Compute-VM.  
 
     Für ein Gerät mit *n*-Knoten wird ein zusammenhängender Bereich von mindestens *n+1* IPv4-Adressen für die Compute-VM unter Verwendung der Start- und End-IP-Adresse bereitgestellt. Da es sich bei Azure Stack Edge um ein Gerät mit einem Knoten handelt, werden mindestens zwei zusammenhängende IPv4-Adressen bereitgestellt.
 
@@ -110,34 +110,40 @@ Befolgen Sie diese Schritte, um Compute zu aktivieren und das Computenetzwerk zu
     > Kubernetes in Azure Stack Edge verwendet das Subnetz 172.27.0.0/16 für den Pod und das Subnetz 172.28.0.0/16 für den Dienst. Stellen Sie sicher, dass diese in Ihrem Netzwerk nicht verwendet werden. Werden diese Subnetze bereits in Ihrem Netzwerk verwendet, können Sie sie ändern, indem Sie das Cmdlet `Set-HcsKubeClusterNetworkInfo` über die PowerShell-Schnittstelle des Geräts ausführen. Weitere Informationen finden Sie unter [Ändern des Pod- und Dienstsubnetzes in Kubernetes](azure-stack-edge-gpu-connect-powershell-interface.md#change-kubernetes-pod-and-service-subnets).
 
 
-4. Weisen Sie **externe Dienst-IP-Adressen für Kubernetes** zu. Dies sind auch die IP-Adressen für den Lastenausgleich. Diese zusammenhängenden IP-Adressen sind für Dienste, die Sie außerhalb des Kubernetes-Clusters verfügbar machen möchten. Sie legen den statischen IP-Adressenbereich abhängig von der Anzahl der verfügbar gemachten Dienste fest. 
+1. Weisen Sie **externe Dienst-IP-Adressen für Kubernetes** zu. Dies sind auch die IP-Adressen für den Lastenausgleich. Diese zusammenhängenden IP-Adressen sind für Dienste, die Sie außerhalb des Kubernetes-Clusters verfügbar machen möchten. Sie legen den statischen IP-Adressenbereich abhängig von der Anzahl der verfügbar gemachten Dienste fest. 
     
     > [!IMPORTANT]
-    > Es wird ausdrücklich empfohlen, mindestens eine IP-Adresse für den Azure Stack Edge Hub-Dienst anzugeben, um auf Computemodule zugreifen zu können. Sie können dann optional zusätzliche IP-Adressen für andere Dienste/IoT Edge-Module (eine pro Dienst/Modul) angeben, auf die von außerhalb des Clusters zugegriffen werden muss. Die IP-Adressen des Diensts können später aktualisiert werden. 
+    > Es wird dringend empfohlen, mindestens eine IP-Adresse für den Azure Stack Edge Pro-Hubdienst anzugeben, um auf Computemodule zugreifen zu können. Sie können dann optional zusätzliche IP-Adressen für andere Dienste/IoT Edge-Module (eine pro Dienst/Modul) angeben, auf die von außerhalb des Clusters zugegriffen werden muss. Die IP-Adressen des Diensts können später aktualisiert werden. 
     
-5. Wählen Sie **Übernehmen**.
+1. Wählen Sie **Übernehmen**.
 
-    ![Seite „Compute“ auf der lokalen Benutzeroberfläche](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/compute-network-3.png)
+    ![Seite „Compute“ auf der lokalen Benutzeroberfläche 3](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/compute-network-3.png)
 
+1. Es dauert einige Minuten, bis die Konfiguration übernommen wurde. Möglicherweise müssen Sie den Browser aktualisieren. Wie Sie sehen, ist der angegebene Port für Compute aktiviert. 
+ 
+    ![Seite „Compute“ auf der lokalen Benutzeroberfläche 4](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/compute-network-4.png)
 
+    Klicken Sie auf **Weiter: Webproxy**, um den Webproxy zu konfigurieren.  
+
+  
 ## <a name="configure-web-proxy"></a>Konfigurieren des Webproxys
 
 Dies ist eine optionale Konfiguration.
 
 > [!IMPORTANT]
-> * Wenn Sie Compute aktivieren und ein IoT Edge-Modul auf Ihrem Azure Stack Edge-Gerät verwenden, sollten Sie die „Webproxyauthentifizierung“ auf **Keine** festlegen. NTLM wird nicht unterstützt.
->* Dateien für die automatische Proxykonfiguration (Proxy Auto Config, PAC) werden nicht unterstützt. Eine PAC-Datei definiert, wie Webbrowser und andere Benutzer-Agents automatisch den entsprechenden Proxyserver (Zugriffsmethode) zum Abrufen einer bestimmten URL auswählen können. Proxys, die versuchen, den gesamten Datenverkehr abzufangen und zu lesen (und anschließend alles mit eigener Zertifizierung neu zu signieren), sind nicht kompatibel, da das Zertifikat des Proxys nicht vertrauenswürdig ist. In der Regel funktionieren transparente Proxys gut mit Azure Stack Edge. Nicht transparente Webproxys werden nicht unterstützt.
+> * Wenn Sie Compute aktivieren und ein IoT Edge-Modul auf Ihrem Azure Stack Edge Pro-Gerät verwenden, sollten Sie für „Webproxyauthentifizierung“ die Option **Keine** festlegen. NTLM wird nicht unterstützt.
+>* Dateien für die automatische Proxykonfiguration (Proxy Auto Config, PAC) werden nicht unterstützt. Eine PAC-Datei definiert, wie Webbrowser und andere Benutzer-Agents automatisch den entsprechenden Proxyserver (Zugriffsmethode) zum Abrufen einer bestimmten URL auswählen können. Proxys, die versuchen, den gesamten Datenverkehr abzufangen und zu lesen (und anschließend alles mit eigener Zertifizierung neu zu signieren), sind nicht kompatibel, da das Zertifikat des Proxys nicht vertrauenswürdig ist. In der Regel funktionieren transparente Proxys gut mit Azure Stack Edge Pro. Nicht transparente Webproxys werden nicht unterstützt.
 
-1. Navigieren Sie auf der lokalen Webbenutzeroberfläche Ihres Geräts zur Seite **Erste Schritte**.
-2. Konfigurieren Sie auf der Kachel **Netzwerk** die Servereinstellungen Ihres Webproxys. Die Webproxykonfiguration ist optional. Bei Verwendung eines Webproxys kann dieser jedoch nur auf dieser Seite konfiguriert werden.
+<!--1. Go to the **Get started** page in the local web UI of your device.
+2. On the **Network** tile, configure your web proxy server settings. Although web proxy configuration is optional, if you use a web proxy, you can configure it on this page only.
 
-   ![Seite „Webproxyeinstellungen“ der lokalen Webbenutzeroberfläche](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/web-proxy-1.png)
+   ![Local web UI "Web proxy settings" page](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/web-proxy-1.png)-->
 
-3. Führen Sie auf der Seite **Webproxyeinstellungen** die folgenden Schritte aus:
+1. Führen Sie auf der Seite **Webproxyeinstellungen** die folgenden Schritte aus:
 
     1. Geben Sie im Feld **Webproxy-URL** die URL im folgenden Format ein: `http://host-IP address or FQDN:Port number`. HTTPS-URLs werden nicht unterstützt.
 
-    2. Klicken Sie unter **Authentifizierung** auf **Keine** oder **NTLM**. Wenn Sie Compute aktivieren und ein IoT Edge-Modul auf Ihrem Azure Stack Edge-Gerät verwenden, sollten Sie die Webproxyauthentifizierung auf **Keine** festlegen. **NTLM** wird nicht unterstützt.
+    2. Klicken Sie unter **Authentifizierung** auf **Keine** oder **NTLM**. Wenn Sie Compute aktivieren und ein IoT Edge-Modul auf Ihrem Azure Stack Edge Pro-Gerät verwenden, sollten Sie für „Webproxyauthentifizierung“ die Option **Keine** festlegen. **NTLM** wird nicht unterstützt.
 
     3. Falls Sie eine Authentifizierung verwenden, geben Sie einen Benutzernamen und ein Kennwort ein.
 
@@ -145,7 +151,7 @@ Dies ist eine optionale Konfiguration.
     
    ![Seite „Webproxyeinstellungen“ der lokalen Webbenutzeroberfläche](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/web-proxy-2.png)
 
-4. Nachdem die Einstellungen übernommen wurden, wechseln Sie zurück zu **Erste Schritte**.
+2. Nachdem die Einstellungen angewendet wurden, wählen Sie **Weiter: Gerät** ein.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -159,7 +165,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Konfigurieren des Webproxys
 
 
-Weitere Informationen zum Einrichten Ihres Azure Stack Edge-Geräts finden Sie unter:
+Informationen zum Einrichten Ihres Azure Stack Edge Pro-Geräts finden Sie unter:
 
 > [!div class="nextstepaction"]
 > [Konfigurieren von Geräteeinstellungen](./azure-stack-edge-gpu-deploy-set-up-device-update-time.md)

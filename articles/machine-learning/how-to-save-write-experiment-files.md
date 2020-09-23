@@ -12,15 +12,15 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 526a4f9f5542074107700b54dcf3d2a591b08b70
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 548113a5f775595caf3a798d7b35eddfbc80674e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144035"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886104"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Verzeichnisse zum Speichern und Schreiben von Dateien für Azure Machine Learning-Experimente
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 In diesem Artikel erfahren Sie, wo Sie Ihre Eingabedateien speichern sollten, und wohin Sie Ausgabedateien Ihrer Experimente schreiben sollten, um Speicherlimitfehler und Experimentlatenz zu vermeiden.
 
@@ -30,13 +30,13 @@ Bei Beginn von Trainingsausführungen auf einem [Computeziel](concept-compute-ta
 
 Bevor Sie ein Experiment auf einem Computeziel oder Ihrem lokalen Computer initiieren können, müssen Sie sicherstellen, dass die erforderlichen Dateien, z.B. Abhängigkeitsdateien und Datendateien, die Ihr Code zum Ausführen benötigt, für das Computeziel verfügbar sind.
 
-Zum Ausführen von Trainingsskripts wird von Azure Machine Learning das gesamte Quellverzeichnis kopiert. Sind vertrauliche Daten vorhanden, die nicht hochgeladen werden sollen, verwenden Sie die [IGNORE-Datei](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots), oder platzieren Sie sie nicht im Quellverzeichnis. Greifen Sie stattdessen mit einem [Datenspeicher](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py) auf Ihre Daten zu.
+Zum Ausführen von Trainingsskripts wird von Azure Machine Learning das gesamte Quellverzeichnis kopiert. Sind vertrauliche Daten vorhanden, die nicht hochgeladen werden sollen, verwenden Sie die [IGNORE-Datei](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots), oder platzieren Sie sie nicht im Quellverzeichnis. Greifen Sie stattdessen mit einem [Datenspeicher](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py&preserve-view=true) auf Ihre Daten zu.
 
 Das Speicherlimit für Momentaufnahmen des Experiments liegt bei 300 MB und/oder 2000 Dateien.
 
 Aus diesem Grund empfehlen wir Folgendes:
 
-* **Speichern Sie Ihre Dateien in einem Azure Machine Learning-[Datenspeicher](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py).** Dadurch werden Probleme mit Wartezeiten beim Experiment vermieden, und Sie erhalten die Vorteile des Datenzugriffs von einem Remotecomputeziel aus, was bedeutet, dass Funktionen wie die Authentifizierung und die Einbindung von Azure Machine Learning verwaltet werden. Weitere Informationen zum Angeben eines Datenspeichers als Ihr Quellverzeichnis und Hochladen von Dateien in Ihren Datenspeicher finden Sie im Artikel [Zugreifen auf Daten aus Ihren Datenspeichern](how-to-access-data.md).
+* **Speichern Sie Ihre Dateien in einem Azure Machine Learning-[Datenspeicher](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py&preserve-view=true).** Dadurch werden Probleme mit Wartezeiten beim Experiment vermieden, und Sie erhalten die Vorteile des Datenzugriffs von einem Remotecomputeziel aus, was bedeutet, dass Funktionen wie die Authentifizierung und die Einbindung von Azure Machine Learning verwaltet werden. Weitere Informationen zum Angeben eines Datenspeichers als Ihr Quellverzeichnis und Hochladen von Dateien in Ihren Datenspeicher finden Sie im Artikel [Zugreifen auf Daten aus Ihren Datenspeichern](how-to-access-data.md).
 
 * **Wenn Sie nur wenige Datendateien und Abhängigkeitsskripts benötigen und keinen Datenspeicher verwenden können,** legen Sie die Dateien in demselben Ordnerverzeichnis wie Ihr Trainingsskript ab. Geben Sie diesen Ordner direkt in Ihrem Trainingsskript als Ihr `source_directory` an, oder in dem Code, der Ihr Trainingsskript aufruft.
 

@@ -1,6 +1,6 @@
 ---
-title: Tutorial zum Vorbereiten des Azure-Portals und der Rechenzentrumsumgebung für das Bereitstellen von Azure Stack Edge | Microsoft-Dokumentation
-description: Im ersten Tutorial zum Bereitstellen von Azure Stack Edge geht es um die Vorbereitung des Azure-Portals.
+title: Tutorial zum Vorbereiten des Azure-Portals und der Rechenzentrumsumgebung für das Bereitstellen von Azure Stack Edge Pro | Microsoft-Dokumentation
+description: Im ersten Tutorial zum Bereitstellen von Azure Stack Edge Pro-Geräten geht es um die Vorbereitung des Azure-Portals.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,17 +8,17 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 07/22/2020
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: c8f64bc81afb941e13dd310a7efd9432639ec281
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
+ms.openlocfilehash: 224131d1b17c4ed34ee847638633a5a1a494ccaf
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131836"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894128"
 ---
-# <a name="tutorial-prepare-to-deploy-azure-stack-edge"></a>Tutorial: Vorbereiten der Bereitstellung von Azure Stack Edge  
+# <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro"></a>Tutorial: Vorbereiten der Bereitstellung von Azure Stack Edge Pro  
 
-Dies ist das erste Tutorial einer Reihe von Bereitstellungstutorials, die zum vollständigen Bereitstellen von Azure Stack Edge erforderlich sind. In diesem Tutorial erfahren Sie, wie Sie das Azure-Portal für die Bereitstellung einer Azure Stack Edge-Ressource vorbereiten.
+Dies ist das erste Tutorial einer Reihe von Bereitstellungstutorials, die zum vollständigen Bereitstellen von Azure Stack Edge Pro erforderlich sind. In diesem Tutorial erfahren Sie, wie Sie das Azure-Portal für die Bereitstellung einer Azure Stack Edge-Ressource vorbereiten.
 
 Sie benötigen Administratorrechte, um die Einrichtung und Konfiguration abzuschließen. Die Vorbereitung des Portals erfordert weniger als 10 Minuten.
 
@@ -33,21 +33,21 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="get-started"></a>Erste Schritte
 
-Führen Sie zum Bereitstellen von Azure Stack Edge die folgenden Tutorials in der angegebenen Reihenfolge aus.
+Führen Sie zum Bereitstellen von Azure Stack Edge Pro die folgenden Tutorials in der angegebenen Reihenfolge aus.
 
 | **#** | **Schritt** | **Dokumente** |
 | --- | --- | --- | 
-| 1. |**[Vorbereiten des Azure-Portals für Azure Stack Edge](azure-stack-edge-deploy-prep.md)** |Erstellen und konfigurieren Sie Ihre Azure Stack Edge-Ressource, bevor Sie ein physisches Azure Stack Edge-Gerät installieren. |
-| 2. |**[Installieren von Azure Stack Edge](azure-stack-edge-deploy-install.md)**|Packen Sie das physische Azure Stack Edge-Gerät aus, montieren Sie es in einem Rack, und verkabeln Sie es.  |
-| 3. |**[Verbinden, Einrichten und Aktivieren von Azure Stack Edge](azure-stack-edge-deploy-connect-setup-activate.md)** |Stellen Sie eine Verbindung mit der lokalen Webbenutzeroberfläche her, führen Sie die Einrichtung durch, und aktivieren Sie das Gerät. Das Gerät ist für die Einrichtung von SMB- oder NFS-Freigaben bereit.  |
-| 4. |**[Übertragen von Daten mit Azure Stack Edge](azure-stack-edge-deploy-add-shares.md)** |Fügen Sie Freigaben hinzu, und stellen Sie über SMB oder NFS eine Verbindung mit Freigaben her. |
-| 5. |**[Transformieren von Daten mit Azure Stack Edge](azure-stack-edge-deploy-configure-compute.md)** |Konfigurieren Sie Computemodule auf dem Gerät, um die Daten bei der Übertragung an Azure zu transformieren. |
+| 1. |**[Vorbereiten des Azure-Portals für Azure Stack Edge Pro](azure-stack-edge-deploy-prep.md)** |Erstellen und konfigurieren Sie Ihre Azure Stack Edge-Ressource, bevor Sie ein physisches Azure Stack Edge-Gerät installieren. |
+| 2. |**[Installieren von Azure Stack Edge Pro](azure-stack-edge-deploy-install.md)**|Packen Sie das physische Azure Stack Edge Pro-Gerät aus, montieren Sie es in einem Rack, und verkabeln Sie es.  |
+| 3. |**[Verbinden, Einrichten und Aktivieren von Azure Stack Edge Pro](azure-stack-edge-deploy-connect-setup-activate.md)** |Stellen Sie eine Verbindung mit der lokalen Webbenutzeroberfläche her, führen Sie die Einrichtung durch, und aktivieren Sie das Gerät. Das Gerät ist für die Einrichtung von SMB- oder NFS-Freigaben bereit.  |
+| 4. |**[Übertragen von Daten mit Azure Stack Edge Pro](azure-stack-edge-deploy-add-shares.md)** |Fügen Sie Freigaben hinzu, und stellen Sie über SMB oder NFS eine Verbindung mit Freigaben her. |
+| 5. |**[Transformieren von Daten mit Azure Stack Edge Pro](azure-stack-edge-deploy-configure-compute.md)** |Konfigurieren Sie Computemodule auf dem Gerät, um die Daten bei der Übertragung an Azure zu transformieren. |
 
 Sie können jetzt mit der Einrichtung des Azure-Portals beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Nachstehend finden Sie die Konfigurationsvoraussetzungen für die Azure Stack Edge-Ressource, das Azure Stack Edge-Gerät und das Netzwerk des Rechenzentrums.
+Im Folgenden finden Sie die Konfigurationsvoraussetzungen für die Azure Stack Edge-Ressource, das Azure Stack Edge Pro-Gerät und das Rechenzentrumsnetzwerk.
 
 ### <a name="for-the-azure-stack-edge-resource"></a>Für die Azure Stack Edge-Ressource
 
@@ -66,7 +66,7 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 * Sie besitzen ein Microsoft Azure-Speicherkonto mit Anmeldeinformationen für den Zugriff.
 * Sie werden durch Azure-Richtlinien, die von Ihrem Systemadministrator eingerichtet werden, nicht blockiert. Weitere Informationen zu Richtlinien finden Sie unter [Schnellstart: Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal).
 
-### <a name="for-the-azure-stack-edge-device"></a>Für das Azure Stack Edge-Gerät
+### <a name="for-the-azure-stack-edge-pro-device"></a>Voraussetzungen für die Bereitstellung des Azure Stack Edge Pro-Geräts
 
 Stellen Sie Folgendes sicher, bevor Sie ein physisches Gerät bereitstellen:
 
@@ -80,9 +80,9 @@ Stellen Sie Folgendes sicher, bevor Sie ein physisches Gerät bereitstellen:
 
 Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
-* Das Netzwerk in Ihrem Rechenzentrum ist gemäß den Netzwerkanforderungen für das Azure Stack Edge-Gerät konfiguriert. Weitere Informationen finden Sie unter [Systemanforderungen für Azure Stack Edge](azure-stack-edge-system-requirements.md).
+* Das Netzwerk in Ihrem Rechenzentrum ist gemäß den Netzwerkanforderungen für das Azure Stack Edge Pro-Gerät konfiguriert. Weitere Informationen finden Sie unter [Systemanforderungen für Azure Stack Edge Pro](azure-stack-edge-system-requirements.md).
 
-* Für den Normalbetrieb von Azure Stack Edge benötigen Sie Folgendes:
+* Für den Normalbetrieb von Azure Stack Edge Pro benötigen Sie Folgendes:
 
   * Eine Downloadbandbreite von mindestens 10 MBit/s, um sicherzustellen, dass das Gerät auf dem neuesten Stand bleibt.
   * Eine dedizierte Upload- und Downloadbandbreite von mindestens 20 MBit/s zum Übertragen von Dateien.
@@ -99,11 +99,11 @@ Um eine Azure Stack Edge-Ressource zu erstellen, führen Sie die folgenden Schri
     - Azure Government-Portal (URL: [https://portal.azure.us](https://portal.azure.us)). Ausführlichere Informationen finden Sie unter [Quickstart: Connect to Azure Government using portal](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal) (Schnellstart: Herstellen einer Verbindung mit Azure Government über das Portal).
 
 2. Wählen Sie im linken Bereich **+ Ressource erstellen** aus. Suchen Sie nach **Azure Stack Edge/Data Box Gateway**, und wählen Sie den Eintrag aus. Klicken Sie auf **Erstellen**.
-3. Wählen Sie das Abonnement aus, das Sie für das Azure Stack Edge-Gerät verwenden möchten. Wählen Sie die Region aus, in der Sie die Azure Stack Edge-Ressource bereitstellen möchten. Eine Liste aller Regionen, in denen die Azure Stack Edge-Ressource verfügbar ist, finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all).
+3. Wählen Sie das Abonnement aus, das Sie für das Azure Stack Edge Pro-Gerät verwenden möchten. Wählen Sie die Region aus, in der Sie die Azure Stack Edge-Ressource bereitstellen möchten. Eine Liste aller Regionen, in denen die Azure Stack Edge-Ressource verfügbar ist, finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all).
 
     Wählen Sie den Standort aus, der der geografischen Region, in der Ihr Gerät bereitgestellt werden soll, am nächsten ist. Die Region speichert nur die Metadaten für die Geräteverwaltung. Die tatsächlichen Daten können in jedem Speicherkonto gespeichert werden.
     
-    Wählen Sie in der Option **Azure Stack Edge** den Eintrag **Erstellen** aus.
+    Klicken Sie in der Option **Azure Stack Edge Pro** auf **Erstellen**.
 
     ![Suchen nach dem Azure Stack Edge-Dienst](media/azure-stack-edge-deploy-prep/data-box-edge-sku.png)
 
@@ -125,7 +125,7 @@ Um eine Azure Stack Edge-Ressource zu erstellen, führen Sie die folgenden Schri
 
 5. Klicken Sie auf **Weiter: Lieferanschrift**.
 
-    - Falls Sie bereits über ein Gerät verfügen, aktivieren Sie das Kontrollkästchen **I have a Azure Stack Edge device** (Ich habe ein Azure Stack Edge-Gerät.).
+    - Falls Sie bereits über ein Gerät verfügen, aktivieren Sie das Kombinationsfeld für **I have a Azure Stack Edge Pro device** (Ich habe ein Azure Stack Edge Pro-Gerät).
     - Handelt es sich um das neue Gerät, das Sie bestellen möchten, geben Sie Kontaktname, Unternehmen, Lieferadresse für das Gerät sowie Kontaktinformationen ein.
 
     ![Lieferadresse für neues Gerät](media/azure-stack-edge-deploy-prep/data-box-edge-resource1.png)
@@ -144,11 +144,11 @@ Die Erstellung der Ressource dauert einige Minuten. Nachdem die Ressource erfolg
 
 Nach der Bestellung wird diese von Microsoft geprüft, und Sie erhalten eine E-Mail mit den Versanddetails.
 
-![Benachrichtigung zur Überprüfung der Azure Stack Edge-Bestellung](media/azure-stack-edge-deploy-prep/data-box-edge-resource4.png)
+![Benachrichtigung zur Überprüfung der Azure Stack Edge Pro-Bestellung](media/azure-stack-edge-deploy-prep/data-box-edge-resource4.png)
 
 ## <a name="get-the-activation-key"></a>Abrufen des Aktivierungsschlüssels
 
-Wenn die Azure Stack Edge-Ressource betriebsbereit ist, müssen Sie den Aktivierungsschlüssel abrufen. Dieser Schlüssel wird verwendet, um Ihr Azure Stack Edge-Gerät zu aktivieren und mit der Ressource zu verbinden. Sie können diesen Schlüssel jetzt abrufen, während Sie sich im Azure-Portal befinden.
+Wenn die Azure Stack Edge-Ressource betriebsbereit ist, müssen Sie den Aktivierungsschlüssel abrufen. Dieser Schlüssel wird verwendet, um Ihr Azure Stack Edge Pro-Gerät zu aktivieren und mit der Ressource zu verbinden. Sie können diesen Schlüssel jetzt abrufen, während Sie sich im Azure-Portal befinden.
 
 1. Wählen Sie die von Ihnen erstellte Ressource aus. Wählen Sie **Übersicht** und anschließend **Geräteeinrichtung** aus.
 
@@ -165,14 +165,14 @@ Wenn die Azure Stack Edge-Ressource betriebsbereit ist, müssen Sie den Aktivier
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial wurden unter anderem folgende Azure Stack Edge-Themen behandelt:
+In diesem Tutorial wurden unter anderem folgende Azure Stack Edge Pro-Themen behandelt:
 
 > [!div class="checklist"]
 >
 > * Neue Ressource erstellen
 > * Abrufen des Aktivierungsschlüssels
 
-Im nächsten Tutorial erfahren Sie, wie Sie Azure Stack Edge installieren.
+Im nächsten Tutorial erfahren Sie, wie Sie Azure Stack Edge Pro installieren.
 
 > [!div class="nextstepaction"]
-> [Installieren von Azure Stack Edge](./azure-stack-edge-deploy-install.md)
+> [Installieren von Azure Stack Edge Pro](./azure-stack-edge-deploy-install.md)

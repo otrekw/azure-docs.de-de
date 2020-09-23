@@ -1,6 +1,6 @@
 ---
-title: Tutorial zum Verbinden, Konfigurieren und Aktivieren eines Azure Stack Edge-Geräts im Azure-Portal | Microsoft-Dokumentation
-description: Im Tutorial zur Bereitstellung von Azure Stack Edge erfahren Sie, wie Sie Ihr physisches Gerät verbinden, einrichten und aktivieren.
+title: Tutorial zum Verbinden, Konfigurieren und Aktivieren eines Azure Stack Edge Pro-Geräts im Azure-Portal | Microsoft-Dokumentation
+description: Im Tutorial zur Bereitstellung eines Azure Stack Edge Pro-Geräts erfahren Sie, wie Sie Ihr physisches Gerät verbinden, einrichten und aktivieren.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,17 +8,17 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: e0a0d9415cc55c24bb4dc0690c73d9f79fc0ce0e
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
+ms.openlocfilehash: 5a89125edf6082bbbcbaf139a648c9edc2debf81
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608433"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894262"
 ---
-# <a name="tutorial-connect-set-up-and-activate-azure-stack-edge"></a>Tutorial: Verbinden, Einrichten und Aktivieren von Azure Stack Edge 
+# <a name="tutorial-connect-set-up-and-activate-azure-stack-edge-pro"></a>Tutorial: Verbinden, Einrichten und Aktivieren von Azure Stack Edge Pro 
 
-In diesem Tutorial wird die Verbindung, Einrichtung und Aktivierung Ihres Azure Stack Edge-Geräts über die lokale Webbenutzeroberfläche beschrieben.
+In diesem Tutorial wird die Verbindung, Einrichtung und Aktivierung Ihres Azure Stack Edge Pro-Geräts über die lokale Webbenutzeroberfläche beschrieben.
 
 Der Einrichtungs- und Aktivierungsvorgang nimmt ungefähr 20 Minuten in Anspruch.
 
@@ -31,14 +31,14 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Überprüfen Sie Folgendes, bevor Sie ein Azure Stack Edge-Gerät konfigurieren und einrichten:
+Überprüfen Sie Folgendes, bevor Sie ein Azure Stack Edge Pro-Gerät konfigurieren und einrichten:
 
-* Sie haben Ihr physisches Gerät gemäß der Anleitung unter [Tutorial: Installieren von Azure Stack Edge](azure-stack-edge-deploy-install.md) installiert.
-* Sie verfügen über den Aktivierungsschlüssel vom Azure Stack Edge-Dienst, den Sie zum Verwalten von Azure Stack Edge-Geräten erstellt haben. Weitere Informationen finden Sie unter [Vorbereiten der Bereitstellung von Azure Stack Edge](azure-stack-edge-deploy-prep.md).
+* Sie haben Ihr physisches Gerät gemäß der Anleitung unter [Installieren von Azure Stack Edge Pro](azure-stack-edge-deploy-install.md) installiert.
+* Sie verfügen über den Aktivierungsschlüssel aus dem Azure Stack Edge-Dienst, den Sie zum Verwalten des Azure Stack Edge Pro-Geräts erstellt haben. Weitere Informationen finden Sie unter [Vorbereiten der Bereitstellung von Azure Stack Edge Pro](azure-stack-edge-deploy-prep.md).
 
 ## <a name="connect-to-the-local-web-ui-setup"></a>Herstellen einer Verbindung mit der lokalen Webbenutzeroberfläche
 
-1. Konfigurieren Sie den Ethernet-Adapter auf Ihrem Computer, um das Azure Stack Edge-Gerät mit der statischen IP-Adresse 192.168.100.5 und dem Subnetz 255.255.255.0 zu verbinden.
+1. Konfigurieren Sie den Ethernet-Adapter auf Ihrem Computer, um das Azure Stack Edge Pro-Gerät mit der statischen IP-Adresse 192.168.100.5 und dem Subnetz 255.255.255.0 zu verbinden.
 
 2. Verbinden Sie den Computer mit PORT 1 auf Ihrem Gerät. Verwenden Sie die folgende Abbildung, um PORT 1 auf Ihrem Gerät zu identifizieren.
 
@@ -56,7 +56,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 5. Melden Sie sich bei der Webbenutzeroberfläche des Geräts an. Das Standardkennwort lautet *Password1*. 
    
-    ![Anmeldeseite für Azure Stack Edge-Gerät](./media/azure-stack-edge-deploy-connect-setup-activate/image3.png)
+    ![Anmeldeseite für Azure Stack Edge Pro-Gerät](./media/azure-stack-edge-deploy-connect-setup-activate/image3.png)
 
 6. Ändern Sie das Geräteadministratorkennwort in der Eingabeaufforderung.  
     Das neue Kennwort muss zwischen acht und 16 Zeichen lang sein. Es muss drei der folgenden Zeichen enthalten: Großbuchstaben, Kleinbuchstaben, Ziffern und Sonderzeichen.
@@ -96,7 +96,7 @@ Das Dashboard zeigt die verschiedenen Einstellungen an, die zum Konfigurieren un
    
    a. Geben Sie im Feld **Webproxy-URL** die URL im folgenden Format ein: `http://host-IP address or FQDN:Port number`. HTTPS-URLs werden nicht unterstützt.
 
-   b. Klicken Sie unter **Authentifizierung** auf **Keine** oder **NTLM**. Wenn Sie Compute aktivieren und ein IoT Edge-Modul auf Ihrem Azure Stack Edge-Gerät verwenden, sollten Sie die Webproxyauthentifizierung auf **Keine** festlegen. **NTLM** wird nicht unterstützt.
+   b. Klicken Sie unter **Authentifizierung** auf **Keine** oder **NTLM**. Wenn Sie Compute aktivieren und ein IoT Edge-Modul auf Ihrem Azure Stack Edge Pro-Gerät verwenden, sollten Sie die Webproxyauthentifizierung auf **Keine** festlegen. **NTLM** wird nicht unterstützt.
 
    c. Falls Sie eine Authentifizierung verwenden, geben Sie einen Benutzernamen und ein Kennwort ein.
 
@@ -105,7 +105,7 @@ Das Dashboard zeigt die verschiedenen Einstellungen an, die zum Konfigurieren un
    > [!NOTE]
    > Dateien für die automatische Proxykonfiguration (Proxy Auto Config, PAC) werden nicht unterstützt. Eine PAC-Datei definiert, wie Webbrowser und andere Benutzer-Agents automatisch den entsprechenden Proxyserver (Zugriffsmethode) zum Abrufen einer bestimmten URL auswählen können.
    > Proxys, die versuchen, den gesamten Datenverkehr abzufangen und zu lesen (und anschließend alles mit eigener Zertifizierung neu zu signieren), sind nicht kompatibel, da das Zertifikat des Proxys nicht vertrauenswürdig ist.
-   > In der Regel funktionieren transparente Proxys gut mit Azure Stack Edge.
+   > In der Regel funktionieren transparente Proxys gut mit Azure Stack Edge Pro.
 
 4. (Optional) Klicken Sie im linken Bereich auf **Zeiteinstellungen**, und konfigurieren Sie die Zeitzone und die primären und sekundären NTP-Server für das Gerät.  
     NTP-Server sind für die Zeitsynchronisierung erforderlich, damit Ihr Gerät bei den Clouddienstanbietern authentifiziert werden kann.
@@ -133,7 +133,7 @@ Das Dashboard zeigt die verschiedenen Einstellungen an, die zum Konfigurieren un
 
 6. Wählen Sie im linken Bereich **Cloudeinstellungen** aus, und aktivieren Sie Ihr Gerät im Azure-Portal für den Azure Stack Edge-Dienst.
     
-    1. Geben Sie im Feld **Aktivierungsschlüssel** den Aktivierungsschlüssel ein, den Sie unter [Aktivierungsschlüssel abrufen](azure-stack-edge-deploy-prep.md#get-the-activation-key) für Azure Stack Edge abgerufen haben.
+    1. Geben Sie im Feld **Aktivierungsschlüssel** den Aktivierungsschlüssel ein, den Sie unter [Aktivierungsschlüssel abrufen](azure-stack-edge-deploy-prep.md#get-the-activation-key) für Azure Stack Edge Pro abgerufen haben.
     2. Wählen Sie **Übernehmen**.
        
         ![Seite „Cloudeinstellungen“ der lokalen Webbenutzeroberfläche](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-6.png)
@@ -158,7 +158,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Herstellen einer Verbindung mit einem physischen Gerät
 > * Einrichten und Aktivieren des physischen Geräts
 
-Weitere Informationen zum Übertragen von Daten mit Azure Stack Edge finden Sie im folgenden Artikel:
+Informationen zum Übertragen von Daten mit Ihrem Azure Stack Edge Pro-Gerät finden Sie im folgenden Artikel:
 
 > [!div class="nextstepaction"]
-> [Übertragen von Daten mit Azure Stack Edge](./azure-stack-edge-deploy-add-shares.md)
+> [Übertragen von Daten mit Azure Stack Edge Pro](./azure-stack-edge-deploy-add-shares.md)

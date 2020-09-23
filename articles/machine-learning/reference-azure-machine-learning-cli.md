@@ -10,15 +10,15 @@ ms.author: jordane
 author: jpe316
 ms.date: 06/22/2020
 ms.custom: seodec18
-ms.openlocfilehash: f037ea30a1507d4736db7f837e5286701db030e0
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 794e2c8b436b6a6dfa736bef59eb2ad0bda83bc2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146679"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893127"
 ---
 # <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>Installieren und Verwenden der CLI-Erweiterung für Azure Machine Learning
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Der Azure Machine Learning-CLI ist eine Erweiterung der [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest), eine plattformübergreifende Befehlszeilenschnittstelle für die Azure-Plattform. Diese Erweiterung unterstützt Befehle für die Arbeit mit Azure Machine Learning. Sie ermöglicht Ihnen die Automatisierung Ihrer Machine Learning-Aktivitäten. Die folgende Liste enthält einige Beispielaktionen, die Sie mit der CLI-Erweiterung ausführen können:
 
@@ -110,9 +110,6 @@ Die folgenden Befehle veranschaulichen, wie Sie mit der CLI Ressourcen verwalten
     ```azurecli-interactive
     az ml workspace create -w myworkspace -g myresourcegroup
     ```
-
-    > [!TIP]
-    > Dieser Befehl erstellt einen Basic Edition-Arbeitsbereich. Verwenden Sie zum Erstellen eines Enterprise-Arbeitsbereichs den Switch `--sku enterprise` mit dem Befehl `az ml workspace create`. Weitere Informationen zu Machine Learning-Editionen finden Sie unter [Was ist Azure Machine Learning?](overview-what-is-azure-ml.md#sku).
 
     Weitere Informationen finden Sie unter [az ml workspace create](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-create).
 
@@ -246,7 +243,7 @@ Verwalten von Computeinstanzen.  In allen untenstehenden Beispielen lautet der N
     > [!TIP]
     > Der Befehl `az ml folder attach` erstellt ein `.azureml`-Unterverzeichnis, das zwei RUNCONFIG-Beispieldateien enthält. 
     >
-    > Wenn Sie ein Python-Skript haben, das programmgesteuert ein Laufzeitkonfigurationsobjekt erstellt, können Sie es mit [RunConfig.save()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py#save-path-none--name-none--separate-environment-yaml-false-) als RUNCPNFIG-Datei speichern.
+    > Wenn Sie ein Python-Skript haben, das programmgesteuert ein Laufzeitkonfigurationsobjekt erstellt, können Sie es mit [RunConfig.save()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py#&preserve-view=truesave-path-none--name-none--separate-environment-yaml-false-) als RUNCPNFIG-Datei speichern.
     >
     > Das vollständige RUNCONFIG-Schema finden Sie in dieser [JSON-Datei](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json). Das Schema ist durch den `description`-Schlüssel der einzelnen Objekte selbstdokumentierend. Zusätzlich gibt es Enumerationen für mögliche Werte und einen Vorlagencodeausschnitt am Ende.
 
@@ -366,7 +363,7 @@ Anhand der folgenden Befehle wird veranschaulicht, wie Sie Azure Machine Learnin
 
 ### <a name="environment-configuration-schema"></a>Umgebungskonfigurationsschema
 
-Wenn Sie den Befehl `az ml environment scaffold` verwendet haben, wird eine `azureml_environment.json`-Vorlagendatei generiert, die geändert und zum Erstellen von benutzerdefinierten Umgebungskonfigurationen mit der Befehlszeilenschnittstelle verwendet werden kann. Das Objekt der obersten Ebene wird lose der [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py)-Klasse im Python-SDK zugeordnet. 
+Wenn Sie den Befehl `az ml environment scaffold` verwendet haben, wird eine `azureml_environment.json`-Vorlagendatei generiert, die geändert und zum Erstellen von benutzerdefinierten Umgebungskonfigurationen mit der Befehlszeilenschnittstelle verwendet werden kann. Das Objekt der obersten Ebene wird lose der [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py&preserve-view=true)-Klasse im Python-SDK zugeordnet. 
 
 ```json
 {
@@ -410,17 +407,17 @@ Wenn Sie den Befehl `az ml environment scaffold` verwendet haben, wird eine `azu
 }
 ```
 
-In der folgenden Tabelle ist jedes Feld der obersten Ebene in der JSON-Datei, sein Typ und eine Beschreibung aufgeführt. Wenn ein Objekttyp mit einer Klasse aus dem Python-SDK verknüpft ist, gibt es eine lose 1:1-Übereinstimmung zwischen den einzelnen JSON-Feldern und dem öffentlichen Variablennamen in der Python-Klasse. In einigen Fällen wird das Feld möglicherweise eher einem Konstruktorargument als einer Klassenvariablen zugeordnet. Das Feld `environmentVariables` wird z. B. der Variablen `environment_variables` in der [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py)-Klasse zugeordnet.
+In der folgenden Tabelle ist jedes Feld der obersten Ebene in der JSON-Datei, sein Typ und eine Beschreibung aufgeführt. Wenn ein Objekttyp mit einer Klasse aus dem Python-SDK verknüpft ist, gibt es eine lose 1:1-Übereinstimmung zwischen den einzelnen JSON-Feldern und dem öffentlichen Variablennamen in der Python-Klasse. In einigen Fällen wird das Feld möglicherweise eher einem Konstruktorargument als einer Klassenvariablen zugeordnet. Das Feld `environmentVariables` wird z. B. der Variablen `environment_variables` in der [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py&preserve-view=true)-Klasse zugeordnet.
 
 | JSON-Feld | type | BESCHREIBUNG |
 |---|---|---|
 | `name` | `string` | Der Name der Umgebung. Beginnen Sie den Namen nicht mit **Microsoft** oder **AzureML**. |
 | `version` | `string` | Die Version der Umgebung. |
 | `environmentVariables` | `{string: string}` | Eine Hashzuordnung mit Namen und Werten von Umgebungsvariablen. |
-| `python` | [`PythonSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.pythonsection?view=azure-ml-py) | Objekt, das die Python-Umgebung und den Interpreter definiert, die auf der Zielcomputeressource verwendet werden sollen. |
-| `docker` | [`DockerSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.dockersection?view=azure-ml-py) | Definiert Einstellungen zum Anpassen des Docker-Images, das nach den Spezifikationen der Umgebung erstellt wird. |
-| `spark` | [`SparkSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.sparksection?view=azure-ml-py) | Der Abschnitt konfiguriert die Spark-Einstellungen. Er wird nur verwendet, wenn das Framework auf PySpark festgelegt ist. |
-| `databricks` | [`DatabricksSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.databricks.databrickssection?view=azure-ml-py) | Konfiguriert die Abhängigkeiten der Databricks-Bibliothek. |
+| `python` | [`PythonSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.pythonsection?view=azure-ml-py&preserve-view=true), das die Python-Umgebung und den Interpreter definiert, die auf der Zielcomputeressource verwendet werden sollen. |
+| `docker` | [`DockerSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.dockersection?view=azure-ml-py&preserve-view=true) | Definiert Einstellungen zum Anpassen des Docker-Images, das nach den Spezifikationen der Umgebung erstellt wird. |
+| `spark` | [`SparkSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.sparksection?view=azure-ml-py&preserve-view=true) | Der Abschnitt konfiguriert die Spark-Einstellungen. Er wird nur verwendet, wenn das Framework auf PySpark festgelegt ist. |
+| `databricks` | [`DatabricksSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.databricks.databrickssection?view=azure-ml-py&preserve-view=true) | Konfiguriert die Abhängigkeiten der Databricks-Bibliothek. |
 | `inferencingStackVersion` | `string` | Gibt die dem Image hinzugefügte Version des Rückschlussstapels an. Um das Hinzufügen eines Rückschlussstapels zu vermeiden, belassen Sie dieses Feld `null`. Gültiger Wert: „latest“ (Aktuellste). |
 
 ## <a name="ml-pipeline-management"></a>Verwaltung von ML-Pipelines
