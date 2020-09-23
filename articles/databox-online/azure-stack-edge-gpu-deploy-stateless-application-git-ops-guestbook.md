@@ -1,6 +1,6 @@
 ---
-title: Bereitstellen einer PHP-Gästebuch-App in einer für Arc aktivierten Kubernetes-Implementierung auf einem Azure Stack Edge-GPU-Gerät | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie eine zustandslose PHP-Gästebuchanwendung mit Redis unter Verwendung von GitOps in einem für Arc aktivierten Kubernetes-Cluster Ihres Azure Stack Edge-Geräts bereitstellen.
+title: Bereitstellen einer PHP-Gästebuch-App in einer für Arc aktivierten Kubernetes-Implementierung auf einem Azure Stack Edge Pro-GPU-Gerät | Microsoft-Dokumentation
+description: Hier wird beschrieben, wie Sie eine zustandslose PHP-Gästebuchanwendung mit Redis unter Verwendung von GitOps in einem für Arc aktivierten Kubernetes-Cluster Ihres Azure Stack Edge Pro-Geräts bereitstellen.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 7fdd9b8ca0fd62d55f5a9412af9486bfb2b942c1
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 3200cfe290cbba208c61e914b17ffa6cd65e6eee
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319291"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899563"
 ---
-# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-gpu"></a>Bereitstellen einer zustandslosen PHP-Gästebuchanwendung mit Redis in einem für Arc aktivierten Kubernetes-Cluster auf einem Azure Stack Edge-GPU-Gerät
+# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>Bereitstellen einer zustandslosen PHP-Gästebuchanwendung mit Redis in einem für Arc aktivierten Kubernetes-Cluster auf einem Azure Stack Edge Pro-GPU-Gerät
 
 In diesem Artikel wird erläutert, wie Sie eine einfache Multi-Tier-Webanwendung unter Verwendung von Kubernetes und Azure Arc erstellen und bereitstellen. Dieses Beispiel umfasst die folgenden Komponenten:
 
@@ -23,9 +23,9 @@ In diesem Artikel wird erläutert, wie Sie eine einfache Multi-Tier-Webanwendung
 - Mehrere replizierte Redis-Instanzen für Lesevorgänge
 - Mehrere Front-End-Webinstanzen
 
-Die Bereitstellung erfolgt unter Verwendung von GitOps in dem für Arc aktivierten Kubernetes-Cluster auf Ihrem Azure Stack Edge-Gerät. 
+Die Bereitstellung erfolgt unter Verwendung von GitOps in dem für Arc aktivierten Kubernetes-Cluster auf Ihrem Azure Stack Edge Pro-Gerät. 
 
-Um die hier beschriebenen Schritte auszuführen, sollten Sie mit den Inhalten des Artikels [Kubernetes-Workloads auf Azure Stack Edge-Geräten](azure-stack-edge-gpu-kubernetes-workload-management.md) und den Konzepten des Artikels [Was ist Kubernetes mit Azure Arc-Unterstützung (Vorschauversion)?](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview) vertraut sein.
+Dieses Verfahren ist für Benutzer gedacht, die den Artikel [Kubernetes-Workloads auf einem Azure Stack Edge Pro-Gerät](azure-stack-edge-gpu-kubernetes-workload-management.md) gelesen haben und mit den Konzepten von [Was ist Kubernetes mit Azure Arc-Unterstützung (Vorschauversion)?](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview) vertraut sind.
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -34,30 +34,30 @@ Stellen Sie vor der Bereitstellung der zustandslosen Anwendung sicher, dass die 
 
 ### <a name="for-device"></a>Für das Gerät
 
-1. Sie verfügen über Anmeldeinformationen für ein Azure Stack Edge-Gerät mit einem Knoten.
+1. Sie verfügen über Anmeldeinformationen für ein Azure Stack Edge Pro-Gerät mit einem Knoten.
     1. Das Gerät ist aktiviert. Siehe [Aktivieren des Geräts](azure-stack-edge-gpu-deploy-activate.md).
     1. Das Gerät verfügt über die Computerolle (über das Azure-Portal konfiguriert) und umfasst einen Kubernetes-Cluster. Siehe [Konfigurieren der Computeumgebung](azure-stack-edge-gpu-deploy-configure-compute.md).
 
-1. Sie haben Azure Arc im vorhandenen Kubernetes-Cluster auf Ihrem Gerät aktiviert und verfügen im Azure-Portal über eine entsprechende Azure Arc-Ressource. Diese Schritte sind unter [Aktivieren von Azure Arc auf einem Azure Stack Edge-Gerät](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md) ausführlich beschrieben.
+1. Sie haben Azure Arc im vorhandenen Kubernetes-Cluster auf Ihrem Gerät aktiviert und verfügen im Azure-Portal über eine entsprechende Azure Arc-Ressource. Die ausführlichen Schritte sind unter [Aktivieren von Azure Arc auf einem Azure Stack Edge Pro-Gerät](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md) beschrieben.
 
 ### <a name="for-client-accessing-the-device"></a>Für den Client, der auf das Gerät zugreift
 
-1. Sie verfügen über ein Windows-Clientsystem, das für den Zugriff auf das Azure Stack Edge-Gerät verwendet wird.
+1. Sie verfügen über ein Windows-Clientsystem, das für den Zugriff auf das Azure Stack Edge Pro-Gerät verwendet wird.
   
     - Auf dem Client wird Windows PowerShell 5.0 oder höher ausgeführt. Informationen zum Herunterladen der neuesten Version von Windows PowerShell finden Sie unter [Installieren von Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
     
     - Sie können auch einen anderen Client mit einem [unterstützten Betriebssystem](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) verwenden. In diesem Artikel wird die Vorgehensweise bei Verwendung eines Windows-Clients beschrieben. 
     
-1. Sie haben die unter [Zugreifen auf den Kubernetes-Cluster auf dem Azure Stack Edge-Gerät](azure-stack-edge-gpu-create-kubernetes-cluster.md) beschriebenen Schritte ausgeführt. Sie haben:
+1. Sie haben die unter [Zugreifen auf den Kubernetes-Cluster auf dem Azure Stack Edge Pro-Gerät](azure-stack-edge-gpu-create-kubernetes-cluster.md) beschriebenen Schritte ausgeführt. Sie haben:
     
     - `kubectl` auf dem Client installiert.  <!--and saved the `kubeconfig` file with the user configuration to C:\\Users\\&lt;username&gt;\\.kube. -->
     
-    - Stellen Sie sicher, dass die `kubectl`-Clientversion nicht mehr als eine Version von der Kubernetes-Masterversion abweicht, die auf dem Azure Stack Edge-Gerät ausgeführt wird. 
+    - Stellen Sie sicher, dass die `kubectl`-Clientversion um nicht mehr als eine Version von der Kubernetes-Masterversion abweicht, die auf dem Azure Stack Edge Pro-Gerät ausgeführt wird. 
       - Verwenden Sie `kubectl version`, um die kubectl-Version zu überprüfen, die auf dem Client ausgeführt wird. Notieren Sie sich den gesamten Versionsnamen.
-      - Wechseln Sie auf der lokalen Benutzeroberfläche des Azure Stack Edge-Geräts zu **Übersicht**, und notieren Sie sich die Kubernetes-Softwarenummer. 
+      - Navigieren Sie auf der lokalen Benutzeroberfläche des Azure Stack Edge Pro-Geräts zu **Übersicht**, und notieren Sie sich die Kubernetes-Softwarenummer. 
       - Überprüfen Sie anhand der Zuordnungen in der Liste der unterstützten Kubernetes-Versionen, ob diese beiden Versionen kompatibel sind. <!--insert link-->.
 
-1. Sie verfügen über eine [GitOps-Konfiguration, die Sie zum Ausführen einer Azure Arc-Bereitstellung verwenden können](https://github.com/kagoyal/dbehaikudemo). In diesem Beispiel werden die folgenden `yaml`-Dateien für die Bereitstellung auf Ihrem Azure Stack Edge-Gerät verwendet.
+1. Sie verfügen über eine [GitOps-Konfiguration, die Sie zum Ausführen einer Azure Arc-Bereitstellung verwenden können](https://github.com/kagoyal/dbehaikudemo). In diesem Beispiel werden die folgenden `yaml`-Dateien für die Bereitstellung auf Ihrem Azure Stack Edge Pro-Gerät verwendet.
 
     - `frontend-deployment.yaml`<!-- - The guestbook application has a web frontend serving the HTTP requests written in PHP. It is configured to connect to the redis-master Service for write requests and the redis-slave service for Read requests. This file describes a deployment that runs the frontend of the guestbook application.-->
     - `frontend-service.yaml` <!-- - This allows you to configure an externally visible frontend Service that can be accessed from outside the Kubernetes cluster on your device.-->
@@ -176,4 +176,4 @@ C:\Users\user>
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie, wie Sie das [Kubernetes-Dashboard zum Überwachen von Bereitstellungen auf Ihrem Azure Stack Edge-Gerät verwenden](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md)
+Erfahren Sie, wie Sie das [Kubernetes-Dashboard zum Überwachen von Bereitstellungen auf Ihrem Azure Stack Edge Pro-Gerät verwenden](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md).

@@ -3,14 +3,13 @@ title: Bereitstellen einer Containergruppe in einem virtuellen Azure-Netzwerk
 description: Erfahren Sie, wie Sie eine Containergruppe in einem neuen oder vorhandenen virtuellen Azure-Netzwerk mithilfe der Azure-Befehlszeilenschnittstelle (CLI) bereitstellen.
 ms.topic: article
 ms.date: 07/02/2020
-ms.author: danlep
 ms.custom: devx-track-javascript
-ms.openlocfilehash: f1678dee9c43d2ce9652018f0d09fe1738659f54
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: c5eff486299a3974e8fb9b4b12d6bb74880c48d8
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407148"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569389"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Bereitstellen von Containerinstanzen in einem virtuellen Azure-Netzwerk
 

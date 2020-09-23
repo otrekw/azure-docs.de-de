@@ -7,12 +7,12 @@ ms.author: jpalma
 ms.date: 06/29/2020
 ms.custom: fasttrack-edit
 author: palma21
-ms.openlocfilehash: 51b457b99afc478631ce9b39a4a7d51ffd57401c
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 00a20ece2358f0054e4490ffb914f78b82d9c509
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003172"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594258"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Steuern des ausgehenden Datenverkehrs für Clusterknoten in Azure Kubernetes Service (AKS)
 
@@ -280,7 +280,7 @@ Stellen Sie ein virtuelles Netzwerk mit zwei separaten Subnetzen bereit: eins f�
 
 Erstellen Sie eine Ressourcengruppe für alle Ressourcen.
 
-```azure-cli
+```azurecli
 # Create Resource Group
 
 az group create --name $RG --location $LOC
@@ -294,6 +294,7 @@ Erstellen Sie ein virtuelles Netzwerk mit zwei Subnetzen zum Hosten des AKS-Clus
 az network vnet create \
     --resource-group $RG \
     --name $VNET_NAME \
+    --location $LOC \
     --address-prefixes 10.42.0.0/16 \
     --subnet-name $AKSSUBNET_NAME \
     --subnet-prefix 10.42.1.0/24
@@ -320,12 +321,12 @@ Für Azure Firewall müssen Eingangs- und Ausgangsregeln konfiguriert werden. Di
 
 Erstellen Sie eine öffentliche IP-Adressressource mit einer Standard-SKU, die als Front-End-Adresse für Azure Firewall verwendet wird.
 
-```azure-cli
+```azurecli
 az network public-ip create -g $RG -n $FWPUBLICIP_NAME -l $LOC --sku "Standard"
 ```
 
 Registrieren Sie die Azure CLI Preview-Erweiterung, um eine Azure Firewall-Instanz zu erstellen.
-```azure-cli
+```azurecli
 # Install Azure Firewall preview CLI extension
 
 az extension add --name azure-firewall
@@ -340,7 +341,7 @@ Die erstellte IP-Adresse kann jetzt dem Firewall-Front-End zugewiesen werden.
 > Das Einrichten der öffentlichen IP-Adresse für die Azure Firewall-Instanz kann einige Minuten dauern.
 > Um die FQDN-Nutzung in Netzwerkregeln zu ermöglichen, muss der DNS-Proxy aktiviert werden. Bei aktiviertem DNS-Proxy lauscht die Firewall am Port 53 und leitet DNS-Anforderungen an den oben angegebenen DNS-Server weiter. Dadurch kann der FQDN von der Firewall automatisch übersetzt werden.
 
-```azure-cli
+```azurecli
 # Configure Firewall IP Config
 
 az network firewall ip-config create -g $RG -f $FWNAME -n $FWIPCONFIG_NAME --public-ip-address $FWPUBLICIP_NAME --vnet-name $VNET_NAME
@@ -364,10 +365,10 @@ Azure führt für Datenverkehr automatisch das Routing zwischen Azure-Subnetzen,
 
 Erstellen Sie eine leere Routingtabelle, die einem bestimmten Subnetz zugeordnet werden kann. Die Routingtabelle definiert die oben erstellte Azure Firewall-Instanz als nächsten Hop. Jedem Subnetz können null oder mehr Routentabellen zugeordnet sein.
 
-```azure-cli
+```azurecli
 # Create UDR and add a route for Azure Firewall
 
-az network route-table create -g $RG -$LOC --name $FWROUTE_TABLE_NAME
+az network route-table create -g $RG -l $LOC --name $FWROUTE_TABLE_NAME
 az network route-table route create -g $RG --name $FWROUTE_NAME --route-table-name $FWROUTE_TABLE_NAME --address-prefix 0.0.0.0/0 --next-hop-type VirtualAppliance --next-hop-ip-address $FWPRIVATE_IP --subscription $SUBID
 az network route-table route create -g $RG --name $FWROUTE_NAME_INTERNET --route-table-name $FWROUTE_TABLE_NAME --address-prefix $FWPUBLIC_IP/32 --next-hop-type Internet
 ```
@@ -398,7 +399,7 @@ Weitere Informationen zum Azure Firewall-Dienst finden Sie in der [Azure Firewal
 
 Um den Cluster der Firewall zuzuordnen, muss das dedizierte Subnetz für das Subnetz des Clusters auf die oben erstellte Routingtabelle verweisen. Zur Zuordnung geben Sie einen Befehl zum Aktualisieren der Routingtabelle des Clustersubnetzes an das virtuelle Netzwerk aus, in dem sich sowohl der Cluster als auch die Firewall befinden.
 
-```azure-cli
+```azurecli
 # Associate route table with next hop to Firewall to the AKS subnet
 
 az network vnet subnet update -g $RG --vnet-name $VNET_NAME --name $AKSSUBNET_NAME --route-table $FWROUTE_TABLE_NAME
@@ -414,7 +415,7 @@ Jetzt kann ein AKS-Cluster im vorhandenen virtuellen Netzwerk bereitgestellt wer
 
 AKS verwendet einen Dienstprinzipal zum Erstellen von Clusterressourcen. Mit dem zur Erstellungszeit übergebenen Dienstprinzipal werden zugrunde liegende AKS-Ressourcen wie Speicherressourcen, IP-Adressen und Lastenausgleichsressourcen erstellt, die von AKS verwendet werden. (Alternativ kann auch eine [verwaltete Identität](use-managed-identity.md) verwendet werden.) Ohne Erteilung der entsprechenden Berechtigungen kann der AKS-Cluster nicht bereitgestellt werden.
 
-```azure-cli
+```azurecli
 # Create SP and Assign Permission to Virtual Network
 
 az ad sp create-for-rbac -n "${PREFIX}sp" --skip-assignment
@@ -422,7 +423,7 @@ az ad sp create-for-rbac -n "${PREFIX}sp" --skip-assignment
 
 Ersetzen Sie im folgenden Code `APPID` und `PASSWORD` durch die App-ID und das Kennwort für den Dienstprinzipal, die bzw. das von der vorherigen Befehlsausgabe automatisch generiert wurde. Wir verweisen auf die VNET-Ressourcen-ID, um dem Dienstprinzipal die erforderlichen Berechtigungen zu erteilen, damit von AKS Ressourcen in diesem VNET bereitgestellt werden können.
 
-```azure-cli
+```azurecli
 APPID="<SERVICE_PRINCIPAL_APPID_GOES_HERE>"
 PASSWORD="<SERVICEPRINCIPAL_PASSWORD_GOES_HERE>"
 VNETID=$(az network vnet show -g $RG --name $VNET_NAME --query id -o tsv)
@@ -460,7 +461,7 @@ Sie definieren den ausgehenden Typ für die Verwendung der benutzerdefinierten R
 >
 > Das AKS-Feature für [**vom API-Server autorisierte IP-Adressbereiche**](api-server-authorized-ip-ranges.md) kann hinzugefügt werden, um den Zugriff des API-Servers auf den öffentlichen Endpunkt der Firewall zu beschränken. Das Feature für autorisierte IP-Adressbereiche ist im Diagramm als optional gekennzeichnet. Wenn Sie das Feature für autorisierte IP-Adressbereiche verwenden, um den API-Serverzugriff einzuschränken, müssen Ihre Entwicklertools eine Jumpbox für das virtuelle Netzwerk der Firewall verwenden, oder Sie müssen alle Entwicklerendpunkte zum autorisierten IP-Adressbereich hinzufügen.
 
-```azure-cli
+```azurecli
 az aks create -g $RG -n $AKSNAME -l $LOC \
   --node-count 3 --generate-ssh-keys \
   --network-plugin $PLUGIN \
@@ -491,7 +492,7 @@ az aks update -g $RG -n $AKSNAME --api-server-authorized-ip-ranges $CURRENT_IP/3
 
  Mit dem Befehl [az aks get-credentials][az-aks-get-credentials] können Sie `kubectl` für die Verbindungsherstellung mit Ihrem neu erstellten Kubernetes-Cluster konfigurieren. 
 
- ```azure-cli
+ ```azurecli
  az aks get-credentials -g $RG -n $AKSNAME
  ```
 
@@ -754,7 +755,7 @@ SERVICE_IP=$(k get svc voting-app -o jsonpath='{.status.loadBalancer.ingress[*].
 ```
 
 Führen Sie den folgenden Befehl aus, um die NAT-Regel hinzuzufügen:
-```azure-cli
+```azurecli
 az network firewall nat-rule create --collection-name exampleset --destination-addresses $FWPUBLIC_IP --destination-ports 80 --firewall-name $FWNAME --name inboundrule --protocols Any --resource-group $RG --source-addresses '*' --translated-port 80 --action Dnat --priority 100 --translated-address $SERVICE_IP
 ```
 
@@ -772,7 +773,7 @@ Die AKS-Abstimmungs-App sollte angezeigt werden. In diesem Beispiel lautete die 
 
 Um die Azure-Ressourcen zu bereinigen, löschen Sie die AKS-Ressourcengruppe.
 
-```azure-cli
+```azurecli
 az group delete -g $RG
 ```
 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: fd45db779b7a828d247f09cae38f90fc20d12c16
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9b2d003ef4938681229317b625aae4526787ac15
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79456589"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898708"
 ---
 # <a name="convert-to-dataset"></a>Konvertieren in ein Dataset
 
-In diesem Artikel erfahren Sie, wie Sie das Modul „Convert to Dataset“ (In Dataset konvertieren) im Azure Machine Learning-Designer (Vorschauversion) verwenden, um Daten für eine Pipeline in das vom Designer verwendete interne Format zu konvertieren.
+In diesem Artikel erfahren Sie, wie Sie das Modul „Convert to Dataset“ (In Dataset konvertieren) im Azure Machine Learning-Designer verwenden, um Daten für eine Pipeline in das vom Designer verwendete interne Format zu konvertieren.
   
 In den meisten Fällen ist keine Konvertierung erforderlich. Azure Machine Learning konvertiert Daten implizit in das native Datasetformat, wenn ein Vorgang für die Daten ausgeführt wird. 
 
@@ -35,7 +35,7 @@ Es empfiehlt sich, das Dataset mithilfe des Moduls [Edit Metadata](edit-metadata
 
 2. Verbinden Sie es mit einem beliebigen Modul, das ein Dataset ausgibt.   
 
-    Solange die Daten [tabellarisch](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) sind, können Sie sie in ein Dataset konvertieren. Dies schließt Daten ein, die mit [Import Data](import-data.md) (Daten importieren) geladen oder mithilfe von [Enter Data Manually](enter-data-manually.md) (Daten manuell eingeben) erstellt wurden, sowie Datasets, die mithilfe von [Apply Transformation](apply-transformation.md) (Transformation anwenden) transformiert wurden.
+    Solange die Daten [tabellarisch](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) sind, können Sie sie in ein Dataset konvertieren. Dies schließt Daten ein, die mit [Import Data](import-data.md) (Daten importieren) geladen oder mithilfe von [Enter Data Manually](enter-data-manually.md) (Daten manuell eingeben) erstellt wurden, sowie Datasets, die mithilfe von [Apply Transformation](apply-transformation.md) (Transformation anwenden) transformiert wurden.
 
 3.  Geben Sie in der Dropdownliste **Aktion** an, ob vor dem Speichern des Datasets eine Datenbereinigung durchgeführt werden soll:  
   

@@ -1,6 +1,6 @@
 ---
-title: 'Installationstutorial: Auspacken, Montieren und Verkabeln des physischen Azure Stack Edge GPU-Geräts | Microsoft-Dokumentation'
-description: Das zweite Tutorial zur Installation von Azure Stack Edge GPU enthält Informationen zum Auspacken, zur Rackmontage und Verkabelung des physischen Geräts.
+title: 'Installationstutorial: Auspacken, Montieren und Verkabeln des physischen Azure Stack Edge Pro-Geräts mit GPU | Microsoft-Dokumentation'
+description: Das zweite Tutorial zur Installation von Azure Stack Edge Pro mit GPU enthält Informationen zum Auspacken, zur Rackmontage und zur Verkabelung des physischen Geräts.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,17 +8,17 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 09/02/2020
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 25bdf2fba67b3a2b42a24416a9de692cf3e992dd
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge Pro in datacenter so I can use it to transfer data to Azure.
+ms.openlocfilehash: b9f3b564e36939197acd532a37f9a6098fbc870f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421372"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900024"
 ---
-# <a name="tutorial-install-azure-stack-edge-with-gpu"></a>Tutorial: Installieren von Azure Stack Edge mit GPU
+# <a name="tutorial-install-azure-stack-edge-pro-with-gpu"></a>Tutorial: Installieren von Azure Stack Edge Pro mit GPU
 
-In diesem Tutorial erfahren Sie, wie Sie ein physisches Azure Stack Edge-Gerät mit einer GPU installieren. Die Installation umfasst das Auspacken, die Rackmontage und die Verkabelung des Geräts. 
+In diesem Tutorial erfahren Sie, wie Sie ein physisches Azure Stack Edge Pro-Gerät mit GPU installieren. Die Installation umfasst das Auspacken, die Rackmontage und die Verkabelung des Geräts. 
 
 Die Installation dauert voraussichtlich etwa zwei Stunden.
 
@@ -37,12 +37,12 @@ Für die Installation eines physischen Geräts wird Folgendes vorausgesetzt:
 
 Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
-* Sie haben alle Schritte des Tutorials [Vorbereiten der Bereitstellung von Azure Stack Edge mit GPU](azure-stack-edge-gpu-deploy-prep.md) ausgeführt.
+* Sie haben alle Schritte des Tutorials [Vorbereiten der Bereitstellung von Azure Stack Edge Pro mit GPU](azure-stack-edge-gpu-deploy-prep.md) ausgeführt.
     * Sie haben eine Azure Stack Edge-Ressource für die Bereitstellung Ihres Geräts erstellt.
     * Sie haben den Aktivierungsschlüssel zum Aktivieren Ihres Geräts mit der Azure Stack Edge-Ressource erstellt.
 
  
-### <a name="for-the-azure-stack-edge-physical-device"></a>Für das physische Azure Stack Edge-Gerät
+### <a name="for-the-azure-stack-edge-pro-physical-device"></a>Für das physische Azure Stack Edge Pro-Gerät
 
 Führen Sie folgende Schritte aus, bevor Sie ein Gerät bereitstellen:
 
@@ -58,7 +58,7 @@ Führen Sie folgende Schritte aus, bevor Sie ein Gerät bereitstellen:
 
 Vorbereitungen
 
-- Lesen Sie die Netzwerkanforderungen für die Bereitstellung eines Azure Stack Edge-Geräts, und konfigurieren Sie das Netzwerk des Rechenzentrums gemäß den Anforderungen. Weitere Informationen finden Sie im Abschnitt mit den [Azure Stack Edge-Netzwerkanforderungen](azure-stack-edge-system-requirements.md#networking-port-requirements).
+- Sehen Sie sich die Netzwerkanforderungen für die Bereitstellung eines Azure Stack Edge Pro-Geräts an, und konfigurieren Sie das Rechenzentrumsnetzwerk gemäß diesen Anforderungen. Weitere Informationen finden Sie im Abschnitt zu den [Azure Stack Edge Pro-Netzwerkanforderungen](azure-stack-edge-system-requirements.md#networking-port-requirements).
 
 - Vergewissern Sie sich, dass die Internetbandbreite mindestens 20 MBit/s beträgt, damit das Gerät optimal funktioniert.
 
@@ -70,7 +70,7 @@ Dieses Gerät wird in einem einzelnen Karton ausgeliefert. Führen Sie die folge
 1. Legen Sie den Karton auf einen flachen, ebenen Untergrund.
 2. Überprüfen Sie den Karton und das Verpackungsmaterial auf Risse, Schnitte, Wasserschäden oder anderweitige offensichtliche Beschädigungen. Sollte der Karton oder die Verpackung stark beschädigt sein, öffnen Sie den Karton bzw. die Verpackung nicht. Wenden Sie sich an den Microsoft-Support, um zu ermitteln, ob das Gerät funktionstüchtig ist.
 3. Packen Sie den Karton aus. Stellen Sie nach dem Auspacken des Kartons sicher, dass Folgendes vorhanden ist:
-    - Ein Azure Stack Edge-Gerät (einzelnes Gehäuse)
+    - Ein Azure Stack Edge Pro-Gerät (einzelnes Gehäuse)
     - Zwei Netzkabel
     - Eine Schienenbaugruppe
     - Ein Booklet mit Informationen zu Sicherheit, Umwelt und rechtlichen Aspekten
@@ -83,7 +83,7 @@ Wenn Sie nicht alle oben aufgeführten Teile erhalten haben, [wenden Sie sich an
 Das Gerät muss in einem standardmäßigen 19-Zoll-Rack installiert werden. Gehen Sie wie folgt vor, um Ihr Gerät in einem 19-Zoll-Standardrack zu montieren.
 
 > [!IMPORTANT]
-> Azure Stack Edge-Geräte müssen für den ordnungsgemäßen Betrieb in ein Rack eingebaut werden.
+> Für den ordnungsgemäßen Betrieb müssen Azure Stack Edge Pro-Geräte in ein Rack eingebaut werden.
 
 
 ### <a name="prerequisites"></a>Voraussetzungen
@@ -157,11 +157,11 @@ Für die Installation der Schienenbaugruppe benötigen Sie folgende Komponenten:
 
 ## <a name="cable-the-device"></a>Verkabeln des Geräts
 
-Verlegen Sie die Kabel, und verkabeln Sie Ihr Gerät. In diesem Abschnitt erfahren Sie, wie Sie Ihr Azure Stack Edge-Gerät an die Stromversorgung und an das Netzwerk anschließen.
+Verlegen Sie die Kabel, und verkabeln Sie Ihr Gerät. In diesem Abschnitt erfahren Sie, wie Sie Ihr Azure Stack Edge Pro-Gerät an die Stromversorgung und an das Netzwerk anschließen.
 
 Bevor Sie mit der Verkabelung Ihres Geräts beginnen, benötigen Sie Folgendes:
 
-- Das physische Azure Stack Edge-Gerät (ausgepackt und im Rack montiert)
+- Das physische Azure Stack Edge Pro-Gerät (ausgepackt und im Rack montiert).
 - Zwei Netzkabel
 - Mindestens ein Netzwerkkabel (1 GbE, RJ45) zum Anschließen an die Verwaltungsschnittstelle. Das Gerät verfügt über zwei 1-GbE-Netzwerkschnittstellen: eine für die Verwaltung und eine für Daten.
 - Ein SFP+-Kupferkabel (25 GbE) für jede zu konfigurierende Datennetzwerkschnittstelle. Mindestens eine Datennetzwerkschnittstelle („PORT 2“, „PORT 3“, „PORT 4“, „PORT 5“ oder PORT 6“) muss mit dem Internet verbunden sein und über Azure-Konnektivität verfügen.  
@@ -171,9 +171,9 @@ Bevor Sie mit der Verkabelung Ihres Geräts beginnen, benötigen Sie Folgendes:
 > [!NOTE]
 > - Wenn Sie nur eine einzelne Datennetzwerkschnittstelle nutzen, sollten Sie eine 25/10-GbE-Netzwerkschnittstelle wie „PORT 3“, „PORT 4“, „PORT 5“ oder „PORT 6“ verwenden, um Daten an Azure zu senden. 
 > - Aus Leistungsgründen und für die Verarbeitung großer Datenmengen empfiehlt es sich, alle Datenports zu verwenden.
-> - Das Azure Stack Edge-Gerät sollte mit dem Rechenzentrumsnetzwerk verbunden sein, um Daten von Datenquellservern erfassen zu können.
+> - Das Azure Stack Edge Pro-Gerät sollte mit dem Rechenzentrumsnetzwerk verbunden sein, um Daten von Datenquellservern erfassen zu können.
 
-Azure Stack Edge-Gerät:
+Auf dem Azure Stack Edge Pro-Gerät:
 
 - Auf der Vorderseite befinden sich Laufwerke und ein Netzschalter.
 
@@ -232,7 +232,7 @@ Gehen Sie wie folgt vor, um Ihr Gerät an die Stromversorgung und an das Netzwer
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial wurden unter anderem folgende Azure Stack Edge-Themen behandelt:
+In diesem Tutorial wurden unter anderem folgende Azure Stack Edge Pro-Themen behandelt:
 
 > [!div class="checklist"]
 > * Auspacken des Geräts
@@ -242,4 +242,4 @@ In diesem Tutorial wurden unter anderem folgende Azure Stack Edge-Themen behande
 Im nächsten Tutorial erfahren Sie, wie Sie eine Verbindung mit Ihrem Gerät herstellen.
 
 > [!div class="nextstepaction"]
-> [Herstellen einer Verbindung mit Azure Stack Edge](./azure-stack-edge-gpu-deploy-connect.md)
+> [Herstellen einer Verbindung mit Azure Stack Edge Pro](./azure-stack-edge-gpu-deploy-connect.md)

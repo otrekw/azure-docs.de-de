@@ -1,18 +1,18 @@
 ---
-title: Behandeln von Verbindungsproblemen mit dem Agent für Azure Arc-fähige Server (Vorschauversion)
-description: In diesem Artikel erfahren Sie, wie Sie Probleme mit dem Connected Machine-Agent behandeln und beheben, die im Zusammenhang mit Azure Arc-fähigen Servern (Vorschauversion) bei dem Versuch auftreten, eine Verbindung mit dem Dienst herzustellen.
-ms.date: 07/20/2020
+title: Behandeln von Verbindungsproblemen mit dem Agent für Azure Arc-fähige Server
+description: In diesem Artikel erfahren Sie, wie Sie Probleme mit dem Connected Machine-Agent behandeln und beheben, die im Zusammenhang mit Azure Arc-fähigen Servern bei dem Versuch auftreten, eine Verbindung mit dem Dienst herzustellen.
+ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: aeb370fb6cd4eacf20c1acf29e84c03e5e322d39
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 36feb6a65ec52d99dfd664ae54cb099ea6a7e239
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213545"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900681"
 ---
 # <a name="troubleshoot-the-connected-machine-agent-connection-issues"></a>Behandeln von Verbindungsproblemen für den Connected Machine-Agent
 
-Dieser Artikel enthält Informationen zur Behandlung und Behebung von Problemen, die auftreten können, wenn versucht wird, den Connected Machine-Agent für Azure Arc-fähige Server (Vorschauversion) für Windows oder Linux zu konfigurieren. Hier wird sowohl die interaktive als auch die skalierbare Installationsmethode beim Konfigurieren der Verbindung mit dem Dienst behandelt. Allgemeine Informationen finden Sie in der [Übersicht über Arc-fähige Server](./overview.md).
+Dieser Artikel enthält Informationen zur Behandlung und Behebung von Problemen, die auftreten können, wenn versucht wird, den Connected Machine-Agent für Azure Arc-fähige Server für Windows oder Linux zu konfigurieren. Hier wird sowohl die interaktive als auch die skalierbare Installationsmethode beim Konfigurieren der Verbindung mit dem Dienst behandelt. Allgemeine Informationen finden Sie in der [Übersicht über Arc-fähige Server](./overview.md).
 
 ## <a name="agent-verbose-log"></a>Ausführliches Agent-Protokoll
 

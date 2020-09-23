@@ -1,6 +1,6 @@
 ---
-title: Datenstreaming in Azure SQL Edge (Vorschau)
-description: Erfahren Sie mehr zum Datenstreaming in Azure SQL Edge (Vorschau).
+title: Datenstreaming in Azure SQL Edge
+description: Erfahren Sie mehr zum Datenstreaming in Azure SQL Edge.
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,23 +9,16 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 866c74fbdfcfcef7cbb7d6cddb360c4265a2f776
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ca22b3d2c00bfef128455df4ad6b9bb6411f8a13
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669612"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900556"
 ---
-# <a name="data-streaming-in-azure-sql-edge-preview"></a>Datenstreaming in Azure SQL Edge (Vorschau)
+# <a name="data-streaming-in-azure-sql-edge"></a>Datenstreaming in Azure SQL Edge
 
-Azure SQL Edge (Vorschau) bietet die folgenden Optionen zum Implementieren von Datenstreaming: 
-
-- Bereitstellen von Azure Stream Analytics Edge-Aufträgen, die in Azure erstellt wurden. Weitere Informationen finden Sie unter [Bereitstellen von Azure Stream Analytics-Aufträgen](deploy-dacpac.md).
-- Verwenden des neuen T-SQL-Streamings zum Erstellen von Streamingaufträgen in Azure SQL Edge, ohne dass Streamingaufträge in Azure konfiguriert werden müssen. 
-
-Obwohl es möglich ist, beide Optionen zum Implementieren des Datenstreamings in Azure SQL Edge zu verwenden, sollten Sie nur eine Option wählen. Wenn Sie beide Optionen verwenden, kann es zu Racebedingungen kommen, die sich auf die Funktionsweise der Datenstreamingvorgänge auswirken.
-
-T-SQL-Streaming bildet den Schwerpunkt dieses Artikels. Es ermöglicht Datenstreaming, Analysen und Ereignisverarbeitung in Echtzeit, um große Mengen schneller Streamingdaten aus mehreren Quellen gleichzeitig zu analysieren und zu verarbeiten. T-SQL-Streaming basiert auf der gleichen Hochleistungsstreaming-Engine wie [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-introduction) in Microsoft Azure. Das Feature unterstützt eine ähnliche Reihe von Funktionen, die von Azure Stream Analytics in der Edge-Umgebung geboten werden.
+Azure SQL Edge stellt eine native Implementierung von Datenstreamingfunktionen bereit, die als T-SQL-Streaming bezeichnet wird. Es ermöglicht Datenstreaming, Analysen und Ereignisverarbeitung in Echtzeit, um große Mengen schneller Streamingdaten aus mehreren Quellen gleichzeitig zu analysieren und zu verarbeiten. T-SQL-Streaming basiert auf der gleichen Hochleistungsstreaming-Engine wie [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-introduction) in Microsoft Azure. Das Feature unterstützt eine ähnliche Reihe von Funktionen, die von Azure Stream Analytics in der Edge-Umgebung geboten werden.
 
 Wie Azure Stream Analytics erkennt T-SQL-Streaming Muster und Beziehungen in Informationen, die aus einer Reihe von IoT-Eingabequellen wie z. B. Geräten, Sensoren und Anwendungen extrahiert werden. Sie können mithilfe dieser Muster Aktionen auslösen und Workflows einleiten. Sie können z. B. Warnungen erstellen, Informationen in eine Berichts- oder Visualisierungslösung übertragen oder die Daten zur späteren Verwendung speichern. 
 
@@ -49,7 +42,6 @@ Ein Stream Analytics-Auftrag besteht aus den folgenden Elementen:
 - **Streamausgabe**: Definiert die Verbindungen mit einer Datenquelle, in die der Datenstrom gelesen werden soll. Azure SQL Edge unterstützt zurzeit die folgenden Streamausgabetypen:
     - Edge Hub
     - SQL (Die SQL-Ausgabe kann eine lokale Datenbank in der Azure SQL Edge-Instanz, eine SQL Server-Remoteinstanz oder eine Azure SQL-Datenbank-Instanz sein.) 
-    - Azure Blob Storage
 
 - **Streamabfrage**: Definiert die Transformation, Aggregationen, Filter, Sortierung und Joins, die auf den Eingabestream angewendet werden sollen, bevor er in die Streamausgabe geschrieben wird. Die Streamabfrage basiert auf der von Azure Stream Analytics verwendeten Abfragesprache. Weitere Informationen finden Sie unter [Stream Analytics-Abfragesprache](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference?).
 
@@ -65,9 +57,11 @@ Für T-SQL-Streaming gelten die folgenden Einschränkungen.
 
 - Nur ein Streamingauftrag kann jeweils gleichzeitig aktiv sein. Aufträge, die bereits laufen, müssen beendet werden, bevor ein anderer Auftrag gestartet werden kann.
 - Jede Ausführung eines Streamingauftrags ist ein Singlethreadvorgang. Wenn der Streamingauftrag mehrere Abfragen enthält, wird jede Abfrage in serieller Reihenfolge ausgewertet.
+- Wenn Sie einen Streamingauftrag in Azure SQL Edge beendet haben, kann eine kurze Verzögerung auftreten, bevor der nächste Streamingauftrag gestartet werden kann. Diese Verzögerung wird eingefügt, weil der zugrunde liegende Streamingprozess als Reaktion auf die Anforderung zum Beenden des Auftrags beendet und dann als Reaktion auf die Anforderung zum Starten des Auftrags neu gestartet werden muss. 
+- T-SQL-Streaming unterstützt bis zu 32 Partitionen für einen Kafka-Datenstrom. Versuche, eine größere Anzahl von Partitionen zu konfigurieren, führen zu einem Fehler. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Erstellen eines Stream Analytics-Auftrags in Azure SQL Edge (Vorschau)](create-stream-analytics-job.md)
-- [Anzeigen von Metadaten für Streamingaufträge in Azure SQL Edge (Vorschau)](streaming-catalog-views.md)
+- [Erstellen eines Stream Analytics-Auftrags in Azure SQL Edge](create-stream-analytics-job.md)
+- [Anzeigen von Metadaten für Streamingaufträge in Azure SQL Edge](streaming-catalog-views.md)
 - [Erstellen eines externen Streams](create-external-stream-transact-sql.md)
