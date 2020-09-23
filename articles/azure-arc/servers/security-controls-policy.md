@@ -1,19 +1,19 @@
 ---
 title: Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Server mit Azure Arc-Unterstützung (Vorschauversion)
 description: Hier sind die Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy aufgeführt, die für Server mit Azure Arc-Unterstützung (Vorschauversion) verfügbar sind. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung der Compliance Ihrer Azure-Ressourcen.
-ms.date: 09/04/2020
+ms.date: 09/16/2020
 ms.topic: sample
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: c1743d89b65639689209bbe35e2e7b8b75c13ebb
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 5a53a6973a960da2c61d79580806c477961cd468
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89489243"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967110"
 ---
-# <a name="azure-policy-regulatory-compliance-controls-for-azure-arc-for-servers"></a>Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure Arc für Server
+# <a name="azure-policy-regulatory-compliance-controls-for-azure-arc-enabled-servers"></a>Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Server mit Azure Arc-Unterstützung
 
-[Die Einhaltung gesetzlicher Bestimmungen in Azure Policy](../../governance/policy/concepts/regulatory-compliance.md) bietet von Microsoft erstellte und verwaltete Initiativendefinitionen (als _integriert_ bezeichnet) für die **Compliancedomänen** und **Sicherheitskontrollen**, die mit unterschiedlichen Compliancestandards zusammenhängen. Auf dieser Seite sind die **Compliancedomänen** und **Sicherheitskontrollen** für Server mit Azure Arc-Unterstützung (Vorschauversion) aufgeführt. Sie können die integrierten Elemente für eine **Sicherheitskontrolle** einzeln zuweisen, um Ihre Azure-Ressourcen mit dem jeweiligen Standard kompatibel zu machen.
+[Die Einhaltung gesetzlicher Bestimmungen in Azure Policy](../../governance/policy/concepts/regulatory-compliance.md) bietet von Microsoft erstellte und verwaltete Initiativendefinitionen (als _integriert_ bezeichnet) für die **Compliancedomänen** und **Sicherheitskontrollen**, die mit unterschiedlichen Compliancestandards zusammenhängen. Auf dieser Seite sind die **Compliancedomänen** und **Sicherheitskontrollen** für Server mit Azure Arc-Unterstützung aufgeführt. Sie können die integrierten Elemente für eine **Sicherheitskontrolle** einzeln zuweisen, um Ihre Azure-Ressourcen mit dem jeweiligen Standard kompatibel zu machen.
 
 [!INCLUDE [azure-policy-compliancecontrols-introwarning](../../../includes/policy/standards/intro-warning.md)]
 

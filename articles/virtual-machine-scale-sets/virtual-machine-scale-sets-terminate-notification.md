@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 02/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 65fc822250ae8284c9f87af262356730ff1d54c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d4b31eb59ed0bae2afe408546ece66eacade9ddb
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207514"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603831"
 ---
 # <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances"></a>Beendigungsbenachrichtigung für Instanzen von Azure-VM-Skalierungsgruppen
 Für Skalierungsgruppeninstanzen kann der Empfang von Beendigungsbenachrichtigungen aktiviert und ein vordefiniertes Verzögerungstimeout für den Beendigungsvorgang festgelegt werden. Die Beendigungsbenachrichtigung wird über „Azure Metadata Service – [Scheduled Events](../virtual-machines/windows/scheduled-events.md)“ gesendet. Dieser Subdienst sendet Benachrichtigungen über die Durchführung und Verzögerung einschneidender Vorgänge, z. B. Neustarts und erneute Bereitstellungen. In der Lösung wurde der Scheduled Events-Liste mit „Terminate“ ein weiteres Ereignis hinzugefügt. Welche Verzögerung dem Beendigungsereignis zugeordnet wird, hängt von dem Verzögerungslimit ab, das der Benutzer in der Konfiguration des Skalierungsgruppenmodells festlegt.
@@ -91,7 +91,7 @@ Verwenden Sie das Cmdlet [Update-AzVmss](/powershell/module/az.compute/update-az
 Update-AzVmss `
   -ResourceGroupName "myResourceGroup" `
   -VMScaleSetName "myScaleSet" `
-  -TerminateScheduledEvents $true
+  -TerminateScheduledEvents $true `
   -TerminateScheduledEventNotBeforeTimeoutInMinutes 15
 ```
 Im vorangehenden Beispiel werden Beendigungsbenachrichtigungen für eine bestehende Skalierungsgruppe aktiviert. Außerdem wird ein 15-minütiges Timeout für das Beendigungsereignis festgelegt.

@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: c4c7f82b729355e59ff05d5513e22fa143d53a5e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: e36485b54f209b10f9a4e6b4e6a26248955b2275
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206852"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031397"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>Konfigurieren und Anpassen der Buildtasks
 
@@ -143,7 +143,7 @@ Folgende Optionen sind verfügbar:
 >
 >   Wenn der neue Task auf dem selben Agent wie der ursprüngliche Task ausgeführt wird, wird die Ausgabe des ursprünglichen Tasks im Quellordner *s* durch die Ausgabe des neuen Tasks überschrieben. Obwohl die Buildausgabe identisch ist, wird empfohlen, dass Sie MSBuild ausführen, die Ausgabe in das Artefaktstagingverzeichnis kopieren und dann Roslyn Analyzers ausführen.
 
-Weitere Ressourcen für den Roslyn Analyzers-Task finden Sie unter [Die auf Roslyn basierenden Analysetools](https://docs.microsoft.com/dotnet/standard/analyzers/) in der Microsoft-Dokumentation.
+Weitere Ressourcen für den Roslyn Analyzers-Task finden Sie unter [Die auf Roslyn basierenden Analysetools](https://docs.microsoft.com/dotnet/standard/analyzers/api-analyzer) in der Microsoft-Dokumentation.
 
 Sie finden das Analyzer-Paket, das von diesem Buildtask installiert und verwendet wird, auf der NuGet-Seite [Microsoft.CodeAnalysis.FxCopAnalyzers](https://www.nuget.org/packages/Microsoft.CodeAnalysis.FxCopAnalyzers).
 

@@ -1,10 +1,10 @@
 ---
 title: Verbinden von Datenquellen mit Azure Sentinel | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Datenquellen wie Microsoft Threat Protection, Microsoft 365 und Office 365, Azure AD, ATP und Cloud App Security mit Azure Sentinel verbinden.
+description: Erfahren Sie, wie Sie Datenquellen wie Microsoft 365 Defender (vormals Microsoft Threat Protection), Microsoft 365 und Office 365, Azure AD, ATP und Cloud App Security mit Azure Sentinel verbinden.
 services: sentinel
 documentationcenter: na
 author: yelevin
-manager: angrobe
+manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
@@ -13,30 +13,30 @@ ms.topic: how-to
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 09/08/2020
 ms.author: yelevin
-ms.openlocfilehash: a2b9c1602ead56b35c46508ef4d414145eb07432
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63acffd16fa4374d4f8541a9d3327b29a3641f71
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555515"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895802"
 ---
 # <a name="connect-data-sources"></a>Herstellen einer Verbindung mit Datenquellen
 
-Nachdem Sie Azure Sentinel aktiviert haben, müssen Sie als Erstes eine Verbindung mit Ihren Datenquellen herstellen. Azure Sentinel enthält eine Reihe von Connectors für Microsoft-Lösungen, die vorkonfiguriert verfügbar sind und Echtzeitintegration bieten, u. a. für Microsoft Threat Protection-Lösungen, Microsoft 365-Quellen (darunter Office 365), Azure AD, Azure ATP, Microsoft Cloud App Security und viele weitere. Außerdem stehen integrierte Connectors für Sicherheitslösungen von anderen Anbietern als Microsoft zur Verfügung. Sie können auch Common Event Format (CEF), Syslog oder eine REST-API verwenden, um Ihre Datenquellen mit Azure Sentinel zu verbinden.
+Nachdem Sie Azure Sentinel aktiviert haben, müssen Sie als Erstes eine Verbindung mit Ihren Datenquellen herstellen. Azure Sentinel enthält eine Reihe von Connectors für Microsoft-Lösungen, die vorkonfiguriert verfügbar sind und Echtzeitintegration bieten, u. a. für Microsoft 365 Defender-Lösungen (ehemals Microsoft Threat Protection), Microsoft 365-Quellen (darunter Office 365, Azure AD, Azure ATP, Microsoft Defender for Identity (ehemals Azure ATP) und Microsoft Cloud App Security). Außerdem stehen integrierte Connectors für Sicherheitslösungen von anderen Anbietern als Microsoft zur Verfügung. Sie können auch Common Event Format (CEF), Syslog oder eine REST-API verwenden, um Ihre Datenquellen mit Azure Sentinel zu verbinden.
 
 1. Wählen Sie im Menü die Option **Data connectors** (Datenconnectors) aus. Auf dieser Seite können Sie die gesamte Liste der von Azure Sentinel bereitstellten Connectors sowie deren Status anzeigen. Wählen Sie den gewünschten Connector für die Verbindungsherstellung und anschließend **Open connector page** (Connectorseite öffnen) aus. 
 
-   ![Datensammler](./media/collect-data/collect-data-page.png)
+   ![Datenconnectors-Katalog](./media/collect-data/collect-data-page.png)
 
 1. Vergewissern Sie sich auf der Seite des spezifischen Connectors, dass alle Voraussetzungen erfüllt sind, und folgen Sie anschließend der Anleitung, um die Daten mit Azure Sentinel zu verbinden. Möglicherweise dauert es etwas, bis die Protokollsynchronisierung mit Azure Sentinel beginnt. Nach erfolgreicher Verbindungsherstellung werden eine Zusammenfassung der Daten im Diagramm **Empfangene Daten** sowie der Konnektivitätsstatus der Datentypen angezeigt.
 
-   ![Verbinden der Sammler](./media/collect-data/opened-connector-page.png)
+   ![Konfigurieren von Datenconnectors](./media/collect-data/opened-connector-page.png)
   
 1. Klicken Sie auf die Registerkarte **Nächste Schritte**, um eine Liste mit vorgefertigten Inhalten anzuzeigen, die von Azure Sentinel für den spezifischen Datentyp bereitgestellt wird.
 
-   ![Datensammler](./media/collect-data/data-insights.png)
+   ![Nächste Schritte für Connectors](./media/collect-data/data-insights.png)
  
 
 ## <a name="data-connection-methods"></a>Datenverbindungsmethoden
@@ -48,13 +48,13 @@ Die folgenden Datenverbindungsmethoden werden von Azure Sentinel unterstützt:
     - [Azure-Aktivität](connect-azure-activity.md)
     - [Azure Active Directory](connect-azure-active-directory.md) – Überwachungs- und Anmeldeprotokolle
     - [Azure AD Identity Protection](connect-azure-ad-Identity-protection.md)
-    - [Azure Advanced Threat Protection](connect-azure-atp.md)
+    - [Microsoft Defender for Identity](connect-azure-atp.md) (vormals Azure Advanced Threat Protection)
     - [Azure Information Protection](connect-azure-information-protection.md)
-    - [Azure Security Center](connect-azure-security-center.md)
+    - [Azure Security Center](connect-azure-security-center.md): Lösungen für Benachrichtigungen aus Azure Defender
     - [Cloud App Security](connect-cloud-app-security.md)
     - [Domänennamenserver](connect-dns.md)
     - [Office 365](connect-office-365.md)
-    - [Microsoft Defender ATP](connect-microsoft-defender-advanced-threat-protection.md)
+    - [Microsoft Defender for Endpoint](connect-microsoft-defender-advanced-threat-protection.md) (vormals Microsoft Defender Advanced Threat Protection)
     - [Microsoft Web Application Firewall](connect-microsoft-waf.md)
     - [Windows-Firewall](connect-windows-firewall.md)
     - [Windows-Sicherheitsereignisse](connect-windows-security-events.md)
@@ -135,8 +135,8 @@ Alternativ können Sie den Agent manuell auf einem vorhandenen virtuellen Azure-
 | WireData | [Herstellen einer Verbindung mit Wire Data](../azure-monitor/insights/wire-data.md) | &#10007; | |
 | WindowsFirewall | [Herstellen einer Verbindung mit der Windows-Firewall](connect-windows-firewall.md) | &#10003; | |
 | AADIP SecurityAlert  | [Herstellen einer Verbindung mit Azure AD Identity Protection](connect-azure-ad-identity-protection.md)  | &#10003; | |
-| AATP SecurityAlert  | [Herstellen einer Verbindung mit Azure ATP](connect-azure-atp.md) | &#10003; | |
-| ASC SecurityAlert  | [Herstellen einer Verbindung mit Azure Security Center](connect-azure-security-center.md)  | &#10003; | |
+| AATP SecurityAlert  | [Herstellen von Verbindungen mit Microsoft Defender for Identity](connect-azure-atp.md) (vormals Azure ATP) | &#10003; | |
+| ASC SecurityAlert  | [Verbinden von Azure Defender-Benachrichtigungen](connect-azure-security-center.md) aus Azure Security Center  | &#10003; | |
 | MCAS SecurityAlert  | [Herstellen einer Verbindung mit Microsoft Cloud App Security](connect-cloud-app-security.md)  | &#10003; | |
 | SecurityAlert | | | |
 | Sysmon (Ereignis) | [Herstellen einer Verbindung mit Sysmon](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [Herstellen einer Verbindung mit Windows-Ereignissen](../azure-monitor/platform/data-sources-windows-events.md) <br> [Sysmon-Parser herunterladen](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/Sysmon/Sysmon-v10.42-Parser.txt)| &#10007; | Die Sysmon-Sammlung wird auf virtuellen Computern standardmäßig nicht installiert. Weitere Informationen zum Installieren des Sysmon-Agents finden Sie unter [Sysmon](https://docs.microsoft.com/sysinternals/downloads/sysmon). |

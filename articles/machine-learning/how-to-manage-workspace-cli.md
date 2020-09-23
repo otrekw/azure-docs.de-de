@@ -10,15 +10,15 @@ author: Blackmist
 ms.date: 07/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 0eec9ce6b035b7bf3627c844abb97649ce972693
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: cd9af35e5b616f3f4d72405078782e1e88414c98
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167639"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897345"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Erstellen eines Arbeitsbereichs für Azure Machine Learning mit der Azure CLI
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 In diesem Artikel erlernen Sie das Erstellen eines Azure Machine Learning-Arbeitsbereichs mit der Azure CLI. Die Azure CLI bietet Befehle zum Verwalten von Azure-Ressourcen. Die Erweiterung der CLI für maschinelles Lernen unterstützt Befehle für die Arbeit mit Azure Machine Learning-Ressourcen.
 
@@ -35,7 +35,7 @@ In diesem Artikel erlernen Sie das Erstellen eines Azure Machine Learning-Arbeit
 > [!IMPORTANT]
 > Wenn Sie Azure Cloud Shell verwenden, können Sie diesen Abschnitt überspringen. Die Cloud Shell authentifiziert Sie automatisch mit dem Konto, mit dem Sie sich bei Ihrem Azure-Abonnement anmelden.
 
-Ihnen stehen mehrere Möglichkeiten zur Verfügung, sich über die CLI bei Ihrem Azure-Abonnement zu authentifizieren. Die grundlegendste ist die interaktive Authentifizierung mithilfe eines Browsers. Öffnen Sie zur interaktiven Authentifizierung eine Befehlszeile oder ein Terminal, und verwenden Sie den folgenden Befehl:
+Ihnen stehen mehrere Möglichkeiten zur Verfügung, sich über die CLI bei Ihrem Azure-Abonnement zu authentifizieren. Am einfachsten ist die interaktive Authentifizierung mithilfe eines Browsers. Öffnen Sie zur interaktiven Authentifizierung eine Befehlszeile oder ein Terminal, und verwenden Sie den folgenden Befehl:
 
 ```azurecli-interactive
 az login
@@ -109,9 +109,6 @@ Weitere Informationen zum Arbeiten mit Ressourcengruppen finden Sie unter [az gr
 
 Um einen neuen Arbeitsbereich zu erstellen, in dem die __Dienste automatisch erstellt werden__, verwenden Sie den folgenden Befehl:
 
-> [!TIP]
-> Die Befehle in diesem Abschnitt erstellen einen Basic Edition-Arbeitsbereich. Verwenden Sie zum Erstellen eines Enterprise-Arbeitsbereichs den Switch `--sku enterprise` mit dem Befehl `az ml workspace create`. Weitere Informationen zu Machine Learning-Editionen finden Sie unter [Was ist Azure Machine Learning?](overview-what-is-azure-ml.md#sku).
-
 ```azurecli-interactive
 az ml workspace create -w <workspace-name> -g <resource-group-name>
 ```
@@ -155,13 +152,13 @@ Wenn Sie den Zugriff auf Ihren Arbeitsbereich auf ein virtuelles Netzwerk beschr
 * `--pe-vnet-name`: Das vorhandene virtuelle Netzwerk, in dem der private Endpunkt erstellt werden soll.
 * `--pe-subnet-name`: Der Name des Subnetzes, in dem der private Endpunkt erstellt werden soll. Der Standardwert ist `default`.
 
-Weitere Informationen zur Verwendung eines privaten Endpunkts und eines virtuellen Netzwerks mit Ihrem Arbeitsbereich finden Sie unter [Netzwerkisolation und Datenschutz](how-to-enable-virtual-network.md).
+Weitere Informationen zur Verwendung eines privaten Endpunkts und eines virtuellen Netzwerks mit Ihrem Arbeitsbereich finden Sie unter [Übersicht zu Isolation und Datenschutz bei virtuellen Netzwerken](how-to-network-security-overview.md).
 
 ### <a name="customer-managed-key-and-high-business-impact-workspace"></a>Kundenseitig verwalteter Schlüssel und Arbeitsbereich mit starken geschäftlichen Auswirkungen
 
 Standardmäßig werden Metriken und Metadaten für den Arbeitsbereich in einer Azure Cosmos DB-Instanz gespeichert, die von Microsoft verwaltet wird. Diese Daten werden mit von Microsoft verwalteten Schlüsseln verschlüsselt. 
 
-Wenn Sie eine __Enterprise__-Version von Azure Machine Learning erstellen, können Sie einen eigenen Schlüssel angeben und verwenden. Hierdurch wird die Azure Cosmos DB-Instanz erstellt, die Metriken und Metadaten in Ihrem Azure-Abonnement speichert. Verwenden Sie den `--cmk-keyvault`-Parameter, um den Azure Key Vault anzugeben, der den Schlüssel enthält, und `--resource-cmk-uri`, um die URL des Schlüssels innerhalb des Tresors anzugeben.
+Anstatt den von Microsoft verwalteten Schlüssel zu verwenden, können Sie Ihren eigenen Schlüssel bereitstellen. Hierdurch wird die Azure Cosmos DB-Instanz erstellt, die Metriken und Metadaten in Ihrem Azure-Abonnement speichert. Verwenden Sie den `--cmk-keyvault`-Parameter, um den Azure Key Vault anzugeben, der den Schlüssel enthält, und `--resource-cmk-uri`, um die URL des Schlüssels innerhalb des Tresors anzugeben.
 
 > [!IMPORTANT]
 > Bevor Sie die Parameter `--cmk-keyvault` und `--resource-cmk-uri` verwenden, müssen Sie zunächst die folgenden Aktionen ausführen:

@@ -11,15 +11,15 @@ ms.author: nigup
 ms.date: 05/08/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4
-ms.openlocfilehash: a9ae3d2789758d03405fb5be82181c799d1ea692
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: c86397b20a95f045ac5edfeb2cfa4833982df990
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141124"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897420"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>Verwalten und Erhöhen der Kontingente für Ressourcen mit Azure Machine Learning
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 In diesem Artikel erfahren Sie mehr über die vorkonfigurierten Einschränkungen für Azure-Ressourcen für Ihr [Azure Machine Learning](overview-what-is-azure-ml.md)-Abonnement und welche Kontingente Sie verwalten können. Diese Einschränkungen werden eingeführt, um Budgetüberschreitungen aufgrund von Betrug zu vermeiden und Kapazitätseinschränkungen bei Azure Rechnung zu tragen. 
 
@@ -99,8 +99,6 @@ Um Kontingente auf Arbeitsbereichsebene festzulegen, wechseln Sie zu einem belie
 
 
 > [!NOTE]
-> Dies ist ein ausschließliches Feature der Enterprise Edition. Wenn Sie in Ihrem Abonnement einen Arbeitsbereich mit [Basic Edition und einen mit Enterprise Edition](overview-what-is-azure-ml.md#sku) haben, können Sie dieses Feature nur zum Festlegen von Kontingenten für Ihre Enterprise-Arbeitsbereiche nutzen. Für Ihre Basic-Arbeitsbereiche gilt weiterhin das Kontingent auf Abonnementebene, was das Standardverhalten ist.
->
 > Sie benötigen Berechtigungen auf Abonnementebene, um das Kontingent auf Arbeitsbereichsebene festzulegen. Dieses wird erzwungen, damit einzelne Arbeitsbereichsbesitzer ihre Kontingente nicht bearbeiten oder erhöhen und anfangen, auf die für einen anderen Arbeitsbereich reservierten Ressourcen überzugreifen. Daher empfiehlt sich ein Abonnementadministrator, um diese Kontingente zuzuordnen und auf die einzelnen Arbeitsbereiche zu verteilen.
 
 

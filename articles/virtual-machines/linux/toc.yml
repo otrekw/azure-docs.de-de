@@ -955,6 +955,8 @@
               href: add-disk.md
             - name: Azure-Portal
               href: attach-disk-portal.md
+        - name: Ändern der Datenträgerebene
+          href: ../disks-performance-tiers.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Trennen eines Datenträgers
           href: detach-disk.md
         - name: Bereitstellen von Datenträgern mit einer ARM-Vorlage

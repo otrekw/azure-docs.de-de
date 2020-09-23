@@ -10,15 +10,15 @@ ms.subservice: core
 ms.date: 08/11/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 17a60ae604a74cf98f3a11e0cbee6d22898c1336
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 8a3a82e091791b39ddf36e39987590dcddea320f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121951"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897495"
 ---
 # <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>Sammeln von Machine Learning-Pipelineprotokolldateien in Application Insights für Warnungen und Debuggen
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Die [OpenCensus](https://opencensus.io/quickstart/python/)-Python-Bibliothek kann zum Weiterleiten von Protokollen an Application Insights in Ihren Skripts verwendet werden. Durch das Aggregieren der Protokolle von Pipelineausführungen an einem zentralen Ort können Sie Abfragen erstellen und Probleme diagnostizieren. Mithilfe von Application Insights können Sie Protokolle im Lauf der Zeit nachverfolgen und Pipelineprotokolle zwischen den Ausführungen vergleichen.
 
@@ -38,7 +38,7 @@ Dadurch, dass sich alle Ihre Protokolle am selben Speicherort befinden, erhalten
 
 Dieser Abschnitt ist eine Einführung in die Verwendung von OpenCensus aus einer Azure Machine Learning-Pipeline. Ein ausführliches Tutorial finden Sie unter [OpenCensus Azure Monitor Exporters](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure).
 
-Fügen Sie Ihrer Azure Machine Learning-Pipeline einen PythonScriptStep hinzu. Konfigurieren Sie Ihre [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) mit der Abhängigkeit von opencensus-ext-azure. Konfigurieren Sie die Umgebungsvariable `APPLICATIONINSIGHTS_CONNECTION_STRING`.
+Fügen Sie Ihrer Azure Machine Learning-Pipeline einen PythonScriptStep hinzu. Konfigurieren Sie Ihre [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py&preserve-view=true) mit der Abhängigkeit von opencensus-ext-azure. Konfigurieren Sie die Umgebungsvariable `APPLICATIONINSIGHTS_CONNECTION_STRING`.
 
 ```python
 from azureml.core.conda_dependencies import CondaDependencies

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b4e7d8c5c518e4ba4a2a9116898be2bba7df0b06
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 77becbf4777d0668991adcd74b722cd28ac36f03
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022444"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031176"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>IoT Hub-Abfragesprache für Geräte- und Modulzwillinge, Aufträge und Nachrichtenrouting
 
@@ -234,7 +234,7 @@ Das Abfrageobjekt macht mehrere **Next**-Werte verfügbar, abhängig von der Des
 ### <a name="limitations"></a>Einschränkungen
 
 > [!IMPORTANT]
-> Abfrageergebnisse können mit einigen Minuten Verzögerung im Vergleich zu den aktuellen Werten in Gerätezwillingen ausgegeben werden. Wenn Sie einzelne Gerätezwillinge nach ihrer ID abfragen, verwenden Sie die [REST-API zum Abrufen von Gerätezwillingen](https://docs.microsoft.com/rest/api/iothub/service/twin/getdevicetwin). Diese API gibt immer die aktuellen Werte zurück und weist höhere Einschränkungsgrenzwerte auf. Sie können die REST-API direkt aufrufen oder die entsprechende Funktion in einem der [Azure IoT Hub-Dienst-SDKs](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks) verwenden.
+> Abfrageergebnisse können mit einigen Minuten Verzögerung im Vergleich zu den aktuellen Werten in Gerätezwillingen ausgegeben werden. Wenn Sie einzelne Gerätezwillinge nach ihrer ID abfragen, verwenden Sie die [REST-API zum Abrufen von Gerätezwillingen](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.devicetwin?view=azure-java-stable). Diese API gibt immer die aktuellen Werte zurück und weist höhere Einschränkungsgrenzwerte auf. Sie können die REST-API direkt aufrufen oder die entsprechende Funktion in einem der [Azure IoT Hub-Dienst-SDKs](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks) verwenden.
 
 Derzeit werden Vergleiche nur zwischen primitiven Typen (keine Objekte) unterstützt. `... WHERE properties.desired.config = properties.reported.config` wird beispielsweise nur unterstützt, wenn diese Eigenschaften über primitive Werte verfügen.
 

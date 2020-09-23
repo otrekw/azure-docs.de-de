@@ -1,14 +1,14 @@
 ---
 title: Details der Struktur von Richtliniendefinitionen
 description: Beschreibt, wie Richtliniendefinitionen verwendet werden, um Konventionen für Azure-Ressourcen in Ihrer Organisation einzurichten.
-ms.date: 08/27/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 076493fa8fd54e9585d09a3dd352eabdee652f18
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: a049134a32fd6026cc1e0c4044a7b9d08fb9bd8f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079029"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895371"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktur von Azure Policy-Definitionen
 
@@ -17,7 +17,7 @@ Erfahren Sie mehr über [Bedingungen](#conditions).
 
 Durch Definieren von Konventionen können Sie Kosten beeinflussen und Ihre Ressourcen einfacher verwalten. Sie können beispielsweise angeben, dass nur bestimmte Typen virtueller Computer zulässig sind. Oder Sie können festlegen, dass Ressourcen ein bestimmtes Tag aufweisen. Richtlinienzuweisungen werden von untergeordneten Ressourcen geerbt. Wenn eine Richtlinienzuweisung auf eine Ressourcengruppe angewandt wird, gilt sie für alle Ressourcen in dieser Ressourcengruppe.
 
-Das Richtliniendefinitionsschema finden Sie hier: [https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json)
+Das Richtliniendefinitionsschema _policyRule_ finden Sie hier: [https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json)
 
 Eine Richtliniendefinition wird mithilfe von JSON erstellt. Die Richtliniendefinition enthält Elemente für Folgendes:
 
@@ -206,8 +206,10 @@ Beim Erstellen einer Initiative oder Richtlinie muss der Speicherort der Definit
 
 Für den Definitionsspeicherort gilt Folgendes:
 
-- **Abonnement:** Die Richtlinie kann nur Ressourcen innerhalb dieses Abonnements zugewiesen werden.
-- **Verwaltungsgruppe:** Die Richtlinie kann nur Ressourcen innerhalb untergeordneter Verwaltungsgruppen und untergeordneter Abonnements zugewiesen werden. Wenn Sie diese Richtliniendefinition mehreren Abonnements zuordnen möchten, muss der Speicherort eine Verwaltungsgruppe sein, die Abonnements enthält.
+- **Abonnement**: Der Richtliniendefinition können nur Ressourcen innerhalb dieses Abonnements zugewiesen werden.
+- **Verwaltungsgruppe**: Der Richtliniendefinition können nur Ressourcen in untergeordneten Verwaltungsgruppen und untergeordneten Abonnements zugewiesen werden. Wenn Sie die Richtliniendefinition auf mehrere Abonnements anwenden möchten, muss der Speicherort eine Verwaltungsgruppe sein, die das jeweilige Abonnement enthält.
+
+Weitere Informationen finden Sie in der [Übersicht zu Bereichen in Azure Policy](./scope.md#definition-location).
 
 ## <a name="policy-rule"></a>Richtlinienregel
 
@@ -576,13 +578,13 @@ Alle [Resource Manager-Vorlagenfunktionen](../../../azure-resource-manager/templ
 Die folgende Funktion steht zur Verwendung in einer Richtlinienregel zur Verfügung, unterscheidet sich jedoch von der Verwendung in einer Azure Resource Manager-Vorlage (ARM-Vorlage):
 
 - `utcNow()`: Im Gegensatz zu einer ARM-Vorlage kann diese Eigenschaft auch außerhalb von _defaultValue_ verwendet werden.
-  - Gibt eine Zeichenfolge zurück, die auf das aktuelle Datum und die aktuelle Uhrzeit im Universal ISO 8601 DateTime-Format 'jjjj-MM-ttTHH:mm:ss.fffffffZ' festgelegt ist.
+  - Gibt eine Zeichenfolge zurück, die auf das aktuelle Datum und die aktuelle Uhrzeit im Universal ISO 8601-DateTime-Format (`yyyy-MM-ddTHH:mm:ss.fffffffZ`) festgelegt ist.
 
 Die folgenden Funktionen sind nur in Richtlinienregeln verfügbar:
 
 - `addDays(dateTime, numberOfDaysToAdd)`
-  - **dateTime**: [Erforderlich] string – Zeichenfolge im Universal ISO 8601 DateTime-Format 'jjjj-MM-ttTHH:mm:ss.fffffffZ'
-  - **numberOfDaysToAdd**: [Erforderlich] integer – Anzahl der hinzuzufügenden Tage
+  - **dateTime**: [Erforderlich] – Zeichenfolge im Universal ISO 8601-DateTime-Format (`yyyy-MM-ddTHH:mm:ss.fffffffZ`)
+  - **numberOfDaysToAdd**: [Erforderlich] Integer – Anzahl der hinzuzufügenden Tage
 - `field(fieldName)`
   - **fieldName** [erforderlich]: Zeichenfolge – Name des abzurufenden [Felds](#fields)
   - Gibt den Wert dieses Felds aus der Ressource zurück, die von der If-Bedingung ausgewertet wird
@@ -619,7 +621,7 @@ Die Liste der Aliase wächst ständig. Um zu ermitteln, welche Aliase derzeit vo
 
   Verwenden Sie die [Azure Policy-Erweiterung für Visual Studio Code](../how-to/extension-for-vscode.md) zum Anzeigen und Ermitteln von Aliasen für Ressourceneigenschaften.
 
-  :::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Azure Policy-Erweiterung für Visual Studio Code" border="false":::
+  :::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Screenshot der Azure Policy-Erweiterung für Visual Studio Code mit dem Mauszeiger über einer Eigenschaft, um die Aliasnamen anzuzeigen" border="false":::
 
 - Azure Resource Graph
 

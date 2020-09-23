@@ -1,6 +1,6 @@
 ---
-title: 'Verwenden von SQL-Datenbank-DAC-Paketen: Azure SQL Edge (Vorschau)'
-description: Informationen zur Verwendung von DACPAC-Dateien in Azure SQL Edge (Vorschau)
+title: Verwenden von SQL-Datenbank-DACPAC- und -BACPAC-Paketen – Azure SQL Edge
+description: Informationen zur Verwendung von DACPAC- und BACPAC-Dateien in Azure SQL Edge
 keywords: SQL Edge, SqlPackage
 services: sql-edge
 ms.service: sql-edge
@@ -8,42 +8,36 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 05/19/2020
-ms.openlocfilehash: 0ddd1544c6a51ff1e2f98a28e40d9eb2ee0b47c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/03/2020
+ms.openlocfilehash: 6c8be6e67b1d7b919d6ea221c473c8975e559658
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84233283"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887491"
 ---
-# <a name="sql-database-dac-packages-in-sql-edge"></a>SQL-Datenbank-DAC-Pakete in SQL Edge
+# <a name="sql-database-dacpac-and-bacpac-packages-in-sql-edge"></a>SQL-Datenbank-DACPAC- und -BACPAC-Pakete in SQL Edge
 
-Azure SQL Edge (Vorschau) ist eine optimierte relationale Datenbank-Engine für IoT- und Edge-Bereitstellungen. Sie basiert auf den aktuellen Versionen der Microsoft SQL Server-Datenbank-Engine, die branchenführende Funktionen für Leistung, Sicherheit und Abfrageverarbeitung bietet. Zusammen mit den branchenführenden Funktionen für die Verwaltung relationaler Datenbanken von SQL Server bietet Azure SQL Edge integrierte Streamingfunktionen für Echtzeitanalysen und komplexe Ereignisverarbeitung.
+Azure SQL Edge ist eine optimierte relationale Datenbank-Engine für IoT- und Edge-Bereitstellungen. Sie basiert auf den aktuellen Versionen der Microsoft SQL Server-Datenbank-Engine, die branchenführende Leistung, Sicherheit und Abfrageverarbeitung bietet. Zusammen mit den branchenführenden Funktionen für die Verwaltung relationaler Datenbanken von SQL Server bietet Azure SQL Edge integrierte Streamingfunktionen für Echtzeitanalysen und komplexe Ereignisverarbeitung.
 
-Azure SQL Edge bietet auch eine native Implementierung von „SqlPackage.exe“, mit der Sie während der Bereitstellung von SQL Edge ein [SQL-Datenbank-DAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications)-Paket bereitstellen können. SQL-Datenbank-DACPACs können in SQL Edge mithilfe des SqlPackage-Parameters bereitgestellt werden, der über die Option `module twin's desired properties` des SQL Edge-Moduls verfügbar gemacht wird:
+Azure SQL Edge bietet auch eine native Implementierung von „SqlPackage.exe“, mit der Sie während der Bereitstellung von SQL Edge ein [SQL-Datenbank-DACPAC- und -BACPAC-Paket](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) bereitstellen können. 
 
-```json
-{
-    "properties.desired":
-    {
-        "SqlPackage": "<Optional_DACPAC_ZIP_SAS_URL>",
-        "ASAJobInfo": "<Optional_ASA_Job_ZIP_SAS_URL>"
-    }
-}
-```
-
-|Feld | BESCHREIBUNG |
-|------|-------------|
-| SqlPackage | Azure Blob Storage-URI für die *.ZIP-Datei mit dem SQL-Datenbank-DAC-Paket.
-| ASAJobInfo | Azure Blob Storage-URI für den ASA Edge-Auftrag.
+SQL-Datenbank-DACPAC- und -BACPAC-Pakete können über die Umgebungsvariable `MSSQL_PACKAGE` in SQL Edge bereitgestellt werden. Diese Umgebungsvariable kann mit den folgenden Elementen konfiguriert werden.  
+- Dem Speicherort eines lokalen Ordners in dem SQL-Container, der die DACPAC- und BACPAC-Dateien enthält. Dieser Ordner kann mithilfe von Bereitstellungspunkten oder Datenvolumecontainern einem Hostvolume zugeordnet werden. 
+- Einem lokalen Dateipfad innerhalb des SQL-Containers, der der DACPAC- oder BACPAC-Datei zugeordnet ist. Dieser Dateipfad kann mithilfe von Bereitstellungspunkten oder Datenvolumecontainern einem Hostvolume zugeordnet werden. 
+- Einem lokalen Dateipfad innerhalb des SQL-Containers, der einer ZIP-Datei zugeordnet ist, die die DACPAC- oder BACPAC-Dateien enthält. Dieser Dateipfad kann mithilfe von Bereitstellungspunkten oder Datenvolumecontainern einem Hostvolume zugeordnet werden. 
+- Einer Azure-Blob-SAS-URL für eine ZIP-Datei, die die DACPAC- und BACPAC-Dateien enthält
+- Einer Azure-Blob-SAS-URL für eine DACPAC- oder BACPAC-Datei 
 
 ## <a name="use-a-sql-database-dac-package-with-sql-edge"></a>Verwenden eines SQL-Datenbank-DAC-Pakets mit SQL Edge
 
-Wenn Sie ein SQL-Datenbank-DAC-Paket (*.dacpac) mit SQL Edge verwenden möchten, führen Sie die folgenden Schritte aus:
+Führen Sie die folgenden Schritte aus, um ein SQL-Datenbank-DAC-Paket `(*.dacpac)` oder eine BACPAC-Datei `(*.bacpac)` mit Azure Blob Storage und einer ZIP-Datei bereitzustellen (oder zu importieren). 
 
-1. Erstellen oder extrahieren Sie ein SQL-Datenbank-DAC-Paket. Informationen zum Generieren eines DAC-Pakets für eine vorhandene SQL Server-Datenbank finden Sie unter [Extrahieren einer DAC aus einer Datenbank](/sql/relational-databases/data-tier-applications/extract-a-dac-from-a-database/).
+1. Erstellen/extrahieren Sie ein DAC-Paket, oder exportieren Sie eine BACPAC-Datei auf die im Folgenden erläuterte Weise. 
+    - Erstellen oder extrahieren Sie ein SQL-Datenbank-DAC-Paket. Informationen zum Generieren eines DAC-Pakets für eine vorhandene SQL Server-Datenbank finden Sie unter [Extrahieren einer DAC aus einer Datenbank](/sql/relational-databases/data-tier-applications/extract-a-dac-from-a-database/).
+    - Exportieren eines bereitgestellten DAC-Pakets oder einer Datenbank Informationen zur Erstellung einer BACPAC-Datei für eine vorhandene SQL Server-Datenbank finden Sie unter [Exportieren einer Datenschichtanwendung](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application/).
 
-2. Komprimieren Sie die *.DACPAC-Datei, und laden Sie sie in ein Azure Blob Storage-Konto hoch. Weitere Informationen zum Hochladen von Dateien in Azure Blob Storage finden Sie unter [Hochladen, Herunterladen und Auflisten von Blobs über das Azure-Portal](../storage/blobs/storage-quickstart-blobs-portal.md).
+2. Zippen Sie die `*.dacpac`- oder `*.bacpac`-Datei, und laden Sie sie in ein Azure Blob Storage-Konto. Weitere Informationen zum Hochladen von Dateien in Azure Blob Storage finden Sie unter [Hochladen, Herunterladen und Auflisten von Blobs über das Azure-Portal](../storage/blobs/storage-quickstart-blobs-portal.md).
 
 3. Generieren Sie eine Shared Access Signature (SAS) für die ZIP-Datei über das Azure-Portal. Weitere Informationen finden Sie unter [Delegieren des Zugriffs mit Shared Access Signatures (SAS)](../storage/common/storage-sas-overview.md).
 
@@ -57,31 +51,19 @@ Wenn Sie ein SQL-Datenbank-DAC-Paket (*.dacpac) mit SQL Edge verwenden möchten
 
     4. Wählen Sie auf der Geräteseite **IoT Edge-Gerät** die Option **Modul festlegen** aus.
 
-    5. Wählen Sie auf der Seite **Module festlegen** für das SQL Edge-Modul **Konfigurieren** aus.
+    5. Klicken Sie auf der Seite **Module festlegen** auf das Azure SQL Edge-Modul.
 
-    6. Wählen Sie im Bereich **Benutzerdefinierte IoT Edge-Module** die Option **Gewünschte Eigenschaften für Modulzwilling festlegen** aus. Aktualisieren Sie die gewünschten Eigenschaften, um den URI für die Option `SQLPackage` einzubeziehen, wie im folgenden Beispiel gezeigt wird.
+    6. Klicken Sie im Bereich **IoT Edge-Modul aktualisieren** auf **Umgebungsvariablen**. Fügen Sie die Umgebungsvariable `MSSQL_PACKAGE` hinzu, und geben Sie die oben in Schritt 3 generierte SAS-URL als Wert für die Umgebungsvariable an. 
 
-        > [!NOTE]
-        > Der SAS-URI im nachstehenden JSON-Code ist nur ein Beispiel. Ersetzen Sie diesen URI durch den tatsächlichen URI aus Ihrer Bereitstellung.
+    7. Wählen Sie **Update** aus.
 
-        ```json
-            {
-                "properties.desired":
-                {
-                    "SqlPackage": "<<<SAS URL for the *.zip file containing the dacpac",
-                }
-            }
-        ```
+    8. Klicken Sie auf der Seite **Module festlegen** auf **Überprüfen + erstellen**.
 
-    7. Wählen Sie **Speichern** aus.
+    9. Klicken Sie auf der Seite **Module festlegen** auf **Erstellen**.
 
-    8. Wählen Sie auf der Seite **Module festlegen** die Option **Weiter** aus.
+5. Nach dem Modulupdate werden die Paketdateien heruntergeladen, entzippt und für die SQL Edge-Instanz bereitgestellt.
 
-    9. Wählen Sie auf der Seite **Module festlegen** die Option **Weiter** und dann **Senden** aus.
-
-5. Nach dem Modulupdate wird die DAC-Paketdatei heruntergeladen, entzippt und für die SQL Edge-Instanz bereitgestellt.
-
-Bei jedem Neustart des Azure SQL Edge-Containers wird das Dateipaket vom Typ „*.dacpac“ heruntergeladen und auf Änderungen überprüft. Wenn eine neue Version der DACPAC-Datei gefunden wird, werden die Änderungen in der Datenbank in SQL Edge bereitgestellt.
+Bei jedem Neustart des Azure SQL Edge-Containers versucht SQL Edge, das gezippte Dateipaket herunterzuladen und auf Änderungen zu überprüfen. Wenn eine neue Version der DACPAC-Datei gefunden wird, werden die Änderungen in der Datenbank in SQL Edge bereitgestellt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

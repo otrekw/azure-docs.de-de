@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 07/10/2020
+ms.date: 09/10/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 5ee5ad4d6e3142805600665aae6246ec855dffb6
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: cfdde12a815493e2388193530db4286ebc61e8b8
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300861"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90021771"
 ---
-|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[BYOK-Datenschutz (Bring Your Own Key) muss für PostgreSQL-Server aktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F18adea5e-f416-4d0f-8aa8-d24321e3e274) |Diese Richtlinie überwacht PostgreSQL-Server in Ihrer Umgebung, für die kein BYOK-Datenschutz (Bring Your Own Key) aktiviert ist. Weitere Details finden Sie unter [https://aka.ms/postgresqlbyok](https://aka.ms/postgresqlbyok). |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/PostgreSQL_EnableByok_Audit.json) |
 |[Die Verbindungsdrosselung muss für PostgreSQL-Datenbankserver aktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5345bb39-67dc-4960-a1bf-427e16b9a0bd) |Mit dieser Richtlinie können Sie überwachen, ob für alle PostgreSQL-Datenbanken in Ihrer Umgebung die Verbindungsdrosselung aktiviert ist. Diese Einstellung aktiviert die temporäre Verbindungsdrosselung pro IP-Adresse bei zu vielen Anmeldefehlern aufgrund ungültiger Kennwörter. |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/PostgreSQL_ConnectionThrottling_Enabled_Audit.json) |

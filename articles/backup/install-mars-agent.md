@@ -3,12 +3,12 @@ title: Installieren des Microsoft Azure Recovery Services-Agents (MARS)
 description: Hier erfahren Sie, wie Sie den MARS-Agent (Microsoft Azure Recovery Services) zum Sichern von Windows-Computern installieren.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 715153d445acbc372f8305ca39f5276bf8a39773
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: fb59c245c469791233ce973b00426a127b116535
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533477"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975302"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>Installieren des Azure Backup-MARS-Agents
 
@@ -42,10 +42,10 @@ Welche Daten für die Sicherung verfügbar sind, hängt vom Installationsort des
 
 ## <a name="modify-storage-replication"></a>Ändern der Speicherreplikation
 
-Tresore verwenden standardmäßig den [georedundanten Speicher (GRS)](../storage/common/storage-redundancy.md).
+Tresore verwenden standardmäßig den [georedundanten Speicher (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage).
 
 * Wenn der Tresor Ihr Hauptmechanismus für Sicherungen ist, empfehlen wir die Verwendung von GRS.
-* Sie können [lokal redundanten Speicher (LRS)](../storage/common/storage-redundancy.md?toc=/azure/storage/blobs/toc.json) verwenden, um die Azure-Speicherkosten zu reduzieren.
+* Sie können [lokal redundanten Speicher (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) verwenden, um die Azure-Speicherkosten zu reduzieren.
 
 So ändern Sie den Speicherreplikationstyp
 

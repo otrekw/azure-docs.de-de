@@ -1,14 +1,14 @@
 ---
 title: Details zur Richtlinienzuweisungsstruktur
 description: Beschreibt die Definition der Richtlinienzuweisung, die von Azure Policy verwendet wird, um Richtliniendefinitionen und -parameter zur Bewertung mit Ressourcen in Beziehung zu setzen.
-ms.date: 08/17/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 969274d72724c8d0a8f10f86f614fe2c50d066f7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e930e9ddcc04846a35c8db7784a349007c71580b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520712"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904073"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy-Zuweisungsstruktur
 
@@ -70,7 +70,10 @@ Wenn **enforcementMode** nicht in einer Richtlinie oder Initiativendefinition an
 
 ## <a name="excluded-scopes"></a>Ausgeschlossene Bereiche
 
-Der **scope** der Zuweisung umfasst alle untergeordneten Ressourcencontainer und untergeordneten Ressourcen. Wenn die Definition für untergeordnete Ressourcencontainer oder untergeordnete Ressourcen nicht angewendet werden soll, können diese durch Festlegung von **notScopes** von der Auswertung ausgeschlossen werden. Diese Eigenschaft ist ein Array, mit dem ein oder mehrerer Ressourcencontainer oder Ressourcen von der Auswertung ausgeschlossen werden können. **notScopes** können nach dem Erstellen der anfänglichen Zuweisung hinzugefügt oder aktualisiert werden.
+Der **scope** der Zuweisung umfasst alle untergeordneten Ressourcencontainer und untergeordneten Ressourcen. Wenn die Definition für untergeordnete Ressourcencontainer oder untergeordnete Ressourcen nicht angewendet werden soll, können diese durch Festlegung von **notScopes** von der Auswertung _ausgeschlossen_ werden. Diese Eigenschaft ist ein Array, mit dem ein oder mehrerer Ressourcencontainer oder Ressourcen von der Auswertung ausgeschlossen werden können. **notScopes** können nach dem Erstellen der anfänglichen Zuweisung hinzugefügt oder aktualisiert werden.
+
+> [!NOTE]
+> Eine _ausgeschlossene_ Ressource unterscheidet sich von einer _ausgenommenen_ Ressource. Weitere Informationen finden Sie in der [Übersicht zu Bereichen in Azure Policy](./scope.md).
 
 ## <a name="policy-definition-id"></a>Richtliniendefinitions-ID
 
