@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 8/10/2020
-ms.openlocfilehash: 85a1f0dcc2e778a09cf0d19b2a85d6faf371f032
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 5b1a5da688b162c85d2be8580e29dc6ee9db6d40
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88134518"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906482"
 ---
 # <a name="server-group-size"></a>Größe der Servergruppe
 
@@ -40,9 +40,9 @@ Azure Database for PostgreSQL – Hyperscale (Citus) unterstützt Self-Service-S
 
 ### <a name="add-worker-nodes"></a>Hinzufügen von Workerknoten
 
-Navigieren Sie zum Hinzufügen von Knoten in der Servergruppe „Hyperscale (Citus)“ zur Registerkarte **Konfigurieren**.  Ziehen Sie den Schieberegler für **Anzahl von Workerknoten**, um den Wert zu ändern.
+Wenn Sie Knoten hinzufügen möchten, navigieren Sie in Ihrer Servergruppe „Hyperscale (Citus)“ zur Registerkarte **Compute + Speicher**.  Ziehen Sie den Schieberegler für **Anzahl von Workerknoten**, um den Wert zu ändern.
 
-![Schieberegler für Ressourcen](./media/howto-hyperscale-scaling/01-sliders-workers.png)
+:::image type="content" source="./media/howto-hyperscale-scaling/01-sliders-workers.png" alt-text="Schieberegler für Ressourcen":::
 
 Klicken Sie auf die Schaltfläche **Speichern**, damit der geänderte Wert wirksam wird.
 

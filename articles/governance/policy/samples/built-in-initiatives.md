@@ -1,15 +1,15 @@
 ---
 title: Liste der integrierten Richtlinieninitiativen
 description: Hier finden Sie eine Liste der integrierten Richtlinieninitiativen für Azure Policy. Zu den Kategorien zählen Einhaltung gesetzlicher Bestimmungen, Gastkonfiguration und vieles mehr.
-ms.date: 09/04/2020
+ms.date: 09/16/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 04fc8769038ed02eda0daa06728b34b6ad96ea28
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: c9366f1013189f2e01864f4ea1d98e3bedb30361
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89487059"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984444"
 ---
 # <a name="azure-policy-built-in-initiative-definitions"></a>Integrierte Azure Policy-Richtlinieninitiativen
 

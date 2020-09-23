@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 48c05bf7b4cbecb09ef3bb113832974bee4bc6b2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e6653f8f26f90b6ea7f911efab40ec7a3e0c2a60
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518774"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906779"
 ---
 # <a name="routes-in-azure-static-web-apps-preview"></a>Routen in Azure Static Web Apps (Vorschau)
 
@@ -32,7 +32,7 @@ Details finden Sie unter [Beispiel für eine Routendatei](#example-route-file).
 
 Die Datei _routes.json_ muss im Stammverzeichnis des Ordners mit den Buildartefakten der App enthalten sein. Wenn Ihre Web-App einen Buildschritt umfasst, bei dem erstellte Dateien aus einem bestimmten Ordner in Ihren Ordner mit den Buildartefakten kopiert werden, muss die Datei _routes.json_ in diesem Ordner enthalten sein.
 
-In der folgenden Tabelle sind jeweils die richtigen Speicherorte für die Datei _routes.json_ angegeben, die für die entsprechenden Front-End-JavaScript-Frameworks und -Bibliotheken gelten.
+In der folgenden Tabelle sind jeweils die richtigen Speicherorte für die Datei _routes.json_ angegeben, die für die entsprechenden Front-End-Frameworks und -Bibliotheken gelten.
 
 |Framework/Bibliothek | Standort  |
 |---------|----------|
@@ -40,6 +40,9 @@ In der folgenden Tabelle sind jeweils die richtigen Speicherorte für die Datei 
 | React   | _öffentlich_  |
 | Svelte  | _öffentlich_   |
 | Vue     | _öffentlich_ |
+| Blazor  | _wwwroot_ |
+
+Die obige Tabelle ist nur repräsentativ für einige wenige Frameworks und Bibliotheken, die mit Azure Static Web Apps kompatibel sind. Weitere Informationen finden Sie unter [Konfigurieren von Front-End-Frameworks und -Bibliotheken](./front-end-frameworks.md).
 
 ## <a name="defining-routes"></a>Definieren von Routen
 
@@ -106,7 +109,7 @@ Außerdem können Sie Routen mit Platzhaltern schützen. Im folgenden Beispiel i
 
 ## <a name="fallback-routes"></a>Fallbackrouten
 
-Für Front-End-JavaScript-Frameworks oder -Bibliotheken wird häufig das clientseitige Routing für die Web-App-Navigation verwendet. Diese clientseitigen Routingregeln aktualisieren den Fensterspeicherort des Browsers, ohne Anforderungen zurück an den Servern zu senden. Wenn Sie die Seite aktualisieren oder direkt zu Speicherorten navigieren, die mit clientseitigen Routingregeln generiert wurden, ist eine serverseitige Fallbackroute erforderlich, um die richtige HTML-Seite bereitzustellen.
+Single-Page-Anwendungen, ob sie nun Front-End-JavaScript-Frameworks oder -Bibliotheken oder WebAssembly-Plattformen wie Blazor verwenden, sind für die Navigation von Webanwendungen häufig auf clientseitiges Routing angewiesen. Diese clientseitigen Routingregeln aktualisieren den Fensterspeicherort des Browsers, ohne Anforderungen zurück an den Servern zu senden. Wenn Sie die Seite aktualisieren oder direkt zu Speicherorten navigieren, die mit clientseitigen Routingregeln generiert wurden, ist eine serverseitige Fallbackroute erforderlich, um die richtige HTML-Seite bereitzustellen.
 
 Im folgenden Beispiel wird eine häufige Fallbackroute veranschaulicht:
 
@@ -186,6 +189,9 @@ Die folgenden Überlegungen sind wichtig, wenn Sie mit MIME-Typen arbeiten:
 
 - Schlüsseln können nicht Null oder leer oder mehr als 50 Zeichen lang sein.
 - Werte können nicht Null oder leer oder mehr als 1000 Zeichen lang sein.
+
+> [!NOTE]
+> Static Web Apps versteht Blazor-Anwendungen und die erwarteten MIME-Typen für die WASM- und DLL-Dateien, für die Sie keine Zuordnungen hinzufügen müssen.
 
 ## <a name="default-headers"></a>Standardheader
 

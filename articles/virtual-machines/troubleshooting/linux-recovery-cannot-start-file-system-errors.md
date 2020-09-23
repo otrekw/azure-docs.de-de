@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: e26d4070bc9fabeb3467e7bdc805faad4e6646c3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bae0eb91460bf7ab72abbaa7fa56b2515367d37d
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526502"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436186"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-file-system-errors"></a>Beheben von Problemen beim Starten von Linux-VMs aufgrund von Dateisystemfehlern
 
@@ -83,7 +83,7 @@ Um dieses Problem zu beheben, starten Sie den virtuellen Computer mithilfe der [
 
    > [!Note]
    > Weitere Informationen zur seriellen Konsole für Linux finden Sie unter:
-   > * [Verwenden der seriellen Konsole für den Zugriff auf den GRUB- und den Einzelbenutzermodus](../linux/serial-console-grub-single-user-mode.md)
+   > * [Verwenden der seriellen Konsole für den Zugriff auf den GRUB- und den Einzelbenutzermodus](serial-console-grub-single-user-mode.md)
    > * [Verwenden der seriellen Konsole für SysRq- und NMI-Aufrufe](./serial-console-nmi-sysrq.md)
 
 2. Wählen Sie die Schaltfläche des Stromversorgungssymbols und dann „VM neu starten“ aus. (Wenn die serielle Konsole nicht aktiviert oder nicht ordnungsgemäß verbunden ist, wird die Schaltfläche nicht angezeigt.)

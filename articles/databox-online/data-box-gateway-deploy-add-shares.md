@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 6db2d8fa6e957a63a4410f17b09a9f106bfba6e6
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 4e54f5254d38bca9c8ff30d5b7cefbe3fde69576
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923474"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904370"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-gateway"></a>Tutorial: Übertragen von Daten mit Azure Data Box Gateway
 
@@ -57,7 +57,7 @@ Gehen Sie wie folgt vor, um eine Freigabe zu erstellen:
 
     3. Geben Sie das gewünschte Speicherkonto für die Freigabe an. Wenn ein Container noch nicht vorhanden ist, wird er im Speicherkonto mit dem neu erstellten Freigabenamen angelegt. Wenn er bereits vorhanden ist, wird der vorhandene Container verwendet.
        > [!IMPORTANT]
-       > Stellen Sie sicher, dass für das von Ihnen genutzte Azure Storage-Konto keine Unveränderlichkeitsrichtlinien festgelegt sind, falls Sie es mit einem Azure Stack Edge- oder Data Box Gateway-Gerät verwenden. Weitere Informationen finden Sie unter [Festlegen und Verwalten von Unveränderlichkeitsrichtlinien für Blobspeicher](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
+       > Stellen Sie sicher, dass für das verwendete Azure Storage-Konto keine Unveränderlichkeitsrichtlinien festgelegt sind, wenn Sie es mit einem Azure Stack Edge Pro- oder Data Box Gateway-Gerät verwenden. Weitere Informationen finden Sie unter [Festlegen und Verwalten von Unveränderlichkeitsrichtlinien für Blobspeicher](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
     
     4. Wählen Sie für **Speicherdienst** die Option „Blockblob“, „Seitenblob“ oder „Dateien“ aus. Der ausgewählte Diensttyp hängt von dem Format ab, in dem die Daten in Azure gespeichert werden sollen. In diesem Fall sollen die Daten beispielsweise als Blobblöcke in Azure gespeichert werden. Daher wählen wir „Blockblob“ aus. Wenn Sie „Seitenblob“ auswählen, müssen Sie sicherstellen, dass Ihre Daten ganzzahlige Vielfache von 512 Bytes sind. VHDX-Daten sind beispielsweise immer ganzzahlige Vielfache von 512 Bytes.
    
@@ -115,7 +115,7 @@ Stellen Sie über Ihren Windows Server-Client, der mit Ihrem Data Box Gateway-G
 
 ### <a name="connect-to-an-nfs-share"></a>Herstellen einer Verbindung mit einer NFS-Freigabe
 
-Führen Sie auf dem mit Ihrem Azure Stack Edge-Gerät verbundenen Linux-Client die folgenden Schritte aus:
+Führen Sie auf dem mit Ihrem Azure Stack Edge Pro-Gerät verbundenen Linux-Client die folgenden Schritte aus:
 
 1. Stellen Sie sicher, dass der NFSv4-Client auf dem Client installiert ist. Verwenden Sie zum Installieren des NFS-Clients den folgenden Befehl:
 

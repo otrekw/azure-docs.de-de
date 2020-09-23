@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 07/6/2020
-ms.openlocfilehash: d62fd0a23a5f5553f27c7a399eb17d06d427a6f3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: c6c878aa0e4a9d5caa22f7cd94c438f22a81d2ab
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108786"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90881884"
 ---
 # <a name="what-is-azure-stream-analytics"></a>Was ist Azure Stream Analytics?
 
@@ -57,7 +57,7 @@ Die gesamte Liste von Stream Analytics-Ausgaben finden Sie unter [Grundlegendes 
 
 ## <a name="programmer-productivity"></a>Produktivität der Programmierer
 
-Azure Stream Analytics verwendet eine einfache SQL-basierte Abfragesprache, die mit leistungsstarken zeitlichen Einschränkungen versehen wurde, um Daten während der Übertragung zu analysieren. Zum Definieren von Auftragstransformationen verwenden Sie eine einfache, deklarative [Stream Analytics-Abfragesprache](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference), mit der Sie komplexe temporale Abfragen und Analysen mithilfe von einfachen SQL-Konstrukten erstellen können. Da die Stream Analytics-Abfragesprache mit der SQL-Sprache konsistent ist, genügt die Vertrautheit mit SQL zum Erstellen von Aufträgen. Sie können Aufträge auch mit Entwicklertools wie Azure PowerShell, [Stream Analytics Visual Studio-Tools](stream-analytics-tools-for-visual-studio-install.md), der [Visual Studio Code-Erweiterung für Stream Analytics](quick-create-vs-code.md) oder Azure Resource Manager-Vorlagen erstellen. Die Nutzung von Entwicklertools ermöglicht Ihnen die Offlineentwicklung von Transformationsabfragen und die Verwendung der [CI/CD-Pipeline](stream-analytics-tools-for-visual-studio-cicd.md) zum Übermitteln von Aufträgen an Azure.
+Azure Stream Analytics verwendet eine einfache SQL-basierte Abfragesprache, die mit leistungsstarken zeitlichen Einschränkungen versehen wurde, um Daten während der Übertragung zu analysieren. Zum Definieren von Auftragstransformationen verwenden Sie eine einfache, deklarative [Stream Analytics-Abfragesprache](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference), mit der Sie komplexe temporale Abfragen und Analysen mithilfe von einfachen SQL-Konstrukten erstellen können. Da die Stream Analytics-Abfragesprache mit der SQL-Sprache konsistent ist, genügt die Vertrautheit mit SQL zum Erstellen von Aufträgen. Sie können Aufträge auch mit Entwicklertools wie Azure PowerShell, [Stream Analytics Visual Studio-Tools](stream-analytics-tools-for-visual-studio-install.md), der [Visual Studio Code-Erweiterung für Stream Analytics](quick-create-visual-studio-code.md) oder Azure Resource Manager-Vorlagen erstellen. Die Nutzung von Entwicklertools ermöglicht Ihnen die Offlineentwicklung von Transformationsabfragen und die Verwendung der [CI/CD-Pipeline](stream-analytics-tools-for-visual-studio-cicd.md) zum Übermitteln von Aufträgen an Azure.
 
 Die Stream Analytics-Abfragesprache verfügt über viele verschiedene Funktionen zum Analysieren und Verarbeiten von Streamingdaten. Diese Abfragesprache unterstützt die einfache Datenbearbeitung, Aggregations- und Analysefunktionen, [räumliche Funktionen](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-geospatial-functions), [Musterabgleich](https://docs.microsoft.com/stream-analytics-query/match-recognize-stream-analytics) und [Anomalieerkennung](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-machine-learning-anomaly-detection). Sie können Abfragen im Portal bearbeiten und anhand von Stichprobendaten testen, die aus einem Livestream extrahiert werden.
 
@@ -106,4 +106,4 @@ Sie haben einen Überblick über Azure Stream Analytics erhalten. Nun können Si
 * [Erstellen eines Stream Analytics-Auftrags mithilfe des Azure-Portals](stream-analytics-quick-create-portal.md)
 * [Erstellen eines Stream Analytics-Auftrags mithilfe von Azure PowerShell](stream-analytics-quick-create-powershell.md)
 * [Erstellen eines Stream Analytics-Auftrags mithilfe von Visual Studio](stream-analytics-quick-create-vs.md)
-* [Erstellen eines Stream Analytics-Auftrags mithilfe von Visual Studio Code](quick-create-vs-code.md)
+* [Erstellen eines Stream Analytics-Auftrags mithilfe von Visual Studio Code](quick-create-visual-studio-code.md)

@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: bonova
 ms.author: bonova
-ms.reviewer: douglas, carlrab
+ms.reviewer: ''
 ms.date: 07/11/2019
-ms.openlocfilehash: b7623a3c89f9ae4b20385caaac676b972f55f85e
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: a33ff6b927045389c3692201fa70839c6a466ede
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88209483"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887665"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>Migration einer SQL Server-Instanz zu Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -126,7 +126,7 @@ Das Wiederherstellen mit der RESTORE-Option aus nativen Sicherungen (BAK-Dateien
 
 Das folgende Diagramm bietet einen allgemeinen Überblick über den Prozess:
 
-![Migrationsflow](./media/migrate-to-instance-from-sql-server/migration-flow.png)
+![Im Diagramm weist ein Pfeil mit der Beschriftung „SICHERN/zu URL hochladen“ zu Azure Storage. Ein weiterer Pfeil mit der Beschriftung „RESTORE FROM URL“ weist von Azure Storage zu einer verwalteten SQL-Instanz.](./media/migrate-to-instance-from-sql-server/migration-flow.png)
 
 In der folgenden Tabelle finden Sie weitere Informationen über die Methoden, die Sie je nach Version der ausgeführten SQL Server-Quellinstanz verwenden können:
 
@@ -198,7 +198,7 @@ Selbst wenn Sie während der Migration keine Änderungen an der verwalteten Inst
 
 Beispielsweise müssen Sie keine Sicherungen für den Managed Instance-Dienst erstellen, da dieser automatische Sicherungen für Sie durchführt. Sie müssen sich auch nicht mehr darum kümmern, Sicherungen zu planen, zu erstellen und zu verwalten. SQL Managed Instance bietet Ihnen die Möglichkeit, mithilfe der [Zeitpunktwiederherstellung](../database/recovery-using-backups.md#point-in-time-restore) eine Wiederherstellung gemäß jedem beliebigen Zeitpunkt innerhalb des Aufbewahrungszeitraums durchzuführen. Darüber hinaus müssen Sie sich keine Gedanken über die Einrichtung von [Hochverfügbarkeit](../database/high-availability-sla.md) machen, da diese integriert ist.
 
-Um die Sicherheit zu erhöhen, sollten Sie [Azure Active Directory-Authentifizierung](../database/security-overview.md), [Überwachung](auditing-configure.md), [Bedrohungserkennung](../database/advanced-data-security.md), [Sicherheit auf Zeilenebene](https://docs.microsoft.com/sql/relational-databases/security/row-level-security) und [dynamische Datenmaskierung](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking) verwenden.
+Um die Sicherheit zu erhöhen, sollten Sie [Azure Active Directory-Authentifizierung](../database/security-overview.md), [Überwachung](auditing-configure.md), [Bedrohungserkennung](../database/azure-defender-for-sql.md), [Sicherheit auf Zeilenebene](https://docs.microsoft.com/sql/relational-databases/security/row-level-security) und [dynamische Datenmaskierung](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking) verwenden.
 
 Zusätzlich zu erweiterten Verwaltungs- und Sicherheitsfeatures stellt die verwaltete Instanz eine Reihe von erweiterten Tools bereit, mit denen Sie Ihre [Workload überwachen und optimieren](../database/monitor-tune-overview.md) können. [Azure SQL-Analyse](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) ermöglicht Ihnen, eine große Menge verwalteter Instanzen zu überwachen und die Überwachung einer großen Anzahl von Instanzen und Datenbanken zu zentralisieren. [Automatische Optimierung](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning#automatic-plan-correction) in verwalteten Instanzen bewirkt, dass die Ausführungsleistung Ihres SQL-Plans kontinuierlich statistisch überwacht wird und die erkannten Leistungsprobleme automatisch behoben werden.
 
