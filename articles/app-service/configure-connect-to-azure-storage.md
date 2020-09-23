@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 8ca3688ad11bc7a694327990be22b8eccd8f8161
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: c240399f1368862a969561409371e075a010e8f2
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962858"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89435608"
 ---
 # <a name="access-azure-storage-as-a-network-share-from-a-container-in-app-service"></a>Zugreifen auf Azure Storage als Netzwerkfreigabe von einem Container in App Service
 
@@ -57,7 +57,7 @@ Der vorliegende Leitfaden zeigt, wie Sie Azure Storage an einen Linux-Container 
 - Azure Storage in App Service wird zurzeit für Szenarien mit Verwendung von eigenem Code (nicht containerisierte Windows-Apps) **nicht unterstützt**.
 - Aufgrund von Infrastruktureinschränkungen bietet Azure Storage in App Service **keine Unterstützung** für die Verwendung der **Storage-Firewall**-Konfiguration.
 - Mit Azure Storage mit App Service können Sie **bis zu fünf** Bereitstellungspunkte pro App angeben.
-- Auf Azure-Speicher, der für eine App bereitgestellt wurde, kann nicht über App Service-FTP/FTPs-Endpunkte zugegriffen werden. Verwenden Sie stattdessen den [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/).
+- Auf Azure-Speicher, der für eine App bereitgestellt wurde, kann nicht über App Service-FTP/FTPs-Endpunkte zugegriffen werden. Verwenden Sie den [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/).
 
 ::: zone-end
 
@@ -67,7 +67,7 @@ Der vorliegende Leitfaden zeigt, wie Sie Azure Storage an einen Linux-Container 
 - Azure Storage in App Service unterstützt das Bereitstellen von **Azure Files-Containern** (Lese-/Schreibzugriff) und **Azure-Blobcontainern** (schreibgeschützt).
 - Aufgrund von Infrastruktureinschränkungen bietet Azure Storage in App Service **keine Unterstützung** für die Verwendung der **Storage-Firewall**-Konfiguration.
 - Mit Azure Storage in App Service können Sie **bis zu fünf** Bereitstellungspunkte pro App angeben.
-- Auf Azure-Speicher, der für eine App bereitgestellt wurde, kann nicht über App Service-FTP/FTPs-Endpunkte zugegriffen werden. Verwenden Sie stattdessen den [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/).
+- Auf Azure-Speicher, der für eine App bereitgestellt wurde, kann nicht über App Service-FTP/FTPs-Endpunkte zugegriffen werden. Verwenden Sie den [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/).
 
 ::: zone-end
 

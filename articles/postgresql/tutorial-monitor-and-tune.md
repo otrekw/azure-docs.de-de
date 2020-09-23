@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: tutorial
 ms.date: 5/6/2019
-ms.openlocfilehash: d1958c6ef0f7ed52e939967b5e82886fe1373ed8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 05435aae727c84a5f3eb886274f9d286627e399e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74774736"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895089"
 ---
 # <a name="tutorial-monitor-and-tune-azure-database-for-postgresql---single-server"></a>Tutorial: Überwachung und Optimierung in Azure Database for PostgreSQL – Einzelserver
 
@@ -40,7 +40,7 @@ Der [Abfragespeicher](concepts-query-store.md) erfasst den Verlauf der Abfragen 
 
 4. Legen Sie **pg_qs.query_capture_mode** auf **TOP** fest, um mit dem Erfassen von Abfrageleistungsdaten zu beginnen. Legen Sie **pgms_wait_sampling.query_capture_mode** auf **ALL** fest, um mit dem Erfassen von Wartestatistiken zu beginnen. Speichern Sie.
    
-   ![Abfragespeicher-Serverparameter](./media/tutorial-performance-intelligence/query-store-parameters.png)
+   :::image type="content" source="./media/tutorial-performance-intelligence/query-store-parameters.png" alt-text="Abfragespeicher-Serverparameter":::
 
 5. Es kann bis zu 20 Minuten dauern, bis der erste Datenbatch in der **azure-sys**-Datenbank gespeichert ist.
 
@@ -52,7 +52,7 @@ Die [Query Performance Insight](concepts-query-performance-insight.md)-Ansicht i
 
 2. Die Registerkarte **Abfragen mit langer Ausführungszeit** zeigt die ersten fünf Abfragen nach durchschnittlicher Dauer pro Ausführung an, zusammengefasst in Intervallen von 15 Minuten. 
    
-   ![Query Performance Insight-Startseite](./media/tutorial-performance-intelligence/query-performance-insight-landing-page.png)
+   :::image type="content" source="./media/tutorial-performance-intelligence/query-performance-insight-landing-page.png" alt-text="Query Performance Insight-Startseite":::
 
    Sie können mehr Abfragen anzeigen, indem Sie in der Dropdownliste **Anzahl der Abfragen** eine Auswahl treffen. Dabei ändern sich unter Umständen die Diagrammfarben für eine bestimmte Abfrage-ID.
 
@@ -64,7 +64,7 @@ Die [Query Performance Insight](concepts-query-performance-insight.md)-Ansicht i
 
 6. Auf der Registerkarte **Wartestatistik** werden die entsprechenden Visualisierungen zu Wartevorgängen angezeigt.
    
-   ![Query Performance Insight-Wartestatistiken](./media/tutorial-performance-intelligence/query-performance-insight-wait-statistics.png)
+   :::image type="content" source="./media/tutorial-performance-intelligence/query-performance-insight-wait-statistics.png" alt-text="Query Performance Insight-Wartestatistiken":::
 
 ### <a name="permissions"></a>Berechtigungen
 Zum Anzeigen des Abfragetexts in Query Performance Insight sind die Berechtigungen **Besitzer** oder **Mitwirkender** erforderlich. Mit **Leser** können Diagramme und Tabellen angezeigt werden, aber nicht im Abfragetext.
@@ -75,7 +75,7 @@ Das Feature [Leistungsempfehlungen](concepts-performance-recommendations.md) ana
 
 1. Öffnen Sie im Bereich **Support und Problembehandlung** auf der Menüleiste der Azure-Portalseite für Ihren PostgreSQL-Server die Option **Leistungsempfehlungen**.
    
-   ![Leistungsempfehlungen-Startseite](./media/tutorial-performance-intelligence/performance-recommendations-landing-page.png)
+   :::image type="content" source="./media/tutorial-performance-intelligence/performance-recommendations-landing-page.png" alt-text="Landing Page für Leistungsempfehlungen":::
 
 2. Wählen Sie **Analysieren** und eine Datenbank aus. Dadurch wird die Analyse gestartet.
 
@@ -85,7 +85,7 @@ Das Feature [Leistungsempfehlungen](concepts-performance-recommendations.md) ana
 
 5. Eine Empfehlung zeigt Informationen zur relevanten **Datenbank**, **Tabelle**, **Spalte** und **Indexgröße** an.
 
-   ![Ergebnisse der Leistungsempfehlungen](./media/tutorial-performance-intelligence/performance-recommendations-result.png)
+   :::image type="content" source="./media/tutorial-performance-intelligence/performance-recommendations-result.png" alt-text="Ergebnisse der Leistungsempfehlungen":::
 
 6. Kopieren Sie zum Implementieren der Empfehlung den Abfragetext, und führen Sie ihn auf dem gewünschten Client aus.
 

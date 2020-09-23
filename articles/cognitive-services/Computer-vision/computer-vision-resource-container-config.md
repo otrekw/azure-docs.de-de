@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 3be302019c712c13bd29d7ed3781151a1648e847
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 56a03d6f1e4684da797b733d6041309acdac65c3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80879308"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888151"
 ---
 # <a name="configure-computer-vision-docker-containers"></a>Konfigurieren von Docker-Containern für maschinelles Sehen
 
@@ -28,6 +28,15 @@ Sie können die Runtimeumgebung für Container für maschinelles Sehen über die
 
 > [!IMPORTANT]
 > Die Einstellungen [`ApiKey`](#apikey-configuration-setting), [`Billing`](#billing-configuration-setting) und [`Eula`](#eula-setting) werden gemeinsam verwendet, und Sie müssen gültige Werte für alle drei angeben, da der Container andernfalls nicht startet. Weitere Informationen zum Instanziieren eines Containers mithilfe dieser Konfigurationseinstellungen finden Sie unter [Abrechnung](computer-vision-how-to-install-containers.md).
+
+Der Container hat außerdem die folgenden containerspezifischen Konfigurationseinstellungen:
+
+|Erforderlich|Einstellung|Zweck|
+|--|--|--|
+|Nein|ReadEngineConfig:ResultExpirationPeriod|Ablaufzeitraum für das Ergebnis in Stunden. Der Standardwert beträgt 48 Stunden. Die Einstellung gibt an, wann das System Erkennungsergebnisse löschen soll. Wenn beispielsweise `resultExpirationPeriod=1` festgelegt ist, löscht das System das Erkennungsergebnis eine Stunde nach dem Prozess. Wird `resultExpirationPeriod=0` festgelegt, löscht das System das Erkennungsergebnis nach dem Abrufen des Ergebnisses.|
+|Nein|Cache:Redis|Aktiviert Redis-Speicher zum Speichern von Ergebnissen. Ein Cache ist *erforderlich*, wenn mehrere Lesecontainer hinter einem Lastenausgleich platziert werden.|
+|Nein|Queue:RabbitMQ|Aktiviert RabbitMQ zum Verteilen von Aufgaben. Die Einstellung ist nützlich, wenn mehrere Lesecontainer hinter einem Lastenausgleich platziert werden.|
+|Nein|Storage::DocumentStore::MongoDB|Aktiviert MongoDB für den permanenten Ergebnisspeicher.|
 
 ## <a name="apikey-configuration-setting"></a>Konfigurationseinstellung „ApiKey“
 
@@ -51,7 +60,7 @@ Diese Einstellung finden Sie hier:
 
 Denken Sie daran, die `vision/v1.0`-Weiterleitung an den Endpunkt-URI anzufügen, wie in der folgenden Tabelle dargestellt. 
 
-|Erforderlich| Name | Datentyp | BESCHREIBUNG |
+|Erforderlich| Name | Datentyp | Beschreibung |
 |--|------|-----------|-------------|
 |Ja| `Billing` | String | URI des Abrechnungsendpunkts<br><br>Beispiel:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
 
@@ -108,26 +117,55 @@ Ersetzen Sie {_argument_name_} durch Ihre eigenen Werte:
 
 Im Folgenden finden Sie Docker-Beispiele für den Container für das Lesen.
 
+
+# <a name="version-30"></a>[Version 3.0](#tab/version-3)
+
 ### <a name="basic-example"></a>Einfaches Beispiel
 
-  ```docker
-  docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
-  containerpreview.azurecr.io/microsoft/cognitive-services-read \
-  Eula=accept \
-  Billing={ENDPOINT_URI} \
-  ApiKey={API_KEY} 
-  ```
+```bash
+docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.0 \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+```
 
 ### <a name="logging-example"></a>Beispiel für die Protokollierung 
 
-  ```docker
-  docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
-  containerpreview.azurecr.io/microsoft/cognitive-services-read \
-  Eula=accept \
-  Billing={ENDPOINT_URI} \
-  ApiKey={API_KEY} \
-  Logging:Console:LogLevel:Default=Information
-  ```
+```bash
+docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.0 \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+Logging:Console:LogLevel:Default=Information
+```
+
+# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
+
+### <a name="basic-example"></a>Einfaches Beispiel
+
+```bash
+docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+
+```
+
+### <a name="logging-example"></a>Beispiel für die Protokollierung 
+
+```bash
+docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+Logging:Console:LogLevel:Default=Information
+```
+
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 

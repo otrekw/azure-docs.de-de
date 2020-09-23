@@ -1,23 +1,23 @@
 ---
-title: Behandeln von Azure Stack Edge-Bestellproblemen über das Azure-Portal | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Azure Stack Edge-Bestellprobleme behandelt werden.
+title: Behandeln von Azure Stack Edge Pro-Bestellproblemen im Azure-Portal | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Azure Stack Edge Pro-Bestellprobleme behandelt werden.
 services: databox
-author: twooley
+author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/11/2020
-ms.author: twooley
-ms.openlocfilehash: 226274c52610e24c305400d77dc7737d32c2b722
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.author: alkohli
+ms.openlocfilehash: 3087c209b844d691173edbbd8a993c1d0aae319b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783993"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903637"
 ---
-# <a name="troubleshoot-your-azure-stack-edge-ordering-issues"></a>Behandeln von Problemen bei Azure Stack Edge-Bestellungen
+# <a name="troubleshoot-your-azure-stack-edge-pro-ordering-issues"></a>Behandeln von Azure Stack Edge Pro-Bestellproblemen
 
-In diesem Artikel wird beschrieben, wie Azure Stack Edge-Bestellprobleme behandelt werden.
+In diesem Artikel wird beschrieben, wie Azure Stack Edge Pro-Bestellprobleme behandelt werden.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -59,7 +59,7 @@ Weitere Informationen finden Sie unter [Registrieren von Ressourcenanbietern](az
 
 ## <a name="microsoftdataboxedge-not-registered-for-subscription"></a>Microsoft.DataBoxEdge ist nicht für ein Abonnement registriert
 
-**Fehler:** Sie wählen im Azure-Portal ein Abonnement zur Verwendung mit Azure Stack Edge oder Data Box Gateway aus und erhalten den folgenden Fehler:
+**Fehler:** Sie wählen im Azure-Portal ein Abonnement zur Verwendung mit Azure Stack Edge Pro oder Data Box Gateway aus und erhalten den folgenden Fehler:
 
 *Der Ressourcenanbieter „Microsoft.DataBoxEdge“ ist für das Abonnement &lt;Abonnementname&gt; nicht registriert, und Sie verfügen nicht über die Berechtigungen zum Registrieren eines Ressourcenanbieters für das Abonnement &lt;Abonnementname&gt;* .
 
@@ -75,4 +75,4 @@ Weitere Informationen finden Sie unter [Registrieren von Ressourcenanbietern](az
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen finden Sie unter [Behandeln von Problemen mit Ihrem Azure Stack Edge](azure-stack-edge-troubleshoot.md).
+* Weitere Informationen finden Sie unter [Behandeln von Problemen mit Azure Stack Edge Pro](azure-stack-edge-troubleshoot.md).

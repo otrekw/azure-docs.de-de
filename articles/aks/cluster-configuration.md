@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: daffcbf0a2ceb6f28cbb539906d4c6387840aa20
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 5b26054ae8dfb73dea8d064292beb73220be5e09
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752103"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433448"
 ---
 # <a name="configure-an-aks-cluster"></a>Konfigurieren eines AKS-Clusters
 
@@ -218,7 +218,7 @@ az extension update --name aks-preview
 ### <a name="use-gen2-vms-on-new-clusters-preview"></a>Verwenden von Gen2-VMs auf neuen Clustern (Vorschau)
 Konfigurieren Sie Gen2-VMs auf dem Cluster für die ausgewählte SKU, wenn der Cluster erstellt wird. Legen Sie Gen2 mit dem Flag `--aks-custom-headers` als VM-Generation auf einem neuen Cluster fest.
 
-```azure-cli
+```azurecli
 az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_D2s_v3 --aks-custom-headers usegen2vm=true
 ```
 
@@ -227,7 +227,7 @@ Wenn Sie einen herkömmlichen Cluster mit Generation 1-VMs (Gen1) erstellen mö
 ### <a name="use-gen2-vms-on-existing-clusters-preview"></a>Verwenden von Gen2-VMs auf vorhandenen Clustern (Vorschau)
 Konfigurieren Sie Gen2-VMs auf einem neuen Knotenpool. Legen Sie Gen2 mit dem Flag `--aks-custom-headers` als VM-Generation für diesen Knotenpool fest.
 
-```azure-cli
+```azurecli
 az aks nodepool add --name gen2 --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_D2s_v3 --aks-custom-headers usegen2vm=true
 ```
 
@@ -276,7 +276,7 @@ az extension update --name aks-preview
 
 Konfigurieren Sie den Cluster für die Verwendung kurzlebiger Betriebssystemdatenträger bei der Clustererstellung. Verwenden Sie das Flag `--aks-custom-headers`, um die Art des Betriebssystemdatenträgers für den neuen Cluster auf ein kurzlebiges Betriebssystem festzulegen.
 
-```azure-cli
+```azurecli
 az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --aks-custom-headers EnableEphemeralOSDisk=true
 ```
 
@@ -285,7 +285,7 @@ Wenn Sie einen herkömmlichen Cluster mit netzwerkbasierten Betriebssystemdatent
 ### <a name="use-ephemeral-os-on-existing-clusters-preview"></a>Verwenden eines kurzlebigen Betriebssystems in vorhandenen Clustern (Vorschauversion)
 Konfigurieren Sie einen neuen Knotenpool für die Verwendung kurzlebiger Betriebssystemdatenträger. Verwenden Sie das Flag `--aks-custom-headers`, um die Art des Betriebssystemdatenträgers für diesen Knotenpool festzulegen.
 
-```azure-cli
+```azurecli
 az aks nodepool add --name ephemeral --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --aks-custom-headers EnableEphemeralOSDisk=true
 ```
 

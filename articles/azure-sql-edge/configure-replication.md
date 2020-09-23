@@ -1,6 +1,6 @@
 ---
-title: Konfigurieren der Replikation in Azure SQL Edge (Vorschau)
-description: Informationen zum Konfigurieren der Replikation in Azure SQL Edge (Vorschau)
+title: Konfigurieren der Replikation in Azure SQL Edge
+description: Hier erfahren Sie mehr über die Konfiguration der Replikation in Azure SQL Edge.
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,14 +9,14 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: ad92f796205d84a372de610cb210bbf8878a6c9b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a748bf977e76357c710518e608c12ad19a8cd0be
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282771"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888419"
 ---
-# <a name="configure-replication-to-azure-sql-edge-preview"></a>Konfigurieren der Replikation in Azure SQL Edge (Vorschau) 
+# <a name="configure-replication-to-azure-sql-edge"></a>Konfigurieren der Replikation in Azure SQL Edge 
 
 Sie können eine Azure SQL Edge-Instanz als Pushabonnenten für eine unidirektionale Transaktions- oder Momentaufnahmereplikation konfigurieren. Diese Instanz kann nicht für eine Transaktionsreplikationskonfiguration als Verleger oder Verteiler fungieren. Beachten Sie, dass Mergereplikation, Peer-zu-Peer-Replikation und Oracle Publishing von Azure SQL Edge nicht unterstützt werden.
 

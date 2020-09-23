@@ -6,24 +6,25 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 06/30/2020
+ms.date: 09/10/2020
 ms.author: aahi
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 836582003c4b4bd47d2b90b845ae414210d16edd
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 4a4b6d02845c9767b7ab668dd172da38150fc89e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88246486"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "91025288"
 ---
 Hier erfahren Sie etwas über die ersten Schritte mit der Anomalieerkennungs-Clientbibliothek für JavaScript. Führen Sie die nachfolgenden Schritte zum Installieren des Pakets aus, und testen Sie den Beispielcode für grundlegende Aufgaben. Mit dem Anomalieerkennungsdienst können Sie Anomalien in Zeitreihendaten ermitteln, da unabhängig von der Branche, dem Szenario oder der Datenmenge automatisch die am besten geeigneten Modelle für Ihre Daten angewandt werden.
 
 Mit der Anomalieerkennungs-Clientbibliothek für JavaScript ist Folgendes möglich:
 
-* Erkennung von Anomalien in Ihrem gesamten Zeitreihen-Dataset als Batchanforderung
+* Erkennen von Anomalien in Ihrem gesamten Zeitreihendataset als Batchanforderung
 * Erkennen des Anomaliestatus des letzten Datenpunkts in Ihrer Zeitreihe
+* Erkennen von Trendänderungspunkten in Ihrem Dataset
 
-[Referenzdokumentation](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/?view=azure-node-latest) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector) | [Paket (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-anomalydetector) | [Den Code finden Sie auf GitHub.](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/AnomalyDetector)
+[Bibliotheksreferenzdokumentation](https://go.microsoft.com/fwlink/?linkid=2090788) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector) | [Paket (npm)](https://www.npmjs.com/package/%40azure/ai-anomaly-detector) | [Den Code finden Sie auf GitHub.](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/AnomalyDetector)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -64,18 +65,18 @@ Erstellen Sie Variablen für den Azure-Endpunkt und -Schlüssel Ihrer Ressource.
 Installieren Sie die npm-Pakete `ms-rest-azure` und `azure-cognitiveservices-anomalydetector`. Die Bibliothek „csv-parse“ wird auch in diesem Schnellstart verwendet:
 
 ```console
-npm install  @azure/cognitiveservices-anomalydetector @azure/ms-rest-js csv-parse
+npm install @azure/ai-anomaly-detector @azure/ms-rest-js csv-parse
 ```
 
 Die Datei `package.json` Ihrer App wird mit den Abhängigkeiten aktualisiert.
 
 ## <a name="object-model"></a>Objektmodell
 
-Der Anomalieerkennungsclient ist ein [AnomalyDetectorClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest)-Objekt, das sich mit Ihrem Schlüssel bei Azure authentifiziert. Der Client stellt zwei Methoden zur Anomalieerkennung bereit: Für ein gesamtes Dataset mithilfe von [entireDetect()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#entiredetect-request--servicecallback-entiredetectresponse--) und für den letzten Datenpunkt mithilfe von [LastDetect()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#lastdetect-request--msrest-requestoptionsbase-). 
+Der Anomalieerkennungsclient ist ein [AnomalyDetectorClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest)-Objekt, das sich mit Ihrem Schlüssel bei Azure authentifiziert. Der Client kann die Anomalieerkennung mithilfe von [entireDetect()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#entiredetect-request--servicecallback-entiredetectresponse--) für ein gesamtes Dataset bzw. mithilfe von [LastDetect()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#lastdetect-request--msrest-requestoptionsbase-) für den letzten Datenpunkt ausführen. Mit der Methode [ChangePointDetectAsync](https://go.microsoft.com/fwlink/?linkid=2090788) werden Punkte erkannt, die Änderungen in einem Trend markieren. 
 
 Zeitreihendaten werden als eine Reihe von [Punkten](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/point?view=azure-node-latest) in einem [Request](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/request?view=azure-node-latest)-Objekt gesendet. Das `Request`-Objekt enthält Eigenschaften zum Beschreiben der Daten (z.B. [Granularity](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/request?view=azure-node-latest#granularity)) sowie Parameter für die Anomalieerkennung. 
 
-Die Antwort der Anomalieerkennung ist je nach der verwendeten Methode ein [LastDetectResponse](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/lastdetectresponse?view=azure-node-latest)- oder [EntireDetectResponse](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/entiredetectresponse?view=azure-node-latest)-Objekt. 
+Die Antwort der Anomalieerkennung ist je nach der verwendeten Methode ein [LastDetectResponse](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/lastdetectresponse?view=azure-node-latest)-, [EntireDetectResponse](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/entiredetectresponse?view=azure-node-latest)- oder [ChangePointDetectResponse](https://go.microsoft.com/fwlink/?linkid=2090788)-Objekt. 
 
 ## <a name="code-examples"></a>Codebeispiele 
 
@@ -85,6 +86,7 @@ Diese Codeausschnitte veranschaulichen, wie folgende Vorgänge mit der Anomaliee
 * [Laden eines Zeitreihendatasets aus einer Datei](#load-time-series-data-from-a-file)
 * [Erkennen von Anomalien im gesamten Dataset](#detect-anomalies-in-the-entire-data-set) 
 * [Erkennen des Anomaliestatus des letzten Datenpunkts](#detect-the-anomaly-status-of-the-latest-data-point)
+* [Erkennen der Änderungspunkte im Dataset](#detect-change-points-in-the-data-set)
 
 ## <a name="authenticate-the-client"></a>Authentifizieren des Clients
 
@@ -116,6 +118,12 @@ Rufen Sie die API zum Erkennen von Anomalien in der gesamten Zeitreihe als Batch
 Rufen Sie mithilfe der [lastDetect()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#lastdetect-request--msrest-requestoptionsbase-)-Methode des Clients die Anomalieerkennungs-API auf, um festzustellen, ob Ihr letzter Datenpunkt eine Anomalie ist, und speichern Sie das zurückgegebene [LastDetectResponse](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/lastdetectresponse?view=azure-node-latest)-Objekt. Der `isAnomaly`-Wert der Antwort ist ein Boolescher Wert, der den Anomaliestatus dieses Punktes angibt.  
 
 [!code-javascript[Last point detection function](~/cognitive-services-quickstart-code/javascript/AnomalyDetector/anomaly_detector_quickstart.js?name=lastDetection)]
+
+## <a name="detect-change-points-in-the-data-set"></a>Erkennen von Änderungspunkten im Dataset
+
+Rufen Sie die API auf, um Änderungspunkte in der Zeitreihe mit der Methode [detectChangePoint()](https://go.microsoft.com/fwlink/?linkid=2090788) des Clients zu erkennen. Speichern Sie das zurückgegebene [ChangePointDetectResponse](https://go.microsoft.com/fwlink/?linkid=2090788)-Objekt. Durchlaufen Sie die `isChangePoint`-Liste der Antwort, und geben Sie den Index aller `true`-Werte aus. Diese Werte stimmen mit den Indizes der Trendänderungspunkte überein, sofern welche gefunden wurden.
+
+[!code-javascript[detect change points](~/cognitive-services-quickstart-code/javascript/AnomalyDetector/anomaly_detector_quickstart.js?name=changePointDetection)]
 
 ## <a name="run-the-application"></a>Ausführen der Anwendung
 

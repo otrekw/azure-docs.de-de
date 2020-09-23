@@ -11,12 +11,12 @@ ms.date: 05/25/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f9b493e862ed70bbeab9ac509c79003a535366d0
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: eed0527b69dcaacd3a8cd0cf7cd178aa2aca3468
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116547"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433907"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>Neue Benutzeroberfläche für App-Registrierungen in Azure Active Directory B2C
 
@@ -32,7 +32,7 @@ Navigieren Sie im Azure-Portal von einem Azure AD B2C-Mandanten des **Azure AD B
 Die Azure AD B2C-Benutzeroberfläche für App-Registrierungen basiert auf der allgemeinen [Oberfläche für App-Registrierungen](https://developer.microsoft.com/identity/blogs/new-app-registrations-experience-is-now-generally-available/) bei einem beliebigen Azure AD-Mandanten, ist jedoch an die Anforderungen von Azure AD B2C-Mandanten angepasst.
 
 ## <a name="whats-not-changing"></a>Was ändert sich nicht?
-- Ihre Anwendungen und die zugehörigen Konfigurationen finden Sie unverändert in der neuen Umgebung. Sie müssen die Anwendungen nicht erneut registrieren, und die Benutzer Ihrer Anwendungen müssen sich nicht erneut anmelden. 
+- Ihre Anwendungen und die zugehörigen Konfigurationen finden Sie unverändert in der neuen Umgebung. Sie müssen die Anwendungen nicht erneut registrieren, und die Benutzer Ihrer Anwendungen müssen sich nicht erneut anmelden.
 
 > [!NOTE]
 > Wenn Sie alle bisher erstellten Anwendungen anzeigen möchten, navigieren Sie zum Blatt **App-Registrierungen**, und wählen Sie die Registerkarte **Alle Anwendungen** aus. Hier werden alle Apps angezeigt, die Sie über die Legacyoberfläche, die neue Oberfläche sowie im Azure AD-Dienst erstellt haben.
@@ -43,7 +43,7 @@ Die Azure AD B2C-Benutzeroberfläche für App-Registrierungen basiert auf der al
 
 -   Über die **kombinierte App-Registrierung** können Sie auf schnelle Weise eine App registrieren – unabhängig davon, ob es sich um eine kundenseitige App oder eine App für den Zugriff auf Microsoft Graph handelt.
 
-- Im Bereich **Endpunkte** können Sie schnell die relevanten Endpunkte für Ihr Szenario ermitteln, einschließlich der Endpunkte für die OpenID Connect-Konfiguration, SAML-Metadaten, Microsoft Graph-API sowie des [OAuth 2.0-Benutzerflows](tokens-overview.md#endpoints). 
+- Im Bereich **Endpunkte** können Sie schnell die relevanten Endpunkte für Ihr Szenario ermitteln, einschließlich der Endpunkte für die OpenID Connect-Konfiguration, SAML-Metadaten, Microsoft Graph-API sowie des [OAuth 2.0-Benutzerflows](tokens-overview.md#endpoints).
 
 - Über die Funktionen **API-Berechtigungen** und **Eine API verfügbar machen** verfügen Sie über erweiterte Möglichkeiten zur Verwaltung von Bereichen, Berechtigungen und Einwilligungen. Sie können einer App nun auch MS Graph- und Azure AD Graph-Berechtigungen zuweisen.
 
@@ -57,7 +57,7 @@ In der neuen Benutzeroberfläche können Sie aus den folgenden Optionen einen un
 - Konten in einem beliebigen Organisationsverzeichnis (beliebiges Azure AD-Verzeichnis – mehrinstanzenfähig)
 - Konten in einem beliebigen Organisationsverzeichnis oder eines beliebigen Identitätsanbieters (zur Authentifizierung von Benutzern bei Azure AD B2C)
 
-Weitere Informationen zu den unterschiedlichen Kontotypen finden Sie in der Benutzeroberfläche für die Erstellung unter **Hilfe bei der Auswahl**. 
+Weitere Informationen zu den unterschiedlichen Kontotypen finden Sie in der Benutzeroberfläche für die Erstellung unter **Hilfe bei der Auswahl**.
 
 In der Legacyoberfläche wurden alle Apps als kundenseitige Anwendungen erstellt. Für diese Apps wird der Kontotyp auf die Option **Konten in einem beliebigen Organisationsverzeichnis oder eines beliebigen Identitätsanbieters. (zur Authentifizierung von Benutzern bei Azure AD B2C)** festgelegt.
 > [!NOTE]
@@ -68,9 +68,9 @@ In der Legacyoberfläche wurden alle Apps als kundenseitige Anwendungen erstellt
 ## <a name="applications-for-devops-scenarios"></a>Anwendungen für DevOps-Szenarios
 Mit den anderen Kontotypen können Sie eine App erstellen, mit der Sie DevOps-Szenarios, wie z. B. das Hochladen von Identity Experience Framework-Richtlinien oder das Bereitstellen von Benutzern mithilfe von Microsoft Graph, verwalten können. Informationen zum Registrieren einer Microsoft Graph-Anwendung zur Verwaltung von Azure AD B2C-Ressourcen finden Sie [hier](microsoft-graph-get-started.md).
 
-Möglicherweise werden nicht alle Microsoft Graph-Berechtigungen angezeigt, da viele dieser Berechtigungen für Azure B2C-Consumerbenutzer nicht gelten. Informationen zur Verwaltung von Benutzern mit Microsoft Graph finden Sie [hier](manage-user-accounts-graph-api.md).  
+Möglicherweise werden nicht alle Microsoft Graph-Berechtigungen angezeigt, da viele dieser Berechtigungen für Azure B2C-Consumerbenutzer nicht gelten. Informationen zur Verwaltung von Benutzern mit Microsoft Graph finden Sie [hier](manage-user-accounts-graph-api.md).
 
-## <a name="admin-consent-and-offline_accessopenid-scopes"></a>Administratoreinwilligung und die Bereiche „offline_access“ und „openid“  
+## <a name="admin-consent-and-offline_accessopenid-scopes"></a>Administratoreinwilligung und die Bereiche „offline_access“ und „openid“
 <!-- Azure AD B2C doesn't support user consent. That is, when a user signs into an application, the user doesn't see a screen requesting consent for the application permissions. All permissions have to be granted through admin consent.  -->
 
 Der Bereich **openid** ist für die Anmeldung von Benutzern bei einer App durch Azure AD B2C erforderlich. Der Bereich **offline_access** wird für das Ausstellen von Aktualisierungstoken für einen Benutzer benötigt. Diese Bereiche wurden neu hinzugefügt und verfügen standardmäßig über Administratoreinwilligung. Nun können Sie während des Erstellungsprozesses problemlos Berechtigungen für diese Bereiche hinzufügen, indem Sie sicherstellen, dass die Option **Administratoreinwilligung für openid- und offline_access-Berechtigungen erteilen** aktiviert ist. Alternativ dazu können Sie Microsoft Graph-Berechtigungen mit Administratoreinwilligung auch in den Einstellungen **API-Berechtigungen** für eine vorhandene App hinzufügen.
@@ -78,11 +78,11 @@ Der Bereich **openid** ist für die Anmeldung von Benutzern bei einer App durch 
 Informationen zu Berechtigungen und Einwilligungen finden Sie [hier](../active-directory/develop/v2-permissions-and-consent.md).
 
 ## <a name="platformsauthentication-reply-urlsredirect-uris"></a>Plattformen/Authentifizierung Antwort-URLs/Umleitungs-URIs
-In der Legacyoberfläche konnten Sie unter **Eigenschaften** die verschiedenen Plattformtypen als Antwort-URLs für Web-Apps/-APIs und Umleitungs-URIs für native Clients verwalten. „Native Clients“, auch „öffentliche Clients“ genannt, beinhalten Apps für iOS, macOS, Android und andere Typen von Mobil- und Desktopanwendungen. 
+In der Legacyoberfläche konnten Sie unter **Eigenschaften** die verschiedenen Plattformtypen als Antwort-URLs für Web-Apps/-APIs und Umleitungs-URIs für native Clients verwalten. „Native Clients“, auch „öffentliche Clients“ genannt, beinhalten Apps für iOS, macOS, Android und andere Typen von Mobil- und Desktopanwendungen.
 
-In der neuen Benutzeroberfläche werden sowohl Antwort-URLs als auch Umleitungs-URIs „Umleitungs-URIs“ genannt. Sie befinden sich im Abschnitt **Authentifizierung** einer App. App-Registrierungen sind nicht auf eine Web-App oder eine native Anwendung beschränkt. Sie können die gleiche App-Registrierung für all diese Plattformtypen verwenden, indem Sie die entsprechenden Umleitungs-URIs registrieren. 
+In der neuen Benutzeroberfläche werden sowohl Antwort-URLs als auch Umleitungs-URIs „Umleitungs-URIs“ genannt. Sie befinden sich im Abschnitt **Authentifizierung** einer App. App-Registrierungen sind nicht auf eine Web-App oder eine native Anwendung beschränkt. Sie können die gleiche App-Registrierung für all diese Plattformtypen verwenden, indem Sie die entsprechenden Umleitungs-URIs registrieren.
 
-Umleitungs-URIs müssen einem App-Typ zugeordnet werden: entweder „Web“ oder „Öffentlich“ (Mobilgerät und Desktop). Weitere Informationen zu Umleitungs-URIs finden Sie [hier](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-redirect-uris-to-your-application).
+Umleitungs-URIs müssen einem App-Typ zugeordnet werden: entweder „Web“ oder „Öffentlich“ (Mobilgerät und Desktop). Weitere Informationen zu Umleitungs-URIs finden Sie [hier](../active-directory/develop/quickstart-register-app.md#add-a-redirect-uri).
 
 <!-- Whether an application should be treated as a public client is inferred at run-time from the Redirect URI platform type, if possible. The **Treat application as a public client** setting should be set to **Yes** for flows that might not use a redirect URI, such as ROPC flows. -->
 

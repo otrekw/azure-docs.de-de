@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/15/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 15b129db56a9c6854bc3c1f2814a8776ec39adc6
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 1e88aac4209f7960b2589cf43f59ead4bd129134
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961566"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605072"
 ---
 # <a name="availability-zone-support-for-app-service-environments"></a>Unterstützung für Verfügbarkeitszonen in App Service-Umgebungen
 
@@ -29,11 +29,15 @@ Wenn Sie die in diesem Artikel beschriebenen Schritte nicht befolgen, werden ILB
 
 Zonale ILB-ASEs können in den folgenden Regionen erstellt werden:
 
+- Australien (Osten)
+- Brasilien Süd
+- Kanada, Mitte
 - USA (Mitte)
 - East US
 - USA (Ost) 2
 - USA, Osten 2 (EUAP)
 - Frankreich, Mitte 
+- Deutschland, Westen-Mitte
 - Japan, Osten
 - Nordeuropa
 - Europa, Westen

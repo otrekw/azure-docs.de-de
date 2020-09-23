@@ -1,19 +1,19 @@
 ---
 title: Verbinden von Hybridcomputern mit Azure über das Azure-Portal
-description: In diesem Artikel erfahren Sie, wie Sie Azure Arc-fähige Server (Vorschauversion) im Azure-Portal verwenden, um den Agent zu installieren und Computer mit Azure zu verbinden.
-ms.date: 08/07/2020
+description: In diesem Artikel erfahren Sie, wie Sie Azure Arc-fähige Server im Azure-Portal verwenden, um den Agent zu installieren und Computer mit Azure zu verbinden.
+ms.date: 09/02/2020
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 23415bc648ae31b9073adb71d6f066a28c144c9d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 7435256dda68b2689aeb19b237f499d50b418055
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213500"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887607"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Verbinden von Hybridcomputern mit Azure über das Azure-Portal
 
-Azure Arc-fähige Server (Vorschauversion) können mithilfe einiger manueller Schritte für einen oder einige wenige Windows- oder Linux-Computer in Ihrer Umgebung aktiviert werden. Alternativ steht auch eine automatisierte Methode in Form eines uns bereitgestellten Vorlagenskripts zur Verfügung. Dieses Skript automatisiert das Herunterladen und Installieren beider Agents.
+Azure Arc-fähige Server können mithilfe einiger manueller Schritte für einen oder einige wenige Windows- oder Linux-Computer in Ihrer Umgebung aktiviert werden. Alternativ steht auch eine automatisierte Methode in Form eines uns bereitgestellten Vorlagenskripts zur Verfügung. Dieses Skript automatisiert das Herunterladen und Installieren beider Agents.
 
 Für diese Methode müssen Sie auf dem Computer über Administratorberechtigungen verfügen, um den Agent installieren und konfigurieren zu können. Unter Linux muss hierfür das root-Konto verwendet werden. Unter Windows müssen Sie der Gruppe der lokalen Administratoren angehören.
 
@@ -27,14 +27,14 @@ Das Skript zum Automatisieren des Download- und Installationsvorgangs sowie zum 
 
 1. Navigieren Sie in Ihrem Browser zum [Azure-Portal](https://aka.ms/hybridmachineportal).
 
-1. Wählen Sie auf der Seite **Computer – Azure Arc** entweder **Hinzufügen** (links oben) oder die Option **Computer erstellen – Azure Arc** (unten im mittleren Bereich) aus.
+1. Wählen Sie auf der Seite **Server - Azure Arc** oben links **Hinzufügen** aus.
 
-1. Wählen Sie auf der Seite **Methode auswählen** die Kachel **Computer über ein interaktives Skript hinzufügen** und anschließend **Skript generieren** aus.
+1. Wählen Sie auf der Seite **Methode auswählen** die Kachel **Server über ein interaktives Skript hinzufügen** und dann **Skript generieren** aus.
 
 1. Wählen Sie auf der Seite **Skript generieren** das Abonnement und die Ressourcengruppe für die Verwaltung des Computers in Azure aus. Wählen Sie einen Azure-Standort zum Speichern der Computermetadaten aus.
 
     >[!NOTE]
-    >Von Azure Arc-fähigen Servern (Vorschauversion) werden nur folgende Regionen unterstützt:
+    >Von Azure Arc-fähigen Servern werden nur die folgenden Regionen unterstützt:
     >- EastUS
     >- WestUS2
     >- Europa, Westen
@@ -42,15 +42,21 @@ Das Skript zum Automatisieren des Download- und Installationsvorgangs sowie zum 
     >
     >Überprüfen Sie weitere Überlegungen bei der Auswahl einer Region [hier](overview.md#supported-regions) im Übersichtsartikel.
 
-1. Wählen Sie auf der Seite **Skript generieren** in der Dropdownliste **Betriebssystem** das Betriebssystem aus, unter dem das Skript ausgeführt wird.
+1. Lesen Sie sich die Informationen auf der Seite **Voraussetzungen** durch, und wählen Sie dann **Weiter: Ressourcendetails** aus.
 
-1. Falls der Computer über einen Proxyserver kommuniziert, um eine Internetverbindung herzustellen, wählen Sie **Weiter: Proxyserver** aus.
+1. Geben Sie auf der Seite **Ressourcendetails** Folgendes an:
 
-1. Geben Sie auf der Registerkarte **Proxyserver** die IP-Adresse des Proxyservers oder den Namen und die Portnummer für die Kommunikation mit dem Proxyserver an. Geben Sie den Wert im Format `http://<proxyURL>:<proxyport>` ein.
+    1. Wählen Sie in der Dropdownliste **Ressourcengruppe** die Ressourcengruppe aus, über die der Computer verwaltet wird.
+    1. Wählen Sie in der Dropdownliste **Regionen** die Azure-Region aus, in der die Metadaten des Servers gespeichert werden sollen.
+    1. Wählen Sie in der Dropdownliste **Betriebssystem** das Betriebssystem aus, unter dem die Ausführung des Skripts konfiguriert werden soll.
+    1. Wenn der Computer über einen Proxyserver kommuniziert, um eine Verbindung mit dem Internet herzustellen, geben Sie die IP-Adresse des Proxyservers oder den Namen und die Portnummer an, die der Computer für die Kommunikation mit dem Proxyserver verwenden wird. Geben Sie den Wert im Format `http://<proxyURL>:<proxyport>` ein.
+    1. Klicken Sie auf **Weiter: Tags**.
 
-1. Wählen Sie **Überprüfen + generieren** aus.
+1. Überprüfen Sie auf der Seite **Tags** die vorgeschlagenen standardmäßigen **physischen Speicherorttags**, und geben Sie einen Wert ein, oder geben Sie mindestens ein **benutzerdefiniertes Tag** an, um Ihre Standards zu unterstützen.
 
-1. Überprüfen Sie die auf der Registerkarte **Überprüfen + generieren** zusammengefassten Informationen, und wählen Sie dann **Herunterladen** aus. Sollten noch Änderungen erforderlich sein, wählen Sie **Zurück** aus.
+1. Klicken Sie auf **Weiter: Skript herunterladen und ausführen**.
+
+1. Überprüfen Sie die auf der Seite **Skript herunterladen und ausführen** die Zusammenfassungsinformationen, und wählen Sie dann **Herunterladen** aus. Sollten noch Änderungen erforderlich sein, wählen Sie **Zurück** aus.
 
 ## <a name="install-and-validate-the-agent-on-windows"></a>Installieren und Überprüfen des Agents unter Windows
 
@@ -147,7 +153,7 @@ bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
 
 ## <a name="verify-the-connection-with-azure-arc"></a>Überprüfen der Verbindung mit Azure Arc
 
-Vergewissern Sie sich im Azure-Portal, dass die Serververbindung erfolgreich hergestellt wurde, nachdem Sie den Agent installiert und für die Verbindungsherstellung mit Azure Arc-fähigen Servern (Vorschauversion) konfiguriert haben. Zeigen Sie Ihre Computer im [Azure-Portal](https://aka.ms/hybridmachineportal) an.
+Vergewissern Sie sich im Azure-Portal, dass die Serververbindung erfolgreich hergestellt wurde, nachdem Sie den Agent installiert und für die Verbindungsherstellung mit Azure Arc-fähigen Servern konfiguriert haben. Zeigen Sie Ihre Computer im [Azure-Portal](https://aka.ms/hybridmachineportal) an.
 
 ![Erfolgreiche Serververbindung](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 
@@ -155,4 +161,4 @@ Vergewissern Sie sich im Azure-Portal, dass die Serververbindung erfolgreich her
 
 - Erfahren Sie, wie Sie Ihren Computer mithilfe von [Azure Policy](../../governance/policy/overview.md) verwalten, wie z. B. bei der VM-[Gastkonfiguration](../../governance/policy/concepts/guest-configuration.md), dem Überprüfen, ob der Computer dem erwarteten Log Analytics-Arbeitsbereich Bericht erstattet, beim Aktivieren der Überwachung mit [Azure Monitor mit VMs](../../azure-monitor/insights/vminsights-enable-policy.md) und vieles mehr.
 
-- Weitere Informationen zum [Log Analytics-Agent](../../azure-monitor/platform/log-analytics-agent.md). Der Log Analytics-Agent für Windows und Linux ist erforderlich, wenn Sie das Betriebssystem und die Workloads auf dem Computer proaktiv überwachen, den Computer mithilfe von Automation-Runbooks oder Lösungen wie der Updateverwaltung verwalten oder andere Azure-Dienste wie [Azure Security Center](../../security-center/security-center-intro.md) verwenden möchten.
+- Weitere Informationen zum [Log Analytics-Agent](../../azure-monitor/platform/log-analytics-agent.md). Der Log Analytics-Agent für Windows und Linux ist erforderlich, wenn Sie Daten zur Betriebssystem- und Workloadüberwachung erfassen, diese mithilfe von Automation Runbooks oder Funktionen wie Updateverwaltung oder andere Azure-Dienste wie [Azure Security Center](../../security-center/security-center-intro.md) nutzen möchten.

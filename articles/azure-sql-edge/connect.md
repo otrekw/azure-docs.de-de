@@ -1,6 +1,6 @@
 ---
-title: Herstellen einer Verbindung mit und Abfragen von Azure SQL Edge (Vorschau)
-description: Erfahren Sie, wie Sie eine Verbindung mit Azure SQL Edge herstellen und Abfragen durchführen (Vorschau).
+title: Herstellen einer Verbindung mit und Abfragen von Azure SQL Edge
+description: Erfahren Sie, wie Sie eine Verbindung mit Azure SQL Edge herstellen und Azure SQL Edge abfragen.
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,14 +9,14 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/25/2020
-ms.openlocfilehash: bc7410325bbcf3086c4ac2054b7bc663629a29e5
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 4548d4956b4cd01886fb1be9a530cc1627f76b2c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373112"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888235"
 ---
-# <a name="connect-and-query-azure-sql-edge-preview"></a>Herstellen einer Verbindung mit und Abfragen von Azure SQL Edge (Vorschau)
+# <a name="connect-and-query-azure-sql-edge"></a>Herstellen einer Verbindung mit und Abfragen von Azure SQL Edge
 
 In Azure SQL Edge können Sie nach der Bereitstellung eines Containers von einem der folgenden Standorte eine Verbindung mit der Datenbank-Engine herstellen:
 

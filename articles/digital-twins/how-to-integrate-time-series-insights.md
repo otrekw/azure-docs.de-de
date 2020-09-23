@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 7/14/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 870aded1a7b00cbfbe96aff4997561b15be4141c
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: c6c5c9b00ec3309638a7c5618e5995c8c5f07b11
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89290094"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564364"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Integrieren von Azure Digital Twins in Azure Time Series Insights
 
@@ -46,21 +46,21 @@ Das Azure Digital Twins-Tutorial [ *Erstellen einer End-to-End-Lösung*](./tutor
 
 1. Erstellen Sie zuerst einen Event Hub-Namespace, der Ereignisse von Ihrer Azure Digital Twins-Instanz empfängt. Sie können entweder die folgenden Azure CLI Anweisungen oder das Azure-Portal verwenden: [*Schnellstart: Erstellen eines Event Hubs mithilfe des Azure-Portals*](../event-hubs/event-hubs-create.md).
 
-    ```azurecli-interactive
+    ```azurecli
     # Create an Event Hubs namespace. Specify a name for the Event Hubs namespace.
     az eventhubs namespace create --name <name for your Event Hubs namespace> --resource-group <resource group name> -l <region, for example: East US>
     ```
 
 2. Erstellen Sie einen Event Hub innerhalb des Namespace.
 
-    ```azurecli-interactive
+    ```azurecli
     # Create an event hub to receive twin change events. Specify a name for the event hub. 
     az eventhubs eventhub create --name <name for your Twins event hub> --resource-group <resource group name> --namespace-name <Event Hubs namespace from above>
     ```
 
 3. Erstellen Sie eine [Autorisierungsregel](https://docs.microsoft.com/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest#az-eventhubs-eventhub-authorization-rule-create) mit Sende- und Empfangsberechtigungen.
 
-    ```azurecli-interactive
+    ```azurecli
     # Create an authorization rule. Specify a name for the rule.
     az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from above> --eventhub-name <Twins event hub name from above> --name <name for your Twins auth rule>
     ```
@@ -153,12 +153,12 @@ Um den zweiten Event Hub zu erstellen, können Sie entweder die folgenden Azure�
 1. Halten Sie den *Event Hubs-Namespace* und den Namen der *Ressourcengruppe* bereit, die Sie weiter oben in diesem Artikel verwendet haben.
 
 2. Erstellen Sie einen neuen Event Hub.
-    ```azurecli-interactive
+    ```azurecli
     # Create an event hub. Specify a name for the event hub. 
     az eventhubs eventhub create --name <name for your TSI event hub> --resource-group <resource group name from earlier> --namespace-name <Event Hubs namespace from earlier>
     ```
 3. Erstellen Sie eine [Autorisierungsregel](https://docs.microsoft.com/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest#az-eventhubs-eventhub-authorization-rule-create) mit Sende- und Empfangsberechtigungen.
-    ```azurecli-interactive
+    ```azurecli
     # Create an authorization rule. Specify a name for the rule.
     az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from earlier> --eventhub-name <TSI event hub name from above> --name <name for your TSI auth rule>
     ```
@@ -171,13 +171,13 @@ Als nächstes müssen Sie in ihrer Funktions-App von oben Umgebungsvariablen fes
 
 1. Rufen Sie die Twins-[Event Hub-Verbindungszeichenfolge](../event-hubs/event-hubs-get-connection-string.md) mithilfe der Autorisierungsregeln ab, die Sie zuvor für den Twins-Hub erstellt haben.
 
-    ```azurecli-interactive
+    ```azurecli
     az eventhubs eventhub authorization-rule keys list --resource-group <resource group name> --namespace-name <Event Hubs namespace> --eventhub-name <Twins event hub name from earlier> --name <Twins auth rule from earlier>
     ```
 
 2. Verwenden Sie die Verbindungszeichenfolge, die Sie als Ergebnis erhalten, um eine App-Einstellung in ihrer Funktions-App zu erstellen, die ihre Verbindungszeichenfolge enthält:
 
-    ```azurecli-interactive
+    ```azurecli
     az functionapp config appsettings set --settings "EventHubAppSetting-Twins=<Twins event hub connection string> -g <resource group> -n <your App Service (function app) name>"
     ```
 
@@ -185,13 +185,13 @@ Als nächstes müssen Sie in ihrer Funktions-App von oben Umgebungsvariablen fes
 
 1. Rufen Sie die TSI-[Event Hub-Verbindungszeichenfolge](../event-hubs/event-hubs-get-connection-string.md) mithilfe der Autorisierungsregeln ab, die Sie zuvor für den Time Series Insights-Hub erstellt haben:
 
-    ```azurecli-interactive
+    ```azurecli
     az eventhubs eventhub authorization-rule keys list --resource-group <resource group name> --namespace-name <Event Hubs namespace> --eventhub-name <TSI event hub name> --name <TSI auth rule>
     ```
 
 2. Erstellen Sie in ihrer Funktions-App eine App-Einstellung, die ihre Verbindungszeichenfolge enthält:
 
-    ```azurecli-interactive
+    ```azurecli
     az functionapp config appsettings set --settings "EventHubAppSetting-TSI=<TSI event hub connection string> -g <resource group> -n <your App Service (function app) name>"
     ```
 

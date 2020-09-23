@@ -1,24 +1,24 @@
 ---
-title: Verwaltung von VM-Erweiterungen mit Azure Arc-fähigen Servern (Vorschauversion)
-description: Mit Azure Arc-fähigen Servern (Vorschauversion) kann die Bereitstellung von Erweiterungen für virtuelle Computer verwaltet werden, die Konfigurations- und Automatisierungsaufgaben nach der Bereitstellung für nicht in Azure gehostete VMs bereitstellen.
-ms.date: 06/17/2020
+title: Verwaltung von VM-Erweiterungen mit Azure Arc-fähigen Servern
+description: Mit Azure Arc-fähigen Servern kann die Bereitstellung von Erweiterungen für virtuelle Computer verwaltet werden, die Konfigurations- und Automatisierungsaufgaben nach der Bereitstellung für nicht in Azure gehostete VMs bereitstellen.
+ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 259a55c0e5cb4074871fd70a61e6c61d5cf3c50a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 988c4d7b2fcbffb95932fe70d8014de74dd33343
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018160"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887754"
 ---
-# <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers-preview"></a>Verwaltung von Erweiterungen für virtuelle Computer mit Azure Arc-fähigen Servern (Vorschauversion)
+# <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Verwaltung von Erweiterungen für virtuelle Computer mit Azure Arc-fähigen Servern
 
 Erweiterungen für virtuelle Computer sind kleine Anwendungen, die Konfigurations- und Automatisierungsaufgaben auf virtuellen Azure-Computern nach der Bereitstellung ermöglichen. Wenn z.B. Software auf einem virtuellen Computer (virtual machine, VM) installiert werden muss, Virenschutz oder die Ausführung eines Skripts erforderlich ist, kann eine VM-Erweiterung verwendet werden.
 
-Mit Azure Arc-fähigen Servern (Vorschauversion) können Sie Azure-VM-Erweiterungen für nicht auf Azure gehostete virtuelle Windows- und Linux-Computer bereitstellen, um die Verwaltung Ihrer hybriden Computer vor Ort, auf dem Edge und in anderen Cloudumgebungen über ihren gesamten Lebenszyklus zu vereinfachen.
+Mit Azure Arc-fähigen Servern können Sie Azure-VM-Erweiterungen für nicht unter Azure gehostete virtuelle Windows- und Linux-Computer bereitstellen, um die Verwaltung Ihrer hybriden Computer vor Ort, in Edge-Umgebungen und in anderen Cloudumgebungen über ihren gesamten Lebenszyklus zu vereinfachen.
 
 ## <a name="key-benefits"></a>Hauptvorteile
 
-Die Unterstützung von VM-Erweiterungen durch Azure Arc-fähige Server (Vorschauversion) bietet die folgenden Hauptvorteile:
+Die Unterstützung von VM-Erweiterungen durch Azure Arc-fähige Server bietet die folgenden Hauptvorteile:
 
 * Verwendung von [Azure Automation State Configuration](../../automation/automation-dsc-overview.md), um Konfigurationen zentral zu speichern und den gewünschten Zustand hybrid verbundener Computer mithilfe der DSC-VM-Erweiterung zu verwalten.
 
@@ -47,7 +47,7 @@ In dieser Vorschau unterstützen wir die folgenden VM-Erweiterungen auf Windows-
 |Log Analytics-Agent |Linux |Microsoft.EnterpriseCloud.Monitoring |[Log Analytics VM-Erweiterung für Linux](../../virtual-machines/extensions/oms-linux.md) |
 |Microsoft Dependency-Agent | Linux |Microsoft.Compute | [VM-Erweiterung für den Dependency-Agent für Linux](../../virtual-machines/extensions/agent-dependency-linux.md) |
 
-VM-Erweiterungen können auf Hybridservern, die von Azure Arc-fähigen Servern (Vorschauversion) verwaltet werden, mit Azure Resource Manager-Vorlagen, über das Azure-Portal oder in Azure PowerShell ausgeführt werden.
+VM-Erweiterungen können auf Hybridservern, die von Azure Arc-fähigen Servern verwaltet werden, mit Azure Resource Manager-Vorlagen, über das Azure-Portal oder in Azure PowerShell ausgeführt werden.
 
 Weitere Informationen zum Azure Connected Machine-Agent-Paket und Details zur Erweiterungs-Agent-Komponente finden Sie in der [Agent-Übersicht](agent-overview.md#agent-component-details).
 
@@ -75,13 +75,13 @@ Informationen für das Upgrade Ihres Computers auf die erforderliche Agent-Versi
 
 ## <a name="enable-extensions-from-the-portal"></a>Aktivieren von Erweiterungen über das Portal
 
-VM-Erweiterungen können über das Azure-Portal auf Ihren mit Arc für Server (Vorschau) verwalteten Computer angewendet werden.
+VM-Erweiterungen können über das Azure-Portal auf Ihren mit Arc für Server verwalteten Computer angewendet werden.
 
 1. Navigieren Sie in Ihrem Browser zum [Azure-Portal](https://aka.ms/arcserver-preview).
 
-2. Navigieren Sie im Portal zu **Computer – Azure Arc**, und wählen Sie in der Liste Ihren Hybridcomputer aus.
+2. Navigieren Sie im Portal zu **Server - Azure Arc**, und wählen Sie in der Liste Ihren Hybridcomputer aus.
 
-3. Wählen Sie **Erweiterungen** und dann **Hinzufügen** aus. Wählen Sie die Erweiterung aus, die Sie aus der Liste verfügbarer Erweiterungen erhalten, und befolgen Sie die Anweisungen im Assistenten. In diesem Beispiel stellen wir die Log Analytics-VM-Erweiterung bereit. 
+3. Wählen Sie **Erweiterungen** und dann **Hinzufügen** aus. Wählen Sie die Erweiterung aus, die Sie aus der Liste verfügbarer Erweiterungen erhalten, und befolgen Sie die Anweisungen im Assistenten. In diesem Beispiel stellen wir die Log Analytics-VM-Erweiterung bereit.
 
     ![Auswählen der VM-Erweiterung für den ausgewählten Computer](./media/manage-vm-extensions/add-vm-extensions.png)
 
@@ -98,7 +98,7 @@ VM-Erweiterungen können über das Azure-Portal auf Ihren mit Arc für Server (V
 
 ## <a name="azure-resource-manager-templates"></a>Azure-Ressourcen-Manager-Vorlagen
 
-VM-Erweiterungen können einer Azure Resource Manager-Vorlage hinzugefügt und mit der Bereitstellung der Vorlage ausgeführt werden. Mit den von Azure Arc-fähigen Servern (Vorschauversion) unterstützten VM-Erweiterungen können Sie die unterstützte VM-Erweiterung mithilfe von Azure PowerShell auf Linux- oder Windows-Computern bereitstellen. Jedes Beispiel unten beinhaltet eine Vorlagendatei und eine Parameterdatei mit Beispielwerten für die Vorlage.
+VM-Erweiterungen können einer Azure Resource Manager-Vorlage hinzugefügt und mit der Bereitstellung der Vorlage ausgeführt werden. Mit den von Azure Arc-fähigen Servern unterstützten VM-Erweiterungen können Sie die unterstützte VM-Erweiterung mithilfe von Azure PowerShell auf Linux- oder Windows-Computern bereitstellen. Jedes Beispiel unten beinhaltet eine Vorlagendatei und eine Parameterdatei mit Beispielwerten für die Vorlage.
 
 >[!NOTE]
 >Zwar können mehrere Erweiterungen in einem Batch zusammengefasst und verarbeitet werden, die Installation erfolgt jedoch nacheinander. Sobald die Installation der ersten Erweiterung abgeschlossen ist, wird die Installation der nächsten Erweiterung versucht.
@@ -707,6 +707,18 @@ Zum Verwenden der Azure Monitor Dependency-Agent-Erweiterung steht das folgende 
 }
 ```
 
+## <a name="uninstall-extension"></a>Deinstallieren der Erweiterung
+
+Das Entfernen mindestens einer Erweiterung von einem Arc-fähigen Server kann nur über das Azure-Portal durchgeführt werden. Führen Sie dann die folgenden Schritte aus, um eine Erweiterung zu entfernen.
+
+1. Navigieren Sie in Ihrem Browser zum [Azure-Portal](https://portal.azure.com).
+
+2. Navigieren Sie im Portal zu **Server - Azure Arc**, und wählen Sie in der Liste Ihren Hybridcomputer aus.
+
+3. Wählen Sie **Erweiterungen** aus, und wählen Sie dann eine Erweiterung aus der Liste der installierten Erweiterungen aus.
+
+4. Wählen Sie **Deinstallieren** aus. Wenn Sie zur Bestätigung aufgefordert werden, wählen Sie **Ja** aus, um fortzufahren.
+
 ## <a name="troubleshooting"></a>Problembehandlung
 
 Daten zum Status von Erweiterungsbereitstellungen können über das Azure-Portal abgerufen werden.
@@ -715,7 +727,7 @@ Die folgenden Schritte zur Problembehandlung gelten für alle VM-Erweiterungen.
 
 1. Um die Protokolldatei des Gast-Agents zu überprüfen, sollten Sie die Aktivität bei der Bereitstellung der Erweiterung in `%SystemDrive%\ProgramData\GuestConfig\ext_mgr_logs` für Windows und in `/var/lib/GuestConfig/ext_mgr_logs` für Linux ansehen.
 
-2. Überprüfen Sie die Erweiterungsprotokolle für die spezifische Erweiterung auf weitere Details in `%SystemDrive%\ProgramData\GuestConfig\extension_logs\<Extension>` für Windows. Die Erweiterungsausgabe wird für jede unter Linux installierte Erweiterung in einer Datei unter `/var/log/GuestConfig/extension_logs` protokolliert.
+2. Überprüfen Sie die Erweiterungsprotokolle für die spezifische Erweiterung auf weitere Details in `%SystemDrive%\ProgramData\GuestConfig\extension_logs\<Extension>` für Windows. Die Erweiterungsausgabe wird für jede unter Linux installierte Erweiterung in einer Datei unter `/var/lib/GuestConfig/extension_logs` protokolliert.
 
 3. Lesen Sie die Abschnitte zur Problembehandlung in der Dokumentation zu Erweiterungen für Fehlercodes, bekannte Probleme, etc. Informationen zur weiteren Problembehandlung für jede Erweiterung finden Sie im Abschnitt **Problembehandlung und Support** in der Übersicht für die jeweilige Erweiterung. Dies schließt die Beschreibung der Fehlercodes ein, die in das Protokoll geschrieben werden. Die Artikel zur Erweiterung sind in der [Tabelle der Erweiterungen](#extensions) weiter oben in diesem Artikel verlinkt.
 
@@ -725,4 +737,4 @@ Die folgenden Schritte zur Problembehandlung gelten für alle VM-Erweiterungen.
 
 - Erfahren Sie, wie Sie Ihren Computer mithilfe von [Azure Policy](../../governance/policy/overview.md) verwalten, wie z. B. bei der VM-[Gastkonfiguration](../../governance/policy/concepts/guest-configuration.md), dem Überprüfen, ob der Computer dem erwarteten Log Analytics-Arbeitsbereich Bericht erstattet, beim Aktivieren der Überwachung mit [Azure Monitor mit VMs](../../azure-monitor/insights/vminsights-enable-policy.md) und vieles mehr.
 
-- Weitere Informationen zum [Log Analytics-Agent](../../azure-monitor/platform/log-analytics-agent.md). Der Log Analytics-Agent für Windows und Linux ist erforderlich, wenn Sie das Betriebssystem und die Workloads auf dem Computer proaktiv überwachen, den Computer mithilfe von Automation-Runbooks oder Lösungen wie der Updateverwaltung verwalten oder andere Azure-Dienste wie [Azure Security Center](../../security-center/security-center-intro.md) verwenden möchten.
+- Weitere Informationen zum [Log Analytics-Agent](../../azure-monitor/platform/log-analytics-agent.md). Der Log Analytics-Agent für Windows und Linux ist erforderlich, wenn Sie Daten zur Betriebssystem- und Workloadüberwachung erfassen, diese mithilfe von Automation Runbooks oder Funktionen wie Updateverwaltung oder andere Azure-Dienste wie [Azure Security Center](../../security-center/security-center-intro.md) nutzen möchten.

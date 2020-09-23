@@ -2,18 +2,18 @@
 title: Anpassen von Netzwerkkonfigurationen für eine Failover-VM | Microsoft-Dokumentation
 description: Hier finden Sie eine Übersicht über das Anpassen von Netzwerkkonfigurationen für eine Failover-VM in der Replikation von virtuellen Azure-Computern mit Azure Site Recovery.
 services: site-recovery
-author: rajani-janaki-ram
+author: sideeksh
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 10/21/2019
-ms.author: rajanaki
-ms.openlocfilehash: 848234417099c0a31bd0c9e84722b6221aec3aa9
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.author: sideeksh
+ms.openlocfilehash: 599ad76f38833e06cc458fd0687921e6975e190b
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135823"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89426366"
 ---
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>Anpassen der Netzwerkkonfigurationen des virtuellen Azure-Zielcomputers
 

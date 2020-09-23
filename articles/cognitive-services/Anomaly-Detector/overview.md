@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
-ms.date: 12/18/2019
+ms.date: 09/10/2020
 ms.author: aahi
-ms.openlocfilehash: 9237e670dd8d43c4036f996c477948944718e3aa
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: ba094709d78d92b678e3aa5ad9995923888caf00
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80053711"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887511"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Worum handelt es sich bei der Anomalieerkennungs-API?
 
@@ -35,6 +35,7 @@ Mit der Anomalieerkennung können Sie Anomalien in allen Zeitreihendaten, oder a
 |---------|---------|
 |Erkennen von Anomalien in Echtzeit | Anomalien werden in Ihren Streamingdaten erkannt, indem anhand vorheriger Datenpunkte ermittelt wird, ob der letzte Punkt eine Anomalie ist. Bei diesem Vorgang wird anhand der von Ihnen gesendeten Datenpunkte ein Modell generiert und bestimmt, ob der Zielpunkt eine Anomalie ist. Durch Aufrufen der API mit jedem neu generierten Datenpunkt können Sie Daten während der Erstellung überwachen. |
 |Erkennen von Anomalien für das ganze Dataset als Batch | Die Zeitreihe wird verwendet, um alle Anomalien zu erkennen, die in den gesamten Daten potenziell vorhanden sind. Bei diesem Vorgang wird anhand der gesamten Zeitreihendaten ein Modell generiert, bei dem jeder Punkt mit demselben Modell analysiert wird.         |
+|Erkennen von Änderungspunkten für das gesamte Dataset als Batch | Nutzen Sie Ihre Zeitreihe, um Trendänderungspunkte in Ihren Daten zu erkennen. Bei diesem Vorgang wird anhand der gesamten Zeitreihendaten ein Modell generiert, bei dem jeder Punkt mit demselben Modell analysiert wird.    |
 | Erhalten zusätzlicher Informationen zu Ihren Daten | Erhalten Sie hilfreiche Details zu Ihren Daten und allen beobachteten Anomalien, wie erwarteten Werten, Anomaliegrenzen und Positionen. |
 | Anpassen der Grenzen für die Anomalieerkennung | Die Anomalieerkennungs-API erstellt automatisch Grenzen für die Anomalieerkennung. Passen Sie diese Grenzen an, um die Empfindlichkeit der API für Datenanomalien zu erhöhen oder zu verringern, sodass diese besser zu Ihren Daten passt. |
 
@@ -45,7 +46,7 @@ Zum Ausführen der Demonstration müssen Sie eine Ressource für die Anomalieerk
 
 ## <a name="notebook"></a>Notebook
 
-Weitere Informationen zum Abrufen der API für die Anomalieerkennung finden Sie unter diesem [Azure Notebook](https://aka.ms/adNotebook). In diesem im Web gehosteten Jupyter Notebook wird gezeigt, wie Sie eine API-Anforderung senden und das Ergebnis visualisieren.
+Machen Sie sich anhand [dieses Notebooks](https://aka.ms/adNotebook) mit dem Aufrufen der Anomalieerkennungs-API vertraut. In dieser Jupyter Notebook-Instanz wird gezeigt, wie Sie eine API-Anforderung senden und das Ergebnis visualisieren.
 
 Führen Sie die folgenden Schritte aus, um das Notebook auszuführen:
 
@@ -92,4 +93,4 @@ Informationen zu den von Microsoft entwickelten SR-CNN-Algorithmen finden Sie un
 
 * [Schnellstart: Erkennen von Anomalien in Ihren Zeitreihendaten mit der Anomalieerkennungs-REST-API](quickstarts/detect-data-anomalies-csharp.md)
 * [Onlinedemo](https://notebooks.azure.com/AzureAnomalyDetection/projects/anomalydetector) zur Anomalieerkennungs-API
-* [REST-API-Referenz](https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector/operations/post-timeseries-entire-detect) zur Anomalieerkennung
+* [REST-API-Referenz](https://aka.ms/anomaly-detector-rest-api-ref) zur Anomalieerkennung

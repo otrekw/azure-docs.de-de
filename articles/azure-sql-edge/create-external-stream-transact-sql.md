@@ -1,6 +1,6 @@
 ---
-title: 'CREATE EXTERNAL STREAM (Transact-SQL): Azure SQL Edge (Vorschau)'
-description: Erfahren Sie mehr über die CREATE EXTERNAL STREAM-Anweisung in Azure SQL Edge (Vorschau).
+title: 'CREATE EXTERNAL STREAM (Transact-SQL): Azure SQL Edge'
+description: Erfahren Sie mehr über die CREATE EXTERNAL STREAM-Anweisung in Azure SQL Edge.
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
-ms.openlocfilehash: d4ad11d156fd3a672e93b5e039c82d16b2aebdc3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e28ce4cd46cb802241e02e4060441747389d3989
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321733"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888166"
 ---
 # <a name="create-external-stream-transact-sql"></a>CREATE EXTERNAL STREAM (Transact-SQL)
 
@@ -100,7 +100,7 @@ WITH  ( <with_options> )
    - Bei einem Azure Blob Storage-Streamobjekt bezieht sich LOCATION auf das Pfadmuster, das innerhalb des Blobcontainers verwendet werden soll. Weitere Informationen zu diesem Feature finden Sie unter (/articles/stream-analytics/stream-analytics-define-outputs.md#blob-storage-and-azure-data-lake-gen2).
 
 - **INPUT_OPTIONS**: Geben Sie Optionen als Schlüssel-Wert-Paare für Dienste wie Kafka und IoT Edge Hub an, die Eingaben für Streamingabfragen sind.
-    - PARTITIONS: Anzahl der für ein Thema definierten Partitionen
+    - PARTITIONS: Anzahl der für ein Thema definierten Partitionen. Die maximale Anzahl von Partitionen, die verwendet werden können, beträgt 32.
       - Gilt für Kafka-Eingabestreams
     - CONSUMER_GROUP: Event Hubs und IoT Hubs beschränken die Anzahl der Leser innerhalb einer Consumergruppe (auf 5). Wenn dieses Feld leer bleibt, wird die Consumergruppe „$Default“ verwendet.
       - Zur künftigen Verwendung reserviert. Gilt nicht für Azure SQL Edge.  
@@ -141,7 +141,7 @@ WITH  ( <with_options> )
   - MAXIMUM_BATCH_COUNT:  
     Die maximal zulässige Anzahl von Ereignissen, die pro Aufruf für Azure Functions an die Funktion gesendet werden können. Der Standardwert lautet 100. Für SQL-Datenbank stellt dieser Wert die maximale Anzahl von Datensätzen dar, die mit jeder Transaktion zum Masseneinfügen gesendet wird. Der Standardwert ist 10.000. 
     - Gilt für alle SQL-basierten Ausgaben. 
-  - STAGING_AREA: EXTERNAL DATA SOURCE- Objekt für Blob Storage. Der Stagingbereich für die Datenerfassung mit hohem Durchsatz in SQL Data Warehouse. 
+  - STAGING_AREA: EXTERNAL DATA SOURCE-Objekt für Blob Storage. Der Stagingbereich für die Datenerfassung mit hohem Durchsatz in Azure Synapse Analytics. 
     - Zur künftigen Verwendung reserviert. Gilt nicht für Azure SQL Edge.
 
 
@@ -247,6 +247,5 @@ WITH
 
 ## <a name="see-also"></a>Weitere Informationen
 
-- [ALTER EXTERNAL STREAM (Transact-SQL)](alter-external-stream-transact-sql.md) 
 - [DROP EXTERNAL STREAM (Transact-SQL)](drop-external-stream-transact-sql.md) 
 

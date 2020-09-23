@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: 363c003a915763a7ab1165c2e0d8f945bc3dd510
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd886bea90c1092e38fac191a60a118aab0bef1f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213685"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903895"
 ---
 # <a name="logical-decoding"></a>Logische Decodierung
  
@@ -26,13 +26,13 @@ Einen Überblick über die Funktionsweise der logischen Decodierung von Postgres
 
 
 ## <a name="set-up-your-server"></a>Einrichten des Servers 
-Die logische Decodierung und [Lesereplikate](concepts-read-replicas.md) erhalten Informationen jeweils vom Write-Ahead-Protokoll (Write Ahead Log, WAL) von Postgres. Die beiden Features benötigen unterschiedliche Protokolliergrade von Postgres. Für die logische Decodierung ist ein höherer Protokolliergrad erforderlich als für Lesereplikate.
+Die logische Decodierung und [Lesereplikate](concepts-read-replicas.md) erhalten Informationen jeweils vom Write-Ahead-Protokoll (Write Ahead Log, WAL) von Postgres. Die beiden Features benötigen unterschiedliche Protokolliergrade von Postgres. Die logische Decodierung erfordert einen höheren Grad an Protokollierung als Lesereplikate.
 
-Verwenden Sie zum Konfigurieren des passenden Protokolliergrads den Parameter zur Unterstützung der Azure-Replikation. Für die Unterstützung der Azure-Replikation gibt es drei Einstellungsoptionen:
+Um den richtigen Grad an Protokollierung zu konfigurieren, verwenden Sie den Parameter zur Unterstützung der Azure-Replikation. Für die Unterstützung der Azure-Replikation gibt es drei Einstellungsoptionen:
 
-* **Off** (Aus): Generiert die wenigsten Informationen im Write-Ahead-Protokoll. Diese Einstellung ist für die meisten Azure Database for PostgreSQL-Server nicht verfügbar.  
-* **Replica** (Replikat): Ausführlicher als **Off** (Aus). Dies ist der mindestens erforderliche Protokolliergrad, damit [Lesereplikate](concepts-read-replicas.md) funktionieren. Auf den meisten Servern ist dies die Standardeinstellung.
-* **Logical** (Logisch): Noch ausführlicher als **Replica** (Replikat). Dies ist der mindestens erforderliche Protokolliergrad, damit die logische Decodierung funktioniert. Lesereplikate funktionieren bei dieser Einstellung ebenfalls.
+* **Off**: legt die wenigsten Informationen im Write-Ahead-Protokoll ab. Diese Einstellung ist für die meisten Azure Database for PostgreSQL-Server nicht verfügbar.  
+* **Replica**: ausführlichere Informationen als bei Wahl von **Off**. Dies ist der erforderlich Mindestgrad an Protokollierung, damit [Lesereplikate](concepts-read-replicas.md) funktionieren. Das ist die Standardeinstellung auf den meisten Servern.
+* **Logical**: noch ausführlichere Informationen als bei Wahl von **Replica**. Dies ist der erforderlich Mindestgrad an Protokollierung, damit die logische Decodierung funktioniert. Lesereplikate funktionieren auch bei dieser Einstellung.
 
 Der Server muss nach einer Änderung dieses Parameters neu gestartet werden. Intern werden durch diesen Parameter die Postgres-Parameter `wal_level`, `max_replication_slots` und `max_wal_senders` festgelegt.
 
@@ -52,11 +52,11 @@ Der Server muss nach einer Änderung dieses Parameters neu gestartet werden. Int
 
 1. Legen Sie die Azure-Replikationsunterstützung auf **logical** (logisch) fest. Wählen Sie **Speichern** aus.
 
-   ![Azure Database for PostgreSQL: Replikation: Azure-Replikationsunterstützung](./media/concepts-logical/replication-support.png)
+   :::image type="content" source="./media/concepts-logical/replication-support.png" alt-text="Azure Database for PostgreSQL: Replikation: Azure-Replikationsunterstützung":::
 
-2. Starten Sie den Server neu, um die Änderung zu übernehmen (durch Auswählen von **Ja**).
+2. Starten Sie den Server neu, um die Änderung zu übernehmen, indem Sie **Ja** auswählen.
 
-   ![Azure Database for PostgreSQL: Replikation: Bestätigen des Neustarts](./media/concepts-logical/confirm-restart.png)
+   :::image type="content" source="./media/concepts-logical/confirm-restart.png" alt-text="Azure Database for PostgreSQL: Replikation: Bestätigen des Neustarts":::
 
 
 ## <a name="start-logical-decoding"></a>Starten der logischen Decodierung

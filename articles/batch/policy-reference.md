@@ -1,15 +1,15 @@
 ---
 title: Integrierte Richtliniendefinitionen für Azure Batch
 description: Hier finden Sie eine Liste der integrierten Azure Policy-Richtliniendefinitionen für Azure Batch. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung von Azure-Ressourcen.
-ms.date: 07/10/2020
+ms.date: 09/10/2020
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: d54ef2d5011a02b11d641928b1c927d170c586ed
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: cb5fb6002a85ce285e146f408b05ff6c7ab72da1
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300838"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004169"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-batch"></a>Integrierte Azure Policy-Definitionen für Azure Batch
 

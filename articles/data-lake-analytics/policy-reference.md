@@ -1,18 +1,18 @@
 ---
 title: Integrierte Richtliniendefinitionen für Azure Data Lake Analytics
 description: Auflistung der integrierten Azure Policy-Richtliniendefinitionen für Azure Data Lake Analytics. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung von Azure-Ressourcen.
-ms.date: 07/10/2020
+ms.date: 09/10/2020
 ms.topic: reference
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: data-lake-analytics
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 06c7a736db29c579700ffc4e8b42fcd84afd7b76
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 33dbe7f6588abb300a80c85fafb32c1a3031798d
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300564"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004883"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-data-lake-analytics"></a>Integrierte Azure Policy-Definitionen für Azure Data Lake Analytics
 

@@ -2,17 +2,17 @@
 title: 'VPN Gateway: Azure AD-Mandant für verschiedene Benutzergruppen: Azure AD-Authentifizierung'
 description: Sie können P2S VPN verwenden, um eine Verbindung mit Azure AD-Authentifizierung zu Ihrem VNet herzustellen.
 services: vpn-gateway
-author: kumudD
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 06/25/2020
+ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: 57650b32d9155277d8ecc25d1b2147ebc87e7ecb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9a98383c359135f90fd787008704d1ce389a4d57
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87009678"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89424996"
 ---
 # <a name="create-an-active-directory-ad-tenant-for-p2s-openvpn-protocol-connections"></a>Erstellen eines Active Directory-Mandanten (AD) für Verbindungen mit dem P2S OpenVPN-Protokoll
 

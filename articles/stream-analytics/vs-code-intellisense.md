@@ -6,12 +6,12 @@ author: su-jie
 ms.author: sujie
 ms.date: 4/11/2020
 ms.topic: how-to
-ms.openlocfilehash: df6e7435d072cc88e82f3dc9a323a5b21145c432
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: bd72866e3e3db21691fda6aaec864a76af7414a3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037255"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903725"
 ---
 # <a name="intellisense-in-azure-stream-analytics-tools-for-visual-studio-code"></a>IntelliSense in Azure Stream Analytics-Tools für Visual Studio Code
 
@@ -71,6 +71,6 @@ Dieses Problem wird durch eine fehlende Eingabekonfiguration zur Bereitstellung 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Schnellstart: Erstellen eines Azure Stream Analytics-Auftrags in Visual Studio Code](quick-create-vs-code.md)
+* [Schnellstart: Erstellen eines Azure Stream Analytics-Auftrags in Visual Studio Code](quick-create-visual-studio-code.md)
 * [Lokales Testen von Stream Analytics-Abfragen mit Beispieldaten mithilfe von Visual Studio Code](visual-studio-code-local-run.md)
 * [Lokales Testen von Stream Analytics-Abfragen unter Verwendung einer Livestreameingabe mithilfe von Visual Studio Code](visual-studio-code-local-run-live-input.md)
