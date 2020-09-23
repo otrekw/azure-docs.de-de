@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 81e138e7149327c7b792df58180419b93417d263
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6412036e3f16e2efb3bbf6669f6a31e9dc6e3584
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510972"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434638"
 ---
 # <a name="troubleshooting-vm-provisioning-with-cloud-init"></a>Problembehandlung bei VM-Bereitstellung mit cloud-init
 
@@ -56,7 +56,7 @@ Kann die VM nicht bereitgestellt werden, zeigt Azure für 20 Minuten den Status 
 
 Während die VM ausgeführt wird, benötigen Sie die Protokolle der VM, um erkennen zu können, warum die Bereitstellung fehlgeschlagen ist.  Damit Sie erkennen können, warum die VM-Bereitstellung fehlgeschlagen ist, dürfen Sie die VM nicht anhalten. Lassen Sie die VM weiter ausführen. Sie müssen die fehlerhafte VM im Status „wird ausgeführt“ belassen, um Protokolle zu erfassen. Verwenden Sie eine der folgenden Methoden, um die Protokolle zu erfassen:
 
-- [Serielle Konsole](./serial-console-grub-single-user-mode.md)
+- [Serielle Konsole](../troubleshooting/serial-console-grub-single-user-mode.md)
 
 - [Aktivieren Sie die Startdiagnose](./tutorial-monitor.md#enable-boot-diagnostics), bevor Sie die VM erstellen, und [zeigen Sie die Startdiagnose an](./tutorial-monitor.md#view-boot-diagnostics), während die VM gestartet wird.
 
@@ -108,7 +108,7 @@ Nachdem Sie einen Fehler oder eine Warnung gefunden haben, lesen Sie das cloud-i
 2019-10-10 04:51:24,010 - util.py[DEBUG]: Running command ['mount', '-o', 'ro,sync', '-t', 'auto', u'/dev/sr0', '/run/cloud-init/tmp/tmpXXXXX'] with allowed return codes [0] (shell=False, capture=True)
 ```
 
-Wenn Sie Zugriff auf die [serielle Konsole](./serial-console-grub-single-user-mode.md) haben, können Sie versuchen, den Befehl erneut auszuführen, den cloud-init ausführen wollte.
+Wenn Sie Zugriff auf die [serielle Konsole](../troubleshooting/serial-console-grub-single-user-mode.md) haben, können Sie versuchen, den Befehl erneut auszuführen, den cloud-init ausführen wollte.
 
 Die Protokollierung für `/var/log/cloud-init.log` kann in „/etc/cloud/cloud.cfg.d/05_logging.cfg“ neu konfiguriert werden. Weitere Informationen zur cloud-init-Protokollierung finden Sie in der [cloud-init-Dokumentation](https://cloudinit.readthedocs.io/en/latest/topics/logging.html). 
 

@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: 4f6252ffbb880e347a89594cb267fb99d576dc7a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 40a4fbd956b12d469247cb178007d0259cbeac75
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89039298"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902921"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Was ist Azure Machine Learning Studio?
 
@@ -34,13 +34,13 @@ Studio bietet abhängig vom Projekttyp und von der Erfahrung der Benutzer versch
 
   Schreiben Sie eigenen Code, und führen Sie ihn auf verwalteten [Jupyter Notebook-Servern](how-to-run-jupyter-notebooks.md) aus, die direkt in Studio integriert sind. 
 
-+ **Azure Machine Learning-Designer (Vorschauversion)**
++ **Azure Machine Learning-Designer**
 
   Verwenden Sie den Designer zum Trainieren und Bereitstellen von Machine Learning-Modellen, ohne Code schreiben zu müssen. Verschieben Sie Datasets und Module per Drag & Drop, um ML-Pipelines zu erstellen. Probieren Sie das [Tutorial zum Designer](tutorial-designer-automobile-price-train-score.md) aus.
 
     ![Azure Machine Learning-Designer: Beispiel](media/concept-designer/designer-drag-and-drop.gif)
 
-+ **Benutzeroberfläche für automatisiertes maschinelles Lernen (Vorschau)**
++ **Benutzeroberfläche für automatisiertes maschinelles Lernen**
 
   Informieren Sie sich darüber, wie Sie mit einer benutzerfreundlichen Oberfläche [automatisierte ML-Experimente](tutorial-first-experiment-automated-ml.md) erstellen. 
 
@@ -82,7 +82,7 @@ In der folgenden Tabelle sind die wichtigsten Unterschiede zwischen ML Studio (C
 
 | Funktion | ML Studio (klassisch) | Azure Machine Learning |
 |---| --- | --- |
-| Drag & Drop-Oberfläche | Klassische Umgebung | Aktualisierte Umgebung – [Azure Machine Learning-Designer (Vorschauversion)](concept-designer.md) <br/>(Setzt einen Unternehmensarbeitsbereich voraus) | 
+| Drag & Drop-Oberfläche | Klassische Umgebung | Aktualisierte Umgebung – [Azure Machine Learning-Designer](concept-designer.md)| 
 | Code SDKs | Nicht unterstützt | Vollständig integriert in [Azure Machine Learning Python](https://docs.microsoft.com/python/api/overview/azure/ml/) und [R](tutorial-1st-r-experiment.md) SDKs |
 | Experiment | Skalierbar (Limit für Trainingsdaten: 10 GB) | Skalieren mit Computeziel |
 | Trainieren von Computezielen | Proprietäres Computeziel, nur CPU-Unterstützung | Viele anpassbare [Computeziele für das Training](concept-compute-target.md#train). GPU- und CPU-Unterstützung | 

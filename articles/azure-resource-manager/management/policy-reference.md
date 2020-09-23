@@ -1,15 +1,15 @@
 ---
 title: Integrierte Richtliniendefinitionen für Azure Resource Manager
 description: Hier finden Sie eine Liste der integrierten Azure Policy-Richtliniendefinitionen für Azure Resource Manager. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung von Azure-Ressourcen.
-ms.date: 07/10/2020
+ms.date: 09/10/2020
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: b7045ab06df6ca20da851d871bca9edd19964a95
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: cce79a4d13accca0069112a25ad416d97d67eaf1
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300606"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004322"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-resource-manager"></a>Integrierte Azure Policy-Definitionen für Azure Resource Manager
 

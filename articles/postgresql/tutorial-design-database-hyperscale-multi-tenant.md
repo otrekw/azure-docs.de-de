@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Entwerfen einer mehrinstanzenfähigen Datenbank – Hyperscale (Citus) – Azure Database for PostgreSQL'
-description: In diesem Tutorial erfahren Sie, wie Sie verteilte Tabellen in Azure Database for PostgreSQL – Hyperscale (Citus) erstellen, auffüllen und abfragen.
+description: In diesem Tutorial erfahren Sie, wie Sie eine skalierbare mehrinstanzenfähige Anwendung mit Azure Database for PostgreSQL – Hyperscale (Citus) entwerfen und ausführen.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: bc7891e157bbffa386396a352fd1d48e4559ecdc
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: ef0f542a27f378b6132d8ef19b55f386d4102d53
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386390"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895264"
 ---
 # <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Tutorial: Entwerfen einer mehrinstanzenfähigen Datenbank mithilfe von Azure Database for PostgreSQL – Hyperscale (Citus)
 
@@ -275,6 +275,5 @@ In den vorherigen Schritten haben Sie Azure-Ressourcen in einer Servergruppe ers
 
 In diesem Tutorial haben Sie erfahren, wie Sie eine Hyperscale (Citus)-Servergruppe bereitstellen. Sie haben mithilfe von psql eine Verbindung mit ihr hergestellt, haben ein Schema erstellt und Daten verteilt. Sie haben gelernt, Daten sowohl innerhalb von als auch zwischen Mandanten abzufragen und das Schema mandantenweise anzupassen.
 
-Lernen Sie als Nächstes die Konzepte von Hyperscale kennen.
-> [!div class="nextstepaction"]
-> [Hyperscale-Knotentypen](https://aka.ms/hyperscale-concepts)
+- Weitere Informationen zu [Knotentypen](https://aka.ms/hyperscale-concepts) von Servergruppen
+- Bestimmen der besten [Anfangsgröße](howto-hyperscale-scaling.md#picking-initial-size) für Ihre Servergruppe

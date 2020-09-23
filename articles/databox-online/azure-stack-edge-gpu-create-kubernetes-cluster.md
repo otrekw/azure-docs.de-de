@@ -1,6 +1,6 @@
 ---
-title: Erstellen und Verwalten eines Kubernetes-Clusters auf einem Azure Stack Edge-GPU-Gerät | Microsoft-Dokumentation
-description: Hier wird beschrieben, wie ein Kubernetes-Cluster auf einem Azure Stack Edge-GPU-Gerät über die Windows PowerShell-Schnittstelle erstellt und verwaltet wird.
+title: Erstellen und Verwalten eines Kubernetes-Clusters auf einem Azure Stack Edge Pro-GPU-Gerät | Microsoft-Dokumentation
+description: Hier wird beschrieben, wie Sie einen Kubernetes-Cluster auf einem Azure Stack Edge Pro-GPU-Gerät über die Windows PowerShell-Schnittstelle erstellen und verwalten.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,29 +8,29 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 95663553bc68d34eebd90be0d4032ee53900479b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: cb783e5da7364f38944ce31ce49a6a6529658fe3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267957"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903215"
 ---
-# <a name="connect-to-and-manage-a-kubernetes-cluster-via-kubectl-on-your-azure-stack-edge-gpu-device"></a>Herstellen einer Verbindung mit einem Kubernetes-Cluster und Verwalten des Clusters mit kubectl auf Ihrem Azure Stack Edge-GPU-Gerät
+# <a name="connect-to-and-manage-a-kubernetes-cluster-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>Verbinden mit einem Kubernetes-Cluster und Verwalten des Clusters über kubectl auf Ihrem Azure Stack Edge Pro-GPU-Gerät
 
-Wenn Sie die Computerolle konfigurieren, wird auf Ihrem Azure Stack Edge-Gerät ein Kubernetes-Cluster erstellt. Nachdem der Kubernetes-Cluster erstellt wurde, können Sie über ein natives Tool wie *kubectl* eine Verbindung mit einem Clientcomputer herstellen und den Cluster lokal verwalten.
+Wenn Sie die Computerolle konfigurieren, wird auf Ihrem Azure Stack Edge Pro-Gerät ein Kubernetes-Cluster erstellt. Nachdem der Kubernetes-Cluster erstellt wurde, können Sie über ein natives Tool wie *kubectl* eine Verbindung mit einem Clientcomputer herstellen und den Cluster lokal verwalten.
 
-In diesem Artikel wird beschrieben, wie Sie eine Verbindung mit einem Kubernetes-Cluster auf Ihrem Azure Stack Edge-Gerät herstellen und diese dann mit *kubectl* verwalten. 
+In diesem Artikel wird beschrieben, wie Sie eine Verbindung mit einem Kubernetes-Cluster auf Ihrem Azure Stack Edge Pro-Gerät herstellen und diese dann mit *kubectl* verwalten. 
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
-1. Sie haben Zugriff auf ein Azure Stack Edge-Gerät.
+1. Sie haben Zugriff auf ein Azure Stack Edge Pro-Gerät.
 
-2. Sie haben das Azure Stack Edge-Gerät, wie im [Tutorial: Verbinden, Einrichten und Aktivieren von Azure Stack Edge](azure-stack-edge-gpu-deploy-activate.md) beschrieben, aktiviert.
+2. Sie haben das Azure Stack Edge Pro-Gerät aktiviert, wie unter [Aktivieren von Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-activate.md) beschrieben.
 
-3. Sie haben die Computerolle auf dem Gerät aktiviert. Auf dem Gerät wurde auch ein Kubernetes-Cluster erstellt, wenn Sie den Computevorgang auf dem Gerät gemäß den Anweisungen in [Konfigurieren der Computerolle auf einem Azure Stack Edge-Gerät](azure-stack-edge-gpu-deploy-configure-compute.md) konfiguriert haben.
+3. Sie haben die Computerolle auf dem Gerät aktiviert. Auf dem Gerät wurde auch ein Kubernetes-Cluster erstellt, als Sie gemäß den Anweisungen in [Konfigurieren der Computerolle auf einem Azure Stack Edge-Gerät](azure-stack-edge-gpu-deploy-configure-compute.md) Compute auf dem Gerät konfiguriert haben.
 
 4. Sie haben Zugriff auf ein Windows-Clientsystem mit PowerShell 5.0 oder höher, um auf das Gerät zuzugreifen. Sie können auch einen anderen Client mit einem [unterstützten Betriebssystem](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) verwenden. 
 
@@ -48,7 +48,7 @@ Nachdem der Kubernetes-Cluster erstellt wurde, können Sie auf diesen Cluster zu
 
 Nachdem der Kubernetes-Cluster erstellt wurde, können Sie mit *kubectl* über die Befehlszeile auf den Cluster zugreifen. 
 
-Bei diesem Ansatz erstellen Sie einen Namespace und einen Benutzer. Anschließend ordnen Sie den Benutzer dem Namespace zu. Sie müssen auch die *Konfigurationsdatei* abrufen, die es Ihnen ermöglicht, einen Kubernetes-Client zu verwenden, um direkt mit dem von Ihnen erstellten Kubernetes-Cluster zu kommunizieren, ohne eine Verbindung mit der PowerShell-Schnittstelle Ihres Azure Stack Edge-Geräts herstellen zu müssen.
+Bei diesem Ansatz erstellen Sie einen Namespace und einen Benutzer. Anschließend ordnen Sie den Benutzer dem Namespace zu. Sie müssen auch die Datei *config* abrufen, die es Ihnen ermöglicht, einen Kubernetes-Client zu verwenden. Damit können Sie direkt und ohne Verbindung mit der PowerShell-Schnittstelle Ihres Azure Stack Edge Pro-Geräts mit dem von Ihnen erstellten Kubernetes-Cluster kommunizieren.
 
 1. Erstellen eines Namespaces Typ:
 
@@ -66,7 +66,7 @@ Bei diesem Ansatz erstellen Sie einen Namespace und einen Benutzer. Anschließen
     `New-HcsKubernetesUser -UserName <string>`
 
     > [!NOTE]
-    > Sie können *aseuser* nicht als Benutzername verwenden, da er für einen Standardbenutzer reserviert ist, der dem IoT-Namespace für Azure Stack Edge zugeordnet ist.
+    > Sie können *aseuser* nicht als Benutzername verwenden, da er für einen Standardbenutzer reserviert ist, der dem IoT-Namespace für Azure Stack Edge Pro zugeordnet ist.
 
     Hier folgt ein Beispiel für die Ausgabe der Konfigurationsdatei:
    
@@ -113,7 +113,7 @@ Bei diesem Ansatz erstellen Sie einen Namespace und einen Benutzer. Anschließen
 
     `[10.100.10.10]: PS>Grant-HcsKubernetesNamespaceAccess -Namespace "myasetest1" -UserName "aseuser1"`
 
-    Wenn Sie über die Konfigurationsdatei verfügen, benötigen Sie keinen physischen Zugriff auf den Cluster. Wenn der Client die IP-Adresse des Azure Stack Edge-Geräts pingen kann, sollten Sie den Cluster mithilfe von *kubectl*-Befehlen weiterleiten können.
+    Wenn Sie über die Konfigurationsdatei verfügen, benötigen Sie keinen physischen Zugriff auf den Cluster. Wenn Ihr Client die IP-Adresse des Azure Stack Edge Pro-Geräts pingen kann, sollten Sie den Cluster mithilfe von *kubectl*-Befehlen weiterleiten können.
 
 6. Starten Sie eine neue PowerShell-Sitzung auf dem Client. Sie müssen nicht mit der Geräteschnittstelle verbunden sein. Mit dem folgenden Befehl können Sie jetzt `kubectl` auf dem Client installieren:
 
@@ -125,7 +125,7 @@ Bei diesem Ansatz erstellen Sie einen Namespace und einen Benutzer. Anschließen
     Wenn z. B. auf dem Kubernetes-Masterknoten v1.15.2 ausgeführt wurde, installieren Sie v1.15.2 auf dem Client.
 
     > [!IMPORTANT]
-    > Laden Sie einen Client herunter, der nicht mehr als eine Nebenversion von der Masterversion abweicht. Die Clientversion kann aber gegenüber der Masterversion um bis zu einer Nebenversion höher sein. Beispiel: Die Masterversion v1.3 sollte mit den Knotenversionen v1.1, v1.2 und v1.3 sowie mit den Clientversionen v1.2, v1.3 und v1.4 funktionieren. Weitere Informationen zur Kubernetes-Clientversion finden Sie unter [Richtlinie zur Unterstützung der Kubernetes-Version und Versionsabweichung](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-version-skew). Weitere Informationen zur Kubernetes-Serverversion unter Azure Stack Edge finden Sie unter „Abrufen der Kubernetes-Serverversion“.<!-- insert link-->
+    > Laden Sie einen Client herunter, der nicht mehr als eine Nebenversion von der Masterversion abweicht. Die Clientversion kann aber gegenüber der Masterversion um bis zu einer Nebenversion höher sein. Beispiel: Die Masterversion v1.3 sollte mit den Knotenversionen v1.1, v1.2 und v1.3 sowie mit den Clientversionen v1.2, v1.3 und v1.4 funktionieren. Weitere Informationen zur Kubernetes-Clientversion finden Sie unter [Richtlinie zur Unterstützung der Kubernetes-Version und Versionsabweichung](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-version-skew). Weitere Informationen zur Kubernetes-Serverversion unter Azure Stack Edge Pro finden Sie unter „Abrufen der Kubernetes-Serverversion“.<!-- insert link-->
     > Manchmal wird `kubectl` auf Ihrem System vorinstalliert, wenn Sie Docker für Windows oder andere Tools ausführen. Es ist wichtig, die bestimmte Version von `kubectl` (wie in diesem Abschnitt angegeben) herunterzuladen, um mit diesem Kubernetes-Cluster arbeiten zu können. 
 
     Die Installation dauert einige Minuten.
@@ -172,4 +172,4 @@ Ausführliche Anweisungen finden Sie unter [Entfernen der Computekonfiguration](
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Bereitstellen einer zustandslosen Anwendung auf Ihrem Azure Stack Edge](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md).
+- [Bereitstellen einer zustandslosen Anwendung auf Ihrem Azure Stack Edge Pro-Gerät](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md).

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 94a0c0af5071397ee4deb859f8f58f2ed1c73a77
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: db1b73e36a4917f1a10754424b472284094b563e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89277662"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894571"
 ---
 # <a name="working-with-security-policies"></a>Arbeiten mit Sicherheitsrichtlinien
 
@@ -33,7 +33,7 @@ Azure Security Center erstellt die Sicherheitsempfehlungen auf der Grundlage der
 
 Security Center bietet die folgenden Optionen für die Arbeit mit Sicherheitsrichtlinien:
 
-* **Anzeigen und Bearbeiten der integrierten Standardrichtlinie:** Wenn Sie Security Center aktivieren, wird eine integrierte Initiative mit dem Namen „ASC default“ (ASC Standard) automatisch allen in Security Center registrierten Abonnements (Tarif „Free“ oder „Standard“) zugewiesen. Zum Anpassen dieser Initiative können Sie die einzelnen enthaltenen Richtlinien aktivieren bzw. deaktivieren. Sehen Sie sich die Liste der [integrierten Sicherheitsrichtlinien](security-center-policy-definitions.md) an, um die standardmäßig verfügbaren Optionen zu verstehen.
+* **Anzeigen und Bearbeiten der integrierten Standardrichtlinie:** Wenn Sie Security Center aktivieren, wird eine integrierte Initiative mit dem Namen „ASC default“ (ASC Standard) automatisch allen in Security Center registrierten Abonnements zugewiesen. Zum Anpassen dieser Initiative können Sie die einzelnen enthaltenen Richtlinien aktivieren bzw. deaktivieren. Sehen Sie sich die Liste der [integrierten Sicherheitsrichtlinien](security-center-policy-definitions.md) an, um die standardmäßig verfügbaren Optionen zu verstehen.
 
 * **Hinzufügen eigener benutzerdefinierter Richtlinien:** Wenn Sie die auf Ihr Abonnement angewandten Sicherheitsinitiativen anpassen möchten, können Sie dies in Security Center durchführen. Sie erhalten dann Empfehlungen, wenn Ihre Computer Ihre erstellten Richtlinien nicht einhalten. Anweisungen zum Erstellen und Zuweisen von benutzerdefinierten Richtlinien finden Sie unter [Verwenden von benutzerdefinierten Sicherheitsrichtlinien](custom-security-policies.md).
 
