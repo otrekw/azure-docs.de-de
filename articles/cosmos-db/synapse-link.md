@@ -5,14 +5,14 @@ author: Rodrigossz
 ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 09/22/2020
 ms.reviewer: sngun
-ms.openlocfilehash: f200fe96478e15e938899d294ecd5491d6a03206
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 4226676ed7fbaf5b2998306fa5240316c327d59c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814389"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891485"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Was ist Azure Synapse Link für Azure Cosmos DB (Vorschau)?
 
@@ -40,7 +40,6 @@ Azure Synapse Link ermöglicht Ihnen den direkten Zugriff auf den Azure Cosmos D
 ### <a name="near-real-time-insights-into-your-operational-data"></a>Einblicke in Ihre operativen Daten in Quasi-Echtzeit
 
 Sie können mit Azure Synapse Link jetzt umfassende Einblicke in Ihre operativen Daten in Quasi-Echtzeit erhalten. ETL-basierte Systeme verfügen tendenziell über längere Wartezeiten bei der Analyse der operativen Daten, da zum Extrahieren, Transformieren und Laden dieser Daten viele Ebenen erforderlich sind. Mit nativer Integration des Azure Cosmos DB-Analysespeichers in Azure Synapse Analytics können Sie operative Daten in Quasi-Echtzeit analysieren, um neue Geschäftsszenarien zu ermöglichen. 
-
 
 ### <a name="no-impact-on-operational-workloads"></a>Keine Auswirkungen auf operative Workloads
 
@@ -91,7 +90,7 @@ Sie können die Daten aus dem Azure Cosmos DB-Analysespeicher gleichzeitig abfra
 
 Diese Integration ermöglicht die folgenden HTAP-Szenarien für verschiedene Benutzer:
 
-* Ein BI-Entwickler, der einen Bericht modellieren und veröffentlichen möchte, um direkt über Synapse SQL auf die operativen Daten in Azure Cosmos DB zuzugreifen.
+* Ein BI-Entwickler, der einen Power BI-Bericht modellieren und veröffentlichen möchte, um direkt über Synapse SQL auf die operativen Daten in Azure Cosmos DB zuzugreifen.
 
 * Ein Datenanalyst, der Erkenntnisse aus den operativen Daten in einem Azure Cosmos DB-Container ableiten möchte, indem er ihn mit Synapse SQL abfragt, die Daten maßstabgerecht liest und diese Ergebnisse mit anderen Datenquellen kombiniert.
 
@@ -115,16 +114,15 @@ In solchen Fällen bietet Synapse Link eine stärker integrierte Analyse, ohne d
 
 Synapse Link wird nicht empfohlen, wenn Sie herkömmliche Data Warehouse-Anforderungen wie hohe Parallelität, Workloadverwaltung und Persistenz von Aggregaten über mehrere Datenquellen hinweg haben. Weitere Informationen finden Sie unter den [gängigen Szenarien, die mit Azure Synapse Link für Azure Cosmos DB](synapse-link-use-cases.md).
 
-
 ## <a name="limitations"></a>Einschränkungen
 
-* In der öffentlichen Vorschauversion wird Azure Synapse Link nur für die Azure Cosmos DB SQL (Core)-API unterstützt. Die Unterstützung für die Azure Cosmos DB-API für MongoDB und die Cassandra-API befindet sich derzeit in der geschlossenen Vorschau. Wenn Sie Zugriff auf die geschlossene Vorschau anfordern möchten, wenden Sie sich per E-Mail an das [Azure Cosmos DB-Team](mailto:cosmosdbsynapselink@microsoft.com).
+* Azure Synapse Link wird für die Azure Cosmos DB SQL-API (Core-API) und die Azure Cosmos DB-API für MongoDB unterstützt. Unterstützung für die Cassandra-API befindet sich zurzeit unter einer geschlossener Vorschau. Wenn Sie Zugriff auf die geschlossene Vorschau anfordern möchten, wenden Sie sich per E-Mail an das [Azure Cosmos DB-Team](mailto:cosmosdbsynapselink@microsoft.com).
 
-* Derzeit kann der Analysespeicher nur für neue Container (in neuen und vorhandenen Azure Cosmos DB-Konten) aktiviert werden.
-
-* In der Vorschau werden die Sicherung und Wiederherstellung von Containern für Datenbankkonten mit Synapse Link-Aktivierung nicht unterstützt. Wenn Sie die Funktionen zur Sicherung und Wiederherstellung für Produktionsworkloads benötigen, empfiehlt es sich, Synapse Link in diesen Datenbankkonten zu aktivieren. 
+* Zurzeit kann der analytische Speicher nur für neue Container aktiviert werden. Wenn Sie den analytischen Speicher für vorhandene Container verwenden möchten, migrieren Sie Daten mithilfe von [Azure Cosmos DB-Migrationstools](cosmosdb-migrationchoices.md) aus Ihren vorhandenen Containern in neue Container. Sie können Synapse Link für neue und vorhandene Azure Cosmos DB-Konten aktivieren.
 
 * Der Zugriff auf den Azure Cosmos DB-Analysespeicher mit Synapse SQL (serverlos) befindet sich derzeit in der geschlossenen Vorschau. Wenn Sie Zugriff anfordern möchten, wenden Sie sich per E-Mail an das [Azure Cosmos DB-Team](mailto:cosmosdbsynapselink@microsoft.com).
+
+* In der Vorschau werden die Sicherung und Wiederherstellung von Containern für Datenbankkonten mit Synapse Link-Aktivierung nicht unterstützt. Wenn Sie die Funktionen zur Sicherung und Wiederherstellung von Workloads benötigen, empfiehlt es sich, Synapse Link in diesen Datenbankkonten nicht zu aktivieren. 
 
 * Der Zugriff auf den Azure Cosmos DB-Analysespeicher mit Synapse SQL (bereitgestellt) ist derzeit nicht verfügbar.
 

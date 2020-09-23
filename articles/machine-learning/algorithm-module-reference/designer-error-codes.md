@@ -1,7 +1,7 @@
 ---
-title: Problembehandlung bei Designermodulfehlern (Vorschau)
+title: Problembehandlung bei Designermodulfehlern
 titleSuffix: Azure Machine Learning
-description: Problembehandlung bei Modulfehlercodes im Azure Machine Learning-Designer (Vorschau)
+description: Problembehandlung bei Modulfehlercodes im Azure Machine Learning-Designer
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: 023a28c6f1d89d0975ff8ecac2466c51c05fa9da
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: c0a55780687b4c03d6809d1d740bf0b0afcd63fd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876919"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908088"
 ---
-# <a name="exceptions-and-error-codes-for-the-designer-preview"></a>Ausnahmen und Fehlercodes für den Designer (Preview)
+# <a name="exceptions-and-error-codes-for-the-designer"></a>Ausnahmen und Fehlercodes für den Designer
 
-In diesem Artikel werden die Fehlermeldungen und Ausnahmecodes in Azure Machine Learning Designer (Preview) beschrieben, um Ihnen bei der Problembehandlung Ihrer Machine Learning-Pipelines zu helfen.
+In diesem Artikel werden die Fehlermeldungen und Ausnahmecodes im Azure Machine Learning-Designer beschrieben, um Ihnen bei der Problembehandlung Ihrer Pipelines für maschinelles Lernen zu helfen.
 
 Sie können die Fehlermeldung im Designer finden, indem Sie die folgenden Schritte ausführen:  
 

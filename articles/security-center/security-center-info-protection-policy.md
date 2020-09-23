@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: abcdc903e1509c266b9ea6666c296a59183e83c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7586cca21d470bcb0cf637ca0370f5dfcb59406
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711084"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901096"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Anpassen der SQL Information Protection-Richtlinie im Azure Security Center (Vorschau)
  
@@ -56,7 +56,7 @@ Um die Information Protection-Richtlinie für Ihren Azure-Mandanten anpassen zu 
  
 4. Bezeichnungen werden in aufsteigender Reihenfolge ihres Vertraulichkeitsgrads aufgeführt. Um die Rangfolge zwischen den Bezeichnungen zu ändern, ziehen Sie die Bezeichnungen zur Neuanordnung an die entsprechende Position in der Tabelle oder verwenden die Schaltflächen **Nach oben verschieben** und **Nach unten verschieben**, um die Reihenfolge zu ändern. 
  
-    ![Konfigurieren der Information Protection-Richtlinie](./media/security-center-info-protection-policy/move-up.png)
+    ![Bezeichnungsliste](./media/security-center-info-protection-policy/move-up.png)
  
 5. Klicken Sie dann am oberen Rand des Bildschirms auf **Speichern**.
  
@@ -66,7 +66,7 @@ Um die Information Protection-Richtlinie für Ihren Azure-Mandanten anpassen zu 
 1. Sie können Informationstypen durch Klicken auf **Informationstypen verwalten** verwalten und anpassen.
 2. Um einen neuen **Informationstyp** hinzuzufügen, klicken Sie in der oberen Menüleiste auf die Option **Informationstyp erstellen**. Sie können für den **Informationstyp** einen Namen, eine Beschreibung und Suchmusterzeichenfolgen konfigurieren. Suchzeichenfolgenmuster können optional Schlüsselwörter mit Platzhalterzeichen (mit dem Zeichen „%“) enthalten, anhand derer die automatisierte Ermittlungs-Engine sensible Daten in Ihren Datenbanken basierend auf den Metadaten der Spalten ermittelt.
  
-    ![Konfigurieren der Information Protection-Richtlinie](./media/security-center-info-protection-policy/info-types.png)
+    ![Erstellen des Informationstyps](./media/security-center-info-protection-policy/info-types.png)
  
 3. Sie können auch die integrierten **Informationstypen** konfigurieren, indem Sie zusätzliche Suchmusterzeichenfolgen hinzufügen, einige der vorhandenen Zeichenfolgen deaktivieren oder die Beschreibung ändern. Integrierte **Informationstypen** können nicht gelöscht oder deren Namen bearbeitet werden. 
 4. **Informationstypen** werden in aufsteigender Reihenfolge der Ermittlung aufgeführt, d.h., die Typen, die weiter oben in der Liste stehen, werden bei der Suche nach Übereinstimmungen bevorzugt. Um die Rangfolge zwischen den Informationstypen zu ändern, ziehen Sie die Typen an die entsprechende Position in der Tabelle oder verwenden die Schaltflächen **Nach oben verschieben** und **Nach unten verschieben**, um die Reihenfolge zu ändern. 

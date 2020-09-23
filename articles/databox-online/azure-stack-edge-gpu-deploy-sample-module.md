@@ -1,6 +1,6 @@
 ---
-title: Bereitstellen eines GPU-Moduls auf einem Azure Stack Edge GPU-Gerät | Microsoft-Dokumentation
-description: In diesem Thema wird beschrieben, wie Sie Compute aktivieren und Ihr Azure Stack Edge-Gerät auf der lokalen Benutzeroberfläche für Compute bereit machen.
+title: Bereitstellen eines GPU-Moduls auf einem Azure Stack Edge Pro-GPU-Gerät | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie Compute aktivieren und Ihr Azure Stack Edge Pro-Gerät über die lokale Benutzeroberfläche für Compute bereit machen.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,22 +8,22 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: alkohli
-ms.openlocfilehash: 5af86001d46bf194c9b61f325052a4cde0d86d5e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 1f16ef0ede25f17acb915a7812ae5b15b45f78a4
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254558"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899735"
 ---
-# <a name="deploy-a-gpu-enabled-iot-module-on-azure-stack-edge-gpu-device"></a>Bereitstellen eines GPU-fähigen IoT-Moduls auf einem Azure Stack Edge GPU-Gerät
+# <a name="deploy-a-gpu-enabled-iot-module-on-azure-stack-edge-pro-gpu-device"></a>Bereitstellen eines GPU-fähigen IoT-Moduls auf einem Azure Stack Edge Pro-GPU-Gerät
 
-In diesem Artikel wird beschrieben, wie Sie ein GPU-fähiges IoT Edge-Modul auf Ihrem Azure Stack Edge GPU-Gerät bereitstellen. 
+In diesem Artikel wird beschrieben, wie Sie ein GPU-fähiges IoT Edge-Modul auf Ihrem Azure Stack Edge Pro-GPU-Gerät bereitstellen. 
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
-  - Bereiten Sie Azure Stack Edge auf das Ausführen eines GPU-Moduls vor.
+  - Bereiten Sie Azure Stack Edge Pro auf das Ausführen eines GPU-Moduls vor.
   - Laden Sie Beispielcode aus einem Git-Repository herunter, und installieren Sie ihn.
   - Erstellen Sie die Lösung, und generieren Sie ein Bereitstellungsmanifest.
-  - Stellen Sie die Lösung auf einem Azure Stack Edge-Gerät bereit.
+  - Stellen Sie die Lösung auf dem Azure Stack Edge Pro-Gerät bereit.
   - Überwachen Sie die Modulausgabe.
 
 
@@ -35,8 +35,8 @@ Das GPU-Beispielmodul in diesem Artikel enthält PyTorch und TensorFlow zum Verg
 
 Vergewissern Sie sich zunächst, dass Sie über Folgendes verfügen:
 
-- Sie haben Zugriff auf ein GPU-fähiges Azure Stack Edge-Gerät mit einem Knoten. Dieses Gerät wird mit einer Ressource in Azure aktiviert. Weitere Informationen finden Sie unter [Aktivieren des Geräts](azure-stack-edge-gpu-deploy-activate.md).
-- Sie haben Compute auf diesem Gerät konfiguriert. Führen Sie die Schritte im [Tutorial: Konfigurieren von Compute auf einem Azure Stack Edge-Gerät](azure-stack-edge-gpu-deploy-configure-compute.md) aus.
+- Sie haben Zugriff auf ein GPU-fähiges Azure Stack Edge Pro-Gerät mit einem Knoten. Dieses Gerät wird mit einer Ressource in Azure aktiviert. Weitere Informationen finden Sie unter [Aktivieren des Geräts](azure-stack-edge-gpu-deploy-activate.md).
+- Sie haben Compute auf diesem Gerät konfiguriert. Führen Sie die Schritte im [Tutorial: Konfigurieren von Compute auf einem Azure Stack Edge Pro-Gerät](azure-stack-edge-gpu-deploy-configure-compute.md) aus.
 - Eine Azure Container Registry (ACR). Wechseln Sie zum Blatt **Zugriffsschlüssel**, und notieren Sie sich ACR-Anmeldeserver, -Benutzername und -Kennwort. Weitere Informationen finden Sie unter [Schnellstart: Erstellen einer privaten Containerregistrierung im Azure-Portal](../container-registry/container-registry-get-started-portal.md#create-a-container-registry).
 - Die folgenden Entwicklungsressourcen auf einem Windows-Client:
     - [Azure CLI 2.0 oder höher](https://aka.ms/installazurecliwindows)
@@ -144,9 +144,9 @@ Vergewissern Sie sich zunächst, dass Sie über Folgendes verfügen:
 
 1. Führen Sie in der Befehlspalette von VS Code den Befehl **Azure IoT Hub: Select IoT Hub** (Azure IoT Hub: IoT Hub auswählen) aus.
 
-2. Wählen Sie das Abonnement und den IoT-Hub aus, die das zu konfigurierende IoT Edge-Gerät enthalten. Wählen Sie in diesem Fall das Abonnement aus, das zur Bereitstellung des Azure Stack Edge-Geräts verwendet wird, und dann das für Ihr Azure Stack Edge-Gerät erstellte IoT Edge-Gerät. Dies erfolgt, wenn Sie Compute über das Azure-Portal in den vorherigen Schritten konfigurieren.
+2. Wählen Sie das Abonnement und den IoT-Hub aus, die das zu konfigurierende IoT Edge-Gerät enthalten. Wählen Sie in diesem Fall das Abonnement aus, das zur Bereitstellung des Azure Stack Edge Pro-Geräts verwendet wird, und dann das für Ihr Azure Stack Edge Pro-Gerät erstellte IoT Edge-Gerät. Dies erfolgt, wenn Sie Compute über das Azure-Portal in den vorherigen Schritten konfigurieren.
 
-3. Klappen Sie im Visual Studio Code-Explorer den Abschnitt „Azure IoT Hub“ auf. Unter **Geräte** sollte das IoT Edge-Gerät angezeigt werden, das Ihrem Azure Stack Edge-Gerät entspricht. 
+3. Klappen Sie im Visual Studio Code-Explorer den Abschnitt „Azure IoT Hub“ auf. Unter **Geräte** sollte das IoT Edge-Gerät angezeigt werden, das Ihrem Azure Stack Edge Pro-Gerät entspricht. 
 
     1. Wählen Sie dieses Gerät aus, klicken Sie mit der rechten Maustaste, und wählen Sie **Überwachung des integrierten Ereignisendpunkts starten** aus.
   
@@ -156,7 +156,7 @@ Vergewissern Sie sich zunächst, dass Sie über Folgendes verfügen:
 
         ![Modul in IoT Hub](media/azure-stack-edge-gpu-deploy-sample-module/module-iot-hub-1.png)  
 
-    3. Im VS Code-Terminal sollten die IoT-Hub-Ereignisse auch als Überwachungsausgabe für Ihr Azure Stack Edge-Gerät angezeigt werden.
+    3. Im VS Code-Terminal sollten die IoT-Hub-Ereignisse auch als Überwachungsausgabe für Ihr Azure Stack Edge Pro-Gerät angezeigt werden.
 
         ![Überwachungsausgabe](media/azure-stack-edge-gpu-deploy-sample-module/monitor-events-output-1.png) 
 

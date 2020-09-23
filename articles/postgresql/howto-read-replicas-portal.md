@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 07/10/2020
-ms.openlocfilehash: 8ca4d3d2d52e79dbcaaa15eba5794a4d2d28366a
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 623b9c1eccefe5d7e6027ddbed61c89720d98e9a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86274542"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884478"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Erstellen und Verwalten von Lesereplikaten in Azure Database for PostgreSQL – Einzelserver über das Azure-Portal
 
@@ -41,15 +41,15 @@ Der Server muss nach einer Änderung dieses Parameters neu gestartet werden. Int
 
 3. Wenn die Azure-Replikationsunterstützung nicht auf mindestens **Replica** festgelegt ist, legen Sie sie entsprechend fest. Wählen Sie **Speichern** aus.
 
-   ![Azure Database for PostgreSQL – Replikation – Replikat festlegen und speichern](./media/howto-read-replicas-portal/set-replica-save.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/set-replica-save.png" alt-text="Azure Database for PostgreSQL – Replikation – Replikat festlegen und speichern":::
 
 4. Starten Sie den Server neu, um die Änderung zu übernehmen, indem Sie **Ja** auswählen.
 
-   ![Azure Database for PostgreSQL – Replikation – Neustart bestätigen](./media/howto-read-replicas-portal/confirm-restart.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/confirm-restart.png" alt-text="Azure Database for PostgreSQL – Replikation – Neustart bestätigen":::
 
 5. Sie erhalten zwei Azure-Portalbenachrichtigungen, sobald der Vorgang abgeschlossen ist. Es gibt eine Benachrichtigung zur Aktualisierung des Serverparameters. Eine weitere Benachrichtigung bezieht sich auf den Neustart des Servers, der unmittelbar erfolgt.
 
-   ![Erfolgsbenachrichtigungen](./media/howto-read-replicas-portal/success-notifications.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/success-notifications.png" alt-text="Erfolgsbenachrichtigungen":::
 
 6. Aktualisieren Sie die Azure-Portalseite zum Aktualisieren der Replikationssymbolleiste. Sie können jetzt schreibgeschützte Replikate für diesen Server erstellen.
    
@@ -63,15 +63,15 @@ Führen Sie die folgenden Schritte aus, um ein Lesereplikat zu erstellen:
 
 3. Wählen Sie **Replikat hinzufügen**.
 
-   ![Hinzufügen eines Replikats](./media/howto-read-replicas-portal/add-replica.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/add-replica.png" alt-text="Hinzufügen eines Replikats":::
 
 4. Geben Sie einen Namen für das Lesereplikat ein. 
 
-    ![Benennen des Replikats](./media/howto-read-replicas-portal/name-replica.png)
+    :::image type="content" source="./media/howto-read-replicas-portal/name-replica.png" alt-text="Benennen des Replikats":::
 
 5. Wählen Sie einen Standort für das Replikat aus. Der Standardstandort ist mit dem des Masterservers identisch.
 
-    ![Standort auswählen](./media/howto-read-replicas-portal/location-replica.png)
+    :::image type="content" source="./media/howto-read-replicas-portal/location-replica.png" alt-text="Standort auswählen":::
 
    > [!NOTE]
    > Weitere Informationen zu den Regionen, in denen Sie ein Replikat erstellen können, finden Sie im [Konzeptartikel zu Lesereplikaten](concepts-read-replicas.md). 
@@ -80,7 +80,7 @@ Führen Sie die folgenden Schritte aus, um ein Lesereplikat zu erstellen:
 
 Nach der Erstellung des Lesereplikats kann dieses im Fenster **Replikation** angezeigt werden:
 
-![Anzeigen des neuen Replikats im Fenster „Replikation“](./media/howto-read-replicas-portal/list-replica.png)
+:::image type="content" source="./media/howto-read-replicas-portal/list-replica.png" alt-text="Anzeigen des neuen Replikats im Fenster „Replikation“":::
  
 
 > [!IMPORTANT]
@@ -102,15 +102,15 @@ Führen Sie die folgenden Schritte aus, um die Replikation zwischen einem Master
 
 3. Wählen Sie den Replikatserver aus, für den Sie die Replikation beenden möchten.
 
-   ![Auswählen des Replikats](./media/howto-read-replicas-portal/select-replica.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/select-replica.png" alt-text="Auswählen des Replikats":::
  
 4. Wählen Sie **Replikation beenden** aus.
 
-   ![Auswählen von „Replikation beenden“](./media/howto-read-replicas-portal/select-stop-replication.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/select-stop-replication.png" alt-text="Auswählen von „Replikation beenden“":::
  
 5. Wählen Sie **OK**, um die Replikation zu beenden.
 
-   ![Bestätigen der Beendigung der Replikation](./media/howto-read-replicas-portal/confirm-stop-replication.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/confirm-stop-replication.png" alt-text="Bestätigen der Beendigung der Replikation":::
  
 
 ## <a name="delete-a-master-server"></a>Löschen eines Masterservers
@@ -125,11 +125,11 @@ Um einen Server über das Azure-Portal zu löschen, gehen Sie folgendermaßen vo
 
 2. Öffnen Sie die Seite **Übersicht** für den Server. Klicken Sie auf **Löschen**.
 
-   ![Auswählen des Löschvorgangs für den Masterserver auf der Übersichtsseite des Servers](./media/howto-read-replicas-portal/delete-server.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/delete-server.png" alt-text="Auswählen des Löschvorgangs für den Masterserver auf der Übersichtsseite des Servers":::
  
 3. Geben Sie den Namen des zu löschenden Masterservers ein. Wählen Sie **Löschen**, um das Löschen des Masterservers zu bestätigen.
 
-   ![Bestätigen des Löschvorgangs für den Masterserver](./media/howto-read-replicas-portal/confirm-delete.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/confirm-delete.png" alt-text="Bestätigen des Löschvorgangs für den Masterserver":::
  
 
 ## <a name="delete-a-replica"></a>Löschen eines Replikats
@@ -137,7 +137,7 @@ Sie können ein Lesereplikat auf ähnliche Weise löschen wie einen Masterserver
 
 - Öffnen Sie im Azure-Portal die Seite **Übersicht** für das Lesereplikat. Klicken Sie auf **Löschen**.
 
-   ![Auswählen des Löschvorgangs für das Replikat auf der Übersichtsseite des Replikats](./media/howto-read-replicas-portal/delete-replica.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/delete-replica.png" alt-text="Auswählen des Löschvorgangs für das Replikat auf der Übersichtsseite des Replikats":::
  
 Sie können das Lesereplikat auch über das Fenster **Replikation** löschen, indem Sie folgendermaßen vorgehen:
 
@@ -147,15 +147,15 @@ Sie können das Lesereplikat auch über das Fenster **Replikation** löschen, in
 
 3. Wählen Sie das zu löschende Lesereplikat aus.
 
-   ![Auswahl des zu löschenden Lesereplikats](./media/howto-read-replicas-portal/select-replica.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/select-replica.png" alt-text="Auswahl des zu löschenden Lesereplikats":::
  
 4. Wählen Sie **Replikat löschen** aus.
 
-   ![Auswahl von „Replikat löschen“](./media/howto-read-replicas-portal/select-delete-replica.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/select-delete-replica.png" alt-text="Auswahl von „Replikat löschen“":::
  
 5. Geben Sie den Namen des zu löschenden Replikats ein. Wählen Sie **Löschen**, um das Löschen des Replikats zu bestätigen.
 
-   ![Bestätigen des Löschvorgangs für das Replikat](./media/howto-read-replicas-portal/confirm-delete-replica.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/confirm-delete-replica.png" alt-text="Bestätigen des Löschvorgangs für das Replikat":::
  
 
 ## <a name="monitor-a-replica"></a>Überwachen eines Replikats
@@ -168,7 +168,7 @@ Die Metrik **Maximale Verzögerung zwischen Replikaten** zeigt die Verzögerung 
 
 2.  Klicken Sie auf **Metriken**. Wählen Sie im Fenster **Metriken** die Option **Maximale Verzögerung zwischen Replikaten** aus.
 
-    ![Überwachen der maximalen Verzögerung zwischen Replikaten](./media/howto-read-replicas-portal/select-max-lag.png)
+    :::image type="content" source="./media/howto-read-replicas-portal/select-max-lag.png" alt-text="Überwachen der maximalen Verzögerung zwischen Replikaten":::
  
 3.  Wählen Sie für Ihre **Aggregation** den Wert **Max** aus.
 
@@ -180,7 +180,7 @@ Die Metrik **Replikatverzögerung** zeigt die Zeit seit der letzten wiedergegebe
 
 2. Klicken Sie auf **Metriken**. Wählen Sie im Fenster **Metriken** die Option **Replikatverzögerung** aus.
 
-   ![Überwachen der Replikatverzögerung](./media/howto-read-replicas-portal/select-replica-lag.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/select-replica-lag.png" alt-text="Überwachen der Replikatverzögerung":::
  
 3. Wählen Sie für Ihre **Aggregation** den Wert **Max** aus. 
  
