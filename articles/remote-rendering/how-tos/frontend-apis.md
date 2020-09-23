@@ -6,19 +6,19 @@ ms.author: flborn
 ms.date: 02/12/2010
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0488f467a036957bf2341aab63919a105f383bdf
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 420ff7ed838bc9fa14c1276ae0a70220fc7e11a9
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89003523"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024059"
 ---
 # <a name="use-the-azure-frontend-apis-for-authentication"></a>Verwenden der Azure-Front-End-APIs für die Authentifizierung
 
 In diesem Abschnitt wird die Verwendung der API für Authentifizierung und Sitzungsverwaltung beschrieben.
 
 > [!CAUTION]
-Die in diesem Kapitel beschriebenen Funktionen geben intern REST-Aufrufe auf dem Server aus. Wie bei allen REST-Aufrufen bewirkt das zu häufige Senden dieser Befehle, dass der Server eine Drosselung durchführt und schließlich einen Fehler zurückgibt. Der Wert des Members `SessionGeneralContext.HttpResponseCode` lautet in diesem Fall 429 („Zu viele Anforderungen“). Als Faustregel sollte eine Verzögerung von **5–10 Sekunden zwischen nachfolgenden Aufrufen** erfolgen.
+> Die in diesem Kapitel beschriebenen Funktionen geben intern REST-Aufrufe auf dem Server aus. Wie bei allen REST-Aufrufen bewirkt das zu häufige Senden dieser Befehle, dass der Server eine Drosselung durchführt und schließlich einen Fehler zurückgibt. Der Wert des Members `SessionGeneralContext.HttpResponseCode` lautet in diesem Fall 429 („Zu viele Anforderungen“). Als Faustregel sollte eine Verzögerung von **5–10 Sekunden zwischen nachfolgenden Aufrufen** erfolgen.
 
 
 ## <a name="azurefrontendaccountinfo"></a>AzureFrontendAccountInfo

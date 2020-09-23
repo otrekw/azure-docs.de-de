@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 675f25107a2e4f0ddedf468dc06afea36ffc6151
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2f811c504f8871b06805d5578ed2d70c651be25d
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327751"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029833"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Grundlegendes zur Identitätsregistrierung in Ihrer IoT Hub-Instanz
 
@@ -84,7 +84,7 @@ Verwenden Sie asynchrone Vorgänge im [Endpunkt des IoT Hub-Ressourcenanbieters]
 
 Weitere Informationen zu den Import- und Export-APIs finden Sie unter [REST-APIs für den IoT Hub-Ressourcenanbieter](/rest/api/iothub/iothubresource). Weitere Informationen zum Ausführen von Import- und Exportaufträgen finden Sie unter [Massenverwaltung von IoT Hub-Geräteidentitäten](iot-hub-bulk-identity-mgmt.md).
 
-Geräteidentitäten können auch entweder über die [REST-API](/rest/api/iothub/service/jobclient/createimportexportjob) oder eines der [Dienst-SDKs](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-service-sdks) von IoT Hub über die Dienst-API aus einem IoT-Hub exportiert und dorthin importiert werden.
+Geräteidentitäten können auch entweder über die [REST-API](/rest/api/iothub/service/jobs/createimportexportjob) oder eines der [Dienst-SDKs](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-service-sdks) von IoT Hub über die Dienst-API aus einem IoT-Hub exportiert und dorthin importiert werden.
 
 ## <a name="device-provisioning"></a>Gerätebereitstellung
 

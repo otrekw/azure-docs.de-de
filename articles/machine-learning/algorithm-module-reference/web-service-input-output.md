@@ -1,6 +1,6 @@
 ---
 title: 'Web Service Input/Output: Modulreferenz'
-description: Erfahren Sie mehr über die verfügbaren Module im Azure Machine Learning-Designer (Vorschauversion).
+description: Erfahren Sie mehr über die verfügbaren Module im Azure Machine Learning-Designer.
 titleSuffix: Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/13/2020
-ms.openlocfilehash: ded976fc9090535f3c683b5c6351646a55265205
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a62f8aee0bd0a0d2b7009a48e9d5f00ea3c5155f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84751100"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883224"
 ---
 # <a name="web-service-input-and-web-service-output-modules"></a>Web Service Input- und Web Service Output-Modul (Webdiensteingabe und Webdienstausgabe)
 
-In diesem Artikel werden die Module Web Service Input und Web Service Output im Azure Machine Learning-Designer (Vorschauversion) beschrieben.
+In diesem Artikel werden die Module Web Service Input und Web Service Output im Azure Machine Learning-Designer beschrieben.
 
 Das Modul Web Service Input kann nur eine Verbindung mit einem Eingabeport des Typs **DataFrameDirectory** herstellen. Das Modul Web Service Output kann nur eine Verbindung von einem Ausgabeport des Typs **DataFrameDirectory** herstellen. Sie finden die beiden Module in der Modulstruktur in der Kategorie **Web Service**. 
 

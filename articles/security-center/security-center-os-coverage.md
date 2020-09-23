@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/31/2020
 ms.author: memildin
-ms.openlocfilehash: f02e45804234fc8f8aa2b966db7ddce5efc9cfd1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 2092a1aa3d5157db0392397e86553c5cc9da9de2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998831"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883804"
 ---
 # <a name="supported-platforms"></a>Unterstützte Plattformen 
 
@@ -55,7 +55,7 @@ Unter einem Kundenabonnement werden virtuelle Computer auch im Rahmen einiger ve
 
 Virtuelle Computer, die in einem Clouddienst ausgeführt werden, werden ebenfalls unterstützt. Es werden nur Clouddienst-Webrollen und -Workerrollen überwacht, die in Produktionsslots ausgeführt werden. Weitere Informationen zu Clouddiensten finden Sie unter [Übersicht zu Azure Cloud Services](../cloud-services/cloud-services-choose-me.md).
 
-Der Schutz für VMs, die sich in Azure Stack befinden, wird ebenfalls unterstützt. Weitere Informationen zur Integration von Security Center in Azure Stack finden Sie unter [Integrieren Ihrer Azure Stack-VMs in Security Center](https://docs.microsoft.com/azure/security-center/quick-onboard-azure-stack).
+Der Schutz für VMs, die sich in Azure Stack befinden, wird ebenfalls unterstützt. Weitere Informationen zur Integration von Security Center in Azure Stack finden Sie unter [Integrieren Ihrer Azure Stack-VMs in Security Center](quickstart-onboard-machines.md). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

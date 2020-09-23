@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: subject-armqs
 ms.date: 08/18/2020
-ms.openlocfilehash: 3c2d13794f2fc3af4541032d1f94967681c0deee
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: a2ab400158f77af7934ca3f9f7c811d5fe2bd340
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078417"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461237"
 ---
 # <a name="create-an-azure-cache-for-redis-using-a-resource-manager-template"></a>Erstellen eines Azure Cache for Redis mit einer Azure Resource Manager-Vorlage
 
@@ -27,7 +27,7 @@ Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von A
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * **Azure-Abonnement**: Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-* **Ein Speicherkonto**: Informationen zur Erstellung eines Speicherkontos finden Sie unter [Erstellen eines Azure Storage-Kontos](/storage/common/storage-account-create?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=template). Das Speicherkonto wird für Diagnosedaten verwendet.
+* **Ein Speicherkonto**: Informationen zur Erstellung eines Speicherkontos finden Sie unter [Erstellen eines Azure Storage-Kontos](/azure/storage/common/storage-account-create?tabs=azure-portal). Das Speicherkonto wird für Diagnosedaten verwendet.
 
 ## <a name="review-the-template"></a>Überprüfen der Vorlage
 
@@ -38,7 +38,7 @@ Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit 
 Die folgenden Ressourcen sind in der Vorlage definiert:
 
 * [Microsoft.Cache/Redis](/azure/templates/microsoft.cache/redis)
-* [Microsoft.Insights/diagnosticsettings](/azure/templates/diagnosticsettings)
+* [Microsoft.Insights/diagnosticsettings](/azure/templates/microsoft.insights/diagnosticsettings)
 
 Resource Manager-Vorlagen für den neuen [Tarif „Premium“](cache-overview.md#service-tiers) sind ebenfalls verfügbar.
 

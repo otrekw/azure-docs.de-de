@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: f6c4fb5caf746650f95872d50afe31e5693422be
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 8d3326587d9c03e0a3960016b8ba3668c825ee6d
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81382913"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89470084"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Active Directory-Integration für Azure Red Hat OpenShift
 
@@ -86,9 +86,9 @@ Generieren Sie ein Clientgeheimnis zur Authentifizierung Ihrer App bei Azure Act
 
 ![Screenshot des Bereichs „Zertifikate und Geheimnisse“](./media/howto-create-tenant/create-key.png)
 
-Weitere Informationen zu Azure-Anwendungsobjekten finden Sie unter [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals).
+Weitere Informationen zu Azure-Anwendungsobjekten finden Sie unter [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md).
 
-Details zur Erstellung einer neuen Azure AD-Anwendung finden Sie unter [Registrieren einer App mit dem Azure AD v1.0-Endpunkt](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app).
+Details zur Erstellung einer neuen Azure AD-Anwendung finden Sie unter [Registrieren einer App mit dem Azure AD v1.0-Endpunkt](../active-directory/develop/quickstart-register-app.md).
 
 ## <a name="add-api-permissions"></a>Hinzufügen von API-Berechtigungen
 
@@ -110,12 +110,12 @@ Details zur Erstellung einer neuen Azure AD-Anwendung finden Sie unter [Registri
 > [!IMPORTANT]
 > Die Synchronisierung der Clusteradministratorengruppe funktioniert nur, nachdem die Zustimmung erteilt ist. Daraufhin wird ein grüner Kreis mit einem Häkchen und die Meldung „Gewährt für *Abonnementname*“ in der Spalte *Administratoreinwilligung erforderlich* angezeigt.
 
-Weitere Informationen zum Verwalten von Administratoren und anderen Rollen finden Sie unter [Hinzufügen oder Ändern von Azure-Abonnementadministratoren](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator).
+Weitere Informationen zum Verwalten von Administratoren und anderen Rollen finden Sie unter [Hinzufügen oder Ändern von Azure-Abonnementadministratoren](../cost-management-billing/manage/add-change-subscription-administrator.md).
 
 ## <a name="resources"></a>Ressourcen
 
-* [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)
-* [Schnellstart: Registrieren einer App mit dem Azure AD v1.0-Endpunkt](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)
+* [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md)
+* [Schnellstart: Registrieren einer App mit dem Azure AD v1.0-Endpunkt](../active-directory/develop/quickstart-register-app.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,6 +1,6 @@
 ---
-title: Bereitstellen einer zustandslosen Kubernetes-App auf Azure Stack Edge-GPU über ein IoT Edge-Modul| Microsoft-Dokumentation
-description: Beschreibt die Bereitstellung einer zustandslosen Kubernetes-Anwendung auf Ihrem Azure Stack Edge-GPU-Gerät unter Verwendung eines IoT Edge-Moduls, auf das über eine externe IP-Adresse zugegriffen wird.
+title: Bereitstellen einer zustandslosen Kubernetes-App auf einem Azure Stack Edge Pro-GPU-Gerät über ein IoT Edge-Modul | Microsoft-Dokumentation
+description: Beschreibt die Bereitstellung einer zustandslosen Kubernetes-Anwendung auf Ihrem Azure Stack Edge Pro-GPU-Gerät unter Verwendung eines IoT Edge-Moduls, auf das über eine externe IP-Adresse zugegriffen wird.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,21 +8,21 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: alkohli
-ms.openlocfilehash: 15316cbdd44053bfaf7403815ba42d92e2264b7b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 4bc598080b96886e6734ac3709761465a1a28d49
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254167"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899525"
 ---
-# <a name="use-iot-edge-module-to-run-a-kubernetes-stateless-application-on-your-azure-stack-edge-gpu-device"></a>Verwenden Sie das IoT Edge-Modul, um eine zustandslose Kubernetes-Anwendung auf Ihrem Azure Stack Edge-GPU-Gerät auszuführen.
+# <a name="use-iot-edge-module-to-run-a-kubernetes-stateless-application-on-your-azure-stack-edge-pro-gpu-device"></a>Verwenden des IoT Edge-Moduls zum Ausführen einer zustandslosen Kubernetes-Anwendung auf Ihrem Azure Stack Edge Pro-GPU-Gerät
 
-In diesem Artikel wird beschrieben, wie Sie mit einem IoT Edge-Modul eine zustandslose Anwendung auf Ihrem Azure Stack Edge-Gerät bereitstellen können.
+In diesem Artikel wird beschrieben, wie Sie mit einem IoT Edge-Modul eine zustandslose Anwendung auf Ihrem Azure Stack Edge Pro-Gerät bereitstellen.
 
 Führen Sie die folgenden Schritte aus, um die zustandslose Anwendung bereitzustellen:
 
 - Stellen Sie sicher, dass die Voraussetzungen erfüllt sind, bevor Sie ein IoT Edge-Modul bereitstellen.
-- Fügen Sie ein IoT Edge-Modul für den Zugriff auf das Computingnetzwerk auf Ihrem Azure Stack Edge-Gerät hinzu.
+- Fügen Sie für den Zugriff auf das Computenetzwerk auf Ihrem Azure Stack Edge Pro-Gerät ein IoT Edge-Modul hinzu.
 - Überprüfen Sie den Zugriff auf die aktivierte Netzwerkschnittstelle durch das Modul.
 
 In diesem Anleitungsartikel verwenden Sie ein Webserver-App-Modul zur Veranschaulichung des Szenarios.
@@ -31,19 +31,19 @@ In diesem Anleitungsartikel verwenden Sie ein Webserver-App-Modul zur Veranschau
 
 Bevor Sie beginnen, müssen die folgenden Voraussetzungen erfüllt sein:
 
-- Ein Azure Stack Edge-Gerät Stellen Sie Folgendes sicher:
+- Ein Azure Stack Edge Pro-Gerät muss vorhanden sein. Stellen Sie Folgendes sicher:
 
     - Die Einstellungen des Computingnetzwerks sind auf dem Gerät konfiguriert.
     - Das Gerät ist gemäß den Schritten im [Tutorial: Aktivieren Ihres Geräts](azure-stack-edge-gpu-deploy-activate.md) aktiviert.
-- Sie haben den Schritt **Konfigurieren der Computeumgebung** unter [Tutorial: Konfigurieren von Compute auf einem Azure Stack Edge-Gerät](azure-stack-edge-gpu-deploy-configure-compute.md) auf Ihrem Gerät abgeschlossen. Ihrem Gerät sollte eine IoT Hub-Ressource, ein IoT-Gerät und ein IoT Edge-Gerät zugeordnet sein.
+- Sie haben den Schritt **Konfigurieren der Computeumgebung** unter [Tutorial: Konfigurieren von Compute auf einem Azure Stack Edge Pro-Gerät](azure-stack-edge-gpu-deploy-configure-compute.md) auf Ihrem Gerät abgeschlossen. Ihrem Gerät sollte eine IoT Hub-Ressource, ein IoT-Gerät und ein IoT Edge-Gerät zugeordnet sein.
 
 
 ## <a name="add-webserver-app-module"></a>Hinzufügen eines Webserver-App-Moduls
 
-Führen Sie die folgenden Schritte aus, um ein Webserver-App-Modul zu Ihrem Azure Stack Edge-Gerät hinzuzufügen.
+Führen Sie die folgenden Schritte aus, um ein Webserver-App-Modul zu Ihrem Azure Stack Edge Pro-Gerät hinzuzufügen.
 
 1. In der Ihrem Gerät zugeordneten IoT Hub-Ressource wechseln Sie zu **Automatische Geräteverwaltung > IoT Edge**.
-1. Wählen Sie das IoT Edge-Gerät aus, das Ihrem Azure Stack Edge-Gerät zugeordnet ist, und klicken Sie darauf. 
+1. Wählen Sie das IoT Edge-Gerät aus, das Ihrem Azure Stack Edge Pro-Gerät zugeordnet ist, und klicken Sie darauf. 
 
     ![Auswählen des IoT Edge-Geräts](media/azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module/select-iot-edge-device-1.png)  
 

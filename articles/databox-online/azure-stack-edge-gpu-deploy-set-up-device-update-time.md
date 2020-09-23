@@ -1,24 +1,24 @@
 ---
-title: Tutorial zum Verbinden, Konfigurieren und Aktivieren eines Azure Stack Edge-Geräts mit GPU im Azure-Portal | Microsoft-Dokumentation
-description: Im Tutorial zur Bereitstellung eines Azure Stack Edge-Geräts mit GPU erfahren Sie, wie Sie Ihr physisches Gerät verbinden, einrichten und aktivieren.
+title: Tutorial zum Verbinden, Konfigurieren und Aktivieren eines Azure Stack Edge Pro-Geräts mit GPU im Azure-Portal | Microsoft-Dokumentation
+description: Im Tutorial zur Bereitstellung eines Azure Stack Edge Pro-Geräts mit GPU erfahren Sie, wie Sie Ihr physisches Gerät verbinden, einrichten und aktivieren.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 08/29/2020
+ms.date: 09/10/2020
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 41055fbd455d3f7b9da63ee8f7420f008ea75a00
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
+ms.openlocfilehash: 1f86b0fc847ade3153c8eaddb0d82bd968913b46
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254507"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899625"
 ---
-# <a name="tutorial-configure-device-settings-for-azure-stack-edge-with-gpu"></a>Tutorial: Konfigurieren von Geräteeinstellungen für Azure Stack Edge-Gerät mit GPU
+# <a name="tutorial-configure-device-settings-for-azure-stack-edge-pro-with-gpu"></a>Tutorial: Konfigurieren der Geräteeinstellungen für Azure Stack Edge Pro-Geräte mit GPU
 
-In diesem Tutorial wird erläutert, wie Sie Geräteeinstellungen für Ihr Azure Stack Edge-Gerät mit eingebauter GPU konfigurieren. Sie können auf der lokalen Webbenutzeroberfläche den Gerätenamen, Updateserver und Zeitserver einrichten.
+In diesem Tutorial wird erläutert, wie Sie die Geräteeinstellungen für Ihr Azure Stack Edge Pro-Gerät mit eingebauter GPU konfigurieren. Sie können auf der lokalen Webbenutzeroberfläche den Gerätenamen, Updateserver und Zeitserver einrichten.
 
 Dieser Geräteeinstellungsvorgang kann ca. 5 bis 7 Minuten dauern.
 
@@ -33,23 +33,19 @@ In diesem Tutorial lernen Sie Folgendes kennen:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Überprüfen Sie Folgendes, bevor Sie Geräteeinstellungen auf Ihrem Azure Stack Edge-Gerät mit GPU konfigurieren:
+Überprüfen Sie Folgendes, bevor Sie Geräteeinstellungen auf Ihrem Azure Stack Edge Pro-Gerät mit GPU konfigurieren:
 
 * Für Ihr physisches Gerät:
 
-    - Sie haben Ihr physisches Gerät gemäß der Anleitung unter [Tutorial: Installieren von Azure Stack Edge](azure-stack-edge-gpu-deploy-install.md) installiert.
-    - Sie haben das Netzwerk konfiguriert und das Computenetzwerk auf Ihrem Gerät aktiviert und konfiguriert, wie in [ Konfigurieren des Netzwerks für Azure Stack Edge-Gerät mit GPU](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md) beschrieben.
+    - Sie haben Ihr physisches Gerät gemäß der Anleitung unter [Installieren von Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-install.md) installiert.
+    - Sie haben das Netzwerk konfiguriert und das Computenetzwerk auf Ihrem Gerät aktiviert und konfiguriert, wie unter [Tutorial: Konfigurieren des Netzwerks für Azure Stack Edge Pro mit GPU](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md) beschrieben.
 
 
 ## <a name="configure-device-settings"></a>Konfigurieren von Geräteeinstellungen
 
-Führen Sie zum Konfigurieren von Geräteeinstellungen die folgenden Schritte aus.
- 
-1. Wählen Sie auf der Kachel **Geräteeinrichtung** für **Gerät** die Option **Konfigurieren** aus.
+Führen Sie zum Konfigurieren von Geräteeinstellungen die folgenden Schritte aus:
 
-    ![Seite „Gerät“ auf der lokalen Webbenutzeroberfläche](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/device-1.png)
-
-    Führen Sie auf der Seite **Gerät** die folgenden Schritte aus:
+1. Führen Sie auf der Seite **Gerät** die folgenden Schritte aus:
 
     1. Geben Sie einen Anzeigenamen für Ihr Gerät ein. Der Anzeigename muss aus 1 bis 13 Zeichen bestehen und kann Buchstaben, Zahlen und Bindestriche enthalten.
 
@@ -57,7 +53,7 @@ Führen Sie zum Konfigurieren von Geräteeinstellungen die folgenden Schritte au
 
     3. Klicken Sie auf **Übernehmen**, um die konfigurierten Geräteeinstellungen zu überprüfen und zu übernehmen.
 
-        ![Seite „Gerät“ auf der lokalen Webbenutzeroberfläche](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/device-2.png)
+        ![Seite „Gerät“ der lokalen Webbenutzeroberfläche 1](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/device-2.png)
 
         Wenn Sie den Gerätenamen und die DNS-Domäne geändert haben, funktionieren die automatisch generierten selbstsignierten Zertifikate auf dem Gerät nicht. Bei der Konfiguration von Zertifikaten müssen Sie eine der folgenden Optionen wählen: 
         
@@ -65,17 +61,17 @@ Führen Sie zum Konfigurieren von Geräteeinstellungen die folgenden Schritte au
         - Stellen Sie Ihre eigenen Zertifikate für das Gerät einschließlich Signaturkette bereit.
     
 
-        ![Seite „Gerät“ auf der lokalen Webbenutzeroberfläche](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/device-3.png)
+        ![Seite „Gerät“ der lokalen Webbenutzeroberfläche 2](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/device-3.png)
 
-    4. Bei Änderung des Gerätenamens und der DNS-Domäne werden die SMB- und NFS-Endpunkte erstellt.  
+    4. Wenn der Gerätename und die DNS-Domäne geändert werden, wird der SMB-Endpunkt erstellt.  
 
-    5. Nachdem die Einstellungen übernommen wurden, wechseln Sie zurück zu **Erste Schritte**.
+    5. Wählen Sie **Weiter: Updateserver** aus, nachdem die Einstellungen übernommen wurden.
+
+        ![Seite „Gerät“ der lokalen Webbenutzeroberfläche](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/device-4.png)
 
 ## <a name="configure-update"></a>Konfigurieren des Updates
 
-1. Wählen Sie auf der Kachel **Geräteeinrichtung** für **Update** die Option **Konfigurieren** aus. Sie können nun den Speicherort konfigurieren, aus dem die Updates für Ihr Gerät heruntergeladen werden sollen.  
-
-    ![Seite „Updateserver“ auf der lokalen Webbenutzeroberfläche](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/update-1.png)
+1. Auf der Seite **Update** können Sie nun den Speicherort konfigurieren, von dem die Updates für Ihr Gerät heruntergeladen werden sollen.  
 
     - Sie können die Updates direkt über den **Microsoft Update-Server** beziehen.
 
@@ -89,23 +85,19 @@ Führen Sie zum Konfigurieren von Geräteeinstellungen die folgenden Schritte au
         > Wenn ein separater Windows Update-Server konfiguriert ist und Sie eine Verbindung über *https* (statt *http*) wählen, werden für die Verbindung mit dem Updateserver Signaturkettenzertifikate benötigt. Informationen zum Erstellen und Hochladen von Zertifikaten finden Sie unter [Verwalten von Zertifikaten](azure-stack-edge-j-series-manage-certificates.md). 
 
 2. Wählen Sie **Übernehmen**.
-3. Wechseln Sie nach der Konfiguration des Updateservers zurück zu **Erste Schritte**.
+3. Wählen Sie nach der Konfiguration des Updateservers **Weiter: Zeit** aus.
     
 
 ## <a name="configure-time"></a>Konfigurieren der Uhrzeit
 
 Führen Sie die folgenden Schritte aus, um die Zeiteinstellungen auf Ihrem Gerät zu konfigurieren. 
 
-1. Wählen Sie auf der Kachel **Geräteeinrichtung** die Option **Zeit** aus. Sie können die Zeitzone sowie den primären und sekundären NTP-Server für Ihr Gerät auswählen.  
+> [!IMPORTANT]
+> Obwohl die Zeiteinstellungen optional sind, empfehlen wir dringend, dass Sie für Ihr Gerät einen primären und sekundären NTP-Server im lokalen Netzwerk konfigurieren. Wenn der lokale Server nicht verfügbar ist, können öffentliche NTP-Server konfiguriert werden.
 
-    > [!IMPORTANT]
-    > Obwohl die Zeiteinstellungen optional sind, empfehlen wir dringend, dass Sie für Ihr Gerät einen primären und sekundären NTP-Server im lokalen Netzwerk konfigurieren. Wenn der lokale Server nicht verfügbar ist, können öffentliche NTP-Server konfiguriert werden.
-    
-    NTP-Server sind für die Zeitsynchronisierung erforderlich, damit Ihr Gerät bei den Clouddienstanbietern authentifiziert werden kann.
+NTP-Server sind für die Zeitsynchronisierung erforderlich, damit Ihr Gerät bei den Clouddienstanbietern authentifiziert werden kann.
 
-    ![Seite „Zeit“ auf der lokalen Webbenutzeroberfläche](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/time-1.png)
-
-2. Gehen Sie auf der Seite **Zeit** wie folgt vor:
+1. Auf der Seite **Zeit** können Sie die Zeitzone sowie den primären und sekundären NTP-Server für Ihr Gerät auswählen.  
     
     1. Wählen Sie aus der Dropdownliste die **Zeitzone** aus, die dem geografischen Standort entspricht, an dem das Gerät bereitgestellt wird.
         Die Standardzeitzone für Ihr Gerät ist „PST“. Ihr Gerät verwendet diese Zeitzone für alle geplanten Vorgänge.
@@ -119,8 +111,7 @@ Führen Sie die folgenden Schritte aus, um die Zeiteinstellungen auf Ihrem Gerä
 
         ![Seite „Zeit“ auf der lokalen Webbenutzeroberfläche](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/time-2.png)
 
-3. Nachdem die Einstellungen übernommen wurden, wechseln Sie zurück zu **Erste Schritte**.
-
+2. Wählen Sie **Weiter: Zertifikate** aus.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -134,7 +125,7 @@ In diesem Tutorial lernen Sie Folgendes kennen:
 > * Konfigurieren des Updates 
 > * Konfigurieren der Uhrzeit
 
-Informationen zum Konfigurieren von Zertifikaten für Ihr Azure Stack Edge-Gerät finden Sie unter:
+Informationen zum Konfigurieren von Zertifikaten für Ihr Azure Stack Edge Pro-Gerät finden Sie unter:
 
 > [!div class="nextstepaction"]
 > [Konfigurieren von Zertifikaten](./azure-stack-edge-gpu-deploy-configure-certificates.md)

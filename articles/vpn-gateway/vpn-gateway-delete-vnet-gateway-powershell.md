@@ -4,15 +4,15 @@ description: Löschen Sie ein Gateway des virtuellen Netzwerks mit PowerShell im
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.date: 02/07/2019
+ms.date: 09/03/2020
 ms.author: cherylmc
 ms.topic: how-to
-ms.openlocfilehash: 54fe4486d43a40e54a0aeae36963c0271fae6c2b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 48e0998719ea19c0b360b50d8c9171d2b448ad19
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064516"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440761"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell"></a>Löschen eines Gateways des virtuellen Netzwerks mit PowerShell
 > [!div class="op_single_selector"]

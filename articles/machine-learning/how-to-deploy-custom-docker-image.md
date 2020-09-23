@@ -8,18 +8,18 @@ ms.subservice: core
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 06/17/2020
+ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 76eed22052b8c9fe2cc849e68dd926ef2c85208a
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: f69ba6e1c5fdfc04fac6fed8487b246f9af72fa2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843214"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889948"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Bereitstellen eines Modells mithilfe eines benutzerdefinierten Docker-Basisimages
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Erfahren Sie, wie Sie ein benutzerdefiniertes Docker-Basisimage verwenden können, wenn Sie trainierte Modelle mit Azure Machine Learning bereitstellen.
 
@@ -45,7 +45,7 @@ Dieser Artikel ist in zwei Abschnitte unterteilt:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Eine Azure Machine Learning-Arbeitsgruppe. Weitere Informationen finden Sie im Artikel [Erstellen eines Arbeitsbereichs](how-to-manage-workspace.md).
-* Das [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py). 
+* Das [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true). 
 * Die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 * Die [CLI-Erweiterung für Azure Machine Learning](reference-azure-machine-learning-cli.md).
 * Ein [Azure Container Registry](/azure/container-registry) oder eine andere Docker-Registrierung, die über das Internet zugänglich ist.
@@ -124,26 +124,35 @@ Die Schritte in diesem Abschnitt führen zur Erstellung eines benutzerdefinierte
     ```text
     FROM ubuntu:16.04
 
-    ARG CONDA_VERSION=4.5.12
-    ARG PYTHON_VERSION=3.6
+    ARG CONDA_VERSION=4.7.12
+    ARG PYTHON_VERSION=3.7
+    ARG AZUREML_SDK_VERSION=1.13.0
+    ARG INFERENCE_SCHEMA_VERSION=1.1.0
 
     ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
     ENV PATH /opt/miniconda/bin:$PATH
 
     RUN apt-get update --fix-missing && \
         apt-get install -y wget bzip2 && \
+        apt-get install -y fuse \
         apt-get clean && \
         rm -rf /var/lib/apt/lists/*
 
+    RUN useradd --create-home dockeruser
+    WORKDIR /home/dockeruser
+    USER dockeruser
+
     RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-${CONDA_VERSION}-Linux-x86_64.sh -O ~/miniconda.sh && \
-        /bin/bash ~/miniconda.sh -b -p /opt/miniconda && \
+        /bin/bash ~/miniconda.sh -b -p ~/miniconda && \
         rm ~/miniconda.sh && \
-        /opt/miniconda/bin/conda clean -tipsy
+        ~/miniconda/bin/conda clean -tipsy
+    ENV PATH="/home/dockeruser/miniconda/bin/:${PATH}"
 
     RUN conda install -y conda=${CONDA_VERSION} python=${PYTHON_VERSION} && \
+        pip install azureml-defaults==${AZUREML_SDK_VERSION} inference-schema==${INFERENCE_SCHEMA_VERSION} &&\
         conda clean -aqy && \
-        rm -rf /opt/miniconda/pkgs && \
-        find / -type d -name __pycache__ -prune -exec rm -rf {} \;
+        rm -rf ~/miniconda/pkgs && \
+        find ~/miniconda/ -type d -name __pycache__ -prune -exec rm -rf {} \;
     ```
 
 2. Führen Sie von einer Shell oder Eingabeaufforderung aus die folgenden Schritte durch, um sich bei der Azure Container Registry zu authentifizieren. Ersetzen Sie das `<registry_name>` durch den Namen der Containerregistrierung, in der Sie das Image speichern möchten:
@@ -193,7 +202,7 @@ Microsoft stellt mehrere Docker-Images in einem öffentlich zugänglichen Reposi
 
 | Image | BESCHREIBUNG |
 | ----- | ----- |
-| `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Basisimage für Azure Machine Learning |
+| `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Core-Image für Azure Machine Learning |
 | `mcr.microsoft.com/azureml/onnxruntime:latest` | Enthält ONNX Runtime für CPU-Rückschlüsse |
 | `mcr.microsoft.com/azureml/onnxruntime:latest-cuda` | Enthält ONNX Runtime und CUDA für GPU |
 | `mcr.microsoft.com/azureml/onnxruntime:latest-tensorrt` | Enthält ONNX Runtime und TensorRT für GPU |
@@ -209,7 +218,7 @@ Weitere Informationen finden Sie im GitHub-Repository [Azure Machine Learning se
 
 ### <a name="use-an-image-with-the-azure-machine-learning-sdk"></a>Verwenden eines Images mit dem Azure Machine Learning SDK
 
-Legen Sie die folgenden [Environment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py)-Attribute fest, um ein Image zu verwenden, das in der **Azure Container Registry-Instanz für Ihren Arbeitsbereich gespeichert ist**, oder eine **Containerregistrierung, die öffentlich zugänglich ist**:
+Legen Sie die folgenden [Environment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true)-Attribute fest, um ein Image zu verwenden, das in der **Azure Container Registry-Instanz für Ihren Arbeitsbereich gespeichert ist**, oder eine **Containerregistrierung, die öffentlich zugänglich ist**:
 
 + `docker.enabled=True`
 + `docker.base_image`: Legen Sie dies auf die Registrierung und den Pfad zum Image fest.
@@ -243,7 +252,7 @@ myenv.python.conda_dependencies=conda_dep
 
 Sie müssen „azureml-defaults“ mit Version >= 1.0.45 als Pip-Abhängigkeit hinzufügen. Dieses Paket enthält die erforderlichen Funktionen zum Hosten des Modells als Webdienst. Sie müssen auch die „inferencing_stack_version“-Eigenschaft der Umgebung auf „latest“ (Neueste) festlegen. Dadurch werden bestimmte, vom Webdienst erforderliche apt-Pakete installiert. 
 
-Verwenden Sie die Umgebung nach dem Definieren mit einem [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py)-Objekt, um die Rückschlussumgebung festzulegen, in der das Modell und der Webdienst ausgeführt werden.
+Verwenden Sie die Umgebung nach dem Definieren mit einem [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py&preserve-view=true)-Objekt, um die Rückschlussumgebung festzulegen, in der das Modell und der Webdienst ausgeführt werden.
 
 ```python
 from azureml.core.model import InferenceConfig
@@ -272,7 +281,7 @@ Weitere Informationen zur Anpassung Ihrer Python-Umgebung finden Sie unter [Erst
 > [!IMPORTANT]
 > Derzeit kann die Machine Learning-CLI Images aus der Azure Container Registry für Ihren Arbeitsbereich oder aus öffentlich zugänglichen Repositorys verwenden. Sie kann keine Images aus eigenständigen privaten Registrierungen verwenden.
 
-Bevor Sie ein Modell mit der Machine Learning-CLI bereitstellen, erstellen Sie eine [Umgebung](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py), die das benutzerdefinierte Image verwendet. Erstellen Sie dann eine Rückschlusskonfigurationsdatei, die auf die Umgebung verweist. Sie können die Umgebung auch direkt in der Rückschlusskonfigurationsdatei definieren. Das folgende JSON-Dokument zeigt, wie auf ein Image in einer öffentlichen Containerregistrierung verwiesen wird. In diesem Beispiel wird die Umgebung inline definiert:
+Bevor Sie ein Modell mit der Machine Learning-CLI bereitstellen, erstellen Sie eine [Umgebung](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true), die das benutzerdefinierte Image verwendet. Erstellen Sie dann eine Rückschlusskonfigurationsdatei, die auf die Umgebung verweist. Sie können die Umgebung auch direkt in der Rückschlusskonfigurationsdatei definieren. Das folgende JSON-Dokument zeigt, wie auf ein Image in einer öffentlichen Containerregistrierung verwiesen wird. In diesem Beispiel wird die Umgebung inline definiert:
 
 ```json
 {

@@ -1,6 +1,6 @@
 ---
-title: 'Microsoft Azure Stack Edge mit GPU: Technische Spezifikationen und Compliance | Microsoft-Dokumentation'
-description: Dieser Artikel enthält Informationen zu technischen Spezifikationen und Compliance für Ihr Azure Stack Edge-Gerät mit GPU
+title: 'Microsoft Azure Stack Edge Pro mit GPU: Technische Spezifikationen und Compliance | Microsoft-Dokumentation'
+description: Dieser Artikel enthält Informationen zu technischen Spezifikationen und Compliance für Ihr Azure Stack Edge Pro-Gerät mit GPU
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,20 +8,20 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.author: alkohli
-ms.openlocfilehash: 3f354655a612d4085b0a0de45ae1a6e5ee097ade
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: b0eaa9778480a6a767a4b37bd92a395d2b1ee6cb
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266662"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899031"
 ---
-# <a name="technical-specifications-and-compliance-for-azure-stack-edge-with-gpu"></a>Technische Spezifikationen und Compliance für Azure Stack Edge mit GPU 
+# <a name="technical-specifications-and-compliance-for-azure-stack-edge-pro-with-gpu"></a>Technische Spezifikationen und Compliance für Azure Stack Edge Pro mit GPU 
 
-Die Hardwarekomponenten Ihres Azure Stack Edge-Geräts mit GPU (Graphics Processing Unit, Grafikprozessor) entsprechen den in diesem Artikel beschriebenen technischen Spezifikationen und gesetzlichen Richtlinien. In den technischen Spezifikationen werden die Hardware, Netzteile, Speicherkapazität, Gehäuse und Umgebungsstandards beschrieben.
+Die Hardwarekomponenten Ihres Azure Stack Edge Pro-Geräts mit integriertem Grafikprozessor (Graphics Processing Unit, GPU) entsprechen den in diesem Artikel beschriebenen technischen Spezifikationen und gesetzlichen Richtlinien. In den technischen Spezifikationen werden die Hardware, Netzteile, Speicherkapazität, Gehäuse und Umgebungsstandards beschrieben.
 
 ## <a name="compute-and-memory-specifications"></a>Spezifikationen zu Compute- und Arbeitsspeicherressourcen
 
-Das Azure Stack Edge-Gerät verfügt über die folgenden Spezifikationen für Compute- und Arbeitsspeicherressourcen:
+Das Azure Stack Edge Pro-Gerät verfügt über die folgenden Spezifikationen für Compute- und Arbeitsspeicherressourcen:
 
 | Spezifikation           | Wert                  |
 |-------------------------|----------------------------|
@@ -31,7 +31,7 @@ Das Azure Stack Edge-Gerät verfügt über die folgenden Spezifikationen für Co
 
 ## <a name="compute-acceleration-specifications"></a>Spezifikationen zur Computebeschleunigung
 
-Jedes Azure Stack Edge-Gerät verfügt über einen Grafikprozessor (GPU), der die Implementierung von Kubernetes-, Deep Learning- und Machine Learning-Szenarien ermöglicht.
+Jedes Azure Stack Edge Pro-Gerät verfügt über einen Grafikprozessor (GPU), der die Implementierung von Kubernetes-, Deep Learning- und Machine Learning-Szenarien ermöglicht.
 
 | Spezifikation           | Wert                  |
 |-------------------------|----------------------------|
@@ -40,7 +40,7 @@ Jedes Azure Stack Edge-Gerät verfügt über einen Grafikprozessor (GPU), der di
 
 ## <a name="power-supply-unit-specifications"></a>Spezifikationen für Netzteile
 
-Das Azure Stack Edge-Gerät verfügt über zwei Netzteile mit 100-240 V und leistungsstarken Lüftern. Dadurch wird eine redundante Stromversorgungskonfiguration gewährleistet. Beim Ausfall eines Netzteils wird das Gerät mit dem anderen Netzteil normal weiterbetrieben, bis die fehlerhafte Einheit ausgetauscht wird. In der folgenden Tabelle sind die technischen Spezifikationen der Netzteile aufgeführt:
+Das Azure Stack Edge Pro-Gerät verfügt über zwei Netzteile mit 100-240 V und leistungsstarken Lüftern. Dadurch wird eine redundante Stromversorgungskonfiguration gewährleistet. Beim Ausfall eines Netzteils wird das Gerät mit dem anderen Netzteil normal weiterbetrieben, bis die fehlerhafte Einheit ausgetauscht wird. In der folgenden Tabelle sind die technischen Spezifikationen der Netzteile aufgeführt:
 
 | Spezifikation           | 750 Watt-Netzteil                  |
 |-------------------------|----------------------------|
@@ -52,13 +52,13 @@ Das Azure Stack Edge-Gerät verfügt über zwei Netzteile mit 100-240 V und lei
 
 ## <a name="network-interface-specifications"></a>Netzwerkschnittstellenspezifikationen
 
-Ihr Azure Stack Edge-Gerät verfügt über sechs Netzwerkschnittstellen, PORT1-PORT6.
+Ihr Azure Stack Edge Pro-Gerät verfügt über sechs Netzwerkschnittstellen: PORT1 – PORT6.
 
 | Spezifikation           | BESCHREIBUNG                 |
 |-------------------------|----------------------------|
 |  Netzwerkschnittstellen    | **2 1-GbE-Schnittstellen**: Eine Verwaltungsschnittstelle (Port 1) wird für die anfängliche Einrichtung verwendet. Dies ist standardmäßig ein statischer Port. Nach Abschluss der anfänglichen Einrichtung kann die Schnittstelle für Daten mit einer beliebigen IP-Adresse verwendet werden. Beim Zurücksetzen wird jedoch erneut eine statische IP-Adresse verwendet. <br>Die zweite Schnittstelle (Port 2) kann vom Benutzer konfiguriert und für die Datenübertragung verwendet werden. Dieser Port ist standardmäßig als DHCP-Schnittstelle konfiguriert. <br>**4 25-GbE-Schnittstellen**: Diese Datenschnittstellen (Port 3 bis Port 6) können vom Benutzer als DHCP- (Standard) oder statische Schnittstelle konfiguriert werden. Sie können auch als 10-GbE-Schnittstellen genutzt werden.  | 
 
-Ihr Azure Stack Edge-Gerät verfügt über folgende Netzwerkhardware:
+Ihr Azure Stack Edge Pro-Gerät enthält folgende Netzwerkhardware:
 
 * **Benutzerdefinierter Microsoft QLogic Cavium 25G NDC-Adapter**: Port 1 bis Port 4.
 * **Mellanox Dual Port 25G ConnectX-4-Kanal-Netzwerkadapter**: Port 5 und Port 6.
@@ -79,7 +79,7 @@ Eine vollständige Liste der unterstützten Kabel, Switches und Transceiver für
 
 ## <a name="storage-specifications"></a>Speicherspezifikation
 
-Die Azure Stack Edge-Geräte verfügen über fünf NVMe DC P4610-SSDs mit 2,5 Zoll und einer Kapazität von je 1,6 TB. Das Startlaufwerk ist ein SATA-SSD-Datenträger mit 240 GB. Die insgesamt verwendbare Kapazität für das Gerät beträgt etwa 8,28 TB. In der folgenden Tabelle ist die Speicherkapazität des Geräts aufgeführt.
+Die Azure Stack Edge Pro-Geräte verfügen über fünf NVMe DC P4610-SSDs mit 2,5 Zoll und einer Kapazität von jeweils 1,6 TB. Das Startlaufwerk ist ein SATA-SSD-Datenträger mit 240 GB. Die insgesamt verwendbare Kapazität für das Gerät beträgt etwa 8,28 TB. In der folgenden Tabelle ist die Speicherkapazität des Geräts aufgeführt.
 
 |     Spezifikation                          |     Wert             |
 |--------------------------------------------|-----------------------|
@@ -97,7 +97,7 @@ Die Azure Stack Edge-Geräte verfügen über fünf NVMe DC P4610-SSDs mit 2,5 Z
 <!--Remove based on feedback from Ravi
 ## Other hardware specifications
 
-Your Azure Stack Edge device also contains the following hardware:
+Your Azure Stack Edge Pro device also contains the following hardware:
 
 * iDRAC baseboard management
 * Performance fans
@@ -172,4 +172,4 @@ Dieser Abschnitt enthält die Spezifikationen im Zusammenhang mit der Gehäuseum
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Bereitstellen Ihres Azure Stack Edge-Geräts](azure-stack-edge-gpu-deploy-prep.md)
+[Bereitstellen Ihres Azure Stack Edge Pro-Geräts](azure-stack-edge-gpu-deploy-prep.md)

@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: bf30fc5e6ccfc0f59c1769245e58177428472156
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 3d35a1f6913d0b657956489d0e57836a05f9eb1d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701816"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900052"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure Cognitive Services-Containern
 
@@ -22,11 +22,16 @@ ms.locfileid: "83701816"
 
 **F: Was ist verfügbar?**
 
-**A:** Mithilfe von Azure Cognitive Services-Containern können Entwickler dieselben intelligenten APIs wie in Azure verwenden, die dabei aber über die [Vorteile](../cognitive-services-container-support.md#features-and-benefits) der Containerisierung verfügen. Einige Container sind als geschlossene Vorschau verfügbar, für die möglicherweise eine Bewerbung für den Zugriff erforderlich ist. Andere Container sind als nicht geschlossene Vorschauversion öffentlich oder allgemein verfügbar. Eine vollständige Liste der Container und ihrer Verfügbarkeit finden Sie im Artikel [Containerunterstützung in Azure Cognitive Services](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services). 
+**A:** Mithilfe von Azure Cognitive Services-Containern können Entwickler dieselben intelligenten APIs wie in Azure verwenden, die dabei aber über die [Vorteile](../cognitive-services-container-support.md#features-and-benefits) der Containerisierung verfügen. Einige Container sind als geschlossene Vorschau verfügbar, für die möglicherweise eine Bewerbung für den Zugriff erforderlich ist. Andere Container sind als nicht geschlossene Vorschauversion öffentlich oder allgemein verfügbar. Eine vollständige Liste der Container und ihrer Verfügbarkeit finden Sie im Artikel [Containerunterstützung in Azure Cognitive Services](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services). Sie können die Container auch im [Docker Hub](https://hub.docker.com/_/microsoft-azure-cognitive-services) anzeigen.
 
 **F: Gibt es einen Unterschied zwischen der Cognitive Services-Cloud und den Containern?**
 
 **A:** Cognitive Services-Container sind eine Alternative zur Cognitive Services-Cloud. Container bieten dieselben Funktionen wie die entsprechenden Clouddienste. Kunden können die Container lokal oder in Azure bereitstellen. Die KI-Kerntechnologie, die Tarife, die API-Schlüssel und die API-Signatur sind zwischen dem Container und den entsprechenden Clouddiensten identisch. Hier sind die [Features und Vorteile](../cognitive-services-container-support.md#features-and-benefits) für die Auswahl von Containern gegenüber ihrer Entsprechung für Clouddienste aufgeführt.
+
+**F: Wie kann ich auf einen Container der beschränkten Vorschauversion zugreifen und diesen verwenden?**
+
+**A:** Bisher wurden Container der beschränkten Vorschau im Repository `containerpreview.azurecr.io` gehostet. Ab dem 22. September 2020 werden diese Container in Microsoft Container Registry gehostet. Für den Download muss nicht der Docker-Anmeldebefehl verwendet werden. Sie können einen Container der beschränkten Vorschau ausführen, wenn Ihre Azure-Ressource mit einer genehmigten Azure-Abonnement-ID erstellt wurde. Sie können den Container nicht ausführen, wenn Ihr Azure-Abonnement nach dem Ausfüllen des [Anforderungsformulars](https://aka.ms/csgate) nicht genehmigt wurde.
+
 
 **F: Werden Container für alle Cognitive Services zur Verfügung gestellt und welchen Containersatz können wir als nächstes erwarten?**
 
@@ -76,6 +81,22 @@ Wir testen keine Container mit OpenShift, aber im Allgemeinen sollten Cognitive 
 **F: Wie stelle ich Produktfeedback und Featureempfehlungen bereit?**
 
 **A:** Kunden werden aufgefordert, [ihre Bedenken öffentlich zu äußern](https://cognitive.uservoice.com/) und andere, die ebenso vorgegangen sind, an den Stellen, an denen sich potenzielle Probleme überschneiden, zu unterstützen. Das User Voice Tool kann sowohl für Produktfeedback als auch für Featureempfehlungen verwendet werden.
+
+**F: Welche Statusmeldungen und Fehler werden von Cognitive Services-Containern zurückgegeben?**
+
+**A:** In der folgenden Tabelle finden Sie eine Liste von Statusmeldungen und Fehlern.
+
+|Status  | Beschreibung  |
+|---------|---------|
+| `Valid` | Ihr API-Schlüssel ist gültig, es ist keine Aktion erforderlich. |
+| `Invalid` |   Ihr API-Schlüssel ist ungültig. Sie müssen einen gültigen API-Schlüssel angeben, um den Container auszuführen. Sie finden den API-Schlüssel und die Dienstregion im Azure-Portal im Abschnitt **Schlüssel und Endpunkt** Ihrer Azure Cognitive Services-Ressource. |
+| `Mismatch` | Sie haben einen API-Schlüssel oder -Endpunkt für einen anderen Typ von Cognitive Services-Ressource angegeben. Sie finden den API-Schlüssel und die Dienstregion im Abschnitt **Schlüssel und Endpunkt** Ihrer Azure Cognitive Services-Ressource. |
+| `CouldNotConnect` | Der Container konnte keine Verbindung mit dem Abrechnungsendpunkt herstellen. Überprüfen Sie den Wert von `Retry-After`, und warten Sie, bis dieser Zeitraum abgelaufen ist, bevor Sie zusätzliche Anforderungen übermitteln. |
+| `OutOfQuota` | Der API-Schlüssel hat das Kontingent überschritten. Sie können entweder ein Upgrade Ihres Tarifs durchführen oder warten, bis zusätzliches Kontingent verfügbar gemacht wird. Sie finden Ihren Tarif im Azure-Portal im Abschnitt **Tarif** Ihrer Azure Cognitive Service-Ressource. |
+| `BillingEndpointBusy` | Der Abrechnungsendpunkt ist zurzeit ausgelastet. Überprüfen Sie den Wert von `Retry-After`, und warten Sie, bis dieser Zeitraum abgelaufen ist, bevor Sie zusätzliche Anforderungen übermitteln. |
+| `ContainerUseUnauthorized` | Der angegebene API-Schlüssel ist nicht für die Verwendung mit diesem Container autorisiert. Sie verwenden wahrscheinlich einen Container der eingeschränkten Vorschauversion. Stellen Sie daher sicher, dass Ihre Azure-Abonnement-ID genehmigt wurde, indem Sie eine [Onlineanforderung](https://aka.ms/csgate) übermitteln. |
+| `Unknown` | Der Server kann derzeit keine Abrechnungsanforderungen verarbeiten. |
+
 
 **F: An wen kann ich mich wenden, um Support zu erhalten?**
 
