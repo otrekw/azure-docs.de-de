@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 0fc4e9a794429e7f1c1609fac287e67dabb3c878
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: d398cfe063dbbb2bc87a3debf1669afa6a16b43e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875458"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891996"
 ---
 # <a name="power-bi-output-from-azure-stream-analytics"></a>Power BI-Ausgabe für Azure Stream Analytics
 
@@ -20,7 +20,7 @@ Sie können [Power BI](https://powerbi.microsoft.com/) als Ausgabe für einen St
 
 Die Power BI-Ausgabe aus Stream Analytics ist zurzeit nicht in den Regionen Azure China 21Vianet und Azure Deutschland (T-Systems International) verfügbar.
 
-## <a name="ouput-configuration"></a>Ausgabekonfiguration
+## <a name="output-configuration"></a>Ausgabekonfiguration
 
 In der folgenden Tabelle sind Eigenschaftsnamen und deren Beschreibungen aufgeführt, um Ihre Power BI-Ausgabe zu konfigurieren.
 
@@ -82,4 +82,4 @@ Informationen zur Ausgabebatchgröße finden Sie unter [Einschränkungen für Po
 * [Schnellstart: Erstellen eines Azure Stream Analytics-Auftrags mithilfe einer ARM-Vorlage](quick-create-azure-resource-manager.md)
 * [Schnellstart: Erstellen eines Stream Analytics-Auftrags mit Azure PowerShell](stream-analytics-quick-create-powershell.md)
 * [Schnellstart: Erstellen eines Azure Stream Analytics-Auftrags mithilfe von Visual Studio](stream-analytics-quick-create-vs.md)
-* [Schnellstart: Erstellen eines Azure Stream Analytics-Auftrags in Visual Studio Code](quick-create-vs-code.md)
+* [Schnellstart: Erstellen eines Azure Stream Analytics-Auftrags in Visual Studio Code](quick-create-visual-studio-code.md)

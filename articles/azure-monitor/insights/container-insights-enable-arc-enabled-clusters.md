@@ -3,12 +3,12 @@ title: Konfigurieren von Kubernetes-Clustern mit Azure Arc-Aktivierung mit Azure
 description: In diesem Artikel wird beschrieben, wie Sie mit Azure Monitor die Überwachung für Container auf Kubernetes-Clustern mit Azure Arc-Aktivierung konfigurieren können.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: f8002b20f37ca5149c58ca3e29402916ebbc1333
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 54a8fea6ddb46dc00fff29ad83a2a348d9218380
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092880"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090617"
 ---
 # <a name="enable-monitoring-of-azure-arc-enabled-kubernetes-cluster"></a>Aktivieren der Überwachung eines Kubernetes-Clusters mit Azure Arc-Aktivierung
 
@@ -124,7 +124,7 @@ Wenn Sie die Überwachung Ihres Clusters mithilfe eines zuvor heruntergeladenen 
 4. Wenn Sie einen vorhandenen Azure Monitor Log Analytics-Arbeitsbereich verwenden möchten, konfigurieren Sie die Variable `$logAnalyticsWorkspaceResourceId` mit dem entsprechenden Wert, der die Ressourcen-ID des Arbeitsbereichs darstellt. Legen Sie andernfalls die Variable auf `""` fest, und das Skript erstellt einen Standardarbeitsbereich in der Standardressourcengruppe des Clusterabonnements, wenn noch keiner in der Region vorhanden ist. Das Format des Standardarbeitsbereichs ähnelt *DefaultWorkspace-\<SubscriptionID>-\<Region>* .
 
     ```powershell
-    $logAnalyticsWorkspaceResourceId = “/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/microsoft.operationalinsights/workspaces/<workspaceName>”
+    $logAnalyticsWorkspaceResourceId = "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/microsoft.operationalinsights/workspaces/<workspaceName>"
     ```
 
 5. Wenn Ihr Kubernetes-Cluster mit Arc-Aktivierung über einen Proxyserver kommuniziert, konfigurieren Sie die Variable `$proxyEndpoint` mit der URL des Proxyservers. Wenn der Cluster nicht über einen Proxyserver kommuniziert, können Sie den Wert auf `""` festlegen.  Weitere Informationen finden Sie unter [Konfigurieren des Proxyendpunkts](#configure-proxy-endpoint) weiter unten in diesem Artikel.

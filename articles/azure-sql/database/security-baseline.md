@@ -4,15 +4,15 @@ description: Azure-Sicherheitsbaseline für Azure SQL-Datenbank und Azure SQL Ma
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 04/09/2020
+ms.date: 09/21/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 846d66a1cf1bb1d97f7ab9d7dfd7bbcf43d3f8d6
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: ce297b436ce79a4a0a14d0f6e9ad900de61a8dc9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231026"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885202"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database--sql-managed-instance"></a>Azure-Sicherheitsbaseline für Azure SQL-Datenbank und SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -285,15 +285,15 @@ https://docs.microsoft.com/azure/sql-database/sql-database-insights-alerts-porta
 
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7: Aktivieren von Warnungen für anormale Aktivitäten
 
-**Leitfaden**: Verwenden Sie Advanced Threat Protection von Azure Security Center für Azure SQL-Datenbank, um die Überwachung auf anomale Aktivitäten zu ermöglichen und entsprechende Warnungen zu erhalten. Aktivieren Sie Advanced Data Security für Ihre SQL-Datenbanken. Advanced Data Security enthält Funktionen zur Ermittlung und Klassifizierung sensibler Daten, Ermittlung und Entschärfung potenzieller Datenbanksicherheitsrisiken und Erkennung ungewöhnlicher Aktivitäten, die eine Bedrohung für Ihre Datenbank darstellen können.
+**Leitfaden**: Verwenden Sie Advanced Threat Protection von Azure Security Center für Azure SQL-Datenbank, um die Überwachung auf anomale Aktivitäten zu ermöglichen und entsprechende Warnungen zu erhalten. Aktivieren Sie Azure Defender für SQL für Ihre SQL-Datenbanken. Azure Defender für SQL umfasst Funktionen zur Ermittlung und Verringerung potenzieller Datenbankschwachstellen und Erkennung ungewöhnlicher Aktivitäten, die eine Bedrohung für Ihre Datenbank darstellen können.
 
 Grundlegendes zu Advanced Threat Protection und zu Warnungen für Azure SQL-Datenbank:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview
 
-Aktivieren von Advanced Data Security für Azure SQL-Datenbank:
+So aktivieren Sie Azure Defender für SQL für Azure SQL-Datenbank
 
-https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security
+https://docs.microsoft.com/azure/azure-sql/database/azure-defender-for-sql
 
 Verwalten von Warnungen in Azure Security Center:
 
@@ -333,7 +333,7 @@ https://docs.microsoft.com/azure/security-center/security-center-managing-and-re
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: Verwalten eines Bestands von Administratorkonten
 
-**Leitfaden**: Azure Active Directory (AAD) umfasst integrierte Rollen, die explizit zugewiesen werden müssen und abgefragt werden können. Verwenden Sie das AAD PowerShell-Modul, um Ad-hoc-Abfragen zum Ermitteln von Konten durchzuführen, die Mitglieder von Verwaltungsgruppen sind.
+**Leitfaden**: Azure Active Directory (Azure AD) umfasst integrierte Rollen, die explizit zugewiesen werden müssen und abgefragt werden können. Verwenden Sie das Azure AD PowerShell-Modul, um Ad-hoc-Abfragen zum Ermitteln von Konten auszuführen, die Mitglieder von administrativen Gruppen sind.
 
 Abrufen einer Verzeichnisrolle in Azure AD mit PowerShell:
 
@@ -381,7 +381,7 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5: Verwenden der mehrstufigen Authentifizierung für den gesamten Azure Active Directory-basierten Zugriff
 
-**Leitfaden**: Aktivieren Sie die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) für Azure Active Directory (AAD), und befolgen Sie die Empfehlungen für die Identitäts- und Zugriffsverwaltung in Azure Security Center.
+**Leitfaden**: Aktivieren Sie die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) für Azure Active Directory (Azure AD), und befolgen Sie die Empfehlungen für die Identitäts- und Zugriffsverwaltung in Azure Security Center.
 
 Aktivieren von MFA in Azure:
 
@@ -445,13 +445,13 @@ Konfigurieren benannter Standorte in Azure: https://docs.microsoft.com/azure/act
 
 ### <a name="39-use-azure-active-directory"></a>3.9: Verwenden von Azure Active Directory
 
-**Leitfaden**: Erstellen eines Azure Active Directory-Administrators (AAD) für Ihren Server
+**Leitfaden**: Erstellen Sie einen Azure Active Directory-Administrator (AAD) für Ihren Server.
 
 Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit Azure SQL:
 
 https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure
 
-Erstellen und Konfigurieren einer AAD-Instanz:
+So erstellen und konfigurieren Sie eine Azure AD-Instanz
 
 https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance
 
@@ -461,7 +461,7 @@ https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-creat
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10: Regelmäßiges Überprüfen und Abstimmen des Benutzerzugriffs
 
-**Leitfaden**: Azure Active Directory (AAD) enthält Protokolle zum Ermitteln von veralteten Konten. Verwenden Sie zusätzlich Zugriffsüberprüfungen für Azure-Identitäten, um Gruppenmitgliedschaften, den Zugriff auf Unternehmensanwendungen und Rollenzuweisungen effizient zu verwalten. Der Benutzerzugriff kann regelmäßig überprüft werden, um sicherzustellen, dass nur die richtigen Benutzer weiterhin Zugriff besitzen.
+**Leitfaden**: Azure Active Directory (Azure AD) enthält Protokolle zum Ermitteln von veralteten Konten. Verwenden Sie zusätzlich Zugriffsüberprüfungen für Azure-Identitäten, um Gruppenmitgliedschaften, den Zugriff auf Unternehmensanwendungen und Rollenzuweisungen effizient zu verwalten. Der Benutzerzugriff kann regelmäßig überprüft werden, um sicherzustellen, dass nur die richtigen Benutzer weiterhin Zugriff besitzen.
 
 Verwenden von Zugriffsüberprüfungen für Azure-Identitäten:
 
@@ -655,15 +655,15 @@ https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1: Ausführen automatisierter Scan-Tools für Sicherheitsrisiken
 
-**Leitfaden**: Aktivieren Sie Advanced Data Security für Azure SQL-Datenbank, und halten Sie sich an die Azure Security Center-Empfehlungen zur Durchführung von Sicherheitsrisikobewertungen auf Ihren Servern.
+**Leitfaden**: Aktivieren Sie Azure Defender für SQL für Azure SQL-Datenbank, und halten Sie sich an die Azure Security Center-Empfehlungen zur Durchführung von Sicherheitsrisikobewertungen auf Ihren Servern.
 
 Durchführen von Sicherheitsrisikobewertungen für Azure SQL-Datenbank-Instanzen:
 
 https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment
 
-Aktivieren von Advanced Data Security:
+So aktivieren Sie Azure Defender für SQL
 
-https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security
+https://docs.microsoft.com/azure/azure-sql/database/azure-defender-for-sql
 
 Implementieren von Empfehlungen für die Sicherheitsrisikobewertung aus Azure Security Center:
 
@@ -993,7 +993,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azur
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12: Sicheres und automatisches Verwalten von Identitäten
 
-**Leitfaden**: Verwenden Sie verwaltete Identitäten, um Azure-Dienste mit einer automatisch verwalteten Identität in Azure Active Directory (AAD) bereitzustellen. Mit verwalteten Identitäten können Sie die Authentifizierung bei jedem Dienst verwenden, der die AAD-Authentifizierung unterstützt, einschließlich Azure Key Vault. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein.
+**Leitfaden**: Verwenden Sie verwaltete Identitäten, um Azure-Dienste mit einer automatisch verwalteten Identität in Azure Active Directory (AAD) bereitzustellen. Mit verwalteten Identitäten können Sie die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung unterstützt, einschließlich Azure Key Vault. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein.
 
 Tutorial: Verwenden der systemseitig zugewiesenen verwalteten Identität eines virtuellen Windows-Computers für den Zugriff auf Azure SQL:
 

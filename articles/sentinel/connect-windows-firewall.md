@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/05/2020
 ms.author: yelevin
-ms.openlocfilehash: b2cf984e629d6b86beef9292dac819b554f49749
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 5518da7d22d14de105c07e88b14e94d4b184269b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850694"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883810"
 ---
 # <a name="connect-windows-defender-firewall-with-advanced-security-to-azure-sentinel"></a>Verknüpfen von Windows Defender Firewall über erweiterte Sicherheit mit Azure Sentinel
 
@@ -31,7 +31,7 @@ Die Lösung sammelt Windows-Firewallereignisse von den Windows-Computern, auf de
 > [!NOTE]
 > - Daten werden am geografischen Standort des Arbeitsbereichs gespeichert, in dem Sie Azure Sentinel ausführen.
 >
-> - Wenn Azure Sentinel und Azure Security Center im selben Arbeitsbereich gesammelt werden, ist es nicht erforderlich, die Windows-Firewall-Lösung über diesen Connector zu aktivieren. Wenn Sie sie trotzdem aktivieren, führt dies nicht zu doppelten Daten. 
+> - Wenn Azure Defender-Benachrichtigungen aus dem Azure Security Center bereits im Azure Sentinel-Arbeitsbereich gesammelt werden, ist es nicht erforderlich, die Windows-Firewall-Lösung über diesen Connector zu aktivieren. Wenn Sie es trotzdem aktiviert haben, führt dies nicht zu doppelt vorhandenen Daten. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

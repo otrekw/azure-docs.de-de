@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7aeea1a0b151968683248b26a2c12f49b437bd2
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: c16882f35c9ca79644cd2b51ce4cd88bba516ed2
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89278563"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89652072"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung
 In diesem Artikel finden Sie alle Informationen, die Sie benötigen, um Benutzerkennwörter aus einer lokalen Active Directory-Instanz mit einer cloudbasierten Azure Active Directory-Instanz (Azure AD) zu synchronisieren.
@@ -132,7 +132,7 @@ Mit der Funktion für das temporäre Kennwort können Sie sicherstellen, dass di
 
 Wenn Sie in Azure AD temporäre Kennwörter für synchronisierte Benutzer unterstützen möchten, können Sie das Feature *ForcePasswordChangeOnLogOn* aktivieren, indem Sie auf Ihrem Azure AD Connect-Server den folgenden Befehl ausführen:
 
-`Set-ADSyncAADCompanyFeature  -ForcePasswordChangeOnLogOn $true`
+`Set-ADSyncAADCompanyFeature -ForcePasswordChangeOnLogOn $true`
 
 > [!NOTE]
 > Wenn ein Benutzer gezwungen wird, sein Kennwort bei der nächsten Anmeldung zu ändern, muss gleichzeitig eine Kennwortänderung vorgenommen werden.  Azure AD Connect wählt das Flag zum Erzwingen der Kennwortänderung nicht selbst aus. Es ist eine Ergänzung zur erkannten Kennwortänderung, die bei der Kennworthashsynchronisierung erfolgt.

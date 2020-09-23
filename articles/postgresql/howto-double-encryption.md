@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: 6612fe38adcd3c8002dd4a11122b5bb2e797a4dd
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 362c051cf1dd7e97430bd6afaf4821a9c960b71d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102173"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901538"
 ---
 # <a name="infrastructure-double-encryption-for-azure-database-for-postgresql"></a>Doppelte Infrastrukturverschlüsselung für Azure Database for PostgreSQL
 
@@ -23,25 +23,25 @@ Erfahren Sie, wie Sie die doppelte Infrastrukturverschlüsselung für Azure Data
 
 ## <a name="create-an-azure-database-for-postgresql-server-with-infrastructure-double-encryption---portal"></a>Erstellen eines Azure Database for PostgreSQL-Servers mit doppelter Infrastrukturverschlüsselung im Portal
 
-Führen Sie die folgenden Schritte aus, um im Azure-Portal einen Azure Database for PostgreSQL-Server mit doppelter Infrastrukturverschlüsselung zu erstellen:
+Führen Sie die folgenden Schritte aus, um im Azure-Portal einen Azure Database for MySQL-Server mit doppelter Infrastrukturverschlüsselung zu erstellen:
 
 1. Wählen Sie links oben im Portal **Ressource erstellen** (+) aus.
 
 2. Wählen Sie **Datenbanken** > **Azure-Datenbank für PostgreSQL** aus. Sie können auch „PostgreSQL“ in das Suchfeld eingeben, um nach dem Dienst zu suchen. Aktivieren Sie die Bereitstellungsoption **Einzelserver**.
 
-   ![Das Menü „Azure Database for PostgreSQL“](./media/quickstart-create-database-portal/1-create-database.png)
+   :::image type="content" source="./media/quickstart-create-database-portal/1-create-database.png" alt-text="Azure Database for PostgreSQL im Menü":::
 
 3. Geben Sie die grundlegenden Informationen des Servers an. Wählen Sie **Zusätzliche Einstellungen** aus, und aktivieren Sie das Kontrollkästchen **Doppelte Infrastrukturverschlüsselung**, um den Parameter festzulegen.
 
-    ![Gewählte Optionen für Azure Database for PostgreSQL](./media/howto-infrastructure-double-encryption/infrastructure-encryption-selected.png)
+    :::image type="content" source="./media/howto-infrastructure-double-encryption/infrastructure-encryption-selected.png" alt-text="Gewählte Optionen für Azure Database for PostgreSQL":::
 
 4. Wählen Sie **Bewerten + erstellen** aus, um den Server bereitzustellen.
 
-    ![Azure Database for PostgreSQL: Zusammenfassung](./media/howto-infrastructure-double-encryption/infrastructure-encryption-summary.png)
+    :::image type="content" source="./media/howto-infrastructure-double-encryption/infrastructure-encryption-summary.png" alt-text="Azure Database for PostgreSQL: Zusammenfassung":::
 
 5. Sobald der Server erstellt ist, können Sie die doppelte Infrastrukturverschlüsselung bestätigen, indem Sie den Status auf dem Blatt **Datenverschlüsselung** des Servers überprüfen.
 
-    ![Azure Database for PostgreSQL: Überprüfung](./media/howto-infrastructure-double-encryption/infrastructure-encryption-validation.png)
+    :::image type="content" source="./media/howto-infrastructure-double-encryption/infrastructure-encryption-validation.png" alt-text="Azure Database for PostgreSQL: Überprüfung":::
 
 ## <a name="create-an-azure-database-for-postgresql-server-with-infrastructure-double-encryption---cli"></a>Erstellen eines Azure Database for PostgreSQL-Servers mit doppelter Infrastrukturverschlüsselung mithilfe der CLI
 

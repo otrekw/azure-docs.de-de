@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: d94170ade3de7e7fc128fe85437db59822694add
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 25f263a5c9ccdc67f1ab8353e616a6dded0c7f7e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86117813"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901671"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-postgresql---single-server"></a>Advanced Threat Protection für Azure Database for PostgreSQL: Einzelserver
 
@@ -34,7 +34,7 @@ Advanced Threat Protection ist Teil des Angebots „Advanced Data Security“ (E
    - Aktivieren Sie Advanced Threat Protection auf dem Server.
    - Geben Sie unter **Advanced Threat Protection Settings** (Advanced Threat Protection-Einstellungen) im Textfeld **Warnungen senden an** eine Liste von E-Mail-Adressen an, die Sicherheitswarnungen bei der Erkennung von anomalen Datenbankaktivitäten empfangen sollen.
   
-   ![Einrichten der Bedrohungserkennung](./media/howto-database-threat-protection-portal/set-up-threat-protection.png)
+   :::image type="content" source="./media/howto-database-threat-protection-portal/set-up-threat-protection.png" alt-text="Einrichten der Bedrohungserkennung":::
 
 ## <a name="explore-anomalous-database-activities"></a>Untersuchen anormaler Datenbankaktivitäten
 
@@ -42,15 +42,15 @@ Bei Erkennung anormaler Datenbankaktivitäten erhalten Sie eine E-Mail-Benachric
     
 1. Klicken Sie in der E-Mail auf den Link **View recent alerts** (Aktuelle Warnungen anzeigen), um das Azure-Portal zu starten und die Azure Security Center-Seite für Warnungen zu öffnen, auf der eine Übersicht über die aktiven Bedrohungen angezeigt wird, die in der SQL-Datenbank erkannt wurden.
     
-    ![Bericht zu anomalen Aktivitäten](./media/howto-database-threat-protection-portal/anomalous-activity-report.png)
+    :::image type="content" source="./media/howto-database-threat-protection-portal/anomalous-activity-report.png" alt-text="Bericht zu anomalen Aktivitäten":::
 
     Anzeigen aktiver Bedrohungen:
 
-    ![Aktive Bedrohungen](./media/howto-database-threat-protection-portal/active-threats.png)
+    :::image type="content" source="./media/howto-database-threat-protection-portal/active-threats.png" alt-text="Aktive Bedrohungen":::
 
 2. Klicken Sie auf eine bestimmte Warnung, um weitere Details und Aktionen zum Untersuchen der entsprechenden Bedrohung und Abwehren zukünftiger Bedrohungen anzuzeigen.
     
-    ![Spezifische Warnung](./media/howto-database-threat-protection-portal/specific-alert.png)
+    :::image type="content" source="./media/howto-database-threat-protection-portal/specific-alert.png" alt-text="Spezifische Warnung":::
 
 ## <a name="explore-threat-detection-alerts"></a>Untersuchen von Warnungen der Bedrohungserkennung
 
@@ -58,7 +58,7 @@ Warnungen von Advanced Threat Protection sind in [Azure Security Center](https:/
 
 Klicken Sie unter **BEDROHUNGSSCHUTZ** auf **Sicherheitswarnungen**, um die Azure Security Center-Seite für Warnungen zu öffnen und eine Übersicht über die aktiven SQL-Bedrohungen zu erhalten, die in der Datenbank erkannt wurden.
 
-  ![Bedrohungsschutz – ASC](./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png)
+  :::image type="content" source="./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png" alt-text="Bedrohungsschutz – ASC":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

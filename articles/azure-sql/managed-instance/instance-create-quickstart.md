@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: sstein, carlrab
 ms.date: 09/26/2019
-ms.openlocfilehash: b2d43e970012209acb6ed7fbbaafbb1719617280
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 1899baa927bffdaedd1d7ee00f442c449480fc04
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533868"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986847"
 ---
 # <a name="quickstart-create-a-managed-instance-of-sql-managed-instance"></a>Schnellstart: Erstellen einer verwalteten Instanz von Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -124,7 +124,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto erst
 > 3. Wählen Sie den Vorgang für die Bereitstellung der verwalteten SQL-Instanz aus, der derzeit durchgeführt wird.
 
 > [!IMPORTANT]
-> - Die Erstellung einer SQL Managed Instance-Instanz ist ein Vorgang mit langer Ausführungsdauer, der abhängig von bestimmten Umständen jeweils einige Stunden dauern kann. Informationen zu typischen Erstellungszeiten finden Sie unter [Dauer von Verwaltungsvorgängen](management-operations-overview.md#management-operations-duration).
+> - Die Erstellung einer SQL Managed Instance-Instanz ist ein Vorgang mit langer Ausführungsdauer, der abhängig von bestimmten Umständen jeweils einige Stunden dauern kann. Informationen zu typischen Erstellungszeiten finden Sie unter [Dauer von Verwaltungsvorgängen](management-operations-overview.md#duration).
 > - Der Start der SQL Managed Instance-Erstellung kann sich verzögern, wenn andere Vorgänge vorhanden sind, die sich auf die Erstellung auswirken. Dazu zählen Wiederherstellungs- oder Skalierungsvorgänge mit langer Ausführungszeit für andere verwaltete Instanzen im gleichen Subnetz. Weitere Informationen finden Sie unter [Wechselseitige Auswirkungen von Verwaltungsvorgängen](management-operations-overview.md#management-operations-cross-impact).
 > - Sie müssen über **Leseberechtigungen** für die Ressourcengruppe verfügen, um den Status für die Erstellung von verwalteten Instanzen abrufen zu können. Falls Sie nicht über diese Berechtigung verfügen oder sie während der Erstellung der verwalteten SQL-Instanz widerrufen, kann dies dazu führen, dass Azure SQL Managed Instance in der Liste mit den bereitgestellten Ressourcengruppen nicht angezeigt wird.
 >

@@ -8,14 +8,14 @@ ms.custom: sqldbrb=2
 author: VanMSFT
 ms.author: vanto
 ms.topic: article
-ms.date: 02/20/2020
+ms.date: 09/21/2020
 ms.reviewer: ''
-ms.openlocfilehash: 6630b924decacc5ff59611c657e1d7e38b1813a7
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: e418e64fe9fbe98fbd8da4e75a81c05d5e3d118d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541718"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885175"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Playbook für den Umgang mit allgemeinen Sicherheitsanforderungen für Azure SQL-Datenbank und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -33,7 +33,7 @@ Dieses Dokument enthält Anleitungen zur Lösung allgemeiner Sicherheitsanforder
 
 ### <a name="deployment-offers-not-covered-in-this-guide"></a>Bereitstellungsangebote, die in diesem Leitfaden nicht behandelt werden
 
-- Azure SQL Data Warehouse
+- Azure Synapse Analytics (ehemals SQL Data Warehouse)
 - Azure SQL-VMs (IaaS)
 - SQL Server
 
@@ -647,7 +647,7 @@ Mit Advanced Threat Protection können Sie potenzielle Bedrohungen erkennen, sob
 
 **Bewährte Methoden:**
 
-- Konfigurieren von [Advanced Data Security (ADS)](advanced-data-security.md#getting-started-with-ads) für einen bestimmten Server oder eine verwaltete Instanz. Sie können ADS auch für alle Server und verwalteten Instanzen in einem Abonnement konfigurieren, indem Sie in den [Standardtarif von Azure Security Center](../../security-center/security-center-pricing.md) wechseln.
+- Konfigurieren Sie [Azure Defender für SQL](azure-defender-for-sql.md)  für einen spezifischen Server oder eine verwaltete Instanz. Sie können Azure Defender für SQL auch für alle Server und verwalteten Instanzen in einem Abonnement konfigurieren, indem Sie in den [Standardtarif von Azure Security Center](../../security-center/security-center-pricing.md) wechseln.
 
 - Für eine vollständige Untersuchung wird empfohlen, die  [SQL-Datenbanküberwachung](../../azure-sql/database/auditing-overview.md) zu aktivieren. Mit der Überwachung können Sie Datenbankereignisse nachverfolgen und in ein Überwachungsprotokoll in einem Azure Storage-Konto oder Azure Log Analytics-Arbeitsbereich schreiben.
 
