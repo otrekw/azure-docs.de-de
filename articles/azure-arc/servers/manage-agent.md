@@ -1,18 +1,40 @@
 ---
-title: Verwalten des Agents für Azure Arc-fähige Server (Vorschauversion)
-description: In diesem Artikel werden die verschiedenen Verwaltungsaufgaben beschrieben, die Sie typischerweise während des Lebenszyklus des Connected Machine-Agents für Azure Arc-fähige Server (Vorschauversion) ausführen.
-ms.date: 07/30/2020
+title: Verwalten des Agents für Azure Arc-fähige Server
+description: In diesem Artikel werden die verschiedenen Verwaltungsaufgaben beschrieben, die Sie typischerweise während des Lebenszyklus des Connected Machine-Agents für Azure Arc-fähige Server ausführen.
+ms.date: 09/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6066226cea224b1e13262763b626c8c646a397d7
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 146d5e3595e95df3b59b9cb4c0c05f9cc478eb82
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213128"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902524"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Verwalten des Connected Machine-Agent
 
-Nach der erstmaligen Bereitstellung des Agents für Azure Arc-fähige Server (Vorschauversion) für Windows oder Linux müssen Sie den Agent neu konfigurieren, ihn aktualisieren oder vom Computer entfernen, wenn er in seinem Lebenszyklus die Deaktivierungsphase erreicht hat. Sie können diese Routinewartungsaufgaben einfach manuell oder durch Automatisierung bewältigen, wodurch sowohl Betriebsfehler als auch Kosten reduziert werden.
+Nach der erstmaligen Bereitstellung des Connected Machine-Agents für Azure Arc-fähige Server für Windows oder Linux müssen Sie den Agent u. U. neu konfigurieren, aktualisieren oder vom Computer entfernen, wenn er das Ende seines Lebenszyklus erreicht hat und ausläuft. Sie können diese Routinewartungsaufgaben einfach manuell oder durch Automatisierung bewältigen, wodurch sowohl Betriebsfehler als auch Kosten reduziert werden.
+
+## <a name="before-uninstalling-agent"></a>Vor dem Deinstallieren des Agents
+
+Bevor Sie den Connected Machine-Agent von Ihrem Azure Arc-fähigen Server entfernen, sollten Sie Folgendes berücksichtigen, um unerwartete Probleme oder Kosten auf Ihrer Azure-Rechnung zu vermeiden:
+
+* Wenn Sie Azure-VM-Erweiterungen für einen aktivierten Server bereitgestellt haben und den Connected Machine-Agent entfernen oder die Ressource löschen, die den Azure Arc-fähigen Server in der Ressourcengruppe darstellt, werden diese Erweiterungen weiterhin normal ausgeführt.
+
+* Wenn Sie die Ressource löschen, die den Azure Arc-fähigen Server in der Ressourcengruppe darstellt, ohne die VM-Erweiterungen zu deinstallieren, können Sie die installierten VM-Erweiterungen nicht verwalten, wenn Sie den Computer neu registrieren.
+
+Für Server oder Computer, die nicht mehr über Azure Arc-fähige Server verwaltet werden sollen, müssen Sie folgende Schritte ausführen, um die Verwaltung erfolgreich zu beenden:
+
+1. Entfernen Sie die VM-Erweiterungen von dem Computer oder dem Server. Ausführlichere Informationen hierzu finden Sie weiter unten.
+
+2. Trennen Sie die Verbindung zwischen dem Computer und Azure Arc über eine der folgenden Methoden:
+
+    * Ausführen des Befehls `azcmagent disconnect` auf dem Computer oder dem Server
+
+    * Durch Auswählen des registrierten Servers im Azure-Portal und Klicken auf **Löschen** in der oberen Leiste
+
+    * Mithilfe der [Azure CLI](../../azure-resource-manager/management/delete-resource-group.md?tabs=azure-cli#delete-resource) oder mithilfe von [Azure PowerShell](../../azure-resource-manager/management/delete-resource-group.md?tabs=azure-powershell#delete-resource) Verwenden Sie `Microsoft.HybridCompute/machines` für den Parameter `ResourceType`.
+
+3. Deinstallieren Sie den Agent auf dem Computer oder Server. Führen Sie die folgenden Schritte aus.
 
 ## <a name="upgrading-agent"></a>Aktualisierung des Agent
 
@@ -120,7 +142,7 @@ Aktionen des Befehls [zypper](https://en.opensuse.org/Portal:Zypper) wie Install
 
 ## <a name="about-the-azcmagent-tool"></a>Informationen zum Azcmagent-Tool
 
-Das Azcmagent-Tool (Azcmagent.exe) wird verwendet, um den Connected Machine-Agent für Azure Arc-fähige Server (Vorschauversion) während der Installation zu konfigurieren, oder um die Erstkonfiguration des Agents nach der Installation zu ändern. Azcmagent.exe bietet Befehlszeilenparameter zum Anpassen des Agents und zum Anzeigen seines Status:
+Das Azcmagent-Tool (Azcmagent.exe) wird verwendet, um den Connected Machine-Agent für Azure Arc-fähige Server während der Installation zu konfigurieren oder die Erstkonfiguration des Agents nach der Installation zu ändern. Azcmagent.exe bietet Befehlszeilenparameter zum Anpassen des Agents und zum Anzeigen seines Status:
 
 * **Connect**: Verbindet den Computer mit Azure Arc.
 
@@ -136,16 +158,16 @@ Das Azcmagent-Tool (Azcmagent.exe) wird verwendet, um den Connected Machine-Agen
 
 * **-v oder -verbose**: Aktiviert die ausführliche Protokollierung.
 
-Sie können einen **Connect**-, **Disconnect**- und **Reconnect**-Vorgang manuell ausführen, während Sie interaktiv angemeldet sind, oder Sie können mithilfe desselben Dienstprinzipals automatisieren, den Sie für das Onboarding mehrerer Agents verwendet haben, oder mithilfe eines [Zugriffstokens](../../active-directory/develop/access-tokens.md) der Microsoft Identity-Plattform. Wenn Sie keinen Dienstprinzipal zum Registrieren des Computers bei Azure Arc-fähigen Servern (Vorschauversion) verwendet haben, finden Sie im folgenden [Artikel](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) Informationen zum Erstellen eines Dienstprinzipals.
+Sie können einen **Connect**-, **Disconnect**- und **Reconnect**-Vorgang manuell ausführen, während Sie interaktiv angemeldet sind, oder Sie können mithilfe desselben Dienstprinzipals automatisieren, den Sie für das Onboarding mehrerer Agents verwendet haben, oder mithilfe eines [Zugriffstokens](../../active-directory/develop/access-tokens.md) der Microsoft Identity-Plattform. Wenn Sie keinen Dienstprinzipal zum Registrieren des Computers bei Azure Arc-fähigen Servern verwendet haben, finden Sie im folgenden [Artikel](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) Informationen zum Erstellen eines Dienstprinzipals.
 
 >[!NOTE]
 >Sie müssen auf Linux-Computern über *Stamm*zugriffsberechtigungen verfügen, um **azcmagent** ausführen zu können.
 
 ### <a name="connect"></a>Verbinden
 
-Dieser Parameter gibt eine Ressource in Azure Resource Manager an, die den in Azure erstellten Computer darstellt. Die Ressource befindet sich im angegebenen Abonnement und der angegebenen Ressourcengruppe, und die Daten zu dem Computer werden in der durch den `--location`-Parameter angegebenen Azure-Region gespeichert. Der Standardname der Ressource ist der Hostname dieses Computers, wenn nichts angegeben wird.
+Dieser Parameter gibt eine Ressource in Azure Resource Manager an, die den in Azure erstellten Computer darstellt. Die Ressource befindet sich im angegebenen Abonnement und der angegebenen Ressourcengruppe, und die Daten zu dem Computer werden in der durch den `--location`-Parameter angegebenen Azure-Region gespeichert. Der Standardressourcenname ist der Hostname des Computers, wenn nichts angegeben wird.
 
-Ein Zertifikat, das der systemseitig zugewiesenen Identität dieses Computers entspricht, wird dann heruntergeladen und lokal gespeichert. Sobald dieser Schritt abgeschlossen ist, beginnen der Azure Connected Machine Metadata Service und der Gastkonfigurations-Agent die Synchronisierung mit Azure Arc-fähigen Servern (Vorschauversion).
+Ein Zertifikat, das der systemseitig zugewiesenen Identität dieses Computers entspricht, wird dann heruntergeladen und lokal gespeichert. Sobald dieser Schritt abgeschlossen ist, beginnen Azure Connected Machine Metadata Service und der Gastkonfigurations-Agent die Synchronisierung mit Azure Arc-fähigen Servern.
 
 Führen Sie den folgenden Befehl aus, um eine Verbindung mithilfe des Dienstprinzipals herzustellen:
 
@@ -161,7 +183,10 @@ Führen Sie den folgenden Befehl aus, um eine Verbindung mit Ihren Anmeldeinform
 
 ### <a name="disconnect"></a>Trennen
 
-Dieser Parameter gibt eine Ressource in Azure Resource Manager an, die den in Azure gelöschten Computer darstellt. Der Agent wird nicht vom Computer gelöscht, dies muss als separater Schritt erfolgen. Nachdem der Computer getrennt wurde, und wenn Sie ihn bei Azure Arc-fähigen Servern (Vorschauversion) erneut registrieren möchten, verwenden Sie `azcmagent connect`, damit eine neue Ressource in Azure erstellt wird.
+Dieser Parameter gibt eine Ressource in Azure Resource Manager an, die den in Azure gelöschten Computer darstellt. Der Agent wird nicht vom Computer gelöscht, dies muss als separater Schritt erfolgen. Nachdem die Verbindung des Computers getrennt wurde und Sie ihn neu bei Azure Arc-fähigen Servern registrieren möchten, führen Sie `azcmagent connect` aus, um eine neue Ressource in Azure zu erstellen.
+
+> [!NOTE]
+> Wenn Sie mindestens eine Azure-VM-Erweiterung für Ihren Azure-Arc-fähigen Server bereitgestellt haben und die VM-Registrierung in Azure löschen, sind die Erweiterungen weiterhin installiert. Es ist wichtig zu verstehen, dass der Computer je nach installierter Erweiterung seine Funktion aktiv ausführt. Auf Computern, die außer Betrieb genommen oder nicht mehr von Azure Arc-fähigen Servern verwaltet werden sollen, müssen zunächst die Erweiterungen entfernt werden, bevor die Registrierung aus Azure entfernt wird.
 
 Führen Sie den folgenden Befehl aus, um die Verbindung mithilfe des Dienstprinzipals zu trennen:
 
@@ -180,7 +205,7 @@ Führen Sie den folgenden Befehl aus, um die Verbindung mit Ihren Anmeldeinforma
 > [!WARNING]
 > Der Befehl `reconnect` ist veraltet und sollte nicht verwendet werden. Der Befehl wird in einem zukünftigen Release des Agents entfernt, und vorhandene Agents können die Anforderung zum erneuten Herstellen der Verbindung nicht mehr erfüllen. [Trennen](#disconnect) Sie stattdessen die Verbindung mit Ihrem Computer, und stellen Sie erneut eine [Verbindung](#connect) her.
 
-Mit diesem Parameter wird der bereits registrierte oder verbundene Computer erneut mit Azure Arc-fähigen Servern (Vorschauversion) verbunden. Dies ist möglicherweise erforderlich, wenn der Computer mindestens 45 Tage lang ausgeschaltet war, damit das Zertifikat abläuft. Dieser Parameter verwendet die angegebenen Authentifizierungsoptionen, um neue Anmeldeinformationen abzurufen, die der Azure Resource Manager-Ressource entsprechen, die diesen Computer darstellt.
+Mit diesem Parameter wird der bereits registrierte oder verbundene Computer neu mit Azure Arc-fähigen Servern verbunden. Dies ist möglicherweise erforderlich, wenn der Computer mindestens 45 Tage lang ausgeschaltet war, damit das Zertifikat abläuft. Dieser Parameter verwendet die angegebenen Authentifizierungsoptionen, um neue Anmeldeinformationen abzurufen, die der Azure Resource Manager-Ressource entsprechen, die diesen Computer darstellt.
 
 Dieser Befehl erfordert höhere Berechtigungen als die Rolle [Azure Connected Machine-Onboarding](agent-overview.md#required-permissions).
 
@@ -198,7 +223,7 @@ Führen Sie den folgenden Befehl aus, um eine Verbindung mit Ihren Anmeldeinform
 
 ## <a name="remove-the-agent"></a>Entfernen des Agents
 
-Führen Sie eine der folgenden Methoden aus, um den Conncected Machine-Agent für Windows oder Linux von dem Computer zu deinstallieren. Wenn Sie den Agent entfernen, wird die Registrierung des Computers bei Azure Arc-fähigen Servern (Vorschauversion) nicht aufgehoben. Dies ist ein gesonderter Prozess, den Sie ausführen, wenn Sie den Computer nicht mehr in Azure verwalten müssen.
+Führen Sie eine der folgenden Methoden aus, um den Conncected Machine-Agent für Windows oder Linux von dem Computer zu deinstallieren. Durch das Entfernen des Agents wird weder die Registrierung des Computers bei Azure Arc-fähigen Servern aufgehoben noch werden die installierten Azure-VM-Erweiterungen entfernt. Sie müssen diese Schritte separat durchführen, wenn Sie den Computer in Azure nicht mehr verwalten müssen. Außerdem sollten die Schritte vor der Deinstallation des Agents abgeschlossen werden.
 
 ### <a name="windows-agent"></a>Windows-Agent
 
@@ -267,9 +292,9 @@ Beim Deinstallieren des Linux-Agents ist der zu verwendende Befehl vom Linux-Bet
 
 ## <a name="unregister-machine"></a>Aufheben der Registrierung eines Computers
 
-Wenn Sie beabsichtigen, die Verwaltung des Computers mit unterstützenden Diensten in Azure zu beenden, führen Sie die folgenden Schritte aus, um die Registrierung des Computers bei Azure Arc-fähigen Servern (Vorschauversion) aufzuheben. Sie können diese Schritte entweder vor oder nach dem Entfernen des Connected Machine-Agents von dem Computer ausführen.
+Wenn Sie beabsichtigen, die Verwaltung des Computers mit unterstützenden Diensten in Azure zu beenden, führen Sie die folgenden Schritte aus, um die Registrierung des Computers bei Azure Arc-fähigen Servern aufzuheben. Sie können diese Schritte entweder vor oder nach dem Entfernen des Connected Machine-Agents von dem Computer ausführen.
 
-1. Öffnen Sie Azure Arc-fähige Server (Vorschauversion), indem Sie zum [Azure-Portal](https://aka.ms/hybridmachineportal) navigieren.
+1. Öffnen Sie die Azure Arc-fähigen Server, indem Sie zum [Azure-Portal](https://aka.ms/hybridmachineportal) navigieren.
 
 2. Wählen Sie den Computer in der Liste aus. Wählen Sie dann die Auslassungspunkte ( **...** ) und anschließend **Löschen** aus.
 
@@ -317,4 +342,4 @@ sudo azcmagent_proxy remove
 
 - Erfahren Sie, wie Sie Ihren Computer mithilfe von [Azure Policy](../../governance/policy/overview.md) verwalten, wie z. B. bei der VM-[Gastkonfiguration](../../governance/policy/concepts/guest-configuration.md), dem Überprüfen, ob der Computer dem erwarteten Log Analytics-Arbeitsbereich Bericht erstattet, beim Aktivieren der Überwachung mit [Azure Monitor mit VMs](../../azure-monitor/insights/vminsights-enable-policy.md) und vieles mehr.
 
-- Weitere Informationen zum [Log Analytics-Agent](../../azure-monitor/platform/log-analytics-agent.md). Der Log Analytics-Agent für Windows und Linux ist erforderlich, wenn Sie das Betriebssystem und die Workloads auf dem Computer proaktiv überwachen, den Computer mithilfe von Automation-Runbooks oder Funktionen wie der Updateverwaltung verwalten oder andere Azure-Dienste wie [Azure Security Center](../../security-center/security-center-intro.md) verwenden möchten.
+- Weitere Informationen zum [Log Analytics-Agent](../../azure-monitor/platform/log-analytics-agent.md). Der Log Analytics-Agent für Windows und Linux ist erforderlich, wenn Sie Daten zur Betriebssystem- und Workloadüberwachung erfassen, diese mithilfe von Automation Runbooks oder Funktionen wie Updateverwaltung oder andere Azure-Dienste wie [Azure Security Center](../../security-center/security-center-intro.md) nutzen möchten.

@@ -11,12 +11,12 @@ ms.author: andzha
 author: Anurzeuii
 ms.date: 08/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: c899d14b6e0eea8135b996aadfe2a7388a8fcb89
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 4a6f09fdff82b8e86c7fe75018c5267dba3c1b4a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88860462"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892970"
 ---
 # <a name="azure-machine-learning-sovereign-cloud-parity"></a>Sovereign Cloud-Parität für Azure Machine Learning
 
@@ -49,9 +49,9 @@ Unser Ziel besteht darin, größtmögliche Parität zwischen unserer öffentlich
 | Erstellen von Pipelineendpunkten mit dem Azure ML SDK                           | Allgemein verfügbar                   | YES                | YES         |
 | Erstellen, Bearbeiten und Löschen geplanter Ausführungen von Pipelines mit dem Azure ML SDK | Allgemein verfügbar                   | JA*               | JA*        |
 | Anzeigen von Details zur Pipelineausführung in Studio                                        | Allgemein verfügbar                   | YES                | YES         |
-| Erstellen, Ausführen, Visualisieren und Veröffentlichen von Pipelines in Azure ML Designer          | Öffentliche Vorschau       | YES                | YES         |
+| Erstellen, Ausführen, Visualisieren und Veröffentlichen von Pipelines in Azure ML Designer          | Allgemein verfügbar      | YES                | YES         |
 | Azure Databricks-Integration mit ML-Pipeline                             | Allgemein verfügbar                   | Nein                 | Nein          |
-| Erstellen von Pipelineendpunkten in Azure ML Designer                             | Öffentliche Vorschau       | YES                | YES         |
+| Erstellen von Pipelineendpunkten in Azure ML Designer                             | Allgemein verfügbar      | YES                | YES         |
 | **Integrierte Notebooks** |   |  | | 
 | Arbeitsbereichnotebook und Dateifreigabe                                        | Allgemein verfügbar                   | YES                | YES         |
 | R- und Python-Unterstützung                                                       | Allgemein verfügbar                   | YES                | YES         |
@@ -136,7 +136,7 @@ Unser Ziel besteht darin, größtmögliche Parität zwischen unserer öffentlich
 * Für Azure Machine Learning-Compute-Instanzen können in Azure Government keine Token mit einer Gültigkeitsdauer von mehr 24 Stunden aktualisiert werden.
 * Von der Modellprofilerstellung werden in der Region „US-Arizona“ keine vier CPUs unterstützt.   
 * Beispielnotebooks funktionieren in Azure Government möglicherweise nicht, wenn sie Zugriff auf öffentliche Daten benötigen.
-* IP-Adressen: Von dem CLI-Befehl, der in der [Anleitung für VNET und Tunnelerzwingung](how-to-enable-virtual-network.md#forced-tunneling) verwendet wird, werden keine IP-Adressbereiche zurückgegeben. Verwenden Sie stattdessen die [Azure-IP-Adressbereiche und -Diensttags für Azure Government](https://www.microsoft.com/download/details.aspx?id=57063).
+* IP-Adressen: Von dem CLI-Befehl, der in der [Anleitung für VNET und Tunnelerzwingung](how-to-secure-training-vnet.md#forced-tunneling) verwendet wird, werden keine IP-Adressbereiche zurückgegeben. Verwenden Sie stattdessen die [Azure-IP-Adressbereiche und -Diensttags für Azure Government](https://www.microsoft.com/download/details.aspx?id=57063).
 * Für geplante Pipelines steht auch ein blobbasierter Triggermechanismus zur Verfügung. Dieser Mechanismus wird für CMK-Arbeitsbereiche nicht unterstützt. Wenn Sie einen blobbasierten Trigger für CMK-Arbeitsbereiche aktivieren möchten, sind zusätzliche Setupschritte erforderlich. Weitere Informationen finden Sie unter [Auslösen der Ausführung einer Machine Learning-Pipeline aus einer Logik-App](how-to-trigger-published-pipeline.md).
 * Firewalls: Fügen Sie Ihrer Firewalleinstellung bei Verwendung einer Azure Government-Region die folgenden zusätzlichen Hosts hinzu:
 
@@ -162,9 +162,9 @@ Unser Ziel besteht darin, größtmögliche Parität zwischen unserer öffentlich
 | Erstellen von Pipelineendpunkten mit dem Azure ML SDK                           | Allgemein verfügbar               | YES       | –        |
 | Erstellen, Bearbeiten und Löschen geplanter Ausführungen von Pipelines mit dem Azure ML SDK | Allgemein verfügbar               | YES       | –        |
 | Anzeigen von Details zur Pipelineausführung in Studio                                        | Allgemein verfügbar               | YES       | –        |
-| Erstellen, Ausführen, Visualisieren und Veröffentlichen von Pipelines in Azure ML Designer          | Öffentliche Vorschau   | YES       | –        |
+| Erstellen, Ausführen, Visualisieren und Veröffentlichen von Pipelines in Azure ML Designer          | Allgemein verfügbar  | YES       | –        |
 | Azure Databricks-Integration mit ML-Pipeline                             | Allgemein verfügbar               | Nein        | –        |
-| Erstellen von Pipelineendpunkten in Azure ML Designer                             | Öffentliche Vorschau   | YES       | –        |
+| Erstellen von Pipelineendpunkten in Azure ML Designer                             | Allgemein verfügbar   | YES       | –        |
 | **Integrierte Notebooks** |   | | |
 | Arbeitsbereichnotebook und Dateifreigabe                                        | Allgemein verfügbar               | YES       | –        |
 | R- und Python-Unterstützung                                                       | Allgemein verfügbar               | YES       | –        |
@@ -236,7 +236,7 @@ Unser Ziel besteht darin, größtmögliche Parität zwischen unserer öffentlich
     | Azure Active Directory              | `https://login.microsoftonline.com`          | `https://login.chinacloudapi.cn`             |
 
 * Beispielnotebooks funktionieren möglicherweise nicht, wenn sie Zugriff auf öffentliche Daten benötigen.
-* IP-Adressbereiche: Von dem CLI-Befehl, der in der [Anleitung für die VNET-Tunnelerzwingung](how-to-enable-virtual-network.md#forced-tunneling) verwendet wird, werden keine IP-Adressbereiche zurückgegeben. Verwenden Sie stattdessen die [Azure-IP-Adressbereiche und -Diensttags für Azure China](https://www.microsoft.com//download/details.aspx?id=57062).
+* IP-Adressbereiche: Von dem CLI-Befehl, der in der [Anleitung für die VNET-Tunnelerzwingung](how-to-secure-training-vnet.md#forced-tunneling) verwendet wird, werden keine IP-Adressbereiche zurückgegeben. Verwenden Sie stattdessen die [Azure-IP-Adressbereiche und -Diensttags für Azure China](https://www.microsoft.com//download/details.aspx?id=57062).
 * Die Vorschauversion von Azure Machine Learning-Compute-Instanzen wird in Arbeitsbereichen, in denen Private Link aktiviert ist, vorerst nicht unterstützt. CIs werden jedoch in der nächsten Bereitstellung für die Diensterweiterung auf alle AML-Regionen unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -6,16 +6,16 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 02/14/2020
-ms.openlocfilehash: 0676b987725a33049d9da3256bdd4e6dc8028d00
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: f2dd759203655746601699f665436c78ee0758f8
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045177"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885502"
 ---
 # <a name="azure-stream-analytics-jobconfigjson-fields"></a>JobConfig.json-Felder von Azure Stream Analytics
 
-Die folgenden Felder werden in der Datei *JobConfig.json* unterstützt, die zum [Erstellen eines Azure Stream Analytics-Auftrags mit Visual Studio Code](quick-create-vs-code.md) verwendet wird.
+Die folgenden Felder werden in der Datei *JobConfig.json* unterstützt, die zum [Erstellen eines Azure Stream Analytics-Auftrags mit Visual Studio Code](quick-create-visual-studio-code.md) verwendet wird.
 
 ```json
 {
@@ -55,7 +55,7 @@ Die folgenden Felder werden in der Datei *JobConfig.json* unterstützt, die zum 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erstellen eines Azure Stream Analytics-Auftrags in Visual Studio Code](quick-create-vs-code.md)
+* [Erstellen eines Azure Stream Analytics-Auftrags in Visual Studio Code](quick-create-visual-studio-code.md)
 * [Lokales Testen von Stream Analytics-Abfragen mit Beispieldaten mithilfe von Visual Studio Code](visual-studio-code-local-run.md)
 * [Lokales Testen von Azure Stream Analytics-Abfragen unter Verwendung einer Livestreameingabe mithilfe von Visual Studio Code](visual-studio-code-local-run-live-input.md)
 *[Bereitstellen eines Azure Stream Analytics-Auftrags mit einem CI/CD npm-Paket](setup-cicd-vs-code.md)

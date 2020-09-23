@@ -1,0 +1,63 @@
+### YamlMime:Landing
+title: Azure Arc-fähige Datendienste
+summary: Führen Sie Azure-Datendienste lokal, im Edgebereich und in Multi-Cloud-Umgebungen unter Verwendung von Kubernetes in der Infrastruktur Ihrer Wahl aus.
+metadata:
+  title: Azure Arc-fähige Datendienste (Vorschauversion)
+  description: Führen Sie Azure-Datendienste lokal, im Edgebereich und in Multi-Cloud-Umgebungen unter Verwendung von Kubernetes in der Infrastruktur Ihrer Wahl aus.
+  ms.service: azure-arc
+  ms.subservice: azure-arc-data
+  ms.topic: landing-page
+  author: MikeRayMSFT
+  ms.author: mikeray
+  ms.date: 09/22/2020
+  ms.openlocfilehash: 3ef94bfc9d3870c4c91116fb2aaf26387999a8da
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90928787"
+landingContent:
+- title: Info
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was sind Azure Arc-fähige Datendienste?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Konnektivitätsmodi und -anforderungen
+      url: connectivity.md
+    - text: Speicherkonfiguration
+      url: storage-configuration.md
+- title: Erste Schritte
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Erstellen eines Datencontrollers
+      url: create-data-controller.md
+    - text: Installieren der Clienttools
+      url: install-client-tools.md
+- title: Azure Arc-fähiges PostgreSQL Hyperscale (Vorschauversion)
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Erstellen
+      url: create-postgresql-hyperscale-server-group.md
+    - text: Verbinden
+      url: get-connection-endpoints-and-connection-strings-postgres-hyperscale.md
+    - text: Migrieren
+      url: migrate-postgresql-data-into-postgresql-hyperscale-server-group.md
+    - text: Restore
+      url: restore-adventureworks-sample-db-into-postgresql-hyperscale-server-group.md
+- title: Azure Arc-fähige SQL Managed Instance-Instanz (Vorschauversion)
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Erstellen
+      url: create-sql-managed-instance.md
+    - text: Verbinden
+      url: connect-managed-instance.md
+    - text: Migrieren
+      url: migrate-to-managed-instance.md
+    - text: Restore
+      url: restore-adventureworks-sample-db.md

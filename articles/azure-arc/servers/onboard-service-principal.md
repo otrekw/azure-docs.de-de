@@ -1,18 +1,18 @@
 ---
 title: Verbinden von Hybridcomputern mit Azure im großen Stil
-description: In diesem Artikel erfahren Sie, wie Sie Computer über Azure Arc-fähige Server (Vorschauversion) unter Verwendung eines Dienstprinzipals mit Azure verbinden.
-ms.date: 07/23/2020
+description: In diesem Artikel erfahren Sie, wie Sie Computer über Azure Arc-fähige Server unter Verwendung eines Dienstprinzipals mit Azure verbinden.
+ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 07266ce7fb9579e1d4fb1b65394e0b7fdf7aa13d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 545d8abd6dd17e1e413852735c096ddc9261b972
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211411"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908335"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>Verbinden von Hybridcomputern mit Azure im großen Stil
 
-Sie können Azure Arc-fähige Server (Vorschauversion) je nach Anforderungen mithilfe verschiedener flexibler Optionen für mehrere Windows- oder Linux-Computer in Ihrer Umgebung aktivieren. Mithilfe des von uns bereitgestellten Vorlagenskripts können Sie jeden Schritt der Installation automatisieren, einschließlich des Einrichtens der Verbindung mit Azure Arc. Allerdings müssen Sie dieses Skript interaktiv mit einem Konto ausführen, das über erhöhte Berechtigungen auf dem Zielcomputer und in Azure verfügt. Um die Computer mit Azure Arc-fähigen Servern (Vorschauversion) zu verbinden, können Sie einen Azure Active Directory-[Dienstprinzipal](../../active-directory/develop/app-objects-and-service-principals.md) verwenden, anstatt Ihre privilegierte Identität zum [interaktiven Verbinden des Computers](onboard-portal.md) zu nutzen. Bei einem Dienstprinzipal handelt es sich um eine spezielle eingeschränkte Verwaltungsidentität, der nur die Mindestberechtigung erteilt wird, die erforderlich ist, um Computer mithilfe des Befehls `azcmagent` mit Azure zu verbinden. Dies ist sicherer als die Verwendung eines Kontos mit höherer Berechtigung, wie z. B. einem Mandantenadministrator, und befolgt unsere bewährten Methoden für die Sicherheit der Zugriffssteuerung. Der Dienstprinzipal wird nur während des Onboardings verwendet und nicht für andere Zwecke.  
+Sie können Azure Arc-fähige Server je nach Anforderungen mithilfe verschiedener flexibler Optionen für mehrere Windows- oder Linux-Computer in Ihrer Umgebung aktivieren. Mithilfe des von uns bereitgestellten Vorlagenskripts können Sie jeden Schritt der Installation automatisieren, einschließlich des Einrichtens der Verbindung mit Azure Arc. Allerdings müssen Sie dieses Skript interaktiv mit einem Konto ausführen, das über erhöhte Berechtigungen auf dem Zielcomputer und in Azure verfügt. Um die Computer mit Azure Arc-fähigen Servern zu verbinden, können Sie einen Azure Active Directory-[Dienstprinzipal](../../active-directory/develop/app-objects-and-service-principals.md) verwenden, anstatt Ihre privilegierte Identität zum [interaktiven Verbinden des Computers](onboard-portal.md) zu nutzen. Bei einem Dienstprinzipal handelt es sich um eine spezielle eingeschränkte Verwaltungsidentität, der nur die Mindestberechtigung erteilt wird, die erforderlich ist, um Computer mithilfe des Befehls `azcmagent` mit Azure zu verbinden. Dies ist sicherer als die Verwendung eines Kontos mit höherer Berechtigung, wie z. B. einem Mandantenadministrator, und befolgt unsere bewährten Methoden für die Sicherheit der Zugriffssteuerung. Der Dienstprinzipal wird nur während des Onboardings verwendet und nicht für andere Zwecke.  
 
 Die Methoden zum Installieren und Konfigurieren des Connected Machine-Agents erfordern, dass die von Ihnen verwendete automatisierte Methode über Administratorberechtigungen auf den Computern verfügt. Unter Linux muss hierfür das root-Konto verwendet werden. Unter Windows müssen Sie Mitglied der Gruppe „Lokale Administratoren“ sein.
 
@@ -20,7 +20,7 @@ Bevor Sie beginnen, sollten Sie die [Voraussetzungen](agent-overview.md#prerequi
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-Am Ende dieses Prozesses haben Sie dann Ihre Hybridcomputer erfolgreich mit Azure Arc-fähigen Servern (Vorschauversion) verbunden.
+Am Ende dieses Prozesses haben Sie dann Ihre Hybridcomputer erfolgreich mit Azure Arc-fähigen Servern verbunden.
 
 ## <a name="create-a-service-principal-for-onboarding-at-scale"></a>Erstellen eines Dienstprinzipals für flexibles Onboarding
 
@@ -133,7 +133,7 @@ azcmagent connect \
 >[!NOTE]
 >Sie müssen auf Linux-Computern über *Stamm*zugriffsberechtigungen verfügen, um **azcmagent** ausführen zu können.
 
-Vergewissern Sie sich im Azure-Portal, dass die Serververbindung erfolgreich hergestellt wurde, nachdem Sie den Agent installiert und für die Verbindungsherstellung mit Azure Arc-fähigen Servern (Vorschauversion) konfiguriert haben. Zeigen Sie Ihre Computer im [Azure-Portal](https://aka.ms/hybridmachineportal) an.
+Vergewissern Sie sich im Azure-Portal, dass die Serververbindung erfolgreich hergestellt wurde, nachdem Sie den Agent installiert und für die Verbindungsherstellung mit Azure Arc-fähigen Servern konfiguriert haben. Zeigen Sie Ihre Computer im [Azure-Portal](https://aka.ms/hybridmachineportal) an.
 
 ![Erfolgreiche Serververbindung](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 
@@ -141,4 +141,4 @@ Vergewissern Sie sich im Azure-Portal, dass die Serververbindung erfolgreich her
 
 - Erfahren Sie, wie Sie Ihren Computer mithilfe von [Azure Policy](../../governance/policy/overview.md) verwalten, wie z. B. bei der VM-[Gastkonfiguration](../../governance/policy/concepts/guest-configuration.md), dem Überprüfen, ob der Computer dem erwarteten Log Analytics-Arbeitsbereich Bericht erstattet, beim Aktivieren der Überwachung mit [Azure Monitor mit VMs](../../azure-monitor/insights/vminsights-enable-policy.md) und vieles mehr.
 
-- Weitere Informationen zum [Log Analytics-Agent](../../azure-monitor/platform/log-analytics-agent.md). Der Log Analytics-Agent für Windows und Linux ist erforderlich, wenn Sie das Betriebssystem und die Workloads auf dem Computer proaktiv überwachen, den Computer mithilfe von Automation-Runbooks oder Lösungen wie der Updateverwaltung verwalten oder andere Azure-Dienste wie [Azure Security Center](../../security-center/security-center-intro.md) verwenden möchten.
+- Weitere Informationen zum [Log Analytics-Agent](../../azure-monitor/platform/log-analytics-agent.md). Der Log Analytics-Agent für Windows und Linux ist erforderlich, wenn Sie Daten zur Betriebssystem- und Workloadüberwachung erfassen, diese mithilfe von Automation Runbooks oder Funktionen wie Updateverwaltung oder andere Azure-Dienste wie [Azure Security Center](../../security-center/security-center-intro.md) nutzen möchten.
