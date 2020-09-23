@@ -8,18 +8,14 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: 59de3eb2370029ab9edcb609298c7b1fdf5f8ff8
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 09d1063f704c37eb31546be08765f2b5b6fb8632
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873754"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90060746"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Sicheres Verwalten der Python-Umgebung in Azure HDInsight mithilfe einer Skriptaktion
-
-> [!div class="op_single_selector"]
-> * [Verwenden von Cell Magic](apache-spark-jupyter-notebook-use-external-packages.md)
-> * [Verwenden von Skriptaktionen](apache-spark-python-package-installation.md)
 
 Für den Spark-Cluster verfügt HDInsight mit Anaconda Python 2.7 und Python 3.5 über zwei integrierte Python-Installationen. Kunden müssen möglicherweise die Python-Umgebung anpassen. Dazu zählt das Installieren externer Python-Pakete oder einer anderen Python-Version. Hier zeigen wir die bewährte Methode zur sicheren Verwaltung von Python-Umgebungen für Apache Spark-Cluster in HDInsight.
 
@@ -132,7 +128,7 @@ Der HDInsight-Cluster hängt von der integrierten Python-Umgebung (Python 2.7 od
 
     4. Speichern Sie die Änderungen, und starten Sie die betreffenden Dienste neu. Damit diese Änderungen übernommen werden, müssen Sie den Spark2-Dienst neu starten. Über die Ambari-Benutzeroberfläche werden Sie zu einem Neustart aufgefordert. Klicken Sie daher auf „Neu starten“, um alle betreffenden Dienste neu zu starten.
 
-        ![Ändern der Spark-Konfiguration über Ambari](./media/apache-spark-python-package-installation/ambari-restart-services.png)
+        ![Neustarten von Diensten](./media/apache-spark-python-package-installation/ambari-restart-services.png)
 
 4. Wenn Sie die neu erstellte virtuelle Umgebung unter Jupyter verwenden möchten, ändern Sie die Jupyter-Konfigurationen, und starten Sie Jupyter neu. Führen Sie Skriptaktionen für alle Headerknoten mit der folgenden Anweisung aus, um Jupyter auf die neu erstellte virtuelle Umgebung zu verweisen. Stellen Sie sicher, dass Sie den Pfad zu dem Präfix ändern, das Sie für Ihre virtuelle Umgebung angegeben haben. Nachdem Sie diese Skriptaktion ausgeführt haben, starten Sie den Jupyter-Dienst über die Ambari-Benutzeroberfläche neu, um diese Änderung zu übernehmen.
 

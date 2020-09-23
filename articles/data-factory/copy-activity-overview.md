@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: jingwang
-ms.openlocfilehash: 54597953aac6fabe419a9d1b62b16de7ca7bd1e0
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 3a1e5ed7d9ca14c03483cb6afe6b6318c6a90764
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534344"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440591"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Kopieraktivität in Azure Data Factory
 
@@ -249,7 +249,7 @@ Diese Funktion wird unterstützt, wenn Daten aus einer beliebigen Quelle in die 
 
 - [Azure SQL-Datenbank](connector-azure-sql-database.md)
 - [Verwaltete Azure SQL-Datenbank-Instanz](connector-azure-sql-managed-instance.md)
-- [Azure Synapse Analytics (ehemals Azure SQL Data Warehouse)](connector-azure-sql-data-warehouse.md)
+- [Azure Synapse Analytics (ehemals SQL Data Warehouse)](connector-azure-sql-data-warehouse.md)
 - [SQL Server](connector-sql-server.md)
 
 ![Erstellen von Senkentabellen](media/copy-activity-overview/create-sink-table.png)

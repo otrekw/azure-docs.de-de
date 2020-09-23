@@ -11,15 +11,15 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: 7448da5149bb859f25de2110aa929a40f872c26b
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: b310f195477f4cba83ef30c6fb5ea2fd24c4df9a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378898"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897388"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Ausführen von Jupyter Notebooks in Ihrem Arbeitsbereich
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Erfahren Sie, wie Sie im Azure Machine Learning Studio Ihr Jupyter Notebook direkt in Ihrem Arbeitsbereich ausführen können. Sie können zwar [Jupyter](https://jupyter.org/) oder [JupyterLab](https://jupyterlab.readthedocs.io) starten, aber Sie können Ihre Notebooks auch bearbeiten und ausführen, ohne den Arbeitsbereich zu verlassen.
 
@@ -77,12 +77,12 @@ So greifen Sie auf das Terminal zu
 1. Öffnen Sie Ihren Arbeitsbereich in [Azure Machine Learning Studio](https://ml.azure.com).
 1. Wählen Sie auf der linken Seite **Notebooks** aus.
 1. Wählen Sie ein beliebiges Notebook aus, das sich im Abschnitt **Benutzerdateien** auf der linken Seite befindet.  Wenn sich dort keine Notebooks befinden, erstellen Sie zunächst ein [Notebook](#create).
-1. Wählen Sie ein **Computeziel** aus, oder erstellen Sie ein neues Ziel und warten Sie, bis es ausgeführt wird.
+1. Wählen Sie ein **Computeziel** aus, oder erstellen Sie ein neues Ziel, und warten Sie, bis es ausgeführt wird.
 1. Wählen Sie das Symbol **Terminal öffnen** aus.
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="Öffnen Sie ein Terminal.":::
 
-1. Wenn Sie das Symbol nicht sehen, wählen Sie **...** rechts neben dem Computeziel und dann **Terminal öffnen** aus.
+1. Wird das Symbol nicht angezeigt, wählen Sie **...** rechts neben dem Computeziel und dann **Terminal öffnen** aus.
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="Terminal öffnen über...":::
 
@@ -109,6 +109,22 @@ Sie können Jupyter oder JupyterLab auch über die Notebook-Symbolleiste starten
 [IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) ist eine hilfreiche Anwendung zur Codevervollständigung mit Features wie: Auflisten von Elementen, Parameterinformationen, QuickInfo und Wort vervollständigen. Diese Features helfen Ihnen, mehr über den von Ihnen verwendeten Code zu erfahren, die von Ihnen eingegebenen Parameter zu verfolgen und Aufrufe von Eigenschaften und Methoden mit nur wenigen Tastatureingaben hinzuzufügen.  
 
 Wenn Sie Code eingeben, verwenden Sie STRG+LEERTASTE, um IntelliSense auszulösen.
+
+### <a name="clean-your-notebook-preview"></a>Bereinigen des Notebooks (Vorschau)
+
+> [!IMPORTANT]
+> Die Funktion „Sammeln“ ist zurzeit als öffentliche Vorschauversion verfügbar.
+> Die Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Im Laufe der Erstellung eines Notebooks verfügen Sie in der Regel über Zellen, die Sie zum Durchsuchen von Daten oder zum Debuggen verwendet haben. Mithilfe der Funktion *Sammeln* können Sie ein sauberes Notebook ohne diese irrelevanten Zellen erstellen.
+
+1. Führen Sie alle Notebookzellen aus.
+1. Wählen Sie die Zelle aus mit dem Code aus, den das neue Notebook ausführen soll, beispielsweise Code zum Übermitteln eines Experiments oder vielleicht Code zum Registrieren eines Modells.
+1. Wählen Sie das Symbol **Sammeln** aus, das auf der Symbolleiste für Zellen angezeigt wird.
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/gather.png" alt-text="Screenshot: Auswählen des Symbols „Sammeln“":::
+1. Geben Sie den Namen für das neue „gesammelte“ Notebook ein.  
+
+Das neue Notebook enthält nur Codezellen. Dabei müssen alle Zellen die gleichen Ergebnisse wie die Zelle generieren, die Sie für die Sammlung ausgewählt haben.
 
 ### <a name="save-and-checkpoint-a-notebook"></a>Speichern eines Notebooks und Hinzufügen eines Prüfpunkts
 
@@ -157,7 +173,7 @@ Nur Sie können die von Ihnen erstellten Computeinstanzen sehen und verwenden.  
 
 ### <a name="view-logs-and-output"></a>Anzeigen von Protokollen und Ausgaben
 
-Verwenden Sie [Notebook-Widgets](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py), um den Fortschritt der Ausführung und der Protokolle anzuzeigen. Ein Widget ist asynchron und bietet Updates, bis das Training abgeschlossen ist. Azure Machine Learning-Widgets werden auch in Jupyter und JupterLab unterstützt.
+Verwenden Sie [Notebook-Widgets](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true), um den Fortschritt der Ausführung und der Protokolle anzuzeigen. Ein Widget ist asynchron und bietet Updates, bis das Training abgeschlossen ist. Azure Machine Learning-Widgets werden auch in Jupyter und JupterLab unterstützt.
 
 ## <a name="change-the-notebook-environment"></a>Ändern der Notebookumgebung
 

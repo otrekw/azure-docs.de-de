@@ -1,4 +1,4 @@
-- name: Dokumentation zu Azure DB for MySQL
+- name: Dokumentation zu Azure Database for MySQL
   href: index.yml
 - name: Übersicht
   items:
@@ -10,322 +10,510 @@
       items:
         - name: SSL-Stammzertifikat läuft ab.
           href: concepts-certificate-rotation.md
-- name: Schnellstarts
+- name: Verfügbare Dokumentation
+  items:
+    - name: Migration
+      items:
+        - name: Migrieren von Daten mit „mysqldump“ oder „phpmyadmin“
+          href: concepts-migrate-dump-restore.md
+          displayName: 'migrate, mysqldump'
+        - name: Migrieren von Daten mit MySQL Workbench
+          href: concepts-migrate-import-export.md
+          displayName: 'import , migrate, export'
+        - name: Migration mit minimaler Downtime per DMS
+          href: howto-migrate-online.md
+          displayName: 'migrate, dms, database migration service'
+    - name: Erstellen von Datenbanken und Benutzern
+      href: howto-create-users.md
+      displayName: users
+    - name: Minimieren der Datenbeschädigung
+      href: how-to-fix-corrupt-database.md
+      displayName: corrupt data
+- name: Einzelner Server
   expanded: true
   items:
-    - name: Erstellen einer Datenbank
+    - name: Dokumentation zu Single Server
+      href: single-server/index.yml
+      displayName: single server
+    - name: Übersicht
       items:
-        - name: Erstellen einer Datenbank – Portal
-          href: quickstart-create-mysql-server-database-using-azure-portal.md
-        - name: Erstellen einer Datenbank – Azure-CLI
-          href: quickstart-create-mysql-server-database-using-azure-cli.md
-        - name: Erstellen einer Datenbank – up-Befehl in Azure CLI
-          href: quickstart-create-server-up-azure-cli.md
-        - name: Erstellen einer Datenbank – Azure PowerShell
-          href: quickstart-create-mysql-server-database-using-azure-powershell.md
-        - name: Erstellen einer Datenbank – ARM-Vorlage
-          href: quickstart-create-mysql-server-database-using-arm-template.md
-          displayName: deploy azure resource manager template
-    - name: Verbinden und abfragen
+        - name: Was ist Single Server?
+          href: single-server-overview.md
+    - name: Schnellstarts
+      expanded: true
       items:
-        - name: PHP
-          href: connect-php.md
-        - name: Java
-          href: connect-java.md
-        - name: Java mit Spring Data JDBC
-          href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
-        - name: Java mit Spring Data JPA
-          href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
-        - name: Java mit Spring Data R2DBC
-          href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
-        - name: .NET
-          href: connect-csharp.md
-        - name: Python
-          href: connect-python.md
-        - name: Node.js
-          href: connect-nodejs.md
-        - name: Ruby
-          href: connect-ruby.md
-        - name: C++
-          href: connect-cpp.md
-        - name: Go
-          href: connect-go.md
-        - name: MySQL Workbench
-          href: connect-workbench.md
-- name: Tutorials
-  items:
-    - name: '1: Erstellen einer Datenbank'
+        - name: Erstellen eines Servers
+          items:
+            - name: Azure-Portal
+              href: quickstart-create-mysql-server-database-using-azure-portal.md
+              displayName: 'portal, create, server'
+            - name: Azure CLI
+              href: quickstart-create-mysql-server-database-using-azure-cli.md
+              displayName: 'cli, create, server'
+            - name: up-Befehl in Azure CLI
+              href: quickstart-create-server-up-azure-cli.md
+              displayName: 'cli, up command, create, server'
+            - name: Azure PowerShell
+              href: quickstart-create-mysql-server-database-using-azure-powershell.md
+              displayName: 'powershell, create, server'
+            - name: ARM-Vorlage
+              href: quickstart-create-mysql-server-database-using-arm-template.md
+              displayName: deploy azure resource manager template
+        - name: Herstellen einer Verbindung und Ausführen von Abfragen
+          items:
+            - name: MySQL Workbench
+              href: connect-workbench.md
+            - name: PHP
+              href: connect-php.md
+            - name: Java
+              href: connect-java.md
+            - name: Java mit Spring Data JDBC
+              href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
+            - name: Java mit Spring Data JPA
+              href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
+            - name: Java mit Spring Data R2DBC
+              href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
+            - name: .NET
+              href: connect-csharp.md
+            - name: Python
+              href: connect-python.md
+            - name: Node.js
+              href: connect-nodejs.md
+            - name: Ruby
+              href: connect-ruby.md
+            - name: C++
+              href: connect-cpp.md
+            - name: Go
+              href: connect-go.md
+    - name: Tutorials
       items:
-        - name: Azure-Portal
-          href: tutorial-design-database-using-portal.md
+        - name: Erstellen einer Datenbank
+          items:
+            - name: Azure-Portal
+              href: tutorial-design-database-using-portal.md
+            - name: Azure CLI
+              href: tutorial-design-database-using-cli.md
+            - name: Azure PowerShell
+              href: tutorial-design-database-using-powershell.md
+            - name: Azure Resource Manager-Vorlage
+              href: tutorial-provision-mysql-server-using-Azure-Resource-Manager-templates.md
+        - name: Erstellen einer PHP-Web-App mit MySQL
+          items:
+            - name: WordPress in Containern mit MySQL
+              href: ../app-service/containers/tutorial-multi-container-app.md
+              maintainContext: true
+            - name: PHP mit MySQL
+              href: ../app-service/app-service-web-tutorial-php-mysql.md
+              maintainContext: true
+    - name: Beispiele
+      items:
         - name: Azure CLI
-          href: tutorial-design-database-using-cli.md
-        - name: Azure PowerShell
-          href: tutorial-design-database-using-powershell.md
-        - name: Azure Resource Manager-Vorlage
-          href: tutorial-provision-mysql-server-using-Azure-Resource-Manager-templates.md
-    - name: '2: Erstellen einer Web-App'
-      items:
-        - name: WordPress in Containern mit MySQL
-          href: ../app-service/tutorial-multi-container-app.md
-          maintainContext: true
-        - name: PHP mit MySQL
-          href: ../app-service/tutorial-php-mysql-app.md
-          maintainContext: true
-- name: Beispiele
-  items:
-    - name: Azure CLI
-      href: sample-scripts-azure-cli.md
-    - name: Java-Verbindungspool
-      href: sample-scripts-java-connection-pooling.md
-- name: Konzepte
-  items:
-    - name: Datenbank und Server
+          href: sample-scripts-azure-cli.md
+        - name: Java-Verbindungspool
+          href: sample-scripts-java-connection-pooling.md
+        - name: Azure Policy-Integrationen
+          href: ./policy-samples.md
+    - name: Konzepte
       items:
         - name: Server
           href: concepts-servers.md
         - name: Unterstützte Versionen
           href: concepts-supported-versions.md
-        - name: Hochverfügbarkeit
-          href: concepts-high-availability.md
-    - name: Ressourcen
-      items:
-        - name: Tarife
-          href: concepts-pricing-tiers.md
-        - name: Vorauszahlen für eine reservierte Kapazität
-          href: concept-reserved-pricing.md
         - name: Einschränkungen
           href: concepts-limits.md
-    - name: Datenzugriff und Sicherheit
-      items:
-        - name: Sicherheitsübersicht
-          href: concepts-security.md
-        - name: Konfigurieren von SSL
-          href: concepts-ssl-connection-security.md
-        - name: Verbindungsarchitektur
-          href: concepts-connectivity-architecture.md
-        - name: Firewallregeln
-          href: concepts-firewall-rules.md
-        - name: Virtual Network
-          href: concepts-data-access-and-security-vnet.md
-        - name: Erweiterter Schutz vor Bedrohungen
-          href: concepts-data-access-and-security-threat-protection.md
-        - name: Private Link
-          href: concepts-data-access-security-private-link.md
-        - name: Datenverschlüsselung
-          href: concepts-data-encryption-mysql.md
-        - name: Azure AD-Authentifizierung
-          href: concepts-azure-ad-authentication.md
-        - name: Doppelte Infrastrukturverschlüsselung
-          href: concepts-infrastructure-double-encryption.md
-        - name: Sicherheitskontrollen von Azure Policy
-          displayName: 'regulatory, compliance, standards, domains'
-          href: ./security-controls-policy.md
-        - name: Sicherheitsbaseline
-          href: security-baseline.md
-    - name: Geschäftskontinuität
-      items:
-        - name: Einführung in Geschäftskontinuität
-          displayName: 'backup, restore, backups, restores, georestore, geo-restore, outage'
-          href: concepts-business-continuity.md
-        - name: Sichern und Wiederherstellen
-          href: concepts-backup.md
-    - name: Überwachen und Optimieren
-      items:
+        - name: Tarife
+          items:
+            - name: Tarife
+              href: concepts-pricing-tiers.md
+            - name: Vorauszahlen für eine reservierte Kapazität
+              href: concept-reserved-pricing.md
+        - name: Netzwerk
+          items:
+            - name: Verwenden von Virtual Network (VNET)
+              href: concepts-data-access-and-security-vnet.md
+            - name: Aktivieren des privaten Zugriffs mit Private Link
+              href: concepts-data-access-security-private-link.md
+        - name: Sicherheit
+          items:
+            - name: Sicherheitsübersicht
+              href: concepts-security.md
+            - name: Konfigurieren von SSL
+              href: concepts-ssl-connection-security.md
+            - name: Verbindungsarchitektur
+              href: concepts-connectivity-architecture.md
+            - name: Firewallregeln
+              href: concepts-firewall-rules.md
+            - name: Advanced Threat Protection
+              href: concepts-data-access-and-security-threat-protection.md
+            - name: Datenverschlüsselung
+              href: concepts-data-encryption-mysql.md
+            - name: Azure AD-Authentifizierung
+              href: concepts-azure-ad-authentication.md
+            - name: Doppelte Infrastrukturverschlüsselung
+              href: concepts-infrastructure-double-encryption.md
+            - name: Sicherheitsbaseline
+              href: security-baseline.md
+        - name: Geschäftskontinuität
+          items:
+            - name: Einführung in Geschäftskontinuität
+              displayName: 'backup, restore, backups, restores, georestore, geo-restore, outage'
+              href: concepts-business-continuity.md
+            - name: Hochverfügbarkeit
+              href: concepts-high-availability.md
+              displayName: 'backup, restore,high availability'
+            - name: Sichern und Wiederherstellen
+              href: concepts-backup.md
+              displayName: 'backup, restore, backups, restores, georestore, geo-restore, outage'
         - name: Überwachen und Optimieren
-          href: concepts-monitoring.md
-        - name: Protokolle für langsame Abfragen
-          href: concepts-server-logs.md
-        - name: Überwachungsprotokolle
-          href: concepts-audit-logs.md
-        - name: Abfragespeicher
-          href: concepts-query-store.md
-        - name: Query Performance Insight
-          href: concepts-query-performance-insight.md
-        - name: Leistungsempfehlungen
-          href: concepts-performance-recommendations.md
-        - name: Serverparameter
-          href: concepts-server-parameters.md
-    - name: Entwicklung
-      items:
-        - name: Best Practices für Anwendungen
-          href: app-development-best-practices.md
-        - name: Kompatibilität von Treibern und Tools
-          href: concepts-compatibility.md
+          items:
+            - name: Übersicht über die Überwachung
+              href: concepts-monitoring.md
+              displayName: 'monitor, alerts, audit log, slow query log'
+            - name: Serverparameter
+              href: concepts-server-parameters.md
+              displayName: server parameters
+            - name: Protokolle für langsame Abfragen
+              href: concepts-server-logs.md
+              displayName: 'monitor, slow query log, alert'
+            - name: Überwachungsprotokolle
+              href: concepts-audit-logs.md
+              displayName: 'monitor, alerts, audit log'
+            - name: Abfragespeicher
+              href: concepts-query-store.md
+              displayName: 'performance, query store'
+            - name: Statistik zur Abfrageleistung
+              href: concepts-query-performance-insight.md
+              displayName: query performance insights
+            - name: Empfehlungen zur Leistung
+              href: concepts-performance-recommendations.md
+              displayName: recommendation
         - name: Anwendungsentwicklung
-          href: concepts-database-application-development.md
-        - name: Verbindungsstabilität
-          href: concepts-connectivity.md
-        - name: Entwickeln mit Azure Kubernetes Service (AKS)
-          href: concepts-aks.md
-        - name: Java
           items:
-            - name: Verwenden von Java und JDBC
-              href: connect-java.md
-            - name: Verwenden von Spring Data-JDBC
-              href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
-            - name: Verwenden von Spring Data-JPA
-              href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
-            - name: Verwenden von Spring Data R2DBC
-              href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-mysql?toc=/azure/mysql/toc.json&bc=/azure/bread/toc.json
-    - name: Replikation
-      items:
-        - name: Replikation eingehender Daten
-          href: concepts-data-in-replication.md
-        - name: Lesereplikate
-          href: concepts-read-replicas.md
-- name: Anleitungen
-  items:
-    - name: Verwalten eines Servers
-      items:
-        - name: Azure-Portal
-          href: howto-create-manage-server-portal.md
-    - name: Firewallregeln
-      items:
-        - name: Azure-Portal
-          href: howto-manage-firewall-using-portal.md
-        - name: Azure CLI
-          href: howto-manage-firewall-using-cli.md
-    - name: Wiederherstellen eines Servers
-      items:
-        - name: Azure-Portal
-          href: howto-restore-server-portal.md
-        - name: Azure CLI
-          href: howto-restore-server-cli.md
-        - name: Azure PowerShell
-          href: howto-restore-server-powershell.md
-    - name: Migrieren einer Datenbank
-      items:
-        - name: Sicherung und Wiederherstellung
-          href: concepts-migrate-dump-restore.md
-        - name: Importieren und Exportieren
-          href: concepts-migrate-import-export.md
-        - name: Migration mit minimaler Downtime
-          href: howto-migrate-online.md
-    - name: Herstellen einer Verbindung mit Anwendungen
-      items:
-        - name: Erstellen von Benutzern
-          href: howto-create-users.md
-        - name: Verbindungszeichenfolgen
+            - name: 'Anwendungsentwicklung: Übersicht'
+              href: concepts-database-application-development.md
+            - name: Kompatibilität von Treibern und Tools
+              href: concepts-compatibility.md
+              displayName: 'drivers, tools'
+            - name: Best Practices für Anwendungen
+              href: app-development-best-practices.md
+              displayName: application
+            - name: Verbindungsstabilität
+              href: concepts-connectivity.md
+              displayName: 'connection, resiliency'
+        - name: Replikation
           items:
-            - name: Herstellen einer Verbindung mit Anwendungen
-              href: howto-connection-string.md
+            - name: Replikation eingehender Daten
+              href: concepts-data-in-replication.md
+              displayName: 'replication, read replica'
+            - name: Lesereplikate
+              href: concepts-read-replicas.md
+              displayName: 'replication, read replica'
+    - name: Anleitungen
+      items:
+        - name: Verwalten und Skalieren eines Servers
+          items:
+            - name: Azure-Portal
+              href: howto-create-manage-server-portal.md
+              displayName: 'manage, reset password, scale'
+            - name: Azure CLI
+              href: how-to-manage-single-server-cli.md
+              displayName: 'manage, reset password, scale'
+            - name: Firewallregeln
+              items:
+                - name: Azure-Portal
+                  href: howto-manage-firewall-using-portal.md
+                  displayName: firewall
+                - name: Azure CLI
+                  href: howto-manage-firewall-using-cli.md
+                  displayName: firewall
+        - name: Authentifizierung
+          items:
+            - name: "Konfigurieren der Azure\_AD-Integration"
+              href: howto-configure-sign-in-azure-ad-authentication.md
+              displayName: active directory
+            - name: Herstellen einer Verbindung mit einer verwalteten Identität
+              href: howto-connect-with-managed-identity.md
+              displayName: 'managed identity, msi'
+        - name: Wiederherstellen eines Servers
+          items:
+            - name: Azure-Portal
+              href: howto-restore-server-portal.md
+              displayName: 'restore server,backup'
+            - name: Azure CLI
+              href: howto-restore-server-cli.md
+              displayName: 'restore server, backup'
             - name: Azure PowerShell
-              href: howto-connection-string-powershell.md
-        - name: Konfigurieren von SSL
-          href: howto-configure-ssl.md
-        - name: Konfigurieren von TLS
-          href: howto-tls-configurations.md
-        - name: Web-Apps
-          href: howto-connect-webapp.md
-        - name: Herstellen einer Verbindung mit Umleitung
-          href: howto-redirection.md
-    - name: Konfigurieren von Serverparametern
-      items:
-        - name: Azure-Portal
-          href: howto-server-parameters.md
-        - name: Azure CLI
-          href: howto-configure-server-parameters-using-cli.md
-        - name: Azure PowerShell
-          href: howto-configure-server-parameters-using-powershell.md
-    - name: Automatische Speichervergrößerung
-      items:
-        - name: Azure-Portal
-          href: howto-auto-grow-storage-portal.md
-        - name: Azure CLI
-          href: howto-auto-grow-storage-cli.md
-        - name: Azure PowerShell
-          href: howto-auto-grow-storage-powershell.md
-    - name: Zugreifen auf Serverprotokolle
-      items:
+              href: howto-restore-server-powershell.md
+              displayName: 'restore server, backup, geo-restore powershell'
+        - name: Herstellen einer Verbindung mit Anwendungen
+          items:
+            - name: Konfigurieren von SSL
+              href: howto-configure-ssl.md
+              displayName: 'ssl, security, application'
+            - name: Konfigurieren von TLS
+              href: howto-tls-configurations.md
+              displayName: 'TLS, security, developement'
+            - name: Anleitung zur Verbindungsherstellung und zu Abfragen
+              href: how-to-connect-overview-single-server.md
+              displayName: 'connect , query , libraries, TLS, runtime'
+            - name: Web-Apps
+              href: howto-connect-webapp.md
+              displayName: 'azure web app, security, web app, app service'
+            - name: Herstellen einer Verbindung mit Umleitung
+              href: howto-redirection.md
+              displayName: 'development, redirection , php'
+        - name: Konfigurieren von Serverparametern
+          items:
+            - name: Azure-Portal
+              href: howto-server-parameters.md
+              displayName: server parameters
+            - name: Azure CLI
+              href: howto-configure-server-parameters-using-cli.md
+              displayName: 'server parameters, cli'
+            - name: Azure PowerShell
+              href: howto-configure-server-parameters-using-powershell.md
+              displayName: 'server parameters, powershell'
+        - name: Automatische Speichervergrößerung
+          items:
+            - name: Azure-Portal
+              href: howto-auto-grow-storage-portal.md
+              displayName: 'storage, business continuity , downtime, portal'
+            - name: Azure CLI
+              href: howto-auto-grow-storage-cli.md
+              displayName: 'storage, business continuity , downtime, cli'
+            - name: Azure PowerShell
+              href: howto-auto-grow-storage-powershell.md
+              displayName: 'storage, business continuity , downtime, powershell'
         - name: Protokolle für langsame Abfragen
           items:
             - name: Azure-Portal
               href: howto-configure-server-logs-in-portal.md
+              displayName: 'debug, slow query log , performance'
             - name: Azure CLI
               href: howto-configure-server-logs-in-cli.md
+              displayName: 'debug, slow query log , performance'
         - name: Überwachungsprotokolle
           items:
             - name: Azure-Portal
               href: howto-configure-audit-logs-portal.md
+              displayName: 'debug, audit log'
             - name: Azure CLI
               href: howto-configure-audit-logs-cli.md
-    - name: Überwachen
+              displayName: 'debug, audit log'
+        - name: Überwachen
+          items:
+            - name: Erstellen von Warnungen zu Metriken
+              href: howto-alert-on-metric.md
+              displayName: 'debug, monitor, alerts, metrics'
+        - name: Replikation
+          items:
+            - name: Konfigurieren der Replikation eingehender Daten
+              href: howto-data-in-replication.md
+              displayName: 'data-in replication, replica, failover'
+            - name: Erstellen von Lesereplikaten im Azure-Portal
+              href: howto-read-replicas-portal.md
+              displayName: 'data-in replication, replica, failover'
+            - name: 'Erstellen von Lesereplikaten mit der Azure CLI, REST-API'
+              href: howto-read-replicas-cli.md
+              displayName: 'data-in replication, replica, failover'
+            - name: Erstellen von Lesereplikaten mit Azure PowerShell
+              href: howto-read-replicas-powershell.md
+              displayName: 'data-in replication, replica, failover'
+            - name: Problembehandlung
+              items:
+                - name: Beheben von Verbindungsproblemen
+                  href: howto-troubleshoot-common-connection-issues.md
+                  displayName: 'debug, connection issues, connectivity, cannot connect'
+                - name: Problembehandlung der Abfrageleistung
+                  href: howto-troubleshoot-query-performance.md
+                  displayName: 'debug, performance issues, query performance'
+                - name: Verwenden von Ansichten im Systemschema
+                  href: howto-troubleshoot-sys-schema.md
+                  displayName: 'sys schema, views'
+                - name: Problembehandlung für Datenverschlüsselung
+                  href: howto-data-encryption-troubleshoot.md
+                  displayName: 'encryption, security'
+        - name: Erweiterter Schutz vor Bedrohungen
+          items:
+            - name: Azure-Portal
+              href: howto-database-threat-protection-portal.md
+              displayName: 'atp, advanced thread, security'
+            - name: Virtual Network
+              items:
+                - name: Azure-Portal
+                  href: howto-manage-vnet-using-portal.md
+                  displayName: 'vnet, virtual network, service endpoint'
+                - name: Azure CLI
+                  href: howto-manage-vnet-using-cli.md
+                  displayName: 'vnet, virtual network, service endpoint'
+        - name: Private Link
+          items:
+            - name: Azure-Portal
+              href: howto-configure-privatelink-portal.md
+              displayName: 'private link, private endpoint'
+            - name: Azure CLI
+              href: howto-configure-privatelink-cli.md
+              displayName: 'private link, private endpoint'
+        - name: Datenverschlüsselung
+          items:
+            - name: Azure-Portal
+              href: howto-data-encryption-portal.md
+              displayName: 'encryption, security'
+            - name: Azure CLI
+              href: howto-data-encryption-cli.md
+              displayName: 'encryption, security'
+            - name: Validierung der Datenverschlüsselung
+              href: howto-data-encryption-validation.md
+              displayName: 'encryption, security'
+        - name: Doppelte Infrastrukturverschlüsselung
+          items:
+            - name: Konfigurieren der doppelten Infrastrukturverschlüsselung
+              href: howto-double-encryption.md
+              displayName: 'infrastructure encryption, security'
+        - name: Verweigern des Zugriffs auf das öffentliche Netzwerk
+          items:
+            - name: Azure-Portal
+              href: howto-deny-public-network-access.md
+              displayName: 'security, public access'
+        - name: Neustarten des Servers
+          items:
+            - name: Azure-Portal
+              href: howto-restart-server-portal.md
+              displayName: restart
+            - name: Azure CLI
+              href: howto-restart-server-cli.md
+              displayName: restart
+            - name: Azure PowerShell
+              href: howto-restart-server-powershell.md
+              displayName: restart
+        - name: Verschieben zwischen Regionen
+          items:
+            - name: Azure-Portal
+              href: howto-move-regions-portal.md
+              displayName: move servers across regions
+- name: Flexible Server (Vorschau)
+  items:
+    - name: Dokumentation zu Flexible Server
+      href: flexible-server/index.yml
+    - name: Übersicht
       items:
-        - name: Erstellen von Warnungen zu Metriken
-          href: howto-alert-on-metric.md
-    - name: Replikation
+        - name: Was ist Flexible Server?
+          href: flexible-server/overview.md
+    - name: Schnellstarts
+      expanded: true
       items:
-        - name: Konfigurieren der Replikation eingehender Daten
-          href: howto-data-in-replication.md
-        - name: Erstellen von Lesereplikaten im Azure-Portal
-          href: howto-read-replicas-portal.md
-        - name: 'Erstellen von Lesereplikaten mit der Azure CLI, REST-API'
-          href: howto-read-replicas-cli.md
-        - name: Erstellen von Lesereplikaten mit Azure PowerShell
-          href: howto-read-replicas-powershell.md
-    - name: Problembehandlung
+        - name: Erstellen eines Servers
+          expanded: true
+          items:
+            - name: Azure-Portal
+              href: flexible-server/quickstart-create-server-portal.md
+            - name: Azure CLI
+              href: flexible-server/quickstart-create-server-cli.md
+            - name: ARM-Vorlage
+              href: flexible-server/quickstart-create-arm-template.md
+        - name: Herstellen einer Verbindung und Ausführen von Abfragen
+          items:
+            - name: PHP
+              href: flexible-server/connect-php.md
+            - name: MySQL Workbench
+              href: flexible-server/connect-workbench.md
+            - name: Python
+              href: flexible-server/connect-python.md
+    - name: Tutorials
       items:
-        - name: Problembehandlung für häufige Fehler
-          href: howto-troubleshoot-common-errors.md
-        - name: Beheben von Verbindungsproblemen
-          href: howto-troubleshoot-common-connection-issues.md
-        - name: Problembehandlung der Abfrageleistung
-          href: howto-troubleshoot-query-performance.md
-        - name: Verwenden von Ansichten im Systemschema
-          href: howto-troubleshoot-sys-schema.md
-        - name: Problembehandlung für Datenverschlüsselung
-          href: howto-data-encryption-troubleshoot.md
-    - name: Erweiterter Schutz vor Bedrohungen
+        - name: Erstellen einer PHP-App (Laravel) mit Datenbank
+          href: flexible-server/tutorial-php-database-app.md
+        - name: Herstellen einer Verbindung mit einer privaten Web-App
+          href: flexible-server/tutorial-webapp-server-vnet.md
+    - name: Konzepte
       items:
-        - name: Azure-Portal
-          href: howto-database-threat-protection-portal.md
-    - name: Virtual Network
+        - name: Server
+          href: flexible-server/concept-servers.md
+        - name: Unterstützte Versionen
+          href: flexible-server/concepts-supported-versions.md
+        - name: Einschränkungen
+          href: flexible-server/concepts-limitations.md
+        - name: Compute und Speicher
+          href: flexible-server/concepts-compute-storage.md
+        - name: Netzwerk
+          href: flexible-server/concepts-networking.md
+          displayName: 'virtual network, IP address, public access'
+        - name: Wartung
+          href: flexible-server/concepts-maintenance.md
+        - name: Geschäftskontinuität
+          items:
+            - name: Übersicht über die Geschäftskontinuität
+              href: flexible-server/concepts-business-continuity.md
+            - name: Sichern und Wiederherstellen
+              href: flexible-server/concepts-backup-restore.md
+            - name: Hochverfügbarkeit
+              href: flexible-server/concepts-high-availability.md
+        - name: Überwachung und Protokolle
+          items:
+            - name: Protokolle für langsame Abfragen
+              href: flexible-server/concepts-slow-query-logs.md
+            - name: Überwachungsprotokolle
+              href: flexible-server/concepts-audit-logs.md
+            - name: Metriken
+              href: flexible-server/concepts-monitoring.md
+    - name: Anleitungen
       items:
-        - name: Azure-Portal
-          href: howto-manage-vnet-using-portal.md
-        - name: Azure CLI
-          href: howto-manage-vnet-using-cli.md
-    - name: Private Link
-      items:
-        - name: Azure-Portal
-          href: howto-configure-privatelink-portal.md
-        - name: Azure CLI
-          href: howto-configure-privatelink-cli.md
-    - name: Datenverschlüsselung
-      items:
-        - name: Azure-Portal
-          href: howto-data-encryption-portal.md
-        - name: Azure CLI
-          href: howto-data-encryption-cli.md
-        - name: Validierung der Datenverschlüsselung
-          href: howto-data-encryption-validation.md
-    - name: Doppelte Infrastrukturverschlüsselung
-      items:
-        - name: Konfigurieren der doppelten Infrastrukturverschlüsselung
-          href: howto-double-encryption.md
-    - name: Azure AD-Integration
-      items:
-        - name: "Konfigurieren der Azure\_AD-Integration"
-          href: howto-configure-sign-in-azure-ad-authentication.md
-        - name: Herstellen einer Verbindung mit verwalteter Identität
-          href: howto-connect-with-managed-identity.md
-    - name: Verweigern des Zugriffs auf das öffentliche Netzwerk
-      items:
-        - name: Azure-Portal
-          href: howto-deny-public-network-access.md
-    - name: Neustarten des Servers
-      items:
-        - name: Azure-Portal
-          href: howto-restart-server-portal.md
-        - name: Azure CLI
-          href: howto-restart-server-cli.md
-        - name: Azure PowerShell
-          href: howto-restart-server-powershell.md
-    - name: Verschieben zwischen Regionen
-      items:
-        - name: Azure-Portal
-          href: howto-move-regions-portal.md
+        - name: Verwalten eines Servers
+          items:
+            - name: Azure-Portal
+              href: flexible-server/how-to-manage-server-portal.md
+            - name: Azure CLI
+              href: flexible-server/how-to-manage-server-cli.md
+        - name: Wartung
+          items:
+            - name: Azure-Portal
+              href: flexible-server/how-to-maintenance-portal.md
+        - name: Beenden/Starten des Servers
+          items:
+            - name: Azure-Portal
+              href: flexible-server/how-to-stop-start-server-portal.md
+        - name: Wiederherstellen eines Servers
+          items:
+            - name: Azure-Portal
+              href: flexible-server/how-to-restore-server-portal.md
+        - name: Hochverfügbarkeit
+          items:
+            - name: Azure-Portal
+              href: flexible-server/how-to-configure-high-availability.md
+        - name: Netzwerk
+          items:
+            - name: Privater Zugriff (VNET-Integration)
+              items:
+                - name: Azure-Portal
+                  href: flexible-server/how-to-manage-virtual-network-portal.md
+                - name: Azure CLI
+                  href: flexible-server/how-to-manage-virtual-network-cli.md
+            - name: Öffentlicher Zugriff (zugelassene IP-Adressen)
+              items:
+                - name: Azure-Portal
+                  href: flexible-server/how-to-manage-firewall-portal.md
+                - name: Azure CLI
+                  href: flexible-server/how-to-manage-firewall-cli.md
+            - name: TLS/SSL
+              items:
+                - name: Herstellen einer Verbindung per TLS/SSL
+                  href: flexible-server/how-to-connect-tls-ssl.md
+        - name: Überwachung und Protokolle
+          items:
+            - name: Erstellen von Warnungen zu Metriken
+              href: flexible-server/how-to-alert-on-metric.md
+            - name: Protokolle für langsame Abfragen
+              items:
+                - name: Azure-Portal
+                  href: flexible-server/how-to-configure-slow-query-logs-portal.md
+            - name: Überwachungsprotokolle
+              items:
+                - name: Azure-Portal
+                  href: flexible-server/how-to-configure-audit-logs-portal.md
+        - name: Problembehandlung
+          items:
+            - name: Verbindungsfehler
+              href: flexible-server/how-to-troubleshoot-common-connection-issues.md
 - name: Verweis
   items:
     - name: Azure CLI
@@ -336,9 +524,6 @@
       href: /azure/templates/microsoft.dbformysql/allversions
     - name: Gespeicherte Verwaltungsprozeduren
       href: reference-stored-procedures.md
-    - name: Azure Policy-Integrationen
-      displayName: 'samples, policies, definitions'
-      href: ./policy-reference.md
 - name: Ressourcen
   items:
     - name: Bereitstellungsvorlagen
@@ -363,8 +548,6 @@
               href: 'https://aka.ms/mysql-migrate-vid'
             - name: Erstellen und Bereitstellen von Web-Apps
               href: 'https://aka.ms/mysql-webapps-vid'
-            - name: Herstellen einer Verbindung mit Containern mithilfe von OSBA
-              href: 'https://aka.ms/mysql-osba-vid'
     - name: Anfordern eines Features
       href: 'https://feedback.azure.com/forums/597982-azure-database-for-mysql'
     - name: Regionale Verfügbarkeit

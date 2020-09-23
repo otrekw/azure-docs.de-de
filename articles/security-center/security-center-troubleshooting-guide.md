@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: e26744c2003bd55b33b638b15775c52abbe1dc32
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: e2922d19dbcad7da2808a86896e39d21420e73d5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836004"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904745"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Security Center – Handbuch zur Problembehandlung
 
@@ -29,7 +29,7 @@ Warnungstypen:
 
 * Verhaltensanalyse von VMs (Virtual Machine Behavioral Analysis, VMBA)
 * Netzwerkanalyse
-* SQL-Datenbank und SQL Data Warehouse-Analyse
+* Analysen von SQL-Datenbank und Azure Synapse Analytics (vormals SQL Data Warehouse)
 * Kontextinformationen
 
 Abhängig von den Warnungstypen können Kunden mithilfe der folgenden Ressourcen die erforderlichen Informationen sammeln, um die Warnung zu untersuchen:
@@ -132,7 +132,7 @@ Wenn beim Laden des Security Center-Dashboards Probleme auftreten, stellen Sie s
 
 ## <a name="contacting-microsoft-support"></a>Kontaktaufnahme mit dem Microsoft-Support
 
-Einige Probleme können mit den Richtlinien in diesem Artikel identifiziert werden, während andere auf der öffentlichen [Frageseite von Microsoft Q&A (Fragen und Antworten)](https://docs.microsoft.com/answers/topics/azure-security-center.html) im Security Center dokumentiert sind. Falls Sie weitere Hilfe zur Problembehandlung benötigen, können Sie wie unten gezeigt über das **Azure-Portal** eine neue Supportanfrage erstellen:
+Einige Probleme können mit den Richtlinien in diesem Artikel identifiziert werden, während andere auf der öffentlichen [Microsoft Q&A-Seite](https://docs.microsoft.com/answers/topics/azure-security-center.html) von Security Center dokumentiert sind. Falls Sie weitere Hilfe zur Problembehandlung benötigen, können Sie wie unten gezeigt über das **Azure-Portal** eine neue Supportanfrage erstellen:
 
 ![Microsoft-Support](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
 
@@ -151,4 +151,4 @@ In diesem Dokument haben Sie erfahren, wie Sie Sicherheitsrichtlinien in Azure S
 * [Azure Security Center-Erkennungsfunktionen](security-center-detection-capabilities.md)
 * [Überwachen von Partnerlösungen mit Azure Security Center](security-center-partner-solutions.md) : Erfahren Sie, wie der Integritätsstatus Ihrer Partnerlösungen überwacht wird.
 * [Azure Security Center – Häufig gestellte Fragen](faq-general.md) : Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
-* [Azure Security Blog](https://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Azure-Sicherheit und -Compliance.
+* [Azure Security Blog](https://docs.microsoft.com/archive/blogs/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Azure-Sicherheit und -Compliance.

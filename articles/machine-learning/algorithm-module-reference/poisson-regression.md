@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/13/2020
-ms.openlocfilehash: 6682d9426ed3fe011fe5c493ec34fcdf0a2b35b7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a1a09357c7f80d4af0198a33a2e0007782ef232f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094375"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905258"
 ---
 # <a name="poisson-regression"></a>Poisson-Regression
 
-In diesem Artikel wird ein Modul in Azure Machine Learning-Designer (Vorschauversion) beschrieben.
+In diesem Artikel wird ein Modul im Azure Machine Learning-Designer beschrieben.
 
 Erstellen Sie mit diesem Modul ein lineares Poisson-Regressionsmodell in einer Pipeline. Die Poisson-Regression ist für die Vorhersage numerischer Werte, in der Regel Anzahlen, gedacht. Daher sollten Sie dieses Modul nur dann verwenden, um das Regressionsmodell zu erstellen, wenn die Werte, die Sie vorhersagen möchten, folgende Bedingungen erfüllen:
 
@@ -49,7 +49,7 @@ Da die Antwortvariable eine Poisson-Verteilung aufweist, trifft das Modell ander
 
 ## <a name="how-to-configure-poisson-regression"></a>So konfigurieren Sie eine Poisson-Regression
 
-1. Fügen Sie in Designer (Vorschauversion) das Modul **Poisson Regression** Ihrer Pipeline hinzu. Sie finden dieses Modul unter den **Machine Learning-Algorithmen** in der Kategorie **Regression**.
+1. Fügen Sie in Designer das Modul **Poisson Regression** Ihrer Pipeline hinzu. Sie finden dieses Modul unter den **Machine Learning-Algorithmen** in der Kategorie **Regression**.
 
 2. Fügen Sie ein Dataset hinzu, das Trainingsdaten des richtigen Typs enthält. 
 

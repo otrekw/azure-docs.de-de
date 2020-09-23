@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
-ms.openlocfilehash: ea11dddd83651e233f008197ffa23a3becd978de
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: a052364b06ac1b9b30cef76db10a79e8ed85b9a3
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642349"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89470152"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Features und Tools für Azure Cloud Shell
 
@@ -38,7 +38,7 @@ Cloud Shell authentifiziert den Zugriff auf Konten für die Azure CLI und Azure 
 Damit Sie Dateien sitzungsübergreifend beibehalten können, wird Ihnen beim ersten Start von Cloud Shell das Anfügen einer Azure-Dateifreigabe gezeigt.
 Anschließend fügt Cloud Shell Ihren Speicher (als `$HOME\clouddrive` eingebunden) automatisch für alle zukünftigen Sitzungen an.
 Darüber hinaus wird Ihr `$HOME`-Verzeichnis als IMG-Datei in Ihrer Azure-Dateifreigabe gespeichert.
-Dateien außerhalb von `$HOME` und der Zustand des Computers werden nicht sitzungsübergreifend beibehalten. Verwenden Sie beim Speichern von Geheimnissen (z.B. SSH-Schlüssel) bewährte Methoden. Dienste wie [Azure Key Vault enthalten Tutorials für das Setup](https://docs.microsoft.com/azure/key-vault/key-vault-manage-with-cli2#prerequisites).
+Dateien außerhalb von `$HOME` und der Zustand des Computers werden nicht sitzungsübergreifend beibehalten. Verwenden Sie beim Speichern von Geheimnissen (z.B. SSH-Schlüssel) bewährte Methoden. Dienste wie [Azure Key Vault enthalten Tutorials für das Setup](../key-vault/general/manage-with-cli2.md#prerequisites).
 
 [Erfahren Sie mehr über das Beibehalten von Dateien in Cloud Shell.](persisting-shell-storage.md)
 
@@ -46,7 +46,7 @@ Dateien außerhalb von `$HOME` und der Zustand des Computers werden nicht sitzun
 
 PowerShell in Cloud Shell stellt das Azure-Laufwerk (`Azure:`) bereit. Mit `cd Azure:` können Sie zum Azure-Laufwerk wechseln und mit `cd  ~` zurück zum Basisverzeichnis.
 Das Azure-Laufwerk ermöglicht die einfache Ermittlung und Navigation von Azure-Ressourcen wie Computing, Netzwerk, Speicher usw., die der Navigation im Dateisystem ähnelt.
-Sie können weiterhin unabhängig vom Laufwerk, in dem Sie sich befinden, die vertrauten [Azure PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure) zur Verwaltung dieser Ressourcen verwenden.
+Sie können weiterhin unabhängig vom Laufwerk, in dem Sie sich befinden, die vertrauten [Azure PowerShell-Cmdlets](/powershell/azure) zur Verwaltung dieser Ressourcen verwenden.
 Alle an den Azure-Ressourcen vorgenommenen Änderungen, die entweder direkt im Azure-Portal oder über Azure PowerShell-Cmdlets durchgeführt wurden, werden auf dem Azure-Laufwerk reflektiert.  Sie können `dir -Force` ausführen, um Ihre Ressourcen zu aktualisieren.
 
 ![Screenshot: Azure Cloud Shell-Instanz, die initialisiert wird, und eine Liste der Verzeichnisressourcen](media/features-powershell/azure-drive.png)
@@ -72,12 +72,12 @@ Cloud Shell enthält eine vorkonfigurierte Authentifizierung für Open Source-To
 |Category   |Name   |
 |---|---|
 |Linux-Tools            |Bash<br> zsh<br> sh<br> tmux<br> dig<br>               |
-|Azure-Tools            |[Azure CLI](https://github.com/Azure/azure-cli) und [klassische Azure-Befehlszeilenschnittstelle](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)<br> [Azure Functions-Befehlszeilenschnittstelle](https://github.com/Azure/azure-functions-core-tools)<br> [Service Fabric-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
+|Azure-Tools            |[Azure CLI](https://github.com/Azure/azure-cli) und [klassische Azure-Befehlszeilenschnittstelle](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](../storage/common/storage-use-azcopy-v10.md)<br> [Azure Functions-Befehlszeilenschnittstelle](https://github.com/Azure/azure-functions-core-tools)<br> [Service Fabric-Befehlszeilenschnittstelle](../service-fabric/service-fabric-cli.md)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
 |Text-Editoren           |code (Cloud Shell-Editor)<br> vim<br> Nano<br> Emacs    |
 |Quellcodeverwaltung         |Git                    |
 |Buildtools            |Make<br> Maven<br> npm<br> pip         |
 |Container             |[Docker-Computer](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [DC/OS-CLI](https://github.com/dcos/dcos-cli)         |
-|Datenbanken              |MySQL-Client<br> PostgreSQL-Client<br> [SQLCMD-Hilfsprogramm](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli) |
+|Datenbanken              |MySQL-Client<br> PostgreSQL-Client<br> [SQLCMD-Hilfsprogramm](/sql/tools/sqlcmd-utility)<br> [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli) |
 |Andere                  |iPython-Client<br> [Cloud Foundry-CLI](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)<br> [Chef InSpec](https://www.chef.io/inspec/)<br> [Puppet Bolt](https://puppet.com/docs/bolt/latest/bolt.html)<br> [HashiCorp Packer](https://www.packer.io/)<br> [Office 365 CLI](https://pnp.github.io/office365-cli/)|
 
 ## <a name="language-support"></a>Sprachunterstützung
@@ -94,5 +94,5 @@ Cloud Shell enthält eine vorkonfigurierte Authentifizierung für Open Source-To
 ## <a name="next-steps"></a>Nächste Schritte
 [Bash in Cloud Shell – Schnellstart](quickstart.md) <br>
 [Schnellstart für PowerShell in Cloud Shell](quickstart-powershell.md) <br>
-[Erfahren Sie mehr über die Azure CLI](https://docs.microsoft.com/cli/azure/) <br>
-[Informationen zu Azure PowerShell](https://docs.microsoft.com/powershell/azure/) <br>
+[Erfahren Sie mehr über die Azure CLI](/cli/azure/) <br>
+[Informationen zu Azure PowerShell](/powershell/azure/) <br>

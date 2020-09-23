@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4702c68dcda0c794aef34d3c0675e2fd158e6d4f
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 0b1a5e36232e74caa34037efbbb0da0c39051998
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009408"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568692"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Speicheroptionen für FSLogix-Profilcontainer in Windows Virtual Desktop
 
@@ -51,7 +51,7 @@ Weitere Informationen zu FSLogix-Profilcontainern, Benutzerprofil-Datenträgern 
 
 Wenn Sie zum Erstellen Ihrer eigenen FSLogix-Profilcontainer bereit sind, beginnen Sie mit einem der folgenden Tutorials:
 
-- [Erste Schritte mit FSLogix-Profilcontainern für Azure Files in Windows Virtual Desktop](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/Getting-started-with-FSLogix-profile-containers-on-Azure-Files/ba-p/746477)
+- [Erste Schritte mit FSLogix-Profilcontainern für Azure Files in Windows Virtual Desktop](create-file-share.md)
 - [Erstellen eines FSLogix-Profilcontainers für einen Hostpool mit Azure NetApp Files](create-fslogix-profile-container.md)
 - Die Anweisungen unter [Bereitstellen eines Scale-Out-Dateiservers mit direkten Speicherplätzen und zwei Knoten für die Speicherung von Benutzerprofil-Datenträgern](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/) gelten auch, wenn Sie anstelle eines Benutzerprofil-Datenträgers einen FSLogix-Profilcontainer verwenden.
 

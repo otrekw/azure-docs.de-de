@@ -3,12 +3,12 @@ title: Konfigurieren des öffentlichen Registrierungszugriffs
 description: Konfigurieren von IP-Regeln, um den Zugriff auf eine Azure-Containerregistrierung über ausgewählte öffentliche IP-Adressen oder -Adressbereiche zu ermöglichen.
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 0fbca1ec2734bf8275e12249f63ab134837fea12
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 4e4ee817e2534bcca09cba89daafd379ff3f03f0
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660924"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488761"
 ---
 # <a name="configure-public-ip-network-rules"></a>Konfigurieren von Netzwerkregeln für öffentliche IP-Adressen
 
@@ -17,6 +17,8 @@ Eine Azure-Containerregistrierung akzeptiert standardmäßig Verbindungen über 
 IP-Netzwerkregeln werden auf dem öffentlichen Registrierungsendpunkt konfiguriert. IP-Netzwerkregeln gelten nicht für private Endpunkte, die mit [Private Link](container-registry-private-link.md) konfiguriert sind.
 
 Das Konfigurieren von IP-Zugriffsregeln steht im Tarif **Premium** der Containerregistrierung zur Verfügung. Weitere Informationen zu den Tarifen des Registrierungsdiensts und zu den Einschränkungen finden Sie unter [Azure Container Registry-Tarife](container-registry-skus.md).
+
+[!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]
 
 ## <a name="access-from-selected-public-network---cli"></a>Zugriff aus einem ausgewählten öffentlichen Netzwerk – CLI
 

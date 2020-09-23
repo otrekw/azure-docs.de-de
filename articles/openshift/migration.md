@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 08/13/2020
 keywords: Migration, ARO, OpenShift, Red Hat
-ms.openlocfilehash: 68e8be24273dfab490d2423b76c372f2ff9f2b38
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 322c0cf5ece2a9c950e71b947e2aa6088a165cb8
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88513038"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469744"
 ---
 # <a name="migrate-from-azure-red-hat-openshift-311-to-azure-red-hat-openshift-4"></a>Migrieren von Azure Red Hat OpenShift 3.11 zu Azure Red Hat OpenShift 4
 
@@ -100,7 +100,7 @@ Informationen zum Konfigurieren dieser Speichertypen finden Sie im Thema zum [Ko
 
 Mit Azure Red Hat OpenShift 4 können Images aus Ihrem Quellcode erstellt und bereitgestellt und deren Lebenszyklus verwaltet werden. Um dies zu ermöglichen, bietet Azure Red Hat OpenShift 4 eine [interne, integrierte Containerimageregistrierung](https://docs.openshift.com/aro/4/registry/registry-options.html), die in Ihrer Azure Red Hat OpenShift-Umgebung für die lokale Verwaltung von Images bereitgestellt werden kann.
 
-Wenn Sie externe Registrierungen wie [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/), [Red Hat Quay-Registrierungen](https://docs.openshift.com/aro/4/registry/registry-options.html#registry-quay-overview_registry-options) oder eine [authentifizierungsfähige Red Hat-Registrierung](https://docs.openshift.com/aro/4/registry/registry-options.html#registry-authentication-enabled-registry-overview_registry-options) verwenden, befolgen Sie die Schritte zum Bereitstellen von Anmeldeinformationen für den Cluster, damit der Cluster auf die Repositorys zugreifen kann.
+Wenn Sie externe Registrierungen wie [Azure Container Registry](../container-registry/index.yml), [Red Hat Quay-Registrierungen](https://docs.openshift.com/aro/4/registry/registry-options.html#registry-quay-overview_registry-options) oder eine [authentifizierungsfähige Red Hat-Registrierung](https://docs.openshift.com/aro/4/registry/registry-options.html#registry-authentication-enabled-registry-overview_registry-options) verwenden, befolgen Sie die Schritte zum Bereitstellen von Anmeldeinformationen für den Cluster, damit der Cluster auf die Repositorys zugreifen kann.
 
 ### <a name="monitoring"></a>Überwachung
 
@@ -128,4 +128,3 @@ az openshift delete --name $CLUSTER_NAME
 ```
 ## <a name="next-steps"></a>Nächste Schritte
 Informieren Sie sich [hier](https://docs.openshift.com/aro/4/welcome/index.html) in der Red Hat-Dokumentation zu Azure Red Hat OpenShift.
-

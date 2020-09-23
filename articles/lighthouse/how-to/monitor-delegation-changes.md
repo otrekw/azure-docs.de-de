@@ -1,14 +1,14 @@
 ---
 title: Überwachen von Delegierungsänderungen in Ihrem Verwaltungsmandanten
 description: Erfahren Sie, wie Sie Delegierungsaktivitäten von Kundenmandanten für Ihren Verwaltungsmandanten überwachen.
-ms.date: 08/18/2020
+ms.date: 09/08/2020
 ms.topic: how-to
-ms.openlocfilehash: 4d9d8b18634f94c355ea7fc0b5c125d631ec419c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 19c8cd4fa2b43961c46640a736a91e3fed3ac79d
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589740"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567604"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Überwachen von Delegierungsänderungen in Ihrem Verwaltungsmandanten
 
@@ -48,6 +48,9 @@ Da dies ein umfassender Zugriff ist, wird empfohlen, diese Rolle einem Dienstpri
 - Stellen Sie sicher, dass dieser Dienstprinzipal keinen Zugriff auf delegierte Kundenressourcen hat.
 - [Verwenden Sie ein Zertifikat zum Authentifizieren](../../active-directory/develop/howto-create-service-principal-portal.md#upload-a-certificate-or-create-a-secret-for-signing-in), und [speichern Sie es sicher in Azure Key Vault](../../key-vault/general/best-practices.md).
 - Beschränken Sie die Anzahl der Benutzer, die entsprechenden Zugriff zum Handeln im Namen des Dienstprinzipals haben.
+
+> [!NOTE]
+> Sie können die integrierte Azure-Rolle „Überwachungsleser“ im Stammbereich auch einzelnen Benutzern oder Benutzergruppen zuweisen. Dies kann nützlich sein, wenn ein Benutzer in der Lage sein soll, [Delegierungsinformationen direkt im Azure-Portal anzuzeigen](#view-delegation-changes-in-the-azure-portal). Beachten Sie, dass es sich hierbei um einen umfassenden Zugriff handelt, der auf eine möglichst geringe Anzahl von Benutzern begrenzt sein sollte.
 
 Verwenden Sie eine der folgenden Methoden für die Stammbereichszuweisungen.
 
@@ -164,6 +167,15 @@ else {
 
 > [!TIP]
 > Zwar beziehen wir uns in diesem Thema auf Dienstanbieter und Kunden, doch können [Unternehmen, die mehrere Mandanten verwalten](../concepts/enterprise.md), denselben Prozess verwenden.
+
+## <a name="view-delegation-changes-in-the-azure-portal"></a>Anzeigen von Delegierungsänderungen im Azure-Portal
+
+Benutzer, denen die integrierte Azure-Rolle „Überwachungsleser“ im Stammbereich zugewiesen wurde, können Delegierungsänderungen direkt im Azure-Portal anzeigen.
+
+1. Navigieren Sie zur Seite **Meine Kunden**, und wählen Sie dann im linken Navigationsmenü die Option **Aktivitätsprotokoll** aus.
+1. Stellen Sie sicher, dass **Verzeichnisaktivität** im Filter am oberen Rand des Bildschirms ausgewählt ist.
+
+Eine Liste der Delegierungsänderungen wird angezeigt. Sie können **Spalten bearbeiten** auswählen, um die Werte für **Status**, **Ereigniskategorie**, **Zeit**, **Zeitstempel**, **Abonnement**, **Ereignis initiiert von**, **Ressourcengruppe**, **Ressourcentyp** und **Ressource** ein- oder auszublenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

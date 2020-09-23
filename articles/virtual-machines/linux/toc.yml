@@ -372,6 +372,8 @@
       href: /azure/cloud-adoption-framework/get-started/
     - name: Architekturcenter
       href: /azure/architecture/
+    - name: Azure-Hybridvorteil
+      href: azure-hybrid-benefit-linux.md
 - name: Anleitungen
   items:
     - name: Virtuelle Computer erstellen

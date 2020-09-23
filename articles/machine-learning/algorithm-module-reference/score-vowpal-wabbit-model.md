@@ -8,15 +8,15 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/02/2020
-ms.openlocfilehash: 02f4fe4f97d3e976675757835e3931666d1c6410
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 23dfee7b78f2606c54525391e1260af69a9b0779
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85857711"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898393"
 ---
 # <a name="score-vowpal-wabbit-model"></a>Score Vowpal Wabbit-Modell
-In diesem Artikel wird beschrieben, wie Sie mit dem Modul **Score Vowpal Wabbit-Modell** im Azure Machine Learning-Designer (Vorschau) Ergebnisse für einen Satz von Eingabedaten mithilfe eines vorhandenen trainierten Vowpal Wabbit-Modells generieren können.  
+In diesem Artikel wird beschrieben, wie Sie mit dem Modul **Score Vowpal Wabbit-Modell** im Azure Machine Learning-Designer Ergebnisse für eine Gruppe von Eingabedaten mithilfe eines vorhandenen trainierten Vowpal Wabbit-Modells generieren können.  
 
 Dieses Modul stellt die neueste Version 8.8.1 des Vowpal Wabbit-Frameworks bereit. Bewerten Sie mit diesem Modul Daten mithilfe eines trainierten Modells, das im VW-Format Version 8 gespeichert ist.  
 

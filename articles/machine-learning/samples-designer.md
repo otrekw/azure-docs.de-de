@@ -1,30 +1,30 @@
 ---
-title: Beispiele für Pipelines und Datasets für den Designer (Vorschau)
+title: Beispiele für Pipelines und Datasets für den Designer
 titleSuffix: Azure Machine Learning
 description: Beschleunigen Sie den Start Ihrer Machine Learning-Pipelines mithilfe von Beispielen im Azure Machine Learning-Designer.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: sample
-author: peterclu
-ms.author: peterlu
-ms.date: 03/29/2020
+author: likebupt
+ms.author: keli19
+ms.date: 09/09/2020
 ms.custom: designer
-ms.openlocfilehash: c4fa5a2554f10a720c0f2241e17514e798cf7f4c
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 15393a0e618c14fbaff46a51a300284d8afb4b77
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88812936"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889743"
 ---
-# <a name="example-pipelines--datasets-for-azure-machine-learning-designer-preview"></a>Beispiele für Pipelines und Datasets für Azure Machine Learning-Designer (Vorschau)
+# <a name="example-pipelines--datasets-for-azure-machine-learning-designer"></a>Beispiele für Pipelines und Datasets für Azure Machine Learning Designer
 
 Verwenden Sie die integrierten Beispiele in Azure Machine Learning-Designer, um die Erstellung eigener Machine Learning-Pipelines zu beschleunigen. Das [GitHub-Repository](https://github.com/Azure/MachineLearningDesigner) des Azure Machine Learning-Designers enthält eine ausführliche Dokumentation mit grundlegenden Informationen zu einigen gängigen Machine Learning-Szenarien.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://aka.ms/AMLFree) erstellen.
-* Ein Azure Machine Learning-Arbeitsbereich mit der Enterprise-SKU.
+* Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://aka.ms/AMLFree).
+* Ein Azure Machine Learning-Arbeitsbereich 
 
 [!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
@@ -67,8 +67,8 @@ Durchsuchen Sie diese integrierten Regressionsbeispiele.
 
 | Beispieltitel | BESCHREIBUNG | 
 | --- | --- |
-| [Sample 1: Regression - Automobile Price Prediction (Basic)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-basic.md) (Beispiel 1: Regression: Automobilpreisvorhersage (Standard)) | Dient zum Vorhersagen von Automobilpreisen mittels linearer Regression. |
-| [Sample 2: Regression - Automobile Price Prediction (Advanced)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-compare-algorithms.md) (Beispiel 2: Regression: Automobilpreisvorhersage (Erweitert)) | Dient zum Vorhersagen von Automobilpreisen mittels Entscheidungsstruktur und Boosted Decision Tree-Regressoren. Vergleichen Sie die Modelle, um den besten Algorithmus zu ermitteln.
+| [Regression - Automobile Price Prediction (Basic)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-basic.md) (Regression: Automobilpreisvorhersage (Standard)) | Dient zum Vorhersagen von Automobilpreisen mittels linearer Regression. |
+| [Regression - Automobile Price Prediction (Advanced)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-compare-algorithms.md) (Regression: Automobilpreisvorhersage (Erweitert)) | Dient zum Vorhersagen von Automobilpreisen mittels Entscheidungsstruktur und Boosted Decision Tree-Regressoren. Vergleichen Sie die Modelle, um den besten Algorithmus zu ermitteln.
 
 ## <a name="classification"></a>Klassifizierung
 
@@ -76,11 +76,19 @@ Durchsuchen Sie diese integrierten Klassifizierungsbeispiele. Anstelle der Dokum
 
 | Beispieltitel | BESCHREIBUNG | 
 | --- | --- |
-| [Sample 3: Binary Classification with Feature Selection - Income Prediction](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-predict-income.md) (Beispiel 3: Binäre Klassifizierung mit Featureauswahl: Vorhersage des Einkommens) | Dient zum Vorhersagen des Einkommens (hoch oder gering) mittels Two-Class Boosted Decision Tree. Für die Featureauswahl wird die Pearson-Korrelation verwendet.
-| [Sample 4: Binary Classification with custom Python script - Credit Risk Prediction](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-credit-risk-cost-sensitive.md) (Beispiel 4: Binäre Klassifizierung mit benutzerdefiniertem Python-Skript: Vorhersage des Kreditrisikos) | Dient zum Klassifizieren des Risikos von Kreditanträgen (hoch oder gering). Zur Gewichtung Ihrer Daten wird das Modul „Python-Skript ausführen“ verwendet.
-| [Sample 5: Binary Classification - Customer Relationship Prediction](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-churn.md) (Beispiel 5: Binäre Klassifizierung: Vorhersage von Kundenbeziehungen) | Dient zum Vorhersagen der Kundenabwanderung mittels Two-Class Boosted Decision Tree. Für das Sampling verzerrter Daten wird SMOTE verwendet.
-| [Sample 7: Text Classification - Wikipedia SP 500 Dataset](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-text-classification.md) (Beispiel 7: Textklassifizierung: Wikipedia SP 500-Dataset) | Dient zum Klassifizieren von Unternehmenstypen aus Wikipedia-Artikeln mittels logistischer Regression mit mehreren Klassen. |
-| Beispiel 12: Klassifizierung mit mehreren Klassen: Buchstabenerkennung | Dient zum Erstellen eines Ensembles von binären Klassifizierern für die Klassifizierung geschriebener Buchstaben. |
+| [Binary Classification with Feature Selection - Income Prediction](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-predict-income.md) (Binäre Klassifizierung mit Featureauswahl: Vorhersage des Einkommens) | Dient zum Vorhersagen des Einkommens (hoch oder gering) mittels Two-Class Boosted Decision Tree. Für die Featureauswahl wird die Pearson-Korrelation verwendet.
+| [Binary Classification with custom Python script - Credit Risk Prediction](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-credit-risk-cost-sensitive.md) (Binäre Klassifizierung mit benutzerdefiniertem Python-Skript: Vorhersage des Kreditrisikos) | Dient zum Klassifizieren des Risikos von Kreditanträgen (hoch oder gering). Zur Gewichtung Ihrer Daten wird das Modul „Python-Skript ausführen“ verwendet.
+| [Binary Classification - Customer Relationship Prediction](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-churn.md) (Binäre Klassifizierung: Vorhersage von Kundenbeziehungen) | Dient zum Vorhersagen der Kundenabwanderung mittels Two-Class Boosted Decision Tree. Für das Sampling verzerrter Daten wird SMOTE verwendet.
+| [Text Classification - Wikipedia SP 500 Dataset](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-text-classification.md) (Textklassifizierung: Wikipedia SP 500-Dataset) | Dient zum Klassifizieren von Unternehmenstypen aus Wikipedia-Artikeln mittels logistischer Regression mit mehreren Klassen. |
+| Klassifizierung mit mehreren Klassen: Buchstabenerkennung | Dient zum Erstellen eines Ensembles von binären Klassifizierern für die Klassifizierung geschriebener Buchstaben. |
+
+## <a name="computer-vision"></a>Maschinelles Sehen
+
+Durchsuchen Sie diese integrierten Beispiele für maschinelles Sehen. Anstelle der Dokumentationslinks können Sie auch die Beispiele öffnen und sich die Modulkommentare ansehen, um mehr über die Beispiele zu erfahren.
+
+| Beispieltitel | BESCHREIBUNG | 
+| --- | --- |
+| Wide & Deep based Recommendation - Restaurant Rating Prediction (Auf Wide & Deep basierende Empfehlung: Vorhersage einer Restaurantbewertung) | Erstellen Sie eine Engine für Restaurantempfehlungen aus Features und Bewertungen von Restaurants und Benutzern.|
 
 ## <a name="recommender"></a>Empfehlung (Recommender)
 
@@ -88,7 +96,7 @@ Durchsuchen Sie diese integrierten Empfehlungsbeispiele. Anstelle der Dokumentat
 
 | Beispieltitel | BESCHREIBUNG | 
 | --- | --- |
-| Beispiel 10: Empfehlung: Filmbewertungstweets | Dient zum Erstellen einer Filmempfehlungsengine auf der Grundlage von Filmtiteln und -bewertungen. |
+| Bildklassifizierung mithilfe von DenseNet | Verwenden Sie Module für maschinelles Sehen zum Erstellen eines Bildklassifizierungsmodells, das auf PyTorch DenseNet basiert.| 
 
 ## <a name="utility"></a>Hilfsprogramm
 
@@ -96,10 +104,11 @@ Hier finden Sie weitere Informationen zu den Beispielen, mit denen ML-Hilfsprogr
 
 | Beispieltitel | BESCHREIBUNG | 
 | --- | --- |
-| [Sample 6: Use custom R script - Flight Delay Prediction](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-flight-delay.md) (Beispiel 6: Verwenden eines benutzerdefinierten R-Skripts: Vorhersage von Flugverspätungen) |
-| Beispiel 8: Kreuzvalidierung für binäre Klassifizierung: Vorhersage des Einkommens von Erwachsenen | Dient zum Erstellen eines binären Klassifizierers für das Einkommen von Erwachsenen mittels Kreuzvalidierung.
-| Beispiel 9: Permutation Feature Importance (PFI) | Dient zum Berechnen von Wichtigkeitsbewertungen für das Testdataset mittels Permutation Feature Importance. 
-| Beispiel 11: Optimierungsparameter für binäre Klassifizierung: Vorhersage des Einkommens von Erwachsenen | Dient zum Ermitteln optimaler Hyperparameter für die Erstellung eines binären Klassifizierers unter Verwendung von „Tune Model Hyperparameters“. |
+| Binary Classification using Vowpal Wabbit Model - Adult Income Prediction (Binäre Klassifizierung mithilfe des Vowpal Wabbit-Modells: Vorhersage des Einkommens von Erwachsenen) | Vowpal Wabbit ist ein Machine Learning-System, das die Grenzen von maschinellem Lernen weiter hinausschiebt und dazu verschiedene Verfahren einsetzt, wie z. B. Online, Hashing, Allreduce, Reductions, Learning2Search, Active und Interactive Learning. Dieses Beispiel zeigt, wie das Vowpal Wabbit-Modell verwendet wird, um ein binäres Klassifizierungsmodell zu erstellen. 
+| [Use custom R script - Flight Delay Prediction](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-flight-delay.md) (Verwenden eines benutzerdefinierten R-Skripts: Vorhersage von Flugverspätungen) | Verwenden Sie das angepasste R-Skript, um vorherzusagen, ob ein geplanter Passagierflug mehr als 15 Minuten verspätet sein wird.
+| Kreuzvalidierung für binäre Klassifizierung: Vorhersage des Einkommens von Erwachsenen | Dient zum Erstellen eines binären Klassifizierers für das Einkommen von Erwachsenen mittels Kreuzvalidierung.
+| Permutation Feature Importance (PFI) | Dient zum Berechnen von Wichtigkeitsbewertungen für das Testdataset mittels Permutation Feature Importance. 
+| Optimierungsparameter für binäre Klassifizierung: Vorhersage des Einkommens von Erwachsenen | Dient zum Ermitteln optimaler Hyperparameter für die Erstellung eines binären Klassifizierers unter Verwendung von „Tune Model Hyperparameters“. |
 
 ## <a name="datasets"></a>Datasets
 

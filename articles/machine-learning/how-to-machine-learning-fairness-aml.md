@@ -11,16 +11,16 @@ ms.reviewer: luquinta
 ms.date: 09/01/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 459189c699b9c48f090d55df98f4618d9e515aaa
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 0332400ce6808e92ba09e3bee3277495f6b6d1a9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279974"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897484"
 ---
 # <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>Verwenden von Azure Machine Learning mit dem Open-Source-Paket Fairlearn zur Bewertung der Fairness von ML-Modellen (Vorschau)
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 In dieser Schrittanleitung erfahren Sie, wie Sie das Open-Source-Python-Paket [Fairlearn](https://fairlearn.github.io/) mit Azure Machine Learning verwenden, um die folgenden Aufgaben auszuführen:
 

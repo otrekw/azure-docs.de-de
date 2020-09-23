@@ -3,7 +3,7 @@ title: Versionsanmerkungen zu Update 2 der StorSimple 8000-Serie | Microsoft Doc
 description: Beschreibt die neuen Features sowie Probleme und Problemumgehungen für Update 2 der StorSimple 8000-Serie.
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: carmonm
 editor: ''
 ms.assetid: e2c8bffd-7fc5-4b77-b632-a4f59edacc3a
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/03/2017
-ms.author: twooley
-ms.openlocfilehash: 4e57fffd2f74ae1b14f51537c92299607f193ad5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: alkohli
+ms.openlocfilehash: 53be638c46685dd46a5afb5ed56f9a76ed7b5fd6
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75934061"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055859"
 ---
 # <a name="storsimple-8000-series-update-2-release-notes"></a>Versionsanmerkungen zu Update 2 der StorSimple 8000-Serie
 
