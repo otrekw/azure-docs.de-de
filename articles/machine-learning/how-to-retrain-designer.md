@@ -1,7 +1,7 @@
 ---
-title: Erneutes Trainieren von Modellen mit Azure Machine Learning-Designer (Vorschau)
+title: Erneutes Trainieren von Modellen mit Azure Machine Learning-Designer
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie Sie Modelle mit veröffentlichten Pipelines im Azure Machine Learning-Designer erneut trainieren können (Vorschau).
+description: Erfahren Sie, wie Sie Modelle mit veröffentlichten Pipelines im Azure Machine Learning-Designer erneut trainieren können.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,15 +10,15 @@ author: likebupt
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 181d79c6aef87999bc1b4242a70870edf60ad7df
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d43bea855d9ac3dc34b8e72adcd9577e5933e52c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319625"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905669"
 ---
-# <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Erneutes Trainieren von Modellen mit Azure Machine Learning-Designer (Vorschau)
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+# <a name="retrain-models-with-azure-machine-learning-designer"></a>Erneutes Trainieren von Modellen mit Azure Machine Learning-Designer
+
 
 In dieser Anleitung erfahren Sie, wie Sie Azure Machine Learning-Designer zum erneuten Trainieren eines Machine Learning-Modells verwenden. Sie werden veröffentlichte Pipelines verwenden, um Ihren Workflow zu automatisieren und Parameter festzulegen, um Ihr Modell anhand neuer Daten zu trainieren. 
 
@@ -32,16 +32,16 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure Machine Learning-Arbeitsbereich mit der Enterprise-SKU.
-* Schließen Sie den ersten Teil dieser Gewusst wie-Reihe [Transformieren von Daten im Designer](how-to-designer-transform-data.md) ab.
+* Ein Azure Machine Learning-Arbeitsbereich
+* Schließen Sie den ersten Teil dieser Anleitungsreihe [Transformieren von Daten im Designer](how-to-designer-transform-data.md) ab.
 
 [!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
-In diesem Artikel wird auch davon ausgegangen, dass Sie grundlegende Kenntnisse zur Erstellung einer einfachen Pipeline im Designer haben. Als Einführung können Sie das [Tutorial](tutorial-designer-automobile-price-train-score.md) durchführen. 
+In diesem Artikel wird auch davon ausgegangen, dass Sie Kenntnisse zur Erstellung einer einfachen Pipeline im Designer haben. Als Einführung können Sie das [Tutorial](tutorial-designer-automobile-price-train-score.md) durchführen. 
 
 ### <a name="sample-pipeline"></a>Beispiel-Pipeline
 
-Die in diesem Artikel verwendete Pipeline ist eine geänderte Version von [Beispiel 3: Einkommensvorhersage](samples-designer.md#classification) verwendeten Pipeline. Die Pipeline verwendet das Modul [Import Data](algorithm-module-reference/import-data.md) (Daten importieren) anstelle des Beispieldatasets, um Ihnen zu zeigen, wie Sie Modelle mit Ihren eigenen Daten trainieren können.
+Die in diesem Artikel verwendete Pipeline ist eine geänderte Version einer [Einkommensvorhersage](samples-designer.md#classification) einer Beispielpipeline auf der Designer-Homepage. Die Pipeline verwendet das Modul [Import Data](algorithm-module-reference/import-data.md) (Daten importieren) anstelle des Beispieldatasets, um Ihnen zu zeigen, wie Sie Modelle mit Ihren eigenen Daten trainieren können.
 
 ![Screenshot der geänderten Beispielpipeline mit einem Feld, in dem das Modul „Import Data“ (Daten importieren) hervorgehoben ist](./media/how-to-retrain-designer/modified-sample-pipeline.png)
 
@@ -83,7 +83,8 @@ Der Designer speichert alle Pipelineausgaben, einschließlich trainierter Modell
 1. Sie finden Ihr Modell in **Andere Ausgaben** zusammen mit Ausführungsprotokollen.
 1. Wählen Sie alternativ das Symbol **Ausgabe anzeigen** aus. Von hier aus können Sie den Anweisungen im Dialogfeld folgen, um direkt zu Ihrem Datenspeicher zu navigieren. 
 
-![Screenshot, der zeigt, wie das trainierte Modell heruntergeladen wird](./media/how-to-retrain-designer/trained-model-view-output.png)
+> [!div class="mx-imgBorder"]
+> ![Screenshot, der zeigt, wie das trainierte Modell heruntergeladen wird](./media/how-to-retrain-designer/trained-model-view-output.png)
 
 ## <a name="publish-a-training-pipeline"></a>Veröffentlichen einer Trainingspipeline
 
@@ -101,9 +102,9 @@ Veröffentlichen Sie eine Pipeline an einem Pipelineendpunkt, um Ihre Pipelines 
 
 Nachdem Sie nun eine Trainingspipeline veröffentlicht haben, können Sie diese verwenden, um Ihr Modell anhand neuer Daten neu zu trainieren. Sie können Ausführungen von einem Pipelineendpunkt aus dem Studio-Arbeitsbereich oder programmgesteuert übermitteln.
 
-### <a name="submit-runs-by-using-the-designer"></a>Übermitteln von Ausführungen mit dem Designer
+### <a name="submit-runs-by-using-the-studio-portal"></a>Übermitteln von Ausführungen mit dem Studio-Portal
 
-Verwenden Sie die folgenden Schritte, um die Ausführung eines parametrisierten Pipelineendpunkts über den Designer zu übermitteln:
+Verwenden Sie die folgenden Schritte, um die Ausführung eines parametrisierten Pipelineendpunkts über das Studio-Portal zu übermitteln:
 
 1. Rufen Sie die Seite **Endpunkte** in Ihrem Studio-Arbeitsbereich auf.
 1. Wählen Sie die Registerkarte **Pipelineendpunkte** aus. Wählen Sie dann Ihren Pipelineendpunkt aus.

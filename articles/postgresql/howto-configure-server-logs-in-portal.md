@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 2be89f9263c71b7c9d7bc32edd0b1fc7cb2cfbce
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: cf22a165e9a6eadcd2e5d4cdb0efa301538be7e9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118153"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907535"
 ---
 # <a name="configure-and-access-azure-database-for-postgresql---single-server-logs-from-the-azure-portal"></a>Konfigurieren von Protokollen für Azure Database for PostgreSQL (Einzelserver) und Zugreifen auf diese über das Azure-Portal
 
@@ -29,7 +29,7 @@ Konfigurieren Sie den Zugriff auf die Abfrage- und Fehlerprotokolle.
 
 3. Wählen Sie im Abschnitt **Überwachung** in der Randleiste die Option **Serverprotokolle** aus. 
 
-   ![Screenshot der Optionen für Serverprotokolle](./media/howto-configure-server-logs-in-portal/1-select-server-logs-configure.png)
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/1-select-server-logs-configure.png" alt-text="Screenshot der Optionen für Serverprotokolle":::
 
 4. Um die Serverparameter anzuzeigen, wählen Sie **Klicken Sie hier, um Protokolle zu aktivieren und Protokollparameter zu konfigurieren** aus.
 
@@ -37,7 +37,7 @@ Konfigurieren Sie den Zugriff auf die Abfrage- und Fehlerprotokolle.
 
    Wählen Sie **Speichern** aus, nachdem Sie die Parameter geändert haben. Sie können Ihre Änderungen auch verwerfen. 
 
-   ![Screenshot der Optionen für Serverparameter](./media/howto-configure-server-logs-in-portal/3-save-discard.png)
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/3-save-discard.png" alt-text="Screenshot der Optionen für Serverparameter":::
 
 Von der Seite **Serverparameter** können Sie zur Liste der Protokolle zurückkehren, indem Sie die Seite schließen.
 
@@ -50,18 +50,18 @@ Nachdem die Protokollierung begonnen hat, können Sie eine Liste der verfügbare
 
 3. Wählen Sie im Abschnitt **Überwachung** in der Randleiste die Option **Serverprotokolle** aus. Die Seite zeigt eine Liste der Protokolldateien an.
 
-   ![Screenshot der Seite „Serverprotokolle“ mit hervorgehobener Liste der Protokolle](./media/howto-configure-server-logs-in-portal/4-server-logs-list.png)
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/4-server-logs-list.png" alt-text="Screenshot der Seite „Serverprotokolle“ mit hervorgehobener Liste der Protokolle":::
 
    > [!TIP]
    > Die Namenskonvention des Protokolls ist **postgresql-jjjj-mm-tt_hh0000.log**. Das im Dateinamen verwendete Datum und die Uhrzeit geben den Zeitpunkt an, zu dem das Protokoll ausgestellt wurde. Die Protokolldateien rotieren jede Stunde bzw. bei einer Größe von 100 MB, wenn diese Größe früher erreicht wird.
 
 4. Verwenden Sie bei Bedarf das Suchfeld, um schnell ein spezifisches Protokoll basierend auf Datum und Uhrzeit einzugrenzen. Die Suche erfolgt anhand des Namens des Protokolls.
 
-   ![Screenshot der Seite „Serverprotokolle“ mit hervorgehobenem Suchfeld und Ergebnissen](./media/howto-configure-server-logs-in-portal/5-search.png)
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/5-search.png" alt-text="Screenshot der Seite „Serverprotokolle“ mit hervorgehobenem Suchfeld und Ergebnissen":::
 
 5. Um einzelne Protokolldateien herunterzuladen, wählen Sie das Pfeilsymbol nach unten neben den einzelnen Protokolldateien in der Tabellenzeile aus.
 
-   ![Screenshot der Seite „Serverprotokolle“ mit hervorgehobenem Pfeilsymbol nach unten](./media/howto-configure-server-logs-in-portal/6-download.png)
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/6-download.png" alt-text="Screenshot der Seite „Serverprotokolle“ mit hervorgehobenem Pfeilsymbol nach unten":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Lesen Sie [Zugriff auf Serverprotokolle in der CLI](howto-configure-server-logs-using-cli.md), um weitere Informationen zum programmgesteuerten Herunterladen von Protokollen zu erhalten.

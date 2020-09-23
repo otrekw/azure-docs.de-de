@@ -1,6 +1,6 @@
 ---
-title: Bereitstellen von VMs auf Ihrem Azure Stack Edge-Gerät über Vorlagen
-description: Hier erfahren Sie, wie virtuelle Computer (VMs) auf einem Azure Stack Edge-Gerät anhand von Vorlagen erstellt und verwaltet werden.
+title: Bereitstellen von VMs auf Ihrem Azure Stack Edge Pro-Gerät über Vorlagen
+description: Hier erfahren Sie, wie virtuelle Computer auf einem Azure Stack Edge Pro-Gerät anhand von Vorlagen erstellt und verwaltet werden.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/04/2020
 ms.author: alkohli
-ms.openlocfilehash: 5b69d10bc2f3c5ec737e026059c82c3efac681b5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: eeefbcdc080620c60f7cd49b8f749375e23ddd02
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268158"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899702"
 ---
-# <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-via-templates"></a>Bereitstellen von VMs auf Ihrem Azure Stack Edge-GPU-Gerät über Vorlagen
+# <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-templates"></a>Bereitstellen von VMs auf Ihrem Azure Stack Edge Pro-GPU-Gerät über Vorlagen
 
-In diesem Tutorial wird beschrieben, wie Sie eine VM auf Ihrem Azure Stack Edge-Gerät anhand von Vorlagen erstellen und verwalten. Bei diesen Vorlagen handelt es sich um JSON-Dateien (JavaScript Object Notation), in denen die Infrastruktur und die Konfiguration für Ihre VM definiert sind. Sie geben in diesen Vorlagen die bereitzustellenden Ressourcen und die Eigenschaften für diese Ressourcen an.
+In diesem Tutorial wird beschrieben, wie Sie virtuelle Computer (Virtual Machines, VMs) auf Ihrem Azure Stack Edge Pro-Gerät anhand von Vorlagen erstellen und verwalten. Bei diesen Vorlagen handelt es sich um JSON-Dateien (JavaScript Object Notation), in denen die Infrastruktur und die Konfiguration für Ihre VM definiert sind. Sie geben in diesen Vorlagen die bereitzustellenden Ressourcen und die Eigenschaften für diese Ressourcen an.
 
 Vorlagen bieten für unterschiedliche Umgebungen eine hohe Flexibilität, da sie während der Laufzeit Parameter aus einer Datei als Eingabe verwenden können. Die standardmäßige Benennungsstruktur ist `TemplateName.json` für die Vorlage und `TemplateName.parameters.json` für die Parameterdatei. Weitere Informationen zu ARM-Vorlagen finden Sie unter [Was sind Azure Resource Manager-Vorlagen?](../azure-resource-manager/templates/overview.md).
 
@@ -25,7 +25,7 @@ In diesem Tutorial werden vorab erstellte Beispielvorlagen zum Erstellen von Res
 
 ## <a name="vm-deployment-workflow"></a>VM-Bereitstellungsworkflow
 
-Für die Bereitstellung von Azure Stack Edge-VMs auf einer Vielzahl von Geräten können Sie eine einzelne mit Sysprep vorbereitete VHD für sämtliche Ressourcen nutzen. Außerdem können Sie dieselbe Vorlage für die Bereitstellung verwenden und nur geringfügige Änderungen an den Parametern vornehmen, um die Vorlage für die einzelnen Bereitstellungsorte anzupassen (diese Änderungen können wie in diesem Beispiel manuell oder programmgesteuert vorgenommen werden). 
+Für die Bereitstellung von Azure Stack Edge Pro-VMs auf einer Vielzahl von Geräten können Sie eine einzelne mit Sysprep vorbereitete VHD für sämtliche Ressourcen nutzen. Außerdem können Sie dieselbe Vorlage für die Bereitstellung verwenden und nur geringfügige Änderungen an den Parametern vornehmen, um die Vorlage für die einzelnen Bereitstellungsorte anzupassen (diese Änderungen können wie in diesem Beispiel manuell oder programmgesteuert vorgenommen werden). 
 
 Nachfolgend finden Sie eine allgemeine Übersicht über den Bereitstellungsworkflow bei Verwendung von Vorlagen:
 
@@ -57,13 +57,13 @@ Nachfolgend finden Sie eine allgemeine Übersicht über den Bereitstellungsworkf
 
 ## <a name="device-prerequisites"></a>Voraussetzungen auf dem Gerät
 
-Konfigurieren Sie diese Voraussetzungen auf Ihrem Azure Stack Edge-Gerät.
+Konfigurieren Sie diese Voraussetzungen auf Ihrem Azure Stack Edge Pro-Gerät.
 
 [!INCLUDE [azure-stack-edge-gateway-deploy-virtual-machine-prerequisites](../../includes/azure-stack-edge-gateway-deploy-virtual-machine-prerequisites.md)]
 
 ## <a name="client-prerequisites"></a>Client-Voraussetzungen
 
-Konfigurieren Sie diese Voraussetzungen auf dem Client, der für den Zugriff auf das Azure Stack Edge-Gerät verwendet wird.
+Konfigurieren Sie diese Voraussetzungen auf dem Client, über den auf das Azure Stack Edge Pro-Gerät zugegriffen wird.
 
 1. [Laden Sie den Storage-Explorer herunter](https://azure.microsoft.com/features/storage-explorer/), wenn Sie ihn zum Hochladen einer virtuellen Festplatte verwenden. Alternativ können Sie AzCopy herunterladen, um eine virtuelle Festplatte hochzuladen. Wenn Sie ältere Versionen von AzCopy ausführen, müssen Sie möglicherweise TLS 1.2 auf Ihrem Clientcomputer konfigurieren. 
 1. [Laden Sie die VM-Vorlagen und Parameterdateien](https://aka.ms/ase-vm-templates) auf Ihrem Clientcomputer herunter. Entpacken Sie die Vorlagen und Dateien in einem Verzeichnis, das Sie als Arbeitsverzeichnis verwenden.
@@ -108,7 +108,7 @@ New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resou
 ```
 
 > [!NOTE]
-> Über Azure Resource Manager können ausschließlich lokale Speicherkonten wie lokal redundanter Speicher (Standard_LRS oder Premium_LRS) erstellt werden. Die erforderlichen Schritte zum Erstellen mehrstufiger Speicherkonten finden Sie unter [Hinzufügen von Speicherkonten auf Ihrem Azure Stack Edge-Gerät](azure-stack-edge-j-series-deploy-add-storage-accounts.md).
+> Über Azure Resource Manager können ausschließlich lokale Speicherkonten wie lokal redundanter Speicher (Standard_LRS oder Premium_LRS) erstellt werden. Die erforderlichen Schritte zum Erstellen mehrstufiger Speicherkonten finden Sie unter [Hinzufügen von Speicherkonten auf Ihrem Azure Stack Edge Pro-Gerät](azure-stack-edge-j-series-deploy-add-storage-accounts.md).
 
 Nachfolgend sehen Sie eine Beispielausgabe.
 
@@ -145,7 +145,7 @@ Stellen Sie sicher, dass der Blob-URI bereits in der hosts-Datei für den Client
 
 `<Device IP> <storage account name>.blob.<Device name>.<DNS domain>`
 
-In einer typischen Umgebung würden Sie Ihr DNS so konfigurieren, dass alle Speicherkonten mit einem `*.blob.devicename.domainname.com`-Eintrag auf das Azure Stack Edge-Gerät zeigen.
+In einer typischen Umgebung würden Sie Ihr DNS so konfigurieren, dass alle Speicherkonten mit einem `*.blob.devicename.domainname.com`-Eintrag auf das Azure Stack Edge Pro-Gerät verweisen.
 
 ### <a name="optional-install-certificates"></a>(Optional) Installieren von Zertifikaten
 
@@ -215,7 +215,7 @@ Kopieren Sie die zu verwendenden Datenträgerimages in Seitenblobs im lokalen Sp
 
 <!--### Use AzCopy for upload
 
-Before you use AzCopy, make sure that the [AzCopy is configured correctly](#configure-azcopy) for use with the blob storage REST API version that you are using with your Azure Stack Edge device.
+Before you use AzCopy, make sure that the [AzCopy is configured correctly](#configure-azcopy) for use with the blob storage REST API version that you are using with your Azure Stack Edge Pro device.
 
 
 ```powershell
@@ -245,11 +245,14 @@ Die Datei `CreateImageAndVnet.parameters.json` kann die folgenden Parameter enth
 
 ```json
 "parameters": {
+        "osType": {
+              "value": "<Operating system corresponding to the VHD you upload can be Windows or Linux>"
+        },
         "imageName": {
             "value": "<Name for the VM iamge>"
         },
         "imageUri": {
-      "value": "<Path to the VHD that you uploaded in the Storage account>"
+              "value": "<Path to the VHD that you uploaded in the Storage account>"
         },
         "vnetName": {
             "value": "<Name for the virtual network where you will deploy the VM>"
@@ -266,7 +269,7 @@ Die Datei `CreateImageAndVnet.parameters.json` kann die folgenden Parameter enth
     }
 ```
 
-Bearbeiten Sie die Datei `CreateImageAndVnet.parameters.json`, und fügen Sie folgende Informationen für Ihr Azure Stack Edge-Gerät hinzu:
+Bearbeiten Sie die Datei `CreateImageAndVnet.parameters.json`, und fügen Sie folgende Informationen für Ihr Azure Stack Edge Pro-Gerät hinzu:
 
 1. Geben Sie den Betriebssystemtyp der VHD an, die Sie hochladen. Dies kann Windows oder Linux sein.
 
@@ -338,7 +341,7 @@ Bearbeiten Sie die Datei `CreateImageAndVnet.parameters.json`, und fügen Sie fo
 Stellen Sie die Vorlage `CreateImageAndVnet.json` bereit. Mit dieser Vorlage werden die VNET- und Imageressourcen bereitgestellt, die in einem späteren Schritt zum Erstellen der VMs verwendet werden.
 
 > [!NOTE]
-> Wenn beim Bereitstellen der Vorlage ein Authentifizierungsfehler auftritt, sind Ihre Azure-Anmeldeinformationen für diese Sitzung möglicherweise abgelaufen. Führen Sie den Befehl `login-AzureRM` erneut aus, um eine neue Verbindung mit Azure Resource Manager auf Ihrem Azure Stack Edge-Gerät herzustellen.
+> Wenn beim Bereitstellen der Vorlage ein Authentifizierungsfehler auftritt, sind Ihre Azure-Anmeldeinformationen für diese Sitzung möglicherweise abgelaufen. Führen Sie den Befehl `login-AzureRM` noch einmal aus, um eine neue Verbindung mit dem Azure Resource Manager auf Ihrem Azure Stack Edge Pro-Gerät herzustellen.
 
 1. Führen Sie den folgenden Befehl aus: 
     
@@ -434,7 +437,7 @@ Verwenden Sie die Parameterdatei `CreateVM.parameters.json`, um eine VM zu erste
         }
 ```    
 
-Weisen Sie in `CreateVM.parameters.json` die erforderlichen Parameter für Ihr Azure Stack Edge-Gerät zu.
+Weisen Sie in `CreateVM.parameters.json` die erforderlichen Parameter für Ihr Azure Stack Edge Pro-Gerät zu.
 
 1. Geben Sie einen eindeutigen Namen, einen Namen der Netzwerkschnittstelle und einen ipconfig-Namen an. 
 1. Geben Sie einen Benutzernamen, ein Kennwort und eine unterstützte VM-Größe ein.
@@ -501,7 +504,7 @@ Stellen Sie die Vorlage zur VM-Erstellung `CreateVM.json` bereit. Mit dieser Vor
         
         $templateFile = "<Path to CreateVM.json>"
         $templateParameterFile = "<Path to CreateVM.parameters.json>"
-        $RGName = "RG1"
+        $RGName = "<Resource group name>"
              
         New-AzureRmResourceGroupDeployment `
             -ResourceGroupName $RGName `
@@ -547,7 +550,27 @@ Stellen Sie die Vorlage zur VM-Erstellung `CreateVM.json` bereit. Mit dieser Vor
         
         PS C:\07-30-2020>
     ```   
- 
+Sie können den Befehl `New-AzureRmResourceGroupDeployment` auch asynchron mit dem Parameter `–AsJob` ausführen. Nachstehend finden Sie eine Beispielausgabe, die erzeugt wird, wenn das Cmdlet im Hintergrund ausgeführt wird. Anschließend können Sie den Status des Auftrags abfragen, der mithilfe des Cmdlets `Get-Job` erstellt wurde.
+
+    ```powershell   
+    PS C:\WINDOWS\system32> New-AzureRmResourceGroupDeployment `
+    >>     -ResourceGroupName $RGName `
+    >>     -TemplateFile $templateFile `
+    >>     -TemplateParameterFile $templateParameterFile `
+    >>     -Name "Deployment2" `
+    >>     -AsJob
+     
+    Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
+    --     ----            -------------   -----         -----------     --------             -------
+    2      Long Running... AzureLongRun... Running       True            localhost            New-AzureRmResourceGro...
+     
+    PS C:\WINDOWS\system32> Get-Job -Id 2
+     
+    Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
+    --     ----            -------------   -----         -----------     --------             -------
+    2      Long Running... AzureLongRun... Completed     True            localhost            New-AzureRmResourceGro...
+    ```
+
 7. Überprüfen Sie, ob die VM erfolgreich bereitgestellt wurde. Führen Sie den folgenden Befehl aus:
 
     `Get-AzureRmVm`
@@ -555,11 +578,23 @@ Stellen Sie die Vorlage zur VM-Erstellung `CreateVM.json` bereit. Mit dieser Vor
 
 ## <a name="connect-to-a-vm"></a>Herstellen einer Verbindung mit einem virtuellen Computer
 
+Je nachdem, ob Sie eine Windows- oder Linux-VM erstellt haben, können die Schritte abweichen.
+
+### <a name="connect-to-windows-vm"></a>Herstellen einer Verbindung mit einer Windows-VM
+
+Führen Sie diese Schritte aus, um eine Verbindung mit einer Windows-VM herzustellen.
+
 [!INCLUDE [azure-stack-edge-gateway-connect-vm](../../includes/azure-stack-edge-gateway-connect-virtual-machine-windows.md)]
+
+### <a name="connect-to-linux-vm"></a>Herstellen einer Verbindung mit einer Linux-VM
+
+Führen Sie diese Schritte aus, um eine Verbindung mit einer Linux-VM herzustellen.
+
+[!INCLUDE [azure-stack-edge-gateway-connect-vm](../../includes/azure-stack-edge-gateway-connect-virtual-machine-linux.md)]
 
 <!--## Manage VM
 
-The following section describes some of the common operations around the VM that you will create on your Azure Stack Edge device.
+The following section describes some of the common operations around the VM that you will create on your Azure Stack Edge Pro device.
 
 [!INCLUDE [azure-stack-edge-gateway-manage-vm](../../includes/azure-stack-edge-gateway-manage-vm.md)]-->
 
@@ -574,9 +609,9 @@ Erweiterungen, Skalierungsgruppen, Verfügbarkeitsgruppen und Momentaufnahmen we
 
 <!--## Configure AzCopy
 
-When you install the latest version of AzCopy, you will need to configure AzCopy to ensure that it matches the blob storage REST API version of your Azure Stack Edge device.
+When you install the latest version of AzCopy, you will need to configure AzCopy to ensure that it matches the blob storage REST API version of your Azure Stack Edge Pro device.
 
-On the client used to access your Azure Stack Edge device, set up a global variable to match the blob storage REST API version.
+On the client used to access your Azure Stack Edge Pro device, set up a global variable to match the blob storage REST API version.
 
 ### On Windows client 
 

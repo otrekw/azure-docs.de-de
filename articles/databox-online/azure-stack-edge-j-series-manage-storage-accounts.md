@@ -1,6 +1,6 @@
 ---
-title: Verwaltung von Azure Stack Edge GPU-Speicherkonten | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie im Azure-Portal ein Speicherkonto auf Ihrem Azure Stack Edge-Gerät verwalten.
+title: Verwaltung von Azure Stack Edge Pro-GPU-Speicherkonten | Microsoft-Dokumentation
+description: Hier wird beschrieben, wie Sie im Azure-Portal ein Speicherkonto auf Ihrem Azure Stack Edge Pro-Gerät verwalten.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,24 +8,24 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 3b190a108651f4b127c2f009c383613922a59018
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: a239b36a539cf7be3e880512b753d45ae4050bad
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254293"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904536"
 ---
-# <a name="use-the-azure-portal-to-manage-edge-storage-accounts-on-your-azure-stack-edge"></a>Verwalten von Edge-Speicherkonten auf Ihrem Azure Stack Edge-Gerät im Azure-Portal
+# <a name="use-the-azure-portal-to-manage-edge-storage-accounts-on-your-azure-stack-edge-pro"></a>Verwalten von Edge-Speicherkonten auf Ihrem Azure Stack Edge Pro-Gerät im Azure-Portal
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-In diesem Artikel wird beschrieben, wie Sie Edge-Speicher Konten auf Ihrem Azure Stack Edge-Gerät verwalten. Sie können die Azure Stack Edge-Ressource über das Azure-Portal oder die lokale Webbenutzeroberfläche verwalten. Im Azure-Portal können Sie Ihrem Gerät Edge-Speicherkonten hinzufügen oder diese löschen.
+In diesem Artikel wird beschrieben, wie Sie Edge-Speicherkonten auf Ihrem Azure Stack Edge Pro-Gerät verwalten. Sie können das Azure Stack Edge Pro-Gerät im Azure-Portal oder über die lokale Webbenutzeroberfläche verwalten. Im Azure-Portal können Sie Ihrem Gerät Edge-Speicherkonten hinzufügen oder diese löschen.
 
 ## <a name="about-edge-storage-accounts"></a>Informationen zu Edge-Speicherkonten
 
-Sie können Daten von Ihrem Azure Stack Edge-Gerät über die Protokolle SMB, NFS oder REST übertragen. Um Daten mithilfe der REST-APIs in Blob Storage zu übertragen, müssen Sie Edge-Speicherkonten auf Ihrem Azure Stack Edge-Gerät anlegen. 
+Sie können Daten von Ihrem Azure Stack Edge Pro-Gerät über das SMB-, NFS- oder REST-Protokoll übertragen. Wenn Sie Daten mithilfe der REST-APIs an Blob Storage übertragen möchten, müssen Sie auf Ihrem Azure Stack Edge Pro-Gerät Edge-Speicherkonten erstellen. 
 
-Die Edge-Speicherkonten, die Sie auf dem Azure Stack Edge-Gerät hinzufügen, werden Azure Storage-Konten zugeordnet. Alle Daten, die in die Edge-Speicherkonten geschrieben werden, werden automatisch per Push in die Cloud übertragen.
+Die Edge-Speicherkonten, die Sie auf dem Azure Stack Edge Pro-Gerät hinzufügen, werden Azure Storage-Konten zugeordnet. Alle Daten, die in die Edge-Speicherkonten geschrieben werden, werden automatisch per Push in die Cloud übertragen.
 
 Ein Diagramm, das die beiden Typen von Konten und die Weise, wie die Daten von jedem dieser Konten in Azure gelangen, detailliert zeigt, ist nachstehend abgebildet:
 

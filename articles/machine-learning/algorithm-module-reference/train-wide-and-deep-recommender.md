@@ -9,15 +9,15 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/12/2020
-ms.openlocfilehash: bb213776d41c07238fcaba1ccdd4e06f5d5bbb5f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a548a1aa6b7c6382d00e218f1b61347002df2b38
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420888"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907786"
 ---
 # <a name="train-wide--deep-recommender"></a>Train Wide & Deep Recommender
-In diesem Artikel wird die Verwendung des Moduls **Train Wide & Deep Recommender** im Azure Machine Learning-Designer (Vorschauversion) zum Trainieren eines Empfehlungsmodells beschrieben. Dieses Modul basiert auf Wide & Deep Learning von Google.
+In diesem Artikel wird die Verwendung des Moduls **Train Wide & Deep Recommender** im Azure Machine Learning-Designer zum Trainieren eines Empfehlungsmodells beschrieben. Dieses Modul basiert auf Wide & Deep Learning von Google.
 
 Das **Train Wide & Deep Recommender**-Modul liest ein Dataset mit Benutzer-Element-Bewertung-Tripeln und optional einige Benutzer- und Elementfunktionen. Es gibt ein trainiertes Wide & Deep-Empfehlungsmodul zurück.  Mithilfe des trainierten Modells können Sie dann Bewertungen vorhersagen oder Empfehlungen generieren, indem Sie das Modul [Score Wide and Deep Recommender](score-wide-and-deep-recommender.md) verwenden.  
 
@@ -84,7 +84,7 @@ Ein typischer Satz von Elementfeatures könnte z. B. wie folgt aussehen:
 
 ### <a name="train-the-model"></a>Trainieren des Modells
 
-1.  Fügen Sie das Modul **Train Wide and Deep Recommender** zu Ihrem Experiment im Designer (Vorschauversion) hinzu, und verbinden Sie es mit dem Trainingsdataset.  
+1.  Fügen Sie das Modul **Train Wide and Deep Recommender** zu Ihrem Experiment im Designer hinzu, und verbinden Sie es mit dem Trainingsdataset.  
   
 2. Wenn Sie über ein separates Dataset mit Benutzer- und/oder Elementfeatures verfügen, verbinden Sie sie mit dem **Train Wide and Deep Recommender**-Modul.  
   

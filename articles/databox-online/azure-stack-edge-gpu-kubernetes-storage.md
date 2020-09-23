@@ -1,6 +1,6 @@
 ---
-title: Grundlegendes zur Kubernetes-Speicherverwaltung auf einem Azure Stack Edge-Gerät | Microsoft-Dokumentation
-description: Erfahren Sie, wie die Kubernetes-Speicherverwaltung auf einem Azure Stack Edge-Gerät erfolgt.
+title: Grundlegendes zur Kubernetes-Speicherverwaltung auf einem Azure Stack Edge Pro-Gerät | Microsoft-Dokumentation
+description: Hier wird beschrieben, wie die Kubernetes-Speicherverwaltung auf einem Azure Stack Edge Pro-Gerät erfolgt.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/27/2020
 ms.author: alkohli
-ms.openlocfilehash: 57574b66ddb20e592a5979a4b827347f7c8e09af
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: ff2a473ca008e9b283d03ebb05f35122473d778a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268090"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899269"
 ---
-# <a name="kubernetes-storage-management-on-your-azure-stack-edge-gpu-device"></a>Kubernetes-Speicherverwaltung auf dem Azure Stack Edge-GPU-Gerät
+# <a name="kubernetes-storage-management-on-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes-Speicherverwaltung auf dem Azure Stack Edge Pro-GPU-Gerät
 
-Wenn Sie die Computerolle konfigurieren, wird auf Ihrem Azure Stack Edge-Gerät ein Kubernetes-Cluster erstellt. Sobald der Kubernetes-Cluster erstellt wurde, können innerhalb des Kubernetes-Clusters Containeranwendungen in Pods bereitgestellt werden. Es gibt verschiedene Möglichkeiten, um Speicher in Pods in Ihrem Kubernetes-Cluster bereitzustellen. 
+Wenn Sie die Computerolle konfigurieren, wird auf Ihrem Azure Stack Edge Pro-Gerät ein Kubernetes-Cluster erstellt. Sobald der Kubernetes-Cluster erstellt wurde, können innerhalb des Kubernetes-Clusters Containeranwendungen in Pods bereitgestellt werden. Es gibt verschiedene Möglichkeiten, um Speicher in Pods in Ihrem Kubernetes-Cluster bereitzustellen. 
 
-In diesem Artikel werden die Methoden zum Bereitstellen von Speicher in einem Kubernetes-Cluster sowohl allgemein als auch im Kontext Ihres Azure Stack Edge-Geräts beschrieben. 
+In diesem Artikel werden die Methoden zum Bereitstellen von Speicher in einem Kubernetes-Cluster sowohl allgemein als auch im Kontext Ihres Azure Stack Edge Pro-Geräts beschrieben. 
 
 ## <a name="storage-requirements-for-kubernetes-pods"></a>Speicheranforderungen für Kubernetes-Pods
 
@@ -75,9 +75,9 @@ Dabei werden die folgenden Schritte ausgeführt:
 1. **Einbinden von PVC in den Container**: Sobald das PVC an das PV gebunden ist, können Sie das PVC in den Container auf die gleiche Weise wie bei der statischen Bereitstellung in einem Pfad einbinden und aus der Freigabe lesen oder in diese schreiben.
 
 
-## <a name="storage-provisioning-on-azure-stack-edge"></a>Speicherbereitstellung auf Azure Stack Edge
+## <a name="storage-provisioning-on-azure-stack-edge-pro"></a>Speicherbereitstellung auf dem Azure Stack Edge Pro-Gerät
 
-Auf dem Azure Stack Edge-Gerät werden statisch bereitgestellte `PersistentVolumes` mithilfe der Speicherfunktionen des Geräts erstellt. Wenn Sie eine Freigabe bereitstellen und die Option **Freigabe mit Edgecomputing verwenden** aktiviert ist, wird durch diese Aktion automatisch eine PV-Ressource im Kubernetes-Cluster erstellt.
+Auf dem Azure Stack Edge Pro-Gerät werden statisch bereitgestellte `PersistentVolumes` mithilfe der Speicherfunktionen des Geräts erstellt. Wenn Sie eine Freigabe bereitstellen und die Option **Freigabe mit Edgecomputing verwenden** aktiviert ist, wird durch diese Aktion automatisch eine PV-Ressource im Kubernetes-Cluster erstellt.
 
 ![Erstellen einer lokalen Freigabe im Azure-Portal für die statische Bereitstellung](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-2.png)
 
@@ -85,7 +85,7 @@ Damit Sie Cloudtiering verwenden können, erstellen Sie eine Edge-Cloudfreigabe,
 
 ![Erstellen von Cloudfreigaben im Azure-Portal für die statische Bereitstellung](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-1.png)
 
-Sie können sowohl SMB- als auch NFS-Freigaben erstellen, um PVs statisch auf einem Azure Stack Edge-Gerät bereitzustellen. Nachdem die PV-Bereitstellung erfolgt ist, übermitteln Sie ein PVC, um diesen Speicher zu beanspruchen. Im Folgenden finden Sie ein Beispiel für eine `yaml`-Datei für die PVC-Bereitstellung, die den Speicher beansprucht und die von Ihnen bereitgestellten Freigaben verwendet.
+Sie können sowohl SMB- als auch NFS-Freigaben erstellen, um PVs statisch auf einem Azure Stack Edge Pro-Gerät bereitzustellen. Nachdem die PV-Bereitstellung erfolgt ist, übermitteln Sie ein PVC, um diesen Speicher zu beanspruchen. Im Folgenden finden Sie ein Beispiel für eine `yaml`-Datei für die PVC-Bereitstellung, die den Speicher beansprucht und die von Ihnen bereitgestellten Freigaben verwendet.
 
 
 ```yml
@@ -103,13 +103,13 @@ spec:
   storageClassName: ""
 ```
 
-Weitere Informationen finden Sie unter [Verwenden von kubectl zum Ausführen einer zustandsbehafteten Kubernetes-Anwendung mit PersistentVolume auf einem Azure Stack Edge-Gerät](azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md).
+Weitere Informationen finden Sie unter [Verwenden von kubectl zum Ausführen einer zustandsbehafteten Kubernetes-Anwendung mit PersistentVolume auf einem Azure Stack Edge Pro-Gerät](azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md).
 
-Azure Stack Edge verfügt auch über ein integriertes `StorageClass`-Element namens `ase-node-local`, das einen Datenspeicher verwendet, der an den Kubernetes-Knoten angefügt ist. Dieses `StorageClass`-Element unterstützt die dynamische Bereitstellung. Sie können in den Pod-Anwendungen einen `StorageClass`-Verweis erstellen, und ein PV wird automatisch erstellt. Weitere Informationen finden Sie im [Kubernetes-Dashboard](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md) zum Abfragen nach `ase-node-local StorageClass`.
+Azure Stack Edge Pro verfügt auch über ein integriertes `StorageClass`-Element namens `ase-node-local`, das einen an den Kubernetes-Knoten angefügten Datenträgerspeicher verwendet. Dieses `StorageClass`-Element unterstützt die dynamische Bereitstellung. Sie können in den Pod-Anwendungen einen `StorageClass`-Verweis erstellen, und ein PV wird automatisch erstellt. Weitere Informationen finden Sie im [Kubernetes-Dashboard](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md) zum Abfragen nach `ase-node-local StorageClass`.
 
 ![Integrierte Speicherklasse im Kubernetes-Dashboard](./media/azure-stack-edge-gpu-kubernetes-storage/dynamic-provisioning-builtin-storage-class-1.png)
 
-Weitere Informationen finden Sie unter [Verwenden von kubectl zum Ausführen einer zustandsbehafteten Kubernetes-Anwendung mit StorageClass auf einem Azure Stack Edge GPU-Gerät](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md).
+Weitere Informationen finden Sie unter [Verwenden von kubectl zum Ausführen einer zustandsbehafteten Kubernetes-Anwendung mit StorageClass auf einem Azure Stack Edge Pro-Gerät](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md).
 
 ## <a name="choose-storage-type"></a>Auswählen des Speichertyps
 
@@ -127,8 +127,8 @@ Weitere Informationen zu den Zugriffsmodi finden Sie unter [Zugriffsmodi für Ku
 
 Informationen dazu, wie Sie ein `PersistentVolume` statisch bereitstellen können, finden Sie unter:
 
-- [Verwenden von kubectl zum Ausführen einer zustandsbehafteten Kubernetes-Anwendung mit PersistentVolume auf einem Azure Stack Edge-Gerät](azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md).
+- [Verwenden von kubectl zum Ausführen einer zustandsbehafteten Kubernetes-Anwendung mit PersistentVolume auf einem Azure Stack Edge Pro-Gerät](azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md).
 
 Informationen dazu, wie Sie ein `StorageClass` dynamisch bereitstellen können, finden Sie unter:
 
-- [Verwenden von kubectl zum Ausführen einer zustandsbehafteten Kubernetes-Anwendung mit StorageClass auf einem Azure Stack Edge GPU-Gerät](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md).
+- [Verwenden von kubectl zum Ausführen einer zustandsbehafteten Kubernetes-Anwendung mit StorageClass auf einem Azure Stack Edge Pro-Gerät](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md).

@@ -5,20 +5,20 @@ description: Interaktives Debuggen von Azure Machine Learning-Code, -Pipelines u
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: troubleshooting
+ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 08/06/2020
-ms.openlocfilehash: 73cb8396876a5baad74190ec9a86237362037c36
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 3c2934c92be668d4b4c05f97a98395e2e219b7dc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87907226"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907619"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Interaktives Debuggen mit Visual Studio Code
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 In diesem Artikel wird beschrieben, wie Sie Azure Machine Learning-Pipelines und -Bereitstellungen mit Visual Studio Code (VS Code) und [debugpy](https://github.com/microsoft/debugpy/) interaktiv debuggen.
 
@@ -37,7 +37,7 @@ In einigen Fällen muss der in Ihrer ML-Pipeline verwendete Python-Code ggf. int
   * Eine Compute-Instanz einer Notebook-VM im virtuellen Netzwerk
   * Ein Clientcomputer, der über eine private Netzwerkverbindung mit dem virtuellen Netzwerk verfügt, entweder per VPN oder ExpressRoute.
 
-Weitere Informationen zur Verwendung eines virtuellen Azure-Netzwerks mit Azure Machine Learning finden Sie unter [Sichern von Azure ML-Experiment- und Rückschlussaufträgen in einem virtuellen Azure-Netzwerk](how-to-enable-virtual-network.md).
+Weitere Informationen zur Verwendung eines virtuellen Azure-Netzwerks mit Azure Machine Learning finden Sie unter [Übersicht zu Isolation und Datenschutz bei virtuellen Netzwerken](how-to-network-security-overview.md).
 
 > [!TIP]
 > Sie können zwar auch Azure Machine Learning-Ressourcen nutzen, die sich nicht hinter einem virtuellen Netzwerk befinden, aber wir empfehlen Ihnen die Verwendung eines virtuellen Netzwerks.
@@ -109,7 +109,7 @@ Von Ihren ML-Pipelineschritten werden Python-Skripts ausgeführt. Diese Skripts 
         print(f'Debugger attached = {debugpy.is_client_connected()}')
     ```
 
-Das folgende Python-Beispiel zeigt eine einfache Datei vom Typ `train.py`, die Debuggen ermöglicht:
+Das folgende Python-Beispiel zeigt eine einfache `train.py`-Datei, die das Debuggen ermöglicht:
 
 ```python
 # Copyright (c) Microsoft. All rights reserved.
@@ -281,7 +281,7 @@ Speichern Sie den Wert von `ip_address`. Sie werden im nächsten Abschnitt verwe
 In einigen Fällen müssen Sie den in der Modellbereitstellung enthaltenen Python-Code ggf. interaktiv debuggen. Dies ist beispielsweise der Fall, wenn das Einstiegsskript fehlschlägt und der Grund nicht durch zusätzliche Protokollierung ermittelt werden kann. Mit VS Code und debugpy können Sie Elemente an den Code anfügen, der im Docker-Container ausgeführt wird.
 
 > [!IMPORTANT]
-> Diese Methode des Debuggens funktioniert nicht, wenn `Model.deploy()` und `LocalWebservice.deploy_configuration` verwendet werden, um ein Modell lokal bereitzustellen. Stattdessen müssen Sie ein Image mithilfe der [Model.package()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config-none--generate-dockerfile-false-)-Methode erstellen.
+> Diese Methode des Debuggens funktioniert nicht, wenn `Model.deploy()` und `LocalWebservice.deploy_configuration` verwendet werden, um ein Modell lokal bereitzustellen. Stattdessen müssen Sie ein Image mithilfe der [Model.package()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=truepackage-workspace--models--inference-config-none--generate-dockerfile-false-)-Methode erstellen.
 
 Bereitstellungen lokaler Webdienste erfordern eine funktionierende Installation von Docker auf Ihrem lokalen System. Weitere Informationen zum Verwenden von Docker finden Sie in der [Docker-Dokumentation](https://docs.docker.com/). Beachten Sie bei Verwendung von Compute-Instanzen, dass Docker bereits installiert ist.
 

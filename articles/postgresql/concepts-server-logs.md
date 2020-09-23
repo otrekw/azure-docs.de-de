@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: 506bd79a512a5d8d143f582ee84d292dff86d9df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5515c21d89b01576bb6aae8c9d480b439dc1507
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392810"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902697"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Protokolle in Azure Database for PostgreSQL – Einzelserver
 
@@ -23,7 +23,7 @@ Die Überwachungsprotokollierung wird über eine Postgres-Erweiterung (pgaudit) 
 ## <a name="configure-logging"></a>Konfigurieren der Protokollierung 
 Sie können die Postgres-Standardprotokollierung auf dem Server mit Serverparametern für die Protokollierung konfigurieren. Auf jedem Azure Database for PostgreSQL-Server sind `log_checkpoints` und `log_connections` standardmäßig aktiviert. Es gibt zusätzliche Parameter, die Sie entsprechend Ihren Protokollierungsanforderungen anpassen können: 
 
-![Azure Database for PostgreSQL – Protokollierungsparameter](./media/concepts-server-logs/log-parameters.png)
+:::image type="content" source="./media/concepts-server-logs/log-parameters.png" alt-text="Azure Database for PostgreSQL – Protokollierungsparameter":::
 
 Weitere Informationen zu Postgres-Protokollparametern finden Sie in den Abschnitten zu den Themen [Wann wird protokolliert?](https://www.postgresql.org/docs/current/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHEN) und [Was wird protokolliert?](https://www.postgresql.org/docs/current/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHAT) der Postgres-Dokumentation. Die meisten (aber nicht alle) Postgres-Protokollierungsparameter sind für die Konfiguration in Azure Database for PostgreSQL verfügbar.
 

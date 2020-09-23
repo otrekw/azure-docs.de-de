@@ -11,16 +11,16 @@ author: jpe316
 ms.date: 06/03/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, devx-track-python
-ms.openlocfilehash: 263038ee1be8b31d493282cd920f386132420156
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 7637cc911ea2fbb950a18c2c8d91f5c3eaf02c23
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88648784"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905083"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Was sind Field Programmable Gate Arrays (FPGA) und wie werden sie bereitgestellt?
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Dieser Artikel enthält eine Einführung in Field Programmable Gate Arrays (FPGAs) und erläutert, wie Sie Ihre Modelle mit [Azure Machine Learning](overview-what-is-azure-ml.md) für ein Azure-FPGA bereitstellen.
 
@@ -78,7 +78,7 @@ Die **PBS-Familie virtueller Azure-Computer** enthält Intel Arria 10 FPGAs. In 
 
 ## <a name="deploy-models-on-fpgas"></a>Bereitstellen von Modellen auf FPGAs
 
-Sie können ein Modell als Webdienst auf FPGAs mit [hardwarebeschleunigten Azure Machine Learning-Modellen](https://docs.microsoft.com/python/api/azureml-accel-models/azureml.accel?view=azure-ml-py) bereitstellen. Verwenden von FPGAs bietet Rückschlüsse mit extrem geringen Latenzzeiten, sogar mit einer einzigen Batchgröße. Rückschlüsse oder Modellbewertungen stellen die Phase dar, in der das bereitgestellte Modell für die Vorhersage verwendet wird (meist für Produktionsdaten).
+Sie können ein Modell als Webdienst auf FPGAs mit [hardwarebeschleunigten Azure Machine Learning-Modellen](https://docs.microsoft.com/python/api/azureml-accel-models/azureml.accel?view=azure-ml-py&preserve-view=true) bereitstellen. Verwenden von FPGAs bietet Rückschlüsse mit extrem geringen Latenzzeiten, sogar mit einer einzigen Batchgröße. Rückschlüsse oder Modellbewertungen stellen die Phase dar, in der das bereitgestellte Modell für die Vorhersage verwendet wird (meist für Produktionsdaten).
 
 Für das Bereitstellen eines Modells in einem FPGA sind die folgenden Schritte erforderlich:
 
@@ -121,7 +121,7 @@ In diesem Beispiel erstellen Sie ein TensorFlow-Diagramm, um das Eingabebild vor
     ```
 ### <a name="1-define-the-tensorflow-model"></a>1. Definieren des TensorFlow-Modells
 
-Verwenden Sie das [Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py), um eine Dienstdefinition zu erstellen. Eine Dienstdefinition ist eine Datei, die eine Pipeline mit auf TensorFlow basierenden Diagrammen (Eingabe, Featurizer und Klassifizierung) beschreibt. Durch den Bereitstellungsbefehl werden die Definition und die Diagramme automatisch in einer ZIP-Datei komprimiert, die dann in Azure Blob Storage hochgeladen wird. Das DNN wurde bereits zur Ausführung im FPGA bereitgestellt.
+Verwenden Sie das [Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true), um eine Dienstdefinition zu erstellen. Eine Dienstdefinition ist eine Datei, die eine Pipeline mit auf TensorFlow basierenden Diagrammen (Eingabe, Featurizer und Klassifizierung) beschreibt. Durch den Bereitstellungsbefehl werden die Definition und die Diagramme automatisch in einer ZIP-Datei komprimiert, die dann in Azure Blob Storage hochgeladen wird. Das DNN wurde bereits zur Ausführung im FPGA bereitgestellt.
 
 1. Azure Machine Learning-Arbeitsbereich
 

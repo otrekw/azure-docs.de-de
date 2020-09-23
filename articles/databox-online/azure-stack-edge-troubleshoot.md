@@ -1,6 +1,6 @@
 ---
-title: Behandeln von Problemen mit Azure Stack Edge über das Azure-Portal | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Probleme mit Azure Stack Edge beheben. Sie können Diagnosen durchführen, Informationen für den Support sammeln und Protokolle zur Problembehandlung verwenden.
+title: Behandeln von Problemen mit Azure Stack Edge Pro im Azure-Portal | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Probleme mit Azure Stack Edge Pro beheben. Sie können Diagnosen durchführen, Informationen für den Support sammeln und Protokolle zur Problembehandlung verwenden.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/11/2020
 ms.author: alkohli
-ms.openlocfilehash: f9dabdfd9df77822f06c41fa4355a1657bceb76c
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: bc4afa0d26f6ba256354d3802a0c4f9b9b04088e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88134563"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903652"
 ---
-# <a name="troubleshoot-your-azure-stack-edge-issues"></a>Behandeln von Problemen mit Ihrem Azure Stack Edge
+# <a name="troubleshoot-your-azure-stack-edge-pro-issues"></a>Behandeln von Problemen mit Azure Stack Edge Pro
 
-In diesem Artikel wird beschrieben, wie Sie Probleme mit Ihrem Azure Stack Edge behandeln können. 
+In diesem Artikel wird beschrieben, wie Sie Probleme mit Azure Stack Edge Pro behandeln können. 
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
@@ -65,7 +65,7 @@ Alle Fehler, die während der Upload- und Aktualisierungsprozesse aufgetreten si
 
       ![Herstellen einer Verbindung mit und Anzeigen von Freigabeinhalten](media/azure-stack-edge-troubleshoot/troubleshoot-logs-1.png)
 
-2. Wählen Sie den _Microsoft Azure Stack Edge-Ordner_ aus. Dieser Ordner enthält zwei Unterordner:
+2. Wählen Sie den Ordner _Microsoft Azure Stack Edge Pro_ aus. Dieser Ordner enthält zwei Unterordner:
 
     * Der Ordner „Upload“ enthält Protokolldateien für Uploadfehler.
     * Der Ordner „Refresh“ ist für Fehler bei der Aktualisierung vorgesehen.

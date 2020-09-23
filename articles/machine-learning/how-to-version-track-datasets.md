@@ -11,15 +11,15 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: d57122ee98eb6612f43d09ecff4797038ceaf5f2
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 21969f52223a4e0c7de6ee26c0a6f9e2f96366b1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654088"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902339"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>Versionieren und Nachverfolgen von Datasets in Experimenten
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 In diesem Artikel erfahren Sie, wie Sie Azure Machine Learning-Datasets für die Reproduzierbarkeit versionieren und nachverfolgen. Eine Datasetversionierung ermöglicht es, den Zustand der Daten zu markieren, sodass Sie eine bestimmte Version des Datasets für zukünftige Experimente verwenden können.
 
@@ -32,7 +32,7 @@ Typische Versionierungsszenarios:
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-- [Installiertes Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py). Dieses SDK enthält das Paket [azureml-datasets](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset?view=azure-ml-py).
+- [Installiertes Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true). Dieses SDK enthält das Paket [azureml-datasets](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset?view=azure-ml-py&preserve-view=true).
     
 - Ein [Azure Machine Learning-Arbeitsbereich](concept-workspace.md). Rufen Sie einen vorhandenen Arbeitsbereich ab, indem Sie den folgenden Code ausführen, oder [erstellen Sie einen neuen Arbeitsbereich](how-to-manage-workspace.md).
 
@@ -63,7 +63,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ### <a name="retrieve-a-dataset-by-name"></a>Abrufen eines Datasets anhand des Namens
 
-Die Methode [get_by_name()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--) für die Klasse `Dataset` gibt standardmäßig die neueste Version des im Arbeitsbereich registrierten Datasets zurück. 
+Die Methode [get_by_name()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#&preserve-view=trueget-by-name-workspace--name--version--latest--) für die Klasse `Dataset` gibt standardmäßig die neueste Version des im Arbeitsbereich registrierten Datasets zurück. 
 
 Mit dem folgenden Code wird Version 1 des `titanic_ds`-Datasets abgerufen.
 
@@ -158,7 +158,7 @@ prep_step = PythonScriptStep(script_name="prepare.py",
 
 Sie können die als Eingabe verwendeten Datasets für jedes Machine Learning-Experiment einfach über das `Run`-Objekt des Experiments nachverfolgen.
 
-Im folgenden Code wird die [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-details--)-Methode verwendet, um nachzuverfolgen, welche Eingabedatasets bei der Ausführung des Experiments verwendet wurden:
+Im folgenden Code wird die [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#&preserve-view=trueget-details--)-Methode verwendet, um nachzuverfolgen, welche Eingabedatasets bei der Ausführung des Experiments verwendet wurden:
 
 ```Python
 # get input datasets

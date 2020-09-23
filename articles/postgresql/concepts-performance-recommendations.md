@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: a30af0c8bef47a37fe3439e885d3895a2c826225
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0ce3843752ebd6ed56281f6699783181b52fdc6
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74768468"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903881"
 ---
 # <a name="performance-recommendations-in-azure-database-for-postgresql---single-server"></a>Leistungsempfehlungen in Azure Database for PostgreSQL – Einzelserver
 
@@ -27,13 +27,13 @@ Das Feature [Leistungsempfehlungen](concepts-performance-recommendations.md) ana
 
 Öffnen Sie im Abschnitt **Intelligente Leistung** auf der Menüleiste der Azure-Portalseite für Ihren PostgreSQL-Server die Option **Leistungsempfehlungen**.
 
-![Leistungsempfehlungen-Startseite](./media/concepts-performance-recommendations/performance-recommendations-page.png)
+:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-page.png" alt-text="Landing Page für Leistungsempfehlungen":::
 
 Wählen Sie **Analysieren** aus, und wählen Sie eine Datenbank aus, mit der die Analyse beginnt. Je nach Workload kann die Analyse einige Minuten dauern. Wenn die Analyse abgeschlossen ist, wird im Portal eine Benachrichtigung angezeigt. Die Analyse führt eine umfassende Untersuchung der Datenbank aus. Es wird empfohlen, Analysen während der Nebenzeiten durchzuführen. 
 
 Das Fenster **Empfehlungen** zeigt eine Liste mit den gefundenen Empfehlungen an.
 
-![Neue Seite „Leistungsempfehlungen“](./media/concepts-performance-recommendations/performance-recommendations-result.png)
+:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-result.png" alt-text="Neue Seite „Leistungsempfehlungen“":::
 
 Empfehlungen werden nicht automatisch angewendet. Kopieren Sie zum Anwenden der Empfehlung den Abfragetext, und führen Sie ihn auf dem gewünschten Client aus. Denken Sie daran, die implementierte Empfehlung zu testen und zu überwachen, um sie auszuwerten. 
 

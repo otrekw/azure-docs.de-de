@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: aa79d1ba2cba86bf3f381ff78fd630ce455128d9
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: d885cc64eeebd4873ad5993b39b48845d1365c23
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107868"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902754"
 ---
 # <a name="restart-azure-database-for-mysql-server-using-azure-portal"></a>Neustarten eines Azure Database for MySQL-Servers mithilfe des Azure-Portals
 In diesem Thema wird erläutert, wie Sie einen Azure Database for MySQL-Server neu starten. Es kann vorkommen, dass Sie Ihren Server zu Wartungszwecken neu starten müssen. In diesem Fall kommt es zu einem kurzen Ausfall, weil der Vorgang vom Server ausgeführt wird.
@@ -32,19 +32,19 @@ Mit den folgenden Schritten wird der MySQL-Server neu gestartet:
 
 2. Klicken Sie auf der Seite **Übersicht** des Servers auf der Symbolleiste auf **Neu starten**.
 
-   ![Azure Database for MySQL – Übersicht – Schaltfläche „Neu starten“](./media/howto-restart-server-portal/2-server.png)
+   :::image type="content" source="./media/howto-restart-server-portal/2-server.png" alt-text="Azure Database for MySQL – Übersicht – Schaltfläche „Neu starten“":::
 
 3. Klicken Sie auf **Ja**, um den Neustart des Servers zu bestätigen.
 
-   ![Azure Database for MySQL – Neustart bestätigen](./media/howto-restart-server-portal/3-restart-confirm.png)
+   :::image type="content" source="./media/howto-restart-server-portal/3-restart-confirm.png" alt-text="Azure Database for MySQL – Neustart bestätigen":::
 
 4. Beachten Sie, dass sich der Serverstatus in „Wird neu gestartet“ ändert.
 
-   ![Azure Database for MySQL – Status „Wird neu gestartet“](./media/howto-restart-server-portal/4-restarting-status.png)
+   :::image type="content" source="./media/howto-restart-server-portal/4-restarting-status.png" alt-text="Azure Database for MySQL – Status „Wird neu gestartet“":::
 
 5. Vergewissern Sie sich, dass der Neustart des Servers erfolgreich war.
 
-   ![Azure Database for MySQL – Erfolgreicher Neustart](./media/howto-restart-server-portal/5-restart-success.png)
+   :::image type="content" source="./media/howto-restart-server-portal/5-restart-success.png" alt-text="Azure Database for MySQL – Erfolgreicher Neustart":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

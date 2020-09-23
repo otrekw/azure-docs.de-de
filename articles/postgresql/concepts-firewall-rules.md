@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 38edbfcb8800843b43678e99d6817595ccba3235
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7048fac4804e16ae70145c8fadc1cd6e0859fcfc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071539"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903916"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---single-server"></a>Firewallregeln in Azure Database for PostgreSQL – Einzelserver
 Die Azure Database for PostgreSQL-Serverfirewall verhindert jeglichen Zugriff auf Ihren Datenbankserver, bis Sie angeben, welche Computer zugriffsberechtigt sind. Die Firewall gewährt den Serverzugriff auf der Grundlage der Ursprungs-IP-Adresse der jeweiligen Anforderung.
@@ -23,7 +23,7 @@ Zum Konfigurieren der Firewall erstellen Sie Firewallregeln, die Bereiche zuläs
 Jeglicher Datenbankzugriff auf Ihren Azure-Datenbank für PostgreSQL-Server wird standardmäßig von der Firewall blockiert. Damit Sie Ihren Server über einen anderen Computer verwenden können, müssen Sie eine oder mehrere Firewallregeln auf Serverebene angeben, die Zugriff auf Ihren Server ermöglichen. Legen Sie mithilfe der Firewallregeln fest, welche IP-Adressbereiche aus dem Internet zugelassen werden sollen. Der Zugriff auf die Website des Azure-Portals selbst wird durch die Firewallregeln nicht beeinträchtigt.
 Verbindungsversuche über das Internet und über Azure müssen zunächst die Firewall passieren, bevor sie Ihre PostgreSQL-Datenbank erreichen (wie im folgenden Diagramm dargestellt):
 
-![Beispielfluss zur Funktionsweise der Firewall](media/concepts-firewall-rules/1-firewall-concept.png)
+:::image type="content" source="media/concepts-firewall-rules/1-firewall-concept.png" alt-text="Beispielfluss zur Funktionsweise der Firewall":::
 
 ## <a name="connecting-from-the-internet"></a>Herstellen einer Verbindung über das Internet
 Firewallregeln auf Serverebene wirken sich auf alle Datenbanken auf dem gleichen Azure Database for PostgreSQL-Server aus. Liegt die IP-Adresse der Anforderung innerhalb eines der in den Firewallregeln auf Serverebene angegebenen Bereiche, wird die Verbindung gewährt.
@@ -40,7 +40,7 @@ Wenn eine feste IP-Adresse für ausgehenden Datenverkehr für Ihren Azure-Dienst
 > Diese Option **Zugriff auf Azure-Dienste zulassen** konfiguriert die Firewall so, dass alle von Azure ausgehenden Verbindungen zugelassen werden (einschließlich Verbindungen von den Abonnements anderer Kunden). Wenn Sie diese Option auswählen, stellen Sie sicher, dass die Anmelde- und die Benutzerberechtigungen den Zugriff nur auf autorisierte Benutzer beschränken.
 > 
 
-![Konfigurieren von „Zugriff auf Azure-Dienste erlauben“ im Portal](media/concepts-firewall-rules/allow-azure-services.png)
+:::image type="content" source="media/concepts-firewall-rules/allow-azure-services.png" alt-text="Konfigurieren von „Zugriff auf Azure-Dienste erlauben“ im Portal":::
 
 ### <a name="connecting-from-a-vnet"></a>Herstellen einer Verbindung über ein VNet
 Wenn Sie von einem VNet aus eine sichere Verbindung mit Ihrem Azure Database for PostgreSQL-Server herstellen möchten, ziehen Sie die Verwendung von [VNet-Dienstendpunkten](./concepts-data-access-and-security-vnet.md) in Betracht. 
