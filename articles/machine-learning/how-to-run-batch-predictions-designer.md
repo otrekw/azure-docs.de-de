@@ -1,24 +1,24 @@
 ---
-title: Ausführen von Batchvorhersagen mit dem Azure Machine Learning-Designer (Vorschau)
+title: Ausführen von Batchvorhersagen mit dem Azure Machine Learning-Designer
 titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Sie ein Modell trainieren und eine Batchvorhersagenpipeline mithilfe des Designers einrichten. Stellen Sie die Pipeline als parametrisierten Webdienst bereit, der über eine beliebige HTTP-Bibliothek ausgelöst werden kann.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.author: peterlu
-author: peterclu
-ms.date: 02/24/2020
+ms.author: keli19
+author: likebupt
+ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 61465210c9ad476c6d8d2987330498aa0efa39d4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 21dad66670da7a538039ae795d6be87cc4dbce96
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319608"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883077"
 ---
-# <a name="run-batch-predictions-using-azure-machine-learning-designer-preview"></a>Ausführen von Batchvorhersagen mit dem Azure Machine Learning-Designer (Vorschau)
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+# <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Ausführen von Batchvorhersagen mit dem Azure Machine Learning-Designer
+
 
 In diesem Artikel erfahren Sie, wie Sie den Designer zum Erstellen einer Batchvorhersagepipeline verwenden können. Mithilfe der Batchvorhersage können Sie kontinuierlich große Datasets bei Bedarf mit einem Webdienst bewerten, der von jeder HTTP-Bibliothek ausgelöst werden kann.
 
@@ -71,7 +71,10 @@ In diesem Abschnitt erstellen Sie einen Datasetparameter, um ein anderes Dataset
    
     Geben Sie einen Namen für den Parameter ein, oder akzeptieren Sie den Standardwert.
 
-## <a name="publish-your-batch-inferencing-pipeline"></a>Veröffentlichen Ihrer Batchrückschlusspipeline
+    > [!div class="mx-imgBorder"]
+    > ![Festlegen des Datasets als Pipelineparameter](./media/how-to-run-batch-predictions-designer/set-dataset-as-pipeline-parameter.png)
+
+## <a name="publish-your-batch-inference-pipeline"></a>Veröffentlichen Ihrer Batchrückschlusspipeline
 
 Jetzt sind Sie bereit, die Rückschlusspipeline bereitzustellen. Dadurch wird die Pipeline bereitgestellt und anderen zur Nutzung zur Verfügung gestellt.
 
@@ -126,9 +129,7 @@ Informationen zur Verwendung von Pipelineendpunkten und der veröffentlichten Pi
 
 Den REST-Endpunkt eines Pipelineendpunkts finden Sie im Bereich der Ausführungsübersicht. Wenn Sie den Endpunkt aufrufen, nutzen Sie seine standardmäßig veröffentlichte Pipeline.
 
-Sie können eine veröffentlichte Pipeline auch auf der Seite **Veröffentlichte Pipelines** nutzen. Wählen Sie eine veröffentlichte Pipeline aus, und suchen Sie ihren REST-Endpunkt. 
-
-![Details zum REST-Endpunkt](./media/how-to-run-batch-predictions-designer/rest-endpoint-details.png)
+Sie können eine veröffentlichte Pipeline auch auf der Seite **Veröffentlichte Pipelines** nutzen. Wenn Sie eine veröffentlichte Pipeline auswählen, finden Sie den REST-Endpunkt der Pipeline im Panel zur **Übersicht über die veröffentliche Pipeline** rechts neben dem Diagramm. 
 
 Sie benötigen einen OAuth 2.0-Authentifizierungsheader vom Typ Bearer, um einen REST-Aufruf auszuführen. Weitere Informationen zum Einrichten der Authentifizierung für Ihren Arbeitsbereich und zum Erstellen eines parametrisierten REST-Aufrufes finden Sie im folgenden [Tutorialabschnitt](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint).
 
@@ -142,7 +143,7 @@ Wenn Sie eine Pipeline veröffentlichen, können Sie auswählen, dass sie zur ne
 
 Sie können auch eine neue Standardpipeline auf der Registerkarte **Veröffentlichte Pipelines** Ihres Endpunkts festlegen.
 
-![Festlegen der Standardpipeline](./media/how-to-run-batch-predictions-designer/set-new-default-pipeline.png)
+![Seite zum Festlegen der Standardpipeline in der veröffentlichten Pipeline](./media/how-to-run-batch-predictions-designer/set-new-default-pipeline.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

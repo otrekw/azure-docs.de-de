@@ -11,15 +11,14 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: afffdd0267cde8ffc841587748e51dd27e021369
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: d36c0ab78f9f96a051e6cb0a53b756c7409ca142
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079585"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893407"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Verwalten des Zugriffs auf einen Azure Machine Learning-Arbeitsbereich
-[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In diesem Artikel erfahren Sie, wie Sie den Zugriff auf einen Azure Machine Learning-Arbeitsbereich verwalten können. Der Zugriff auf Azure-Ressourcen wird mithilfe der [rollenbasierten Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure-RBAC)](/azure/role-based-access-control/overview) verwaltet. Benutzer in Ihrer Azure Active Directory-Instanz erhalten bestimmte Rollen, anhand derer sie Zugriff auf Ressourcen erhalten. Azure bietet sowohl integrierte Rollen als auch die Möglichkeit, benutzerdefinierte Rollen zu erstellen.
 
@@ -135,7 +134,6 @@ Die folgende Tabelle ist eine Zusammenfassung der Azure Machine Learning-Aktivit
 | Aktivität | Bereich der Abonnementebene | Bereich einer Ressourcengruppe | Bereich eines Arbeitsbereichs |
 | ----- | ----- | ----- | ----- |
 | Erstellen eines neuen Arbeitsbereichs | Nicht erforderlich | „Besitzer“ oder „Mitwirkender“ | – (wird nach der Erstellung zum Besitzer oder erbt eine Rolle mit umfassenderem Bereich) |
-| Aktualisieren der Edition des Arbeitsbereichs | Nicht erforderlich | Nicht erforderlich | „Besitzer“, „Mitwirkender“ oder benutzerdefinierte Rolle mit folgenden Berechtigungen: `/workspaces/write` |
 | Anfordern eines Amlcompute-Kontingents auf Abonnementebene oder Festlegen eines Kontingents auf Arbeitsbereichsebene | „Besitzer“, „Mitwirkender“ oder benutzerdefinierte Rolle </br>mit der Berechtigung `/locations/updateQuotas/action`</br> im Geltungsbereich des Abonnements | Nicht autorisiert | Nicht autorisiert |
 | Erstellen eines neuen Computeclusters | Nicht erforderlich | Nicht erforderlich | „Besitzer“, „Mitwirkender“ oder benutzerdefinierte Rolle mit folgenden Berechtigungen: `/workspaces/computes/write` |
 | Erstellen einer neuen Computeinstanz | Nicht erforderlich | Nicht erforderlich | „Besitzer“, „Mitwirkender“ oder benutzerdefinierte Rolle mit folgenden Berechtigungen: `/workspaces/computes/write` |
@@ -301,7 +299,6 @@ Ja, es gibt einige gängige Szenarien mit vorgeschlagenen benutzerdefinierten Ro
 
     * Erstellen eines neuen Arbeitsbereichs
     * Zuweisen von Kontingenten auf Abonnement- oder Arbeitsbereichsebene
-    * Ausführen eines Upgrades der Arbeitsbereichsedition
 
     Der Arbeitsbereichsadministrator darf auch keine neuen Rollen erstellen. Er darf nur vorhandene integrierte oder benutzerdefinierte Rollen im Geltungsbereich des Arbeitsbereichs zuweisen:
 
@@ -415,11 +412,7 @@ Sie müssen über Berechtigungen für den gesamten Bereich der neuen Rollendefin
 
 > [!NOTE]
 > Es kann bei einem Rollenupdate zwischen 15 Minuten und einer Stunde dauern, alle Rollenzuweisungen in diesem Bereich anzuwenden.
-### <a name="q-can-i-define-a-role-that-prevents-updating-the-workspace-edition"></a>Q. Kann ich eine Rolle definieren, die das Aktualisieren der Arbeitsbereichs-Edition verhindert? 
 
-Ja, Sie können eine Rolle definieren, die das Aktualisieren der Arbeitsbereichs-Edition verhindert. Da es sich bei der Arbeitsbereichsaktualisierung um einen PATCH-Aufruf für das Arbeitsbereichsobjekt handelt, erreichen Sie dies, indem Sie die folgende Aktion in das `"NotActions"`-Array in Ihrer JSON-Definition einfügen: 
-
-`"Microsoft.MachineLearningServices/workspaces/write"`
 
 ### <a name="q-what-permissions-are-needed-to-perform-quota-operations-in-a-workspace"></a>Q. Welche Berechtigungen sind erforderlich, um Kontingentvorgänge in einem Arbeitsbereich auszuführen? 
 
@@ -429,6 +422,6 @@ Sie benötigen Berechtigungen auf Abonnementebene, um auf das Kontingent bezogen
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Übersicht über Unternehmenssicherheit](concept-enterprise-security.md)
-- [Sicheres Ausführen von Experimenten und Ziehen von Rückschlüssen oder Bewerten innerhalb eines virtuellen Azure-Netzwerks](how-to-enable-virtual-network.md)
+- [Übersicht zu Isolation und Datenschutz bei virtuellen Netzwerken](how-to-network-security-overview.md)
 - [Tutorial: Trainieren von Modellen](tutorial-train-models-with-aml.md)
 - [Vorgänge für Ressourcenanbieter](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)

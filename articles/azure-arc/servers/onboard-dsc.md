@@ -1,26 +1,26 @@
 ---
 title: Installieren des Connected Machine-Agent mithilfe von Windows PowerShell DSC
-description: In diesem Artikel erfahren Sie, wie Sie Computer mithilfe von Azure Arc-fähigen Servern (Vorschauversion) und Windows PowerShell DSC mit Azure verbinden.
-ms.date: 03/12/2020
+description: In diesem Artikel erfahren Sie, wie Sie Computer mithilfe von Azure Arc-fähigen Servern und Windows PowerShell DSC mit Azure verbinden.
+ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 25d6e435c261a83bf81c15d5dd445a936d48a08b
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 5349ff870be324c0137d2adcaf201ecdac286cbc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213085"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887637"
 ---
 # <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>Installieren des Connected Machine-Agent mithilfe von Windows PowerShell DSC
 
-Mit [Windows PowerShell Desired State Configuration](/powershell/scripting/dsc/getting-started/winGettingStarted?view=powershell-7) (DSC) können Sie die Softwareinstallation und -konfiguration für einen Windows-Computer automatisieren. In diesem Artikel wird beschrieben, wie Sie mit DSC den Connected Machine-Agent für Azure Arc-fähige Server (Vorschauversion) auf Windows-Hybridcomputern installieren.
+Mit [Windows PowerShell Desired State Configuration](/powershell/scripting/dsc/getting-started/winGettingStarted) (DSC) können Sie die Softwareinstallation und -konfiguration für einen Windows-Computer automatisieren. In diesem Artikel wird beschrieben, wie Sie mit DSC den Connected Machine-Agent für Azure Arc-fähige Server auf Windows-Hybridcomputern installieren.
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 
 - Windows PowerShell, Version 4.0 oder höher
 
-- Das [AzureConnectedMachineDsc](https://www.powershellgallery.com/packages/AzureConnectedMachineDsc/1.0.1.0)-DSC-Modul
+- Das [AzureConnectedMachineDsc](https://www.powershellgallery.com/packages/AzureConnectedMachineDsc)-DSC-Modul
 
-- Ein Dienstprinzipal zum nicht interaktiven Herstellen einer Verbindung der Computer mit Azure Arc-fähigen Servern (Vorschauversion) Führen Sie die Schritte im Abschnitt [Erstellen eines Dienstprinzipals für das Onboarding im großen Stil](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) aus, wenn Sie noch keinen Dienstprinzipal für Arc-fähige Server (Vorschauversion) erstellt haben.
+- Ein Dienstprinzipal zum nicht interaktiven Herstellen einer Verbindung der Computer mit Azure Arc-fähigen Servern. Führen Sie die Schritte im Abschnitt [Erstellen eines Dienstprinzipals für das Onboarding im großen Stil](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) aus, wenn Sie noch keinen Dienstprinzipal für Arc-fähige Server erstellt haben.
 
 ## <a name="install-the-connectedmachine-dsc-module"></a>Installieren des ConnectedMachine-DSC-Moduls
 
@@ -44,7 +44,7 @@ Mit [Windows PowerShell Desired State Configuration](/powershell/scripting/dsc/g
 
 Die Ressourcen in diesem Modul sind zum Verwalten der Konfiguration des Azure Connected Machine-Agent konzipiert. Außerdem ist ein PowerShell-Skript `AzureConnectedMachineAgent.ps1` enthalten, das sich im Ordner `AzureConnectedMachineDsc\examples` befindet. Es verwendet Communityressourcen, um den Download und die Installation zu automatisieren und eine Verbindung mit Azure Arc herzustellen. Dieses Skript führt ähnliche Schritte aus, wie im Artikel [Verbinden von Hybridcomputern mit Azure über das Azure-Portal](onboard-portal.md) beschrieben.
 
-Wenn der Computer über einen Proxyserver mit dem Dienst kommunizieren muss, muss nach der Installation des Agent ein [hier](manage-agent.md#update-or-remove-proxy-settings) beschriebener Befehl ausgeführt werden. Dadurch wird die Systemumgebungsvariable `https_proxy` für den Proxyserver festgelegt. Anstatt den Befehl manuell auszuführen, können Sie diesen Schritt mit DSC ausführen, indem Sie das Modul [ComputeManagementDsc](https://www.powershellgallery.com/packages/ComputerManagementDsc/6.0.0.0) verwenden.
+Wenn der Computer über einen Proxyserver mit dem Dienst kommunizieren muss, muss nach der Installation des Agent ein [hier](manage-agent.md#update-or-remove-proxy-settings) beschriebener Befehl ausgeführt werden. Dadurch wird die Systemumgebungsvariable `https_proxy` für den Proxyserver festgelegt. Anstatt den Befehl manuell auszuführen, können Sie diesen Schritt mit DSC ausführen, indem Sie das Modul [ComputeManagementDsc](https://www.powershellgallery.com/packages/ComputerManagementDsc) verwenden.
 
 >[!NOTE]
 >Damit DSC ausgeführt werden kann, muss Windows für den Empfang von PowerShell-Remotebefehlen konfiguriert werden – selbst dann, wenn Sie eine Localhostkonfiguration ausführen. Um Ihre Umgebung auf einfache Weise ordnungsgemäß zu konfigurieren, rufen Sie einfach `Set-WsManQuickConfig -Force` in einem PowerShell-Terminal mit erhöhten Rechten aus.
@@ -64,11 +64,11 @@ Im Folgenden werden die Parameter angegeben, die Sie an das zu verwendende Power
 
 - `Tags`: Zeichenfolgenarray von Tags, die auf die verbundene Computerressource angewendet werden sollten.
 
-- `Credential`: Ein PowerShell-Anmeldeinformationsobjekt mit **ApplicationId** und **Kennwort**, die zur flexiblen Registrierung von Computern mithilfe eines [Dienstprinzipals](onboard-service-principal.md) verwendet wird. 
+- `Credential`: Ein PowerShell-Anmeldeinformationsobjekt mit **ApplicationId** und **Kennwort**, die zur flexiblen Registrierung von Computern mithilfe eines [Dienstprinzipals](onboard-service-principal.md) verwendet wird.
 
 1. Navigieren Sie in einer PowerShell-Konsole zu dem Ordner, in dem Sie die `.ps1`-Datei gespeichert haben.
 
-2. Führen Sie die folgenden PowerShell-Befehle zum Kompilieren des MOF-Dokuments aus (Informationen zum Kompilieren von DSC-Konfigurationen finden Sie unter [DSC-Konfigurationen](/powershell/scripting/dsc/configurations/configurations?view=powershell-7):
+2. Führen Sie die folgenden PowerShell-Befehle zum Kompilieren des MOF-Dokuments aus (Informationen zum Kompilieren von DSC-Konfigurationen finden Sie unter [DSC-Konfigurationen](/powershell/scripting/dsc/configurations/configurations):
 
     ```powershell
     .\`AzureConnectedMachineAgent.ps1 -TenantId <TenantId GUID> -SubscriptionId <SubscriptionId GUID> -ResourceGroup '<ResourceGroupName>' -Location '<LocationName>' -Tags '<Tag>' -Credential <psCredential>
@@ -76,13 +76,13 @@ Im Folgenden werden die Parameter angegeben, die Sie an das zu verwendende Power
 
 3. Dadurch wird eine `localhost.mof file` in einem neuen Ordner namens `C:\dsc` erstellt.
 
-Vergewissern Sie sich im Azure-Portal, dass die Serververbindung erfolgreich hergestellt wurde, nachdem Sie den Agent installiert und für die Verbindungsherstellung mit Azure Arc-fähigen Servern (Vorschauversion) konfiguriert haben. Zeigen Sie Ihre Computer im [Azure-Portal](https://aka.ms/hybridmachineportal) an.
+Vergewissern Sie sich im Azure-Portal, dass die Serververbindung erfolgreich hergestellt wurde, nachdem Sie den Agent installiert und für die Verbindungsherstellung mit Azure Arc-fähigen Servern konfiguriert haben. Zeigen Sie Ihre Computer im [Azure-Portal](https://aka.ms/hybridmachineportal) an.
 
 ## <a name="adding-to-existing-configurations"></a>Hinzufügen zu vorhandenen Konfigurationen
 
 Diese Ressource kann vorhandenen DSC-Konfigurationen hinzugefügt werden, um eine End-to-End-Konfiguration für einen Computer darzustellen. Beispielsweise kann es vorkommen, dass Sie diese Ressource einer Konfiguration hinzufügen möchten, mit der sichere Einstellungen für das Betriebssystem festgelegt werden.
 
-Das [CompsiteResource](https://www.powershellgallery.com/packages/compositeresource/0.4.0)-Modul aus dem PowerShell-Katalog kann zum Erstellen einer [zusammengesetzten Ressource](/powershell/scripting/dsc/resources/authoringResourceComposite?view=powershell-7) der Beispielkonfiguration verwendet werden, um die Kombination von Konfigurationen weiter zu vereinfachen.
+Das [CompositeResource](https://www.powershellgallery.com/packages/compositeresource)-Modul aus dem PowerShell-Katalog kann zum Erstellen einer [zusammengesetzten Ressource](/powershell/scripting/dsc/resources/authoringResourceComposite) der Beispielkonfiguration verwendet werden, um die Kombination von Konfigurationen weiter zu vereinfachen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

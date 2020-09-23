@@ -1,6 +1,6 @@
 ---
-title: Verwalten des Computingnetzwerks in Azure Stack Edge für den Zugriff auf Module | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie das Computingnetzwerk in Azure Stack Edge erweitern, um über eine externe IP-Adresse auf Module zuzugreifen.
+title: Verwalten des Computingnetzwerks in Azure Stack Edge Pro für den Zugriff auf Module | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie das Computingnetzwerk in Azure Stack Edge Pro erweitern, um über eine externe IP-Adresse auf Module zuzugreifen.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,21 +8,21 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: alkohli
-ms.openlocfilehash: 01b0eae7d2e5d1078c0761838081a2379a724a97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 19c92deb58ac51aa882e7123b9a90aa3eae627d0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84342985"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894114"
 ---
-# <a name="enable-compute-network-on-your-azure-stack-edge"></a>Aktivieren des Computingnetzwerks auf Ihrem Azure Stack Edge-Gerät
+# <a name="enable-compute-network-on-your-azure-stack-edge-pro"></a>Aktivieren des Computingnetzwerks auf Ihrem Azure Stack Edge Pro-Gerät
 
-In diesem Artikel wird beschrieben, wie die in Azure Stack Edge ausgeführten Module auf das auf dem Gerät aktivierte Computingnetzwerk zugreifen können.
+In diesem Artikel wird beschrieben, wie die in Azure Stack Edge Pro ausgeführten Module auf das auf dem Gerät aktivierte Computingnetzwerk zugreifen können.
 
 Zum Konfigurieren des Netzwerks müssen Sie die folgenden Schritte vornehmen:
 
-- Aktivieren einer Netzwerkschnittstelle auf Ihrem Azure Stack Edge-Gerät für das Computing
-- Hinzufügen eines Moduls für den Zugriff auf das Computingnetzwerk auf Ihrem Azure Stack Edge-Gerät
+- Aktivieren einer Netzwerkschnittstelle auf Ihrem Azure Stack Edge Pro-Gerät für das Computing
+- Hinzufügen eines Moduls für den Zugriff auf das Computingnetzwerk auf Ihrem Azure Stack Edge Pro-Gerät
 - Überprüfen des Zugriffs auf die aktivierte Netzwerkschnittstelle durch das Modul
 
 In diesem Tutorial verwenden Sie ein Webserver-App-Modul zur Veranschaulichung des Szenarios.
@@ -31,8 +31,8 @@ In diesem Tutorial verwenden Sie ein Webserver-App-Modul zur Veranschaulichung d
 
 Bevor Sie beginnen, müssen die folgenden Voraussetzungen erfüllt sein:
 
-- Sie besitzen ein Azure Stack Edge-Gerät mit abgeschlossenem Gerätesetup.
-- Sie haben den Schritt **Konfigurieren der Computeumgebung** unter [Tutorial: Transformieren von Daten mit Azure Stack Edge für erweiterten Bereitstellungsablauf](azure-stack-edge-deploy-configure-compute-advanced.md#configure-compute) auf Ihrem Gerät abgeschlossen. Ihrem Gerät sollte eine IoT Hub-Ressource, ein IoT-Gerät und ein IoT Edge-Gerät zugeordnet sein.
+- Sie besitzen ein Azure Stack Edge Pro-Gerät mit abgeschlossenem Gerätesetup.
+- Sie haben den Schritt **Konfigurieren der Computeumgebung** unter [Tutorial: Transformieren von Daten mit Azure Stack Edge Pro für erweiterten Bereitstellungsablauf](azure-stack-edge-deploy-configure-compute-advanced.md#configure-compute) auf Ihrem Gerät abgeschlossen. Ihrem Gerät sollte eine IoT Hub-Ressource, ein IoT-Gerät und ein IoT Edge-Gerät zugeordnet sein.
 
 ## <a name="enable-network-interface-for-compute"></a>Aktivieren einer Netzwerkschnittstelle für Computing
 
@@ -55,10 +55,10 @@ Führen Sie zum Konfigurieren von Computeeinstellungen die folgenden Schritte au
 
 ## <a name="add-webserver-app-module"></a>Hinzufügen eines Webserver-App-Moduls
 
-Führen Sie die folgenden Schritte aus, um ein Webserver-App-Modul zu Ihrem Azure Stack Edge-Gerät hinzuzufügen.
+Führen Sie die folgenden Schritte aus, um ein Webserver-App-Modul zu Ihrem Azure Stack Edge Pro-Gerät hinzuzufügen.
 
-1. Navigieren Sie zur IoT Hub-Ressource, die Ihrem Azure Stack Edge-Gerät zugeordnet ist, und klicken Sie dann auf **IoT Edge-Gerät**.
-2. Wählen Sie das IoT Edge-Gerät aus, das Ihrem Azure Stack Edge-Gerät zugeordnet ist. Klicken Sie in den **Gerätedetails** auf **Module festlegen**. Klicken Sie unter **Module hinzufügen** auf **+ Hinzufügen**, und wählen Sie dann **IoT Edge-Modul** aus.
+1. Navigieren Sie zur IoT Hub-Ressource, die Ihrem Azure Stack Edge Pro-Gerät zugeordnet ist, und klicken Sie dann auf **IoT Edge-Gerät**.
+2. Wählen Sie das IoT Edge Pro-Gerät aus, das Ihrem Azure Stack Edge-Gerät zugeordnet ist. Klicken Sie in den **Gerätedetails** auf **Module festlegen**. Klicken Sie unter **Module hinzufügen** auf **+ Hinzufügen**, und wählen Sie dann **IoT Edge-Modul** aus.
 3. Gehen Sie auf dem Blatt **Benutzerdefinierte IoT Edge-Module** wie folgt vor:
 
     1. Legen Sie einen **Namen** für Ihr Webserver-App-Modul fest, das Sie bereitstellen möchten.

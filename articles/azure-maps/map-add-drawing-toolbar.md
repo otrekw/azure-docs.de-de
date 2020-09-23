@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 141ae90805e81d7269a12dcf465389d6a9dcaf55
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a156896faff4262d9b8bd3cef10817a5b919749d
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286971"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086147"
 ---
 # <a name="add-a-drawing-tools-toolbar-to-a-map"></a>Hinzufügen einer Symbolleiste mit Zeichentools zu einer Karte
 
-In diesem Artikel erfahren Sie, wie Sie das Modul mit Zeichentools verwenden und die Zeichnungssymbolleiste auf der Karte anzeigen. Das Steuerelement [DrawingToolbar](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest) fügt die Zeichnungssymbolleiste auf der Karte hinzu. Erfahren Sie, wie Karten mit nur einem und mit allen Zeichnungstools erstellt werden und wie das Rendering der Zeichnungsformen im Zeichnungs-Manager angepasst wird.
+In diesem Artikel erfahren Sie, wie Sie das Modul mit Zeichentools verwenden und die Zeichnungssymbolleiste auf der Karte anzeigen. Das Steuerelement [DrawingToolbar](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar) fügt die Zeichnungssymbolleiste auf der Karte hinzu. Erfahren Sie, wie Karten mit nur einem und mit allen Zeichnungstools erstellt werden und wie das Rendering der Zeichnungsformen im Zeichnungs-Manager angepasst wird.
 
 ## <a name="add-drawing-toolbar"></a>Hinzufügen einer Symbolleiste zum Zeichnen
 
@@ -38,7 +38,7 @@ Nachstehend finden Sie das vollständige, ausführbare Codebeispiel für die obe
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Hinzufügen einer Symbolleiste zum Zeichnen" src="//codepen.io/azuremaps/embed/ZEzLeRg/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Hinzufügen einer Symbolleiste zum Zeichnen" src="//codepen.io/azuremaps/embed/ZEzLeRg/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/ZEzLeRg/'>Add drawing toolbar</a> (Hinzufügen einer Zeichnungssymbolleiste) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -62,7 +62,7 @@ Nachstehend finden Sie das vollständige, ausführbare Codebeispiel für die obe
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Hinzufügen eines Polygonzeichnungstools" src="//codepen.io/azuremaps/embed/OJLWWMy/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Hinzufügen eines Polygonzeichnungstools" src="//codepen.io/azuremaps/embed/OJLWWMy/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/OJLWWMy/'>Add a polygon drawing tool</a> (Hinzufügen eines Polygonzeichnungstools) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -122,7 +122,7 @@ Nachstehend finden Sie das vollständige, ausführbare Codebeispiel für die obe
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Ändern des Zeichnungsrenderingstils" src="//codepen.io/azuremaps/embed/OJLWpyj/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Ändern des Zeichnungsrenderingstils" src="//codepen.io/azuremaps/embed/OJLWpyj/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/OJLWpyj/'>Change drawing rendering style</a> (Ändern des Zeichnungsrenderingstils) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -143,10 +143,10 @@ Erfahren Sie, wie die weiteren Funktionen des Zeichentools-Moduls verwendet werd
 Erfahren Sie mehr zu den in diesem Artikel verwendeten Klassen und Methoden:
 
 > [!div class="nextstepaction"]
-> [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
-> [Zeichnungssymbolleiste](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest)
+> [Zeichnungssymbolleiste](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar)
 
 > [!div class="nextstepaction"]
-> [Zeichnungs-Manager](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest)
+> [Zeichnungs-Manager](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager)

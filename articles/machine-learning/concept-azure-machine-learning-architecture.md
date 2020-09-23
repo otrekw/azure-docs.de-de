@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: c3abd6a57eac851a5440ecdef6185cb310305434
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 7f10454eff7958f59cf16b19e98918062b2a61a3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146775"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886309"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>So funktioniert Azure Machine Learning: Architektur und Konzepte
 
@@ -110,7 +110,7 @@ Beispiele für Laufzeitkonfigurationen finden Sie unter [Verwenden eines Compute
 
 ### <a name="estimators"></a>Schätzfunktionen
 
-Um das Training von Modellen mit beliebten Frameworks zu vereinfachen, können Sie mit der Klasse der Schätzfunktionen (Estimator) problemlos Laufzeitkonfigurationen erstellen. Sie können einen generischen [Kalkulator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) erstellen und verwenden, um Trainingsskripts zu übermitteln, die ein beliebiges, von Ihnen ausgewähltes Learning-Framework verwenden (z. B. scikit-learn).
+Um das Training von Modellen mit beliebten Frameworks zu vereinfachen, können Sie mit der Klasse der Schätzfunktionen (Estimator) problemlos Laufzeitkonfigurationen erstellen. Sie können einen generischen [Kalkulator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py&preserve-view=true) erstellen und verwenden, um Trainingsskripts zu übermitteln, die ein beliebiges, von Ihnen ausgewähltes Learning-Framework verwenden (z. B. scikit-learn).
 
 Weitere Informationen zu Schätzern finden Sie unter [Trainieren von ML-Modellen mit Kalkulatoren](how-to-train-ml-models.md).
 
@@ -123,7 +123,9 @@ Beim Übermitteln einer Ausführung komprimiert Azure Machine Learning das Verze
 
 ### <a name="logging"></a>Protokollierung
 
-Verwenden Sie beim Entwickeln Ihrer Lösung das Azure Machine Learning Python SDK in Ihrem Python-Skript, um beliebige Metriken zu protokollieren. Fragen Sie nach der Ausführung die Metriken ab, um zu ermitteln, ob von der Ausführung das Modell erzeugt wurde, das Sie bereitstellen möchten.
+Standardmäßige Ausführungsmetriken werden von Azure Machine Learning automatisch protokolliert. Sie können jedoch auch das [Python SDK verwenden, um beliebige Metriken zu protokollieren](how-to-track-experiments.md).
+
+Es gibt mehrere Möglichkeiten zum Anzeigen ihrer Protokolle: Überwachen des Ausführungsstatus in Echtzeit oder Anzeigen der Ergebnisse nach Abschluss. Weitere Informationen finden Sie unter [Überwachen und Anzeigen von ML-Ausführungsprotokollen](how-to-monitor-view-training-logs.md).
 
 
 > [!NOTE]
@@ -189,6 +191,17 @@ Wenn Sie die automatische Skalierung aktiviert haben, führt Azure für Ihre Ber
 
 Ein Beispiel für die Bereitstellung eines Modells als Webdienst finden Sie unter [Bereitstellen eines Bildklassifizierungsmodells in Azure Container Instances](tutorial-deploy-models-with-aml.md).
 
+#### <a name="real-time-endpoints"></a>Echtzeitendpunkte
+
+Wenn Sie ein trainiertes Modell im Designer bereitstellen, können Sie das [Modell als Echtzeitendpunkt bereitstellen](tutorial-designer-automobile-price-deploy.md). Ein Echtzeitendpunkt empfängt in der Regel eine einzelne Anforderung über den REST-Endpunkt und gibt eine Vorhersage in Echtzeit zurück. Dies steht im Gegensatz zur Batchverarbeitung, bei der mehrere Werte gleichzeitig verarbeitet werden und die Ergebnisse nach Abschluss in einem Datenspeicher gespeichert werden.
+
+#### <a name="pipeline-endpoints"></a>Pipelineendpunkte
+
+Mithilfe von Pipelineendpunkten können Sie Ihre [ML-Pipelines](#ml-pipelines) programmgesteuert über einen REST-Endpunkt abrufen. Mit Pipelineendpunkten lassen sich Pipelineworkflows automatisieren.
+
+Ein Pipelineendpunkt ist eine Sammlung veröffentlichter Pipelines. Diese logische Anordnung ermöglicht Ihnen die Verwaltung und den Aufruf mehrerer Pipelines mithilfe desselben Endpunkts. Jede veröffentlichte Pipeline in einem Pipelineendpunkt verfügt über eine Versionsangabe. Sie können eine Standardpipeline für den Endpunkt auswählen oder im REST-Befehl eine Version angeben.
+ 
+
 #### <a name="iot-module-endpoints"></a>IoT-Modulendpunkte
 
 Ein bereitgestellter IoT-Modulendpunkt ist ein Docker-Container, der Ihr Modell und das zugeordnete Skript oder die Anwendung sowie alle zusätzlichen Abhängigkeiten enthält. Sie stellen diese Module mit Azure IoT Edge auf Edge-Geräten bereit.
@@ -212,12 +225,13 @@ Pipelineschritte sind wiederverwendbar und können ohne erneute Ausführung der 
 
 ### <a name="studio"></a>Studio
 
-[Azure Machine Learning Studio](https://ml.azure.com) stellt eine Webansicht aller Artefakte in Ihrem Arbeitsbereich bereit.  Sie können Ergebnisse und Details zu ihren Datasets, Experimenten, Pipelines, Modellen und Endpunkten anzeigen.  Sie können auch Computeressourcen und Datenspeicher in Studio verwalten.
+[Azure Machine Learning Studio](overview-what-is-machine-learning-studio.md) stellt eine Webansicht aller Artefakte in Ihrem Arbeitsbereich bereit.  Sie können Ergebnisse und Details zu ihren Datasets, Experimenten, Pipelines, Modellen und Endpunkten anzeigen.  Sie können auch Computeressourcen und Datenspeicher in Studio verwalten.
 
 In Studio greifen Sie auch auf die interaktiven Tools zu, die Teil von Azure Machine Learning sind:
 
-+ [Azure Machine Learning-Designer (Vorschauversion)](concept-designer.md) zur Ausführung der Workflowschritte ohne Programmierung
++ [Azure Machine Learning-Designer](concept-designer.md) zur Ausführung der Workflowschritte ohne Programmierung
 + Weboberfläche für [automatisiertes maschinelles Lernen](concept-automated-ml.md)
++ [Azure Machine Learning-Notebooks](how-to-run-jupyter-notebooks.md) zum Schreiben und Ausführen Ihres eigenen Code in integrierten Jupyter Notebook-Servern
 + [Datenbezeichnungsprojekte](how-to-create-labeling-projects.md) zum Erstellen, Verwalten und Überwachen von Projekten zur Bezeichnung Ihrer Daten
 
 ### <a name="programming-tools"></a>Programmiertools
@@ -226,8 +240,9 @@ In Studio greifen Sie auch auf die interaktiven Tools zu, die Teil von Azure Mac
 > Die unten markierten Tools (Vorschau) sind aktuell als öffentliche Vorschau verfügbar.
 > Die Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-+  Interagieren Sie mit dem Dienst in einer beliebigen Python-Umgebung, indem Sie das [Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) verwenden.
++  Interagieren Sie mit dem Dienst in einer beliebigen Python-Umgebung, indem Sie das [Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) verwenden.
 + Interagieren Sie mit dem Dienst in einer beliebigen R-Umgebung, indem Sie das [Azure Machine Learning SDK für R](https://azure.github.io/azureml-sdk-for-r/reference/index.html) (Vorschauversion) verwenden.
++ Verwenden Sie den [Azure Machine Learning-Designer](concept-designer.md), um die Workflowschritte auszuführen – ganz ohne Programmierung. 
 + Verwenden Sie die [Azure Machine Learning-CLI](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli) zur Automatisierung.
 + Der [Many Models Solution Accelerator](https://aka.ms/many-models) (Preview) (Projektmappenbeschleuniger für viele Modelle (Vorschau)) baut auf Azure Machine Learning auf und ermöglicht Ihnen Training, Betrieb und Verwaltung von hunderten oder sogar tausenden von Machine Learning-Modellen.
 

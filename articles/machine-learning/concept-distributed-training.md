@@ -9,12 +9,12 @@ ms.author: nibaccam
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: 8c2867fc5d57cf9ad6eb6bf2d90e02c61e320120
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 62edee6a882191551ce2409646ea8b617576c059
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146656"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651146"
 ---
 # <a name="distributed-training-with-azure-machine-learning"></a>Verteiltes Training mit Azure Machine Learning
 
@@ -24,7 +24,7 @@ Beim verteilten Training wird die Arbeitsauslastung zum Trainieren eines Modells
 
 ## <a name="deep-learning-and-distributed-training"></a>Deep Learning und verteiltes Training 
 
-Es gibt zwei Haupttypen von verteiltem Training: [Datenparallelität](#data-parallelism) und [Modellparallelität](#model-parallelism). Das [Azure Machine Learning-SDK in Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) unterstützt für verteiltes Training in Deep Learning-Modellen Integrationen in die beliebten Frameworks PyTorch und TensorFlow. Beide Frameworks nutzen Datenparallelität für verteiltes Training und können mithilfe von [Horovod](https://horovod.readthedocs.io/en/latest/summary_include.html) die Rechengeschwindigkeit optimieren. 
+Es gibt zwei Haupttypen von verteiltem Training: [Datenparallelität](#data-parallelism) und [Modellparallelität](#model-parallelism). Das [Azure Machine Learning-SDK in Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) unterstützt für verteiltes Training in Deep Learning-Modellen Integrationen in die beliebten Frameworks PyTorch und TensorFlow. Beide Frameworks nutzen Datenparallelität für verteiltes Training und können mithilfe von [Horovod](https://horovod.readthedocs.io/en/latest/summary_include.html) die Rechengeschwindigkeit optimieren. 
 
 * [Verteiltes Training](how-to-train-pytorch.md#distributed-training) (PyTorch)
 

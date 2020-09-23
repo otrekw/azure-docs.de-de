@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 01/27/2020
-ms.openlocfilehash: b0def12582dd3795e1b17334406e28d77c3c5656
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5206565b85d1551e5e551f1dfe75d28c93bc53f0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79477441"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898212"
 ---
 # <a name="summarize-data"></a>Zusammenfassen von Daten
 
-In diesem Artikel wird ein Modul von Azure Machine Learning-Designer (Vorschauversion) beschrieben.
+In diesem Artikel wird ein Modul im Azure Machine Learning-Designer beschrieben.
 
 Verwenden Sie das Modul „Summarize Data“ (Zusammenfassen von Daten), um einen Satz von statistischen Standardmaßzahlen zu erstellen, die jede Spalte in der Eingabetabelle beschreiben.
 

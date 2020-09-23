@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 8fca0195c2941e4ed1a859c3201adfc2a4a0a2ed
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 71657d45ce9c4cc6fb103b61235a282b3005b924
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067442"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884918"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Azure Database for MySQL-Datenverschlüsselung mit einem vom Kunden verwalteten Schlüssel
 
@@ -44,7 +44,7 @@ Die mit den KEKs verschlüsselten DEKs werden separat gespeichert. Nur eine Enti
 
 ## <a name="how-data-encryption-with-a-customer-managed-key-work"></a>Datenverschlüsselung mit einem kundenseitig verwalteten Schlüssel
 
-![Abbildung, die eine Übersicht über BYOK (Bring Your Own Key) zeigt](media/concepts-data-access-and-security-data-encryption/mysqloverview.png)
+:::image type="content" source="media/concepts-data-access-and-security-data-encryption/mysqloverview.png" alt-text="Abbildung, die eine Übersicht über BYOK (Bring Your Own Key) zeigt":::
 
 Damit ein MySQL-Server vom Kunden verwaltete Schlüssel, die in Key Vault gespeichert sind, für die Verschlüsselung des DEK verwenden kann, erteilt ein Key Vault-Administrator dem Server die folgenden Zugriffsrechte:
 
@@ -80,7 +80,7 @@ Wenn Sie Datenverschlüsselung durch einen vom Kunden verwalteten Schlüssel ver
 * Stellen Sie sicher, dass sich Key Vault und Azure Database for MySQL in derselben Region befinden, um einen schnelleren Zugriff für wrap- und unwrap-Vorgänge bei DEKs sicherzustellen.
 * Schränken Sie Azure Key Vault auf den **privaten Endpunkt und die ausgewählten Netzwerke** ein, und erlauben Sie nur *vertrauenswürdigen Microsoft-Diensten*, die Ressourcen zu schützen.
 
-    ![Vertrauenswürdiger Dienst mit AKV](media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png)
+    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="Vertrauenswürdiger Dienst mit AKV":::
 
 Empfehlungen für die Konfiguration kundenseitig verwalteter Schlüssel:
 

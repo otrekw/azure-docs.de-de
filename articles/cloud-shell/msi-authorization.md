@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 04/14/2018
-ms.openlocfilehash: a5d49a16324a5a97f4a0507f9abf47ea602ea072
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0fb19524079f84e92e1ddbc98a61917026492663
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72328713"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469897"
 ---
 # <a name="use-managed-identities-for-azure-resources-in-azure-cloud-shell"></a>Verwenden verwalteter Identitäten für Azure-Ressourcen in Azure Cloud Shell
 
@@ -43,8 +43,8 @@ Im lokalen MSI-Subsystem werden Token zwischengespeichert. Daher können Sie sie
 
 Wenn Sie das Token in Ihrem Code zwischenspeichern, sollten Sie auf die Behandlung von Szenarien vorbereitet sein, bei denen die Ressource angibt, dass das Token abgelaufen ist.
 
-Informationen zum Beheben von Tokenfehlern finden Sie unter [Verwenden der verwalteten Dienstidentität (Managed Service Identity, MSI) eines virtuellen Azure-Computers für den Tokenabruf](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token#error-handling).
+Informationen zum Beheben von Tokenfehlern finden Sie unter [Verwenden der verwalteten Dienstidentität (Managed Service Identity, MSI) eines virtuellen Azure-Computers für den Tokenabruf](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md#error-handling).
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Weitere Informationen zu MSI](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)  
-[Abrufen von Zugriffstoken von MSI-VMs](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)
+[Weitere Informationen zu MSI](../active-directory/managed-identities-azure-resources/overview.md)  
+[Abrufen von Zugriffstoken von MSI-VMs](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)

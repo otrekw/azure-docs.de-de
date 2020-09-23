@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 05/15/2020
 ms.author: jingwang
-ms.openlocfilehash: b2e666419a702832243c69bdb059f4447b02d756
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 953dae3c264e76b1e40f0dc07ccea0c00a7464c8
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079454"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024416"
 ---
 # <a name="copy-data-securely-from-azure-blob-storage-to-a-sql-database-by-using-private-endpoints"></a>Sicheres Kopieren von Daten aus Azure Blob Storage in eine SQL-Datenbank mithilfe von privaten Endpunkten
 
@@ -57,7 +57,7 @@ Bereiten Sie nun Ihren Blobspeicher und Ihre SQL-Datenbank-Instanz durch Ausfüh
 
 #### <a name="create-a-sink-sql-table"></a>Erstellen einer SQL-Senkentabelle
 
-1. Verwenden Sie das folgende SQL-Skript, um die Tabelle **dbo.emp** in Ihrer SQL-Datenbank zu erstellen:
+Verwenden Sie das folgende SQL-Skript, um die Tabelle **dbo.emp** in Ihrer SQL-Datenbank zu erstellen:
 
     ```sql
     CREATE TABLE dbo.emp
@@ -71,12 +71,10 @@ Bereiten Sie nun Ihren Blobspeicher und Ihre SQL-Datenbank-Instanz durch Ausfüh
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-1. Gewähren Sie Azure-Diensten den Zugriff auf SQL Server. Stellen Sie sicher, dass die Einstellung **Zugriff auf Azure-Dienste erlauben** für Ihre SQL Server-Instanz auf **EIN** festgelegt ist, damit Data Factory Daten in diese SQL Server-Instanz schreiben kann. Um diese Einstellung zu überprüfen und zu aktivieren, wechseln Sie zu **Azure SQL Server** > **Übersicht** > **Serverfirewall festlegen**. Legen Sie die Option **Zugriff auf Azure-Dienste erlauben** auf **AUS** fest.
-
 ## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
 In diesem Schritt erstellen Sie eine Data Factory und starten die Data Factory-Benutzeroberfläche, um eine Pipeline in der Data Factory zu erstellen.
 
-1. Öffnen Sie Microsoft Edge oder Google Chrome. Die Data Factory-Benutzeroberfläche wird zurzeit nur in den Webbrowsern Microsoft Edge und Google Chrome unterstützt.
+1. Öffnen Sie Microsoft Edge oder Google Chrome. Die Data Factory-Benutzeroberfläche wird derzeit nur in den Webbrowsern Microsoft Edge und Google Chrome unterstützt.
 
 1. Klicken Sie im Menü auf der linken Seite auf **Ressource erstellen** > **Analytics** > **Data Factory**.
 
@@ -99,7 +97,7 @@ In diesem Schritt erstellen Sie eine Data Factory und starten die Data Factory-B
 
 1. Klicken Sie auf **Erstellen**.
 
-1. Nach Abschluss der Erstellung wird der Hinweis im Benachrichtigungscenter angezeigt. Wählen Sie **Zu Ressource wechseln** aus, um zur **Data Factory**-Seite zu navigieren.
+1. Nach Abschluss der Erstellung wird der Hinweis im Benachrichtigungscenter angezeigt. Wählen Sie **Zu Ressource wechseln** aus, um zur Seite **Data Factory** zu navigieren.
 
 1. Klicken Sie auf **Erstellen und überwachen**, um die Data Factory-Benutzeroberfläche auf einer separaten Registerkarte zu starten.
 

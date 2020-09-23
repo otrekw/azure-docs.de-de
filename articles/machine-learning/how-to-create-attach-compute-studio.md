@@ -1,5 +1,5 @@
 ---
-title: Erstellen von Computeressourcen in Studio
+title: Erstellen von Computeressourcen für Training und Bereitstellung (Studio)
 titleSuffix: Azure Machine Learning
 description: Verwenden von Studio zum Erstellen von Computeressourcen (Computeziele) für Training und Bereitstellung für maschinelles Lernen
 services: machine-learning
@@ -11,15 +11,14 @@ ms.subservice: core
 ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: 2e32eb9a2a13b8e247388e8da80dd5f5967fdc6d
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 5345fd81e41bbb354e11e1be23329c3130d4d0c2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147258"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898068"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>Erstellen von Computezielen für Modelltraining und -bereitstellung in Azure Machine Learning Studio
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In diesem Artikel erfahren Sie, wie Sie Computeziele in Azure Machine Learning Studio erstellen und verwalten.  Sie können Computeziele auch mit folgenden Komponenten erstellen und verwalten:
 
@@ -119,6 +118,9 @@ Schalten Sie beim Erstellen von Clustern oder beim Bearbeiten von Computecluster
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-managed-identity-default.md)]
 
 ### <a name="inference-clusters"></a>Rückschlusscluster
+
+> [!IMPORTANT]
+> Für die Verwendung des Azure Kubernetes Service mit Azure Machine Learning gibt es mehrere Konfigurationsoptionen. In bestimmten Szenarien wie Netzwerken ist eine zusätzliche Einrichtung und Konfiguration erforderlich. Weitere Informationen zum Verwenden von AKS mit Azure Machine Learning finden Sie unter [Erstellen und Anfügen eines Azure Kubernetes Service-Clusters](how-to-create-attach-kubernetes.md).
 
 Sie können einen AKS-Cluster (Azure Kubernetes Service) für umfangreiche Rückschlüsse erstellen oder anfügen. Führen Sie die [oben beschriebenen Schritte](#portal-create) aus, um den AKS-Cluster zu erstellen.  Füllen Sie das Formular anschließend wie folgt aus:
 

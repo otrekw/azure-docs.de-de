@@ -11,12 +11,12 @@ ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 06/16/2020
-ms.openlocfilehash: 900d5cd435a913c0859c862d176fd30130e0a079
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 3e2711243d7c093d3ab8aa5f0e7ebac0a5ec95f9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321495"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886192"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>Konfigurieren von Datenaufteilung und Kreuzvalidierung im automatisierten maschinellen Lernen
 
@@ -24,7 +24,7 @@ In diesem Artikel lernen Sie die verschiedenen Optionen zum Konfigurieren der Au
 
 Wenn Sie in Azure Machine Learning AutoML zum Erstellen mehrerer ML-Modelle verwenden, muss jede untergeordnete Ausführung das zugehörige Modell durch Berechnen der Qualitätsmetriken für das Modell validieren, etwa „Genauigkeit“ oder „AUC gewichtet“. Diese Metriken werden durch Vergleichen der mit jedem Modell gemachten Vorhersagen mit realen Bezeichnungen aus Beobachtungen in der Vergangenheit in den Validierungsdaten berechnet. 
 
-AutoML-Experimente führen die Modellvalidierung automatisch durch. In den folgenden Abschnitten wird beschrieben, wie Sie die Validierungseinstellungen mit dem [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py) weiter anpassen können. 
+AutoML-Experimente führen die Modellvalidierung automatisch durch. In den folgenden Abschnitten wird beschrieben, wie Sie die Validierungseinstellungen mit dem [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true) weiter anpassen können. 
 
 Anweisungen zum Arbeiten mit wenig Code oder ohne Code finden Sie unter [Erstellen automatisierter Experimente mit maschinellem Lernen in Azure Machine Learning-Studio](how-to-use-automated-ml-for-ml-models.md). 
 
@@ -37,7 +37,7 @@ Für diesen Artikel ist Folgendes erforderlich:
 
 * Ein Azure Machine Learning-Arbeitsbereich. Informationen zum Erstellen des Arbeitsbereichs finden Sie unter [Erstellen eines Azure Machine Learning-Arbeitsbereichs](how-to-manage-workspace.md).
 
-* Grundkenntnisse in der Einrichtung eines automatisierten Experiments mit maschinellem Lernen mit dem Azure Machine Learning SDK. Machen Sie sich anhand des [Tutorials](tutorial-auto-train-models.md) oder der [Anleitung](how-to-configure-auto-train.md) mit den grundlegenden Entwurfsmustern vertraut.
+* Grundkenntnisse in der Einrichtung eines automatisierten Experiments mit maschinellem Lernen mit dem Azure Machine Learning SDK. Machen Sie sich anhand des [Tutorials](tutorial-auto-train-models.md) oder der [Anleitung](how-to-configure-auto-train.md) mit den grundlegenden Entwurfsmustern für automatisierte ML-Experimente vertraut.
 
 * Ein grundlegendes Verständnis von Kreuzvalidierung und Datenaufteilung für Training/Validierung als ML-Konzepte. Eine allgemeine Erklärung finden Sie unter
 
@@ -47,7 +47,7 @@ Für diesen Artikel ist Folgendes erforderlich:
 
 ## <a name="default--data-splits-and-cross-validation"></a>Standard-Datenaufteilung und Kreuzvalidierung
 
-Verwenden Sie das [AutoMLConfig](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)-Objekt zum Definieren Ihrer Experiment- und Trainingseinstellungen. Beachten Sie im folgenden Codeausschnitt, dass nur die erforderlichen Parameter definiert sind, d. h., die Parameter für `n_cross_validation` oder `validation_ data` sind **nicht** enthalten.
+Verwenden Sie das [AutoMLConfig](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true)-Objekt zum Definieren Ihrer Experiment- und Trainingseinstellungen. Beachten Sie im folgenden Codeausschnitt, dass nur die erforderlichen Parameter definiert sind, d. h., die Parameter für `n_cross_validation` oder `validation_ data` sind **nicht** enthalten.
 
 ```python
 data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/creditcard.csv"

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 77573ac4240eeded1f803d88f218aaf4d4c5a929
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 84a1e2edcbe9e9da93a158ebc11e7bf638dae100
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636125"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462733"
 ---
 # <a name="speech-service-for-telephony-data"></a>Speech-Dienste für Telefoniedaten
 
@@ -60,7 +60,7 @@ Es ist nicht ungewöhnlich, dass 35 % eines Supportanrufs aus sogenannten Sprech
 
 ### <a name="translation"></a>Sprachübersetzung
 
-Einige Unternehmen experimentieren mit der Bereitstellung übersetzter Transkripte von Supportanrufen in Fremdsprachen, damit Bereitstellungsmanager die Erfahrungen der Kunden weltweit verstehen können. Unsere [Übersetzungsfunktionen](translation.md) sind unübertroffen. Wir können Audio in Audio oder Audio in Text für eine große Anzahl von Gebietsschemas übersetzen.
+Einige Unternehmen experimentieren mit der Bereitstellung übersetzter Transkripte von Supportanrufen in Fremdsprachen, damit Bereitstellungsmanager die Erfahrungen der Kunden weltweit verstehen können. Unsere [Übersetzungsfunktionen](/azure/cognitive-services/speech-service/speech-translation) sind unübertroffen. Wir können Audio in Audio oder Audio in Text für eine große Anzahl von Gebietsschemas übersetzen.
 
 ### <a name="text-to-speech"></a>Text-zu-Sprache
 

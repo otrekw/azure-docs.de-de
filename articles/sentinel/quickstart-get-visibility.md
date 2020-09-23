@@ -8,14 +8,14 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
-ms.date: 09/23/2019
+ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 83f83922b3bed19e98566002cbf9ad084ba66cb9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fe2a632901b32993d46e723ab73fce045bfa9f84
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496212"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889143"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>Schnellstart: Erste Schritte mit Azure Sentinel
 
@@ -34,7 +34,7 @@ Bevor Sie die Vorgänge in Ihrer Umgebung visualisieren und analysieren, sollten
 
 - Auf der Symbolleiste am oberen Rand des Fensters werden die Anzahl von Ereignissen im ausgewählten Zeitraum und ein Vergleich mit den vorherigen 24 Stunden angezeigt. Der Symbolleiste können Sie entnehmen, welche Warnungen für diese Ereignisse ausgelöst wurden (die kleine Zahl stellt die Veränderung in den letzten 24 Stunden dar) und wie viele dieser Ereignisse offen, in Bearbeitung und geschlossen sind. Vergewissern Sie sich in dieser Ansicht, dass keine deutliche Zu- oder Abnahme der Anzahl von Ereignissen vorliegt. Im Fall einer Abnahme meldet eine Verbindung möglicherweise keine Daten mehr an Azure Sentinel. Eine Zunahme kann ein Anzeichen für eine verdächtige Aktivität sein. Überprüfen Sie, ob neue Warnungen vorhanden sind.
 
-   ![Azure Sentinel-Trichter](./media/qs-get-visibility/funnel.png)
+   ![Azure Sentinel-Leistungsindikatoren](./media/qs-get-visibility/funnel.png)
 
 Der Hauptteil der Übersichtsseite bietet auf einen Blick Aufschluss über den Sicherheitsstatus Ihres Arbeitsbereichs:
 
@@ -42,14 +42,13 @@ Der Hauptteil der Übersichtsseite bietet auf einen Blick Aufschluss über den S
 
 - **Potential malicious events** (Potenziell schädliche Ereignisse): Wenn Datenverkehr aus bekanntermaßen schädlichen Quellen erkannt wird, zeigt Azure Sentinel Warnungen auf der Karte an. Orange steht für eingehenden Datenverkehr: Jemand versucht, über eine bekanntermaßen schädliche IP-Adresse auf Ihre Organisation zuzugreifen. Wenn ausgehende Aktivität (rot) angezeigt wird, bedeutet dies, dass Daten aus Ihrem Netzwerk außerhalb Ihrer Organisation zu einer bekanntermaßen schädlichen IP-Adresse gestreamt werden.
 
-   ![Azure Sentinel-Karte](./media/qs-get-visibility/map.png)
+   ![Karte mit schädlichem Datenverkehr](./media/qs-get-visibility/map.png)
 
-
-- **Recent incidents** (Aktuelle Incidents): Hier können Sie Ihre aktuellen Incidents, deren Schweregrad und die Anzahl von Warnungen im Zusammenhang mit dem Incident einsehen. Wenn Sie eine plötzliche Spitze bei einem bestimmten Warnungstyp feststellen, kann dies auf einen aktiven Angriff hinweisen. Bei einem plötzlichen Spitzenwert von 20 Pass-the-Hash-Ereignissen von Azure ATP ist es beispielsweise möglich, dass gerade ein Angriffsversuch stattfindet.
+- **Recent incidents** (Aktuelle Incidents): Hier können Sie Ihre aktuellen Incidents, deren Schweregrad und die Anzahl von Warnungen im Zusammenhang mit dem Incident einsehen. Wenn Sie eine plötzliche Spitze bei einem bestimmten Warnungstyp feststellen, kann dies auf einen aktiven Angriff hinweisen. Bei einem plötzlichen Spitzenwert von 20 Pass-the-Hash-Ereignissen in Microsoft Defender for Identity (ehemals Azure ATP) ist es beispielsweise möglich, dass gerade ein Angriffsversuch stattfindet.
 
 - **Data source anomalies** (Datenquellenanomalien): Die Datenanalysten von Microsoft haben Modelle erstellt, die die Daten aus Ihren Datenquellen ständig auf Anomalien durchsuchen. Wenn keine Anomalien vorliegen, wird nichts angezeigt. Wenn Anomalien erkannt werden, sollten Sie sie genau untersuchen, um herauszufinden, was passiert ist. Klicken Sie beispielsweise auf die Spitze in der Azure-Aktivität. Sie können auf **Diagramm** klicken, um zu überprüfen, wann die Spitze aufgetreten ist, und anschließend zum Ermitteln der Ursache nach Aktivitäten in diesem Zeitraum filtern.
 
-   ![Azure Sentinel-Karte](./media/qs-get-visibility/anomolies.png)
+   ![Anormale Datenquellen](./media/qs-get-visibility/anomolies.png)
 
 ## <a name="use-built-in-workbooks"></a>Verwenden integrierter Arbeitsmappen<a name="dashboards"></a>
 
@@ -67,7 +66,7 @@ Integrierte Arbeitsmappen stellen integrierte Daten aus Ihren verbundenen Datenq
       ![Palo Alto-Dashboard](./media/qs-get-visibility/palo-alto-week-query.png)
 
 
-Sie können die Arbeitsmappen anpassen, indem Sie die ![Schaltfläche](./media/qs-get-visibility/edit-query-button.png) der Hauptabfrage bearbeiten. Sie können auf die Schaltfläche ![Schaltfläche](./media/qs-get-visibility/go-to-la-button.png) klicken, um [zu Log Analytics zu wechseln und die Abfrage dort zu bearbeiten](../azure-monitor/log-query/get-started-portal.md). Sie können auch auf die Schaltfläche mit den Auslassungspunkten (...) klicken und **Kacheldaten anpassen** auswählen, um den Filter für die Hauptzeit zu bearbeiten oder bestimmte Kacheln aus dem Dashboard zu entfernen.
+Sie können die Arbeitsmappen jeweils anpassen, indem Sie die Hauptabfrage über die ![Schaltfläche „Abfrage bearbeiten“](./media/qs-get-visibility/edit-query-button.png) bearbeiten. Sie können auf die Schaltfläche ![Schaltfläche „Log Analytics“](./media/qs-get-visibility/go-to-la-button.png) klicken, um [zu Log Analytics zu wechseln und die Abfrage dort zu bearbeiten](../azure-monitor/log-query/get-started-portal.md). Sie können auch auf die Schaltfläche mit den Auslassungspunkten (…) klicken und dann auf **Kacheldaten anpassen**, um den Filter für die Hauptzeit zu bearbeiten oder bestimmte Kacheln aus der Arbeitsmappe zu entfernen.
 
 Weitere Informationen zum Verwenden von Abfragen finden Sie unter [Tutorial: Visualisieren von Daten in Log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md).
 

@@ -1,5 +1,5 @@
 ---
-title: Erstellen von Computeressourcen mit dem Python-SDK
+title: Erstellen von Computeressourcen für Training und Bereitstellung (Python)
 titleSuffix: Azure Machine Learning
 description: Verwenden des Python-SDK für Azure Machine Learning zum Erstellen von Computeressourcen für Training und Bereitstellung (Computeziele) für maschinelles Lernen
 services: machine-learning
@@ -11,16 +11,14 @@ ms.subservice: core
 ms.date: 07/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 96aa6839fe51bb8a8c26f411c1a1f9df6b8c5a7f
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: ac440db4c1dbddd317743e2d681a62251624d9bd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147263"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898133"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-with-python-sdk"></a>Erstellen von Computezielen für das Training und die Bereitstellung von Modellen mit dem Python-SDK
-
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In diesem Artikel erfahren Sie, wie Sie mit dem Python-SDK für Azure Machine Learning Computeziele erstellen und verwalten. Sie können Computeziele auch mit folgenden Komponenten erstellen und verwalten:
 * [Azure Machine Learning Studio](how-to-create-attach-compute-studio.md), 
@@ -31,8 +29,16 @@ In diesem Artikel erfahren Sie, wie Sie mit dem Python-SDK für Azure Machine Le
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
-* über das [Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
+* über das [Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
 * Ein [Azure Machine Learning-Arbeitsbereich](how-to-manage-workspace.md).
+
+## <a name="limitations"></a>Einschränkungen
+
+* **Erstellen Sie nicht mehrere gleichzeitige Verknüpfungen für die gleichen Compute-Ressourcen** in Ihrem Arbeitsbereich. Verknüpfen Sie beispielsweise einen Azure Kubernetes Service-Clusters nicht unter zwei verschiedenen Namen mit einem Arbeitsbereich. Jede neue Verknüpfung führt zu einem Fehler der vorherigen vorhandenen Verknüpfungen.
+
+    Falls Sie ein Computeziel erneut verknüpfen möchten (etwa zum Ändern der TLS-Einstellung oder einer anderen Clusterkonfigurationseinstellung), müssen Sie zunächst die vorhandene Verknüpfung entfernen.
+
+* Einige der in diesem Dokument aufgeführten Szenarien sind als __Vorschau__ gekennzeichnet. Vorschaufunktionen werden ohne Vereinbarung zum Servicelevel bereitgestellt und sind nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="whats-a-compute-target"></a>Was ist ein Computeziel?
 
@@ -55,16 +61,33 @@ Konfigurieren Sie die Computeziele anhand der folgenden Abschnitte:
 * [Virtuelle Remotecomputer](#vm)
 * [Azure HDInsight](#hdinsight)
 
+## <a name="compute-targets-for-inference"></a>Computeziele für Rückschlüsse
+
+Beim Durchführen von Rückschlüssen erstellt Azure Machine Learning einen Docker-Container, der das Modell und zugehörige Ressourcen hostet, die für die Verwendung erforderlich sind. Dieser Container wird dann in einem der folgenden Bereitstellungsszenarien verwendet:
+
+* Als __Webdienst__, der für Echtzeitrückschlüsse verwendet wird. Webdienstbereitstellungen verwenden eines der folgenden Computeziele:
+
+    * [Lokaler Computer](#local)
+    * [Azure Machine Learning-Computeinstanz](#instance)
+    * [Azure Container Instances](#aci)
+    * [Azure Kubernetes Services](how-to-create-attach-kubernetes.md)
+    * Azure Functions (Vorschau). Bei der Bereitstellung in Azure Functions wird nur Azure Machine Learning zum Erstellen des Docker-Containers vorausgesetzt. Anschließend erfolgt die Bereitstellung über Azure Functions. Weitere Informationen finden Sie unter [Bereitstellen eines Machine Learning-Modells in Azure Functions (Vorschauversion)](how-to-deploy-functions.md).
+
+* Als Endpunkt für __Batchrückschlüsse__, der zur regelmäßigen Verarbeitung von Datenbatches verwendet wird. Batchrückschlüsse verwenden [Azure Machine Learning-Computecluster](#amlcompute).
+
+* Auf ein __IoT-Gerät__ (Vorschau). Bei der Bereitstellung auf einem IoT-Gerät wird nur Azure Machine Learning zum Erstellen des Docker-Containers vorausgesetzt. Anschließend erfolgt die Bereitstellung über Azure IoT Edge. Weitere Informationen finden Sie unter [Deploy as an IoT Edge module (preview)](/azure/iot-edge/tutorial-deploy-machine-learning) (Bereitstellen als IoT Edge-Modul (Vorschau)).
 
 ## <a name="local-computer"></a><a id="local"></a>Lokaler Computer
 
-Wenn Sie Ihren lokalen Computer für das Training verwenden, ist es nicht erforderlich, ein Computeziel zu erstellen.  [Übermitteln Sie einfach die Trainingsausführung](how-to-set-up-training-targets.md) von Ihrem lokalen Computer aus.
+Wenn Sie Ihren lokalen Computer für das **Training** verwenden, ist es nicht erforderlich, ein Computeziel zu erstellen.  [Übermitteln Sie einfach die Trainingsausführung](how-to-set-up-training-targets.md) von Ihrem lokalen Computer aus.
+
+Wenn Sie Ihren lokalen Computer für **Rückschlüsse** verwenden, muss Docker installiert sein. Zum Ausführen der Bereitstellung definieren Sie den vom Webdienst verwendeten Port in [LocalWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#deploy-configuration-port-none-). Folgen Sie dann dem normalen Bereitstellungsprozess, wie in [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md) beschrieben.
 
 ## <a name="azure-machine-learning-compute-cluster"></a><a id="amlcompute"></a>Azure Machine Learning-Computecluster
 
 Ein Azure Machine Learning-Computecluster ist eine verwaltete Computeinfrastruktur, die Ihnen das einfache Erstellen von Computezielen mit einem oder mehreren Knoten ermöglicht. Das Computeziel wird in Ihrer Arbeitsbereichsregion als Ressource erstellt, die für andere Benutzer im Arbeitsbereich freigegeben werden kann. Es wird automatisch zentral hochskaliert, wenn ein Auftrag übermittelt wird, und kann in einem virtuellen Azure-Netzwerk platziert werden kann. Das Computeziel wird in einer Containerumgebung ausgeführt und packt die Abhängigkeiten Ihres Modells in einem [Docker-Container](https://www.docker.com/why-docker).
 
-Sie können Azure Machine Learning Compute verwenden, um den Trainingsprozess auf einen Cluster von CPU- oder GPU-Computeknoten in der Cloud zu verteilen. Weitere Informationen zu den VM-Größen mit GPUs finden Sie unter [Für GPU optimierte VM-Größen](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu). 
+Sie können Azure Machine Learning Compute verwenden, um einen Trainings- oder Batchrückschlussprozess in einem Cluster von CPU- oder GPU-Computeknoten in der Cloud zu verteilen. Weitere Informationen zu den VM-Größen mit GPUs finden Sie unter [Für GPU optimierte VM-Größen](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu). 
 
 Bei Azure Machine Learning Compute gelten Standardgrenzwerte, beispielsweise für die Anzahl von Kernen, die zugeordnet werden können. Weitere Informationen finden Sie unter [Verwalten und Anfordern von Kontingenten für Azure-Ressourcen](how-to-manage-quotas.md).
 
@@ -87,7 +110,7 @@ Azure Machine Learning Compute kann in mehreren Ausführungen wiederverwendet we
 
     Sie können auch eine persistente Azure Machine Learning Compute-Ressource [ in Azure Machine Learning Studio](how-to-create-attach-compute-studio.md#portal-create) erstellen und anfügen.
 
-Nachdem Sie nun das Computeziel angefügt haben, besteht der nächste Schritt im [Übermitteln der Trainingsausführung](how-to-set-up-training-targets.md).
+Nachdem Sie nun das Computeziel angefügt haben, besteht der nächste Schritt im [Übermitteln der Trainingsausführung](how-to-set-up-training-targets.md) oder im [Ausführen eines Batchrückschlusses](how-to-use-parallel-run-step.md).
 
  ### <a name="lower-your-compute-cluster-cost"></a><a id="low-pri-vm"></a> Senken Ihrer Computeclusterkosten
 
@@ -201,8 +224,15 @@ Sie können Aufträge sicher in einer [virtuellen Netzwerkumgebung](how-to-enabl
         instance.wait_for_completion(show_output=True)
     ```
 
-Nachdem Sie nun das Computeziel angefügt und die Ausführung konfiguriert haben, besteht der nächste Schritt im [Übermitteln der Trainingsausführung](how-to-set-up-training-targets.md).
+Nachdem Sie nun das Computeziel angefügt und die Ausführung konfiguriert haben, besteht der nächste Schritt im [Übermitteln der Trainingsausführung](how-to-set-up-training-targets.md) oder im [Bereitstellen eines Modells für Rückschlüsse](how-to-deploy-local-container-notebook-vm.md).
 
+## <a name="azure-container-instance"></a><a id="aci"></a>Azure Container Instances
+
+Azure Container Instances (ACI) werden dynamisch erstellt, wenn Sie ein Modell bereitstellen. Es gibt keine andere Möglichkeit, ACI zu erstellen und an Ihren Arbeitsbereich anzufügen. Weitere Informationen finden Sie unter [Bereitstellen eines Modells in Azure Container Instances](how-to-deploy-azure-container-instance.md).
+
+## <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
+
+Azure Kubernetes Service (AKS) unterstützt bei Verwendung mit Azure Machine Learning eine Vielzahl von Konfigurationsoptionen. Weitere Informationen finden Sie unter [How to create and attach Azure Kubernetes Service](how-to-create-attach-kubernetes.md) (Erstellen und Anfügen des Azure Kubernetes Service).
 
 ## <a name="remote-virtual-machines"></a><a id="vm"></a>Virtuelle Remotecomputer
 
@@ -240,6 +270,9 @@ Verwenden Sie in diesem Szenario Azure Data Science Virtual Machine (DSVM) als v
    ```
 
    Sie können die DSVM auch [über Azure Machine Learning Studio](how-to-create-attach-compute-studio.md#attached-compute) an Ihren Arbeitsbereich anfügen.
+
+    > [!WARNING]
+    > Erstellen Sie nicht mehrere gleichzeitige Verknüpfungen für die gleichen DSVM in Ihrem Arbeitsbereich. Jede neue Verknüpfung führt zu einem Fehler der vorherigen vorhandenen Verknüpfungen.
 
 1. **Konfigurieren**: Erstellen Sie eine Ausführungskonfiguration für das DSVM-Computeziel. Zum Erstellen und Konfigurieren der Trainingsumgebung in der DSVM werden Docker und Conda verwendet.
 
@@ -285,6 +318,9 @@ Azure HDInsight ist eine beliebte Plattform für Big Data-Analysen. Die Plattfor
    ```
 
    Sie können den HDInsight-Cluster auch [über Azure Machine Learning Studio](how-to-create-attach-compute-studio.md#attached-compute) an Ihren Arbeitsbereich anfügen.
+
+    > [!WARNING]
+    > Erstellen Sie nicht mehrere gleichzeitige Verknüpfungen für den gleichen HDInsight in Ihrem Arbeitsbereich. Jede neue Verknüpfung führt zu einem Fehler der vorherigen vorhandenen Verknüpfungen.
 
 1. **Konfigurieren**: Erstellen Sie eine Ausführungskonfiguration für das HDI-Computeziel. 
 
@@ -332,6 +368,9 @@ except ComputeTargetException:
 
 print("Using Batch compute:{}".format(batch_compute.cluster_resource_id))
 ```
+
+> [!WARNING]
+> Erstellen Sie nicht mehrere gleichzeitige Verknüpfungen für den gleichen Azure Batch in Ihrem Arbeitsbereich. Jede neue Verknüpfung führt zu einem Fehler der vorherigen vorhandenen Verknüpfungen.
 
 ### <a name="azure-databricks"></a><a id="databricks"></a>Azure Databricks
 
@@ -386,6 +425,9 @@ except ComputeTargetException:
 
 Ein ausführlicheres Beispiel finden Sie in einem [Beispiel-Notebook](https://aka.ms/pl-databricks) auf GitHub.
 
+> [!WARNING]
+> Erstellen Sie nicht mehrere gleichzeitige Verknüpfungen für den gleichen Azure Databricks in Ihrem Arbeitsbereich. Jede neue Verknüpfung führt zu einem Fehler der vorherigen vorhandenen Verknüpfungen.
+
 ### <a name="azure-data-lake-analytics"></a><a id="adla"></a>Azure Data Lake Analytics
 
 Azure Data Lake Analytics ist eine umfangreiche Datenanalyseplattform in der Azure-Cloud. Sie kann mit einer Azure Machine Learning-Pipeline als Computeziel verwendet werden.
@@ -436,8 +478,11 @@ except ComputeTargetException:
 
 Ein ausführlicheres Beispiel finden Sie in einem [Beispiel-Notebook](https://aka.ms/pl-adla) auf GitHub.
 
+> [!WARNING]
+> Erstellen Sie nicht mehrere gleichzeitige Verknüpfungen für das gleiche ADLA in Ihrem Arbeitsbereich. Jede neue Verknüpfung führt zu einem Fehler der vorherigen vorhandenen Verknüpfungen.
+
 > [!TIP]
-> Azure Machine Learning-Pipelines können nur ausgeführt werden, wenn die Daten im Standarddatenspeicher des Data Lake Analytics-Kontos gespeichert werden. Wenn die Daten, die Sie verwenden möchten, in einem nicht standardmäßigen Speicher gespeichert sind, können Sie die Daten mithilfe von [`DataTransferStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) vor dem Trainieren kopieren.
+> Azure Machine Learning-Pipelines können nur ausgeführt werden, wenn die Daten im Standarddatenspeicher des Data Lake Analytics-Kontos gespeichert werden. Wenn die Daten, die Sie verwenden möchten, in einem nicht standardmäßigen Speicher gespeichert sind, können Sie die Daten mithilfe von [`DataTransferStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py&preserve-view=true) vor dem Trainieren kopieren.
 
 ## <a name="notebook-examples"></a>Notebook-Beispiele
 

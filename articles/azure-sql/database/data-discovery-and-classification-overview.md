@@ -11,14 +11,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 04/28/2020
+ms.date: 09/21/2020
 tags: azure-synapse
-ms.openlocfilehash: 3f1f284255d1c0e77779c175951eaf33d3e56067
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6f324b1b0b5ed1882050684e7ac1c8ec4ea573dc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87004102"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886505"
 ---
 # <a name="data-discovery--classification"></a>Datenermittlung und -klassifizierung
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -30,8 +30,6 @@ Zu den vertraulichsten Daten gehören Geschäfts-, Finanz-, Gesundheits- und per
 - Unterstützung bei der Einhaltung von Standards für den Datenschutz und von gesetzlichen Bestimmungen
 - Verschiedene Sicherheitsszenarien, z.B. Überwachung und Warnungen bei abweichendem Zugriff auf sensible Daten
 - Steuern des Zugriffs auf und Härten der Sicherheit von Datenbanken mit vertraulichen Daten
-
-Die Datenermittlung und -klassifizierung ist Teil des Angebots [Advanced Data Security](advanced-data-security.md). Hierbei handelt es sich um ein vereinheitlichtes Paket für erweiterte Azure SQL-Sicherheitsfunktionen. Sie finden die Datenermittlung und -klassifizierung über den zentralen Abschnitt **SQL – Advanced Data Security** im Azure-Portal. Dort können Sie diesen Dienst auch verwalten.
 
 > [!NOTE]
 > Informationen zu lokalen SQL Server-Instanzen finden Sie unter [SQL-Datenermittlung und -klassifizierung](https://go.microsoft.com/fwlink/?linkid=866999).
@@ -79,31 +77,23 @@ Nachdem die organisationsweite Richtlinie definiert wurde, können Sie die Klass
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
 
-2. Navigieren Sie im Bereich von Azure SQL-Datenbank unter der Überschrift **Sicherheit** zu **Advanced Data Security**. Wählen Sie **Advanced Data Security** und dann die Karte **Datenermittlung und -klassifizierung** aus.
+1. Navigieren Sie im Bereich von Azure SQL-Datenbank unter der Überschrift „Sicherheit“ zu **Datenermittlung und -klassifizierung**. Die Registerkarte „Übersicht“ enthält eine Zusammenfassung des aktuellen Klassifizierungsstatus der Datenbank. Die Zusammenfassung enthält eine ausführliche Liste aller klassifizierten Spalten, die Sie auch filtern können, um nur bestimmte Schemateile, Informationstypen und Bezeichnungen anzuzeigen. Wenn Sie noch keine Spalten klassifiziert haben, [fahren Sie mit Schritt 4 fort](#step-4).
 
-   ![Bereich „Advanced Data Security“ im Azure-Portal](./media/data-discovery-and-classification-overview/data_classification.png)
+1. Um einen Bericht im Excel-Format herunterzuladen, wählen Sie oben im Fenster im Menü die Option **Exportieren** aus.
 
-3. Die Registerkarte **Übersicht** auf der Seite **Datenermittlung und -klassifizierung** enthält eine Zusammenfassung des aktuellen Klassifizierungsstatus der Datenbank. Die Zusammenfassung enthält eine ausführliche Liste aller klassifizierten Spalten, die Sie auch filtern können, um nur bestimmte Schemateile, Informationstypen und Bezeichnungen anzuzeigen. Wenn Sie noch keine Spalten klassifiziert haben, [fahren Sie mit Schritt 5 fort](#step-5).
-
-   ![Zusammenfassung des aktuellen Klassifizierungsstatus](./media/data-discovery-and-classification-overview/2_data_classification_overview_dashboard.png)
-
-4. Um einen Bericht im Excel-Format herunterzuladen, wählen Sie oben im Fenster im Menü die Option **Exportieren** aus.
-
-5. <a id="step-5"></a>Um mit der Klassifizierung Ihrer Daten zu beginnen, wählen Sie die Registerkarte **Klassifizierung** auf der Seite **Datenermittlung und -klassifizierung** aus.
+1. <a id="step-4"></a>Um mit der Klassifizierung Ihrer Daten zu beginnen, wählen Sie die Registerkarte **Klassifizierung** auf der Seite **Datenermittlung und -klassifizierung** aus.
 
     Die Klassifizierungs-Engine scannt Ihre Datenbank nach Spalten, die potenziell vertrauliche Daten enthalten, und erstellt eine Liste der empfohlenen Spaltenklassifizierungen.
 
-6. Anzeigen und Anwenden von Klassifizierungsempfehlungen:
+1. Anzeigen und Anwenden von Klassifizierungsempfehlungen:
 
    - Um die Liste der empfohlenen Spaltenklassifizierungen anzuzeigen, wählen Sie unten im Bereich den Empfehlungsbereich aus.
 
    - Zum Akzeptieren einer Empfehlung für eine bestimmte Spalte aktivieren Sie das Kontrollkästchen in der linken Spalte der entsprechenden Zeile. Sie können auch alle Empfehlungen als akzeptiert markieren, indem Sie das Kontrollkästchen ganz links im Tabellenkopf der Empfehlungen aktivieren.
 
-       ![Überprüfen und Auswählen in der Liste der Klassifizierungsempfehlungen](./media/data-discovery-and-classification-overview/6_data_classification_recommendations_list.png)
-
    - Wählen Sie zum Anwenden der ausgewählten Empfehlungen die Option **Ausgewählte Empfehlungen annehmen** aus.
 
-7. Alternativ oder zusätzlich zur empfehlungsbasierten Klassifizierung können Sie Spalten auch manuell klassifizieren:
+1. Alternativ oder zusätzlich zur empfehlungsbasierten Klassifizierung können Sie Spalten auch manuell klassifizieren:
 
    1. Wählen Sie im oberen Menü des Bereichs **Klassifizierung hinzufügen** aus.
 
@@ -111,9 +101,7 @@ Nachdem die organisationsweite Richtlinie definiert wurde, können Sie die Klass
 
    1. Wählen Sie dann am unteren Rand des Kontextfensters die Option **Klassifizierung hinzufügen** aus.
 
-      ![Auswählen einer zu klassifizierenden Spalte](./media/data-discovery-and-classification-overview/9_data_classification_manual_classification.png)
-
-8. Wählen Sie im oberen Menü des Fensters **Speichern** aus, um Ihre Klassifizierung abzuschließen und die Datenbankspalten dauerhaft mit den neuen Klassifizierungsmetadaten (Tags) zu bezeichnen.
+1. Wählen Sie im oberen Menü des Fensters **Speichern** aus, um Ihre Klassifizierung abzuschließen und die Datenbankspalten dauerhaft mit den neuen Klassifizierungsmetadaten (Tags) zu bezeichnen.
 
 ## <a name="audit-access-to-sensitive-data"></a><a id="audit-sensitive-data"></a>Überwachen des Zugriffs auf vertrauliche Daten
 
@@ -191,6 +179,5 @@ Sie können die REST-API verwenden, um Klassifizierungen und Empfehlungen progra
 
 ## <a name="next-steps"></a><a id="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über [Advanced Data Security](advanced-data-security.md).
 - Erwägen Sie, die [Azure SQL-Überwachung](../../azure-sql/database/auditing-overview.md) für die Überwachung und Überprüfung des Zugriffs auf Ihre klassifizierten vertraulichen Daten zu konfigurieren.
 - Eine Präsentation mit Informationen zur Datenermittlung und -klassifizierung finden Sie unter [Ermitteln, Klassifizieren, Bezeichnen und Schützen von SQL-Daten | Data Exposed](https://www.youtube.com/watch?v=itVi9bkJUNc).

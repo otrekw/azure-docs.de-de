@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: sstein, carlrab
-ms.date: 03/17/2020
-ms.openlocfilehash: fe779ebf8bb041fb90b8eb38a9469a783127ffd3
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.reviewer: sstein
+ms.date: 09/21/2020
+ms.openlocfilehash: 2e3bf8251cfb5da20cade65831ef34dbc6709b1b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661417"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887389"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -316,7 +316,7 @@ Aus diesem Grund wird dringend empfohlen, keine statische IP-Adresse zu verwende
 
 **Verfügt Managed Instance über einen öffentlichen Endpunkt?**
 
-Ja. Managed Instanz verfügt über einen öffentlichen Endpunkt, der standardmäßig nur für die Dienstverwaltung verwendet wird. Ein Kunde kann diesen jedoch auch für den Datenzugriff aktivieren. Weitere Informationen finden Sie unter [Sicheres Verwenden von Azure SQL Managed Instance mit öffentlichen Endpunkten](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-securely). Wechseln Sie zum Konfigurieren des öffentlichen Endpunkts zu [Konfigurieren eines öffentlichen Endpunkts in Azure SQL Managed Instance](public-endpoint-configure.md).
+Ja. Managed Instance verfügt über einen öffentlichen Endpunkt, der standardmäßig nur für die Dienstverwaltung verwendet wird. Ein Kunde kann diesen jedoch auch für den Datenzugriff aktivieren. Weitere Informationen finden Sie unter [Sicheres Verwenden von Azure SQL Managed Instance mit öffentlichen Endpunkten](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-securely). Wechseln Sie zum Konfigurieren des öffentlichen Endpunkts zu [Konfigurieren eines öffentlichen Endpunkts in Azure SQL Managed Instance](public-endpoint-configure.md).
 
 **Wie wird der Zugriff auf den öffentlichen Endpunkt von Managed Instance gesteuert?**
 
@@ -326,7 +326,7 @@ Verwaltungs- und Bereitstellungsdienste stellen über einen [Verwaltungsendpunkt
 
 **Kann ich den öffentlichen Endpunkt verwenden, um auf die Daten in Managed Instance-Datenbanken zuzugreifen?**
 
-Ja. Der Kunde muss den Datenzugriff für öffentliche Endpunkte über das [Portal](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal) / [PowerShell](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-using-powershell) / ARM aktivieren und die NSG so konfigurieren, dass der Zugriff auf den Datenport (Portnummer 3342) gesperrt wird. Weitere Informationen finden Sie unter [Konfigurieren eines öffentlichen Endpunkts in Azure SQL Managed Instance](public-endpoint-configure.md) und [Sicheres Verwenden von Azure SQL Managed Instance mit öffentlichen Endpunkten](public-endpoint-overview.md). 
+Ja. Der Kunde muss den Datenzugriff für öffentliche Endpunkte über das [Azure-Portal](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal) / [PowerShell](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-using-powershell)/ARM aktivieren und die NSG so konfigurieren, dass der Zugriff auf den Datenport (Portnummer 3342) gesperrt wird. Weitere Informationen finden Sie unter [Konfigurieren eines öffentlichen Endpunkts in Azure SQL Managed Instance](public-endpoint-configure.md) und [Sicheres Verwenden von Azure SQL Managed Instance mit öffentlichen Endpunkten](public-endpoint-overview.md). 
 
 **Kann ich einen benutzerdefinierten Port für einen oder mehrere SQL-Datenendpunkte angeben?**
 
@@ -350,7 +350,7 @@ Kunden wird empfohlen, zum Mindern von Risiken bei der Datenexfiltration eine Re
 - Greifen Sie auf die Instanz mit einem DBA-Konto mit geringen Rechten zu.
 - Konfigurieren Sie den Zugriff auf die JIT-Jumpbox für das Systemadministratorkonto.
 - Aktivieren Sie [SQL-Überwachung](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine), und integrieren Sie sie in Warnungsmechanismen.
-- Aktivieren Sie die [Bedrohungserkennung](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection) über das [Advanced Data Security](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)-Paket (ADS).
+- Aktivieren Sie [Bedrohungserkennung](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection) in der [Azure Defender für SQL](https://docs.microsoft.com/azure/azure-sql/database/azure-defender-for-sql)-Suite.
 
 ## <a name="dns"></a>DNS
 

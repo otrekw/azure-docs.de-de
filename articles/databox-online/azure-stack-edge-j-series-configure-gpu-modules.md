@@ -1,6 +1,6 @@
 ---
-title: Ausführen eines GPU-Moduls auf einem Microsoft Azure Stack Edge-GPU-Gerät | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie ein Modul auf dem Grafikprozessor (Graphics Processing Unit, GPU) Ihres Azure Stack Edge-Geräts über das Azure-Portal konfigurieren und ausführen.
+title: Ausführen eines GPU-Moduls auf einem Microsoft Azure Stack Edge Pro-GPU-Gerät | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal ein Modul auf dem Grafikprozessor (Graphics Processing Unit, GPU) Ihres Azure Stack Edge Pro-Geräts konfigurieren und ausführen.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,29 +8,29 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 419b8beb866711e80b4366df4398eb248256021b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 8b9f1180639f638e72fdea2f87958628a2e9e86b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266951"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891468"
 ---
-# <a name="configure-and-run-a-module-on-gpu-on-azure-stack-edge-device"></a>Konfigurieren und Ausführen eines Moduls auf der GPU Ihres Azure Stack Edge-Geräts
+# <a name="configure-and-run-a-module-on-gpu-on-azure-stack-edge-pro-device"></a>Konfigurieren und Ausführen eines Moduls auf dem GPU Ihres Azure Stack Edge Pro-Geräts
 
-Ihr Azure Stack Edge-Gerät umfasst eine oder mehrere GPUs. Da GPUs eine Parallelverarbeitung ermöglichen und ein schnelleres Bildrendering bieten als CPUs (Central Processing Unit, Zentralprozessor), werden GPUs häufig für KI-Berechnungen verwendet. Weitere Informationen zur GPU Ihres Azure Stack Edge-Geräts finden Sie in den [technischen Spezifikationen Ihres Azure Stack Edge-Geräts](azure-stack-edge-gpu-technical-specifications-compliance.md).
+Ihr Azure Stack Edge Pro-Gerät enthält einen oder mehrere Grafikprozessoren (GPUs). Da GPUs eine Parallelverarbeitung ermöglichen und ein schnelleres Bildrendering bieten als CPUs (Central Processing Unit, Zentralprozessor), werden GPUs häufig für KI-Berechnungen verwendet. Weitere Informationen zur GPU Ihres Azure Stack Edge Pro-Geräts finden Sie in den [technischen Spezifikationen für Ihr Azure Stack Edge Pro-Gerät](azure-stack-edge-gpu-technical-specifications-compliance.md).
 
-In diesem Artikel wird beschrieben, wie Sie ein Modul auf dem Grafikprozessor (Graphics Processing Unit, GPU) Ihres Azure Stack Edge-Geräts konfigurieren und ausführen. In diesem Artikel wird das öffentlich verfügbare Containermodul **Digits** verwendet, das für Nvidia T4-GPUs geschrieben wurde. Diese Vorgehensweise kann zur Konfiguration beliebiger Module verwendet werden, die von Nvidia für diese GPUs veröffentlicht wurden.
+In diesem Artikel wird beschrieben, wie Sie ein Modul auf dem Grafikprozessor (GPU) Ihres Azure Stack Edge Pro-Geräts konfigurieren und ausführen. In diesem Artikel wird das öffentlich verfügbare Containermodul **Digits** verwendet, das für Nvidia T4-GPUs geschrieben wurde. Diese Vorgehensweise kann zur Konfiguration beliebiger Module verwendet werden, die von Nvidia für diese GPUs veröffentlicht wurden.
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
-1. Sie haben Zugriff auf ein GPU-fähiges Azure Stack Edge-Gerät mit einem Knoten. Dieses Gerät wurde mit einer Ressource in Azure aktiviert.  
+1. Sie haben Zugriff auf ein GPU-fähiges Azure Stack Edge Pro-Gerät mit einem Knoten. Dieses Gerät wurde mit einer Ressource in Azure aktiviert.  
 
 ## <a name="configure-module-to-use-gpu"></a>Konfigurieren eines Moduls für die Verwendung einer GPU
 
-Führen Sie folgende Schritte aus, um ein Modul für die Verwendung der GPU auf Ihrem Azure Stack Edge-Gerät zu konfigurieren.
+Führen Sie die folgenden Schritte aus, um ein Modul für die Verwendung des GPU auf Ihrem Azure Stack Edge Pro-Gerät zu konfigurieren.
 
 1. Navigieren Sie im Azure-Portal zur Ressource, die mit Ihrem Gerät verknüpft ist. 
 
@@ -54,7 +54,7 @@ Führen Sie folgende Schritte aus, um ein Modul für die Verwendung der GPU auf 
 
     ![Konfigurieren eines Moduls für die Verwendung einer GPU 6](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-2.png)
 
-    Auf der rechten Seite sehen Sie das IoT Edge-Gerät, das mit Ihrem Azure Stack Edge-Gerät verknüpft ist. Dies ist das IoT Edge-Gerät, das im vorherigen Schritt beim Erstellen der IoT Hub-Ressource erstellt wurde. 
+    Auf der rechten Seite sehen Sie das IoT Edge-Gerät, das mit Ihrem Azure Stack Edge Pro-Gerät verknüpft ist. Dies ist das IoT Edge-Gerät, das im vorherigen Schritt beim Erstellen der IoT Hub-Ressource erstellt wurde. 
     
 6. Wählen Sie dieses IoT Edge-Gerät aus.
 

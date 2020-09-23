@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: 29934758ab729e0fb888c10b7f834da3d0bf7fb0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dfe01e16b55325db03e4150a33ae5c4aa5822ae2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79456079"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898500"
 ---
 # <a name="one-vs-all-multiclass"></a>One-vs-All-Multiklasse
 
-In diesem Artikel erfahren Sie, wie Sie das Modul „One-vs-All-Multiklasse“ im Azure Machine Learning-Designer (Vorschauversion) verwenden. Das Ziel besteht darin, ein Klassifizierungsmodell zu erstellen, das mehrere Klassen unter Verwendung des *One-vs-All*-Ansatzes vorhersagen kann.
+In diesem Artikel erfahren Sie, wie Sie das Modul „One-vs-All-Multiklasse“ im Azure Machine Learning-Designer verwenden. Das Ziel besteht darin, ein Klassifizierungsmodell zu erstellen, das mehrere Klassen unter Verwendung des *One-vs-All*-Ansatzes vorhersagen kann.
 
 Dieses Modul ist nützlich zum Erstellen von Modellen, mit denen drei oder mehr mögliche Ergebnisse vorhergesagt werden, wenn das Ergebnis von kontinuierlichen oder kategorialen Vorhersagevariablen abhängt. Mit dieser Methode können Sie auch Binärklassifizierungsmethoden für Probleme verwenden, die mehrere Ausgabeklassen erfordern.
 

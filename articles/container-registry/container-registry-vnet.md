@@ -3,12 +3,12 @@ title: Beschränken des Zugriffs mithilfe eines Dienstendpunkts
 description: Hier erfahren Sie, wie Sie den Zugriff auf eine Azure-Containerregistrierung mithilfe eines Dienstendpunkts in einem virtuellen Azure-Netzwerk beschränken. Der Zugriff auf Dienstendpunkte ist ein Feature der Dienstebene „Premium“.
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: a6a0702019cd11f26ea9fcdba8a74bf3e71df94b
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 1fc8d54d677112a9c934f9079e953a7389939bde
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371429"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488665"
 ---
 # <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>Beschränken des Zugriffs auf eine Containerregistrierung mithilfe eines Dienstendpunkts in einem virtuellen Azure-Netzwerk
 
@@ -28,6 +28,8 @@ Ein Endpunkt für den Registrierungsdienst kann im Tarif **Premium** des Contain
 * Als Host für den Zugriff auf eine Containerregistrierung mit einem Dienstendpunkt kann nur ein [Azure Kubernetes Service](../aks/intro-kubernetes.md)-Cluster oder ein [virtueller Azure-Computer](../virtual-machines/linux/overview.md) verwendet werden. *Andere Azure-Dienste (einschließlich Azure Container Instances) werden nicht unterstützt.*
 * Pro Registrierung werden maximal 100 Netzwerkzugriffsregeln unterstützt.
 * Dienstendpunkte für Azure Container Registry werden in der Azure US Government-Cloud oder in der Azure China-Cloud nicht unterstützt.
+
+[!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

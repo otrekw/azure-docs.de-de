@@ -4,14 +4,14 @@ description: Voraussetzungen für die Verwendung von Azure HPC Cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 06/24/2020
+ms.date: 09/03/2020
 ms.author: v-erkel
-ms.openlocfilehash: 1ead2a34b3617093fcbbb63d053f223fc96d698d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7731839d23ec49ddfee814cc6b2f6b3459372f03
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094772"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613992"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Voraussetzungen für Azure HPC Cache
 
@@ -36,9 +36,9 @@ Lesen Sie den Rest dieses Artikels für bestimmte Empfehlungen.
 ## <a name="azure-subscription"></a>Azure-Abonnement
 
 Ein kostenpflichtiges Abonnement wird empfohlen.
-
+<!-- 
 > [!NOTE]
-> Das Azure HPC Cache-Team muss Ihr Abonnement der Zugriffsliste hinzufügen, damit es zum Erstellen einer Cacheinstanz verwendet werden kann. Mithilfe dieser Vorgehensweise wird sichergestellt, dass jeder Kunde gute Reaktionszeiten von seinen Caches erhält. Füllen Sie [dieses Formular](https://aka.ms/onboard-hpc-cache) aus, um Zugriff anzufordern.
+> The Azure HPC Cache team must add your subscription to the access list before it can be used to create a cache instance. This procedure helps ensure that each customer gets high-quality responsiveness from their caches. Fill out [this form](https://aka.ms/onboard-hpc-cache) to request access.  -->
 
 ## <a name="network-infrastructure"></a>Netzwerkinfrastruktur
 

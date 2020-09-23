@@ -1,11 +1,11 @@
-- name: "Dokumentation zu Azure Stack\_Edge und Data\_Box\_Gateway"
+- name: "Dokumentation zu Azure Stack\_Edge Pro und Data\_Box\_Gateway"
   href: /azure/databox-online/
   expanded: true
-- name: Azure Stack Edge with GPU (Vorschau)
+- name: 'Azure Stack Edge Pro: GPU'
   items:
     - name: Übersicht
       items:
-        - name: Was ist Azure Stack Edge with GPU?
+        - name: Was ist Azure Stack Edge Pro mit GPU?
           href: azure-stack-edge-gpu-overview.md
     - name: Tutorials
       items:
@@ -45,7 +45,7 @@
               href: azure-stack-edge-gpu-technical-specifications-compliance.md
             - name: Netzkabelspezifikationen
               href: azure-stack-edge-technical-specifications-power-cords-regional.md
-        - name: Grundlegendes zu Kubernetes
+        - name: Grundlegendes zu Kubernetes (Vorschau)
           items:
             - name: Was ist Kubernetes?
               href: azure-stack-edge-gpu-kubernetes-overview.md
@@ -67,7 +67,7 @@
               href: azure-stack-edge-gpu-deploy-sample-module.md
             - name: GPU-Modul über den Marketplace
               href: azure-stack-edge-gpu-deploy-sample-module-marketplace.md
-        - name: Bereitstellen von Kubernetes-Workloads
+        - name: Bereitstellen von Kubernetes-Workloads (Vorschau)
           items:
             - name: Über kubectl
               items:
@@ -83,13 +83,13 @@
               items:
                 - name: Zustandslose App
                   href: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
-            - name: Über Azure Arc
+            - name: Über Azure Arc (Vorschau)
               items:
                 - name: Aktivieren von Arc im Kubernetes-Cluster
                   href: azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md
                 - name: Bereitstellen einer zustandslosen App über GitOps
                   href: azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md
-        - name: Konfigurieren von Azure Resource Manager
+        - name: Konfigurieren von Azure Resource Manager (Vorschau)
           items:
             - name: Herstellen einer Verbindung über Azure PowerShell
               href: azure-stack-edge-j-series-connect-resource-manager.md
@@ -97,7 +97,7 @@
               href: azure-stack-edge-j-series-set-azure-resource-manager-password.md
             - name: Konfigurieren von TLS-Clienteinstellungen
               href: azure-stack-edge-j-series-configure-tls-settings.md
-        - name: Bereitstellen von virtuellen Computern
+        - name: Bereitstellen von VMs (Vorschau)
           items:
             - name: 'Bereitstellen von VMs: Vorlagen'
               href: azure-stack-edge-gpu-deploy-virtual-machine-templates.md
@@ -136,7 +136,7 @@
         - name: Verwalten des Geräts
           items:
             - name: 'Stromversorgung, Zugriff, Konnektivität'
-              href: azure-stack-edge-manage-access-power-connectivity-mode.md
+              href: azure-stack-edge-gpu-manage-access-power-connectivity-mode.md
             - name: Über PowerShell
               href: azure-stack-edge-gpu-connect-powershell-interface.md
             - name: Anwenden von Updates
@@ -161,7 +161,9 @@
               href: azure-stack-edge-contact-microsoft-support.md
     - name: Versionshinweise
       items:
-        - name: '2008: Versionshinweise'
+        - name: '2009: Allgemeine Verfügbarkeit'
+          href: azure-stack-edge-gpu-2009-release-notes.md
+        - name: '2008: Vorschauversion'
           href: azure-stack-edge-gpu-2008-release-notes.md
     - name: Verweis
       items:
@@ -171,11 +173,11 @@
           href: 'https://docs.microsoft.com/rest/api/databoxedgegateway'
         - name: .NET SDK
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/databoxedge/databoxgateway?view=azure-dotnet'
-- name: Azure Stack Edge with FPGA
+- name: 'Azure Stack Edge Pro: FPGA'
   items:
     - name: Übersicht
       items:
-        - name: Was ist Azure Stack Edge with FPGA?
+        - name: Was ist Azure Stack Edge Pro mit FPGA?
           href: azure-stack-edge-overview.md
     - name: Tutorials
       items:
@@ -259,6 +261,18 @@
           href: 'https://docs.microsoft.com/rest/api/databoxedgegateway'
         - name: .NET SDK
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/databoxedge/databoxgateway?view=azure-dotnet'
+- name: Azure Stack Edge Pro R
+  items:
+    - name: Übersicht
+      items:
+        - name: Was ist Azure Stack Edge Pro R?
+          href: azure-stack-edge-j-series-overview.md
+- name: Azure Stack Edge Mini R
+  items:
+    - name: Übersicht
+      items:
+        - name: Was ist Azure Stack Edge Mini R?
+          href: azure-stack-edge-k-series-overview.md
 - name: Data Box Gateway
   items:
     - name: Übersicht
@@ -323,9 +337,9 @@
           href: data-box-gateway-release-notes.md
 - name: Ressourcen
   items:
-    - name: "Beispiele für ein Azure Stack\_Edge-C#-Modul (.NET)"
+    - name: "Beispiele für ein Azure Stack\_Edge Pro-C#-Modul (.NET)"
       href: 'https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/'
-    - name: "Azure Stack\_Edge-/Data\_Box\_Gateway-Produkt"
+    - name: "Azure Stack\_Edge Pro-/Data\_Box\_Gateway-Produkt"
       href: 'https://azure.microsoft.com/services/storage/databox/edge/'
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/storage/databox/edge/'

@@ -11,15 +11,15 @@ manager: cgronlun
 ms.date: 08/26/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 2e6239bf2e79cd9be950796fbf8b6e6ad3905ad0
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 6b239ab14437083b74f4501eabb588e929152431
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89289952"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897252"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Verwenden von automatisiertem ML in einer Azure Machine Learning-Pipeline in Python
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Mit den Azure Machine Learning-Funktionen für automatisiertes ML können Sie hochleistungsfähige Modelle ermitteln, ohne jeden möglichen Ansatz neu implementieren zu müssen. In Kombination mit Azure Machine Learning-Pipelines können Sie bereitstellbare Workflows erstellen, die im Handumdrehen den besten Algorithmus für Ihre Daten ermitteln. In diesem Artikel erfahren Sie, wie Sie einen Datenaufbereitungsschritt effizient mit einem Schritt für automatisiertes ML verknüpfen. Mithilfe von automatisiertem ML können Sie in kürzester Zeit den Algorithmus ermitteln, der für Ihre Daten am besten geeignet ist. Gleichzeitig schaffen Sie die Grundlage für MLOps und die Operationalisierung des Modelllebenszyklus mit Pipelines.
 
@@ -29,7 +29,7 @@ Mit den Azure Machine Learning-Funktionen für automatisiertes ML können Sie ho
 
 * Ein Azure Machine Learning-Arbeitsbereich. Weitere Informationen finden Sie unter [Erstellen eines Azure Machine Learning-Arbeitsbereichs](how-to-manage-workspace.md).  
 
-* Grundlegende Kenntnisse der Azure-Funktionen für [automatisiertes maschinelles Lernen](concept-automated-ml.md) und [ML-Pipelines](concept-ml-pipelines.md) sowie des SDK.
+* Kenntnisse der Azure-Funktionen für [automatisiertes maschinelles Lernen](concept-automated-ml.md) und [ML-Pipelines](concept-ml-pipelines.md) sowie des SDK.
 
 ## <a name="review-automated-mls-central-classes"></a>Überblick über die wichtigsten Klassen für automatisiertes ML
 
@@ -41,7 +41,7 @@ Die bevorzugte Methode für das anfängliche Verschieben von Daten _in_ eine ML-
 
 
 > [!TIP]
-> Eine verbesserte Oberfläche zum Übergeben von temporären Daten zwischen Pipelineschritten steht in den Public Preview-Klassen, [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py) und [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py), zur Verfügung.  Diese Klassen sind [experimentelle](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#stable-vs-experimental) Previewfunktionen und können jederzeit geändert werden.
+> Eine verbesserte Oberfläche zum Übergeben von temporären Daten zwischen Pipelineschritten steht in den Public Preview-Klassen, [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) und [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py&preserve-view=true), zur Verfügung.  Diese Klassen sind [experimentelle](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#&preserve-view=truestable-vs-experimental) Previewfunktionen und können jederzeit geändert werden.
 
 `AutoMLStep` wird über ein `AutoMLConfig`-Objekt konfiguriert. `AutoMLConfig` ist eine flexible Klasse, wie unter [Konfigurieren automatisierter ML-Experimente in Python](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#configure-your-experiment-settings) erläutert. 
 
@@ -251,7 +251,7 @@ dataprep_step = PythonScriptStep(
 Das `prepped_data_path`-Objekt ist vom Typ `PipelineOutputFileDataset`. Beachten Sie, dass es in den Argumenten `arguments` und `outputs` angegeben ist. Wenn Sie noch einmal zum vorherigen Schritt zurückkehren, sehen Sie, dass der Wert des Arguments `'--output_path'` im Datenaufbereitungcode der Dateipfad ist, in den die Parquet-Datei geschrieben wurde. 
 
 > [!TIP]
-> Eine verbesserte Oberfläche zum Übergeben von Zwischendaten zwischen Pipelineschritten steht in der Public Preview-Klasse [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py) zur Verfügung. Ein Codebeispiel der Verwendung der `OutputFileDatasetConfig`-Klasse finden Sie in der Schrittanleitung [Erstellen einer ML Pipeline mit zwei Schritten](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb).
+> Eine verbesserte Oberfläche zum Übergeben von Zwischendaten zwischen Pipelineschritten steht in der Public Preview-Klasse [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) zur Verfügung. Ein Codebeispiel der Verwendung der `OutputFileDatasetConfig`-Klasse finden Sie in der Schrittanleitung [Erstellen einer ML Pipeline mit zwei Schritten](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb).
 
 ## <a name="train-with-automlstep"></a>Trainieren mit AutoMLStep
 
@@ -270,7 +270,7 @@ prepped_data = prepped_data_path.parse_parquet_files(file_extension=None)
 Über den oben gezeigten Codeausschnitt wird ein hochleistungsfähiges `PipelineOutputTabularDataset` anhand der `PipelineOutputFileDataset`-Ausgabe des Datenaufbereitungsschritts erstellt.
 
 > [!TIP]
-> Die Public Preview-Klasse, [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py), enthält die Methode [read_delimited_files()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py#read-delimited-files-include-path-false--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---partition-format-none--path-glob-none--set-column-types-none-), die ein `OutputFileDatasetConfig` in ein [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py) für die Verwendung in AutoML-Ausführungen konvertiert.
+> Die Public Preview-Klasse, [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true), enthält die Methode [read_delimited_files()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py#&preserve-view=trueread-delimited-files-include-path-false--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---partition-format-none--path-glob-none--set-column-types-none-), die ein `OutputFileDatasetConfig` in ein [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py&preserve-view=true) für die Verwendung in AutoML-Ausführungen konvertiert.
 
 Eine weitere Option ist die Verwendung von `Dataset`-Objekten, die im Arbeitsbereich registriert sind:
 
@@ -368,7 +368,7 @@ Gelegentlich wird `X` für Datenfeatures und `y` für Datenbeschriftungen verwen
 
 ## <a name="register-the-model-generated-by-automated-ml"></a>Registrieren des durch automatisiertes ML generierten Modells 
 
-Im letzten Schritt einer grundlegenden ML-Pipeline wird das erstellte Modell registriert. Wenn das Modell zur Modellregistrierung des Arbeitsbereichs hinzugefügt wird, ist es im Portal verfügbar und kann mit einer Versionsangabe versehen werden. Zum Registrieren des Modells schreiben Sie einen weiteren `PythonScriptStep`, der die `model_data`-Ausgabe von `AutoMLStep` verwendet.
+Im letzten Schritt einer einfachen ML-Pipeline wird das erstellte Modell registriert. Wenn das Modell zur Modellregistrierung des Arbeitsbereichs hinzugefügt wird, ist es im Portal verfügbar und kann mit einer Versionsangabe versehen werden. Zum Registrieren des Modells schreiben Sie einen weiteren `PythonScriptStep`, der die `model_data`-Ausgabe von `AutoMLStep` verwendet.
 
 ### <a name="write-the-code-to-register-the-model"></a>Schreiben des Codes zum Registrieren des Modells
 

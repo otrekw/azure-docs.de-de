@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/01/2020
 ms.author: memildin
-ms.openlocfilehash: 539b663366cd2820eec62a18d1fc2989c6b3c9b0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 77bf0f4cd60ba6e85763334a4d864975945ec2c3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042355"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894777"
 ---
 # <a name="feature-coverage-for-azure-paas-services"></a>Funktionsabdeckung für Azure PaaS-Ressourcen<a name="paas-services"></a>
 
 Die nachfolgende Tabelle zeigt die Verfügbarkeit von Azure Security Center-Funktionen für die unterstützten Azure PaaS-Ressourcen.
 
-|Dienst|Empfehlungen (kostenlos)|Sicherheitswarnungen (Standard)|Sicherheitsrisikobewertung (Standard)|
+|Dienst|Empfehlungen (kostenlos)|Sicherheitswarnungen (Azure Defender)|Sicherheitsrisikobewertung (Azure Defender)|
 |:----|:----:|:----:|:----:|
 |Azure App Service|✔|✔|-|
 |Azure Automation-Konto|✔|-|-|
@@ -41,7 +41,7 @@ Die nachfolgende Tabelle zeigt die Verfügbarkeit von Azure Security Center-Funk
 |Azure Database for PostgreSQL*|✔|✔|-|
 |Azure Event Hubs-Namespace|✔|-|-|
 |Azure Functions-App|✔|-|-|
-|Azure-Schlüsseltresor|✔|✔ *|-|
+|Azure-Schlüsseltresor|✔|✔|-|
 |Azure Kubernetes Service|✔|✔|-|
 |Azure Load Balancer|✔|-|-|
 |Azure Logic Apps|✔|-|-|
@@ -56,4 +56,4 @@ Die nachfolgende Tabelle zeigt die Verfügbarkeit von Azure Security Center-Funk
 
 \* Diese Features werden derzeit in der Vorschau unterstützt.
 
-\*\* Empfehlungen zu Azure Active Directory (Azure AD) sind nur für Standardabonnements verfügbar.
+\*\* Empfehlungen zu Azure Active Directory (Azure AD) sind nur für Abonnements mit aktiviertem Azure Defender verfügbar.

@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/21/2020
-ms.openlocfilehash: 3e11fb151cb8b8c2409a50973029070945867aed
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.date: 09/02/2020
+ms.openlocfilehash: 48d233dee063d8f9049e6e54baa2d744e1b8b058
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89290989"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033454"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Übersicht über Azure Monitor-Agents
 
@@ -79,7 +79,7 @@ Der [Log Analytics-Agent](log-analytics-agent.md) erfasst Überwachungsdaten vom
 Verwenden Sie den Log Analytics-Agent für Folgendes:
 
 * Erfassen von Protokollen und Leistungsdaten von virtuellen oder physischen Computern innerhalb oder außerhalb von Azure 
-* Senden von Überwachungsdaten an einen Log Analytics-Arbeitsbereich, um die von [Azure Monitor-Protokollen](data-platform-logs.md#what-can-you-do-with-azure-monitor-logs) unterstützten Features wie etwa [Protokollabfragen](../log-query/log-query-overview.md) zu nutzen
+* Senden von Überwachungsdaten an einen Log Analytics-Arbeitsbereich, um die von [Azure Monitor-Protokollen](data-platform-logs.md) unterstützten Features wie etwa [Protokollabfragen](../log-query/log-query-overview.md) zu nutzen
 * Verwenden von [Azure Monitor für VMs](../insights/vminsights-overview.md) zur bedarfsgerechten Überwachung Ihrer virtuellen Computer sowie zur Überwachung der zugehörigen Prozesse und Abhängigkeiten von anderen Ressourcen und externen Prozessen  
 * Verwalten der Sicherheit Ihrer virtuellen Computer mit [Azure Security Center](../../security-center/security-center-intro.md) oder [Azure Sentinel](../../sentinel/overview.md)
 * Verwenden von [Azure Automation-Updateverwaltung](../../automation/update-management/update-mgmt-overview.md), [Azure Automation State Configuration](../../automation/automation-dsc-overview.md) oder [Azure Automation für Änderungsnachverfolgung und Bestand](../../automation/change-tracking.md) zur umfassenden Verwaltung Ihrer virtuellen Azure-Computer
@@ -148,7 +148,7 @@ In der folgenden Tabelle sind die Betriebssysteme aufgeführt, die von den Azure
 | Windows Server 2012 R2                                   | X | X | X | X |
 | Windows Server 2012                                      | X | X | X | X |
 | Windows Server 2008 R2                                   |   | X | X | X |
-| Windows 10 Enterprise<br>(einschließlich Multisession) und Pro  |   | X | X | X |
+| Windows 10 Enterprise<br>(einschließlich Multisession) und Pro  | X | X | X | X |
 | Windows 8 Enterprise und Pro                             |   | X | X |   |
 | Windows 7 SP1                                            |   | X | X |   |
 
@@ -171,7 +171,7 @@ In der folgenden Tabelle sind die Betriebssysteme aufgeführt, die von den Azure
 | Oracle Linux 7                                           | X | X |   | X |
 | Oracle Linux 6                                           | X | X |   |   |
 | Oracle Linux 6.4+                                        | X | X |   | X |
-| Red Hat Enterprise Linux Server 8                        | X | X |   |   |
+| Red Hat Enterprise Linux Server 8                        |   | X |   |   |
 | Red Hat Enterprise Linux Server 7                        | X | X | X | X |
 | Red Hat Enterprise Linux Server 6                        | X | X | X |   |
 | Red Hat Enterprise Linux Server 6.7+                     | X | X | X | X |

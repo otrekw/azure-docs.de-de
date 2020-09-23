@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 09/08/2020
 ms.author: memildin
-ms.openlocfilehash: 9beb617ed8626b1fda1c9db98d626ca70ee01755
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 4bad3227e08c0fbe0d280967e45bbef9d477e1b3
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042916"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569134"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>Umsetzen von Empfehlungen in Azure Security Center
 
@@ -69,30 +69,6 @@ So implementieren Sie eine schnelle Problembehebung:
 
 Beim Korrekturvorgang wird ein Vorlagenbereitstellungs- oder REST PATCH-API-Aufruf verwendet, um die Konfiguration auf die Ressource anzuwenden. Diese Vorgänge werden im [Azure-Aktivitätsprotokoll](../azure-resource-manager/management/view-activity-logs.md) protokolliert.
 
-
-## <a name="recommendations-with-quick-fix-remediation"></a>Empfehlungen mit schneller Problembehebung
-
-|Empfehlung|Auswirkung|
-|---|---|
-|Die Überwachung in SQL-Datenbank sollte aktiviert sein.|Durch diese Aktion wird die SQL-Überwachung für diese Server und deren Datenbanken aktiviert. <br>**Hinweis**: <ul><li>Für jede Region der ausgewählten SQL-Datenbank wird ein Speicherkonto zum Speichern von Überwachungsprotokollen erstellt und von allen Servern in dieser Region gemeinsam genutzt.</li><li>Um eine ordnungsgemäße Überwachung sicherzustellen, dürfen Sie die Ressourcengruppe oder die Speicherkonten weder löschen noch umbenennen.</li></ul>|
-|Advanced Data Security sollte für SQL Managed Instance aktiviert sein.|Durch diese Aktion wird SQL Advanced Data Security (ADS) für die ausgewählten SQL Managed Instance-Instanzen aktiviert. <br>**Hinweis**: <ul><li>Für jede Region und Ressourcengruppe der ausgewählten SQL Managed Instance-Instanz wird ein Speicherkonto zum Speichern von Überprüfungsergebnissen erstellt und von allen Instanzen in dieser Region gemeinsam genutzt.</li><li> ADS wird mit 15 US-Dollar pro SQL Managed Instance-Instanz abgerechnet.</li></ul>|
-|Für SQL Managed Instance muss eine Sicherheitsrisikobewertung aktiviert sein.|Durch diese Aktion wird die SQL-Sicherheitsrisikobewertung für die ausgewählten SQL Managed Instance-Instanzen aktiviert. <br>**Hinweis**:<ul><li>Die SQL-Sicherheitsrisikobewertung ist Teil des SQL-Pakets für Advanced Data Security (ADS). Wenn ADS noch nicht aktiviert ist, wird diese Funktion automatisch für die verwaltete Instanz aktiviert.</li><li>Für jede Region und Ressourcengruppe der ausgewählten SQL Managed Instance-Instanzen wird ein Speicherkonto zum Speichern von Überprüfungsergebnissen erstellt und von allen Instanzen in dieser Region gemeinsam genutzt.</li><li>ADS wird mit 15 US-Dollar pro SQL-Datenbank abgerechnet.</li></ul>||
-|Advanced Data Security sollte für Ihre SQL-Datenbank aktiviert sein.|Durch diese Aktion wird Advanced Data Security (ADS) für diese ausgewählten Server und deren Datenbanken aktiviert. <br>**Hinweis**:<ul><li>Für jede Region und Ressourcengruppe der ausgewählten SQL-Datenbank wird ein Speicherkonto zum Speichern von Überprüfungsergebnissen erstellt und von allen Servern in dieser Region gemeinsam genutzt.</li><li>ADS wird mit 15 US-Dollar pro SQL-Datenbank abgerechnet.</li></ul>||
-|Für Ihre SQL-Datenbank sollte die Sicherheitsrisikobewertung aktiviert sein.|Durch diese Aktion wird die SQL-Sicherheitsrisikobewertung für diese ausgewählten verwalteten Server und deren Datenbanken aktiviert. <br>**Hinweis**:<ul><li>Die SQL-Sicherheitsrisikobewertung ist Teil des SQL-Pakets für Advanced Data Security (ADS). Wenn ADS noch nicht aktiviert ist, wird diese Funktion automatisch für die SQL-Datenbank aktiviert.</li><li>Für jede Region und Ressourcengruppe der ausgewählten SQL-Datenbank wird ein Speicherkonto zum Speichern von Überprüfungsergebnissen erstellt und von allen Instanzen in dieser Region gemeinsam genutzt.</li><li>ADS wird mit 15 US-Dollar pro SQL-Datenbank abgerechnet.</li></ul>||
-|Für SQL-Datenbank sollte TDE (Transparent Data Encryption) aktiviert sein|Durch diese Aktion wird Transparent Data Encryption (TDE) von SQL-Datenbank für die ausgewählten Datenbanken aktiviert. <br>**Hinweis**: Standardmäßig werden vom Dienst verwaltete TDE-Schlüssel verwendet.
-|Sichere Übertragung in Speicherkonten sollte aktiviert werden.|Durch diese Aktion wird die Sicherheit des Speicherkontos so aktualisiert, dass nur Anforderungen von sicheren Verbindungen (HTTPS) zugelassen werden. <br>**Hinweis**:<ul><li>Alle Anforderungen, die HTTP verwenden, werden abgelehnt.</li><li>Wenn Sie den Azure Files-Dienst verwenden, schlägt jede Verbindung ohne Verschlüsselung fehl. Dies schließt auch Szenarien ein, in denen SMB 2.1, SMB 3.0 ohne Verschlüsselung und einige Versionen des Linux SMB-Clients verwendet werden. Weitere Informationen</li></ul>|
-|Zugriff auf Webanwendung nur über HTTPS gestatten|Durch diese Aktion wird der gesamte Datenverkehr auf den ausgewählten Ressourcen von HTTP zu HTTPS umgeleitet. <br>**Hinweis**:<ul><li>Ein HTTPS-Endpunkt, der nicht über ein SSL-Zertifikat verfügt, wird im Browser mit einem „Datenschutzfehler“ angezeigt. Daher müssen Benutzer mit einer benutzerdefinierten Domäne sicherstellen, dass sie ein SSL-Zertifikat eingerichtet haben.</li><li>Vergewissern Sie sich, dass die Firewalls für Pakete und Webanwendungen, die den App Service schützen, die Weiterleitung über HTTPS-Sitzungen zulassen.</li></ul>|
-|Zugriff auf Funktions-App nur über HTTPS gestatten|Durch diese Aktion wird der gesamte Datenverkehr auf den ausgewählten Ressourcen von HTTP zu HTTPS umgeleitet. <br>**Hinweis**:<ul><li>Ein HTTPS-Endpunkt, der nicht über ein SSL-Zertifikat verfügt, wird im Browser mit einem „Datenschutzfehler“ angezeigt. Daher müssen Benutzer mit einer benutzerdefinierten Domäne sicherstellen, dass sie ein SSL-Zertifikat eingerichtet haben.</li><li>Vergewissern Sie sich, dass die Firewalls für Pakete und Webanwendungen, die den App Service schützen, die Weiterleitung über HTTPS-Sitzungen zulassen.</li></ul>|
-|Auf API-Apps sollte nur über HTTPS zugegriffen werden können|Durch diese Aktion wird der gesamte Datenverkehr auf den ausgewählten Ressourcen von HTTP zu HTTPS umgeleitet. <br>**Hinweis**:<ul><li>Ein HTTPS-Endpunkt, der nicht über ein SSL-Zertifikat verfügt, wird im Browser mit einem „Datenschutzfehler“ angezeigt. Daher müssen Benutzer mit einer benutzerdefinierten Domäne sicherstellen, dass sie ein SSL-Zertifikat eingerichtet haben.</li><li>Vergewissern Sie sich, dass die Firewalls für Pakete und Webanwendungen, die den App Service schützen, die Weiterleitung über HTTPS-Sitzungen zulassen.</li></ul>|
-|Remotedebuggen muss für Webanwendung deaktiviert werden|Durch diese Aktion wird das Remotedebuggen deaktiviert.|
-|Remotedebuggen sollte für Funktions-Apps deaktiviert werden|Durch diese Aktion wird das Remotedebuggen deaktiviert.|
-|Remotedebuggen für API-App deaktivieren|Durch diese Aktion wird das Remotedebuggen deaktiviert.|
-|Nicht jeder Ressource den Zugriff auf Ihre Webanwendung über CORS gestatten|Diese Aktion blockiert den Zugriff auf Ihre Webanwendung durch andere Domänen. Um bestimmte Domänen zuzulassen, geben Sie diese im Feld „Zulässige Ursprünge“ ein (durch Kommas getrennt). <br>**Hinweis**: Wenn das Feld leer bleibt, werden alle ursprungsübergreifenden Aufrufe blockiert. Titel des Parameterfelds: „Zulässige Ursprünge“|
-|Nicht jeder Ressource den Zugriff auf Ihre Funktions-App über CORS gestatten|Diese Aktion blockiert den Zugriff auf Ihre Funktionsanwendung durch andere Domänen. Um bestimmte Domänen zuzulassen, geben Sie diese im Feld „Zulässige Ursprünge“ ein (durch Kommas getrennt). <br>**Hinweis**: Wenn das Feld leer bleibt, werden alle ursprungsübergreifenden Aufrufe blockiert. Titel des Parameterfelds: „Zulässige Ursprünge“|
-|Nicht jeder Ressource den Zugriff auf Ihre API-APP über CORS gestatten|Diese Aktion blockiert den Zugriff auf Ihre API-Anwendung durch andere Domänen. Um bestimmte Domänen zuzulassen, geben Sie diese im Feld „Zulässige Ursprünge“ ein (durch Kommas getrennt). <br>**Hinweis**: Wenn das Feld leer bleibt, werden alle ursprungsübergreifenden Aufrufe blockiert. Titel des Parameterfelds: „Zulässige Ursprünge“|
-|Überwachungs-Agent auf virtuellen Computern aktivieren|Durch diese Aktion wird ein Überwachungs-Agent auf den ausgewählten virtuellen Computern installiert. Wählen Sie einen Arbeitsbereich aus, an den der Agent Berichte übermitteln soll.<ul><li>Wenn die Updaterrichtlinie auf automatisch festgelegt ist, wird sie für neue vorhandene Instanzen bereitgestellt.</li><li>Wenn die Updaterichtlinie auf manuell festgelegt ist und Sie den Agent für vorhandene Instanzen installieren möchten, aktivieren Sie das Kontrollkästchen. [Weitere Informationen](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#how-do-i-add-an-extension-to-all-vms-in-my-virtual-machine-scale-set)</li></ul>|
-|Diagnoseprotokolle in Key Vault sollten aktiviert sein.|Durch diese Aktion werden Diagnoseprotokolle für Schlüsseltresore aktiviert. Diagnoseprotokolle und Metriken werden im ausgewählten Arbeitsbereich gespeichert.|
-|Diagnoseprotokolle in Service Bus aktivieren|Durch diese Aktion werden Diagnoseprotokolle in Service Bus aktiviert. Diagnoseprotokolle und Metriken werden im ausgewählten Arbeitsbereich gespeichert.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

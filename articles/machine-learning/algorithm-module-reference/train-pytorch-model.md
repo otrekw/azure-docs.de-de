@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: af14d4770d032c23216b805045eb27fadded5954
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 0ba603dad7d48be725f308f3a3296676c5f4f108
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170257"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883239"
 ---
 # <a name="train-pytorch-model"></a>Trainieren eines PyTorch-Modells
 
-In diesem Artikel wird beschrieben, wie Sie mit dem Modul **Train Pytorch Model** (Trainieren eines PyTorch-Modells) im Azure Machine Learning-Designer (Vorschauversion) PyTorch-Modelle wie DenseNet trainieren. Das Training findet statt, nachdem Sie ein Modell definiert und die zugehörigen Parameter festgelegt haben. Für das Training werden markierte Daten benötigt. 
+In diesem Artikel wird beschrieben, wie Sie mit dem Modul **Train Pytorch Model** (Trainieren eines PyTorch-Modells) im Azure Machine Learning-Designer PyTorch-Modelle wie DenseNet trainieren. Das Training findet statt, nachdem Sie ein Modell definiert und die zugehörigen Parameter festgelegt haben. Für das Training werden markierte Daten benötigt. 
 
 ## <a name="how-to-use-train-pytorch-model"></a>Verwenden von „Train Pytorch Model“ 
 
