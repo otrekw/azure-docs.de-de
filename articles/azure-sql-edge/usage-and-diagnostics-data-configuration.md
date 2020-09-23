@@ -8,12 +8,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 08/04/2020
-ms.openlocfilehash: 8547c07214e94176babe4909504b9292d45c06f9
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 130e23c290ce493d3fb92f6dd0be4cd7c61a86fd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87759613"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888053"
 ---
 # <a name="azure-sql-edge-usage-and-diagnostics-data-configuration"></a>Konfiguration von Nutzungs- und Diagnosedaten in Azure SQL Edge
 
@@ -61,6 +61,9 @@ group by data_source_type
 
 Die Nutzungs- und Diagnosedatensammlung in Azure SQL Edge kann mit einer der folgenden Methoden deaktiviert werden.
 
+> [!NOTE]
+> Nutzungs- und Diagnosedaten können für die Entwicklerversion nicht deaktiviert werden.
+
 ### <a name="disable-usage-and-diagnostics-using-environment-variables"></a>Deaktivieren der Nutzungs- und Diagnosedatensammlung mithilfe von Umgebungsvariablen
 
 Fügen Sie die folgende Umgebungsvariable hinzu, und legen Sie ihren Wert auf `*False*` fest, um die Nutzungs- und Diagnosedatensammlung in Azure SQL Edge zu deaktivieren. Weitere Informationen zum Konfigurieren von Azure SQL Edge mithilfe von Umgebungsvariablen finden Sie unter [Konfigurieren mithilfe von Umgebungsvariablen](configure.md#configure-by-using-environment-variables).
@@ -72,7 +75,7 @@ Fügen Sie die folgende Umgebungsvariable hinzu, und legen Sie ihren Wert auf `*
 
 ### <a name="disable-usage-and-diagnostics-using-mssqlconf-file"></a>Deaktivieren der Nutzungs- und Diagnosedatensammlung mithilfe der mssql.conf-Datei
 
-Fügen Sie die folgenden Dateien in der mssql.conf-Datei auf dem persistenten Speicherlaufwerk hinzu, das dem Ordner „/var/opt/mssql/“ im SQL Edge-Modul zugeordnet ist, um die Nutzungs- und Diagnosedatensammlung in Azure SQL Edge zu deaktivieren. Weitere Informationen zum Konfigurieren von Azure SQL Edge mithilfe der mssql.conf-Datei finden Sie unter [Konfigurieren mithilfe der Datei „mssql.conf“](configure.md#configure-by-using-an-mssqlconf-file).
+Fügen Sie die folgenden Zeilen in der mssql.conf-Datei auf dem persistenten Speicherlaufwerk hinzu, das dem Ordner „/var/opt/mssql/“ im SQL Edge-Modul zugeordnet ist, um die Nutzungs- und Diagnosedatensammlung in Azure SQL Edge zu deaktivieren. Weitere Informationen zum Konfigurieren von Azure SQL Edge mithilfe der mssql.conf-Datei finden Sie unter [Konfigurieren mithilfe der Datei „mssql.conf“](configure.md#configure-by-using-an-mssqlconf-file).
 
 ```ini
 [telemetry]

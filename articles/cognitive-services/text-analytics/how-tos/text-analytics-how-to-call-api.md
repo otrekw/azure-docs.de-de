@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: c6fbec35920c8afd08ab60fc380c9f816ae599b0
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: b2c994d23e63f9e2118cd3e6571c5dcc0449a367
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561028"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601094"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Aufrufen der Textanalyse-REST-API
 
@@ -47,6 +47,30 @@ Sie können derzeit dieselben Dokumenten für alle Textanalysevorgänge senden: 
 
 Weitere Informationen zu Limits finden Sie unter [Übersicht der Textanalyse > Datenlimits](../overview.md#data-limits). 
 
+
+```json
+{
+  "documents": [
+    {
+      "language": "en",
+      "id": "1",
+      "text": "Sample text to be sent to the text analytics api."
+    },
+    {
+      "language": "en",
+      "id": "2",
+      "text": "It's incredibly sunny outside! I'm so happy."
+    },
+    {
+      "language": "en",
+      "id": "3",
+      "text": "Pike place market is my favorite Seattle attraction."
+    }
+  ]
+}
+```
+
+
 ## <a name="set-up-a-request-in-postman"></a>Einrichten einer Anforderung in Postman
 
 Der Dienst akzeptiert Anforderungen mit einer Größe von bis zu 1 MB. Wenn Sie Postman (oder ein anderes Web-API-Testtool) verwenden, richten Sie den Endpunkt so ein, dass er die Ressource einschließt, die Sie verwenden möchten, und geben Sie den Zugriffsschlüssel in einem Anforderungsheader an. Jeder Vorgang erfordert, dass Sie die entsprechende Ressource an den Endpunkt anfügen. 
@@ -59,10 +83,10 @@ Der Dienst akzeptiert Anforderungen mit einer Größe von bis zu 1 MB. Wenn Sie 
 
    Ressourcenendpunkte sind wie folgt (Ihre Region kann davon abweichen):
 
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/languages`
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/entities`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v3.0/sentiment`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v3.0/keyPhrases`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v3.0/languages`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v3.0/entities/recognition/general`
 
 2. Legen Sie die drei Anforderungsheader fest:
 

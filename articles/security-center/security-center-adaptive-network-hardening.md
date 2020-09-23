@@ -13,15 +13,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: 1f69fe027772dc2d008a567723a5b3c04f3ee51b
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: e8aea9b8abb5926fdb73df7c140ecfec1114f7a0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378201"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894758"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Adaptive Netzwerkhärtung in Azure Security Center
 Hier erfahren Sie, wie Sie die adaptive Netzwerkhärtung in Azure Security Center konfigurieren.
+
+## <a name="availability"></a>Verfügbarkeit
+|Aspekt|Details|
+|----|:----|
+|Status des Release:|Allgemein verfügbar (Generally Available, GA)|
+|Preise:|Erfordert [Azure Defender für Server](defender-for-servers-introduction.md)|
+|Erforderliche Rollen und Berechtigungen:|Schreibberechtigungen für die NSGs des Computers|
+|Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Nein](./media/icons/no-icon.png) National/Sovereign (US Gov, China Gov, andere Gov-Clouds)|
+|||
 
 ## <a name="what-is-adaptive-network-hardening"></a>Was ist die adaptive Netzwerkhärtung?
 Der Einsatz von [Netzwerksicherheitsgruppen (NSGs)](https://docs.microsoft.com/azure/virtual-network/security-overview) zur Filterung von ein- und ausgehendem Datenverkehr für Ressourcen verbessert den Sicherheitsstatus Ihres Netzwerks. Es gibt jedoch Situationen, in denen es sich bei dem Datenverkehr, der die NSG durchläuft, um eine Teilmenge der definierten NSG-Regeln handelt. In diesen Fällen lässt sich der Sicherheitsstatus durch eine Härtung der NSG-Regeln auf der Grundlage tatsächlicher Datenverkehrsmuster noch weiter verbessern.
@@ -37,15 +46,6 @@ Ein Beispiel: Angenommen, die vorhandene NSG-Regel lässt Datenverkehr von 140.2
 ![Ansicht der Netzwerkhärtung](./media/security-center-adaptive-network-hardening/traffic-hardening.png)
 
 
-## <a name="availability"></a>Verfügbarkeit
-
-|Aspekt|Details|
-|----|:----|
-|Status des Release:|Allgemeine Verfügbarkeit|
-|Preise:|Standard-Tarif|
-|Erforderliche Rollen und Berechtigungen:|Schreibberechtigungen für die NSGs des Computers|
-|Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Nein](./media/icons/no-icon.png) National/Sovereign (US Gov, China Gov, andere Gov-Clouds)|
-|||
 
 
 ## <a name="view-adaptive-network-hardening-alerts-and-rules"></a>Anzeigen von Warnungen und Regeln der adaptiven Netzwerkhärtung
@@ -56,7 +56,7 @@ Ein Beispiel: Angenommen, die vorhandene NSG-Regel lässt Datenverkehr von 140.2
    * **Nicht überprüfte Ressourcen:** Virtuelle Computer, auf denen der Algorithmus der adaptiven Netzwerkhärtung aus einem der folgenden Gründe nicht ausgeführt werden kann:
       * **Virtuelle Computer sind klassische virtuelle Computer**: Es werden nur virtuelle Azure Resource Manager-Computer unterstützt.
       * **Nicht genügend Daten verfügbar:** Security Center benötigt mindestens Datenverkehrsdaten eines Zeitraums von 30 Tagen, um fundierte Härtungsempfehlungen abgeben zu können.
-      * **Virtueller Computer nicht durch ASC (Standard) geschützt:** Dieses Feature kann nur für VMs genutzt werden, die auf den Standard-Tarif von Security Center festgelegt sind.
+      * **Virtueller Computer nicht durch Azure Defender geschützt:** Nur virtuelle Computer, die mit [Azure Defender für Server](defender-for-servers-introduction.md) geschützt sind, können dieses Feature nutzen.
 
      ![Fehlerhafte Ressourcen](./media/security-center-adaptive-network-hardening/unhealthy-resources.png)
 
@@ -106,14 +106,14 @@ Im Anschluss finden Sie einige wichtige Richtlinien, die beim Ändern einer Rege
 
 1. Um Parameter einer Regel zu ändern, klicken Sie auf der Registerkarte **Regeln** auf die drei Punkte (...) am Ende der Zeile mit der gewünschten Regel, und klicken Sie anschließend auf **Bearbeiten**.
 
-   ![Bearbeiten einer Regel](./media/security-center-adaptive-network-hardening/edit-hard-rule.png)
+   ![Bearbeiten von Regeln](./media/security-center-adaptive-network-hardening/edit-hard-rule.png)
 
 1. Aktualisieren Sie im Fenster **Regel bearbeiten** die Details, die Sie ändern möchten, und klicken Sie anschließend auf **Speichern**.
 
    > [!NOTE]
-   > Nach dem Klicken auf **Speichern** haben Sie die Regel erfolgreich geändert. *Allerdings haben Sie sie noch nicht auf die NSG angewendet.* Um sie anzuwenden, müssen Sie die Regel in der Liste auswählen und auf **Erzwingen** klicken (wie im nächsten Schritt beschrieben).
+   > Nach dem Klicken auf **Speichern** haben Sie die Regel erfolgreich geändert. *Allerdings haben Sie sie noch nicht auf die NSG angewendet.* Um sie anzuwenden, müssen Sie die Regel in der Liste auswählen und **Erzwingen** auswählen (wie im nächsten Schritt beschrieben).
 
-   ![Bearbeiten einer Regel](./media/security-center-adaptive-network-hardening/edit-hard-rule3.png)
+   ![Auswählen von „Speichern“](./media/security-center-adaptive-network-hardening/edit-hard-rule3.png)
 
 3. Wählen Sie in der Liste die aktualisierte Regel aus, und klicken Sie auf **Erzwingen**, um die aktualisierte Regel anzuwenden.
 
@@ -150,4 +150,4 @@ Bei Bedarf können Sie eine empfohlene Regel für die aktuelle Sitzung löschen.
 
 1. Klicken Sie auf der Registerkarte **Regeln** auf die drei Punkte (...) am Ende der Zeile mit der Regel, und klicken Sie anschließend auf **Löschen**.  
 
-    ![Härtungsregeln](./media/security-center-adaptive-network-hardening/delete-hard-rule.png)
+    ![Löschen einer Regel](./media/security-center-adaptive-network-hardening/delete-hard-rule.png)

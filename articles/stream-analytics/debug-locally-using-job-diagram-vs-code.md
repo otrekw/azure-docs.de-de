@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: c31f3c998df918466e707c95f041592051e8251c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: f8885229c8ab6784c6c0bf45487812fcc43f9b22
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045313"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903826"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio-code"></a>Lokales Debuggen von Azure Stream Analytics-Abfragen mithilfe eines Auftragsdiagramms in Visual Studio Code
 
@@ -27,7 +27,7 @@ Ein Azure Stream Analytics-Skript wird verwendet, um Eingabedaten in Ausgabedate
 
 ### <a name="start-local-testing"></a>Starten des lokalen Testens
 
-Verwenden Sie diesen [Schnellstart](quick-create-vs-code.md), um zu erfahren, wie Sie einen Stream Analytics-Auftrag mithilfe von Visual Studio Code erstellen oder [einen vorhandenen Auftrag in ein lokales Projekt exportieren](visual-studio-code-explore-jobs.md). Anmeldeinformationen für Eingaben und Ausgaben werden für exportierte Aufträge automatisch aufgefüllt.
+Verwenden Sie diesen [Schnellstart](quick-create-visual-studio-code.md), um zu erfahren, wie Sie einen Stream Analytics-Auftrag mithilfe von Visual Studio Code erstellen oder [einen vorhandenen Auftrag in ein lokales Projekt exportieren](visual-studio-code-explore-jobs.md). Anmeldeinformationen für Eingaben und Ausgaben werden für exportierte Aufträge automatisch aufgefüllt.
 
 Wenn Sie die Abfrage mit lokalen Eingabedaten testen möchten, befolgen Sie diese [Anweisungen](visual-studio-code-local-run.md). Wenn Sie mit Liveeingaben testen möchten, [konfigurieren Sie Ihre Eingabe](stream-analytics-add-inputs.md), und fahren Sie mit dem nächsten Schritt fort. 
 
@@ -59,7 +59,7 @@ In diesem Abschnitt untersuchen Sie die für die einzelnen Teile des Diagramms v
 3. Wählen Sie in der Dropdownliste den Namen der Eingabedatenquelle aus, um Eingabemetriken anzuzeigen. Die Eingabequelle im folgenden Screenshot heißt *quotes* (Zitate). Weitere Informationen zu Eingabemetriken finden Sie unter [Grundlegendes zur Stream Analytics-Auftragsüberwachung und zum Überwachen von Abfragen](stream-analytics-monitoring.md).
 
    > [!div class="mx-imgBorder"]
-   > ![Auftragsdiagrammmetriken](./media/debug-locally-using-job-diagram-vs-code/input-metrics.png)
+   > ![Eingabemetriken für Auftragsdiagramm](./media/debug-locally-using-job-diagram-vs-code/input-metrics.png)
 
 4. Wählen Sie einen Abfrageschritt aus dem Auftragsdiagramm aus, oder wählen Sie in der Dropdownliste den Schrittnamen aus, um Metriken auf Schrittebene anzuzeigen. Wasserzeichenverzögerung ist die einzige verfügbare Schrittmetrik.
 
@@ -108,7 +108,7 @@ Wählen Sie in der oberen rechten Ecke des Auftragsdiagramms **Auftragszusammenf
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Schnellstart: Erstellen eines Stream Analytics-Auftrags mit Visual Studio Code](quick-create-vs-code.md)
+* [Schnellstart: Erstellen eines Stream Analytics-Auftrags mit Visual Studio Code](quick-create-visual-studio-code.md)
 * [Erkunden von Azure Stream Analytics mit Visual Studio Code](visual-studio-code-explore-jobs.md)
 * [Lokales Testen von Stream Analytics-Abfragen mit Beispieldaten mithilfe von Visual Studio Code](visual-studio-code-local-run.md)
 * [Lokales Testen von Azure Stream Analytics-Aufträgen mit Liveeingabe unter Verwendung von Visual Studio Code](visual-studio-code-local-run-live-input.md)

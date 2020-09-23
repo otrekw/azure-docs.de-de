@@ -1,6 +1,6 @@
 ---
 title: Bereitstellen und Erstellen von Vorhersagen mit ONNX
-description: Hier erfahren Sie, wie Sie ein Modell trainieren, es in ONNX konvertieren, anschließend in Azure SQL Edge (Vorschau) oder Azure SQL Managed Instance (Vorschau) bereitstellen und dann mithilfe des hochgeladenen ONXX-Modells PREDICT (nativ) für Daten ausführen.
+description: Hier erfahren Sie, wie Sie ein Modell trainieren, es in ONNX konvertieren, anschließend in Azure SQL Edge oder Azure SQL Managed Instance (Vorschau) bereitstellen und dann mithilfe des hochgeladenen ONXX-Modells PREDICT (nativ) für Daten ausführen.
 keywords: SQL Edge bereitstellen
 ms.prod: sql
 ms.technology: machine-learning
@@ -8,22 +8,22 @@ ms.topic: conceptual
 author: dphansen
 ms.author: davidph
 ms.date: 07/14/2020
-ms.openlocfilehash: eeb50f682c8b3b225c6574b5276722b79465a511
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 1e70b48e4c28cdc74c5079e492b0266ea60900ad
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718780"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886831"
 ---
 # <a name="deploy-and-make-predictions-with-an-onnx-model"></a>Bereitstellen eines ONNX-Modells und Treffen von Vorhersagen mit diesem Modell
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie ein Modell trainieren, es in ONNX konvertieren, anschließend in [Azure SQL Edge (Vorschau)](onnx-overview.md) oder [Azure SQL Managed Instance (Vorschau)](../azure-sql/managed-instance/machine-learning-services-overview.md) bereitstellen und dann mithilfe des hochgeladenen ONXX-Modells PREDICT (nativ) für Daten ausführen.
+In dieser Schnellstartanleitung erfahren Sie, wie Sie ein Modell trainieren, es in ONNX konvertieren, anschließend in [Azure SQL Edge](onnx-overview.md) oder [Azure SQL Managed Instance (Vorschau)](../azure-sql/managed-instance/machine-learning-services-overview.md) bereitstellen und dann mithilfe des hochgeladenen ONXX-Modells PREDICT (nativ) für Daten ausführen.
 
 Dieser Schnellstart basiert auf **SciKit-learn** und verwendet das [Boston Housing-Dataset](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html).
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-* Wenn Sie Azure SQL Edge verwenden und kein Azure SQL Edge-Modul bereitgestellt haben, führen Sie die Schritte unter [Bereitstellen von Azure SQL Edge (Vorschau)](deploy-portal.md) aus.
+* Wenn Sie Azure SQL Edge verwenden und kein Azure SQL Edge-Modul bereitgestellt haben, führen Sie die Schritte unter [Bereitstellen von Azure SQL Edge](deploy-portal.md) aus.
 
 * Installieren Sie [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download).
 

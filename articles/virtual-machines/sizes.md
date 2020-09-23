@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 07/21/2020
 ms.author: jushiman
-ms.openlocfilehash: 234156186d045e21cc01cc4b407408f98268c790
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: d9377ba22f1461762e53b1004dfe5f06c2d7b972
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065470"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420216"
 ---
 # <a name="sizes-for-virtual-machines-in-azure"></a>Größen für virtuelle Computer in Azure
 
@@ -28,7 +28,7 @@ In diesem Artikel werden die verfügbaren Größen und Optionen für die virtuel
 | [GPU](sizes-gpu.md) | NC, NCv2, NCv3, NCasT4_v3 (Vorschau), ND, NDv2 (Vorschau), NV, NVv3, NVv4 | Spezielle virtuelle Computer als Ziel für aufwendiges Grafikrendering und Videobearbeitung sowie für Modelltraining und Rückschlüsse (ND) mit Deep Learning. Mit einem oder mehreren GPUs verfügbar. |
 | [High Performance Computing](sizes-hpc.md) | HB, HBv2, HC,  H | Unsere virtuellen Computer mit den schnellsten und leistungsfähigsten CPUs, die optional über Netzwerkschnittstellen mit hohem Durchsatz (RDMA) verfügen. |
 
-- Informationen zu den Preisen der unterschiedlichen Größen finden Sie auf den Seiten mit den Preisinformationen für [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux) oder [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows).
+- Informationen zu den Preisen der unterschiedlichen Größen finden Sie auf den Seiten mit den Preisinformationen für [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux) oder [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/Windows/#Windows).
 - Informationen zur Verfügbarkeit von VM-Größen in Azure-Regionen finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/).
 - Informationen zu den allgemeinen Einschränkungen von virtuellen Azure-Computern finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-resource-manager/management/azure-subscription-service-limits.md).
 - Weitere Informationen dazu, wie VM-Namen in Azure zugewiesen werden, finden Sie unter [Namenskonventionen für Azure-VM-Größen](./vm-naming-conventions.md).

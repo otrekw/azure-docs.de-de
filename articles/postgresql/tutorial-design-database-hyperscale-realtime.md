@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Entwerfen eines Echtzeitdashboards – Hyperscale (Citus) – Azure Database for PostgreSQL'
-description: In diesem Tutorial erfahren Sie, wie Sie verteilte Tabellen in Azure Database for PostgreSQL – Hyperscale (Citus) erstellen, auffüllen und abfragen.
+description: In diesem Tutorial erfahren Sie, wie Sie Echtzeitdashboard-Abfragen mit Azure Database for PostgreSQL – Hyperscale (Citus) parallelisieren.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: db3cd95c5a833b299ee85c1e68b15644ae0e0226
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 41ac1cb856011d9730f7b49bbf85350f4dbccdbd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387573"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895243"
 ---
 # <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Tutorial: Entwerfen eines Dashboards für die Echtzeitanalyse mithilfe von Azure Database for PostgreSQL – Hyperscale (Citus)
 
@@ -226,6 +226,5 @@ In den vorherigen Schritten haben Sie Azure-Ressourcen in einer Servergruppe ers
 
 In diesem Tutorial haben Sie erfahren, wie Sie eine Hyperscale (Citus)-Servergruppe bereitstellen. Sie haben mithilfe von psql eine Verbindung mit ihr hergestellt, haben ein Schema erstellt und Daten verteilt. Sie haben gelernt, Daten in Rohform abzurufen und diese Daten regelmäßig zu aggregieren, die aggregierten Tabellen abzufragen und alte Daten ablaufen zu lassen.
 
-Lernen Sie als Nächstes die Konzepte von Hyperscale kennen.
-> [!div class="nextstepaction"]
-> [Hyperscale-Knotentypen](https://aka.ms/hyperscale-concepts)
+- Weitere Informationen zu [Knotentypen](https://aka.ms/hyperscale-concepts) von Servergruppen
+- Bestimmen der besten [Anfangsgröße](howto-hyperscale-scaling.md#picking-initial-size) für Ihre Servergruppe

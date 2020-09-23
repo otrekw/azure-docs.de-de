@@ -1,29 +1,31 @@
 ---
 title: Installieren und Ausführen von Containern für die Verwendung der Anomalieerkennungs-API
 titleSuffix: Azure Cognitive Services
-description: Verwenden Sie den erweiterten Algorithmus der Anomalieerkennungs-API, um Anomalien in Zeitreihendaten zu identifizieren.
+description: Erfahren Sie, wie Sie Container für die Verwendung der erweiterten Algorithmen der Anomalieerkennungs-API installieren und verwenden.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 09/10/2020
 ms.author: aahi
-ms.openlocfilehash: ee742f09f3fcc1bd283efbc346fea6a040e53f48
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2a4ff7da16524e0706601e43dff39325952990ff
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548530"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903552"
 ---
-# <a name="install-and-run-anomaly-detector-containers-preview"></a>Installieren und Ausführen von Containern für die Anomalieerkennung (Vorschau)
+# <a name="install-and-run-anomaly-detector-containers"></a>Installieren und Ausführen von Containern für die Anomalieerkennung 
+
+[!INCLUDE [container image location note](../containers/includes/image-location-note.md)]
 
 Die Anomalieerkennung umfasst die folgenden Funktionen für Container:
 
 | Funktion | Features |
 |--|--|
-| Anomalieerkennung | <li> Erkennt Anomalien in Echtzeit <li> Erkennt Anomalien für das ganze Dataset als Batch <li> Leitet den normalen zu erwartenden Bereich Ihrer Daten ab <li> Unterstützt die Anpassung der Anomalieerkennung an Ihre Daten |
+| Anomalieerkennung | <li> Erkennt Anomalien in Echtzeit <li> Erkennt Anomalien für das ganze Dataset als Batch <li> Erkennt Trendänderungspunkte in Ihrem Dataset als Batch<li> Leitet den normalen zu erwartenden Bereich Ihrer Daten ab <li> Unterstützt die Anpassung der Anomalieerkennung an Ihre Daten |
 
 Ausführliche Informationen zu den APIs finden Sie unter:
 * [Erfahren Sie mehr über den Anomalieerkennungs-API-Dienst.](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)
@@ -67,7 +69,7 @@ Verwenden Sie den Befehl [`docker pull`](https://docs.docker.com/engine/referenc
 
 | Container | Repository |
 |-----------|------------|
-| cognitive-services-anomaly-detector | `mcr.microsoft.com/azure-cognitive-services/anomaly-detector:latest` |
+| cognitive-services-anomaly-detector | `mcr.microsoft.com/azure-cognitive-services/decision/anomaly-detector:latest` |
 
 <!--
 For a full description of available tags, such as `latest` used in the preceding command, see [anomaly-detector](https://go.microsoft.com/fwlink/?linkid=2083827&clcid=0x409) on Docker Hub.
@@ -95,7 +97,7 @@ Es sind [Beispiele](anomaly-detector-container-configuration.md#example-docker-r
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-mcr.microsoft.com/azure-cognitive-services/anomaly-detector:latest \
+mcr.microsoft.com/azure-cognitive-services/decision/anomaly-detector:latest \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -177,7 +179,7 @@ Weitere Informationen zu diesen Optionen finden Sie unter [Konfigurieren von Con
 In diesem Artikel haben Sie die Konzepte und den Workflow zum Herunterladen, Installieren und Ausführen von Containern für die Anomalieerkennung kennengelernt. Zusammenfassung:
 
 * Die Anomalieerkennung stellt einen Linux-Container für Docker bereit, der die Anomalieerkennung kapselt. Sie kann auf Batches oder Streams ausgeführt werden und bietet Bereichsrückschlüsse sowie eine Optimierung der Genauigkeit.
-* Containerimages werden aus einer privaten Azure Container Registry-Instanz für Containervorschauversionen heruntergeladen.
+* Containerimages werden aus einer privaten Azure Container Registry-Instanz für Container heruntergeladen.
 * Containerimages werden in Docker ausgeführt.
 * Sie können entweder die REST-API oder das SDK verwenden, um Vorgänge in Containern für die Anomalieerkennung über den Host-URI des Containers aufzurufen.
 * Bei der Instanziierung eines Containers müssen Sie Abrechnungsinformationen angeben.

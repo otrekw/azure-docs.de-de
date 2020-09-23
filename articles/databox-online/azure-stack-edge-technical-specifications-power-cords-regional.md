@@ -1,23 +1,23 @@
 ---
-title: Microsoft Azure Stack Edge-Netzkabel, technische Spezifikationen aufgrund des Standorts | Microsoft-Dokumentation
-description: Hier erfahren Sie etwas zu den technischen Spezifikationen für Ihre Azure Stack Edge-Netzkabel.
+title: Microsoft Azure Stack Edge Pro-Netzkabel, technische Spezifikationen nach Standort | Microsoft-Dokumentation
+description: Hier erhalten Sie Informationen zu den technischen Spezifikationen für Ihre Azure Stack Edge Pro-Netzkabel.
 services: databox
-author: twooley
+author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
 ms.date: 04/16/2020
-ms.author: twooley
-ms.openlocfilehash: 8248f0a8e003351449186638fd4914c6b6fe4bed
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.author: alkohli
+ms.openlocfilehash: 76d8c84fd1dd403c88e8261cf49e3620f3a6ec14
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783976"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903624"
 ---
-# <a name="azure-stack-edge-power-cord-specifications"></a>Azure Stack Edge-Netzkabelspezifikationen
+# <a name="azure-stack-edge-pro-power-cord-specifications"></a>Spezifikationen für Azure Stack Edge Pro-Netzkabel
 
-Ihr Azure Stack Edge-Gerät benötigt ein Netzkabel, das je nach Ihrer Azure-Region variieren kann.
+Ihr Azure Stack Edge Pro-Gerät benötigt ein Netzkabel, das je nach Azure-Region variieren kann.
 
 ## <a name="supported-power-cords"></a>Unterstützte Netzkabel
 
@@ -158,4 +158,4 @@ In der folgenden Tabelle finden Sie die richtigen Kabelspezifikationen für Ihre
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Technische Spezifikationen für Azure Stack Edge](data-box-edge-technical-specifications-compliance.md)
+[Technische Spezifikationen für Azure Stack Edge Pro](data-box-edge-technical-specifications-compliance.md)

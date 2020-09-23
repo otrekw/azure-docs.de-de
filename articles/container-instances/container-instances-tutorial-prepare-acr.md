@@ -4,12 +4,12 @@ description: Tutorial für Azure Container Instances (Teil 2 von 3) – Vorberei
 ms.topic: tutorial
 ms.date: 12/18/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 1a5b9555572264b6a00b4ce73eaa0719d94fd99b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 44a7f21c067897b046413851ef5a2c73bfccc24f
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78252157"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90708035"
 ---
 # <a name="tutorial-create-an-azure-container-registry-and-push-a-container-image"></a>Tutorial: Erstellen einer Azure-Containerregistrierung und Übertragen eines Containerimages per Pushvorgang
 
@@ -28,66 +28,7 @@ Im nächsten Artikel (dem letzten Tutorial der Reihe) stellen Sie den Container 
 
 [!INCLUDE [container-instances-tutorial-prerequisites](../../includes/container-instances-tutorial-prerequisites.md)]
 
-## <a name="create-azure-container-registry"></a>Erstellen einer Azure-Containerregistrierung
-
-Bevor Sie Ihre Containerregistrierung erstellen können, benötigen Sie eine *Ressourcengruppe* für die Bereitstellung. Eine Azure-Ressourcengruppe ist eine logische Sammlung, in der alle Azure-Ressourcen bereitgestellt und verwaltet werden.
-
-Erstellen Sie mithilfe des Befehls [az group create][az-group-create] eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* in der Region *eastus* erstellt:
-
-```azurecli
-az group create --name myResourceGroup --location eastus
-```
-
-Erstellen Sie nach der Erstellung der Ressourcengruppe mit dem Befehl [az acr create][az-acr-create] eine Azure-Containerregistrierung. Der Containerregistrierungsname muss innerhalb von Azure eindeutig sein und zwischen 5 und 50 alphanumerische Zeichen enthalten. Ersetzen Sie `<acrName>` durch einen eindeutigen Namen für die Registrierung:
-
-```azurecli
-az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
-```
-
-Hier ist eine Beispielausgabe für eine neue Azure-Containerregistrierung mit dem Namen *mycontainerregistry082* angegeben (in gekürzter Form):
-
-```output
-...
-{
-  "creationDate": "2018-03-16T21:54:47.297875+00:00",
-  "id": "/subscriptions/<Subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/mycontainerregistry082",
-  "location": "eastus",
-  "loginServer": "mycontainerregistry082.azurecr.io",
-  "name": "mycontainerregistry082",
-  "provisioningState": "Succeeded",
-  "resourceGroup": "myResourceGroup",
-  "sku": {
-    "name": "Basic",
-    "tier": "Basic"
-  },
-  "status": null,
-  "storageAccount": null,
-  "tags": {},
-  "type": "Microsoft.ContainerRegistry/registries"
-}
-```
-
-Im restlichen Teil dieses Tutorials wird `<acrName>` als Platzhalter für den von Ihnen in diesem Schritt gewählten Namen der Containerregistrierung bezeichnet.
-
-## <a name="log-in-to-container-registry"></a>Anmelden an der Containerregistrierung
-
-Sie müssen sich bei der Azure-Containerregistrierung anmelden, damit Sie Images mithilfe von Push an sie übertragen können. Verwenden Sie den Befehl [az acr login][az-acr-login], um den Vorgang abzuschließen. Geben Sie den eindeutigen Namen an, den Sie beim Erstellen der Containerregistrierung gewählt haben.
-
-```azurecli
-az acr login --name <acrName>
-```
-
-Beispiel:
-
-```azurecli
-az acr login --name mycontainerregistry082
-```
-
-Der Befehl gibt nach Abschluss des Vorgangs `Login Succeeded` zurück:
-
-```output
-Login Succeeded
-```
+[!INCLUDE [container-instances-create-registry](../../includes/container-instances-create-registry.md)]
 
 ## <a name="tag-container-image"></a>Markieren von Containerimages
 
@@ -188,7 +129,7 @@ Verwenden Sie den Befehl [az acr repository show-tags][az-acr-repository-show-ta
 az acr repository show-tags --name <acrName> --repository aci-tutorial-app --output table
 ```
 
-Die Ausgabe sollte etwa folgendermaßen aussehen:
+Die Ausgabe sollte in etwa wie folgt aussehen:
 
 ```console
 az acr repository show-tags --name mycontainerregistry082 --repository aci-tutorial-app --output table

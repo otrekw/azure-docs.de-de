@@ -3,12 +3,12 @@ title: Verwalten von Azure Sentinel-Arbeitsbereichen im großen Maßstab
 description: Erfahren Sie, wie Sie Azure Sentinel auf delegierten Kundenressourcen effektiv verwalten.
 ms.date: 08/27/2020
 ms.topic: how-to
-ms.openlocfilehash: 328c55afc141a7f2efd85104453342b62eae0bb2
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 78896d6458f6b1c40655bc36d2bf63e05ddb0a59
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050810"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019732"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Verwalten von Azure Sentinel-Arbeitsbereichen im großen Maßstab
 
@@ -65,7 +65,7 @@ Wenn Sie Azure Sentinel-Ressourcen für mehrere Kunden verwalten, können Sie Vo
 
 Mithilfe von [Azure Monitor-Arbeitsmappen in Azure Sentinel](../../sentinel/overview.md#workbooks) können Sie Daten aus Ihren verbundenen Datenquellen visualisieren und überwachen, um Erkenntnisse zu gewinnen. Sie können die integrierten Arbeitsmappenvorlagen in Azure Sentinel verwenden oder eigene, benutzerdefinierte Arbeitsmappen für Ihre Szenarien erstellen.
 
-Sie können Arbeitsmappen in Ihrem Verwaltungsmandanten bereitstellen und in großem Maßstab Dashboards erstellen, um Daten übergreifend über Kundenmandanten zu überwachen und abzufragen. Weitere Informationen finden Sie unter [Arbeitsbereichsübergreifende Überwachung](../../sentinel/extend-sentinel-across-workspaces-tenants.md#using-cross-workspace-workbooks). Beachten Sie, dass einige Funktionen [nicht über mehrere Arbeitsbereiche hinweg unterstützt](../../sentinel/extend-sentinel-across-workspaces-tenants.md#whats-not-supported-across-workspaces) werden.
+Sie können Arbeitsmappen in Ihrem Verwaltungsmandanten bereitstellen und in großem Maßstab Dashboards erstellen, um Daten übergreifend über Kundenmandanten zu überwachen und abzufragen. Weitere Informationen finden Sie unter [Arbeitsbereichsübergreifende Überwachung](../../sentinel/extend-sentinel-across-workspaces-tenants.md#using-cross-workspace-workbooks). 
 
 Darüber hinaus können Sie Arbeitsmappen direkt in einem einzelnen von Ihnen verwalteten Mandanten bereitstellen, um für diesen Kunden spezifische Szenarien zu behandeln.
 
@@ -76,8 +76,6 @@ Erstellen und speichern Sie Log Analytics-Abfragen zur Bedrohungserkennung einsc
 ## <a name="use-automation-for-cross-workspace-management"></a>Verwenden von Automation für die arbeitsbereichsübergreifende Verwaltung
 
 Sie können Automation verwenden, um mehrere Azure Sentinel-Arbeitsbereiche zu verwalten und [Hunting-Abfragen](../../sentinel/hunting.md), Playbooks und Arbeitsmappen zu konfigurieren. Weitere Informationen finden Sie unter [Arbeitsbereichsübergreifende Verwaltung mithilfe von Automatisierung](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-management-using-automation).
-
-Beachten Sie, dass einige Funktionen [aktuell nicht in mehreren Arbeitsbereichen unterstützt](../../sentinel/extend-sentinel-across-workspaces-tenants.md#whats-not-supported-across-workspaces) werden.
 
 ## <a name="manage-security-of-office-365-environments"></a>Verwalten der Sicherheit von Office 365-Umgebungen
 

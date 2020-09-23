@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: System Architecture'
-ms.openlocfilehash: 33c878b2af64a72212a8aac060e9ccac83b79a53
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2289ff37a0e524bc765163047608eb604c02372e
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326510"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019800"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>Geräteauthentifizierung mit X.509-Zertifikaten
 
@@ -27,6 +27,8 @@ Dieser Artikel beschreibt, wie Zertifikate von X.509-Zertifizierungsstellen (Cer
 * Registrieren des X.509-Zertifizierungsstellenzertifikats bei IoT Hub
 * Signieren von Geräten mit X.509-Zertifikaten
 * Authentifizieren von Geräten, die von der X.509-Zertifizierungsstelle signiert sind
+
+[!INCLUDE [iot-hub-include-x509-ca-signed-support-note](../../includes/iot-hub-include-x509-ca-signed-support-note.md)]
 
 ## <a name="overview"></a>Übersicht
 
