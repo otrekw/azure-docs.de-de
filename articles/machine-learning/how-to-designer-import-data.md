@@ -1,23 +1,23 @@
 ---
-title: Importieren von Daten in den Designer (Vorschau)
+title: Importieren von Daten in den Designer
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie Sie Trainingsdaten aus verschiedenen Datenquellen in den Azure Machine Learning-Designer importieren (Vorschau).
+description: Erfahren Sie, wie Sie Trainingsdaten aus verschiedenen Datenquellen in den Azure Machine Learning-Designer importieren.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-author: peterclu
-ms.author: peterlu
-ms.date: 01/16/2020
+author: likebupt
+ms.author: keli19
+ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: d977c8e13ce75eb276c8fdb11e9dd40e40a923ad
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 15fca48327c46480546764be1b2ab40c1635e874
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495370"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985614"
 ---
-# <a name="import-data-into-azure-machine-learning-designer-preview"></a>Importieren von Daten in den Azure Machine Learning-Designer (Vorschauversion)
+# <a name="import-data-into-azure-machine-learning-designer"></a>Importieren von Daten in den Azure Machine Learning-Designer
 
 In diesem Artikel erfahren Sie, wie Sie Ihre eigenen Daten in den Designer importieren, um benutzerdefinierte Lösungen zu erstellen. Es gibt zwei Möglichkeiten, wie Sie Daten in den Designer importieren können: 
 
@@ -32,25 +32,34 @@ Es wird empfohlen, dass Sie [Datasets](concept-data.md#datasets) verwenden, um D
 
 ### <a name="register-a-dataset"></a>Registrieren eines Datasets
 
-Sie können vorhandene Datasets [programmgesteuert mit dem SDK](how-to-create-register-datasets.md#datasets-sdk) oder [visuell im Azure Machine Learning Studio](how-to-create-register-datasets.md#datasets-ui) registrieren.
+Sie können vorhandene Datasets [programmgesteuert mit dem SDK](how-to-create-register-datasets.md#datasets-sdk) oder [visuell im Azure Machine Learning Studio](how-to-connect-data-ui.md#create-datasets) registrieren.
 
 Sie können auch die Ausgabe für jedes Designermodul als Dataset registrieren.
 
 1. Wählen Sie das Modul aus, das die zu registrierenden Daten ausgibt.
 
-1. Wählen Sie im Bereich „Eigenschaften“ die Option **Ausgaben** > **Dataset registrieren** aus.
+1. Wählen Sie im Bereich „Eigenschaften“ die Option **Ausgaben + Protokolle** > **Dataset registrieren** aus.
 
     ![Screenshot: Navigation zur Option „Dataset registrieren“](media/how-to-designer-import-data/register-dataset-designer.png)
 
+Wenn die Modulausgabedaten in einem Tabellenformat vorliegen, müssen Sie die Ausgabe als **Dateidataset** oder **Tabellendataset** registrieren.
+
+ - Mit **Dateidataset** wird der Ausgabeordner des Moduls als Dateidataset registriert. Der Ausgabeordner enthält eine Datendatei und Metadateien, die vom Designer intern verwendet werden. Wählen Sie diese Option aus, wenn Sie das registrierte Dataset weiterhin im Designer verwenden möchten. 
+
+ - Mit **Tabellendataset** wird nur die Ausgabedatendatei des Moduls als Tabellendataset registriert. Dieses Format kann problemlos von anderen Tools verarbeitet werden, z. B. durch automatisiertes maschinelles Lernen oder im Python-SDK. Wählen Sie diese Option aus, wenn Sie das registrierte Dataset außerhalb des Designers verwenden möchten.  
+
+
+
 ### <a name="use-a-dataset"></a>Verwenden eines Datasets
 
-Ihre registrierten Datasets finden Sie in der Modulpalette unter **Datasets** > **Meine Datasets**. Um ein Dataset zu verwenden, ziehen Sie es per Drag & Drop auf die Pipelinecanvas. Verbinden Sie dann den Ausgabeport des Datasets mit anderen Modulen der Palette.
+Ihre registrierten Datasets finden Sie in der Modulpalette unter **Datasets**. Um ein Dataset zu verwenden, ziehen Sie es per Drag & Drop auf die Pipelinecanvas. Verbinden Sie dann den Ausgabeport des Datasets mit anderen Modulen auf der Canvas. 
 
 ![Screenshot: Speicherort gespeicherter Datasets in der Designerpalette](media/how-to-designer-import-data/use-datasets-designer.png)
 
 
 > [!NOTE]
-> Der Designer unterstützt derzeit nur die Verarbeitung [Tabellendatasets](how-to-create-register-datasets.md#dataset-types). Wenn Sie [Dateidatasets](how-to-create-register-datasets.md#dataset-types) verwenden möchten, verwenden Sie das Azure Machine Learning SDK, das für Python und R verfügbar ist.
+> Der Designer unterstützt die [Datasetversionierung](how-to-version-track-datasets.md). Geben Sie die Datasetversion im Bereich „Eigenschaften“ des Datasetmoduls an.
+
 
 ## <a name="import-data-using-the-import-data-module"></a>Importieren von Daten mit dem Modul „Daten importieren“
 
@@ -59,7 +68,7 @@ Obwohl wir empfehlen, dass Sie Datasets zum Importieren von Daten verwenden, kö
 Ausführliche Informationen zur Verwendung des Moduls „Daten importieren“ finden Sie auf der [Referenzseite für den Datenimport](algorithm-module-reference/import-data.md).
 
 > [!NOTE]
-> Wenn das Dataset zu viele Spalten enthält, kann der folgende Fehler auftreten: „Fehler bei der Überprüfung aufgrund von Größenbeschränkung“. Um dies zu vermeiden, [registrieren Sie das Dataset in der Dataset-Schnittstelle](how-to-create-register-datasets.md#datasets-ui).
+> Wenn das Dataset zu viele Spalten enthält, kann der folgende Fehler auftreten: „Fehler bei der Überprüfung aufgrund von Größenbeschränkung“. Um dies zu vermeiden, [registrieren Sie das Dataset in der Dataset-Schnittstelle](how-to-connect-data-ui.md#create-datasets).
 
 ## <a name="supported-sources"></a>Unterstützte Quellen
 
@@ -94,8 +103,8 @@ Die Module im Designer sind durch die Größe des Computeziels begrenzt. Für gr
 
 ## <a name="access-data-in-a-virtual-network"></a>Zugreifen auf Daten in einem virtuellen Netzwerk
 
-Wenn sich Ihr Arbeitsbereich in einem virtuellen Netzwerk befindet, müssen Sie zusätzliche Konfigurationsschritte ausführen, um die Daten im Designer visuell darzustellen. Weitere Informationen zur Verwendung von Datenspeichern und Datasets in virtuellen Netzwerken finden Sie unter [Netzwerkisolation während Training und Rückschluss mit privaten virtuellen Netzwerken](how-to-enable-virtual-network.md#machine-learning-studio).
+Wenn sich Ihr Arbeitsbereich in einem virtuellen Netzwerk befindet, müssen Sie zusätzliche Konfigurationsschritte ausführen, um die Daten im Designer visuell darzustellen. Weitere Informationen zur Verwendung von Datenspeichern und Datasets in virtuellen Netzwerken finden Sie unter [Verwenden von Azure Machine Learning Studio in einem virtuellen Azure-Netzwerk](how-to-enable-studio-virtual-network.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über die Grundlagen des Designers mit [Tutorial: Prognostizieren von Automobilpreisen mit dem Designer](tutorial-designer-automobile-price-train-score.md).
+Informationen zu den Grundlagen des Designers finden Sie im [Tutorial: Prognostizieren von Automobilpreisen mit dem Designer](tutorial-designer-automobile-price-train-score.md).

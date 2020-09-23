@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: a71b4096e791221057fdcc5d14351ceccab720fb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e34fa4af08be898785acbc6f00aa735c1412ec47
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87307198"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897573"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Taggen von Bildern in einem Bezeichnungsprojekt 
 
@@ -111,7 +111,7 @@ Bei einem Projekt vom Typ „Object Identification (Bounding Boxes)“ (Objektid
 1. Wählen Sie das **Tool für rechteckige Felder**![Tool für rechteckige Felder](./media/how-to-label-images/rectangular-box-tool.png) aus, oder drücken Sie „R“.
 3. Klicken Sie auf Ihr Ziel, und ziehen Sie diagonal, um einen ungefähren Begrenzungsrahmen zu erstellen. Ziehen Sie die Ränder oder Ecken, um das Begrenzungsfeld anzupassen.
 
-![Screenshot: Erstellung eines einfachen Begrenzungsrahmens](./media/how-to-label-images/bounding-box-sequence.png)
+![Erstellen von Begrenzungsrahmen](./media/how-to-label-images/bounding-box-sequence.png)
 
 Wenn Sie einen Begrenzungsrahmen löschen möchten, klicken Sie auf das X-förmige Ziel, das nach der Erstellung neben dem Begrenzungsrahmen angezeigt wird.
 

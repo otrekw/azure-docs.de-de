@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/24/2020
-ms.openlocfilehash: e4511cf4393172e7d2b1ab8a985c76d8f98d4015
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ecf739ea838ad3742612eab7a1b42ac8c8ac455a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79456062"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905264"
 ---
 # <a name="permutation-feature-importance"></a>Permutation Feature Importance (PFI)
 
-In diesem Artikel wird beschrieben, wie das Modul „Permutation Feature Importance“ im Azure Machine Learning-Designer (Vorschau) eingesetzt werden kann, um einen Satz mit Bewertungen der Featurerelevanz für Ihr Dataset zu berechnen. Sie können anhand dieser Bewertungen die besten Features zur Verwendung in einem Modell bestimmen.
+In diesem Artikel wird beschrieben, wie das Modul „Permutation Feature Importance“ im Azure Machine Learning-Designer eingesetzt werden kann, um einen Satz mit Bewertungen der Featurerelevanz für Ihr Dataset zu berechnen. Sie können anhand dieser Bewertungen die besten Features zur Verwendung in einem Modell bestimmen.
 
 In diesem Modul werden Featurewerte Spalte für Spalte nach dem Zufallsprinzip neu angeordnet. Vor und nach diesem Vorgang wird die Leistung des Modells gemessen. Sie können hierbei eine der Standardmetriken zum Messen der Leistung auswählen.
 

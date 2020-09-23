@@ -4,8 +4,8 @@
   items:
     - name: Was ist Stream Analytics?
       href: stream-analytics-introduction.md
-    - name: Muster für End-to-End-Lösungen
-      href: stream-analytics-solution-patterns.md
+    - name: "Stream\_Analytics-Cluster"
+      href: cluster-overview.md
 - name: Schnellstarts
   expanded: true
   items:
@@ -23,7 +23,11 @@
         - name: Visual Studio
           href: stream-analytics-quick-create-vs.md
         - name: Visual Studio Code
-          href: quick-create-vs-code.md
+          href: quick-create-visual-studio-code.md
+    - name: Erstellen eines Clusters
+      items:
+        - name: Azure-Portal
+          href: create-cluster.md
 - name: Tutorials
   items:
     - name: 1. Erstellen/Verwalten eines Auftrags
@@ -42,6 +46,8 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=stream-analytics'
 - name: Konzepte
   items:
+    - name: Muster für End-to-End-Lösungen
+      href: stream-analytics-solution-patterns.md
     - name: "Auswählen einer Stream\_Analytics-Technologie"
       href: streaming-technologies.md
     - name: Auswählen eines Tools für die Auftragsentwicklung
@@ -145,6 +151,14 @@
   items:
     - name: Verwalten
       items:
+        - name: Cluster
+          items:
+            - name: Erstellen und Löschen privater Endpunkte
+              href: private-endpoints.md
+            - name: Hinzufügen und Entfernen von Aufträgen
+              href: manage-jobs-cluster.md
+            - name: Skalieren der Clustergröße
+              href: scale-cluster.md
         - name: Automatisches Skalieren von Aufträgen
           href: stream-analytics-autoscale.md
         - name: Aktualisieren von Anmeldeinformationen
@@ -234,6 +248,14 @@
           href: stream-analytics-cicd-api.md
         - name: Exportieren und Bereitstellen mit Azure Resource Manager
           href: resource-manager-export.md
+    - name: Continuous Integration und Continuous Deployment
+      items:
+        - name: Übersicht über CI/CD
+          href: cicd-overview.md
+        - name: 'Erstellen, Testen und Bereitstellen mit PowerShell'
+          href: cicd-tools.md
+        - name: Einrichten einer Pipeline mit Azure DevOps
+          href: set-up-cicd-pipeline.md
     - name: Visual Studio
       items:
         - name: Installieren von Tools
@@ -260,8 +282,6 @@
           href: visual-studio-code-local-run-live-input.md
         - name: Debuggen von Abfragen mithilfe des Auftragsdiagramms
           href: debug-locally-using-job-diagram-vs-code.md
-        - name: Einrichten von CI-/CD-Pipelines
-          href: setup-cicd-vs-code.md
         - name: Untersuchen von Aufträgen
           href: visual-studio-code-explore-jobs.md
         - name: Felder in „JobConfig.json“

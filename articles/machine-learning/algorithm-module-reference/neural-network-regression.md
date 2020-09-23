@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: c260643d7d553e407d0758f286aac76c91ae08d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 403576454615effeb53651b51679681422b08e9e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137687"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890364"
 ---
 # <a name="neural-network-regression-module"></a>Modul „Regression mit neuronalen Netzwerken“
 
@@ -24,7 +24,7 @@ ms.locfileid: "82137687"
   
 ## <a name="module-overview"></a>Modulübersicht  
 
-In diesem Artikel wird ein Modul in Azure Machine Learning-Designer (Vorschauversion) beschrieben.
+In diesem Artikel wird ein Modul im Azure Machine Learning-Designer beschrieben.
 
 Verwenden Sie dieses Modul, um mithilfe eines anpassbaren neuronalen Netzwerkalgorithmus ein Regressionsmodell zu erstellen.
   

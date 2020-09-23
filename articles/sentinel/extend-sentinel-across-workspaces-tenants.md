@@ -1,6 +1,6 @@
 ---
 title: Erweitern von Azure Sentinel auf Arbeitsbereiche und Mandanten | Microsoft-Dokumentation
-description: Informationen zum Arbeiten mit mehreren Mandanten in Azure Sentinel für MSSP-Dienstanbieter.
+description: Erfahren Sie, wie Sie Azure Sentinel zum übergreifenden Abfragen und Analysieren von Daten in Arbeitsbereichen und Mandanten verwenden.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/11/2020
+ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: 596d0f4870d9331a332dfb81bd7d2d224964a593
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b899069a03b39d068f2b4059cf26d3baf1f3beae
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519012"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905415"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>Erweitern von Azure Sentinel auf Arbeitsbereiche und Mandanten
 
@@ -94,6 +94,13 @@ Durch eine Funktion kann auch eine häufig verwendete Union vereinfacht werden. 
 
 Anschließend können Sie eine Abfrage über beide Arbeitsbereiche schreiben, indem Sie mit `unionSecurityEvent | where ...` beginnen.
 
+#### <a name="scheduled-alerts"></a>Geplante Benachrichtigungen
+
+Arbeitsbereiche übergreifende Abfragen können jetzt in geplante Benachrichtigungen in Analyseregeln einbezogen werden, unterliegen aber den folgenden Beschränkungen:
+
+- Es können bis zu 10 Arbeitsbereiche in einer einzelnen Abfrage enthalten sein.
+- Azure Sentinel muss in jedem Arbeitsbereich bereitgestellt sein, auf den in der Abfrage verwiesen wird.
+
 > [!NOTE] 
 > Werden in derselben Abfrage mehrere Arbeitsbereiche abgefragt, kann sich dies negativ auf die Leistung auswirken. Diese Vorgehensweise wird daher nur empfohlen, wenn diese Funktionalität von der Logik vorausgesetzt wird.
 
@@ -121,13 +128,6 @@ Mithilfe der arbeitsbereichsübergreifenden Hunting-Funktionen können Ihre Bedr
 Um mehrere Azure Sentinel-Arbeitsbereiche zu konfigurieren und zu verwalten, müssen Sie die Verwendung der Azure Sentinel Management-API automatisieren. Weitere Informationen zur automatisierten Bereitstellung von Azure Sentinel-Ressourcen, einschließlich Warnungsregeln, Hunting-Abfragen, Arbeitsmappen und Playbooks, finden Sie unter [Erweitern von Azure Sentinel: APIs, Integration und Verwaltungsautomatisierung](https://techcommunity.microsoft.com/t5/azure-sentinel/extending-azure-sentinel-apis-integration-and-management/ba-p/1116885).
 
 Weitere Informationen finden Sie zudem unter [Bereitstellen und Verwalten von Azure Sentinel als Code](https://techcommunity.microsoft.com/t5/azure-sentinel/deploying-and-managing-azure-sentinel-as-code/ba-p/1131928) und [Kombinieren von Azure Lighthouse mit DevOps-Funktionen für Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/combining-azure-lighthouse-with-sentinel-s-devops-capabilities/ba-p/1210966). Mithilfe einer konsolidierten, von der Community unterstützten Methode können Sie Azure Sentinel als Code verwalten und Ressourcen über ein privates GitHub-Repository bereitstellen und konfigurieren. 
-
-
-## <a name="whats-not-supported-across-workspaces"></a>Welche Funktionen werden arbeitsbereichsübergreifend nicht unterstützt?
-
-Die folgenden Funktionen werden zwischen mehreren Arbeitsbereichen nicht unterstützt:
-
-- Eine geplante Warnungsregel kann nicht über eine arbeitsbereichsübergreifende Abfrage für mehrere Arbeitsbereiche durchgesetzt werden.
 
 ## <a name="managing-workspaces-across-tenants-using-azure-lighthouse"></a>Mandantenübergreifende Verwaltung von Arbeitsbereichen mithilfe von Azure Lighthouse
 

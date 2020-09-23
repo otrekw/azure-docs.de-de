@@ -11,15 +11,15 @@ ms.reviewer: larryfr
 ms.date: 03/06/2020
 ms.topic: conceptual
 ms.custom: how-to, racking-python
-ms.openlocfilehash: 8d1ea9b0989a71268b98f0b2fd1d95d5671f996b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 239fc9de991066ec0603247abafae36a618d534f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325796"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889872"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Bereitstellen eines Machine Learning-Modells in Azure Functions (Vorschauversion)
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Hier erfahren Sie, wie Sie ein Modell in Azure Machine Learning als Funktions-App in Azure Functions bereitstellen.
 
@@ -45,7 +45,7 @@ Mit Azure Machine Learning können Sie Docker-Images auf der Grundlage trainiert
 
 ## <a name="prepare-for-deployment"></a>Vorbereiten der Bereitstellung
 
-Vor der Bereitstellung müssen Sie die Elemente definieren, die zum Ausführen des Modells als Webdienst erforderlich sind. Im Folgenden werden die allgemeinen für eine Bereitstellung erforderlichen Elemente beschrieben:
+Vor der Bereitstellung müssen Sie die Elemente definieren, die zum Ausführen des Modells als Webdienst erforderlich sind. Die folgende Liste beschreibt die wesentlichen für eine Bereitstellung erforderlichen Elemente:
 
 * Ein __Eingabeskript__. Dieses Skript akzeptiert Anforderungen, bewertet die Anforderung mithilfe des Modells und gibt die Ergebnisse zurück.
 
@@ -63,7 +63,7 @@ Weitere Informationen zum Einstiegsskript finden Sie unter [Definieren des Bewer
 Diese Entitäten werden in einer __Rückschlusskonfiguration__ gekapselt. Die Rückschlusskonfiguration verweist auf das Eingabeskript und andere Abhängigkeiten.
 
 > [!IMPORTANT]
-> Beim Erstellen einer Rückschlusskonfiguration zur Verwendung mit Azure Functions müssen Sie ein [Environment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py)-Objekt verwenden. Beachten Sie, dass Sie beim Definieren einer benutzerdefinierten Umgebung azureml-defaults mit Version > = 1.0.45 als Pip-Abhängigkeit hinzufügen müssen. Dieses Paket enthält die erforderlichen Funktionen zum Hosten des Modells als Webdienst. Im folgenden Beispiel wird veranschaulicht, wie ein Environment-Objekt erstellt und mit einer Rückschlusskonfiguration verwendet wird:
+> Beim Erstellen einer Rückschlusskonfiguration zur Verwendung mit Azure Functions müssen Sie ein [Environment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py&preserve-view=true)-Objekt verwenden. Beachten Sie, dass Sie beim Definieren einer benutzerdefinierten Umgebung azureml-defaults mit Version > = 1.0.45 als Pip-Abhängigkeit hinzufügen müssen. Dieses Paket enthält die erforderlichen Funktionen zum Hosten des Modells als Webdienst. Im folgenden Beispiel wird veranschaulicht, wie ein Environment-Objekt erstellt und mit einer Rückschlusskonfiguration verwendet wird:
 >
 > ```python
 > from azureml.core.environment import Environment
@@ -96,7 +96,7 @@ pip install azureml-contrib-functions
 
 ## <a name="create-the-image"></a>Erstellen des Images
 
-Verwenden Sie zum Erstellen des in Azure Functions bereitgestellten Docker-Images [azureml.contrib.functions.package](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py) oder die spezifische Paketfunktion für den Trigger, den Sie verwenden möchten. Der folgende Codeausschnitt veranschaulicht, wie ein neues Paket mit einem Blob-Trigger aus der Modell- und Rückschlusskonfiguration erstellt wird:
+Verwenden Sie zum Erstellen des in Azure Functions bereitgestellten Docker-Images [azureml.contrib.functions.package](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py&preserve-view=true) oder die spezifische Paketfunktion für den Trigger, den Sie verwenden möchten. Der folgende Codeausschnitt veranschaulicht, wie ein neues Paket mit einem Blob-Trigger aus der Modell- und Rückschlusskonfiguration erstellt wird:
 
 > [!NOTE]
 > Im Codeausschnitt wird davon ausgegangen, dass `model` ein registriertes Modell und `inference_config` die Konfiguration für die Rückschlussumgebung enthält. Weitere Informationen finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md).
@@ -301,4 +301,4 @@ Weitere Informationen zur Verwendung von Blobtriggern finden Sie im Artikel [Ers
 * Weitere Informationen zu Blob Storage-Triggern finden Sie unter [Azure Blob Storage-Bindungen](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob).
 * [Bereitstellen Ihres Modells in Azure App Service](how-to-deploy-app-service.md).
 * [Consume a ML Model deployed as a web service (Nutzen eines als Webdienst bereitgestellten Azure Machine Learning-Modells)](how-to-consume-web-service.md).
-* [API-Referenz](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py)
+* [API-Referenz](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py&preserve-view=true)

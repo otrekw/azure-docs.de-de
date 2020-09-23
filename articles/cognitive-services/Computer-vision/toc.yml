@@ -109,6 +109,22 @@
       href: concept-recognizing-text.md
     - name: Erkennung von nicht jugendfreien Inhalten
       href: concept-detecting-adult-content.md
+- name: Verantwortungsbewusste künstliche Intelligenz
+  items:
+    - name: Transparenzhinweis
+      items:
+        - name: Einführung in die räumliche Analyse
+          href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/intro-to-spatial-analysis-public-preview'
+        - name: Merkmale und Einschränkungen
+          href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/accuracy-and-limitations'
+    - name: 'Compliance, Datenschutz und Sicherheit'
+      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/compliance-privacy-security-2'
+    - name: Verantwortungsvolle Verwendung bei der KI-Bereitstellung
+      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/responsible-use-deployment'
+    - name: Entwurfsrichtlinien für die Offenlegung
+      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/disclosure-design'
+    - name: Forschungserkenntnisse
+      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/research-insights'
 - name: Container
   items:
     - name: Lese-API-Container
@@ -125,6 +141,20 @@
         - name: Verwenden von Containerinstanzen
           href: deploy-computer-vision-on-container-instances.md
           displayName: 'container instances, container, containers, images'
+    - name: Container für räumliche Analyse
+      items:
+        - name: Einrichten des Hostcomputers und Ausführen des Containers
+          href: spatial-analysis-container.md
+        - name: Konfigurieren von Vorgängen
+          href: spatial-analysis-operations.md
+        - name: Bereitstellen einer Web-App für die Erfassung der Personenanzahl
+          href: Spatial-analysis-web-app.md
+        - name: Protokollierung und Problembehandlung
+          href: spatial-analysis-logging.md
+        - name: Anordnung von Zonen und Linien
+          href: spatial-analysis-zone-line-placement.md
+        - name: Kameraplatzierung
+          href: spatial-analysis-camera-placement.md
 - name: Anleitungen
   items:
     - name: Aufrufen der Maschinelles Sehen-API

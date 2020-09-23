@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
-ms.date: 07/09/2020
-ms.openlocfilehash: 5ec6af894f434f8d1f7df34b2ed0c2514ab88cc4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 09/03/2020
+ms.openlocfilehash: abdd04f59ee820585d58817297d161f68bd952f0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87306144"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897402"
 ---
 # <a name="manage-azure-machine-learning-resources-with-the-vs-code-extension-preview"></a>Verwalten von Azure Machine Learning-Ressourcen mit der VS Code-Erweiterung (Vorschau)
 
@@ -44,10 +44,10 @@ Weitere Informationen finden Sie im [Artikel zu Arbeitsbereichen](concept-worksp
     1. Wählen Sie Ihr Azure-Abonnement aus.
     1. Wählen Sie eine Ressourcengruppe aus, in der der Arbeitsbereich bereitgestellt werden soll, oder erstellen Sie sie.
     1. Wählen Sie den Speicherort aus, in dem der Arbeitsbereich bereitgestellt werden soll.
-    1. Wählen Sie zwischen *Basic Edition*  und *Enterprise Edition* aus. Hier finden Sie weitere Informationen zu den [Azure Machine Learning-Editionen](concept-editions.md).
 
 Alternative Verfahren zum Erstellen eines Arbeitsbereichs:
 
+- Öffnen Sie die Befehlspalette **Ansicht > Befehlspalette**, und geben Sie in die Texteingabeaufforderung **Azure ML: Arbeitsbereich erstellen** ein.
 - Klicken Sie oben in der Azure Machine Learning-Ansicht auf das Symbol `+`.
 - Erstellen Sie einen neuen Arbeitsbereich, wenn Sie während der Bereitstellung anderer Ressourcen aufgefordert werden, einen Arbeitsbereich auszuwählen.
 
@@ -242,6 +242,39 @@ Wenn eine Ausführung angeschlossen wurde, können Sie die Protokolle und Assets
 ### <a name="view-run-metadata"></a>Anzeigen von Ausführungsmetadaten
 
 In der Erweiterung können Sie die Metadaten überprüfen, z. B. die für die Ausführung verwendete Laufzeitkonfiguration sowie Informationen zur Ausführung.
+
+## <a name="compute-instances"></a>Compute-Instanzen
+
+Weitere Informationen finden Sie im Artikel über [Compute-Instanzen](concept-compute-instance.md).
+
+### <a name="create-compute-instance"></a>Erstellen einer Compute-Instanz
+
+1. Erweitern Sie den Abonnementknoten, der den Arbeitsbereich enthält.
+1. Erweitern Sie den Arbeitsbereichsknoten, unter dem Sie die Compute-Instanz erstellen möchten.
+1. Klicken Sie mit der rechten Maustaste auf den Knoten **Compute instances** (Compute-Instanzen), und klicken Sie dann auf **Create compute instance** (Compute-Instanz erstellen).
+1. An der Eingabeaufforderung:
+    1. Geben Sie einen Namen für Ihre Compute-Instanz an.
+    1. Wählen Sie in der Liste eine VM-Größe aus.
+    1. Geben Sie an, ob Sie SSH-Zugriff aktivieren möchten.
+        1. Wenn Sie SSH-Zugriff aktivieren, müssen Sie auch den öffentlichen SSH-Schlüssel angeben oder die Datei, die den Schlüssel enthält. Weitere Informationen finden Sie in der [Anleitung zum Erstellen und Verwenden von SSH-Schlüsseln in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys).
+
+### <a name="stop-or-restart-compute-instance"></a>Anhalten oder Neustart einer Compute-Instanz
+
+1. Erweitern Sie den Abonnementknoten, der den Arbeitsbereich enthält.
+1. Erweitern Sie den Knoten **Compute instance** (Compute-Instanz) in Ihrem Arbeitsbereich.
+1. Klicken Sie mit der rechten Maustaste auf die Compute-Instanz, die Sie anhalten oder neu starten möchten, und klicken Sie auf **Stop Compute instance** (Compute-Instanz anhalten) bzw. **Restart compute instance** (Compute-Instanz neu starten).
+
+### <a name="view-compute-instance-configuration"></a>Anzeigen der Konfiguration für eine Compute-Instanz
+
+1. Erweitern Sie den Abonnementknoten, der den Arbeitsbereich enthält.
+1. Erweitern Sie den Knoten **Compute instance** (Compute-Instanz) in Ihrem Arbeitsbereich.
+1. Klicken Sie mit der rechten Maustaste auf die Compute-Instanz, die Sie untersuchen möchten, und klicken Sie dann auf **View Compute instance Properties** (Compute-Instanzeigenschaften anzeigen).
+
+### <a name="delete-compute-instance"></a>Löschen einer Compute-Instanz
+
+1. Erweitern Sie den Abonnementknoten, der den Arbeitsbereich enthält.
+1. Erweitern Sie den Knoten **Compute instance** (Compute-Instanz) in Ihrem Arbeitsbereich.
+1. Klicken Sie mit der rechten Maustaste auf die Compute-Instanz, die Sie löschen möchten, und klicken Sie dann auf **Delete compute instance** (Compute-Instanz löschen).
 
 ## <a name="compute-clusters"></a>Computecluster
 

@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: c80823513dd65d68d74be62ca1194f843623d2dc
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 3286b464051b8fea88d2797d4f82b20fe432b4b8
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323025"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019528"
 ---
 # <a name="upload-files-with-iot-hub"></a>Hochladen von Dateien mit IoT Hub
 
@@ -28,6 +28,8 @@ Statt Nachrichten über IoT Hub selbst zu übertragen, fungiert IoT Hub als Vert
 Bevor Sie eine Datei von einem Gerät in IoT Hub hochladen, müssen Sie Ihren Hub konfigurieren, indem Sie ihm ein [Azure Storage-Konto zuordnen](iot-hub-devguide-file-upload.md#associate-an-azure-storage-account-with-iot-hub).
 
 Ihr Gerät kann dann einen [Upload initialisieren](iot-hub-devguide-file-upload.md#initialize-a-file-upload) und dann [IoT Hub benachrichtigen](iot-hub-devguide-file-upload.md#notify-iot-hub-of-a-completed-file-upload), sobald der Upload abgeschlossen ist. Optional: Wenn ein Gerät IoT Hub benachrichtigt, dass der Upload abgeschlossen ist, kann der Dienst eine [Benachrichtigung](iot-hub-devguide-file-upload.md#file-upload-notifications) generieren.
+
+[!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
 
 ### <a name="when-to-use"></a>Verwendung
 

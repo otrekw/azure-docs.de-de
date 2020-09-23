@@ -8,16 +8,16 @@ author: sabbour
 ms.author: asabbour
 keywords: aro, openshift, az aro, red hat, cli
 ms.custom: mvc
-ms.openlocfilehash: 10a7dc662993327b71d43c27f44d22166a3f3611
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 2cb54c202af04996080cda970b3d327145f0e72b
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590318"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469880"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-portal"></a>Konfigurieren der Azure Active Directory-Authentifizierung für einen Azure Red Hat OpenShift 4-Cluster (Portal)
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial Version 2.6.0 oder höher der Azure CLI ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens Version 2.6.0 der Azure CLI ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -50,7 +50,7 @@ Navigieren Sie zur **Übersicht**, und notieren Sie sich die **Anwendungs-ID (Cl
 
 ## <a name="configure-optional-claims"></a>Konfigurieren optionaler Ansprüche
 
-Anwendungsentwickler können [optionale Ansprüche](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims) in ihren Azure AD-Anwendungen verwenden, um anzugeben, welche Ansprüche in Token vorhanden sein sollen, die an ihre Anwendungen gesendet werden.
+Anwendungsentwickler können [optionale Ansprüche](../active-directory/develop/active-directory-optional-claims.md) in ihren Azure AD-Anwendungen verwenden, um anzugeben, welche Ansprüche in Token vorhanden sein sollen, die an ihre Anwendungen gesendet werden.
 
 Sie können optionale Ansprüche zu folgenden Zwecken verwenden:
 
@@ -68,7 +68,7 @@ Navigieren Sie zu **Tokenkonfiguration (Vorschau)** , und klicken Sie auf **Opti
 
 Anwendungen, die für einen Azure AD-Mandanten (Azure Active Directory) registriert sind, sind standardmäßig für alle Benutzer des Mandanten verfügbar, deren Authentifizierung erfolgreich war. Azure AD ermöglicht Mandantenadministratoren und Entwicklern die Beschränkung einer App auf eine bestimmte Gruppe von Benutzern oder Sicherheitsgruppen im Mandanten.
 
-Befolgen Sie die Anweisungen in der Azure Active Directory-Dokumentation, um der [App Benutzer und Gruppen zuzuweisen](https://docs.microsoft.com/azure/active-directory/develop/howto-restrict-your-app-to-a-set-of-users#app-registration).
+Befolgen Sie die Anweisungen in der Azure Active Directory-Dokumentation, um der [App Benutzer und Gruppen zuzuweisen](../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md#app-registration).
 
 ## <a name="configure-openshift-openid-authentication"></a>Konfigurieren der OpenID-Authentifizierung für OpenShift
 

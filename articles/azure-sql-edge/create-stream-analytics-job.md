@@ -1,6 +1,6 @@
 ---
-title: Erstellen eines T-SQL-Streamingauftrags in Azure SQL Edge (Vorschau)
-description: Erfahren Sie mehr über das Erstellen von Stream Analytics-Aufträgen in Azure SQL Edge (Vorschau).
+title: Erstellen eines T-SQL-Streamingauftrags in Azure SQL Edge
+description: Erfahren Sie mehr über das Erstellen von Stream Analytics-Aufträgen in Azure SQL Edge.
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,19 +9,16 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
-ms.openlocfilehash: 346a59f085e766fef09d73b9e7baa03dad510148
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f0fcdf7aab5f43a0412cd28a1c15188b19770dc6
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321716"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888097"
 ---
-# <a name="create-an-azure-stream-analytics-job-in-azure-sql-edge-preview"></a>Erstellen eines Azure Stream Analytics-Auftrags in Azure SQL Edge (Vorschau) 
+# <a name="create-a-data-streaming-job-in-azure-sql-edge"></a>Erstellen eines Datenstreamingauftrags in Azure SQL Edge 
 
-In diesem Artikel wird das Erstellen eines T-SQL-Streamingauftrags in Azure SQL Edge (Vorschau) beschrieben. Sie erstellen die externen Streameingabe- und -Ausgabeobjekte und definieren dann die Abfrage des Streamingauftrags im Rahmen der Erstellung des Streamingauftrags.
-
-> [!NOTE]
-> Um T-SQL-Streaming in Azure SQL Edge zu aktivieren, legen Sie „TF 11515“ als Startoption fest, oder verwenden Sie den Befehl [DBCC TRACEON]( https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql). Weitere Informationen zum Aktivieren von Ablaufverfolgungsflags unter Verwendung einer Datei „mssql.conf“ finden Sie unter [Konfigurieren mithilfe einer Datei „mssql.conf“](configure.md#configure-by-using-an-mssqlconf-file).
+In diesem Artikel wird das Erstellen eines T-SQL-Streamingauftrags in Azure SQL Edge beschrieben. Sie erstellen die externen Streameingabe- und -Ausgabeobjekte und definieren dann die Abfrage des Streamingauftrags im Rahmen der Erstellung des Streamingauftrags.
 
 ## <a name="configure-the-external-stream-input-and-output-objects"></a>Konfigurieren der externen Streameingabe- und -ausgabeobjekte
 
@@ -255,5 +252,5 @@ Der Streamingauftrag kann einen der folgenden Zustände aufweisen:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Anzeigen von Metadaten für Streamingaufträge in Azure SQL Edge (Vorschau)](streaming-catalog-views.md) 
+- [Anzeigen von Metadaten für Streamingaufträge in Azure SQL Edge](streaming-catalog-views.md) 
 - [Erstellen eines externen Streams](create-external-stream-transact-sql.md)

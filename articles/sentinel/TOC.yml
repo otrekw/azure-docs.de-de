@@ -29,6 +29,8 @@
       href: fusion.md
     - name: Erweitern von Azure Sentinel auf Arbeitsbereiche und Mandanten
       href: extend-sentinel-across-workspaces-tenants.md
+    - name: Übergreifendes Normalisieren Ihrer Daten für Tabellen
+      href: normalization.md
     - name: Sicherheit
       items:
         - name: Sicherheitsbaseline
@@ -54,17 +56,19 @@
               href: connect-azure-ad-identity-protection.md
             - name: Azure Information Protection
               href: connect-azure-information-protection.md
-            - name: Microsoft Defender ATP
+            - name: "Microsoft\_365 Defender"
+              href: connect-microsoft-365-defender.md
+            - name: Microsoft Defender für den Endpunkt (vormals MDATP)
               href: connect-microsoft-defender-advanced-threat-protection.md
-            - name: Azure ATP
+            - name: Microsoft Defender für die Identität (vormals Azure ATP)
               href: connect-azure-atp.md
             - name: Azure DDoS Protection
               href: connect-azure-ddos-protection.md
             - name: Azure Firewall
               href: connect-azure-firewall.md
-            - name: Azure Security Center
+            - name: Azure Defender-Warnungen von ASC
               href: connect-azure-security-center.md
-            - name: Azure Security Center für IoT
+            - name: Azure Defender (vormals ASC) für IoT
               href: connect-asc-iot.md
             - name: Azure Web Application Firewall (WAF)
               href: connect-azure-waf.md
@@ -118,6 +122,8 @@
               href: connect-vmware-carbon-black.md
             - name: Zimperium Mobile Threat Defense
               href: connect-zimperium-mtd.md
+            - name: Herstellen einer Verbindung mithilfe von Logstash
+              href: connect-logstash.md
             - name: CEF-basierte Lösungen
               href: connect-common-event-format.md
               items:
@@ -181,6 +187,8 @@
   items:
     - name: REST-APIs
       href: 'https://docs.microsoft.com/rest/api/securityinsights/'
+    - name: Schema zur Netzwerknormalisierung
+      href: normalization-schema.md
 - name: Ressourcen
   items:
     - name: Nützliche Ressourcen
