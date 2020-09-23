@@ -70,7 +70,7 @@
     - name: Verschlüsselung von ruhenden Daten
       href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Verschlüsselung ruhender Daten mit kundenseitig verwalteten Schlüsseln
-      href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+      href: ../common/customer-managed-keys-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Skalierbarkeits- und Leistungsziele
       href: storage-files-scale-targets.md
     - name: Complianceangebote
@@ -243,18 +243,16 @@
           items:
             - name: Überprüfen des Verschlüsselungsschlüsselmodells für das Konto
               href: ../common/storage-encryption-key-model-get.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-            - name: Konfigurieren der von Kunden verwalteten Verschlüsselungsschlüssel
+            - name: Konfigurieren der Verschlüsselung mit von Kunden verwalteten Schlüsseln
               items:
-                - name: Portal
-                  href: ../common/storage-encryption-keys-portal.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-                - name: PowerShell
-                  href: ../common/storage-encryption-keys-powershell.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-                - name: Azure CLI
-                  href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Aktivieren der Infrastrukturverschlüsselung für ein Speicherkonto
+                - name: Speichern kundenseitig verwalteter Schlüssel in einem Schlüsseltresor
+                  href: ../common/customer-managed-keys-configure-key-vault.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+                - name: Speichern kundenseitig verwalteter Schlüssel in einem verwalteten HSM
+                  href: ../common/customer-managed-keys-configure-key-vault-hsm.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: Aktivieren der Infrastrukturverschlüsselung für das Konto
           href: ../common/infrastructure-encryption-enable.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Erweiterter Schutz vor Bedrohungen
-          href: ../common/storage-advanced-threat-protection.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: Konfigurieren von Azure Defender für Bedrohungsschutz
+          href: ../common/azure-defender-storage-configure.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Konfigurieren von Firewalls und virtuellen Netzwerken
           href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Vorschreiben einer sicheren Übertragung
