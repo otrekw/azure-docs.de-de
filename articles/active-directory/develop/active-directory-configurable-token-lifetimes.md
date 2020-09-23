@@ -13,12 +13,12 @@ ms.date: 04/17/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: e50b4aa300c74ed5fff9a345f83d41fdda5a1054
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: bbe4328d797f740e124d4944aee889d471393200
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115865"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085602"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Konfigurierbare Tokengültigkeitsdauer in Microsoft Identity Platform (Vorschau)
 
@@ -90,8 +90,8 @@ Eine Tokengültigkeitsdauer-Richtlinie ist ein Richtlinienobjekt, das Regeln fü
 | Max. Zeit der Inaktivität für Aktualisierungstoken |MaxInactiveTime |Aktualisierungstoken |90 Tage |10 Minuten |90 Tage |
 | Max. Alter Single-Factor-Aktualisierungstoken |MaxAgeSingleFactor |Aktualisierungstoken (für alle Benutzer) |Bis zum Widerruf |10 Minuten |Bis zum Widerruf<sup>1</sup> |
 | Max. Alter Multi-Factor-Aktualisierungstoken |MaxAgeMultiFactor |Aktualisierungstoken (für alle Benutzer) |Bis zum Widerruf |10 Minuten |Bis zum Widerruf<sup>1</sup> |
-| Max. Alter Single-Factor-Sitzungstoken |MaxAgeSessionSingleFactor |Sitzungstoken (beständig und nicht beständig) |Bis zum Widerruf |10 Minuten |Bis zum Widerruf<sup>1</sup> |
-| Max. Alter Multi-Factor-Sitzungstoken |MaxAgeSessionMultiFactor |Sitzungstoken (beständig und nicht beständig) |Bis zum Widerruf |10 Minuten |Bis zum Widerruf<sup>1</sup> |
+| Max. Alter Single-Factor-Sitzungstoken |MaxAgeSessionSingleFactor |Sitzungstoken (beständig und nicht beständig) |Bis zum Widerruf |10 Minuten |180 Tage<sup>1</sup> |
+| Max. Alter Multi-Factor-Sitzungstoken |MaxAgeSessionMultiFactor |Sitzungstoken (beständig und nicht beständig) |Bis zum Widerruf |10 Minuten |180 Tage<sup>1</sup> |
 
 * <sup>1</sup>365 Tage ist die explizite Maximallänge, die für diese Attribute festgelegt werden kann.
 * <sup>2</sup>Damit der Microsoft Teams-Webclient funktioniert, empfiehlt es sich, „AccessTokenLifetime“ für Microsoft Teams auf mehr als 15 Minuten festzulegen.

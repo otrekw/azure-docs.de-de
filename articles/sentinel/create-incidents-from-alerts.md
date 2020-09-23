@@ -13,27 +13,27 @@ ms.topic: how-to
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 1593b96ae8412632120e8977635a4193996ca88d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fabf847b672f4dbf3e680a21bc7015655c612552
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82025117"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906309"
 ---
 # <a name="automatically-create-incidents-from-microsoft-security-alerts"></a>Automatisches Erstellen von Incidents aus Microsoft-Sicherheitswarnungen
 
-Mit Azure Sentinel in Zusammenhang stehende Warnungen, die in Microsoft-Sicherheitslösungen (z. B. Microsoft Cloud App Security und Azure Advanced Threat Protection) ausgelöst werden, erstellen nicht automatisch Incidents in Azure Sentinel. Bei der Verbindung einer Microsoft-Lösung mit Azure Sentinel werden alle in diesem Dienst generierten Warnungen standardmäßig als Rohdaten in Azure Sentinel in der Tabelle mit den Sicherheitswarnungen in Ihrem Azure Sentinel-Arbeitsbereich gespeichert. Sie können diese Daten dann wie alle anderen Rohdaten verwenden, die Sie mit Sentinel verbinden.
+Mit Azure Sentinel in Zusammenhang stehende Warnungen, die in Microsoft-Sicherheitslösungen ausgelöst werden, wie Microsoft Cloud App Security und Microsoft Defender for Identity (vormals Azure ATP), erstellen nicht automatisch Incidents in Azure Sentinel. Bei der Verbindung einer Microsoft-Lösung mit Azure Sentinel werden alle in diesem Dienst generierten Warnungen standardmäßig als Rohdaten in Azure Sentinel in der Tabelle mit den Sicherheitswarnungen in Ihrem Azure Sentinel-Arbeitsbereich gespeichert. Sie können diese Daten dann wie alle anderen Rohdaten verwenden, die Sie mit Sentinel verbinden.
 
 Sie können Azure Sentinel ganz einfach so konfigurieren, dass Incidents immer automatisch erstellt werden, wenn eine Warnung in einer verbundenen Microsoft-Sicherheitslösung ausgelöst wird. Befolgen Sie hierzu die Anweisungen in diesem Artikel.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Sie müssen [Microsoft-Sicherheitslösungen verbinden](connect-data-sources.md#data-connection-methods), um die Erstellung von Incidents aus Sicherheitsdienstwarnungen zu aktivieren.
 
-## <a name="using-microsoft-security-incident-creation-analytic-rules"></a>Verwenden von Analyseregeln zur Erstellung von Microsoft-Sicherheitsincidents
+## <a name="using-microsoft-security-incident-creation-analytics-rules"></a>Verwenden von Analyseregeln zur Erstellung von Microsoft-Sicherheitsincidents
 
-Verwenden Sie die in Azure Sentinel integrierten Regeln, um auszuwählen, welche verbundenen Microsoft-Sicherheitslösungen automatisch Azure Sentinel-Incidents in Echtzeit erstellen sollen. Sie können mithilfe der Regeln auch spezifischere Filteroptionen definieren und somit festlegen, welche der durch die Microsoft-Sicherheitslösung generierten Warnungen automatisch Incidents in Azure Sentinel erstellen sollen. Sie können beispielsweise festlegen, dass Azure Sentinel-Incidents automatisch nur aus Azure Security Center-Benachrichtigungen mit hohem Schweregrad erstellt werden.
+Verwenden Sie die in Azure Sentinel integrierten Regeln, um auszuwählen, welche verbundenen Microsoft-Sicherheitslösungen automatisch Azure Sentinel-Incidents in Echtzeit erstellen sollen. Sie können mithilfe der Regeln auch spezifischere Filteroptionen definieren und somit festlegen, welche der durch die Microsoft-Sicherheitslösung generierten Warnungen automatisch Incidents in Azure Sentinel erstellen sollen. Sie können beispielsweise festlegen, dass Azure Sentinel-Incidents automatisch nur aus Azure Defender-Benachrichtigungen (vormals Azure Security Center) mit hohem Schweregrad erstellt werden.
 
 1. Wählen Sie im Azure-Portal unter „Azure Sentinel“ die Option **Analytics** aus.
 
@@ -47,7 +47,7 @@ Verwenden Sie die in Azure Sentinel integrierten Regeln, um auszuwählen, welche
 
 1. Sie können die Regeldetails ändern und die Warnungen, die Incidents erstellen, nach dem Schweregrad der Warnung oder nach Text im Namen der Warnung filtern.  
       
-    Wenn Sie beispielsweise im Feld **Microsoft-Sicherheitsdienst** die Option **Azure Security Center** und im Feld  **Nach Schweregrad filtern** die Option **Hoch** auswählen, erzeugen nur Azure Security Center-Warnungen mit hohem Schweregrad automatisch Incidents in Azure Sentinel.  
+    Wenn Sie beispielsweise im Feld **Microsoft-Sicherheitsdienst** die Option **Azure Defender** (möglicherweise heißt es noch *Azure Security Center*) und im Feld **Nach Schweregrad filtern** die Option **Hoch** auswählen, erzeugen nur Azure Defender-Warnungen mit hohem Schweregrad automatisch Incidents in Azure Sentinel.  
 
     ![Assistent zum Erstellen von Regeln](media/incidents-from-alerts/create-rule-wizard.png)
 
@@ -64,7 +64,7 @@ Verwenden Sie die in Azure Sentinel integrierten Regeln, um auszuwählen, welche
 
    ![Erstellen von Sicherheitsincidents](media/incidents-from-alerts/generate-security-incidents.png)
 
-1. Wählen Sie unter **Incidents erstellen** die Option **Aktivieren** aus, um die standardmäßige Analyseregel zu aktivieren, die automatisch Incidents aus im verbundenen Sicherheitsdienst generierten Warnungen erstellt. Anschließend können Sie diese Regel unter **Analytics** und dann unter **Aktive Regeln** bearbeiten.
+1. Wählen Sie unter **Create incidents** (Incidents erstellen) die Option **Aktivieren** aus, um die Standardanalyseregel zu aktivieren, die automatisch Incidents aus im verbundenen Sicherheitsdienst generierten Warnungen erstellt. Anschließend können Sie diese Regel unter **Analytics** und dann unter **Aktive Regeln** bearbeiten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

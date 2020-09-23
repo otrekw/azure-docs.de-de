@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: cf27a842d37e96c82370e9b9b81763c8a5d1f7c9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fd49993e6825c47bbae8f034715c03191e06ab2d
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86509051"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441662"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-fstab-errors"></a>Beheben von Problemen beim Starten von Linux-VMs aufgrund von Fehlern in „fstab“
 
@@ -107,7 +107,7 @@ Um dieses Problem zu beheben, starten Sie den virtuellen Computer über die seri
 ### <a name="using-single-user-mode"></a>Verwenden des Einzelbenutzermodus
 
 1. Stellen Sie eine Verbindung mit der [seriellen Konsole](./serial-console-linux.md) her.
-2. Verwenden der seriellen Konsole für den Einzelbenutzermodus [Einzelbenutzermodus](../linux/serial-console-grub-single-user-mode.md)
+2. Verwenden der seriellen Konsole für den Einzelbenutzermodus [Einzelbenutzermodus](serial-console-grub-single-user-mode.md)
 3. Nachdem der virtuelle Computer im Einzelbenutzermodus gestartet wurde. Öffnen Sie die Datei „fstab“ mit Ihrem bevorzugten Text-Editor. 
 
    ```

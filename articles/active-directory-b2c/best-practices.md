@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: vigunase
 ms.subservice: B2C
-ms.openlocfilehash: 6fee96354760e448de132f88918e9839c6220af3
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: c8739da859c00a9caf08ac833f7b4ae7ae52e392
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254490"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084310"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>Empfehlungen und bewährte Methoden für Azure Active Directory B2C
 
@@ -56,7 +56,6 @@ Beachten Sie während der Implementierungsphase die folgenden Empfehlungen.
 | Informationen zur Problembehandlung von Azure AD B2C | Erfahren Sie, wie Sie [Problembehandlung für benutzerdefinierte Richtlinien](https://docs.microsoft.com/azure/active-directory-b2c/troubleshoot-custom-policies?tabs=applications) während der Entwicklung ausführen. Erfahren Sie, wie ein normaler Authentifizierungsflow aussieht, und verwenden Sie Tools zum Ermitteln von Anomalien und Fehlern. Verwenden Sie beispielsweise [Application Insights](troubleshoot-with-application-insights.md), um Ausgabeprotokolle von User Journeys zu überprüfen. |
 | Nutzen der Bibliothek bewährter benutzerdefinierter Richtlinienmuster | Sehen Sie sich [Beispiele](https://github.com/azure-ad-b2c/samples) für mehrere erweiterte Azure AD B2C-User Journeys zu CIAM (Customer Identity and Access Management, Kundenidentitäts- und Zugriffsverwaltung) an. |
 
-
 ## <a name="testing"></a>Testen
 
 Testen und automatisieren Sie Ihre Azure AD B2C-Implementierung.
@@ -79,11 +78,10 @@ Verwalten Sie Ihre Azure AD B2C-Umgebung.
 |--|--|
 | Erstellen mehrerer Umgebungen | Um den Betrieb und die Einführung der Bereitstellung zu erleichtern, sollten Sie separate Umgebungen für Entwicklung, Tests, Vorproduktion und Produktion erstellen. Erstellen Sie Azure AD B2C-Mandanten für jede dieser Umgebungen. |
 | Verwenden von Versionskontrolle für benutzerdefinierte Richtlinien | Verwenden Sie ggf. GitHub, Azure Repos oder ein anderes cloudbasiertes Versionskontrollsystem für Ihre benutzerdefinierten Azure AD B2C-Richtlinien. |
-| Verwenden der Microsoft Graph-API zur Automatisierung der Verwaltung von B2C-Mandanten | Microsoft Graph-APIs:<br/>Verwalten von [Identity Experience Framework](https://docs.microsoft.com/graph/api/resources/trustframeworkpolicy?view=graph-rest-beta) (benutzerdefinierte Richtlinien)<br/>[Schlüssel](https://docs.microsoft.com/graph/api/resources/trustframeworkkeyset?view=graph-rest-beta)<br/>[Benutzerabläufe](https://docs.microsoft.com/graph/api/resources/identityuserflow?view=graph-rest-beta) |
+| Verwenden der Microsoft Graph-API zur Automatisierung der Verwaltung von B2C-Mandanten | Microsoft Graph-APIs:<br/>Verwalten von [Identity Experience Framework](https://docs.microsoft.com/graph/api/resources/trustframeworkpolicy?view=graph-rest-beta&preserve-view=true) (benutzerdefinierte Richtlinien)<br/>[Schlüssel](https://docs.microsoft.com/graph/api/resources/trustframeworkkeyset?view=graph-rest-beta&preserve-view=true)<br/>[Benutzerabläufe](https://docs.microsoft.com/graph/api/resources/identityuserflow?view=graph-rest-beta&preserve-view=true) |
 | Integration in Azure DevOps | Eine [CI/CD-Pipeline](deploy-custom-policies-devops.md) vereinfacht das Verschieben von Code zwischen verschiedenen Umgebungen und stellt Produktionsbereitschaft jederzeit sicher.   |
 | Integration in Azure Monitor | [Überwachungsprotokollereignisse](view-audit-logs.md) werden nur sieben Tage lang aufbewahrt. Durch [Integration in Azure Monitor](azure-monitor.md) können Sie die Protokolle entweder zur langfristigen Verwendung speichern oder in SIEM-Drittanbietertools (Security Information & Event Management) integrieren, um Einblicke in Ihre Umgebung zu gewinnen. |
 | Einrichten von aktiven Warnungen und Überwachung | [Verfolgen Sie das Benutzerverhalten](active-directory-b2c-custom-guide-eventlogger-appins.md) in Azure AD B2C mithilfe von Application Insights nach. |
-
 
 ## <a name="support-and-status-updates"></a>Support und Statusaktualisierungen
 

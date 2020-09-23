@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 2fe306cf7d17f0789c5e134c3fcad3f8f07a0b80
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 0f4552d6488ecd083b6ee5d4cae2ef2bd660efc7
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612825"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906375"
 ---
 # <a name="faq-for-customers-already-using-azure-monitor-logs"></a>Häufig gestellte Fragen von Kunden, die bereits Azure Monitor-Protokolle verwenden<a name="existingloganalyticscust"></a>
 
@@ -32,10 +32,11 @@ Eine Security Center-Lösung wird in dem Arbeitsbereich installiert, der im Date
 > Wenn der Log Analytics-Agent direkt auf der VM (also nicht als Azure-Erweiterung) installiert ist, wird der Log Analytics-Agent nicht installiert, und die Sicherheitsüberwachung ist eingeschränkt.
 
 ## <a name="does-security-center-install-solutions-on-my-existing-log-analytics-workspaces-what-are-the-billing-implications"></a>Installiert das Security Center Lösungen in meinen vorhandenen Log Analytics-Arbeitsbereichen? Was bedeutet das für die Abrechnung?
-Wenn Security Center erkennt, dass ein virtueller Computer bereits mit einem Arbeitsbereich verbunden ist, den Sie erstellt haben, aktiviert Security Center Lösungen in diesem Arbeitsbereich gemäß Ihres Tarifs. Da die Lösungen mittels [Zielgruppenadressierung für Lösungen](../operations-management-suite/operations-management-suite-solution-targeting.md) nur auf die relevanten virtuellen Azure-Computer angewendet werden, bleibt die Abrechnung unverändert.
+Wenn Security Center erkennt, dass ein virtueller Computer bereits mit einem Arbeitsbereich verbunden ist, den Sie erstellt haben, aktiviert Security Center Lösungen in diesem Arbeitsbereich gemäß Ihrer Preiskonfiguration. Da die Lösungen mittels [Zielgruppenadressierung für Lösungen](../operations-management-suite/operations-management-suite-solution-targeting.md) nur auf die relevanten virtuellen Azure-Computer angewendet werden, bleibt die Abrechnung unverändert.
 
-- **Free-Tarif:** Security Center installiert die Lösung „SecurityCenterFree“ im Arbeitsbereich. Für den Free-Tarif entstehen keine Kosten.
-- **Standard-Tarif**: Security Center installiert die Lösung „Security“ im Arbeitsbereich.
+- **Azure Defender aus:** Security Center installiert die Lösung SecurityCenterFree im Arbeitsbereich. Ihnen wird nichts in Rechnung gestellt.
+- 
+- **Azure Defender ein:** Security Center installiert die Lösung Security im Arbeitsbereich.
 
    ![Lösungen im Standardarbeitsbereich](./media/security-center-platform-migration-faq/solutions.png)
 
@@ -45,4 +46,4 @@ Wenn der Log Analytics-Agent bereits als Azure-Erweiterung auf einem virtuellen 
 Wenn Security Center den Log Analytics-Agent auf virtuellen Computern installiert, werden dabei die von Security Center erstellten Standardarbeitsbereiche verwendet, wenn Security Center auf keinen vorhandenen Arbeitsbereich verwiesen wird.
 
 ## <a name="i-already-have-security-solution-on-my-workspaces-what-are-the-billing-implications"></a>Die Lösung „Security“ ist bereits in meinen Arbeitsbereichen enthalten. Was bedeutet das für die Abrechnung?
-Die Lösung „Sicherheit und Überwachung“ wird verwendet, um Funktionen der Security Center-Standardebene für Azure-VMs zu aktivieren. Wenn die Lösung „Sicherheit und Überwachung“ bereits in einem Arbeitsbereich installiert ist, verwendet Security Center die vorhandene Lösung. Die Abrechnung wird dadurch nicht beeinflusst.
+Die Lösung Sicherheit und Überwachung wird verwendet, um **Azure Defender für Server** zu aktivieren. Wenn die Lösung „Sicherheit und Überwachung“ bereits in einem Arbeitsbereich installiert ist, verwendet Security Center die vorhandene Lösung. Die Abrechnung wird dadurch nicht beeinflusst.

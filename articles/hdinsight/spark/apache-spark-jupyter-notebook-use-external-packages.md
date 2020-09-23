@@ -8,18 +8,14 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
-ms.openlocfilehash: 6587a055d672bc309c89ff2a37fabb273a4c4621
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 772b136c00dc9c20f8bc35d7ebb324175a56e885
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084680"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061715"
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Verwenden externer Pakete mit Jupyter Notebooks in Apache Spark-Clustern unter HDInsight
-
-> [!div class="op_single_selector"]
-> * [Verwenden von Cell Magic](apache-spark-jupyter-notebook-use-external-packages.md)
-> * [Verwenden von Skriptaktionen](apache-spark-python-package-installation.md)
 
 Erfahren Sie, wie Sie ein [Jupyter Notebook](https://jupyter.org/) im Apache Spark-Cluster auf HDInsight konfigurieren, um externe, von der Community bereitgestellte Apache **Maven**-Pakete zu verwenden, die nicht standardmäßig im Cluster enthalten sind.
 
@@ -97,9 +93,9 @@ In diesem Artikel erfahren Sie, wie Sie das Paket [spark-csv](https://search.mav
     df.select("Time").count()
     ```
 
-## <a name="see-also"></a><a name="seealso"></a>Weitere Informationen
+## <a name="see-also"></a><a name="seealso"></a>Siehe auch
 
-* [Übersicht: Apache Spark für Azure HDInsight](apache-spark-overview.md)
+* [Übersicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Szenarien
 

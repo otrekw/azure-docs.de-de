@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: adeba1964ab802a903e82b3ea71bc3248b86cea9
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 2e0788b6a7eb6f1d43185d8b484adddd76374ea3
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705060"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086707"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure-Instanzmetadatendienst
 
@@ -517,10 +517,11 @@ caching | Cachinganforderungen
 createOption | Informationen zur Erstellung des virtuellen Computers
 diffDiskSettings | Einstellungen für kurzlebige Datenträger
 diskSizeGB | Größe des Datenträgers in GB
+encryptionSettings | Verschlüsselungseinstellungen für den Datenträger
 image   | Virtuelle Festplatte des Quellenbenutzerimages
-lun     | Logische Gerätenummer des Datenträgers
 managedDisk | Parameter für verwaltete Datenträger
 name    | Name des Datenträgers
+osType  | Typ des Betriebssystems, das auf dem Datenträger enthalten ist
 vhd     | Virtuelle Festplatte
 writeAcceleratorEnabled | Gibt an, ob writeAccelerator für den Datenträger aktiviert ist.
 
@@ -532,11 +533,10 @@ caching | Cachinganforderungen
 createOption | Informationen zur Erstellung des virtuellen Computers
 diffDiskSettings | Einstellungen für kurzlebige Datenträger
 diskSizeGB | Größe des Datenträgers in GB
-encryptionSettings | Verschlüsselungseinstellungen für den Datenträger
 image   | Virtuelle Festplatte des Quellenbenutzerimages
+lun     | Logische Gerätenummer des Datenträgers
 managedDisk | Parameter für verwaltete Datenträger
 name    | Name des Datenträgers
-osType  | Typ des Betriebssystems, das auf dem Datenträger enthalten ist
 vhd     | Virtuelle Festplatte
 writeAcceleratorEnabled | Gibt an, ob writeAccelerator für den Datenträger aktiviert ist.
 
