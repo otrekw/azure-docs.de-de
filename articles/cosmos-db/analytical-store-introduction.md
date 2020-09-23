@@ -4,21 +4,21 @@ description: Erfahren Sie mehr über den Azure Cosmos DB-Transaktionsspeicher (
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 09/22/2020
 ms.author: rosouz
-ms.openlocfilehash: b3d1371f486a73b40d352007e3681fd451a8a8b7
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 17dce45e73a5620db2201534126900d8e571ec45
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815826"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900278"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Was ist der Azure Cosmos DB-Analysespeicher (Vorschau)?
 
 > [!IMPORTANT]
 > Der Azure Cosmos DB-Analysespeicher befindet sich derzeit in der Vorschauphase. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Der Azure Cosmos DB-Analysespeicher ist ein vollständig isolierter Spaltenspeicher, der umfangreiche Analysen operativer Daten in Azure Cosmos DB ermöglicht, ohne dass dies Auswirkungen auf Ihre Transaktionsworkloads hat.  
+Der Azure Cosmos DB-Analysespeicher ist ein vollständig isolierter Spaltenspeicher, der umfangreiche Analysen für operative Daten in Ihrem Azure Cosmos DB ermöglicht, ohne dass dies Auswirkungen auf Ihre Transaktionsworkloads hat.  
 
 ## <a name="challenges-with-large-scale-analytics-on-operational-data"></a>Herausforderungen bei umfangreichen Analysen operativer Daten
 
@@ -30,11 +30,11 @@ Die ETL-Pipelines weisen zudem bei der Verarbeitung von Aktualisierungen der ope
 
 ## <a name="column-oriented-analytical-store"></a>Spaltenorientierter Analysespeicher
 
-Der Azure Cosmos DB-Analysespeicher ist auf die Bewältigung der Herausforderungen hinsichtlich Komplexität und Latenz ausgelegt, die sich bei herkömmlichen ETL-Pipelines ergeben. Der Azure Cosmos DB-Analysespeicher kann Ihre operativen Daten automatisch in einen separaten Spaltenspeicher synchronisieren. Das Spaltenspeicherformat eignet sich für umfangreiche analytische Abfragen, die auf optimierte Weise ausgeführt werden können. Dies führt zu einer Verbesserung der Latenz solcher Abfragen.
+Der Azure Cosmos DB-Analysespeicher ist auf die Bewältigung der Herausforderungen hinsichtlich Komplexität und Latenz ausgelegt, die sich bei herkömmlichen ETL-Pipelines ergeben. Der Azure Cosmos DB-Analysespeicher kann Ihre operativen Daten automatisch in einen separaten Spaltenspeicher synchronisieren. Das Spaltenspeicherformat eignet sich für umfangreiche analytische Abfragen, die auf optimierte Weise ausgeführt werden können. Dies führt zu einer Verbesserung bei der Latenz solcher Abfragen.
 
 Mithilfe von Azure Synapse Link können Sie jetzt HTAP-Lösungen ohne ETL erstellen, indem Sie eine direkte Verknüpfung von Synapse Analytics mit dem Azure Cosmos DB-Analysespeicher herstellen. Damit können Sie umfangreiche Analysen Ihrer operativen Daten nahezu in Echtzeit ausführen.
 
-## <a name="analytical-store-details"></a>Analysespeicherdetails
+## <a name="features-of-analytical-store"></a>Features des Analysespeichers 
 
 Wenn Sie den Analysespeicher für einen Azure Cosmos DB-Container aktivieren, wird basierend auf den operativen Daten in Ihrem Container ein neuer Spaltenspeicher intern erstellt. Dieser Spaltenspeicher wird getrennt vom zeilenorientierten Transaktionsspeicher für diesen Container persistent gespeichert. Die Einfüge-, Aktualisierungs- und Löschvorgänge für Ihre operativen Daten werden automatisch mit dem Analysespeicher synchronisiert. Änderungsfeed oder ETL sind nicht erforderlich, um die Daten zu synchronisieren.
 
@@ -72,33 +72,92 @@ Mithilfe der horizontalen Partitionierung kann der Transaktionsspeicher von Azur
 
 Der Azure Cosmos DB-Transaktionsspeicher ist schemaunabhängig und ermöglicht es Ihnen, Ihre Transaktionsanwendungen zu durchlaufen, ohne sich mit Schema- oder Indexverwaltung befassen zu müssen. Im Gegensatz dazu wird der Azure Cosmos DB-Analysespeicher schematisiert, um die Leistung von analytischen Abfragen zu optimieren. Mit der Funktion der automatischen Synchronisierung verwaltet Azure Cosmos DB den Schemarückschluss über die neuesten Aktualisierungen aus dem Transaktionsspeicher.  Außerdem wird die Schemadarstellung im Analysespeicher standardmäßig verwaltet, einschließlich der Handhabung geschachtelter Datentypen.
 
-Enthalten ist auch eine Weiterentwicklung des Schemas, bei der im Laufe der Zeit neue Eigenschaften hinzugefügt werden. Der Analysespeicher stellt automatisch ein zusammengefasstes Schema für alle historischen Schemas im Transaktionsspeicher dar.
+Während Ihr Schema weiterentwickelt wird und im Laufe der Zeit neue Eigenschaften hinzugefügt werden, stellt der Analysespeicher ein zusammengefasstes Schema für alle verlaufsbezogenen Schemata im Transaktionsspeicher automatisch dar.
 
-Wenn alle operativen Daten in Azure Cosmos DB einem genau definierten Schema für Analysen folgen, wird das Schema automatisch abgeleitet und im Analysespeicher richtig dargestellt. Wenn bestimmte Elemente gegen das genau definierte Schema für Analysen (wie nachfolgend definiert) verstoßen, werden sie nicht in den Analysespeicher aufgenommen. Wenn Szenarien aufgrund eines genau definierten Schemas für Analysen blockiert sind, wenden Sie sich per E-Mail an das [Azure Cosmos DB-Team](mailto:cosmosdbsynapselink@microsoft.com).
+##### <a name="schema-constraints"></a>Schemaeinschränkungen
 
-Ein genau definiertes Schema für Analysen wird unter Berücksichtigung der folgenden Aspekte definiert:
+Die folgenden Einschränkungen gelten für die operativen Daten in Azure Cosmos DB, wenn Sie den Analysespeicher aktivieren, damit das Schema automatisch abgeleitet und richtig dargestellt wird:
 
-* Eine Eigenschaft weist immer denselben Typ für mehrere Elemente auf.
-
-  * Beispielsweise verfügt `{"a":123} {"a": "str"}` nicht über ein genau definiertes Schema, da `"a"` manchmal eine Zeichenfolge und manchmal eine Zahl ist. 
+* Sie können maximal 200 Eigenschaften auf jeder Schachtelungsebene im Schema und eine maximale Schachtelungstiefe von 5 festlegen.
   
-    In diesem Fall registriert der Analysespeicher den Datentyp von `“a”` als den Datentyp von `“a”` im zuerst vorkommenden Element in der Lebensdauer des Containers. Elemente, bei denen der Datentyp von `“a”` abweicht, werden nicht in den Analysespeicher aufgenommen.
+  * Ein Element mit 201 Eigenschaften auf oberster Ebene erfüllt diese Einschränkung nicht und wird daher im Analysespeicher nicht dargestellt.
+  * Ein Element mit mehr als fünf geschachtelten Ebenen im Schema erfüllt diese Einschränkung ebenfalls nicht und wird daher im Analysespeicher ebenfalls nicht dargestellt. Beispielsweise erfüllt das folgende Element nicht die Anforderung:
+
+     `{"level1": {"level2":{"level3":{"level4":{"level5":{"too many":12}}}}}}`
+
+* Eigenschaftsnamen sollten eindeutig sein, wenn sie ohne Berücksichtigung der Groß-/Kleinschreibung verglichen werden. Die folgenden Elemente beispielsweise erfüllen diese Einschränkung nicht und werden daher im Analysespeicher nicht dargestellt:
+
+  `{"Name": "fred"} {"name": "john"}` – „Name“ und „name“ sind identisch, wenn sie ohne Berücksichtigung der Groß-/Kleinschreibung verglichen werden.
+
+##### <a name="schema-representation"></a>Schemadarstellung
+
+Im Analysespeicher gibt es zwei Modi der Schemadarstellung. Bei diesen Modi bestehen Kompromisse zwischen der Einfachheit einer Spaltendarstellung, der Verarbeitung der polymorphen Schemata und der Einfachheit der Abfrageleistung:
+
+* Genau definierte Schemadarstellung
+* Schemadarstellung mit vollständiger Genauigkeit
+
+> [!NOTE]
+> Wenn bei SQL-API (Core-API)-Konten der Analysespeicher aktiviert wurde, ist die Standardschemadarstellung in diesem Speicher genau definiert. Bei Azure Cosmos DB-API für MongoDB-Konten hingegen ist die Standardschemadarstellung im Analysespeicher eine Schemadarstellung mit vollständiger Genauigkeit. Wenn Sie Szenarien haben, die eine andere Schemadarstellung als das Standardangebot für jede dieser APIs erfordern, wenden Sie sich an das [Azure Cosmos DB-Team](mailto:cosmosdbsynapselink@microsoft.com), um es zu aktivieren.
+
+**Genau definierte Schemadarstellung**
+
+Die genau definierte Schemadarstellung erstellt eine einfache tabellarische Darstellung der schemaunabhängigen Daten im Transaktionsspeicher. Bei der genau definierten Schemadarstellung gibt es die folgenden Überlegungen:
+
+* Eine Eigenschaft verfügt immer über denselben Typ für mehrere Elemente.
+
+  * Beispielsweise verfügt `{"a":123} {"a": "str"}` nicht über ein genau definiertes Schema, da `"a"` manchmal eine Zeichenfolge und manchmal eine Zahl ist. In diesem Fall registriert der Analysespeicher den Datentyp von `“a”` als den Datentyp von `“a”` im zuerst vorkommenden Element in der Lebensdauer des Containers. Elemente, bei denen der Datentyp von `“a”` abweicht, werden nicht in den Analysespeicher aufgenommen.
   
-    Diese Bedingung gilt nicht für NULL-Eigenschaften. Beispielsweise ist `{"a":123} {"a":null}` immer noch genau definiert.
+    Diese Bedingung gilt nicht für NULL-Eigenschaften. Beispielsweise ist `{"a":123} {"a":null}` weiterhin genau definiert.
 
 * Arraytypen müssen einen einzelnen wiederholten Typ enthalten.
 
-  * `{"a": ["str",12]}` ist beispielsweise kein genau definiertes Schema, da das Array eine Mischung aus ganzzahligen Typen und Zeichenfolgetypen enthält.
+  * `{"a": ["str",12]}` ist beispielsweise kein genau definiertes Schema, weil das Array eine Mischung aus ganzzahligen Typen und Zeichenfolgetypen enthält.
 
-* Es sind maximal 200 Eigenschaften auf jeder Schachtelungsebene eines Schemas und eine maximale Schachtelungstiefe von 5 zulässig.
+> [!NOTE]
+> Wenn der Azure Cosmos DB-Analysespeicher der genau definierten Schemadarstellung folgt und die vorstehende Spezifikation durch bestimmte Elemente verletzt wird, werden diese Elemente in den Analysespeicher nicht einbezogen.
 
-  * Ein Element mit 201 Eigenschaften auf der obersten Ebene weist kein genau definiertes Schema auf.
+**Schemadarstellung mit vollständiger Genauigkeit**
 
-  * Ein Element mit mehr als fünf geschachtelten Ebenen im Schema weist ebenfalls kein genau definiertes Schema auf. Zum Beispiel, `{"level1": {"level2":{"level3":{"level4":{"level5":{"too many":12}}}}}}`
+Die Schemadarstellung mit vollständiger Genauigkeit ist so konzipiert, dass sie die gesamte Breite von polymorphen Schemata in den schemaunabhängigen operativen Daten verarbeitet. In dieser Schemadarstellung werden keine Elemente aus dem Analysespeicher gelöscht, selbst wenn die genau definierten Schemaeinschränkungen (d. h. keine Felder mit gemischtem Datentyp oder Arrays mit gemischtem Datentyp) verletzt werden.
 
-* Eigenschaftsnamen sind bei einem Vergleich ohne Berücksichtigung der Groß-/Kleinschreibung eindeutig.
+Dies wird erreicht, indem die Blatteigenschaften der operativen Daten in den Analysespeicher mit unterschiedlichen Spalten – basierend auf dem Datentyp der Werte in der-Eigenschaft – übersetzt werden. Die Namen der Blatteigenschaften werden mit Datentypen als Suffix im Analysespeicherschema erweitert, sodass sie Abfragen ohne Mehrdeutigkeit sein können.
 
-  * Die folgenden Elemente weisen z. B. kein genau definiertes Schema auf: `{"Name": "fred"} {"name": "john"}`. `"Name"` und `"name"` sind bei einem Vergleich ohne Berücksichtigung der Groß-/Kleinschreibung identisch.
+Sehen Sie sich beispielsweise das folgende Beispieldokument im Transaktionsspeicher an:
+
+```json
+{
+name: "John Doe",
+age: 32,
+profession: "Doctor",
+address: {
+  streetNo: 15850,
+  streetName: "NE 40th St.",
+  zip: 98052
+},
+salary: 1000000
+}
+```
+
+Die Blatteigenschaft `streetName` innerhalb des geschachtelten Objekts `address` wird im Analysespeicherschema als die Spalte `address.object.streetName.int32` dargestellt. Der Datentyp wird der Spalte als Suffix hinzugefügt. Wenn dem Transaktionsspeicher ein weiteres Dokument hinzugefügt wird, in dem der Wert der Blatteigenschaft `streetNo` „123“ lautet (dies ist eine Zeichenfolge), wird das Schema des Analysespeichers automatisch weiterentwickelt, ohne dass dadurch der Typ einer zuvor geschriebenen Spalte geändert wird. Dem Analysespeicher wurde eine neue Spalte als `address.object.streetName.string` hinzugefügt. Darin wird dieser Wert „123“ gespeichert.
+
+**Zuordnung des Datentyps „An-Suffix“**
+
+Hier ist eine Zuordnung aller Eigenschaftsdatentypen und deren Suffixdarstellungen im Analysespeicher:
+
+|Ursprünglicher Datentyp  |Suffix  |Beispiel  |
+|---------|---------|---------|
+| Double |  ".float64" |    24,99|
+| Array | ".array" |    ["a", "b"]|
+|Binary | ".binary" |0|
+|Boolean    | ".bool"   |True|
+|Int32  | ".int32"  |123|
+|Int64  | ".int64"  |255486129307|
+|Null   | ".null"   | NULL|
+|String|    ".string" | "ABC"|
+|Timestamp |    ".timestamp" |  Timestamp(0, 0)|
+|Datetime   |".date"    | ISODate("2020-08-21T07:43:07.375Z")|
+|ObjectID   |".objectId"    | ObjectId("5f3f7b59330ec25c132623a2")|
+|Dokument   |".object" |    {"a": "a"}|
 
 ### <a name="cost-effective-archival-of-historical-data"></a>Kostengünstige Archivierung von Verlaufsdaten
 
@@ -155,10 +214,17 @@ Die analytische Gültigkeitsdauer für einen Container wird mithilfe der Eigensc
 * Ist die Angabe vorhanden und der Wert auf eine beliebige positive Zahl „n“ festgelegt, läuft die Gültigkeit von Elementen im Analysespeicher „n“ Sekunden nach dem Zeitpunkt der letzten Änderung im Transaktionsspeicher ab. Diese Einstellung kann genutzt werden, wenn Sie die operativen Daten für einen begrenzten Zeitraum im Analysespeicher aufbewahren möchten, unabhängig von der Aufbewahrung der Daten im Transaktionsspeicher.
 
 Zu berücksichtigende Punkte:
+
 *   Nachdem der Analysespeicher mit einem Wert für die analytische Gültigkeitsdauer aktiviert wurde, kann er später auf einen anderen gültigen Wert aktualisiert werden. 
 *   Während die transaktionale Gültigkeitsdauer auf Container- oder Elementebene festgelegt werden kann, kann die analytische Gültigkeitsdauer derzeit nur auf Containerebene festgelegt werden.
 *   Sie können eine längere Aufbewahrung Ihrer operativen Daten im Analysespeicher erzielen, indem Sie die analytische Gültigkeitsdauer mindestens auf den Wert der transaktionalen Gültigkeitsdauer auf Containerebene festlegen.
-*   Der Analysespeicher kann auf die Spiegelung des Transaktionsspeichers festgelegt werden, indem die analytische Gültigkeitsdauer auf den gleichen Wert wie die transaktionale Gültigkeitsdauer festgelegt wird.
+*   Der Analysespeicher kann auf die Spiegelung des Transaktionsspeichers festgelegt werden, indem die analytische Gültigkeitsdauer auf denselben Wert wie die transaktionale Gültigkeitsdauer festgelegt wird.
+
+Wenn Sie den Analysespeicher für einen Container aktivieren, gilt Folgendes:
+
+* Über das Azure-Portal wird die Option für analytische Gültigkeitsdauer auf den Standardwert „-1“ festgelegt. Sie können diesen Wert in ‚n‘ Sekunden ändern, indem Sie unter „Daten-Explorer“ zu „Containereinstellungen“ navigieren. 
+ 
+* Über das Azure SDK, PowerShell oder die CLI kann die Option für analytische Gültigkeitsdauer aktiviert werden, indem sie entweder auf „-1“ oder „n“ festgelegt wird. 
 
 Weitere Informationen finden Sie unter [Konfigurieren der analytischen Gültigkeitsdauer für einen Container](configure-synapse-link.md#create-analytical-ttl).
 
