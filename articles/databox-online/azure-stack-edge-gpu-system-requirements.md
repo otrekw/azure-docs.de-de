@@ -1,6 +1,6 @@
 ---
-title: Systemanforderungen für Microsoft Azure Stack Edge | Microsoft-Dokumentation
-description: In diesem Artikel erfahren Sie mehr über die Software- und Netzwerkanforderungen für Ihr Azure Stack Edge.
+title: Systemanforderungen für Microsoft Azure Stack Edge Pro | Microsoft-Dokumentation
+description: Informationen zu den Software- und Netzwerkanforderungen für Ihre Azure Stack Edge Pro-Instanz
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 7754c57563ec5acb9028c2ace217f318fea5e959
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 091d272ff00982a0d0a5ae44885a04cc62d7a4b4
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89256270"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899151"
 ---
-# <a name="system-requirements-for-azure-stack-edge-with-gpu"></a>Systemanforderungen für Azure Stack Edge mit GPU 
+# <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>Systemanforderungen für Azure Stack Edge Pro mit GPU 
 
-In diesem Artikel werden die wichtigen Systemanforderungen für Ihre Microsoft Azure Stack Edge-Lösung und die mit Azure Stack Edge verbundenen Clients beschrieben. Es wird empfohlen, dass Sie die Informationen sorgfältig überprüfen, bevor Sie Ihr Azure Stack Edge bereitstellen. Sie können diese Informationen ggf. während der Bereitstellung und des nachfolgenden Betriebs als Referenz nutzen.
+In diesem Artikel werden die wichtigen Systemanforderungen für Ihre Microsoft Azure Stack Edge Pro-Lösung und für die mit Azure Stack Edge Pro verbundenen Clients beschrieben. Es wird empfohlen, dass Sie die Informationen sorgfältig lesen, bevor Sie Ihre Azure Stack Edge Pro-Instanz bereitstellen. Sie können diese Informationen ggf. während der Bereitstellung und des nachfolgenden Betriebs als Referenz nutzen.
 
-Die Systemanforderungen für Azure Stack Edge umfassen Folgendes:
+Die Systemanforderungen für Azure Stack Edge Pro umfassen Folgendes:
 
 - **Softwareanforderungen für Hosts:** beschreibt die unterstützten Plattformen, Browser für die lokale Konfigurationsbenutzeroberfläche, SMB-Clients und alle weiteren Anforderungen an Clients, die auf das Gerät zugreifen.
 - **Netzwerkanforderungen für das Gerät:** enthält Informationen zu den Netzwerkanforderungen für den Betrieb des physischen Geräts.
@@ -59,9 +59,9 @@ Falls von Azure Stack verwaltet, werden die folgenden mehrstufigen Speicherkonte
 
 ## <a name="networking-port-requirements"></a>Anforderungen für den Netzwerkport
 
-### <a name="port-requirements-for-azure-stack-edge"></a>Portanforderungen für Azure Stack Edge
+### <a name="port-requirements-for-azure-stack-edge-pro"></a>Portanforderungen für Azure Stack Edge Pro
 
-In der folgenden Tabelle sind die Ports aufgeführt, die in der Firewall für SMB-, Cloud- oder Verwaltungsdatenverkehr geöffnet werden müssen. In dieser Tabelle bezieht sich *ein* oder *eingehend* auf die Richtung, aus der eingehende Clientanforderungen auf das Gerät zugreifen. Entsprechend bezieht sich *aus* oder *ausgehend* auf die Richtung, in der Ihr Azure Stack Edge-Gerät Daten über die Bereitstellung hinaus an externe Ziele sendet, z. B. ausgehende Verbindungen mit dem Internet.
+In der folgenden Tabelle sind die Ports aufgeführt, die in der Firewall für SMB-, Cloud- oder Verwaltungsdatenverkehr geöffnet werden müssen. In dieser Tabelle bezieht sich *ein* oder *eingehend* auf die Richtung, aus der eingehende Clientanforderungen auf das Gerät zugreifen. Entsprechend bezieht sich *aus* oder *ausgehend* auf die Richtung, in der Ihr Azure Stack Edge Pro-Gerät Daten über die Bereitstellung hinaus an externe Ziele sendet, z. B. ausgehende Verbindungen mit dem Internet.
 
 [!INCLUDE [Port configuration for device](../../includes/azure-stack-edge-gateway-port-config.md)]
 
@@ -79,9 +79,9 @@ Ausführliche Informationen finden Sie unter [Firewall- und Portkonfigurationsre
 
 ## <a name="url-patterns-for-firewall-rules"></a>URL-Muster für Firewallregeln
 
-Netzwerkadministratoren können häufig erweiterte, auf den URL-Mustern basierende Firewallregeln konfigurieren, die zum Filtern des eingehenden und ausgehenden Verkehrs verwendet werden. Ihr Azure Stack Edge-Gerät und der Dienst sind abhängig von anderen Microsoft-Anwendungen wie Azure Service Bus, Azure Active Directory Access Control, Speicherkonten und Microsoft Update-Servern. Die URL-Muster, die diesen Anwendungen zugeordnet sind, können verwendet werden, um Firewallregeln zu konfigurieren. Es ist wichtig, zu verstehen, dass sich diese den Anwendungen zugeordneten URL-Muster ändern können. Diese Änderungen erfordern, dass der Netzwerkadministrator die Firewallregeln für Ihr Azure Stack Edge nach Bedarf überwachen und aktualisieren muss.
+Netzwerkadministratoren können häufig erweiterte, auf den URL-Mustern basierende Firewallregeln konfigurieren, die zum Filtern des eingehenden und ausgehenden Verkehrs verwendet werden. Ihr Azure Stack Edge Pro-Gerät und der Dienst sind abhängig von anderen Microsoft-Anwendungen wie Azure Service Bus, Azure Active Directory Access Control, Speicherkonten und Microsoft Update-Servern. Die URL-Muster, die diesen Anwendungen zugeordnet sind, können verwendet werden, um Firewallregeln zu konfigurieren. Es ist wichtig, zu verstehen, dass sich diese den Anwendungen zugeordneten URL-Muster ändern können. Diese Änderungen erfordern, dass der Netzwerkadministrator die Firewallregeln für Ihre Azure Stack Edge Pro-Instanz nach Bedarf überwacht und aktualisiert.
 
-Es wird empfohlen, dass Sie Ihre Firewallregeln für den ausgehenden Verkehr basierend auf den festen IP-Adressen für Azure Stack Edge in den meisten Fällen recht locker festlegen. Sie können jedoch die folgenden Informationen verwenden, um erweiterte Firewallregeln festzulegen, die erforderlich sind, um sichere Umgebungen zu erstellen.
+Es wird empfohlen, dass Sie Ihre Firewallregeln für den ausgehenden Datenverkehr basierend auf den festen IP-Adressen für Azure Stack Edge Pro in den meisten Fällen recht locker festlegen. Sie können jedoch die folgenden Informationen verwenden, um erweiterte Firewallregeln festzulegen, die erforderlich sind, um sichere Umgebungen zu erstellen.
 
 > [!NOTE]
 > - Die Geräte-IPs (Quell-IPs) sollten immer für alle cloudaktivierten Netzwerkschnittstellen eingerichtet sein.
@@ -117,7 +117,7 @@ Es wird empfohlen, dass Sie Ihre Firewallregeln für den ausgehenden Verkehr bas
 
 ## <a name="compute-sizing-considerations"></a>Berechnen von Überlegungen zur Größenanpassung
 
-Nutzen Sie Ihre Erfahrung bei der Entwicklung und dem Testen Ihrer Lösung, um sicherzustellen, dass auf Ihrem Azure Stack Edge-Gerät ausreichend Kapazität vorhanden ist und Sie die optimale Leistung Ihres Geräts erhalten.
+Nutzen Sie Ihre Erfahrung beim Entwickeln und Testen Ihrer Lösung, um sicherzustellen, dass auf Ihrem Azure Stack Edge Pro-Gerät ausreichend Kapazität vorhanden ist und Sie die optimale Geräteleistung erzielen.
 
 Zu den zu berücksichtigenden Faktoren gehören:
 
@@ -137,8 +137,8 @@ Um die Leistung Ihrer Lösung zu verstehen und zu optimieren, können Sie Folgen
 - Die im Azure-Portal verfügbaren Computemetriken. Wechseln Sie zu Ihrer Azure Stack Edge-Ressource und dann zu **Überwachung > Metriken**. Betrachten Sie **Edgecomputing – Arbeitsspeichernutzung** und **Edgecomputing – CPU in Prozent**, um die verfügbaren Ressourcen zu verstehen und wie die Ressourcen verbraucht werden.
 - Informationen zur Überwachung und Problembehandlung von Computemodulen finden Sie unter [Debuggen von Kubernetes-Problemen](azure-stack-edge-gpu-connect-powershell-interface.md#debug-kubernetes-issues-related-to-iot-edge).
 
-Stellen Sie abschließend sicher, dass Sie Ihre Lösung für Ihr Dataset überprüfen und die Leistung auf Azure Stack Edge quantifizieren, bevor Sie sie in der Produktionsumgebung bereitstellen.
+Stellen Sie abschließend sicher, dass Sie Ihre Lösung vor der Bereitstellung in der Produktionsumgebung für Ihr Dataset überprüfen und die Leistung der Azure Stack Edge Pro-Instanz quantifizieren.
 
 ## <a name="next-step"></a>Nächster Schritt
 
-- [Bereitstellen Ihres Azure Stack Edge-Geräts](azure-stack-edge-gpu-deploy-prep.md)
+- [Bereitstellen Ihrer Azure Stack Edge Pro-Instanz](azure-stack-edge-gpu-deploy-prep.md)

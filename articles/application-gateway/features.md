@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: victorh
-ms.openlocfilehash: 60ab0bd6093149aee4c9ee22f8b517dfd2460c09
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: bbb78fd879bc5c6bb8c2624329a23d7137b11660
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400561"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651988"
 ---
 # <a name="azure-application-gateway-features"></a>Azure Application Gateway-Funktionen
 
@@ -117,13 +117,13 @@ Application Gateway verfügt über native Unterstützung für das WebSocket- und
 
 Das WebSocket- und das HTTP/2-Protokoll ermöglichen die Vollduplexkommunikation zwischen einem Server und einem Client über eine TCP-Verbindung mit langer Laufzeit. Dies ermöglicht wiederum mehr Interaktivität bei der Kommunikation zwischen dem Webserver und dem Client, da die Kommunikation auch ohne die bei HTTP-basierten Implementierungen erforderlichen Abfragen bidirektional sein kann. Diese Protokolle zeichnen sich im Vergleich zu HTTP durch einen geringen Mehraufwand aus. Außerdem können sie die gleiche TCP-Verbindung für mehrere Anforderungen/Antworten verwenden, was eine effizientere Ressourcennutzung zur Folge hat. Diese Protokolle sind für die Nutzung der üblichen HTTP-Ports 80 und 443 konzipiert.
 
-Weitere Informationen finden Sie unter [WebSocket-Unterstützung](application-gateway-websocket.md) und [HTTP/2-Unterstützung](configuration-overview.md#http2-support).
+Weitere Informationen finden Sie unter [WebSocket-Unterstützung](application-gateway-websocket.md) und [HTTP/2-Unterstützung](configuration-listeners.md#http2-support).
 
 ## <a name="connection-draining"></a>Verbindungsausgleich
 
 Mit dem Verbindungsausgleich können Sie eine korrekte Entfernung von Mitgliedern des Back-End-Pools bei geplanten Dienstupdates erzielen. Diese Einstellung wird über die HTTP-Einstellung des Back-Ends aktiviert und kann bei der Erstellung einer Regel auf alle Mitglieder eines Back-End-Pools angewendet werden. Nach der Aktivierung stellt Application Gateway sicher, dass alle Instanzen eines Back-End-Pools, deren Registrierung aufgehoben wird, keine neuen Anforderungen mehr erhalten, während vorhandene Anforderungen innerhalb eines konfigurierten Zeitlimits abgeschlossen werden können. Dies gilt sowohl für Back-End-Instanzen, die durch eine Änderung der Benutzerkonfiguration explizit aus dem Back-End-Pool entfernt werden, als auch für Back-End-Instanzen, die von den Integritätstests als fehlerhaft gemeldet werden. Die einzige Ausnahme hierbei sind Anforderungen zum Aufheben der Registrierung von Instanzen, deren Registrierung aufgrund der durch das Gateway verwalteten Sitzungsaffinität explizit aufgehoben wurden. Diese Anforderungen werden weiterhin per Proxy an die Instanzen weitergeleitet, deren Registrierung aufgehoben wird.
 
-Weitere Informationen finden Sie unter [Application Gateway-Konfiguration: Übersicht](configuration-overview.md#connection-draining).
+Weitere Informationen finden Sie unter [Application Gateway-Konfiguration: Übersicht](configuration-http-settings.md#connection-draining).
 
 ## <a name="custom-error-pages"></a>Benutzerdefinierte Fehlerseiten
 

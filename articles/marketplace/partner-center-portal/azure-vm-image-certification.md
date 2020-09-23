@@ -3,16 +3,16 @@ title: Überprüfung von Azure-VM-Images – Azure Marketplace
 description: Es wird beschrieben, wie Sie ein VM-Angebot im kommerziellen Marketplace testen und übermitteln.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 08/14/2020
-ms.openlocfilehash: fd8f41f88b6184eee15477c460dc9d2e521d25e6
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 2d19098ec82fe9361154d798b981341a86decf97
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144186"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647820"
 ---
 # <a name="azure-virtual-machine-image-validation"></a>Überprüfung von Azure-VM-Images
 

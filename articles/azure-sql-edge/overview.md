@@ -1,6 +1,6 @@
 ---
-title: Was ist Azure SQL Edge (Vorschau)?
-description: Informationen zu Azure SQL Edge (Vorschau)
+title: Was ist Azure SQL Edge?
+description: Informationen zu Azure SQL Edge
 keywords: Einführung in SQL Edge, was ist SQL Edge, Übersicht über SQL Edge
 services: sql-edge
 ms.service: sql-edge
@@ -9,27 +9,31 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 2c96e4b7baa2c463c42db9440cadb3cb396fde1b
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: e34cd0907320f96f2846c1f424e678555381cccc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642468"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907125"
 ---
-# <a name="what-is-azure-sql-edge-preview"></a>Was ist Azure SQL Edge (Vorschau)?
+# <a name="what-is-azure-sql-edge"></a>Was ist Azure SQL Edge?
 
-Azure SQL Edge (Vorschau) ist eine optimierte relationale Datenbank-Engine für IoT- und IoT Edge-Bereitstellungen. Azure SQL Database Edge bietet die Möglichkeit zur Erstellung eines Hochleistungs-Datenspeichers und einer Verarbeitungsschicht für IoT-Anwendungen und -Lösungen. Azure SQL Edge bietet Funktionen zum Streamen, Verarbeiten und Analysieren von relationalen und nicht relationalen Daten wie JSON-, Grafik- und Zeitreihendaten und ist damit die richtige Wahl für eine Vielzahl moderner IoT-Anwendungen.
+Azure SQL Edge ist eine optimierte Relationale-Datenbank-Engine für IoT- und IoT Edge-Bereitstellungen. Azure SQL Database Edge bietet die Möglichkeit zur Erstellung eines Hochleistungs-Datenspeichers und einer Verarbeitungsschicht für IoT-Anwendungen und -Lösungen. Azure SQL Edge bietet Funktionen zum Streamen, Verarbeiten und Analysieren von relationalen und nicht relationalen Daten wie JSON-, Grafik- und Zeitreihendaten und ist damit die richtige Wahl für eine Vielzahl moderner IoT-Anwendungen.
 
-Azure SQL Edge basiert auf den neuesten Versionen der Microsoft SQL-Datenbankengine (/sql/sql-sql-server/sql-server-technical-documentation?toc=/azure/azure-sql-edge/toc.json), die branchenführende Funktionen für Leistung, Sicherheit und Abfrageverarbeitung bietet. Da Azure SQL Edge auf der gleichen Engine wie [SQL Server](/sql/sql-server/sql-server-technical-documentation?toc=/azure/azure-sql-edge/toc.json) und [Azure SQL](https://docs.microsoft.com/azure/azure-sql/) basiert, bietet es die gleiche T-SQL-Programmieroberfläche für die einfachere und schnellere Entwicklung von Anwendungen oder Lösungen und vereinfacht gleichzeitig die Anwendungsportierbarkeit zwischen IoT Edge-Geräten, Rechenzentren und der Cloud.
+Azure SQL Edge basiert auf den aktuellen Versionen der [SQL Server-Datenbank-Engine](/sql/sql-server/sql-server-technical-documentation), die branchenführende Leistung, Sicherheit und Funktionen für die Abfrageverarbeitung bietet. Da Azure SQL Edge auf derselben Engine wie [SQL Server](/sql/sql-server/sql-server-technical-documentation) und [Azure SQL](https://docs.microsoft.com/azure/azure-sql/) basiert, bietet es die gleiche Transact-SQL-Programmieroberfläche (T-SQL) für die einfachere und schnellere Entwicklung von Anwendungen oder Lösungen und vereinfacht die Anwendungsportierbarkeit zwischen IoT Edge-Geräten, Rechenzentren und der Cloud.
 
-> [!NOTE]
-> Azure SQL Edge ist derzeit als Vorschau verfügbar und sollte daher NICHT in Produktionsumgebungen verwendet werden.
+Channel 9: Was ist Azure SQL Edge?
+> [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/What-is-Azure-SQL-Edge/player]
 
 ## <a name="deployment-models"></a>Bereitstellungsmodelle
 
-Azure SQL Edge ist in Azure Marketplace verfügbar und kann als Modul für [Azure IoT Edge](../iot-edge/about-iot-edge.md) bereitgestellt werden. Weitere Informationen finden Sie unter [Bereitstellen von Azure SQL Edge](deploy-portal.md).<br>
+Azure SQL Edge unterstützt zwei Bereitstellungsmodi.
+
+- Verbundene Bereitstellung über Azure IoT Edge: Azure SQL Edge ist in Azure Marketplace verfügbar und kann als Modul für [Azure IoT Edge](../iot-edge/about-iot-edge.md) bereitgestellt werden. Weitere Informationen finden Sie unter [Bereitstellen von Azure SQL Edge](deploy-portal.md).<br>
 
 ![Abbildung: Übersicht über SQL Edge](media/overview/overview.png)
+
+- Getrennte Bereitstellung: Azure SQL Edge-Containerimages können aus Docker Hub abgerufen und entweder als eigenständiger Docker-Container oder in einem Kubernetes-Cluster bereitgestellt werden. Weitere Informationen finden Sie unter [Bereitstellen von Azure SQL Edge mit Docker](disconnected-deployment.md) und [Bereitstellen eines Azure SQL Edge-Containers in Kubernetes](deploy-kubernetes.md).
 
 ## <a name="editions-of-sql-edge"></a>Editionen von SQL Edge
 
@@ -38,11 +42,11 @@ SQL Edge wird in zwei unterschiedlichen Editionen oder Softwareplänen bereitges
    |**Planen**  |**Beschreibung**  |
    |---------|---------|
    |Azure SQL Edge Developer  |  Reine Entwicklungs-SKU, jeder SQL Edge-Container ist auf bis zu vier Kerne und 32 GB Arbeitsspeicher beschränkt.  |
-   |Azure SQL Edge    |  Produktions-SKU, jeder SQL Edge-Container ist auf bis zu acht Kerne und 64 GB Arbeitsspeicher beschränkt. |
+   |Azure SQL Edge    |  Produktions-SKU, jeder SQL Edge-Container ist auf maximal acht Kerne und 64 GB Arbeitsspeicher beschränkt. |
 
 ## <a name="pricing-and-availability"></a>Preise und Verfügbarkeit
 
-Azure SQL Edge befindet sich zurzeit in der Vorschau. Weitere Informationen zu Preisen und Verfügbarkeit finden Sie unter [Azure SQL Edge](https://azure.microsoft.com/services/sql-edge/).
+Azure SQL Edge ist jetzt allgemein verfügbar. Weitere Informationen zu den Preisen und zur Verfügbarkeit in bestimmten Regionen finden Sie unter [Azure SQL Edge](https://azure.microsoft.com/services/sql-edge/).
 
 > [!IMPORTANT]
 > Erläuterungen zu den funktionellen Unterschieden zwischen Azure SQL Edge und SQL Server sowie zu den Unterschieden zwischen den verschiedenen Optionen für Azure SQL Edge finden Sie unter [Unterstützte Funktionen von Azure SQL Edge](features.md).
@@ -67,7 +71,7 @@ Azure SQL Edge sorgt für einfachere und produktivere Abläufe beim Entwickeln u
 - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms/): Eine kostenlose, herunterladbare Clientanwendung für die Verwaltung beliebiger SQL-Infrastrukturen – von SQL Server bis SQL-Datenbank.
 - [SQL Server Data Tools in Visual Studio](/sql/ssdt/download-sql-server-data-tools-ssdt/): Eine kostenlose, herunterladbare Clientanwendung, mit der Sie relationale SQL Server-Datenbanken, SQL-Datenbanken, Integration Services-Pakete, Analysis Services-Datenmodelle und Reporting Services-Berichte erstellen können.
 - [Azure Data Studio](/sql/azure-data-studio/what-is/): Ein kostenloses, herunterladbares, plattformübergreifendes Datenbanktool für Datenprofis, die die Microsoft-Produktfamilie aus lokalen und Clouddatenplattformen unter Windows, macOS und Linux nutzen.
-- [Visual Studio Code](https://code.visualstudio.com/docs): Ein kostenloser, herunterladbarer Open-Source-Code-Editor für Windows, macOS und Linux. Dieser Editor unterstützt Erweiterungen, etwa die [Erweiterung MSSQLSERVER](https://aka.ms/mssql-marketplace), zum Abfragen von Microsoft SQL Server, Azure SQL-Datenbank und Azure SQL Data Warehouse.
+- [Visual Studio Code](https://code.visualstudio.com/docs): Ein kostenloser, herunterladbarer Open-Source-Code-Editor für Windows, macOS und Linux. Er unterstützt Erweiterungen, etwa die [Erweiterung MSSQLSERVER](https://aka.ms/mssql-marketplace), zum Abfragen von Microsoft SQL Server, Azure SQL-Datenbank und Azure Synapse Analytics.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 08/31/2020
+ms.date: 09/11/2020
 ms.author: pafarley
 ms.custom:
 - seodec18
 - cog-serv-seo-aug-2020
 keywords: maschinelles Sehen, Anwendungen für maschinelles Sehen, Dienst für maschinelles Sehen
-ms.openlocfilehash: f613080ec24fdfc4c739d4d0494aa2f3c36705cd
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: fa00265f3c591578f9970b77770fbf7290d87510
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89323098"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907063"
 ---
 # <a name="what-is-computer-vision"></a>Worum handelt es sich bei maschinellem Sehen?
 
@@ -92,7 +92,11 @@ Maschinelles Sehen ermöglicht die [Erkennung nicht jugendfreier Inhalte](concep
 
 ## <a name="use-containers"></a>Verwenden von Containern
 
-[Verwenden Sie Container für maschinelles Sehen](computer-vision-how-to-install-containers.md), um gedruckten und handschriftlichen Text lokal zu erkennen. Installieren Sie dazu einen standardisierten Docker-Container, der sich näher bei Ihren Daten befindet.
+Nutzen Sie Docker-Container für maschinelles Sehen, um den Dienst lokal zu verwenden. Aktuell stehen zwei Container zur Verfügung:
+
+* Der [Lesecontainer für maschinelles Sehen](computer-vision-how-to-install-containers.md) ermöglicht die Erkennung von gedrucktem und handschriftlichem Text in Bildern.
+
+* Mithilfe des [Containers zur räumlichen Analyse für maschinelles Sehen](spatial-analysis-container.md) können Sie in Echtzeit gestreamte Videodaten analysieren, um zu ermitteln, wie Personen räumlich zueinander in Beziehung stehen und wie sie sich durch physische Umgebungen bewegen.
 
 ## <a name="image-requirements"></a>Bildanforderungen
 

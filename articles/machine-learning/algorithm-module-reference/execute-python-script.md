@@ -10,16 +10,16 @@ ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
 ms.date: 07/27/2020
-ms.openlocfilehash: e3e14001758cadc8df5af3c82cb4386659a59d6a
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 3a39b12afb715cf091ff1af1dcc7cc702769bed3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843724"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908015"
 ---
 # <a name="execute-python-script-module"></a>Execute Python Script-Modul
 
-In diesem Artikel wird das Modul „Execute Python Script“ (Python-Skript ausführen) in Azure Machine Learning-Designer (Vorschauversion) beschrieben.
+In diesem Artikel wird das Modul „Execute Python Script“ (Python-Skript ausführen) in Azure Machine Learning-Designer beschrieben.
 
 Verwenden Sie dieses Modul zum Ausführen von Python-Code. Weitere Informationen zur Architektur und zu den Entwurfsprinzipien von Python finden Sie im Artikel zum [Ausführen von Python-Code in Azure Machine Learning-Designer](../how-to-designer-python.md).
 
@@ -58,7 +58,7 @@ if spec is None:
 > Wenn Ihre Pipeline über mehrere Module vom Typ „Execute Python Script“ (Python-Skript ausführen) verfügt, für die Pakete benötigt werden, die nicht in der Liste mit den vorinstallierten Elementen enthalten sind, müssen Sie die Pakete in den einzelnen Modulen installieren.
 
 ## <a name="upload-files"></a>Hochladen von Dateien
-„Execute Python Script“ (Python-Skript ausführen) unterstützt das Hochladen von Dateien mit dem [Python-SDK für Azure Machine Learning](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#upload-file-name--path-or-stream-).
+„Execute Python Script“ (Python-Skript ausführen) unterstützt das Hochladen von Dateien mit dem [Python-SDK für Azure Machine Learning](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#&preserve-view=trueupload-file-name--path-or-stream-).
 
 Das folgende Beispiel zeigt, wie eine Bilddatei im Modul „Execute Python Script“ (Python-Skript ausführen) hochgeladen wird:
 

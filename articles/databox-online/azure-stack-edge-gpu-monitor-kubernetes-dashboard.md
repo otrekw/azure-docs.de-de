@@ -1,6 +1,6 @@
 ---
-title: Überwachen Ihres Azure Stack Edge-Geräts über das Kubernetes-Dashboard | Microsoft-Dokumentation
-description: Beschreibt, wie Sie das Kubernetes-Dashboard zum Überwachen Ihres Azure Stack Edge-Geräts verwenden.
+title: Überwachen Ihres Azure Stack Edge Pro-Geräts über das Kubernetes-Dashboard | Microsoft-Dokumentation
+description: Hier wird beschrieben, wie Sie auf das Kubernetes-Dashboard zugreifen und es zum Überwachen Ihres Azure Stack Edge Pro-Geräts verwenden.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/29/2020
 ms.author: alkohli
-ms.openlocfilehash: 12fe605fef444b4e0d7439350e350316157f53a5
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 1a4f22e7ae3cc60d0a16b24a1f0e5f93d3a86d8c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297836"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899195"
 ---
-# <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-gpu-device"></a>Überwachen Ihres Azure Stack Edge-GPU-Geräts über das Kubernetes-Dashboard
+# <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-pro-gpu-device"></a>Überwachen Ihres Azure Stack Edge Pro-GPU-Geräts über das Kubernetes-Dashboard
 
-In diesem Artikel wird beschrieben, wie Sie auf das Kubernetes-Dashboard zugreifen und es zum Überwachen Ihres Azure Stack Edge-GPU-Geräts verwenden. Zum Überwachen des Geräts können Sie Diagramme im Azure-Portal verwenden, das Kubernetes-Dashboard anzeigen oder `kubectl`-Befehle über die PowerShell-Schnittstelle des Geräts ausführen. 
+In diesem Artikel wird beschrieben, wie Sie auf das Kubernetes-Dashboard zugreifen und es zum Überwachen Ihres Azure Stack Edge Pro-GPU-Geräts verwenden. Zum Überwachen des Geräts können Sie Diagramme im Azure-Portal verwenden, das Kubernetes-Dashboard anzeigen oder `kubectl`-Befehle über die PowerShell-Schnittstelle des Geräts ausführen. 
 
 Dieser Artikel bezieht sich ausschließlich auf die Überwachungsaufgaben, die im Kubernetes-Dashboard ausgeführt werden können.
 
@@ -35,7 +35,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 Das Kubernetes-Dashboard ist eine webbasierte Benutzeroberfläche, die Sie zur Problembehandlung Ihrer Containeranwendungen verwenden können. Das Kubernetes-Dashboard ist eine benutzeroberflächenbasierte Alternative zur Befehlszeile `kubectl` für Kubernetes. Weitere Informationen finden Sie unter [Kubernetes-Dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/). 
 
-Auf Ihrem Azure Stack Edge-Gerät können Sie das Kubernetes-Dashboard im *schreibgeschützten* Modus verwenden, um eine Übersicht über die auf dem Azure Stack Edge-Gerät ausgeführten Anwendungen, den Status von Kubernetes-Clusterressourcen und eventuelle auf dem Gerät aufgetretene Fehler anzuzeigen.
+Auf Ihrem Azure Stack Edge Pro-Gerät können Sie das Kubernetes-Dashboard im *schreibgeschützten* Modus verwenden, um eine Übersicht über die auf dem Azure Stack Edge Pro-Gerät ausgeführten Anwendungen, den Status von Kubernetes-Clusterressourcen und eventuelle auf dem Gerät aufgetretene Fehler anzuzeigen.
 
 ## <a name="access-dashboard"></a>Zugreifen auf das Dashboard
 
@@ -54,19 +54,19 @@ Das Kubernetes-Dashboard ist *schreibgeschützt* und wird auf dem Kubernetes-Mas
     1. Wählen Sie die Auslassungspunkte ( **...** ) aus. Navigieren Sie zu der Datei `kubeconfig`, die Sie zuvor auf das lokale System heruntergeladen haben, und zeigen Sie auf sie. Wählen Sie **Anmelden** aus.
         ![Navigieren zur Datei „kubeconfig“](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-sign-in-2.png)    
 
-6. Sie können nun das Kubernetes-Dashboard für Ihr Azure Stack Edge-Gerät im schreibgeschützten Modus anzeigen.
+6. Sie können jetzt das Kubernetes-Dashboard für Ihr Azure Stack Edge Pro-Gerät im schreibgeschützten Modus anzeigen.
 
     ![Hauptseite des Kubernetes-Dashboards](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-main-page-1.png)
 
 ## <a name="view-module-status"></a>Anzeigen des Modulstatus
 
-Computingmodule sind Container mit implementierter Geschäftslogik. Sie können das Dashboard verwenden, um zu überprüfen, ob ein Computemodul auf dem Azure Stack Edge-Gerät erfolgreich bereitgestellt wurde.
+Computingmodule sind Container mit implementierter Geschäftslogik. Sie können das Dashboard verwenden, um zu überprüfen, ob ein Computemodul auf dem Azure Stack Edge Pro-Gerät erfolgreich bereitgestellt wurde.
 
 Gehen Sie wie folgt vor, um den Modulstatus anzuzeigen:
 
 1. Navigieren Sie im linken Bereich des Dashboards zu **Namespace**. Filtern Sie nach dem Namespace, in dem die IoT Edge-Module angezeigt werden, in diesem Fall **iotedge**.
 1. Navigieren Sie im linken Bereich zu **Workloads > Bereitstellungen**.
-1. Im rechten Bereich werden alle auf dem Gerät bereitgestellten Module angezeigt. In diesem Fall wurde das Modul GettingStartedWithGPU auf dem Azure Stack Edge-Gerät bereitgestellt. Sie können sehen, dass das Modul bereitgestellt wurde.
+1. Im rechten Bereich werden alle auf dem Gerät bereitgestellten Module angezeigt. In diesem Fall wurde das Modul „GettingStartedWithGPU“ auf dem Azure Stack Edge Pro-Gerät bereitgestellt. Sie können sehen, dass das Modul bereitgestellt wurde.
 
     ![Anzeigen der Modulbereitstellung](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-view-module-deployment-1.png)
 
@@ -81,7 +81,7 @@ Gehen Sie im Dashboard wie folgt vor, um die IP-Adresse abzurufen:
 
 1. Navigieren Sie im linken Bereich des Dashboards zu **Namespace**. Filtern Sie nach dem Namespace, in dem ein externer Dienst bereitgestellt wird, in diesem Fall **iotedge**.
 1. Navigieren Sie im linken Bereich zu **Discovery and Load balancing (Ermittlung und Lastenausgleich) > Dienste**.
-1. Im rechten Bereich werden alle Dienste angezeigt, die im Namespace `iotedge` auf dem Azure Stack Edge-Gerät ausgeführt werden.
+1. Im rechten Bereich werden alle Dienste angezeigt, die im Namespace `iotedge` auf dem Azure Stack Edge Pro-Gerät ausgeführt werden.
 
     ![Abrufen der IP-Adresse für externe Dienste](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-get-ip-external-service-1.png)
 
@@ -104,7 +104,7 @@ Gehen Sie wie folgt vor, um die Containerprotokolle anzuzeigen:
 
 ## <a name="view-cpu-memory-usage"></a>Anzeigen der CPU- und Speicherauslastung
 
-Das Kubernetes-Dashboard für das Azure Stack Edge-Gerät umfasst auch das [Metrics Server-Add-On](https://kubernetes.io/docs/tasks/debug-application-cluster/resource-metrics-pipeline/), mit dem die CPU- und Speicherauslastung der Kubernetes-Ressourcen aggregiert wird.
+Das Kubernetes-Dashboard für das Azure Stack Edge Pro-Gerät umfasst auch das [Metrics Server-Add-On](https://kubernetes.io/docs/tasks/debug-application-cluster/resource-metrics-pipeline/), mit dem die CPU- und Speicherauslastung der Kubernetes-Ressourcen aggregiert wird.
  
 Beispielsweise können Sie die CPU- und Speicherauslastung der Bereitstellungen in allen Namespaces anzeigen. 
 

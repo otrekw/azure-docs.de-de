@@ -464,27 +464,31 @@
               href: ../cosmos-db/configure-synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Herstellen einer Verbindung mit Azure Synapse Link für Cosmos DB
               href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
-            - name: Abfragen des Azure Cosmos DB-Analysespeichers mit Apache Spark für Azure Synapse Analytics
+            - name: "Abfragen des Azure\_Cosmos\_DB-Analysespeichers mit Apache Spark"
               href: ./synapse-link/how-to-query-analytical-store-spark.md
             - name: "Kopieren von Daten von Synapse\_Link in einen SQL-Pool mithilfe von Apache Spark"
               href: ./synapse-link/how-to-copy-to-sql-pool.md
+            - name: "Abfragen des Azure\_Cosmos\_DB-Analysespeichers mit SQL\_On-Demand"
+              href: sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Synapse-SQL
           items:
-            - name: Abfragen von Daten im Speicher
+            - name: Abfragen externer Daten
               items:
                 - name: Übersicht
                   href: sql/query-data-storage.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Abfragen einer CSV-Datei
+                - name: Abfragen von CSV-Dateien
                   href: sql/query-single-csv-file.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: Abfragen von Parquet-Dateien
                   href: sql/query-parquet-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Abfragen von geschachtelten Parquet-Typen
-                  href: sql/query-parquet-nested-types.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: Abfragen von JSON-Dateien
                   href: sql/query-json-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                - name: "Abfragen einer Azure Cosmos\_DB"
+                  href: sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                - name: Abfragen von geschachtelten Typen
+                  href: sql/query-parquet-nested-types.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: Abfragen von Ordnern und mehreren Dateien
                   href: sql/query-folders-multiple-csv-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Verwenden von Dateimetadaten
+                - name: Abfragen partitionierter Dateien unter Verwendung von Dateimetadaten
                   href: sql/query-specific-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: Erstellen und Verwenden von Sichten
                   href: sql/create-use-views.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json

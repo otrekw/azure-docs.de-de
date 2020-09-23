@@ -1,6 +1,6 @@
 ---
-title: Erstellen von VM-Images für Ihr Azure Stack Edge-GPU-Gerät
-description: Hier erfahren Sie, wie Sie Linux- oder Windows-VM-Images für die Verwendung mit Ihrem Azure Stack Edge-GPU-Gerät erstellen.
+title: Erstellen von VM-Images für Ihr Azure Stack Edge Pro-GPU-Gerät
+description: Hier wird beschrieben, wie Sie Linux- oder Windows-VM-Images für die Verwendung mit Ihrem Azure Stack Edge Pro-GPU-Gerät erstellen.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,24 +8,24 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: alkohli
-ms.openlocfilehash: fd87cbef4c667d9da1f93b448a2a67e6e90307b7
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: 745d0df07b6d0d01acf0d564df8c242e16f3f56d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500282"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890981"
 ---
-# <a name="create-custom-vm-images-for-your-azure-stack-edge-device"></a>Erstellen benutzerdefinierter VM-Images für Ihr Azure Stack Edge-Gerät
+# <a name="create-custom-vm-images-for-your-azure-stack-edge-pro-device"></a>Erstellen benutzerdefinierter VM-Images für Ihr Azure Stack Edge Pro-Gerät
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Wenn Sie virtuelle Computer auf Ihrem Azure Stack Edge-Gerät bereitstellen möchten, müssen Sie in der Lage sein, benutzerdefinierte VM-Images zu erstellen, mit denen Sie wiederum virtuelle Computer erstellen können. In diesem Artikel werden die Schritte beschrieben, die zum Erstellen von benutzerdefinierten Linux- oder Windows-VM-Images erforderlich sind, mit denen Sie virtuelle Computer auf Ihrem Azure Stack Edge-Gerät bereitstellen können.
+Wenn Sie virtuelle Computer auf Ihrem Azure Stack Edge Pro-Gerät bereitstellen möchten, müssen Sie in der Lage sein, benutzerdefinierte VM-Images zu erstellen, mit denen Sie wiederum virtuelle Computer erstellen können. In diesem Artikel werden die Schritte beschrieben, die Sie ausführen müssen, um benutzerdefinierte Linux- oder Windows-VM-Images zu erstellen, mit denen Sie virtuelle Computer auf Ihrem Azure Stack Edge Pro-Gerät bereitstellen können.
 
 ## <a name="vm-image-workflow"></a>Workflow für VM-Images
 
-Der Workflow erfordert, dass Sie einen virtuellen Computer in Azure erstellen, den virtuellen Computer anpassen und generalisieren und dann die virtuelle Festplatte (VHD) für diesen virtuellen Computer herunterladen. Diese generalisierte virtuelle Festplatte wird in Azure Stack Edge hochgeladen, und ein verwalteter Datenträger wird auf der Grundlage dieser virtuellen Festplatte und das Image auf der Grundlage des verwalteten Datenträgers erstellt. Schließlich werden virtuelle Computer auf der Grundlage dieses Images erstellt.   
+Der Workflow erfordert, dass Sie einen virtuellen Computer in Azure erstellen, den virtuellen Computer anpassen und generalisieren und dann die virtuelle Festplatte (VHD) für diesen virtuellen Computer herunterladen. Diese generalisierte virtuelle Festplatte wird in Azure Stack Edge Pro hochgeladen. Es wird ein verwalteter Datenträger auf der Grundlage dieser virtuellen Festplatte erstellt, und das Image wird auf der Grundlage des verwalteten Datenträgers erstellt. Abschließend werden virtuelle Computer auf der Grundlage dieses Images erstellt.   
 
-Weitere Informationen finden Sie unter [Bereitstellen virtueller Computer auf Ihrem Azure Stack Edge-GPU-Gerät über Azure PowerShell](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md).
+Weitere Informationen finden Sie unter [Bereitstellen von VMs auf Ihrem Azure Stack Edge Pro-Gerät mithilfe von Azure PowerShell](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md).
 
 
 ## <a name="create-a-windows-custom-vm-image"></a>Erstellen eines benutzerdefinierten Windows-VM-Images
@@ -44,7 +44,7 @@ Führen Sie die folgenden Schritte aus, um ein Windows-VM-Image zu erstellen:
    
        Sie können auch die Informationen unter [Übersicht über Sysprep (Systemvorbereitung)](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview) lesen.
 
-Verwenden Sie diese virtuelle Festplatte, um jetzt einen virtuellen Computer zu erstellen und auf dem Azure Stack Edge-Gerät bereitzustellen.
+Verwenden Sie diese virtuelle Festplatte, um jetzt einen virtuellen Computer zu erstellen und auf Ihrem Azure Stack Edge Pro-Gerät bereitzustellen.
 
 ## <a name="create-a-linux-custom-vm-image"></a>Erstellen eines benutzerdefinierten Linux-VM-Images
 
@@ -69,7 +69,7 @@ Führen Sie die folgenden Schritte aus, um ein Linux-VM-Image zu erstellen:
 
 1. [Laden Sie einen vorhandenen Betriebssystemdatenträger herunter.](../virtual-machines/linux/download-vhd.md)
 
-Verwenden Sie diese virtuelle Festplatte, um jetzt einen virtuellen Computer zu erstellen und auf dem Azure Stack Edge-Gerät bereitzustellen. Sie können die folgenden zwei Azure Marketplace-Images verwenden, um benutzerdefinierte Linux-Images zu erstellen:
+Verwenden Sie diese virtuelle Festplatte, um jetzt einen virtuellen Computer zu erstellen und auf Ihrem Azure Stack Edge Pro-Gerät bereitzustellen. Sie können die folgenden zwei Azure Marketplace-Images verwenden, um benutzerdefinierte Linux-Images zu erstellen:
 
 |Name des Elements  |BESCHREIBUNG  |Herausgeber  |
 |---------|---------|---------|
@@ -81,4 +81,4 @@ Eine vollständige Liste der Azure Marketplace-Images, die funktionieren könnt
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Bereitstellen virtueller Computer auf Ihrem Azure Stack Edge-Gerät](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md)
+[Bereitstellen von VMs auf Ihrem Azure Stack Edge Pro-Gerät](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md).

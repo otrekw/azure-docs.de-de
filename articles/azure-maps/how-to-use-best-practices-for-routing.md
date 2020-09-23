@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: b957453758b9b8e34989877516a9083f06a85ed8
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 1c108c79cafb591dced6f6be0dd5c1b353ddac45
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400778"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086401"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Bewährte Methoden für den Azure Maps-Routendienst
 
@@ -275,7 +275,7 @@ Die Abbildung unten stellt ein Beispiel für das Rendern alternativer Routen mit
 
 ## <a name="use-the-routing-service-in-a-web-app"></a>Verwenden des Routingdiensts in einer Web-App
 
-Das Web SDK für Azure Maps stellt ein [Dienstmodul](https://docs.microsoft.com/javascript/api/azure-maps-rest/?view=azure-maps-typescript-latest) bereit. Dieses Modul ist eine Hilfsbibliothek, die die Verwendung der REST-APIs von Azure Maps in Web- oder Node.js-Anwendungen durch Einsatz von JavaScript oder TypeScript vereinfacht. Das Dienstmodul kann verwendet werden, um die zurückgegebenen Routen auf der Karte zu rendern. Das Modul bestimmt automatisch, welche API für GET- und POST-Anforderungen verwendet werden soll.
+Das Web SDK für Azure Maps stellt ein [Dienstmodul](https://docs.microsoft.com/javascript/api/azure-maps-rest/) bereit. Dieses Modul ist eine Hilfsbibliothek, die die Verwendung der REST-APIs von Azure Maps in Web- oder Node.js-Anwendungen durch Einsatz von JavaScript oder TypeScript vereinfacht. Das Dienstmodul kann verwendet werden, um die zurückgegebenen Routen auf der Karte zu rendern. Das Modul bestimmt automatisch, welche API für GET- und POST-Anforderungen verwendet werden soll.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

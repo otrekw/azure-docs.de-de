@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: d889d0c13c911e02d73bb1de76b7c3d1aa240027
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0730148a3da41d0d72961ea521577fa370b183d
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806815"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89596089"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-the-azure-cli"></a>Erstellen eines Anwendungsgateways mit interner Umleitung über die Azure-Befehlszeilenschnittstelle
 
@@ -21,12 +21,11 @@ Sie können mit der Azure CLI [eine Umleitung des Webdatenverkehrs](multiple-sit
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
-> [!div class="checklist"]
-> * Einrichten des Netzwerks
-> * Erstellen eines Anwendungsgateways
-> * Hinzufügen der Listener und einer Umleitungsregel
-> * Erstellen einer VM-Skalierungsgruppe mit dem Back-End-Pool
-> * Erstellen eines CNAME-Eintrags in Ihrer Domäne
+* Einrichten des Netzwerks
+* Erstellen eines Anwendungsgateways
+* Hinzufügen der Listener und einer Umleitungsregel
+* Erstellen einer VM-Skalierungsgruppe mit dem Back-End-Pool
+* Erstellen eines CNAME-Eintrags in Ihrer Domäne
 
 Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 

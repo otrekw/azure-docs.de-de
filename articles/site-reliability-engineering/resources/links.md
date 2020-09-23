@@ -2,17 +2,17 @@
 title: 'SRE: Linksammlungen und Zusammenfassungen | Microsoft-Dokumentation'
 description: Erweitern Sie Ihr Wissen über das Websitezuverlässigkeits-Engineering (Site Reliability Engineering) mit diesen Ressourcen
 author: dnblankedelman
-manager: efreeman
+manager: ScottCa
 ms.service: site-reliability-engineering
 ms.topic: article
-ms.date: 02/18/2020
+ms.date: 09/14/2020
 ms.author: dnb
-ms.openlocfilehash: a891b580b5cb62d111e5d8a6980f4f547345deb6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: becbc3e59663c1898cc4e635f61f63d54360a6f5
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471250"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086537"
 ---
 # <a name="sources-for-site-reliability-engineering-information"></a>Quellen für Informationen zum Websitezuverlässigkeits-Engineering
 

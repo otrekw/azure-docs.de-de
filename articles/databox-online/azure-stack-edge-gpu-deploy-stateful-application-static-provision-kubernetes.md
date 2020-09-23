@@ -1,6 +1,6 @@
 ---
-title: Verwenden von kubectl zum Bereitstellen einer zustandsbehafteten Kubernetes-App über eine statisch bereitgestellte Freigabe auf einem Azure Stack Edge-Gerät | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie die Bereitstellung einer zustandsbehafteten Kubernetes-Anwendung über eine statisch bereitgestellte Freigabe mithilfe von kubectl auf einem Azure Stack Edge-Gerät mit GPU erstellen und verwalten.
+title: Verwenden von kubectl zum Bereitstellen einer zustandsbehafteten Kubernetes-App über eine statisch bereitgestellte Freigabe auf einem Azure Stack Edge Pro-Gerät | Microsoft-Dokumentation
+description: Hier wird beschrieben, wie Sie die Bereitstellung einer zustandsbehafteten Kubernetes-Anwendung über eine statisch bereitgestellte Freigabe mithilfe von kubectl auf einem Azure Stack Edge Pro-GPU-Gerät erstellen und verwalten.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/18/2020
 ms.author: alkohli
-ms.openlocfilehash: 17be54536f785049aef6831e01f1f12219225b90
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 8366c5b7a05b35891bcf87e446229357a5511359
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254371"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899541"
 ---
-# <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-device"></a>Verwenden von kubectl zum Ausführen einer zustandsbehafteten Kubernetes-Anwendung mit PersistentVolume auf einem Azure Stack Edge-Gerät
+# <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-pro-device"></a>Verwenden von kubectl zum Ausführen einer zustandsbehafteten Kubernetes-Anwendung mit PersistentVolume auf einem Azure Stack Edge Pro-Gerät
 
 In diesem Artikel erfahren Sie, wie Sie eine zustandsbehaftete Einzelinstanzanwendung in Kubernetes mit einem PersistentVolume (PV) und einer Bereitstellung bereitstellen. Die Bereitstellung wendet `kubectl`-Befehle auf einen vorhandenen Kubernetes-Cluster an und stellt die Anwendung MySQL bereit. 
 
-Dieses Verfahren ist für Benutzer vorgesehen, die mit der [Kubernetes-Speicherung auf Azure Stack Edge-Geräten](azure-stack-edge-gpu-kubernetes-storage.md) und den Konzepten der [Kubernetes-Speicherung](https://kubernetes.io/docs/concepts/storage/) vertraut sind.
+Dieses Verfahren ist für Benutzer vorgesehen, die den Artikel [Kubernetes-Speicher auf dem Azure Stack Edge Pro-Gerät](azure-stack-edge-gpu-kubernetes-storage.md) gelesen haben und mit den [Kubernetes-Speicherkonzepten](https://kubernetes.io/docs/concepts/storage/) vertraut sind.
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -28,34 +28,37 @@ Stellen Sie vor der Bereitstellung der zustandsbehafteten Anwendung sicher, dass
 
 ### <a name="for-device"></a>Für das Gerät
 
-- Sie verfügen über Anmeldeinformationen für ein Azure Stack Edge-Gerät mit einem Knoten.
+- Sie verfügen über Anmeldeinformationen für ein Azure Stack Edge Pro-Gerät mit einem Knoten.
     - Das Gerät ist aktiviert. Weitere Informationen finden Sie unter [Aktivieren des Geräts](azure-stack-edge-gpu-deploy-activate.md).
     - Auf dem Gerät wurde die Computerolle über das Azure-Portal konfiguriert, und es verfügt über einen Kubernetes-Cluster. Weitere Informationen finden Sie unter [Konfigurieren von Compute](azure-stack-edge-gpu-deploy-configure-compute.md).
 
 ### <a name="for-client-accessing-the-device"></a>Für den Client, der auf das Gerät zugreift
 
-- Sie verfügen über ein Windows-Clientsystem, das für den Zugriff auf das Azure Stack Edge-Gerät verwendet wird.
+- Sie verfügen über ein Windows-Clientsystem, das für den Zugriff auf das Azure Stack Edge Pro-Gerät verwendet wird.
     - Auf dem Client wird Windows PowerShell 5.0 oder höher ausgeführt. Informationen zum Herunterladen der neuesten Version von Windows PowerShell finden Sie unter [Installieren von Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
     
     - Sie können auch einen anderen Client mit einem [unterstützten Betriebssystem](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) verwenden. In diesem Artikel wird die Vorgehensweise bei Verwendung eines Windows-Clients beschrieben. 
     
-    - Sie haben die unter [Zugreifen auf den Kubernetes-Cluster auf dem Azure Stack Edge-Gerät](azure-stack-edge-gpu-create-kubernetes-cluster.md) beschriebenen Schritte ausgeführt. Sie haben:
+    - Sie haben die unter [Zugreifen auf den Kubernetes-Cluster auf dem Azure Stack Edge Pro-Gerät](azure-stack-edge-gpu-create-kubernetes-cluster.md) beschriebenen Schritte ausgeführt. Sie haben:
       - den Namespace `userns1` über den Befehl `New-HcsKubernetesNamespace` erstellt. 
       - den Benutzer `user1` über den Befehl `New-HcsKubernetesUser` erstellt. 
       - `user1` Zugriff auf `userns1` über den Befehl `Grant-HcsKubernetesNamespaceAccess` gewährt.       
       - `kubectl` auf dem Client installiert und die Datei `kubeconfig` mit der Benutzerkonfiguration in „C:\\Users\\&lt;Benutzername&gt;\\.kube“ gespeichert. 
     
-    - Stellen Sie sicher, dass die `kubectl`-Clientversion nicht mehr als eine Version von der Kubernetes-Masterversion abweicht, die auf dem Azure Stack Edge-Gerät ausgeführt wird. 
+    - Stellen Sie sicher, dass die `kubectl`-Clientversion um nicht mehr als eine Version von der Kubernetes-Masterversion abweicht, die auf dem Azure Stack Edge Pro-Gerät ausgeführt wird. 
         - Verwenden Sie `kubectl version`, um die kubectl-Version zu überprüfen, die auf dem Client ausgeführt wird. Notieren Sie sich den gesamten Versionsnamen.
-        - Wechseln Sie auf der lokalen Benutzeroberfläche des Azure Stack Edge-Geräts zu **Übersicht**, und notieren Sie sich die Kubernetes-Softwarenummer. 
+        - Navigieren Sie auf der lokalen Benutzeroberfläche des Azure Stack Edge Pro-Geräts zu **Übersicht**, und notieren Sie sich die Kubernetes-Softwarenummer. 
         - Überprüfen Sie anhand der Zuordnungen in der Liste der unterstützten Kubernetes-Versionen, ob diese beiden Versionen kompatibel sind. <!-- insert link-->. 
 
 
-Sie können nun eine zustandsbehaftete Anwendung auf dem Azure Stack Edge-Gerät bereitstellen. 
+Sie können nun eine zustandsbehaftete Anwendung auf dem Azure Stack Edge Pro-Gerät bereitstellen. 
 
 ## <a name="provision-a-static-pv"></a>Bereitstellen eines statischen PV
 
-Zum statischen Bereitstellen eines PV müssen Sie auf Ihrem Gerät eine Freigabe erstellen. Führen Sie diese Schritte aus, um ein PV für Ihre SMB- oder NFS-Freigabe bereitzustellen. 
+Zum statischen Bereitstellen eines PV müssen Sie auf Ihrem Gerät eine Freigabe erstellen. Führen Sie die folgenden Schritte aus, um ein PV für Ihre SMB-Freigabe bereitzustellen. 
+
+> [!NOTE]
+> Das in diesem Anleitungsartikel verwendete Beispiel funktioniert nicht bei Verwendung von NFS-Freigaben. Im Allgemeinen können NFS-Freigaben auf Ihrem Azure Stack Edge-Gerät mit Nicht-Datenbankanwendungen bereitgestellt werden.
 
 1. Wählen Sie aus, ob Sie eine Edge-Freigabe oder lokale Edge-Freigabe erstellen möchten. Befolgen Sie die Anweisungen unter [Hinzufügen einer Freigabe](azure-stack-edge-manage-shares.md#add-a-share), um eine Freigabe zu erstellen. Aktivieren Sie das Kontrollkästchen **Freigabe mit Edgecomputing verwenden**.
 
@@ -71,7 +74,7 @@ Zum statischen Bereitstellen eines PV müssen Sie auf Ihrem Gerät eine Freigabe
 
         ![Vorhandene lokale Freigabe für PV einbinden](./media/azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes/mount-edge-share-2.png)
 
-1. Notieren Sie sich den Namen der Freigabe. Bei Erstellung dieser Freigabe wird automatisch ein persistentes Volumeobjekt im Kubernetes-Cluster erstellt, das der von Ihnen erstellten SMB- oder NFS-Freigabe entspricht. 
+1. Notieren Sie sich den Namen der Freigabe. Bei der Erstellung dieser Freigabe wird automatisch ein persistentes Volumeobjekt im Kubernetes-Cluster erstellt, das der von Ihnen erstellten SMB-Freigabe entspricht. 
 
 ## <a name="deploy-mysql"></a>Bereitstellen von MySQL
 
@@ -99,7 +102,7 @@ Alle `kubectl`-Befehle, die Sie zum Erstellen und Verwalten zustandsbehafteter A
 
     Dieser Anspruch wird durch jedes vorhandene PV erfüllt, das bei der Erstellung der Freigabe im vorherigen Schritt statisch bereitgestellt wurde. Auf Ihrem Gerät wird für jede Freigabe ein großes PV mit 32 TB erstellt. Das PV erfüllt die vom PVC gestellten Anforderungen, und der PVC sollte an dieses PV gebunden sein.
 
-    Kopieren und speichern Sie die folgende Datei `mysql-deployment.yml` in einen Ordner auf dem Windows-Client, den Sie für den Zugriff auf das Azure Stack Edge-Gerät verwenden.
+    Kopieren Sie die folgende Datei `mysql-deployment.yml`, und speichern Sie diese in einem Ordner auf dem Windows-Client, den Sie für den Zugriff auf das Azure Stack Edge Pro-Gerät verwenden.
     
     ```yml
     apiVersion: v1
@@ -147,7 +150,7 @@ Alle `kubectl`-Befehle, die Sie zum Erstellen und Verwalten zustandsbehafteter A
               claimName: mysql-pv-claim
     ```
     
-2. Kopieren und speichern Sie sie als Datei `mysql-pv.yml` in denselben Ordner, in dem Sie `mysql-deployment.yml` gespeichert haben. Um die SMB- oder NFS-Freigabe zu verwenden, die Sie zuvor mit `kubectl` erstellt haben, legen Sie das Feld `volumeName` im PVC-Objekt auf den Namen der Freigabe fest. 
+2. Kopieren und speichern Sie sie als Datei `mysql-pv.yml` in denselben Ordner, in dem Sie `mysql-deployment.yml` gespeichert haben. Um die SMB-Freigabe zu verwenden, die Sie zuvor mit `kubectl` erstellt haben, legen Sie das Feld `volumeName` im PVC-Objekt auf den Namen der Freigabe fest. 
 
     > [!NOTE] 
     > Stellen Sie sicher, dass die YAML-Dateien den richtigen Einzug haben. Sie können die Dateien mit [YAML lint](http://www.yamllint.com/) prüfen und dann speichern.
@@ -158,8 +161,8 @@ Alle `kubectl`-Befehle, die Sie zum Erstellen und Verwalten zustandsbehafteter A
     metadata:
       name: mysql-pv-claim
     spec:
-      volumeName: <nfs-or-smb-share-name-here>
-      storageClassName: manual
+      volumeName: <smb-share-name-here>
+      storageClassName: ""
       accessModes:
         - ReadWriteOnce
       resources:
@@ -289,7 +292,6 @@ Alle `kubectl`-Befehle, die Sie zum Erstellen und Verwalten zustandsbehafteter A
 
 ## <a name="verify-mysql-is-running"></a>Überprüfen, ob MySQL ausgeführt wird
 
-Die vorherige YAML-Datei erstellt einen Dienst, der einem Pod im Cluster den Zugriff auf die Datenbank ermöglicht. Die Dienstoption clusterIP: Mit „None“ kann der DNS-Name des Diensts direkt in die IP-Adresse des Pods aufgelöst werden. Dies ist optimal, wenn es hinter einem Dienst nur einen Pod gibt und Sie nicht beabsichtigen, die Anzahl der Pods zu erhöhen.
 
 Um einen Befehl für einen Container in einem Pod auszuführen, in dem MySQL ausgeführt wird, geben Sie Folgendes ein:
 
@@ -352,4 +354,4 @@ Das PV ist nicht mehr an den PVC gebunden, weil der PVC gelöscht wurde. Da das 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zur dynamischen Bereitstellung von Speicher finden Sie unter [Bereitstellen einer zustandsbehafteten Anwendung mittels dynamischer Bereitstellung auf einem Azure Stack Edge-Gerät](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md).
+Lesen Sie den Artikel [Verwenden von kubectl zum Ausführen einer zustandsbehafteten Kubernetes-Anwendung mit StorageClass auf einem Azure Stack Edge Pro-Gerät](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md), um zu verstehen, wie Speicher dynamisch bereitgestellt wird.
