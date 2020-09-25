@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 65f378f52c464869217084c6f155b9d34c6fc092
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 415c95a441ac0cc6ed2dbf2d6a37f57d7a9e7341
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84803734"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90562518"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>Bereitstellen einer Load Balancer-Lösung mit Internetzugriff über IPv6 mithilfe einer Vorlage
 
@@ -38,7 +38,7 @@ Ein Azure Load Balancer ist ein Layer-4-Load Balancer (TCP, UDP). Der Load Balan
 
 Das folgende Diagramm veranschaulicht die Lösung mit Lastenausgleich, die mithilfe der in diesem Artikel beschriebenen Beispielvorlage bereitgestellt wird.
 
-![Load Balancer-Szenarios](./media/load-balancer-ipv6-internet-template/lb-ipv6-scenario.png)
+![Die Abbildung zeigt ein in diesem Artikel verwendetes Beispielszenario, einschließlich eines Arbeitsstationclients, der über das Internet mit einem Azure Load Balancer verbunden ist, der wiederum mit zwei virtuellen Computern verbunden ist.](./media/load-balancer-ipv6-internet-template/lb-ipv6-scenario.png)
 
 In diesem Szenario erstellen Sie die folgenden Azure-Ressourcen:
 
@@ -55,43 +55,43 @@ In diesem Artikel wird eine Vorlage verwendet, die im Katalog mit [Azure-Schnell
 1. Öffnen Sie das Azure-Portal, und melden Sie sich mit einem Konto an, das über Berechtigungen zum Erstellen von virtuellen Computern und Netzwerkressourcen in einem Azure-Abonnement verfügt. Wenn Sie keine vorhandenen Ressourcen verwenden, benötigt das Konto darüber hinaus die Berechtigung zum Erstellen einer Ressourcengruppe und eines Speicherkontos.
 2. Klicken Sie im Menü auf „+Neu“, und geben Sie „Vorlage“ in das Suchfeld ein. Wählen Sie in den Suchergebnissen „Vorlagenbereitstellung“ aus.
 
-    ![LB-IPv6-Portal – Schritt 2](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step2.png)
+    ![Screenshot zeigt das Azure-Portal mit ausgewählten Optionen „Neu“ und „Vorlagenbereitstellung“.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step2.png)
 
 3. Klicken Sie auf dem Blatt „Alles“ auf „Vorlagenbereitstellung“.
 
-    ![LB-IPv6-Portal – Schritt 3](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step3.png)
+    ![Screenshot zeigt Vorlagenbereitstellung in Marketplace.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step3.png)
 
 4. Klicken Sie auf „Erstellen“.
 
-    ![LB-IPv6-Portal – Schritt 4](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step4.png)
+    ![Screenshot zeigt die Beschreibung der Vorlagenbereitstellung in Marketplace.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step4.png)
 
 5. Klicken Sie auf „Vorlage bearbeiten“. Löschen Sie den vorhandenen Inhalt, kopieren Sie den gesamten Inhalt der Vorlagendatei (einschließlich der Klammern { } am Anfang und Ende), und fügen Sie ihn ein. Klicken Sie dann auf „Speichern“.
 
     > [!NOTE]
     > Wenn Sie Microsoft Internet Explorer verwenden, wird beim Einfügen ein Dialogfeld angezeigt, mit dem Sie aufgefordert werden, Zugriff auf die Windows-Zwischenablage zuzulassen. Klicken Sie auf „Zugriff zulassen“.
 
-    ![LB-IPv6-Portal – Schritt 5](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step5.png)
+    ![Screenshot zeigt den ersten Schritt einer benutzerdefinierten Bereitstellung, der im Bearbeiten der Vorlage besteht.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step5.png)
 
 6. Klicken Sie auf „Parameter bearbeiten“. Geben Sie auf dem Blatt „Parameter“ die Werte gemäß der Anleitung im Abschnitt mit Vorlagenparametern an, und klicken Sie auf „Speichern“, um das Blatt „Parameter“ zu schließen. Wählen Sie auf dem Blatt „Benutzerdefinierte Bereitstellung“ Ihr Abonnement und eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine. Wenn Sie eine Ressourcengruppe erstellen, wählen Sie einen Ort für die Ressourcengruppe aus. Klicken Sie anschließend auf **Rechtliche Bedingungen** und dann für die rechtlichen Bedingungen auf **Kaufen**. Azure beginnt mit der Bereitstellung der Ressourcen. Es dauert einige Minuten, alle Ressourcen bereitzustellen.
 
-    ![LB-IPv6-Portal – Schritt 6](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step6.png)
+    ![Screenshot zeigt die Schritte, die für die benutzerdefinierte Bereitstellung erforderlich sind, beginnend mit der Eingabe von Vorlagenparameterwerten.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step6.png)
 
     Weitere Informationen zu diesen Parametern finden Sie im Abschnitt [Vorlagenparameter und -variablen](#template-parameters-and-variables) weiter unten in diesem Artikel.
 
 7. Um die von der Vorlage erstellten Ressourcen anzuzeigen, klicken Sie auf „Durchsuchen“, scrollen Sie in der Liste nach unten, bis „Ressourcengruppen“ angezeigt wird, und klicken Sie darauf.
 
-    ![LB-IPv6-Portal – Schritt 7](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step7.png)
+    ![Screenshot zeigt das Azure-Portal, in dem „Durchsuchen“ und „Ressourcengruppen“ ausgewählt wurden.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step7.png)
 
 8. Klicken Sie auf dem Blatt „Ressourcengruppen“ auf den Namen der Ressourcengruppe, die Sie in Schritt 6 angegeben haben. Eine Liste aller Ressourcen, die bereitgestellt wurden, wird angezeigt. Wenn alles erfolgreich verlaufen ist, sollte unter „Letzte Bereitstellung“ der Status „Erfolgreich“ angezeigt werden. Ist dies nicht der Fall, stellen Sie sicher, dass das verwendete Konto über Berechtigungen zum Erstellen der erforderlichen Ressourcen verfügt.
 
-    ![LB-IPv6-Portal – Schritt 8](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step8.png)
+    ![Screenshot zeigt den Status der letzten Bereitstellung für eine Ressourcengruppe, die in diesem Beispiel erfolgreich war.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step8.png)
 
     > [!NOTE]
     > Wenn Sie Ihre Ressourcengruppen sofort nach Abschluss von Schritt 6 durchsuchen, wird unter „Letzte Bereitstellung“ der Status „Wird bereitgestellt“ angezeigt, während die Ressourcen bereitgestellt werden.
 
 9. Klicken Sie in der Liste der Ressourcen auf „myIPv6PublicIP“. Sie sehen, dass sie als IP-Adresse eine IPv6-Adresse aufweist und dass der DNS-Name der Wert ist, den Sie für den Parameter „dnsNameforIPv6LbIP“ in Schritt 6 angegeben haben. Diese Ressource ist die öffentliche IPv6-Adresse und der Hostname, auf den Internetclients zugreifen können.
 
-    ![LB-IPv6-Portal – Schritt 9](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step9.png)
+    ![Screenshot zeigt die öffentliche IPv6-Adresse.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step9.png)
 
 ## <a name="validate-connectivity"></a>Überprüfen der Konnektivität
 

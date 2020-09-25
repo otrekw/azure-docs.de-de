@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/24/2020
 ms.author: allensu
-ms.openlocfilehash: 738b54d9fcd86313c2581c5d0f055a7cca8230b8
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 4368a025ecc158afa1ee78b8abd86bd6db42ba75
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88706063"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89438664"
 ---
 # <a name="outbound-connections-in-azure"></a>Ausgehende Verbindungen in Azure
 
@@ -44,7 +44,7 @@ Azure Load Balancer bietet ausgehende Konnektivität über verschiedene Mechanis
 
 In Azure wird ein Algorithmus verwendet, um basierend auf der Größe des Back-End-Pools bei der PAT die Anzahl von verfügbaren vorab zugeordneten SNAT-Ports zu ermitteln. Für alle öffentlichen IP-Adressen, die einem Lastenausgleich zugeordnet sind, stehen 64.000 Ports als SNAT-Ports für jedes IP-Transportprotokoll zur Verfügung. Dieselbe Anzahl von SNAT-Ports wird vorab für UDP bzw. TCP zugeordnet und unabhängig voneinander pro IP-Transportprotokoll genutzt.  Die Verwendung des SNAT-Ports unterscheidet sich jedoch abhängig davon, ob es sich um einen UDP- oder TCP-Datenfluss handelt. Bei Erstellung von ausgehenden Datenflüssen werden diese Ports dynamisch genutzt (bis zum vorab festgelegten Grenzwert) und wieder freigegeben, wenn der Datenfluss geschlossen wird oder ein [Leerlauftimeout](../load-balancer/troubleshoot-outbound-connection.md#idletimeout) eintritt. Ports werden nur genutzt, wenn Datenflüsse eindeutig gemacht werden müssen.
 
-#### <a name="default-snat-ports-allocated"></a><a name="snatporttable"></a> Zugeordnete SNAT-Standardports
+#### <a name="dynamic-snat-ports-allocated"></a><a name="snatporttable"></a> Zugeordnete dynamische SNAT-Ports
 
 In der folgenden Tabelle sind die SNAT-Port-Vorabzuordnungen für die Ebenen der Back-End-Poolgrößen angegeben:
 

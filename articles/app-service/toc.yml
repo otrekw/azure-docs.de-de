@@ -146,7 +146,7 @@
           href: configure-language-java.md
         - name: Konfigurieren von Ruby
           href: configure-language-ruby.md
-        - name: Konfigurieren eines benutzerdefinierten Linux-Containers
+        - name: Konfigurieren eines benutzerdefinierten Containers
           href: configure-custom-container.md
         - name: Verbindungsherstellung mit lokalen Ressourcen
           href: web-sites-integrate-with-vnet.md
