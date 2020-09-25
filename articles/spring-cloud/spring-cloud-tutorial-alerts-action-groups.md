@@ -7,14 +7,16 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 856bace0c67c5afedd6305158326af46037e7f21
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: dc8dffb12dcd205671e2219dbef45ac14f9f7df7
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299225"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892533"
 ---
 # <a name="tutorial-how-to-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>Tutorial: Überwachen von Spring Cloud-Ressourcen mithilfe von Warnungen und Aktionsgruppen
+
+**Dieser Artikel gilt für:** ✔️ Java ✔️ C#
 
 Mit Azure Spring Cloud-Warnungen können Sie Ressourcen auf der Grundlage von Bedingungen (etwa dem verfügbaren Speicher, der Anforderungsrate oder der Datennutzung) überwachen Eine Warnung sendet eine Benachrichtigung, wenn Raten oder Bedingungen die definierten Spezifikationen erfüllen.
 
@@ -58,11 +60,11 @@ Gehen Sie auf der Seite **Aktionsgruppe hinzufügen** wie folgt vor:
 
 ## <a name="set-up-alert"></a>Einrichten einer Warnung 
 
-In den vorherigen Schritten wurde eine **Aktionsgruppe** erstellt, die eine Benachrichtigung per E-Mail verwendet. Sie können auch Telefonbenachrichtigungen, Webhooks, Azure Functions usw. verwenden.  
+In den vorherigen Schritten wurde eine **Aktionsgruppe** erstellt, die eine Benachrichtigung per E-Mail verwendet. Sie können auch Telefonbenachrichtigungen, Webhooks, Azure Functions usw. verwenden. Mit den folgenden Schritten wird eine **Warnung** konfiguriert.
 
-Navigieren Sie zum Konfigurieren einer **Warnung** zurück zur Seite **Warnungen**, und klicken Sie auf **Warnungsregeln verwalten**.
+1. Navigieren Sie zurück zur Seite **Warnungen**, und klicken Sie auf **Warnungsregeln verwalten**.
 
-  ![Screenshot: Definieren einer Warnung im Portal](media/alerts-action-groups/alerts-2.png)
+   ![Screenshot: Definieren einer Warnung im Portal](media/alerts-action-groups/alerts-2.png)
 
 1. Wählen Sie die **Ressource** für die Warnung aus.
 
@@ -84,9 +86,9 @@ Navigieren Sie zum Konfigurieren einer **Warnung** zurück zur Seite **Warnungen
 
 1. Klicken Sie auf **Fertig**.
 
-Ausführliche Informationen zu den für die Überwachung verfügbaren Bedingungen finden Sie unter [Metriken für Azure Spring Cloud](spring-cloud-concept-metrics.md#user-metrics-options).
+   Ausführliche Informationen zu den für die Überwachung verfügbaren Bedingungen finden Sie unter [Metriken für Azure Spring Cloud](spring-cloud-concept-metrics.md#user-metrics-options).
 
- Klicken Sie unter **AKTIONEN** auf **Aktionsgruppe auswählen**. Wählen Sie im Bereich **AKTIONEN** die zuvor definierte **Aktionsgruppe** aus.
+1. Klicken Sie unter **AKTIONEN** auf **Aktionsgruppe auswählen**. Wählen Sie im Bereich **AKTIONEN** die zuvor definierte **Aktionsgruppe** aus.
 
    ![Screenshot: „Neue Warnungsregel 4“ im Portal](media/alerts-action-groups/alerts-3-3.png) 
 
@@ -98,13 +100,13 @@ Ausführliche Informationen zu den für die Überwachung verfügbaren Bedingunge
 
    ![Screenshot: „Neue Warnungsregel 5“ im Portal](media/alerts-action-groups/alerts-3-4.png)
 
-Vergewissern Sie sich, dass die neue Warnungsregel aktiviert ist.
+1. Vergewissern Sie sich, dass die neue Warnungsregel aktiviert ist.
 
    ![Screenshot: „Neue Warnungsregel 6“ im Portal](media/alerts-action-groups/alerts-4.png)
 
 Eine Regel kann auch über die Seite **Metriken** erstellt werden:
 
-   ![Screenshot: „Neue Warnungsregel 7“ im Portal](media/alerts-action-groups/alerts-5.png)
+![Screenshot: „Neue Warnungsregel 7“ im Portal](media/alerts-action-groups/alerts-5.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

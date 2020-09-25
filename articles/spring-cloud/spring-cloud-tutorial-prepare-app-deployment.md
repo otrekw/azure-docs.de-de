@@ -1,21 +1,90 @@
 ---
-title: 'Anleitung: Vorbereiten einer Java Spring-Anwendung für die Bereitstellung in Azure Spring Cloud'
-description: Erfahren Sie, wie Sie eine Java Spring-Anwendung für die Bereitstellung in Azure Spring Cloud vorbereiten.
+title: 'Vorgehensweise: Vorbereiten einer Anwendung für die Bereitstellung in Azure Spring Cloud'
+description: Erfahren Sie, wie Sie eine Anwendung für die Bereitstellung in Azure Spring Cloud vorbereiten.
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: how-to
-ms.date: 02/03/2020
+ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 79d3829eaea15c8e7909b98b83d1327cd90e4544
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: ff0582e3c4f654ed2a7f5efdc9ce8fd7a226595a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89260322"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906837"
 ---
-# <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Vorbereiten einer Java Spring-Anwendung für die Bereitstellung in Azure Spring Cloud
+# <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Vorbereiten einer Anwendung für die Bereitstellung in Azure Spring Cloud
 
+::: zone pivot="programming-language-csharp"
+Azure Spring Cloud bietet robuste Dienste zum Hosten, Überwachen, Skalieren und Aktualisieren einer Steeltoe-App. In diesem Artikel wird gezeigt, wie Sie eine vorhandene Steeltoe-Anwendung für die Bereitstellung in Azure Spring Cloud vorbereiten. 
+
+In diesem Artikel werden die Abhängigkeiten, die Konfiguration und der Code erläutert, die zum Ausführen einer .NET Core-Steeltoe-App in Azure Spring Cloud erforderlich sind. Informationen zum Bereitstellen einer Anwendung in Azure Spring Cloud finden Sie unter [Bereitstellen Ihrer ersten Azure Spring Cloud-Anwendung](spring-cloud-quickstart.md).
+
+>[!Note]
+> Steeltoe-Unterstützung für Azure Spring Cloud wird zurzeit als öffentliche Vorschau angeboten. Angebote der Public Preview ermöglichen Kunden das Experimentieren mit neuen Funktionen vor der offiziellen Veröffentlichung.  Funktionen und Dienste in der Public Preview sind nicht zur Verwendung in der Produktion bestimmt.  Weitere Informationen zum Support während der Vorschauphase finden Sie in den [häufig gestellten Fragen](https://azure.microsoft.com/support/faq/). Sie können auch eine [Supportanfrage](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) einreichen.
+
+##  <a name="supported-versions"></a>Unterstützte Versionen
+
+Azure Spring Cloud unterstützt Folgendes:
+
+* .NET Core 3.1
+* Steeltoe 2.4
+
+## <a name="dependencies"></a>Abhängigkeiten
+
+Installieren Sie das Paket [Microsoft.Azure.SpringCloud.Client](https://www.nuget.org/packages/Microsoft.Azure.SpringCloud.Client/).
+
+## <a name="update-programcs"></a>Aktualisieren der Datei "Program.cs"
+
+Rufen Sie in der `Program.Main`-Methode die `UseAzureSpringCloudService`-Methode auf:
+
+```csharp
+public static IHostBuilder CreateHostBuilder(string[] args) =>
+    Host.CreateDefaultBuilder(args)
+        .ConfigureWebHostDefaults(webBuilder =>
+        {
+            webBuilder.UseStartup<Startup>();
+        })
+        .UseAzureSpringCloudService();
+```
+
+## <a name="enable-eureka-server-service-discovery"></a>Aktivieren der Eureka Server-Dienstermittlung
+
+Legen Sie in der Konfigurationsquelle, die bei der Ausführung der App in Azure Spring Cloud verwendet wird, `spring.application.name` auf denselben Namen fest wie die Azure Spring Cloud-App, für die das Projekt bereitgestellt wird.
+
+Wenn Sie z. B. ein .NET-Projekt mit dem Namen `EurekaDataProvider` in einer Azure Spring Cloud-App mit dem Namen `planet-weather-provider` bereitstellen, sollte die Datei *appSettings.json* den folgenden JSON-Code enthalten:
+
+```json
+"spring": {
+  "application": {
+    "name": "planet-weather-provider"
+  }
+}
+```
+
+## <a name="use-service-discovery"></a>Verwenden der Dienstermittlung
+
+Um einen Dienst mithilfe der Eureka Server-Dienstermittlung aufzurufen, nehmen Sie HTTP-Anforderungen für `http://<app_name>` vor, wobei `app_name` der Wert `spring.application.name` der Ziel-App ist. Mit dem folgenden Code wird beispielsweise der `planet-weather-provider`-Dienst aufgerufen:
+
+```csharp
+using (var client = new HttpClient(discoveryHandler, false))
+{
+    var responses = await Task.WhenAll(
+        client.GetAsync("http://planet-weather-provider/weatherforecast/mercury"),
+        client.GetAsync("http://planet-weather-provider/weatherforecast/saturn"));
+    var weathers = await Task.WhenAll(from res in responses select res.Content.ReadAsStringAsync());
+    return new[]
+    {
+        new KeyValuePair<string, string>("Mercury", weathers[0]),
+        new KeyValuePair<string, string>("Saturn", weathers[1]),
+    };
+}
+```
+::: zone-end
+
+::: zone pivot="programming-language-java"
 In diesem Thema wird gezeigt, wie Sie eine vorhandene Java Spring-Anwendung für die Bereitstellung in Azure Spring Cloud vorbereiten. Bei ordnungsgemäßer Konfiguration bietet Azure Spring Cloud stabile Dienste zur Überwachung, Skalierung und Aktualisierung Ihrer Java Spring Cloud-Anwendung.
 
 Bevor Sie dieses Beispiel ausführen, können Sie den [grundlegenden Schnellstart](spring-cloud-quickstart.md) ausprobieren.
@@ -128,9 +197,9 @@ Die folgende Tabelle enthält die korrekten Azure Spring Cloud-Versionen für 
 
 Spring Boot-Version | Spring Cloud-Version | Azure Spring Cloud-Clientstarterversion
 ---|---|---
-2.1 | Greenwich.RELEASE | 2.1.2
-2.2 | Hoxton.SR8 | Nicht erforderlich
-2.3 | Hoxton.SR8 | Nicht erforderlich
+2.1.x | Greenwich.RELEASE | 2.1.2
+2.2.x | Hoxton.SR8 | Nicht erforderlich
+2.3.x | Hoxton.SR8 | Nicht erforderlich
 
 Schließen Sie bei Verwendung von Spring Boot 2.1. die folgende Abhängigkeit in die Datei „pom.xml“ ein:
 
@@ -244,3 +313,4 @@ Schließen Sie die folgenden Abhängigkeiten vom Typ `spring-cloud-starter-sleut
 In diesem Thema haben Sie erfahren, wie Sie eine Java Spring-Anwendung für die Bereitstellung in Azure Spring Cloud konfigurieren. Informationen zum Einrichten einer Konfigurationsserverinstanz finden Sie unter [Einrichten einer Spring Cloud-Konfigurationsserverinstanz für Ihren Dienst](spring-cloud-tutorial-config-server.md).
 
 Weitere Beispiele finden Sie auf GitHub: [Azure Spring Cloud-Beispiele](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples).
+::: zone-end

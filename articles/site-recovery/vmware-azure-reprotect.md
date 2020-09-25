@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: mayg
-ms.openlocfilehash: 8a78ed25be80cbf083467209f764109a26782278
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6a11e3d0cb41383b44b76975ecbd1c2ae2825015
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292778"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441492"
 ---
 # <a name="reprotect-from-azure-to-on-premises"></a>Erneutes Schützen von Azure zu lokal
 
@@ -46,6 +46,9 @@ Aktivieren Sie die Replikation. Sie können bestimmte virtuelle Computer erneut 
 
 - Sie müssen beim erneuten Schützen mithilfe eines Wiederherstellungsplans für jeden geschützten Computer die Werte angeben.
 - Wenn virtuelle Computer in einer Replikationsgruppe zusammengefasst wurden, um die Konsistenz über mehrere virtueller Computer zu gewährleisten, können sie nur mithilfe eines Wiederherstellungsplans erneut geschützt werden. Virtuelle Computer in einer Replikationsgruppe müssen denselben Masterzielserver verwenden.
+
+>[!NOTE]
+>Die Datenmenge, die während des Vorgangs des erneuten Schützens von Azure an die ehemalige Quelle gesendet wird, kann zwischen 0 Byte und der Summe der Datenträgergröße für alle geschützten Computer liegen und kann nicht berechnet werden.
 
 ### <a name="before-you-start"></a>Vorbereitung
 

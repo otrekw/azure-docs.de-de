@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 300bc6acbe7821841b578dcc2166ecfc498ad750
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: ab6842fe6787b9e1a61b3c25fabb6c64c2597b9a
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141294"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032808"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Desktop-App, die Web-APIs aufruft: Abrufen eines Token
 
@@ -38,7 +38,7 @@ Die Web-API wird durch ihr `scopes` definiert. Verwenden Sie ungeachtet der Benu
 AuthenticationResult result;
 var accounts = await app.GetAccountsAsync();
 IAccount account = ChooseAccount(accounts); // for instance accounts.FirstOrDefault
-                                            // if the app manages is at most one account  
+                                            // if the app manages is at most one account
 try
 {
  result = await app.AcquireTokenSilent(scopes, account)
@@ -183,7 +183,7 @@ Bei Android müssen Sie außerdem mit `.WithParentActivityOrWindow` die übergeo
 
 #### <a name="withparentactivityorwindow"></a>WithParentActivityOrWindow
 
-Die Benutzeroberfläche ist wichtig, da sie interaktiv ist. `AcquireTokenInteractive` hat einen speziellen optionalen Parameter, der für die unterstützenden Plattformen die übergeordnete Benutzeroberfläche angeben kann. Bei Verwendung in einer Desktopanwendung weist `.WithParentActivityOrWindow` je nach Plattform einen anderen Typ auf.
+Die Benutzeroberfläche ist wichtig, da sie interaktiv ist. `AcquireTokenInteractive` hat einen speziellen optionalen Parameter, der für die unterstützenden Plattformen die übergeordnete Benutzeroberfläche angeben kann. Bei Verwendung in einer Desktopanwendung weist `.WithParentActivityOrWindow` je nach Plattform einen anderen Typ auf. Alternativ können Sie beim Erstellen eines Fensters auf den optionalen Parameter für das übergeordnete Fenster verzichten, wenn Sie nicht steuern möchten, wo das Anmeldedialogfeld auf dem Bildschirm angezeigt wird. Diese Vorgehensweise würde sich für befehlszeilenbasierte Anwendungen eignen und zum Weiterleiten von Aufrufen an andere Back-End-Dienste verwendet werden. Dabei werden keine Fenster für die Benutzerinteraktion benötigt. 
 
 ```csharp
 // net45
@@ -370,7 +370,7 @@ if accounts:
 if not result:
     result = app.acquire_token_by_authorization_code(
          request.args['code'],
-         scopes=config["scope"])    
+         scopes=config["scope"])
 
 ```
 
@@ -433,7 +433,7 @@ Wenn Sie einen Domänenbenutzer in einer Domäne oder einen in Azure AD eingebun
   - Oder der Mandantenadministrator muss zuvor für alle Benutzer im Mandanten zugestimmt haben, die Anwendung zu nutzen.
   - Anders gesagt:
     - Entweder haben Sie als Entwickler im Azure-Portal die Schaltfläche **Gewähren** für sich selbst ausgewählt.
-    - Oder ein Mandantenadministrator hat bei der Anwendungsregistrierung auf der Registerkarte **API-Berechtigungen** die Schaltfläche **Administratoreinwilligung für {Mandantendomäne} erteilen/widerrufen** ausgewählt. Weitere Informationen finden Sie unter [Hinzufügen von Zugriffsberechtigungen für Web-APIs](./quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis).
+    - Oder ein Mandantenadministrator hat bei der Anwendungsregistrierung auf der Registerkarte **API-Berechtigungen** die Schaltfläche **Administratoreinwilligung für {Mandantendomäne} erteilen/widerrufen** ausgewählt. Weitere Informationen finden Sie unter [Hinzufügen von Zugriffsberechtigungen für Ihre Web-API](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-your-web-api).
     - Oder Sie haben eine Möglichkeit für Benutzer eingeräumt, der Anwendung zuzustimmen. Weitere Informationen finden Sie unter [Anfordern der Zustimmung einzelner Benutzer](./v2-permissions-and-consent.md#requesting-individual-user-consent).
     - Oder Sie haben eine Möglichkeit für den Mandantenadministrator eingeräumt, der Anwendung zuzustimmen. Weitere Informationen finden Sie unter [Zustimmung des Administrators](./v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant).
 
@@ -925,7 +925,7 @@ Dieser Flow wird in MSAL für macOS nicht unterstützt.
 
 Wenn Sie ein Befehlszeilentool schreiben, das keine Websteuerelemente enthält, und die obigen Flows nicht verwenden können oder möchten, müssen Sie den Gerätecodeflow verwenden.
 
-Für die interaktive Authentifizierung mit Azure AD wird ein Webbrowser benötigt. Weitere Informationen finden Sie unter [Verwenden von Webbrowsern](https://aka.ms/msal-net-uses-web-browser). Für die Authentifizierung von Benutzern bei Geräten oder Betriebssystemen ohne Webbrowser ermöglicht der Gerätecodeflow dem Benutzer, ein anderes Gerät wie einen Computer oder ein Mobiltelefon zu verwenden, um sich interaktiv anzumelden. Mithilfe des Gerätecodeflows ruft die Anwendung in einem zweistufigen Prozess, der speziell für diese Geräte oder Betriebssysteme entwickelt wurde, die Token ab. Beispiele für solche Anwendungen sind iOT-Anwendungen oder Befehlszeilentools (CLI). Dahinter steckt folgender Gedanke:
+Für die interaktive Authentifizierung mit Azure AD wird ein Webbrowser benötigt. Weitere Informationen finden Sie unter [Verwenden von Webbrowsern](https://aka.ms/msal-net-uses-web-browser). Für die Authentifizierung von Benutzern bei Geräten oder Betriebssystemen ohne Webbrowser ermöglicht der Gerätecodeflow dem Benutzer, ein anderes Gerät wie einen Computer oder ein Mobiltelefon zu verwenden, um sich interaktiv anzumelden. Mithilfe des Gerätecodeflows ruft die Anwendung Token in einem zweistufigen Prozess ab, der für diese Geräte oder Betriebssysteme entwickelt wurde. Beispiele für solche Anwendungen sind iOT-Anwendungen oder Befehlszeilentools (CLI). Dahinter steckt folgender Gedanke:
 
 1. Wenn eine Benutzerauthentifizierung erforderlich ist, stellt die App einen Code für den Benutzer bereit. Der Benutzer wird aufgefordert, ein anderes Gerät (z. B. ein Smartphone mit Internetverbindung) zu verwenden, um zu einer URL (z. B. `https://microsoft.com/devicelogin`) zu wechseln. Anschließend wird der Benutzer aufgefordert, den Code einzugeben. Danach wird der Benutzer auf der Webseite durch einen normalen Authentifizierungsprozess geführt, der ggf. auch Zustimmungsaufforderungen und die mehrstufige Authentifizierung umfasst.
 
@@ -978,7 +978,7 @@ static async Task<AuthenticationResult> GetATokenForGraph()
         // If you want to provide a more complex user experience, check out ex.Classification
 
         return await AcquireByDeviceCodeAsync(pca);
-    }         
+    }
 }
 
 private async Task<AuthenticationResult> AcquireByDeviceCodeAsync(IPublicClientApplication pca)

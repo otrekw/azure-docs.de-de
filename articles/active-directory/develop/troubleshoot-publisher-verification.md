@@ -1,6 +1,6 @@
 ---
 title: Problembehandlung bei der Herausgeberüberprüfung – Microsoft Identity Platform | Azure
-description: Hier wird die Behandlung von Problemen bei der Herausgeberüberprüfung (Vorschauversion) für Microsoft Identity Platform durch Aufrufen von Microsoft Graph-APIs beschrieben.
+description: Hier wird die Behandlung von Problemen bei der Herausgeberüberprüfung für Microsoft Identity Platform durch Aufrufen von Microsoft Graph-APIs beschrieben.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,15 +12,15 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 3069e3caf81d9bb2f809b21c88383c419e3b90b3
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: fd49e922e5952f5a7c4b7f477dd33d6518010428
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282975"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088322"
 ---
-# <a name="troubleshoot-publisher-verification-preview"></a>Problembehandlung bei der Herausgeberüberprüfung (Vorschauversion)
-Wenn Sie den Vorgang nicht ausführen können oder bei der [Herausgeberüberprüfung (Vorschauversion)](publisher-verification-overview.md) unerwartetes Verhalten auftritt, sollten Sie zunächst die folgenden Schritte ausführen, wenn Sie Fehlermeldungen erhalten oder unerwartetes Verhalten feststellen: 
+# <a name="troubleshoot-publisher-verification"></a>Problembehandlung bei der Herausgeberüberprüfung
+Wenn Sie den Vorgang nicht ausführen können oder bei der [Herausgeberüberprüfung](publisher-verification-overview.md) unerwartetes Verhalten auftritt, sollten Sie zunächst die folgenden Schritte ausführen, wenn Sie Fehlermeldungen erhalten oder unerwartetes Verhalten feststellen: 
 
 1. Überprüfen Sie die [Anforderungen](publisher-verification-overview.md#requirements), und stellen Sie sicher, dass alle Anforderungen erfüllt sind.
 
@@ -39,10 +39,10 @@ Im Folgenden finden Sie einige häufige Probleme, die während des Vorgangs auft
     1. Wenn bereits ein MPN-Konto vorhanden ist, wird dies erkannt, und Sie werden dem Konto hinzugefügt. 
     1. Navigieren Sie zur [Partnerprofilseite](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile), auf der die MPN-ID und der Hauptkontakt für das Konto aufgeführt sind.
 
-- **Ich weiß nicht, wer mein globaler Azure AD-Administrator (auch als Unternehmensadministrator oder Mandantenadministrator bezeichnet) ist. Wie finde ich diese Informationen? Wie sieht es mit dem App-Administrator oder einer anderen Administratorrolle aus?**
+- **Ich weiß nicht, wer mein globaler Azure AD-Administrator (auch als Unternehmensadministrator oder Mandantenadministrator bezeichnet) ist. Wie finde ich diese Informationen? Was sieht es mit Anwendungs- und Cloudanwendungsadministratoren aus?**
     1. Melden Sie sich mit einem Benutzerkonto im primären Mandanten Ihrer Organisation beim [Azure AD-Portal](https://aad.portal.azure.com) an.
     1. Navigieren Sie zu [Rollenverwaltung](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators).
-    1. Klicken Sie auf „Globaler Administrator“ oder auf die gewünschte Administratorrolle.
+    1. Klicken Sie auf die gewünschte Administratorrolle
     1. Es wird eine Liste der Benutzer angezeigt, denen diese Rolle zugewiesen ist.
 
 - **Ich weiß nicht, wer Administrator für mein MPN-Konto ist** Navigieren Sie zur [Seite für die MPN-Benutzerverwaltung](https://partner.microsoft.com/pcv/users), und filtern Sie die Benutzerliste, um die Benutzer in verschiedenen Administratorrollen anzuzeigen.
@@ -51,22 +51,25 @@ Im Folgenden finden Sie einige häufige Probleme, die während des Vorgangs auft
     1. Navigieren Sie zu Ihrem [Partnerprofil](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile), und stellen Sie Folgendes sicher: 
         - Dass die MPN-ID korrekt ist. 
         - Dass keine Fehler oder „ausstehenden Aktionen“ angezeigt werden und der Überprüfungsstatus unter „Rechtliches Geschäftsprofil“ und „Partnerinformationen“ jeweils „autorisiert“ oder „erfolgreich“ lauten.
-    1. Navigieren Sie zur [Seite für die MPN-Mandantenverwaltung](https://partner.microsoft.com/dashboard/account/v3/tenantmanagement), und vergewissern Sie sich, dass der Mandant, in dem die App registriert ist und von dem Sie sich mit einem Benutzerkonto anmelden, in der Liste der zugeordneten Mandanten aufgeführt ist.
-    1. Navigieren Sie zur [Seite für die MPN-Benutzerverwaltung](https://partner.microsoft.com/pcv/users), und vergewissern Sie sich, dass der Benutzer, unter dem Sie sich anmelden, entweder „Globaler Administrator“, „MPN-Administrator“ oder „Kontoadministrator“ ist.
+    1. Navigieren Sie zur [Seite für die MPN-Mandantenverwaltung](https://partner.microsoft.com/dashboard/account/v3/tenantmanagement), und vergewissern Sie sich, dass der Mandant, in dem die App registriert ist und von dem Sie sich mit einem Benutzerkonto anmelden, in der Liste der zugeordneten Mandanten aufgeführt ist. Wenn Sie einen weiteren Mandanten hinzufügen müssen, befolgen Sie die [hier](https://docs.microsoft.com/partner-center/multi-tenant-account) beschriebenen Anweisungen. Beachten Sie, dass alle globalen Administratoren jedes Mandanten, den Sie hinzufügen, globale Administratorrechte für Ihr Partner Center-Konto erhalten.
+    1. Navigieren Sie zur [Seite für die MPN-Benutzerverwaltung](https://partner.microsoft.com/pcv/users), und vergewissern Sie sich, dass der Benutzer, unter dem Sie sich anmelden, entweder „Globaler Administrator“, „MPN-Administrator“ oder „Kontoadministrator“ ist. Wenn Sie einer Rolle im Partner Center einen Benutzer hinzufügen müssen, befolgen Sie die [hier](https://docs.microsoft.com/partner-center/create-user-accounts-and-set-permissions) beschriebenen Anweisungen.
 
 - **Wenn ich mich beim Azure AD-Portal anmelde, werden mir keine registrierten Apps angezeigt. Warum?** 
-    Möglicherweise wurden Ihre App-Registrierungen mit einem anderen Benutzerkonto oder in einem anderen Mandanten erstellt. Stellen Sie sicher, dass Sie mit dem richtigen Konto in dem Mandanten angemeldet sind, in dem Ihre App-Registrierungen erstellt wurden.
+    Möglicherweise wurden Ihre App-Registrierungen mit einem anderen Benutzerkonto in diesem Mandanten, oder in einem anderen Mandanten oder mit einem persönlichen/Endbenutzerkonto erstellt. Stellen Sie sicher, dass Sie mit dem richtigen Konto in dem Mandanten angemeldet sind, in dem Ihre App-Registrierungen erstellt wurden.
 
-- **Wie finde ich heraus, wer der Besitzer einer bei Azure AD registrierten App ist?** 
-    Wenn Sie bei einem Mandanten angemeldet sind, in dem die App registriert ist, navigieren Sie zum Blatt „App-Registrierungen“, klicken Sie auf eine App, und klicken Sie dann auf „Besitzer“.
+- **Ich erhalte einen Fehler im Zusammenhang mit Multi-Factor Authentication. Wie soll ich vorgehen?** 
+    Stellen Sie sicher, dass [Multi-Factor Authentication](../fundamentals/concept-fundamentals-mfa-get-started.md) aktiviert und sowohl für den Benutzer, mit dem Sie sich anmelden, als auch für dieses Szenario erforderlich ist. Für MFA könnte es z. B. folgende Anforderungen geben:
+    - Immer erforderlich für den Benutzer, mit dem Sie sich anmelden
+    - [Erforderlich für die Azure-Verwaltung](../conditional-access/howto-conditional-access-policy-azure-management.md)
+    - [Erforderlich für den Administratortyp](../conditional-access/howto-conditional-access-policy-admin-mfa.md), mit dem Sie sich anmelden
 
 ## <a name="making-microsoft-graph-api-calls"></a>Ausführen von Microsoft Graph-API-Aufrufen 
 
-Wenn ein Problem aufgetreten ist, Sie aber basierend auf dem, was auf der Benutzeroberfläche angezeigt wird, nicht verstehen können, warum, kann es hilfreich sein, eine weitere Problembehandlung vorzunehmen, indem Sie mithilfe von Microsoft Graph-Aufrufen dieselben Vorgänge ausführen, die Sie auch im App-Registrierungsportal ausführen können. Während der Vorschauphase sind diese APIs nur am /Beta-Endpunkt von Microsoft Graph verfügbar.  
+Wenn ein Problem aufgetreten ist, Sie aber basierend auf dem, was auf der Benutzeroberfläche angezeigt wird, nicht verstehen können, warum, kann es hilfreich sein, eine weitere Problembehandlung vorzunehmen, indem Sie mithilfe von Microsoft Graph-Aufrufen dieselben Vorgänge ausführen, die Sie auch im App-Registrierungsportal ausführen können.
 
-Am einfachsten können diese Anforderungen mit dem [Graph-Tester](https://developer.microsoft.com/graph/graph-explorer) ausgeführt werden. Sie können auch andere Optionen in Erwägung ziehen und z. B. [Postman](https://www.postman.com/) oder PowerShell verwenden, um eine [Webanforderung aufzurufen](/powershell/module/microsoft.powershell.utility/invoke-webrequest?view=powershell-7).  
+Am einfachsten können diese Anforderungen mit dem [Graph-Tester](https://developer.microsoft.com/graph/graph-explorer) ausgeführt werden. Sie können auch andere Optionen in Erwägung ziehen und z. B. [Postman](https://www.postman.com/) oder PowerShell verwenden, um eine [Webanforderung aufzurufen](/powershell/module/microsoft.powershell.utility/invoke-webrequest).  
 
-Sie können Microsoft Graph verwenden, um den verifizierten Herausgeber Ihrer App festzulegen und zu löschen und das Ergebnis zu überprüfen, nachdem Sie einen dieser Vorgänge ausgeführt haben. Das Ergebnis kann sowohl für das Ihrer App-Registrierung entsprechende [Anwendungsobjekt](/graph/api/resources/application?view=graph-rest-beta) als auch für alle von dieser App instanziierten [Dienstprinzipale](/graph/api/resources/serviceprincipal?view=graph-rest-beta) angezeigt werden. Weitere Informationen zur Beziehung zwischen diesen Objekten finden Sie unter [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory](app-objects-and-service-principals.md).  
+Sie können Microsoft Graph verwenden, um den verifizierten Herausgeber Ihrer App festzulegen und zu löschen und das Ergebnis zu überprüfen, nachdem Sie einen dieser Vorgänge ausgeführt haben. Das Ergebnis kann sowohl für das Ihrer App-Registrierung entsprechende [Anwendungsobjekt](/graph/api/resources/application) als auch für alle von dieser App instanziierten [Dienstprinzipale](/graph/api/resources/serviceprincipal) angezeigt werden. Weitere Informationen zur Beziehung zwischen diesen Objekten finden Sie unter [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory](app-objects-and-service-principals.md).  
 
 Nachfolgend finden Sie einige nützliche Anforderungen:  
 
@@ -105,7 +108,7 @@ Antwort
 ### <a name="get-verified-publisher-info-from-application"></a>Abrufen von Informationen des verifizierten Herausgebers von der Anwendung 
  
 ```
-GET https://graph.microsoft.com/beta/applications/0cd04273-0d11-4e62-9eb3-5c3971a7cbec 
+GET https://graph.microsoft.com/v1.0/applications/0cd04273-0d11-4e62-9eb3-5c3971a7cbec 
 
 HTTP/1.1 200 OK 
 
@@ -124,7 +127,7 @@ HTTP/1.1 200 OK
 
 ### <a name="get-verified-publisher-info-from-service-principal"></a>Abrufen von Informationen des verifizierten Herausgebers vom Dienstprinzipal 
 ```
-GET https://graph.microsoft.com/beta/servicePrincipals/010422a7-4d77-4f40-9335-b81ef5c23dd4 
+GET https://graph.microsoft.com/v1.0/servicePrincipals/010422a7-4d77-4f40-9335-b81ef5c23dd4 
 
 HTTP/1.1 200 OK 
 
@@ -183,11 +186,7 @@ Diese Funktion wird in einem per E-Mail verifizierten Mandanten nicht unterstüt
 
 ### <a name="nopublisherdomainonapplication"></a>NoPublisherDomainOnApplication   
 
-Für die Zielanwendung (<AppId>) muss eine Herausgeberdomäne festgelegt sein. Legen Sie eine Herausgeberdomäne fest, und versuchen Sie es noch mal. 
-
-### <a name="publisherdomainisnotdnsverified"></a>PublisherDomainIsNotDNSVerified  
-
-Die Herausgeberdomäne (<publisherDomain>) der Zielanwendung ist keine überprüfte Domäne in diesem Mandanten. Überprüfen Sie eine Mandantendomäne mithilfe der DNS-Überprüfung, und versuchen Sie es noch mal. 
+Für die Zielanwendung (\<AppId\>) muss eine Herausgeberdomäne festgelegt sein. Legen Sie eine Herausgeberdomäne fest, und versuchen Sie es noch mal.
 
 ### <a name="publisherdomainmismatch"></a>PublisherDomainMismatch  
 

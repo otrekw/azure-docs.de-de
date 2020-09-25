@@ -3,16 +3,16 @@ title: Übersicht über Azure Defender und die verfügbaren Pläne
 description: Erfahren Sie mehr über die Pläne, Schutzmaßnahmen und Warnungen von Azure Defender. Aktivieren Sie anschließend Azure Defender für Ihre Abonnements.
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 9/22/2020
 ms.topic: conceptual
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 627fc52043054557ca6f6baf9827da22d2af5139
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: bb1c1e6443b5087b48aad7c3171bef557707adb1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90930533"
+ms.locfileid: "90977295"
 ---
 # <a name="introduction-to-azure-defender"></a>Einführung in Azure Defender
 
@@ -21,7 +21,7 @@ Die Features von Azure Security Center decken die zwei Säulen der Cloudsicherhe
 - **Cloud Security Posture Management (CSPM)**
 - **Cloudworkloadschutz (Cloud Workload Protection, CWP)**
 
-Die CSPM-Features von Security Center wie Sicherheitsbewertung oder die Erkennung von Sicherheitsfehlkonfigurationen auf Ihren Windows- und Linux-Azure-Computern sind Teil der kostenlosen Security Center-Erfahrung, die allen Azure-Benutzern zur Verfügung steht. Verbessern Sie mithilfe dieser CSPM-Features Ihren Status, und stellen Sie die Einhaltung gesetzlicher Vorschriften sicher. 
+Die CSPM-Features von Security Center wie Sicherheitsbewertung oder die Erkennung von Sicherheitsfehlkonfigurationen auf Ihren Windows- und Linux-Azure-Computern sind Teil der kostenlosen Security Center-Erfahrung, die allen Azure-Benutzern zur Verfügung steht. Verbessern Sie mithilfe dieser CSPM-Features Ihren Status, und stellen Sie die Einhaltung gesetzlicher Vorschriften sicher.
 
 **Azure Defender** ist die in Security Center integrierte Cloud Workload Protection Platform (CWPP), die einen erweiterten, intelligenten Schutz Ihrer Azure- und Hybridworkloads bietet.
 

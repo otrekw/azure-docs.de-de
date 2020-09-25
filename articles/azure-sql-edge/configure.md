@@ -1,6 +1,6 @@
 ---
-title: Konfigurieren von Azure SQL Edge (Vorschau)
-description: Informationen zum Konfigurieren von Azure SQL Edge (Vorschau)
+title: Konfigurieren von Azure SQL Edge
+description: Informationen zum Konfigurieren von Azure SQL Edge
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -8,15 +8,15 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 07/28/2020
-ms.openlocfilehash: 722d33e76b6009a44811dfcb8a3238b042ec6918
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.date: 09/22/2020
+ms.openlocfilehash: b2c52457972d94b2e999c137d19d3a434ff17a7d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816880"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888368"
 ---
-# <a name="configure-azure-sql-edge-preview"></a>Konfigurieren von Azure SQL Edge (Vorschau)
+# <a name="configure-azure-sql-edge"></a>Konfigurieren von Azure SQL Edge
 
 Azure SQL Edge unterstützt die Konfiguration mit einer der folgenden beiden Optionen:
 
@@ -30,6 +30,15 @@ Azure SQL Edge unterstützt die Konfiguration mit einer der folgenden beiden Opt
 
 Azure SQL Edge stellt mehrere verschiedene Umgebungsvariablen bereit, mit denen der SQL Edge-Container konfiguriert werden kann. Diese Umgebungsvariablen sind eine Teilmenge derjenigen, die unter Linux für SQL Server verfügbar sind. Weitere Informationen zu Umgebungsvariablen für SQL Server unter Linux finden Sie unter [Umgebungsvariablen](/sql/linux/sql-server-linux-configure-environment-variables/).
 
+Die folgenden neuen Umgebungsvariablen wurden zu Azure SQL Edge hinzugefügt. 
+
+| Umgebungsvariable | BESCHREIBUNG | Werte |     
+|-----|-----| ---------- |   
+| **MSSQL_TELEMETRY_ENABLED** | Aktivieren oder Deaktivieren der Sammlung von Nutzung- und Diagnosedaten | TRUE oder FALSE |  
+| **MSSQL_TELEMETRY_DIR** | Legt das Zielverzeichnis für die Überwachungsdateien zur Sammlung von Nutzungs- und Diagnosedaten fest. | Speicherort des Ordners im SQL Edge-Container. Dieser Ordner kann über Bereitstellungspunkte oder Datenvolumes einem Hostvolume zugeordnet werden. | 
+| **MSSQL_PACKAGE** | Gibt den Speicherort des dacpac-oder bacpac-Pakets an, das bereitgestellt werden soll. | Ordner, Datei oder SAS-URL, der oder die die dacpac- oder bacpac-Pakete enthält. Weitere Informationen finden Sie unter [Bereitstellen von SQL-Datenbank-DACPAC- und -BACPAC-Paketen in SQL Edge](deploy-dacpac.md). |
+
+
 Die folgenden Umgebungsvariablen für SQL Server unter Linux werden von Azure SQL Edge nicht unterstützt. Falls definiert, werden sie während der Containerinitialisierung ignoriert.
 
 | Umgebungsvariable | BESCHREIBUNG |
@@ -38,9 +47,6 @@ Die folgenden Umgebungsvariablen für SQL Server unter Linux werden von Azure SQ
 
 > [!IMPORTANT]
 > Die **MSSQL_PID**-Umgebungsvariable für SQL Edge akzeptiert nur **Premium** und **Developer** als gültige Werte. Azure SQL Edge unterstützt keine Initialisierung mithilfe eines Product Key.
-
-> [!NOTE]
-> Laden Sie die [Microsoft-Software-Lizenzbedingungen](https://go.microsoft.com/fwlink/?linkid=2128283) für Azure SQL Edge herunter.
 
 ### <a name="specify-the-environment-variables"></a>Angeben der Umgebungsvariablen
 
@@ -53,6 +59,9 @@ Fügen Sie Werte in **Umgebungsvariablen** hinzu.
 Fügen Sie Werte in **Optionen für die Containererstellung** hinzu.
 
 ![Festlegen mithilfe von Optionen für die Containererstellung](media/configure/set-environment-variables-using-create-options.png)
+
+> [!NOTE]
+> Im getrennten Bereitstellungsmodus können Umgebungsvariablen mithilfe der Optionen `-e` oder `--env` oder `--env-file` des `docker run`-Befehls angegeben werden.
 
 ## <a name="configure-by-using-an-mssqlconf-file"></a>Konfigurieren mithilfe der Datei „mssql.conf“
 
@@ -70,6 +79,13 @@ Azure SQL Edge enthält nicht wie SQL Server unter Linux das [Konfigurationshilf
       }
     }
 ```
+
+Die folgenden neuen „mssql.conf“-Optionen wurden für Azure SQL Edge hinzugefügt. 
+
+|Option|Beschreibung|
+|:---|:---|
+|**customerfeedback** | Festlegen, ob SQL Server Feedback an Microsoft sendet. Weitere Informationen finden Sie unter [Deaktivieren der Nutzungs- und Diagnosedatensammlung](usage-and-diagnostics-data-configuration.md#disable-usage-and-diagnostic-data-collection).|      
+|**userrequestedlocalauditdirectory** | Legt das Zielverzeichnis für die Überwachungsdateien zur Sammlung von Nutzungs- und Diagnosedaten fest. Weitere Informationen finden Sie unter [Lokale Überwachung der Nutzungs- und -Diagnosedatensammlung](usage-and-diagnostics-data-configuration.md#local-audit-of-usage-and-diagnostic-data-collection). |        
 
 Die folgenden Optionen von „mssql.conf“ gelten nicht für SQL Edge:
 
@@ -116,7 +132,7 @@ traceflag2 = 1204
 
 ## <a name="run-azure-sql-edge-as-non-root-user"></a>Ausführen von Azure SQL Edge als Nicht-root-Benutzer
 
-Ab Azure SQL Edge CTP 2.2 können SQL Edge-Container mit einem Benutzer oder einer Gruppe ausgeführt werden, die nicht root sind. Bei der Bereitstellung über den Azure Marketplace starten SQL Edge-Container als mssql-Benutzer (nicht root), wenn kein anderer Benutzer bzw. keine andere Gruppe angegeben wird. Um während der Bereitstellung einen anderen Nicht-root-Benutzer anzugeben, fügen Sie das `*"User": "<name|uid>[:<group|gid>]"*`-Schlüssel-Wert-Paar unter den Optionen zum Erstellen von Containern hinzu. Im folgenden Beispiel ist SQL Edge so konfiguriert, dass es als `*IoTAdmin*`-Benutzer gestartet wird.
+Azure SQL Edge-Container werden standardmäßig als Nicht-root-Benutzer bzw. -Gruppe ausgeführt. Bei der Bereitstellung über Azure Marketplace (oder mit docker run) starten SQL Edge-Container als mssql-Benutzer (nicht root), wenn kein anderer Benutzer bzw. keine andere Gruppe angegeben wird. Um während der Bereitstellung einen anderen Nicht-root-Benutzer anzugeben, fügen Sie das `*"User": "<name|uid>[:<group|gid>]"*`-Schlüssel-Wert-Paar unter den Optionen zum Erstellen von Containern hinzu. Im folgenden Beispiel ist SQL Edge so konfiguriert, dass es als `*IoTAdmin*`-Benutzer gestartet wird.
 
 ```json
 {
@@ -140,7 +156,7 @@ chown -R 10001:0 <database file dir>
 
 ### <a name="upgrading-from-earlier-ctp-releases"></a>Upgrade von früheren CTP-Versionen
 
-Frühere CTP-Versionen von Azure SQL Edge waren so konfiguriert, dass Sie als root-Benutzer ausgeführt werden. Die folgenden Optionen sind verfügbar, wenn Sie ein Upgrade von früheren CTP-Versionen durchführen.
+Frühere CTP-Versionen von Azure SQL Edge waren so konfiguriert, dass sie als root-Benutzer ausgeführt wurden. Die folgenden Optionen sind verfügbar, wenn Sie ein Upgrade aus früheren CTP-Versionen durchführen.
 
 - Root-Benutzer weiterhin verwenden: Um weiterhin den root-Benutzer zu verwenden, fügen Sie das `*"User": "0:0"*`-Schlüssel-Wert-Paar unter den Optionen zum Erstellen von Containern hinzu.
 - Mssql-Standardbenutzer verwenden: Um den mssql-Standardbenutzer zu verwenden, führen Sie die folgenden Schritte aus.
@@ -154,7 +170,7 @@ Frühere CTP-Versionen von Azure SQL Edge waren so konfiguriert, dass Sie als ro
     sudo chmod -R g=u /var/lib/docker/volumes/kafka_sqldata/
     ```
 - Ein anderes Nicht-root-Benutzerkonto verwenden: Um ein anderes Nicht-root-Benutzerkonto zu verwenden.
-  - Aktualisieren Sie die Optionen zum Erstellen von Containern, um das `*"User": "user_name | user_id*`-Schlüssel-Wert-Paar unter den Optionen zum Erstellen von Containern hinzuzufügen. Ersetzen Sie „user_name“ oder „user_id“ durch einen tatsächlichen „user_name“ oder eine tatsächliche „user_id“ von Ihrem Docker-Host. 
+  - Aktualisieren Sie die Optionen zum Erstellen von Containern, um das `*"User": "user_name | user_id*`-Schlüssel-Wert-Paar unter den Optionen zum Erstellen von Containern hinzuzufügen. Ersetzen Sie user_name oder user_id durch einen tatsächlichen user_name oder eine tatsächliche user_id von Ihrem Docker-Host. 
   - Ändern Sie die Berechtigungen für das Verzeichnis/Bereitstellungsvolume.
 
 ## <a name="persist-your-data"></a> Beibehalten von Daten
@@ -169,11 +185,11 @@ Die Azure SQL Edge-Konfigurationsänderungen und -Datenbankdateien werden im Con
 Die erste Option besteht darin, ein Verzeichnis auf dem Host als Datenvolume in Ihrem Container einzubinden. Verwenden Sie hierzu den Befehl `docker run` mit dem Flag `-v <host directory>:/var/opt/mssql`. Dadurch können die Daten zwischen den Containerausführungen wiederhergestellt werden.
 
 ```bash
-docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>' -p 1433:1433 -v <host directory>/data:/var/opt/mssql/data -v <host directory>/log:/var/opt/mssql/log -v <host directory>/secrets:/var/opt/mssql/secrets -d mcr.microsoft.com/azure-sql-edge-developer
+docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>' -p 1433:1433 -v <host directory>/data:/var/opt/mssql/data -v <host directory>/log:/var/opt/mssql/log -v <host directory>/secrets:/var/opt/mssql/secrets -d mcr.microsoft.com/azure-sql-edge
 ```
 
 ```PowerShell
-docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>" -p 1433:1433 -v <host directory>/data:/var/opt/mssql/data -v <host directory>/log:/var/opt/mssql/log -v <host directory>/secrets:/var/opt/mssql/secrets -d mcr.microsoft.com/azure-sql-edge-developer
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>" -p 1433:1433 -v <host directory>/data:/var/opt/mssql/data -v <host directory>/log:/var/opt/mssql/log -v <host directory>/secrets:/var/opt/mssql/secrets -d mcr.microsoft.com/azure-sql-edge
 ```
 
 Mit dieser Methode können Sie die Dateien auch außerhalb von Docker auf dem Host freigeben und anzeigen.
@@ -189,11 +205,11 @@ Mit dieser Methode können Sie die Dateien auch außerhalb von Docker auf dem Ho
 Die zweite Option besteht in der Verwendung eines Datenvolumecontainers. Sie können einen Datenvolumecontainer erstellen, indem Sie mit dem Parameter `-v` einen Volumenamen anstelle eines Hostverzeichnisses angeben. Im folgenden Beispiel wird ein freigegebenes Datenvolume mit dem Namen **sqlvolume** erstellt.
 
 ```bash
-docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>' -p 1433:1433 -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/azure-sql-edge-developer
+docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>' -p 1433:1433 -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/azure-sql-edge
 ```
 
 ```PowerShell
-docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>" -p 1433:1433 -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/azure-sql-edge-developer
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>" -p 1433:1433 -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/azure-sql-edge
 ```
 
 > [!NOTE]

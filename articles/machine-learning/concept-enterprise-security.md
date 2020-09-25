@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: a3cd250e53fb30e07795b184b5c949505e3b20ae
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: af32be357899090e0df96e2c67910a4f9ad5194d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905743"
+ms.locfileid: "90988079"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Unternehmenssicherheit für Azure Machine Learning
 
@@ -361,6 +361,17 @@ Es folgen die Details:
 * Telemetriedaten werden ebenfalls per Push an das Microsoft/Azure-Abonnement übertragen.
 
 [![Rückschlussworkflow](media/concept-enterprise-security/inferencing.png)](media/concept-enterprise-security/inferencing.png#lightbox)
+
+## <a name="audit-and-manage-compliance"></a>Überwachen und Verwalten der Compliance
+
+[Azure Policy](/azure/governance/policy) ist ein Governancetool, mit dem Sie sicherstellen können, dass Azure-Ressourcen mit Ihren Richtlinien konform sind. Mit Azure Machine Learning können Sie die folgenden Richtlinien zuweisen:
+
+* **Kundenseitig verwalteter Schlüssel**: Überwachen oder erzwingen Sie, ob Arbeitsbereiche einen kundenseitig verwalteten Schlüssel verwenden müssen.
+* **Private Link**: Überwachen Sie, ob Arbeitsbereiche mithilfe eines privaten Endpunkts mit einem virtuellen Netzwerk kommunizieren.
+
+Weitere Informationen zu Azure Policy finden Sie in der [Dokumentation zu Azure Policy](/azure/governance/policy/overview).
+
+Weitere Informationen zu den Richtlinien, die speziell für Azure Machine Learning gelten, finden Sie unter [Überwachen und Verwalten der Compliance mit Azure Policy](how-to-integrate-azure-policy.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

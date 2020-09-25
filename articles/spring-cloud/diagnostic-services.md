@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 56f392210aac6045a9dc8cc3522d36092162f26c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ce8dbe017e3cc80588cd1aa37ad02a82199ccc10
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086114"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892578"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Analysieren von Protokollen und Metriken mit Diagnoseeinstellungen
+
+**Dieser Artikel gilt für:** ✔️ Java ✔️ C#
 
 Mithilfe der Diagnosefunktionen von Azure Spring Cloud können Sie Protokolle und Metriken mit jedem der folgenden Dienste analysieren:
 
@@ -25,7 +27,7 @@ Mithilfe der Diagnosefunktionen von Azure Spring Cloud können Sie Protokolle un
 Wählen Sie die Protokollkategorie und die Metrikkategorie aus, die Sie überwachen möchten.
 
 > [!TIP]
-> Möchten Sie einfach nur Ihre Protokolle streamen? Sehen Sie sich diesen [Azure CLI-Befehl](https://docs.microsoft.com/cli/azure/ext/spring-cloud/spring-cloud/app?view=azure-cli-latest#ext-spring-cloud-az-spring-cloud-app-logs) an.
+> Möchten Sie einfach nur Ihre Protokolle streamen? Sehen Sie sich diesen [Azure CLI-Befehl](https://docs.microsoft.com/cli/azure/ext/spring-cloud/spring-cloud/app?view=azure-cli-latest&preserve-view=true#ext-spring-cloud-az-spring-cloud-app-logs) an.
 
 ## <a name="logs"></a>Protokolle
 
@@ -203,3 +205,7 @@ AppPlatformLogsforSpring
 | extend Log = array_strcat(split(Log, '\\n'), '\n')
 ```
 Die gleiche Strategie kann ggf. auch für andere Java-Protokollbibliotheken verwendet werden.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* [Schnellstart: Bereitstellen Ihrer ersten Azure Spring Cloud-Anwendung](spring-cloud-quickstart.md)

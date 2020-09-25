@@ -3,12 +3,12 @@ title: Details der Struktur von Richtlinienausnahmen
 description: Hier wird die Definition von Richtlinienausnahmen beschrieben, die von Azure Policy verwendet wird, um Ressourcen von der Auswertung von Initiativen oder Definitionen auszuschließen.
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: b3e6a6c9bc7993161697187b6131994c1973b49d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1fd14d31824dc86dcd3788607030f28f978f5801
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90930588"
+ms.locfileid: "90968048"
 ---
 # <a name="azure-policy-exemption-structure"></a>Azure Policy-Ausnahmenstruktur
 
@@ -99,11 +99,12 @@ Dieses Feld muss den vollständigen Pfadname einer Richtlinien- oder Initiativen
 
 Wenn die `policyAssignmentId` sich auf eine Initiativenzuweisung bezieht, kann mit der `policyDefinitionReferenceIds`-Eigenschaft angegeben werden, für welche Richtliniendefinitionen in der Initiative eine Ausnahme für die Objektressource gilt. Da die Ressource von einer oder mehreren enthaltenen Richtliniendefinition ausgenommen sein kann, ist diese Eigenschaft ein _Array_. Die Werte müssen den Werten in der Initiativendefinition in den `policyDefinitions.policyDefinitionReferenceId`-Feldern entsprechen.
 
-## <a name="required-permissions"></a>Erforderliche Berechtigungen
+## <a name="exemption-category"></a>Ausnahmekategorie
 
-Die Azure RBAC-Berechtigungen, die zum Verwalten von Richtlinienausnahmeobjekten erforderlich sind, befinden sich in der Vorgangsgruppe `Microsoft.Authorization/policyExemptions`. Die integrierten Rollen [Mitwirkender bei Ressourcenrichtlinien](../../../role-based-access-control/built-in-roles.md#resource-policy-contributor) und [Sicherheitsadministrator](../../../role-based-access-control/built-in-roles.md#security-admin) verfügen beide über die Berechtigungen `read` und `write`. [Policy Insights-Datenschreiber (Vorschau)](../../../role-based-access-control/built-in-roles.md#policy-insights-data-writer-preview) verfügt über die Berechtigung `read`.
+Es gibt zwei Ausnahmekategorien, mit deren Hilfe Ausnahmen gruppiert werden können:
 
-Das Gewähren von Ausnahmen hat weitreichende Auswirkungen, daher weisen Ausnahmen zusätzliche Sicherheitsmaßnahmen auf. Es ist nicht nur der `Microsoft.Authorization/policyExemptions/write`-Vorgang für die Ressourcenhierarchie oder einzelne Ressource erforderlich, sondern der Ersteller der Ausnahme muss auch über das Verb `exempt/Action` für die Zielzuweisung verfügen.
+- **Gemindert**: Die Ausnahme wird gewährt, da die Absicht der Richtlinie durch eine andere Methode erfüllt wird.
+- **Verzicht**: Die Ausnahme wird gewährt, da der Zustand der Nichtkonformität der Ressource vorübergehend akzeptiert wird. Ein weiterer Grund, diese Kategorie zu verwenden, ist für eine Ressource oder Ressourcenhierarchie, die von einer oder mehreren Definitionen in einer Initiative, aber nicht von der gesamten Initiative ausgeschlossen werden sollte.
 
 ## <a name="expiration"></a>Ablauf
 
@@ -111,6 +112,12 @@ Mit der `expiresOn`-Eigenschaft legen Sie fest, wann eine Ressourcenhierarchie o
 
 > [!NOTE]
 > Die Richtlinienausnahmen werden nicht gelöscht, wenn das durch `expiresOn` definierte Datum erreicht wird. Das Objekt wird für Aufzeichnungszwecke beibehalten, aber die Ausnahme wird nicht mehr berücksichtigt.
+
+## <a name="required-permissions"></a>Erforderliche Berechtigungen
+
+Die Azure RBAC-Berechtigungen, die zum Verwalten von Richtlinienausnahmeobjekten erforderlich sind, befinden sich in der Vorgangsgruppe `Microsoft.Authorization/policyExemptions`. Die integrierten Rollen [Mitwirkender bei Ressourcenrichtlinien](../../../role-based-access-control/built-in-roles.md#resource-policy-contributor) und [Sicherheitsadministrator](../../../role-based-access-control/built-in-roles.md#security-admin) verfügen beide über die Berechtigungen `read` und `write`. [Policy Insights-Datenschreiber (Vorschau)](../../../role-based-access-control/built-in-roles.md#policy-insights-data-writer-preview) verfügt über die Berechtigung `read`.
+
+Das Gewähren von Ausnahmen hat weitreichende Auswirkungen, daher weisen Ausnahmen zusätzliche Sicherheitsmaßnahmen auf. Es ist nicht nur der `Microsoft.Authorization/policyExemptions/write`-Vorgang für die Ressourcenhierarchie oder einzelne Ressource erforderlich, sondern der Ersteller der Ausnahme muss auch über das Verb `exempt/Action` für die Zielzuweisung verfügen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

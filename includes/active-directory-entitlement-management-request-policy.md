@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: ae3efec3722570e7e94316c5d874a74c523b1f05
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 12c9b1226e3ba928a4062049c7839d4e46ef727d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86156644"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "91025130"
 ---
 ## <a name="for-users-in-your-directory"></a>Für Benutzer in Ihrem Verzeichnis
 
@@ -207,3 +207,33 @@ Wenn Sie beispielsweise Alice und Bob als erste genehmigende Personen aufgeliste
     ![Zugriffspaket – Richtlinie – Einstellung „Richtlinie aktivieren“](./media/active-directory-entitlement-management-request-policy/enable-requests.png)
 
 1. Klicken Sie auf **Weiter**.
+
+## <a name="add-requestor-information-preview-to-an-access-package"></a>Hinzufügen von Informationen zum Anforderer (Vorschau) zu einem Zugriffspaket
+
+1. Wechseln Sie zur Registerkarte **Anfordererinformationen**, und klicken Sie auf die Unterregisterkarte **Fragen**.
+ 
+1. Geben Sie als Frage in das Feld **Frage** ein, was Sie den Anforderer fragen möchten (auch als Anzeigezeichenfolge bezeichnet).
+
+    ![Zugriffspaket – Richtlinie – Einstellung „Anfordererinformationen aktivieren“](./media/active-directory-entitlement-management-request-policy/add-requestor-info-question.png)
+
+1. Wenn Sie Ihre eigenen Lokalisierungsoptionen hinzufügen möchten, klicken Sie auf **Lokalisierung hinzufügen**.
+    1. Wenn Sie sich im Bereich **Lokalisierungen für Frage hinzufügen** befinden, wählen Sie den **Sprachcode** für die Sprache aus, in die Sie die Frage lokalisieren.
+    1. Geben Sie die Frage in der von Ihnen konfigurierten Sprache das Feld **Lokalisierter Text** ein.
+    1. Nachdem Sie alle benötigten Lokalisierungen hinzugefügt haben, klicken Sie auf **Speichern**.
+
+    ![Zugriffspaket – Richtlinie – Lokalisierten Text konfigurieren](./media/active-directory-entitlement-management-request-policy/add-localization-question.png)
+
+1. Wählen Sie das **Antwortformat** aus, in dem Anforderer antworten sollen. Antwortformate umfassen: *Kurzer Text*, *Mehrfachauswahl* und *Langer Text*.
+ 
+    ![Zugriffspaket – Richtlinie – „Anzeigen und bearbeiten“ für Antwortformat von Multiple Choice auswählen](./media/active-directory-entitlement-management-request-policy/answer-format-view-edit.png)
+ 
+1. Wenn Sie „Multiple Choice“ auswählen, klicken Sie auf die Schaltfläche **Anzeigen und bearbeiten**, um die Antwortoptionen zu konfigurieren.
+    1. Nachdem Sie „Anzeigen und bearbeiten“ ausgewählt haben, wird der Bereich **Frage anzeigen/bearbeiten** angezeigt.
+    1. Geben Sie die Antwortoptionen in die Felder **Antwortwerte** ein, die Sie dem Anforderer zur Verfügung stellen möchten, wenn dieser die Frage beantwortet.
+    1. Geben Sie so viele Antworten ein, wie Sie benötigen, und klicken Sie dann auf **Speichern**.
+    
+    ![Zugriffspaket – Richtlinie – Multiple Choice-Optionen eingeben](./media/active-directory-entitlement-management-request-policy/answer-multiple-choice.png)
+  
+1. Um vom Anforderer die Beantwortung der Frage zu fordern, wenn dieser den Zugriff auf ein Zugriffspaket anfordert, klicken Sie auf das Kontrollkästchen unter **Erforderlich**.
+
+1. Klicken Sie auf „Weiter“.

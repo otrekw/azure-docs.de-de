@@ -11,12 +11,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 8be13a299de0fc3de0acaf0001722d8c96a460e6
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: bd6f88db2b55a5f0f445659e4b5ef609d3e146e9
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88205940"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030309"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>Einschränkungen für Umleitungs-URI/Antwort-URL
 
@@ -65,6 +65,8 @@ Aus Entwicklersicht bedeutet dies Folgendes:
 * Registrieren Sie nicht mehrere Umleitungs-URIs, wenn sich nur der Port unterscheidet. Der Anmeldeserver wählt willkürlich einen Umleitungs-URI aus und verwendet das diesem zugeordnete Verhalten (z. B. entsprechend dem Umleitungstyp `web`, `native` oder `spa`).
 * Wenn Sie mehrere Umleitungs-URIs für Localhost registrieren möchten, um während der Entwicklung verschiedene Flows zu testen, unterscheiden Sie diese mithilfe der *path*-Komponente des URI. Beispielsweise stimmt `http://127.0.0.1/MyWebApp` nicht mit `http://127.0.0.1/MyNativeApp` überein.
 * Gemäß RFC-Anleitungen sollten Sie `localhost` nicht in einem Umleitungs-URI verwenden. Verwenden Sie stattdessen die tatsächliche Loopback-IP-Adresse `127.0.0.1`. Dadurch wird verhindert, dass Ihre App durch falsch konfigurierte Firewalls oder umbenannte Netzwerkschnittstellen fehlerhaft wird.
+
+    Um anstelle von „localhost“ das `http`-Schema mit der Loopback Adresse (127.0.0.1) zu verwenden, müssen Sie das [Anwendungsmanifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#replyurls-attribute) bearbeiten. 
 
     Die IPv6-Loopback Adresse (`[::1]`) wird derzeit nicht unterstützt.
 

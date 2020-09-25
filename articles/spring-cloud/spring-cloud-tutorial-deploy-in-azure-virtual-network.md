@@ -7,14 +7,16 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: a7905ae0fdbd797d9b544cb71f44b82af1295246
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 979ecf77fe53238dfd377c5fd2baf394de985c2f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688452"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892894"
 ---
 # <a name="tutorial-deploy-azure-spring-cloud-in-azure-virtual-network-vnet-injection"></a>Tutorial: Bereitstellen von Azure Spring Cloud im virtuellen Azure-Netzwerk (VNET-Einschleusung)
+
+**Dieser Artikel gilt für:** ✔️ Java ✔️ C#
 
 In diesem Tutorial wird erläutert, wie Sie eine Azure Spring Cloud-Dienstinstanz in Ihrem virtuellen Netzwerk bereitstellen. Dies wird manchmal als VNET-Einschleusung bezeichnet.  
 
@@ -38,7 +40,7 @@ Das virtuelle Netzwerk, in dem Sie die Azure Spring Cloud-Dienstinstanz bereitst
 * **Subnetze**: Das virtuelle Netzwerk muss zwei Subnetze enthalten, die für eine Azure Spring Cloud-Dienstinstanz bestimmt sind: 
     * Eins für die Dienstruntime
     * Eins für Ihre Spring Boot-Microserviceanwendungen 
-    * Zwischen diesen Subnetzen und einer Azure Spring Cloud-Dienstinstanz besteht eine 1:1-Beziehung. Mehrere Dienstinstanzen können nicht in einem einzelnen Subnetz gemeinsam genutzt werden. Sie müssen neue Subnetze für jede bereitgestellte Dienstinstanz verwenden.
+    * Zwischen diesen Subnetzen und einer Azure Spring Cloud-Dienstinstanz besteht eine 1:1-Beziehung. Sie müssen für jede bereitgestellte Dienstinstanz ein neues Subnetz verwenden, und jedes Subnetz darf nur eine einzelne Dienstinstanz enthalten.
 * **Adressraum:** Ein CIDR-Block (bis zu /28) für das Subnetz der Dienstruntime und ein weiterer CIDR-Block (bis zu /24) für das Subnetz der Spring Boot-Microserviceanwendungen
 * **Routingtabelle**: Den Subnetzen darf keine vorhandene Routingtabelle zugeordnet sein.
 

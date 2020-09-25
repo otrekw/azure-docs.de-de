@@ -7,14 +7,17 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/13/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 0c092052e05f355838f3853fa7376b46ef743de7
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: bff98ea3470110bc29f75361fb3a2adc685e2602
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299644"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888581"
 ---
 # <a name="how-to-enable-system-assigned-managed-identity-for-azure-spring-cloud-application"></a>Aktivieren einer systemseitig zugewiesenen verwalteten Identität für eine Azure Spring Cloud-Anwendung
+
+**Dieser Artikel gilt für:** ✔️ Java ✔️ C#
+
 Verwaltete Identitäten stellen für Azure-Ressourcen wie Ihre Azure Spring Cloud-Anwendung eine automatisch verwaltete Identität in Azure Active Directory bereit. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein.
 
 In diesem Artikel erfahren Sie, wie Sie systemseitig zugewiesene verwaltete Identitäten für eine Azure Spring Cloud-App aktivieren und deaktivieren können. Dazu verwenden Sie das Azure-Portal und die CLI (verfügbar in Version 0.2.4).
@@ -81,7 +84,8 @@ az spring-cloud app identity remove -n app_name -s service_name -g resource_grou
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Verwenden verwalteter Identitäten mit dem Java SDK](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples)
+
 * [Zugreifen auf Azure Key Vault mit verwalteten Identitäten in Spring Boot Starter](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/spring/azure-spring-boot-starter-keyvault-secrets/README.md#use-msi--managed-identities)
 * [Weitere Informationen zu verwalteten Identitäten für Azure-Ressourcen](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/overview.md)
+* [Verwenden verwalteter Identitäten mit dem Java SDK](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples)
 

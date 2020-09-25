@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: e3ef202a1a98b8193b55bcc4c2cb616d4a2000d8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ec87c5523d6f608363ca615037f20365705609df
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037762"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892852"
 ---
 # <a name="understanding-app-status-in-azure-spring-cloud"></a>Grundlegendes zum App-Status in Azure Spring Cloud
+
+**Dieser Artikel gilt für:** ✔️ Java ✔️ C#
 
 Die Azure Spring Cloud-Benutzeroberfläche stellt Informationen zum Status ausgeführter Anwendungen bereit.  Für jede Ressourcengruppe in einem Abonnement gibt es die Option **Apps**, in der der allgemeine Status von Anwendungstypen angezeigt wird.  Für jeden Anwendungstyp werden **Anwendungsinstanzen** angezeigt.
 
@@ -30,14 +32,14 @@ Wählen Sie im linken Navigationsbereich einer Ressourcengruppe **Apps** aus, um
 
 **Der Bereitstellungsstatus wird als einer der folgenden Werte gemeldet:**
 
-| Enum | Definition |
+| Enumeration | Definition |
 |:--:|:----------------:|
 | Wird ausgeführt | Die Bereitstellung SOLLTE ausgeführt werden. |
 | Beendet | Die Bereitstellung SOLLTE beendet werden. |
 
 **Der Bereitstellungsstatus ist nur über die Befehlszeilenschnittstelle verfügbar.  Er wird als einer der folgenden Werte gemeldet:**
 
-| Enum | Definition |
+| Enumeration | Definition |
 |:--:|:----------------:|
 | Wird erstellt | Die Ressource wird erstellt. |
 | Wird aktualisiert | Die Ressource wird aktualisiert. |
@@ -55,7 +57,7 @@ Um den Status einer bestimmten Instanz einer bereitgestellten App anzuzeigen, kl
 
 **Der Instanzstatus wird als einer der folgenden Werte gemeldet:**
 
-| Enum | Definition |
+| Enumeration | Definition |
 |:--:|:----------------:|
 | Wird gestartet | Die Binärdatei wurde erfolgreich für die angegebene Instanz bereitgestellt. Beim Starten der JAR-Datei kann ein Fehler auftreten, da sie nicht ordnungsgemäß ausgeführt werden kann. |
 | Wird ausgeführt | Die Instanz funktioniert. |
@@ -64,12 +66,12 @@ Um den Status einer bestimmten Instanz einer bereitgestellten App anzuzeigen, kl
 
 **Der Erkennungsstatus der Instanz wird als einer der folgenden Werte gemeldet:**
 
-| Enum | Definition |
+| Enumeration | Definition |
 |:--:|:----------------:|
 | UP | Die App-Instanz ist bei Eureka registriert und für den Empfang von Datenverkehr bereit. |
 | OUT_OF_SERVICE | Die App-Instanz ist bei Eureka registriert und kann Datenverkehr empfangen. Sie ist jedoch absichtlich für Datenverkehr gesperrt. |
 | DOWN | Die App-Instanz ist nicht bei Eureka registriert, oder sie ist registriert, kann jedoch keinen Datenverkehr empfangen. |
 
 
-## <a name="see-also"></a>Weitere Informationen
-* [Vorbereiten einer Java Spring-Anwendung für die Bereitstellung in Azure Spring Cloud](spring-cloud-tutorial-prepare-app-deployment.md)
+## <a name="see-also"></a>Weitere Informationen:
+* [Vorbereiten einer Spring- oder Steeltoe-Anwendung für die Bereitstellung in Azure Spring Cloud](spring-cloud-tutorial-prepare-app-deployment.md)

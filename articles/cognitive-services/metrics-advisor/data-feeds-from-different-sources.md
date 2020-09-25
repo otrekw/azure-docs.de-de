@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: aahi
-ms.openlocfilehash: 4dc3c46b65bab48b8923af985f0c2c29fcddc53b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f9ab340e73ce8d58da63a0089073ac4770bf2d52
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90930511"
+ms.locfileid: "90973385"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>Hinzufügen von Datenfeeds aus unterschiedlichen Datenquellen zu Metrics Advisor
 
@@ -27,10 +27,10 @@ Verwenden Sie diesen Artikel, um die Einstellungen und Anforderungen zum Herstel
 | ---------------------|-------------|
 |**Grundlegend** | Sie müssen in der Lage sein, grundlegende Parameter für den Zugriff auf Datenquellen bereitzustellen. Beispiel: eine Verbindungszeichenfolge oder einen Schlüssel. Datenfeedadministratoren können diese Anmeldeinformationen anzeigen. |
 | **AzureManagedIdentity** | [Verwaltete Identitäten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) für Azure-Ressourcen ist eine Funktion von Azure Active Directory. Sie stellt für Azure-Dienste eine automatisch verwaltete Identität in Azure AD bereit. Sie können die Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung unterstützt.|
-| **AzureSQLConnectionString**| Speichern Sie die AzureSQL-Verbindungszeichenfolge als **Authentication entity** (Authentifizierungsentität) in Metrics Advisor, und verwenden Sie sie beim Onboarding von Metrikdaten direkt. Nur Administratoren der Authentifizierungsentität können diese Anmeldeinformationen anzeigen, aber sie ermöglicht autorisierten anzeigenden Benutzern das Erstellen von Datenfeeds, ohne dass sie die Details der Anmeldeinformationen kennen müssen. |
-| **DataLakeGen2SharedKey**| Speichern Sie den Data Lake-Kontoschlüssel als **Authentication entity** (Authentifizierungsentität) in Metrics Advisor, und verwenden Sie sie direkt bei jedem Onboarding von Metrikdaten. Nur Administratoren der Authentifizierungsentität können diese Anmeldeinformationen anzeigen, aber sie ermöglicht autorisierten anzeigenden Benutzern das Erstellen von Datenfeeds, ohne dass sie die Details der Anmeldeinformationen kennen müssen.|
-| **ServicePrincipal**| Speichern Sie den Dienstprinzipal als **Authentication entity** (Authentifizierungsentität) in Metrics Advisor, und verwenden Sie sie beim Onboarding von Metrikdaten direkt. Nur Administratoren der Authentifizierungsentität können die Anmeldeinformationen anzeigen, aber sie ermöglicht autorisierten anzeigenden Benutzern das Erstellen von Datenfeeds, ohne dass sie die Details der Anmeldeinformationen kennen müssen.|
-| **ServicePrincipalInKeyVault**|Speichern Sie den Dienstprinzipal in KeyVault als **Authentication entity** (Authentifizierungsentität) in Metrics Advisor, und verwenden Sie sie beim Onboarding von Metrikdaten direkt. Nur Administratoren der **Authentifizierungsentität** können diese Anmeldeinformationen anzeigen, aber sie ermöglicht autorisierten anzeigenden Benutzern das Erstellen von Datenfeeds, ohne dass sie die Details der Anmeldeinformationen kennen müssen. |
+| **AzureSQLConnectionString**| Speichern Sie die AzureSQL-Verbindungszeichenfolge als **credential entity** (Anmeldeinformationsentität) in Metrics Advisor, und verwenden Sie sie beim Onboarding von Metrikdaten direkt. Nur Administratoren der Anmeldeinformationsentität können diese Anmeldeinformationen anzeigen, aber sie ermöglicht autorisierten anzeigenden Benutzern das Erstellen von Datenfeeds, ohne dass sie die Details der Anmeldeinformationen kennen müssen. |
+| **DataLakeGen2SharedKey**| Speichern Sie den Data Lake-Kontoschlüssel als **credential entity** (Anmeldeinformationsentität) in Metrics Advisor, und verwenden Sie sie direkt bei jedem Onboarding von Metrikdaten. Nur Administratoren der Anmeldeinformationsentität können diese Anmeldeinformationen anzeigen, aber sie ermöglicht autorisierten anzeigenden Benutzern das Erstellen von Datenfeeds, ohne dass sie die Details der Anmeldeinformationen kennen müssen.|
+| **Dienstprinzipal**| Speichern Sie den Dienstprinzipal als **credential entity** (Anmeldeinformationsentität) in Metrics Advisor, und verwenden Sie sie beim Onboarding von Metrikdaten direkt. Nur Administratoren der Anmeldeinformationsentität können die Anmeldeinformationen anzeigen, aber sie ermöglicht autorisierten anzeigenden Benutzern das Erstellen von Datenfeeds, ohne dass sie die Details der Anmeldeinformationen kennen müssen.|
+| **Dienstprinzipal vom Schlüsseltresor**|Speichern Sie den Dienstprinzipal als **credential entity** (Anmeldeinformationsentität) in einem Schlüsseltresor in Metrics Advisor, und verwenden Sie sie beim Onboarding von Metrikdaten direkt. Nur Administratoren einer **Anmeldeinformationsentität** können diese Anmeldeinformationen anzeigen, aber sie ermöglicht autorisierten anzeigenden Benutzern das Erstellen von Datenfeeds, ohne dass sie die Details der Anmeldeinformationen kennen müssen. |
 
 ## <a name="data-sources-supported-and-corresponding-authentication-types"></a>Unterstützte Datenquellen und zugehörige Authentifizierungstypen
 
@@ -41,8 +41,8 @@ Verwenden Sie diesen Artikel, um die Einstellungen und Anforderungen zum Herstel
 |[**Azure Blob Storage (JSON)** ](#blob) | Basic<br>ManagedIdentity|
 |[**Azure Cosmos DB (SQL)** ](#cosmosdb) | Basic |
 |[**Azure Data Explorer (Kusto)**](#kusto) | Basic<br>ManagedIdentity|
-|[**Azure Data Lake Storage Gen2**](#adl) | Basic<br>DataLakeGen2SharedKey<br>ServicePrincipal<br>ServicePrincipalInKeyVault<br> |
-|[**Azure SQL-Datenbank/SQL Server**](#sql) | Basic<br>ManagedIdentity<br>ServicePrincipal<br>ServicePrincipalInKeyVault<br>AzureSQLConnectionString
+|[**Azure Data Lake Storage Gen2**](#adl) | Basic<br>DataLakeGen2SharedKey<br>Dienstprinzipal<br>Dienstprinzipal vom Schlüsseltresor<br> |
+|[**Azure SQL-Datenbank/SQL Server**](#sql) | Basic<br>ManagedIdentity<br>Dienstprinzipal<br>Dienstprinzipal vom Schlüsseltresor<br>AzureSQLConnectionString
 |[**Azure Table Storage**](#table) | Basic | 
 |[**ElasticSearch**](#es) | Basic |
 |[**HTTP-Anforderung**](#http) | Basic | 
@@ -51,7 +51,7 @@ Verwenden Sie diesen Artikel, um die Einstellungen und Anforderungen zum Herstel
 |[**MySQL**](#mysql) | Basic |
 |[**PostgreSQL**](#pgsql)| Basic|
 
-Erstellen Sie eine **Authentication Entity** (Authentifizierungsentität), und verwenden Sie sie zum Authentifizieren bei Ihren Datenquellen. In den folgenden Abschnitten werden die Parameter angegeben, die für die *Standardauthentifizierung* erforderlich sind. 
+Erstellen Sie eine **Credential Entity** (Anmeldeinformationsentität), und verwenden Sie sie zum Authentifizieren bei Ihren Datenquellen. In den folgenden Abschnitten werden die Parameter angegeben, die für die *Standardauthentifizierung* erforderlich sind. 
 
 ## <a name="span-idappinsightsazure-application-insightsspan"></a><span id="appinsights">Azure Application Insights</span>
 

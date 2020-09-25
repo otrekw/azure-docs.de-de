@@ -11,16 +11,16 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 07/22/2020
 ms.custom: how-to, contperfq1, devx-track-python
-ms.openlocfilehash: 769b4d364412d3409ef95c4222197fe6f7ce222c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7a785aebc282a871d150f0c9b4cca59d7d03558e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893463"
+ms.locfileid: "90976785"
 ---
 # <a name="connect-to-azure-storage-services"></a>Herstellen einer Verbindung mit Azure-Speicherdiensten
 
-In diesem Artikel erfahren Sie, wie Sie **über Azure Machine Learning-Datenspeicher eine Verbindung mit Azure-Speicherdiensten herstellen**. Datenspeicher stellen eine sichere Verbindung mit Ihrem Azure-Speicherdienst her, ohne Ihre Anmeldeinformationen für die Authentifizierung und die Integrität Ihrer ursprünglichen Datenquelle zu gefährden. Darin werden Verbindungsinformationen wie Ihre Abonnement-ID und die Tokenautorisierung in Ihrer mit dem Arbeitsbereich verknüpften [Key Vault](https://azure.microsoft.com/services/key-vault/)-Instanz gespeichert, damit Sie sicher auf Ihren Speicher zuzugreifen können, ohne diese Informationen in Ihren Skripts hartcodieren zu müssen. Sie können Datenspeicher mit dem [Azure Machine Learning-Python-SDK](#python) oder mit [Azure Machine Learning Studio](#studio) erstellen und registrieren.
+In diesem Artikel erfahren Sie, wie Sie **über Azure Machine Learning-Datenspeicher eine Verbindung mit Azure-Speicherdiensten herstellen**. Datenspeicher stellen eine sichere Verbindung mit Ihrem Azure-Speicherdienst her, ohne Ihre Anmeldeinformationen für die Authentifizierung und die Integrität Ihrer ursprünglichen Datenquelle zu gefährden. Darin werden Verbindungsinformationen wie Ihre Abonnement-ID und die Tokenautorisierung in Ihrer mit dem Arbeitsbereich verknüpften [Key Vault](https://azure.microsoft.com/services/key-vault/)-Instanz gespeichert, damit Sie sicher auf Ihren Speicher zuzugreifen können, ohne diese Informationen in Ihren Skripts hartcodieren zu müssen. Sie können Datenspeicher mit dem [Azure Machine Learning-Python-SDK](#python) oder mit [Azure Machine Learning Studio](how-to-connect-data-ui.md) erstellen und registrieren.
 
 Wenn Sie Datenspeicher mithilfe der VS Code-Erweiterung für Azure Machine Learning erstellen und verwalten möchten, finden Sie weitere Informationen in der [Schrittanleitung zur Ressourcenverwaltung für VS Code](how-to-manage-resources-vscode.md#datastores).
 
@@ -117,7 +117,7 @@ Stellen Sie für Azure-Blobcontainer und Azure Data Lake Gen2-Speicher sicher, 
 
 <a name="python"></a>
 
-## <a name="create-and-register-datastores-via-the-sdk"></a>Erstellen und Registrieren von Datenspeichern über das SDK
+## <a name="create-and-register-datastores"></a>Erstellen und Registrieren von Datenspeichern
 
 Wenn Sie eine Azure-Speicherlösung als Datenspeicher registrieren, erstellen Sie diesen Datenspeicher automatisch und registrieren ihn in einem bestimmten Arbeitsbereich. Lesen Sie den Abschnitt [Speicherzugriff und Berechtigungen](#storage-access-and-permissions), um Informationen zu Szenarios für virtuelle Netzwerke zu erhalten und um zu erfahren, wo Sie die erforderlichen Anmeldeinformationen für die Authentifizierung finden. 
 
@@ -129,7 +129,7 @@ In diesem Abschnitt finden Sie Beispiele für das Erstellen und Registrieren ein
 
  Informationen zum Erstellen von Datenspeichern für andere unterstützte Speicherdienste finden Sie in der [Referenzdokumentation für die entsprechenden `register_azure_*`-Methoden](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#&preserve-view=truemethods).
 
-Wenn Sie eine Umgebung mit weniger Code bevorzugen, finden Sie weitere Informationen unter [Erstellen von Datenspeichern in Azure Machine Learning Studio](#studio).
+Wenn Sie eine Umgebung mit weniger Code bevorzugen, finden Sie weitere Informationen unter [Verbinden mit Daten mit Azure Machine Learning Studio](how-to-connect-data-ui.md).
 
 > [!NOTE]
 > Der Datenspeichername darf nur Kleinbuchstaben, Ziffern und Unterstriche enthalten. 
@@ -199,25 +199,6 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
                                                              client_id=client_id, # client id of service principal
                                                              client_secret=client_secret) # the secret of service principal
 ```
-
-<a name="studio"></a>
-
-
-## <a name="create-datastores-in-the-studio"></a>Erstellen von Datenspeichern in Studio 
-
-Erstellen Sie einen neuen Datenspeicher in wenigen Schritten mit Azure Machine Learning Studio.
-
-> [!IMPORTANT]
-> Wenn sich Ihr Datenspeicherkonto in einem virtuellen Netzwerk befindet, sind zusätzliche Konfigurationsschritte erforderlich, um sicherzustellen, dass von Studio auf Ihre Daten zugegriffen werden kann. Stellen Sie wie unter [Verwenden von Azure Machine Learning Studio in einem virtuellen Azure-Netzwerk](how-to-enable-studio-virtual-network.md) beschrieben sicher, dass die erforderlichen Konfigurationsschritte ausgeführt werden. 
-
-1. Melden Sie sich bei [Azure Machine Learning Studio](https://ml.azure.com/) an.
-1. Wählen Sie im linken Bereich unter **Verwalten** die Option **Datenspeicher** aus.
-1. Wählen Sie **+ Neuer Datenspeicher** aus.
-1. Füllen Sie das Formular für einen neuen Datenspeicher aus. Das Formular aktualisiert sich ausgehend von den ausgewählten Optionen für den Azure-Speichertyp und den Authentifizierungstyp intelligent selbst. Lesen Sie den Abschnitt [Speicherzugriff und Berechtigungen](#access-validation), um zu erfahren, wo Sie die erforderlichen Anmeldeinformationen zum Ausfüllen dieses Formulars finden.
-
-Das folgende Beispiel zeigt, wie das Formular aussieht, wenn Sie einen **Azure-Blobdatenspeicher** erstellen: 
-    
-![Formular für einen neuen Datenspeicher](media/how-to-access-data/new-datastore-form.png)
 
 <a name="train"></a>
 ## <a name="use-data-in-your-datastores"></a>Verwenden von Daten in Ihren Datenspeichern

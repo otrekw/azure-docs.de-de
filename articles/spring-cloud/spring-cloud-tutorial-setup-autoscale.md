@@ -7,14 +7,17 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/22/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 6e4494762c4652d3db66940dddebb13c3ab03af3
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 5ca0c498e9fd03ce6397824465f9e1e006eeccc1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449466"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905388"
 ---
 # <a name="tutorial-set-up-autoscale-for-microservice-applications"></a>Tutorial: Einrichten der Autoskalierung für Microserviceanwendungen
+
+**Dieser Artikel gilt für:** ✔️ Java ✔️ C#
+
 Die in Azure Spring Cloud integrierte Autoskalierung trägt dazu bei, dass Microserviceanwendungen auch dann optimal funktionieren, wenn sich der Bedarf ändert. Dazu gehört das Ändern der Anzahl virtueller CPUs, des Arbeitsspeichers und der App-Instanzen. In diesem Artikel wird beschrieben, wie Sie über das Microsoft Azure-Portal oder die Azure CLI Autoskalierungseinstellungen für Ihre Anwendungen einrichten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -68,4 +71,4 @@ Wenn Sie sich im Tarif „Basic“ befinden und durch diese Grenzwerte eingeschr
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Übersicht über die Autoskalierung in Microsoft Azure](https://docs.microsoft.com/azure/azure-monitor/platform/autoscale-overview)
-* [Überwachen der Autoskalierung mithilfe der Azure CLI](https://docs.microsoft.com/cli/azure/monitor/autoscale?view=azure-cli-latest)
+* [Überwachen der Autoskalierung mithilfe der Azure CLI](https://docs.microsoft.com/cli/azure/monitor/autoscale?view=azure-cli-latest&preserve-view=true)

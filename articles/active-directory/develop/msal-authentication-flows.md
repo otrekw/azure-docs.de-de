@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/08/2020
 ms.author: marsma
 ms.reviewer: saeeda
-ms.openlocfilehash: 0dbd7eb9203f31b580f586a8a7d1fa216533628c
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 4a902ed53e92cd073d81626e80bdb3c8629ad072
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170512"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437869"
 ---
 # <a name="authentication-flows"></a>Authentifizierungsflows
 
@@ -219,7 +219,7 @@ Da die IWA ein automatischer Fluss ist, muss eine der folgenden Bedingungen zutr
 Dies bedeutet, dass eine der folgenden Aussagen zutrifft:
 
 - Sie als Entwickler haben im Azure-Portal **Gewähren** für sich selbst ausgewählt.
-- Ein Mandantenadministrator hat bei der App-Registrierung im Azure-Portal auf der Registerkarte **API-Berechtigungen** die Option **Grant/revoke admin consent for {tenant domain}** (Administratoreinwilligung für {Mandantendomäne} erteilen/widerrufen) ausgewählt (siehe [Hinzufügen von Zugriffsberechtigungen für Web-APIs](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)).
+- Ein Mandantenadministrator hat bei der App-Registrierung im Azure-Portal auf der Registerkarte **API-Berechtigungen** die Option **Administratorzustimmung für {Mandantendomäne} erteilen/widerrufen** ausgewählt (siehe [Hinzufügen von Zugriffsberechtigungen für Ihre Web-API](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-your-web-api)).
 - Sie haben eine Möglichkeit für Benutzer eingeräumt, der Anwendung zuzustimmen (siehe [Anfordern der Zustimmung einzelner Benutzer](v2-permissions-and-consent.md#requesting-individual-user-consent)).
 - Sie haben eine Möglichkeit für den Mandantenadministrator eingeräumt, der Anwendung zuzustimmen (siehe [Zustimmung des Administrators](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)).
 

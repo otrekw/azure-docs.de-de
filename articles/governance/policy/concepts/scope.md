@@ -3,12 +3,12 @@ title: Erläuterungen zum Bereich in Azure Policy
 description: Beschreibt das Konzept des Bereichs in Azure Resource Manager und wie es auf Azure Policy angewendet wird, um zu steuern, welche Ressourcen von Azure Policy ausgewertet werden.
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: dee5d2bdbcb5aa86e293652af3bc5008f56b7877
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 83eda330a35b007abfa37046a202b14728726849
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931669"
+ms.locfileid: "90984441"
 ---
 # <a name="understand-scope-in-azure-policy"></a>Erläuterungen zum Bereich in Azure Policy
 
@@ -34,6 +34,8 @@ Eine Zuweisung verfügt über mehrere Eigenschaften, die einen Bereich festlegen
 - Einschluss: Eine Ressourcenhierarchie oder eine einzelne Ressource sollte anhand der Definition auf Konformität überprüft werden. Die `properties.scope`-Eigenschaft für ein Zuweisungsobjekt bestimmt, was eingeschlossen und auf Konformität überprüft werden soll. Weitere Informationen finden Sie unter [Zuweisungsdefinition](./assignment-structure.md).
 
 - Ausschluss: Eine Ressourcenhierarchie oder eine einzelne Ressource soll nicht anhand der Definition auf Konformität überprüft werden. Die _Arrayeigenschaft_ `properties.notScopes` bestimmt, was ausgeschlossen werden soll. Ressourcen in diesen Bereichen werden nicht ausgewertet und nicht in die Anzahl konformer Elemente einbezogen. Weitere Informationen finden Sie unter [Zuweisungsdefinition – Ausgeschlossene Bereiche](./assignment-structure.md#excluded-scopes).
+
+Zusätzlich zu den Eigenschaften für die Richtlinienzuweisung ist das [Richtlinienausnahme](./exemption-structure.md)-Objekt vorhanden. Ausnahmen erweitern die Bereichsstory, indem sie eine Methode bieten, einen Teil einer Zuweisung zu identifizieren, die nicht bewertet werden soll.
 
 - Ausnahme (Feature **während der Vorschau kostenlos**): Durch die Definition wird eine Ressourcenhierarchie oder eine einzelne Ressource auf Konformität überprüft. Sie wird jedoch nicht überprüft, wenn für sie ein Verzicht vorliegt oder wenn sie von einer anderen Methode behandelt wird. Ressourcen in diesem Zustand werden in Konformitätsberichten als **Ausnahme** angegeben, damit sie nachverfolgt werden können. Das Ausnahmeobjekt wird in der Ressourcenhierarchie oder der einzelnen Ressource als untergeordnetes Objekt erstellt. Dies bestimmt den Bereich der Ausnahme. Eine Ressourcenhierarchie oder eine einzelne Ressource kann von mehreren Zuweisungen ausgenommen werden. Die Ausnahme kann mit der `expiresOn`-Eigenschaft so konfiguriert werden, dass sie nach einem Zeitplan abläuft. Weitere Informationen finden Sie unter [Ausnahmendefinition](./exemption-structure.md).
 

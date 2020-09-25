@@ -13,12 +13,12 @@ ms.date: 03/17/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 966149cf1a4f40ccc565b22e9d5afdd599997b4e
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 7ff1e6e3b422f55da332e206aea184ca1b5902a6
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141363"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705893"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Gewusst wie: Anmelden von Azure Active Directory-Benutzern mit dem mehrinstanzenfähigen Anwendungsmuster
 
@@ -153,7 +153,7 @@ Dies wird in einem Beispiel eines nativen Clients mit mehreren Ebenen, der eine 
 
 #### <a name="multiple-tiers-in-multiple-tenants"></a>Mehrere Ebenen in mehreren Mandanten
 
-Ein ähnlicher Fall tritt ein, wenn die verschiedenen Ebenen einer Anwendung in verschiedenen Mandanten registriert sind. Betrachten Sie z.B. die Erstellung einer nativen Clientanwendung, die die Office 365 Exchange Online-API aufruft. Um die native Anwendung zu entwickeln und sie später im Mandanten eines Kunden auszuführen, muss der Exchange Online-Dienstprinzipal vorhanden sein. In diesem Fall müssen der Entwickler und der Kunde Exchange Online erwerben, damit der Dienstprinzipal in seinen Mandanten erstellt wird.
+Ein ähnlicher Fall tritt ein, wenn die verschiedenen Ebenen einer Anwendung in verschiedenen Mandanten registriert sind. Betrachten Sie z.B. die Erstellung einer nativen Clientanwendung, die die Exchange Online-API aufruft. Um die native Anwendung zu entwickeln und sie später im Mandanten eines Kunden auszuführen, muss der Exchange Online-Dienstprinzipal vorhanden sein. In diesem Fall müssen der Entwickler und der Kunde Exchange Online erwerben, damit der Dienstprinzipal in seinen Mandanten erstellt wird.
 
 Falls die API von einer anderen Organisation als Microsoft erstellt wurde, muss der Entwickler der API für Kunden eine Möglichkeit bieten, der Anwendung in den Mandanten der Kunden die Zustimmung zu erteilen. Der empfohlene Entwurf gilt für externe Entwickler, um die API so zu erstellen, dass sie auch als Webclient zur Implementierung der Registrierung fungieren kann. Gehen Sie dazu folgendermaßen vor:
 
@@ -181,7 +181,7 @@ Mehrinstanzenfähige Anwendungen können auch Zugriffstoken abrufen, um APIs auf
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie gelernt, wie Sie eine Anwendung erstellen, die einen Benutzer über einen beliebigen Azure AD-Mandanten anmelden kann. Nach der Aktivierung der einmaligen Anmeldung (SSO) zwischen Ihrer App und Azure AD können Sie auch Ihre Anwendung aktualisieren, um auf von Microsoft-Ressourcen bereitgestellte APIs wie Office 365 zuzugreifen. Auf diese Weise können Sie in Ihrer Anwendung für ein personalisiertes Benutzererlebnis sorgen, um den Benutzern beispielsweise Kontextinformationen anzuzeigen, z.B. ihr Profilfoto oder ihren nächsten Kalendertermin. Weitere Informationen zu API-Aufrufen von Azure AD und Office 365-Diensten wie Exchange, SharePoint, OneDrive, OneNote usw. finden Sie unter [Microsoft Graph-API][MSFT-Graph-overview].
+In diesem Artikel haben Sie gelernt, wie Sie eine Anwendung erstellen, die einen Benutzer über einen beliebigen Azure AD-Mandanten anmelden kann. Nach der Aktivierung der einmaligen Anmeldung (SSO) zwischen Ihrer App und Azure AD können Sie auch Ihre Anwendung aktualisieren, um auf von Microsoft-Ressourcen bereitgestellte APIs wie Microsoft 365 zuzugreifen. Auf diese Weise können Sie in Ihrer Anwendung für ein personalisiertes Benutzererlebnis sorgen, um den Benutzern beispielsweise Kontextinformationen anzuzeigen, z.B. ihr Profilfoto oder ihren nächsten Kalendertermin. Weitere Informationen zu API-Aufrufen von Azure AD und Microsoft 365-Diensten wie Exchange, SharePoint, OneDrive, OneNote usw. finden Sie unter [Microsoft Graph-API][MSFT-Graph-overview].
 
 ## <a name="related-content"></a>Verwandte Inhalte
 

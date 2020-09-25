@@ -2,18 +2,18 @@
 title: Informationen zu Netzwerken für die Notfallwiederherstellung für virtuelle Azure-Computer mit Azure Site Recovery
 description: Bietet eine Übersicht über die Netzwerkkonzepte für die Replikation von Azure-VMs mithilfe von Azure Site Recovery.
 services: site-recovery
-author: sujayt
+author: Harsha-CS
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
-ms.author: sutalasi
-ms.openlocfilehash: f9e2d82130ae188d269847d0e0236ea0e33d00dc
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.author: harshacs
+ms.openlocfilehash: 0a2763beec9fed9025198ca283f7746286875512
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131394"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527376"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>Informationen zu Netzwerken für die Notfallwiederherstellung für virtuelle Azure-Computer
 
@@ -35,7 +35,7 @@ Wenn Ihr lokales Netzwerk über Azure ExpressRoute oder VPN mit Azure verbunden 
 
 ![Kundenumgebung](./media/site-recovery-azure-to-azure-architecture/source-environment-expressroute.png)
 
-Normalerweise werden Netzwerke durch Firewalls und Netzwerksicherheitsgruppen (NSGs) geschützt. Firewalls verwenden eine URL- oder IP-basierte Whitelist zum Steuern der Netzwerkkonnektivität. NSGs stellen Regeln bereit, die IP-Adressbereiche zum Steuern der Netzwerkkonnektivität verwenden.
+Normalerweise werden Netzwerke durch Firewalls und Netzwerksicherheitsgruppen (NSGs) geschützt. Diensttags sollten zur Steuerung der Netzwerkkonnektivität verwendet werden. NSGs sollten mehrere Diensttags zulassen, um die ausgehenden Konnektivität zu steuern.
 
 >[!IMPORTANT]
 > Die Verwendung eines authentifizierten Proxys zum Steuern der Netzwerkkonnektivität wird von Site Recovery nicht unterstützt. In diesem Fall kann die Replikation nicht aktiviert werden.
@@ -45,6 +45,8 @@ Normalerweise werden Netzwerke durch Firewalls und Netzwerksicherheitsgruppen (N
 
 Lassen Sie die folgenden Site Recovery-URLs zu, wenn Sie einen URL-basierten Firewallproxy zum Steuern der ausgehenden Konnektivität verwenden:
 
+>[!NOTE]
+> Auf IP-Adressen basierendes Whitelisting sollte nicht durchgeführt werden, um die ausgehende Konnektivität zu steuern.
 
 **URL** | **Details**
 --- | ---

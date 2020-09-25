@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: afa2cbdb7b0703f9fc0b419442570744c6fefae1
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 6adfd9bc778318b406d5ce27cadccdad02d73d69
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049688"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437461"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Problembehandlung für Azure-zu-Azure-VM-Netzwerkkonnektivitätsprobleme
 
@@ -108,7 +108,7 @@ Eine Verbindung mit Azure Site Recovery-Dienstendpunkten kann nicht hergestellt 
 
 #### <a name="resolution"></a>Lösung
 
-Azure Site Recovery benötigt abhängig von der Region Zugriff auf [Site Recovery-IP-Adressbereiche](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags). Stellen Sie sicher, dass über die VM auf die erforderlichen IP-Bereiche zugegriffen werden kann.
+Wenn Sie zum Steuern der ausgehenden Netzwerkkonnektivität auf dem Computer Azure-Netzwerksicherheitsgruppen-Regeln (NSG-Regeln) oder einen Firewallproxy verwenden, müssen verschiedene Diensttags zugelassen werden. [Weitere Informationen](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)
 
 ### <a name="issue-4-azure-to-azure-replication-failed-when-the-network-traffic-goes-through-on-premises-proxy-server-151072"></a>Problem 4: Fehler bei der Azure-zu-Azure-Replikation, wenn der Netzwerkdatenverkehr lokale Proxyserver durchläuft (151072).
 

@@ -4,15 +4,16 @@ description: In diesem Artikel finden Sie häufig gestellte Fragen zu Azure Spri
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 1ad008ff3ef4f29ee358b075802deba7eef919bd
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: 1947e57a5f200521fe57c6aaf41e9d57c1085592
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322040"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888711"
 ---
 # <a name="azure-spring-cloud-faq"></a>Häufig gestellte Fragen zu Azure Spring Cloud
 
@@ -61,9 +62,11 @@ Wenn bei der Azure Spring Cloud Probleme auftreten, erstellen Sie eine [Azure-Su
 
 Für den schnellsten Einstieg mit Azure Spring Cloud führen Sie die Anweisungen im [Schnellstart: Starten einer Azure Spring Cloud-Anwendung über das Azure-Portal](spring-cloud-quickstart.md).
 
+::: zone pivot="programming-language-java"
 ### <a name="what-java-runtime-does-azure-spring-cloud-support"></a>Welche Java-Runtime unterstützt Azure Spring Cloud?
 
 Azure Spring Cloud unterstützt Java 8 und 11. Weitere Informationen finden Sie unter [Java-Runtime und Betriebssystemversionen](#java-runtime-and-os-versions).
+::: zone-end
 
 ### <a name="where-can-i-view-my-spring-cloud-application-logs-and-metrics"></a>Wo kann ich meine Spring Cloud-Anwendungsprotokolle und -metriken einsehen?
 
@@ -75,12 +78,14 @@ Azure Spring Cloud unterstützt das Exportieren von Spring Cloud-Anwendungsproto
 
 Ja. Weitere Informationen finden Sie im [Tutorial: Verwenden der verteilten Ablaufverfolgung mit Azure Spring Cloud](spring-cloud-tutorial-distributed-tracing.md).
 
+::: zone pivot="programming-language-java"
 ### <a name="what-resource-types-does-service-binding-support"></a>Welche Ressourcentypen werden von der Dienstbindung unterstützt?
 
 Derzeit werden drei Dienste unterstützt:
 * Azure Cosmos DB
 * Azure Database for MySQL
 * Azure Cache for Redis.
+::: zone-end
 
 ### <a name="can-i-view-add-or-move-persistent-volumes-from-inside-my-applications"></a>Kann ich persistente Volumes innerhalb meiner Anwendungen anzeigen, hinzufügen oder verschieben?
 
@@ -96,6 +101,7 @@ Sie können die Diagnoseeinstellungen von Spring Cloud mithilfe der Azure-Befehl
  az monitor diagnostic-settings delete --name $diagnosticSettingName --resource $azureSpringCloudResourceId
 ```
 
+::: zone pivot="programming-language-java"
 ## <a name="java-runtime-and-os-versions"></a>Java-Runtime und Betriebssystemversionen
 
 ### <a name="which-versions-of-java-runtime-are-supported-in-azure-spring-cloud"></a>Welche Versionen der Java-Runtime werden in Azure Spring Cloud unterstützt?
@@ -136,10 +142,11 @@ Sie können beim Azure-Support ein Supportticket öffnen.  Weitere Informationen
 
 Es wird die neueste Version von Ubuntu LTS verwendet, derzeit ist [Ubuntu 20.04 LTS (Focal Fossa)](https://releases.ubuntu.com/focal/) das Standardbetriebssystem.
 
-### <a name="how-often-will-os-security-patches-be-applied"></a>Wie oft werden Betriebssystem-Sicherheitsupdates angewendet?
+### <a name="how-often-are-os-security-patches-applied"></a>Wie häufig werden Betriebssystem-Sicherheitspatches angewendet?
 
-Auf Azure Spring Cloud anwendbare Sicherheitsupdates werden monatlich in der Produktionsumgebung eingeführt.
+Für auf Azure Spring Cloud anwendbare Sicherheitspatches erfolgt das Rollout in der Produktionsumgebung auf monatlicher Basis.
 Für kritische Sicherheitsupdates (CVE-Score >= 9), die auf Azure Spring Cloud anwendbar sind, wird so bald wie möglich ein Rollout ausgeführt.
+::: zone-end
 
 ## <a name="deployment"></a>Bereitstellung
 
@@ -158,6 +165,7 @@ Ja. Weitere Informationen finden Sie unter [Starten Ihrer Spring Cloud-Anwendung
 
 Nein.
 
+::: zone pivot="programming-language-java"
 ### <a name="what-are-the-best-practices-for-migrating-existing-spring-cloud-microservices-to-azure-spring-cloud"></a>Wie lauten die bewährten Methoden für die Migration vorhandener Spring Cloud-Microservices zu Azure Spring Cloud?
 
 Beim Migrieren vorhandener Spring Cloud-Microservices zu Azure Spring Cloud empfiehlt es sich, die folgenden bewährten Methoden zu befolgen:
@@ -168,8 +176,22 @@ Beim Migrieren vorhandener Spring Cloud-Microservices zu Azure Spring Cloud empf
 * Es wird empfohlen, dass Sie offizielle, stabile Pivotal Spring-Bibliotheken verwenden. Inoffizielle oder verzweigte Versionen und Betaversionen von Pivotal Spring-Bibliotheken haben keine SLA-Unterstützung (Vereinbarung zum Servicelevel).
 
 Überwachen Sie nach der Migration Ihre CPU-/RAM-Metriken und den Netzwerkdatenverkehr, um sicherzustellen, dass die Anwendungsinstanzen entsprechend skaliert werden.
+::: zone-end
 
-## <a name="trouble-shooting"></a>Problembehandlung
+::: zone pivot="programming-language-csharp"
+## <a name="net-core-versions"></a>.NET Core-Versionen
+
+### <a name="which-net-core-versions-are-supported"></a>Welche .NET Core-Versionen werden unterstützt?
+
+.NET Core 3.1 und höhere Versionen.
+
+### <a name="how-long-will-net-core-31-be-supported"></a>Wie lange wird .NET Core 3.1 unterstützt?
+
+Bis zum 3. Dezember 2022. Weitere Informationen finden Sie in der [.NET Core-Unterstützungsrichtlinie](https://dotnet.microsoft.com/platform/support/policy/dotnet-core).
+::: zone-end
+
+
+## <a name="troubleshooting"></a>Problembehandlung
 
 ### <a name="what-are-the-impacts-of-service-registry-rarely-unavailable"></a>Was sind die Auswirkungen, wenn die Dienstregistrierung selten verfügbar ist?
 

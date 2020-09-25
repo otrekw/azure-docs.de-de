@@ -7,14 +7,16 @@ ms.author: brendm
 author: bmitchell287
 ms.date: 10/18/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 665d508a7d95e177d0db09ad86e2a5f0ee4d605b
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 2f788452455bfbbc47f0a48689ccf3344515fdae
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89291295"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904255"
 ---
 # <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>Einrichten einer Spring Cloud-Konfigurationsserverinstanz für Ihren Dienst
+
+**Dieser Artikel gilt für:** ✔️ Java ✔️ C#
 
 In diesem Artikel wird gezeigt, wie Sie eine Spring Cloud-Konfigurationsserverinstanz mit Ihrem Azure Spring Cloud-Dienst verbinden.
 
@@ -163,7 +165,7 @@ Wenn Sie ein optionales **Musterrepository** verwenden möchten, um den Dienst z
 
 Wenn Sie eine YAML-Datei mit Ihren Repositoryeinstellungen erstellt haben, können Sie die Datei direkt von Ihrem lokalen Computer in Azure Spring Cloud importieren. Eine einfache YAML-Datei für ein privates Repository mit Standardauthentifizierung würde wie folgt aussehen:
 
-```yml
+```yaml
 spring:
     cloud:
         config:

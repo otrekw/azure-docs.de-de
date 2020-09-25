@@ -5,16 +5,19 @@ author: MikeDodaro
 ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
-ms.date: 01/20/2019
+ms.date: 09/08/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 433cd9e7b8cfe69ce5008366db884659cccbc149
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 995d10b3c7064e462500e0bec4d5d8aa010afe64
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076022"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888775"
 ---
 # <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>Authentifizieren von Azure Spring Cloud mit Schlüsseltresor in GitHub Actions
+
+**Dieser Artikel gilt für:** ✔️ Java ✔️ C#
+
 Ein Schlüsseltresor ist ein sicherer Ort zum Speichern von Schlüsseln. Unternehmensbenutzer müssen Anmeldeinformationen für CI/CD-Umgebungen im von ihnen kontrollierten Bereich speichern. Der Schlüssel zum Abrufen von Anmeldeinformationen im Schlüsseltresor muss auf den Ressourcenbereich beschränkt sein.  Er ermöglicht nur den Zugriff auf den Schlüsseltresorbereich und nicht auf den gesamten Azure-Bereich. Somit ist er vergleichbar mit einem Schlüssel, der nur ein bestimmtes Schließfach öffnet (im Gegensatz zu einem Hauptschlüssel, mit dem sämtliche Türen in einem Gebäude geöffnet werden können). Er ermöglicht das Abrufen eines Schlüssels mithilfe eines anderen Schlüssels, was in einem CI/CD-Workflow hilfreich ist. 
 
 ## <a name="generate-credential"></a>Generieren von Anmeldeinformationen
@@ -49,7 +52,7 @@ Navigieren Sie im Azure-Portal zum Dashboard **Key Vault**, klicken Sie auf das 
 
 Kopieren Sie den Anmeldeinformationsnamen (beispielsweise `azure-cli-2020-01-19-04-39-02`). Öffnen Sie das Menü **Zugriffsrichtlinien**, und klicken Sie auf den Link **+ Zugriffsrichtlinie hinzufügen**.  Wählen Sie unter **Vorlage** die Option `Secret Management` und anschließend **Prinzipal** aus. Fügen Sie den Anmeldeinformationsnamen in das Eingabefeld unter **Prinzipal**/**Auswählen** ein:
 
- ![Select](./media/github-actions/key-vault2.png)
+ ![Auswählen](./media/github-actions/key-vault2.png)
 
  Klicken Sie im Dialogfeld **Zugriffsrichtlinie hinzufügen** auf die Schaltfläche **Hinzufügen**, und klicken Sie anschließend auf **Speichern**.
 

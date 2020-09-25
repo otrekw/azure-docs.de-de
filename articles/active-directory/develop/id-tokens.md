@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/29/2020
+ms.date: 09/09/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 66855260bd44ef83972fa251d076d0204cba32da
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 2059c473c8429e7498992e26c0a2c90ea835c537
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795244"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646596"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity Platform – ID-Token
 
@@ -85,6 +85,8 @@ Diese Liste zeigt die JWT-Ansprüche, die (sofern nicht anders angegeben) standa
 |`unique_name` | String | Ein lesbarer Wert, der Aufschluss über den Antragsteller des Tokens gibt. Dieser Wert ist immer eindeutig. Da aber E-Mails und andere Bezeichner wiederverwendet werden können, kann dieser Wert in anderen Konten erneut auftreten und sollte daher nur zu Anzeigezwecken verwendet werden. Wird nur in v1.0-`id_tokens` ausgegeben. |
 |`uti` | Nicht transparente Zeichenfolge | Ein interner Anspruch, der von Azure zum erneuten Überprüfen von Token verwendet wird. Sollte ignoriert werden. |
 |`ver` | Zeichenfolge, 1.0 oder 2.0 | Gibt die Version des ID-Tokens an. |
+|`hasgroups`|Boolean|Ist immer auf TRUE festgelegt (sofern vorhanden) und gibt an, dass der Benutzer mindestens einer Gruppe angehört. Wird anstelle des Gruppenanspruchs für JWTs in Flows mit impliziter Gewährung verwendet, wenn der Anspruch für vollständige Gruppen das URI-Fragment über die URL-Längenbeschränkung (derzeit 6 oder mehr Gruppen) erweitert. Gibt an, dass der Client die Gruppen des Benutzers über die Microsoft Graph-API bestimmen soll (`https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects`).|
+|`groups:src1`|JSON-Objekt | Für Tokenanforderungen ohne Längenbeschränkung (siehe `hasgroups` oben), die aber dennoch zu groß für das Token sind, ist ein Link zur Liste der vollständigen Gruppen für den Benutzer enthalten. Für JWTs als verteilter Anspruch, für SAML als neuer Anspruch anstelle des Anspruchs `groups`. <br><br>**JWT-Beispielwert**: <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects" }`<br><br> Weitere Informationen finden Sie unter [Gruppenüberschreitungsanspruch](#groups-overage-claim).|
 
 > [!NOTE]
 > Die ID-Token der Versionen 1.0 und 2.0 weisen Unterschiede in der Menge der enthaltenen Informationen auf, wie aus den obigen Beispielen hervorgeht. Die Version basiert auf dem Endpunkt, von dem aus die Anforderung erfolgt ist. Obwohl vorhandene Anwendungen wahrscheinlich den Azure AD-Endpunkt verwenden, sollten neue Anwendungen den v2.0-Endpunkt „Microsoft Identity Platform“ verwenden.
@@ -102,6 +104,26 @@ Verwenden Sie zum ordnungsgemäßen Speichern von Informationen pro Benutzer nur
 > Verwenden Sie den `idp`-Anspruch nicht zum Speichern von Informationen zu einem Benutzer, um Benutzer über Mandanten hinweg zu korrelieren.  Dies funktioniert nicht, da die Ansprüche `oid` und `sub` für einen Benutzer in verschiedenen Mandanten unterschiedlich sind. Dies ist so konzipiert, um sicherzustellen, dass Anwendungen Benutzer nicht mandantenübergreifend nachverfolgen können.  
 >
 > Gastszenarien, in denen ein Benutzer einem Mandanten angehört und sich in einem anderen authentifiziert, sollten den Benutzer wie einen neuen Benutzer des Diensts behandeln.  Ihre Dokumente und Berechtigungen im Mandanten Contoso dürfen nicht im Mandanten Fabrikam angewandt werden. Dies ist wichtig, um versehentliche Datenlecks zwischen Mandanten zu vermeiden.
+
+### <a name="groups-overage-claim"></a>Gruppenüberschreitungsanspruch
+Um sicherzustellen, dass die Tokengröße die Grenzwerte für HTTP-Header nicht überschreitet, schränkt Azure AD die Anzahl der im `groups`-Anspruch enthaltenen Objekt-IDs ein. Wenn ein Benutzer Mitglied mehrerer Gruppen als die zulässige Überschreitungsgrenze (150 für SAML-Token, 200 für JWT-Token) ist, gibt Azure AD den Gruppenanspruch nicht im Token aus. Stattdessen ist ein Überschreitungsanspruch im Token enthalten, der der Anwendung anzeigt, dass die Microsoft Graph-API abgefragt werden soll, um die Gruppenmitgliedschaft des Benutzers abzurufen.
+
+```json
+{
+  ...
+  "_claim_names": {
+   "groups": "src1"
+    },
+    {
+  "_claim_sources": {
+    "src1": {
+        "endpoint":"[Url to get this user's group membership from]"
+        }
+       }
+     }
+  ...
+ }
+```
 
 ## <a name="validating-an-id_token"></a>Überprüfen eines ID-Tokens
 

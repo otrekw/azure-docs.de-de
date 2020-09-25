@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 43fad8d09c069f5e054634fb46f40e63047d5426
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: bc55ab2697d8278bd975f618d17804499ba0128d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90888331"
+ms.locfileid: "90982073"
 ---
 # <a name="install-and-run-read-containers-preview"></a>Installieren und Ausführen von Lesecontainern (Vorschauversion)
 
@@ -170,7 +170,15 @@ So finden Sie die Verbindungszeichenfolge:
 
 Der Container stellt REST-basierte Endpunkt-APIs für die Abfragevorhersage bereit. 
 
-Verwenden Sie für Container-APIs den Host `http://localhost:5000`. Sie können den Swagger-Pfad unter `http://localhost:5000/swagger/vision-v3.0-read/swagger.json` anzeigen.
+# <a name="version-31-preview"></a>[Version 3.1-preview](#tab/version-3-1)
+
+Verwenden Sie für Container-APIs den Host `http://localhost:5000`. Sie können den Swagger-Pfad unter `http://localhost:5000/swagger/vision-v3.0-preview-read/swagger.json` anzeigen.
+
+# <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
+
+Verwenden Sie für Container-APIs den Host `http://localhost:5000`. Sie können den Swagger-Pfad unter `http://localhost:5000/swagger/vision-v3.1-preview-read/swagger.json` anzeigen.
+
+---
 
 ### <a name="asynchronous-read"></a>Asynchrones Lesen
 
@@ -325,7 +333,7 @@ Die `operation-location` ist die vollqualifizierte URL, auf die über HTTP GET z
 ---
 
 > [!IMPORTANT]
-> Wenn Sie mehrere Lesecontainer hinter einem Lastenausgleich bereitstellen (z. B. unter Docker Compose oder Kubernetes), benötigen Sie einen externen Cache. Da der Verarbeitungscontainer und der GET-Anforderungscontainer möglicherweise nicht identisch sind, speichert ein externer Cache die Ergebnisse und gibt sie für die Container frei. Ausführliche Informationen zu Cacheeinstellungen finden Sie unter [Konfigurieren von Docker-Containern für maschinelles Sehen](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-resource-container-config).
+> Wenn Sie mehrere Lesecontainer hinter einem Lastenausgleich bereitstellen (z. B. unter Docker Compose oder Kubernetes), benötigen Sie einen externen Cache. Da der Verarbeitungscontainer und der GET-Anforderungscontainer möglicherweise nicht identisch sind, werden die Ergebnisse in einem externen Cache gespeichert und dort für die Container freigegeben. Ausführliche Informationen zu Cacheeinstellungen finden Sie unter [Konfigurieren von Docker-Containern für maschinelles Sehen](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-resource-container-config).
 
 ### <a name="synchronous-read"></a>Synchrones Lesen
 
@@ -335,7 +343,7 @@ Mit dem folgenden Vorgang können Sie ein Bild synchron lesen:
 
 `POST /vision/v3.1/read/syncAnalyze` 
 
-# <a name="version-30"></a>[Version 3.0](#tab/version-3)
+# <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
 
 `POST /vision/v3.0/read/SyncAnalyze`
 

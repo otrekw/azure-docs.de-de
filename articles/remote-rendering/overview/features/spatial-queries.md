@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/07/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9b378fe3f01e6ef1d54a89341bbac3a26b9d6b33
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5a80681a641757d71288dfaee4c779121030a9db
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013145"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613607"
 ---
 # <a name="spatial-queries"></a>Räumliche Abfragen
 
@@ -112,6 +112,11 @@ Ein Treffer weist folgende Eigenschaften auf:
 * **`HitPosition`:** Die Raumposition, an der der Strahl das Objekt schneidet.
 * **`HitNormal`:** Die Raumoberflächen-Normale des Gittermodells an der Schnittposition.
 * **`DistanceToHit`:** Der Abstand von der Anfangsposition des Strahls zum Treffer.
+
+## <a name="api-documentation"></a>API-Dokumentation
+
+* [C# RemoteManager.RayCastQueryAsync()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.raycastqueryasync)
+* [C++ RemoteManager::RayCastQueryAsync()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#raycastqueryasync)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/05/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9fd18195c0276999f445e0990838e293a5081131
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e9c8c4a1209b8bb5be7af87ef22aeab0ffd90b79
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021883"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90023770"
 ---
 # <a name="models"></a>Modelle
 
@@ -28,7 +28,6 @@ An jede Entität können [Komponenten](components.md) angefügt werden. In den m
 Zur Erstellung von Modellen für die Runtime werden aus Dateiformaten wie FBX und GLTF [Eingabemodelle konvertiert](../how-tos/conversion/model-conversion.md). Beim Konvertierungsprozess werden alle Ressourcen extrahiert, z. B. Texturen, Materialien und Gittermodelle, und in optimierte Runtimeformate konvertiert. Außerdem werden die strukturellen Informationen extrahiert und in die Graphstruktur der Entitäten bzw. Komponenten von ARR konvertiert.
 
 > [!IMPORTANT]
->
 > Die [Modellkonvertierung](../how-tos/conversion/model-conversion.md) ist die einzige Möglichkeit, [Gittermodelle](meshes.md) zu erstellen. Gittermodelle können zur Runtime von Entitäten zwar gemeinsam genutzt werden, aber ein Gittermodell kann nur in die Runtime eingebunden werden, indem ein Modell geladen wird.
 
 ## <a name="loading-models"></a>Laden von Modellen
@@ -118,6 +117,13 @@ Anschließend können Sie die Entitätshierarchie durchlaufen und die Entitäten
 
 > [!CAUTION]
 > Von allen *Async*-Funktionen in ARR werden asynchrone Vorgangsobjekte zurückgegeben. Sie müssen einen Verweis auf diese Objekte speichern, bis der Vorgang abgeschlossen ist. Andernfalls wird der Vorgang vom C# Garbage Collector unter Umständen zu einem frühen Zeitpunkt gelöscht und kann nicht beendet werden. Im obigen Beispielcode wird mit *await* sichergestellt, dass die lokale Variable „loadOp“ einen Verweis enthält, bis das Laden von Modellen abgeschlossen ist. Falls Sie stattdessen das Element *Completed* verwenden, müssen Sie den asynchronen Vorgang aber in einer Membervariablen speichern.
+
+## <a name="api-documentation"></a>API-Dokumentation
+
+* [C# RemoteManager.LoadModelAsync()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadmodelasync)
+* [C# RemoteManager.LoadModelFromSASAsync()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadmodelfromsasasync)
+* [C++ RemoteManager::LoadModelAsync()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#loadmodelasync)
+* [C++ RemoteManager::LoadModelFromSASAsync()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#loadmodelfromsasasync)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -11,19 +11,19 @@ ms.workload: identity
 ms.date: 02/13/2020
 ms.author: davidmu
 ms.custom: aaddev
-ms.openlocfilehash: fb6f5c4840f127ac174b6b60359dd52a4797b3ec
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 13cbeca909b445d75fcbcf7b3751183421479d42
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119673"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052561"
 ---
 # <a name="microsoft-graph-api"></a>Microsoft Graph-API
 
 Die Microsoft Graph-API ist eine RESTful-Web-API, die Ihnen den Zugriff auf Microsoft Cloud-Dienstressourcen ermöglicht. Nachdem Sie Ihre App registriert und Authentifizierungstoken für einen Benutzer oder Dienst abgerufen haben, können Sie Anforderungen an die Microsoft Graph-API senden. Weitere Informationen finden Sie in der [Übersicht zu Microsoft Graph](/graph/overview).
 
 Microsoft Graph macht Rest-APIs und Clientbibliotheken für den Zugriff auf Daten für die folgenden Microsoft 365-Dienste verfügbar:
-- Office 365-Dienste: Delve, Excel, Microsoft Bookings, Microsoft Teams, OneDrive, OneNote, Outlook/Exchange, Planner und SharePoint
+- Microsoft 365-Dienste: Delve, Excel, Microsoft Bookings, Microsoft Teams, OneDrive, OneNote, Outlook/Exchange, Planner und SharePoint
 - Enterprise Mobility + Security-Dienste: Advanced Threat Analytics, Advanced Threat Protection, Azure Active Directory, Identity Manager und Intune
 - Windows 10-Dienste: Aktivitäten, Geräte, Benachrichtigungen
 - Dynamics 365 Business Central

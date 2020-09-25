@@ -7,14 +7,14 @@ ms.service: sql-edge
 ms.topic: tutorial
 author: VasiyaKrishnan
 ms.author: vakrishn
-ms.reviewer: sstein
-ms.date: 05/19/2020
-ms.openlocfilehash: a4087ef56712e098443009bd0457029394ea7b51
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.reviewer: sourabha, sstein
+ms.date: 09/22/2020
+ms.openlocfilehash: 7b2432fda70e8f9a5fa8bc64ede846d977672e9e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235038"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886480"
 ---
 # <a name="set-up-iot-edge-modules-and-connections"></a>Einrichten von IoT Edge-Modulen und -Verbindungen
 
@@ -22,39 +22,6 @@ Im zweiten Teil dieses dreiteiligen Tutorials zum Vorhersagen von Eisenerzverunr
 
 - Azure SQL Edge
 - Datengenerator „IoT Edge-Modul“
-
-## <a name="create-azure-stream-analytics-module"></a>Erstellen eines Azure Stream Analytics-Moduls
-
-Erstellen Sie ein Azure Stream Analytics-Modul, das in diesem Tutorial verwendet wird. Weitere Informationen zur Verwendung von Streamingaufträgen mit SQL Edge finden Sie unter [Verwenden von Streamingaufträgen mit SQL Edge](stream-analytics.md).
-
-Nachdem der Azure Stream Analytics-Auftrag mit der als Edge festgelegten Hostingumgebung erstellt wurde, richten Sie die Eingaben und Ausgaben für das Tutorial ein.
-
-1. Klicken Sie zum Erstellen der **Eingabe** auf **+ Datenstromeingabe hinzufügen**. Füllen Sie den Abschnitt „Details“ mit den folgenden Informationen aus:
-
-   Feld|Wert
-   -----|-----
-   Ereignisserialisierungsformat|JSON
-   Codieren|UTF-8
-   Typ der Ereigniskomprimierung|Keine
-
-2. Klicken Sie zum Erstellen der **Ausgabe** auf **+ Hinzufügen**, und wählen Sie „SQL-Datenbank“ aus. Füllen Sie den Abschnitt „Details“ mit den nachstehenden Informationen aus.
-
-   > [!NOTE]
-   > Das in diesem Abschnitt angegebene Kennwort muss bei der Bereitstellung des SQL Edge-Moduls im Abschnitt **„Bereitstellen des Azure SQL Edge-Moduls“** für das SQL Server-Systemadministratorkennwort angegeben werden.
-
-   Feld|Wert
-   -----|-----
-   Datenbank|IronOreSilicaPrediction
-   Servername|tcp:.,1433
-   Username|sa
-   Kennwort|Geben Sie ein starkes Kennwort an.
-   Tabelle|IronOreMeasurements1
-
-3. Navigieren Sie zum Abschnitt **Abfrage**, und richten Sie die Abfrage folgendermaßen ein:
-
-   `SELECT * INTO <name_of_your_output_stream> FROM <name_of_your_input_stream>`
-   
-4. Wählen Sie unter **Konfigurieren** die Option **Veröffentlichen** und dann die Schaltfläche **Veröffentlichen** aus. Speichern Sie den SAS-URI zur Verwendung mit dem SQL Database Edge-Modul.
 
 ## <a name="specify-container-registry-credentials"></a>Angeben von Anmeldeinformationen für die Containerregistrierung
 
@@ -84,10 +51,12 @@ Geben Sie jetzt die Containeranmeldeinformationen im IoT Edge-Modul an.
   
 ## <a name="deploy-the-data-generator-module"></a>Bereitstellen des Datengeneratormoduls
 
-1. Klicken Sie im Abschnitt **IoT Edge-Module** auf **+ HINZUFÜGEN**, und wählen Sie **IoT Edge-Modul** aus.
+1. Klicken Sie im Abschnitt **IoT Edge** unter **Automatische Geräteverwaltung** auf **Geräte-ID**. Für dieses Tutorial lautet die ID `IronOrePredictionDevice`. Klicken Sie anschließend auf **Module festlegen**.
 
-2. Geben Sie einen IoT Edge-Modulnamen und den Image-URI an.
-   Der Image-URI ist in der Containerregistrierung in der Ressourcengruppe zu finden. Wählen Sie unter **Services** den Abschnitt **Repositorys** aus. Wählen Sie für dieses Tutorial das Repository `silicaprediction` aus. Wählen Sie das geeignete Tag aus. Der Image-URI hat folgendes Format:
+2.  Klicken Sie auf der Seite **Module für Gerät festlegen:** im Abschnitt **IoT Edge-Module** auf **+ HINZUFÜGEN**, und wählen Sie **IoT Edge-Modul** aus.
+
+3. Geben Sie einen gültigen Namen und einen gültigen Image-URI für das IoT Edge-Modul an.
+   Den Image-URI finden Sie in der Containerregistrierung in der Ressourcengruppe, die im ersten Teil dieses Tutorials erstellt wurde. Wählen Sie unter **Services** den Abschnitt **Repositorys** aus. Wählen Sie für dieses Tutorial das Repository `silicaprediction` aus. Wählen Sie das geeignete Tag aus. Der Image-URI hat folgendes Format:
 
    *anmeldeserver der containerregistrierung*/*repositoryname*:*tagname*
 
@@ -97,36 +66,142 @@ Geben Sie jetzt die Containeranmeldeinformationen im IoT Edge-Modul an.
    ASEdemocontregistry.azurecr.io/silicaprediction:amd64
    ```
 
-3. Klicken Sie auf **Hinzufügen**.
+4. Lassen Sie die Felder *Neustartrichtlinie* und *Gewünschter Status* unverändert.
+
+5. Klicken Sie auf **Hinzufügen**.
+
 
 ## <a name="deploy-the-azure-sql-edge-module"></a>Bereitstellen des Azure SQL Edge-Moduls
 
-1. Stellen Sie das Azure SQL Edge-Modul bereit, indem Sie die Schritte unter [Bereitstellen von Azure SQL Edge (Vorschau)](https://docs.microsoft.com/azure/azure-sql-edge/deploy-portal) ausführen.
+1. Stellen Sie das Azure SQL Edge-Modul bereit, indem Sie auf **+ Hinzufügen** und anschließend auf **Marketplace-Modul** klicken. 
 
-2. Geben Sie im Abschnitt **Route angeben** der Seite **Module festlegen** die Routen für das Modul zur IoT Edge Hub-Kommunikation wie folgt an. 
+2. Suchen Sie auf dem Blatt **IoT Edge-Modul aus Marketplace** nach *Azure SQL Edge*, und wählen Sie *Azure SQL Edge Developer* aus. 
+
+3. Klicken Sie unter **IoT Edge-Module** auf das neu hinzugefügte Modul *Azure SQL Edge*, um das Azure SQL Edge-Modul zu konfigurieren. Weitere Informationen zu den Konfigurationsoptionen finden Sie unter [Bereitstellen von Azure SQL Edge (Vorschau)](https://docs.microsoft.com/azure/azure-sql-edge/deploy-portal).
+
+4. Fügen Sie der Bereitstellung des Moduls *Azure SQL Edge* die Umgebungsvariable `MSSQL_PACKAGE` hinzu, und geben Sie die SAS-URL der DACPAC-Datenbankdatei an, die Sie im [ersten Teil](tutorial-deploy-azure-resources.md) dieses Tutorials in Schritt 8 erstellt haben.
+
+5. Klicken Sie auf **Update** (Aktualisieren).
+
+6. Klicken Sie auf der Seite **Module für Gerät festlegen** auf **Weiter: Routen >** .
+
+7. Geben Sie im Routenbereich der Seite **Module für Gerät festlegen** die Routen für die Kommunikation zwischen Modul und IoT Edge-Hub wie im Anschluss beschrieben an. Aktualisieren Sie dabei die Modulnamen in den unten angegebenen Routendefinitionen.
 
    ```
-   FROM /messages/modules/<your_data_generator_module>/outputs/<your_output_stream_name> INTO
-   BrokeredEndpoint("/modules/<your_azure_sql_edge_module>/inputs/<your_input_stream_name>")
+   FROM /messages/modules/<your_data_generator_module>/outputs/IronOreMeasures INTO
+   BrokeredEndpoint("/modules/<your_azure_sql_edge_module>/inputs/IronOreMeasures")
    ```
 
    Beispiel:
 
    ```
-   FROM /messages/modules/ASEDataGenerator/outputs/IronOreMeasures INTO BrokeredEndpoint("/modules/AzureSQLEdge/inputs/Input1")
+   FROM /messages/modules/ASEDataGenerator/outputs/IronOreMeasures INTO BrokeredEndpoint("/modules/AzureSQLEdge/inputs/IronOreMeasures")
    ```
 
-3. Stellen Sie in den Einstellungen **Modulzwilling** sicher, dass „SQLPackage“ und „ASAJonInfo“ mit den relevanten SAS-URLs aktualisiert werden, die Sie zuvor im Tutorial gespeichert haben.
 
-   ```json
-       {
-         "properties.desired":
-         {
-           "SqlPackage": "<Optional_DACPAC_ZIP_SAS_URL>",
-           "ASAJobInfo": "<Optional_ASA_Job_ZIP_SAS_URL>"
-         }
-       }
+7. Klicken Sie auf der Seite **Module für Gerät festlegen** auf **Weiter: Überprüfen und erstellen >** .
+
+8. Klicken Sie auf der Seite **Module für Gerät festlegen** auf **Erstellen**.
+
+## <a name="create-and-start-the-t-sql-streaming-job-in-azure-sql-edge"></a>Erstellen Sie einen T-SQL-Streamingauftrag in Azure SQL Edge, und starten Sie ihn.
+
+1. Öffnen Sie Azure Data Studio.
+
+2. Starten Sie auf der Registerkarte **Willkommen** eine neue Verbindung mit den folgenden Details:
+
+   |_Feld_|_Wert_|
+   |-------|-------|
+   |Verbindungstyp| Microsoft SQL Server|
+   |Server|Öffentliche IP-Adresse in der VM, die für diese Demo erstellt wurde|
+   |Username|sa|
+   |Kennwort|Das starke Kennwort, das bei der Erstellung der Azure SQL Edge-Instanz verwendet wurde|
+   |Datenbank|Standard|
+   |Servergruppe|Standard|
+   |Name (optional)|Geben Sie einen optionalen Namen an.|
+
+3. Klicken Sie auf das Menü **Verbinden**
+
+4. Öffnen Sie über die Menüregisterkarte **Datei** ein neues Notebook, oder drücken Sie STRG+N.
+
+5. Führen Sie im Abfragefenster das unten bereitgestellte Skript aus, um den T-SQL-Streamingauftrag zu erstellen. Ändern Sie vor dem Ausführen des Skripts die folgenden Variablen: 
+   - *SQL_SA_Password:* Der Wert „MSSQL_SA_PASSWORD“, der beim Bereitstellen des Azure SQL Edge-Moduls angegeben wurde. 
+   
+   ```sql
+   Use IronOreSilicaPrediction
+   Go
+
+   Declare @SQL_SA_Password varchar(200) = '<SQL_SA_Password>'
+   declare @query varchar(max) 
+
+   /*
+   Create Objects Required for Streaming
+   */
+
+   CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'MyStr0ng3stP@ssw0rd';
+
+   If NOT Exists (select name from sys.external_file_formats where name = 'JSONFormat')
+   Begin
+      CREATE EXTERNAL FILE FORMAT [JSONFormat]  
+      WITH ( FORMAT_TYPE = JSON)
+   End 
+
+
+   If NOT Exists (select name from sys.external_data_sources where name = 'EdgeHub')
+   Begin
+      Create EXTERNAL DATA SOURCE [EdgeHub] 
+      With(
+         LOCATION = N'edgehub://'
+      )
+   End 
+
+   If NOT Exists (select name from sys.external_streams where name = 'IronOreInput')
+   Begin
+      CREATE EXTERNAL STREAM IronOreInput WITH 
+      (
+         DATA_SOURCE = EdgeHub,
+         FILE_FORMAT = JSONFormat,
+         LOCATION = N'IronOreMeasures'
+       )
+   End
+
+
+   If NOT Exists (select name from sys.database_scoped_credentials where name = 'SQLCredential')
+   Begin
+       set @query = 'CREATE DATABASE SCOPED CREDENTIAL SQLCredential
+                 WITH IDENTITY = ''sa'', SECRET = ''' + @SQL_SA_Password + ''''
+       Execute(@query)
+   End 
+
+   If NOT Exists (select name from sys.external_data_sources where name = 'LocalSQLOutput')
+   Begin
+      CREATE EXTERNAL DATA SOURCE LocalSQLOutput WITH (
+      LOCATION = 'sqlserver://tcp:.,1433',CREDENTIAL = SQLCredential)
+   End
+
+   If NOT Exists (select name from sys.external_streams where name = 'IronOreOutput')
+   Begin
+      CREATE EXTERNAL STREAM IronOreOutput WITH 
+      (
+         DATA_SOURCE = LocalSQLOutput,
+         LOCATION = N'IronOreSilicaPrediction.dbo.IronOreMeasurements'
+      )
+   End
+
+   EXEC sys.sp_create_streaming_job @name=N'IronOreData',
+   @statement= N'Select * INTO IronOreOutput from IronOreInput'
+
+   exec sys.sp_start_streaming_job @name=N'IronOreData'
    ```
+
+6. Vergewissern Sie sich mithilfe der folgenden Abfrage, dass die Daten aus dem Datengenerierungsmodul an die Datenbank gestreamt werden: 
+
+   ```sql
+   Select Top 10 * from dbo.IronOreMeasurements
+   order by timestamp desc
+   ```
+
+
+In diesem Tutorial wurden das Datengenerierungsmodul und das SQL Edge-Modul bereitgestellt. Anschließend wurde ein Streamingauftrag erstellt, um die vom Datengenerierungsmodul generierten Daten an SQL zu streamen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

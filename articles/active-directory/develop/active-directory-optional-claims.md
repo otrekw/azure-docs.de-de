@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 08/25/2020
+ms.date: 09/03/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: e53cf38c9544884caddfdf03c2615217c49ec3d0
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 2d895a6703123d8725a375e29e2e26b64b621f23
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89068725"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436849"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Gewusst wie: Bereitstellen optionaler Ansprüche für Ihre App
 
@@ -130,7 +130,7 @@ Sie können optionale Ansprüche für Ihre Anwendung über die Benutzeroberfläc
 
 **Konfigurieren optionaler Ansprüche über die Benutzeroberfläche:**
 
-[![Zeigt, wie optionale Ansprüche mithilfe der Benutzeroberfläche konfiguriert werden.](./media/active-directory-optional-claims/token-configuration.png)](./media/active-directory-optional-claims/token-configuration.png)
+[![Konfigurieren optionaler Ansprüche in der Benutzeroberfläche](./media/active-directory-optional-claims/token-configuration.png)](./media/active-directory-optional-claims/token-configuration.png)
 
 1. Wählen Sie im Abschnitt **Verwalten** die Option **Tokenkonfiguration** aus.
 1. Wählen Sie **Optionalen Anspruch hinzufügen** aus.
@@ -238,7 +238,7 @@ Dieser Abschnitt behandelt die Konfigurationsoptionen unter den optionalen Anspr
 1. Wählen Sie in der Liste die Anwendung aus, für die Sie optionale Ansprüche konfigurieren möchten.
 1. Klicken Sie im Abschnitt **Verwalten** auf **Tokenkonfiguration**.
 1. Wählen Sie **Anspruchsgruppen hinzufügen** aus.
-1. Wählen Sie die Gruppentypen für die Rückgabe aus (**Alle Gruppen**, **SecurityGroup** oder **DirectoryRole**). Die Option **Alle Gruppen** umfasst **SecurityGroup**, **DirectoryRole** und **DistributionList**.
+1. Wählen Sie die zurückzugebenden Gruppentypen aus (**Sicherheitsgruppen** oder **Verzeichnisrollen**, **Alle Gruppen** und/oder **Der Anwendung zugewiesene Gruppen**). Die Option **Der Anwendung zugewiesene Gruppen** umfasst nur Gruppen, die der Anwendung zugewiesen sind. Die Option **Alle Gruppen** umfasst **SecurityGroup**, **DirectoryRole** und **DistributionList**aber nicht **Der Anwendung zugewiesene Gruppen**. 
 1. Optional: Klicken Sie auf die Eigenschaften des jeweiligen Tokentyps, um den Wert des Gruppenanspruchs so zu ändern, dass er lokale Gruppenattribute enthält, oder um den Anspruchstyp in eine Rolle zu ändern.
 1. Wählen Sie **Speichern** aus.
 
@@ -256,6 +256,7 @@ Dieser Abschnitt behandelt die Konfigurationsoptionen unter den optionalen Anspr
    - „Alle“ (umfasst „SecurityGroup“, „DirectoryRole“ und „DistributionList“)
    - SecurityGroup
    - DirectoryRole
+   - „ApplicationGroup“ (diese Option umfasst nur Gruppen, die der Anwendung zugewiesen sind)
 
    Beispiel:
 
@@ -307,7 +308,7 @@ Dieser Abschnitt behandelt die Konfigurationsoptionen unter den optionalen Anspr
 
     **Benutzeroberflächenkonfiguration:**
 
-    [![Zeigt, wie optionale Ansprüche mithilfe der Benutzeroberfläche konfiguriert werden.](./media/active-directory-optional-claims/groups-example-1.png)](./media/active-directory-optional-claims/groups-example-1.png)
+    [![Konfigurieren optionaler Ansprüche](./media/active-directory-optional-claims/groups-example-1.png)](./media/active-directory-optional-claims/groups-example-1.png)
 
     **Eintrag des Anwendungsmanifests:**
 
@@ -328,7 +329,7 @@ Dieser Abschnitt behandelt die Konfigurationsoptionen unter den optionalen Anspr
 
     **Benutzeroberflächenkonfiguration:**
 
-    [![Zeigt, wie optionale Ansprüche mithilfe der Benutzeroberfläche konfiguriert werden.](./media/active-directory-optional-claims/groups-example-2.png)](./media/active-directory-optional-claims/groups-example-2.png)
+    [![Optionale Ansprüche im Manifest](./media/active-directory-optional-claims/groups-example-2.png)](./media/active-directory-optional-claims/groups-example-2.png)
 
     **Eintrag des Anwendungsmanifests:**
 
@@ -394,7 +395,7 @@ Im folgenden Beispiel verwenden Sie die Benutzeroberfläche für die **Tokenkonf
 
 1. Klicken Sie auf **Optionalen Anspruch hinzufügen**, wählen Sie den Tokentyp **SAML** und dann in der Liste der Ansprüche **extn.skypeID** aus (gilt nur, wenn Sie ein Azure AD-Benutzerobjekt mit dem Namen „skypeID“ erstellt haben), und klicken Sie anschließend auf **Hinzufügen**.
 
-    [![Zeigt, wie optionale Ansprüche mithilfe der Benutzeroberfläche konfiguriert werden.](./media/active-directory-optional-claims/token-config-example.png)](./media/active-directory-optional-claims/token-config-example.png)
+    [![Optionale Ansprüche für SAML-Token](./media/active-directory-optional-claims/token-config-example.png)](./media/active-directory-optional-claims/token-config-example.png)
 
 **Manifestkonfiguration:**
 

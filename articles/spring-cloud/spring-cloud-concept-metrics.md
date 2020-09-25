@@ -4,15 +4,16 @@ description: Hier erfahren Sie, wie Sie Metriken in Azure Spring Cloud überprü
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 12/06/2019
+ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 4a12658eada3d2660cde86b3eb80e332416ea7a3
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: e488f2ddc44f1339d648cd6fe6b1aae18b748679
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89046849"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892652"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Grundlegendes zu Metriken für Azure Spring Cloud
 
@@ -109,6 +110,34 @@ Die verfügbaren Metriken und ihre Details sind in den nachfolgenden Tabellen au
 >| jvm.gc.pause.total.count | jvm.gc.pause (total-count) | Anzahl | Anzahl aller Garbage Collections nach dem Start dieser Java-VM, einschließlich Eden- und Tenured-Garbage Collections. |
 >| jvm.gc.pause.total.time | jvm.gc.pause (total-time) | Millisekunden | Gesamte für Garbage Collections verwendete Zeit nach dem Start dieser Java-VM, einschließlich Eden- und Tenured-Garbage Collections. |
 
+::: zone pivot="programming-language-csharp"
+### <a name="performance-net"></a>Leistung (.NET)
+
+>[!div class="mx-tdCol2BreakAll"]
+>| Name | Name der Metrik für den Azure Spring Cloud-Aktuator | Einheit | Details |
+>|------|-----------------------------|------|---------|
+>| CPU-Auslastung       | cpu-usage      | Millisekunden | Die Zeitspanne, für die der Prozess die CPU verwendet hat. |
+>| Arbeitssatz     | working-set    | Megabytes    | Vom Prozess verwendete Arbeitssatzmenge. |
+>| GC-Heapgröße    | gc-heap-size   | Megabytes    | Gesamte vom Garbage Collector gemeldete Heapgröße. |
+>| Anzahl Gen 0 GC  | gen-0-gc-count | Anzahl        | Anzahl der Garbage Collections von Generation 0 pro Sekunde. |
+>| Anzahl Gen 1 GC  | gen-1-gc-count | Anzahl        | Anzahl der Garbage Collections von Generation 1 pro Sekunde. |
+>| Anzahl Gen 2 GC  | gen-2-gc-count | Anzahl        | Anzahl der Garbage Collections von Generation 2 pro Sekunde. |
+>| Gen 0-Heapgröße | gen-0-size     | Byte        | Heapgröße von Generation 0. |
+>| Gen 1-Heapgröße | gen-1-size     | Byte        | Heapgröße von Generation 1. |
+>| Gen 2-Heapgröße | gen-2-size     | Byte        | Heapgröße von Generation 2. |
+>| LOH-Heapgröße   | loh-size       | Byte        | Large Object Heap-Heapgröße. |
+>| Zuteilungsrate | alloc-rate     | Byte        | Anzahl von pro Sekunde zugeteilten Bytes. |
+>| Assemblyanzahl  | assembly-count | Anzahl        | Anzahl der geladenen Assemblys. |
+>| Ausnahmeanzahl | exception-count | Anzahl       | Anzahl der Ausnahmen pro Sekunde. |
+>| Threadanzahl des Threadpools      | threadpool-thread-count              | Anzahl | Anzahl der Threads im Threadpool. |
+>| Anzahl Monitorsperrkonflikte | monitor-lock-contention-count        | Anzahl | Anzahl der Konflikte pro Sekunde beim Versuch, die Sperre eines Monitors zu übernehmen. |
+>| Warteschlangenlänge des Threadpools      | threadpool-queue-length              | Anzahl | Warteschlangenlänge der Arbeitselemente im Threadpool. |
+>| Anzahl abgeschlossene Elemente des Threadpools | threadpool-completed-items-count | Anzahl | Anzahl abgeschlossene Arbeitselemente des Threadpools. |
+>| Anzahl aktiver Timer               | active-timer-count               | Anzahl | Anzahl der Timer, die zurzeit aktiv sind. Ein aktiver Timer ist ein Timer, der zu einem beliebigen Zeitpunkt in der Zukunft für einen Takt registriert ist und noch nicht abgebrochen wurde. |
+
+Weitere Informationen finden Sie unter [dotnet-Leistungsindikatoren](/dotnet/core/diagnostics/dotnet-counters).
+::: zone-end
+
 ### <a name="request"></a>Anforderung
 >[!div class="mx-tdCol2BreakAll"]
 >| Name | Name der Metrik für den Azure Spring Cloud-Aktuator | Einheit | Details |
@@ -117,6 +146,20 @@ Die verfügbaren Metriken und ihre Details sind in den nachfolgenden Tabellen au
 >| tomcat.global.received | tomcat.global.received | Byte | Menge der Daten, die vom Tomcat-Webserver empfangen wurden |
 >| tomcat.global.request.total.count | tomcat.global.request (total-count) | Anzahl | Gesamtzahl aller vom Tomcat-Webserver verarbeiteten Anforderungen. |
 >| tomcat.global.request.max | tomcat.global.request.max | Millisekunden | Maximale vom Tomcat-Webserver in Anspruch genommene Zeit für die Verarbeitung einer Anforderung. |
+
+::: zone pivot="programming-language-csharp"
+### <a name="request-net"></a>Anforderung (.NET)
+
+>[!div class="mx-tdCol2BreakAll"]
+>| Name | Name der Metrik für den Azure Spring Cloud-Aktuator | Einheit | Details |
+>|------|-----------------------------|------|---------|
+>| Anforderungen pro Sekunde | requests-per-second | Anzahl | Anforderungsrate |
+>| Anforderungen gesamt | total-requests | Anzahl | Gesamtanzahl der Anforderungen. |
+>| Aktuelle Anforderungen | current-requests | Anzahl | Anzahl der aktuellen Anforderungen. |
+>| Anforderungsfehler | failed-requests | Anzahl | Anzahl von fehlerhaften Anforderungen |
+
+Weitere Informationen finden Sie unter [dotnet-Leistungsindikatoren](/dotnet/core/diagnostics/dotnet-counters).
+::: zone-end
 
 ### <a name="session"></a>Sitzung
 >[!div class="mx-tdCol2BreakAll"]
@@ -130,6 +173,7 @@ Die verfügbaren Metriken und ihre Details sind in den nachfolgenden Tabellen au
 >| tomcat.sessions.active.current | tomcat.sessions.active.current | Anzahl | Tomcat Session Active Count (Maximale Anzahl aktiver Tomcat-Sitzungen) |
 
 ## <a name="see-also"></a>Weitere Informationen
+
 * [Schnellstart: Überwachen von Azure Spring Cloud-Apps mit Protokollen, Metriken und Ablaufverfolgung](spring-cloud-quickstart-logs-metrics-tracing.md)
 
 * [Erste Schritte mit dem Azure-Metrik-Explorer](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)
@@ -137,7 +181,7 @@ Die verfügbaren Metriken und ihre Details sind in den nachfolgenden Tabellen au
 * [Analysieren von Protokollen und Metriken mit Diagnoseeinstellungen](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * [Tutorial: Überwachen von Spring Cloud-Ressourcen mithilfe von Warnungen und Aktionsgruppen](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-alerts-action-groups)
 
 * [Kontingente und Servicepläne für Azure Spring Cloud](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quotas)
-

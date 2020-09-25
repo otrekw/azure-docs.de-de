@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/05/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f7134d0e8087d17e78a13c958298006e321bd192
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 754a47b3692847957de7f3d666f4dc09dc309d25
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84346290"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "91024850"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>Wird die benutzerdefinierte IPsec-/IKE-Richtlinie von allen Azure VPN Gateway-SKUs unterstützt?
 Eine benutzerdefinierte IPsec-/IKE-Richtlinie wird auf allen Azure-SKUs außer der SKU „Basic“ unterstützt.
@@ -31,7 +31,7 @@ Die folgende Tabelle gibt Aufschluss über die unterstützten Kryptografiealgori
 | ---              | ---                                                                           |
 | IKEv2-Verschlüsselung | AES256, AES192, AES128, DES3, DES                                             |
 | IKEv2-Integrität  | SHA384, SHA256, SHA1, MD5                                                     |
-| DH-Gruppe         | DHGroup24, ECP384, ECP256, DHGroup14 (DHGroup2048), DHGroup2, DHGroup1, keine |
+| DH-Gruppe         | DHGroup24, ECP384, ECP256, DHGroup14 (DHGroup2048), DHGroup2, DHGroup1, keine  |
 | IPsec-Verschlüsselung | GCMAES256, GCMAES192, GCMAES128, AES256, AES192, AES128, DES3, DES, keine      |
 | IPsec-Integrität  | GCMAES256, GCMAES192, GCMAES128, SHA256, SHA1, MD5                            |
 | PFS-Gruppe        | PFS24, ECP384, ECP256, PFS2048, PFS2, PFS1, keine                              |
@@ -99,6 +99,9 @@ Ja. Sie können benutzerdefinierte Richtlinien sowohl für standortübergreifend
 
 ### <a name="do-i-need-to-specify-the-same-policy-on-both-vnet-to-vnet-connection-resources"></a>Muss ich die gleiche Richtlinie für beide VNET-zu-VNET-Verbindungsressourcen angeben?
 Ja. Ein VNET-zu-VNET-Tunnel besteht aus zwei Verbindungsressourcen in Azure (je eine pro Richtung). Damit die VNET-zu-VNET-Verbindung hergestellt werden kann, müssen beide Verbindungsressourcen über die gleiche Richtlinie verfügen.
+
+### <a name="what-is-the-default-dpd-timeout-value-can-i-specify-a-different-dpd-timeout"></a>Wie lautet der Standardwert für das DPD-Timeout? Kann ich ein anderes DPD-Timeout angeben?
+Das DPD-Timeout ist standardmäßig auf 45 Sekunden festgelegt. Sie können für jede IPsec- oder VNet-to-VNet-Verbindung einen anderen DPD-Timeoutwert zwischen neun und 3.600 Sekunden angeben.
 
 ### <a name="does-custom-ipsecike-policy-work-on-expressroute-connection"></a>Können benutzerdefinierte IPsec-/IKE-Richtlinien für ExpressRoute-Verbindungen verwendet werden?
 Nein. IPsec-/IKE-Richtlinien können nur für S2S-VPN- und VNET-zu-VNET-Verbindungen über Azure-VPN-Gateways verwendet werden.

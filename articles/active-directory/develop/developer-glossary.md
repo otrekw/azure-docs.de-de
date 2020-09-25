@@ -12,12 +12,12 @@ ms.date: 04/24/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.openlocfilehash: 781aa48442d80e55128314dd1e271532162df32c
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: b02329d624eda440230fb99e02e08c841c5580f2
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178823"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705995"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft Identity Platform – Glossar für Entwickler
 
@@ -154,7 +154,7 @@ Gemäß Definition des [OAuth2-Autorisierungsframeworks][OAuth2-Role-Def] eine E
 
 Gemäß Definition des [OAuth2-Autorisierungsframeworks][OAuth2-Role-Def] ein Server, der geschützte Ressourcen hostet und von [Clientanwendungen](#client-application), die ein [Zugriffstoken](#access-token) vorlegen, Anforderungen für geschützte Ressourcen akzeptieren und darauf reagieren kann. Wird auch als geschützter Ressourcenserver oder als Ressourcenanwendung bezeichnet.
 
-Ein Ressourcenserver macht APIs verfügbar und steuert den Zugriff auf seine geschützten Ressourcen über [Bereiche](#scopes) und [Rollen](#roles) (unter Verwendung des OAuth 2.0-Autorisierungsframeworks). Beispiele wären etwa die [Microsoft Graph-API][Microsoft-Graph] (bietet Zugriff auf Azure AD-Mandantendaten) und die Office 365-APIs (bieten Zugriff auf Daten wie E-Mails, Kalender und Dokumente).
+Ein Ressourcenserver macht APIs verfügbar und steuert den Zugriff auf seine geschützten Ressourcen über [Bereiche](#scopes) und [Rollen](#roles) (unter Verwendung des OAuth 2.0-Autorisierungsframeworks). Beispiele wären etwa die [Microsoft Graph-API][Microsoft-Graph] (bietet Zugriff auf Azure AD-Mandantendaten) und die Microsoft 365-APIs (bieten Zugriff auf Daten wie E-Mails und Kalender).
 
 Genau wie bei einer Clientanwendung wird auch die Identitätskonfiguration einer Ressourcenanwendung mittels [Registrierung](#application-registration) bei einem Azure AD-Mandanten eingerichtet und sowohl ein Anwendungs- als auch ein Dienstprinzipalobjekt bereitgestellt. Einige von Microsoft bereitgestellte APIs (etwa die Microsoft Graph-API) verfügen über vorab registrierte Dienstprinzipale, die bei der Bereitstellung in allen Mandanten verfügbar gemacht wurden.
 
@@ -172,7 +172,7 @@ Mithilfe von Bereichen kann ein [Ressourcenserver](#resource-server) ähnlich wi
 
 Bei Bereichen handelt es sich um ressourcendefinierte Zeichenfolgen (wie etwa „Mail.Read“, „Directory.ReadWrite.All“). Sie werden im [Azure-Portal][AZURE-portal] über das [Anwendungsmanifest](#application-manifest) der Ressource verwaltet und in der [oauth2Permissions-Eigenschaft][Graph-Sp-Resource] der Ressource gespeichert. Über das Azure-Portal können zudem [delegierte Berechtigungen](#permissions) für Clientanwendungen konfiguriert werden, die Zugriff auf einen Bereich ermöglichen.
 
-Als Benennungskonvention hat sich das Format „Ressource.Vorgang.Einschränkung“ bewährt. Ausführliche Informationen zu den Bereichen, die von der Microsoft Graph-API verfügbar gemacht werden, finden Sie unter [Graph-API-Berechtigungsbereiche][Graph-Perm-Scopes]. Informationen zu von Office 365-Diensten verfügbar gemachten Bereichen finden Sie unter [Office 365 API permissions reference][O365-Perm-Ref] (API-Berechtigungsreferenz für Office 365).
+Als Benennungskonvention hat sich das Format „Ressource.Vorgang.Einschränkung“ bewährt. Ausführliche Informationen zu den Bereichen, die von der Microsoft Graph-API verfügbar gemacht werden, finden Sie unter [Graph-API-Berechtigungsbereiche][Graph-Perm-Scopes]. Informationen zu von Microsoft 365-Diensten verfügbar gemachten Bereichen finden Sie unter [Referenz für Microsoft 365-API-Berechtigungen][O365-Perm-Ref].
 
 ## <a name="security-token"></a>Sicherheitstoken
 
@@ -202,7 +202,7 @@ Eine Instanz eines Azure AD-Verzeichnisses wird als Azure AD-Mandant bezeichnet.
 * Authentifizierung von Benutzerkonten und registrierten Anwendungen
 * REST-Endpunkte, die zur Unterstützung verschiedener Protokolle (einschließlich OAuth2 und SAML) erforderlich sind, z.B. der [Autorisierungsendpunkt](#authorization-endpoint), der [Tokenendpunkt](#token-endpoint) und der allgemeine, von [mehrinstanzenfähigen Anwendungen](#multi-tenant-application) verwendete Endpunkt.
 
-Azure AD-Mandanten werden mit Azure- und Office 365-Abonnements während der Registrierung erstellt/zugewiesen und stellen Identity & Access Management-Features für das Abonnement bereit. Azure-Abonnementadministratoren können auch zusätzliche Azure AD-Mandanten über das Azure-Portal erstellen. Ausführliche Informationen zu den verschiedenen Möglichkeiten für den Zugriff auf einen Mandanten finden Sie unter [Einrichten eines Azure Active Directory-Mandanten][AAD-How-To-Tenant]. Einzelheiten zur Beziehung zwischen Abonnements und einem Azure AD-Mandanten sowie Anweisungen zum Zuordnen oder Hinzufügen eines Abonnements zu einem Azure AD-Mandanten finden Sie unter [Zuordnen oder Hinzufügen eines Azure-Abonnements zu Ihrem Azure Active Directory-Mandanten][AAD-How-Subscriptions-Assoc].
+Azure AD-Mandanten werden mit Azure- und Microsoft 365-Abonnements bei der Registrierung erstellt/zugewiesen und stellen Identity & Access Management-Features für das Abonnement bereit. Azure-Abonnementadministratoren können auch zusätzliche Azure AD-Mandanten über das Azure-Portal erstellen. Ausführliche Informationen zu den verschiedenen Möglichkeiten für den Zugriff auf einen Mandanten finden Sie unter [Einrichten eines Azure Active Directory-Mandanten][AAD-How-To-Tenant]. Einzelheiten zur Beziehung zwischen Abonnements und einem Azure AD-Mandanten sowie Anweisungen zum Zuordnen oder Hinzufügen eines Abonnements zu einem Azure AD-Mandanten finden Sie unter [Zuordnen oder Hinzufügen eines Azure-Abonnements zu Ihrem Azure Active Directory-Mandanten][AAD-How-Subscriptions-Assoc].
 
 ## <a name="token-endpoint"></a>Tokenendpunkt
 
