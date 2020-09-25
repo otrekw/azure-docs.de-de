@@ -13,12 +13,12 @@ ms.date: 08/31/2020
 ms.author: ryanwi
 ms.reviewer: arielgo, jiml
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: 5e62472fdccd2ee71a0ef725f34a75492d1b8ffa
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 3ee59226853f4ea5aabf57a8866ba014aa874774
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226640"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706199"
 ---
 # <a name="branding-guidelines-for-applications"></a>Brandingrichtlinien für Anwendungen
 
@@ -36,7 +36,7 @@ In diesem Artikel werden die folgenden Themen behandelt:
 Microsoft verwaltet zwei Arten von Benutzerkonten:
 
 - **Persönliche Konten** (ehemals Windows Live ID). Diese Konten stellen die Beziehung zwischen *einzelnen* Benutzern und Microsoft dar und werden für den Zugriff auf Verbrauchergeräte und -dienste von Microsoft verwendet. Konten dieser Art sind für den persönlichen Gebrauch vorgesehen.
-- **Geschäfts- oder Schulkonten.** Diese Konten werden von Microsoft für Unternehmen verwaltet, die Azure Active Directory verwenden. Konten dieser Art dienen zur Anmeldung bei Office 365 und anderen Unternehmensdiensten von Microsoft.
+- **Geschäfts- oder Schulkonten.** Diese Konten werden von Microsoft für Unternehmen verwaltet, die Azure Active Directory verwenden. Konten dieser Art dienen zur Anmeldung bei Microsoft 365 und anderen Unternehmensdiensten von Microsoft.
 
 Geschäfts- oder Schulkonten von Microsoft werden den Endbenutzern (Angestellten, Schülern/Studenten, Behördenmitarbeitern) üblicherweise von der jeweiligen Organisation (Unternehmen, Bildungseinrichtung, Behörde) zugewiesen. Diese Konten werden direkt in der Cloud (über die Azure AD-Plattform) verwaltet oder über ein lokales Verzeichnis wie z. B. Windows Server Active Directory mit Azure AD synchronisiert. Microsoft fungiert als *Verwaltungsberechtigter* des Geschäfts- oder Schulkontos, die Konten gehören aber der Organisation und werden auch von dieser gesteuert.
 
@@ -49,7 +49,7 @@ Microsoft verwendet die Markennamen „Azure“ und „Active Directory“ nicht
 
 ## <a name="user-account-pictogram"></a>Piktogramm für Benutzerkonten
 
-In einer früheren Version dieser Richtlinien haben wir die Verwendung eines blauen Badge-Piktogramms empfohlen. Aufgrund von Benutzer- und Entwicklerfeedback empfehlen wir inzwischen aber stattdessen die Verwendung des Microsoft-Logos. Das Microsoft-Logo verdeutlicht den Benutzern, dass sie sich bei Ihrer App mit demselben Konto anmelden können, das sie auch für Office 365 und andere Unternehmensdienste von Microsoft verwenden.
+In einer früheren Version dieser Richtlinien haben wir die Verwendung eines blauen Badge-Piktogramms empfohlen. Aufgrund von Benutzer- und Entwicklerfeedback empfehlen wir inzwischen aber stattdessen die Verwendung des Microsoft-Logos. Das Microsoft-Logo verdeutlicht den Benutzern, dass sie sich bei Ihrer App mit demselben Konto anmelden können, das sie auch für Microsoft 365 und andere Unternehmensdienste von Microsoft verwenden.
 
 ## <a name="signing-up-and-signing-in-with-azure-ad"></a>Registrieren und Anmelden mit Azure AD
 
@@ -63,13 +63,13 @@ Ihre Anwendung verwendet möglicherweise separate Vorgehensweisen für Registrie
 
 Über den Link zum Abrufen der App muss der Benutzer auf die Zugriffsgewährungs- bzw. Autorisierungsseite von Azure AD weitergeleitet werden, damit ein Organisationsadministrator Ihrer App den Zugriff auf die von Microsoft gehosteten Organisationsdaten gewähren kann. Ausführliche Informationen zum Anfordern von Zugriff finden Sie im Artikel [Integrieren von Anwendungen in Azure Active Directory](./quickstart-register-app.md).
 
-Nach der Zustimmung des Administrators kann dieser entscheiden, ob Ihre App dem App-Startfeld von Office 365 hinzugefügt werden soll (zugänglich über das Waffel-Menü und [https://portal.office.com/myapps](https://portal.office.com/myapps)). Wenn Sie auf diese Funktion hinweisen möchten, können Sie beispielsweise eine Formulierung wie „App zur Organisation hinzufügen“ verwenden und eine Schaltfläche wie im folgenden Beispiel anzeigen:
+Nach der Zustimmung des Administrators kann dieser entscheiden, ob Ihre App dem App-Startfeld von Microsoft 365 hinzugefügt werden soll (zugänglich über das Waffel-Menü und [https://portal.office.com/myapps](https://portal.office.com/myapps)). Wenn Sie auf diese Funktion hinweisen möchten, können Sie beispielsweise eine Formulierung wie „App zur Organisation hinzufügen“ verwenden und eine Schaltfläche wie im folgenden Beispiel anzeigen:
 
 ![Schaltfläche mit dem Microsoft-Logo und dem Text „Zu meiner Organisation hinzufügen“.](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
 
 Es empfiehlt sich jedoch, eine Erläuterung in Textform zu verwenden, anstatt nur auf Schaltflächen zu setzen. Beispiel:
 
-> *Wenn Sie bereits Office 365 oder andere Unternehmensdienste von Microsoft verwenden, können Sie <Name_Ihrer_App> einfach Zugriff auf die Daten Ihrer Organisation gewähren. Dadurch können Benutzer mit ihren bereits vorhandenen Arbeitskonten auf <Name_Ihrer_App> zugreifen.*
+> *Wenn Sie bereits Microsoft 365 oder andere Unternehmensdienste von Microsoft verwenden, können Sie <Name_Ihrer_App> einfach Zugriff auf die Daten Ihrer Organisation gewähren. Dadurch können Benutzer mit ihren bereits vorhandenen Arbeitskonten auf <Name_Ihrer_App> zugreifen.*
 
 Um das offizielle Microsoft-Logo zur Verwendung in Ihrer App herunterzuladen, klicken Sie mit der rechten Maustaste auf das gewünschte Logo, und speichern Sie es auf Ihrem Computer.
 
@@ -100,14 +100,14 @@ Um die offiziellen Bilddateien zur Verwendung in Ihrer App herunterzuladen, klic
 
 ## <a name="branding-dos-and-donts"></a>Brandingempfehlungen
 
-**Verwenden Sie** „Geschäfts-, Schul- oder Unikonto“ in Kombination mit der Schaltfläche „Bei Microsoft anmelden“, um eine zusätzliche Erläuterung bereitzustellen, damit Endbenutzer sofort wissen, ob sie die Option verwenden können. **Nicht** Verwenden Sie keine Begriffe wie „Unternehmenskonto“, „Geschäftskonto“ oder „Firmenkonto“.
+**Ja** Verwenden Sie„Geschäfts-, Schul- oder Unikonto“ in Kombination mit der Schaltfläche „Bei Microsoft anmelden“, um eine zusätzliche Erläuterung bereitzustellen, damit Endbenutzer sofort wissen, ob sie die Option verwenden können. **Nein** Verwenden Sie keine Begriffe wie „Unternehmenskonto“, „Geschäftskonto“ oder „Firmenkonto“.
 
-**Nicht** Verwenden Sie weder „Office 365-ID“ noch „Azure-ID“. Office 365 ist auch der Name eines Microsoft-Produkts für Heimanwender, das für die Authentifizierung nicht auf Azure AD zurückgreift.
+**Nein** Verwenden Sie weder die „Microsoft 365-ID“ noch die „Azure-ID“. Microsoft 365 ist auch der Name eines Microsoft-Produkts für Heimanwender, das für die Authentifizierung nicht auf Azure AD zurückgreift.
 
-**Nicht** verändert werden.
+**Nein** Verändern Sie das Microsoft-Logo nicht.
 
-**Nicht** Verwenden Sie die Markennamen „Azure“ und „Active Directory“ nicht gegenüber Endbenutzern. Gegenüber Entwicklern, IT-Experten und Administratoren können diese Begriffe dagegen problemlos verwendet werden.
+**Nein** Verwenden Sie die Markennamen „Azure“ und „Active Directory“ nicht gegenüber Endbenutzern. Gegenüber Entwicklern, IT-Experten und Administratoren können diese Begriffe dagegen problemlos verwendet werden.
 
 ## <a name="navigation-dos-and-donts"></a>Navigationsempfehlungen
 
-**Stellen** Sie den Benutzern eine Funktion zur Verfügung, über die sie sich abmelden und das Benutzerkonto wechseln können. Die meisten Benutzer besitzen zwar nur ein einzelnes persönliches Konto von Microsoft/Facebook/Google/Twitter, gehören aber häufig mehreren Organisationen an. Die Unterstützung mehrerer angemeldeter Benutzer folgt in Kürze.
+**Ja** Stellen Sie den Benutzern eine Funktion zur Verfügung, über die sie sich abmelden und das Benutzerkonto wechseln können. Die meisten Benutzer besitzen zwar nur ein einzelnes persönliches Konto von Microsoft/Facebook/Google/Twitter, gehören aber häufig mehreren Organisationen an. Die Unterstützung mehrerer angemeldeter Benutzer folgt in Kürze.

@@ -3,12 +3,12 @@ title: Problembehandlung für SQL Server-Datenbanksicherungen
 description: Informationen zur Problembehandlung beim Sichern von SQL Server-Datenbanken auf virtuellen Azure-Computern mit Azure Backup
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: b462ebd25a7dac4f215d599aa0dfa8665965fb2f
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: c81230a5b32ddb1487bf59e8e43dbb96328d8620
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180948"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89513965"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Problembehandlung für die SQL Server-Datenbanksicherung mit Azure Backup
 
@@ -44,14 +44,14 @@ Gelegentlich können bei Sicherungs- und Wiederherstellungsvorgängen zufällige
 
 1. Schließen Sie die folgenden Ordner von der Antivirenüberprüfung aus:
 
-    `C:\Program Files\Azure Workload Backup` `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.WorkloadBackup.Edp.AzureBackupWindowsWorkload`
+    `C:\Program Files\Azure Workload Backup` `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBackupWindowsWorkload`
 
     Ersetzen Sie `C:\` durch den Buchstaben Ihres *Systemlaufwerks*.
 
 1. Schließen Sie die folgenden drei Prozesse, die innerhalb einer VM ausgeführt werden, von der Antivirenüberprüfung aus:
 
     - IaasWLPluginSvc.exe
-    - IaasWorkloadCoordinaorService.exe
+    - IaaSWorkloadCoordinatorService.exe
     - TriggerExtensionJob.exe
 
 1. SQL bietet ebenfalls einige Richtlinien für die Arbeit mit Antivirussoftware. Nähere Einzelheiten finden Sie in [diesem Artikel](https://support.microsoft.com/help/309422/choosing-antivirus-software-for-computers-that-run-sql-server).

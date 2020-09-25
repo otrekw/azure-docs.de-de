@@ -9,28 +9,74 @@ ms.subservice: ''
 author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
-ms.date: 07/27/2020
-ms.openlocfilehash: 74e9772ada010d79e81ef36cae89ba586db73077
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.date: 09/22/2020
+ms.openlocfilehash: 3306e51fe2fdbb2586be9684432d8f8c310afe95
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553409"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900590"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Azure SQL Edge: Versionshinweise 
 
 In diesem Artikel erhalten Sie Informationen zu Neuerungen und Änderungen für neue Azure SQL Edge-Builds.
 
+## <a name="azure-sql-edge---100-rtm"></a>Azure SQL Edge – 1.0.0 (RTM)
+
+### <a name="sql-engine-build-number---15020001549"></a>SQL-Engine-Buildnummer – 15.0.2000.1549
+
+### <a name="whats-new"></a>Neuigkeiten
+1. Auf Ubuntu 18.04 basierende Containerimages. 
+2. Unterstützung für `IGNORE NULL`- und `RESPECT NULL`-Syntax mit `LAST_VALUE()`- und `FIRST_VALUE()`-Funktionen. 
+3. Verbesserungen der Zuverlässigkeit für PREDICT mit ONNX.
+4. Unterstützung für auf der Datenaufbewahrungsrichtlinie basierende Bereinigung.      
+   - Unterstützung für optimierte Bereinigung für gruppierte Columnstore-Indizes.
+5. Unterstützung für neue Funktionen 
+   - Schnelle Wiederherstellung
+   - Automatische Optimierung von Abfragen
+
+### <a name="fixes"></a>Fehlerbehebungen
+1. Zusätzliche Fehlermeldungen und Details zur Problembehandlung von TQL-Streamingvorgängen. 
+2. Verbesserungen, um die Akkulebensdauer im Leerlaufmodus zu verlängern. 
+3. Fehlerbehebungen für TQL-Streamingmodule: 
+   - Bereinigung für beendeten Streamingauftrag 
+   - Korrekturen für Lokalisierung und Verbesserungen bei der Unicode-Verarbeitung
+4. Auf der Datenaufbewahrungsrichtlinie basierende Bereinigung
+   - Korrekturen für die Erstellung von Aufbewahrungsrichtlinien und Bereinigungsszenarien.
+5. Korrekturen für Timertasks im Hintergrund, um Energieeinsparungen für den Energiesparmodus zu verbessern.
+
+
+## <a name="ctp-23"></a>CTP 2.3
+### <a name="sql-engine-build-number---15020001549"></a>SQL-Engine-Buildnummer – 15.0.2000.1549
+### <a name="whats-new"></a>Neuigkeiten
+1. Unterstützung für benutzerdefinierte Ursprünge in der Date_Bucket()-Funktion. 
+2. Unterstützung für BacPac-Dateien als Teil der SQL-Bereitstellung.
+3. Unterstützung für auf der Datenaufbewahrungsrichtlinie basierende Bereinigung.      
+   - DDL-Unterstützung für das Aktivieren der Aufbewahrungsrichtlinie 
+   - Gespeicherte Bereinigungsprozeduren und Bereinigungstask im Hintergrund
+   - Erweiterte Ereignisse zum Überwachen von Bereinigungstasks
+
+### <a name="fixes"></a>Fehlerbehebungen
+1. Zusätzliche Fehlermeldungen und Details zur Problembehandlung von TQL-Streamingvorgängen. 
+2. Verbesserungen, um die Akkulebensdauer im Leerlaufmodus zu verlängern. 
+3. Fehlerbehebungen für TQL-Streamingmodule: 
+   - Korrektur hängendes Wasserzeichen mit springendem Substreamfenster 
+   - Korrektur der Frameworkausnahmebehandlung, um sicherzustellen, dass die Erfassung als Fehler mit möglicher Benutzeraktion erfolgt
+
+
 ## <a name="ctp-22"></a>CTP 2.2
 ### <a name="sql-engine-build-number---15020001546"></a>SQL-Engine-Buildnummer: 15.0.2000.1546
-### <a name="fixes"></a>Fehlerbehebungen
+### <a name="whats-new"></a>Neuigkeiten
 1. Unterstützung für Container ohne Root-Berechtigung 
 2. Unterstützung für Verbrauchs- und Diagnosedatensammlung 
 3. T-SQL-Streamingupdates
    - Unterstützung für Unicode-Zeichen für Streamobjektnamen
+
+### <a name="fixes"></a>Fehlerbehebungen
+1. T-SQL-Streamingupdates
    - Verbesserungen der Prozessbereinigung
    - Verbesserungen bei Protokollierung und Diagnose
-4. Leistungsverbesserung bei der Datenerfassung
+2. Leistungsverbesserung bei der Datenerfassung
 
 ## <a name="ctp-21"></a>CTP 2.1 
 ### <a name="sql-engine-build-number---15020001545"></a>SQL-Engine-Buildnummer: 15.0.2000.1545

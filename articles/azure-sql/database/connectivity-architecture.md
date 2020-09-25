@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 06/26/2020
-ms.openlocfilehash: 4d48ca3685dca36157307e7cb4b3d25261c243aa
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 10108fdf4f2b7090eaeaa4b378992c2e94d3b04c
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705740"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489577"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Verbindungsarchitektur von Azure SQL-Datenbank und Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -94,6 +94,7 @@ Details zum Migrieren von Datenverkehr zu neuen Gateways in bestimmten Regionen 
 | Frankreich, Mitte       | 40.79.137.0, 40.79.129.1 |
 | Deutschland, Mitte      | 51.4.144.100       |
 | Deutschland, Nordosten   | 51.5.144.179       |
+| Deutschland, Westen-Mitte | 51.116.240.0, 51.116.248.0, 51.116.152.0 |
 | Indien, Mitte        | 104.211.96.159     |
 | Indien, Süden          | 104.211.224.146    |
 | Indien, Westen           | 104.211.160.80     |

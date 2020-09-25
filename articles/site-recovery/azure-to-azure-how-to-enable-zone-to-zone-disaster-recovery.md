@@ -5,16 +5,16 @@ author: sideeksh
 manager: gaggupta
 ms.service: site-recovery
 ms.topic: article
-ms.date: 04/28/2020
+ms.date: 04/28/2019
 ms.author: sideeksh
-ms.openlocfilehash: a1952f6dccf12de4cb1571dacabecf78c65cd01b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 001ac4918ed5d87bdb801d1bf918a4450e7cf8e0
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021646"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007790"
 ---
-# <a name="enable-zone-to-zone-disaster-recovery-for-azure-virtual-machines"></a>Aktivieren der Notfallwiederherstellung zwischen Zonen für virtuelle Azure-Computer
+# <a name="enable-azure-vm-disaster-recovery-between-availability-zones"></a>Aktivieren der Notfallwiederherstellung für virtuelle Azure-Computer zwischen Verfügbarkeitszonen
 
 In diesem Artikel wird beschrieben, wie Sie Replikation, Failover und Failback für virtuelle Azure-Computer aus einer Verfügbarkeitszone in eine andere in der gleichen Azure-Region durchführen.
 
@@ -27,6 +27,8 @@ Der Site Recovery-Dienst unterstützt Ihre Strategien für Geschäftskontinuitä
 
 Verfügbarkeitszonen sind eindeutige physische Standorte in einer Azure-Region. Jede Zone verfügt über mindestens ein Rechenzentrum. 
 
+Wenn Sie virtuelle Computer in eine Verfügbarkeitszone in einer anderen Region verschieben möchten, [lesen Sie diesen Artikel](../resource-mover/move-region-availability-zone.md).
+
 ## <a name="using-availability-zones-for-disaster-recovery"></a>Verwenden von Verfügbarkeitszonen für die Notfallwiederherstellung 
 
 In der Regel werden Verfügbarkeitszonen zum Bereitstellen von VMs in einer Hochverfügbarkeitskonfiguration verwendet. Sie befinden sich möglicherweise zu nah beieinander, um im Falle einer Naturkatastrophe als Notfallwiederherstellungslösung fungieren zu können.
@@ -37,7 +39,7 @@ In einigen Szenarien können Verfügbarkeitszonen jedoch für die Notfallwiederh
 
 - Viele andere Kunden verwenden eine komplizierte Netzwerkinfrastruktur und möchten diese aufgrund der damit verbundenen Kosten und Komplexität nicht in einer sekundären Region neu erstellen. Notfallwiederherstellung zwischen Zonen reduziert die Komplexität, da redundante Netzwerkkonzepte über Verfügbarkeitszonen hinweg genutzt werden, die die Konfiguration erheblich vereinfachen. Diese Kunden bevorzugen Einfachheit und können auch Verfügbarkeitszonen für die Notfallwiederherstellung verwenden.
 
-- In einigen Regionen, die nicht über eine Regionspaar mit derselben Rechtsprechung verfügen (z. B. „Asien, Südosten“), kann die Notfallwiederherstellung zwischen Zonen als De-facto-Lösung für Notfallwiederherstellung dienen, weil sie die gesetzliche Konformität gewährleistet, da Ihre Anwendungen und Daten keine nationalen Grenzen überqueren. 
+- In einigen Regionen, die nicht über eine Regionspaar mit derselben Rechtsprechung verfügen (z. B. „Asien, Südosten“), kann die Notfallwiederherstellung zwischen Zonen als De-facto-Lösung für Notfallwiederherstellung dienen, weil sie die gesetzliche Konformität gewährleistet, da Ihre Anwendungen und Daten nicht über nationale Grenzen verschoben werden. 
 
 - Notfallwiederherstellung zwischen Zonen impliziert die Replikation von Daten über kürzere Entfernungen im Vergleich zur Azure-zu-Azure-Notfallwiederherstellung. Daher kann es zu niedrigerer Latenz und einem niedrigeren RPO-Wert kommen.
 
@@ -69,8 +71,8 @@ Vor dem Bereitstellen von Notfallwiederherstellung zwischen Zonen für Ihre VMs 
 |---------|---------|
 |Klassische virtuelle Computer   |     Nicht unterstützt    |
 |ARM-VMs    |    Unterstützt    |
-|Azure Disk Encryption v1 (Dual Pass, mit AAD)     |     Unterstützt |
-|Azure Disk Encryption v2 (Single Pass, ohne AAD)    |    Unterstützt    |
+|Azure Disk Encryption v1 (zwei Durchläufe, mit Azure Active Directory (Azure AD))     |     Unterstützt   |
+|Azure Disk Encryption v2 (Einzeldurchlauf, ohne Azure AD)    |    Unterstützt    |
 |Nicht verwaltete Datenträger    |    Nicht unterstützt    |
 |Verwaltete Datenträger    |    Unterstützt    |
 |Vom Kunden verwaltete Schlüssel    |    Unterstützt    |
@@ -82,7 +84,7 @@ Vor dem Bereitstellen von Notfallwiederherstellung zwischen Zonen für Ihre VMs 
 
 ### <a name="log-in"></a>Anmelden
 
-Melden Sie sich am Azure-Portal an.
+Melden Sie sich beim Azure-Portal an.
 
 ### <a name="enable-replication-for-the-zonal-azure-virtual-machine"></a>Aktivieren der Replikation für den zonalen virtuellen Azure-Computer
 

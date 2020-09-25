@@ -13,12 +13,12 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: b94bcd1cfbbf215ed912d506d27311aae502656b
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 554e5a022dcb49cd861ad7198a2c375634db6d10
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115066"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705744"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory-App-Manifest
 
@@ -82,7 +82,7 @@ Beispiel:
 | :--- | :--- |
 | addIns | Collection |
 
-Definiert ein benutzerdefiniertes Verhalten, mit dem eine App in bestimmten Kontexten von einem Verbraucherdienst aufgerufen werden kann. Beispielsweise kann für Anwendungen, die Dateidatenströme rendern können, die `addIns`-Eigenschaft für die Funktionalität „FileHandler“ festgelegt werden. Dieser Parameter ermöglicht Diensten wie Office 365, die Anwendung im Kontext eines Dokuments aufzurufen, an dem der Benutzer arbeitet.
+Definiert ein benutzerdefiniertes Verhalten, mit dem eine App in bestimmten Kontexten von einem Verbraucherdienst aufgerufen werden kann. Beispielsweise kann für Anwendungen, die Dateidatenströme rendern können, die `addIns`-Eigenschaft für die Funktionalität „FileHandler“ festgelegt werden. Dieser Parameter ermöglicht Diensten wie Microsoft 365, die Anwendung im Kontext eines Dokuments aufzurufen, an dem der Benutzer arbeitet.
 
 Beispiel:
 

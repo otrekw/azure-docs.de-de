@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 17dd83ba7df469e12e0569e670d71b9068bb2a9f
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 479daa9a94247ada30c54a9c5df3471035765087
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297517"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908270"
 ---
 # <a name="start-stop-and-delete-your-azure-spring-cloud-application"></a>Starten, Beenden und Löschen einer Azure Spring Cloud-Anwendung
+
+**Dieser Artikel gilt für:** ✔️ Java ✔️ C#
 
 In diesem Leitfaden wird erläutert, wie Sie den Zustand einer Anwendung in Azure Spring Cloud mithilfe des Azure-Portals oder der Azure CLI ändern.
 
@@ -30,7 +32,7 @@ Nach dem Bereitstellen einer Anwendung können Sie sie über das Azure-Portal st
 ## <a name="using-the-azure-cli"></a>Verwenden der Azure-Befehlszeilenschnittstelle
 
 > [!NOTE]
-> Sie können optionale Parameter verwenden und Standardwerte mit der Azure CLI konfigurieren. Weitere Informationen zur Azure CLI finden Sie in der [Referenzdokumentation](/cli/azure/ext/spring-cloud/spring-cloud?view=azure-cli-latest).  
+> Sie können optionale Parameter verwenden und Standardwerte mit der Azure CLI konfigurieren. Weitere Informationen zur Azure CLI finden Sie in der [Referenzdokumentation](/cli/azure/ext/spring-cloud/spring-cloud?view=azure-cli-latest&preserve-view=true).  
 
 Installieren Sie mithilfe des folgenden Befehls zuerst die Azure Spring Cloud-Erweiterung für die Azure-Befehlszeilenschnittstelle:
 
