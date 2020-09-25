@@ -9,19 +9,19 @@ metadata:
   ms.topic: hub-page
   author: MGoedtel
   ms.author: magoedte
-  ms.date: 08/21/2020
-  ms.openlocfilehash: a2bf337f5bcd5d4fb5810025b6d2aaa8da15201c
-  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.date: 09/23/2020
+  ms.openlocfilehash: ea57cbb94a45339c6de58ba1abdaa864ddc43186
+  ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/22/2020
-  ms.locfileid: "90908198"
+  ms.lasthandoff: 09/25/2020
+  ms.locfileid: "91317241"
 highlightedContent:
   items:
   - title: Informationen zu Azure Arc
     itemType: overview
     url: overview.md
-  - title: Server mit Azure Arc-Aktivierung (Vorschauversion)
+  - title: Server mit Azure Arc-Unterstützung
     itemType: overview
     url: ./servers/overview.md
   - title: Kubernetes mit Azure Arc-Aktivierung (Vorschauversion)
@@ -30,9 +30,9 @@ highlightedContent:
   - title: Azure Arc-fähige Datendienste (Vorschauversion)
     itemType: overview
     url: ./data/overview.md
-  - title: Azure Arc-fähige SQL Server-Instanz (Vorschauversion)
+  - title: Azure Arc-fähige SQL-Server-Instanz (Vorschauversion)
     itemType: overview
-    url: https://docs.microsoft.com/en-us/sql/sql-server/
+    url: https://docs.microsoft.com/sql/sql-server/azure-arc/overview
 productDirectory:
   title: Dienste mit Azure Arc-Unterstützung
   summary: Hier erfahren Sie mehr über die globale Ausführung von Diensten.
@@ -78,7 +78,7 @@ productDirectory:
 conceptualContent:
   title: Erste Schritte
   items:
-  - title: Server mit Azure Arc-Aktivierung (Vorschauversion)
+  - title: Server mit Azure Arc-Unterstützung
     links:
     - url: ./servers/learn/quick-enable-hybrid-vm.md
       itemType: get-started
