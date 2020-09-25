@@ -438,7 +438,7 @@
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.recoveryservices.backup
     - name: Azure CLI
-      href: /cli/azure/backup?view=azure-cli-latest
+      href: /cli/azure/backup
     - name: Azure PowerShell
       href: /powershell/module/az.recoveryservices
     - name: 'PowerShell: Azure Backup-Agent'
@@ -454,7 +454,7 @@
       href: ./policy-reference.md
 - name: Ressourcen
   items:
-    - name: Compliance
+    - name: Kompatibilität
       href: compliance-offerings.md
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'

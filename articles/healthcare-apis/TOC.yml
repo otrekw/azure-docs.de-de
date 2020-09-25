@@ -80,7 +80,7 @@
     - name: Exportieren von Daten
       expanded: false
       items:
-        - name: Anonymisierter Export
+        - name: Daten exportieren
           href: export-data.md
     - name: Ermitteln von Identitätsobjekt-IDs
       href: find-identity-object-ids.md

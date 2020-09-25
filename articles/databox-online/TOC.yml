@@ -7,6 +7,10 @@
       items:
         - name: Was ist Azure Stack Edge Pro mit GPU?
           href: azure-stack-edge-gpu-overview.md
+    - name: Schnellstarts
+      items:
+        - name: Erste Schritte
+          href: azure-stack-edge-gpu-quickstart.md
     - name: Tutorials
       items:
         - name: 0. Abrufen der Prüfliste
