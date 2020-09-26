@@ -13,8 +13,6 @@
       href: deploy-service-catalog-quickstart.md
 - name: Tutorials
   items:
-    - name: Veröffentlichen der Marketplace-Anwendung
-      href: publish-marketplace-app.md
     - name: Erstellen einer verwalteten Anwendung mit einem benutzerdefinierten Anbieter
       href: tutorial-create-managed-app-with-custom-provider.md
 - name: Beispiele
@@ -41,6 +39,8 @@
           href: create-uidefinition-overview.md
         - name: Testen einer Portalschnittstelle
           href: test-createuidefinition.md
+        - name: Erstellen eines Azure-Anwendungsangebots
+          href: ../../marketplace/partner-center-portal/create-new-azure-apps-offer.md?toc=/azure/azure-resource-manager/managed-applications/toc.json
         - name: Anfordern des Just-In-Time-Zugriffs
           href: request-just-in-time-access.md
         - name: Verwenden eines vorhandenen virtuellen Netzwerks
@@ -154,7 +154,7 @@
               href: microsoft-storage-multistorageaccountcombo.md
             - name: StorageAccountSelector
               href: microsoft-storage-storageaccountselector.md
-    - name: Integrierte Azure Policy-Aktionen
+    - name: Azure Policy-Integrationen
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
 - name: Ressourcen
