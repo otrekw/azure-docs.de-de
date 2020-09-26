@@ -24,6 +24,10 @@
     - name: 'Erstellen eines Private Link-Diensts: ARM-Vorlage'
       displayName: Resource Manager
       href: create-private-link-service-template.md
+- name: Tutorials
+  items:
+    - name: Herstellen einer Verbindung mit einem Speicherkonto
+      href: tutorial-private-endpoint-storage-portal.md
 - name: Konzepte
   items:
     - name: Privater Endpunkt
@@ -38,8 +42,6 @@
           href: security-baseline.md
 - name: Anleitung
   items:
-    - name: Herstellen einer privaten Verbindung mit einem Speicherkonto
-      href: create-private-endpoint-storage-portal.md
     - name: "Herstellen einer privaten Verbindung mit einem Cosmos\_DB-Konto"
       href: create-private-endpoint-cosmosdb-portal.md
     - name: Herstellen einer privaten Verbindung mit einer Web-App
