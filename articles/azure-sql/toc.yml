@@ -1210,6 +1210,8 @@
           href: database/database-import-export-hang.md
     - name: Dienstupdates
       items:
+        - name: SSL-Stammzertifikat läuft ab.
+          href: updates/ssl-root-certificate-expiring.md
         - name: Gateway-IP-Adressupdates
           href: database/gateway-migration.md
         - name: Regelmäßige Wartungsereignisse
