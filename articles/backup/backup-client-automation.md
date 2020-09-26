@@ -3,12 +3,12 @@ title: Verwenden von PowerShell zum Sichern von Windows Server in Azure
 description: In diesem Artikel erfahren Sie, wie Sie PowerShell zum Einrichten von Azure Backup auf einem Windows Server-Computer oder einem Windows-Client sowie zum Verwalten von Sicherungen und Wiederherstellungen verwenden.
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: 47c8fc39626d3bca3355c1d1e46f1634327748a8
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 582d8123f16b2d5a543d862b8eb3e45895087e4a
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892370"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987109"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Bereitstellen und Verwalten der Sicherung in Azure für Windows Server-/Windows-Clientcomputer mit PowerShell
 
@@ -42,7 +42,7 @@ Mit den folgenden Schritten können Sie einen Recovery Services-Tresor erstellen
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "WestUS"
     ```
 
-4. Geben Sie den Typ der zu verwendenden Speicherredundanz an. Sie können [lokal redundanten Speicher (LRS)](../storage/common/storage-redundancy.md) oder [georedundanten Speicher (GRS)](../storage/common/storage-redundancy.md) verwenden. Das folgende Beispiel zeigt, dass die Option **-BackupStorageRedundancy** für *testVault* auf **GeoRedundant** festgelegt ist.
+4. Geben Sie den Typ der zu verwendenden Speicherredundanz an. Sie können [lokal redundanten Speicher (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage), [georedundanten Speicher (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) oder [zonenredundanten Speicher (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) verwenden. Das folgende Beispiel zeigt, dass für die Option **-BackupStorageRedundancy** für *testVault* der Wert auf **GeoRedundant** festgelegt wurde.
 
    > [!TIP]
    > Viele Azure Backup-Cmdlets benötigen das Recovery Services-Tresorobjekt als Eingabe. Aus diesem Grund sollte das Backup Recovery Services-Tresorobjekt in einer Variablen gespeichert werden.

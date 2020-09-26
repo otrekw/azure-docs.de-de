@@ -3,12 +3,12 @@ title: Sichern und Wiederherstellen von virtuellen Azure-Computern mit PowerShel
 description: Beschreibt das Sichern und Wiederherstellen von virtuellen Azure-Computern mithilfe von Azure Backup und PowerShell
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: e4564ba2b6109296a7383fb4b056c2f4b1890fda
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 87d655652d0207a50f8980f18d18e76fea0b1e21
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178130"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975101"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Sichern und Wiederherstellen von virtuellen Azure-Computern mit PowerShell
 
@@ -96,7 +96,7 @@ Mit den folgenden Schritten können Sie einen Recovery Services-Tresor erstellen
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "test-rg" -Location "West US"
     ```
 
-3. Geben Sie den Typ der zu verwendenden Speicherredundanz an. Sie können [lokal redundanten Speicher (LRS)](../storage/common/storage-redundancy.md) oder [georedundanten Speicher (GRS)](../storage/common/storage-redundancy.md) verwenden. Das folgende Beispiel zeigt, dass für die Option „BackupStorageRedundancy“ für „testVault“ der Wert auf „GeoRedundant“ festgelegt ist.
+3. Geben Sie den Typ der zu verwendenden Speicherredundanz an. Sie können [lokal redundanten Speicher (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage), [georedundanten Speicher (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) oder [zonenredundanten Speicher (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) verwenden. Das folgende Beispiel zeigt, dass für die Option **-BackupStorageRedundancy** für *testVault* der Wert auf **GeoRedundant** festgelegt wurde.
 
     ```powershell
     $vault1 = Get-AzRecoveryServicesVault -Name "testvault"

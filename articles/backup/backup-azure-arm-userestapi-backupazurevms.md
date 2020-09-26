@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Sicherungsvorgänge von Azu
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: aa072cb48e12ac89af3be28a9633a82b50122275
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 42af6ae69699be7eefac0aca2bcd22b1e25720b2
+ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006294"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89506626"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Sichern eines virtuellen Azure-Computers mithilfe von Azure Backup über die REST-API
 
@@ -274,6 +274,35 @@ Wenn der Vorgang abgeschlossen ist, wird „200 (OK)“ mit dem Inhalt des gesch
 
 Dies bestätigt, dass der Schutz für die VM aktiviert ist und die erste Sicherung gemäß dem Richtlinienzeitplan ausgelöst wird.
 
+### <a name="excluding-disks-in-azure-vm-backup"></a>Ausschließen von Datenträgern von der Sicherung eines virtuellen Azure-Computers
+
+Azure Backup bietet auch eine Möglichkeit der selektiven Sicherung einer Teilmenge von Datenträgern auf dem virtuellen Azure-Computer. [Hier](selective-disk-backup-restore.md) finden Sie weitere Einzelheiten. Wenn Sie während des Aktivierens des Schutzes einzelne Datenträger selektiv sichern wollen, sollte der folgende Codeausschnitt [während des Aktivierens des Schutzes als Anforderungstext](#example-request-body) angegeben werden.
+
+```json
+{
+"properties": {
+    "protectedItemType": "Microsoft.Compute/virtualMachines",
+    "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
+    "policyId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupPolicies/DefaultPolicy",
+    "extendedProperties":  {
+      "diskExclusionProperties":{
+          "diskLunList":[0,1],
+          "isInclusionList":true
+        }
+    }
+}
+}
+```
+
+Im obigen Anforderungstext werden die zu sichernden Datenträger im Abschnitt „Erweiterte Eigenschaften“ angegeben.
+
+|Eigenschaft  |Wert  |
+|---------|---------|
+|diskLunList     | Die Datenträger-LUN-Liste ist eine Liste der *LUNs von Datenträgern*. **Der Betriebssystemdatenträger wird immer gesichert und braucht nicht angegeben zu werden**.        |
+|IsInclusionList     | Sollte auf **true** festgelegt sein, damit die LUNs während der Sicherung einbezogen werden. Ist diese Option auf **false** festgelegt, werden die oben erwähnten LUNs ausgeschlossen.         |
+
+Soll also nur der Betriebssystemdatenträger gesichert werden, sollten _alle_ Datenträger mit Daten ausgeschlossen werden. In einfacheren Worten könnte man auch sagen, dass keine Datenträger mit Daten einbezogen werden sollten. Die Datenträger-LUN-Liste ist somit leer, und **IsInclusionList** ist **true**. Überlegen Sie sich auch, welche Möglichkeit, eine Teilmenge auszuwählen, einfacher ist: Einige Datenträger sollten immer ausgeschlossen werden, oder einige Datenträger sollten immer eingeschlossen werden. Wählen Sie die LUN-Liste und die boolesche Variable entsprechend aus.
+
 ## <a name="trigger-an-on-demand-backup-for-a-protected-azure-vm"></a>Auslösen einer bedarfsgesteuerten Sicherung für einen geschützten virtuellen Azure-Computer
 
 Nachdem eine Azure-VM für die Sicherung konfiguriert wurde, werden Sicherungen gemäß dem Richtlinienzeitplan durchgeführt. Sie können warten, bis die erste geplante Sicherung durchgeführt wird, oder jederzeit eine bedarfsgesteuerte Sicherung auslösen. Die Aufbewahrung für bedarfsgesteuerte Sicherungen unterscheidet sich von der Aufbewahrung bei der Sicherungsrichtlinie und kann für ein bestimmtes Datum und eine bestimmte Uhrzeit angegeben werden. Wenn sie nicht angegeben ist, wird von 30 Tagen ab dem Tag, an dem die bedarfsgesteuerte Sicherung ausgelöst wurde, ausgegangen.
@@ -294,7 +323,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 Zum Auslösen einer bedarfsgesteuerten Sicherung werden die folgenden Komponenten des Anforderungstexts verwendet.
 
-|Name  |type  |BESCHREIBUNG  |
+|Name  |Typ  |BESCHREIBUNG  |
 |---------|---------|---------|
 |properties     | [IaaSVMBackupRequest](/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |BackupRequestResource-Eigenschaften         |
 
@@ -319,7 +348,7 @@ Das Auslösen einer bedarfsgesteuerten Sicherung ist ein [asynchroner Vorgang](.
 
 Er gibt zwei Antworten zurück: „202 (Akzeptiert)“, wenn ein anderer Vorgang erstellt wird, und dann „200 (OK)“, wenn dieser Vorgang abgeschlossen ist.
 
-|Name  |type  |BESCHREIBUNG  |
+|Name  |Typ  |BESCHREIBUNG  |
 |---------|---------|---------|
 |202 – Akzeptiert     |         |     Zulässig    |
 
@@ -389,7 +418,7 @@ Da es sich bei dem Sicherungsauftrag um einen Vorgang mit langer Ausführungsdau
 
 Zum Ändern der Richtlinie, mit der der virtuelle Computer geschützt wird, können Sie das gleiche Format wie beim [Aktivieren des Schutzes](#enabling-protection-for-the-azure-vm) verwenden. Geben Sie einfach die neue Richtlinien-ID im [Anforderungstext](#example-request-body) an, und senden Sie die Anforderung. Beispiel: Geben Sie zum Ändern der Richtlinie für „testVM“ von „DefaultPolicy“ in „ProdPolicy“ die ID von „ProdPolicy“ im Anforderungstext an.
 
-```http
+```json
 {
   "properties": {
     "protectedItemType": "Microsoft.Compute/virtualMachines",
@@ -400,6 +429,15 @@ Zum Ändern der Richtlinie, mit der der virtuelle Computer geschützt wird, kön
 ```
 
 Die Antwort erfolgt im gleichen Format wie beim [Aktivieren des Schutzes](#responses-to-create-protected-item-operation).
+
+#### <a name="excluding-disks-during-azure-vm-protection"></a>Ausschließen von Datenträgern während des Schutzes der virtuellen Azure-Computer
+
+Wenn der virtuelle Azure-Computer bereits gesichert wurde, können Sie die Liste der zu sichernden oder auszuschließenden Datenträger angeben, indem Sie die Schutzrichtlinie ändern. Bereiten Sie die Anforderung einfach im gleichen Format vor, wie beim [Ausschluss von Datenträgern während der Aktivierung des Schutzes](#excluding-disks-in-azure-vm-backup).
+
+> [!IMPORTANT]
+> Der obige Anforderungstext ist immer die endgültige Kopie der aus- oder einzuschließenden Datenträger für Daten. Dadurch wird die vorherige Konfiguration nicht *erweitert*. Beispiel: Wenn Sie den Schutz zunächst als „Datenträger 1 ausschließen“ aktualisieren und dann mit „Datenträger 2 ausschließen“ wiederholen, wird in den nachfolgenden Sicherungen *nur Datenträger 2 ausgeschlossen*, und Datenträger 1 wird eingeschlossen. Es ist immer die letzte Liste, die in den nachfolgenden Sicherungen ein-/ausgeschlossen wird.
+
+Wenn Sie die aktuelle Liste der aus- oder eingeschlossenen Datenträger abrufen möchten, erhalten Sie die Informationen zu den geschützten Objekten wie [hier](https://docs.microsoft.com/rest/api/backup/protecteditems/get) erwähnt. Die Antwort liefert die Liste der Datenträger-LUNs und gibt an, ob sie ein- oder ausgeschlossen werden.
 
 ### <a name="stop-protection-but-retain-existing-data"></a>Beenden des Schutzes, jedoch Beibehalten vorhandener Daten
 
@@ -439,7 +477,7 @@ Der *DELETE*-Vorgang für den Schutz ist ein [asynchroner Vorgang](../azure-reso
 
 Er gibt zwei Antworten zurück: „202 (Akzeptiert)“, wenn ein anderer Vorgang erstellt wird, und dann „204 (NoContent)“, wenn dieser Vorgang abgeschlossen ist.
 
-|Name  |type  |BESCHREIBUNG  |
+|Name  |Typ  |BESCHREIBUNG  |
 |---------|---------|---------|
 |204 Kein Inhalt     |         |  Kein Inhalt       |
 |202 – Akzeptiert     |         |     Zulässig    |

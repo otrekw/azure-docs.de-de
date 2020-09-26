@@ -3,12 +3,12 @@ title: Leitfaden und bewährte Methoden
 description: Bewährte Methoden und Anleitungen zum Sichern von Cloudworkloads und lokalen Workloads in der Cloud
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: db6eec5351a9015b136226610d2bb3deb8bdc651
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f999c568dda6eae60f3060cc4672eccaf06541c1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000361"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985518"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Sichern von Cloudworkloads und lokalen Workloads in der Cloud
 
@@ -48,7 +48,7 @@ Azure Backup ermöglicht den Datenschutz für verschiedene Workloads (lokale und
 
 ### <a name="management-plane"></a>Verwaltungsebene
 
-* **Zugriffssteuerung**: Der Recovery Services-Tresor bietet die Verwaltungsfunktionen. Der Zugriff erfolgt über das Azure-Portal, SDK, die CLI und sogar REST-APIs. Es handelt sich außerdem um eine RBAC-Grenze, die Ihnen die Möglichkeit bietet, den Zugriff auf Sicherungen auf autorisierte Sicherungsadministratoren zu beschränken.
+* **Zugriffssteuerung**: Tresore (Recovery Services- und Sicherungstresore) stellen die Verwaltungsfunktionen bereit, und es kann über Azure-Portal, Backup Center, Tresordashboards, SDK, Befehlszeilenschnittstelle und sogar REST-APIs darauf zugegriffen werden. Es handelt sich außerdem um eine RBAC-Grenze, die Ihnen die Möglichkeit bietet, den Zugriff auf Sicherungen auf autorisierte Sicherungsadministratoren zu beschränken.
 
 * **Richtlinienverwaltung**: Azure Backup-Richtlinien innerhalb jedes Tresors definieren, wann die Sicherungen ausgelöst und wie lange sie aufbewahrt werden müssen. Sie können diese Richtlinien auch verwalten und auf mehrere Elemente anwenden.
 
@@ -58,7 +58,7 @@ Azure Backup ermöglicht den Datenschutz für verschiedene Workloads (lokale und
 
 ## <a name="vault-considerations"></a>Überlegungen zum Tresor
 
-Azure Backup nutzt Recovery Services-Tresore zum Orchestrieren und Verwalten von Sicherungen. Azure Backup nutzt Tresore außerdem zum Speichern von gesicherten Daten. Ein effektiver Tresorentwurf hilft Organisationen in der dabei, für die Unterstützung Ihrer geschäftlichen Prioritäten eine Struktur zum Organisieren und Verwalten von Sicherungsressourcen in Azure einzurichten und zu verwalten. Berücksichtigen Sie beim Erstellen eines Tresors die folgenden Richtlinien:  
+Azure Backup nutzt Tresore (Recovery Services- und Sicherungstresore) zum Orchestrieren und Verwalten von Sicherungen. Azure Backup nutzt Tresore außerdem zum Speichern von gesicherten Daten. Ein effektiver Tresorentwurf hilft Organisationen in der dabei, für die Unterstützung Ihrer geschäftlichen Prioritäten eine Struktur zum Organisieren und Verwalten von Sicherungsressourcen in Azure einzurichten und zu verwalten. Berücksichtigen Sie beim Erstellen eines Tresors die folgenden Richtlinien:  
 
 ### <a name="align-to-subscription-design-strategy"></a>Ausrichten an der Abonnemententwurfsstrategie
 
@@ -71,7 +71,8 @@ Sie können einen einzelnen Tresor oder mehrere Tresore verwenden, um Ihr Sicher
 * Wenn Ihre Workloads alle von einem einzigen Abonnement und einer einzigen Ressource verwaltet werden, können Sie einen einzigen Tresor zum Überwachen und Verwalten Ihrer Sicherungsumgebung verwenden.
 
 * Wenn Ihre Workloads auf Abonnements verteilt sind, können Sie mehrere Tresore erstellen, einen oder mehrere pro Abonnement.
-  * Um die Überwachung der operativen Aktivitäten über alle Tresore, Abonnements und Mandanten hinweg zu vereinfachen, können Sie den Sicherungs-Explorer und Berichte verwenden. Hier erhalten Sie [weitere Informationen](monitor-azure-backup-with-backup-explorer.md) dazu, wie Sie eine aggregierte Ansicht erhalten.
+  * Backup Center ermöglicht es Ihnen, über eine zentralisierte Benutzeroberfläche alle Aufgaben im Zusammenhang mit der Sicherung zu verwalten. [Hier erhalten Sie weitere Informationen]().
+  * Sie können Ihre Ansichten mit Arbeitsmappenvorlagen anpassen. Sicherungs-Explorer ist eine solche Vorlage für virtuelle Azure-Computer. [Hier erhalten Sie weitere Informationen](monitor-azure-backup-with-backup-explorer.md).
   * Wenn Sie eine konsistente Richtlinie über mehrere Tresore hinweg benötigen, können Sie die Azure-Richtlinie verwenden, um die Sicherungsrichtlinie über mehrere Tresore hinweg weiterzugeben. Sie können eine benutzerdefinierte [Azure Policy-Definition](../governance/policy/concepts/definition-structure.md) schreiben, die den Effekt [‚deployifnotexists‘](../governance/policy/concepts/effects.md#deployifnotexists) verwendet, um eine Sicherungsrichtlinie über mehrere Tresore weiterzugeben. Sie können diese Azure Policy-Definition einem bestimmten Bereich (Abonnement oder RG) [zuweisen](../governance/policy/assign-policy-portal.md), sodass eine Sicherungsrichtlinienressource für alle Recovery Services-Tresore im Bereich der Azure Policy-Zuweisung bereitgestellt wird. Die Einstellungen der Sicherungsrichtlinie (wie z. B. Sicherungshäufigkeit, Aufbewahrung usw.) sollten vom Benutzer als Parameter in der Azure Policy-Zuweisung festgelegt werden.
 
 * Wenn Ihr organisatorischer Fußabdruck wächst, möchten Sie möglicherweise aus folgenden Gründen Workloads über Abonnements hinweg verschieben: Ausrichtung nach Sicherungsrichtlinie, Konsolidierung von Tresoren, Kompromiss bezüglich geringerer Redundanz zum Einsparen von Kosten (Wechsel von GRS zu LRS).  Azure Backup unterstützt das Verschieben eines Recovery Services-Tresors über Azure-Abonnements hinweg oder in eine andere Ressourcengruppe innerhalb desselben Abonnements. [Hier erhalten Sie weitere Informationen](backup-azure-move-recovery-services-vault.md).
