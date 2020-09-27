@@ -4,12 +4,12 @@ description: Zeigt, wie Sie Tags zum Organisieren von Azure-Ressourcen für die 
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: daedb5dcd660ec2637557fe5af75db2939318495
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 3ffcb4a0f2f5dc64b165fcdec03f7c3ced258cc1
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499992"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086758"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Verwenden von Tags zum Organisieren von Azure-Ressourcen und Verwaltungshierarchie
 
@@ -307,7 +307,27 @@ az group list --tag Dept=IT
 
 ### <a name="handling-spaces"></a>Behandeln von Leerzeichen
 
-Wenn die Namen oder Werte der Tags Leerzeichen enthalten, müssen Sie einige zusätzliche Schritte ausführen. Im folgenden Beispiel werden alle Tags einer Ressourcengruppe auf die Ressourcen angewendet, wenn die Tags Leerzeichen enthalten können.
+Wenn die Namen oder Werte der Tags Leerzeichen enthalten, müssen Sie einige zusätzliche Schritte ausführen. 
+
+Die `--tags`-Parameter in der Azure CLI können eine Zeichenfolge akzeptieren, die aus einem Array von Zeichenfolgen besteht. Im folgenden Beispiel werden die Tags in einer Ressourcengruppe überschrieben, in der Tags Leerzeichen und Bindestriche aufweisen: 
+
+```azurecli-interactive
+TAGS=("Cost Center=Finance-1222" "Location=West US")
+az group update --name examplegroup --tags "${TAGS[@]}"
+```
+
+Sie können dieselbe Syntax verwenden, wenn Sie eine Ressourcengruppe oder Ressourcen erstellen oder aktualisieren, indem Sie den `--tags`-Parameter verwenden.
+
+Um die Tags mithilfe des `--set`-Parameters zu aktualisieren, müssen Sie den Schlüssel und den Wert als Zeichenfolge übergeben. Im folgenden Beispiel wird ein einzelnes Tag an eine Ressourcengruppe angefügt:
+
+```azurecli-interactive
+TAG="Cost Center='Account-56'"
+az group update --name examplegroup --set tags."$TAG"
+```
+
+In diesem Fall wird der Tagwert mit einfachen Anführungszeichen gekennzeichnet, da der Wert einen Bindestrich aufweist.
+
+Möglicherweise müssen Sie auch Tags auf viele Ressourcen anwenden. Im folgenden Beispiel werden alle Tags aus einer Ressourcengruppe auf ihre Ressourcen angewendet, wenn die Tags möglicherweise Leerzeichen enthalten:
 
 ```azurecli-interactive
 jsontags=$(az group show --name examplegroup --query tags -o json)
@@ -579,7 +599,7 @@ Auf eine Ressourcengruppe oder ein Abonnement angewandte Tags werden von den Res
 
 Abrechnungsdaten können mithilfe von Tags gruppiert werden. Wenn Sie beispielsweise mehrere virtuelle Computer für verschiedene Organisationen betreiben, können Sie die Nutzung mithilfe von Tags nach Kostenstelle organisieren. Mit Tags können Sie auch Kosten nach Runtimeumgebung kategorisieren, beispielsweise zur Abrechnung der Nutzung virtueller Computer in der Produktionsumgebung.
 
-Informationen zu Tags können Sie über die [Azure-Ressourcennutzungs- und RateCard-APIs](../../cost-management-billing/manage/usage-rate-card-overview.md) oder aus der Nutzungsdatei im CSV-Format abrufen. Sie laden die Nutzungsdatei aus dem [Azure-Kontocenter](https://account.azure.com/Subscriptions) oder dem Azure-Portal herunter. Weitere Informationen finden Sie unter [Herunterladen oder Anzeigen Ihrer Azure-Rechnungen und täglichen Nutzungsdaten](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md). Wählen Sie beim Herunterladen der Nutzungsdatei aus dem Azure-Kontocenter die Option **Version 2**. Für Dienste, die die Verwendung von Tags für die Abrechnung unterstützen, sind die Tags in der Spalte **Tags** enthalten.
+Informationen zu Tags können Sie über die [Azure-Ressourcennutzungs- und RateCard-APIs](../../cost-management-billing/manage/usage-rate-card-overview.md) oder aus der Nutzungsdatei im CSV-Format abrufen. Sie laden die Nutzungsdatei nicht aus dem Azure-Portal herunter. Weitere Informationen finden Sie unter [Herunterladen oder Anzeigen Ihrer Azure-Rechnungen und täglichen Nutzungsdaten](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md). Wählen Sie beim Herunterladen der Nutzungsdatei aus dem Azure-Kontocenter die Option **Version 2**. Für Dienste, die die Verwendung von Tags für die Abrechnung unterstützen, sind die Tags in der Spalte **Tags** enthalten.
 
 Hinweise zu REST-API-Vorgängen finden Sie unter [Azure Billing REST API Reference (Preview)](/rest/api/billing/)(in englischer Sprache).
 

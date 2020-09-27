@@ -2,13 +2,13 @@
 title: Anfügen oder Trennen eines Katalogs mit freigegebenen Images in Azure Lab Services | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie einen freigegebenen Imagekatalog an ein Classroom-Lab in Azure Lab Services anfügen.
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: e0b29bcabe1cfb234b422982c0f8faab49c30796
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/11/2020
+ms.openlocfilehash: 08d2a97138633a43e9acd69575c4b44e245d4faa
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445354"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056471"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>Anfügen oder Trennen eines Katalogs mit freigegebenen Images in Azure Lab Services
 Dieser Artikel zeigt, wie Sie einen Katalog mit freigegebenen Images einem Labkonto anfügen können. 
@@ -25,6 +25,9 @@ Im Folgenden sehen Sie ein paar der Szenarien, die von diesem Feature unterstüt
 - Ein Lab-Kontoadministrator fügt dem Lab-Konto einen Katalogs mit freigegebenen Images an. Ein Lab-Ersteller (Kursleiter) speichert das angepasste Image seines Labs im Katalog mit freigegebenen Images. Andere Lab-Ersteller können dann dieses Image im Katalog mit freigegebenen Images auswählen, um eine Vorlage für ihre Labs zu erstellen. 
 
     Wenn ein Image in eine Shared Image Gallery gespeichert wird, repliziert Azure Lab Services das gespeicherte Image in andere Regionen, die in derselben [Geografie](https://azure.microsoft.com/global-infrastructure/geographies/) verfügbar sind. Dadurch wird sichergestellt, dass das Image für Labs verfügbar ist, die in anderen Regionen innerhalb derselben Geografie erstellt wurden. Das Speichern von Images in einer Shared Image Gallery führt zu zusätzlichen Kosten, einschließlich der Kosten für alle replizierten Images. Diese Kosten entstehen zusätzlich zu den Kosten für die Azure Lab Services-Nutzung. Weitere Informationen zu Preisen der Shared Image Gallery finden Sie unter [Shared Image Gallery – Preise](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#billing).
+
+> [!IMPORTANT]
+> Bei Verwendung einer Shared Image Gallery unterstützt Azure Lab Services nur Images mit weniger als 128 GB Betriebssystem-Speicherplatz. Images mit mehr als 128 GB Speicherplatz auf dem Datenträger oder mehreren Datenträgern werden während der Erstellung des Labs nicht in der Liste der Images virtueller Computer angezeigt.
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>Konfigurieren zum Zeitpunkt der Labkontoerstellung
 Wenn Sie ein Labkonto erstellen, können Sie dem Labkonto einen Katalog mit freigegebenen Images anfügen. Sie können entweder einen vorhandenen Katalog mit freigegebenen Images in der Dropdownliste auswählen oder einen neuen erstellen. Um einen Katalog mit freigegebenen Images zu erstellen und dem Labkonto anzufügen, wählen Sie **Neu erstellen** aus, geben einen Sie Namen für den Katalog ein, und geben Sie dann **OK** ein. 

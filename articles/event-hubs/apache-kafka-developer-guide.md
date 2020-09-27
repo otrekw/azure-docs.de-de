@@ -3,18 +3,18 @@ title: Apache Kafka-Entwicklerleitfaden für Event Hubs
 description: Dieser Artikel enthält Links zu Artikeln, in denen beschrieben wird, wie Sie Ihre Kafka-Anwendungen in Azure Event Hubs integrieren können.
 ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: bbd173a7f81042c0839cec81838172b21f80d5cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 757db4faf2a933e366bc818d5cf6aab04d0b08ba
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314233"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061732"
 ---
 # <a name="apache-kafka-developer-guide-for-azure-event-hubs"></a>Apache Kafka-Entwicklerleitfaden für Azure Event Hubs
 Dieser Artikel enthält Links zu Artikeln, in denen beschrieben wird, wie Sie Ihre Apache Kafka-Anwendungen in Azure Event Hubs integrieren können. 
 
 ## <a name="overview"></a>Übersicht
-Event Hubs stellt einen Kafka-Endpunkt bereit, der von Ihren vorhandenen Kafka-basierten Anwendungen als Alternative zum Betreiben eines eigenen Kafka-Clusters verwendet werden kann. Event Hubs unterstützt das Apache Kafka-Protokoll 1.0 und höher und funktioniert mit Ihren vorhandenen Kafka-Anwendungen (einschließlich MirrorMaker). Weitere Informationen finden Sie unter [Event Hubs für Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md).
+Event Hubs stellt einen Kafka-Endpunkt bereit, der von Ihren vorhandenen Kafka-basierten Anwendungen als Alternative zum Betreiben eines eigenen Kafka-Clusters verwendet werden kann. Event Hubs funktioniert mit vielen Ihrer vorhandenen Kafka-Anwendungen. Weitere Informationen finden Sie unter [Event Hubs für Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md).
 
 ## <a name="quickstarts"></a>Schnellstarts
 Sie finden Schnellstarts in GitHub und in diesen Ressourcen, mit denen Sie sich schnell über Event Hubs für Kafka informieren können.

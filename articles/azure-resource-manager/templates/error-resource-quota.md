@@ -3,12 +3,12 @@ title: Kontingentfehler
 description: Hier wird beschrieben, wie Sie Ressourcenkontingentfehler beim Bereitstellen von Ressourcen mit Azure Resource Manager beheben.
 ms.topic: troubleshooting
 ms.date: 03/09/2018
-ms.openlocfilehash: 410b086b39d63d03491d390364f4aec6300fc7c1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 75e8abf31d035a1e3a106bc0c6561624762db5d5
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87007791"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530419"
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>Das Beheben von Fehlern bei Ressourcenkontingenten
 
@@ -95,7 +95,7 @@ Wenn Sie eine Erhöhung des Kontingents anfordern möchten, rufen Sie das Portal
 
 1. Wählen Sie **Abonnements**.
 
-   ![Abonnements](./media/error-resource-quota/subscriptions.png)
+   ![Screenshot zeigt das Menü im Azure-Portal mit ausgewählten Abonnements.](./media/error-resource-quota/subscriptions.png)
 
 2. Wählen Sie das Abonnement aus, für das ein höheres Kontingent benötigt wird.
 

@@ -3,13 +3,13 @@ title: Beheben von häufigen Bereitstellungsfehlern
 description: Informationen zum Beheben gängiger Fehler beim Bereitstellen von Ressourcen in Azure mit Azure Resource Manager.
 tags: top-support-issue
 ms.topic: troubleshooting
-ms.date: 08/07/2020
-ms.openlocfilehash: 1ab493b0ba2199d8e6778252cf50d963fbd2f387
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.date: 09/09/2020
+ms.openlocfilehash: a24a95bbf3b3a338102d42fcee06b5e4bd59dd83
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008167"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650943"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager
 
@@ -75,7 +75,7 @@ Wenn Sie Informationen zu einem Fehlercode suchen und diese Informationen in die
 | StorageAccountNotFound | Überprüfen Sie das Abonnement, die Ressourcengruppe und den Namen des Speicherkontos, das Sie verwenden möchten. | |
 | SubnetsNotInSameVnet | Ein virtueller Computer kann nur über ein virtuelles Netzwerk verfügen. Stellen Sie beim Bereitstellen von mehreren NICs sicher, dass diese demselben virtuellen Netzwerk angehören. | [Mehrere NICs](../../virtual-machines/windows/multiple-nics.md) |
 | SubscriptionNotFound | Der Zugriff auf ein angegebenes Abonnement für die Bereitstellung ist nicht möglich. Möglicherweise ist die Abonnement-ID falsch, der Benutzer, der die Vorlage bereitstellt, verfügt nicht über die erforderlichen Berechtigungen zur Bereitstellung des Abonnements, oder die Abonnement-ID weist das falsche Format auf. Wenn Sie für die [bereichsübergreifende Bereitstellung](cross-scope-deployment.md) geschachtelte Bereitstellungen verwenden, geben Sie die GUID für das Abonnement an. | |
-| SubscriptionNotRegistered | Beim Bereitstellen von Netzwerkressourcen wird der Ressourcenanbieter „Microsoft.Network“ automatisch im Abonnement registriert. Manchmal wird die automatische Registrierung nicht rechtzeitig abgeschlossen. Um diesen zeitweiligen Fehler zu vermeiden, registrieren Sie den Ressourcenanbieter „Microsoft.Network“ vor der Bereitstellung. | [Lösen von Registrierungsfehlern](error-register-resource-provider.md) |
+| SubscriptionNotRegistered | Wenn Sie eine Ressource bereitstellen, muss der Ressourcenanbieter für Ihr Abonnement registriert sein. Wenn Sie eine Azure Resource Manager-Vorlage für die Bereitstellung verwenden, wird der Ressourcenanbieter automatisch im Abonnement registriert. Manchmal wird die automatische Registrierung nicht rechtzeitig abgeschlossen. Um diesen zeitweiligen Fehler zu vermeiden, registrieren Sie den Ressourcenanbieter vor der Bereitstellung. | [Lösen von Registrierungsfehlern](error-register-resource-provider.md) |
 | TemplateResourceCircularDependency | Entfernen Sie unnötige Abhängigkeiten. | [Beheben von Ringabhängigkeiten](error-invalid-template.md#circular-dependency) |
 | TooManyTargetResourceGroups | Verringern Sie die Anzahl von Ressourcengruppen für eine einzelne Bereitstellung. | [Bereichsübergreifende Bereitstellungen](cross-scope-deployment.md) |
 

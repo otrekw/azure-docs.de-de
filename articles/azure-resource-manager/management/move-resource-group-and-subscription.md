@@ -2,14 +2,14 @@
 title: Verschieben von Ressourcen in ein neues Abonnement oder eine neue Ressourcengruppe
 description: Verwenden Sie Azure Resource Manager, um Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement verschieben.
 ms.topic: conceptual
-ms.date: 07/15/2020
+ms.date: 09/15/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e5b3e27110d5bd7941aad0209681d13f45fa66fa
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 43b5cd8c9fa5947ff8f345bd0cd3ad26d9e61923
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498870"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603151"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
 
@@ -19,8 +19,6 @@ Beim Verschieben wird sowohl die Quell- als auch die Zielgruppe gesperrt. Schrei
 
 Wenn Sie ein Ressource verschieben, wird sie nur in eine neue Ressourcengruppe oder ein neues Abonnement verschoben. Der Speicherort der Ressource ändert sich nicht.
 
-Wenn Sie Azure Stack Hub verwenden, können Sie keine Ressourcen zwischen Gruppen verschieben.
-
 ## <a name="checklist-before-moving-resources"></a>Checkliste vor dem Verschieben von Ressourcen
 
 Vor dem Verschieben einer Ressource müssen einige wichtige Schritte ausgeführt werden. Indem Sie diese Bedingungen überprüfen, können Sie Fehler vermeiden.
@@ -29,6 +27,7 @@ Vor dem Verschieben einer Ressource müssen einige wichtige Schritte ausgeführt
 
 1. Für einige Dienste gelten bestimmte Einschränkungen oder Anforderungen beim Verschieben von Ressourcen. Wenn Sie einen der folgenden Dienste verschieben möchten, überprüfen Sie diese Anleitung vor dem Verschieben.
 
+   * Wenn Sie Azure Stack Hub verwenden, können Sie keine Ressourcen zwischen Gruppen verschieben.
    * [Anleitung zum Verschieben von App Services](./move-limitations/app-service-move-limitations.md)
    * [Anleitung zum Verschieben von Azure DevOps Services](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)
    * [Anleitung zum Verschieben des klassischen Bereitstellungsmodells](./move-limitations/classic-model-move-limitations.md): Compute (klassisch), Storage (klassisch), Virtual Networks (klassisch), Cloud Services (klassisch)
@@ -96,7 +95,7 @@ Vor dem Verschieben einer Ressource müssen einige wichtige Schritte ausgeführt
 
 1. **Für eine abonnementübergreifende Verschiebung müssen die Ressource und die davon abhängigen Ressourcen in derselben Ressourcengruppe angeordnet sein und zusammen verschoben werden.** Für eine VM mit verwalteten Datenträgern müssen die VM und die verwalteten Datenträger beispielsweise gemeinsam und auch zusammen mit den anderen abhängigen Ressourcen verschoben werden.
 
-   Wenn Sie eine Ressource in ein neues Abonnement verschieben, sollten Sie überprüfen, ob die Ressource über abhängige Ressourcen verfügt und ob diese sich in derselben Ressourcengruppe befinden. Wenn sich die Ressourcen nicht in derselben Ressourcengruppe befinden, sollten Sie überprüfen, ob die Ressourcen in derselben Ressourcengruppe zusammengefasst werden können. Wenn ja, müssen Sie alle Ressourcen in derselben Ressourcengruppe vereinen, indem Sie übergreifend für die Ressourcengruppen einen Verschiebungsvorgang durchführen.
+   Wenn Sie eine Ressource in ein neues Abonnement verschieben, sollten Sie überprüfen, ob die Ressource über abhängige Ressourcen verfügt und ob diese sich in derselben Ressourcengruppe befinden. Wenn sich die Ressourcen nicht in derselben Ressourcengruppe befinden, sollten Sie überprüfen, ob die Ressourcen in derselben Ressourcengruppe kombiniert werden können. Wenn ja, müssen Sie alle Ressourcen in derselben Ressourcengruppe vereinen, indem Sie übergreifend für die Ressourcengruppen einen Verschiebungsvorgang durchführen.
 
    Weitere Informationen finden Sie unter [Szenario für eine abonnementübergreifende Verschiebung](#scenario-for-move-across-subscriptions).
 
@@ -167,23 +166,37 @@ Während der Vorgang ausgeführt wird, wird weiterhin der Statuscode 202 angezei
 
 ## <a name="use-the-portal"></a>Verwenden des Portals
 
-Um Ressourcen zu verschieben, wählen Sie die Ressourcengruppe mit den jeweiligen Ressourcen aus, und klicken Sie dann auf die Schaltfläche **Verschieben**.
+Wählen Sie zum Verschieben von Ressourcen die Ressourcengruppe aus, die diese Ressourcen enthält.
 
-![Verschieben von Ressourcen](./media/move-resource-group-and-subscription/select-move.png)
+Wenn Sie die Ressourcengruppe anzeigen, ist die Option zum Verschieben deaktiviert.
+
+:::image type="content" source="./media/move-resource-group-and-subscription/move-first-view.png" alt-text="Deaktivierte Option zum Verschieben":::
+
+Um die Option zum Verschieben zu aktivieren, wählen Sie die Ressourcen aus, die Sie verschieben möchten. Aktivieren Sie das Kontrollkästchen oben in der Liste, um alle Ressourcen auszuwählen. Oder wählen Sie Ressourcen einzeln aus. Nachdem Sie Ressourcen ausgewählt haben, ist die Option zum Verschieben aktiviert.
+
+:::image type="content" source="./media/move-resource-group-and-subscription/select-resources.png" alt-text="Auswählen von Ressourcen":::
+
+Wählen Sie die Schaltfläche **Verschieben** aus.
+
+:::image type="content" source="./media/move-resource-group-and-subscription/move-options.png" alt-text="Optionen für den Verschiebevorgang":::
+
+Diese Schaltfläche bietet Ihnen drei Optionen:
+
+* Verschieben in eine neue Ressourcengruppe.
+* Verschieben in ein neues Abonnement.
+* Verschieben in eine neue Region. Wenn Sie Regionen ändern möchten, finden Sie weitere Informationen unter [Regionsübergreifendes Verschieben von Ressourcen (aus Ressourcengruppe)](../../resource-mover/move-region-within-resource-group.md?toc=/azure/azure-resource-manager/management/toc.json).
 
 Wählen Sie aus, ob Sie die Ressource in eine neue Ressourcengruppe oder ein neues Abonnement verschieben.
 
-Wählen Sie die zu verschiebenden Ressourcen und die Zielressourcengruppe aus. Bestätigen, dass Sie Skripts für diese Ressourcen aktualisieren müssen, und wählen Sie **OK**aus. Wenn Sie im vorherigen Schritt das Symbol „Abonnement bearbeiten“ ausgewählt haben, müssen Sie auch das Zielabonnement auswählen.
+Wählen Sie die Zielressourcengruppe aus. Bestätigen, dass Sie Skripts für diese Ressourcen aktualisieren müssen, und wählen Sie **OK**aus. Wenn Sie Verschieben in ein neues Abonnement ausgewählt haben, müssen Sie auch das Zielabonnement auswählen.
 
-![Ziel auswählen](./media/move-resource-group-and-subscription/select-destination.png)
+:::image type="content" source="./media/move-resource-group-and-subscription/move-destination.png" alt-text="Auswählen des Ziels":::
 
-Unter **Benachrichtigungen**wird angezeigt, dass der Verschiebevorgang ausgeführt wird.
+Nachdem Sie überprüft haben, dass die Ressourcen verschoben werden können, wird eine Benachrichtigung angezeigt, dass der Verschiebevorgang ausgeführt wird.
 
-![Verschiebestatus anzeigen](./media/move-resource-group-and-subscription/show-status.png)
+:::image type="content" source="./media/move-resource-group-and-subscription/move-notification.png" alt-text="Benachrichtigung":::
 
 Sobald der Vorgang abgeschlossen ist, werden Sie über das Ergebnis informiert.
-
-![Ergebnis des Verschiebens anzeigen](./media/move-resource-group-and-subscription/show-result.png)
 
 Wenn ein Fehler auftritt, lesen Sie [Problembehandlung beim Verschieben von Azure-Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](troubleshoot-move.md).
 
@@ -203,7 +216,7 @@ Wenn ein Fehler auftritt, lesen Sie [Problembehandlung beim Verschieben von Azur
 
 ## <a name="use-azure-cli"></a>Mithilfe der Azure-Befehlszeilenschnittstelle
 
-Verwenden Sie zum Verschieben vorhandener Ressourcen in eine andere Ressourcengruppe oder ein anderes Abonnement den Befehl [az resource move](/cli/azure/resource?view=azure-cli-latest#az-resource-move). Geben Sie die Ressourcen-IDs der zu verschiebenden Ressourcen an. Im folgenden Beispiel wird veranschaulicht, wie mehrere Ressourcen in eine neue Ressourcengruppe verschoben werden. Geben Sie im `--ids`-Parameter eine durch Leerzeichen getrennte Liste der zu verschiebenden Ressourcen-IDs an.
+Verwenden Sie zum Verschieben vorhandener Ressourcen in eine andere Ressourcengruppe oder ein anderes Abonnement den Befehl [az resource move](/cli/azure/resource#az-resource-move). Geben Sie die Ressourcen-IDs der zu verschiebenden Ressourcen an. Im folgenden Beispiel wird veranschaulicht, wie mehrere Ressourcen in eine neue Ressourcengruppe verschoben werden. Geben Sie im `--ids`-Parameter eine durch Leerzeichen getrennte Liste der zu verschiebenden Ressourcen-IDs an.
 
 ```azurecli
 webapp=$(az resource show -g OldRG -n ExampleSite --resource-type "Microsoft.Web/sites" --query id --output tsv)
@@ -238,15 +251,15 @@ Wenn ein Fehler auftritt, lesen Sie [Problembehandlung beim Verschieben von Azur
 
 **Frage: Mein Ressourcenverschiebevorgang, der normalerweise ein paar Minuten dauert, läuft schon seit fast einer Stunde. Stimmt da etwas nicht?**
 
-Das Verschieben einer Ressource ist ein komplexer Vorgang, der in verschiedenen Phasen erfolgt. Es kann mehr als nur den Ressourcenanbieter der Ressource umfassen, die Sie verschieben möchten. Aufgrund der Abhängigkeiten zwischen Ressourcenanbietern stellt Azure Resource Manager vier Stunden bereit, um den Vorgang abzuschließen. Dieser Zeitraum gibt Ressourcenanbietern die Möglichkeit, sich von vorübergehenden Problemen wiederherzustellen. Wenn Ihre Verschiebeanforderung noch innerhalb des 4-Stunden-Zeitraums liegt, wird weiterhin versucht, den Vorgang abzuschließen, was auch noch erfolgreich sein kann. Die Quell- und Zielressourcengruppen sind während dieses Zeitraums gesperrt, um Konsistenzprobleme zu vermeiden.
+Das Verschieben einer Ressource ist ein komplexer Vorgang, der in verschiedenen Phasen erfolgt. Es kann mehr als nur den Ressourcenanbieter der Ressource umfassen, die Sie verschieben möchten. Aufgrund der Abhängigkeiten zwischen Ressourcenanbietern stellt Azure Resource Manager vier Stunden bereit, um den Vorgang abzuschließen. Dieser Zeitraum gibt Ressourcenanbietern die Möglichkeit, sich von vorübergehenden Problemen wiederherzustellen. Wenn Ihre Verschiebeanforderung innerhalb des Zeitraums von vier Stunden liegt, wird weiterhin versucht, den Vorgang abzuschließen. Dies kann auch erfolgreich sein. Die Quell- und Zielressourcengruppen sind während dieses Zeitraums gesperrt, um Konsistenzprobleme zu vermeiden.
 
 **Frage: Warum ist meine Ressourcengruppe während der Ressourcenverschiebung vier Stunden lang gesperrt?**
 
-Das 4-Stunden-Fenster ist die maximal zulässige Zeit für das Verschieben von Ressourcen. Um Änderungen an den Ressourcen zu verhindern, die gerade verschoben werden, werden sowohl die Quell- als auch die Zielressourcengruppe für die Dauer der Ressourcenverschiebung gesperrt.
+Eine Verschiebeanforderung darf maximal vier Stunden dauern. Um Änderungen an den Ressourcen zu verhindern, die gerade verschoben werden, werden sowohl die Quell- als auch die Zielressourcengruppe für die Dauer der Ressourcenverschiebung gesperrt.
 
-Es gibt zwei Phasen bei einer Verschiebeanforderung. In der ersten Phase wird die Ressource verschoben. In der zweiten Phase werden Benachrichtigungen an andere Ressourcenanbieter gesendet, die von der Ressource abhängen, die verschoben wird. Eine Ressourcengruppe kann für das gesamte 4-Stunden-Zeitfenster gesperrt werden, wenn ein Ressourcenanbieter in einer der beiden Phasen fehlschlägt. Während des gewährten Zeitraums versucht Resource Manager, den fehlgeschlagenen Schritt zu wiederholen.
+Es gibt zwei Phasen bei einer Verschiebeanforderung. In der ersten Phase wird die Ressource verschoben. In der zweiten Phase werden Benachrichtigungen an andere Ressourcenanbieter gesendet, die von der Ressource abhängen, die verschoben wird. Eine Ressourcengruppe kann für das gesamte Zeitfenster von vier Stunden gesperrt werden, wenn ein Ressourcenanbieter in einer der beiden Phasen fehlschlägt. Während des gewährten Zeitraums versucht Resource Manager, den fehlgeschlagenen Schritt zu wiederholen.
 
-Wenn eine Ressource nicht innerhalb des Zeitfensters von 4 Stunden verschoben werden kann, entsperrt Resource Manager beide Ressourcengruppen. Ressourcen, die erfolgreich verschoben wurden, befinden sich in der Zielressourcengruppe. Ressourcen, die nicht verschoben werden konnten, verbleiben in der Quellressourcengruppe.
+Wenn eine Ressource nicht innerhalb des Zeitfensters von vier Stunden verschoben werden kann, entsperrt Resource Manager beide Ressourcengruppen. Ressourcen, die erfolgreich verschoben wurden, befinden sich in der Zielressourcengruppe. Ressourcen, die nicht verschoben werden konnten, verbleiben in der Quellressourcengruppe.
 
 **Frage: Welche Auswirkungen hat es, dass die Quell- und Zielressourcengruppen während der Ressourcenverschiebung gesperrt werden?**
 

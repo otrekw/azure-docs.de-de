@@ -4,12 +4,12 @@ description: Konfigurieren der Anmeldeinformationen des Repositorys zum Herunter
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: 9bd6e6a0a22f7568760f014897fd28ff47e9450b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 142ede6fcc59063d83854712a966a90c7472923b
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76934991"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421423"
 ---
 # <a name="configure-repository-credentials-for-your-application-to-download-container-images"></a>Konfigurieren der Anmeldeinformationen des Repositorys für Ihre Anwendung zum Herunterladen von Containerimages
 
@@ -83,6 +83,10 @@ Hier ist ein Beispiel dafür angegeben, was in der Datei „ClusterManifestTempl
           {
             "name": "DefaultContainerRepositoryPasswordType",
             "value": "PlainText"
+          },
+          {
+        "name": "DefaultMSIEndpointForTokenAuthentication",
+        "value": "URI"
           }
         ]
       },
@@ -117,6 +121,25 @@ Service Fabric unterstützt die Verwendung von Token als Anmeldeinformationen zu
 
     > [!NOTE]
     > Wenn die Flags `UseDefaultRepositoryCredentials` und `UseTokenAuthenticationCredentials` beide auf „true“ festgelegt sind, tritt ein Fehler während der Bereitstellung auf.
+
+### <a name="using-token-credentials-outside-of-azure-global-cloud"></a>Verwenden von Tokenanmeldeinformationen außerhalb von Azure Global Cloud
+
+Wenn Sie tokenbasierte Registrierungsanmeldeinformationen verwenden, ruft Service Fabric ein Token im Auftrag des virtuellen Computers ab, um es ACR vorzulegen. Standardmäßig fordert Service Fabric ein Token an, dessen Zielgruppe der globale Azure-Cloudendpunkt ist. Wenn Sie eine Bereitstellung in einer anderen Cloudinstanz wie Azure Deutschland oder Azure Government durchführt, müssen Sie den Standardwert des Parameters `DefaultMSIEndpointForTokenAuthentication` überschreiben. Wenn Sie die Bereitstellung nicht in einer speziellen Umgebung ausführen, überschreiben Sie diesen Parameter nicht. Wenn Sie ihn überschreiben, ersetzen Sie den Standardwert
+
+```
+http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.core.windows.net/
+```
+
+durch den entsprechenden Ressourcenendpunkt für Ihre Umgebung. Beispielsweise lautet für [Azure Deutschland](https://docs.microsoft.com/azure/germany/germany-developer-guide#endpoint-mapping) die Außerkraftsetzung 
+
+```json
+{
+    "name": "DefaultMSIEndpointForTokenAuthentication",
+    "value": "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.core.cloudapi.de/"
+}
+```
+
+[Weitere Informationen zum Abrufen von Token für VM-Skalierungsgruppen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

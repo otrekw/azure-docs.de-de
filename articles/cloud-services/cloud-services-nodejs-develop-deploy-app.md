@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/17/2017
 ms.author: tagore
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 489025d9cfdd6f1bdbc950e2bd1e7e4d835a4fff
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: c2d76ccd0c2e81147c39f81568fd1394cc1868b6
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079208"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032876"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Erstellen und Bereitstellen einer Node.js-Anwendung in einem Azure-Clouddienst
 
@@ -36,8 +36,8 @@ Die Anwendung ist eine einfache "Hello World"-Anwendung:
 > [!NOTE]
 > In diesem Lernprogramm wird Azure PowerShell verwendet, für die Windows installiert sein muss.
 
-* Installieren und konfigurieren Sie [Azure PowerShell].
-* Laden Sie das [Azure SDK für .NET 2.7]herunter, und installieren Sie es. Wählen Sie während der Installationseinrichtung Folgendes:
+* Installieren und Konfigurieren von [Azure PowerShell].
+* Herunterladen und Installieren des [Azure SDK für .NET 2.7]. Wählen Sie während der Installationseinrichtung Folgendes:
   * MicrosoftAzureAuthoringTools
   * MicrosoftAzureComputeEmulator
 
@@ -180,7 +180,7 @@ Weitere Informationen finden Sie im [Node.js Developer Center (in englischer Spr
 [Azure Websites, Cloud Services and Virtual Machines comparison]: /azure/architecture/guide/technology-choices/compute-decision-tree
 [Verwendung einer einfachen Web-App]: ../app-service/quickstart-nodejs.md
 [Azure PowerShell]: /powershell/azure/
-[Azure SDK für .NET 2.7]: https://www.microsoft.com/en-us/download/details.aspx?id=48178
+[Azure SDK for .NET 3.0]: https://www.microsoft.com/download/details.aspx?id=54917
 [Stellen Sie eine PowerShell-Verbindung mit Ihrem Abonnement her.]: /powershell/azure/
 [nodejs.org]: https://nodejs.org/
 [Übersicht zum Erstellen eines gehosteten Diensts für Azure]: https://azure.microsoft.com/documentation/services/cloud-services/

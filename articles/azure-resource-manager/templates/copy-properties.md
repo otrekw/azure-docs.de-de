@@ -2,17 +2,19 @@
 title: Definieren mehrerer Instanzen einer Eigenschaft
 description: Hier erfahren Sie, wie Sie den Kopiervorgang in einer Azure Resource Manager-Vorlage verwenden, um sie beim Erstellen einer Eigenschaft für eine Ressource mehrmals zu durchlaufen.
 ms.topic: conceptual
-ms.date: 04/14/2020
-ms.openlocfilehash: 61122b01889da832a73f729833ab0af676904d54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/15/2020
+ms.openlocfilehash: f199872d5bb8a0333bf7bedb9501a6ca1b884691
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678459"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605242"
 ---
 # <a name="property-iteration-in-arm-templates"></a>Eigenschafteniteration in ARM-Vorlagen
 
-In diesem Artikel erfahren Sie, wie Sie in Ihrer Azure Resource Manager-Vorlage (ARM) mehrere Instanzen einer Eigenschaft erstellen. Durch Hinzufügen des Elements **copy** zum Eigenschaftenabschnitt einer Ressource in Ihrer Vorlage kann die Anzahl von Elementen für eine Eigenschaft während der Bereitstellung dynamisch festgelegt werden. Außerdem vermeiden Sie so die Wiederholung von Vorlagensyntax.
+In diesem Artikel erfahren Sie, wie Sie in Ihrer Azure Resource Manager-Vorlage (ARM-Vorlage) mehrere Instanzen einer Eigenschaft erstellen. Durch Hinzufügen des Elements **copy** zum Eigenschaftenabschnitt einer Ressource in Ihrer Vorlage kann die Anzahl von Elementen für eine Eigenschaft während der Bereitstellung dynamisch festgelegt werden. Außerdem vermeiden Sie so die Wiederholung von Vorlagensyntax.
+
+Sie können copy nur mit Ressourcen der obersten Ebene verwenden, auch wenn Sie eine Kopie auf eine Eigenschaft anwenden. Weitere Informationen zum Ändern einer untergeordneten Ressource in eine Ressource der obersten Ebene finden Sie unter [Iterationen für eine untergeordnete Ressource](copy-resources.md#iteration-for-a-child-resource).
 
 „copy“ kann auch mit [Ressourcen](copy-resources.md), [Variablen](copy-variables.md) und [Ausgaben](copy-outputs.md) verwendet werden.
 

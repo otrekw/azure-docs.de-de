@@ -5,24 +5,23 @@ services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: 11d2131b-f683-47fd-a691-4cdfc696f62b
+editor: thsomasu
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: multiple
 ms.topic: article
-ms.date: 09/30/2019
+ms.date: 09/14/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 10/02/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3acfc9e3a856ec777bfada68d535b6a1e9878a08
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: bf9670ae8fd22342a05f8d506f743c7a5c395e5f
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017922"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088135"
 ---
 # <a name="send-cross-platform-notifications-with-azure-notification-hubs"></a>Senden plattformübergreifender Benachrichtigungen mit Azure Notification Hubs
 
@@ -38,9 +37,9 @@ Dieser Artikel zeigt, wie Sie die Vorteile von Vorlagen nutzen können, um eine 
 
 ## <a name="send-cross-platform-notifications-using-templates"></a>Senden von plattformübergreifenden Benachrichtigungen mit Vorlagen
 
-In diesem Abschnitt wird der Beispielcode verwendet, den Sie im Tutorial [Senden von Benachrichtigungen an bestimmte Benutzer mit Azure Notification Hubs] erstellt haben. Sie können das Beispiel von [GitHub](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers) herunterladen.
+In diesem Abschnitt wird der Beispielcode verwendet, den Sie im Tutorial [Senden von Benachrichtigungen an bestimmte Benutzer mit Azure Notification Hubs] erstellt haben. Sie können das [vollständige Beispiel von GitHub herunterladen](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers).
 
-Um plattformunabhängige Benachrichtigungen mit Vorlagen zu senden, führen Sie die folgenden Schritte aus:
+Um plattformübergreifende Benachrichtigungen mit Vorlagen zu senden, gehen Sie wie folgt vor:
 
 1. Erweitern Sie im **Projektmappen-Explorer** in Visual Studio den Ordner **Controllers**, und öffnen Sie dann die Datei *RegisterController.cs*.
 
@@ -77,7 +76,7 @@ Um plattformunabhängige Benachrichtigungen mit Vorlagen zu senden, führen Sie 
 
     Dieser Code ruft die plattformspezifische Methode zur Erstellung einer Vorlagenregistrierung anstelle der Systemregistrierung auf. Da Vorlagenregistrierungen von nativen Registrierungen abgeleitet sind, müssen Sie vorhandene Registrierungen nicht ändern.
 
-1. Öffnen Sie im **Projektmappen-Explorer** im Ordner **Controllers** die Datei *NotificationsController.cs*. Ersetzen Sie die `Post`-Methode durch den folgenden Code:
+1. Öffnen Sie im **Projektmappen-Explorer** im Ordner **Controllers** die Datei **NotificationsController.cs**. Ersetzen Sie die `Post`-Methode durch den folgenden Code:
 
     ```csharp
     public async Task<HttpResponseMessage> Post()

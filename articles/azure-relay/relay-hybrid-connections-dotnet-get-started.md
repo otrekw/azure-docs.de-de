@@ -4,12 +4,12 @@ description: Schreiben Sie eine C#-Konsolenanwendung für WebSockets von Azure R
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 06/23/2020
-ms.openlocfilehash: eb204a7bf18ed1c88a6d359cc521130fa19a1c82
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: bf22b8b11dc386644803b43ee4e3a51d04b70419
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934258"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527427"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-net"></a>Erste Schritte mit WebSockets von Relay Hybrid Connections in .NET
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
@@ -52,7 +52,7 @@ Schreiben Sie in Visual Studio eine C#-Konsolenanwendung, um Nachrichten an das 
 2. Führen Sie die Clientanwendung aus, und geben Sie Text ein.
 3. Vergewissern Sie sich, dass in der Konsole der Serveranwendung der Text angezeigt wird, der in die Clientanwendung eingegeben wurde.
 
-    ![Ausführen von Anwendungen](./media/relay-hybrid-connections-dotnet-get-started/running-applications.png)
+    ![Konsolenfenster, die sowohl die Server- als auch die Clientanwendungen testen.](./media/relay-hybrid-connections-dotnet-get-started/running-applications.png)
 
 Glückwunsch! Sie haben eine vollständige Hybrid Connections-Anwendung erstellt!
 

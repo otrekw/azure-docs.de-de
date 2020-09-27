@@ -4,12 +4,12 @@ description: Schreiben einer Node.js-Konsolenanwendung für WebSockets von Azure
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 8dc52c93d4b5cd6d50b66338350a41cf0e24daa0
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: cf660d7a776c0dfa48b6c023fa0fa3516a3a0ea5
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386298"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527410"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-nodejs"></a>Erste Schritte mit WebSockets von Relay Hybrid Connections in Node.js
 
@@ -52,7 +52,7 @@ Schreiben Sie eine Node.js-Konsolenanwendung, um Nachrichten an das Relay zu sen
 2. Führen Sie die Clientanwendung aus: Geben Sie in einer Node.js-Eingabeaufforderung `node sender.js` und einen beliebigen Text ein.
 3. Stellen Sie sicher, dass von der Konsole der Serveranwendung der Text ausgegeben wird, der in die Clientanwendung eingegeben wurde.
 
-    ![Ausführen von Anwendungen](./media/relay-hybrid-connections-node-get-started/running-applications.png)
+    ![Konsolenfenster, die sowohl die Server- als auch die Clientanwendungen testen.](./media/relay-hybrid-connections-node-get-started/running-applications.png)
 
 Glückwunsch! Sie haben mithilfe von Node.js eine Anwendung für End-to-End-Hybridverbindungen erstellt.
 

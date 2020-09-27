@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 08/31/2020
+ms.date: 09/04/2020
 ms.custom: generated
-ms.openlocfilehash: 685fdf8180f54c87fe6677268bd289ee00912c96
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: cbf859baa79b6630dea44a23d2a0e6f9fb64b82a
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89227762"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489662"
 ---
 # <a name="azure-resource-provider-operations"></a>Vorgänge für Azure-Ressourcenanbieter
 
@@ -402,6 +402,23 @@ Azure-Dienst: [Virtual Machines](../virtual-machines/index.yml), [Virtual Machin
 > | Microsoft.Compute/availabilitySets/write | Erstellt eine neue Verfügbarkeitsgruppe oder aktualisiert eine bereits vorhandene. |
 > | Microsoft.Compute/availabilitySets/delete | Löscht die Verfügbarkeitsgruppe. |
 > | Microsoft.Compute/availabilitySets/vmSizes/read | Dient zum Auflisten der Größen, die zum Erstellen oder Aktualisieren eines virtuellen Computers in der Verfügbarkeitsgruppe zur Verfügung stehen. |
+> | Microsoft.Compute/cloudServices/read | Hiermit werden die Eigenschaften eines Clouddiensts abgerufen. |
+> | Microsoft.Compute/cloudServices/write | Hiermit wird ein neuer Clouddienst erstellt oder ein vorhandener Clouddienst aktualisiert. |
+> | Microsoft.Compute/cloudServices/delete | Hiermit wird der Clouddienst gelöscht. |
+> | Microsoft.Compute/cloudServices/read | Schaltet den Clouddienst aus. |
+> | Microsoft.Compute/cloudServices/start/action | Startet den Clouddienst. |
+> | Microsoft.Compute/cloudServices/restart/action | Startet mindestens eine Rolleninstanz in einem Clouddienst neu. |
+> | Microsoft.Compute/cloudServices/reimage/action | Hiermit werden alle Datenträger in den Rolleninstanzen eines Clouddiensts neu erstellt. |
+> | Microsoft.Compute/cloudServices/rebuild/action | Hiermit wird für alle Rolleninstanzen in einem Clouddienst ein Reimaging durchgeführt. |
+> | Microsoft.Compute/cloudServices/delete/action | Löscht Rolleninstanzen in einem Clouddienst. |
+> | Microsoft.Compute/cloudServices/instanceView/read | Ruft den Status eines Clouddiensts ab. |
+> | Microsoft.Compute/cloudServices/roleInstances/delete | Löscht eine Rolleninstanz aus einem Clouddienst. |
+> | Microsoft.Compute/cloudServices/roleInstances/read | Ruft eine Rolleninstanz aus einem Clouddienst ab. |
+> | Microsoft.Compute/cloudServices/roleInstances/restart/action | Startet eine Rolleninstanz eines Clouddiensts neu. |
+> | Microsoft.Compute/cloudServices/roleInstances/reimage/action | Führt Reimaging für eine Rolleninstanz eines Clouddiensts durch. |
+> | Microsoft.Compute/cloudServices/roleInstances/rebuild/action | Erstellt alle Datenträger in einem Clouddienst neu. |
+> | Microsoft.Compute/cloudServices/roleInstances/instanceView/read | Ruft den Status einer Rolleninstanz aus einem Clouddienst ab. |
+> | Microsoft.Compute/cloudServices/updateDomains/read | Ruft ein Liste aller Updatedomänen in einem Clouddienst ab. |
 > | Microsoft.Compute/diskAccesses/read | Ruft Eigenschaften der DiskAccess-Ressource ab. |
 > | Microsoft.Compute/diskAccesses/write | Erstellt eine neue DiskAccess-Ressource oder aktualisiert eine bereits vorhandene. |
 > | Microsoft.Compute/diskAccesses/delete | Löscht eine DiskAccess-Ressource. |
@@ -1385,23 +1402,24 @@ Azure-Dienst: Klassisches Bereitstellungsmodell für Speicher
 Azure-Dienst: [Azure Data Box](../databox/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Aktion | BESCHREIBUNG |
+> | Aktion | Beschreibung |
 > | --- | --- |
+> | Microsoft.DataBox/jobs/read | Hiermit werden die Aufträge aufgelistet oder abgerufen. |
+> | Microsoft.DataBox/jobs/delete | Hiermit werden die Aufträge gelöscht. |
+> | Microsoft.DataBox/jobs/write | Dient zum Erstellen oder Aktualisieren der Aufträge. |
+> | Microsoft.DataBox/locations/availableSkus/read | Liste die verfügbaren SKUs auf oder ruft sie ab |
+> | Microsoft.DataBox/locations/operationResults/read | Listet die Vorgangsergebnisse auf bzw. ruft sie ab. |
+> | Microsoft.DataBox/operations/read | Listet die Vorgänge auf bzw. ruft sie ab |
+> | **DataAction** | **Beschreibung** |
 > | Microsoft.DataBox/register/action | Registriert den Anbieter „Microsoft.Databox“. |
 > | Microsoft.DataBox/unregister/action | Hebt die Registrierung des Anbieters „Microsoft.Databox“ auf |
 > | Microsoft.DataBox/jobs/cancel/action | Hiermit wird ein laufender Auftrag storniert. |
 > | Microsoft.DataBox/jobs/bookShipmentPickUp/action | Hiermit kann eine Abholung für Rücklieferungen gebucht werden. |
-> | Microsoft.DataBox/jobs/read | Hiermit werden die Aufträge aufgelistet oder abgerufen. |
-> | Microsoft.DataBox/jobs/delete | Hiermit werden die Aufträge gelöscht. |
-> | Microsoft.DataBox/jobs/write | Dient zum Erstellen oder Aktualisieren der Aufträge. |
 > | Microsoft.DataBox/jobs/listCredentials/action | Hiermit werden die unverschlüsselten Anmeldeinformationen für den Auftrag aufgelistet. |
 > | Microsoft.DataBox/locations/validateInputs/action | Diese Methode führt alle Arten von Prüfungen aus. |
 > | Microsoft.DataBox/locations/validateAddress/action | Hiermit wird die Lieferadresse überprüft, und es werden – sofern vorhanden – alternative Adressen bereitgestellt. |
 > | Microsoft.DataBox/locations/availableSkus/action | Mit dieser Methode wird die Liste der verfügbaren SKUs zurückgegeben. |
 > | Microsoft.DataBox/locations/regionConfiguration/action | Diese Methode gibt die Konfigurationen für die Region zurück. |
-> | Microsoft.DataBox/locations/availableSkus/read | Liste die verfügbaren SKUs auf oder ruft sie ab |
-> | Microsoft.DataBox/locations/operationResults/read | Listet die Vorgangsergebnisse auf bzw. ruft sie ab. |
-> | Microsoft.DataBox/operations/read | Listet die Vorgänge auf bzw. ruft sie ab |
 > | Microsoft.DataBox/subscriptions/resourceGroups/moveResources/action | Diese Methode führt die Verschiebung der Ressource durch. |
 > | Microsoft.DataBox/subscriptions/resourceGroups/validateMoveResources/action | Diese Methode überprüft, ob die Verschiebung der Ressource zulässig ist oder nicht. |
 
@@ -3284,8 +3302,9 @@ Azure-Dienst: [Azure Database Migration Service](../dms/index.yml)
 Azure-Dienst: [Azure Database for MariaDB](../mariadb/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Aktion | BESCHREIBUNG |
+> | Aktion | Beschreibung |
 > | --- | --- |
+> | Microsoft.DBforMariaDB/privateEndpointConnectionsApproval/action | Bestimmt, ob der Benutzer eine private Endpunktverbindung genehmigen darf. |
 > | Microsoft.DBforMariaDB/register/action | Registriert einen MariaDB-Ressourcenanbieter |
 > | Microsoft.DBforMariaDB/checkNameAvailability/action | Überprüfen Sie, ob der angegebene Servername für die weltweite Bereitstellung bei einem bestimmten Abonnement verfügbar ist. |
 > | Microsoft.DBforMariaDB/locations/administratorAzureAsyncOperation/read | Ruft gegenwärtig ausgeführte Vorgänge für MariaDB-Serveradministratoren ab. |
@@ -3304,10 +3323,11 @@ Azure-Dienst: [Azure Database for MariaDB](../mariadb/index.yml)
 > | Microsoft.DBforMariaDB/locations/serverKeyOperationResults/read | Ruft gegenwärtig ausgeführte Vorgänge für Serverschlüssel von Transparent Data Encryption ab. |
 > | Microsoft.DBforMariaDB/operations/read | Gibt die Liste der MariaDB-Vorgänge zurück |
 > | Microsoft.DBforMariaDB/performanceTiers/read | Gibt die Liste der verfügbaren Leistungsstufen zurück. |
-> | Microsoft.DBforMariaDB/servers/queryTexts/action | Gibt die Texte für eine Liste von Abfragen zurück. |
-> | Microsoft.DBforMariaDB/servers/queryTexts/action | Zurückgeben des Texts einer Abfrage |
 > | Microsoft.DBforMariaDB/servers/start/action | Startet einen bestimmten Server. |
 > | Microsoft.DBforMariaDB/servers/stop/action | Beendet einen bestimmten Server. |
+> | Microsoft.DBforMariaDB/servers/queryTexts/action | Gibt die Texte für eine Liste von Abfragen zurück. |
+> | Microsoft.DBforMariaDB/servers/queryTexts/action | Zurückgeben des Texts einer Abfrage |
+> | Microsoft.DBforMariaDB/servers/privateEndpointConnectionsApproval/action | Bestimmt, ob der Benutzer eine private Endpunktverbindung genehmigen darf. |
 > | Microsoft.DBforMariaDB/servers/read | Gibt die Liste der Server zurück oder ruft die Eigenschaften für den angegebenen Server ab. |
 > | Microsoft.DBforMariaDB/servers/write | Erstellt einen Server mit den angegebenen Parametern oder aktualisiert die Eigenschaften oder Markierungen für den angegebenen Server. |
 > | Microsoft.DBforMariaDB/servers/delete | Löscht einen vorhandenen Server. |
@@ -3364,8 +3384,9 @@ Azure-Dienst: [Azure Database for MariaDB](../mariadb/index.yml)
 Azure-Dienst: [Azure Database for MySQL](../mysql/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Aktion | BESCHREIBUNG |
+> | Aktion | Beschreibung |
 > | --- | --- |
+> | Microsoft.DBforMySQL/privateEndpointConnectionsApproval/action | Bestimmt, ob der Benutzer eine private Endpunktverbindung genehmigen darf. |
 > | Microsoft.DBforMySQL/register/action | Registriert den MySQL-Ressourcenanbieter |
 > | Microsoft.DBforMySQL/checkNameAvailability/action | Überprüfen Sie, ob der angegebene Servername für die weltweite Bereitstellung bei einem bestimmten Abonnement verfügbar ist. |
 > | Microsoft.DBforMySQL/locations/administratorAzureAsyncOperation/read | Ruft gegenwärtig ausgeführte Vorgänge für MySQL-Serveradministratoren ab. |
@@ -3386,9 +3407,9 @@ Azure-Dienst: [Azure Database for MySQL](../mysql/index.yml)
 > | Microsoft.DBforMySQL/performanceTiers/read | Gibt die Liste der verfügbaren Leistungsstufen zurück. |
 > | Microsoft.DBforMySQL/servers/start/action | Startet einen bestimmten Server. |
 > | Microsoft.DBforMySQL/servers/stop/action | Beendet einen bestimmten Server. |
-> | Microsoft.DBforMySQL/servers/export/action |  |
 > | Microsoft.DBforMySQL/servers/queryTexts/action | Gibt die Texte für eine Liste von Abfragen zurück. |
 > | Microsoft.DBforMySQL/servers/queryTexts/action | Zurückgeben des Texts einer Abfrage |
+> | Microsoft.DBforMySQL/servers/privateEndpointConnectionsApproval/action | Bestimmt, ob der Benutzer eine private Endpunktverbindung genehmigen darf. |
 > | Microsoft.DBforMySQL/servers/read | Gibt die Liste der Server zurück oder ruft die Eigenschaften für den angegebenen Server ab. |
 > | Microsoft.DBforMySQL/servers/write | Erstellt einen Server mit den angegebenen Parametern oder aktualisiert die Eigenschaften oder Markierungen für den angegebenen Server. |
 > | Microsoft.DBforMySQL/servers/delete | Löscht einen vorhandenen Server. |
@@ -3408,6 +3429,9 @@ Azure-Dienst: [Azure Database for MySQL](../mysql/index.yml)
 > | Microsoft.DBforMySQL/servers/databases/read | Gibt die Liste der MySQL-Datenbanken zurück oder ruft die Eigenschaften für die angegebene Datenbank ab |
 > | Microsoft.DBforMySQL/servers/databases/write | Erstellt eine MySQL-Datenbank mit den angegebenen Parametern oder aktualisiert die Eigenschaften für die angegebene Datenbank |
 > | Microsoft.DBforMySQL/servers/databases/delete | Löscht eine vorhandene MySQL-Datenbank |
+> | Microsoft.DBforMySQL/servers/exports/write |  |
+> | Microsoft.DBforMySQL/servers/exports/read |  |
+> | Microsoft.DBforMySQL/servers/exports/read |  |
 > | Microsoft.DBforMySQL/servers/firewallRules/read | Gibt die Liste der Firewallregeln für einen Server zurück oder ruft die Eigenschaften für die angegebene Firewallregel ab. |
 > | Microsoft.DBforMySQL/servers/firewallRules/write | Erstellt eine Firewallregel mit den angegebenen Parametern oder aktualisiert eine vorhandene Regel. |
 > | Microsoft.DBforMySQL/servers/firewallRules/delete | Löscht eine vorhandene Firewallregel. |
@@ -3445,10 +3469,18 @@ Azure-Dienst: [Azure Database for MySQL](../mysql/index.yml)
 Azure-Dienst: [Azure-Datenbank für PostgreSQL](../postgresql/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Aktion | BESCHREIBUNG |
+> | Aktion | Beschreibung |
 > | --- | --- |
+> | Microsoft.DBforPostgreSQL/privateEndpointConnectionsApproval/action | Bestimmt, ob der Benutzer eine private Endpunktverbindung genehmigen darf. |
 > | Microsoft.DBforPostgreSQL/register/action | Registriert den PostgreSQL-Ressourcenanbieter |
 > | Microsoft.DBforPostgreSQL/checkNameAvailability/action | Überprüfen Sie, ob der angegebene Servername für die weltweite Bereitstellung bei einem bestimmten Abonnement verfügbar ist. |
+> | Microsoft.DBforPostgreSQL/flexibleServers/read | Gibt die Liste der Server zurück oder ruft die Eigenschaften für den angegebenen Server ab. |
+> | Microsoft.DBforPostgreSQL/flexibleServers/write | Erstellt einen Server mit den angegebenen Parametern oder aktualisiert die Eigenschaften oder Markierungen für den angegebenen Server. |
+> | Microsoft.DBforPostgreSQL/flexibleServers/delete | Löscht einen vorhandenen Server. |
+> | Microsoft.DBforPostgreSQL/flexibleServers/providers/Microsoft.Insights/diagnosticSettings/read | Ruft die Diagnoseeinstellung für die Ressource ab. |
+> | Microsoft.DBforPostgreSQL/flexibleServers/providers/Microsoft.Insights/diagnosticSettings/write | Erstellt oder aktualisiert die Diagnoseeinstellung für die Ressource. |
+> | Microsoft.DBforPostgreSQL/flexibleServers/providers/Microsoft.Insights/logDefinitions/read | Ruft die verfügbaren Protokolle für PostgreSQL-Server ab |
+> | Microsoft.DBforPostgreSQL/flexibleServers/providers/Microsoft.Insights/metricDefinitions/read | Dient zum Zurückgeben verfügbarer Metriktypen für Datenbanken. |
 > | Microsoft.DBforPostgreSQL/locations/administratorAzureAsyncOperation/read | Ruft gegenwärtig ausgeführte Vorgänge für PostgreSQL-Serveradministratoren ab. |
 > | Microsoft.DBforPostgreSQL/locations/administratorOperationResults/read | Gibt Ergebnisse von PostgreSQL-Serveradministratorvorgängen zurück. |
 > | Microsoft.DBforPostgreSQL/locations/azureAsyncOperation/read | Gibt die Ergebnisse von PostgreSQL-Servervorgängen zurück |
@@ -3466,6 +3498,7 @@ Azure-Dienst: [Azure-Datenbank für PostgreSQL](../postgresql/index.yml)
 > | Microsoft.DBforPostgreSQL/operations/read | Gibt die Liste der PostgreSQL-Vorgänge zurück |
 > | Microsoft.DBforPostgreSQL/performanceTiers/read | Gibt die Liste der verfügbaren Leistungsstufen zurück. |
 > | Microsoft.DBforPostgreSQL/servers/queryTexts/action | Zurückgeben des Texts einer Abfrage |
+> | Microsoft.DBforPostgreSQL/servers/privateEndpointConnectionsApproval/action | Bestimmt, ob der Benutzer eine private Endpunktverbindung genehmigen darf. |
 > | Microsoft.DBforPostgreSQL/servers/read | Gibt die Liste der Server zurück oder ruft die Eigenschaften für den angegebenen Server ab. |
 > | Microsoft.DBforPostgreSQL/servers/write | Erstellt einen Server mit den angegebenen Parametern oder aktualisiert die Eigenschaften oder Markierungen für den angegebenen Server. |
 > | Microsoft.DBforPostgreSQL/servers/delete | Löscht einen vorhandenen Server. |
@@ -3765,7 +3798,7 @@ Azure-Dienst: [Azure Cosmos DB](../cosmos-db/index.yml)
 
 ### <a name="microsoftsql"></a>Microsoft.Sql
 
-Azure-Dienst: [Azure SQL-Datenbank](../azure-sql/database/index.yml), [Azure SQL Managed Instance](../azure-sql/managed-instance/index.yml), [SQL Data Warehouse](../sql-data-warehouse/index.yml)
+Azure-Dienst: [Azure SQL-Datenbank](../azure-sql/database/index.yml), [Azure SQL Mabaged Instance](../azure-sql/managed-instance/index.yml), [Azure Synapse Analytics (früher SQL Data Warehouse)](../sql-data-warehouse/index.yml)
 
 > [!div class="mx-tableFixed"]
 > | Aktion | BESCHREIBUNG |
@@ -3938,13 +3971,11 @@ Azure-Dienst: [Azure SQL-Datenbank](../azure-sql/database/index.yml), [Azure SQL
 > | Microsoft.Sql/managedInstances/vulnerabilityAssessments/read | Ruft die Sicherheitsrisikobewertungs-Richtlinien für eine angegebene verwaltete Instanz ab. |
 > | Microsoft.Sql/operations/read | Ruft die verfügbaren REST-Vorgänge ab. |
 > | Microsoft.Sql/servers/tdeCertificates/action | Erstellt oder aktualisiert das TDE-Zertifikat. |
-> | Microsoft.Sql/servers/enableAzureADOnlyAuthentication/action | Aktiviert die ausschließliche Azure Active Directory-Authentifizierung auf dem logischen Server. |
-> | Microsoft.Sql/servers/disableAzureADOnlyAuthentication/action | Deaktiviert die ausschließliche Azure Active Directory-Authentifizierung auf dem logischen Server |
+> | Microsoft.Sql/servers/import/action | Importieren von Azure SQL-Datenbank |
 > | Microsoft.Sql/servers/read | Gibt die Liste der Server zurück oder ruft die Eigenschaften für den angegebenen Server ab. |
 > | Microsoft.Sql/servers/write | Erstellt einen Server mit den angegebenen Parametern oder aktualisiert die Eigenschaften oder Markierungen für den angegebenen Server. |
 > | Microsoft.Sql/servers/delete | Löscht einen vorhandenen Server. |
 > | Microsoft.Sql/servers/privateEndpointConnectionsApproval/action | Bestimmt, ob der Benutzer eine private Endpunktverbindung genehmigen darf. |
-> | Microsoft.Sql/servers/import/action | Dient zum Erstellen einer neuen Datenbank auf dem Server und zum Bereitstellen von Schema und Daten aus einem DACPAC-Paket. |
 > | Microsoft.Sql/servers/administratorOperationResults/read | Ruft gegenwärtig ausgeführte Vorgänge für Serveradministratoren ab. |
 > | Microsoft.Sql/servers/administrators/read | Ruft ein bestimmtes Azure Active Directory-Administratorobjekt ab. |
 > | Microsoft.Sql/servers/administrators/write | Fügt ein bestimmtes Azure Active Directory-Administratorobjekt hinzu, oder aktualisiert es. |
@@ -3953,18 +3984,17 @@ Azure-Dienst: [Azure SQL-Datenbank](../azure-sql/database/index.yml), [Azure SQL
 > | Microsoft.Sql/servers/advisors/write | Aktualisiert den Status der automatischen Ausführung eines Ratgebers auf der Serverebene. |
 > | Microsoft.Sql/servers/advisors/recommendedActions/read | Gibt eine Liste mit empfohlenen Aktionen des angegebenen Ratgebers für den Server zurück. |
 > | Microsoft.Sql/servers/advisors/recommendedActions/write | Dient zum Anwenden der empfohlenen Aktion auf den Server. |
-> | Microsoft.Sql/servers/auditingPolicies/read | Dient zum Abrufen von Details zur Richtlinie für die Standardservertabellen-Überwachung, die für einen bestimmten Server konfiguriert ist. |
-> | Microsoft.Sql/servers/auditingPolicies/write | Dient zum Ändern der Standardservertabellen-Überwachung für einen bestimmten Server. |
 > | Microsoft.Sql/servers/auditingSettings/read | Dient zum Abrufen von Details zur Richtlinie für die Serverblobüberwachung, die für einen bestimmten Server konfiguriert ist. |
 > | Microsoft.Sql/servers/auditingSettings/write | Dient zum Ändern der Serverblobüberwachung für einen bestimmten Server. |
 > | Microsoft.Sql/servers/auditingSettings/operationResults/read | Dient zum Abrufen des Ergebnisses des Set-Vorgangs der Richtlinie für die Serverblobüberwachung. |
 > | Microsoft.Sql/servers/automaticTuning/read | Gibt die Einstellungen zur automatischen Optimierung für den Server zurück. |
 > | Microsoft.Sql/servers/automaticTuning/write | Aktualisiert die Einstellungen zur automatischen Optimierung für den Server und gibt die aktualisierten Einstellungen zurück. |
+> | Microsoft.Sql/servers/azureADOnlyAuthentications/read | Liest ein spezifisches Objekt für die ausschließliche Azure Active Directory-Authentifizierung. |
+> | Microsoft.Sql/servers/azureADOnlyAuthentications/write | Fügt ein spezifisches Objekt für die ausschließliche Azure Active Directory-Authentifizierung hinzu oder aktualisiert es. |
+> | Microsoft.Sql/servers/azureADOnlyAuthentications/delete | Löscht ein spezifisches Objekt für die ausschließliche Azure Active Directory-Authentifizierung. |
 > | Microsoft.Sql/servers/communicationLinks/read | Gibt die Liste der Kommunikationsverbindungen eines bestimmten Servers zurück. |
 > | Microsoft.Sql/servers/communicationLinks/write | Erstellt oder aktualisiert eine Serverkommunikationsverbindung. |
 > | Microsoft.Sql/servers/communicationLinks/delete | Löscht eine vorhandene Serverkommunikationsverbindung. |
-> | Microsoft.Sql/servers/connectionPolicies/read | Gibt die Liste der Serververbindungsrichtlinien eines angegebenen Servers zurück. |
-> | Microsoft.Sql/servers/connectionPolicies/write | Erstellt oder aktualisiert eine Serververbindungsrichtlinie. |
 > | Microsoft.Sql/servers/databases/read | Gibt die Liste der Datenbanken zurück oder ruft die Eigenschaften für die angegebene Datenbank ab. |
 > | Microsoft.Sql/servers/databases/write | Erstellt eine Datenbank mit den angegebenen Parametern oder aktualisiert die Eigenschaften oder Markierungen für die angegebene Datenbank. |
 > | Microsoft.Sql/servers/databases/delete | Löscht eine vorhandene Datenbank. |
@@ -3974,14 +4004,13 @@ Azure-Dienst: [Azure SQL-Datenbank](../azure-sql/database/index.yml), [Azure SQL
 > | Microsoft.Sql/servers/databases/upgradeDataWarehouse/action | Führt ein Upgrade für die Azure SQL Data Warehouse-Datenbank durch. |
 > | Microsoft.Sql/servers/databases/move/action | Ändert den Namen einer vorhandenen Datenbank. |
 > | Microsoft.Sql/servers/databases/restorePoints/action | Erstellt einen neuen Wiederherstellungspunkt. |
+> | Microsoft.Sql/servers/databases/import/action | Importieren von Azure SQL-Datenbank |
 > | Microsoft.Sql/servers/databases/failover/action | Vom Kunden initiiertes Datenbankfailover |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentScans/action | Dient zum Ausführen einer Datenbanküberprüfung zur Bewertung von Sicherheitsrisiken. |
 > | Microsoft.Sql/servers/databases/advisors/read | Gibt eine Liste mit verfügbaren Ratgebern für die Datenbank zurück. |
 > | Microsoft.Sql/servers/databases/advisors/write | Dient zum Aktualisieren des Status der automatischen Ausführung eines Ratgebers auf der Datenbankebene. |
 > | Microsoft.Sql/servers/databases/advisors/recommendedActions/read | Gibt eine Liste mit empfohlenen Aktionen des angegebenen Ratgebers für die Datenbank zurück. |
 > | Microsoft.Sql/servers/databases/advisors/recommendedActions/write | Dient zum Anwenden der empfohlenen Aktion auf die Datenbank. |
-> | Microsoft.Sql/servers/databases/auditingPolicies/read | Dient zum Abrufen von Details zur Tabellenüberwachungsrichtlinie, die für eine bestimmte Datenbank konfiguriert ist. |
-> | Microsoft.Sql/servers/databases/auditingPolicies/write | Dient zum Ändern der Tabellenüberwachungsrichtlinie für eine bestimmte Datenbank. |
 > | Microsoft.Sql/servers/databases/auditingSettings/read | Dient zum Abrufen von Details zur Blobüberwachungsrichtlinie, die für eine bestimmte Datenbank konfiguriert ist. |
 > | Microsoft.Sql/servers/databases/auditingSettings/write | Dient zum Ändern der Blobüberwachungsrichtlinie für eine bestimmte Datenbank. |
 > | Microsoft.Sql/servers/databases/auditRecords/read | Dient zum Abrufen der Datensätze für die Datenbankblobüberwachung. |
@@ -3993,8 +4022,6 @@ Azure-Dienst: [Azure SQL-Datenbank](../azure-sql/database/index.yml), [Azure SQL
 > | Microsoft.Sql/servers/databases/backupShortTermRetentionPolicies/read | Ruft eine kurzfristige Aufbewahrungsrichtlinie für eine Datenbank ab |
 > | Microsoft.Sql/servers/databases/backupShortTermRetentionPolicies/write | Aktualisiert eine kurzfristige Aufbewahrungsrichtlinie für eine Datenbank |
 > | Microsoft.Sql/servers/databases/columns/read | Zurückgeben einer Liste von Spalten für eine Datenbank |
-> | Microsoft.Sql/servers/databases/connectionPolicies/read | Dient zum Abrufen von Details zur Verbindungsrichtlinie, die für eine bestimmte Datenbank konfiguriert ist. |
-> | Microsoft.Sql/servers/databases/connectionPolicies/write | Dient zum Ändern der Verbindungsrichtlinie für eine bestimmte Datenbank. |
 > | Microsoft.Sql/servers/databases/currentSensitivityLabels/read | Listet die Vertraulichkeitsbezeichnungen einer bestimmten Datenbank auf. |
 > | Microsoft.Sql/servers/databases/currentSensitivityLabels/write | Batchupdate von Vertraulichkeitsbezeichnungen |
 > | Microsoft.Sql/servers/databases/dataMaskingPolicies/read | Gibt die Liste der Richtlinien zur Maskierung von Datenbankdaten zurück. |
@@ -4012,6 +4039,7 @@ Azure-Dienst: [Azure SQL-Datenbank](../azure-sql/database/index.yml), [Azure SQL
 > | Microsoft.Sql/servers/databases/extensions/importExtensionOperationResults/read | Ruft aktuell ausgeführte Importvorgänge ab. |
 > | Microsoft.Sql/servers/databases/geoBackupPolicies/read | Ruft Richtlinien für die Geosicherung einer bestimmten Datenbank ab. |
 > | Microsoft.Sql/servers/databases/geoBackupPolicies/write | Erstellt oder aktualisiert eine Richtlinie für die Geosicherung einer Datenbank. |
+> | Microsoft.Sql/servers/databases/importExportAzureAsyncOperation/read | Ruft gegenwärtig ausgeführte Import-/Exportvorgänge ab. |
 > | Microsoft.Sql/servers/databases/importExportOperationResults/read | Ruft gegenwärtig ausgeführte Import-/Exportvorgänge ab. |
 > | Microsoft.Sql/servers/databases/maintenanceWindowOptions/read | Ruft eine Liste mit den verfügbaren Wartungsfenstern für eine ausgewählte Datenbank ab. |
 > | Microsoft.Sql/servers/databases/maintenanceWindows/read | Ruft Wartungsfenstereinstellungen für eine ausgewählte Datenbank ab. |
@@ -4965,6 +4993,39 @@ Azure-Dienst: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft.CognitiveServices/accounts/ImmersiveReader/getcontentmodelforreader/action | Erstellt eine Sitzung mit Plastischer Reader |
 > | Microsoft.CognitiveServices/accounts/InkRecognizer/recognize/action | Analysiert bei Übergabe einer Reihe von Strichdaten den Inhalt und generiert eine Liste bekannter Entitäten, einschließlich erkannten Texts. |
 > | Microsoft.CognitiveServices/accounts/LUIS/predict/action | Ruft die Vorhersage für veröffentlichte Endpunkte für die angegebene Abfrage ab. |
+> | Microsoft.CognitiveServices/accounts/MetricsAdvisor/alert/anomaly/configurations/write | Erstellt oder aktualisiert die Konfiguration der Anomaliewarnungen. |
+> | Microsoft.CognitiveServices/accounts/MetricsAdvisor/alert/anomaly/configurations/delete | Löschen der Konfiguration der Anomaliewarnungen. |
+> | Microsoft.CognitiveServices/accounts/MetricsAdvisor/alert/anomaly/configurations/read | Abfragen einer einzelnen Anomaliewarnungskonfiguration |
+> | Microsoft.CognitiveServices/accounts/MetricsAdvisor/alert/anomaly/configurations/alerts/query/action | Abfragen von Warnungen unter der Konfiguration der Anomaliewarnungen |
+> | Microsoft.CognitiveServices/accounts/MetricsAdvisor/alert/anomaly/configurations/alerts/anomalies/read | Abfragen von Anomalien unter einer bestimmten Warnung |
+> | Microsoft.CognitiveServices/accounts/MetricsAdvisor/alert/anomaly/configurations/alerts/incidents/read | Abfragen von Vorfällen unter einer bestimmten Warnung |
+> | Microsoft.CognitiveServices/accounts/MetricsAdvisor/datafeeds/write | Erstellt oder aktualisiert einer Datenfeed. |
+> | Microsoft.CognitiveServices/accounts/MetricsAdvisor/datafeeds/delete | Löschen eines Datenfeeds |
+> | Microsoft.CognitiveServices/accounts/MetricsAdvisor/datafeeds/read | Abrufen eines Datenfeeds nach seiner ID oder Auflisten aller Datenfeeds |
+> | Microsoft.CognitiveServices/accounts/MetricsAdvisor/datafeeds/ingestionprogress/read | Abrufen des Zeitstempels des letzten erfolgreichen Erfassungsauftrags nach Datenfeed |
+> | Microsoft.CognitiveServices/accounts/MetricsAdvisor/datafeeds/ingestionprogress/reset/action | Zurücksetzen des Datenerfassungsstatus nach Datenfeed, um Daten aufzufüllen |
+> | Microsoft.CognitiveServices/accounts/MetricsAdvisor/datafeeds/ingestionstatus/query/action | Abrufen des Datenerfassungsstatus nach Datenfeed |
+> | Microsoft.CognitiveServices/accounts/MetricsAdvisor/enrichment/anomalydetection/configurations/write | Erstellen oder Aktualisieren der Konfigurieren der Anomalieerkennung |
+> | Microsoft.CognitiveServices/accounts/MetricsAdvisor/enrichment/anomalydetection/configurations/delete | Löschen der Anomalieerkennungskonfiguration |
+> | Microsoft.CognitiveServices/accounts/MetricsAdvisor/enrichment/anomalydetection/configurations/read | Abfrageneiner einer einzelnen Anomalieerkennungskonfiguration |
+> | Microsoft.CognitiveServices/accounts/MetricsAdvisor/enrichment/anomalydetection/configurations/alert/anomaly/configurations/read | Abragen aller Anomaliewarnungskonfigurationen für eine bestimmte Anomalieerkennungskonfiguration |
+> | Microsoft.CognitiveServices/accounts/MetricsAdvisor/enrichment/anomalydetection/configurations/anomalies/query/action | Abfragen von Anomalien unter der Konfiguration der Anomalieerkennung |
+> | Microsoft.CognitiveServices/accounts/MetricsAdvisor/enrichment/anomalydetection/configurations/anomalies/dimension/query/action | Abfragen von Dimensionswerten von Anomalien |
+> | Microsoft.CognitiveServices/accounts/MetricsAdvisor/enrichment/anomalydetection/configurations/incidents/query/action | Abfragen von Vorfällen unter der Konfiguration der Anomalieerkennung |
+> | Microsoft.CognitiveServices/accounts/MetricsAdvisor/enrichment/anomalydetection/configurations/incidents/rootcause/read | Abfragen der Grundursache für einen Vorfall |
+> | Microsoft.CognitiveServices/accounts/MetricsAdvisor/enrichment/anomalydetection/configurations/series/query/action | Abfragen von durch Anomalieerkennung erweiterte Reihen |
+> | Microsoft.CognitiveServices/accounts/MetricsAdvisor/feedback/metric/write | Erstellen eines neuen Metrikfeedbacks |
+> | Microsoft.CognitiveServices/accounts/MetricsAdvisor/feedback/metric/read | Abrufen von Metrikfeedback nach ID |
+> | Microsoft.CognitiveServices/accounts/MetricsAdvisor/feedback/metric/query/action | Auflistendes Feedbacks zur angegebenen Metrik |
+> | Microsoft.CognitiveServices/accounts/MetricsAdvisor/hooks/write | Erstellen oder Aktualisieren eines Hooks |
+> | Microsoft.CognitiveServices/accounts/MetricsAdvisor/hooks/delete | Löschen eines Hooks |
+> | Microsoft.CognitiveServices/accounts/MetricsAdvisor/hooks/read | Abrufen eines Hooks über seine ID oder Auflisten aller Hooks |
+> | Microsoft.CognitiveServices/accounts/MetricsAdvisor/metrics/data/query/action | Abrufen von Zeitreihendaten aus einer Metrik |
+> | Microsoft.CognitiveServices/accounts/MetricsAdvisor/metrics/dimension/query/action | Auflisten einer Dimension aus bestimmter Metrik |
+> | Microsoft.CognitiveServices/accounts/MetricsAdvisor/metrics/enrichment/anomalydetection/configurations/read | Abragen aller Anomalieerkennungskonfigurationen für eine bestimmte Metrik |
+> | Microsoft.CognitiveServices/accounts/MetricsAdvisor/metrics/series/query/action | Auflisten von Reihen (Dimensionskombinationen) aus Metrik |
+> | Microsoft.CognitiveServices/accounts/MetricsAdvisor/metrics/status/enrichment/anomalydetection/query/action | Abfragen des Anomalieerkennungsstatus |
+> | Microsoft.CognitiveServices/accounts/MetricsAdvisor/stats/latest/read | Abfragen der aktuellen Verwendungsstatistiken |
 > | Microsoft.CognitiveServices/accounts/NewsSearch/categorysearch/action | Gibt Nachrichten für eine angegebene Kategorie zurück. |
 > | Microsoft.CognitiveServices/accounts/NewsSearch/search/action | Abrufen von Nachrichtenartikeln zu einer bestimmten Abfrage |
 > | Microsoft.CognitiveServices/accounts/NewsSearch/trendingtopics/action | Abrufen beliebter Themen, die von Bing ermittelt wurden. Dabei handelt es sich um dieselben Themen, die im Banner unten auf der Startseite von Bing angezeigt werden. |
@@ -5010,35 +5071,6 @@ Azure-Dienst: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft.CognitiveServices/accounts/VideoSearch/search/action | Abrufen von Videos zu einer bestimmten Abfrage |
 > | Microsoft.CognitiveServices/accounts/VisualSearch/search/action | Gibt eine Liste von Tags zum bereitgestellten Bild zurück |
 > | Microsoft.CognitiveServices/accounts/WebSearch/search/action | Abrufen von Web-, Bild-, News- und Videoergebnissen für eine bestimmte Abfrage |
-
-### <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
-
-Azure-Dienst: [Machine Learning Studio](../machine-learning/studio/index.yml)
-
-> [!div class="mx-tableFixed"]
-> | Aktion | BESCHREIBUNG |
-> | --- | --- |
-> | Microsoft.MachineLearning/register/action | Registriert das Abonnement für den Machine Learning-Webdienst-Ressourcenanbieter und ermöglicht die Erstellung von Webdiensten. |
-> | Microsoft.MachineLearning/webServices/action | Dient zum Erstellen regionaler Webdiensteigenschaften für unterstützte Regionen. |
-> | Microsoft.MachineLearning/commitmentPlans/read | Dient zum Lesen beliebiger Machine Learning-Vertragspläne. |
-> | Microsoft.MachineLearning/commitmentPlans/write | Dient zum Erstellen oder Aktualisieren beliebiger Machine Learning-Vertragspläne. |
-> | Microsoft.MachineLearning/commitmentPlans/delete | Dient zum Löschen beliebiger Machine Learning-Vertragspläne. |
-> | Microsoft.MachineLearning/commitmentPlans/join/action | Dient zum Beitreten zu beliebigen Machine Learning-Vertragsplänen. |
-> | Microsoft.MachineLearning/commitmentPlans/commitmentAssociations/read | Dient zum Lesen beliebiger Machine Learning-Vertragsplanzuordnungen. |
-> | Microsoft.MachineLearning/commitmentPlans/commitmentAssociations/move/action | Dient zum Verschieben beliebiger Machine Learning-Vertragsplanzuordnungen. |
-> | Microsoft.MachineLearning/locations/operationresults/read | Ruft das Ergebnis eines Machine Learning-Vorgangs ab. |
-> | Microsoft.MachineLearning/locations/operationsstatus/read | Ruft den Status eines laufenden Machine Learning-Vorgangs ab. |
-> | Microsoft.MachineLearning/operations/read | Ruft Machine Learning-Vorgänge ab. |
-> | Microsoft.MachineLearning/skus/read | Dient zum Abrufen von SKUs für Machine Learning-Verpflichtungspläne. |
-> | Microsoft.MachineLearning/webServices/read | Dient zum Lesen beliebiger Machine Learning-Webdienste. |
-> | Microsoft.MachineLearning/webServices/write | Dient zum Erstellen oder Aktualisieren beliebiger Machine Learning-Webdienste. |
-> | Microsoft.MachineLearning/webServices/delete | Dient zum Löschen beliebiger Machine Learning-Webdienste. |
-> | Microsoft.MachineLearning/webServices/listkeys/read | Ruft Schlüssel für einen Machine Learning-Webdienst ab. |
-> | Microsoft.MachineLearning/Workspaces/read | Dient zum Lesen beliebiger Machine Learning-Arbeitsbereiche. |
-> | Microsoft.MachineLearning/Workspaces/write | Dient zum Erstellen oder Aktualisieren beliebiger Machine Learning-Arbeitsbereiche. |
-> | Microsoft.MachineLearning/Workspaces/delete | Dient zum Löschen beliebiger Machine Learning-Arbeitsbereiche. |
-> | Microsoft.MachineLearning/Workspaces/listworkspacekeys/action | Dient zum Auflisten von Schlüsseln für einen Machine Learning-Arbeitsbereich. |
-> | Microsoft.MachineLearning/Workspaces/resyncstoragekeys/action | Dient zum erneuten Synchronisieren von Schlüsseln eines für einen Machine Learning-Arbeitsbereich konfigurierten Speicherkontos. |
 
 ### <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 
@@ -5156,6 +5188,36 @@ Azure-Dienst: [Machine Learning-Dienst](../machine-learning/index.yml)
 > | Microsoft.MachineLearningServices/workspaces/services/aks/listkeys/action | Listet Schlüssel für AKS-Dienste in Machine Learning Services-Arbeitsbereichen auf. |
 > | Microsoft.MachineLearningServices/workspaces/services/aks/delete | Löscht AKS-Dienste in Machine Learning Services-Arbeitsbereichen. |
 > | Microsoft.MachineLearningServices/workspaces/services/aks/score/action | Bewertet AKS-Dienste in Machine Learning Services-Arbeitsbereichen. |
+
+
+### <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
+
+Azure-Dienst: [Machine Learning Studio (klassisch)](../machine-learning/studio/index.yml)
+
+> [!div class="mx-tableFixed"]
+> | Aktion | BESCHREIBUNG |
+> | --- | --- |
+> | Microsoft.MachineLearning/register/action | Registriert das Abonnement für den Machine Learning-Webdienst-Ressourcenanbieter und ermöglicht die Erstellung von Webdiensten. |
+> | Microsoft.MachineLearning/webServices/action | Dient zum Erstellen regionaler Webdiensteigenschaften für unterstützte Regionen. |
+> | Microsoft.MachineLearning/commitmentPlans/read | Dient zum Lesen beliebiger Machine Learning-Vertragspläne. |
+> | Microsoft.MachineLearning/commitmentPlans/write | Dient zum Erstellen oder Aktualisieren beliebiger Machine Learning-Vertragspläne. |
+> | Microsoft.MachineLearning/commitmentPlans/delete | Dient zum Löschen beliebiger Machine Learning-Vertragspläne. |
+> | Microsoft.MachineLearning/commitmentPlans/join/action | Dient zum Beitreten zu beliebigen Machine Learning-Vertragsplänen. |
+> | Microsoft.MachineLearning/commitmentPlans/commitmentAssociations/read | Dient zum Lesen beliebiger Machine Learning-Vertragsplanzuordnungen. |
+> | Microsoft.MachineLearning/commitmentPlans/commitmentAssociations/move/action | Dient zum Verschieben beliebiger Machine Learning-Vertragsplanzuordnungen. |
+> | Microsoft.MachineLearning/locations/operationresults/read | Ruft das Ergebnis eines Machine Learning-Vorgangs ab. |
+> | Microsoft.MachineLearning/locations/operationsstatus/read | Ruft den Status eines laufenden Machine Learning-Vorgangs ab. |
+> | Microsoft.MachineLearning/operations/read | Ruft Machine Learning-Vorgänge ab. |
+> | Microsoft.MachineLearning/skus/read | Dient zum Abrufen von SKUs für Machine Learning-Verpflichtungspläne. |
+> | Microsoft.MachineLearning/webServices/read | Dient zum Lesen beliebiger Machine Learning-Webdienste. |
+> | Microsoft.MachineLearning/webServices/write | Dient zum Erstellen oder Aktualisieren beliebiger Machine Learning-Webdienste. |
+> | Microsoft.MachineLearning/webServices/delete | Dient zum Löschen beliebiger Machine Learning-Webdienste. |
+> | Microsoft.MachineLearning/webServices/listkeys/read | Ruft Schlüssel für einen Machine Learning-Webdienst ab. |
+> | Microsoft.MachineLearning/Workspaces/read | Dient zum Lesen beliebiger Machine Learning-Arbeitsbereiche. |
+> | Microsoft.MachineLearning/Workspaces/write | Dient zum Erstellen oder Aktualisieren beliebiger Machine Learning-Arbeitsbereiche. |
+> | Microsoft.MachineLearning/Workspaces/delete | Dient zum Löschen beliebiger Machine Learning-Arbeitsbereiche. |
+> | Microsoft.MachineLearning/Workspaces/listworkspacekeys/action | Dient zum Auflisten von Schlüsseln für einen Machine Learning-Arbeitsbereich. |
+> | Microsoft.MachineLearning/Workspaces/resyncstoragekeys/action | Dient zum erneuten Synchronisieren von Schlüsseln eines für einen Machine Learning-Arbeitsbereich konfigurierten Speicherkontos. |
 
 ## <a name="internet-of-things"></a>Internet der Dinge (IoT)
 
@@ -5578,9 +5640,9 @@ Azure-Dienst: [API Management](../api-management/index.yml)
 > | Microsoft.ApiManagement/service/policy/delete | Löscht die Richtlinienkonfiguration auf Mandantenebene |
 > | Microsoft.ApiManagement/service/policyDescriptions/read | Listet alle Richtlinienbeschreibungen auf. |
 > | Microsoft.ApiManagement/service/policySnippets/read | Listet alle Richtlinienausschnitte auf |
-> | Microsoft.ApiManagement/service/portalsettings/read | Listet eine Sammlung von Portaleinstellungen auf. Oder ruft die Registrierungs-, Anmelde- oder Delegierungseinstellungen für das Portal ab. |
-> | Microsoft.ApiManagement/service/portalsettings/write | Aktualisiert die Anmeldeeinstellungen oder erstellt oder aktualisiert die Anmeldeeinstellungen oder aktualisiert die Registrierungs-, Anmelde- oder Delegierungseinstellungen oder erstellt oder aktualisiert die Delegierungseinstellungen |
-> | Microsoft.ApiManagement/service/portalsettings/listSecrets/action | Ruft den Validierungsschlüssel von Portaldelegierungseinstellungen ab. |
+> | Microsoft.ApiManagement/service/portalSettings/read | Listet eine Sammlung von Portaleinstellungen auf. Oder ruft die Registrierungs-, Anmelde- oder Delegierungseinstellungen für das Portal ab. |
+> | Microsoft.ApiManagement/service/portalSettings/write | Aktualisiert die Anmeldeeinstellungen oder erstellt oder aktualisiert die Anmeldeeinstellungen oder aktualisiert die Registrierungs-, Anmelde- oder Delegierungseinstellungen oder erstellt oder aktualisiert die Delegierungseinstellungen |
+> | Microsoft.ApiManagement/service/portalSettings/listSecrets/action | Ruft den Validierungsschlüssel von Portaldelegierungseinstellungen ab. oder Abrufen des Medieninhalt-Blobcontainer-URIs. |
 > | Microsoft.ApiManagement/service/products/read | Listet eine Auflistung der Produkte in der angegebenen Dienstinstanz auf oder ruft Details des durch seinen Bezeichner angegebenen Produkts ab |
 > | Microsoft.ApiManagement/service/products/write | Erstellt oder aktualisiert ein Produkt oder aktualisiert Details vorhandener Produkte |
 > | Microsoft.ApiManagement/service/products/delete | Löscht das Produkt |
@@ -6204,7 +6266,6 @@ Azure-Dienst: Azure Active Directory
 > | microsoft.aadiam/privateLinkForAzureAD/write | Erstellt und aktualisiert die Private Link-Richtliniendefinition. |
 > | microsoft.aadiam/privateLinkForAzureAD/delete | Löscht die Private Link-Richtliniendefinition. |
 > | microsoft.aadiam/privateLinkForAzureAD/privateEndpointConnectionProxies/read | Liest Private Link-Proxys. |
-> | microsoft.aadiam/privateLinkForAzureAD/privateEndpointConnectionProxies/write | Erstellt und aktualisiert Private Link-Proxys. |
 > | microsoft.aadiam/privateLinkForAzureAD/privateEndpointConnectionProxies/delete | Löscht Private Link-Proxys. |
 > | microsoft.aadiam/privateLinkForAzureAD/privateEndpointConnectionProxies/validate/action | Überprüft Private Link-Proxys. |
 > | microsoft.aadiam/privateLinkForAzureAD/privateEndpointConnections/read | Liest PrivateEndpointConnections. |
@@ -6559,6 +6620,14 @@ Azure-Dienst: [Azure Sentinel](../sentinel/index.yml)
 > | Microsoft.SecurityInsights/threatintelligence/metrics/action | Sammelt Metriken zu Informationen zu Bedrohungen. |
 > | Microsoft.SecurityInsights/threatintelligence/bulkDelete/action | Löscht Informationen zu Bedrohungen in einem Massenvorgang. |
 > | Microsoft.SecurityInsights/threatintelligence/bulkTag/action | Kennzeichnet Informationen zu Bedrohungen in einem Massenvorgang. |
+> | Microsoft.SecurityInsights/threatintelligence/indicators/read | Ruft Threat Intelligence-Indikatoren ab. |
+> | Microsoft.SecurityInsights/threatintelligence/indicators/write | Aktualisieren von Threat Intelligence-Indikatoren |
+> | Microsoft.SecurityInsights/threatintelligence/indicators/delete | Löscht Threat Intelligence-Indikatoren |
+> | Microsoft.SecurityInsights/threatintelligence/indicators/query/action | Abfragen von Threat Intelligence-Indikatoren |
+> | Microsoft.SecurityInsights/threatintelligence/indicators/metrics/action | Abrufen von Threat Intelligence-Indikatormetriken |
+> | Microsoft.SecurityInsights/threatintelligence/indicators/appendTags/action | Anfügen von Tags an Threat Intelligence-Indikator |
+> | Microsoft.SecurityInsights/threatintelligence/indicators/bulkDelete/action | Massenlöschen von Threat Intelligence-Indikatoren |
+> | Microsoft.SecurityInsights/threatintelligence/indicators/bulkTag/action | Massenanfügen von Tags an Threat Intelligence-Indikatoren |
 > | Microsoft.SecurityInsights/Watchlists/read | Ruft Watchlists ab. |
 > | Microsoft.SecurityInsights/Watchlists/write | Erstellt Watchlists. |
 > | Microsoft.SecurityInsights/Watchlists/delete | Löscht Watchlists. |
@@ -7695,6 +7764,8 @@ Azure-Dienst: [Azure Monitor](../azure-monitor/index.yml)
 > | Microsoft.OperationalInsights/workspaces/query/ADTEventRoutesOperation/read | Liest Daten aus der Tabelle „ADTEventRoutesOperation“. |
 > | Microsoft.OperationalInsights/workspaces/query/ADTModelsOperation/read | Liest Daten aus der Tabelle „ADTModelsOperation“. |
 > | Microsoft.OperationalInsights/workspaces/query/ADTQueryOperation/read | Liest Daten aus der Tabelle „ADTQueryOperation“. |
+> | Microsoft.OperationalInsights/workspaces/query/ADXCommand/read | Lesen von Daten aus der ADXCommand-Tabelle |
+> | Microsoft.OperationalInsights/workspaces/query/ADXQuery/read | Lesen von Daten aus der ADXQuery-Tabelle |
 > | Microsoft.OperationalInsights/workspaces/query/AegDeliveryFailureLogs/read | Liest Daten aus der Tabelle „AegDeliveryFailureLogs“. |
 > | Microsoft.OperationalInsights/workspaces/query/AegPublishFailureLogs/read | Liest Daten aus der Tabelle „AegPublishFailureLogs“. |
 > | Microsoft.OperationalInsights/workspaces/query/Alert/read | Hiermit lesen Sie Daten aus der Alert-Tabelle. |
@@ -8929,6 +9000,7 @@ Azure-Dienst: [Azure Policy](../governance/policy/index.yml)
 > | Microsoft.PolicyInsights/attestations/read | Hiermit werden Nachweise zum Konformitätszustand abgerufen. |
 > | Microsoft.PolicyInsights/attestations/write | Hiermit werden Nachweise zum Konformitätszustand erstellt oder aktualisiert. |
 > | Microsoft.PolicyInsights/attestations/delete | Hiermit werden Nachweise zum Konformitätszustand gelöscht. |
+> | Microsoft.PolicyInsights/checkPolicyRestrictions/read | Abrufen von Details zu den Einschränkungen, die von der Richtlinie für eine Ressource erzwungen werden. |
 > | Microsoft.PolicyInsights/operations/read | Ruft unterstützte Vorgänge im Microsoft.PolicyInsights-Namespace ab |
 > | Microsoft.PolicyInsights/policyEvents/queryResults/action | Fragt Informationen zu Richtlinienereignissen ab. |
 > | Microsoft.PolicyInsights/policyEvents/queryResults/read | Fragt Informationen zu Richtlinienereignissen ab. |

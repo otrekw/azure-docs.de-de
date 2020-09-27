@@ -2,19 +2,18 @@
 title: Häufig gestellte Fragen (FAQ) zu Azure Service Bus | Microsoft-Dokumentation
 description: Dieser Artikel bietet Antworten auf einige häufig gestellte Fragen (FAQ) zu Azure Service Bus.
 ms.topic: article
-ms.date: 07/15/2020
-ms.openlocfilehash: e098b05dba25a51d5d6ef7c50a1b73730828357a
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.date: 09/16/2020
+ms.openlocfilehash: addd629f137c5f638cd32a639f79cdbbafc4a94d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080812"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894520"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure Service Bus
 
 In diesem Artikel werden einige häufig gestellte Fragen zu Microsoft Azure Service Bus behandelt. Sie können auch [Häufig gestellte Fragen zum Azure-Support](https://azure.microsoft.com/support/faq/) aufrufen, wenn Sie nach allgemeinen Informationen zu Azure-Preisen und zum Support suchen.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="general-questions-about-azure-service-bus"></a>Allgemeine Fragen zu Azure Service Bus
 ### <a name="what-is-azure-service-bus"></a>Was ist Azure Service Bus?
@@ -36,6 +35,9 @@ Bei der Verwendung von partitionierten Entitäten ist keine Sortierung gewährle
 
  Partitionierte Entitäten werden in der [Premium-SKU](service-bus-premium-messaging.md) nicht mehr unterstützt. 
 
+### <a name="where-does-azure-service-bus-store-customer-data"></a><a name="in-region-data-residency"></a>Wo speichert Azure Service Kundendaten?
+Azure Service Bus speichert Kundendaten. Diese Daten werden von Service Bus automatisch in einer einzigen Region gespeichert, sodass dieser Dienst in der Region automatisch die Anforderungen an Datenresidenz erfüllt, einschließlich der im [Trust Center](https://azuredatacentermap.azurewebsites.net/) angegebenen Anforderungen.
+
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Welche Ports muss ich in der Firewall öffnen? 
 Sie können die folgenden Protokolle mit Azure Service Bus verwenden, um Nachrichten zu senden und zu empfangen:
 
@@ -48,7 +50,7 @@ In der folgenden Tabelle finden Sie die ausgehenden Ports, die Sie öffnen müss
 | Protocol | Ports | Details | 
 | -------- | ----- | ------- | 
 | AMQP | 5671 und 5672 | Weitere Informationen finden Sie im [AMQP 1.0 in Azure Service Bus und Event Hubs – Protokollleitfaden](service-bus-amqp-protocol-guide.md). | 
-| SBMP | 9350 bis 9354 | Siehe [Konnektivitätsmodus](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) |
+| SBMP | 9350 bis 9354 | Siehe [Konnektivitätsmodus](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet&preserve-view=true) |
 | HTTP, HTTPS | 80, 443 | 
 
 ### <a name="what-ip-addresses-do-i-need-to-add-to-allow-list"></a>Welche IP-Adressen muss ich in die Zulassungsliste aufnehmen?
@@ -59,9 +61,9 @@ Um die richtigen IP-Adressen zu ermitteln, die Sie in die Zulassungsliste für I
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. Notieren Sie sich die IP-Adresse, die in `Non-authoritative answer` zurückgegeben werden. Diese IP-Adresse ist statisch. Sie würde sich nur dann ändern, wenn Sie den Namespace in einem anderen Cluster wiederherstellen.
+2. Notieren Sie sich die IP-Adresse, die in `Non-authoritative answer` zurückgegeben werden. 
 
-Wenn Sie die Zonenredundanz für Ihren Namespace verwenden, müssen Sie einige zusätzliche Schritte durchführen: 
+Wenn Sie **Zonenredundanz** für Ihren Namespace verwenden, müssen Sie einige zusätzliche Schritte durchführen: 
 
 1. Führen Sie zunächst nslookup für den Namespace aus.
 
@@ -76,6 +78,9 @@ Wenn Sie die Zonenredundanz für Ihren Namespace verwenden, müssen Sie einige z
     <name>-s3.cloudapp.net
     ```
 3. Führen Sie den Befehl „nslookup“ für jeden Namen mit den Suffixen s1, s2 und s3 aus, um die IP-Adressen aller drei Instanzen zu erhalten, die in drei Verfügbarkeitszonen ausgeführt werden. 
+
+    > [!NOTE]
+    > Die vom `nslookup`-Befehl zurückgegebene IP-Adresse ist keine statische IP-Adresse. Allerdings bleibt sie konstant, bis die zugrunde liegende Bereitstellung gelöscht oder in einen anderen Cluster verschoben wird.
 
 ### <a name="where-can-i-find-the-ip-address-of-the-client-sendingreceiving-messages-tofrom-a-namespace"></a>Wo finde ich die IP-Adresse des Clients, der Nachrichten an einen Namespace sendet bzw. von diesem empfängt? 
 Die IP-Adressen von Clients, die Nachrichten an einen Namespace senden oder von diesem empfangen, werden von uns nicht protokolliert. Generieren Sie die Schlüssel neu, damit die Authentifizierung aller vorhandenen Clients nicht mehr funktioniert, und überprüfen Sie die Einstellungen der rollenbasierten Zugriffssteuerung ([Role-Based Access Control, RBAC](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)), um sicherzustellen, dass nur zulässige Benutzer oder Anwendungen Zugriff auf den Namespace haben. 

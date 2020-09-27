@@ -3,12 +3,12 @@ title: Grenzwerte und Kontingente von Azure-Abonnements
 description: Stellt eine Liste allgemeiner Azure-Abonnements und Diensteinschränkungen, Kontingenten und Einschränkungen bereit. Dieser Artikel enthält Informationen zum Erhöhen von Grenzwerten und Höchstwerten.
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 87018f58a59c34c5027ca63102e4c5ca841e652b
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: fcbca4a1e3152dfa36d71031c2f69e8a40125380
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376202"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971017"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen
 
@@ -26,6 +26,9 @@ Weitere Informationen zu den Azure-Preisen finden Sie in der [Azure-Preisübersi
 > Wenn der Grenzwert angepasst werden kann, enthalten die Tabellen die Header **Default limit** und **Maximum limit**. Der Grenzwert kann über den Standardgrenzwert, aber nicht über den maximalen Grenzwert angehoben werden.
 >
 > Wenn Sie einen Grenzwert oder ein Kontingent über den Standardgrenzwert anheben möchten, können Sie eine [gebührenfreie Onlinekundensupport-Anforderung öffnen](../templates/error-resource-quota.md).
+>
+> Die Begriffe *Soft Limit* *und Hard Limit* werden häufig informell verwendet, um den aktuellen, anpassbaren Grenzwert (Soft Limit) und den maximalen Grenzwert (Hard Limit) zu beschreiben. Wenn ein Grenzwert nicht anpassbar ist, gibt es keinen Soft Limit, nur einen Hard Limit.
+>
 
 Bei [Abonnements mit einer kostenlosen Testversion](https://azure.microsoft.com/offers/ms-azr-0044p) sind Grenzwert- oder Kontingenterhöhungen nicht möglich. Wenn Sie über ein [Abonnement mit einer kostenlosen Testversion](https://azure.microsoft.com/offers/ms-azr-0044p) verfügen, können Sie ein Upgrade auf ein Abonnement mit [nutzungsbasierter Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) durchführen. Weitere Informationen finden Sie unter [Upgrade your Azure Free Trial subscription to a Pay-As-You-Go subscription](../../cost-management-billing/manage/upgrade-azure-subscription.md) (Upgrade Ihres Abonnements mit kostenloser Azure-Testversion auf nutzungsbasierte Bezahlung) und [FAQ zum kostenlosen Azure-Konto](https://azure.microsoft.com/free/free-account-faq).
 
@@ -74,6 +77,10 @@ Die folgenden App Service-Grenzwerte umfassen Grenzwerte für Web-Apps, Mobile A
 ## <a name="automation-limits"></a>Automatisierungsgrenzwerte
 
 [!INCLUDE [automation-limits](../../../includes/azure-automation-service-limits.md)]
+
+## <a name="azure-app-configuration"></a>Azure App Configuration
+
+[!INCLUDE [app-configuration-limits](../../../includes/app-configuration-limits.md)]
 
 ## <a name="azure-cache-for-redis-limits"></a>Azure Cache for Redis-Grenzwerte
 
@@ -232,10 +239,6 @@ In der folgenden Tabelle werden die Features und Grenzwerte der [Dienstebenen](.
 
 [!INCLUDE [azure-servicebus-limits](../../../includes/event-hubs-limits.md)]
 
-## <a name="identity-manager-limits"></a>Grenzwerte für Identity Manager
-
-[!INCLUDE [automation-limits](~/includes/managed-identity-limits.md)]
-
 ## <a name="iot-central-limits"></a>IoT Central-Grenzwerte
 [!INCLUDE [iot-central-limits](../../../includes/iot-central-limits.md)]
 
@@ -250,6 +253,11 @@ In der folgenden Tabelle werden die Features und Grenzwerte der [Dienstebenen](.
 ## <a name="key-vault-limits"></a>Schlüsseltresor-Grenzwerte
 
 [!INCLUDE [key-vault-limits](../../../includes/key-vault-limits.md)]
+
+## <a name="managed-identity-limits"></a>Grenzwerte für verwaltete Identitäten
+
+[!INCLUDE [Managed-Identity-Limits](../../../includes/managed-identity-limits.md)]
+
 
 ## <a name="media-services-limits"></a>Media Services-Grenzwerte
 

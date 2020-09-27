@@ -2,13 +2,13 @@
 title: Bereitstellen von Ressourcen in einem Abonnement
 description: In diesem Artikel wird beschrieben, wie Sie eine Ressourcengruppe in einer Azure Resource Manager-Vorlage erstellen. Außerdem wird veranschaulicht, wie Sie Ressourcen für den Bereich des Azure-Abonnements bereitstellen.
 ms.topic: conceptual
-ms.date: 07/27/2020
-ms.openlocfilehash: aca1aaf9d7d0c8a97bf2dad437953ccadc02a924
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.date: 09/15/2020
+ms.openlocfilehash: 3889f5a06f138114dfe4511d0957558d6d803c8e
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002790"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605174"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Erstellen von Ressourcengruppen und Ressourcen auf Abonnementebene
 
@@ -82,7 +82,7 @@ https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json
 
 Die Befehle für Bereitstellungen auf Abonnementebene unterscheiden sich von den Befehlen für Ressourcengruppenbereitstellungen.
 
-Verwenden Sie für die Azure-Befehlszeilenschnittstelle [az deployment sub create](/cli/azure/deployment/sub?view=azure-cli-latest#az-deployment-sub-create). Das folgende Beispiel stellt eine Vorlage zum Erstellen einer Ressourcengruppe bereit:
+Verwenden Sie für die Azure-Befehlszeilenschnittstelle [az deployment sub create](/cli/azure/deployment/sub#az-deployment-sub-create). Das folgende Beispiel stellt eine Vorlage zum Erstellen einer Ressourcengruppe bereit:
 
 ```azurecli-interactive
 az deployment sub create \
@@ -115,7 +115,7 @@ Der Speicherort für jeden Bereitstellungsnamen ist unveränderlich. Sie können
 
 ## <a name="deployment-scopes"></a>Bereitstellungsbereiche
 
-Wenn Sie in einem Abonnement bereitstellen, können Sie das Abonnement oder jegliche Ressourcengruppen im Abonnement als Ziel verwenden. Der Benutzer, der die Vorlage bereitstellt, muss Zugriff auf den angegebenen Bereich besitzen.
+Wenn Sie die Bereitstellung in einem Abonnement ausführen, können Sie ein Abonnement und jede beliebige Ressourcengruppen im Abonnement als Ziel verwenden. Sie können keine Bereitstellung in einem Abonnement ausführen, das sich vom Zielabonnement unterscheidet. Der Benutzer, der die Vorlage bereitstellt, muss Zugriff auf den angegebenen Bereich besitzen.
 
 Innerhalb des Ressourcenabschnitts der Vorlage definierte Ressourcen werden auf das Abonnement angewendet.
 
@@ -145,7 +145,7 @@ Um eine Ressourcengruppe innerhalb des Abonnements als Ziel zu verwenden, fügen
             "properties": {
                 "mode": "Incremental",
                 "template": {
-                    nested-template
+                    nested-template-with-resource-group-resources
                 }
             }
         }
@@ -154,15 +154,17 @@ Um eine Ressourcengruppe innerhalb des Abonnements als Ziel zu verwenden, fügen
 }
 ```
 
+In diesem Artikel finden Sie Vorlagen, die zeigen, wie Ressourcen in verschiedenen Bereichen bereitgestellt werden. Eine Vorlage, die eine Ressourcengruppe erstellt und ein Speicherkonto für diese bereitstellt, finden Sie unter [Erstellen von Ressourcengruppen und Ressourcen](#create-resource-group-and-resources). Eine Vorlage, die eine Ressourcengruppe erstellt, eine Sperre darauf anwendet und eine Rolle für die Ressourcengruppe zuweist, finden Sie unter [Zugriffssteuerung](#access-control).
+
 ## <a name="use-template-functions"></a>Verwenden von Vorlagenfunktionen
 
 Bei Bereitstellungen auf Abonnementebene müssen bei der Verwendung von Vorlagenfunktionen einige wichtige Aspekte berücksichtigt werden:
 
 * Die Funktion [resourceGroup()](template-functions-resource.md#resourcegroup) wird **nicht** unterstützt.
 * Die Funktionen [reference()](template-functions-resource.md#reference) und [list()](template-functions-resource.md#list) werden unterstützt.
-* Verwenden Sie die Funktion [subscriptionResourceId()](template-functions-resource.md#subscriptionresourceid), um die Ressourcen-ID für Ressourcen abzurufen, die auf Abonnementebene bereitgestellt werden.
+* Verwenden Sie nicht [resourceId()](template-functions-resource.md#resourceid), um die Ressourcen-ID für Ressourcen abzurufen, die auf Abonnementebene bereitgestellt werden. Verwenden Sie stattdessen die Funktion [subscriptionResourceId()](template-functions-resource.md#subscriptionresourceid).
 
-  Verwenden Sie beispielsweise Folgendes, um die Ressourcen-ID für eine Richtliniendefinition abzurufen:
+  Verwenden Sie beispielsweise Folgendes, um die Ressourcen-ID für eine Richtliniendefinition abzurufen, die für ein Abonnement bereitgestellt wird:
 
   ```json
   subscriptionResourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))
@@ -420,7 +422,7 @@ Sie können eine Richtliniendefinition in derselben Vorlage [definieren](../../g
       ],
       "properties": {
         "scope": "[subscription().id]",
-        "policyDefinitionId": "[resourceId('Microsoft.Authorization/policyDefinitions', 'locationpolicy')]"
+        "policyDefinitionId": "[subscriptionResourceId('Microsoft.Authorization/policyDefinitions', 'locationpolicy')]"
       }
     }
   ]

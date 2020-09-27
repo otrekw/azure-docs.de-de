@@ -5,12 +5,12 @@ author: dkkapur
 ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: conceptual
-ms.openlocfilehash: d56ce811155f7b7f60fa870dbdae2550afab2eac
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 01c54c8baa411e7d57698c626b098dc19e66be4e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246825"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984128"
 ---
 # <a name="state-management-with-service-fabric"></a>Zustandsverwaltung mit Service Fabric
 
@@ -22,7 +22,7 @@ Mit Service Fabric Mesh können Sie ganz einfach eine neue Anwendung bereitstell
 
 Container verwenden häufig temporäre Datenträger. Temporäre Datenträger sind jedoch flüchtig, sodass Sie einen neuen temporären Datenträger erhalten und die Informationen verlieren, wenn ein Container abstürzt. Außerdem ist es schwierig, Informationen auf temporären Datenträgern mit anderen Containern gemeinsam zu verwenden. Volumes sind Verzeichnisse, die in Ihre Containerinstanzen eingebunden werden, und mit denen Sie Zustände erhalten können. Volumes bieten Ihnen einen universellen Dateispeicher und ermöglichen das Lesen und Schreiben von Dateien über normale Datenträger-E/A-Datei-APIs. Die Volume-Ressource beschreibt, wie ein Verzeichnis bereitgestellt wird und welcher Hintergrundspeicher verwendet werden soll. Sie können Azure File Storage oder den Service Fabric Volume-Datenträger zum Speichern von Daten auswählen.
 
-![Volumes][image3]
+![Die Abbildung zeigt den Dienst, der in einem Volume speichert, das sowohl in Service Fabric Reliable Volume auf einem replizierten lokalen Datenträger als auch im Azure Files-Volume im Netzwerkspeicher speichert.][image3]
 
 ### <a name="service-fabric-reliable-volume"></a>Service Fabric Reliable Volume
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 12/20/2019
 ms.author: mblythe
-ms.openlocfilehash: ad0d3a1bf2c293039df3bba3aa18da7d6e7dd0a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b77c9cfd6e4d1721839acb9db5469b5f0ac73a48
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81459218"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561600"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Struktur von Azure-Dashboards
 In diesem Dokument wird die Struktur eines Azure-Dashboards beschrieben. Dabei wird das folgende Dashboard als Beispiel verwendet:
@@ -329,7 +329,7 @@ Die __position__-Eigenschaft enthält die Informationen zu Größe und Position 
 
 `location: { x: 0, y: 0, rowSpan: 2, colSpan: 1 }`
 
-![Rastereinheiten](./media/azure-portal-dashboards-structure/grid-units.png)
+![Der Screenshot zeigt eine Nahaufnahme des Rasters, wobei eine quadratische Rastereinheit hervorgehoben ist.](./media/azure-portal-dashboards-structure/grid-units.png)
 
 ### <a name="the-metadata-object"></a>Das „metadata“-Objekt
 Jeder Teil verfügt über eine „metadata“-Eigenschaft. Ein Objekt weist nur eine erforderliche Eigenschaft mit dem Namen __type__ auf. Mit dieser Zeichenfolge wird im Portal festgelegt, welche Kachel angezeigt werden soll. Im Beispieldashboard werden folgende Typen von Kacheln verwendet:

@@ -3,12 +3,12 @@ title: Verschieben von Azure App Service-Ressourcen
 description: Verwenden Sie Azure Resource Manager, um App Service-Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement zu verschieben.
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: 45f04cad27e175b471f4d6e07426787ca678e369
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 27555a4616befca41c7e970e947afa1cd1ff7248
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042056"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531371"
 ---
 # <a name="move-guidance-for-app-service-resources"></a>Anleitung zum Verschieben von App Service-Ressourcen
 
@@ -42,7 +42,7 @@ Wählen Sie die Option für empfohlene Schritte, um die Web-App zu verschieben.
 
 Sie sehen die empfohlenen Maßnahmen, die Sie ergreifen sollten, bevor Sie die Ressourcen verschieben. Die Informationen enthalten die ursprüngliche Ressourcengruppe für die Web-App.
 
-![Empfehlungen](./media/app-service-move-limitations/recommendations.png)
+![Screenshot zeigt empfohlene Schritte zum Verschieben von Microsoft-Punkt-Webressourcen.](./media/app-service-move-limitations/recommendations.png)
 
 ## <a name="move-support"></a>Unterstützung für das Verschieben
 
