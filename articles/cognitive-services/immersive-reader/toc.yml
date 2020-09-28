@@ -24,7 +24,7 @@
       href: how-to/display-math.md
     - name: Starten des plastischen Readers mit HTML-Inhalt
       href: how-to-launch-with-html.md
-    - name: Schaltfläche zum Anpassen des plastischen Readers
+    - name: Anpassen der Schaltfläche des plastischen Readers
       href: how-to-customize-launch-button.md
     - name: Zwischenspeichern des Authentifizierungstokens
       href: how-to-cache-token.md

@@ -134,7 +134,7 @@
               href: ../../azure-portal/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Ressourcendiagramm
               href: ../../governance/resource-graph/shared-query-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-            - name: 'Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)'
+            - name: "Rollenbasierte Zugriffssteuerung von Azure (Azure\_RBAC)"
               href: ../../role-based-access-control/quickstart-role-assignments-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Dienstintegrität
               href: ../../service-health/alerts-activity-log-service-notifications-arm.md?toc=/azure/azure-resource-manager/templates/toc.json
@@ -283,7 +283,7 @@
           href: template-expressions.md
         - name: Parameter
           href: template-parameters.md
-        - name: Variables
+        - name: Variablen
           href: template-variables.md
         - name: Benutzerdefinierte Funktionen
           href: template-user-defined-functions.md
@@ -401,6 +401,8 @@
           href: deployment-quota-exceeded.md
         - name: InvalidTemplate
           href: error-invalid-template.md
+        - name: JobSizeExceeded
+          href: error-job-size-exceeded.md
         - name: Linux-Bereitstellungsprobleme
           href: ../../virtual-machines/troubleshooting/troubleshoot-deploy-vm-linux.md
         - name: NoRegisteredProviderFound

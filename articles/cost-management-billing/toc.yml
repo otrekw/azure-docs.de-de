@@ -40,6 +40,10 @@
           href: costs/understand-work-scopes.md
         - name: Gruppen- und Filteroptionen
           href: costs/group-filter.md
+        - name: Planen der Kostenverwaltung
+          href: understand/plan-manage-costs.md
+        - name: Vermeiden unerwarteter Kosten
+          href: understand/analyze-unexpected-charges.md
         - name: Verwalten der Kosten per Automatisierung
           href: costs/manage-automation.md
         - name: Cost Management für Partner
@@ -114,6 +118,8 @@
           href: understand/mca-overview.md
         - name: Abrechnungskonten für Microsoft-Partnervereinbarung
           href: understand/mpa-overview.md
+        - name: Informationen zum Übertragen von Abonnements
+          href: understand/subscription-transfer.md
         - name: Übertragen von Abonnements zwischen Partnern (Vorschau)
           href: manage/azure-plan-subscription-transfer-partners.md
 - name: Anleitungen
@@ -124,7 +130,7 @@
           items:
             - name: Aufgaben des Kontoadministrators
               href: manage/account-admin-tasks.md
-            - name: Bearbeiten eines Profils
+            - name: Bearbeiten der Informationen zum Rechnungskontakt
               href: manage/change-azure-account-profile.md
             - name: Begleichen überfälliger Zahlungen
               href: manage/resolve-past-due-balance.md
@@ -246,8 +252,6 @@
               href: manage/upgrade-azure-subscription.md
     - name: Ausführen wichtiger Kostenverwaltungsaufgaben
       items:
-        - name: Vermeiden unerwarteter Kosten
-          href: manage/getting-started.md
         - name: Berechnen von Preisen
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: Verwenden der Kostenanalyse für häufige Aufgaben

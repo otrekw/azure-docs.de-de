@@ -114,17 +114,17 @@
     - name: Transparenzhinweis
       items:
         - name: Einführung in die räumliche Analyse
-          href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/intro-to-spatial-analysis-public-preview'
+          href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/intro-to-spatial-analysis-public-preview?context=/azure/cognitive-services/Computer-vision/context/context'
         - name: Merkmale und Einschränkungen
-          href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/accuracy-and-limitations'
+          href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/accuracy-and-limitations?context=/azure/cognitive-services/Computer-vision/context/context'
     - name: 'Compliance, Datenschutz und Sicherheit'
-      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/compliance-privacy-security-2'
+      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/compliance-privacy-security-2?context=/azure/cognitive-services/Computer-vision/context/context'
     - name: Verantwortungsvolle Verwendung bei der KI-Bereitstellung
-      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/responsible-use-deployment'
+      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/responsible-use-deployment?context=/azure/cognitive-services/Computer-vision/context/context'
     - name: Entwurfsrichtlinien für die Offenlegung
-      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/disclosure-design'
+      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/disclosure-design?context=/azure/cognitive-services/Computer-vision/context/context'
     - name: Forschungserkenntnisse
-      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/research-insights'
+      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/research-insights?context=/azure/cognitive-services/Computer-vision/context/context'
 - name: Container
   items:
     - name: Lese-API-Container
@@ -134,6 +134,8 @@
           displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, on-premises'
         - name: Konfigurieren von Containern
           href: computer-vision-resource-container-config.md
+        - name: Migrieren zu v3 des Containers für das Lesen
+          href: read-container-migration-guide.md
           displayName: 'docker, container, billing, apikey, pull, logging, on-premises'
         - name: Verwendung mit Kubernetes und Helm
           href: deploy-computer-vision-on-premises.md

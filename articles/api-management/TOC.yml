@@ -197,6 +197,8 @@
       items:
         - name: Festlegen oder Bearbeiten von Richtlinien
           href: set-edit-policies.md
+        - name: Debugrichtlinien
+          href: api-management-debug-policies.md
         - name: Richtlinienausdrücke
           href: api-management-policy-expressions.md
         - name: Benutzerdefiniertes Caching
@@ -221,6 +223,8 @@
           href: api-management-cross-domain-policies.md
         - name: Transformationsrichtlinien
           href: api-management-transformation-policies.md
+        - name: Distributed Application Runtime-Integrationsrichtlinien (Dapr)
+          href: api-management-dapr-policies.md
     - name: Verwalten in Produktion
       items:
         - name: Exportieren von APIs in Power Platform

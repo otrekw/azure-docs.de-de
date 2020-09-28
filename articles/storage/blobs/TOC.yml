@@ -207,7 +207,7 @@
           href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 'Finden, Suchen und Verstehen von Blobdaten'
           items:
-            - name: Verwenden eines Blobindex zum Verwalten und Finden von Blobdaten
+            - name: Verwenden eines Blobindexes zum Verwalten und Suchen von Blobdaten
               href: storage-manage-find-blobs.md
             - name: Verstehen von Blobdaten mithilfe von KI
               href: ../../search/search-blob-ai-integration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -312,6 +312,8 @@
               href: storage-blob-properties-metadata.md
             - name: Kopieren eines Blobs (SDK)
               href: storage-blob-copy.md
+            - name: Verwenden eines Blobindexes
+              href: storage-blob-index-how-to.md
         - name: Autorisieren des Zugriffs auf Blobdaten
           items:
             - name: Autorisierungsoptionen für Benutzer
@@ -460,8 +462,6 @@
           href: storage-custom-domain-name.md
         - name: Routing von Ereignissen an einen benutzerdefinierten Endpunkt
           href: storage-blob-event-quickstart.md
-        - name: Blobindex nutzen
-          href: storage-blob-index-how-to.md
         - name: Übertragen von Daten
           items:
             - name: AzCopy

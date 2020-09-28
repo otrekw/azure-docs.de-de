@@ -15,6 +15,8 @@
   items:
     - name: Einrichten einer Time Series Insights Gen2-Umgebung.
       href: tutorials-set-up-tsi-environment.md
+    - name: Modellsynchronisierung zwischen Azure Digital Twins und Time Series Insights Gen2
+      href: tutorials-model-sync.md
 - name: Konzepte
   items:
     - name: Azure Time Series Insights Gen2

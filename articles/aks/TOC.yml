@@ -250,7 +250,7 @@
           href: control-kubeconfig-access.md
         - name: Schützen des Datenverkehrs zwischen Pods mit Netzwerkrichtlinien
           href: use-network-policies.md
-        - name: Sichern von Pods mit Azure Policy (Vorschau)
+        - name: Schützen von Pods mit Azure Policy
           href: use-pod-security-on-azure-policy.md
         - name: Verwenden von Podsicherheitsrichtlinien (Vorschauversion)
           href: use-pod-security-policies.md
