@@ -7,12 +7,12 @@ ms.reviewer: deli, logicappspm
 ms.topic: article
 ms.date: 05/14/2019
 ms.custom: devx-track-javascript
-ms.openlocfilehash: a1c3828a4b1899ff4b22c0a9520f676add21fe02
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a1fca14035dd4a9af00ecfb8d1d01dc27ab0b8d0
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420123"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658174"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>Hinzufügen und Ausführen von Codeausschnitten mit Inlinecode in Azure Logic Apps
 
@@ -29,7 +29,7 @@ Wenn Sie einen Codeausschnitt in Ihrer Logik-App ausführen möchten, können Si
 
 Diese Aktion führt den Codeausschnitt aus und gibt die Ausgabe des Ausschnitts als Token mit dem Namen **Ergebnis** zurück; dieses Token kann in nachfolgenden Aktionen in der Logik-App verwendet werden. Wenn Sie in anderen Szenarien eine Funktion für Ihren Code erstellen möchten, versuchen Sie, in der Logik-App [eine Azure-Funktion zu erstellen und aufzurufen](../logic-apps/logic-apps-azure-functions.md).
 
-In diesem Artikel wird die Beispiel-Logik-App ausgelöst, wenn eine neue E-Mail in einem Office 365 Outlook-Konto empfangen wird. Der Codeausschnitt extrahiert und gibt alle E-Mail-Adressen zurück, die im E-Mail-Text enthalten sind.
+In diesem Artikel wird die Beispiel-Logik-App ausgelöst, wenn eine neue E-Mail in einem Geschäfts-, Schul- oder Unikonto empfangen wird. Der Codeausschnitt extrahiert und gibt alle E-Mail-Adressen zurück, die im E-Mail-Text enthalten sind.
 
 ![Übersicht über das Beispiel](./media/logic-apps-add-run-inline-code/inline-code-example-overview.png)
 

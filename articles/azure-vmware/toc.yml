@@ -20,8 +20,6 @@
       href: tutorial-nsx-t-network-segment.md
     - name: 7. Lokaler Peer zu privater Cloud
       href: tutorial-expressroute-global-reach-private-cloud.md
-    - name: 8. Bereitstellen einer VM über die Inhaltsbibliothek
-      href: tutorial-deploy-vm-content-library.md
 - name: Konzepte
   items:
     - name: Private Clouds und Cluster
@@ -36,6 +34,8 @@
       href: concepts-rbac.md
     - name: Upgrades für private Clouds
       href: concepts-upgrades.md
+    - name: Überwachen und Reparieren von privaten Clouds
+      href: concepts-monitor-repair-private-cloud.md
 - name: Anleitungen
   items:
     - name: Aktivieren von Azure VMware Solution
@@ -48,6 +48,8 @@
       href: manage-dhcp.md
     - name: Notfallwiederherstellung
       href: disaster-recovery.md
+    - name: Bereitstellen einer VM über die Inhaltsbibliothek
+      href: deploy-vm-content-library.md
     - name: Native Azure-Integration
       items:
         - name: API Management
@@ -68,11 +70,17 @@
           href: deploy-traffic-manager-to-balance-avs-workloads.md
         - name: NetApp Files
           href: net-app-files.md
+    - name: GitHub Enterprise Server
+      href: github-enterprise-server.md
     - name: VMware Solutions
       items:
         - name: Einrichten von vRealize-Vorgängen
           href: vrealize-operations-for-avs.md
-- name: Verweis
+    - name: VMware-Ökosystem
+      items:
+        - name: Sicherungslösungen für virtuelle Computer
+          href: ecosystem-back-up-vms.md
+- name: Referenz
   items: null
 - name: Ressourcen
   items:

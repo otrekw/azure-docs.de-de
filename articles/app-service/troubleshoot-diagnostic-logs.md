@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 89162a0b8ca20e59319802f9e2359c2f27ff163f
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 5eaf107861d20cea395209418c343d25461b3836
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962178"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469931"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Aktivieren der Diagnoseprotokollierung für Apps in Azure App Service
 ## <a name="overview"></a>Übersicht
@@ -191,7 +191,7 @@ In der folgenden Tabelle werden die unterstützten Protokolltypen und Beschreibu
 | AppServiceHTTPLogs | Ja | Ja | Webserverprotokolle |
 | AppServiceEnvironmentPlatformLogs | Ja | Ja | App Service-Umgebung: Skalierung, Konfigurationsänderungen und Statusprotokolle|
 | AppServiceAuditLogs | Ja | Ja | Anmeldeaktivität per FTP und Kudu |
-| AppServiceFileAuditLogs | Ja | TBD | Dateiänderungen per FTP und Kudu |
+| AppServiceFileAuditLogs | Ja | TBD | Dateiänderungen am Websiteinhalt; nur für Premium-Tarif und höher verfügbar. |
 | AppServiceAppLogs | Wird noch angekündigt | Java SE & Tomcat | Anwendungsprotokolle |
 | AppServiceIPSecAuditLogs  | Ja | Ja | Anforderungen von IP-Regeln |
 | AppServicePlatformLogs  | Wird noch angekündigt | Ja | Containerprotokolle |

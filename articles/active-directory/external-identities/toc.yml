@@ -2,11 +2,14 @@
   href: index.yml
   items:
     - name: Übersicht
+      expanded: true
       items:
         - name: Vergleichen von Lösungen für externe Identitäten
           href: compare-with-b2c.md
         - name: Worum handelt es sich beim B2B-Gastbenutzerzugriff?
           href: what-is-b2b.md
+        - name: Was ist Azure AD B2C?
+          href: 'https://docs.microsoft.com/azure/active-directory-b2c/overview'
     - name: Schnellstarts
       items:
         - name: Hinzufügen von Gastbenutzern im Portal
@@ -15,15 +18,15 @@
           href: b2b-quickstart-invite-powershell.md
     - name: Tutorials
       items:
-        - name: Masseneinladung über PowerShell
+        - name: Masseneinladung von Gastbenutzern über PowerShell
           href: bulk-invite-powershell.md
-        - name: Masseneinladung über das Portal
+        - name: Masseneinladung von Gastbenutzern über das Portal
           href: tutorial-bulk-invite.md
-        - name: Erzwingen der Multi-Factor Authentication
+        - name: Erzwingen der mehrstufigen Authentifizierung für Gastbenutzer
           href: b2b-tutorial-require-mfa.md
     - name: Beispiele
       items:
-        - name: Beispiele für die Self-Service-Registrierung
+        - name: Beispiele für die Self-Service-Registrierung für Gastbenutzer
           href: code-samples-self-service-sign-up.md
         - name: Code- und Azure PowerShell-Beispiele
           href: code-samples.md
@@ -63,9 +66,9 @@
     - name: Anleitungen
       expanded: true
       items:
-        - name: Konfigurieren der externen Freigabe
+        - name: Konfigurieren der Einstellungen für externe Zusammenarbeit
           href: delegate-invitations.md
-        - name: Einladen von B2B-Benutzern
+        - name: Einladen von Gastbenutzern
           items:
             - name: 'Administratoren, die B2B-Benutzer hinzufügen'
               href: add-users-administrator.md
@@ -91,7 +94,7 @@
               href: direct-federation-adfs.md
         - name: Authentifizierung mit Einmalkennung
           href: one-time-passcode.md
-        - name: Self-Service-Registrierung (Vorschauversion)
+        - name: Self-Service-Registrierung für Gastbenutzer (Vorschau)
           items:
             - name: Hinzufügen eines Benutzerflows für die Self-Service-Registrierung
               href: self-service-sign-up-user-flow.md
@@ -103,7 +106,7 @@
               href: self-service-sign-up-add-api-connector.md
             - name: Hinzufügen eines benutzerdefinierten Genehmigungssystems
               href: self-service-sign-up-add-approvals.md
-        - name: Verwalten von Gastkonten
+        - name: Verwalten von Gastbenutzerkonten
           items:
             - name: Hinzufügen eines B2B-Benutzers zu einer Rolle
               href: add-guest-to-role.md
@@ -113,7 +116,7 @@
               href: user-properties.md
             - name: B2B für integrierte Azure AD-Apps
               href: configure-saas-apps.md
-        - name: Verwalten des Zugriffs in einer Hybridorganisation
+        - name: Verwalten des Gastzugriffs in einer Hybridorganisation
           items:
             - name: Gewähren des Zugriffs auf Cloud-Apps für lokale Benutzer
               href: hybrid-on-premises-to-cloud.md

@@ -11,16 +11,16 @@
         - name: Einführung
           href: get-started.md
           displayName: 'get, started'
-        - name: 1. Erstellen eines Synapse-Arbeitsbereichs
+        - name: 1. Erstellen eines Arbeitsbereichs
           href: get-started-create-workspace.md
           displayName: 'get, started'
-        - name: 2. Analysieren mithilfe eines SQL-Pools
+        - name: 2. Verwenden von SQL-Pools
           href: get-started-analyze-sql-pool.md
           displayName: 'get, started'
-        - name: 3. Analysieren mithilfe von Spark
+        - name: 3. Verwenden von Spark
           href: get-started-analyze-spark.md
           displayName: 'get, started'
-        - name: 4. Analysieren mithilfe von SQL On-Demand
+        - name: "4. Verwenden von SQL\_On-Demand"
           href: get-started-analyze-sql-on-demand.md
           displayName: 'get, started'
         - name: 5. Analysieren von Daten in einem Speicherkonto
@@ -84,6 +84,8 @@
   items:
     - name: "Ausführen von Apache\_Spark-Anwendungen"
       href: ./spark/intellij-tool-synapse.md
+    - name: Ausführen von PySpark-Anwendungen für Spark-Pools
+      href: ./spark/vscode-tool-synapse.md
     - name: Spark-Auftragsdefinitionen
       href: ./spark/apache-spark-job-definitions.md
     - name: Power BI Desktop
@@ -210,6 +212,8 @@
               href: ../data-factory/concepts-data-flow-expression-builder.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Ausdruckssprache
               href: ../data-factory/data-flow-expression-functions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Unterschiede zu Azure Data Factory
+              href: ./data-integration/concepts-data-factory-differences.md
     - name: Spark
       items:
         - name: Übersicht

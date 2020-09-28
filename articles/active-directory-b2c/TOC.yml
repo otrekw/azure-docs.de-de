@@ -474,7 +474,7 @@
       href: error-codes.md
     - name: Erweiterungs-App
       href: extensions-app.md
-    - name: IEF-Versionshinweise
+    - name: Versionshinweise zu benutzerdefinierten Richtlinien (IEF)
       href: custom-policy-developer-notes.md
     - name: Microsoft Graph-API-Vorgänge
       href: microsoft-graph-operations.md

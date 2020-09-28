@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/17/2020
+ms.date: 09/10/2020
 ms.author: b-juche
-ms.openlocfilehash: 7e6ab90010d4379c1640f73a8deeba874e601daf
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 1690a844ff700a2975be8e972fd90ba71eeb937c
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513807"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707780"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Metriken für Azure NetApp Files
 
@@ -27,20 +27,18 @@ Azure NetApp Files verfügt über Metriken für Folgendes: zugeteilter Speicher,
 
 ## <a name="usage-metrics-for-capacity-pools"></a><a name="capacity_pools"></a>Nutzungsmetriken für Kapazitätspools
 
-<!-- 
-- *Pool Provisioned Size*  
-    The logical space (GiB) the capacity pool is provisioned with.  
-    This size is the size you selected during capacity pool creation. 
---> 
+- *Zugeordnete Poolgröße*   
+    Die bereitgestellte Größe des Pools.
+
 - *Zu Volumegröße zugeordneter Pool*  
     Die Gesamtsumme des Volumekontingents (GiB) eines bestimmten Kapazitätspools (Gesamtsumme der bereitgestellten Größen der Volumes im Kapazitätspool)  
     Diese Größe haben Sie beim Erstellen des Volumes ausgewählt.  
+
 - *Vom Pool genutzte Größe*  
     Die Gesamtsumme des logischen Speichers (GiB), der in einem Kapazitätspool volumeübergreifend genutzt wird.  
-<!-- 
-- *Pool Consumed Snapshot Size*  
-    The total of logical space (GiB) used by snapshots across all volumes in a capacity pool. 
--->
+
+- *Gesamtgröße der Momentaufnahme für den Pool*    
+    Die Summe der Momentaufnahmegröße aller Volumes in dem Pool.
 
 ## <a name="usage-metrics-for-volumes"></a><a name="volumes"></a>Nutzungsmetriken für Volumes
 
@@ -57,14 +55,37 @@ Azure NetApp Files verfügt über Metriken für Folgendes: zugeteilter Speicher,
 
 ## <a name="performance-metrics-for-volumes"></a>Leistungsmetriken für Volumes
 
-- *AverageReadLatency*   
+- *Durchschnittliche Wartezeit beim Lesevorgang*   
     Die durchschnittliche Dauer von Lesevorgängen vom Volume in Millisekunden.
-- *AverageWriteLatency*   
+- *Durchschnittliche Wartezeit beim Schreibvorgang*   
     Die durchschnittliche Dauer von Schreibvorgängen vom Volume in Millisekunden.
-- *ReadIops*   
+- *Lese-IOPS*   
     Die Anzahl der Lesevorgänge auf dem Volume pro Sekunde.
-- *WriteIops*   
+- *Schreib-IOPS*   
     Die Anzahl der Schreibvorgänge auf dem Volume pro Sekunde.
+
+## <a name="volume-replication-metrics"></a><a name="replication"></a>Metriken für die Volumereplikation
+
+- *Ist Volumereplikationsstatus „Fehlerfrei“*    
+    Der Zustand der Replikationsbeziehung. 
+
+- *Wird Volumereplikation übertragen*    
+    Gibt an, ob der Status der Volumereplikation „Wird übertragen“ lautet. 
+ 
+- *Verzögerungszeit bei der Volumereplikation*   
+    Die Zeit in Sekunden, um die die Daten in der Spiegelung im Vergleich zur Quelle verzögert sind 
+
+- *Übertragungsdauer der letzten Volumereplikation*   
+    Die Dauer der letzten Übertragung in Sekunden 
+
+- *Übertragungsgröße der letzten Volumereplikation*    
+    Bei der letzten Übertragung insgesamt übertragene Bytes 
+
+- *Fortschritt der Volumereplikation*    
+    Die insgesamt beim aktuellen Übertragungsvorgang übertragenen Daten. 
+
+- *Insgesamt bei der Volumereplikation übertragene Bytes*   
+    Die kumulative Anzahl der für die Beziehung übertragenen Bytes. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
