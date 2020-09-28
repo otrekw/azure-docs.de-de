@@ -311,8 +311,6 @@
           href: compute-benchmark-scores.md
     - name: Unterstützte Distributionen
       href: endorsed-distros.md
-    - name: Dedizierte Hosts
-      href: dedicated-hosts.md
     - name: Wartung und Updates
       href: ../maintenance-and-updates.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Datenträgerspeicher
@@ -391,11 +389,12 @@
         - name: Kopieren oder Klonen eines virtuellen Computers
           href: copy-vm.md
         - name: Verwenden dedizierter Hosts
+          href: ../dedicated-hosts.md
           items:
             - name: Befehlszeilenschnittstelle (CLI)
               href: dedicated-hosts-cli.md
             - name: Portal
-              href: dedicated-hosts-portal.md
+              href: ../dedicated-hosts-portal.md
         - name: Bereitstellen von Spot-VMs
           items:
             - name: Befehlszeilenschnittstelle (CLI)
@@ -858,6 +857,7 @@
         - name: Ändern der Verfügbarkeitsgruppe
           href: ../windows/change-availability-set.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Erstellen einer Näherungsplatzierungsgruppe
+          displayName: PPG aligned colocation co-location
           items:
             - name: Befehlszeilenschnittstelle (CLI)
               href: proximity-placement-groups.md
