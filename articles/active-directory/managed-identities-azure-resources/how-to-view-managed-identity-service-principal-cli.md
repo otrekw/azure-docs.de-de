@@ -16,12 +16,12 @@ ms.date: 11/29/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d26f1cdd6184ca10c3a7b9c9a7dc5724cc5e8129
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: b8eec72666eadf90a401dc8f0adb77df77dbf782
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266305"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969297"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-using-azure-cli"></a>Anzeigen des Dienstprinzipals einer verwalteten Identität über die Azure CLI
 
@@ -34,12 +34,9 @@ In diesem Artikel erhalten Sie Informationen zur Anzeige des Dienstprinzipals ei
 - Wenn Sie nicht mit verwalteten Identitäten für Azure-Ressourcen vertraut sind, helfen Ihnen die Informationen in der [Übersicht](overview.md) weiter.
 - Falls Sie noch nicht über ein Azure-Konto verfügen, können Sie sich für ein [kostenloses Konto](https://azure.microsoft.com/free/) registrieren.
 - Aktivieren Sie eine [systemseitig zugewiesene Identität auf einem virtuellen Computer](./qs-configure-portal-windows-vm.md#system-assigned-managed-identity) oder in einer [Anwendung](../../app-service/overview-managed-identity.md#add-a-system-assigned-identity).
-- Um die CLI-Skriptbeispiele auszuführen, haben Sie drei Möglichkeiten:
-    - Verwenden Sie [Azure Cloud Shell](../../cloud-shell/overview.md) aus dem Azure-Portal (siehe nächster Abschnitt).
-    - Verwenden Sie die eingebettete Azure Cloud Shell, indem Sie die Schaltfläche „Ausprobieren“ in der oberen rechten Ecke jedes Codeblocks verwenden.
-    - [Installieren Sie die aktuelle Version der Azure CLI](/cli/azure/install-azure-cli), wenn Sie lieber eine lokale CLI-Konsole verwenden möchten, und melden Sie sich mit `az login` bei Azure an.
- 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+- Zum Ausführen der Beispielskripts haben Sie zwei Möglichkeiten:
+    - Verwenden Sie die [Azure Cloud Shell](../../cloud-shell/overview.md), die Sie mithilfe der Schaltfläche **Testen** in der oberen rechten Ecke der Codeblöcke öffnen können.
+    - Führen Sie Skripts lokal aus, indem Sie die neueste Version der [Azure CLI](/cli/azure/install-azure-cli) installieren, und melden Sie sich dann mit dem Befehl [az login](/cli/azure/reference-index#az-login) bei Azure an. Verwenden Sie ein Konto, das dem Azure-Abonnement zugeordnet ist, in dem Sie Ressourcen erstellen möchten.   
 
 ## <a name="view-the-service-principal"></a>Anzeigen des Dienstprinzipals
 

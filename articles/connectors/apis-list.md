@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/11/2020
-ms.openlocfilehash: 1bd3cb1c18d1bac078ac1344f574914dba73d07b
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 4876c5cb0490a96d5a77da9ced83e1650e98379a
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871563"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488829"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Connectors für Azure Logic Apps
 
@@ -308,7 +308,7 @@ Für Logik-Apps, die Sie erstellen und in einer dedizierten [Integrationsdienstu
         [![Azure Service Bus-ISE-Connector][azure-service-bus-icon]<br>**Azure Service <br>Bus**][azure-service-bus-doc]
     :::column-end:::
     :::column:::
-        [![Azure SQL Data Warehouse-ISE-Connector][azure-sql-data-warehouse-icon]<br>**Azure SQL Data <br>Warehouse**][azure-sql-data-warehouse-doc]
+        [![Azure Synapse Analytics-ISE-Connector][azure-sql-data-warehouse-icon]<br>**Azure SQL Data <br>Warehouse**][azure-sql-data-warehouse-doc]
     :::column-end:::
     :::column:::
         [![Azure Table Storage-ISE-Connector][azure-table-storage-icon]<br>**Azure Table <br>Storage**][azure-table-storage-doc]
@@ -572,7 +572,7 @@ Obwohl Sie Verbindungen in einer Logik-App erstellen, sind Verbindungen separate
 [azure-monitor-logs-doc]: /connectors/azuremonitorlogs/ "Ausführen von Abfragen an Azure Monitor-Protokolle über Log Analytics-Arbeitsbereiche und Application Insights-Komponenten hinweg"
 [azure-queues-doc]: /connectors/azurequeues/ "Herstellen einer Verbindung mit Ihrem Azure Storage-Konto, sodass Sie Warteschlangen und Nachrichten erstellen und verwalten können"
 [azure-service-bus-doc]: ./connectors-create-api-servicebus.md "Senden von Nachrichten aus Service Bus-Warteschlangen und -Themen und Empfangen von Nachrichten aus Service Bus-Warteschlangen und -Abonnements"
-[azure-sql-data-warehouse-doc]: /connectors/sqldw/ "Herstellen einer Verbindung mit Azure SQL Data Warehouse, sodass Sie Ihre Daten anzeigen können"
+[azure-sql-data-warehouse-doc]: /connectors/sqldw/ "Herstellen einer Verbindung mit Azure Synapse Analytics, sodass Sie Ihre Daten anzeigen können"
 [azure-table-storage-doc]: /connectors/azuretables/ "Herstellen einer Verbindung mit Ihrem Azure Storage-Konto, sodass Sie Dateien erstellen und aktualisieren, Tabellen abfragen und mehr können"
 [biztalk-server-doc]: /connectors/biztalk/ "Herstellen einer Verbindung mit Ihrer BizTalk Server-Instanz, sodass Sie BizTalk-basierte Anwendungen parallel mit Azure Logic Apps ausführen können"
 [file-system-doc]: ../logic-apps/logic-apps-using-file-connector.md "Herstellen einer Verbindung mit einem lokalen Dateisystem"

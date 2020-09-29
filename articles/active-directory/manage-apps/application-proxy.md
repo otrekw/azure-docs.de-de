@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 82e984b629c8d838ba179b25a78262eccf078a04
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 65e1b1b5e84c3344a082b73b7768935d788a3394
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377861"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707406"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-ad-application-proxy"></a>Remotezugriff auf lokale Anwendungen über den Azure AD-Anwendungsproxy
 
@@ -24,7 +24,7 @@ Der Azure Active Directory-Anwendungsproxy ermöglicht den sicheren Remotezugrif
 
 Azure AD-Anwendungsproxy ist:
 
-- **Einfach zu verwenden.** Dadurch können Benutzer auf Ihre lokalen Anwendungen auf die gleiche Weise zugreifen wie auf O365 und andere SaaS-Apps, die in Azure AD integriert sind. Sie brauchen Ihre Anwendungen nicht ändern oder aktualisieren, damit Sie mit dem Anwendungsproxy funktionieren.
+- **Einfach zu verwenden.** Benutzer können auf die gleiche Weise wie auf Microsoft 365 und andere SaaS-Apps, die in Azure AD integriert sind, auf ihre lokalen Anwendungen zugreifen. Sie brauchen Ihre Anwendungen nicht ändern oder aktualisieren, damit Sie mit dem Anwendungsproxy funktionieren.
 
 - **Sicher.** Lokale Anwendungen können die Autorisierungssteuerungen und Sicherheitsanalysen von Azure nutzen. So können lokale Anwendungen z.B. den bedingten Zugriff und die zweistufige Überprüfung verwenden. Für den Anwendungsproxy müssen Sie keine eingehenden Verbindungen über Ihre Firewall öffnen.
 

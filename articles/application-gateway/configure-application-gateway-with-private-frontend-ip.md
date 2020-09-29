@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 04/16/2020
 ms.author: victorh
-ms.openlocfilehash: c7a0022c5cff405a993f30cdf2ab5900485c84a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64dfe284772faf2a345b7959f1a1bd6f474cd1bf
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808116"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90562484"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>Konfigurieren einer Application Gateway-Instanz mit einem Endpunkt für den internen Lastenausgleich (Internal Load Balancer, ILB)
 
@@ -110,7 +110,7 @@ Führen Sie dazu die folgenden Schritte aus:
 ### <a name="install-iis"></a>Installieren von IIS
 
 1. Öffnen Sie die Cloud Shell, und vergewissern Sie sich, dass **PowerShell** festgelegt ist.
-    ![private-frontendip-3](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-3.png)
+    ![Ein Screenshot, der ein geöffnetes Azure Cloud Shell-Konsolenfenster zeigt, das PowerShell verwendet.](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-3.png)
 2. Führen Sie den folgenden Befehl aus, um IIS auf dem virtuellen Computer zu installieren:
 
    ```azurepowershell
@@ -144,13 +144,13 @@ Führen Sie dazu die folgenden Schritte aus:
 2. Wählen Sie **Back-End-Pools** aus. Wählen Sie **appGatewayBackendPool** aus.
 3. Wählen Sie unter **Zieltyp** den Wert **Virtueller Computer** aus, und wählen Sie unter **Ziel** die myVM zugeordnete vNIC aus.
 4. Wiederholen Sie den Vorgang, um MyVM2 hinzuzufügen.
-   ![private-frontendip-4](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-4.png)
+   ![Ein Screenshot, der den Bereich „Back-End-Pool bearbeiten“ mit hervorgehobenen Zieltypen und Zielen zeigt.](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-4.png)
 5. Wählen Sie **Speichern** aus.
 
 ## <a name="test-the-application-gateway"></a>Testen des Anwendungsgateways
 
 1. Überprüfen Sie Ihre Front-End-IP-Adresse, die zugewiesen wurde, indem Sie im Portal auf die Seite **Front-End-IP-Konfigurationen** klicken.
-    ![private-frontendip-5](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-5.png)
+    ![Ein Screenshot, der den Bereich „Front-End-IP-Konfigurationen“ dem hervorgehobenen Typ „Privat“ zeigt.](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-5.png)
 2. Kopieren Sie die private IP-Adresse, und fügen Sie diese dann in einer VM im selben VNet oder lokal in die Adressleiste des Browsers ein, die über eine Verbindung mit diesem VNet verfügt, und versuchen Sie, auf das Application Gateway zuzugreifen.
 
 ## <a name="next-steps"></a>Nächste Schritte

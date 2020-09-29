@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 355f0127829b709d82127fb340381830793c93ff
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 18bc7ca9e108a35fd27f7b3155f186221a8caae3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783551"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980063"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Anzeigen, Hinzufügen und Entfernen von Zuweisungen für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung
 
@@ -36,7 +36,7 @@ Um die Azure AD-Berechtigungsverwaltung zu verwenden und Benutzer zu Zugriffspa
 
 ## <a name="view-who-has-an-assignment"></a>Anzeigen von Benutzern mit Zuweisung
 
-**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
+**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer, Zugriffspaketmanager oder Zugriffspaketzuweisungsmanager
 
 1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
 
@@ -64,7 +64,7 @@ Sie können auch mithilfe von Microsoft Graph Zuweisungen in einem Zugriffspaket
 
 In einigen Fällen möchten Sie bestimmte Benutzer möglicherweise einem Zugriffspaket direkt zuweisen, damit diese das Zugriffspaket nicht extra anfordern müssen. Damit dies möglich ist, muss das Zugriffspaket eine Richtlinie enthalten, die direkte Zuweisungen eines Administrator erlaubt.
 
-**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
+**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer, Zugriffspaketmanager oder Zugriffspaketzuweisungsmanager
 
 1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
 
@@ -94,7 +94,7 @@ Sie können einen Benutzer auch direkt mithilfe von Microsoft Graph einem Zugrif
 
 ## <a name="remove-an-assignment"></a>Entfernen einer Zuweisung
 
-**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
+**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer, Zugriffspaketmanager oder Zugriffspaketzuweisungsmanager
 
 1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
 

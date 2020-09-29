@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d9ca8b7e188a7ed438feb5e2b99c6db22ad12b3
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 95f4221b390071ad149699608d3937b9af4e1d5d
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717148"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527002"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Planen einer Bereitstellung mit kennwortloser Authentifizierung in Azure Active Directory
 
@@ -160,7 +160,7 @@ Sie müssen **kompatible FIDO2-Sicherheitsschlüssel** aktivieren. Microsoft hat
 -    Windows 10 Version 1809 unterstützt die FIDO2-Anmeldung und erfordert möglicherweise die Bereitstellung von Software des FIDO2-Schlüsselanbieters. Es wird die Verwendung von mindestens Version 1903 empfohlen. 
 
 **Geräte mit Azure Active Directory-Hybriddomäneneinbindung:** 
--    Windows 10 Insider-Build 18945 oder höher
+-    Windows 10, Version 2004 oder höher
 -    Vollständig gepatchte Domänenserver unter Windows Server 2016 oder 2019.
 -    Neue Version von Azure AD Connect
 

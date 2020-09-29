@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: conceptual
-ms.date: 07/31/2020
+ms.date: 09/14/2020
 tags: connectors
-ms.openlocfilehash: 13732c6d31f19dfb2548154feb8336a1dff3a529
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 2993fc718462d1ac2a9cfd02be5642fb21f86702
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853294"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526526"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Austauschen von Nachrichten in der Cloud mit Azure Logic Apps und Azure Service Bus
 
@@ -79,7 +79,7 @@ Vergewissern Sie sich, dass Ihre Logik-App über Berechtigungen für den Zugriff
    Einige Trigger, z. B. der Trigger**Bei Empfang mindestens einer Nachricht in der Warteschlange (autom. abschließen)** , können eine oder mehrere Nachrichten zurückgeben. Wird ein solcher Trigger ausgelöst, gibt er mindestens eine und maximal so viele Nachrichten zurück, wie diese in seiner Eigenschaft **Maximale Nachrichtenanzahl** angegeben ist.
 
     > [!NOTE]
-    > Mit dem Trigger für die automatische Vervollständigung wird eine Nachricht automatisch abgeschlossen, der Abschluss erfolgt jedoch erst bei der nächsten Ausführung des Auslösers. Dieses Verhalten kann sich auf den Entwurf Ihrer Logik-App auswirken. Wenn Sie z. B. für den Trigger der automatischen Vervollständigung jede Minute eine Überprüfung auf Nachrichten festlegen, die Sperrdauer jedoch auf Service Bus-Seite auf 30 Sekunden festgelegt ist, tritt beim Abschließen der Nachricht ein Fehler vom Typ „Sperre abgelaufen“ auf. Sie müssen die Sperrdauer auf einen längeren Wert als das Abrufintervall festlegen.
+    > Mit dem Trigger für die automatische Vervollständigung wird eine Nachricht automatisch abgeschlossen, der Abschluss erfolgt jedoch erst bei der nächsten Ausführung des Auslösers. Dieses Verhalten kann sich auf den Entwurf Ihrer Logik-App auswirken. Vermeiden Sie z. B. das Ändern der Parallelität für den auto-complete-Trigger (automatisch vervollständigen), da diese Änderung doppelte Nachrichten verursachen kann, wenn Ihre Logik-App in einen gedrosselten Zustand wechselt. Durch Ändern der Parallelitätssteuerung werden folgende Zustände erzeugt: gedrosselte Trigger werden mit dem `WorkflowRunInProgress`-Code übersprungen, der Abschlussvorgang wird nicht ausgeführt, und die nächste Triggerausführung erfolgt nach dem Abrufintervall. Sie müssen die Sperrdauer des Service Bus auf einen längeren Wert als das Abrufintervall festlegen. Trotz dieser Einstellung wird die Nachricht möglicherweise jedoch immer noch nicht abgeschlossen, wenn Ihre Logik-App beim nächsten Abrufintervall weiterhin in einem gedrosselten Zustand verbleibt.
 
 1. Wenn Ihr Trigger zum ersten Mal eine Verbindung mit Ihrem Service Bus-Namespace herstellt, führen Sie diese Schritte aus, wenn Sie der Logik-App-Designer auffordert, Ihre Verbindungsinformationen anzugeben.
 
@@ -167,7 +167,7 @@ Beim Erstellen einer Logik-App können Sie die Vorlage für eine **korrelierte g
 
 ## <a name="connector-reference"></a>Connector-Referenz
 
-Der Service Bus-Connector kann bis zu 1.500 eindeutige Sitzungen gleichzeitig von einem Service Bus in den Connectorcache speichern. Wenn die Anzahl der Sitzungen dieses Limit überschreitet, werden alte Sitzungen aus dem Cache entfernt. Weitere Informationen finden Sie unter [Nachrichtensitzungen](../service-bus-messaging/message-sessions.md).
+Von einem Service Bus kann der Service Bus-Connector bis zu 1.500 eindeutige Sitzungen gleichzeitig im Connectorcache speichern, pro [Service Bus-Nachrichtenentität wie Abonnement oder Thema](../service-bus-messaging/service-bus-queues-topics-subscriptions.md). Wenn die Anzahl der Sitzungen dieses Limit überschreitet, werden alte Sitzungen aus dem Cache entfernt. Weitere Informationen finden Sie unter [Nachrichtensitzungen](../service-bus-messaging/message-sessions.md).
 
 Andere technische Details zu Triggern, Aktionen und Beschränkungen aus der Swagger-Beschreibung des Connectors finden Sie auf der [Referenzseite des Connectors](/connectors/servicebus/). Weitere Informationen zum Azure Service Bus Messaging finden Sie unter [Was ist Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)?
 

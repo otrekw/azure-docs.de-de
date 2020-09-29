@@ -8,12 +8,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: b1d559d82cb22d8a787785c6d8c6a5101d89793a
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: cbcfedc091fd111bceffe775cb337c118a87c767
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586561"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601077"
 ---
 # <a name="point-in-time-snapshot"></a>Point-in-Time-Momentaufnahme
 
@@ -23,31 +23,29 @@ In Azure App Configuration wird ein Datensatz von Änderungen an Schlüssel-Wert
 
 Sie können mithilfe des Azure-Portals oder der CLI frühere Schlüsselwerte abrufen. Verwenden Sie in der Azure CLI `az appconfig revision list`, und fügen Sie die entsprechenden Parameter hinzu, um die erforderlichen Werte abzurufen.  Geben Sie die Azure App Configuration-Instanz über den Speichernamen (`--name <app-config-store-name>`) oder eine Verbindungszeichenfolge (`--connection-string <your-connection-string>`) an. Schränken Sie die Ausgabe ein, indem Sie einen bestimmten Zeitpunkt (`--datetime`) und die maximale Anzahl zurückzugebender Elemente angeben (`--top`).
 
-Wenn Sie die Azure CLI nicht lokal installiert haben, können Sie optional Azure Cloud Shell verwenden.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+Wenn Sie die Azure CLI nicht lokal installiert haben, können Sie optional [Azure Cloud Shell](/azure/cloud-shell/overview) verwenden.
 
 Rufen Sie alle aufgezeichneten Änderungen an Ihren Schlüssel-Wert-Paaren ab.
 
-```azurecli-interactive
+```azurecli
 az appconfig revision list --name <your-app-config-store-name>.
 ```
 
 Rufen Sie alle aufgezeichneten Änderungen für den Schlüssel `environment` und die Bezeichnungen `test` und `prod` ab.
 
-```azurecli-interactive
+```azurecli
 az appconfig revision list --name <your-app-config-store-name> --key environment --label test,prod
 ```
 
 Rufen Sie alle aufgezeichneten Änderungen im hierarchischen Schlüsselraum `environment:prod` ab.
 
-```azurecli-interactive
+```azurecli
 az appconfig revision list --name <your-app-config-store-name> --key environment:prod:* 
 ```
 
 Rufen Sie alle aufgezeichneten Änderungen für den Schlüssel `color` zu einem bestimmten Zeitpunkt ab.
 
-```azurecli-interactive
+```azurecli
 az appconfig revision list --connection-string <your-app-config-connection-string> --key color --datetime "2019-05-01T11:24:12Z" 
 ```
 

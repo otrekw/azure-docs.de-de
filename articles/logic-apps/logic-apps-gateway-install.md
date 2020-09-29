@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 05/15/2020
-ms.openlocfilehash: 9e50cdb16ee6acbdb903681984dcfbd7bfe170fa
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: f646af4cad6101e019e58f4f50a40b07aff19461
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386128"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660486"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Installieren des lokalen Datengateways für Azure Logic Apps
 
@@ -33,7 +33,7 @@ Dieser Artikel zeigt, wie Sie Ihr lokales Datengateway herunterladen, installier
   * Bei Ihrem Azure-Konto muss es sich um ein Geschäfts-, Schul- oder Unikonto handeln (`username@contoso.com`). Sie können keine Azure B2B-Konten (Gastkonten) oder persönliche Microsoft-Konten wie @hotmail.com oder @outlook.com verwenden.
 
     > [!NOTE]
-    > Wenn Sie sich für ein Office 365-Angebot registriert und nicht Ihre geschäftliche E-Mail-Adresse angegeben haben, kann Ihre Adresse beispielsweise wie folgt aussehen: `username@domain.onmicrosoft.com`. Ihr Konto wird auf einem Azure AD-Mandanten gespeichert. In den meisten Fällen ist der Benutzerprinzipalname (User Principal Name, UPN) für Ihr Azure-Konto mit Ihrer E-Mail-Adresse identisch.
+    > Wenn Sie sich für ein Microsoft 365-Angebot registriert und nicht Ihre geschäftliche E-Mail-Adresse angegeben haben, kann Ihre Adresse beispielsweise wie folgt aussehen: `username@domain.onmicrosoft.com`. Ihr Konto wird auf einem Azure AD-Mandanten gespeichert. In den meisten Fällen ist der Benutzerprinzipalname (User Principal Name, UPN) für Ihr Azure-Konto mit Ihrer E-Mail-Adresse identisch.
 
     Wenn Sie ein [Visual Studio-Standardabonnement](https://visualstudio.microsoft.com/vs/pricing/) verwenden möchten, das einem Microsoft-Konto zugeordnet ist, [erstellen Sie zunächst einen Azure AD-Mandanten](../active-directory/develop/quickstart-create-new-tenant.md), oder verwenden Sie das Standardverzeichnis. Fügen Sie dem Verzeichnis einen Benutzer mit einem Kennwort hinzu, und erteilen Sie diesem Benutzer dann Zugriff auf Ihr Azure-Abonnement. Sie können sich dann während der Installation des Gateways mit diesem Benutzernamen und Kennwort anmelden.
 

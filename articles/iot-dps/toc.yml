@@ -46,7 +46,7 @@
         - name: Bereitstellen für Mehrinstanzenfähigkeit
           href: how-to-provision-multitenant.md
         - name: Verwenden benutzerdefinierter Zuordnungsrichtlinien
-          href: how-to-use-custom-allocation-policies.md
+          href: tutorial-custom-allocation-policies.md
 - name: Proben
   items:
     - name: Beispiel für einen Nachweis für ein simuliertes TPM-Gerät
@@ -109,6 +109,8 @@
   items:
     - name: Herstellen einer Verbindung zwischen MXChip IoT DevKit und IoT Hub
       href: how-to-connect-mxchip-iot-devkit.md
+    - name: Bereitstellen von Geräten mithilfe von benutzerdefinierten Zuordnungsrichtlinien
+      href: how-to-use-custom-allocation-policies.md
     - name: Verwalten des Gerätebereitstellungsdiensts
       items:
         - name: 'Verwalten von Registrierungen: Portal'

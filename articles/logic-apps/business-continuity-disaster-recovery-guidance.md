@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: cc55b24c4852028eb1244e97b48415ba08420e20
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0a36cb468ebcb77c0614bffd0afc392df3655c20
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066535"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658212"
 ---
 # <a name="business-continuity-and-disaster-recovery-for-azure-logic-apps"></a>Business Continuity & Disaster Recovery für Azure Logic Apps
 
@@ -69,7 +69,7 @@ In diesem Beispiel werden die vorherigen primären und sekundären Logik-App-Ins
 
 ## <a name="connections-to-resources"></a>Verbindungen mit Ressourcen
 
-Azure Logic Apps bietet [integrierte Trigger und Aktionen sowie Hunderte verwalteter Connectors](../connectors/apis-list.md), die ihre Logik-App für die Zusammenarbeit mit anderen Apps, Diensten, Systemen und anderen Ressourcen wie Azure Storage Konten, SQL Server Datenbanken, E-Mail-Konten von Office 365 Outlook usw. verwenden kann. Wenn Ihre Logik-App Zugriff auf diese Ressourcen benötigt, erstellen Sie Verbindungen, die den Zugriff auf diese Ressourcen authentifizieren. Jede Verbindung ist eine separate Azure-Ressource, die an einem bestimmten Standort vorhanden ist und nicht von Ressourcen an anderen Standorten verwendet werden kann.
+Azure Logic Apps bietet [integrierte Trigger und Aktionen sowie Hunderte verwalteter Connectors](../connectors/apis-list.md), die ihre Logik-App für die Zusammenarbeit mit anderen Apps, Diensten, Systemen und anderen Ressourcen wie Azure Storage Konten, SQL Server Datenbanken, Geschäfts-, Schul- oder Uni-Konten usw. verwenden kann. Wenn Ihre Logik-App Zugriff auf diese Ressourcen benötigt, erstellen Sie Verbindungen, die den Zugriff auf diese Ressourcen authentifizieren. Jede Verbindung ist eine separate Azure-Ressource, die an einem bestimmten Standort vorhanden ist und nicht von Ressourcen an anderen Standorten verwendet werden kann.
 
 Berücksichtigen Sie für Ihre Notfallwiederherstellungsstrategie die Standorte, an denen abhängige Ressourcen in Bezug auf Ihre Logik-App-Instanzen vorhanden sind:
 

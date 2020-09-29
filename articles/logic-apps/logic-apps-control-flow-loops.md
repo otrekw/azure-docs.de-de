@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
-ms.openlocfilehash: 8a72dff055f2733a07b6da705b66da939ad29bae
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5bd637f4e4a786cd4cba0f70c4b2349e354469fd
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495606"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657465"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Erstellen von Schleifen in Azure Logic Apps, die Workflowaktionen wiederholen oder Arrays verarbeiten
 
@@ -45,7 +45,7 @@ zum Verweisen auf und zum Verarbeiten der einzelnen Elemente im Array. Wenn Sie 
 
 Diese Beispiel-Logik-App sendet eine tägliche Zusammenfassung für einen RSS-Feed einer Website. Die App verwendet eine „ForEach“-Schleife, die für jedes neue Element eine E-Mail sendet.
 
-1. [Erstellen Sie diese Beispiel-Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) mit einem Outlook.com- oder Office 365 Outlook-Konto.
+1. [Erstellen Sie diese Beispiel-Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) mit einem Outlook.com- bzw. einem Geschäfts-, Schul- oder Unikonto.
 
 2. Fügen Sie zwischen dem RSS-Trigger und der E-Mail-Sendeaktion eine „ForEach“-Schleife hinzu. 
 

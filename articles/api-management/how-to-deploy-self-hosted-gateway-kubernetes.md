@@ -9,12 +9,12 @@ ms.workload: mobile
 ms.topic: article
 ms.author: apimpm
 ms.date: 04/23/2020
-ms.openlocfilehash: abcda4ea4b14f058325318661daa574494268780
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 023c2c89b90d6ddc71abc95db325dcdeb7684a2d
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056377"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500129"
 ---
 # <a name="deploy-a-self-hosted-gateway-to-kubernetes"></a>Bereitstellen eines selbstgehosteten Gateways für Kubernetes
 
@@ -63,7 +63,7 @@ In diesem Artikel werden die Schritte für die Bereitstellung der selbstgehostet
 ## <a name="production-deployment-considerations"></a>Überlegungen zur Bereitstellung in der Produktion
 
 ### <a name="access-token"></a>Zugriffstoken
-Ohne ein gültiges Zugriffstoken kann ein selbstgehostetes Gateway nicht am Endpunkt des zugeordneten API Management-Diensts auf Konfigurationsdaten zugreifen und diese herunterzuladen. Das Zugriffstoken ist maximal 30 Tage gültig. Es muss neu generiert und der Cluster entweder manuell oder mittels Automatisierung mit einem neuen Token konfiguriert werden, bevor es abläuft. 
+Ohne ein gültiges Zugriffstoken kann ein selbstgehostetes Gateway nicht am Endpunkt des zugeordneten API Management-Diensts auf Konfigurationsdaten zugreifen und diese herunterzuladen. Das Zugriffstoken ist maximal 30 Tage gültig. Es muss neu generiert und der Cluster entweder manuell oder mittels Automatisierung mit einem neuen Token konfiguriert werden, bevor es abläuft.
 
 Wenn Sie die Tokenaktualisierung automatisieren, generieren Sie über diesen [Vorgang](/rest/api/apimanagement/2019-12-01/gateway/generatetoken) der Verwaltungs-API ein neues Token. Informationen zur Verwaltung von Kubernetes-Geheimnissen finden Sie auf der [Kubernetes-Website](https://kubernetes.io/docs/concepts/configuration/secret).
 
@@ -106,6 +106,9 @@ Die DNS-Namensauflösung spielt eine entscheidende Rolle bei der Fähigkeit des 
 Die im Azure-Portal bereitgestellte YAML-Datei wendet die Standardrichtlinie [ClusterFirst](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) an. Diese Richtlinie bewirkt, dass vom Cluster-DNS nicht aufgelöste Namensauflösungsanforderungen an den vom Knoten geerbten vorgelagerten DNS-Server weitergeleitet werden.
 
 Weitere Informationen zur Namensauflösung in Kubernetes finden Sie auf der [Kubernetes-Website](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service). Erwägen Sie, die [DNS-Richtlinie](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) oder [DNS-Konfiguration](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-config) entsprechend Ihrer Einrichtung anzupassen.
+
+### <a name="external-traffic-policy"></a>Richtlinie für externen Datenverkehr
+Die im Azure-Portal bereitgestellte YAML-Datei legt das Feld `externalTrafficPolicy` des [Service](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#service-v1-core)-Objekts auf `Local` fest. Hierdurch bleibt die IP-Adresse des Aufrufers erhalten (Zugriffsmöglichkeit darauf im [Anforderungskontext](api-management-policy-expressions.md#ContextVariables)), und der knotenübergreifende Lastenausgleich wird deaktiviert, sodass dadurch verursachte Netzwerkhops beseitigt werden. Beachten Sie, dass diese Einstellung eine asymmetrische Verteilung des Datenverkehrs in Bereitstellungen mit ungleicher Anzahl von Gatewaypods pro Knoten verursachen kann.
 
 ### <a name="custom-domain-names-and-ssl-certificates"></a>Benutzerdefinierte Domänennamen und SSL-Zertifikate
 

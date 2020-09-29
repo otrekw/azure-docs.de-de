@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: 826f47115d15b9c46476af711eddc5499afab419
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 489a1afd8e247b69761d521f51e16310176e31f5
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830256"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564082"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>So implementieren Sie die Notfallwiederherstellung mit Sichern und Wiederherstellen von Diensten in Azure API Management
 
@@ -185,6 +185,7 @@ Die Sicherung ist ein länger anhaltender Vorgang, der bis zum Abschluss mehrere
 -   Konfiguration der [verwalteten Identität](api-management-howto-use-managed-service-identity.md)
 -   [Azure Monitor-Diagnosekonfiguration](api-management-howto-use-azure-monitor.md)
 -   Einstellungen für [Protokolle und Verschlüsselungsverfahren](api-management-howto-manage-protocols-ciphers.md)
+-   Inhalt des [Entwicklerportals](api-management-howto-developer-portal.md#is-the-portals-content-saved-with-the-backuprestore-functionality-in-api-management).
 
 Die Häufigkeit, mit der Sie Dienstsicherungen durchführen, wirkt sich auf das Ziel Ihres Wiederherstellungspunkts aus. Um die Auswirkungen zu minimieren, empfehlen wir, regelmäßige Sicherungen zu implementieren und bei Bedarf Sicherungen durchzuführen, wenn Sie Änderungen an Ihrem API Management-Dienst vorgenommen haben.
 
@@ -234,7 +235,7 @@ Sehen Sie sich die folgenden Ressourcen für verschiedene Vorgehensweisen für d
 
 -   [Replicate Azure API Management Accounts (in englischer Sprache)](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)
 -   [Automating API Management Backup and Restore with Logic Apps](https://github.com/Azure/api-management-samples/tree/master/tutorials/automating-apim-backup-restore-with-logic-apps) (Automatisieren der Sicherung und Wiederherstellung von API Management mit Logic Apps)
--   [Azure API Management: Sichern und Wiederherstellen der Konfiguration](https://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx)
+-   [Azure API Management: Sichern und Wiederherstellen der Konfiguration](https://docs.microsoft.com/archive/blogs/stuartleeks/azure-api-management-backing-up-and-restoring-configuration)
      _–der Ansatz von Stuart entspricht nicht der offiziellen Anleitung, ist aber sehr interessant._
 
 [backup an api management service]: #step1

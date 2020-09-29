@@ -4,14 +4,13 @@ description: Erfahren Sie, wie Container in Azure Container Instances durch Pull
 services: container-instances
 ms.topic: article
 ms.date: 07/02/2020
-ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 0a997733e015a9f65b59ffc99cc137dae3d2d62a
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: eeafc58a1f61ed0439fb29fb08e4ce8c5dd4350c
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927435"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89656998"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Bereitstellen in Azure Container Instances aus Azure Container Registry
 
@@ -31,6 +30,9 @@ Azure Container Registry stellt zusätzliche [Authentifizierungsoptionen](../con
 
 > [!NOTE]
 > Sie können sich nicht bei Azure Container Registry authentifizieren, um während der Containergruppenbereitstellung Images mithilfe einer [verwalteten Identität](container-instances-managed-identity.md) zu pullen, die in derselben Containergruppe konfiguriert ist.
+
+> [!NOTE]
+> Sie können Images nicht aus [Azure Container Registry](../container-registry/container-registry-vnet.md) abrufen, die zu diesem Zeitpunkt in einem Azure Virtual Network bereitgestellt ist.
 
 Im folgenden Abschnitt erstellen Sie einen Azure-Schlüsseltresor und Dienstprinzipal und speichern die Anmeldeinformationen des Dienstprinzipals im Tresor. 
 
