@@ -69,6 +69,8 @@
       href: ../../backup/security-baseline.md
     - name: Azure Cache for Redis-Sicherheitsbaseline
       href: ../../azure-cache-for-redis/security-baseline.md
+    - name: Azure Cognitive Search-Sicherheitsbaseline
+      href: ../../search/security-baseline.md
     - name: Azure Data Box-Sicherheitsbaseline
       href: ../../databox/security-baseline.md
     - name: Azure Data Explorer-Sicherheitsbaseline
@@ -145,6 +147,8 @@
       href: ../../network-watcher/security-baseline.md
     - name: Security Center-Baseline
       href: ../../security-center/security-baseline.md
+    - name: Service Bus-Baseline
+      href: ../../service-bus-messaging/security-baseline.md
     - name: Service Fabric-Baseline
       href: ../../service-fabric/security-baseline.md
     - name: Stream Analytics-Baseline
