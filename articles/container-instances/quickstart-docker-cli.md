@@ -3,13 +3,13 @@ title: 'Schnellstart: Bereitstellen von Docker-Containern in einer Containerinst
 description: In diesem Schnellstart verwenden Sie die Docker CLI, um schnell eine containerbasierte Web-App bereitzustellen, die in einer isolierten Azure-Containerinstanz ausgeführt wird.
 ms.topic: quickstart
 ms.date: 09/14/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 37a6c430055e440d149b9a793c453251787267d4
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.custom: devx-track-js
+ms.openlocfilehash: 9904fb8c2142816196a1939a16445318bdb245d0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90709191"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91262313"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-docker-cli"></a>Schnellstart: Schnellstart: Bereitstellen einer Containerinstanz in Azure mithilfe der Docker CLI
 

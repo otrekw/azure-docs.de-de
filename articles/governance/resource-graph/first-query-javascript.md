@@ -3,13 +3,13 @@ title: 'Schnellstart: Ihre erste JavaScript-Abfrage'
 description: In dieser Schnellstartanleitung führen Sie die Schritte zum Aktivieren der Resource Graph-Bibliothek für JavaScript und zum Ausführen Ihrer ersten Abfrage aus.
 ms.date: 06/23/2020
 ms.topic: quickstart
-ms.custom: devx-track-javascript
-ms.openlocfilehash: fc9809dbe615950b4f5c9e4dc66cefcd054f5ebf
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: cdc0589829f250851212ad990dde99eb6dcc958f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87415923"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251965"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-javascript"></a>Schnellstart: Ausführen Ihrer ersten Resource Graph-Abfrage per JavaScript
 

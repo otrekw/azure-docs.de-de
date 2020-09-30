@@ -11,13 +11,13 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
-ms.custom: aaddev, devx-track-javascript
-ms.openlocfilehash: 4613e22193de8dc374d1a9e1a293c317fb9c1b9b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: aaddev, devx-track-js
+ms.openlocfilehash: 7a136c03db6e27763a22d92d2c335f23c616856e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87311540"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256805"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>Tutorial: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer JavaScript-Single-Page-Webanwendung (SPA) mithilfe des Autorisierungscodeflusses
 
@@ -619,23 +619,23 @@ Sie haben die Erstellung der Anwendung abgeschlossen und sind nun bereit, den No
 
 Nachdem der Browser die Datei *index.html* geladen hat, klicken Sie auf **Anmelden**. Sie werden aufgefordert, sich mit dem Microsoft Identity Platform-Endpunkt anzumelden:
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-01-signin-dialog.png" alt-text="Webbrowser mit dem Anmeldedialogfeld.":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-01-signin-dialog.png" alt-text="Diagramm, das den Autorisierungscodefluss in einer Single-Page-Webanwendung darstellt.":::
 
 ### <a name="provide-consent-for-application-access"></a>Zustimmen zum Anwendungszugriff
 
 Wenn Sie sich zum ersten Mal bei Ihrer Anwendung anmelden, werden Sie aufgefordert, ihr Zugriff auf Ihr Profil zu gewähren und sich anzumelden:
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-02-consent-dialog.png" alt-text="Im Webbrowser angezeigtes Inhaltsdialogfeld.":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-02-consent-dialog.png" alt-text="Diagramm, das den Autorisierungscodefluss in einer Single-Page-Webanwendung darstellt.":::
 
 Wenn Sie den angeforderten Berechtigungen zustimmen, zeigt die Webanwendung Ihren Benutzernamen an, was eine erfolgreiche Anmeldung signalisiert:
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-03-signed-in.png" alt-text="Ergebnisse einer erfolgreichen Anmeldung im Webbrowser.":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-03-signed-in.png" alt-text="Diagramm, das den Autorisierungscodefluss in einer Single-Page-Webanwendung darstellt.":::
 
 ### <a name="call-the-graph-api"></a>Aufrufen der Graph-API
 
 Nachdem Sie sich angemeldet haben, wählen Sie **Profil anzeigen** aus, um die Benutzerprofilinformationen anzuzeigen, die in der Antwort des Aufrufs der Microsoft Graph-API zurückgegeben werden:
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-04-see-profile.png" alt-text="Im Browser angezeigte Profilinformationen aus Microsoft Graph.":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-04-see-profile.png" alt-text="Diagramm, das den Autorisierungscodefluss in einer Single-Page-Webanwendung darstellt.":::
 
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>Weitere Informationen zu Bereichen und delegierten Berechtigungen
 
