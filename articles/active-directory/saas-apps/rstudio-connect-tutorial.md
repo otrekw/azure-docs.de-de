@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 80d444e9887a3aaa48262ccf59350b0108d7d709
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f71a9fa1151a1df2ae04fe47afd6bf36861aa2e5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543634"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273754"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rstudio-connect"></a>Tutorial: Azure Active Directory-Integration mit RStudio Connect
 
@@ -126,7 +126,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD 
 
 ### <a name="configure-rstudio-connect-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für RStudio Connect
 
-Um das einmalige Anmelden für **RStudio Connect** zu konfigurieren, müssen Sie die **Verbundmetadaten-URL der App** und die **Serveradresse** verwenden, die oben bereits verwendet wurden. Dazu nutzen Sie die Konfigurationsdatei von RStudio Connect unter `/etc/rstudio-connect.rstudio-connect.gcfg`.
+Um das einmalige Anmelden für **RStudio Connect** zu konfigurieren, müssen Sie die **Verbundmetadaten-URL der App** und die **Serveradresse** verwenden, die oben bereits verwendet wurden. Dazu nutzen Sie die Konfigurationsdatei von RStudio Connect unter `/etc/rstudio-connect/rstudio-connect.gcfg`.
 
 Im Folgenden eine Beispielkonfigurationsdatei:
 
