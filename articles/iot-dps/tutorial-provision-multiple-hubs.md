@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: e1a66da52eea6d5da711fa6def58eba65d0960ed
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6cca34774038156cfb01e872e751338c1c96efaa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74976739"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315999"
 ---
 # <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>Tutorial: Bereitstellen von Geräten für IoT Hubs mit Lastausgleich
 
@@ -67,8 +67,6 @@ Verknüpfen Sie Device Provisioning Service und die IoT Hub-Instanz, damit Devic
 4. Aktivieren Sie auf der Seite **Verknüpfung zu IoT Hub hinzufügen** die Optionsfelder, um anzugeben, ob sich der verknüpfte IoT Hub im aktuellen Abonnement oder in einem anderen Abonnement befindet. Wählen Sie dann im Feld **IoT Hub** den Namen von IoT Hub.
 5. Klicken Sie auf **Speichern**.
 
-## <a name="next-steps"></a>Nächste Schritte
-
 In diesem Tutorial haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
@@ -76,6 +74,8 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Hinzufügen eines Registrierungslisteneintrags für das zweite Gerät
 > * Festlegen der Device Provisioning Service-Zuordnungsrichtlinie zur **gleichmäßigen Verteilung**
 > * Verknüpfen der neuen IoT Hub-Instanz mit Device Provisioning Service
+
+## <a name="next-steps"></a>Nächste Schritte
 
 <!-- Advance to the next tutorial to learn how to 
  Replace this .md

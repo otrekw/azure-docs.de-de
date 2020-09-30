@@ -9,12 +9,12 @@ ms.topic: overview
 ms.custom: sqldbrb=1
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: f8c7e2cfb17ca48a67a009f532a9cbb6894cc05d
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: b0908aee6253a3be486f71c245ea1eee2ff8b9bb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442597"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319468"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure Private Link für Azure SQL-Datenbank und Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -23,28 +23,6 @@ Private Link ermöglicht die Verbindungsherstellung mit verschiedenen PaaS-Diens
 
 > [!IMPORTANT]
 > Dieser Artikel betrifft Azure SQL-Datenbank und Azure Synapse Analytics (vormals SQL Data Warehouse). Der Einfachheit halber wird der Begriff „Datenbank“ verwendet, wenn auf Datenbanken sowohl in Azure SQL-Datenbank als auch in Azure Synapse Analytics verwiesen wird. Ebenso bezieht sich der Begriff „Server“ auf den [logischen SQL-Server](logical-servers.md), der Azure SQL-Datenbank und Azure Synapse Analytics hostet. Dieser Artikel gilt *nicht* für **Azure SQL Managed Instance**.
-
-## <a name="data-exfiltration-prevention"></a>Verhinderung der Datenexfiltration
-
-Datenexfiltration in Azure SQL-Datenbank bedeutet, dass ein autorisierter Benutzer (etwa ein Datenbankadministrator) Daten aus einem System extrahieren und an einen anderen Ort oder in ein anderes System außerhalb der Organisation verschieben kann. So kann ein Benutzer beispielsweise Daten in ein Speicherkonto eines Dritten verschieben.
-
-Stellen Sie sich ein Szenario vor, in dem ein Benutzer SQL Server Management Studio (SSMS) auf einem virtuellen Azure-Computer ausführt, von dem eine Verbindung mit einer Datenbank in SQL-Datenbank hergestellt wird. Die Datenbank befindet sich im Rechenzentrum „USA, Westen“. Das folgende Beispiel zeigt, wie Sie den Zugriff mit öffentlichen Endpunkten in SQL-Datenbank unter Verwendung von Netzwerkzugriffssteuerungen einschränken.
-
-1. Deaktivieren Sie den gesamten Datenverkehr von Azure-Diensten zur SQL-Datenbank-Instanz über den öffentlichen Endpunkt, indem Sie die Option zum Zulassen von Azure-Diensten auf **AUS** festlegen. Vergewissern Sie sich, dass durch die Firewallregeln auf Server- und Datenbankebene keine IP-Adressen zugelassen werden. Weitere Informationen finden Sie unter [Netzwerkzugriffssteuerung für Azure SQL-Datenbank und Data Warehouse](network-access-controls-overview.md).
-1. Lassen Sie nur Datenverkehr für die Datenbank in SQL-Datenbank mit der privaten IP-Adresse des virtuellen Computers zu. Weitere Informationen finden Sie in den Artikeln [Verwenden von Virtual Network-Dienstendpunkten und -Regeln für Server in Azure SQL-Datenbank](vnet-service-endpoint-rule-overview.md) und [IP-Firewallregeln für Azure SQL-Datenbank und Azure Synapse](firewall-configure.md).
-1. Beschränken Sie auf dem virtuellen Azure-Computer den Bereich der ausgehenden Verbindung mithilfe von [Netzwerksicherheitsgruppen (NSGs)](../../virtual-network/manage-network-security-group.md) und Diensttags:
-    - Geben Sie eine NSG-Regel an, um Datenverkehr für das Diensttag „SQL.WestUs“ zuzulassen. Dadurch ist nur eine Verbindung mit der SQL-Datenbank-Instanz in „USA, Westen“ möglich.
-    - Geben Sie eine NSG-Regel (mit einer **höheren Priorität**) an, um Datenverkehr für das Diensttag „SQL“ zu verweigern. Dadurch werden Verbindungen mit der SQL-Datenbank-Instanz in allen Regionen verweigert.
-
-Am Ende dieser Einrichtung kann der virtuelle Azure-Computer nur eine Verbindung mit einer Datenbank in SQL-Datenbank in der Region „USA, Westen“ herstellen. Die Konnektivität ist jedoch nicht auf ein Singleton in SQL-Datenbank beschränkt. Der virtuelle Computer kann weiterhin eine Verbindung mit beliebigen Datenbanken in der Region „USA, Westen“ herstellen – also auch mit den Datenbanken, die nicht Teil des Abonnements sind. Wir haben den Bereich der Datenexfiltration im obigen Szenario auf eine bestimmte Region reduziert, sie aber nicht vollständig unterbunden.
-
-Mit Private Link können Kunden jetzt Netzwerkzugriffssteuerungen wie NSGs einrichten, um den Zugriff auf den privaten Endpunkt einzuschränken. Einzelne Azure-PaaS-Ressourcen werden dann bestimmten privaten Endpunkten zugeordnet. Ein böswilliger Insider kann somit nur auf die zugeordnete PaaS-Ressource (etwa eine Datenbank in SQL-Datenbank), aber nicht auf andere Ressourcen zugreifen. 
-
-## <a name="on-premises-connectivity-over-private-peering"></a>Lokale Konnektivität über privates Peering
-
-Wenn Kunden von lokalen Computern aus eine Verbindung mit dem öffentlichen Endpunkt herstellen, muss ihre IP-Adresse mithilfe einer [Firewallregel auf Serverebene](firewall-create-server-level-portal-quickstart.md) der IP-basierten Firewall hinzugefügt werden. Dieses Modell eignet sich zwar gut, um den Zugriff auf einzelne Computer für Entwicklungs- oder Testworkloads zuzulassen, in einer Produktionsumgebung gestaltet sich die Verwaltung jedoch schwierig.
-
-Mit Private Link können Kunden standortübergreifenden Zugriff auf den privaten Endpunkt mittels [ExpressRoute](../../expressroute/expressroute-introduction.md), privatem Peering oder VPN-Tunneling ermöglichen. Kunden haben dann die Möglichkeit, den gesamten Zugriff über den öffentlichen Endpunkt zu deaktivieren und nicht die IP-basierte Firewall zu verwenden, um IP-Adressen zuzulassen.
 
 ## <a name="how-to-set-up-private-link-for-azure-sql-database"></a>Einrichten von Private Link für Azure SQL-Datenbank 
 
@@ -71,6 +49,12 @@ Nachdem der Netzwerkadministrator den privaten Endpunkt (PE) erstellt hat, kann 
 
 1. Nach der Genehmigung oder Ablehnung wird der entsprechende Zustand zusammen mit dem Antworttext in der Liste angezeigt.
 ![Screenshot: Alle PECs nach der Genehmigung][5]
+
+## <a name="on-premises-connectivity-over-private-peering"></a>Lokale Konnektivität über privates Peering
+
+Wenn Kunden von lokalen Computern aus eine Verbindung mit dem öffentlichen Endpunkt herstellen, muss ihre IP-Adresse mithilfe einer [Firewallregel auf Serverebene](firewall-create-server-level-portal-quickstart.md) der IP-basierten Firewall hinzugefügt werden. Dieses Modell eignet sich zwar gut, um den Zugriff auf einzelne Computer für Entwicklungs- oder Testworkloads zuzulassen, in einer Produktionsumgebung gestaltet sich die Verwaltung jedoch schwierig.
+
+Mit Private Link können Kunden standortübergreifenden Zugriff auf den privaten Endpunkt mittels [ExpressRoute](../../expressroute/expressroute-introduction.md), privatem Peering oder VPN-Tunneling ermöglichen. Kunden haben dann die Möglichkeit, den gesamten Zugriff über den öffentlichen Endpunkt zu deaktivieren und nicht die IP-basierte Firewall zu verwenden, um IP-Adressen zuzulassen.
 
 ## <a name="use-cases-of-private-link-for-azure-sql-database"></a>Private Link-Anwendungsfälle für Azure SQL-Datenbank 
 
@@ -154,6 +138,22 @@ Führen Sie die Schritte zur [Verwendung von SSMS zum Herstellen einer Verbindun
 select client_net_address from sys.dm_exec_connections 
 where session_id=@@SPID
 ````
+
+## <a name="data-exfiltration-prevention"></a>Verhinderung der Datenexfiltration
+
+Datenexfiltration in Azure SQL-Datenbank bedeutet, dass ein autorisierter Benutzer (etwa ein Datenbankadministrator) Daten aus einem System extrahieren und an einen anderen Ort oder in ein anderes System außerhalb der Organisation verschieben kann. So kann ein Benutzer beispielsweise Daten in ein Speicherkonto eines Dritten verschieben.
+
+Stellen Sie sich ein Szenario vor, in dem ein Benutzer SQL Server Management Studio (SSMS) auf einem virtuellen Azure-Computer ausführt, von dem eine Verbindung mit einer Datenbank in SQL-Datenbank hergestellt wird. Die Datenbank befindet sich im Rechenzentrum „USA, Westen“. Das folgende Beispiel zeigt, wie Sie den Zugriff mit öffentlichen Endpunkten in SQL-Datenbank unter Verwendung von Netzwerkzugriffssteuerungen einschränken.
+
+1. Deaktivieren Sie den gesamten Datenverkehr von Azure-Diensten zur SQL-Datenbank-Instanz über den öffentlichen Endpunkt, indem Sie die Option zum Zulassen von Azure-Diensten auf **AUS** festlegen. Vergewissern Sie sich, dass durch die Firewallregeln auf Server- und Datenbankebene keine IP-Adressen zugelassen werden. Weitere Informationen finden Sie unter [Netzwerkzugriffssteuerung für Azure SQL-Datenbank und Data Warehouse](network-access-controls-overview.md).
+1. Lassen Sie nur Datenverkehr für die Datenbank in SQL-Datenbank mit der privaten IP-Adresse des virtuellen Computers zu. Weitere Informationen finden Sie in den Artikeln [Verwenden von Virtual Network-Dienstendpunkten und -Regeln für Server in Azure SQL-Datenbank](vnet-service-endpoint-rule-overview.md) und [IP-Firewallregeln für Azure SQL-Datenbank und Azure Synapse](firewall-configure.md).
+1. Beschränken Sie auf dem virtuellen Azure-Computer den Bereich der ausgehenden Verbindung mithilfe von [Netzwerksicherheitsgruppen (NSGs)](../../virtual-network/manage-network-security-group.md) und Diensttags:
+    - Geben Sie eine NSG-Regel an, um Datenverkehr für das Diensttag „SQL.WestUs“ zuzulassen. Dadurch ist nur eine Verbindung mit der SQL-Datenbank-Instanz in „USA, Westen“ möglich.
+    - Geben Sie eine NSG-Regel (mit einer **höheren Priorität**) an, um Datenverkehr für das Diensttag „SQL“ zu verweigern. Dadurch werden Verbindungen mit der SQL-Datenbank-Instanz in allen Regionen verweigert.
+
+Am Ende dieser Einrichtung kann der virtuelle Azure-Computer nur eine Verbindung mit einer Datenbank in SQL-Datenbank in der Region „USA, Westen“ herstellen. Die Konnektivität ist jedoch nicht auf ein Singleton in SQL-Datenbank beschränkt. Der virtuelle Computer kann weiterhin eine Verbindung mit beliebigen Datenbanken in der Region „USA, Westen“ herstellen – also auch mit den Datenbanken, die nicht Teil des Abonnements sind. Wir haben den Bereich der Datenexfiltration im obigen Szenario auf eine bestimmte Region reduziert, sie aber nicht vollständig unterbunden.
+
+Mit Private Link können Kunden jetzt Netzwerkzugriffssteuerungen wie NSGs einrichten, um den Zugriff auf den privaten Endpunkt einzuschränken. Einzelne Azure-PaaS-Ressourcen werden dann bestimmten privaten Endpunkten zugeordnet. Ein böswilliger Insider kann somit nur auf die zugeordnete PaaS-Ressource (etwa eine Datenbank in SQL-Datenbank), aber nicht auf andere Ressourcen zugreifen. 
 
 ## <a name="limitations"></a>Einschränkungen 
 Für Verbindungen mit dem privaten Endpunkt wird nur **Proxy** als [Verbindungsrichtlinie](connectivity-architecture.md#connection-policy) unterstützt.

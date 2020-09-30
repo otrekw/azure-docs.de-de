@@ -1,14 +1,16 @@
 ---
 title: Anwendungseinstellungen
 description: Konfigurieren Sie Ihre Anwendungs- und Versionseinstellungen (etwa für Äußerungsnormalisierung und App-Datenschutz) im LUIS-Portal.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/17/2020
-ms.openlocfilehash: c1d5572c3eeb71ec0631a03444d08da46d0a0106
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0a07e423b5307934938727cd8ccc475989e04362
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653167"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91309624"
 ---
 # <a name="application-and-version-settings"></a>Anwendungs- und Versionseinstellungen
 

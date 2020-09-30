@@ -3,17 +3,17 @@ title: Rechnungen für die Azure Enterprise-Registrierung
 description: In diesem Artikel wird erläutert, wie Sie Ihre Azure-Unternehmensrechnung verwalten und Aktionen dafür ausführen.
 author: bandersmsft
 ms.author: banders
-ms.date: 09/03/2020
+ms.date: 09/18/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: ca7aaea1e0bac1c00a373c8847623606d629e800
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: fec013395af9aeb3d83f86ab47cc52b3fedd7a1f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442512"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316136"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Rechnungen für die Azure Enterprise-Registrierung
 
@@ -162,20 +162,6 @@ Grundlegende öffentliche Preisinformationen, Maßeinheiten, FAQs und Richtlinie
 ### <a name="enterprise-agreement-units-of-measure"></a>Maßeinheiten des Enterprise Agreement
 
 Die Maßeinheiten für Enterprise Agreements unterscheiden sich häufig von denen in anderen Programmen wie z. B. dem Microsoft Online Services-Abonnementvertrag-Programm (MOSA). Diese Ungleichheit bedeutet, dass für eine Reihe von Diensten die Maßeinheit aggregiert wird, um die normalisierten Preise bereitzustellen. Die Maßeinheit, die in der Ansicht „Nutzungszusammenfassung“ des Azure Enterprise Portals angezeigt wird, ist immer das Enterprise-Maß. Eine vollständige Liste der aktuellen Maßeinheiten und Konvertierungen für jeden Dienst wird Ihnen in der Excel-Datei [Friendly_Service_Names.xlsx](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) bereitgestellt.
-
-### <a name="rounding-rules"></a>Rundungsregeln
-
-Beim Runden innerhalb des Azure Enterprise Portals wird kaufmännisches oder Gaußsches Runden nach IEEE-Standard verwendet. Mit dieser Logik werden Dezimalstellen mit dem Wert 5 auf die nächste gerade Dezimalstelle gerundet. Die gebräuchlicheren Funktionen zum Aufrunden runden Dezimalstellen mit dem Wert 5 immer auf die nächsthöhere Dezimalstelle. Diese Methode im Azure Enterprise Portal bietet im Vergleich zur standardmäßigen Excel-Logik eine genauere Gesamtsumme für die Gruppe.
-
-Zur Veranschaulichung: Wenn die erste gelöschte Ziffer eine 5 ist und keine Ziffern folgen, oder die folgenden Ziffern Nullen sind, wird auf die nächste gerade Ziffer gerundet. Beispiel: Sowohl 2,315 als auch 2,325 ergibt gerundet auf die nächstgelegene Hunderterstelle 2,32.
-
-In der folgenden Tabelle sind die Excel-Formeln aufgeführt, die Sie verwenden können, um die Azure Enterprise Portal-Regeln für Rundung und Konvertierung zu modellieren:
-
-| Szenario | Formel für kaufmännisches Runden |
-| --- | --- |
-| Verwendung der Rundung | =MROUND({_Quelle_}, 0,0002) |
-| Preisrundung (2 Dezimalstellen) | =MROUND({_Quelle_}, 0,02) |
-| Preisrundung (0 Dezimalstellen) | =MROUND({_Quelle_}, 2) |
 
 ### <a name="conversion-between-usage-detail-report-and-the-usage-summary-page"></a>Konvertierung zwischen Nutzungsdetailbericht und Nutzungszusammenfassungs-Seite
 
