@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: cd10421ddcf752625b8040e1afa4e7b15f142ce2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5892fd732a1e66b2b7dd4c1031cabfcbcc768c6d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90885688"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326149"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>Zuordnen einer bereits vorhandenen benutzerdefinierten Domäne zu Azure Spring Cloud
 
@@ -58,12 +58,12 @@ Sie können auch die Azure-Befehlszeilenschnittstelle verwenden, um Azure Spring
 
 Die Objekt-ID erhalten Sie mit dem folgenden Befehl.
 ```
-az ad sp show --id 03b39d0f-4213-4864-a245-b1476ec03169 --query objectId
+az ad sp show --id <service principal id> --query objectId
 ```
 
 Gewähren Sie Azure Spring Cloud Lesezugriff auf den Schlüsseltresor, ersetzen Sie die Objekt-ID im folgenden Befehl.
 ```
-az keyvault set-policy -g <key vault resource group> -n <key vault name>  --object-id <object id> --certificate-permissions get list --secret-permissions get list
+az keyvault set-policy -g <key vault resource group> -n <key vault name>  --object-id <object id> --certificate-permissions get list
 ``` 
 
 So importieren Sie das Zertifikat in Azure Spring Cloud:
@@ -93,7 +93,7 @@ Wenn das Zertifikat erfolgreich importiert wurde, wird es in der Liste **Private
 Sie können auch die Azure-Befehlszeilenschnittstelle verwenden, um eine Liste von Zertifikaten anzuzeigen:
 
 ```
-az spring-cloud certificate list
+az spring-cloud certificate list --resource-group <resource group name> --service <service name>
 ```
 
 > [!IMPORTANT] 
@@ -128,7 +128,7 @@ Navigieren Sie zur Anwendungsseite.
 
 Sie können auch die Azure-Befehlszeilenschnittstelle verwenden, um eine benutzerdefinierte Domäne hinzuzufügen:
 ```
-az spring-cloud app custom-domain bind --domain-name <domain name> --app <app name> 
+az spring-cloud app custom-domain bind --domain-name <domain name> --app <app name> --resource-group <resource group name> --service <service name>
 ```
 
 Eine App kann über mehrere Domänen verfügen, eine Domäne kann jedoch nur einer einzelnen App zugeordnet werden. Wenn Sie Ihre benutzerdefinierte Domäne erfolgreich der App zugeordnet haben, wird sie in der Tabelle mit den benutzerdefinierten Domänen angezeigt.
@@ -137,7 +137,7 @@ Eine App kann über mehrere Domänen verfügen, eine Domäne kann jedoch nur ein
 
 Sie können auch die Azure-Befehlszeilenschnittstelle verwenden, um eine Liste von benutzerdefinierten Domänen anzuzeigen:
 ```
-az spring-cloud app custom-domain list --app <app name> 
+az spring-cloud app custom-domain list --app <app name> --resource-group <resource group name> --service <service name>
 ```
 
 > [!NOTE]
@@ -168,7 +168,7 @@ Wählen Sie im linken Navigationsbereich Ihrer App-Seite die Option **Benutzerde
 
 Sie können auch die Azure-Befehlszeilenschnittstelle verwenden, um HTTPS zu erzwingen:
 ```
-az spring-cloud app update -name <app-name> --https-only <true|false> -g <resource group> --service <service-name>
+az spring-cloud app custom-domain update --domain-name <domain name> --certificate <cert name> --app <app name> --resource-group <resource group name> --service <service name>
 ```
 
 Navigieren Sie nach Abschluss des Vorgangs zu einer beliebigen HTTPS-URL, die auf Ihre App verweist. Beachten Sie, dass HTTP-URLs nicht funktionieren.

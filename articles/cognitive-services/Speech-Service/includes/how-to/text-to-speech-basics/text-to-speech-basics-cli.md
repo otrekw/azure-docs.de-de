@@ -4,13 +4,24 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/11/2020
 ms.author: trbye
-ms.openlocfilehash: bee28c946242ecf227287fb36b5b03aa6defb1c2
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: b68025c1b33a94f03e2d84693a7d6407a18abd88
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88170141"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332448"
 ---
+In dieser Schnellstartanleitung werden gängige Entwurfsmuster für die Sprachsynthese per Speech SDK vermittelt. Hierzu werden zunächst eine grundlegende Konfiguration und eine einfache Synthese durchgeführt, gefolgt von komplexeren Beispielen für die Entwicklung benutzerdefinierter Anwendungen:
+
+* Erhalten von Antworten als In-Memory-Datenstrom
+* Anpassen der Abtast- und Bitrate der Ausgabe
+* Übermitteln von Syntheseanforderungen mithilfe von SSML (Speech Synthesis Markup Language, Markupsprache für Sprachsynthese)
+* Verwenden neuronaler Stimmen
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+In diesem Artikel wird vorausgesetzt, dass Sie über ein Azure-Konto und über ein Abonnement für den Speech-Dienst verfügen. Falls nicht, können Sie [den Speech-Dienst kostenlos testen](../../../overview.md#try-the-speech-service-for-free).
+
 [!INCLUDE [SPX Setup](../../spx-setup.md)]
 
 ## <a name="synthesize-speech-to-a-speaker"></a>Synthetisieren von Sprache über einen Lautsprecher

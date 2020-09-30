@@ -6,13 +6,13 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.custom: seo-javascript-september2019, seo-javascript-october2019, devx-track-javascript
-ms.openlocfilehash: ba0fd6cf7214beeaca9e93b1fe003a144c247cb5
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: seo-javascript-september2019, seo-javascript-october2019, devx-track-js
+ms.openlocfilehash: 0e94d21bd6550a7d62ef3e7dec302c53f9851a4a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88076998"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326319"
 ---
 # <a name="quickstart-use-service-bus-queues-in-azure-with-nodejs-and-the-azure-sb-package"></a>Schnellstart: Verwenden von Service Bus-Warteschlangen in Azure mit Node.js und dem Paket „azure-sb“
 In diesem Tutorial erfahren Sie, wie Sie Node.js-Anwendungen erstellen, um Nachrichten mithilfe des Pakets [azure-sb](https://www.npmjs.com/package/azure-sb) an eine Azure Service Bus-Warteschlange zu senden und Antworten zu empfangen. Die Beispiele sind in JavaScript geschrieben und verwenden das [Azure-Modul](https://www.npmjs.com/package/azure) von Node.js, das intern das Paket „azure-sb“ verwendet.

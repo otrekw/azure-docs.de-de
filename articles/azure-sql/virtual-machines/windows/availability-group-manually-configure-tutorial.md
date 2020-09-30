@@ -8,18 +8,18 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 08a00342-fee2-4afe-8824-0db1ed4b8fca
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 22240c61b2341999528dcb477308990133042fa0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 30c7d525f821b828dcc4c389c32a27123b79a56b
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286861"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360921"
 ---
 # <a name="tutorial-configure-a-sql-server-availability-group-on-azure-virtual-machines-manually"></a>Tutorial: Manuelles Konfigurieren einer SQL Server-Verfügbarkeitsgruppe in Azure Virtual Machines
 
@@ -41,13 +41,13 @@ Die folgende Tabelle gibt Aufschluss über die Voraussetzungen, die erfüllt sei
 
 | Anforderung |BESCHREIBUNG |
 |----- |----- |----- |
-|![Quadrat](./media/availability-group-manually-configure-tutorial/square.png) **Zwei SQL Server-Instanzen** | - In einer Azure-Verfügbarkeitsgruppe <br/> - In einer einzelnen Domäne <br/> - Mit installiertem Failoverclustering-Feature |
-|![Quadrat](./media/availability-group-manually-configure-tutorial/square.png) **Windows Server** | Dateifreigabe für Clusterzeuge |  
-|![Quadrat](./media/availability-group-manually-configure-tutorial/square.png) **SQL Server-Dienstkonto** | Domänenkonto |
-|![Quadrat](./media/availability-group-manually-configure-tutorial/square.png) **SQL Server-Agent-Dienstkonto** | Domänenkonto |  
-|![Quadrat](./media/availability-group-manually-configure-tutorial/square.png) **Geöffnete Firewallports** | - SQL Server: **1433** für die Standardinstanz <br/> - Datenbankspiegelungs-Endpunkt: **5022** oder ein beliebiger verfügbarer Port <br/> - Integritätstest für IP-Adresse des Lastenausgleichs für Verfügbarkeitsgruppen: **59999** oder ein beliebiger verfügbarer Port <br/> - Integritätstest für IP-Adresse des Lastenausgleichs für Hauptressourcen des Clusters: **58888** oder ein beliebiger verfügbarer Port |
-|![Quadrat](./media/availability-group-manually-configure-tutorial/square.png) **Hinzufügen des Failoverclustering-Features** | Dieses Feature wird von beiden SQL Server-Instanzen benötigt. |
-|![Quadrat](./media/availability-group-manually-configure-tutorial/square.png) **Domänenkonto für die Installation** | - Lokaler Administrator in jeder SQL Server-Instanz <br/> - Mitglied der festen SQL Server-Serverrolle „SysAdmin“ für jede Instanz von SQL Server  |
+|:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **Zwei SQL Server-Instanzen** | - In einer Azure-Verfügbarkeitsgruppe <br/> - In einer einzelnen Domäne <br/> - Mit installiertem Failoverclustering-Feature |
+|:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **Windows Server** | Dateifreigabe für Clusterzeuge |  
+|:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **SQL Server-Dienstkonto** | Domänenkonto |
+|:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **SQL Server-Agent-Dienstkonto** | Domänenkonto |  
+|:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **Geöffnete Firewallports** | - SQL Server: **1433** für die Standardinstanz <br/> - Datenbankspiegelungs-Endpunkt: **5022** oder ein beliebiger verfügbarer Port <br/> - Integritätstest für IP-Adresse des Lastenausgleichs für Verfügbarkeitsgruppen: **59999** oder ein beliebiger verfügbarer Port <br/> - Integritätstest für IP-Adresse des Lastenausgleichs für Hauptressourcen des Clusters: **58888** oder ein beliebiger verfügbarer Port |
+|:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **Hinzufügen des Failoverclustering-Features** | Dieses Feature wird von beiden SQL Server-Instanzen benötigt. |
+|:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **Domänenkonto für die Installation** | - Lokaler Administrator in jeder SQL Server-Instanz <br/> - Mitglied der festen SQL Server-Serverrolle „SysAdmin“ für jede Instanz von SQL Server  |
 
 
 Vor Beginn des Tutorials müssen die [Schritte zum Erfüllen der Voraussetzungen für die Erstellung von AlwaysOn-Verfügbarkeitsgruppen in Azure Virtual Machines](availability-group-manually-configure-prerequisites-tutorial.md) ausgeführt werden. Falls die Voraussetzungen bereits erfüllt werden, können Sie direkt mit dem [Erstellen des Clusters](#CreateCluster) fortfahren.

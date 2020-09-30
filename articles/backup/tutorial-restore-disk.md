@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie mit Backup und Recovery Services einen Datent
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: d93f3d24762f4b9a3da4a9e725d28810f6700fe0
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 861c911e84c9de02467d443751902e71d2504422
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890670"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324983"
 ---
 # <a name="restore-a-vm-with-azure-cli"></a>Wiederherstellen eines virtuellen Computers mit der Azure CLI
 
@@ -43,13 +43,13 @@ Wenn die Datenübertragung abgeschlossen ist, wird die Momentaufnahme entfernt u
 
 Um einen Datenträger wiederherzustellen, wählen Sie einen Wiederherstellungspunkt als Quelle für die Wiederherstellungsdaten aus. Da die Standardrichtlinie jeden Tag einen Wiederherstellungspunkt erstellt und für 30 Tage aufbewahrt, können Sie einen Satz von Wiederherstellungspunkten beibehalten. So haben Sie die Möglichkeit, einen bestimmten Zeitpunkt für die Wiederherstellung auszuwählen.
 
-Um eine Liste der verfügbaren Wiederherstellungspunkte anzuzeigen, verwenden Sie [az backup recoverypoint list](/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list). Der **Name** des Wiederherstellungspunkts wird verwendet, um den Datenträger wiederherzustellen. In diesem Tutorial verwenden wir den aktuellsten verfügbaren Wiederherstellungspunkt. Der Parameter `--query [0].name` wählt den letzten Wiederherstellungspunkt wie folgt aus:
+Um eine Liste der verfügbaren Wiederherstellungspunkte anzuzeigen, verwenden Sie [az backup recoverypoint list](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list). Der **Name** des Wiederherstellungspunkts wird verwendet, um den Datenträger wiederherzustellen. In diesem Tutorial verwenden wir den aktuellsten verfügbaren Wiederherstellungspunkt. Der Parameter `--query [0].name` wählt den letzten Wiederherstellungspunkt wie folgt aus:
 
 ```azurecli-interactive
 az backup recoverypoint list \
     --resource-group myResourceGroup \
     --vault-name myRecoveryServicesVault \
-    --backup-management-type AzureIaasVM
+    --backup-management-type AzureIaasVM \
     --container-name myVM \
     --item-name myVM \
     --query [0].name \
@@ -65,7 +65,7 @@ az backup recoverypoint list \
 
 Wenn der gesicherte virtuelle Computer über verwaltete Datenträger verfügt und Sie verwaltete Datenträger aus dem Wiederherstellungspunkt wiederherstellen möchten, müssen Sie zunächst ein Azure-Speicherkonto angeben. Dieses Speicherkonto dient zum Speichern der VM-Konfiguration und der Bereitstellungsvorlage für die spätere Bereitstellung des virtuellen Computers auf der Grundlage der wiederhergestellten Datenträger. Anschließend müssen Sie eine Zielressourcengruppe für die Wiederherstellung der verwalteten Datenträger angeben.
 
-1. Verwenden Sie zum Erstellen eines Speicherkontos [az storage account create](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create). Der Name des Speicherkontos darf nur Kleinbuchstaben enthalten und muss global eindeutig sein. Ersetzen Sie *mystorageaccount* durch Ihren eigenen eindeutigen Namen:
+1. Verwenden Sie zum Erstellen eines Speicherkontos [az storage account create](/cli/azure/storage/account#az-storage-account-create). Der Name des Speicherkontos darf nur Kleinbuchstaben enthalten und muss global eindeutig sein. Ersetzen Sie *mystorageaccount* durch Ihren eigenen eindeutigen Namen:
 
     ```azurecli-interactive
     az storage account create \
@@ -74,7 +74,7 @@ Wenn der gesicherte virtuelle Computer über verwaltete Datenträger verfügt un
         --sku Standard_LRS
     ```
 
-2. Stellen Sie den Datenträger mit [az backup restore restore-disks](/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-disks) aus dem Wiederherstellungspunkt wieder her. Ersetzen Sie *mystorageaccount* durch den Namen des Speicherkontos, das Sie mit dem vorherigen Befehl erstellt haben. Ersetzen Sie *myRecoveryPointName* durch den Namen des Wiederherstellungspunkts, den Sie über die Ausgabe aus dem vorherigen Befehl [az backup recoverypoint list](/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list) erhalten haben. ***Geben Sie auch die Zielressourcengruppe an, in der die verwalteten Datenträger wiederhergestellt werden.***
+2. Stellen Sie den Datenträger mit [az backup restore restore-disks](/cli/azure/backup/restore#az-backup-restore-restore-disks) aus dem Wiederherstellungspunkt wieder her. Ersetzen Sie *mystorageaccount* durch den Namen des Speicherkontos, das Sie mit dem vorherigen Befehl erstellt haben. Ersetzen Sie *myRecoveryPointName* durch den Namen des Wiederherstellungspunkts, den Sie über die Ausgabe aus dem vorherigen Befehl [az backup recoverypoint list](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list) erhalten haben. ***Geben Sie auch die Zielressourcengruppe an, in der die verwalteten Datenträger wiederhergestellt werden.***
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -109,7 +109,7 @@ Wenn der gesicherte virtuelle Computer über nicht verwaltete Datenträger verf�
 
 Der wiederhergestellte Datenträger wird in nachfolgenden Schritten zum Erstellen eines virtuellen Computers verwendet.
 
-1. Verwenden Sie zum Erstellen eines Speicherkontos [az storage account create](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create). Der Name des Speicherkontos darf nur Kleinbuchstaben enthalten und muss global eindeutig sein. Ersetzen Sie *mystorageaccount* durch Ihren eigenen eindeutigen Namen:
+1. Verwenden Sie zum Erstellen eines Speicherkontos [az storage account create](/cli/azure/storage/account#az-storage-account-create). Der Name des Speicherkontos darf nur Kleinbuchstaben enthalten und muss global eindeutig sein. Ersetzen Sie *mystorageaccount* durch Ihren eigenen eindeutigen Namen:
 
     ```azurecli-interactive
     az storage account create \
@@ -118,7 +118,7 @@ Der wiederhergestellte Datenträger wird in nachfolgenden Schritten zum Erstelle
         --sku Standard_LRS
     ```
 
-2. Stellen Sie den Datenträger mit [az backup restore restore-disks](/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-disks) aus dem Wiederherstellungspunkt wieder her. Ersetzen Sie *mystorageaccount* durch den Namen des Speicherkontos, das Sie mit dem vorherigen Befehl erstellt haben. Ersetzen Sie *myRecoveryPointName* durch den Namen des Wiederherstellungspunkts, den Sie über die Ausgabe aus dem vorherigen Befehl [az backup recoverypoint list](/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list) erhalten haben:
+2. Stellen Sie den Datenträger mit [az backup restore restore-disks](/cli/azure/backup/restore#az-backup-restore-restore-disks) aus dem Wiederherstellungspunkt wieder her. Ersetzen Sie *mystorageaccount* durch den Namen des Speicherkontos, das Sie mit dem vorherigen Befehl erstellt haben. Ersetzen Sie *myRecoveryPointName* durch den Namen des Wiederherstellungspunkts, den Sie über die Ausgabe aus dem vorherigen Befehl [az backup recoverypoint list](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list) erhalten haben:
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -145,7 +145,7 @@ Wie bereits erwähnt, werden die nicht verwalteten Datenträger standardmäßig 
 
 ## Monitor the restore job
 
-To monitor the status of restore job, use [az backup job list](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list):
+To monitor the status of restore job, use [az backup job list](/cli/azure/backup/job#az-backup-job-list):
 
 ```azurecli-interactive
 az backup job list \
@@ -181,7 +181,7 @@ az backup job show \
     -n 1fc2d55d-f0dc-4ca6-ad48-aca0fe5d0414
 ```
 
-Die Ausgabe dieser Abfrage enthält sämtliche Details, für uns ist allerdings nur der Speicherkontoinhalt interessant. Wir können die [Abfragefunktion](/cli/azure/query-azure-cli?view=azure-cli-latest) der Azure-Befehlszeilenschnittstelle verwenden, um die relevanten Details abzurufen.
+Die Ausgabe dieser Abfrage enthält sämtliche Details, für uns ist allerdings nur der Speicherkontoinhalt interessant. Wir können die [Abfragefunktion](/cli/azure/query-azure-cli) der Azure-Befehlszeilenschnittstelle verwenden, um die relevanten Details abzurufen.
 
 ```azurecli-interactive
 az backup job show \
@@ -258,7 +258,7 @@ az group deployment create \
   --template-uri $url?$token
 ```
 
-Um zu überprüfen, ob Ihr virtueller Computer von dem wiederhergestellten Datenträger erstellt wurde, listen Sie mit [az vm list](/cli/azure/vm?view=azure-cli-latest#az-vm-list) die VMs in Ihrer Ressourcengruppe auf:
+Um zu überprüfen, ob Ihr virtueller Computer von dem wiederhergestellten Datenträger erstellt wurde, listen Sie mit [az vm list](/cli/azure/vm#az-vm-list) die VMs in Ihrer Ressourcengruppe auf:
 
 ```azurecli-interactive
 az vm list --resource-group myResourceGroup --output table

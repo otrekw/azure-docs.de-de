@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 9cc00cfa9f44c69a5880d53c0b7ac623f60be16b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6021bb4fa5d30de423ab56bfb5fdea6af2665a4a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90944601"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334479"
 ---
 # <a name="calling-client-library-overview"></a>Übersicht über die Clientbibliothek für Telefonie
 
@@ -55,8 +55,7 @@ Die folgende Liste enthält die Features, die aktuell in den Clientbibliotheken 
 |                   | Tätigen eines Gruppenanrufs mit PSTN-Teilnehmern                                                                           | ✔️   | ✔️            | ✔️
 |                   | Höherstufen eines 1:1-Anrufs mit einem PSTN-Teilnehmer zu einem Gruppenanruf                                                 | ✔️   | ✔️            | ✔️
 |                   | Verlassen eines Gruppenanrufs als PSTN-Teilnehmer                                                                    | ✔️   | ✔️            | ✔️   
-| Allgemein           | Teilnehmen an einem Gruppenanruf mit bis zu 350 Teilnehmern                                                       |  ✔️  | ✔️            | ✔️    
-|                   | Testen von Mikrofon, Lautsprecher und Kamera mit einem Audiotestdienst (verfügbar durch Anrufen von 8:echo123)                   |  ✔️  | ✔️            | ✔️   
+| Allgemein           | Testen von Mikrofon, Lautsprecher und Kamera mit einem Audiotestdienst (verfügbar durch Anrufen von 8:echo123)                   |  ✔️  | ✔️            | ✔️   
 
 ## <a name="calling-client-library-browser-support"></a>Browserunterstützung der Clientbibliothek für Telefonie
 

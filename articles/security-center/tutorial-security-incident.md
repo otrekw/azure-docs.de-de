@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: memildin
-ms.openlocfilehash: c508591fe9909578dcc04b0922c0b76691898743
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 08e04749eae7158abb501f9a4d127cdd7a89a391
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90901084"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336274"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>Tutorial: Reagieren auf Sicherheitsvorfälle
 Security Center analysiert Ihre Hybrid Cloud-Workloads ständig mithilfe von Advanced Analytics- und Threat Intelligence-Funktionen, um Sie vor schädlichen Aktivitäten warnen zu können. Darüber hinaus können Sie Warnungen aus anderen Sicherheitsprodukten und Diensten in Security Center integrieren und basierend auf Ihren eigenen Indikatoren oder Intelligence-Quellen benutzerdefinierte Warnungen erstellen. Nachdem eine Warnung generiert wurde, sind schnelle Maßnahmen erforderlich, um das Problem zu untersuchen und zu beheben. In diesem Tutorial lernen Sie Folgendes:
@@ -76,7 +76,7 @@ Mit Security Center erhalten Sie einen einheitlichen Überblick über alle Siche
 
    ![Warnungsdetails des Incidents](./media/tutorial-security-incident/tutorial-security-incident-fig3.png)
 
-   Die Art der Warnung kann variieren. Weitere Informationen zur Art der Warnung und zu potenziellen Lösungsschritten finden Sie unter [Verstehen der Sicherheitswarnungen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). Für Warnungen, die ohne Probleme geschlossen werden können, können Sie mit der rechten Maustaste auf die Warnung klicken und die Option **Schließen** wählen:
+   Die Art der Warnung kann variieren. Weitere Informationen zur Art der Warnung und zu potenziellen Lösungsschritten finden Sie unter [Verstehen der Sicherheitswarnungen in Azure Security Center](security-center-alerts-type.md). Für Warnungen, die ohne Probleme geschlossen werden können, können Sie mit der rechten Maustaste auf die Warnung klicken und die Option **Schließen** wählen:
 
    ![Warnung](./media/tutorial-security-incident/tutorial-security-incident-fig4.png)
 

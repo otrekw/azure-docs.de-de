@@ -3,18 +3,18 @@ title: 'Schnellstart: Azure Blob Storage für JavaScript v10 im Browser'
 description: Hier erfahren Sie, wie Sie Blobs unter Verwendung des JavaScript v10 SDK im Rahmen einer HTML-Seite hochladen, auflisten und löschen.
 services: storage
 author: mhopkins-msft
-ms.custom: mvc, devx-track-javascript
+ms.custom: mvc, devx-track-js
 ms.service: storage
 ms.author: mhopkins
 ms.date: 07/24/2020
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: 3982e54d06f2e84c4e8e8703e70e9a26773c389a
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 134408704d54479fbbe0dfb5094f2920fa2e74be
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87429217"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336189"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 

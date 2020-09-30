@@ -2,14 +2,16 @@
 title: 'Tutorial: Überprüfung von Endpunktäußerungen: LUIS'
 description: In diesem Tutorial verbessern Sie App-Vorhersagen, indem Sie über den LUIS-HTTP-Endpunkt erhaltene Äußerungen, bei denen LUIS unsicher ist, überprüfen bzw. korrigieren. Bei einigen Äußerungen kann eine Überprüfung hinsichtlich der Absicht und bei anderen eine Überprüfung hinsichtlich der Entität erforderlich sein.
 services: cognitive-services
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/02/2020
-ms.openlocfilehash: 082e625efeeb4764aaa1ac5101eb2b0013348b19
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: b8f8fa2cd3c9c22187bb95c55d9de2abb2e8caec
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85959026"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324636"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Tutorial: Beheben unsicherer Vorhersagen durch Überprüfung von Endpunktäußerungen
 In diesem Tutorial verbessern Sie App-Vorhersagen, indem Sie über den LUIS-HTTPS-Endpunkt erhaltene Äußerungen, bei denen LUIS unsicher ist, überprüfen bzw. korrigieren. Endpunktäußerungen sollten regelmäßig im Rahmen der geplanten LUIS-Wartung überprüft werden.
@@ -82,7 +84,7 @@ In dieser App sind Absichten und Entitäten vorhanden, aber keine Endpunktverwen
 
 1. Wählen Sie im Portalabschnitt **Erstellen** im linken Navigationsbereich die Option **Endpunktäußerungen überprüfen** aus. Die Liste wird für die Absicht **ApplyForJob** gefiltert.
 
-    :::image type="content" source="./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png" alt-text="Screenshot: Schaltfläche „Endpunktäußerungen überprüfen“ im linken Navigationsbereich":::
+    :::image type="content" source="./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png" alt-text="Wechseln von der Seite „Versionen“ zur Seite „Absichten“":::
 
     Die Äußerung `I'm looking for a job with Natural Language Processing` weist nicht die richtige Absicht _GetJobInformation_ auf. Dies wurde fälschlicherweise als _ApplyForJob_ vorhergesagt, weil sich die Stellennamen und Verben in den beiden Absichten ähneln.
 

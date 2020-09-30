@@ -1,15 +1,17 @@
 ---
 title: 'Tutorial: Language Understanding-Bot Node.js v4'
 description: Erstellen Sie in diesem Tutorial mithilfe von Node.js einen in LUIS (Language Understanding Intelligent Service) integrierten Chatbot. Dieser Chatbot implementiert mithilfe der Human Resources-App schnell eine Bot-Lösung. Der Bot wird mit Bot Framework, Version 4, und dem Azure Web-App-Bot erstellt.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 522502a043778d6f482c1756506063dfa6515ca3
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: d6ef0b0d437674d78064e6c5c5a91e1b2b89074a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405023"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324670"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>Tutorial: Verwenden eines Web-App-Bots mit aktiviertem Language Understanding in Node.js
 

@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/12/2020
 ms.custom: mvc
-ms.openlocfilehash: b0060c0aff8293ca5748cf8c055ebb2bbfb596e2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: cd0d4928d5cd0eb15f4f1372a0a3417fc85d13bb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017446"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328773"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Sichern eines virtuellen Computers in Azure
 
@@ -83,7 +83,7 @@ Wenn Sie mit einem Backup-Tutorial fortfahren möchten, in dem die Wiederherstel
 6. Wählen Sie in der Liste Ihre Ressourcengruppe aus. Bei Verwendung der VM-Beispielbefehle aus der Schnellstartanleitung heißt die Ressourcengruppe *myResourceGroup*.
 7. Wählen Sie die Option **Ressourcengruppe löschen**. Geben Sie als Bestätigung den Namen der Ressourcengruppe ein, und wählen Sie anschließend **Löschen**.
 
-    ![Löschen der Ressourcengruppe über das Azure-Portal](./media/quick-backup-vm-portal/delete-resource-group.png)
+    ![Löschen der Ressourcengruppe über das Azure-Portal](./media/quick-backup-vm-portal/delete-resource-group-from-portal.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

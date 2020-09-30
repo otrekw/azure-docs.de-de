@@ -1,14 +1,16 @@
 ---
 title: 'Tutorial: Muster: LUIS'
 description: In diesem Tutorial werden Muster verwendet, um die Vorhersage von Absichten und Entitäten zu verbessern und zugleich weniger Beispieläußerungen anzugeben. Das Muster wird als Beispiel für eine Vorlagenäußerung bereitgestellt, die die Syntax zum Identifizieren von Entitäten und ignorierbarem Text enthält.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.openlocfilehash: 3ca8bb15d19b0fa0dd6b33d35a380c0b1b07abe0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 9814304aed4d7a5f307fb2179491b0fa9635fd68
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039499"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324653"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats-to-improve-predictions"></a>Tutorial: Hinzufügen von Formaten für allgemeine Mustervorlagen, um Vorhersagen zu verbessern
 

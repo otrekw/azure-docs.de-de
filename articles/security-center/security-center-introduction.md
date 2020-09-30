@@ -12,14 +12,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/06/2019
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 53fdea6a52cc02ddc9aaf22574a6bac5f5b7bca6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 2eee46f99af247ffd0e11b262ace0a96453270d4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90944386"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323673"
 ---
 # <a name="what-is-azure-security-center"></a>Was ist Azure Security Center?
 
@@ -67,7 +67,7 @@ Es ist eine grundlegende Sicherheitsanforderung, dass Sie Ihre Workloads kennen 
 
 Mit Security Center können Sie **Schatten-IT-Abonnements identifizieren**. Indem Sie sich in Ihrem Dashboard Abonnements mit dem Hinweis **Nicht abgedeckt** ansehen, können Sie sofort erkennen, wann neu erstellte Abonnements vorhanden sind. Sie können dann sicherstellen, dass diese durch Ihre Richtlinien abgedeckt und mit Azure Security Center geschützt sind.
 
-:::image type="content" source="./media/security-center-intro/sc-policy-dashboard.png" alt-text="Security Center-Dashboard für Richtlinien":::
+:::image type="content" source="./media/security-center-intro/sc-policy-dashboard.png" alt-text="Seite für die Richtlinienverwaltung":::
 
 ### <a name="continuous-assessments"></a>Fortlaufende Bewertungen
 
@@ -75,13 +75,13 @@ Mit Security Center werden ständig neue Ressourcen erkannt, die für Ihre Workl
 
 Damit Sie besser nachvollziehen können, wie wichtig die einzelnen Empfehlungen für den gesamten Sicherheitsstatus sind, werden die Empfehlungen von Security Center in Sicherheitskontrollelemente gruppiert, und jedem Sicherheitskontrollelement wird eine **Sicherheitsbewertung** hinzugefügt. Dies ist ein entscheidender Faktor beim **Priorisieren Ihrer Sicherheitsmaßnahmen**.
 
-:::image type="content" source="./media/security-center-intro/sc-secure-score.png" alt-text="Sicherheitsbewertung von Security Center":::
+:::image type="content" source="./media/security-center-intro/sc-secure-score.png" alt-text="Seite für die Richtlinienverwaltung":::
 
 ### <a name="network-map"></a>Netzwerkübersicht
 
 Eines der leistungsfähigsten Tools, das von Security Center für die ständige Überwachung des Sicherheitsstatus Ihres Netzwerks bereitgestellt wird, ist die **Netzwerkübersicht**. In der Übersicht können Sie die Topologie Ihrer Workloads anzeigen, um zu ermitteln, ob jeder Knoten richtig konfiguriert ist. Sie sehen, wie Ihre Knoten miteinander verbunden sind, und können unerwünschte Verbindungen blockieren, die einem Angreifer unter Umständen die Bewegung durch Ihr Netzwerk erleichtern könnten.
 
-:::image type="content" source="./media/security-center-intro/sc-net-map.png" alt-text="Security Center – Netzwerkübersicht":::
+:::image type="content" source="./media/security-center-intro/sc-net-map.png" alt-text="Seite für die Richtlinienverwaltung":::
 
 
 ### <a name="optimize-and-improve-security-by-configuring-recommended-controls"></a>Optimieren und Verbessern der Sicherheit durch die Konfiguration von empfohlenen Kontrollen
@@ -92,7 +92,7 @@ Auf diese Weise können Sie mit Security Center nicht nur die Sicherheitsrichtli
 
 Mit den Empfehlungen können Sie die Angriffsfläche jeder einzelnen Ressource verkleinern. Dies umfasst virtuelle Azure-Computer, Azure-externe Server und Azure PaaS-Dienste, z.B. SQL und Speicherkonten, und mehr. Hierbei wird jeder Ressourcentyp anders bewertet und verfügt über eigene Standards.
 
-:::image type="content" source="./media/security-center-intro/sc-recommendation-example.png" alt-text="Beispiel für Security Center-Empfehlung":::
+:::image type="content" source="./media/security-center-intro/sc-recommendation-example.png" alt-text="Seite für die Richtlinienverwaltung":::
 
 ## <a name="protect-against-threats"></a>Schutz vor Bedrohungen
 
@@ -100,7 +100,7 @@ Mit dem Bedrohungsschutz von Security Center können Sie Bedrohungen auf IaaS-Eb
 
 Der Bedrohungsschutz von Security Center enthält eine Fusion-Schrittfolgenanalyse, bei der Warnungen in Ihrer Umgebung basierend auf einer Cyber-Schrittfolgenanalyse automatisch korreliert werden. Hiermit können Sie den gesamten Verlauf eines Angriffs, seinen Ausgangspunkt und die Auswirkungen auf Ihre Ressourcen besser verstehen.
 
-:::image type="content" source="./media/security-center-intro/sc-alerts.png" alt-text="Sicherheitswarnungen":::
+:::image type="content" source="./media/security-center-intro/sc-alerts.png" alt-text="Seite für die Richtlinienverwaltung":::
 
 ### <a name="integration-with-microsoft-defender-advanced-threat-protection"></a>Integration in Microsoft Defender Advanced Threat Protection
 
