@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 07/01/2020
-ms.openlocfilehash: 6adbd83ddfbdb82d1054d4e74dd9492d08583ede
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.date: 09/25/2020
+ms.openlocfilehash: b69feec7249c80fc63d803a14f360614bcf880fa
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89292536"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399821"
 ---
 # <a name="quickstart-create-a-demo-app-in-the-portal-azure-cognitive-search"></a>Schnellstart: Erstellen einer Demo-App im Portal (Azure Cognitive Search)
 
@@ -35,7 +35,7 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
   In dieser Schnellstartanleitung werden die integrierten Immobilienbeispieldaten und der zugehörige Index verwendet, da sie Miniaturbilder enthalten. (Vom Assistenten wird das Hinzufügen von Bildern zur Ergebnisseite unterstützt.) Führen Sie zum Erstellen des in dieser Übung verwendeten Index den Assistenten **Daten importieren** aus, und verwenden Sie die Datenquelle *realestate-us-sample*.
 
-  ![Datenquellenseite für Beispieldaten](media/search-create-app-portal/import-data-realestate.png)
+  :::image type="content" source="media/search-create-app-portal/import-data-realestate.png" alt-text="Datenquellenseite für Beispieldaten" border="false":::
 
 Wenn der Index bereit ist, fahren Sie mit dem nächsten Schritt fort.
 
@@ -61,7 +61,7 @@ Der Assistent bietet ein einfaches Layout für gerenderte Suchergebnisse mit Pla
 
 1. Wählen Sie unter „Beschreibung“ ein Feld mit Details aus, auf deren Grundlage Benutzer ggf. besser entscheiden können, ob sie zu diesem speziellen Dokument navigieren möchten.
 
-   ![Konfigurieren von Ergebnissen für Beispieldaten](media/search-create-app-portal/configure-results.png)
+   :::image type="content" source="media/search-create-app-portal/configure-results.png" alt-text="Datenquellenseite für Beispieldaten" border="false":::
 
 ## <a name="add-a-sidebar"></a>Hinzufügen einer Randleiste
 
@@ -83,7 +83,7 @@ Vorschläge werden für bestimmte Felddefinitionen aktiviert. Der Assistent biet
 
 Im folgenden Screenshot werden die Optionen im Assistenten einer gerenderten Seite in der App gegenübergestellt. Sie sehen, wie die Feldauswahl verwendet und wie mithilfe von „Feldname anzeigen“ gesteuert wird, ob die Beschriftung in den Vorschlag einbezogen wird.
 
-![Konfiguration von Abfragevorschlägen](media/search-create-app-portal/suggestions.png)
+:::image type="content" source="media/search-create-app-portal/suggestions.png" alt-text="Datenquellenseite für Beispieldaten":::
 
 ## <a name="create-download-and-execute"></a>Erstellen, Herunterladen und Ausführen
 
@@ -95,7 +95,7 @@ Im folgenden Screenshot werden die Optionen im Assistenten einer gerenderten Sei
 
 Der zugrunde liegende Index besteht aus fiktiven, generierten, dokumentübergreifend duplizierten Daten, und die Beschreibungen passen manchmal nicht zum Bild. Wenn Sie eine App auf der Grundlage Ihrer eigenen Indizes erstellen, können Sie ein stimmigeres Ergebnis erwarten.
 
-![Ausführen der App](media/search-create-app-portal/run-app.png)
+:::image type="content" source="media/search-create-app-portal/run-app.png" alt-text="Datenquellenseite für Beispieldaten":::
 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen

@@ -1,18 +1,18 @@
 ---
 title: 'Abfragen mit der Azure Cosmos DB Gremlin-API mithilfe der TinkerPop Gremlin-Konsole: Lernprogramm'
 description: Schnellstart von Azure Cosmos DB zum Erstellen von Scheitelpunkten, Kanten und Abfragen mit der Gremlin-API von Azure Cosmos DB
-author: luisbosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 07/10/2020
-ms.author: lbosq
-ms.openlocfilehash: e1ce632a04269704b498a69e1a0dd4fe72e00c87
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.author: jasonh
+ms.openlocfilehash: ca1ca258296f5ac8f1fb7120d2965ccacf74b5d5
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543774"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409390"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Schnellstart: Erstellen, Abfragen und Durchlaufen einer Azure Cosmos DB-Graphdatenbank mithilfe der Gremlin-Konsole
 
@@ -65,11 +65,11 @@ Außerdem müssen Sie die [Gremlin-Konsole](https://tinkerpop.apache.org/downloa
 
    Kopieren Sie zur Angabe des Werts „Hosts“ den **Gremlin-URI** auf der Seite **Übersicht**:
 
-   :::image type="content" source="./media/create-graph-gremlin-console/gremlin-uri.png" alt-text="Anzeigen und Kopieren des den Gremlin-URI-Werts auf der Seite „Übersicht“ im Azure-Portal":::
+   :::image type="content" source="./media/create-graph-gremlin-console/gremlin-uri.png" alt-text="Azure Cosmos DB in der Gremlin-Konsole von Apache":::
 
    Kopieren Sie für den Kennwortwert den **Primärschlüssel** aus der Seite **Schlüssel**:
 
-   :::image type="content" source="./media/create-graph-gremlin-console/keys.png" alt-text="Anzeigen und Kopieren Ihres Primärschlüssels im Azure-Portal, Seite „Schlüssel“":::
+   :::image type="content" source="./media/create-graph-gremlin-console/keys.png" alt-text="Azure Cosmos DB in der Gremlin-Konsole von Apache":::
 
    Die Datei „remote-secure.yaml“ sollte wie folgt aussehen:
 

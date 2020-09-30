@@ -8,12 +8,12 @@ ms.subservice: enterprise
 ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: banders
-ms.openlocfilehash: 564acd6d6072a4308141942666cc0ebcc0ad0136
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 13b344d3f13993dc7b6acf7bfe9a0ccdea0c866b
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89433516"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371353"
 ---
 # <a name="managing-azure-enterprise-roles"></a>Verwalten von Azure Enterprise-Rollen
 
@@ -114,12 +114,12 @@ Die folgende Tabelle zeigt die Beziehungen zwischen den Enterprise Agreement-Adm
 |Kontobesitzer ODER Abteilungsadministrator|✘ Deaktiviert |none|Keine Preise|
 |Keine|Nicht verfügbar |Besitzer|Einzelhandelspreise|
 
-Sie legen die Enterprise-Administratorrolle und die Richtlinien zum Anzeigen von Gebühren im Enterprise-Portal fest. Die Azure-Rolle kann im Azure-Portal aktualisiert werden. Weitere Informationen finden Sie unter [Verwalten des Zugriffs mithilfe von RBAC und des Azure-Portals](../../role-based-access-control/role-assignments-portal.md).
+Sie legen die Enterprise-Administratorrolle und die Richtlinien zum Anzeigen von Gebühren im Enterprise-Portal fest. Die Azure-Rolle kann im Azure-Portal aktualisiert werden. Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe des Azure-Portals](../../role-based-access-control/role-assignments-portal.md).
 
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Verwalten des Zugriffs auf Abrechnungsinformationen für Azure](manage-billing-access.md)
-- [Verwalten des Zugriffs mithilfe der RBAC und des Azure-Portals](../../role-based-access-control/role-assignments-portal.md)
+- [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md)
 - [Integrierte Azure-Rollen](../../role-based-access-control/built-in-roles.md)

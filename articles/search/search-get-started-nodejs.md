@@ -8,14 +8,14 @@ ms.author: heidist
 ms.devlang: nodejs
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/23/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 2c97a770dc10168284bebbc038d8c48145c2a385
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.custom: devx-track-js
+ms.openlocfilehash: ab3142426b12f86b9f8afa84ce0ea05fc1939eec
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88917889"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400603"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>Schnellstart: Erstellen eines Azure Cognitive Search-Index in Node.js mit REST-APIs
 > [!div class="op_single_selector"]
@@ -60,7 +60,7 @@ Aufrufe, die an den Dienst gerichtet werden, erfordern jeweils einen URL-Endpunk
 
     Rufen Sie auch den Abfrageschlüssel ab. Es empfiehlt sich, Abfrageanforderungen mit schreibgeschütztem Zugriff auszugeben.
 
-![Abrufen des Dienstnamens sowie der Administrator- und Abfrageschlüssel](media/search-get-started-nodejs/service-name-and-keys.png)
+:::image type="content" source="media/search-get-started-nodejs/service-name-and-keys.png" alt-text="Abrufen des Dienstnamens sowie der Administrator- und Abfrageschlüssel" border="false":::
 
 Für alle an Ihren Dienst gesendeten Anforderungen ist ein API-Schlüssel im Header erforderlich. Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung sendet, und dem Dienst, der sie verarbeitet.
 
@@ -473,7 +473,7 @@ Es wird eine Reihe von Meldungen angezeigt, die die vom Programm ausgeführten A
 
 Öffnen Sie die **Übersicht** Ihres Suchdiensts im Azure-Portal. Wählen Sie die Registerkarte **Indizes** aus. Folgendes sollte angezeigt werden:
 
-![Screenshot des Azure-Portals, Übersicht über den Suchdienst, Registerkarte „Indizes“](media/search-get-started-nodejs/create-index-no-data.png)
+:::image type="content" source="media/search-get-started-nodejs/create-index-no-data.png" alt-text="Abrufen des Dienstnamens sowie der Administrator- und Abfrageschlüssel" border="false":::
 
 Im nächsten Schritt fügen Sie Daten zum Index hinzu. 
 

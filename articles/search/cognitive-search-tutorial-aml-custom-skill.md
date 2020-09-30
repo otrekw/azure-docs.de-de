@@ -7,13 +7,13 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/10/2020
-ms.openlocfilehash: a4e686fe7adcc7e990a26484bc5850de977e862a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.openlocfilehash: 3ecef629e38e2823bea101af47899f9b7d6845f0
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88924587"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399838"
 ---
 # <a name="tutorial-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>Tutorial: Erstellen und Bereitstellen eines benutzerdefinierten Skills mit Azure Machine Learning 
 
@@ -82,8 +82,7 @@ Abschnitt 4 im Notebook enthält vier Zellen zum Aktualisieren des Skillsets un
 
 Wechseln Sie im Portal zu „Skillset“, und wählen Sie den Link „Skillsetdefinition (JSON)“ aus. Im Portal wird der JSON-Code Ihres Skillsets angezeigt, der in den ersten Zellen des Notebooks erstellt wurde. Rechts neben der Anzeige gibt es ein Dropdownmenü, in dem Sie die Vorlage für Skillsetdefinition auswählen können. Wählen Sie die Vorlage „Azure Machine Learning (AML)“ aus. Geben Sie den Namen des Azure ML-Arbeitsbereichs und den Endpunkt für das Modell an, das für den Rückschlusscluster bereitgestellt wird. Die Vorlage wird mit dem Endpunkt-URI und dem Schlüssel aktualisiert.
 
-> [!div class="mx-imgBorder"]
-> ![Vorlage für Skillsetdefinition](media/cognitive-search-aml-skill/portal-aml-skillset-definition.png)
+> :::image type="content" source="media/cognitive-search-aml-skill/portal-aml-skillset-definition.png" alt-text="Vorlage für Skillsetdefinition":::
 
 Kopieren Sie die Vorlage für Skillsetdefinition aus dem Fenster, und fügen Sie sie links in die Skillsetdefinition ein. Bearbeiten Sie die Vorlage, um die fehlenden Werte für Folgendes bereitzustellen:
 

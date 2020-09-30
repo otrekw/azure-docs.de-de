@@ -7,17 +7,17 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 3cb35cdf217d497b612dee12aedb869b0583e464
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: b1bd0ff28906f35ddc56afbd0287bbe29879deb4
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986700"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91438944"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Neuerungen in Azure Security Center
 
@@ -196,7 +196,7 @@ Dieses Feature kann dazu beitragen, dass Ihre Workloads geschützt sind und Ihre
 
 Für die Erzwingung einer sicheren Konfiguration basierend auf einer bestimmten Empfehlung gibt es zwei Modi:
 
-- Mit dem Effekt **Ablehnen** von Azure Policy können Sie verhindern, dass fehlerhafte Ressourcen erstellt werden.
+- Mit dem Effekt **Deny** (Ablehnen) von Azure Policy können Sie verhindern, dass fehlerhafte Ressourcen erstellt werden.
 
 - Mit der Option **Erzwingen** können Sie den Effekt **DeployIfNotExist** von Azure Policy nutzen und nicht konforme Ressourcen bei der Erstellung automatisch korrigieren.
  
@@ -245,7 +245,7 @@ Außerdem führen Empfehlungen in der **Vorschauphase** nicht dazu, dass eine Re
 
 Beispiel für eine Vorschauempfehlung:
 
-:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Empfehlung mit dem Flag „Vorschau“":::
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Umschalter „Sicherheitsrelevante Ergebnisse einbeziehen“ in der Konfiguration für den fortlaufenden Export":::
 
 [Weitere Informationen zur Sicherheitsbewertung.](secure-score-security-controls.md)
 
@@ -254,7 +254,7 @@ Beispiel für eine Vorschauempfehlung:
 
 Die Detailseite für Empfehlungen enthält jetzt einen Indikator für das Aktualisierungsintervall (sofern relevant) und eine deutliche Anzeige des Schweregrads der Empfehlung.
 
-:::image type="content" source="./media/release-notes/recommendations-severity-freshness-indicators.png" alt-text="Empfehlungsseite mit Aktualität und Schweregrad":::
+:::image type="content" source="./media/release-notes/recommendations-severity-freshness-indicators.png" alt-text="Umschalter „Sicherheitsrelevante Ergebnisse einbeziehen“ in der Konfiguration für den fortlaufenden Export":::
 
 
 
@@ -288,7 +288,7 @@ Die Sicherheitsstandards bieten vorkonfigurierte Identitätssicherheitseinstellu
 
 Azure Security Center stellt jetzt eine Sicherheitsempfehlung bereit, sobald ein Azure-Abonnement ohne aktivierte Sicherheitsstandards identifiziert wird. Bisher empfahl Azure Security Center die Aktivierung der mehrstufigen Authentifizierung (MFA) mittels bedingtem Zugriff, was Teil der Lizenz von Azure Active Directory (AD) Premium ist. Für Kunden, die Azure AD Free verwenden, empfehlen wir nun, die Sicherheitsstandards zu aktivieren. 
 
-Unser Ziel ist es, mehr Kunden zu ermutigen, ihre Cloudumgebungen mit MFA abzusichern und damit eines der höchsten Risiken zu mindern, das sich auch am stärksten auf ihre [Sicherheitsbewertung](https://docs.microsoft.com/azure/security-center/secure-score-security-controls) auswirkt.
+Unser Ziel ist es, mehr Kunden zu ermutigen, ihre Cloudumgebungen mit MFA abzusichern und damit eines der höchsten Risiken zu mindern, das sich auch am stärksten auf ihre [Sicherheitsbewertung](secure-score-security-controls.md) auswirkt.
 
 Weitere Informationen: [Sicherheitsstandards](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults).
 
@@ -429,7 +429,7 @@ Die Empfehlungen schließen auch die Möglichkeit schneller Korrekturen ein.
 
 Weitere Informationen zu den einzelnen Angaben finden Sie auf der [Referenzseite zu Sicherheitsempfehlungen](recommendations-reference.md).
 
-Erfahren Sie mehr über [Bedrohungsschutz in Azure Security Center](https://docs.microsoft.com/azure/security-center/threat-protection).
+Erfahren Sie mehr über [Bedrohungsschutz in Azure Security Center](azure-defender.md).
 
 
 
@@ -442,13 +442,13 @@ Zur Verbesserung der Klarheit und der Beschreibungen zu den Sicherheitsfunktione
 
 Weitere Informationen zur Containersicherheit in Security Center finden Sie in den folgenden Artikeln:
 
-- [Übersicht über die Containersicherheitsfeatures von Security Center](https://docs.microsoft.com/azure/security-center/container-security)
-- [Ausführliche Informationen zur Integration mit Azure Container Registry](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)
-- [Ausführliche Informationen zur Integration mit Azure Kubernetes Service](https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration)
-- [Überprüfen Ihrer Registrierungen und Härten Ihrer Docker-Hosts](https://docs.microsoft.com/azure/security-center/monitor-container-security)
-- [Sicherheitswarnungen von den Features zum Schutz vor Bedrohungen für Azure Kubernetes Service-Cluster](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-akscluster)
-- [Sicherheitswarnungen von den Features zum Schutz vor Bedrohungen für Azure Kubernetes Service-Hosts](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-containerhost)
-- [Sicherheitsempfehlungen für Container](https://docs.microsoft.com/azure/security-center/recommendations-reference#recs-containers)
+- [Übersicht über die Containersicherheitsfeatures von Security Center](container-security.md)
+- [Ausführliche Informationen zur Integration mit Azure Container Registry](defender-for-container-registries-introduction.md)
+- [Ausführliche Informationen zur Integration mit Azure Kubernetes Service](defender-for-kubernetes-introduction.md)
+- [Überprüfen Ihrer Registrierungen und Härten Ihrer Docker-Hosts](container-security.md)
+- [Sicherheitswarnungen von den Features zum Schutz vor Bedrohungen für Azure Kubernetes Service-Cluster](alerts-reference.md#alerts-akscluster)
+- [Sicherheitswarnungen von den Features zum Schutz vor Bedrohungen für Azure Kubernetes Service-Hosts](alerts-reference.md#alerts-containerhost)
+- [Sicherheitsempfehlungen für Container](recommendations-reference.md#recs-containers)
 
 
 
@@ -537,10 +537,9 @@ Die Empfehlungen umfassen auch die Schnellkorrekturfunktion, um den Bereitstellu
 
 Weitere Informationen zu diesen beiden neuen Empfehlungen finden Sie in der Tabelle [Compute- und App-Empfehlungen](recommendations-reference.md#recs-computeapp).
 
-In [Was ist der Log Analytics-Agent?](https://docs.microsoft.com/azure/security-center/faq-data-collection-agents#what-is-the-log-analytics-agent) erfahren Sie mehr darüber, wie Azure Security Center den Agent verwendet.
+In [Was ist der Log Analytics-Agent?](faq-data-collection-agents.md#what-is-the-log-analytics-agent) erfahren Sie mehr darüber, wie Azure Security Center den Agent verwendet.
 
-Erfahren Sie mehr über [Erweiterungen für Azure Arc-Computer](https://docs.microsoft.com/azure/azure-arc/servers/manage-vm-extensions#enable-extensions-from-the-portal).
-
+Erfahren Sie mehr über [Erweiterungen für Azure Arc-Computer](../azure-arc/servers/manage-vm-extensions.md#enable-extensions-from-the-portal).
 
 
 ### <a name="new-policies-to-create-continuous-export-and-workflow-automation-configurations-at-scale"></a>Neue Richtlinien zum Erstellen von Konfigurationen für fortlaufenden Export und Workflowautomatisierung im großen Stil
@@ -597,7 +596,7 @@ Die Richtlinien finden Sie in der Azure-Richtlinie:
 | [Advanced Threat Protection muss für Virtual Machines aktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4da35fc9-c9e7-4960-aec9-797fe7d9051d)           | 4da35fc9-c9e7-4960-aec9-797fe7d9051d |
 |                                                                                                                                                                                                                                                                       |                                      |
 
-Erfahren Sie mehr über [Bedrohungsschutz in Azure Security Center](https://docs.microsoft.com/azure/security-center/threat-protection).
+Erfahren Sie mehr über [Bedrohungsschutz in Azure Security Center](azure-defender.md).
 
 
 
@@ -679,7 +678,7 @@ Die Sicherheitssteuerelemente – und dieser Umschalter – sind Teil der neuen 
 
 Weitere Informationen zu Sicherheitssteuerelementen finden Sie unter [Erweiterte Sicherheitsbewertung (Vorschau) in Azure Security Center](secure-score-security-controls.md).
 
-:::image type="content" source="./media/secure-score-security-controls/recommendations-group-by-toggle.gif" alt-text="Umschalter „Nach Kontrollen gruppieren“ für Empfehlungen":::
+:::image type="content" source="./media/secure-score-security-controls/recommendations-group-by-toggle.gif" alt-text="Umschalter „Sicherheitsrelevante Ergebnisse einbeziehen“ in der Konfiguration für den fortlaufenden Export":::
 
 ### <a name="expanded-security-control-implement-security-best-practices"></a>Erweitertes Sicherheitssteuerelement „Bewährte Sicherheitsmethoden implementieren“ 
 
@@ -721,7 +720,7 @@ Informieren Sie sich über das [Verbessern der benutzerdefinierten Empfehlungen 
 
 ### <a name="crash-dump-analysis-capabilities-migrating-to-fileless-attack-detection"></a>Migration der Funktionen für die Absturzabbildanalyse zur Erkennung dateiloser Angriffe 
 
-Wir integrieren die Erkennungsfunktionen der Windows-Absturzabbildanalyse mit der [Erkennung dateiloser Angriffe](https://docs.microsoft.com/azure/security-center/threat-protection#windows-fileless). Die Analyse zur Erkennung dateiloser Angriffe verfügt über verbesserte Versionen der folgenden Sicherheitswarnungen für Windows-Computer: „Erkennung einer Codeinjektion“, „Erkennung eines Windows-Maskerademoduls“, „Erkennung von Shellcode“ und „Verdächtiges Codesegment erkannt“.
+Wir integrieren die Erkennungsfunktionen der Windows-Absturzabbildanalyse mit der [Erkennung dateiloser Angriffe](defender-for-servers-introduction.md#what-are-the-benefits-of-azure-defender-for-servers). Die Analyse zur Erkennung dateiloser Angriffe verfügt über verbesserte Versionen der folgenden Sicherheitswarnungen für Windows-Computer: „Erkennung einer Codeinjektion“, „Erkennung eines Windows-Maskerademoduls“, „Erkennung von Shellcode“ und „Verdächtiges Codesegment erkannt“.
 
 Diese Umstellung hat u. a. folgende Vorteile:
 

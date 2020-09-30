@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 750ce2d19334f549242c37494a11a1f683469f12
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 05cf63f741e287112ace76a5249ae2ca8d01f34f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88926138"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377523"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -18,7 +18,7 @@ Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
 
 > [!div class="checklist"]
 > * [Einrichten Ihrer Entwicklungsumgebung und Erstellen eines leeren Projekts](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programmming-language-csharp)
-> * [Erstellen einer Azure Speech-Ressource](../../../../get-started.md)
+> * [Erstellen einer Azure Speech-Ressource](../../../../overview.md#try-the-speech-service-for-free)
 > * [Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit dem Azure-Portal](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 
 ## <a name="open-your-project-in-visual-studio"></a>Öffnen Sie Ihr Projekt in Visual Studio.

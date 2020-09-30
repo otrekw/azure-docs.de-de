@@ -10,19 +10,19 @@ ms.topic: include
 ms.date: 04/02/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e3d169ac42e03f0c57ea1c23247fd0daa1cf51d0
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: a28a35bb57c759c58105c12673cb233d5b6f2e75
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88926418"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376272"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Bevor Sie beginnen:
 
 > [!div class="checklist"]
-> * [Erstellen einer Azure Speech-Ressource](../../../../get-started.md)
+> * [Erstellen einer Azure Speech-Ressource](../../../../overview.md#try-the-speech-service-for-free)
 > * [Einrichten Ihrer Entwicklungsumgebung und Erstellen eines leeren Projekts](../../../../quickstarts/setup-platform.md?tabs=uwp&pivots=programming-language-csharp)
 > * Stellen Sie sicher, dass Sie Zugriff auf ein Mikrofon für die Audioaufnahme haben.
 

@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/23/2020
-ms.openlocfilehash: 8a615dc02b78993a18a86def9d8f496ba0bba922
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.openlocfilehash: f501b9f4215b9eeb48aa8bc80d492d55cf940404
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929702"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397384"
 ---
 # <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>Tutorial: Indizieren von JSON-Blobs aus Azure Storage per REST
 
@@ -54,7 +54,7 @@ Erstellen Sie diese beiden Dienste nach Möglichkeit in derselben Region und Res
 
 1. Suchen Sie nach *Speicherkonto*, und wählen Sie das Speicherkonto-Angebot von Microsoft aus.
 
-   ![Erstellen eines Speicherkontos](media/cognitive-search-tutorial-blob/storage-account.png "Speicherkonto erstellen")
+   :::image type="content" source="media/cognitive-search-tutorial-blob/storage-account.png" alt-text="Erstellen eines Speicherkontos" border="false":::
 
 1. Auf der Registerkarte „Grundlagen“ sind folgende Angaben erforderlich. Übernehmen Sie bei allen anderen Optionen die Standardeinstellungen.
 
@@ -76,11 +76,11 @@ Erstellen Sie diese beiden Dienste nach Möglichkeit in derselben Region und Res
 
 1. Nachdem der Container erstellt wurde, öffnen Sie ihn, und wählen Sie auf der Befehlsleiste die Option **Hochladen** aus.
 
-   ![„Hochladen“ auf der Befehlsleiste](media/search-semi-structured-data/upload-command-bar.png "„Hochladen“ auf der Befehlsleiste")
+   :::image type="content" source="media/search-semi-structured-data/upload-command-bar.png" alt-text="Erstellen eines Speicherkontos" border="false":::
 
 1. Navigieren Sie zu dem Ordner, der die Beispieldateien enthält. Wählen Sie alle Dateien aus, und klicken Sie dann auf **Hochladen**.
 
-   ![Hochladen von Dateien](media/search-semi-structured-data/clinicalupload.png "Hochladen von Dateien")
+   :::image type="content" source="media/search-semi-structured-data/clinicalupload.png" alt-text="Erstellen eines Speicherkontos" border="false":::
 
 Nach Abschluss des Uploads sollten die Dateien im Datencontainer in einem eigenen Unterordner angezeigt werden.
 
@@ -98,7 +98,7 @@ Für REST-Aufrufe sind die Dienst-URL und ein Zugriffsschlüssel für jede Anfor
 
 1. Rufen Sie unter **Einstellungen** > **Schlüssel** einen Administratorschlüssel ab, um Vollzugriff auf den Dienst zu erhalten. Es gibt zwei austauschbare Administratorschlüssel – diese wurden zum Zweck der Geschäftskontinuität bereitgestellt, falls Sie einen Rollover für einen Schlüssel durchführen müssen. Für Anforderungen zum Hinzufügen, Ändern und Löschen von Objekten können Sie den primären oder den sekundären Schlüssel verwenden.
 
-![Abrufen eines HTTP-Endpunkts und eines Zugriffsschlüssels](media/search-get-started-postman/get-url-key.png "Abrufen eines HTTP-Endpunkts und eines Zugriffsschlüssels")
+:::image type="content" source="media/search-get-started-postman/get-url-key.png" alt-text="Erstellen eines Speicherkontos" border="false":::
 
 Für alle an Ihren Dienst gesendeten Anforderungen ist ein API-Schlüssel erforderlich. Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung versendet, und dem Dienst, der sie verarbeitet.
 
@@ -110,7 +110,7 @@ Die Anforderungsmethoden für die Aufrufe in diesem Tutorial sind jeweils **POST
 
 Legen Sie unter „Header“ den Inhaltstyp (Content-type) auf `application/json` und `api-key` auf den Administrator-API-Schlüssel Ihres Azure Cognitive Search-Diensts fest. Die festgelegten Header können Sie dann für jede Anforderung in dieser Übung verwenden.
 
-  ![Postman-Anforderungs-URL und -Header](media/search-get-started-postman/postman-url.png "Postman-Anforderungs-URL und -Header")
+  :::image type="content" source="media/search-get-started-postman/postman-url.png" alt-text="Erstellen eines Speicherkontos" border="false":::
 
 In URIs muss eine API-Version angegeben werden, und für jeden Aufruf sollte **201 Created** zurückgegeben werden. Die allgemein verfügbare API-Version zur Verwendung von JSON-Arrays lautet `2020-06-30`.
 
@@ -315,11 +315,11 @@ Sie können mit der Suche beginnen, sobald das erste Dokument geladen wurde.
 
 1. Fügen Sie den Abfrageparameter `$select` hinzu, um die Ergebnisse auf eine geringere Anzahl von Feldern zu beschränken: `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&$select=Gender,metadata_storage_size&api-version=2020-06-30&$count=true`.  Für diese Abfrage ergibt sich für 100 Dokumente eine Übereinstimmung, aber standardmäßig werden von Azure Cognitive Search in den Ergebnissen nur 50 Dokumente zurückgegeben.
 
-   ![Parametrisierte Abfrage](media/search-semi-structured-data/lastquery.png "Parametrisierte Abfrage")
+   :::image type="content" source="media/search-semi-structured-data/lastquery.png" alt-text="Erstellen eines Speicherkontos" border="false":::
 
 1. Ein Beispiel für eine komplexere Abfrage ist `$filter=MinimumAge ge 30 and MaximumAge lt 75`. Hiermit werden nur Ergebnisse zurückgegeben, bei denen der Parameter „MinimumAge“ größer oder gleich 30 und der Parameter „MaximumAge“ kleiner als 75 ist. Ersetzen Sie den Ausdruck `$select` durch den Ausdruck `$filter`.
 
-   ![Teilweise strukturierte Suche](media/search-semi-structured-data/metadatashort.png)
+   :::image type="content" source="media/search-semi-structured-data/metadatashort.png" alt-text="Erstellen eines Speicherkontos" border="false":::
 
 Sie können auch logische Operatoren (and, or, not) und Vergleichsoperatoren (eq, ne, gt, lt, ge, le) nutzen. Bei Zeichenfolgenvergleichen wird die Groß-/Kleinschreibung beachtet. Weitere Informationen und Beispiele finden Sie unter [Erstellen einer einfachen Abfrage](search-query-simple-examples.md).
 

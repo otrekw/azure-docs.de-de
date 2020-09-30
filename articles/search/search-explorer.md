@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/07/2020
-ms.openlocfilehash: 8f004ff8118829ebf2d245a136cf22cdde23accc
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.openlocfilehash: adcd07ad370ad9f1301caa41c494a33958743dd8
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929787"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398407"
 ---
 # <a name="quickstart-use-search-explorer-to-run-queries-in-the-portal"></a>Schnellstart: Verwenden des Suchexplorers zum Ausführen von Abfragen im Portal
 
@@ -37,11 +37,11 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
 1. Öffnen Sie den Suchexplorer über die Befehlsleiste:
 
-   ![Befehl für den Suchexplorer im Portal](./media/search-explorer/search-explorer-cmd2.png "Befehl für den Suchexplorer im Portal")
+   :::image type="content" source="media/search-explorer/search-explorer-cmd2.png" alt-text="Befehl für den Suchexplorer im Portal" border="false":::
 
     Oder verwenden Sie die eingebettete Registerkarte **Suchexplorer** in einem geöffneten Index:
 
-   ![Registerkarte „Suchexplorer“](./media/search-explorer/search-explorer-tab.png "Registerkarte „Suchexplorer“")
+   :::image type="content" source="media/search-explorer/search-explorer-tab.png" alt-text="Befehl für den Suchexplorer im Portal" border="false":::
 
 ## <a name="unspecified-query"></a>Abfrage ohne Angabe
 
@@ -55,7 +55,7 @@ Die äquivalente Syntax für eine leere Suche ist `*` oder `search=*`.
 
    **Ergebnisse**
    
-   ![Beispiel für eine leere Abfrage](./media/search-explorer/search-explorer-example-empty.png "Beispiel für unqualifizierte oder leere Abfrage")
+   :::image type="content" source="media/search-explorer/search-explorer-example-empty.png" alt-text="Befehl für den Suchexplorer im Portal" border="false":::
 
 ## <a name="free-text-search"></a>Freitextsuche
 
@@ -71,7 +71,7 @@ Beachten Sie, dass bei der Angabe von Suchkriterien wie z. B. Abfragebegriffen 
 
    Sie können die Ergebnisse mit STRG+F nach bestimmten Begriffen durchsuchen.
 
-   ![Beispiel für Freitextabfrage](./media/search-explorer/search-explorer-example-freetext.png "Beispiel für Freitextabfrage")
+   :::image type="content" source="media/search-explorer/search-explorer-example-freetext.png" alt-text="Befehl für den Suchexplorer im Portal" border="false":::
 
 ## <a name="count-of-matching-documents"></a>Anzahl übereinstimmender Dokumente 
 
@@ -83,7 +83,7 @@ Fügen Sie **$count=true** hinzu, um die Anzahl der Übereinstimmungen in einem 
 
    **Ergebnisse**
 
-   ![Beispiel für die Anzahl der Dokumente](./media/search-explorer/search-explorer-example-count.png "Beispiel für die Anzahl der übereinstimmenden Dokumente")
+   :::image type="content" source="media/search-explorer/search-explorer-example-count.png" alt-text="Befehl für den Suchexplorer im Portal" border="false":::
 
 ## <a name="limit-fields-in-search-results"></a>Beschränken der Felder in den Suchergebnissen
 
@@ -95,7 +95,7 @@ Fügen Sie [ **$select**](search-query-odata-select.md) hinzu, um die Ergebnisse
 
    **Ergebnisse**
 
-   ![Beispiel für das Beschränken der Felder](./media/search-explorer/search-explorer-example-selectfield.png "Beschränken der Felder in den Suchergebnissen")
+   :::image type="content" source="media/search-explorer/search-explorer-example-selectfield.png" alt-text="Befehl für den Suchexplorer im Portal" border="false":::
 
 ## <a name="return-next-batch-of-results"></a>Zurückgeben des nächsten Batches von Ergebnissen
 
@@ -107,7 +107,7 @@ Die kognitive Azure-Suche gibt die ersten 50 Übereinstimmungen basierend auf de
 
    **Ergebnisse**
 
-   ![Batchsuchergebnisse](./media/search-explorer/search-explorer-example-topskip.png "Zurückgeben des nächsten Batches von Suchergebnissen")
+   :::image type="content" source="media/search-explorer/search-explorer-example-topskip.png" alt-text="Befehl für den Suchexplorer im Portal" border="false":::
 
 ## <a name="filter-expressions-greater-than-less-than-equal-to"></a>Filterausdrücke (größer als, kleiner als, gleich)
 
@@ -119,7 +119,7 @@ Verwenden Sie den Parameter [ **$filter**](search-query-odata-filter.md), wenn S
    
    **Ergebnisse**
 
-   ![Filterausdruck](./media/search-explorer/search-explorer-example-filter.png "Filtern nach Kriterien")
+   :::image type="content" source="media/search-explorer/search-explorer-example-filter.png" alt-text="Befehl für den Suchexplorer im Portal" border="false":::
 
 ## <a name="order-by-expressions"></a>Sortierausdrücke
 
@@ -131,7 +131,7 @@ Fügen Sie [ **$orderby**](search-query-odata-orderby.md) hinzu, um die Ergebnis
    
    **Ergebnisse**
 
-   ![orderby-Ausdruck](./media/search-explorer/search-explorer-example-ordery.png "Ändern der Sortierreihenfolge")
+   :::image type="content" source="media/search-explorer/search-explorer-example-ordery.png" alt-text="Befehl für den Suchexplorer im Portal" border="false":::
 
 Die Ausdrücke **$filter** und **$orderby** sind OData-Konstrukte. Weitere Informationen finden Sie unter [OData Expression Syntax for Azure Search](/rest/api/searchservice/odata-expression-syntax-for-azure-search) (OData-Ausdruckssyntax für Azure Search).
 

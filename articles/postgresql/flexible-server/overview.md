@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 09/22/2020
-ms.openlocfilehash: 71cf11673756dcefb828ad1fad0412a791b43efd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 268eedf6f9d64d52539e20006322b6b1dd9964e8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90944437"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439965"
 ---
 # <a name="azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL – Flexible Server
 
@@ -49,15 +49,14 @@ Wenn der Server bei geplanten oder ungeplanten Failoverereignissen ausfällt, ge
 1. Eine neue Computeressource in Form einer Linux-VM wird bereitgestellt.
 2. Der Speicher mit Datendateien wird dem neuen virtuellen Computer zugeordnet.
 3. Die PostgreSQL-Datenbank-Engine wird auf dem neuen virtuellen Computer online geschaltet.
-4. Der Gatewaydienst stellt ein transparentes Failover sicher, sodass keine Änderungen an der Anwendung erforderlich sind.
 
 Die folgen Abbildung zeigt den Übergang bei VM- und Speicherausfall.
 
- :::image type="content" source="./media/overview/overview-azure-postgres-flex-virtualmachine-storage-failure.png" alt-text="Flexible Server-Instanz: VM- und Speicherausfall":::
+ :::image type="content" source="./media/overview/overview-azure-postgres-flex-virtualmachine.png" alt-text="Flexible Server-Instanz: VM- und Speicherausfall":::
 
 Wenn zonenredundante Hochverfügbarkeit konfiguriert ist, wird vom Dienst ein unmittelbar betriebsbereiter Standbyserver in der Verfügbarkeitszone innerhalb derselben Azure-Region bereitgestellt und verwaltet. Die Datenänderungen auf dem Quellserver werden synchron auf den Standbyserver repliziert, damit kein Datenverlust entsteht. Bei zonenredundanter Hochverfügbarkeit geht der Standbyserver nach dem Auslösen des geplanten oder ungeplanten Failoverereignisses sofort online und steht für die Verarbeitung eingehender Transaktionen zur Verfügung. Dies ermöglicht die Resilienz des Diensts bei Ausfall einer Verfügbarkeitszone innerhalb einer Azure-Region, die mehrere Verfügbarkeitszonen unterstützt, wie in der folgenden Abbildung gezeigt.
 
- :::image type="content" source="./media/business-continuity/concepts-zone-redundant-high-availability-architecture.png" alt-text="Zonenredundante Hochverfügbarkeit":::
+ :::image type="content" source="./media/business-continuity/concepts-zone-redundant-high-availability-architecture.png" alt-text="Flexible Server-Instanz: VM- und Speicherausfall":::
 
  Weitere Informationen finden Sie in der [Dokumentation zur Hochverfügbarkeit](./concepts-high-availability.md).
 

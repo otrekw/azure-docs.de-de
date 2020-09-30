@@ -7,13 +7,13 @@ author: dereklegenzoff
 ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/22/2020
-ms.openlocfilehash: e714c58827ebb4ee7e50696db27644fa65a73af1
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.date: 09/25/2020
+ms.openlocfilehash: ac7cee2c1d72b4102fb397aa8093c2d38686fc88
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89290309"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397265"
 ---
 # <a name="tutorial-create-a-custom-analyzer-for-phone-numbers"></a>Tutorial: Erstellen eines benutzerdefinierten Analysetools für Telefonnummern
 
@@ -59,7 +59,7 @@ Für jede Anforderung müssen Sie die folgenden Schritte ausführen:
 
 1. Ersetzen Sie `<YOUR-ADMIN-API-KEY>` durch den primären oder sekundären Schlüssel Ihres Suchdiensts.
 
-  ![Postman-Anforderungs-URL und -Header](media/search-get-started-postman/postman-url.png "Postman-Anforderungs-URL und -Header")
+  :::image type="content" source="media/search-get-started-postman/postman-url.png" alt-text="Postman-Anforderungs-URL und -Header" border="false":::
 
 Wenn Sie mit Postman nicht vertraut sind, lesen Sie [Untersuchen von Azure Cognitive Search-REST-APIs mit Postman](search-get-started-postman.md).
 
@@ -239,11 +239,11 @@ Analysetools bestehen aus drei Komponenten:
 
 In der folgenden Abbildung sehen Sie, wie diese drei Komponenten zusammenwirken, um einen Satz in Token zu zerlegen:
 
-  ![Abbildung des Analysetoolvorgangs zum Zerlegen eines Satzes in Token](media/tutorial-create-custom-analyzer/analyzers-explained.png)
+  :::image type="content" source="media/tutorial-create-custom-analyzer/analyzers-explained.png" alt-text="Postman-Anforderungs-URL und -Header":::
 
 Diese Token werden dann in einem invertierten Index gespeichert, der eine schnelle Volltextsuche ermöglicht.  Ein invertierter Index ermöglicht Volltextsuche, indem er alle eindeutigen Begriffe, die bei der lexikalischen Analyse extrahiert wurden, den Dokumenten zuordnet, in denen sie vorkommen. Ein Beispiel sehen Sie in der Abbildung unten:
 
-  ![Beispiel für invertierten Index](media/tutorial-create-custom-analyzer/inverted-index-explained.png)
+  :::image type="content" source="media/tutorial-create-custom-analyzer/inverted-index-explained.png" alt-text="Postman-Anforderungs-URL und -Header":::
 
 Die gesamte Suche läuft auf die Suche nach den im invertierten Index gespeicherten Begriffen hinaus. Wenn ein Benutzer eine Abfrage ausgibt:
 
@@ -251,7 +251,7 @@ Die gesamte Suche läuft auf die Suche nach den im invertierten Index gespeicher
 1. Der invertierte Index wird dann nach Dokumenten mit übereinstimmenden Begriffen gescannt.
 1. Schließlich wir die Rangfolge der abgerufenen Dokumente durch den [Ähnlichkeitsalgorithmus](index-ranking-similarity.md) ermittelt.
 
-  ![Abbildung des Analysetoolvorgangs zum Ermitteln der Ähnlichkeitsrangfolge](media/tutorial-create-custom-analyzer/query-architecture-explained.png)
+  :::image type="content" source="media/tutorial-create-custom-analyzer/query-architecture-explained.png" alt-text="Postman-Anforderungs-URL und -Header":::
 
 Wenn die Abfragebegriffe nicht mit den Begriffen in Ihrem invertierten Index übereinstimmen, werden keine Ergebnisse zurückgegeben. Weitere Informationen zur Funktionsweise von Abfragen finden Sie im Artikel zur [Volltextsuche](search-lucene-query-architecture.md).
 

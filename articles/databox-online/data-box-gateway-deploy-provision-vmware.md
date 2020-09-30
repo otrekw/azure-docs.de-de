@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 03/25/2019
+ms.date: 09/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 6488871067416b2cee533561bae47874413d9012
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 4818755e48a4d497d70920a62a9505346176ed73
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892115"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371285"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>Tutorial: Bereitstellen von Azure Data Box Gateway in VMware
 
@@ -194,7 +194,7 @@ Führen Sie die folgenden Schritte aus, um Ihr virtuelles Gerät zu starten und 
 
    ![Eingeben eines Kennworts für das virtuelle Gerät](./media/data-box-gateway-deploy-provision-vmware/image23.png)
 
-6. Die Schritte 5 bis 7 gelten nur beim Starten in anderen Umgebungen als einer DHCP-Umgebung. Wenn Sie in einer DHCP-Umgebung arbeiten, überspringen Sie diese Schritte, und fahren Sie mit Schritt 8 fort. Wenn Sie Ihr Gerät in einer anderen Umgebung als einer DHCP-Umgebung gestartet haben, wird eine entsprechende Meldung angezeigt: **Verwenden Sie das Cmdlet „Set-HcsIPAddress“, um das Netzwerk zu konfigurieren**. 
+6. Die Schritte 6 bis 8 gelten nur beim Starten in anderen Umgebungen als einer DHCP-Umgebung. Falls Sie sich in einer DHCP-Umgebung befinden, sollten Sie diese Schritte überspringen und mit Schritt 9 fortfahren. Wenn Sie Ihr Gerät in einer anderen Umgebung als einer DHCP-Umgebung gestartet haben, wird eine entsprechende Meldung angezeigt: **Verwenden Sie das Cmdlet „Set-HcsIPAddress“, um das Netzwerk zu konfigurieren**. 
    
 7. Führen Sie zum Konfigurieren des Netzwerks an der Eingabeaufforderung den Befehl `Get-HcsIpAddress` aus, um die Netzwerkschnittstellen aufzulisten, die auf dem virtuellen Gerät aktiviert sind. Wenn für das Gerät eine einzelne Netzwerkschnittstelle aktiviert ist, wird dieser Schnittstelle der Standardname `Ethernet`zugewiesen.
 

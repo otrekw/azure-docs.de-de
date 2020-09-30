@@ -9,12 +9,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: cffb753d515c4d066c8ce52e7dacebe5a8f6f8ca
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 12b20f7556a460506067305401fb2379678ee58e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682636"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371693"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>APIs für die Automatisierung von Azure-Reservierungen
 
@@ -88,9 +88,9 @@ Wenn Sie feststellen, dass die Reservierungen Ihrer Organisation zu wenig genutz
 
 Rufen Sie die Liste alle Reservierungen, auf die ein Benutzer Zugriff hat, über die API [Reservierungsauftrag – Liste](/rest/api/reserved-vm-instances/reservationorder/list) ab. Informationen, wie Sie Zugriff auf eine Reservierung programmgesteuert erteilen, finden Sie in den folgenden Artikeln:
 
-- [Verwalten des Zugriffs mithilfe der RBAC und der REST-API](../../role-based-access-control/role-assignments-rest.md)
-- [Verwalten des Zugriffs mit der RBAC und Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
-- [Verwalten des Zugriffs mithilfe der RBAC und der Azure-Befehlszeilenschnittstelle](../../role-based-access-control/role-assignments-cli.md)
+- [Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe von Azure RBAC und der REST-API](../../role-based-access-control/role-assignments-rest.md)
+- [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe von Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
+- [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe der Azure-Befehlszeilenschnittstelle](../../role-based-access-control/role-assignments-cli.md)
 
 ## <a name="split-or-merge-reservation"></a>Aufteilen oder Zusammenführen einer Reservierung
 

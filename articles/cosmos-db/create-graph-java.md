@@ -1,20 +1,20 @@
 ---
 title: Erstellen einer Graphdatenbank mit Java in Azure Cosmos DB
 description: Hier finden Sie ein Java-Codebeispiel, das Sie zum Herstellen einer Verbindung mit und zum Abfragen von Diagrammdaten in Azure Cosmos DB mit Gremlin verwenden können.
-author: luisbosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2019
-ms.author: lbosq
+ms.author: jasonh
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 05fc7a7a5bd7e045125cb303e1f5c29d550c58ef
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ad00fcc0c7b871210b29400821808b6729d953f6
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323671"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409407"
 ---
 # <a name="quickstart-build-a-graph-database-with-the-java-sdk-and-the-azure-cosmos-db-gremlin-api"></a>Schnellstart: Erstellen einer Graphdatenbank mit dem Java SDK und der Azure Cosmos DB-Gremlin-API
 
@@ -169,15 +169,15 @@ Nun können Sie wieder zum Daten-Explorer zurückkehren, um sich die dem Graph h
 
 1. Wählen Sie im Azure-Portal in Ihrem Azure Cosmos DB-Konto **Daten-Explorer** aus, erweitern Sie den Eintrag **sample-graph**, und wählen Sie **Graph** und anschließend **Filter anwenden** aus. 
 
-   :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-expanded.png" alt-text="Erstellen neuer Dokumente im Daten-Explorer im Azure-Portal":::
+   :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-expanded.png" alt-text="Anzeigen und Kopieren eines Zugriffsschlüssels im Azure-Portal auf der Seite „Schlüssel“":::
 
 2. Beachten Sie in der Liste **Ergebnisse** die Benutzer, die dem Graph neu hinzugefügt wurden. Wählen Sie **ben** aus, und beachten Sie, dass der Benutzer mit „robin“ verbunden ist. Sie können die Scheitelpunkte bewegen, indem Sie sie ziehen und loslassen, zoomen, indem Sie das Mausrad verwenden, und die Größe des Graphen verändern, indem Sie auf den Doppelpfeil klicken. 
 
-   :::image type="content" source="./media/create-graph-java/azure-cosmosdb-graph-explorer-new.png" alt-text="Neue Scheitelpunkte im Graph im Daten-Explorer im Azure-Portal":::
+   :::image type="content" source="./media/create-graph-java/azure-cosmosdb-graph-explorer-new.png" alt-text="Anzeigen und Kopieren eines Zugriffsschlüssels im Azure-Portal auf der Seite „Schlüssel“":::
 
 3. Fügen Sie nun einige neue Benutzer hinzu. Wählen Sie **New Vertex** (Neuer Scheitelpunkt) aus, um dem Graph Daten hinzuzufügen.
 
-   :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-new-vertex.png" alt-text="Erstellen neuer Dokumente im Daten-Explorer im Azure-Portal":::
+   :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-new-vertex.png" alt-text="Anzeigen und Kopieren eines Zugriffsschlüssels im Azure-Portal auf der Seite „Schlüssel“":::
 
 4. Geben Sie im Feld für die Bezeichnung die Zeichenfolge *person* ein.
 
@@ -212,17 +212,17 @@ Nun können Sie wieder zum Daten-Explorer zurückkehren, um sich die dem Graph h
 
     Wenn Sie weitere Daten hinzufügen, können Sie Ihre Ergebnisse mithilfe von Filtern eingrenzen. Daten-Explorer verwendet standardmäßig `g.V()`, um alle Scheitelpunkte eines Graphen abzurufen. Sie können ihn in eine andere [Graphabfrage](tutorial-query-graph.md) wie z.B. `g.V().count()` ändern, um die Anzahl aller Scheitelpunkte eines Graphen im JSON-Format zurückzugeben. Wenn Sie den Filter geändert haben, ändern Sie den Filter zurück in `g.V()`, und wählen Sie **Filter anwenden** aus, um wieder alle Ergebnisse anzuzeigen.
 
-12. Als Nächstes verbinden Sie „rakesh“ und „ashley“. Vergewissern Sie sich, dass in der Liste **Ergebnisse** der Eintrag **ashley** ausgewählt ist, und wählen Sie anschließend rechts unten neben **Ziele** die Option :::image type="content" source="./media/create-graph-java/edit-pencil-button.png" alt-text="Ziel eines Scheitelpunkts in einem Graph ändern"::: aus. Sollte die Schaltfläche nicht zu sehen sein, müssen Sie ggf. das Fenster verbreitern.
+12. Als Nächstes verbinden Sie „rakesh“ und „ashley“. Vergewissern Sie sich, dass in der Liste **Ergebnisse** der Eintrag **ashley** ausgewählt ist, und wählen Sie anschließend rechts unten neben **Ziele** die Option :::image type="content" source="./media/create-graph-java/edit-pencil-button.png" alt-text="Anzeigen und Kopieren eines Zugriffsschlüssels im Azure-Portal auf der Seite „Schlüssel“"::: aus. Sollte die Schaltfläche nicht zu sehen sein, müssen Sie ggf. das Fenster verbreitern.
 
-    :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png" alt-text="Ändern des Ziels eines Scheitelpunkts in einem Graph: Azure CosmosDB":::
+    :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png" alt-text="Anzeigen und Kopieren eines Zugriffsschlüssels im Azure-Portal auf der Seite „Schlüssel“":::
 
 13. Geben Sie im Feld **Ziel** die Zeichenfolge *rakesh* und im Feld **Kantenbezeichnung** die Zeichenfolge *knows* ein, und aktivieren Sie anschließend das Kontrollkästchen.
 
-    :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png" alt-text="Hinzufügen einer Verbindung im Daten-Explorer: Azure CosmosDB":::
+    :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png" alt-text="Anzeigen und Kopieren eines Zugriffsschlüssels im Azure-Portal auf der Seite „Schlüssel“":::
 
 14. Wählen Sie nun in der Ergebnisliste den Eintrag **rakesh** aus. Wie Sie sehen, sind „ashley“ und „rakesh“ miteinander verbunden. 
 
-    :::image type="content" source="./media/create-graph-java/azure-cosmosdb-graph-explorer.png" alt-text="Zwei im Daten-Explorer verbundene Scheitelpunkte: Azure CosmosDB":::
+    :::image type="content" source="./media/create-graph-java/azure-cosmosdb-graph-explorer.png" alt-text="Anzeigen und Kopieren eines Zugriffsschlüssels im Azure-Portal auf der Seite „Schlüssel“":::
 
 Damit haben Sie den Teil des Tutorials, in dem die Ressourcen erstellt werden, abgeschlossen. Sie können weiter Scheitelpunkte zu Ihrem Graphen hinzufügen, die vorhandenen Scheitelpunkte anpassen oder die Abfragen ändern. Sehen Sie sich nun die von Azure Cosmos DB bereitgestellten Metriken an, und bereinigen Sie anschließend die Ressourcen. 
 

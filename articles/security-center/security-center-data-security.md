@@ -8,17 +8,17 @@ manager: rkarlin
 ms.assetid: 33f2c9f4-21aa-4f0c-9e5e-4cd1223e39d7
 ms.service: security-center
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2020
 ms.author: memildin
-ms.openlocfilehash: d08984165f59f15e9feb739a719d80e7dc3902a4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8a999e2b5706c04b426f758ba46f49fb9f7e3057
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905462"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91438787"
 ---
 # <a name="azure-security-center-data-security"></a>Azure Security Center-Datensicherheit
 Azure Security Center erfasst und verarbeitet sicherheitsbezogene Daten (einschließlich Konfigurationsinformationen, Metadaten, Ereignisprotokolle und Ähnliches), um Kunden bei der Vermeidung, Erkennung und Behandlung von Bedrohungen zu unterstützen. Microsoft hält strenge Compliance- und Sicherheitsrichtlinien ein – angefangen bei der Codierung bis hin zum Betreiben von Diensten.
@@ -76,7 +76,7 @@ Wenn Sie nicht Azure Defender verwenden, können Sie die Datensammlung von virt
 
 Kunden können wie nachfolgend gezeigt Security Center-Daten aus verschiedenen Datenströmen nutzen:
 
-* **Azure-Aktivität:** Alle Sicherheitswarnungen, von Security Center genehmigte [Just-In-Time](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)-Anforderungen und alle von [adaptiven Anwendungssteuerungen](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application) generierten Warnungen
+* **Azure-Aktivität:** Alle Sicherheitswarnungen, von Security Center genehmigte [Just-In-Time](security-center-just-in-time.md)-Anforderungen und alle von [adaptiven Anwendungssteuerungen](security-center-adaptive-application.md) generierten Warnungen
 * **Azure Monitor-Protokolle:** alle Sicherheitswarnungen.
 
 
