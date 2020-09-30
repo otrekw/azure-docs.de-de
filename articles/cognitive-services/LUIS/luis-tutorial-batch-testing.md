@@ -1,14 +1,16 @@
 ---
 title: 'Tutorial: Batchtests zur Fehlersuche: LUIS'
 description: In diesem Tutorial wird veranschaulicht, wie Sie Batchtests nutzen, um die Qualität Ihrer LUIS-App (Language Understanding) zu überprüfen.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 05/07/2020
-ms.openlocfilehash: 09e5ebc9f80eb51175b13e601983690b6229b747
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 7dd181f8cd398dd683296b446028b398a9800b53
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681627"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91298312"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>Tutorial: Testen von Datasets in Batches
 

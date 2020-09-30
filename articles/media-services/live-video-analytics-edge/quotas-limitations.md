@@ -1,14 +1,14 @@
 ---
-title: 'Kontingente bei Live Video Analytics in IoT Edge: Azure'
+title: Kontingente und Einschränkungen von Live Video Analytics in IoT Edge | Azure
 description: In diesem Artikel werden die Kontingente und Einschränkungen von Live Video Analytics in IoT Edge beschrieben.
 ms.topic: conceptual
 ms.date: 05/22/2020
-ms.openlocfilehash: 32a24079b36655bfdacd25b07d419009f5012507
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: df1978de4ee1bbbe15d0df3b02a70fb51491e9d2
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750230"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90529229"
 ---
 # <a name="quotas-and-limitations"></a>Kontingente und Einschränkungen
 
@@ -65,6 +65,10 @@ Während der Vorschauphase unterstützt Live Video Analytics in IoT Edge Folgen
 * Die Möglichkeit, das Media Services-Konto ohne Unterbrechung von einem Abonnement zu einem anderen zu migrieren
 * Die Möglichkeit, mehrere Speicherkonten mit dem Media Services-Konto zu verwenden
 * Die Möglichkeit, die Informationen zum Dienstprinzipal in den gewünschten Eigenschaften des Moduls dynamisch zu ändern, ohne dass ein Neustart erforderlich ist
+
+Es können nur IP-Kameras verwendet werden, die das RTSP-Protokoll unterstützen. IP-Kameras, die RTSP unterstützen, finden Sie auf der [Seite mit den ONVIF-konformen Produkten](https://www.onvif.org/conformant-products). Suchen Sie nach Geräten, die mit den Profilen G, S oder T konform sind.
+
+Außerdem sollten diese Kameras für die Verwendung von H.264-Video und AAC-Audio konfiguriert werden. Andere Codecs werden zurzeit nicht unterstützt. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,14 +8,14 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jopapa
-ms.custom: seodec18, devx-track-javascript
+ms.custom: seodec18, devx-track-js
 ms.reviewer: sngun
-ms.openlocfilehash: a5d697465f811f468fb0047284126deae0c455dd
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 3116038939a07084f13db22819726dcbb2622a10
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424306"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292421"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>Erstellen einer Angular-App mit der API für MongoDB von Azure Cosmos DB: Hinzufügen von CRUD-Funktionen zur App
 
@@ -88,11 +88,11 @@ Für diesen Teil des Tutorials wird vorausgesetzt, dass Sie die Schritte aus [Te
 
 6. Wechseln Sie nun wieder zu Ihrem Internetbrowser, drücken Sie F12 (auf den meisten Computern), um die Entwicklungstools zu öffnen, und navigieren Sie zur Registerkarte „Netzwerk“. Navigieren Sie zu `http://localhost:3000`, um sich die über das Netzwerk abgewickelten Aufrufe anzusehen.
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png" alt-text="Chrome-Registerkarte „Netzwerk“ mit der Netzwerkaktivität":::
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png" alt-text="„routes.js“ und „hero.service.js“ in Visual Studio Code":::
 
 7. Fügen Sie einen neuen Helden hinzu, indem Sie die Schaltfläche **Add New Hero** (Neuen Helden hinzufügen) wählen. Geben Sie die ID „999“, den Namen „Fred“ und den Spruch „Hello“ ein, und wählen Sie anschließend **Speichern**. Auf der Registerkarte sehen Sie, dass Sie eine POST-Anforderung für einen neuen Helden gesendet haben. 
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/post-new-hero.png" alt-text="Chrome-Registerkarte „Netzwerk“ mit der Netzwerkaktivität für Get- und Post-Funktionen":::
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/post-new-hero.png" alt-text="„routes.js“ und „hero.service.js“ in Visual Studio Code":::
 
     Im nächsten Schritt fügen wir der App die Put- und die Delete-Funktion hinzu.
 
@@ -177,11 +177,11 @@ Für diesen Teil des Tutorials wird vorausgesetzt, dass Sie die Schritte aus [Te
 
     Nun können Sie die ID auf der Registerkarte „Netzwerk“ auswählen, um die Nutzlast anzuzeigen. In der Nutzlast sehen Sie, dass der Spruch jetzt „Bye“ lautet.
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/put-hero-function.png" alt-text="Heroes-App und Registerkarte „Netzwerk“ mit der Nutzlast"::: 
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/put-hero-function.png" alt-text="„routes.js“ und „hero.service.js“ in Visual Studio Code"::: 
 
     Sie können auch einen der Helden über die Benutzeroberfläche löschen und sich ansehen, wie lange die Ausführung des Löschvorgangs dauert. Wählen Sie hierzu für den Helden „Fred“ die Schaltfläche „Delete“ (Löschen).
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/times.png" alt-text="Heroes-App und die Registerkarte „Netzwerk“ mit der Ausführungsdauer der Funktionen"::: 
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/times.png" alt-text="„routes.js“ und „hero.service.js“ in Visual Studio Code"::: 
 
     Wenn Sie die Seite aktualisieren, wird auf der Registerkarte „Netzwerk“ angezeigt, wie lange das Abrufen der Helden dauert. Die Zeiten sind zwar kurz, vieles hängt jedoch davon ab, wo auf der Welt sich Ihre Daten befinden und ob sie in einer Region in der Nähe Ihrer Benutzer georepliziert werden. Weitere Informationen zur Georeplikation finden Sie im nächsten Tutorial, das in Kürze veröffentlicht wird.
 

@@ -3,12 +3,12 @@ title: 'Mediengraphkonzept: Azure'
 description: Mit einem Mediengraph können Sie definieren, von welchem Ort Medien erfasst, wie diese verarbeitet und wohin die Ergebnisse übermittelt werden sollen. Dieser Artikel bietet eine detaillierte Beschreibung des Konzepts eines Mediengraphs.
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 6be741ee38cc8f1980fe9aa96883f9aacc1be8e2
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 1e280d6fe8303a85bee41adf83ac54e7c96df304
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89048420"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567933"
 ---
 # <a name="media-graph"></a>Mediendiagramm
 
@@ -21,7 +21,8 @@ ms.locfileid: "89048420"
 
 Mit einem Mediengraph können Sie definieren, von welchem Ort Medien erfasst, wie diese verarbeitet und wohin die Ergebnisse übermittelt werden sollen. Sie erreichen dies durch Verbinden von Komponenten oder Knoten in der gewünschten Weise. Das Diagramm unten bietet eine grafische Darstellung eines Mediengraphs.  
 
-![Grafische Darstellung eines Mediengraphs](./media/media-graph/overview.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/media-graph/media-graph.svg" alt-text="Mediendiagramm":::
 
 Live Video Analytics in IoT Edge unterstützt verschiedene Arten von Quellen, Prozessoren und Senken.
 
@@ -39,7 +40,8 @@ Die Werte für die Parameter in der Topologie werden angegeben, wenn Sie Graphin
 
 Der Lebenszyklus von Graphtopologien und Graphinstanzen ist im folgenden Zustandsdiagramm dargestellt.
 
-![Lebenszyklus von Graphtopologie und Graphinstanz](./media/media-graph/graph-topology-lifecycle.svg)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/media-graph/graph-topology-lifecycle.svg" alt-text="Mediendiagramm":::
 
 Sie beginnen mit [der Erstellung einer Graphtopologie](direct-methods.md#graphtopologyset). Dann erstellen Sie für jeden Livevideofeed, den Sie mit dieser Topologie verarbeiten möchten, [eine Graphinstanz](direct-methods.md#graphinstanceset). 
 
@@ -88,11 +90,11 @@ Der Verarbeitungsknoten für Bildfrequenzfilter ermöglicht es Ihnen, mit einer 
 
 #### <a name="http-extension-processor"></a>Verarbeitungsknoten für die HTTP-Erweiterung
 
-Der Verarbeitungsknoten für die HTTP-Erweiterung ermöglicht es Ihnen, Ihr eigenes IoT Edge-Modul mit einem Mediengraph zu verbinden. Dieser Knoten nimmt decodierte Video-Einzelbilder als Eingabe an und leitet diese Einzelbilder an einen HTTP-REST-Endpunkt weiter, der von Ihrem Modul zur Verfügung gestellt wird. Dieser Knoten kann bei Bedarf beim REST-Endpunkt authentifiziert werden. Darüber hinaus weist der Knoten einen integrierten Bildformatierer auf, um Video-Einzelbilder zu skalieren und zu codieren, bevor sie an den REST-Endpunkt weitergeleitet werden. Der Skalierer verfügt über Optionen für das Beibehalten, Auffüllen oder Strecken des Seitenverhältnisses. Der Codierer für Bilder unterstützt die Formate JPEG, PNG und BMP.
+Der Verarbeitungsknoten für die HTTP-Erweiterung ermöglicht es Ihnen, Ihr eigenes IoT Edge-Modul mit einem Mediengraph zu verbinden. Dieser Knoten nimmt decodierte Video-Einzelbilder als Eingabe an und leitet diese Einzelbilder an einen HTTP-REST-Endpunkt weiter, der von Ihrem Modul zur Verfügung gestellt wird. Dieser Knoten kann bei Bedarf beim REST-Endpunkt authentifiziert werden. Darüber hinaus weist der Knoten einen integrierten Bildformatierer auf, um Video-Einzelbilder zu skalieren und zu codieren, bevor sie an den REST-Endpunkt weitergeleitet werden. Der Skalierer verfügt über Optionen für das Beibehalten, Auffüllen oder Strecken des Seitenverhältnisses. Der Codierer für Bilder unterstützt die Formate JPEG, PNG und BMP. Weitere Informationen zum Prozessor finden Sie [hier](media-graph-extension-concept.md#http-extension-processor).
 
 #### <a name="grpc-extension-processor"></a>gRPC-Erweiterungsprozessor
 
-Dieser gRPC-Erweiterungsprozessor verwendet decodierte Videoeinzelbilder als Eingabe und leitet diese an einen [gRPC](terminology.md#grpc)-Endpunkt weiter, der von Ihrem Modul zur Verfügung gestellt wird. Darüber hinaus weist der Knoten einen integrierten Bildformatierer auf, um Videoeinzelbilder zu skalieren und zu codieren, bevor sie an den gRPC-Endpunkt weitergeleitet werden. Der Skalierer verfügt über Optionen für das Beibehalten, Auffüllen oder Strecken des Seitenverhältnisses. Der Bildcodierer unterstützt die Formate JPEG, PNG und BMP.
+Dieser gRPC-Erweiterungsprozessor verwendet decodierte Videoeinzelbilder als Eingabe und leitet diese an einen [gRPC](terminology.md#grpc)-Endpunkt weiter, der von Ihrem Modul zur Verfügung gestellt wird. Der Knoten unterstützt das Übertragen von Daten mithilfe von [Shared Memory](https://en.wikipedia.org/wiki/Shared_memory) oder durch direktes Einbetten der Inhalte in den Text von gRPC-Nachrichten. Darüber hinaus weist der Knoten einen integrierten Bildformatierer auf, um Videoeinzelbilder zu skalieren und zu codieren, bevor sie an den gRPC-Endpunkt weitergeleitet werden. Der Skalierer verfügt über Optionen für das Beibehalten, Auffüllen oder Strecken des Seitenverhältnisses. Der Bildcodierer unterstützt die Formate JPEG, PNG und BMP. Weitere Informationen zum Prozessor finden Sie [hier](media-graph-extension-concept.md#grpc-extension-processor).
 
 #### <a name="signal-gate-processor"></a>Signalgateprozessor  
 

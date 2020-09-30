@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: a91f3781b490ee6f724e7d28a6be9a96c853426f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 0c93375abd57ff5e96906ef7befbbb546a3a1caf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684625"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270524"
 ---
 # <a name="tutorial-review-your-individual-azure-bill"></a>Tutorial: Überprüfen Ihrer individuellen Azure-Rechnung
 
@@ -22,7 +22,7 @@ Dieser Artikel unterstützt Sie beim besseren Verständnis sowie bei der Überpr
 
 Dieses Tutorial ist nur für Azure-Kunden mit einem individuellen Abonnement relevant. Gängige individuelle Abonnements sind Abonnements mit nutzungsbasierter Bezahlung, die direkt über die Azure-Website erworben werden.
 
-Informationen zum besseren Verständnis von unerwarteten Gebühren finden Sie unter [Analysieren unerwarteter Gebühren](https://docs.microsoft.com/azure/cost-management-billing/manage/getting-started#analyze-unexpected-charges). Wenn Sie Ihr Azure-Abonnement kündigen möchten, finden Sie entsprechende Informationen unter [Kündigen Ihres Azure-Abonnements](../manage/cancel-azure-subscription.md).
+Informationen zum besseren Verständnis von unerwarteten Gebühren finden Sie unter [Analysieren unerwarteter Gebühren](analyze-unexpected-charges.md). Wenn Sie Ihr Azure-Abonnement kündigen möchten, finden Sie entsprechende Informationen unter [Kündigen Ihres Azure-Abonnements](../manage/cancel-azure-subscription.md).
 
 In diesem Tutorial lernen Sie Folgendes:
 

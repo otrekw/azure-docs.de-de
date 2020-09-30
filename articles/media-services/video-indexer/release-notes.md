@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 08/05/2020
+ms.date: 09/03/2020
 ms.author: juliako
-ms.openlocfilehash: 1b11dc0ee17fd0686776a7262c4bc99bd98bcc3e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e2b45ebf9acea7334678110015d8cfd3022675f4
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837308"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505337"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer: Versionshinweise
 
@@ -29,6 +29,16 @@ Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben,
 * Bekannte Probleme
 * Behebung von Programmfehlern
 * Veraltete Funktionen
+
+## <a name="august-2020"></a>August 2020
+
+### <a name="mobile-design-for-the-video-indexer-website"></a>Entwerfen der Video Indexer-Website für mobile Geräte
+
+Die Video Indexer-Websiteoberfläche unterstützt jetzt mobile Geräte. Die Benutzeroberfläche passt sich als responsive Design an die Bildschirmgröße Ihres mobilen Geräts an (ausgenommen angepasste Benutzeroberflächen). 
+
+### <a name="accessibility-improvements-and-bug-fixes"></a>Verbesserte Barrierefreiheit und Fehlerbehebungen 
+
+Als Teil von WCAG (Barrierefreiheitsrichtlinien für Webinhalte) wurde die Benutzerumgebung der Video Indexer-Website im Rahmen der Microsoft-Barrierefreiheits-Standards an Klasse C ausgerichtet. Mehrere Fehler im Zusammenhang mit Tastaturnavigation, programmgesteuertem Zugriff und Sprachausgabe wurden gelöst und Verbesserungen eingeführt. 
 
 ## <a name="july-2020"></a>Juli 2020
 

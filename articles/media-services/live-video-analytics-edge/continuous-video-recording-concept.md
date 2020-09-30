@@ -3,12 +3,12 @@ title: 'Fortlaufende Videoaufzeichnung: Azure'
 description: Fortlaufende Videoaufzeichnung (Continuous Video Recording, CVR) bezeichnet die kontinuierliche Erfassung von Videodaten von einer Videoquelle. In diesem Thema wird erläutert, was CVR bedeutet.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 76af97fe1398421f5f37cfca32127d926ce56bac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 04f09f1968e647c57ba0913a9e7f9e601d045771
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043317"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566692"
 ---
 # <a name="continuous-video-recording"></a>Fortlaufende Videoaufzeichnung  
 
@@ -21,7 +21,8 @@ ms.locfileid: "87043317"
 
 Fortlaufende Videoaufzeichnung (Continuous Video Recording, CVR) bezeichnet die kontinuierliche Erfassung von Videodaten von einer Videoquelle. Live Video Analytics in IoT Edge unterstützt die kontinuierliche Aufzeichnung von Videos einer Überwachungskamera (CCTV) über ein [Mediendiagramm](media-graph-concept.md), das einen RTSP-Quellknoten und einen Senkenknoten für Medienobjekte umfasst. Nachfolgend sehen Sie eine grafische Darstellung eines solchen Mediendiagramms. Die JSON-Darstellung der [Diagrammtopologie](media-graph-concept.md?branch=release-preview-media-services-lva#media-graph-topologies-and-instances) eines solchen Mediendiagramms finden Sie [hier](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/cvr-asset).
 
-![Fortlaufende Videoaufzeichnung](./media/continuous-video-recording/continuous-video-recording-overview.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/continuous-video-recording/continuous-video-recording-overview.svg" alt-text="Fortlaufende Videoaufzeichnung":::
 
 Das oben dargestellte Mediendiagramm kann auf einem Edgegerät ausgeführt werden, und als Medienobjektsenke für die Videoaufzeichnung kann ein Azure Media Services-[Medienobjekt](terminology.md#asset) verwendet werden. Das Video wird so lange aufgezeichnet, wie das Mediendiagramm im aktivierten Zustand bleibt. Da das Video als Medienobjekt aufgezeichnet wird, kann es mit den vorhandenen Streamingfunktionen von Media Services wiedergegeben werden. Weitere Informationen finden Sie unter [Wiedergeben aufgezeichneter Inhalte](video-playback-concept.md).
 
@@ -30,10 +31,11 @@ Das oben dargestellte Mediendiagramm kann auf einem Edgegerät ausgeführt werde
 Live Video Analytics in IoT Edge unterstützt den Betrieb mit nicht optimalen Netzwerkbedingungen, bei denen die Konnektivität zwischen Edgegerät und Cloud gelegentlich getrennt wird oder die verfügbare Bandbreite sinkt. Dazu wird das Video von der Quelle lokal in einem Cache aufgezeichnet und regelmäßig automatisch mit dem Medienobjekt synchronisiert. Sie können in der [Diagrammtopologie in JSON](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/cvr-asset/topology.json) erkennen, dass die folgenden Eigenschaften definiert wurden:
 
 ```
-    "segmentLength": "PT30S",
-    "localMediaCacheMaximumSizeMiB": "2048",
-    "localMediaCachePath": "/var/lib/azuremediaservices/tmp/",
+"segmentLength": "PT30S",
+"localMediaCacheMaximumSizeMiB": "2048",
+"localMediaCachePath": "/var/lib/azuremediaservices/tmp/",
 ```
+
 Die letzteren beiden Eigenschaften sind für die resiliente Aufzeichnung relevant (beide Eigenschaften sind auch für einen Senkenknoten für Medienobjekte erforderlich). Die localMediaCachePath-Eigenschaft weist die Medienobjektsenke an, diesen Ordnerpfad zum Zwischenspeichern von Mediendaten vor dem Hochladen in das Medienobjekt zu verwenden. In [diesem Artikel](../../iot-edge/how-to-access-host-storage-from-module.md) wird erläutert, wie das Edgemodul den lokalen Speicher Ihres Geräts verwenden kann. Die localMediaCacheMaximumSizeMiB-Eigenschaft definiert, wie viel Speicherplatz die Medienobjektsenke als Cache verwenden kann (1 MiB = 1.024 × 1.024 Byte). 
 
 Wenn die Verbindung Ihres Edgemoduls für einen sehr langen Zeitraum getrennt wird und der im Cacheordner gespeicherte Inhalt den Wert von localMediaCacheMaximumSizeMiB erreicht, beginnt die Medienobjektsenke damit, Daten aus dem Cache zu entfernen. Sie beginnt dabei mit den ältesten Daten. Wenn die Geräteverbindung z. B. um 10:00 Uhr verloren gegangen ist und der Cache den maximalen Grenzwert um 18:00 Uhr erreicht, beginnt die Medienobjektsenke mit dem Löschen bei den Daten, die um 10:00 Uhr aufgezeichnet wurden. 
@@ -48,15 +50,13 @@ Wie bereits erwähnt, zeichnet der Senkenknoten für die Medienobjekte Videos in
 
 Die segmentLength-Eigenschaft stellt sicher, dass das Edgemodul Videos höchstens einmal in dem durch segmentLength angegebenen Zeitraum (in Sekunden) hochlädt. Der Mindestwert dieser Eigenschaft beträgt 30 Sekunden (dies ist auch der Standardwert). Der Wert kann in 30-Sekunden-Schritten auf maximal 5 Minuten erhöht werden.
 
->[!NOTE]
->Informationen zu den Auswirkungen von segmentLength auf die Wiedergabe finden Sie in [diesem Artikel](playback-recordings-how-to.md).
-
+> [!NOTE]
+> Informationen zu den Auswirkungen von segmentLength auf die Wiedergabe finden Sie im Artikel [Wiedergeben von Aufzeichnungen](playback-recordings-how-to.md).
 
 ## <a name="see-also"></a>Weitere Informationen
 
 * [Ereignisbasierte Videoaufzeichnung](event-based-video-recording-concept.md)
 * [Wiedergeben aufgezeichneter Inhalte](video-playback-concept.md)
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 
