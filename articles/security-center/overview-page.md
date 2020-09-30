@@ -4,15 +4,15 @@ description: Enthält eine Beschreibung der Features auf der Übersichtsseite vo
 author: memildin
 ms.author: memildin
 ms.date: 9/12/2020
-ms.topic: conceptual
+ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 637f7dde63d562f71aa31561a960ed3502a80229
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: cc52610eacc3916b7a8978cba17a1db3f3d50686
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90930343"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447687"
 ---
 # <a name="azure-security-centers-overview-page"></a>Azure Security Center-Übersichtsseite
 
@@ -27,7 +27,7 @@ Diese Seite enthält eine einheitliche Übersicht über den Sicherheitsstatus Ih
 
 ## <a name="features-of-the-overview-page"></a>Features der Übersichtsseite
 
-:::image type="content" source="media/overview-page/top-bar-of-overview.png" alt-text="Leiste am oberen Bildschirmrand auf der Security Center-Übersichtsseite":::
+:::image type="content" source="media/overview-page/top-bar-of-overview.png" alt-text="Security Center-Übersichtsseite":::
 
 Die **obere Menüleiste** enthält Folgendes:
 - **Abonnements**: Sie können die Liste mit den Abonnements anzeigen und filtern, indem Sie diese Schaltfläche auswählen. Die Anzeige wird angepasst, um den Sicherheitsstatus der ausgewählten Abonnements widerzuspiegeln.

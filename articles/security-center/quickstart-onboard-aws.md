@@ -3,16 +3,16 @@ title: Herstellen einer Verbindung zwischen Ihrem AWS-Konto und Azure Security C
 description: Überwachen von AWS-Ressourcen über Azure Security Center
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
-ms.topic: how-to
+ms.date: 9/22/2020
+ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: ee1b8fe6ed97f3b71cda418cce9e432f7c045447
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: cddae0a7115fc2999b52eaba7df2b49db509981b
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931701"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449037"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>Herstellen einer Verbindung zwischen Ihren AWS-Konten und Azure Security Center
 
@@ -71,7 +71,7 @@ Es gibt zwei Möglichkeiten, um Security Center die Authentifizierung bei AWS zu
 
 #### <a name="create-an-iam-role-for-security-center"></a>Erstellen einer IAM-Rolle für Security Center
 1. Wählen Sie in Ihrer Amazon Web Services-Konsole unter **Security, Identity & Compliance** (Sicherheit, Identität und Compliance) die Option **IAM** aus.
-    :::image type="content" source="./media/quickstart-onboard-aws/aws-identity-and-compliance.png" alt-text="AWS-Services":::
+    :::image type="content" source="./media/quickstart-onboard-aws/aws-identity-and-compliance.png" alt-text="3 GCP-Projekte, die auf dem Übersichtsdashboard von Security Center aufgeführt sind":::
 
 1. Klicken Sie auf **Roles** (Rollen) und anschließend auf **Create role** (Rolle erstellen).
 1. Wählen Sie **Another AWS account** (Ein anderes AWS-Konto) aus.
@@ -127,12 +127,12 @@ Als **Besitzer** des Abonnements, das Sie für das Onboarding verwenden möchten
 
 1. Wählen Sie im Menü von Security Center **Multi cloud connectors** (Connectors mehrerer Clouds) aus.
 1. Wählen Sie **Add AWS Account** (AWS-Konto hinzufügen) aus.
-    :::image type="content" source="./media/quickstart-onboard-aws/add-aws-account.png" alt-text="Schaltfläche zum Hinzufügen eines AWS-Kontos auf der Seite für Connectors mehrerer Clouds in Security Center":::
+    :::image type="content" source="./media/quickstart-onboard-aws/add-aws-account.png" alt-text="3 GCP-Projekte, die auf dem Übersichtsdashboard von Security Center aufgeführt sind":::
 1. Konfigurieren Sie die Optionen auf der Registerkarte **AWS authentication** (AWS-Authentifizierung):
     1. Geben Sie einen **Anzeigenamen** für den Connector ein.
     1. Überprüfen Sie, ob das Azure-Abonnement richtig ist. Dabei handelt es sich um das Abonnement, das die Empfehlungen für den Connector und den AWS Security Hub enthält.
     1. In Abhängigkeit von der Authentifizierungsoption, die Sie in [Schritt 2. Einrichten der Authentifizierung für Security Center in AWS](#step-2-set-up-authentication-for-security-center-in-aws) ausgewählt haben:
-        - Wählen Sie **Assume Role** (Rolle übernehmen) aus, und fügen Sie den ARN aus [Erstellen einer IAM-Rolle für Security Center](#create-an-iam-role-for-security-center) :::image type="content" source="./media/quickstart-onboard-aws/paste-arn-in-portal.png" alt-text="Einfügen der ARN-Datei im entsprechenden Feld des AWS-Verbindungs-Assistenten im Azure-Portal"::: ein.
+        - Wählen Sie **Assume Role** (Rolle übernehmen) aus, und fügen Sie den ARN aus [Erstellen einer IAM-Rolle für Security Center](#create-an-iam-role-for-security-center) :::image type="content" source="./media/quickstart-onboard-aws/paste-arn-in-portal.png" alt-text="3 GCP-Projekte, die auf dem Übersichtsdashboard von Security Center aufgeführt sind"::: ein.
 
             oder
 
@@ -164,7 +164,7 @@ Wenn der Connector erfolgreich erstellt und der AWS Security Hub ordnungsgemäß
 - Der ASC-Dienst sucht alle sechs Stunden nach neuen AWS EC2-Instanzen und führt der Konfiguration entsprechend automatisch ein Onboarding für sie durch.
 - Der AWS-CIS-Standard wird auf dem Dashboard zur Einhaltung gesetzlicher Bestimmungen von Security Center angezeigt.
 - Wenn die Security Hub-Richtlinie aktiviert ist, werden Empfehlungen im Security Center-Portal und im Dashboard für die gesetzliche Konformität 5–10 Minuten nach Abschluss der Integration angezeigt.
-    :::image type="content" source="./media/quickstart-onboard-aws/aws-resources-in-recommendations.png" alt-text="AWS-Ressourcen und Empfehlungen auf der Empfehlungsseite in Security Center":::
+    :::image type="content" source="./media/quickstart-onboard-aws/aws-resources-in-recommendations.png" alt-text="3 GCP-Projekte, die auf dem Übersichtsdashboard von Security Center aufgeführt sind":::
 
 
 
@@ -174,7 +174,7 @@ Wie oben gezeigt, zeigt die Seite mit Sicherheitsempfehlungen in Azure Security 
 
 Zum Anzeigen aller aktiven Empfehlungen für Ihre Ressourcen nach Ressourcentyp verwenden Sie die Ressourcenbestandsseite von Security Center, und filtern Sie nach dem gewünschten AWS-Ressourcentyp:
 
-:::image type="content" source="./media/quickstart-onboard-aws/aws-resource-types-in-inventory.png" alt-text="Ressourcentypfilter der Ressourcenbestandsseite mit den AWS-Optionen"::: 
+:::image type="content" source="./media/quickstart-onboard-aws/aws-resource-types-in-inventory.png" alt-text="3 GCP-Projekte, die auf dem Übersichtsdashboard von Security Center aufgeführt sind"::: 
 
 
 ## <a name="aws-in-security-center-faq"></a>AWS in Azure Security Center – häufig gestellte Fragen

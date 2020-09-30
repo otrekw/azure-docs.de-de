@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 09273cf901830e850acca05c57c0b110ffd7e28a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 13e3f5a7d86d2e9b705fbeb104ba4f8eb690cb3a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002861"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534096"
 ---
 # <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>Tutorial: Durch KI generierter durchsuchbarer Inhalt aus Azure-Blobs mit dem .NET SDK
 
@@ -170,7 +170,7 @@ Installieren Sie als Nächstes das aktuelle NuGet-Paket `Microsoft.Extensions.Co
       "AzureBlobConnectionString": "Put your Azure Blob connection string here",
     }
     ```
-    
+
 Fügen Sie Ihren Suchdienst und die Informationen Ihres Blob Storage-Kontos hinzu. Denken Sie daran, dass Sie diese Informationen über die Schritte zur Dienstbereitstellung im vorherigen Abschnitt erhalten können.
 
 Geben Sie unter **SearchServiceName** den Kurznamen des Diensts und nicht die vollständige URL ein.
@@ -586,11 +586,11 @@ In dieser Übung werden die folgenden Felder und Feldtypen verwendet:
 
 | Feldnamen | Feldtypen |
 | --- | --- |
-| id | Edm.String |
-| Inhalt | Edm.String |
-| languageCode | Edm.String |
-| keyPhrases | List<Edm.String> |
-| organizations | List<Edm.String> |
+| `id` | Edm.String |
+| `content` | Edm.String |
+| `languageCode` | Edm.String |
+| `keyPhrases` | List<Edm.String> |
+| `organizations` | List<Edm.String> |
 
 #### <a name="create-demoindex-class"></a>Erstellen der DemoIndex-Klasse
 
@@ -906,7 +906,7 @@ catch (Exception e)
 }
 ```
 
-Wiederholen Sie das Verfahren in dieser Übung für weitere Felder: „content“, „languageCode“, „keyPhrases“ und „organizations“. Sie können mit der [Select](/dotnet/api/microsoft.azure.search.models.searchparameters.select?view=azure-dotnet)-Eigenschaft mehrere Felder zurückgeben, indem Sie eine durch Trennzeichen getrennte Liste verwenden.
+Wiederholen Sie das Verfahren in dieser Übung für weitere Felder: „content“, „languageCode“, „keyPhrases“ und „organizations“. Sie können mit der [Select](/dotnet/api/microsoft.azure.search.models.searchparameters.select)-Eigenschaft mehrere Felder zurückgeben, indem Sie eine durch Trennzeichen getrennte Liste verwenden.
 
 <a name="reset"></a>
 

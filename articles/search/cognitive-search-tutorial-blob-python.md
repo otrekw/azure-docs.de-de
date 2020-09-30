@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 06/12/2020
+ms.date: 09/25/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 39891b69cdb8e7f392657514d255f5f85b3eba60
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 34265552122c1f8d1bcbbcfe95948683a5750a71
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936026"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531002"
 ---
 # <a name="tutorial-use-python-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Tutorial: Verwenden von Python und KI zum Generieren von durchsuchbarem Inhalt über Azure-Blobs
 
@@ -59,7 +59,7 @@ Erstellen Sie diese beiden Dienste nach Möglichkeit in derselben Region und Res
 
 1. Suchen Sie nach *Speicherkonto*, und wählen Sie das Speicherkonto-Angebot von Microsoft aus.
 
-   ![Erstellen eines Speicherkontos](media/cognitive-search-tutorial-blob/storage-account.png "Speicherkonto erstellen")
+   :::image type="content" source="media/cognitive-search-tutorial-blob/storage-account.png" alt-text="Erstellen eines Speicherkontos" border="false":::
 
 1. Auf der Registerkarte „Grundlagen“ sind folgende Angaben erforderlich. Übernehmen Sie bei allen anderen Optionen die Standardeinstellungen.
 
@@ -81,7 +81,7 @@ Erstellen Sie diese beiden Dienste nach Möglichkeit in derselben Region und Res
 
 1. Wählen Sie *cog-search-demo* aus, und klicken Sie auf **Hochladen**, um den Ordner zu öffnen, in dem Sie die Downloaddateien gespeichert haben. Wählen Sie alle Dateien aus, bei denen es sich nicht um Bilddateien handelt. Es müssen sieben Dateien sein. Klicken Sie auf **OK**, um die Dateien hochzuladen.
 
-   ![Hochladen der Beispieldateien](media/cognitive-search-tutorial-blob/sample-files.png "Hochladen der Beispieldateien")
+   :::image type="content" source="media/cognitive-search-tutorial-blob/sample-files.png" alt-text="Erstellen eines Speicherkontos" border="false":::
 
 1. Rufen Sie eine Verbindungszeichenfolge ab, bevor Sie Azure Storage verlassen, um in Azure Cognitive Search eine Verbindung herstellen zu können. 
 
@@ -117,7 +117,7 @@ Erfassen Sie genau wie bei Azure Blob Storage den Zugriffsschlüssel. Wenn Sie s
 
    Rufen Sie auch den Abfrageschlüssel ab. Es empfiehlt sich, Abfrageanforderungen mit schreibgeschütztem Zugriff auszugeben.
 
-   ![Abrufen des Dienstnamens sowie der Administrator- und Abfrageschlüssel](media/search-get-started-nodejs/service-name-and-keys.png)
+   :::image type="content" source="media/search-get-started-nodejs/service-name-and-keys.png" alt-text="Erstellen eines Speicherkontos" border="false":::
 
 Für alle an Ihren Dienst gesendeten Anforderungen ist ein API-Schlüssel im Header erforderlich. Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung sendet, und dem Dienst, der sie verarbeitet.
 
@@ -190,7 +190,7 @@ Die Anforderung sollte die erfolgreiche Ausführung durch Rückgabe von Statusco
 
 Überprüfen Sie im Azure-Portal auf der Dashboardseite des Suchdiensts, ob „cogsrch-py-datasource“ in der Liste **Datenquellen** aufgeführt ist. Klicken Sie auf **Aktualisieren**, um die Seite zu aktualisieren.
 
-![Datenquellenkachel im Portal](./media/cognitive-search-tutorial-blob-python/py-data-source-tile.png "Datenquellenkachel im Portal")
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-data-source-tile.png" alt-text="Erstellen eines Speicherkontos" border="false":::
 
 ### <a name="step-2-create-a-skillset"></a>Schritt 2: Erstellen eines Skillsets
 
@@ -303,7 +303,7 @@ Jede Qualifikation wird auf den Inhalten des Dokuments ausgeführt. Während der
 
 Unten finden Sie eine grafische Darstellung der Qualifikationsgruppe.
 
-![Verstehen eines Skillsets](media/cognitive-search-tutorial-blob/skillset.png "Verstehen eines Skillsets")
+:::image type="content" source="media/cognitive-search-tutorial-blob/skillset.png" alt-text="Erstellen eines Speicherkontos" border="false":::
 
 Ausgaben können einem Index zugeordnet, als Eingabe einer Downstream-Qualifikation verwendet oder in beider Weise zugleich eingesetzt werden, wie etwa bei Sprachcode. Im Index ist ein Sprachcode zu Filterungszwecken nützlich. Als Eingabe wird ein Sprachcode von Qualifikationen zur Textanalyse verwendet, um die Linguistikregeln über Wörtertrennung zu informieren.
 
@@ -315,7 +315,7 @@ In diesem Abschnitt definieren Sie das Indexschema, indem Sie die Felder angeben
 
 In dieser Übung werden die folgenden Felder und Feldtypen verwendet:
 
-| Feldnamen: | id         | Inhalt   | languageCode | keyPhrases         | organizations     |
+| Feldnamen: | ID         | Inhalt   | languageCode | keyPhrases         | organizations     |
 |--------------|----------|-------|----------|--------------------|-------------------|
 | field-types: | Edm.String|Edm.String| Edm.String| List<Edm.String>  | List<Edm.String>  |
 
@@ -472,11 +472,11 @@ pprint(json.dumps(r.json(), indent=1))
 
 Überwachen Sie in der Antwort das `"lastResult"` auf seine `"status"`- und `"endTime"`-Werte. Führen Sie das Skript regelmäßig aus, um den Status zu überprüfen. Wenn der Indexer abgeschlossen wurde, wird der Status auf „success“ festlegt, ein Wert für „endTime“ wird angegeben, und die Antwort enthält Fehler und Warnungen, die bei der Anreicherung aufgetreten sind.
 
-![Indexererstellung](./media/cognitive-search-tutorial-blob-python/py-indexer-is-created.png "Indexererstellung")
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-indexer-is-created.png" alt-text="Erstellen eines Speicherkontos" border="false":::
 
 Warnungen sind bei bestimmten Kombinationen aus Quelldatei und Qualifikation häufig und weisen nicht immer auf ein Problem hin. Viele Warnungen sind unbedenklich. Wenn Sie beispielsweise eine JPEG-Datei indizieren, die nicht über Text verfügt, wird eine Warnung wie im folgenden Screenshot angezeigt.
 
-![Exemplarische Indexerwarnung](./media/cognitive-search-tutorial-blob-python/py-indexer-warning-example.png "Exemplarische Indexerwarnung")
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-indexer-warning-example.png" alt-text="Erstellen eines Speicherkontos" border="false":::
 
 ## <a name="5---search"></a>5\. Suchen
 
@@ -493,7 +493,7 @@ pprint(json.dumps(r.json(), indent=1))
 
 Die Ergebnisse sollten in etwa dem folgenden Beispiel entsprechen. Im Screenshot wird nur ein Teil der Antwort angezeigt.
 
-![Abfragen des Index: alle Felder](./media/cognitive-search-tutorial-blob-python/py-query-index-for-fields.png "Abfragen des Index: alle Felder")
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-query-index-for-fields.png" alt-text="Erstellen eines Speicherkontos" border="false":::
 
 Die Ausgabe ist das Indexschema mit dem Namen, dem Typ und den Attributen für jedes Feld.
 
@@ -508,7 +508,7 @@ pprint(json.dumps(r.json(), indent=1))
 
 Die Ergebnisse sollten in etwa dem folgenden Beispiel entsprechen. Im Screenshot wird nur ein Teil der Antwort angezeigt.
 
-![Abfragen des Index: Inhalte von Organisationen](./media/cognitive-search-tutorial-blob-python/py-query-index-for-organizations.png "Abfragen des Indexes, um die Inhalte von Organisationen zurückzugeben")
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-query-index-for-organizations.png" alt-text="Erstellen eines Speicherkontos" border="false":::
 
 Wiederholen Sie das für die folgenden zusätzlichen Felder in dieser Übung: `content`, `languageCode`, `keyPhrases` und `organizations`. Mithilfe von `$select` können Sie unter Einsatz einer durch Trennzeichen getrennten Liste mehrere Felder zurückgeben.
 
@@ -522,7 +522,7 @@ In den frühen experimentellen Phasen der Entwicklung besteht der praktikabelste
 
 Sie können das Portal verwenden, um Indizes, Indexer, Datenquellen und Qualifikationsgruppen zu löschen. Wenn Sie den Indexer löschen, können Sie optional auch den Index, die Qualifikationsgruppen und die Datenquelle löschen.
 
-![Löschen von Suchobjekten](./media/cognitive-search-tutorial-blob-python/py-delete-indexer-delete-all.png "Löschen von Suchobjekten im Portal")
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-delete-indexer-delete-all.png" alt-text="Erstellen eines Speicherkontos" border="false":::
 
 Sie können sie auch mithilfe eines Skripts löschen. Das folgende Skript veranschaulicht, wie ein Skillset gelöscht wird. 
 
