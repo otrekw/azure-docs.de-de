@@ -9,6 +9,10 @@
   items:
     - name: 'Erstellen einer Front Door-Instanz: Portal'
       href: quickstart-create-front-door.md
+    - name: 'Erstellen einer Front Door-Instanz: PowerShell'
+      href: quickstart-create-front-door-powershell.md
+    - name: 'Erstellen einer Front Door-Instanz: CLI'
+      href: quickstart-create-front-door-cli.md
     - name: 'Erstellen einer Front Door-Instanz: ARM-Vorlage'
       href: quickstart-create-front-door-template.md
 - name: Tutorials

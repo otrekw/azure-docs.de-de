@@ -354,6 +354,9 @@
           href: ../../bastion/bastion-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Zustände und Lebenszyklus
       href: ../states-lifecycle.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+    - name: PUT-Aufrufe für Erstellungs- oder Aktualisierungsvorgänge
+      href: ../put-calls-create-or-update.md
+      maintainContext: true
     - name: Überwachung
       href: ../../azure-monitor/insights/monitor-vm-azure.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Startdiagnose
@@ -373,7 +376,7 @@
             - name: PowerShell
               href: dedicated-hosts-powershell.md
             - name: Portal
-              href: dedicated-hosts-portal.md
+              href: ../dedicated-hosts-portal.md
         - name: Bereitstellen von Spot-VMs
           items:
             - name: Portal
@@ -499,7 +502,7 @@
                 - name: Erstellen eines virtuellen Computers aus einer Imageversion
                   href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
             - name: Problembehandlung für freigegebene Images
-              href: troubleshooting-shared-images.md
+              href: ../troubleshooting-shared-images.md
             - name: Verwendung der kundenseitig verwalteten Schlüssel
               displayName: 'SSE, CMK, encrypt'
               href: ../image-version-encryption.md
@@ -510,7 +513,7 @@
             - name: Verwenden von Image Builder
               items:
                 - name: CLI
-                  href: ../linux/image-builder.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                  href: image-builder.md
                 - name: PowerShell
                   href: image-builder-powershell.md
             - name: Verwenden eines VNET
@@ -525,8 +528,8 @@
                   href: ../linux/image-builder-permissions-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: DevOps-Aufgabe
               href: ../linux/image-builder-devops-task.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: ARM-Vorlagenreferenz
-              displayName: Azure Resource Manager
+            - name: Image Builder-Vorlagenreferenz
+              displayName: json
               href: ../linux/image-builder-json.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Entwickeln für Imagekataloge
               href: image-builder-gallery.md
@@ -535,7 +538,7 @@
             - name: Speichern von Skripts
               href: ../linux/image-builder-user-assigned-identity.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Problembehandlung
-              href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
+              href: ../linux/image-builder-troubleshoot.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Suchen und Verwenden von Images
           href: cli-ps-findimage.md
         - name: Informationen zum Erwerbsplan
@@ -818,8 +821,9 @@
         - name: Virtual Machine Scale Sets
           href: ../../virtual-machine-scale-sets/overview.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
         - name: Hochverfügbarkeit
-          href: manage-availability.md
+          href: ../manage-availability.md
         - name: Erstellen einer Näherungsplatzierungsgruppe
+          displayName: ppg aligned colocation co-location
           items:
             - name: Portal
               href: proximity-placement-groups-portal.md

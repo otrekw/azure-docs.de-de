@@ -2,7 +2,7 @@
 title: Dokumentation zu verwaltetem HSM von Azure Key Vault
 summary: Hier erfahren Sie, wie Sie mithilfe eines verwalteten HSM Schlüssel für den Zugriff auf und die Verschlüsselung von Cloudressourcen, Apps und Lösungen erstellen und verwalten. Tutorials, API-Referenzen und mehr.
 metadata:
-  title: Azure-Dokumentation zu verwaltetem HSM
+  title: Dokumentation zu verwaltetem Azure-HSM
   description: Hier erfahren Sie, wie Sie mithilfe eines verwalteten HSM Schlüssel für den Zugriff auf und die Verschlüsselung von Cloudressourcen, Apps und Lösungen erstellen und verwalten. Tutorials, API-Referenzen und mehr.
   services: key-vault
   ms.service: key-vault
@@ -11,12 +11,12 @@ metadata:
   ms.author: mbaldwin
   manager: rkarlin
   ms.date: 09/15/2020
-  ms.openlocfilehash: d17d119528c04b270e9dffe5b824bafcc89472dc
-  ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+  ms.openlocfilehash: e8f53bbc7d08b30d8c3431d5542f72762789a2bc
+  ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/22/2020
-  ms.locfileid: "90991981"
+  ms.lasthandoff: 09/25/2020
+  ms.locfileid: "91320573"
 landingContent:
 - title: Informationen zum verwalteten HSM von Azure Key Vault (Vorschauversion)
   linkLists:

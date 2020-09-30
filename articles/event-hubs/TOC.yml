@@ -10,6 +10,8 @@
       href: event-hubs-capture-overview.md
     - name: Event Hubs Dedicated
       href: event-hubs-dedicated-overview.md
+    - name: Azure-Schemaregistrierung in Event Hubs (Vorschau)
+      href: schema-registry-overview.md
 - name: Schnellstarts
   expanded: true
   items:
@@ -125,6 +127,8 @@
       maintainContext: true
 - name: Anleitungen
   items:
+    - name: Erstellen einer Schemaregistrierung
+      href: create-schema-registry.md
     - name: Move
       items:
         - name: Verschieben eines Namespace in eine andere Region
@@ -219,6 +223,8 @@
           href: troubleshoot-authentication-authorization.md
         - name: Kafka-Leitfaden zur Problembehandlung für Event Hubs
           href: apache-kafka-troubleshooting-guide.md
+        - name: EventHubsException
+          href: exceptions-dotnet.md
         - name: .NET-Ausnahmen
           href: event-hubs-messaging-exceptions.md
         - name: Resource Manager-Ausnahmen

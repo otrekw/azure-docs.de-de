@@ -9,6 +9,8 @@
   items:
     - name: Erstellen eines benutzerdefinierten Ressourcenanbieters
       href: create-custom-provider.md
+    - name: 'Erstellen eines benutzerdefinierten Ressourcenanbieters: Azure PowerShell'
+      href: create-custom-provider-quickstart-powershell.md
 - name: Tutorials
   items:
     - name: Erste Schritte mit benutzerdefinierten Anbietern
@@ -45,7 +47,9 @@
       href: /rest/api/customproviders/
     - name: Azure CLI
       href: /cli/azure/ext/custom-providers/custom-providers/
-    - name: Integrierte Azure Policy-Aktionen
+    - name: Azure PowerShell
+      href: /powershell/module/Az.CustomProviders/
+    - name: Azure Policy-Integrationen
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
 - name: Ressourcen

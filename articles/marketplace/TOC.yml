@@ -277,19 +277,19 @@
     - name: Erhalten der Bezahlung
       items:
         - name: Erhalten der Bezahlung
-          href: partner-center-portal/get-paid.md
+          href: /partner-center/marketplace-get-paid?context=/azure/marketplace/context/context
         - name: Einrichten von Auszahlungskonten und Steuerformularen
-          href: partner-center-portal/set-up-your-payout-account-tax-forms.md
-        - name: 'Zahlungsschwellenwerte, -methoden und -zeitrahmen'
-          href: partner-center-portal/payment-thresholds-methods-timeframes.md
-        - name: Übersicht über die Auszahlungszusammenfassung
-          href: partner-center-portal/payout-summary-overview.md
-        - name: Auszahlungszusammenfassungen
-          href: partner-center-portal/payout-summary.md
+          href: /partner-center/set-up-your-payout-account?context=/azure/marketplace/context/context
+        - name: Zahlungsschwellenwerte und -zeitrahmen
+          href: /partner-center/payment-thresholds-methods-timeframes?context=/azure/marketplace/context/context
+        - name: Auszahlungsauszüge
+          href: /partner-center/payout-statement?context=/azure/marketplace/context/context
         - name: Auszahlungsrichtliniendetails
-          href: partner-center-portal/payout-policy-details.md
+          href: /partner-center/payout-policy-details?context=/azure/marketplace/context/context
         - name: Steuerdetails
-          href: partner-center-portal/tax-details-paid-transactions.md
+          href: /partner-center/tax-details-marketplace?context=/azure/marketplace/context/context
+        - name: Häufig gestellte Fragen zu Auszahlungen
+          href: /partner-center/payout-faq?context=/azure/marketplace/context/context
     - name: CPP-API-Referenz
       items:
         - name: Übersicht

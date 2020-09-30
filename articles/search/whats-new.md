@@ -6,20 +6,33 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 08/01/2020
+ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 788b3f5e9f4012e418ece691ebb5fbc5d2f866af
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 4526e4916a89b53ae13a31bcdef6cd4715dd7e8c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931844"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979596"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Neuerungen in der kognitiven Azure-Suche
 
 Informieren Sie sich über die Neuerungen im Dienst. Legen Sie ein Lesezeichen für diese Seite an, um über den Dienst auf dem Laufenden zu bleiben.
 
 ## <a name="feature-announcements-in-2020"></a>Featureankündigungen 2020
+
+### <a name="september-2020"></a>September 2020
+
+Erstellen Sie eine Identität für einen Suchdienst in Azure Active Directory, und verwenden Sie anschließend RBAC-Berechtigungen, um der Identität Leseberechtigungen für die Azure-Datenquellen zu erteilen. Wählen Sie optional die Funktion [Ausnahme für vertrauenswürdige Dienste](search-indexer-howto-access-trusted-service-exception.md) aus, falls IP-Regeln nicht in Frage kommen.
+
+
+|Funktion&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Category | BESCHREIBUNG | Verfügbarkeit  |
+|------------------------------|----------|-------------|---------------|
+| [Verwaltete Dienstidentität](search-howto-managed-identities-data-sources.md) | Indexer, Sicherheit | Erstellen Sie eine Identität für einen Suchdienst in Azure Active Directory, und verwenden Sie anschließend RBAC-Berechtigungen, um Zugriff auf Azure-Datenquellen zu gewähren. Bei diesem Ansatz sind keine Anmeldeinformationen in der Verbindungszeichenfolge erforderlich. <br><br>Eine weitere Möglichkeit zur Verwendung einer verwaltete Dienstidentität ist eine [Ausnahme für vertrauenswürdige Dienste](search-indexer-howto-access-trusted-service-exception.md), falls IP-Regeln nicht in Frage kommen. | Allgemein verfügbar. Greifen Sie auf diese Funktion zu, wenn Sie das Portal oder [Erstellen einer Datenquelle (Azure Cognitive Search-REST-API)](https://docs.microsoft.com/rest/api/searchservice/create-data-source) mit „api-version=2020-06-30“ verwenden. |
+| [Ausgehende Anforderungen über eine Private Link-Instanz](search-indexer-howto-access-private.md) | Indexer, Sicherheit | Erstellen Sie eine gemeinsam genutzte Private Link-Ressource, die Indexer beim Zugriff auf Azure-Ressourcen verwenden können, die durch Azure Private Link geschützt sind. Weitere Informationen zu allen Möglichkeiten, mit denen Sie Indexerverbindungen schützen können, finden Sie unter [Indexerzugriff auf Datenquellen mit Azure-Netzwerksicherheitsfeatures](search-indexer-securing-resources.md). | Allgemein verfügbar. Greifen Sie auf diese Funktion zu, wenn Sie das Portal oder eine [gemeinsam genutzte Private Link-Ressource](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources) mit „api-version=2020-08-01“ verwenden. |
+| [Verwaltungs-REST-API (2020-08-01)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) | REST | Neue stabile REST-API, um die Erstellung gemeinsam genutzter Private Link-Ressourcen zu unterstützen. | Allgemein verfügbar. |
+| [Verwaltungs-REST-API (2020-08-01-Preview)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) | REST | Fügt eine gemeinsam genutzte Private Link-Ressource für Azure Functions und Azure SQL für MySQL-Datenbanken hinzu. | Öffentliche Vorschau. |
+| [Management .NET SDK 4.0](https://docs.microsoft.com/dotnet/api/overview/azure/search/management) | .NET SDK | Azure SDK-Update für das Management SDK mit der REST-API-Zielversion 2020-08-01. | Allgemein verfügbar. |
 
 ### <a name="august-2020"></a>August 2020
 
@@ -31,9 +44,9 @@ Informieren Sie sich über die Neuerungen im Dienst. Legen Sie ein Lesezeichen f
 
 |Funktion&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Category | BESCHREIBUNG | Verfügbarkeit  |
 |---------|------------------|-------------|---------------|
-| [Azure.Search.Documents-Clientbibliothek](/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet) | Azure SDK für .NET | Eine vom Azure SDK-Team veröffentlichte .NET-Clientbibliothek, die für die Konsistenz mit anderen .NET-Clientbibliotheken konzipiert ist. <br/><br/>Version 11 ist für Search-REST-API-Version „2020-06-30“ ausgelegt, aber sie verfügt noch nicht über Unterstützung für Wissensspeicher, räumliche Typen oder [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder?view=azure-dotnet). <br/><br/>Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines Suchindex in .NET](search-get-started-dotnet.md) and [Upgrade auf Version 11 des Azure Cognitive Search .NET SDK](search-dotnet-sdk-migration-version-11.md). | Allgemein verfügbar. </br> Installieren Sie das Paket [Azure.Search.Documents](https://www.nuget.org/packages/Azure.Search.Documents/) über NuGet. |
-| [azure.search.documents-Clientbibliothek](/python/api/overview/azure/search-documents-readme?view=azure-python)  | Azure SDK für Python| Eine vom Azure SDK-Team veröffentlichte Python-Clientbibliothek, die für die Konsistenz mit anderen Python-Clientbibliotheken konzipiert ist. <br/><br/>Version 11 ist auf die Search-REST-API-Version „2020-06-30“ ausgelegt. | Allgemein verfügbar. </br> Installieren Sie das Paket [azure-search-documents](https://pypi.org/project/azure-search-documents/) über PyPI. |
-| [@azure/search-documents-Clientbibliothek](/javascript/api/overview/azure/search-documents-readme?view=azure-node-latest)  | Azure SDK für JavaScript | Eine vom Azure SDK-Team veröffentlichte JavaScript-Clientbibliothek, die für die Konsistenz mit anderen JavaScript-Clientbibliotheken konzipiert ist. <br/><br/>Version 11 ist auf die Search-REST-API-Version „2020-06-30“ ausgelegt. | Allgemein verfügbar. </br> Installieren Sie das [Paket @azure/search-documents](https://www.npmjs.com/package/@azure/search-documents) über npm. |
+| [Azure.Search.Documents-Clientbibliothek](/dotnet/api/overview/azure/search.documents-readme) | Azure SDK für .NET | Eine vom Azure SDK-Team veröffentlichte .NET-Clientbibliothek, die für die Konsistenz mit anderen .NET-Clientbibliotheken konzipiert ist. <br/><br/>Version 11 ist für Search-REST-API-Version „2020-06-30“ ausgelegt, aber sie verfügt noch nicht über Unterstützung für Wissensspeicher, räumliche Typen oder [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder). <br/><br/>Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines Suchindex in .NET](search-get-started-dotnet.md) and [Upgrade auf Version 11 des Azure Cognitive Search .NET SDK](search-dotnet-sdk-migration-version-11.md). | Allgemein verfügbar. </br> Installieren Sie das Paket [Azure.Search.Documents](https://www.nuget.org/packages/Azure.Search.Documents/) über NuGet. |
+| [azure.search.documents-Clientbibliothek](/python/api/overview/azure/search-documents-readme)  | Azure SDK für Python| Eine vom Azure SDK-Team veröffentlichte Python-Clientbibliothek, die für die Konsistenz mit anderen Python-Clientbibliotheken konzipiert ist. <br/><br/>Version 11 ist auf die Search-REST-API-Version „2020-06-30“ ausgelegt. | Allgemein verfügbar. </br> Installieren Sie das Paket [azure-search-documents](https://pypi.org/project/azure-search-documents/) über PyPI. |
+| [@azure/search-documents-Clientbibliothek](/javascript/api/overview/azure/search-documents-readme)  | Azure SDK für JavaScript | Eine vom Azure SDK-Team veröffentlichte JavaScript-Clientbibliothek, die für die Konsistenz mit anderen JavaScript-Clientbibliotheken konzipiert ist. <br/><br/>Version 11 ist auf die Search-REST-API-Version „2020-06-30“ ausgelegt. | Allgemein verfügbar. </br> Installieren Sie das [Paket @azure/search-documents](https://www.npmjs.com/package/@azure/search-documents) über npm. |
 
 ### <a name="june-2020"></a>Juni 2020
 
