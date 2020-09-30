@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration in Samanage | Microsoft-Dokumentation'
-description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Samanage konfigurieren.
+title: 'Tutorial: Azure Active Directory-Integration mit SolarWinds Service Desk (vormals Samanage) | Microsoft-Dokumentation'
+description: Hier erfahren Sie, wie Sie einmaliges Anmelden zwischen Azure Active Directory und SolarWinds Service Desk (vormals Samanage) konfigurieren.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -11,20 +11,20 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 56018ff0be07a48cf9448b9b92de5694ebac18bc
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8d4c19e1ce10ed618cda167cd6fa7efedf4111d0
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543515"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707576"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-samanage"></a>Tutorial: Azure Active Directory-Integration mit Samanage
+# <a name="tutorial-azure-active-directory-integration-with-solarwinds-service-desk-previously-samanage"></a>Tutorial: Azure Active Directory-Integration mit SolarWinds Service Desk (vormals Samanage)
 
-In diesem Tutorial erfahren Sie, wie Sie Samanage in Azure Active Directory (Azure AD) integrieren.
-Die Integration von Samanage in Azure AD bietet folgende Vorteile:
+In diesem Tutorial erfahren Sie, wie Sie SolarWinds in Azure Active Directory (Azure AD) integrieren.
+Die Integration von SolarWinds in Azure AD ermöglicht Folgendes:
 
-* Sie können in Azure AD steuern, wer Zugriff auf Samanage haben soll.
-* Sie können es Ihren Benutzern ermöglichen, dass sie mit ihren Azure AD-Konten automatisch bei Samanage angemeldet werden (einmaliges Anmelden; Single Sign-On, SSO).
+* Steuern Sie in Azure AD, wer Zugriff auf SolarWinds hat.
+* Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei SolarWinds anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -32,7 +32,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die Azure AD-Integration mit Samanage konfigurieren zu können, benötigen Sie Folgendes:
+Zum Konfigurieren der Azure AD-Integration mit SolarWinds Service Desk (vormals Samanage) benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Wenn Sie keine Azure AD-Umgebung besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
 * Samanage-Abonnement, für das einmaliges Anmelden aktiviert ist
@@ -41,15 +41,15 @@ Um die Azure AD-Integration mit Samanage konfigurieren zu können, benötigen Si
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Samanage unterstützt **SP**-initiiertes einmaliges Anmelden.
+* SolarWinds unterstützt **SP**-initiiertes einmaliges Anmelden.
 
-## <a name="adding-samanage-from-the-gallery"></a>Hinzufügen von Samanage über den Katalog
+## <a name="adding-solarwinds-from-the-gallery"></a>Hinzufügen von SolarWinds aus dem Katalog
 
-Zum Konfigurieren der Integration von Samanage in Azure AD müssen Sie Samanage über den Katalog zur Liste mit den verwalteten SaaS-Apps hinzufügen.
+Zum Konfigurieren der Integration von SolarWinds in Azure AD müssen Sie SolarWinds aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Führen Sie die folgenden Schritte aus, um Samanage aus dem Katalog hinzuzufügen:**
+**Um SolarWinds aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
+1. Wählen Sie im **[Azure-Portal](https://portal.azure.com)** im linken Navigationsbereich das Symbol **Azure Active Directory** aus.
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
@@ -61,31 +61,31 @@ Zum Konfigurieren der Integration von Samanage in Azure AD müssen Sie Samanage 
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-4. Geben Sie im Suchfeld **Samanage** ein, wählen Sie im Ergebnisbereich **Samanage** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+4. Geben Sie im Suchfeld **SolarWinds** ein, wählen Sie im Ergebnisbereich **SolarWinds** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-     ![Samanage in der Ergebnisliste](common/search-new-app.png)
+     ![SolarWinds in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Samanage mithilfe einer Testbenutzerin namens **Britta Simon**.
-Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Samanage eingerichtet werden.
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit SolarWinds mithilfe eines Testbenutzers namens **Britta Simon**.
+Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in SolarWinds eingerichtet werden.
 
-Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit Samanage zu konfigurieren und zu testen:
+Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit SolarWinds die folgenden Schritte aus:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für Samanage](#configure-samanage-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
+2. **[Konfigurieren des einmaligen Anmeldens für SolarWinds Service Desk](#configure-solarwinds-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
 3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines Samanage-Testbenutzers](#create-samanage-test-user)** , um in Samanage eine Entsprechung von Britta Simon zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+5. **[Erstellen eines SolarWinds Service Desk-Testbenutzers](#create-solarwinds-test-user)** , um in SolarWinds Service Desk eine Entsprechung von Britta Simon zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
 6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
 In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
 
-Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit Samanage zu konfigurieren:
+Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit SolarWinds zu konfigurieren:
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Samanage** die Option **Einmaliges Anmelden**.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **SolarWinds** die Option **Einmaliges Anmelden** aus.
 
     ![Konfigurieren des Links für einmaliges Anmelden](common/select-sso.png)
 
@@ -112,7 +112,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
     ![Downloadlink für das Zertifikat](common/certificatebase64.png)
 
-6. Kopieren Sie im Abschnitt **Samanage einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
+6. Kopieren Sie im Abschnitt **SolarWinds einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
@@ -122,9 +122,11 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
     c. Abmelde-URL
 
-### <a name="configure-samanage-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Samanage
+<a name="configure-solarwinds-single-sign-on"></a>
 
-1. Melden Sie sich in einem anderen Webbrowserfenster bei der Samanage-Unternehmenswebsite als Administrator an.
+### <a name="configure-solarwinds-service-desk-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für SolarWinds Service Desk
+
+1. Melden Sie sich in einem anderen Webbrowserfenster bei der SolarWinds-Unternehmenswebsite als Administrator an.
 
 2. Klicken Sie auf **Dashboard**, und wählen Sie im linken Navigationsbereich **Setup** aus.
    
@@ -150,7 +152,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
  
     f. Öffnen Sie das aus dem Azure-Portal heruntergeladene Base-64-codierte Zertifikat in Editor, kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **Paste your Identity Provider x.509 Certificate below** (X.509-Zertifikat des Identitätsanbieters einfügen) ein.
  
-    g. Klicken Sie auf **Create users if they do not exist in Samanage**(Benutzer erstellen, wenn sie nicht in Samanage vorhanden sind).
+    g. Klicken Sie auf **Create users if they do not exist in SolarWinds**(Benutzer erstellen, wenn sie nicht in SolarWinds vorhanden sind).
  
     h. Klicken Sie auf **Aktualisieren**.
 
@@ -181,15 +183,13 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Samanage gewähren.
+In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens bei Azure, indem Sie ihr Zugriff auf SolarWinds gewähren.
 
-1. Wählen Sie im Azure-Portal nacheinander die Optionen **Unternehmensanwendungen**, **Alle Anwendungen** und **Samanage**.
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** > **SolarWinds** aus.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-2. Wählen Sie in der Anwendungsliste **Samanage**aus.
-
-    ![Samanage-Link in der Anwendungsliste](common/all-applications.png)
+2. Wählen Sie in der Anwendungsliste **SolarWinds** aus.
 
 3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
 
@@ -205,20 +205,20 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-### <a name="create-samanage-test-user"></a>Erstellen eines Samanage-Testbenutzers
+### <a name="create-solarwinds-test-user"></a>Erstellen eines SolarWinds-Testbenutzers
 
-Damit sich Azure AD-Benutzer bei Samanage anmelden können, müssen sie in Samanage bereitgestellt werden.  
-Im Fall von Samanage ist die Bereitstellung eine manuelle Aufgabe.
+Damit sich Azure AD-Benutzer bei SolarWinds anmelden können, müssen sie in SolarWinds bereitgestellt werden.  
+Im Fall von SolarWinds ist die Bereitstellung eine manuelle Aufgabe.
 
 **Führen Sie zum Bereitstellen eines Benutzerkontos die folgenden Schritte aus:**
 
-1. Melden Sie sich bei der Samanage-Unternehmenswebsite als Administrator an.
+1. Melden Sie sich bei der SolarWinds-Unternehmenswebsite als Administrator an.
 
 2. Klicken Sie auf **Dashboard**, und wählen Sie im linken Navigationsbereich die Option **Setup** aus.
    
-    ![Einrichtung](./media/samanage-tutorial/tutorial_samanage_001.png "Einrichten")
+    ![Einrichtung](./media/samanage-tutorial/tutorial_samanage_001.png "Setup")
 
-3. Klicken Sie auf die Registerkarte **Benutzer** .
+3. Klicken Sie auf die Registerkarte **Benutzer**
    
     ![Benutzer](./media/samanage-tutorial/tutorial_samanage_006.png "Benutzer")
 
@@ -231,13 +231,13 @@ Im Fall von Samanage ist die Bereitstellung eine manuelle Aufgabe.
     ![Benutzer erstellen](./media/samanage-tutorial/tutorial_samanage_008.png "Benutzer erstellen")
    
    >[!NOTE]
-   >Der Besitzer des Azure Active Directory-Kontos erhält eine E-Mail und folgt einem Link zur Bestätigung des Kontos, bevor es aktiv wird. Sie können Azure Active Directory-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Samanage-Benutzerkonten oder mithilfe der von Samanage bereitgestellten APIs erstellen.
+   >Der Besitzer des Azure Active Directory-Kontos erhält eine E-Mail und folgt einem Link zur Bestätigung des Kontos, bevor es aktiv wird. Sie können Azure Active Directory-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von SolarWinds-Benutzerkonten oder mithilfe der von SolarWinds bereitgestellten APIs erstellen.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Samanage“ klicken, sollten Sie automatisch bei Ihrer Samanage-Anwendung angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „SolarWinds“ klicken, sollten Sie automatisch bei der SolarWinds-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 

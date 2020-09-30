@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Concur | Microsoft-Dokumentation'
-description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Concur konfigurieren.
+description: Erfahren Sie, wie Sie SSO zwischen Azure Active Directory und Concur konfigurieren.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 08/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 71e6dc8bdb8bdccdaaf845498eebdbe75a8b35c4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 38cc5458b2e62e071227a2372d56e4647e347338
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547182"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055995"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-concur"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Concur
 
@@ -54,7 +54,7 @@ Zum Konfigurieren der Integration von Concur in Azure AD müssen Sie Concur aus 
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Concur** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **Concur** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-concur"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Concur
+## <a name="configure-and-test-azure-ad-sso-for-concur"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Concur
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Concur mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Concur eingerichtet werden.
 
@@ -82,9 +82,18 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://www.concursolutions.com/UI/SSO/<OrganizationId>`.
 
     b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://<customer-domain>.concursolutions.com`.
+    
+    c. Geben Sie unter **Antwort-URL** die URL in einem der folgenden Formate ein:
 
+    | Antwort-URL|
+    |----------|
+    | `https://www.concursolutions.com/SAMLRedirector/SAMLReceiver.ashx` |
+    | `https://<customer-domain>.concursolutions.com/<OrganizationId>` |
+    | `https://<customer-domain>.concur.com` |
+    | `https://<customer-domain>.concursolutions.com` | 
+    
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Kundensupportteam von Concur](https://www.concur.co.in/contact), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL, den tatsächlichen Bezeichner und die tatsächliche Antwort-URL. Wenden Sie sich an das [Kundensupportteam von Concur](https://www.concur.co.in/contact), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 4. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zu **Verbundmetadaten-XML**, und wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen und auf Ihrem Computer zu speichern.
 

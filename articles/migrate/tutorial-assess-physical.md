@@ -2,331 +2,185 @@
 title: Bewerten physischer Server für die Migration mit der Azure Migrate-Serverbewertung
 description: Es wird beschrieben, wie Sie lokale physische Server mit der Azure Migrate-Serverbewertung für die Migration zu Azure bewerten.
 ms.topic: tutorial
-ms.date: 04/15/2020
-ms.openlocfilehash: 25bd5241700d5950eb032a6c932470871e79945f
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.date: 09/14/2020
+ms.custom: MVC
+ms.openlocfilehash: 3669658100681d08e754c19377b82faff5bce1ea
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89514117"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090440"
 ---
-# <a name="assess-physical-servers-with-azure-migrateserver-assessment"></a>Bewerten physischer Server mit der Azure Migrate-Serverbewertung
+# <a name="tutorial-assess-physical-servers-for-migration-to-azure"></a>Tutorial: Bewerten von physischen Servern für die Migration zu Azure
 
-In diesem Artikel erfahren Sie, wie Sie lokale physische Server mithilfe des Azure Migrate-Serverbewertungstools bewerten.
+Im Rahmen Ihrer Migrationsjourney zu Azure bewerten Sie Ihre lokalen Workloads, um die Cloudbereitschaft zu messen, Risiken zu identifizieren und Kosten und Komplexität zu schätzen.
 
-[Azure Migrate](migrate-services-overview.md) stellt einen Hub mit Tools bereit, die Ihnen dabei helfen, Apps, Infrastrukturen und Workloads zu ermitteln, zu bewerten und zu Microsoft Azure zu migrieren. Der Hub umfasst Azure Migrate-Tools sowie Angebote von unabhängigen Drittanbietern (Independent Software Vendors, ISVs).
+In diesem Artikel wird veranschaulicht, wie Sie lokale physische Server für die Migration zu Azure per Azure Migrate-Serverbewertung bewerten.
 
-Dieses Tutorial ist das zweite in einer Reihe zur Bewertung physischer Server und deren Migration zu Azure. In diesem Tutorial lernen Sie Folgendes:
+
+In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
-> * Einrichten eines Azure Migrate-Projekts
-> * Einrichten einer lokal zur Bewertung physischer Server ausgeführten Azure Migrate-Appliance.
-> * Starten der kontinuierlichen Ermittlung lokaler physischer Server. Die Appliance sendet Konfigurations- und Leistungsdaten für ermittelte Server an Azure.
-> * Gruppieren Sie die ermittelten Server, und bewerten Sie die Servergruppe.
-> * Überprüfen der Bewertung
+- Führen Sie eine Bewertung basierend auf den Computermetadaten und den Konfigurationsinformationen durch.
+- Führen Sie eine Bewertung basierend auf den Leistungsdaten durch.
 
 > [!NOTE]
-> In den Tutorials wird der einfachste Bereitstellungspfad für ein Szenario erläutert, damit Sie schnell einen Proof of Concept einrichten können. Die Tutorials verwenden nach Möglichkeit Standardoptionen und zeigen nicht alle möglichen Einstellungen und Pfade. Ausführliche Anweisungen finden Sie in den Anleitungsartikeln.
+> In Tutorials wird der schnellste Weg zum Ausprobieren eines Szenarios beschrieben, und nach Möglichkeit werden dabei die Standardoptionen verwendet. 
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen, bevor Sie beginnen.
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- [Absolvieren Sie das erste Tutorial dieser Reihe.](tutorial-prepare-physical.md) Andernfalls funktionieren die Anweisungen in diesem Tutorial nicht.
-- Im ersten Tutorial müssen folgende Schritte ausgeführt werden:
-    - [Einrichten von Azure-Berechtigungen](tutorial-prepare-physical.md) für Azure Migrate
-    - [Vorbereiten physischer Server](tutorial-prepare-physical.md#prepare-for-physical-server-assessment) auf die Bewertung. Applianceanforderungen müssen überprüft werden. Außerdem muss ein Konto für die Ermittlung physischer Server eingerichtet worden sein. Die erforderlichen Ports müssen verfügbar sein, und Ihnen müssen die URLs bekannt sein, die für den Zugriff auf Azure benötigt werden.
+- Stellen Sie sicher, dass Sie die zu bewertenden Computer richtig ermittelt haben, bevor Sie dieses Tutorial zum Bewerten Ihrer Computer für die Migration zu Azure-VMs durcharbeiten:
+    - Arbeiten Sie [dieses Tutorial](tutorial-discover-physical.md) durch, um Computer mit der Azure Migrate-Appliance zu ermitteln. 
+    - Bei der Ermittlung von Computern mit einer importierten CSV-Datei hilft Ihnen [dieses Tutorial](tutorial-discover-import.md) weiter.
+- Stellen Sie sicher, dass auf physischen Computern, die Sie bewerten möchten, nicht Windows Server 2003 oder SUSE Linux ausgeführt wird. Die Bewertung wird für diese Computer nicht unterstützt.
 
 
+## <a name="decide-which-assessment-to-run"></a>Treffen einer Entscheidung für eine Bewertung
 
 
-## <a name="set-up-an-azure-migrate-project"></a>Einrichten eines Azure Migrate-Projekts
+Entscheiden Sie, ob Sie eine Bewertung durchführen möchten, bei der die Kriterien für die Größenanpassung auf den Daten bzw. Metadaten der Computerkonfiguration basieren, die lokal im unveränderten Zustand gesammelt werden, oder auf dynamischen Leistungsdaten.
 
-Richten Sie wie folgt ein neues Azure Migrate-Projekt ein:
-
-1. Wählen Sie im Azure-Portal **Alle Dienste** aus, und suchen Sie nach **Azure Migrate**.
-2. Wählen Sie unter **Dienste** die Option **Azure Migrate** aus.
-3. Klicken Sie in der **Übersicht** unter **Server ermitteln, bewerten und migrieren** auf **Server bewerten und migrieren**.
-
-    ![Ermitteln und Bewerten von Servern](./media/tutorial-assess-physical/assess-migrate.png)
-
-4. Klicken Sie unter **Erste Schritte** auf **Tools hinzufügen**.
-5. Wählen Sie unter **Projekt migrieren** Ihr Azure-Abonnement aus, und erstellen Sie bei Bedarf eine Ressourcengruppe.  
-6. Geben Sie unter **Projektdetails** den Projektnamen und die geografische Region an, in der Sie das Projekt erstellen möchten. Beachten Sie die unterstützten geografischen Regionen für [öffentliche](migrate-support-matrix.md#supported-geographies-public-cloud) Clouds und [Azure Government-Clouds](migrate-support-matrix.md#supported-geographies-azure-government).
-
-    - Die geografische Region des Projekts dient nur zum Speichern der Metadaten, die von lokalen Servern erfasst werden.
-    - Beim Ausführen einer Migration kann eine beliebige Zielregion ausgewählt werden.
-
-    ![Erstellen eines Azure Migrate-Projekts](./media/tutorial-assess-physical/migrate-project.png)
-
-
-7. Klicken Sie auf **Weiter**.
-8. Wählen Sie unter **Bewertungstool auswählen** Folgendes aus: **Azure Migrate: Server Assessment** (Azure Migrate-Serverbewertung) > **Weiter**.
-
-    ![Erstellen eines Azure Migrate-Projekts](./media/tutorial-assess-physical/assessment-tool.png)
-
-9. Wählen Sie unter **Migrationstool auswählen** die Option **Hinzufügen eines Migrationstools vorerst überspringen** >  und anschließend **Weiter** aus.
-10. Überprüfen Sie die Einstellungen unter **Review + add tools** (Überprüfen und Tools hinzufügen), und klicken Sie auf **Tools hinzufügen**.
-11. Warten Sie einige Minuten, bis das Azure Migrate-Projekt bereitgestellt wurde. Sie werden zur Projektseite weitergeleitet. Sollte das Projekt nicht angezeigt werden, können Sie auf dem Azure Migrate-Dashboard unter **Server** darauf zugreifen.
-
-
-## <a name="set-up-the-azure-migrate-appliance"></a>Einrichten der Azure Migrate-Appliance
-
-Von der Azure Von der Serverbewertung wird eine einfache Appliance ausgeführt.
-
-- Diese Appliance ermittelt physische Server und sendet Meta- und Leistungsdaten zu Servern an die Azure Migrate-Serverbewertung.
-- Die Einrichtung der Appliance umfasst Folgendes:
-    - Herunterladen einer gezippten Datei mit dem Azure Migrate-Installationsskript aus dem Azure-Portal.
-    - Extrahieren der Inhalte aus der gezippten Datei. Starten der PowerShell-Konsole mit Administratorrechten.
-    - Ausführen des PowerShell-Skripts zum Starten der Appliancewebanwendung.
-    - Durchführen der Erstkonfiguration für die Appliance und Registrieren der Appliance beim Azure Migrate-Projekt
-- Für ein einzelnes Azure Migrate-Projekt können mehrere Appliances eingerichtet werden. Auf allen Appliances können Sie beliebig viele physische Server ermitteln. Pro Appliance können maximal 1000 Server ermittelt werden.
-
-### <a name="generate-the-azure-migrate-project-key"></a>Generieren des Azure Migrate-Projektschlüssels
-
-1. Klicken Sie unter **Migrationsziele** > **Server** > **Azure Migrate: Server Assessment** (Azure Migrate-Serverbewertung) auf **Ermitteln**.
-2. Wählen Sie unter **Computer ermitteln** > **Sind Ihre Computer virtualisiert?** die Option **Physisch/Andere (AWS, GCP, Xen usw.)** aus.
-3. Geben Sie in **1: Generieren eines Azure Migrate-Projektschlüssels** einen Namen für die Azure Migrate-Appliance an, die Sie für die Ermittlung von physischen oder virtuellen Servern einrichten möchten. Der Name muss alphanumerisch sein und darf höchstens 14 Zeichen enthalten.
-1. Klicken Sie auf **Schlüssel generieren**, um mit der Erstellung der erforderlichen Azure-Ressourcen zu beginnen. Schließen Sie die Seite „Computer ermitteln“ nicht, während die Ressourcen erstellt werden.
-1. Nach der erfolgreichen Erstellung der Azure-Ressourcen wird ein **Azure Migrate-Projektschlüssel** generiert.
-1. Kopieren Sie den Schlüssel, da Sie ihn benötigen, um die Registrierung der Appliance während der Konfiguration abzuschließen.
-
-### <a name="download-the-installer-script"></a>Herunterladen des Installationsskripts
-
-Klicken Sie in **2: Azure Migrate-Appliance herunterladen** auf **Herunterladen**.
-
-   ![Auswahloptionen für „Computer ermitteln“](./media/tutorial-assess-physical/servers-discover.png)
-
-
-   ![Auswahloptionen für „Schlüssel generieren“](./media/tutorial-assess-physical/generate-key-physical.png)
-
-
-### <a name="verify-security"></a>Überprüfen der Sicherheit
-
-Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist.
-
-1. Öffnen Sie auf dem Computer, auf den Sie die Datei heruntergeladen haben, ein Administratorbefehlsfenster.
-2. Führen Sie den folgenden Befehl aus, um den Hash für die gezippte Datei zu generieren:
-    - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Beispielverwendung für die öffentliche Cloud: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public.zip SHA256 ```
-    - Beispielverwendung für die Government-Cloud: ```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip SHA256 ```
-3.  Überprüfen Sie die aktuellen Applianceversionen und Hashwerte:
-    - Öffentliche Cloud:
-
-        **Szenario** | **Herunterladen*** | **Hashwert**
-        --- | --- | ---
-        Physisch (85 MB) | [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2140334) | 207157bab39303dca1c2b93562d6f1deaa05aa7c992f480138e17977641163fb
-
-    - Azure Government:
-
-        **Szenario** | **Herunterladen*** | **Hashwert**
-        --- | --- | ---
-        Physisch (85 MB) | [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2140338) | ca67e8dbe21d113ca93bfe94c1003ab7faba50472cb03972d642be8a466f78ce
-
-### <a name="run-the-azure-migrate-installer-script"></a>Ausführen des Azure Migrate-Installationsskripts
-
-Das Installationsskript führt folgende Schritte aus:
-
-- Installation der Agents und einer Webanwendung für die Ermittlung und Bewertung physischer Server.
-- Installation von Windows-Rollen, darunter beispielsweise Windows-Aktivierungsdienst, IIS und PowerShell ISE.
-- Download und Installation eines wiederbeschreibbaren IIS-Moduls. [Weitere Informationen](https://www.microsoft.com/download/details.aspx?id=7435)
-- Aktualisierung eines Registrierungsschlüssels (HKLM) mit dauerhaften Einstellungsdetails für Azure Migrate.
-- Erstellung der folgenden Dateien in diesem Pfad:
-    - **Konfigurationsdateien**: %Programdata%\Microsoft Azure\Config
-    - **Protokolldateien**: %Programdata%\Microsoft Azure\Logs
-
-Führen Sie das Skript wie folgt aus:
-
-1. Extrahieren Sie die ZIP-Datei in einem Ordner auf dem Server, der die Appliance hostet.  Führen Sie das Skript nicht auf einem Computer auf einer vorhandenen Azure Migrate-Appliance aus.
-2. Starten Sie PowerShell auf dem oben genannten Server mit Administratorberechtigungen (erhöhten Rechten).
-3. Ändern Sie das PowerShell-Verzeichnis in den Ordner, in den die Inhalte der gezippten Datei extrahiert wurden, die Sie heruntergeladen haben.
-4. Führen Sie das Skript mit dem Namen **AzureMigrateInstaller.ps1** aus, indem Sie den folgenden Befehl ausführen:
-
-    - Öffentliche Cloud: 
-    
-        ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public> .\AzureMigrateInstaller.ps1 ```
-    - Azure Government: 
-    
-        ``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>.\AzureMigrateInstaller.ps1 ```
-
-    Das Skript startet die Appliancewebanwendung, nachdem es erfolgreich ausgeführt wurde.
-
-Bei Problemen können Sie zum Troubleshooting unter „C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Zeitstempel</em>.log“ auf die Skriptprotokolle zugreifen.
-
-### <a name="verify-appliance-access-to-azure"></a>Überprüfen des Appliancezugriffs auf Azure
-
-Stellen Sie sicher, dass die Appliance eine Verbindung mit Azure-URLs für [öffentliche](migrate-appliance.md#public-cloud-urls) Clouds und [Azure Government](migrate-appliance.md#government-cloud-urls)-Clouds herstellen kann.
-
-
-### <a name="configure-the-appliance"></a>Konfigurieren der Appliance
-
-Führen Sie die Ersteinrichtung der Appliance durch.
-
-1. Öffnen Sie in einem Browser auf einem beliebigen Computer, der eine Verbindung mit der Appliance herstellen kann, die URL der Appliance-Web-App: **https://*Name oder IP-Adresse der Appliance*: 44368**.
-
-   Alternativ können Sie auch auf dem Desktop auf die App-Verknüpfung klicken, um die App zu öffnen.
-2. Akzeptieren Sie die **Lizenzbedingungen**, und lesen Sie die Drittanbieterinformationen.
-1. Gehen Sie in der Web-App unter **Erforderliche Komponenten einrichten** wie folgt vor:
-    - **Konnektivität**: Die App überprüft, ob der Server über Internetzugriff verfügt. Wenn der Server einen Proxy verwendet:
-        - Klicken Sie auf **Proxy einrichten**, um die Proxyadresse im Format http://ProxyIPAddress oder http://ProxyFQDN) und den überwachenden Port anzugeben.
-        - Geben Sie die Anmeldeinformationen an, wenn der Proxy eine Authentifizierung erfordert.
-        - Es werden nur HTTP-Proxys unterstützt.
-        - Wenn Sie Proxydetails hinzugefügt oder den Proxy und/oder die Authentifizierung deaktiviert haben, klicken Sie auf **Speichern**, um die Konnektivitätsprüfung erneut auszulösen.
-    - **Uhrzeitsynchronisierung**: Die Uhrzeit wird überprüft. Die Uhrzeit der Appliance muss mit der Internetzeit synchronisiert werden, damit die Ermittlung ordnungsgemäß funktioniert.
-    - **Updates installieren**: Azure Migrate-Serverbewertung prüft, ob die neuesten Updates für die Appliance installiert sind. Nachdem die Prüfung abgeschlossen ist, können Sie auf **Appliancedienste anzeigen** klicken, um den Status und die Versionen der auf der Appliance ausgeführten Komponenten anzuzeigen.
-
-### <a name="register-the-appliance-with-azure-migrate"></a>Registrieren der Appliance bei Azure Migrate
-
-1. Fügen Sie den aus dem Portal kopierten **Azure Migrate-Projektschlüssel** ein. Wenn Sie den Schlüssel nicht haben, wechseln Sie zu **Serverbewertung > Ermitteln > Vorhandene Appliances verwalten**, wählen Sie den Appliancenamen aus, den Sie bei der Generierung des Schlüssels angegeben haben, und kopieren Sie den entsprechenden Schlüssel.
-1. Klicken Sie auf **Anmelden**. Auf einer neuen Browserregisterkarte wird eine Azure-Anmeldeaufforderung geöffnet. Sollte keine Anmeldung angezeigt werden, vergewissern Sie sich, dass Sie den Popupblocker im Browser deaktiviert haben.
-1. Melden Sie sich auf dem neuen Tab mit Ihrem Azure-Benutzernamen und -Kennwort an.
-   
-   Die Anmeldung mit einer PIN wird nicht unterstützt.
-3. Kehren Sie nach erfolgreicher Anmeldung zur Web-App zurück. 
-4. Wenn das für die Protokollierung verwendete Azure-Benutzerkonto über die richtigen [Berechtigungen](tutorial-prepare-physical.md) für die während der Schlüsselgenerierung erstellten Azure-Ressourcen verfügt, wird die Registrierung der Appliance initiiert.
-1. Nachdem die Appliance erfolgreich registriert wurde, können Sie die Registrierungsdetails anzeigen, indem Sie auf **Details anzeigen** klicken.
-
-
-## <a name="start-continuous-discovery"></a>Starten der kontinuierlichen Ermittlung
-
-Stellen Sie nun eine Verbindung zwischen der Appliance und den zu ermittelnden physischen Servern her, und starten Sie die Ermittlung.
-
-1. Wählen Sie in **Schritt 1: Geben Sie Anmeldeinformationen für die Ermittlung von physischen oder virtuellen Windows- und Linux-Servern** ein, klicken Sie auf **Anmeldeinformationen hinzufügen**, um einen Anzeigenamen für die Anmeldeinformationen anzugeben, fügen Sie **Benutzername** und **Kennwort** für einen Windows- oder Linux-Server hinzu. Klicken Sie auf **Speichern**.
-1. Wenn Sie mehrere Anmeldeinformationen gleichzeitig hinzufügen möchten, klicken Sie auf **Weitere hinzufügen**, um die Angeben zu speichern und weitere Anmeldeinformationen hinzuzufügen. Es werden mehrere Anmeldeinformationen für die Ermittlung physischer Server unterstützt.
-1. Klicken Sie in **Schritt 2: Bereitstellen von Details zu physischen oder virtuellen Servern** auf **Ermittlungsquelle hinzufügen**, um den **IP-Adresse/FQDN**-Wert des Servers und den Anzeigenamen für Anmeldeinformationen zum Herstellen einer Verbindung mit dem Server anzugeben.
-1. Sie können entweder jeweils **ein einzelnes Element** oder **mehrere Elemente** in einem Schritt hinzufügen. Es besteht auch die Möglichkeit, Serverdetails über **CSV importieren** bereitzustellen.
-
-    ![Auswahloptionen zum Hinzufügen der Ermittlungsquelle](./media/tutorial-assess-physical/add-discovery-source-physical.png)
-
-    - Wenn Sie **ein einzelnes Element hinzufügen**, können Sie den Betriebssystemtyp auswählen, den Anzeigenamen für die Anmeldeinformationen angeben, den **IP-Adresse/FQDN**-Wert des Servers hinzufügen und dann auf **Speichern** klicken.
-    - Wenn Sie **mehrere Elemente hinzufügen**, können Sie mehrere Datensätze auf einmal hinzufügen, indem Sie den **IP-Adresse/FQDN**-Wert des Servers mit dem Anzeigenamen für die Anmeldeinformationen im Textfeld angeben.  **Überprüfen** Sie die hinzugefügten Datensätze, und klicken Sie auf **Speichern**.
-    - Wenn Sie **CSV importieren** _(standardmäßig ausgewählt)_ auswählen, können Sie eine CSV-Vorlagendatei herunterladen, die Datei mit dem **IP-Adresse/FQDN**-Wert des Servers und einem Anzeigenamen für die Anmeldeinformationen auffüllen. Importieren Sie die Datei dann in die Appliance, **überprüfen** Sie die Datensätze in der Datei, und klicken Sie auf **Speichern**.
-
-1. Wenn Sie auf „Speichern“ klicken, versucht die Appliance, die Verbindung zu den hinzugefügten Servern zu überprüfen, und zeigt den **Überprüfungszustand** in der Tabelle für jeden Server an.
-    - Sollte bei der Überprüfung eines Servers ein Fehler auftreten, sehen Sie sich den Fehler an, indem Sie auf **Fehler bei der Überprüfung** in der Spalte „Status“ klicken. Beheben Sie das Problem, und wiederholen Sie die Überprüfung.
-    - Um einen Server zu entfernen, klicken Sie auf **Löschen**.
-1. Sie können die Verbindung zu Servern jederzeit vor Beginn der Ermittlung **erneut überprüfen**.
-1. Klicken Sie auf **Ermittlung starten**, um die Ermittlung der erfolgreich überprüften Server zu starten. Nachdem die Ermittlung erfolgreich gestartet wurde, können Sie den Ermittlungsstatus für jeden Server in der Tabelle überprüfen.
-
-
-Daraufhin wird die Ermittlung gestartet. Es dauert ca. 2 Minuten pro Server, bis Metadaten des ermittelten Servers im Azure-Portal angezeigt werden.
-
-### <a name="verify-servers-in-the-portal"></a>Überprüfen von Servern im Portal
-
-Nach der Ermittlung können Sie überprüfen, ob die Server im Azure-Portal angezeigt werden.
-
-1. Öffnen Sie das Azure Migrate-Dashboard.
-2. Klicken Sie unter **Azure Migrate – Server** > **Azure Migrate: Server Assessment** (Azure Migrate-Serverbewertung) auf das Symbol mit der Anzahl für **Ermittelte Server**.
-
-## <a name="set-up-an-assessment"></a>Einrichten einer Bewertung
-
-Es gibt zwei Arten von Bewertungen, die Sie mit der Azure Server Assessment“ (Azure Migrate-Serverbewertung) erstellen.
-
-**Bewertung** | **Details** | **Daten**
+**Bewertung** | **Details** | **Empfehlung**
 --- | --- | ---
-**Leistungsbasiert** | Bewertungen basierend auf gesammelten Leistungsdaten | **Empfohlene VM-Größe**: Basierend auf CPU- und Arbeitsspeicher-Nutzungsdaten<br/><br/> **Empfohlener Datenträgertyp (Verwalteter Datenträger vom Typ Standard oder Premium)** : Basierend auf IOPS und Durchsatz der lokalen Datenträger
-**Wie lokal** | Bewertungen basierend auf lokaler Größenanpassung | **Empfohlene VM-Größe**: Basierend auf der Größe des lokalen Servers<br/><br> **Empfohlener Datenträgertyp**: Basierend auf der für die Bewertung ausgewählten Speichertypeinstellung
+**Aktuelle lokale Umgebung** | Bewertung basierend auf den Daten bzw. Metadaten für die Computerkonfiguration.  | Die empfohlene Größe der Azure-VM basiert auf der lokalen VM-Größe.<br/><br> Der empfohlene Azure-Datenträgertyp basiert auf Ihrer Auswahl in der Speichertypeinstellung in der Bewertung.
+**Leistungsbasiert** | Bewertung basierend auf gesammelten dynamischen Leistungsdaten. | Die empfohlene Größe der Azure-VM basiert auf den Daten zur Auslastung der CPU und des Arbeitsspeichers.<br/><br/> Der empfohlene Datenträgertyp basiert auf dem IOPS-Wert und dem Durchsatz der lokalen Datenträger.
 
-
-### <a name="run-an-assessment"></a>Durchführen einer Bewertung
+## <a name="run-an-assessment"></a>Durchführen einer Bewertung
 
 Führen Sie eine Bewertung wie folgt aus:
 
-1. Machen Sie sich mit den [bewährten Methoden](best-practices-assessment.md) für die Bewertungserstellung vertraut.
-2. Klicken Sie auf der Registerkarte **Server** unter der Kachel **Azure Migrate: Server Assessment** (Azure Migrate-Serverbewertung) auf **Bewerten**.
+1. Klicken Sie auf der Seite **Server** unter **Windows- und Linux-Server** auf **Server bewerten und migrieren**.
 
-    ![Bewerten](./media/tutorial-assess-physical/assess.png)
+   ![Ort der Schaltfläche „Server bewerten und migrieren“](./media/tutorial-assess-physical/assess.png)
 
-2. Geben Sie unter **Server bewerten** einen Namen für die Bewertung an.
-3. Klicken Sie auf **Alle anzeigen**, um die Eigenschaften für die Bewertung zu überprüfen.
+2. Klicken Sie in **Azure Migrate: Server Assessment** (Azure Migrate-Serverbewertung) auf **Bewerten**.
 
-    ![Bewertungseigenschaften](./media/tutorial-assess-physical/view-all.png)
+    ![Position der Schaltfläche „Bewerten“](./media/tutorial-assess-physical/assess-servers.png)
 
-3. Wählen Sie unter **Gruppe auswählen oder erstellen** die Option **Neu erstellen** aus, und geben Sie einen Namen für die Gruppe ein. Eine Gruppe enthält mindestens einen zu bewertenden Server.
-4. Wählen Sie unter **Computer zur Gruppe hinzufügen** die Server aus, die der Gruppe hinzugefügt werden sollen.
-5. Klicken Sie auf **Bewertung erstellen**, um die Gruppe zu erstellen und die Bewertung auszuführen.
+3. Wählen Sie unter **Server bewerten** > **Bewertungstyp** die Option **Azure-VM** aus.
+4. Unter **Ermittlungsquelle**:
 
-    ![Erstellen einer Bewertung](./media/tutorial-assess-physical/assessment-create.png)
+    - Wählen Sie die Option **Von Azure Migrate-Appliance erkannte Computer** aus, falls Sie Computer mit der Appliance ermittelt haben.
+    - Wählen Sie die Option **Importierte Computer** aus, falls Sie Computer mit einer importierten CSV-Datei ermittelt haben. 
+    
+5. Geben Sie einen Namen für die Bewertung an. 
+6. Klicken Sie auf **Alle anzeigen**, um die Eigenschaften für die Bewertung zu überprüfen.
 
-6. Zeigen Sie die erstellte Bewertung unter **Server** > **Azure Migrate: Server Assessment** (Azure Migrate-Serverbewertung) > **Bewertungen** an.
-7. Klicken Sie auf **Bewertung exportieren**, um sie als Excel-Datei herunterzuladen.
+    ![Ort der Schaltfläche „Alle anzeigen“ zum Anzeigen der Bewertungseigenschaften](./media/tutorial-assess-physical/assessment-name.png)
+
+7. Unter **Bewertungseigenschaften** > **Zieleigenschaften**:
+    - Geben Sie unter **Zielspeicherort** die Azure-Region an, zu der Sie die Migration durchführen möchten.
+        - Empfehlungen zur Größe und zu den Kosten basieren auf dem von Ihnen angegebenen Standort.
+        - Bei Azure Government können Sie Bewertungen in [diesen Regionen](migrate-support-matrix.md#supported-geographies-azure-government) durchführen.
+    - Unter **Speichertyp**:
+        - Wählen Sie bei Verwendung von leistungsbezogenen Daten in der Bewertung die Option **Automatisch** für Azure Migrate aus, um basierend auf dem IOPS-Wert und dem Durchsatz des Datenträgers eine Empfehlung zum Speichertyp anzuzeigen.
+        - Wählen Sie alternativ den Speichertyp aus, den Sie beim Migrieren für die VM verwenden möchten.
+    - Geben Sie unter **Reservierte Instanzen** an, ob Sie für die VM beim Migrieren reservierte Instanzen verwenden möchten.
+        - Wenn Sie die Verwendung einer reservierten Instanz auswählen, können Sie nicht **Abzug (%)** oder **VM-Betriebszeit** angeben. 
+        - [Weitere Informationen](https://aka.ms/azurereservedinstances)
+8. Unter **VM-Größe**:
+ 
+    - Wählen Sie unter **Größenkriterium** aus, ob die Bewertung auf Daten bzw. Metadaten für die Computerkonfiguration oder leistungsbezogenen Daten basieren soll. Bei Verwendung von Leistungsdaten:
+        - Geben Sie unter **Leistungsverlauf** die Datendauer an, auf der die Bewertung basieren soll.
+        - Geben Sie unter **Perzentilwert der Nutzung** den Perzentilwert an, den Sie für das Leistungsbeispiel verwenden möchten. 
+    - Geben Sie unter **VM-Serie** die gewünschte Azure-VM-Serie an.
+        - Bei Verwendung der leistungsbezogenen Bewertung wird Ihnen von Azure Migrate ein Wert vorgeschlagen.
+        - Optimieren Sie die Einstellungen nach Bedarf. Wenn Sie beispielsweise in der Produktionsumgebung keine virtuellen Computer der A-Serie in Azure benötigen, können Sie die A-Serie aus der Liste der Serien ausschließen.
+    - Geben Sie unter **Komfortfaktor** den Puffer an, den Sie während der Bewertung verwenden möchten. Hierbei werden Aspekte wie saisonale Nutzung, ein kurzer Leistungsverlauf und eine voraussichtliche Zunahme der zukünftigen Nutzung berücksichtigt. Beispiel für einen Komfortfaktor von „2“: **Komponente** | **Tatsächliche Auslastung** | **Komfortfaktor hinzufügen (2.0)** Kerne | 2 | 4 Arbeitsspeicher | 8 GB | 16 GB    
+   
+9. Unter **Preise**:
+    - Geben Sie unter **Angebot** das [Azure-Angebot](https://azure.microsoft.com/support/legal/offer-details/) ein, wenn Sie registriert sind. Bei der Serverbewertung werden die Kosten für dieses Angebot geschätzt.
+    - Wählen Sie unter **Währung** die Abrechnungswährung für Ihr Konto aus.
+    - Fügen Sie unter **Abzug (%)** alle abonnementspezifischen Rabatte hinzu, die Sie zusätzlich zum Azure-Angebot erhalten. Die Standardeinstellung ist 0 %.
+    - Geben Sie unter **VM-Betriebszeit** die Dauer (Tage pro Monat/Stunden pro Tag) für die Ausführung der VMs an.
+        - Dies ist für Azure-VMs hilfreich, die nicht dauerhaft ausgeführt werden.
+        - Die Kostenschätzungen basieren auf der angegebenen Dauer.
+        - Der Standardwert ist „31 Tage pro Monat/24 Stunden pro Tag“.
+
+    - Geben Sie unter **EA-Abonnement** an, ob bei der Kostenschätzung ein Rabatt für ein EA-Abonnement (Enterprise Agreement) berücksichtigt werden soll. 
+    - Geben Sie unter **Azure-Hybridvorteil** an, ob Sie bereits über eine Windows Server-Lizenz verfügen. Wenn dies der Fall ist und eine aktive Software Assurance-Abdeckung für Windows Server-Abonnements besteht, können Sie sich für den [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-use-benefit/) bewerben, sofern Sie eigene Lizenzen für Azure mitbringen.
+
+10. Klicken Sie auf **Speichern**, falls Sie Änderungen vorgenommen haben.
+
+    ![Bewertungseigenschaften](./media/tutorial-assess-physical/assessment-properties.png)
+
+11. Klicken Sie unter **Server bewerten** auf **Weiter**.
+12. Wählen Sie unter **Computer für die Bewertung auswählen** die Option **Neu erstellen** aus, und geben Sie einen Gruppennamen an. 
+13. Wählen Sie die Appliance und dann die VMs aus, die Sie der Gruppe hinzufügen möchten. Klicken Sie dann auf **Weiter**.
+14. Sehen Sie sich unter „Überprüfen + Bewertung erstellen“ die Bewertungsdetails an, und klicken Sie auf **Bewertung erstellen**, um die Gruppe zu erstellen und die Bewertung durchzuführen.
 
 
+    > [!NOTE]
+    > Bei leistungsbezogenen Bewertungen empfehlen wir Ihnen, nach dem Starten einer Ermittlung mindestens einen Tag zu warten, bevor Sie eine Bewertung erstellen. Dies ermöglicht einen längeren Zeitraum zum Sammeln von Leistungsdaten mit höherer Zuverlässigkeit. Idealerweise sollten Sie nach dem Starten der Ermittlung den Zeitraum der Leistungsdauer abwarten, den Sie angegeben haben (Tag/Woche/Monat), um eine Bewertung mit einer hohen Zuverlässigkeit zu erzielen.
 
 ## <a name="review-an-assessment"></a>Überprüfen einer Bewertung
 
 Eine Bewertung beschreibt Folgendes:
 
-- **Azure-Bereitschaft**: Gibt an, ob Server für die Migration zu Azure geeignet sind.
-- **Geschätzte monatliche Kosten**: Die geschätzten monatlichen Compute- und Speicherkosten für die Ausführung der Server in Azure.
+- **Azure-Bereitschaft**: Gibt an, ob VMs für die Migration zu Azure geeignet sind.
+- **Geschätzte monatliche Kosten**: Die geschätzten monatlichen Compute- und Speicherkosten für die Ausführung der VMs in Azure.
 - **Geschätzte monatliche Speicherkosten**: Die geschätzten Kosten für den Datenträgerspeicher nach der Migration.
 
-### <a name="view-an-assessment"></a>Anzeigen einer Bewertung
+So zeigen Sie eine Bewertung an:
 
-1. Klicken Sie unter **Migrationsziele** >  **Server** auf **Bewertungen** (unter **Azure Migrate: Serverbewertung** aus.
-2. Klicken Sie unter **Bewertungen** auf eine Bewertung, um sie zu öffnen.
+1. Klicken Sie unter **Server** > **Azure Migrate: Serverbewertung** auf die Zahl neben **Bewertungen**.
+2. Wählen Sie unter **Bewertungen** eine Bewertung aus, um sie zu öffnen. Beispiel (Schätzungen und Kosten gelten nur für das Beispiel): 
 
     ![Zusammenfassung der Bewertung](./media/tutorial-assess-physical/assessment-summary.png)
 
-### <a name="review-azure-readiness"></a>Überprüfen der Azure-Bereitschaft
+3. Sehen Sie sich die Zusammenfassung der Bewertung an. Sie können auch die Bewertungseigenschaften bearbeiten oder die Bewertung neu berechnen.
+ 
+ 
+### <a name="review-readiness"></a>Überprüfen der Bereitschaft
 
-1. Überprüfen Sie unter **Azure-Bereitschaft**, ob die Server für die Migration zu Azure bereit sind.
-2. Überprüfen Sie den Status:
-    - **Bereit für Azure**: Azure Migrate empfiehlt in der Bewertung eine VM-Größe und gibt Kostenschätzungen für VMs ab.
+1. Klicken Sie auf **Azure-Bereitschaft**.
+2. Sehen Sie sich unter **Azure-Bereitschaft** den VM-Status an:
+    - **Bereit für Azure**: Wird verwendet, wenn Azure Migrate in der Bewertung eine VM-Größe empfiehlt und Kostenschätzungen für virtuelle Computer angibt.
     - **Bereit mit Bedingungen**: Zeigt Probleme und eine vorgeschlagene Abhilfe an.
     - **Nicht bereit für Azure**: Zeigt Probleme und eine vorgeschlagene Abhilfe an.
     - **Bereitschaft unbekannt**: Wird verwendet, wenn Azure Migrate die Bereitschaft aufgrund von Problemen mit der Datenverfügbarkeit nicht bewerten kann.
 
-2. Klicken Sie auf einen **Azure-Bereitschaftsstatus**. Sie können Details zur Serverbereitschaft sowie Serverdetails wie Compute-, Speicher- und Netzwerkeinstellungen anzeigen.
+3. Wählen Sie unter **Azure-Bereitschaft** einen Status aus. Sie können Details zur VM-Bereitschaft anzeigen. Darüber hinaus können Sie VM-Details wie Compute-, Speicher- und Netzwerkeinstellungen anzeigen.
 
+### <a name="review-cost-estimates"></a>Überprüfen der Kostenschätzungen
 
+Die Zusammenfassung der Bewertung enthält die geschätzten Compute- und Speicherkosten für die VM-Ausführung in Azure. 
 
-### <a name="review-cost-details"></a>Überprüfen der Kostendetails
-
-In dieser Ansicht werden die geschätzten Compute- und Speicherkosten für die Ausführung der VMs in Azure angezeigt.
-
-1. Überprüfen Sie die monatlichen Compute- und Speicherkosten. Die Kosten für alle Server in der bewerteten Gruppe werden aggregiert.
+1. Überprüfen Sie die monatlichen Gesamtkosten. Die Kosten für alle VMs in der bewerteten Gruppe werden aggregiert.
 
     - Kostenschätzungen basieren auf den Größenempfehlungen für einen Computer sowie auf seinen Datenträgern und Eigenschaften.
     - Die geschätzten monatlichen Kosten für Compute und Speicher werden angezeigt.
-    - Die Kostenschätzung gilt für die Ausführung der lokalen Server als IaaS-VMs. PaaS- oder SaaS-Kosten werden von der Azure Migrate-Serverbewertung nicht berücksichtigt.
+    - Die Kostenschätzung gilt für die Ausführung der lokalen VMs auf Azure-VMs. Bei der Schätzung werden keine PaaS- oder SaaS-Kosten berücksichtigt.
 
-2. Sie können die geschätzten monatlichen Speicherkosten überprüfen. Diese Ansicht zeigt aggregierte Speicherkosten für die bewertete Gruppe, aufgeschlüsselt nach verschiedenen Arten von Speicherdatenträgern.
-3. Sie können einen Drilldown ausführen, um die Details für bestimmte Server anzuzeigen.
-
+2. Überprüfen Sie die monatlichen Speicherkosten. In der Ansicht werden die aggregierten Speicherkosten für die bewertete Gruppe angezeigt, aufgeschlüsselt nach verschiedenen Arten von Speicherdatenträgern. 
+3. Sie können einen Drilldown ausführen, um Kostendetails für bestimmte virtuelle Computer anzuzeigen.
 
 ### <a name="review-confidence-rating"></a>Prüfen der Zuverlässigkeitsstufe
 
-Wenn Sie leistungsbasierte Bewertungen ausführen, wird der Bewertung eine Zuverlässigkeitsstufe zugewiesen.
+Von der Serverbewertung wird für leistungsbezogene Bewertungen eine Zuverlässigkeitsstufe zugewiesen. Die Bewertung kann einen Wert zwischen einem Stern (am niedrigsten) und fünf Sternen (am höchsten) aufweisen.
 
 ![Zuverlässigkeitsstufe](./media/tutorial-assess-physical/confidence-rating.png)
 
-- Es wird eine Bewertung zwischen einem Stern (niedrigste Stufe) und fünf Sternen (höchste Stufe) vergeben.
-- Anhand der Zuverlässigkeitsstufe können Sie die Zuverlässigkeit der von der Bewertung bereitgestellten Größenempfehlungen besser einschätzen.
-- Die Zuverlässigkeitsstufe basiert auf der Verfügbarkeit von Datenpunkten, die zum Berechnen der Bewertung erforderlich sind.
+Anhand der Zuverlässigkeitsstufe können Sie die Zuverlässigkeit der Größenempfehlungen in der Bewertung besser einschätzen. Die Stufe basiert auf der Verfügbarkeit von Datenpunkten, die für die Berechnung der Bewertung erforderlich sind.
 
-Die Zuverlässigkeitsstufen für eine Bewertung sehen wie folgt aus:
+> [!NOTE]
+> Zuverlässigkeitsstufen werden nicht zugewiesen, wenn Sie eine Bewertung basierend auf einer CSV-Datei erstellen.
+
+Die Zuverlässigkeitsstufen lauten wie unten angegeben.
 
 **Verfügbarkeit von Datenpunkten** | **Zuverlässigkeitsstufe**
 --- | ---
-0 % bis 20 % | Ein Stern
-21 % bis 40 % | Zwei Sterne
-41 % bis 60 % | Drei Sterne
-61 % bis 80 % | Vier Sterne
-81 % bis 100 % | Fünf Sterne
+0 % bis 20 % | 1 Stern
+21 % bis 40 % | 2 Sterne
+41 % bis 60 % | 3 Sterne
+61 % bis 80 % | 4 Sterne
+81 % bis 100 % | 5 Sterne
 
-Weitere Informationen zu bewährten Methoden für Zuverlässigkeitsstufen finden Sie [hier](best-practices-assessment.md#best-practices-for-confidence-ratings).
-
+Informieren Sie sich über [Zuverlässigkeitsstufen](concepts-assessment-calculation.md#confidence-ratings-performance-based).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial führen Sie Folgendes durch:
-
-> [!div class="checklist"]
-> * Einrichten einer Azure Migrate-Appliance
-> * Erstellen und Überprüfen einer Bewertung
-
-Im dritten Tutorial der Reihe erfahren Sie, wie Sie physische Server mit Azure Migrate zu Azure migrieren: Servermigration.
-
-> [!div class="nextstepaction"]
-> [Migrieren physischer Server](./tutorial-migrate-physical-virtual-machines.md)
+- Suchen Sie nach Computerabhängigkeiten, indem Sie die [Zuordnung von Abhängigkeiten](concepts-dependency-visualization.md) verwenden.
+- Richten Sie die Abhängigkeitszuordnung [mit Agent](how-to-create-group-machine-dependencies.md) ein.

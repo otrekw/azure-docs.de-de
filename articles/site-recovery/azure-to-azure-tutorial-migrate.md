@@ -1,6 +1,6 @@
 ---
-title: Verschieben von Azure-IaaS-VMs in eine andere Region mit Azure Site Recovery
-description: Verwenden Sie Azure Site Recovery, um virtuelle Azure IaaS-Computer von einer Azure-Region zu einer anderen zu migrieren.
+title: Verschieben von Azure-VMs in eine andere Azure-Region mit Azure Site Recovery
+description: Verwenden Sie Azure Site Recovery, um virtuelle Azure-Computer aus einer Azure-Region in eine andere zu verschieben.
 services: site-recovery
 author: Sharmistha-Rai
 ms.service: site-recovery
@@ -8,20 +8,20 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: sharrai
 ms.custom: MVC
-ms.openlocfilehash: e8f14b86678f7d395f445438d7e869168b13e54b
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: f33d5ff37cbc9923262963b3e59b9266ea6760a6
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89425924"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006413"
 ---
-# <a name="move-azure-vms-to-another-region"></a>Verschieben virtueller Azure-Computer in eine andere Region
+# <a name="move-vms-to-another-azure-region"></a>Verschieben von VMs in eine andere Azure-Region
 
-Es gibt verschiedene Szenarien, in denen Sie Ihre vorhandenen virtuellen Azure IaaS-Computer (Virtual Machines, VMs) aus einer Region in eine andere verschieben möchten. So möchten Sie z. B. die Zuverlässigkeit und Verfügbarkeit Ihrer vorhandenen VMs erhöhen, um die Verwaltbarkeit zu verbessern, oder Sie möchten die VMs aus Governancegründen verschieben. Weitere Informationen finden Sie in der [Übersicht über das Verschieben virtueller Azure-Computer](azure-to-azure-move-overview.md). 
+Es gibt Szenarien, in denen Sie Ihre vorhandenen virtuellen Azure IaaS-Computer (Virtual Machines, VMs) aus einer Region in eine andere verschieben möchten. So möchten Sie z. B. die Zuverlässigkeit und Verfügbarkeit Ihrer vorhandenen VMs erhöhen, um die Verwaltbarkeit zu verbessern, oder Sie möchten die VMs aus Governancegründen verschieben. Weitere Informationen finden Sie in der [Übersicht über das Verschieben virtueller Azure-Computer](azure-to-azure-move-overview.md). 
 
-Mit dem [Azure Site Recovery](site-recovery-overview.md)-Dienst können Sie die Notfallwiederherstellung von lokalen Computern und Azure-VMs zwecks Business Continuity und Disaster Recovery (BCDR) verwalten und orchestrieren. Sie können Azure Site Recovery auch verwenden, um das Verschieben von Azure-VMs in eine sekundäre Region zu verwalten.
+Sie können den [Azure Site Recovery](site-recovery-overview.md)-Dienst verwenden, um Azure-VMs in eine sekundäre Region zu verschieben.
 
-In diesem Lernprogramm lernen Sie Folgendes:
+In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > 
@@ -30,7 +30,19 @@ In diesem Lernprogramm lernen Sie Folgendes:
 > * Kopieren der Daten und Aktivieren der Replikation
 > * Testen der Konfiguration und Durchführen der Verschiebung
 > * Löschen der Ressourcen in der Quellregion
-> 
+
+
+> [!IMPORTANT]
+> Zum Verschieben von Azure-VMs in eine andere Region empfehlen wir den Einsatz von [Azure Resource Mover](../resource-mover/tutorial-move-region-virtual-machines.md). Resource Mover befindet sich derzeit in der öffentlichen Vorschau und bietet folgende Features:
+> - Eine einzelne Anlaufstelle für das regionsübergreifende Verschieben von Ressourcen.
+> - Kürzere Verschiebungszeit und verringerte Komplexität. Alles Nötige ist an einem einzelnen Ort.
+> - Ein einfaches und konsistentes Verfahren zum Verschieben verschiedener Arten von Azure-Ressourcen.
+> - Eine einfache Möglichkeit zum Erkennen von Abhängigkeiten zwischen Ressourcen, die Sie verschieben möchten. Dies hilft Ihnen, zusammenhängende Ressourcen gemeinsam zu verschieben, damit nach der Verschiebung in der Zielregion alles wie erwartet funktioniert.
+> - Automatische Bereinigung der Ressourcen in der Quellregion, falls Sie sie nach dem Verschieben löschen möchten.
+> - Tests. Sie können eine Verschiebung ausprobieren und sie dann verwerfen, wenn Sie keine vollständige Verschiebung durchführen möchten.
+
+
+
 > [!NOTE]
 > In diesem Tutorial wird aufgezeigt, wie Sie Azure-VMs unverändert aus einer Region in eine andere Region verschieben. Wenn Sie die Verfügbarkeit durch Verschieben von VMs in einer Verfügbarkeitsgruppe auf an Zonen angeheftete VMs in einer anderen Region verbessern müssen, lesen Sie das [Tutorial „Verschieben virtueller Azure-Computer in Verfügbarkeitszonen“](move-azure-vms-avset-azone.md).
 
