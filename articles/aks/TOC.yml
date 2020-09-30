@@ -4,6 +4,8 @@
   items:
     - name: Informationen zu AKS
       href: intro-kubernetes.md
+    - name: Lösungsarchitekturen
+      href: /azure/architecture/reference-architectures/containers/aks-start-here?bc=%2fazure%2faks%2fbreadcrumb%2ftoc.json&toc=%2fazure%2faks%2ftoc.json
 - name: Schnellstarts
   expanded: true
   items:
@@ -55,7 +57,7 @@
           href: ./security-controls-policy.md
     - name: Netzwerk
       href: concepts-network.md
-    - name: Storage
+    - name: Speicher
       href: concepts-storage.md
     - name: Skalieren
       href: concepts-scale.md

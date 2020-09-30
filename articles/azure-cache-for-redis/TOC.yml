@@ -4,6 +4,8 @@
   items:
     - name: Informationen zu Azure Cache for Redis
       href: cache-overview.md
+    - name: Neues
+      href: cache-whats-new.md
 - name: Schnellstarts
   expanded: true
   items:
@@ -70,10 +72,14 @@
           href: cache-how-to-premium-clustering.md
         - name: Einrichten eines persistenten Cache mit Redis-Datenpersistenz
           href: cache-how-to-premium-persistence.md
+        - name: Hinzufügen weiterer Replikate
+          href: cache-how-to-multi-replicas.md
         - name: Schützen Ihres Caches mit einem virtuellen Netzwerk
           href: cache-how-to-premium-vnet.md
         - name: Herstellen einer privaten Verbindung mit einem Cache
           href: cache-private-link.md
+        - name: Aktivieren der Zonenredundanz
+          href: cache-how-to-zone-redundancy.md
         - name: Einrichten der Georeplikation
           href: cache-how-to-geo-replication.md
         - name: Sparen mit reservierter Kapazität
