@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 9/21/2020
-ms.openlocfilehash: 4d4d65f9ad04ca6bf99375647684a75e8662bb4d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 9/29/2020
+ms.openlocfilehash: 70f2cf183a9bd93b6066516cb68e99ee21cdc1ac
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90944529"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569636"
 ---
 # <a name="quickstart-use-the-azure-portal-to-create-an-azure-database-for-mysql-flexible-server"></a>Schnellstart: Verwenden des Azure-Portals zum Erstellen einer Azure Database for MySQL Flexible Server-Instanz
 
@@ -36,18 +36,15 @@ Führen Sie die folgenden Schritte aus, um eine Flexible Server-Instanz zu erste
 
 2. Wählen Sie **Datenbanken** > **Azure-Datenbank für MySQL** aus. Sie können auch **MySQL** in das Suchfeld eingeben, um nach dem Dienst zu suchen.
 
-    >[!div class="mx-imgBorder"]
     > :::image type="content" source="./media/quickstart-create-server-portal/navigate-to-mysql.png" alt-text="Option „Azure Database for MySQL“":::
 
 3. Wählen Sie **Flexible Server** als Bereitstellungsoption aus.
      
-    >[!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/quickstart-create-server-portal/deployment-option.png" alt-text="Auswahl der Bereitstellungsoption":::    
+    > :::image type="content" source="./media/quickstart-create-server-portal/deployment-option.png" alt-text="Option „Azure Database for MySQL“":::    
 
 4. Füllen Sie dann das Formular **Grundlagen** mit den folgenden Informationen aus: 
 
-    >[!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/quickstart-create-server-portal/create-form.png" alt-text="Formular für die Servererstellung"::: 
+    > :::image type="content" source="./media/quickstart-create-server-portal/create-form.png" alt-text="Option „Azure Database for MySQL“"::: 
                                     
     |**Einstellung**|**Empfohlener Wert**|**Beschreibung**|
     |---|---|---|
@@ -60,8 +57,7 @@ Führen Sie die folgenden Schritte aus, um eine Flexible Server-Instanz zu erste
     Version|5.7| MySQL-Hauptversion|
     Compute und Speicher | **Burstfähig**, **Standard_B1ms**, **10 GiB**, **7 Tage** | Die Compute-, Speicher- und Sicherungskonfigurationen für Ihren neuen Server. Wählen Sie **Server konfigurieren** aus. *Burstfähig*, *Standard_B1ms*, *10 GiB* und *7 Tage* sind die Standardwerte für **Computetarif**, **Computegröße**, **Speicher** und **Aufbewahrungszeitraum für Sicherung**. Sie können diese Schieberegler unverändert lassen oder sie anpassen. Um die Compute- und Speicherauswahl zu speichern und die Konfiguration fortzusetzen, klicken Sie auf **Speichern**. Der folgende Screenshot zeigt die Compute- und Speicheroptionen.|
     
-    >[!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/quickstart-create-server-portal/compute-storage.png" alt-text="Compute und Speicher":::
+    > :::image type="content" source="./media/quickstart-create-server-portal/compute-storage.png" alt-text="Option „Azure Database for MySQL“":::
 
 5. Konfigurieren von Netzwerkoptionen
 
@@ -70,10 +66,7 @@ Führen Sie die folgenden Schritte aus, um eine Flexible Server-Instanz zu erste
     > [!NOTE]
     > Die Konnektivitätsmethode kann nicht geändert werden, nachdem der Server erstellt wurde. Wenn Sie z. B. während der Erstellung *Privater Zugriff (VNET-Integration)* ausgewählt haben, können Sie nach der Erstellung nicht zu *Öffentlicher Zugriff (zugelassene IP-Adressen)* wechseln. Es wird dringend empfohlen, eine Serverinstanz mit privatem Zugriff zu erstellen, um mithilfe der VNET-Integration sicher auf den Server zugreifen zu können. Weitere Informationen zum privaten Zugriff finden Sie im Artikel zu [Konzepten](./concepts-networking.md).
 
-    >[!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/quickstart-create-server-portal/networking.png" alt-text="Konfigurieren der Netzwerkeinstellungen":::  
-
-    <!--:::image type="content" source="./media/quickstart-create-database-portal/6-add-client-ip.png" alt-text="Select "Add current client IP address"":::-->
+    > :::image type="content" source="./media/quickstart-create-server-portal/networking.png" alt-text="Option „Azure Database for MySQL“":::  
 
 6. Wählen Sie **Überprüfen + erstellen** aus, um Ihre Flexible Server-Konfiguration zu überprüfen.
 
@@ -110,7 +103,7 @@ Sie haben erfolgreich eine Azure Database for MySQL Flexible Server-Instanz
 Zum Löschen des Servers können Sie auf der Seite **Übersicht** Ihres Servers auf die Schaltfläche **Löschen** klicken, wie hier gezeigt:
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/quickstart-create-server-portal/delete-server.png" alt-text="Löschen Ihrer Ressourcen":::
+> :::image type="content" source="./media/quickstart-create-server-portal/delete-server.png" alt-text="Option „Azure Database for MySQL“":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 
