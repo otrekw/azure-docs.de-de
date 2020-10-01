@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 90a6c287b1341b21f50a808d46cc681b0527f1c0
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 7cabae837656611813d44017ce2e1112f06066ef
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300339"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669611"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Vorbereiten der Bereitstellung einer IoT Edge-Lösung für die Produktion
 
@@ -41,7 +41,7 @@ Es gibt zahlreiche IoT Edge-Geräte: von einem Raspberry Pi über einen Laptop b
 Auf jedem IoT Edge-Gerät in der Produktion muss ein Zertifikat der Zertifizierungsstelle (ZS) des Geräts installiert sein. Dieses Zertifizierungsstellenzertifikat wird in der „config.yaml“-Datei für die IoT Edge-Runtime deklariert. Für Entwicklungs- und Testszenarien erstellt die IoT Edge-Runtime temporäre Zertifikate, wenn in der Datei „config.yaml“ keine Zertifikate deklariert wurden. Allerdings laufen diese temporären Zertifikate nach drei Monaten ab und sind nicht sicher genug für die Produktion. In Produktionsszenarien müssen Sie ein eigenes Zertifizierungsstellenzertifikat bereitstellen, das entweder von einer selbstsignierten Zertifizierungsstelle erstellt oder von einer kommerziellen Zertifizierungsstelle erworben wurde.
 
 > [!NOTE]
-> Derzeit verhindert eine Einschränkung in libiothsm die Verwendung von Zertifikaten, die am oder nach dem 1. Januar 2050 ablaufen.
+> Zurzeit verhindert eine Einschränkung in libiothsm die Verwendung von Zertifikaten, die am oder nach dem 1. Januar 2038 ablaufen.
 
 Weitere Informationen zur Rolle des Zertifizierungsstellenzertifikat des Geräts finden Sie unter [Verwenden von Zertifikaten durch Azure IoT Edge](iot-edge-certs.md).
 

@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: abc625c27617c27a79fe284393cdf7b281973bc4
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: f5bedde9e5e095b1b8637a09263bf18b06bcddea
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299256"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532340"
 ---
 # <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>Aufheben der Registrierung eines Geräts bei IoT Hub Device Provisioning Service
 
 Für bedeutende Systeme wie IoT-Lösungen ist eine ordnungsgemäße Verwaltung der Geräteanmeldeinformationen von entscheidender Bedeutung. Für derartige Systeme hat es sich bewährt, einen klaren Plan für das Widerrufen des Gerätezugriffs zu besitzen, für den Fall, dass die Anmeldeinformationen – beispielsweise ein SAS-Token (Shared Access Signature) oder ein X.509-Zertifikat – gefährdet sind. 
 
-Die Registrierung eines Geräts beim Device Provisioning-Dienst ermöglicht die [automatische Bereitstellung](concepts-auto-provisioning.md) des Geräts. Ein bereitgestelltes Gerät wurde bei IoT Hub registriert und kann seinen anfänglichen [Gerätezwillingsstatus](~/articles/iot-hub/iot-hub-devguide-device-twins.md) erhalten und mit dem Melden von Telemetriedaten beginnen. In diesem Artikel erfahren Sie, wie Sie die Registrierung eines Geräts bei Ihrer Bereitstellungsdienstinstanz aufheben und so die weitere Bereitstellung des Geräts verhindern.
+Die Registrierung eines Geräts beim Device Provisioning Service ermöglicht die [Bereitstellung](about-iot-dps.md#provisioning-process) des Geräts. Ein bereitgestelltes Gerät wurde bei IoT Hub registriert und kann seinen anfänglichen [Gerätezwillingsstatus](~/articles/iot-hub/iot-hub-devguide-device-twins.md) erhalten und mit dem Melden von Telemetriedaten beginnen. In diesem Artikel erfahren Sie, wie Sie die Registrierung eines Geräts bei Ihrer Bereitstellungsdienstinstanz aufheben und so die weitere Bereitstellung des Geräts verhindern.
 
 > [!NOTE] 
 > Achten Sie auf die Wiederholungsrichtlinie von Geräten, für die Sie den Zugriff widerrufen. Ein Gerät, das beispielsweise eine unbegrenzte Wiederholungsrichtlinie aufweist, führt kontinuierlich eine Registrierung beim Bereitstellungsdienst aus. Hierbei werden Dienstressourcen verbraucht, was sich möglicherweise auf die Leistung auswirkt.

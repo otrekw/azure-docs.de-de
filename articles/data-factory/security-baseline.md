@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0711c25187a15c48e1e9b19b7c99b1e528c7b199
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 515cfd5267917f88131571adcb1bea0db274157c
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89393546"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437937"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Azure-Sicherheitsbaseline für Azure Data Factory
 
@@ -578,7 +578,7 @@ Wenn Private Link verfügbar ist, können Sie private Endpunkte verwenden, um mi
 
 **Leitfaden**: Wenn der Clouddatenspeicher HTTPS oder TLS unterstützt, erfolgen alle Datenübertragungen zwischen Datenverschiebungsdiensten in Data Factory und einem Clouddatenspeicher über einen sicheren Kanal (HTTPS oder TLS). Die verwendete TLS-Version ist 1.2.
 
-Für alle Verbindungen mit Azure SQL-Datenbank und Azure SQL Data Warehouse ist eine Verschlüsselung (SSL/TLS) erforderlich, solange Daten in die und aus der Datenbank übertragen werden. Wenn Sie eine Pipeline mit JSON erstellen, fügen Sie die Verschlüsselungseigenschaft hinzu, und legen Sie die Eigenschaft in der Verbindungszeichenfolge auf „true“ fest. Für Azure Storage können Sie „HTTPS“ in der Verbindungszeichenfolge verwenden.
+Für alle Verbindungen mit Azure SQL-Datenbank und Azure Synapse Analytics (vormals SQL Data Warehouse) ist eine Verschlüsselung (SSL/TLS) erforderlich, solange Daten in die und aus der Datenbank übertragen werden. Wenn Sie eine Pipeline mit JSON erstellen, fügen Sie die Verschlüsselungseigenschaft hinzu, und legen Sie die Eigenschaft in der Verbindungszeichenfolge auf „true“ fest. Für Azure Storage können Sie „HTTPS“ in der Verbindungszeichenfolge verwenden.
 
 * [Grundlegendes zur Verschlüsselung während der Übertragung in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)
 

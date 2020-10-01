@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/01/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8b0f395936c8628ff7b8dab601168538f97ccdb7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1a7d29583636879698abc598e1935358796b6062
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74184239"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976001"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>Visualisieren von Remoteüberwachungsdaten mit Power BI
 
@@ -45,7 +45,7 @@ In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie die Daten Ihrer Re
    - URI
    - Primärschlüssel
 
-     ![keys](./media/iot-accelerators-integrate-data-powerbi/keys.png)
+     ![Der Screenshot zeigt ein Azure Cosmos DB-Konto mit ausgewähltem Element „Schlüssel“.](./media/iot-accelerators-integrate-data-powerbi/keys.png)
 
 ## <a name="setting-up-the-stream-in-power-bi"></a>Einrichten des Datenstroms in Power BI
   

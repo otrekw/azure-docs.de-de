@@ -1,6 +1,6 @@
 ---
 title: Konzepte der Azure IoT Hub-X.509-Sicherheit | Microsoft-Dokumentation
-description: 'Konzept: Nutzen von X.509-Zertifizierungsstellenzertifikaten bei der Fertigung und Authentifizierung von IoT-Geräten'
+description: Konzept – Verstehen des Nutzens von X.509-Zertifizierungsstellenzertifikaten bei der Fertigung und Authentifizierung von IoT-Geräten
 author: eustacea
 manager: arjmands
 ms.service: iot-hub
@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: 3c7e1167b3326620863d35cb2d4b07235cbd5517
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4487772aba22f1ce577e6a0d8263ce1200b6345f
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61320232"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019902"
 ---
 # <a name="conceptual-understanding-of-x509-ca-certificates-in-the-iot-industry"></a>Konzeptgrundlagen der X.509-Zertifizierungsstellenzertifikate in der IoT-Branche
 
@@ -28,6 +28,8 @@ Dieser Artikel beschreibt Folgendes:
 * Einrichten einer Fertigungslieferkette für die Authentifizierung basierend auf X.509-Zertifizierungsstellenzertifikaten
 
 * Verbinden von Geräten, die mit X.509-Zertifizierungsstellenzertifikaten signiert sind, mit IoT Hub
+
+[!INCLUDE [iot-hub-include-x509-ca-signed-support-note](../../includes/iot-hub-include-x509-ca-signed-support-note.md)]
 
 ## <a name="overview"></a>Übersicht
 
@@ -69,7 +71,7 @@ Zum Erwerben eines X.509-Zertifizierungsstellenzertifikats würde Company-X eine
 
 ### <a name="creating-a-self-signed-x509-ca-certificate"></a>Erstellen eines selbstsignierten X.509-Zertifizierungsstellenzertifikats
 
-Der Prozess zur Erstellung eines selbstsignierten X.509-Zertifizierungsstellenzertifikats ähnelt dem Erwerb, aber es ist ein Drittanbieter, z.B. die Stammzertifizierungsstelle, als Signaturgeber beteiligt. In unserem Beispiel signiert Company-X sein Zertifizierungsstellenzertifikat selbst ohne Beteiligung einer Stammzertifizierungsstelle. Company-X kann diese Option zu Testzwecken wählen, bis alles für den Erwerb eines Zertifizierungsstellenzertifikats bereit ist. Company-X kann auch ein selbstsigniertes X.509-Zertifizierungsstellenzertifikat in der Produktion verwenden, wenn es für Smart-X-Widgets nicht vorgesehen ist, eine Verbindung mit Drittanbieterdiensten außerhalb von IoT Hub herzustellen.
+Der Prozess zur Erstellung eines selbstsignierten X.509-Zertifizierungsstellenzertifikats ähnelt dessen Erwerb, aber dabei ist ein Drittanbieter, z. B. die Stammzertifizierungsstelle, als Signaturgeber beteiligt. In unserem Beispiel signiert Company-X sein Zertifizierungsstellenzertifikat selbst ohne Beteiligung einer Stammzertifizierungsstelle. Company-X kann diese Option zu Testzwecken wählen, bis alles für den Erwerb eines Zertifizierungsstellenzertifikats bereit ist. Company-X kann auch ein selbstsigniertes X.509-Zertifizierungsstellenzertifikat in der Produktion verwenden, wenn es bei Smart-X-Widgets nicht vorgesehen ist, eine Verbindung mit Drittanbieterdiensten außerhalb von IoT Hub herzustellen.
 
 ## <a name="register-the-x509-certificate-to-iot-hub"></a>Registrieren des X.509-Zertifikats für IoT Hub
 

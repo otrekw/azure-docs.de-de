@@ -1,6 +1,6 @@
 ---
 title: Datenverwaltungsgateway für Data Factory
-description: Richten Sie ein Datengateway ein, um Daten zwischen dem lokalen Speicher und der Cloud zu verschieben. Verwenden Sie das Datenverwaltungsgateway in Azure Data Factory zum Verschieben Ihrer Daten.
+description: Verwenden Sie das Datenverwaltungsgateway in Azure Data Factory zum Verschieben Ihrer Daten.
 services: data-factory
 documentationcenter: ''
 author: nabhishek
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 5ef7e79ffa50bc16df9d03dbf530fda98e660557
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 68459253114e97c5e113b863a075c210ef50bf2e
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297687"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441118"
 ---
 # <a name="data-management-gateway"></a>Gateway zur Datenverwaltung
 > [!NOTE]
@@ -121,7 +121,7 @@ Um im Portal ein Gateway zu erstellen und auf der Seite **Konfigurieren** den Sc
     ![Link zum Herunterladen im Portal](media/data-factory-data-management-gateway/download-and-install-link-on-portal.png)
 4. Klicken Sie auf der Seite **Konfigurieren** auf **Schlüssel neu erstellen**. Klicken Sie in der Warnmeldung auf „Ja“, nachdem Sie sie sorgfältig gelesen haben.
 
-    ![Schlüssel neu erstellen](media/data-factory-data-management-gateway/recreate-key-button.png)
+    ![Schaltfläche „Schlüssel neu erstellen“](media/data-factory-data-management-gateway/recreate-key-button.png)
 5. Klicken Sie neben dem Schlüssel auf die Schaltfläche „Kopieren“. Der Schlüssel wird in die Zwischenablage kopiert.
 
     ![Kopieren des Schlüssels](media/data-factory-data-management-gateway/copy-gateway-key.png)
@@ -158,7 +158,7 @@ Auf Ebene der Windows-Firewall sind diese ausgehenden Ports normalerweise aktivi
 #### <a name="copy-data-from-a-source-data-store-to-a-sink-data-store"></a>Kopieren von Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher
 Stellen Sie sicher, dass die Firewallregeln für die Unternehmensfirewall, die Windows-Firewall auf dem Gatewaycomputer und den Datenspeicher selbst richtig aktiviert sind. Indem Sie diese Regeln aktivieren, kann das Gateway sowohl mit der Quelle als auch mit der Senke erfolgreich eine Verbindung herstellen. Aktivieren Sie die Regeln für jeden Datenspeicher, der am Kopiervorgang beteiligt ist.
 
-Führen Sie die folgenden Schritte aus, um z. B. Daten aus **einem lokalen Datenspeicher in eine Azure SQL-Datenbank-Senke oder eine Azure SQL Data Warehouse-Senke** zu kopieren:
+Führen Sie beispielsweise die folgenden Schritte aus, um Daten aus **einem lokalen Datenspeicher in eine Azure SQL-Datenbank-Senke oder eine Azure Synapse Analytics- (vormals Azure SQL Data Warehouse)-Senke** zu kopieren:
 
 * Lassen Sie ausgehende **TCP**-Kommunikation an Port **1433** sowohl für die Windows-Firewall als auch die Unternehmensfirewall zu.
 * Konfigurieren Sie die Firewalleinstellungen der logischen SQL Server-Instanz so, dass die IP-Adresse des Gatewaycomputers in die Liste der zulässigen IP-Adressen aufgenommen wird.
@@ -175,7 +175,7 @@ Wenn die Netzwerkumgebung Ihres Unternehmens einen Proxyserver für den Internet
 
 Das Gateway verwendet den Proxyserver, um eine Verbindung mit dem Clouddienst herzustellen. Klicken Sie während des Anfangssetups auf **Ändern** . Sie sehen das Dialogfeld **Proxyeinstellung** .
 
-![Einrichten des Proxys mithilfe des Konfigurations-Managers](media/data-factory-data-management-gateway/SetProxySettings.png)
+![Einrichten des Proxys mithilfe des Konfigurations-Managers 1](media/data-factory-data-management-gateway/SetProxySettings.png)
 
 Es gibt drei Konfigurationsoptionen:
 
@@ -194,7 +194,7 @@ Wenn Sie die Proxyeinstellungen nach der erfolgreichen Registrierung des Gateway
 
 Sie können den HTTP-Proxy im Konfigurations-Manager anzeigen und aktualisieren.
 
-![Einrichten des Proxys mithilfe des Konfigurations-Managers](media/data-factory-data-management-gateway/SetProxyConfigManager.png)
+![Einrichten des Proxys mithilfe des Konfigurations-Managers 2](media/data-factory-data-management-gateway/SetProxyConfigManager.png)
 
 > [!NOTE]
 > Wenn Sie einen Proxyserver mit NTLM-Authentifizierung einrichten, wird der Gatewayhostdienst im Domänenkonto ausgeführt. Wenn Sie das Kennwort für das Domänenkonto später ändern, denken Sie daran, die Konfigurationseinstellungen für den Dienst entsprechend zu aktualisieren und neu zu starten. Aufgrund dieser Anforderung empfiehlt es sich, ein dediziertes Domänenkonto für den Zugriff auf den Proxyserver zu verwenden, in dem das Kennwort nicht regelmäßig geändert werden muss.
@@ -425,7 +425,7 @@ Dieser Abschnitt enthält Anweisungen zum Verschieben des Gatewayclients von ein
     ![Konfigurations-Manager](./media/data-factory-data-management-gateway/ConfigurationManager.png)
 6. Klicken Sie im Portal auf der Seite **Konfigurieren** in der Befehlsleiste auf **Schlüssel neu erstellen** und anschließend in der Warnmeldung auf **Ja**. Klicken Sie auf die Schaltfläche **Kopieren** neben dem Schlüsseltext, um den Schlüssel in die Zwischenablage zu kopieren. Sobald Sie den Schlüssel neu erstellen, funktioniert das Gateway auf dem alten Computer nicht mehr.
 
-    ![Schlüssel neu erstellen](./media/data-factory-data-management-gateway/RecreateKey.png)
+    ![Schlüssel neu erstellen 2](./media/data-factory-data-management-gateway/RecreateKey.png)
 7. Fügen Sie auf Ihrem Computer im **Datenverwaltungsgateway-Konfigurations-Manager** auf der Seite **Gateway registrieren** den **Schlüssel** in das Textfeld ein. (Optional) Aktivieren Sie das Kontrollkästchen **Gatewayschlüssel anzeigen**, um den Schlüsseltext anzuzeigen.
 
     ![Schlüssel kopieren und registrieren](./media/data-factory-data-management-gateway/CopyKeyAndRegister.png)

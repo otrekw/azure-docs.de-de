@@ -1,23 +1,23 @@
 ---
 title: Verwenden der automatischen Bereitstellung des Azure IoT Hub Device Provisioning Service zum Registrieren des MXChip IoT DevKit bei IoT Hub | Microsoft-Dokumentation
 description: Verwenden der automatischen Bereitstellung des Azure IoT Hub Device Provisioning Service (DPS) zum Registrieren des MXChip IoT DevKit bei IoT Hub
-author: liydu
-ms.author: liydu
+author: wesmc7777
+ms.author: wesmc
 ms.date: 06/25/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: jeffya
-ms.openlocfilehash: f05e92f0452b1cfff23e2094354203fd7eaea48b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+manager: eliotgra
+ms.openlocfilehash: 2a030d9ca5422e12856dcb81b29f8327e684c97e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74975651"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90528652"
 ---
 # <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>Verwenden der automatischen Bereitstellung des Azure IoT Hub Device Provisioning Service zum Registrieren des MXChip IoT DevKit bei IoT Hub
 
-Dieser Artikel beschreibt das Verwenden der [automatischen Bereitstellung](concepts-auto-provisioning.md) des Azure IoT Hub Device Provisioning Service zum Registrieren des MXChip IoT DevKit bei Azure IoT Hub. In diesem Tutorial lernen Sie Folgendes:
+In diesem Artikel wird beschrieben, wie der Azure IoT Hub Device Provisioning Service zur [Bereitstellung](about-iot-dps.md#provisioning-process) des MXChip IoT DevKit bei einem Azure IoT Hub verwendet wird. In diesem Tutorial lernen Sie Folgendes:
 
 * Konfigurieren des globalen Endpunkts des Device Provisioning-Diensts auf einem Gerät
 * Verwenden eines eindeutigen geheimen Geräteschlüssels (Unique Device Secret, UDS) zum Generieren eines X.509-Zertifikats
@@ -45,7 +45,7 @@ Um die Schritte in diesem Tutorial auszuführen, erledigen Sie zuerst die folgen
 
 ## <a name="save-a-unique-device-secret-on-device-security-storage"></a>Speichern eines eindeutigen Gerätegeheimnisses auf dem Gerätesicherheitsspeicher
 
-Die automatische Bereitstellung kann auf einem Gerät basierend auf dem [Nachweismechanismus](concepts-security.md#attestation-mechanism) des Geräts konfiguriert werden. Das MXChip IoT DevKit verwendet die [Device Identity Composition Engine](https://trustedcomputinggroup.org/wp-content/uploads/Foundational-Trust-for-IOT-and-Resource-Constrained-Devices.pdf) der [Trusted Computing Group](https://trustedcomputinggroup.org). Ein eindeutiger **geheimer Geräteschlüssel** (Unique Device Secret, UDS), der auf einem STSAFE-Sicherheitschip ([STSAFE-A100](https://microsoft.github.io/azure-iot-developer-kit/docs/understand-security-chip/)) im DevKit gespeichert ist, wird zum Generieren des eindeutigen [X.509-Zertifikats](concepts-security.md#x509-certificates) für das Gerät verwendet. Das Zertifikat wird später für den Registrierungsprozess im Device Provisioning-Dienst und während der Registrierung zur Laufzeit verwendet.
+Die automatische Bereitstellung kann auf einem Gerät basierend auf dem [Nachweismechanismus](concepts-service.md#attestation-mechanism) des Geräts konfiguriert werden. Das MXChip IoT DevKit verwendet die [Device Identity Composition Engine](https://trustedcomputinggroup.org/wp-content/uploads/Foundational-Trust-for-IOT-and-Resource-Constrained-Devices.pdf) der [Trusted Computing Group](https://trustedcomputinggroup.org). Ein eindeutiger **geheimer Geräteschlüssel** (Unique Device Secret, UDS), der auf einem STSAFE-Sicherheitschip ([STSAFE-A100](https://microsoft.github.io/azure-iot-developer-kit/docs/understand-security-chip/)) im DevKit gespeichert ist, wird zum Generieren des eindeutigen [X.509-Zertifikats](concepts-x509-attestation.md) für das Gerät verwendet. Das Zertifikat wird später für den Registrierungsprozess im Device Provisioning-Dienst und während der Registrierung zur Laufzeit verwendet.
 
 Ein typischer UDS besteht aus einer Zeichenfolge mit 64 Zeichen, wie im folgenden Beispiel zu sehen:
 

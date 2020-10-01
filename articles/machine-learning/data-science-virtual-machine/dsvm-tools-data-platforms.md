@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 3e1cfa13a3fd568ab2f1253c015880c57f99ce7e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 83c0fd796b7527c6f5e396a813def984b88ee9ac
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012484"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440353"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Unterstützte Datenplattformen für Data Science Virtual Machine
 
@@ -53,7 +53,7 @@ Zum Ausführen von SQL Server Management Studio können Sie in der Programmliste
 
 Standardmäßig wird der Datenbankserver mit der Datenbankstandardinstanz automatisch ausgeführt. Mithilfe von Tools wie SQL Server Management Studio können Sie lokal über den virtuellen Computer auf die SQL Server-Datenbank zugreifen. Die Konten lokaler Administratoren verfügen über Administratorzugriff auf die Datenbank.
 
-Die DSVM verfügt außerdem über ODBC- und JDBC-Treiber für die Kommunikation mit SQL Server, Azure SQL-Datenbanken und Azure SQL Data Warehouse über Anwendungen, die in mehreren Sprachen (beispielsweise Python, R oder Machine Learning Server) geschrieben wurden.
+Die DSVM verfügt außerdem über ODBC- und JDBC-Treiber für die Kommunikation mit SQL Server, Azure SQL-Datenbanken und Azure Synapse Analytics über Anwendungen, die in mehreren Sprachen (beispielsweise Python, R oder Machine Learning Server) geschrieben wurden.
 
 ### <a name="how-is-it-configured-and-installed-on-the-dsvm"></a>Konfiguration und Installation auf der DSVM 
 

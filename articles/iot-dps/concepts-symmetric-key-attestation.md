@@ -9,18 +9,18 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ba4f67f924455b911d76426231cc71b661faf4a0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 994c2c3124d6822f047af942268ad7a401d5a976
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020336"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531558"
 ---
 # <a name="symmetric-key-attestation"></a>Nachweis des symmetrischen Schlüssels
 
 In diesem Artikel wird der Prozess des Identitätsnachweises bei der Verwendung von symmetrischen Schlüsseln mit Device Provisioning Service beschrieben. 
 
-Der Nachweis des symmetrischen Schlüssels ist eine einfache Methode zum Authentifizieren eines Geräts mit einer Device Provisioning Service-Instanz. Diese Nachweismethode stellt eine „Hallo Welt“-Umgebung für Entwickler bereit, die noch nicht mit der Gerätebereitstellung vertraut sind oder keine strengen Sicherheitsanforderungen haben. Die Gerätebestätigung bzw. der Nachweis mithilfe eines [TPM](concepts-tpm-attestation.md) (Trusted Platform Module) oder [x.509-Zertifikats](concepts-security.md#x509-certificates) ist sicherer und sollte verwendet werden, wenn striktere Sicherheitsanforderungen gelten.
+Der Nachweis des symmetrischen Schlüssels ist eine einfache Methode zum Authentifizieren eines Geräts mit einer Device Provisioning Service-Instanz. Diese Nachweismethode stellt eine „Hallo Welt“-Umgebung für Entwickler bereit, die noch nicht mit der Gerätebereitstellung vertraut sind oder keine strengen Sicherheitsanforderungen haben. Die Gerätebestätigung bzw. der Nachweis mithilfe eines [TPM](concepts-tpm-attestation.md) (Trusted Platform Module) oder [x.509-Zertifikats](concepts-x509-attestation.md) ist sicherer und sollte verwendet werden, wenn striktere Sicherheitsanforderungen gelten.
 
 Registrierungen von symmetrischen Schlüsseln eignen sich zudem hervorragend, um Legacygeräte mit eingeschränkten Sicherheitsfunktionen über Azure IoT in der Cloud zu starten. Weitere Informationen zum Nachweis des symmetrischen Schlüssels mit Legacygeräten finden Sie unter [How to use symmetric keys with legacy devices](how-to-legacy-device-symm-key.md) (Verwenden von symmetrischen Schlüsseln mit Legacygeräten).
 
@@ -109,12 +109,12 @@ Das folgende Diagramm zeigt eine Tabelle mit Geräteschlüsseln, die werkseitig 
 
 Die Identität jedes Geräts wird durch die Registrierungs-ID und den werkseitig installierten abgeleiteten Geräteschlüssel dargestellt. Der Geräteschlüssel wird nie an einen anderen Speicherort kopiert, und der Gruppenschlüssel wird nie auf einem Gerät gespeichert.
 
-Falls die Geräteschlüssel nicht werkseitig installiert wurden, sollte ein [Hardwaresicherheitsmodul (HSM)](concepts-security.md#hardware-security-module) verwendet werden, um die Identität des Geräts sicher zu speichern.
+Falls die Geräteschlüssel nicht werkseitig installiert wurden, sollte ein [Hardwaresicherheitsmodul (HSM)](concepts-service.md#hardware-security-module) verwendet werden, um die Identität des Geräts sicher zu speichern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Nachdem Sie sich mit dem Nachweis des symmetrischen Schlüssels vertraut gemacht haben, können Sie nun die folgenden Artikel lesen, um mehr zu erfahren:
 
 * [Schnellstart: Bereitstellen eines simulierten Geräts mit symmetrischen Schlüsseln](quick-create-simulated-device-symm-key.md)
-* [Konzepte für die automatische Bereitstellung](./concepts-auto-provisioning.md)
+* [Konzepte für die Bereitstellung](about-iot-dps.md#provisioning-process)
 * [Erste Schritte mit der automatischen Bereitstellung](./quick-setup-auto-provision.md) 

@@ -12,12 +12,12 @@ author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 7a52dcabb448c39d9ae4e4edb4f5b7f701be6603
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 47b41e807c4d7b9a9fce6591da6655db74f483f3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228884"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971250"
 ---
 # <a name="devops-for-a-data-ingestion-pipeline"></a>DevOps für eine Datenerfassungspipeline
 
@@ -168,11 +168,11 @@ labels = np.array(data['target'])
 
 Dieser Name unterscheidet sich für ***Dev***- (Entwicklung), ***QA***- (Qualitätssicherung), ***UAT***- (Akzeptanztests) und ***Prod***-Umgebungen (Produktion). In einer komplexen Pipeline mit mehreren Aktivitäten können mehrere benutzerdefinierte Eigenschaften vorhanden sein. Es empfiehlt sich, alle diese Werte an einem Ort zu sammeln und als ***Variablen*** der Pipeline zu definieren:
 
-![adf-variables](media/how-to-cicd-data-ingestion/adf-variables.png)
+![Der Screenshot zeigt oben ein Notebook mit dem Namen PrepareData und eine ML- Ausführungspipeline mit dem Namen „M L Execute Pipeline“, wobei die Registerkarte „Variablen“ unten ausgewählt ist und die Option bietet, neue Variablen jeweils mit Name, Typ und Standardwerthinzuzufügen.](media/how-to-cicd-data-ingestion/adf-variables.png)
 
 Die Pipelineaktivitäten können auf die Pipelinevariablen verweisen, während sie tatsächlich verwendet werden:
 
-![adf-notebook-parameters](media/how-to-cicd-data-ingestion/adf-notebook-parameters.png)
+![Der Screenshot zeigt oben ein Notebook mit dem Namen PrepareData und eine ML- Ausführungspipeline mit dem Namen „M L Execute Pipeline“, wobei die Registerkarte „Einstellungen“ unten ausgewählt ist.](media/how-to-cicd-data-ingestion/adf-notebook-parameters.png)
 
 Der Azure Data Factory-Arbeitsbereich stellt Pipelinevariablen ***nicht*** standardmäßig als Azure Resource Manager-Vorlagenparameter bereit. Der Arbeitsbereich verwendet die [Standardparameterisierungsvorlage](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#default-parameterization-template), die vorgibt, welche Pipelineeigenschaften als Azure Resource Manager-Vorlagenparameter verfügbar gemacht werden sollen. Um der Liste Pipelinevariablen hinzuzufügen, aktualisieren Sie den Abschnitt `"Microsoft.DataFactory/factories/pipelines"` der [Standardparameterisierungsvorlage](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#default-parameterization-template) mit dem folgenden Codeausschnitt, und platzieren Sie die JSON-Ergebnisdatei im Stammverzeichnis des Quellordners:
 

@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Sie Probleme mit SQL-Abfragen in Azure Cosmos DB 
 author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 04/22/2020
+ms.date: 09/12/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 80e966bf190dcbe4490269ef28a95babadda68d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6833f9d59eca4c2f0b49dd70684ade900226aba
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85117912"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089988"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Behandeln von Problemen bei Verwendung von Azure Cosmos DB
 
@@ -26,22 +26,21 @@ Sie können Abfrageoptimierungen in Azure Cosmos DB umfassend kategorisieren:
 
 Durch Reduzieren der Anzahl der verbrauchten RUs einer Abfrage können Sie mit ziemlicher Sicherheit auch die Latenz verringern.
 
-Dieser Artikel enthält Beispiele, die Sie mit dem Dataset [Nutrition](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) neu erstellen können.
+Dieser Artikel enthält Beispiele, die Sie mit dem [Dataset „Nutrition“](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) neu erstellen können.
 
 ## <a name="common-sdk-issues"></a>Allgemeine SDK-Probleme
 
 Bevor Sie diesen Leitfaden lesen, sollten Sie sich mit einigen gängigen SDK-Problemen vertraut machen, die nicht im Zusammenhang mit der Abfrage-Engine stehen.
 
-- Befolgen Sie diese [Tipps zur Leistungssteigerung](performance-tips.md), um eine bestmögliche Leistung zu erzielen.
-    > [!NOTE]
-    > Für eine bessere Leistung wird die Windows-64-Bit-Hostverarbeitung empfohlen. Das SQL SDK enthält die native Datei „ServiceInterop.dll“, um Abfragen lokal zu analysieren und zu optimieren. „ServiceInterop.dll“ wird nur auf der Windows x64-Plattform unterstützt. Bei Linux und anderen nicht unterstützten Plattformen, bei denen die Datei „ServiceInterop.dll“ nicht verfügbar ist, erfolgt ein zusätzlicher Netzwerkaufruf an das Gateway, um die optimierte Abfrage zu erhalten.
+- Befolgen Sie diese [Tipps zur SDK-Leistungssteigerung](performance-tips.md).
+    - [Handbuch zur Problembehandlung beim .NET SDK](troubleshoot-dot-net-sdk.md)
+    - [Handbuch zur Problembehandlung beim Java SDK](troubleshoot-java-sdk-v4-sql.md)
 - Das SDK ermöglicht das Festlegen eines `MaxItemCount`-Werts für Ihre Abfragen, Sie können jedoch keine Mindestanzahl von Elementen angeben.
     - Der Code sollte jede Seitengröße von 0 bis zur `MaxItemCount` verarbeiten können.
-    - Die Anzahl von Elementen auf einer Seite entspricht immer maximal dem `MaxItemCount`-Wert. Weil `MaxItemCount` jedoch grundsätzlich ein Maximum ist, könnte die Anzahl der Ergebnisse geringer als dieser Wert sein.
 - Manchmal können Abfragen sogar dann leere Seiten enthalten, wenn auf einer zukünftigen Seite Ergebnisse vorhanden sind. Dies könnte folgende Gründe haben:
     - Das SDK führt mehrere Netzwerkaufrufe durch.
     - Die Abfrage benötigt lange Zeit zum Abrufen der Dokumente.
-- Bei allen Abfragen gibt es ein Fortsetzungstoken, das die Fortsetzung der jeweiligen Abfrage zulässt. Stellen Sie sicher, die Abfrage vollständig ablaufen zu lassen. Sehen Sie sich die SDK-Beispiele an, und verwenden Sie eine `while`-Schleife für `FeedIterator.HasMoreResults`, um die gesamte Abfrage ablaufen zu lassen.
+- Bei allen Abfragen gibt es ein Fortsetzungstoken, das die Fortsetzung der jeweiligen Abfrage zulässt. Stellen Sie sicher, die Abfrage vollständig ablaufen zu lassen. Informieren Sie sich genauer über [Verarbeiten mehrerer Seiten mit Ergebnissen](sql-query-pagination.md#handling-multiple-pages-of-results).
 
 ## <a name="get-query-metrics"></a>Abrufen von Abfragemetriken
 

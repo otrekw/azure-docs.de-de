@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c097c14406349d973e905fadb806cc159d9b16d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 113c11b749b42bbaf9e5e40cdf63623288997a92
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76722100"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440285"
 ---
 # <a name="agile-development-of-data-science-projects"></a>Agile Entwicklung von Data Science-Projekten
 
@@ -51,7 +51,7 @@ Dies sind die Definitionen für die Arbeitselementtypen:
   
 - **Aufgabe**: Aufgaben sind zuweisbare Arbeitselemente, die erledigt werden müssen, um eine bestimmte User Story abzuschließen. Beispiele für Aufgaben in der User Story *Datenabruf* sind:
   - Abrufen von SQL Server-Anmeldeinformationen
-  - Hochladen von Daten in SQL Data Warehouse
+  - Hochladen von Daten in Azure Synapse Analytics
   
 - **Fehler**: Fehler sind Probleme in vorhandenem Code oder in Dokumenten, die korrigiert werden müssen, um eine Aufgabe abzuschließen. Wenn Fehler durch fehlende Arbeitselemente verursacht werden, können Sie in User Storys oder Aufgaben eskaliert werden. 
 

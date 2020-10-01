@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 9/03/2019
-ms.openlocfilehash: a0263880262da95f4d26ee8388da464e9a59efca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2197136b86d0bfbb2de79af6712c953339d46371
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81416453"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442836"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>Verwenden von Azure Data Factory zum Migrieren von Daten von einem lokalen Netezza-Server zu Azure 
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Azure Data Factory stellt einen leistungsstarken, stabilen und kostengünstigen Mechanismus bereit, um Daten bedarfsabhängig von einem lokalen Netezza-Server zu Ihrem Azure Storage-Konto oder der Azure SQL Data Warehouse-Datenbank zu migrieren. 
+Azure Data Factory stellt einen leistungsstarken, stabilen und kostengünstigen Mechanismus bereit, um Daten bedarfsabhängig von einem lokalen Netezza-Server zu Ihrem Azure Storage-Konto oder Ihrer Azure Synapse Analytics- (vormals SQL Data Warehouse)-Datenbank zu migrieren. 
 
 Dieser Artikel enthält für Datentechniker und Entwickler Informationen zu den folgenden Bereichen:
 
@@ -57,7 +57,7 @@ Mit der Azure Data Factory-Kopieraktivität haben Sie beim Kopieren von Daten zw
 
 ## <a name="network-security"></a>Netzwerksicherheit 
 
-Standardmäßig werden Daten mit Azure Data Factory über eine verschlüsselte Verbindung per HTTPS-Protokoll (Hypertext Transfer Protocol Secure) von einem lokalen Netezza-Server an ein Azure Storage-Konto oder eine Azure SQL Data Warehouse-Datenbank übertragen. HTTPS ermöglicht die Datenverschlüsselung während der Übertragung und verhindert Abhör- und Man-in-the-Middle-Angriffe.
+Standardmäßig überträgt Azure Data Factory Daten über eine verschlüsselte Verbindung per HTTPS-Protokoll (Hypertext Transfer Protocol Secure) vom lokalen Netezza-Server in ein Azure Storage-Konto oder eine Azure Synapse Analytics-Datenbank. HTTPS ermöglicht die Datenverschlüsselung während der Übertragung und verhindert Abhör- und Man-in-the-Middle-Angriffe.
 
 Falls Sie nicht möchten, dass Daten über das öffentliche Internet übertragen werden, können Sie auch eine bessere Sicherheit erzielen, indem Sie Daten über einen privaten Peeringlink per Azure ExpressRoute übertragen. 
 
@@ -109,7 +109,7 @@ Das vorhergehende Diagramm kann wie folgt interpretiert werden:
    
    - Sie können auch einen [Dienstprinzipal](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication) oder [Speicherkontoschlüssel](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication) verwenden. 
 
-- So authentifizieren Sie sich für Azure SQL Data Warehouse
+- So authentifizieren Sie sich bei Azure Synapse Analytics:
 
    - Wir empfehlen dringend die Verwendung von [verwalteten Identitäten für Azure-Ressourcen](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#managed-identity).
    
@@ -131,7 +131,7 @@ Für größere Tabellen (d. h. Tabellen mit einem Volumen von 100 GB oder mehr o
 
 Falls Kopieraufträge aufgrund eines vorübergehenden Problems mit dem Netzwerk oder dem Datenspeicher nicht erfolgreich sind, können Sie den fehlerhaften Kopierauftrag erneut ausführen, um diese spezifische Partition aus der Tabelle zu laden. Andere Kopieraufträge, die andere Partitionen laden, sind nicht betroffen.
 
-Wenn Sie Daten in eine Azure SQL Data Warehouse-Datenbank laden, wird empfohlen, PolyBase innerhalb des Kopierauftrags mit Azure Blob Storage für das Staging zu aktivieren.
+Wenn Sie Daten in eine Azure Synapse Analytics-Datenbank laden, wird empfohlen, PolyBase innerhalb des Kopierauftrags mit Azure Blob Storage für das Staging zu aktivieren.
 
 ### <a name="migrate-delta-data"></a>Migrieren von Deltadaten 
 
@@ -162,7 +162,7 @@ Wenn für die Azure Data Factory-Kopieraktivität Drosselungsfehler gemeldet wer
 
 ### <a name="estimate-your-pricing"></a>Schätzen der Preise 
 
-Betrachten Sie die folgende Pipeline, die für die Migration von Daten vom lokalen Netezza-Server zu einer Azure SQL Data Warehouse-Datenbank ausgelegt ist:
+Sehen Sie sich die folgende Pipeline an, die für die Migration von Daten vom lokalen Netezza-Server zu einer Azure Synapse Analytics-Datenbank ausgelegt ist:
 
 ![Die Tarifpipeline](media/data-migration-guidance-netezza-azure-sqldw/pricing-pipeline.png)
 
@@ -196,7 +196,7 @@ Weitere Informationen finden Sie in den folgenden Artikeln und Leitfäden:
 - [ODBC-Connector](https://docs.microsoft.com/azure/data-factory/connector-odbc)
 - [Azure Blob Storage-Connector](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
 - [Azure Data Lake Storage Gen2-Connector](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
-- [Azure SQL Data Warehouse-Connector](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse)
+- [Azure Synapse Analytics-Connector](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse)
 - [Handbuch zur Leistung und Optimierung der Kopieraktivität](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
 - [Erstellen und Konfigurieren einer selbstgehosteten Integration Runtime](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
 - [Selbstgehostete Integration Runtime: Hochverfügbarkeit und Skalierbarkeit](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)

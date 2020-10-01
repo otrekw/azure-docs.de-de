@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fa9786f31e1cf9ee15afdc03d289a04198836133
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 2dfb5876922fd53c372afe82ecdfa843179fb135
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086839"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439009"
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Kopier-Assistent in Azure Data Factory
 > [!NOTE]
@@ -49,7 +49,7 @@ Sie können eine Vorschau für einen Teil der Daten aus der ausgewählten Datenq
 Das Schema der Eingabedaten stimmt nicht in jedem Fall mit dem Schema der Ausgabedaten überein. In diesem Szenario müssen die Spalten des Quellschemas den Spalten des Zielschemas zugeordnet werden.
 
 > [!TIP]
-> Beim Kopieren von Daten aus SQL Server oder Azure SQL-Datenbank in Azure SQL Data Warehouse unterstützt Data Factory die automatische Tabellenerstellung anhand des Quellschemas, wenn die Tabelle im Zielspeicher nicht vorhanden ist. Weitere Informationen finden Sie unter [Verschieben von Daten in und aus Azure SQL Data Warehouse mithilfe von Azure Data Factory](./data-factory-azure-sql-data-warehouse-connector.md).
+> Beim Kopieren von Daten aus SQL Server oder Azure SQL-Datenbank in Azure Synapse Analytics (vormals SQL Data Warehouse) unterstützt Data Factory die automatische Tabellenerstellung anhand des Quellschemas, wenn die Tabelle im Zielspeicher nicht vorhanden ist. Weitere Informationen finden Sie unter [Verschieben von Daten in und aus Azure Synapse Analytics mithilfe von Azure Data Factory](./data-factory-azure-sql-data-warehouse-connector.md).
 >
 
 Verwenden Sie eine Dropdownliste, um eine Spalte aus dem Quellschema auszuwählen, die einer Spalte im Zielschema zugeordnet werden soll. Der Kopier-Assistent versucht, das Muster für die Spaltenzuordnung zu verstehen. Er wendet das gleiche Muster auf die restlichen Spalten an, damit Sie nicht jede Spalte einzeln auswählen müssen, um die Schemazuordnung abzuschließen. Falls gewünscht, können Sie diese Zuordnungen überschreiben, indem Sie mithilfe der Dropdownlisten die Spalten einzeln zuordnen. Das Muster wird genauer, wenn Sie mehr Spalten zugeordnet haben. Der Kopier-Assistent aktualisiert das Muster ständig und erreicht letztlich das richtige Muster für die Spaltenzuordnung, die Sie erreichen möchten.     

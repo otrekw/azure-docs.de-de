@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 48e6d8870baad60c79cf392894db8b71003bb875
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: b45cc87c525ab66a3807f71901728e60d086ea74
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86276960"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440404"
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Skalierbare Data Science mit Azure Data Lake: lückenlose exemplarische Vorgehensweise
 Diese exemplarische Vorgehensweise veranschaulicht die Nutzung von Azure Data Lake zum Anwenden von Datenuntersuchungs- und binären Klassifizierungsaufgaben auf das Dataset „NYC Taxi Trip and Fare“, um vorherzusagen, ob neben dem Fahrpreis ein Trinkgeld gezahlt wird. Sie werden lückenlos durch die Schritte des [Data Science-Prozesses](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)begleitet – von der Datenerfassung über das Training des Modells bis zur Bereitstellung eines Webdiensts zum Veröffentlichen des Modells.
@@ -34,7 +34,7 @@ In dieser exemplarischen Vorgehensweise werden die folgenden Technologien verwen
 ### <a name="azure-data-lake-analytics"></a>Azure Data Lake Analytics
 [Microsoft Azure Data Lake](https://azure.microsoft.com/solutions/data-lake/) bietet alle Funktionen, die erforderlich sind, um Data Scientists das Speichern von Daten unabhängig von Größe, Form und Tempo zu ermöglichen. Außerdem ermöglicht diese Lösung kostengünstig eine Datenverarbeitung, erweiterte Analyse und Machine Learning-Modellierung mit hoher Skalierbarkeit.   Sie zahlen auftragsbezogen und nur, wenn Daten tatsächlich verarbeitet werden. Zu Data Lake Analytics gehört U-SQL, eine Sprache, bei der die deklarative Art von SQL mit den leistungsstarken Ausdrücken von C# kombiniert wird, um eine skalierbare verteilte Abfragefunktion zu bieten. Sie können unstrukturierte Daten verarbeiten, indem Sie Schemas auf Lesevorgänge anwenden, sowie benutzerdefinierte Logik und benutzerdefinierte Funktionen (UDFs) einfügen. Funktionen zur Erweiterbarkeit sind vorhanden, um eine differenzierte Kontrolle der Ausführung nach Maß zu ermöglichen. Weitere Informationen zur Entwurfsphilosophie von U-SQL finden Sie in diesem [Visual Studio-Blogbeitrag](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/).
 
-Darüber hinaus ist Data Lake Analytics ein wichtiger Bestandteil von Cortana Analytics Suite und kann mit Azure SQL Data Warehouse, Power BI und Data Factory eingesetzt werden. Mit dieser Kombination erhalten Sie eine umfassende cloudbasierte Big Data-Lösung und erweiterte Analyseplattform.
+Darüber hinaus ist Data Lake Analytics ein wichtiger Bestandteil von Cortana Analytics Suite und kann mit Azure Synapse Analytics, Power BI und Data Factory eingesetzt werden. Mit dieser Kombination erhalten Sie eine umfassende cloudbasierte Big Data-Lösung und erweiterte Analyseplattform.
 
 Am Anfang dieser exemplarischen Vorgehensweise wird das Installieren der Komponenten und Ressourcen beschrieben, die zum Ausführen der Aufgaben für den Data Science-Prozess benötigt werden. Anschließend werden die Datenverarbeitungsschritte beschrieben, die U-SQL verwenden, und zum Abschluss wird die Verwendung von Python und Hive mit Azure Machine Learning Studio (klassisch) zum Erstellen und Bereitstellen der Vorhersagemodelle demonstriert.
 
@@ -756,7 +756,7 @@ Mit Abschluss dieser exemplarischen Vorgehensweise haben Sie eine Data Science-
 ## <a name="whats-next"></a>Wie geht es weiter?
 Der Lernpfad für den [Team Data Science-Prozess (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) enthält Links zu Themen, in denen jeder Schritt im erweiterten Analyseprozess beschrieben wird. Auf der Seite [Team Data Science-Prozess: Exemplarische Vorgehensweisen](walkthroughs.md) finden Sie eine Reihe exemplarischer Vorgehensweisen, die veranschaulichen, wie Ressourcen und Dienste in den verschiedenen Predictive Analytics-Szenarien genutzt werden:
 
-* [Der Team Data Science-Prozess in Aktion: Verwenden von SQL Data Warehouse](sqldw-walkthrough.md)
+* [Der Team Data Science-Prozess in Aktion: Verwenden von Azure Synapse Analytics](sqldw-walkthrough.md)
 * [Der Team Data Science-Prozess in Aktion: Verwenden von HDInsight Hadoop-Clustern](hive-walkthrough.md)
 * [Der Team Data Science-Prozess: Verwenden von SQL Server](sql-walkthrough.md)
 * [Übersicht über Data Science mit Spark in Azure HDInsight](spark-overview.md)

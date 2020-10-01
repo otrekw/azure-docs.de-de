@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: tisande
-ms.openlocfilehash: f723d7ac218869313f02212d27d9f96b74bb7f0f
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: f9e1ff633f70e544a3cde579f1550d3fd708f269
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607515"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089512"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Indizierungsrichtlinien in Azure Cosmos DB
 
@@ -81,7 +81,7 @@ Jede Indizierungsrichtlinie muss den Stammpfad `/*` entweder als eingeschlossene
 
 Beim Ein- und Ausschließen von Pfaden begegnen Ihnen unter Umständen folgende Attribute:
 
-- `kind` kann entweder `range` oder `hash` sein. Die Bereichsindexfunktion (range) bietet sämtliche Funktionen eines Hashindex, weshalb die Verwendung eines Bereichsindex empfohlen wird.
+- `kind` kann entweder `range` oder `hash` sein. Die Unterstützung von Hashindizes ist auf Gleichheitsfilter eingeschränkt. Die Bereichsindexfunktionalität bietet die gesamte Funktionalität von Hashindizes sowie effiziente Sortierung, Bereichsfilter und Systemfunktionen. Es wird immer empfohlen, einen Bereichsindex zu verwenden.
 
 - `precision` ist eine Zahl, die auf der Indexebene für eingeschlossene Pfade definiert wird. Der Wert `-1` steht für maximale Genauigkeit. Es wird empfohlen, diesen Wert immer auf `-1` festzulegen.
 

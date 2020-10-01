@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a9528b31bfd1be40b478f3c47fd0a16047a7f6ff
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 37faf5d8e6292844245f475d9fcf0f832a0cca10
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86028121"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439996"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Plattformen und Tools für Data Science-Projekte
 
@@ -63,11 +63,11 @@ Wenn Sie einen Spark-Cluster in HDInsight erstellen, erstellen Sie damit Azure-S
 Das TDSP-Team von Microsoft hat zwei umfassende exemplarische Vorgehensweisen zur Erstellung von Data Science-Lösungen mit Azure HDInsight Spark-Clustern veröffentlicht: eine für Python und eine für Scala. Weitere Informationen zu **Spark-Clustern** in Azure HDInsight finden Sie in der [Einführung in Spark in HDInsight](../../hdinsight/spark/apache-spark-overview.md). Informationen zum Erstellen einer Data Science-Lösung mit **Python** für einen Azure HDInsight Spark-Cluster finden Sie in der [Übersicht über Data Science mit Spark in Azure HDInsight](spark-overview.md). Informationen zum Erstellen einer Data Science-Lösung mit **Scala** für einen Azure HDInsight Spark-Cluster finden Sie unter [Data Science unter Verwendung von Scala und Spark in Azure](scala-walkthrough.md). 
 
 
-##  <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
+##  <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
-Mit Azure SQL Data Warehouse können Sie einfach und blitzschnell Computeressourcen bereitstellen – ohne Überdimensionierung oder Überzahlung. Darüber hinaus haben Sie nur hier die Möglichkeit, die Nutzung von Computeressourcen zu unterbrechen und so ihre Cloudkosten besser zu steuern. Dank der Möglichkeit zur Bereitstellung skalierbarer Computeressourcen können Sie alle Ihre Daten in Azure SQL Data Warehouse überführen. Die Speicherkosten sind äußerst gering, und Sie können die Ausführung von Computevorgängen auf die Teile der Datasets beschränken, die Sie analysieren möchten. 
+Mit Azure Synapse Analytics können Sie einfach und blitzschnell Computeressourcen bereitstellen – ohne Überdimensionierung oder Überzahlung. Darüber hinaus haben Sie nur hier die Möglichkeit, die Nutzung von Computeressourcen zu unterbrechen und so ihre Cloudkosten besser zu steuern. Dank der Möglichkeit zur Bereitstellung skalierbarer Computeressourcen können Sie alle Ihre Daten in Azure Synapse Analytics überführen. Die Speicherkosten sind äußerst gering, und Sie können die Ausführung von Computevorgängen auf die Teile der Datasets beschränken, die Sie analysieren möchten. 
 
-Weitere Informationen zu Azure SQL Data Warehouse finden Sie auf der [Website von SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse). Informationen zur Erstellung umfassender erweiterter Analyselösungen mit SQL Data Warehouse finden Sie unter [Der Team Data Science-Prozess in Aktion: Verwenden von SQL Data Warehouse](sqldw-walkthrough.md).
+Weitere Informationen zu Azure Synapse Analytics finden Sie auf der [Azure Synapse Analytics](https://azure.microsoft.com/services/sql-data-warehouse)-Website. Informationen zur Erstellung umfassender erweiterter Analyselösungen mit Azure Synapse Analytics finden Sie unter [Der Team Data Science-Prozess in Aktion: Verwenden von Azure Synapse Analytics](sqldw-walkthrough.md).
 
 
 ## <a name="azure-data-lake"></a>Azure Data Lake

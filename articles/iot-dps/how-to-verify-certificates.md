@@ -7,12 +7,12 @@ ms.date: 02/26/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: b008c4ebc83200043d51fc8ef367f1983c549949
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 50e8dfd2998b50bfff7341e49ac4d0770c115166
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74973440"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530861"
 ---
 # <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>Nachweis des Besitzes für X.509-Zertifizierungsstellenzertifikate mit Ihrem Device Provisioning-Dienst
 
@@ -23,7 +23,7 @@ Der Besitznachweis umfasst die folgenden Schritte:
 2. Erstellen eines X.509-Überprüfungszertifikats mit dem Prüfcode als Betreff und Signieren des Zertifikats mit dem privaten Schlüssel, der Ihrem X.509-ZS-Zertifikat zugeordnet ist.
 3. Hochladen des signierten Verifizierungszertifikats in den Dienst. Der Dienst überprüft das Verifizierungszertifikat mithilfe des öffentlichen Teils des zu überprüfenden Zertifizierungsstellenzertifikats und weist dadurch nach, dass sich der private Schlüssel des ZS-Zertifikats in Ihrem Besitz befindet.
 
-Überprüfte Zertifikate spielen bei Verwendung von Registrierungsgruppen eine wichtige Rolle. Der Nachweis des Zertifikatbesitzes bietet eine zusätzliche Sicherheitsschicht, indem sichergestellt wird, dass die hochladende Person eines Zertifikats im Besitz des privaten Schlüssels des Zertifikats ist. Die Überprüfung verhindert, dass ein böswilliger Akteur, der Ihren Datenverkehr abfängt, ein Zwischenzertifikat extrahiert und mit diesem Zertifikat eine Registrierungsgruppe im eigenen Bereitstellungsdienst erstellt, um sich letztlich Ihre Geräte anzueignen. Durch den Nachweis der Besitzes des Stammzertifikats oder eines Zwischenzertifikats in einer Zertifikatkette weisen Sie nach, dass Sie berechtigt sind, untergeordnete Zertifikate für die Geräte zu generieren, die in dieser Registrierungsgruppe Registrierungen ausführen. Daher muss es sich bei dem in einer Registrierungsgruppe konfigurierten Stamm- oder Zwischenzertifikat um ein verifiziertes Zertifikat handeln, oder ihm muss ein verifiziertes Zertifikat in der Zertifikatkette, die ein Gerät bei der Authentifizierung beim Dienst vorlegt, folgen. Weitere Informationen zu Registrierungsgruppen finden Sie unter [X.509-Zertifikate](concepts-security.md#x509-certificates) und [Steuern des Gerätezugriffs auf den Bereitstellungsdienst mit X.509-Zertifikaten](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates).
+Überprüfte Zertifikate spielen bei Verwendung von Registrierungsgruppen eine wichtige Rolle. Der Nachweis des Zertifikatbesitzes bietet eine zusätzliche Sicherheitsschicht, indem sichergestellt wird, dass die hochladende Person eines Zertifikats im Besitz des privaten Schlüssels des Zertifikats ist. Die Überprüfung verhindert, dass ein böswilliger Akteur, der Ihren Datenverkehr abfängt, ein Zwischenzertifikat extrahiert und mit diesem Zertifikat eine Registrierungsgruppe im eigenen Bereitstellungsdienst erstellt, um sich letztlich Ihre Geräte anzueignen. Durch den Nachweis der Besitzes des Stammzertifikats oder eines Zwischenzertifikats in einer Zertifikatkette weisen Sie nach, dass Sie berechtigt sind, untergeordnete Zertifikate für die Geräte zu generieren, die in dieser Registrierungsgruppe Registrierungen ausführen. Daher muss es sich bei dem in einer Registrierungsgruppe konfigurierten Stamm- oder Zwischenzertifikat um ein verifiziertes Zertifikat handeln, oder ihm muss ein verifiziertes Zertifikat in der Zertifikatkette, die ein Gerät bei der Authentifizierung beim Dienst vorlegt, folgen. Weitere Informationen zum X.509-Zertifikatnachweis finden Sie unter [X.509-Zertifikate](concepts-x509-attestation.md) und [Steuern des Gerätezugriffs auf den Bereitstellungsdienst mit X.509-Zertifikaten](concepts-x509-attestation.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates).
 
 ## <a name="register-the-public-part-of-an-x509-certificate-and-get-a-verification-code"></a>Registrieren des öffentlichen Teils eines X.509-Zertifikats und Abrufen eines Prüfcodes
 

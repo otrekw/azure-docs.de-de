@@ -11,12 +11,14 @@ ms.author: jlian
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 2b1dc7873140f885ec3efac11dec5fbf6aab7aa9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+- fasttrack-edit
+- iot
+ms.openlocfilehash: 3e3dd49c622c1a35571fdb53af470789dc9a26bb
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81732575"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462035"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Überwachen von Gerät-zu-Cloud-Nachrichten in Azure IoT mit der verteilten Ablaufverfolgung (Vorschau)
 
@@ -307,10 +309,10 @@ Nach der Aktivierung erfolgt die Unterstützung der verteilten Ablaufverfolgung 
 
 1. Auf dem IoT-Gerät wird eine Nachricht generiert.
 1. Das IoT-Gerät legt fest (mit Unterstützung der Cloud), dass dieser Nachricht ein Ablaufverfolgungskontext zugewiesen werden soll.
-1. Das SDK fügt ein `tracestate`-Element in der Anwendungseigenschaft der Nachricht hinzu, das den Zeitstempel der Nachrichtenerstellung enthält.
+1. Das SDK fügt der Nachrichteneigenschaft ein `tracestate`-Element hinzu, das den Zeitstempel der Nachrichtenerstellung enthält.
 1. Das IoT-Gerät sendet die Nachricht an IoT Hub.
 1. Die Nachricht wird am IoT Hub-Gateway empfangen.
-1. IoT Hub sucht in den Anwendungseigenschaften der Nachricht nach `tracestate` und überprüft, ob das richtige Format vorliegt.
+1. IoT Hub sucht in den Nachrichteneigenschaften nach `tracestate` und überprüft, ob das richtige Format vorliegt.
 1. In diesem Fall generiert IoT Hub eine global eindeutige `trace-id` für die Nachricht und eine `span-id` für den „Hop“ und protokolliert beide in Azure Monitor-Diagnoseprotokollen unter dem Vorgang `DiagnosticIoTHubD2C`.
 1. Nach Abschluss der Nachrichtenverarbeitung generiert IoT Hub eine andere `span-id` und protokolliert sie zusammen mit der vorhandenen `trace-id` unter dem Vorgang `DiagnosticIoTHubIngress`.
 1. Wenn für die Nachricht das Routing aktiviert ist, schreibt IoT Hub die Nachricht in den benutzerdefinierten Endpunkt und protokolliert ein weiteres `span-id`-Element mit dem gleichen `trace-id`-Element unter der Kategorie `DiagnosticIoTHubEgress`.

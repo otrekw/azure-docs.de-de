@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 08/04/2020
 ms.author: allensu
-ms.openlocfilehash: f729176d3f79c2a1f6fabb5631d49747219db48f
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: cae0ec1daed8277d1e7e4f3c5cbc701965ac00b8
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760089"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661752"
 ---
 # <a name="standard-rules-engine-reference-for-azure-cdn"></a>Referenz zur Standardregel-Engine für Azure CDN
 
@@ -59,7 +59,7 @@ Ein Prozentzeichen wird zum Angeben der URL-Codierung verwendet (z. B. `%20`).
 
 ### <a name="wildcard-values"></a>Platzhalterwerte
 
-Zurzeit wird in der Standardregel-Engine das Platzhalterzeichen in der **UrlPath-Übereinstimmungsbedingung** unterstützt. Das Zeichen \* (Sternchen) steht für ein oder mehrere Zeichen. 
+Zurzeit wird in der Standardregel-Engine das Platzhalterzeichen in der **UrlPath-Übereinstimmungsbedingung** unterstützt. Das Zeichen \* ist ein Platzhalter, der für ein oder mehrere Zeichen steht. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: ramkris
-ms.openlocfilehash: ce017d1ac92e3aabe7ad0e36b2e8b87dc04b34f6
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 633baafa7f6cb1bc134f07ce64ba98ebd4cb626c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445943"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603049"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Beschleunigen von Big Data-Analysen mit dem Apache Spark-Connector für Azure Cosmos DB
 
@@ -245,9 +245,9 @@ spark-shell --master yarn --packages "com.microsoft.azure:azure-cosmosdb-spark_2
 
 ```
 
-### <a name="using-jupyter-notebooks"></a>Verwenden von Jupyter-Notebooks
+### <a name="using-jupyter-notebooks"></a>Verwenden von Jupyter Notebook-Instanzen
 
-Wenn Sie Jupyter-Notebooks in HDInsight verwenden, können Sie die spark-magic-Zelle `%%configure` verwenden, um die Maven-Koordinaten des Connectors anzugeben.
+Wenn Sie Jupyter Notebook in HDInsight verwenden, können Sie mithilfe der „spark-magic“-Zelle `%%configure` die Maven-Koordinaten des Connectors angeben.
 
 ```python
 { "name":"Spark-to-Cosmos_DB_Connector",
@@ -273,7 +273,7 @@ mvn clean package
 
 Im [GitHub-Repository zum Spark-Connector für Cosmos DB](https://github.com/Azure/azure-cosmosdb-spark) sind die folgenden Beispielnotebooks und -skripts enthalten, die Sie ausprobieren können:
 
-* **On-Time Flight Performance with Spark and Cosmos DB (Seattle) (Pünktlichkeit von Flügen mit Spark und Cosmos DB (Seattle))** [IPYNB](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.ipynb) | [HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.html): Verbinden Sie Spark mithilfe von HDInsight-Jupyter-Notebooks mit Cosmos DB, um Spark SQL und GraphFrames nutzen und Flugverspätungen mit Machine Learning-Pipelines vorhersagen zu können.
+* **On-Time Flight Performance with Spark and Cosmos DB (Seattle) (Pünktlichkeit von Flügen mit Spark und Cosmos DB (Seattle))** [IPYNB](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.ipynb) | [HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.html): Verbinden Sie Spark mithilfe des HDInsight Jupyter Notebook-Diensts mit Cosmos DB, um Spark SQL und GraphFrames nutzen und Flugverspätungen mit Machine Learning-Pipelines vorhersagen zu können.
 * **Twitter Source with Apache Spark and Azure Cosmos DB Change Feed (Twitter mit Apache Spark und Azure Cosmos DB-Änderungsfeeds)** : [IPYNB](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Twitter%20with%20Spark%20and%20Azure%20Cosmos%20DB%20Change%20Feed.ipynb) | [HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Twitter%20with%20Spark%20and%20Azure%20Cosmos%20DB%20Change%20Feed.html)
 * **Using Apache Spark to query Cosmos DB Graphs (Abfragen von Cosmos DB-Graphen mit Apache Spark)** : [IPYNB](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Using%20Apache%20Spark%20to%20query%20Cosmos%20DB%20Graphs.ipynb) | [HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Using%20Apache%20Spark%20to%20query%20Cosmos%20DB%20Graphs.html)
 * **[Verbinden von Azure Databricks mit Azure Cosmos DB](https://docs.databricks.com/spark/latest/data-sources/azure/cosmosdb-connector.html)** mit `azure-cosmosdb-spark`.  Hier ist auch eine Azure Databricks-Version des Notebooks [On-Time Flight Performance](https://github.com/dennyglee/databricks/tree/master/notebooks/Users/denny%40databricks.com/azure-databricks) verlinkt.

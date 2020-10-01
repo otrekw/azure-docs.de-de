@@ -7,12 +7,12 @@ ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: c2bbfcb4832adba767750256a25c378356cf4c23
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: fbcb3656bc824e2fd352f92314652bd04167b4d8
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299261"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531405"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>Rollen von X.509-Gerätezertifikaten
 
@@ -20,14 +20,14 @@ Während des Lebenszyklus Ihrer IoT-Lösung müssen Sie Zertifikate „rollen“
 
 Das Rollen von Zertifikaten ist eine bewährte Sicherheitsmethode, um Ihr System im Falle einer Sicherheitsverletzung zu schützen. Als Teil der [Assume Breach-Methodik](https://download.microsoft.com/download/C/1/9/C1990DBA-502F-4C2A-848D-392B93D9B9C3/Microsoft_Enterprise_Cloud_Red_Teaming.pdf) (von einer Sicherheitsverletzung ausgehen) betont Microsoft neben vorbeugenden Maßnahmen die Notwendigkeit von reaktiven Sicherheitsprozessen. Das Rollen Ihrer Gerätezertifikate sollte ein Bestandteil dieser Sicherheitsprozesse sein. Die Häufigkeit, mit der Sie die Zertifikate rollen, hängt von den Sicherheitsanforderungen Ihrer Lösung ab. Kunden, deren Lösungen sensible Daten beinhalten, rollen Zertifikate möglicherweise täglich, während andere ihre Zertifikate alle zwei Jahre rollen.
 
-Beim Rollen von Gerätezertifikaten müssen das auf dem Gerät gespeicherte Zertifikat und der IoT Hub aktualisiert werden. Anschließend kann das Gerät sich selbst mit dem IoT Hub anhand der normalen [automatischen Bereitstellung](concepts-auto-provisioning.md) mit Device Provisioning Service erneut bereitstellen.
+Beim Rollen von Gerätezertifikaten müssen das auf dem Gerät gespeicherte Zertifikat und der IoT Hub aktualisiert werden. Anschließend kann das Gerät sich selbst mit dem IoT Hub anhand der normalen [Bereitstellung](about-iot-dps.md#provisioning-process) mit Device Provisioning Service (DPS) erneut bereitstellen.
 
 
 ## <a name="obtain-new-certificates"></a>Abrufen neuer Zertifikate
 
 Zum Abrufen neuer Zertifikate für Ihre IoT-Geräte stehen Ihnen viele Methoden zur Auswahl. Dazu zählen das Abrufen von Zertifikaten aus der Geräte-Factory, das Generieren Ihrer eigenen Zertifikate und die Verwaltung der Zertifikaterstellung durch einen Drittanbieter. 
 
-Zertifikate werden voneinander signiert, um eine Vertrauenskette von einem Stammzertifizierungsstellenzertifikat zu einem [untergeordneten Zertifikat](concepts-security.md#end-entity-leaf-certificate) zu bilden. Ein Signaturzertifikat ist das Zertifikat, das zum Signieren des untergeordneten Zertifikats am Ende der Vertrauenskette verwendet wird. Bei einem Signaturzertifikat kann es sich um ein Stammzertifizierungsstellenzertifikat oder ein Zwischenzertifikat in der Vertrauenskette handeln. Weitere Informationen finden Sie unter [X.509-Zertifikate](concepts-security.md#x509-certificates).
+Zertifikate werden voneinander signiert, um eine Vertrauenskette von einem Stammzertifizierungsstellenzertifikat zu einem [untergeordneten Zertifikat](concepts-x509-attestation.md#end-entity-leaf-certificate) zu bilden. Ein Signaturzertifikat ist das Zertifikat, das zum Signieren des untergeordneten Zertifikats am Ende der Vertrauenskette verwendet wird. Bei einem Signaturzertifikat kann es sich um ein Stammzertifizierungsstellenzertifikat oder ein Zwischenzertifikat in der Vertrauenskette handeln. Weitere Informationen finden Sie unter [X.509-Zertifikate](concepts-x509-attestation.md#x509-certificates).
  
 Zum Abrufen eines Signaturzertifikats stehen zwei Methoden zur Auswahl. Die erste Methode, die für Produktionssysteme empfohlen wird, ist der Kauf eines Signaturzertifikats von einer Stammzertifizierungsstelle (ZS). Auf diese Weise wird die Sicherheit an eine vertrauenswürdige Quelle gebunden. 
 
@@ -36,7 +36,7 @@ Die zweite Methode ist die Erstellung eigener X.509-Zertifikate mit einem Tool w
 
 ## <a name="roll-the-certificate-on-the-device"></a>Rollen des Zertifikats auf dem Gerät
 
-Zertifikate auf einem Gerät sollten immer an einem sicheren Ort gespeichert werden, beispielsweise in einem [Hardwaresicherheitsmodul (HSM)](concepts-device.md#hardware-security-module). Die Art und Weise, wie Sie Gerätezertifikate rollen, hängt in erster Linie davon ab, wie sie erstellt und auf den Geräten installiert wurden. 
+Zertifikate auf einem Gerät sollten immer an einem sicheren Ort gespeichert werden, beispielsweise in einem [Hardwaresicherheitsmodul (HSM)](concepts-service.md#hardware-security-module). Die Art und Weise, wie Sie Gerätezertifikate rollen, hängt in erster Linie davon ab, wie sie erstellt und auf den Geräten installiert wurden. 
 
 Wenn Ihre Zertifikate von einem Drittanbieter stammen, müssen Sie überprüfen, wie dieser seine Zertifikate rollt. Der Prozess kann in Ihrer Vereinbarung mit dem Drittanbieter enthalten oder als separater Dienst verfügbar sein. 
 
@@ -75,7 +75,7 @@ Wenn Sie Zertifikate als Reaktion auf eine Sicherheitsverletzung rollen, sollten
 
     Diese Schritte müssen für das primäre und das sekundäre Zertifikat ausgeführt werden, sofern beide kompromittiert wurden.
 
-    ![Verwalten individueller Registrierungen](./media/how-to-roll-certificates/manage-individual-enrollments-portal.png)
+    ![Verwalten einzelner Registrierungen bei einer Sicherheitsverletzung](./media/how-to-roll-certificates/manage-individual-enrollments-portal.png)
 
 3. Nachdem das kompromittierte Zertifikat aus dem Provisioning-Dienst entfernt wurde, kann es weiterhin verwendet werden, um Geräteverbindungen mit dem IoT-Hub herzustellen – sofern dort eine Geräteregistrierung dafür vorhanden ist. Es gibt zwei Vorgehensweisen: 
 
@@ -96,7 +96,7 @@ Wenn später auch das sekundäre Zertifikat bald abläuft und gerollt werden mus
 
 2. Klicken Sie auf die Schaltfläche **Sekundäres Zertifikat** und anschließend auf das Ordnersymbol, um das neue Zertifikat auszuwählen, das für den Registrierungseintrag hochgeladen werden soll. Klicken Sie auf **Speichern**.
 
-    ![Verwalten individueller Registrierungen mit dem sekundären Zertifikat](./media/how-to-roll-certificates/manage-individual-enrollments-secondary-portal.png)
+    ![Verwalten individueller Registrierungen mit dem Ablauf des sekundären Zertifikats](./media/how-to-roll-certificates/manage-individual-enrollments-secondary-portal.png)
 
 3. Später, wenn das primäre Zertifikat abgelaufen ist, kehren Sie zurück, und löschen Sie das primäre Zertifikat, indem Sie auf die Schaltfläche **Delete current certificate** (Aktuelles Zertifikat löschen) klicken.
 
@@ -118,7 +118,7 @@ Um eine Gruppenregistrierung als Reaktion auf eine Sicherheitsverletzung zu aktu
 
 5. Klicken Sie auf **Zertifizierungsstellenzertifikat**, und wählen Sie das neue Stammzertifizierungsstellenzertifikat aus. Klicken Sie anschließend auf **Speichern**. 
 
-    ![Auswählen des neuen Stammzertifizierungsstellenzertifikats](./media/how-to-roll-certificates/select-new-root-cert.png)
+    ![Auswählen des neuen Stammzertifizierungsstellenzertifikats für ein kompromittiertes Zertifikat](./media/how-to-roll-certificates/select-new-root-cert.png)
 
 6. Nachdem das kompromittierte Zertifikat aus dem Provisioning-Dienst entfernt wurde, kann es weiterhin verwendet werden, um Geräteverbindungen mit dem IoT-Hub herzustellen – sofern dort Geräteregistrierungen dafür vorhanden sind. Es gibt zwei Vorgehensweisen: 
 
@@ -136,9 +136,9 @@ Um eine Gruppenregistrierung als Reaktion auf eine Sicherheitsverletzung zu aktu
 
 2. Klicken Sie auf **Intermediate Certificate** (Zwischenzertifikat) und anschließend auf **Delete current certificate** (Aktuelles Zertifikat löschen). Klicken Sie auf das Ordnersymbol, um zu dem neuen Zwischenzertifikat zu navigieren, das für die Registrierungsgruppe hochgeladen werden soll. Klicken Sie abschließend auf **Speichern**. Diese Schritte müssen sowohl für das primäre als auch das sekundäre Zertifikat ausgeführt werden, sofern beide kompromittiert wurden.
 
-    Das neue Zwischenzertifikat muss von einem überprüften Stammzertifizierungsstellenzertifikat signiert sein, das bereits in Provisioning Service hinzugefügt wurde. Weitere Informationen finden Sie unter [X.509-Zertifikate](concepts-security.md#x509-certificates).
+    Das neue Zwischenzertifikat muss von einem überprüften Stammzertifizierungsstellenzertifikat signiert sein, das bereits in Provisioning Service hinzugefügt wurde. Weitere Informationen finden Sie unter [X.509-Zertifikate](concepts-x509-attestation.md#x509-certificates).
 
-    ![Verwalten individueller Registrierungen](./media/how-to-roll-certificates/enrollment-group-delete-intermediate-cert.png)
+    ![Verwalten individueller Registrierungen für ein kompromittiertes Zwischenzertifikat](./media/how-to-roll-certificates/enrollment-group-delete-intermediate-cert.png)
 
 
 3. Nachdem das kompromittierte Zertifikat aus dem Provisioning-Dienst entfernt wurde, kann es weiterhin verwendet werden, um Geräteverbindungen mit dem IoT-Hub herzustellen – sofern dort Geräteregistrierungen dafür vorhanden sind. Es gibt zwei Vorgehensweisen: 
@@ -164,7 +164,7 @@ Wenn später auch das sekundäre Zertifikat bald abläuft und gerollt werden mus
 
 3. Klicken Sie auf **Zertifizierungsstellenzertifikat**, und wählen Sie das neue Stammzertifizierungsstellenzertifikat unter der Konfiguration **Sekundäres Zertifikat** aus. Klicken Sie anschließend auf **Speichern**. 
 
-    ![Auswählen des neuen Stammzertifizierungsstellenzertifikats](./media/how-to-roll-certificates/select-new-root-secondary-cert.png)
+    ![Auswählen des neuen Stammzertifizierungsstellenzertifikats zum Ablauf](./media/how-to-roll-certificates/select-new-root-secondary-cert.png)
 
 4. Später, wenn das primäre Zertifikat abgelaufen ist, klicken Sie auf die Registerkarte **Zertifikate** für Ihre Device Provisioning Service-Instanz. Klicken Sie in der Liste auf das abgelaufene Zertifikat und anschließend auf die Schaltfläche **Löschen**. Bestätigen Sie den Löschvorgang, indem Sie den Namen des Zertifikats eingeben und auf **OK** klicken.
 
@@ -179,9 +179,9 @@ Wenn später auch das sekundäre Zertifikat bald abläuft und gerollt werden mus
 
 2. Klicken Sie auf die Schaltfläche **Sekundäres Zertifikat** und anschließend auf das Ordnersymbol, um das neue Zertifikat auszuwählen, das für den Registrierungseintrag hochgeladen werden soll. Klicken Sie auf **Speichern**.
 
-    Das neue Zwischenzertifikat muss von einem überprüften Stammzertifizierungsstellenzertifikat signiert sein, das bereits in Provisioning Service hinzugefügt wurde. Weitere Informationen finden Sie unter [X.509-Zertifikate](concepts-security.md#x509-certificates).
+    Das neue Zwischenzertifikat muss von einem überprüften Stammzertifizierungsstellenzertifikat signiert sein, das bereits in Provisioning Service hinzugefügt wurde. Weitere Informationen finden Sie unter [X.509-Zertifikate](concepts-x509-attestation.md#x509-certificates).
 
-   ![Verwalten individueller Registrierungen mit dem sekundären Zertifikat](./media/how-to-roll-certificates/manage-enrollment-group-secondary-portal.png)
+   ![Verwalten von Registrierungsgruppen mit dem ablaufenden sekundären Zertifikats](./media/how-to-roll-certificates/manage-enrollment-group-secondary-portal.png)
 
 3. Später, wenn das primäre Zertifikat abgelaufen ist, kehren Sie zurück, und löschen Sie das primäre Zertifikat, indem Sie auf die Schaltfläche **Delete current certificate** (Aktuelles Zertifikat löschen) klicken.
 
@@ -208,6 +208,6 @@ Sobald ein Zertifikat in einem deaktivierten Registrierungseintrag enthalten ist
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu X.509-Zertifikaten in Device Provisioning Service finden Sie unter [Sicherheit](concepts-security.md). 
+- Weitere Informationen zu X.509-Zertifikaten in Device Provisioning Service finden Sie unter [X.509-Zertifikatnachweis](concepts-x509-attestation.md). 
 - Informationen zum Ausführen eines Eigentumsnachweises für X.509-Stammzertifizierungsstellenzertifikate mit Azure IoT Hub Device Provisioning Service finden Sie unter [Überprüfen von Zertifikaten](how-to-verify-certificates.md).
 - Weitere Informationen zum Erstellen einer Registrierungsgruppe mit dem Portal finden Sie unter [Verwalten von Geräteregistrierungen mit dem Azure-Portal](how-to-manage-enrollments.md).

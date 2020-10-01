@@ -11,12 +11,12 @@ ms.reviewer: jmartens
 ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4, devx-track-python
-ms.openlocfilehash: 3f8a3c705878e212e6a26670e20b5a81a3f2a6ba
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 22f9c709ced1069caa39ba2145981efa353caadf
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904376"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602632"
 ---
 # <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>Problembehandlung bei der Docker-Bereitstellung von Modellen mit Azure Kubernetes Service und Azure Container Instances 
 
@@ -24,8 +24,8 @@ Erfahren Sie, wie Sie die häufigsten Docker-Bereitstellungsfehler mit Azure Con
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein **Azure-Abonnement**. Wenn Sie keins besitzen, probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) aus.
-* Das [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
+* Ein **Azure-Abonnement**. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) aus.
+* Das [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true).
 * Die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 * Die [CLI-Erweiterung für Azure Machine Learning](reference-azure-machine-learning-cli.md).
 * Zum lokalen Debuggen benötigen Sie eine funktionierende Docker-Installation auf Ihrem lokalen System.
@@ -34,14 +34,12 @@ Erfahren Sie, wie Sie die häufigsten Docker-Bereitstellungsfehler mit Azure Con
 
 ## <a name="steps-for-docker-deployment-of-machine-learning-models"></a>Schritte für die Docker-Bereitstellung von Machine Learning-Modellen
 
-Bei der Bereitstellung eines Modells in Azure Machine Learning führt das System eine Reihe von Aufgaben aus.
-
-Der empfohlene Ansatz für die Modellimplementierung erfolgt über die [Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)-API mit einem [Environment](how-to-use-environments.md)-Objekt als Eingabeparameter. In diesem Fall erstellt der Dienst während der Bereitstellungsphase ein Docker-Basisimage und bindet die erforderlichen Modelle in einem einzelnen Aufruf ein. Dies sind die grundlegenden Aufgaben bei der Bereitstellung:
+Wenn Sie ein Modell in Azure Machine Learning bereitstellen, verwenden Sie die [Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)-API und ein [Environment](how-to-use-environments.md)-Objekt. Der Dienst erstellt während der Bereitstellungsphase ein Docker-Basisimage und bindet die erforderlichen Modelle in einem einzelnen Aufruf ein. Dies sind die grundlegenden Aufgaben bei der Bereitstellung:
 
 1. Registrieren des Modells in der Modellregistrierung des Arbeitsbereichs.
 
 2. Definieren der Rückschlusskonfiguration:
-    1. Erstellen Sie ein [Environment](how-to-use-environments.md)-Objekt auf der Grundlage der Abhängigkeiten, die Sie in der YAML-Datei für die Umgebung angeben, oder verwenden Sie eine unserer bezogenen Umgebungen.
+    1. Erstellen Sie ein [Environment](how-to-use-environments.md)-Objekt. Dieses Objekt kann die Abhängigkeiten in einer YAML-Umgebungsdatei verwenden (eine unserer zusammengestellten Umgebungen).
     2. Erstellen Sie eine Rückschlusskonfiguration (InferenceConfig-Objekt) auf der Grundlage der Umgebung und des Bewertungsskripts.
 
 3. Stellen Sie das Modell im ACI-Dienst (Azure Container Instance) oder in AKS (Azure Kubernetes Service) bereit.
@@ -52,7 +50,7 @@ Weitere Informationen über diesen Prozess finden Sie in der Einführung zur [Mo
 
 Beim Auftreten eines Problems besteht der erste Schritt darin, die (zuvor beschriebene) Bereitstellungsaufgabe in einzelne Schritte aufzuschlüsseln, um das Problem zu isolieren.
 
-Angenommen, Sie verwenden die neue/empfohlene Bereitstellungsmethode über die [Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)-API mit einem [Environment](how-to-use-environments.md)-Objekt als Eingabeparameter, dann kann Ihr Code in drei Hauptschritte unterteilt werden:
+Wenn Sie [Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) mit einem [Environment](how-to-use-environments.md)-Objekt als Eingabeparameter verwenden, kann Ihr Code in drei Hauptschritte unterteilt werden:
 
 1. Registrieren des Modells. Hier finden Sie Beispielcode dazu:
 
@@ -95,11 +93,11 @@ Angenommen, Sie verwenden die neue/empfohlene Bereitstellungsmethode über die [
     aci_service.wait_for_deployment(show_output=True)
     ```
 
-Nachdem Sie den Bereitstellungsvorgang in einzelne Aufgaben aufgeschlüsselt haben, können wir uns einige der häufigsten Fehler ansehen.
+Durch das Unterteilen des Bereitstellungsprozesses in einzelne Aufgaben können einige der gängigeren Fehler einfacher identifiziert werden.
 
 ## <a name="debug-locally"></a>Lokales Debuggen
 
-Wenn bei der Bereitstellung eines Modells für ACI oder AKS Probleme auftreten, versuchen Sie, es als lokalen Webdienst bereitzustellen. Das Verwenden eines lokalen Webdiensts erleichtert die Problembehandlung. Das Docker-Image mit dem Modell wird heruntergeladen und auf dem lokalen System gestartet.
+Wenn bei der Bereitstellung eines Modells für ACI oder AKS Probleme auftreten, versuchen Sie, es als lokalen Webdienst bereitzustellen. Das Verwenden eines lokalen Webdiensts erleichtert die Problembehandlung.
 
 Im Repository [MachineLearningNotebooks](https://github.com/Azure/MachineLearningNotebooks) finden Sie ein beispielhaftes [lokales Bereitstellungsnotebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/deploy-to-local/register-model-deploy-local.ipynb), das Sie erkunden können.
 
@@ -128,9 +126,9 @@ service.wait_for_deployment(True)
 print(service.port)
 ```
 
-Wenn Sie Ihre eigene YAML-Datei für die Conda-Spezifikation definieren, müssen Sie „azureml-defaults“ mit einer Version größer gleich 1.0.45 als Pip-Abhängigkeit auflisten. Dieses Paket enthält die erforderlichen Funktionen zum Hosten des Modells als Webdienst.
+Wenn Sie Ihre eigene YAML-Datei für die Conda-Spezifikation definieren, listen Sie „azureml-defaults“ mit einer Version größer oder gleich 1.0.45 als Pip-Abhängigkeit auf. Dieses Paket ist erforderlich, um das Modell als Webdienst zu hosten.
 
-An diesem Punkt können Sie mit dem Dienst wie gewohnt arbeiten. Der folgende Code zeigt beispielsweise, wie Daten an den Dienst gesendet werden:
+An diesem Punkt können Sie mit dem Dienst wie gewohnt arbeiten. Der folgende Code zeigt, wie Daten an den Dienst gesendet werden:
 
 ```python
 import json
@@ -163,7 +161,7 @@ print(service.run(input_data=test_sample))
 > [!NOTE]
 > Das Skript wird aus dem Speicherort erneut geladen, der durch das vom Dienst verwendete `InferenceConfig`-Objekt angegeben wird.
 
-Um das Modell, Conda-Abhängigkeiten oder eine Bereitstellungskonfiguration zu ändern, verwenden Sie [update()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#update--args-). Das folgende Beispiel aktualisiert das vom Dienst verwendete Modell:
+Um das Modell, Conda-Abhängigkeiten oder eine Bereitstellungskonfiguration zu ändern, verwenden Sie [update()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#&preserve-view=trueupdate--args-). Das folgende Beispiel aktualisiert das vom Dienst verwendete Modell:
 
 ```python
 service.update([different_model], inference_config, deployment_config)
@@ -171,7 +169,7 @@ service.update([different_model], inference_config, deployment_config)
 
 ### <a name="delete-the-service"></a>Löschen des Diensts
 
-Verwenden Sie zum Löschen des Diensts [delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#delete--).
+Verwenden Sie zum Löschen des Diensts [delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#&preserve-view=truedelete--).
 
 ### <a name="inspect-the-docker-log"></a><a id="dockerlog"></a> Untersuchen des Docker-Protokolls
 
@@ -189,7 +187,7 @@ Sie können den Fehler beheben, indem Sie den Wert von `memory_gb` in `deploymen
  
 ## <a name="container-cannot-be-scheduled"></a>Planen des Containers nicht möglich
 
-Beim Bereitstellen eines Diensts für ein Azure Kubernetes Service-Computeziel versucht Azure Machine Learning, den Dienst mit der angeforderten Menge von Ressourcen zu planen. Wenn nach 5 Minuten keine Knoten mit der entsprechenden Menge von verfügbaren Ressourcen im Cluster vorhanden sind, schlägt die Bereitstellung fehl mit der Meldung `Couldn't Schedule because the kubernetes cluster didn't have available resources after trying for 00:05:00` (Planung nicht möglich, da im Kubernetes-Cluster nach 00:05:00 Stunden keine verfügbaren Ressourcen vorhanden sind.). Sie können diesen Fehler beheben, indem Sie entweder weitere Knoten hinzufügen oder die SKU Ihrer Knoten oder die Ressourcenanforderungen für Ihren Dienst ändern. 
+Beim Bereitstellen eines Diensts für ein Azure Kubernetes Service-Computeziel versucht Azure Machine Learning, den Dienst mit der angeforderten Menge von Ressourcen zu planen. Wenn nach 5 Minuten keine Knoten mit der entsprechenden Menge von verfügbaren Ressourcen im Cluster vorhanden sind, schlägt die Bereitstellung fehl. Die Fehlermeldung ist `Couldn't Schedule because the kubernetes cluster didn't have available resources after trying for 00:05:00`. Sie können diesen Fehler beheben, indem Sie entweder weitere Knoten hinzufügen, die SKU Ihrer Knoten oder die Ressourcenanforderungen für Ihren Dienst ändern. 
 
 In der Fehlermeldung ist in der Regel angegeben, von welcher Ressource mehr benötigt wird. Wenn beispielsweise eine Fehlermeldung angezeigt wird, in der `0/3 nodes are available: 3 Insufficient nvidia.com/gpu` (0/3 Knoten sind verfügbar: 3 unzureichend nvidia.com/gpu) steht, bedeutet dies, dass der Dienst GPUs benötigt und drei Knoten im Cluster vorhanden sind, die nicht über verfügbare GPUs verfügen. Dieses Problem kann durch Hinzufügen weiterer Knoten behoben werden, wenn Sie eine GPU-SKU verwenden, oder durch Wechseln zu einer GPU-fähigen SKU, wenn nicht. Alternativ können Sie Ihre Umgebung so ändern, dass keine GPUs erforderlich sind.  
 
@@ -201,7 +199,7 @@ Verwenden Sie die Informationen im Abschnitt [Untersuchen des Docker-Protokolls]
 
 ## <a name="function-fails-get_model_path"></a>Fehler bei der Funktion: get_model_path()
 
-Oftmals wird in der `init()`-Funktion im Bewertungsskript die Funktion [Model.get_model_path()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) aufgerufen, um eine Modelldatei oder einen Ordner mit Modelldateien im Container zu finden. Wenn die Datei oder der Ordner für das Modell nicht gefunden werden kann, tritt bei der Funktion ein Fehler auf. Die einfachste Möglichkeit zum Debuggen dieses Fehlers besteht darin, den unten dargestellten Python-Code in der Containershell auszuführen:
+Oftmals wird in der `init()`-Funktion im Bewertungsskript die Funktion [Model.get_model_path()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=trueget-model-path-model-name--version-none---workspace-none-) aufgerufen, um eine Modelldatei oder einen Ordner mit Modelldateien im Container zu finden. Wenn die Datei oder der Ordner für das Modell nicht gefunden werden kann, tritt bei der Funktion ein Fehler auf. Die einfachste Möglichkeit zum Debuggen dieses Fehlers besteht darin, den unten dargestellten Python-Code in der Containershell auszuführen:
 
 ```python
 from azureml.core.model import Model
@@ -239,13 +237,16 @@ Der Statuscode 502 gibt an, dass der Dienst eine Ausnahme ausgelöst hat oder i
 
 ## <a name="http-status-code-503"></a>HTTP-Statuscode 503
 
-Azure Kubernetes Service-Bereitstellungen unterstützen die automatische Skalierung, mit der das Hinzufügen von Replikaten ermöglicht wird, um zusätzliche Last zu unterstützen. Die Autoskalierung wurde jedoch für die Behandlung **stetiger** Veränderungen der Last konzipiert. Wenn Sie große Spitzen bei den Anforderungen pro Sekunde erhalten, erhalten Clients möglicherweise den HTTP-Statuscode 503.
+Azure Kubernetes Service-Bereitstellungen unterstützen die automatische Skalierung, mit der das Hinzufügen von Replikaten ermöglicht wird, um zusätzliche Last zu unterstützen. Die Autoskalierung wurde für die Behandlung **gradueller** Änderungen der Auslastung konzipiert. Wenn Sie große Spitzen bei den Anforderungen pro Sekunde erhalten, erhalten Clients möglicherweise den HTTP-Statuscode 503. Obwohl die Autoskalierung schnell reagiert, nimmt die Erstellung zusätzlicher Container in AKS beträchtliche Zeit in Anspruch.
+
+Skalierungsentscheidungen werden auf der Grundlage der Auslastung der aktuellen Containerreplikate getroffen. Zur Ermittlung der aktuellen Auslastung wird die Anzahl ausgelasteter Replikate (Replikate, die eine Anforderung verarbeiten) durch die Gesamtanzahl aktueller Replikate geteilt. Übersteigt dieser Wert `autoscale_target_utilization`, werden weitere Replikate erstellt. Ist der Wert niedriger, wird die Replikatanzahl verringert. Entscheidungen zum Hinzufügen von Replikaten sind eifrig und schnell (ungefähr 1 Sekunde). Die Entscheidung, Replikate zu entfernen, erfolgt zurückhaltend (etwa 1 Minute). Der Auslastungsgrad der Autoskalierung ist standardmäßig auf **70 %** festgelegt, was bedeutet, dass der Dienst Spitzen bei den Anforderungen pro Sekunde (RPS) von **bis zu 30 %** verarbeiten kann.
 
 Es gibt zwei Möglichkeiten, die beim Verhindern des Statuscodes 503 helfen können:
 
-* Ändern Sie den Auslastungsgrad für die Erstellung neuer Replikate durch die automatische Skalierung.
-    
-    Der Auslastungsgrad der automatischen Skalierung ist standardmäßig auf 70 % festgelegt, was bedeutet, dass der Dienst Spitzen bei den Anforderungen pro Sekunde (RPS) von bis zu 30 % verarbeiten kann. Sie können den Auslastungsgrad anpassen, indem Sie einen niedrigeren Wert für `autoscale_target_utilization` festlegen.
+> [!TIP]
+> Diese beiden Ansätze können einzeln oder in Kombination verwendet werden.
+
+* Ändern Sie den Auslastungsgrad für die Erstellung neuer Replikate durch die automatische Skalierung. Sie können den Auslastungsgrad anpassen, indem Sie einen niedrigeren Wert für `autoscale_target_utilization` festlegen.
 
     > [!IMPORTANT]
     > Durch diese Änderung werden Replikate *nicht schneller* erstellt. Stattdessen werden sie mit einem niedrigeren Schwellenwert für die Auslastung erstellt. Anstatt abzuwarten, bis der Dienst zu 70 % ausgelastet ist, werden Replikate schon bei 30 % Auslastung erstellt, wenn Sie den Wert in 30 % ändern.
@@ -276,7 +277,7 @@ Es gibt zwei Möglichkeiten, die beim Verhindern des Statuscodes 503 helfen kö
     > [!NOTE]
     > Wenn Anforderungsspitzen eingehen, die die neue Mindestanzahl von Replikaten überschreiten, erhalten Sie möglicherweise wieder den Statuscode 503. Wenn sich der Datenverkehr Ihres Diensts beispielsweise erhöht, müssen Sie die Mindestanzahl von Replikaten möglicherweise erhöhen.
 
-Weitere Informationen zum Festlegen von `autoscale_target_utilization`, `autoscale_max_replicas` und `autoscale_min_replicas` finden Sie in der Modulreferenz zu [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py).
+Weitere Informationen zum Festlegen von `autoscale_target_utilization`, `autoscale_max_replicas` und `autoscale_min_replicas` finden Sie in der Modulreferenz zu [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py&preserve-view=true).
 
 ## <a name="http-status-code-504"></a>HTTP-Statuscode 504
 
@@ -286,7 +287,11 @@ Sie können das Timeout erhöhen oder versuchen, den Dienst zu beschleunigen, in
 
 ## <a name="advanced-debugging"></a>Erweitertes Debuggen
 
-In einigen Fällen müssen Sie den in der Modellbereitstellung enthaltenen Python-Code ggf. interaktiv debuggen. Dies ist beispielsweise der Fall, wenn das Einstiegsskript fehlschlägt und der Grund nicht durch zusätzliche Protokollierung ermittelt werden kann. Mit Visual Studio Code und debugpy können Sie an den Code anfügen, der im Docker-Container ausgeführt wird. Weitere Informationen finden Sie im [Leitfaden „Interaktives Debuggen in VS Code“](how-to-debug-visual-studio-code.md#debug-and-troubleshoot-deployments).
+Sie müssen den in der Modellimplementierung enthaltenen Python-Code ggf. interaktiv debuggen. Dies ist beispielsweise der Fall, wenn das Einstiegsskript fehlschlägt und der Grund nicht durch zusätzliche Protokollierung ermittelt werden kann. Mit Visual Studio Code und debugpy können Sie an den Code anfügen, der im Docker-Container ausgeführt wird.
+
+Weitere Informationen finden Sie im [Leitfaden „Interaktives Debuggen in VS Code“](how-to-debug-visual-studio-code.md#debug-and-troubleshoot-deployments).
+
+## <a name="model-deployment-user-forum"></a>[Benutzerforum zur Modellimplementierung](https://docs.microsoft.com/answers/topics/azure-machine-learning-inference.html)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
