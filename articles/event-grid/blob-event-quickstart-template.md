@@ -3,14 +3,14 @@ title: 'Senden von Blob Storage-Ereignissen an einen Webendpunkt: Vorlage'
 description: Verwenden Sie Azure Event Grid und eine Azure Resource Manager-Vorlage, um ein Blob Storage-Konto zu erstellen und seine Ereignisse zu abonnieren. Senden Sie die Ereignisse an einen Webhook.
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: 32fc17d1af552afa5a81fbc4a5973d69006742b9
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: fc6216142c6bec99cb12bf4e0bdae920f27f1bf2
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661264"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598351"
 ---
-# <a name="route-blob-storage-events-to-web-endpoint-by-using-an-arm-template"></a>Weiterleiten von Blob Storage-Ereignissen an einen Webendpunkt mithilfe einer ARM-Vorlage
+# <a name="quickstart-route-blob-storage-events-to-web-endpoint-by-using-an-arm-template"></a>Schnellstart: Weiterleiten von Blob Storage-Ereignissen an einen Webendpunkt mithilfe einer ARM-Vorlage
 
 Azure Event Grid ist ein Ereignisdienst für die Cloud. In diesem Artikel verwenden Sie eine Azure Resource Manager-Vorlage (ARM-Vorlage), um ein Blob Storage-Konto zu erstellen, Ereignisse für diesen Blobspeicher zu abonnieren und ein Ereignis zum Anzeigen des Ergebnisses auszulösen. Üblicherweise senden Sie Ereignisse an einen Endpunkt, der die Ereignisdaten verarbeitet und entsprechende Aktionen ausführt. Der Einfachheit halber senden Sie die Ereignisse in diesem Artikel allerdings an eine Web-App, die die Nachrichten sammelt und anzeigt.
 
