@@ -11,12 +11,12 @@ author: ajetasin
 ms.author: ajetasi
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: 945e9019d75f9597d89a63c9322cbd4a8d502f15
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 7f3ae912b12f85be16d3df49dc10c022358f3af8
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869863"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437070"
 ---
 # <a name="stream-data-into-azure-sql-database-using-azure-stream-analytics-integration-preview"></a>Streamen von Daten an Azure SQL-Datenbank mithilfe der Azure Stream Analytics-Integration (Vorschauversion)
 
@@ -31,7 +31,7 @@ Benutzer können Streamingdaten jetzt in Echtzeit direkt aus einer Datenbank in 
 - Zusätzliche Benutzerfreundlichkeit mit Vorschau von Daten: Sie können eine Vorschau eingehender Daten aus der Ereignisquelle (Event Hub/IOT Hub) im Kontext der ausgewählten Tabelle anzeigen.
 
 > [!IMPORTANT]
-> Ein Azure Stream Analytics-Auftrag kann Ergebnisse in Azure SQL-Datenbank, Azure SQL Managed Instance oder Azure Synapse Analytics (zuvor Azure SQL Data Warehouse) ausgeben. Weitere Informationen finden Sie unter [Ausgaben](../../stream-analytics/sql-database-output.md).
+> Ein Azure Stream Analytics-Auftrag kann Ergebnisse in Azure SQL-Datenbank, Azure SQL Managed Instance oder Azure Synapse Analytics (vormals SQL Data Warehouse) ausgeben. Weitere Informationen finden Sie unter [Ausgaben](../../stream-analytics/stream-analytics-define-outputs.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

@@ -3,12 +3,12 @@ title: Einrichten der Web-App-Analyse für ASP.NET mit Azure Application Insight
 description: In diesem Artikel erfahren Sie mehr über die Leistung, die Verfügbarkeit und die Nutzungsanalysen für Ihre lokal oder in Azure gehostete ASP.NET-Website.
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.openlocfilehash: acfba63cba520631831888a1480929be3b1897f0
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: c07e7c8e7bd710cb591719fe8d53a3bad6ca2ee0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475531"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973796"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Einrichten von Application Insights für Ihre ASP.NET-Website
 
@@ -42,7 +42,7 @@ Bildschirm für Application Insights-Konfiguration:
 
 Wählen Sie **Erste Schritte** aus.
 
-![Screenshot der Seite „App bei Application Insights registrieren“](./media/asp-net/00004-start-free.png)
+![Screenshot mit der Seite „Application Insights“ und Schaltfläche „Erste Schritte“.](./media/asp-net/00004-start-free.png)
 
 Wenn Sie die Ressourcengruppe oder den Speicherort Ihrer Daten festlegen möchten, klicken Sie auf **Einstellungen konfigurieren**. Ressourcengruppen werden zum Steuern das Zugriffs auf die Daten verwendet. Wenn Sie über mehrere Apps verfügen, die einen Teil desselben Systems bilden, können Sie die dazugehörigen Application Insights-Daten in derselben Ressourcengruppe anordnen.
 

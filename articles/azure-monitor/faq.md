@@ -7,16 +7,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: 6be16c7726b979ec7a6dfb58f4bff5a82a0f6c43
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 4a5203a91ba528328dce7036d4690c6dea137c33
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299098"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054261"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Monitor
 
-Dieser Microsoft-Artikel enthält eine Liste häufig gestellter Fragen zu Azure Monitor.
+Dieser Microsoft-Artikel enthält eine Liste häufig gestellter Fragen zu Azure Monitor. Wenn Sie weiteren Fragen haben, können Sie diese im [Diskussionsforum](https://docs.microsoft.com/answers/questions/topics/single/24223.html) stellen. Wenn eine Frage häufiger gestellt wird, fügen wir sie diesem Artikel hinzu, damit sie schnell und einfach gefunden werden kann.
+
 
 ## <a name="general"></a>Allgemein
 
@@ -98,7 +99,7 @@ Die Schaltflächen **Abfrage-Explorer**, **Speichern** und **Neue Warnungsregel*
 ### <a name="why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-when-opening-log-analytics-from-a-vm"></a>Warum erhalte ich in der Protokollumgebung nach einem Drilldown für einen virtuellen Computer eine Fehlermeldung mit dem Hinweis, dass ich den Ressourcenanbieter „Microsoft.Insights“ für dieses Abonnement registrieren muss, um diese Abfrage zu ermöglichen, wenn ich Log Analytics von einem virtuellen Computer aus öffne? 
 Viele Ressourcenanbieter werden automatisch registriert. Einige Ressourcenanbieter müssen jedoch unter Umständen manuell registriert werden. Der Gültigkeitsbereich der Registrierung ist immer das Abonnement. Weitere Informationen finden Sie unter [Ressourcenanbieter und -typen](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
 
-### <a name="why-am-i-am-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>Warum erhalte ich eine Zugriffsfehlermeldung, wenn ich Log Analytics von einem virtuellen Computer aus öffne? 
+### <a name="why-am-i-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>Warum erhalte ich eine Zugriffsfehlermeldung, wenn ich Log Analytics von einer VM aus öffne? 
 Zum Anzeigen von VM-Protokollen benötigen Sie eine Leseberechtigung für die Arbeitsbereiche, in denen die VM-Protokolle gespeichert sind. In diesen Fällen muss Ihnen Ihr Administrator diese Berechtigungen in Azure erteilen.
 
 ## <a name="metrics"></a>Metriken
@@ -523,9 +524,54 @@ Es gibt jedoch immer noch Fälle, in denen auch bei aktivierter serverseitiger �
 
 In diesem Szenario kann eine 502- oder 503-Antwort aufgrund eines Problems auf Reverseproxyebene an einen Client zurückgegeben und nicht standardmäßig von Application Insights erfasst werden. Um Probleme auf dieser Ebene zu erkennen, müssen Sie möglicherweise Protokolle vom Reverseproxy an Log Analytics weiterleiten und eine benutzerdefinierte Regel erstellen, um nach 502/503-Antworten zu suchen. Weitere Informationen zu häufigen Ursachen von 502- und 503-Fehlern finden Sie im Artikel [Problembehandlung bei HTTP-Fehler „502 Ungültiges Gateway“ und „503 Dienst nicht verfügbar“ in Azure App Service](../app-service/troubleshoot-http-502-http-503.md).     
 
-## <a name="azure-monitor-for-containers"></a>Azure Monitor für Container
 
-Dieser Microsoft-Artikel enthält eine Liste häufig gestellter Fragen zu Azure Monitor für Container. Wenn Sie weitere Fragen zur Lösung haben, besuchen Sie das [Diskussionsforum](https://feedback.azure.com/forums/34192--general-feedback), und stellen Sie Ihre Fragen. Wenn eine Frage häufiger gestellt wird, fügen wir sie diesem Artikel hinzu, damit sie schnell und einfach gefunden werden kann.
+## <a name="opentelemetry"></a>OpenTelemetry
+
+### <a name="what-is-opentelemetry"></a>Was ist OpenTelemetry?
+
+Ein neuer Open-Source-Standard für Einblicke. Weitere Informationen finden Sie unter [https://opentelemetry.io/](https://opentelemetry.io/).
+
+### <a name="why-is-microsoft--azure-monitor-investing-in-opentelemetry"></a>Warum investiert Microsoft/Azure Monitor in OpenTelemetry?
+
+Wir sind der Auffassung, dass es unseren Kunden aus drei Gründen besser dient:
+   1. Ermöglichen der Unterstützung für weitere Kundenszenarien
+   2. Instrumentieren ohne Sorgen über eine Abgrenzung der Hersteller
+   3. Steigern der Transparenz und der Kundenbindung
+
+Außerdem entspricht es der Microsoft-Strategie, [Open Source zu fördern](https://opensource.microsoft.com/).
+
+### <a name="what-additional-value-does-opentelemetry-give-me"></a>Welchen zusätzlichen Wert erhalte ich mit OpenTelemetry?
+
+Zusätzlich zu den oben genannten Gründen ist OpenTelemetry in größeren Umgebungen effizienter und bietet Konsistenz bei Entwurf und Konfiguration für alle Sprachen.
+
+### <a name="how-can-i-test-out-opentelemetry"></a>Wie kann ich OpenTelemetry testen?
+
+Registrieren Sie sich unter [https://aka.ms/AzMonOtel](https://aka.ms/AzMonOtel) für den Beitritt zu unserer Azure Monitor Application Insights-Early Adopter-Community.
+
+### <a name="what-does-ga-mean-in-the-context-of-opentelemetry"></a>Was bedeutet allgemeine Verfügbarkeit im Kontext von OpenTelemetry?
+
+Die Definition der OpenTelemetry-Community für „Allgemein verfügbar“ finden Sie [hier](https://medium.com/opentelemetry/ga-planning-f0f6d7b5302). „Allgemein verfügbar“ bedeutet bei OpenTelemetry jedoch nicht, dass die Features mit den vorhandenen Application Insights-SDKs konform sind. Azure Monitor empfiehlt weiterhin unsere aktuellen Application Insights-SDKs für Kunden, die Features wie [vorab aggregierte Metriken](app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics), [Livemetriken](app/live-stream.md), [Adaptive Stichprobenerstellung](app/sampling.md#adaptive-sampling), [Profiler](app/profiler-overview.md) und [Debuggen von Momentaufnahmen](app/snapshot-debugger.md) benötigen, bis die Features der OpenTelemetry-SDKs ausgereift sind.
+
+### <a name="can-i-use-preview-builds-in-production-environments"></a>Kann ich Vorschaubuilds in Produktionsumgebungen verwenden?
+
+Dies ist nicht empfehlenswert. Weitere Informationen finden Sie in den [zusätzlichen Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+### <a name="whats-the-difference-between-opentelemetry-sdk-and-auto-instrumentation"></a>Worin besteht der Unterschied zwischen dem OpenTelemetry-SDK und automatischer Instrumentierung?
+
+In der OpenTelemetry-Spezifikation wird [SDK](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/glossary.md#telemetry-sdk) definiert. Kurz gesagt, ist „SDK“ ist ein sprachspezifisches Paket, das Telemetriedaten für die verschiedenen Komponenten Ihrer Anwendung sammelt und die Daten über ein Exportprogramm an Azure Monitor sendet.
+
+Das Konzept der automatischen Instrumentierung (manchmal auch mit den Begriffen „Bytecode-Injizierung“, „ohne Code“ oder „Agent-basiert“ bezeichnet) beschreibt die Möglichkeit, Ihre Anwendung zu instrumentieren, ohne den Code zu ändern. Weitere Informationen finden Sie z. B. in der [Infodatei zur automatischen Instrumentierung in OpenTelemetry mit Java](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/master/README.md).
+
+### <a name="whats-the-opentelemetry-collector"></a>Was ist der OpenTelemetry-Collector?
+
+Der OpenTelemetry-Collector wird in der zugehörigen [GitHub-Infodatei](https://github.com/open-telemetry/opentelemetry-collector#opentelemetry-collector) beschrieben. Derzeit verwendet Microsoft den OpenTelemetry-Collector nicht und verlässt sich auf direkte Exportmodule, die ihre Daten an Azure Monitor Application Insights senden.
+
+### <a name="whats-the-difference-between-opencensus-and-opentelemetry"></a>Worin besteht der Unterschied zwischen OpenCensus und OpenTelemetry?
+
+[OpenCensus](https://opencensus.io/) ist der Vorgänger von [OpenTelemetry](https://opentelemetry.io/). Mit der Hilfe von Microsoft entstand OpenTelemetry aus einer Zusammenführung von [OpenTracing](https://opentracing.io/) und OpenCensus als einzelner Einblickstandard für die ganze Welt. Das zurzeit [für die Produktion empfohlene Python-SDK](app/opencensus-python.md) von Azure Monitor basiert auf OpenCensus, es sollen jedoch in Zukunft alle SDKs von Azure Monitor auf OpenTelemetry basieren.
+
+
+## <a name="azure-monitor-for-containers"></a>Azure Monitor für Container
 
 ### <a name="health-feature-is-in-private-preview"></a>Integritätsfeature in privater Vorschau
 
@@ -563,7 +609,7 @@ Für die Agent-Version ciprod12042019 und höhere Versionen werden diese beiden 
 
 Verknüpfen Sie andere Tabellen, um diese Eigenschaftswerte in die Ergebnisse aufzunehmen.
 
-Ändern Sie Ihre Abfragen, um die Eigenschaften „Image“ und „ImageTag“ aus der Tabelle ```ContainerInventory``` aufzunehmen, indem Sie die ContainerID-Eigenschaft verknüpfen. Sie können die Eigenschaft „Name“ (wie sie zuvor in der Tabelle ```ContainerLog``` angezeigt wurde) aus dem Feld „ContaineName“ der Tabelle „KubepodInventory“ aufnehmen, indem Sie die ContainerID-Eigenschaft verknüpfen. Dies ist die empfohlene Option.
+Ändern Sie Ihre Abfragen, um die Eigenschaften „Image“ und „ImageTag“ aus der Tabelle ```ContainerInventory``` aufzunehmen, indem Sie die ContainerID-Eigenschaft verknüpfen. Sie können die Eigenschaft „Name“ (wie sie zuvor in der Tabelle ```ContainerLog``` angezeigt wurde) aus dem Feld „ContaineName“ der Tabelle „KubepodInventory“ einschließen, indem Sie sie in der ContainerID-Eigenschaft verknüpfen. Dies ist die empfohlene Option.
 
 Das folgende Beispiel zeigt eine ausführliche Abfrage, die veranschaulicht, wie Sie diese Feldwerte mit Verknüpfungen abrufen:
 
@@ -664,8 +710,8 @@ Wenn Sie nach der Aktivierung von Azure Monitor für Container für einen AKS-Cl
 
 Die Proxy- und Firewall-Konfigurationsinformationen, die für den Container-Agent mit den Clouds „Azure“, „Azure US Government“ und „Azure China 21Vianet“ erforderlich sind, finden Sie unter den [Netzwerkfirewallanforderungen](insights/container-insights-onboard.md#network-firewall-requirements).
 
+
 ## <a name="azure-monitor-for-vms"></a>Azure Monitor für VMs
-Dieser Microsoft-Artikel enthält eine Liste häufig gestellter Fragen zu Azure Monitor für VMs. Wenn Sie weitere Fragen zur Lösung haben, besuchen Sie das [Diskussionsforum](https://feedback.azure.com/forums/34192--general-feedback), und stellen Sie Ihre Fragen. Wenn eine Frage häufiger gestellt wird, fügen wir sie diesem Artikel hinzu, damit sie schnell und einfach gefunden werden kann.
 
 ### <a name="can-i-onboard-to-an-existing-workspace"></a>Kann ich ein Onboarding zu einem vorhandenen Arbeitsbereich ausführen?
 Wenn Ihre virtuellen Computer bereits mit einem Log Analytics-Arbeitsbereich verbunden sind, können Sie diesen Arbeitsbereich nach dem Onboarding von Azure Monitor für VMs weiterhin verwenden, vorausgesetzt, er befindet sich in einer der [unterstützten Regionen](insights/vminsights-configure-workspace.md#supported-regions).
@@ -739,7 +785,7 @@ Die Antwortzeit ist eine Schätzung. Da wir den Code der Anwendung nicht instrum
 
 Diese Schätzung funktioniert gut für Protokolle, die auf Anforderung/Antwort basieren: Eine einzelne Anforderung wird über die Verbindung gesendet, und eine einzelne Antwort wird empfangen. Dies ist der Fall bei HTTP(S) (ohne Pipelining), wird aber bei anderen Protokollen nicht erfüllt.
 
-### <a name="are-their-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>Gibt es im Free-Tarif von Log Analytics Einschränkungen?
+### <a name="are-there-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>Gibt es im Free-Tarif von Log Analytics Einschränkungen?
 Wenn Sie Azure Monitor über den *Free*-Tarif mit einem Log Analytics-Arbeitsbereich konfiguriert haben, unterstützt das Azure Monitor for VMs-Zuordnungsfeature nur fünf Computer, die mit dem Arbeitsbereich verbunden sind. Wenn fünf VMs mit einem kostenlosen Arbeitsbereich verbunden sind und Sie eine der VMs trennen und später mit einer neuen VM verbinden, wird die neue VM nicht überwacht oder auf der Seite „Zuordnen“ angezeigt.  
 
 Unter dieser Bedingung werden Sie zur Aktion **Jetzt testen** aufgefordert, wenn Sie die VM aufrufen und im linken Bereich auf **Insights** klicken, auch wenn dieser Dienst bereits auf der VM installiert wurde.  Sie werden jedoch nicht zu Optionen aufgefordert, die normalerweise angezeigt werden würden, wenn diese VM nicht in Azure Monitor für VMs integriert wurde. 

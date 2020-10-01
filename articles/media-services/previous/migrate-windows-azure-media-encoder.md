@@ -1,6 +1,6 @@
 ---
 title: Migrieren von Windows Azure Media Encoder zu Media Encoder Standard | Microsoft-Dokumentation
-description: In diesem Thema wird erläutert, wie Sie von Azure Media Encoder zum Media Encoder Standard-Medienprozessor migrieren.
+description: In diesem Thema wird erläutert, wie Sie von Microsoft Azure Media Encoder zum Media Encoder Standard-Medienprozessor migrieren.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/17/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a4a5f2f448cc5e954cf21f9785f788925d5a461e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 9125639ab5b563a8db7cfa5730bd9673f383071c
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89263942"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90529246"
 ---
 # <a name="migrate-from-windows-azure-media-encoder-to-media-encoder-standard"></a>Migrieren von Windows Azure Media Encoder zu Media Encoder Standard
 

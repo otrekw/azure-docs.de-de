@@ -12,12 +12,12 @@ ms.author: jrasnick
 ms.reviewer: igorstan, carlrab
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: a4da74c01f732f3a62d29847d5f61934dede9778
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1364da4849a07100ac28644a51409837012f93cc
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85208092"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986216"
 ---
 # <a name="column-level-security"></a>Sicherheit auf Spaltenebene
 
@@ -28,9 +28,9 @@ Nach der Bereitstellung dieses Videos wurde auch die [Sicherheit auf Zeilenebene
 
 Sicherheit auf Spaltenebene vereinfacht das Entwerfen und Programmieren der Sicherheit in Ihrer Anwendung, indem Sie den Spaltenzugriff einschränken können, um vertrauliche Daten zu schützen. Zum Beispiel können Sie so sicherstellen, dass bestimmte Benutzer nur auf bestimmte Spalten einer Tabelle zugreifen können, die für ihre Abteilung relevant sind. Die Datenbeschränkungszugriffslogik befindet sich auf der Datenbankebene, statt fern der Daten auf einer anderen Anwendungsebene. Die Datenbank wendet die Zugriffsbeschränkungen jedes Mal an, wenn ein Datenzugriff von einer beliebigen Ebene aus versucht wird. Dadurch bietet Ihr gesamtes Sicherheitssystem eine geringere Angriffsfläche und ist zuverlässiger und robuster. Darüber hinaus entfällt dank Sicherheit auf Spaltenebene die Notwendigkeit, Sichten zum Herausfiltern von Spalten einzuführen, um den Benutzern Zugriffsbeschränkungen aufzuerlegen.
 
-Sie können die Sicherheit auf Spaltenebene mit der T-SQL-Anweisung [GRANT](/sql/t-sql/statements/grant-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) implementieren. Mit diesem Mechanismus wird sowohl die SQL- als auch die Azure Active Directory (AAD)-Authentifizierung unterstützt.
+Sie können die Sicherheit auf Spaltenebene mit der T-SQL-Anweisung [GRANT](/sql/t-sql/statements/grant-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) implementieren. Mit diesem Mechanismus wird sowohl die SQL- als auch die Azure AD-Authentifizierung (Azure Active Directory) unterstützt.
 
-![cls](./media/column-level-security/cls.png)
+![Diagramm einer schematische Tabelle, bei der die erste Spalte ein geschlossenes Vorhängeschloss und orangefarbene Zellen aufweist, während die Zellen in den anderen Spalten weiß sind](./media/column-level-security/cls.png)
 
 ## <a name="syntax"></a>Syntax
 

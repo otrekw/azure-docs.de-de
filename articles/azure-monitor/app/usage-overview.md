@@ -3,12 +3,12 @@ title: Verwendungsanalyse mit Azure Application Insights | Microsoft Docs
 description: Verstehen Sie Ihre Benutzer und wie sie Ihre App verwenden.
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 4ace90b0893eed24227cadcb9a5b9fae7d502ff8
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 4f4954451bfa195b07c580ffa451b8cb333eb32c
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800210"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532102"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Verwendungsanalyse mit Application Insights
 
@@ -54,7 +54,7 @@ Ermitteln Sie, wann Personen Ihre App verwenden, für welche Seiten sie sich am 
 
 In Benutzer- und Sitzungsberichte werden Ihre Daten nach Seiten oder benutzerdefinierten Ereignissen gefiltert und nach Eigenschaften wie Speicherort, Umgebung und Seite segmentiert. Sie können auch eigene Filter hinzufügen.
 
-![Benutzer](./media/usage-overview/users.png)  
+![Bildschirmaufnahme der Übersichtsseite „Benutzer“ für ein fiktives Unternehmen](./media/usage-overview/users.png)  
 
 Aus den Informationen auf der rechten Seite gehen interessante Muster im Datensatz hervor.  
 
@@ -71,7 +71,7 @@ Anhand der Vermerkdauer können Sie basierend auf Kohorten von Benutzern, die w�
 - Bilden von Hypothesen basierend auf echten Benutzerdaten 
 - Bestimmen, ob die Vermerkdauer ein Problem in Ihrem Produkt darstellt 
 
-![Aufbewahrung](./media/usage-overview/retention.png) 
+![Bildschirmaufnahme der Übersichtsseite „Aufbewahrung“, auf der Informationen darüber angezeigt werden, wie oft Benutzer zur Verwendung ihrer App zurückkehren](./media/usage-overview/retention.png) 
 
 Die Vermerkdauer-Steuerelemente oben ermöglichen Ihnen das Definieren bestimmter Ereignisse und des Zeitbereichs für die Berechnen der Vermerkdauer. Das Diagramm in der Mitte bietet eine visuelle Darstellung des Prozentsatzes der gesamten Vermerkdauer nach dem angegebenen Zeitbereichs. Im Diagramm unten wird eine einzelne Vermerkdauer in einem bestimmten Zeitraum dargestellt. Dank dieses Detaillierungsgrads können Sie mit höherer Granularität verstehen, was Ihre Benutzer tun und was sich auf zurückkehrende Benutzer auswirkt.  
 
@@ -110,7 +110,7 @@ Erfahren Sie mehr über [benutzerdefinierte Ereignisse](./api-custom-events-metr
 ### <a name="slice-and-dice-events"></a>Aufteilen von Ereignissen
 
 In den Tools für Benutzer, Sitzungen und Ereignisse können Sie benutzerdefinierte Ereignisse nach Benutzer, Ereignisname und Eigenschaften aufteilen.
-![Benutzer](./media/usage-overview/users.png)  
+![Bildschirmaufnahme der Übersichtsseite „Benutzer“ für ein fiktives Unternehmen](./media/usage-overview/users.png)  
   
 ## <a name="design-the-telemetry-with-the-app"></a>Entwerfen der Telemetrie mit der App
 

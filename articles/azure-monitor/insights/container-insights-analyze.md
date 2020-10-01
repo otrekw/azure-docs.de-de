@@ -3,12 +3,12 @@ title: Kubernetes-Überwachung mit Azure Monitor für Container | Microsoft-Doku
 description: In diesem Artikel wird beschrieben, wie Sie mit Azure Monitor für Container die Leistung eines Kubernetes-Clusters anzeigen und analysieren.
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: d8b298208794e4ba562a608f22f4d0a539b81b47
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 888853f0e9e7634cafa5e480752371c501376158
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166636"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988128"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Überwachen der Leistung von Kubernetes-Clustern mit Azure Monitor für Container
 
@@ -161,7 +161,7 @@ Virtuelle Knoten mit Azure Container Instances, auf denen das Linux-Betriebssyst
 
 Auf einem erweiterten Knoten können Sie per Drilldown von dem Pod oder Container, der auf dem Knoten ausgeführt wird, zum Controller navigieren, um für diesen Controller gefilterte Leistungsdaten anzuzeigen. Wählen Sie den Wert in der Spalte **Controller** für den spezifischen Knoten aus.
 
-![Exemplarischer Drilldownvorgang vom Knoten zum Controller in der Leistungsansicht](./media/container-insights-analyze/drill-down-node-controller.png)
+![Screenshot des Drilldownvorgangs vom Knoten zum Controller in der Leistungsansicht](./media/container-insights-analyze/drill-down-node-controller.png)
 
 Wählen Sie oben auf der Seite Controller oder Container aus, um den Status und die Ressourcenauslastung für diese Objekte zu überprüfen. Wählen Sie zum Überprüfen der Arbeitsspeicherauslastung in der Dropdownliste **Metrik** die Option **Arbeitsspeicher RSS** oder **Arbeitssatz für Arbeitsspeicher** aus. **Arbeitsspeicher RSS** wird nur für die Kubernetes-Version 1.8 und höher unterstützt. Andernfalls werden Werte für **Min&nbsp;%** als *NaN&nbsp;%* angezeigt. Dieser numerische Datentypwert stellt einen nicht definierten oder nicht darstellbaren Wert dar.
 

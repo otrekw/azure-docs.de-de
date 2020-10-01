@@ -4,12 +4,12 @@ description: Verschaffen Sie sich einen Überblick darüber, was Sie mit Metrikw
 ms.date: 08/16/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 035b68afed7383956beb13e367aa7a1f6dfcd070
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 8e57ec698f96826f493d048490ac053672e45895
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258439"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595562"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Informationen zur Funktionsweise von Metrikwarnungen in Azure Monitor
 
@@ -137,13 +137,15 @@ Diese Funktion wird derzeit für Plattformmetriken (keine benutzerdefinierten Me
 
 | Dienst | Öffentliches Azure | Behörden | China |
 |:--------|:--------|:--------|:--------|
-| Virtuelle Computer  | **Ja** | Nein | Nein |
+| Virtuelle Computer<sup>1</sup>  | **Ja** | Nein | Nein |
 | SQL Server-Datenbanken | **Ja** | **Ja** | **Ja** |
 | Pools für elastische SQL-Datenbanken | **Ja** | **Ja** | **Ja** |
 | NetApp Files-Kapazitätspools | **Ja** | **Ja** | **Ja** |
 | NetApp Files-Volumes | **Ja** | **Ja** | **Ja** |
 | Schlüsseltresore | **Ja** | **Ja** | **Ja** |
 | Data Box Edge-Geräte | **Ja** | **Ja** | **Ja** |
+
+<sup>1</sup> Für Netzwerkmetriken (Eingehender Netzwerkverkehr gesamt, Ausgehender Netzwerkverkehr gesamt, Eingehende Datenflüsse, Ausgehende Datenflüsse, Maximale Erstellungsrate für eingehende Datenflüsse, Maximale Erstellungsrate für ausgehende Datenflüsse) virtueller Computer nicht unterstützt.
 
 Sie können den Bereich für die Überwachung mit einer einzelnen Metrikwarnregel auf drei Arten angeben. Beispielsweise können Sie bei virtuellen Computern den Bereich wie folgt angeben:  
 

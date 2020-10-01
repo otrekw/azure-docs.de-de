@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 9bc323e0fafc576c5e75f46b3c38fdf140b1b0f4
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 240c96016304c009c36485869ac15f5f38076fb7
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799801"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088288"
 ---
 # <a name="enable-azure-monitor-for-vms-by-using-azure-policy"></a>Aktivieren von Azure Monitor für VMs mit Azure Policy
 In diesem Artikel erfahren Sie, wie Sie Azure Monitor für VMs mithilfe von Azure Policy für Azure-VMs oder Hybrid-VMs aktivieren, die mit Azure Arc (Vorschauversion) verbunden sind. Azure Policy ermöglicht Ihnen das Zuweisen von Richtliniendefinitionen, mit denen die erforderlichen Agents für Azure Monitor für VMs in Ihrer Azure-Umgebung installiert werden. Außerdem wird bei der Erstellung der einzelnen VMs automatisch die Überwachung der VMs aktiviert. Azure Monitor für VMs umfasst eine Funktion, mit der Sie nicht richtlinienkonforme VMs in Ihrer Umgebung ermitteln und die jeweils vorliegenden Probleme behandeln können. Verwenden Sie diese Funktion, anstatt direkt mit Azure Policy zu arbeiten.
@@ -102,7 +102,7 @@ Klicken Sie auf **Wartungstask erstellen**, um einen Wartungstask zum Behandeln 
 
 Klicken Sie auf **Wartung ausführen**, um den Wartungstask zu erstellen, und dann erneut auf **Wartung ausführen**, um den Task zu starten. Wahrscheinlich müssen Sie mehrere Wartungstasks erstellen (einen Task pro Richtliniendefinition). Es ist nicht möglich, einen Wartungstask für eine Initiative zu erstellen.
 
-[![Korrektur](media/vminsights-enable-at-scale-policy/remediation.png)](media/vminsights-enable-at-scale-policy/remediation.png#lightbox)
+[![Screenshot des Bereichs „Policy Remediation“ (Richtlinienwartung) für Monitor | Virtual Machines](media/vminsights-enable-at-scale-policy/remediation.png)](media/vminsights-enable-at-scale-policy/remediation.png#lightbox)
 
 
 Nachdem die Wartungstasks abgeschlossen wurden, sollten Ihre VMs konform sein. Die Agents sollten also installiert und die VMs sollten für Azure Monitor für VMs aktiviert sein. 

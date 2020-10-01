@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8fa21cc690742a71100c53b4e5b6ce122d1a6147
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 76027275d6f0b838ed6fbb7275086f190701d286
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75864076"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439826"
 ---
 # <a name="walkthroughs-executing-the-team-data-science-process"></a>Exemplarische Vorgehensweisen zum Ausführen des Team Data Science-Prozesses
 
@@ -32,7 +32,7 @@ Es folgen kurze Beschreibungen der exemplarischen Vorgehensweisen auf der jeweil
 - [Exemplarische Vorgehensweisen zu HDInsight Hadoop unter Verwendung von Hive:](walkthroughs-hdinsight-hadoop.md) In diesen exemplarischen Vorgehensweisen wird Hive mit einem HDInsight Hadoop-Cluster für Predictive Analytics verwendet.
 - [Exemplarische Vorgehensweisen zu Azure Data Lake unter Verwendung von U-SQL:](walkthroughs-azure-data-lake.md) In diesen exemplarischen Vorgehensweisen wird U-SQL mit Azure Data Lake für Predictive Analytics verwendet.
 - [SQL Server:](walkthroughs-sql-server.md) In diesen exemplarischen Vorgehensweisen werden SQL Server, SQL Server R Services und SQL Server Python Services für Predictive Analytics verwendet.
-- [SQL Data Warehouse:](walkthroughs-sql-data-warehouse.md) In diesen exemplarischen Vorgehensweisen wird SQL Data Warehouse für Predictive Analytics verwendet. 
+- [Azure Synapse Analytics:](walkthroughs-sql-data-warehouse.md) In diesen exemplarischen Vorgehensweisen wird Azure Synapse Analytics für Predictive Analytics verwendet. 
 
 
 

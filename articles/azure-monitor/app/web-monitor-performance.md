@@ -4,12 +4,12 @@ description: Erste Schritte mit Application Insights. Analysieren Sie die Auslas
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
-ms.openlocfilehash: d624286d214a86364fe85192bf5ede885d4b6a78
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f84e1065f93fc2cca950f12d5df537b931faac8d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323450"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987160"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Leistung in Webanwendungen überwachen
 
@@ -112,11 +112,11 @@ Sie können die Oberfläche für die Leistungsuntersuchung verwenden, um langsam
 
 Um ein besseres Gefühl für das Benutzererlebnis bei diesem Vorgang zu entwickeln, können wir einen größeren Zeitbereich auswählen. Wir können die Auswahl dann auch auf ein bestimmtes Zeitfenster begrenzen, in dem der Vorgang langsam ausgeführt wurde. Im folgenden Beispiel haben wir den Zeitbereich von 24 Stunden (Standardeinstellung) in 7 Tage geändert und dann das Zeitfenster von 21:47 bis 00:47 zwischen Dienstag, dem 12., und Mittwoch, dem 13., ausgewählt. Auf der rechten Seite wurde sowohl die Verteilung der Dauer als auch die Anzahl von Stichproben und Profiler-Ablaufverfolgungen aktualisiert.
 
-![Drei Spitzenwerte für die Dauer von „GET Customers/Details“ im 7-Tage-Zeitbereich mit einem Zeitfenster](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrend.png)
+![Screenshot von „Leistung (Vorschau)“ mit drei Spitzenwerten für die Dauer im Bereich von 7 Tagen mit einem Zeitfenster](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrend.png)
 
 Um die Ansicht auf die langsamen Reaktionen einzugrenzen, zeigen wir als Nächstes die Werte für die Dauer an, die zwischen dem 95. und dem 99. Perzentil liegen. Diese Werte repräsentieren die 4% Benutzerinteraktionen, die eine langsame Reaktion aufgewiesen haben.
 
-![Drei Spitzenwerte für die Dauer von „GET Customers/Details“ im 7-Tage-Zeitbereich mit einem Zeitfenster](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrendZoomed95th99th.png)
+![Screenshot mit drei Spitzenwerten für die Dauer von „GET Customers/Details“ im Bereich von 7 Tagen mit einem Zeitfenster](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrendZoomed95th99th.png)
 
 Nun können wir uns entweder die repräsentativen Stichproben ansehen, indem wir auf die Schaltfläche „Stichproben“ klicken, oder die repräsentativen Profiler-Ablaufverfolgungen anzeigen, indem wir auf die Schaltfläche „Profiler-Ablaufverfolgungen“ klicken. Dieses Beispiel enthält vier Ablaufverfolgungen, die für „GET Customers/Details“ in dem Zeitfenster und dem Bereich der Dauer gesammelt wurden, das bzw. der von Interesse ist.
 
@@ -126,7 +126,7 @@ In einigen Fällen liegt das Problem nicht in Ihrem Code, sondern in einer Abhä
 
 Auf der Oberfläche für die Leistungsuntersuchung werden relevante Erkenntnisse neben dem Stichprobensatz angezeigt, den Sie untersuchen. Die beste Methode, alle verfügbaren Einblicke anzuzeigen, besteht darin, zu einem 30-Tage-Zeitbereich zu wechseln und dann die Option „Gesamt“ auszuwählen, um Einblicke in alle Vorgänge des vergangenen Monats zu erhalten.
 
-![Drei Spitzenwerte für die Dauer von „GET Customers/Details“ im 7-Tage-Zeitbereich mit einem Zeitfenster](./media/web-monitor-performance/Performance30DayOveralllnsights.png)
+![Screenshot von „Leistung (Vorschau)“ mit dem geöffneten Fenster „Gesamt“ und Auswahl von „Einblicke“.](./media/web-monitor-performance/Performance30DayOveralllnsights.png)
 
 
 ## <a name="next-steps"></a><a name="next"></a>Nächste Schritte

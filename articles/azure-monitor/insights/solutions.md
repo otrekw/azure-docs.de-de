@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/07/2020
-ms.openlocfilehash: 04f2d11b9fc8bbd61319a057c091cddbf140b9db
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: d509862fe4dafff174ee03c3b5cc887fa9d9ff22
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135527"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085993"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Überwachungslösungen in Azure Monitor
 
@@ -26,7 +26,7 @@ Auf der **Übersichtsseite** der Lösung in Azure Monitor wird für jede in eine
 
 Ändern Sie über die Dropdownfelder am oberen Bildschirmrand den Arbeitsbereich oder den Zeitbereich für die Kacheln. Klicken Sie auf die Kachel für eine Lösung, um die dazugehörige Ansicht mit einer ausführlicheren Analyse der gesammelten Daten anzuzeigen.
 
-[![Übersicht](media/solutions/overview.png)](media/solutions/overview.png#lightbox)
+[![Screenshot des Menüs des Azure-Portals mit ausgewählter Option „Lösungen“ und im Bereich „Lösungen“ angezeigten Lösungen](media/solutions/overview.png)](media/solutions/overview.png#lightbox)
 
 Überwachungslösungen können mehrere Arten von Azure-Ressourcen enthalten, und Sie können beliebige, in einer Lösung enthaltene Ressourcen anzeigen (genau wie bei anderen Ressourcen). So werden z.B. alle in der Lösung enthaltenen Protokollabfragen unter **Lösungsabfragen** im [Abfrage-Explorer](../log-query/get-started-portal.md#load-queries) aufgelistet. Sie können diese Abfragen verwenden, wenn Sie mit [Protokollabfragen](../log-query/log-query-overview.md) eine Ad-hoc-Analyse durchführen.
 
@@ -109,18 +109,18 @@ Mitglieder der Community können Verwaltungslösungen für Azure-Schnellstartvor
     az login
     ```
 
-1. Installieren Sie die `log-analytics`-Erweiterung.
+1. Installieren Sie die `log-analytics-solution`-Erweiterung.
 
-   Der Befehl `log-analytics` ist eine experimentelle Erweiterung der eigentlichen Azure-Befehlszeilenschnittstelle. Weitere Informationen zu Erweiterungen finden Sie unter [Verwenden von Erweiterungen mit der Azure CLI](/cli/azure/azure-cli-extensions-overview?).
+   Der Befehl `log-analytics-solution` ist eine experimentelle Erweiterung der eigentlichen Azure-Befehlszeilenschnittstelle. Weitere Informationen zu Erweiterungen finden Sie unter [Verwenden von Erweiterungen mit der Azure CLI](/cli/azure/azure-cli-extensions-overview?).
 
    ```azurecli
-   az extension add --name log-analytics
+   az extension add --name log-analytics-solution
    ```
 
    Die folgende Warnung wird erwartet.
 
    ```output
-   The installed extension `log-analytics` is experimental and not covered by customer support.  Please use with discretion.
+   The installed extension `log-analytics-solution` is experimental and not covered by customer support.  Please use with discretion.
    ```
 
 ### <a name="install-a-solution-with-the-azure-cli"></a>Installieren einer Lösung mit der Azure-Befehlszeilenschnittstelle
@@ -159,7 +159,6 @@ Für alle Überwachungslösungen wird ein [Log Analytics-Arbeitsbereich](../plat
 
 * Eine Lösungsinstallation kann jeweils nur einen Log Analytics-Arbeitsbereich und ein einzelnes Automation-Konto verwenden. Sie können die Lösung separat in mehreren Arbeitsbereichen installieren.
 * Sollte eine Lösung ein Automation-Konto benötigen, müssen der Log Analytics-Arbeitsbereich und das Automation-Konto miteinander verknüpft werden. Ein Log Analytics-Arbeitsbereich kann nur mit einem Automation-Konto verknüpft werden, und ein Automation-Konto kann nur mit einem Log Analytics-Arbeitsbereich verknüpft werden.
-* Für eine Verknüpfung müssen sich der Log Analytics-Arbeitsbereich und das Automation-Konto im selben Abonnement befinden, können sich aber in unterschiedlichen Ressourcengruppen befinden, die in derselben Region bereitgestellt sind. (Ausnahme: Ein Arbeitsbereich befindet sich in der Region „USA, Osten“ und ein Automation-Konto in der Region „USA, Osten 2“.)
 
 Wenn Sie die Lösung über den Azure Marketplace installieren, werden Sie zur Angabe eines Arbeitsbereichs und eines Automation-Kontos aufgefordert. Die Verknüpfung zwischen beiden wird für Sie erstellt, sofern sie noch nicht besteht.
 

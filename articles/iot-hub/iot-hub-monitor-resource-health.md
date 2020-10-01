@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Technical Support'
 - devx-track-csharp
-ms.openlocfilehash: c7b2055494d61ba348ae6226e6fc0ad9ce5775bb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 100f87b8a13fb424706c3b5ec13268cd3ba42bbe
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022138"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89438397"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Schnelle Überwachung der Integrität von Azure IoT Hub und Diagnose von Problemen
 
@@ -61,7 +61,7 @@ Die Kategorie für Verbindungen verfolgt Ereignisse zum Herstellen und Trennen v
             "operationName": "deviceConnect",
             "category": "Connections",
             "level": "Information",
-            "properties": "{\"deviceId\":\"<deviceId>\",\"protocol\":\"<protocol>\",\"authType\":\"{\\\"scope\\\":\\\"device\\\",\\\"type\\\":\\\"sas\\\",\\\"issuer\\\":\\\"iothub\\\",\\\"acceptingIpFilterRule\\\":null}\",\"maskedIpAddress\":\"<maskedIpAddress>\"}",
+            "properties": "{\"deviceId\":\"<deviceId>\",\"sdkVersion\":\"<sdkVersion>\",\"protocol\":\"<protocol>\",\"authType\":\"{\\\"scope\\\":\\\"device\\\",\\\"type\\\":\\\"sas\\\",\\\"issuer\\\":\\\"iothub\\\",\\\"acceptingIpFilterRule\\\":null}\",\"maskedIpAddress\":\"<maskedIpAddress>\"}",
             "location": "Resource location"
         }
     ]
@@ -470,6 +470,42 @@ Die Kategorie „Gerätestreams“ verfolgt Anforderung-Antwort-Interaktionen, d
          }
     ]
 }
+```
+
+### <a name="sdk-version"></a>SDK-Version
+
+Bei einigen Vorgängen wird eine `sdkVersion`-Eigenschaft im `properties`-Objekt zurückgegeben. Wenn für diese Vorgänge ein Gerät oder eine Back-End-App eines der Azure IoT-SDKs verwendet wird, enthält diese Eigenschaft Informationen zum verwendeten SDK, die SDK-Version und die Plattform, auf der das SDK ausgeführt wird. Das folgende Beispiel zeigt die `sdkVersion`-Eigenschaft, die bei Verwendung des Node.js-Geräte-SDK für den Vorgang `deviceConnect` ausgegeben wird: `"azure-iot-device/1.17.1 (node v10.16.0; Windows_NT 10.0.18363; x64)"`. Dieser Wert wird z. B. für das .NET SDK (C#) ausgegeben: `".NET/1.21.2 (.NET Framework 4.8.4200.0; Microsoft Windows 10.0.17763 WindowsProduct:0x00000004; X86)"`.
+
+Die folgende Tabelle zeigt den SDK-Namen für verschiedene Azure IoT SDKs:
+
+| SDK-Name in der sdkVersion-Eigenschaft | Sprache |
+|----------|----------|
+| .NET | .NET (C#) |
+| microsoft.azure.devices | .NET-Dienst-SDK (C#) |
+| microsoft.azure.devices.client | .NET-Geräte-SDK (C#) |
+| iothubclient | Geräte-SDK mit C oder Python v1 (veraltet) |
+| iothubserviceclient | Dienst-SDK mit C oder Python v1 (veraltet) |
+| azure-iot-device-iothub-py | Python-Geräte-SDK |
+| azure-iot-device | Node.js-Geräte-SDK |
+| azure-iothub | Node.js-Dienst-SDK |
+| com.microsoft.azure.iothub-java-client | Java-Geräte-SDK |
+| com.microsoft.azure.iothub.service.sdk | Java-Dienst-SDK |
+| com.microsoft.azure.sdk.iot.iot-device-client | Java-Geräte-SDK |
+| com.microsoft.azure.sdk.iot.iot-service-client | Java-Dienst-SDK |
+| C | Embedded C |
+| C + (OSSimplified = Azure RTOS) | Azure RTOS |
+
+Sie können die Eigenschaft für die SDK-Version extrahieren, wenn Sie Abfragen für Diagnoseprotokolle ausführen. Die folgende Abfrage extrahiert die Eigenschaft für die SDK-Version (und die Geräte-ID) aus den Eigenschaften, die von Verbindungsereignissen zurückgegeben werden. Diese beiden Eigenschaften werden zusammen mit dem Zeitpunkt des Ereignisses und der Ressourcen-ID des IoT-Hubs, mit dem das Gerät eine Verbindung herstellt, in die Ergebnisse geschrieben.
+
+```kusto
+// SDK version of devices
+// List of devices and their SDK versions that connect to IoT Hub
+AzureDiagnostics
+| where ResourceProvider == "MICROSOFT.DEVICES" and ResourceType == "IOTHUBS"
+| where Category == "Connections"
+| extend parsed_json = parse_json(properties_s) 
+| extend SDKVersion = tostring(parsed_json.sdkVersion) , DeviceId = tostring(parsed_json.deviceId)
+| distinct DeviceId, SDKVersion, TimeGenerated, _ResourceId
 ```
 
 ### <a name="read-logs-from-azure-event-hubs"></a>Lesen von Protokollen aus Azure Event Hubs

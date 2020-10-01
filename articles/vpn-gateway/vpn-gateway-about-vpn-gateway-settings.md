@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 09/16/2020
 ms.author: cherylmc
-ms.openlocfilehash: cc9cb06c2154202f319d57aa77700a356ffe19c1
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 18367ec163511fac2e90cc5dd0dd0ad6b091afc9
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419570"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976230"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>Informationen zu VPN Gateway-Einstellungen
 
@@ -27,8 +27,6 @@ Die Werte in diesem Artikel gelten für VPN-Gateways (Gateways für virtuelle Ne
 * Informationen zu zonenredundanten Gateways finden Sie unter [Informationen zu zonenredundanten Gateways für das virtuelle Netzwerk in Azure-Verfügbarkeitszonen](about-zone-redundant-vnet-gateways.md).
 
 * Informationen zu Virtual WAN finden Sie unter [Was ist Azure Virtual WAN?](../virtual-wan/virtual-wan-about.md).
-
-
 
 ## <a name="gateway-types"></a><a name="gwtype"></a>Gatewaytypen
 
@@ -152,9 +150,9 @@ Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/2
 
 ## <a name="local-network-gateways"></a><a name="lng"></a>Gateways des lokalen Netzwerks
 
- Ein Gateway des lokalen Netzwerks unterscheidet sich von einem Gateway für virtuelle Netzwerke. Wenn Sie eine VPN-Gatewaykonfiguration erstellen, stellt das Gateway des lokalen Netzwerks in der Regel Ihren lokalen Standort dar. Beim klassischen Bereitstellungsmodell wurde das Gateway des lokalen Netzwerks als „Lokaler Standort“ bezeichnet.
+Ein Gateway des lokalen Netzwerks unterscheidet sich von einem Gateway für virtuelle Netzwerke. Wenn Sie eine VPN-Gatewaykonfiguration erstellen, stellt das Gateway des lokalen Netzwerks in der Regel Ihr lokales Netzwerk und das entsprechende VPN-Gerät dar. Beim klassischen Bereitstellungsmodell wurde das Gateway des lokalen Netzwerks als „Lokaler Standort“ bezeichnet.
 
-Sie geben dem Gateway des lokalen Netzwerks einen Namen, stellen die öffentliche IP-Adresse des lokalen VPN-Geräts bereit und geben die Adresspräfixe an, die sich am lokalen Standort befinden. Azure sucht unter den Zieladresspräfixen nach Netzwerkdatenverkehr, sieht in der Konfiguration nach, die Sie für das Gateway des lokalen Netzwerks angegeben haben, und leitet die Pakete entsprechend weiter. Sie geben auch Gateways des lokalen Netzwerks für VNet-zu-VNet-Konfigurationen an, die eine VPN-Gatewayverbindung verwenden.
+Sie benennen das Gateway des lokalen Netzwerks, und geben die öffentliche IP-Adresse oder den vollqualifizierter Domänennamen (FQDN) des lokalen VPN-Geräts sowie die Adresspräfixe an, die sich am lokalen Standort befinden. Azure sucht unter den Zieladresspräfixen nach Netzwerkdatenverkehr, sieht in der Konfiguration nach, die Sie für das Gateway des lokalen Netzwerks angegeben haben, und leitet die Pakete entsprechend weiter. Wenn Sie das Border Gateway Protocol (BGP) auf Ihrem VPN-Gerät verwenden, geben Sie die IP-Adresse des BGP-Peers Ihres VPN-Geräts und die autonome Systemnummer (ASN) Ihres lokalen Systems an. Sie geben auch Gateways des lokalen Netzwerks für VNet-zu-VNet-Konfigurationen an, die eine VPN-Gatewayverbindung verwenden.
 
 Mit dem folgenden PowerShell-Beispiel wird ein neues Gateway des lokalen Netzwerks erstellt:
 

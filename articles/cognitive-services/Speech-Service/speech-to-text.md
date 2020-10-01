@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: Spracherkennung, Spracherkennungssoftware
-ms.openlocfilehash: 42696728427c34d5000881af8bbbf97ae2313111
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 804acd17f3df91cc3df949d6d9ccac0450bb225f
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401264"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569219"
 ---
 # <a name="what-is-speech-to-text"></a>Was ist die Spracherkennung?
 
@@ -34,23 +34,11 @@ Durch zusätzlichem Referenztext als Eingabe bietet der Spracherkennungsdienst z
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-## <a name="get-started-with-speech-to-text"></a>Erste Schritte mit der Spracherkennung
+## <a name="get-started"></a>Erste Schritte
 
-Der Spracherkennungsdienst ist über das [Speech SDK](speech-sdk.md) verfügbar. Es gibt mehrere häufige Szenarien, die als Schnellstarts für verschiedene Sprachen und Plattformen verfügbar sind:
+Verwenden Sie den [Schnellstart](get-started-speech-to-text.md), um mit der Spracherkennung zu beginnen. Der Dienst ist über das [Speech SDK](speech-sdk.md), die [REST-API](rest-speech-to-text.md#pronunciation-assessment-parameters) und die [Speech CLI](spx-overview.md) verfügbar.
 
- - [Schnellstart: Erkennen von Sprache mit Mikrofoneingabe](quickstarts/speech-to-text-from-microphone.md)
- - [Schnellstart: Erkennen von Sprache aus einer Datei](quickstarts/speech-to-text-from-file.md)
- - [Schnellstart: Erkennen von Sprache aus einem Blobspeicher](quickstarts/from-blob.md)
-
-Wenn Sie den Spracherkennungs-REST-Dienst verwenden möchten, finden Sie weitere Informationen unter [REST-APIs](rest-speech-to-text.md).
-
- - [Schnellstart: Aussprachebewertung mit Referenzeingabe](rest-speech-to-text.md#pronunciation-assessment-parameters)
-
-## <a name="tutorials-and-sample-code"></a>Tutorials und Beispielcode
-
-Nachdem Sie Gelegenheit hatten, den Speech-Dienst zu verwenden, erfahren Sie in unserem Tutorial, wie Sie mithilfe des Speech SDK und LUIS Absichten in gesprochener Sprache erkennen.
-
-- [Tutorial: Erkennen von Absichten anhand von gesprochener Sprache mit dem Speech SDK und LUIS in C#](how-to-recognize-intents-from-speech-csharp.md)
+## <a name="sample-code"></a>Beispielcode
 
 Beispielcode für das Speech SDK finden Sie auf GitHub. In den Beispielen werden gängige Szenarios wie etwa das Lesen von Audiodaten aus einer Datei oder einem Stream, die kontinuierliche und einmalige Erkennung oder die Verwendung benutzerdefinierter Modelle behandelt.
 

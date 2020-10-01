@@ -1,20 +1,23 @@
 ---
-title: Aktualisieren eines bereitgestellten Webdiensts
-author: gvashishtha
+title: " Aktualisieren von Webdiensten"
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie einen Webdienst aktualisieren, der bereits in Azure Machine Learning bereitgestellt wurde.
 ms.service: machine-learning
+ms.subservice: core
 ms.topic: conceptual
-ms.date: 07/31/2020
 ms.author: gopalv
-ms.openlocfilehash: 0c2811b6bed3d02a9689f3b9e49a4c3888dff6c4
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+author: gvashishtha
+ms.date: 07/31/2020
+ms.openlocfilehash: 52d7c42701e20c16272843a50c6c45847545d747
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935567"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90525166"
 ---
 # <a name="update-a-deployed-web-service"></a>Aktualisieren eines bereitgestellten Webdiensts
 
-In diesem Artikel wird beschrieben, wie Sie einen Webdienst bereitstellen, der mit Azure Machine Learning bereitgestellt wurde.
+In diesem Artikel erfahren Sie, wie Sie einen Webdienst aktualisieren, der mit Azure Machine Learning bereitgestellt wurde.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -22,11 +25,11 @@ In diesem Tutorial wird davon ausgegangen, dass Sie bereits einen Webdienst mit 
 
 ## <a name="update-web-service"></a>Aktualisieren des Webdiensts
 
-Verwenden Sie die `update`-Methode, um einen Webdienst zu aktualisieren. Sie können den Webdienst aktualisieren, um ein neues Modell, ein neues Eingabeskript oder neue Abhängigkeiten zu verwenden, die in einer Rückschlusskonfiguration angegeben werden können. Weitere Informationen finden Sie in der Dokumentation zu [Webservice.update](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py#update--args-).
+Verwenden Sie die `update`-Methode, um einen Webdienst zu aktualisieren. Sie können den Webdienst aktualisieren, um ein neues Modell, ein neues Eingabeskript oder neue Abhängigkeiten zu verwenden, die in einer Rückschlusskonfiguration angegeben werden können. Weitere Informationen finden Sie in der Dokumentation zu [Webservice.update](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py#&preserve-view=trueupdate--args-).
 
-Weitere Informationen finden Sie unter [AKS-Dienstaktualisierungsmethode.](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#update-image-none--autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--tags-none--properties-none--description-none--models-none--inference-config-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none-)
+Weitere Informationen finden Sie unter [AKS-Dienstaktualisierungsmethode.](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#&preserve-view=trueupdate-image-none--autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--tags-none--properties-none--description-none--models-none--inference-config-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none-)
 
-Weitere Informationen finden Sie unter [ACI-Dienstaktualisierungsmethode.](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#update-image-none--tags-none--properties-none--description-none--auth-enabled-none--ssl-enabled-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--enable-app-insights-none--models-none--inference-config-none-)
+Weitere Informationen finden Sie unter [ACI-Dienstaktualisierungsmethode.](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#&preserve-view=trueupdate-image-none--tags-none--properties-none--description-none--auth-enabled-none--ssl-enabled-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--enable-app-insights-none--models-none--inference-config-none-)
 
 > [!IMPORTANT]
 > Wenn Sie eine neue Version eines Modells erstellen, müssen Sie jeden Dienst, der die neue Version verwenden soll, manuell aktualisieren.
@@ -86,7 +89,7 @@ Weitere Informationen finden Sie in der Dokumentation zu [az ml service update](
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Problembehandlung bei einer fehlerhaften Bereitstellung](how-to-troubleshoot-deployment.md)
-* [Bereitstellen in Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md)
+* [Bereitstellen für Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md)
 * [Erstellen von Clientanwendungen zum Nutzen von Webdiensten](how-to-consume-web-service.md)
 * [Wie man ein Modell mit einem benutzerdefinierten Docker-Image bereitstellt](how-to-deploy-custom-docker-image.md)
 * [Verwenden von TLS zum Absichern eines Webdiensts mit Azure Machine Learning](how-to-secure-web-service.md)

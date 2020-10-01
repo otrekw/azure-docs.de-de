@@ -3,12 +3,12 @@ title: Exportieren nach Power BI aus Azure Application Insights | Microsoft-Doku
 description: Analytics-Abfragen können in Power BI angezeigt werden.
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 51a553452643fc979846ab4604762f11c5b7ff68
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 804da7d3aaa2fd1b7973a686bc9ca5cb5ee973a2
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324368"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979164"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Datenimport nach Power BI aus Application Insights
 [Power BI](https://www.powerbi.com/) ist eine Suite aus Unternehmenstools, mit denen Sie Daten analysieren und Informationen teilen können. Auf jedem Gerät stehen leistungsfähige Dashboards zur Verfügung. Sie können Daten aus vielen Quellen kombinieren, z.B. Analytics-Abfragen aus [Azure Application Insights](./app-insights-overview.md).
@@ -67,11 +67,11 @@ Installieren Sie [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/
 
    Fügen Sie das exportierte M-Sprachskript in den erweiterten Editor ein. 
 
-   ![Screenshot von Power BI Desktop mit hervorgehobenem erweiterten Editor](./media/export-power-bi/advancedquery.png)
+   ![Screenshot von Power BI Desktop mit hervorgehobenem erweiterten Editor](./media/export-power-bi/advancedquery.png)
 
 4. Wählen Sie Elemente aus der Abfrage und eine Trichtervisualisierung aus.
 
-   ![Screenshot der Visualisierungsoptionen von Power BI Desktop](./media/export-power-bi/selectsequence.png)
+   ![Screenshot der Trichtervisualisierungsoptionen von Power BI Desktop](./media/export-power-bi/selectsequence.png)
 
 5. Geben Sie einen aussagekräftigen Titel an, und veröffentlichen Sie den Bericht in Ihrem Power BI-Cloudarbeitsbereich. 
 
@@ -86,7 +86,7 @@ Dieser Fall kann eintreten, wenn Ihr Aktualisierungstoken nicht aktualisiert wur
 
 1. Melden Sie sich beim Azure-Portal an, und stellen Sie sicher, dass Sie auf die Ressource zugreifen können.
 2. Versuchen Sie, die Anmeldeinformationen für das Dashboard zu aktualisieren.
-3. Versuchen Sie, den Cache aus Power BI Desktop zu löschen.
+3. Versuchen Sie, den Cache von Power BI Desktop zu löschen.
 
 
    Falls Sie Zugriff haben und die Aktualisierung der Anmeldeinformationen das Problem nicht behebt, erstellen Sie ein Supportticket.
@@ -121,14 +121,14 @@ Mit dieser Methode wird für Sie ein vollständiges Dashboard mit Telemetriedate
 1. Melden Sie sich bei [Power BI](https://app.powerbi.com/) an.
 2. Öffnen Sie **Daten abrufen** ![Screenshot des GetData-Symbols in der unteren linken Ecke](./media/export-power-bi/001.png) und dann **Dienste**.
 
-    ![Screenshots für das Abrufen aus der Application Insights-Datenquelle](./media/export-power-bi/002.png)
+    ![Screenshot der Schaltfläche „Abrufen“ im Fenster „Dienste“](./media/export-power-bi/002.png)
 
 3. Wählen Sie **Jetzt abrufen** unter Application Insights aus.
 
    ![Screenshots für das Abrufen aus der Application Insights-Datenquelle](./media/export-power-bi/003.png)
 4. Geben Sie die Details Ihrer Application Insights-Ressource an, und **melden Sie sich dann an**.
 
-    ![Screenshot für das Abrufen aus der Application Insights-Datenquelle](./media/export-power-bi/005.png)
+    ![Screenshot des Fensters „Connect to Application Insights“ (Verbindung mit Application Insights herstellen)](./media/export-power-bi/005.png)
 
      Sie finden diese Informationen im Bereich „Application Insights-Übersicht“:
 

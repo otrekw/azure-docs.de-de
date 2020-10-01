@@ -4,12 +4,12 @@ description: Überwachen Sie Ihre Web-App mit benutzerdefinierten Metriken in Ec
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: c12126c23ce1f1e2bd72f88eead5b8f34e4fd83d
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 1b8b4c43c559831810db9b92da6c2743556cd2ac
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142212"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973582"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: Überwachung und Diagnose mit einer Latenzzeit von 1 Sekunde
 
@@ -148,7 +148,7 @@ Wie bei Metriken können Sie beliebige Kriterien für alle Application Insights-
 
 Klicken Sie auf ein Element im Livefeed, um die Details dazu anzuzeigen. Sie können den Feed anhalten, indem Sie auf **Anhalten** klicken, einfach nach unten scrollen oder auf ein Element klicken. Der Livefeed wird fortgesetzt, wenn Sie wieder nach oben scrollen oder auf den Zähler der Elemente klicken, die im angehaltenen Zustand erfasst wurden.
 
-![Auswahl der Live-Fehler](./media/live-stream/sample-telemetry.png)
+![Screenshot des Fensters „Beispieltelemetrie“ mit einer ausgewählten Ausnahme und im unteren Teil des Fensters angezeigten Details zur Ausnahme.](./media/live-stream/sample-telemetry.png)
 
 ## <a name="filter-by-server-instance"></a>Filtern nach Serverinstanz
 

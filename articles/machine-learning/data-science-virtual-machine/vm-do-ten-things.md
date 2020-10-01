@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: dba0f22f1dfece7edd92a80ae1c3a91616a4236c
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: b570968a66a0cfd60ac4d6ce6dd7dc31a1003240
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815911"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440455"
 ---
 # <a name="data-science-with-a-windows-data-science-virtual-machine"></a>Data Science mit einer Windows Data Science Virtual Machine
 
@@ -255,7 +255,7 @@ Die Daten werden als Datenrahmen gelesen:
 ### <a name="azure-synapse-analytics-formerly-sql-dw-and-databases"></a>Azure Synapse Analytics (früher SQL DW) und Datenbanken
 Azure Synapse Analytics (früher SQL DW) ist ein elastisches Data Warehouse-as-a-Service-Angebot mit einer SQL Server-Umgebung der Unternehmensklasse.
 
-Sie können Azure Synapse Analytics anhand der Anweisungen in [diesem Artikel](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md) bereitstellen. Nachdem Sie Ihr SQL Data Warehouse bereitgestellt haben, können Sie diese [exemplarische Vorgehensweise](../team-data-science-process/sqldw-walkthrough.md) verwenden, um Hochladen, Auswerten und Modellieren von Daten vorzunehmen, die sich im SQL Data Warehouse befinden.
+Sie können Azure Synapse Analytics anhand der Anweisungen in [diesem Artikel](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md) bereitstellen. Nachdem Sie Azure Synapse Analytics bereitgestellt haben, können Sie [diese exemplarische Vorgehensweise](../team-data-science-process/sqldw-walkthrough.md) befolgen, um Daten hochzuladen, zu erkunden und zu modellieren, indem Sie Daten innerhalb von Azure Synapse Analytics verwenden.
 
 #### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 Azure Cosmos DB ist eine NoSQL-Datenbank in der Cloud. Sie können diese Datenbank verwenden, um mit Dokumenten wie JSON zu arbeiten und die Dokumente zu speichern und abzufragen.

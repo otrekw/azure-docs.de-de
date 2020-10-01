@@ -3,12 +3,12 @@ title: Überwachen von Docker-Anwendungen in Azure Application Insights | Micros
 description: In Application Insights können Docker-Leistungsindikatoren, -Ereignisse und -Ausnahmen zusammen mit der Telemetrie von in Containern ausgeführten Apps angezeigt werden.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 1cbb2968fec68eb750ce3c9b6cac09f23a1d36c5
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 272b4e8af7b1ed3d01d8af0979b56954585f795d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324419"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90977585"
 ---
 # <a name="monitor-docker-applications-in-application-insights-deprecated"></a>Überwachen von Docker-Anwendungen in Application Insights (verwaltet)
 
@@ -71,12 +71,12 @@ Klicken Sie durch die Docker-Kachel.
 Dort werden Sie gleich die von der Docker-App eingehenden Daten sehen, insbesondere wenn andere Container in Ihrer Docker-Engine ausgeführt werden.
 
 ### <a name="docker-container-events"></a>Ereignisse im Docker-Container
-![Beispiel](./media/docker/13.png)
+![Screenshot veranschaulicht das Auswählen von „Suchen“, einem Fenster mit Suchergebnissen für die Diagnose mit einem Pfeil, der von einem benutzerdefinierten Ereignis auf ein Fenster mit benutzerdefinierten Daten zeigt.](./media/docker/13.png)
 
 Um einzelne Ereignisse zu untersuchen, klicken Sie auf [Suche](./diagnostic-search.md). Suchen Sie die gewünschten Ereignisse, und filtern Sie sie bei Bedarf. Klicken Sie auf ein beliebiges Ereignis, um weitere Details anzuzeigen.
 
 ### <a name="exceptions-by-container-name"></a>Ausnahmen nach Containername
-![Beispiel](./media/docker/14.png)
+![Screenshot mit der Seite „Metrik-Explorer“ mit einem ausgewählten Diagramm und dem auf der rechten Seite geöffneten Fenster „Diagrammdetails“.](./media/docker/14.png)
 
 ### <a name="docker-context-added-to-app-telemetry"></a>Hinzugefügter Docker-Kontext zur App-Telemetrie
 Von der mit dem AI SDK instrumentierten Anwendung gesendete Anforderungstelemetriedaten werden mit Docker-Kontextinformationen angereichert.

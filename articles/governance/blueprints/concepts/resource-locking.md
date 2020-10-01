@@ -3,12 +3,12 @@ title: Grundlagen von Ressourcensperren
 description: Erfahren Sie, wie Sie die Sperrfunktionen in Azure Blueprints verwenden, um beim Zuweisen einer Blauphase die Ressourcen zu schützen.
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5e60724a276bce94770c5fdc33ee0c8b4e7712fe
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 9d400abce5d428c01b43cdda38a5c6f0df2d4db8
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051501"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651936"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Grundlegendes zur Ressourcensperre in Azure Blueprint
 
@@ -103,7 +103,7 @@ Wenn die Zuweisung entfernt wird, werden auch die von Azure Blueprints erstellte
 
 Eine Ablehnungsaktion im Rahmen von RBAC-[Ablehnungszuweisungen](../../../role-based-access-control/deny-assignments.md) wird während der Zuweisung einer Blaupause auf Artefaktressourcen angewendet, wenn für die Zuweisung die Option **Schreibgeschützt** oder **Nicht löschen** ausgewählt wurde. Die Ablehnungsaktion wird von der verwalteten Identität der Blaupausenzuweisung hinzugefügt und kann nur von derselben verwalteten Identität aus den Artefaktressourcen entfernt werden. Diese Sicherheitsmaßnahme erzwingt den Sperrmechanismus und verhindert die Aufhebung der Blaupausensperre außerhalb von Azure Blueprints.
 
-:::image type="content" source="../media/resource-locking/blueprint-deny-assignment.png" alt-text="Blaupausen-Ablehnungszuweisung für Ressourcengruppe" border="false":::
+:::image type="content" source="../media/resource-locking/blueprint-deny-assignment.png" alt-text="Screenshot der Seite „Zugriffssteuerung“ und der Registerkarte „Ablehnungszuweisungen“ für eine Ressourcengruppe." border="false":::
 
 Die [Eigenschaften von Ablehnungszuweisungen](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) der einzelnen Modi lauten wie folgt:
 

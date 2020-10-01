@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: 97ba976c841e192646ebb484fe4d004556e34c54
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: aa3225378f921792d1e8ba0442f2c555d095fb9d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640836"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90968397"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Konfigurieren der Datensammlung für den Azure Monitor-Agent (Vorschau)
 Mit Datensammlungsregeln werden die in Azure Monitor eingehenden Daten definiert, und es wird angegeben, wohin sie gesendet werden sollen. In diesem Artikel wird beschrieben, wie Sie eine Datensammlungsregel erstellen, um mit dem Azure Monitor-Agent Daten von virtuellen Computern zu sammeln.
@@ -26,7 +26,7 @@ Zum Anwenden einer Datensammlungsregel auf einen virtuellen Computer erstellen S
 
 Angenommen, in einer Umgebung mit einer Gruppe von virtuellen Computern wird auf einigen eine Branchenanwendung und auf den anderen SQL Server ausgeführt. Unter Umständen verfügen Sie über eine Standard-Datensammlungsregel, die für alle virtuellen Computer gilt, und über separate Datensammlungsregeln, mit denen Daten speziell für die Branchenanwendung und für SQL Server gesammelt werden. Die Zuordnungen der virtuellen Computer zu den Datensammlungsregeln sieht dann in etwa wie im folgenden Diagramm aus.
 
-![Associations](media/data-collection-rule-azure-monitor-agent/associations.png)
+![Diagramm mit virtuellen Computern, auf denen eine Branchenanwendung und SQL Server gehostet werden. Dazu gehören die Datensammlungsregeln „central-i t-default“ und „lob-app“ für die Branchenanwendung sowie „central-i t-default“ und „s q l“ für SQL Server.](media/data-collection-rule-azure-monitor-agent/associations.png)
 
 ## <a name="create-using-the-azure-portal"></a>Erstellen mithilfe des Azure-Portals
 Sie können das Azure-Portal verwenden, um eine Datensammlungsregel zu erstellen und dieser Regel unter Ihrem Abonnement virtuelle Computer zuzuordnen. Der Azure Monitor-Agent wird automatisch installiert, und für alle virtuellen Computer wird eine verwaltete Identität erstellt (falls noch nicht geschehen).

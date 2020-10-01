@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 8bae89e68e5a016dbdc10c763f1ea2daedece3c8
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: c357720c937a5b63944b7fc598eaff428f85bfb6
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605323"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706814"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Hochverfügbarkeit mit Azure Cosmos DB
 
@@ -62,7 +62,7 @@ Für die seltenen Fälle eines regionalen Ausfalls stellt Azure Cosmos DB siche
 ### <a name="multi-region-accounts-with-a-single-write-region-read-region-outage"></a>Konten mit mehreren Regionen mit einer einzelnen Schreibregion (Ausfall einer Leseregion)
 
 - Bei einem Ausfall der Leseregion besteht für Azure Cosmos-Konten mit einer Konsistenzebene bzw. hoher Konsistenz mit drei oder mehr Leseregionen weiterhin Hochverfügbarkeit für Lese- und Schreibvorgänge.
-- Für Azure Cosmos-Konten mit hoher Konsistenz mit maximal zwei Leseregionen (einschließlich der Lese- und Schreibregion) geht die Schreibverfügbarkeit bei einem Ausfall der Leseregion verloren, während die Leseverfügbarkeit für die verbleibenden Regionen erhalten bleibt.
+- Für Azure Cosmos-Konten mit hoher Konsistenz mit maximal zwei Leseregionen (einschließlich der Lese- und Schreibregion) geht die Schreibverfügbarkeit bei einem Ausfall der Leseregion verloren.
 - Die betreffende Region wird automatisch getrennt und als offline gekennzeichnet. Die [Azure Cosmos DB SDKs](sql-api-sdk-dotnet.md) leiten Leseaufrufe an die nächste verfügbare Region in der Liste der bevorzugten Regionen weiter.
 - Wenn keine der Regionen in der Liste verfügbar ist, wird für die Aufrufe automatisch ein Fallback zur aktuellen Schreibregion durchgeführt.
 - Zur Verarbeitung des Ausfalls einer Leseregion sind keine Änderungen an Ihrem Anwendungscode erforderlich. Wenn die betreffende Leseregion wieder online ist, wird sie automatisch mit der aktuellen Schreibregion synchronisiert und steht dann wieder für die Verarbeitung von Leseanforderungen zur Verfügung.
@@ -125,7 +125,7 @@ az cosmosdb create \
 
 Sie können Verfügbarkeitszonen aktivieren, indem Sie beim Erstellen eines Azure Cosmos-Kontos das Azure-Portal verwenden. Stellen Sie beim Erstellen eines Kontos sicher, dass Sie **Georedundanz** und **Schreibvorgänge in mehreren Regionen** aktivieren und eine Region auswählen, in der Verfügbarkeitszonen unterstützt werden:
 
-:::image type="content" source="./media/high-availability/enable-availability-zones-using-portal.png" alt-text="Aktivieren von Verfügbarkeitszonen mit dem Azure-Portal"::: 
+:::image type="content" source="./media/high-availability/enable-availability-zones-using-portal.png" alt-text="Physische Partitionierung"::: 
 
 ## <a name="building-highly-available-applications"></a>Erstellen hochverfügbarer Anwendungen
 

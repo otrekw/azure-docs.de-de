@@ -13,19 +13,19 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/23/2020
-ms.openlocfilehash: 8408025478e2776423b0d1f10cc70828e408f87e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 891d5907ee8c964ebe7e281f6298205712ce1186
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290104"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441169"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Autorisieren des Datenbankzugriffs für Azure SQL-Datenbank, SQL Managed Instance und Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 In diesem Artikel lernen Sie Folgendes:
 
-- Optionen zum Konfigurieren von Azure SQL-Datenbank, Azure SQL Managed Instance und Azure Synapse Analytics (zuvor Azure SQL Data Warehouse), um Benutzern das Durchführen administrativer Aufgaben und den Zugriff auf in diesen Datenbanken gespeicherte Daten zu erlauben
+- Optionen zum Konfigurieren von Azure SQL-Datenbank, Azure SQL Managed Instance und Azure Synapse Analytics (vormals SQL Data Warehouse), um Benutzern das Durchführen administrativer Aufgaben und den Zugriff auf in diesen Datenbanken gespeicherte Daten zu erlauben
 - Konfiguration von Zugriff und Autorisierung nach der ersten Erstellung eines neuen Servers
 - Hinzufügen von Anmeldungen und Benutzerkonten in der Masterdatenbank und Gewähren von Administratorberechtigungen für diese Konten
 - Hinzufügen von Benutzerkonten zu Benutzerdatenbanken im Zusammenhang mit Anmeldungen oder als eigenständige Benutzerkonten

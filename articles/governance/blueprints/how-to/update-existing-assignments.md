@@ -3,12 +3,12 @@ title: Aktualisieren einer vorhandenen Zuweisung über das Portal
 description: Hier werden die Mechanismen beim Aktualisieren einer vorhandenen Blaupausenzuweisung in Azure Blueprints über das Portal erläutert.
 ms.date: 08/27/2020
 ms.topic: how-to
-ms.openlocfilehash: 888ebbf0149f8f75f867bb17115988cb20d25df2
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: ddaac8110885d817bc96745965c1af7e522b1919
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051422"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651370"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Aktualisieren einer vorhandenen Blaupausenzuweisung
 
@@ -26,17 +26,17 @@ Wenn eine Blaupause zugewiesen ist, kann die Zuweisung aktualisiert werden. Es g
 
 1. Wählen Sie in der Liste der Blaupausen die Blaupausenzuweisung aus. Verwenden Sie anschließend die Schaltfläche **Zuweisung aktualisieren**, ODER klicken Sie mit der rechten Maustaste auf die Blaupausenzuweisung, und wählen Sie **Zuweisung aktualisieren** aus.
 
-   :::image type="content" source="../media/update-existing-assignments/update-assignment.png" alt-text="Aktualisieren einer vorhandenen Blaupausenzuweisung" border="false":::
+   :::image type="content" source="../media/update-existing-assignments/update-assignment.png" alt-text="Screenshot der Seite für Blaupausenzuweisung mit hervorgehobener Schaltfläche „Zuweisung aktualisieren“" border="false":::
 
 1. Die Seite **Blaupause zuweisen** wird geladen, während alle Werte der ursprünglichen Zuweisung bereits eingetragen sind. Sie können die **Version der Blaupausendefinition**, den Zustand von **Zuweisung sperren** sowie die dynamischen Parameter für die Blaupausendefinition ändern. Wählen Sie **Zuweisen** aus, nachdem die Änderungen abgeschlossen sind.
 
 1. Überprüfen Sie auf der Detailseite für die aktualisierte Zuweisung den neuen Status. In diesem Beispiel wurde der Zuweisung **Wird gesperrt** hinzugefügt.
 
-   :::image type="content" source="../media/update-existing-assignments/updated-assignment.png" alt-text="Vorhandene Blaupausenzuweisung nach der Aktualisierung – geänderter Sperrmodus" border="false":::
+   :::image type="content" source="../media/update-existing-assignments/updated-assignment.png" alt-text="Screenshot der Seite für Blaupausenzuweisung mit hervorgehobener Schaltfläche „Zuweisung aktualisieren“" border="false":::
 
 1. Einzelheiten zu anderen **Zuweisungsvorgängen** finden Sie in der Dropdownliste. Die Tabelle **Verwaltete Ressourcen** wird durch den ausgewählten Zuweisungsvorgang aktualisiert.
 
-   :::image type="content" source="../media/update-existing-assignments/assignment-operations.png" alt-text="Zuweisungsvorgänge einer Blaupausenzuweisung" border="false":::
+   :::image type="content" source="../media/update-existing-assignments/assignment-operations.png" alt-text="Screenshot der Seite für Blaupausenzuweisung mit hervorgehobener Schaltfläche „Zuweisung aktualisieren“" border="false":::
 
 ## <a name="rules-for-updating-assignments"></a>Regeln für das Aktualisieren von Zuweisungen
 

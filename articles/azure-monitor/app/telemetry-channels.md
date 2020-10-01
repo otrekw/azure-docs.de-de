@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.custom: devx-track-csharp
 ms.reviewer: mbullwin
-ms.openlocfilehash: 41d2feefc5af1e795520d9b3d90809e625502fa6
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: fec7bfc16e2cc36d19c84b93b5b93c3c1365b166
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918399"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564014"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Telemetriekanäle in Application Insights
 
@@ -109,7 +109,7 @@ TelemetryConfiguration.Active.TelemetryChannel = serverTelemetryChannel;
 
 ## <a name="operational-details-of-servertelemetrychannel"></a>Funktionsdetails zu ServerTelemetryChannel
 
-`ServerTelemetryChannel` speichert eingehende Elemente in einem Puffer im Arbeitsspeicher. Die Elemente werden serialisiert, komprimiert und einmal alle 30 Sekunden, oder sobaldn 500 Elemente gepuffert wurden, in einer `Transmission`-Instanz gespeichert. Eine einzelne `Transmission`-Instanz enthält bis zu 500 Elemente und stellt einen Batch von Telemetriedaten dar, die über einen einzigen HTTPS-Aufruf an den Application Insights-Dienst gesendet werden.
+`ServerTelemetryChannel` speichert eingehende Elemente in einem Puffer im Arbeitsspeicher. Die Elemente werden serialisiert, komprimiert und einmal alle 30 Sekunden, oder sobald n 500 Elemente gepuffert wurden, in einer `Transmission`-Instanz gespeichert. Eine einzelne `Transmission`-Instanz enthält bis zu 500 Elemente und stellt einen Batch von Telemetriedaten dar, die über einen einzigen HTTPS-Aufruf an den Application Insights-Dienst gesendet werden.
 
 Standardmäßig können maximal 10 `Transmission`-Instanzen parallel gesendet werden. Wenn Telemetriedaten schneller eintreffen oder das Netzwerk bzw. das Application Insights-Back-End langsam ist, werden `Transmission`-Instanzen im Arbeitsspeicher gespeichert. Die Standardkapazität dieses `Transmission`-Puffers im Arbeitsspeicher beträgt 5 MB. Wenn die Kapazität des Arbeitsspeichers überschritten ist, werden `Transmission`-Instanzen auf einem lokalen Datenträger bis zu einem Maximum von 50 MB gespeichert. `Transmission`-Instanzen werden auch bei Auftreten von Netzwerkproblemen auf dem lokalen Datenträger gespeichert. Nur die Elemente, die auf einem lokalen Datenträger gespeichert sind, überstehen einen Absturz der Anwendung. Sie werden gesendet, sobald die Anwendung wieder gestartet wird.
 
@@ -153,13 +153,25 @@ Die kurze Antwort ist, dass keiner der integrierten Kanäle als Transaktionstyp 
 
 Obwohl der Name des Pakets und des Namespace „WindowsServer“ beinhaltet, wird dieser Kanal auf anderen Systemen als Windows mit folgender Ausnahme unterstützt. Auf anderen Systemen als Windows erstellt der Kanal standardmäßig keinen lokalen Speicherordner. Sie müssen einen lokalen Speicherordner erstellen und den Kanal für die Verwendung dieses Ordners konfigurieren. Nachdem die lokale Speicherung konfiguriert wurde, funktioniert der Kanal auf allen Systemen gleich.
 
+> [!NOTE]
+> Ab Version 2.15.0-beta3 wird nun automatisch lokaler Speicher für Linux, Mac und Windows erstellt. Für Nicht-Windows-Systeme erstellt das SDK automatisch einen lokalen Speicherordner auf Grundlage der folgenden Logik:
+> - `${TMPDIR}`: Wenn die Umgebungsvariable `${TMPDIR}` festgelegt ist, wird dieser Speicherort verwendet.
+> - `/var/tmp`: Wenn der vorherige Speicherort nicht vorhanden ist, versuchen wir `/var/tmp`.
+> - `/tmp`: Wenn die beiden vorherigen Speicherorte nicht vorhanden sind, versuchen wir `tmp`. 
+> - Wenn keiner dieser Standorte vorhanden ist, wird kein lokaler Speicher erstellt, wodurch eine manuelle Konfiguration weiterhin erforderlich ist. [Vollständige Details zur Implementierung.](https://github.com/microsoft/ApplicationInsights-dotnet/pull/1860)
+
 ### <a name="does-the-sdk-create-temporary-local-storage-is-the-data-encrypted-at-storage"></a>Erstellt das SDK einen temporären lokalen Speicher? Werden die Daten beim Speichern verschlüsselt?
 
 Das SDK speichert Telemetrieelemente bei Netzwerkproblemen oder Drosselung im lokalen Speicher. Diese Daten werden nicht lokal verschlüsselt.
 
 Bei Windows-Systemen erstellt das SDK automatisch einen temporären lokalen Ordner im Verzeichnis %TEMP% oder %LOCALAPPDATA% und schränkt den Zugriff auf Administratoren und den aktuellen Benutzer ein.
 
-Bei anderen Systemen als Windows wird vom SDK kein lokaler Speicher automatisch erstellt, sodass standardmäßig keine Daten lokal gespeichert werden. Sie können selbst ein Speicherverzeichnis erstellen und den Kanal für dessen Verwendung konfigurieren. In diesem Fall müssen Sie sicherstellen, dass das Verzeichnis gesichert ist.
+Bei anderen Systemen als Windows wird vom SDK kein lokaler Speicher automatisch erstellt, sodass standardmäßig keine Daten lokal gespeichert werden.
+
+> [!NOTE]
+> Ab Version 2.15.0-beta3 wird nun automatisch lokaler Speicher für Linux, Mac und Windows erstellt. 
+
+ Sie können selbst ein Speicherverzeichnis erstellen und den Kanal für dessen Verwendung konfigurieren. In diesem Fall müssen Sie sicherstellen, dass das Verzeichnis gesichert ist.
 Lesen Sie weitere Informationen zum [Datenschutz](data-retention-privacy.md#does-the-sdk-create-temporary-local-storage).
 
 ## <a name="open-source-sdk"></a>Open Source SDK

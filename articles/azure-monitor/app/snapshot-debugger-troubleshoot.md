@@ -2,15 +2,15 @@
 title: Problembehandlung für den Azure Application Insights-Momentaufnahmedebugger
 description: Dieser Artikel enthält Schritte zur Problembehandlung sowie Informationen, um Entwickler bei der Aktivierung oder Verwendung des Application Insights-Momentaufnahmedebuggers zu unterstützen.
 ms.topic: conceptual
-author: brahmnes
+author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 485f35ed249ab7f6bbb987d8c79afe20287cd25a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 935e1832629827b0286a79ab8ea6d1dfbb143e1c
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671408"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707831"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> Behandeln von Problemen beim Aktivieren des Application Insights-Momentaufnahmedebuggers oder Anzeigen von Momentaufnahmen
 Wenn Sie den Application Insights-Momentaufnahmedebugger für Ihre Anwendung aktiviert haben, aber keine Momentaufnahmen für Ausnahmen angezeigt werden, können Sie diese Anweisungen zur Problembehandlung verwenden. Es kann viele verschiedene Gründe geben, warum keine Momentaufnahmen generiert werden. Sie können die Integritätsprüfung für Momentaufnahmen ausführen, um einige der möglichen Ursachen zu ermitteln.
@@ -31,6 +31,30 @@ Sollte sich das Problem dadurch nicht beheben lassen, lesen Sie die folgenden Sc
 ## <a name="verify-the-instrumentation-key"></a>Überprüfen des Instrumentierungsschlüssels
 
 Vergewissern Sie sich, dass Sie in Ihrer veröffentlichten Anwendung den richtigen Instrumentierungsschlüssel verwenden. Der Instrumentierungsschlüssel wird in der Regel aus der Datei „ApplicationInsights.config“ gelesen. Vergewissern Sie sich, dass der Wert dem Instrumentierungsschlüssel für die im Portal angezeigte Application Insights-Ressource entspricht.
+
+## <a name="check-ssl-client-settings-aspnet"></a><a id="SSL"></a>Überprüfen der SSL-Clienteinstellungen (ASP.NET)
+
+Wenn Sie auf einem virtuellen Computer eine ASP.NET-Anwendung haben, die in Azure App Service oder IIS gehostet wird, kann Ihre Anwendung aufgrund eines fehlenden SSL-Sicherheitsprotokolls möglicherweise keine Verbindung mit dem Dienst „Momentaufnahmedebugger“ herstellen.
+[Der Endpunkt von Momentaufnahmedebugger erfordert die TLS-Version 1.2](snapshot-debugger-upgrade.md?toc=/azure/azure-monitor/toc.json). Die Gruppe der SSL-Sicherheitsprotokolle ist eine der Tücken, die sich durch den Wert „httpRuntime targetFramework“ im Abschnitt „system.web“ der Datei „web.config“ ergibt. Wenn „httpRuntime targetFramework“ 4.5.2 oder niedriger ist, ist TLS 1.2 nicht standardmäßig inbegriffen.
+
+> [!NOTE]
+> Der Wert von „httpRuntime targetFramework“ ist unabhängig von dem beim Erstellen Ihrer Anwendung verwendeten Zielframework.
+
+Um die Einstellung zu überprüfen, öffnen Sie die Datei „web.config“, und wechseln Sie zum Abschnitt „system.web“. Vergewissern Sie sich, dass `targetFramework` für `httpRuntime` auf 4.6 oder höher festgelegt ist.
+
+   ```xml
+   <system.web>
+      ...
+      <httpRuntime targetFramework="4.7.2" />
+      ...
+   </system.web>
+   ```
+
+> [!NOTE]
+> Das Ändern des Werts „httpRuntime targetFramework“ wirkt sich auf das Verhalten Ihrer Anwendung zur Laufzeit aus und kann zu anderen, geringfügigen Verhaltensänderungen führen. Testen Sie Ihre Anwendung nach dieser Änderung unbedingt gründlich. Eine vollständige Liste der Kompatibilitätsänderungen finden Sie unter https://docs.microsoft.com/dotnet/framework/migration-guide/application-compatibility#retargeting-changes
+
+> [!NOTE]
+> Wenn „targetFramework“ 4.7 oder höher ist, bestimmt Windows die verfügbaren Protokolle. In Azure App Service ist TLS 1.2 verfügbar. Wenn Sie jedoch Ihren eigenen virtuellen Computer verwenden, müssen Sie möglicherweise TLS 1.2 im Betriebssystem aktivieren.
 
 ## <a name="preview-versions-of-net-core"></a>Vorschauversionen von .NET Core
 Wenn die Anwendung eine Vorschauversion von .NET Core verwendet und der Momentaufnahmedebugger über den [Application Insights-Bereich](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json) im Portal aktiviert wurde, wird der Momentaufnahmedebugger möglicherweise nicht gestartet. Befolgen Sie zuerst die Anweisungen unter [Aktivieren des Momentaufnahmedebuggers für andere Umgebungen](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json), um ***zusätzlich*** zu der Aktivierung im [Application Insights-Bereich](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json) das NuGet-Paket [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) in die Anwendung einzubinden.

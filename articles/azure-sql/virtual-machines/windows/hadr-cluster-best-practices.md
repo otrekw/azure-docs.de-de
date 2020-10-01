@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: de773bb2188f09822cae59ce42924a9a49f8087e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 50546a3efc008e074f4e7831d2cc657539b2f98b
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285627"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612319"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>Bewährte Methoden für die Clusterkonfiguration (SQL Server auf Azure-VMS)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -35,26 +35,23 @@ Verwenden Sie eine einzelne NIC pro Server (Clusterknoten) und ein einzelnes Sub
 
 Ein Cluster mit zwei Knoten funktioniert zwar ohne eine [Quorumressource](/windows-server/storage/storage-spaces/understand-quorum), Kunden müssen jedoch unbedingt eine Quorumressource verwenden, um Unterstützung für die Produktion zu erhalten. Ein Cluster ohne Quorumressource besteht die Clustervalidierung nicht. 
 
-Technisch gesehen kann ein Cluster mit drei Knoten den Verlust eines einzelnen Knotens (bei zwei verbleibenden Knoten) ohne Quorumressource überstehen. Nachdem der Cluster nur noch zwei Knoten enthält, bestehen jedoch folgende Risiken: 
+Technisch gesehen kann ein Cluster mit drei Knoten den Verlust eines einzelnen Knotens (bei zwei verbleibenden Knoten) ohne Quorumressource überstehen. Nachdem der Cluster jedoch auf zwei Knoten ausgefallen ist, besteht das Risiko, dass die Clusterressourcen im Fall eines Knotenausfalls oder eines Kommunikationsfehlers offline geschaltet werden, um ein Split-Brain-Szenario zu verhindern.
 
-- **Partition im Raum** (Split Brain): Die Clusterknoten werden aufgrund des Server-, NIC- oder Switch-Problems im Netzwerk getrennt. 
-- **Partition in der Zeit** (Amnesie): Ein Knoten tritt dem Cluster (erneut) bei und versucht, den Besitz der Clustergruppe oder einer Clusterrolle in nicht angemessener Weise zu beanspruchen. 
-
-Die Quorumressource schützt den Cluster gegen diese Probleme. 
+Durch das Konfigurieren einer Quorumressource kann der Cluster mit nur einem Knoten online bleiben.
 
 In der folgenden Tabelle sind die verfügbaren Quorumoptionen in der Reihenfolge aufgeführt, in der sie für einen virtuellen Azure-Computer verwendet werden sollten. Dabei ist der Datenträgerzeuge die bevorzugte Wahl: 
 
 
 ||[Datenträgerzeuge](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |[Cloudzeuge](/windows-server/failover-clustering/deploy-cloud-witness)  |[Dateifreigabenzeuge](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |
 |---------|---------|---------|---------|
-|**Unterstütztes Betriebssystem**| All |Windows Server 2016+| Windows Server 2012+|
+|**Unterstütztes Betriebssystem**| All |Windows Server 2016+| All|
 
 
 
 
 ### <a name="disk-witness"></a>Datenträgerzeuge
 
-Ein Datenträgerzeuge ist ein kleiner Clusterdatenträger in der Gruppe „Verfügbarer Clusterspeicher“. Dieser Datenträger ist hochverfügbar und unterstützt ein Failover zwischen Knoten. Er enthält eine Kopie der Clusterdatenbank mit einer Standardgröße, die in der Regel weniger als 1 GB beträgt. Der Datenträgerzeuge ist die bevorzugte Quorumoption für einen virtuellen Azure-Computer, da mit dieser Option im Gegensatz zum Cloudzeugen und Dateifreigabenzeugen das Problem „Partition in der Zeit“ behoben werden kann. 
+Ein Datenträgerzeuge ist ein kleiner Clusterdatenträger in der Gruppe „Verfügbarer Clusterspeicher“. Dieser Datenträger ist hochverfügbar und unterstützt ein Failover zwischen Knoten. Er enthält eine Kopie der Clusterdatenbank mit einer Standardgröße, die in der Regel weniger als 1 GB beträgt. Der Datenträgerzeuge ist die bevorzugte Quorumoption für Cluster, die freigegebene Azure-Datenträger verwenden (oder eine Lösung für freigegebene Datenträger wie freigegebenes SCSI, iSCSI oder Fibre Channel-SAN).  Ein freigegebenes Clustervolume kann nicht als Datenträgerzeuge verwendet werden.
 
 Konfigurieren Sie einen freigegebenen Azure-Datenträger als Datenträgerzeuge. 
 
@@ -95,8 +92,8 @@ In der folgenden Tabelle wird die Unterstützbarkeit der HADR-Verbindung verglic
 
 | |**Name des virtuellen Netzwerks (Virtual Network Name, VNN)**  |**Name des verteilten Netzwerks (Distributed Network Name, DNN)**  |
 |---------|---------|---------|
-|**Betriebssystemversion (Min.)**| Windows Server 2012 | Windows Server 2016|
-|**Mindestversion von SQL Server** |SQL Server 2012 |SQL Server 2019 CU2|
+|**Betriebssystemversion (Min.)**| All | All |
+|**Mindestversion von SQL Server** |All |SQL Server 2019 CU2|
 |**Unterstützte HADR-Lösung** | Failoverclusterinstanz <br/> Verfügbarkeitsgruppe | Failoverclusterinstanz|
 
 
@@ -108,9 +105,9 @@ Bei Verwendung des Lastenausgleichs kommt es zu einer geringfügigen Failoverver
 
 Informieren Sie sich zum Einstieg über das [Konfigurieren von Azure Load Balancer für eine FCI](hadr-vnn-azure-load-balancer-configure.md). 
 
-**Unterstütztes Betriebssystem**: Windows Server 2012 und höher   
-**Unterstützte SQL-Version**: SQL Server 2012 und höher   
-**Unterstützte HADR-Lösung**: Failoverclusterinstanz und Verfügbarkeitsgruppe 
+**Unterstütztes Betriebssystem**: All   
+**Unterstützte SQL-Version**: All   
+**Unterstützte HADR-Lösung**: Failoverclusterinstanz und Verfügbarkeitsgruppe   
 
 
 ### <a name="distributed-network-name-dnn"></a>Name des verteilten Netzwerks (Distributed Network Name, DNN)
@@ -138,9 +135,10 @@ Informieren Sie sich zum Einstieg über das [Konfigurieren einer DNN-Ressource f
 Beachten Sie die folgenden Einschränkungen, wenn Sie mit FCIs oder Verfügbarkeitsgruppen und SQL Server auf Azure Virtual Machines arbeiten. 
 
 ### <a name="msdtc"></a>MSDTC 
-Azure Virtual Machines unterstützt Microsoft Distributed Transaction Coordinator (MSDTC) auf Windows Server 2019 mit Speicher auf freigegebenen Clustervolumes (CSV) und [Azure Load Balancer Standard](../../../load-balancer/load-balancer-standard-overview.md).
 
-In Azure Virtual Machines wird MSDTC unter Windows Server 2016 und früheren Versionen aus den folgenden Gründen nicht unterstützt:
+Azure Virtual Machines unterstützt Microsoft Distributed Transaction Coordinator (MSDTC) unter Windows Server 2019 mit Speicher auf freigegebenen Clustervolumes (CSV) und mit [Azure Load Balancer Standard](../../../load-balancer/load-balancer-standard-overview.md) oder auf SQL Server-VMs, die freigegebene Azure-Datenträger verwenden. 
+
+In Azure Virtual Machines wird MSDTC unter Windows Server 2016 und früheren Versionen mit freigegebenen Clustervolumes aus den folgenden Gründen nicht unterstützt:
 
 - Die MSDTC-Clusterressource kann nicht für die Verwendung von freigegebenem Speicher konfiguriert werden. Wenn Sie unter Windows Server 2016 eine MSDTC-Ressource erstellen, wird kein freigegebener Speicher für die Verwendung angezeigt, selbst wenn der Speicher verfügbar ist. Dieses Problem wurde in Windows Server 2019 behoben.
 - Der einfache Lastenausgleich verarbeitet keine RPC-Ports.

@@ -3,12 +3,12 @@ title: Metrikwarnungen aus Azure Monitor für Container | Microsoft-Dokumentatio
 description: In diesem Artikel werden die empfohlenen Metrikwarnungen erläutert, die in Azure Monitor für Container in der öffentlichen Vorschauversion verfügbar sind.
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: 1826896ad2d5c64d389219018f51238826c840d0
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: aace260ff22d63211424f2ce4a7319bf577436f4
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563363"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019885"
 ---
 # <a name="recommended-metric-alerts-preview-from-azure-monitor-for-containers"></a>Empfohlene Metrikwarnungen (Vorschau) aus Azure Monitor für Container
 
@@ -144,7 +144,7 @@ Die grundlegenden Schritte lauten wie folgt:
 
 2. Wählen Sie zum Bereitstellen einer benutzerdefinierten Vorlage über das Portal die Option **Ressource erstellen** im [Azure-Portal](https://portal.azure.com) aus.
 
-3. Suchen Sie nach **Vorlage**, und wählen Sie dann **Vorlage** aus. Bereitstellung.
+3. Suchen Sie nach **Vorlage**, und wählen Sie dann **Vorlagenbereitstellung** aus.
 
 4. Klicken Sie auf **Erstellen**.
 

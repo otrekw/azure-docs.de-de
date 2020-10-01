@@ -1,25 +1,25 @@
 ---
 title: 'VPN Gateway: Azure AD-Mandant für P2S-VPN-Verbindungen: Azure AD-Authentifizierung'
-description: Sie können P2S VPN verwenden, um eine Verbindung mit Azure AD-Authentifizierung zu Ihrem VNet herzustellen.
+description: Erfahren Sie, wie Sie einen Azure AD-Mandanten für die P2S Open VPN-Authentifizierung einrichten.
 services: vpn-gateway
-author: kumudD
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 04/17/2020
+ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: 74999b2bf1a34e3c7b8190dd04206b2b541c465f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 74df878baa6ed4e2ba902a73a7830c0b075c58ce
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087032"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981529"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Erstellen eines Azure Active Directory-Mandanten für Verbindungen mit dem P2S OpenVPN-Protokoll
 
 Beim Herstellen einer Verbindung mit Ihrem VNet können Sie die zertifikatbasierte Authentifizierung oder die RADIUS-Authentifizierung verwenden. Wenn Sie das Open VPN-Protokoll verwenden, können Sie jedoch auch die Azure Active Directory-Authentifizierung verwenden. Dieser Artikel unterstützt Sie beim Einrichten eines Azure AD-Mandanten für die P2S Open VPN-Authentifizierung.
 
 > [!NOTE]
-> Die Azure AD-Authentifizierung wird nur für Verbindungen mit dem OpenVPN®-Protokoll unterstützt.
+> Die Azure AD-Authentifizierung wird nur für Verbindungen mit dem OpenVPN®-Protokoll unterstützt und erfordert den Azure-VPN-Client, der nur für Windows 10 verfügbar ist.
 >
 
 
@@ -85,7 +85,7 @@ Verwenden Sie die Schritte in [diesem Artikel](../active-directory/fundamentals/
 
 6. Wählen Sie **Akzeptieren** aus, wenn Sie dazu aufgefordert werden.
 
-    ![Akzeptieren](./media/openvpn-create-azure-ad-tenant/accept.jpg)
+    ![Screenshot mit der Meldung „Berechtigungen angefordert: Akzeptieren“ für Ihre Organisation mit Details und der Option zum Akzeptieren.](./media/openvpn-create-azure-ad-tenant/accept.jpg)
 
 7. Unter ihrem Azure AD wird in **Unternehmensanwendungen** **Azure-VPN** aufgeführt.
 

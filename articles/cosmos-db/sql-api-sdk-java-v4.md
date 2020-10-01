@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: af0964dceca8b862d0008d878045203983a96bda
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: aabd52d47bfc59de7a1d79bbe5ffbdda90d099bf
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586214"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90060695"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Versionshinweise und Ressourcen zu Azure Cosmos DB Java SDK v4 für die Core (SQL)-API
 > [!div class="op_single_selector"]
@@ -68,7 +68,20 @@ Das Azure Cosmos DB Java SDK v4 für Core (SQL) kombiniert eine asynchrone API u
 
 ## <a name="release-history"></a>Releaseverlauf
 
-### <a name="440-beta1-unreleased"></a>4.4.0-beta.1 (nicht freigegeben)
+### <a name="450-beta1-unreleased"></a>4.5.0-beta.1 (nicht freigegeben)
+
+### <a name="440-2020-09-12"></a>4.4.0 (2020-09-12)
+#### <a name="key-bug-fixes"></a>Wichtige Fehlerbehebungen
+* RequestTimeoutException beim Aktivieren der Abhängigkeit `netty-tcnative-boringssl` wurde korrigiert.
+* Problem von Speicherlecks bei `Delete`-Vorgängen im Modus `GATEWAY` wurde behoben.
+* Fehler bei der Instanziierung von `CosmosClient` bei ungültigem Endpunkt-URI wurde korrigiert.
+* `CPU History`-Diagnose wurde verbessert.
+
+### <a name="431-2020-08-13"></a>4.3.1 (2020-08-13)
+#### <a name="key-bug-fixes"></a>Wichtige Fehlerbehebungen
+* Problem mit der `GROUP BY`-Abfrage, bei der nur eine Seite zurückgegeben wurde, wurde behoben.
+* Zeichenfolgenformat des Benutzer-Agents wurde korrigiert und an die zentralen SDK-Richtlinien angepasst.
+* Diagnoseinformationen wurden erweitert, um die Diagnose des Abfrageplans einzuschließen.
 
 ### <a name="430-2020-07-29"></a>4.3.0 (2020-07-29)
 #### <a name="new-features"></a>Neue Funktionen

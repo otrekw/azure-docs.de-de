@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: d3937eaa5017ed66641d886ecd45e812f7070b83
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 91094879de1e1762f95d35e22c1ea441e211b99e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566283"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979692"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Verschieben von Log Analytics-Arbeitsbereichen in ein anderes Abonnement oder eine andere Ressourcengruppe
 
@@ -96,7 +96,7 @@ Verwenden Sie das folgende Verfahren, um den Arbeitsbereich mithilfe des Azure-P
 4. Wählen Sie ein gültiges **Zielabonnement** und eine **Ressourcengruppe** aus. Wenn Sie den Arbeitsbereich in eine andere Ressourcengruppe im gleichen Abonnement verschieben, wird die Option **Abonnement** nicht angezeigt.
 5. Klicken Sie auf **OK**, um den Arbeitsbereich und die ausgewählten Ressourcen zu verschieben.
 
-    ![Portal](media/move-workspace/portal.png)
+    ![Screenshot des Bereichs „Übersicht“ im Log Analytics-Arbeitsbereich mit Optionen zum Ändern der Ressourcengruppe und des Abonnementnamens.](media/move-workspace/portal.png)
 
 ### <a name="powershell"></a>PowerShell
 Verwenden Sie wie im folgenden Beispiel [Move-AzResource](/powershell/module/AzureRM.Resources/Move-AzureRmResource), um den Arbeitsbereich mithilfe von PowerShell zu verschieben:

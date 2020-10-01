@@ -8,16 +8,16 @@ ms.date: 6/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3bc9344459802f4bb4268093d905a051525d78dc
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 9bd597bbff54687af1ba8536dddd6f0d8dfc621e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684455"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531490"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>Erstellen und Bereitstellen eines IoT Edge-Geräts mit einem TPM unter Linux
 
-In diesem Artikel erfahren Sie, wie Sie die automatische Bereitstellung für ein Linux-basiertes IoT Edge-Gerät mit einem Trusted Platform Module (TPM) testen. Azure IoT Edge-Geräte können per [Gerätebereitstellungsdienst](../iot-dps/index.yml) automatisch bereitgestellt werden. Wenn Sie mit der automatischen Bereitstellung nicht vertraut sind, lesen Sie die Informationen unter [Konzepte für die automatische Bereitstellung](../iot-dps/concepts-auto-provisioning.md), bevor Sie fortfahren.
+In diesem Artikel erfahren Sie, wie Sie die automatische Bereitstellung für ein Linux-basiertes IoT Edge-Gerät mit einem Trusted Platform Module (TPM) testen. Azure IoT Edge-Geräte können per [Gerätebereitstellungsdienst](../iot-dps/index.yml) automatisch bereitgestellt werden. Wenn Sie mit der automatischen Bereitstellung nicht vertraut sind, lesen Sie die Übersicht zur [Bereitstellung](../iot-dps/about-iot-dps.md#provisioning-process), bevor Sie fortfahren.
 
 Aufgaben:
 

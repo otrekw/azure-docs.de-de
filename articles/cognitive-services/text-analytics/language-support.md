@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 08/26/2020
+ms.date: 09/12/2020
 ms.author: aahi
-ms.openlocfilehash: e2c6fc739fa81e6eb7c98073e3575e4143d317b2
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 185a6a26350f7803d109e26d8985510380b8cc16
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88932966"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056590"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Textanalyse-API v3: Sprachunterstützung 
 
@@ -87,6 +87,9 @@ ms.locfileid: "88932966"
 | Türkisch               |     `tr`      |     ✓      |            |                                 |                    |
 
 #### <a name="key-phrase-extraction"></a>[Schlüsselbegriffserkennung](#tab/key-phrase-extraction)
+
+> [!NOTE]
+> Modellversionen der Schlüsselbegriffserkennung vor Version 2020-07-01 sind auf 64 Zeichen begrenzt. Dieser Grenzwert gilt bei späteren Modellversionen nicht mehr.
 
 | Sprache              | Sprachcode | v2-Unterstützung | v3-Unterstützung | Ab Modellversion 3 verfügbar: |       Notizen        |
 |:----------------------|:-------------:|:----------:|:----------:|:-----------------------------------------:|:------------------:|
