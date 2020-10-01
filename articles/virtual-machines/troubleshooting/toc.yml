@@ -115,6 +115,8 @@
           href: windows-stop-error-bad-system-config-info.md
         - name: 'Windows-kritischer Fehler: Status „Nicht genügend Arbeitsspeicher“'
           href: troubleshoot-windows-stop-error.md
+        - name: 'Windows-kritischer Fehler: Systemprozess beendet'
+          href: windows-stop-error-system-process-terminated.md
 - name: Es kann keine Verbindung mit meinem virtuellen Computer hergestellt werden
   items:
     - name: RDP
@@ -230,6 +232,8 @@
               href: how-to-use-perfinsights.md
             - name: Erweiterung für die Leistungsdiagnose
               href: performance-diagnostics-vm-extension.md
+            - name: Problembehandlung bei hoher CPU-Auslastung bei virtuellen Azure-Windows-Computern
+              href: troubleshoot-high-cpu-issues-azure-windows-vm.md
         - name: Linux
           items:
             - name: Verwenden von PerfInsights

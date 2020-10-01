@@ -418,6 +418,8 @@
               href: id-tokens.md
             - name: Zugriffstoken
               href: access-tokens.md
+            - name: Konfigurieren der Tokengültigkeitsdauer
+              href: active-directory-configurable-token-lifetimes.md
             - name: UserInfo-Endpunkt
               href: userinfo.md
             - name: Zertifikatanmeldeinformationen
@@ -522,7 +524,7 @@
         - name: Verwenden von Verzeichnisschemaerweiterungs-Attributen in Ansprüchen
           href: active-directory-schema-extensions.md
         - name: Konfigurieren der Tokengültigkeitsdauer
-          href: active-directory-configurable-token-lifetimes.md
+          href: configure-token-lifetimes.md
         - name: Verarbeiten von SameSite-Cookieänderungen im Chrome-Browser
           href: howto-handle-samesite-cookie-changes-chrome-browser.md
         - name: Behandeln von ITP in Safari

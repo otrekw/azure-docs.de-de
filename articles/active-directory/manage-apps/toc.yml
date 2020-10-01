@@ -18,13 +18,15 @@
       href: add-application-portal-configure.md
     - name: Zuweisen von Benutzern zu einer App
       href: add-application-portal-assign-users.md
-    - name: Einrichten des einmaligen Anmeldens
+    - name: Einrichten des SAML-basierten einmaligen Anmeldens
       href: add-application-portal-setup-sso.md
+    - name: Einrichten des OIDC-basierten einmaligen Anmeldens
+      href: add-application-portal-setup-oidc-sso.md
     - name: Löschen einer App
       href: delete-application-portal.md
 - name: Tutorials
   items:
-    - name: "Integrierte Katalog-Apps (z.\_B. ServiceNow, Salesforce, Dropbox)"
+    - name: Liste der vorkonfigurierten Apps
       href: /azure/active-directory/saas-apps/
     - name: Hinzufügen einer lokalen App mit dem Anwendungsproxy
       href: application-proxy-add-on-premises-application.md
@@ -140,7 +142,7 @@
       items:
         - name: Migrationsressourcen
           href: migration-resources.md
-        - name: Migrieren einer ADFS-App zu Azure
+        - name: "Migrieren einer AD\_FS-App zu Azure"
           href: migrate-adfs-apps-to-azure.md
         - name: "Verwenden des AD\_FS-Anwendungsaktivitätsberichts (Vorschau)"
           href: migrate-adfs-application-activity.md

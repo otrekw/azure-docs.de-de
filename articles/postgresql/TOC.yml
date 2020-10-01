@@ -4,6 +4,8 @@
   items:
     - name: Worum handelt es sich bei Azure DB for PostgreSQL?
       href: overview.md
+    - name: Welche PostgreSQL-Bereitstellungsoption sollte ich auswählen?
+      href: overview-postgres-choose-server-options.md
     - name: Dienstupdates
       items:
         - name: SSL-Stammzertifikat läuft ab.

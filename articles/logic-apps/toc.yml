@@ -69,6 +69,8 @@
           href: export-from-microsoft-flow-logic-app-template.md
         - name: Erstellen zustandsbehafteter oder zustandsloser Workflows in Visual Studio Code
           href: create-stateful-stateless-workflows-visual-studio-code.md
+        - name: Aufrufen von Logik-Apps über Power Automate und Power Apps
+          href: call-logic-apps-from-power-automate-power-apps.md
         - name: Steuern der Workflowausführung
           items:
             - name: Bedingungsanweisungen
