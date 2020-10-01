@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
-ms.openlocfilehash: 17dcaee4f9cd4d889e585394362695ab31f0d012
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: a4db09c81efcd342d149cb95286aa6ee9cac93a6
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079733"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595783"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>Verwalten von HDInsight-Clustern mit dem Enterprise-Sicherheitspaket
 
@@ -47,7 +47,7 @@ Sie können einen normalen Cluster mithilfe eines verwalteten Ambari-Benutzernam
 
 Das Enterprise Security Package (bisher als HDInsight Premium bezeichnet) ermöglicht den Zugriff auf den Cluster durch mehrere Benutzer, wobei die Authentifizierung mit Active Directory und die Autorisierung mit Apache Ranger und Storage-ACLs (ADLS-ACLs) durchgeführt wird. Mit der Autorisierung wird für sichere Grenzen zwischen mehreren Benutzern gesorgt, und nur berechtigte Benutzer haben basierend auf den Autorisierungsrichtlinien Zugriff auf die Daten.
 
-Die Sicherheit und die Benutzerisolation sind für einen HDInsight-Cluster mit Enterprise Security Package wichtig. Zur Erfüllung dieser Anforderungen ist der SSH-Zugriff auf den Cluster mit Enterprise Security Package blockiert. In der folgenden Tabelle sind die empfohlenen Zugriffsmethoden für die einzelnen Clustertypen aufgeführt:
+Die Sicherheit und die Benutzerisolation sind für einen HDInsight-Cluster mit Enterprise Security Package wichtig. Um diese Anforderungen zu erfüllen, wird der SSH-Zugriff auf den Cluster mit Enterprise-Sicherheitspaket für den lokalen Benutzer unterstützt, der zum Zeitpunkt der Cluster Erstellung ausgewählt wurde, sowie für Benutzer, die in AAD-DS (d. h. Kerberos) verfügbar sind. In der folgenden Tabelle sind die empfohlenen Zugriffsmethoden für die einzelnen Clustertypen aufgeführt:
 
 |Workload|Szenario|Zugriffsmethode|
 |--------|--------|-------------|

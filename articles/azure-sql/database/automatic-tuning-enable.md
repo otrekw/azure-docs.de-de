@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: 94ffe2852380d238e9829a8ab0cc69ebe82b74fe
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: e7a3dd1c58f2bddb767dcac4ac2b5e354be77f65
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373503"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981462"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>Aktivieren der automatischen Optimierung im Azure-Portal zum Überwachen von Abfragen und Verbessern der Workloadleistung
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -51,7 +51,7 @@ Auf Serverebene kann auf Wunsch die Konfiguration der automatischen Optimierung 
 
 Wenn Sie die automatische Optimierung für einen [Server](logical-servers.md) in Azure SQL-Datenbank aktivieren möchten, navigieren Sie im Azure-Portal zum entsprechenden Server, und klicken Sie im Menü auf die Option **Automatische Optimierung**.
 
-![Server](./media/automatic-tuning-enable/server.png)
+![Screenshot zeigt „Automatische Optimierung“ im Azure-Portal, wo Sie Optionen für einen Server anwenden können.](./media/automatic-tuning-enable/server.png)
 
 > [!NOTE]
 > Beachten Sie, dass die Option **DROP_INDEX** zurzeit nicht kompatibel mit Anwendungen ist, die Partitionswechsel und Indexhinweise verwenden. In diesen Fällen sollte sie nicht aktiviert werden. Das Löschen nicht verwendeter Indizes wird bei den Dienstebenen „Premium“ und „Unternehmenskritisch“ nicht unterstützt.
@@ -77,7 +77,7 @@ Wenn Sie die automatische Optimierung für ein **Singleton** aktivieren möchten
 
 Einzelne Einstellungen für die automatische Optimierung können für jede Datenbank separat konfiguriert werden. Sie können manuell eine einzelne automatische Optimierungsoption konfigurieren oder angeben, dass eine Option die Einstellungen vom Server erbt.
 
-![Datenbank](./media/automatic-tuning-enable/database.png)
+![Screenshot zeigt „Automatische Optimierung“ im Azure-Portal, wo Sie Optionen für eine einzelne Datenbank anwenden können.](./media/automatic-tuning-enable/database.png)
 
 Beachten Sie, dass die Option DROP_INDEX zurzeit nicht kompatibel mit Anwendungen ist, die Partitionswechsel und Indexhinweise verwenden. In diesen Fällen sollte sie nicht aktiviert werden.
 

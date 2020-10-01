@@ -3,15 +3,15 @@ title: 'Einrichten von Azure Multi-Factor Authentication für Windows Virtual De
 description: Erfahren Sie, wie Sie Azure Multi-Factor Authentication einrichten, um die Sicherheit in Windows Virtual Desktop zu erhöhen.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 08/27/2020
+ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e8e723aa26ab08c8a09e75f506802101dc07f7e8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e31693eafcf32de1460cfa5b74ae35ffd05b5a67
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017775"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089920"
 ---
 # <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>Aktivieren von Azure Multi-Factor Authentication für Windows Virtual Desktop
 
@@ -48,10 +48,19 @@ Hier erfahren Sie, wie Sie eine Richtlinie für bedingten Zugriff erstellen, die
 7. Wählen Sie **Fertig**aus.
 8. Wählen Sie unter **Cloud-Apps oder -Aktionen** > **Einschließen** die Option **Apps auswählen** aus.
 9. Wählen Sie eine der folgenden Apps aus, je nach der verwendeten Version von Windows Virtual Desktop.
-   - Wenn Sie Windows Virtual Desktop (klassisch) verwenden, wählen Sie diese App aus:
+   
+   - Wenn Sie Windows Virtual Desktop (klassisch) verwenden, wählen Sie diese Apps aus:
+       
        - **Windows Virtual Desktop** (App-ID 5a0aa725-4958-4b0c-80a9-34562e23f3b7)
+       - **Windows Virtual Desktop Client** (App-ID fa4345a4-a730-4230-84a8-7d9651b86739), mit der Sie Richtlinien für den Webclient festlegen können
+       
+        Fahren Sie danach mit Schritt 11 fort.
+
    - Wenn Sie Windows Virtual Desktop verwenden, wählen Sie stattdessen diese App aus:
+       
        -  **Windows Virtual Desktop** (App-ID 9cdead84-a844-4324-93f2-b2e6bb768d07)
+       
+        Fahren Sie anschließend mit Schritt 10 fort.
 
    >[!IMPORTANT]
    > Wählen Sie nicht die App namens Windows Virtual Desktop Azure Resource Manager-Anbieter (50e95039-b200-4007-bc97-8d5790743a63) aus. Diese App wird nur zum Abrufen des Benutzerfeeds verwendet und sollte keine MFA aufweisen.

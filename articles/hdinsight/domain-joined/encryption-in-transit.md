@@ -7,16 +7,16 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/24/2020
-ms.openlocfilehash: 274b587d96a1a5eb3cb0896d3b150b17b2b3820e
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 25e38beb561ee954db2987643775f3a3c6e05737
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300573"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89668766"
 ---
-# <a name="encryption-in-transit-for-azure-hdinsight"></a>Verschlüsselung während der Übertragung für Azure HDInsight
+# <a name="ipsec-encryption-in-transit-for-azure-hdinsight"></a>IPSec-Verschlüsselung während der Übertragung für Azure HDInsight
 
-In diesem Artikel wird die Implementierung der Verschlüsselung während der Übertragung für die gesamte Kommunikation zwischen Azure HDInsight-Clusterknoten erläutert.
+In diesem Artikel wird die Implementierung der Verschlüsselung während der Übertragung für die Kommunikation zwischen Azure HDInsight-Clusterknoten erläutert.
 
 > [!Note]
 > Die Verschlüsselung während der Übertragung ist derzeit für die folgenden Regionen aktiviert: USA, Osten; USA, Süden-Mitte; USA, Westen 2 
@@ -27,7 +27,7 @@ Azure HDInsight bietet eine Vielzahl von Sicherheitsfeatures zum Schützen von U
 
 Die Verschlüsselung ruhender Daten wird durch die serverseitige Verschlüsselung in Azure-Speicherkonten sowie durch die Datenträgerverschlüsselung auf virtuellen Azure-Computern abgedeckt, die Teil Ihres HDInsight-Clusters sind.
 
-Die Verschlüsselung von Daten während der Übertragung in HDInsight wird mit [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security) und [Internetprotokollsicherheit (Internet Protocol Security, IPSec)](https://en.wikipedia.org/wiki/IPsec) erreicht. IPSec wird zwischen allen Hauptknoten, Workerknoten, Edgeknoten und ZooKeeper-Knoten aktiviert. Sie wird nicht für den Datenverkehr zwischen Gatewayknoten (virtuelle Windows-Computer) und anderen Linux-Knoten im Cluster aktiviert.
+Die Verschlüsselung von Daten während der Übertragung in HDInsight wird mit [Transport Layer Security (TLS)](https://docs.microsoft.com/azure/hdinsight/transport-layer-security) für Zugreifen auf die Clustergateways und [Internetprotokollsicherheit (Internet Protocol Security, IPSec)](https://en.wikipedia.org/wiki/IPsec) zwischen Clusterknoten erreicht. IPSec kann zwischen allen Hauptknoten, Workerknoten, Edgeknoten und ZooKeeper-Knoten aktiviert werden. IPSec wird nicht für Datenverkehr zwischen Gateway- oder [Identitätsbroker](https://docs.microsoft.com/azure/hdinsight/domain-joined/identity-broker)knoten aktiviert, die Windows-VMs und weitere Linux-Knoten im Cluster sind.
 
 ## <a name="enable-encryption-in-transit"></a>Aktivieren der Verschlüsselung während der Übertragung
 
@@ -42,7 +42,7 @@ Führen Sie die folgenden Schritte aus, um über das Azure-Portal einen neuen Cl
 
 1. Aktivieren Sie auf der Registerkarte **Sicherheit + Netzwerkbetrieb** das Kontrollkästchen **Verschlüsselung während der Übertragung aktivieren**.
 
-    :::image type="content" source="media/encryption-in-transit/enable-encryption-in-transit.png" alt-text="Clustererstellung: Verschlüsselung während der Übertragung aktivieren":::
+    :::image type="content" source="media/encryption-in-transit/enable-encryption-in-transit.png" alt-text="Clustererstellung: Registerkarte „Sicherheit + Netzwerkbetrieb":::
 
 ### <a name="create-a-cluster-with-encryption-in-transit-enabled-through-the-azure-cli"></a>Erstellen eines Clusters, für den die Verschlüsselung während der Übertragung, aktiviert ist, über die Azure CLI
 

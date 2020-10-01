@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: b3ee3f729e1e2f03d7c72a72081ad2e3f0316cbb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 228fa18fef0f681437fd2c0c87e3114d14977a49
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482529"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462648"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure Synapse Analytics (früher SQL DW) – Häufig gestellte Fragen
 
@@ -27,7 +27,7 @@ A. Azure Synapse ist ein Analysedienst, der Data Warehousing mit Big Data-Analy
 
 Q. Was ist mit Azure SQL Data Warehouse geschehen?
 
-A. Bei Azure Synapse handelt es sich um ein weiterentwickeltes Azure SQL Data Warehouse (SQL DW). Wir haben dasselbe branchenführende Data Warehouse auf ein ganz neues Leistungs-und Funktionsniveau gebracht. Sie können Ihre vorhandenen Data Warehouse-Workloads in der Produktionsumgebung mit Azure Synapse weiter ausführen. Weitere Informationen finden Sie unter [Was ist Azure Synapse Analytics?](sql-data-warehouse-overview-what-is.md).
+A. Bei Azure Synapse handelt es sich um ein weiterentwickeltes Azure SQL Data Warehouse. Wir haben dasselbe branchenführende Data Warehouse auf ein ganz neues Leistungs-und Funktionsniveau gebracht. Sie können Ihre vorhandenen Data Warehouse-Workloads in der Produktionsumgebung mit Azure Synapse weiter ausführen. Weitere Informationen finden Sie unter [Was ist Azure Synapse Analytics?](sql-data-warehouse-overview-what-is.md).
 
 Q. Was ist ein Synapse SQL-Pool?
 

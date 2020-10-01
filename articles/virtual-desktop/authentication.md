@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 09/04/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8328fa9c9e32a22e8e5093aa343f333cd1914ddc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5681228e5da2708912d69f16a4b09a4a93d8bb04
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89026120"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500299"
 ---
 # <a name="supported-authentication-methods"></a>Unterstützte Authentifizierungsmethoden
 
@@ -43,9 +43,13 @@ Dies sind die derzeit unterstützten Anmeldemethoden:
 >[!NOTE]
 >Smartcard und Windows Hello können für die Anmeldung nur Kerberos verwenden. Für die Anmeldung mit Kerberos ist eine Sichtlinie zum Domänencontroller erforderlich.
 
+## <a name="hybrid-identity"></a>Hybrididentität
+
+Windows Virtual Desktop unterstützt [Hybrididentitäten](../active-directory/hybrid/whatis-hybrid-identity.md) über Azure Active Directory (AD), einschließlich solcher Identitäten, die mit Active Directory-Verbunddienste (AD FS) zum Verbund erstellt wurden. Da Benutzer über Azure AD auffindbar sein müssen, unterstützt Windows Virtual Desktop keine eigenständigen Active Directory Bereitstellungen mit ADFS.
+
 ## <a name="single-sign-on-sso"></a>Einmaliges Anmelden (Single Sign-On, SSO)
 
-Windows Virtual Desktop unterstützt derzeit keine Active Directory-Verbunddienste (AD FS) für Authentifizierung oder einmaliges Anmelden (SSO).
+Windows Virtual Desktop unterstützt derzeit keine Active Directory-Verbunddienste (AD FS) für einmaliges Anmelden (SSO).
 
 Die einzige Möglichkeit zu vermeiden, dass Sie zur Eingabe Ihrer Anmeldedaten für den Sitzungshost aufgefordert werden, besteht darin, diese im Client zu speichern. Wir empfehlen Ihnen, zu diesem Zweck nur sichere Geräte zu verwenden, um zu verhindern, dass andere Benutzer auf Ihre Ressourcen zugreifen.
 

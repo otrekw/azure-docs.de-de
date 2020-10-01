@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/03/2018
-ms.openlocfilehash: c4c340282becf34ae34bf9e48bceeb86d68f237b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa10f97d0eb2f48e80d20f90a254c44c6e95a8e8
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84345324"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436968"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>Auflösen von Transact-SQL-Unterschieden während der Migration zur SQL-Datenbank
 
@@ -45,7 +45,7 @@ Die zentralen DDL-Anweisungen sind verfügbar, aber einige DDL-Anweisungen haben
 Zusätzlich zu Transact-SQL-Anweisungen, die sich auf die unter [Funktionen von Azure SQL-Datenbank](features-comparison.md) beschriebenen nicht unterstützten Features beziehen, werden die folgenden Anweisungen und Gruppen von Anweisungen nicht unterstützt. Wenn die zu migrierende Datenbank eine der folgenden Funktionen verwendet, müssen Sie deshalb T-SQL so umstrukturieren, dass diese T-SQL-Funktionen und -Anweisungen beseitigt werden.
 
 - Sortierung von Systemobjekten
-- Verbindungsbezogen: Endpunktanweisungen. SQL-Datenbank unterstützt keine Windows-Authentifizierung, jedoch die ähnliche Azure Active Directory-Authentifizierung. Einige Authentifizierungstypen erfordern die neueste Version von SSMS. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit SQL-Datenbank oder Azure SQL Data Warehouse unter Verwendung der Azure Active Directory-Authentifizierung](authentication-aad-overview.md).
+- Verbindungsbezogen: Endpunktanweisungen. SQL-Datenbank unterstützt keine Windows-Authentifizierung, jedoch die ähnliche Azure Active Directory-Authentifizierung. Einige Authentifizierungstypen erfordern die neueste Version von SSMS. Weitere Informationen finden Sie unter [Verwenden der Azure Active Directory-Authentifizierung](authentication-aad-overview.md).
 - Plattformübergreifende Datenbankabfragen mit drei oder vier Teilnamen. (Schreibgeschützte datenbankübergreifende Abfragen werden durch die Verwendung einer [Abfrage von elastischen Datenbanken](elastic-query-overview.md)unterstützt.)
 - Datenbankübergreifende Besitzverkettung, `TRUSTWORTHY`-Einstellung
 - `EXECUTE AS LOGIN` Verwenden Sie stattdessen „EXECUTE AS USER“.
@@ -82,7 +82,7 @@ Weitere Informationen zu Transact-SQL-Grammatik und -Syntax sowie Beispiele find
 
 ### <a name="about-the-applies-to-tags"></a>Informationen zu Tags vom Typ "Gilt für"
 
-Die Transact-SQL-Referenz umfasst Artikel zu SQL Server-Versionen ab 2008. Unter der Artikelüberschrift befindet sich eine Symbolleiste, auf der die vier SQL Server-Plattformen aufgelistet sind und ihre Anwendbarkeit angezeigt wird. Beispielsweise wurden Verfügbarkeitsgruppen in SQL Server 2012 eingeführt. Im Artikel [CREATE AVAILABILITY GROUP](https://msdn.microsoft.com/library/ff878399.aspx) ist angegeben, dass die Anweisung für **SQL Server gilt (beginnend mit 2012)** . Die Anweisung gilt nicht für SQL Server 2008, SQL Server 2008 R2, Azure SQL-Datenbank, Azure SQL Data Warehouse oder Parallel Data Warehouse.
+Die Transact-SQL-Referenz umfasst Artikel zu SQL Server-Versionen ab 2008. Unter der Artikelüberschrift befindet sich eine Symbolleiste, auf der die vier SQL Server-Plattformen aufgelistet sind und ihre Anwendbarkeit angezeigt wird. Beispielsweise wurden Verfügbarkeitsgruppen in SQL Server 2012 eingeführt. Im Artikel [CREATE AVAILABILITY GROUP](https://msdn.microsoft.com/library/ff878399.aspx) ist angegeben, dass die Anweisung für **SQL Server gilt (beginnend mit 2012)** . Die Anweisung gilt nicht für SQL Server 2008, SQL Server 2008 R2, Azure SQL-Datenbank, Azure Synapse Analytics (früher SQL Data Warehouse) oder Parallel Data Warehouse.
 
 In einigen Fällen kann der allgemeine Gegenstand eines Artikels in einem Produkt verwendet werden, es liegen jedoch kleine Unterschiede im Hinblick auf die verschiedenen Produkte vor. Die Unterschiede werden dann im Artikel entsprechend angegeben. In einigen Fällen kann der allgemeine Gegenstand eines Artikels in einem Produkt verwendet werden, es liegen jedoch kleine Unterschiede im Hinblick auf die verschiedenen Produkte vor. Die Unterschiede werden dann im Artikel entsprechend angegeben. Der Artikel CREATE TRIGGER ist beispielsweise in SQL-Datenbank verfügbar. Die Option **ALL SERVER** für Trigger auf Serverebene gibt jedoch an, dass Trigger auf Serverebene in SQL-Datenbank nicht verwendet werden können. Verwenden Sie stattdessen Trigger auf Datenbankebene.
 

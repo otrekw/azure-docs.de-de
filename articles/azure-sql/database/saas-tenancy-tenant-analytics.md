@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: cc748e8a816b944a20a12c8e8e345dca21dfaabd
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 80658839e804112ae9c8a049943bca54441b015b
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043511"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437393"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>Mandantenübergreifende Analysen mit extrahierten Daten – App mit einem Mandanten
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -44,7 +44,7 @@ Mehrinstanzenfähige SaaS-Anwendungen verfügen in der Regel über eine große M
 
 Der Zugriff auf Daten für alle Mandanten ist einfach, wenn sämtliche Daten sich in nur einer mehrinstanzenfähigen Datenbank befinden. Komplexer wird der Zugriff, wenn die Daten möglicherweise auf Tausende von Datenbanken verteilt sind. Eine Möglichkeit, um die Komplexität zu verringern und die Auswirkungen von Analyseabfragen auf Transaktionsdaten zu minimieren, besteht darin, Daten in eine speziell entworfene Analysedatenbank oder ein Data Warehouse zu extrahieren.
 
-In diesem Tutorial wird ein vollständiges Analyseszenario für die Wingtip Tickets SaaS-Anwendung gezeigt. Zuerst werden Daten mithilfe von *elastischen Aufträgen* aus den einzelnen Mandantendatenbanken extrahiert und in Stagingtabellen in einem Analysespeicher geladen. Der Analysespeicher kann entweder eine SQL-Datenbank oder ein SQL Data Warehouse sein. Für umfangreiche Datenextraktionen wird [Azure Data Factory](../../data-factory/introduction.md) empfohlen.
+In diesem Tutorial wird ein vollständiges Analyseszenario für die Wingtip Tickets SaaS-Anwendung gezeigt. Zuerst werden Daten mithilfe von *elastischen Aufträgen* aus den einzelnen Mandantendatenbanken extrahiert und in Stagingtabellen in einem Analysespeicher geladen. Der Analysespeicher kann entweder eine SQL-Datenbank oder ein SQL-Pool sein. Für umfangreiche Datenextraktionen wird [Azure Data Factory](../../data-factory/introduction.md) empfohlen.
 
 Als Nächstes werden die aggregierten Daten in mehrere Tabellen im [Sternschema](https://www.wikipedia.org/wiki/Star_schema) transformiert. Die Tabellen bestehen aus einer zentralen Faktentabelle und den zugehörigen Dimensionstabellen.  Für Wingtip Tickets:
 

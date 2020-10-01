@@ -1,6 +1,6 @@
 ---
 title: Striim-Schnellstart
-description: Schneller Einstieg in Striim und Azure SQL Data Warehouse.
+description: Schneller Einstieg in Striim und Azure Synapse Analytics.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -11,18 +11,18 @@ ms.date: 10/12/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 945bcd03bc3bf13517836e7a5624bd5142782183
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6b5fa1a42201479c5d426a5bbb9188d0cb8e03d
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85208551"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89485973"
 ---
-# <a name="striim-azure-sql-dw-marketplace-offering-install-guide"></a>Installationsanleitung zum Marketplace-Angebot für Striim und Azure SQL Data Warehouse
+# <a name="striim-azure-synapse-analytics-marketplace-offering-install-guide"></a>Installationsanleitung zum Striim-Marketplace-Angebot für Azure Synapse Analytics
 
-Bei diesem Schnellstart wird vorausgesetzt, dass Sie bereits über eine vorhandene Instanz von SQL Data Warehouse verfügen.
+Für diesen Schnellstart wird vorausgesetzt, dass Sie bereits über eine vorhandene Instanz von Azure Synapse Analytics verfügen.
 
-Suchen Sie im Azure Marketplace nach Striim, und wählen Sie die Option für Striim zur Datenintegration in SQL Data Warehouse aus. 
+Suchen Sie im Azure Marketplace nach Striim, und wählen Sie die Option „Striim for Data Integration to Azure Synapse Analytics (Staged)“ aus. 
 
 ![Installieren von Striim][install]
 
@@ -32,7 +32,7 @@ Konfigurieren Sie den virtuellen Striim-Computer mit den angegebenen Eigenschaft
 
 Klicken Sie nach der Bereitstellung auf „\<VM Name>-masternode“ im Azure-Portal, klicken Sie auf „Verbinden“, und kopieren Sie die Anmeldung mit einem lokalen VM-Konto. 
 
-![Verbinden von Striim mit SQL Data Warehouse][connect]
+![Verbinden von Striim mit Azure Synapse Analytics][connect]
 
 Laden Sie die Datei „sqljdbc42.jar“ von <https://www.microsoft.com/en-us/download/details.aspx?id=54671> auf Ihren lokalen Computer herunter. 
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 62a30fada32a23546323dae34f875ab9c7da228c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c570c43560ad865b8bcc5161cbd0c6731ea4a237
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87028548"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090651"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Azure-VM-Erweiterung für die Leistungsdiagnose unter Windows
 
@@ -29,7 +29,15 @@ Die Azure-VM-Erweiterung für die Leistungsdiagnose ermöglicht das Sammeln von 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Diese Erweiterung kann unter Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 und Windows Server 2016 installiert werden. Außerdem ist die Installation unter Windows 8.1 und Windows 10 möglich.
+Diese Erweiterung kann installiert werden unter
+* Windows Server 2019
+* Windows Server 2016
+* Windows Server 2012 R2
+* Windows Server 2012
+* Windows Server 2008 R2
+* Windows 10
+* Windows 8.1
+* Windows 8
 
 ## <a name="extension-schema"></a>Erweiterungsschema
 Der folgende JSON-Code zeigt das Schema für die Azure-VM-Erweiterung für die Leistungsdiagnose. Für diese Erweiterung sind der Name und der Schlüssel für ein Speicherkonto erforderlich, in dem die Ausgabe der Diagnose und der Bericht gespeichert werden. Diese Werte sind vertraulich. Speicherkontoschlüssel müssen in einer geschützten Einstellungskonfiguration gespeichert werden. Die geschützten Einstellungsdaten der Azure-VM-Erweiterung werden verschlüsselt und nur auf dem virtuellen Zielcomputer entschlüsselt. Beachten Sie, dass für **storageAccountName** und **storageAccountKey** die Groß- und Kleinschreibung berücksichtigt wird. Weitere erforderliche Parameter sind im folgenden Abschnitt aufgeführt.

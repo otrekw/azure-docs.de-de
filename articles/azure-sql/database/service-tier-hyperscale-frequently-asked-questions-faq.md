@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 03/03/2020
-ms.openlocfilehash: 359de25d2bdb57ad5c6386586f987942acc120ef
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: be8e38d38408bd7cf11608d71035bd7cf0808b60
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500145"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488863"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL-Datenbank Hyperscale – Häufig gestellte Fragen (FAQs)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -114,11 +114,11 @@ Ja, der [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-benefit
 
 Hyperscale unterstützt alle SQL Server-Workloads, wurde aber in erster Linie für OLTP optimiert. Zudem können Sie Hybrid- (HTAP-) und Analyseworkloads (Data Mart) migrieren.
 
-### <a name="how-can-i-choose-between-azure-sql-data-warehouse-and-azure-sql-database-hyperscale"></a>Wie kann ich zwischen Azure SQL Data Warehouse und Azure SQL-Datenbank Hyperscale auswählen?
+### <a name="how-can-i-choose-between-azure-synapse-analytics-and-azure-sql-database-hyperscale"></a>Wie kann ich zwischen Azure Synapse Analytics und Azure SQL-Datenbank Hyperscale auswählen?
 
 Wenn Sie zurzeit interaktive Analyseabfragen mit SQL Server als Data Warehouse ausführen, stellt Hyperscale eine hervorragende Option dar, weil Sie kleine und mittelgroße Data Warehouses (z.B. von wenigen TB bis hin zu 100 TB) zu geringeren Kosten hosten und Ihre SQL Server Data Warehouse-Workloads mit nur minimalen Änderungen am T-SQL-Code zu Hyperscale migrieren können.
 
-Wenn Sie Datenanalysen im großen Umfang mit komplexen Abfragen und nachhaltigen Erfassungsraten von mehr als 100 MB/Sek. oder aber mithilfe von Parallel Data Warehouse (PDW), Teradata oder anderen Data Warehouses mit MPP-Design (Massively Parallel Processing) durchführen, ist SQL Data Warehouse möglicherweise die beste Wahl.
+Wenn Sie Datenanalysen im großen Umfang mit komplexen Abfragen und nachhaltigen Erfassungsraten von mehr als 100 MB/Sek. oder aber mithilfe von Parallel Data Warehouse (PDW), Teradata oder anderen Data Warehouses mit MPP-Design (Massively Parallel Processing) durchführen, ist Azure Synapse Analytics (früher SQL Data Warehouse) möglicherweise die beste Wahl.
   
 ## <a name="hyperscale-compute-questions"></a>Fragen zu Hyperscale Compute
 
@@ -229,7 +229,7 @@ Die Ausfallzeit bei der Migration zu Hyperscale ist identisch mit der Ausfallzei
 
 Hyperscale kann 100 MB/Sek. neuer/geänderter Daten verarbeiten, aber die Zeit für das Migrieren von Daten in Datenbanken in Azure SQL-Datenbank wird auch durch den verfügbaren Netzwerkdurchsatz, die Lesegeschwindigkeit der Quelle und das Servicelevelziel der Zieldatenbank beeinflusst.
 
-### <a name="can-i-read-data-from-blob-storage-and-do-fast-load-like-polybase-in-sql-data-warehouse"></a>Können Daten aus Blob Storage gelesen und schnell geladen werden (wie PolyBase in SQL Data Warehouse)?
+### <a name="can-i-read-data-from-blob-storage-and-do-fast-load-like-polybase-in-azure-synapse-analytics"></a>Können Daten aus Blob Storage gelesen und schnell geladen werden (wie PolyBase in Azure Synapse Analytics)?
 
 Sie können festlegen, dass eine Clientanwendung Daten aus Azure Storage lesen und Daten in eine Hyperscale-Datenbank laden soll (genauso, wie dies bei jeder anderen Datenbank in Azure SQL-Datenbank möglich ist). PolyBase wird in Azure SQL-Datenbank derzeit nicht unterstützt. Als Alternative zum schnellen Laden können Sie entweder [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/) oder einen Spark-Auftrag in [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/) mit dem [Spark-Connector für SQL](spark-connector.md) verwenden. Der Spark-Connector für SQL unterstützt Importe mit BULK INSERT.
 
@@ -269,7 +269,7 @@ Ja.
 
 ### <a name="what-is-the-recovery-point-objective-rporecovery-time-objective-rto-for-database-restore-in-hyperscale"></a>Wie lange dauert die Recovery Point Objective (RPO)/Recovery Time Objective (RTO) bei einer Datenbankwiederherstellung in Hyperscale?
 
-Die RPO beträgt 0 Minuten. Das RTO-Ziel beträgt – unabhängig von der Größe der Datenbank – weniger als 10 Minuten.
+Der RPO-Wert beträgt 0 Minuten. Die meisten Wiederherstellungsvorgänge werden unabhängig von der Datenbankgröße innerhalb von 60 Minuten abgeschlossen. Die Wiederherstellungszeit kann für größere Datenbanken und dann länger sein, wenn für die Datenbank vor und bis zum Wiederherstellungszeitpunkt beträchtliche Schreibaktivitäten aufgetreten sind.
 
 ### <a name="does-database-backup-affect-compute-performance-on-my-primary-or-secondary-replicas"></a>Wirkt sich die Datenbanksicherung auf die Computeleistung auf primären oder sekundären Replikaten aus?
 
@@ -345,9 +345,9 @@ Zentrales Hoch- oder Herunterskalieren führt dazu, dass bestehende Verbindungen
 
 Durch den Endbenutzer. Dies ist kein automatischer Vorgang.  
 
-### <a name="does-the-size-of-my-tempdb-database-also-grow-as-the-compute-is-scaled-up"></a>Wird beim zentralen Hochskalieren des Computevorgangs auch meine `tempdb`-Datenbank vergrößert?
+### <a name="does-the-size-of-my-tempdb-database-and-rbpex-cache-also-grow-as-the-compute-is-scaled-up"></a>Werden beim zentralen Hochskalieren des Computevorgangs auch meine `tempdb`-Datenbank und mein RBPEX-Cache vergrößert?
 
-Ja. Die `tempdb`-Datenbank wird automatisch hochskaliert, je größer der Computebedarf wird.  
+Ja. Die Größe der `tempdb`-Datenbank und die Größe des [RBPEX-Cache](service-tier-hyperscale.md#distributed-functions-architecture) auf Computeknoten werden automatisch hochskaliert, wenn die Anzahl der Kerne erhöht wird.
 
 ### <a name="can-i-provision-multiple-primary-compute-replicas-such-as-a-multi-master-system-where-multiple-primary-compute-heads-can-drive-a-higher-level-of-concurrency"></a>Kann ich mehrere primäre Computereplikate, z.B. ein Multimastersystem, bereitstellen, bei dem mehrere primäre Computeheads zu einem höheren Maß an Parallelität führen können?
 
@@ -361,7 +361,7 @@ Wir erstellen standardmäßig ein sekundäres Replikat für Hyperscale-Datenbank
 
 ### <a name="how-do-i-connect-to-these-secondary-compute-replicas"></a>Wie kann ich eine Verbindung mit diesen sekundären Computereplikaten herstellen?
 
-Sie können eine Verbindung mit diesen zusätzlichen schreibgeschützten Computereplikaten herstellen, indem Sie das Argument `ApplicationIntent` in Ihrer Verbindungszeichenfolge auf `ReadOnly` festlegen. Verbindungen, die mit `ReadOnly` markiert sind, werden automatisch an eines der zusätzlichen schreibgeschützten Computereplikate weitergeleitet.  
+Sie können eine Verbindung mit diesen zusätzlichen schreibgeschützten Computereplikaten herstellen, indem Sie das Argument `ApplicationIntent` in Ihrer Verbindungszeichenfolge auf `ReadOnly` festlegen. Verbindungen, die mit `ReadOnly` markiert sind, werden automatisch an eines der zusätzlichen schreibgeschützten Computereplikate weitergeleitet. Ausführliche Informationen finden Sie unter [Verwenden von schreibgeschützten Replikaten zum Lesen schreibgeschützter Abfrageworkloads](read-scale-out.md).
 
 ### <a name="how-do-i-validate-if-i-have-successfully-connected-to-secondary-compute-replica-using-ssms-or-other-client-tools"></a>Wie kann ich überprüfen, ob ich eine Verbindung mit dem sekundären Computereplikat mithilfe von SSMS oder anderen Clienttools erfolgreich hergestellt habe?
 
@@ -390,7 +390,7 @@ Nein. Hyperscale-Datenbanken verfügen über einen gemeinsamen Speicher. Dies be
 
 ### <a name="how-much-delay-is-there-going-to-be-between-the-primary-and-secondary-compute-replicas"></a>Wie lange dauert die Verzögerung zwischen dem primären und dem sekundären Computereplikat?
 
-Die Datenlatenz ab dem Commit einer Transaktion auf dem primären Replikat bis zur Sichtbarkeit auf einem sekundären Replikat hängt von der aktuellen Protokollgenerierungsrate ab. Die typische Datenlatenz liegt im niedrigen Millisekundenbereich.
+Die Datenlatenz ab dem Zeitpunkt, zu dem eine Transaktion auf dem primären Replikat committet wird, bis zu dem Zeitpunkt, zu dem sie auf einem sekundären Replikat lesbar ist, hängt von den aktuellen Werten für Protokollgenerierungsrate, Transaktionsgröße und Last auf dem Replikat sowie anderen Faktoren ab. Die typische Datenlatenz bei kleinen Transaktionen liegt im Bereich einiger Zehntel Millisekunden, es gibt jedoch keine obere Grenze für die Datenlatenz. Daten auf einem bestimmten sekundären Replikat sind immer transaktionsweise konsistent. Zu einem bestimmten Zeitpunkt kann die Datenlatenz für verschiedene sekundäre Replikate jedoch unterschiedlich sein. Workloads, die committete Daten sofort lesen müssen, sollten auf dem primären Replikat ausgeführt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

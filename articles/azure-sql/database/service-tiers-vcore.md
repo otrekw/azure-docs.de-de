@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 08/14/2020
-ms.openlocfilehash: 7131ddac840d2854969147da2eeb82a890ce3410
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 19f811c636d5cf3ffb3eef9904c7ba4f7d456b5f
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586800"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462206"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>Übersicht über das Modell für virtuelle Kerne – Azure SQL-Datenbank und Azure SQL Managed Instance 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -188,7 +188,7 @@ Gen5 ist in den meisten Regionen weltweit verfügbar.
 
 #### <a name="fsv2-series"></a>Fsv2-Serie
 
-Die Fsv2-Serie ist in den folgenden Regionen verfügbar: „Australien, Mitte“, „Australien, Mitte 2“, „Australien, Osten“, „Australien, Südosten“, „Brasilien, Süden“, „Kanada, Mitte“, „Asien, Osten“, „USA, Osten“, „Frankreich, Mitte“, „Indien, Mitte“, „Indien, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“, „Europa, Norden“, „Südafrika, Norden“, „Asien, Südosten“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Europa, Westen“, „USA, Westen 2“.
+Die Fsv2-Serie ist in den folgenden Regionen verfügbar: „Australien, Mitte“, „Australien, Mitte 2“, „Australien, Osten“, „Australien, Südosten“, „Brasilien, Süden“, „Kanada, Mitte“, „Asien, Osten“, „USA, Osten“, „Frankreich, Mitte“, „Indien, Mitte“, „Südkorea, Mitte“, „Südkorea, Süden“, „Europa, Norden“, „Südafrika, Norden“, „Asien, Südosten“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Europa, Westen“, „USA, Westen 2“.
 
 
 #### <a name="m-series"></a>M-Serie

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: ffb739affac68898f6ed5ff1d972d3fd4a70df2f
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: ddd6e08d9be36035b2db02ec5feb3ae4e957ec49
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055259"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604443"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Erstellen einer FCI mit freigegebenen Azure-Datenträgern (SQL Server auf Azure-VMs)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -33,13 +33,13 @@ Weitere Informationen finden Sie in der Übersicht zu [FCI mit SQL Server auf A
 Bevor Sie die in diesem Artikel aufgeführten Anweisungen ausführen, sollten Sie über Folgendes verfügen:
 
 - Ein Azure-Abonnement. [Kostenlos](https://azure.microsoft.com/free/) einsteigen. 
-- [Mindestens zwei für „USA, Westen-Mitte“ vorbereitete virtuelle Windows Azure-Computer](failover-cluster-instance-prepare-vm.md) in derselben [Verfügbarkeitsgruppe](../../../virtual-machines/linux/tutorial-availability-sets.md) und eine [Näherungsplatzierungsgruppe](../../../virtual-machines/windows/co-location.md#proximity-placement-groups), wobei die Verfügbarkeitsgruppe, die mit Fehlerdomäne und Updatedomäne erstellt wird, auf **1** festgelegt ist. 
+- [Zwei oder mehr virtuelle Windows Azure-Computer](failover-cluster-instance-prepare-vm.md). Es werden sowohl [Verfügbarkeitsgruppen](../../../virtual-machines/windows/tutorial-availability-sets.md) als auch [Näherungsplatzierungsgruppen](../../../virtual-machines/windows/co-location.md#proximity-placement-groups) (proximity placement groups, PPGs) unterstützt. Wenn Sie eine PPG verwenden, müssen alle Knoten in derselben Gruppe vorhanden sein.
 - Ein Konto mit Berechtigungen zum Erstellen von Objekten auf virtuellen Azure-Computern und in Active Directory
 - Die neueste Version von [PowerShell](/powershell/azure/install-az-ps?view=azps-4.2.0). 
 
 
 ## <a name="add-azure-shared-disk"></a>Hinzufügen eines freigegebenen Azure-Datenträgers
-Stellen Sie einen verwalteten SSD Premium-Datenträger mit aktivierter Funktion für freigegebene Datenträger bereit. Legen Sie `maxShares` auf **2** fest, damit der Datenträger für beide FCI-Knoten freigegeben werden kann. 
+Stellen Sie einen verwalteten SSD Premium-Datenträger mit aktivierter Funktion für freigegebene Datenträger bereit. Legen Sie `maxShares` auf den Wert fest, der **mit der Anzahl der Clusterknoten übereinstimmt**, damit der Datenträger für alle FCI-Knoten freigegeben werden kann. 
 
 Fügen Sie einen freigegebenen Azure-Datenträger hinzu, indem Sie folgendermaßen vorgehen: 
 
@@ -213,11 +213,10 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="configure-connectivity"></a>Konfigurieren von Konnektivität 
 
-Um Datenverkehr ordnungsgemäß an den aktuellen primären Knoten zu leiten, konfigurieren Sie die für Ihre Umgebung geeignete Konnektivitätsoption. Sie können einen [Azure-Lastenausgleich](hadr-vnn-azure-load-balancer-configure.md) erstellen oder bei Verwendung von SQL Server 2019 und Windows Server 2016 (oder höher) stattdessen eine Vorschau des Features für [verteilte Netzwerknamen](hadr-distributed-network-name-dnn-configure.md) anzeigen. 
+Um Datenverkehr ordnungsgemäß an den aktuellen primären Knoten zu leiten, konfigurieren Sie die für Ihre Umgebung geeignete Konnektivitätsoption. Sie können einen [Azure-Lastenausgleich](hadr-vnn-azure-load-balancer-configure.md) erstellen oder bei Verwendung von SQL Server 2019 CU2+ und Windows Server 2016 (oder höher) stattdessen eine Vorschau des Features für [verteilte Netzwerknamen](hadr-distributed-network-name-dnn-configure.md) anzeigen. 
 
 ## <a name="limitations"></a>Einschränkungen
 
-- Nur SQL Server 2019 unter Windows Server 2019 wird unterstützt. 
 - Nur die Registrierung beim SQL-VM-Ressourcenanbieter im [Verwaltungsmodus „Lightweight“](sql-vm-resource-provider-register.md#management-modes) wird unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte

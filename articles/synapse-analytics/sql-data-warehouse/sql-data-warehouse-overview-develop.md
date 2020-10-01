@@ -1,6 +1,6 @@
 ---
 title: Ressourcen für die Entwicklung eines Synapse SQL-Pools in Azure Synapse Analytics
-description: Entwicklungskonzepte, Entwurfsentscheidungen, Empfehlungen und Programmiertechniken für SQL Data Warehouse.
+description: Entwicklungskonzepte, Entwurfsentscheidungen, Empfehlungen und Programmiertechniken für Azure Synapse Analytics.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 08/29/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: a3c0d7924fb550761d050c9c404b1065c7d3cf72
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 95f712f196c37650b52220c9e34f6cb6b50bff23
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211492"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460608"
 ---
 # <a name="design-decisions-and-coding-techniques-for-a-synapse-sql-pool-in-azure-synapse-analytics"></a>Entwurfsentscheidungen und Programmiertechniken für einen Synapse SQL-Pool in Azure Synapse Analytics 
  In diesem Artikel finden Sie weitere Ressourcen, die Ihnen helfen, wichtige Entwurfsentscheidungen, Empfehlungen und Programmiertechniken für einen Synapse SQL-Pool in Azure Synapse besser zu verstehen.
@@ -38,7 +38,7 @@ In den folgenden Artikeln werden bestimmte Programmiertechniken, Tipps und Empfe
 
 * [Gespeicherte Prozeduren](sql-data-warehouse-develop-stored-procedures.md)
 * [Bezeichnungen](sql-data-warehouse-develop-label.md)
-* [Ansichten](sql-data-warehouse-develop-views.md)
+* [Ansichten](performance-tuning-materialized-views.md)
 * [Temporäre Tabellen](sql-data-warehouse-tables-temporary.md)
 * [Dynamisches SQL](sql-data-warehouse-develop-dynamic-sql.md)
 * [Schleifen](sql-data-warehouse-develop-loops.md)

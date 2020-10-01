@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/03/2020
-ms.openlocfilehash: 655486d8273719e89187ebac0992cf83904d9b98
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 3455503570d09daedc5e34cba0bf36d71ddcdcbc
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120642"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988114"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperscale-Dienstebene
 
@@ -228,7 +228,7 @@ Hierbei handelt es sich um die aktuellen Einschränkungen der Hyperscale-Dienste
 | Migration zu „Hyperscale“ ist derzeit ein unidirektionaler Vorgang | Nach der Migration einer Datenbank zu Hyperscale kann sie nicht direkt zu einer anderen Dienstebene migriert werden. Derzeit besteht die einzige Möglichkeit zum Migrieren einer Datenbank aus Hyperscale zu Nicht-Hyperscale darin, sie mithilfe einer BACPAC-Datei oder anderer Datenverschiebungstechnologien (Massenkopieren, Azure Data Factory, Azure Databricks, SSIS usw.) zu exportieren/importieren. Der BACPAC-Export/-Import über das Azure-Portal, über PowerShell mithilfe von [New-AzSqlDatabaseExport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseexport) oder [New-AzSqlDatabaseImport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseimport), über die Azure CLI mithilfe von [az sql db export](https://docs.microsoft.com/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-export) oder [az sql db import](https://docs.microsoft.com/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-import) sowie über die [REST-API](https://docs.microsoft.com/rest/api/sql/databases%20-%20import%20export) wird nicht unterstützt. Der BACPAC-Import/-Export für kleinere Hyperscale-Datenbanken (bis zu 200 GB) wird über SSMS und [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) Version 18.4 und höher unterstützt. Bei größeren Datenbanken kann der BACPAC-Export/-Import sehr lange dauern und aus verschiedenen Gründen zu Fehlern führen.|
 | Migration von Datenbanken mit In-Memory-OLTP-Objekten | Hyperscale unterstützt eine Teilmenge von In-Memory-OLTP-Objekten, einschließlich speicheroptimierter Tabellentypen, Tabellenvariablen und systemintern kompilierter Module. Wenn aber In-Memory-OLTP-Objekte von beliebiger Art in der gerade migrierten Datenbank vorhanden sind, wird die Migration von Premium- und unternehmenskritischen Dienstebenen zu Hyperscale nicht unterstützt. Für die Migration solch einer Datenbank zu Hyperscale müssen alle In-Memory-OLTP-Objekte und deren Abhängigkeiten gelöscht werden. Nachdem die Datenbank migriert wurde, können diese Objekte neu erstellt werden. Speicheroptimierte dauerhafte und nicht dauerhafte Tabellen werden zurzeit in Hyperscale nicht unterstützt und müssen als Datenträgertabellen neu erstellt werden.|
 | Georeplikation  | Noch ist es nicht möglich, eine Georeplikation für Hyperscale in Azure SQL-Datenbank zu konfigurieren. |
-| Datenbankkopie | Sie können Datenbankkopie noch nicht verwenden, um eine neue Datenbank in Azure SQL Hyperscale zu erstellen. |
+| Datenbankkopie | Datenbankkopie auf Hyperscale befindet sich jetzt in der öffentlichen Vorschau (Public Preview). |
 | TDE/AKV-Integration | Die transparente Datenbankverschlüsselung mit Azure Key Vault (in der Regel als „Bring Your Own Key“ oder „BYOK“ bezeichnet) befindet sich derzeit in der Vorschauphase. |
 | Intelligente Datenbankfeatures | Mit Ausnahme der Option „Plan erzwingen“ werden alle anderen Optionen zur automatischen Optimierung für Hyperscale noch nicht unterstützt. Optionen scheinen möglicherweise aktiviert zu sein, es erfolgen jedoch keine Empfehlungen oder Aktionen. |
 | Statistik zur Abfrageleistung | Die Statistik zur Abfrageleistung wird derzeit nicht für Hyperscale-Datenbanken unterstützt. |

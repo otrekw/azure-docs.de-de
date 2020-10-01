@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/21/2020
-ms.openlocfilehash: ddc70ccbbb5c964f16b078470517ce667bc878f1
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: bf22e20a6c6187677f000e0c50ac64582233c3cd
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082640"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019664"
 ---
 # <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Konfigurieren des Zeitplans für das Patchen des Betriebssystems für Linux-basierte HDInsight-Cluster
 
@@ -32,11 +32,16 @@ HDInsight bietet Unterstützung für die Durchführung allgemeiner Aufgaben in I
 
 Führen Sie vor der Bereitstellung in der Produktionsumgebung einen Patch für eine repräsentative nicht produktive Umgebung aus. Entwickeln Sie einen Plan, um Ihr System vor dem eigentlichen Patchen angemessen zu testen.
 
-Von Zeit zu Zeit können Sie in einer SSH-Sitzung auf Ihrem Cluster eine Nachricht erhalten, dass ein Upgrade verfügbar ist. Die Nachricht kann etwa wie folgt aussehen:
+Von Zeit zu Zeit können Sie in einer SSH-Sitzung auf Ihrem Cluster eine Nachricht erhalten, dass Sicherheitsupdates verfügbar sind. Die Nachricht kann etwa wie folgt aussehen:
 
 ```
-New release '18.04.3 LTS' available.
-Run 'do-release-upgrade' to upgrade it
+89 packages can be updated.
+82 updates are security updates.
+
+*** System restart required ***
+
+Welcome to Spark on HDInsight.
+
 ```
 
 Das Patchen erfolgt optional und nach eigenem Ermessen.
@@ -64,6 +69,9 @@ Das `install-updates-schedule-reboots`-Skript akzeptiert zwei numerische Paramet
 
 > [!NOTE]
 > Sie müssen ein Skript als permanent gespeichert kennzeichnen, nachdem Sie es auf einen vorhandenen Cluster angewendet haben. Andernfalls verwenden durch Skalierungsvorgänge erstellte neue Knoten den Standardpatchzeitplan. Wenn Sie das Skript im Rahmen der Clustererstellung anwenden, wird es automatisch persistent gespeichert.
+
+> [!NOTE]
+> Die Option „Geplanter Neustart“ führt einen automatisierten parallelen Neustart der gepatchten Clusterknoten in einem Zeitraum von 12 bis 24 Stunden durch und berücksichtigt die Hochverfügbarkeits-, Updatedomänen- und Fehlerdomänenaspekte. „Geplanter Neustart“ beendet keine aktiven Workloads, kann jedoch in der Zwischenzeit, wenn Knoten nicht verfügbar sind, Clusterkapazität beanspruchen, was zu längeren Verarbeitungszeiten führt. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

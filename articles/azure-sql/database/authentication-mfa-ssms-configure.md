@@ -12,20 +12,20 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/27/2019
-ms.openlocfilehash: 791402f5d9648c8d235f8853de1b6c41f8082e1b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b1dbd66e34790599020233c5b1249593a4c0472d
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018290"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442648"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>Konfigurieren der mehrstufigen Authentifizierung für SQL Server Management Studio und Azure AD
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-In diesem Artikel wird beschrieben, wie Sie die mehrstufige Authentifizierung (MFA) von Azure Active Directory (Azure AD) mit SQL Server Management Studio (SSMS) verwenden. Die mehrstufige Azure AD-Authentifizierung kann bei Verbindungen von SSMS oder „SqlPackage.exe“ mit [Azure SQL-Datenbank](sql-database-paas-overview.md), [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) und [Azure Synapse Analytics (früher Azure SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) verwendet werden. Eine Übersicht über die mehrstufige Authentifizierung finden Sie unter [Universelle Authentifizierung bei SQL-Datenbank, SQL Managed Instance und Azure Synapse (SSMS-Unterstützung für MFA)](../database/authentication-mfa-ssms-overview.md).
+In diesem Artikel wird beschrieben, wie Sie die mehrstufige Authentifizierung (MFA) von Azure Active Directory (Azure AD) mit SQL Server Management Studio (SSMS) verwenden. Die mehrstufige Azure AD-Authentifizierung kann bei Verbindungen von SSMS oder „SqlPackage.exe“ mit [Azure SQL-Datenbank](sql-database-paas-overview.md), [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) und [Azure Synapse Analytics (früher SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) verwendet werden. Eine Übersicht über die mehrstufige Authentifizierung finden Sie unter [Universelle Authentifizierung bei SQL-Datenbank, SQL Managed Instance und Azure Synapse (SSMS-Unterstützung für MFA)](../database/authentication-mfa-ssms-overview.md).
 
 > [!IMPORTANT]
-> Datenbanken in Azure SQL-Datenbank, Azure SQL Managed Instance und Azure Synapse (früher Azure SQL Data Warehouse) werden im restlichen Teil dieses Artikels gemeinsam als Datenbanken bezeichnet. Server bezieht sich auf den [Server](logical-servers.md), der Datenbanken für Azure SQL-Datenbank und Azure Synapse hostet.
+> Datenbanken in Azure SQL-Datenbank, Azure SQL Managed Instance und Azure Synapse (früher SQL Data Warehouse) werden im restlichen Teil dieses Artikels gemeinsam als Datenbanken bezeichnet. Server bezieht sich auf den [Server](logical-servers.md), der Datenbanken für Azure SQL-Datenbank und Azure Synapse hostet.
 
 ## <a name="configuration-steps"></a>Konfigurationsschritte
 
@@ -52,7 +52,7 @@ Die folgenden Schritte veranschaulichen, wie Sie eine Verbindung mit der aktuell
 
    ![mfa-tenant-ssms](./media/authentication-mfa-ssms-configure/mfa-tenant-ssms.png)
 
-4. Wählen Sie **Optionen** aus, und geben Sie im Dialogfeld **Optionen** die Datenbank an. (Wenn der verbundene Benutzer ein Gastbenutzer ist (d. h. joe@outlook.com), müssen Sie das Kontrollkästchen aktivieren und den aktuellen AD-Domänennamen oder die Mandanten-ID als Teil der Optionen hinzufügen. Siehe [Universelle Authentifizierung bei SQL-Datenbank und SQL Data Warehouse (SSMS-Unterstützung für MFA)](../database/authentication-mfa-ssms-overview.md). Klicken Sie auf **Verbinden**.  
+4. Wählen Sie **Optionen** aus, und geben Sie im Dialogfeld **Optionen** die Datenbank an. (Wenn der verbundene Benutzer ein Gastbenutzer ist (d. h. joe@outlook.com), müssen Sie das Kontrollkästchen aktivieren und den aktuellen AD-Domänennamen oder die Mandanten-ID als Teil der Optionen hinzufügen. Weitere Informationen finden Sie unter [Universelle Authentifizierung bei SQL-Datenbank und Azure Synapse Analytics (SSMS-Unterstützung für MFA)](../database/authentication-mfa-ssms-overview.md). Klicken Sie auf **Verbinden**.  
 5. Wenn das Dialogfeld **Bei Ihrem Konto anmelden** angezeigt wird, geben Sie den Kontonamen und das Kennwort Ihrer Azure Active Directory-Identität ein. Es ist kein Kennwort erforderlich, wenn ein Benutzer Mitglied einer Domäne im Verbund mit Azure AD ist.
 
    ![2mfa-sign-in](./media/authentication-mfa-ssms-configure/2mfa-sign-in.png)  

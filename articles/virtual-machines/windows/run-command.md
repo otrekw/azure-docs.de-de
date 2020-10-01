@@ -9,12 +9,12 @@ ms.date: 04/26/2019
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 manager: carmonm
-ms.openlocfilehash: dd1e20504d96b55d6a450512ea287b9352fb043a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 3393cb66735ffb881520a11bf9d1680c35d3d374
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496932"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89424802"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>Ausführen von PowerShell-Skripts in Ihrer Windows-VM mithilfe von „Befehl ausführen“
 
@@ -40,6 +40,7 @@ Die Verwendung der Skriptausführung unterliegt den folgenden Einschränkungen:
 * Die Ausführung von Skripts kann nicht abgebrochen werden.
 * Die maximal zulässige Ausführungsdauer eines Skripts beträgt 90 Minuten. Danach tritt ein Timeout auf.
 * Um die Ergebnisse des Skripts zurückzugeben, ist eine ausgehende Konnektivität des virtuellen Computers erforderlich.
+* Es wird nicht empfohlen, ein Skript auszuführen, das bewirkt, dass der VM-Agent angehalten oder aktualisiert wird. Das kann dazu führen, dass die Erweiterung in einem Übergangszustand verbleibt, wodurch ein Timeout verursacht wird.
 
 > [!NOTE]
 > Die Skriptausführung muss über den Port 443 eine Verbindung mit öffentlichen Azure-IP-Adressen herstellen können. Wenn die Erweiterung keinen Zugriff auf diese Endpunkte hat, werden die Skripts zwar möglicherweise erfolgreich ausgeführt, geben aber keine Ergebnisse zurück. Wenn Sie Datenverkehr auf dem virtuellen Computer blockieren, können Sie [Diensttags](../../virtual-network/security-overview.md#service-tags) verwenden, um Datenverkehr mit öffentlichen Azure-IP-Adressen über das Tag `AzureCloud` zuzulassen.

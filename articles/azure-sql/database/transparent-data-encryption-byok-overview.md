@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 04a3499da15bc226fe2cada2283d7a115036a48c
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 4e17af8289c68ded282a9c4a9ca2d400d31ca30d
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89318289"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602668"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL Transparent Data Encryption mithilfe eines kundenseitig verwalteten Schlüssels
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -93,6 +93,10 @@ Prüfer können Azure Monitor verwenden, um die AuditEvent-Protokolle von Key Va
 - Der Schlüssel muss sich im Zustand *Aktiviert* befinden.
 
 - Wenn Sie einen vorhandenen Schlüssel in den Schlüsseltresor importieren, müssen Sie ihn in einem unterstützten Dateiformat (.pfx, .byok oder .backup) bereitstellen.
+
+> [!NOTE]
+> Azure SQL unterstützt nun die Verwendung eines RSA-Schlüssels, der in einem verwalteten HSM als TDE-Schutzvorrichtung gespeichert ist. Dieses Feature befindet sich in der **Public Preview**. Verwaltetes HSM von Azure Key Vault ist ein vollständig verwalteter, hochverfügbarer, Einzelmandanten- und standardkonformer Clouddienst, der es Ihnen ermöglicht, kryptografische Schlüssel für Ihre Cloudanwendungen über HSMs zu schützen, die mit FIPS 140-2 Level 3 validiert sind. Erfahren Sie mehr über [verwaltete HSMs](https://aka.ms/mhsm).
+
 
 ## <a name="recommendations-when-configuring-customer-managed-tde"></a>Empfehlungen für die Konfiguration einer kundenseitig verwalteten TDE
 

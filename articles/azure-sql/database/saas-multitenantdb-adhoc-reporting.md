@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/30/2018
-ms.openlocfilehash: 7564adb6e2e596b95cd138c8e4e2190a4c1e2a57
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 098ac343885db3e267dcefb3785f5abd55d17ee2
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042644"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441033"
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-databases-azure-sql-database"></a>Ausführen von Ad-hoc-Analyseabfragen für mehrere Datenbanken (Azure SQL-Datenbank)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -47,7 +47,7 @@ SaaS-Anwendungen können die gewaltige Menge von Mandantendaten analysieren, die
 
 Es ist einfach, auf diese Daten in einer Datenbank mit mehreren Mandanten zuzugreifen, aber weniger einfach bei einer Verteilung über potentiell Tausende von Datenbanken. Ein Ansatz besteht in der Verwendung von [Elastic Query](elastic-query-overview.md), wodurch Abfragen für einen verteilten Satz von Datenbanken mit gemeinsamem Schema ermöglicht werden. Diese Datenbanken können auf verschiedene Ressourcengruppen und Abonnements verteilt werden. Allerdings muss ein Anmeldename vorhanden sein, der allgemeinen Zugriff hat, um Daten aus allen Datenbanken zu extrahieren. Flexible Abfragen verwenden eine einzige *Hauptdatenbank*, in der externe Tabellen definiert werden, die Tabellen oder Sichten in den verteilten Datenbanken (Mandantendatenbanken) spiegeln. Abfragen, die an diese Hauptdatenbank übermittelt werden, werden kompiliert, um einen Plan der verteilten Abfrage zu erzeugen, bei dem Teile der Abfrage nach Bedarf per Push an die Mandantendatenbanken übertragen werden. Elastische Abfragen verwenden die Shardzuordnung in der Katalogdatenbank, um den Speicherort aller Mandantendatenbanken festzulegen. Für Setup und Abfragen wird einfach gewöhnlicher [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-reference)-Code verwendet, und Ad-hoc-Abfragen von Tools wie Power BI und Excel werden unterstützt.
 
-Durch das Verteilen von Abfragen über Mandantendatenbanken bietet Elastic Query schnellen Einblick in Liveproduktionsdaten. Dadurch dass es möglich ist, das Elastic Query Daten aus vielen Datenbanken abruft, kann die Abfragewartezeit manchmal länger sein als für äquivalente Abfragen, die an eine einzelne Datenbank mit mehreren Mandanten ausgestellt werden. Achten Sie darauf, Ihre Abfragen so zu entwerfen, dass ein Minimum an Daten zurückgegeben wird. Elastic Query ist häufig optimal für das Abfragen kleiner Mengen von Echtzeitdaten und weniger für das Erstellen von häufig verwendeten oder komplexen Analyseabfragen oder -berichten. Wenn Abfragen nicht optimal ausgeführt werden, können Sie dem [Ausführungsplan](https://docs.microsoft.com/sql/relational-databases/performance/display-an-actual-execution-plan) entnehmen, welcher Teil der Abfrage per Push in die Remotedatenbank übertragen wurde. Bewerten Sie außerdem, wie viele Daten zurückgegeben werden. Für Abfragen, die eine komplexe analytische Verarbeitung erfordern, ist es möglicherweise besser, wenn die extrahierten Mandantendaten in einer Datenbank gespeichert werden, die für Analyseabfragen optimiert ist. SQL-Datenbank und SQL Data Warehouse könnten eine solche Analysedatenbank hosten.
+Durch das Verteilen von Abfragen über Mandantendatenbanken bietet Elastic Query schnellen Einblick in Liveproduktionsdaten. Dadurch dass es möglich ist, das Elastic Query Daten aus vielen Datenbanken abruft, kann die Abfragewartezeit manchmal länger sein als für äquivalente Abfragen, die an eine einzelne Datenbank mit mehreren Mandanten ausgestellt werden. Achten Sie darauf, Ihre Abfragen so zu entwerfen, dass ein Minimum an Daten zurückgegeben wird. Elastic Query ist häufig optimal für das Abfragen kleiner Mengen von Echtzeitdaten und weniger für das Erstellen von häufig verwendeten oder komplexen Analyseabfragen oder -berichten. Wenn Abfragen nicht optimal ausgeführt werden, können Sie dem [Ausführungsplan](https://docs.microsoft.com/sql/relational-databases/performance/display-an-actual-execution-plan) entnehmen, welcher Teil der Abfrage per Push in die Remotedatenbank übertragen wurde. Bewerten Sie außerdem, wie viele Daten zurückgegeben werden. Für Abfragen, die eine komplexe analytische Verarbeitung erfordern, ist es möglicherweise besser, wenn die extrahierten Mandantendaten in einer Datenbank gespeichert werden, die für Analyseabfragen optimiert ist. SQL-Datenbank und Azure Synapse Analytics (früher SQL Data Warehouse) könnten als Host für eine solche Analysedatenbank fungieren.
 
 Dieses Muster für die Analyse wird im [Tutorial zu Mandantenanalysen](saas-multitenantdb-tenant-analytics.md) erklärt.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 53089fa42c536cbdc59865f80f63a77c76720e2c
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: bfc1a818aeb85eca04faca713d4c7acbbce3626a
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752010"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088492"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Welche Datenträgertypen stehen in Azure zur Verfügung?
 
@@ -71,7 +71,7 @@ Wenn Sie Ultra-Datenträger verwenden möchten, finden Sie weitere Informationen
 
 Azure SSD Premium bietet Datenträgerunterstützung mit hoher Leistung und geringer Wartezeit für virtuelle Computer (VMs) mit E/A-intensiven Workloads. Um die Geschwindigkeit und Leistung von Storage Premium-Datenträgern zu nutzen, können Sie vorhandene VM-Datenträger zu SSD Premium-Datenträgern migrieren. SSD Premium ist für unternehmenskritische Produktionsanwendungen geeignet. SSD Premium kann nur mit VM-Serien verwendet werden, die mit Storage Premium kompatibel sind.
 
-Weitere Informationen zu den einzelnen VM-Typen und -Größen in Azure für Windows oder Linux (einschließlich der Größen, die mit Storage Premium kompatibel sind) finden Sie unter [Größen für virtuelle Computer in Azure](sizes.md). Weitere Informationen zu den einzelnen VM-Typen und -Größen in Azure für Linux (einschließlich der Größen, die mit Storage Premium kompatibel sind) finden Sie unter [Größen für virtuelle Computer in Azure](sizes.md). In jedem dieser Artikel müssen Sie jede einzelne VM-Größe überprüfen, um festzustellen, ob sie mit Storage Premium kompatibel ist.
+Weitere Informationen zu den einzelnen VM-Typen und -Größen in Azure für Windows oder Linux (einschließlich der Größen, die mit Storage Premium kompatibel sind) finden Sie unter [Größen für virtuelle Computer in Azure](sizes.md). Gemäß diesem Artikel müssen Sie jede einzelne VM-Größe überprüfen, um festzustellen, ob sie mit Storage Premium kompatibel ist.
 
 ### <a name="disk-size"></a>Datenträgergröße
 [!INCLUDE [disk-storage-premium-ssd-sizes](../../includes/disk-storage-premium-ssd-sizes.md)]

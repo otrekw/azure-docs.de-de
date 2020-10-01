@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b14dd4aa44620f2b13891a18fc473acbcb0f3245
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 760e0212d2d863e6b869c23c2e523a0e056a28ed
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89082322"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033029"
 ---
 # <a name="how-to-resolve-azure-advisor-recommendations"></a>Auflösen von Azure Advisor-Empfehlungen
 
@@ -34,7 +34,7 @@ So aktivieren Sie eine Überprüfungsumgebung:
 
 2. Wählen Sie dann den Hostpool aus, den Sie aus einer Produktionsumgebung in eine Überprüfungsumgebung ändern möchten.
 
-3. Wählen Sie in Ihrem Hostpool die Registerkarte **Eigenschaften** in der Spalte auf der rechten Seite des Bildschirms aus. Scrollen Sie anschließend nach unten, bis „Überprüfungsumgebung“ angezeigt wird. Wählen Sie **Ja** und dann **Anwenden** aus.
+3. Wählen Sie in Ihrem Hostpool die Option **Eigenschaften** in der linken Spalte aus. Scrollen Sie anschließend nach unten, bis „Überprüfungsumgebung“ angezeigt wird. Wählen Sie **Ja** und dann **Anwenden** aus.
 
 >[!div class="mx-imgBorder"]
 >![Screenshot des Menüs „Eigenschaften“. „Überprüfungsumgebung“ ist rot hervorgehoben, und die Option „Ja“ ist ausgewählt.](media/validation-yes.png)

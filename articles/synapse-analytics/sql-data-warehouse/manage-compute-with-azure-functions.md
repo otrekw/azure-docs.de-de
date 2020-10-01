@@ -11,12 +11,12 @@ ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 60e79ecd4148829c38b237c0e28d60796e84ac01
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 11cb0c30a1a6ed70cca82e494fcec73936975f39
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543655"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442220"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>Verwalten von Computeressourcen mit Azure Functions im SQL-Pool von Azure Synapse Analytics
 
@@ -54,7 +54,7 @@ Nach dem Bereitstellen der Vorlage sollten drei neue Ressourcen vorhanden sein: 
 
 3. Derzeit sollte der angezeigte Wert *%ScaleDownTime%* oder *%ScaleUpTime%* lauten. Diese Werte geben an, dass der Zeitplan auf Werten basiert, die in Ihren [Anwendungseinstellungen](../../azure-functions/functions-how-to-use-azure-function-app-settings.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) definiert sind. Sie können diesen Wert vorerst ignorieren und den Zeitplan basierend auf den nächsten Schritten auf Ihre bevorzugte Zeit festlegen.
 
-4. Fügen Sie im Zeitplanbereich die Zeit per CRON-Ausdruck hinzu, um anzugeben, wie oft für SQL Data Warehouse das zentrale Hochskalieren durchgeführt werden soll.
+4. Fügen Sie im Zeitplanbereich die Zeit per CRON-Ausdruck hinzu, um anzugeben, wie oft für Azure Synapse Analytics das zentrale Hochskalieren durchgeführt werden soll.
 
    ![Ändern des Funktionszeitplans](./media/manage-compute-with-azure-functions/change-schedule.png)
 

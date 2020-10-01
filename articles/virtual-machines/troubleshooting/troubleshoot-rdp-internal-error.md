@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: 299bbfa31584b260f85dfa7bafddea268084f876
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 7cbb67a215d44759b2b503929c37cb50ea94709c
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235161"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069763"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>Interner Fehler beim Herstellen einer Verbindung mit einem virtuellen Azure-Computer über Remotedesktop
 
@@ -26,7 +26,7 @@ Dieser Artikel beschreibt einen Fehler, der beim Herstellen einer Verbindung mit
 
 ## <a name="symptoms"></a>Symptome
 
-Sie können per Remotedesktopprotokoll (RDP) keine Verbindung mit einem virtuellen Azure-Computer herstellen. Die Verbindungsherstellung bleibt im Abschnitt zum Konfigurieren der Remotesitzung hängen, oder Sie erhalten die folgende Fehlermeldung:
+Sie können über das Remotedesktopprotokoll (RDP) keine Verbindung mit einem virtuellen Azure-Computer herstellen. Die Verbindungsherstellung bleibt im Abschnitt zum **Konfigurieren der Remotesitzung** hängen, oder Sie erhalten die folgende Fehlermeldung:
 
 - RDP internal error (Interner RDP-Fehler)
 - Es ist ein interner Fehler aufgetreten.
@@ -37,20 +37,24 @@ Sie können per Remotedesktopprotokoll (RDP) keine Verbindung mit einem virtuell
 
 Dieses Problem kann folgende Ursachen haben:
 
-- Auf die lokalen RSA-Verschlüsselungsschlüssel kann nicht zugegriffen werden.
+- Der virtuelle Computer wurde möglicherweise angegriffen.
+- Es kann nicht auf die lokalen RSA-Verschlüsselungsschlüssel zugegriffen werden.
 - Das TLS-Protokoll ist deaktiviert.
 - Das Zertifikat ist beschädigt oder abgelaufen.
 
 ## <a name="solution"></a>Lösung
 
-Erstellen Sie eine Momentaufnahme des Betriebssystemdatenträgers des betroffenen virtuellen Computers als Sicherung, bevor Sie die unten angegebenen Schritte ausführen. Weitere Informationen finden Sie unter [Erstellen einer Momentaufnahme eines Datenträgers](../windows/snapshot-copy-managed-disk.md).
+Um dieses Problem zu beheben, führen Sie die Schritte in den folgenden Abschnitten aus. Bevor Sie beginnen, erstellen Sie eine Momentaufnahme des Betriebssystemdatenträgers des betroffenen virtuellen Computers als Sicherung. Weitere Informationen finden Sie unter [Erstellen einer Momentaufnahme eines Datenträgers](../windows/snapshot-copy-managed-disk.md).
 
-Verwenden Sie zum Beheben dieses Problems die serielle Konsole, oder [reparieren Sie den virtuellen Computer offline](#repair-the-vm-offline), indem Sie den Betriebssystemdatenträger des virtuellen Computers an eine Wiederherstellungs-VM anfügen.
+### <a name="check-rdp-security"></a>Überprüfen der RDP-Sicherheit
 
+Überprüfen Sie zunächst, ob die Netzwerksicherheitsgruppe für den RDP-Port 3389 ungeschützt (offen) ist. Ist sie ungeschützt und wird \* als Quell-IP-Adresse für eingehenden Datenverkehr angezeigt, schränken Sie den RDP-Port auf die IP-Adresse eines bestimmten Benutzers ein, und testen Sie dann den RDP-Zugriff. Tritt dabei ein Fehler auf, führen Sie die Schritte im nächsten Abschnitt aus.
 
 ### <a name="use-serial-control"></a>Verwenden der seriellen Konsole
 
-Stellen Sie eine Verbindung mit der [seriellen Konsole her, und öffnen Sie eine PowerShell-Instanz](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
+Verwenden Sie die serielle Konsole, oder [reparieren Sie den virtuellen Computer offline](#repair-the-vm-offline), indem Sie den Betriebssystemdatenträger des virtuellen Computers zu einer Wiederherstellungs-VM zuordnen.
+
+Um zu beginnen, stellen Sie eine Verbindung mit der [seriellen Konsole her, und öffnen Sie eine PowerShell-Instanz](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
 ). Ist die serielle Konsole auf Ihrem virtuellen Computer nicht aktiviert, gehen Sie zum Abschnitt [Reparieren des virtuellen Computers im Offlinestatus](#repair-the-vm-offline).
 
 #### <a name="step-1-check-the-rdp-port"></a>Schritt 1: Überprüfen des RDP-Ports

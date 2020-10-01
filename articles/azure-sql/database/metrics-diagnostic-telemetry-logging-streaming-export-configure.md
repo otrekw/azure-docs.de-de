@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 04/06/2020
-ms.openlocfilehash: efb99e23466e4615dfa1f4a429addcd8c4ac68f5
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 51d86e51d89bdaf83be4a722d0350b35d2146cff
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085598"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973040"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-and-sql-managed-instance-diagnostic-telemetry"></a>Konfigurieren des Streamingexports von Diagnosetelemetrie aus Azure SQL Database und SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -72,7 +72,7 @@ Die Diagnosetelemetriedaten können für die Analyse an eine der folgenden Azure
 
 Die an eines dieser Ziele gestreamten Diagnosetelemetriedaten können für die Messung der Ressourcenverwendung und der Abfrageausführungsstatistiken verwendet werden, um die Leistungsüberwachung zu vereinfachen.
 
-![Aufbau](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/architecture.png)
+![Das Diagramm zeigt viele SQL-Datenbanken und Datenbanken in verwalteten Instanzen, die Telemetriedaten an den Azure-Diagnose-Agent senden, der Informationen an Azure SQL-Analyse, den Event Hub und den Speicher weiterleitet.](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/architecture.png)
 
 ## <a name="enable-and-configure-the-streaming-export-of-diagnostic-telemetry"></a>Aktivieren und Konfigurieren des Streamingexports von Diagnosetelemetriedaten
 

@@ -11,18 +11,18 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 04/23/2020
-ms.openlocfilehash: e1f97b1a29681a65cddf3a5904020555e903fe63
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 943569a16101ac170d01d08250b31ba67c0e590e
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984774"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434281"
 ---
 # <a name="use-azure-active-directory-authentication"></a>Verwenden der Azure Active Directory-Authentifizierung
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Die Azure Active Directory (Azure AD)-Authentifizierung ist ein Mechanismus zum Herstellen einer Verbindung mit [Azure SQL-Datenbank](sql-database-paas-overview.md), [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) und [Azure Synapse Analytics (früher Azure SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) unter Verwendung von Identitäten in Azure AD.
+Die Azure Active Directory (Azure AD)-Authentifizierung ist ein Mechanismus zum Herstellen einer Verbindung mit [Azure SQL-Datenbank](sql-database-paas-overview.md), [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) und [Azure Synapse Analytics (früher SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) unter Verwendung von Identitäten in Azure AD.
 
 > [!NOTE]
 > Dieser Artikel gilt für Azure SQL-Datenbank, SQL Managed Instance und Azure Synapse Analytics.

@@ -1,21 +1,21 @@
 ---
-title: Automatisches Skalieren von Azure HDInsight-Clustern
-description: Verwenden des Azure HDInsight-Features „Autoskalierung“ für die automatische Apache Hadoop-Skalierung von Clustern
+title: Autoskalierung von Azure HDInsight-Clustern
+description: Verwenden Sie das Azure HDInsight-Features „Autoskalierung“, um Apache Hadoop-Cluster automatisch zu skalieren.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: contperfq1
-ms.date: 08/21/2020
-ms.openlocfilehash: 4c4b9c60eb967b5791af724e5c15bba887263d44
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.date: 09/14/2020
+ms.openlocfilehash: 08b7fe2b3e959536589cfd425541ad36e3bd1e78
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757862"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532187"
 ---
-# <a name="automatically-scale-azure-hdinsight-clusters"></a>Automatisches Skalieren von Azure HDInsight-Clustern
+# <a name="autoscale-azure-hdinsight-clusters"></a>Autoskalierung von Azure HDInsight-Clustern
 
 Mit der kostenlosen automatischen Skalierung von Azure HDInsight können Sie die Anzahl der Workerknoten in Ihrem Cluster basierend auf zuvor festgelegten Kriterien automatisch erhöhen oder verringern. Während der Clustererstellung legen Sie eine minimale und maximale Anzahl von Knoten fest und erstellen die Skalierungskriterien anhand eines Tageszeitplans oder bestimmter Leistungsmetriken. Dann führt die HDInsight-Plattform die übrigen Schritte aus.
 
@@ -68,7 +68,7 @@ Beim zentralen Herunterskalieren gibt die Autoskalierung eine Anforderung aus, e
 > [!Important]
 > Die Azure HDInsight-Funktion für die automatische Skalierung wurde mit allgemeiner Verfügbarkeit am 7. November 2019 für Spark- und Hadoop-Cluster veröffentlicht und enthält Verbesserungen, die in der Vorschauversion des Features nicht verfügbar sind. Wenn Sie vor dem 7. November 2019 einen Spark-Cluster erstellt haben und die automatische Skalierung in Ihrem Cluster verwenden möchten, wird empfohlen, einen neuen Cluster zu erstellen und die automatische Skalierung für den neuen Cluster zu aktivieren.
 >
-> Die automatische Skalierung für Interactive Query- (LLAP) und HBase-Cluster befindet sich noch in der Vorschauphase. Die automatische Skalierung ist nur für Spark-, Hadoop-, Interactive Query- und HBase-Cluster verfügbar.
+> Autoskalierung für Interactive Query (LLAP) wurde am 27. August 2020 für die allgemeine Verfügbarkeit veröffentlicht. HBase-Cluster befinden sich weiterhin in der Vorschau. Die automatische Skalierung ist nur für Spark-, Hadoop-, Interactive Query- und HBase-Cluster verfügbar.
 
 Die folgende Tabelle beschreibt die Clustertypen und Versionen, die mit dem Feature „Autoskalierung“ kompatibel sind.
 
@@ -243,41 +243,43 @@ Wählen Sie unter **Überwachung** **Metriken** aus. Wählen Sie dann im Dropdow
 
 ![Aktivieren der Metrik für die zeitplanbasierte Autoskalierung des Workerknotens](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png)
 
-## <a name="other-considerations"></a>Weitere Überlegungen
+## <a name="best-practices"></a>Bewährte Methoden
 
-### <a name="consider-the-latency-of-scale-up-or-scale-down-operations"></a>Berücksichtigen der Latenz von Vorgängen zum Hoch- bzw. Herunterskalieren
+### <a name="consider-the-latency-of-scale-up-and-scale-down-operations"></a>Berücksichtigen der Latenz von Vorgängen zum Hoch- und Herunterskalieren
 
 Es kann 10 bis 20 Minuten dauern, bis ein Skalierungsvorgang abgeschlossen ist. Sie sollten diese Verzögerung einplanen, wenn Sie einen benutzerdefinierten Zeitplan einrichten. Wenn Sie beispielsweise um 9:00 Uhr eine Clustergröße von 20 benötigen, sollten Sie den Zeitplantrigger auf einen früheren Zeitpunkt festlegen, z. B. 8:30 Uhr, damit der Skalierungsvorgang um 9:00 Uhr abgeschlossen ist.
 
-### <a name="preparation-for-scaling-down"></a>Vorbereitung für das zentrale Herunterskalieren
+### <a name="prepare-for-scaling-down"></a>Vorbereiten für das zentrale Herunterskalieren
 
-Beim zentralen Herunterskalieren des Clusters werden die Knoten von der Autoskalierung außer Betrieb genommen, um die Zielgröße zu erreichen. Falls auf diesen Knoten Aufgaben ausgeführt werden, wartet die Autoskalierung, bis diese abgeschlossen sind. Da jeder Workerknoten auch eine Rolle im Hadoop Distributed File System innehat, werden die temporären Daten auf die restlichen Knoten verschoben. Sie sollten also sicherstellen, dass auf den verbleibenden Knoten genügend Speicherplatz vorhanden ist, um alle temporären Daten zu hosten.
+Beim zentralen Herunterskalieren des Clusters werden die Knoten von Autoskalierung außer Betrieb genommen, um die Zielgröße zu erreichen. Falls auf diesen Knoten Aufgaben ausgeführt werden, wartet Autoskalierung, bis diese abgeschlossen sind. Da jeder Workerknoten auch eine Rolle im HDFS innehat, werden die temporären Daten auf die restlichen Knoten verschoben. Stellen Sie sicher, dass auf den verbleibenden Knoten genügend Speicherplatz vorhanden ist, um alle temporären Daten zu hosten.
 
 Die ausgeführten Aufträge werden weiterhin ausgeführt. Für die ausstehenden Aufträge wird auf eine Planung mit weniger verfügbaren Workerknoten gewartet.
 
-### <a name="minimum-cluster-size"></a>Minimale Clustergröße
+### <a name="be-aware-of-the-minimum-cluster-size"></a>Beachten der Clustermindestgröße
 
-Skalieren Sie den Cluster nicht auf weniger als drei Knoten herunter. Die Skalierung des Clusters auf weniger als drei Knoten kann dazu führen, dass der Cluster aufgrund unzureichender Dateireplikation im abgesicherten Modus hängen bleibt.  Weitere Informationen finden Sie unter [Hängenbleiben im abgesicherten Modus](./hdinsight-scaling-best-practices.md#getting-stuck-in-safe-mode).
+Skalieren Sie den Cluster nicht auf weniger als drei Knoten herunter. Die Skalierung des Clusters auf weniger als drei Knoten kann dazu führen, dass der Cluster aufgrund unzureichender Dateireplikation im abgesicherten Modus hängen bleibt. Weitere Informationen finden Sie unter [Hängenbleiben im abgesicherten Modus](hdinsight-scaling-best-practices.md#getting-stuck-in-safe-mode).
+
+### <a name="increase-the-number-of-mappers-and-reducers"></a>Erhöhen der Anzahl von Zuordnungen (Mapper) und Reducern
+
+Autoskalierung für Hadoop-Cluster überwacht auch die HDFS-Nutzung. Ist das HDFS ausgelastet, wird davon ausgegangen, dass der Cluster weiterhin die aktuellen Ressourcen benötigt. Wenn eine große Datenmenge an der Abfrage beteiligt ist, können Sie die Anzahl der Zuordnungen und Reducer erhöhen, um die Parallelität zu erhöhen und die HDFS-Vorgänge zu beschleunigen. Auf diese Weise wird ordnungsgemäßes Herunterskalieren ausgelöst, wenn zusätzliche Ressourcen vorhanden sind. 
+
+### <a name="set-the-hive-configuration-maximum-total-concurrent-queries-for-the-peak-usage-scenario"></a>Festlegen der Hive-Konfiguration „Maximum Total Concurrent Queries“ für das Szenario für Spitzenlast
+
+Die Hive-Konfiguration *Maximum Total Concurrent Queries* (Maximale Anzahl gleichzeitiger Abfragen) in Ambari wird durch Autoskalierungsereignisse nicht geändert. Dies bedeutet, dass der Hive Server 2 Interactive-Dienst immer nur die angegebene Anzahl gleichzeitiger Abfragen verarbeiten kann, auch wenn die Anzahl der LLAP-Daemons last- oder zeitplanbasiert zentral hoch- und herunterskaliert wird. Die allgemeine Empfehlung besteht darin, diese Konfiguration entsprechend dem Spitzenlastszenario festzulegen, damit kein manueller Eingriff erforderlich wird.
+
+Es können jedoch Hive Server 2-Neustartfehler auftreten, wenn nur wenige Workerknoten vorhanden sind und der Wert für die maximale Anzahl gleichzeitiger Abfragen zu hoch konfiguriert ist. Sie benötigen eine Mindestanzahl von Workerknoten, die die angegebene Anzahl von Tez-AMS abdecken können (entspricht der „Maximum Total Concurrent Queries“-Konfiguration). 
+
+## <a name="limitations"></a>Einschränkungen
+
+### <a name="node-label-file-missing"></a>Knotenbezeichnungsdatei fehlt
+
+HDInsight Autoskalierung verwendet eine Knotenbezeichnungsdatei, um zu bestimmen, ob ein Knoten in der Lage ist, Aufgaben auszuführen. Die Knotenbezeichnungsdatei ist auf HDFS mit drei Replikaten gespeichert. Wird die Clustergröße erheblich herunterskaliert, und liegt eine große Menge temporärer Daten vor, gibt es ein kleines Risiko, dass alle drei Replikate gelöscht werden. Wenn dies passiert, wird der Cluster in einen Fehlerzustand versetzt.
 
 ### <a name="llap-daemons-count"></a>Anzahl der LLAP-Daemons
 
-Für LLAP-Cluster mit aktivierter Autoskalierung wird bei der Autoskalierung (zentrales Hochskalieren/Herunterskalieren) auch die Anzahl der LLAP-Daemons entsprechend der Anzahl aktiver Workerknoten zentral hochskaliert/herunterskaliert. Diese Änderung der Anzahl der Daemons wird jedoch in der **num_llap_nodes**-Konfiguration in Ambari nicht beibehalten. Wenn Hive-Dienste manuell neu gestartet werden, wird die Anzahl der LLAP-Daemons gemäß der Konfiguration in Ambari zurückgesetzt.
+Für LLAP-Cluster mit aktivierter Autoskalierung wird bei einem Autoskalierungsereignis (zentrales Hochskalieren/Herunterskalieren) auch die Anzahl der LLAP-Daemons entsprechend der Anzahl aktiver Workerknoten zentral hochskaliert/herunterskaliert. Die Änderung der Anzahl der Daemons wird nicht in der `num_llap_nodes`-Konfiguration in Ambari gespeichert. Wenn Hive-Dienste manuell neu gestartet werden, wird die Anzahl der LLAP-Daemons entsprechend der Konfiguration in Ambari zurückgesetzt.
 
-Betrachten wir das folgende Szenario:
-1. Es wird ein LLAP-Cluster mit aktivierter Autoskalierung mit 3 Workerknoten erstellt. Die lastbasierte Autoskalierung ist mit der minimalen Anzahl von 3 Workerknoten und der maximalen Anzahl von 10 Workerknoten aktiviert.
-2. Die Anzahl der LLAP-Daemons gemäß der LLAP-Konfiguration und Ambari ist 3, da der Cluster mit 3 Workerknoten erstellt wurde.
-3. Anschließend wird aufgrund der Last des Clusters eine automatische zentrale Hochskalierung des Clusters auf 10 Knoten ausgelöst.
-4. Bei der in regelmäßigen Abständen ausgeführten Autoskalierungsüberprüfung wird festgestellt, dass die Anzahl der LLAP-Daemons 3 beträgt. Da jedoch 10 aktive Workerknoten vorhanden sind, wird durch die Autoskalierung die Anzahl der LLAP-Daemons auf 10 erhöht. Diese Änderung wird jedoch in der Ambari-Konfiguration „num_llap_nodes“ nicht beibehalten.
-5. Autoskalierung ist jetzt deaktiviert.
-6. Der Cluster verfügt nun über 10 Workerknoten und 10 LLAP-Daemons.
-7. Der LLAP-Dienst wird manuell neu gestartet.
-8. Während des Neustarts wird die num_llap_nodes-Konfiguration in der LLAP-Konfiguration überprüft. Da der Wert 3 lautet, werden 3 Daemon-Instanzen gestartet, die Anzahl der Workerknoten ist jedoch 10. Es gibt jetzt einen Konflikt zwischen den beiden.
-
-In diesem Fall müssen wir die **num_llap_node Konfiguration (Anzahl der Knoten zum Ausführen des Hive-LLAP-Daemons) unter „Advanced hive-interactive-env“** entsprechend der aktuellen Anzahl aktiver Workerknoten ändern.
-
-**Hinweis**
-
-Die Hive-Konfiguration **Maximale Anzahl gleichzeitiger Abfragen** in Ambari wird durch Autoskalierungsereignisse nicht geändert. Dies bedeutet, dass der HiveServer 2 Interactive-Dienst **immer nur die angegebene Anzahl gleichzeitiger Abfragen verarbeiten kann, auch wenn die Anzahl der LLAP-Daemons last- oder zeitplanbasiert zentral hoch- oder herunterskaliert wird**. Im Allgemeinen empfiehlt es sich, diese Konfiguration entsprechend der Spitzenlast festzulegen, damit kein manueller Eingriff erforderlich ist. Beachten Sie jedoch, dass durch das **Festlegen eines hohen Werts für die maximale Gesamtzahl gleichzeitiger Abfragen der Neustart des HiveServer 2 Interactive-Diensts möglicherweise fehlschlägt, wenn die minimale Anzahl von Workerknoten die vorhandene Anzahl von Tez-AMS (entspricht der konfigurierten maximalen Gesamtzahl gleichzeitiger Abfragen) nicht bewältigen kann.**
+Wird der LLAP-Dienst manuell neu gestartet, müssen Sie die `num_llap_node`-Konfiguration (die Anzahl der Knoten, die zum Ausführen des Hive-LLAP-Daemons benötigt werden) unter *Advanced hive-interactive-env* entsprechend der aktuellen Anzahl aktiver Workerknoten ändern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

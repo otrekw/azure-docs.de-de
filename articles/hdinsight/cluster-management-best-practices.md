@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 3010c1d597907e7d5c7f82c8b42721dc1f934f6f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd79568944d81e267a45287104bd0fa9698df2fb
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74781858"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648692"
 ---
 # <a name="hdinsight-cluster-management-best-practices"></a>Verwaltung von HDInsight-Clustern – Bewährte Methoden
 
@@ -62,6 +62,8 @@ Informieren Sie sich über bewährte Methoden für die Verwaltung von HDInsight-
 | Manuelle Skalierung | [Skalieren von Azure HDInsight-Clustern](./hdinsight-scaling-best-practices.md) |
 | Überwachung mit Ambari| [Überwachen der Clusterleistung in Azure HDInsight](./hdinsight-key-scenarios-to-monitor.md) |
 | Überwachen mit Azure Monitor-Protokollen | [Verwenden von Azure Monitor-Protokollen zum Überwachen von HDInsight-Clustern](./hdinsight-hadoop-oms-log-analytics-tutorial.md) |
+| Dienstprobleme, geplante Wartung, Integritäts- und Sicherheitsempfehlungen | [Abonnieren von abonnementspezifischen Service Health-Warnungen](https://docs.microsoft.com/azure/service-health/alerts-activity-log-service-notifications-portal) |
+
 
 ## <a name="how-do-i-check-on-deleted-hdinsight-clusters"></a>Wie erhalte ich Informationen zu gelöschten HDInsight-Clustern?
 
@@ -77,4 +79,4 @@ AzureActivity
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Kapazitätsplanung für HDInsight-Cluster](./hdinsight-capacity-planning.md)
-* [Was sind die standardmäßigen und die empfohlenen Knotenkonfigurationen für Azure HDInsight?](./hdinsight-supported-node-configuration.md)
+* [Was sind die Standard- und die empfohlenen Knotenkonfigurationen für Azure HDInsight?](./hdinsight-supported-node-configuration.md)

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.date: 08/06/2020
-ms.openlocfilehash: f9c5b8ae16cb43576d788f72478e2cfba521a736
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: b7757b5204c9b3b32145667367a71a9acc42c230
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749873"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434655"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Einrichten von Clustern in HDInsight mit Apache Hadoop, Apache Spark, Apache Kafka usw.
 
@@ -139,7 +139,7 @@ Während der Konfiguration geben Sie für den Standardspeicherendpunkt einen Blo
 
 ### <a name="metastore-settings"></a>Metastore-Einstellungen
 
-Sie können optionale Hive- oder Apache Oozie Metastores erstellen. Allerdings unterstützen nicht alle Clustertypen Metastores, und Azure SQL Data Warehouse ist nicht mit Metastores kompatibel.
+Sie können optionale Hive- oder Apache Oozie Metastores erstellen. Allerdings unterstützen nicht alle Clustertypen Metastores, und Azure Synapse Analytics ist nicht mit Metastores kompatibel.
 
 Weitere Informationen finden Sie unter [Verwenden von externen Metadatenspeichern in Azure HDInsight](./hdinsight-use-external-metadata-stores.md).
 

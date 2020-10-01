@@ -10,12 +10,12 @@ ms.reviewer: ''
 ms.custom: sqldbrb=1
 ms.date: 12/18/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0ba510d87764fde824b3fc7c594c230b880d05c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8cceeef7e41e8fc5c48b4e67cdb1adf3aa4f02a1
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84170323"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483863"
 ---
 # <a name="video-indexed-and-annotated-for-multi-tenant-saas-app-using-azure-sql-database"></a>Indiziertes und kommentiertes Video für mehrinstanzenfähige SaaS-App mit Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -77,7 +77,7 @@ Die folgenden Titel sind Links zu den entsprechenden kommentierten Abschnitten, 
 - [32. Verteilte Abfrage über Mandantendatenbanken hinweg, 1:12:21](#anchor-image-wtip-min11221)
 - [33. Demo zur Ticketgenerierung, 1:12:32](#anchor-image-wtip-min11232)
 - [34. SSMS – Ad-hoc-Analysen, 1:12:46](#anchor-image-wtip-min11246)
-- [35. Extrahieren von Mandantendaten in SQL DW, 1:16:32](#anchor-image-wtip-min11632)
+- [35. Extrahieren von Mandantendaten nach Azure Synapse Analytics, 1:16:32](#anchor-image-wtip-min11632)
 - [36. Diagramm zur täglichen Verteilung von Umsätzen, 1:16:48](#anchor-image-wtip-min11648)
 - [37. Zusammenfassung und Handlungsaufforderung, 1:19:52](#anchor-image-wtip-min11952)
 - [38. Ressourcen für weitere Informationen, 1:20:42](#anchor-image-wtip-min12042)
@@ -273,8 +273,8 @@ Wenn Sie auf einen Screenshot klicken, gelangen Sie zur genauen zeitlichen Posit
 
 
 &nbsp; <a name="anchor-image-wtip-min11632"></a>
-#### <a name="35-extract-tenant-data-into-sql-dw-11546"></a>35. Extrahieren von Mandantendaten in SQL DW, 1:15:46
-[![Extrahieren von Mandantendaten in SQL DW][image-wtip-min11632-extract-tenant-data-sql-dw]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=4546)
+#### <a name="35-extract-tenant-data-into-azure-synapse-analytics-11546"></a>35. Extrahieren von Mandantendaten nach Azure Synapse Analytics, 1:15:46
+[![Extrahieren von Mandantendaten nach Azure Synapse Analytics][image-wtip-min11632-extract-tenant-data-sql-dw]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=4546)
 
 
 &nbsp; <a name="anchor-image-wtip-min11648"></a>
@@ -383,7 +383,7 @@ Wenn Sie auf einen Screenshot klicken, gelangen Sie zur genauen zeitlichen Posit
 
 [image-wtip-min11246-ssms-adhoc-analytics]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min11246-tsql-adhoc-analystics-db-elastic-query.png "SSMS – Ad-hoc-Analysen"
 
-[image-wtip-min11632-extract-tenant-data-sql-dw]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min11632-extract-tenant-data-analytics-db-dw.png "Extrahieren von Mandantendaten in SQL DW"
+[image-wtip-min11632-extract-tenant-data-sql-dw]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min11632-extract-tenant-data-analytics-db-dw.png "Extrahieren von Mandantendaten nach Azure Synapse Analytics"
 
 [image-wtip-min11648-graph-daily-sale-distribution]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min11648-graph-daily-sale-contoso-concert-hall.png "Diagramm zur täglichen Verteilung von Umsätzen"
 

@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 4bf5b9b6f683783a39b7d34c430f1c6671c35885
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 541f3e5ada69568506969f6406564a8ff59c0ba6
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236368"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613228"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Was ist SQL Server auf Azure Virtual Machines (Windows)?
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -30,6 +30,9 @@ ms.locfileid: "88236368"
 Mit [SQL Server auf Azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/sql-server/) können Sie Vollversionen von SQL Server in der Cloud nutzen, ohne lokale Hardware verwalten zu müssen. Virtuelle SQL Server-Computer (VMs) vereinfachen außerdem die Lizenzierungskosten, wenn Sie nutzungsbasierte Bezahlung verwenden.
 
 Virtuelle Azure-Computer werden in verschiedensten [geografischen Regionen](https://azure.microsoft.com/regions/) auf der ganzen Welt ausgeführt. Sie bieten auch eine Vielzahl von [Computergrößen](../../../virtual-machines/windows/sizes.md). Über den Katalog mit VM-Images können Sie virtuelle SQL Server-Computer mit passender Version, passender Edition und passendem Betriebssystem erstellen. Dadurch stellen virtuelle Computer eine gute Wahl für viele verschiedene SQL Server-Workloads dar.
+
+Wenn Sie noch nicht mit SQL Server auf Azure-VMs vertraut sind, sehen Sie sich das Video *SQL Server on Azure VM Overview* aus der detaillierten [Azure SQL-Videoserie](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner) an:
+> [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/SQL-Server-on-Azure-VM-Overview-4-of-61/player]
 
 ## <a name="automated-updates"></a>Automatische Updates
 

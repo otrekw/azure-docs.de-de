@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 9cf6fa26cec0abbc52a990d71c1c2fcc5d6023e4
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: f59f8af3f9a845f7e8663877f6d806c33b216a41
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612553"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89482843"
 ---
 # <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>Konfigurieren eines Load Balancers für eine SQL Server-AlwaysOn-Verfügbarkeitsgruppe auf virtuellen Azure-Computern
 
@@ -40,7 +40,7 @@ Lesen Sie verwandte Artikel:
 
 Im Rahmen dieses Artikels erstellen und konfigurieren Sie mithilfe des Azure-Portals einen Load Balancer. Nach Abschluss des Verfahrens konfigurieren Sie den Cluster so, dass er die IP-Adresse aus dem Load Balancer für den Verfügbarkeitsgruppenlistener verwendet.
 
-## <a name="create-and-configure-the-load-balancer-in-the-azure-portal"></a>Erstellen und Konfigurieren des Load Balancers im Azure-Portal
+## <a name="create--configure-load-balancer"></a>Erstellen und Konfigurieren des Lastenausgleichs 
 
 Gehen Sie in diesem Teil der Aufgabe folgendermaßen vor:
 
@@ -71,7 +71,7 @@ Erstellen Sie zuerst den Load Balancer.
    | --- | --- |
    | **Name** |Namenstext für den Load Balancer. Beispiel: **sqlLB**. |
    | **Typ** |**Intern:** Die meisten Implementierungen verwenden einen internen Lastenausgleich, wodurch Anwendungen innerhalb des gleichen virtuellen Netzwerks eine Verbindung mit der Verfügbarkeitsgruppe herstellen können.  </br> **Extern:** Dieser Typ ermöglicht es Anwendungen, über eine öffentliche Internetverbindung eine Verbindung mit der Verfügbarkeitsgruppe herzustellen. |
-   | **SKU** |**Standard**: Erforderlich, wenn sich Ihre SQL-Instanzen in einer anderen Verfügbarkeitsgruppe als der Load Balancer befinden. </br> **Basic**: Die Standardoption. |
+   | **SKU** |**Basic**: Die Standardoption. Nur gültig, wenn sich SQL Server-Instanzen in derselben Verfügbarkeitsgruppe befinden. </br> **Standard**: Bevorzugt. Gültig, wenn sich SQL Server-Instanzen in derselben Verfügbarkeitsgruppe befinden. Erforderlich, wenn sich Ihre SQL Server Instanzen in unterschiedlichen Verfügbarkeitszonen befinden. |
    | **Virtuelles Netzwerk** |Wählen Sie das virtuelle Netzwerk aus, in dem sich die SQL Server-Instanzen befinden. |
    | **Subnetz** |Wählen Sie das Subnetz aus, in dem sich die SQL Server-Instanzen befinden. |
    | **IP-Adresszuweisung** |**Statisch** |

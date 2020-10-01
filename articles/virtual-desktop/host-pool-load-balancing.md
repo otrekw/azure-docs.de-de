@@ -3,15 +3,15 @@ title: Lastenausgleich für Windows Virtual Desktop-Hostpools – Azure
 description: Erfahren Sie mehr über Lastenausgleichsmethoden für Hostpools für eine Windows Virtual Desktop-Umgebung.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 09/04/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ee8cb5f2297851d2c2b2f34be3d90573fdcf2530
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 2b977d64dea1cef3b8142758e57d91e92e5bcc02
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007436"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461118"
 ---
 # <a name="host-pool-load-balancing-methods"></a>Lastenausgleichsmethoden für Hostpools
 
@@ -34,7 +34,7 @@ Für jeden Hostpool kann nur jeweils eine Art von Lastenausgleich konfiguriert w
 
 Bei der Lastenausgleichsmethode „Breiter Ansatz“ können Sie Benutzerverbindungen so verteilen, dass für das Szenario eine optimale Lösung erzielt wird. Diese Methode ist ideal für Organisationen geeignet, die Benutzern, die eine Verbindung mit ihrer virtuellen Desktopumgebung im Pool herstellen, ein optimales Nutzungserlebnis bieten möchten.
 
-Beim „breiten Ansatz“ werden zuerst Sitzungshosts abgefragt, die neue Verbindungen zulassen. Die Methode wählt dann den Sitzungshost mit der geringsten Anzahl von Sitzungen aus. Bei einem Gleichstand wählt die Methode den ersten Sitzungshost der Abfrage aus.
+Beim „breiten Ansatz“ werden zuerst Sitzungshosts abgefragt, die neue Verbindungen zulassen. Entsprechend dieser Methode wird dann ein Sitzungshost nach dem Zufallsprinzip aus der Hälfte der Sitzungshosts ausgewählt, die die geringste Anzahl von Sitzungen haben. Gibt es z. B. neun Computer mit 11, 12, 13, 14, 15, 16, 17, 18 und 19 Sitzungen, wird eine neue Sitzung, die Sie erstellen, nicht automatisch auf dem ersten Computer eingerichtet. Stattdessen kann sie auf einem der ersten fünf Computer mit der niedrigsten Anzahl von Sitzungen (11, 12, 13, 14, 15) eingerichtet werden.
 
 ## <a name="depth-first-load-balancing-method"></a>Lastenausgleichsmethode „Tiefer Ansatz“
 

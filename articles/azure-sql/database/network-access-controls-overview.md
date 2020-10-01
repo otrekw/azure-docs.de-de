@@ -1,7 +1,7 @@
 ---
 title: Kontrolle des Netzwerkzugriffs
 titleSuffix: Azure SQL Database & Azure Synapse Analytics
-description: Übersicht über die Verwaltung und Steuerung des Netzwerkzugriffs für Azure SQL-Datenbank und Azure Synapse Analytics (ehemals Azure SQL Data Warehouse)
+description: Übersicht über die Verwaltung und Steuerung des Netzwerkzugriffs für Azure SQL-Datenbank und Azure Synapse Analytics (früher SQL Data Warehouse)
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 435a5fe6f5900ffe742d4459e8e402d2e698ca9f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: caad78bf61c9ad470464d69c7320aa1d08dcee09
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085462"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89435370"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-network-access-controls"></a>Netzwerk-Zugriffssteuerung für Azure SQL-Datenbank und Azure Synapse Analytics
 

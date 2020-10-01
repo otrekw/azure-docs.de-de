@@ -12,12 +12,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 08/12/2020
-ms.openlocfilehash: 62dfa3214b86139a8f836b3d9bd72585653b7fa2
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 16e15976c6f09881b75dcec207833f48aa1c4e7a
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88189942"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437672"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Hochverfügbarkeit für Azure SQL-Datenbank und SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -91,7 +91,7 @@ Die zonenredundante Version der Hochverfügbarkeitsarchitektur wird im folgenden
 
 ## <a name="accelerated-database-recovery-adr"></a>Schnellere Datenbankwiederherstellung
 
-Die [schnellere Datenbankwiederherstellung (Accelerated Database Recovery, ADR)](../accelerated-database-recovery.md) ist ein neues Feature der SQL-Datenbank-Engine, das die Datenbankverfügbarkeit erheblich verbessert, insbesondere bei Transaktionen mit langer Ausführungsdauer. ADR ist derzeit für Azure SQL-Datenbank, Azure SQL Managed Instance und Azure SQL Data Warehouse verfügbar.
+Die [schnellere Datenbankwiederherstellung (Accelerated Database Recovery, ADR)](../accelerated-database-recovery.md) ist ein neues Feature der SQL-Datenbank-Engine, das die Datenbankverfügbarkeit erheblich verbessert, insbesondere bei Transaktionen mit langer Ausführungsdauer. ADR ist derzeit für Azure SQL-Datenbank, Azure SQL Managed Instance und Azure Synapse Analytics (früher SQL Data Warehouse) verfügbar.
 
 ## <a name="testing-application-fault-resiliency"></a>Testen der Resilienz von Anwendungsfehlern
 

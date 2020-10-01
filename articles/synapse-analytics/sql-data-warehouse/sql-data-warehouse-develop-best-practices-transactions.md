@@ -11,12 +11,12 @@ ms.date: 04/19/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: d7fa9336a7a90ab73d3dc60c6c865ebadfb2af1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ddb6dbde941d5a2f399aba55eec415c879e74384
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213498"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461204"
 ---
 # <a name="optimizing-transactions-in-synapse-sql"></a>Optimieren von Transaktionen in Synapse SQL
 
@@ -419,4 +419,4 @@ Die beste Vorgehensweise ist, auf den Abschluss aktiver Datenänderungstransakti
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Isolationsstufen und Transaktionsgrenzen finden Sie unter [Transaktionen in Synapse SQL](sql-data-warehouse-develop-transactions.md).  Eine Übersicht über andere bewährte Methoden finden Sie unter [Bewährte Methoden für SQL Data Warehouse](sql-data-warehouse-best-practices.md).
+Weitere Informationen zu Isolationsstufen und Transaktionsgrenzen finden Sie unter [Transaktionen in Synapse SQL](sql-data-warehouse-develop-transactions.md).  Eine Übersicht über andere bewährte Methoden finden Sie unter [Bewährte Methoden für den Synapse SQL-Pool in Azure Synapse Analytics](sql-data-warehouse-best-practices.md).

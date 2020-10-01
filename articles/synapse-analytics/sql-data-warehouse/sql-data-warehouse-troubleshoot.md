@@ -11,12 +11,12 @@ ms.date: 02/04/2019
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 44755ab13b95db1ffec8183d00a4054e291c5a50
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: bce5e14db133ad55a2035c0c8074486ed1b8a6ec
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039023"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460506"
 ---
 # <a name="troubleshooting-synapse-sql-in-azure-synapse-analytics"></a>Problembehandlung für Synapse SQL in Azure Synapse Analytics
 
@@ -37,7 +37,7 @@ Dieser Artikel enthält allgemeine Informationen zur Problembehandlung in Synaps
 | Problem                                                        | Lösung                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Im Objekt-Explorer von Visual Studio fehlen Azure AD-Benutzer           | Dies ist ein bekanntes Problem.  Sie können die Benutzer in [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) anzeigen, um dieses Problem zu umgehen.  Weitere Informationen zur Verwendung von Azure Active Directory mit dem Synapse SQL-Pool finden Sie unter [Authentifizierung in Azure Synapse](sql-data-warehouse-authentication.md). |
-| Manuelle, über den Assistenten für die Skripterstellung erstellte Skripts oder über SSMS hergestellte Verbindungen sind langsam, reagieren nicht mehr oder erzeugen Fehler | Vergewissern Sie sich, dass Benutzer in der Masterdatenbank erstellt wurden. Stellen Sie zudem in den Skriptoptionen sicher, dass die Engine-Edition auf „Microsoft Azure SQL Data Warehouse Edition“ und der Engine-Typ auf „Microsoft Azure SQL-Datenbank“ festgelegt ist. |
+| Manuelle, über den Assistenten für die Skripterstellung erstellte Skripts oder über SSMS hergestellte Verbindungen sind langsam, reagieren nicht mehr oder erzeugen Fehler | Vergewissern Sie sich, dass Benutzer in der Masterdatenbank erstellt wurden. Stellen Sie zudem in den Skriptoptionen sicher, dass die Engine-Edition auf „Microsoft Azure Synapse Analytics Edition“ und der Engine-Typ auf „Microsoft Azure SQL-Datenbank“ festgelegt ist. |
 | Fehler beim Generieren von Skripts in SSMS                               | Beim Generieren eines Skripts für den Synapse SQL-Pool tritt ein Fehler auf, wenn die Option „Generate script for dependent objects“ (Skript für abhängige Objekte generieren) auf TRUE festgelegt ist. Um dieses Problem zu umgehen, müssen Benutzer manuell zu **Extras > Optionen > SQL Server-Objekt-Explorer > Skript für abhängige Objekte generieren** navigieren und diese Option auf FALSE festlegen. |
 
 ## <a name="performance"></a>Leistung

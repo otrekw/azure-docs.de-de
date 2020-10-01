@@ -3,12 +3,12 @@ title: 'Konzepte: Speicher'
 description: Erfahren Sie mehr über die wichtigsten Speicherfunktionen in privaten Clouds in der Vorschau von Azure VMware Solution.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 91484c1baae9801684bc49b931fa2080db676a00
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 8afd58c61f2f78eec2a92354be6d88178340912e
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752211"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024314"
 ---
 # <a name="azure-vmware-solution-preview-storage-concepts"></a>Speicherkonzepte von Azure VMware Solution Vorschau
 
@@ -28,7 +28,7 @@ Der lokale Speicher in Clusterhosts wird im clusterweiten vSAN-Datenspeicher ver
 
 ## <a name="data-at-rest-encryption"></a>Verschlüsselung ruhender Daten
 
-vSAN-Datenspeicher verwenden standardmäßig Verschlüsselung ruhender Daten. Die Verschlüsselungslösung ist KMS-basiert und unterstützt vCenter-Vorgänge für die Schlüsselverwaltung. Schlüssel werden verschlüsselt gespeichert und von einem HSM-basierten Azure Key Vault-Hauptschlüssel umschlossen. Wenn ein Host aus irgendeinem Grund aus einem Cluster entfernt wird, werden die Daten auf SSDs sofort ungültig.
+vSAN-Datenspeicher verwenden standardmäßig Verschlüsselung ruhender Daten. Die Verschlüsselungslösung ist KMS-basiert und unterstützt vCenter-Vorgänge für die Schlüsselverwaltung. Die Schlüsselverschlüsselungsschlüssel sind in einem Azure Key Vault gespeichert, und wenn ein Host aus irgendeinem Grund aus einem Cluster entfernt wird, werden die Daten auf SSDs sofort ungültig.
 
 ## <a name="scaling"></a>Skalierung
 

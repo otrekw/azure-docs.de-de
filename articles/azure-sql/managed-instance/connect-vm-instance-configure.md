@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, srbozovi, bonova
 ms.date: 02/18/2019
-ms.openlocfilehash: e3dc2990e810096310617e468a533a65626008ff
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 72d5a722e6c1e6b936c6ec0386036317e887bb92
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542652"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969834"
 ---
 # <a name="quickstart-configure-an-azure-vm-to-connect-to-azure-sql-managed-instance"></a>Schnellstart: Konfigurieren einer Azure-VM für das Herstellen einer Verbindung mit Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -110,7 +110,7 @@ In den folgenden Schritten wird veranschaulicht, wie Sie für Ihren neu erstellt
 
 1. Navigieren Sie zur VM-Ressource, nachdem die Bereitstellung abgeschlossen wurde.
 
-    ![VM](./media/connect-vm-instance-configure/vm.png)  
+    ![Im Screenshot ist das Azure-Portal zu sehen, in dem die „Übersicht“-Seite für eine virtuelle Maschine angezeigt wird, und ist „Verbinden“ markiert.](./media/connect-vm-instance-configure/vm.png)  
 
 2. Wählen Sie **Verbinden**.
 

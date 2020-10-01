@@ -3,15 +3,15 @@ title: Anpassen von RDP-Eigenschaften mit PowerShell (Azure)
 description: Vorgehensweise zum Anpassen von RDP-Eigenschaften für Windows Virtual Desktop mit PowerShell-Cmdlets
 author: Heidilohr
 ms.topic: how-to
-ms.date: 07/20/2020
+ms.date: 09/04/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 439f009d70775428a00f627160bf4d6b8ab9b089
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 7c4bda1ecf28e964db6ba672157790114affe650
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009102"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462223"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>Anpassen der RDP-Eigenschaften (Remotedesktopprotokoll) für einen Hostpool
 
@@ -21,6 +21,16 @@ ms.locfileid: "88009102"
 Durch Anpassen von RDP-Eigenschaften (Remotedesktopprotokoll) eines Hostpools, z.B. Unterstützung mehrerer Monitore und Audioumleitung, können Sie für Benutzer eine optimale Bedienumgebung bereitstellen, die deren Anforderungen entspricht. Sie können RDP-Eigenschaften in Windows Virtual Desktop anpassen, indem Sie entweder das Azure-Portal oder den Parameter *-CustomRdpProperty* im Cmdlet **Update-AzWvdHostPool** verwenden.
 
 Eine vollständige Liste der unterstützten Eigenschaften samt deren Standardwerten finden Sie unter [Unterstützte RDP-Dateieinstellungen](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context).
+
+## <a name="default-rdp-file-properties"></a>Standardeigenschaften für RDP-Dateien
+
+RDP-Dateien haben standardmäßig die folgenden Eigenschaften:
+
+|RDP-Eigenschaft|Auf Desktop|Als RemoteApp|
+|---|---|---|
+|Mehrfachmonitor-Modus|Aktiviert|–|
+|Aktivierte Laufwerksumleitungen|Laufwerke, Zwischenablage, Drucker, COM-Anschlüsse, USB-Geräte und Smartcards|Laufwerke, Zwischenablage und Drucker|
+|Remoteaudio-Modus|Lokale Wiedergabe|Lokale Wiedergabe|
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

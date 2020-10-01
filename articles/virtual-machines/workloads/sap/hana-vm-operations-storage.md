@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/11/2020
+ms.date: 09/03/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8328b961c8166247caaf0b9cd5cc288c420d089e
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 60947a8138972834f30274715226648d1b2360a1
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279991"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440693"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer
 
@@ -236,6 +236,10 @@ Bei dieser Konfiguration bleiben die Volumes **/hana/data** und **/hana/log** ge
 
 Bei den Empfehlungen werden die Mindestanforderungen für SAP häufig überschritten, wie bereits in diesem Artikel erwähnt. Bei den aufgeführten Empfehlungen handelt es sich um einen Kompromiss zwischen den Größenempfehlungen von SAP und dem maximalen Speicherdurchsatz, der von den unterschiedlichen VM-Typen bereitgestellt wird.
 
+> [!NOTE]
+> Azure Ultra-Datenträger erzwingt mindestens 2 IOPS pro Gigabyte eines Datenträgers.
+
+
 | VM-SKU | RAM | Maximal VM-E/A<br /> Throughput | Volume „/hana/data“ | E/A-Durchsatz für „/hana/data“ | IOPS für „/hana/data“ | Volume „/hana/log“ | E/A-Durchsatz für „/hana/log“ | IOPS für „/hana/log“ |
 | --- | --- | --- | --- | --- | --- | --- | --- | -- |
 | E20ds_v4 | 160 GiB | 480 MB/s | 200 GB | 400 MBit/s | 2\.500 | 80 GB | 250 MB | 1\.800 |
@@ -249,11 +253,11 @@ Bei den Empfehlungen werden die Mindestanforderungen für SAP häufig überschri
 | M64s | 1\.000 GiB | 1\.000 MB/s |  1\.200 GB | 600 MBit/s | 5\.000 | 512 GB | 250 MBit/s  | 2\.500 |
 | M64ms | 1\.750 GiB | 1\.000 MB/s | 2\.100 GB | 600 MBit/s | 5\.000 | 512 GB | 250 MBit/s  | 2\.500 |
 | M128s | 2\.000 GiB | 2\.000 MB/s |2\.400 GB | 750 MBit/s | 7\.000 | 512 GB | 250 MBit/s  | 2\.500 | 
-| M128ms | 3\.800 GiB | 2\.000 MB/s | 4\.800 GB | 750 MBit/s |7\.000 | 512 GB | 250 MBit/s  | 2\.500 | 
+| M128ms | 3\.800 GiB | 2\.000 MB/s | 4\.800 GB | 750 MBit/s |9\.600 | 512 GB | 250 MBit/s  | 2\.500 | 
 | M208s_v2 | 2\.850 GiB | 1\.000 MB/s | 3\.500 GB | 750 MBit/s | 7\.000 | 512 GB | 250 MBit/s  | 2\.500 | 
-| M208ms_v2 | 5\.700 GiB | 1\.000 MB/s | 7\.200 GB | 750 MBit/s | 7\.000 | 512 GB | 250 MBit/s  | 2\.500 | 
-| M416s_v2 | 5\.700 GiB | 2\.000 MB/s | 7\.200 GB | 1\.000 MBit/s | 9\.000 | 512 GB | 400 MBit/s  | 4\.000 | 
-| M416ms_v2 | 11.400 GiB | 2\.000 MB/s | 14.400 GB | 1\.500 MBit/s | 9\.000 | 512 GB | 400 MBit/s  | 4\.000 |   
+| M208ms_v2 | 5\.700 GiB | 1\.000 MB/s | 7\.200 GB | 750 MBit/s | 14\.400 | 512 GB | 250 MBit/s  | 2\.500 | 
+| M416s_v2 | 5\.700 GiB | 2\.000 MB/s | 7\.200 GB | 1\.000 MBit/s | 14\.400 | 512 GB | 400 MBit/s  | 4\.000 | 
+| M416ms_v2 | 11.400 GiB | 2\.000 MB/s | 14.400 GB | 1\.500 MBit/s | 28.800 | 512 GB | 400 MBit/s  | 4\.000 |   
 
 **Die angegebenen Werte sind lediglich als Ausgangspunkt gedacht und müssen auf die tatsächlichen Anforderungen abgestimmt werden.** Der Vorteil eines Azure Ultra-Datenträgers besteht darin, dass die Werte für IOPS und Durchsatz angepasst werden können, ohne den virtuellen Computer herunterzufahren oder die im System verarbeitete Workload anzuhalten.   
 

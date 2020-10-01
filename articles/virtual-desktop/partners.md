@@ -3,15 +3,15 @@ title: Partnerintegration für Windows Virtual Desktop – Azure
 description: Hier finden Sie Informationen zu den Partnern von Windows Virtual Desktop. Außerdem können Sie hier auf die Dokumentation zur Partnerintegration zugreifen.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 07/17/2020
+ms.date: 09/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 94da428862e1af66ee58e739b3ad3b5b95be3310
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 9e5b9017854465724724638bfe5d32783a031030
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612366"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056402"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Partnerintegration für Windows Virtual Desktop
 
@@ -46,7 +46,8 @@ Als genehmigter Windows Virtual Desktop-Anbieter kann VMware Kunden helfen, die 
 
 10ZiG ist Weltmarktführer im Bereich der Thin- und Zero-Client-Endpunktgeräte und Verwaltungssoftware für virtuelle Desktops. Dies wird auch durch die Arbeit des Unternehmens für seine Kunden verdeutlicht. Die Thin-Client-Hardware verfügt über sorgfältig durchdachte Features und Optionen, mit denen sichergestellt wird, dass Kunden die richtigen Clientgeräte für ihre Anforderungen erhalten. 10ZiG passt seine Geräte so an, dass sie genau zu Kundenumgebungen mit Windows- und Linux-basierten Clients passen, um die bestmögliche Leistung auf virtuellen Desktops zu erzielen – sowohl innerhalb als auch außerhalb der Cloud.
 
-- [Zur Partnerwebsite](https://www.10zig.com/about/microsoft-wvd).
+- [Zur gemeinsamen Lösungsübersicht](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4FaeR).
+- [Zur Partnerwebsite](https://www.10zig.com/about/microsoft-windows-virtual-desktop).
 
 ## <a name="automai"></a>Automai
 
@@ -101,7 +102,7 @@ Bei Verwendung mit Windows Virtual Desktop bietet ControlUp zusätzliche Funktio
 
 Thin Clients der Dell-Technologien sind für den Zugriff auf Microsoft Azure und Windows Virtual Desktop-Dienste optimiert. Wyse Thin Clients sind in der Lage, die Anforderungen von kollaborativen Wissensarbeitern bis hin zu grafikintensiven Powerusern zu erfüllen und bieten ein hochwertiges Computingerlebnis, um die wachsende Anzahl von Apps und Inhalten umfassend zu nutzen. Die Thin Clients von Wyse eignen sich ideal für Umgebungen mit begrenztem Platzangebot und passen sich mit ihren vielseitigen Formfaktoren und einer großen Auswahl an Einbindungsmöglichkeiten an die Art und Weise an, wie Menschen arbeiten.
 
-Wyse Thin Clients wurden mit Blick auf Sicherheit mit begrenzter Angriffsfläche, Unterstützung von Sicherheitscompliancestandards und fortschrittlichen Lösungen für mehrstufige Authentifizierung (MFA) entwickelt. Stellen Sie hochsichere Thin Clients mit dem exklusiven Wyse ThinOS von Dell bereit, oder nutzen Sie den sicheren Zugriff auf Cloudanwendungen und virtuelle Arbeitsbereiche von gehärtetem Wyse ThinLinux mit einem kommerziell bewährten Design und Windows 10 IoT Enterprise mit zusätzlichen Sicherheitsfunktionen von Dell. Mit sicherer, HTTPS-basierter Kommunikation und Active Directory-Authentifizierung für rollenbasierte Verwaltung hält die Wyse Management Suite die Wyse-Endgeräte immer auf dem neuesten Stand. Die mobile App für WMS Pro ermöglicht es der IT-Abteilung, kritische Warnungen anzuzeigen und mit einem Tippen jederzeit Befehle in Echtzeit zu senden.
+Wyse Thin Clients wurden mit Blick auf Sicherheit mit begrenzten Angriffsflächen, Unterstützung von Sicherheitscompliancestandards und fortschrittlichen Lösungen für mehrstufige Authentifizierung (MFA) entwickelt. Stellen Sie sehr sichere Thin Clients mit Windows 10 IoT Enterprise und von Dell hinzugefügten Sicherheitsfeatures bereit. Dank der sicheren, HTTPS-basierten Kommunikation und Active Directory-Authentifizierung für rollenbasierte Verwaltung hält die Wyse Management Suite die Wyse-Endgeräte immer auf dem neuesten Stand. Die mobile App für WMS Pro ermöglicht es der IT-Abteilung, kritische Warnungen anzuzeigen und mit einem Tippen jederzeit Befehle in Echtzeit zu senden.
 
 - [Zur Partnerwebsite](https://www.delltechnologies.com/en-us/wyse/index.htm#scroll=off&overlay=//www.dellemc.com/en-us/collaterals/unauth/brochures/products/thin-clients/Wyse_Windows_Embedded_Standard_thin_clients_brochure.pdf).
 
@@ -190,6 +191,15 @@ Die digitale Überwachungslösung von Lakeside Software mit Namen SysTrack träg
 - [Zur gemeinsamen Lösungsübersicht](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8Q).
 - [Zur Partnerwebsite](https://www.lakesidesoftware.com/assessments/wvd).
 
+## <a name="lenovo"></a>Lenovo
+
+![Lenovo-Logo](./media/partners/lenovo.png)
+
+Lenovo Thin Clients verleihen Ihrem Netzwerk die Flexibilität eines Clientcomputers, der auf Ihrem Server ausgeführt wird, aber trotzdem die native PC-Fähigkeit und -Leistung bietet. Lenovo Thin Clients ermöglichen Windows Virtual Desktop-Bereitstellungen eine herausragende Leistung und intuitive Verwaltbarkeit, wodurch das Netzwerk Ihres Unternehmens auf die nächste Zuverlässigkeitsstufe gehoben wird. Jeder Thin Client ist mit einer Lenovo Terminal Manager-Lizenz ausgestattet, die keine Kosten verursacht und Organisationen nahtlose und kostengünstige Hardwareverwaltungs- und Bereitstellungsoptionen bietet. Die Thin Clients sind außerdem klein und vielseitig, sodass sie problemlos vorhandenen Lenovo-Bereitstellungen hinzugefügt werden können.
+
+- [Zur gemeinsamen Lösungsübersicht](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4FnaB).
+- [Zur Partnerwebsite](https://www.lenovo.com/us/en/desktops-and-all-in-ones/thinkcentre/m-series-thin-clients/c/M-Series-Thin-Clients).
+
 ## <a name="liquidware"></a>Liquidware
 
 ![Liquidware-Logo](./media/partners/liquidware.png)
@@ -220,6 +230,17 @@ Login VSI ist ein Windows Virtual Desktop-VASP (Value-Added Service Provider) un
 
 - [Zur Partnerwebsite](https://www.loginvsi.com/use-cases-initiatives/windows-virtual-desktop).
 
+## <a name="nasuni"></a>Nasuni
+
+![Nasuni-Logo](./media/partners/nasuni.png)
+
+Die Nasuni Corp., der führende Anbieter von Clouddateidiensten und ein globaler Top-Azure-ISV-Partner, bietet die Nasuni-Software-as-a-Service-Plattform als die moderne Dateispeicherlösung für moderne virtuelle Desktops an. Die Nasuni-Plattform führt, wenn sie mit Azure Blob Storage kombiniert wird, primären Dateispeicher (NAS), Dateisicherung, Notfallwiederherstellung und regionsübergreifende Dateisynchronisierung in einer einheitlichen Lösung zusammen. Mit Nasuni können Unternehmen Windows Virtual Desktop-Lösungen für weitere Anwendungsfälle und in weiteren Azure-Regionen bereitstellen, die Verwaltung vereinfachen und die Geschäftskontinuität sicherstellen. 
+
+Als moderne VDI-Cloudlösung erfordert Windows Virtual Desktop modernen Clouddateispeicher. Bisher war es üblich, VDI-Dateispeicher über lokale NAS- (Network-Attached Storage) und Dateiserverhardware (Network-Attached Storage) und die zugehörige erforderliche Technologie bereitzustellen, um Dateisicherungen und -wiederherstellung sowie Notfallwiederherstellung zu bieten. Diese herkömmlichen Konzepte sind teuer, komplex zu warten und zu verwalten und lassen sich nicht einfach skalieren. Außerdem bedingen sie eine Latenzzeit, wenn sie mit einer modernen VDI-Cloudlösung wie Windows Virtual Desktop verwendet werden. Diese Latenzzeit hat ihre Ursache in der physischen Entfernung und den langsameren WAN-Verbindungen zwischen den in Azure aufgesetzten Desktops und dem lokalen Dateispeicher. Nasuni, eine speziell für Azure entwickelte Dateidiensteplattform, bietet unbegrenzte Dateispeicherkapazität und Hochleistungsdateizugriff. Nasuni kann sich zusammen mit Windows Virtual Desktop in denselben Azure-Regionen befinden, um einen wirtschaftlichen Hochleistungsdateizugriff auf einen einzelnen globalen Namespace zu realisieren. Nasuni bietet Windows Virtual Desktop-Dateispeicher zu einem Bruchteil der Kosten herkömmlicher NAS- und Windows-Dateiserver an und umfasst integrierte Sicherungen und Notfallwiederherstellung, um die Kosten weiter zu senken und weniger IT-Ressourcen zu binden.
+
+- [Zur Partnerwebsite](https://www.nasuni.com/partner/microsoft/#wvd).
+- [Zur gemeinsamen Lösungsübersicht](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4FaeS).
+
 ## <a name="nerdio"></a>Nerdio
 
 ![Nerdio-Logo](./media/partners/nerdio.png)
@@ -230,6 +251,17 @@ Nerdio steigert den Nutzen von Windows Virtual Desktop, indem es die Bereitstell
 
 - [Zur gemeinsamen Lösungsübersicht](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh).
 - [Zur Partnerwebsite](https://getnerdio.com/windows-virtual-desktop/).
+
+## <a name="nexthink"></a>Nexthink
+
+![Nexthink-Logo](./media/partners/nexthink.png)
+
+Nexthink ist ein Value-Added-Anbieter für Windows Virtual Desktop, der Organisationen dabei unterstützt, das digitale Verhalten und die digitale Produktivität Ihrer Mitarbeiter zu messen, zu verwalten und zu verbessern. Über ständiges Auswerten des digitalen Verhaltens der Mitarbeitenden wird die IT in die Lage versetzt, kontinuierlich Technologieverbesserungen vorzunehmen, um Menschen, egal wo sie arbeiten, zu fesseln, zu befähigen und zu begeistern. 
+
+Durch die Bereitstellung von Lösungen mit sichtbaren Arbeitsplatzressourcen gibt Nexthink Ihnen Kontext und Einblick in Ihre Benutzerbasis. Die leistungsstarke Verhaltensauswertungsplattform von Nexthink hilft IT-Teams sicherzustellen, dass Migrationen zu Windows Virtual Desktop zügig und erfolgreich geplant und vorgenommen werden.
+
+- [Zur Partnerwebsite](https://www.nexthink.com/initiative/desktop-virtualization/).
+- [Zur gemeinsamen Lösungsübersicht](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4FaeT).
 
 ## <a name="numecent"></a>Numecent
 
@@ -287,12 +319,16 @@ Die Remote Desktop Commander-Lösungen von RDPSoft verbessern die Verwaltung von
 
 ![Rimo3-Logo](./media/partners/rimo3.png)
 
-Rimo3 erweitert die Windows Virtual Desktop-Erfahrung, indem es die Desktopbereitstellung beschleunigt und das fortlaufende Change Management verbessert. Rimo3 versorgt IT-Teams mit dem Wissen, das sie zur Unterstützung Ihres Anwendungsportfolios für die Azure-Migrationsbereitschaft von Anwendungsworkloads benötigen. Die Benutzer können das Onboarding für Anwendungen durchführen und diese schnell und problemlos in ihrem Windows Virtual Desktop-Zielarbeitsbereich testen. Benutzer können auch die Auswirkungen von Änderungen proaktiv verstehen, wenn ihre Organisation neue Anwendungen und Updates einführt. Und schließlich können IT-Administratoren die Intelligent Smoke Testing-Funktionen von Rimo3 nutzen und Funktionstests automatisieren, ohne die Benutzersitzungen zu unterbrechen.
+Rimo3 erweitert die Windows Virtual Desktop-Umgebung mit seiner benutzerfreundlichen, skalierbaren und cloudbasierten Application Modernization Platform (Plattform zur Anwendungsmodernisierung).
 
-Rimo3 bietet eine einfach zu bedienende, skalierbare, automatisierte Testplattform für Anwendungen. Diese Plattform umfasst Funktionen für alle drei Grundlagen der Anwendungstests: Kompatibilität, Funktionalität und Leistung. Sie ermöglicht es Unternehmen, Führungskräften und Teams, die Geschäftskontinuität zu verbessern, Änderungen schneller anzunehmen und die Benutzererfahrung zu optimieren.
+Für IT-Teams bietet Rimo3 Unterstützung bei der Bestimmung, Modernisierung und Verwaltung von Anwendungsworkloads für den Wechsel zu Windows Virtual Desktop. Benutzer können ihr Anwendungsportfolio automatisch durchsuchen, um Kandidaten zu bestimmen, die für Onboarding in Windows Virtual Desktop oder Modernisierung auf MSIX geeignet sind.  
+
+Benutzer können das Vorabtesten Ihrer Anwendungen, das Konvertieren von Apps in MSIX und das Testen nach der Konvertierung automatisieren, wobei automatisierte Korrektur angewendet wird, wenn die Apps nicht ordnungsgemäß konvertiert werden. Das Ergebnis ist ein modernisiertes, bereitstellungsfähiges MSIX-Paket. Mit jedem Windows Virtual Desktop-Featurerelease und -Update können Benutzer Apps vor der Bereitstellung automatisch vollständig testen, wodurch umfassende Vertrauenswürdigkeit und permanente Verwaltung gegeben sind.
+
+Anbietern von verwalteten Diensten bietet Rimo3 Unterstützung dabei, die Funktionalitäten ihrer verwalteten Dienste zu erweitern, um die Margen zu erhöhen. Darüber hinaus hilft Rimo3 diesen Anbietern, projektbasierten Umsatz in abonnementbasierten wiederkehrenden Umsatz zu überführen und Mehrwert für Kunden zu bieten, die modernisieren und zu Windows Virtual Desktop wechseln sowie regelmäßige Updates in ihren Desktoparbeitsbereichen verwalten müssen.
 
 - [Zur gemeinsamen Lösungsübersicht](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yj7B).
-- [Zur Partnerwebsite](https://rimo3.com/outcomes/).
+- [Zur Partnerwebsite](https://rimo3.com/windows-virtual-desktop/).
 
 ## <a name="sepago"></a>sepago
 
@@ -304,6 +340,17 @@ Im Innovation & Development Lab von sepago werden mit Big Data- und KI-Technolog
 
 - [Zur gemeinsamen Lösungsübersicht](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4qMsm).
 - [Zur Partnerwebsite](https://www.sepago.de/en/).
+
+## <a name="ssh2"></a>SSH2
+
+![SSH2-Logo](./media/partners/ssh2.png)
+
+SSH2 ist ein Anbieter von Windows Virtual Desktop-Mehrwertdiensten, der Ihre IT-Teams mit Software ausstattet, mit der die Anwendungsbereitstellung von der aktuellen Plattform zu Windows Virtual Desktop in Azure beschleunigt wird. SSH2 versetzt IT-Teams in die Lage, Anwendungen erheblich schneller zu erfassen, um den Migrationsprozess zu optimieren. appCURE von SSH2 erfasst laufende Anwendungen am Endpunkt und ermöglicht Aktualisierung und Wiederherstellung, um eine umfassende Schrittänderung in der Geschwindigkeit zu erzielen, in der Endbenutzerumgebungen ausgeführt werden können. 
+
+appCURE erfasst Anwendungsdetails aus laufenden Anwendungen, um sicherzustellen, dass alle Punkte verstanden sind, die sich auf die Anwendungen Ihrer Endbenutzer auswirken können. appCURE aktualisiert die Anwendungen dann und stellt sie in Ihrer neuen Windows Virtual Desktop-Umgebung bereit. Durch Erfassen aller Anwendungsintegrationspunkte in Ihrer aktuellen Umgebung bietet appCURE die Geschwindigkeit, IT-Ressourcen zu optimieren und Ihre Migrationen besser und schneller als je zuvor planen zu können, wodurch es Organisationen ermöglicht wird, schneller zur Produktion überzugehen.
+
+- [Zur gemeinsamen Lösungsübersicht](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4Fs38).
+- [Zur Partnerseite wechseln](https://www.ssh2.xyz/windows-virtual-desktop/).
 
 ## <a name="thinprint"></a>ThinPrint
 
@@ -334,6 +381,7 @@ vast limits, das uberAgent-Unternehmen, bietet Sichtbarkeit in Windows Virtual D
 
 Bei uberAgent handelt es sich um ein Überwachungs- und Analyseprodukt, das für Endbenutzercomputing konzipiert ist und nicht nur Daten erfasst – es stellt Kunden die Informationen zur Verfügung, die relevant sind. uberAgent verfügt über eigene Metriken, die wichtige Aspekte der Benutzererfahrung, Anwendungsleistung und Endpunktsicherheit abdecken und Sie über alles informieren, was Sie zu Ihren Windows Virtual Desktop-VMs wissen müssen, ohne die Benutzerdichte Ihrer Systeme zu beeinträchtigen. uberAgent vereinfacht die Problembehandlung, hilft bei der Dimensionierung und bietet umfassende Informationen, die für die Informationssicherheit wesentlich sind.
 
+- [Zur gemeinsamen Lösungsübersicht](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4Fs39).
 - [Zur Partnerwebsite](https://uberagent.com/docs/uberagent/latest/about-uberagent/system-requirements/#windows-virtual-desktop).
 
 ## <a name="workspace-365"></a>Workspace 365

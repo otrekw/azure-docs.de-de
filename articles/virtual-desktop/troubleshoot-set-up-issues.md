@@ -3,15 +3,15 @@ title: Erstellen von Hostpools für Windows Virtual Desktop-Umgebungen – Azur
 description: Behandeln von Problemen mit Mandanten und Hostpools während der Einrichtung einer Windows Virtual Desktop-Umgebung
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 08/11/2020
+ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4d504c46288ebe2a8112586ce6be6449178df16a
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: d02642b49951b4b116eaae6dbea490ef2720c15d
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121373"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084412"
 ---
 # <a name="host-pool-creation"></a>Hostpoolerstellung
 
@@ -46,6 +46,12 @@ Wenn bei Ihrem Vorgang die Kontingentgrenze überschritten wird, können Sie ein
 - Erstellen Sie einen neuen Hostpool mit denselben Parametern, aber mit weniger VMs und VM-Kernen.
 
 - Öffnen Sie den Link, der im Feld „statusMessage“ angezeigt wird, in einem Browser, um eine Anforderung zum Erhöhen des Kontingents für Ihr Azure-Abonnement für die angegebene VM-SKU zu übermitteln.
+
+### <a name="error-cant-see-user-assignments-in-app-groups"></a>Error: Can't see user assignments in app groups. (Benutzerzuweisungen in App-Gruppen nicht sichtbar.)
+
+Ursache: Dieser Fehler tritt meist auf, nachdem Sie das Abonnement von einem Azure Active Directory-Mandanten zu einem anderen verschoben haben. Wenn Ihre alten Zuweisungen weiterhin an den alten Azure AD-Mandanten gebunden sind, kann das Azure-Portal diese nicht nachverfolgen.
+
+Behebung: Sie müssen die Benutzer den App-Gruppen neu zuweisen.
 
 ## <a name="azure-resource-manager-template-errors"></a>Fehler mit der Azure Resource Manager-Vorlage
 
