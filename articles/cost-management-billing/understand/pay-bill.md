@@ -8,18 +8,18 @@ tags: billing, past due, pay now, bill, invoice, pay
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 09/21/2020
 ms.author: banders
-ms.openlocfilehash: 6cfebc9cfbd856567fde3d6736c6ddc5f1a94b4d
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: e9ad580ae5e3ffe7a7f5781423f96897272a4844
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688707"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972073"
 ---
 # <a name="how-to-pay-your-bill-for-microsoft-azure"></a>Bezahlen Ihrer Rechnung für Microsoft Azure
 
-Dieser Artikel gilt für Kunden mit einem Microsoft-Kundenvereinbarung, die sich über die Azure-Website für Azure angemeldet haben. [Überprüfen des Zugriffs auf eine Microsoft-Kundenvereinbarung](#check-access-to-a-microsoft-customer-agreement)
+Dieser Artikel gilt für Kunden mit einer Microsoft-Kundenvereinbarung (Microsoft Customer Agreement, MCA), die sich über die Azure-Website für Azure registriert haben. [Überprüfen des Zugriffs auf eine Microsoft-Kundenvereinbarung](#check-access-to-a-microsoft-customer-agreement)
 
 Als Standardzahlungsmethode Ihres Abrechnungsprofils kann entweder eine Kreditkarte oder die Zahlung per Scheck/Banküberweisung festgelegt werden. Wenn Sie über Azure-Gutschriften verfügen, werden diese jeden Abrechnungszeitraum automatisch auf Ihre Rechnung angewendet. Informationen dazu, wie Sie sich für die Zahlung per Scheck/Banküberweisung qualifizieren, lesen Sie die [Anleitung zur Zahlung per Rechnung](../manage/pay-by-invoice.md).
 
@@ -29,11 +29,11 @@ Wenn Ihre Standardzahlungsmethode eine Kreditkarte ist, wird Ihre Kreditkarte au
 
 ## <a name="pay-now-in-the-azure-portal"></a>Jetzt im Azure-Portal bezahlen
 
-Sie müssen Eigentümer, Beitragender oder Rechnungsmanager des Abrechnungsprofils sein, um Rechnungen im Azure-Portal bezahlen zu können.
+Sie müssen Administrator des Abrechnungskontos sein, um Rechnungen im Azure-Portal bezahlen zu können. Der Administrator des Abrechnungskontos ist der Benutzer, der sich ursprünglich für das MCA-Konto registriert hat.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
-1. Wählen Sie im Menü auf der linken Seite unter „Abrechnung“ die Option **Rechnungen** aus.
+1. Wählen Sie im Menü auf der linken Seite die Option **Rechnungen** unter **Abrechnung** aus.
 1. Wenn eine Ihrer Rechnungen fällig oder überfällig ist, wird für diese Rechnung der blaue Link **Jetzt zahlen** angezeigt. Wählen Sie **Jetzt zahlen** aus.
 1. Klicken Sie auf dem neuen Blatt auf **Wählen Sie eine Zahlungsmethode**, um eine bestehende Kreditkarte auszuwählen oder eine neue hinzuzufügen.
 1. Klicken Sie nach dem Auswählen der Zahlungsmethode auf **Jetzt zahlen**.
@@ -42,3 +42,7 @@ Der Status der Rechnung wird auf dem Rechnungsblatt in „bezahlt“ aktualisier
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Überprüfen des Zugriffs auf eine Microsoft-Kundenvereinbarung
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
+
+## <a name="next-steps"></a>Nächste Schritte
+
+- Informationen dazu, wie Sie sich für die Zahlung per Scheck/Banküberweisung qualifizieren, lesen Sie die [Anleitung zur Zahlung per Rechnung](../manage/pay-by-invoice.md).

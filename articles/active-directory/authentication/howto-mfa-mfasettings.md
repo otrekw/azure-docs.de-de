@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 1bc3f7887c9d257f5971b867ff9b7b1dd970fa87
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 50f7af3bb1ad543dea0263304b82287225500a21
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179402"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526883"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurieren von Azure Multi-Factor Authentication-Einstellungen
 
@@ -31,7 +31,7 @@ Die folgenden Azure MFA-Einstellungen sind im Azure-Portal verfügbar:
 | [Benutzer sperren/zulassen](#block-and-unblock-users) | Hiermit werden spezifische Benutzer daran gehindert, Azure MFA-Anforderungen zu empfangen. Authentifizierungsversuche für gesperrte Benutzer werden automatisch abgelehnt. Benutzer bleiben ab dem Zeitpunkt der Sperrung 90 Tage lang gesperrt, es sei denn, sie werden manuell entsperrt. |
 | [Betrugswarnung](#fraud-alert) | Hiermit können Einstellungen konfiguriert werden, die es Benutzern ermöglichen, betrügerische Identitätsprüfungsanforderungen zu melden. |
 | [Benachrichtigungen](#notifications) | Aktivieren Sie Benachrichtigungen für Ereignisse vom MFA-Server. |
-| [OATH-Token](concept-authentication-methods.md#oath-tokens) | Wird in Cloud-basierten Azure MFA-Umgebungen verwendet, um OATH-Token für Benutzer zu verwalten. |
+| [OATH-Token](concept-authentication-oath-tokens.md) | Wird in Cloud-basierten Azure MFA-Umgebungen verwendet, um OATH-Token für Benutzer zu verwalten. |
 | [Einstellungen für Telefonanruf](#phone-call-settings) | Konfigurieren Sie Einstellungen für Telefonanrufe und Ansagen für Cloud- und lokale Umgebungen. |
 | Anbieter | Hier werden alle vorhandenen Authentifizierungsanbieter angezeigt, die Sie möglicherweise mit Ihrem Konto verknüpft haben. Neue Authentifizierungsanbieter können ab 1. September 2018 nicht mehr erstellt werden. |
 
@@ -156,7 +156,7 @@ Wenn Sie in den USA nicht die MFA-Anrufer-ID konfiguriert haben, stammen Anrufe 
 * *+1 (877) 668 6536*
 
 > [!NOTE]
-> Wenn Azure Multi-Factor Authentication-Anrufe über das öffentliche Telefonnetz geleitet werden, laufen sie manchmal über einen Betreiber, der Anrufer-IDs nicht unterstützt. Aus diesem Grund ist die Anrufer-ID nicht garantiert, obwohl Azure Multi-Factor Authentication sie immer sendet.
+> Wenn Anrufe im Rahmen von Azure Multi-Factor Authentication über das öffentliche Telefonnetz erfolgen, werden sie manchmal über einen Netzbetreiber geroutet, der Anrufer-IDs nicht unterstützt. Aus diesem Grund gibt es keine Garantie für die Anrufer-ID, auch wenn Azure Multi-Factor Authentication sie immer sendet. Dies gilt sowohl für Telefonanrufe als auch für SMS-Nachrichten, die von Azure Multi-Factor Authentication bereitgestellt werden. Wenn Sie überprüfen müssen, ob eine Textnachricht von Azure Multi-Factor Authentication stammt, lesen Sie [Welche SMS-Kurzcodes werden für das Senden von Nachrichten verwendet?](multi-factor-authentication-faq.md#what-sms-short-codes-are-used-for-sending-sms-messages-to-my-users)
 
 Führen Sie die folgenden Schritte aus, um Ihre eigene Anrufer-ID-Nummer zu konfigurieren:
 
@@ -242,7 +242,10 @@ Das Feature _Vertrauenswürdige IPs_ von Azure MFA umgeht MFA-Eingabeaufforderun
 
 Wenn Ihre Organisation die NPS-Erweiterung bereitstellt, um MFA für lokale Anwendungen bereitzustellen, beachten Sie, dass als Quell-IP-Adresse immer die des NPS-Servers angezeigt wird, über den der Authentifizierungsversuch verläuft.
 
-| Azure AD-Mandantentyp | Featureoptionen für vertrauenswürdige IP-Adressen | |:--- |:--- |zweistufig | Verwaltet |**Festgelegter Bereich von IP-Adressen**: Administratoren geben einen Bereich von IP-Adressen an, die die mehrstufige Authentifizierung für Benutzer, die sich über das Intranet des Unternehmens anmelden, umgehen können. Es können maximal 50 vertrauenswürdige IP-Adressbereiche konfiguriert werden.| | Verbund |**Alle Verbundbenutzer**: Alle Verbundbenutzer, die sich von der Organisation aus anmelden, können die mehrstufige Authentifizierung umgehen. Die Benutzer umgehen die Überprüfung mithilfe eines durch Active Directory-Verbunddienste (AD FS) ausgestellten Anspruchs.<br/>**Bestimmter Bereich von IP-Adressen**: Administratoren geben einen Bereich von IP-Adressen an, die die mehrstufige Authentifizierung für Benutzer, die sich über das Intranet des Unternehmens anmelden, umgehen können. |
+| Azure AD-Mandantentyp | Optionen des Features „Vertrauenswürdige IPs“ |
+|:--- |:--- |
+| Verwaltet |**Bestimmter Bereich von IP-Adressen**: Administratoren geben einen Bereich von IP-Adressen an, die die mehrstufige Authentifizierung für Benutzer, die sich über das Intranet des Unternehmens anmelden, umgehen können. Es können maximal 50 vertrauenswürdige IP-Adressbereiche konfiguriert werden.|
+| Im Verbund |**Alle Verbundbenutzer**: Alle Verbundbenutzer, die sich von der Organisation aus anmelden, können die mehrstufige Authentifizierung umgehen. Die Benutzer umgehen die Überprüfung mithilfe eines durch Active Directory-Verbunddienste (AD FS) ausgestellten Anspruchs.<br/>**Bestimmter Bereich von IP-Adressen**: Administratoren geben einen Bereich von IP-Adressen an, die die mehrstufige Authentifizierung für Benutzer, die sich über das Intranet des Unternehmens anmelden, umgehen können. |
 
 Die Umgehung über vertrauenswürdige IPs funktioniert nur innerhalb des Intranets eines Unternehmens. Wenn Sie die Option **Alle Verbundbenutzer** ausgewählt haben und sich ein Benutzer von außerhalb des Unternehmensintranets anmeldet, muss sich der Benutzer mit der mehrstufige Authentifizierung authentifizieren. Dies ist auch der Fall, wenn der Benutzer einen AD FS-Anspruch vorweisen kann.
 

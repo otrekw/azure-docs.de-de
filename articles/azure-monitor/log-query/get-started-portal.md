@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 8917c73474b81ee76e6acdf8c6f274e962ee1215
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: b337065f125d12e309dd1f7fcc56c2af72b1c28c
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874230"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088356"
 ---
 # <a name="tutorial-get-started-with-log-analytics-queries"></a>Tutorial: Erste Schritte mit Log Analytics-Abfragen
 
@@ -42,7 +42,7 @@ Das *Schema* ist eine Sammlung von Tabellen, die unter einer logischen Kategorie
 
 Die Schematabellen werden auf der Registerkarte **Tabellen** des Log Analytics-Arbeitsbereichs angezeigt. Die Tabellen enthalten Spalten, deren Datentyp durch das Symbol neben dem Spaltennamen angezeigt wird. Beispielsweise enthält die Tabelle **Event** Textspalten wie **Computer** und numerische Spalten wie **EventCategory**.
 
-![Schema](media/get-started-portal/schema.png)
+![Screenshot: Seite „Protokolle“ im Azure-Portal mit einer neuen Abfrage. Der Bereich „Tabellen“ sowie „Computer“ und „EventCategory“ sind hervorgehoben.](media/get-started-portal/schema.png)
 
 ## <a name="write-and-run-basic-queries"></a>Schreiben und Ausführen einfacher Abfragen
 
@@ -120,7 +120,7 @@ So filtern Sie die Ergebnisse der `Event`-Abfrage durch explizites Filtern nach 
    
 1. Wählen Sie **Filtern** aus.
    
-   ![Filtern](media/get-started-portal/filter.png)
+   ![Screenshot: Tabelle mit Ergebnissen mit einem Kontextmenü zum Filtern der Ergebnisse nach EventLevelName](media/get-started-portal/filter.png)
 
 ## <a name="sort-group-and-select-columns"></a>Sortieren, Gruppieren und Auswählen von Spalten
 Um Abfrageergebnisse nach einer bestimmten Spalte (z. B. **TimeGenerated [UTC]** ) zu sortieren, klicken Sie auf die Spaltenüberschrift. Klicken Sie erneut auf die Überschrift, um zwischen auf- und absteigender Reihenfolge zu wechseln.
@@ -129,7 +129,7 @@ Um Abfrageergebnisse nach einer bestimmten Spalte (z. B. **TimeGenerated [UTC]*
 
 Eine weitere Möglichkeit zum Organisieren von Ergebnissen sind Gruppen. Um Ergebnisse nach einer bestimmten Spalte zu gruppieren, ziehen Sie die Spaltenüberschrift in die Leiste **Ziehen Sie eine Spaltenüberschrift hierher, um die Einträge nach dieser Spalte zu gruppieren** über der Ergebnistabelle. Wenn Sie Untergruppen erstellen möchten, ziehen Sie weitere Spalten in die obere Leiste. Sie können die Hierarchie und Sortierung der Gruppen und Untergruppen in der Leiste ändern.
 
-![Gruppen](media/get-started-portal/groups.png)
+![Screenshot: Abfrageergebnisse mit Untergruppen für EventLevelName und Computer](media/get-started-portal/groups.png)
 
 Um Spalten in den Ergebnissen aus- oder einzublenden, klicken Sie über der Tabelle auf **Spalten**, und wählen Sie dann in der Dropdownliste die gewünschten Spalten aus, bzw. heben Sie ihre Auswahl auf.
 

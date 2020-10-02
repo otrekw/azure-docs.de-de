@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c57ab03f72f0f59dd18a873ddc7cd98d3c36ef9c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 128303cb51b39db8442fdda71f949db17923bfa2
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356660"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088969"
 ---
 # <a name="azure-ad-connect-sync-service-shadow-attributes"></a>Schattenattribute für den Azure AD Connect-Synchronisierungsdienst
 Die meisten Attribute werden in Azure AD genauso wie in Ihrem lokalen Azure Directory dargestellt. Einige Attribute werden jedoch besonders verarbeitet, weshalb sich der Attributwert in Azure AD davon unterscheiden kann, was mit Azure AD Connect synchronisiert wird.
@@ -32,7 +32,7 @@ Für einige Attribute gibt es in Azure AD zwei Darstellungen. Sowohl der lokale 
 Die Schattenattribute können nicht im Azure-Portal oder mit PowerShell angezeigt werden. Doch das Verstehen des Konzepts hilft, Probleme in bestimmten Szenarien zu beheben, in denen das Attribut lokal und in der Cloud unterschiedliche Werte aufweist.
 
 Um das Verhalten besser zu verstehen, betrachten Sie dieses Beispiel für Fabrikam:  
-![Domänen](./media/how-to-connect-syncservice-shadow-attributes/domains.png)  
+![Der Screenshot zeigt das Active Directory-UPN-Suffix für mehrere Beispiele mit dem entsprechenden Azure AD-Domänenwert „Nicht hinzugefügt“, „Nicht überprüft“ und „Überprüft“.](./media/how-to-connect-syncservice-shadow-attributes/domains.png)  
 Das Unternehmen hat mehrere UPN-Suffixe in seinem lokalen Active Directory, von denen aber nur eines bestätigt ist.
 
 ### <a name="userprincipalname"></a>userPrincipalName

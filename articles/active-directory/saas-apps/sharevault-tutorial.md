@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/04/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: dcf67ce9c9e63fdbba8db565113cf3380e4142dd
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3f8a0576ff9ea128aae0d63d4879fe66ed2bf549
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548667"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660643"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sharevault"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit ShareVault
 
@@ -43,6 +43,9 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 * ShareVault unterstützt die **Just-In-Time**-Benutzerbereitstellung.
 * Nach dem Konfigurieren von ShareVault können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
 
+> [!NOTE]
+> Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
+
 ## <a name="adding-sharevault-from-the-gallery"></a>Hinzufügen von ShareVault aus dem Katalog
 
 Zum Konfigurieren der Integration von ShareVault in Azure AD müssen Sie ShareVault über den Katalog zur Liste der verwalteten SaaS-Apps hinzufügen.
@@ -54,7 +57,7 @@ Zum Konfigurieren der Integration von ShareVault in Azure AD müssen Sie ShareVa
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **ShareVault** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **ShareVault** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-sharevault"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für ShareVault
+## <a name="configure-and-test-azure-ad-sso-for-sharevault"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für ShareVault
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit ShareVault mithilfe einer Testbenutzerin mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in ShareVault eingerichtet werden.
 

@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 06/23/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: bc94f31887526f387413f78fe3270784a4e3bd88
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ba69b94514a0c1b59001011a64a4fb28e5e4a827
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525160"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606587"
 ---
 1. Klicken Sie auf der Portalseite für Ihr virtuelles WAN im Abschnitt **Konnektivität** auf **VPN-Standorte**, um die Seite mit VPN-Standorten zu öffnen.
 2. Klicken Sie auf der Seite **VPN sites** (VPN-Standorte) auf **+Create site** (+ Standort erstellen).
 
-   ![Grundlagen](./media/virtual-wan-tutorial-site-include/basics.png "Grundlagen")
+   ![Screenshot: VPN-Site-to-Site-Fenster mit geöffneten Bereich „VPN-Standort erstellen“](./media/virtual-wan-tutorial-site-include/basics.png "Grundlagen")
 3. Füllen Sie auf der Seite **VPN-Standort erstellen** auf der Registerkarte **Grundlagen** die folgenden Felder aus:
 
     * **Region**: Zuvor als Standort bezeichnet. Dies ist der Standort, an dem Sie diese Standortressource erstellen möchten.
@@ -29,7 +29,7 @@ ms.locfileid: "86525160"
     * **Hubs**: Der Hub, mit dem Sie Ihren Standort verbinden möchten. Ein Standort kann nur mit Hubs verbunden werden, die über ein VPN-Gateway verfügen. Wenn ein Hub nicht angezeigt wird, erstellen Sie zunächst ein VPN-Gateway in diesem Hub.
 4. Wählen Sie **Links** aus, um Informationen über die physischen Verbindungen an der Zweigstelle hinzuzufügen. Falls Sie über ein CPE-Gerät eines Virtual WAN-Partners verfügen, können Sie sich beim Partner erkundigen, ob diese Informationen im Rahmen des im Partnersystem eingerichteten Uploads von Zweigstelleninformationen an Azure übermittelt werden.
 
-   ![Links](./media/virtual-wan-tutorial-site-include/links.png "Links")
+   ![Screenshot: Bereich „VPN-Standort erstellen“ mit ausgewählter Registerkarte „Links“](./media/virtual-wan-tutorial-site-include/links.png "Links")
 
     * **Linkname**: Ein Name, den Sie für die physische Verbindung am VPN-Standort angegeben möchten. Beispiel: meinLink1.
     * **Anbietername**: Der Name des Anbieters der physischen Verbindung am VPN-Standort. Beispiel: ATT, Verizon.

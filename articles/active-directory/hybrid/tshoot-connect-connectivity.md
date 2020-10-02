@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 7bc39e409d0ac10e41fae58c5e5216f386427e30
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 897c0f3c51d6d9bea1f90a66ccf50aa51e22f118
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541735"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088305"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Problembehebung bei Azure AD-Konnektivitätsproblemen
 Dieser Artikel erklärt, wie die Konnektivität zwischen Azure AD Connect und Azure AD funktioniert und wie Konnektivitätsprobleme behoben werden können. Diese Probleme können insbesondere in einer Umgebung mit einem Proxyserver auftreten.
@@ -33,7 +33,7 @@ Azure AD Connect verwendet zur Authentifizierung die moderne Authentifizierung (
 In diesem Artikel zeigen wir Ihnen, wie Fabrikam durch seinen Proxy mit Azure AD verbunden wird. Der Proxyserver heißt fabrikamproxy und verwendet Port 8080.
 
 Sie müssen zunächst sicherstellen, dass [**machine.config**](how-to-connect-install-prerequisites.md#connectivity) ordnungsgemäß konfiguriert ist und der **Microsoft Azure AD-Synchronisierungsdienst** nach der Aktualisierung der Datei „machine.config“ neu gestartet wurde.
-![machineconfig](./media/tshoot-connect-connectivity/machineconfig.png)
+![Screenshot mit einem Teil der Datei „machine.config“.](./media/tshoot-connect-connectivity/machineconfig.png)
 
 > [!NOTE]
 > In einigen Nicht-Microsoft-Blogs ist dokumentiert, dass Änderungen stattdessen an „miiserver.exe.config“ vorgenommen werden sollen. Diese Datei wird jedoch mit jeder Aktualisierung überschrieben. Selbst wenn das System nach der Erstinstallation funktionieren sollte, ist das nach der ersten Aktualisierung nicht mehr der Fall. Daher wird empfohlen, stattdessen „machine.config“ zu aktualisieren.
@@ -60,7 +60,7 @@ Die folgenden Probleme sind die häufigsten Fehler, die im Installations-Assiste
 
 ### <a name="the-installation-wizard-has-not-been-correctly-configured"></a>Der Installations-Assistent wurde nicht richtig konfiguriert
 Dieser Fehler tritt auf, wenn der Assistent den Proxy selbst nicht erreichen kann.
-![nomachineconfig](./media/tshoot-connect-connectivity/nomachineconfig.png)
+![Screenshot mit dem Fehler „Die Anmeldeinformationen können nicht überprüft werden“.](./media/tshoot-connect-connectivity/nomachineconfig.png)
 
 * Falls dieser Fehler angezeigt wird, überprüfen Sie, ob [machine.config](how-to-connect-install-prerequisites.md#connectivity) richtig konfiguriert wurde.
 * Falls dies in Ordnung ist, befolgen Sie die Schritte zur [Überprüfung der Proxykonnektivität](#verify-proxy-connectivity) , um zu sehen, ob die Probleme außerhalb des Assistenten ebenfalls auftreten.
@@ -225,14 +225,14 @@ Wird als „Unerwarteter Fehler“ im Installations-Assistenten angezeigt. Dies 
 Ab Build 1.1.105.0 (veröffentlicht im Februar 2016) wurde der Anmelde-Assistent eingestellt. Dieser Abschnitt und die Konfiguration sind eigentlich nicht mehr erforderlich, werden aber als Referenz beibehalten.
 
 Damit der Assistent für einmaliges Anmelden funktioniert, muss winhttp konfiguriert werden. Diese Konfiguration kann mit [**netsh**](how-to-connect-install-prerequisites.md#connectivity) durchgeführt werden.
-![netsh](./media/tshoot-connect-connectivity/netsh.png)
+![Screenshot mit einem Eingabeaufforderungsfenster, in dem das netsh-Tool zum Festlegen eines Proxys ausgeführt wird.](./media/tshoot-connect-connectivity/netsh.png)
 
 ### <a name="the-sign-in-assistant-has-not-been-correctly-configured"></a>Der Anmelde-Assistent wurde nicht richtig konfiguriert
 Dieser Fehler tritt auf, wenn der Anmelde-Assistent den Proxy nicht erreichen kann oder der Proxy die Anfrage nicht zulässt.
-![nonetsh](./media/tshoot-connect-connectivity/nonetsh.png)
+![Screenshot mit dem Fehler „Die Anmeldeinformationen können nicht überprüft werden. Überprüfen Sie die Netzwerkkonnektivität und die Firewall- oder Proxyeinstellungen“.](./media/tshoot-connect-connectivity/nonetsh.png)
 
 * Falls dieser Fehler angezeigt wird, prüfen Sie die Proxykonfiguration in [netsh](how-to-connect-install-prerequisites.md#connectivity).
-  ![netshshow](./media/tshoot-connect-connectivity/netshshow.png)
+  ![Screenshot mit einem Eingabeaufforderungsfenster, in dem das netsh-Tool ausgeführt wird, um die Proxykonfiguration anzuzeigen.](./media/tshoot-connect-connectivity/netshshow.png)
 * Falls dies in Ordnung ist, befolgen Sie die Schritte zur [Überprüfung der Proxykonnektivität](#verify-proxy-connectivity) , um zu sehen, ob die Probleme außerhalb des Assistenten ebenfalls auftreten.
 
 ## <a name="next-steps"></a>Nächste Schritte

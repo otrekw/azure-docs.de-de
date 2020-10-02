@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b7e394c4227be9ead491fe77457b466b1f62468
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 4543a46c9362ac6d20cc7597de9f59c1a7520163
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279328"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90600795"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>In vier Schritten zu einem sicheren Identitätsfundament mit Azure Active Directory
 
@@ -46,7 +46,7 @@ Azure AD ermöglicht Administratoren das [Hinzufügen von Anwendungen](../manag
 Nachdem Anwendungen dem Azure AD-Katalog hinzugefügt wurden, können Benutzer die ihnen zugewiesenen Apps anzeigen und suchen. Sie können ggf. auch weitere Apps anfordern. Azure AD bietet [mehrere Methoden](../manage-apps/end-user-experiences.md) für den Zugriff auf Apps durch Benutzer:
 
 * Zugriffsbereich/Meine Apps
-* Office 365-App-Startfeld
+* Microsoft 365-App-Launcher
 * Direkte Anmeldung bei Verbund-Apps
 * Links für die direkte Anmeldung
 
@@ -115,7 +115,7 @@ Organisationen mit lokalem Active Directory sollten ihr Verzeichnis mit Azure A
 
 Die einfachste und empfohlene Methode zum Aktivieren von Cloudauthentifizierung für lokale Verzeichnisobjekte in Azure AD stellt das Aktivieren der [Kennworthashsynchronisierung](./how-to-connect-password-hash-synchronization.md) (Password Hash Synchronization, PHS) dar. Einige Organisationen können auch das Aktivieren der [Pass-Through-Authentifizierung](./how-to-connect-pta-quick-start.md) (PTA) in Betracht ziehen.
 
-Sie sollten jedoch sowohl bei PHS als auch bei PTA nicht vergessen, das [nahtlose einmalige Anmelden](./how-to-connect-sso.md) zu aktivieren, damit Benutzer auf Cloud-Apps zugreifen können, ohne ständig ihren Benutzernamen und ihr Kennwort in der App eingeben zu müssen, wenn sie Geräte mit Windows 7 oder 8 in Ihrem Unternehmensnetzwerk verwenden. Ohne einmaliges Anmelden müssen sich die Benutzer anwendungsspezifische Kennwörter merken und sich für jede Anwendung anmelden. Ebenso müssen IT-Mitarbeiter Benutzerkonten für jede Anwendung erstellen und aktualisieren, z. B. Office 365, Box oder Salesforce. Benutzer müssen sich ihre Kennwörter merken und außerdem Zeit für die Anmeldung bei jeder Anwendung aufbringen. Ein standardisiertes Verfahren für das einmalige Anmelden im gesamten Unternehmen ist nicht nur für eine optimale Benutzererfahrung wichtig, sondern auch für das Verringern von Risiken, das Erstellen von Berichten und die Governance.
+Sie sollten jedoch sowohl bei PHS als auch bei PTA nicht vergessen, das [nahtlose einmalige Anmelden](./how-to-connect-sso.md) zu aktivieren, damit Benutzer auf Cloud-Apps zugreifen können, ohne ständig ihren Benutzernamen und ihr Kennwort in der App eingeben zu müssen, wenn sie Geräte mit Windows 7 oder 8 in Ihrem Unternehmensnetzwerk verwenden. Ohne einmaliges Anmelden müssen sich die Benutzer anwendungsspezifische Kennwörter merken und sich für jede Anwendung anmelden. Ebenso müssen IT-Mitarbeiter Benutzerkonten für jede Anwendung (z. B. Microsoft 365, Box und Salesforce) erstellen und aktualisieren. Benutzer müssen sich ihre Kennwörter merken und außerdem Zeit für die Anmeldung bei jeder Anwendung aufbringen. Ein standardisiertes Verfahren für das einmalige Anmelden im gesamten Unternehmen ist nicht nur für eine optimale Benutzererfahrung wichtig, sondern auch für das Verringern von Risiken, das Erstellen von Berichten und die Governance.
 
 Falls Organisationen bereits AD FS oder einen anderen lokalen Authentifizierungsanbieter nutzen, können sie durch einen Umstieg auf Azure AD als Identitätsanbieter die Komplexität verringern und die Verfügbarkeit steigern. Sofern nicht spezifische Anwendungsfälle die Verwendung eines Verbunds erforderlich machen, wird das Migrieren von der Verbundauthentifizierung zu PHS und nahtlosem einmaligem Anmelden oder PTA und nahtlosem einmaligem Anmelden empfohlen. Sie profitieren damit von einem geringeren lokalen Aufwand und mehr Flexibilität, die die Cloud durch verbesserte Benutzerfunktionen bietet. Weitere Informationen finden Sie unter [Migrieren vom Verbund zur Kennworthashsynchronisierung für Azure Active Directory](./plan-migrate-adfs-password-hash-sync.md).
 
@@ -156,7 +156,7 @@ Das Zuweisen von Benutzern zu Anwendungen erfolgt am besten mithilfe von Gruppen
 * Attributbasiert mithilfe dynamischer Gruppenmitgliedschaften
 * Delegierung an App-Besitzer
 
-Azure AD bietet die Möglichkeit, den Zugriffs auf Ressourcen mithilfe von Sicherheitsgruppen und Office 365-Gruppen zu verwalten. Diese Gruppen können von einem Gruppenbesitzer verwaltet werden, der Mitgliedschaftsanforderungen genehmigen oder ablehnen und die Steuerung der Gruppenmitgliedschaft delegieren kann. Diese als [Self-Service-Gruppenverwaltung](../users-groups-roles/groups-self-service-management.md) bezeichnete Funktion spart Zeit, da sie Gruppenbesitzern, denen keine Administratorrolle zugewiesen ist, ermöglicht, Gruppen zu erstellen und zu verwalten, ohne dass Administratoren ihre Anforderungen verarbeiten müssen.
+Azure AD bietet die Möglichkeit, den Zugriff auf Ressourcen mithilfe von Sicherheitsgruppen und erstellen und Microsoft 365-Gruppen zu verwalten. Diese Gruppen können von einem Gruppenbesitzer verwaltet werden, der Mitgliedschaftsanforderungen genehmigen oder ablehnen und die Steuerung der Gruppenmitgliedschaft delegieren kann. Diese als [Self-Service-Gruppenverwaltung](../users-groups-roles/groups-self-service-management.md) bezeichnete Funktion spart Zeit, da sie Gruppenbesitzern, denen keine Administratorrolle zugewiesen ist, ermöglicht, Gruppen zu erstellen und zu verwalten, ohne dass Administratoren ihre Anforderungen verarbeiten müssen.
 
 ## <a name="step-4---operationalize-your-insights"></a>Schritt 4: Operationalisieren Ihrer Erkenntnisse
 

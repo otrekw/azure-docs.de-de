@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5536c3c427e5b6225d81d649722d8af48c23091
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 161b02ec962df5c5e1c8dee7e124ef78b3ca4db3
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948452"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601978"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Best Practices für den bedingten Zugriff in Azure Active Directory
 
@@ -97,13 +97,13 @@ Bei jeder Anmeldung werden von Azure Active Directory alle Richtlinien ausgewert
 
 Ja, Sie können Exchange ActiveSync in einer Richtlinie für bedingten Zugriff verwenden.
 
-Einige Cloud-Apps wie SharePoint Online und Exchange Online unterstützen auch ältere Authentifizierungsprotokolle. Wenn eine Client-App mit einem Legacyauthentifizierungsprotokoll auf eine Cloud-App zugreifen kann, ist es Azure AD nicht möglich, eine Richtlinie für bedingten Zugriff für diesen Zugriffsversuch zu erzwingen. Um zu verhindern, dass eine Client-App die Erzwingung von Richtlinien umgeht, sollten Sie überprüfen, ob es möglich ist, für die betroffenen Cloud-Apps nur die moderne Authentifizierung zu aktivieren.
+Einige Cloud-Apps wie SharePoint und Exchange Online unterstützen auch ältere Authentifizierungsprotokolle. Wenn eine Client-App mit einem Legacyauthentifizierungsprotokoll auf eine Cloud-App zugreifen kann, ist es Azure AD nicht möglich, eine Richtlinie für bedingten Zugriff für diesen Zugriffsversuch zu erzwingen. Um zu verhindern, dass eine Client-App die Erzwingung von Richtlinien umgeht, sollten Sie überprüfen, ob es möglich ist, für die betroffenen Cloud-Apps nur die moderne Authentifizierung zu aktivieren.
 
-### <a name="how-should-you-configure-conditional-access-with-office-365-apps"></a>Wie sollten Sie den bedingten Zugriff für Office 365-Apps konfigurieren?
+### <a name="how-should-you-configure-conditional-access-with-microsoft-365-apps"></a>Wie muss der bedingte Zugriff für Microsoft 365-Apps konfiguriert werden?
 
-Da Office 365-Apps miteinander verbunden sind, empfiehlt es sich, häufig verwendete Apps beim Erstellen von Richtlinien gemeinsam zuzuweisen.
+Da Microsoft 365-Apps miteinander verbunden sind, empfiehlt es sich, häufig verwendete Apps beim Erstellen von Richtlinien gemeinsam zuzuweisen.
 
-Zu den gängigen miteinander verbundenen Anwendungen gehören Microsoft Flow, Microsoft Planner, Microsoft Teams, Office 365 Exchange Online, Office 365 SharePoint Online und Office 365 Yammer.
+Zu den gängigen miteinander verbundenen Anwendungen gehören Microsoft Flow, Microsoft Planner, Microsoft Teams, Exchange Online, SharePoint und Yammer.
 
 Bei Richtlinien, die Benutzerinteraktionen erfordern, wie z. B. die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA), ist dies wichtig, wenn der Zugriff am Anfang einer Sitzung oder Aufgabe gesteuert wird. Andernfalls können Benutzer einige Aufgaben in einer App nicht ausführen. Wenn beispielsweise auf nicht verwalteten Geräten die mehrstufige Authentifizierung für den Zugriff auf SharePoint, aber nicht für den Zugriff auf die E-Mail-App erforderlich ist, können Benutzer in ihrer E-Mail-App keine SharePoint-Dateien an eine Nachricht anfügen. Weitere Informationen finden Sie im Artikel [Was sind Dienstabhängigkeiten beim bedingten Azure Active Directory-Zugriff?](service-dependencies.md)
 

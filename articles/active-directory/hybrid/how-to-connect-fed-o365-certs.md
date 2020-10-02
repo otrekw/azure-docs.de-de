@@ -1,6 +1,6 @@
 ---
-title: Zertifikaterneuerung für Office 365- und Azure AD-Benutzer | Microsoft-Dokumentation
-description: In diesem Artikel wird für Office 365-Benutzer erläutert, wie Probleme mit E-Mails behoben werden, die sie zum Erneuern eines Zertifikats auffordern.
+title: Zertifikaterneuerung für Microsoft 365- und Azure AD-Benutzer | Microsoft-Dokumentation
+description: In diesem Artikel wird Microsoft 365-Benutzern erläutert, wie sie Probleme mit E-Mails beheben können, die sie zum Erneuern eines Zertifikats auffordern.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,14 +16,14 @@ ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 491c0aef74b44c0452b4d8d002a81928d80f360b
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 78dcd9d020923251439a05316569b559c19057d1
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89276438"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661458"
 ---
-# <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Erneuern von Verbundzertifikaten für Office 365 und Azure Active Directory
+# <a name="renew-federation-certificates-for-microsoft-365-and-azure-active-directory"></a>Erneuern von Verbundzertifikaten für Microsoft 365 und Azure Active Directory
 ## <a name="overview"></a>Übersicht
 Damit ein erfolgreicher Verbund zwischen Azure Active Directory (Azure AD) und Active Directory-Verbunddienste (AD FS) eingerichtet werden kann, müssen die Zertifikate, die AD FS zum Signieren der Sicherheitstoken für Azure AD verwendet, mit den in Azure AD konfigurierten Werten übereinstimmen. Jede fehlende Übereinstimmung kann zu einem Bruch der Vertrauensstellung führen. Azure AD stellt sicher, dass die Informationen bei der Bereitstellung von AD FS und einem Webanwendungsproxy (für Extranetzugriff) synchron gehalten werden.
 
@@ -34,7 +34,7 @@ Dieser Artikel enthält weitere Informationen zum Verwalten der Tokensignaturzer
 * Sie verwenden einen externen Identitätsanbieter.
 
 ## <a name="default-configuration-of-ad-fs-for-token-signing-certificates"></a>Standardkonfiguration von AD FS für Tokensignaturzertifikate
-Bei Tokensignatur- und Tokenentschlüsselungszertifikaten handelt es sich in der Regel um selbstsignierte Zertifikate, die ein Jahr lang gültig sind. AD FS enthält standardmäßig einen automatischen Erneuerungsprozess mit der Bezeichnung **AutoCertificateRollover**. Wenn Sie AD FS 2.0 oder höher verwenden, aktualisieren Office 365 und Azure AD das Zertifikat automatisch, bevor es abläuft.
+Bei Tokensignatur- und Tokenentschlüsselungszertifikaten handelt es sich in der Regel um selbstsignierte Zertifikate, die ein Jahr lang gültig sind. AD FS enthält standardmäßig einen automatischen Erneuerungsprozess mit der Bezeichnung **AutoCertificateRollover**. Wenn Sie AD FS 2.0 oder höher verwenden, aktualisieren Microsoft 365 und Azure AD das Zertifikat automatisch, bevor es abläuft.
 
 ### <a name="renewal-notification-from-the-microsoft-365-admin-center-or-an-email"></a>Verlängerungsbenachrichtigung aus dem Microsoft 365 Admin-Center oder per E-Mail
 > [!NOTE]
@@ -135,7 +135,7 @@ Sie können die Tokensignaturzertifikate auch manuell signieren. Beispielsweise 
 * Bei den Tokensignaturzertifikaten handelt es sich nicht um selbstsignierte Zertifikate. Die häufigste Ursache hierfür ist, dass Ihre Organisation AD FS-Zertifikate verwaltet, die von einer Organisationszertifizierungsstelle registriert werden.
 * Die Netzwerksicherheit lässt nicht zu, dass die Verbundmetadaten öffentlich zugänglich sind.
 
-In diesen Szenarien müssen Sie bei jeder Aktualisierung der Tokensignaturzertifikate auch die Office 365-Domäne mithilfe des PowerShell-Befehls „Update-MsolFederatedDomain“ aktualisieren.
+In diesen Szenarien müssen Sie bei jeder Aktualisierung der Tokensignaturzertifikate auch die Microsoft 365-Domäne mithilfe des PowerShell-Befehls „Update-MsolFederatedDomain“ aktualisieren.
 
 ### <a name="step-1-ensure-that-ad-fs-has-new-token-signing-certificates"></a>Schritt 1: Sicherstellen, dass AD FS über neue Tokensignaturzertifikate verfügt
 **Nicht standardmäßige Konfiguration**
@@ -162,8 +162,8 @@ Wenn **AutoCertificateRollover** auf **True** festgelegt ist, aber Ihre Verbundm
 
 Nun sollten zwei Zertifikate aufgeführt werden, bei denen das **NotAfter**-Datum in etwa ein Jahr in der Zukunft liegt und bei dem der **IsPrimary**-Wert **False** lautet.
 
-### <a name="step-2-update-the-new-token-signing-certificates-for-the-office-365-trust"></a>Schritt 2: Aktualisieren der neuen Tokensignaturzertifikate für die Office 365-Vertrauensstellung
-Aktualisieren Sie Office 365 wie folgt mit den neuen Tokensignaturzertifikaten für die Vertrauensstellung:
+### <a name="step-2-update-the-new-token-signing-certificates-for-the-microsoft-365-trust"></a>Schritt 2: Aktualisieren der neuen Tokensignaturzertifikate für die Microsoft 365-Vertrauensstellung
+Aktualisieren Sie Microsoft 365 wie folgt mit den neuen Tokensignaturzertifikaten für die Vertrauensstellung.
 
 1. Öffnen Sie das Microsoft Azure Active Directory-Modul für Windows PowerShell.
 2. Führen Sie $cred=Get-Credential aus. Wenn Sie dieses Cmdlet zur Eingabe von Anmeldeinformationen auffordert, geben Sie die Anmeldeinformationen Ihres Clouddienstadministrators ein.

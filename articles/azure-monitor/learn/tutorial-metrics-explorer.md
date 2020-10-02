@@ -6,12 +6,12 @@ ms.author: bwren
 ms.subservice: metrics
 ms.topic: tutorial
 ms.date: 03/09/2020
-ms.openlocfilehash: d8f72471dd3109bf584d18f032ec2f4d949a4993
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 72f90918afa275e56528016539ecb2eec93d5db0
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79082811"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090090"
 ---
 # <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>Tutorial: Erstellen eines Metrikdiagramms in Azure Monitor
 Mit dem Metrik-Explorer – einem Azure Monitor-Feature im Azure-Portal – können Sie auf der Grundlage von Metrikwerten Diagramme erstellen, Trends visuell korrelieren sowie Spitzen und Einbrüche bei Metrikwerten untersuchen. Verwenden Sie den Metrik-Explorer, um die Integrität und Auslastung Ihrer Azure-Ressourcen zu untersuchen oder um Diagramme auf der Grundlage benutzerdefinierter Metriken zu zeichnen. 
@@ -52,7 +52,7 @@ Sie können den Metrik-Explorer entweder über das Menü „Azure Monitor“ ode
 
 4. Ändern Sie optional unter **Aggregation** die Metrikaggregation. Dadurch wird definiert, wie die Metrikwerte im Rahmen der Zeitgranularität für das Diagramm aggregiert werden. Wenn die Zeitgranularität also beispielsweise auf 15 Minuten und die Aggregation auf „Summe“ festgelegt ist, ist jeder Punkt im Diagramm die Summe aller gesammelten Werte innerhalb des jeweiligen 15-minütigen Segments.
 
-    ![Diagramm](media/tutorial-metrics-explorer/chart.png)
+    ![Screenshot: Diagramm mit dem Titel „Sum Ingress for contosoretailweb“ (Eingangssumme für contosoretailweb)](media/tutorial-metrics-explorer/chart.png)
 
 5. Klicken Sie auf **Metrik hinzufügen**, und wiederholen Sie diese Schritte, wenn mehrere Metriken im gleichen Diagramm angezeigt werden sollen. Wählen Sie die Schaltfläche **Neues Diagramm** aus, wenn Sie mehrere Diagramme in einer einzelnen Ansicht erhalten möchten.
 

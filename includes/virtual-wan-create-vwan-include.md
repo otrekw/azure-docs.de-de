@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/09/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 56f79bf38b627f80d73b59dbbfbb73dddd809458
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5c9c8fa8099848eec09e689bf9491f71f378e9e3
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525162"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606288"
 ---
 Navigieren Sie in einem Browser zum Azure-Portal, und melden Sie sich mit Ihrem Azure-Konto an.
 
@@ -21,7 +21,7 @@ Navigieren Sie in einem Browser zum Azure-Portal, und melden Sie sich mit Ihrem 
 1. Wählen Sie in den Ergebnissen **Virtual WAN** aus. Klicken Sie auf der Seite „Virtual WAN“ auf **Erstellen**, um die Seite „WAN erstellen“ zu öffnen.
 1. Füllen Sie auf der Seite **WAN erstellen** auf der Registerkarte **Grundlagen** die folgenden Felder aus:
 
-   :::image type="content" source="./media/virtual-wan-create-vwan-include/basics.png" alt-text="Grundlagen":::
+   :::image type="content" source="./media/virtual-wan-create-vwan-include/basics.png" alt-text="Screenshot: Bereich „WAN erstellen“ mit ausgewählter Registerkarte „Grundlagen“":::
 
    * **Abonnement**: Wählen Sie das Abonnement aus, das Sie verwenden möchten.
    * **Ressourcengruppe**: Erstellen Sie eine neue Ressourcengruppe, oder verwenden Sie eine vorhandene.

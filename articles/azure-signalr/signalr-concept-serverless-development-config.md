@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
 ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 0b5056f221fdd6036e5f6dff3d69a21c3a2dc27e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: ce42c0ec75ebed52311fe6aa026f794d6c2f7584
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88928563"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89513938"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Azure Functions-Entwicklung und -Konfiguration mit Azure SignalR Service
 
@@ -51,7 +51,9 @@ Informationen zum Erstellen eines authentifizierten Tokens finden Sie unter [Ver
 
 Verwenden Sie die *SignalR Trigger*-Bindung, um von SignalR Service gesendete Nachrichten zu verarbeiten. Die Auslösung ist möglich, wenn Clients Nachrichten senden oder wenn eine Clientverbindung hergestellt oder getrennt wird.
 
-Weitere Informationen finden Sie in der [Referenz zu *SignalR Trigger*-Bindungen](../azure-functions/functions-bindings-signalr-service-trigger.md)
+Weitere Informationen finden Sie in der [Referenz zu *SignalR Trigger*-Bindungen](../azure-functions/functions-bindings-signalr-service-trigger.md).
+
+Außerdem müssen Sie den Funktionsendpunkt als Upstream konfigurieren, damit der Dienst die Funktion auslöst, wenn eine Nachricht vom Client vorliegt. Weitere Informationen zum Konfigurieren von Upstream finden Sie in diesem [Dokument](concept-upstream.md).
 
 ### <a name="sending-messages-and-managing-group-membership"></a>Senden von Nachrichten und Verwalten der Gruppenmitgliedschaft
 
@@ -109,7 +111,7 @@ Alle Funktionen, die das klassenbasierte Modell nutzen sollen, müssen die Metho
 
 ### <a name="define-hub-method"></a>Definieren der Hubmethode
 
-Alle Hubmethoden **müssen** über ein `[SignalRTrigger]`-Attribut verfügen und **müssen** einen parameterlosen Konstruktor verwenden. Anschließend wird der **Methodenname** als Parameter**ereignis** behandelt.
+Alle Hubmethoden **müssen** über das Argument `InvocationContext` verfügen, das um das Attribut `[SignalRTrigger]` ergänzt sein muss, und einen parameterlosen Konstruktor verwenden. Anschließend wird der **Methodenname** als Parameter**ereignis** behandelt.
 
 Standardmäßig ist `category=messages` (mit Ausnahme des Methodennamens)gleich einem der folgenden Namen:
 
@@ -202,7 +204,11 @@ Weitere Informationen zur Verwendung des SignalR-Client-SDK finden Sie in der Do
 
 ### <a name="sending-messages-from-a-client-to-the-service"></a>Senden von Nachrichten von einem Client an den Dienst
 
-Das SignalR-SDK ermöglicht Clientanwendungen zwar das Aufrufen von Back-End-Logik in einem SignalR-Hub, diese Funktion wird bei Verwendung von SignalR Service mit Azure Functions jedoch noch nicht unterstützt. Verwenden Sie HTTP-Anforderungen, um Azure Functions aufzurufen.
+Wenn Sie für Ihre SignalR-Ressource [Upstream](concept-upstream.md) konfiguriert haben, können Sie Nachrichten vom Client mithilfe beliebiger SignalR-Clients an Ihre Azure Functions senden. Beispiel in JavaScript:
+
+```javascript
+connection.send('method1', 'arg1', 'arg2');
+```
 
 ## <a name="azure-functions-configuration"></a>Azure Functions-Konfiguration
 

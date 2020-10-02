@@ -407,7 +407,7 @@
           href: ps-template.md
         - name: Herstellen einer Verbindung mit einem virtuellen Computer
           href: connect-logon.md
-        - name: Herstellen einer Verbindung mit virtuellen Linux-Computern
+        - name: SSH-Verbindung mit virtuellen Linux-Computern
           displayName: ssh keygen ssk-key putty
           items:
             - name: Im Portal
@@ -595,7 +595,7 @@
               href: disk-encryption-troubleshooting.md
             - name: Häufig gestellte Fragen zur Datenträgerverschlüsselung
               href: disk-encryption-faq.md
-            - name: 'Datenträgerverschlüsselung: vorherige Version (Azure AD)'
+            - name: 'Datenträgerverschlüsselung: vorherige Version'
               items:
                 - name: Übersicht
                   href: disk-encryption-overview-aad.md

@@ -6,15 +6,15 @@ author: msmbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
-ms.topic: overview
+ms.topic: reference
 ms.date: 07/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b469ea0d0a91cc4ca7f0602dffbcc63b31c60855
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 78d0f483bb18213fa7d6718f15dd77733a10049c
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588363"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069355"
 ---
 # <a name="whats-new-for-azure-key-vault"></a>Neuerungen für Azure Key Vault
 
@@ -36,6 +36,7 @@ Microsoft aktualisiert Azure-Dienste für die Verwendung von TLS-Zertifikaten au
 - Für Azure AD-Dienste (Azure Active Directory) wurde diese Umstellung am 7. Juli 2020 initiiert.
 - Alle neu erstellten TLS/SSL-Azure-Endpunkte enthalten aktualisierte Zertifikate, die mit den neuen Stammzertifizierungsstellen verkettet sind. 
 - Bereits vorhandene Azure-Endpunkte werden zwischen dem 13. August 2020 und dem 26. Oktober 2020 nach und nach umgestellt.
+- [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub) und [DPS](/azure/iot-dps/) verbleiben in der Baltimore CyberTrust Root-Zertifizierungsstelle, die Zwischenzertifizierungsstellen ändern sich jedoch. Klicken Sie [hier](https://techcommunity.microsoft.com/t5/internet-of-things/azure-iot-tls-changes-are-coming-and-why-you-should-care/ba-p/1658456), um ausführliche Informationen zu erhalten.
 
 > [!IMPORTANT]
 > Kunden müssen ihre Anwendungen nach dieser Änderung ggf. aktualisieren, um Konnektivitätsfehler beim Herstellen einer Verbindung mit Azure-Diensten zu vermeiden. 

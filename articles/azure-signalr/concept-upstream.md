@@ -6,16 +6,16 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: chenyl
-ms.openlocfilehash: be7736d0c90d1c384e15e8c7dee29d016b052dbd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3e317a87ba888fac3c069cc5327bd89c859e9de
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559439"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514236"
 ---
 # <a name="upstream-settings"></a>Upstreameinstellungen
 
-Upstream ist ein Feature, das es Azure SignalR Service ermöglicht, Nachrichten und Verbindungsereignisse an eine Reihe von Endpunkten im serverlosen Modus zu senden. Sie können Upstream verwenden, um eine Hubmethode von Clients im serverlosen Modus aufzurufen und Endpunkte benachrichtigen zu lassen, wenn Clientverbindungen hergestellt oder getrennt werden.
+Upstream ist eine Previewfunktion, die es Azure SignalR Service ermöglicht, Nachrichten und Verbindungsereignisse im serverlosen Modus an eine Reihe von Endpunkten zu senden. Sie können Upstream verwenden, um eine Hubmethode von Clients im serverlosen Modus aufzurufen und Endpunkte benachrichtigen zu lassen, wenn Clientverbindungen hergestellt oder getrennt werden.
 
 > [!NOTE]
 > Nur im serverlosen Modus können Upstreameinstellungen konfiguriert werden.
@@ -59,6 +59,10 @@ Sie können Regeln für *Hubregeln*, *Kategorieregeln* und *Ereignisregeln* sepa
 - Verwenden Sie ein Sternchen (*), um alle Ereignisse zu vergleichen.
 - Verwenden Sie ein Komma (,), um mehrere Ereignisse zu verknüpfen. Beispielsweise entspricht `connected, disconnected` den verbundenen und nicht verbundenen Ereignissen.
 - Verwenden Sie den vollständigen Namen des Ereignisses, um das Ereignis abzugleichen. Beispielsweise entspricht `connected` dem verbundenen Ereignis.
+
+> [!NOTE]
+> Wenn Sie Azure Functions und den [SignalR-Trigger](../azure-functions/functions-bindings-signalr-service-trigger.md) verwenden, macht SignalR-Trigger einen einzelnen Endpunkt im folgenden Format verfügbar: `https://<APP_NAME>.azurewebsites.net/runtime/webhooks/signalr?code=<API_KEY>`.
+> Sie können einfach die URL-Vorlage für diese URL konfigurieren.
 
 ### <a name="authentication-settings"></a>Authentifizierungseinstellungen
 
@@ -141,7 +145,7 @@ Content-Type: application/json
 
 Content-Type: `application/json`
 
-|Name  |type  |BESCHREIBUNG  |
+|Name  |Typ  |BESCHREIBUNG  |
 |---------|---------|---------|
 |Fehler |Zeichenfolge |Die Fehlermeldung einer geschlossenen Verbindung. Leer, wenn Verbindungen ohne Fehler geschlossen werden.|
 
@@ -149,7 +153,7 @@ Content-Type: `application/json`
 
 Content-Type: `application/json` oder `application/x-msgpack`
 
-|Name  |type  |BESCHREIBUNG  |
+|Name  |Typ  |BESCHREIBUNG  |
 |---------|---------|---------|
 |InvocationId |Zeichenfolge | Eine optionale Zeichenfolge, die eine Aufrufnachricht darstellt. Details finden Sie in den [Aufrufen](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocations).|
 |Ziel |Zeichenfolge | Dasselbe wie das Ereignis und das Ziel in einer [Aufrufnachricht](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding). |

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 393ed336018c7a0272c15adaa72633abd6b95d2f
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: cf03dffe82d611f10639af2a147bc2d9e9316621
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377198"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052773"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>So funktioniert's: Self-Service-Kennwortzurücksetzung in Azure AD
 
@@ -39,7 +39,7 @@ Ein Benutzer kann sein Kennwort über das [SSPR-Portal](https://aka.ms/sspr) zur
 
 Wenn ein Benutzer in einer Anwendung oder auf einer Seite auf den Link **Zugriff auf Ihr Konto nicht möglich** klickt oder direkt zu [https://aka.ms/sspr](https://passwordreset.microsoftonline.com) navigiert, wird die im SSPR-Portal angezeigte Sprache nach folgenden Kriterien ausgewählt:
 
-* Standardmäßig wird das Gebietsschema des Browsers verwendet, um die Self-Service-Kennwortzurücksetzung in der richtigen Sprache anzuzeigen. Die Benutzeroberfläche für die Kennwortzurücksetzung wurde in alle Sprachen lokalisiert, die von [Office 365 unterstützt werden](https://support.microsoft.com/office/what-languages-is-office-available-in-26d30382-9fba-45dd-bf55-02ab03e2a7ec).
+* Standardmäßig wird das Gebietsschema des Browsers verwendet, um die Self-Service-Kennwortzurücksetzung in der richtigen Sprache anzuzeigen. Die Benutzeroberfläche für die Kennwortzurücksetzung wurde in alle Sprachen lokalisiert, die [Microsoft 365 unterstützt](https://support.microsoft.com/office/what-languages-is-office-available-in-26d30382-9fba-45dd-bf55-02ab03e2a7ec).
 * Wenn Sie das SSPR-Portal in einer bestimmten Sprache verlinken möchten, müssen Sie `?mkt=` zusammen mit dem gewünschten Gebietsschema an die URL für die Kennwortzurücksetzung anfügen.
     * Wenn Sie beispielsweise das spanische Gebietsschema *es-us* angeben möchten, verwenden Sie `?mkt=es-us` - [https://passwordreset.microsoftonline.com/?mkt=es-us](https://passwordreset.microsoftonline.com/?mkt=es-us).
 
@@ -77,7 +77,7 @@ Bevor Benutzer ihr Kennwort mit dem SSPR zurücksetzen oder ändern können, mü
 
 Sie können diese Option aktivieren, damit Benutzer die Registrierung für den SSPR abschließen müssen, wenn sie sich mit Azure AD in einer Anwendung anmelden. Dieser Workflow schließt die folgenden Anwendungen ein:
 
-* Office 365
+* Microsoft 365
 * Azure-Portal
 * Anpassung des Zugriffsbereichs
 * Verbundanwendungen
@@ -226,7 +226,7 @@ Der SSPR ist äquivalent zu einer vom Administrator ausgelösten Kennwortzurück
 
 Das Zurücksetzen und Ändern von Kennwörtern wird von allen B2B-Konfigurationen (Business-to-Business) uneingeschränkt unterstützt. Das Zurücksetzen von B2B-Benutzerkennwörtern wird in den folgenden drei Fällen unterstützt:
 
-* **Benutzer aus einer Partnerorganisation mit einem vorhandenen Azure AD-Mandanten:** Falls die Organisation, mit der Sie eine Partnerschaft eingegangen sind, über einen bestehenden Azure AD-Mandanten verfügt, werden alle in diesem Mandanten aktivierten Richtlinien für die Kennwortzurücksetzung berücksichtigt. Damit die Kennwortzurücksetzung funktioniert, muss die Partnerorganisation nur sicherstellen, dass Azure AD SSPR aktiviert ist. Es fallen keine zusätzlichen Gebühren für Office 365-Kunden an.
+* **Benutzer aus einer Partnerorganisation mit einem vorhandenen Azure AD-Mandanten:** Falls die Organisation, mit der Sie eine Partnerschaft eingegangen sind, über einen bestehenden Azure AD-Mandanten verfügt, werden alle in diesem Mandanten aktivierten Richtlinien für die Kennwortzurücksetzung berücksichtigt. Damit die Kennwortzurücksetzung funktioniert, muss die Partnerorganisation nur sicherstellen, dass Azure AD SSPR aktiviert ist. Es fallen keine zusätzlichen Gebühren für Microsoft 365-Kunden an.
 * **Benutzer, die sich per Self-Service-Registrierung registriert haben:** Wenn die Organisation, mit der Sie eine Partnerschaft eingegangen sind, die [Self-Service-Registrierung](../users-groups-roles/directory-self-service-signup.md) für den Zugriff auf einen Mandanten verwendet, kann das Kennwort mithilfe der registrierten E-Mail-Adresse zurückgesetzt werden.
 * **B2B-Benutzer:** Alle neuen B2B-Benutzer, die mithilfe der neuen [Azure AD-B2B-Funktionen](../external-identities/what-is-b2b.md) erstellt werden, können ihre Kennwörter unter Verwendung der E-Mail-Adresse zurücksetzen, mit der sie sich im Rahmen des Einladungsprozesses registriert haben.
 

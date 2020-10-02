@@ -7,12 +7,12 @@ keywords: Änderung, Nachverfolgung, Änderungsnachverfolgung, Bestand, Automati
 ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 63fe36a51b69648039c3a16be4267fc0c72e8a58
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 05b99c7f010ad307956b70890ee45f649111b373
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185805"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530538"
 ---
 # <a name="troubleshoot-changes-on-an-azure-vm"></a>Problembehandlung bei Änderungen auf einem virtuellen Azure-Computer
 
@@ -220,7 +220,7 @@ Das Anzeigen von Änderungen im Azure-Portal kann praktisch sein, es ist jedoch 
 
 19. Wählen Sie für **Regel erstellen** die Option **E-Mail-Betreff** aus, und wählen Sie dann **Warnungsregel erstellen**. Die Warnung informiert Sie, wenn die Bereitstellung eines Updates erfolgreich war. Außerdem wird angegeben, welche Computer Teil der durchgeführten Updatebereitstellung waren. Die folgende Abbildung zeigt eine Beispiel-E-Mail, die bei Beendigung des W3SVC-Diensts eingeht.
 
-    ![email](./media/automation-tutorial-troubleshoot-changes/email.png)
+    ![Screenshot: E-Mail-Benachrichtigung, die bei Beendigung des W3SVC-Diensts eingeht](./media/automation-tutorial-troubleshoot-changes/email.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

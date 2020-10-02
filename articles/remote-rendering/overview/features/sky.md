@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/07/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f2a871e409761116182f67eb877f3727038fe0dc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 39e3b41d49ad06e5dbe5164809a6743da8dedae5
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013638"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613760"
 ---
 # <a name="sky-reflections"></a>Himmelsreflexionen
 
@@ -28,8 +28,8 @@ Die folgenden Bilder zeigen, was geschieht, wenn verschiedene Oberflächen nur m
 
 | Rauheit  | 0                                        | 0,25                                          | 0.5                                          | 0,75                                          | 1                                          |
 |:----------:|:----------------------------------------:|:---------------------------------------------:|:--------------------------------------------:|:---------------------------------------------:|:------------------------------------------:|
-| Nicht metallisch  | ![Dielektrikum0](media/dielectric-0.png)   | ![GreenPointPark](media/dielectric-0.25.png)  | ![GreenPointPark](media/dielectric-0.5.png)  | ![GreenPointPark](media/dielectric-0.75.png)  | ![GreenPointPark](media/dielectric-1.png)  |
-| Metallisch      | ![GreenPointPark](media/metallic-0.png)  | ![GreenPointPark](media/metallic-0.25.png)    | ![GreenPointPark](media/metallic-0.5.png)    | ![GreenPointPark](media/metallic-0.75.png)    | ![GreenPointPark](media/metallic-1.png)    |
+| Nicht metallisch  | ![Dielektrisch, Rauheit=0](media/dielectric-0.png)   | ![Dielektrisch, Rauheit=0,25](media/dielectric-0.25.png)  | ![Dielektrisch, Rauheit=0,5](media/dielectric-0.5.png)  | ![Dielektrisch, Rauheit=0,75](media/dielectric-0.75.png)  | ![Dielektrisch, Rauheit=1](media/dielectric-1.png)  |
+| Metallisch      | ![Metallisch, Rauheit=0](media/metallic-0.png)  | ![Metallisch, Rauheit=0,25](media/metallic-0.25.png)    | ![Metallisch, Rauheit=0,5](media/metallic-0.5.png)    | ![Metallisch, Rauheit=0,75](media/metallic-0.75.png)    | ![Metallisch, Rauheit=1](media/metallic-1.png)    |
 
 Weitere Informationen zum Belichtungsmodell finden Sie im Kapitel [Materialien](../../concepts/materials.md).
 
@@ -84,7 +84,7 @@ void ChangeEnvironmentMap(ApiHandle<AzureSession> session)
             }
             else
             {
-                printf("Texture loading failed!");
+                printf("Texture loading failed!\n");
             }
         });
 }
@@ -121,20 +121,25 @@ Azure Remote Rendering bietet einige integrierte Environment Maps, die immer ver
 
 |Bezeichner                         | BESCHREIBUNG                                              | Abbildung                                                      |
 |-----------------------------------|:---------------------------------------------------------|:-----------------------------------------------------------------:|
-|builtin://Autoshop                 | Vielfalt von Lichtstreifen, helle Innenraumgrundbeleuchtung    | ![Autoshop](media/autoshop.png)
-|builtin://BoilerRoom               | Helle Innenraum-Lichtszene, mehrere Fensterlichter      | ![BoilerRoom](media/boiler-room.png)
-|builtin://ColorfulStudio           | Unterschiedlich farbige Lichter in einer mittelhellen Innenraum-Lichtszene  | ![ColorfulStudio](media/colorful-studio.png)
-|builtin://Hangar                   | Mäßig helles Umgebungsflurlicht                     | ![SmallHangar](media/hangar.png)
-|builtin://IndustrialPipeAndValve   | Gedimmte Innenraum-Lichtszene mit einem Hell-Dunkel-Kontrast              | ![IndustrialPipeAndValve](media/industrial-pipe-and-valve.png)
-|builtin://Lebombo                  | Tagesumgebungslicht, Innenraum, helles Fensterlicht     | ![Lebombo](media/lebombo.png)
-|builtin://SataraNight              | Dunkler Nachthimmel und Boden mit vielen umgebenden Lichtern   | ![SataraNight](media/satara-night.png)
-|builtin://SunnyVondelpark          | Kontrast zwischen hellem Sonnenlicht und Schatten                      | ![SunnyVondelpark](media/sunny-vondelpark.png)
-|builtin://Syferfontein             | Klares Himmelslicht mit mäßiger Bodenbeleuchtung            | ![Syferfontein](media/syferfontein.png)
-|builtin://TearsOfSteelBridge       | Moderater Übergang zwischen Licht (Sonne) und Schatten                         | ![TearsOfSteelBridge](media/tears-of-steel-bridge.png)
-|builtin://VeniceSunset             | Licht des Sonnenuntergangs am Abend, fast Dämmerung                    | ![VeniceSunset](media/venice-sunset.png)
-|builtin://WhippleCreekRegionalPark | Helle, üppig grüne und weiße helle Töne, dunklerer Boden | ![WhippleCreekRegionalPark](media/whipple-creek-regional-park.png)
-|builtin://WinterRiver              | Tagsüber, helles Umgebungsbodenlicht                 | ![WinterRiver](media/winter-river.png)
-|builtin://DefaultSky               | Identisch mit TearsOfSteelBridge                               | ![DefaultSky](media/tears-of-steel-bridge.png)
+|builtin://Autoshop                 | Vielfalt von Lichtstreifen, helle Innenraumgrundbeleuchtung    | ![Autoshop-Skybox zum Beleuchten eines Objekts verwendet](media/autoshop.png)
+|builtin://BoilerRoom               | Helle Innenraum-Lichtszene, mehrere Fensterlichter      | ![BoilerRoom-Skybox zum Beleuchten eines Objekts verwendet](media/boiler-room.png)
+|builtin://ColorfulStudio           | Unterschiedlich farbige Lichter in einer mittelhellen Innenraum-Lichtszene  | ![ColorfulStudio-Skybox zum Beleuchten eines Objekts verwendet](media/colorful-studio.png)
+|builtin://Hangar                   | Mäßig helles Umgebungsflurlicht                     | ![SmallHangar-Skybox zum Beleuchten eines Objekts verwendet](media/hangar.png)
+|builtin://IndustrialPipeAndValve   | Gedimmte Innenraum-Lichtszene mit einem Hell-Dunkel-Kontrast              | ![IndustrialPipeAndValve-Skybox zum Beleuchten eines Objekts verwendet](media/industrial-pipe-and-valve.png)
+|builtin://Lebombo                  | Tagesumgebungslicht, Innenraum, helles Fensterlicht     | ![Lebombo-Skybox zum Beleuchten eines Objekts verwendet](media/lebombo.png)
+|builtin://SataraNight              | Dunkler Nachthimmel und Boden mit vielen umgebenden Lichtern   | ![SataraNight-Skybox zum Beleuchten eines Objekts verwendet](media/satara-night.png)
+|builtin://SunnyVondelpark          | Kontrast zwischen hellem Sonnenlicht und Schatten                      | ![SunnyVondelpark-Skybox zum Beleuchten eines Objekts verwendet](media/sunny-vondelpark.png)
+|builtin://Syferfontein             | Klares Himmelslicht mit mäßiger Bodenbeleuchtung            | ![Syferfontein-Skybox zum Beleuchten eines Objekts verwendet](media/syferfontein.png)
+|builtin://TearsOfSteelBridge       | Moderater Übergang zwischen Licht (Sonne) und Schatten                         | ![TearsOfSteelBridge-Skybox zum Beleuchten eines Objekts verwendet](media/tears-of-steel-bridge.png)
+|builtin://VeniceSunset             | Licht des Sonnenuntergangs am Abend, fast Dämmerung                    | ![VeniceSunset-Skybox zum Beleuchten eines Objekts verwendet](media/venice-sunset.png)
+|builtin://WhippleCreekRegionalPark | Helle, üppig grüne und weiße helle Töne, dunklerer Boden | ![WhippleCreekRegionalPark-Skybox zum Beleuchten eines Objekts verwendet](media/whipple-creek-regional-park.png)
+|builtin://WinterRiver              | Tagsüber, helles Umgebungsbodenlicht                 | ![WhiteRiver-Skybox zum Beleuchten eines Objekts verwendet](media/winter-river.png)
+|builtin://DefaultSky               | Identisch mit TearsOfSteelBridge                               | ![DefaultSky-Skybox zum Beleuchten eines Objekts verwendet](media/tears-of-steel-bridge.png)
+
+## <a name="api-documentation"></a>API-Dokumentation
+
+* [C# RemoteManager.SkyReflectionSettings-Eigenschaft](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.skyreflectionsettings)
+* [C++ RemoteManager::SkyReflectionSettings()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#skyreflectionsettings)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

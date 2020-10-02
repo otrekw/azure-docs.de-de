@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82e4cf561ced97acfee0953dcc667bbb500f293c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 15f4f5d9eea8f53a894289160df00a1c1d8d8048
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89394227"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601757"
 ---
 # <a name="continuous-access-evaluation"></a>Fortlaufende Zugriffsevaluierung
 
@@ -48,26 +48,26 @@ Die fortlaufende Zugriffsevaluierung wird implementiert, indem für Dienste wie 
 - Administrator sperrt explizit alle Aktualisierungstoken für einen Benutzer.
 - Azure AD Identity Protection hat ein erhöhtes Benutzerrisiko erkannt
 
-Dies ermöglicht ein Szenario, bei dem Benutzer innerhalb von wenigen Minuten nach einem dieser kritischen Ereignisse den Zugriff auf SharePoint Online-Dateien, E-Mails, Kalender oder Aufgaben der Organisation und Teams aus O365-Client-Apps verlieren. 
+Dies ermöglicht ein Szenario, bei dem Benutzer innerhalb von wenigen Minuten nach einem dieser kritischen Ereignisse den Zugriff auf SharePoint Online-Dateien, E-Mails, Kalender oder Aufgaben der Organisation und Teams aus Microsoft 365-Client-Apps verlieren. 
 
 ### <a name="conditional-access-policy-evaluation-preview"></a>Auswertung von Richtlinien für bedingten Zugriff (Vorschau)
 
 In Exchange und SharePoint können wichtige Richtlinien für bedingten Zugriff synchronisiert werden, sodass sie im Dienst selbst ausgewertet werden können.
 
-Dies ermöglicht ein Szenario, bei dem Benutzer unmittelbar nach Änderungen der Netzwerkadresse den Zugriff auf Dateien, E-Mails, Kalender oder Aufgaben der Organisation aus O365-Client-Apps oder SharePoint Online verlieren.
+Dies ermöglicht ein Szenario, bei dem Benutzer unmittelbar nach Änderungen der Netzwerkadresse den Zugriff auf Dateien, E-Mails, Kalender oder Aufgaben der Organisation aus Microsoft 365-Client-Apps oder SharePoint Online verlieren.
 
 > [!NOTE]
 > Dabei werden nicht alle Kombinationen aus App- und Ressourcenanbietern unterstützt. Siehe dazu die folgende Tabelle. Office bezieht sich auf Word, Excel und PowerPoint.
 
 | | Outlook Web | Outlook Win32 | Outlook iOS | Outlook Android | Outlook Mac |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| SharePoint Online | Unterstützt | Unterstützt | Nicht unterstützt | Nicht unterstützt | Unterstützt |
-| Exchange Online | Unterstützt | Unterstützt | Unterstützt | Unterstützt | Unterstützt |
+| **SharePoint Online** | Unterstützt | Unterstützt | Nicht unterstützt | Nicht unterstützt | Unterstützt |
+| **Exchange Online** | Unterstützt | Unterstützt | Unterstützt | Unterstützt | Unterstützt |
 
 | | Office-Web-Apps | Office Win32-Apps | Office für iOS | Office für Android | Office für Mac |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| SharePoint Online | Unterstützt | Unterstützt | Nicht unterstützt | Unterstützt | Unterstützt |
-| Exchange Online | Unterstützt | Unterstützt | Nicht unterstützt | Unterstützt | Unterstützt |
+| **SharePoint Online** | Unterstützt | Unterstützt | Nicht unterstützt | Unterstützt | Unterstützt |
+| **Exchange Online** | Unterstützt | Unterstützt | Nicht unterstützt | Unterstützt | Unterstützt |
 
 ### <a name="client-side-claim-challenge"></a>Clientseitige Anspruchsaufforderung
 

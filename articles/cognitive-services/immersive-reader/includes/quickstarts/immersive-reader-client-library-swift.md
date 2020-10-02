@@ -7,23 +7,22 @@ author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 05/20/2020
+ms.date: 09/14/2020
 ms.author: nitinme
-ms.openlocfilehash: 2455297cd9dd77d2b5f605bf36ed46b6240b3f4d
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.openlocfilehash: 7a298de40264a06e18aa4b7c77abfd622be4bb75
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89505386"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978290"
 ---
-Der [plastische Reader](https://www.onenote.com/learningtools) ist ein inklusiv konzipiertes Tool, das bewährte Techniken zur Verbesserung des Leseverständnisses implementiert.
+[Plastischer Reader](https://www.onenote.com/learningtools) ist ein inklusiv konzipiertes Tool, das bewährte Techniken implementiert, um das Leseverständnis von Leseanfängern, Sprachenlernenden und Personen mit Lernunterschieden, wie z. B. Dyslexie, zu verbessern. Sie können den plastischen Reader in Ihren Anwendungen verwenden, um Text zu isolieren, den Fokus zu verbessern, Bilder für häufig verwendete Wörter anzuzeigen, Wortarten hervorzuheben, markierten Text laut vorzulesen, Wörter und Ausdrücke in Echtzeit zu übersetzen und vieles mehr.
 
 In dieser Schnellstartanleitung erstellen Sie eine iOS-App von Grund auf neu und integrieren den plastischen Reader. Ein vollständiges Arbeitsbeispiel für diesen Schnellstart finden Sie [hier](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/ios).
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services/) erstellen, bevor Sie beginnen.
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
+* Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/cognitive-services)
 * [Xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12)
 * Eine Ressource des plastischen Readers, die für die Authentifizierung mit Azure Active Directory konfiguriert ist. Befolgen Sie [diese Anweisungen](../../how-to-create-immersive-reader.md) für die Einrichtung. Einige der hier erstellten Werte benötigen Sie bei der Konfiguration der Beispielprojekteigenschaften. Speichern Sie die Ausgabe Ihrer Sitzung zur späteren Verwendung in einer Textdatei.
 
@@ -31,21 +30,21 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Erstellen Sie ein neues Projekt in Xcode.
 
-![Neues Projekt](../../media/ios/xcode-create-project.png)
+![Neues Projekt: Swift](../../media/ios/xcode-create-project.png)
 
 Wählen Sie **Einzelansicht-App** aus.
 
-![Neue Einzelansicht-App](../../media/ios/xcode-single-view-app.png)
+![Neue Einzelansicht-App: Swift](../../media/ios/xcode-single-view-app.png)
 
 ## <a name="set-up-authentication"></a>Einrichten der Authentifizierung
 
 Klicken Sie im oberen Menü auf **Produkt > Schema > Schema bearbeiten...** .
 
-![Bearbeiten des Schemas](../../media/ios/quickstart-ios-edit-scheme.png)
+![Bearbeiten des Schemas: Swift](../../media/ios/quickstart-ios-edit-scheme.png)
 
 Klicken Sie in der Ansicht **Ausführen** auf die Registerkarte **Argumente**.
 
-![Bearbeiten des Schemas](../../media/ios/quickstart-ios-env-vars.png)
+![Bearbeiten der Schemaumgebungsvariablen: Swift](../../media/ios/quickstart-ios-env-vars.png)
 
 Fügen Sie im Abschnitt **Umgebungsvariablen** die folgenden Namen und Werte hinzu. Verwenden Sie dabei die Werte, die beim Erstellen der Ressource des plastischen Readers angegeben wurden.
 
@@ -557,19 +556,19 @@ function sendContentToReader(message) {
 
 Legen Sie in Xcode das Archivschema fest, indem Sie einen Simulator oder ein Geräteziel auswählen.
 
-![Archivschema](../../media/ios/xcode-archive-scheme.png)
+![Archivschema: Swift](../../media/ios/xcode-archive-scheme.png)
 
-![Auswählen des Ziels](../../media/ios/xcode-select-target.png)
+![Auswählen des Ziels: Swift](../../media/ios/xcode-select-target.png)
 
 Drücken Sie in Xcode **STRG+R**, oder klicken Sie auf die Wiedergabeschaltfläche, um das Projekt auszuführen. Die App sollte auf dem angegebenen Simulator oder Gerät gestartet werden.
 
 In Ihrer App sollte Folgendes angezeigt werden:
 
-![Beispiel-App](../../media/ios/sample-app-ipad.png)
+![Beispiel-App: Swift](../../media/ios/sample-app-ipad.png)
 
 Wenn Sie auf die Schaltfläche **Plastischer Reader** klicken, sehen Sie, dass der plastische Reader mit dem Inhalt in der App gestartet wurde.
 
-![Plastischer Reader](../../media/ios/immersive-reader-ipad.png)
+![Plastischer Reader: Swift](../../media/ios/immersive-reader-ipad.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

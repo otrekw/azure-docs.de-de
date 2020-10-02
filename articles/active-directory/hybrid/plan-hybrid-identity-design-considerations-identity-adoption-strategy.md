@@ -1,6 +1,6 @@
 ---
 title: Entwerfen von Hybrididentitäten – Strategie für die Einführung in Azure | Microsoft-Dokumentation
-description: Mit der bedingten Zugriffssteuerung überprüft Azure Active Directory die besonderen Bedingungen, die Sie beim Authentifizieren des Benutzers und vor dem Gewähren des Zugriffs auf die Anwendung auswählen. Nachdem diese Bedingungen erfüllt sind, wird der Benutzer authentifiziert und erhält Zugriff auf die Anwendung.
+description: Mit der bedingten Zugriffssteuerung überprüft Azure AD die besonderen Bedingungen, die Sie beim Authentifizieren des Benutzers und vor dem Gewähren des Zugriffs auf die Anwendung auswählen.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7263d6a73a78b4b804cddd77f979898008ebadd6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1608039b051cb17684ca77cf7f00c705c9a8e7b5
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555387"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659526"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Definieren einer Strategie zur Hybrididentitätsübernahme
 In dieser Aufgabe definieren Sie die Strategie zur Hybrididentitätsübernahme für Ihre Hybrididentitätslösung, um die geschäftlichen Anforderungen zu erfüllen, die hier erörtert wurden:
@@ -32,7 +32,7 @@ In dieser Aufgabe definieren Sie die Strategie zur Hybrididentitätsübernahme f
 * [Ermitteln der Anforderungen für die Multi-Factor Authentication](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
 
 ## <a name="define-business-needs-strategy"></a>Definieren der Strategie für Geschäftsanforderungen
-Die erste Aufgabe ist, die Geschäftsanforderungen der Organisation zu ermitteln.  Dies kann sehr umfangreich sein, und Sie müssen darauf achten, sich auf das Wesentliche zu konzentrieren.  Halten Sie den Entwurf zu Anfang einfach, planen Sie jedoch stets mit ein, dass er in Zukunft einfach geändert werden kann.  Azure Active Directory ist sowohl für einfache als auch äußerst komplexe Entwürfe die Microsoft Identity Platform, die Office 365, Microsoft Online Services und cloudfähige Anwendungen unterstützt.
+Die erste Aufgabe ist, die Geschäftsanforderungen der Organisation zu ermitteln.  Dies kann sehr umfangreich sein, und Sie müssen darauf achten, sich auf das Wesentliche zu konzentrieren.  Halten Sie den Entwurf zu Anfang einfach, planen Sie jedoch stets mit ein, dass er in Zukunft einfach geändert werden kann.  Azure Active Directory ist sowohl für einfache als auch äußerst komplexe Entwürfe die Microsoft Identity Platform, die Microsoft 365, Microsoft Online Services und cloudfähige Anwendungen unterstützt.
 
 ## <a name="define-an-integration-strategy"></a>Definieren einer Integrationsstrategie
 Die drei wichtigsten Integrationsszenarien von Microsoft sind Cloudidentitäten, synchronisierte Identitäten und verbundene Identitäten.  Sie sollten eine dieser Integrationsstrategien anwenden.  Die Entscheidung für die zu verwendende Strategie kann unter anderem davon abhängen, welche Art von Benutzeroberfläche Sie bereitstellen möchten, ob bereits eine Infrastruktur vorhanden ist und welche Lösung die kostengünstigste ist.  
@@ -171,7 +171,7 @@ Folgendes wird nicht unterstützt und sollte nicht als Implementierung ausgewäh
 * Azure AD-Verzeichnisse sind als isoliert konzipiert. Es wird nicht unterstützt, die Konfiguration der Azure AD Connect-Synchronisierung so zu ändern, dass in einem Versuch, eine gemeinsame und einheitliche GAL zwischen den Verzeichnissen zu erstellen, Daten aus einem anderen Azure AD-Verzeichnis gelesen werden. Es wird auch nicht unterstützt, mithilfe der Azure AD Connect-Synchronisierung Benutzer als Kontakte nach einem anderen lokalen AD zu exportieren.
 
 > [!NOTE]
-> Für den Fall, dass Ihre Organisation die Verbindung von Computern Ihres Netzwerks mit dem Internet einschränkt, werden in diesem Artikel die Endpunkte aufgeführt (FQDNs, IPv4- und IPv6-Adressbereiche), die Sie in Ihre Ausgangszulassungslisten und Zone vertrauenswürdiger Sites von Clientcomputern im Internet Explorer einbeziehen sollten, um sicherzustellen, dass Ihre Computer Office 365 erfolgreich verwenden können. Weitere Informationen finden Sie unter [URLs und IP-Adressbereiche von Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2?ui=en-US&rs=en-US&ad=US).
+> Für den Fall, dass Ihre Organisation die Verbindung von Computern Ihres Netzwerks mit dem Internet einschränkt, werden in diesem Artikel die Endpunkte aufgeführt (FQDNs, IPv4- und IPv6-Adressbereiche), die Sie in Ihre Ausgangszulassungslisten und Zone vertrauenswürdiger Sites von Clientcomputern im Internet Explorer einbeziehen sollten, um sicherzustellen, dass Ihre Computer Microsoft 365 erfolgreich verwenden können. Weitere Informationen finden Sie unter [URLs und IP-Adressbereiche von Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2?ui=en-US&rs=en-US&ad=US).
 > 
 > 
 

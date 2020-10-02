@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 04/27/2018
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 974e45b761fb45e4bc1c451fa6755e16cab49e11
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 25c58f99f56a4328527d1dd970e3ade21eb51819
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76834682"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987178"
 ---
 # <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>Tutorial: Diagnostizieren eines Problems mit der Kommunikation zwischen Netzwerken mit dem Azure-Portal
 
@@ -73,12 +73,12 @@ Wenn Sie bereits eine Network Watcher-Instanz in der Region „USA, Osten“ akt
 8. Während der Testausführung wird **Wird ausgeführt** in der Spalte **PROBLEMBEHANDLUNGSSTATUS** angezeigt, wo in der vorherigen Abbildung **Nicht gestartet** angezeigt wird. Der Test nimmt möglicherweise einige Minuten in Anspruch.
 9. Zeigen Sie den Status eines abgeschlossenen Tests an. Die folgende Abbildung zeigt die Statusergebnisse eines abgeschlossenen Diagnosetests:
 
-    ![Status](./media/diagnose-communication-problem-between-networks/status.png)
+    ![Screenshot: Statusergebnisse eines Diagnosetests (in diesem Beispiel „Fehlerhaft“), einschließlich Zusammenfassung und Details](./media/diagnose-communication-problem-between-networks/status.png)
 
     Für den **PROBLEMBEHANDLUNGSSTATUS** wird **Fehlerhaft** angezeigt, außerdem sehen Sie eine **Zusammenfassung** des Problems und eine Beschreibung im **Detail** auf der Registerkarte **Status**.
 10. Bei Auswahl der Registerkarte **Aktion** bietet die VPN-Diagnose zusätzliche Informationen. In dem in der folgenden Abbildung gezeigten Beispiel teilt die VPN-Diagnose Ihnen mit, dass Sie die Integrität jeder Verbindung überprüfen sollten:
 
-    ![Aktion](./media/diagnose-communication-problem-between-networks/action.png)
+    ![Screenshot: Registerkarte „Aktion“ mit zusätzlichen Informationen](./media/diagnose-communication-problem-between-networks/action.png)
 
 ## <a name="diagnose-a-gateway-connection"></a>Diagnostizieren einer Gatewayverbindung
 
@@ -86,7 +86,7 @@ Ein Gateway ist über eine Gatewayverbindung mit anderen Netzwerken verbunden. G
 
 1. Schließen Sie Schritt 7 von [Diagnostizieren eines Gateways](#diagnose-a-gateway) erneut ab, und wählen Sie nun eine Verbindung aus. Im folgenden Beispiel wird eine Verbindung mit dem Namen **VNet1toSite1** getestet:
 
-    ![Verbindung](./media/diagnose-communication-problem-between-networks/connection.png)
+    ![Screenshot: Starten der Problembehandlung für eine ausgewählte Verbindung](./media/diagnose-communication-problem-between-networks/connection.png)
 
     Der Test dauert mehrere Minuten.
 2. Nachdem der Test der Verbindung abgeschlossen ist, erhalten Sie Ergebnisse, die den Ergebnissen in den folgenden Abbildungen auf den Registerkarten **Status** und **Aktion** ähneln:

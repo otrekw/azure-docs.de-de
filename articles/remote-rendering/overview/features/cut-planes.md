@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/06/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b92bfad99c854f75c945121d352a7122d8c6db89
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 468d21abc861e905472d1d15405b1c8ba9e5be74
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011598"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904878"
 ---
 # <a name="cut-planes"></a>Schnittebenen
 
@@ -19,16 +19,6 @@ Eine *Schnittebene* ist eine visuelle Funktion, die Pixel auf einer Seite einer 
 In der folgenden Abbildung wird der Effekt veranschaulicht. Auf der linken Seite wird das ursprüngliche Gittermodell angezeigt, auf der rechten Seite sehen Sie das Innere des Gittermodells:
 
 ![Schnittebene](./media/cutplane-1.png)
-
-## <a name="limitations"></a>Einschränkungen
-
-* Zurzeit unterstützt Azure Remote Rendering **maximal acht aktive Schnittebenen**. Sie können weitere Schnittebenenkomponenten erstellen, aber wenn Sie versuchen, mehrere Komponenten gleichzeitig zu aktivieren, wird die Aktivierung ignoriert. Deaktivieren Sie zuerst andere Ebenen, wenn Sie die Komponente austauschen möchten, die die Szene beeinflussen soll.
-* Jede Schnittebene besitzt Auswirkungen auf alle remote gerenderten Objekte. Es gibt derzeit keine Möglichkeit, bestimmte Objekte oder Gittermodelle auszuschließen.
-* Schnittebenen sind ein rein visuelles Feature, das sich nicht auf das Ergebnis [räumlicher Abfragen](spatial-queries.md) auswirkt. Wenn Sie einen Strahl in ein aufgeschnittenes Gittermodell werfen möchten, können Sie den Ausgangspunkt des Strahls so anpassen, dass er auf der Schnittebene liegt. Auf diese Weise kann der Strahl nur auf sichtbare Teile treffen.
-
-## <a name="performance-considerations"></a>Überlegungen zur Leistung
-
-Jede aktive Schnittebene verursacht beim Rendern geringfügige Kosten. Deaktivieren oder löschen Sie Schnittebenen, wenn Sie nicht benötigt werden.
 
 ## <a name="cutplanecomponent"></a>CutPlaneComponent
 
@@ -56,7 +46,6 @@ void CreateCutPlane(ApiHandle<AzureSession> session, ApiHandle<Entity> ownerEnti
 }
 ```
 
-
 ### <a name="cutplanecomponent-properties"></a>CutPlaneComponent-Eigenschaften
 
 Die folgenden Eigenschaften werden für eine Schnittebenenkomponente bereitgestellt:
@@ -68,6 +57,45 @@ Die folgenden Eigenschaften werden für eine Schnittebenenkomponente bereitgeste
 * `FadeColor` und `FadeLength`:
 
   Wenn der Alphawert von *FadeColor* ungleich NULL ist, werden Pixel in der Nähe der Schnittebene in Richtung des RGB-Anteils von FadeColor ausgeblendet. Die Stärke des Alphakanals bestimmt, ob die Ausblendung vollständig bis in die Ausblendfarbe oder nur teilweise erfolgt. *FadeLength* definiert, über welche Entfernung diese Ausblendung stattfindet.
+
+* `ObjectFilterMask`: Eine Filterbitmaske, die bestimmt, welche Geometrie von der Schnittebene betroffen ist. Ausführliche Informationen finden Sie im nächsten Absatz.
+
+### <a name="selective-cut-planes"></a>Selektive Schnittebenen
+
+Es ist möglich, einzelne Schnittebenen so zu konfigurieren, dass sie nur bestimmte Geometrien betreffen. Die folgende Abbildung veranschaulicht, wie dieses Setup in der Praxis aussehen kann:
+
+![Selektive Schnittebenen](./media/selective-cut-planes.png)
+
+Die Filterung erfolgt durch den **Vergleich logischer Bitmasken** zwischen einer Bitmaske auf der Seite der Schnittebene und einer zweiten Bitmaske, die für die Geometrie festgelegt ist. Wenn das Ergebnis eines logischen `AND`-Vorgangs zwischen den Masken nicht null ist, wirkt sich die Schnittebene auf die Geometrie aus.
+
+* Die Bitmaske für die Schnittebenenkomponente wird über deren `ObjectFilterMask`-Eigenschaft festgelegt
+* Die Bitmaske für eine Geometrie-Unterhierarchie wird über die Eigenschaft [HierarchicalStateOverrideComponent](override-hierarchical-state.md#features) festgelegt
+
+Beispiele:
+
+| Schnittebenen-Filtermaske | Geometrie-Filtermaske  | Ergebnis des logischen `AND` | Wirkt sich die Schnittebene auf die Geometrie aus?  |
+|--------------------|-------------------|-------------------|:----------------------------:|
+| (0000 0001) == 1   | (0000 0001) == 1  | (0000 0001) == 1  | Ja |
+| (1111 0000) == 240 | (0001 0001) == 17 | (0001 0000) == 16 | Ja |
+| (0000 0001) == 1   | (0000 0010) == 2  | (0000 0000) == 0  | Nein |
+| (0000 0011) == 3   | (0000 1000) == 8  | (0000 0000) == 0  | Nein |
+
+>[!TIP]
+> Das Festlegen der `ObjectFilterMask` einer Schnittebene auf 0 bedeutet, dass sie sich in keiner Weise auf Geometrie auswirkt, da das Ergebnis eines logischen `AND` niemals einen anderen Wert als null ergeben kann. Das Renderingsystem berücksichtigt solche Ebenen von vornherein nicht, dies stellt also ein unaufwändiges Verfahren zum Deaktivieren einzelner Schnittebenen dar. Außerdem werden diese Schnittebenen im Grenzwert von 8 aktiven Ebenen nicht berücksichtigt.
+
+## <a name="limitations"></a>Einschränkungen
+
+* Azure Remote Rendering unterstützt **maximal acht aktive Schnittebenen** . Sie können weitere Schnittebenenkomponenten erstellen, aber wenn Sie versuchen, mehrere Komponenten gleichzeitig zu aktivieren, wird die Aktivierung ignoriert. Deaktivieren Sie zuerst andere Ebenen, wenn Sie die Komponenten austauschen möchten, die sich auf die Szene auswirken sollen.
+* Schnittebenen sind ein rein visuelles Feature, das sich nicht auf das Ergebnis [räumlicher Abfragen](spatial-queries.md) auswirkt. Wenn Sie einen Strahl in ein aufgeschnittenes Gittermodell werfen möchten, können Sie den Ausgangspunkt des Strahls so anpassen, dass er auf der Schnittebene liegt. Auf diese Weise kann der Strahl nur auf sichtbare Teile treffen.
+
+## <a name="performance-considerations"></a>Überlegungen zur Leistung
+
+Jede aktive Schnittebene verursacht beim Rendern geringfügige Kosten. Deaktivieren oder löschen Sie Schnittebenen, wenn Sie nicht benötigt werden.
+
+## <a name="api-documentation"></a>API-Dokumentation
+
+* [C# CutPlaneComponent-Klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.cutplanecomponent)
+* [C++ CutPlaneComponent-Klasse](https://docs.microsoft.com/cpp/api/remote-rendering/cutplanecomponent)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

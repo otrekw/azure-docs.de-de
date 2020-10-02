@@ -1,14 +1,14 @@
 ---
 title: Steuerungen des Blaupausenbeispiels „DoD-Auswirkungsstufe 4“
 description: Steuerungszuordnung des Blaupausenbeispiels „DoD-Auswirkungsstufe 4“ Jede Steuerung wird mindestens einer Azure-Richtlinie zugeordnet, die Sie bei der Bewertung unterstützt.
-ms.date: 06/30/2020
+ms.date: 09/17/2020
 ms.topic: sample
-ms.openlocfilehash: a704731f4fe8e810235507fd84c90b17571a8442
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 9ee3214f8cdacd1d70a59bc5a23e4638cadb579d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923287"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978406"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-4-blueprint-sample"></a>Steuerungszuordnung des Blaupausenbeispiels „DoD-Auswirkungsstufe 4“
 
@@ -102,11 +102,11 @@ Diese Blaupause enthält Richtliniendefinitionen, mit denen Sie sicherstellen k�
 Von Azure Monitor erfasste Protokolldaten werden in einem Log Analytics-Arbeitsbereich gespeichert, um eine zentrale Konfiguration und Verwaltung zu ermöglichen. Mit dieser Blaupause können Sie sicherstellen, dass Ereignisse protokolliert werden, indem [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen werden, die die Bereitstellung des Log Analytics-Agent auf virtuellen Azure-Computern überwachen und erzwingen.
 
 - \[Vorschau\]: Bereitstellung des Log Analytics-Agents überwachen – VM-Image (Betriebssystem) nicht aufgelistet
-- \[Vorschau\]: Bereitstellung des Log Analytics-Agents in VM-Skalierungsgruppen überwachen – VM-Image (Betriebssystem) nicht aufgelistet
+- Bereitstellung des Log Analytics-Agents in VM-Skalierungsgruppen überwachen – VM-Image (Betriebssystem) nicht aufgelistet
 - \[Vorschau\]: Überwachen des Log Analytics-Arbeitsbereichs für VM – Berichtskonflikt
-- \[Vorschau\]: Log Analytics-Agent für Linux-VM-Skalierungsgruppen bereitstellen
+- Bereitstellen des Log Analytics-Agents für Linux-VM-Skalierungsgruppen
 - \[Vorschau\]: Bereitstellen des Log Analytics-Agents für Linux-VMs
-- \[Vorschau\]: Log Analytics-Agent für Windows-VM-Skalierungsgruppen bereitstellen
+- Bereitstellen des Log Analytics-Agents für Windows-VM-Skalierungsgruppen
 - \[Vorschau\]: Bereitstellen des Log Analytics-Agents für Windows-VMs
 
 ## <a name="au-5-response-to-audit-processing-failures"></a>AU-5 Reaktion auf Verarbeitungsfehler bei Überwachungsinformationen
@@ -123,11 +123,11 @@ Diese Blaupause weist [Azure Policy](../../../policy/overview.md)-Definitionen z
 Von Azure Monitor erfasste Protokolldaten werden in einem Log Analytics-Arbeitsbereich gespeichert, um eine zentrale Berichterstattung und Analyse zu ermöglichen. Mit dieser Blaupause können Sie sicherstellen, dass Ereignisse protokolliert werden, indem [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen werden, die die Bereitstellung des Log Analytics-Agent auf virtuellen Azure-Computern überwachen und erzwingen.
 
 - \[Vorschau\]: Bereitstellung des Log Analytics-Agents überwachen – VM-Image (Betriebssystem) nicht aufgelistet
-- \[Vorschau\]: Bereitstellung des Log Analytics-Agents in VM-Skalierungsgruppen überwachen – VM-Image (Betriebssystem) nicht aufgelistet
+- Bereitstellung des Log Analytics-Agents in VM-Skalierungsgruppen überwachen – VM-Image (Betriebssystem) nicht aufgelistet
 - \[Vorschau\]: Überwachen des Log Analytics-Arbeitsbereichs für VM – Berichtskonflikt
-- \[Vorschau\]: Log Analytics-Agent für Linux-VM-Skalierungsgruppen bereitstellen
+- Bereitstellen des Log Analytics-Agents für Linux-VM-Skalierungsgruppen
 - \[Vorschau\]: Bereitstellen des Log Analytics-Agents für Linux-VMs
-- \[Vorschau\]: Log Analytics-Agent für Windows-VM-Skalierungsgruppen bereitstellen
+- Bereitstellen des Log Analytics-Agents für Windows-VM-Skalierungsgruppen
 - \[Vorschau\]: Bereitstellen des Log Analytics-Agents für Windows-VMs
 
 ## <a name="au-6-5-audit-review-analysis-and-reporting--integration--scanning-and-monitoring-capabilities"></a>AU-6 (5): Prüfung, Analyse und Berichterstellung in Bezug auf die Überwachung | Integrations-, Scan- und Überwachungsfunktionen
@@ -144,7 +144,7 @@ Mit dieser Blaupause werden Richtliniendefinitionen bereitgestellt, bei denen Da
 - Sicherheitsrisiken sollten durch eine Lösung zur Sicherheitsrisikobewertung beseitigt werden.
 - Sicherheitsrisiken in der Sicherheitskonfiguration von VM-Skalierungsgruppen sollten beseitigt werden.
 - \[Vorschau\]: Bereitstellung des Log Analytics-Agents überwachen – VM-Image (Betriebssystem) nicht aufgelistet
-- \[Vorschau\]: Bereitstellung des Log Analytics-Agents in VM-Skalierungsgruppen überwachen – VM-Image (Betriebssystem) nicht aufgelistet
+- Bereitstellung des Log Analytics-Agents in VM-Skalierungsgruppen überwachen – VM-Image (Betriebssystem) nicht aufgelistet
 
 ## <a name="au-12-audit-generation"></a>AU-12 Generierung von Überwachungsdatensätzen
 
@@ -152,11 +152,11 @@ Diese Blaupause verfügt über Richtliniendefinitionen, mit denen die Bereitstel
 Diese Richtliniendefinitionen überprüfen auch die Konfiguration von Diagnoseprotokollen, um Einblick in Vorgänge zu erhalten, die innerhalb von Azure-Ressourcen ausgeführt werden. Darüber hinaus werden Überprüfung und Advanced Data Security auf SQL-Servern konfiguriert.
 
 - \[Vorschau\]: Bereitstellung des Log Analytics-Agents überwachen – VM-Image (Betriebssystem) nicht aufgelistet
-- \[Vorschau\]: Bereitstellung des Log Analytics-Agents in VM-Skalierungsgruppen überwachen – VM-Image (Betriebssystem) nicht aufgelistet
+- Bereitstellung des Log Analytics-Agents in VM-Skalierungsgruppen überwachen – VM-Image (Betriebssystem) nicht aufgelistet
 - \[Vorschau\]: Überwachen des Log Analytics-Arbeitsbereichs für VM – Berichtskonflikt
-- \[Vorschau\]: Log Analytics-Agent für Linux-VM-Skalierungsgruppen bereitstellen
+- Bereitstellen des Log Analytics-Agents für Linux-VM-Skalierungsgruppen
 - \[Vorschau\]: Bereitstellen des Log Analytics-Agents für Linux-VMs
-- \[Vorschau\]: Log Analytics-Agent für Windows-VM-Skalierungsgruppen bereitstellen
+- Bereitstellen des Log Analytics-Agents für Windows-VM-Skalierungsgruppen
 - \[Vorschau\]: Bereitstellen des Log Analytics-Agents für Windows-VMs
 - Überwachen der Diagnoseeinstellung
 - Überwachung muss für Advanced Data Security-Einstellungen für SQL Server aktiviert sein.
@@ -336,11 +336,8 @@ Mit dieser Blaupause können Sie Fehler im Informationssystem verwalten, indem [
 
 ## <a name="si-02-06-flaw-remediation--removal-of-previous-versions-of-software--firmware"></a>SI-02 (06): Fehlerbehebung | Entfernen älterer Software- oder Firmwareversionen
 
-Mit dieser Blaupause werden Richtliniendefinitionen zugewiesen, mit denen Sie sicherstellen können, dass Anwendungen die neueste Version von .NET Framework, HTTP, Java, PHP, Python und TLS verwenden. Diese Blaupause weist darüber hinaus eine Richtliniendefinition zu, mit der sichergestellt wird, dass Kubernetes Service auf die Version ohne Sicherheitsrisiko aktualisiert wird.
+Mit dieser Blaupause werden Richtliniendefinitionen zugewiesen, mit denen Sie sicherstellen können, dass Anwendungen die neueste Version von HTTP, Java, PHP, Python und TLS verwenden. Diese Blaupause weist darüber hinaus eine Richtliniendefinition zu, mit der sichergestellt wird, dass Kubernetes Service auf die Version ohne Sicherheitsrisiko aktualisiert wird.
 
-- Stellen Sie sicher, dass die neueste .NET Framework-Version angegeben ist, wenn sie als Teil der API-App verwendet wird.
-- Stellen Sie sicher, dass die neueste .NET Framework-Version angegeben ist, wenn sie als Teil der Funktions-App verwendet wird.
-- Stellen Sie sicher, dass die neueste .NET Framework-Version angegeben ist, wenn sie als Teil der Web-App verwendet wird.
 - Stellen Sie sicher, dass die neueste HTTP-Version angegeben ist, wenn sie zum Ausführen der API-App verwendet wird.
 - Stellen Sie sicher, dass die neueste HTTP-Version angegeben ist, wenn sie zum Ausführen der Funktions-App verwendet wird.
 - Stellen Sie sicher, dass die neueste HTTP-Version angegeben ist, wenn sie zum Ausführen der Web-App verwendet wird.
@@ -348,7 +345,6 @@ Mit dieser Blaupause werden Richtliniendefinitionen zugewiesen, mit denen Sie si
 - Sicherstellen, dass die neueste Java-Version angegeben ist, wenn sie als Teil der Funktions-App verwendet wird
 - Stellen Sie sicher, dass die neueste Java-Version angegeben ist, wenn sie als Teil der Web-App verwendet wird.
 - Stellen Sie sicher, dass die neueste PHP-Version angegeben ist, wenn sie als Teil der API-App verwendet wird.
-- Stellen Sie sicher, dass die neueste PHP-Version angegeben ist, wenn sie als Teil der Funktions-App verwendet wird.
 - Stellen Sie sicher, dass die neueste PHP-Version angegeben ist, wenn sie als Teil der Web-App verwendet wird.
 - Stellen Sie sicher, dass die neueste Python-Version angegeben ist, wenn sie als Teil der API-App verwendet wird.
 - Stellen Sie sicher, dass die neueste Python-Version angegeben ist, wenn sie als Teil der Funktions-App verwendet wird.
@@ -356,7 +352,7 @@ Mit dieser Blaupause werden Richtliniendefinitionen zugewiesen, mit denen Sie si
 - In Ihrer API-App sollte die neueste TLS-Version verwendet werden.
 - In Ihrer Funktions-App sollte die neueste TLS-Version verwendet werden.
 - In Ihrer Web-App sollte die neueste TLS-Version verwendet werden.
-- \[Vorschau\]: Für Kubernetes Service muss ein Upgrade auf eine Kubernetes-Version ohne Sicherheitsrisiko durchgeführt werden.
+- Für Kubernetes Service muss ein Upgrade auf eine Kubernetes-Version ohne Sicherheitsrisiko durchgeführt werden.
 
 ## <a name="si-3-malicious-code-protection"></a>SI-3 Schutz vor schädlichem Code
 
@@ -378,11 +374,11 @@ Diese Blaupause hilft Ihnen bei der Verwaltung des Endpunktschutzes, einschließ
 Diese Blaupause hilft Ihnen bei der Überwachung Ihres Systems, indem sie die Protokollierung und Datensicherheit für alle Azure-Ressourcen überprüft und erzwingt. Insbesondere weisen die Richtlinien Überwachung zu und erzwingen die Bereitstellung des Log Analytics-Agent sowie erweiterte Sicherheitseinstellungen für SQL-Datenbanken, Speicherkonten und Netzwerkressourcen. Diese Funktionen helfen Ihnen beim Erkennen von anomalem Verhalten und Indikatoren für Angriffe, sodass Sie geeignete Maßnahmen ergreifen können.
 
 - \[Vorschau\]: Bereitstellung des Log Analytics-Agents überwachen – VM-Image (Betriebssystem) nicht aufgelistet
-- \[Vorschau\]: Bereitstellung des Log Analytics-Agents in VM-Skalierungsgruppen überwachen – VM-Image (Betriebssystem) nicht aufgelistet
+- Bereitstellung des Log Analytics-Agents in VM-Skalierungsgruppen überwachen – VM-Image (Betriebssystem) nicht aufgelistet
 - \[Vorschau\]: Überwachen des Log Analytics-Arbeitsbereichs für VM – Berichtskonflikt
-- \[Vorschau\]: Log Analytics-Agent für Linux-VM-Skalierungsgruppen bereitstellen
+- Bereitstellen des Log Analytics-Agents für Linux-VM-Skalierungsgruppen
 - \[Vorschau\]: Bereitstellen des Log Analytics-Agents für Linux-VMs
-- \[Vorschau\]: Log Analytics-Agent für Windows-VM-Skalierungsgruppen bereitstellen
+- Bereitstellen des Log Analytics-Agents für Windows-VM-Skalierungsgruppen
 - \[Vorschau\]: Bereitstellen des Log Analytics-Agents für Windows-VMs
 - Advanced Data Security muss für Ihre verwalteten Instanzen aktiviert werden.
 - Advanced Data Security muss für Ihre SQL-Server aktiviert werden.

@@ -16,18 +16,18 @@ ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b013c4edcaceeea585494bd8924ccea08aa1d37
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 4a0765f5279eb41324691c431c5973bb55a8b52d
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89277050"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662485"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect Sync: Verzeichniserweiterungen
 Sie können Verzeichniserweiterungen verwenden, um das Schema in Azure Active Directory (Azure AD) um Ihre eigenen Attribute aus dem lokalen Active Directory zu erweitern. Dank dieses Features können Sie Branchen-Apps erstellen, indem Sie Attribute nutzen, die Sie weiterhin lokal verwalten. Diese Attribute können über [Erweiterungen](/graph/extensibility-overview
 ) genutzt werden. Sie können die verfügbaren Attribute mithilfe von [Microsoft Graph-Explorer](https://developer.microsoft.com/graph/graph-explorer) anzeigen. Sie können diese Funktion auch zum Erstellen dynamischer Gruppen in Azure AD verwenden.
 
-Derzeit können diese Attribute von keiner Office 365-Workload genutzt werden.
+Derzeit werden diese Attribute von keiner Microsoft 365-Workload genutzt.
 
 ## <a name="customize-which-attributes-to-synchronize-with-azure-ad"></a>Anpassen der mit Azure AD zu synchronisierenden Attribute
 
@@ -73,7 +73,7 @@ Diese Attribute sind jetzt in [Microsoft Graph-Explorer](https://developer.micro
 
 ## <a name="use-the-attributes-in-dynamic-groups"></a>Verwenden der Attribute in dynamischen Gruppen
 
-Eines der nützlicheren Szenarien ist die Verwendung dieser Attribute in dynamischen Sicherheits- oder Office 365-Gruppen.
+Eines der nützlicheren Szenarien ist die Verwendung dieser Attribute in dynamischen Sicherheits- oder Microsoft 365-Gruppen.
 
 1. Erstellen Sie eine neue Gruppe in Azure AD. Vergeben Sie einen geeigneten Namen, und stellen Sie sicher, dass **Dynamischer Benutzer** für **Mitgliedschaftstyp** ausgewählt ist.
 

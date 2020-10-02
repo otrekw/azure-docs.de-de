@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 14184c09cc9d5eebab7f33323cd8ce587fdf9e88
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a5b625ea2b5b76d0938ac62be2202127ff0af66e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89014590"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982973"
 ---
 # <a name="troubleshoot"></a>Problembehandlung
 
@@ -156,7 +156,8 @@ Azure Remote Rendering erstellt Hooks in der Unity-Renderpipeline, um die Framez
 
 ## <a name="checkerboard-pattern-is-rendered-after-model-loading"></a>Schachbrettmuster wird nach dem Laden des Modells gerendert
 
-Wenn das gerenderte Bild wie folgt aussieht: ![Schachbrett](../reference/media/checkerboard.png), dann trifft der Renderer auf die [Polygongrenzwerte für die Standardkonfigurationsgröße](../reference/vm-sizes.md). Zum Minimieren der Auswirkungen kann entweder zur Größe **Premium**-Konfiguration gewechselt oder die Anzahl der sichtbaren Polygone reduziert werden.
+Wenn das gerenderte Bild wie folgt aussieht: ![Der Screenshot zeigt ein Raster aus schwarzen und weißen Quadraten mit einem Menü „Extras“.](../reference/media/checkerboard.png)
+dann trifft der Renderer auf die [Polygongrenzwerte für die Standardkonfigurationsgröße](../reference/vm-sizes.md). Zum Minimieren der Auswirkungen kann entweder zur Größe **Premium**-Konfiguration gewechselt oder die Anzahl der sichtbaren Polygone reduziert werden.
 
 ## <a name="the-rendered-image-in-unity-is-upside-down"></a>Das gerenderte Bild in Unity steht auf dem Kopf
 
@@ -216,7 +217,7 @@ Wenn die oben genannten Schritte ausgeschöpft sind und das verbleibende Z-Fight
 
 ARR verfügt über ein Feature zur Bestimmung, ob Z-Fighting für Oberflächen möglich ist: [Schachbrettmusterhervorhebung](../overview/features/z-fighting-mitigation.md) Sie können auch visuell ermitteln, wodurch das Z-Fighting verursacht wird. Die folgende erste Animation zeigt ein Beispiel für den Tiefengenauigkeitsverlust in der Entfernung, und die zweite Animation zeigt ein Beispiel für nahezu koplanare Oberflächen:
 
-![depth-precision-z-fighting](./media/depth-precision-z-fighting.gif)  ![coplanar-z-fighting](./media/coplanar-z-fighting.gif)
+![Die Animation zeigt ein Beispiel für den Tiefengenauigkeitsverlust in der Entfernung.](./media/depth-precision-z-fighting.gif)  ![Die Animation zeigt ein Beispiel für nahezu coplanare Oberflächen.](./media/coplanar-z-fighting.gif)
 
 Vergleichen Sie diese Beispiele mit Ihrem Z-Fighting, um die Ursache zu ermitteln, oder folgen Sie optional diesem Schritt-für-Schritt-Workflow:
 

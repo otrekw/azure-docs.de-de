@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 5582056f1bae2dbeb69a7d05044f055ff1394bd5
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: ebc6ca630ea3cabb519805ae8505abf336a2a9ea
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88244668"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604290"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>Tutorial: Verwenden von Custom Vision mit einem IoT-Gerät zum Melden von visuellen Zuständen
 
@@ -52,7 +52,7 @@ Die App für visuelle Warnungen in IoT wird in einer kontinuierlichen Schleife a
 * **Warten auf trainiertes Modell**: In diesem Zustand ruft die App die Custom Vision-API jede Sekunde auf, um zu überprüfen, ob das Zielprojekt eine trainierte Iteration enthält. Wenn eine solche gefunden wird, lädt die App das entsprechende ONNX-Modell in eine lokale Datei herunter und wechselt in den Zustand **Bewertung**.
 * **Bewertung**: In diesem Zustand verwendet die App Windows ML, um einen einzelnen Frame aus der Kamera im Vergleich zum lokalen ONNX-Modell auszuwerten. Die resultierende Bildklassifizierung wird auf dem Bildschirm angezeigt und als Meldung an den IoT Hub gesendet. Dann wird die App für eine Sekunde in den Ruhezustand versetzt, bevor die Bewertung eines neuen Bilds ausgeführt wird.
 
-## <a name="understand-the-code-structure"></a>Grundlegendes zur Codestruktur
+## <a name="examine-the-code-structure"></a>Untersuchen der Codestruktur
 
 Die folgenden Dateien verarbeiten die Hauptfunktionalität der App.
 
@@ -98,13 +98,13 @@ Während die App Bilder erfasst, müssen Sie die Kamera auf die Arten von visuel
 
 ## <a name="train-the-custom-vision-model"></a>Trainieren des Custom Vision-Modells
 
-Sobald die App die Erfassung von Bildern beendet hat, lädt sie diese hoch und wechselt dann in den Zustand **Warten auf trainiertes Modell**. An diesem Punkt müssen Sie das [Custom Vision-Portal](https://www.customvision.ai/) öffnen und basierend auf den neuen Trainingsbildern ein Modell erstellen. Die folgende Animation zeigt ein Beispiel dieses Prozesses.
+Sobald die App die Erfassung von Bildern beendet hat, lädt sie diese hoch und wechselt dann in den Zustand **Warten auf trainiertes Modell**. An diesem Punkt müssen Sie die [Custom Vision-Website](https://www.customvision.ai/) aufrufen und basierend auf den neuen Trainingsbildern ein Modell erstellen. Die folgende Animation zeigt ein Beispiel dieses Prozesses.
 
 ![Animation: Tagging mehrerer Bilder von Bananen](./media/iot-visual-alerts-tutorial/labeling.gif)
 
 So wiederholen Sie diesen Prozess in Ihrem eigenen Szenario:
 
-1. Melden Sie sich beim [Custom Vision-Portal](http://customvision.ai) an.
+1. Melden Sie sich bei der [Custom Vision-Website](http://customvision.ai) an.
 1. Suchen Sie Ihr Zielprojekt, in dem jetzt alle Trainingsbilder enthalten sein sollten, die von der App hochgeladen wurden.
 1. Wählen Sie für jeden visuellen Zustand, den Sie identifizieren möchten, die geeigneten Bilder aus, und fügen Sie manuell ein Tag hinzu.
     * Wenn Ihr Ziel beispielsweise darin besteht, zwischen einem leeren Raum und einem Raum mit Personen darin zu unterscheiden, empfiehlt es sich, mindestens fünf Bilder mit Personen als neue Klasse **Personen** zu markieren und mindestens fünf Bilder ohne Personen mit dem Tag **Negativ** zu versehen. Dadurch kann das Modell zwischen den beiden Zuständen unterscheiden.

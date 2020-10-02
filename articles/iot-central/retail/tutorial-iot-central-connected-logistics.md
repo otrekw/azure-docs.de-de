@@ -5,115 +5,133 @@ author: KishorIoT
 ms.author: nandab
 ms.service: iot-central
 ms.subservice: iot-central-retail
-ms.topic: overview
+ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: eac43ae68b10436b3e45452c6b1d03bec3ae4c9c
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: 0206c111be7cd6441d9de32af498e961833d214f
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "81001299"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980697"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-connected-logistics-application-template"></a>Tutorial: Bereitstellung und exemplarische Vorgehensweise für eine Anwendungsvorlage für vernetzte Logistik
 
-
-
-Dieses Tutorial zeigt, wie Sie durch Bereitstellen einer IoT Central-Vorlage Ihren Einstieg in **vernetzte Logistik** machen. Sie erfahren, wie Sie die Vorlage bereitstellen, was im Lieferumfang enthalten ist und welche nächsten Schritte sinnvoll sind.
+In diesem Tutorial werden die ersten Schritte mit der IoT Central-Anwendungsvorlage für *vernetzte Logistik* gezeigt. Sie erfahren, wie Sie die Vorlage bereitstellen und verwenden.
 
 In diesem Tutorial lernen Sie Folgendes:
 
-* Erstellen einer Anwendung für vernetzte Logistik
-* Einführung in die Anwendung 
+> [!div class="checklist"]
+> * Erstellen einer Anwendung für vernetzte Logistik
+> * Verwenden der wichtigsten Funktionen in der Anwendung
+> * Verwenden des Dashboards, um die Aktivität von kritischen Vorgängen bei Logistikgeräten anzuzeigen
+> * Verwenden der Gerätevorlage
+> * Befolgen von Regeln
+> * Verwenden von Aufträgen
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Zum Bereitstellen dieser App sind keine besonderen Voraussetzungen erforderlich.
-* Ein Azure-Abonnement ist empfehlenswert, Sie können es aber auch ohne versuchen.
+* Zum Bereitstellen dieser App müssen keine besonderen Voraussetzungen erfüllt werden.
+* Sie können den Tarif „Free“ oder ein Azure-Abonnement verwenden.
 
-## <a name="create-connected-logistics-application-template"></a>Erstellen einer Anwendungsvorlage für vernetzte Logistik
+## <a name="create-connected-logistics-application"></a>Erstellen einer Anwendung für vernetzte Logistik
 
-Mithilfe der folgenden Schritte können Sie eine Anwendung erstellen.
+Gehen Sie wie folgt vor, um die Anwendung zu erstellen:
 
-1. Navigieren Sie zur Anwendungs-Manager-Website von Azure IoT Central. Wählen Sie auf der linken Navigationsleiste **Erstellen** aus, und klicken Sie dann auf die Registerkarte **Einzelhandel**.
+1. Navigieren Sie zur Buildwebsite für [Azure IoT Central](https://aka.ms/iotcentral). Melden Sie sich dann mit einem persönlichen Microsoft-Konto oder mit einem Geschäfts-, Schul- oder Unikonto an. Wählen Sie auf der linken Navigationsleiste **Erstellen** und anschließend die Registerkarte **Einzelhandel** aus.
 
-    > [!div class="mx-imgBorder"]
-    > ![Vernetzte Logistik: Dashboard](./media/tutorial-iot-central-connected-logistics/iotc-retail-homepage.png)
+    :::image type="content" source="media/tutorial-iot-central-connected-logistics/iotc-retail-homepage.png" alt-text="Vorlage für vernetzte Logistik":::
 
-2. Wählen Sie unter **Connected Logistics-Anwendung** die Option **App erstellen** aus.
+2. Wählen Sie unter **Connected Logistics-Anwendung** die Option **App erstellen** aus.
 
-3. Mit **App erstellen** wird ein neues Anwendungsformular geöffnet, wobei die erforderlichen Details wie unten dargestellt ausgefüllt werden.
-   * **Anwendungsname:** Sie können den vorgeschlagenen Standardnamen verwenden oder einen eigenen Anwendungsnamen eingeben.
-   * **URL:** Sie können die vorgeschlagene Standard-URL verwenden oder eine eigene, einfach merkbare und benutzerfreundliche URL eingeben. Als Nächstes wird die Standardeinstellung empfohlen, wenn Sie bereits über ein Azure-Abonnement verfügen. Sie können mit dem Tarif für die kostenlose 7-Tage-Testversion beginnen und jederzeit vor Ablauf der kostenlosen Testversion auf einen Standard-Tarif umstellen.
-   * **Abrechnungsinfo**: Die Detailangaben zum Verzeichnis, dem Azure-Abonnement und der Region sind für die Bereitstellung der Ressourcen erforderlich.
-   * **Erstellen**: Wählen Sie unten auf der Seite „Erstellen“ aus, um Ihre Anwendung bereitzustellen.
+3. Durch Auswählen von **App erstellen** wird das Formular **Neue Anwendung** geöffnet. Geben Sie die folgenden Details ein:
 
-    > [!div class="mx-imgBorder"]
-    > ![Vernetzte Logistik: Dashboard](./media/tutorial-iot-central-connected-logistics/connected-logistics-app-create.png)
 
-    > [!div class="mx-imgBorder"]
-    > ![Vernetzte Logistik: Abrechnungsinformationen](./media/tutorial-iot-central-connected-logistics/connected-logistics-app-create-billinginfo.png)
+    * **Anwendungsname:** Sie können den vorgeschlagenen Standardnamen verwenden oder einen eigenen Anwendungsnamen eingeben.
+    * **URL:** Sie können die vorgeschlagene Standard-URL verwenden oder eine eigene, einfach merkbare und benutzerfreundliche URL eingeben. Als Nächstes wird die Standardeinstellung empfohlen, wenn Sie bereits über ein Azure-Abonnement verfügen. Sie können mit dem Tarif für die kostenlose 7-Tage-Testversion beginnen und jederzeit vor Ablauf der kostenlosen Testversion auf einen Standard-Tarif umstellen.
+    * **Abrechnungsinfo**: Zum Bereitstellen der Ressourcen sind die Details zum Verzeichnis, zum Azure-Abonnement und zur Region erforderlich.
+    * **Erstellen**: Wählen Sie unten auf der Seite „Erstellen“ aus, um Ihre Anwendung bereitzustellen.
 
-## <a name="walk-through-the-application"></a>Einführung in die Anwendung 
+    :::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-app-create.png" alt-text="Vorlage für vernetzte Logistik":::
 
-## <a name="dashboard"></a>Dashboard
+    :::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-app-create-billinginfo.png" alt-text="Vorlage für vernetzte Logistik":::
 
-Nach erfolgreicher Bereitstellung der App ist Ihr Standard-Dashboard ein Operatorportal mit dem Schwerpunkt vernetzte Logistik. Northwind Trader ist ein fiktiver Logistikanbieter, der eine Frachtflotte zur See und an Land verwaltet. Auf diesem Dashboard sehen Sie zwei verschiedene Gateways, die Telemetrie zu Sendungen zusammen mit zugeordneten Befehlen, Aufträgen und Aktionen bereitstellen, die Sie ausführen können. Dieses Dashboard ist vorkonfiguriert, um die Aktivität von kritischen Vorgängen bei Logistikgeräten darzustellen.
-Das Dashboard ist logisch in zwei verschiedene Gateway-Geräteverwaltungsvorgänge unterteilt. 
-   * Logistikrouten für Transport per LKW und Standortdetails für den Schiffstransport sind ein wesentliches Element für jede Art von multimodalem Transport
-   * Gatewaystatus und relevante Informationen anzeigen 
+## <a name="walk-through-the-application"></a>Einführung in die Anwendung
+
+Der folgende Screenshot zeigt das Auswählen der Anwendungsvorlage für vernetzte Logistik:
 
 > [!div class="mx-imgBorder"]
-> ![Vernetzte Logistik: Dashboard](./media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard1.png)
+> ![Screenshot: Auswählen der Anwendungsvorlage für vernetzte Logistik](./media/tutorial-iot-central-connected-logistics/iotc-retail-homepage.png)
 
-   * Sie können die Gesamtanzahl der Gateways, der aktiven und der unbekannten Tags einfach nachverfolgen.
-   * Sie können Vorgänge der Geräteverwaltung durchführen, beispielsweise Firmwareupdates, Deaktivieren und Aktivieren von Sensoren sowie Aktualisieren von Sensorschwellenwerten, Telemetrieintervallen und Geräteserviceverträgen.
-   * Anzeigen des Geräteakkuverbrauchs
+In den nächsten Abschnitten werden die wichtigsten Features der Anwendung behandelt:
 
-> [!div class="mx-imgBorder"]
-> ![Vernetzte Logistik: Dashboard](./media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard2.png)
+### <a name="dashboard"></a>Dashboard
 
-## <a name="device-template"></a>Gerätevorlage
-
-Klicken Sie auf die Registerkarte „Gerätevorlagen“, dann wird das Gatewayfunktionsmodell angezeigt. Ein Funktionsmodell ist um zwei unterschiedliche Schnittstellen strukturiert: **Gatewaytelemetrie und -eigenschaften** und **Gatewaybefehle**.
-
-**Gatewaytelemetrie und -eigenschaft**: Diese Oberfläche stellt die gesamte Telemetrie im Zusammenhang mit Sensor-, Standort- und Geräteinformationen sowie Gerätezwillings-Eigenschaftsfunktionen wie Sensorschwellenwerte und Aktualisierungsintervalle dar.
+Nach Bereitstellung der Anwendung ist Ihr Standarddashboard ein Operatorportal mit Schwerpunkt auf vernetzter Logistik. Northwind Trader ist ein fiktiver Logistikanbieter, der eine Frachtflotte zu Wasser und zu Lande verwaltet. Auf diesem Dashboard werden zwei verschiedene Gateways mit Telemetriedaten von Transporten sowie mit zugeordneten Befehlen, Aufträgen und Aktionen angezeigt.
 
 > [!div class="mx-imgBorder"]
-> ![Vernetzte Logistik: Dashboard](./media/tutorial-iot-central-connected-logistics/connected-logistics-devicetemplate1.png)
-
-**Gatewaybefehle:** Diese Schnittstelle organisiert alle Gatewaybefehlsfunktionen.
+> ![Screenshot: Erstellen einer App auf der Grundlage der Anwendungsvorlage für vernetzte Logistik](./media/tutorial-iot-central-connected-logistics/connected-logistics-app-create.png)
 
 > [!div class="mx-imgBorder"]
-> ![Vernetzte Logistik: Dashboard](./media/tutorial-iot-central-connected-logistics/connected-logistics-devicetemplate2.png)
+> ![Screenshot: Abrechnungsoptionen beim Erstellen der Anwendung](./media/tutorial-iot-central-connected-logistics/connected-logistics-app-create-billinginfo.png)
 
-## <a name="rules"></a>Regeln
-Wählen Sie die Registerkarte „Regeln“ aus, um zwei verschiedene Regeln anzuzeigen, die in dieser Anwendungsvorlage vorhanden sind. Diese Regeln sind so konfiguriert, dass sie zwecks weiterer Untersuchungen E-Mail-Benachrichtigungen an die Operatoren senden.
- 
-**Gateway-Diebstahlwarnung**: Diese Regel wird ausgelöst, wenn von den Sensoren während des Transports unerwarteter Lichteinfall erkannt wird. Operatoren müssen schnellstmöglich benachrichtigt werden, um einen möglichen Diebstahl zu untersuchen.
- 
-**Nicht reagierendes Gateway**: Diese Regel wird ausgelöst, wenn das Gateway für einen längeren Zeitraum keine Meldung an die Cloud sendet. Das Gateway reagiert möglicherweise aufgrund eines niedrigen Akkuladestands, eines Verbindungsverlusts oder des Gerätezustands nicht.
+Dieses Dashboard ist vorkonfiguriert, um die Aktivität von kritischen Vorgängen bei Logistikgeräten zu veranschaulichen.
 
-> [!div class="mx-imgBorder"]
-> ![Vernetzte Logistik: Dashboard](./media/tutorial-iot-central-connected-logistics/connected-logistics-rules.png)
+Das Dashboard ermöglicht zwei verschiedene Gateway-Geräteverwaltungsvorgänge:
 
-## <a name="jobs"></a>Aufträge
-Wählen Sie die Registerkarte „Aufträge“ aus, um fünf verschiedene Aufträge in dieser Anwendungsvorlage anzuzeigen:
+* Anzeigen von Logistikrouten für Transporte per LKW und von Standortdetails für Schiffstransporte
+* Anzeigen des Gatewaystatus und anderer relevanter Informationen
 
-> [!div class="mx-imgBorder"]
-> ![Vernetzte Logistik: Dashboard](./media/tutorial-iot-central-connected-logistics/connected-logistics-jobs.png)
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard1.png" alt-text="Vorlage für vernetzte Logistik":::
 
-Sie können die Funktion für Aufträge nutzen, um lösungsweite Vorgänge auszuführen. Hier verwenden die Aufträge die Gerätebefehle und die Zwillingsfunktion, um Aufgaben wie das Deaktivieren bestimmter Sensoren für das gesamte Gateway oder das Ändern von Sensorschwellenwerten abhängig von der Transportart und -route durchzuführen. 
-   * Es ist ein Standardvorgang, Aufprallsensoren beim Transport auf See zu deaktivieren, um Akkukapazität zu sparen, oder die Temperaturschwelle bei Kühlkettentransporten abzusenken. 
- 
-   * Mithilfe von Aufträgen können Sie systemweite Vorgänge wie das Updaten der Gatewayfirmware oder das Aktualisieren des Dienstvertrags durchführen, um bei Wartungsaktivitäten auf dem aktuellen Stand zu bleiben.
+* Sie können die Gesamtanzahl von Gateways sowie von aktiven und unbekannten Tags nachverfolgen.
+* Sie können Geräteverwaltungsvorgänge durchführen, beispielsweise Firmwareupdates, Deaktivieren und Aktivieren von Sensoren sowie Aktualisieren von Sensorschwellenwerten, Telemetrieintervallen und Geräteserviceverträgen.
+* Anzeigen des Geräteakkuverbrauchs
+
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard2.png" alt-text="Vorlage für vernetzte Logistik":::
+
+#### <a name="device-template"></a>Gerätevorlage
+
+Wählen Sie **Gerätevorlagen** aus, um das Gatewayfunktionsmodell anzuzeigen. Ein Funktionsmodell ist um die Schnittstellen **Gatewaytelemetrie und -eigenschaften** und **Gatewaybefehle** strukturiert.
+
+**Gatewaytelemetrie und -eigenschaften:** Diese Schnittstelle definiert die gesamte Telemetrie im Zusammenhang mit Sensor-, Standort- und Geräteinformationen. Außerdem definiert sie Funktionen von Gerätezwillingseigenschaften wie Gatewayschwellenwerte und Aktualisierungsintervalle.
+
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-devicetemplate1.png" alt-text="Vorlage für vernetzte Logistik":::
+
+**Gatewaybefehle:** Diese Schnittstelle dient zur Strukturierung aller Gatewaybefehlsfunktionen:
+
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-devicetemplate2.png" alt-text="Vorlage für vernetzte Logistik":::
+
+### <a name="rules"></a>Regeln
+
+Wählen Sie die Registerkarte **Regeln** aus, um die Regeln dieser Anwendungsvorlage anzuzeigen. Diese Regeln sind so konfiguriert, dass E-Mail-Benachrichtigungen für weitere Untersuchungen an die Operatoren gesendet werden:
+
+**Gateway-Diebstahlwarnung**: Diese Regel wird ausgelöst, wenn von den Sensoren während des Transports unerwarteter Lichteinfall erkannt wird. Operatoren müssen umgehend benachrichtigt werden, um einen möglichen Diebstahl zu untersuchen.
+
+**Nicht reagierendes Gateway**: Diese Regel wird ausgelöst, wenn das Gateway für einen längeren Zeitraum keine Meldung an die Cloud sendet. Das Gateway reagiert möglicherweise aufgrund eines niedrigen Akkustands, eines Verbindungsabbruchs oder einer Beschädigung nicht.
+
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-rules.png" alt-text="Vorlage für vernetzte Logistik":::
+
+### <a name="jobs"></a>Aufträge
+
+Wählen Sie die Registerkarte **Aufträge** aus, um die Aufträge in dieser Anwendung anzuzeigen:
+
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-jobs.png" alt-text="Vorlage für vernetzte Logistik":::
+
+Aufträge können für anwendungsweite Vorgänge verwendet werden. Bei den Aufträgen in dieser Anwendung werden Gerätebefehle und die Zwillingsfunktionen verwendet, um Aufgaben wie das Deaktivieren bestimmter Sensoren für alle Gateways oder das Ändern von Sensorschwellenwerten abhängig von der Transportart und -route durchzuführen:
+
+* Es ist ein Standardvorgang, Aufprallsensoren beim Transport auf See zu deaktivieren, um Akkukapazität zu sparen, oder den Temperaturschwellenwert bei Kühlkettentransporten zu senken.
+
+* Mithilfe von Aufträgen können Sie systemweite Vorgänge wie das Updaten der Gatewayfirmware oder das Aktualisieren des Dienstvertrags durchführen, um bei Wartungsaktivitäten auf dem aktuellen Stand zu bleiben.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Wenn Sie diese Anwendung nicht mehr verwenden möchten, löschen Sie die Anwendungsvorlage, indem Sie **Verwaltung** > **Anwendungseinstellungen** besuchen und auf **Löschen** klicken.
 
-> [!div class="mx-imgBorder"]
-> ![Vernetzte Logistik: Dashboard](./media/tutorial-iot-central-connected-logistics/connected-logistics-cleanup.png)
+Wenn Sie diese Anwendung nicht mehr benötigen, löschen Sie die Anwendungsvorlage, indem Sie zu **Verwaltung** > **Anwendungseinstellungen** navigieren und **Löschen** auswählen.
+
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-cleanup.png" alt-text="Vorlage für vernetzte Logistik":::
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Weitere Informationen zum [Konzept der vernetzten Logistik](./architecture-connected-logistics.md)
+* Weitere Informationen 
+> [!div class="nextstepaction"]
+> [Konzept der vernetzten Logistik](./architecture-connected-logistics.md)
 * Weitere Informationen zu anderen [IoT Central-Einzelhandelsvorlagen](./overview-iot-central-retail.md)
 * Erfahren Sie mehr in der [IoT Central-Übersicht](../core/overview-iot-central.md)

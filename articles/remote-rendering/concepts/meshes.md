@@ -5,18 +5,18 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: b800272a538243d39a89e4eed64bc5cbc2d53ad8
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 08d80a5ec2099147c12bcecd3b52d64429837285
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679376"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563963"
 ---
 # <a name="meshes"></a>Gittermodelle
 
 ## <a name="mesh-resource"></a>Gittermodellressource
 
-Bei Gittermodellen (Meshes) handelt es sich um eine unveränderliche [gemeinsam genutzte Ressource](../concepts/lifetime.md), die nur per [Modellkonvertierung](../how-tos/conversion/model-conversion.md) erstellt werden kann. Gittermodelle enthalten mindestens ein *untergeordnetes Gittermodell*. Für jedes untergeordnete Gittermodell wird auf ein [Material](materials.md) verwiesen, das standardmäßig zum Rendern verwendet werden soll. Fügen Sie zum Platzieren eines Gittermodells in einem 3D-Raum einer [Entität](entities.md) ein [MeshComponent](#meshcomponent)-Element hinzu.
+Bei Gittermodellen (Meshes) handelt es sich um eine unveränderliche [gemeinsam genutzte Ressource](../concepts/lifetime.md), die nur per [Modellkonvertierung](../how-tos/conversion/model-conversion.md) erstellt werden kann. Gittermodelle enthalten ein oder mehrere *untergeordnete Gittermodelle* zusammen mit einer Physikdarstellung für [Raycastabfragen](../overview/features/spatial-queries.md). Für jedes untergeordnete Gittermodell wird auf ein [Material](materials.md) verwiesen, das standardmäßig zum Rendern verwendet werden soll. Fügen Sie zum Platzieren eines Gittermodells in einem 3D-Raum einer [Entität](entities.md) ein [MeshComponent](#meshcomponent)-Element hinzu.
 
 ### <a name="mesh-resource-properties"></a>Eigenschaften von Gittermodellressourcen
 
@@ -37,6 +37,47 @@ Die `MeshComponent`-Klasse wird verwendet, um eine Instanz einer Gittermodellres
 * **Materials** (Materialien): Das Array mit den Materialien, die für die Gittermodellkomponente selbst angegeben wurden. Das Array hat immer die gleiche Länge wie das Array *Materials* (Materialien) der Gittermodellressource. Materialien, die nicht durch die Standardeinstellung des Gittermodells überschrieben werden sollen, sind in diesem Array auf *null* festgelegt.
 
 * **UsedMaterials** (Verwendete Materialien): Das Array mit den tatsächlich genutzten Materialien für die einzelnen untergeordneten Gittermodelle. Dies ist für Werte, die nicht „null“ sind, mit den Daten im Array *Materials* (Materialien) identisch. Andernfalls ist hierin der Wert aus dem Array *Materials* (Materialien) der Gittermodellinstanz enthalten.
+
+### <a name="sharing-of-meshes"></a>Gemeinsame Verwendung von Gittermodellen
+
+Eine `Mesh`-Ressource kann von mehreren Instanzen von Gittermodellkomponenten gemeinsam verwendet werden. Darüber hinaus kann die `Mesh`-Ressource, die einer Gittermodellkomponente zugeordnet ist, jederzeit programmgesteuert geändert werden. Im folgenden Code wird das Klonen von Gittermodellen veranschaulicht:
+
+```cs
+Entity CloneEntityWithModel(RemoteManager manager, Entity sourceEntity)
+{
+    MeshComponent meshComp = sourceEntity.FindComponentOfType<MeshComponent>();
+    if (meshComp != null)
+    {
+        Entity newEntity = manager.CreateEntity();
+        MeshComponent newMeshComp = manager.CreateComponent(ObjectType.MeshComponent, newEntity) as MeshComponent;
+        newMeshComp.Mesh = meshComp.Mesh; // share the mesh
+        return newEntity;
+    }
+    return null;
+}
+```
+
+```cpp
+ApiHandle<Entity> CloneEntityWithModel(ApiHandle<RemoteManager> manager, ApiHandle<Entity> sourceEntity)
+{
+    if (ApiHandle<MeshComponent> meshComp = sourceEntity->FindComponentOfType<MeshComponent>())
+    {
+        ApiHandle<Entity> newEntity = *manager->CreateEntity();
+        ApiHandle<MeshComponent> newMeshComp = manager->CreateComponent(ObjectType::MeshComponent, newEntity)->as<RemoteRendering::MeshComponent>();
+        newMeshComp->SetMesh(meshComp->GetMesh()); // share the mesh
+        return newEntity;
+    }
+    return nullptr;
+}
+```
+
+## <a name="api-documentation"></a>API-Dokumentation
+
+* [C# Mesh-Klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.mesh)
+* [C# MeshComponent-Klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.meshcomponent)
+* [C++ Mesh-Klasse](https://docs.microsoft.com/cpp/api/remote-rendering/mesh)
+* [C++ MeshComponent-Klasse](https://docs.microsoft.com/cpp/api/remote-rendering/meshcomponent)
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -10,17 +10,19 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: sudbalas
-ms.openlocfilehash: c5509d6a284ab7afe827f67b79b7be027e76f66c
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: bf758a07cff248fc0da3f279e68a14e88797e382
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068845"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984608"
 ---
 # <a name="soft-delete-will-be-enabled-on-all-key-vaults"></a>Vorläufiges Löschen wird für alle Schlüsseltresore aktiviert
 
 > [!WARNING]
 > **Breaking Change**: Die Möglichkeit, das vorläufige Löschen zu deaktivieren, wird am Ende des Jahres eingestellt, und der vorläufige Löschschutz wird für alle Schlüsseltresore automatisch aktiviert.  Azure Key Vault-Benutzer und -Administratoren sollten das vorläufige Löschen für ihre Schlüsseltresore sofort aktivieren.
+>
+> Für verwaltetes HSM ist vorläufiges Löschen standardmäßig aktiviert und kann nicht deaktiviert werden.
 
 Wenn ein Geheimnis aus einem Schlüsseltresor ohne vorläufigen Löschschutz gelöscht wird, wird das Geheimnis endgültig gelöscht. Benutzer können vorläufiges Löschen zurzeit bei der Erstellung des Schlüsseltresors deaktivieren, doch um ihre Geheimnisse vor versehentlichem oder bösartigem Löschen durch einen Benutzer zu schützen, aktiviert Microsoft bald den vorläufigen Löschschutz für **alle** Schlüsseltresore, und Benutzer haben dann nicht mehr die Möglichkeit, das vorläufige Löschen zu deaktivieren.
 

@@ -2,16 +2,16 @@
 title: 'Azure Cosmos-Emulator: Download und Versionshinweise'
 description: Hier finden Sie Hinweise zu verschiedenen Versionen des Azure Cosmos-Emulators sowie Downloadinformationen.
 ms.service: cosmos-db
-ms.topic: tutorial
+ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
-ms.date: 06/20/2019
-ms.openlocfilehash: 12e1c79e610526dec11467cc08c753bf90daa095
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 09/21/2020
+ms.openlocfilehash: da17cd1ea6dac52797162e3ac2d733ad1fd50ea1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083456"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988186"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos-Emulator: Versionshinweise und Informationen zum Download
 
@@ -26,18 +26,25 @@ Dieser Artikel zeigt die Versionshinweise zum Azure Cosmos-Emulator mit einer Li
 
 ## <a name="release-notes"></a>Versionshinweise
 
-### <a name="2112-07072020"></a>2.11.2 (07.07.2020)
+### <a name="2115-23-august-2020"></a>2.11.5 (23. August 2020)
+
+In dieser Version wurden zwei neue Startoptionen für den Cosmos-Emulator hinzugefügt: 
+
+* „/EnablePreview“: Mit dieser Option werden Previewfunktionen für den Emulator aktiviert. Auf die Previewfunktionen, die sich noch in der Entwicklung befinden, können Sie über CI und das Schreiben von Beispielen zugreifen.
+* „/EnableAadAuthentication“: Diese Option ermöglicht es dem Emulator, benutzerdefinierte Azure Active Directory-Token als Alternative zu den Azure Cosmos-Hauptschlüsseln zu akzeptieren. Diese Funktion befindet sich noch in der Entwicklung. Bestimmte Rollenzuweisungen und andere Einstellungen im Zusammenhang mit Berechtigungen werden derzeit nicht unterstützt.
+
+### <a name="2112-07-july-2020"></a>2.11.2 (7. Juli 2020)
 
 - In diesem Release wird die Erfassung der erforderlichen ETL-Ablaufverfolgungen beim Behandeln von Problemen mit dem Cosmos-Emulator geändert. WPR-Tools (Windows Performance Runtime) sind jetzt die Standardtools für die Erfassung ETL-basierter Ablaufverfolgungen. Die LOGMAN-basierte Erfassung ist veraltet. Diese Änderung ist unter anderem erforderlich, da die neuesten Windows-Sicherheitsupdates unerwartete Auswirkungen auf die Funktionsweise von LOGMAN hatten (bei Ausführung über den Cosmos-Emulator).
 
-### <a name="2111-06102020"></a>2.11.1 (10.06.2020)
+### <a name="2111-10-june-2020"></a>2.11.1 (10. Juni 2020)
 
 - Mit diesem Release werden einige Fehler im Zusammenhang mit dem Daten-Explorer des Emulators behoben. In bestimmten Fällen, in denen der Daten-Explorer des Emulators über einen Webbrowser verwendet wird, kann keine Verbindung mit dem Cosmos-Emulatorendpunkt hergestellt werden, und alle zugehörigen Aktionen wie das Erstellen einer Datenbank oder eines Containers schlagen fehl. Das zweite behobene Problem steht im Zusammenhang mit dem Erstellen eines Elements aus einer JSON-Datei, wobei die Uploadaktion des Daten-Explorers verwendet wird.
 
 ### <a name="2110"></a>2.11.0
 
 - In dieser Version wird die Unterstützung für den per Autoskalierung bereitgestellten Durchsatz eingeführt. Mit diesen neuen Features können Sie benutzerdefiniert und in Form von Anforderungseinheiten (RU/s) die Stufe für den maximal bereitgestellten Durchsatz festlegen, die automatische Skalierung für vorhandene Datenbanken und Container aktivieren und die programmgesteuerte Unterstützung durch Azure Cosmos DB SDKs nutzen.
-- Behoben wurde ein Problem bei der Abfrage umfangreicher Dokumente (mehr als 1 GB), bei der ein Emulatorfehler mit dem internen Fehlerstatuscode 500 auftrat.
+- Behoben wurde ein Problem bei der Abfrage zahlreicher Dokumente (mehr als 1 GB), bei der ein Emulatorfehler mit dem internen Fehlerstatuscode 500 auftrat.
 
 ### <a name="292"></a>2.9.2
 

@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 09/04/2020
+ms.date: 09/16/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: a79b86ec958341465a790a3a27e2f44394e35e1b
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 1c5ab172f4d6382cf09d1c1f67bfa6b673f7c82c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89487788"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982530"
 ---
 |Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -24,4 +24,6 @@ ms.locfileid: "89487788"
 |[Zertifikate mit Verwendung von RSA-Kryptografie müssen die angegebene Mindestgröße für Schlüssel aufweisen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcee51871-e572-4576-855c-047c820360f0) |Hiermit werden die Konformitätsanforderungen Ihrer Organisation verwaltet, indem eine mindestens erforderliche Schlüsselgröße für RSA-Zertifikate angegeben wird, die in Ihrem Schlüsseltresor gespeichert sind. |Audit, Deny, Disabled |[2.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Certificates_RSA_MinimumKeySize.json) |
 |[Diagnoseeinstellungen für Key Vault in Event Hub bereitstellen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fed7c8c13-51e7-49d1-8a43-8490431a0da2) |Hiermit werden die Diagnoseeinstellungen für Key Vault zum Streamen in eine regionale Event Hub-Instanz bereitgestellt, wenn eine Key Vault-Instanz erstellt oder aktualisiert wird, in der diese Diagnoseeinstellungen fehlen. |deployIfNotExists |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_DiagnosticLog_Deploy.json) |
 |[Diagnoseprotokolle in Key Vault sollten aktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcf820ca0-f99e-4f3e-84fb-66e913812d21) |Hiermit wird die Aktivierung von Diagnoseprotokollen überwacht. Auf diese Weise können Sie vergangene Aktivitäten nachvollziehen, wenn es zu einem Sicherheitsincident kommt oder Ihr Netzwerk gefährdet ist. |AuditIfNotExists, Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_AuditDiagnosticLog_Audit.json) |
+|[Für Key Vault muss eine Firewall aktiviert werden.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F55615ac9-af46-4a59-874e-391cc3dfb490) |Die Key Vault-Firewall verhindert, dass nicht autorisierter Datenverkehr Ihren Schlüsseltresor erreicht und bietet zusätzlichen Schutz für Ihre Geheimnisse. Aktivieren Sie die Key Vault-Firewall, um sicherzustellen, dass nur Datenverkehr aus zulässigen Netzwerken auf Ihren Schlüsseltresor zugreifen kann. |Audit, Disabled |[1.0.1-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/AzureKeyVaultFirewallEnabled_Audit.json) |
 |[Key Vault-Objekte müssen wiederherstellbar sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b60c0b2-2dc2-4e1c-b5c9-abbed971de53) |Diese Richtlinie überwacht, ob Schlüsseltresorobjekte wiederherstellbar sind. Das Feature „Vorläufiges Löschen“ unterstützt Sie dabei, Ressourcen für eine bestimmte Aufbewahrungsdauer (90 Tage) selbst nach einem DELETE-Vorgang beizubehalten, während das Objekt als gelöscht dargestellt wird. Wenn der Löschschutz aktiviert ist, kann ein Tresor oder ein Objekt im gelöschten Zustand erst nach Ablauf des Aufbewahrungszeitraums von 90 Tagen endgültig gelöscht werden. Diese Tresore und Objekte können weiterhin wiederhergestellt werden, sodass die Kunden sicher sein können, dass die Aufbewahrungsrichtlinie eingehalten wird. |Audit, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_Recoverable_Audit.json) |
+|[Für Key Vault muss ein privater Endpunkt konfiguriert werden.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5f0bc445-3935-4915-9981-011aa2b46147) |Mithilfe eines privaten Links können Sie Key Vault mit Ihren Azure-Ressourcen verbinden, ohne Datenverkehr über das öffentliche Internet zu senden. Der private Link bietet umfassenden Schutz vor Datenexfiltration. |Audit, Disabled |[1.0.1-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/AzureKeyVaultPrivateEndpointEnabled_Audit.json) |

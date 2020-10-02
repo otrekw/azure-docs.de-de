@@ -10,13 +10,13 @@ ms.tgt_pltfrm: azure-pipelines
 ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
-ms.custom: devops, devx-track-javascript
-ms.openlocfilehash: c83a67f7d524a062485f2c68e0adb7fdd2855a84
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.custom: devops, devx-track-js
+ms.openlocfilehash: 6bc6776df889c5c8ccc6acfe5764549ccf7354a5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462172"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320199"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>Tutorial: Bereitstellen der App auf virtuellen Linux-Computern in Azure mithilfe von Azure DevOps Services und Azure Pipelines
 
@@ -147,6 +147,7 @@ Sie benötigen eine CI-Buildpipeline, die Ihre Webanwendung veröffentlicht, sow
 Wählen Sie die Vorlage **starter** aus, und kopieren Sie den folgenden YAML-Codeausschnitt, der Ihr Java-Projekt kompiliert und Tests mit Apache Maven ausführt:
 
 ```YAML
+jobs:
 - job: Build
   displayName: Build Maven Project
   steps:
@@ -209,7 +210,7 @@ Weitere Anleitungen erhalten Sie in den Schritten im Artikel [Erstellen Ihrer No
 
 ## <a name="define-cd-steps-to-deploy-to-the-linux-vm"></a>Definieren von CD-Schritten zur Bereitstellung auf der Linux-VM
 
-1. Bearbeiten Sie die oben verwendete Pipeline, und fügen Sie einen [Bereitstellungsauftrag](/azure/devops/pipelines/process/deployment-jobs) ein, indem Sie mit der folgenden YAML-Syntax auf die Umgebung und die VM-Ressourcen verweisen, die Sie zuvor eingerichtet haben:
+1. Ändern Sie die YAML-Datei für die oben verwendete Pipeline, und fügen Sie einen [Bereitstellungsauftrag](/azure/devops/pipelines/process/deployment-jobs) ein, indem Sie mit der folgenden YAML-Syntax auf die Umgebung und die VM-Ressourcen verweisen, die Sie zuvor eingerichtet haben:
 
    ```YAML
    jobs:  
@@ -218,8 +219,7 @@ Weitere Anleitungen erhalten Sie in den Schritten im Artikel [Erstellen Ihrer No
      environment:
        name:  <environment name>
        resourceType: VirtualMachine
-       tags: web1
-     strategy:
+       tags: web
    ```
 2. Sie können bestimmte Gruppen von virtuellen Computern aus der Umgebung auswählen, die die Bereitstellung erhalten sollen. Geben Sie dazu die **Tags** an, die Sie für jeden virtuellen Computer in der Umgebung definiert haben.
 [Hier](/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema#deployment-job) finden Sie das vollständige YAML-Schema für den Bereitstellungsauftrag.

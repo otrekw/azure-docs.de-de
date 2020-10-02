@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: e12f0cd44143621d34096a6c1161a22a89d21d9b
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: c046d2e437004146b5ee4c53dd98942ca1781ad4
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077649"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983733"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>Verzweigen und Verketten von Aktivitäten in einer Azure Data Factory-Pipeline mithilfe des Azure-Portals
 
@@ -24,7 +24,7 @@ ms.locfileid: "86077649"
 
 In diesem Tutorial erstellen Sie eine Data Factory-Pipeline, die einige Ablaufsteuerungsfunktionen vorstellt. Diese Pipeline führt eine einfache Kopieraktivität aus einem Container in Azure Blob Storage in einen anderen Container im selben Speicherkonto durch. War die Kopieraktivität erfolgreich, sendet die Pipeline eine E-Mail mit Details zum erfolgreichen Kopiervorgang (beispielsweise die geschriebene Datenmenge). War die Kopieraktivität nicht erfolgreich, sendet die Pipeline eine E-Mail mit Fehlerdetails (beispielsweise die Fehlermeldung). In diesem Tutorial erfahren Sie, wie Sie Parameter übergeben.
 
-Eine allgemeine Übersicht über das Szenario: ![Übersicht](media/tutorial-control-flow-portal/overview.png)
+Eine allgemeine Übersicht über das Szenario: ![Diagramm: Azure Blob Storage als Ziel für einen Kopiervorgang. Bei erfolgreichem Vorgang wird eine E-Mail mit Details gesendet, bei nicht erfolgreichem Vorgang wird eine E-Mail mit Fehlerdetails gesendet.](media/tutorial-control-flow-portal/overview.png)
 
 In diesem Tutorial führen Sie die folgenden Schritte aus:
 

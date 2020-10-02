@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 12/27/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ed061234da27716bfcdaf1cc065568908108f90a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 814bf085ca910ef07a13df779eef25e0e6510e57
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77597807"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563438"
 ---
-Alle in Azure Files gespeicherten Daten werden im Ruhezustand mithilfe der Azure-Speicherdienstverschlüsselung (Storage Service Encryption, SSE) verschlüsselt. Die Speicherdienstverschlüsselung funktioniert ähnlich wie BitLocker unter Windows: Daten werden unterhalb der Dateisystemebene verschlüsselt. Da Daten durch die Codierung auf dem Datenträger unterhalb des Dateisystems der Azure-Dateifreigabe verschlüsselt werden, benötigen Sie keinen Zugriff auf den zugrunde liegenden Schlüssel auf dem Client, um aus der Azure-Dateifreigabe zu lesen oder in diese zu schreiben.
+Alle in Azure Files gespeicherten Daten werden im Ruhezustand mithilfe der Azure-Speicherdienstverschlüsselung (Storage Service Encryption, SSE) verschlüsselt. Die Speicherdienstverschlüsselung funktioniert ähnlich wie BitLocker unter Windows: Daten werden unterhalb der Dateisystemebene verschlüsselt. Da Daten durch die Codierung auf dem Datenträger unterhalb des Dateisystems der Azure-Dateifreigabe verschlüsselt werden, benötigen Sie keinen Zugriff auf den zugrunde liegenden Schlüssel auf dem Client, um aus der Azure-Dateifreigabe zu lesen oder in diese zu schreiben. Die Verschlüsselung ruhender Daten wird auf SMB- und NFS-Protokolle angewendet.
 
 Standardmäßig werden in Azure Files gespeicherte Daten mit von Microsoft verwalteten Schlüsseln verschlüsselt. Bei von Microsoft verwalteten Schlüsseln ist Microsoft im Besitz der Schlüssel zum Verschlüsseln/Entschlüsseln der Daten und damit dafür verantwortlich, sie in regelmäßigen Abständen zu rotieren. Sie können auch Ihre eigenen Schlüssel selbst verwalten, sodass Sie den Rotationsvorgang steuern können. Wenn Sie Ihre Dateifreigaben mit vom Kunden verwalteten Schlüsseln verschlüsseln, ist Azure Files für den Zugriff auf Ihre Schlüssel autorisiert, um Lese- und Schreibanforderungen von Ihren Clients zu erfüllen. Mit vom Kunden verwalteten Schlüsseln können Sie diese Autorisierung jederzeit widerrufen. Dies bedeutet jedoch, dass die Azure-Dateifreigabe nicht mehr über SMB oder die FileREST-API zugänglich ist.
 

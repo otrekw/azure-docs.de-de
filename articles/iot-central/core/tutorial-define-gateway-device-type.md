@@ -1,5 +1,5 @@
 ---
-title: Definieren eines neuen Gatewaygerätetyps in Azure IoT Central | Microsoft-Dokumentation
+title: 'Tutorial: Definieren eines neuen Gatewaygerätetyps in Azure IoT Central | Microsoft-Dokumentation'
 description: In diesem Tutorial für Ersteller erfahren Sie, wie Sie in Ihrer Azure IoT Central-Anwendung einen neuen IoT-Gatewaygerätetyp definieren.
 author: rangv
 ms.author: rangv
@@ -9,14 +9,14 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 2411eab50cc921a09ba55780b3c6620744a78f3f
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 58e481e34d9f798b73b72b114b071cf035c3319f
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758131"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967912"
 ---
-# <a name="define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Definieren eines neuen IoT-Gatewaygerätetyps in Ihrer Azure IoT Central-Anwendung
+# <a name="tutorial---define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Tutorial: Definieren eines neuen IoT-Gatewaygerätetyps in Ihrer Azure IoT Central-Anwendung
 
 *Dieser Artikel richtet sich an Lösungs- und Geräteentwickler.*
 
@@ -31,6 +31,9 @@ Neben der Kommunikation von nachgeschalteten Geräten mit Ihrer IoT Central-Anw
 * Senden eigener Telemetriedaten (beispielsweise zur Temperatur)
 * Reagieren auf die Aktualisierung einer schreibbaren Eigenschaft durch einen Bediener. Ein Bediener kann beispielsweise das Sendeintervall für Telemetriedaten ändern.
 * Reagieren auf Befehle (beispielsweise Neustarten des Geräts)
+
+> [!div class="checklist"]
+> Erstellen von Vorlagen für nachgeschaltete Geräte Erstellen einer Gatewaygerätevorlage Veröffentlichen der Gerätevorlage Erstellen der simulierten Geräte
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

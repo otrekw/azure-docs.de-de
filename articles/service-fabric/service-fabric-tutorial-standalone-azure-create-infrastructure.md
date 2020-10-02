@@ -4,12 +4,12 @@ description: In diesem Tutorial erfahren Sie, wie Sie die Infrastruktur von virt
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 93a7e2507ab3a467ef83924479872694cae2dd5b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e9f62f944fff331bcf2dad1b380161e563614219
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75614008"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561839"
 ---
 # <a name="tutorial-create-azure-vm-infrastructure-to-host-a-service-fabric-cluster"></a>Tutorial: Erstellen der Infrastruktur virtueller Azure-Computer zum Hosten eines Service Fabric-Clusters
 
@@ -49,7 +49,7 @@ Sie benötigen ein Azure-Abonnement, um dieses Tutorial durcharbeiten zu können
 
 8. Legen Sie als Nächstes die **NIC-Netzwerksicherheitsgruppe** auf **Erweitert** fest. Erstellen Sie eine neue Sicherheitsgruppe, und notieren Sie den Namen. Erstellen Sie dann die folgenden Regeln, um TCP-Datenverkehr von allen Quellen zuzulassen:
 
-   ![sf-inbound][sf-inbound]
+   ![Screenshot: Erstellen von Regeln zum Zulassen des eingehenden TCP-Datenverkehrs][sf-inbound]
 
    * Port `3389` für RDP und ICMP (grundlegende Konnektivität)
    * Ports `19000-19003` für Service Fabric
@@ -61,7 +61,7 @@ Sie benötigen ein Azure-Abonnement, um dieses Tutorial durcharbeiten zu können
 
 9. Fügen Sie eine weitere Regel hinzu. Legen Sie die Quelle auf **Diensttag** und das Quelldiensttag auf **VirtualNetwork** fest. In Service Fabric müssen für die Kommunikation innerhalb des Clusters die folgenden Ports geöffnet sein: 135, 137–139, 445, 20001–20031, 20606–20861.
 
-   ![vnet-inbound][vnet-inbound]
+   ![Screenshot: Erstellen von Regeln zum Zulassen von TCP-Datenverkehr für einen Cluster][vnet-inbound]
 
 10. Die übrigen Optionen sind mit ihrem Standardzustand zulässig. Sie können sie bei Bedarf überprüfen. Starten Sie dann den virtuellen Computer.
 

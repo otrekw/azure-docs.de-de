@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2019
 ms.author: ralfwi
-ms.openlocfilehash: 1c184541790830218a7376e7c4db689d4cea83bd
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 36333f10e8db45128a1fa0cd5b247656d4ca20e6
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75436647"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398964"
 ---
 # <a name="azure-germany-networking-services"></a>Netzwerkdienste von Azure Deutschland
 
@@ -41,7 +41,7 @@ Azure ExpressRoute ist in Azure Deutschland allgemein verfügbar. Weitere Inform
 * Azure Deutschland ExpressRoute-Standorte bieten optimierte Pfade (u.a. kürzeste Hops, niedrige Latenz und hohe Bandbreite) für Kunden und georedundante Azure Deutschland-Regionen.
 * Weder nutzt die private Verbindung von Azure Deutschland ExpressRoute das Internet, noch ist sie darauf angewiesen.
 * Die physische und logische Infrastruktur von Azure Deutschland ist physisch dediziert und vom internationalen Microsoft-Cloudnetzwerk getrennt.
-* Azure Deutschland ExpressRoute stellt private Verbindungen zu Microsoft Azure Cloud Services bereit, jedoch nicht zu Office 365- oder Dynamics 365-Clouddiensten.
+* Azure Deutschland ExpressRoute stellt private Verbindungen mit Microsoft Azure Cloud Services bereit, jedoch nicht mit Microsoft 365- oder Dynamics 365-Clouddiensten.
 
 ### <a name="considerations"></a>Überlegungen
 Es gibt zwei grundlegende Dienste, die private Netzwerkverbindungen für Azure Deutschland bereitstellen: ExpressRoute und VPN (in der Regel ein Site-to-Site-VPN).

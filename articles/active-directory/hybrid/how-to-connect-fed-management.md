@@ -1,7 +1,7 @@
 ---
 title: Azure AD Connect – Verwalten und Anpassen von AD FS | Microsoft-Dokumentation
 description: Enthält eine Beschreibung der AD FS-Verwaltung mithilfe von Azure AD Connect und Anpassung der AD FS-Anmeldung für Benutzer mit Azure AD Connect und PowerShell.
-keywords: AD FS, ADFS, AD FS Verwaltung, AAD Connect, Connect, anmelden, AD FS Anpassung, Vertrauensstellung reparieren, O365, Verbund, vertrauende Seite
+keywords: Active Directory-Verbunddienste (AD FS), ADFS, AD FS-Verwaltung, AAD Connect, Connect, Anmelden, AD FS-Anpassung, Vertrauensstellung reparieren, M365, Verbund, vertrauende Seite
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -18,12 +18,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72339d9ce492446d05f23b63ac2d0a1c2d62f766
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: dadffd6fe3e6b438b21900f957f0d4ef71bb23cb
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89276778"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661264"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Verwaltung und Anpassung der Active Directory-Verbunddienste mit Azure AD Connect
 In diesem Artikel wird beschrieben, wie Active Directory-Verbunddienste (AD FS) mit Azure Active Directory (Azure AD) Connect verwaltet und angepasst werden. Darüber hinaus werden andere gängige AD FS-Aufgaben behandelt, die Sie möglicherweise zur vollständigen Konfiguration einer AD FS-Farm benötigen.
@@ -31,7 +31,7 @@ In diesem Artikel wird beschrieben, wie Active Directory-Verbunddienste (AD FS) 
 | Thema | Inhalt |
 |:--- |:--- |
 | **Verwalten von AD FS** | |
-| [Reparieren der Vertrauensstellung](#repairthetrust) |Beschreibung des Vorgangs zum Reparieren der Verbundvertrauensstellung mit Office 365 |
+| [Reparieren der Vertrauensstellung](#repairthetrust) |Beschreibung des Vorgangs zum Reparieren der Verbundvertrauensstellung mit Microsoft 365. |
 | [Erstellen eines Verbunds mit Azure AD mithilfe einer alternativen Anmelde-ID](#alternateid) | Konfigurieren eines Verbunds mithilfe einer alternativen Anmelde-ID  |
 | [Hinzufügen eines AD FS-Servers](#addadfsserver) |Beschreibung des Vorgangs zum Erweitern einer AD FS-Farm mit einem zusätzlichen AD FS-Server |
 | [Hinzufügen eines AD FS-Webanwendungsproxy-Servers](#addwapserver) |Beschreibung des Vorgangs zum Erweitern einer AD FS-Farm mit einem zusätzlichen WAP-Server (Web Application Proxy) |

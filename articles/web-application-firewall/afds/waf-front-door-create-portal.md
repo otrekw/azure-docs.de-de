@@ -5,18 +5,18 @@ author: vhorne
 ms.service: web-application-firewall
 services: web-application-firewall
 ms.topic: tutorial
-ms.date: 03/10/2020
+ms.date: 09/15/2020
 ms.author: victorh
-ms.openlocfilehash: be66a93ea4a518b26d973d222caf58e73b6986a3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7c7ea5297276ed9a1d1f2ca8f4190997dcab57c3
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79475840"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602216"
 ---
 # <a name="tutorial-create-a-web-application-firewall-policy-on-azure-front-door-using-the-azure-portal"></a>Tutorial: Erstellen einer Web Application Firewall-Richtlinie auf Azure Front Door im Azure-Portal
 
-Dieses Tutorial zeigt Ihnen, wie Sie eine einfache Azure Web Application Firewall-Richtlinie (WAF) erstellen und mithilfe von Azure Front Door auf einen Front-End-Host anwenden.
+Dieses Tutorial zeigt Ihnen, wie Sie eine einfache Azure Web Application Firewall-Richtlinie (WAF) erstellen und auf einen Front-End-Host in Azure Front Door anwenden.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -68,7 +68,7 @@ Um WAF in Aktion zu sehen, können Sie den Modus von **Erkennung** in **Prävent
 
 Sie können eine benutzerdefinierte Regel erstellen, indem Sie im Abschnitt **Benutzerdefinierte Regeln** die Option **Benutzerdefinierte Regel hinzufügen** wählen. Die Seite für die Konfiguration einer benutzerdefinierten Regel wird geöffnet. Unten ist ein Beispiel für die Konfiguration einer benutzerdefinierten Regel zum Blockieren einer Anforderung für den Fall angegeben, in dem die Abfragezeichenfolge **blockme** enthält.
 
-![Ändern des WAF-Richtlinienmodus](../media/waf-front-door-create-portal/customquerystring2.png)
+![Benutzerdefinierte Regeln](../media/waf-front-door-create-portal/customquerystring2.png)
 
 ### <a name="default-rule-set-drs"></a>Standardregelsatz
 
@@ -76,8 +76,11 @@ Der von Azure verwaltete Standardregelsatz ist standardmäßig aktiviert. Um ein
 
  ![Ändern des WAF-Regelsatzes](../media/waf-front-door-create-portal/managed2.png)
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Entfernen Sie die Ressourcengruppe und alle dazugehörigen Ressourcen, wenn Sie sie nicht mehr benötigen.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Weitere Informationen zu Azure Web Application Firewall](../overview.md)
-> [Weitere Informationen zu Azure Front Door](../../frontdoor/front-door-overview.md)
+> [Informieren Sie sich ausführlicher über Azure Front Door.](../../frontdoor/front-door-overview.md)

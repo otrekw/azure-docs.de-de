@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 08/27/2020
-ms.openlocfilehash: 56292d3e8ba4c9ec89d73f10640264c178f8a9a7
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 78ec233e618511c748ed9f51b97161eddc5e8308
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89255017"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707525"
 ---
 # <a name="create-a-synapse-workspace"></a>Erstellen eines Synapse-Arbeitsbereichs
 
@@ -24,18 +24,14 @@ In diesem Tutorial erfahren Sie, wie Sie einen Synapse-Arbeitsbereich, einen SQL
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com), und suchen Sie oben nach **Synapse**.
 1. Wählen Sie in den Suchergebnissen unter **Dienste** den Eintrag **Azure Synapse Analytics (Arbeitsbereichsvorschau)** aus.
-1. Wählen Sie **Hinzufügen** aus, um einen Arbeitsbereich mit diesen Einstellungen zu erstellen:
-
-    |Registerkarte|Einstellung | Vorgeschlagener Wert | BESCHREIBUNG |
-    |---|---|---|---|
-    |Grundlagen|**Arbeitsbereichsname**|Sie können einen beliebigen Namen eingeben.| In diesem Dokument wird **myworkspace** verwendet.|
-    |Grundlagen|**Region**|Wählen Sie dieselbe Region wie für das Speicherkonto aus.|
-
+1. Wählen Sie **Hinzufügen** aus, um einen Arbeitsbereich zu erstellen.
+1. Wählen Sie unter **Grundlagen** einen Namen für den Arbeitsbereich aus. In diesem Tutorial wird **myworkspace** verwendet.
 1. Zum Erstellen eines Arbeitsbereichs benötigen Sie ein ADLSGEN2-Konto. Am einfachsten ist es, ein solches Konto neu zu erstellen. Wenn Sie ein vorhandenes Konto verwenden möchten, müssen Sie einige zusätzliche Konfigurationsschritte ausführen. 
 1. OPTION 1: Erstellen eines neuen ADLSGEN2-Kontos 
-    1. Klicken Sie unter **Data Lake Storage Gen 2 auswählen** auf **Neu erstellen**, und geben Sie **contosolake** als Namen ein.
-    1. Klicken Sie unter **Data Lake Storage Gen 2 auswählen** auf **Dateisystem**, und geben Sie **users** als Namen ein.
-1. OPTION 2: Anweisungen finden Sie unter **Vorbereiten eines Speicherkontos** am Ende dieses Dokuments.
+    1. Navigieren Sie zu **Data Lake Storage Gen 2 auswählen**. 
+    1. Klicken Sie auf **Neu erstellen**, und geben Sie den Namen **contosolake** ein.
+    1. Klicken Sie auf **Dateisystem**, und geben Sie den Namen **users** ein.
+1. OPTION 2: Verwenden eines vorhandenen ADLSGEN2-Kontos Anweisungen finden Sie unter **Vorbereiten eines ADLSGEN2-Speicherkontos** am Ende dieses Dokuments.
 1. Ihr Azure Synapse-Arbeitsbereich verwendet dieses Speicherkonto als „primäres“ Speicherkonto und den Container zum Speichern von Arbeitsbereichsdaten. Im Arbeitsbereich werden Daten in Apache Spark-Tabellen gespeichert. Die Spark-Anwendungsprotokolle werden im Ordner **/synapse/workspacename** gespeichert.
 1. Wählen Sie **Bewerten + erstellen** > **Erstellen** aus. Ihr Arbeitsbereich steht nach wenigen Minuten zur Verfügung.
 
@@ -94,29 +90,23 @@ Im Gegensatz zu den anderen Arten von Pools basiert die Abrechnung für SQL On-D
 * SQL On-Demand verfügt über eigene SQL On-Demand-Datenbanken, die unabhängig von einem SQL On-Demand-Pool vorhanden sind.
 * Ein Arbeitsbereich besitzt immer nur genau einen SQL On-Demand-Pool mit dem Namen **SQL On-Demand**.
 
-## <a name="prepare-a-storage-account"></a>Vorbereiten eines Speicherkontos
+## <a name="preparing-a-adlsgen2-storage-account"></a>Vorbereiten eines ADLSGEN2-Speicherkontos
+
+### <a name="perform-the-following-steps-before-you-create-your-workspace"></a>Führen Sie die folgenden Schritte aus, BEVOR Sie den Arbeitsbereich erstellen:
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
-1. Erstellen Sie ein neues Speicherkonto mit den folgenden Einstellungen:
-
-    |Registerkarte|Einstellung | Vorgeschlagener Wert | BESCHREIBUNG |
-    |---|---|---|---|
-    |Grundlagen|**Speicherkontoname**| Wählen Sie einen beliebigen Namen aus.| In diesem Dokument wird der Name **contosolake** verwendet.|
-    |Grundlagen|**Kontoart**| **StorageV2** ||
-    |Grundlagen|**Location**|Wählen Sie einen beliebigen Standort aus.| Wir empfehlen Ihnen, Ihren Azure Synapse Analytics-Arbeitsbereich und das Azure Data Lake Storage Gen2-Konto in derselben Region anzuordnen.|
-    |Erweitert|**Data Lake Storage Gen2**|**Aktiviert**| Azure Synapse funktioniert nur mit Speicherkonten, bei denen diese Einstellung aktiviert ist.|
-    |||||
-
-1. Wählen Sie nach dem Erstellen des Speicherkontos im linken Bereich die Option **Zugriffssteuerung (IAM)** aus. Weisen Sie anschließend die folgenden Rollen zu, bzw. stellen Sie sicher, dass sie bereits zugewiesen sind:
+1. Navigieren Sie zu Ihrem vorhandenen Speicherkonto.
+1. Wählen Sie im linken Bereich **Zugriffssteuerung (IAM)** aus. 
+1. Weisen Sie die folgenden Rollen zu, bzw. stellen Sie sicher, dass sie bereits zugewiesen sind:
     * Weisen Sie sich selbst die Rolle **Besitzer** zu.
     * Weisen Sie sich selbst die Rolle **Besitzer von Speicherblobdaten** zu.
 1. Wählen Sie im linken Bereich die Option **Container** aus, und erstellen Sie einen Container.
-1. Sie können dem Container einen beliebigen Namen geben. In diesem Dokument hat der Container den Namen **users**.
+1. Sie können dem Container einen Namen geben. In diesem Dokument wird der Name **users** verwendet.
 1. Übernehmen Sie die Standardeinstellung **Öffentliche Zugriffsebene**, und wählen Sie anschließend **Erstellen** aus.
 
-### <a name="configure-access-to-the-storage-account-from-your-workspace"></a>Konfigurieren des Zugriffs auf das Speicherkonto vom Arbeitsbereich
+### <a name="perform-the-following-steps-after-you-create-your-workspace"></a>Führen Sie die folgenden Schritte aus, NACHDEM Sie den Arbeitsbereich erstellt haben:
 
-Verwaltete Identitäten für Ihren Azure Synapse-Arbeitsbereich verfügen unter Umständen bereits über Zugriff auf das Speicherkonto. Führen Sie die folgenden Schritte aus, um dies zu überprüfen:
+Konfigurieren Sie den Zugriff auf das Speicherkonto über den Arbeitsbereich. Verwaltete Identitäten für Ihren Azure Synapse-Arbeitsbereich verfügen unter Umständen bereits über Zugriff auf das Speicherkonto. Führen Sie die folgenden Schritte aus, um dies zu überprüfen:
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com) und dann das primäre Speicherkonto, das Sie für Ihren Arbeitsbereich ausgewählt haben.
 1. Wählen Sie im linken Bereich **Zugriffssteuerung (IAM)** aus.

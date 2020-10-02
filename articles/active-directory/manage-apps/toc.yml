@@ -57,10 +57,16 @@
           href: developer-guidance-for-integrating-applications.md
     - name: Einmaliges Anmelden
       items:
-        - name: Optionen für einmaliges Anmelden
-          href: sso-options.md
         - name: Planen einer Bereitstellung für einmaliges Anmelden
           href: plan-sso-deployment.md
+        - name: Optionen für einmaliges Anmelden
+          href: sso-options.md
+        - name: SAML-basiertes SSO
+          href: configure-saml-single-sign-on.md
+        - name: Kennwortbasiertes einmaliges Anmelden
+          href: configure-password-single-sign-on-non-gallery-applications.md
+        - name: Auf Verknüpfungen basiertes SSO
+          href: configure-linked-sign-on.md
         - name: Einmaliges Anmelden mit einem Klick
           href: one-click-sso-tutorial.md
     - name: Anwendungssicherheit
@@ -102,14 +108,6 @@
 - name: Anleitungen
   expanded: false
   items:
-    - name: Einmaliges Anmelden konfigurieren
-      items:
-        - name: Konfigurieren des SAML-basierten einmaligen Anmeldens
-          href: configure-saml-single-sign-on.md
-        - name: Konfigurieren der kennwortbasierten Anmeldung
-          href: configure-password-single-sign-on-non-gallery-applications.md
-        - name: Konfigurieren der Anmeldung über Link
-          href: configure-linked-sign-on.md
     - name: Zuweisen von Benutzern und Verwalten des Zugriffs auf Apps
       items:
         - name: Konfigurieren der Benutzereinwilligung

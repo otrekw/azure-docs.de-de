@@ -2,22 +2,22 @@
 title: 'Schnellstart: LUIS-SDK-Clientbibliotheken (Language Understanding)'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mit den LUIS-SDK-Clientbibiliotheken eine LUIS-App mithilfe von C#, Python oder JavaScript abfragen.
 ms.topic: quickstart
-ms.date: 09/01/2020
-keywords: Azure, künstliche Intelligenz, KI, Verarbeitung natürlicher Sprache, NLP, Verstehen natürlicher Sprache, NLU, KI-Konversation, Konversations-KI, KI Chatbot, Chatbot Maker, LUIS, NLP KI, LUIS KI, Azure LUIS, natürliche Sprache verstehen
+ms.date: 09/14/2020
+keywords: Azure, künstliche Intelligenz, KI, Verarbeitung natürlicher Sprache, NLP, LUIS, Azure LUIS, Verstehen natürlicher Sprache, KI Chatbot, Chatbot Maker, natürliche Sprache verstehen
 ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-diberry-3core
-ms.openlocfilehash: 6bcdca85125d44475fadfd195c1dfda88f761f88
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 64288bbffa2d2c24e2f719477d98426f52da4070
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89323087"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972618"
 ---
 # <a name="quickstart-language-understanding-luis-sdk-client-libraries-to-create-and-query-your-luis-app"></a>Schnellstart: LUIS-SDK-Clientbibliotheken (Language Understanding) zum Erstellen und Abfragen Ihrer LUIS-App
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie mit den LUIS-SDK-Clientbibiliotheken eine LUIS-App mithilfe von C#, Python oder JavaScript abfragen.
+In dieser Schnellstartanleitung erfahren Sie, wie Sie mit den LUIS-SDK-Clientbibliotheken eine Azure LUIS-KI-App (Künstliche Intelligenz) mithilfe von C#, Python oder JavaScript erstellen und abfragen.
 
-Language Understanding (LUIS) ermöglicht das Anwenden benutzerdefinierter Machine Learning-Intelligenz auf Benutzertext mit natürlicher Sprache, um die allgemeine Bedeutung vorherzusagen sowie relevante, detaillierte Informationen zu extrahieren.
+Language Understanding (LUIS) ermöglicht das Anwenden von NLP (Natural Language Processing, Verarbeitung natürlicher Sprache) auf Benutzertext mit natürlicher Sprache, um die allgemeine Bedeutung vorherzusagen sowie relevante, detaillierte Informationen zu extrahieren.
 
 * Mit der Clientbibliothek des **Authoring SDK** können Sie Ihre LUIS-App erstellen, bearbeiten, trainieren und veröffentlichen. * Mit der Clientbibliothek des **Prediction Runtime SDK** können Sie die veröffentlichte App abfragen.
 
@@ -45,7 +45,7 @@ Sie können die App über das [LUIS-Portal](https://www.luis.ai) und die Azure-R
 * Trainieren: Wenn ein Trainingsfehler angezeigt wird, weist dies normalerweise auf eine leere App (keine Absichten mit Beispieläußerungen) oder eine App mit falsch formatierten Absichten oder Entitäten hin.
 * Sonstige Fehler: Da der Code die Clientbibliotheken mit Text- und JSON-Objekten aufruft, vergewissern Sie sich, dass der Code nicht geändert wurde.
 
-Andere Fehler: Wenn ein Fehler auftritt, der in der obigen Liste nicht behandelt wird, teilen Sie uns dies unten auf dieser Seite über den Feedbackbereich mit. Geben Sie die Programmiersprache und die Version der Clientbibliotheken an, die Sie installiert haben. 
+Andere Fehler: Wenn ein Fehler auftritt, der in der obigen Liste nicht behandelt wird, teilen Sie uns dies unten auf dieser Seite über den Feedbackbereich mit. Geben Sie die Programmiersprache und die Version der Clientbibliotheken an, die Sie installiert haben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -53,3 +53,5 @@ Andere Fehler: Wenn ein Fehler auftritt, der in der obigen Liste nicht behandelt
 * [Neuigkeiten](whats-new.md)
 * [Absichten](luis-concept-intent.md), [Entitäten](luis-concept-entity-types.md), [Beispieläußerungen](luis-concept-utterance.md) und [vordefinierte Entitäten](luis-reference-prebuilt-entities.md)
 * Den Quellcode für dieses Beispiel finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code).
+* Verstehen natürlicher Sprache: [Verstehen natürlicher Sprache (Natural Language Understanding, NLU) und Verarbeitung natürlicher Sprache (Natural Language Processing, NLP)](artificial-intelligence.md)
+* Bots: [KI-Chatbots](luis-csharp-tutorial-bf-v4.md "Tutorial zu Chatbot Maker")

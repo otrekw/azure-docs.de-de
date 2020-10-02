@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05a3a8cf14a591dd3037175e4eed5b5bd8d3096c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4298518dae9afdf197321073846fa1ab9262ec0a
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78672658"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601383"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>Informationen zu sicheren, von Azure verwalteten Arbeitsstationen
 
@@ -64,7 +64,7 @@ Alle Benutzer und Operatoren profitieren von der Verwendung einer sicheren Arbei
 * Hochsensible Arbeitsstationen, z.B. SWIFT-Bezahlterminals
 * Arbeitsstationen, auf denen Geschäftsgeheimnisse verarbeitet werden
 
-Zur Risikominimierung sollten Sie erhöhte Sicherheitskontrollen für privilegierte Arbeitsstationen implementieren, die diese Konten verwenden. Weitere Informationen finden Sie im [Leitfaden zur Bereitstellung von Azure Active Directory-Funktionen](../fundamentals/active-directory-deployment-checklist-p2.md) sowie unter [Office 365-Roadmap](https://aka.ms/o365secroadmap) und [Sichern des privilegierten Zugriffs (Roadmap)](https://aka.ms/sparoadmap).
+Zur Risikominimierung sollten Sie erhöhte Sicherheitskontrollen für privilegierte Arbeitsstationen implementieren, die diese Konten verwenden. Weitere Informationen finden Sie im [Leitfaden zur Bereitstellung von Azure Active Directory-Funktionen](../fundamentals/active-directory-deployment-checklist-p2.md) sowie unter [Microsoft 365-Roadmap](https://aka.ms/o365secroadmap) und [Sichern des privilegierten Zugriffs (Roadmap)](https://aka.ms/sparoadmap).
 
 ## <a name="why-use-dedicated-workstations"></a>Warum sollen dedizierte Arbeitsstationen verwendet werden?
 
@@ -73,7 +73,7 @@ Es ist zwar möglich, ein bestehendes Gerät abzusichern, aber es ist besser, di
 Eine wachsende Anzahl von Angriffsvektoren durch E-Mail und Webbrowsing macht es immer schwieriger, sicherzustellen, dass einem Gerät vertraut werden kann. Dieser Leitfaden geht davon aus, dass eine dedizierte Arbeitsstation von Standardproduktivität, Surfen im Internet und E-Mail isoliert ist. Das Entfernen von Produktivität, Surfen im Internet und E-Mail von einem Gerät kann sich negativ auf die Produktivität auswirken. Diese Sicherheitsmaßnahme ist jedoch in der Regel bei Szenarien akzeptabel, in denen die Arbeitsaufgaben diese Funktionen nicht explizit erfordern und das Sicherheitsrisiko hoch ist.
 
 > [!NOTE]
-> Das Surfen im Internet bezieht sich hier auf den allgemeinen Zugriff auf beliebige Websites, der eine risikoreiche Aktivität darstellen kann. Ein solches Surfen unterscheidet sich deutlich von der Verwendung eines Webbrowsers für den Zugriff auf eine kleine Anzahl bekannter administrativer Websites für Dienste wie Azure, Office 365, andere Cloud-Anbieter und SaaS-Anwendungen.
+> Das Surfen im Internet bezieht sich hier auf den allgemeinen Zugriff auf beliebige Websites, der eine risikoreiche Aktivität darstellen kann. Ein solches Surfen unterscheidet sich deutlich von der Verwendung eines Webbrowsers für den Zugriff auf eine kleine Anzahl bekannter administrativer Websites für Dienste wie Azure, Microsoft 365, andere Cloud-Anbieter und SaaS-Anwendungen.
 
 Eindämmungsstrategien stärken die Sicherheit, indem sie die Anzahl und Art der Kontrollen erhöhen, die einen Angreifer davon abhalten, auf sensible Daten zuzugreifen. Das in diesem Artikel beschriebene Modell verwendet ein Design mit mehrstufigen Berechtigungen und schränkt Administratorrechte auf bestimmte Geräte ein.
 

@@ -5,14 +5,14 @@ author: KishorIoT
 ms.author: nandab
 ms.service: iot-central
 ms.subservice: iot-central-retail
-ms.topic: overview
+ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: 430f477422e040e0e7e28fd69a1cbc18bce7d656
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: 827d571a6545d0aaffb0f96134fcf094eaa5f26b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "81001279"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980611"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-smart-inventory-management-application-template"></a>Tutorial: Bereitstellen und Durchlaufen einer Anwendungsvorlage für intelligente Bestandsverwaltung
 
@@ -36,7 +36,7 @@ Mithilfe der folgenden Schritte können Sie eine Anwendung erstellen.
 1. Navigieren Sie zur Anwendungs-Manager-Website von Azure IoT Central. Wählen Sie auf der linken Navigationsleiste **Erstellen** aus, und klicken Sie dann auf die Registerkarte **Einzelhandel**.
 
     > [!div class="mx-imgBorder"]
-    > ![Intelligente Bestandsverwaltung: Dashboard](./media/tutorial-iot-central-smart-inventory-management/iotc_retail_homepage.png)
+    > ![Screenshot: Auswählen der Anwendungsvorlage für intelligente Bestandsverwaltung](./media/tutorial-iot-central-smart-inventory-management/iotc_retail_homepage.png)
 
 2. Wählen Sie die Registerkarte **Einzelhandel** und unter **Intelligente Bestandsverwaltung** die Option **App erstellen** aus.
 
@@ -47,10 +47,10 @@ Mithilfe der folgenden Schritte können Sie eine Anwendung erstellen.
    **Erstellen**: Wählen Sie unten auf der Seite „Erstellen“ aus, um Ihre Anwendung bereitzustellen.
 
     > [!div class="mx-imgBorder"]
-    > ![Intelligente Bestandsverwaltung: Dashboard](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_app_create.png)
+    > ![Screenshot: Erstellen einer App auf der Grundlage der Anwendungsvorlage für intelligente Bestandsverwaltung](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_app_create.png)
 
     > [!div class="mx-imgBorder"]
-    > ![Abrechnungsinformationen der intelligenten Bestandsverwaltung](./media/tutorial-iot-central-smart-inventory-management/smart-inventory-management-app-create-billinginfo.png)
+    > ![Screenshot: Abrechnungsoptionen beim Erstellen der Anwendung](./media/tutorial-iot-central-smart-inventory-management/smart-inventory-management-app-create-billinginfo.png)
 
 ## <a name="walk-through-the-application"></a>Einführung in die Anwendung 
 
@@ -63,14 +63,14 @@ Das Dashboard ist logisch in zwei verschiedene Gateway-Geräteverwaltungsvorgän
    * Anzeigen von Gatewaystandort, Status und zugehörigen Details 
 
 > [!div class="mx-imgBorder"]
-> ![Intelligente Bestandsverwaltung: Dashboard](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_dashboard1.png)
+> ![Screenshot: obere Hälfte des Dashboards für die intelligente Bestandsverwaltung](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_dashboard1.png)
 
    * Sie können die Gesamtanzahl der Gateways, der aktiven und der unbekannten Tags einfach nachverfolgen.
    * Sie können Vorgänge der Geräteverwaltung durchführen, beispielsweise Firmwareupdates, Deaktivieren und Aktivieren von Sensoren sowie Aktualisieren von Sensorschwellenwerten, Telemetrieintervallen und Geräteserviceverträgen.
    * Gatewaygeräte können mithilfe eines vollständigen oder inkrementellen Scans bedarfsgesteuert die Bestandsverwaltung durchführen.
 
 > [!div class="mx-imgBorder"]
-> ![Intelligente Bestandsverwaltung: Dashboard](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_dashboard2.png)
+> ![Screenshot: untere Hälfte des Dashboards für die intelligente Bestandsverwaltung](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_dashboard2.png)
 
 ## <a name="device-template"></a>Gerätevorlage
 Klicken Sie auf die Registerkarte „Gerätevorlagen“, dann wird das Gatewayfunktionsmodell angezeigt. Ein Funktionsmodell ist um zwei unterschiedliche Schnittstellen strukturiert: **Gatewaytelemetrie und -eigenschaften** und **Gatewaybefehle**.
@@ -78,13 +78,13 @@ Klicken Sie auf die Registerkarte „Gerätevorlagen“, dann wird das Gatewayfu
 **Gatewaytelemetrie und -eigenschaften:** Diese Schnittstelle stellt die gesamte Telemetrie im Zusammenhang mit Sensor-, Standort- und Geräteinformationen sowie Gerätezwillings-Eigenschaftsfunktionen wie Gatewayschwellenwerten und Aktualisierungsintervallen dar.
 
 > [!div class="mx-imgBorder"]
-> ![Intelligente Bestandsverwaltung: Dashboard](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_devicetemplate1.png)
+> ![Screenshot: Gatewaygerätevorlage für den Bestand in der Anwendung](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_devicetemplate1.png)
 
 
 **Gatewaybefehle:** Diese Schnittstelle organisiert alle Gatewaybefehlsfunktionen.
 
 > [!div class="mx-imgBorder"]
-> ![Intelligente Bestandsverwaltung: Dashboard](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_devicetemplate2.png)
+> ![Screenshot: Schnittstelle für Gatewaybefehle in der Gatewaygerätevorlage für den Bestand](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_devicetemplate2.png)
 
 ## <a name="rules"></a>Regeln
 Wählen Sie die Registerkarte „Regeln“ aus, um zwei verschiedene Regeln anzuzeigen, die in dieser Anwendungsvorlage vorhanden sind. Diese Regeln sind so konfiguriert, dass sie zwecks weiterer Untersuchungen E-Mail-Benachrichtigungen an die Operatoren senden.
@@ -94,7 +94,7 @@ Wählen Sie die Registerkarte „Regeln“ aus, um zwei verschiedene Regeln anzu
 **Unbekannte Tags:** Es ist wichtig, alle RFID- und BLE-Tags nachzuverfolgen, die einer Ressource zugeordnet sind. Wenn das Gateway zu viele unbekannte Tags erkennt, deutet dies auf Probleme bei der Synchronisierung in den Tagbeschaffungsanwendungen hin.
 
 > [!div class="mx-imgBorder"]
-> ![Intelligente Bestandsverwaltung: Dashboard](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_rules.png)
+> ![Screenshot: Liste der Regeln in der Anwendung für intelligente Bestandsverwaltung](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_rules.png)
 
 ## <a name="jobs"></a>Aufträge
 Wählen Sie die Registerkarte „Aufträge“ aus, um fünf verschiedene Aufträge in dieser Anwendungsvorlage anzuzeigen: Sie können die Funktion für Aufträge nutzen, um lösungsweite Vorgänge auszuführen. Hier verwenden die Aufträge der Bestandsverwaltung die Funktion für Gerätebefehle und -zwillinge zum Ausführen von Aufgaben wie:
@@ -103,16 +103,18 @@ Wählen Sie die Registerkarte „Aufträge“ aus, um fünf verschiedene Aufträ
    * Durchführen von Bestandsüberprüfung in der gesamten Lösung nach Bedarf
 
 > [!div class="mx-imgBorder"]
-> ![Intelligente Bestandsverwaltung: Dashboard](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_jobs.png)
+> ![Screenshot: Liste der Aufträge in der Anwendung für intelligente Bestandsverwaltung](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_jobs.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Wenn Sie diese Anwendung nicht mehr verwenden möchten, löschen Sie die Anwendungsvorlage, indem Sie **Verwaltung** > **Anwendungseinstellungen** besuchen und auf **Löschen** klicken.
 
 > [!div class="mx-imgBorder"]
-> ![Intelligente Bestandsverwaltung: Dashboard](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_cleanup.png)
+> ![Screenshot: Löschen der Anwendung, wenn Sie sie nicht mehr benötigen](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_cleanup.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Erfahren Sie mehr über [Konzepte der intelligenten Bestandsverwaltung](./architecture-smart-inventory-management.md).
+* Informieren Sie sich ausführlicher über die intelligente Bestandsverwaltung: 
+> [!div class="nextstepaction"]
+> [Architektur der IoT Central-Anwendungsvorlage für intelligente Bestandsverwaltung](./architecture-smart-inventory-management.md)
 * Weitere Informationen zu anderen [IoT Central-Einzelhandelsvorlagen](./overview-iot-central-retail.md)
 * Lesen Sie die [Übersicht über IoT Central](../core/overview-iot-central.md).

@@ -1,6 +1,6 @@
 ---
 title: Was ist dediziertes HSM? Azure Dedicated HSM | Microsoft-Dokumentation
-description: Die Übersicht zu Azure Dedicated HSM bietet Schlüsselspeicherfunktionen innerhalb von Azure, die die Anforderungen der Zertifizierung „FIPS 140-2 Level 3“ erfüllen.
+description: Hier erfahren Sie mehr über Azure Dedicated HSM, einen Azure-Dienst, der Speicherung von kryptografischen Schlüsseln in Azure bietet.
 services: dedicated-hsm
 author: msmbaldwin
 manager: rkarlin
@@ -13,12 +13,12 @@ ms.topic: overview
 ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
-ms.openlocfilehash: dd5ce117645ef2b368bbf8f0e441770d6e746b5b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6eb82400b2f598b4b54da4b238f4bce71d83de6b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "70881081"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970212"
 ---
 # <a name="what-is-azure-dedicated-hsm"></a>Was ist Azure Dedicated HSM?
 
@@ -70,7 +70,7 @@ Azure Dedicated HSM eignet sich am besten für Lift & Shift-Szenarien, die einen
 
 Azure Dedicated HSM ist für die folgende Art von Szenario nicht gut geeignet: Für Microsoft-Clouddienste, die die Verschlüsselung mit von Kunden verwalteten Schlüsseln unterstützen (etwa Azure Information Protection, Azure Disk Encryption, Azure Data Lake Store, Azure Storage, Azure SQL-Datenbank, Customer Key für Office 365), steht keine Integration für Azure Dedicated HSM zur Verfügung.
 
-### <a name="it-depends"></a>Abhängig vom Szenario
+### <a name="it-depends"></a>Das ist unterschiedlich.
 
 Ob Azure Dedicated HSM für Sie funktioniert, hängt von einer potenziell komplexen Mischung aus Anforderungen und Kompromissen ab, die Sie eingehen können oder auch nicht. Ein Beispiel ist die FIPS 140-2 Level 3-Anforderung. Diese Anforderung ist verbreitet, und Dedicated HSM ist zurzeit die einzige Möglichkeit, sie zu erfüllen. Wenn diese gesetzlichen Anforderungen nicht relevant sind, besteht häufig die Wahl zwischen Azure Key Vault und Dedicated HSM. Werten Sie Ihre Anforderungen vor einer Entscheidung aus.
 
@@ -87,7 +87,7 @@ Dies ist ein hochgradig spezialisierter Dienst. Daher empfehlen wir Ihnen, die S
 
 Die [Gemalto-Integrationsleitfäden](https://safenet.gemalto.com/partners/microsoft/) helfen dabei, die Bereitstellung von HSMs in einer vorhandenen virtuellen Netzwerkumgebung zu erleichtern. Es gibt auch Anleitungen, die Sie beim Bestimmen der Einrichtung Ihrer Bereitstellungsarchitektur unterstützen.
 
-* [Hochverfügbarkeit](high-availability.md)
+* [Hohe Verfügbarkeit](high-availability.md)
 * [Physische Sicherheit](physical-security.md)
 * [Netzwerk](networking.md)
 * [Unterstützungsmöglichkeiten](supportability.md)

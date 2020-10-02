@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/21/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 280dda4d3864f2c659272ffb63d6ac2566524c45
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 64a95a14f6832e3f109335b5525b9a5dc1a9ec27
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549427"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662288"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-askspoke"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit askSpoke
 
@@ -35,9 +35,6 @@ Für die ersten Schritte benötigen Sie Folgendes:
 * Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
 * Ein askSpoke-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist.
 
-> [!NOTE]
-> Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
-
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
@@ -45,6 +42,9 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 * askSpoke unterstützt **SP- und IDP**-initiiertes einmaliges Anmelden.
 * askSpoke unterstützt die **Just-In-Time**-Benutzerbereitstellung.
 * Nach dem Konfigurieren von askSpoke können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+
+> [!NOTE]
+> Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
 
 ## <a name="adding-askspoke-from-the-gallery"></a>Hinzufügen von askSpoke aus dem Katalog
 
@@ -57,7 +57,7 @@ Zum Konfigurieren der Integration von askSpoke in Azure AD müssen Sie askSpoke 
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **askSpoke** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **askSpoke** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-askspoke"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für askSpoke
+## <a name="configure-and-test-azure-ad-sso-for-askspoke"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für askSpoke
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit askSpoke unter Verwendung einer Testbenutzerin namens **B.Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in askSpoke eingerichtet werden.
 
@@ -89,7 +89,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    Geben Sie im Textfeld **Anmelde-URL** eine URL ein: `https://askspoke.com/login`.
+    Geben Sie im Textfeld **Anmelde-URL** die URL ein: `https://askspoke.com/login`.
 
 1. Die askSpoke-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute.
 
@@ -146,15 +146,15 @@ In diesem Abschnitt ermöglichen Sie B.Simon die Verwendung des einmaligen Anmel
 
 1. Klicken Sie im linken Navigationsbereich auf **Einstellungen**.
 
-    ![askSpoke-Konfiguration](./media/askspoke-tutorial/configure1.png)
+    ![Registerkarte für askSpoke-Einstellungen](./media/askspoke-tutorial/configure1.png)
 
 1. Scrollen Sie nach unten zu **SSO**, und klicken Sie auf **Verbinden**.
 
-    ![askSpoke-Konfiguration](./media/askspoke-tutorial/configure2.png)
+    ![askSpoke: Verbinden](./media/askspoke-tutorial/configure2.png)
 
 1. Führen Sie im Abschnitt **SAML und SCIM aktivieren** die folgenden Schritte aus:
 
-    ![askSpoke-Konfiguration](./media/askspoke-tutorial/configure3.png)
+    ![askSpoke: Abschnitt „SAML und SCIM aktivieren“](./media/askspoke-tutorial/configure3.png)
 
     1. Fügen Sie im Textfeld **Anmelde-URL** den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
@@ -187,6 +187,3 @@ Wenn Sie im Zugriffsbereich auf die Kachel „askSpoke“ klicken, sollten Sie a
 - [Testen von askSpoke mit Azure AD](https://aad.portal.azure.com/)
 
 - [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [Schützen von askSpoke mit erweiterter Sichtbarkeit und komplexeren Kontrollen](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 1aa52c81b7abbfb355ef06f6ae93a5dd4c985042
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f5b5f115ab2fb7036287c976a94b9e123bf6ed42
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88532397"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982806"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-verasmart"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit VeraSMART
 
@@ -131,7 +131,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Navigieren Sie zu **Administration** -> **Security** -> **Authentication Configuration** (Verwaltung > Sicherheit > Authentifizierungskonfiguration).
 
-    ![Konfiguration](./media/verasmart-tutorial/configuration.png)
+    ![Screenshot: VeraSMART mit den ausgewählten Optionen „Administration“ > „Security“ > „Authentication Configuration“ (Verwaltung > Sicherheit > Authentifizierungskonfiguration)](./media/verasmart-tutorial/configuration.png)
 
 1. Führen Sie auf der folgenden Seite die folgenden Schritte aus:
 

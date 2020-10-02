@@ -12,12 +12,12 @@ ms.date: 11/04/2019
 ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 713b4ed2559e3cd16943af92e68818047e249ef4
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 96b4cb6f751a5d2bc4259117007b3abec2e0598d
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501013"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069576"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Erteilen einer mandantenweiten Administratoreinwilligung für eine Anwendung
 
@@ -32,15 +32,12 @@ Sie müssen sich als [globaler Administrator](../users-groups-roles/directory-as
 > [!IMPORTANT]
 > Wenn für eine Anwendung die mandantenweite Administratoreinwilligung erteilt wurde, können sich alle Benutzer bei der Anwendung anmelden, es sei denn eine Benutzerzuweisung ist erforderlich. Sie benötigen die Benutzerzuweisung und müssen dann der Anwendung Benutzer oder Gruppen zuweisen, um zu bestimmen, welche Benutzer sich bei der Anwendung anmelden dürfen. Weitere Informationen finden Sie unter [Zuweisen von Benutzern und Gruppen zu einer Anwendung in Azure Active Directory](methods-for-assigning-users-and-groups.md).
 >
-> Die Rolle „Globaler Administrator“ ist erforderlich, um die Administratoreinwilligung für die Microsoft Graph-API zu geben.
->
-
+> Die Rolle „Globaler Administrator“ ist erforderlich, um die Administratoreinwilligung für die Anwendungsberechtigungen für die Microsoft Graph-API zu erteilen.
 
 > [!WARNING]
 > Durch das Erteilen der mandantenweiten Administratoreinwilligung für eine Anwendung erhält die App und der Herausgeber der App Zugriff auf die Daten Ihrer Organisation. Überprüfen Sie vor dem Erteilen einer Einwilligung sorgfältig die Berechtigungen, die von der Anwendung angefordert werden.
 >
-> Die Rolle „Globaler Administrator“ ist erforderlich, um die Administratoreinwilligung für die Microsoft Graph-API zu geben.
->
+> Die Rolle „Globaler Administrator“ ist erforderlich, um die Administratoreinwilligung für die Anwendungsberechtigungen für die Microsoft Graph-API zu erteilen.
 
 ## <a name="grant-admin-consent-from-the-azure-portal"></a>Erteilen der Administratoreinwilligung über das Azure-Portal
 
@@ -57,6 +54,9 @@ So erteilen Sie die mandantenweite Administratoreinwilligung für eine in **Unte
 5. Überprüfen Sie sorgfältig die Berechtigungen, die die Anwendung anfordert.
 6. Erteilen Sie die Einwilligung, wenn Sie mit den angeforderten Berechtigungen der Anwendung einverstanden sind. Klicken Sie andernfalls auf **Abbrechen**, oder schließen Sie das Fenster.
 
+> [!WARNING]
+> Durch das Erteilen der mandantenweiten Administratorzustimmung über **Unternehmens-Apps** werden alle Berechtigungen widerrufen, die zuvor mandantenweit erteilt wurden. Berechtigungen, die zuvor von Benutzern im eigenen Auftrag erteilt wurden, sind nicht betroffen. 
+
 ### <a name="grant-admin-consent-in-app-registrations"></a>Erteilen der Administratoreinwilligung in App-Registrierungen
 
 Bei Anwendungen, die Ihre Organisation entwickelt hat, oder die direkt in Ihrem Azure AD-Mandant registriert sind, können Sie auch eine mandantenweite Administratoreinwilligung in **App-Registrierungen** im Azure-Portal erteilen.
@@ -69,6 +69,9 @@ So erteilen Sie die mandantenweite Administratoreinwilligung in **App-Registrier
 4. Wählen Sie **API-Berechtigungen** aus, und klicken Sie dann auf **Administratoreinwilligung erteilen**.
 5. Überprüfen Sie sorgfältig die Berechtigungen, die die Anwendung anfordert.
 6. Erteilen Sie die Einwilligung, wenn Sie mit den angeforderten Berechtigungen der Anwendung einverstanden sind. Klicken Sie andernfalls auf **Abbrechen**, oder schließen Sie das Fenster.
+
+> [!WARNING]
+> Durch das Erteilen der mandantenweiten Administratorzustimmung über **App-Registrierungen** werden alle Berechtigungen widerrufen, die zuvor mandantenweit erteilt wurden. Berechtigungen, die zuvor von Benutzern im eigenen Auftrag erteilt wurden, sind nicht betroffen. 
 
 ## <a name="construct-the-url-for-granting-tenant-wide-admin-consent"></a>Erstellen der URL zum Erteilen der mandantenweiten Administratoreinwilligung
 
@@ -86,6 +89,9 @@ Dabei gilt:
 * `{tenant-id}` ist die Mandanten-ID Ihrer Organisation oder ein beliebiger verifizierter Domänenname.
 
 Überprüfen Sie vor dem Erteilen einer Einwilligung wie immer sorgfältig die Berechtigungen, die von einer Anwendung angefordert werden.
+
+> [!WARNING]
+> Durch das Erteilen der mandantenweiten Administratorzustimmung über diese URL werden alle Berechtigungen widerrufen, die zuvor mandantenweit erteilt wurden. Berechtigungen, die zuvor von Benutzern im eigenen Auftrag erteilt wurden, sind nicht betroffen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

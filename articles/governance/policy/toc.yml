@@ -17,6 +17,9 @@
     - name: 'Zuweisen einer Richtlinie: Azure PowerShell'
       displayName: 'assign, compliance'
       href: ./assign-policy-powershell.md
+    - name: 'Zuweisen einer Richtlinie: .NET'
+      displayName: 'assign, compliance'
+      href: ./assign-policy-dotnet.md
     - name: 'Zuweisen einer Richtlinie: JavaScript'
       displayName: 'assign, compliance'
       href: ./assign-policy-javascript.md
@@ -139,6 +142,9 @@
     - name: Erstellen von Richtlinien für Arrayeigenschaften
       displayName: 'array property, alias, aliases, in, notIn, type, defaultValue'
       href: ./how-to/author-policies-for-arrays.md
+    - name: Exportieren von Azure Policy-Ressourcen
+      displayName: 'github, json, definition'
+      href: ./how-to/export-resources.md
     - name: Gastkonfiguration
       items:
         - name: Erstellen einer Gastkonfigurationsrichtlinie unter Windows

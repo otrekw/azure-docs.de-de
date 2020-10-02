@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/07/2020
+ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 3f21fa2df32644ff1c415db656fc3b0beed03965
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: fc77d8cbb88385d9be65ccb8df80e922704640a4
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89292774"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563804"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Erstellen eines SCIM-Endpunkts und Konfigurieren der Benutzerbereitstellung mit Azure AD
 
@@ -147,7 +147,7 @@ Wenn Sie eine Anwendung erstellen, die eine SCIM 2.0-Benutzerverwaltungs-API un
 Im Rahmen der [SCIM 2.0-Protokollspezifikation](http://www.simplecloud.info/#Specification) muss Ihre Anwendung die folgenden Anforderungen erfüllen:
 
 * Unterstützt das Erstellen von Benutzern (und optional auch von Gruppen) gemäß [Abschnitt 3.3 des SCIM-Protokolls](https://tools.ietf.org/html/rfc7644#section-3.3).  
-* Unterstützt das Ändern von Benutzern bzw. Gruppen mit PATCH-Anforderungen gemäß [Abschnitt 3.5.2 des SCIM-Protokolls](https://tools.ietf.org/html/rfc7644#section-3.5.2).  
+* Unterstützt das Ändern von Benutzern bzw. Gruppen mit PATCH-Anforderungen gemäß [Abschnitt 3.5.2 des SCIM-Protokolls](https://tools.ietf.org/html/rfc7644#section-3.5.2). Durch die Unterstützung wird sichergestellt, dass Gruppen und Benutzer auf leistungsstarke Weise bereitgestellt werden. 
 * Unterstützt das Abrufen einer bekannten Ressource für einen zuvor erstellten Benutzer oder eine Gruppe gemäß [Abschnitt 3.4.1 des SCIM-Protokolls](https://tools.ietf.org/html/rfc7644#section-3.4.1).  
 * Unterstützt das Abfragen von Benutzern bzw. Gruppen gemäß [Abschnitt 3.4.2 des SCIM-Protokolls](https://tools.ietf.org/html/rfc7644#section-3.4.2).  Standardmäßig werden Benutzer anhand ihrer `id` abgerufen und nach `username` und `externalId` abgefragt. Gruppen werden nach `displayName` abgefragt.  
 * Unterstützt das Abfragen von Benutzern nach ID und nach Manager gemäß Abschnitt 3.4.2 des SCIM-Protokolls.  
@@ -167,6 +167,7 @@ Befolgen Sie bei der Implementierung eines SCIM-Endpunkts die folgenden allgemei
 * Unterscheiden Sie bei Strukturelementen in SCIM nicht zwischen Groß- und Kleinschreibung, insbesondere bei `op`-PATCH-Vorgangswerten gemäß der Definition unter https://tools.ietf.org/html/rfc7644#section-3.5.2. Azure AD gibt die Werte von „op“ mit `Add`, `Replace` und `Remove` aus.
 * Microsoft Azure AD sendet Anforderungen zum Abrufen eines zufälligen Benutzers und einer zufälligen Gruppe, um sicherzustellen, dass der Endpunkt und die Anmeldeinformationen gültig sind. Dies erfolgt auch im Rahmen des **Testverbindungsflows** im [Azure-Portal](https://portal.azure.com). 
 * Das Attribut, nach dem die Ressourcen abgefragt werden können, sollte als entsprechendes Attribut für die Anwendung im [Azure-Portal](https://portal.azure.com) festgelegt werden. Weitere Informationen finden Sie unter [Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory](customize-application-attributes.md).
+* HTTPS-Unterstützung auf Ihrem SCIM-Endpunkt
 
 ### <a name="user-provisioning-and-deprovisioning"></a>Benutzerbereitstellung und Aufheben der Bereitstellung
 
@@ -1175,7 +1176,7 @@ Wenn Sie eine Anwendung erstellen, die von mehreren Mandanten verwendet wird, k�
 Verwenden Sie die folgende Prüfliste, um ein schnelles Onboarding Ihrer Anwendung zu gewährleisten und den Kunden eine reibungslose Bereitstellung zu bieten. Die Informationen werden beim Onboarding für den Katalog von Ihnen erfasst. 
 > [!div class="checklist"]
 > * Unterstützung eines [SCIM 2.0](#step-2-understand-the-azure-ad-scim-implementation)-Benutzer- und Gruppenendpunkts (nur einer ist erforderlich, aber beide werden empfohlen)
-> * Unterstützung von mindestens 25 Anforderungen pro Sekunde und Mandant (erforderlich)
+> * Unterstützung von mindestens 25 Anforderungen pro Sekunde und Mandant, um sicherzustellen, dass Benutzer und Gruppen ohne Verzögerung bereitgestellt werden bzw. deren Bereitstellung aufgehoben wird (erforderlich)
 > * Einrichtung eines Kontakts für technische und supportbezogene Fragen, um Kunden nach dem Katalogonboarding zu unterstützen (erforderlich)
 > * 3 nicht ablaufende Testanmeldeinformationen für Ihre Anwendung (erforderlich)
 > * Unterstützung der OAuth-Autorisierungscodegenehmigung oder eines langlebigen Tokens gemäß der Beschreibung weiter unten (erforderlich)

@@ -3,15 +3,15 @@ title: 'Windows Virtual Desktop-Hostpool im Azure-Portal: Azure'
 description: Hier erfahren Sie, wie Sie einen Windows Virtual Desktop-Hostpool im Azure-Portal erstellen.
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 09/01/2020
+ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b6d54c226dd3a156ff6164f87fc755aac3dd040c
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: da944f74fd6214e1b69a3ee7d230e72accd4e2e4
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322584"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084361"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Tutorial: Erstellen eines Hostpools mit dem Azure-Portal
 
@@ -188,6 +188,13 @@ So registrieren Sie die Desktop-App-Gruppe in einem Arbeitsbereich:
      - Ein Downloadlink für eine Azure-Ressourcenverwaltungsvorlage, die auf Ihrer Konfiguration basiert.
 
 Danach sind Sie fertig!
+
+## <a name="run-the-azure-resource-manager-template-to-provision-a-new-host-pool"></a>Ausführen der Azure Resource Manager-Vorlage zum Bereitstellen eines neuen Hostpools
+
+Wenn Sie lieber einen automatisierten Prozess verwenden möchten, [laden Sie unsere Azure Resource Manager-Vorlage herunter](https://github.com/Azure/RDS-Templates/tree/master/ARM-wvd-templates), um stattdessen Ihren neuen Hostpool bereitzustellen.
+
+>[!NOTE]
+>Wenn Sie einen automatisierten Prozess zum Erstellen Ihrer Umgebung nutzen, benötigen Sie die aktuelle Version der JSON-Konfigurationsdatei. Die JSON-Datei finden Sie [hier](https://wvdportalstorageblob.blob.core.windows.net/galleryartifacts?restype=container&comp=list).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

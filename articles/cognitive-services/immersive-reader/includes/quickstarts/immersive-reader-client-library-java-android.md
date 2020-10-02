@@ -7,17 +7,17 @@ author: dylankil
 manager: guillasi
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 06/10/2020
+ms.date: 09/14/2020
 ms.custom: devx-track-java, devx-track-javascript
 ms.author: dylankil
-ms.openlocfilehash: 63a7e7756eee80b8d57c168890ba3613bbd11f01
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 572bd35a916ed97ab0c846e2b8d561bd27b145cc
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88602564"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978310"
 ---
-Der [plastische Reader](https://www.onenote.com/learningtools) ist ein inklusiv konzipiertes Tool, das bewährte Techniken zur Verbesserung des Leseverständnisses implementiert.
+[Plastischer Reader](https://www.onenote.com/learningtools) ist ein inklusiv konzipiertes Tool, das bewährte Techniken implementiert, um das Leseverständnis von Leseanfängern, Sprachenlernenden und Personen mit Lernunterschieden, wie z. B. Dyslexie, zu verbessern. Sie können den plastischen Reader in Ihren Anwendungen verwenden, um Text zu isolieren, den Fokus zu verbessern, Bilder für häufig verwendete Wörter anzuzeigen, Wortarten hervorzuheben, markierten Text laut vorzulesen, Wörter und Ausdrücke in Echtzeit zu übersetzen und vieles mehr.
 
 In dieser Schnellstartanleitung erstellen Sie eine Android-App von Grund auf neu und integrieren den plastischen Reader. Ein vollständiges Arbeitsbeispiel für diesen Schnellstart finden Sie auf [GitHub](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android).
 
@@ -25,6 +25,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
+* Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/cognitive-services)
 * Eine Ressource des plastischen Readers, die für die Authentifizierung mit Azure Active Directory konfiguriert ist. Befolgen Sie [diese Anweisungen](../../how-to-create-immersive-reader.md) für die Einrichtung. Einige der hier erstellten Werte benötigen Sie bei der Konfiguration der Umgebungseigenschaften. Speichern Sie die Ausgabe Ihrer Sitzung zur späteren Verwendung in einer Textdatei.
 * [Git](https://git-scm.com/).
 * [Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk)
@@ -34,27 +35,27 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Beginnen Sie ein neues Projekt in Android Studio. Der Quellcode für dieses Beispiel ist als Teil des [Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android) verfügbar.
 
-![Neues Projekt](../../media/android/java/android-studio-create-project.png)
+![Neues Projekt: Android](../../media/android/java/android-studio-create-project.png)
 
 Wählen Sie im Fenster **Choose your project** (Projekt auswählen) die Option **Empty Activity** (Leere Aktivität) und dann **Next** (Weiter) aus.
 
-![Leeres Aktivitätsprojekt](../../media/android/java/android-studio-empty-activity.png)
+![Leeres Aktivitätsprojekt: Android](../../media/android/java/android-studio-empty-activity.png)
 
 ## <a name="configure-the-project"></a>Konfigurieren des Projekts
 
 Nennen Sie das Projekt **QuickstartJava**, und wählen Sie einen Speicherort dafür aus. Wählen Sie als Programmiersprache **Java** und dann **Finish** (Fertigstellen) aus.
 
-![Konfigurieren des Projekts](../../media/android/java/android-studio-configure-project.png)
+![Konfigurieren des Projekts: Android](../../media/android/java/android-studio-configure-project.png)
 
 ## <a name="set-up-assets-and-authentication"></a>Einrichten von Medienobjekten und Authentifizierung
 
 Erstellen Sie einen neuen Ordner **/assets**.
 
-![Erstellen eines neuen Medienobjektordners](../../media/android/java/android-studio-assets-folder.png)
+![Erstellen eines neuen Medienobjektordners: Android](../../media/android/java/android-studio-assets-folder.png)
 
  Erstellen Sie eine Datei mit dem Namen **ENV** im Medienobjektordner. Fügen Sie die folgenden Namen und Werte hinzu, und geben Sie entsprechende Werte an. Committen Sie diese ENV-Datei nicht in Ihre Quellcodeverwaltung, da sie Geheimnisse enthält, die nicht für die Öffentlichkeit bestimmt sind.
 
-![Neue ENV-Datei erstellen](../../media/android/java/android-studio-create-env-file.png)
+![Erstellen einer neuen ENV-Datei: Android](../../media/android/java/android-studio-create-env-file.png)
 
 ```text
 TENANT_ID=<YOUR_TENANT_ID>
@@ -81,13 +82,13 @@ dependencies {
 }
 ```
 
-![App Gradle-Implementierungen](../../media/android/java/android-studio-build-gradle.png)
+![App Gradle-Implementierungen: Android](../../media/android/java/android-studio-build-gradle.png)
 
 ## <a name="update-app-strings-and-layout-resources"></a>Aktualisieren von App-Zeichenfolgen und Layoutressourcen
 
 Ersetzen Sie den Inhalt in **res/strings/strings.xml** durch die folgenden Zeichenfolgen für die Verwendung in der App.
 
-![App strings.xml](../../media/android/java/android-studio-strings.png)
+![„strings.xml“ der App: Android](../../media/android/java/android-studio-strings.png)
 
 ```strings.xml
 <resources>
@@ -97,7 +98,7 @@ Ersetzen Sie den Inhalt in **res/strings/strings.xml** durch die folgenden Zeich
 
     <string name="app_name">ImmersiveReaderSDK</string>
     <string name="geographyTitle">Geography</string>
-    <string name="geographyTextEn">The study of Earth’s landforms is called physical geography. Landforms can be mountains and valleys. They can also be glaciers, lakes or rivers. Landforms are sometimes called physical features. It is important for students to know about the physical geography of Earth. The seasons, the atmosphere and all the natural processes of Earth affect where people are able to live. Geography is one of a combination of factors that people use to decide where they want to live. The physical features of a region are often rich in resources. Within a nation, mountain ranges become natural borders for settlement areas. In the U.S., major mountain ranges are the Sierra Nevada, the Rocky Mountains, and the Appalachians.Fresh water sources also influence where people settle. People need water to drink. They also need it for washing. Throughout history, people have settled near fresh water. Living near a water source helps ensure that people have the water they need. There was an added bonus, too. Water could be used as a travel route for people and goods. Many Americans live near popular water sources, such as the Mississippi River, the Colorado River and the Great Lakes.Mountains and deserts have been settled by fewer people than the plains areas. However, they have valuable resources of their own.</string>
+    <string name="geographyTextEn">The study of Earth's landforms is called physical geography. Landforms can be mountains and valleys. They can also be glaciers, lakes or rivers. Landforms are sometimes called physical features. It is important for students to know about the physical geography of Earth. The seasons, the atmosphere and all the natural processes of Earth affect where people are able to live. Geography is one of a combination of factors that people use to decide where they want to live. The physical features of a region are often rich in resources. Within a nation, mountain ranges become natural borders for settlement areas. In the U.S., major mountain ranges are the Sierra Nevada, the Rocky Mountains, and the Appalachians. Fresh water sources also influence where people settle. People need water to drink. They also need it for washing. Throughout history, people have settled near fresh water. Living near a water source helps ensure that people have the water they need. There was an added bonus, too. Water could be used as a travel route for people and goods. Many Americans live near popular water sources, such as the Mississippi River, the Colorado River and the Great Lakes.Mountains and deserts have been settled by fewer people than the plains areas. However, they have valuable resources of their own.</string>
     <string name="geographyTextFr">L\'étude des reliefs de la Terre est appelée géographie physique. Les reliefs peuvent être des montagnes et des vallées. Il peut aussi s\'agira de glaciers, delacs ou de rivières. Les reliefs sont parfois appelés caractéristiques physiques. Il est important que les élèves connaissent la géographie physique de laTerre. Les saisons, l\'atmosphère et tous les processus naturels de la Terre affectent l\'endroit où les gens sont capables de vivre. La géographie est l\'un desfacteurs que les gens utilisent pour décider où ils veulent vivre. Les caractéristiques physiques d\'une région sont souvent riches en ressources. Àl\'intérieur d\'une nation, les chaînes de montagnes deviennent des frontières naturelles pour les zones de peuplement. Aux États-Unis, les principaleschaînes de montagnes sont la Sierra Nevada, les montagnes Rocheuses et les Appalaches.Les sources d\'eau douce influencent également l\'endroit où lesgens s\'installent. Les gens ont besoin d\'eau pour boire. Ils en ont aussi besoin pour se laver. Tout au long de l\'histoire, les gens se sont installés près del\'eau douce. Vivre près d\'une source d\'eau permet de s\'assurer que les gens ont l\'eau dont ils ont besoin. Il y avait un bonus supplémentaire, aussi. L\'eaupourrait être utilisée comme voie de voyage pour les personnes et les marchandises. Beaucoup d\'Américains vivent près des sources d\'eau populaires,telles que le fleuve Mississippi, le fleuve Colorado et les Grands Lacs.Mountains et les déserts ont été installés par moins de gens que les zones desplaines. Cependant, ils disposent de ressources précieuses.Les gens ont une réponse.</string>
     <string name="immersiveReaderButtonText">Immersive Reader</string>
 </resources>
@@ -105,7 +106,7 @@ Ersetzen Sie den Inhalt in **res/strings/strings.xml** durch die folgenden Zeich
 
 Ersetzen Sie den Inhalt in **res/layout/activity_main.xml** durch den folgenden XML-Code für die Verwendung in der App. Dieser XML-Code ist das Benutzeroberflächenlayout der App.
 
-![App activity_main.xml](../../media/android/java/android-studio-activity-main-xml.png)
+![„activity_main.xml“ der App: Android](../../media/android/java/android-studio-activity-main-xml.png)
 
 ```activity_main.xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -206,9 +207,9 @@ Ersetzen Sie den Inhalt in **res/layout/activity_main.xml** durch den folgenden 
 
 Erstellen Sie im Ordner **res/layout/** eine neue Layoutressourcendatei, und nennen Sie sie **activity_immersive_reader**. Ersetzen Sie dann ihren Inhalt durch den XML-Code unten. Durch diesen XML-Code wird die WebView-Komponente hinzugefügt, die vom IRActivity-Java-Code verwendet wird, der in einem späteren Schritt erstellt wird. In diesem Schritt ist er undefiniert und verursacht Fehler.
 
-![Erstellen einer neuen Layoutressourcendatei](../../media/android/java/android-studio-new-layout-resource.png)
+![Erstellen einer neuen Layoutressourcendatei: Android](../../media/android/java/android-studio-new-layout-resource.png)
 
-![Konfigurieren der neuen Layoutressource](../../media/android/java/android-studio-activity-immersive-reader.png)
+![Konfigurieren der neuen Layoutressource: Android](../../media/android/java/android-studio-activity-immersive-reader.png)
 
 ```activity_immersive_reader.xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -235,7 +236,7 @@ Erstellen Sie im Ordner **res/layout/** eine neue Layoutressourcendatei, und nen
 
 Im Ordner **/Java/com.example.quickstartjava** sehen Sie eine vorhandene **MainActivity.java**-Java-Klassendatei. Dies ist der Ordner, in dem die Logik der App erstellt wird.
 
-![MainActivity](../../media/android/java/android-studio-main-activity-java.png)
+![MainActivity: Android](../../media/android/java/android-studio-main-activity-java.png)
 
 Ersetzen Sie den Inhalt von **MainActivity.java** durch den folgenden Code. Einige Klassen, auf die im Code verwiesen wird, sind noch nicht vorhanden und werden später erstellt.
 
@@ -292,7 +293,7 @@ Im Ordner **/Java/com.example.quickstartjava** werden 16 weitere Java-Klassendat
 
 Erstellen Sie eine neue **ImmersiveReader.java**-Java-Klassendatei, indem Sie mit der rechten Maustaste auf den Ordner in Android Studio klicken und dann **New** (Neu) gefolgt von **Java Class** (Java-Klasse) auswählen. Für jede neu erstellte Java-Klassendatei verwenden Sie stets diese Methode.
 
-![ImmersiveReader](../../media/android/java/android-studio-immersivereader-java.png)
+![ImmersiveReader: Android](../../media/android/java/android-studio-immersivereader-java.png)
 
 Ersetzen Sie den Inhalt von **ImmersiveReader.java** durch den folgenden Code:
 
@@ -376,7 +377,7 @@ public class ImmersiveReader {
 
 Erstellen Sie eine neue **IRActivity.java**-Java-Klassendatei.
 
-![IRActivity](../../media/android/java/android-studio-iractivity-java.png)
+![IRActivity: Android](../../media/android/java/android-studio-iractivity-java.png)
 
 Ersetzen Sie den Inhalt von **IRActivity.java** durch den folgenden Code:
 
@@ -460,7 +461,7 @@ public class ImmersiveReader {
 
 Erstellen Sie eine neue **IRError.java**-Java-Klassendatei.
 
-![IRError](../../media/android/java/android-studio-irerror-java.png)
+![IRError: Android](../../media/android/java/android-studio-irerror-java.png)
 
 Ersetzen Sie den Inhalt von **IRError.java** durch den folgenden Code:
 
@@ -539,7 +540,7 @@ public class IRError implements Parcelable {
 
 Erstellen Sie eine neue **Error.java**-Java-Klassendatei.
 
-![Fehler](../../media/android/java/android-studio-error-java.png)
+![Error: Android](../../media/android/java/android-studio-error-java.png)
 
 Ersetzen Sie den Inhalt von **Error.java** durch den folgenden Code:
 
@@ -570,7 +571,7 @@ public class Error {
 
 Erstellen Sie eine neue **ReadableContent.java**-Java-Klassendatei.
 
-![ReadableContent](../../media/android/java/android-studio-readablecontent-java.png)
+![ReadableContent: Android](../../media/android/java/android-studio-readablecontent-java.png)
 
 Ersetzen Sie den Inhalt von **ReadableContent.java** durch den folgenden Code:
 
@@ -614,7 +615,7 @@ public class ReadableContent {
 
 Erstellen Sie eine neue **ReadableTextChunk.java**-Java-Klassendatei.
 
-![ReadableTextChunk](../../media/android/java/android-studio-readabletextchunk-java.png)
+![ReadableTextChunk: Android](../../media/android/java/android-studio-readabletextchunk-java.png)
 
 Ersetzen Sie den Inhalt von **ReadableTextChunk.java** durch den folgenden Code:
 
@@ -646,7 +647,7 @@ public class ReadableTextChunk {
 
 Erstellen Sie eine neue **IRDataHolder.java**-Java-Klassendatei.
 
-![IRDataHolder](../../media/android/java/android-studio-irdataholder-java.png)
+![IRDataHolder: Android](../../media/android/java/android-studio-irdataholder-java.png)
 
 Ersetzen Sie den Inhalt von **IRDataHolder.java** durch den folgenden Code:
 
@@ -711,7 +712,7 @@ public class IRDataHolder {
 
 Erstellen Sie eine neue **IRAuthenticator.java**-Java-Klassendatei.
 
-![IRAuthenticator](../../media/android/java/android-studio-irauthenticator-java.png)
+![IRAuthenticator: Android](../../media/android/java/android-studio-irauthenticator-java.png)
 
 Ersetzen Sie den Inhalt von **IRAuthenticator.java** durch den folgenden Code:
 
@@ -822,7 +823,7 @@ public class IRAuthenticator implements ImmersiveReader.IAuthenticator {
 
 Erstellen Sie eine neue **IRLauncher.java**-Java-Klasssendatei.
 
-![IRLauncher](../../media/android/java/android-studio-irlauncher-java.png)
+![IRLauncher: Android](../../media/android/java/android-studio-irlauncher-java.png)
 
 Ersetzen Sie den Inhalt von **IRLauncher.java** durch den folgenden Code:
 
@@ -1015,7 +1016,7 @@ public class IRLauncher {
 
 Erstellen Sie eine neue **IRStore.java**-Java-Klasssendatei.
 
-![IRStore](../../media/android/java/android-studio-irstore-java.png)
+![IRStore: Android](../../media/android/java/android-studio-irstore-java.png)
 
 Ersetzen Sie den Inhalt von **IRStore.java** durch den folgenden Code:
 
@@ -1097,7 +1098,7 @@ public class AuthenticationTask extends AsyncTask<Void, Void, String> {
 
 Erstellen Sie eine neue **Chunk.java**-Java-Klassendatei.
 
-![Block](../../media/android/java/android-studio-chunk-java.png)
+![Chunk: Android](../../media/android/java/android-studio-chunk-java.png)
 
 Ersetzen Sie den Inhalt von **Chunk.java** durch den folgenden Code:
 
@@ -1134,7 +1135,7 @@ public class Chunk {
 
 Erstellen Sie eine neue **Content.java**-Java-Klassendatei.
 
-![Inhalt](../../media/android/java/android-studio-content-java.png)
+![Content: Android](../../media/android/java/android-studio-content-java.png)
 
 Ersetzen Sie den Inhalt von **Content.java** durch den folgenden Code:
 
@@ -1170,7 +1171,7 @@ public class Content {
 
 Erstellen Sie eine neue **Options.java**-Java-Klassendatei.
 
-![Tastatur](../../media/android/java/android-studio-options-java.png)
+![Options: Android](../../media/android/java/android-studio-options-java.png)
 
 Ersetzen Sie den Inhalt von **Options.java** durch den folgenden Code:
 
@@ -1204,7 +1205,7 @@ public class Options {
 
 Erstellen Sie eine neue **Message.java**-Java-Klassendatei.
 
-![`Message`](../../media/android/java/android-studio-message-java.png)
+![Message: Android](../../media/android/java/android-studio-message-java.png)
 
 Ersetzen Sie den Inhalt von **Message.java** durch den folgenden Code:
 
@@ -1242,7 +1243,7 @@ public class Message {
 
 Erstellen Sie eine neue **WebAppInterface.java**-Java-Klassendatei.
 
-![WebAppInterface](../../media/android/java/android-studio-webappinterface-java.png)
+![WebAppInterface: Android](../../media/android/java/android-studio-webappinterface-java.png)
 
 Ersetzen Sie den Inhalt von **WebAppInterface.java** durch den folgenden Code.
 
@@ -1293,9 +1294,9 @@ public class WebAppInterface {
 
 Damit die Implementierung der Webansicht funktioniert, ist HTML erforderlich. Klicken Sie mit der rechten Maustaste auf den Ordner **/assets**, erstellen Sie eine neue Datei, und benennen Sie sie **immersiveReader.html**.
 
-![Erstellen einer neuen HTML-Datei](../../media/android/java/android-studio-immersive-reader-html.png)
+![Erstellen einer neuen HTML-Datei: Android](../../media/android/java/android-studio-immersive-reader-html.png)
 
-![Speicherort des HTML-Medienobjekts](../../media/android/java/android-studio-immersive-reader-html-assets.png)
+![Speicherort des HTML-Medienobjekts: Android](../../media/android/java/android-studio-immersive-reader-html-assets.png)
 
 Fügen Sie den folgenden HTML- und JavaScript-Code hinzu. Dadurch wird der App das Immersive Reader SDK hinzugefügt und mithilfe des von Ihnen geschriebenen App-Codes zum Starten des plastischen Readers verwendet.
 
@@ -1352,7 +1353,7 @@ Licensed under the MIT License. -->
 
 ## <a name="set-up-app-permissions"></a>Einrichten von App-Berechtigungen
 
-![AndroidManifest](../../media/android/java/android-studio-android-manifest-xml.png)
+![AndroidManifest: Android](../../media/android/java/android-studio-android-manifest-xml.png)
 
 Da die Anwendung Netzwerkaufrufe an das Immersive Reader SDK vornehmen muss, müssen Sie sicherstellen, dass die App-Berechtigungen so konfiguriert sind, dass Netzwerkzugriff zugelassen wird. Ersetzen Sie den Inhalt von **/manifests/AndroidManifest.xml** durch den folgenden XML-Code:
 
@@ -1387,9 +1388,9 @@ Da die Anwendung Netzwerkaufrufe an das Immersive Reader SDK vornehmen muss, mü
 
 ## <a name="run-the-app"></a>Ausführen der App
 
-Verwenden Sie Android Studio, um die App auf einem Geräteemulator auszuführen. Wenn Sie **Plastischer Reader**auswählen, wird der plastische Reader mit dem Inhalt der App geöffnet.
+Verwenden Sie Android Studio, um die App auf einem Geräteemulator auszuführen. Wenn Sie **Plastischer Reader** auswählen, wird der plastische Reader mit dem Inhalt der App geöffnet.
 
-![Plastischer Reader](../../media/android/java/android-studio-device-emulator.png)
+![Plastischer Reader: Android](../../media/android/java/android-studio-device-emulator.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

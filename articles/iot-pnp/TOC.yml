@@ -4,11 +4,13 @@
   items:
     - name: "Was ist IoT\_Plug\_&\_Play?"
       href: overview-iot-plug-and-play.md
-    - name: Updates zur Vorschauaktualisierung
-      href: overview-iot-plug-and-play-preview-updates.md
+    - name: Inhalt des aktuellen Release
+      href: overview-iot-plug-and-play-current-release.md
 - name: Schnellstarts
   expanded: true
   items:
+    - name: Einrichten Ihrer Umgebung
+      href: set-up-environment.md
     - name: "Verbinden eines Geräts mit IoT\_Hub"
       items:
         - name: C
@@ -27,6 +29,10 @@
           href: quickstart-service-node.md
         - name: Python
           href: quickstart-service-python.md
+        - name: C#
+          href: quickstart-service-csharp.md
+        - name: Java
+          href: quickstart-service-java.md
 - name: Tutorials
   items:
     - name: Herstellen einer Verbindung mit einem Gerät mit mehreren Komponenten (C)
@@ -41,18 +47,38 @@
       href: tutorial-multiple-components-python.md
     - name: Herstellen einer Verbindung mit einem Gerät mithilfe von MQTT
       href: tutorial-use-mqtt.md
+    - name: Interagieren mit einem MXChip-Gerät (Beispiel)
+      href: 'https://docs.microsoft.com/samples/azure-samples/mxchip-iot-devkit-pnp-get-started/sample/'
+    - name: Migrieren eines Geräts zu einem Modul
+      href: tutorial-migrate-device-to-module.md
 - name: Konzepte
   items:
     - name: Aufbau
       href: concepts-architecture.md
-    - name: Entwicklerhandbuch
-      href: concepts-developer-guide.md
+    - name: Leitfaden für Geräteentwickler
+      items:
+        - name: C#
+          href: concepts-developer-guide-device-csharp.md
+        - name: Node.js
+          href: concepts-developer-guide-device-node.md
+        - name: Java
+          href: concepts-developer-guide-device-java.md
+        - name: Python
+          href: concepts-developer-guide-device-python.md
+        - name: C
+          href: concepts-developer-guide-device-c.md
+    - name: Leitfaden für Dienstentwickler
+      href: concepts-developer-guide-service.md
     - name: Komponenten
       href: concepts-components.md
     - name: IoT Plug & Play-Konventionen
       href: concepts-convention.md
+    - name: "IoT Plug\_&\_Play-Brücke"
+      href: concepts-iot-pnp-bridge.md
     - name: Digital Twins
       href: concepts-digital-twin.md
+    - name: Gerätezertifizierung
+      href: concepts-certification-program.md
     - name: Modellrepository
       href: concepts-model-repository.md
     - name: Verwenden von Modellen in einer Lösung
@@ -67,8 +93,14 @@
   items:
     - name: Installieren und Verwenden des IoT-Explorers
       href: howto-use-iot-explorer.md
+    - name: Installieren und Verwenden der IoT Plug & Play-Brücke
+      href: howto-use-iot-pnp-bridge.md
     - name: Installieren und Verwenden der Erweiterung für die Azure IoT-Befehlszeilenschnittstelle (Azure CLI)
       href: howto-use-iot-pnp-cli.md
+    - name: Installieren und Verwenden von DTDL-Erstellungstools
+      href: howto-use-dtdl-authoring-tools.md
+    - name: "Verwenden von Embedded\_C"
+      href: howto-use-embedded-c.md
     - name: Verwalten digitaler Zwillinge
       href: howto-manage-digital-twin.md
     - name: Zertifizieren eines Geräts
@@ -78,7 +110,7 @@
     - name: Bibliotheken und SDKs
       href: libraries-sdks.md
     - name: REST-API für digitale Zwillinge
-      href: 'https://aka.ms/iot-pnp-preview-rest'
+      href: 'https://docs.microsoft.com/rest/api/iothub/service/digitaltwin'
     - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/azure-cli-reference-for-IoT
 - name: Ressourcen

@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efd98cab50c3239d3202e6feabe18f45a4240293
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: cccabaf069a3027e615892e36e218f865a6c983a
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641176"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706661"
 ---
 # <a name="compare-remote-access-solutions"></a>Vergleichen von Remotezugriffslösungen
 
@@ -59,7 +59,7 @@ Azure AD-Anwendungsproxy bietet besondere Vorteile im Vergleich zu ähnlichen Pr
    - Einfach zu aktivierende Features wie bedingter Zugriff und mehrstufige Authentifizierung
 - Keine Komponenten in der demilitarisierten Zone
 - Keine Notwendigkeit eingehender Verbindungen
-- Eine „Meine Apps“-Seite, über die Ihre Benutzer alle ihre Anwendungen erreichen, darunter Office 365, in Azure AD integrierte SaaS-Apps und Ihre lokalen Web-Apps. 
+- Eine Seite „Meine Apps“, über die Ihre Benutzer all ihre Anwendungen erreichen, darunter Microsoft 365, in Azure AD integrierte SaaS-Apps und Ihre lokalen Web-Apps. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte

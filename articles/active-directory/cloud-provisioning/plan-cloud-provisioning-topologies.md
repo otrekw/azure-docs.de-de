@@ -1,6 +1,6 @@
 ---
 title: Unterstützte Topologien und Szenarien für die Azure AD Connect-Cloudbereitstellung
-description: In diesem Thema werden die Voraussetzungen und die Hardwareanforderungen für die Cloudbereitstellung beschrieben.
+description: In diesem Artikel werden verschiedene lokale Topologien und Topologien mit Azure Active Directory (Azure AD) beschrieben, in denen die Azure AD Connect-Cloudbereitstellung verwendet wird.
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,12 +11,12 @@ ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 386af46bbee623d37bc914d2ee9130c914c6c885
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d442c980ad5bbe3b56eae127b6e9eaeddf380a4e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77620869"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526849"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-supported-topologies-and-scenarios"></a>Unterstützte Topologien und Szenarien für die Azure AD Connect-Cloudbereitstellung
 In diesem Artikel werden verschiedene lokale Topologien und Topologien mit Azure Active Directory (Azure AD) beschrieben, in denen die Azure AD Connect-Cloudbereitstellung verwendet wird. In diesem Artikel werden nur unterstützte Konfigurationen und Szenarien erörtert.

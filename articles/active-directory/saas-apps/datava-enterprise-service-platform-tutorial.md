@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/15/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 67016d930e2cc40ccf38e89c8dfc7700db7d3109
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7d249005e77328460a0e7152e0a3ff125857534b
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536715"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659484"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-datava-enterprise-service-platform"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory in die Datava Enterprise Service-Plattform
 
@@ -35,16 +35,16 @@ Für die ersten Schritte benötigen Sie Folgendes:
 * Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
 * Ein Datava Enterprise Service-Plattformabonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist.
 
-> [!NOTE]
-> Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
-
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * Die Datava Enterprise Service-Plattform unterstützt **SP**-initiiertes einmaliges Anmelden.
 * Die Datava Enterprise Service-Plattform unterstützt die **Just-In-Time**-Benutzerbereitstellung.
-* Nach dem Konfigurieren der Datava Enterprise Service-Plattform können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+* Nach dem Konfigurieren von Datava Enterprise Service Platform können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+
+> [!NOTE]
+> Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
 
 ## <a name="adding-datava-enterprise-service-platform-from-the-gallery"></a>Hinzufügen der Datava Enterprise Service-Plattform aus dem Katalog
 
@@ -57,7 +57,7 @@ Zum Konfigurieren der Integration der Datava Enterprise Service-Plattform in Azu
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Datava Enterprise Service Platform** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **Datava Enterprise Service-Plattform** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-datava-enterprise-service-platform"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für die Datava Enterprise Service-Plattform
+## <a name="configure-and-test-azure-ad-sso-for-datava-enterprise-service-platform"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Datava Enterprise Service Platform
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit der Datava Enterprise Service-Plattform mithilfe einer Testbenutzerin mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in der Datava Enterprise Service-Plattform eingerichtet werden.
 
@@ -84,7 +84,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://go.datava.com/<TENANT_NAME>`
 
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL ein: `https://go.datava.com/saml/module.php/saml/sp/saml2-acs.php/azure-sp`
+    b. Geben Sie im Textfeld **Antwort-URL** folgende URL ein: `https://go.datava.com/saml/module.php/saml/sp/saml2-acs.php/azure-sp`
 
     > [!NOTE]
     > Dieser Wert entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Den Wert erhalten Sie vom [Supportteam für den Datava Enterprise Service-Plattformclient](mailto:support@datava.com). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
@@ -148,5 +148,3 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Datava Enterprise Service-Plattfor
 - [Testen der Datava Enterprise Service-Plattform mit Azure AD](https://aad.portal.azure.com/)
 
 - [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [Schützen der Datava Enterprise Service-Plattform mit erweiterter Sichtbarkeit und komplexeren Kontrollen](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

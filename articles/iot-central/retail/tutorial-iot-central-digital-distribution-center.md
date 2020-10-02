@@ -5,14 +5,14 @@ author: KishorIoT
 ms.author: nandab
 ms.service: iot-central
 ms.subservice: iot-central-retail
-ms.topic: overview
+ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: cb40252460fe62deb94ce495bb41d38c326f10e2
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: a76df67d1ef9d203d5e5d54cb95bb8fc90f70180
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "81001339"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980749"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>Tutorial: Bereitstellen und Durchlaufen einer Anwendungsvorlage für digitale Verteilzentren
 
@@ -35,7 +35,7 @@ Mithilfe der folgenden Schritte können Sie eine Anwendung erstellen.
 1. Navigieren Sie zur Anwendungs-Manager-Website von Azure IoT Central. Wählen Sie auf der linken Navigationsleiste **Erstellen** aus, und klicken Sie dann auf die Registerkarte **Einzelhandel**.
 
     > [!div class="mx-imgBorder"]
-    > ![Digital Distribution Center](./media/tutorial-iot-central-ddc/iotc-retail-homepage.png)
+    > ![Screenshot: Auswählen der Anwendungsvorlage für digitale Verteilzentren](./media/tutorial-iot-central-ddc/iotc-retail-homepage.png)
 
 2. Wählen Sie die Registerkarte **Einzelhandel** aus, und wählen Sie unter **Digital Distribution Center-Anwendung** die Option **App erstellen** aus.
 
@@ -46,10 +46,10 @@ Mithilfe der folgenden Schritte können Sie eine Anwendung erstellen.
    **Erstellen**: Wählen Sie unten auf der Seite „Erstellen“ aus, um Ihre Anwendung bereitzustellen.
 
     > [!div class="mx-imgBorder"]
-    > ![Digital Distribution Center](./media/tutorial-iot-central-ddc/ddc-create.png)
+    > ![Screenshot: Erstellen einer App auf der Grundlage der Anwendungsvorlage für digitale Verteilzentren](./media/tutorial-iot-central-ddc/ddc-create.png)
 
     > [!div class="mx-imgBorder"]
-    > ![Digital Distribution Center: Abrechnungsinformationen](./media/tutorial-iot-central-ddc/ddc-create-billinginfo.png)
+    > ![Screenshot: Abrechnungsoptionen beim Erstellen der Anwendung](./media/tutorial-iot-central-ddc/ddc-create-billinginfo.png)
 
 ## <a name="walk-through-the-application-dashboard"></a>Einführung in das Anwendungsdashboard 
 
@@ -62,31 +62,31 @@ Das Dashboard ist logisch organisiert, um die Geräteverwaltungsfunktionen des A
    * Verwalten Sie alle Kameras, die zu der Lösung gehören. 
 
 > [!div class="mx-imgBorder"]
-> ![Digital Distribution Center](./media/tutorial-iot-central-ddc/ddc-dashboard.png)
+> ![Screenshot: Dashboard für das digitale Verteilzentrum](./media/tutorial-iot-central-ddc/ddc-dashboard.png)
 
 ## <a name="device-template"></a>Gerätevorlage
 
 Klicken Sie auf die Registerkarte „Gerätevorlagen“, dann wird das Gatewayfunktionsmodell angezeigt. Ein Funktionsmodell ist um zwei unterschiedliche Schnittstellen strukturiert: **Kamera** und **Digital Distribution Gateway**.
 
 > [!div class="mx-imgBorder"]
-> ![Digital Distribution Center](./media/tutorial-iot-central-ddc/ddc-devicetemplate1.png)
+> ![Screenshot: Gerätevorlage „Digital Distribution Gateway“ in der Anwendung](./media/tutorial-iot-central-ddc/ddc-devicetemplate1.png)
 
 **Kamera:** Diese Schnittstelle organisiert alle kameraspezifischen Befehlsfunktionen. 
 
 > [!div class="mx-imgBorder"]
-> ![Digital Distribution Center](./media/tutorial-iot-central-ddc/ddc-camera.png)
+> ![Screenshot: Kameraschnittstelle in der Gerätevorlage „Digital Distribution Gateway“](./media/tutorial-iot-central-ddc/ddc-camera.png)
 
 **Digital Distribution Gateway:** Diese Schnittstelle stellt die Telemetriedaten von der Kamera, für die Cloud definierte Gerätezwillingseigenschaften und Gatewayinformationen dar.
 
 > [!div class="mx-imgBorder"]
-> ![Digital Distribution Center](./media/tutorial-iot-central-ddc/ddc-devicetemplate1.png)
+> ![Screenshot: Schnittstelle „Digital Distribution Gateway“ in der Gerätevorlage „Digital Distribution Gateway“](./media/tutorial-iot-central-ddc/ddc-devicetemplate1.png)
 
 
 ## <a name="gateway-commands"></a>Gatewaybefehle
 Diese Schnittstelle organisiert alle Gatewaybefehlsfunktionen.
 
 > [!div class="mx-imgBorder"]
-> ![Digital Distribution Center](./media/tutorial-iot-central-ddc/ddc-camera.png)
+> ![Screenshot: Schnittstelle für Gatewaybefehle in der Gerätevorlage „Digital Distribution Gateway“](./media/tutorial-iot-central-ddc/ddc-camera.png)
 
 ## <a name="rules"></a>Regeln
 Wählen Sie die Registerkarte „Regeln“ aus, um zwei verschiedene Regeln anzuzeigen, die in dieser Anwendungsvorlage vorhanden sind. Diese Regeln sind so konfiguriert, dass sie zwecks weiterer Untersuchungen E-Mail-Benachrichtigungen an die Operatoren senden.
@@ -96,7 +96,7 @@ Wählen Sie die Registerkarte „Regeln“ aus, um zwei verschiedene Regeln anzu
 **Großes Paket:** Diese Regel wird auslöst, wenn die Kamera ein extrem großes Paket erkennt, das nicht auf Qualität überprüft werden kann. 
 
 > [!div class="mx-imgBorder"]
-> ![Digital Distribution Center](./media/tutorial-iot-central-ddc/ddc-rules.png)
+> ![Screenshot: Liste der Regeln in der Anwendung für digitale Verteilzentren](./media/tutorial-iot-central-ddc/ddc-rules.png)
 
 ## <a name="jobs"></a>Aufträge
 Wählen Sie die Registerkarte „Aufträge“ aus, um fünf verschiedene Aufträge in dieser Anwendungsvorlage anzuzeigen: Sie können die Funktion für Aufträge nutzen, um lösungsweite Vorgänge auszuführen. Hier verwenden die Aufträge des digitalen Verteilzentrums die Funktion für Gerätebefehle und -zwillinge zum Ausführen von Aufgaben wie:
@@ -105,15 +105,17 @@ Wählen Sie die Registerkarte „Aufträge“ aus, um fünf verschiedene Aufträ
    * Ändern des Telemetrieintervalls zum Verwalten von Datenuploads
 
 > [!div class="mx-imgBorder"]
-> ![Digital Distribution Center](./media/tutorial-iot-central-ddc/ddc-jobs.png)
+> ![Screenshot: Liste der Aufträge in der Anwendung für digitale Verteilzentren](./media/tutorial-iot-central-ddc/ddc-jobs.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 Wenn Sie diese Anwendung nicht mehr verwenden möchten, löschen Sie die Anwendungsvorlage, indem Sie **Verwaltung** > **Anwendungseinstellungen** besuchen und auf **Löschen** klicken.
 
 > [!div class="mx-imgBorder"]
-> ![Digital Distribution Center](./media/tutorial-iot-central-ddc/ddc-cleanup.png)
+> ![Screenshot: Löschen der Anwendung, wenn Sie sie nicht mehr benötigen](./media/tutorial-iot-central-ddc/ddc-cleanup.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Weitere Informationen zur Digital Distribution Center-Lösungsarchitektur finden Sie unter [Konzepte in Digital Distribution Center](./architecture-digital-distribution-center.md).
+* Weitere Informationen zur Lösungsarchitektur von digitalen Verteilzentren: 
+> [!div class="nextstepaction"]
+> [Architektur der IoT Central-Anwendungsvorlage für digitale Verteilzentren](./architecture-digital-distribution-center.md)
 * Weitere Informationen zu anderen [IoT Central-Einzelhandelsvorlagen](./overview-iot-central-retail.md)
 * Lesen Sie die [Übersicht über IoT Central](../core/overview-iot-central.md).

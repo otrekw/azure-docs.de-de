@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: quickstart
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 7fa119db0c974c93aff667060d153b21b8de16bb
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 57ab6bca820c4c25a9a56e4a801aa7d917d317ec
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843486"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978570"
 ---
 # <a name="quickstart-deploy-open-source-fhir-server-using-azure-portal"></a>Schnellstart: Bereitstellen des Open-Source-FHIR-Servers über das Azure-Portal
 
@@ -25,17 +25,17 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Navigieren Sie zur [Bereitstellungsseite auf GitHub](https://github.com/Microsoft/fhir-server/blob/master/docs/DefaultDeployment.md), und suchen Sie die Schaltfläche „Bereitstellung in Azure“:
 
-![Open-Source-Bereitstellungsseite](media/quickstart-oss-portal/deployment-page-oss.png)
+>[!div class="mx-imgBorder"]
+>![Open-Source-Bereitstellungsseite](media/quickstart-oss-portal/deployment-page-oss.png)
 
 Klicken Sie auf die Schaltfläche für die Bereitstellung, und das Azure-Portal wird geöffnet.
 
 ## <a name="fill-in-deployment-parameters"></a>Ausfüllen von Bereitstellungsparametern
 
-Wählen Sie das Erstellen eine neuen Ressourcengruppe aus, und geben Sie ihr einen Namen. Der einzige andere erforderliche Parameter ist ein Name für den Dienst.
+Wählen Sie das Erstellen eine neuen Ressourcengruppe aus, und geben Sie ihr einen Namen. Als weitere Parameter werden nur noch ein Name für den Dienst und das SQL-Administratorkennwort benötigt.
 
-![Benutzerdefinierte Bereitstellungsparameter](media/quickstart-oss-portal/deployment-custom-parameters.png)
-
-Beachten Sie, dass bei der Bereitstellung der Quellcode direkt aus dem Open-Source-Repository auf GitHub abgerufen wird. Wenn Sie das Repository verzweigt haben, können Sie auf Ihre eigene Verzweigung und einen bestimmten Branch zeigen.
+>[!div class="mx-imgBorder"]
+>![Benutzerdefinierte Bereitstellungsparameter](media/quickstart-oss-portal/deployment-custom-parameters.png)
 
 Nachdem Sie die Details ausgefüllt haben, können Sie die Bereitstellung starten.
 

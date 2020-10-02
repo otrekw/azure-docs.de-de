@@ -1,25 +1,37 @@
 ---
-title: Informationen zu Azure Key Vault-Schlüsseln – Azure Key Vault
+title: 'Informationen zu Schlüsseln: Azure Key Vault'
 description: Hier finden Sie eine Übersicht über die Azure Key Vault-REST-Schnittstelle sowie Informationen für Entwickler zu Schlüsseln.
 services: key-vault
-author: msmbaldwin
-manager: rkarlin
+author: amitbapat
+manager: msmbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: overview
-ms.date: 09/04/2019
-ms.author: mbaldwin
-ms.openlocfilehash: b9803726bf3a54eb31d3c2ebaddce11fb96472be
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.date: 09/15/2020
+ms.author: ambapat
+ms.openlocfilehash: 29930a835297b0ddd3a91534dab9ccb6d74896e3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85413722"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967548"
 ---
-# <a name="about-azure-key-vault-keys"></a>Informationen zu Azure Key Vault-Schlüsseln
+# <a name="about-keys"></a>Informationen zu Schlüsseln
 
-Azure Key Vault unterstützt mehrere Schlüsseltypen und Algorithmen und ermöglicht die Verwendung von Hardwaresicherheitsmodulen (Hardware Security Modules, HSM) für Schlüssel von hohem Wert.
+Azure Key Vault bietet zwei Arten von Ressourcen für die Speicherung und Verwaltung kryptografischer Schlüssel:
+
+|Ressourcentyp|Schlüsselschutzmethoden|Basis-URL des Datenebenenendpunkts|
+|--|--|--|
+| **Tresore** | Softwaregeschützt<br/><br/>und<br/><br/>Durch HSM geschützt (mit Premium-SKU)</li></ul> | https://{Tresorname}.vault.azure.net |
+| **Pools verwalteter HSMs** | Durch HSM geschützt | https://{HSM-Name}.managedhsm.azure.net |
+||||
+
+- **Tresore:** Tresore bieten eine kostengünstige, leicht bereitzustellende, mehrinstanzenfähige, zonenresiliente (sofern verfügbar) und hochverfügbare Schlüsselverwaltungslösung, die für die meisten gängigen Cloudanwendungsszenarien geeignet ist.
+- **Verwaltete HSMs:** Verwaltetes HSM bietet einzelinstanzfähige, zonenresiliente (sofern verfügbar) und hochverfügbare HSMs zum Speichern und Verwalten Ihrer kryptografischen Schlüssel. Diese Lösung eignet sich am besten für Anwendungen und Verwendungsszenarien, in denen Schlüsseln mit hohem Wert verwendet werden. Darüber hinaus ermöglicht sie die Erfüllung besonders strenger Sicherheits- und Complianceanforderungen sowie entsprechender gesetzlicher Anforderungen. 
+
+> [!NOTE]
+> Mit Tresoren können neben kryptografischen Schlüsseln auch verschiedene Arten von Objekten wie etwa Geheimnisse, Zertifikate und Speicherkontoschlüssel gespeichert und verwaltet werden.
 
 Kryptografische Schlüssel in Key Vault werden als JSON Web Key-Objekte (JWK) dargestellt. Die Spezifikationen von JavaScript Object Notation (JSON) und JavaScript Object Signing and Encryption (JOSE) lauten wie folgt:
 
@@ -28,30 +40,49 @@ Kryptografische Schlüssel in Key Vault werden als JSON Web Key-Objekte (JWK) da
 -   [JSON Web Algorithms (JWA)](http://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms)  
 -   [JSON Web Signature (JWS)](https://tools.ietf.org/html/draft-ietf-jose-json-web-signature) 
 
-Die grundlegenden JWK/JWA-Spezifikationen wurden erweitert, um Schlüsseltypen zu ermöglichen, die für die Key Vault-Implementierung eindeutig sind. Das Importieren von Schlüsseln mit anbieterspezifischer HSM-Paketerstellung ermöglicht einen sicheren Transport von Schlüsseln, die nur in Key Vault-HSMs verwendet werden dürfen. 
+Die grundlegenden JWK/JWA-Spezifikationen wurden erweitert, um Schlüsseltypen zu ermöglichen, die speziell für die Implementierung von Azure Key Vault und verwalteten HSMs verwendet werden. 
 
-Azure Key Vault unterstützt sowohl softwaregeschützte als auch HSM-geschützte Schlüssel:
+Durch HSM geschützte Schlüssel (auch HSM-Schlüssel genannt) werden in einem HSM (Hardwaresicherheitsmodul) verarbeitet und verlassen nie die HSM-Schutzgrenze. 
 
-- **Softwaregeschützte Schlüssel**: Schlüssel, die in der Software von Key Vault verarbeitet, aber im Ruhezustand unter Verwendung eines Systemschlüssels, der sich in einem HSM befindet, verschlüsselt werden. Clients können einen vorhandenen RSA- oder EC-Schlüssel (Elliptic Curve, elliptische Kurve) importieren oder anfordern, dass Key Vault einen solchen Schlüssel generiert.
-- **HSM-geschützte Schlüssel**: Schlüssel, die in einem HSM (Hardwaresicherheitsmodul) verarbeitet werden. Diese Schlüssel werden in einer der HSM Security Worlds von Key Vault geschützt (es gibt in jeder geografischen Region eine Security World, um die Isolation aufrechtzuerhalten). Clients können einen RSA- oder EC-Schlüssel importieren, entweder in softwaregeschützter Form oder durch Exportieren von einem kompatiblen HSM-Gerät. Clients können auch anfordern, dass Key Vault einen Schlüssel generiert. Dieser Schlüsseltyp fügt dem JWK das key_hsm-Attribut hinzu, um das HSM-Schlüsselmaterial zu tragen.
+- Von Tresoren werden **FIPS 140-2 Level 2**-zertifizierte HSMs verwendet, um HSM-Schlüssel in einer gemeinsam genutzten HSM-Back-End-Infrastruktur zu schützen. 
+- Von Pools verwalteter HSMs werden **FIPS 140-2 Level 3**-zertifizierte HSMs verwendet, um Ihre Schlüssel zu schützen. Jeder HSM-Pool ist eine isolierte Einzelmandanteninstanz mit eigener [Sicherheitsdomäne](../managed-hsm/security-domain.md) und vollständiger kryptografischer Isolation von allen anderen HSM-Pools, die die gleiche Hardwareinfrastruktur nutzen.
 
-Weitere Informationen zu geografischen Grenzen finden Sie unter [Datenschutz](https://azure.microsoft.com/support/trust-center/privacy/).  
+Diese Schlüssel werden in HSM-Pools mit einem einzelnen Mandanten geschützt. Sie können einen RSA-Schlüssel, einen EC-Schlüssel und einen symmetrischen Schlüssel importieren – in Soft-Form oder durch Exportieren von einem kompatiblen HSM-Gerät. Außerdem können Sie Schlüssel in HSM-Pools generieren. Wenn Sie HSM-Schlüssel unter Verwendung der in der [BYOK-Spezifikation (Bring Your Own Key)](../keys/byok-specification.md) beschriebenen Methode importieren, ermöglicht dies den sicheren Transport von Schlüsselmaterial in Pools verwalteter HSMs. 
 
-## <a name="cryptographic-protection"></a>Kryptografischer Schutz
+Weitere Informationen zu geografischen Grenzen finden Sie unter [Datenschutz](https://azure.microsoft.com/support/trust-center/privacy/).
 
-Key Vault unterstützt nur RSA- und Elliptic Curve-Schlüssel. 
+## <a name="key-types-protection-methods-and-algorithms"></a>Schlüsseltypen, Schutzmethoden und Algorithmen
 
--   **EC**: Softwaregeschützter Elliptic Curve-Schlüssel.
--   **EC-HSM**: „Hard“-Elliptic Curve-Schlüssel.
--   **RSA**: Softwaregeschützter RSA-Schlüssel.
--   **RSA-HSM**: „Hard“-RSA-Schlüssel.
+Von Key Vault werden RSA-Schlüssel, EC-Schlüssel und symmetrische Schlüssel unterstützt. 
 
-Key Vault unterstützt RSA-Schlüssel der Größen 2048, 3072 und 4096. Key Vault unterstützt die Elliptic Curve-Schlüsseltypen P-256, P-384, P-521 und P-256K (SECP256K1).
+### <a name="hsm-protected-keys"></a>HSM-geschützte Schlüssel
 
-Die kryptografischen Module, die Key Vault verwendet – sowohl HSM als auch Software – sind FIPS-geprüft (Federal Information Processing Standards). Für die Ausführung im FIPS-Modus müssen Sie keine besonderen Maßnahmen ergreifen. Schlüssel, die als HSM-geschützt **erstellt** oder **importiert** wurden, werden in einem HSM verarbeitet und gemäß FIPS 140-2 Level 2 geprüft. Schlüssel, die als softwaregeschützt **erstellt** oder **importiert** wurden, werden in kryptografischen Modulen verarbeitet und gemäß FIPS 140-2 Level 1 geprüft.
+|Schlüsseltyp|Tresore (nur Premium-SKU)|Pools verwalteter HSMs|
+|--|--|--|--|
+**EC-HSM**: Elliptic Curve-Schlüssel|HSM mit FIPS 140-2 Level 2|HSM mit FIPS 140-2 Level 3
+**RSA-HSM**: RSA-Schlüssel|HSM mit FIPS 140-2 Level 2|HSM mit FIPS 140-2 Level 3
+**oct-HSM**: Symmetrisch|Nicht unterstützt|HSM mit FIPS 140-2 Level 3
+||||
+
+### <a name="software-protected-keys"></a>Softwaregeschützte Schlüssel
+
+|Schlüsseltyp|Tresore|Pools verwalteter HSMs|
+|--|--|--|--|
+**RSA**: Softwaregeschützter RSA-Schlüssel|FIPS 140-2 Level 1|Nicht unterstützt
+**EC**: Softwaregeschützter Elliptic Curve-Schlüssel.|FIPS 140-2 Level 1|Nicht unterstützt
+||||
+
+### <a name="supported-algorithms"></a>Unterstützte Algorithmen
+
+|Schlüsseltypen/Größen/Kurven| Verschlüsseln/Entschlüsseln<br>(Umschließen/Aufheben der Umschließung) | Signieren/Überprüfen | 
+| --- | --- | --- |
+|EC-P256, EC-P256K, EC-P384, EC-521|Nicht verfügbar|ES256<br>ES256K<br>ES384<br>ES512|
+|RSA 2K, 3K, 4K| RSA1_5<br>RSA-OAEP<br>RSA-OAEP-256|PS256<br>PS384<br>PS512<br>RS256<br>RS384<br>RS512<br>RSNULL| 
+|AES (128 Bit, 256 Bit)| AES-KW<br>AES-GCM<br>AES-CBC| Nicht verfügbar| 
+|||
 
 ###  <a name="ec-algorithms"></a>EC-Algorithmen
- Die folgenden Algorithmusbezeichner werden mit EC- und EC-HSM-Schlüsseln in Key Vault unterstützt. 
+ Die folgenden Algorithmusbezeichner werden mit EC-HSM-Schlüsseln unterstützt:
 
 #### <a name="curve-types"></a>Kurventypen
 
@@ -68,12 +99,13 @@ Die kryptografischen Module, die Key Vault verwendet – sowohl HSM als auch Sof
 -   **ES512** – ECDSA für SHA-512-Hashs und -Schlüssel, erstellt mit P-521-Kurve. Dieser Algorithmus wird im [RFC 7518](https://tools.ietf.org/html/rfc7518) beschrieben.
 
 ###  <a name="rsa-algorithms"></a>RSA-Algorithmen  
- Die folgenden Algorithmusbezeichner werden mit RSA- und RSA-HSM-Schlüsseln in Key Vault unterstützt.  
+ Die folgenden Algorithmusbezeichner werden mit RSA- und RSA-HSM-Schlüsseln in unterstützt:  
 
 #### <a name="wrapkeyunwrapkey-encryptdecrypt"></a>WRAPKEY/UNWRAPKEY, ENCRYPT/DECRYPT
 
 -   **RSA1_5**: RSAES-PKCS1-V1_5 [RFC3447] Schlüsselverschlüsselung  
 -   **RSA-OAEP**: RSAES unter Verwendung von Optimal Asymmetric Encryption Padding (OAEP) [RFC3447], wobei die Standardparameter durch RFC 3447 in Abschnitt A.2.1 angegeben werden. Diese Standardparameter verwenden eine Hashfunktion von SHA-1 und eine Maskengenerierungsfunktion von MGF1 mit SHA-1.  
+-  **RSA-OAEP-256**: RSAES mit OAEP (Optimal Asymmetric Encryption Padding), einer Hashfunktion vom Typ SHA-256 und einer MGF1-Maskengenerierungsfunktion mit SHA-256
 
 #### <a name="signverify"></a>SIGN/VERIFY
 
@@ -83,11 +115,19 @@ Die kryptografischen Module, die Key Vault verwendet – sowohl HSM als auch Sof
 -   **RS256**: RSASSA-PKCS-v1_5 mithilfe von SHA-256. Der von der Anwendung bereitgestellte Zusammenfassungswert muss mithilfe von SHA-256 berechnet werden und 32 Byte lang sein.  
 -   **RS384**: RSASSA-PKCS-v1_5 mithilfe von SHA-384. Der von der Anwendung bereitgestellte Zusammenfassungswert muss mithilfe von SHA-384 berechnet werden und 48 Byte lang sein.  
 -   **RS512**: RSASSA-PKCS-v1_5 mithilfe von SHA-512. Der von der Anwendung bereitgestellte Zusammenfassungswert muss mithilfe von SHA-512 berechnet werden und 64 Byte lang sein.  
--   **RSNULL**: Siehe [RFC2437], ein spezialisierter Anwendungsfall, um bestimmte TLS-Szenarios zu ermöglichen.  
+-   **RSNULL**: Siehe [RFC2437](https://tools.ietf.org/html/rfc2437). Hierbei handelt es sich um einen speziellen Anwendungsfall für bestimmte TLS-Szenarien.  
+
+###  <a name="symmetric-key-algorithms"></a>Algorithmen für symmetrische Schlüssel
+- **AES-KW**: AES-Schlüsselverpackung ([RFC3394](https://tools.ietf.org/html/rfc3394))
+- **AES-GCM**: AES-Verschlüsselung im Galois-Zählermodus ([NIST SP800-38d](https://csrc.nist.gov/publications/sp800))
+- **AES-CBC**: AES-Verschlüsselung im Verschlüsselungsblockverkettungs-Modus ([NIST SP800-38d](https://csrc.nist.gov/publications/sp800))
+
+> [!NOTE] 
+> Die aktuelle AES-GCM-Implementierung und die entsprechenden APIs sind experimentell. Die Implementierung und die APIs können sich in zukünftigen Iterationen noch erheblich ändern. 
 
 ##  <a name="key-operations"></a>Schlüsselvorgänge
 
-Key Vault unterstützt die folgenden Vorgänge bei Schlüsselobjekten:  
+Verwaltete HSMs unterstützen die folgenden Vorgänge für Schlüsselobjekte:  
 
 -   **Erstellen**: Ermöglicht einem Client, einen Schlüssel in Key Vault zu erstellen. Der Wert des Schlüssels wird von Key Vault generiert und gespeichert und nicht für den Client freigegeben. In Key Vault können asymmetrische Schlüssel erstellt werden.  
 -   **Import**: Ermöglicht einem Client, einen vorhandenen Schlüssel in Key Vault zu importieren. Asymmetrische Schlüssel können mithilfe einer Reihe unterschiedlicher Paketerstellungsmethoden in einem JWK-Konstrukt in Key Vault importiert werden. 
@@ -142,8 +182,8 @@ Weitere Informationen zu anderen möglichen Attributen finden Sie unter [JSON We
 
 Sie können zusätzliche anwendungsspezifische Metadaten in Form von Tags angeben. Key Vault unterstützt bis zu 15 Tags, von denen jedes einen 256 Zeichen langen Namen und einen Wert von 256 Zeichen aufweisen kann.  
 
->[!Note]
->Tags sind für Aufrufer lesbar, die über die *list*- oder *get*-Berechtigung für diesen Objekttyp (Schlüssel, Geheimnisse oder Zertifikate) verfügen.
+> [!NOTE] 
+> Tags sind für Aufrufer lesbar, die über die Berechtigung *list* oder *get* für den Schlüssel verfügen.
 
 ##  <a name="key-access-control"></a>Schlüsselzugriffssteuerung
 
@@ -176,10 +216,10 @@ Die folgenden Berechtigungen können auf Benutzer-/Dienstprinzipalbasis im Schl�
 Weitere Informationen zum Arbeiten mit Schlüsseln finden Sie in der [REST-API-Referenz für Key Vault](/rest/api/keyvault). Informationen zum Einrichten von Berechtigungen finden Sie unter [Tresore – Erstellen oder Aktualisieren](/rest/api/keyvault/vaults/createorupdate) und [Vaults – Aktualisieren der Zugriffsrichtlinie](/rest/api/keyvault/vaults/updateaccesspolicy). 
 
 ## <a name="next-steps"></a>Nächste Schritte
-
 - [Informationen zu Key Vault](../general/overview.md)
-- [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten](../general/about-keys-secrets-certificates.md)
+- [Informationen zu verwaltetem HSM](../managed-hsm/overview.md)
 - [Informationen zu Geheimnissen](../secrets/about-secrets.md)
 - [Informationen zu Zertifikaten](../certificates/about-certificates.md)
+- [Übersicht über die Key Vault-REST-API](../general/about-keys-secrets-certificates.md)
 - [Authentifizierung, Anforderungen und Antworten](../general/authentication-requests-and-responses.md)
 - [Entwicklerhandbuch für Key Vault](../general/developers-guide.md)

@@ -5,14 +5,14 @@ author: avneet723
 ms.author: avneets
 ms.service: iot-central
 ms.subservice: iot-central-retail
-ms.topic: overview
+ms.topic: tutorial
 ms.date: 01/09/2020
-ms.openlocfilehash: 74deb4253a21445e21f7ef04f53f3bfe3f1fe0d0
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: 880d8ee0e6e2b3984f6bea4b994642724085d512
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "81001269"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980534"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-micro-fulfillment-center-application-template"></a>Tutorial: Bereitstellen und Durchlaufen einer Anwendungsvorlage für Micro-Fulfillment-Center
 
@@ -62,11 +62,11 @@ Das Dashboard ermöglicht Folgendes:
    * Anzeigen des Grundrisses und der Position der Transportroboter innerhalb der Fulfillment-Struktur
    * Auslösen von Befehlen – etwa zum Zurücksetzen des Steuerungssystems, zum Aktualisieren der Firmwareversion eines Transportroboters oder zum Ändern der Netzwerkkonfiguration
 
-     ![Screenshot: Dashboard des Micro-Fulfillment-Centers von Northwind Traders](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard1.png)
+     ![Screenshot: obere Hälfte des Dashboards des Micro-Fulfillment-Centers von Northwind Traders](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard1.png)
    * Betrachten eines Beispiels für das Dashboard, über das ein Operator die Bedingungen innerhalb des Fulfillment-Centers überwachen kann 
    * Überwachen der Integrität der Nutzlasten, die auf dem Gatewaygerät innerhalb des Fulfillment-Centers ausgeführt werden    
 
-     ![Screenshot: Dashboard des Micro-Fulfillment-Centers von Northwind Traders](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard2.png)
+     ![Screenshot: untere Hälfte des Dashboards des Micro-Fulfillment-Centers von Northwind Traders](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard2.png)
 
 ## <a name="device-template"></a>Gerätevorlage
 Wenn Sie die Registerkarte „Gerätevorlagen“ auswählen, werden für die Vorlage zwei unterschiedliche Gerätetypen angezeigt: 
@@ -91,6 +91,9 @@ Falls Sie diese Anwendung nicht mehr benötigen, löschen Sie die Anwendungsvorl
 ![Screenshot: Seite „Anwendungseinstellungen“ für das Micro-Fulfillment-Center](./media/tutorial-micro-fulfillment-center-app/delete.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Informieren Sie sich ausführlicher über die [Lösungsarchitektur von Micro-Fulfillment-Centern](./architecture-micro-fulfillment-center.md).
-* Machen Sie sich mit anderen [Azure IoT Central-Einzelhandelsvorlagen](./overview-iot-central-retail.md) vertraut.
-* Sehen Sie sich die [Übersicht über Azure IoT Central](../preview/overview-iot-central.md) an.
+
+Weitere Informationen
+> [!div class="nextstepaction"]
+> [Micro-Fulfillment-Center-Lösungsarchitektur](./architecture-micro-fulfillment-center.md)
+* Machen Sie sich mit den [Azure IoT Central-Einzelhandelsvorlagen](./overview-iot-central-retail.md) vertraut.
+* Sehen Sie sich die [Übersicht über Azure IoT Central](../preview/overview-iot-central.md) an.

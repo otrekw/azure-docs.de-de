@@ -28,6 +28,10 @@
       href: tutorial-custom-role-cli.md
 - name: Konzepte
   items:
+    - name: Rollendefinitionen
+      href: role-definitions.md
+    - name: Bereich
+      href: scope-overview.md
     - name: Bewährte Methoden
       href: best-practices.md
     - name: Bedingter Zugriff für die Azure-Verwaltung
@@ -40,11 +44,7 @@
 - name: Anleitungen
   items:
     - name: Auflisten der Rollendefinitionen
-      items:
-        - name: Übersicht
-          href: role-definitions.md
-        - name: Auflisten der Rollendefinitionen
-          href: role-definitions-list.md
+      href: role-definitions-list.md
     - name: Auflisten der Rollenzuweisungen
       items:
         - name: Portal
@@ -57,6 +57,8 @@
           href: role-assignments-list-rest.md
     - name: Hinzufügen oder Entfernen von Rollenzuweisungen
       items:
+        - name: Schritte zum Hinzufügen einer Rollenzuweisung
+          href: role-assignments-steps.md
         - name: Portal
           href: role-assignments-portal.md
         - name: 'Portal: Gastbenutzer'

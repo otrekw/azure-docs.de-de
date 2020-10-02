@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/20/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: f4a4c38cf079c22dbd2b8eda5e68cc3f147b1fc0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 84db28348baebc4f6b62f9cacb0035b4df1f6145
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88534954"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660765"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-meraki-dashboard"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Meraki Dashboard
 
@@ -42,6 +42,9 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 * Meraki Dashboard unterstützt **IDP-initiiertes** einmaliges Anmelden.
 * Nach dem Konfigurieren von Meraki Dashboard können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
 
+> [!NOTE]
+> Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
+
 ## <a name="adding-meraki-dashboard-from-the-gallery"></a>Hinzufügen von Meraki Dashboard aus dem Katalog
 
 Zum Konfigurieren der Integration von Meraki Dashboard in Azure AD müssen Sie Meraki Dashboard aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
@@ -53,7 +56,7 @@ Zum Konfigurieren der Integration von Meraki Dashboard in Azure AD müssen Sie
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Meraki Dashboard** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **Meraki Dashboard** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-meraki-dashboard"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Meraki Dashboard
+## <a name="configure-and-test-azure-ad-sso-for-meraki-dashboard"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Meraki Dashboard
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Meraki Dashboard mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Meraki Dashboard eingerichtet werden.
 
@@ -147,15 +150,15 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Navigieren Sie zu **Organization** -> **Settings** (Organisation > Einstellungen).
 
-    ![Meraki Dashboard-Konfiguration](./media/meraki-dashboard-tutorial/configure1.png)
+    ![Meraki Dashboard: Registerkarte „Settings“ (Einstellungen)](./media/meraki-dashboard-tutorial/configure1.png)
 
 1. Legen Sie unter „Authentication“ (Authentifizierung) für **SAML SSO** (SAML-SSO) die Option **SAML SSO enabled** (SAML-SSO aktiviert) fest.
 
-    ![Meraki Dashboard-Konfiguration](./media/meraki-dashboard-tutorial/configure2.png)
+    ![Meraki Dashboard: Authentication (Authentifizierung)](./media/meraki-dashboard-tutorial/configure2.png)
 
 1. Klicken Sie auf **Add a SAML IdP** (SAML-IdP hinzufügen).
 
-    ![Meraki Dashboard-Konfiguration](./media/meraki-dashboard-tutorial/configure3.png)
+    ![Meraki Dashboard: Add a SAML IdP (SAML-IdP hinzufügen)](./media/meraki-dashboard-tutorial/configure3.png)
 
 1. Fügen Sie in das Textfeld **X.590 cert SHA1 fingerprint** (SHA1-Fingerabdruck des X.590-Zertifikats) den Wert für **Fingerabdruck** aus dem Azure-Portal ein. Klicken Sie anschließend auf **Speichern**. Nach dem Speichern wird die Consumer-URL angezeigt. Kopieren Sie den Wert der Consumer-URL, und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** in das Textfeld **Antwort-URL** ein.
 
@@ -167,15 +170,15 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Navigieren Sie zu **Organization** -> **Administrators** (Organisation > Administratoren).
 
-    ![Meraki Dashboard-Konfiguration](./media/meraki-dashboard-tutorial/user1.png)
+    ![Meraki Dashboard: Administrators (Administratoren)](./media/meraki-dashboard-tutorial/user1.png)
 
 1. Klicken Sie im Abschnitt „SAML administrator roles“ (SAML-Administratorrollen) auf die Schaltfläche **Add SAML role** (SAML-Rolle hinzufügen).
 
-    ![Meraki Dashboard-Konfiguration](./media/meraki-dashboard-tutorial/user2.png)
+    ![Meraki Dashboard: Add SAML role (SAML-Rolle hinzufügen)](./media/meraki-dashboard-tutorial/user2.png)
 
 1. Geben Sie die Rolle **meraki_full_admin** ein, legen Sie für **Organization access** (Organisationszugriff) die Option **Full** (Vollzugriff) fest, und klicken Sie dann auf **Create role** (Rolle erstellen). Wiederholen Sie den Vorgang für **meraki_readonly_admin**, legen Sie dieses Mal jedoch für **Organization access** (Organisationszugriff) die Option **Read-only** (Schreibgeschützt) fest.
  
-    ![Meraki Dashboard-Konfiguration](./media/meraki-dashboard-tutorial/user3.png)
+    ![Meraki Dashboard: Erstellen eines Benutzers](./media/meraki-dashboard-tutorial/user3.png)
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
@@ -194,6 +197,3 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Meraki Dashboard“ klicken, sollt
 - [Meraki Dashboard mit Azure AD ausprobieren](https://aad.portal.azure.com/)
 
 - [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [Schützen von Apps mit der App-Steuerung für bedingten Zugriff von Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-

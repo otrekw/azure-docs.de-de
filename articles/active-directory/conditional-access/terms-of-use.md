@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: compliance
 ms.topic: how-to
-ms.date: 05/29/2019
+ms.date: 09/14/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cead917c6c98d10d3f9e5ebe2f75bd5513574c5
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 19c6bf058af62f830c825eef900bff712ba07181
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948911"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085908"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Nutzungsbedingungen für Azure Active Directory
 
@@ -264,7 +264,7 @@ Für Nutzungsbedingungen pro Gerät gelten die folgenden Einschränkungen:
 
 - Ein Gerät kann nur mit einem Mandanten verknüpft werden.
 - Der Benutzer muss über Berechtigungen zum Einbinden des Geräts verfügen.
-- Die Intune-Registrierungs-App wird nicht unterstützt.
+- Die Intune-Registrierungs-App wird nicht unterstützt. Stellen Sie sicher, dass sie in jeder Richtlinie für bedingten Zugriff, die Nutzungsbedingungen erfordern, ausgeschlossen wird.
 - Azure AD B2B-Benutzer werden nicht unterstützt.
 
 Wenn das Gerät des Benutzers nicht eingebunden ist, erhält er eine Meldung, dass er das Gerät einbinden muss. Die Benutzeroberfläche ist von der Plattform und Software abhängig.

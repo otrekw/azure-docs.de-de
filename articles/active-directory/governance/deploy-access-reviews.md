@@ -16,12 +16,12 @@ ms.date: 08/14/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7eb39f1053abeb201c413db7c6bbd3e9f261bd95
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7154bc1f033806d359726cff8ed227f2219559ec
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011343"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461033"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Planen der Bereitstellung von Azure Active Directory-Zugriffsüberprüfungen
 
@@ -93,7 +93,7 @@ An Zugriffsüberprüfungen können Mitglieder der folgenden Teams aus Ihrer Orga
 
 * Die **IT-Administration** verwaltet Ihre IT-Infrastruktur, Cloudinvestitionen und SaaS-Apps (Software as a Service). Aufgaben dieses Teams:
 
-   * Überprüfen des privilegierten Zugriffs auf Infrastruktur und Apps, einschließlich Office 365 und Azure AD.
+   * Überprüfen des privilegierten Zugriffs auf Infrastruktur und Apps, einschließlich Microsoft 365 und Azure AD.
 
    * Planen und Ausführen von Zugriffsüberprüfungen für Gruppen, die zum Verwalten von Ausnahmelisten oder IT-Pilotprojekten verwendet werden, um Zugriffslisten auf dem aktuellen Stand zu halten.
 
@@ -180,7 +180,7 @@ Typische Ziele für die Überprüfung:
 
 * [Anwendungen, die für das einmalige Anmelden in Azure AD integriert sind](../manage-apps/what-is-application-management.md) (z. B. SaaS, Branchenanwendungen).
 
-* [Mitgliedschaft](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) in Gruppen (mit Azure AD synchronisiert oder in Azure AD oder Office 365 erstellt, einschließlich Microsoft Teams).
+* [Mitgliedschaft](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) in Gruppen (mit Azure AD synchronisiert oder in Azure AD oder Microsoft 365 erstellt, einschließlich Microsoft Teams).
 
 * [Zugriffspaket](/azure/active-directory/governance/entitlement-management-overview) zum Gruppieren von Ressourcen (Gruppen, Apps und Websites) in einem Paket für die Zugriffsverwaltung.
 
@@ -304,7 +304,7 @@ Beim [Erstellen eines Zugriffspakets](entitlement-management-access-package-crea
 
 ## <a name="plan-access-reviews-for-groups"></a>Planen von Zugriffsüberprüfungen für Gruppen
 
-Neben Zugriffspaketen stellt das Überprüfen der Gruppenmitgliedschaft die effektivste Methode zum Steuern des Zugriffs dar. Es wird empfohlen, dass der Zugriff auf Ressourcen über [Sicherheitsgruppen oder Office 365-Gruppen](../fundamentals/active-directory-manage-groups.md) zugewiesen wird und dass Benutzer diesen Gruppen hinzugefügt werden, um Zugriff zu erhalten.
+Neben Zugriffspaketen stellt das Überprüfen der Gruppenmitgliedschaft die effektivste Methode zum Steuern des Zugriffs dar. Wir empfehlen, den Zugriff auf Ressourcen über [Sicherheitsgruppen oder Microsoft 365-Gruppen](../fundamentals/active-directory-manage-groups.md) zuzuweisen und diesen Gruppen Benutzern hinzuzufügen, die Zugriff erhalten.
 
 Einer einzelnen Gruppe kann der Zugriff auf alle entsprechenden Ressourcen gewährt werden. Sie können der Gruppe Zugriff auf einzelne Ressourcen oder ein Zugriffspaket zuweisen, in dem Anwendungen und andere Ressourcen gruppiert sind. Mit dieser Methode können Sie den Zugriff auf die Gruppe statt den eines einzelnen Benutzers auf jede einzelne Anwendung überprüfen. 
 
@@ -322,9 +322,9 @@ Die Gruppenmitgliedschaft kann von folgenden Benutzern überprüft werden:
 
 Es wird empfohlen, dass Gruppenbesitzer die Mitgliedschaft überprüfen, da sie am besten wissen, welche Benutzer den Zugriff benötigen. Der Besitz von Gruppen unterscheidet sich je nach Gruppentyp:
 
-Gruppen, die in Office 365 und Azure AD erstellt werden, verfügen über mindestens einen klar definierten Besitzer. In den meisten Fällen sind diese Besitzer ideal als Prüfer für ihre eigenen Gruppen geeignet, da Sie wissen, wer Zugriff haben sollte. 
+Gruppen, die in Microsoft 365 und Azure AD erstellt werden, verfügen über mindestens einen klar definierten Besitzer. In den meisten Fällen sind diese Besitzer ideal als Prüfer für ihre eigenen Gruppen geeignet, da Sie wissen, wer Zugriff haben sollte. 
 
-Beispielsweise verwendet Microsoft Teams Office 365-Gruppen als zugrunde liegendes Autorisierungsmodell, um Benutzern den Zugriff auf Ressourcen zu gewähren, die sich in SharePoint, Exchange, OneNote oder anderen Office 365-Diensten befinden. Der Ersteller des Teams wird automatisch Besitzer und sollte für die Überprüfung der Mitgliedschaft in dieser Gruppe verantwortlich sein. 
+Beispielsweise verwendet Microsoft Teams Microsoft 365-Gruppen als zugrunde liegendes Autorisierungsmodell, um Benutzern den Zugriff auf Ressourcen zu gewähren, die sich in SharePoint, Exchange, OneNote oder anderen Microsoft 365-Diensten befinden. Der Ersteller des Teams wird automatisch Besitzer und sollte für die Überprüfung der Mitgliedschaft in dieser Gruppe verantwortlich sein. 
 
 Für Gruppen, die manuell im Azure AD-Portal oder über mithilfe eines Skripts über Microsoft Graph erstellt werden, sind möglicherweise keine Besitzer definiert. Es wird empfohlen, dass Sie diese entweder über das Azure AD-Portal im Abschnitt „Besitzer“ der Gruppe oder über Graph definieren.
 
@@ -403,7 +403,7 @@ Anhand von Zugriffsüberprüfungen können Prüfer feststellen, ob Benutzer eine
 
 * Sicherheitsadministrator
 
-* Alle Rollen für Office 365 und die Dynamics-Dienstverwaltung
+* Alle Rollen für Microsoft 365 und die Dynamics-Dienstverwaltung
 
 Die hier ausgewählten Rollen schließen permanente und berechtigte Rollen ein. 
 

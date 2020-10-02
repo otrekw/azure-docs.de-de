@@ -1,14 +1,14 @@
 ---
 title: Mandantenübergreifende Verwaltungsmöglichkeiten
 description: Die delegierte Azure-Ressourcenverwaltung ermöglicht eine mandantenübergreifende Verwaltungserfahrung.
-ms.date: 08/12/2020
+ms.date: 09/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 41e93f2a6a9fb21720dd2348dd611160b05b65c0
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 1ec2beeef86478e36fe3809e8dabcd40333c098a
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146911"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602386"
 ---
 # <a name="cross-tenant-management-experiences"></a>Mandantenübergreifende Verwaltungsmöglichkeiten
 
@@ -48,13 +48,13 @@ Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwal
 
 [Azure Arc:](../../azure-arc/index.yml)
 
-- Skaliertes Verwalten von Hybridservern: [Azure Arc für Server (Vorschau):](../../azure-arc/servers/overview.md)
-  - [Verbinden von Windows Server- oder Linux-Computern außerhalb von Azure](../../azure-arc/servers/onboard-portal.md) mit delegierten Abonnements oder Ressourcengruppen in Azure
+- Verwalten von Hybridservern im großen Stil: [Server mit Azure Arc-Unterstützung (Vorschauversion)](../../azure-arc/servers/overview.md):
+  - [Verwalten von verbundenen Windows Server- oder Linux-Computern außerhalb von Azure](../../azure-arc/servers/onboard-portal.md) mit delegierten Abonnements oder Ressourcengruppen in Azure
   - Verwalten von verbundenen Computern mithilfe von Azure-Konstrukten, z. B. Azure Policy und Tagging
   - Sicherstellen der Anwendung derselben Richtlinien für die Hybridumgebungen von Kunden
   - Verwenden von Azure Security Center zum Überwachen der Compliance der Hybridumgebungen von Kunden
 - Verwalten von Kubernetes-Hybridclustern im großen Stil – [Kubernetes mit Azure Arc-Aktivierung (Vorschauversion):](../../azure-arc/kubernetes/overview.md)
-  - [Herstellen einer Verbindung zwischen einem Kubernetes-Cluster und Azure Arc](../../azure-arc/kubernetes/connect-cluster.md) für delegierte Abonnements und/oder Ressourcengruppen in Azure
+  - [Verwalten von verbundenen Kubernetes-Clustern](../../azure-arc/kubernetes/connect-cluster.md) mit delegierten Abonnements und/oder Ressourcengruppen in Azure
   - [Verwenden von GitOps](../../azure-arc/kubernetes/use-gitops-connected-cluster.md) für verbundene Cluster
   - Erzwingen von Richtlinien für verbundene Cluster
 
@@ -64,7 +64,7 @@ Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwal
 
 [Azure Backup](../../backup/index.yml):
 
-- Sichern und Wiederherstellen von Daten in Kundenmandanten
+- Sichern und Wiederherstellen von Kundendaten [aus lokalen Workloads, Azure VMs, Azure-Dateifreigaben und mehr](../..//backup/backup-overview.md#what-can-i-back-up)
 - Verwenden des [Backup-Explorers](../../backup/monitor-azure-backup-with-backup-explorer.md) zum Anzeigen von Betriebsinformationen zu Sicherungselementen (einschließlich noch nicht für die Sicherung konfigurierten Azure-Ressourcen) und Überwachungsinformationen (Aufträge und Warnungen) zu delegierten Abonnements. Der Backup-Explorer ist zurzeit nur für Azure-VM-Daten verfügbar.
 - Verwenden Sie übergreifende [Sicherungsberichte](../../backup/configure-reports.md) für delegierte Abonnements, um historische Trends nachzuverfolgen, den Sicherungsspeicherverbrauch zu analysieren und Sicherungen/Wiederherstellungen zu überwachen.
 
@@ -82,6 +82,7 @@ Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwal
 - Anzeigen von Aktivitätsprotokolldetails für delegierte Abonnements
 - Log Analytics: Abfragen von Daten aus Remotearbeitsbereichen in mehreren Mandanten
 - Erstellen von Warnungen in Kundenmandanten, die eine Automatisierung auslösen, wie z. B. Azure Automation-Runbooks oder Azure Functions im verwaltenden Mandanten über Webhooks
+- Erstellen von Diagnoseeinstellungen in Kundenmandanten zum Senden von Ressourcenprotokollen an Arbeitsbereiche im verwaltenden Mandanten
 - Für SAP-Workloads sollten Sie [die Metriken von SAP-Lösungen mit einer aggregierten Sicht über Kundenmandanten hinweg überwachen](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293).
 
 [Azure-Netzwerkoptionen](../../networking/networking-overview.md):

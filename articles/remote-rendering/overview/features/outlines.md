@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a3b4ba62072e26f16a0e39416c9ae346d1acefd9
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5dd6d682c9db044763cad64eec420c1974d4ac03
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997522"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613694"
 ---
 # <a name="outline-rendering"></a>Konturenrendering
 
@@ -29,7 +29,7 @@ Die Klasse `OutlineSettings` enthält die Einstellungen für globale Kontureneig
 | `PulseRateHz`    | float   | Mit diesem Parameter wird die Oszillationsrate der Konturen pro Sekunde festgelegt.|
 | `PulseIntensity` | float   | Mit diesem Parameter wird die Intensität des Pulsierens der Konturen festgelegt. Der Wert muss zwischen 0,0 für kein Pulsieren und 1,0 für volles Pulsieren liegen. Die Intensität legt die Mindestdeckkraft der Konturen implizit auf `MinOpacity = 1.0 - PulseIntensity` fest. |
 
-![Konturen](./media/outlines.png) Auswirkungen der Änderung des Parameters `color` von Gelb (links) in Magenta (Mitte) und des Parameters `pulseIntensity` von 0 in 0,8 (rechts)
+![Ein dreimal gerendertes Objekt mit verschiedenen Konturparametern](./media/outlines.png) Die Wirkung der Änderung des `color`-Parameters von gelb (links) in Magenta (Mitte) und `pulseIntensity` von 0 in 0,8 (rechts).
 
 ## <a name="example"></a>Beispiel
 
@@ -60,6 +60,11 @@ void SetOutlineParameters(ApiHandle<AzureSession> session)
 ## <a name="performance"></a>Leistung
 
 Konturenrendering kann die Renderingleistung erheblich beeinflussen. Dieser Einfluss variiert basierend auf dem Platzverhältnis in Bezug auf den verwendeten Bildschirmplatz zwischen ausgewählten und nicht ausgewählten Objekten in einem bestimmten Frame.
+
+## <a name="api-documentation"></a>API-Dokumentation
+
+* [C# RemoteManager.OutlineSettings-Eigenschaft](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.outlinesettings)
+* [C++ RemoteManager::OutlineSettings()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#outlinesettings)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -5,15 +5,15 @@ services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: e5d483af44116274019851f049d6222adfd8dbcd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 9ed46f37c0906fa244d70cd2dea997f19c8bd462
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904841"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447414"
 ---
 # <a name="planning-and-operations-guide"></a>Leitfaden zu Planung und Betrieb
 Dieses Handbuch ist für IT-Experten, IT-Architekten, Informationssicherheitsanalysten und Cloudadministratoren konzipiert, die mit Azure Security Center arbeiten möchte.
@@ -117,21 +117,21 @@ Bei der Planung der Zugriffssteuerung mit RBAC für Security Center müssen Sie 
 Eine Sicherheitsrichtlinie definiert die gewünschte Konfiguration Ihrer Workloads und trägt zur Erfüllung unternehmensbezogener oder gesetzlicher Sicherheitsanforderungen bei. In Security Center können Sie Richtlinien für Ihre Azure-Abonnements definieren und auf die Art der Workload oder auf die Vertraulichkeit der Daten abstimmen.
 
 Security Center-Richtlinien enthalten folgende Komponenten:
-- [Datensammlung:](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection) Agent-Bereitstellung und Datensammlungseinstellungen.
-- [Sicherheitsrichtlinie:](https://docs.microsoft.com/azure/security-center/security-center-policies) Eine Azure-Richtlinie, die festlegt, welche Kontrollen von Security Center überwacht und empfohlen werden. Sie können aber auch [Azure Policy](../governance/policy/overview.md) verwenden, um neue Definitionen zu erstellen, zusätzliche Richtlinien zu definieren und verwaltungsgruppenübergreifende Richtlinien zuzuweisen.
-- [E-Mail-Benachrichtigungen:](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details) Sicherheitskontakte und Benachrichtigungseinstellungen.
-- [Tarif:](https://docs.microsoft.com/azure/security-center/security-center-pricing) Der Tarif mit oder ohne Azure Defender bestimmt, welche Security Center-Features für Ressourcen innerhalb des Gültigkeitsbereichs verfügbar sind. (Kann für Abonnements, Ressourcengruppen und Arbeitsbereiche angegeben werden.)
+- [Datensammlung:](security-center-enable-data-collection.md) Agent-Bereitstellung und Datensammlungseinstellungen.
+- [Sicherheitsrichtlinie:](tutorial-security-policy.md) Eine Azure-Richtlinie, die festlegt, welche Kontrollen von Security Center überwacht und empfohlen werden. Sie können aber auch [Azure Policy](../governance/policy/overview.md) verwenden, um neue Definitionen zu erstellen, zusätzliche Richtlinien zu definieren und verwaltungsgruppenübergreifende Richtlinien zuzuweisen.
+- [E-Mail-Benachrichtigungen:](security-center-provide-security-contact-details.md) Sicherheitskontakte und Benachrichtigungseinstellungen.
+- [Tarif:](security-center-pricing.md) Der Tarif mit oder ohne Azure Defender bestimmt, welche Security Center-Features für Ressourcen innerhalb des Gültigkeitsbereichs verfügbar sind. (Kann für Abonnements, Ressourcengruppen und Arbeitsbereiche angegeben werden.)
 
 > [!NOTE]
-> Die Angabe eines Sicherheitskontakts stellt sicher, dass Azure bei einem Sicherheitsvorfall die richtige Person in Ihrer Organisation erreicht. Weitere Informationen zur Aktivierung dieser Empfehlung finden Sie unter [Bereitstellen von Sicherheitskontaktinformationen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details) .
+> Die Angabe eines Sicherheitskontakts stellt sicher, dass Azure bei einem Sicherheitsvorfall die richtige Person in Ihrer Organisation erreicht. Weitere Informationen zur Aktivierung dieser Empfehlung finden Sie unter [Bereitstellen von Sicherheitskontaktinformationen in Azure Security Center](security-center-provide-security-contact-details.md) .
 
 ### <a name="security-policies-definitions-and-recommendations"></a>Sicherheitsrichtliniendefinitionen und -empfehlungen
 Security Center erstellt für jedes Ihrer Azure-Abonnements automatisch eine Standardsicherheitsrichtlinie. Sie können die Richtlinie in Security Center bearbeiten oder mithilfe von Azure Policy neue Definitionen erstellen, zusätzliche Richtlinien definieren, verwaltungsgruppenübergreifende Richtlinien zuweisen (die die gesamte Organisation, eine darin enthaltene Unternehmenseinheit und Ähnliches darstellen können) sowie die Einhaltung dieser Richtlinien bereichsübergreifend überwachen.
 
-Ermitteln Sie vor dem Konfigurieren der Sicherheitsrichtlinien zunächst anhand der [Sicherheitsempfehlungen](https://docs.microsoft.com/azure/security-center/security-center-recommendations), ob diese Richtlinien für Ihre verschiedenen Abonnements und Ressourcengruppen geeignet sind. Es ist auch wichtig zu verstehen, welche Aktionen aufgrund der Sicherheitsempfehlungen ausgeführt werden sollten und wer in Ihrer Organisation für die Überwachung neuer Empfehlungen und die Durchführung der erforderlichen Schritte verantwortlich ist.
+Ermitteln Sie vor dem Konfigurieren der Sicherheitsrichtlinien zunächst anhand der [Sicherheitsempfehlungen](security-center-recommendations.md), ob diese Richtlinien für Ihre verschiedenen Abonnements und Ressourcengruppen geeignet sind. Es ist auch wichtig zu verstehen, welche Aktionen aufgrund der Sicherheitsempfehlungen ausgeführt werden sollten und wer in Ihrer Organisation für die Überwachung neuer Empfehlungen und die Durchführung der erforderlichen Schritte verantwortlich ist.
 
 ## <a name="data-collection-and-storage"></a>Datensammlung und -speicherung
-Azure Security Center verwendet den Log Analytics-Agent, um sicherheitsrelevante Daten von Ihren VMs (virtuelle Computer) zu sammeln. Dieser Agent wird auch vom Azure Monitor-Dienst verwendet. Die von diesem Agent [gesammelten Daten](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection) werden in Ihren Log Analytics-Arbeitsbereichen gespeichert.
+Azure Security Center verwendet den Log Analytics-Agent, um sicherheitsrelevante Daten von Ihren VMs (virtuelle Computer) zu sammeln. Dieser Agent wird auch vom Azure Monitor-Dienst verwendet. Die von diesem Agent [gesammelten Daten](security-center-enable-data-collection.md) werden in Ihren Log Analytics-Arbeitsbereichen gespeichert.
 
 ### <a name="agent"></a>Agent
 
@@ -189,9 +189,9 @@ Außerdem sollten Sie die vorhandenen Ressourcen regelmäßig auf Konfigurations
 
 ### <a name="hardening-access-and-applications"></a>Härten von Zugriff und Anwendungen
 
-Im Rahmen Ihrer Sicherheitsmaßnahmen sollten Sie auch vorbeugende Maßnahmen zur Beschränkung des Zugriffs auf virtuelle Computer ergreifen und die Anwendungen überwachen, die auf virtuellen Computern ausgeführt werden. Die Sperrung des eingehenden Datenverkehrs für Ihre virtuellen Azure-Computer trägt zur Verringerung der Angriffsfläche bei und ermöglicht gleichzeitig eine komfortable bedarfsgerechte Verbindungsherstellung mit virtuellen Computern. Verwenden Sie das Feature [JIT-VM-Zugriff](https://docs.microsoft.com/azure/security-center/security-center-just-in-time), um den Zugriff auf Ihre virtuellen Computer zu härten.
+Im Rahmen Ihrer Sicherheitsmaßnahmen sollten Sie auch vorbeugende Maßnahmen zur Beschränkung des Zugriffs auf virtuelle Computer ergreifen und die Anwendungen überwachen, die auf virtuellen Computern ausgeführt werden. Die Sperrung des eingehenden Datenverkehrs für Ihre virtuellen Azure-Computer trägt zur Verringerung der Angriffsfläche bei und ermöglicht gleichzeitig eine komfortable bedarfsgerechte Verbindungsherstellung mit virtuellen Computern. Verwenden Sie das Zugriffsfeature [JIT-VM-Zugriff](security-center-just-in-time.md), um den Zugriff auf Ihre virtuellen Computer zu härten.
 
-Sie können [adaptive Anwendungssteuerungen](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application) verwenden, um einzugrenzen, welche Anwendungen auf Ihren in Azure befindlichen virtuellen Computern ausgeführt werden können. Neben anderen Vorteilen verbessert dies die Möglichkeiten, ihre virtuellen Computer vor Schadsoftware zu schützen. Unter Verwendung des maschinellen Lernens werden in Security Center Prozesse analysiert, die auf den virtuellen Computer ausgeführt werden. Aus den Analysen können dann Regeln für Zulassungslisten erstellt werden.
+Sie können [adaptive Anwendungssteuerungen](security-center-adaptive-application.md) verwenden, um einzugrenzen, welche Anwendungen auf Ihren in Azure befindlichen virtuellen Computern ausgeführt werden können. Neben anderen Vorteilen verbessert dies die Möglichkeiten, ihre virtuellen Computer vor Schadsoftware zu schützen. Unter Verwendung des maschinellen Lernens werden in Security Center Prozesse analysiert, die auf den virtuellen Computer ausgeführt werden. Aus den Analysen können dann Regeln für Zulassungslisten erstellt werden.
 
 
 ## <a name="incident-response"></a>Reaktion auf Vorfälle

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/21/2020
 ms.author: kenwith
 ms.reviewer: luleon
-ms.openlocfilehash: a8509797e78b70a60ffad4ba01d5a936f8b76f97
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: f49377743521e27c2312e95491762ca48d8448c4
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322295"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604324"
 ---
 # <a name="manage-user-assignment-for-an-app-in-azure-active-directory"></a>Verwalten von Benutzerzuweisungen für eine App in Azure Active Directory
 
@@ -28,7 +28,7 @@ Für eine bessere Kontrolle können bestimmte Arten von Unternehmensanwendungen 
 > Wenn Sie einer Anwendung eine Gruppe zuweisen, haben nur die Benutzer in der Gruppe Zugriff. Die Zuweisung wird nicht an geschachtelte Gruppen weitergegeben.
 
 > [!NOTE]
-> Für die gruppenbasierte Zuweisung ist die Azure Active Directory Premium P1- oder P2-Edition erforderlich. Die gruppenbasierte Zuweisung wird nur für Sicherheitsgruppen unterstützt. Geschachtelte Gruppenmitgliedschaften und Office 365-Gruppen werden aktuell nicht unterstützt. Weitere Informationen zu Lizenzierungsanforderungen für die in diesem Artikel erläuterten Features finden Sie in der [Preisübersicht für Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory). 
+> Für die gruppenbasierte Zuweisung ist die Azure Active Directory Premium P1- oder P2-Edition erforderlich. Die gruppenbasierte Zuweisung wird nur für Sicherheitsgruppen unterstützt. Geschachtelte Gruppenmitgliedschaften und Microsoft 365-Gruppen werden aktuell nicht unterstützt. Weitere Informationen zu Lizenzierungsanforderungen für die in diesem Artikel erläuterten Features finden Sie in der [Preisübersicht für Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory). 
 
 ## <a name="configure-an-application-to-require-user-assignment"></a>Konfigurieren einer Anwendung für das Anfordern einer Benutzerzuweisung
 
@@ -55,7 +55,10 @@ So fordern Sie eine Benutzerzuweisung für eine Anwendung an
 6. Wählen Sie oben auf der Seite die Schaltfläche **Speichern** aus.
 
 ## <a name="assign-or-unassign-users-and-groups-for-an-app-using-the-azure-portal"></a>Zuweisen von Benutzern und Gruppen für eine App und Aufheben ihrer Zuweisung über das Azure-Portal
-Weitere Informationen zum Zuweisen eines Benutzers oder einer Gruppe und das Aufheben ihrer Zuweisung über das Azure-Portal finden Sie in der [Schnellstartreihe zur Anwendungsverwaltung](add-application-portal-assign-users.md). 
+Weitere Informationen zum Zuweisen eines Benutzers oder einer Gruppe und das Aufheben ihrer Zuweisung über das Azure-Portal finden Sie in der [Schnellstartreihe zur Anwendungsverwaltung](add-application-portal-assign-users.md).
+
+## <a name="assign-or-unassign-users-and-groups-for-an-app-using-the-graph-api"></a>Zuweisen von Benutzern und Gruppen für eine App und Aufheben ihrer Zuweisung mit der Graph-API
+Mit der Graph-API können Sie einer App Benutzer und Gruppen zuweisen und die Zuweisung aufheben. Weitere Informationen finden Sie unter [App-Rollenzuweisungen](https://docs.microsoft.com/graph/api/resources/approleassignment).
 
 ## <a name="assign-users-and-groups-to-an-app-using-powershell"></a>Zuweisen von Benutzern und Gruppen zu einer App mithilfe von PowerShell
 1. Öffnen Sie eine Windows PowerShell-Eingabeaufforderung mit erhöhten Rechten.

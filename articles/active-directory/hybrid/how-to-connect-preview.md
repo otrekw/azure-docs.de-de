@@ -16,19 +16,19 @@ ms.date: 05/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0bb7305fe8ee96697c5c8b2172e32a2a97e5bd6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b543cf4655d0b961a144e9180385a532ae4216d6
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358428"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657100"
 ---
 # <a name="more-details-about-features-in-preview"></a>Weitere Informationen zu den Funktionen in der Vorschau
 In diesem Thema wird beschrieben, wie Sie Funktionen verwenden, die sich derzeit in der Vorschau befinden.
 
 ## <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Synchronisierungsendpunkt-API V2 für Azure AD Connect (öffentliche Vorschau) 
 
-Wir haben einen neuen Endpunkt (API) für Azure AD Connect bereitgestellt, mit dem die Leistung der Synchronisierungsdienstvorgänge für Azure Active Directory verbessert wird. Wenn Sie den neuen V2-Endpunkt verwenden, treten beim Exportieren aus und Importieren in Azure AD spürbare Leistungssteigerungen auf. Dieser neue Endpunkt unterstützt auch das Synchronisieren von Gruppen mit bis zu 250.000 Mitgliedern. Mithilfe dieses Endpunkts können Sie auch vereinheitlichte O365-Gruppen ohne maximale Mitgliedschaftsbeschränkung in Ihr lokales Active Directory zurückschreiben, wenn Gruppenrückschreiben aktiviert ist.   Weitere Informationen finden Sie unter [Synchronisierungsendpunkt-API V2 für Azure AD Connect (öffentliche Vorschau)](how-to-connect-sync-endpoint-api-v2.md).
+Wir haben einen neuen Endpunkt (API) für Azure AD Connect bereitgestellt, mit dem die Leistung der Synchronisierungsdienstvorgänge für Azure Active Directory verbessert wird. Wenn Sie den neuen V2-Endpunkt verwenden, treten beim Exportieren aus und Importieren in Azure AD spürbare Leistungssteigerungen auf. Dieser neue Endpunkt unterstützt auch das Synchronisieren von Gruppen mit bis zu 250.000 Mitgliedern. Mithilfe dieses Endpunkts können Sie auch einheitliche Microsoft 365-Gruppen ohne maximale Mitgliedschaftsbeschränkung in Ihr lokales Active Directory zurückschreiben, wenn Gruppenrückschreiben aktiviert ist. Weitere Informationen finden Sie unter [Synchronisierungsendpunkt-API V2 für Azure AD Connect (öffentliche Vorschau)](how-to-connect-sync-endpoint-api-v2.md).
 
 ## <a name="user-writeback"></a>Rückschreiben von Benutzern
 > [!IMPORTANT]

@@ -13,12 +13,12 @@ ms.date: 10/06/2018
 ms.reviewer: martincoetzer
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e2c09bcd43b08778324a32cc052fad5b85714c4
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 15bcb0f7ca30c343072da396abeac8d08dee03a9
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279583"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087008"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>Faktoren, die die Leistung von Azure AD Connect beeinflussen
 
@@ -41,7 +41,7 @@ Dieses Dokument beschreibt die Faktoren, die die Leistung der Azure AD Connect-B
 
 Das folgende Diagramm zeigt die leistungsstarke Architektur der Bereitstellungs-Engine, die mit einer einzigen Gesamtstruktur verbunden ist, obwohl mehrere Gesamtstrukturen unterstützt werden. Diese Architektur veranschaulicht, wie die verschiedenen Komponenten miteinander interagieren.
 
-![AzureADConnentInternal](media/plan-connect-performance-factors/AzureADConnentInternal.png)
+![Das Diagramm zeigt, wie die verbundenen Verzeichnisse und die Azure AD Connect-Bereitstellungs-Engine interagieren, einschließlich des Connectorbereichs und der Metaverse-Komponenten in einer SQL-Datenbank. ](media/plan-connect-performance-factors/AzureADConnentInternal.png)
 
 Die Bereitstellungs-Engine stellt eine Verbindung mit jeder Active Directory-Gesamtstruktur und Azure AD her. Das Lesen von Informationen aus jedem Verzeichnis wird als „Import“ bezeichnet. Der „Export“ umfasst die Aktualisierung der Verzeichnisse aus der Bereitstellungs-Engine. Die Synchronisierung wertet die Regeln aus, wie sich Objekte in der Bereitstellungs-Engine bewegen. Weitere Informationen finden Sie unter [Azure AD Connect-Synchronisierung: Grundlagen der Architektur](./concept-azure-ad-connect-sync-architecture.md).
 

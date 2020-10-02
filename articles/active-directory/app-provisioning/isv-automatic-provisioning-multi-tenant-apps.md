@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/23/2019
 ms.author: kenwith
 ms.reviewer: zhchia
-ms.openlocfilehash: 7ffdef43aa0fdcaab9e8ceae519cef9dfe5cdf6e
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 617128640c4f4ae4ce5ac32803e459a9a3eb448f
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235637"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706448"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Aktivieren der automatischen Benutzerbereitstellung für Ihre mehrinstanzenfähige Anwendung
 
@@ -64,7 +64,7 @@ Informationen zu den Integrationsoptionen für die Anwendung finden Sie in der a
 |---|---|---|---|
 | Benutzer- und Gruppenverwaltung in Azure AD| √| √| Nur Benutzer |
 | Verwalten von Benutzern und Gruppen, die mit der lokalen Active Directory-Instanz synchronisiert werden| √*| √*| Nur Benutzer* |
-| Zugriff auf andere Daten neben Benutzern und Gruppen bei der Bereitstellung, Zugriff auf O365-Daten (Teams, SharePoint, E-Mail, Kalender, Dokumente usw.)| X+| √| X |
+| Zugriff auf andere Daten neben Benutzern und Gruppen bei der Bereitstellung, Zugriff auf Microsoft 365-Daten (Teams, SharePoint, E-Mail, Kalender, Dokumente usw.)| X+| √| X |
 | Erstellen, Lesen und Aktualisieren von Benutzern basierend auf Geschäftsregeln| √| √| √ |
 | Löschen von Benutzern basierend auf Geschäftsregeln| √| √| X |
 | Verwalten der automatischen Benutzerbereitstellung für alle Anwendungen über das Azure-Portal| √| X| √ |
@@ -91,7 +91,7 @@ Weitere Informationen zur Verwendung von SCIM im Azure AD-Bereitstellungsdienst
 
 Bei Verwendung von Microsoft Graph für die Bereitstellung haben Sie Zugriff auf alle in Graph verfügbaren umfassenden Benutzerdaten. Neben den Details von Benutzern und Gruppen können Sie auch weitere Informationen abrufen, z. B. die Rollen, Manager und direkten Mitarbeiter von Benutzern, Geräte im Besitz von Benutzern und registrierte Geräte sowie Hunderte anderer Datenelemente, die in [Microsoft Graph](/graph/api/overview?view=graph-rest-1.0) verfügbar sind. 
 
-Mehr als 15 Millionen Organisationen und 90 % der Fortune 500-Unternehmen, die Microsoft-Clouddienste wie Office 365, Microsoft Azure, Enterprise Mobility Suite oder Microsoft 365 abonniert haben, verwenden Azure AD. Mithilfe von Microsoft Graph können Sie Ihre Anwendung in administrative Workflows integrieren, z. B. Onboarding (und Kündigung) von Mitarbeitern, Profilwartung und vieles mehr. 
+Mehr als 15 Millionen Organisationen und 90 % der Fortune 500-Unternehmen, die Microsoft-Clouddienste wie Microsoft 365, Microsoft Azure oder Enterprise Mobility Suite abonniert haben, verwenden Azure AD. Mithilfe von Microsoft Graph können Sie Ihre Anwendung in administrative Workflows integrieren, z. B. Onboarding (und Kündigung) von Mitarbeitern, Profilwartung und vieles mehr. 
 
 Weitere Informationen zur Verwendung von Microsoft Graph für die Bereitstellung:
 

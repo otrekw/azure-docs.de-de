@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4e09637a7d990e1555b5443b9931cf8ff8c271b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 57325363909664bb527c2e2101505641858c4285
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718865"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706267"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Häufig gestellte Fragen zu Azure Multi-Factor Authentication
 
@@ -102,7 +102,7 @@ Die Abrechnung basiert auf der Anzahl von Benutzern, die zur Nutzung von Multi-F
 
 Wenn Sie einen benutzer- oder authentifizierungsbasierten MFA-Anbieter erstellen, wird das Azure-Abonnement Ihrer Organisation monatlich auf der Grundlage der Nutzung abgerechnet. Dieses Abrechnungsmodell ähnelt der Azure-Abrechnung für die Nutzung von virtuellen Computern und Web-Apps.
 
-Wenn Sie ein Abonnement für Azure Multi-Factor Authentication erwerben, fällt für Ihre Organisation lediglich die jährliche Lizenzgebühr für die einzelnen Benutzer an. Wenn Sie MFA-Lizenzen und Office 365, Azure AD Premium oder Enterprise Mobility + Security besitzen, werden die Pakete so abgerechnet.
+Wenn Sie ein Abonnement für Azure Multi-Factor Authentication erwerben, fällt für Ihre Organisation lediglich die jährliche Lizenzgebühr für die einzelnen Benutzer an. Wenn Sie MFA-Lizenzen und Microsoft 365, Azure AD Premium oder Enterprise Mobility + Security besitzen, werden die Pakete so abgerechnet.
 
 Weitere Informationen finden Sie unter [Beziehen von Azure Multi-Factor Authentication](concept-mfa-licensing.md).
 

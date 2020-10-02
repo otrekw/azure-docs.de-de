@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.openlocfilehash: dd9aee01edf45f89feb6a6010c8d958511bc3904
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 613ce41820dc5f388af441836bdb4a93e43e5d07
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185397"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987636"
 ---
 # <a name="tutorial-create-a-powershell-workflow-runbook"></a>Tutorial: Erstellen eines PowerShell-Workflow-Runbooks
 
@@ -109,17 +109,17 @@ Das erstellte Runbook befindet sich immer noch im Entwurfsmodus. Sie müssen das
 
 6. Beachten Sie, dass der Auftragsstatus unter **Auftragszusammenfassung** angezeigt wird. Dieser Status stimmt mit einem der Status überein, die Sie beim Testen des Runbooks gesehen haben.
 
-   ![API-Zusammenfassung](../media/automation-tutorial-runbook-textual/job-pane-status-blade-jobsummary.png)
+   :::image type="content" source="../media/automation-tutorial-runbook-textual/job-pane-status-blade-jobsummary.png" alt-text="Screenshot: Bereich für den Runbookauftrag mit hervorgehobenem Abschnitt „Auftragszusammenfassung“":::
 
 7. Wenn der Runbookstatus „Abgeschlossen“ lautet, klicken Sie auf **Ausgabe**. Die Seite „Ausgabe“ wird geöffnet, auf der Ihre Nachricht `Hello World` angezeigt wird.
 
-   ![API-Zusammenfassung](../media/automation-tutorial-runbook-textual/job-pane-status-blade-outputtile.png)
+   :::image type="content" source="../media/automation-tutorial-runbook-textual/job-pane-status-blade-outputtile.png" alt-text="Screenshot: Bereich für den Runbookauftrag mit hervorgehobenem Abschnitt „Auftragszusammenfassung“":::
 
 8. Schließen Sie die Seite „Ausgabe“.
 
 9. Klicken Sie auf **Alle Protokolle**, um den Bereich „Datenströme“ für den Runbookauftrag zu öffnen. Im Ausgabestream sollte nur `Hello World` angezeigt werden. Beachten Sie, dass im Bereich „Streams“ auch andere Streams für einen Runbookauftrag, etwa ausführliche Streams und Fehlerstreams, angezeigt werden können, sofern das Runbook in diese schreibt.
 
-   ![API-Zusammenfassung](../media/automation-tutorial-runbook-textual/job-pane-status-blade-alllogstile.png)
+   :::image type="content" source="../media/automation-tutorial-runbook-textual/job-pane-status-blade-alllogstile.png" alt-text="Screenshot: Bereich für den Runbookauftrag mit hervorgehobenem Abschnitt „Auftragszusammenfassung“":::
 
 10. Schließen Sie den Bereich „Streams“ und den Bereich „Auftrag“, um zur Seite „MyFirstRunbook“ zurückzukehren.
 

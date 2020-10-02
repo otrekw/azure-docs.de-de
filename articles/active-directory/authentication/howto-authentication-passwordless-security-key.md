@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 02/12/2020
+ms.date: 09/14/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f17a634a9bc3b410eec8ed6e868d454dc9ecee6
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: e523f8cc3aa9ab2f42d2d28909c9dec2dad30b43
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116596"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526951"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln (Vorschauversion)
 
@@ -32,15 +32,15 @@ In diesem Dokument liegt der Schwerpunkt auf der Aktivierung der auf Sicherheits
 - [Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
 - Aktivieren der [kombinierten Registrierung von Sicherheitsinformationen (Vorschauversion)](concept-registration-mfa-sspr-combined.md)
 - Kompatible [FIDO2-Sicherheitsschlüssel](concept-authentication-passwordless.md#fido2-security-keys)
-- WebAuthN erfordert Windows 10, Version 1809 oder höher**
+- WebAuthN erfordert Windows 10, Version 1903 oder höher**
 
 Um Sicherheitsschlüssel für die Anmeldung bei Web-Apps und-Diensten verwenden zu können, benötigen Sie einen Browser, der das WebAuthN-Protokoll unterstützt. Hierzu zählen Microsoft Edge, Chrome, Firefox und Safari.
 
 ## <a name="prepare-devices-for-preview"></a>Vorbereiten von Geräten für die Vorschauversion
 
-Auf in Azure AD eingebundenen Geräten, die Sie für Pilotversuche verwenden möchten, muss mindestens die Windows 10-Version 1809 ausgeführt werden. Hierfür eignet sich besonders Windows 10 (Version 1903 oder höher).
+Auf in Azure AD eingebundenen Geräten, die Sie für Pilotversuche verwenden, muss mindestens Windows 10, Version 1909, ausgeführt werden. Hierfür eignet sich besonders Windows 10 (Version 1903 oder höher).
 
-Auf in Azure AD Hybrid eingebundenen Geräten muss mindestens der Build 18945 von Windows 10 Insider ausgeführt werden.
+Auf in Azure AD Hybrid eingebundenen Geräte muss Windows 10, Version 2004 oder höher, ausgeführt werden.
 
 ## <a name="enable-passwordless-authentication-method"></a>Aktivieren von Methoden zur kennwortlosen Authentifizierung
 
@@ -73,7 +73,7 @@ Die Registrierungsfunktionen für Methoden zur kennwortlosen Authentifizierung s
 
 ## <a name="sign-in-with-passwordless-credential"></a>Anmelden mit kennwortlosen Anmeldeinformationen
 
-Im nachfolgenden Beispiel hat der Benutzer bereits einen FIDO2-Sicherheitsschlüssel bereitgestellt. Der Benutzer kann sich im Web mit seinem FIDO2-Sicherheitsschlüssel in einem unterstützten Browser unter Windows 10 (Version 1809 oder höher) anmelden.
+Im nachfolgenden Beispiel hat der Benutzer bereits einen FIDO2-Sicherheitsschlüssel bereitgestellt. Der Benutzer kann sich im Web mit seinem FIDO2-Sicherheitsschlüssel in einem unterstützten Browser unter Windows 10, Version 1903 oder höher, anmelden.
 
 ![Anmeldung mit Sicherheitsschlüssel in Microsoft Edge](./media/howto-authentication-passwordless-security-key/fido2-windows-10-1903-edge-sign-in.png)
 

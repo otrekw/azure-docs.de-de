@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/04/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 1e1ec1dc4d6982194fc10a8701629adba2c8b24c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 31e8533da91fdab86313e21c20c2ebb107eef848
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544311"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660601"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-edx-for-business-saml-integration"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit edX for Business SAML Integration
 
@@ -43,6 +43,9 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 * Nach dem Konfigurieren von edX for Business SAML Integration können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
 
+> [!NOTE]
+> Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
+
 ## <a name="adding-edx-for-business-saml-integration-from-the-gallery"></a>Hinzufügen von edX for Business SAML Integration aus dem Katalog
 
 Zum Konfigurieren der Integration von edX for Business SAML Integration in Azure AD müssen Sie edX for Business SAML Integration aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
@@ -55,7 +58,7 @@ Zum Konfigurieren der Integration von edX for Business SAML Integration in Azure
 1. Wählen Sie im Ergebnisbereich **edX for Business SAML Integration** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-edx-for-business-saml-integration"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für edX for Business SAML Integration
+## <a name="configure-and-test-azure-ad-sso-for-edx-for-business-saml-integration"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für edX for Business SAML Integration
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit edX for Business SAML Integration unter Verwendung eines Testbenutzers namens **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in edX for Business SAML Integration eingerichtet werden.
 

@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f17f6fd881243d91428c6025fd63469a38afa0f
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 60d3e3c174ad9a3372df084cac9eb67270779298
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268807"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563895"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>Planen Ihrer Azure Active Directory-Gerätebereitstellung
 
@@ -105,24 +105,24 @@ iOS- und Android-Geräte können nur in Azure AD registriert werden. In der folg
 | Aspekt | Bei Azure AD registriert| Azure AD-Einbindung| Azure AD-Hybrideinbindung |
 | - | - | - | - |
 | **Clientbetriebssysteme**| | |  |
-| Windows 10-Geräte| ![Häkchen](./media/plan-device-deployment/check.png)| ![Häkchen](./media/plan-device-deployment/check.png)| ![Häkchen](./media/plan-device-deployment/check.png) |
-| Kompatible Windows-Geräte (Windows 8.1 oder Windows 7)| | | ![Häkchen](./media/plan-device-deployment/check.png) |
+| Windows 10-Geräte| ![Häkchen für diese Werte.](./media/plan-device-deployment/check.png)| ![Häkchen für diese Werte.](./media/plan-device-deployment/check.png)| ![Häkchen für diese Werte.](./media/plan-device-deployment/check.png) |
+| Kompatible Windows-Geräte (Windows 8.1 oder Windows 7)| | | ![Häkchen für diese Werte.](./media/plan-device-deployment/check.png) |
 |**Anmeldeoptionen**| | |  |
-| Lokale Anmeldeinformationen von Endbenutzern| ![Häkchen](./media/plan-device-deployment/check.png)| |  |
-| Kennwort| ![Häkchen](./media/plan-device-deployment/check.png)| ![Häkchen](./media/plan-device-deployment/check.png)| ![Häkchen](./media/plan-device-deployment/check.png) |
-| Geräte-PIN| ![Häkchen](./media/plan-device-deployment/check.png)| |  |
-| Windows Hello| ![Häkchen](./media/plan-device-deployment/check.png)| |  |
-| Windows Hello for Business| | ![Häkchen](./media/plan-device-deployment/check.png)| ![Häkchen](./media/plan-device-deployment/check.png) |
-| FIDO 2.0-Sicherheitsschlüssel| | ![Häkchen](./media/plan-device-deployment/check.png)| ![Häkchen](./media/plan-device-deployment/check.png) |
-| Microsoft Authenticator-App (kennwortlos)| ![Häkchen](./media/plan-device-deployment/check.png)| ![Häkchen](./media/plan-device-deployment/check.png)| ![Häkchen](./media/plan-device-deployment/check.png) |
+| Lokale Anmeldeinformationen von Endbenutzern| ![Häkchen für diese Werte.](./media/plan-device-deployment/check.png)| |  |
+| Kennwort| ![Häkchen für diese Werte.](./media/plan-device-deployment/check.png)| ![Häkchen für diese Werte.](./media/plan-device-deployment/check.png)| ![Häkchen für diese Werte.](./media/plan-device-deployment/check.png) |
+| Geräte-PIN| ![Häkchen für diese Werte.](./media/plan-device-deployment/check.png)| |  |
+| Windows Hello| ![Häkchen für diese Werte.](./media/plan-device-deployment/check.png)| |  |
+| Windows Hello for Business| | ![Häkchen für diese Werte.](./media/plan-device-deployment/check.png)| ![Häkchen für diese Werte.](./media/plan-device-deployment/check.png) |
+| FIDO 2.0-Sicherheitsschlüssel| | ![Häkchen für diese Werte.](./media/plan-device-deployment/check.png)| ![Häkchen für diese Werte.](./media/plan-device-deployment/check.png) |
+| Microsoft Authenticator-App (kennwortlos)| ![Häkchen für diese Werte.](./media/plan-device-deployment/check.png)| ![Häkchen für diese Werte.](./media/plan-device-deployment/check.png)| ![Häkchen für diese Werte.](./media/plan-device-deployment/check.png) |
 |**Wichtige Funktionen**| | |  |
-| SSO für Cloudressourcen| ![Häkchen](./media/plan-device-deployment/check.png)| ![Häkchen](./media/plan-device-deployment/check.png)| ![Häkchen](./media/plan-device-deployment/check.png) |
-| Einmaliges Anmelden bei lokalen Ressourcen| | ![Häkchen](./media/plan-device-deployment/check.png)| ![Häkchen](./media/plan-device-deployment/check.png) |
-| Bedingter Zugriff <br> (Markieren des Geräts als kompatibel erforderlich) <br> (Muss von MDM verwaltet werden)| ![Häkchen](./media/plan-device-deployment/check.png) | ![Häkchen](./media/plan-device-deployment/check.png)|![Häkchen](./media/plan-device-deployment/check.png) |
-Bedingter Zugriff <br>(Über Azure AD Hybrid Join eingebundene Geräte erforderlich)| | | ![Häkchen](./media/plan-device-deployment/check.png)
-| Self-Service-Kennwortzurücksetzung über den Windows-Anmeldebildschirm| | ![Häkchen](./media/plan-device-deployment/check.png)| ![Häkchen](./media/plan-device-deployment/check.png) |
-| Windows Hello-PIN-Zurücksetzung| | ![Häkchen](./media/plan-device-deployment/check.png)| ![Häkchen](./media/plan-device-deployment/check.png) |
-| Geräteübergreifendes Enterprise State Roaming| | ![Häkchen](./media/plan-device-deployment/check.png)| ![Häkchen](./media/plan-device-deployment/check.png) |
+| SSO für Cloudressourcen| ![Häkchen für diese Werte.](./media/plan-device-deployment/check.png)| ![Häkchen für diese Werte.](./media/plan-device-deployment/check.png)| ![Häkchen für diese Werte.](./media/plan-device-deployment/check.png) |
+| Einmaliges Anmelden bei lokalen Ressourcen| | ![Häkchen für diese Werte.](./media/plan-device-deployment/check.png)| ![Häkchen für diese Werte.](./media/plan-device-deployment/check.png) |
+| Bedingter Zugriff <br> (Markieren des Geräts als kompatibel erforderlich) <br> (Muss von MDM verwaltet werden)| ![Häkchen für diese Werte.](./media/plan-device-deployment/check.png) | ![Häkchen für diese Werte.](./media/plan-device-deployment/check.png)|![Häkchen für diese Werte.](./media/plan-device-deployment/check.png) |
+Bedingter Zugriff <br>(Über Azure AD Hybrid Join eingebundene Geräte erforderlich)| | | ![Häkchen für diese Werte.](./media/plan-device-deployment/check.png)
+| Self-Service-Kennwortzurücksetzung über den Windows-Anmeldebildschirm| | ![Häkchen für diese Werte.](./media/plan-device-deployment/check.png)| ![Häkchen für diese Werte.](./media/plan-device-deployment/check.png) |
+| Windows Hello-PIN-Zurücksetzung| | ![Häkchen für diese Werte.](./media/plan-device-deployment/check.png)| ![Häkchen für diese Werte.](./media/plan-device-deployment/check.png) |
+| Geräteübergreifendes Enterprise State Roaming| | ![Häkchen für diese Werte.](./media/plan-device-deployment/check.png)| ![Häkchen für diese Werte.](./media/plan-device-deployment/check.png) |
 
 
 ## <a name="azure-ad-registration"></a>Azure AD-Registrierung 
@@ -239,9 +239,9 @@ Administratoren können diese registrierten und eingebundenen Geräte mit zusät
 
 | Geräteverwaltungstools| Bei Azure AD registriert| Azure AD-Einbindung| Azure AD-Hybrideinbindung|
 | - | - | - | - |
-| [Verwaltung mobiler Geräte (Mobile Device Management, MDM)](/windows/client-management/mdm/azure-active-directory-integration-with-mdm) <br>Beispiel: Microsoft Intune| ![Häkchen](./media/plan-device-deployment/check.png)| ![Häkchen](./media/plan-device-deployment/check.png)| ![Häkchen](./media/plan-device-deployment/check.png)|  |
-| [Kombinierte Verwaltung mit Microsoft Intune und Microsoft Endpoint Configuration Manager](/mem/configmgr/comanage/overview) <br>(Windows 10 und höher)| | ![Häkchen](./media/plan-device-deployment/check.png)| ![Häkchen](./media/plan-device-deployment/check.png)|  |
-| [Gruppenrichtlinie](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831791(v=ws.11))<br>(nur Windows)| | | ![Häkchen](./media/plan-device-deployment/check.png)|  |
+| [Verwaltung mobiler Geräte (Mobile Device Management, MDM)](/windows/client-management/mdm/azure-active-directory-integration-with-mdm) <br>Beispiel: Microsoft Intune| ![Häkchen für diese Werte.](./media/plan-device-deployment/check.png)| ![Häkchen für diese Werte.](./media/plan-device-deployment/check.png)| ![Häkchen für diese Werte.](./media/plan-device-deployment/check.png)|  |
+| [Kombinierte Verwaltung mit Microsoft Intune und Microsoft Endpoint Configuration Manager](/mem/configmgr/comanage/overview) <br>(Windows 10 und höher)| | ![Häkchen für diese Werte.](./media/plan-device-deployment/check.png)| ![Häkchen für diese Werte.](./media/plan-device-deployment/check.png)|  |
+| [Gruppenrichtlinie](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831791(v=ws.11))<br>(nur Windows)| | | ![Häkchen für diese Werte.](./media/plan-device-deployment/check.png)|  |
 
 
 

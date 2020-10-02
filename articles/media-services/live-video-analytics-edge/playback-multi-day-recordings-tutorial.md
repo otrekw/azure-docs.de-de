@@ -3,12 +3,12 @@ title: 'Wiedergeben von mehrtägigen Aufzeichnungen: Azure'
 description: In diesem Tutorial erfahren Sie, wie Sie Azure Media Service-APIs verwenden, um eine mehrtägige fortlaufende Videoaufzeichnung wiederzugeben.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 19a42c61ef250fecce4503d3aed70b36d71ee3cf
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: e01c8603869f17ef2d68a39861f11818a4cea975
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649090"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530572"
 ---
 # <a name="tutorial-playback-of-multi-day-recordings"></a>Tutorial: Wiedergeben von mehrtägigen Aufzeichnungen  
 
@@ -72,11 +72,11 @@ Im Rahmen des [CVR-Tutorials](continuous-video-recording-tutorial.md) haben Sie 
 
 In Visual Studio Code können Sie auf das Ausführen-Symbol auf der linken Seite klicken (oder STRG+UMSCHALT+D eingeben), um die Ausführung der verfügbaren Anwendungen auszulösen:
 
-![Ausführen](./media/playback-multi-day-recordings-tutorial/run.png)
+![Screenshot: Menü in Visual Studio Code mit dem ausgewählten Ausführungselement](./media/playback-multi-day-recordings-tutorial/run.png)
  
 Wählen Sie im Dropdownfeld die AMS Asset Player-Anwendung aus, wie unten dargestellt, und drücken Sie F5, um das Debuggen einzuleiten.
 
-![Debuggen](./media/playback-multi-day-recordings-tutorial/debug.png)
+![Screenshot: Menü in Visual Studio Code mit ausgewählter AMS Asset Player-Anwendung](./media/playback-multi-day-recordings-tutorial/debug.png)
 
 Die Beispielanwendung wird erstellt, startet Ihre Standardbrowser-App und öffnet die Seite des AMS Asset Players.
 

@@ -76,6 +76,8 @@
       href: upgrade-virtual-wan.md
     - name: Erstellen eines NVA in einem virtuellen Hub
       href: How-to-nva-hub.md
+    - name: Erstellen einer mandantenübergreifenden VNET-Verbindung
+      href: cross-tenant-vnet.md
     - name: ExpressRoute
       items:
         - name: Herstellen einer ExpressRoute-Verbindung

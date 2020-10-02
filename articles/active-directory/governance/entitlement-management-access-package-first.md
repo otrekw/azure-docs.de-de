@@ -16,12 +16,12 @@ ms.date: 07/22/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b79a631ba82d0b4a420ef27684e5a62571ddf85a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e58a98f8503c271eec113298a7e7a0cab5e0003e
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034575"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707491"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Tutorial: Erstellen Ihres ersten Zugriffspakets in der Azure AD-Berechtigungsverwaltung
 
@@ -41,6 +41,8 @@ In diesem Tutorial lernen Sie Folgendes:
 Eine detaillierte Demonstration der Bereitstellung der Azure Active Directory-Berechtigungsverwaltung, einschließlich der Erstellung Ihres ersten Zugriffspakets, finden Sie in folgendem Video:
 
 >[!VIDEO https://www.youtube.com/embed/zaaKvaaYwI4]
+
+Sie können ein Zugriffspaket mithilfe von Microsoft Graph auch programmgesteuert erstellen. Ein Tutorial, das zeigt, wie Sie ein Zugriffspaket programmgesteuert erstellen, finden Sie unter [Berechtigungsverwaltungs-API](https://docs.microsoft.com/graph/tutorial-access-package-api?view=graph-rest-beta).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -106,7 +108,7 @@ Bei einem *Zugriffspaket* handelt es sich um eine Gruppe von Ressourcen, die von
 
 9. Suchen Sie im Bereich „Gruppen auswählen“ nach der zuvor erstellten Gruppe **Marketing resources**, und wählen Sie sie aus.
 
-    Standardmäßig werden Gruppen angezeigt, die sich innerhalb und außerhalb des Katalogs **Allgemein** befinden. Wenn Sie eine Gruppe auswählen, die sich außerhalb des Katalogs **Allgemein** befindet, wird sie dem Katalog **Allgemein** hinzugefügt.
+     Standardmäßig werden Gruppen im Katalog „Allgemein“ angezeigt. Wenn Sie eine Gruppe auswählen, die sich außerhalb des Katalogs „Allgemein“ befindet, wird sie dem Katalog „Allgemein“ hinzugefügt. Gruppen außerhalb des Katalogs können durch Aktivierung des Kontrollkästchens **Alle anzeigen** angezeigt werden.
 
     ![Neues Zugriffspaket, Registerkarte „Ressourcenrollen“](./media/entitlement-management-access-package-first/resource-roles-select-groups.png)
 

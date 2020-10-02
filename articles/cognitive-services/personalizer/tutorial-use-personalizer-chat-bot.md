@@ -4,12 +4,12 @@ description: Passen Sie einen C# .NET-Chatbot mit einer Personalisierungsschlei
 ms.topic: tutorial
 ms.date: 07/17/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ee037632b068b0d8d2f3ed3b6ea7a83d157c5083
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 2d95a6999186b964e59ff8f287d917b1f93e1813
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935652"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089886"
 ---
 # <a name="tutorial-use-personalizer-in-net-chat-bot"></a>Tutorial: Verwenden der Personalisierung in einem .NET-Chatbot
 
@@ -21,7 +21,7 @@ Verwenden Sie einen C# .NET-Chatbot mit einer Personalisierungsschleife, um ein
 > [!div class="checklist"]
 > * Einrichten von Azure-Ressourcen
 > * Konfigurieren und Ausführen eines Bots
-> * Interagieren mit dem Bot per Bot-Emulator
+> * Interagieren mit dem Bot mithilfe von Bot Framework Emulator
 > * Verstehen, wo und wie der Bot die Personalisierung verwendet
 
 
@@ -174,20 +174,20 @@ Lassen Sie die Website geöffnet, um mit dem Bot interagieren zu können, währe
 
 ## <a name="set-up-the-bot-emulator"></a>Einrichten des Bot-Emulators
 
-1. Öffnen Sie den Bot-Emulator, und wählen Sie **Open Bot** (Bot öffnen) aus.
+1. Öffnen Sie Bot Framework Emulator, und wählen Sie **Open Bot** (Bot öffnen) aus.
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-startup.png" alt-text="Screenshot: Startbildschirm des Bot-Emulators":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-startup.png" alt-text="Screenshot: Browser mit Chatbot-Website":::
 
 
 1. Konfigurieren Sie den Bot mit der folgenden **Bot-URL**, und wählen Sie anschließend **Verbinden** aus:
 
     `http://localhost:3978/api/messages`
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-open-bot-settings.png" alt-text="Screenshot: Bot-Emulator mit geöffneten Bot-Einstellungen":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-open-bot-settings.png" alt-text="Screenshot: Browser mit Chatbot-Website":::
 
     Der Emulator stellt eine Verbindung mit dem Chatbot her und zeigt die Anleitung sowie Protokollierungs- und Debuginformationen an, die für die lokale Entwicklung hilfreich sind.
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-bot-conversation-first-turn.png" alt-text="Screenshot: Bot-Emulator im ersten Turn der Unterhaltung":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-bot-conversation-first-turn.png" alt-text="Screenshot: Browser mit Chatbot-Website":::
 
 ## <a name="use-the-bot-in-the-bot-emulator"></a>Verwenden des Bots im Bot-Emulator
 

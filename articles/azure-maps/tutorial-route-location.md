@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 992640424f6fdb632327866e132fdbb1c6244492
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 35a3f6d1e7894eec9baa4ea5432a8e3fec138a21
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400329"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085041"
 ---
 # <a name="tutorial-how-to-display-route-directions-using-azure-maps-route-service-and-map-control"></a>Tutorial: Vorgehensweise beim Anzeigen von Wegbeschreibungen mithilfe von Routendienst und Kartensteuerelement von Azure Maps
 
@@ -143,7 +143,7 @@ In diesem Tutorial wird die Route mithilfe einer Linienebene gerendert. Start- u
 
     Im `ready`-Ereignishandler des Kartensteuerelements wird eine Datenquelle zum Speichern der Route vom Start- bis zum Endpunkt erstellt. Um zu definieren, wie die Routenlinie dargestellt werden soll, wird eine Linienebene erstellt und der Datenquelle angefügt.  Um sicherzustellen, dass die Straßennamen nicht von der Routenlinie abgedeckt werden, haben wir einen zweiten Parameter mit dem Wert `'labels'` übergeben.
 
-    Als Nächstes wird eine Symbolebene erstellt und der Datenquelle angefügt. Diese Ebene gibt an, wie die Start- und Endpunkte gerendert werden. In diesem Fall wurden Ausdrücke hinzugefügt, um das Symbol und die Beschriftungsinformationen aus Eigenschaften für das jeweilige Punktobjekt abzurufen.
+    Als Nächstes wird eine Symbolebene erstellt und der Datenquelle angefügt. Diese Ebene gibt an, wie die Start- und Endpunkte gerendert werden sollen. Ausdrücke wurden hinzugefügt, um das Symbol und die Beschriftungsinformationen aus Eigenschaften für das jeweilige Punktobjekt abzurufen. Weitere Informationen zu Ausdrücken finden Sie unter [Datengesteuerte Formatvorlagenausdrücke (Web SDK)](data-driven-style-expressions-web-sdk.md).
 
 2. Legen Sie als Startpunkt Microsoft und als Endpunkt eine Tankstelle in Seattle fest.  Fügen Sie im `ready`-Ereignishandler des Kartensteuerelements den folgenden Code hinzu.
 
@@ -168,17 +168,22 @@ In diesem Tutorial wird die Route mithilfe einer Linienebene gerendert. Start- u
     });
     ```
 
-    Mit diesem Code werden zwei [GeoJSON-Punktobjekte](https://en.wikipedia.org/wiki/GeoJSON) erstellt, die für den Start- bzw. Endpunkt der Route stehen, die dann der Datenquelle hinzugefügt werden. Mit dem letzten Codeblock wird mithilfe der Breiten- und Längengrade von Start- und Endpunkt die Kameraperspektive festgelegt. Weitere Informationen zur setCamera-Eigenschaft des Kartensteuerelements finden Sie unter [setCamera(CameraOptions | CameraBoundsOptions & AnimationOptions)](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-).
+    Mit diesem Code werden zwei [GeoJSON-Punktobjekte](https://en.wikipedia.org/wiki/GeoJSON) erstellt, die für den Start- bzw. Endpunkt der Route stehen, die dann der Datenquelle hinzugefügt werden. 
+
+    Mit dem letzten Codeblock wird mithilfe der Breiten- und Längengrade von Start- und Endpunkt die Kameraperspektive festgelegt. Die Start- und Endpunkte werden der Datenquelle hinzugefügt. Das umgebende Rechteck für die Start- und Endpunkte wird mithilfe der Funktion `atlas.data.BoundingBox.fromData` berechnet. Dieses umgebende Rechteck dient dazu, die Kameraansicht der Karte mithilfe der Funktion `map.setCamera` auf die gesamte Route zu platzieren. Zur Kompensierung der Pixeldimensionen der Symbole wird Abstand hinzugefügt. Weitere Informationen zur setCamera-Eigenschaft des Kartensteuerelements finden Sie unter [setCamera(CameraOptions | CameraBoundsOptions & AnimationOptions)](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-&preserve-view=false).
 
 3. Speichern Sie die Datei **MapRoute.html**, und aktualisieren Sie den Browser. Die Karte ist nun auf Seattle zentriert. Der blaue Teardrop-Pin markiert den Startpunkt. Der runde blaue Pin markiert den Endpunkt.
 
-    :::image type="content" source="./media/tutorial-route-location/map-pins.png" alt-text="Anzeigen des Start- und Endpunkts einer Route auf der Karte":::
+    :::image type="content" source="./media/tutorial-route-location/map-pins.png" alt-text="Einfaches Kartenrendern des Kartensteuerelements":::
 
 <a id="getroute"></a>
 
 ## <a name="get-route-directions"></a>Abrufen von Wegbeschreibungen
 
-In diesem Abschnitt wird gezeigt, wie Sie die Routendienst-API von Azure Maps verwenden, um Wegbeschreibungen von einem Punkt zu einem anderen zu erhalten. Dieser Dienst verfügt über andere APIs zum Planen der *schnellsten*, *kürzesten*, *umweltfreundlichsten* oder *schönsten* Route zwischen zwei Orten. Mit diesem Dienst können Benutzer auch zukünftige Routen auf der Grundlage historischer Verkehrsbedingungen planen. Benutzer können die Vorhersage der Routendauer für einen beliebigen Zeitpunkt sehen. Weitere Informationen finden Sie unter [Abrufen von Wegbeschreibungen](https://docs.microsoft.com/rest/api/maps/route/getroutedirections).
+In diesem Abschnitt erfahren Sie, wie Sie mithilfe der Wegbeschreibungs-API von Azure Maps Wegbeschreibungen und die voraussichtliche Ankunftszeit für eine Route zwischen zwei Punkten abrufen.
+
+>[!TIP]
+>Der Routendienst von Azure Maps stellt APIs zum Planen von Routen basierend auf verschiedenen Routentypen (etwa *schnellste*, *kürzeste*, *umweltfreundlichste* oder *schönste* Route) unter Berücksichtigung von Entfernung, Verkehrslage und verwendeter Fortbewegungsart bereit. Mit dem Dienst können Benutzer auch zukünftige Routen auf der Grundlage von Verkehrsbedingungen aus der Vergangenheit planen. Benutzer können die Vorhersage der Routendauer für einen beliebigen Zeitpunkt sehen. Weitere Informationen finden Sie unter [Abrufen von Wegbeschreibungen](https://docs.microsoft.com/rest/api/maps/route/getroutedirections).
 
 1. Fügen Sie in der `GetMap`-Funktion innerhalb des `ready`-Ereignishandlers des Steuerelements dem JavaScript-Code Folgendes hinzu.
 
@@ -193,7 +198,7 @@ In diesem Abschnitt wird gezeigt, wie Sie die Routendienst-API von Azure Maps ve
     var routeURL = new atlas.service.RouteURL(pipeline);
     ```
 
-   `SubscriptionKeyCredential` erstellt ein `SubscriptionKeyCredentialPolicy`-Element, um HTTP-Anforderungen für Azure Maps mit dem Abonnementschlüssel zu authentifizieren. `atlas.service.MapsURL.newPipeline()` verwendet die Richtlinie `SubscriptionKeyCredential` und erstellt eine [Pipeline](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest)-Instanz. `routeURL` stellt eine URL zu [Routenvorgängen](https://docs.microsoft.com/rest/api/maps/route) von Azure Maps dar.
+   `SubscriptionKeyCredential` erstellt ein `SubscriptionKeyCredentialPolicy`-Element, um HTTP-Anforderungen für Azure Maps mit dem Abonnementschlüssel zu authentifizieren. `atlas.service.MapsURL.newPipeline()` verwendet die Richtlinie `SubscriptionKeyCredential` und erstellt eine [Pipeline](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline)-Instanz. `routeURL` stellt eine URL zu [Routenvorgängen](https://docs.microsoft.com/rest/api/maps/route) von Azure Maps dar.
 
 2. Nachdem Sie die Anmeldeinformationen und die URL eingerichtet haben, fügen Sie dem `ready`-Ereignishandler des Steuerelements den folgenden Code an. Mit diesem Code wird die Route vom Startpunkt zum Endpunkt erstellt. Die `routeURL` fordert bei der Azure Maps-Routendienst-API die Berechnung von Wegbeschreibungen an. Anschließend wird mit der Methode `geojson.getFeatures()` eine GeoJSON-Merkmalsauswahl extrahiert und der Datenquelle hinzugefügt.
 
@@ -211,7 +216,7 @@ In diesem Abschnitt wird gezeigt, wie Sie die Routendienst-API von Azure Maps ve
 
 3. Speichern Sie die Datei **MapRoute.html**, und aktualisieren Sie den Webbrowser. Die Karte sollte nun die Route vom Start- bis zum Endpunkt anzeigen.
 
-     :::image type="content" source="./media/tutorial-route-location/map-route.png" alt-text="Azure-Kartensteuerelement und -Routendienst":::
+     :::image type="content" source="./media/tutorial-route-location/map-route.png" alt-text="Einfaches Kartenrendern des Kartensteuerelements":::
 
     Sie können den vollständigen Quellcode für das Beispiel [hier](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html) abrufen. Ein Livebeispiel dafür finden Sie [hier](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination).
 

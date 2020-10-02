@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: b96b679e967fd898f072b4b1ae195e3dd1061c04
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 3a3f461941bfcd5091ebb14818bac05d6844b3fe
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235691"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706355"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Planen der HR-Cloudanwendung für die Azure Active Directory-Benutzerbereitstellung
 
@@ -50,7 +50,7 @@ Die Integration der HR-Cloud-App mit der Azure AD-Benutzerbereitstellung ist ide
 - Benutzer müssen direkt aus der HR-Cloud-App in Azure Active Directory oder Azure AD bereitgestellt werden.
 - Benutzer müssen mithilfe von Daten bereitgestellt werden, die aus der HR-Cloud-App abgerufen werden.
 - Benutzer müssen bei Einstellungen, Wechseln und Kündigungen nur auf Grundlage von Änderungsinformationen, die in der HR-Cloud-App erkannt werden, mit einer oder mehreren Azure Active Directory-Gesamtstrukturen, -Domänen und -Organisationseinheiten synchronisiert werden.
-- Sie verwenden Office 365 für E-Mail-Funktionen.
+- Verwenden Sie Microsoft 365 für E-Mails.
 
 ## <a name="learn"></a>Lernen
 
@@ -61,14 +61,14 @@ Die Benutzerbereitstellung bildet die Grundlage für eine fortlaufende Identitä
 In diesem Artikel werden die folgenden Begriffe verwendet:
 
 - **Quellsystem**: Das Repository von Benutzern, aus dem die Azure AD-Bereitstellungen erfolgen, zum Beispiel eine HR-Cloud-App wie Workday oder SuccessFactors.
-- **Zielsystem**: Das Repository von Benutzern, in das die Azure AD-Bereitstellungen erfolgen, zum Beispiel Azure Active Directory, Azure AD, Office 365 oder andere SaaS-Apps.
+- **Zielsystem**: Das Repository von Benutzern, in das die Azure AD-Bereitstellungen erfolgen, zum Beispiel Active Directory, Azure AD, Microsoft 365 oder andere SaaS-Apps.
 - **Prozess für Einstellungen/Wechsel/Kündigungen**: Ein Begriff, der bei Verwendung einer HR-Cloud-App als Datensatzsystem für Neueinstellungen, Versetzungen und Kündigungen verwendet wird. Der Prozess ist abgeschlossen, wenn der Dienst die erforderlichen Attribute für das Zielsystem erfolgreich bereitstellt.
 
 ### <a name="key-benefits"></a>Hauptvorteile
 
 Diese Funktion der vom Personalwesen (HR) gesteuerten IT-Bereitstellung bietet erhebliche Geschäftsvorteile, wie nachfolgend aufgeführt:
 
-- **Produktivitätssteigerung:** Sie können jetzt die Zuweisung von Benutzerkonten und Office 365-Lizenzen automatisieren und den Zugriff auf Schlüsselgruppen ermöglichen. Durch die Automatisierung von Zuweisungen haben Neueinstellungen sofortigen Zugriff auf ihre Arbeitstools, und die Produktivität erhöht sich.
+- **Produktivitätssteigerung:** Sie können jetzt die Zuweisung von Benutzerkonten und Microsoft 365-Lizenzen automatisieren und den Zugriff auf Schlüsselgruppen ermöglichen. Durch die Automatisierung von Zuweisungen haben Neueinstellungen sofortigen Zugriff auf ihre Arbeitstools, und die Produktivität erhöht sich.
 - **Risikomanagement:** Sie können die Sicherheit erhöhen, indem Sie Änderungen anhand von Mitarbeiterstatus oder Gruppenmitgliedschaft mit Daten, die aus der HR-Cloud-App einfließen, automatisieren. Die Automatisierung von Änderungen stellt sicher, dass Benutzeridentitäten und der Zugriff auf wichtige Anwendungen automatisch aktualisiert werden, wenn Benutzer innerhalb des Unternehmen wechseln oder es verlassen.
 - **Umsetzen von Compliance und Governance**: Azure AD unterstützt native Überwachungsprotokolle für Benutzerbereitstellungsanforderungen, die von Apps aus dem Quell- und Zielsystem erfolgen. Durch die Überwachung können Sie über einen einzigen Bildschirm nachverfolgen, wer Zugriff auf die Apps hat.
 - **Kostenmanagement:** Durch Vermeiden von Ineffizienzen und menschlichen Fehlern, die bei einer manuellen Bereitstellung entstehen, reduziert die automatische Benutzerbereitstellung die Kosten. Sie reduziert auch den Bedarf an benutzerdefiniert entwickelten Lösungen für die Benutzerbereitstellung, die im Laufe der Zeit mithilfe älterer und veralteter Plattformen erstellt wurden.

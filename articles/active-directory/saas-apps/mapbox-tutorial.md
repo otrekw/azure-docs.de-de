@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/21/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: faedec24bc4b962044d55a47345739592e276b61
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4111752d949b7ed2b0ea14734e5d795564718611
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554769"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661918"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mapbox"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Mapbox
 
@@ -41,6 +41,9 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 * Mapbox unterstützt das über **IDP** initiierte einmalige Anmelden.
 * Nach dem Konfigurieren von Mapbox können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Daten Ihrer Organisation schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+
+> [!NOTE]
+> Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
 
 ## <a name="adding-mapbox-from-the-gallery"></a>Hinzufügen von Mapbox aus dem Katalog
 
@@ -136,15 +139,15 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Klicken Sie auf die Registerkarte **Einstellungen**.
 
-    ![Mapbox-Konfiguration](./media/mapbox-tutorial/configure1.png)
+    ![Mapbox: Registerkarte „Settings“ (Einstellungen)](./media/mapbox-tutorial/configure1.png)
 
 1. Klicken Sie im linken Navigationsbereich auf die Registerkarte **Sicherheit**.
 
-    ![Mapbox-Konfiguration](./media/mapbox-tutorial/configure2.png)
+    ![Mapbox: Registerkarte „Security“ (Sicherheit)](./media/mapbox-tutorial/configure2.png)
 
 1. Klicken Sie auf **Einmaliges Anmelden**.
 
-    ![Mapbox-Konfiguration](./media/mapbox-tutorial/configure3.png)
+    ![Mapbox: Bearbeiten des einmaligen Anmeldens](./media/mapbox-tutorial/configure3.png)
 
 1. Führen Sie einen Bildlauf nach unten zu **Schritt 3: Einmaliges SAML-Anmelden für Mapbox einrichten** aus, und führen Sie die folgenden Schritte aus:
 

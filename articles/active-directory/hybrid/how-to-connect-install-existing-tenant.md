@@ -16,12 +16,12 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 582ec01a7a843358bef749aec693a59f88a1d655
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 9398fc9ee61bed41cd1e8c227fc4b4068e4b3e69
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640649"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662251"
 ---
 # <a name="azure-ad-connect-when-you-have-an-existing-tenant"></a>Azure AD Connect: Wenn Sie bereits über einen Mandanten verfügen
 Bei den meisten Themen zur Verwendung von Azure AD Connect wird davon ausgegangen, dass Sie mit einem neuen Azure AD-Mandanten starten und dass es keine weiteren Benutzer oder Objekte gibt. Wenn Sie jedoch bereits über einen Azure AD-Mandanten verfügen, der mit Benutzern und anderen Objekten aufgefüllt ist, und jetzt Connect verwenden möchten, eignet sich dieses Thema perfekt für Sie.
@@ -41,7 +41,7 @@ Die Übereinstimmung wird nur für neue, aus Connect eingehende Objekte ausgewer
 Wenn Azure AD ein Objekt findet, dessen Attributwerte die gleichen sind wie für ein aus Connect eingehendes Objekt, und das Objekt bereits in Azure AD vorhanden ist, wird das Objekt in Azure AD von Connect übernommen. Das zuvor in der Cloud verwaltete Objekt wird als „lokal verwaltet“ gekennzeichnet. Alle Attribute in Azure AD mit einem Wert im lokalen Active Directory werden mit dem lokalen Wert überschrieben. Ausgenommen hiervon sind Attribute, die lokal den Wert **NULL** aufweisen. In diesem Fall bleibt der Wert in Azure AD erhalten, Sie können das Attribut jedoch weiterhin nur lokal in einen anderen Wert ändern.
 
 > [!WARNING]
-> Da alle Attribute in Azure AD durch ihre lokalen Werte überschrieben werden, stellen Sie sicher, dass Ihre lokalen Daten richtig und vollständig sind. Ein Beispiel: Wenn Sie E-Mail-Adressen nur in Office 365 verwaltet und im lokalen AD DS nicht aktualisiert haben, gehen alle Werte aus Azure AD/Office 365 verloren, die nicht im AD DS vorhanden sind.
+> Da alle Attribute in Azure AD durch ihre lokalen Werte überschrieben werden, stellen Sie sicher, dass Ihre lokalen Daten richtig und vollständig sind. Ein Beispiel: Wenn Sie E-Mail-Adressen nur in Microsoft 365 verwaltet und im lokalen AD DS nicht aktualisiert haben, gehen alle Werte aus Azure AD/Microsoft 365 verloren, die nicht im AD DS vorhanden sind.
 
 > [!IMPORTANT]
 > Wenn Sie die Kennwortsynchronisierung verwenden – die bei Expresseinstellungen immer zum Einsatz kommt –, wird das Kennwort in Azure AD durch das Kennwort im lokalen Active Directory überschrieben. Wenn Ihre Benutzer daran gewöhnt sind, verschiedene Kennwörter zu verwenden, müssen Sie sie darüber informieren, dass sie ihr lokales Kennwort verwenden müssen, nachdem Sie Connect installiert haben.

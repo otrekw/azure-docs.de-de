@@ -10,6 +10,10 @@
       href: language-support.md
     - name: Unterstützung für Regionen
       href: regions.md
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
+    - name: Kontingente und Grenzwerte
+      href: speech-services-quotas-and-limits.md
     - name: Neues in der Dokumentation
       href: whats-new.md
 - name: Spracherkennung
@@ -144,7 +148,7 @@
           items:
             - name: Audio Content Creation
               href: how-to-audio-content-creation.md
-    - name: Verweis
+    - name: Referenz
       items:
         - name: C++
           displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
@@ -347,6 +351,8 @@
       items:
         - name: Was ist ein Sprachassistent?
           href: voice-assistants.md
+        - name: Beispiele für Sprachassistenten (GitHub)
+          href: 'https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant'
     - name: Benutzerdefinierte Befehle
       items:
         - name: Was sind benutzerdefinierte Befehle?
@@ -459,11 +465,58 @@
       items:
         - name: REST-API für die Sprechererkennung
           href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
-- name: Hosting
+- name: Tools
   items:
-    - name: Dokumentation zum Hosting
-      href: index-hosting.yml
-    - name: Anleitungen
+    - name: Sprach-SDK
+      items:
+        - name: Übersicht über das Speech SDK
+          href: speech-sdk.md
+        - name: Einrichten des Speech SDK
+          href: quickstarts/setup-platform.md
+        - name: Versionsanmerkungen zum Speech-SDK
+          href: releasenotes.md
+        - name: Verweis
+          items:
+            - name: C++
+              href: 'https://aka.ms/csspeech/cppref'
+            - name: C#
+              href: 'https://aka.ms/csspeech/csharpref'
+            - name: Java
+              href: 'https://aka.ms/csspeech/javaref'
+            - name: JavaScript
+              href: 'https://aka.ms/csspeech/javascriptref'
+            - name: Objective-C
+              href: 'https://aka.ms/csspeech/objectivecref'
+            - name: Python
+              href: 'https://aka.ms/csspeech/pythonref'
+    - name: Speech-Befehlszeilenschnittstelle
+      displayName: SPX
+      items:
+        - name: Übersicht über die Speech-Befehlszeilenschnittstelle
+          displayName: What is SPX?
+          href: spx-overview.md
+        - name: Grundlagen der Speech-Befehlszeilenschnittstelle
+          displayName: SPX basics
+          href: spx-basics.md
+    - name: Speech Studio
+      items:
+        - name: Übersicht über Speech Studio
+          href: 'https://speech.microsoft.com'
+        - name: Erstellen einer App für benutzerdefinierte Befehle mit Speech Studio
+          href: quickstart-custom-speech-commands-create-new.md
+- name: Bereitstellen
+  items:
+    - name: Aktivieren der Protokollierung
+      href: how-to-use-logging.md
+    - name: Nachverfolgen der Arbeitsspeicherauslastung
+      href: how-to-track-speech-sdk-memory-usage.md
+    - name: Konfigurieren von OpenSSL für Linux
+      displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
+      href: how-to-configure-openssl-linux.md
+    - name: Konfigurieren von RHEL/CentOS 7
+      href: how-to-configure-rhel-centos-7.md
+      displayName: 'RHEL, CentOS 7, CentOS, Configure RHEL, Configure CentO'
+    - name: Container
       items:
         - name: Installieren und Ausführen von Speech-Containern
           displayName: 'containers,install container,run container'
@@ -479,53 +532,8 @@
         - name: Speech-Container in Azure Container Instances
           displayName: 'ACI,azure container instances,container instances,containers'
           href: deploy-speech-on-container-instances.md
-    - name: Ressourcen
-      items:
         - name: Häufig gestellte Fragen zu Containern
           href: speech-container-faq.md
-- name: Sprach-SDK
-  items:
-    - name: Übersicht über das Speech SDK
-      href: speech-sdk.md
-    - name: Einrichten des Speech SDK
-      displayName: 'install the speech sdk, install the speech sdk java, install the speech sdk C#, install the speech sdk python, install the speech sdk C++, setup speech sdk, install, install C#, install C++, install Python, install Java, install Javascript'
-      href: quickstarts/setup-platform.md
-    - name: Anleitungen
-      items:
-        - name: Aktivieren der Protokollierung
-          href: how-to-use-logging.md
-        - name: Nachverfolgen der Arbeitsspeicherauslastung
-          href: how-to-track-speech-sdk-memory-usage.md
-        - name: Konfigurieren von OpenSSL für Linux
-          displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
-          href: how-to-configure-openssl-linux.md
-        - name: Konfigurieren von RHEL/CentOS 7
-          href: how-to-configure-rhel-centos-7.md
-          displayName: 'RHEL, CentOS 7, CentOS, Configure RHEL, Configure CentOS'
-    - name: Beispiele
-      items:
-        - name: "Speech\_SDK-Beispiele (GitHub)"
-          href: 'https://github.com/Azure-Samples/cognitive-services-speech-sdk'
-        - name: "Speech\_Devices\_SDK-Beispiele (GitHub)"
-          href: 'https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK'
-        - name: Beispiele für Sprachassistenten (GitHub)
-          href: 'https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant'
-    - name: Verweis
-      items:
-        - name: C++
-          href: 'https://aka.ms/csspeech/cppref'
-        - name: C#
-          href: 'https://aka.ms/csspeech/csharpref'
-        - name: Java
-          href: 'https://aka.ms/csspeech/javaref'
-        - name: JavaScript
-          href: 'https://aka.ms/csspeech/javascriptref'
-        - name: Objective-C
-          href: 'https://aka.ms/csspeech/objectivecref'
-        - name: Python
-          href: 'https://aka.ms/csspeech/pythonref'
-        - name: Versionsanmerkungen zum Speech-SDK
-          href: releasenotes.md
 - name: Geräte
   items:
     - name: Dokumentation zu Speech-Geräten
@@ -536,6 +544,8 @@
           href: speech-devices-sdk.md
         - name: "Herunterladen des Speech Devices\_SDK"
           href: get-speech-devices-sdk.md
+        - name: "Speech\_Devices\_SDK-Beispiele (GitHub)"
+          href: 'https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK'
     - name: Hardware
       items:
         - name: Empfehlungen zum Mikrofonarray
@@ -560,23 +570,6 @@
       items:
         - name: "Versionshinweise zum Speech Devices\_SDK"
           href: devices-sdk-release-notes.md
-- name: Tools
-  items:
-    - name: Speech-Befehlszeilenschnittstelle
-      displayName: SPX
-      items:
-        - name: Worum handelt es sich bei der Speech-Befehlszeilenschnittstelle?
-          displayName: What is SPX?
-          href: spx-overview.md
-        - name: Grundlagen der Speech-Befehlszeilenschnittstelle
-          displayName: SPX basics
-          href: spx-basics.md
-    - name: Speech Studio
-      items:
-        - name: Was ist Speech Studio?
-          href: 'https://speech.microsoft.com'
-        - name: Erstellen einer App für benutzerdefinierte Befehle mit Speech Studio
-          href: quickstart-custom-speech-commands-create-new.md
 - name: Migration
   items:
     - name: Von der Bing-Spracheingabe
@@ -588,20 +581,14 @@
     - name: Support
       displayName: 'support,help,release notes,search,scoped search,azure support,github support,stack overflow,github issues,bugs,feedback,uservoice'
       href: support.md
-    - name: Regions
-      href: regions.md
     - name: Swagger-Dokumentation
       href: swagger-documentation.md
     - name: Sovereign Clouds
       displayName: 'fairfax,mooncake,compliant,secret,compliance,government,government cloud,dod,china'
       href: sovereign-clouds.md
-    - name: Preise
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
     - name: Preisrechner
       href: 'https://azure.microsoft.com/pricing/calculator/#cognitive-services'
-    - name: Kontingente und Grenzwerte
-      href: speech-services-quotas-and-limits.md
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Verschlüsselung
       href: speech-encryption-of-data-at-rest.md

@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 105ab0c71d9e7e935842550ecdc4c8d2ff2a2d8c
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: 64470b42efeea49b7c778d6dffd88465b8445e36
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84977910"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606735"
 ---
 1. Suchen Sie das virtuelle WAN, das Sie erstellt haben. Wählen Sie auf der Seite „Virtual WAN“ im Abschnitt **Konnektivität** die Option **Hubs** aus.
 2. Wählen Sie auf der Seite „Hubs“ **+ Neuer Hub** aus, um die Seite **Virtuellen Hub erstellen** zu öffnen.
 
-    ![Grundlagen](./media/virtual-wan-tutorial-hub-include/basics.png "Grundlagen")
+    ![Screenshot: Bereich „Virtuellen Hub erstellen“ mit ausgewählter Registerkarte „Grundlagen“](./media/virtual-wan-tutorial-hub-include/basics.png "Grundlagen")
 3. Füllen Sie auf der Seite **Virtuellen Hub erstellen** auf der Registerkarte **Grundlagen** die folgenden Felder aus:
 
     **Projektdetails**
@@ -28,7 +28,7 @@ ms.locfileid: "84977910"
    * Privater Adressraum des Hubs. Der minimale Adressraum ist „/24“ zum Erstellen eines Hubs. Dies beinhaltet, dass ein Bereich von „/25“ bis „/32“ bei der Erstellung einen Fehler erzeugt. Azure Virtual WAN ist ein verwalteter Dienst von Microsoft und erstellt die geeigneten Subnetze im virtuellen Hub für die verschiedenen Gateways/Dienste (z. B. VPN-Gateways, ExpressRoute-Gateways, Benutzer-VPN/Point-to-Site-Gateways, Firewall, Routing usw.). Dabei muss der Benutzer den Subnetzadressraum für die Dienste im virtuellen Hub nicht explizit planen, weil Microsoft dies im Rahmen des Diensts übernimmt.
 4. Klicken Sie auf **Weiter: Site-to-Site**.
 
-    ![Site-to-Site](./media/virtual-wan-tutorial-hub-include/site-to-site.png "Site-to-Site")
+    ![Screenshot: Bereich „Virtuellen Hub erstellen“ mit ausgewählter Option „Site-to-Site“](./media/virtual-wan-tutorial-hub-include/site-to-site.png "Site-to-Site")
 
 5. Füllen Sie auf der Registerkarte **Site-to-Site** die folgenden Felder aus:
 

@@ -6,25 +6,25 @@ services: cognitive-services
 author: nitinme
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: immersive-reader
 ms.topic: include
-ms.date: 05/20/2020
+ms.date: 09/14/2020
 ms.author: nitinme
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: f3d694a1e1eb368a97d994ebe9885c279ff44463
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: 08996d7343ccab4c5d6e688b580a8e6e1ca5bceb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89505387"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376753"
 ---
-Der [plastische Reader](https://www.onenote.com/learningtools) ist ein inklusiv konzipiertes Tool, das bewährte Techniken zur Verbesserung des Leseverständnisses implementiert.
+[Plastischer Reader](https://www.onenote.com/learningtools) ist ein inklusiv konzipiertes Tool, das bewährte Techniken implementiert, um das Leseverständnis von Leseanfängern, Sprachenlernenden und Personen mit Lernunterschieden, wie z. B. Dyslexie, zu verbessern. Sie können den plastischen Reader in Ihren Anwendungen verwenden, um Text zu isolieren, den Fokus zu verbessern, Bilder für häufig verwendete Wörter anzuzeigen, Wortarten hervorzuheben, markierten Text laut vorzulesen, Wörter und Ausdrücke in Echtzeit zu übersetzen und vieles mehr.
 
-In dieser Schnellstartanleitung erstellen Sie eine Web-App von Grund auf neu und integrieren den plastischen Reader mithilfe der Clientbibliothek für den plastischen Reader. Ein vollständiges Arbeitsbeispiel für diesen Schnellstart finden Sie [hier](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-csharp).
-
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services/) erstellen, bevor Sie beginnen.
+In dieser Schnellstartanleitung erstellen Sie eine Web-App von Grund auf neu und integrieren den plastischen Reader mithilfe der Clientbibliothek für den plastischen Reader. Ein vollständiges Arbeitsbeispiel für diesen Schnellstart finden Sie auf [GitHub](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-csharp).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
+* Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/cognitive-services)
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads)
 * Eine Ressource des plastischen Readers, die für die Authentifizierung mit Azure Active Directory konfiguriert ist. Befolgen Sie [diese Anweisungen](../../how-to-create-immersive-reader.md) für die Einrichtung. Einige der hier erstellten Werte benötigen Sie bei der Konfiguration der Beispielprojekteigenschaften. Speichern Sie die Ausgabe Ihrer Sitzung zur späteren Verwendung in einer Textdatei.
 
@@ -32,17 +32,17 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Erstellen Sie mit der Vorlage für ASP.NET Core-Webanwendungen mit dem integrierten Model View Controller und ASP.NeT Core 2.1 ein neues Projekt in Visual Studio. Geben Sie dem Projekt den Namen „QuickstartSampleWebApp“.
 
-![Neues Projekt](../../media/quickstart-csharp/1-createproject.png)
+![Neues Projekt: C#](../../media/quickstart-csharp/1-createproject.png)
 
-![Konfigurieren des neuen Projekts](../../media/quickstart-csharp/2-configureproject.png)
+![Konfigurieren des neuen Projekts: C#](../../media/quickstart-csharp/2-configureproject.png)
 
-![Neue ASP.NET Core-Webanwendung](../../media/quickstart-csharp/3-createmvc.png)
+![Neue ASP.NET Core-Webanwendung: C#](../../media/quickstart-csharp/3-createmvc.png)
 
 ## <a name="set-up-authentication"></a>Einrichten der Authentifizierung
 
 ### <a name="configure-authentication-values"></a>Konfigurieren der Authentifizierungswerte
 
-Klicken Sie im _Projektmappen-Explorer_ mit der rechten Maustaste auf das Projekt, und wählen Sie anschließend **Geheimen Benutzerschlüssel verwalten** aus. Damit wird eine Datei namens _secrets.json_ geöffnet. Diese Datei ist nicht in die Quellcodeverwaltung eingecheckt. [Hier](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows)erhalten Sie weitere Informationen. Ersetzen Sie den Inhalt der Datei _secrets.json_ durch Folgendes. Verwenden Sie dabei die Werte, die beim Erstellen der Ressource des plastischen Readers angegeben wurden.
+Klicken Sie im _Projektmappen-Explorer_ mit der rechten Maustaste auf das Projekt, und wählen Sie anschließend **Geheimen Benutzerschlüssel verwalten** aus. Damit wird eine Datei namens _secrets.json_ geöffnet. Diese Datei ist nicht in die Quellcodeverwaltung eingecheckt. [Hier](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows&preserve-view=true)erhalten Sie weitere Informationen. Ersetzen Sie den Inhalt der Datei _secrets.json_ durch Folgendes. Verwenden Sie dabei die Werte, die beim Erstellen der Ressource des plastischen Readers angegeben wurden.
 
 ```json
 {
@@ -53,7 +53,7 @@ Klicken Sie im _Projektmappen-Explorer_ mit der rechten Maustaste auf das Projek
 }
 ```
 
-### <a name="add-the-microsoftidentitymodelclientsactivedirectory-nuget-package"></a>Hinzufügen des NuGet-Pakets Microsoft.IdentityModel.Clients.ActiveDirectory
+### <a name="install-active-directory"></a>Installieren von Active Directory
 
 Der folgende Code verwendet Objekte aus dem NuGet-Paket **Microsoft.IdentityModel.Clients.ActiveDirectory**, sodass Sie einen Verweis auf dieses Paket in Ihrem Projekt hinzufügen müssen.
 
@@ -216,7 +216,7 @@ Nun fügen Sie dieser Web-App Beispielinhalte hinzu. Öffnen Sie _Views\Home\Ind
 
 Beachten Sie, dass der gesamte Text über das Attribut **lang** verfügt, das die Sprachen des Texts beschreibt. Dieses Attribut unterstützt den plastischen Reader dabei, relevante Sprach- und Grammatikfeatures bereitzustellen.
 
-## <a name="add-javascript-to-handle-launching-the-immersive-reader"></a>Hinzufügen von JavaScript zum Behandeln des Startens des plastischen Readers
+## <a name="add-javascript-to-handle-launching-immersive-reader"></a>Hinzufügen von JavaScript zum Behandeln des Startens des plastischen Readers
 
 Die Bibliothek des plastischen Readers stellt unter anderem Funktionen zum Starten des plastischen Readers sowie zum Rendern von Schaltflächen des plastischen Readers bereit. [Hier](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/reference)erhalten Sie weitere Informationen.
 
@@ -296,18 +296,14 @@ Wählen Sie auf der Menüleiste **Debuggen > Debuggen starten** aus, oder drück
 
 In Ihrem Browser sollte Folgendes angezeigt werden:
 
-![Beispiel-App](../../media/quickstart-csharp/4-buildapp.png)
+![Beispiel-App: C#](../../media/quickstart-csharp/4-buildapp.png)
 
 ## <a name="launch-the-immersive-reader"></a>Starten des plastischen Readers
 
 Wenn Sie auf die Schaltfläche „Plastischer Reader“ klicken, sehen Sie, dass der plastische Reader mit dem Inhalt auf der Seite gestartet wurde.
 
-![Plastischer Reader](../../media/quickstart-csharp/5-viewimmersivereader.png)
+![Plastischer Reader: C#](../../media/quickstart-csharp/5-viewimmersivereader.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Sehen Sie sich die [Node.js-Schnellstartanleitung](../../tutorial-nodejs.md) an, um zu erfahren, welche weiteren Möglichkeiten die Node.js-Clientbibliothek für den plastischen Reader bietet.
-* Sehen Sie sich das [Android-Tutorial](../../tutorial-android.md) an, um zu erfahren, welche weiteren Möglichkeiten das SDK für den plastischen Reader in Verbindung mit Java oder Kotlin für Android bietet.
-* Sehen Sie sich das [iOS-Tutorial](../../tutorial-ios.md) an, um zu erfahren, welche weiteren Möglichkeiten das SDK für den plastischen Reader in Verbindung mit Swift für iOS bietet.
-* Sehen Sie sich das [Python-Tutorial](../../tutorial-python.md) an, um zu erfahren, welche weiteren Möglichkeiten die Python-Clientbibliothek für den plastischen Reader bietet.
 * Machen Sie sich mit dem [SDK für Plastischer Reader](https://github.com/microsoft/immersive-reader-sdk) und der [zugehörigen Referenz](../../reference.md) vertraut.

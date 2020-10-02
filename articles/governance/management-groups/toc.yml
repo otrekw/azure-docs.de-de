@@ -19,6 +19,12 @@
     - name: 'Erstellen einer Verwaltungsgruppe: Azure PowerShell'
       displayName: hierarchy
       href: ./create-management-group-powershell.md
+    - name: 'Erstellen einer Verwaltungsgruppe: .NET'
+      displayName: hierarchy
+      href: ./create-management-group-dotnet.md
+    - name: 'Erstellen einer Verwaltungsgruppe: JavaScript'
+      displayName: hierarchy
+      href: ./create-management-group-javascript.md
     - name: 'Erstellen einer Verwaltungsgruppe: REST'
       displayName: hierarchy
       href: ./create-management-group-rest-api.md

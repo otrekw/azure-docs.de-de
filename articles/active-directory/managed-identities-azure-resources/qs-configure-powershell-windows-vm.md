@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/19/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbbe4dbb7c7db0ca17a9ddddf5016bdc52b9e93d
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 4b4209ce159c9d0bbee01dd422b98832f6bb5713
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269351"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90968990"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-powershell"></a>Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer mithilfe von PowerShell
 
@@ -36,7 +36,9 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe von PowerShell die folgenden Vo
 
 - Wenn Sie nicht mit verwalteten Identitäten für Azure-Ressourcen vertraut sind, helfen Ihnen die Informationen in der [Übersicht](overview.md) weiter. **Machen Sie sich den [Unterschied zwischen einer vom System und einer vom Benutzer zugewiesenen verwalteten Identität](overview.md#managed-identity-types)** bewusst.
 - Wenn Sie noch kein Azure-Konto haben, sollten Sie sich [für ein kostenloses Konto registrieren](https://azure.microsoft.com/free/), bevor Sie fortfahren.
-- Installieren Sie [die aktuelle Version von Azure PowerShell](/powershell/azure/install-az-ps), sofern noch nicht geschehen.
+- Zum Ausführen der Beispielskripts haben Sie zwei Möglichkeiten:
+    - Verwenden Sie den Dienst [Azure Cloud Shell](../../cloud-shell/overview.md), den Sie mithilfe der Schaltfläche **Testen** in der oberen rechten Ecke der Codeblöcke öffnen können.
+    - Führen Sie Skripts lokal aus, indem Sie die neueste Version von [Azure PowerShell](/powershell/azure/install-az-ps) installieren, und melden Sie sich dann mit dem Befehl `Connect-AzAccount` bei Azure an. 
 
 ## <a name="system-assigned-managed-identity"></a>Systemseitig zugewiesene verwaltete Identität
 
@@ -50,59 +52,43 @@ Zum Erstellen eines virtuellen Azure-Computers, auf dem die systemseitig zugewie
 
     Im Abschnitt „Erstellen der VM“ nehmen Sie eine kleine Änderung an der Syntax des Cmdlets [New-AzVMConfig](/powershell/module/az.compute/new-azvm) vor. Fügen Sie einen `-IdentityType SystemAssigned`-Parameter hinzu, um den virtuellen Computer mit aktivierter systemzugewiesener Identität bereitzustellen. Beispiel:
 
-    ```powershell
+    ```azurepowershell-interactive
     $vmConfig = New-AzVMConfig -VMName myVM -IdentityType SystemAssigned ...
     ```
 
    - [Erstellen eines virtuellen Windows-Computers mithilfe von PowerShell](../../virtual-machines/windows/quick-create-powershell.md)
    - [Erstellen eines virtuellen Linux-Computers mithilfe von PowerShell](../../virtual-machines/linux/quick-create-powershell.md)
 
-
-
 ### <a name="enable-system-assigned-managed-identity-on-an-existing-azure-vm"></a>Aktivieren einer vom System zugewiesenen verwalteten Identität auf einem vorhandenen virtuellen Azure-Computer
 
 Zum Aktivieren der systemseitig zugewiesenen verwalteten Identität auf einem virtuellen Computer, der ursprünglich ohne diese bereitgestellt wurde, benötigt Ihr Konto die Rollenzuweisung [Mitwirkender für virtuelle Computer](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor).  Es sind keine weiteren Azure AD-Verzeichnisrollenzuweisungen erforderlich.
 
-1. Melden Sie sich mit `Connect-AzAccount` bei Azure an. Verwenden Sie ein Konto, das dem Azure-Abonnement zugeordnet ist, das den virtuellen Computer enthält.
+1. Rufen Sie zunächst die VM-Eigenschaften mithilfe des Cmdlets `Get-AzVM` ab. Verwenden Sie dann zum Aktivieren einer vom System zugewiesenen verwalteten Identität den Schalter `-IdentityType` im Cmdlet [Update-AzVM](/powershell/module/az.compute/update-azvm):
 
-   ```powershell
-   Connect-AzAccount
-   ```
-
-2. Rufen Sie zunächst die VM-Einstellungen mithilfe des Cmdlets `Get-AzVM` ab. Verwenden Sie dann zum Aktivieren einer vom System zugewiesenen verwalteten Identität den Schalter `-IdentityType` im Cmdlet [Update-AzVM](/powershell/module/az.compute/update-azvm):
-
-   ```powershell
+   ```azurepowershell-interactive
    $vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
    Update-AzVM -ResourceGroupName myResourceGroup -VM $vm -IdentityType SystemAssigned
    ```
-
-
 
 ### <a name="add-vm-system-assigned-identity-to-a-group"></a>Hinzufügen einer systemseitig zugewiesenen Identität einer VM zu einer Gruppe
 
 Nachdem Sie auf einer VM eine systemseitig zugewiesene Identität aktiviert haben, können Sie diese einer Gruppe hinzufügen.  Mit dem folgenden Verfahren wird die systemseitig zugewiesene Identität einer VM einer Gruppe hinzugefügt.
 
-1. Melden Sie sich mit `Connect-AzAccount` bei Azure an. Verwenden Sie ein Konto, das dem Azure-Abonnement zugeordnet ist, das den virtuellen Computer enthält.
+1. Rufen Sie die `ObjectID` des VM-Dienstprinzipals (gemäß den Angaben im Feld `Id` der zurückgegebenen Werte) ab, und notieren Sie sie:
 
-   ```powershell
-   Connect-AzAccount
-   ```
-
-2. Rufen Sie die `ObjectID` des VM-Dienstprinzipals (gemäß den Angaben im Feld `Id` der zurückgegebenen Werte) ab, und notieren Sie sie:
-
-   ```powershell
+   ```azurepowershell-interactive
    Get-AzADServicePrincipal -displayname "myVM"
    ```
 
-3. Rufen Sie die `ObjectID` der Gruppe (gemäß den Angaben im Feld `Id` der zurückgegebenen Werte) ab, und notieren Sie sie:
+1. Rufen Sie die `ObjectID` der Gruppe (gemäß den Angaben im Feld `Id` der zurückgegebenen Werte) ab, und notieren Sie sie:
 
-   ```powershell
+   ```azurepowershell-interactive
    Get-AzADGroup -searchstring "myGroup"
    ```
 
-4. Fügen Sie den Dienstprinzipal der VM der Gruppe hinzu:
+1. Fügen Sie den Dienstprinzipal der VM der Gruppe hinzu:
 
-   ```powershell
+   ```azurepowershell-interactive
    Add-AzureADGroupMember -ObjectId "<objectID of group>" -RefObjectId "<object id of VM service principal>"
    ```
 
@@ -112,27 +98,19 @@ Zum Deaktivieren der systemseitig zugewiesenen verwalteten Identität auf einem 
 
 Wenn Sie über einen virtuellen Computer verfügen, der nicht mehr die systemzugewiesene verwaltete Identität, jedoch weiterhin benutzerzugewiesene verwaltete Identitäten benötigt, verwenden Sie das folgende Cmdlet:
 
-1. Melden Sie sich mit `Connect-AzAccount` bei Azure an. Verwenden Sie ein Konto, das dem Azure-Abonnement zugeordnet ist, das den virtuellen Computer enthält.
+1. Rufen Sie die VM-Eigenschaften mithilfe des Cmdlets `Get-AzVM` ab, und legen Sie für den `-IdentityType`-Parameter `UserAssigned` fest:
 
-   ```powershell
-   Connect-AzAccount
-   ```
-
-2. Rufen Sie die VM-Eigenschaften mithilfe des Cmdlets `Get-AzVM` ab, und legen Sie für den `-IdentityType`-Parameter `UserAssigned` fest:
-
-   ```powershell
+   ```azurepowershell-interactive
    $vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
    Update-AzVm -ResourceGroupName myResourceGroup -VM $vm -IdentityType "UserAssigned"
    ```
 
 Bei einem virtuellen Computer, der die systemzugewiesene verwaltete Identität nicht mehr benötigt und über keine benutzerzugewiesenen verwalteten Identitäten verfügt, verwenden Sie die folgenden Befehle:
 
-```powershell
+```azurepowershell-interactive
 $vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
 Update-AzVm -ResourceGroupName myResourceGroup -VM $vm -IdentityType None
 ```
-
-
 
 ## <a name="user-assigned-managed-identity"></a>Benutzerseitig zugewiesene verwaltete Identität
 
@@ -146,7 +124,7 @@ Für die Zuweisung einer benutzerseitig zugewiesenen Identität zu einem virtuel
 
     Wenn Sie zum Abschnitt zum Erstellen der VM gelangen, nehmen Sie eine kleine Änderung an der Syntax des Cmdlets [`New-AzVMConfig`](/powershell/module/az.compute/new-azvm) vor. Fügen Sie die Parameter `-IdentityType UserAssigned` und `-IdentityID` für die Bereitstellung des virtuellen Computers mit einer benutzerzugewiesenen Identität hinzu.  Ersetzen Sie `<VM NAME>`, `<SUBSCRIPTION ID>`, `<RESROURCE GROUP>` und `<USER ASSIGNED IDENTITY NAME>` durch Ihre eigenen Werte.  Beispiel:
 
-    ```powershell
+    ```azurepowershell-interactive
     $vmConfig = New-AzVMConfig -VMName <VM NAME> -IdentityType UserAssigned -IdentityID "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESROURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>..."
     ```
 
@@ -154,36 +132,27 @@ Für die Zuweisung einer benutzerseitig zugewiesenen Identität zu einem virtuel
     - [Erstellen eines virtuellen Linux-Computers mithilfe von PowerShell](../../virtual-machines/linux/quick-create-powershell.md)
 
 
-
 ### <a name="assign-a-user-assigned-managed-identity-to-an-existing-azure-vm"></a>Zuweisen einer vom Benutzer zugewiesenen verwalteten Identität zu einem vorhandenen virtuellen Azure-Computer
 
 Für die Zuweisung einer benutzerseitig zugewiesenen Identität zu einem virtuellen Computer benötigt Ihr Konto die Rollenzuweisungen [Mitwirkender für virtuelle Computer](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) und [Operator für verwaltete Identität](../../role-based-access-control/built-in-roles.md#managed-identity-operator). Es sind keine weiteren Azure AD-Verzeichnisrollenzuweisungen erforderlich.
 
-1. Melden Sie sich mit `Connect-AzAccount` bei Azure an. Verwenden Sie ein Konto, das dem Azure-Abonnement zugeordnet ist, das den virtuellen Computer enthält.
-
-   ```powershell
-   Connect-AzAccount
-   ```
-
-2. Erstellen Sie mit dem Cmdlet [New-AzUserAssignedIdentity](/powershell/module/az.managedserviceidentity/new-azuserassignedidentity) eine vom Benutzer zugewiesene verwaltete Identität.  Beachten Sie die `Id` in der Ausgabe, da Sie diese im nächsten Schritt benötigen.
+1. Erstellen Sie mit dem Cmdlet [New-AzUserAssignedIdentity](/powershell/module/az.managedserviceidentity/new-azuserassignedidentity) eine vom Benutzer zugewiesene verwaltete Identität.  Beachten Sie die `Id` in der Ausgabe, da Sie diese im nächsten Schritt benötigen.
 
    > [!IMPORTANT]
    > Für die Erstellung von durch Benutzer zugewiesenen verwalteten Identitäten werden nur alphanumerische Zeichen, Unter- und Bindestriche („0-9“, „a-Z“ bzw. „A-Z“, \_ oder „-“) unterstützt. Darüber hinaus sollten Namen zwischen 3 und 128 Zeichen enthalten, damit die Zuordnung zur VM/VMSS ordnungsgemäß funktioniert. Weitere Informationen finden Sie unter [FAQs und bekannte Probleme mit der verwalteten Dienstidentität (Managed Service Identity, MSI) für Azure Active Directory](known-issues.md).
 
-   ```powershell
+   ```azurepowershell-interactive
    New-AzUserAssignedIdentity -ResourceGroupName <RESOURCEGROUP> -Name <USER ASSIGNED IDENTITY NAME>
    ```
-3. Rufen Sie zunächst die VM-Eigenschaften mithilfe des Cmdlets `Get-AzVM` ab. Weisen Sie der Azure-VM anschließend mit den Schaltern `-IdentityType` und `-IdentityID` im Cmdlet [Update-AzVM](/powershell/module/az.compute/update-azvm) eine vom Benutzer zugewiesene verwaltete Identität zu.  Der Wert für den Parameter `-IdentityId` ist die `Id`, die Sie im vorherigen Schritt notiert haben.  Ersetzen Sie `<VM NAME>`, `<SUBSCRIPTION ID>`, `<RESROURCE GROUP>` und `<USER ASSIGNED IDENTITY NAME>` durch Ihre eigenen Werte.
+1. Rufen Sie zunächst die VM-Eigenschaften mithilfe des Cmdlets `Get-AzVM` ab. Weisen Sie der Azure-VM anschließend mit den Schaltern `-IdentityType` und `-IdentityID` im Cmdlet [Update-AzVM](/powershell/module/az.compute/update-azvm) eine vom Benutzer zugewiesene verwaltete Identität zu.  Der Wert für den Parameter `-IdentityId` ist die `Id`, die Sie im vorherigen Schritt notiert haben.  Ersetzen Sie `<VM NAME>`, `<SUBSCRIPTION ID>`, `<RESROURCE GROUP>` und `<USER ASSIGNED IDENTITY NAME>` durch Ihre eigenen Werte.
 
    > [!WARNING]
    > Um alle zuvor vom Benutzer zugewiesenen verwalteten Identitäten zu erhalten, die dem virtuellen Computer zugewiesen sind, fragen Sie die Eigenschaft `Identity` des VM-Objekts ab (z. B. `$vm.Identity`).  Wenn vom Benutzer zugewiesene verwaltete Identitäten zurückgegeben werden, nehmen Sie diese in den folgenden Befehl auf, zusammen mit der neuen vom Benutzer zugewiesenen verwalteten Identität, die Sie der VM zuweisen möchten.
 
-   ```powershell
+   ```azurepowershell-interactive
    $vm = Get-AzVM -ResourceGroupName <RESOURCE GROUP> -Name <VM NAME>
    Update-AzVM -ResourceGroupName <RESOURCE GROUP> -VM $vm -IdentityType UserAssigned -IdentityID "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESROURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>"
    ```
-
-
 
 ### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>Entfernen einer vom Benutzer zugewiesenen verwalteten Identität von einer Azure-VM
 
@@ -191,19 +160,19 @@ Für das Entfernen einer benutzerseitig zugewiesenen Identität von einem virtue
 
 Wenn Ihr virtueller Computer mehrere benutzerzugewiesene Identitäten umfasst, können Sie mit den folgenden Befehlen alle bis auf die letzte Identität entfernen. Ersetzen Sie die Parameterwerte `<RESOURCE GROUP>` und `<VM NAME>` durch Ihre eigenen Werte. `<USER ASSIGNED IDENTITY NAME>` ist die Namenseigenschaft der benutzerzugewiesenen verwalteten Identität, die weiterhin auf dem virtuellen Computer festgelegt sein sollte. Diese Informationen finden Sie durch Abfragen der Eigenschaft `Identity` des VM-Objekts.  Beispiel: `$vm.Identity`:
 
-```powershell
+```azurepowershell-interactive
 $vm = Get-AzVm -ResourceGroupName myResourceGroup -Name myVm
 Update-AzVm -ResourceGroupName myResourceGroup -VirtualMachine $vm -IdentityType UserAssigned -IdentityID <USER ASSIGNED IDENTITY NAME>
 ```
 Wenn Ihr virtueller Computer keine systemzugewiesene verwaltete Identität hat, und Sie alle benutzerzugewiesenen verwalteten Identitäten entfernen möchten, verwenden Sie den folgenden Befehl:
 
-```powershell
+```azurepowershell-interactive
 $vm = Get-AzVm -ResourceGroupName myResourceGroup -Name myVm
 Update-AzVm -ResourceGroupName myResourceGroup -VM $vm -IdentityType None
 ```
 Wenn der virtuelle Computer sowohl system- als auch benutzerzugewiesene verwaltete Identitäten aufweist, können Sie alle benutzerzugewiesenen verwalteten Identitäten entfernen, indem Sie in den Modus wechseln, in dem nur systemzugewiesene verwaltete Identitäten verwendet werden.
 
-```powershell
+```azurepowershell-interactive
 $vm = Get-AzVm -ResourceGroupName myResourceGroup -Name myVm
 Update-AzVm -ResourceGroupName myResourceGroup -VirtualMachine $vm -IdentityType "SystemAssigned"
 ```

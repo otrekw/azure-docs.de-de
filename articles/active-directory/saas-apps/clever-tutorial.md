@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/26/2019
+ms.date: 08/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 4c87ee92a2bc30dc2923127241013601cf3f4419
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: bb8eef01e2673c3f84b1678a93b4bd168f1faf63
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88519842"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90708120"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-clever"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Clever
 
@@ -40,6 +40,7 @@ Für die ersten Schritte benötigen Sie Folgendes:
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * Clever unterstützt das **SP-initiierte** einmalige Anmelden.
+* Nach dem Konfigurieren von Concur können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
 
 > [!NOTE]
 > Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
@@ -56,7 +57,7 @@ Zum Konfigurieren der Integration von Clever in Azure AD müssen Sie Clever aus 
 1. Wählen Sie im Ergebnisbereich **Clever** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-clever"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Clever
+## <a name="configure-and-test-azure-ad-sso-for-clever"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Clever
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Clever mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Clever eingerichtet werden.
 
@@ -65,8 +66,8 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD m
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
     1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
     1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
-1. **[Konfigurieren des einmaligen Anmeldens für Clever](#configure-clever-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-    1. **[Erstellen eines Clever-Testbenutzers](#create-clever-test-user)** , um ein Pendant von B. Simon in Clever zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
+1. **[Konfigurieren des einmaligen Anmeldens für Clever](#configure-clever-sso)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+    1. **[Erstellen eines Clever-Testbenutzers](#create-clever-test-user)**, um ein Pendant von B. Simon in Clever zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
@@ -83,10 +84,12 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://clever.com/in/<companyname>`.
 
-    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://clever.com/oauth/saml/metadata.xml`.
+    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** die folgende URL ein: `https://clever.com/oauth/saml/metadata.xml`.
 
+    c. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://clever.com/<companyname>`
+    
     > [!NOTE]
-    > Der Wert der Anmelde-URL entspricht nicht dem tatsächlichen Wert. Aktualisieren Sie den Wert mit der tatsächlichen Anmelde-URL. Wenden Sie sich an das [Supportteam für den Clever-Client](https://clever.com/about/contact/), um den Wert zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    >  Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und Antwort-URL. Wenden Sie sich an das [Supportteam für den Clever-Client](https://clever.com/about/contact/), um den Wert zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **App-Verbundmetadaten-URL** zu kopieren, und speichern Sie sie auf Ihrem Computer.
 
@@ -131,11 +134,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
     ![Instant Login](./media/clever-tutorial/ic798984.png "Instant Login")
 
     > [!NOTE]
-    > Bevor Sie einmaliges Anmelden testen können, müssen Sie das [Clever Client-Supportteam](https://clever.com/about/contact/) kontaktieren, um Office 365 SSO im Back-End zu aktivieren.
+    > Bevor Sie einmaliges Anmelden testen können, müssen Sie das [Supportteam für den Clever-Client](https://clever.com/about/contact/) kontaktieren, um das einmalige Anmelden von Microsoft 365 im Back-End zu aktivieren.
 
 1. Führen Sie auf der Seite **Instant Login** die folgenden Schritte aus:
  
-    ![Instant Login](./media/clever-tutorial/ic798985.png "Instant Login")
+    ![SSO-Konfiguration auf der Seite für die sofortige Anmeldung](./media/clever-tutorial/ic798985.png "Instant Login")
 
     a. Geben Sie die **Login URL**ein.
 

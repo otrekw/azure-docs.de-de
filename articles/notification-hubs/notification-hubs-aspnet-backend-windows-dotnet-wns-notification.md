@@ -4,25 +4,23 @@ description: Erfahren Sie, wie Sie mithilfe UWP-Anwendungen (Universelle Windows
 documentationcenter: windows
 author: sethmanheim
 manager: femila
-editor: jwargo
 services: notification-hubs
-ms.assetid: 012529f2-fdbc-43c4-8634-2698164b5880
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.custom: mvc, devx-track-csharp
-ms.date: 03/22/2019
+ms.custom: mvc
+ms.date: 08/17/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 03/22/2019
-ms.openlocfilehash: 865aaf748fd8fad5f10350cb5b57d31b3eadf7a0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 97a6a45ab01fc113b79a48ba7fcb246d528684be
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018041"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090056"
 ---
 # <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>Tutorial: Senden von Benachrichtigungen an bestimmte Benutzer mit Azure Notification Hubs
 
@@ -30,7 +28,7 @@ ms.locfileid: "89018041"
 
 ## <a name="overview"></a>Übersicht
 
-Ein ASP.NET WebAPI-Back-End wird verwendet, um Clients zu authentifizieren. Mit dem authentifizierten Clientbenutzer wird automatisch ein Tag vom Back-End zur Benachrichtigungsregistrierung hinzugefügt. Wenn das Back-End einen Benutzer einer Clientanwendung authentifiziert, fügt es der Benachrichtigungsregistrierung automatisch ein Tag hinzu. Das Back-End nutzt dieses Tag, um Benachrichtigungen an den jeweiligen Benutzer zu senden.
+In diesem Tutorial wird beschrieben, wie Sie mithilfe von Azure Notification Hubs Pushbenachrichtigungen an einen bestimmten App-Benutzer auf einem bestimmten Gerät senden. Mit dem authentifizierten Clientbenutzer wird automatisch ein Tag vom Back-End zur Benachrichtigungsregistrierung hinzugefügt. Wenn das Back-End einen Benutzer einer Clientanwendung authentifiziert, fügt es der Benachrichtigungsregistrierung automatisch ein Tag hinzu. Das Back-End nutzt dieses Tag, um Benachrichtigungen an den jeweiligen Benutzer zu senden.
 
 > [!NOTE]
 > Den vollständigen Code für dieses Tutorial finden Sie [auf GitHub](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers).
@@ -66,7 +64,7 @@ In diesem Abschnitt aktualisieren Sie den Code des Projekts, das Sie unter [Tuto
 5. Klicken Sie in der Ergebnisliste auf **System.Net.Http** und dann auf **Installieren**. Schließen Sie die Installation ab.
 6. Geben Sie in das NuGet-**Suchfeld** die Zeichenfolge **Json.net** ein. Installieren Sie das Paket **Newtonsoft.json**, und schließen Sie dann das Fenster des NuGet-Paket-Managers.
 7. Doppelklicken Sie im Projektmappen-Explorer im Projekt **WindowsApp** auf **MainPage.xaml**, um die Datei im Visual Studio-Editor zu öffnen.
-8. Ersetzen Sie im XML-Code von `MainPage.xaml` den Abschnitt `<Grid>` durch den folgenden Code: Dieser Code fügt ein Textfeld für den Benutzernamen und das Kennwort hinzu, mit denen sich der Benutzer authentifiziert. Darüber hinaus werden Textfelder für die Benachrichtigungsmeldung und das Benutzernamentag hinzugefügt, das die Benachrichtigung empfangen soll:
+8. Ersetzen Sie in der Datei `MainPage.xaml` den Abschnitt `<Grid>` durch den folgenden Code: Dieser Code fügt ein Textfeld für den Benutzernamen und das Kennwort hinzu, mit denen sich der Benutzer authentifiziert. Darüber hinaus werden Textfelder für die Benachrichtigungsmeldung und das Benutzernamentag hinzugefügt, das die Benachrichtigung empfangen soll:
 
     ```xml
     <Grid>
@@ -118,6 +116,7 @@ In diesem Abschnitt aktualisieren Sie den Code des Projekts, das Sie unter [Tuto
         </StackPanel>
     </Grid>
     ```
+
 9. Öffnen Sie im Projektmappen-Explorer die Datei `MainPage.xaml.cs` für die Projekte **(Windows 8.1)** und **(Windows Phone 8.1)** . Fügen Sie am Anfang der beiden Dateien die folgenden `using` -Anweisungen ein:
 
     ```csharp
@@ -128,11 +127,13 @@ In diesem Abschnitt aktualisieren Sie den Code des Projekts, das Sie unter [Tuto
     using Windows.UI.Popups;
     using System.Threading.Tasks;
     ```
+
 10. Fügen Sie in `MainPage.xaml.cs` für das Projekt **WindowsApp** das folgende Element der `MainPage`-Klasse hinzu. Ersetzen Sie `<Enter Your Backend Endpoint>` unbedingt durch den tatsächlichen Back-End-Endpunkt, den Sie zuvor abgerufen haben. Beispiel: `http://mybackend.azurewebsites.net`.
 
     ```csharp
     private static string BACKEND_ENDPOINT = "<Enter Your Backend Endpoint>";
     ```
+
 11. Fügen Sie den folgenden Code der MainPage-Klasse in `MainPage.xaml.cs` für die Projekte **(Windows 8.1)** und **(Windows Phone 8.1)** hinzu.
 
     Die `PushClick` -Methode ist ein Klick-Handler für die Schaltfläche **Send Push** . Sie ruft den Back-End auf, um eine Benachrichtigung an alle Geräte mit einem Benutzernamentag zu senden, das dem `to_tag` -Parameter entspricht. Die Benachrichtigungsmeldung wird als JSON-Inhalt im Anforderungstext gesendet.
@@ -215,13 +216,15 @@ In diesem Abschnitt aktualisieren Sie den Code des Projekts, das Sie unter [Tuto
         ApplicationData.Current.LocalSettings.Values["AuthenticationToken"] = token;
     }
     ```
-12. Öffnen Sie `App.xaml.cs`, und suchen Sie im Ereignishandler `InitNotificationsAsync()` nach dem Aufruf von `OnLaunched()`. Kommentieren Sie den Aufruf von `InitNotificationsAsync()`aus, oder löschen Sie ihn. Der zuvor hinzugefügte Schaltflächenhandler initialisiert Benachrichtigungsregistrierungen.
+
+12. Öffnen Sie `App.xaml.cs`, und suchen Sie im Ereignishandler `InitNotificationsAsync()` nach dem Aufruf von `OnLaunched()`. Kommentieren Sie den Aufruf von `InitNotificationsAsync()`aus, oder löschen Sie ihn. Der Schaltflächenhandler initialisiert Benachrichtigungsregistrierungen:
 
     ```csharp
     protected override void OnLaunched(LaunchActivatedEventArgs e)
     {
         //InitNotificationsAsync();
     ```
+
 13. Klicken Sie mit der rechten Maustaste auf das Projekt **WindowsApp**, klicken Sie auf **Hinzufügen** und dann auf **Klasse**. Nennen Sie die Klasse `RegisterClient.cs`, und klicken Sie dann auf **OK**, um die Klasse zu generieren.
 
     Diese Klasse umschließt die REST-Aufrufe, die für das Kontaktieren des App-Back-Ends erforderlich sind, um sich für Pushbenachrichtigungen zu registrieren. Außerdem werden die vom Notification Hub erstellten *registrationIds* lokal gespeichert, wie unter [Registrierung vom App-Back-End aus](/previous-versions/azure/azure-services/dn743807(v=azure.100))beschrieben. Wenn Sie auf die Schaltfläche **Log in and register** klicken, wird ein Authentifizierungstoken aus dem lokalen Speicher verwendet.
@@ -236,7 +239,8 @@ In diesem Abschnitt aktualisieren Sie den Code des Projekts, das Sie unter [Tuto
     using System.Threading.Tasks;
     using System.Linq;
     ```
-15. Fügen Sie innerhalb der `RegisterClient` -Klassendefinition den folgenden Code hinzu.
+
+15. Fügen Sie innerhalb der `RegisterClient`-Klassendefinition den folgenden Code hinzu:
 
     ```csharp
     private string POST_URL;
@@ -323,6 +327,7 @@ In diesem Abschnitt aktualisieren Sie den Code des Projekts, das Sie unter [Tuto
 
     }
     ```
+
 16. Speichern Sie alle Änderungen.
 
 ## <a name="test-the-application"></a>Testen der Anwendung
@@ -332,8 +337,8 @@ In diesem Abschnitt aktualisieren Sie den Code des Projekts, das Sie unter [Tuto
 3. Klicken Sie auf **Login and register** , und überprüfen Sie, ob ein Dialogfeld anzeigt, dass Sie sich angemeldet haben. Durch diesen Code wird auch die Schaltfläche **Send Push** aktiviert.
 
     ![Screenshot der Notification Hubs-Anwendung mit ausgefülltem Benutzernamen und Kennwort.][14]
-5. Geben Sie dann im Feld **Recipient Username Tag** den registrierten Benutzernamen ein. Geben Sie eine Benachrichtigungsmeldung ein, und klicken Sie auf **Send Push**.
-6. Nur die Geräte, die mit dem entsprechenden Benutzernamentag registriert wurden, erhalten eine Benachrichtigungsmeldung.
+4. Geben Sie dann im Feld **Recipient Username Tag** den registrierten Benutzernamen ein. Geben Sie eine Benachrichtigungsmeldung ein, und klicken Sie auf **Send Push**.
+5. Nur die Geräte, die mit dem entsprechenden Benutzernamentag registriert wurden, erhalten eine Benachrichtigungsmeldung.
 
     ![Screenshot der Notification Hubs-Anwendung, die die Meldung anzeigt, die gepusht wurde.][15]
 

@@ -1,6 +1,6 @@
 ---
 title: Azure AD Connect, mehrere Domänen
-description: In diesem Dokument wird das Einrichten und Konfigurieren mehrerer Domänen der obersten Ebene mit Office 365 und Azure AD beschrieben.
+description: In diesem Dokument wird das Einrichten und Konfigurieren mehrerer Domänen der obersten Ebene mit Microsoft 365 und Azure AD beschrieben.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,15 +16,15 @@ ms.date: 05/31/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1607bf1cd6f25f56c6819a2ea3194244e10df8dd
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: f913199e0c0ed438d4b95b879d4defc072c615aa
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89277536"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662435"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>Unterstützung mehrerer Domänen für den Verbund mit Azure AD
-Die folgende Dokumentation enthält eine Anleitung dazu, wie Sie mehrere Domänen der obersten Ebene und Unterdomänen verwenden, wenn Sie einen Verbund mit Office 365- oder Azure AD-Domänen erstellen.
+Die folgende Dokumentation enthält eine Anleitung dazu, wie Sie mehrere Domänen der obersten Ebene und Unterdomänen verwenden, wenn Sie einen Verbund mit Microsoft 365- oder Azure AD-Domänen erstellen.
 
 ## <a name="multiple-top-level-domain-support"></a>Unterstützung mehrerer Domänen der obersten Ebene
 Für die Erstellung mehrerer Domänen der obersten Ebene als Verbund mit Azure AD sind einige zusätzliche Konfigurationsschritte erforderlich, die nicht benötigt werden, wenn ein Verbund mit nur einer Domäne der obersten Ebene erstellt wird.
@@ -42,7 +42,7 @@ Sie können das IssuerUri-Element mit dem folgenden PowerShell-Befehl anzeigen: 
 
 Ein Problem tritt auf, wenn Sie mehr als eine Domäne der obersten Ebene hinzufügen.  Nehmen wir beispielsweise an, dass Sie einen Verbund zwischen Azure AD und Ihrer lokalen Umgebung eingerichtet haben.  Für dieses Dokument wird die Domäne „bmcontoso.com“ verwendet.  Nun wurde eine zweite Domäne der obersten Ebene hinzugefügt: „bmfabrikam.com“.
 
-![Domänen](./media/how-to-connect-install-multiple-domains/domains.png)
+![Screenshot mit mehreren Domänen der obersten Ebene](./media/how-to-connect-install-multiple-domains/domains.png)
 
 Wenn Sie versuchen, die Domäne „bmfabrikam.com“ in einen Verbund zu konvertieren, wird ein Fehler angezeigt.  Der Grund hierfür ist, dass für Azure AD eine Einschränkung gilt. Es ist nicht zulässig, dass die IssuerUri-Eigenschaft für mehr als eine Domäne den gleichen Wert aufweist.  
 
@@ -67,7 +67,7 @@ Wenn Sie sich die Einstellungen der Domäne „bmfabrikam.com“ ansehen, erkenn
 
 Außerdem wird mit `-SupportMultipleDomain` sichergestellt, dass das AD FS-System den richtigen Issuer-Wert in Token einfügt, die für Azure AD ausgegeben werden. Dazu wird der Domänenteil des Benutzerprinzipalnamens (UPN) verwendet und als Domäne im IssuerUri festgelegt, d.h. „https://{upn suffix}/adfs/services/trust“.
 
-Während der Authentifizierung in Azure AD oder Office 365 wird daher das IssuerUri-Element im Token des Benutzers verwendet, um die Domäne in Azure AD zu finden.  Wenn keine Übereinstimmung gefunden wird, schlägt die Authentifizierung fehl.
+Während der Authentifizierung in Azure AD oder Microsoft 365 wird daher das IssuerUri-Element im Token des Benutzers verwendet, um die Domäne in Azure AD zu finden. Wenn keine Übereinstimmung gefunden wird, schlägt die Authentifizierung fehl.
 
 Wenn der UPN eines Benutzers beispielsweise bsimon@bmcontoso.com lautet, wird das IssuerUri-Element in dem von AD FS ausgestellten Token auf `http://bmcontoso.com/adfs/services/trust` festgelegt. Dieses Element entspricht der Azure AD-Konfiguration und die Authentifizierung ist erfolgreich.
 

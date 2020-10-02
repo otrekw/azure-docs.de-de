@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/28/2020
+ms.date: 08/24/2020
 ms.author: jeedes
-ms.openlocfilehash: fdea1f3b2d4cff0203951b6ec5ef6b86b62cdf9c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a631ab7190891ae3716a28615bcdbfe4d219ea27
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88527533"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053445"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Slack
 
@@ -50,6 +50,9 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 * Slack unterstützt die [**automatisierte** Benutzerbereitstellung](https://docs.microsoft.com/azure/active-directory/saas-apps/slack-provisioning-tutorial).
 * Nach dem Konfigurieren von Slack können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
 
+> [!NOTE]
+> Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
+
 ## <a name="adding-slack-from-the-gallery"></a>Hinzufügen von Slack aus dem Katalog
 
 Um die Integration von Slack in Azure AD zu konfigurieren, müssen Sie Slack über den Katalog Ihrer Liste mit den verwalteten SaaS-Apps hinzufügen.
@@ -61,7 +64,7 @@ Um die Integration von Slack in Azure AD zu konfigurieren, müssen Sie Slack üb
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Slack** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **Slack** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-slack"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Slack
+## <a name="configure-and-test-azure-ad-sso-for-slack"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Slack
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Slack mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Slack eingerichtet werden.
 
@@ -86,13 +89,20 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://< DOMAIN NAME>.slack.com/sso/saml/start`.
+    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<DOMAIN NAME>.slack.com/sso/saml/start`.
 
-    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL ein: `https://slack.com`.
+    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** die folgende URL ein: `https://slack.com`.
+    
+    c. Geben Sie unter **Antwort-URL** die URL in einem der folgenden Formate ein:
+    
+    | Antwort-URL|
+    |----------|
+    | `https://<DOMAIN NAME>.slack.com/sso/saml` |
+    | `https://<DOMAIN NAME>.enterprise.slack.com/sso/saml` |
 
     > [!NOTE]
-    > Der Wert der Anmelde-URL entspricht nicht dem tatsächlichen Wert. Aktualisieren Sie den Wert mit der tatsächlichen Anmelde-URL. Wenden Sie sich an das [Clientsupportteam von Slack](https://slack.com/help/contact), um den Wert zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
-    
+    > Hierbei handelt es sich um Beispielwerte. Die Werte müssen durch die tatsächliche Anmelde-URL und die tatsächliche Antwort-URL ersetzt werden. Wenden Sie sich an das [Clientsupportteam von Slack](https://slack.com/help/contact), um den Wert zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+
     > [!NOTE]
     > Der Wert für **Bezeichner (Entitäts-ID)** kann eine Variable sein, wenn Sie mehr als eine Slack-Instanz in den Mandanten integrieren müssen. Verwenden Sie das Muster `https://<DOMAIN NAME>.slack.com`. In diesem Szenario müssen Sie außerdem die Kopplung mit einer anderen Einstellung in Slack durchführen, indem Sie denselben Wert verwenden.
 
@@ -106,7 +116,6 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     | -----|---------|
     | emailaddress | user.userprincipalname |
     | email | user.userprincipalname |
-    | | |
 
    > [!NOTE]
    > Um die Konfiguration des Dienstanbieters einzurichten, müssen Sie auf der Seite mit der SAML-Konfiguration auf **Erweitern** neben **Erweiterte Optionen** klicken. Geben Sie im Feld **Aussteller des Dienstanbieters** die Arbeitsbereichs-URL ein. Der Standardwert ist „slack.com“. 
@@ -155,15 +164,15 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 2. Navigieren Sie zu **Microsoft Azure AD** und dann zu **Teameinstellungen**.
 
-     ![Konfigurieren des einmaligen Anmeldens aufseiten der App](./media/slack-tutorial/tutorial-slack-team-settings.png)
+     ![Konfigurieren des einmaligen Anmeldens in Microsoft Azure AD](./media/slack-tutorial/tutorial-slack-team-settings.png)
 
 3. Klicken Sie im Abschnitt **Teameinstellungen** auf die Registerkarte **Authentifizierung**, und klicken Sie dann auf **Einstellungen ändern**.
 
-    ![Konfigurieren des einmaligen Anmeldens aufseiten der App](./media/slack-tutorial/tutorial-slack-authentication.png)
+    ![Konfigurieren des einmaligen Anmeldens in den Teameinstellungen](./media/slack-tutorial/tutorial-slack-authentication.png)
 
 4. Führen Sie im Dialogfeld **SAML-Authentifizierungseinstellungen** die folgenden Schritte aus:
 
-    ![Konfigurieren des einmaligen Anmeldens aufseiten der App](./media/slack-tutorial/tutorial-slack-save-authentication.png)
+    ![Konfigurieren des einmaligen Anmeldens in den SAML-Authentifizierungseinstellungen](./media/slack-tutorial/tutorial-slack-save-authentication.png)
 
     a.  Fügen Sie in das Textfeld **SAML 2.0-Endpunkt (HTTP)** den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 

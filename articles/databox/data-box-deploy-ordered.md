@@ -2,18 +2,18 @@
 title: Tutorial zum Bestellen einer Azure Data Box | Microsoft-Dokumentation
 description: In diesem Tutorial erfahren Sie mehr über die Hybridlösung Azure Data Box, mit der Sie lokale Daten in Azure importieren können. Darüber hinaus wird erläutert, wie Sie Azure Data Box bestellen.
 services: databox
-author: twooley
+author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/21/2020
-ms.author: twooley
-ms.openlocfilehash: 2000ecc84a92bef5ad6b80fecde4aee0157e4bc5
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.date: 09/15/2020
+ms.author: alkohli
+ms.openlocfilehash: c2d971c2c9375f58fd5f41a46716fac4bff29f88
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783568"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604307"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Tutorial: Bestellen von Azure Data Box
 
@@ -268,8 +268,21 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um ein Gerät zu bestell
     ![Data Box-Auftrag für verwalteten Datenträger](media/data-box-deploy-ordered/select-data-box-import-07b.png)
 
     Das für verwaltete Datenträger angegebene Speicherkonto wird als Stagingspeicherkonto verwendet. Der Data Box-Dienst lädt die VHDs als Seitenblobs in das Stagingspeicherkonto hoch, konvertiert es in verwaltete Datenträger und verschiebt es in die Ressourcengruppen. Weitere Informationen finden Sie unter [Überprüfen des Datenuploads in Azure](data-box-deploy-picked-up.md#verify-data-upload-to-azure).
+   > [!NOTE]
+   > Wird ein Seitenblob nicht in einen verwalteten Datenträger konvertiert, bleibt es im Speicherkonto, und Ihnen wird der Speicher in Rechnung gestellt.
 
-    Klicken Sie auf **Weiter: Kontaktdetails**, um fortzufahren.
+    Klicken Sie auf **Weiter: Sicherheit**, um den Vorgang fortzusetzen.
+
+1. Wenn Sie die softwarebasierte doppelte Verschlüsselung aktivieren möchten, wählen Sie unter **Sicherheit** die Option **Enable double encryption for the order** (Doppelte Verschlüsselung für den Auftrag aktivieren). 
+
+   Die softwarebasierte Verschlüsselung wird zusätzlich zur AES-256-Bit-Verschlüsselung der Daten auf der Data Box ausgeführt.
+
+   > [!NOTE]
+   > Wenn Sie diese Option aktivieren, können die Auftragsverarbeitung und das Kopieren von Daten länger dauern. Nach dem Erstellen des Auftrags können Sie diese Option nicht mehr ändern.
+
+   ![Bildschirm „Sicherheit“ für den Data Box-Import, doppelte Verschlüsselung](media/data-box-deploy-ordered/select-data-box-import-07c.png)
+
+   Klicken Sie auf **Weiter: Kontaktdetails**, um fortzufahren.
 
 8. Wählen Sie unter **Kontaktdetails** die Option **+ Lieferadresse hinzufügen** aus.
 

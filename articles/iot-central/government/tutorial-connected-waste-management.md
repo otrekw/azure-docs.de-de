@@ -7,12 +7,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 274d725a0e7987c8cb15363ba276aec7ebc541d5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 53304f14286577bf0bc25b2a66442286527c5140
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77426359"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972439"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>Tutorial: Erstellen einer Anwendung für die vernetzte Abfallwirtschaft in IoT Central
 
@@ -131,13 +131,13 @@ Zeigen Sie die Gerätevorlage wie folgt an:
 
 1. Klicken Sie in IoT Central im linken Bereich Ihrer Anwendung auf **Gerätevorlagen**. 
 
-    ![Gerätevorlage](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate.png)
+    ![Screenshot: Liste der Gerätevorlagen in der Anwendung](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate.png)
 
 2. In der Liste mit den Gerätevorlagen wird **Connected Waste Bin** (Vernetzter Abfallbehälter) angezeigt. Öffnen Sie die Vorlage, indem Sie auf den Namen klicken.
 
 3. Machen Sie sich mit den Funktionen der Gerätevorlage vertraut. Sie sehen, dass dafür beispielsweise Sensoren vom Typ *Fill level* (Füllstand), *Odor meter* (Geruchsmessung), *Weight* (Gewicht) und *Location* (Standort) definiert sind.
 
-   ![Gerätevorlage](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-connectedbin.png)
+   ![Screenshot: Details der Gerätevorlage für vernetzte Abfallbehälter](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-connectedbin.png)
 
    
 
@@ -265,8 +265,9 @@ Falls Sie diese Anwendung nicht weiterverwenden möchten, sollten Sie sie mit de
 1. Öffnen Sie im linken Bereich Ihrer IoT Central-Anwendung die Registerkarte „Verwaltung“.
 2. Wählen Sie „Anwendungseinstellungen“ aus, und klicken Sie unten auf der Seite auf die Schaltfläche „Löschen“.
 
-  
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Machen Sie sich mit weiteren [Konzepten im Zusammenhang mit der vernetzten Abfallwirtschaft](./concepts-connectedwastemanagement-architecture.md) vertraut.
+* Weitere Informationen
+ 
+> [!div class="nextstepaction"]
+> [Konzepte im Zusammenhang mit der vernetzten Abfallwirtschaft ](./concepts-connectedwastemanagement-architecture.md)

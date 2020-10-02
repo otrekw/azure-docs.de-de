@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 03/01/2019
 ms.author: kenchen
-ms.openlocfilehash: 71bcb72b645c574eedd24ff868751f366738e73d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: b1cb48d1ae858dbcd0df80780b4c3cee3deac75b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935686"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976490"
 ---
 # <a name="resiliency-and-disaster-recovery-in-azure-signalr-service"></a>Resilienz und Notfallwiederherstellung in Azure SignalR Service
 
@@ -42,7 +42,7 @@ Wenn ein Client eine Verbindung herstellt, wird er aber immer zum App-Server in 
 
 Das folgende Diagramm veranschaulicht diese Topologie:
 
-![Topologie](media/signalr-concept-disaster-recovery/topology.png)
+![Das Diagramm zeigt zwei Regionen, die jeweils einen App-Server und einen SignalR-Dienst aufweisen, und in denen jeder Server dem SignalR-Dienst für seine Region als primärer Server und dem Dienst in der anderen Region als sekundärer Server zugeordnet ist.](media/signalr-concept-disaster-recovery/topology.png)
 
 ## <a name="configure-app-servers-with-multiple-signalr-service-instances"></a>Konfigurieren von App-Servern mit mehreren SignalR Service-Instanzen
 

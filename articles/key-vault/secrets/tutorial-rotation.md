@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5adc2a91df5d394fbed3ff10b0ebc5cb543a3ba3
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: c2d1a46a35ef38791b6a3b47c300aa1b47f70324
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378014"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086874"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>Automatisieren der Rotation eines Geheimnisses für Ressourcen mit einem Satz mit Anmeldeinformationen für die Authentifizierung
 
@@ -24,7 +24,7 @@ Die beste Möglichkeit zur Authentifizierung bei Azure-Diensten ist die Verwendu
 
 In diesem Tutorial wird gezeigt, wie Sie die regelmäßige Rotation von Geheimnissen für Datenbanken und Dienste automatisieren, bei denen ein Satz mit Anmeldeinformationen für die Authentifizierung verwendet wird. Genauer gesagt werden in diesem Tutorial in Azure Key Vault gespeicherte SQL Server-Kennwörter mithilfe einer Funktion rotiert, die durch eine Azure Event Grid-Benachrichtigung ausgelöst wird:
 
-![Diagramm der Rotationslösung](../media/rotate1.png)
+![Diagramm der Rotationslösung](../media/rotate-1.png)
 
 1. 30 Tage vor dem Ablaufdatum eines Geheimnisses veröffentlicht Key Vault das Ereignis „Läuft demnächst ab“ in Event Grid.
 1. Event Grid überprüft die Ereignisabonnements und ruft mit HTTP POST den Funktions-App-Endpunkt auf, der dieses Ereignis abonniert hat.
@@ -49,7 +49,7 @@ Sie können den unten angegebenen Bereitstellungslink verwenden, falls Sie nicht
 1. Klicken Sie auf **Überprüfen + erstellen**.
 1. Klicken Sie auf **Erstellen**
 
-    ![Erstellen einer Ressourcengruppe](../media/rotate2.png)
+    ![Erstellen einer Ressourcengruppe](../media/rotate-2.png)
 
 Sie verfügen jetzt über eine Key Vault- und eine SQL Server-Instanz. Sie können dieses Setup in der Azure-Befehlszeilenschnittstelle überprüfen, indem Sie den folgenden Befehl ausführen:
 
@@ -91,7 +91,7 @@ Eine Funktions-App benötigt folgende Komponenten:
 1. Klicken Sie auf **Überprüfen + erstellen**.
 1. Klicken Sie auf **Erstellen**.
 
-   ![Auswählen von „Überprüfen + erstellen“](../media/rotate3.png)
+   ![Auswählen von „Überprüfen + erstellen“](../media/rotate-3.png)
 
 Nachdem Sie die obigen Schritte ausgeführt haben, verfügen Sie über ein Speicherkonto, eine Serverfarm und eine Funktions-App. Sie können dieses Setup in der Azure-Befehlszeilenschnittstelle überprüfen, indem Sie den folgenden Befehl ausführen:
 
@@ -207,11 +207,11 @@ Wenn Sie ein Geheimnis mit einem kurzen Ablaufdatum erstellen, wird innerhalb vo
 
 Vergewissern Sie sich unter **Key Vault** > **Geheimnisse**, dass das Geheimnis rotiert wurde:
 
-![Navigieren zu „Geheimnisse“](../media/rotate8.png)
+![Navigieren zu „Geheimnisse“](../media/rotate-8.png)
 
 Öffnen Sie das Geheimnis **sqlPassword**, und überprüfen Sie die ursprüngliche sowie die rotierte Version:
 
-![Öffnen des Geheimnisses „sqluser“](../media/rotate9.png)
+![Öffnen des Geheimnisses „sqluser“](../media/rotate-9.png)
 
 ### <a name="create-a-web-app"></a>Erstellen einer Web-App
 
@@ -245,6 +245,6 @@ Wenn die Anwendung im Browser geöffnet wird, wird für den Wert **Generated Sec
 ## <a name="learn-more"></a>Weitere Informationen
 
 - Tutorial: [Automatisieren der Rotation eines Geheimnisses für Ressourcen mit zwei Sätzen mit Anmeldeinformationen für die Authentifizierung](tutorial-rotation-dual.md)
-- Übersicht: [Überwachen von Key Vault mit Azure Event Grid (Vorschau)](../general/event-grid-overview.md)
+- Übersicht: [Überwachen von Key Vault mit Azure Event Grid](../general/event-grid-overview.md)
 - Gewusst wie: [Verwenden von Logic Apps zum Empfangen einer E-Mail bei Statusänderungen von Key Vault-Geheimnissen](../general/event-grid-logicapps.md)
-- [Azure Event Grid-Ereignisschema für Azure Key Vault (Vorschau)](../../event-grid/event-schema-key-vault.md)
+- [Azure Event Grid-Ereignisschema für Azure Key Vault](../../event-grid/event-schema-key-vault.md)

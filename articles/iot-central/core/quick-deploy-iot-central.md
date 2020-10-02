@@ -1,6 +1,6 @@
 ---
-title: Erstellen einer Azure IoT Central-Anwendung | Microsoft-Dokumentation
-description: Erstellen Sie eine neue Azure IoT Central-Anwendung. Erstellen Sie die Anwendung entweder im Free-Tarif oder in einem der Standard-Tarife.
+title: 'Schnellstart: Erstellen einer Azure IoT Central-Anwendung | Microsoft-Dokumentation'
+description: 'Schnellstart: Erstellen einer neuen Azure IoT Central-Anwendung Erstellen Sie die Anwendung entweder im Free-Tarif oder in einem der Standard-Tarife.'
 author: viv-liu
 ms.author: viviali
 ms.date: 07/30/2020
@@ -9,14 +9,14 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: 4b939505f807385f235def2606d0f29564f5d08f
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 477da41bab48ee49727ec2a8c029e748d6e7f863
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552576"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987384"
 ---
-# <a name="create-an-azure-iot-central-application"></a>Erstellen einer Azure IoT Central-Anwendung
+# <a name="quickstart---create-an-azure-iot-central-application"></a>Schnellstart: Erstellen einer Azure IoT Central-Anwendung
 
 In dieser Schnellstartanleitung wird gezeigt, wie Sie eine Azure IoT Central-Anwendung erstellen.
 

@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59b66511720966ff978c8460b9ac69ad133b7501
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 7f8a8f76ce7d46c0a44dd86ef1490c1c74a7992a
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707219"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979498"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management"></a>Typische Szenarien für die Azure AD-Berechtigungsverwaltung
 
@@ -119,24 +119,24 @@ Es gibt mehrere Möglichkeiten, wie Sie die Berechtigungsverwaltung für Ihre Or
 1. [Video ansehen: Tägliche Verwaltungsaufgaben: Die Dinge haben sich geändert](https://www.microsoft.com/videoplayer/embed/RE3LD4Z)
 1. Öffnen des Zugriffspakets
 1. [Öffnen der Lebenszykluseinstellungen](entitlement-management-access-package-lifecycle-policy.md#open-lifecycle-settings)
-1. [Aktualisieren der Ablaufeinstellungen](entitlement-management-access-package-lifecycle-policy.md#lifecycle)
+1. [Aktualisieren der Ablaufeinstellungen](entitlement-management-access-package-lifecycle-policy.md#lifecycle) 
 
 ### <a name="access-package-manager-update-how-access-is-approved-for-a-project"></a>Zugriffspaketmanager: Aktualisieren der Genehmigungsweise für den Zugriff bei einem Projekt
 
 1. [Video ansehen: Tägliche Verwaltungsaufgaben: Die Dinge haben sich geändert](https://www.microsoft.com/videoplayer/embed/RE3LD4Z)
-1. [Öffnen einer vorhandenen Richtlinie mit Anforderungs- und Genehmigungseinstellungen](entitlement-management-access-package-request-policy.md#open-an-existing-policy-of-request-and-approval-settings)
-1. [Aktualisieren der Genehmigungseinstellungen](entitlement-management-access-package-request-policy.md#approval)
+1. [Öffnen einer vorhandenen Richtlinie mit Anforderungseinstellungen](entitlement-management-access-package-request-policy.md#open-an-existing-access-package-and-add-a-new-policy-of-request-settings)
+1. [Aktualisieren der Genehmigungseinstellungen](entitlement-management-access-package-approval-policy.md#change-approval-settings-of-an-existing-access-package)
 
 ### <a name="access-package-manager-update-the-people-for-a-project"></a>Zugriffspaketmanager: Aktualisieren der Beteiligten an einem Projekt
 
 1. [Video ansehen: Tägliche Verwaltungsaufgaben: Die Dinge haben sich geändert](https://www.microsoft.com/videoplayer/embed/RE3LD4Z)
 1. [Entfernen von Benutzern, die keinen Zugriff mehr benötigen](entitlement-management-access-package-assignments.md)
-1. [Öffnen einer vorhandenen Richtlinie mit Anforderungs- und Genehmigungseinstellungen](entitlement-management-access-package-request-policy.md#open-an-existing-policy-of-request-and-approval-settings)
+1. [Öffnen einer vorhandenen Richtlinie mit Anforderungseinstellungen](entitlement-management-access-package-request-policy.md#open-an-existing-access-package-and-add-a-new-policy-of-request-settings)
 1. [Hinzufügen von Benutzern, die Zugriff benötigen](entitlement-management-access-package-request-policy.md#for-users-in-your-directory)
 
 ### <a name="access-package-manager-directly-assign-specific-users-to-an-access-package"></a>Zugriffspaketmanager: Direktes Zuweisen bestimmter Benutzer zu einem Zugriffspaket
 
-1. [Wenn Benutzer unterschiedliche Lebenszykluseinstellungen benötigen, fügen Sie dem Zugriffspaket eine neue Richtlinie hinzu](entitlement-management-access-package-request-policy.md#add-a-new-policy-of-request-and-approval-settings)
+1. [Wenn Benutzer unterschiedliche Lebenszykluseinstellungen benötigen, fügen Sie dem Zugriffspaket eine neue Richtlinie hinzu](entitlement-management-access-package-request-policy.md#open-an-existing-access-package-and-add-a-new-policy-of-request-settings)
 1. [Direktes Zuweisen bestimmter Benutzer zu dem Zugriffspaket](entitlement-management-access-package-assignments.md#directly-assign-a-user)
 
 ## <a name="assignments-and-reports"></a>Zuweisungen und Berichte

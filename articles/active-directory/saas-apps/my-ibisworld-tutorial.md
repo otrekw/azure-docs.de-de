@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/27/2020
+ms.date: 08/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 92eecc419128b593dced0f9679dd02eb273cbb62
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7081babb66cc91a0d904bf46a31843b663c016e7
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88518236"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662068"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-my-ibisworld"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit My IBISWorld
 
@@ -43,6 +43,9 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 * My IBISWorld unterstützt die **Just-In-Time**-Bereitstellung von Benutzern.
 * Nach dem Konfigurieren von My IBISWorld können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
 
+> [!NOTE]
+> Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
+
 ## <a name="adding-my-ibisworld-from-the-gallery"></a>Hinzufügen von My IBISWorld über den Katalog
 
 Zum Konfigurieren der Integration von My IBISWorld in Azure AD müssen Sie My IBISWorld aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
@@ -55,7 +58,7 @@ Zum Konfigurieren der Integration von My IBISWorld in Azure AD müssen Sie My�
 1. Wählen Sie im Ergebnisbereich **My IBISWorld** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-my-ibisworld"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für My IBISWorld
+## <a name="configure-and-test-azure-ad-sso-for-my-ibisworld"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für My IBISWorld
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit My IBISWorld mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in My IBISWorld eingerichtet werden.
 

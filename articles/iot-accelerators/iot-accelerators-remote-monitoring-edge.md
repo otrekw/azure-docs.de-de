@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: a812155474b244682613b38b9b9379fa6cdcdcd8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 43ba14845765230b9a54c2b34dbc7ccd53af950b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "66117504"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969994"
 ---
 # <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>Tutorial: Erkennen von Anomalien im Edgebereich mit dem Solution Accelerator für die Remoteüberwachung
 
@@ -26,7 +26,7 @@ Contoso möchte ein intelligentes Edgemodul für die Ölpumpe bereitstellen, das
 
 Im folgenden Diagramm sind die Hauptkomponenten des Tutorialszenarios dargestellt:
 
-![Übersicht](media/iot-accelerators-remote-monitoring-edge/overview.png)
+![Diagramm: Ölpumpe, die mit dem IoT Edge-Stream Analytics-Modul auf dem IoT Edge-Gerät verbunden ist, um Telemetriedaten und Befehle bereitzustellen. Gefilterte Telemetriedaten werden an das IoT Edge-Gerät im Solution Accelerator für die Remoteüberwachung in der Cloud gesendet. Die Cloud enthält auch die Bereitstellung und das Paket. Bei der Bereitstellung wird die IoT Edge-Runtime auf dem Gerät bereitgestellt.](media/iot-accelerators-remote-monitoring-edge/overview.png)
 
 In diesem Tutorial führen Sie Folgendes durch:
 
@@ -45,7 +45,7 @@ Auf dem IoT Edge-Gerät:
 
 Dieses Tutorial verwendet einen virtuellen Linux-Computer als Azur IoT Edge-Gerät. Sie installieren außerdem ein Edge-Modul zum Simulieren der Ölpumpe.
 
-Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 [!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
@@ -78,13 +78,13 @@ Um die Verwaltung der IoT Edge-Geräte in der Lösung zu vereinfachen, erstellen
 
 1. Erstellen Sie einen Auftrag mit den folgenden Einstellungen, um dem Gerät das Tag **IsEdge** hinzuzufügen:
 
-    | Einstellung | value |
+    | Einstellung | Wert |
     | ------- | ----- |
     | Auftrag     | `Tags`  |
     | Auftragsname | AddEdgeTag |
-    | Key     | IsOilPump |
-    | value   | J     |
-    | type    | Text  |
+    | Schlüssel     | IsOilPump |
+    | Wert   | J     |
+    | Typ    | Text  |
 
     [![Hinzufügen eines Tags](./media/iot-accelerators-remote-monitoring-edge/addtag-inline.png)](./media/iot-accelerators-remote-monitoring-edge/addtag-expanded.png#lightbox)
 
@@ -94,13 +94,13 @@ Um die Verwaltung der IoT Edge-Geräte in der Lösung zu vereinfachen, erstellen
 
 1. Klicken Sie auf **Create new device group** (Neue Gerätegruppe erstellen). Erstellen Sie eine neue Gerätegruppe mit den folgenden Einstellungen:
 
-    | Einstellung | value |
+    | Einstellung | Wert |
     | ------- | ----- |
     | Name    | OilPumps |
     | Feld   | Tags.IsOilPump |
     | Operator | = (ist gleich) |
-    | value    | J |
-    | type     | Text |
+    | Wert    | J |
+    | Typ     | Text |
 
     [![Erstellen einer Gerätegruppe](./media/iot-accelerators-remote-monitoring-edge/createdevicegroup-inline.png)](./media/iot-accelerators-remote-monitoring-edge/createdevicegroup-expanded.png#lightbox)
 
@@ -158,12 +158,12 @@ Sie definieren den Stream Analytics-Auftrag im Portal, bevor Sie ihn als IoT Edg
 
 1. Erstellen Sie im Azure-Portal einen **Stream Analytics-Auftrag** in der Ressourcengruppe **IoTEdgeDevices**. Verwenden Sie die folgenden Konfigurationswerte:
 
-    | Option | value |
+    | Option | Wert |
     | ------ | ----- |
     | Auftragsname | EdgeDeviceJob |
     | Subscription | Ihr Azure-Abonnement |
     | Resource group | IoTEdgeDevices |
-    | Location | East US |
+    | Standort | East US |
     | Hosting-Umgebung | Microsoft Edge |
     | Streamingeinheiten | 1 |
 
@@ -209,7 +209,7 @@ Als Nächstes erstellen Sie ein IoT Edge-Bereitstellungsmanifest, das die Module
 
 1. Klicken Sie auf der Seite **Bereitstellung erstellen > Module hinzufügen** auf **+ Hinzufügen**. Wählen Sie **IoT Edge-Modul** aus.
 
-1. Geben Sie im Bereich  **Benutzerdefinierte IoT Edge-Module** den Namen **temperatureSensor** und den Image-URI **asaedgedockerhubtest/asa-edge-test-module:sensor-ad-linux-amd64** ein. Klicken Sie auf **Speichern**.
+1. Geben Sie im Bereich ** Benutzerdefinierte IoT Edge-Module** den Namen **temperatureSensor** und den Image-URI **asaedgedockerhubtest/asa-edge-test-module:sensor-ad-linux-amd64** ein. Klicken Sie auf **Speichern**.
 
 1. Klicken Sie auf der Seite **Bereitstellung erstellen > Module hinzufügen** auf **+ Hinzufügen**, um ein zweites Modul hinzuzufügen. Wählen Sie **Azure Stream Analytics-Modul** aus.
 
@@ -239,7 +239,7 @@ Als Nächstes erstellen Sie ein IoT Edge-Bereitstellungsmanifest, das die Module
 
 1. Klicken Sie auf der Seite **Bereitstellung erstellen > Bereitstellung überprüfen** auf **Senden**:
 
-    [![Bereitstellung überprüfen](./media/iot-accelerators-remote-monitoring-edge/reviewdeployment-inline.png)](./media/iot-accelerators-remote-monitoring-edge/reviewdeployment-expanded.png#lightbox)
+    [![Überprüfen der Bereitstellung](./media/iot-accelerators-remote-monitoring-edge/reviewdeployment-inline.png)](./media/iot-accelerators-remote-monitoring-edge/reviewdeployment-expanded.png#lightbox)
 
 1. Klicken Sie auf der **IoT Edge**-Hauptseite auf **IoT Edge-Bereitstellungen**. **oil-pump-device** wird in der Liste der Bereitstellungen angezeigt.
 
@@ -257,7 +257,7 @@ In diesem Abschnitt importieren Sie das IoT Edge-Manifest als Paket in die Remot
 
 1. Wählen Sie im Bereich **Neues Paket** die Option **Edge Manifest** (IoT Edge-Manifest) als Pakettyp aus, klicken Sie auf **Durchsuchen**, um nach der Datei **oil-pump-device.json** auf dem lokalen Computer zu suchen, und klicken Sie auf **Hochladen**:
 
-    [![Hochladen des Pakets](./media/iot-accelerators-remote-monitoring-edge/uploadpackage-inline.png)](./media/iot-accelerators-remote-monitoring-edge/uploadpackage-expanded.png#lightbox)
+    [![Paket hochladen](./media/iot-accelerators-remote-monitoring-edge/uploadpackage-inline.png)](./media/iot-accelerators-remote-monitoring-edge/uploadpackage-expanded.png#lightbox)
 
     Die Liste der Pakete enthält jetzt das Paket **oil-pump-device.json**.
 
@@ -273,17 +273,17 @@ Nun können Sie das Paket auf Ihrem Gerät bereitstellen.
 
 1. Erstellen Sie im Bereich **Neue Bereitstellung** eine Bereitstellung mit den folgenden Einstellungen:
 
-    | Option | value |
+    | Option | Wert |
     | ------ | ----- |
     | Name   | OilPumpDevices |
     | Pakettyp | Edge Manifest (IoT Edge-Manifest) |
     | Paket | oil-pump-device.json |
     | Device Group (Gerätegruppe) | OilPumps |
-    | Priority | 10 |
+    | Priorität | 10 |
 
     [![Erstellen einer Bereitstellung](./media/iot-accelerators-remote-monitoring-edge/createdeployment-inline.png)](./media/iot-accelerators-remote-monitoring-edge/createdeployment-expanded.png#lightbox)
 
-    Klicken Sie auf **Anwenden**.
+    Klicken Sie auf **Übernehmen**.
 
 Sie müssen einige Minuten warten, bis das Paket auf Ihrem Gerät bereitgestellt wurde und Telemetriedaten vom Gerät gesendet werden.
 
@@ -312,7 +312,7 @@ Wenn Sie Bediener benachrichtigen möchten, wenn der Schwellenwert erreicht wurd
 1. Navigieren Sie zur Seite **Regeln**, und klicken Sie auf **+ Neue Regel**.
 1. Erstellen Sie eine neue Regel mit den folgenden Einstellungen:
 
-    | Option | value |
+    | Option | Wert |
     | ------ | ----- |
     | Regelname | Ölpumpentemperatur |
     | BESCHREIBUNG | Ölpumpentemperatur über 300 |
@@ -320,12 +320,12 @@ Wenn Sie Bediener benachrichtigen möchten, wenn der Schwellenwert erreicht wurd
     | Berechnung | Sofort |
     | Feld | Temperatur |
     | Operator | > |
-    | value | 300 |
+    | Wert | 300 |
     | Schweregrad | Info |
 
     [![Erstellen einer Regel](./media/iot-accelerators-remote-monitoring-edge/newrule-inline.png)](./media/iot-accelerators-remote-monitoring-edge/newrule-expanded.png#lightbox)
 
-    Klicken Sie auf **Anwenden**.
+    Klicken Sie auf **Übernehmen**.
 
 1. Navigieren Sie zur Seite **Dashboard**. Im Bereich **Warnungen** wird eine Warnung angezeigt, wenn die Temperatur des Geräts **oil-pump** über 300 steigt.
 
@@ -334,7 +334,7 @@ Wenn Sie Bediener benachrichtigen möchten, wenn der Schwellenwert erreicht wurd
 In diesem Tutorial wurde erläutert, wie Sie ein IoT Edge-Gerät im Solution Accelerator für die Remoteüberwachung hinzufügen und konfigurieren. Weitere Informationen zum Arbeiten mit IoT Edge-Paketen in der Remoteüberwachungslösung finden Sie in der folgenden Anleitung:
 
 > [!div class="nextstepaction"]
-> [Import an IoT Edge package into your Remote Monitoring solution accelerator](iot-accelerators-remote-monitoring-import-edge-package.md) (Importieren eines IoT Edge-Pakets in den Solution Accelerator für die Remoteüberwachung)
+> [Importieren eines IoT Edge-Pakets in den Solution Accelerator für die Remoteüberwachung](iot-accelerators-remote-monitoring-import-edge-package.md)
 
 Weitere Informationen zum Installieren der IoT Edge-Runtime finden Sie unter [Installieren der Azure IoT Edge-Runtime unter Linux (x64)](../iot-edge/how-to-install-iot-edge-linux.md).
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 08/12/2020
+ms.date: 09/11/2020
 ms.reviewer: arvinh
-ms.openlocfilehash: 23c3dfc6670c96f44a10b2ad5d5bfeb3ff96382c
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 2f83679a39f919e5e9932303731560aedd796233
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271004"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052381"
 ---
 # <a name="known-issues-application-provisioning"></a>Bekannte Probleme: Bereitstellung von Anwendungen
 In diesem Artikel werden bekannte Probleme behandelt, die Sie bei der App-Bereitstellung berücksichtigen sollten. Sie können Ihr Feedback zum Anwendungsbereitstellungsdienst über UserVoice angeben. Weitere Informationen finden Sie auf der [UserVoice-Seite zur Azure AD-Anwendungsbereitstellung](https://aka.ms/appprovisioningfeaturerequest). Wir beobachten UserVoice genau, damit wir den Dienst verbessern können. 
@@ -66,7 +66,13 @@ Ausdrücke für die Attributzuordnung können über maximal 10.000 Zeichen verf
 - Das Bereitstellen von geschachtelten Gruppen wird nicht unterstützt. 
 - Die Bereitstellung von B2C-Mandanten wird aufgrund der Größe der Mandanten nicht unterstützt. 
 
-**Der Bereitstellungsintervall ist fest.** Die [Zeit](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user#how-long-will-it-take-to-provision-users) zwischen Bereitstellungszyklen ist derzeit nicht konfigurierbar. 
+**Die automatische Bereitstellung ist in meiner OICD-basierten Anwendung nicht verfügbar**
+
+Wenn Sie eine App-Registrierung erstellen, wird der entsprechende Dienstprinzipal in Unternehmens-Apps nicht für die automatische Benutzerbereitstellung aktiviert. Sie müssen entweder das Hinzufügen der App zum Katalog anfordern, wenn sie von mehreren Organisationen genutzt werden soll, oder eine zweite Nicht-Katalog-App für die Bereitstellung erstellen. 
+
+**Das Bereitstellungsintervall ist festgelegt**
+
+Die [Zeit](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user#how-long-will-it-take-to-provision-users) zwischen den Bereitstellungszyklen ist derzeit nicht konfigurierbar. 
 
 **Änderungen werden nicht von der Ziel-App zu Azure AD migriert**
 

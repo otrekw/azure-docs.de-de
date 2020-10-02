@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: jeedes
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1934b6256ecf4f35c54bbc2ac497c331b2c5ee89
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f36c80b9d08f2fde07483c1dde3afe99ec9f92d7
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543923"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705621"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>Konfigurieren einer OpenID/OAuth-Anwendung aus dem Azure AD-App-Katalog
 
@@ -76,13 +76,13 @@ Standardmäßig unterstützt Azure AD mehrinstanzenfähige Anwendungen. Sie sind
 ## <a name="consent-framework"></a>Zustimmungsframework
 
 Sie können das Zustimmungsframework von Azure AD verwenden, um mehrinstanzenfähige Web- und native Clientanwendungen zu entwickeln. Diese Anwendungen ermöglichen die Anmeldung mit Benutzerkonten über einen Azure AD-Mandanten, der sich von dem Mandanten unterscheidet, unter dem die Anwendung registriert ist. Möglicherweise benötigen sie auch Zugriff auf Web-APIs wie:
-- Die Microsoft Graph-API für den Zugriff auf Azure AD, Intune und Office 365-Dienste
+- Die Microsoft Graph-API für den Zugriff auf Azure AD, Intune und Dienste in Microsoft 365
 - APIs anderer Microsoft-Dienste
 - Ihre eigenen Web-APIs
 
 Das Framework basiert darauf, dass Benutzer oder Administratoren ihre Einwilligung zur Registrierung einer Anwendung in ihrem Verzeichnis erteilen. Die Registrierung kann den Zugriff auf Verzeichnisdaten umfassen. Nach dem Einwilligen kann die Clientanwendung die Microsoft Graph-API im Namen des Benutzers aufrufen und die Informationen nach Bedarf verwenden.
 
-Die [Microsoft Graph-API](https://developer.microsoft.com/graph/) ermöglicht den Zugriff auf Daten in Office 365 wie:
+Die [Microsoft Graph-API](https://developer.microsoft.com/graph/) ermöglicht den Zugriff auf Daten in Microsoft 365 wie:
 
 - Kalender und Nachrichten in Exchange
 - Websites und Listen in SharePoint
@@ -121,7 +121,7 @@ Die folgenden Schritte beschreiben den Einwilligungsprozess für Anwendungsentwi
 
 3. Wenn der Benutzer noch nicht authentifiziert ist, wird er vom Azure AD-/Authorisierungsendpunkt zum Anmelden aufgefordert.
 
-    ![Authentifizierung](./media/openidoauth-tutorial/authentication.png)
+    ![Screenshot der Anmeldeaufforderung für das Konto](./media/openidoauth-tutorial/authentication.png)
 
 4. Nachdem der Benutzer sich angemeldet hat, ermittelt Azure AD, ob ihm eine Seite zum Einwilligen angezeigt wird. Das Ergebnis dieser Ermittlung ist davon abhängig, ob der Benutzer (oder der Administrator seiner Organisation) die Anwendungszustimmung bereits erteilt hat.
 

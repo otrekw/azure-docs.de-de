@@ -43,6 +43,8 @@
       href: basic-concepts.md
     - name: Sicherheit
       items:
+        - name: "Grundlagen der Key\_Vault-Authentifizierung"
+          href: authentication-fundamentals.md
         - name: Azure Key Vault – Sicherheit
           href: overview-security.md
         - name: 'Bewährte Methoden zum Verwenden von Key Vault: Azure Key Vault'
@@ -130,6 +132,8 @@
           href: access-behind-firewall.md
     - name: Vorläufiges Löschen
       items:
+        - name: Key Vault-Wiederherstellung (Vorläufiges Löschen und Löschschutz)
+          href: key-vault-recovery.md
         - name: Verwenden des vorläufigen Löschens per CLI
           href: soft-delete-cli.md
         - name: Verwenden des vorläufigen Löschens per PowerShell

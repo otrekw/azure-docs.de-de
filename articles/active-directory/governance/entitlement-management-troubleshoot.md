@@ -16,12 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e230d3a4029d97a328280f581c126c7ec2d0bdb3
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 296aabdd79e1cd5c37248a0a44d57ebf17a4ea44
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89460795"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979415"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Problembehandlung bei der Azure AD-Berechtigungsverwaltung
 
@@ -75,7 +75,7 @@ In diesem Artikel werden einige Punkte beschrieben, die Sie überprüfen sollten
 
 ### <a name="view-a-requests-delivery-errors"></a>Anzeigen der Fehler bei der Übermittlung einer Anforderung
 
-**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
+**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer, Zugriffspaketmanager oder Zugriffspaketzuweisungsmanager
 
 1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
 
@@ -103,7 +103,7 @@ Die erneute Verarbeitung ist nur für Anforderungen mit dem Status **Übermittlu
 
 - Wenn der Fehler während des Versuchsintervalls nicht korrigiert wurde, lautet der Anforderungsstatus **Übermittlungsfehler** oder **Teilweise geliefert**. Sie können dann die Schaltfläche **Erneut verarbeiten** verwenden. Sie haben sieben Tage Zeit, die Anforderung erneut zu verarbeiten.
 
-**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
+**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer, Zugriffspaketmanager oder Zugriffspaketzuweisungsmanager
 
 1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
 
@@ -121,7 +121,7 @@ Die erneute Verarbeitung ist nur für Anforderungen mit dem Status **Übermittlu
 
 Es können nur ausstehende Anforderungen abgebrochen werden, die noch nicht übermittelt wurden oder bei deren Übermittlung ein Fehler aufgetreten ist. Andernfalls ist die Schaltfläche **Abbrechen** ausgegraut.
 
-**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
+**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer, Zugriffspaketmanager oder Zugriffspaketzuweisungsmanager
 
 1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
 

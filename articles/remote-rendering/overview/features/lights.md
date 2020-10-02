@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
-ms.openlocfilehash: e33e012480c876dc5befbb93404bdb131ea9329a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 2ddce7e2f073914e9393eabf12e8b0f4ef347828
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022145"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613657"
 ---
 # <a name="scene-lighting"></a>Szenenbeleuchtung
 
@@ -69,6 +69,17 @@ Es gibt keine weiteren Eigenschaften.
 ## <a name="performance-considerations"></a>Überlegungen zur Leistung
 
 Lichtquellen haben einen erheblichen Einfluss auf die Renderingleistung. Verwenden Sie sie mit Bedacht und nur dann, wenn es die Anwendung erfordert. Alle statischen globalen Lichtverhältnisse, einschließlich einer statischen gerichteten Komponente, können mit einer [benutzerdefinierten Himmelstextur](sky.md) ohne zusätzliche Renderingkosten erreicht werden.
+
+## <a name="api-documentation"></a>API-Dokumentation
+
+* [C# LightComponentBase-Klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.lightcomponentbase)
+* [C# PointLightComponent-Klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.pointlightcomponent)
+* [C# SpotLightComponent-Klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.spotlightcomponent)
+* [C# DirectionalLightComponent-Klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.directionallightcomponent)
+* [C++ LightComponentBase-Klasse](https://docs.microsoft.com/cpp/api/remote-rendering/lightcomponentbase)
+* [C++ PointLightComponent-Klasse](https://docs.microsoft.com/cpp/api/remote-rendering/pointlightcomponent)
+* [C++ SpotLightComponent-Klasse](https://docs.microsoft.com/cpp/api/remote-rendering/spotlightcomponent)
+* [C++ DirectionalLightComponent-Klasse](https://docs.microsoft.com/cpp/api/remote-rendering/directionallightcomponent)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

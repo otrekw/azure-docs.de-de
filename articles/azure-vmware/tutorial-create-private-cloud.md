@@ -3,12 +3,12 @@ title: 'Tutorial: Bereitstellen eines vSphere-Clusters in Azure'
 description: Hier erfahren Sie, wie Sie mithilfe von Azure VMware Solution einen vSphere-Cluster in Azure bereitstellen.
 ms.topic: tutorial
 ms.date: 09/07/2020
-ms.openlocfilehash: 69a29a459ba283bb34169112ac2fa174ac6a14af
-ms.sourcegitcommit: 8791f69d44150767807d215cafc4076f3ed43f9f
+ms.openlocfilehash: 2aa9d64dfa143e77b0edcc0c32a853645803ef67
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89512364"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985953"
 ---
 # <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>Tutorial: Bereitstellen einer privaten Azure VMware Solution-Cloud in Azure
 
@@ -76,14 +76,24 @@ azurecli-interactive
 az vmware private-cloud create -g myResourceGroup -n myPrivateCloudName --location eastus --cluster-size 3 --network-block xx.xx.xx.xx/22 --sku AV36
 ```
 
-## <a name="delete-a-private-cloud-azure-portal"></a>Löschen einer privaten Cloud (Azure-Portal)
+## <a name="delete-an-azure-vmware-solution-private-cloud"></a>Löschen einer privaten Azure VMware Solution-Cloud
 
-Wenn Sie über eine private Azure VMware Solution-Cloud verfügen, die Sie nicht mehr benötigen, können Sie sie löschen. Beim Löschen einer privaten Cloud werden alle Cluster zusammen mit allen zugehörigen Komponenten gelöscht.
-
-Navigieren Sie hierzu im Azure-Portal zu Ihrer privaten Cloud, und wählen Sie **Löschen** aus. Geben Sie auf der Bestätigungsseite den Namen der privaten Cloud ein, und wählen Sie **Ja** aus.
+Wenn Sie über eine private Azure VMware Solution-Cloud verfügen, die Sie nicht mehr benötigen, können Sie sie löschen. Eine private Azure VMware Solution-Cloud umfasst eine isolierte Netzwerkdomäne, mindestens einen auf dedizierten Serverknoten bereitgestellten vSphere-Cluster und in der Regel zahlreiche virtuelle Computer. Wenn eine private Cloud gelöscht wird, werden auch alle virtuellen Computer, ihre Daten und Cluster entfernt. Die dedizierten Bare-Metal-Knoten werden auf sichere Weise bereinigt und an den freien Pool zurückgegeben. Die für den Kunden bereitgestellte Netzwerkdomäne wird gelöscht.  
 
 > [!CAUTION]
-> Das Löschen der privaten Cloud kann nicht rückgängig gemacht werden. Die Daten können nach dem Löschen der privaten Cloud nicht wiederhergestellt werden, da alle aktiven Workloads und Komponenten beendet und sämtliche Daten und Konfigurationseinstellungen der privaten Cloud zerstört werden (einschließlich der öffentlichen IP-Adressen). 
+> Das Löschen der privaten Cloud kann nicht rückgängig gemacht werden. Die Daten können nach dem Löschen der privaten Cloud nicht wiederhergestellt werden, da alle aktiven Workloads und Komponenten beendet und sämtliche Daten und Konfigurationseinstellungen der privaten Cloud zerstört werden (einschließlich der öffentlichen IP-Adressen).
+
+### <a name="prerequisites"></a>Voraussetzungen
+
+Nachdem eine private Cloud gelöscht wurde, gibt es keine Möglichkeit, die virtuellen Computer und die zugehörigen Daten wiederherzustellen. Wenn die Daten des virtuellen Computers später benötigt werden, muss der Administrator vor dem Löschen der privaten Cloud zuerst alle Daten sichern.
+
+### <a name="steps-to-delete-an-azure-vmware-solution-private-cloud"></a>Schritte zum Löschen einer privaten Azure VMware Solution-Cloud
+
+1. Greifen Sie im Azure-Portal auf die Azure VMware Solution-Seite zu.
+
+2. Wählen Sie die zu löschende private Cloud aus.
+ 
+3. Geben Sie den Namen der privaten Cloud ein, und wählen Sie **Ja** aus. Der Löschvorgang ist in wenigen Stunden abgeschlossen.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -92,6 +102,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > [!div class="checklist"]
 > * Erstellen einer privaten Cloud von Azure VMware Solution
 > * Vergewissern, dass die private Cloud bereitgestellt wurde
+> * Löschen einer privaten Azure VMware Solution-Cloud
 
 Im nächsten Tutorial erfahren Sie, wie Sie im Rahmen der Einrichtung der lokalen Verwaltung für Ihre privaten Cloudcluster ein virtuelles Netzwerk für die Verwendung mit Ihrer privaten Cloud erstellen.
 

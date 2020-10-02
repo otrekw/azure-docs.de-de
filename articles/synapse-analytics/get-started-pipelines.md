@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 5e32a6a9817f2a3176e96e39c5e261875e8f4ed1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 72eea7c46dd005cd16ae5b8f0022c1174dd28f27
+ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093476"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89667488"
 ---
 # <a name="orchestrate-with-pipelines"></a>Orchestrieren mit Pipelines
 
@@ -26,7 +26,7 @@ Sie können eine Vielzahl verschiedener Aufgaben in Azure Synapse orchestrieren.
 
 1. Navigieren Sie in Synapse Studio zum Hub **Orchestrieren**.
 1. Wählen Sie **+**  > **Pipeline** aus, um eine neue Pipeline zu erstellen.
-1. Navigieren Sie zum Hub **Entwickeln**, und suchen Sie nach dem Notebook, das Sie zuvor erstellt haben.
+1. Navigieren Sie zum Hub **Entwickeln**, und wählen Sie eins der zuvor erstellten Notebooks aus.
 1. Ziehen Sie dieses Notebook in die Pipeline.
 1. Wählen Sie in der Pipeline **Trigger hinzufügen** > **Neu/Bearbeiten** aus.
 1. Wählen Sie unter **Trigger auswählen** den Befehl **Neu** aus, und legen Sie dann unter **Serie** fest, dass der Trigger jede Stunde ausgeführt werden soll.

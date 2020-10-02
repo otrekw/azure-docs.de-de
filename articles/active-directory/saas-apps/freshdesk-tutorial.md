@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/16/2020
+ms.date: 08/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 71c1bea58f17b457f417a5b050640d04d44019d5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0bbfdc2463795770b52f5008fc633fe9e95244a0
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551053"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056522"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>Tutorial: Azure Active Directory-Integration mit Freshdesk
 
@@ -55,7 +55,7 @@ Zum Konfigurieren der Integration von Freshdesk in Azure AD müssen Sie Freshdes
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **FreshDesk** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **FreshDesk** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-freshdesk"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für FreshDesk
+## <a name="configure-and-test-azure-ad-sso-for-freshdesk"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für FreshDesk
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit FreshDesk mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in FreshDesk eingerichtet werden.
 
@@ -81,9 +81,11 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im Format `https://<tenant-name>.freshdesk.com` oder einen anderen von FreshDesk vorgeschlagenen Wert an.
 
     b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im Format `https://<tenant-name>.freshdesk.com` oder einen anderen von FreshDesk vorgeschlagenen Wert an.
-
+     
+    c. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<tenant-name>.freshdesk.com/login/saml`
+    
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam von FreshDesk](https://freshdesk.com/helpdesk-software?utm_source=Google-AdWords&utm_medium=Search-IND-Brand&utm_campaign=Search-IND-Brand&utm_term=freshdesk&device=c&gclid=COSH2_LH7NICFVUDvAodBPgBZg), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächlichen Werte für die Anmelde-URL, den Bezeichner und die Antwort-URL. Wenden Sie sich an das [Supportteam von FreshDesk](https://freshdesk.com/helpdesk-software?utm_source=Google-AdWords&utm_medium=Search-IND-Brand&utm_campaign=Search-IND-Brand&utm_term=freshdesk&device=c&gclid=COSH2_LH7NICFVUDvAodBPgBZg), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 1. Die FreshDesk-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot enthält die Liste der Standardattribute: **Eindeutige Benutzer-ID** ist **user.userprincipalname** zugeordnet, FreshDesk erwartet jedoch, dass dieser Anspruch **user.mail** zugeordnet wird. Daher müssen Sie die Attributzuordnung bearbeiten, indem Sie auf das Symbol „Bearbeiten“ klicken und die Attributzuordnung ändern.
 

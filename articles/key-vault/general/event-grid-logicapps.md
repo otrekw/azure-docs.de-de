@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: c0121c42c5d498aa79109c874981b9de0f8f4b7c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 2781ef69ce85e82dab45a9f890ef5e6862949d98
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588873"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087982"
 ---
 # <a name="use-logic-apps-to-receive-email-about-status-changes-of-key-vault-secrets"></a>Verwenden von Logic Apps zum Empfangen einer E-Mail bei Statusänderungen von Key Vault-Geheimnissen
 
@@ -56,7 +56,7 @@ Gehen Sie wie folgt vor, um ein Azure Event Grid-Abonnement zu erstellen:
 1. Suchen Sie nach **E-Mail**. Suchen Sie abhängig von Ihrem E-Mail-Anbieter nach dem entsprechenden Connector, und wählen Sie diesen aus. In diesem Tutorial wird **Office 365 Outlook** verwendet. Die Schritte für andere E-Mail-Anbieter sind ähnlich.
 1. Wählen Sie die Aktion **E-Mail senden (V2)** aus.
 
-   ![Logik-App-Designer: E-Mail hinzufügen](../media/eventgrid-logicappdesigner3.png)
+   ![Logik-App-Designer: Senden einer E-Mail](../media/eventgrid-logicappdesigner3.png)
 
 1. Erstellen Sie Ihre E-Mail-Vorlage:
     - **An:** Geben Sie die E-Mail-Adresse an, die die E-Mail-Benachrichtigungen empfangen soll. Verwenden Sie für dieses Tutorial ein E-Mail-Konto, auf das Sie zu Testzwecken zugreifen können.
@@ -64,18 +64,18 @@ Gehen Sie wie folgt vor, um ein Azure Event Grid-Abonnement zu erstellen:
 
     Hier ist ein Beispiel für das Aussehen Ihrer E-Mail-Vorlage angegeben:
 
-    ![Logik-App-Designer: E-Mail hinzufügen](../media/eventgrid-logicappdesigner4.png)
+    ![Logik-App-Designer: E-Mail-Text](../media/eventgrid-logicappdesigner4.png)
 
 8. Klicken Sie auf **Speichern unter**.
 9. Geben Sie unter **Name** einen Namen für die neue Logik-App ein, und klicken Sie auf **Erstellen**.
     
-    ![Logik-App-Designer: E-Mail hinzufügen](../media/eventgrid-logicappdesigner5.png)
+    ![Logik-App-Designer: Erstellen](../media/eventgrid-logicappdesigner5.png)
 
 ## <a name="test-and-verify"></a>Testen und Überprüfen
 
 1.  Navigieren Sie im Azure-Portal zu Ihrer Key Vault-Instanz, und wählen Sie **Ereignisse > Ereignisabonnements** aus.  Überprüfen Sie, ob ein neues Abonnement erstellt wurde.
     
-    ![Logik-App-Designer: E-Mail hinzufügen](../media/eventgrid-logicapps-kvnewsubs.png)
+    ![Logik-App-Designer: Testen und Überprüfen](../media/eventgrid-logicapps-kvnewsubs.png)
 
 1.  Navigieren Sie zu Ihrer Key Vault-Instanz, und wählen Sie **Geheimnisse** und dann **+ Generieren/Importieren** aus. Erstellen Sie zu Testzwecken ein neues Geheimnis, geben Sie dem Schlüssel einen Namen, und übernehmen Sie für die restlichen Parameter die Standardeinstellungen.
 
@@ -87,8 +87,8 @@ Nachdem das Geheimnis erstellt wurde, wird eine E-Mail an die konfigurierten Adr
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Übersicht: [Überwachen von Key Vault mit Azure Event Grid (Vorschau)](event-grid-overview.md)
+- Übersicht: [Überwachen von Key Vault mit Azure Event Grid](event-grid-overview.md)
 - Gewusst wie: [Gewusst wie: Empfangen von und Reagieren auf Key Vault-Benachrichtigungen mit Azure Event Grid (Vorschau)](event-grid-tutorial.md)
-- [Azure Event Grid-Ereignisschema für Azure Key Vault (Vorschau)](../../event-grid/event-schema-key-vault.md)
+- [Azure Event Grid-Ereignisschema für Azure Key Vault](../../event-grid/event-schema-key-vault.md)
 - Informieren Sie sich ausführlicher über [Azure Event Grid](../../event-grid/index.yml).
 - Weitere Informationen zum [Logic Apps-Feature von Azure App Service](../../logic-apps/index.yml)

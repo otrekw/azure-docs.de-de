@@ -9,26 +9,30 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 09/15/2020
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d57b7a559464bfff0d3d1c6436641257c925d75e
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 8dc229b366a7816c861da665c73d6421e67545c6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89318470"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985917"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Identitätsdatenspeicher für europäische Kunden in Azure Active Directory
-Identitätsdaten werden von Azure AD an einem geografischen Standort basierend auf der Adresse gespeichert, die Ihre Organisation beim Abonnieren eines Microsoft-Onlinediensts wie Office 365 und Azure angibt. Informationen darüber, wo Ihre Identitätsdaten gespeichert werden, finden Sie im Microsoft Trust Center im Abschnitt [Wo wir Ihre Daten speichern](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located).
+Identitätsdaten werden von Azure AD an einem geografischen Standort gespeichert, der auf der Adresse beruht, die Ihre Organisation beim Abonnieren eines Microsoft-Onlinediensts wie Microsoft 365 und Azure angegeben hat. Informationen darüber, wo Ihre Identitätsdaten gespeichert werden, finden Sie im Microsoft Trust Center im Abschnitt [Wo wir Ihre Daten speichern](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located).
 
 Azure AD speichert die meisten Identitätsdaten von Kunden, die eine Adresse in Europa angegeben haben, in europäischen Rechenzentren. Dieses Dokument enthält Informationen zu Daten, die von Azure AD-Diensten außerhalb von Europa gespeichert werden.
 
-## <a name="microsoft-azure-multi-factor-authentication-mfa"></a>Microsoft Azure Multi-Factor Authentication (MFA)
-    
-- Alle zweistufigen Authentifizierungen per Telefon oder SMS stammen aus Rechenzentren in den USA und werden auch von globalen Anbietern weitergeleitet.
-- Von der Microsoft Authenticator-App gesendete Pushbenachrichtigungen stammen aus Rechenzentren in den USA. Darüber hinaus können auch geräteherstellerspezifische Dienste hinzukommen, die möglicherweise außerhalb Europas angeboten werden.
-- OATH-Codes werden immer in den USA überprüft. 
+## <a name="microsoft-azure-multi-factor-authentication"></a>Microsoft Azure Multi-Factor Authentication
+
+Bei der cloudbasierten Azure Multi-Factor Authentication erfolgt die Authentifizierung in dem Rechenzentrum, das dem Benutzerstandort am nächsten liegt. Rechenzentren für Azure Multi-Factor Authentication gibt es in Nordamerika, Europa und in der Region „Asien-Pazifik“.
+
+* Multi-Factor Authentication mit Telefonanrufen erfolgt in der Regel in Rechenzentren in den USA und wird von globalen Anbietern weitergeleitet.
+* Multi-Factor Authentication mit SMS wird von globalen Anbietern weitergeleitet.
+* Multi-Factor Authentication-Anforderungen, die Pushbenachrichtigungen der Microsoft Authenticator App von europäischen Rechenzentren verwenden, werden in europäischen Rechenzentren verarbeitet.
+    * Geräte- und anbieterspezifische Dienste wie beispielsweise Apple-Pushbenachrichtigungen haben möglicherweise einen Standort außerhalb von Europa.
+* Multi-Factor Authentication-Anforderungen mit OATH-Codes, die von europäischen Rechenzentren stammen, werden in Europa überprüft.
 
 Weitere Informationen zu den Benutzerinformationen, die vom Azure MFA-Server (Multi-Factor Authentication Server) und von der cloudbasierten Azure MFA gesammelt werden, finden Sie unter [Azure Multi-Factor Authentication – Erfassen von Benutzerdaten](../authentication/howto-mfa-reporting-datacollection.md).
 
@@ -69,4 +73,4 @@ Weitere Informationen zu den oben beschriebenen Features und Funktionen finden S
 
 - [Was ist die Azure AD B2B-Zusammenarbeit?](../external-identities/what-is-b2b.md)
 
-- [Azure Active Directory (AD) Domain Services](../../active-directory-domain-services/overview.md)
+- [Azure Active Directory-Domänendienste (AD)](../../active-directory-domain-services/overview.md)

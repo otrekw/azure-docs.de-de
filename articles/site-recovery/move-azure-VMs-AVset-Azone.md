@@ -1,5 +1,6 @@
 ---
 title: Verschieben von virtuellen Computern in eine Azure-Region mit Verfügbarkeitszonen mithilfe von Azure Site Recovery
+description: Hier erfahren Sie, wie Sie virtuelle Computer mithilfe von Site Recovery in eine Verfügbarkeitszone in einer anderen Region verschieben.
 services: site-recovery
 author: sideeksh
 ms.service: site-recovery
@@ -7,14 +8,18 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: sideeksh
 ms.custom: MVC
-ms.openlocfilehash: c1a552ba634234ac3b4d4a8eec260c739ce0d846
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: fd541e551102b205acff28b6bc06bc88abd14763
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89425471"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605106"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Verschieben virtueller Azure-Computer in Verfügbarkeitszonen
+
+In diesem Artikel wird beschrieben, wie Sie virtuelle Azure-Computer in eine Verfügbarkeitszone in einer anderen Region verschieben. Wenn Sie virtuelle Computer in eine andere Zone in der gleichen Region verschieben möchten, lesen Sie [diesen Artikel](./azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md).
+
+
 Verfügbarkeitszonen in Azure tragen dazu bei, Ihre Anwendungen und Daten vor Datencenterausfällen zu schützen. Jede Verfügbarkeitszone besteht aus mindestens einem Rechenzentrum, dessen Stromversorgung, Kühlung und Netzwerkbetrieb unabhängig funktionieren. Zur Gewährleistung der Resilienz sind in allen aktivierten Regionen mindestens drei separate Zonen vorhanden. Die physische Trennung von Verfügbarkeitszonen innerhalb einer Region trägt dazu bei, Anwendungen und Daten vor Datencenterausfällen zu schützen. Mit Verfügbarkeitszonen bietet Azure eine Vereinbarung zum Servicelevel (Service Level Agreement, SLA) von 99,99 Prozent für die Betriebszeit virtueller Computer (Virtual Machines, VMs). Verfügbarkeitszonen werden in ausgewählten Regionen unterstützt (siehe [Regionen, die Verfügbarkeitszonen in Azure unterstützen](../availability-zones/az-region.md)).
 
 Wenn Sie Ihre virtuellen Computer als *Einzelinstanz* in einer bestimmten Region bereitgestellt haben, können Sie die Verfügbarkeit verbessern, indem Sie die virtuellen Computer mithilfe von Azure Site Recovery in eine Verfügbarkeitszone verschieben. Diese Aktion kann weiter kategorisiert werden:
@@ -23,7 +28,15 @@ Wenn Sie Ihre virtuellen Computer als *Einzelinstanz* in einer bestimmten Region
 - Verschieben von virtuellen Computern in einer Verfügbarkeitsgruppe in Verfügbarkeitszonen in einer Zielregion
 
 > [!IMPORTANT]
-> Azure Site Recovery unterstützt aktuell das Verschieben virtueller Computer zwischen Regionen. Das Verschieben zwischen Zonen innerhalb einer Region wird nur in einigen Regionen unterstützt. [Weitere Informationen](./azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md)
+> Zum Verschieben von virtuellen Azure-Computern in eine Verfügbarkeitszone in einer anderen Region empfehlen wir den Einsatz von [Azure Resource Mover](../resource-mover/move-region-availability-zone.md). Resource Mover befindet sich derzeit in der öffentlichen Vorschau und bietet folgende Features:
+> - Ein einzelner Hub für das regionsübergreifende Verschieben von Ressourcen
+> - Kürzere Verschiebungszeit und verringerte Komplexität Alle erforderlichen Komponenten an einem einzelnen Ort
+> - Ein einfaches und konsistentes Verfahren zum Verschieben verschiedener Arten von Azure-Ressourcen
+> - Eine einfache Möglichkeit zum Erkennen von Abhängigkeiten zwischen den zu verschiebenden Ressourcen. Dies hilft Ihnen, zusammenhängende Ressourcen gemeinsam zu verschieben, damit nach der Verschiebung in der Zielregion alles wie erwartet funktioniert.
+> - Automatische Bereinigung der Ressourcen in der Quellregion, falls Sie sie nach dem Verschieben löschen möchten
+> - Tests. Sie können eine Verschiebung ausprobieren und dann verwerfen, wenn Sie keine vollständige Verschiebung durchführen möchten.
+
+
 
 ## <a name="check-prerequisites"></a>Überprüfen der Voraussetzungen
 

@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: e4ee6abe7481fef4d56c980da80e319624975384
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a1fedb637bee9d98fb09d8fc3fa133b2992ce86e
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021312"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613661"
 ---
 # <a name="pbr-materials"></a>PBR-Materialien
 
@@ -55,7 +55,7 @@ Physically Based Rendering beinhaltet im Wesentlichen die Verwendung der Eigensc
 
   Wenn ein metalness-Wert und eine „metalnessMap“ angegeben werden, ist der endgültige Wert das Produkt der beiden.
 
-  ![„metalness“ und „roughness“](./media/metalness-roughness.png)
+  ![Mit verschiedenen Werten für „metalness“ und „roughness“ gerenderte Werte](./media/metalness-roughness.png)
 
   In der obigen Abbildung sieht die Kugel in der rechten unteren Ecke wie Metall und die Kugel in der linken unteren Ecke wie Keramik oder Kunststoff aus. Die Albedo-Farbe ändert sich auch gemäß den physischen Eigenschaften. Wenn sich die Rauheit erhöht, wird die Reflexion des Materials weniger scharf.
 
@@ -63,13 +63,13 @@ Physically Based Rendering beinhaltet im Wesentlichen die Verwendung der Eigensc
 
 * **occlusionMap** und **aoScale:** Durch [Umgebungsverdeckung](https://en.wikipedia.org/wiki/Ambient_occlusion) werden Objekte mit Spalten realistischer dargestellt, indem verdeckten Bereichen Schatten hinzugefügt werden. Der Verdeckungswertebereich liegt zwischen `0.0` und `1.0`, wobei `0.0` Dunkelheit (verdeckt) und `1.0` keine Verdeckung bedeutet. Wenn für „occlusionMap“ eine 2D-Textur bereitgestellt wird, wird der Effekt aktiviert, und *aoScale* fungiert als Multiplikator.
 
-  ![Umgebungsverdeckung](./media/boom-box-ao2.gif)
+  ![Ein mit und ohne Umgebungsverdeckung gerendertes Objekt](./media/boom-box-ao2.gif)
 
 * **transparent:** Für PBR-Materialien gibt es nur eine Transparenzeinstellung: Sie ist aktiviert oder deaktiviert. Die Deckkraft wird durch den Alphakanal der Albedo-Farbe definiert. Wenn diese Option aktiviert ist, wird eine komplexere Renderingpipeline aufgerufen, um semitransparente Oberflächen zu zeichnen. Azure Remote Rendering implementiert echte [reihenfolgenunabhängige Transparenz](https://en.wikipedia.org/wiki/Order-independent_transparency) (Order-Independent Transparency, OIT).
 
   Transparente Geometrie ist aufwendig zu Rendern. Wenn Sie nur Lücken in einer Oberfläche benötigen, z. B. für die Blätter eines Baums, empfiehlt es sich, stattdessen Alpha-Clipping zu verwenden.
 
-  ![Transparenz](./media/transparency.png) Beachten Sie in der obigen Abbildung, dass die äußerste rechte Kugel vollständig transparent ist und die Reflexion dennoch sichtbar ist.
+  ![Mit von null bis vollständig reichender Transparenz gerenderte Kugeln](./media/transparency.png) Beachten Sie in der obigen Abbildung, dass die äußerste rechte Kugel vollständig transparent ist und die Reflexion dennoch sichtbar ist.
 
   > [!IMPORTANT]
   > Wenn ein Material zur Laufzeit von undurchsichtig in transparent geändert werden soll, muss der Renderer den *TileBasedComposition*-[Renderingmodus](../../concepts/rendering-modes.md) verwenden. Diese Einschränkung gilt nicht für Materialien, die zunächst als transparente Materialien konvertiert werden.
@@ -80,6 +80,13 @@ Azure Remote Rendering verwendet die auf dem Cook-Torrance-Modell basierende Mik
 
  Eine Alternative zu dem in Azure Remote Rendering verwendeten *Metalness-Roughness*-PBR-Modell ist das *Specular-Glossiness*-PBR-Modell. Dieses Modell kann einen breiteren Bereich von Materialien darstellen. Es ist jedoch teurer und eignet sich in der Regel nicht gut für die Anwendung in Echtzeit.
 Eine Konvertierung von *Specular-Glossiness* in *Metalness-Roughness* ist nicht immer möglich, da *(Diffuse, Specular)* -Wertepaare vorhanden sind, die nicht in *(BaseColor, Metalness)* konvertiert werden können. Die Konvertierung in die andere Richtung ist einfacher und präziser, da alle *(BaseColor, Metalness)* -Paare wohldefinierten *(Diffuse, Specular)* -Paaren entsprechen.
+
+## <a name="api-documentation"></a>API-Dokumentation
+
+* [C# PbrMaterial-Klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.pbrmaterial)
+* [C# RemoteManager.CreateMaterial()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.creatematerial)
+* [C++ PbrMaterial-Klasse](https://docs.microsoft.com/cpp/api/remote-rendering/pbrmaterial)
+* [C++ RemoteManager::CreateMaterial()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#creatematerial)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

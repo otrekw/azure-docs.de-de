@@ -11,12 +11,12 @@ ms.date: 06/10/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: e7dca9224fd213178aa9cee3a284f1eba39fb4fc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8d11fada41d0152b44be6cb0cdef41e68808689b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001172"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967511"
 ---
 # <a name="secure-access-to-application-data"></a>Sicheres Zugreifen auf Anwendungsdaten
 
@@ -160,7 +160,7 @@ Die folgenden Klassen, Eigenschaften und Methoden werden im vorhergehenden Task 
 
 [Azure Storage-Verschlüsselung](../common/storage-service-encryption.md) trägt zum Schutz Ihrer Daten bei, indem ruhende Daten verschlüsselt sowie Verschlüsselung und Entschlüsselung verarbeitet werden. Sämtliche Daten werden mittels 256-Bit- [AES-Verschlüsselung](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)verschlüsselt, einem der sichersten verfügbaren Blockverschlüsselungsverfahren.
 
-Sie können Verschlüsselungsschlüssel durch Microsoft verwalten lassen oder Azure Key Vault mit eigenen (kundenseitig verwalteten) Schlüsseln verwenden (Bring Your Own Key, BYOK). Weitere Informationen finden Sie unter [Verwenden kundenseitig verwalteter Schlüssel mit Azure Key Vault für die Verwaltung der Azure Storage-Verschlüsselung](../common/encryption-customer-managed-keys.md).
+Sie können Verschlüsselungsschlüssel durch Microsoft verwalten lassen oder eigene kundenseitig verwaltete Schlüssel verwenden, die in Azure Key Vault oder in Key Vault Managed Hardware Security Model (HSM) (Vorschau) gespeichert sind (Bring Your Own Key, BYOK). Weitere Informationen finden Sie unter [Kundenseitig verwaltete Schlüssel für die Azure Storage-Verschlüsselung](../common/customer-managed-keys-overview.md).
 
 Azure Storage-Verschlüsselung verschlüsselt die Daten automatisch in allen Leistungsstufen (Standard oder Premium), allen Bereitstellungsmodellen (Azure Resource Manager und Classic) sowie allen Azure Storage-Diensten (Blob, Queue, Table und File).
 

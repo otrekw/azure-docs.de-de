@@ -16,12 +16,12 @@ ms.date: 07/22/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a01f945496d2f0bc81a108c5e58c89587c1c4e38
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: c761be04c7d31567e727e93b84c98a1b3510e3d9
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505477"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979876"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Delegierung und Rollen in der Azure AD-Berechtigungsverwaltung
 
@@ -81,6 +81,7 @@ Die Berechtigungsverwaltung hat die folgenden Rollen, die für die Berechtigungs
 | Katalogersteller | Erstellen und Verwalten von Katalogen. In der Regel ein IT-Administrator, der kein globaler Administrator ist, oder ein Ressourcenbesitzer für eine Sammlung von Ressourcen. Die Person, die einen Katalog erstellt, ist automatisch der erste Besitzer des Katalogs und kann zusätzliche Katalogbesitzer hinzufügen. Ein Katalogersteller kann keine Kataloge verwalten, die ihm nicht gehören, und einem Katalog keine Ressourcen hinzufügen, die er nicht besitzt. Wenn der Katalogersteller einen anderen Katalog verwalten oder Ressourcen hinzufügen muss, die er nicht besitzt, kann er sich als Mitbesitzer des betreffenden Katalogs oder der betreffenden Ressource festlegen lassen. |
 | Katalogbesitzer | Bearbeiten und Verwalten von vorhandenen Katalogen. In der Regel ein IT-Administrator oder Ressourcenbesitzer bzw. ein Benutzer, den der Katalogbesitzer bestimmt hat. |
 | Zugriffspaketmanager | Bearbeiten und Verwalten aller in einem Katalog vorhandenen Zugriffspakete. |
+| Zugriffspaketzuweisungsmanager | Bearbeiten und Verwalten aller vorhandenen Zugriffspaketzuweisungen. |
 
 Darüber hinaus haben auch eine designierte genehmigende Person und ein Antragsteller eines Zugriffspakets Rechte, obwohl es sich nicht um Rollen handelt.
 
@@ -91,36 +92,37 @@ Darüber hinaus haben auch eine designierte genehmigende Person und ein Antragst
 
 In der folgenden Tabelle sind die Aufgaben aufgeführt, die von den Berechtigungsverwaltungsrollen ausgeführt werden können.
 
-| Aufgabe | Admin | Katalogersteller | Katalogbesitzer | Zugriffspaketmanager |
-| --- | :---: | :---: | :---: | :---: |
-| [Delegieren an einen Katalogersteller](entitlement-management-delegate-catalog.md) | :heavy_check_mark: |  |  |  |
-| [Hinzufügen einer verbundenen Organisation](entitlement-management-organization.md) | :heavy_check_mark: |  |  |  |
-| [Erstellen eines neuen Katalogs](entitlement-management-catalog-create.md) | :heavy_check_mark: | :heavy_check_mark: |  |  |
-| [Hinzufügen einer Ressource zu einem Katalog](entitlement-management-catalog-create.md#add-resources-to-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |
-| [Hinzufügen eines Katalogbesitzers](entitlement-management-catalog-create.md#add-additional-catalog-owners) | :heavy_check_mark: |  | :heavy_check_mark: |  |
-| [Bearbeiten eines Katalogs](entitlement-management-catalog-create.md#edit-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |
-| [Löschen eines Katalogs](entitlement-management-catalog-create.md#delete-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |
-| [Delegieren an einen Zugriffspaket-Manager](entitlement-management-delegate-managers.md) | :heavy_check_mark: |  | :heavy_check_mark: |  |
-| [Entfernen eines Zugriffspaket-Managers](entitlement-management-delegate-managers.md#remove-an-access-package-manager) | :heavy_check_mark: |  | :heavy_check_mark: |  |
-| [Erstellen eines neuen Zugriffspakets in einem Katalog](entitlement-management-access-package-create.md) | :heavy_check_mark: |  | :heavy_check_mark:  | :heavy_check_mark:  |
-| [Ändern von Ressourcenrollen für ein Zugriffspaket](entitlement-management-access-package-resources.md) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [Erstellen und Bearbeiten von Richtlinien](entitlement-management-access-package-request-policy.md) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [Direktes Zuweisen eines Benutzers zu einem Zugriffspaket](entitlement-management-access-package-assignments.md#directly-assign-a-user) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [Anzeigen, wem ein Zugriffspaket zugewiesen ist](entitlement-management-access-package-assignments.md#view-who-has-an-assignment) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [Anzeigen der Anforderungen eines Zugriffspakets](entitlement-management-access-package-requests.md#view-requests) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [Anzeigen der Fehler bei der Übermittlung einer Anforderung](entitlement-management-troubleshoot.md#view-a-requests-delivery-errors) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [Erneutes Verarbeiten einer Anforderung](entitlement-management-troubleshoot.md#reprocess-a-request) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [Abbrechen einer ausstehenden Anforderung](entitlement-management-troubleshoot.md#cancel-a-pending-request) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [Ausblenden eines Zugriffspakets](entitlement-management-access-package-edit.md#change-the-hidden-setting) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [Löschen eines Zugriffspakets](entitlement-management-access-package-edit.md#delete-an-access-package) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| Aufgabe | Admin | Katalogersteller | Katalogbesitzer | Zugriffspaketmanager | Zugriffspaketzuweisungsmanager |
+| --- | :---: | :---: | :---: | :---: | :---: |
+| [Delegieren an einen Katalogersteller](entitlement-management-delegate-catalog.md) | :heavy_check_mark: |  |  |  |  |
+| [Hinzufügen einer verbundenen Organisation](entitlement-management-organization.md) | :heavy_check_mark: |  |  |  |  |
+| [Erstellen eines neuen Katalogs](entitlement-management-catalog-create.md) | :heavy_check_mark: | :heavy_check_mark: |  |  |  |
+| [Hinzufügen einer Ressource zu einem Katalog](entitlement-management-catalog-create.md#add-resources-to-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
+| [Hinzufügen eines Katalogbesitzers](entitlement-management-catalog-create.md#add-additional-catalog-owners) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
+| [Bearbeiten eines Katalogs](entitlement-management-catalog-create.md#edit-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
+| [Löschen eines Katalogs](entitlement-management-catalog-create.md#delete-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
+| [Delegieren an einen Zugriffspaket-Manager](entitlement-management-delegate-managers.md) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
+| [Entfernen eines Zugriffspaket-Managers](entitlement-management-delegate-managers.md#remove-an-access-package-manager) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
+| [Erstellen eines neuen Zugriffspakets in einem Katalog](entitlement-management-access-package-create.md) | :heavy_check_mark: |  | :heavy_check_mark:  | :heavy_check_mark:  |  |
+| [Ändern von Ressourcenrollen für ein Zugriffspaket](entitlement-management-access-package-resources.md) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
+| [Erstellen und Bearbeiten von Richtlinien](entitlement-management-access-package-request-policy.md) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
+| [Direktes Zuweisen eines Benutzers zu einem Zugriffspaket](entitlement-management-access-package-assignments.md#directly-assign-a-user) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  :heavy_check_mark: |
+| [Direktes Entfernen eines Benutzers aus einem Zugriffspaket](entitlement-management-access-package-assignments.md#remove-an-assignment) | :heavy_check_mark:  |  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| [Anzeigen, wem ein Zugriffspaket zugewiesen ist](entitlement-management-access-package-assignments.md#view-who-has-an-assignment) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  :heavy_check_mark: |
+| [Anzeigen der Anforderungen eines Zugriffspakets](entitlement-management-access-package-requests.md#view-requests) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:  |
+| [Anzeigen der Fehler bei der Übermittlung einer Anforderung](entitlement-management-troubleshoot.md#view-a-requests-delivery-errors) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  :heavy_check_mark: |
+| [Erneutes Verarbeiten einer Anforderung](entitlement-management-troubleshoot.md#reprocess-a-request) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:  |
+| [Abbrechen einer ausstehenden Anforderung](entitlement-management-troubleshoot.md#cancel-a-pending-request) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| [Ausblenden eines Zugriffspakets](entitlement-management-access-package-edit.md#change-the-hidden-setting) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
+| [Löschen eines Zugriffspakets](entitlement-management-access-package-edit.md#delete-an-access-package) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
 
 ## <a name="required-roles-to-add-resources-to-a-catalog"></a>Erforderliche Rollen, um einem Katalog Ressourcen hinzuzufügen
 
-Ein globaler Administrator kann jede Gruppe (in der Cloud erstellte Sicherheitsgruppen oder in der Cloud erstellte Office 365-Gruppen), Anwendung oder SharePoint Online-Website zu einem Katalog hinzufügen oder daraus entfernen. Ein Benutzeradministrator kann eine beliebige Gruppe oder Anwendung in einem Katalog hinzufügen oder entfernen (ausgenommen hiervon sind Gruppen, die so konfiguriert sind, dass sie einer Verzeichnisrolle zugewiesen werden können).
+Ein globaler Administrator kann jede Gruppe (in der Cloud erstellte Sicherheitsgruppen oder in der Cloud erstellte Microsoft 365-Gruppen), Anwendung oder SharePoint Online-Website zu einem Katalog hinzufügen oder daraus entfernen. Ein Benutzeradministrator kann eine beliebige Gruppe oder Anwendung in einem Katalog hinzufügen oder entfernen (ausgenommen hiervon sind Gruppen, die so konfiguriert sind, dass sie einer Verzeichnisrolle zugewiesen werden können).
 
 Damit ein Benutzer, der kein globaler Administrator oder Benutzeradministrator ist, Gruppen, Anwendungen oder SharePoint-Online-Websites einem Katalog hinzufügen kann, muss dieser Benutzer über die erforderliche Azure AD-Verzeichnisrolle *und* die Berechtigungsverwaltungsrolle für Katalogbesitzer verfügen. Die folgende Tabelle enthält die Rollenkombinationen, die erforderlich sind, um einem Katalog Ressourcen hinzuzufügen. Um Ressourcen aus einem Katalog zu entfernen, müssen Sie über die gleichen Rollen verfügen.
 
-| Azure AD-Verzeichnisrolle | Berechtigungsverwaltungsrolle | Kann Sicherheitsgruppe hinzufügen | Kann Office 365-Gruppe hinzufügen | Kann App hinzufügen | Kann SharePoint Online-Website hinzufügen |
+| Azure AD-Verzeichnisrolle | Berechtigungsverwaltungsrolle | Kann Sicherheitsgruppe hinzufügen | Kann Microsoft 365-Gruppe hinzufügen | Kann App hinzufügen | Kann SharePoint Online-Website hinzufügen |
 | --- | :---: | :---: | :---: | :---: | :---: |
 | [Globaler Administrator](../users-groups-roles/directory-assign-admin-roles.md) | – |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Benutzeradministrator](../users-groups-roles/directory-assign-admin-roles.md) | – |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
@@ -133,7 +135,7 @@ Damit ein Benutzer, der kein globaler Administrator oder Benutzeradministrator i
 | Benutzer | Katalogbesitzer | Nur, wenn Gruppenbesitzer | Nur, wenn Gruppenbesitzer | Nur, wenn App-Besitzer |  |
 
 > [!NOTE]
-> Wenn ein Benutzer eine Sicherheitsgruppe oder eine Office 365-Gruppe hinzufügt, können dieser Gruppe keine Rollen zugewiesen werden. Wenn der Benutzer beim Erstellen eines Zugriffspakets eine Gruppe hinzufügt, der Rollen zugewiesen werden können, muss er auch Besitzer dieser speziellen Gruppe sein. Weitere Informationen finden Sie unter [Erstellen einer Gruppe in Azure Active Directory für das Zuweisen von Rollen](../users-groups-roles/roles-groups-create-eligible.md).
+> Wenn ein Benutzer eine Sicherheitsgruppe oder eine Microsoft 365-Gruppe hinzufügt, können dieser Gruppe keine Rollen zugewiesen werden. Wenn der Benutzer beim Erstellen eines Zugriffspakets eine Gruppe hinzufügt, der Rollen zugewiesen werden können, muss er auch Besitzer dieser speziellen Gruppe sein. Weitere Informationen finden Sie unter [Erstellen einer Gruppe in Azure Active Directory für das Zuweisen von Rollen](../users-groups-roles/roles-groups-create-eligible.md).
 
 Wenn Sie die Rolle mit den geringsten Rechten für eine Aufgabe ermitteln möchten, können Sie auch [Administratorrollen nach Administratoraufgabe in Azure Active Directory](../users-groups-roles/roles-delegate-by-task.md#entitlement-management) zurate ziehen.
 

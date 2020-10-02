@@ -14,18 +14,18 @@ ms.date: 07/06/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb1041cb5fc4aa7503f5ae9de6ffc74ba72052b8
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 0306ae3193dc53f25a1e82eae1eb09c7d26ba9b6
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421398"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055451"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>Aktivieren meiner Azure AD-Rollen in PIM
 
-Azure Active Directory (Azure AD) Privileged Identity Management (PIM) vereinfacht die Art und Weise, in der Unternehmen den privilegierten Zugriff auf Ressourcen in Azure AD und anderen Onlinediensten von Microsoft wie Office 365 oder Microsoft Intune verwalten.  
+Azure Active Directory (Azure AD) Privileged Identity Management (PIM) vereinfacht die Art und Weise, in der Unternehmen den privilegierten Zugriff auf Ressourcen in Azure AD und anderen Microsoft-Onlinediensten wie Microsoft 365 oder Microsoft Intune verwalten.  
 
-Wenn Sie für eine Administratorrolle berechtigt sind, müssen Sie diese Rollenzuweisung aktivieren, wenn Sie privilegierte Aufgaben durchführen müssen. Wenn Sie z. B. gelegentlich Office 365-Funktionen verwalten, dürfen Ihre privilegierte Rollenadministratoren Ihrer Organisation Sie nicht als permanenten globalen Administrator festlegen, da sich diese Rolle auf andere Dienste auswirkt. Stattdessen gewähren sie Ihnen Berechtigungen für Azure AD-Rollen wie z. B. Exchange Online-Administrator. Sie können eine Aktivierung dieser Rolle anfordern, wenn Sie diese Berechtigungen benötigen, und verfügen damit für einen bestimmten Zeitraum über Administratorkontrolle.
+Wenn Sie für eine Administratorrolle berechtigt sind, müssen Sie diese Rollenzuweisung aktivieren, wenn Sie privilegierte Aufgaben durchführen müssen. Wenn Sie z. B. gelegentlich Microsoft 365-Funktionen verwalten, dürfen privilegierte Rollenadministratoren Ihrer Organisation Sie nicht als permanenten globalen Administrator festlegen, da sich diese Rolle auch auf andere Dienste auswirkt. Stattdessen gewähren sie Ihnen Berechtigungen für Azure AD-Rollen wie z. B. Exchange Online-Administrator. Sie können eine Aktivierung dieser Rolle anfordern, wenn Sie diese Berechtigungen benötigen, und verfügen damit für einen bestimmten Zeitraum über Administratorkontrolle.
 
 Dieser Artikel richtet sich an Administratoren, die ihre Azure AD-Rolle in Privileged Identity Management aktivieren müssen.
 
@@ -118,7 +118,7 @@ Wenn Sie in Privileged Identity Management eine Rolle aktivieren, wird die Aktiv
 
 # <a name="previous-version"></a>[Vorherige Version](#tab/previous)
 
-## <a name="activate-a-role"></a>Aktivieren einer Rolle
+## <a name="activate-a-role-previous-version"></a>Aktivieren einer Rolle (vorherige Version)
 
 Wenn Sie eine Azure AD-Rolle übernehmen müssen, können Sie in Privileged Identity Management über die Navigationsoption **Meine Rollen** die Aktivierung anfordern.
 
@@ -168,7 +168,7 @@ Wenn Sie eine Azure AD-Rolle übernehmen müssen, können Sie in Privileged Iden
 
     Wenn für die Aktivierung der [Rolle eine Genehmigung erforderlich ist](./azure-ad-pim-approval-workflow.md), wird in der oberen rechten Ecke des Browsers eine Azure-Benachrichtigung angezeigt, in der Sie darüber informiert werden, dass die Genehmigung der Anforderung aussteht.
 
-## <a name="view-the-status-of-your-requests"></a>Anzeigen des Status Ihrer Anforderungen
+## <a name="view-the-status-of-your-requests-previous-version"></a>Anzeigen des Status Ihrer Anforderungen (vorherige Version)
 
 Sie können den Status Ihrer ausstehenden Aktivierungsanforderungen anzeigen.
 
@@ -180,7 +180,7 @@ Sie können den Status Ihrer ausstehenden Aktivierungsanforderungen anzeigen.
 
     ![Azure AD-Rollen – Meine Anforderungsliste](./media/pim-how-to-activate-role/directory-roles-my-requests.png)
 
-## <a name="deactivate-a-role"></a>Deaktivieren einer Rolle
+## <a name="deactivate-a-role-previous-version"></a>Deaktivieren einer Rolle (vorherige Version)
 
 Wenn eine Rolle aktiviert wurde, wird sie nach Erreichen des Zeitlimits (berechtigte Dauer) automatisch deaktiviert.
 
@@ -196,7 +196,7 @@ Wenn Sie Ihre Administratoraufgaben früher als geplant beendet haben, können S
 
 1. Suchen Sie nach der Rolle, die Sie nicht mehr benötigen, und klicken Sie auf **Deaktivieren**.
 
-## <a name="cancel-a-pending-request"></a>Abbrechen einer ausstehenden Anforderung
+## <a name="cancel-a-pending-request-previous-version"></a>Abbrechen einer ausstehenden Anforderung (vorherige Version)
 
 Sollten Sie die Aktivierung einer Rolle, für die eine Genehmigung erforderlich ist, nicht mehr benötigen, können Sie eine ausstehende Anforderung jederzeit abbrechen.
 
@@ -212,7 +212,7 @@ Sollten Sie die Aktivierung einer Rolle, für die eine Genehmigung erforderlich 
 
    ![Meine Anforderungsliste mit hervorgehobener Schaltfläche „Abbrechen“](./media/pim-how-to-activate-role/directory-role-cancel.png)
 
-## <a name="troubleshoot"></a>Problembehandlung
+## <a name="troubleshoot-previous-version"></a>Problembehandlung (vorherige Version)
 
 ### <a name="permissions-are-not-granted-after-activating-a-role"></a>Keine Gewährung von Berechtigungen nach der Aktivierung einer Rolle
 

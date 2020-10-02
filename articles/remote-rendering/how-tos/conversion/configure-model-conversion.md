@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: b4881ee52b39539bfc29f62d7c6773da371a3ea5
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: dda2676f258705ed833068c966bcc57115434b0d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067170"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967212"
 ---
 # <a name="configure-the-model-conversion"></a>Konfigurieren der Modellkonvertierung
 
@@ -93,6 +93,12 @@ Wenn diese Annahme für ein bestimmtes Modell nicht zutrifft, sollte dieser Para
 ### <a name="material-de-duplication"></a>Deduplizierung von Materialien
 
 * `deduplicateMaterials`: Dieser Parameter aktiviert oder deaktiviert die automatische Deduplizierung von Materialien, die die gleichen Eigenschaften und Texturen aufweisen. Die Deduplizierung erfolgt nach der Verarbeitung von Materialüberschreibungen. Der Webhook ist standardmäßig aktiviert.
+
+* Wenn ein Modell selbst nach der Deduplizierung noch mehr als 65.535 Materialien aufweist, versucht der Dienst, Materialien mit ähnlichen Eigenschaften zusammenzuführen. Als letztes Mittel werden alle Materialien, die den Grenzwert überschreiten, durch ein rotes Fehlermaterial ersetzt.
+
+![Die Abbildung zeigt zwei Würfel aus 68.921 farbigen Dreiecken.](media/mat-dedup.png?raw=true)
+
+Zwei Würfel aus 68.921 farbigen Dreiecken. Links: Vor der Deduplizierung mit 68.921 Farbmaterialien. Rechts: Nach der Deduplizierung mit 64.000 Farbmaterialien. Der Grenzwert beträgt 65.535 Material. (Siehe [Grenzwerte](../../reference/limits.md).)
 
 ### <a name="color-space-parameters"></a>Farbraumparameter
 

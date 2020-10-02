@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: f2c780ffb7705575bf1bb5cabb6a09d9dabc0690
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b68d4779d33d2f8a1f1c2bae35f438ad2ccccabb
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505838"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090073"
 ---
 # <a name="tutorial-collect-and-analyze-resource-logs-from-an-azure-resource"></a>Tutorial: Sammeln und Analysieren von Ressourcenprotokollen von einer Azure-Ressource
 
@@ -84,7 +84,7 @@ Die Daten werden mithilfe einer in Kusto Query Language (KQL) geschriebenen Prot
     > [!NOTE]
     > Wenn Sie Protokolle über das Azure Monitor-Menü öffnen, ist der Bereich nicht auf den Log Analytics-Arbeitsbereich festgelegt. In diesem Fall werden Abfragen für alle Datensätze im Arbeitsbereich ausgeführt.
    
-    ![Protokolle](media/tutorial-resource-logs/logs.png)
+    ![Screenshot: Option „Protokolle“ für eine Logik-App, neue Abfrage mit hervorgehobenem App-Namen](media/tutorial-resource-logs/logs.png)
 
 4. Der im Beispiel gezeigte Dienst schreibt Ressourcenprotokolle in die Tabelle **AzureDiagnostics**, andere Dienste schreiben ihre Ergebnisse möglicherweise in andere Tabellen. Ausführliche Informationen zu den Tabellen, die von den einzelnen Azure-Diensten verwendet werden, finden Sie unter [Unterstützte Dienste, Schemas und Kategorien für Azure-Ressourcenprotokolle](../platform/resource-logs-schema.md).
 

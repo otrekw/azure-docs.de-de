@@ -16,12 +16,12 @@ ms.date: 05/31/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd1d03edad2e13d3460fb2e7a635bb198ac5c1bf
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: fd198a132f64c26f775a8212c22b77201d579260
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279617"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657147"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect-Optionen für die Benutzeranmeldung
 Mit Azure Active Directory Connect (Azure AD) können sich Ihre Benutzer sowohl bei Cloud- als auch bei lokalen Ressourcen mit denselben Kennwörtern anmelden. In diesem Artikel werden die wichtigsten Konzepte für jedes Identitätsmodell beschrieben, um Sie bei der Auswahl der Identität zu unterstützen, die Sie für die Registrierung für Azure AD verwenden möchten.
@@ -47,7 +47,7 @@ Azure AD unterstützt die folgenden Authentifizierungsmethoden:
    * **Passthrough-Authentifizierung (PTA)** – Diese Option ist vergleichbar mit der Kennworthashsynchronisierung, bietet aber eine einfache Kennwortvalidierung, die lokale Software-Agents für Organisationen mit strengen Sicherheits- und Compliancerichtlinien verwendet.
 * **Verbundauthentifizierung** – Wenn Sie diese Authentifizierungsmethode auswählen, übergibt Azure AD den Authentifizierungsprozess zur Validierung der Benutzeranmeldung an ein separates, vertrauenswürdiges Authentifizierungssystem, z. B. an AD FS oder ein Drittanbieter-Verbundsystem. 
 
-Für die meisten Organisationen, die lediglich die Benutzeranmeldung für Office 365, SaaS-Anwendungen und andere Azure AD-basierte Ressourcen aktivieren möchten, empfiehlt sich die Standardoption für die Kennworthashsynchronisierung.
+Für die meisten Organisationen, die lediglich die Benutzeranmeldung für Microsoft 365, SaaS-Anwendungen und andere Azure AD-basierte Ressourcen aktivieren möchten, empfiehlt sich die Standardoption für die Kennworthashsynchronisierung.
  
 Ausführliche Informationen zum Auswählen einer Authentifizierungsmethode finden Sie unter [Wählen der richtigen Authentifizierungsmethode für Ihre Azure Active Directory-Hybrididentitätslösung](./choose-ad-authn.md).
 
@@ -139,12 +139,12 @@ Die Azure AD-Anmeldeseite listet das für die lokale Active Directory-Instanz de
 Sie können auf die Schaltfläche für die Aktualisierung klicken, um den aktuellen Status der benutzerdefinierten Domänen erneut aus Azure AD abzurufen.
 
 ### <a name="selecting-the-attribute-for-the-user-principal-name-in-azure-ad"></a>Auswählen des Attributs für den Benutzerprinzipalnamen in Azure AD
-Das userPrincipalName-Attribut wird von Benutzern verwendet, wenn sie sich bei Azure AD und Office 365 anmelden. Sie müssen die Domänen überprüfen (auch als UPN-Suffix bezeichnet), die in Azure AD verwendet werden, bevor die Benutzer synchronisiert werden.
+Das userPrincipalName-Attribut wird von Benutzern verwendet, wenn sie sich bei Azure AD und Microsoft 365 anmelden. Sie müssen die Domänen überprüfen (auch als UPN-Suffix bezeichnet), die in Azure AD verwendet werden, bevor die Benutzer synchronisiert werden.
 
 Es wird dringend empfohlen, das Standardattribut „userPrincipalName“ beizubehalten. Wenn dieses Attribut nicht routingfähig ist und nicht überprüft werden kann, können Sie ein anderes Attribut als das Attribut mit der Anmelde-ID auswählen, beispielsweise „email“. Dieser Wert wird als alternative ID bezeichnet. Der Attributwert der alternativen ID muss dem RFC 822-Standard entsprechen. Sie können eine alternative ID mit Kennwort- und Verbund-SSO als Anmeldungslösung verwenden.
 
 > [!NOTE]
-> Eine alternative ID ist nicht mit allen Office 365-Workloads kompatibel. Weitere Informationen finden Sie unter [Konfigurieren der alternativen Anmelde-ID](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id).
+> Eine alternative ID ist nicht mit allen Microsoft 365-Workloads kompatibel. Weitere Informationen finden Sie unter [Konfigurieren der alternativen Anmelde-ID](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id).
 >
 >
 

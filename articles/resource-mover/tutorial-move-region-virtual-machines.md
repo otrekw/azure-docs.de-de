@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 49b7a3700bf497ad868b7c4ab1f0802564b61bf3
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 3a5489241aa15ce105dbe4d89086aff00373ca55
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89652352"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603967"
 ---
 # <a name="tutorial-move-azure-vms-across-regions"></a>Tutorial: Verschieben von Azure-VMs zwischen Regionen
 
@@ -68,6 +68,7 @@ Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](h
 Wählen Sie die Ressourcen aus, die Sie verschieben möchten.
 
 - Alle unterstützten Ressourcentypen in Ressourcengruppen innerhalb der ausgewählten Quellregion werden angezeigt.
+- Ressourcen, die bereits für das regionsübergreifende Verschieben hinzugefügt wurden, werden nicht angezeigt.
 - Sie verschieben Ressourcen in eine Zielregion im gleichen Abonnement wie die Quellregion. Wenn Sie das Abonnement ändern möchten, können Sie dies nach dem Verschieben der Ressourcen tun.
 
 1. Suchen Sie im Azure-Portal nach *Resource Mover*. Wählen Sie anschließend unter **Dienste** die Option **Azure Resource Mover** aus.
@@ -80,7 +81,6 @@ Wählen Sie die Ressourcen aus, die Sie verschieben möchten.
 
 3. Wählen Sie unter **Ressourcen verschieben** > **Source + destination** (Quelle und Ziel) das Quellabonnement und die Region aus.
 4. Wählen Sie unter **Ziel** die Region aus, in die Sie die virtuellen Computer verschieben möchten. Klicken Sie dann auf **Weiter**.
-5. Wählen Sie unter **Metadata region** (Metadatenregion) aus, wo die Metadaten zu den verschobenen Ressourcen gespeichert werden sollen. Speziell für diesen Zweck wird eine Ressourcengruppe erstellt. Klicken Sie dann auf **Weiter**.
 
     ![Seite zum Auswählen der Quell- und Zielregion](./media/tutorial-move-region-virtual-machines/source-target.png)
 
@@ -90,7 +90,7 @@ Wählen Sie die Ressourcen aus, die Sie verschieben möchten.
     ![Seite zum Auswählen von zu verschiebenden virtuellen Computern](./media/tutorial-move-region-virtual-machines/select-vm.png)
 
 8.  Klicken Sie unter **Zu verschiebende Ressourcen** auf **Weiter**.
-9. Überprüfen Sie unter **Review + Add** (Überprüfen und hinzufügen) die Quell- und Zieleinstellungen. Beachten Sie, dass die Metadaten zum Verschieben in einer Ressourcengruppe gespeichert werden, die zu diesem Zweck in der Metadatenregion erstellt wurde.
+9. Überprüfen Sie unter **Review + Add** (Überprüfen und hinzufügen) die Quell- und Zieleinstellungen. 
 
     ![Seite zum Überprüfen der Einstellungen und zum Fortsetzen der Verschiebung](./media/tutorial-move-region-virtual-machines/review.png)
 10. Klicken Sie auf **Fortsetzen**, um die Ressourcen hinzuzufügen.
@@ -235,7 +235,8 @@ Wenn Sie die Verschiebung abschließen möchten, führen Sie einen Commit aus.
 
 ## <a name="configure-settings-after-the-move"></a>Konfigurieren der Einstellungen nach dem Verschieben
 
-Der Mobilitätsdienst wird auf virtuellen Computern nicht automatisch deinstalliert. Deinstallieren Sie ihn manuell, oder lassen Sie ihn installiert, wenn Sie planen, den Server erneut zu verschieben.
+- Der Mobilitätsdienst wird auf virtuellen Computern nicht automatisch deinstalliert. Deinstallieren Sie ihn manuell, oder lassen Sie ihn installiert, wenn Sie planen, den Server erneut zu verschieben.
+- Ändern Sie nach dem Verschieben die Regeln der rollenbasierten Zugriffssteuerung in Azure (Azure RBAC).
 
 ## <a name="delete-source-resources-after-commit"></a>Löschen von Quellressourcen nach einem Commit
 

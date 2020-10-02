@@ -2,16 +2,16 @@
 title: 'Tutorial: Verwenden der Parameterdatei zum Bereitstellen einer Vorlage'
 description: Verwenden Sie Parameterdateien, die die Werte enthalten, die Sie für die Bereitstellung Ihrer Azure Resource Manager-Vorlage verwenden möchten.
 author: mumian
-ms.date: 03/27/2020
+ms.date: 09/10/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: bd7917a96550d45b14eb5a5b5cae1ac957aa78b5
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: de72f9f32a3b08ad1742ee2055efce5b93cab899
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502799"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069508"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-arm-template"></a>Tutorial: Verwenden von Parameterdateien zum Bereitstellen Ihrer ARM-Vorlage
 
@@ -34,6 +34,12 @@ Diese Vorlage funktioniert gut, jetzt möchten Sie jedoch problemlos die Paramet
 ## <a name="add-parameter-files"></a>Parameterdateien hinzufügen
 
 Parameterdateien sind JSON-Dateien mit einer Struktur, die ihrer Vorlage ähnelt. In der Datei geben Sie die Parameterwerte an, die Sie während der Bereitstellung übergeben möchten.
+
+In der Parameterdatei geben Sie Werte für die Parameter in Ihrer Vorlage an. Der Name jedes Parameters in der Parameterdatei muss mit dem Namen eines Parameters in der Vorlage identisch sein. Beim Namen wird die Groß-/Kleinschreibung nicht beachtet. Um die übereinstimmenden Werte einfach anzuzeigen, sollte jedoch die Groß-/Kleinschreibung aus der Vorlage verwendet werden.
+
+Sie müssen keinen Wert für jeden Parameter angeben. Verfügt ein nicht spezifizierter Parameter über einen Standardwert, wird dieser Wert während der Bereitstellung verwendet. Wenn ein Parameter keinen Standardwert hat und nicht in der Parameterdatei angegeben ist, werden Sie während der Bereitstellung zur Angabe eines Werts aufgefordert.
+
+Sie können in der Parameterdatei nur Parameternamen angeben, die mit einem Parameternamen in der Vorlage identisch sind. Wenn unbekannte Parameter angegeben werden, tritt ein Fehler auf.
 
 Erstellen Sie in VS Code eine neue Datei mit folgendem Inhalt. Speichern Sie die Datei mit dem Namen **azuredeploy.parameters.dev.json**.
 
@@ -122,7 +128,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Wenn bei der Bereitstellung ein Fehler aufgetreten ist, verwenden Sie die Option **debug** mit dem Bereitstellungsbefehl, um die Debugprotokolle anzuzeigen.  Sie können auch die Option **verbose** verwenden, um die vollständigen Debugprotokolle anzuzeigen.
+> Wenn bei der Bereitstellung ein Fehler aufgetreten ist, verwenden Sie den Schalter **verbose**, um Informationen zu den erstellten Ressourcen abzurufen. Verwenden Sie den Schalter **debug**, um weitere Informationen zum Debuggen zu erhalten.
 
 ## <a name="verify-deployment"></a>Überprüfen der Bereitstellung
 

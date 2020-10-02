@@ -4,21 +4,21 @@ description: Erfahren Sie, wie Sie eine Azure SignalR Service-Instanz über das 
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
-ms.date: 12/11/2019
+ms.date: 9/9/2020
 ms.author: zhshang
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: bd112526c7b36d5636d5d85c66b25b6310d35d1e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: bb01f2f96e5db4c94e759b114818360e6084255f
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500486"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595766"
 ---
 # <a name="how-to-scale-an-azure-signalr-service-instance"></a>Skalieren einer Azure SignalR Service-Instanz
 In diesem Artikel erfahren Sie, wie Sie Ihre Azure SignalR Service-Instanz skalieren. Es gibt zwei Szenarios für die Skalierung: Hochskalieren und Aufskalieren.
 
 * [Hochskalieren](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Erhalten Sie weitere Einheiten, Verbindungen, Nachrichten und mehr. Sie können hochskalieren, indem Sie den Tarif von Free in Standard ändern.
-* [Aufskalieren:](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling) Erhöhen Sie die Anzahl von SignalR-Einheiten. Sie können auf bis zu 100 Einheiten aufskalieren.
+* [Aufskalieren:](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling) Erhöhen Sie die Anzahl von SignalR-Einheiten. Sie können auf bis zu 100 Einheiten aufskalieren. Für die Skalierung stehen eingeschränkte Einheitenoptionen zur Verfügung: 1, 2, 5, 10, 20, 50 und 100 Einheiten für eine einzelne SignalR Service-Instanz.
 
 Es dauert einige Minuten, bis die Skalierungseinstellungen angewendet werden. In seltenen Fällen kann dies etwa 30 Minuten dauern. Dazu müssen Sie weder Ihren Code ändern noch Ihre Serveranwendung neu bereitstellen.
 

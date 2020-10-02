@@ -12,12 +12,12 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce7041cd74a6bfd3ac736d3ae774324122ed737b
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 1f4eba1b48b651c8efe9e9d737e226727cb244fb
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89277067"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662471"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Synchronisierungsendpunkt-API V2 für Azure AD Connect (öffentliche Vorschau) 
 Microsoft hat einen neuen Endpunkt (API) für Azure AD Connect bereitgestellt, mit dem die Leistung der Synchronisierungsdienstvorgänge für Azure Active Directory verbessert wird. Wenn Sie den neuen V2-Endpunkt verwenden, treten beim Exportieren aus und Importieren in Azure AD spürbare Leistungssteigerungen auf. Dieser neue Endpunkt unterstützt Folgendes:
@@ -26,7 +26,7 @@ Microsoft hat einen neuen Endpunkt (API) für Azure AD Connect bereitgestellt, m
  - Leistungssteigerungen beim Exportieren aus und Importieren in Azure AD
  
 > [!NOTE]
-> Der neue Endpunkt verfügt derzeit nicht über eine konfigurierte Beschränkung der Gruppengröße für O365-Gruppen, die zurückgeschrieben werden. Dies hat möglicherweise Auswirkungen auf Ihr Active Directory und Synchronisierungszykluslatenzen.  Es wird empfohlen, die Gruppengröße inkrementell zu erhöhen.  
+> Der neue Endpunkt verfügt derzeit nicht über eine konfigurierte Beschränkung der Gruppengröße für Microsoft 365-Gruppen, die zurückgeschrieben werden. Dies hat möglicherweise Auswirkungen auf Ihr Active Directory und Synchronisierungszykluslatenzen. Es wird empfohlen, die Gruppengröße inkrementell zu erhöhen.  
 
 
 ## <a name="pre-requisites"></a>Voraussetzungen  
@@ -51,7 +51,7 @@ Die folgenden Schritte führen Sie durch die Bereitstellung des V2-Endpunkts mit
 
 1. Stellen Sie den V2-Endpunkt auf dem aktuellen Stagingserver bereit. Dieser Server wird in den folgenden Schritten als **V2-Server** bezeichnet. Der aktuelle aktive Server verarbeitet die Produktionsworkloads weiterhin mithilfe des V1-Endpunkts, der im Folgenden als **V1-Server** bezeichnet wird.
 1. Bestätigen Sie, dass der **V2-Server** Importe weiterhin erwartungsgemäß verarbeitet. Zu diesem Zeitpunkt werden große Gruppen nicht für Azure AD oder das lokale AD bereitgestellt, aber Sie können bestätigen, dass das Upgrade keine anderen unerwarteten Auswirkungen auf den vorhandenen Synchronisierungsprozess verursacht hat. 
-2. Sobald die Überprüfung abgeschlossen ist, erklären Sie den **V2-Server** zum aktiven Server und den **V1-Server** zum Stagingserver. Zu diesem Zeitpunkt werden große Gruppen, die sich in einem zu synchronisierenden Bereich befinden, für Azure AD bereitgestellt, ebenso wie große vereinheitlichte O365-Gruppen für AD bereitgestellt werden, wenn das Zurückschreiben von Gruppen aktiviert ist.
+2. Sobald die Überprüfung abgeschlossen ist, erklären Sie den **V2-Server** zum aktiven Server und den **V1-Server** zum Stagingserver. Zu diesem Zeitpunkt werden große Gruppen, die sich in einem zu synchronisierenden Bereich befinden, für Azure AD bereitgestellt, ebenso wie große vereinheitlichte Microsoft 365-Gruppen für AD bereitgestellt werden, wenn das Zurückschreiben von Gruppen aktiviert ist.
 3. Bestätigen Sie, dass der **V2-Server** aktiv ist und große Gruppen erfolgreich verarbeitet. Sie können sich dafür entscheiden, es bei diesem Schritt zu belassen und den Synchronisationsprozess eine gewisse Zeit lang zu überwachen.
   >[!NOTE]
   > Wenn Sie zurück zur vorherigen Konfiguration wechseln müssen, können Sie eine Swingmigration vom **V2-Server** zurück zum **V1-Server** durchführen. Da der V1-Endpunkt keine Gruppen mit mehr als 50.000 Mitgliedern unterstützt, wird jede große Gruppe, die von Azure AD Connect in Azure AD oder in lokalem AD bereitgestellt wurde, anschließend gelöscht. 
@@ -153,7 +153,7 @@ Während nachfolgenden Erhöhungen des Gruppenmitgliedslimits in der Synchronisi
  `Set-ADSyncSchedulerConnectorOverride -FullSyncRequired $false -ConnectorName "<AAD Connector Name>" `
  
 >[!NOTE]
-> Wenn Sie über vereinheitlichte O365-Gruppen mit mehr als 50.000 Mitgliedern verfügen, werden die Gruppen in Azure AD Connect gelesen, und wenn Gruppenrückschreiben aktiviert ist, werden sie in das lokale AD geschrieben. 
+> Wenn Sie über vereinheitlichte Microsoft 365-Gruppen mit mehr als 50.000 Mitgliedern verfügen, werden die Gruppen in Azure AD Connect gelesen, und wenn Gruppenrückschreiben aktiviert ist, werden sie in das lokale AD geschrieben. 
 
 ## <a name="rollback"></a>Rollback 
 Wenn Sie den V2-Endpunkt aktiviert haben und ein Rollback ausführen müssen, führen Sie die folgenden Schritte aus: 
@@ -181,7 +181,7 @@ Wenn Sie den V2-Endpunkt aktiviert haben und ein Rollback ausführen müssen, f�
  `Set-ADSyncScheduler -SyncCycleEnabled $true`
  
 >[!NOTE]
-> Wenn Sie vom V2- zum V1-Endpunkt zurückwechseln, werden Gruppen, die mit mehr als 50.000 Mitgliedern synchronisiert werden, nach der Ausführung einer vollständigen Synchronisierung gelöscht. Dies gilt sowohl für AD-Gruppen, die in Azure AD bereitgestellt werden, als auch für vereinheitlichte O365-Gruppen, die in AD bereitgestellt werden. 
+> Wenn Sie vom V2- zum V1-Endpunkt zurückwechseln, werden Gruppen, die mit mehr als 50.000 Mitgliedern synchronisiert werden, nach der Ausführung einer vollständigen Synchronisierung gelöscht. Dies gilt sowohl für AD-Gruppen, die in Azure AD bereitgestellt werden, als auch für vereinheitlichte Microsoft 365-Gruppen, die in AD bereitgestellt werden. 
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen  
 **F: Kann ein Kunde dieses Feature in der Produktionsumgebung verwenden?**   

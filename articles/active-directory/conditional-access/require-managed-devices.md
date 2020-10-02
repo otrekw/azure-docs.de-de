@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d3fbb06355772794fbe3fab5cdf3c8622c2baf4
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 7cb62d3b7ebe3ba6f4551602c7867575e74dca70
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948826"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601519"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Anleitung: Vorschreiben der Verwendung verwalteter Geräte für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs
 
@@ -98,7 +98,7 @@ Bei einem als kompatibel markierten Gerät können Sie Folgendes voraussetzen:
 
 ### <a name="scenario-require-device-enrollment-for-ios-and-android-devices"></a>Szenario: Geräteregistrierung für iOS- und Android-Geräte erforderlich
 
-In diesem Szenario hat Contoso entschieden, dass für den gesamten mobilen Zugriff auf Office 365-Ressourcen ein registriertes Gerät verwendet werden muss. Alle Benutzer melden sich bereits mit Azure AD-Anmeldeinformationen an. Außerdem wurden ihnen Lizenzen zugewiesen, die Azure AD Premium P1 oder P2 und Microsoft Intune umfassen.
+In diesem Szenario hat Contoso entschieden, dass für den gesamten mobilen Zugriff auf Microsoft 365-Ressourcen ein registriertes Gerät verwendet werden muss. Alle Benutzer melden sich bereits mit Azure AD-Anmeldeinformationen an. Außerdem wurden ihnen Lizenzen zugewiesen, die Azure AD Premium P1 oder P2 und Microsoft Intune umfassen.
 
 Organisationen müssen die folgenden Schritte ausführen, um die Verwendung eines registrierten mobilen Geräts anzufordern.
 

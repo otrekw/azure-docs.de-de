@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/15/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: ee5fe4a856e75e9833b9d69dd24efd932f760a91
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 443cd6ce3805dbd5ebc250556c6d8ec28161f50e
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88523295"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658906"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-whimsical"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Whimsical
 
@@ -35,9 +35,6 @@ Für die ersten Schritte benötigen Sie Folgendes:
 * Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
 * Whimsical Team Workspace.
 
-> [!NOTE]
-> Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
-
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
@@ -45,6 +42,9 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 * Whimsical unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden.
 * Whimsical unterstützt die **Just-in-Time**-Benutzerbereitstellung.
 * Nach dem Konfigurieren von Whimsical können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+
+> [!NOTE]
+> Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
 
 ## <a name="adding-whimsical-from-the-gallery"></a>Hinzufügen von Whimsical aus dem Katalog
 
@@ -57,7 +57,7 @@ Zum Konfigurieren der Integration von Whimsical in Azure AD müssen Sie Whimsica
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Whimsical** in das Suchfeld ein.
 1. Wählen Sie **Whimsical** im Ergebnisbereich aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-whimsical"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Whimsical
+## <a name="configure-and-test-azure-ad-sso-for-whimsical"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Whimsical
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Whimsical mithilfe einer Testbenutzerin mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Whimsical eingerichtet werden.
 
@@ -169,5 +169,3 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Whimsical“ klicken, sollten Sie 
 - [Testen von Whimsical mit Azure AD](https://aad.portal.azure.com/)
 
 - [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [Schützen von Whimsical mit erweiterter Sichtbarkeit und komplexeren Kontrollen](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

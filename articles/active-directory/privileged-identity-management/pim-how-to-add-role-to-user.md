@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 07/01/2020
+ms.date: 09/16/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3370ea52c5bd189f929c0f81a0aa9b59cc77b97
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 919585d557a668e44f229451ab202fb8bcab9079
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421381"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985185"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Zuweisen von Azure AD-Rollen in Privileged Identity Management
 
@@ -75,6 +75,30 @@ Führen Sie folgende Schritte aus, um einen Benutzer als für eine Azure AD-Adm
 
     ![Neue Zuweisung: Benachrichtigung](./media/pim-how-to-add-role-to-user/assignment-notification.png)
 
+## <a name="assign-a-role-with-restricted-scope"></a>Zuweisen einer Rolle mit eingeschränktem Bereich
+
+Bei bestimmten Rollen kann der Bereich der erteilten Berechtigungen auf eine einzelne Verwaltungseinheit, einen Dienstprinzipal oder eine Anwendung beschränkt werden. Dieses Verfahren ist ein Beispiel für die Zuweisung einer Rolle, die den Bereich einer Verwaltungseinheit aufweist. Eine Liste der Rollen, die einen Bereich per Verwaltungseinheit unterstützen, finden Sie unter [Zuweisen von bereichsbezogenen Rollen zu einer Verwaltungseinheit](../users-groups-roles/roles-admin-units-assign-roles.md). Diese Funktion wird derzeit in Azure AD-Organisationen eingeführt.
+
+1. Melden Sie sich mit Berechtigungen der Rolle „Administrator für privilegierte Rollen“ im [Azure Active Directory Admin Center](https://aad.portal.azure.com) an.
+
+1. Wählen Sie **Azure Active Directory** > **Rollen und Administratoren** aus.
+
+1. Wählen Sie **Benutzeradministrator** aus.
+
+    ![Der Befehl „Zuweisung hinzufügen“ ist verfügbar, wenn Sie eine Rolle im Portal öffnen](./media/pim-how-to-add-role-to-user/add-assignment.png)
+
+1. Wählen Sie **Zuweisungen hinzufügen** aus.
+
+    ![Wenn eine Rolle Bereiche unterstützt, können Sie einen Bereich auswählen](./media/pim-how-to-add-role-to-user/add-scope.png)
+
+1. Auf der Seite **Zuweisungen hinzufügen** haben Sie folgende Möglichkeiten:
+
+   - Auswählen eines Benutzers oder einer Gruppe, der bzw. die der Rolle zugewiesen werden soll
+   - Auswählen des Rollenbereichs (in diesem Fall „Verwaltungseinheiten“)
+   - Auswählen einer Verwaltungseinheit für den Bereich
+
+Weitere Informationen zum Erstellen von Verwaltungseinheiten finden Sie unter [Hinzufügen und Entfernen von Verwaltungseinheiten](../users-groups-roles/roles-admin-units-manage.md).
+
 ## <a name="update-or-remove-an-existing-role-assignment"></a>Aktualisieren oder Entfernen einer vorhandenen Rollenzuweisung
 
 Befolgen Sie diese Anweisungen zum Aktualisieren oder Entfernen einer vorhandenen Rollenzuweisung.
@@ -101,7 +125,7 @@ Führen Sie folgende Schritte aus, um einen Benutzer als für eine Azure AD-Adm
 
 1. Wählen Sie **Rollen** oder **Mitglieder** aus.
 
-    ![Azure AD-Rollen](./media/pim-how-to-add-role-to-user/pim-directory-roles.png)
+    ![Öffnen Sie Azure AD-Rollen](./media/pim-how-to-add-role-to-user/pim-directory-roles.png)
 
 1. Wählen Sie **Mitglied hinzufügen** aus, um das Dialogfeld **Verwaltete Mitglieder hinzufügen** zu öffnen.
 
@@ -111,7 +135,7 @@ Führen Sie folgende Schritte aus, um einen Benutzer als für eine Azure AD-Adm
 
 1. Wählen Sie **Mitglieder auswählen** und die Benutzer aus, die der Rolle zugewiesen werden sollen, und wählen Sie dann **Auswählen** aus.
 
-    ![Auswählen einer Rolle](./media/pim-how-to-add-role-to-user/pim-select-members.png)
+    ![Wählen Sie zum Zuweisen einen Benutzer oder eine Gruppe aus](./media/pim-how-to-add-role-to-user/pim-select-members.png)
 
 1. Wählen Sie **OK** in **Verwaltete Mitglieder hinzufügen** aus, um den Benutzer der Rolle hinzuzufügen.
 
@@ -169,7 +193,7 @@ Führen Sie folgende Schritte aus, um einen Benutzer aus einer Azure AD-Adminis
 
 1. Klicken Sie im Bestätigungsdialogfeld auf **Ja**.
 
-    ![Entfernen einer Rolle](./media/pim-how-to-add-role-to-user/pim-remove-role-confirm.png)
+    ![Bestätigen Sie das Entfernen](./media/pim-how-to-add-role-to-user/pim-remove-role-confirm.png)
 
     Die Rollenzuweisung wurde entfernt.
 

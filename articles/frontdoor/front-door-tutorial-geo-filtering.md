@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Konfigurieren einer WAF-Richtlinie mit Geofilterung – Azure Front Door'
-description: In diesem Tutorial erfahren Sie, wie Sie eine Richtlinie für die Geofilterung erstellen und Ihrem vorhandenen Front Door-Front-End-Host zuordnen.
+description: In diesem Tutorial erfahren Sie, wie Sie eine Richtlinie für die Geofilterung erstellen und Ihrem vorhandenen Front Door-Front-End-Host zuordnen.
 services: frontdoor
 documentationcenter: ''
 author: duongau
@@ -9,45 +9,30 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/21/2019
+ms.date: 09/14/2020
 ms.author: duau
-ms.openlocfilehash: 31892232d5483bd2cb99d27c4672dbf347b904ef
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 20aa038e15b1ae5734ad6f463c6f450368617119
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399020"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090028"
 ---
-# <a name="how-to-set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>Einrichten einer WAF-Richtlinie mit Geofilterung für Ihre Front Door-Instanz
+# <a name="tutorial-how-to-set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>Tutorial: Einrichten einer WAF-Richtlinie mit Geofilterung für Ihre Front Door-Instanz
 In diesem Tutorial wird veranschaulicht, wie Sie mit Azure PowerShell eine Beispielrichtlinie für die Geofilterung erstellen und sie Ihrem vorhandenen Front Door-Front-End-Host zuordnen. Diese Beispielrichtlinie für die Geofilterung blockiert Anforderungen aus allen Ländern/Regionen, mit Ausnahme der USA.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie jetzt ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen.
+In diesem Tutorial lernen Sie Folgendes:
+> [!div class="checklist"]
+> - Definieren der Übereinstimmungsbedingung für die Geofilterung
+> - Hinzufügen der Übereinstimmungsbedingung für die Geofilterung zu einer Regel
+> - Hinzufügen von Regeln zu einer Richtlinie
+> - Verknüpfen der WAF-Richtlinie mit dem FrontDoor-Front-End-Host
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Bevor Sie mit der Einrichtung einer Geofilterungsrichtlinie beginnen, müssen Sie zunächst Ihre PowerShell-Umgebung einrichten und ein Front Door-Profil erstellen.
-### <a name="set-up-your-powershell-environment"></a>Einrichten Ihrer PowerShell-Umgebung
-Azure PowerShell bietet eine Reihe von Cmdlets, die das [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)-Modell für die Verwaltung von Azure-Ressourcen verwenden. 
-
-Sie können [Azure PowerShell](https://docs.microsoft.com/powershell/azure/) auf Ihrem lokalen Computer installieren und in einer beliebigen PowerShell-Sitzung nutzen. Befolgen Sie die Anweisungen auf der Seite, um sich mit Ihren Azure-Anmeldeinformationen anzumelden und das Azure PowerShell-Modul zu installieren.
-
-#### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>Herstellen einer Verbindung mit Azure über einen interaktiven Anmeldedialog
-```
-Install-Module -Name Az
-Connect-AzAccount
-```
-Vergewissern Sie sich, dass die aktuelle Version von PowerShellGet installiert ist. Führen Sie den folgenden Befehl aus, und öffnen Sie PowerShell erneut.
-
-```
-Install-Module PowerShellGet -Force -AllowClobber
-``` 
-#### <a name="install-azfrontdoor-module"></a>Installieren des Moduls „Az.FrontDoor“ 
-
-```
-Install-Module -Name Az.FrontDoor
-```
-
-### <a name="create-a-front-door-profile"></a>Erstellen eines Front Door-Profils
-Gehen Sie zum Erstellen eines Front Door-Profils gemäß den Anweisungen unter [Schnellstart: Erstellen einer Front Door-Instanz für eine hoch verfügbare globale Webanwendung](quickstart-create-front-door.md) vor.
+* Bevor Sie mit der Einrichtung einer Geofilterungsrichtlinie beginnen, müssen Sie zunächst Ihre PowerShell-Umgebung einrichten und ein Front Door-Profil erstellen.
+* Gehen Sie zum Erstellen einer Front Door-Instanz gemäß den Anweisungen unter [Schnellstart: Erstellen einer Front Door-Instanz für eine hoch verfügbare globale Webanwendung](quickstart-create-front-door.md) vor.
 
 ## <a name="define-geo-filtering-match-condition"></a>Definieren der Übereinstimmungsbedingung für die Geofilterung
 
@@ -60,7 +45,6 @@ $nonUSGeoMatchCondition = New-AzFrontDoorWafMatchConditionObject `
 -NegateCondition $true `
 -MatchValue "US"
 ```
- 
 ## <a name="add-geo-filtering-match-condition-to-a-rule-with-action-and-priority"></a>Hinzufügen der Übereinstimmungsbedingung für die Geofilterung zu einer Regel mit Aktion und Priorität
 
 Erstellen Sie anschließend unter Verwendung von [New-AzFrontDoorWafCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject) das CustomRule-Objekt `nonUSBlockRule` basierend auf der Übereinstimmungsbedingung, einer Aktion und einer Priorität.  Ein CustomRule-Objekt kann über mehrere MatchCondition-Elemente verfügen.  In diesem Beispiel ist „Action“ auf „Block“ und „Priority“ auf „1“ (höchste Priorität) festgelegt.
@@ -73,31 +57,28 @@ $nonUSBlockRule = New-AzFrontDoorWafCustomRuleObject `
 -Action Block `
 -Priority 1
 ```
-
 ## <a name="add-rules-to-a-policy"></a>Hinzufügen von Regeln zu einer Richtlinie
 Suchen Sie mithilfe von `Get-AzResourceGroup` nach dem Namen der Ressourcengruppe, die das Front Door-Profil enthält. Erstellen Sie als Nächstes mithilfe von [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) ein Richtlinienobjekt vom Typ `geoPolicy` mit `nonUSBlockRule` in der angegebenen Ressourcengruppe, die das Front Door-Profil enthält. Geben Sie einen eindeutigen Namen für die Geofilterungsrichtlinie an. 
 
-Im folgenden Beispiel wird der Ressourcengruppenname *myResourceGroupFD1* verwendet. Dabei wird davon ausgegangen, dass Sie das Front Door-Profil gemäß der Anleitung im Artikel [Schnellstart: Erstellen einer Front Door-Instanz für eine hoch verfügbare globale Webanwendung](quickstart-create-front-door.md) erstellt haben. Ersetzen Sie im folgenden Beispiel den Richtliniennamen *geoPolicyAllowUSOnly* durch einen eindeutigen Richtliniennamen.
+Im folgenden Beispiel wird der Ressourcengruppenname *FrontDoorQS_rg0* verwendet. Dabei wird davon ausgegangen, dass Sie das Front Door-Profil gemäß der Anleitung im Artikel [Schnellstart: Erstellen einer Front Door-Instanz für eine hoch verfügbare globale Webanwendung](quickstart-create-front-door.md) erstellt haben. Ersetzen Sie im folgenden Beispiel den Richtliniennamen *geoPolicyAllowUSOnly* durch einen eindeutigen Richtliniennamen.
 
 ```
 $geoPolicy = New-AzFrontDoorWafPolicy `
 -Name "geoPolicyAllowUSOnly" `
--resourceGroupName myResourceGroupFD1 `
+-resourceGroupName FrontDoorQS_rg0 `
 -Customrule $nonUSBlockRule  `
 -Mode Prevention `
 -EnabledState Enabled
 ```
-
 ## <a name="link-waf-policy-to-a-front-door-frontend-host"></a>Verknüpfen der WAF-Richtlinie mit einem Front Door-Front-End-Host
 Verknüpfen Sie das WAF-Richtlinienobjekt mit dem vorhandenen Front Door-Front-End-Host, und aktualisieren Sie die Front Door-Eigenschaften. 
 
 Rufen Sie hierzu zunächst mithilfe von [Get-AzFrontDoor](/powershell/module/az.frontdoor/get-azfrontdoor) Ihr Front Door-Objekt ab. 
 
 ```
-$geoFrontDoorObjectExample = Get-AzFrontDoor -ResourceGroupName myResourceGroupFD1
+$geoFrontDoorObjectExample = Get-AzFrontDoor -ResourceGroupName FrontDoorQS_rg0
 $geoFrontDoorObjectExample[0].FrontendEndpoints[0].WebApplicationFirewallPolicyLink = $geoPolicy.Id
 ```
-
 Legen Sie als Nächstes mithilfe von [Set-AzFrontDoor](/powershell/module/az.frontdoor/set-azfrontdoor) die Eigenschaft „WebApplicationFirewallPolicyLink“ des Front-Ends auf die Ressourcen-ID von `geoPolicy`fest.
 
 ```
@@ -107,6 +88,15 @@ Set-AzFrontDoor -InputObject $geoFrontDoorObjectExample[0]
 > [!NOTE] 
 > Die Eigenschaft „WebApplicationFirewallPolicyLink“ muss nur einmal festgelegt werden, um eine WAF-Richtlinie mit einem Front Door-Front-End-Host zu verknüpfen. Nachfolgende Richtlinienaktualisierungen werden automatisch auf den Front-End-Host angewendet.
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+In den vorherigen Schritten haben Sie eine Geofilterungsregel konfiguriert, die einer WAF-Richtlinie zugeordnet ist. Anschließend haben Sie die Richtlinie mit einem Front-End-Host Ihrer Front Door-Instanz verknüpft. Wenn Sie die Geofilterungsregel oder WAF-Richtlinie nicht mehr benötigen, müssen Sie zuerst die Zuordnung der Richtlinie zum Front-End-Host aufheben, bevor die WAF-Richtlinie gelöscht werden kann.
+
+:::image type="content" source="media/front-door-geo-filtering/front-door-disassociate-policy.png" alt-text="Aufheben der Zuordnung der WAF-Richtlinie":::
+
 ## <a name="next-steps"></a>Nächste Schritte
-- Informationen zu Azure Web Application Firewall finden Sie [hier](waf-overview.md).
-- Erfahren Sie mehr über das [Erstellen einer Front Door-Instanz](quickstart-create-front-door.md).
+
+Im nächsten Tutorial erfahren Sie, wie Sie eine Web Application Firewall für Ihre Front Door-Instanz konfigurieren:
+
+> [!div class="nextstepaction"]
+> [Web Application Firewall und Front Door](front-door-waf.md)

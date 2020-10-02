@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: ab4e9f7410954292290b6acf0895197ff013b1d8
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 2312befa5fe534cc2042b7586755ac5322d036db
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321666"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601304"
 ---
 # <a name="azure-active-directory-identity-and-access-management-operations-reference-guide"></a>Azure Active Directory: Referenzleitfaden zu den Vorgängen der Identitäts- und Zugriffsverwaltung
 
@@ -35,8 +35,8 @@ Für die Verwaltung von Azure Active Directory ist die kontinuierliche Ausführu
 | :- | :- |
 | Definieren des Prozesses zum Erstellen von Azure-Abonnements | Variiert je nach Organisation |
 | Treffen der Entscheidung, wer Enterprise Mobility + Security-Lizenzen erhält | Team für IAM-Vorgänge (Identity & Access Management, Identitäts- und Zugriffsverwaltung) |
-| Festlegen, wer Office 365-Lizenzen erhält | Produktivitätsteam |
-| Treffen der Entscheidung, wer andere Lizenzen erhält, z. B. Dynamics, VSO | Anwendungsbesitzer |
+| Festlegen, wer Microsoft 365-Lizenzen erhält | Produktivitätsteam |
+| Festlegen, wer andere Lizenzen (z. B. Dynamics, Visual Studio Codespaces) erhält | Anwendungsbesitzer |
 | Zuweisen von Lizenzen | Team für IAM-Vorgänge (Identity & Access Management, Identitäts- und Zugriffsverwaltung) |
 | Behandeln und Beheben von Fehlern mit der Lizenzverwaltung | Team für IAM-Vorgänge (Identity & Access Management, Identitäts- und Zugriffsverwaltung) |
 | Bereitstellen von Identitäten für Anwendungen in Azure AD | Team für IAM-Vorgänge (Identity & Access Management, Identitäts- und Zugriffsverwaltung) |
@@ -140,7 +140,7 @@ Der [Azure AD Connect-Konfigurationsdokumentierer](https://github.com/Microsoft/
 
 Mit Azure Active Directory wird die Verwaltung von Lizenzen per [gruppenbasierter Lizenzierung](./active-directory-licensing-whatis-azure-portal.md) für Microsoft-Clouddienste optimiert. Auf diese Weise wird die Gruppeninfrastruktur und die delegierte Verwaltung dieser Gruppen per IAM für die richtigen Teams von Organisationen bereitgestellt. Es gibt mehrere Möglichkeiten, die Gruppenmitgliedschaft in Azure AD einzurichten, z. B.:
 
-- **Synchronisierung aus lokaler Umgebung**: Gruppen können aus lokalen Verzeichnissen stammen. Dies kann eine gute Option für Organisationen sein, die über etablierte Prozesse für die Gruppenverwaltung verfügen, für die eine Erweiterung zum Zuweisen von Lizenzen in Office 365 möglich ist.
+- **Synchronisierung aus lokaler Umgebung**: Gruppen können aus lokalen Verzeichnissen stammen. Dies kann eine gute Option für Organisationen sein, die über etablierte Prozesse für die Gruppenverwaltung verfügen, für die eine Erweiterung zum Zuweisen von Lizenzen in Microsoft 365 möglich ist.
 
 - **Attributbasiert/Dynamisch**: Gruppen können in der Cloud anhand eines Ausdrucks erstellt werden, der auf Benutzerattributen basiert, z. B. Abteilung ist gleich „Sales“. Azure AD verwaltet die Mitglieder der Gruppe und sorgt für Konsistenz mit dem definierten Ausdruck. Diese Art von Gruppen für die Lizenzzuweisung ermöglicht eine attributbasierte Vorgehensweise, die gut für Organisationen geeignet ist, deren Verzeichnisse eine hohe Datenqualität aufweisen.
 
@@ -188,7 +188,7 @@ Standardmäßig wird die [Deltasynchronisierung](../hybrid/how-to-connect-sync-f
 
 #### <a name="azure-ad-connect-troubleshooting-recommended-reading"></a>Azure AD Connect-Problembehandlung: Empfohlene Literatur
 
-- [Vorbereiten von Verzeichnisattributen für die Synchronisierung mit Office 365 mithilfe des IdFix-Tools](/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix)
+- [Vorbereiten von Verzeichnisattributen für die Synchronisierung mit Microsoft 365 mithilfe des IdFix-Tools](/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix)
 - [Azure AD Connect: Beheben von Fehlern während der Synchronisierung](../hybrid/tshoot-connect-sync-errors.md)
 
 ## <a name="summary"></a>Zusammenfassung

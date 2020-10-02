@@ -10,16 +10,16 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 283c66eb3b49b60b87283c5d94cc4f110adceffe
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: d7bb697879f40b45c886cd90bbb1e34906d35f66
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588746"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530504"
 ---
-# <a name="receive-and-respond-to-key-vault-notifications-with-azure-event-grid-preview"></a>Empfangen von und Reagieren auf Key Vault-Benachrichtigungen mit Azure Event Grid (Vorschau)
+# <a name="receive-and-respond-to-key-vault-notifications-with-azure-event-grid"></a>Empfangen von und Reagieren auf Key Vault-Benachrichtigungen mit Azure Event Grid
 
-Die Azure Key Vault-Integration in Azure Event Grid (derzeit in der Vorschauphase) ermöglicht Benutzerbenachrichtigung, wenn sich der Status eines in einem Schlüsseltresor gespeicherten Geheimnisses geändert hat. Eine Übersicht über dieses Feature finden Sie unter [Überwachen von Key Vault mit Event Grid](event-grid-overview.md).
+Die Azure Key Vault-Integration in Azure Event Grid ermöglicht die Benutzerbenachrichtigung, wenn sich der Status eines in einem Schlüsseltresor gespeicherten Geheimnisses geändert hat. Eine Übersicht über dieses Feature finden Sie unter [Überwachen von Key Vault mit Event Grid](event-grid-overview.md).
 
 In dieser Anleitung ist beschrieben, wie Sie Key Vault-Benachrichtigungen über Event Grid erhalten und wie Sie über Azure Automation auf Statusänderungen reagieren.
 
@@ -32,7 +32,7 @@ In dieser Anleitung ist beschrieben, wie Sie Key Vault-Benachrichtigungen über
 
 Event Grid ist ein Ereignisdienst für die Cloud. Durch Ausführen der Schritte in diesem Leitfaden abonnieren Sie Ereignisse für Key Vault und leiten Sie Ereignisse an Automation weiter. Wenn eines der Geheimnisse im Schlüsseltresor in Kürze abläuft, wird Event Grid über die Statusänderung informiert und sendet eine HTTP POST-Anforderung an den Endpunkt. Daraufhin löst ein Webhook eine Automation-Ausführung eines PowerShell-Skripts aus.
 
-![HTTP POST-Flussdiagramm](../media/image1.png)
+![HTTP POST-Flussdiagramm](../media/event-grid-tutorial-1.png)
 
 ## <a name="create-an-automation-account"></a>Erstellen eines Automation-Kontos
 
@@ -46,7 +46,7 @@ Erstellen Sie ein Automation-Konto über das [Azure-Portal](https://portal.azure
 
 1.  Wählen Sie **Hinzufügen**.
 
-    ![Bereich „Automatisierungskonten“ (Automation-Konten)](../media/image2.png)
+    ![Bereich „Automatisierungskonten“ (Automation-Konten)](../media/event-grid-tutorial-2.png)
 
 1.  Geben Sie im Bereich **Automation-Konto hinzufügen** die erforderlichen Informationen ein, und wählen Sie anschließend **Erstellen** aus.
 
@@ -54,7 +54,7 @@ Erstellen Sie ein Automation-Konto über das [Azure-Portal](https://portal.azure
 
 Wenn Ihr Automation-Konto vorbereitet ist, erstellen Sie ein Runbook.
 
-![Benutzeroberfläche für Erstellen eines Runbooks](../media/image3.png)
+![Benutzeroberfläche für Erstellen eines Runbooks](../media/event-grid-tutorial-3.png)
 
 1.  Wählen Sie das soeben erstellte Automation-Konto aus.
 
@@ -92,7 +92,7 @@ write-Error "No input data found."
 }
 ```
 
-![Benutzeroberfläche für Veröffentlichen eines Runbooks](../media/image4.png)
+![Benutzeroberfläche für Veröffentlichen eines Runbooks](../media/event-grid-tutorial-4.png)
 
 ## <a name="create-a-webhook"></a>Erstellen eines Webhooks
 
@@ -102,7 +102,7 @@ Erstellen Sie einen Webhook, um Ihr neu erstelltes Runbook auszulösen.
 
 1.  Wählen Sie **Webhook hinzufügen** aus.
 
-    ![Schaltfläche „Webhook hinzufügen“](../media/image5.png)
+    ![Schaltfläche „Webhook hinzufügen“](../media/event-grid-tutorial-5.png)
 
 1.  Wählen Sie **Neuen Webhook erstellen** aus.
 
@@ -115,15 +115,15 @@ Erstellen Sie einen Webhook, um Ihr neu erstelltes Runbook auszulösen.
 
 1. Wählen Sie **OK** und anschließend **Erstellen** aus.
 
-    ![Benutzeroberfläche für Erstellen eines neuen Webhooks](../media/image6.png)
+    ![Benutzeroberfläche für Erstellen eines neuen Webhooks](../media/event-grid-tutorial-6.png)
 
 ## <a name="create-an-event-grid-subscription"></a>Erstellen eines Event Grid-Abonnements
 
 Erstellen Sie ein Event Grid-Abonnement über das [Azure-Portal](https://portal.azure.com).
 
-1.  Navigieren Sie zu Ihrem Schlüsseltresor, und wählen Sie die Registerkarte **Ereignisse** aus. Wird diese Registerkarte nicht angezeigt, stellen Sie sicher, dass Sie die [Vorschauversion des Portals](https://ms.portal.azure.com/?Microsoft_Azure_KeyVault_ShowEvents=true&Microsoft_Azure_EventGrid_publisherPreview=true) verwenden.
+1.  Navigieren Sie zu Ihrem Schlüsseltresor, und wählen Sie die Registerkarte **Ereignisse** aus.
 
-    ![Registerkarte „Ereignisse“ im Azure-Portal](../media/image7.png)
+    ![Registerkarte „Ereignisse“ im Azure-Portal](../media/event-grid-tutorial-7.png)
 
 1.  Wählen Sie die Schaltfläche **Ereignisabonnement** aus.
 
@@ -143,15 +143,15 @@ Erstellen Sie ein Event Grid-Abonnement über das [Azure-Portal](https://portal
 
 1.  Klicken Sie auf **Erstellen**.
 
-    ![Erstellen eines Ereignisabonnements](../media/image8.png)
+    ![Erstellen eines Ereignisabonnements](../media/event-grid-tutorial-8.png)
 
 ## <a name="test-and-verify"></a>Testen und Überprüfen
 
 Vergewissern Sie sich, dass Ihr Event Grid-Abonnement ordnungsgemäß konfiguriert ist. Bei diesem Test wird davon ausgegangen, dass Sie im Schritt [Erstellen eines Event Grid-Abonnements](#create-an-event-grid-subscription) die Benachrichtigung für die Erstellung einer neuen Geheimnisversion (Secret New Version Created) abonniert haben und über die nötigen Berechtigungen verfügen, um in einem Schlüsseltresor eine neue Version eines Geheimnisses zu erstellen.
 
-![Testen der Konfiguration des Event Grid-Abonnements](../media/image9.png)
+![Testen der Konfiguration des Event Grid-Abonnements](../media/event-grid-tutorial-9.png)
 
-![Bereich „Geheimnis erstellen“](../media/image10.png)
+![Bereich „Geheimnis erstellen“](../media/event-grid-tutorial-10.png)
 
 1.  Navigieren Sie im Azure-Portal zu Ihrem Schlüsseltresor.
 
@@ -161,7 +161,7 @@ Vergewissern Sie sich, dass Ihr Event Grid-Abonnement ordnungsgemäß konfiguri
 
 1.  Überprüfen Sie unter **Metriken**, ob ein Ereignis erfasst wurde. Zwei Ereignisse werden erwartet: „SecretNewVersion“ und „SecretNearExpiry“. Mit diesen Ereignissen wird überprüft, ob die Statusänderung des Geheimnisses in Ihrem Schlüsseltresor von Event Grid erfolgreich erfasst wurde.
 
-    ![Bereich „Metriken“: Überprüfen auf erfasste Ereignisse](../media/image11.png)
+    ![Bereich „Metriken“: Überprüfen auf erfasste Ereignisse](../media/event-grid-tutorial-11.png)
 
 1.  Navigieren Sie zu Ihrem Automation-Konto.
 
@@ -169,13 +169,13 @@ Vergewissern Sie sich, dass Ihr Event Grid-Abonnement ordnungsgemäß konfiguri
 
 1.  Wählen Sie die Registerkarte **Webhooks** aus, und vergewissern Sie sich, dass der „Zuletzt ausgelöst“-Zeitstempel innerhalb von 60 Sekunden nach der Erstellung des neuen Geheimnisses liegt. Mit diesem Ergebnis wird bestätigt, dass Event Grid eine POST-Anforderung mit den Ereignisdetails der Statusänderung in Ihrem Schlüsseltresor an den Webhook gesendet hat und dass der Webhook ausgelöst wurde.
 
-    ![Registerkarte „Webhooks“, „Zuletzt ausgelöst“-Zeitstempel](../media/image12.png)
+    ![Registerkarte „Webhooks“, „Zuletzt ausgelöst“-Zeitstempel](../media/event-grid-tutorial-12.png)
 
 1. Kehren Sie zu Ihrem Runbook zurück, und wählen Sie die Registerkarte **Übersicht** aus.
 
 1. Sehen Sie sich die Liste **Kürzlich ausgeführte Aufträge** an. Darin sollte ein erstellter und abgeschlossener Auftrag enthalten sein. Ist dies der Fall, hat der Webhook das Runbook ausgelöst, um die Skriptausführung zu starten.
 
-    ![Webhook-Liste „Kürzlich ausgeführte Aufträge“](../media/image13.png)
+    ![Webhook-Liste „Kürzlich ausgeführte Aufträge“](../media/event-grid-tutorial-13.png)
 
 1. Wählen Sie den aktuellen Auftrag aus, und sehen Sie sich die POST-Anforderung an, die von Event Grid an den Webhook gesendet wurde. Überprüfen Sie den JSON-Code, und vergewissern Sie sich, dass die Parameter für den Schlüsseltresor und den Ereignistyp korrekt sind. Wenn der Parameter „event type“ (Ereignistyp) im JSON-Objekt dem Ereignis entspricht, das im Schlüsseltresor aufgetreten ist (in diesem Beispiel: Microsoft.KeyVault.SecretNearExpiry), war der Test erfolgreich.
 
@@ -194,9 +194,9 @@ Falls Sie bislang ein abrufbasiertes System verwendet haben, um nach Statusände
 Weitere Informationen:
 
 
-- Übersicht: [Überwachen von Key Vault mit Azure Event Grid (Vorschau)](event-grid-overview.md)
+- Übersicht: [Überwachen von Key Vault mit Azure Event Grid](event-grid-overview.md)
 - Gewusst wie: [Verwenden von Logic Apps zum Empfangen einer E-Mail bei Statusänderungen von Key Vault-Geheimnissen](event-grid-logicapps.md)
-- [Azure Event Grid-Ereignisschema für Azure Key Vault (Vorschau)](../../event-grid/event-schema-key-vault.md)
-- [Azure Key Vault – Übersicht](overview.md)
+- [Azure Event Grid-Ereignisschema für Azure Key Vault](../../event-grid/event-schema-key-vault.md)
+- [Was ist der Azure-Schlüsseltresor?](overview.md)
 - [Was ist Azure Event Grid?](../../event-grid/overview.md)
 - [Azure Automation – Übersicht](../../automation/index.yml)

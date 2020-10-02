@@ -172,7 +172,7 @@
           href: connect-azure-stack.md
     - name: Aktivieren von Verhaltensanalysen für Benutzer und Entitäten
       href: enable-entity-behavior-analytics.md
-    - name: Arbeiten mit mehreren Mandanten (MSSP)
+    - name: Verwalten mehrerer Mandanten (MSSP)
       href: multiple-tenants-service-providers.md
     - name: Arbeiten mit Vorfällen in mehreren Arbeitsbereichen
       href: multiple-workspace-view.md

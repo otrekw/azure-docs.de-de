@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 02/13/2019
+ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 35ca071cd8495611f0f350511ef9406f82c5be23
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b78c2b93a9427105ce2cc0ad8bd5d2b995c834ae
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77209425"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976298"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Tutorial: Erstellen einer ExpressRoute-Zuordnung mithilfe von Azure Virtual WAN
 
@@ -122,7 +122,7 @@ Verwenden Sie den Autorisierungsschlüssel und den Leitungs-URI, die Ihnen zur V
 
 1. Klicken Sie auf der Seite „ExpressRoute“ auf **+Autorisierungsschlüssel einlösen**.
 
-   ![Einlösen](./media/virtual-wan-expressroute-portal/redeem.png "einlösen")
+   ![Screenshot: ExpressRoute für einen virtuellen Hub mit ausgewählter Option „Autorisierungsschlüssel einlösen“](./media/virtual-wan-expressroute-portal/redeem.png "einlösen")
 2. Füllen Sie auf der Seite „Autorisierungsschlüssel einlösen“ die Werte aus.
 
    ![Einlösen von Schlüsselwerten](./media/virtual-wan-expressroute-portal/redeemkey2.png "Schlüsselwerte einlösen")

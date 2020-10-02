@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 04/14/2020
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: 072f13f5a0884cf95fe760e17ff0d770111f4da0
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 9ed918c841989cb50efa362251d09c0b655b7fc4
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204515"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89570095"
 ---
 | Resource | Begrenzung |
 | ---------------------------------------------------------------------- | -------------------------- |
@@ -42,6 +42,6 @@ ms.locfileid: "82204515"
 <sup>5</sup>Dieser Grenzwert gilt für die Tarife „Basic“, „Standard“ und „Premium“. Im Tarif „Consumption“ ist die Größe des Richtliniendokuments auf 4 KiB beschränkt.<br/>
 <sup>6</sup>Mehrere benutzerdefinierte Domänen werden nur in den Tarifen „Developer“ und „Premium“ unterstützt.<br/>
 <sup>7</sup>Zertifizierungsstellenzertifikate werden im Tarif „Consumption“ nicht unterstützt.<br/>
-<sup>8</sup>Diese Ressource betrifft nur den Tarif „Consumption“.<br/>
+<sup>8</sup>Dieser Grenzwert gilt nur für den Tarif „Consumption“. In diesen Kategorien gibt es keine Grenzwerte für andere Tarife.<br/>
 <sup>9</sup> Gilt für nur den Tarif „Consumption“. Enthält eine Abfragezeichenfolge der Länge bis zu 2048 Bytes.<br/>
 <sup>10</sup>Selbstgehostete Gateways werden nur in den Tarifen „Developer“ und „Premium“ unterstützt. Der Grenzwert gilt für die Anzahl von [selbstgehosteten Gatewayressourcen](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/gateway). Wenden Sie sich an den [Support](https://azure.microsoft.com/support/options/), um diesen Grenzwert zu erhöhen. Beachten Sie, dass die Anzahl von Knoten (oder Replikaten), die einer selbstgehosteten Gatewayressource zugeordnet sind, im Premium-Tarif unbegrenzt ist und im Developer-Tarif auf einen einzelnen Knoten begrenzt ist.
