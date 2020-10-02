@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
-ms.openlocfilehash: b9d27e602062ff2638d8eea23fe64497fd66512d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: dccd953d2a31b306994c06ae644959e18332f5da
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322906"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090175"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>VMware-Überwachungslösung (veraltet) in Azure Monitor
 
@@ -66,7 +66,7 @@ Erstellen Sie eine VM mit Linux-Betriebssystem, um alle Syslog-Daten von den ESX
 
 1. Führen Sie im Azure-Portal eine Protokollabfrage für `VMware_CL` aus. Wenn Azure Monitor die syslog-Daten sammelt, bleibt das syslog-Format erhalten. Im Portal werden einige bestimmte Felder erfasst, z.B. *Hostname* und *ProcessName*.  
 
-    ![type](./media/vmware/type.png)  
+    ![Screenshot einer Protokollabfrage für „Type = VMware_CL“ mit einem Ergebnis mit Zeitstempel](./media/vmware/type.png)  
 
     Wenn die Protokollsuchergebnisse in Ihrer Ansicht so ähnlich wie die Abbildung oben aussehen, können Sie das Dashboard für die VMware-Überwachungslösung verwenden.  
 
@@ -75,7 +75,7 @@ Die VMware-Überwachungslösung sammelt die verschiedenen Leistungsmetriken und 
 
 Die folgende Tabelle zeigt die Datensammlungsmethoden und andere Details dazu, wie Daten gesammelt werden.
 
-| Plattform | Log Analytics-Agent für Linux | SCOM-Agent | Azure Storage | SCOM erforderlich? | Daten von SCOM-Agent über Verwaltungsgruppe gesendet | Sammlungshäufigkeit |
+| Plattform | Log Analytics-Agent für Linux | System Center Operations Manager-Agent | Azure Storage | Operations Manager erforderlich? | Daten vom Operations Manager-Agent über Verwaltungsgruppe gesendet | Sammlungshäufigkeit |
 | --- | --- | --- | --- | --- | --- | --- |
 | Linux |&#8226; |  |  |  |  |Alle 3 Minuten |
 
@@ -105,7 +105,7 @@ In der folgenden Tabelle sind Beispiele für Datenfelder aufgeführt, die von de
 ## <a name="vmware-monitoring-solution-overview"></a>Übersicht über die VMware-Überwachungslösung
 Die Kachel „VMware“ wird in Ihrem Log Analytics-Arbeitsbereich angezeigt. Sie bietet eine allgemeine Ansicht der Fehler. Wenn Sie auf die Kachel klicken, gelangen Sie zu einer Dashboardansicht.
 
-![Kachel](./media/vmware/tile.png)
+![Screenshot der VMware-Kachel mit Anzeige von neun Fehlern](./media/vmware/tile.png)
 
 #### <a name="navigate-the-dashboard-view"></a>Navigieren in der Dashboardansicht
 In der **VMware**-Dashboardansicht sind die Blätter nach Folgendem angeordnet:
@@ -147,13 +147,13 @@ Wenn Sie zusätzliche Daten zur VM-Erstellung auf einem ESXi-Host anzeigen möch
 #### <a name="common-log-queries"></a>Allgemeine Protokollabfragen
 Die Lösung umfasst andere nützliche Abfragen, die Sie bei der Verwaltung Ihrer ESXi-Hosts unterstützen, z.B. hoher Speicherplatzbedarf, Speicherlatenz und Pfadfehler.
 
-![Abfragen](./media/vmware/queries.png)
+![Screenshot mit empfohlenen Suchvorgängen, bei denen es sich um nützliche gespeicherte Abfragen handelt](./media/vmware/queries.png)
 
 
 #### <a name="save-queries"></a>Speichern von Abfragen
 Das Speichern von Protokollabfragen ist ein Standardfeature in Azure Monitor und hilft Ihnen, Abfragen zu behalten, die Sie für nützlich befunden haben. Nachdem Sie eine Abfrage erstellt haben, die für Sie nützlich ist, speichern Sie sie, indem Sie auf **Favoriten** klicken. Eine gespeicherte Abfrage können Sie später auf einfache Weise über die Seite [Mein Dashboard](../learn/tutorial-logs-dashboards.md) wiederverwenden, wo Sie eigene benutzerdefinierte Dashboards erstellen können.
 
-![Docker-Dashboardansicht](./media/vmware/dockerdashboardview.png)
+![Screenshot eines Teils eines benutzerdefinierten Dashboards mit der Bezeichnung „Protokollsuche“ mit Symbolen für Rückgängigmachen, Exportieren, Warnung, Speichern, Favoriten und Verlauf](./media/vmware/dockerdashboardview.png)
 
 #### <a name="create-alerts-from-queries"></a>Erstellen von Warnungen aus Abfragen
 Nachdem Sie Ihre Abfragen erstellt haben, könnten Sie die Abfragen dazu verwenden, dass Sie auf bestimmte Ereignisse hingewiesen werden. Informationen zum Erstellen von Warnungen finden Sie unter [Warnungen in Log Analytics](../platform/alerts-overview.md). Beispiele für Warnungen durch Abfragen und weitere Beispiele für Abfragen finden Sie im Blogbeitrag [Monitor VMware using Log Analytics](/archive/blogs/msoms/monitor-vmware-using-oms-log-analytics) (Überwachen von VMware mit Log Analytics).

@@ -9,16 +9,16 @@ ms.date: 04/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c54690645286a4fceb3fd786d85652b1cf77d7aa
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: dbd4a80c0f480e51ce7ec248c3b5d3dc523e9d74
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260030"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530742"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>Erstellen und Bereitstellen eines IoT Edge-Geräts mithilfe von X.509-Zertifikaten
 
-Mit dem [Azure IoT Hub Device Provisioning-Dienstanbieter (DPS)](../iot-dps/index.yml) können Sie IoT Edge-Geräte mithilfe von X.509-Zertifikaten automatisch bereitstellen. Wenn Sie mit der automatischen Bereitstellung nicht vertraut sind, lesen Sie die Informationen unter [Konzepte für die automatische Bereitstellung](../iot-dps/concepts-auto-provisioning.md), bevor Sie fortfahren.
+Mit dem [Azure IoT Hub Device Provisioning-Dienstanbieter (DPS)](../iot-dps/index.yml) können Sie IoT Edge-Geräte mithilfe von X.509-Zertifikaten automatisch bereitstellen. Wenn Sie mit der automatischen Bereitstellung nicht vertraut sind, lesen Sie die Übersicht zur [Bereitstellung](../iot-dps/about-iot-dps.md#provisioning-process), bevor Sie den Vorgang fortsetzen.
 
 In diesem Artikel erfahren Sie, wie Sie eine Registrierung beim Device Provisioning-Dienst auf einem IoT Edge-Gerät mithilfe von X.509-Zertifikaten mit den folgenden Schritten erstellen:
 
@@ -52,7 +52,7 @@ Zum Einrichten der automatischen Bereitstellung mit X.509 benötigen Sie die fol
 * Ein Zwischenzertifikat oder ein Zertifikat der Stammzertifizierungsstelle aus der Zertifikatvertrauenskette. Dieses Zertifikat wird auf DPS hochgeladen, wenn Sie eine Gruppenregistrierung erstellen.
 
 > [!NOTE]
-> Derzeit verhindert eine Einschränkung in libiothsm die Verwendung von Zertifikaten, die am oder nach dem 1. Januar 2050 ablaufen.
+> Derzeit verhindert eine Einschränkung in libiothsm die Verwendung von Zertifikaten, die am oder nach dem 1. Januar 2038 ablaufen.
 
 ### <a name="use-test-certificates"></a>Verwenden von Testzertifikaten
 

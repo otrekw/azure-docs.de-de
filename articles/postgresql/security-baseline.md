@@ -1,32 +1,32 @@
 ---
 title: Azure-Sicherheitsbaseline für Azure Database for PostgreSQL-Einzelserver
-description: Azure-Sicherheitsbaseline für Azure Database for PostgreSQL-Einzelserver
+description: Die Sicherheitsbaseline für Azure Database for PostgreSQL-Einzelserver enthält Anleitungen und Ressourcen für die Vorgehensweise bei der Implementierung der Sicherheitsempfehlungen aus dem Azure-Sicherheitsvergleichstest.
 author: msmbaldwin
-ms.service: security
+ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 09/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 94121765cf9a19c25d4edc9ffa6119f0ee33d491
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: fb27868a06e133f6f90d0a7a18d218b74aafdd69
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89397048"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420046"
 ---
-# <a name="azure-security-baseline-for-azure-database-for-postgresql-single-server"></a>Azure-Sicherheitsbaseline für Azure Database for PostgreSQL-Einzelserver
+# <a name="azure-security-baseline-for-azure-database-for-postgresql---single-server"></a>Azure-Sicherheitsbaseline für Azure Database for PostgreSQL-Einzelserver
 
 Die Azure-Sicherheitsbaseline für Azure Database for PostgreSQL-Einzelserver enthält Empfehlungen, mit deren Hilfe Sie den Sicherheitsstatus Ihrer Bereitstellung verbessern können.
 
-Die Baseline für diesen Dienst wird von [Azure Security Benchmark-Version 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview) abgeleitet, die Empfehlungen dazu enthält, wie Sie Ihre Cloudlösungen in Azure mithilfe unserer bewährten Methoden schützen können.
+Die Baseline für diesen Dienst wird von [Azure Security Benchmark-Version 1.0](../security/benchmarks/overview.md) abgeleitet, die Empfehlungen dazu enthält, wie Sie Ihre Cloudlösungen in Azure mithilfe unserer bewährten Methoden schützen können.
 
-Weitere Informationen finden Sie unter [Übersicht über Azure-Sicherheitsbaselines](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
+Weitere Informationen finden Sie unter [Übersicht über Azure-Sicherheitsbaselines](../security/benchmarks/security-baselines-overview.md).
 
 ## <a name="network-security"></a>Netzwerksicherheit
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Netzwerksicherheit](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security).*
+*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Netzwerksicherheit](../security/benchmarks/security-control-network-security.md).*
 
-### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1: Schützen von Ressourcen mithilfe von Netzwerksicherheitsgruppen oder Azure Firewall in Virtual Network
+### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1: Schützen von Azure-Ressourcen in virtuellen Netzwerken
 
 **Leitfaden**: Konfigurieren Sie Private Link für Azure Database for PostgreSQL mit privaten Endpunkten. Private Link ermöglicht das Herstellen von Verbindungen mit verschiedenen PaaS-Diensten in Azure über einen privaten Endpunkt. Im Prinzip macht Azure Private Link Azure-Dienste in Ihrem privaten virtuellen Netzwerk (VNET) verfügbar. Der Datenverkehr zwischen Ihrem virtuellen Netzwerk und der PostgreSQL-Instanz verläuft über das Microsoft-Backbone-Netzwerk.
 
@@ -34,25 +34,25 @@ Alternativ können Sie VNET-Dienstendpunkte verwenden, um den Netzwerkzugriff au
 
 Sie können auch Ihren Azure Database for PostgreSQL-Server mit Firewallregeln schützen. Die Serverfirewall verhindert jeglichen Zugriff auf Ihren Datenbankserver, bis Sie angeben, welche Computer zugriffsberechtigt sind. Zum Konfigurieren der Firewall erstellen Sie Firewallregeln, die Bereiche zulässiger IP-Adressen festlegen. Sie können Firewallregeln auf Serverebene erstellen.
 
-Konfigurieren von Private Link für Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-portal
+- [Konfigurieren von Private Link für Azure Database for PostgreSQL](howto-configure-privatelink-portal.md)
 
-Erstellen und Verwalten von VNET-Dienstendpunkten und VNET-Regeln im Azure Database for PostgreSQL-Server: https://docs.microsoft.com/azure/postgresql/howto-manage-vnet-using-portal
+- [Erstellen und Verwalten von VNET-Dienstendpunkten und VNET-Regeln im Azure Database for PostgreSQL-Server](howto-manage-vnet-using-portal.md)
 
-Konfigurieren von Azure Database for PostgreSQL-Firewallregeln: https://docs.microsoft.com/azure/postgresql/howto-manage-firewall-using-portal
+- [Konfigurieren von Azure Database for PostgreSQL-Firewallregeln](howto-manage-firewall-using-portal.md)
 
 **Azure Security Center-Überwachung**: Ja
 
 **Verantwortlichkeit**: Kunde
 
-### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2: Überwachen und Protokollieren der Konfiguration und des Datenverkehrs von VNETs, Subnetzen und Netzwerkkarten (NICs)
+### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-network-interfaces"></a>1.2: Überwachen und Protokollieren der Konfiguration und des Datenverkehrs von virtuellen Netzwerken, Subnetzen und Netzwerkschnittstellen
 
 **Leitfaden**: Wenn Ihre Azure Database for PostgreSQL-Instanz auf einem privaten Endpunkt geschützt ist, können Sie virtuelle Computer im gleichen virtuellen Netzwerk bereitstellen. Sie können eine Netzwerksicherheitsgruppe (NSG) verwenden, um das Risiko einer Datenexfiltrierung zu verringern. Aktivieren Sie NSG-Flussprotokolle und senden Sie Protokolle an ein Speicherkonto für die Datenverkehrsüberwachung. Sie können auch NSG-Flussprotokolle an einen Log Analytics-Arbeitsbereich senden und Traffic Analytics verwenden, um Einblicke in den Datenverkehrsfluss in Ihrer Azure-Cloud zu ermöglichen. Einige Vorteile von Traffic Analytics sind die Möglichkeit, die Netzwerkaktivität zu visualisieren und Hotspots zu erkennen, Sicherheitsbedrohungen zu identifizieren, Datenverkehrsflussmuster zu verstehen und Netzwerkfehlkonfigurationen zu ermitteln.
 
-Konfigurieren von Private Link für Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-portal
+- [Konfigurieren von Private Link für Azure Database for PostgreSQL](howto-configure-privatelink-portal.md)
 
-Aktivieren der NSG-Flussprotokolle: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
+- [Aktivieren der NSG-Flussprotokolle](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-Aktivieren und Verwenden von Traffic Analytics: https://docs.microsoft.com/azure/network-watcher/traffic-analytics
+- [Aktivieren und Verwenden von Traffic Analytics](../network-watcher/traffic-analytics.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -66,37 +66,37 @@ Aktivieren und Verwenden von Traffic Analytics: https://docs.microsoft.com/azure
 
 **Verantwortlichkeit**: Nicht verfügbar
 
-### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4: Ablehnen der Kommunikation mit bekannten bösartigen IP-Adressen
+### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4: Ablehnen der Kommunikation mit bekannten schädlichen IP-Adressen
 
 **Leitfaden**: Verwenden Sie Advanced Threat Protection für Azure Database for PostgreSQL. Advanced Threat Protection erkennt Anomalien bei Aktivitäten, die auf ungewöhnliche und potenziell schädliche Versuche hinweisen, auf Datenbanken zuzugreifen oder diese zu nutzen.
 
 Aktivieren Sie DDoS Protection Standard in den virtuellen Netzwerken für Ihre Azure Database for PostgreSQL-Instanzen, um sich vor DDoS-Angriffen zu schützen. Verwenden Sie die in Azure Security Center integrierte Threat Intelligence, um die Kommunikation mit bekannten schädlichen oder nicht genutzten IP-Adressen zu verweigern.
 
-Konfigurieren von Advanced Threat Protection für Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
+- [Konfigurieren von Advanced Threat Protection für Azure Database for PostgreSQL](howto-database-threat-protection-portal.md)
 
-Konfigurieren von DDoS-Schutz: https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
+- [Konfigurieren von DDoS-Schutz](../virtual-network/manage-ddos-protection.md)
 
 **Azure Security Center-Überwachung**: Ja
 
 **Verantwortlichkeit**: Kunde
 
-### <a name="15-record-network-packets-and-flow-logs"></a>1.5: Aufzeichnen von Netzwerkpaketen und Flussprotokollen
+### <a name="15-record-network-packets"></a>1.5: Aufzeichnen von Netzwerkpaketen
 
 **Leitfaden**: Wenn Ihre Azure Database for PostgreSQL-Instanz auf einem privaten Endpunkt geschützt ist, können Sie virtuelle Computer im gleichen virtuellen Netzwerk bereitstellen. Sie können dann eine Netzwerksicherheitsgruppe (NSG) konfigurieren, um das Risiko einer Datenexfiltrierung zu verringern. Aktivieren Sie NSG-Flussprotokolle und senden Sie Protokolle an ein Speicherkonto für die Datenverkehrsüberwachung. Sie können auch NSG-Flussprotokolle an einen Log Analytics-Arbeitsbereich senden und Traffic Analytics verwenden, um Einblicke in den Datenverkehrsfluss in Ihrer Azure-Cloud zu ermöglichen. Einige Vorteile von Traffic Analytics sind die Möglichkeit, die Netzwerkaktivität zu visualisieren und Hotspots zu erkennen, Sicherheitsbedrohungen zu identifizieren, Datenverkehrsflussmuster zu verstehen und Netzwerkfehlkonfigurationen zu ermitteln.
 
-Aktivieren der NSG-Flussprotokolle: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
+- [Aktivieren der NSG-Flussprotokolle](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-Aktivieren und Verwenden von Traffic Analytics: https://docs.microsoft.com/azure/network-watcher/traffic-analytics
+- [Aktivieren und Verwenden von Traffic Analytics](../network-watcher/traffic-analytics.md)
 
 **Azure Security Center-Überwachung**: Ja
 
 **Verantwortlichkeit**: Kunde
 
-### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6: Bereitstellen von netzwerkbasierten Angriffserkennungs-/Eindringschutzsystemen (IDS/IPS)
+### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6: Bereitstellen von netzwerkbasierten Angriffserkennungs-/Eindringschutzsystemen (Intrusion Detection/Intrusion Prevention Systems, IDS/IPS)
 
 **Leitfaden**: Verwenden Sie Advanced Threat Protection für Azure Database for PostgreSQL. Advanced Threat Protection erkennt Anomalien bei Aktivitäten, die auf ungewöhnliche und potenziell schädliche Versuche hinweisen, auf Datenbanken zuzugreifen oder diese zu nutzen.
 
-Konfigurieren von Advanced Threat Protection für Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
+- [Konfigurieren von Advanced Threat Protection für Azure Database for PostgreSQL](howto-database-threat-protection-portal.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -116,9 +116,9 @@ Konfigurieren von Advanced Threat Protection für Azure Database for PostgreSQL:
 
 Hinweis: Azure Database for PostgreSQL verwendet das Diensttag „Microsoft.Sql“.
 
-Weitere Informationen zur Verwendung von Diensttags: https://docs.microsoft.com/azure/virtual-network/service-tags-overview
+- [Weitere Informationen zur Verwendung von Diensttags](../virtual-network/service-tags-overview.md)
 
-Grundlegendes zur Verwendung von Diensttags für Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-vnet#terminology-and-description
+- [Grundlegendes zur Verwendung von Diensttags für Azure Database for PostgreSQL](concepts-data-access-and-security-vnet.md#terminology-and-description)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -132,11 +132,11 @@ Grundlegendes zur Verwendung von Diensttags für Azure Database for PostgreSQL: 
 
 - Erzwingen einer TLS-Verbindung muss für PostgreSQL-Datenbankserver aktiviert sein
 
-Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+- [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-Azure Policy-Beispiele für Netzwerke: https://docs.microsoft.com/azure/governance/policy/samples/
+- [Azure Policy-Beispiele für Netzwerke](/azure/governance/policy/samples)
 
-Erstellen einer Azure-Blaupause: https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
+- [Erstellen einer Azure-Blaupause](../governance/blueprints/create-blueprint-portal.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -150,7 +150,7 @@ Verwenden Sie eine der integrierten Azure Policy-Definitionen zum Tagging, z. B
 
 Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden, um Ressourcen basierend auf ihren Tags zu suchen oder Aktionen auszuführen.
 
-Erstellen und Verwenden von Tags: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+- [Erstellen und Verwenden von Tags](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -160,9 +160,9 @@ Erstellen und Verwenden von Tags: https://docs.microsoft.com/azure/azure-resourc
 
 **Leitfaden**: Verwenden Sie das Azure-Aktivitätsprotokoll zum Überwachen der Konfigurationen von Netzwerkressourcen und zum Erkennen von Änderungen bei Netzwerkressourcen, die sich auf Ihre Azure Database for PostgreSQL-Instanzen beziehen. Erstellen Sie Warnungen in Azure Monitor, die bei Änderungen an wichtigen Netzwerkressourcen ausgelöst werden.
 
-Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen: https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view
+- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](/azure/azure-monitor/platform/activity-log-view)
 
-Erstellen von Warnungen in Azure Monitor: https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+- [Erstellen von Warnungen in Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -170,12 +170,11 @@ Erstellen von Warnungen in Azure Monitor: https://docs.microsoft.com/azure/azure
 
 ## <a name="logging-and-monitoring"></a>Protokollierung und Überwachung
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Protokollierung und Überwachung](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
+*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Protokollierung und Überwachung](../security/benchmarks/security-control-logging-monitoring.md).*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1: Verwenden von genehmigten Zeitsynchronisierungsquellen
 
 **Leitfaden**: Microsoft verwaltet die Zeitquelle, die für Azure-Ressourcen wie Azure Database for PostgreSQL verwendet wird, für Zeitstempel in den Protokollen.
-
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -185,11 +184,11 @@ Erstellen von Warnungen in Azure Monitor: https://docs.microsoft.com/azure/azure
 
 **Leitfaden**: Aktivieren Sie Diagnoseeinstellungen, Serverprotokolle und Erfassungsprotokolle, um die von Ihren Azure Database for PostgreSQL-Instanzen generierten Sicherheitsdaten zu aggregieren. Verwenden Sie Log Analytics-Arbeitsbereiche in Azure Monitor, um Analysen abzufragen und auszuführen, und verwenden Sie Azure Storage-Konten für die langfristige Speicherung/Archivierung. Alternativ dazu können Sie auch Daten in Azure Sentinel oder einer Drittanbieter-SIEM-Lösung aktivieren und integrieren.
 
-Konfigurieren von Serverprotokollen für Azure Database for PostgreSQL und Zugreifen auf diese: https://docs.microsoft.com/azure/postgresql/howto-configure-server-logs-in-portal
+- [Konfigurieren von Serverprotokollen für Azure Database for PostgreSQL und Zugreifen auf diese](howto-configure-server-logs-in-portal.md)
 
-Konfigurieren von Überwachungsprotokollen für Azure Database for PostgreSQL und Zugreifen auf diese: https://docs.microsoft.com/azure/postgresql/concepts-audit
+- [Konfigurieren von Überwachungsprotokollen für Azure Database for PostgreSQL und Zugreifen auf diese](concepts-audit.md)
 
-Ausführen des Onboardings für Azure Sentinel: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+- [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -199,11 +198,11 @@ Ausführen des Onboardings für Azure Sentinel: https://docs.microsoft.com/azure
 
 **Leitfaden**: Aktivieren Sie Diagnoseeinstellungen für Ihre Azure Database for PostgreSQL-Instanzen für den Zugriff auf Überwachungs-, Sicherheits- und Ressourcenprotokolle. Stellen Sie sicher, dass das PostgreSQL-Überwachungsprotokoll explizit aktiviert wird. Aktivitätsprotokolle, die automatisch verfügbar sind, enthalten Ereignisquelle, Datum, Benutzer, Zeitstempel, Quelladressen, Zieladressen und andere nützliche Elemente. Sie können auch die Diagnoseeinstellungen für das Azure-Aktivitätsprotokoll aktivieren und die Protokolle an denselben Log Analytics-Arbeitsbereich oder dasselbe Speicherkonto senden.
 
-Konfigurieren von Serverprotokollen für Azure Database for PostgreSQL und Zugreifen auf diese: https://docs.microsoft.com/azure/postgresql/howto-configure-server-logs-in-portal
+- [Konfigurieren von Serverprotokollen für Azure Database for PostgreSQL und Zugreifen auf diese](howto-configure-server-logs-in-portal.md)
 
-Konfigurieren von Überwachungsprotokollen für Azure Database for PostgreSQL und Zugreifen auf diese: https://docs.microsoft.com/azure/postgresql/concepts-audit
+- [Konfigurieren von Überwachungsprotokollen für Azure Database for PostgreSQL und Zugreifen auf diese](concepts-audit.md)
 
-Konfigurieren von Diagnoseeinstellungen für das Azure-Aktivitätsprotokoll: https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
+- [Azure-Aktivitätsprotokoll](/azure/azure-monitor/platform/diagnostic-settings-legacy)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -213,7 +212,6 @@ Konfigurieren von Diagnoseeinstellungen für das Azure-Aktivitätsprotokoll: htt
 
 **Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
-
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Nicht verfügbar
@@ -222,9 +220,9 @@ Konfigurieren von Diagnoseeinstellungen für das Azure-Aktivitätsprotokoll: htt
 
 **Leitfaden**: Legen Sie in Azure Monitor den Aufbewahrungszeitraum des Log Analytics-Arbeitsbereichs, der für die Azure Database for PostgreSQL-Protokolle verwendet wird, gemäß den Compliancevorschriften Ihrer Organisation fest. Verwenden Sie Azure Storage-Konten für die langfristige/Archivierungsspeicherung.
 
-Festlegen der Parameter für die Protokollaufbewahrung für Log Analytics-Arbeitsbereiche: https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
+- [Ändern des Datenaufbewahrungszeitraums](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
-Speichern von Ressourcenprotokollen in einem Azure Storage-Konto: https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-storage
+- [Azure-Ressourcenprotokolle](/azure/azure-monitor/platform/resource-logs-collect-storage)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -234,31 +232,31 @@ Speichern von Ressourcenprotokollen in einem Azure Storage-Konto: https://docs.m
 
 **Leitfaden**: Analysieren und überwachen Sie Protokolle Ihrer Azure Database for PostgreSQL-Instanzen auf anormales Verhalten. Verwenden Sie Log Analytics von Azure Monitor, um Protokolle zu überprüfen und Abfragen für Protokolldaten auszuführen. Alternativ dazu können Sie auch Daten in Azure Sentinel oder einer Drittanbieter-SIEM-Lösung aktivieren und integrieren.
 
-Durchführen des Onboardings für Azure Sentinel: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+- [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-Weitere Informationen zu Log Analytics: https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
+- [Tutorial: Erste Schritte mit Log Analytics-Abfragen](../azure-monitor/log-query/get-started-portal.md)
 
-Ausführen benutzerdefinierter Abfragen in Azure Monitor: https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
+- [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
-### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7: Aktivieren von Warnungen für anormale Aktivitäten
+### <a name="27-enable-alerts-for-anomalous-activities"></a>2.7: Aktivieren von Warnungen bei anomalen Aktivitäten
 
 **Leitfaden**: Aktivieren Sie Advanced Threat Protection für Azure Database for PostgreSQL. Advanced Threat Protection erkennt Anomalien bei Aktivitäten, die auf ungewöhnliche und potenziell schädliche Versuche hinweisen, auf Datenbanken zuzugreifen oder diese zu nutzen.
 
 Außerdem können Sie Serverprotokolle und Diagnoseeinstellungen für PostgreSQL aktivieren und Protokolle an einen Log Analytics-Arbeitsbereich senden. Integrieren Sie Ihren Log Analytics-Arbeitsbereich in Azure Sentinel, da er eine Lösung für die Sicherheitsorchestrierung mit automatisierter Reaktion (Security Orchestration Automated Response, SOAR) bereitstellt. Dadurch können Playbooks (automatisierte Lösungen) erstellt und zum Beheben von Sicherheitsproblemen verwendet werden.
 
-Aktivieren von Advanced Threat Protection für Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
+- [Aktivieren von Advanced Threat Protection für Azure Database for PostgreSQL](howto-database-threat-protection-portal.md)
 
-Konfigurieren von Serverprotokollen für Azure Database for PostgreSQL und Zugreifen auf diese: https://docs.microsoft.com/azure/postgresql/howto-configure-server-logs-in-portal
+- [Konfigurieren von Serverprotokollen für Azure Database for PostgreSQL und Zugreifen auf diese](howto-configure-server-logs-in-portal.md)
 
-Konfigurieren von Überwachungsprotokollen für Azure Database for PostgreSQL und Zugreifen auf diese: https://docs.microsoft.com/azure/postgresql/concepts-audit
+- [Konfigurieren von Überwachungsprotokollen für Azure Database for PostgreSQL und Zugreifen auf diese](concepts-audit.md)
 
-Konfigurieren von Diagnoseeinstellungen für das Azure-Aktivitätsprotokoll: https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
+- [Azure-Aktivitätsprotokoll](/azure/azure-monitor/platform/diagnostic-settings-legacy)
 
-Durchführen des Onboardings für Azure Sentinel: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+- [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -290,7 +288,7 @@ Durchführen des Onboardings für Azure Sentinel: https://docs.microsoft.com/azu
 
 ## <a name="identity-and-access-control"></a>Identität und Zugriffssteuerung
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Identität und Zugriffssteuerung](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control).*
+*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Identität und Zugriffssteuerung](../security/benchmarks/security-control-identity-access-control.md).*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: Verwalten eines Bestands von Administratorkonten
 
@@ -298,11 +296,11 @@ Durchführen des Onboardings für Azure Sentinel: https://docs.microsoft.com/azu
 
 Azure Database for PostgreSQL unterstützt keine integrierte rollenbasierte Zugriffssteuerung. Sie können jedoch benutzerdefinierte Rollen auf Basis bestimmter Ressourcenanbietervorgänge erstellen.
 
-Grundlegendes zu benutzerdefinierten Rollen für Azure-Abonnements: https://docs.microsoft.com/azure/role-based-access-control/custom-roles 
+- [Benutzerdefinierte Azure-Rollen](../role-based-access-control/custom-roles.md) 
 
-Grundlegendes zu Vorgängen bei Azure Database for PostgreSQL-Ressourcenanbietern: https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftdbforpostgresql 
+- [Microsoft.DBforPostgreSQL](../role-based-access-control/resource-provider-operations.md#microsoftdbforpostgresql) 
 
-Grundlegendes zur Zugriffsverwaltung für Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/concepts-security#access-management
+- [Sicherheit in Azure Database for PostgreSQL – Einzelserver](concepts-security.md#access-management)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -314,9 +312,9 @@ Grundlegendes zur Zugriffsverwaltung für Azure Database for PostgreSQL: https:/
 
 Bei der Erstellung von Azure Database for PostgreSQL-Ressourcen erzwingt Azure die Erstellung eines administrativen Benutzerkontos mit einem sicheren Kennwort. Nachdem die PostgreSQL-Instanz erstellt wurde, können Sie jedoch das erste erstellte Serveradministratorkonto verwenden, um weitere Benutzer zu erstellen und diesen Administratorzugriff zu gewähren. Stellen Sie beim Erstellen dieser Konten sicher, dass Sie für jedes Konto ein anderes, sicheres Kennwort konfigurieren.
 
-Erstellen zusätzlicher Konten für Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/howto-create-users
+- [Erstellen zusätzlicher Konten für Azure Database for PostgreSQL](howto-create-users.md)
 
-Aktualisieren des Administratorkennworts: https://docs.microsoft.com/azure/postgresql/howto-create-manage-server-portal#update-admin-password
+- [Aktualisieren des Administratorkennworts](howto-create-manage-server-portal.md#update-admin-password)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -326,26 +324,25 @@ Aktualisieren des Administratorkennworts: https://docs.microsoft.com/azure/postg
 
 **Leitfaden**: Erstellen Sie Standardbetriebsvorgänge für die Verwendung dedizierter Administratorkonten, die Zugriff auf Ihre Azure Database for PostgreSQL-Instanzen haben. Verwenden Sie die Identitäts- und Zugriffsverwaltung in Azure Security Center, um die Anzahl der Administratorkonten zu überwachen. 
 
-Grundlegendes zu Identität und Zugriff in Azure Security Center: https://docs.microsoft.com/azure/security-center/security-center-identity-access 
+- [Grundlegendes zu Identität und Zugriff im Azure Security Center](../security-center/security-center-identity-access.md) 
 
-Grundlegendes zum Erstellen von Administratorbenutzern in Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/howto-create-users#the-server-admin-account
-
+- [Grundlegendes zum Erstellen von Administratorbenutzern in Azure Database for PostgreSQL](howto-create-users.md#the-server-admin-account)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
-### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4: Verwenden des einmaligen Anmeldens (Single Sign-On, SSO) mit Azure Active Directory
+### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3.4: Verwenden des einmaligen Anmeldens (SSO) in Azure Active Directory
 
 **Leitfaden**: Die Anmeldung bei Azure Database for PostgreSQL wird sowohl über Angaben für Benutzername/Kennwort, die direkt in der Datenbank konfiguriert werden, als auch über eine Azure Active Directory-Identität (AAD) und Verwendung eines Azure AD-Tokens für die Herstellung einer Verbindung unterstützt. Bei Verwenden eines Azure AD-Tokens werden verschiedene Methoden unterstützt, wie z. B. ein Azure AD-Benutzer, eine Azure AD-Gruppe oder eine Azure AD-Anwendung, die eine Verbindung mit der Datenbank herstellt.
 
 Getrennt davon ist der Zugriff auf die Steuerungsebene von PostgreSQL über die REST-API verfügbar, wobei einmaliges Anmelden unterstützt wird. Legen Sie zum Authentifizieren den Autorisierungsheader für Ihre Anforderungen auf ein JSON-Webtoken fest, das Sie aus Azure Active Directory abrufen.
 
-Verwenden von Azure Active Directory für die Authentifizierung mit Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/howto-configure-sign-in-aad-authentication
+- [Verwenden von Azure Active Directory für die Authentifizierung mit PostgreSQL](howto-configure-sign-in-aad-authentication.md)
 
-Grundlegendes zur REST-API für Azure Database for PostgreSQL: https://docs.microsoft.com/rest/api/postgresql/
+- [Grundlegendes zur REST-API für Azure Database for PostgreSQL](/rest/api/postgresql/)
 
-Grundlegendes zu SSO mit Azure AD: https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
+- [Grundlegendes zu SSO mit Azure AD](../active-directory/manage-apps/what-is-single-sign-on.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -355,29 +352,29 @@ Grundlegendes zu SSO mit Azure AD: https://docs.microsoft.com/azure/active-dire
 
 **Leitfaden**: Aktivieren Sie die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) für Azure Active Directory, und befolgen Sie die Empfehlungen für die Identitäts- und Zugriffsverwaltung in Azure Security Center. Wenn Sie Azure AD-Token für die Anmeldung bei Ihrer Datenbank verwenden, können Sie für Datenbankanmeldungen eine mehrstufige Authentifizierung anfordern.
 
-Aktivieren von MFA in Azure: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+- [Aktivieren von MFA in Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
-Verwenden von Azure Active Directory für die Authentifizierung mit Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/howto-configure-sign-in-aad-authentication
+- [Verwenden von Azure Active Directory für die Authentifizierung mit PostgreSQL](howto-configure-sign-in-aad-authentication.md)
 
-Überwachen von Identität und Zugriff in Azure Security Center: https://docs.microsoft.com/azure/security-center/security-center-identity-access
+- [Überwachen von Identität und Zugriff in Azure Security Center](../security-center/security-center-identity-access.md)
 
 **Azure Security Center-Überwachung**: Ja
 
 **Verantwortlichkeit**: Kunde
 
-### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: Verwenden dedizierter Computer (Arbeitsstationen mit privilegiertem Zugriff) für alle administrativen Aufgaben
+### <a name="36-use-secure-azure-managed-workstations-for-administrative-tasks"></a>3.6: Verwenden von sicheren, von Azure verwalteten Arbeitsstationen für Verwaltungsaufgaben
 
 **Leitfaden**: Verwenden Sie Arbeitsstationen mit privilegiertem Zugriff (Privileged Access Workstations, PAWs) mit Multi-Factor Authentication (MFA), die für die Anmeldung und Konfiguration von Azure-Ressourcen konfiguriert sind.
 
-Informationen zu Arbeitsstationen mit privilegiertem Zugriff: https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
+- [Informationen zu Arbeitsstationen mit privilegiertem Zugriff](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-Aktivieren von MFA in Azure: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+- [Aktivieren von MFA in Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
-### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7: Protokollieren und Warnen bei verdächtigen Aktivitäten in Administratorkonten
+### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7: Protokollieren von und Warnen bei verdächtigen Aktivitäten in Administratorkonten
 
 **Leitfaden**: Aktivieren Sie Advanced Threat Protection für Azure Database for PostgreSQL, um Warnungen bei verdächtigen Aktivitäten zu generieren.
 
@@ -385,11 +382,11 @@ Außerdem können Sie Azure Active Directory (AD) Privileged Identity Management
 
 Verwenden Sie Azure AD-Risikoerkennungen, um Warnungen und Berichte zum Verhalten von Risikobenutzern anzuzeigen.
 
-Einrichten von Advanced Threat Protection für Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
+- [Einrichten von Advanced Threat Protection für Azure Database for PostgreSQL](howto-database-threat-protection-portal.md)
 
-Bereitstellen von Azure AD Privileged Identity Management (PIM): https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
+- [Bereitstellen von Azure AD Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-Informationen zu Azure AD-Risikoerkennungen: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
+- [Azure Active Directory-Risikoerkennungen](/azure/active-directory/reports-monitoring/concept-risk-events)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -399,7 +396,7 @@ Informationen zu Azure AD-Risikoerkennungen: https://docs.microsoft.com/azure/ac
 
 **Leitfaden**: Verwenden Sie benannte Standorte mit bedingtem Zugriff, um den Zugriff auf das Portal und Azure Resource Manager nur über bestimmte logische Gruppierungen von IP-Adressbereichen oder Ländern/Regionen zuzulassen.
 
-Konfigurieren benannter Standorte in Azure: https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
+- [Konfigurieren benannter Standorte in Azure](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -413,7 +410,7 @@ Für die Anmeldung bei Azure Database for PostgreSQL wird empfohlen, Azure AD zu
 
 Azure AD-Anmeldeinformationen können auch für die Verwaltung auf Verwaltungsebene (z. B. Azure-Portal) zum Steuern von PostgreSQL-Administratorkonten verwendet werden.
 
-Verwenden von Azure Active Directory für die Authentifizierung mit Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/howto-configure-sign-in-aad-authentication
+- [Verwenden von Azure Active Directory für die Authentifizierung mit PostgreSQL](howto-configure-sign-in-aad-authentication.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -423,31 +420,31 @@ Verwenden von Azure Active Directory für die Authentifizierung mit Azure Databa
 
 **Leitfaden**: Überprüfen Sie die Azure Active Directory-Protokolle, um veraltete Konten zu ermitteln, die u. U. Azure Database for PostgreSQL-Administratorrollen enthalten können. Verwenden Sie zusätzlich Azure-Identitätszugriffsüberprüfungen, um Gruppenmitgliedschaften, den Zugriff auf Unternehmensanwendungen, die für den Zugriff auf Azure Database for PostgreSQL verwendet werden könnten, und Rollenzuweisungen effizient zu verwalten. Der Benutzerzugriff sollte regelmäßig überprüft werden (z. B. alle 90 Tage), um sicherzustellen, dass nur die richtigen Benutzer weiterhin Zugriff haben.
 
-Grundlegendes zur Azure AD-Berichterstellung: https://docs.microsoft.com/azure/active-directory/reports-monitoring/
+- [Grundlegendes zur Azure AD-Berichterstellung](/azure/active-directory/reports-monitoring/)
 
-Verwenden von Zugriffsüberprüfungen für Azure-Identitäten: https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
+- [Verwenden von Zugriffsüberprüfungen für Azure-Identitäten](../active-directory/governance/access-reviews-overview.md)
 
-Überprüfen von PostgreSQL-Benutzern und der zugewiesenen Rollen: https://www.postgresql.org/docs/current/database-roles.html
+- [Datenbankrollen](https://www.postgresql.org/docs/current/database-roles.html)
 
 **Azure Security Center-Überwachung**: Ja
 
 **Verantwortlichkeit**: Kunde
 
-### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11: Überwachen von Zugriffsversuchen auf deaktivierte Konten
+### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3.11: Überwachen von Zugriffsversuchen auf deaktivierte Anmeldeinformationen
 
 **Leitfaden**: Aktivieren Sie die Diagnoseeinstellungen für Azure Database for PostgreSQL und Azure Active Directory, und senden Sie alle Protokolle an einen Log Analytics-Arbeitsbereich. Konfigurieren Sie gewünschte Warnungen (z. B. fehlgeschlagene Authentifizierungsversuche) in Log Analytics.
 
-Konfigurieren von Serverprotokollen für Azure Database for PostgreSQL und Zugreifen auf diese: https://docs.microsoft.com/azure/postgresql/howto-configure-server-logs-in-portal
+- [Konfigurieren von Serverprotokollen für Azure Database for PostgreSQL und Zugreifen auf diese](howto-configure-server-logs-in-portal.md)
 
-Konfigurieren von Überwachungsprotokollen für Azure Database for PostgreSQL und Zugreifen auf diese: https://docs.microsoft.com/azure/postgresql/concepts-audit
+- [Konfigurieren von Überwachungsprotokollen für Azure Database for PostgreSQL und Zugreifen auf diese](concepts-audit.md)
 
-Integrieren von Azure-Aktivitätsprotokollen in Azure Monitor: https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
+- [Integrieren von Azure-Aktivitätsprotokollen in Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
-### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12: Warnung bei abweichendem Verhalten bei der Kontoanmeldung
+### <a name="312-alert-on-account-sign-in-behavior-deviation"></a>3.12: Warnung bei abweichendem Verhalten bei der Kontoanmeldung
 
 **Leitfaden**: Aktivieren Sie Advanced Threat Protection für Azure Database for PostgreSQL, um Warnungen bei verdächtigen Aktivitäten zu generieren.
 
@@ -455,13 +452,13 @@ Verwenden Sie Azure Active Directory Identity Protection und Risikoerkennungsfea
 
 Außerdem können Sie Protokolle zur weiteren Untersuchung in Azure Sentinel erfassen.
 
-Einrichten von Advanced Threat Protection für Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
+- [Einrichten von Advanced Threat Protection für Azure Database for PostgreSQL](howto-database-threat-protection-portal.md)
 
-Übersicht über Azure AD Identity Protection: https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection
+- [Was ist Azure Active Directory Identity Protection?](../active-directory/identity-protection/overview-identity-protection.md)
 
-Anzeigen riskanter Azure AD-Anmeldungen: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
+- [Anzeigen riskanter Azure AD-Anmeldungen](/azure/active-directory/reports-monitoring/concept-risk-events)
 
-Durchführen des Onboardings für Azure Sentinel: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+- [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -471,21 +468,21 @@ Durchführen des Onboardings für Azure Sentinel: https://docs.microsoft.com/azu
 
 **Leitfaden**: Nicht zutreffend. Kunden-Lockbox wird für Azure Database for PostgreSQL noch nicht unterstützt.
 
-Liste der durch Kunden-Lockbox unterstützten Dienste: https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+- [Unterstützte Dienste und Szenarios bei allgemeiner Verfügbarkeit](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
-## <a name="data-protection"></a>Datenschutz
+## <a name="data-protection"></a>Schutz von Daten
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Schutz von Daten](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection).*
+*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Datenschutz](../security/benchmarks/security-control-data-protection.md).*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: Verwalten eines Bestands an vertraulichen Informationen
 
 **Leitfaden**: Verwenden Sie Tags, um die Nachverfolgung von Azure Database for PostgreSQL-Instanzen oder ähnlichen Ressourcen, die vertrauliche Informationen speichern oder verarbeiten, zu unterstützen.
 
-Erstellen und Verwenden von Tags: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+- [Erstellen und Verwenden von Tags](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -495,15 +492,15 @@ Erstellen und Verwenden von Tags: https://docs.microsoft.com/azure/azure-resourc
 
 **Leitfaden**: Implementieren Sie separate Abonnements und/oder Verwaltungsgruppen für Entwicklungs-, Test- und Produktionsumgebungen. Verwenden Sie eine Kombination von Private Link, Dienstendpunkten und/oder Firewallregeln, um den Netzwerkzugriff auf Ihre Azure Database for PostgreSQL-Instanzen zu isolieren und einzuschränken.
 
-Erstellen zusätzlicher Azure-Abonnements: https://docs.microsoft.com/azure/billing/billing-create-subscription
+- [Erstellen zusätzlicher Azure-Abonnements](/azure/billing/billing-create-subscription)
 
-Erstellen von Verwaltungsgruppen: https://docs.microsoft.com/azure/governance/management-groups/create
+- [Erstellen von Verwaltungsgruppen](/azure/governance/management-groups/create)
 
-Konfigurieren von Private Link für Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-portal
+- [Konfigurieren von Private Link für Azure Database for PostgreSQL](howto-configure-privatelink-portal.md)
 
-Erstellen und Verwalten von VNET-Dienstendpunkten und VNET-Regeln im Azure Database for PostgreSQL-Server: https://docs.microsoft.com/azure/postgresql/howto-manage-vnet-using-portal
+- [Erstellen und Verwalten von VNET-Dienstendpunkten und VNET-Regeln im Azure Database for PostgreSQL-Server](howto-manage-vnet-using-portal.md)
 
-Konfigurieren von Azure Database for PostgreSQL-Firewallregeln: https://docs.microsoft.com/azure/postgresql/concepts-firewall-rules
+- [Konfigurieren von Azure Database for PostgreSQL-Firewallregeln](concepts-firewall-rules.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -515,9 +512,9 @@ Konfigurieren von Azure Database for PostgreSQL-Firewallregeln: https://docs.mic
 
 Microsoft verwaltet die zugrunde liegende Infrastruktur für Azure Database for PostgreSQL und hat strenge Kontrollen implementiert, um den Verlust oder die Offenlegung von Kundendaten zu verhindern.
 
-Mindern der Datenexfiltrierung für Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link
+- [Mindern der Datenexfiltration für Azure Database for PostgreSQL](concepts-data-access-and-security-private-link.md)
 
-Informationen zum Schutz von Kundendaten in Azure: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+- [Grundlegendes zum Schutz von Kundendaten in Azure](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -529,7 +526,7 @@ Informationen zum Schutz von Kundendaten in Azure: https://docs.microsoft.com/az
 
 Derzeit werden die TLS-Versionen TLS 1.0, TLS 1.1, TLS 1.2 für Azure Database for PostgreSQL unterstützt.
 
-Konfigurieren der Verschlüsselung während der Übertragung für Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security
+- [Konfigurieren der Verschlüsselung während der Übertragung für Azure Database for PostgreSQL](concepts-ssl-connection-security.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -541,19 +538,19 @@ Konfigurieren der Verschlüsselung während der Übertragung für Azure Database
 
 Für die zugrundeliegende Plattform, die von Microsoft verwaltet wird, behandelt Microsoft alle Kundeninhalte als vertraulich und unternimmt große Anstrengungen, um Kundendaten vor Verlust und Gefährdung zu schützen. Um die Sicherheit von Kundendaten innerhalb von Azure zu gewährleisten, hat Microsoft eine Reihe von robusten Datenschutzkontrollen und -funktionen implementiert und kümmert sich um deren Verwaltung.
 
-Grundlegendes zum Schutz von Kundendaten in Azure: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+- [Grundlegendes zum Schutz von Kundendaten in Azure](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
 **Verantwortlichkeit**: Shared
 
-### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Verwenden von Azure RBAC zum Steuern des Zugriffs auf Ressourcen
+### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6: Verwenden der rollenbasierten Zugriffssteuerung zum Steuern des Zugriffs auf Ressourcen
 
-**Leitfaden**: Verwenden Sie die rollenbasierte Zugriffssteuerung (Azure RBAC) von Azure, um den Zugriff auf die Azure Database for PostgreSQL-Steuerungsebene (z. B. Azure-Portal) zu steuern. Verwenden Sie für den Zugriff auf die Datenebene (in der Datenbank selbst) SQL-Abfragen, um Benutzer zu erstellen und Benutzerberechtigungen zu konfigurieren. Azure RBAC wirkt sich nicht auf Benutzerberechtigungen in der Datenbank aus.
+**Leitfaden**: Verwenden Sie die rollenbasierte Zugriffssteuerung (Azure RBAC) von Azure, um den Zugriff auf die Azure Database for PostgreSQL-Steuerungsebene (z. B. Azure-Portal) zu steuern. Verwenden Sie für den Zugriff auf die Datenebene (in der Datenbank selbst) SQL-Abfragen, um Benutzer zu erstellen und Benutzerberechtigungen zu konfigurieren. Azure RBAC wirkt sich nicht auf Benutzerberechtigungen in der Datenbank aus.
 
-Konfigurieren von Azure RBAC: https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
+- [Konfigurieren von Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
-Konfigurieren des Benutzerzugriffs mit SQL für Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/howto-create-users
+- [Erstellen von Benutzern in Azure Database for PostgreSQL: Hyperscale (Citus)](howto-create-users.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -565,7 +562,7 @@ Konfigurieren des Benutzerzugriffs mit SQL für Azure Database for PostgreSQL: h
 
 Microsoft verwaltet die zugrunde liegende Infrastruktur für Azure Database for PostgreSQL und hat strenge Kontrollen implementiert, um den Verlust oder die Offenlegung von Kundendaten zu verhindern.
 
-Informationen zum Schutz von Kundendaten in Azure: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+- [Grundlegendes zum Schutz von Kundendaten in Azure](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -579,10 +576,9 @@ Datenverschlüsselung mit kundenseitig verwalteten Schlüsseln für Azure Databa
 
 AskAzureDBforPostgreSQL@service.microsoft.com.
 
-Grundlegendes zur Verschlüsselung von ruhenden Daten für Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/concepts-security
+- [Grundlegendes zur Verschlüsselung von ruhenden Daten für Azure Database for PostgreSQL](concepts-security.md)
 
-Grundlegendes zur Verschlüsselung von ruhenden Daten für Azure Database for PostgreSQL mithilfe von kundenseitig verwalteten Schlüsseln: https://docs.microsoft.com/azure/postgresql/concepts-data-encryption-postgresql
-
+- [Grundlegendes zur Verschlüsselung von ruhenden Daten für Azure Database for PostgreSQL mithilfe von kundenseitig verwalteten Schlüsseln](concepts-data-encryption-postgresql.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -592,7 +588,7 @@ Grundlegendes zur Verschlüsselung von ruhenden Daten für Azure Database for Po
 
 **Leitfaden**: Verwenden Sie Azure Monitor mit dem Azure-Aktivitätsprotokoll, um Warnungen für den Fall zu erstellen, dass Änderungen an Produktionsinstanzen von Azure Database for PostgreSQL und anderen kritischen bzw. zugehörigen Ressourcen vorgenommen werden.
 
-Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls: https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+- [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -600,17 +596,21 @@ Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls: https:/
 
 ## <a name="vulnerability-management"></a>Verwaltung von Sicherheitsrisiken
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Verwaltung von Sicherheitsrisiken](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management).*
+*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Verwaltung von Sicherheitsrisiken](../security/benchmarks/security-control-vulnerability-management.md).*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1: Ausführen automatisierter Scan-Tools für Sicherheitsrisiken
 
-**Leitfaden**: Zurzeit nicht verfügbar. Azure Security Center unterstützt noch keine Sicherheitsrisikobewertung für Azure Database for PostgreSQL.
+**Leitfaden**: Befolgen Sie die Empfehlungen im Azure Security Center zum Schützen Ihrer Azure Database for PostgreSQL-Instanzen und damit verbundenen Ressourcen.
 
-Featureabdeckung für Azure PaaS-Dienste in Azure Security Center: https://docs.microsoft.com/azure/security-center/features-paas
+Microsoft führt die Verwaltung der Sicherheitsrisiken auf den zugrunde liegenden Systemen aus, die Azure Database for PostgreSQL unterstützen.
+
+- [Grundlegendes zu Azure Security Center-Empfehlungen](../security-center/recommendations-reference.md)
+
+- [Funktionsabdeckung für Azure PaaS-Ressourcen](../security-center/features-paas.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
-**Verantwortlichkeit**: Kunde
+**Verantwortlichkeit**: Shared
 
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2: Bereitstellen der automatisierten Lösung für die Patchverwaltung von Betriebssystemen
 
@@ -620,7 +620,7 @@ Featureabdeckung für Azure PaaS-Dienste in Azure Security Center: https://docs.
 
 **Verantwortlichkeit**: Nicht verfügbar
 
-### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3: Bereitstellen der automatisierten Lösung für die Patchverwaltung von Drittanbietersoftware
+### <a name="53-deploy-automated-patch-management-solution-for-third-party-software-titles"></a>5.3: Bereitstellen einer automatisierten Patchverwaltungslösung für Softwaretitel von Drittanbietern
 
 **Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
@@ -646,17 +646,17 @@ Featureabdeckung für Azure PaaS-Dienste in Azure Security Center: https://docs.
 
 ## <a name="inventory-and-asset-management"></a>Bestands- und Ressourcenverwaltung
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Bestands- und Ressourcenverwaltung](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
+*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Bestands- und Ressourcenverwaltung](../security/benchmarks/security-control-inventory-asset-management.md).*
 
-### <a name="61-use-azure-asset-discovery"></a>6.1: Verwenden von Azure Asset Discovery
+### <a name="61-use-automated-asset-discovery-solution"></a>6.1: Verwenden der automatisierten Asset Discovery-Lösung
 
 **Leitfaden**: Verwenden Sie Azure Resource Graph, um alle Ressourcen (einschließlich Azure Database for PostgreSQL-Instanzen) innerhalb Ihrer Abonnements abzufragen und zu ermitteln. Stellen Sie sicher, dass Sie über entsprechende (Lese-)Berechtigungen in Ihrem Mandanten verfügen und alle Azure-Abonnements und Ressourcen in Ihren Abonnements auflisten können.
 
-Erstellen von Abfragen mit Azure Resource Graph: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+- [Erstellen von Abfragen mit Azure Resource Graph](../governance/resource-graph/first-query-portal.md)
 
-Anzeigen Ihrer Azure-Abonnements: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+- [Anzeigen Ihrer Azure-Abonnements](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-Grundlegendes zu Azure RBAC: https://docs.microsoft.com/azure/role-based-access-control/overview
+- [Grundlegendes zu Azure RBAC](../role-based-access-control/overview.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -666,7 +666,7 @@ Grundlegendes zu Azure RBAC: https://docs.microsoft.com/azure/role-based-access-
 
 **Leitfaden**: Wenden Sie Tags auf Ihre Azure Database for PostgreSQL-Instanzen und andere zugehörige Ressourcen an, die Metadaten erzeugen, um sie logisch in einer Taxonomie zu organisieren.
 
-Erstellen und Verwenden von Tags: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+- [Erstellen und Verwenden von Tags](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -676,17 +676,17 @@ Erstellen und Verwenden von Tags: https://docs.microsoft.com/azure/azure-resourc
 
 **Leitfaden**: Verwenden Sie ggf. Tagging, Verwaltungsgruppen und separate Abonnements zum Organisieren und Nachverfolgen von Azure Database for PostgreSQL-Instanzen und zugehörigen Ressourcen. Stimmen Sie den Bestand regelmäßig ab, und stellen Sie sicher, dass nicht autorisierte Ressourcen rechtzeitig aus dem Abonnement gelöscht werden.
 
-Erstellen zusätzlicher Azure-Abonnements: https://docs.microsoft.com/azure/billing/billing-create-subscription
+- [Erstellen zusätzlicher Azure-Abonnements](/azure/billing/billing-create-subscription)
 
-Erstellen von Verwaltungsgruppen: https://docs.microsoft.com/azure/governance/management-groups/create
+- [Erstellen von Verwaltungsgruppen](/azure/governance/management-groups/create)
 
-Erstellen und Verwenden von Tags: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+- [Erstellen und Verwenden von Tags](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
-### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6.4: Verwalten eines Bestands genehmigter Azure-Ressourcen und Softwaretitel
+### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6.4: Definieren und Verwalten des Bestands an genehmigten Azure-Ressourcen
 
 **Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen und Azure als Ganzes vorgesehen.
 
@@ -704,9 +704,9 @@ Erstellen und Verwenden von Tags: https://docs.microsoft.com/azure/azure-resourc
 
 Verwenden Sie darüber hinaus Azure Resource Graph, um Ressourcen in Ihren Abonnements abzufragen und zu ermitteln.
 
-Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+- [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-Erstellen von Abfragen mit Azure Graph: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+- [Erstellen von Abfragen mit Azure Graph](../governance/resource-graph/first-query-portal.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -744,15 +744,15 @@ Erstellen von Abfragen mit Azure Graph: https://docs.microsoft.com/azure/governa
 
 - Zulässige Ressourcentypen
 
-Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+- [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-Ablehnen eines bestimmten Ressourcentyps mit Azure Policy: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+- [Ablehnen eines bestimmten Ressourcentyps mit Azure Policy](/azure/governance/policy/samples/not-allowed-resource-types)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
-### <a name="610-implement-approved-application-list"></a>6.10: Implementieren einer Liste genehmigter Anwendungen
+### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6.10: Verwalten eines Bestands an genehmigten Softwaretiteln
 
 **Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
@@ -760,11 +760,11 @@ Ablehnen eines bestimmten Ressourcentyps mit Azure Policy: https://docs.microsof
 
 **Verantwortlichkeit**: Nicht verfügbar
 
-### <a name="611-limit-users-ability-to-interact-with-azure-resources-manager-via-scripts"></a>6.11: Einschränken der Möglichkeiten der Benutzer zur Interaktion mit Azure Resource Manager über Skripts
+### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6.11: Einschränken der Möglichkeiten von Benutzern zur Interaktion mit Azure Resource Manager
 
 **Leitfaden**: Verwenden Sie den bedingten Azure-Zugriff, um die Möglichkeiten der Benutzer zur Interaktion mit Azure Resource Manager einzuschränken, indem Sie „Zugriff blockieren“ für die App zur Verwaltung von Microsoft Azure konfigurieren. Dadurch können die Erstellung von und Änderungen an Ressourcen in einer Hochsicherheitsumgebung, z. B. Instanzen von Azure Database for PostgreSQL, die vertrauliche Informationen enthält, verhindert werden.
 
-Konfigurieren des bedingten Zugriffs, um den Zugriff auf Azure Resource Manager zu blockieren: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+- [Verwalten des Zugriffs auf die Azure-Verwaltung mit bedingtem Zugriff](../role-based-access-control/conditional-access-azure-management.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -788,7 +788,7 @@ Konfigurieren des bedingten Zugriffs, um den Zugriff auf Azure Resource Manager 
 
 ## <a name="secure-configuration"></a>Sichere Konfiguration
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Sichere Konfiguration](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration).*
+*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Sichere Konfiguration](../security/benchmarks/security-control-secure-configuration.md).*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1: Einrichten sicherer Konfigurationen für alle Azure-Ressourcen
 
@@ -798,9 +798,9 @@ Konfigurieren des bedingten Zugriffs, um den Zugriff auf Azure Resource Manager 
 
 - Die Protokollierung von Verbindungen sollte für PostgreSQL-Datenbankserver aktiviert sein.
 
-Anzeigen verfügbarer Azure Policy-Aliase: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+- [Anzeigen verfügbarer Azure Policy-Aliase](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+- [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -816,11 +816,11 @@ Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/g
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3: Verwalten von sicheren Konfigurationen für Azure-Ressourcen
 
-**Leitfaden**: Verwenden Sie die Azure Policy-Einstellungen [deny] (Verweigern) und [deploy if not exist] (Bereitstellen, falls nicht vorhanden), um sichere Einstellungen für Ihre Azure-Ressourcen zu erzwingen.
+**Leitfaden**: Verwenden Sie die Azure Policy-Auswirkungen [Deny] und [DeployIfNotExists], um sichere Einstellungen für alle Ihre Azure-Ressourcen zu erzwingen.
 
-Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+- [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-Grundlegendes zu Azure Policy-Auswirkungen: https://docs.microsoft.com/azure/governance/policy/concepts/effects
+- [Grundlegendes zu Azure Policy-Auswirkungen](../governance/policy/concepts/effects.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -838,9 +838,9 @@ Grundlegendes zu Azure Policy-Auswirkungen: https://docs.microsoft.com/azure/gov
 
 **Leitfaden**: Nutzen Sie Azure Repos, um Code sicher zu speichern und zu verwalten, wenn Sie benutzerdefinierte Azure Policy-Definitionen für Azure Database for PostgreSQL-Instanzen oder zugehörige Ressourcen verwenden.
 
-Speichern von Code in Azure DevOps: https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
+- [Speichern von Code in Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-Dokumentation zu Azure Repos: https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
+- [Dokumentation zu Azure Repos](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -854,17 +854,17 @@ Dokumentation zu Azure Repos: https://docs.microsoft.com/azure/devops/repos/inde
 
 **Verantwortlichkeit**: Nicht verfügbar
 
-### <a name="77-deploy-system-configuration-management-tools"></a>7.7: Bereitstellen von Verwaltungstools zur Systemkonfiguration
+### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7: Bereitstellen von Konfigurationsverwaltungstools für Azure-Ressourcen
 
 **Leitfaden**: Verwenden Sie Azure Policy-Aliase im Namespace „Microsoft.DBforPostgreSQL“, um benutzerdefinierte Richtlinien zum Überwachen oder Erzwingen von Systemkonfigurationen zu erstellen und Warnungen dazu zu erhalten. Entwickeln Sie außerdem einen Prozess und eine Pipeline zum Verwalten von Richtlinienausnahmen.
 
-Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+- [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
-### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8: Bereitstellen von Verwaltungstools für Systemkonfigurationen für Betriebssysteme
+### <a name="78-deploy-configuration-management-tools-for-operating-systems"></a>7.8: Bereitstellen von Konfigurationsverwaltungstools für Betriebssysteme
 
 **Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
@@ -872,11 +872,11 @@ Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/g
 
 **Verantwortlichkeit**: Nicht verfügbar
 
-### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7.9: Implementieren der automatisierten Konfigurationsüberwachung für Azure-Dienste
+### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7.9: Implementieren der automatisierten Konfigurationsüberwachung für Azure-Ressourcen
 
 **Leitfaden**: Verwenden Sie Azure Policy-Aliase im Namespace „Microsoft.DBforPostgreSQL“, um benutzerdefinierte Richtlinien zum Überwachen oder Erzwingen von Systemkonfigurationen zu erstellen und Warnungen dazu zu erhalten. Verwenden Sie Azure Policy ([Überwachen], [Verweigern] und [Bereitstellen, falls nicht vorhanden]), um Konfigurationen für Ihre Azure Database for PostgreSQL-Instanzen und zugehörige Ressourcen automatisch zu erzwingen.
 
-Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+- [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -894,13 +894,11 @@ Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/g
 
 **Leitfaden**: Verwenden Sie für virtuelle Azure-Computer oder Webanwendungen, die in Azure App Service für den Zugriff auf Ihre Azure Database for PostgreSQL-Instanzen ausgeführt werden, verwaltete Dienstidentitäten in Verbindung mit Azure Key Vault, um die Verwaltung von Azure Database for PostgreSQL-Geheimnissen zu vereinfachen und zu schützen. Stellen Sie sicher, dass das vorläufige Löschen für Azure Key Vault aktiviert ist.
 
-Integration mit verwalteten Azure-Identitäten: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+- [Integrieren mit verwalteten Azure-Identitäten](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
-Erstellen einer Key Vault-Instanz: https://docs.microsoft.com/azure/key-vault/general/quick-create-portal
+- [Erstellen einer Key Vault-Instanz](../key-vault/general/quick-create-portal.md)
 
-Authentifizieren bei Key Vault: https://docs.microsoft.com/azure/key-vault/general/authentication
-
-Zuweisen einer Key Vault-Zugriffsrichtlinie: https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
+- [Bereitstellen der Key Vault-Authentifizierung mit einer verwalteten Identität](/azure/key-vault/general/managed-identity)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -914,9 +912,9 @@ Verwenden Sie für virtuelle Azure-Computer oder Webanwendungen, die in Azure Ap
 
 Verwenden Sie verwaltete Identitäten, um Azure-Dienste mit einer automatisch verwalteten Identität in Azure Active Directory (AD) bereitzustellen. Mit verwalteten Identitäten können Sie die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung unterstützt, einschließlich Key Vault. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein.
 
-Konfigurieren von verwalteten Identitäten: https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
+- [Konfigurieren von verwalteten Identitäten](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 
-Integration mit verwalteten Azure-Identitäten: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+- [Integrieren mit verwalteten Azure-Identitäten](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -926,7 +924,7 @@ Integration mit verwalteten Azure-Identitäten: https://docs.microsoft.com/azure
 
 **Anleitung:** Implementieren Sie Credential Scanner, um Anmeldeinformationen im Code zu identifizieren. In Credential Scanner wird auch das Verschieben von ermittelten Anmeldeinformationen an sicherere Speicherorte (z. B. Azure Key Vault) empfohlen.
 
-Einrichten von Credential Scanner: https://secdevtools.azurewebsites.net/helpcredscan.html
+- [Einrichten von Credential Scanner](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -934,14 +932,13 @@ Einrichten von Credential Scanner: https://secdevtools.azurewebsites.net/helpcre
 
 ## <a name="malware-defense"></a>Schutz vor Schadsoftware
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Schutz vor Schadsoftware](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense).*
+*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Schutz vor Schadsoftware](../security/benchmarks/security-control-malware-defense.md).*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1: Verwenden einer zentral verwalteten Antischadsoftware
 
 **Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
 Microsoft Antimalware ist auf dem zugrunde liegenden Host für die Azure-Dienste (z. B. Azure App Service) aktiviert, wird aber nicht für Kundeninhalte ausgeführt.
-
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -969,15 +966,15 @@ Microsoft Antimalware ist auf dem zugrunde liegenden Host für die Azure-Dienste
 
 ## <a name="data-recovery"></a>Datenwiederherstellung
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Datenwiederherstellung](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
+*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Datenwiederherstellung](../security/benchmarks/security-control-data-recovery.md).*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1: Sicherstellen regelmäßiger automatisierter Sicherungen
 
 **Leitfaden**: Azure Database for PostgreSQL nimmt Sicherungen der Datendateien und der Transaktionsprotokolle vor. Abhängig von der unterstützten maximalen Speichergröße werden entweder vollständige oder differenzielle Sicherungen (Server mit maximal 4 TB Speicher) oder Sicherungsmomentaufnahmen (Server mit bis zu 16 TB Speicher) angelegt. Dank dieser Sicherungen können Sie für einen Server den Stand zu einem beliebigen Zeitpunkt wiederherstellen, der innerhalb Ihres konfigurierten Aufbewahrungszeitraums für Sicherungen liegt. Die Standardaufbewahrungsdauer für Sicherungen beträgt sieben Tage. Optional können Sie einen Zeitraum von bis zu 35 Tagen festlegen. Zur Verschlüsselung aller Sicherungen wird die AES-Verschlüsselung mit 256 Bit verwendet.
 
-Sichern eines Servers in Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/howto-restore-server-portal
+- [Sichern eines Servers in Azure Database for PostgreSQL](howto-restore-server-portal.md)
 
-Grundlegendes zur Erstkonfiguration für Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/tutorial-design-database-using-azure-portal
+- [Grundlegendes zur Erstkonfiguration für Azure Database for PostgreSQL](tutorial-design-database-using-azure-portal.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -989,15 +986,15 @@ Grundlegendes zur Erstkonfiguration für Azure Database for PostgreSQL: https://
 
 Wenn Sie Azure Key Vault zum Speichern von Anmeldeinformationen für Ihre Azure Database for PostgreSQL-Instanzen verwenden, stellen Sie regelmäßige automatische Sicherungen Ihrer Schlüssel sicher.
 
-Sichern eines Servers in Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/howto-restore-server-portal
+- [Sichern eines Servers in Azure Database for PostgreSQL](howto-restore-server-portal.md)
 
-Sichern von Key Vault-Schlüsseln: https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
+- [Sichern von Key Vault-Schlüsseln](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
 **Verantwortlichkeit**: Shared
 
-### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3: Überprüfen aller Sicherungen einschließlich der von Kunden verwalteten Schlüssel
+### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3: Überprüfen aller Sicherungen einschließlich der kundenseitig verwalteten Schlüssel
 
 **Leitfaden**: Wenn in Azure Database for PostgreSQL eine Wiederherstellung durchgeführt wird, wird aus den Sicherungen des ursprünglichen Servers ein neuer Server erstellt. Es gibt zwei Arten der Wiederherstellung: Point-in-Time-Wiederherstellung und Geowiederherstellung. Die Point-in-Time-Wiederherstellung ist für beide Sicherungsredundanzoptionen verfügbar. Es wird ein neuer Server in derselben Region wie der ursprüngliche Server erstellt. Die Geowiederherstellung ist nur verfügbar, wenn Sie Ihren Server für georedundanten Speicher konfiguriert haben. Hierbei können Sie den Server in einer anderen Region wiederherstellen.
 
@@ -1005,7 +1002,7 @@ Die geschätzte Wiederherstellungszeit hängt von verschiedenen Faktoren ab, z.B
 
 Testen Sie regelmäßig die Datenwiederherstellung Ihrer Azure Database for PostgreSQL-Instanzen.
 
-Sichern eines Servers in Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/howto-restore-server-portal
+- [Sichern eines Servers in Azure Database for PostgreSQL](howto-restore-server-portal.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -1015,7 +1012,7 @@ Sichern eines Servers in Azure Database for PostgreSQL: https://docs.microsoft.c
 
 **Leitfaden**: Mit Azure Database for PostgreSQL werden vollständige, differenzielle und Transaktionsprotokollsicherungen erstellt. Dank dieser Sicherungen können Sie für einen Server den Stand zu einem beliebigen Zeitpunkt wiederherstellen, der innerhalb Ihres konfigurierten Aufbewahrungszeitraums für Sicherungen liegt. Die Standardaufbewahrungsdauer für Sicherungen beträgt sieben Tage. Optional können Sie einen Zeitraum von bis zu 35 Tagen festlegen. Zur Verschlüsselung aller Sicherungen wird die AES-Verschlüsselung mit 256 Bit verwendet.
 
-Grundlegendes zu Sicherung und Wiederherstellung in Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/concepts-backup
+- [Grundlegendes zu Sicherung und Wiederherstellung in Azure Database for PostgreSQL](concepts-backup.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -1023,19 +1020,19 @@ Grundlegendes zu Sicherung und Wiederherstellung in Azure Database for PostgreSQ
 
 ## <a name="incident-response"></a>Reaktion auf Vorfälle
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Reaktion auf Vorfälle](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
+*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Reaktion auf Vorfälle](../security/benchmarks/security-control-incident-response.md).*
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1: Erstellen eines Leitfadens für die Reaktion auf Vorfälle
 
 **Anleitung:** Erarbeiten Sie einen Leitfaden für die Reaktion auf Vorfälle für Ihre Organisation. Stellen Sie sicher, dass es schriftliche Pläne für die Reaktion auf Vorfälle gibt, in denen alle Rollen der Mitarbeiter sowie die Phasen der Bearbeitung und Verwaltung von Vorfällen von der Ermittlung bis zur abschließenden Überprüfung definiert sind.
 
-Konfigurieren von Workflowautomatisierungen in Azure Security Center: https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide
+- [Leitfaden zu Planung und Betrieb](../security-center/security-center-planning-and-operations-guide.md)
 
-Anleitung zum Entwickeln eines Prozesses für die Reaktion auf Sicherheitsvorfälle: https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
+- [Anleitung zum Entwickeln eines Prozesses für die Reaktion auf Sicherheitsvorfälle](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
-Struktur eines Vorfalls laut Microsoft Security Response Center: https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
+- [Struktur eines Vorfalls laut Microsoft Security Response Center](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
-Kunden können außerdem den Computer Security Incident Handling Guide des US-amerikanischen National Institute of Standards and Technology (NIST) nutzen, um einen Plan zur Reaktion auf Vorfälle zu entwickeln: https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf
+- [Kunden können außerdem den Computer Security Incident Handling Guide des US-amerikanischen National Institute of Standards and Technology (NIST) nutzen, um einen Plan zur Reaktion auf Incidents auszuarbeiten.](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -1055,7 +1052,7 @@ Kennzeichnen Sie außerdem die Abonnements (z. B. Produktion, Nicht-Produktion)
 
 **Leitfaden**: Führen Sie in regelmäßigen Abständen Tests zur Reaktionsfähigkeit Ihrer Systeme auf Vorfälle durch. Identifizieren Sie Schwachstellen und Lücken, und überarbeiten Sie den Plan bei Bedarf.
 
-Informationen finden Sie in der folgenden Veröffentlichung des NIST: Leitfaden zum Testen, Trainieren und Ausführen von Programmen für IT-Pläne und -Funktionen: https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
+- [„Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities“ des National Institute of Standards and Technology (NIST)](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -1065,7 +1062,7 @@ Informationen finden Sie in der folgenden Veröffentlichung des NIST: Leitfaden 
 
 **Leitfaden**: Microsoft kontaktiert Sie unter den für Sicherheitsvorfälle angegebenen Kontaktdaten, wenn das Microsoft Security Response Center (MSRC) feststellt, dass Personen unrechtmäßig oder unbefugt auf die Kundendaten zugegriffen haben.  Überprüfen Sie die Vorfälle anschließend, um sicherzustellen, dass die Probleme behoben wurden.
 
-Festlegen der Kontaktinformationen in Azure Security Center: https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
+- [Festlegen der Kontaktinformationen in Azure Security Center](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -1075,9 +1072,9 @@ Festlegen der Kontaktinformationen in Azure Security Center: https://docs.micros
 
 **Leitfaden**: Exportieren Sie die Azure Security Center-Warnungen und -Empfehlungen über die Funktion „Fortlaufender Export“. Über „Fortlaufender Export“ können Sie Warnungen und Empfehlungen entweder manuell oder kontinuierlich exportieren. Sie können den Azure Security Center-Datenconnector verwenden, um die Warnungen an Sentinel zu streamen.
 
-Konfigurieren des fortlaufenden Exports: https://docs.microsoft.com/azure/security-center/continuous-export
+- [Konfigurieren des fortlaufenden Exports](../security-center/continuous-export.md)
 
-Streamen von Warnungen in Azure Sentinel: https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
+- [Streamen von Warnungen in Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -1087,21 +1084,21 @@ Streamen von Warnungen in Azure Sentinel: https://docs.microsoft.com/azure/senti
 
 **Leitfaden**: Verwenden Sie die Funktion „Workflowautomatisierung“ in Azure Security Center, um über „Logic Apps“ automatisch Reaktionen auf Sicherheitswarnungen und -empfehlungen auszulösen.
 
-Konfigurieren von Workflowautomatisierung und Logic Apps: https://docs.microsoft.com/azure/security-center/workflow-automation
+- [Konfigurieren von Workflowautomatisierung und Logic Apps](../security-center/workflow-automation.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
-## <a name="penetration-tests-and-red-team-exercises"></a>Penetrationstests und Red Team-Übungen
+## <a name="penetration-tests-and-red-team-exercises"></a>Penetrationstests und Red Team-Übungen
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Penetrationstests und Red Team-Übungen](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Penetrationstests und Red Team-Übungen](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md).*
 
-### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1: Durchführen regelmäßiger Penetrationstests ihrer Azure-Ressourcen und Sicherstellen der Behebung aller kritischen Sicherheitsergebnisse innerhalb von 60 Tagen
+### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1: Durchführen regelmäßiger Penetrationstests Ihrer Azure-Ressourcen und Sicherstellen der Behebung aller kritischen Sicherheitsergebnissen
 
 **Leitfaden**: Befolgen Sie die Microsoft Rules of Engagement, um sicherzustellen, dass die Penetrationstests nicht gegen Microsoft-Richtlinien verstoßen: https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
 
-Weitere Informationen zur Microsoft-Strategie und Durchführung von Red Team- und Livewebsite-Penetrationstests für von Microsoft verwaltete Cloudinfrastrukturen, Dienste und Anwendungen finden Sie hier: https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
+- Weitere Informationen zur Microsoft-Strategie im Zusammenhang mit Red Team- und Livewebsite-Penetrationstests für von Microsoft verwaltete Cloudinfrastrukturen, Dienste und Anwendungen sowie zu deren Durchführung finden Sie [hier](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e).
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -1109,5 +1106,5 @@ Weitere Informationen zur Microsoft-Strategie und Durchführung von Red Team- un
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Lesen Sie den [Vergleichstest für die Azure-Sicherheit](https://docs.microsoft.com/azure/security/benchmarks/overview).
-- Erfahren Sie mehr über [Azure-Sicherheitsbaselines](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
+- Lesen Sie den [Vergleichstest für die Azure-Sicherheit](/azure/security/benchmarks/overview).
+- Erfahren Sie mehr über [Azure-Sicherheitsbaselines](/azure/security/benchmarks/security-baselines-overview).

@@ -5,15 +5,15 @@ services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 04/27/2020
 ms.author: memildin
-ms.openlocfilehash: 132e21c861f50caca37fb6fc5df660ff413d07a5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 92c73fed84910e525378aa18e02456960acf9911
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905497"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447247"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Datensammlung in Azure Security Center
 Security Center sammelt Daten von Ihren virtuellen Azure-Computern (VMs), VM-Skalierungsgruppen, IaaS-Containern und Azure-fremden Computern (auch lokal), um sie auf Sicherheitslücken und Bedrohungen zu überwachen. Die Daten werden mit dem Log Analytics-Agent gesammelt. Der Agent liest verschiedene sicherheitsrelevante Konfigurationen und Ereignisprotokolle auf dem Computer und kopiert die Daten zur Analyse in den Arbeitsbereich. Beispiele für Daten dieser Art: Betriebssystemtyp und -version, Betriebssystemprotokolle (Windows-Ereignisprotokolle), ausgeführte Prozesse, Computername, IP-Adressen und angemeldeter Benutzer.
@@ -71,7 +71,7 @@ Security Center kann automatisch einen Standardarbeitsbereich zum Speichern der 
 Auswählen eines von Security Center erstellten Arbeitsbereichs:
 
 1. Wählen Sie unter **Standardmäßige Arbeitsbereichskonfiguration** die Option „Von Security Center erstellte Arbeitsbereiche verwenden“ aus.
-   ![Tarif auswählen][10] 
+    :::image type="content" source="./media/security-center-enable-data-collection/workspace-selection.png" alt-text="Aktivieren der automatischen Bereitstellung des Log Analytics-Agents"::: 
 
 1. Klicken Sie auf **Speichern**.<br>
     Security Center erstellt eine neue Ressourcengruppe und einen Standardarbeitsbereich an diesem Standort und verbindet den Agent mit diesem Arbeitsbereich. Für den Arbeitsbereich und die Ressourcengruppe gilt folgende Namenskonvention:<br>
@@ -99,8 +99,7 @@ Zum Verwenden Ihres vorhandenen Log Analytics-Arbeitsbereichs benötigen Sie Les
 So wählen Sie einen vorhandenen Log Analytics-Arbeitsbereich aus:
 
 1. Wählen Sie unter **Standardmäßige Arbeitsbereichskonfiguration** die Option **Use another workspace** (Anderen Arbeitsbereich verwenden) aus.
-
-   ![Verwenden eines anderen Arbeitsbereichs][2]
+    :::image type="content" source="./media/security-center-enable-data-collection/use-another-workspace.png" alt-text="Aktivieren der automatischen Bereitstellung des Log Analytics-Agents"::: 
 
 2. Wählen Sie im Pulldownmenü einen Arbeitsbereich zum Speichern der gesammelten Daten aus.
 
@@ -191,10 +190,10 @@ Im Anschluss finden Sie eine vollständige Aufschlüsselung der Sicherheits- und
 >
 
 So wählen Sie Ihre Filterrichtlinie:
-1. Wählen Sie auf der Seite **Datensammlung** unter **Sicherheitsereignisse** Ihre Filterrichtlinie aus.
-2. Wählen Sie **Speichern** aus.
-
-   ![Auswählen der Filterrichtlinie][5]
+1. Wählen Sie auf der Seite **Datensammlung** unter **Zusätzliche Rohdaten speichern – sicherheitsrelevante Windows-Ereignisse** Ihre Filterrichtlinie aus.
+ 
+1. Wählen Sie **Speichern** aus.
+    :::image type="content" source="./media/security-center-enable-data-collection/data-collection-tiers.png" alt-text="Aktivieren der automatischen Bereitstellung des Log Analytics-Agents":::
 
 ### <a name="automatic-provisioning-in-cases-of-a-pre-existing-agent-installation"></a>Automatische Bereitstellung bei einer bereits vorhandenen Agent-Installation <a name="preexisting"></a> 
 
@@ -224,7 +223,7 @@ So deaktivieren Sie die automatische Bereitstellung des Log Analytics-Agents:
 1. Wählen Sie im Portal im Security Center-Menü **Preise & Einstellungen** aus.
 2. Wählen Sie das relevante Abonnement aus.
 
-   ![Auswählen des Abonnements][7]
+    :::image type="content" source="./media/security-center-enable-data-collection/select-subscription.png" alt-text="Aktivieren der automatischen Bereitstellung des Log Analytics-Agents":::
 
 3. Klicken Sie auf **Datensammlung**.
 4. Wählen Sie unter **Automatische Bereitstellung** die Option **Aus** aus, um die automatische Bereitstellung zu deaktivieren.
@@ -309,13 +308,7 @@ In diesem Artikel wurde die Funktionsweise der Datensammlung und der automatisch
 
 
 <!--Image references-->
-[1]: ./media/security-center-enable-data-collection/enable-automatic-provisioning.png
-[2]: ./media/security-center-enable-data-collection/use-another-workspace.png
 [3]: ./media/security-center-enable-data-collection/reconfigure-monitored-vm.png
-[5]: ./media/security-center-enable-data-collection/data-collection-tiers.png
-[7]: ./media/security-center-enable-data-collection/select-subscription.png
-[8]: ./media/security-center-enable-data-collection/manual-provision.png
 [9]: ./media/security-center-enable-data-collection/pricing-tier.png
-[10]: ./media/security-center-enable-data-collection/workspace-selection.png
 [11]: ./media/security-center-enable-data-collection/log-analytics.png
 [12]: ./media/security-center-enable-data-collection/log-analytics2.png

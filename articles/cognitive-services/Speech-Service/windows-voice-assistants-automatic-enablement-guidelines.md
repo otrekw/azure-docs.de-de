@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: b9cbb873066131264732d6f46320461bae8c3188
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: a9fe083818c5850ad05556b18911c19fe19e0e72
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84981760"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987392"
 ---
 # <a name="privacy-guidelines-for-voice-assistants-on-windows"></a>Datenschutzrichtlinien für Sprachassistenten unter Windows
 
@@ -31,7 +31,7 @@ Entwickler, die Sprachassistenten unter Windows erstellen, müssen ihre Anwendun
 Windows-Benutzer können die Verfügbarkeit ihrer Assistentenanwendungen in **`Settings > Privacy > Voice activation`** anzeigen und steuern.
 
  > [!div class="mx-imgBorder"]
- > [![privacy-app-listing](media/voice-assistants/windows_voice_assistant/privacy-app-listing.png "Eintrag in den Datenschutzeinstellungen der Windows-Sprachaktivierung für eine Assistentenanwendung")](media/voice-assistants/windows_voice_assistant/privacy-app-listing.png#lightbox)
+ > [![Screenshot: Optionen zum Steuern der Verfügbarkeit von Cortana](media/voice-assistants/windows_voice_assistant/privacy-app-listing.png "Eintrag in den Datenschutzeinstellungen der Windows-Sprachaktivierung für eine Assistentenanwendung")](media/voice-assistants/windows_voice_assistant/privacy-app-listing.png#lightbox)
 
 Um sich für die Aufnahme in diese Liste zu qualifizieren, wenden Sie sich an Microsoft unter winvoiceassistants@microsoft.com, um loszulegen. Standardmäßig müssen Benutzer die Sprachaktivierung für einen neuen Assistenten in **`Settings > Privacy > Voice Activation`** explizit aktivieren, womit eine Anwendung mithilfe von `ms-settings:privacy-voiceactivation` per Protokoll eine Verknüpfung erstellen kann. Eine zulässige Anwendung wird in der Liste angezeigt, sobald Sie ausgeführt wurde und die `Windows.ApplicationModel.ConversationalAgent`-APIs verwendet hat. Ihre Sprachaktivierungseinstellungen können geändert werden, sobald die Anwendung die Einwilligung des Benutzers für die Mikrofonnutzung erhalten hat.
 

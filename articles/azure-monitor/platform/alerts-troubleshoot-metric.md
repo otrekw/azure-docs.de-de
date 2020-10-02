@@ -4,14 +4,14 @@ description: In diesem Artikel werden gängige Probleme mit Azure Monitor-Metrik
 author: harelbr
 ms.author: harelbr
 ms.topic: reference
-ms.date: 08/13/2020
+ms.date: 09/14/2020
 ms.subservice: alerts
-ms.openlocfilehash: 1c1fe613721ea2bc2d4b9665d6da73b094487efc
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: b0e39982b3d62e0ef722a139024b499efc254f5f
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190677"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068761"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Behandeln von Problemen mit Azure Monitor-Metrikwarnungen 
 
@@ -234,7 +234,7 @@ Beachten Sie die folgenden Einschränkungen für Namen von Metrikwarnungsregeln:
 - Namen von Metrikwarnungsregeln können nach der Erstellung nicht geändert werden (keine Umbenennung möglich)
 - Namen von Metrikwarnungsregeln müssen innerhalb einer Ressourcengruppe eindeutig sein
 - Namen von Metrikwarnungsregeln dürfen die folgenden Zeichen nicht enthalten: * # & + : < > ? @ % { } \ / 
-- Namen von Metrikwarnungsregeln dürfen nicht mit folgendem Zeichen enden: .
+- Namen von Metrikwarnungsregeln dürfen nicht mit einem Leerzeichen oder einem Punkt enden.
 
 
 ## <a name="restrictions-when-using-dimensions-in-a-metric-alert-rule-with-multiple-conditions"></a>Einschränkungen bei der Verwendung von Dimensionen in einer Metrikwarnungsregel mit mehreren Bedingungen

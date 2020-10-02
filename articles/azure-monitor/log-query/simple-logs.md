@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/12/2019
-ms.openlocfilehash: 7bdb0ae813600f53df44ee1a61a4cbbb56bb0bfe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4926e18aa6b00fe36608843ea5253903ace774e2
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067503"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089107"
 ---
 # <a name="simple-logs-experience-in-azure-monitor-preview"></a>Oberfläche für einfache Protokolle in Azure Monitor (Vorschauversion)
 Azure Monitor bietet [umfassende Möglichkeiten](get-started-portal.md) für das Erstellen von [Protokollabfragen](log-query-overview.md) mithilfe der KQL-Sprache. Doch möglicherweise benötigen Sie gar nicht den vollen Funktionsumfang von KQL, sondern bevorzugen eine vereinfachte Oberfläche für grundlegende Abfrageanforderungen. Mithilfe der Oberfläche für einfache Protokolle können Sie grundlegende Abfragen erstellen, ohne direkt mit KQL zu interagieren. Sie können einfache Protokolle auch als Lerntool für KQL verwenden, wenn Sie anspruchsvollere Abfragen benötigen.
@@ -26,11 +26,11 @@ Die Oberfläche für einfache Protokolle ruft Daten aus den Tabellen *AzureDiagn
 ## <a name="using-simple-logs"></a>Verwenden der Oberfläche für einfache Protokolle
 Navigieren Sie zu einer beliebigen Cosmos DB- oder Key Vault-Instanz in Ihrem Azure-Abonnement, für das [Diagnoseeinstellungen zum Sammeln von Protokollen in einem Log Analytics-Arbeitsbereich konfiguriert sind](../platform/resource-logs.md#send-to-azure-storage). Klicken Sie im Menü **Überwachung** auf **Protokolle**, um die Oberfläche für einfache Protokolle zu öffnen.
 
-![Menü](media/simple-logs/menu.png)
+![Screenshot: Menü „Überwachung“ mit ausgewählter Option „Protokolle“](media/simple-logs/menu.png)
 
 Wählen Sie ein **Feld** und einen **Operator** aus, und geben Sie einen **Wert** für den Vergleich an. Klicken Sie auf **+** , und geben Sie **Und/Oder** an, um weitere Kriterien hinzuzufügen.
 
-![Kriterien](media/simple-logs/criteria.png)
+![Screenshot: Bereich „Search in the logs“ (In Protokollen suchen) mit ausgewählter Option „Einfache Protokolle“](media/simple-logs/criteria.png)
 
 Klicken Sie auf **Ausführen**, um die Abfrageergebnisse anzuzeigen.
 

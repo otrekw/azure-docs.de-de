@@ -4,12 +4,12 @@ description: Erstellen von Aktivitätsprotokollwarnungen über das Azure-Portal 
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: b202e3d47b98c5e395b3a8b525b9b8c0a04c0f76
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7914f3ee57d014de2f34fca301b587c6297bebe3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322413"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983088"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von Aktivitätsprotokollwarnungen mit Azure Monitor  
 
@@ -111,7 +111,7 @@ Eine einfache Analogie zum Verständnis der Bedingungen, unter denen Warnungsreg
 
 1. Wählen Sie im Azure-Portal die Option **Überwachen** > **Warnungen** aus. Wählen Sie **Warnungsregeln verwalten** in der oberen linken Ecke des Fensters aus.
 
-    ![Verwalten von Warnungsregeln](media/alerts-activity-log/manage-alert-rules.png)
+    ![Screenshot: Aktivitätsprotokoll, in dem das Suchfeld hervorgehoben ist](media/alerts-activity-log/manage-alert-rules.png)
 
     Die Liste mit den verfügbaren Regeln wird angezeigt.
 

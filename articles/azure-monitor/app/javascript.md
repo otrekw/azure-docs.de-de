@@ -4,12 +4,12 @@ description: Rufen Sie die Anzahl der Seitenaufrufe und Sitzungen, Webclientdate
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 3acb7379644b5bfcb22ed86b6bde7031095fef24
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 9f335ca6912545b39fb8276f5895f98e653735d0
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224851"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89656944"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights für Webseiten
 
@@ -104,7 +104,7 @@ Jede Konfigurationsoption ist im Codeausschnitt oben in einer eigenen Zeile aufg
 
 Folgende Konfigurationsoptionen stehen zur Verfügung: 
 
-| Name | type | BESCHREIBUNG
+| Name | Typ | BESCHREIBUNG
 |------|------|----------------
 | src | Zeichenfolge **[erforderlich]** | Die vollständige URL, von der das SDK geladen werden soll. Dieser Wert wird für das Attribut „src“ eines dynamisch hinzugefügten &lt;script /&gt;-Tags verwendet. Sie können die öffentliche CDN-Adresse oder eine privat gehostete nehmen.
 | name | Zeichenfolge *[optional]* | Der globale Name des initialisierten SDK. Der Standardwert ist `appInsights`. ```window.appInsights``` ist daher ein Verweis auf die initialisierte Instanz. Hinweis: Wenn Sie einen Namenswert angeben oder es scheint, als sei eine frühere Instanz (über den globalen Namen „appInsightsSDK“) zugewiesen, wird dieser Namenswert ebenfalls im globalen Namespace als ```window.appInsightsSDK=<name value>``` definiert. Dies wird durch den Initialisierungscode des SDK erzwungen, um sicherzustellen, dass die richtigen Methoden für das Ausschnittsgerüst und den Proxy initialisiert und aktualisiert werden.
@@ -204,8 +204,7 @@ Die meisten Konfigurationsfelder werden so benannt, dass sie standardmäßig auf
 
 Standardmäßig verarbeitet dieses SDK **keine** statusbasierte Routenänderung, die in Single-Page-Webanwendungen erfolgt. Um das automatische Nachverfolgen von Routenänderungen für Ihre Single-Page-Webanwendung zu aktivieren, können Sie Ihrer Setupkonfiguration `enableAutoRouteTracking: true` hinzufügen.
 
-Wir bieten derzeit ein separates [React-Plug-In](#react-extensions) an, das Sie mit diesem SDK initialisieren können. Es wird auch die Nachverfolgung von Routenänderungen automatisch ausführen sowie [weitere React-spezifische Telemetriedaten](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md) sammeln.
-
+Wir bieten derzeit ein separates [React-Plug-In](javascript-react-plugin.md) an, das Sie mit diesem SDK initialisieren können. Es wird auch die Nachverfolgung von Routenänderungen automatisch ausführen sowie weitere React-spezifische Telemetriedaten sammeln.
 > [!NOTE]
 > Verwenden Sie `enableAutoRouteTracking: true` nur, wenn Sie das React-Plug-In **nicht** verwenden. Beide können bei Routenänderungen neue Seitenaufrufe senden. Wenn beide aktiviert sind, werden möglicherweise doppelte Seitenaufrufe gesendet.
 
@@ -213,12 +212,13 @@ Wir bieten derzeit ein separates [React-Plug-In](#react-extensions) an, das Sie 
 
 Wenn Sie `autoTrackPageVisitTime: true` festlegen, wird die Zeit nachverfolgt, die ein Benutzer auf jeder Seite verbringt. Bei jedem neuen Seitenaufruf wird die Zeitdauer, die der Benutzer auf der *vorherigen* Seite verbracht hat, als [benutzerdefinierte Metrik](../platform/metrics-custom-overview.md) mit dem Namen `PageVisitTime`gesendet. Diese benutzerdefinierte Metrik kann im [Metrik-Explorer](../platform/metrics-getting-started.md) als eine „protokollbasierte Metrik“ angezeigt werden.
 
-## <a name="react-extensions"></a>React-Erweiterungen
+## <a name="extensions"></a>Erweiterungen
 
 | Erweiterungen |
 |---------------|
 | [React](javascript-react-plugin.md)|
 | [React Native](javascript-react-native-plugin.md)|
+| [Angular](https://github.com/microsoft/ApplicationInsights-JS/tree/master/extensions/applicationinsights-angularplugin-js) |
 
 ## <a name="correlation"></a>Korrelation
 
@@ -315,7 +315,7 @@ Diese Version ist mit der minimalen Anzahl von Features und Funktionen ausgestat
 
 ## <a name="examples"></a>Beispiele
 
-Ausführbare Beispiele finden Sie unter den [Beispielen für das Application Insights JavaScript SDK](https://github.com/topics/applicationinsights-js-demo).
+Ausführbare Beispiele finden Sie unter den [Beispielen für das Application Insights JavaScript SDK](https://github.com/Azure-Samples?q=applicationinsights-js-demo).
 
 ## <a name="upgrading-from-the-old-version-of-application-insights"></a>Upgrade von der alten Application Insights-Version
 

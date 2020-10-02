@@ -3,12 +3,12 @@ title: Azure Policy-Erweiterung für Visual Studio Code
 description: In diesem Artikel erfahren Sie, wie Sie mithilfe der Azure Policy-Erweiterung für Visual Studio Code nach Azure Resource Manager-Aliassen suchen.
 ms.date: 06/16/2020
 ms.topic: how-to
-ms.openlocfilehash: c91d39414a376b410e52c2ba60ce15ed0c5054f6
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 9b3f27492bee5301e22e83ebf9734afa3de43897
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970755"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648329"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Verwenden der Azure Policy-Erweiterung für Visual Studio Code
 
@@ -52,7 +52,7 @@ Führen Sie für Benutzer der nationalen Cloud die folgenden Schritte aus, um zu
 
 1. Wählen Sie in der Liste die nationale Cloud aus:
 
-   :::image type="content" source="../media/extension-for-vscode/set-default-azure-cloud-sign-in.png" alt-text="Festlegen der Standardanmeldung bei der Azure-Cloud für Visual Studio Code" border="false":::
+   :::image type="content" source="../media/extension-for-vscode/set-default-azure-cloud-sign-in.png" alt-text="Screenshot: Auswählen der Anmeldung bei der nationalen Azure-Cloud für Visual Studio Code" border="false":::
 
 ## <a name="connect-to-an-azure-account"></a>Verbinden mit einem Azure-Konto
 
@@ -64,13 +64,13 @@ Zum Auswerten von Ressourcen und Suchen nach Aliasen müssen Sie eine Verbindung
 
      Wählen Sie in der Azure Policy-Erweiterung die Option **Bei Azure anmelden** aus.
 
-     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-policy-extension.png" alt-text="Anmeldung bei der Azure-Cloud für Visual Studio Code über die Azure Policy-Erweiterung" border="false":::
+     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-policy-extension.png" alt-text="Screenshot: Auswählen der Anmeldung bei der nationalen Azure-Cloud für Visual Studio Code" border="false":::
 
    - Befehlspalette
 
      Navigieren Sie auf der Menüleiste zu **Ansicht** > **Befehlspalette**, und geben Sie **Azure: Anmelden** ein.
 
-     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png" alt-text="Anmeldung bei der Azure-Cloud für Visual Studio Code über die Befehlspalette" border="false":::
+     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png" alt-text="Screenshot: Auswählen der Anmeldung bei der nationalen Azure-Cloud für Visual Studio Code" border="false":::
 
 1. Befolgen Sie die Anleitung für die Anmeldung, um sich bei Azure anzumelden. Nach dem Herstellen der Verbindung wird Ihr Azure-Kontoname unten im Visual Studio Code-Fenster in der Statusleiste angezeigt.
 
@@ -125,7 +125,7 @@ Bei Auswahl einer Ressource (unabhängig davon, ob über die Suchschnittstelle o
 
 Sobald eine Ressource geöffnet ist, wird beim Zeigen auf den Namen oder den Wert der Resource Manager-Eigenschaft der Azure Policy-Alias angezeigt (sofern vorhanden). In diesem Beispiel ist die Ressource vom Typ `Microsoft.Compute/virtualMachines`, und es wird auf die Eigenschaft **properties.storageProfile.imageReference.offer** gezeigt. Beim Zeigen werden die entsprechenden Aliase eingeblendet.
 
-:::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Zeigen in der Azure Policy-Erweiterung zum Einblenden des Resource Manager-Eigenschaftenalias" border="false":::
+:::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Screenshot: Auswählen der Anmeldung bei der nationalen Azure-Cloud für Visual Studio Code" border="false":::
 
 > [!NOTE]
 > Die VS Code-Erweiterung stellt nur Eigenschaften des Resource Manager-Modus zur Verfügung und zeigt keine Eigenschaften des [Ressourcenanbietermodus](../concepts/definition-structure.md#mode) an.

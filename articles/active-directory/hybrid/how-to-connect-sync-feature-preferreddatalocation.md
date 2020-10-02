@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Konfigurieren des bevorzugten Datenspeicherorts für Office 365-Ressourcen'
-description: Erfahren Sie, wie Sie Ihre Office 365-Benutzerressourcen mit der Azure Active Directory Connect-Synchronisierung in der Nähe der Benutzer platzieren.
+title: 'Azure AD Connect: Konfigurieren des bevorzugten Datenspeicherorts für Microsoft 365-Ressourcen'
+description: Erfahren Sie, wie Sie Ihre Microsoft 365-Benutzerressourcen mit der Azure Active Directory Connect-Synchronisierung in der Nähe der Benutzer platzieren.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,31 +16,31 @@ ms.date: 11/11/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebd71eae77c75d490585c27d7bc04c069d006009
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 4ad2bf071d4aa5b49541c710ef9b0793a1076ea9
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89398530"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662502"
 ---
-# <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect-Synchronisierung: Konfigurieren des bevorzugten Datenspeicherorts für Office 365-Ressourcen
-In diesem Thema wird ausführlich erläutert, wie Sie das Attribut für den bevorzugten Datenspeicherort in der Azure Active Directory Connect-Synchronisierung (Azure AD) konfigurieren. Wenn jemand Multi-Geo Capabilities in Office 365 verwendet, legen Sie mit diesem Attribut den geografischen Standort der Office 365-Daten des Benutzers fest. (Die Benennungen *Region* und *geografischer Raum* werden synonym verwendet.)
+# <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-microsoft-365-resources"></a>Azure Active Directory Connect-Synchronisierung: Konfigurieren des bevorzugten Datenspeicherorts für Microsoft 365-Ressourcen
+In diesem Thema wird ausführlich erläutert, wie Sie das Attribut für den bevorzugten Datenspeicherort in der Azure Active Directory Connect-Synchronisierung (Azure AD) konfigurieren. Wenn jemand Multi-Geo-Funktionen in Microsoft 365 verwendet, legen Sie mit diesem Attribut den geografischen Standort der Microsoft 365-Daten des Benutzers fest. (Die Benennungen *Region* und *geografischer Raum* werden synonym verwendet.)
 
 ## <a name="enable-synchronization-of-preferred-data-location"></a>Aktivieren der Synchronisierung des bevorzugten Datenspeicherorts
-Standardmäßig befinden sich die Office 365-Ressourcen für Ihre Benutzer im gleichen geografischen Raum wie Ihr Azure AD-Mandant. Wenn sich Ihr Mandant z.B. in Nordamerika befindet, befinden sich die Exchange-Postfächer der Benutzer ebenfalls in Nordamerika. Für ein multinationales Unternehmen ist dies möglicherweise nicht optimal.
+Standardmäßig befinden sich die Microsoft 365-Ressourcen für Ihre Benutzer im selben geografischen Raum wie Ihr Azure AD-Mandant. Wenn sich Ihr Mandant z.B. in Nordamerika befindet, befinden sich die Exchange-Postfächer der Benutzer ebenfalls in Nordamerika. Für ein multinationales Unternehmen ist dies möglicherweise nicht optimal.
 
-Durch Festlegen des **preferredDataLocation**-Attributs können Sie den geografischen Raum des Benutzers definieren. Sie können die Office 365-Ressourcen eines Benutzers, z.B. das Postfach und OneDrive, im selben geografischen Raum wie den Benutzer platzieren und verfügen immer noch über einen Mandanten für Ihre gesamte Organisation.
+Durch Festlegen des **preferredDataLocation**-Attributs können Sie den geografischen Raum des Benutzers definieren. Sie können die Microsoft 365-Ressourcen eines Benutzers, z. B. das Postfach und OneDrive, im selben geografischen Raum wie den Benutzer platzieren und haben immer noch einen Mandanten für Ihre gesamte Organisation.
 
 > [!IMPORTANT]
-> Multi-Geo steht zurzeit für Kunden mit einem aktiven Konzernvertrag (Enterprise Agreement) und mindestens 250 Abonnements für Office 365-Dienste zur Verfügung. Ausführliche Informationen erhalten Sie von Ihrem Microsoft-Vertreter.
+> Die Multi-Geo-Funktion steht zurzeit für Kunden mit einem aktiven Konzernvertrag (Enterprise Agreement) und mindestens 250 Abonnements für Microsoft 365-Dienste zur Verfügung. Ausführliche Informationen erhalten Sie von Ihrem Microsoft-Vertreter.
 >
 >
 
-Eine Liste mit allen geografischen Räumen für Office 365 finden Sie auf der Seite [An welchem Ort befinden sich Ihre Daten?](https://aka.ms/datamaps).
+Eine Liste mit allen geografischen Regionen für Microsoft 365 finden Sie auf der Seite [An welchem Ort befinden sich Ihre Daten?](https://aka.ms/datamaps).
 
-Folgende geografische Räume stehen in Office 365 für Multi-Geo Capabilities zur Verfügung:
+Folgende geografische Regionen stehen in Microsoft 365 für die Multi-Geo-Funktion zur Verfügung:
 
-| geografischer Raum | preferredDataLocation-Wert |
+| Geografische Region | preferredDataLocation-Wert |
 | --- | --- |
 | Asien-Pazifik | APC |
 | Australien | AUS |
@@ -58,7 +58,7 @@ Folgende geografische Räume stehen in Office 365 für Multi-Geo Capabilities zu
 
 * Wenn ein geografischer Raum nicht in dieser Tabelle aufgeführt wird (z.B. Südamerika), kann er nicht für Multi-Geo Capabilities verwendet werden.
 
-* Nicht alle Office 365-Workloads unterstützen die Festlegung des geografischen Raums eines Benutzers.
+* Nicht alle Microsoft 365-Workloads unterstützen die Festlegung der geografischen Region eines Benutzers.
 
 ### <a name="azure-ad-connect-support-for-synchronization"></a>Azure AD Connect-Unterstützung für die Synchronisierung
 
@@ -67,7 +67,7 @@ Azure AD Connect unterstützt in Version 1.1.524.0 und höher die Synchronisieru
 * Das Schema des Objekttyps **Benutzer** im Azure AD-Connector wird zum Einbeziehen des **preferredDataLocation**-Attributs erweitert. Das Attribut ist vom Typ einwertige Zeichenfolge.
 * Das Schema des Objekttyps **Person** in der Metaverse wird zum Einbeziehen des **preferredDataLocation**-Attributs erweitert. Das Attribut ist vom Typ einwertige Zeichenfolge.
 
-Standardmäßig ist das **preferredDataLocation**-Attribut für die Synchronisierung nicht aktiviert. Dieses Feature ist für größere Organisationen vorgesehen. Das Active Directory-Schema in Windows Server 2019 verfügt über das Attribut **msDS-preferredDataLocation**, das Sie für diesen Zweck verwenden sollten. Wenn Sie das Active Directory-Schema nicht aktualisiert haben und dies auch nicht möglich ist, müssen Sie ein Attribut identifizieren, das die Office 365-Georeplikation für Ihre Benutzer enthält. Dies ist für jede Organisation unterschiedlich.
+Standardmäßig ist das **preferredDataLocation**-Attribut für die Synchronisierung nicht aktiviert. Dieses Feature ist für größere Organisationen vorgesehen. Das Active Directory-Schema in Windows Server 2019 verfügt über das Attribut **msDS-preferredDataLocation**, das Sie für diesen Zweck verwenden sollten. Wenn Sie das Active Directory-Schema nicht aktualisiert haben und dies auch nicht möglich ist, müssen Sie ein Attribut identifizieren, das die geografische Region von Microsoft 365 für Ihre Benutzer enthält. Dies ist für jede Organisation unterschiedlich.
 
 > [!IMPORTANT]
 > Azure AD erlaubt die direkte Konfiguration des **preferredDataLocation**-Attributs in **Cloudbenutzerobjekten** mithilfe von Azure AD PowerShell. Für die Konfiguration dieses Attributs in **synchronisierten Benutzerobjekten** müssen Sie Azure AD Connect verwenden.
@@ -264,7 +264,7 @@ Sofern Ihr Mandant für die Verwendung dieses Features aktiviert wurde, wird das
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Multi-Geo Capabilities in Office 365:
+Weitere Informationen zu Multi-Geo-Funktionen in Microsoft 365:
 
 * [Multi-Geo-Sitzungen mit Ignite](https://aka.ms/MultiGeoIgnite)
 * [Multi-Geo-Funktionen in OneDrive und SharePoint Online in Office 365](https://aka.ms/OneDriveMultiGeo)

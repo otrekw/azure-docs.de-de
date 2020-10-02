@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: 294c93242a3fee5db14f5919ebb367aebcca3a80
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 85c4807d5bf71078e3cfb26bbc27e9eecc10c041
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326187"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029460"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Überwachen von virtuellen Azure-Computern mit Azure Monitor
 In diesem Artikel wird beschrieben, wie Sie mit Azure Monitor Überwachungsdaten von virtuellen Azure-Computern erfassen und analysieren, um deren Integrität aufrechtzuerhalten. Virtuelle Computer können wie alle [anderen Azure-Ressourcen](monitor-azure-resource.md) mit Azure Monitor auf Verfügbarkeit und Leistung überwacht werden, unterscheiden sich jedoch von anderen Ressourcen darin, dass Sie außerdem das Gastbetriebssystem und die darin ausgeführten Workloads überwachen müssen. 
@@ -70,9 +70,9 @@ Die einzelnen Konfigurationsschritte werden in den folgenden Abschnitten beschri
 - Vordefinierte Leistungsdiagramme und -arbeitsmappen, mit denen Sie Kernleistungsmetriken aus dem VM-Gastbetriebssystem analysieren und Trends erkennen können.
 - Abhängigkeitsdiagramm, dass Prozesse anzeigt, die auf den einzelnen virtuellen Computern ausgeführt werden, und die mit anderen Computern und externen Quellen verbundenen Komponenten.
 
-![Azure Monitor für VMs](media/monitor-vm-azure/vminsights-01.png)
+![Leistungsansicht „Azure Monitor für VMs“](media/monitor-vm-azure/vminsights-01.png)
 
-![Azure Monitor für VMs](media/monitor-vm-azure/vminsights-02.png)
+![Zuordnungsansicht „Azure Monitor für VMs“](media/monitor-vm-azure/vminsights-02.png)
 
 
 Aktivieren Sie Azure Monitor für VMs von der **Einblicke**-Option im VM-Menü des Azure-Portals aus. Weitere Informationen und andere Konfigurationsmethoden finden Sie unter [Aktivieren von Azure Monitor für VMs: Übersicht](vminsights-enable-overview.md).
@@ -80,7 +80,7 @@ Aktivieren Sie Azure Monitor für VMs von der **Einblicke**-Option im VM-Menü d
 ![Aktivieren von Azure Monitor für VMs](media/monitor-vm-azure/enable-vminsights.png)
 
 ### <a name="configure-log-analytics-workspace"></a>Konfigurieren des Log Analytics-Arbeitsbereichs
-Der Log Analytics-Agent sendet von Azure Monitor für VMs verwendete Daten an einen [Log Analytics-Arbeitsbereich](../platform/data-platform-logs.md#how-is-data-in-azure-monitor-logs-structured). Sie können die Sammlung zusätzlicher Leistungsdaten, Ereignisse und anderer Überwachungsdaten durch den Agent aktivieren, indem Sie den Log Analytics-Arbeitsbereich konfigurieren. Er muss nur einmal konfiguriert werden, da jeder Agent, der eine Verbindung mit dem Arbeitsbereich herstellt, die Konfiguration automatisch herunterlädt und sofort mit der Erfassung der definierten Daten beginnt. 
+Der Log Analytics-Agent sendet von Azure Monitor für VMs verwendete Daten an einen [Log Analytics-Arbeitsbereich](../platform/data-platform-logs.md). Sie können die Sammlung zusätzlicher Leistungsdaten, Ereignisse und anderer Überwachungsdaten durch den Agent aktivieren, indem Sie den Log Analytics-Arbeitsbereich konfigurieren. Er muss nur einmal konfiguriert werden, da jeder Agent, der eine Verbindung mit dem Arbeitsbereich herstellt, die Konfiguration automatisch herunterlädt und sofort mit der Erfassung der definierten Daten beginnt. 
 
 Sie können die Konfiguration für den Arbeitsbereich direkt von Azure Monitor für VMs aus aufrufen, indem Sie **Arbeitsbereichskonfiguration** in **Erste Schritte** auswählen. Klicken Sie auf den Namen des Arbeitsbereichs, um das Menü zu öffnen.
 
@@ -96,7 +96,7 @@ Wählen Sie im Arbeitsbereichsmenü **Erweiterte Einstellungen** aus und dann **
 
 
 ### <a name="enable-diagnostics-extension-and-telegraf-agent"></a>Aktivieren von Diagnoseerweiterung und Telegraf-Agent
-Azure Monitor für VMs basiert auf dem Log Analytics-Agent, der Daten in einem Log Analytics-Arbeitsbereich sammelt. Dies unterstützt [mehrere Features von Azure Monitor](../platform/data-platform-logs.md#what-can-you-do-with-azure-monitor-logs), z. B. [Protokollabfragen](../log-query/log-query-overview.md), [Protokollwarnungen](../platform/alerts-log.md) und [Arbeitsmappen](../platform/workbooks-overview.md). Die [Diagnoseerweiterung](../platform/diagnostics-extension-overview.md) erfasst Leistungsdaten vom Gastbetriebssystem der virtuellen Windows-Computer in Azure Storage und sendet optional Leistungsdaten an [Azure Monitor-Metriken](../platform/data-platform-metrics.md). Bei virtuellen Linux-Computern ist der [Telegraf-Agent](../platform/collect-custom-metrics-linux-telegraf.md) zum Senden von Daten an Azure-Metriken erforderlich.  Dieser aktiviert andere Features von Azure Monitor wie [Metrik-Explorer](../platform/metrics-getting-started.md) und [Metrikwarnungen](../platform/alerts-metric.md). Sie können die Diagnoseerweiterung auch so konfigurieren, dass Ereignisse und Leistungsdaten außerhalb von Azure Monitor mithilfe von Azure Event Hubs gesendet werden.
+Azure Monitor für VMs basiert auf dem Log Analytics-Agent, der Daten an einen Log Analytics-Arbeitsbereich sendet. Dies unterstützt mehrere Features von Azure Monitor, z. B. [Protokollabfragen](../log-query/log-query-overview.md), [Protokollwarnungen](../platform/alerts-log.md) und [Arbeitsmappen](../platform/workbooks-overview.md). Die [Diagnoseerweiterung](../platform/diagnostics-extension-overview.md) erfasst Leistungsdaten vom Gastbetriebssystem der virtuellen Windows-Computer in Azure Storage und sendet optional Leistungsdaten an [Azure Monitor-Metriken](../platform/data-platform-metrics.md). Bei virtuellen Linux-Computern ist der [Telegraf-Agent](../platform/collect-custom-metrics-linux-telegraf.md) zum Senden von Daten an Azure-Metriken erforderlich.  Dieser aktiviert andere Features von Azure Monitor wie [Metrik-Explorer](../platform/metrics-getting-started.md) und [Metrikwarnungen](../platform/alerts-metric.md). Sie können die Diagnoseerweiterung auch so konfigurieren, dass Ereignisse und Leistungsdaten außerhalb von Azure Monitor mithilfe von Azure Event Hubs gesendet werden.
 
 Installieren Sie die Diagnoseerweiterung für einen einzelnen virtuellen Windows-Computer im Azure-Portal von der Option **Diagnoseeinstellung** im VM-Menü aus. Wählen Sie die Option aus, um **Azure Monitor** auf der Registerkarte **Senken** zu aktivieren. Informationen zum Aktivieren der Erweiterung über eine Vorlage oder Befehlszeile für mehrere virtuelle Computer finden Sie unter [Installation und Konfiguration](../platform/diagnostics-extension-overview.md#installation-and-configuration). Im Gegensatz zum Log Analytics-Agent werden die zu sammelnden Daten in der Konfiguration für die Erweiterung auf jedem virtuellen Computer definiert.
 
@@ -154,7 +154,7 @@ Drei Namespaces werden von virtuellen Computern für Metriken verwendet:
 | Gast (klassisch) | Eingeschränkte Gruppe von Leistungsdaten aus Gastbetriebssystem und Anwendung. Im Metrik-Explorer, aber nicht in anderen Azure Monitor-Features wie Metrikwarnungen verfügbar.  | [Diagnoseerweiterung](../platform/diagnostics-extension-overview.md) ist installiert. Daten werden aus dem Azure-Speicher gelesen.  |
 | VM-Gast | Leistungsdaten aus Gastbetriebssystem und Anwendung sind für alle Azure Monitor-Features über Metriken verfügbar. | Für Windows ist die [Diagnoseerweiterung](../platform/diagnostics-extension-overview.md) mit aktivierter Azure Monitor-Senke installiert. Für Linux ist der [Telegraf-Agent](../platform/collect-custom-metrics-linux-telegraf.md) installiert. |
 
-![Metriken](media/monitor-vm-azure/metrics.png)
+![Metrik-Explorer im Azure-Portal](media/monitor-vm-azure/metrics.png)
 
 ## <a name="analyzing-log-data"></a>Analysieren von Protokolldaten
 Die folgenden Daten werden von virtuellen Azure-Computern in Azure Monitor-Protokollen gesammelt. 
@@ -212,7 +212,7 @@ Heartbeat
 | summarize max(TimeGenerated) by Computer
 ```
 
-![Protokollwarnung](media/monitor-vm-azure/log-alert-01.png)
+![Protokollwarnung für verpassten Takt](media/monitor-vm-azure/log-alert-01.png)
 
 Um eine Warnung zu erstellen, wenn auf allen virtuellen Windows-Computern im Abonnement eine übermäßige Anzahl von fehlerhaften Anmeldungen aufgetreten ist, verwenden Sie die folgende Abfrage, die für jedes fehlerhafte Anmeldeereignis in der letzten Stunde einen Datensatz zurückgibt. Verwenden Sie einen Schwellenwert, der auf die Anzahl der fehlerhaften Anmeldungen festgelegt ist, die Sie zulassen. 
 
@@ -222,20 +222,20 @@ Event
 | where EventID == 4625
 ```
 
-![Protokollwarnung](media/monitor-vm-azure/log-alert-02.png)
+![Protokollwarnung für Anmeldefehler](media/monitor-vm-azure/log-alert-02.png)
 
 
 ## <a name="system-center-operations-manager"></a>System Center Operations Manager
-System Center Operations Manager (SCOM) bietet eine präzise Überwachung von Workloads auf virtuellen Computern. Einen Vergleich der Überwachungsplattformen und verschiedenen Implementierungsstrategien finden Sie im [Leitfaden zur Cloudüberwachung: Einführung](/azure/cloud-adoption-framework/manage/monitor/).
+System Center Operations Manager bietet eine präzise Überwachung von Workloads auf virtuellen Computern. Einen Vergleich der Überwachungsplattformen und verschiedenen Implementierungsstrategien finden Sie im [Leitfaden zur Cloudüberwachung: Einführung](/azure/cloud-adoption-framework/manage/monitor/).
 
-Wenn Sie über eine vorhandene SCOM-Umgebung verfügen, die Sie weiterhin verwenden möchten, können Sie sie in Azure Monitor integrieren, um zusätzliche Funktionen bereitzustellen. Da von Azure Monitor und SCOM derselbe Log Analytics-Agent verwendet wird, senden überwachte virtuelle Computer Daten an beide. Sie müssen den Agent weiterhin Azure Monitor für VMs hinzufügen und den Arbeitsbereich so konfigurieren, dass wie oben angegeben zusätzliche Daten gesammelt werden, aber der virtuelle Computer kann weiterhin Ihre vorhandenen Management Packs ohne Änderung in einer SCOM-Umgebung ausführen.
+Wenn Sie über eine vorhandene Operations Manager-Umgebung verfügen, die Sie weiterhin verwenden möchten, können Sie sie in Azure Monitor integrieren, um zusätzliche Funktionen bereitzustellen. Da von Azure Monitor und Operations Manager derselbe Log Analytics-Agent verwendet wird, senden überwachte virtuelle Computer Daten an beide. Sie müssen den Agent weiterhin Azure Monitor für VMs hinzufügen und den Arbeitsbereich so konfigurieren, dass wie oben angegeben zusätzliche Daten gesammelt werden, aber der virtuelle Computer kann weiterhin Ihre vorhandenen Management Packs ohne Änderung in einer Operations Manager-Umgebung ausführen.
 
-Zu den Features von Azure Monitor, die die vorhandenen SCOM-Features ergänzen, zählen die folgenden:
+Zu den Features von Azure Monitor, die die vorhandenen Operations Manager-Features ergänzen, zählen die folgenden:
 
 - Verwenden Sie Log Analytics, um die Protokoll- und Leistungsdaten interaktiv zu analysieren.
-- Verwenden Sie Protokollwarnungen, um Warnungsbedingungen für mehrere virtuelle Computer zu definieren und langfristige Trends zu verwenden, was mithilfe von Warnungen in SCOM nicht möglich ist.   
+- Verwenden Sie Protokollwarnungen, um Warnungsbedingungen für mehrere virtuelle Computer zu definieren und langfristige Trends zu verwenden, was mithilfe von Warnungen in Operations Manager nicht möglich ist.   
 
-Ausführliche Informationen zum Verbinden Ihrer vorhandenen SCOM-Verwaltungsgruppe mit Ihrem Log Analytics-Arbeitsbereich finden Sie unter [Herstellen einer Verbindung zwischen Operations Manager und Azure Monitor](../platform/om-agents.md).
+Ausführliche Informationen zum Verbinden Ihrer vorhandenen Operations Manager-Verwaltungsgruppe mit Ihrem Log Analytics-Arbeitsbereich finden Sie unter [Herstellen einer Verbindung zwischen Operations Manager und Azure Monitor](../platform/om-agents.md).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

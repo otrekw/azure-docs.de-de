@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 54eb9b1b28de562395b4926c599bc5cb157fc63b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c49f751bae048d2faf7047e538eebcac5d818b5
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708840"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658739"
 ---
 # <a name="what-is-an-azure-sql-managed-instance-pool-preview"></a>Was ist ein Azure SQL Managed Instance-Pool (Vorschauversion)?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -79,6 +79,7 @@ In Bezug auf Instanzenpools und Instanzen innerhalb von Pools bestehen verschied
 - Neben den Limits auf Instanzebene gelten auch zwei Limits auf *Ebene des Instanzenpools*:
   - Gesamtspeichergröße pro Pool (8 TB)
   - Gesamtanzahl der Datenbanken pro Pool (100)
+- Der AAD-Administrator kann nicht für die im Instanzpool bereitgestellten Instanzen festgelegt werden, weshalb die AAD-Authentifizierung nicht verwendet werden kann.
 
 Die Gesamtspeicherzuordnung und die Gesamtanzahl der Datenbanken in allen Instanzen muss kleiner oder gleich der über Instanzenpools verfügbar gemachten Limits sein.
 
@@ -154,7 +155,7 @@ Ausführliche Informationen zu den Preisen für Instanzenpools finden Sie im Abs
 - Im [Schnellstarthandbuch](instance-create-quickstart.md) erfahren Sie, wie Sie Ihre erste verwaltete Instanz erstellen.
 - Eine Liste der Features und einen Funktionsvergleich finden Sie unter [Allgemeine Azure SQL-Features](../database/features-comparison.md).
 - Weitere Informationen zur VNET-Konfiguration finden Sie unter [Konfigurieren eines VNET für SQL Managed Instance](connectivity-architecture-overview.md).
-- Eine Schnellstartanleitung, in der eine verwaltete Instanz erstellt und eine Datenbank von einer Sicherungsdatei wiederhergestellt wird, finden Sie unter [Erstellen einer verwalteten Azure SQL-Datenbank-Instanz](instance-create-quickstart.md).
-- Ein Tutorial zur Verwendung des Azure Database Migration Service für die Migration finden Sie unter [Migrieren von SQL Server zu einer verwalteten Azure SQL-Datenbank-Instanz mithilfe von DMS (offline)](../../dms/tutorial-sql-server-to-managed-instance.md).
+- Eine Schnellstartanleitung, in der eine verwaltete Instanz erstellt und eine Datenbank aus einer Sicherungsdatei wiederhergestellt wird, finden Sie unter [Erstellen einer verwalteten Azure SQL-Datenbank-Instanz](instance-create-quickstart.md).
+- Ein Tutorial zur Verwendung des Azure Database Migration Service für die Migration finden Sie unter [SQL Managed Instance-Migration mithilfe des Database Migration Service](../../dms/tutorial-sql-server-to-managed-instance.md).
 - Informationen zur erweiterten Überwachung der Datenbankleistung von SQL Managed Instance mit integrierten Problembehandlungsfunktionen finden Sie unter [Überwachen von Azure SQL-Datenbank mithilfe von Azure SQL-Analyse (Vorschauversion)](../../azure-monitor/insights/azure-sql.md).
 - Preisinformationen finden Sie auf der Seite mit den [Preisen für SQL Managed Instance](https://azure.microsoft.com/pricing/details/sql-database/managed/).

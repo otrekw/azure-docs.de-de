@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: a6b1bd016248212967a4fe78274d5ba72c5df0fe
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: deda5b9dab416258f9db1c76e9b41f781101e2fd
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400312"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033012"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kontingente im Azure Cosmos DB-Dienst
 
@@ -163,7 +163,17 @@ Cosmos DB verwendet einen HMAC zur Autorisierung. Sie können entweder einen Hau
 | Maximale Ablaufzeit für Ressourcentoken | Standardmäßig 24 Stunden. Sie können die Anzahl erhöhen, indem Sie [ein Azure-Supportticket senden](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).|
 | Maximale Zeitabweichung für Tokenautorisierung| 15 Min. |
 
-Cosmos DB unterstützt die Ausführung von Triggern während Schreibvorgängen. Der Dienst unterstützt maximal einen vorangestellten und einen nachgestellten Trigger pro Schreibvorgang. 
+Cosmos DB unterstützt die Ausführung von Triggern während Schreibvorgängen. Der Dienst unterstützt maximal einen vorangestellten und einen nachgestellten Trigger pro Schreibvorgang.
+
+## <a name="metadata-request-limits"></a>Anforderungsgrenzwerte für Metadaten
+
+Azure Cosmos DB verwaltet Systemmetadaten für jedes Konto. Diese Metadaten ermöglichen es Ihnen, Sammlungen, Datenbanken, andere Azure Cosmos DB-Ressourcen und deren Konfiguration kostenlos aufzuzählen.
+
+| Resource | Standardlimit |
+| --- | --- |
+|Maximale Sammlungserstellungsrate pro Minute| 5|
+|Maximale Datenbankerstellungsrate pro Minute|   5|
+|Maximal Aktualisierungsrate des bereitgestellten Durchsatzes pro Minute| 5|
 
 ## <a name="limits-for-autoscale-provisioned-throughput"></a>Grenzwerte für den per Autoskalierung bereitgestellten Durchsatz
 

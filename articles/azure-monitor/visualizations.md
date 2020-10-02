@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 195e606a66b1b49821fc1b46381fdc551f142a6a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4c9f74f5a9950a299b34e22c1e86dd91f8c82364
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325524"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983595"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Visualisieren von Daten aus Azure Monitor
 Dieser Artikel enthält eine Zusammenfassung der verfügbaren Methoden zum Visualisieren von in Azure Monitor gespeicherten Metrik- und Protokolldaten.
@@ -21,7 +21,7 @@ Visualisierungen wie Diagramme und Grafiken können Ihnen die Analyse Ihrer Übe
 ## <a name="workbooks"></a>Arbeitsmappen
 [Arbeitsmappen](./platform/workbooks-overview.md) sind interaktive Dokumente, die umfassende Einblicke in Ihre Daten, Untersuchungen und die Zusammenarbeit innerhalb des Teams bereitstellen. Spezifische Beispiele, wo Arbeitsmappen hilfreich sind, sind Anleitungen zur Problembehandlung und Nachbesprechungen zu Incidents.
 
-![Arbeitsmappe](media/visualizations/workbook.png)
+![Das Diagramm zeigt Screenshots mehrerer Seiten einer Arbeitsmappe, einschließlich der Analyse der Seitenaufrufe, der Nutzung und der auf der Seite verbrachten Zeit.](media/visualizations/workbook.png)
 
 ### <a name="advantages"></a>Vorteile
 - Sowohl Metriken als auch Protokolle werden unterstützt.
@@ -39,7 +39,7 @@ Visualisierungen wie Diagramme und Grafiken können Ihnen die Analyse Ihrer Übe
 ## <a name="azure-dashboards"></a>Azure-Dashboards
 [Azure-Dashboards](../azure-portal/azure-portal-dashboards.md) sind die primäre Dashboardtechnologie für Azure. Sie sind besonders nützlich zur Bereitstellung einer zentralen Konsole für Ihre Azure-Infrastruktur und Dienste, sodass Sie wichtige Probleme schnell identifizieren können.
 
-![Dashboard](media/visualizations/dashboard.png)
+![Screenshot eines Beispiels für ein Azure-Dashboard mit anpassbaren Informationen](media/visualizations/dashboard.png)
 
 Im Folgenden finden Sie eine Videoanleitung zum Erstellen von Dashboards.
 
@@ -88,7 +88,7 @@ Im Folgenden finden Sie eine Videoanleitung zum Erstellen von Dashboards.
 ## <a name="grafana"></a>Grafana
 [Grafana](https://grafana.com/) ist eine offene Plattform, die für operationale Dashboards ideal ist. Sie ist besonders nützlich zum Erkennen, Isolieren und Selektieren von Betriebsincidents. Sie können das [Grafana Azure Monitor-Datenquellen-Plug-in](platform/grafana-plugin.md) Ihrem Azure-Abonnement hinzufügen, damit es Ihre Azure-Metrikdaten visualisiert.
 
-![Grafana](media/visualizations/grafana.png)
+![Screenshot von Grafana-Visualisierungen](media/visualizations/grafana.png)
 
 ### <a name="advantages"></a>Vorteile
 - Umfassende Visualisierungen.
@@ -120,7 +120,7 @@ Sie können auf Protokoll- und Metrikdaten in Azure Monitor mit einem beliebigen
 Mit [Ansichten in Azure Monitor](platform/view-designer.md) erstellen Sie benutzerdefinierte Visualisierungen mit Protokolldaten. Sie werden von [Überwachungslösungen](insights/solutions.md) zur Präsentation der Daten verwendet, die sie sammeln.
 
 
-![Sicht](media/visualizations/view.png)
+![Screenshot einer Kachel „Containerüberwachungslösung“ und der detaillierten Azure Monitor-Ansicht, die bei deren Auswahl geöffnet wird](media/visualizations/view.png)
 
 ### <a name="advantages"></a>Vorteile
 - Umfangreiche Visualisierungen für die Protokolldaten.

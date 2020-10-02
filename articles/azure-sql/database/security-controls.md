@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 97d2cd8e9ba51e4fc6ebab8459b04f4f37e876d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eec032ad56d00778627fc147761f61c03ba8bafd
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84668422"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442087"
 ---
 # <a name="security-controls-for-azure-sql-database-and-sql-managed-instance"></a>Sicherheitskontrollen für Azure SQL-Datenbank und SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -69,7 +69,7 @@ In diesem Artikel werden die in Azure SQL-Datenbank und Azure SQL Managed Instan
 | Sicherheitskontrolle | Ja/Nein | Notizen|
 |---|---|--|
 | Prävention: Sicherheitsrisikobewertung | Ja | Weitere Informationen finden Sie unter [Mit dem Dienst zur SQL-Sicherheitsrisikobewertung können Sie Datenbankschwachstellen erkennen](sql-vulnerability-assessment.md). |
-| Prävention: Datenermittlung und -klassifizierung  | Ja | Weitere Informationen finden Sie unter [Azure SQL-Datenbank und SQL Data Warehouse: Datenermittlung und -klassifizierung](data-discovery-and-classification-overview.md). |
+| Prävention: Datenermittlung und -klassifizierung  | Ja | Siehe [Azure SQL-Datenbank und Azure Synapse Analytics: Datenermittlung und -klassifizierung](data-discovery-and-classification-overview.md). |
 | Erkennung: Bedrohungserkennung | Ja | Weitere Informationen finden Sie unter [Advanced Threat Protection für Azure SQL-Datenbank](threat-detection-overview.md). |
 
 ## <a name="next-steps"></a>Nächste Schritte

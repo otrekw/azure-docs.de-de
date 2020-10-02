@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0847329bc1bc1a2d6242a9485453a3daf315c3fe
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: afb6adc38fd44366b837119518622dd8931f9096
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89318317"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565564"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Häufig gestellte Fragen zu Azure Active Directory
 Azure Active Directory (Azure AD) ist eine umfassende IDaaS-Lösung (Identity as a Service) für sämtliche Aspekte von Identität, Zugriffsverwaltung und Sicherheit.
@@ -29,7 +29,7 @@ Weitere Informationen finden Sie unter [Was ist Azure Active Directory?](active-
 ## <a name="access-azure-and-azure-active-directory"></a>Zugreifen auf Azure und Azure Active Directory
 **F: Warum wird „Keine Abonnements gefunden“ angezeigt, wenn ich versuche, im Azure-Portal auf Azure AD zuzugreifen?**
 
-**A:** Für den Zugriff auf das Azure-Portal benötigt jeder Benutzer Berechtigungen mit einem Azure-Abonnement. Wenn Sie nicht über ein kostenpflichtiges Office 365- oder Azure AD-Abonnement verfügen, müssen Sie ein kostenloses [Azure-Konto](https://azure.microsoft.com/free/
+**A:** Für den Zugriff auf das Azure-Portal benötigt jeder Benutzer Berechtigungen mit einem Azure-Abonnement. Wenn Sie nicht über ein kostenpflichtiges Microsoft 365- oder Azure AD-Abonnement verfügen, müssen Sie ein kostenloses [Azure-Konto](https://azure.microsoft.com/free/
 ) oder ein kostenpflichtiges Abonnement aktivieren.
 
 Weitere Informationen finden Sie unter
@@ -37,13 +37,13 @@ Weitere Informationen finden Sie unter
 * [Beziehung zwischen Azure-Abonnements und Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)
 
 ---
-**F: Welche Beziehung besteht zwischen Azure AD, Office 365 und Azure?**
+**F: Welche Beziehung besteht zwischen Azure AD, Microsoft 365 und Azure?**
 
-**A:** Azure AD bietet Ihnen allgemeine Identitäts- und Zugriffsfunktionen für alle Webdienste. Wenn Sie Office 365, Microsoft Azure, Intune oder andere Anwendungen nutzen, verwenden Sie bereits Azure AD, um die Anmeldung und Zugriffsverwaltung für diese Dienste zu ermöglichen.
+**A:** Azure AD bietet Ihnen allgemeine Identitäts- und Zugriffsfunktionen für alle Webdienste. Wenn Sie Microsoft 365, Microsoft Azure, Intune oder andere Anwendungen nutzen, verwenden Sie bereits Azure AD, um die Anmeldung und Zugriffsverwaltung für diese Dienste zu ermöglichen.
 
 Alle Benutzer, die für die Verwendung von Webdiensten eingerichtet sind, sind als Benutzerkonten in mindestens einer Azure AD-Instanz definiert. Für diese Konten können Sie kostenlose Azure AD-Funktionen wie etwa den Zugriff auf Cloudanwendungen einrichten.
 
-Kostenpflichtige Azure AD-Dienste wie Enterprise Mobility + Security ergänzen andere Webdienste wie Office 365 und Microsoft Azure durch umfassende Verwaltungs- und Sicherheitslösungen für Unternehmen.
+Kostenpflichtige Azure AD-Dienste wie Enterprise Mobility + Security ergänzen andere Webdienste wie Microsoft 365 und Microsoft Azure durch umfassende Verwaltungs- und Sicherheitslösungen für Unternehmen.
 
 ---
 
@@ -55,7 +55,7 @@ Anderen Benutzern, die sich mithilfe des gleichen Abonnements anmelden und auf d
 
 Der Person, die sich für ein Azure-Abonnement registriert, wird standardmäßig die globale Administratorrolle für das Verzeichnis zugewiesen. Der globale Administrator hat Zugriff auf alle Azure AD-Verzeichnisfunktionen. Azure AD weist eine andere Gruppe von Administratorrollen zum Verwalten der Features für Verzeichnisse und Identitäten. Diese Administratoren haben Zugriff auf verschiedene Funktionen im Azure-Portal. Die Rolle des Administrators bestimmt, welche Aktionen er ausführen kann. Mögliche Aktionen sind beispielsweise das Erstellen oder Bearbeiten von Benutzern, das Zuweisen von Administratorrollen zu anderen Personen, das Zurücksetzen von Benutzerkennwörtern sowie das Verwalten von Benutzerlizenzen oder Domänen.  Weitere Informationen zu Azure AD-Verzeichnisadministratoren und deren Rollen finden Sie unter [Zuweisen eines Benutzers zu Administratorrollen in Azure Active Directory](active-directory-users-assign-role-azure-portal.md) und [Zuweisen von Administratorrollen in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).
 
-Kostenpflichtige Azure AD-Dienste wie Enterprise Mobility + Security ergänzen zudem andere Webdienste wie Office 365 und Microsoft Azure durch umfassende Verwaltungs- und Sicherheitslösungen für Unternehmen.
+Kostenpflichtige Azure AD-Dienste wie Enterprise Mobility + Security ergänzen zudem andere Webdienste wie Microsoft 365 und Microsoft Azure durch umfassende Verwaltungs- und Sicherheitslösungen für Unternehmen.
 
 ---
 **F: Gibt es einen Bericht, der zeigt, wann meine Azure AD-Benutzerlizenzen ablaufen?**
@@ -90,7 +90,7 @@ Weitere Informationen finden Sie unter [Integrieren Ihrer lokalen Identitäten i
 ---
 **F: Bietet Azure AD ein Self-Service-Portal für Benutzer in meiner Organisation?**
 
-**A:** Ja. Für Self-Service-Aktionen und den Anwendungszugriff der Benutzer stellt Azure AD den [Azure AD-Zugriffsbereich](https://myapps.microsoft.com) bereit. Für Office 365-Kunden stehen viele dieser Funktionen bereits im [Office 365-Portal](https://portal.office.com) zur Verfügung.
+**A:** Ja. Für Self-Service-Aktionen und den Anwendungszugriff der Benutzer stellt Azure AD den [Azure AD-Zugriffsbereich](https://myapps.microsoft.com) bereit. Für Microsoft 365-Kunden stehen viele dieser Funktionen bereits im [Office 365-Portal](https://portal.office.com) zur Verfügung.
 
 Weitere Informationen finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
@@ -121,11 +121,11 @@ Weitere Informationen finden Sie unter [Erste Schritte mit der Kennwortverwaltun
 
 <a name="for-more-answers-to-password-related-questions-see-password-management-frequently-asked-questions"></a>Weitere Antworten auf kennwortbezogene Fragen finden Sie unter [Häufig gestellte Fragen zur Kennwortverwaltung](../authentication/active-directory-passwords-faq.md).
 ---
-**F:  Was kann ich tun, wenn ich mein vorhandenes Office 365-/Azure AD-Kennwort ändern möchte, aber das Kennwort vergessen habe?**
+**F:  Was kann ich tun, wenn ich mein vorhandenes Microsoft 365-/Azure AD-Kennwort ändern möchte, aber das Kennwort vergessen habe?**
 
 **A:** Für diese Situation stehen mehrere Optionen zur Verfügung.  Verwenden Sie die Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR), sofern verfügbar.  Ob die SSPR funktioniert, hängt davon ab, wie sie konfiguriert ist.  Weitere Informationen finden Sie unter [Wie funktioniert das Portal für die Kennwortzurücksetzung?](../authentication/howto-sspr-deployment.md).
 
-Für Office 365-Benutzer kann der Administrator das Kennwort mithilfe der Anleitung unter [Administratoren: Benutzerkennwörter zurücksetzen](https://support.office.com/article/Admins-Reset-user-passwords-7A5D073B-7FAE-4AA5-8F96-9ECD041ABA9C?ui=en-US&rs=en-US&ad=US) zurücksetzen.
+Für Microsoft 365-Benutzer kann der Administrator das Kennwort mithilfe der Anleitung unter [Zurücksetzen von Benutzerkennwörtern](https://support.office.com/article/Admins-Reset-user-passwords-7A5D073B-7FAE-4AA5-8F96-9ECD041ABA9C?ui=en-US&rs=en-US&ad=US) zurücksetzen.
 
 Für Azure AD-Konten können Administratoren Kennwörter mit einer der folgenden Methoden zurücksetzen:
 
@@ -171,7 +171,7 @@ Weitere Informationen finden Sie unter
 **A:** Azure AD bietet Benutzern mehrere Möglichkeiten zum Anzeigen von und Zugreifen auf Anwendungen. Nachfolgend finden Sie einige Beispiele für die verfügbaren Möglichkeiten:
 
 * Azure AD-Zugriffsbereich
-* Office 365-Anwendungsstartprogramm
+* Microsoft 365-Anwendungsstartprogramm
 * Direkte Anmeldung bei Verbund-Apps
 * Deep-Links zu verbundenen, kennwortbasierten oder vorhandene Apps
 
@@ -200,7 +200,7 @@ Weitere Informationen finden Sie unter [Bereitstellen von sicherem Remotezugriff
 
 **A:** Mit dem bedingten Azure AD-Zugriff können Sie jeder Anwendung eine individuelle Zugriffsrichtlinie zuweisen. In dieser Richtlinie können Sie festlegen, dass die mehrstufige Authentifizierung immer oder nur dann erforderlich sein soll, wenn Benutzer gerade nicht mit dem lokalen Netzwerk verbunden sind.  
 
-Weitere Informationen finden Sie unter [Bedingter Zugriff mit Azure Active Directory](../conditional-access/overview.md).
+Weitere Informationen finden Sie unter [Sicherer Zugriff auf Microsoft 365 und andere Apps, die mit Azure Active Directory verbunden sind](../conditional-access/overview.md).
 
 ---
 **F: Was ist eine automatisierte Benutzerbereitstellung für SaaS-Apps?**

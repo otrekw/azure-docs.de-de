@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: f382e3cf0f5d2d60c2868c6698b1ea901fbac023
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: a5f4ff3dade381cf1a68ac5e9e820be153acf5ee
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121441"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483744"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Häufig gestellte Fragen für SQL Server auf Azure-VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -164,6 +164,9 @@ Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführun
 
    Ja. Die SQL Server-Installationsmedien befinden sich in einem Ordner auf dem Laufwerk **C** . Führen Sie **Setup.exe** von diesem Speicherort aus, um neue SQL Server-Instanzen hinzuzufügen oder andere installierte Features von SQL Server auf dem Computer zu ändern. Beachten Sie, dass einige Funktionen wie automatisierte Sicherung, automatisiertes Patchen und Azure Key Vault-Integration nur für die Standardinstanz oder eine ordnungsgemäß konfigurierte benannte Instanz (siehe Frage 3) ausgeführt werden können. Kunden, die [Software Assurance über den Azure-Hybridvorteil](licensing-model-azure-hybrid-benefit-ahb-change.md) oder das Lizenzierungsmodell mit **nutzungsbasierter Bezahlung** verwenden, können ohne zusätzliche Lizenzkosten mehrere Instanzen von SQL Server auf dem virtuellen Computer installieren. Zusätzliche SQL Server-Instanzen können Systemressourcen belasten, wenn sie nicht ordnungsgemäß konfiguriert sind. 
 
+1. **Wie hoch ist die maximale Anzahl der Instanzen auf einer VM?**
+   SQL Server 2012 bis SQL Server 2019 unterstützen bis zu [50 Instanzen](/sql/sql-server/editions-and-components-of-sql-server-version-15#RDBMSSP) auf einem eigenständigen Server. Diese maximale Anzahl gilt für Azure und lokale Umgebungen gleichermaßen. Informationen zu einer besseren Vorbereitung der Umgebung finden Sie unter [bewährte Methoden](performance-guidelines-best-practices.md#multiple-instances). 
+
 1. **Kann ich die Standardinstanz von SQL Server deinstallieren?**
 
    Ja. Dabei sind jedoch ein paar Punkte zu beachten: Erstens kann die SQL Server zugeordnete Abrechnung abhängig vom Lizenzmodell für den virtuellen Computer weiterhin stattfinden. Zweitens und wie bereits in der vorhergehenden Antwort erläutert bauen diese Funktionen auf der [SQL Server-IaaS-Agent-Erweiterung](sql-server-iaas-agent-extension-automate-management.md) auf. Wenn Sie die Standardinstanz deinstallieren, ohne auch die IaaS-Erweiterung zu entfernen, sucht die Erweiterung weiterhin nach der Standardinstanz und generiert möglicherweise Fehler im Ereignisprotokoll. Diese Fehler stammen aus den folgenden beiden Quellen: **Microsoft SQL Server-Verwaltung von Anmeldeinformationen** und **Microsoft SQL Server-IaaS-Agent**. Einer der Fehler kann dem Folgenden ähneln:
@@ -179,6 +182,9 @@ Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführun
 1. **Kann ich SQL Server vollständig von einer SQL Server-VM entfernen?**
 
    Ja, die Abrechnung basiert jedoch weiterhin auf Ihrer SQL Server-VM, wie in den [Preisinformationen für virtuelle Azure-Computer mit SQL Server](pricing-guidance.md) beschrieben. Wenn Sie SQL Server nicht mehr benötigen, können Sie einen neuen virtuellen Computer bereitstellen und die Daten und Anwendungen zu diesem neuen virtuellen Computer migrieren. Anschließend können Sie den virtuellen SQL Server-Computer entfernen.
+
+1. **Kann ich über das Azure-Portal mehrere Instanzen auf derselben VM verwalten?**
+   Nein. Die Portalverwaltung wird vom SQL Server-VM-Ressourcenanbieter bereitgestellt und basiert auf der SQL Server-IaaS-Agent-Erweiterung. Daher gelten für den Ressourcenanbieter die gleichen Einschränkungen wie für die Erweiterung. Das Portal kann nur eine Standardinstanz oder eine benannte Instanz verwalten, sofern diese ordnungsgemäß konfiguriert ist. Weitere Informationen finden Sie unter [Erweiterung für SQL Server-IaaS-Agent](sql-server-iaas-agent-extension-automate-management.md). 
    
 ## <a name="updating-and-patching"></a>Aktualisieren und Patchen
 

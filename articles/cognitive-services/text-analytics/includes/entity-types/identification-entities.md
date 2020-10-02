@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/29/2020
 ms.author: aahi
-ms.openlocfilehash: 6271cb449b6bbc80269dd325bd5acd7edd2e0a6d
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 8e0798f75aaa79031ca7cc03814282daa049fbfe
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88011042"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662944"
 ---
 Diese Entitätskategorie umfasst Finanzinformationen und offizielle Formen der Identifikation. Erst ab der Modellversion `2019-10-01` verfügbar. Die Untertypen sind im Folgenden aufgeführt. 
 
@@ -34,7 +34,7 @@ Diese Entitätskategorie umfasst Finanzinformationen und offizielle Formen der I
 > * Reisepassnummern
 > * Steuernummern
 
-Die nachstehenden Entitäten werden nach Land/Region gruppiert und aufgeführt:
+Die folgenden Entitäten sind nach Land gruppiert und aufgelistet:
 
 Argentinien
 * Nationale argentinische ID-Nummer (DNI)

@@ -1,6 +1,5 @@
 ---
 title: Was ist Azure SQL?
-titleSuffix: " "
 description: 'Erfahren Sie mehr über die verschiedenen Optionen in der Azure SQL-Dienstfamilie: Azure SQL-Datenbank, Azure SQL Managed Instance und SQL Server auf einer Azure-VM.'
 services: sql-database
 ms.service: sql-database
@@ -13,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/27/2020
-ms.openlocfilehash: ff8dd9d10bf5970a5a96080beb51e2c111d481e3
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 344e52da8ef41e26ab0bfa7ef8e09a31f5d135ca
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280850"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89611839"
 ---
 # <a name="what-is-azure-sql"></a>Was ist Azure SQL? 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -32,6 +31,11 @@ Azure SQL ist eine Familie verwalteter, sicherer und intelligenter Produkte, die
 Azure SQL baut auf der vertrauten SQL Server-Engine auf, sodass Sie Anwendungen problemlos migrieren und weiterhin die Tools, Sprachen und Ressourcen nutzen können, die Ihnen vertraut sind. Ihre Kompetenzen und Erfahrungen werden in die Cloud übertragen, sodass Sie mit der vorhandenen Infrastruktur noch mehr erreichen können. 
 
 Erfahren Sie, wie jedes Produkt such in die Azure SQL-Datenplattform von Microsoft einfügt, um die richtige Wahl für Ihre Geschäftsanforderungen zu treffen. Ob bei Ihnen Kosteneinsparungen oder minimaler Verwaltungsaufwand Priorität haben – dieser Artikel kann Ihnen dabei helfen, zu entscheiden, welcher Ansatz der richtige ist, um die wichtigsten Anforderungen Ihres Unternehmens zu erfüllen.
+
+
+Wenn Sie noch nicht mit Azure SQL vertraut sind, sehen Sie sich das Video mit den *Infos zu Azure SQL* aus der detaillierten [Azure SQL-Videoserie](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner) an:
+> [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/What-is-Azure-SQL-3-of-61/player]
+
 
 
 ## <a name="overview"></a>Übersicht

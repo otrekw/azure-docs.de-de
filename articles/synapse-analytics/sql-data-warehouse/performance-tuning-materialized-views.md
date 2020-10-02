@@ -1,6 +1,6 @@
 ---
 title: Leistungsoptimierung mit materialisierten Sichten
-description: Empfehlungen und Überlegungen, die Sie kennen sollten, wenn Sie materialisierte Sichten zur Verbesserung Ihrer Abfrageleistung verwenden.
+description: Informieren Sie sich über Empfehlungen und Überlegungen, die Sie kennen sollten, wenn Sie materialisierte Sichten zur Verbesserung Ihrer Abfrageleistung verwenden.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: e624cf343209af722bfd007bd66a5e48b56eaff2
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 7c7109999d478121ba0251de8e7470bc0f38d64c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956388"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984115"
 ---
 # <a name="performance-tune-with-materialized-views"></a>Leistungsoptimierung mit materialisierten Sichten
 
@@ -52,7 +52,7 @@ Eine ordnungsgemäß entworfene materialisierte Sicht bietet folgende Vorteile:
 
 Die in SQL-Pool implementierten materialisierten Sichten bieten außerdem die folgenden zusätzlichen Vorteile:
 
-Im Vergleich zu anderen Data Warehouse-Anbietern bieten die in Azure SQL Data Warehouse implementierten materialisierten Sichten die folgenden zusätzlichen Vorteile:
+Im Vergleich zu anderen Data Warehouse-Anbietern bieten die in Azure Synapse Analytics implementierten materialisierten Sichten die folgenden zusätzlichen Vorteile:
 
 - Automatische und synchrone Datenaktualisierung bei Datenänderungen in Basistabellen. Es ist keine Benutzeraktion erforderlich.
 - Umfassende Unterstützung von Aggregatfunktionen. Lesen Sie dazu [CREATE MATERIALIZED VIEW AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 8/7/2020
-ms.openlocfilehash: 7697ba514b74935f8da6d71cdfb380e704d66f56
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.date: 9/8/2020
+ms.openlocfilehash: 979976ba88c2acca282a7f8bef4784b9d91ce0aa
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121356"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565088"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL-Datenbank – Serverlos
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -114,11 +114,12 @@ Das automatische Anhalten wird ausgelöst, wenn die folgenden Bedingungen für d
 
 Es ist eine Option verfügbar, mit der das automatische Anhalten ggf. deaktiviert werden kann.
 
-Die folgenden Features unterstützen nicht das automatische Anhalten, sondern nur die automatische Skalierung.  Das heißt, bei Verwendung eines der folgenden Features bleibt die Datenbank online, ungeachtet der Dauer der Inaktivität der Datenbank:
+Die folgenden Features unterstützen nicht das automatische Anhalten, sondern nur die automatische Skalierung.  Bei Verwendung eines der folgenden Features sollte das automatische Anhalten deaktiviert werden, und die Datenbank bleibt online (ungeachtet der Dauer der Inaktivität der Datenbank):
 
 - Georeplikation (aktive Georeplikation und Gruppen für automatisches Failover).
 - Langzeitaufbewahrung (Long-Term Retention, LTR) von Sicherungen.
 - In SQL-Datensynchronisierung verwendete Synchronisierungsdatenbank  Im Gegensatz zu Synchronisierungsdatenbanken unterstützen Hub-Datenbanken und Mitgliedsdatenbanken das automatische Anhalten.
+- DNS-Aliasing
 - die in elastischen Aufträgen (Vorschauversion) verwendete Auftragsdatenbank
 
 Das automatische Anhalten wird während der Bereitstellung bestimmter Dienstupdates vorübergehend verhindert, die erfordern, dass die Datenbank online ist.  In solchen Fällen ist das automatische Anhalten wieder zulässig, sobald das Dienstupdate abgeschlossen ist.

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/12/2018
 ms.author: genli
-ms.openlocfilehash: 6bce1616ce0c7f7e42810a551acb2f02165ccf93
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 0e79efc9de43fc0a3044e9ae1e3959f63bb6e69f
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078628"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090255"
 ---
 #  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>Remotedesktopverbindung mit einer VM nicht möglich, weil die Netzwerkschnittstelle deaktiviert ist
 
@@ -28,6 +28,11 @@ In diesem Artikel erfahren Sie, wie Sie ein Problem beim Herstellen einer Remote
 
 Sie können keine RDP-Verbindung oder eine andere Art von Verbindung mit anderen Ports einer VM in Azure herstellen, weil die Netzwerkschnittstelle auf der VM deaktiviert ist.
 
+![Screenshot: VM mit getrennter Netzwerkschnittstelle](./media/troubleshoot-rdp-nic-disabled/disconnected.png)
+
+![Screenshot: VM mit deaktivierter Netzwerkschnittstelle](./media/troubleshoot-rdp-nic-disabled/disabled.png)
+
+
 ## <a name="solution"></a>Lösung
 
 Erstellen Sie eine Momentaufnahme des Betriebssystemdatenträgers des betroffenen virtuellen Computers als Sicherung, bevor Sie die unten angegebenen Schritte ausführen. Weitere Informationen finden Sie unter [Erstellen einer Momentaufnahme eines Datenträgers](../windows/snapshot-copy-managed-disk.md).
@@ -36,8 +41,7 @@ Verwenden Sie zum Aktivieren der Schnittstelle für die VM die serielle Konsole,
 
 ### <a name="use-serial-control"></a>Verwenden der seriellen Konsole
 
-1. Stellen Sie eine Verbindung mit der [seriellen Konsole her, und öffnen Sie eine CMD-Instanz](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
-). Wenn die serielle Konsole auf Ihrer VM nicht aktiviert ist, helfen Ihnen die Informationen unter [Zurücksetzen der Netzwerkschnittstelle](#reset-network-interface) weiter.
+1. Stellen Sie eine Verbindung mit der [seriellen Konsole her, und öffnen Sie eine CMD-Instanz](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console). Wenn die serielle Konsole auf Ihrer VM nicht aktiviert ist, helfen Ihnen die Informationen unter [Zurücksetzen der Netzwerkschnittstelle](#reset-network-interface) weiter.
 2. Überprüfen Sie den Status der Netzwerkschnittstelle:
 
     ```console

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: b74fd1ad5c3783b2e456fa5f3c24fb8bc7875d4d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 49ab515c265b4b4444e7d4ca5b93c4e898e4cf54
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551321"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527308"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Entwerfen Ihrer Azure Monitor-Protokollbereitstellung
 
@@ -154,7 +154,7 @@ Operation
 
 In diesem Szenario wird der Entwurf eines einzelnen Arbeitsbereichs im Abonnement Ihrer IT-Organisation behandelt, das nicht durch die Datensouveränität oder Einhaltung gesetzlicher Bestimmungen eingeschränkt ist oder den Regionen zugeordnet werden muss, in denen Ihre Ressourcen bereitgestellt werden. Es ermöglicht den Sicherheits- und IT-Administratorenteams Ihrer Organisation, die verbesserte Integration der Azure-Zugriffsverwaltung und eine sicherere Zugriffssteuerung zu nutzen.
 
-Alle Ressourcen, Überwachungslösungen und Insights (z.B. Application Insights und Azure Monitor für VMs), die die Infrastruktur und Anwendungen unterstützen, die von den verschiedenen Teams verwaltet werden, sind so konfiguriert, dass die gesammelten Protokolldaten an den zentralen gemeinsamen Arbeitsbereich der IT-Organisation weitergeleitet werden. Benutzer in jedem Team erhalten Zugriff auf Protokolle für Ressourcen, auf die Sie Zugriff haben.
+Alle Ressourcen, Überwachungslösungen und Insights (z. B. Application Insights und Azure Monitor für VMs), die die Infrastruktur und Anwendungen unterstützen, die von den verschiedenen Teams verwaltet werden, sind so konfiguriert, dass die gesammelten Protokolldaten an den zentralen gemeinsamen Arbeitsbereich der IT-Organisation weitergeleitet werden. Benutzer in jedem Team erhalten Zugriff auf Protokolle für Ressourcen, auf die Sie Zugriff haben.
 
 Nachdem Sie die Arbeitsbereichsarchitektur bereitgestellt haben, können Sie diese für Azure-Ressourcen mit [Azure Policy](../../governance/policy/overview.md) erzwingen. Dies bietet eine Möglichkeit, Richtlinien zu definieren und Konformität mit Ihren Azure-Ressourcen zu gewährleisten, damit alle Ressourcenprotokolle an einen bestimmten Arbeitsbereich gesendet werden. Beispielsweise können Sie bei virtuellen Azure-Computern oder Skalierungsgruppen für virtuelle Computer vorhandene Richtlinien verwenden, mit denen die Arbeitsbereichskompatibilität ausgewertet und Ergebnisse gemeldet werden, oder zur Behebung von Nichtkonformität Anpassungen vornehmen.  
 

@@ -4,12 +4,12 @@ description: In diesem Artikel wird erläutert, was Aktionsregeln in Azure Monit
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 083db4ad046ee586f139309b62eedf0fcc2ffa6a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 723da36093c895a3a4aefbe66c2d8ca2ac0cba32
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045719"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983149"
 ---
 # <a name="action-rules-preview"></a>Aktionsregeln (Vorschau)
 
@@ -44,11 +44,11 @@ Sie können die Funktion aufrufen, indem Sie in Azure Monitor auf der Startseite
 
 Wählen Sie **+ New Action Rule** (+ Neue Aktionsregel) aus.
 
-![Hinzufügen einer neuen Aktionsregel](media/alerts-action-rules/action-rules-new-rule.png)
+![Screenshot der Seite „Aktionen verwalten“ mit hervorgehobener Schaltfläche „Neue Aktionsregel“](media/alerts-action-rules/action-rules-new-rule.png)
 
 Sie können eine Aktionsregel auch erstellen, während Sie eine Warnungsregel konfigurieren.
 
-![Hinzufügen einer neuen Aktionsregel](media/alerts-action-rules/action-rules-alert-rule.png)
+![Screenshot der Seite „Regel erstellen“ mit hervorgehobener Schaltfläche „Aktionsregel erstellen“](media/alerts-action-rules/action-rules-alert-rule.png)
 
 Nun sollte die Flussseite zum Erstellen von Aktionsregeln angezeigt werden. Konfigurieren Sie die folgenden Elemente:
 
@@ -255,7 +255,7 @@ az monitor action-rule delete --resource-group MyResourceGroupName --name MyActi
 
 Protokollwarnungen, die mit der Option [Anzahl von Ergebnissen](alerts-unified-log.md) erstellt werden, generieren eine einzige Warnungsinstanz anhand sämtlicher Suchergebnisse (die sich über mehrere Computer erstrecken können). Wenn in diesem Szenario eine Aktionsregel den Filter **Warnungskontext (Nutzlast)** verwendet, reagiert sie auf die Warnungsinstanz, sofern eine Übereinstimmung vorhanden ist. Wenn in Szenario 2, wie zuvor beschrieben, die Suchergebnisse für die generierte Protokollwarnung sowohl **Computer-01** als auch **Computer-02** enthalten, wird die gesamte Benachrichtigung unterdrückt. Es wird überhaupt keine Benachrichtigung für **Computer-02** generiert.
 
-![Aktionsregeln und Protokollwarnungen (Anzahl von Ergebnissen)](media/alerts-action-rules/action-rules-log-alert-number-of-results.png)
+![Diagramm der Aktionsregeln und Protokollwarnungen mit hervorgehobener einzelner Warnungsinstanz](media/alerts-action-rules/action-rules-log-alert-number-of-results.png)
 
 Um Protokollwarnungen mit Aktionsregeln optimal zu nutzen, empfiehlt es sich, Protokollwarnungen mit der Option [Metrische Maßeinheit](alerts-unified-log.md) zu erstellen. Separate Benachrichtigungsinstanzen werden von dieser Option basierend auf dem definierten Gruppenfeld generiert. In Szenario 2 werden schließlich separate Warnungsinstanzen für **Computer-01** und **Computer-02** generiert. Aufgrund der Aktionsregel, die im Szenario beschrieben wird, wird nur die Benachrichtigung für **Computer-01** unterdrückt. Die Benachrichtigung für **Computer-02** wird weiterhin normal ausgelöst.
 
@@ -272,7 +272,7 @@ Nachdem Sie einen Bereich definiert haben, können Sie bei der Konfiguration ein
 * Obermenge: Die von Ihnen definierte Aktionsregel bezieht sich auf eine Ressourcengruppe, und die überlappende Aktionsregel bezieht sich auf das Abonnement, das diese Ressourcengruppe enthält.
 * Schnittmenge: Die von Ihnen definierte Aktionsregel bezieht sich z.B. auf **VM1** und **VM2**, und die überlappende Aktionsregel bezieht sich auf **VM2** und **VM3**.
 
-![Überlappende Aktionsregeln](media/alerts-action-rules/action-rules-overlapping.png)
+![Screenshot der Seite „Neue Aktionsregel“ mit Anzeige der überlappenden Aktionsregeln im Fenster „Für denselben Bereich definierte Aktionsregeln“](media/alerts-action-rules/action-rules-overlapping.png)
 
 ### <a name="while-im-configuring-an-alert-rule-is-it-possible-to-know-if-there-are-already-action-rules-defined-that-might-act-on-the-alert-rule-im-defining"></a>Kann ich beim Konfigurieren einer Warnungsregel feststellen, ob bereits Aktionsregeln definiert sind, die möglicherweise Aktionen für die Warnungsregel ausführen, die ich gerade definiere?
 

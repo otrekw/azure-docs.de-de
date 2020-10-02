@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: edf66af2df56785977418a118847991165ab3702
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d291adcf53469825f32b664cb7f4ffdb0bbf244b
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84025631"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441016"
 ---
 # <a name="introduction-to-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Einführung in eine mehrinstanzenfähige SaaS-App, die das Muster mit einer Datenbank pro Mandant mit Azure SQL-Datenbank verwendet.
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -37,7 +37,7 @@ Wenn Sie die Tutorials durchgehen und mit der App arbeiten, legen Sie den Schwer
 
 ## <a name="sql-database-wingtip-saas-tutorials"></a>Tutorials zur SaaS-App Wingtip für die SQL-Datenbank
 
-Sehen Sie sich nach der Bereitstellung der App die folgenden Tutorials an, die auf der erstmaligen Bereitstellung aufbauen. In diesen Tutorials werden allgemeine SaaS-Muster behandelt, die die integrierten Features der SQL-Datenbank sowie der von Azure SQL Data Warehouse und anderen Azure-Diensten nutzen. Die Tutorials enthalten PowerShell-Skripts mit ausführlichen Erklärungen. Die Erklärungen erleichtern das Verständnis und die Implementierung der gleichen SaaS-Verwaltungsmuster in Ihren Anwendungen.
+Sehen Sie sich nach der Bereitstellung der App die folgenden Tutorials an, die auf der erstmaligen Bereitstellung aufbauen. In diesen Tutorials werden allgemeine SaaS-Muster behandelt, die die integrierten Features von SQL-Datenbank, Azure Synapse Analytics (vormals SQL Data Warehouse) und anderen Azure-Diensten nutzen. Die Tutorials enthalten PowerShell-Skripts mit ausführlichen Erklärungen. Die Erklärungen erleichtern das Verständnis und die Implementierung der gleichen SaaS-Verwaltungsmuster in Ihren Anwendungen.
 
 
 | Lernprogramm | BESCHREIBUNG |

@@ -5,14 +5,14 @@ services: vpn-gateway
 author: scottnap
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 03/21/2020
+ms.date: 09/08/2020
 ms.author: scottnap
-ms.openlocfilehash: 8a22e8f0bde2d13b4055566d96680fadc2db6e11
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4783016e472907392f2d379efa0fed2d90ed21bc
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80337093"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595358"
 ---
 # <a name="working-remotely-network-virtual-appliance-nva-considerations-for-remote-work"></a>Remotearbeit: Aspekte in Bezug auf virtuelle Netzwerkgeräte für die Remotearbeit
 
@@ -52,6 +52,8 @@ Jede NVA-Lösung verfügt über eigene Tools und Ressourcen zum Überwachen der 
 Die meisten wichtigen NVA-Partner haben Orientierungshilfen zur Skalierung bei einem plötzlichen, unerwarteten Wachstum während der COVID-19-Pandemie veröffentlicht. Nachfolgend finden Sie einige nützliche Links zu Partnerressourcen.
 
 [Barracuda: Arbeiten von zu Hause aus bei gleichzeitigem Schutz Ihrer Daten während der COVID-19-Pandemie](https://www.barracuda.com/covid-19/work-from-home "Arbeiten von zu Hause aus bei gleichzeitigem Schutz Ihrer Daten während der COVID-19-Pandemie")
+
+[Check Point – Geschützte Remotemitarbeiter während Corona](https://www.checkpoint.com/solutions/secure-remote-workforce-during-coronavirus/ "Geschützte Remotemitarbeiter während Corona")
 
 [Cisco: Referenz zur Implementierung, Leistung und Skalierung von AnyConnect für die Vorbereitung auf COVID-19](https://www.cisco.com/c/en/us/support/docs/security/anyconnect-secure-mobility-client/215331-anyconnect-implementation-and-performanc.html "Cisco: Referenz zur Implementierung, Leistung und Skalierung von AnyConnect für die Vorbereitung auf COVID-19")
 

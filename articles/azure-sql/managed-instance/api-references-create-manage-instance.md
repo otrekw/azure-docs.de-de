@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 8cc2930422bf644f217737d0f0ba585c243575ee
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4627c094c3913d01f06c237b133e1ed0ea4ed2e0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503003"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969804"
 ---
 # <a name="managed-api-reference-for-azure-sql-managed-instance"></a>Referenz zur Verwaltungs-API für verwaltete Azure SQL-Instanzen
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -44,6 +44,8 @@ Verwenden Sie zum Erstellen und Verwalten verwalteter Instanzen mithilfe von Azu
 |[Get-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstance)|Gibt Informationen zu einer verwalteten Instanz zurück.|
 |[Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance)|Legt Eigenschaften für eine verwaltete Instanz fest.|
 |[Remove-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance)|Entfernt eine verwaltete Instanz.|
+|[Get-AzSqlInstanceOperation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstanceoperation)|Ruft eine Liste der Verwaltungsvorgänge ab, die für die verwaltete Instanz oder einen bestimmten Vorgang ausgeführt wurden.|
+|[Stop-AzSqlInstanceOperation](https://docs.microsoft.com/powershell/module/az.sql/stop-azsqlinstanceoperation)|Bricht den Verwaltungsvorgang ab, der für die verwaltete Instanz ausgeführt wird.|
 |[New-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstancedatabase)|Erstellt eine SQL Managed Instance-Datenbank.|
 |[Get-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabase)|Gibt Informationen zu einer SQL Managed Instance-Datenbank zurück.|
 |[Remove-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabase)|Entfernt eine SQL Managed Instance-Datenbank.|
@@ -63,6 +65,9 @@ Verwenden Sie zum Erstellen und Konfigurieren verwalteter Instanzen mithilfe der
 |[az sql mi show](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-show)|Ruft die Details für eine verwaltete Instanz ab.|
 |[az sql mi update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update)|Aktualisiert eine verwaltete Instanz.|
 |[az sql mi delete](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-delete)|Entfernt eine verwaltete Instanz.|
+|[az sql mi op list](https://docs.microsoft.com/cli/azure/sql/mi/op#az_sql_mi_op_list)|Ruft eine Liste der Verwaltungsvorgänge ab, die für die verwaltete Instanz ausgeführt wurden.|
+|[az sql mi op show](https://docs.microsoft.com/cli/azure/sql/mi/op#az_sql_mi_op_show)|Ruft den Verwaltungsvorgang ab, der für die verwaltete Instanz ausgeführt wurde.|
+|[az sql mi op cancel](https://docs.microsoft.com/cli/azure/sql/mi/op#az_sql_mi_op_cancel)|Bricht den Verwaltungsvorgang ab, der für die verwaltete Instanz ausgeführt wird.|
 |[az sql midb create](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-create) |Erstellt eine verwaltete Datenbank.|
 |[az sql midb list](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-list)|Listet verfügbare verwaltete Datenbanken auf.|
 |[az sql midb restore](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-restore)|Stellt eine verwaltete Datenbank wieder her.|
@@ -80,8 +85,8 @@ Verwenden Sie zum Erstellen und Konfigurieren einer Instanzdatenbank nach dem Er
 
 | Get-Help | BESCHREIBUNG |
 | --- | --- |
-|[CREATE DATABASE](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current)|Erstellt eine neue verwaltete Instanz in SQL Managed Instance. Es muss eine Verbindung mit der master-Datenbank bestehen, um eine neue Datenbank zu erstellen.|
-| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current) |Ändert eine verwaltete Instanz in SQL Managed Instance.|
+|[CREATE DATABASE](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true)|Erstellt eine neue verwaltete Instanz in SQL Managed Instance. Es muss eine Verbindung mit der master-Datenbank bestehen, um eine neue Datenbank zu erstellen.|
+| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true) |Ändert eine verwaltete Instanz in SQL Managed Instance.|
 
 ## <a name="rest-api-create-and-configure-managed-instances"></a>REST-API: Erstellen und Konfigurieren von verwalteten Instanzen
 
@@ -95,6 +100,9 @@ Verwenden Sie zum Erstellen und Konfigurieren verwalteter Instanzen die folgende
 |[Verwaltete Instanzen – Auflisten](https://docs.microsoft.com/rest/api/sql/managedinstances/list)|Gibt eine Liste der verwalteten Instanzen in einem Abonnement zurück.|
 |[Verwaltet Instanzen – Auflisten nach Ressourcengruppe](https://docs.microsoft.com/rest/api/sql/managedinstances/listbyresourcegroup)|Gibt eine Liste der verwalteten Instanzen in einer Ressourcengruppe zurück.|
 |[Verwaltete Instanzen – Aktualisieren](https://docs.microsoft.com/rest/api/sql/managedinstances/update)|Aktualisiert eine verwaltete Instanz.|
+|[Vorgänge verwalteter Instanzen – Auflisten nach verwalteter Instanz](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/listbymanagedinstance)|Ruft eine Liste der Verwaltungsvorgänge ab, die für die verwaltete Instanz ausgeführt wurden.|
+|[Vorgänge verwalteter Instanzen – Abrufen](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/get)|Ruft den Verwaltungsvorgang ab, der für die verwaltete Instanz ausgeführt wurde.|
+|[Vorgänge verwalteter Instanzen – Abbrechen](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/cancel)|Bricht den Verwaltungsvorgang ab, der für die verwaltete Instanz ausgeführt wird.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: adfd91a3f82a83f6bb5e076247f1539029d5a04e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: eb20fe91a54007f24c56a95e67942728674471ea
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592286"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566635"
 ---
 # <a name="translator-30-detect"></a>Translator 3.0: Detect
 
@@ -67,7 +67,7 @@ Anforderungsheader enthalten Folgendes:
 
 ## <a name="request-body"></a>Anforderungstext
 
-Der Anforderungstext ist ein JSON-Array. Jedes Arrayelement ist ein JSON-Objekt mit einer Zeichenfolgeneigenschaft namens `Text`. Die Spracherkennung wird auf den Wert der `Text`-Eigenschaft angewendet. Ein Beispiel-Anforderungstext sieht folgendermaßen aus:
+Der Anforderungstext ist ein JSON-Array. Jedes Arrayelement ist ein JSON-Objekt mit einer Zeichenfolgeneigenschaft namens `Text`. Die Spracherkennung wird auf den Wert der `Text`-Eigenschaft angewendet. Ein längerer Eingabetext erhöht die Zuverlässigkeit der automatischen Spracherkennung. Ein Beispiel-Anforderungstext sieht folgendermaßen aus:
 
 ```json
 [
@@ -78,7 +78,6 @@ Der Anforderungstext ist ein JSON-Array. Jedes Arrayelement ist ein JSON-Objekt 
 Es gelten die folgenden Einschränkungen:
 
 * Das Array kann höchstens über 100 Elemente verfügen.
-* Der Textwert eines Arrayelements kann 10.000 Zeichen (einschließlich Leerzeichen) nicht überschreiten.
 * Der gesamte Text, der in einer Anforderung enthalten ist, kann 50.000 Zeichen (einschließlich Leerzeichen) nicht überschreiten.
 
 ## <a name="response-body"></a>Antworttext

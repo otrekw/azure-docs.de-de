@@ -3,12 +3,12 @@ title: Konfigurieren der Prometheus-Integration in Azure Monitor für Container 
 description: In diesem Artikel wird beschrieben, wie Sie den Azure Monitor für Container-Agent so konfigurieren können, dass Metriken aus Prometheus mit Ihrem Kubernetes-Cluster abgerufen werden.
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: 8c83d962a31150b31f5883150a2f7bd8d4b49183
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: f5a9b364bc3e51307bd44d8338485f482bda6e1e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069423"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971361"
 ---
 # <a name="configure-scraping-of-prometheus-metrics-with-azure-monitor-for-containers"></a>Konfigurieren des Abrufs von Prometheus-Metriken mit Azure Monitor für Container
 
@@ -347,7 +347,7 @@ InsightsMetrics
 
 Die Ausgabe zeigt ähnliche Ergebnisse wie die folgenden an:
 
-![Protokollabfrageergebnisse zur Menge der erfassten Daten](./media/container-insights-prometheus-integration/log-query-example-usage-03.png)
+![Screenshot der Protokollabfrageergebnisse zur Menge der erfassten Daten](./media/container-insights-prometheus-integration/log-query-example-usage-03.png)
 
 Um abzuschätzen, was jede Metrikgröße in GB für einen Monat bedeutet, um zu verstehen, ob das Volumen der im Arbeitsbereich empfangenen Erfassungsdaten hoch ist, wird die folgende Abfrage bereitgestellt.
 

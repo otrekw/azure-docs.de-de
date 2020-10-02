@@ -1,14 +1,14 @@
 ---
 title: Protokollwarnungen aus Azure Monitor für Container | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie benutzerdefinierte Warnungen basierend auf Protokollabfragen für die Arbeitsspeicher- und CPU-Auslastung von Azure Monitor für Container erstellen können.
+description: In diesem Artikel wird beschrieben, wie Sie benutzerdefinierte Protokollwarnungen für die Arbeitsspeicher- und CPU-Auslastung von Azure Monitor für Container erstellen.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: c023471ae041fa524fc4a2164c633ca80bcfdd88
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2d86edc5994070ba909c6e3a0da2cf76e8359773
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094450"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973719"
 ---
 # <a name="how-to-create-log-alerts-from-azure-monitor-for-containers"></a>Erstellen von Protokollwarnungen aus Azure Monitor für Container
 

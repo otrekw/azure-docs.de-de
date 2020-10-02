@@ -6,44 +6,72 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 09/09/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 8916f4b9824f88361fdeb9d866f84adb71e8138e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b056c12f51c6e36a806f2bba0f5efe9ea9498798
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563796"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015635"
 ---
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>Pullmodell für den Änderungsfeed in Azure Cosmos DB
 
 Mit dem Pullmodell für den Änderungsfeed können Sie den Azure Cosmos DB-Änderungsfeed in Ihrem eigenen Tempo verwenden. Wie Sie bereits beim [Änderungsfeedprozessor](change-feed-processor.md) können Sie das Pullmodell für den Änderungsfeed verwenden, um die Verarbeitung von Änderungen über mehrere Änderungsfeedconsumer zu parallelisieren.
 
 > [!NOTE]
-> Das Pullmodell für den Änderungsfeed ist derzeit ausschließlich als [Vorschauversion im Azure Cosmos DB .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.9.0-preview) verfügbar. Für andere SDK-Versionen ist noch keine Vorschauversion verfügbar.
+> Das Pullmodell für den Änderungsfeed ist derzeit ausschließlich als [Vorschauversion im Azure Cosmos DB .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.13.0-preview) verfügbar. Für andere SDK-Versionen ist noch keine Vorschauversion verfügbar.
+
+## <a name="comparing-with-change-feed-processor"></a>Vergleich mit dem Änderungsfeedprozessor
+
+In vielen Szenarien können Sie den Änderungsfeed entweder mit dem [Änderungsfeedprozessor](change-feed-processor.md) oder mit dem Pullmodell verarbeiten. Die Fortsetzungstoken des Pullmodells und der Leasecontainer des Änderungsfeedprozessors sind beides „Lesezeichen“ für das zuletzt verarbeitete Element (oder den Batch von Elementen) im Änderungsfeed.
+
+Es ist jedoch nicht möglich, Fortsetzungstoken in einen Leasecontainer (oder umgekehrt) zu konvertieren.
+
+> [!NOTE]
+> In den meisten Fällen ist es am einfachsten, zum Lesen des Änderungsfeeds den [Änderungsfeedprozessor](change-feed-processor.md) zu verwenden.
+
+In folgenden Szenarien sollten Sie die Verwendung des Pullmodells in Erwägung ziehen:
+
+- Lesen der Änderungen von einem bestimmten Partitionsschlüssel
+- Steuern der Geschwindigkeit, mit der der Client Änderungen für die Verarbeitung empfängt
+- Ausführen eines einmaligen Lesevorgangs über die vorhandenen Daten im Änderungsfeed (z. B. für eine Datenmigration)
+
+Im Folgenden sind einige wichtige Unterschiede zwischen dem Änderungsfeedprozessor und dem Pullmodell aufgeführt:
+
+|Funktion  | Change Feed Processor| Pull-Modell |
+| --- | --- | --- |
+| Verfolgen der aktuellen Position bei der Verarbeitung des Änderungsfeeds | Lease (gespeichert in einem Azure Cosmos DB-Container) | Fortsetzungstoken (im Arbeitsspeicher gespeichert oder manuell persistent gespeichert) |
+| Möglichkeit zur Wiederholung vergangener Änderungen | Ja, mit Pushmodell | Ja, mit Pullmodell|
+| Pullen zukünftiger Änderungen | Automatische Überprüfung auf Änderungen basierend auf einem vom Benutzer angegebenen `WithPollInterval` | Manuell |
+| Verarbeiten von Änderungen aus dem gesamten Container | Ja, mit automatischer Parallelisierung über mehrere Threads/Computer hinweg, die denselben Container verwenden| Ja, mit manueller Parallelisierung mithilfe von FeedTokens |
+| Verarbeiten von Änderungen von nur einem Partitionsschlüssel | Nicht unterstützt | Ja|
+| Supportebene | Allgemein verfügbar | Vorschau |
 
 ## <a name="consuming-an-entire-containers-changes"></a>Verwenden der Änderungen eines vollständigen Containers
 
-Sie können einen `FeedIterator` erstellen, um den Änderungsfeed mithilfe des Pullmodells zu verarbeiten. Wenn Sie erstmalig einen `FeedIterator` erstellen, können Sie in den `ChangeFeedRequestOptions` eine optionale `StartTime` angeben. Wenn diese nicht angegeben wird, ist die `StartTime` die aktuelle Uhrzeit.
+Sie können einen `FeedIterator` erstellen, um den Änderungsfeed mithilfe des Pullmodells zu verarbeiten. Wenn Sie erstmalig einen `FeedIterator` erstellen, müssen Sie einen erforderlichen `ChangeFeedStartFrom`-Wert angeben, der sowohl die Anfangsposition für das Lesen von Änderungen als auch den gewünschten `FeedRange` umfasst. Der `FeedRange` ist ein Bereich von Partitionsschlüsselwerten und gibt die Elemente an, die mit diesem speziellen `FeedIterator` aus dem Änderungsfeed gelesen werden.
+
+Optional können Sie `ChangeFeedRequestOptions` zum Festlegen eines `PageSizeHint` angeben. Der `PageSizeHint` gibt die maximale Anzahl von Elementen an, die auf einer einzelnen Seite zurückgegeben werden.
 
 Der `FeedIterator` ist in zwei Varianten verfügbar. Zusätzlich zu den unten aufgeführten Beispielen, die Entitätsobjekte zurückgeben, können Sie die Antwort auch mit `Stream`-Unterstützung abrufen. Datenströme ermöglichen Ihnen, Daten zu lesen, ohne sie zuvor deserialisieren und auf Clientressourcen speichern zu müssen.
 
 Im Folgenden finden Sie ein Beispiel für das Abrufen eines `FeedIterator`, der Entitätsobjekte zurückgibt (in diesem Fall ein `User`-Objekt):
 
 ```csharp
-FeedIterator<User> iteratorWithPOCOS = container.GetChangeFeedIterator<User>();
+FeedIterator<User> InteratorWithPOCOS = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.Beginning());
 ```
 
 Im Folgenden finden Sie ein Beispiel für das Abrufen eines `FeedIterator`, der einen `Stream` zurückgibt:
 
 ```csharp
-FeedIterator iteratorWithStreams = container.GetChangeFeedStreamIterator();
+FeedIterator iteratorWithStreams = container.GetChangeFeedStreamIterator<User>(ChangeFeedStartFrom.Beginning());
 ```
 
-Mithilfe eines `FeedIterator` können Sie den Änderungsfeed eines vollständigen Containers problemlos in Ihrem eigenen Tempo verarbeiten. Hier sehen Sie ein Beispiel:
+Wenn Sie keinen `FeedRange` für einen `FeedIterator` angeben, können Sie den Änderungsfeed eines vollständigen Containers in Ihrem eigenen Tempo verarbeiten. Im folgenden Beispiel wird das Lesen aller Änderungen am aktuellen Zeitpunkt begonnen:
 
 ```csharp
-FeedIterator<User> iteratorForTheEntireContainer= container.GetChangeFeedIterator<User>();
+FeedIterator iteratorForTheEntireContainer = container.GetChangeFeedStreamIterator<User>(ChangeFeedStartFrom.Now());
 
 while (iteratorForTheEntireContainer.HasMoreResults)
 {
@@ -61,7 +89,7 @@ while (iteratorForTheEntireContainer.HasMoreResults)
 In einigen Fällen möchten Sie möglicherweise nur die Änderungen eines bestimmten Partitionsschlüssels verarbeiten. Sie können einen `FeedIterator` für einen bestimmten Partitionsschlüssel abrufen und die Änderungen auf die gleiche Weise wie für einen vollständigen Container verarbeiten.
 
 ```csharp
-FeedIterator<User> iteratorForThePartitionKey = container.GetChangeFeedIterator<User>(new PartitionKey("myPartitionKeyValueToRead"));
+FeedIterator<User> iteratorForPartitionKey = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.Beginning(FeedRange.FromPartitionKey(new PartitionKey("PartitionKeyValue"))));
 
 while (iteratorForThePartitionKey.HasMoreResults)
 {
@@ -86,7 +114,7 @@ IReadOnlyList<FeedRange> ranges = await container.GetFeedRangesAsync();
 
 Wenn Sie eine Liste von FeedRanges für Ihren Container abrufen, erhalten Sie einen `FeedRange` pro [physischer Partition](partition-data.md#physical-partitions).
 
-Mithilfe eines `FeedRange` können Sie dann einen `FeedIterator` erstellen, um die Verarbeitung des Änderungsfeeds parallel auf mehrere Computer oder Threads zu verteilen. Im Gegensatz zum vorherigen Beispiel, in dem gezeigt wurde, wie Sie einen einzelnen `FeedIterator` für den gesamten Container abrufen, können Sie mithilfe von `FeedRange` mehrere FeedIterators abrufen, über die der Änderungsfeed parallel verarbeitet werden kann.
+Mithilfe eines `FeedRange` können Sie dann einen `FeedIterator` erstellen, um die Verarbeitung des Änderungsfeeds parallel auf mehrere Computer oder Threads zu verteilen. Im Gegensatz zum vorherigen Beispiel, in dem gezeigt wurde, wie Sie einen `FeedIterator` für den gesamten Container oder einen einzelnen Partitionsschlüssel abrufen, können Sie mithilfe von FeedRanges mehrere FeedIterators abrufen, über die der Änderungsfeed parallel verarbeitet werden kann.
 
 Wenn Sie FeedRanges verwenden möchten, benötigen Sie einen Orchestratorprozess, der sie abruft und auf diese Computer verteilt. Diese Verteilung könnte wie folgt erfolgen:
 
@@ -98,7 +126,7 @@ Das folgende Beispiel zeigt, wie Sie vom Anfang des Änderungsfeeds des Containe
 Computer 1:
 
 ```csharp
-FeedIterator<User> iteratorA = container.GetChangeFeedIterator<User>(ranges[0], new ChangeFeedRequestOptions{StartTime = DateTime.MinValue});
+FeedIterator<User> iteratorA = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.Beginning(ranges[0]));
 while (iteratorA.HasMoreResults)
 {
    FeedResponse<User> users = await iteratorA.ReadNextAsync();
@@ -113,7 +141,7 @@ while (iteratorA.HasMoreResults)
 Computer 2:
 
 ```csharp
-FeedIterator<User> iteratorB = container.GetChangeFeedIterator<User>(ranges[1], new ChangeFeedRequestOptions{StartTime = DateTime.MinValue});
+FeedIterator<User> iteratorB = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.Beginning(ranges[1]));
 while (iteratorB.HasMoreResults)
 {
    FeedResponse<User> users = await iteratorB.ReadNextAsync();
@@ -130,7 +158,7 @@ while (iteratorB.HasMoreResults)
 Sie können die Position des `FeedIterator` speichern, indem Sie ein Fortsetzungstoken erstellen. Ein Fortsetzungstoken ist ein Zeichenfolgenwert, der die letzten verarbeiteten Änderungen Ihres FeedIterators nachverfolgt. Dadurch kann der `FeedIterator` zu einem späteren Zeitpunkt an dieser Stelle fortgesetzt werden. Der folgende Code liest den Änderungsfeed seit der Erstellung des Containers. Wenn keine weiteren Änderungen mehr verfügbar sind, wird ein Fortsetzungstoken persistent gespeichert, sodass der Änderungsfeed später weiter verarbeitet werden kann.
 
 ```csharp
-FeedIterator<User> iterator = container.GetChangeFeedIterator<User>(ranges[0], new ChangeFeedRequestOptions{StartTime = DateTime.MinValue});
+FeedIterator<User> iterator = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.Beginning());
 
 string continuation = null;
 
@@ -146,32 +174,10 @@ while (iterator.HasMoreResults)
 }
 
 // Some time later
-FeedIterator<User> iteratorThatResumesFromLastPoint = container.GetChangeFeedIterator<User>(continuation);
+FeedIterator<User> iteratorThatResumesFromLastPoint = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.ContinuationToken(continuation));
 ```
 
 Solange der Cosmos-Container vorhanden ist, läuft das Fortsetzungstoken eines FeedIterators nie ab.
-
-## <a name="comparing-with-change-feed-processor"></a>Vergleich mit dem Änderungsfeedprozessor
-
-In vielen Szenarien können Sie den Änderungsfeed entweder mit dem [Änderungsfeedprozessor](change-feed-processor.md) oder mit dem Pullmodell verarbeiten. Die Fortsetzungstoken des Pullmodells und der Leasecontainer des Änderungsfeedprozessors sind beides „Lesezeichen“ für das zuletzt verarbeitete Element (oder den Batch von Elementen) im Änderungsfeed.
-Es ist jedoch nicht möglich, Fortsetzungstoken in einen Leasecontainer (oder umgekehrt) zu konvertieren.
-
-In folgenden Szenarien sollten Sie die Verwendung des Pullmodells in Erwägung ziehen:
-
-- Lesen von Änderungen von einem bestimmten Partitionsschlüssel
-- Steuern der Geschwindigkeit, mit der der Client Änderungen für die Verarbeitung empfängt
-- Ausführen eines einmaligen Lesevorgangs über die vorhandenen Daten im Änderungsfeed (z. B. für eine Datenmigration)
-
-Im Folgenden sind einige wichtige Unterschiede zwischen dem Änderungsfeedprozessor und dem Pullmodell aufgeführt:
-
-|Funktion  | Change Feed Processor| Pull-Modell |
-| --- | --- | --- |
-| Verfolgen der aktuellen Position bei der Verarbeitung des Änderungsfeeds | Lease (gespeichert in einem Azure Cosmos DB-Container) | Fortsetzungstoken (im Arbeitsspeicher gespeichert oder manuell persistent gespeichert) |
-| Möglichkeit zur Wiederholung vergangener Änderungen | Ja, mit Pushmodell | Ja, mit Pullmodell|
-| Pullen zukünftiger Änderungen | Automatische Überprüfung auf Änderungen basierend auf einem vom Benutzer angegebenen `WithPollInterval` | Manuell |
-| Verarbeiten von Änderungen aus dem gesamten Container | Ja, mit automatischer Parallelisierung über mehrere Threads/Computer hinweg, die denselben Container verwenden| Ja, mit manueller Parallelisierung mithilfe von FeedTokens |
-| Verarbeiten von Änderungen von nur einem Partitionsschlüssel | Nicht unterstützt | Ja|
-| Supportebene | Allgemein verfügbar | Vorschau |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

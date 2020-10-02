@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 01b6a72dfe3180324919fd712412ae88578c641b
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 6f7af74cce6bbafea7924d505f768503c7b1f108
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89047451"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89457990"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Azure Synapse Analytics: Versionshinweise
 
@@ -35,7 +35,7 @@ Vergewissern Sie sich für die Tooloptimierungen, dass die richtige Version inst
 > ```sql
 > SELECT SERVERPROPERTY('ProductVersion')
 >
-> --To return engine edition, use this command that returns 6 for Azure Synapse Analytics (Formerly SQL Data Warehouse):
+> --To return engine edition, use this command that returns 6 for Azure Synapse Analytics (formerly SQL Data Warehouse):
 >
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
@@ -51,7 +51,7 @@ Vergewissern Sie sich für die Tooloptimierungen, dass die richtige Version inst
 
 | Verbesserungen beim Dienst | Details |
 | --- | --- |
-|**Verschlüsselung auf Spaltenebene (Public Preview)**|Schützen Sie vertrauliche Informationen in Ihrem Synapse SQL Data Warehouse durch Anwenden symmetrischer Verschlüsselung auf eine Datenspalte mithilfe von Transact-SQL. Verschlüsselung auf Spaltenebene verfügt über integrierte Funktionen, mit denen Sie Daten mithilfe symmetrischer Schlüssel verschlüsseln können, die noch zusätzlich mit einem Zertifikat, Kennwort, einem symmetrischen oder asymmetrischen Schlüssel geschützt sind. Weitere Informationen finden Sie unter [Verschlüsseln einer Datenspalte](/sql/relational-databases/security/encryption/encrypt-a-column-of-data?view=azure-sqldw-latest).|
+|**Verschlüsselung auf Spaltenebene (Public Preview)**|Schützen Sie vertrauliche Informationen in Azure Synapse Analytics durch Anwenden symmetrischer Verschlüsselung auf eine Datenspalte mithilfe von Transact-SQL. Verschlüsselung auf Spaltenebene verfügt über integrierte Funktionen, mit denen Sie Daten mithilfe symmetrischer Schlüssel verschlüsseln können, die noch zusätzlich mit einem Zertifikat, Kennwort, einem symmetrischen oder asymmetrischen Schlüssel geschützt sind. Weitere Informationen finden Sie unter [Verschlüsseln einer Datenspalte](/sql/relational-databases/security/encryption/encrypt-a-column-of-data?view=azure-sqldw-latest).|
 |**Kompatibilitätsgradunterstützung (Allgemeine Verfügbarkeit)**|Mit diesem Release können Benutzer jetzt den Kompatibilitätsgrad einer Datenbank festlegen, um das Verhalten der Sprache Transact-SQL und der Abfrageverarbeitung für eine bestimmte Version der Synapse SQL-Engine zu erhalten. Weitere Informationen finden Sie unter [sys. database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) und [Datenbankweit gültige Konfiguration ändern](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).|
 |**Sicherheit auf Zeilenebene**|Dieses Release enthält eine Verbesserung für Aktualisierungs- und Löschvorgänge an Zeilen, wobei für diese Sicherheit auf Zeilenebene (RLS) erzwungen wird. Mit diesem Release werden Aktualisierungs- und Löschvorgänge mit intrinsischen Funktionen wie „is_rolemember“ erfolgreich ausgeführt, wenn die intrinsische Funktion nicht auf eine Spalte in der DML-Zieltabelle verweist. Vor der Einführung dieser Verbesserung schlugen diese Vorgänge aufgrund von Einschränkungen in den zugrunde liegenden DML-Vorgängen fehl.|
 |**DBCC SHRINKDATABASE (GA)**|Sie können jetzt die Größe der Daten- und Protokolldateien in der angegebenen Datenbank verkleinern. Weitere Informationen finden Sie in der [Dokumentation](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql?view=sql-server-ver15).|

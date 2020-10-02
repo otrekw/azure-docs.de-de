@@ -3,12 +3,12 @@ title: 'Erstellen einer benutzerdefinierten Azure Resource Manager-Rolle und Zuw
 description: Dieser Artikel enthält Anleitungen zum Erstellen einer benutzerdefinierten Azure Resource Manager-Rolle und zum Zuweisen der Rolle an den Dienstprinzipal für Live Video Analytics in IoT Edge mithilfe der Azure-Befehlszeilenschnittstelle.
 ms.topic: how-to
 ms.date: 05/27/2020
-ms.openlocfilehash: eb4c9a1f90ab50f7070184fc9a394d9e6edb833a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a780ecbbf2530b15984c596281c4aa7e4f5dd520
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043173"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526577"
 ---
 # <a name="create-custom-azure-resource-manager-role-and-assign-to-service-principal"></a>Erstellen einer benutzerdefinierten Azure Resource Manager-Rolle und Zuweisen der Rolle an einen Dienstprinzipal
 
@@ -43,7 +43,7 @@ Sollten Sie nicht über ein Media Service-Konto verfügen, gehen Sie wie folgt v
 1. Navigieren Sie zur [Cloud Shell](https://shell.azure.com/).
 1. Wählen Sie im Dropdownmenü auf der linken Seite des Shell-Fensters als Umgebung „Bash“ aus.
 
-    ![Bash](./media/create-custom-azure-resource-manager-role-how-to/bash.png)
+    ![Screenshot: „Bash“ im Shell-Fenster](./media/create-custom-azure-resource-manager-role-how-to/bash.png)
 1. Legen Sie Ihr Azure-Abonnement als Standardkonto fest, und verwenden Sie dazu die folgende Befehlsvorlage:
     
     ```

@@ -4,12 +4,12 @@ description: Überwachung der Anwendungsleistung für Azure App Services. Ladeze
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-javascript, devx-track-dotnet
-ms.openlocfilehash: 1e06aacaa12a428b42090ecb8e8ae89ae1e5ad76
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 952cd9669ecc3fb5ff1326d15aef25e1a1524ca5
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88933782"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979427"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Überwachen der Leistung von Azure App Service
 
@@ -55,7 +55,7 @@ Es gibt zwei Methoden, um die Überwachung für in Azure App Services gehostete 
 
 2. Nach Angabe der zu verwendenden Ressource können Sie plattformspezifisch auswählen, wie Application Insights Daten für Ihre Anwendung erfassen soll. Die Überwachung von ASP.NET-Apps ist standardmäßig mit zwei verschiedenen Erfassungsstufen aktiviert.
 
-    ![Auswählen plattformspezifischer Optionen](./media/azure-web-apps/choose-options-new.png)
+    ![Screenshot der Seite mit Application Insights-Websiteerweiterungen mit ausgewählter Option „Neue Ressource erstellen“](./media/azure-web-apps/choose-options-new.png)
  
  Es folgt eine Übersicht über die gesammelten Daten für jede Route:
         

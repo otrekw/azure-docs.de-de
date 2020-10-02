@@ -3,12 +3,12 @@ title: Schützen der Ressourcenhierarchie – Azure Governance
 description: Erfahren Sie, wie Sie Ihre Ressourcenhierarchie mit Hierarchieeinstellungen schützen, unter anderem durch Festlegen der Standardverwaltungsgruppe.
 ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: e73a72339b58a30a3fc5b1008ea1b70e449f77c7
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 19d699b54a9979df1030c0f6e294d5a4492f2853
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401692"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469778"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>Schützen der Ressourcenhierarchie
 
@@ -74,7 +74,7 @@ Wenn Sie die Standardverwaltungsgruppe wieder auf die Stammverwaltungsgruppe fes
 
 Jeder Benutzer kann standardmäßig neue Verwaltungsgruppen innerhalb eines Mandanten erstellen. Administratoren eines Mandanten können diese Berechtigungen nur für bestimmte Benutzer bereitstellen, um die Konsistenz und Konformität in der Verwaltungsgruppenhierarchie aufrechtzuerhalten. Wenn diese Einstellung aktiviert ist, benötigt ein Benutzer den Vorgang `Microsoft.Management/managementGroups/write` in der Stammverwaltungsgruppe, um neue untergeordnete Verwaltungsgruppen erstellen zu können.
 
-### <a name="set-default-management-group-in-portal"></a>Festlegen der Standardverwaltungsgruppe im Portal
+### <a name="set-require-authorization-in-portal"></a>Festlegen einer erforderlichen Autorisierung im Portal
 
 Führen Sie die folgenden Schritte aus, um diese Einstellung im Azure-Portal zu konfigurieren:
 

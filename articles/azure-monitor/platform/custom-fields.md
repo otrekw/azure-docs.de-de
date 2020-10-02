@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/23/2019
-ms.openlocfilehash: c0f31ddb0e0aeabff06d14d40d254c2577b38b5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ffe3d457d4827250418c9c2d838df35c11e01af7
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84906801"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974709"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor-preview"></a>Erstellen von benutzerdefinierten Feldern in einem Log Analytics-Arbeitsbereich in Azure Monitor (Vorschauversion)
 
@@ -23,7 +23,7 @@ ms.locfileid: "84906801"
 
 Mit dem Feature **Benutzerdefinierte Felder** von Azure Monitor können Sie vorhandene Datensätze in Ihrem Log Analytics-Arbeitsbereich durch eigene durchsuchbare Felder erweitern.  Benutzerdefinierte Felder werden automatisch auf der Grundlage von Daten aufgefüllt, die aus anderen Eigenschaften im gleichen Datensatz extrahiert wurden.
 
-![Übersicht](media/custom-fields/overview.png)
+![Das Diagramm zeigt einen ursprünglichen Datensatz, der einem geänderten Datensatz in einem Log Analytics-Arbeitsbereich zugeordnet ist, wobei der ursprünglichen Eigenschaft im geänderten Datensatz Eigenschaft-Wert-Paare hinzugefügt wurden.](media/custom-fields/overview.png)
 
 Der folgende Beispieldatensatz enthält beispielsweise weitere hilfreiche Daten in der Ereignisbeschreibung. Die Extraktion dieser Daten in eine separate Eigenschaft ermöglicht Aktionen wie Sortieren und Filtern.
 
@@ -81,7 +81,7 @@ Der folgende Abschnitt enthält ein vollständiges Beispiel für die Erstellung 
 
 Wir geben die folgende Abfrage ein, die alle Ereignisse des Dienststeuerungs-Managers mit der Ereignis-ID 7036 zurückgibt. (Dieses Ereignis gibt an, dass ein Dienst gestartet oder beendet wird.)
 
-![Abfrage](media/custom-fields/query.png)
+![Screenshot einer Abfrage für eine Ereignisquelle und ID](media/custom-fields/query.png)
 
 Anschließend wählen wir alle Datensätze mit der Ereignis-ID 7036 aus und erweitern sie.
 

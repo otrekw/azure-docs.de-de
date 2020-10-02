@@ -3,12 +3,12 @@ title: Exportieren aus Application Insights nach SQL | Microsoft-Dokumentation
 description: Exportiere Sie Application Insights-Daten kontinuierlich in SQL mit Stream Analytics.
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 9c559a61794b36ea1bc33abc14271151fbea9d4c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 90aab1794a9b412de2498edcc4d221f4bcc86968
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87311227"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979459"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Exemplarische Vorgehensweise: Exportieren aus Application Insights in SQL mit Stream Analytics
 In diesem Artikel wird veranschaulicht, wie Sie Telemetriedaten aus [Azure Application Insights][start] mithilfe von [fortlaufendem Export][export] und [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) in Azure SQL-Datenbank verschieben. 
@@ -133,21 +133,21 @@ In diesem Beispiel verwenden wir Daten aus Seitenaufrufen. Überprüfen Sie zum 
 ## <a name="create-an-azure-stream-analytics-instance"></a>Erstellen einer Azure Stream Analytics-Instanz
 Wählen Sie im [Azure-Portal](https://portal.azure.com/) den Azure Stream Analytics-Dienst aus, und erstellen Sie einen neuen Stream Analytics-Auftrag:
 
-![Stream Analytics-Einstellungen](./media/code-sample-export-sql-stream-analytics/SA001.png)
+![Screenshot der Seite für den Stream Analytics-Auftrag mit hervorgehobener Schaltfläche „Erstellen“](./media/code-sample-export-sql-stream-analytics/SA001.png)
 
 ![Neuer Stream Analytics-Auftrag](./media/code-sample-export-sql-stream-analytics/SA002.png)
 
 Wählen Sie nach dem Erstellen des neuen Auftrags die Option **Zu Ressource wechseln** aus.
 
-![Stream Analytics-Einstellungen](./media/code-sample-export-sql-stream-analytics/SA003.png)
+![Screenshot der Meldung „Bereitstellung erfolgreich“ und der Schaltfläche „Zu Ressource wechseln“](./media/code-sample-export-sql-stream-analytics/SA003.png)
 
 #### <a name="add-a-new-input"></a>Hinzufügen einer neuen Eingabe
 
-![Stream Analytics-Einstellungen](./media/code-sample-export-sql-stream-analytics/SA004.png)
+![Screenshot der Seite „Eingaben“ mit ausgewählter Schaltfläche „Hinzufügen“](./media/code-sample-export-sql-stream-analytics/SA004.png)
 
 Legen Sie den Auftrag so fest, dass er Eingaben vom Blob für den fortlaufenden Export erhält:
 
-![Stream Analytics-Einstellungen](./media/code-sample-export-sql-stream-analytics/SA0005.png)
+![Screenshot des Fensters „Neue Eingabe“ mit ausgewählten Optionen aus den Dropdownmenüs für „Eingabealias“, „Quelle“ und „Speicherkonto“](./media/code-sample-export-sql-stream-analytics/SA0005.png)
 
 Jetzt benötigen Sie den primären Zugriffsschlüssel aus Ihrem Speicherkonto, den Sie zuvor notiert haben. Legen Sie diesen als Speicherkontoschlüssel fest.
 

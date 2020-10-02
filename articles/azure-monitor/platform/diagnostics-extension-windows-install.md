@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: ac087a7ba241534c08c4e5737973861727ab01ca
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 46234f3b4bfd467db9b5754b5590603ff3d42915
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89069577"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974531"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>Installieren und Konfigurieren der Microsoft Azure-Diagnoseerweiterung (WAD)
 Die [Azure-Diagnoseerweiterung](diagnostics-extension-overview.md) ist ein Agent in Azure Monitor, der Überwachungsdaten vom Gastbetriebssystem und Workloads von virtuellen Azure-Computern und anderen Computeressourcen sammelt. Dieser Artikel enthält ausführliche Informationen zum Installieren und Konfigurieren der Windows-Diagnoseerweiterung sowie eine Beschreibung der Speicherung von Daten in einem Azure Storage-Konto.
@@ -51,7 +51,7 @@ Sie können die Diagnoseerweiterung auf einem einzelnen virtuellen Computer im A
 
 6. Wählen Sie auf der Registerkarte **Protokolle** die Protokolle aus, die vom virtuellen Computer gesammelt werden sollen. Protokolle können an Storage oder Event Hubs gesendet werden, aber nicht an Azure Monitor. Verwenden Sie den [Log Analytics-Agent](log-analytics-agent.md), um Gastprotokolle für Azure Monitor zu sammeln.
 
-   ![Protokolle](media/diagnostics-extension-windows-install/logs.png)
+   ![Screenshot der Registerkarte „Protokolle“ mit verschiedenen ausgewählten Protokollen für einen virtuellen Computer](media/diagnostics-extension-windows-install/logs.png)
 
 7. Geben Sie auf der Registerkarte **Absturzabbilder** die Prozesse zum Sammeln von Speicherabbildern nach einem Absturz an. Die Daten werden in das Speicherkonto für die Diagnoseeinstellung geschrieben, und Sie können optional einen Blobcontainer angeben.
 
@@ -59,7 +59,7 @@ Sie können die Diagnoseerweiterung auf einem einzelnen virtuellen Computer im A
 
 8. Geben Sie auf der Registerkarte **Senken** an, ob die Daten an andere Speicherorte als Azure Storage gesendet werden sollen. Wenn Sie **Azure Monitor** auswählen, werden Gastleistungsdaten an Azure Monitor-Metriken gesendet. Die Event Hub-Senke kann nicht mit dem Azure-Portal konfiguriert werden.
 
-   ![Senken](media/diagnostics-extension-windows-install/sinks.png)
+   ![Screenshot der Registerkarte „Senken“ mit aktivierter Option „Diagnosedaten an Azure Monitor senden“](media/diagnostics-extension-windows-install/sinks.png)
    
    Wenn Sie keine systemseitig zugewiesene Identität aktiviert haben, die für den virtuellen Computer konfiguriert ist, wird möglicherweise die folgende Warnung angezeigt, sobald Sie eine Konfiguration mit der Azure Monitor-Senke speichern. Klicken Sie auf das Banner, um die systemseitig zugewiesene Identität zu aktivieren.
    
@@ -67,7 +67,7 @@ Sie können die Diagnoseerweiterung auf einem einzelnen virtuellen Computer im A
 
 9. Im **Agent** können Sie das Speicherkonto ändern, das Datenträgerkontingent festlegen und angeben, ob Diagnoseinfrastrukturprotokolle gesammelt werden sollen.  
 
-   ![Agent](media/diagnostics-extension-windows-install/agent.png)
+   ![Screenshot der Registerkarte „Agent“ mit der Option zum Festlegen des Speicherkontos](media/diagnostics-extension-windows-install/agent.png)
 
 10. Klicken Sie zum Speichern der Konfiguration auf **Speichern**. 
 

@@ -1,6 +1,6 @@
 ---
 title: Ressourcenparameter in Azure Monitor-Arbeitsmappen
-description: Vereinfachen der komplexen Berichterstellung mit vordefinierten und benutzerdefiniert parametrisierten Arbeitsmappen
+description: Erfahren Sie, wie Sie Ressourcen in Arbeitsmappen mithilfe von Ressourcenparametern auswählen können. Verwenden Sie die Ressourcenparameter, um den Bereich festzulegen, aus dem die Daten abgerufen werden sollen.
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: b5822c1af4f3bc5d9519af93054a01c3cdc82001
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a4d4e095e065e9f505ba1b9b46f0d31fb1783eb2
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86504990"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972860"
 ---
 # <a name="workbook-resource-parameters"></a>Ressourcenparameter für Arbeitsmappen
 

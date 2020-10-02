@@ -3,12 +3,12 @@ title: 'Verwenden von Verwaltungsgruppen: Azure Governance'
 description: Hier erfahren Sie, wie Sie die Verwaltungsgruppenhierarchie anzeigen, verwalten, aktualisieren und löschen.
 ms.date: 08/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 43837dcaed9b9628573ee92244ede542107155f9
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 765a3853bbd3ee21bfc2a4aca5d5adb03f413e30
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88055138"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658757"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Verwalten von Ressourcen mit Verwaltungsgruppen
 
@@ -37,11 +37,11 @@ Der Name einer Verwaltungsgruppe kann über das Portal, mithilfe von PowerShell 
 
 1. Klicken Sie oben auf der Seite auf die Option **Gruppe umbenennen**.
 
-   :::image type="content" source="./media/detail_action_small.png" alt-text="Option „Gruppe umbenennen“ auf einer Verwaltungsgruppenseite" border="false":::
+   :::image type="content" source="./media/detail_action_small.png" alt-text="Screenshot: Aktionsleiste und Schaltfläche „Gruppe umbenennen“ auf der Seite „Verwaltungsgruppe“" border="false":::
 
 1. Wenn das Menü geöffnet wird, geben Sie den neuen Namen ein, der angezeigt werden soll.
 
-   :::image type="content" source="./media/rename_context.png" alt-text="Bereich „Gruppe umbenennen“ zum Umbenennen einer Verwaltungsgruppe" border="false":::
+   :::image type="content" source="./media/rename_context.png" alt-text="Screenshot: Aktionsleiste und Schaltfläche „Gruppe umbenennen“ auf der Seite „Verwaltungsgruppe“" border="false":::
 
 1. Wählen Sie **Speichern** aus.
 
@@ -82,14 +82,14 @@ Um eine Verwaltungsgruppe zu löschen, müssen die folgenden Anforderungen erfü
 
 1. Wählen Sie **Löschen** aus.
 
-   :::image type="content" source="./media/delete.png" alt-text="Option zum Löschen der Gruppe" border="false":::
+   :::image type="content" source="./media/delete.png" alt-text="Screenshot: Aktionsleiste und Schaltfläche „Gruppe umbenennen“ auf der Seite „Verwaltungsgruppe“" border="false":::
 
    > [!TIP]
    > Wenn das Symbol abgeblendet ist, zeigen Sie mit der Maus darauf, um den Grund dafür anzuzeigen.
 
 1. Ein Fenster wird geöffnet, in dem Sie das Löschen der Verwaltungsgruppe bestätigen müssen.
 
-   :::image type="content" source="./media/delete_confirm.png" alt-text="Bestätigungsfenster für das Löschen der Gruppe" border="false":::
+   :::image type="content" source="./media/delete_confirm.png" alt-text="Screenshot: Aktionsleiste und Schaltfläche „Gruppe umbenennen“ auf der Seite „Verwaltungsgruppe“" border="false":::
 
 1. Wählen Sie **Ja** aus.
 
@@ -123,7 +123,7 @@ Sie können jede Verwaltungsgruppe anzeigen, für die Sie eine direkte oder geer
 
 1. Um die Details der Verwaltungsgruppe zu sehen, wählen Sie den Link **(Details)** neben dem Titel der Verwaltungsgruppe. Wenn dieser Link nicht verfügbar ist, sind Sie zum Anzeigen dieser Verwaltungsgruppe nicht berechtigt.
 
-   :::image type="content" source="./media/main.png" alt-text="Hauptseite" border="false":::
+   :::image type="content" source="./media/main.png" alt-text="Screenshot: Aktionsleiste und Schaltfläche „Gruppe umbenennen“ auf der Seite „Verwaltungsgruppe“" border="false":::
 
 ### <a name="view-in-powershell"></a>Anzeigen in PowerShell
 
@@ -229,7 +229,7 @@ Wählen Sie zum Anzeigen Ihrer Berechtigungen im Azure-Portal die Verwaltungsgru
 
 1. Wählen Sie in der Liste das Abonnement mit der richtigen ID aus.
 
-   :::image type="content" source="./media/add_context_sub.png" alt-text="Verfügbare Abonnements zum Hinzufügen zu einer Verwaltungsgruppe" border="false":::
+   :::image type="content" source="./media/add_context_sub.png" alt-text="Screenshot: Aktionsleiste und Schaltfläche „Gruppe umbenennen“ auf der Seite „Verwaltungsgruppe“" border="false":::
 
 1. Wählen Sie „Speichern“ aus.
 
@@ -243,13 +243,13 @@ Wählen Sie zum Anzeigen Ihrer Berechtigungen im Azure-Portal die Verwaltungsgru
 
 1. Klicken Sie in der Liste am Ende der Zeile des zu verschiebenden Abonnements auf die Ellipse.
 
-   :::image type="content" source="./media/move_small.png" alt-text="Option „Verschieben“ für eine Verwaltungsgruppe" border="false":::
+   :::image type="content" source="./media/move_small.png" alt-text="Screenshot: Aktionsleiste und Schaltfläche „Gruppe umbenennen“ auf der Seite „Verwaltungsgruppe“" border="false":::
 
 1. Klicken Sie auf **Verschieben**.
 
 1. Klicken Sie im angezeigten Menü auf **Übergeordnete Verwaltungsgruppe**.
 
-   :::image type="content" source="./media/move_small_context.png" alt-text="Bereich „Verschieben“ zum Ändern der übergeordneten Gruppe" border="false":::
+   :::image type="content" source="./media/move_small_context.png" alt-text="Screenshot: Aktionsleiste und Schaltfläche „Gruppe umbenennen“ auf der Seite „Verwaltungsgruppe“" border="false":::
 
 1. Wählen Sie **Speichern** aus.
 
@@ -298,7 +298,7 @@ az account management-group subscription remove --name 'Contoso' --subscription 
    - Durch die Auswahl von „Neu“ wird eine neue Verwaltungsgruppe erstellt.
    - Wenn Sie eine vorhandene Verwaltungsgruppe auswählen, wird eine Dropdownliste mit allen Verwaltungsgruppen angezeigt, die Sie in diese Verwaltungsgruppe verschieben können.  
 
-   :::image type="content" source="./media/add_context_MG.png" alt-text="Verschieben einer Verwaltungsgruppe in eine neue oder vorhandene Gruppe" border="false":::
+   :::image type="content" source="./media/add_context_MG.png" alt-text="Screenshot: Aktionsleiste und Schaltfläche „Gruppe umbenennen“ auf der Seite „Verwaltungsgruppe“" border="false":::
 
 1. Wählen Sie **Speichern** aus.
 
@@ -323,7 +323,7 @@ az account management-group update --name 'Contoso' --parent ContosoIT
 
 Verwaltungsgruppen werden im [Azure-Aktivitätsprotokoll](../../azure-monitor/platform/platform-logs-overview.md) unterstützt. Alle Ereignisse, die für eine Verwaltungsgruppe auftreten, können am gleichen zentralen Ort wie bei anderen Azure-Ressourcen abgefragt werden. Sie können beispielsweise alle Änderungen an Rollen- oder Richtlinienzuweisungen anzeigen, die für eine bestimmte Verwaltungsgruppe vorgenommen wurden.
 
-:::image type="content" source="./media/al-mg.png" alt-text="Aktivitätsprotokolle mit Verwaltungsgruppen" border="false":::
+:::image type="content" source="./media/al-mg.png" alt-text="Screenshot: Aktionsleiste und Schaltfläche „Gruppe umbenennen“ auf der Seite „Verwaltungsgruppe“" border="false":::
 
 Wenn Sie Verwaltungsgruppen außerhalb des Azure-Portals abfragen möchten, sieht der Zielbereich für Verwaltungsgruppen wie folgt aus: **"/providers/Microsoft.Management/managementGroups/{yourMgID}"** .
 

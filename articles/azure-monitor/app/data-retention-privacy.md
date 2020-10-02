@@ -4,12 +4,12 @@ description: Hinweis zur Datenaufbewahrung und Datenschutzrichtlinie
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: f6fa42d6cc20c4d26caa7f571f13bb3917b2c7c5
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: a2440379c001c0213145c1c5972cfed8799f4966
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929328"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90562790"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Datensammlung, -aufbewahrung und -speicherung in Application Insights
 
@@ -128,7 +128,7 @@ Wenn ein Kunde dieses Verzeichnis mit bestimmten Sicherheitsanforderungen konfig
 
 `C:\Users\username\AppData\Local\Temp` wird für die dauerhafte Speicherung von Daten verwendet. Dieser Speicherort kann nicht über das config-Verzeichnis konfiguriert werden, und die Zugriffsberechtigungen für diesen Ordner sind auf einen bestimmten Benutzer mit den erforderlichen Anmeldeinformationen beschränkt. (Weitere Informationen finden Sie unter [Implementierung](https://github.com/Microsoft/ApplicationInsights-Java/blob/40809cb6857231e572309a5901e1227305c27c1a/core/src/main/java/com/microsoft/applicationinsights/internal/util/LocalFileSystemUtils.java#L48-L72).)
 
-###  <a name="net"></a>.Net
+###  <a name="net"></a>.NET
 
 Standardmäßig verwendet `ServerTelemetryChannel` den lokalen Ordner des aktuellen Benutzers für App-Daten (`%localAppData%\Microsoft\ApplicationInsights`) oder den temporären Ordner (`%TMP%`). (Näheres dazu finden Sie in der [Implementierung](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84).)
 
@@ -153,7 +153,16 @@ Per Code:
 
 ### <a name="netcore"></a>NetCore
 
-Standardmäßig verwendet `ServerTelemetryChannel` den lokalen Ordner des aktuellen Benutzers für App-Daten (`%localAppData%\Microsoft\ApplicationInsights`) oder den temporären Ordner (`%TMP%`). (Näheres dazu finden Sie in der [Implementierung](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84).) In einer Linux-Umgebung ist der lokale Speicher deaktiviert, sofern kein Speicherordner angegeben wird.
+Standardmäßig verwendet `ServerTelemetryChannel` den lokalen Ordner des aktuellen Benutzers für App-Daten (`%localAppData%\Microsoft\ApplicationInsights`) oder den temporären Ordner (`%TMP%`). (Näheres dazu finden Sie in der [Implementierung](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84).) 
+
+In einer Linux-Umgebung ist der lokale Speicher deaktiviert, sofern kein Speicherordner angegeben wird.
+
+> [!NOTE]
+> Ab Version 2.15.0-beta3 wird nun automatisch lokaler Speicher für Linux, Mac und Windows erstellt. Für Nicht-Windows-Systeme erstellt das SDK automatisch einen lokalen Speicherordner auf der Grundlage der folgenden Logik:
+> - `${TMPDIR}`: Wenn die Umgebungsvariable `${TMPDIR}` festgelegt ist, wird dieser Speicherort verwendet.
+> - `/var/tmp`: Wenn der vorherige Speicherort nicht vorhanden ist, versuchen wir `/var/tmp`.
+> - `/tmp`: Wenn die beiden vorherigen Speicherorte nicht vorhanden sind, versuchen wir `tmp`. 
+> - Wenn keiner dieser Speicherorte vorhanden ist, wird kein lokaler Speicher erstellt, wodurch eine manuelle Konfiguration weiterhin erforderlich ist. [Vollständige Details zur Implementierung.](https://github.com/microsoft/ApplicationInsights-dotnet/pull/1860)
 
 Der folgende Codeausschnitt zeigt, wie Sie `ServerTelemetryChannel.StorageFolder` in der `ConfigureServices()`-Methode Ihrer `Startup.cs`-Klasse festlegen:
 

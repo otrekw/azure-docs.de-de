@@ -4,12 +4,12 @@ description: Hier wird das Behandeln von Problemen mit der automatischen Skalier
 ms.topic: conceptual
 ms.date: 11/4/2019
 ms.subservice: autoscale
-ms.openlocfilehash: 9780cf88070110c4efc13c477d65307aa3985fe5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a29b5d11a6ea06af9d5b6a8b5120c6f0caa6601e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75751332"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979046"
 ---
 # <a name="troubleshooting-azure-autoscale"></a>Problembehandlung für automatische Skalierung in Azure
  
@@ -47,7 +47,7 @@ Es gibt eine einfache Autoskalierungseinstellung für eine VM-Skalierungsgruppe,
 
 Betrachten wir nun die Metriken aus dem Autoskalierungsdienst.
  
-![Beispiel für CPU-Prozentsatz – VM-Skalierungsgruppe](media/autoscale-troubleshoot/autoscale-vmss-CPU-ex-full-1.png)
+![Screenshot eines Beispiels für den CPU-Prozentsatz einer VM-Skalierungsgruppe](media/autoscale-troubleshoot/autoscale-vmss-CPU-ex-full-1.png)
 
 ![Beispiel für CPU-Prozentsatz – VM-Skalierungsgruppe](media/autoscale-troubleshoot/autoscale-vmss-CPU-ex-full-2.png)
 
@@ -72,7 +72,7 @@ Wenn der Wert von **Outbound Flow per instance** (Ausgehender Datenfluss pro Ins
 
 In diesem Fall wird der beobachtete Metrikwert des Autoskalierungsmoduls berechnet, indem der tatsächliche Metrikwert durch die Anzahl der Instanzen dividiert wird. Wenn der beobachtete Metrikwert kleiner als der Schwellenwert ist, wird keine Aktion zum horizontalen Hochskalieren initiiert. 
  
-![Beispiel für Diagramme mit Metriken der automatischen Skalierung für VM-Skalierungsgruppe](media/autoscale-troubleshoot/autoscale-vmss-metric-chart-ex-1.png)
+![Screenshot der Seite mit dem Durchschnittswert für ausgehende Datenflüsse mit einem Beispiel für Diagramme mit Metriken der automatischen Skalierung für die VM-Skalierungsgruppe](media/autoscale-troubleshoot/autoscale-vmss-metric-chart-ex-1.png)
 
 ![Beispiel für Diagramme mit Metriken der automatischen Skalierung für VM-Skalierungsgruppe](media/autoscale-troubleshoot/autoscale-vmss-metric-chart-ex-2.png)
 

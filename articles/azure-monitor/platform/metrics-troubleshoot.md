@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 4800234b55507b7c8d8a16d16ce4d2fef3365baa
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 54f99f2f8708fca9c02950a8886a2a9b976a93dd
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829593"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440676"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Problembehandlung für Metrikdiagramme
 
@@ -110,7 +110,7 @@ Standardmäßig werden die Metriken des Gastbetriebssystems im Azure Storage-Kon
 
 1. Stellen Sie sicher, dass das Speicherkonto nicht durch die Firewall geschützt ist. Das Azure-Portal benötigt Zugriff auf das Speicherkonto, um Metrikdaten abzurufen und die Diagramme auszugeben.
 
-1. Verwenden Sie den [Azure-Speicher-Explorer](https://azure.microsoft.com/features/storage-explorer/), um zu überprüfen, ob Metriken in das Speicherkonto gelangen. Wenn keine Metriken gesammelt werden, folgen Sie dem [Handbuch zur Problembehandlung für die Azure-Diagnoseerweiterung](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal).
+1. Verwenden Sie [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/), um zu überprüfen, ob Metriken in das Speicherkonto gelangen. Wenn keine Metriken gesammelt werden, folgen Sie dem [Handbuch zur Problembehandlung für die Azure-Diagnoseerweiterung](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

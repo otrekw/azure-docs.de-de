@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 34a048c702b62caeecaf21e710a9dcd9156e4aea
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 0a5c788b4429b5048a1b94fa8adfb2d9367982da
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87801299"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033471"
 ---
 # <a name="deploy-azure-monitor"></a>Bereitstellen von Azure Monitor
 Die Aktivierung von Azure Monitor für die Überwachung aller Ihrer Azure-Ressourcen umfasst die Konfiguration von Azure Monitor-Komponenten und von Azure-Ressourcen, damit diese Überwachungsdaten generieren, die Azure Monitor dann sammeln kann. In diesem Artikel werden die erforderlichen Schritte für eine vollständige Implementierung von Azure Monitor anhand einer allgemeinen Konfiguration beschrieben, mit der alle Ressourcen in Ihrem Azure-Abonnement überwacht werden können. Die grundlegenden Beschreibungen der einzelnen Schritte enthalten Links zu weiteren Informationen mit detaillierten Konfigurationsanforderungen.
@@ -118,9 +118,9 @@ Ausführliche Informationen zum Installieren und Konfigurieren dieser Agents fin
 Azure Monitor überwacht Ihre benutzerdefinierten Anwendungen mithilfe von [Application Insights](app/app-insights-overview.md), das Sie für jede zu überwachende Anwendung konfigurieren müssen. Der Konfigurationsvorgang variiert abhängig vom Typ der zu überwachenden Anwendung und der Art der gewünschten Überwachung. Die von Application Insights gesammelten Daten werden je nach Feature in Azure Monitor-Metriken, Azure Monitor-Protokollen oder Azure Blob Storage gespeichert. Leistungsdaten werden ohne zusätzliche Konfiguration in Azure Monitor-Metriken und Azure Monitor-Protokollen gespeichert.
 
 ### <a name="create-an-application-resource"></a>Erstellen einer Anwendungsressource
-Sie müssen in Application Insights für jede Anwendung, die Sie überwachen möchten, eine Ressource erstellen. Die von Application Insights gesammelten Protokolldaten werden in Azure Monitor-Protokollen gespeichert. Sie sind aber von Ihrem Log Analytics-Arbeitsbereich getrennt, wie unter [Wie sind Daten in Azure Monitor-Protokollen strukturiert?](platform/data-platform-logs.md#how-is-data-in-azure-monitor-logs-structured) beschrieben. In der Vorschauphase haben Sie jedoch die Möglichkeit, Ihre Anwendungsdaten zusammen mit Ihren anderen Daten direkt in einem Log Analytics-Arbeitsbereich zu speichern. Dies vereinfacht die Konfiguration und ermöglicht der Anwendung die Nutzung aller Features eines Log Analytics-Arbeitsbereichs.
+Sie müssen in Application Insights für jede Anwendung, die Sie überwachen möchten, eine Ressource erstellen. Die von Application Insights gesammelten Protokolldaten für eine arbeitsbereichsbasierte Anwendung werden in Azure Monitor-Protokollen gespeichert. Protokolldaten für klassische Anwendungen werden getrennt vom Log Analytics-Arbeitsbereich gespeichert, wie es unter [Struktur der Daten](platform/data-platform-logs.md#structure-of-data) beschrieben ist.
 
- Wenn Sie die Anwendung erstellen, müssen Sie auswählen, ob Sie eine klassische oder eine arbeitsbereichsbasierte (Vorschauversion) Anwendung verwenden möchten. Weitere Informationen zum Erstellen einer klassischen Anwendung finden Sie unter [Erstellen einer Application Insights-Ressource](app/create-new-resource.md). Weitere Informationen zum Erstellen einer arbeitsbereichsbasierten Anwendung finden Sie unter [Arbeitsbereichsbasierte Application Insights-Ressourcen (Vorschau)](app/create-workspace-resource.md).
+ Wenn Sie die Anwendung erstellen, müssen Sie auswählen, ob Sie eine klassische oder eine arbeitsbereichsbasierte Anwendung verwenden möchten. Weitere Informationen zum Erstellen einer klassischen Anwendung finden Sie unter [Erstellen einer Application Insights-Ressource](app/create-new-resource.md). Weitere Informationen zum Erstellen einer arbeitsbereichsbasierten Anwendung finden Sie unter [Arbeitsbereichsbasierte Application Insights-Ressourcen (Vorschau)](app/create-workspace-resource.md).
 
 ### <a name="configure-codeless-or-code-based-monitoring"></a>Konfigurieren der Überwachung mit oder ohne Code
 Um die Überwachung für eine Anwendung zu aktivieren, müssen Sie entscheiden, ob Sie die codebasierte Überwachung oder die Überwachung ohne Code verwenden möchten. Der Konfigurationsvorgang variiert abhängig von dieser Entscheidung und vom Typ der Anwendung, die Sie überwachen möchten.

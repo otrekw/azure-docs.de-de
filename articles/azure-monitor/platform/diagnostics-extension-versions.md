@@ -6,12 +6,12 @@ ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/29/2020
-ms.openlocfilehash: 16fba1f036299a84db8301dbc09c7f4884d985f3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9fa0fbea9a6c0e95eb9bec2795ae12e5fae36bfb
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87305090"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568659"
 ---
 # <a name="windows-azure-diagnostics-extension-wad-configuration-schema-versions-and-history"></a>Konfigurationsschema der Azure-Diagnoseerweiterung für Windows – Versionen und Versionsverlauf
 Dieser Artikel bietet Informationen zum Versionsverlauf der Schemaversionen der [Azure-Diagnoseerweiterung für Windows](diagnostics-extension-overview.md), die im Rahmen des Microsoft Azure SDK geliefert wird.  

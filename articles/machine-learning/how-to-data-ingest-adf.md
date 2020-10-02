@@ -12,12 +12,12 @@ ms.reviewer: larryfr
 ms.date: 03/01/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: b756e83f1d810007e9e9ef6cf2987c3cf60b7f7d
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: ad04566699b2eebb0cbd7a9f242de38bc75e2015
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852853"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986401"
 ---
 # <a name="data-ingestion-with-azure-data-factory"></a>Datenerfassung mit Azure Data Factory
 
@@ -35,7 +35,7 @@ Es gibt verschiedene gängige Verfahren, um mit Azure Data Factory die Daten wä
 
 ## <a name="adf-with-azure-functions"></a>ADF mit Azure Functions
 
-![adf-function](media/how-to-data-ingest-adf/adf-function.png)
+![Die Abbildung zeigt eine Azure Data Factory-Pipeline mit Azure Functions und Vorgang zum Ausführen einer ML-Pipeline sowie eine Azure Machine Learning-Pipeline mit Vorgang zum Trainieren eines Modells. Außerdem wird die Interaktion dieser Pipelines mit Rohdaten und vorbereiteten Daten gezeigt.](media/how-to-data-ingest-adf/adf-function.png)
 
 Azure Functions ermöglicht das Ausführen kleiner Codeelemente (Funktionen), ohne sich Gedanken über die Anwendungsinfrastruktur machen zu müssen. Bei dieser Option werden die Daten mit benutzerdefiniertem Python-Code verarbeitet, der von einer Azure-Funktion umschlossen ist. 
 
@@ -51,7 +51,7 @@ Die Funktion wird mit der [ADF Azure Function-Aktivität](https://docs.microsoft
 
 ## <a name="adf-with-custom-component-activity"></a>ADF mit benutzerdefinierter Komponentenaktivität
 
-![adf-customcomponent](media/how-to-data-ingest-adf/adf-customcomponent.png)
+![Die Abbildung zeigt eine Azure Data Factory-Pipeline mit benutzerdefinierter Komponente und Vorgang zum Ausführen einer ML-Pipeline sowie eine Azure Machine Learning-Pipeline mit Vorgang zum Trainieren eines Modells. Außerdem wird die Interaktion dieser Pipelines mit Rohdaten und vorbereiteten Daten gezeigt.](media/how-to-data-ingest-adf/adf-customcomponent.png)
 
 Bei dieser Option werden die Daten mit benutzerdefiniertem Python-Code verarbeitet, der von einer ausführbaren Datei umschlossen ist. Sie wird mit einer [ADF-Benutzerdefinierte-Komponente-Aktivität](https://docs.microsoft.com/azure/data-factory/transform-data-using-dotnet-custom-activity) aufgerufen. Dieser Ansatz eignet sich besser für große Datenmengen als das vorherige Verfahren.
 
@@ -64,7 +64,7 @@ Bei dieser Option werden die Daten mit benutzerdefiniertem Python-Code verarbeit
 
 ## <a name="adf-with-azure-databricks-python-notebook"></a>ADF mit Azure Databricks Python-Notebook
 
-![adf-databricks](media/how-to-data-ingest-adf/adf-databricks.png)
+![Die Abbildung zeigt eine Azure Data Factory-Pipeline mit Azure Databricks Python und Vorgang zum Ausführen einer ML-Pipeline sowie eine Azure Machine Learning-Pipeline mit Vorgang zum Trainieren eines Modells. Außerdem wird die Interaktion dieser Pipelines mit Rohdaten und vorbereiteten Daten gezeigt.](media/how-to-data-ingest-adf/adf-databricks.png)
 
 [Azure Databricks](https://azure.microsoft.com/services/databricks/) ist eine Apache Spark-basierte Analyseplattform in der Microsoft-Cloud.
 
@@ -82,7 +82,7 @@ Bei diesem Verfahren wird die Datentransformation von einem [Python-Notebook](ht
 
 ## <a name="consuming-data-in-azure-machine-learning-pipelines"></a>In Anspruch nehmen von Daten in Azure Machine Learning-Pipelines
 
-![aml-dataset](media/how-to-data-ingest-adf/aml-dataset.png)
+![Die Abbildung zeigt eine Azure Data Factory-Pipeline und eine Azure Machine Learning-Pipeline sowie die Interaktion dieser Pipelines mit Rohdaten und vorbereiteten Daten. Die Data Factory-Pipeline sendet Daten an die Datenbank für vorbereitete Daten, die die Daten wiederum an einen Datenspeicher übergibt. Der Datenspeicher füllt Datasets im Machine Learning-Arbeitsbereich.](media/how-to-data-ingest-adf/aml-dataset.png)
 
 Die transformierten Daten aus der ADF-Pipeline werden in einem Datenspeicher (z. B. Azure Blob) gespeichert. Azure Machine Learning kann über [Datenspeicher](https://docs.microsoft.com/azure/machine-learning/how-to-access-data#create-and-register-datastores) und [Datasets](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets) auf diese Daten zugreifen.
 

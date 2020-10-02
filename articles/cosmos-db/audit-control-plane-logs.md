@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/25/2020
 ms.author: sngun
-ms.openlocfilehash: ae1d2743934c5ae8df9f2a1514bdda9b34262b9d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 691c6ec0559eceb60d57bf04819701edebbffd83
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023686"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462444"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>Überwachen von Azure Cosmos DB-Vorgängen auf Steuerungsebene
 
@@ -69,17 +69,17 @@ Nachdem Sie die Protokollierung aktiviert haben, führen Sie die folgenden Schri
 
 Die folgenden Screenshots zeigen Protokolle beim Ändern der Konsistenzebene für ein Azure Cosmos-Konto:
 
-:::image type="content" source="./media/audit-control-plane-logs/add-ip-filter-logs.png" alt-text="Protokolle auf Steuerungsebene beim Hinzufügen eines VNET":::
+:::image type="content" source="./media/audit-control-plane-logs/add-ip-filter-logs.png" alt-text="Aktivieren der Anforderungsprotokollierung auf Steuerungsebene":::
 
 In den folgenden Screenshots werden Protokolle erfasst, wenn der Keyspace oder eine Tabelle eines Cassandra-Kontos erstellt wird und der Durchsatz aktualisiert wird. Die Protokolle auf Steuerungsebene für Erstellungs- und Aktualisierungsvorgänge in der Datenbank und dem Container werden separat protokolliert, wie es im folgenden Screenshot zu sehen ist:
 
-:::image type="content" source="./media/audit-control-plane-logs/throughput-update-logs.png" alt-text="Protokolle auf Steuerungsebene beim Aktualisieren des Durchsatzes":::
+:::image type="content" source="./media/audit-control-plane-logs/throughput-update-logs.png" alt-text="Aktivieren der Anforderungsprotokollierung auf Steuerungsebene":::
 
 ## <a name="identify-the-identity-associated-to-a-specific-operation"></a>Identifizieren der einem bestimmten Vorgang zugeordneten Identität
 
 Wenn Sie weitere debuggen möchten, können Sie einen bestimmten Vorgang im **Aktivitätsprotokoll** ermitteln, indem Sie die Aktivitäts-ID oder den Zeitstempel des Vorgangs verwenden. Der Zeitstempel wird für einige Resource Manager-Clients verwendet, bei denen die Aktivitäts-ID nicht explizit übermittelt wurde. Das Aktivitätsprotokoll enthält Details zur Identität, mit der der Vorgang initiiert wurde. Der folgende Screenshot veranschaulicht, wie Sie die Aktivitäts-ID verwenden und die damit verbundenen Vorgänge im Aktivitätsprotokoll ermitteln:
 
-:::image type="content" source="./media/audit-control-plane-logs/find-operations-with-activity-id.png" alt-text="Verwenden der Aktivitäts-ID und Suchen der Vorgänge":::
+:::image type="content" source="./media/audit-control-plane-logs/find-operations-with-activity-id.png" alt-text="Aktivieren der Anforderungsprotokollierung auf Steuerungsebene":::
 
 ## <a name="control-plane-operations-for-azure-cosmos-account"></a>Vorgänge der Steuerungsebene für Azure Cosmos-Konten
 
@@ -193,6 +193,22 @@ AzureDiagnostics 
 AzureDiagnostics 
 | where Category =="ControlPlaneRequests"
 | where  OperationName startswith "SqlContainersThroughputUpdate"
+```
+
+Abfrage zum Abrufen der Aktivitäts-ID und des aufrufenden Benutzers, der den Vorgang zum Löschen des Containers initiiert hat:
+
+```kusto
+(AzureDiagnostics
+| where Category == "ControlPlaneRequests"
+| where OperationName == "SqlContainersDelete"
+| where TimeGenerated >= todatetime('9/3/2020, 5:30:29.300 PM')
+| summarize by activityId_g )
+| join (
+AzureActivity
+| parse HTTPRequest with * "clientRequestId\": \"" activityId_g "\"" * 
+| summarize by Caller, HTTPRequest, activityId_g)
+on activityId_g
+| project Caller, activityId_g
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

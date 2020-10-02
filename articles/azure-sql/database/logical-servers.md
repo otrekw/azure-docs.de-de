@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: dbcc82d3ec4b50cf51210f8a4319bbf374185a88
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: abb8f42e7fe4ffe6e933f466202247c73ece129a
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498088"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441713"
 ---
 # <a name="what-is-a-logical-sql-server-in-azure-sql-database-and-azure-synapse"></a>Was ist ein logischer SQL-Server in Azure SQL-Datenbank und Azure Synapse?
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -150,7 +150,7 @@ Verwenden Sie zum Erstellen der Server, Datenbanken und Firewalls mithilfe von T
 |[CREATE DATABASE (Azure SQL-Datenbank)](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current) | Mit diesem Befehl wird eine neue Datenbank in Azure SQL-Datenbank erstellt. Es muss eine Verbindung mit der master-Datenbank bestehen, um eine neue Datenbank zu erstellen.|
 |[CREATE DATABASE (Azure Synapse)](/sql/t-sql/statements/create-database-transact-sql?view=azure-sqldw-latest) | Mit diesem Befehl wird eine neue Data Warehouse-Datenbank in Azure Synapse erstellt. Es muss eine Verbindung mit der master-Datenbank bestehen, um eine neue Datenbank zu erstellen.|
 | [ALTER DATABASE (Azure SQL-Datenbank)](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Mit diesem Befehl kann eine Datenbank oder ein Pool für elastische Datenbanken geändert werden. |
-|[ALTER DATABASE (Azure SQL Data Warehouse)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=sql-server-ver15)|Mit diesem Befehl kann eine Data Warehouse-Datenbank in Azure Synapse geändert werden.|
+|[ALTER DATABASE (Azure Synapse Analytics)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=sql-server-ver15)|Mit diesem Befehl kann eine Data Warehouse-Datenbank in Azure Synapse geändert werden.|
 |[DROP DATABASE (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Löscht eine Datenbank.|
 |[sys.database_service_objectives (Azure SQL-Datenbank)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Dieser Befehl gibt die Edition (Dienstebene), das Dienstziel (Tarif) und den Namen des Pools für elastische Datenbanken für eine Datenbank zurück, sofern diese vorhanden sind. Wenn eine Anmeldung bei der Masterdatenbank für einen Server besteht, werden Informationen zu allen Datenbanken zurückgegeben. Für Azure Synapse müssen Sie mit der Masterdatenbank verbunden sein, um eine Anmeldung erstellen zu können.|
 |[sys.dm_db_resource_stats (Azure SQL-Datenbank)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Mit diesem Befehl werden die CPU-, E/A- und Arbeitsspeichernutzung für eine Datenbank in Azure SQL-Datenbank zurückgegeben. Jede Zeile wird für 15 Sekunden beibehalten, auch wenn keine Aktivität in der Datenbank vorhanden ist.|

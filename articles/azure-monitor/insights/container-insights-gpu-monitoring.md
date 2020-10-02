@@ -3,12 +3,12 @@ title: Konfigurieren der GPU-Überwachung mit Azure Monitor für Container | Mic
 description: In diesem Artikel wird beschrieben, wie Sie die Überwachung von Kubernetes-Clustern mit NVIDIA- und AMD-GPU-fähigen Knoten mit Azure Monitor für Container konfigurieren können.
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: 958f5ab33edcd280f5673391eba907728f1153c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c6044d407dc4abd0e69bac0190cc19c901022c3
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80373273"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569695"
 ---
 # <a name="configure-gpu-monitoring-with-azure-monitor-for-containers"></a>Konfigurieren der GPU-Überwachung mit Azure Monitor für Container
 
@@ -22,9 +22,12 @@ Azure Monitor für Container unterstützt die Überwachung von GPU-Clustern von 
 
 - [AMD](https://github.com/RadeonOpenCompute/k8s-device-plugin)
 
-Azure Monitor für Container beginnt automatisch mit der Überwachung der GPU-Nutzung auf Knoten sowie GPUs anfordernden Pods und Workloads, indem die folgenden Metriken in 60-Sekunden-Intervallen gesammelt und in der **insightMetrics**-Tabelle gespeichert werden:
+Azure Monitor für Container beginnt automatisch mit der Überwachung der GPU-Nutzung auf Knoten sowie GPUs anfordernden Pods und Workloads, indem die folgenden Metriken in 60-Sekunden-Intervallen gesammelt und in der **insightMetrics**-Tabelle gespeichert werden.
 
-|Metrikname |Metrikdimension (Tags) |BESCHREIBUNG |
+>[!NOTE]
+>Stellen Sie nach dem Bereitstellen eines Clusters mit GPU-Knoten sicher, dass der [GPU-Treiber](../../aks/gpu-cluster.md) installiert ist, wie von AKS für die Ausführung von GPU-Workloads erforderlich. Azure Monitor für Container sammelt GPU-Metriken über GPU-Treiberpods, die auf dem Knoten ausgeführt werden. 
+
+|Metrikname |Metrikdimension (Tags) |Beschreibung |
 |------------|------------------------|------------|
 |containerGpuDutyCycle |container.azm.ms/clusterId, container.azm.ms/clusterName, containerName, gpuId, gpuModel, gpuVendor|Der Prozentsatz der Zeit im Verlauf des letzten Beispielzeitraums (60 Sekunden), während dessen die GPU ausgelastet war/aktiv die Verarbeitung für einen Container ausgeführt hat. Der Arbeitszyklus ist eine Zahl zwischen 1 und 100. |
 |containerGpuLimits |container.azm.ms/clusterId, container.azm.ms/clusterName, containerName |In jedem Container können Grenzwerte als eine oder mehrere GPUs angegeben werden. Es ist nicht möglich, einen Bruchteil einer GPU anzufordern oder einzuschränken. |

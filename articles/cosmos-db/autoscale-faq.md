@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/10/2020
-ms.openlocfilehash: ca4e79977132586c619f323015f9d915e04707f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e6a502ae7ed71beaeefe603e0810264e62187ba
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84449514"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90708001"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Häufig gestellte Fragen zum im Autoskalierungsmodus bereitgestellten Durchsatz von Azure Cosmos DB
 
@@ -27,7 +27,7 @@ Ressourcen, die mit dem früheren Ebenenmodell erstellt wurden, werden automatis
 
 Wenn Sie z. B. zuvor die Ebene ausgewählt haben, bei der zwischen 400 und 4.000 RU/s skaliert wurde, wird für die Datenbank oder den Container nun eine Skalierung zwischen 400 und 4.000 RU/s (Höchstwert) angezeigt. Sie können davon ausgehend den Höchstwert von RU/s in einen benutzerdefinierten Wert ändern, der für Ihre Workload geeignet ist. 
 
-### <a name="how-quickly-will-autoscale-scale-up-and-down-based-on-spikes-in-traffic"></a>Wie schnell erfolgt die Autoskalierung bei Spitzenwerten im Datenverkehr?
+### <a name="how-quickly-will-autoscale-scale-up-based-on-spikes-in-traffic"></a>Wie schnell kann im Autoskalierungsmodus basierend auf Spitzenwerten im Datenverkehr hochskaliert werden?
 Bei der Autoskalierung skaliert das System den Durchsatz (RU/s) `T` innerhalb des Bereichs `0.1 * Tmax` und `Tmax` basierend auf dem eingehenden Datenverkehr. Da die Skalierung automatisch und sofort erfolgt, können Sie zu jedem beliebigen Zeitpunkt ohne Verzögerung Durchsatz bis zum bereitgestellten Wert `Tmax` verbrauchen. 
 
 ### <a name="how-do-i-determine-what-rus-the-system-is-currently-scaled-to"></a>Wie finde ich heraus, auf welche RU/s das System zurzeit skaliert ist?

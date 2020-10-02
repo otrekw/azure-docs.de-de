@@ -4,12 +4,12 @@ description: Informationen zum Skalieren Ihrer Ressource Web-App, Clouddienst, v
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 710d4e1aa77f8ab3153dafc77a72eec2192cf205
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: d37b1bad397e6170e2a7992a0a9671d6ca9c25ef
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88794544"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651711"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Erste Schritte mit der automatischen Skalierung in Azure
 In diesem Artikel wird beschrieben, wie Sie Ihre automatische Skalierungseinstellung für Ihre Ressource im Microsoft Azure-Portal einrichten.
@@ -119,9 +119,13 @@ Wenn Sie auf mehrere Instanzen aufskalieren, kann App Service Integritätsprüfu
 
 ### <a name="health-check-path"></a>Pfad der Integritätsüberprüfung
 
-Der Pfad muss innerhalb von zwei Minuten mit einem Statuscode zwischen 200 und 299 (einschließlich) antworten. Wenn der Pfad nicht innerhalb von zwei Minuten antwortet oder einen Statuscode außerhalb des Bereichs zurückgibt, gilt die Instanz als fehlerhaft. Die Integritätsüberprüfung ist in die Authentifizierungs- und Autorisierungsfeatures von App Service integriert. Das System erreicht den Endpunkt auch dann, wenn diese Sicherheitsfeatures aktiviert sind. Wenn Sie ein eigenes Authentifizierungssystem verwenden, muss der Pfad der Integritätsüberprüfung anonymen Zugriff zulassen. Wenn für die Website HTTP**S** aktiviert ist, berücksichtigt die Integritätsüberprüfung HTTP**S** und sendet die Anforderung mithilfe dieses Protokolls.
+Der Pfad muss innerhalb von zwei Minuten mit einem Statuscode zwischen 200 und 299 (einschließlich) antworten. Wenn der Pfad nicht innerhalb von zwei Minuten antwortet oder einen Statuscode außerhalb des Bereichs zurückgibt, gilt die Instanz als fehlerhaft. Die Integritätsüberprüfung ist in die Authentifizierungs- und Autorisierungsfeatures von App Service integriert. Das System erreicht den Endpunkt auch dann, wenn diese Sicherheitsfeatures aktiviert sind. Wenn Sie ein eigenes Authentifizierungssystem verwenden, muss der Pfad der Integritätsüberprüfung anonymen Zugriff zulassen. Wenn für die Website HTTP**S** aktiviert ist, trifft die Integritätsüberprüfung zuerst auf den HTTP-Endpunkt und folgt dann der HTTP-Umleitung 307 an den HTTPS-Endpunkt.
 
 Der Pfad der Integritätsüberprüfung sollte die kritischen Komponenten der Anwendung überprüfen. Wenn Ihre Anwendung z. B. von einer Datenbank und einem Messagingsystem abhängig ist, sollte der Endpunkt der Integritätsüberprüfung eine Verbindung mit diesen Komponenten herstellen. Wenn die Anwendung keine Verbindung mit einer kritischen Komponente herstellen kann, sollte der Pfad einen Antwortcode auf 500-Ebene zurückgeben, um damit anzugeben, dass die App fehlerhaft ist.
+
+#### <a name="security"></a>Sicherheit 
+
+Entwicklungsteams in großen Unternehmen müssen häufig Sicherheitsanforderungen für die verfügbar gemachten APIs erfüllen. Um den Endpunkt der Integritätsprüfung zu sichern, sollten Sie zunächst Features wie [IP-Einschränkungen](../../app-service/app-service-ip-restrictions.md#adding-ip-address-rules), [Clientzertifikate](../../app-service/app-service-ip-restrictions.md#adding-ip-address-rules) oder ein virtuelles Netzwerk verwenden, um den Zugriff auf die Anwendung einzuschränken. Sie können den Endpunkt der Integritätsprüfung selbst sichern, indem Sie anfordern, dass der `User-Agent` der eingehenden Anforderung `ReadyForRequest/1.0` entspricht. Der Benutzer-Agent kann nicht manipuliert werden, da die Anforderung bereits durch die vorherigen Sicherheitsfeatures gesichert wurde.
 
 ### <a name="behavior"></a>Verhalten
 

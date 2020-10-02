@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: bf1721b45ff63c225c378e50bff9040948820c8b
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 9d037fa0faa1419e4cd1b600eea1b3b3eb0a29c0
+ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035024"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90058766"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Verbinden von ITSM-Produkten/-Diensten mit dem ITSM-Connector
 Dieser Artikel bietet Informationen dazu, wie Sie die Verbindung zwischen Ihrem ITSM-Produkt bzw. -Dienst und dem ITSM-Connector (ITSMC) in Log Analytics konfigurieren, um Arbeitselemente zentral zu verwalten. Weitere Informationen zu ITSMC finden Sie in der [Übersicht](./itsmc-overview.md).
@@ -25,7 +25,8 @@ Die folgenden ITSM-Produkte und -Dienste werden unterstützt. Wählen Sie ein Pr
 
 > [!NOTE]
 > 
-> Der ITSM-Connector kann nur eine Verbindung mit cloudbasierten ServiceNow-Instanzen. Lokale ServiceNow-Instanzen werden derzeit nicht unterstützt.
+> Ab dem 1. Oktober 2020 werden ITSM-Integrationen von Cherwell und Provance in Azure-Warnungen für neue Kunden nicht mehr aktiviert. Neue ITSM-Verbindungen werden nicht unterstützt. 
+> Bestehende ITSM-Verbindungen werden unterstützt.
 
 ## <a name="connect-system-center-service-manager-to-it-service-management-connector-in-azure"></a>Verbinden von System Center Service Manager mit dem ITSM-Connector in Azure
 
@@ -40,6 +41,10 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt werden:
 - Hybridverbindung wurde erstellt und konfiguriert. Weitere Informationen: [Konfigurieren der Hybridverbindung](#configure-the-hybrid-connection).
 - Unterstützte Versionen von Service Manager:  2012 R2 oder 2016.
 - Benutzerrolle:  [Erweiterter Operator](/previous-versions/system-center/service-manager-2010-sp1/ff461054(v=technet.10)).
+
+> [!NOTE]
+> 
+> Der ITSM-Connector kann nur eine Verbindung mit cloudbasierten ServiceNow-Instanzen. Lokale ServiceNow-Instanzen werden derzeit nicht unterstützt.
 
 ### <a name="connection-procedure"></a>Verbindungsverfahren
 
@@ -298,6 +303,10 @@ Sobald der Benutzer erfolgreich erstellt wurde, wechselt der Status von **Check 
 
 Die folgenden Abschnitte enthalten ausführliche Informationen zum Verbinden Ihres Provance-Produkts mit dem ITSMC in Azure.
 
+> [!NOTE]
+> 
+> Ab dem 1. Oktober 2020 wird die ITSM-Integration von Provance in Azure-Warnungen für neue Kunden nicht mehr aktiviert. Neue ITSM-Verbindungen werden nicht unterstützt. 
+> Bestehende ITSM-Verbindungen werden unterstützt.
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
@@ -352,6 +361,11 @@ Weitere Informationen: [Erstellen von ITSM-Arbeitselementen aus Azure-Warnungen]
 
 Die folgenden Abschnitte enthalten ausführliche Informationen zum Verbinden Ihres Cherwell-Produkts mit dem ITSMC in Azure.
 
+> [!NOTE]
+> 
+> Ab dem 1. Oktober 2020 wird die ITSM-Integration von Cherwell in Azure-Warnungen für neue Kunden nicht mehr aktiviert. Neue ITSM-Verbindungen werden nicht unterstützt. 
+> Bestehende ITSM-Verbindungen werden unterstützt.
+
 ### <a name="prerequisites"></a>Voraussetzungen
 
 Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt werden:
@@ -362,7 +376,7 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt werden:
 
 ### <a name="connection-procedure"></a>Verbindungsverfahren
 
-Verwenden Sie das folgende Verfahren, um eine Provance-Verbindung zu erstellen:
+Verwenden Sie das folgende Verfahren, um eine Cherwell-Verbindung zu erstellen:
 
 1. Navigieren Sie im Azure-Portal zu **Alle Ressourcen**, und suchen Sie nach **ServiceDesk(YourWorkspaceName)** .
 

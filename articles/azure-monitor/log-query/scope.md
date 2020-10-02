@@ -1,17 +1,17 @@
 ---
-title: Protokollabfragebereich in Azure Monitor Log Analytics | Microsoft-Dokumentation
+title: Protokollabfragebereich in Azure Monitor Log Analytics
 description: Dieser Artikel beschreibt den Bereich und den Zeitbereich für Protokollabfragen in Azure Monitor Log Analytics.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/01/2020
-ms.openlocfilehash: 2840e5b8ff16d44f76aaafcf68264c65e4401ff7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/09/2020
+ms.openlocfilehash: 2036505dea134a59e7dc0c75a030175b15dac0b5
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83199026"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031941"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Protokollabfragebereich und Zeitbereich in Azure Monitor Log Analytics
 Wenn Sie eine [Protokollabfrage](log-query-overview.md) in [Log Analytics im Azure-Portal](get-started-portal.md) ausführen, sind die von der Abfrage ausgewerteten Daten von dem von Ihnen ausgewählten Bereich und Zeitbereich abhängig. In diesem Artikel wird der Bereich, der Zeitbereich und das Festlegen dieser Bereiche je nach Ihren Anforderungen beschrieben. Außerdem erfahren Sie mehr über das Verhalten von verschiedenen Bereichstypen.
@@ -22,17 +22,17 @@ Der Abfragebereich definiert die Datensätze, die von der Abfrage ausgewertet we
 
 Der Bereich wird immer oben links im Log Analytics-Fenster angezeigt. Ein Symbol gibt an, ob es sich bei dem Bereich um einen Log Analytics-Arbeitsbereich oder eine Application Insights-Anwendung handelt. Kein Symbol gibt eine andere Azure-Ressource an.
 
-![`Scope`](media/scope/scope.png)
+![Im Portal angezeigter Bereich](media/scope/scope.png)
 
 Der Bereich wird von der Methode bestimmt, die Sie zum Starten von Log Analytics verwenden. In einigen Fällen können Sie den Bereich ändern, indem Sie auf diesen klicken. In der folgenden Tabelle werden die jeweiligen verschiedenen Bereichstypen und Details aufgelistet.
 
 > [!IMPORTANT]
-> Wenn Sie APM 2.1 verwenden, werden Application Insights-Anwendungen in einem Log Analytics-Arbeitsbereich mit allen anderen Protokolldaten gespeichert, und der Application Insights-Bereich ist nicht verfügbar. Wenn Sie im Application Insights-Menü die Option **Protokolle** auswählen, ist das Verhalten mit dem des Bereichs **Andere Azure-Ressourcen** identisch, und nur die Daten aus dieser Anwendung sind in den Application Insights-Tabellen verfügbar.
+> Wenn Sie eine arbeitsbereichsbasierte Anwendung in Application Insights verwenden, werden deren Daten in einem Log Analytics-Arbeitsbereich mit allen anderen Protokolldaten gespeichert. Aus Gründen der Abwärtskompatibilität wird Ihnen bei Auswahl der Anwendung als Bereich die klassische Application Insights-Oberfläche angezeigt. Um diese Daten im Log Analytics-Arbeitsbereich anzuzeigen, legen Sie den Bereich auf den Arbeitsbereich fest.
 
 | Abfragebereich | Datensätze in diesem Bereich | Auswählen | Ändern des Bereichs |
 |:---|:---|:---|:---|
 | Log Analytics-Arbeitsbereich | Alle Datensätze im Log Analytics-Arbeitsbereich. | Klicken Sie im Menü **Azure Monitor** oder im Menü **Log Analytics-Arbeitsbereiche** auf **Protokolle**.  | Bereich kann zu jedem anderen Ressourcentyp geändert werden. |
-| Application Insights-Anwendung | Alle Datensätze in der Application Insights-Anwendung. | Klicken Sie auf der Seite **Übersicht** von Application Insights auf **Analytics**. | Bereich kann nur in eine andere Application Insights-Anwendung geändert werden. |
+| Application Insights-Anwendung | Alle Datensätze in der Application Insights-Anwendung. | Wählen Sie im **Application Insights**-Menü für die Anwendung die Option **Protokolle** aus. | Bereich kann nur in eine andere Application Insights-Anwendung geändert werden. |
 | Resource group | Datensätze, die von allen Ressourcen in der Ressourcengruppe erstellt werden. Diese enthalten möglicherweise Daten aus mehreren Log Analytics-Arbeitsbereichen. | Klicken Sie im Ressourcengruppenmenü auf **Protokolle**. | Bereich kann nicht geändert werden.|
 | Subscription | Datensätze, die von allen Ressourcen im Abonnement erstellt werden. Diese enthalten möglicherweise Daten aus mehreren Log Analytics-Arbeitsbereichen. | Klicken Sie im Abonnementmenü auf **Protokolle**.   | Bereich kann nicht geändert werden. |
 | Andere Azure-Ressourcen | Datensätze, die von der Ressource erstellt werden. Diese enthalten möglicherweise Daten aus mehreren Log Analytics-Arbeitsbereichen.  | Wählen Sie im Ressourcenmenü auf **Protokolle**.<br>oder<br>Klicken Sie im Menü **Azure Monitor** auf **Protokolle**, und wählen Sie dann einen neuen Bereich aus. | Bereich kann nur in denselben Ressourcentyp geändert werden. |
@@ -66,9 +66,9 @@ Die Ausführung Ihrer Abfrage wird blockiert, wenn der Bereich Arbeitsbereiche i
 
 
 ## <a name="time-range"></a>Uhrzeitbereich
-Der Zeitbereich gibt, basierend auf dem Zeitpunkt der Erstellung des Datensatzes, die Gruppe der für die Abfrage auszuwertenden Datensätzen an. Er wird durch eine in der folgenden Tabelle angegebene Standardeigenschaft in jedem Datensatz im Arbeitsbereich oder in der Anwendung definiert.
+Der Zeitbereich gibt, basierend auf dem Zeitpunkt der Erstellung des Datensatzes, die Gruppe der für die Abfrage auszuwertenden Datensätzen an. Er wird durch eine in der folgenden Tabelle angegebene Standardspalte in jedem Datensatz im Arbeitsbereich oder in der Anwendung definiert.
 
-| Standort | Eigenschaft |
+| Standort | Column |
 |:---|:---|
 | Log Analytics-Arbeitsbereich          | TimeGenerated |
 | Application Insights-Anwendung | timestamp     |
@@ -77,17 +77,17 @@ Legen Sie den Zeitbereich fest, indem Sie diesen aus der Zeitauswahl im oberen B
 
 ![Zeitauswahl](media/scope/time-picker.png)
 
-Wenn Sie in der Abfrage einen Filter festlegen, der die in der obigen Tabelle gezeigte standardmäßige Zeiteigenschaft verwendet, wird die Zeitauswahl in **Set in query** (In Abfrage festlegen) geändert und die Zeitauswahl deaktiviert. In diesem Fall ist es am effizientesten, den Filter am Anfang der Abfrage einzufügen, sodass alle nachfolgenden Verarbeitungen nur mit den gefilterten Datensätzen arbeiten muss.
+Wenn Sie in der Abfrage einen Filter festlegen, der die in der obigen Tabelle gezeigte Standardzeitspalte verwendet, wird die Zeitauswahl in **In Abfrage festlegen** geändert und die Zeitauswahl deaktiviert. In diesem Fall ist es am effizientesten, den Filter am Anfang der Abfrage einzufügen, sodass alle nachfolgenden Verarbeitungen nur mit den gefilterten Datensätzen arbeiten muss.
 
 ![Gefilterte Abfrage](media/scope/query-filtered.png)
 
-Wenn Sie die Befehle [workspace](workspace-expression.md) oder [app](app-expression.md) zum Abrufen von Daten aus einem anderen Arbeitsbereich oder einer Anwendung verwenden, verhält sich die Zeitauswahl möglicherweise anders. Wenn es sich beim Bereich um einen Log Analytics-Arbeitsbereich handelt und Sie **app** verwenden oder es sich beim Bereich um eine Application Insights-Anwendung handelt und Sie **workspace** verwenden, versteht Log Analytics möglicherweise nicht, dass die im Filter verwendete Eigenschaft den Zeitfilter bestimmen soll.
+Wenn Sie die Befehle [workspace](workspace-expression.md) oder [app](app-expression.md) zum Abrufen von Daten aus einem anderen Arbeitsbereich oder einer Anwendung verwenden, verhält sich die Zeitauswahl möglicherweise anders. Wenn es sich beim Bereich um einen Log Analytics-Arbeitsbereich handelt und Sie **app** verwenden oder es sich beim Bereich um eine Application Insights-Anwendung handelt und Sie **workspace** verwenden, versteht Log Analytics möglicherweise nicht, dass die im Filter verwendete Spalte den Zeitfilter bestimmen soll.
 
-Im folgenden Beispiel ist der Bereich auf einen Log Analytics-Arbeitsbereich festgelegt.  Die Abfrage verwendet den **workspace**-Befehl zum Abrufen von Daten aus einem anderen Log Analytics-Arbeitsbereich. Die Zeitauswahl wird in **Set in query** (In Abfrage festlegen) geändert, da ein Filter erkannt wird, der die erwartete **TimeGenerated**-Eigenschaft verwendet.
+Im folgenden Beispiel ist der Bereich auf einen Log Analytics-Arbeitsbereich festgelegt.  Die Abfrage verwendet den **workspace**-Befehl zum Abrufen von Daten aus einem anderen Log Analytics-Arbeitsbereich. Die Zeitauswahl wird in **In Abfrage festlegen** geändert, da ein Filter erkannt wird, der die erwartete Spalte **TimeGenerated** verwendet.
 
 ![Abfrage mit dem workspace-Befehl](media/scope/query-workspace.png)
 
-Wenn die Abfrage jedoch den Befehl **app** zum Abrufen von Daten aus einer Application Insights-Anwendung verwendet, erkennt Log Analytics die **timestamp**-Eigenschaft im Filter nicht, und die Zeitauswahl bleibt unverändert. In diesem Fall werden beide Filter angewendet. Im Beispiel sind nur Datensätze in der Abfrage enthalten, die in den letzten 24 Stunden erstellt wurden, obwohl in der **where**-Klausel sieben Tage angegeben sind.
+Wenn die Abfrage jedoch den Befehl **app** zum Abrufen von Daten aus einer Application Insights-Anwendung verwendet, erkennt Log Analytics die Spalte **timestamp** im Filter nicht, und die Zeitauswahl bleibt unverändert. In diesem Fall werden beide Filter angewendet. Im Beispiel sind nur Datensätze in der Abfrage enthalten, die in den letzten 24 Stunden erstellt wurden, obwohl in der **where**-Klausel sieben Tage angegeben sind.
 
 ![Abfrage mit dem app-Befehl](media/scope/query-app.png)
 

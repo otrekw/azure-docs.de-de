@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1ce127dbfd9984b3fb18e518701cbbd3a87f5988
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: f5a3c73d60f038820de100f99c554eec27fd6f55
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387239"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033182"
 ---
 # <a name="secure-a-linked-service-with-private-links"></a>Schützen eines verknüpften Diensts mit Private Link 
 
@@ -33,16 +33,16 @@ In Azure Synapse Analytics definieren Sie in einem verknüpften Dienst Ihre Verb
 
 1. Öffnen Sie Azure Synapse Studio, und wechseln Sie zur Registerkarte **Verwalten**.
 1. Wählen Sie unter **Externe Verbindungen** die Option **Verknüpfte Dienste** aus.
-1. Wenn Sie einen verknüpften Dienst hinzufügen möchten, klicken Sie auf **Neu**.
-1. Wählen Sie in der Liste die Kachel „Azure Data Lake Storage Gen2“ aus, und klicken Sie auf **Weiter**.
+1. Klicken Sie auf **Neu**, um einen verknüpften Dienst hinzuzufügen.
+1. Wählen Sie in der Liste die Kachel „Azure Data Lake Storage Gen2“ und dann **Weiter** aus.
 1. Aktivieren Sie unbedingt **Interactive Authoring** (Interaktive Dokumenterstellung). Die Aktivierung kann ungefähr 1 Minute dauern. 
-1. Geben Sie Ihre Anmeldeinformationen für die Authentifizierung ein. Derzeit werden die Authentifizierungstypen „Kontoschlüssel“, „Dienstprinzipal“ und „Verwaltete Identität“ unterstützt. Klicken Sie auf „Verbindung testen“, um die Richtigkeit Ihrer Anmeldeinformationen zu überprüfen.
-1. Wählen Sie **Verbindung testen** aus. Dann sollte ein Verbindungsfehler auftreten, weil – ohne die Erstellung und Genehmigung eines privaten Endpunkts – auf das Speicherkonto nicht zugegriffen werden kann. In der Fehlermeldung sollte ein Link zum Erstellen eines **privaten Endpunkts** angezeigt werden, dem Sie folgen können, um zum nächsten Teil zu gelangen. Wenn Sie diesem Link folgen, überspringen Sie den nächsten Teil.
+1. Geben Sie Ihre Anmeldeinformationen für die Authentifizierung ein. Derzeit werden die Authentifizierungstypen „Kontoschlüssel“, „Dienstprinzipal“ und „Verwaltete Identität“ unterstützt. Klicken Sie auf „Verbindung testen“, um Ihre Anmeldeinformationen zu überprüfen.
+1. Wählen Sie **Verbindung testen** aus. Dann sollte ein Verbindungsfehler auftreten, weil ohne die Erstellung und Genehmigung eines privaten Endpunkts nicht auf das Speicherkonto zugegriffen werden kann. In der Fehlermeldung sollte ein Link zum Erstellen eines **privaten Endpunkts** angezeigt werden, dem Sie folgen können, um zum nächsten Teil zu gelangen. Wenn Sie diesem Link folgen, überspringen Sie den nächsten Teil.
 1. Wenn Sie fertig sind, klicken Sie auf **Erstellen**.
 
 ## <a name="create-a-managed-private-endpoint"></a>Erstellen eines verwalteten privaten Endpunkts
 
-Sollten Sie beim Testen der oben genannten Verbindung nicht auf den Link geklickt haben, folgen Sie dem nachstehenden Pfad. Jetzt müssen Sie einen verwalteten privaten Endpunkt erstellen, den Sie mit dem zuvor erstellten verknüpften Dienst verbinden werden.
+Sollten Sie beim Testen der oben genannten Verbindung nicht auf den Link geklickt haben, folgen Sie dem nachstehenden Pfad. Erstellen Sie einen verwalteten privaten Endpunkt, den Sie mit dem zuvor erstellten verknüpften Dienst verbinden werden.
 
 1. Wechseln Sie zur Registerkarte **Verwalten**.
 1. Wechseln Sie zum Abschnitt **Verwaltete virtuelle Netzwerke**.
@@ -55,7 +55,7 @@ Sollten Sie beim Testen der oben genannten Verbindung nicht auf den Link geklick
 ## <a name="private-link-approval"></a>Private Link-Genehmigung
 1. Wählen Sie den zuvor erstellten privaten Endpunkt aus. Es wird ein Link angezeigt, über den Sie den privaten Endpunkt auf Speicherkontoebene genehmigen können. *Eine Alternative besteht darin, direkt zum Speicherkonto im Azure-Portal und dann zum Blatt **Private Endpunktverbindungen** zu wechseln.*
 1. Aktivieren Sie den privaten Endpunkt, den Sie in Studio erstellt haben, und wählen Sie **Genehmigen** aus.
-1. Fügen Sie eine Beschreibung hinzu, und klicken Sie auf **ja**.
+1. Fügen Sie eine Beschreibung hinzu, und wählen Sie **Ja** aus.
 1. Wechseln Sie auf der Registerkarte **Verwalten** unter dem Abschnitt **Verwaltete virtuelle Netzwerke** zurück zu Synapse Studio.
 1. Es sollte ungefähr 1 Minute dauern, bis die Genehmigung für Ihren privaten Endpunkt angezeigt wird.
 

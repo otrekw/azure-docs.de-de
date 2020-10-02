@@ -4,12 +4,12 @@ description: Erfahren Sie mehr über die Partnerlösungen für Azure Monitor und
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: 2e3fae1b942083d78798fccebd7a7f2c58f7659a
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: dbac5f28723b712788df61eda34a0db61b9c5652
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142405"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526475"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor – integrierte Partnerlösungen
 
@@ -77,6 +77,8 @@ CloudMonix bietet Überwachung, Automatisierung und selbstreparierende Dienste f
 Datadog ist der weltweit führende Überwachungsdienst für Anwendungen in der Cloud. Er fasst Daten von Servern, Datenbanken, Tools und Diensten zusammen, um Ihnen eine einheitliche Gesamtansicht zu bieten. Diese Funktionen werden auf einer SaaS-basierten Datenanalyseplattform bereitgestellt. Dieser Dienst ermöglicht das Zusammenarbeiten von Entwicklungs- und Betriebsteams, um Ausfallzeiten zu vermeiden, Leistungsprobleme zu lösen und sicherzustellen, dass Entwicklungs- und Bereitstellungszyklen rechtzeitig abgeschlossen werden. Durch die Integration von Datadog in Azure können Sie Metriken aus Ihrer gesamten Infrastruktur sammeln und anzeigen. Sie können VM-Metriken mit Metriken auf Anwendungsebene korrelieren. Außerdem haben Sie die Möglichkeit, Ihre Metriken anhand einer beliebigen Kombination von Eigenschaften und benutzerdefinierten Tags zu segmentieren.
 
 [Zur Dokumentation.][datadog-doc]
+
+Eine neue Azure Marketplace-Integration von Datadog ist für Anfang Oktober 2020 geplant. Nach der Veröffentlichung wird hier ein entsprechender Link hinzugefügt. 
 
 ## <a name="dynatrace"></a>Dynatrace
 
@@ -147,7 +149,7 @@ Weitere Informationen
 
 ## <a name="moogsoft"></a>Moogsoft
 
-![Moogsoft](./media/partners/moogsoft.png)
+![Moogsoft-Logo](./media/partners/moogsoft.png)
 
 Moogsoft AIOps beschleunigt die agile Unternehmenstransformation.
 

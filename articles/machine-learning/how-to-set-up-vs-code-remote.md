@@ -1,7 +1,7 @@
 ---
-title: 'Interaktives Debuggen: VS Code- und ML Compute-Instanzen (Vorschau)'
+title: Herstellen einer Verbindung mit einer Compute-Instanz in Visual Studio Code (Vorschau)
 titleSuffix: Azure Machine Learning
-description: Richten Sie VS Code Remote ein, um Ihren Code interaktiv mit Azure Machine Learning zu debuggen.
+description: Hier erfahren Sie, wie Sie eine Verbindung mit einer Azure Machine Learning-Compute-Instanz in Visual Studio Code herstellen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,34 +9,73 @@ ms.topic: conceptual
 ms.custom: how-to
 ms.author: jmartens
 author: j-martens
-ms.date: 08/06/2020
-ms.openlocfilehash: 37d0ec0295d76f740b2e8bf70ae72f0c95e68d14
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.date: 09/03/2020
+ms.openlocfilehash: 2c7ff633705d3db327c563b41ce199a5342dda82
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904478"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461560"
 ---
-# <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote-preview"></a>Interaktives Debuggen auf einer Azure Machine Learning Compute-Instanz mit VS Code Remote (Vorschau)
+# <a name="connect-to-an-azure-machine-learning-compute-instance-in-visual-studio-code-preview"></a>Herstellen einer Verbindung mit einer Azure Machine Learning-Compute-Instanz in Visual Studio Code (Vorschau)
 
-In diesem Artikel erfahren Sie, wie Sie die Visual Studio Code-Remoteerweiterung auf einer Azure Machine Learning Compute-Instanz einrichten, sodass Sie Ihren **Code über VS Code interaktiv debuggen** können.
+In diesem Artikel erfahren Sie, wie Sie mithilfe von Visual Studio Code eine Verbindung mit einer Azure Machine Learning-Compute-Instanz herstellen.
 
-* Eine [Azure Machine Learning Compute-Instanz](concept-compute-instance.md) ist eine vollständig verwaltete cloudbasierte Arbeitsstation für Datenanalysten und bietet IT-Administratoren Funktionen für die Verwaltung und Unternehmensbereitschaft. 
+Eine [Azure Machine Learning Compute-Instanz](concept-compute-instance.md) ist eine vollständig verwaltete cloudbasierte Arbeitsstation für Datenanalysten und bietet IT-Administratoren Funktionen für die Verwaltung und Unternehmensbereitschaft.
 
-* Mit[ Visual Studio Code Remote](https://code.visualstudio.com/docs/remote/remote-overview) Development können Sie einen Container, einen Remotecomputer oder das Windows-Subsystem für Linux (WSL) als voll ausgestattete Entwicklungsumgebung verwenden. 
+Es gibt zwei Möglichkeiten, wie Sie von Visual Studio Code aus eine Verbindung mit einer Compute-Instanz herstellen können:
 
-## <a name="prerequisite"></a>Voraussetzung  
+* Über einen Jupyter Notebook-Remoteserver. Mit dieser Option können Sie eine Compute-Instanz als Jupyter Notebook-Remoteserver konfigurieren.
+* Über die [Visual Studio Code-Remoteentwicklung](https://code.visualstudio.com/docs/remote/remote-overview). Mit der Visual Studio Code-Remoteentwicklung können Sie einen Container, einen Remotecomputer oder das Windows-Subsystem für Linux (WSL) als voll ausgestattete Entwicklungsumgebung verwenden.
 
-* SSH-fähige Compute-Instanz. Weitere Informationen finden Sie unter [Erstellen einer Compute-Instanz](https://docs.microsoft.com/azure/machine-learning/concept-compute-instance#create).
-* Auf Windows-Plattformen müssen Sie ggf. [einem mit OpenSSH kompatiblen SSH-Client installieren](https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-client). 
+## <a name="configure-compute-instance-as-remote-notebook-server"></a>Konfigurieren der Compute-Instanz als Jupyter Notebook-Remoteserver
 
-> [!Note]
-> PuTTY wird unter Windows nicht unterstützt, da sich der SSH-Befehl im Pfad befinden muss. 
+Sie benötigen folgende Voraussetzungen, um eine Compute-Instanz als Jupyter Notebook-Remoteserver konfigurieren zu können:
 
-## <a name="get-the-ip-and-ssh-port-for-your-compute-instance"></a>Abrufen der IP-Adresse und des SSH-Ports für die Compute-Instanz
+* Die Azure Machine Learning-Erweiterung für Visual Studio Code. Weitere Informationen finden Sie in der Anleitung zur Einrichtung der [Azure Machine Learning-Erweiterung für Visual Studio Code](tutorial-setup-vscode-extension.md).
+* Einen Azure Machine Learning-Arbeitsbereich. [Verwenden Sie die Azure Machine Learning-Erweiterung für Visual Studio Code, um einen neuen Arbeitsbereich zu erstellen](how-to-manage-resources-vscode.md#create-a-workspace), wenn Sie noch nicht über einen verfügen.
+
+So stellen Sie eine Verbindung mit einer Compute-Instanz her:
+
+1. Öffnen Sie eine Jupyter Notebook-Instanz in Visual Studio Code.
+1. Wählen Sie **Jupyter-Server** aus, wenn das integrierte Notebook geladen wird.
+
+    > [!div class="mx-imgBorder"]
+    > ![Screenshot: Jupyter Notebook-Remoteserver](media/how-to-set-up-vs-code-remote/launch-server-selection-dropdown.png)
+
+    Alternativ können Sie auch die Befehlspalette verwenden:
+
+    1. Öffnen Sie hierzu die Befehlspalette, indem Sie in der Menüleiste **Ansicht > Befehlspalette** auswählen.
+    1. Geben Sie `Azure ML: Connect to Compute instance Jupyter server` in das Textfeld ein.
+
+1. Wählen Sie `Azure ML Compute Instances` aus der Liste der Optionen für den Jupyter-Server aus.
+1. Wählen Sie in der Liste Ihr Abonnement aus. Wenn Sie bereits Ihren Azure Machine Learning-Standardarbeitsbereich konfiguriert haben, wird dieser Schritt übersprungen.
+1. Wählen Sie Ihren Arbeitsbereich aus.
+1. Wählen Sie Ihre Compute-Instanz aus der Liste aus. Wenn Sie noch keine haben, klicken Sie auf **Create new Azure ML Compute Instance** (Neue Azure ML Compute-Instanz) erstellen, und befolgen Sie die Anweisungen, um eine Instanz zu erstellen.
+1. Sie müssen Visual Studio Code erneut laden, damit die Änderungen wirksam werden.
+1. Öffnen Sie ein Jupyter Notebook, und führen Sie eine Zelle aus.
+
+> [!IMPORTANT]
+> Sie **müssen** eine Zelle ausführen, um die Verbindung herzustellen.
+
+Nun können Sie weitere Zellen in Ihrem Jupyter Notebook ausführen.
+
+> [!TIP]
+> Sie können auch mit Python-Skriptdateien (.py) arbeiten, die Jupyter-ähnliche Codezellen enthalten. Weitere Informationen finden Sie in der [Visual Studio Code-Dokumentation zu Python Interactive](https://code.visualstudio.com/docs/python/jupyter-support-py).
+
+## <a name="configure-compute-instance-remote-development"></a>Konfigurieren der Remoteentwicklung von Compute-Instanzen
+
+Für die vollständige Remoteentwicklung benötigen Sie einige Voraussetzungen:
+
+* [die Remote-SSH-Erweiterung für VS Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh)
+* SSH-fähige Compute-Instanz. Weitere Informationen finden Sie in der Anleitung zum [Erstellen einer Compute-Instanz](concept-compute-instance.md#create).
+
+> [!NOTE]
+> Auf Windows-Plattformen müssen Sie ggf. [einem mit OpenSSH kompatiblen SSH-Client installieren](https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-client). PuTTY wird unter Windows nicht unterstützt, da sich der SSH-Befehl im Pfad befinden muss.
+
+### <a name="get-the-ip-and-ssh-port-for-your-compute-instance"></a>Abrufen der IP-Adresse und des SSH-Ports für die Compute-Instanz
 
 1. Wechseln Sie zum Azure Machine Learning-Studio unter https://ml.azure.com/.
-
 2. Wählen Sie Ihren [Arbeitsbereich](concept-workspace.md) aus.
 1. Aktualisieren der Registerkarte **Compute-Instanzen**.
 1. Klicken Sie in der Spalte **Anwendungs-URI** auf den **SSH**-Link der Compute-Instanz, die Sie als Remotecompute-Instanz verwenden möchten. 
@@ -73,9 +112,9 @@ In diesem Artikel erfahren Sie, wie Sie die Visual Studio Code-Remoteerweiterung
    chmod 600 ~/.ssh/id_azmlcitest_rsa
    ```
 
-## <a name="add-instance-as-a-host"></a>Hinzufügen von Instanz als Host
+### <a name="add-instance-as-a-host"></a>Hinzufügen von Instanz als Host
 
-Öffnen Sie die Datei `~/.ssh/config` (Linux) oder `C:\Users<username>.ssh\config` (Windows) in einem Editor, und fügen Sie einen neuen Eintrag ähnlich dem folgenden hinzu:
+Öffnen Sie die Datei `~/.ssh/config` (unter Linux) oder `C:\Users<username>.ssh\config` (unter Windows) in einem Editor, und fügen Sie einen neuen Eintrag ähnlich dem folgenden Inhalt hinzu:
 
 ```
 Host azmlci1 
@@ -101,13 +140,9 @@ Hier einige Details zu den Feldern:
 
 Jetzt sollten Sie mithilfe des oben verwendeten Kurznamens `ssh azmlci1` eine SSH-Verbindung mit Ihrer Compute-Instanz herstellen können.
 
-## <a name="connect-vs-code-to-the-instance"></a>Verbinden von VS Code mit der Instanz
+### <a name="connect-vs-code-to-the-instance"></a>Verbinden von VS Code mit der Instanz
 
-1. [Installieren Sie Visual Studio Code.](https://code.visualstudio.com/)
-
-1. [Installieren Sie die Remote-SSH-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh).
-
-1. Klicken Sie auf das Remote-SSH-Symbol auf der linken Seite, um Ihre SSH-Konfigurationen anzuzeigen.
+1. Klicken Sie in der Visual Studio Code-Aktivitätsleiste auf das Remote-SSH-Symbol, um Ihre SSH-Konfigurationen anzuzeigen.
 
 1. Klicken Sie mit der rechten Maustaste auf die soeben erstellte SSH-Hostkonfiguration.
 

@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 443ac9ee1c2f05cf90e866793449220d71e37b89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b72694f93ed5b712a0f684887df5b69a7b35c72
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85210660"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441679"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Speicher- und Parallelitätsgrenzwerte für Azure Synapse Analytics
 
@@ -125,7 +125,7 @@ Die folgende Tabelle zeigt die maximale Anzahl gleichzeitiger Abfragen und die P
 | DW15000c      | 32                         |  600                        | 18                    | 60                     | 132                   | 420                    |
 | DW30000c      | 32                         | 1200                        | 36                    | 120                    | 264                   | 840                    |
 
-Wenn nicht genügend Parallelitätsslots verfügbar sind, um die Abfrageausführung zu starten, werden Abfragen in die Warteschlange eingereiht und basierend auf ihrer Wichtigkeit ausgeführt.  Wenn die Wichtigkeit gleichwertig ist, werden Abfragen auf FIFO-Basis (First In, First Out) ausgeführt.  Wenn eine Abfrage abgeschlossen wird und die Anzahl von Abfragen und Slots unter die Grenzwerte sinkt, gibt SQL Data Warehouse Abfragen in der Warteschlange frei.
+Wenn nicht genügend Parallelitätsslots verfügbar sind, um die Abfrageausführung zu starten, werden Abfragen in die Warteschlange eingereiht und basierend auf ihrer Wichtigkeit ausgeführt.  Wenn die Wichtigkeit gleichwertig ist, werden Abfragen auf FIFO-Basis (First In, First Out) ausgeführt.  Wenn eine Abfrage abgeschlossen wird und die Anzahl von Abfragen und Slots unter die Grenzwerte sinkt, gibt Azure Synapse Analytics Abfragen in der Warteschlange frei.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

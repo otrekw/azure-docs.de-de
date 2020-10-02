@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: bf4974fdd0c587bd537c63a454b5d5efeb54415b
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: ea2fae483da495bce9551899b9646868251f0454
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378490"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030826"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Übersicht über den Azure Monitor-Agent (Vorschauversion)
 Der Azure Monitor-Agent (AMA) sammelt Überwachungsdaten aus dem Gastbetriebssystem virtueller Computer und übermittelt sie an Azure Monitor. Dieser Artikel enthält eine Übersicht über den Azure Monitor-Agent sowie Informationen zur Installation und zur Konfiguration der Datensammlung.
@@ -88,7 +88,7 @@ Der Azure Monitor-Agent unterstützt aktuell folgende Betriebssysteme:
   - CentOS 6<sup>1</sup>, 7
   - Debian 9, 10
   - Oracle Linux 6<sup>1</sup>, 7
-  - RHEL 6<sup>1</sup>, 7, 8
+  - RHEL 6<sup>1</sup>, 7
   - SLES 11, 12, 15
   - Ubuntu 14.04 LTS, 16.04 LTS, 18.04 LTS
 
@@ -99,6 +99,8 @@ Der Azure Monitor-Agent unterstützt aktuell folgende Betriebssysteme:
 ## <a name="security"></a>Sicherheit
 Der Azure Monitor-Agent benötigt zwar keine Schlüssel, dafür aber eine [systemseitig zugewiesene verwaltete Identität](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity). Für die Agent-Bereitstellung muss auf dem jeweiligen virtuellen Computer eine systemseitig zugewiesene verwaltete Identität aktiviert sein.
 
+## <a name="networking"></a>Netzwerk
+Der Azure Monitor-Agent unterstützt Azure-Diensttags (es sind sowohl AzureMonitor- als auch AzureResourceManager-Tags erforderlich), derzeit jedoch weder Azure Monitor Private Link-Bereiche noch direkte Proxys.
 
 ## <a name="install-the-azure-monitor-agent"></a>Installieren des Azure Monitor-Agents:
 Der Azure Monitor-Agent wird als [Azure-VM-Erweiterung](../../virtual-machines/extensions/overview.md) mit den Details aus der folgenden Tabelle implementiert: 

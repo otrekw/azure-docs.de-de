@@ -4,12 +4,12 @@ description: Überwachen Sie die Anwendungsleistung für Java-Anwendungen in ein
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: ca3094197deb7c74ba9b51422a78ee0f5d3687d2
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 561a6405a49d8f15affbf6d8d4de1a7f4886826a
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374285"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056097"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>Konfigurationsoptionen: Eigenständige Java-Agents für Azure Monitor Application Insights
 
@@ -113,18 +113,18 @@ Wenn Sie diesen Schwellenwert ändern möchten:
 
 Nachfolgend werden die gültigen `threshold`-Werte, die Sie in der Datei `ApplicationInsights.json` angeben können, und deren Zuordnung zu den Protokolliergraden in verschiedenen Frameworks für die Protokollierung gezeigt:
 
-| `threshold`  | Log4j  | Logback | JUL     |
-|--------------|--------|---------|---------|
-| OFF          | OFF    | OFF     | OFF     |
-| FATAL        | FATAL  | ERROR   | SEVERE  |
-| ERROR/SEVERE | ERROR  | ERROR   | SEVERE  |
-| WARN/WARNING | WARN   | WARN    | WARNING |
-| INFO         | INFO   | INFO    | INFO    |
-| CONFIG       | DEBUG  | DEBUG   | CONFIG  |
-| DEBUG/FINE   | DEBUG  | DEBUG   | FINE    |
-| FINER        | DEBUG  | DEBUG   | FINER   |
-| TRACE/FINEST | TRACE  | TRACE   | FINEST  |
-| ALL          | ALL    | ALL     | ALL     |
+| Schwellenwert   | Log4j  | Logback | JUL     |
+|-------------------|--------|---------|---------|
+| OFF               | OFF    | OFF     | OFF     |
+| FATAL             | FATAL  | ERROR   | SEVERE  |
+| ERROR (oder SEVERE) | ERROR  | ERROR   | SEVERE  |
+| WARN (oder WARNING) | WARN   | WARN    | WARNING |
+| INFO              | INFO   | INFO    | INFO    |
+| CONFIG            | DEBUG  | DEBUG   | CONFIG  |
+| DEBUG (oder FINE)   | DEBUG  | DEBUG   | FINE    |
+| FINER             | DEBUG  | DEBUG   | FINER   |
+| TRACE (oder FINEST) | TRACE  | TRACE   | FINEST  |
+| ALL               | ALL    | ALL     | ALL     |
 
 ## <a name="jmx-metrics"></a>JMX-Metriken
 
@@ -134,7 +134,7 @@ Wenn Sie einige für Sie relevante JMX-Metriken erfassen möchten:
 {
   "instrumentationSettings": {
     "preview": {
-        "jmxMetrics": [
+      "jmxMetrics": [
         {
           "objectName": "java.lang:type=ClassLoading",
           "attribute": "LoadedClassCount",
@@ -181,9 +181,9 @@ Application Insights Java 3.0 Preview sendet standardmäßig alle 15 Minuten e
 {
   "instrumentationSettings": {
     "preview": {
-        "heartbeat": {
-            "intervalSeconds": 60
-        }
+      "heartbeat": {
+        "intervalSeconds": 60
+      }
     }
   }
 }
@@ -205,13 +205,13 @@ Hier ist ein Beispiel, wie die Stichprobenentnahme auf **10 % aller Transaktion
 {
   "instrumentationSettings": {
     "preview": {
-        "sampling": {
-            "fixedRate": {
-                "percentage": 10
-            }
-          }
+      "sampling": {
+        "fixedRate": {
+          "percentage": 10
         }
+      }
     }
+  }
 }
 ```
 
@@ -244,10 +244,10 @@ Standardmäßig erfolgt die Protokollierung an die Konsole auf Ebene `warn`, was
 {
   "instrumentationSettings": {
     "preview": {
-        "selfDiagnostics": {
-            "destination": "console",
-            "level": "WARN"
-        }
+      "selfDiagnostics": {
+        "destination": "console",
+        "level": "WARN"
+      }
     }
   }
 }
@@ -261,12 +261,12 @@ Wenn die Protokollierung nicht an die Konsole, sondern an eine Datei erfolgen so
 {
   "instrumentationSettings": {
     "preview": {
-        "selfDiagnostics": {
-            "destination": "file",
-            "directory": "/var/log/applicationinsights",
-            "level": "WARN",
-            "maxSizeMB": 10
-        }    
+      "selfDiagnostics": {
+        "destination": "file",
+        "directory": "/var/log/applicationinsights",
+        "level": "WARN",
+        "maxSizeMB": 10
+      }
     }
   }
 }

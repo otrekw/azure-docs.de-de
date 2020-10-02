@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4a7132221d2db58e4dea0e41f2761f4f395b9632
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: ffd374f650140b5b65988578756b25f5d0fb21cc
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401400"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657347"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Azure-Sicherheitsbaseline für Azure Machine Learning
 
@@ -28,7 +28,7 @@ Die Azure-Sicherheitsbaseline für Microsoft Azure Machine Learning enthält Emp
 
 Azure Firewall kann verwendet werden, um den Zugriff auf Ihren Azure Machine Learning-Arbeitsbereich und das öffentliche Internet zu steuern.
 
-- [Sicheres Ausführen von Experimenten und Ziehen von Rückschlüssen innerhalb eines isolierten virtuellen Netzwerks](how-to-enable-virtual-network.md)
+- [Übersicht zu Isolation und Datenschutz bei virtuellen Netzwerken](how-to-network-security-overview.md)
 
 - [Verwenden des Arbeitsbereichs hinter Azure Firewall für Azure Machine Learning](how-to-access-azureml-behind-firewall.md)
 
@@ -58,7 +58,7 @@ Aktivieren Sie Netzwerksicherheitsgruppen-Datenflussprotokolle, und senden Sie P
 
 - [Verwenden von TLS zum Absichern eines Webdiensts mit Azure Machine Learning](how-to-secure-web-service.md)
 
-- [Netzwerkisolation während Training &amp; Rückschluss mit privaten virtuellen Netzwerken](how-to-enable-virtual-network.md)
+- [Übersicht zu Isolation und Datenschutz bei virtuellen Netzwerken](how-to-network-security-overview.md)
 
 **Azure Security Center-Überwachung**: Nicht zutreffend
 
@@ -122,7 +122,7 @@ Azure Machine Learning Service dokumentiert eine Liste von Diensttags für die C
 
 - [Weitere Informationen zur Verwendung von Diensttags](../virtual-network/service-tags-overview.md)
 
-- [Für virtuelles Azure Machine Learning-Netzwerk](how-to-enable-virtual-network.md)
+- [Übersicht zu Isolation und Datenschutz bei virtuellen Netzwerken](how-to-network-security-overview.md)
 
 **Azure Security Center-Überwachung**: Nicht zutreffend
 

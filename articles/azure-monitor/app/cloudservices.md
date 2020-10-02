@@ -4,12 +4,12 @@ description: Effektives Überwachen Ihrer Web- und Workerrollen mit Application 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 09/05/2018
-ms.openlocfilehash: 2de853655524e99e958f043b7801ee73e937e7ad
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 1662b45d8243217357d1e69124832c499d587812
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923856"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437325"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights für Azure Cloud Services
 [Application Insights][start] kann [Azure Cloud Services-Apps](https://azure.microsoft.com/services/cloud-services/) auf Verfügbarkeit, Leistung, Fehler und Verwendung überwachen. Dabei werden Daten aus den Application Insights-SDKs mit Daten der [Azure-Diagnose](../platform/diagnostics-extension-overview.md) aus Cloud Services kombiniert. Mit dem Feedback zur Leistung und Effektivität der App in der Praxis können Sie in jedem Entwicklungslebenszyklus eine fundierte Entscheidung für die Richtung des Entwurfs treffen.
@@ -66,6 +66,8 @@ Wenn Sie benutzerdefinierte Ereignisse für das nächste Feature entwickeln, wä
 Um dies zu vermeiden, erstellen Sie separate Ressourcen für jede Buildkonfiguration oder jeden „Stempel“ (Entwicklung, Test, Produktion usw.) des Systems. Legen Sie die Ressourcen für jede Buildkonfiguration jeweils in einer separaten Ressourcengruppe ab. 
 
 Um die Telemetriedaten an die entsprechenden Ressourcen zu senden, können Sie das Application Insights SDK so einrichten, dass abhängig von der Buildkonfiguration jeweils ein anderer Instrumentierungsschlüssel abgerufen wird. 
+
+Erfahren Sie, wie Sie den [Instrumentierungsschlüssel für verschiedene Phasen dynamisch festlegen](https://docs.microsoft.com/azure/azure-monitor/app/separate-resources#dynamic-ikey). 
 
 ## <a name="create-an-application-insights-resource-for-each-role"></a>Erstellen einer Application Insights-Ressource für die einzelnen Rollen
 

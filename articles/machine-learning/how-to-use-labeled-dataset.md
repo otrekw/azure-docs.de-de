@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/14/2020
-ms.openlocfilehash: 05ecce2d6ef0f8a3f241570ba9364c5e38682f3e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 1293534849c98cee51349bbefd3073cc8b94f876
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319438"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647217"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>Erstellen und Untersuchen eines Azure Machine Learning-Datasets mit Bezeichnungen
 
@@ -22,13 +22,13 @@ In diesem Artikel erfahren Sie, wie Sie die Datenbezeichnungen aus einem Azure M
 
 ## <a name="what-are-datasets-with-labels"></a>Was sind Datasets mit Bezeichnungen? 
 
-Azure Machine Learning-Datasets mit Bezeichnungen sind [TabularDatasets](how-to-create-register-datasets.md#dataset-types) mit einer Label-Eigenschaft. Wir werden sie als bezeichnete Datasets bezeichnen. Diese bestimmten Arten von TabularDatasets werden nur als Ausgabe von Azure Machine Learning-Datenbezeichnungsprojekten erstellt. Erstellen Sie ein Datenbezeichnungsprojekt mit [den folgenden Schritten](how-to-create-labeling-projects.md). Machine Learning unterstützt Datenbezeichnungsprojekte für die Bildklassifizierung – mit mehreren Bezeichnungen oder mehreren Klassen – und die Objektidentifikation mit Begrenzungsrahmen.
+Azure Machine Learning-Datasets mit Bezeichnungen sind ein spezieller Typ von Dataset. Datasets dieses Typs werden nur als Ausgabe von Azure Machine Learning-Datenbezeichnungsprojekten erstellt. Erstellen Sie ein Datenbezeichnungsprojekt mit [den folgenden Schritten](how-to-create-labeling-projects.md). Machine Learning unterstützt Datenbezeichnungsprojekte für die Bildklassifizierung – mit mehreren Bezeichnungen oder mehreren Klassen – und die Objektidentifikation mit Begrenzungsrahmen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://aka.ms/AMLFree) erstellen, bevor Sie beginnen.
-* Das [Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py), oder greifen Sie auf [Azure Machine Learning-Studio](https://ml.azure.com/) zu.
-    * Installieren des Pakets [azure-contrib-dataset](https://docs.microsoft.com/python/api/azureml-contrib-dataset/?view=azure-ml-py)
+* Das [Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true), oder greifen Sie auf [Azure Machine Learning-Studio](https://ml.azure.com/) zu.
+    * Installieren des Pakets [azure-contrib-dataset](https://docs.microsoft.com/python/api/azureml-contrib-dataset/?view=azure-ml-py&preserve-view=true)
 * Ein Machine Learning-Arbeitsbereich. Weitere Informationen finden Sie unter [Erstellen eines Azure Machine Learning-Arbeitsbereichs](how-to-manage-workspace.md).
 * Zugriff auf ein Azure Machine Learning-Datenbezeichnungsprojekt. Wenn Sie nicht über ein Bezeichnungsprojekt verfügen, erstellen Sie eines mit [den folgenden Schritten](how-to-create-labeling-projects.md).
 
@@ -52,7 +52,7 @@ Laden Sie Ihre bezeichneten Datasets in einen Pandas-Datenrahmen oder in ein Tor
 
 ### <a name="pandas-dataframe"></a>Pandas-Datenrahmen
 
-Mit der Methode [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) der Klasse `azureml-contrib-dataset` können Sie bezeichnete Datasets in einen Pandas-Datenrahmen laden. Installieren Sie die Klasse mit dem folgenden Shellbefehl: 
+Mit der Methode [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#&preserve-view=trueto-pandas-dataframe-on-error--null---out-of-range-datetime--null--) der Klasse `azureml-contrib-dataset` können Sie bezeichnete Datasets in einen Pandas-Datenrahmen laden. Installieren Sie die Klasse mit dem folgenden Shellbefehl: 
 
 ```shell
 pip install azureml-contrib-dataset
@@ -80,7 +80,7 @@ imgplot = plt.imshow(img)
 
 ### <a name="torchvision-datasets"></a>Torchvision-Datasets
 
-Sie können bezeichnete Datasets mit der Methode [to_torchvision()](https://docs.microsoft.com/python/api/azureml-contrib-dataset/azureml.contrib.dataset.tabulardataset?view=azure-ml-py#to-torchvision--) auch von der Klasse `azureml-contrib-dataset` in ein Torchvision-Dataset laden. Um diese Methode zu verwenden, muss [PyTorch](https://pytorch.org/) installiert sein. 
+Sie können bezeichnete Datasets mit der Methode [to_torchvision()](https://docs.microsoft.com/python/api/azureml-contrib-dataset/azureml.contrib.dataset.tabulardataset?view=azure-ml-py#&preserve-view=trueto-torchvision--) auch von der Klasse `azureml-contrib-dataset` in ein Torchvision-Dataset laden. Um diese Methode zu verwenden, muss [PyTorch](https://pytorch.org/) installiert sein. 
 
 ```python
 from torchvision.transforms import functional as F

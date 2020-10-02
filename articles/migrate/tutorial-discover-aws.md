@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie AWS-Instanzen mit der Azure Migrate-Ser
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: c2d91e0b2c2eaa2df8b01aca60e5a0e18e251fb8
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: e48d123a9317d35cd2bb8e38a29d23cae3b75eb8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603695"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275454"
 ---
 # <a name="tutorial-discover-aws-instances-with-server-assessment"></a>Tutorial: Ermitteln von AWS-Instanzen mit der Serverbewertung
 
@@ -76,7 +76,18 @@ Richten Sie ein Konto ein, das von der Appliance für den Zugriff auf AWS-Instan
 
 - Richten Sie auf allen Windows-Servern, die Sie in die Ermittlung einbeziehen möchten, ein lokales Benutzerkonto ein. Fügen Sie das Benutzerkonto den folgenden Gruppen hinzu: Remoteverwaltungsbenutzer, Systemmonitorbenutzer und Leistungsprotokollbenutzer.
  - Linux-Server: Sie benötigen ein root-Konto auf den Linux-Servern, die Sie ermitteln möchten.
-
+- Azure Migrate verwendet bei der Ermittlung von AWS-Instanzen die Kennwortauthentifizierung. Die Kennwortauthentifizierung wird von AWS-Instanzen nicht standardmäßig unterstützt. Damit Sie eine Instanz ermitteln können, müssen Sie die Kennwortauthentifizierung aktivieren.
+    - Lassen Sie für Windows-Computer WinRM-Port 5985 (HTTP) zu. Dadurch werden WMI-Remoteaufrufe ermöglicht.
+    - Für Linux-Computer:
+        1. Melden Sie sich bei jedem Linux-Computer an.
+        2. Öffnen Sie die Datei „sshd_config“: vi /etc/ssh/sshd_config.
+        3. Suchen Sie in der Datei die Zeile **PasswordAuthentication**, und ändern Sie den Wert in **yes**.
+        4. Speichern Sie die Datei, und schließen Sie sie. Starten Sie den SSH-Dienst neu.
+    - Wenn Sie einen Stammbenutzer zum Ermitteln Ihrer virtuellen Linux-Computer verwenden, stellen Sie sicher, dass die Stammanmeldung auf den virtuellen Computern zulässig ist.
+        1. Melden Sie sich bei jedem Linux-Computer an.
+        2. Öffnen Sie die Datei „sshd_config“: vi /etc/ssh/sshd_config.
+        3. Suchen Sie in der Datei die Zeile **PermitRootLogin**, und ändern Sie den Wert in **yes**.
+        4. Speichern Sie die Datei, und schließen Sie sie. Starten Sie den SSH-Dienst neu.
 
 ## <a name="set-up-a-project"></a>Einrichten eines Projekts
 

@@ -1,6 +1,6 @@
 ---
 title: Übersicht über Azure Monitor-Arbeitsmappen
-description: Vereinfachen der komplexen Berichterstellung mit vordefinierten und benutzerdefiniert parametrisierten Arbeitsmappen
+description: Erfahren Sie, wie Arbeitsmappen einen flexiblen Bereich für die Datenanalyse und die Erstellung umfassender visueller Berichte innerhalb des Azure-Portals bieten.
 author: mrbullwinkle
 manager: carmonm
 services: azure-monitor
@@ -8,12 +8,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: mbullwin
-ms.openlocfilehash: 1d85f011289bfa27bcf1e94d8da8cd7a32092c2c
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: d6ac552640b4a557c51b674624e6a4493241e0ed
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799564"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90977572"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Monitor-Arbeitsmappen
 
@@ -43,12 +43,13 @@ Arbeitsmappen sind derzeit mit den folgenden Datenquellen kompatibel:
 
 Arbeitsmappen bieten eine Vielzahl von Funktionen zur Visualisierung Ihrer Daten. Ausführliche Beispiele der einzelnen Visualisierungstypen stehen über die folgenden Beispiellinks bereit:
 
-* [Text](workbooks-visualizations.md#text)
-* [Diagramme](workbooks-visualizations.md#charts)
-* [Raster](workbooks-visualizations.md#grids)
-* [Kacheln](workbooks-visualizations.md#tiles)
-* [Strukturen](workbooks-visualizations.md#trees)
-* [Graphs](workbooks-visualizations.md#graphs)
+* [Text](workbooks-text-visualizations.md)
+* [Diagramme](workbooks-chart-visualizations.md)
+* [Raster](workbooks-grid-visualizations.md)
+* [Kacheln](workbooks-tile-visualizations.md)
+* [Strukturen](workbooks-tree-visualizations.md)
+* [Graphs](workbooks-graph-visualizations.md)
+* [Gestapelte Säule](workbooks-composite-bar.md)
 
 ![Visualisierungsbeispiele für Arbeitsmappen](./media/workbooks-overview/visualizations.png)
 
@@ -86,9 +87,9 @@ Im Fall dieser speziellen Arbeitsmappe ist die Oberfläche interaktiv. Sie könn
 
 ### <a name="editing-mode"></a>Bearbeitungsmodus
 
-Um zu verstehen, wie diese Arbeitsmappenvorlage zusammengesetzt ist, müssen Sie in den Bearbeitungsmodus wechseln. Dazu wählen Sie **Bearbeiten** aus. 
+Um zu verstehen, wie diese Arbeitsmappenvorlage zusammengesetzt ist, müssen Sie in den Bearbeitungsmodus wechseln. Dazu wählen Sie **Bearbeiten** aus.
 
-![Screenshot der Vorlage zur Anwendungsfehleranalyse](./media/workbooks-overview/edit.png)
+![Screenshot der Schaltfläche „Bearbeiten“ in Arbeitsmappen](./media/workbooks-overview/edit.png)
 
 Nachdem Sie in den Bearbeitungsmodus gewechselt haben, wird eine Reihe von Feldern des Typs **Bearbeiten** rechts neben den einzelnen Aspekten der Arbeitsmappe angezeigt.
 

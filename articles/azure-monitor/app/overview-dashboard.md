@@ -3,12 +3,12 @@ title: Azure Application Insights-Übersichtsdashboard | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Sie Anwendungen mit Azure Application Insights und dem Übersichtsdashboard überwachen.
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 8c8aa4460a545f032eaa60560de00efff27ae1ef
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 714488d88b269f252dfd6677f847db315969a270
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322532"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970604"
 ---
 # <a name="application-insights-overview-dashboard"></a>Application Insights-Übersichtsdashboard
 
@@ -36,7 +36,7 @@ Im Anwendungsdashboard wird die vorhandene Dashboardtechnologie in Azure genutzt
 
 Wählen Sie oben links die Option _Anwendungsdashboard_, um auf das Standarddashboard zuzugreifen.
 
-![Dashboardansicht](./media/overview-dashboard/app-insights-overview-dashboard-05.png)
+![Screenshot zeigt die markierte Schaltfläche für das Anwendungsdashboard.](./media/overview-dashboard/app-insights-overview-dashboard-05.png)
 
 Wenn Sie zum ersten Mal auf das Dashboard zugreifen, wird eine Standardansicht gestartet:
 

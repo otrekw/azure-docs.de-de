@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: aa9b186e74ed3b8fe5496afd5b21c54f50537d5f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d9acd322c454002613e21e8591c3e83aeec2d51e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87049777"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979382"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Behandeln von Problemen mit dem Aktivieren oder Anzeigen von Application Insights Profiler
 
@@ -79,12 +79,12 @@ Damit Profiler ordnungsgemäß funktioniert, müssen die folgenden Voraussetzung
    1. Wählen Sie im Menü **Tools** das **WebJobs-Dashboard** aus.  
       Der Bereich **WebJobs** wird geöffnet. 
    
-      ![profiler-webjob]   
+      ![Screenshot: Bereich „WebJobs“, in dem der Name, der Status und die Uhrzeit der letzten Ausführung von Jobs angezeigt wird][profiler-webjob]   
    
    1. Klicken Sie zum Anzeigen der WebJob-Details einschließlich des Protokolls auf den Link **ApplicationInsightsProfiler3**.  
      Der Bereich **Continuous WebJob Details** (Details des fortlaufenden WebJobs) wird geöffnet.
 
-      ![profiler-webjob-log]
+      ![Screenshot: Bereich „Continuous WebJob Details“ (Details des fortlaufenden WebJobs).][profiler-webjob-log]
 
 Wenn Sie nicht feststellen können, warum Profiler nicht funktioniert, haben Sie die Möglichkeit, das Protokoll herunterzuladen und an unser Team zu senden, um Unterstützung zu erhalten (serviceprofilerhelp@microsoft.com). 
     

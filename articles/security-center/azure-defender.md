@@ -1,31 +1,28 @@
 ---
 title: Übersicht über Azure Defender und die verfügbaren Pläne
-description: Erfahren Sie mehr über die Pläne, Schutzmaßnahmen und Warnungen von Azure Defender. Aktivieren Sie anschließend Azure Defender für Ihre Abonnements.
+description: Erfahren Sie mehr über die Pläne, Schutzmaßnahmen und Warnungen von Azure Defender. Aktivieren Sie anschließend Azure Defender für zusätzliche Sicherheit für Ihre Abonnements.
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
-ms.topic: conceptual
+ms.date: 9/30/2020
+ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: bb1c1e6443b5087b48aad7c3171bef557707adb1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: bfff96666981a522cd6d91828604696a12ecad56
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90977295"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576852"
 ---
 # <a name="introduction-to-azure-defender"></a>Einführung in Azure Defender
 
 Die Features von Azure Security Center decken die zwei Säulen der Cloudsicherheit ab:
 
-- **Cloud Security Posture Management (CSPM)**
-- **Cloudworkloadschutz (Cloud Workload Protection, CWP)**
+- **Verwaltung des Cloudsicherheitsstatus (Cloud Security Posture Management, CSPM)** : Security Center ist für alle Azure-Benutzer **kostenlos** verfügbar. Die kostenlose Benutzeroberfläche umfasst CSPM-Features, wie z. B. Sicherheitsbewertung, Erkennung von Sicherheitsfehlkonfigurationen auf Ihren Azure-Computern, Ressourcenbestand und mehr. Verwenden Sie diese CSPM-Features, um den Hybridcloudstatus zu stärken und die Konformität mit den integrierten Richtlinien nachzuverfolgen.
 
-Die CSPM-Features von Security Center wie Sicherheitsbewertung oder die Erkennung von Sicherheitsfehlkonfigurationen auf Ihren Windows- und Linux-Azure-Computern sind Teil der kostenlosen Security Center-Erfahrung, die allen Azure-Benutzern zur Verfügung steht. Verbessern Sie mithilfe dieser CSPM-Features Ihren Status, und stellen Sie die Einhaltung gesetzlicher Vorschriften sicher.
+- **Cloudworkloadschutz (Cloud Workload Protection, CWP)** : Die in Security Center integrierte Cloudworkloadschutz-Plattform (CWPP), **Azure Defender**, bietet erweiterten, intelligenten Schutz für Ihre Azure- und Hybridressourcen und -workloads. Durch die Aktivierung von Azure Defender wird eine Reihe zusätzlicher Sicherheitsfeatures bereitgestellt, die auf dieser Seite beschrieben werden. Zusätzlich zu den integrierten Richtlinien können Sie bei aktiviertem Azure Defender-Plan auch benutzerdefinierte Richtlinien und Initiativen hinzufügen. Sie können gesetzliche Standards (z. B. NIST und Azure CIS) sowie den Azure-Sicherheitsvergleichstest für eine echte angepasste Sicht auf Ihre Konformität hinzufügen.
 
-**Azure Defender** ist die in Security Center integrierte Cloud Workload Protection Platform (CWPP), die einen erweiterten, intelligenten Schutz Ihrer Azure- und Hybridworkloads bietet.
-
-Dies ist das Azure Defender-Dashboard in Azure Security Center:
+Das Azure Defender-Dashboard in Security Center bietet Transparenz und Kontrolle der CWP-Features für Ihre Umgebung:
 
 :::image type="content" source="./media/azure-defender/sample-defender-dashboard.png" alt-text="Beispiel für das Azure Defender-Dashboard" lightbox="./media/azure-defender/sample-defender-dashboard.png":::
 
@@ -57,9 +54,11 @@ Außerdem können Sie Ihrer Hybrid Cloud-Umgebung Azure Defender-Funktionen hinz
 
 Sie erhalten eine angepasste Threat Intelligence und priorisierte Warnungen Ihrer spezifischen Umgebung entsprechend, damit Sie sich auf das konzentrieren können, was für Sie am wichtigsten ist.
 
-Stellen Sie [Azure Arc](https://azure.microsoft.com/services/azure-arc/) bereit, sodass Azure Defender den Schutz auf lokale Computer, auf virtuelle Computer mit mehreren Clouds sowie auf SQL-Datenbanken ausweiten kann. Azure Arc für Server ist ein kostenloser Dienst. Dienste, die auf Arc-fähigen Servern verwendet werden, wie etwa Azure Defender, werden jedoch zu den Preisen für den jeweiligen Dienst abgerechnet.
+Stellen Sie [Azure Arc](https://azure.microsoft.com/services/azure-arc/) bereit, und aktivieren Sie Azure Defender, um den Schutz auf virtuelle Computer und SQL-Datenbanken mit mehreren Clouds oder lokal auszuweiten. Azure Arc für Server ist ein kostenloser Dienst. Dienste, die auf Arc-fähigen Servern verwendet werden, wie etwa Azure Defender, werden jedoch zu den Preisen für den jeweiligen Dienst abgerechnet. Weitere Informationen finden Sie unter [Hinzufügen eines Azure-fremden Computers mit Azure Arc](quickstart-onboard-machines.md#add-non-azure-machines-with-azure-arc).
 
-[Erfahren Sie mehr über Azure Arc](https://docs.microsoft.com/azure/azure-arc/overview).
+> [!TIP]
+> Der native Connector für AWS verarbeitet die Azure Arc-Bereitstellung transparent für Sie. Weitere Informationen finden Sie unter [Verbinden Ihrer AWS-Konten mit Azure Security Center](quickstart-onboard-aws.md).
+
 
 
 ## <a name="azure-defender-alerts"></a>Azure Defender-Warnungen 

@@ -4,12 +4,12 @@ description: Richten Sie Webtests in Application Insights ein. Erhalten Sie Bena
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 6f9c5fa691456195943f97419c1175fd5b586878
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a5bee2da5059213e85e03d5a0e4df0ef88c26b03
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87310275"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986025"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Überwachen der Verfügbarkeit von Websites
 
@@ -78,7 +78,7 @@ Verfügbarkeitstestergebnisse können sowohl in Zeilenansichten als auch in Punk
 
 Klicken Sie nach einigen Minuten auf **Aktualisieren**, um Ihre Testergebnisse anzuzeigen.
 
-![Zeilenansicht](./media/monitor-web-app-availability/availability-refresh-002.png)
+![Screenshot: Seite „Verfügbarkeit“, auf der die Schaltfläche „Aktualisieren“ hervorgehoben ist](./media/monitor-web-app-availability/availability-refresh-002.png)
 
 Das Punktdiagramm zeigt Stichproben der Testergebnisse an, die Diagnosedetails zu Testschritten enthalten. Die Test-Engine speichert Diagnosedetails für Tests mit Fehlern. Für erfolgreiche Tests werden Diagnosedetails für eine Teilmenge der Ausführungen gespeichert. Bewegen Sie den Mauszeiger über einen der grünen oder roten Punkte, um den Test, den Testnamen und den Standort anzuzeigen.
 

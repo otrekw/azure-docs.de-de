@@ -117,15 +117,10 @@
       items:
         - name: Übersicht
           href: platform/data-platform.md
-        - name: Datenspeicherorte
-          href: platform/data-locations.md
-        - name: Metriken
-          href: platform/data-platform-metrics.md
         - name: Protokolle
           href: platform/data-platform-logs.md
-        - name: Protokolldatenerfassungszeit
-          displayname: latency
-          href: platform/data-ingestion-time.md
+        - name: Metriken
+          href: platform/data-platform-metrics.md
         - name: Streamen von Daten an Event Hubs
           href: platform/stream-monitoring-data-event-hubs.md
     - name: Einblicke
@@ -209,39 +204,42 @@
           href: platform/diagnostic-settings.md
     - name: Log Analytics
       items:
-        - name: Übersicht über Protokollabfragen
-          displayname: 'log query, log queries, query, queries'
+        - name: Übersicht
+          displayname: 'Log Analytics, log query, log queries, query, queries'
           href: log-query/log-query-overview.md
+        - name: Lernprogramm
+          displayname: 'Log Analytics workspace, log query, log queries, query, queries'
+          href: log-query/get-started-portal.md
+        - name: Abfragebereich
+          href: log-query/scope.md
         - name: Einfache Oberfläche für Protokolle
           href: log-query/simple-logs.md
-        - name: Überwachungsprotokollabfragen
-          href: log-query/query-audit.md
-        - name: Tutorials
+        - name: Protokollabfragen
           items:
-            - name: Log Analytics-Tutorial
-              href: log-query/get-started-portal.md
-            - name: Tutorial zu Protokollabfragen
-              href: log-query/get-started-queries.md
-        - name: Protokolldaten
-          items:
-            - name: Abfragebereich
-              href: log-query/scope.md
             - name: Standardspalten
               href: platform/log-standard-columns.md
+            - name: Überwachen von Abfragen
+              href: log-query/query-audit.md
+            - name: Optimieren von Abfragen
+              href: log-query/query-optimization.md
+            - name: Functions
+              href: log-query/functions.md
+            - name: Analysieren von Textdaten
+              href: log-query/parse-text.md
+            - name: Beispielabfragen
+              href: log-query/saved-queries.md
             - name: Computergruppen
               href: platform/computer-groups.md
         - name: Abfragesprache
           items:
-            - name: Dokumentation zur Abfragesprache
-              href: log-query/query-language.md
-            - name: Sprachunterschiede
+            - name: KQL-Referenz
+              href: /azure/data-explorer/kusto/query/
+            - name: Unterschied zu Azure Data Explorer
               href: log-query/data-explorer-difference.md
-            - name: Hilfreiche Operatoren
-              href: log-query/useful-operators.md
-            - name: Functions
-              href: log-query/functions.md
-            - name: Übergang von der Protokollsuche
-              href: log-query/log-search-transition.md
+            - name: Beispiele
+              href: log-query/examples.md
+            - name: Beispiele für intelligente Analysen
+              href: log-query/smart-analytics.md
             - name: Lektionen
               items:
                 - name: Zeichenfolgenvorgänge
@@ -268,9 +266,9 @@
                   href: log-query/sql-cheatsheet.md
                 - name: Splunk
                   href: log-query/splunk-cheatsheet.md
-        - name: Ressourcenübergreifend
+        - name: Ressourcenübergreifende Abfragen
           items:
-            - name: Ressourcenübergreifende Abfragen
+            - name: Übersicht
               href: log-query/cross-workspace-query.md
             - name: App-Ausdruck
               href: log-query/app-expression.md
@@ -280,32 +278,25 @@
               href: log-query/resource-expression.md
             - name: Vereinheitlichen von Anwendungsressourcendaten
               href: log-query/unify-app-resource-data.md
-        - name: Beispiele und Anleitungen
-          items:
-            - name: Beispielabfragen
-              href: log-query/saved-queries.md
-            - name: Beispiele für Protokollabfragen
-              href: log-query/examples.md
-            - name: Beispiele für intelligente Analysen
-              href: log-query/smart-analytics.md
-            - name: Optimieren von Abfragen
-              href: log-query/query-optimization.md
-            - name: Analysieren von Textdaten
-              href: log-query/parse-text.md
         - name: Arbeitsbereiche und Cluster
           items:
             - name: Entwerfen einer Arbeitsbereichsbereitstellung
               href: platform/design-logs-deployment.md
             - name: Erstellen eines Arbeitsbereichs
               items:
-                - name: Verwenden des Azure-Portals
+                - name: Azure-Portal
                   href: learn/quick-create-workspace.md
-                - name: Mithilfe der Azure-Befehlszeilenschnittstelle
+                - name: Azure CLI
                   href: learn/quick-create-workspace-cli.md
-                - name: Verwenden von PowerShell
+                - name: PowerShell
                   href: platform/powershell-workspace-configuration.md
+                - name: Resource Manager-Vorlage
+                  href: platform/template-workspace-configuration.md
             - name: Löschen und Wiederherstellen eines Arbeitsbereichs
               href: platform/delete-workspace.md
+            - name: Verwalten des Zugriffs
+              displayName: Log Analytics workspace
+              href: platform/manage-access.md
             - name: Verschieben eines Arbeitsbereichs
               href: platform/move-workspace.md
             - name: Design für Dienstanbieter
@@ -328,6 +319,9 @@
       items:
         - name: Regeln für die Datensammlung
           href: platform/data-collection-rule-overview.md
+        - name: Protokolldatenerfassungszeit
+          displayname: latency
+          href: platform/data-ingestion-time.md
         - name: Agent-Datenquellen
           items:
             - name: Übersicht
@@ -1167,12 +1161,18 @@
               href: platform/workbooks-time.md
             - name: Textparameter
               href: platform/workbooks-text.md
+            - name: Ressourcenparameter
+              href: platform/workbooks-resources.md
         - name: Konfiguration
           items:
             - name: Zugriffssteuerung
               href: platform/workbooks-access-control.md
             - name: Bereitstellen mit Azure Resource Manager
               href: platform/workbooks-automate.md
+            - name: Gruppen
+              href: platform/workbooks-groups.md
+            - name: Transformieren von JSON-Daten mit JSONPath
+              href: platform/workbooks-jsonpath.md
             - name: Verschieben von Arbeitsmappen in eine andere Region
               href: platform/workbooks-move-region.md
             - name: Verschieben von Arbeitsmappenvorlagen in eine andere Region

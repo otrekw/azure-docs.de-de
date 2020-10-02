@@ -1,5 +1,5 @@
 ---
-title: Laden von Contoso Retail-Daten in ein Synapse SQL-Data Warehouse
+title: Laden von Contoso Retail-Daten in Synapse SQL
 description: Verwenden Sie PolyBase- und T-SQL-Befehle, um zwei Tabellen aus den Contoso Retail-Daten in Synapse SQL zu laden.
 services: synapse-analytics
 author: kevinvngo
@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 90da35b76bbe6ec933b3a1fd200f0f5bad643759
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 904ce55f376e42156b014056b1226512b2784742
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213311"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461696"
 ---
 # <a name="load-contoso-retail-data-to-synapse-sql"></a>Laden von Contoso Retail-Daten in Synapse SQL 
 
-In diesem Tutorial erfahren Sie, wie Sie PolyBase- und T-SQL-Befehle verwenden, um zwei Tabellen aus den Contoso Retail-Daten in ein Synapse SQL-Data Warehouse zu laden.
+In diesem Tutorial erfahren Sie, wie Sie PolyBase- und T-SQL-Befehle verwenden, um zwei Tabellen aus den Contoso Retail-Daten in Synapse SQL zu laden.
 
 In diesem Lernprogramm führen Sie folgende Schritte aus:
 
@@ -30,11 +30,11 @@ In diesem Lernprogramm führen Sie folgende Schritte aus:
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Sie benötigen ein Azure-Konto, das bereits über ein Synapse SQL-Data Warehouse verfügt, um dieses Tutorial durchzuführen. Wenn Sie noch kein Data Warehouse bereitgestellt haben, finden Sie entsprechende Anweisungen unter [Schnellstart: Erstellen und Abfragen einer Azure SQL Data Warehouse-Instanz im Azure-Portal](create-data-warehouse-portal.md).
+Für dieses Tutorial benötigen Sie ein Azure-Konto, das bereits über eine Synapse SQL-Instanz verfügt. Wenn Sie noch kein Data Warehouse bereitgestellt haben, finden Sie entsprechende Anweisungen unter [Schnellstart: Erstellen und Abfragen einer Azure SQL Data Warehouse-Instanz im Azure-Portal](create-data-warehouse-portal.md).
 
 ## <a name="configure-the-data-source"></a>Konfigurieren der Datenquelle
 
-PolyBase verwendet externe T-SQL-Objekte, um den Speicherort und die Attribute der externen Daten zu definieren. Die externen Objektdefinitionen werden in Ihrem Synapse SQL-Data Warehouse gespeichert. Die Daten werden extern gespeichert.
+PolyBase verwendet externe T-SQL-Objekte, um den Speicherort und die Attribute der externen Daten zu definieren. Die externen Objektdefinitionen werden in Synapse SQL gespeichert. Die Daten werden extern gespeichert.
 
 ## <a name="create-a-credential"></a>Erstellen von Anmeldeinformationen
 
@@ -274,7 +274,7 @@ ORDER BY
 
 ## <a name="optimize-columnstore-compression"></a>Optimieren der Columnstore-Komprimierung
 
-Die Tabelle wird im Synapse SQL-Data Warehouse standardmäßig als gruppierter Columnstore-Index gespeichert. Nach Abschluss eines Ladevorgangs sind einige der Datenzeilen möglicherweise nicht in den Columnstore-Index komprimiert.  Dieses Problem kann aus verschiedenen Gründen auftreten. Weitere Informationen finden Sie unter [Verwalten von Columnstore-Indizes](sql-data-warehouse-tables-index.md).
+Standardmäßig wird die Tabelle in Synapse SQL als gruppierter Columnstore-Index gespeichert. Nach Abschluss eines Ladevorgangs sind einige der Datenzeilen möglicherweise nicht in den Columnstore-Index komprimiert.  Dieses Problem kann aus verschiedenen Gründen auftreten. Weitere Informationen finden Sie unter [Verwalten von Columnstore-Indizes](sql-data-warehouse-tables-index.md).
 
 Um die Abfrageleistung und die Columnstore-Komprimierung nach dem Ladevorgang zu optimieren, stellen Sie die Tabelle wieder her, um den Columstore-Index zu zwingen alle Zeilen zu komprimieren.
 

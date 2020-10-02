@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 08/14/2020
-ms.openlocfilehash: 902fa34be149f0b876729409c530186e34c706e5
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.date: 09/14/2020
+ms.openlocfilehash: 3c9389e6063279e214e3650f6364dc25ff773db5
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587309"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069593"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Übersicht über Ressourcenlimits für Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -99,12 +99,12 @@ Weitere Informationen finden Sie im Artikel zu den [Ressourcenlimits in SQL Mana
 
 ### <a name="file-io-characteristics-in-general-purpose-tier"></a>Datei-E/A-Merkmale in der Ebene „Universell“
 
-In der Dienstebene „Universell“ erhält jede Datenbankdatei in Abhängigkeit von der Dateigröße dedizierte Mengen an IOPS und Durchsatz. Größere Datendateien erhalten mehr IOPS und Durchsatz. Die E/A-Merkmale der Datenbankdateien sind in der folgenden Tabelle aufgeführt:
+In der Dienstebene „Universell“ erhält jede Datenbankdatei in Abhängigkeit von der Dateigröße dedizierte Mengen an IOPS und Durchsatz. Größere Dateien erhalten mehr IOPS und einen höheren Durchsatz. Die E/A-Merkmale der Datenbankdateien sind in der folgenden Tabelle aufgeführt:
 
-| Dateigröße | >=0 und <=128 GiB | >128 und <=256 GiB | >256 und <= 512 GiB | >0,5 and <=1 TiB    | >1 und <=2 TiB    | >2 und <=4 TiB | >4 und <=8 TiB |
+| Dateigröße | >=0 und <=128 GiB | > 128 und <= 512 GiB | >0,5 and <=1 TiB    | >1 und <=2 TiB    | >2 und <=4 TiB | >4 und <=8 TiB |
 |---------------------|-------|-------|-------|-------|-------|-------|-------|
-| IOPS pro Datei       | 500   | 1100 | 2300              | 5\.000              | 7\.500              | 7\.500              | 12.500   |
-| Durchsatz pro Datei | 100 MiB/s | 125 MiB/s | 150 MiB/s | 200 MiB/s | 250 MiB/s | 250 MiB/s | 480 MiB/s | 
+| IOPS pro Datei       | 500   | 2300              | 5.000              | 7.500              | 7.500              | 12.500   |
+| Durchsatz pro Datei | 100 MiB/s | 150 MiB/s | 200 MiB/s | 250 MiB/s | 250 MiB/s | 480 MiB/s | 
 
 Wenn Sie für bestimmte Datenbankdateien eine hohe E/A-Latenz bemerken oder feststellen, dass der Grenzwert für IOPS/Durchsatz erreicht wird, können Sie die Leistung möglicherweise durch [Vergrößern der Dateigröße](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Increase-data-file-size-to-improve-HammerDB-workload-performance/ba-p/823337) verbessern.
 

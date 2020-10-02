@@ -1,28 +1,33 @@
 ---
 title: Erweitern des Betriebssystemlaufwerks einer Windows-VM in Azure
 description: Erweitern Sie die Größe des Betriebssystemlaufwerks eines virtuellen Computers mit Azure PowerShell im Resource Manager-Bereitstellungsmodell.
-author: mimckitt
-manager: vashan
+services: virtual-machines-windows
+documentationcenter: ''
+author: kirpasingh
+manager: roshar
+editor: ''
+tags: azure-resource-manager
+ms.assetid: d9edfd9f-482f-4c0b-956c-0d2c2c30026c
 ms.service: virtual-machines-windows
-ms.topic: how-to
+ms.topic: article
+ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/05/2018
-ms.author: mimckitt
+ms.date: 09/02/2020
+ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: 5044993e04dabc363a7a4ee49abb66285bcd7521
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3f1c7fb08c3dcaa078de8f1ee0b90409289cfb43
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85338246"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469231"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>Erweitern des Betriebssystemlaufwerks eines virtuellen Computers
 
-Beim Erstellen eines neuen virtuellen Computers in einer Ressourcengruppe durch Bereitstellen eines Images von [Azure Marketplace](https://azure.microsoft.com/marketplace/) hat das Standard-Betriebssystemlaufwerk häufig eine Größe von 127 GB (bei manchen Images sind die Standard-Betriebssystemlaufwerke kleiner). Obwohl es möglich ist, der VM Datenträger hinzuzufügen (die Anzahl hängt von der SKU ab, die Sie ausgewählt haben), und darüber hinaus empfohlen wird, Anwendungen und CPU-intensive Workloads auf diesen zusätzlichen Datenträgern zu installieren, müssen Kunden oft das Betriebssystemlaufwerk erweitern, um bestimmte Szenarien wie z. B. die folgenden zu unterstützen:
+Beim Erstellen eines neuen virtuellen Computers in einer Ressourcengruppe durch Bereitstellen eines Images von [Azure Marketplace](https://azure.microsoft.com/marketplace/) hat das Standard-Betriebssystemlaufwerk häufig eine Größe von 127 GB (bei manchen Images sind die Standard-Betriebssystemlaufwerke kleiner). Obwohl es möglich ist, der VM Datenträger hinzuzufügen (die Anzahl hängt von der SKU ab, die Sie ausgewählt haben), und empfohlen wird, Anwendungen und CPU-intensive Workloads auf diesen zusätzlichen Datenträgern zu installieren, müssen Kunden oft das Betriebssystemlaufwerk erweitern, um spezielle Szenarien zu unterstützen:
 
 - Unterstützung von Legacyanwendungen, die Komponenten auf dem Betriebssystemlaufwerk installieren.
-- Migrieren eines lokalen physischen PCs oder virtuellen Computers mit einem größeren Betriebssystemlaufwerk.
-
+- Migrieren eines lokalen physischen PC oder einer lokalen VM mit einem größeren Betriebssystemlaufwerk.
 
 > [!IMPORTANT]
 > Ein Ändern der Größe des Betriebssystemdatenträgers eines virtuellen Azure-Computers erfordert, dass die Zuordnung des virtuellen Computers aufgehoben wird.
@@ -30,98 +35,131 @@ Beim Erstellen eines neuen virtuellen Computers in einer Ressourcengruppe durch 
 > Wenn Sie die Datenträger erweitern, müssen Sie [das Volume innerhalb des Betriebssystems erweitern](#expand-the-volume-within-the-os), um den größere Datenträger nutzen zu können.
 > 
 
+## <a name="resize-a-managed-disk-in-the-azure-portal"></a>Ändern der Größe eines verwalteten Datenträgers im Azure-Portal
+
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu dem virtuellen Computer, auf dem Sie den Datenträger erweitern möchten. Wählen Sie **Beenden** aus, um die Zuordnung der VM aufzuheben.
+2. Wenn die VM beendet ist, wählen Sie im linken Menü unter **Einstellungen** die Option **Datenträger** aus.
+
+    :::image type="content" source="./media/expand-os-disk/select-disks.png" alt-text="Screenshot: Im Abschnitt „Einstellungen“ des Menüs ist die Option „Datenträger“ ausgewählt.":::
 
  
+3. Wählen Sie unter **Name des Datenträgers** den Datenträger aus, dessen Größe Sie ändern möchten.
+
+    :::image type="content" source="./media/expand-os-disk/disk-name.png" alt-text="Screenshot: Im Abschnitt „Einstellungen“ des Menüs ist die Option „Datenträger“ ausgewählt.":::
+
+4. Wählen Sie im linken Menü unter **Einstellungen** die Option **Konfiguration** aus.
+
+    :::image type="content" source="./media/expand-os-disk/configuration.png" alt-text="Screenshot: Im Abschnitt „Einstellungen“ des Menüs ist die Option „Datenträger“ ausgewählt.":::
+
+5. Wählen Sie in **Größe (GiB)** die gewünschte Datenträgergröße aus.
+   
+   > [!WARNING]
+   > Die neue Größe sollte die Größe des vorhandenen Datenträgers überschreiten. Der zulässige Höchstwert für Betriebssystemdatenträger beträgt 2.048 GB. (Sie können auch einen größeren VHD-Blob einsetzen, doch das Betriebssystem arbeitet nur mit den ersten 2.048 GB.)
+   > 
+
+    :::image type="content" source="./media/expand-os-disk/size.png" alt-text="Screenshot: Im Abschnitt „Einstellungen“ des Menüs ist die Option „Datenträger“ ausgewählt.":::
+
+6. Wählen Sie **Speichern** aus.
+
+    :::image type="content" source="./media/expand-os-disk/save.png" alt-text="Screenshot: Im Abschnitt „Einstellungen“ des Menüs ist die Option „Datenträger“ ausgewählt.":::
 
 
-## <a name="resize-a-managed-disk"></a>Ändern der Größe eines verwalteten Datenträgers
+## <a name="resize-a-managed-disk-by-using-powershell"></a>Ändern der Größe eines verwalteten Datenträgers mithilfe von PowerShell
 
-Öffnen Sie Powershell ISE oder Powershell-Fenster im Administratormodus, und führen Sie die folgenden Schritte aus:
+Öffnen Sie die PowerShell ISE oder das PowerShell-Fenster im Administratormodus, und führen Sie die folgenden Schritte aus:
 
-1. Melden Sie sich im Ressourcenverwaltungsmodus bei Ihrem Microsoft Azure-Konto an, und wählen Sie Ihr Abonnement wie folgt aus:
+1. Melden Sie sich im Ressourcenverwaltungsmodus bei Ihrem Microsoft Azure-Konto an, und wählen Sie Ihr Abonnement aus:
    
-   ```powershell
-   Connect-AzAccount
-   Select-AzSubscription –SubscriptionName 'my-subscription-name'
-   ```
-2. Legen Sie den Namen Ihrer Ressourcengruppe und VM wie folgt fest:
+    ```powershell
+    Connect-AzAccount
+    Select-AzSubscription –SubscriptionName 'my-subscription-name'
+    ```
+
+2. Legen Sie den Namen der Ressourcengruppe und den Namen der VM fest:
    
-   ```powershell
-   $rgName = 'my-resource-group-name'
-   $vmName = 'my-vm-name'
-   ```
-3. Rufen Sie einen Verweis auf Ihre VM wie folgt ab:
+    ```powershell
+    $rgName = 'my-resource-group-name'
+    $vmName = 'my-vm-name'
+    ```
+
+3. Rufen Sie einen Verweis auf die VM ab:
    
-   ```powershell
-   $vm = Get-AzVM -ResourceGroupName $rgName -Name $vmName
-   ```
-4. Halten Sie die VM vor dem Ändern der Größe des Datenträgers wie folgt an:
+    ```powershell
+    $vm = Get-AzVM -ResourceGroupName $rgName -Name $vmName
+    ```
+
+4. Halten Sie die VM vor dem Ändern der Größe des Datenträgers an:
    
-    ```Powershell
+    ```powershell
     Stop-AzVM -ResourceGroupName $rgName -Name $vmName
     ```
-5. Rufen Sie einen Verweis auf den verwalteten Betriebssystem-Datenträger ab. Legen Sie die Größe des verwalteten Betriebssystem-Datenträgers auf den gewünschten Wert fest, und aktualisieren Sie den Datenträger wie folgt:
+
+5. Rufen Sie einen Verweis auf den verwalteten Betriebssystem-Datenträger ab. Legen Sie die Größe des verwalteten Betriebssystem-Datenträgers auf den gewünschten Wert fest, und aktualisieren Sie den Datenträger:
    
-   ```Powershell
-   $disk= Get-AzDisk -ResourceGroupName $rgName -DiskName $vm.StorageProfile.OsDisk.Name
-   $disk.DiskSizeGB = 1023
-   Update-AzDisk -ResourceGroupName $rgName -Disk $disk -DiskName $disk.Name
-   ```   
-   > [!WARNING]
-   > Die neue Größe sollte die Größe des vorhandenen Datenträgers überschreiten. Der zulässige Höchstwert für Betriebssystemdatenträger beträgt 2048 GB. (Sie können auch einen größeren VHD-Blob einsetzen, doch das Betriebssystem kann nur mit den ersten 2048 GB arbeiten.)
-   > 
-   > 
-6. Das Aktualisieren der VM kann einige Sekunden dauern. Starten Sie die VM nach Abschluss der Befehlsausführung wie folgt neu:
+    ```powershell
+    $disk= Get-AzDisk -ResourceGroupName $rgName -DiskName $vm.StorageProfile.OsDisk.Name
+    $disk.DiskSizeGB = 1023
+    Update-AzDisk -ResourceGroupName $rgName -Disk $disk -DiskName $disk.Name
+    ```   
+    > [!WARNING]
+    > Die neue Größe sollte die Größe des vorhandenen Datenträgers überschreiten. Der zulässige Höchstwert für Betriebssystemdatenträger beträgt 2.048 GB. (Sie können auch einen größeren VHD-Blob einsetzen, doch das Betriebssystem arbeitet nur mit den ersten 2.048 GB.)
+    > 
+         
+6. Das Aktualisieren der VM kann einige Sekunden dauern. Starten Sie die VM nach Abschluss der Befehlsausführung neu:
    
-   ```Powershell
-   Start-AzVM -ResourceGroupName $rgName -Name $vmName
-   ```
+    ```powershell
+    Start-AzVM -ResourceGroupName $rgName -Name $vmName
+    ```
 
 Das ist alles! Stellen Sie jetzt eine RDP-Verbindung mit der VM her, öffnen Sie die Computerverwaltung (oder die Datenträgerverwaltung), und erweitern Sie das Laufwerk mit dem neu zugewiesenen Speicherplatz.
 
-## <a name="resize-an-unmanaged-disk"></a>Ändern der Größe eines nicht verwalteten Datenträgers
+## <a name="resize-an-unmanaged-disk-by-using-powershell"></a>Ändern der Größe eines nicht verwalteten Datenträgers mithilfe von PowerShell
 
-Öffnen Sie Powershell ISE oder Powershell-Fenster im Administratormodus, und führen Sie die folgenden Schritte aus:
+Öffnen Sie die PowerShell ISE oder das PowerShell-Fenster im Administratormodus, und führen Sie die folgenden Schritte aus:
 
-1. Melden Sie sich im Ressourcenverwaltungsmodus bei Ihrem Microsoft Azure-Konto an, und wählen Sie Ihr Abonnement wie folgt aus:
+1. Melden Sie sich im Ressourcenverwaltungsmodus bei Ihrem Microsoft Azure-Konto an, und wählen Sie Ihr Abonnement aus:
    
-   ```Powershell
-   Connect-AzAccount
-   Select-AzSubscription –SubscriptionName 'my-subscription-name'
-   ```
-2. Legen Sie den Namen Ihrer Ressourcengruppe und VM wie folgt fest:
+    ```powershell
+    Connect-AzAccount
+    Select-AzSubscription –SubscriptionName 'my-subscription-name'
+    ```
+
+2. Legen Sie den Namen der Ressourcengruppe und den Namen der VM fest:
    
-   ```Powershell
-   $rgName = 'my-resource-group-name'
-   $vmName = 'my-vm-name'
-   ```
-3. Rufen Sie einen Verweis auf Ihre VM wie folgt ab:
+    ```powershell
+    $rgName = 'my-resource-group-name'
+    $vmName = 'my-vm-name'
+    ```
+
+3. Rufen Sie einen Verweis auf die VM ab:
    
-   ```Powershell
-   $vm = Get-AzVM -ResourceGroupName $rgName -Name $vmName
-   ```
-4. Halten Sie die VM vor dem Ändern der Größe des Datenträgers wie folgt an:
+    ```powershell
+    $vm = Get-AzVM -ResourceGroupName $rgName -Name $vmName
+    ```
+
+4. Halten Sie die VM vor dem Ändern der Größe des Datenträgers an:
    
-    ```Powershell
+    ```powershell
     Stop-AzVM -ResourceGroupName $rgName -Name $vmName
     ```
-5. Legen Sie die Größe des nicht verwalteten Betriebssystem-Datenträgers auf den gewünschten Wert fest, und aktualisieren Sie die VM wie folgt:
+
+5. Legen Sie die Größe des nicht verwalteten Betriebssystem-Datenträgers auf den gewünschten Wert fest, und aktualisieren Sie die VM:
    
-   ```Powershell
-   $vm.StorageProfile.OSDisk.DiskSizeGB = 1023
-   Update-AzVM -ResourceGroupName $rgName -VM $vm
-   ```
+    ```powershell
+    $vm.StorageProfile.OSDisk.DiskSizeGB = 1023
+    Update-AzVM -ResourceGroupName $rgName -VM $vm
+    ```
    
-   > [!WARNING]
-   > Die neue Größe sollte die Größe des vorhandenen Datenträgers überschreiten. Der zulässige Höchstwert für Betriebssystemdatenträger beträgt 2048 GB. (Sie können auch einen größeren VHD-Blob einsetzen, doch das Betriebssystem kann nur mit den ersten 2048 GB arbeiten.)
-   > 
-   > 
+    > [!WARNING]
+    > Die neue Größe sollte die Größe des vorhandenen Datenträgers überschreiten. Der zulässige Höchstwert für Betriebssystemdatenträger beträgt 2.048 GB. (Sie können auch einen größeren VHD-Blob einsetzen, doch das Betriebssystem kann nur mit den ersten 2.048 GB arbeiten.)
+    > 
+    > 
    
-6. Das Aktualisieren der VM kann einige Sekunden dauern. Starten Sie die VM nach Abschluss der Befehlsausführung wie folgt neu:
+6. Das Aktualisieren der VM kann einige Sekunden dauern. Starten Sie die VM nach Abschluss der Befehlsausführung neu:
    
-   ```Powershell
-   Start-AzVM -ResourceGroupName $rgName -Name $vmName
-   ```
+    ```powershell
+    Start-AzVM -ResourceGroupName $rgName -Name $vmName
+    ```
 
 
 ## <a name="scripts-for-os-disk"></a>Skripts für den Betriebssystem-Datenträger
@@ -131,7 +169,7 @@ Nachstehend finden Sie als Referenz das vollständige Skript sowohl für verwalt
 
 **Verwaltete Datenträger**
 
-```Powershell
+```powershell
 Connect-AzAccount
 Select-AzSubscription -SubscriptionName 'my-subscription-name'
 $rgName = 'my-resource-group-name'
@@ -160,7 +198,7 @@ Start-AzVM -ResourceGroupName $rgName -Name $vmName
 
 ## <a name="resizing-data-disks"></a>Ändern der Größe von Datenträgern
 
-Dieser Artikel konzentriert sich hauptsächlich auf die Erweiterung des verwalteten/nicht verwalteten Betriebssystem-Datenträgers der VM. Das Skript kann aber auch zum Erweitern der Datenträger verwendet werden, die an die VM angefügt sind. Wenn Sie nur einen Datenträger erweitern, muss die Zuordnung des virtuellen Computers **nicht** aufgehoben werden. Um beispielsweise den ersten Datenträger zu erweitern, der an den virtuellen Computer angefügt ist, ersetzen Sie das `OSDisk`-Objekt von `StorageProfile` mit dem `DataDisks`-Array, und verwenden Sie einen numerischen Index, um – wie unten dargestellt – einen Verweis auf den ersten angefügten Datenträger zu erhalten:
+Dieser Artikel konzentriert sich hauptsächlich auf die Erweiterung des verwalteten/nicht verwalteten Betriebssystem-Datenträgers der VM. Das Skript kann aber auch zum Erweitern der Datenträger verwendet werden, die an die VM angefügt sind. Um beispielsweise den ersten Datenträger zu erweitern, der an den virtuellen Computer angefügt ist, ersetzen Sie das `OSDisk`-Objekt von `StorageProfile` mit dem `DataDisks`-Array, und verwenden Sie einen numerischen Index, um – wie unten dargestellt – einen Verweis auf den ersten angefügten Datenträger zu erhalten:
 
 **Verwalteter Datenträger**
 
@@ -169,14 +207,11 @@ $disk= Get-AzDisk -ResourceGroupName $rgName -DiskName $vm.StorageProfile.DataDi
 $disk.DiskSizeGB = 1023
 ```
 
-
 **Nicht verwalteter Datenträger**
 
 ```powershell
 $vm.StorageProfile.DataDisks[0].DiskSizeGB = 1023
 ```
-
-
 
 Entsprechend können Sie auf andere Datenträger verweisen, die an die VM angefügt sind, indem Sie entweder (wie oben gezeigt) einen Index oder die **Name**-Eigenschaft des Datenträgers verwenden:
 
@@ -195,17 +230,17 @@ Entsprechend können Sie auf andere Datenträger verweisen, die an die VM angef�
 
 ## <a name="expand-the-volume-within-the-os"></a>Erweitern des Volumes innerhalb des Betriebssystems
 
-Nachdem Sie den Datenträger für die VM erweitert haben, müssen Sie in das Betriebssystem wechseln und das Volume erweitern, damit es den neuen Speicherplatz einschließen kann. Es gibt mehrere Methoden zum Erweitern einer Partition. Dieser Abschnitt behandelt das Verbinden der VM über eine RDP-Verbindung, um die Partition mit **DiskPart** zu erweitern.
+Wenn Sie den Datenträger für die VM erweitert haben, müssen Sie in das Betriebssystem wechseln und das Volume erweitern, damit es den neuen Speicherplatz einschließen kann. Es gibt mehrere Methoden zum Erweitern einer Partition. Dieser Abschnitt behandelt das Verbinden der VM über eine RDP-Verbindung, um die Partition mit **DiskPart** zu erweitern.
 
 1. Öffnen Sie eine RDP-Verbindung mit Ihrer VM.
 
-2.  Öffnen Sie eine Eingabeaufforderung, und geben Sie **diskpart** ein.
+2. Öffnen Sie eine Eingabeaufforderung, und geben Sie **diskpart** ein.
 
-2.  Geben Sie `list volume` an der Eingabeaufforderung von **DISKPART** ein. Notieren Sie sich das Volume, das Sie erweitern möchten.
+3. Geben Sie `list volume` an der Eingabeaufforderung von **DISKPART** ein. Notieren Sie sich das Volume, das Sie erweitern möchten.
 
-3.  Geben Sie `select volume <volumenumber>` an der Eingabeaufforderung von **DISKPART** ein. Hiermit wählen Sie das Volume *Volumenummer* aus, das Sie in zusammenhängenden, leeren Speicherplatz auf dem gleichen Datenträger erweitern möchten.
+4. Geben Sie `select volume <volumenumber>` an der Eingabeaufforderung von **DISKPART** ein. Hiermit wählen Sie das Volume *Volumenummer* aus, das Sie in zusammenhängenden, leeren Speicherplatz auf dem gleichen Datenträger erweitern möchten.
 
-4.  Geben Sie `extend [size=<size>]` an der Eingabeaufforderung von **DISKPART** ein. Hierdurch wird das ausgewählte Volume um *Größe* in Megabyte (MB) erweitert.
+5. Geben Sie `extend [size=<size>]` an der Eingabeaufforderung von **DISKPART** ein. Hierdurch wird das ausgewählte Volume um *Größe* in Megabyte (MB) erweitert.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

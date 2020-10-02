@@ -1,14 +1,14 @@
 ---
-title: 'Blaupausenbeispiel für ISM PROTECTED der australischen Regierung: Übersicht'
-description: Enthält eine Übersicht über das Blaupausenbeispiel für „ISM PROTECTED der australischen Regierung“. Dieses Blaupausenbeispiel unterstützt Kunden bei der Bewertung spezifischer ISM PROTECTED-Steuerungen.
-ms.date: 08/03/2020
+title: Steuerungen des Blaupausenbeispiels für ISM PROTECTED der australischen Regierung
+description: Steuerungszuordnung des Blaupausenbeispiels für „ISM PROTECTED der australischen Regierung“ Jede Steuerung wird mindestens einer Azure Policy-Definition zugeordnet, die Sie bei der Bewertung unterstützt.
+ms.date: 09/11/2020
 ms.topic: sample
-ms.openlocfilehash: 750cc5551f0bbf05e0da6ad41d46729231243f72
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 605e92b75da1e5363884fc6ef9457251cfbc6e4e
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760429"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030105"
 ---
 # <a name="control-mapping-of-the-australian-government-ism-protected-blueprint-sample"></a>Steuerungszuordnung des Blaupausenbeispiels für „ISM PROTECTED der australischen Regierung“
 
@@ -350,6 +350,10 @@ Mit dieser Blaupause können Sie den Standort für die Bereitstellung aller Ress
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Artikel zu Blaupausen und ihrer Nutzung:
+
+> [!div class="nextstepaction"]
+> [Blaupause „ISM PROTECTED“ – Übersicht](./index.md)
+> [Blaupause „ISM PROTECTED“ – Bereitstellungsschritte](./deploy.md)
 
 - Erfahren Sie mehr über den [Lebenszyklus von Blaupausen](../../concepts/lifecycle.md).
 - Machen Sie sich mit der Verwendung [statischer und dynamischer Parameter](../../concepts/parameters.md) vertraut.
