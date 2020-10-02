@@ -6,12 +6,12 @@ ms.author: cshoe
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
-ms.openlocfilehash: eb3096cadc8197aeda9258bd3123c2eb760a44af
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 948e4f74763efd641bc0f089c679cdaf7c2f784e
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540280"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530067"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>Tutorial: Einrichten von privatem Websitezugriff für Azure Functions
 
@@ -73,7 +73,7 @@ Im ersten Schritt dieses Tutorials wird ein neuer virtueller Computer in einem v
 1. Wählen Sie die Registerkarte _Netzwerk_ und anschließend **Neu erstellen** aus, um ein neues virtuelles Netzwerk zu konfigurieren.
 
     >[!div class="mx-imgBorder"]
-    >![Erstellen eines neuen virtuellen Netzwerks für den neuen virtuellen Computer](./media/functions-create-private-site-access/create-vm-networking.png)
+    >![Screenshot, der die Registerkarte „Netzwerk“ mit hervorgehobener Aktion „Neu erstellen“ im Abschnitt „Virtuelles Netzwerk“ zeigt.](./media/functions-create-private-site-access/create-vm-networking.png)
 
 1. Verwenden Sie unter _Virtuelles Netzwerk erstellen_ die Einstellungen in der Tabelle unterhalb der Abbildung:
 

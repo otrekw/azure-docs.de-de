@@ -4,12 +4,12 @@ description: 'Hier finden Sie einen Vergleich der für Integrationsaufträge opt
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: 2e0d8f356ec8da900b4a38399ba94434c3b1b93d
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 2c17b311811fd2cba46db379fcc766c04dd9d56d
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809968"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403074"
 ---
 # <a name="choose-the-right-integration-and-automation-services-in-azure"></a>Auswählen der richtigen Integrations- und Automatisierungsdienste in Azure
 
@@ -41,7 +41,7 @@ Anhand der folgenden Tabelle können Sie ermitteln, ob Power Automate oder Logic
 | **Designtool** |Im Browser und in der mobilen App, nur über die Benutzeroberfläche |Im Browser und [Visual Studio](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), [Codeansicht](../logic-apps/logic-apps-author-definitions.md) verfügbar |
 | **Application Lifecycle Management (ALM)** |Entwerfen und Testen in produktionsfremden Umgebungen und anschließendes Überführen in die Produktionsumgebung |Azure DevOps: Quellcodeverwaltung, Tests, Support, Automatisierung und Verwaltung in [Azure Resource Manager](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md) |
 | **Administratoroberfläche** |Verwalten von Power Automate-Umgebungen und Richtlinien zur Verhinderung von Datenverlust (Data Loss Prevention, DLP), Nachverfolgen der Lizenzierung: [Admin Center](https://admin.flow.microsoft.com) |Verwalten von Ressourcengruppen, Verbindungen, Zugriffsverwaltung und Protokollierung: [Azure portal](https://portal.azure.com) |
-| **Security** |Office 365-Sicherheit und Konformitätsüberwachungsprotokolle, DLP, [Verschlüsselung ruhender Daten](https://wikipedia.org/wiki/Data_at_rest#Encryption) für sensible Daten |Sicherheitsgarantie von Azure: [Azure-Sicherheit](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity), [Azure Security Center](https://azure.microsoft.com/services/security-center/), [Überwachungsprotokolle](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/) |
+| **Security** |Microsoft 365-Sicherheitsüberwachungsprotokolle, DLP, [Verschlüsselung ruhender Daten](https://wikipedia.org/wiki/Data_at_rest#Encryption) für sensible Daten |Sicherheitsgarantie von Azure: [Azure-Sicherheit](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity), [Azure Security Center](https://azure.microsoft.com/services/security-center/), [Überwachungsprotokolle](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/) |
 
 ## <a name="compare-azure-functions-and-azure-logic-apps"></a>Vergleich zwischen Azure Functions und Azure Logic Apps
 

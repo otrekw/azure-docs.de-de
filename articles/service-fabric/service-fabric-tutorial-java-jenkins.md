@@ -1,17 +1,15 @@
 ---
 title: Konfigurieren von Jenkins für eine Java-App unter Service Fabric in Azure
 description: In diesem Tutorial erfahren Sie, wie Sie Continuous Integration mit Jenkins einrichten, um eine Java-basierte Service Fabric-Anwendung bereitzustellen.
-author: suhuruli
 ms.topic: tutorial
 ms.date: 08/27/2018
-ms.author: suhuruli
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 42efc13d37ccfdaf60896f338b1a38384ef06568
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4e29104f0586a8e18afb7a640903c57ce988b692
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320713"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531971"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>Tutorial: Konfigurieren einer Jenkins-Umgebung zum Aktivieren von CI/CD für eine Java-Anwendung unter Service Fabric
 
@@ -109,7 +107,7 @@ Sie können Jenkins innerhalb oder außerhalb eines Service Fabric-Clusters einr
 
     Sie können auch zusätzliche Details angeben, die zum Bereitstellen der Anwendung verwendet werden. Der folgende Screenshot zeigt ein Beispiel für Anwendungsdetails:
 
-    ![Service Fabric-Jenkins-Buildvorgang](./media/service-fabric-tutorial-java-jenkins/sfjenkins.png)
+    ![Dialogfeld „Aktionen nach dem Buildvorgang“ mit zusätzlichen Service Fabric-Projektbereitstellungsoptionen](./media/service-fabric-tutorial-java-jenkins/sfjenkins.png)
 
     > [!NOTE]
     > Hier kann der gleiche Cluster angegeben werden, der auch als Host für die Jenkins-Containeranwendung fungiert, falls Sie das Jenkins-Containerimage mithilfe von Service Fabric bereitstellen.
