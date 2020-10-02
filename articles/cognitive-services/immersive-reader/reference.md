@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 6dfcd8d56232f893f881f310b33f3f849e2364a7
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 73322cdee151969e6e765690284bbffc1c871f4e
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85475950"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090192"
 ---
 # <a name="immersive-reader-javascript-sdk-reference-v11"></a>Referenz zum JavaScript-SDK für den Plastischen Reader (v1.1)
 
@@ -31,6 +31,8 @@ Das SDK macht folgende Funktionen verfügbar:
 
 - [`ImmersiveReader.renderButtons(options)`](#renderbuttons)
 
+<br>
+
 ## <a name="launchasync"></a>launchAsync
 
 Startet den Plastischen Reader in einem `iframe` in Ihrer Webanwendung. Beachten Sie, dass die Inhaltsgröße auf 50 MB beschränkt ist.
@@ -39,22 +41,24 @@ Startet den Plastischen Reader in einem `iframe` in Ihrer Webanwendung. Beachten
 launchAsync(token: string, subdomain: string, content: Content, options?: Options): Promise<LaunchResponse>;
 ```
 
-### <a name="parameters"></a>Parameter
+#### <a name="launchasync-parameters"></a>launchAsync-Parameter
 
-| Name | type | BESCHREIBUNG |
+| Name | Typ | Beschreibung |
 | ---- | ---- |------------ |
-| `token` | Zeichenfolge | Das Azure AD-Authentifizierungstoken. |
-| `subdomain` | Zeichenfolge | Die benutzerdefinierte Unterdomäne ihrer Plastischer Reader-Ressource in Azure. |
+| `token` | Zeichenfolge | Das Azure AD-Authentifizierungstoken. Weitere Informationen finden Sie unter [Vorgehensweise: Erstellen einer Ressource für den plastischen Reader](./how-to-create-immersive-reader.md). |
+| `subdomain` | Zeichenfolge | Die benutzerdefinierte Unterdomäne ihrer Plastischer Reader-Ressource in Azure. Weitere Informationen finden Sie unter [Vorgehensweise: Erstellen einer Ressource für den plastischen Reader](./how-to-create-immersive-reader.md). |
 | `content` | [Inhalt](#content) | Ein Objekt mit dem Inhalt, der im Plastischen Reader angezeigt werden soll. |
 | `options` | [Optionen](#options) | Optionen zum Konfigurieren bestimmter Verhaltensweisen des Plastischen Readers. Optional. |
 
-### <a name="returns"></a>Rückgabe
+#### <a name="returns"></a>Rückgabe
 
 Gibt ein `Promise<LaunchResponse>` zurück, das beim Laden des Plastischen Readers aufgelöst wird. `Promise` wird zu einem [`LaunchResponse`](#launchresponse)-Objekt aufgelöst.
 
-### <a name="exceptions"></a>Ausnahmen
+#### <a name="exceptions"></a>Ausnahmen
 
 Das zurückgegebene `Promise` wird mit einem [`Error`](#error)-Objekt zurückgewiesen, wenn das Laden des Plastischen Readers fehlschlägt. Weitere Informationen finden Sie in den [Fehlercodes](#error-codes).
+
+<br>
 
 ## <a name="close"></a>close
 
@@ -66,23 +70,125 @@ Ein Beispiel eines Anwendungsfalls für diese Funktion ist, wenn die Schaltfläc
 close(): void;
 ```
 
+<br>
+
+## <a name="immersive-reader-launch-button"></a>Startschaltfläche für plastischen Reader
+
+Das SDK stellt einen Standardstil für die Schaltfläche zum Starten des Plastischen Readers bereit. Verwenden Sie das Klassenattribut `immersive-reader-button` zum Aktivieren dieses Stils. Weitere Informationen finden Sie unter [Vorgehensweise: Anpassen der Schaltfläche des plastischen Readers](./how-to-customize-launch-button.md).
+
+```html
+<div class='immersive-reader-button'></div>
+```
+
+#### <a name="optional-attributes"></a>Optionale Attribute
+
+Verwenden Sie die folgenden Attribute, um das Aussehen und Verhalten der Schaltfläche zu konfigurieren.
+
+| attribute | BESCHREIBUNG |
+| --------- | ----------- |
+| `data-button-style` | Legt den Stil der Schaltfläche fest. Kann `icon`, `text` oder `iconAndText` sein. Der Standardwert lautet `icon`. |
+| `data-locale` | Legt das Gebietsschema fest. Zum Beispiel: `en-US` oder `fr-FR`. Der Standardwert ist „Englisch“ `en`. |
+| `data-icon-px-size` | Legt die Größe des Symbols in Pixel fest. Der Standardwert ist „20px“. |
+
+<br>
+
 ## <a name="renderbuttons"></a>renderButtons
 
-Diese Funktion formatiert und aktualisiert die Schaltflächenelemente für „Plastischer Reader“ des Dokuments. Wenn ```options.elements``` angegeben wird, rendert diese Funktion Schaltflächen in ```options.elements```. Andernfalls werden die Schaltflächen innerhalb der Elemente des Dokuments dargestellt, die die Klasse ```immersive-reader-button``` aufweisen.
+Die Funktion ```renderButtons``` ist nicht erforderlich, wenn Sie den Leitfaden [Vorgehensweise: Anpassen der Schaltfläche des plastischen Readers](./how-to-customize-launch-button.md) verwenden.
 
-Diese Funktion wird vom SDK automatisch beim Laden des Fensters aufgerufen.
+Diese Funktion formatiert und aktualisiert die Schaltflächenelemente für „Plastischer Reader“ des Dokuments. Wenn ```options.elements``` angegeben ist, werden die Schaltflächen innerhalb jedes in ```options.elements``` angegebenen Elements gerendert. Die Verwendung des Parameters ```options.elements``` ist hilfreich, wenn Sie mehrere Abschnitte in Ihrem Dokument besitzen, auf denen der plastische Reader gestartet werden soll, und Sie eine vereinfachte Möglichkeit zum Rendern mehrerer Schaltflächen mit demselben Format wünschen oder die Schaltflächen mit einem einfachen und konsistenten Entwurfsmuster darstellen möchten. Um diese Funktion mit dem Parameter [renderButtons options](#renderbuttons-options) zu verwenden, rufen Sie ```ImmersiveReader.renderButtons(options: RenderButtonsOptions);``` beim Laden der Seite auf, wie im folgenden Codeausschnitt gezeigt. Andernfalls werden die Schaltflächen innerhalb der Elemente des Dokuments gerendert, die die Klasse ```immersive-reader-button``` aufweisen, wie in [Vorgehensweise: Anpassen der Schaltfläche des plastischen Readers](./how-to-customize-launch-button.md) gezeigt.
 
-Weitere Renderingoptionen finden Sie unter [Optionale Attribute](#optional-attributes).
+```typescript
+// This snippet assumes there are two empty div elements in
+// the page HTML, button1 and button2.
+const btn1: HTMLDivElement = document.getElementById('button1');
+const btn2: HTMLDivElement = document.getElementById('button2');
+const btns: HTMLDivElement[] = [btn1, btn2];
+ImmersiveReader.renderButtons({elements: btns});
+```
+
+Weitere Renderingoptionen finden Sie oben unter [Optionale Attribute](#optional-attributes). Fügen Sie jedem ```HTMLDivElement``` in Ihrem HTML-Code der Seite eines der Optionsattribute hinzu, um diese Optionen zu verwenden.
 
 ```typescript
 renderButtons(options?: RenderButtonsOptions): void;
 ```
 
-### <a name="parameters"></a>Parameter
+#### <a name="renderbuttons-parameters"></a>renderButtons-Parameter
 
-| Name | type | BESCHREIBUNG |
+| Name | Typ | Beschreibung |
 | ---- | ---- |------------ |
-| `options` | [RenderButtonsOptions](#renderbuttonsoptions) | Optionen zum Konfigurieren bestimmter Verhaltensweisen der Funktion „renderButtons“. Optional. |
+| `options` | [renderButtons options](#renderbuttons-options) | Optionen zum Konfigurieren bestimmter Verhaltensweisen der Funktion „renderButtons“. Optional. |
+
+### <a name="renderbuttons-options"></a>renderButtons Options
+
+Optionen für das Rendering der Schaltflächen des Plastischen Readers.
+
+```typescript
+{
+    elements: HTMLDivElement[];
+}
+```
+
+#### <a name="renderbuttons-options-parameters"></a>renderButtons Options-Parameter
+
+| Einstellung | Typ | Beschreibung |
+| ------- | ---- | ----------- |
+| Elemente | HTMLDivElement[] | Elemente, in denen die Schaltflächen des plastischen Readers gerendert werden. |
+
+##### `-elements`
+```Parameters
+Type: HTMLDivElement[]
+Required: false
+```
+
+<br>
+
+## <a name="launchresponse"></a>LaunchResponse
+
+Enthält die Antwort aus dem Aufruf von `ImmersiveReader.launchAsync`. Beachten Sie, dass ein Verweis auf den `iframe`, der den Plastischen Reader enthält, über `container.firstChild` aufgerufen werden kann.
+
+```typescript
+{
+    container: HTMLDivElement;
+    sessionId: string;
+}
+```
+
+#### <a name="launchresponse-parameters"></a>LaunchResponse-Parameter
+
+| Einstellung | Typ | Beschreibung |
+| ------- | ---- | ----------- |
+| Container | HTMLDivElement | HTML-Element, das das „iframe“ des plastischen Readers enthält. |
+| sessionID | String | Global eindeutiger Bezeichner für diese Sitzung, der zum Debuggen verwendet wird. |
+ 
+## <a name="error"></a>Fehler
+
+Enthält Informationen zu einem Fehler.
+
+```typescript
+{
+    code: string;
+    message: string;
+}
+```
+
+#### <a name="error-parameters"></a>Fehlerparameter
+
+| Einstellung | Typ | Beschreibung |
+| ------- | ---- | ----------- |
+| code | String | Einer aus einer Reihe von Fehlercodes. Weitere Informationen finden Sie unter [Fehlercodes](#error-codes). |
+| message | String | Lesbare Darstellung des Fehlers. |
+
+#### <a name="error-codes"></a>Fehlercodes
+
+| Code | BESCHREIBUNG |
+| ---- | ----------- |
+| BadArgument | Das übergebene Argument ist ungültig, siehe `message`-Parameter des [Fehlers](#error). |
+| Timeout | Der Plastische Reader konnte innerhalb des angegebenen Zeitlimits nicht geladen werden. |
+| TokenExpired | Das angegebene Token ist abgelaufen. |
+| Gedrosselt | Das Limit für die Aufrufrate wurde überschritten. |
+
+<br>
 
 ## <a name="types"></a>Typen
 
@@ -92,10 +198,33 @@ Enthält den Inhalt, der im Plastischen Reader angezeigt werden soll.
 
 ```typescript
 {
-    title?: string;    // Title text shown at the top of the Immersive Reader (optional)
-    chunks: Chunk[];   // Array of chunks
+    title?: string;
+    chunks: Chunk[];
 }
 ```
+
+#### <a name="content-parameters"></a>Inhaltsparameter
+
+| Name | Typ | Beschreibung |
+| ---- | ---- |------------ |
+| title | String | Titeltext, der oben auf dem plastischen Reader angezeigt wird (optional). |
+| Blöcke | [Chunk[]](#chunk) | Array von Blöcken |
+
+##### `-title`
+```Parameters
+Type: String
+Required: false
+Default value: "Immersive Reader" 
+```
+
+##### `-chunks`
+```Parameters
+Type: Chunk[]
+Required: true
+Default value: null 
+```
+
+<br>
 
 ### <a name="chunk"></a>Block
 
@@ -103,10 +232,39 @@ Ein einzelner Datenblock, der in den Inhalt des Plastischen Readers übertragen 
 
 ```typescript
 {
-    content: string;        // Plain text string
-    lang?: string;          // Language of the text, e.g. en, es-ES (optional). Language will be detected automatically if not specified.
-    mimeType?: string;      // MIME type of the content (optional). Currently 'text/plain', 'application/mathml+xml', and 'text/html' are supported. Defaults to 'text/plain' if not specified.
+    content: string;
+    lang?: string;
+    mimeType?: string;
 }
+```
+
+#### <a name="chunk-parameters"></a>Blockparameter
+
+| Name | Typ | Beschreibung |
+| ---- | ---- |------------ |
+| Inhalt | String | Die Zeichenfolge, die den an den plastischen Reader gesendeten Inhalt enthält. |
+| lang | String | Sprache des Texts, der Wert ist im IETF BCP 47-Sprachtagformat angegeben, z. B. „en“, „es-ES“. Die Sprache wird automatisch erkannt, wenn sie nicht angegeben ist. Siehe [Unterstützte Sprachen](#supported-languages). |
+| mimeType | Zeichenfolge | Nur-Text-, MathML-, HTML- und Microsoft Word DOCX-Formate werden unterstützt. Weitere Informationen finden Sie unter [Unterstützte MIME-Typen](#supported-mime-types). |
+
+##### `-content`
+```Parameters
+Type: String
+Required: true
+Default value: null 
+```
+
+##### `-lang`
+```Parameters
+Type: String
+Required: false
+Default value: Automatically detected 
+```
+
+##### `-mimeType`
+```Parameters
+Type: String
+Required: false
+Default value: "text/plain"
 ```
 
 #### <a name="supported-mime-types"></a>Unterstützte MIME-Typen
@@ -118,121 +276,251 @@ Ein einzelner Datenblock, der in den Inhalt des Plastischen Readers übertragen 
 | application/mathml+xml | Mathematische Markupsprache (MathML). [Weitere Informationen](./how-to/display-math.md)
 | application/vnd.openxmlformats-officedocument.wordprocessingml.document | Dokument im DOCX-Format von Microsoft Word.
 
-### <a name="options"></a>Tastatur
+
+<br>
+
+## <a name="options"></a>Tastatur
 
 Enthält Eigenschaften, die bestimmte Verhaltensweisen des Plastischen Readers konfigurieren.
 
 ```typescript
 {
-    uiLang?: string;           // Language of the UI, e.g. en, es-ES (optional). Defaults to browser language if not specified.
-    timeout?: number;          // Duration (in milliseconds) before launchAsync fails with a timeout error (default is 15000 ms).
-    uiZIndex?: number;         // Z-index of the iframe that will be created (default is 1000).
-    useWebview?: boolean;      // Use a webview tag instead of an iframe, for compatibility with Chrome Apps (default is false).
-    onExit?: () => any;        // Executes when the Immersive Reader exits.
-    customDomain?: string;     // Reserved for internal use. Custom domain where the Immersive Reader webapp is hosted (default is null).
-    allowFullscreen?: boolean; // The ability to toggle fullscreen (default is true).
-    hideExitButton?: boolean;  // Whether or not to hide the Immersive Reader's exit button arrow (default is false). This should only be true if there is an alternative mechanism provided to exit the Immersive Reader (e.g a mobile toolbar's back arrow).
-    cookiePolicy?: CookiePolicy; // Setting for the Immersive Reader's cookie usage (default is CookiePolicy.Disable). It's the responsibility of the host application to obtain any necessary user consent in accordance with EU Cookie Compliance Policy.
-    disableFirstRun?: boolean; // Disable the first run experience.
-    readAloudOptions?: ReadAloudOptions; // Options to configure Read Aloud.
-    translationOptions?: TranslationOptions; // Options to configure translation.
-    displayOptions?: DisplayOptions; // Options to configure text size, font, etc.
-    preferences?: string; // String returned from onPreferencesChanged representing the user's preferences in the Immersive Reader.
-    onPreferencesChanged?: (value: string) => any; // Executes when the user's preferences have changed.
+    uiLang?: string;
+    timeout?: number;
+    uiZIndex?: number;
+    useWebview?: boolean;
+    onExit?: () => any;
+    allowFullscreen?: boolean;
+    hideExitButton?: boolean;
+    cookiePolicy?: CookiePolicy;
+    disableFirstRun?: boolean;
+    readAloudOptions?: ReadAloudOptions;
+    translationOptions?: TranslationOptions;
+    displayOptions?: DisplayOptions;
+    preferences?: string;
+    onPreferencesChanged?: (value: string) => any;
+    customDomain?: string;
 }
 ```
 
-```typescript
-enum CookiePolicy { Disable, Enable }
+#### <a name="options-parameters"></a>Optionsparameter
+
+| Name | Typ | Beschreibung |
+| ---- | ---- |------------ |
+| uiLang | String | Sprache der Benutzeroberfläche, der Wert ist im IETF BCP 47-Sprachtagformat angegeben, z. B. „en“, „es-ES“. Standardmäßig wird die Browsersprache verwendet, falls nicht angegeben. |
+| timeout | Nr. | Dauer (in Millisekunden) bevor bei [launchAsync](#launchasync) ein Timeoutfehler auftritt (Standard ist 15000 ms). Dieser Timeout gilt nur für den anfänglichen Start der Seite „Reader“, wobei der Erfolg beim Öffnen der Seite „Reader“ und dem Start des Drehfelds beobachtet wird. Die Anpassung des Timeouts sollte nicht erforderlich sein. |
+| uiZIndex | Nr. | Der Z-Index von „iFrame“, das erstellt wird (der Standardwert ist 1000). |
+| useWebview | Boolean| Verwenden Sie ein webview-Tag anstelle von „iframe“, um die Kompatibilität mit Chrome-Apps sicherzustellen (der Standardwert ist „false“). |
+| onExit | Funktion | Wird ausgeführt, wenn der plastische Reader beendet wird. |
+| allowFullscreen | Boolean | Die Möglichkeit zum Vollbildschirm zu wechseln (der Standardwert ist „true“). |
+| hideExitButton | Boolean | Ob der Pfeil der Schaltfläche „Beenden“ des plastischen Readers ausgeblendet werden soll (der Standardwert ist „false“). Dies sollte nur dann „true“ ergeben, wenn es einen alternativen Mechanismus zum Beenden des plastischen Readers gibt (z. B. den Pfeil „Zurück“ einer mobilen Symbolleiste). |
+| cookiePolicy | [CookiePolicy](#cookiepolicy-options) | Einstellung für die Verwendung von Cookies für den plastischen Reader (der Standardwert ist *CookiePolicy.Disable*). Es liegt in der Verantwortung der Hostanwendung, die erforderliche Zustimmung des Benutzers in Übereinstimmung mit der Cookiekonformitätsrichtlinie der EU einzuholen. Weitere Informationen finden Sie unter den [Optionen für Cookierichtlinien](#cookiepolicy-options). |
+| disableFirstRun | Boolean | Deaktiviert die zuerst ausgeführte Umgebung. |
+| readAloudOptions | [ReadAloudOptions](#readaloudoptions) | Optionen zum Konfigurieren des lauten Vorlesens. |
+| translationOptions | [TranslationOptions](#translationoptions) | Optionen zum Konfigurieren der Übersetzung. |
+| displayOptions | [DisplayOptions](#displayoptions) | Optionen zum Konfigurieren von Textgröße, Schriftart usw. |
+| Voreinstellungen | String | Von onPreferencesChanged zurückgegebene Zeichenfolge, die die Voreinstellungen des Benutzers im plastischen Reader darstellt. Weitere Informationen finden Sie unter [Parameter für Einstellungen](#settings-parameters) und [Vorgehensweise: Speichern der Benutzereinstellungen](./how-to-store-user-preferences.md). |
+| onPreferencesChanged | Funktion | Wird ausgeführt, wenn sich die Voreinstellungen des Benutzers geändert haben. Weitere Informationen finden Sie unter [Vorgehensweise: Speichern der Benutzereinstellungen](./how-to-store-user-preferences.md). |
+| customDomain | String | Für die interne Verwendung reserviert. Benutzerdefinierte Domäne, in der die Web-App des plastischen Readers gehostet wird (der Standardwert ist „NULL“). |
+
+##### `-uiLang`
+```Parameters
+Type: String
+Required: false
+Default value: User's browser language 
 ```
+
+##### `-timeout`
+```Parameters
+Type: Number
+Required: false
+Default value: 15000
+```
+
+##### `-uiZIndex`
+```Parameters
+Type: Number
+Required: false
+Default value: 1000
+```
+
+##### `-onExit`
+```Parameters
+Type: Function
+Required: false
+Default value: null
+```
+
+##### `-preferences`
+
+> [!CAUTION]
+> **WICHTIG** Versuchen Sie nicht, die Werte der `-preferences`-Zeichenfolge, die an die und von der Plastischer Reader-Anwendung gesendet werden, programmgesteuert zu ändern, da dies zu unerwartetem Verhalten führen kann, das die Benutzerfreundlichkeit für Ihre Kunden verringert.
+
+```Parameters
+Type: String
+Required: false
+Default value: null
+```
+
+##### `-onPreferencesChanged`
+```Parameters
+Type: Function
+Required: false
+Default value: null
+```
+
+##### `-customDomain`
+```Parameters
+Type: String
+Required: false
+Default value: null
+```
+
+<br>
+
+## <a name="readaloudoptions"></a>ReadAloudOptions
 
 ```typescript
 type ReadAloudOptions = {
-    voice?: string;      // Voice, either 'male' or 'female'. Note that not all languages support both genders.
-    speed?: number;      // Playback speed, must be between 0.5 and 2.5, inclusive.
-    autoplay?: boolean;  // Automatically start Read Aloud when the Immersive Reader loads.
+    voice?: string;
+    speed?: number;
+    autoplay?: boolean;
 };
+```
+
+#### <a name="readaloudoptions-parameters"></a>ReadAloudOptions-Parameter
+
+| Name | Typ | Beschreibung |
+| ---- | ---- |------------ |
+| voice | String | Stimme, entweder „Weiblich“ oder „Männlich“. Beachten Sie, dass nicht alle Sprachen beide Geschlechter unterstützen. |
+| Geschwindigkeit | Nr. | Die Wiedergabegeschwindigkeit muss zwischen 0,5 und 2,5 (einschließlich) liegen. |
+| autoPlay | Boolean | Starten Sie automatisch das laute Vorlesen, wenn der plastische Reader geladen wird. |
+
+##### `-voice`
+```Parameters
+Type: String
+Required: false
+Default value: "Female" or "Male" (determined by language) 
+Values available: "Female", "Male"
+```
+
+##### `-speed`
+```Parameters
+Type: Number
+Required: false
+Default value: 1
+Values available: 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5
 ```
 
 > [!NOTE]
 > Aufgrund von Browsereinschränkungen wird die automatische Wiedergabe in Safari nicht unterstützt.
 
+<br>
+
+## <a name="translationoptions"></a>TranslationOptions
+
 ```typescript
 type TranslationOptions = {
-    language: string;                         // Set the translation language, e.g. fr-FR, es-MX, zh-Hans-CN. Required to automatically enable word or document translation.
-    autoEnableDocumentTranslation?: boolean;  // Automatically translate the entire document.
-    autoEnableWordTranslation?: boolean;      // Automatically enable word translation.
+    language: string;
+    autoEnableDocumentTranslation?: boolean;
+    autoEnableWordTranslation?: boolean;
 };
 ```
+
+#### <a name="translationoptions-parameters"></a>TranslationOptions-Parameter
+
+| Name | Typ | Beschreibung |
+| ---- | ---- |------------ |
+| language | String | Legt die Übersetzungssprache fest, der Wert ist im IETF BCP 47-Sprachtagformat angegeben, z. B. „fr-FR“, „es-MX“, „zh-Hans-CN“. Erforderlich zur automatischen Aktivierung der Wort- oder Dokumentübersetzung. |
+| autoEnableDocumentTranslation | Boolean | Übersetzen Sie automatisch das gesamte Dokument. |
+| autoEnableWordTranslation | Boolean | Aktivieren Sie automatisch die Übersetzung von Wörtern. |
+
+##### `-language`
+```Parameters
+Type: String
+Required: true
+Default value: null 
+Values available: See the Supported Languages section
+```
+
+<br>
+
+## <a name="displayoptions"></a>DisplayOptions
 
 ```typescript
 type DisplayOptions = {
-    textSize?: number;          // Valid values are 14, 20, 28, 36, 42, 48, 56, 64, 72, 84, 96.
-    increaseSpacing?: boolean;  // Set whether increased spacing is enabled.
-    fontFamily?: string;        // Valid values are 'Calibri', 'ComicSans', and 'Sitka'.
+    textSize?: number;
+    increaseSpacing?: boolean;
+    fontFamily?: string;
 };
 ```
 
-### <a name="launchresponse"></a>LaunchResponse
+#### <a name="displayoptions-parameters"></a>DisplayOptions-Parameter
 
-Enthält die Antwort aus dem Aufruf von `ImmersiveReader.launchAsync`. Beachten Sie, dass ein Verweis auf den `iframe`, der den Plastischen Reader enthält, über `container.firstChild` aufgerufen werden kann.
+| Name | Typ | Beschreibung |
+| ---- | ---- |------------ |
+| textSize | Nr. | Legt die gewählte Textgröße fest. |
+| increaseSpacing | Boolean | Legt fest, ob der Textabstand aktiviert oder deaktiviert wird. |
+| fontFamily | String | Legt die gewählte Schriftart fest („Calibri“, „ComicSans“ oder „Sitka“). |
+
+##### `-textSize`
+```Parameters
+Type: Number
+Required: false
+Default value: 20, 36 or 42 (Determined by screen size)
+Values available: 14, 20, 28, 36, 42, 48, 56, 64, 72, 84, 96
+```
+
+##### `-fontFamily`
+```Parameters
+Type: String
+Required: false
+Default value: "Calibri"
+Values available: "Calibri", "Sitka", "ComicSans"
+```
+
+<br>
+
+## <a name="cookiepolicy-options"></a>CookiePolicy-Optionen
 
 ```typescript
-{
-    container: HTMLDivElement;    // HTML element which contains the Immersive Reader iframe
-    sessionId: string;            // Globally unique identifier for this session, used for debugging
-}
-```
- 
-### <a name="error"></a>Fehler
-
-Enthält Informationen zum Fehler.
-
-```typescript
-{
-    code: string;    // One of a set of error codes
-    message: string; // Human-readable representation of the error
-}
+enum CookiePolicy { Disable, Enable }
 ```
 
-#### <a name="error-codes"></a>Fehlercodes
+**Die unten aufgeführten Einstellungen dienen nur zu Informationszwecken**. Der plastische Reader speichert seine Einstellungen bzw. Benutzervoreinstellungen in Cookies. Diese *cookiePolicy*-Option **deaktiviert** standardmäßig die Verwendung von Cookies, um den Gesetzen der Cookiekonformitätsrichtlinie der EU zu entsprechen. Wenn Sie Cookies wieder aktivieren und die Standardfunktionalität für die Benutzervoreinstellungen des plastischen Reader wiederherstellen möchten, müssen Sie sicherstellen, dass Ihre Website oder Anwendung die ordnungsgemäße Zustimmung des Benutzers zur Aktivierung von Cookies einholt. Um Cookies im plastischen Reader wieder zu aktivieren, müssen Sie dann beim Start des plastischen Readers die Option *cookiePolicy* explizit auf *CookiePolicy.Enable* festlegen. Die folgende Tabelle beschreibt, welche Einstellungen der plastische Reader in seinem Cookie speichert, wenn die Option *cookiePolicy* aktiviert ist.
 
-| Code | BESCHREIBUNG |
-| ---- | ----------- |
-| BadArgument | Das angegebene Argument ist ungültig. Details finden Sie unter `message`. |
-| Timeout | Der Plastische Reader konnte innerhalb des angegebenen Zeitlimits nicht geladen werden. |
-| TokenExpired | Das angegebene Token ist abgelaufen. |
-| Gedrosselt | Das Limit für die Aufrufrate wurde überschritten. |
+#### <a name="settings-parameters"></a>Parameter für Einstellungen
 
-### <a name="renderbuttonsoptions"></a>RenderButtonsOptions
+| Einstellung | Typ | Beschreibung |
+| ------- | ---- | ----------- |
+| textSize | Nr. | Legt die gewählte Textgröße fest. |
+| fontFamily | String | Legt die gewählte Schriftart fest („Calibri“, „ComicSans“ oder „Sitka“). |
+| textSpacing | Nr. | Legt fest, ob der Textabstand aktiviert oder deaktiviert wird. |
+| formattingEnabled | Boolean | Legt fest, ob die HTML-Formatierung aktiviert oder deaktiviert wird. |
+| Design | String | Legt das gewählte Thema fest (z. B. „Hell“, „Dunkel“...). |
+| syllabificationEnabled | Boolean | Legt fest, ob die Silbentrennung aktiviert oder deaktiviert wird. |
+| nounHighlightingEnabled | Boolean | Legt fest, ob die Hervorhebung von Nomen aktiviert oder deaktiviert ist. |
+| nounHighlightingColor | String | Legt die gewählte Farbe für die Hervorhebung der Nomen fest. |
+| verbHighlightingEnabled | Boolean | Legt fest, ob die Hervorhebung von Verben aktiviert oder deaktiviert wird. |
+| verbHighlightingColor | String | Legt die gewählte Farbe für die Hervorhebung der Verben fest. |
+| adjectiveHighlightingEnabled | Boolean | Legt fest, ob die Hervorhebung von Adjektiven aktiviert oder deaktiviert wird. |
+| adjectiveHighlightingColor | String | Legt die gewählte Farbe für die Hervorhebung der Adjektive fest. |
+| adverbHighlightingEnabled | Boolean | Legt fest, ob die Hervorhebung von Adverben aktiviert oder deaktiviert wird. |
+| adverbHighlightingColor | String | Legt die gewählte Farbe für die Hervorhebung der Adverben fest. |
+| pictureDictionaryEnabled | Boolean | Legt fest, ob das Bildwörterbuch aktiviert oder deaktiviert wird. |
+| posLabelsEnabled | Boolean | Legt fest, ob die hochgestellte Beschriftung jedes hervorgehobenen Satzteils aktiviert oder deaktiviert wird.  |
 
-Optionen für das Rendering der Schaltflächen des Plastischen Readers.
+<br>
 
-```typescript
-{
-    elements: HTMLDivElement[];    // Elements to render the Immersive Reader buttons in
-}
-```
+## <a name="supported-languages"></a>Unterstützte Sprachen
 
-## <a name="launching-the-immersive-reader"></a>Starten des Plastischen Readers
+Das Übersetzungsfeature des plastischen Readers unterstützt viele Sprachen. Weitere Informationen finden Sie [in diesem Artikel](https://www.onenote.com/learningtools/languagesupport) .
 
-Das SDK stellt einen Standardstil für die Schaltfläche zum Starten des Plastischen Readers bereit. Verwenden Sie das Klassenattribut `immersive-reader-button` zum Aktivieren dieses Stils. Weitere Informationen finden Sie [in diesem Artikel](./how-to-customize-launch-button.md) .
-
-```html
-<div class='immersive-reader-button'></div>
-```
-
-### <a name="optional-attributes"></a>Optionale Attribute
-
-Verwenden Sie die folgenden Attribute, um das Aussehen und Verhalten der Schaltfläche zu konfigurieren.
-
-| attribute | BESCHREIBUNG |
-| --------- | ----------- |
-| `data-button-style` | Legt den Stil der Schaltfläche fest. Kann `icon`, `text` oder `iconAndText` sein. Der Standardwert lautet `icon`. |
-| `data-locale` | Legt das Gebietsschema fest. Zum Beispiel: `en-US` oder `fr-FR`. Der Standardwert ist „Englisch“ `en`. |
-| `data-icon-px-size` | Legt die Größe des Symbols in Pixel fest. Der Standardwert ist „20px“. |
+<br>
 
 ## <a name="html-support"></a>HTML-Unterstützung
+
+Wenn die Formatierung aktiviert ist, wird der folgende Inhalt im plastischen Reader als HTML gerendert.
 
 | HTML | Unterstützter Inhalt |
 | --------- | ----------- |
@@ -241,6 +529,8 @@ Verwenden Sie die folgenden Attribute, um das Aussehen und Verhalten der Schaltf
 | Sortierte Listen | Decimal, Upper-Alpha, Lower-Alpha, Upper-Roman, Lower-Roman |
 
 Nicht unterstützte Tags werden vergleichbar gerendert. Bilder und Tabellen werden derzeit nicht unterstützt.
+
+<br>
 
 ## <a name="browser-support"></a>Browserunterstützung
 
@@ -251,6 +541,8 @@ Verwenden Sie die neuesten Versionen der folgenden Browser, um mit dem Plastisch
 * Google Chrome
 * Mozilla Firefox
 * Apple Safari
+
+<br>
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,6 +1,6 @@
 ---
-title: Erstellen einer App für die ständige Überwachung von Patienten mit Azure IoT Central | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie mit Azure IoT Central-Anwendungsvorlagen eine Anwendung für die ständige Überwachung von Patienten erstellen.
+title: 'Tutorial: Erstellen einer App für die ständige Überwachung von Patienten mit Azure IoT Central | Microsoft-Dokumentation'
+description: In diesem Tutorial erfahren Sie, wie Sie mit Azure IoT Central-Anwendungsvorlagen eine Anwendung für die ständige Überwachung von Patienten erstellen.
 author: philmea
 ms.author: philmea
 ms.date: 09/24/2019
@@ -8,18 +8,16 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 704c56745ad89e9ed2f79e8a863f1d0bc9845bf9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1967a2fb5adebe01ef4bff8d58f7832bffe95762
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001824"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531269"
 ---
 # <a name="tutorial-deploy-and-walkthrough-a-continuous-patient-monitoring-app-template"></a>Tutorial: Bereitstellen einer App für die ständige Überwachung von Patienten und exemplarische Vorgehensweise für die zugehörige Vorlage
 
-
-
-In diesem Tutorial wird für Sie als Lösungsentwickler veranschaulicht, wie Sie in dieses Thema einsteigen können, indem Sie eine IoT Central-Vorlage für eine Anwendung für die ständige Überwachung von Patienten bereitstellen. Sie erfahren, wie Sie die Vorlage bereitstellen, was im Lieferumfang enthalten ist und welche nächsten Schritte Sie ausführen können.
+In diesem Tutorial wird für Sie als Lösungsentwickler veranschaulicht, wie Sie in dieses Thema einsteigen können, indem Sie eine IoT Central-Vorlage für eine Anwendung für die ständige Überwachung von Patienten bereitstellen. Sie erfahren, wie Sie die Vorlage bereitstellen und verwenden.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -29,12 +27,11 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="create-an-application-template"></a>Erstellen einer Anwendungsvorlage
 
-Navigieren Sie zur [Anwendungs-Manager-Website von Azure IoT Central](https://apps.azureiotcentral.com/). Wählen Sie in der linken Navigationsleiste **Erstellen** aus, und klicken Sie dann auf die Registerkarte **Gesundheitswesen**. 
+Navigieren Sie zur [Anwendungs-Manager-Website von Azure IoT Central](https://apps.azureiotcentral.com/). Wählen Sie auf der linken Navigationsleiste **Erstellen** und anschließend die Registerkarte **Gesundheitswesen** aus.
 
->[!div class="mx-imgBorder"] 
->![Anwendungs-Manager: Gesundheitswesen](media/app-manager-health.png)
+:::image type="content" source="media/app-manager-health.png" alt-text="App-Vorlage für das Gesundheitswesen":::
 
-Klicken Sie auf die Schaltfläche **App erstellen**, um mit der Erstellung Ihrer Anwendung zu beginnen, und melden Sie sich dann mit einem persönlichen Microsoft-Konto oder einem Geschäfts-, Schul- oder Unikonto an. Sie gelangen zur Seite **Neue Anwendung**.
+Wählen Sie die Schaltfläche **App erstellen** aus, um mit der Erstellung Ihrer Anwendung zu beginnen, und melden Sie sich dann mit einem persönlichen Microsoft-Konto oder mit einem Geschäfts-, Schul- oder Unikonto an. Sie gelangen zur Seite **Neue Anwendung**.
 
 ![Erstellen einer Anwendung: Gesundheitswesen](media/app-manager-health-create.png)
 
@@ -52,7 +49,7 @@ Erstellung Sie Ihre Anwendung wie folgt:
 
 ### <a name="dashboards"></a>Dashboards
 
-Nach der Bereitstellung der App-Vorlage gelangen Sie zunächst zum **Lamna-Dashboard für die Überwachung interner Patienten**. Lamna Healthcare ist ein fiktives Krankenhaus mit zwei Einrichtungen: Woodgrove Hospital und Burkville Hospital. Dieses Bedienerdashboard für Woodgrove Hospital enthält Informationen und Telemetriedaten zu den Geräten dieser Vorlage sowie die verfügbaren Befehle, Aufträge und Aktionen. Über das Dashboard können Sie Folgendes durchführen:
+Nach der Bereitstellung der App-Vorlage gelangen Sie zunächst zum **Lamna-Dashboard für die Überwachung interner Patienten**. Lamna Healthcare ist ein fiktives Krankenhaus mit zwei Einrichtungen: Woodgrove Hospital und Burkville Hospital. Das Operatordashboard für Woodgrove Hospital bietet folgende Möglichkeiten:
 
 * Zeigen Sie Gerätetelemetriedaten und -eigenschaften an, z. B. den **Akkustand** oder den **Konnektivitätsstatus** Ihres Geräts.
 
@@ -64,75 +61,69 @@ Nach der Bereitstellung der App-Vorlage gelangen Sie zunächst zum **Lamna-Dashb
 
 * Ändern Sie den **Patientenstatus** Ihres Geräts, um anzugeben, ob das Gerät für einen internen oder externen Patienten verwendet wird.
 
->[!div class="mx-imgBorder"] 
->![Lamna: Interne Patienten](media/lamna-in-patient.png)
+:::image type="content" source="media/lamna-in-patient.png" alt-text="App-Vorlage für das Gesundheitswesen":::
 
-Sie können auch auf **Go to remote patient dashboard** (Zu Dashboard für externe Patienten wechseln) klicken, um das zweite Bedienerdashboard anzuzeigen, das für das Burkville Hospital genutzt wird. Dieses Dashboard enthält ähnliche Aktionen, Telemetriedaten und Informationen. Darüber hinaus sehen Sie, dass mehrere Geräte verwendet werden und dass Sie jeweils die **Firmware aktualisieren** können.
+Sie können auch **Go to remote patient dashboard** (Zu Dashboard für externe Patienten wechseln) auswählen, um das zweite Operatordashboard für Burkville Hospital anzuzeigen. Dieses Dashboard enthält ähnliche Aktionen, Telemetriedaten und Informationen. Darüber hinaus werden mehrere verwendete Geräte angezeigt, für die Sie jeweils die **Firmware aktualisieren** können.
 
->[!div class="mx-imgBorder"] 
->![Lamna: Externe Patienten](media/lamna-remote.png)
-
-In beiden Dashboards können Sie jeweils auf diese Dokumentation zugreifen.
+:::image type="content" source="media/lamna-remote.png" alt-text="App-Vorlage für das Gesundheitswesen":::
 
 ### <a name="device-templates"></a>Gerätevorlagen
 
-Wenn Sie auf die Registerkarte **Gerätevorlagen** klicken, werden für die Vorlage zwei unterschiedliche Gerätetypen angezeigt:
+Wenn Sie **Gerätevorlagen** auswählen, werden die beiden Gerätetypen in der Vorlage angezeigt:
 
-* **Smart Vitals Patch**: Bei diesem Gerät handelt es sich um ein Patchgerät, mit dem verschiedene lebenswichtige Werte gemessen werden. Es kann für die Überwachung von Patienten innerhalb und außerhalb des Krankenhauses verwendet werden. Wenn Sie auf die Vorlage klicken, sehen Sie Folgendes: Zusätzlich zum Senden von Gerätedaten, z. B. Akkustand und Gerätetemperatur, sendet das Patchgerät auch Daten zum Gesundheitszustand des Patienten, z. B. Atemfrequenz und Blutdruck.
+* **Smart Vitals Patch**: Bei diesem Gerät handelt es sich um ein Pflaster zur Messung verschiedener Vitalwerte. Es kann für die Überwachung von Patienten innerhalb und außerhalb des Krankenhauses verwendet werden. Wenn Sie die Vorlage auswählen, sehen Sie, dass das Pflaster Gerätedaten wie Akkustand und Gerätetemperatur sowie Daten zum Gesundheitszustand des Patienten wie Atemfrequenz und Blutdruck sendet.
 
-* **Smart Knee Brace**: Bei diesem Gerät handelt es sich um eine Stützmanschette für das Knie, die für Patienten mit einem neuen Kniegelenk genutzt werden kann. Wenn Sie auf diese Vorlage klicken, werden zusätzlich zu den Gerätedaten Funktionen wie Bewegungsbereich und Beschleunigung angezeigt.
+* **Smart Knee Brace**: Bei diesem Gerät handelt es sich um eine Stützmanschette für das Knie, die von Patienten mit einem neuen Kniegelenk verwendet wird. Wenn Sie auf diese Vorlage klicken, werden Funktionen wie Gerätedaten, Bewegungsumfang und Beschleunigung angezeigt.
 
->[!div class="mx-imgBorder"] 
->![Gerätevorlage „Smart Vitals Patch“](media/smart-vitals-device-template.png)
+:::image type="content" source="media/smart-vitals-device-template.png" alt-text="App-Vorlage für das Gesundheitswesen":::
 
-### <a name="device-groups"></a>Gerätegruppen 
-Mithilfe von Gerätegruppen können Sie mehrere Geräte logisch gruppieren und anschließend Massenabfragen oder -vorgänge dafür ausführen. 
+### <a name="device-groups"></a>Gerätegruppen
 
-Wenn Sie auf die Registerkarte „Gerätegruppen“ klicken, sehen Sie, dass für die einzelnen Gerätevorlagen einige Standardgerätegruppen in der Anwendung erstellt wurden. Sie werden feststellen, dass darüber hinaus zwei zusätzliche Beispielgerätegruppen erstellt wurden: eine für bereitzustellende Geräte (Provision devices) und eine für Geräte mit veralteter Firmware (Devices with outdated firmware). Diese Beispielgerätegruppen werden als Eingaben für die Ausführung einiger [Aufträge](#jobs) verwendet.
+Verwenden Sie Gerätegruppen, um mehrere Geräte logisch zu gruppieren und anschließend Massenabfragen oder -vorgänge für sie ausführen zu können.
+
+Wenn Sie die Registerkarte „Gerätegruppen“ auswählen, wird für jede Gerätevorlage in der Anwendung eine Standardgerätegruppe angezeigt. Es wurden auch zwei zusätzliche Beispielgerätegruppen erstellt: eine für bereitzustellende Geräte (**Provision devices**) und eine für Geräte mit veralteter Firmware (**Devices with outdated firmware**). Diese Beispielgerätegruppen können als Eingaben für die Ausführung einiger [Aufträge](#jobs) in der Anwendung verwendet werden.
 
 ### <a name="rules"></a>Regeln
 
-Wenn Sie zur Registerkarte „Regeln“ wechseln, werden in der Anwendungsvorlage drei Regeln angezeigt:
+Wenn Sie **Regeln** auswählen, werden die drei Regeln in der Vorlage angezeigt:
 
-* **Brace temperature high** (Hohe Manschettentemperatur): Diese Regel wird ausgelöst, wenn die Gerätetemperatur des Smart Knee Brace-Geräts fünf Minuten lang über 95 &deg;F (35 °C) liegt. Sie können diese Regel verwenden, um den Patienten und das Pflegeteam zu informieren und das Gerät per Remotesteuerung herunterzukühlen.
+* **Brace temperature high** (Hohe Manschettentemperatur): Diese Regel wird ausgelöst, wenn die Gerätetemperatur der intelligenten Kniemanschette fünf Minuten lang über 95 &deg;F (35 °C) liegt. Verwenden Sie diese Regel, um den Patienten und das Pflegeteam zu informieren und das Gerät per Remotesteuerung herunterzukühlen.
 
-* **Fall detected** (Sturz erkannt): Diese Regel wird ausgelöst, wenn ein Sturz des Patienten erkannt wird. Sie können diese Regel verwenden, um eine Aktion zum Alarmieren eines Teams zu konfigurieren, das dem gestürzten Patienten zur Hilfe eilt.
+* **Fall detected** (Sturz erkannt): Diese Regel wird ausgelöst, wenn ein Sturz des Patienten erkannt wird. Verwenden Sie diese Regel, um eine Aktion zum Alarmieren eines Teams zu konfigurieren, das dem gestürzten Patienten zur Hilfe eilt.
 
-* **Patch battery low** (Niedriger Akkustand des Patchgeräts): Diese Regel wird ausgelöst, wenn der Akkustand des Gerät unter einen Wert von 10 % sinkt. Sie können diese Regel verwenden, um für den Patienten eine Benachrichtigung mit dem Hinweis auszulösen, dass er sein Gerät aufladen sollte.
+* **Patch battery low** (Niedriger Akkustand des Patchgeräts): Diese Regel wird ausgelöst, wenn der Akkustand des Geräts unter zehn Prozent sinkt. Verwenden Sie diese Regel, um für den Patienten eine Benachrichtigung mit dem Hinweis auszulösen, dass er sein Gerät aufladen sollte.
 
->[!div class="mx-imgBorder"] 
->![Regel für hohe Manschettentemperatur](media/brace-temp-rule.png)
+:::image type="content" source="media/brace-temp-rule.png" alt-text="App-Vorlage für das Gesundheitswesen":::
 
 ### <a name="jobs"></a>Aufträge
 
-Aufträge ermöglichen die Ausführung von Massenvorgängen für eine Gruppe von Geräten. Dazu werden als Eingabe [Gerätegruppen](#device-groups) verwendet. Für die Anwendungsvorlage wurde ein Seeding mit zwei Beispielaufträgen durchgeführt, die ein Lösungsoperator ggf. irgendwann im Gerätelebenszyklus ausführen muss:
-* **Update knee brace firmware** (Firmware der Kniemanschette aktualisieren): Dieser Auftrag ermittelt Geräte in der Gerätegruppe „devices with outdated firmware“ und führt einen Befehl zum Aktualisieren dieser Geräte auf die aktuelle Firmwareversion der Kniemanschette aus. Bei diesem Beispielauftrag wird davon ausgegangen, dass die Geräte einen Aktualisierungsbefehl empfangen und die Firmwaredateien direkt aus der Cloud abrufen können.  
+Aufträge ermöglichen die Ausführung von Massenvorgängen für eine Gruppe von Geräten. Dazu werden [Gerätegruppen](#device-groups) als Eingabe verwendet. Die Anwendungsvorlage verfügt über zwei Beispielaufträge, die ein Operator ausführen kann:
 
-* **Re-provision devices** (Geräte erneut bereitstellen): Wenn Sie über mehrere Geräte verfügen, die vor kurzem an das Krankenhaus zurückgegeben wurden und erneut für die nächsten Patienten bereitgestellt werden müssen, können Sie diesen Auftrag ausführen, um eine Massenaktualisierung der Bereitstellungsgeräte auszuführen. In diesem Fall wird für alle Geräte aus der Gerätegruppe „provision devices“ ein Befehl zur erneuten Bereitstellung ausgeführt. 
+* **Update knee brace firmware** (Firmware der Kniemanschette aktualisieren): Dieser Auftrag ermittelt Geräte in der Gerätegruppe **Devices with outdated firmware** (Geräte mit veralteter Firmware) und führt einen Befehl aus, um diese Geräte auf die neueste Firmwareversion zu aktualisieren. Bei diesem Beispielauftrag wird davon ausgegangen, dass die Geräte einen **Aktualisierungsbefehl** verarbeiten und die Firmwaredateien anschließend aus der Cloud abrufen können.  
+
+* **Re-provision devices** (Geräte erneut bereitstellen): Sie verfügen über eine Reihe von Geräten, die kürzlich an das Krankenhaus zurückgegeben wurden. Dieser Auftrag ermittelt Geräte in der Gerätegruppe **Provision Devices** (Geräte bereitstellen) und führt einen Befehl aus, um sie für die nächsten Patienten bereitzustellen.
 
 ### <a name="devices"></a>Geräte
 
-Klicken Sie auf die Registerkarte **Geräte**, und wählen Sie anschließend eine Instanz von **Smart Knee Brace** aus. Es sind drei Ansichten verfügbar, in denen Sie Informationen zum jeweils ausgewählten Gerät untersuchen können. Diese Ansichten werden erstellt und veröffentlicht, wenn Sie die Gerätevorlage für Ihr Gerät erstellen. Dies bedeutet, dass sie auf allen Geräten, die Sie verbinden oder simulieren, einheitlich sind.
+Wählen Sie die Registerkarte **Geräte** und anschließend eine Instanz von **Smart Knee Brace** aus. Es sind drei Ansichten verfügbar, in denen Sie sich Informationen zum jeweils ausgewählten Gerät ansehen können. Diese Ansichten werden erstellt und veröffentlicht, wenn Sie die Gerätevorlage für Ihr Gerät erstellen. Daher sind diese Ansichten für alle Geräte, die Sie verbinden oder simulieren, einheitlich.
 
-Die Ansicht **Dashboard** enthält eine Übersicht über die Telemetriedaten und Eigenschaften vom Gerät, die für den Bediener bestimmt sind.
+Die Ansicht **Dashboard** bietet eine Übersicht über für Operatoren relevante Telemetriedaten und Eigenschaften des Geräts.
 
-Auf der Registerkarte **Properties** (Eigenschaften) können Sie Cloudeigenschaften bearbeiten und Geräteeigenschaften lesen/schreiben.
+Auf der Registerkarte **Eigenschaften** können Sie Cloudeigenschaften bearbeiten und Geräteeigenschaften lesen/schreiben.
 
-Auf der Registerkarte **Commands** (Befehle) können Sie Befehle ausführen, die im Rahmen Ihrer Gerätevorlage modelliert wurden.
+Auf der Registerkarte **Befehle** können Sie Befehle auf dem Gerät ausführen.
 
->[!div class="mx-imgBorder"] 
->![Ansichten für Kniemanschette](media/knee-brace-dashboard.png)
+:::image type="content" source="media/knee-brace-dashboard.png" alt-text="App-Vorlage für das Gesundheitswesen":::
 
 ### <a name="data-export"></a>Datenexport
 
-Mit dem Datenexport können Sie Ihre IoT Central-Gerätedaten fortlaufend in andere Azure-Dienste exportieren, einschließlich in [Azure API for FHIR](concept-continuous-patient-monitoring-architecture.md#export-to-azure-api-for-fhir).
+Mit dem Datenexport können Sie Ihre Gerätedaten fortlaufend in andere Azure-Dienste exportieren – einschließlich in [Azure API for FHIR](concept-continuous-patient-monitoring-architecture.md#export-to-azure-api-for-fhir).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Wenn Sie diese Anwendung nicht mehr verwenden möchten, sollten Sie sie löschen, indem Sie unter **Verwaltung > Anwendungseinstellungen** auf **Löschen** klicken.
 
->[!div class="mx-imgBorder"] 
->![Löschen einer App](media/admin-delete.png)
+:::image type="content" source="media/admin-delete.png" alt-text="App-Vorlage für das Gesundheitswesen":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

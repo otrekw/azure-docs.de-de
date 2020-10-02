@@ -3,12 +3,12 @@ title: Korrigieren nicht konformer Ressourcen
 description: Dieser Leitfaden führt Sie schrittweise durch den Korrekturprozess von Ressourcen, die mit Richtlinien in Azure Policy nicht konform sind.
 ms.date: 08/27/2020
 ms.topic: how-to
-ms.openlocfilehash: 1274b049d7ce19601968697b22da38f0eb2cb5ff
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 52d8ef6dd66c52edd574b2ccfa51da16623a1afb
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958744"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651350"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Korrigieren nicht konformer Ressourcen mit Azure Policy
 
@@ -19,7 +19,7 @@ Ressourcen, die mit der Richtlinie **deployIfNotExists** oder **modify** nicht k
 Wenn Azure Policy die Vorlage in der Richtliniendefinition **deployIfNotExists** ausführt, wird hierfür eine [Verwaltete Identität](../../../active-directory/managed-identities-azure-resources/overview.md) verwendet.
 Azure Policy erstellt für jede Ihrer Zuweisungen eine verwaltete Identität, muss jedoch wissen, welchen Rollen die verwaltete Identität gewährt werden soll. Wenn der der verwalteten Identität Rollen fehlen, wird dieser Fehler während der Zuweisung der Richtlinie oder in einer Initiative angezeigt. Bei Verwendung des Portals gewährt Azure Policy der verwalteten Identität automatisch die aufgelisteten Rollen, sobald die Zuweisung ausgelöst wurde. Der _Speicherort_ der verwalteten Identität hat keinen Einfluss auf die Funktionsweise mit Azure Policy.
 
-:::image type="content" source="../media/remediate-resources/missing-role.png" alt-text="Verwaltete Identität – fehlende Rolle" border="false":::
+:::image type="content" source="../media/remediate-resources/missing-role.png" alt-text="Screenshot einer deployIfNotExists-Richtlinie, der eine definierte Berechtigung für die verwaltete Identität fehlt." border="false":::
 
 > [!IMPORTANT]
 > Wenn eine Ressource durch **deployIfNotExists** oder **modify** geänderte Ressource außerhalb des Bereichs der Richtlinienzuweisung liegt oder die Vorlage auf Eigenschaften in Ressourcen außerhalb des Bereichs der Richtlinienzuweisung zugreift, muss der verwalteten Identität der Zuweisung [manuell Zugriff gewährt werden](#manually-configure-the-managed-identity). Andernfalls schlägt die Bereitstellung der Wiederherstellung fehl.
@@ -90,15 +90,15 @@ if ($roleDefinitionIds.Count -gt 0)
 
 ### <a name="grant-defined-roles-through-portal"></a>Zuweisen definierter Rollen über das Portal
 
-Es gibt zwei Möglichkeiten, der verwalteten Identität einer Zuweisung die definierten Rollen über das Portal zuzuweisen: über die **Zugriffssteuerung (IAM)** oder durch Bearbeiten der Richtlinie oder Initiativenzuweisung und klicken auf **Speichern**.
+Es gibt zwei Möglichkeiten, der verwalteten Identität einer Zuweisung die definierten Rollen über das Portal zuzuweisen: Durch die Verwendung der **Zugriffssteuerung (IAM)** oder durch die Bearbeitung der Richtlinie oder der Initiativzuweisung und dem anschließenden Auswählen von **Speichern**.
 
 Führen Sie die folgenden Schritte aus, um eine Rolle zu der verwalteten Identität der Zuweisung hinzuzufügen:
 
-1. Starten Sie den Azure Policy-Dienst über das Azure-Portal, indem Sie auf **Alle Dienste** klicken und dann nach **Richtlinie** suchen und die entsprechende Option auswählen.
+1. Starten Sie den Azure Policy-Dienst über das Azure-Portal, indem Sie die Option **Alle Dienste** auswählen und dann nach **Policy** suchen und die entsprechende Option auswählen.
 
 1. Wählen Sie links auf der Seite „Azure Policy“ die Option **Zuweisungen**.
 
-1. Suchen Sie die Zuweisung, die über eine verwaltete Identität verfügt, und klicken Sie auf den Namen.
+1. Suchen Sie die Zuweisung, die über eine verwaltete Identität verfügt, und wählen Sie den Namen aus.
 
 1. Suchen Sie auf der Bearbeitungsseite nach der Eigenschaft **Zuweisungs-ID**. Die Zuweisungs-ID sieht wie folgt aus:
 
@@ -110,10 +110,10 @@ Führen Sie die folgenden Schritte aus, um eine Rolle zu der verwalteten Identit
 
 1. Navigieren Sie zu der Ressource des übergeordneten Containers der Ressource (Ressourcengruppe, Abonnement, Verwaltungsgruppe). Dort muss die Rollendefinition manuell hinzugefügt werden.
 
-1. Klicken Sie auf der Seite „Ressourcen“ auf den Link **Zugriffssteuerung (IAM)** und anschließend oben auf der Seite „Zugriffssteuerung“ auf **+ Rollenzuweisung hinzufügen**.
+1. Wählen Sie auf der Seite „Ressourcen“ den Link **Zugriffssteuerung (IAM)** und anschließend oben auf der Seite „Zugriffssteuerung“ die Option **+ Rollenzuweisung hinzufügen** aus.
 
 1. Wählen Sie die entsprechende Rolle, die **roleDefinitionIds** aus der Richtliniendefinition entspricht.
-   Lassen Sie für **Zugriff zuweisen zu** den Standardwert „Azure AD-Benutzer, -Gruppe oder -Anwendung“ festgelegt. Fügen Sie im Feld **Auswählen** den zuvor lokalisierten Teil der Ressourcen-ID der Zuweisung ein oder geben Sie diesen ein. Klicken Sie nach Abschluss der Suche auf das Objekt mit dem gleichen Namen, um die ID auszuwählen, und anschließend auf **Speichern**.
+   Lassen Sie für **Zugriff zuweisen zu** den Standardwert „Azure AD-Benutzer, -Gruppe oder -Anwendung“ festgelegt. Fügen Sie im Feld **Auswählen** den zuvor lokalisierten Teil der Ressourcen-ID der Zuweisung ein oder geben Sie diesen ein. Wählen Sie nach Abschluss der Suche das Objekt mit dem gleichen Namen aus, um die ID auszuwählen, und anschließend wählen Sie **Speichern** aus.
 
 ## <a name="create-a-remediation-task"></a>Erstellen eines Wartungstask
 
@@ -123,32 +123,32 @@ Während der Auswertung wird durch die Richtlinienzuweisung mit den Effekten **d
 
 Führen Sie die folgenden Schritte aus, um einen **Wartungstask** zu erstellen:
 
-1. Starten Sie den Azure Policy-Dienst über das Azure-Portal, indem Sie auf **Alle Dienste** klicken und dann nach **Richtlinie** suchen und die entsprechende Option auswählen.
+1. Starten Sie den Azure Policy-Dienst über das Azure-Portal, indem Sie die Option **Alle Dienste** auswählen und dann nach **Policy** suchen und die entsprechende Option auswählen.
 
-   :::image type="content" source="../media/remediate-resources/search-policy.png" alt-text="Suchen nach „Policy“ unter „Alle Dienste“" border="false":::
+   :::image type="content" source="../media/remediate-resources/search-policy.png" alt-text="Screenshot einer deployIfNotExists-Richtlinie, der eine definierte Berechtigung für die verwaltete Identität fehlt." border="false":::
 
 1. Wählen Sie links auf der Seite „Azure Policy“ die Option **Wartung** aus.
 
-   :::image type="content" source="../media/remediate-resources/select-remediation.png" alt-text="Auswählen von „Wartung“ auf der Seite „Richtlinie“" border="false":::
+   :::image type="content" source="../media/remediate-resources/select-remediation.png" alt-text="Screenshot einer deployIfNotExists-Richtlinie, der eine definierte Berechtigung für die verwaltete Identität fehlt." border="false":::
 
-1. Auf der Registerkarte **Policies to remediate** (Zu wartende Richtlinien) und in der Datentabelle sind sämtliche **deployIfNotExists**- und **modify**-Richtlinienzuweisungen mit nicht konformen Ressourcen enthalten. Klicken Sie auf eine Richtlinie mit Ressourcen, die nicht konform sind. Die Seite **Neuer Wiederherstellungstask** wird geöffnet.
+1. Auf der Registerkarte **Policies to remediate** (Zu wartende Richtlinien) und in der Datentabelle sind sämtliche **deployIfNotExists**- und **modify**-Richtlinienzuweisungen mit nicht konformen Ressourcen enthalten. Wählen Sie eine Richtlinie mit Ressourcen aus, die nicht konform sind. Die Seite **Neuer Wiederherstellungstask** wird geöffnet.
 
    > [!NOTE]
-   > Eine alternative Möglichkeit zum Öffnen der Seite **Wiederherstellungstask** besteht darin, über die Seite **Konformität** nach der Richtlinie zu suchen, darauf zu klicken und anschließend auf die Schaltfläche **Wartungstask erstellen** zu klicken.
+   > Eine alternative Möglichkeit zum Öffnen der Seite **Wiederherstellungstask** besteht darin, über die Seite **Konformität** nach der Richtlinie zu suchen, diese und anschließend die Schaltfläche **Wartungstask erstellen** auszuwählen.
 
 1. Filtern Sie auf der Seite **Neuer Wartungstask** die zu korrigierenden Ressourcen, indem Sie die über die Auslassungspunkte bei **Bereich** untergeordnete Ressourcen auswählen, von denen aus die Richtlinie zugewiesen wurde (bis hin zu den einzelnen Ressourcenobjekten). Darüber hinaus können Sie die Ressourcen über das Dropdownfeld **Standorte** weiter filtern. Nur in der Tabelle aufgeführte Ressourcen werden gewartet.
 
-   :::image type="content" source="../media/remediate-resources/select-resources.png" alt-text="Wartung – auswählen, welche Ressourcen gewartet werden sollen" border="false":::
+   :::image type="content" source="../media/remediate-resources/select-resources.png" alt-text="Screenshot einer deployIfNotExists-Richtlinie, der eine definierte Berechtigung für die verwaltete Identität fehlt." border="false":::
 
-1. Sobald die Ressourcen gefiltert wurden, können Sie den Wartungstask auslösen, indem Sie auf **Korrigieren** klicken. Auf der Registerkarte **Wartungstasks** wird die Seite zur Richtlinienkonformität geöffnet, auf der der Fortschritt der Tasks angezeigt wird. Durch dem Wartungstask erstellte Bereitstellungen beginnen sofort.
+1. Sobald die Ressourcen gefiltert wurden, können Sie den Wartungstask auslösen, indem Sie **Korrigieren** auswählen. Auf der Registerkarte **Wartungstasks** wird die Seite zur Richtlinienkonformität geöffnet, auf der der Fortschritt der Tasks angezeigt wird. Durch dem Wartungstask erstellte Bereitstellungen beginnen sofort.
 
-   :::image type="content" source="../media/remediate-resources/task-progress.png" alt-text="Wartung – Status der Wartungsaufgaben" border="false":::
+   :::image type="content" source="../media/remediate-resources/task-progress.png" alt-text="Screenshot einer deployIfNotExists-Richtlinie, der eine definierte Berechtigung für die verwaltete Identität fehlt." border="false":::
 
-1. Klicken Sie auf der Seite „Richtlinienkonformität“ auf **Wartungstask**, um Einzelheiten zum Fortschritt abzurufen. Die für den Task verwendete Filterung wird zusammen mit einer Liste der Ressourcen angezeigt, die gerade korrigiert werden.
+1. Wählen Sie auf der Seite „Richtlinienkonformität“ die Option **Wartungstask** aus, um Einzelheiten zum Fortschritt abzurufen. Die für den Task verwendete Filterung wird zusammen mit einer Liste der Ressourcen angezeigt, die gerade korrigiert werden.
 
-1. Klicken Sie auf der Seite **Wartungstasks** mit der rechten Maustaste auf eine Ressource, um die Bereitstellung des Wartungstasks oder die Ressource anzuzeigen. Klicken Sie am Ende der Zeile auf **Verknüpfte Ereignisse**, um Einzelheiten wie z.B. eine Fehlermeldung anzuzeigen.
+1. Klicken Sie auf der Seite **Wartungstasks** mit der rechten Maustaste auf eine Ressource, um die Bereitstellung des Wartungstasks oder die Ressource anzuzeigen. Wählen Sie am Ende der Zeile **Verknüpfte Ereignisse** aus, um Einzelheiten anzuzeigen, z. B. eine Fehlermeldung.
 
-   :::image type="content" source="../media/remediate-resources/resource-task-context-menu.png" alt-text="Wartung – Kontextmenü des Tasks der Ressource" border="false":::
+   :::image type="content" source="../media/remediate-resources/resource-task-context-menu.png" alt-text="Screenshot einer deployIfNotExists-Richtlinie, der eine definierte Berechtigung für die verwaltete Identität fehlt." border="false":::
 
 Ressourcen, die über einen **Wartungstask** bereitgestellt werden, werden auf der Seite „Richtlinienkonformität“ zur Registerkarte **Bereitgestellte Ressourcen** hinzugefügt.
 

@@ -6,12 +6,12 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 3/10/2020
-ms.openlocfilehash: 647ab275fb7f34ee9721e4f085df0d22048fc04d
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 85925369da8fec83a613226fe248b396fd88105a
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044242"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613417"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>Verwenden von verwalteten Identitäten zum Authentifizieren von Azure Stream Analytics-Aufträgen in Power BI
 
@@ -155,7 +155,7 @@ Mit Azure Resource Manager können Sie die Bereitstellung Ihres Stream Analytics
 
 ## <a name="give-the-stream-analytics-job-access-to-your-power-bi-workspace"></a>Erteilen des Zugriffs auf Ihren Power BI-Arbeitsbereich für den Stream Analytics-Auftrag
 
-Nachdem der Stream Analytics Auftrag nun erstellt wurde, kann ihm Zugriff auf einen Power BI-Arbeitsbereich gewährt werden.
+Nachdem der Stream Analytics Auftrag nun erstellt wurde, kann ihm Zugriff auf einen Power BI-Arbeitsbereich gewährt werden. Sobald Sie Ihrem Auftrag Zugriff gewährt haben, lassen Sie der Identität einige Minuten Zeit, um sich zu verteilen.
 
 ### <a name="use-the-power-bi-ui"></a>Verwenden der Power BI-Benutzeroberfläche
 
@@ -223,5 +223,5 @@ Im Folgenden finden Sie Einschränkungen für dieses Feature:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Integration eines Power BI-Dashboards mit Azure Stream Analytics](./stream-analytics-power-bi-dashboard.md)
+* [Integration eines Power BI-Dashboards mit Azure Stream Analytics](./stream-analytics-power-bi-dashboard.md)
 * [Grundlegendes zu den Ausgaben von Azure Stream Analytics](./stream-analytics-define-outputs.md)

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 8a86c1df5925097fa85d09590b59f8f30fde41d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aed0c83bfa61f6afdbdcca3c10dbd5fac3f823d3
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85296320"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458177"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Nutzen der Parallelisierung von Abfragen in Azure Stream Analytics
 Dieser Artikel veranschaulicht das Nutzen der Parallelisierung in Azure Stream Analytics. Erfahren Sie, wie Sie Stream Analytics-Aufträge durch Konfigurieren der Eingabe in Partitionen und Optimieren der Analysenabfragedefinition skalieren.
@@ -41,7 +41,7 @@ Bei der Arbeit mit Stream Analytics können Sie Partitionierung in den Ausgaben 
 -   Event Hubs (Partitionsschlüssel muss explizit festgelegt werden)
 -   IoT Hub (Partitionsschlüssel muss explizit festgelegt werden)
 -   Service Bus
-- SQL und SQL Data Warehouse mit optionaler Partitionierung: Weitere Informationen finden Sie auf der Seite [Ausgabe an Azure SQL-Datenbank](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-sql-output-perf).
+- SQL und Azure Synapse Analytics mit optionaler Partitionierung: Weitere Informationen finden Sie auf der Seite [Ausgabe an Azure SQL-Datenbank](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-sql-output-perf).
 
 Power BI unterstützt keine Partitionierung. Sie können die Eingabe aber dennoch partitionieren, wie in [diesem Abschnitt](#multi-step-query-with-different-partition-by-values) beschrieben. 
 

@@ -38,7 +38,7 @@ Um die Kosten für die Sicherung von Azure-VMs oder lokalen Servern mit Azure Ba
 - Anzahl der Server dieser Größe
 
 - Wie ist die erwartete Datenänderungsrate auf diesen Servern?<br>
-  Churn refers to the amount of change in data. Wenn Sie z. B. eine VM mit 200 GB zu sichernden Daten haben, von denen sich 10 GB täglich ändern, beträgt die tägliche Änderungsrate 5 %.
+  Die Änderungsrate bezeichnet den Umfang der Datenänderung. Wenn Sie z. B. eine VM mit 200 GB zu sichernden Daten haben, von denen sich 10 GB täglich ändern, beträgt die tägliche Änderungsrate 5 %.
 
   - Eine höhere Änderungsrate bedeutet, dass Sie mehr Daten sichern.
 

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: 63e83e69e5e09c17b2a2ddb5ca7bee6474e2fddd
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 02efaf3f0382a7af63717e777036637de2bbec25
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386672"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033199"
 ---
 # <a name="ingest-data-into-a-sql-pool"></a>Erfassen von Daten in einem SQL-Pool
 
@@ -28,28 +28,28 @@ In diesem Artikel erfahren Sie, wie Daten aus einem Azure Data Lake Gen 2-Speic
 
 ## <a name="create-linked-services"></a>Erstellen von verknüpften Diensten
 
-In Azure Synapse Analytics definieren Sie in einem verknüpften Dienst Ihre Verbindungsinformationen für andere Dienste. In diesem Abschnitt fügen Sie Azure Synapse Analytics und Azure Data Lake Storage Gen2 als verknüpfte Dienste hinzu.
+In Azure Synapse Analytics definieren Sie in einem verknüpften Dienst Ihre Verbindungsinformationen für andere Dienste. In diesem Abschnitt fügen Sie Azure Synapse Analytics und Azure Data Lake Storage Gen 2 als verknüpfte Dienste hinzu.
 
 1. Öffnen Sie die Benutzeroberfläche für Azure Synapse Analytics, und wechseln Sie zur Registerkarte **Verwalten**.
 1. Wählen Sie unter **Externe Verbindungen** die Option **Verknüpfte Dienste** aus.
-1. Wenn Sie einen verknüpften Dienst hinzufügen möchten, klicken Sie auf **Neu**.
-1. Wählen Sie in der Liste die Kachel „Azure Data Lake Storage Gen2“ aus, und klicken Sie auf **Weiter**.
-1. Geben Sie Ihre Anmeldeinformationen für die Authentifizierung ein. Derzeit werden die Authentifizierungstypen „Kontoschlüssel“, „Dienstprinzipal“ und „Verwaltete Identität“ unterstützt. Klicken Sie auf „Verbindung testen“, um die Richtigkeit Ihrer Anmeldeinformationen zu überprüfen. Klicken Sie auf **Erstellen**, nachdem der Vorgang abgeschlossen wurde.
+1. Klicken Sie auf **Neu**, um einen verknüpften Dienst hinzuzufügen.
+1. Wählen Sie in der Liste die Kachel „Azure Data Lake Storage Gen2“ und dann **Weiter** aus.
+1. Geben Sie Ihre Anmeldeinformationen für die Authentifizierung ein. Derzeit werden die Authentifizierungstypen „Kontoschlüssel“, „Dienstprinzipal“ und „Verwaltete Identität“ unterstützt. Klicken Sie auf „Verbindung testen“, um Ihre Anmeldeinformationen zu überprüfen. Wenn Sie fertig sind, klicken Sie auf **Erstellen**.
 1. Wiederholen Sie die Schritte 3–5, doch wählen Sie statt „Azure Data Lake Storage Gen2“ die Kachel „Azure Synapse Analytics“ aus, und geben Sie die entsprechenden Anmeldeinformationen für die Verbindung ein. Bei Azure Synapse Analytics werden derzeit SQL-Authentifizierung, verwaltete Identität und Dienstprinzipal unterstützt.
 
 ## <a name="create-pipeline"></a>Erstellen der Pipeline
 
 Eine Pipeline enthält den logischen Ablauf für die Ausführung einer Aktivitätenmenge. In diesem Abschnitt erstellen Sie eine Pipeline mit einer Kopieraktivität, die Daten aus ADLS Gen2 in einem SQL-Pool erfasst.
 
-1. Wechseln Sie zur Registerkarte **Orchestrieren**. Klicken Sie neben dem Header „Pipelines“ auf das Pluszeichen, und wählen Sie **Pipeline**aus.
+1. Wechseln Sie zur Registerkarte **Orchestrieren**. Klicken Sie neben dem Header „Pipelines“ auf das Pluszeichen und anschließend auf **Pipeline**.
 1. Ziehen Sie im Bereich „Aktivitäten“ unter **Verschieben und transformieren** den Befehl **Daten kopieren** auf die Pipelinecanvas.
-1. Klicken Sie auf die Kopieraktivität, und wechseln Sie zur Registerkarte **Quelle**. Klicken Sie auf **Neu**, um ein neues Quelldataset zu erstellen.
-1. Wählen Sie „Azure Data Lake Storage Gen2“ als Datenspeicher aus, und klicken Sie auf „Weiter“.
+1. Klicken Sie auf die Kopieraktivität, und wechseln Sie zur Registerkarte **Quelle**. Wählen Sie **Neu** aus, um ein neues Quelldataset zu erstellen.
+1. Wählen Sie „Azure Data Lake Storage Gen 2“ als Datenspeicher aus, und klicken Sie auf „Weiter“.
 1. Wählen Sie „DelimitedText“ als Format aus, und klicken Sie auf „Weiter“.
-1. Wählen Sie im Bereich „Eigenschaften festlegen“ den von Ihnen erstellten verknüpften ADLS-Dienst aus. Geben Sie den Dateipfad Ihrer Quelldaten und dann an, ob die erste Zeile einen Header hat. Sie können das Schema aus dem Dateispeicher oder einer Beispieldatei importieren. Klicken Sie auf „OK“, wenn der Vorgang abgeschlossen ist.
+1. Wählen Sie im Bereich „Eigenschaften festlegen“ den von Ihnen erstellten verknüpften ADLS-Dienst aus. Geben Sie den Dateipfad Ihrer Quelldaten und dann an, ob die erste Zeile einen Header hat. Sie können das Schema aus dem Dateispeicher oder einer Beispieldatei importieren. Wählen Sie nach der Fertigstellung OK aus.
 1. Wechseln Sie zur Registerkarte **Senke**. Klicken Sie auf **Neu**, um ein neues Senkendataset zu erstellen.
 1. Wählen Sie „Azure Synapse Analytics“ als Datenspeicher aus, und klicken Sie auf „Weiter“.
-1. Wählen Sie im Bereich „Eigenschaften festlegen“ den von Ihnen erstellten verknüpften Azure Synapse Analytics-Dienst aus. Wenn Sie in eine vorhandene Tabelle schreiben, wählen Sie sie in der Dropdownliste aus. Aktivieren Sie andernfalls **Bearbeiten**, und geben Sie Ihren neuen Tabellennamen ein. Klicken Sie anschließend auf „OK“.
+1. Wählen Sie im Bereich „Eigenschaften festlegen“ den von Ihnen erstellten verknüpften Azure Synapse Analytics-Dienst aus. Wenn Sie in eine vorhandene Tabelle schreiben, wählen Sie sie in der Dropdownliste aus. Aktivieren Sie andernfalls **Bearbeiten**, und geben Sie Ihren neuen Tabellennamen ein. Klicken Sie auf „OK“, wenn Sie fertig sind.
 1. Wenn Sie eine Tabelle erstellen, aktivieren Sie im Feld „Tabellenoption“ die Option **Auto create table** (Tabelle automatisch erstellen).
 
 ## <a name="debug-and-publish-pipeline"></a>Debuggen und Veröffentlichen der Pipeline

@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 3/6/2020
 ms.custom: seodec18
-ms.openlocfilehash: 04d86b0ef8202c1c544524dd2a7331d521245f12
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: deaa52494fce387bde2b105de7d34e8a4f0c5c2f
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043954"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612157"
 ---
 # <a name="test-an-azure-stream-analytics-job-in-the-portal"></a>Testen eines Azure Stream Analytics-Auftrags im Portal
 
@@ -96,6 +96,21 @@ Anstatt Livedaten zu verwenden, können Sie Beispieldaten aus einer lokalen Date
    ![Azure Stream Analytics: ausgewählte Ausgabe](./media/stream-analytics-test-query/asa-sample-test-selected-output.png)
 
 10. Nachdem Sie die im Browser angezeigten Ergebnisse überprüft haben, können Sie den Auftrag **Starten**.
+
+## <a name="limitations"></a>Einschränkungen
+
+1.  Zeitrichtlinien werden bei Portaltests nicht unterstützt:
+
+   * Falsche Reihenfolge: alle eingehenden Ereignisse werden sortiert.
+   * Verspätetes Eintreffen: Es wird kein verspätetes Eintreffen geben, da Stream Analytics nur vorhandene Daten für Tests verwenden kann.
+   
+2.  C#-UDF wird nicht unterstützt.
+
+3.  Alle Tests werden mit einem Auftrag ausgeführt, der über eine Streamingeinheit verfügt.
+
+4.  Der Timeoutwert beträgt eine Minute. Somit kann jede Abfrage mit einer Fenstergröße von mehr als einer Minute keine Daten erhalten.
+
+5.  Maschinelles Lernen wird nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Erstellen einer IoT-Lösung mithilfe von Stream Analytics:](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-build-an-iot-solution-using-stream-analytics) In diesem Tutorial wird erläutert, wie Sie eine End-to-End-Lösung mit einem Datengenerator erstellen, die den Datenverkehr an einer Mautstation simuliert.

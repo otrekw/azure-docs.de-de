@@ -1,14 +1,14 @@
 ---
 title: Referenz zum Importieren und Exportieren von Daten – QnA Maker
-description: Informationen zum Verwenden der Typen von URLs zum Importieren und Erstellen von QnA-Paaren
+description: Verwenden Sie diese Import- und Exportreferenz, um die besten Ergebnisse für die Sicherung, Speicherung und den Ersatz Ihrer Wissensdatenbank zu erhalten.
 ms.topic: reference
 ms.date: 01/02/2020
-ms.openlocfilehash: e4a423ef9478cd39181c6440801f9fe954dc896c
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: c77f51263206c3cc0d4b546e1728963211a186c6
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804242"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532153"
 ---
 # <a name="import-and-export-data-reference"></a>Referenz zum Importieren und Exportieren von Daten
 

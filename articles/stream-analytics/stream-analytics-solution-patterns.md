@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: c3d487c1595a077ac8609813a41d15e28ede0e0b
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: b82dd4ea8a74c51606b7a388b8d6ede07b1057c4
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903322"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461543"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Lösungsmuster in Azure Stream Analytics
 
@@ -102,7 +102,7 @@ Die meisten Data Science- und Analyseaktivitäten werden immer noch offline durc
 
 ## <a name="use-reference-data-for-enrichment"></a>Verwenden von Verweisdaten zur Anreicherung
 
-Datenanreicherung ist oft eine Anforderung für ETL-Engines. Azure Stream Analytics unterstützt die Datenanreicherung mit [Verweisdaten](stream-analytics-use-reference-data.md) aus SQL-Datenbank und Azure Blob Storage. Die Datenanreicherung ist sowohl für in Azure Data Lake als auch SQL Data Warehouse landende Daten möglich.
+Datenanreicherung ist oft eine Anforderung für ETL-Engines. Azure Stream Analytics unterstützt die Datenanreicherung mit [Verweisdaten](stream-analytics-use-reference-data.md) aus SQL-Datenbank und Azure Blob Storage. Die Datenanreicherung ist sowohl für in Azure Data Lake als auch Azure Synapse Analytics landende Daten möglich.
 
 
 ![ASA – Offlineanalyse mit Datenanreicherung](media/stream-analytics-solution-patterns/offline-analytics-enriched.png)

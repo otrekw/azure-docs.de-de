@@ -3,12 +3,12 @@ title: Entwerfen von Workflows für Policy-as-Code
 description: Erfahren Sie, wie Sie Workflows entwerfen, um Ihre Azure Policy-Definitionen als Code bereitzustellen und Ressourcen automatisch zu überprüfen.
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: d46680a9978cd4ec5cdc612a709f031841716749
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: bc7a6d72e344868a799638f724b5c225516b5a32
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89047325"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651890"
 ---
 # <a name="design-policy-as-code-workflows"></a>Entwerfen von Workflows für Policy-as-Code
 
@@ -43,7 +43,9 @@ Beispiele für diese Dateiformate sind im [Azure Policy-GitHub-Repository](https
 
 Der empfohlene allgemeine Workflow für Policy-as-Code sieht in etwa wie das folgende Diagramm aus:
 
-:::image type="content" source="../media/policy-as-code/policy-as-code-workflow.png" alt-text="Übersicht über Policy-as-Code" border="false":::
+:::image type="complex" source="../media/policy-as-code/policy-as-code-workflow.png" alt-text="Diagramm, das die Workflowfelder „Richtlinie als Code“ von der Erstellung über das Testen bis hin zur Bereitstellung zeigt." border="false":::
+   Das Diagramm zeigt die Workflowfelder „Richtlinie als Code“ an. „Erstellung“ behandelt das Erstellen der Richtlinien- und Initiativdefinitionen. „Testen“ behandelt die Zuweisung mit aktiviertem Erzwingungsmodus. Nach einer Gatewayprüfung hinsichtlich des Compliancestatus werden den Zuweisungen M S I-Berechtigungen erteilt und Ressourcen bereinigt.  „Bereitstellung“ behandelt das Aktualisieren der Zuweisung mit aktiviertem Erzwingungsmodus.
+:::image-end:::
 
 ### <a name="create-and-update-policy-definitions"></a>Erstellen und Aktualisieren von Richtliniendefinitionen
 
