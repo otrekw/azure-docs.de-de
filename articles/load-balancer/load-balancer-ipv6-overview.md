@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
-ms.openlocfilehash: d2966f32fcf7f8be2a93d1639f0a63f49768c306
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 443e8c09ea46c0c20b557d77d6ed7bd63db00085
+ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80981850"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90058749"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Übersicht über IPv6 für Azure Load Balancer
 
@@ -79,7 +79,7 @@ Einschränkungen
 * Auf den IPv6-Endpunkt auf der VM kann nicht direkt über das Internet zugegriffen werden. Er befindet sich hinter einem Load Balancer. Nur auf die Ports, die in den Load Balancer-Regeln angegeben sind, kann über IPv6 zugegriffen werden.
 * Das Ändern des Parameters IdleTimeout wird für IPv6 **derzeit nicht unterstützt**. Der Standardwert ist vier Minuten.
 * Das Ändern des Parameters loadDistributionMethod wird für IPv6 **derzeit nicht unterstützt**.
-* Reservierte IPv6-IP-Adressen (wobei IPAllocationMethod = static) werden **derzeit nicht unterstützt**.
+* IPv6 für Load Balancer Basic ist auf eine **dynamische** SKU festgelegt.  IPv6 für Load Balancer Standard ist auf eine **statische** SKU festgelegt.
 * NAT64 (Übersetzung von IPv6 in IPv4) wird nicht unterstützt.
 * Das Anfügen einer sekundären NIC, die sich auf ein IPv6-Subnetz bezieht, an einen Back-End-Pool wird **derzeit nicht unterstützt**.
 

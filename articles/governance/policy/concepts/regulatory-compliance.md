@@ -3,12 +3,12 @@ title: Einhaltung gesetzlicher Bestimmungen in Initiativendefinitionen
 description: In diesem Artikel wird beschrieben, wie Sie mit einer Initiativendefinition Richtlinien nach gesetzlichen Bereichen (wie z. B. Zugriffssteuerung, Konfigurationsverwaltung usw.) gruppieren können.
 ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 296febc1aad62d06c8e9dfcf4f285b16cacf0a40
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 15b03b5a40cba1290859b02883df70e3df54c5cf
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544620"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645533"
 ---
 # <a name="regulatory-compliance-in-azure-policy"></a>Einhaltung gesetzlicher Bestimmungen in Azure Policy
 
@@ -33,18 +33,18 @@ Wurde eine Initiativendefinition mithilfe von [Gruppen](./initiative-definition-
 
 Der Seite wird eine neue Registerkarte mit den Namen **Steuerungen** hinzugefügt. Es kann nach **Compliancebereichen** gefiltert werden, und Richtliniendefinitionen werden nach dem `title`-Feld des **policyMetadata**-Objekts gruppiert. Jede Zeile stellt eine **Steuerung** mit dem jeweiligen Konformitätszustand dar, ihrem **Compliancebereich**, Informationen zur Zuständigkeit sowie der Anzahl der nicht konformen und konformen Richtliniendefinitionen dieser **Steuerung**.
 
-:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-overview.png" alt-text="Beispiel der Übersichtsseite „Einhaltung gesetzlicher Bestimmungen“ für die integrierte Definition „NIST SP 800-53 R4“":::
+:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-overview.png" alt-text="Screenshot: Übersicht über die Einhaltung gesetzlicher Bestimmungen für die integrierte NIST SP 800-53 R4-Definition mit konformen und nicht konformen Steuerungen":::
 
 Wenn Sie auf eine **Steuerung** klicken, wird eine Seite mit Details zur jeweiligen Steuerung geöffnet. Die **Übersichtsseite** enthält Informationen zu `description` und `requirements`. Auf der Registerkarte **Richtlinien** finden Sie die einzelnen Richtliniendefinitionen der Initiative, die zu dieser **Steuerung** gehören. Die Registerkarte **Ressourcenkonformität** bietet eine genaue Ansicht der einzelnen Ressourcen, die anhand einer Mitgliedsrichtlinie der aktuell angezeigten **Steuerung** ausgewertet werden.
 
 > [!NOTE]
 > Der Auswertungstyp **Von Microsoft verwaltet** stellt einen [statischen](./definition-structure.md#type) `type` von Richtliniendefinitionen dar.
 
-:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-policies.png" alt-text="Beispiel für Richtliniendefinitionen der Funktion „Einhaltung gesetzlicher Bestimmungen“ in der Steuerung „Schutz von Grenzen“ des Bereichs „System- und Kommunikationsschutz“ der integrierten Definition „NIST SP 800-53 R4“":::
+:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-policies.png" alt-text="Screenshot: Übersicht über die Einhaltung gesetzlicher Bestimmungen für die integrierte NIST SP 800-53 R4-Definition mit konformen und nicht konformen Steuerungen":::
 
 Wenn Sie von dieser **Steuerungsseite** zur Registerkarte **Ressourcenkonformität** wechseln, werden alle Ressourcen angezeigt, die in den Richtliniendefinitionen dieser **Steuerung** enthalten sind. Sie können nach Name oder ID, Konformitätszustand, Ressourcentyp sowie Speicherort filtern.
 
-:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-resources.png" alt-text="Beispiel für Ressourcen der Funktion „Einhaltung gesetzlicher Bestimmungen“ und den Auswirkungen durch Richtliniendefinitionen der Steuerung „Schutz von Grenzen“ des Bereichs „System- und Kommunikationsschutz“ der integrierten Definition „NIST SP 800-53 R4“":::
+:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-resources.png" alt-text="Screenshot: Übersicht über die Einhaltung gesetzlicher Bestimmungen für die integrierte NIST SP 800-53 R4-Definition mit konformen und nicht konformen Steuerungen":::
 
 ## <a name="regulatory-compliance-in-sdk"></a>Einhaltung gesetzlicher Bestimmungen im SDK
 

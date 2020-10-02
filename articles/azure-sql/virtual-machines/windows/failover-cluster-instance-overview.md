@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: e5862daa21f8bf0075bb1dee567cbe887ec32d72
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 6d77855f095c59b47156af735f4581076ce5a09c
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653272"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89611631"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Failoverclusterinstanzen mit SQL Server in Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -66,7 +66,7 @@ Im restlichen Teil dieses Abschnitts werden die Vorteile und Einschränkungen de
 **Vorteile:** 
 - Nützlich für Anwendungen, die zu Azure unter Beibehaltung der HADR-Architektur (High-Availability and Disaster Recovery, Hochverfügbarkeit und Notfallwiederherstellung) migriert werden sollen. 
 - Clusteranwendungen können aufgrund von SCSI PR-Unterstützung (SCSI Persistent Reservations) unverändert zu Azure migriert werden. 
-- Unterstützt freigegebene Azure-SSDs Premium für alle Versionen von SQL Server und freigegebenes Azure Disk Storage Ultra für SQL Server 2019. 
+- Unterstützt freigegebenen Azure SSD Premium- und Azure Ultra-Datenträgerspeicher.
 - Kann einen einzelnen freigegebenen Datenträger oder Striping für mehrere freigegebene Datenträger verwenden, um einen freigegebenen Speicherpool zu erstellen. 
 - Unterstützt Filestream.
 
@@ -153,10 +153,11 @@ Zurzeit werden SQL Server-Failoverclusterinstanzen auf Azure-VMs nur mit dem [L
 
 Die vollständige Erweiterung unterstützt Funktionen wie die automatische Sicherung, Patchen und erweiterte Portalverwaltung. Diese Funktionen stehen für SQL Server-VMs nach der erneuten Installation im Lightweightverwaltungsmodus nicht zur Verfügung.
 
-### <a name="msdtc"></a>MSDTC   
-Azure Virtual Machines unterstützt MSDTC (Microsoft Distributed Transaction Coordinator) unter Windows Server 2019 mit Speicher auf freigegebenen Clustervolumes (CSV) und [Azure Load Balancer Standard](../../../load-balancer/load-balancer-standard-overview.md).
+### <a name="msdtc"></a>MSDTC 
 
-In Azure Virtual Machines wird MSDTC unter Windows Server 2016 und früheren Versionen aus den folgenden Gründen nicht unterstützt:
+Azure Virtual Machines unterstützt Microsoft Distributed Transaction Coordinator (MSDTC) unter Windows Server 2019 mit Speicher auf freigegebenen Clustervolumes (CSV) und mit [Azure Load Balancer Standard](../../../load-balancer/load-balancer-standard-overview.md) oder auf SQL Server-VMs, die freigegebene Azure-Datenträger verwenden. 
+
+In Azure Virtual Machines wird MSDTC unter Windows Server 2016 und früheren Versionen mit freigegebenen Clustervolumes aus den folgenden Gründen nicht unterstützt:
 
 - Die MSDTC-Clusterressource kann nicht für die Verwendung von freigegebenem Speicher konfiguriert werden. Wenn Sie unter Windows Server 2016 eine MSDTC-Ressource erstellen, wird kein freigegebener Speicher für die Verwendung angezeigt, selbst wenn der Speicher verfügbar ist. Dieses Problem wurde in Windows Server 2019 behoben.
 - Der einfache Lastenausgleich verarbeitet keine RPC-Ports.

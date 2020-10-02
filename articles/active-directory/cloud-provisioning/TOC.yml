@@ -34,6 +34,10 @@
           href: how-to-install.md
         - name: Konfiguration der Cloudbereitstellung
           href: how-to-configure.md
+        - name: Bedarfsorientierte Bereitstellung
+          href: how-to-on-demand-provision.md
+        - name: Attributzuordnung
+          href: how-to-attribute-mapping.md
         - name: Verwenden des einmaligen Anmeldens
           href: how-to-sso.md
     - name: Planung und Entwurf
@@ -56,7 +60,7 @@
           href: how-to-troubleshoot.md
         - name: Duplizierte Attribute
           href: /office365/troubleshoot/administration/duplicate-attributes-prevent-dirsync
-- name: Verweis
+- name: Referenz
   items:
     - name: Versionsverlauf des Agents für die Azure AD Connect-Cloudbereitstellung
       href: ../app-provisioning/provisioning-agent-release-version-history.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context

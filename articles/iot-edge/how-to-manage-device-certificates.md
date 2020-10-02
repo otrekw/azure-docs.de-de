@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4c49345f7036dfee7d1f37c15a4647202b3e5670
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 9e3925d2c14d51785ed4fe00a508ea353490e1cd
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86257828"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669029"
 ---
 # <a name="manage-certificates-on-an-iot-edge-device"></a>Verwalten von Zertifikaten auf einem IoT Edge-Gerät
 
@@ -49,7 +49,7 @@ Sie sollten Ihre eigene Zertifizierungsstelle verwenden, um die folgenden Dateie
 In diesem Artikel ist mit *Stamm-CA* nicht die oberste Zertifizierungsstelle einer Organisation gemeint. Es ist die oberste Zertifizierungsstelle für das IoT Edge-Szenario gemeint, die das IoT Edge-Hub-Modul, die Benutzermodule und alle Downstreamgeräte verwenden, um eine gegenseitige Vertrauensstellung aufzubauen.
 
 > [!NOTE]
-> Derzeit verhindert eine Einschränkung in libiothsm die Verwendung von Zertifikaten, die am oder nach dem 1. Januar 2050 ablaufen.
+> Derzeit verhindert eine Einschränkung in libiothsm die Verwendung von Zertifikaten, die am bzw. nach dem 1. Januar 2038 ablaufen.
 
 Ein Beispiel für diese Zertifikate finden Sie in den Skripts zum Erstellen von Demozertifikaten in [Verwalten von Zertifikaten von Testzertifizierungsstellen für Beispiele und Tutorials](https://github.com/Azure/iotedge/tree/master/tools/CACertificates).
 
@@ -114,7 +114,9 @@ Bei diesen beiden automatisch generierten Zertifikaten haben Sie die Möglichkei
 >[!NOTE]
 >Es gibt ein drittes automatisch generiertes Zertifikat, das vom IoT Edge-Sicherheits-Manager erstellt wird, das **IoT Edge-Hubserverzertifikat**. Dieses Zertifikat hat stets eine Gültigkeitsdauer von 90 Tagen, wird aber vor Ablauf automatisch verlängert. Der Wert für **auto_generated_ca_lifetime_days** wirkt sich nicht auf dieses Zertifikat aus.
 
-Um das Ablaufdatum des Zertifikats mit einen Wert zu konfigurieren, der nicht dem Standardwert von 90 Tagen entspricht, fügen Sie der Datei „config.yaml“ den Wert im Abschnitt **certificates** in Tagen hinzu.
+Um für das Ablaufdatum des Zertifikats einen Wert zu konfigurieren, der nicht dem Standardwert von 90 Tagen entspricht, fügen Sie der Datei **config.yaml** den Wert im Abschnitt **certificates** in Tagen hinzu.
+
+Beim Ablauf nach der angegebenen Anzahl von Tagen muss der IoT Edge-Sicherheits-Daemon neu gestartet werden, um das Zertifikat der Gerätezertifizierungsstelle erneut zu generieren. Es wird nicht automatisch verlängert.
 
 ```yaml
 certificates:
@@ -125,11 +127,9 @@ certificates:
 ```
 
 > [!NOTE]
-> Derzeit verhindert eine Einschränkung in libiothsm die Verwendung von Zertifikaten, die am oder nach dem 1. Januar 2050 ablaufen.
+> Derzeit verhindert eine Einschränkung in libiothsm die Verwendung von Zertifikaten, die am bzw. nach dem 1. Januar 2038 ablaufen.
 
-Wenn Sie Ihre eigenen gerätebezogenen Zertifizierungsstellenzertifikate bereitgestellt haben, gilt dieser Wert nach wie vor für das workloadbezogene Zertifizierungsstellenzertifikat, sofern der von Ihnen festgelegte Wert für die Gültigkeitsdauer kürzer als die Gültigkeitsdauer des gerätebezogenen Zertifizierungsstellenzertifikats ist.
-
-Nachdem Sie das Flag in der Datei „config.yaml“ angegeben haben, führen Sie die folgenden Schritte durch:
+Führen Sie die folgenden Schritte aus, nachdem Sie den Wert in der Datei „config.yaml“ angegeben haben:
 
 1. Löschen Sie den Inhalt des Ordners `hsm`.
 

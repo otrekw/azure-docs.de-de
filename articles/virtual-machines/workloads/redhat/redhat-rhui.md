@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 641ac1f6a2cc98e48694c42ec1531f679621640d
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: dadfd3abfad0c588f53d47cb7ab1eb138d4f90ac
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869217"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612520"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat-Updateinfrastruktur für virtuelle On-Demand-Red Hat Enterprise Linux-VMs in Azure
  Mit der [Red Hat-Updateinfrastruktur](https://access.redhat.com/products/red-hat-update-infrastructure) können Cloudanbieter (z. B. Azure) in Red Hat gehostete Repositoryinhalte spiegeln, benutzerdefinierte Repositorys mit Azure-spezifischem Inhalt erstellen und diese für Endbenutzer-VMs zur Verfügung stellen.
@@ -89,11 +89,11 @@ Zum Zeitpunkt der Erstellung dieses Artikels war die EUS-Unterstützung für RHE
 * EUS-Unterstützung für RHEL 7.6 endet am 31. Mai 2021.
 * EUS-Unterstützung für RHEL 7.7 endet am 30. August 2021.
 
-### <a name="switch-a-rhel-vm-to-eus-version-lock-to-a-specific-minor-version"></a>Wechseln einer RHEL-VM zu EUS (Versionssperrung auf eine bestimmte Nebenversion)
-Befolgen Sie die folgenden Anweisungen, um eine RHEL-VM auf eine bestimmte Nebenversion festzulegen (als Benutzer „root“ ausführen):
+### <a name="switch-a-rhel-vm-7x-to-eus-version-lock-to-a-specific-minor-version"></a>Umstellen einer RHEL-VM 7.x auf EUS (Versionssperrung auf eine bestimmte Nebenversion)
+Verwenden Sie die folgende Anleitung, um eine RHEL 7.x-VM auf eine bestimmte Nebenversion festzulegen (als Benutzer „root“ ausführen):
 
 >[!NOTE]
-> Dies gilt nur für RHEL-Versionen, für die EUS verfügbar ist. Zum Zeitpunkt des Verfassens umfasst dies RHEL 7.2-7.7. Weitere Details finden Sie auf der Seite [Red Hat Enterprise Linux-Lebenszyklus](https://access.redhat.com/support/policy/updates/errata).
+> Dies gilt nur für RHEL 7.x-Versionen, für die EUS verfügbar ist. Zum Zeitpunkt des Verfassens umfasst dies RHEL 7.2-7.7. Weitere Details finden Sie auf der Seite [Red Hat Enterprise Linux-Lebenszyklus](https://access.redhat.com/support/policy/updates/errata).
 
 1. Deaktivieren Sie nicht-EUS-Repositorys:
     ```bash
@@ -111,14 +111,52 @@ Befolgen Sie die folgenden Anweisungen, um eine RHEL-VM auf eine bestimmte Neben
     ```
 
     >[!NOTE]
-    > Durch die Anweisungen oben wird die RHEL-Nebenversion auf die aktuelle Nebenversion festgelegt. Geben Sie eine bestimmte Nebenversion ein, wenn Sie ein Upgrade durchführen und verbindlich auf eine spätere Nebenversion festlegen möchten, die nicht die neueste ist. Beispielsweise wird mit `echo 7.5 > /etc/yum/vars/releasever` Ihre RHEL-Version auf RHEL 7.5 festgelegt.
+    > Durch die Anweisungen oben wird die RHEL-Nebenversion auf die aktuelle Nebenversion festgelegt. Geben Sie eine bestimmte Nebenversion ein, wenn Sie ein Upgrade durchführen und verbindlich auf eine spätere Nebenversion festlegen möchten, die nicht die neueste ist. Beispielsweise wird mit `echo 7.5 > /etc/yum/vars/releasever` Ihre RHEL-Version auf RHEL 7.5 festgelegt.
 
 1. Aktualisieren Ihrer RHEL-VM
     ```bash
     sudo yum update
     ```
 
-### <a name="switch-a-rhel-vm-back-to-non-eus-remove-a-version-lock"></a>Wechseln einer RHEL-VM zurück zu Nicht-EUS (eine Versionssperre entfernen)
+### <a name="switch-a-rhel-vm-8x-to-eus-version-lock-to-a-specific-minor-version"></a>Umstellen einer RHEL-VM 8.x auf EUS (Versionssperrung auf eine bestimmte Nebenversion)
+Verwenden Sie die folgende Anleitung, um eine RHEL 8.x-VM auf eine bestimmte Nebenversion festzulegen (als Benutzer „root“ ausführen):
+
+>[!NOTE]
+> Dies gilt nur für RHEL 8.x-Versionen, für die EUS verfügbar ist. Zum Zeitpunkt der Erstellung dieses Texts sind dies RHEL 8.1 bis 8.2. Weitere Details finden Sie auf der Seite [Red Hat Enterprise Linux-Lebenszyklus](https://access.redhat.com/support/policy/updates/errata).
+
+1. Deaktivieren Sie nicht-EUS-Repositorys:
+    ```bash
+    yum --disablerepo='*' remove 'rhui-azure-rhel8'
+    ```
+
+1. Rufen Sie die EUS-Repository-Konfigurationsdatei ab:
+    ```bash
+    wget https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel8-eus.config
+    ```
+
+1. Fügen Sie EUS Repositorys hinzu:
+    ```bash
+    yum --config=rhui-microsoft-azure-rhel8-eus.config install rhui-azure-rhel8-eus
+    ```
+
+1. Sperren Sie die Variable `releasever` (Ausführung als Root-Benutzer erforderlich):
+    ```bash
+    echo $(. /etc/os-release && echo $VERSION_ID) > /etc/yum/vars/releasever
+    ```
+
+    >[!NOTE]
+    > Durch die Anweisungen oben wird die RHEL-Nebenversion auf die aktuelle Nebenversion festgelegt. Geben Sie eine bestimmte Nebenversion ein, wenn Sie ein Upgrade durchführen und verbindlich auf eine spätere Nebenversion festlegen möchten, die nicht die neueste ist. Beispielsweise wird mit `echo 8.1 > /etc/yum/vars/releasever` Ihre RHEL-Version auf RHEL 8.1 festgelegt.
+
+    >[!NOTE]
+    > Falls beim Zugreifen auf „releasever“ Berechtigungsprobleme auftreten, können Sie die Datei mit „nano /etc/yum/vars/releasever“ bearbeiten und die Details zur Imageversion hinzufügen und anschließend speichern (STRG+o, EINGABETASTE, STRG+x).  
+
+1. Aktualisieren Ihrer RHEL-VM
+    ```bash
+    sudo yum update
+    ```
+
+
+### <a name="switch-a-rhel-7x-vm-back-to-non-eus-remove-a-version-lock"></a>Umstellen einer RHEL 7.x-VM zurück auf Nicht-EUS (eine Versionssperre entfernen)
 Führen Sie die folgenden Befehle als Benutzer „root“ aus:
 1. Entfernen Sie die Datei `releasever`:
     ```bash
@@ -135,6 +173,33 @@ Führen Sie die folgenden Befehle als Benutzer „root“ aus:
     yum --config='https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel7.config' install 'rhui-azure-rhel7'
     ```
 
+1. Aktualisieren Ihrer RHEL-VM
+    ```bash
+    sudo yum update
+    ```
+
+### <a name="switch-a-rhel-8x-vm-back-to-non-eus-remove-a-version-lock"></a>Umstellen einer RHEL 8.x-VM zurück auf Nicht-EUS (eine Versionssperre entfernen)
+Führen Sie die folgenden Befehle als Benutzer „root“ aus:
+1. Entfernen Sie die Datei `releasever`:
+    ```bash
+    rm /etc/yum/vars/releasever
+     ```
+
+1. Deaktivieren Sie EUS-Repositorys:
+    ```bash
+    yum --disablerepo='*' remove 'rhui-azure-rhel8-eus'
+   ```
+
+1. Rufen Sie die reguläre Repository-Konfigurationsdatei ab:
+    ```bash
+    wget https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel8.config
+    ```
+
+1. Fügen Sie EUS Repositorys hinzu:
+    ```bash
+    yum --config=rhui-microsoft-azure-rhel8.config install rhui-azure-rhel8
+    ```
+    
 1. Aktualisieren Ihrer RHEL-VM
     ```bash
     sudo yum update

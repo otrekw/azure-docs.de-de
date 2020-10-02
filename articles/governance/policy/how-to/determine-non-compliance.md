@@ -3,12 +3,12 @@ title: Ermitteln der Ursachen für Nichtkonformität
 description: Wenn eine Ressource nicht konform ist, kann das viele mögliche Ursachen haben. Erfahren Sie, wie Sie die Ursache für die Nichtkonformität ermitteln können.
 ms.date: 07/06/2020
 ms.topic: how-to
-ms.openlocfilehash: ee027ff0f2936dc3eb7153869c52d4e70c83918b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a666da4ecb97c24e7176e6c7cfbe2ee24f46f1b7
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512026"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648562"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Ermitteln der Ursachen für Nichtkonformität
 
@@ -30,17 +30,17 @@ Wenn eine Ressource nicht konform ist, können Sie über die Seite **Richtlinien
 
 Führen Sie die folgenden Schritte durch, um die Konformitätsdetails anzuzeigen:
 
-1. Starten Sie den Azure Policy-Dienst über das Azure-Portal, indem Sie auf **Alle Dienste** klicken und dann nach **Richtlinie** suchen und die entsprechende Option auswählen.
+1. Starten Sie den Azure Policy-Dienst über das Azure-Portal, indem Sie die Option **Alle Dienste** auswählen und dann nach **Policy** suchen und die entsprechende Option auswählen.
 
 1. Wählen Sie auf der Seite **Übersicht** oder **Konformität** eine Richtlinie mit dem **Konformitätsstatus**_Nicht konform_ aus.
 
 1. Öffnen Sie auf der Seite **Richtlinienkonformität** auf der Registerkarte **Ressourcenkonformität** das Kontextmenü, oder klicken Sie auf die Auslassungspunkte neben einer Ressource mit dem **Konformitätsstatus**_Nicht konform_. Wählen Sie dann **Konformitätsdetails anzeigen** aus.
 
-   :::image type="content" source="../media/determine-non-compliance/view-compliance-details.png" alt-text="Option „Konformitätsdetails anzeigen“" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/view-compliance-details.png" alt-text="Screenshot: Link „Konformitätsdetails anzeigen“ auf der Registerkarte „Ressourcenkonformität“" border="false":::
 
 1. Im Bereich **Konformitätsdetails** werden Informationen der letzten Auswertung der Ressource mit der aktuellen Richtlinienzuweisung angezeigt. In diesem Beispiel enthält das Feld **Microsoft.Sql/servers/version**_12.0_, und die Richtliniendefinition hat _14.0_ erwartet. Wenn es mehrere Gründen für die Nichtkonformität der Ressource gibt, werde diese alle in diesem Bereich aufgeführt.
 
-   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane.png" alt-text="Bereich „Konformitätsdetails“ und Gründe für fehlende Konformität" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane.png" alt-text="Screenshot: Link „Konformitätsdetails anzeigen“ auf der Registerkarte „Ressourcenkonformität“" border="false":::
 
    Für **auditIfNotExists**- oder **deployIfNotExists**-Richtliniendefinitionen enthalten die Details die Eigenschaft **details.type** und alle optionalen Eigenschaften. Eine Liste finden Sie unter [„Grundlegendes zu Azure Policy-Auswirkungen“ im Abschnitt „Eigenschaften von „auditIfNotExists“](../concepts/effects.md#auditifnotexists-properties) und unter [„Grundlegendes zu Azure Policy-Auswirkungen“ im Abschnitt „Eigenschaften von „DeployIfNotExists“](../concepts/effects.md#deployifnotexists-properties). **Zuletzt ausgewertete Ressource** ist eine verwandte Ressource aus dem **Detailabschnitt** der Definition.
 
@@ -69,7 +69,7 @@ Führen Sie die folgenden Schritte durch, um die Konformitätsdetails anzuzeigen
    }
    ```
 
-   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane-existence.png" alt-text="Bereich „Konformitätsdetails“ – *ifNotExists" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane-existence.png" alt-text="Screenshot: Link „Konformitätsdetails anzeigen“ auf der Registerkarte „Ressourcenkonformität“" border="false":::
 
 > [!NOTE]
 > Der aktuelle Wert zeigt Asteriske an, wenn ein Eigenschaftswert ein _Geheimnis_ ist, um Daten zu schützen.
@@ -114,13 +114,13 @@ Unter Umständen haben Sie auch keinen Zugriff für die direkte Anmeldung auf de
 
 Beginnen Sie, indem Sie die Schritte zum Anzeigen der Konformitätsdetails der Richtlinien im obigen Abschnitt ausführen.
 
-Klicken Sie im Bereich „Kompatibilitätsdetails“ auf den Link **Zuletzt ausgewertete Ressource**.
+Wählen Sie im Bereich „Konformitätsdetails“ den Link **Zuletzt ausgewertete Ressource** aus.
 
-:::image type="content" source="../media/determine-non-compliance/guestconfig-auditifnotexists-compliance.png" alt-text="Anzeigen von Details zur Definition „auditIfNotExists“" border="false":::
+:::image type="content" source="../media/determine-non-compliance/guestconfig-auditifnotexists-compliance.png" alt-text="Screenshot: Link „Konformitätsdetails anzeigen“ auf der Registerkarte „Ressourcenkonformität“" border="false":::
 
 Auf der Seite **Gastzuweisung** werden alle verfügbaren Konformitätsdetails angezeigt. Jede Zeile der Ansicht steht für eine Auswertung, die auf dem Computer durchgeführt wurde. In der Spalte **Grund** wird eine Beschreibung angezeigt, mit der der Grund für den Status _Nicht konform_ für die Gastzuweisung angegeben wird. Wenn Sie beispielsweise Kennwortrichtlinien überprüfen, wird in der Spalte **Grund** Text mit dem aktuellen Wert für jede Einstellung angezeigt.
 
-:::image type="content" source="../media/determine-non-compliance/guestconfig-compliance-details.png" alt-text="Anzeigen von Konformitätsdetails" border="false":::
+:::image type="content" source="../media/determine-non-compliance/guestconfig-compliance-details.png" alt-text="Screenshot: Link „Konformitätsdetails anzeigen“ auf der Registerkarte „Ressourcenkonformität“" border="false":::
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -191,7 +191,7 @@ Audit that an application is installed inside Windows VMs                 NonCom
 
 Im Rahmen einer neuen **öffentlichen Vorschau** sind die letzten 14 Tage des Änderungsverlaufs für alle Azure-Ressourcen verfügbar, die die [Löschung im vollständigen Modus](../../../azure-resource-manager/templates/complete-mode-deletion.md) unterstützen. Der Änderungsverlauf enthält Details dazu, wann eine Änderung erkannt wurde, und eine _Visual Diff_ jeder Änderung. Eine Änderungserkennung wird ausgelöst, wenn Azure Resource Manager-Eigenschaften hinzugefügt, entfernt oder geändert werden.
 
-1. Starten Sie den Azure Policy-Dienst über das Azure-Portal, indem Sie auf **Alle Dienste** klicken und dann nach **Richtlinie** suchen und die entsprechende Option auswählen.
+1. Starten Sie den Azure Policy-Dienst über das Azure-Portal, indem Sie die Option **Alle Dienste** auswählen und dann nach **Policy** suchen und die entsprechende Option auswählen.
 
 1. Wählen Sie auf der Seite **Übersicht** oder **Konformität** eine Richtlinie mit einem beliebigen **Konformitätsstatus** aus.
 
@@ -199,11 +199,11 @@ Im Rahmen einer neuen **öffentlichen Vorschau** sind die letzten 14 Tage des �
 
 1. Wählen Sie auf der Seite **Ressourcenkonformität** die Registerkarte **Änderungsverlauf (Vorschau)** aus. Eine Liste der erkannten Änderungen, falls vorhanden, wird angezeigt.
 
-   :::image type="content" source="../media/determine-non-compliance/change-history-tab.png" alt-text="Azure Policy-Registerkarte „Änderungsverlauf“ auf der Seite „Ressourcenkonformität“" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/change-history-tab.png" alt-text="Screenshot: Link „Konformitätsdetails anzeigen“ auf der Registerkarte „Ressourcenkonformität“" border="false":::
 
 1. Wählen Sie eine der erkannten Änderungen aus. Die _Visual Diff_ für die Ressource wird auf der Seite **Änderungsverlauf** angezeigt.
 
-   :::image type="content" source="../media/determine-non-compliance/change-history-visual-diff.png" alt-text="„Visual Diff“ des Azure Policy-Änderungsverlaufs auf der Seite „Änderungsverlauf“" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/change-history-visual-diff.png" alt-text="Screenshot: Link „Konformitätsdetails anzeigen“ auf der Registerkarte „Ressourcenkonformität“" border="false":::
 
 Die _Visual Diff_ hilft, Änderungen an einer Ressource zu identifizieren. Die erkannten Änderungen müssen nicht zwangsläufig mit dem geänderten Konformitätsstatus der Ressource zusammenhängen.
 

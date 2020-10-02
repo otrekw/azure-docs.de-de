@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 ms.date: 05/04/2020
-ms.openlocfilehash: d03c1cad9692058c47dd643be9770284b207bb74
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b7457ad5870e31d682f8727901795c9d6d73f06
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85553485"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442665"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-azure-synapse-analytics-using-the-azure-portal"></a>Erstellen von Warnungen für Azure SQL-Datenbank und Azure Synapse Analytics über das Azure-Portal
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "85553485"
 
 ## <a name="overview"></a>Übersicht
 
-In diesem Artikel erfahren Sie, wie Sie im Azure-Portal Warnungen für Datenbanken in Azure SQL-Datenbank und Azure Synapse Analytics (früher Azure SQL Data Warehouse) einrichten. Warnungen können Ihnen eine E-Mail senden oder einen Webhook aufrufen, wenn bei einer bestimmten Metrik (beispielsweise bei der Datenbankgröße oder bei der CPU-Auslastung) der Schwellenwert erreicht wird.
+In diesem Artikel wird beschrieben, wie Sie im Azure-Portal Warnungen für Datenbanken in Azure SQL-Datenbank und Azure Synapse Analytics (vormals SQL Data Warehouse) einrichten. Warnungen können Ihnen eine E-Mail senden oder einen Webhook aufrufen, wenn bei einer bestimmten Metrik (beispielsweise bei der Datenbankgröße oder bei der CPU-Auslastung) der Schwellenwert erreicht wird.
 
 > [!NOTE]
 > Spezifische Anweisungen für Azure SQL Managed Instance finden Sie unter [Erstellen von Warnungen für Azure SQL Managed Instance](../managed-instance/alerts-create.md).

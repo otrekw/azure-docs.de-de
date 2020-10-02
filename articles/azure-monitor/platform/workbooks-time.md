@@ -1,6 +1,6 @@
 ---
 title: Zeitparameter in Azure Monitor-Arbeitsmappen
-description: Vereinfachen der komplexen Berichterstellung mit vordefinierten und benutzerdefiniert parametrisierten Arbeitsmappen
+description: Es wird beschrieben, wie Sie Zeitparameter festlegen, um für Benutzer das Angeben des Zeitkontexts einer Analyse zu ermöglichen. Die Zeitparameter werden für fast alle Berichte verwendet.
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 380b8a7ce286ab06b6935bf63bf3a0e82f371c2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c84133d5728f7b6593e0606dda2eef28b8167e43
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77658012"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972865"
 ---
 # <a name="workbook-time-parameters"></a>Arbeitsmappen-Zeitparameter
 

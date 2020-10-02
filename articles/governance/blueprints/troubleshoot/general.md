@@ -3,12 +3,12 @@ title: Problembehandlung für häufige Fehler
 description: Erfahren Sie, wie Sie Probleme beim Erstellen, Zuweisen und Entfernen von Blaupausen beheben, wie z.B. Richtlinienverletzungen und Blaupausenparameterfunktionen.
 ms.date: 06/29/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: d1dcd88fd6f7a9ab5035a5977ab5d50f3e6caf54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8362e2a22317d73e0fd392bd497cd9f2c5ffe4f
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85557504"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651326"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Problembehandlung mit Azure Blueprints
 
@@ -22,9 +22,9 @@ Viele Fehler sind das Ergebnis der Zuweisung einer Blaupause zu einem Bereich. W
 
 1. Wählen Sie auf der linken Seite **Zugewiesene Blaupausen** aus, und verwenden Sie das Suchfeld, um die Blaupausenzuweisungen zu filtern und nach der fehlerhaften Zuweisung zu suchen. Sie können die Tabelle der Zuweisungen auch nach der Spalte **Bereitstellungsstatus** sortieren, um alle fehlerhaften Zuweisungen gruppiert anzuzeigen.
 
-1. Klicken Sie mit der linken Maustaste auf die Blaupause mit dem Status _Fehlerhaft_, oder klicken Sie mit der rechten Maustaste und wählen Sie **Zuweisungsdetails anzeigen** aus.
+1. Wählen Sie die Blaupause mit dem Status _Fehler_ aus, oder klicken Sie mit der rechten Maustaste, und wählen Sie **Zuweisungsdetails anzeigen** aus.
 
-1. In einem roten Banner oben auf der Seite „Blaupausenzuweisung“ wird darauf hingewiesen, dass die Zuweisung fehlerhaft ist. Klicken Sie auf eine beliebige Stelle auf das Banner, um weitere Details anzuzeigen.
+1. In einem roten Banner oben auf der Seite „Blaupausenzuweisung“ wird darauf hingewiesen, dass die Zuweisung fehlerhaft ist. Wählen Sie eine beliebige Stelle des Banners aus, um weitere Details anzuzeigen.
 
 Es ist üblich, dass der Fehler durch ein Artefakt und nicht durch die Blaupause als Ganzes verursacht wird. Wenn ein Artefakt eine Key Vault-Instanz erstellt und Azure Policy die Key Vault-Erstellung verhindert, tritt für die gesamte Zuweisung ein Fehler auf.
 

@@ -8,15 +8,15 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/21/2020
+ms.date: 09/03/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 94d5b0cac332cf777f9393104861ee766ef2488c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 85d392323b24df3cede196d2c68f05c9522b2293
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022427"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458296"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Tutorial: Verwenden der Video Indexer-API
 
@@ -36,7 +36,6 @@ In diesem Artikel wird veranschaulicht, wie Entwickler die [Video Indexer-API](h
    > * Sie müssen denselben Anbieter verwenden, den Sie beim Anmelden für Video Indexer genutzt haben.
    > * Persönliche Google- und Microsoft-Konten (Outlook/Live) können nur für Testkonten verwendet werden. Für Konten, die über eine Verbindung mit Azure verfügen, ist Azure AD erforderlich.
    > * Pro E-Mail-Adresse kann nur ein aktives Konto vorhanden sein. Wenn ein Benutzer versucht, sich mit user@gmail.com für LinkedIn anzumelden, und später user@gmail.com auch für Google verwendet, wird für die zweite Anmeldung eine Fehlerseite mit dem Hinweis angezeigt, dass der Benutzer bereits vorhanden ist.
-
 2. Führen Sie den Schritt zum Abonnieren aus.
 
     Wählen Sie die Registerkarte [Produkte](https://api-portal.videoindexer.ai/products). Wählen Sie anschließend „Authorization“ (Autorisierung), und führen Sie den Vorgang für die Einrichtung des Abonnements durch.
@@ -46,7 +45,7 @@ In diesem Artikel wird veranschaulicht, wie Entwickler die [Video Indexer-API](h
     > [!NOTE]
     > Für neue Benutzer wird das Abonnement der Autorisierung automatisch eingerichtet.
     
-    Nachdem das Abonnement eingerichtet wurde, werden Ihr Abonnement und Ihre Primär- und Sekundärschlüssel angezeigt. Die Schlüssel sollten geschützt werden. Die Schlüssel sollten nur von Ihrem Servercode verwendet werden. Sie sollten nicht auf Clientseite (.js, .html usw.) verfügbar sein.
+    Nach Abschluss des Abonnementvorgangs finden Sie Ihr Abonnement unter **Produkte** -> **Autorisierung**. Auf der Abonnementseite wird der primäre und sekundäre Schlüssel angezeigt. Die Schlüssel sollten geschützt werden. Die Schlüssel sollten nur von Ihrem Servercode verwendet werden. Sie sollten nicht auf Clientseite (.js, .html usw.) verfügbar sein.
 
     ![Abonnement und Schlüssel im Video Indexer-Entwicklerportal](./media/video-indexer-use-apis/video-indexer-api03.png)
 

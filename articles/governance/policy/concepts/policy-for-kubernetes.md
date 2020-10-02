@@ -3,12 +3,12 @@ title: 'Vorschau: Informationen zu Azure Policy für Kubernetes'
 description: Hier erfahren Sie, wie Rego und Open Policy Agent von Azure Policy genutzt werden, um Cluster mit Kubernetes in Azure oder lokal zu verwalten. Hierbei handelt es sich um eine Previewfunktion.
 ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: e9da5caf13994e1c198345958feec43867c0b5f5
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: a824548cb45f886bcf82bedad6e5d5c216bb7fea
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509874"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645594"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>Grundlegendes zu Azure Policy für Kubernetes-Cluster (Vorschauversion)
 
@@ -57,13 +57,13 @@ Bevor Sie das Azure Policy-Add-On installieren oder eines der Dienstfeatures ak
 
      1. Registrieren Sie die Ressourcenanbieter **Microsoft.ContainerService** und **Microsoft.PolicyInsights**. Weitere Informationen finden Sie unter [Ressourcenanbieter und -typen](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
 
-     1. Starten Sie den Azure Policy-Dienst über das Azure-Portal, indem Sie auf **Alle Dienste** klicken und dann nach **Richtlinie** suchen und die entsprechende Option auswählen.
+     1. Starten Sie den Azure Policy-Dienst über das Azure-Portal, indem Sie die Option **Alle Dienste** auswählen und dann nach **Policy** suchen und die entsprechende Option auswählen.
 
-        :::image type="content" source="../media/policy-for-kubernetes/search-policy.png" alt-text="Suchen nach „Policy“ unter „Alle Dienste“" border="false":::
+        :::image type="content" source="../media/policy-for-kubernetes/search-policy.png" alt-text="Screenshot: Suchen nach „Policy“ unter „Alle Dienste“" border="false":::
 
      1. Wählen Sie links auf der Seite „Azure Policy“ die Option zum **Beitreten zur Vorschauversion** aus.
 
-        :::image type="content" source="../media/policy-for-kubernetes/join-aks-preview.png" alt-text="Beitreten zur Richtlinie für die AKS-Vorschauversion" border="false":::
+        :::image type="content" source="../media/policy-for-kubernetes/join-aks-preview.png" alt-text="Screenshot: Suchen nach „Policy“ unter „Alle Dienste“" border="false":::
 
      1. Wählen Sie die Zeile des Abonnements aus, das Sie der Vorschauversion hinzufügen möchten.
 
@@ -120,17 +120,17 @@ Sind die obigen Voraussetzungen erfüllt, installieren Sie das Azure Policy-Add
 
 - Azure-Portal
 
-  1. Starten Sie den AKS-Dienst im Azure-Portal, indem Sie auf **Alle Dienste** klicken und dann nach **Kubernetes-Dienste** suchen und die entsprechende Option auswählen.
+  1. Starten Sie den AKS-Dienst im Azure-Portal, indem Sie die Option **Alle Dienste** auswählen und dann nach **Kubernetes-Dienste** suchen und die entsprechende Option auswählen.
 
   1. Wählen Sie einen Ihrer AKS-Cluster aus.
 
   1. Wählen Sie links **Richtlinien (Vorschauversion)** auf der Seite des Kubernetes-Diensts aus.
 
-     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="Richtliniendefinitionen aus dem AKS-Cluster" border="false":::
+     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="Screenshot: Suchen nach „Policy“ unter „Alle Dienste“" border="false":::
 
   1. Wählen Sie auf der Hauptseite die Schaltfläche **Add-On aktivieren** aus.
 
-     :::image type="content" source="../media/policy-for-kubernetes/enable-policy-add-on.png" alt-text="Aktivieren des Azure Policy für AKS-Add-Ons":::
+     :::image type="content" source="../media/policy-for-kubernetes/enable-policy-add-on.png" alt-text="Screenshot: Suchen nach „Policy“ unter „Alle Dienste“":::
 
      <a name="migrate-from-v1"></a>
      > [!NOTE]
@@ -460,17 +460,17 @@ Verwenden Sie zum Entfernen des Azure Policy-Add-Ons aus Ihrem AKS-Cluster entwe
 
 - Azure-Portal
 
-  1. Starten Sie den AKS-Dienst im Azure-Portal, indem Sie auf **Alle Dienste** klicken und dann nach **Kubernetes-Dienste** suchen und die entsprechende Option auswählen.
+  1. Starten Sie den AKS-Dienst im Azure-Portal, indem Sie die Option **Alle Dienste** auswählen und dann nach **Kubernetes-Dienste** suchen und die entsprechende Option auswählen.
 
   1. Wählen Sie Ihren AKS-Cluster aus, in dem Sie das Azure Policy-Add-On deaktivieren möchten.
 
   1. Wählen Sie links **Richtlinien (Vorschauversion)** auf der Seite des Kubernetes-Diensts aus.
 
-     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="Richtliniendefinitionen aus dem AKS-Cluster" border="false":::
+     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="Screenshot: Suchen nach „Policy“ unter „Alle Dienste“" border="false":::
 
   1. Wählen Sie auf der Hauptseite die Schaltfläche **Add-On deaktivieren** aus.
 
-     :::image type="content" source="../media/policy-for-kubernetes/disable-policy-add-on.png" alt-text="Deaktivieren des Azure Policy für AKS-Add-Ons" border="false":::
+     :::image type="content" source="../media/policy-for-kubernetes/disable-policy-add-on.png" alt-text="Screenshot: Suchen nach „Policy“ unter „Alle Dienste“" border="false":::
 
 - Azure CLI
 

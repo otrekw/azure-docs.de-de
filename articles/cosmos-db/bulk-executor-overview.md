@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: b2ebe07f5ae2846f48bc5762a49ad018610af73a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d1251813486d4b7406f89ac9c09c49f985fa205
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260609"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055281"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Azure Cosmos DB-BulkExecutor-Bibliothek – Übersicht
  
@@ -25,6 +25,9 @@ Die BulkExecutor-Bibliothek hilft Ihnen, diesen massiven Durchsatz und Speicherp
 
 > [!NOTE] 
 > Zurzeit unterstützt die BulkExecutor-Bibliothek Import- und Updatevorgänge, und die Bibliothek wird nur von Azure Cosmos DB-SQL API- und Gremlin API-Konten unterstützt.
+
+> [!IMPORTANT]
+> Die Bulk Executor-Bibliothek wird für [serverlose](serverless.md) Konten derzeit nicht unterstützt. Wir empfehlen Ihnen, unter .NET die [Unterstützung von Massenvorgängen](https://devblogs.microsoft.com/cosmosdb/introducing-bulk-support-in-the-net-sdk/) zu verwenden, die in Version 3 des SDK verfügbar ist.
  
 ## <a name="key-features-of-the-bulk-executor-library"></a>Wichtigste Funktionen der BulkExecutor-Bibliothek  
  

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/19/2018
-ms.openlocfilehash: a264e40814952577d3a7db3b36c168dfc396f388
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9339ed7d0ab122420b37a67a96ee0d9d324e2f15
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85249162"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442904"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>Mandantenübergreifende Analysen mit extrahierten Daten – Mehrinstanzenfähige App
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -44,7 +44,7 @@ Die von Ihnen entwickelten SaaS-Anwendungen haben Zugriff auf eine große Menge 
 
 Der Zugriff auf die Daten für alle Mandanten ist einfach, wenn sämtliche Daten sich in nur einer mehrinstanzenfähigen Datenbank befinden. Komplexer wird der Zugriff, wenn die Daten auf Tausende von Datenbanken verteilt sind. Zur Vereinfachung können Sie die Daten in eine Analysedatenbank oder ein Data Warehouse extrahieren. Sie können das Data Warehouse abfragen, um Einblicke in die Ticketdaten aller Mandanten zu erhalten.
 
-In diesem Tutorial wird ein vollständiges Analyseszenario für diese SaaS-Beispielanwendung gezeigt. Zunächst werden die Daten mithilfe elastischer Aufträge aus den einzelnen Mandantendatenbanken extrahiert. Die Daten werden in den Analysespeicher übertragen. Der Analysespeicher kann entweder eine SQL-Datenbank oder ein SQL Data Warehouse sein. Für umfangreiche Datenextraktionen wird [Azure Data Factory](../../data-factory/introduction.md) empfohlen.
+In diesem Tutorial wird ein vollständiges Analyseszenario für diese SaaS-Beispielanwendung gezeigt. Zunächst werden die Daten mithilfe elastischer Aufträge aus den einzelnen Mandantendatenbanken extrahiert. Die Daten werden in den Analysespeicher übertragen. Der Analysespeicher kann entweder eine SQL-Datenbank- oder Azure Synapse Analytics-Instanz (vormals SQL Data Warehouse) sein. Für umfangreiche Datenextraktionen wird [Azure Data Factory](../../data-factory/introduction.md) empfohlen.
 
 Als Nächstes werden die aggregierten Daten in mehrere Tabellen im [Sternschema](https://www.wikipedia.org/wiki/Star_schema) aufgeteilt. Die Tabellen bestehen aus einer zentralen Faktentabelle und den zugehörigen Dimensionstabellen:
 

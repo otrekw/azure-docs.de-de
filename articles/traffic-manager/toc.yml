@@ -44,6 +44,10 @@
       items:
         - name: Von Traffic Manager verwendete Hierarchie für Land/Region
           href: traffic-manager-geographic-regions.md
+    - name: Sicherheit
+      items:
+        - name: Sicherheitsbaseline
+          href: security-baseline.md
     - name: Geschachtelte Traffic Manager-Profile
       href: traffic-manager-nested-profiles.md
     - name: Endpunkttypen
