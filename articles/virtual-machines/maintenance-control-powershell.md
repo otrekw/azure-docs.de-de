@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: 3204de6ea497666108ce63b1a3cfa77c6faa6b59
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5cb504e10c9a1b10c5bad201f4f599a3c00992fe
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87028650"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530759"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>Steuern von Updates mit der Wartungssteuerung und Azure PowerShell
 
@@ -59,7 +59,7 @@ $config = New-AzMaintenanceConfiguration `
 
 Durch die Verwendung von `-MaintenanceScope host` wird sichergestellt, dass die Wartungskonfiguration zum Steuern von Updates für den Host verwendet wird.
 
-Wenn Sie versuchen, eine Konfiguration mit dem gleichen Namen, aber an einem anderen Speicherort zu erstellen, erhalten Sie eine Fehlermeldung. Konfigurationsnamen müssen für Ihr Abonnement eindeutig sein.
+Wenn Sie versuchen, eine Konfiguration mit dem gleichen Namen, aber an einem anderen Speicherort zu erstellen, erhalten Sie eine Fehlermeldung. Konfigurationsnamen müssen für Ihre Ressourcengruppe eindeutig sein.
 
 Sie können verfügbare Wartungskonfigurationen abfragen, indem Sie [Get-AzMaintenanceConfiguration](/powershell/module/az.maintenance/get-azmaintenanceconfiguration) verwenden.
 

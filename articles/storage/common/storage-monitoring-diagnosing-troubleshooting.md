@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 93015427dddfe2b311783c20587792e34c098ce8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 79e108303575d5a9969e04f01bdeb126bf078762
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011037"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031482"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure-Speicher: Überwachung, Diagnose und Problembehandlung
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -134,7 +134,7 @@ Speichermetriken speichern nur Kapazitätsmetriken für den Blob-Dienst, weil Bl
 >
 >
 
-Hilfe für die Schätzung der Größe der verschiedenen Speicherobjekte wie Blobs finden Sie im Blogbeitrag [Microsoft Azure-Speicherabrechnung verstehen – Bandbreite, Transaktionen und Kapazität](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx).
+Hilfe für die Schätzung der Größe der verschiedenen Speicherobjekte wie Blobs finden Sie im Blogbeitrag [Microsoft Azure-Speicherabrechnung verstehen – Bandbreite, Transaktionen und Kapazität](https://docs.microsoft.com/archive/blogs/patrick_butler_monterde/azure-storage-understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity).
 
 ### <a name="monitoring-availability"></a><a name="monitoring-availability"></a>Verfügbarkeitsüberwachung
 Sie sollten die Verfügbarkeit des Speicherdiensts in Ihrem Speicherkonto überwachen, indem Sie in den Tabellen für Stunden- oder Minutenmetriken den Wert in der Spalte **Availability** überwachen: **$MetricsHourPrimaryTransactionsBlob**, **$MetricsHourPrimaryTransactionsTable**, **$MetricsHourPrimaryTransactionsQueue**, **$MetricsMinutePrimaryTransactionsBlob**, **$MetricsMinutePrimaryTransactionsTable**, **$MetricsMinutePrimaryTransactionsQueue**, **$MetricsCapacityBlob**. Die Spalte **Availability** enthält einen Prozentwert, der die Verfügbarkeit des Diensts oder API-Vorgangs in der jeweiligen Zeile darstellt. (Der Wert von **RowKey** gibt Aufschluss darüber, ob die Zeile allgemeine Metriken für den Dienst oder Metriken für einen bestimmten API-Vorgang enthält.)
@@ -220,7 +220,7 @@ Mit der Speicher-Clientbibliothek für .NET können Sie clientseitige Protokolli
 Sie können den Verkehr zwischen Client und Server erfassen, um detaillierte Informationen über die Daten, die Client und Server austauschen, und die zugrunde liegenden Netzwerkbedingungen bereitzustellen. Nützliche Netzwerkprotokollierungstools sind:
 
 * [Fiddler](https://www.telerik.com/fiddler) ist ein kostenloser Web Debugging Proxy, mit dem Sie die Header und Nutzlastdaten von HTTP- und HTTPS-Anfrage- und Antwortnachrichten untersuchen können. Weitere Informationen finden Sie in [Anhang 1: Verwendung von Fiddler zur Erfassung von HTTP- und HTTPS-Verkehr](#appendix-1).
-* [Microsoft Network Monitor (Netmon)](https://www.microsoft.com/download/details.aspx?id=4865) und [Wireshark](https://www.wireshark.org/) sind kostenlose Tools zur Netzwerkprotokollanalyse, mit denen Sie detaillierte Paketinformationen für eine Vielzahl von Netzwerkprotokollen anzeigen können. Weitere Informationen zu Wireshark finden Sie in [Anhang 2: Verwendung von Wireshark zur Erfassung von Netzwerkverkehr](#appendix-2).
+* [Microsoft Network Monitor (Netmon)](https://cnet-downloads.com/network-monitor) und [Wireshark](https://www.wireshark.org/) sind kostenlose Tools zur Netzwerkprotokollanalyse, mit denen Sie detaillierte Paketinformationen für eine Vielzahl von Netzwerkprotokollen anzeigen können. Weitere Informationen zu Wireshark finden Sie in [Anhang 2: Verwendung von Wireshark zur Erfassung von Netzwerkverkehr](#appendix-2).
 * Microsoft Message Analyzer ist ein Tool von Microsoft, das Netmon ersetzt und Sie zusätzlich zur Erfassung von Netzwerkpaketdaten bei der Anzeige und Analyse von Protokollierungsdaten unterstützt, die von anderen Tools erfasst werden. Weitere Informationen finden Sie in [Anhang 3: Verwendung von Microsoft Message Analyzer zur Erfassung von Netzwerkverkehr](#appendix-3).
 * Wenn Sie einen Basis-Konnektivitätstest durchführen möchten, um zu überprüfen, ob sich der Client-Computer über das Netzwerk mit dem Azure-Speicherdienst verbinden kann, können Sie dazu nicht das standardmäßige **Ping** -Tool auf dem Client verwenden. Dennoch können Sie das Tool [**tcping**](https://www.elifulkerson.com/projects/tcping.php) zur Überprüfung der Konnektivität verwenden.
 
@@ -617,7 +617,7 @@ Zu den Ausnahmedetails im Client gehört die vom Tabellenspeicherdienst zugewies
 
 Das serverseitige Protokoll enthält noch einen anderen Eintrag mit dem gleichen Wert für **client-request-id** (813ea74f…). Bei diesem handelt es sich um einen erfolgreichen Löschvorgang für die gleiche Entität (vom gleichen Client). Dieser erfolgreiche Löschvorgang erfolgte unmittelbar vor der fehlgeschlagenen Löschanfrage.
 
-Die wahrscheinlichste Ursache dieses Szenarios ist, dass der Client eine Löschanforderung für die Entität an den Tabellendienst gesendet hat, der erfolgreich war, für die er jedoch keine Bestätigung vom Server empfangen hat (vielleicht aufgrund eines temporären Netzwerkproblems). Der Client hat den Vorgang dann automatisch wiederholt (unter Verwendung derselben **Clientanfrage-ID**), und diese Wiederholung ist fehlgeschlagen, weil die Entität bereits gelöscht wurde.
+Die wahrscheinlichste Ursache dieses Szenarios ist, dass der Client eine Löschanforderung für die Entität an den Tabellendienst gesendet hat, die erfolgreich war, für die er jedoch keine Bestätigung vom Server empfangen hat (vielleicht aufgrund eines temporären Netzwerkproblems). Der Client hat den Vorgang dann automatisch wiederholt (unter Verwendung derselben **Clientanfrage-ID**), und diese Wiederholung ist fehlgeschlagen, weil die Entität bereits gelöscht wurde.
 
 Wenn dieses Problem häufig auftritt, sollten Sie untersuchen, warum der Client keine Bestätigungen aus dem Tabellendienst erhält. Wenn das Problem intermittierend ist, sollten Sie den Fehler "HTTP (404) Nicht gefunden" eingrenzen und im Client protokollieren, aber dem Client die Fortführung erlauben.
 

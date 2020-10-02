@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/31/2020
 ms.author: robreed
-ms.openlocfilehash: 5b7793d70e49b6b760bfba5186b53fb8b31ed16b
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: e50c0b0fcb883b43650a5d99cea5aa39bae1cd94
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297925"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89426264"
 ---
 # <a name="custom-script-extension-for-windows"></a>CustomScript-Erweiterung für Windows
 
@@ -60,6 +60,7 @@ Befindet sich Ihr Skript auf einem lokalen Server, müssen eventuell dennoch wei
 * Die Skriptausführung darf maximal 90 Minuten dauern. Danach gilt die Bereitstellung der Erweiterung als nicht erfolgreich.
 * Das Skript darf keine Systemneustarts enthalten, da diese Aktion zu Problemen mit anderen Erweiterungen führt, die installiert werden. Außerdem wird die Erweiterung nach dem Neustart nicht fortgesetzt.
 * Wenn Sie ein Skript haben, das zu einem Neustart führt und dann Anwendungen installiert und Skripts ausführt, können Sie den Neustart mit einer Windows-Planungsaufgabe planen oder Tools wie DSC, Chef oder Puppet-Erweiterungen verwenden.
+* Es wird nicht empfohlen, ein Skript auszuführen, das bewirkt, dass der VM-Agent angehalten oder aktualisiert wird. Das kann dazu führen, dass die Erweiterung in einem Übergangszustand verbleibt, wodurch ein Timeout verursacht wird.
 * Die Erweiterung führt jedes Skript nur einmal aus. Soll ein Skript bei jedem Neustart des Systems ausgeführt werden, müssen Sie die Erweiterung zum Erstellen eines geplanten Windows-Tasks verwenden.
 * Wenn Sie den Ausführungszeitpunkt eines Skripts planen möchten, erstellen Sie mithilfe der Erweiterung einen geplanten Windows-Task.
 * Während der Skriptausführung wird im Azure-Portal sowie in der CLI nur ein Übergangsstatus für die Erweiterung angezeigt. Sollten Sie häufigere Statusaktualisierungen für ein ausgeführtes Skript benötigen, müssen Sie eine eigene Lösung erstellen.

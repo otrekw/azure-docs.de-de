@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 08/18/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5805fe1f3fe25a1e2d7fbc5c0d0fb443586479d2
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: bc881b1b366a152c2d592463c8025ea1087307cf
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649611"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461960"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines – IBM DB2-DBMS-Bereitstellung für SAP-Workload
 
@@ -56,7 +56,8 @@ Informationen zu den unterstützten SAP-Produkten und Typen der Azure-VM erhalte
 ### <a name="storage-configuration"></a>Speicherkonfiguration
 Eine Übersicht über Azure Storage-Typen für die SAP-Workload finden Sie im Artikel [Azure Storage-Typen für die SAP-Workload](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage). Sämtliche Datenbankdateien müssen auf eingebundenen Datenträgern von Azure Block Storage (Windows: NFFS, Linux: xfs, ext4 oder ext3) gespeichert werden. Jegliche Arten von Netzlaufwerken und Remotefreigaben wie die folgenden Azure-Dienste werden für Datenbankdateien **NICHT** unterstützt: 
 
-* [Microsoft Azure-Dateidienst](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
+* [Microsoft Azure-Dateidienst](https://docs.microsoft.com/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
+
 * [Azure NetApp Files](https://azure.microsoft.com/services/netapp/)
 
 Die in Artikel [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](dbms_guide_general.md) getroffenen Aussagen gelten auch für Bereitstellungen mit dem Db2-DBMS, wenn Sie Datenträger auf Basis von Azure Page Blob Storage oder Managed Disks verwenden.
@@ -71,7 +72,7 @@ Sie können auch Windows-Speicherpools (nur verfügbar unter Windows Server 2012
 
 <!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
 
-Legen Sie für die Datenträger, die die Db2-Speicherpfade für die Verzeichnisse „sapdata“ und „saptmp“ enthalten, eine physische Datenträgersektorgröße von 512 KB fest. Wenn Sie Windows-Speicherpools verwenden, müssen die Speicherpools manuell über die Befehlszeilenschnittstelle erstellt werden. Der Parameter hierfür lautet `-LogicalSectorSizeDefault`. Weitere Informationen finden Sie unter <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>.
+Legen Sie für die Datenträger, die die Db2-Speicherpfade für die Verzeichnisse `sapdata` und `saptmp` enthalten, eine Sektorgröße für physische Datenträger von 512 KB fest. Wenn Sie Windows-Speicherpools verwenden, müssen die Speicherpools manuell über die Befehlszeilenschnittstelle erstellt werden. Der Parameter hierfür lautet `-LogicalSectorSizeDefault`. Weitere Informationen finden Sie unter <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>.
 
 Bei Azure-VMs der M-Serie kann die Latenz beim Schreiben in die Transaktionsprotokolle im Vergleich zu Azure Storage Premium um Faktoren reduziert werden, wenn Azure-Schreibbeschleunigung verwendet wird. Daher sollten Sie Azure-Schreibbeschleunigung für die VHD(s) bereitstellen, die das Volume für die Db2-Transaktionsprotokolle bilden. Details finden Sie im Dokument [Schreibbeschleunigung](../../how-to-enable-write-accelerator.md).
 

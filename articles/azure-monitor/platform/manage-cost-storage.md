@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 09/08/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 84a5b1cd7b2229defd4e38a227f75cfbf9ebdd95
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 8d1e2454dc4b9a9fbc85d2e5edc5ba3ede33f9c0
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88933663"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595650"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen    
 
@@ -166,7 +166,10 @@ Beachten Sie, dass beim Datentyp (Tabelle) die Groß-und Kleinschreibung beachte
     GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent?api-version=2017-04-26-preview
 ```
 
-Um die aktuellen datentypspezifischen Aufbewahrungseinstellungen für alle Datentypen in Ihrem Arbeitsbereich abzurufen, lassen Sie einfach den spezifischen Datentyp aus. Beispiel:
+> [!NOTE]
+> Die Aufbewahrungseinstellung wird nur für einen Datentyp zurückgegeben, wenn sie explizit für diesen festgelegt wurde.  Bei Datentypen, für die keine Aufbewahrungseinstellung explizit festgelegt wurde (und die somit die Aufbewahrungseinstellung des Arbeitsbereichs erben), wird durch diesen Befehl nichts zurückgegeben. 
+
+Um die aktuellen datentypspezifischen Aufbewahrungseinstellungen für alle Datentypen in Ihrem Arbeitsbereich abzurufen, für die eine datentypspezifische Aufbewahrung festgelegt wurde, lassen Sie einfach den spezifischen Datentyp aus. Beispiel:
 
 ```JSON
     GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables?api-version=2017-04-26-preview
@@ -575,9 +578,9 @@ Führen Sie die folgenden Schritte aus, um eine Warnung auszugeben, wenn das in 
 - **Definieren der Warnungsbedingung**: Festlegen Ihres Log Analytics-Arbeitsbereichs als Ressourcenziel
 - **Warnungskriterien**:
    - **Signalname**: **Benutzerdefinierte Protokollsuche**
-   - **Suchabfrage**: `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50`. 
+   - **Suchabfrage**: `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50`. Wenn Sie eine andere 
    - **Warnungslogik**: **Basiert auf** *Anzahl von Ergebnissen* und **Bedingung** ist *Größer als* ein **Schwellenwert** von *0*
-   - **Zeitraum** von *1440* Minuten und **Warnungshäufigkeit** alle *1440* Minuten zur Ausführung einmal am Tag.
+   - **Zeitraum**: *1440* Minuten; **Warnungshäufigkeit**: alle *1440* Minuten zur Ausführung einmal am Tag.
 - **Definieren der Warnungsdetails**:
    - **Name**: *Abrechenbares Datenvolumen größer als 50 GB in 24 Stunden*
    - **Schweregrad**: *Warnung*
@@ -604,7 +607,7 @@ Wenn die Datensammlung beendet wird, hat „OperationStatus“ den Wert **Warnin
 |Grund für die Beendigung der Datensammlung| Lösung| 
 |-----------------------|---------|
 |Tägliche Obergrenze des Arbeitsbereichs wurde erreicht|Warten Sie, bis die Datensammlung am Folgetag automatisch neu gestartet wird, oder erhöhen Sie das Tageslimit für das Datenvolumen, wie unter „Verwalten des maximalen täglichen Datenvolumens“ beschrieben. Der Zeitpunkt für das Zurücksetzen der täglichen Obergrenze wird auf der Seite **Tägliche Obergrenze** angezeigt. |
-| Ihr Arbeitsbereich hat die [Rate für das Datenerfassungsvolumen](https://docs.microsoft.com/azure/azure-monitor/service-limits#log-analytics-workspaces) erreicht | Für Arbeitsbereiche gilt für die Erfassungsvolumenrate ein Standardschwellenwert von 500 MB (komprimiert). Dies entspricht ungefähr **6 GB/Minute** für nicht komprimierte Daten. Die tatsächliche Größe kann je nach Protokolllänge und Komprimierungsverhältnis für die Datentypen variieren. Der Schwellenwert gilt für alle erfassten Daten, und zwar unabhängig davon, ob sie von Azure-Ressourcen über [Diagnoseeinstellungen](diagnostic-settings.md), die [Datensammler-API](data-collector-api.md) oder mit Agents gesendet werden. Wenn Sie Daten an einen Arbeitsbereich mit einer Volumenrate senden, die mehr als 80 Prozent des im Arbeitsbereich konfigurierten Schwellenwerts beträgt, wird alle sechs Stunden ein Ereignis an die Tabelle *Vorgang* im Arbeitsbereich gesendet, während der Schwellenwert weiterhin überschritten wird. Wenn die erfasste Volumenrate höher als der Schwellenwert ist, werden einige Daten gelöscht, und es wird alle sechs Stunden ein Ereignis an die Tabelle *Vorgang* im Arbeitsbereich gesendet, während der Schwellenwert weiterhin überschritten wird. Wenn die Erfassungsvolumenrate weiterhin den Schwellenwert überschreitet oder Sie ihn wahrscheinlich in Kürze erreichen werden, können Sie eine Erhöhung für Ihren Arbeitsbereich anfordern, indem Sie eine Supportanfrage erstellen. Falls Sie eine Benachrichtigung zu einem Ereignis dieser Art in Ihrem Arbeitsbereich erhalten möchten, sollten Sie eine [Protokollwarnungsregel](alerts-log.md) erstellen. Verwenden Sie hierfür die folgende Abfrage mit einer Warnungslogik basierend auf der Anzahl von Ergebnissen größer null, mit einem Evaluierungszeitraum von fünf Minuten und mit einer Häufigkeit von fünf Minuten. Die Rate für das Erfassungsvolumen hat 80 Prozent des Schwellenwerts erreicht: `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"`. Die Rate für das Erfassungsvolumen hat den Schwellenwert erreicht: `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed the threshold"`. |
+| Ihr Arbeitsbereich hat die [Rate für das Datenerfassungsvolumen](https://docs.microsoft.com/azure/azure-monitor/service-limits#log-analytics-workspaces) erreicht | Das Standardratenlimit für das Erfassungsvolumen für Daten, die von Azure-Ressourcen mit Diagnoseeinstellungen gesendet werden, beträgt ungefähr 6 GB/Minute pro Arbeitsbereich. Dies ist ein ungefährer Wert, da die tatsächliche Größe je nach Protokolllänge und Komprimierungsverhältnis zwischen den Datentypen variieren kann. Dieses Limit gilt nicht für Daten, die von Agents oder der Data Collector-API gesendet werden. Wenn Sie Daten mit einer höheren Rate an einen einzelnen Arbeitsbereich senden, werden einige Daten gelöscht, und es wird alle sechs Stunden ein Ereignis an die Tabelle Vorgang im Arbeitsbereich gesendet, während der Schwellenwert weiterhin überschritten wird. Wenn das Datenerfassungsvolumen weiterhin das Ratenlimit überschreitet oder Sie es wahrscheinlich in Kürze erreichen werden, können Sie eine Erhöhung für Ihren Arbeitsbereich anfordern, indem Sie eine E-Mail an LAIngestionRate@microsoft.com senden oder eine Supportanfrage öffnen. Mit der Abfrage `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The rate of data crossed the threshold"` können Sie nach dem Ereignis suchen, das auf eine Überschreitung des Ratenlimits der Datenerfassung hinweist. |
 |Tageslimit oder kostenloser Legacytarif erreicht |Warten Sie, bis die Datensammlung am Folgetag automatisch neu gestartet wird, oder wechseln Sie zu einem kostenpflichtigen Tarif.|
 |Das Azure-Abonnement befindet sich aus folgendem Grund in einem angehaltenen Zustand:<br> Kostenlose Testversion endete<br> Azure Pass ist abgelaufen<br> Monatliches Ausgabenlimit ist erreicht (z.B. in einem MSDN- oder Visual Studio-Abonnement)|Konvertieren in ein kostenpflichtiges Abonnement<br> Limit entfernen oder warten, bis das Limit zurückgesetzt wird|
 

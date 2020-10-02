@@ -6,16 +6,17 @@ services: cognitive-services
 author: dylankil
 manager: guillasi
 ms.service: cognitive-services
+ms.subservice: immersive-reader
 ms.topic: include
 ms.date: 09/14/2020
 ms.author: dylankil
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 7c368964ca04662c8bf1dfe79db57f81c90f5699
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.custom: devx-track-js
+ms.openlocfilehash: e29aff97d510dfed178e32aa319e5cb51ae9786c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90978250"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376538"
 ---
 [Plastischer Reader](https://www.onenote.com/learningtools) ist ein inklusiv konzipiertes Tool, das bewährte Techniken implementiert, um das Leseverständnis von Leseanfängern, Sprachenlernenden und Personen mit Lernunterschieden, wie z. B. Dyslexie, zu verbessern. Sie können den plastischen Reader in Ihren Anwendungen verwenden, um Text zu isolieren, den Fokus zu verbessern, Bilder für häufig verwendete Wörter anzuzeigen, Wortarten hervorzuheben, markierten Text laut vorzulesen, Wörter und Ausdrücke in Echtzeit zu übersetzen und vieles mehr.
 

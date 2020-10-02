@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: fb58728e005ad70ac5392aa9e3e6a254ed317276
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8a086830398555d962bb13d1d9b0fea3554f7924
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89016330"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032519"
 ---
 # <a name="log-analytics-agent-overview"></a>Übersicht über den Log Analytics-Agent
 Der Azure Log Analytics-Agent sammelt Telemetrie von virtuellen Windows- und Linux-Computern in allen Clouds, lokalen Computern und von [System Center Operations Manager](/system-center/scom/) überwachten Computern und sendet die gesammelten Daten an Ihren Log Analytics-Arbeitsbereich in Azure Monitor. Der Log Analytics-Agent unterstützt auch Erkenntnisse und andere Dienste in Azure Monitor wie etwa [Azure Monitor für VMs](../insights/vminsights-enable-overview.md), [Azure Security Center](../../security-center/index.yml) und [Azure Automation](../../automation/automation-intro.md). Dieser Artikel enthält eine ausführliche Übersicht über die Anforderungen an den Agent, das System und das Netzwerk sowie über Bereitstellungsmethoden.
@@ -63,7 +63,7 @@ Ausführliche Informationen zum Herstellen einer Verbindung zwischen einem Agent
 
 ## <a name="security-limitations"></a>Sicherheitseinschränkungen
 
-* Der Windows-Agent unterstützt den [FIPS 140-Standard](/windows/security/threat-protection/fips-140-validation), während der Linux-Agent diesen nicht unterstützt.  
+* Die Windows- und Linux-Agents unterstützen den [FIPS 140-Standard](/windows/security/threat-protection/fips-140-validation), während [andere Härtungstypen möglicherweise nicht unterstützt werden](agent-linux.md#supported-linux-hardening).
 
 
 ## <a name="installation-options"></a>Installationsoptionen

@@ -3,16 +3,16 @@ title: Azure Defender für Server – Vorteile und Features
 description: Erfahren Sie etwas über die Vorteile und Features von Azure Defender für Server.
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
-ms.topic: conceptual
+ms.date: 9/23/2020
+ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 29f15aa7d1cbcd260ce44f6083138681ceb9fd79
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8757399329f3a9bd9f4d7b914b12b2a0f7e85603
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931719"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448291"
 ---
 # <a name="introduction-to-azure-defender-for-servers"></a>Einführung in Azure Defender für Server
 
@@ -41,7 +41,7 @@ Zu den Funktionen für Bedrohungserkennung und Schutz von Azure Defender für Se
 
 - **Adaptive Anwendungssteuerungen:** Adaptive Anwendungssteuerungen sind eine intelligente und automatisierte Lösung zum Definieren von Positivlisten bekannter, sicherer Anwendungen für Ihre Computer.
 
-    Wenn Sie adaptive Anwendungssteuerungen aktiviert und konfiguriert haben, erhalten Sie Sicherheitswarnungen, wenn eine Anwendung ausgeführt wird, die nicht als sicher definiert ist. [Weitere Informationen](security-center-adaptive-network-hardening.md)
+    Wenn Sie adaptive Anwendungssteuerungen aktiviert und konfiguriert haben, erhalten Sie Sicherheitswarnungen, wenn eine Anwendung ausgeführt wird, die nicht als sicher definiert ist. [Weitere Informationen](security-center-adaptive-application.md)
 
 - **Adaptive Netzwerkhärtung (ANH):** Der Einsatz von Netzwerksicherheitsgruppen (NSGs) zum Filtern von ein- und ausgehendem Datenverkehr für Ressourcen verbessert den Sicherheitsstatus Ihres Netzwerks. Es gibt jedoch Situationen, in denen es sich bei dem Datenverkehr, der die NSG durchläuft, um eine Teilmenge der definierten NSG-Regeln handelt. In diesen Fällen lässt sich der Sicherheitsstatus durch eine Härtung der NSG-Regeln auf der Grundlage tatsächlicher Datenverkehrsmuster noch weiter verbessern.
 
@@ -58,7 +58,7 @@ Zu den Funktionen für Bedrohungserkennung und Schutz von Azure Defender für Se
 
 - **Erkennung dateiloser Angriffe (nur Windows):** Bei dateilosen Angriffen werden schädliche Nutzlasten in den Arbeitsspeicher injiziert, um die Erkennung durch Verfahren zur datenträgerbasierten Überprüfung zu verhindern. Die Nutzlast des Angreifers nistet sich im Arbeitsspeicher von kompromittierten Prozessen ein und führt ein breites Spektrum an schädlichen Aktivitäten aus.
 
-  Die Erkennung dateiloser Angriffe erkennt dank automatisierter forensischer Techniken für den Arbeitsspeicher Toolkits, Techniken und Verhaltensweisen im Zusammenhang mit dateilosen Angriffen. Diese Lösung überprüft zur Laufzeit in regelmäßigen Abständen Ihren Computer und extrahiert Erkenntnisse direkt aus dem Arbeitsspeicher von Prozessen. Zu den spezifischen Erkenntnissen für Linux zählt die Ermittlung der folgenden Elemente: 
+  Die Erkennung dateiloser Angriffe erkennt dank automatisierter forensischer Techniken für den Arbeitsspeicher Toolkits, Techniken und Verhaltensweisen im Zusammenhang mit dateilosen Angriffen. Diese Lösung überprüft zur Laufzeit in regelmäßigen Abständen Ihren Computer und extrahiert Erkenntnisse direkt aus dem Arbeitsspeicher von Prozessen. Zu den spezifischen Erkenntnissen zählt die Ermittlung der folgenden Elemente: 
 
   - Bekannte Toolkits und Kryptografieminingsoftware 
 
@@ -81,9 +81,9 @@ Zu den Funktionen für Bedrohungserkennung und Schutz von Azure Defender für Se
 
 Sie können Warnungen simulieren, indem Sie eines der folgenden Playbooks herunterladen:
 
-- Windows: [Azure Security Center-Playbook: Sicherheitswarnungen](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046)
+- Windows: [Azure Security Center-Playbook: Sicherheitswarnungen](https://github.com/Azure/Azure-Security-Center/blob/master/Simulations/Azure%20Security%20Center%20Security%20Alerts%20Playbook_v2.pdf)
 
-- Linux: [Azure Security Center-Playbook: Azure Security Center-Playbook: Linux Detections (Linux-Erkennungsfunktionen)](https://gallery.technet.microsoft.com/Azure-Security-Center-0ac8a5ef) herunterladen.
+- Linux: [Azure Security Center-Playbook: Azure Security Center-Playbook: Linux Detections (Linux-Erkennungsfunktionen)](https://github.com/Azure/Azure-Security-Center/blob/master/Simulations/Azure%20Security%20Center%20Linux%20Detections_v2.pdf) herunterladen.
 
 
 

@@ -3,12 +3,12 @@ title: Entfernen von Application Insights in Visual Studio – Azure Monitor
 description: Hier erfahren Sie, wie Sie das Application Insights SDK für ASP.NET und ASP.NET Core in Visual Studio entfernen.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 08a6d29e9170dde4bf3cc12015d126874006a778
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5bfa6ee21cc1a55f653c0e79807a14ac34082e73
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87049774"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981467"
 ---
 # <a name="how-to-remove-application-insights-in-visual-studio"></a>Entfernen von Application Insights in Visual Studio
 
@@ -66,11 +66,11 @@ Zum Entfernen von Application Insights müssen Sie die NuGet-Pakete und -Verweis
 
 1. Wählen Sie **Deinstallieren** aus.
     
-    ![„Abhängigkeiten entfernen“ aktivieren und dann „Deinstallieren“ auswählen](./media/remove-application-insights/uninstall-framework.png)
+    ![Screenshot des Fensters „Microsoft.ApplicationInsights.Web“ mit aktivierten Optionen „Abhängigkeiten entfernen“ und „Deinstallieren“](./media/remove-application-insights/uninstall-framework.png)
 
     Es wird ein Dialogfeld angezeigt, in dem alle Abhängigkeiten aufgelistet sind, die aus der Anwendung entfernt werden. Wählen Sie zum Deinstallieren  **OK**  aus.
     
-    ![„Abhängigkeiten entfernen“ aktivieren und dann „Deinstallieren“ auswählen](./media/remove-application-insights/preview-uninstall-framework.png)
+    ![Screenshot eines Dialogfelds mit zu entfernenden Abhängigkeiten](./media/remove-application-insights/preview-uninstall-framework.png)
     
 1.  Nachdem alles deinstalliert wurde, werden im  *Projektmappen-Explorer* möglicherweise weiterhin „ApplicationInsights.config“ und „AiHandleErrorAttribute.cs“ angezeigt. Sie können die beiden Dateien manuell löschen.
 

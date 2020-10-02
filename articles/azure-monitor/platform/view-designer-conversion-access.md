@@ -6,12 +6,12 @@ ms.author: aul
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: fb53a966b0dc4959253ac0786ef09ef3c497e809
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7614dd1d60bad5c124269ae2af02d30a5aacfe3e
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77658845"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564031"
 ---
 # <a name="view-designer-to-workbooks-conversion-summary-and-access"></a>Umwandlung von Ansichts-Designer in Arbeitsmappen – Zusammenfassung und Zugriff
 Der [Ansicht-Designer](view-designer.md) ist eine Funktion in Azure Monitor, mit der Sie verschiedene benutzerdefinierten Ansichten erstellen können, die Ihnen bei der Visualisierung von Daten in Ihrem Log Analytics-Arbeitsbereich mittels Diagrammen, Listen und Zeitachsen helfen. Sie laufen aus und werden durch Arbeitsmappen ersetzt, die zusätzliche Funktionalität bereitstellen. In diesem Artikel erfahren Sie, wie Sie eine Übersichtszusammenfassung und Berechtigungen erstellen können, die für den Zugriff auf Arbeitsmappen erforderlich sind.
@@ -21,7 +21,7 @@ Benutzer des Ansicht-Designers sind möglicherweise mit einer Übersichtskachel 
 
 Sie können den hohen Grad an Anpassungsfunktionen von Azure-Dashboards nutzen, was die automatische Aktualisierung, das Verschieben, die Größenanpassung und das zusätzliche Filtern nach Ihren angehefteten Elementen und Visualisierungen ermöglicht. 
 
-![Dashboard](media/view-designer-conversion-access/dashboard.png)
+![Screenshot eines angepassten Azure-Dashboards mit dem Titel „Arbeitsbereichszusammenfassung“](media/view-designer-conversion-access/dashboard.png)
 
 Erstellen Sie ein neues Azure-Dashboard, oder wählen Sie ein vorhandenes Dashboard aus, um mit dem Anheften von Arbeitsmappen zu beginnen.
 

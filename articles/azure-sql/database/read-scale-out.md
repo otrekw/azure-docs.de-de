@@ -10,18 +10,18 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
-ms.date: 06/26/2020
-ms.openlocfilehash: cf9f48b0907d3bfe1d07dcffcc0d0b9534f74c83
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.date: 09/03/2020
+ms.openlocfilehash: 2e7c931d6d99187b4ee7985be19374048c226312
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135897"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442189"
 ---
 # <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>Verwenden von schreibgeschützten Replikaten zum Lesen schreibgeschützter Abfrageworkloads
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Als Teil der [Hochverfügbarkeitsarchitektur](high-availability-sla.md#premium-and-business-critical-service-tier-availability) wird jede Datenbank und jede verwaltete Instanz auf den Dienstebenen Premium und Unternehmenskritisch automatisch mit einem primären Replikat mit Lese-/Schreibzugriff und mehreren sekundären schreibgeschützten Replikaten bereitgestellt. Die sekundären Replikate werden mit derselben Computegröße wie das primäre Replikat bereitgestellt. Die *horizontale Leseskalierung* ermöglicht es Ihnen, schreibgeschützte Workloads mithilfe der Computekapazität eines der schreibgeschützten Replikate auszulagern, anstatt sie auf dem Replikat mit Lese-/Schreibzugriff auszuführen. Auf diese Weise können einige schreibgeschützte Workloads von der Hauptworkload mit Lesen- und Schreibvorgängen isoliert werden, ohne ihre Leistung zu beeinträchtigen. Die Funktion ist für Anwendungen vorgesehen, die logisch getrennte, schreibgeschützte Workloads (z. B. zur Analyse) enthalten. In den Diensttarifen Premium und Unternehmenskritisch können Anwendungen Leistungsvorteile erzielen, die diese zusätzliche Kapazität ohne zusätzliche Kosten nutzen.
+Als Teil der [Hochverfügbarkeitsarchitektur](high-availability-sla.md#premium-and-business-critical-service-tier-availability) wird jede Datenbank, jeder Pool für elastische Datenbanken und jede verwaltete Instanz der Dienstebenen „Premium“ und „Unternehmenskritisch“ automatisch mit einem primären Replikat mit Lese-/Schreibzugriff und mehreren sekundären schreibgeschützten Replikaten bereitgestellt. Die sekundären Replikate werden mit derselben Computegröße wie das primäre Replikat bereitgestellt. Die *horizontale Leseskalierung* ermöglicht es Ihnen, schreibgeschützte Workloads mithilfe der Computekapazität eines der schreibgeschützten Replikate auszulagern, anstatt sie auf dem Replikat mit Lese-/Schreibzugriff auszuführen. Auf diese Weise können einige schreibgeschützte Workloads von der Hauptworkload mit Lesen- und Schreibvorgängen isoliert werden, ohne ihre Leistung zu beeinträchtigen. Die Funktion ist für Anwendungen vorgesehen, die logisch getrennte, schreibgeschützte Workloads (z. B. zur Analyse) enthalten. In den Diensttarifen Premium und Unternehmenskritisch können Anwendungen Leistungsvorteile erzielen, die diese zusätzliche Kapazität ohne zusätzliche Kosten nutzen.
 
 Die *horizontale Leseskalierung* ist auch auf der Dienstebene Hyperscale verfügbar, wenn mindestens ein sekundäres Replikat erstellt wird. Mehrere sekundäre Replikate können für einen Lastenausgleich schreibgeschützter Workloads verwendet werden, wenn mehr Ressourcen erforderlich sind, als auf einem sekundären Replikat zur Verfügung stehen.
 

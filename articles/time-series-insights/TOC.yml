@@ -73,7 +73,7 @@
           href: time-series-insights-update-query-data-csharp.md
         - name: 'Abfragen von Daten mithilfe von C#: Gen1'
           href: time-series-insights-query-data-csharp.md
-        - name: Verwalten von Verweisdaten in C#
+        - name: 'Verwalten von Verweisdaten in C#: Gen1'
           href: time-series-insights-manage-reference-data-csharp.md
         - name: Freigeben einer benutzerdefinierten Ansicht
           href: time-series-insights-parameterized-urls.md
@@ -137,7 +137,7 @@
           href: time-series-insights-environment-mitigate-latency.md
         - name: Diagnostizieren und Behandeln von Problemen
           href: time-series-insights-diagnose-and-solve-problems.md
-- name: Verweis
+- name: Referenz
   items:
     - name: Time Series Insights
       items:

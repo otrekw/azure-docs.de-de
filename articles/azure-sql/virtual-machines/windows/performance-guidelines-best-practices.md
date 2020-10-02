@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/18/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: a2ba89a9adec5443ed8ae2a10e0230874b571f46
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 9abc6574117b194a626c2697f5297a13566e0447
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690237"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89481789"
 ---
 # <a name="performance-guidelines-for-sql-server-on-azure-virtual-machines"></a>Leistungsrichtlinien für SQL Server auf Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -198,10 +198,23 @@ Wenn Sie Speicherplätze verwenden, deaktivieren Sie beim Hinzufügen von Knoten
 
 Wenn Sie Speicherplätze verwenden und das Kontrollkästchen **Der gesamte geeignete Speicher soll dem Cluster hinzugefügt werden.** nicht deaktivieren, trennt Windows die virtuellen Datenträger während des Clusterprozesses. Sie werden daher erst im Datenträger-Manager oder -Explorer angezeigt, nachdem die Speicherplätze aus dem Cluster entfernt und mithilfe von PowerShell erneut angefügt wurden. Mit Speicherplätzen werden mehrere Datenträger in Speicherpools gruppiert. Weitere Informationen finden Sie unter [Speicherplätze](/windows-server/storage/storage-spaces/overview).
 
+## <a name="multiple-instances"></a>Mehrfache Instanzen 
+
+Beachten Sie die folgenden Best Practices, wenn Sie mehrere SQL Server-Instanzen für eine einzige VM bereitstellen: 
+
+- Legen Sie den maximalen Serverarbeitsspeicher für jede SQL Server-Instanz fest, und stellen Sie dabei sicher, dass genügend Arbeitsspeicher für das Betriebssystem verbleibt. Aktualisieren Sie die Arbeitsspeichereinschränkungen für die SQL Server-Instanzen, wenn Sie Änderungen an der zugeordneten Arbeitsspeicherkapazität für die VM vornehmen. 
+- Konfigurieren Sie separate LUNs für Daten, Protokolle und TempDB, da für diese Elemente unterschiedliche Workloadmuster gelten und verhindert werden sollte, dass sie sich gegenseitig beeinträchtigen. 
+- Testen Sie Ihre Umgebung unter produktionsähnlichen Bedingungen, um zu gewährleisten, dass das System maximale Workloads im Rahmen Ihrer Anwendungs-SLAs bewältigen kann. 
+
+Anzeichen für eine Systemüberlastung könnten u. a. zu wenige Arbeitsthreads, langsame Antwortzeiten und/oder Systemarbeitsspeicherprobleme bei angehaltenem Verteiler sein. 
+
+
+
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Speicher und Leistung finden Sie unter [Richtlinien für die Speicherkonfiguration für SQL Server auf Azure Virtual Machines](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/09/25/storage-configuration-guidelines-for-sql-server-on-azure-vm/).
+Weitere Informationen zu Speicher und Leistung finden Sie unter [Richtlinien für die Speicherkonfiguration für SQL Server auf Azure Virtual Machines](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/09/25/storage-configuration-guidelines-for-sql-server-on-azure-vm/)
 
-Bewährte Methoden für die Sicherheit finden Sie unter [Sicherheitsüberlegungen für SQL Server auf Azure Virtual Machines](security-considerations-best-practices.md).
+Bewährte Methoden für die Sicherheit finden Sie unter [Sicherheitsüberlegungen für SQL Server auf Azure Virtual Machines](security-considerations-best-practices.md).
 
 Weitere Artikel zu virtuellen SQL Server-Computern finden Sie unter [Übersicht zu SQL Server auf virtuellen Azure-Computern](sql-server-on-azure-vm-iaas-what-is-overview.md). Falls Sie Fragen zu SQL Server-VMs haben, finden Sie in den [häufig gestellten Fragen](frequently-asked-questions-faq.md) weitere Informationen.

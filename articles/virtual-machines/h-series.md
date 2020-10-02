@@ -5,19 +5,19 @@ author: ju-shim
 ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 09/08/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: e9f876f3d20af01867283f550590b3af23dec662
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: b1f30e91b9ce96daf8b2eb8ac6c8cb38b86b347f
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926619"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594406"
 ---
 # <a name="h-series"></a>H-Reihe
 
-Virtuelle Computer der H-Serie sind für Anwendungen optimiert, für die Anforderungen hinsichtlich hoher CPU-Frequenzen oder sehr viel Arbeitsspeicher pro Kern gelten. Virtuelle Computer der H-Serie bieten 8 oder 16 Intel-Prozessorkerne des Modells Xeon E5 2667 v3, bis zu 14 GB RAM pro CPU-Kern und kein Hyperthreading. Die H-Serie unterstützt Mellanox EDR InfiniBand mit 56 GBit/s in einer FAT-Strukturkonfiguration ohne Blocks für einheitliche RDMA-Leistung. Virtuelle Computer der H-Serie unterstützen Intel MPI 5.x und MS-MPI.
+Virtuelle Computer der H-Serie sind für Anwendungen optimiert, für die Anforderungen hinsichtlich hoher CPU-Frequenzen oder sehr viel Arbeitsspeicher pro Kern gelten. Virtuelle Computer der H-Serie bieten 8 oder 16 Intel-Prozessorkerne des Modells Xeon E5 2667 v3, bis zu 14 GB RAM pro CPU-Kern und kein Hyperthreading. Die H-Serie unterstützt Mellanox EDR InfiniBand mit 56 GBit/s in einer FAT-Strukturkonfiguration ohne Blocks für einheitliche RDMA-Leistung. Virtuelle Computer der H-Serie sind derzeit nicht SR-IOV-fähig und unterstützen Intel MPI 5.x und MS-MPI.
 
 ACU: 290-300
 
