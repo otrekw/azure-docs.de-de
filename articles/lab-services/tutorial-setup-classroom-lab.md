@@ -3,12 +3,12 @@ title: Einrichten eines Classroom-Labs in Azure Lab Services | Microsoft-Dokumen
 description: In diesem Tutorial richten Sie unter Verwendung von Azure Lab Services ein Classroom-Lab mit virtuellen Computern für Kursteilnehmer ein.
 ms.topic: tutorial
 ms.date: 06/26/2020
-ms.openlocfilehash: bc1b23b92c6af902797a9be354fe6514b4e225af
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 1155646d31ddb8a0a3abce025acde5c4cb645f54
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85445133"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336733"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Tutorial: Einrichten eines Classroom-Labs 
 In diesem Tutorial richten Sie ein Classroom-Lab mit virtuellen Computern ein, die von den Teilnehmern im Classroom verwendet werden.  
@@ -37,7 +37,7 @@ In diesem Schritt erstellen Sie ein Lab für Ihre Klasse in Azure.
 2. Wählen Sie **Anmelden**, und geben Sie Ihre Anmeldeinformationen ein. Azure Lab Services unterstützt Geschäfts-, Schul- oder Unikonten und Microsoft-Konten. 
 3. Wählen Sie **Neues Lab** aus. 
     
-    ![Erstellen eines Classroom-Labs](./media/tutorial-setup-classroom-lab/new-lab-button.png)
+    ![Screenshot, der „Azure Lab Services“ mit ausgewählter Schaltfläche „Neues Lab“ zeigt.](./media/tutorial-setup-classroom-lab/new-lab-button.png)
 4. Führen Sie im Fenster **Neues Lab** die folgenden Aktionen aus: 
     1. Geben Sie unter **Name** einen Namen für Ihr Lab ein, und wählen Sie **Weiter** aus.  
 
@@ -90,7 +90,7 @@ Erstellen Sie ein geplantes Ereignis für das Lab, damit VMs im Lab zu bestimmte
 
 1. Wechseln Sie zur Seite **Zeitpläne**, und wählen Sie in der Symbolleiste die Option **Add scheduled event** (Geplantes Ereignis hinzufügen) aus. 
 
-    ![Schaltfläche „Zeitplan hinzufügen“ auf der Seite „Zeitpläne“](./media/how-to-create-schedules/add-schedule-button.png)
+    ![Screenshot, der die Schaltfläche „Geplantes Ereignis hinzufügen“ auf der Seite „Zeitpläne“ zeigt.](./media/how-to-create-schedules/add-schedule-button.png)
 2. Führen Sie auf der Seite **Add scheduled event** (Geplantes Ereignis hinzufügen) die folgenden Schritte aus:
     1. Vergewissern Sie sich, dass unter **Ereignistyp** die Option **Standard** ausgewählt ist.  
     2. Wählen Sie das **Startdatum** für die Klasse aus. 

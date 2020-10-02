@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 4cd21669b30b8ec83d6a0538c90d4cec5cafe32a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e35b655dc8b735214de891884fe40fb951dd16cd
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244989"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441292"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>Tutorial: Bereitstellen einer Service Fabric-Anwendung in einem Cluster in Azure
 
@@ -78,19 +78,19 @@ Wählen Sie unter **Verbindungsendpunkt** die Option **Neuen Cluster erstellen**
 
 Geben Sie auf der Registerkarte **Cluster** unter **Clustername** einen Namen (etwa „mytestcluster“) ein, und wählen Sie Ihr Abonnement und eine Region für den Cluster (beispielsweise „USA, Süden-Mitte“) aus. Geben Sie außerdem die Anzahl von Clusterknoten (empfohlene Anzahl für einen Testcluster: drei Knoten) und eine Ressourcengruppe (etwa „mytestclustergroup“) ein. Klicken Sie auf **Weiter**.
 
-![Erstellen eines Clusters](./media/service-fabric-tutorial-deploy-app-to-party-cluster/create-cluster.png)
+![Screenshot der Registerkarte „Cluster“ des Dialogfelds „Service Fabric-Cluster erstellen“.](./media/service-fabric-tutorial-deploy-app-to-party-cluster/create-cluster.png)
 
 Geben Sie auf der Registerkarte **Zertifikat** das Kennwort und den Ausgabepfad für das Clusterzertifikat ein. Ein selbstsigniertes Zertifikat wird als PFX-Datei erstellt und am angegebenen Ausgabepfad gespeichert.  Das Zertifikat wird für sowohl die Knoten-zu-Knoten-Sicherheit als auch für die Client-zu-Knoten-Sicherheit verwendet.  Verwenden Sie kein selbstsigniertes Zertifikat für Produktionscluster.  Dieses Zertifikat wird von Visual Studio für die Authentifizierung beim Cluster und für die Bereitstellung von Anwendungen verwendet. Wählen Sie **Zertifikat importieren**, um die PFX-Datei auf Ihrem Computer unter „CurrentUser\My certificate store“ zu installieren.  Klicken Sie auf **Weiter**.
 
-![Erstellen eines Clusters](./media/service-fabric-tutorial-deploy-app-to-party-cluster/certificate.png)
+![Screenshot der Registerkarte „Zertifikat“ des Dialogfelds „Service Fabric-Cluster erstellen“.](./media/service-fabric-tutorial-deploy-app-to-party-cluster/certificate.png)
 
 Geben Sie auf der Registerkarte **VM-Detail** unter **Benutzername** und **Kennwort** den Benutzernamen und das Kennwort für das Clusteradministratorkonto ein.  Wählen Sie unter **Image des virtuellen Computers** das VM-Image für die Clusterknoten und unter **Größe des virtuellen Computers** die VM-Größe für die einzelnen Clusterknoten aus.  Klicken Sie auf die Registerkarte **Erweitert**.
 
-![Erstellen eines Clusters](./media/service-fabric-tutorial-deploy-app-to-party-cluster/vm-detail.png)
+![Screenshot der Registerkarte „VM-Details“ des Dialogfelds „Service Fabric-Cluster erstellen“.](./media/service-fabric-tutorial-deploy-app-to-party-cluster/vm-detail.png)
 
 Geben Sie unter **Ports** den VotingWeb-Dienstendpunkt aus dem vorherigen Schritt (beispielsweise 8080) ein.  Bei der Erstellung des Clusters werden diese Anwendungsports im Azure-Lastenausgleich geöffnet, damit Datenverkehr an den Cluster weitergeleitet werden kann.  Klicken Sie auf **Erstellen**, um den Cluster zu erstellen. Dieser Vorgang dauert mehrere Minuten.
 
-![Erstellen eines Clusters](./media/service-fabric-tutorial-deploy-app-to-party-cluster/advanced.png)
+![Screenshot der Registerkarte „Erweitert“ des Dialogfelds „Service Fabric-Cluster erstellen“.](./media/service-fabric-tutorial-deploy-app-to-party-cluster/advanced.png)
 
 ## <a name="publish-the-application-to-the-cluster"></a>Veröffentlichen der Anwendung im Cluster
 

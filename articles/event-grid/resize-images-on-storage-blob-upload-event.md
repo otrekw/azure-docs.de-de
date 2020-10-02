@@ -3,12 +3,12 @@ title: 'Tutorial: Verwenden von Azure Event Grid zum Automatisieren der Größen
 description: 'Tutorial: Azure Event Grid kann bei Blob-Uploads in Azure Storage ausgelöst werden. Sie können diese Funktion verwenden, um in Azure Storage hochgeladene Bilddateien an andere Dienste (z. B. Azure Functions) für die Größenänderung und andere Optimierungen zu senden.'
 ms.topic: tutorial
 ms.date: 07/07/2020
-ms.openlocfilehash: 19dfffdcee0fb95ae867b1b26fa51e702658445d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 47ac8cad6d7c2ead8d25aa3525aafdab735f9e71
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86105794"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326557"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Tutorial: Automatisieren der Größenänderung von hochgeladenen Bildern mit Event Grid
 
@@ -20,11 +20,11 @@ Sie verwenden die Azure-CLI und das Azure-Portal, um die Größenänderungsfunkt
 
 # <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
 
-![Veröffentlichte Web-App im Browser](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
+![Screenshot, der eine veröffentlichte Web-App in einem Browser für das \.NET v12 SDK zeigt.](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
 # <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
 
-![Veröffentlichte Web-App im Browser](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
+![Screenshot, der eine veröffentlichte Web-App in einem Browser für das \.NET v10 SDK zeigt.](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
 
 ---
 
@@ -263,7 +263,7 @@ Ein Ereignisabonnement gibt an, welche vom Anbieter generierten Ereignisse an ei
 
 1.  Wählen Sie **Integration auswählen** aus, wählen Sie dann den **Event Grid-Trigger** aus, und wählen Sie **Event Grid-Abonnement erstellen** aus.
 
-    :::image type="content" source="./media/resize-images-on-storage-blob-upload-event/add-event-subscription.png" alt-text="Navigieren zu „Event Grid-Abonnement hinzufügen“ im Azure-Portal" :::
+    :::image type="content" source="./media/resize-images-on-storage-blob-upload-event/add-event-subscription.png" alt-text="Auswählen der Miniaturansichtsfunktion im Portal" :::
 
 1. Verwenden Sie die in der Tabelle angegebenen Einstellungen für das Ereignisabonnement.
     
@@ -301,7 +301,7 @@ Klicken Sie auf den Bereich **Fotos hochladen**, um eine Datei auszuwählen und 
 
 Beachten Sie, dass eine Kopie des hochgeladenen Bilds im Karussell **Generierte Miniaturansichten** angezeigt wird, nachdem das hochgeladene Bild nicht mehr angezeigt wird. Die Größe dieses Bilds wurde von der Funktion angepasst, und das Bild wurde dem Container *thumbnails* hinzugefügt und vom Webclient heruntergeladen.
 
-![Veröffentlichte Web-App im Browser](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
+![Screenshot, der eine veröffentlichte Web-App namens „ImageResizer“ in einem Browser für das \.NET v12 SDK zeigt.](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
 # <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
 

@@ -4,12 +4,12 @@ description: In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie Ihre 
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 27cc64eee31755bcefc9d0d82b7d06e52efcf183
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e37cb6a0679ee2e249de4ed8fa31c40d5082ea4a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004543"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324126"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Erstellen einer eigenen Notfallwiederherstellung für benutzerdefinierte Themen in Event Grid
 Die Notfallwiederherstellung konzentriert sich auf die Wiederherstellung nach einem schwerwiegenden Ausfall der Anwendungsfunktionalität. In diesem Tutorial wird Schritt für Schritt erläutert, wie Sie Ihre Ereignisarchitektur einrichten, um eine Wiederherstellung durchzuführen, wenn in einer bestimmten Region Fehler des Event Grid-Diensts auftreten.
@@ -72,7 +72,7 @@ Erstellen Sie zunächst zwei Event Grid-Themen. Diese Themen dienen als Ihr prim
    * Wählen Sie den Endpunkttyp „Webhook“ aus.
    * Legen Sie den Endpunkt auf die Ereignis-URL Ihres Ereignisempfängers fest. Die URL sollte in etwa wie folgt aussehen: `https://<your-event-reciever>.azurewebsites.net/api/updates`
 
-     ![Primäres Event Grid-Ereignisabonnement](./media/custom-disaster-recovery/create-primary-es.png)
+     ![Screenshot, der die Seite „Ereignisabonnement erstellen: Basic“ mit hervorgehobenen Werten für „Name“, „Endpunkttyp“ und „Endpunkt“ zeigt.](./media/custom-disaster-recovery/create-primary-es.png)
 
 1. Wiederholen Sie die obigen Schritte zum Erstellen des sekundären Themas und Abonnements. Ersetzen Sie dabei das Suffix „-primär“ durch „-sekundär“, um die Nachverfolgung zu erleichtern. Denken Sie daran, für dieses Abonnement eine andere Azure-Region auszuwählen. Sie können eine beliebige Region auswählen, es wird jedoch empfohlen, [Azure-Regionspaare](../best-practices-availability-paired-regions.md) zu verwenden. Durch das Platzieren des sekundären Themas und Abonnements in einer anderen Region wird sichergestellt, dass Ihre neuen Ereignisse auch bei einem Ausfall der primären Region weitergeleitet werden.
 

@@ -4,12 +4,12 @@ description: In diesem Tutorial erfahren Sie, wie Sie einem ASP.NET Core-Front-E
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: b309a13288c8ea95f453c1e80549a979e3f89921
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: c675f8ece8369bcfc0055343221ac82aea59dec1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441526"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326234"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Tutorial: Hinzufügen eines HTTPS-Endpunkts zu einem ASP.NET Core-Front-End-Dienst mit Web-API mithilfe von Kestrel
 
@@ -354,7 +354,7 @@ Wählen Sie im Projektmappen-Explorer die Anwendung **Voting** aus, und legen Si
 
 Speichern Sie alle Dateien, und drücken Sie F5, um die Anwendung lokal auszuführen.  Nach der Bereitstellung der Anwendung wird https:\//localhost:443 in einem Webbrowser geöffnet. Bei Verwendung eines selbstsignierten Zertifikats wird eine Warnung mit dem Hinweis angezeigt, dass Ihr PC der Sicherheit dieser Website nicht vertraut.  Navigieren Sie weiter zur Webseite.
 
-![Voting-Anwendung][image2]
+![Screenshot der Service Fabric Voting-Beispiel-App, die in einem Browserfenster mit der URL https://localhost/ ausgeführt wird.][image2]
 
 ## <a name="install-certificate-on-cluster-nodes"></a>Installieren des Zertifikats auf Clusterknoten
 
@@ -371,7 +371,7 @@ Installieren Sie als Nächstes das Zertifikat im Remotecluster, indem Sie [diese
 > [!Warning]
 > Für Entwicklungs- und Testanwendungen reicht ein selbstsigniertes Zertifikat. Für Produktionsanwendungen muss dagegen ein Zertifikat von einer [Zertifizierungsstelle](https://wikipedia.org/wiki/Certificate_authority) verwendet werden.
 
-## <a name="open-port-443-in-the-azure-load-balancer"></a>Öffnen von Port 443 im Azure-Lastenausgleich
+## <a name="open-port-443-in-the-azure-load-balancer-and-virtual-network"></a>Öffnen von Port 443 in Azure Load Balancer und im virtuellen Netzwerk
 
 Öffnen Sie im Lastenausgleich den Port 443, sofern er noch nicht geöffnet ist.
 
@@ -396,13 +396,33 @@ $slb | Add-AzLoadBalancerRuleConfig -Name $rulename -BackendAddressPool $slb.Bac
 $slb | Set-AzLoadBalancer
 ```
 
+Führen Sie den gleichen Schritt für das zugehörige virtuelle Netzwerk aus.
+
+```powershell
+$rulename="allowAppPort$port"
+$nsgname="voting-vnet-security"
+$RGname="voting_RG"
+$port=443
+
+# Get the NSG resource
+$nsg = Get-AzNetworkSecurityGroup -Name $nsgname -ResourceGroupName $RGname
+
+# Add the inbound security rule.
+$nsg | Add-AzNetworkSecurityRuleConfig -Name $rulename -Description "Allow app port" -Access Allow `
+    -Protocol * -Direction Inbound -Priority 3891 -SourceAddressPrefix "*" -SourcePortRange * `
+    -DestinationAddressPrefix * -DestinationPortRange $port
+
+# Update the NSG.
+$nsg | Set-AzNetworkSecurityGroup
+```
+
 ## <a name="deploy-the-application-to-azure"></a>Bereitstellen der Anwendung für Azure
 
 Speichern Sie alle Dateien, wechseln Sie vom Debug- in den Releasemodus, und drücken Sie F6, um das Projekt neu zu erstellen.  Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **Voting**, und klicken Sie auf **Veröffentlichen**. Wählen Sie den Verbindungsendpunkt des Clusters aus, den Sie im Tutorial [Bereitstellen einer Anwendung in einem Service Fabric-Cluster in Azure](service-fabric-tutorial-deploy-app-to-party-cluster.md) erstellt haben, oder wählen Sie einen anderen Cluster aus.  Klicken Sie auf **Veröffentlichen**, und veröffentlichen Sie die Anwendung für den Remotecluster.
 
 Wenn die Anwendung bereitgestellt wurde, navigieren Sie in einem Webbrowser zu `https://mycluster.region.cloudapp.azure.com:443`. (Aktualisieren Sie die URL mit dem Verbindungsendpunkt für Ihren Cluster.) Bei Verwendung eines selbstsignierten Zertifikats wird eine Warnung mit dem Hinweis angezeigt, dass Ihr PC der Sicherheit dieser Website nicht vertraut.  Navigieren Sie weiter zur Webseite.
 
-![Voting-Anwendung][image3]
+![Screenshot der Service Fabric Voting-Beispiel-App, die in einem Browserfenster mit der URL https://mycluster.region.cloudapp.azure.com:443 ausgeführt wird.][image3]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

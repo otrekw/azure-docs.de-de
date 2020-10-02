@@ -2,13 +2,13 @@
 title: Was ist Azure Event Grid?
 description: Senden Sie Ereignisdaten mit Azure Event Grid aus einer Quelle an Handler. Erstellen Sie ereignisbasierte Anwendungen, und integrieren Sie sie in Azure-Dienste.
 ms.topic: overview
-ms.date: 07/07/2020
-ms.openlocfilehash: 87ac29c2324c63977c57d60b11b3b930c23a4dd9
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.date: 09/24/2020
+ms.openlocfilehash: 73d218058c5f95d8c2d2324f1a0e1e77b24f1364
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89436866"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326496"
 ---
 # <a name="what-is-azure-event-grid"></a>Was ist Azure Event Grid?
 
@@ -20,16 +20,17 @@ Azure Event Grid wird zum Maximieren der Verfügbarkeit durch eine native Vertei
 
 Dieser Artikel enthält eine Übersicht zu Azure Event Grid. Wenn Sie in die Verwendung von Event Grid einsteigen möchten, lesen Sie [Erstellen und Weiterleiten benutzerdefinierter Ereignisse mit Azure Event Grid](custom-event-quickstart.md). 
 
-![Event Grid-Modell von Quellen und Handlern](./media/overview/functional-model.png)
+:::image type="content" source="./media/overview/functional-model.png" alt-text="Event Grid-Modell von Quellen und Handlern" lightbox="./media/overview/functional-model.png":::
 
 Diese Abbildung zeigt, wie Event Grid Quellen und Handler verbindet, stellt jedoch keine vollständige Liste der unterstützten Integrationen dar.
 
 ## <a name="event-sources"></a>Ereignisquellen
 
-Derzeit unterstützen die folgenden Azure-Dienste das Senden von Ereignissen an Event Grid:
+Derzeit unterstützen die folgenden Azure-Dienste das Senden von Ereignissen an Event Grid. Weitere Informationen zu einer Quelle in der Liste erhalten Sie, indem Sie den Link auswählen.
 
 - [Azure App Configuration](event-schema-app-configuration.md)
 - [Azure Blob Storage](event-schema-blob-storage.md)
+- [Azure Communication Services](event-schema-communication-services.md) 
 - [Azure Container Registry](event-schema-container-registry.md)
 - [Azure Event Hubs](event-schema-event-hubs.md)
 - [Azure IoT Hub](event-schema-iot-hub.md)

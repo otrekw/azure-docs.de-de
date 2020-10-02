@@ -5,20 +5,20 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: 3b68df1b3fc2f03d7659205fe03fdae09ecc3f7a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 4ac748c606d8ec3c8ba754c34d9c9e7512344a83
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827323"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292678"
 ---
 ## <a name="configure-the-sample-project"></a>Konfigurieren des Beispielprojekts
 
-Richten Sie als Nächstes eine Beispielclient-Anwendung ein, die mit Ihrer Azure Digital Twins-Instanz interagiert. Wenn Sie das Beispielprojekt noch nicht heruntergeladen haben, können Sie es jetzt über die Landing Page [*Azure Digital Twins (Beispiele)* ](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples) abrufen, indem Sie unterhalb des Titels die Schaltfläche *ZIP herunterladen* auswählen.
+Richten Sie als Nächstes eine Beispielclient-Anwendung ein, die mit Ihrer Azure Digital Twins-Instanz interagiert.
 
-Navigieren Sie zu der heruntergeladenen Datei auf Ihrem Computer, und entzippen Sie sie.
+Navigieren Sie auf Ihrem Computer zu der Datei, die Sie zuvor von [*Azure Digital Twins-Beispiele*](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples) heruntergeladen haben (und entpacken Sie sie, sofern noch nicht geschehen).
 
-Navigieren Sie dann im entzippten Ordner zu _AdtSampleApp_. Öffnen Sie _**AdtE2ESample.sln**_ in Visual Studio 2019. 
+Navigieren Sie dann im Ordner zu _AdtSampleApp_. Öffnen Sie _**AdtE2ESample.sln**_ in Visual Studio 2019. 
 
 Erstellen Sie in Visual Studio über den Bereich *Projektmappen-Explorer* eine Kopie der Datei _SampleClientApp > **serviceConfig.json.TEMPLATE**_. (Zum Kopieren und Einfügen können Sie das Kontextmenü verwenden.) Benennen Sie die Kopie in *serviceConfig.json* um. Sie dient als voreingestellte JSON-Datei mit den erforderlichen Konfigurationsvariablen zum Ausführen des Projekts.
 

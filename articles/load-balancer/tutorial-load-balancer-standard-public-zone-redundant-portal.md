@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: d9f16b612b508a6237c748bd135ff32618015b0b
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 4deab6fcadda36ad729096ff2f38e40ce81c7ae9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057006"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446090"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Tutorial: Verfügbarkeitszonenübergreifender Lastenausgleich für VMs mit einer Load Balancer Standard-Instanz im Azure-Portal
 
@@ -93,7 +93,7 @@ Erstellen Sie eine Netzwerksicherheitsgruppe, um eingehende Verbindungen für Ih
     - *myNetworkSecurityGroup*: Für den Namen der Netzwerksicherheitsgruppe.
     - *myResourceGroupLBAZ*: Für den Namen der vorhandenen Ressourcengruppe.
    
-![Erstellen eines virtuellen Netzwerks](./media/load-balancer-standard-public-availability-zones-portal/create-nsg.png)
+![Screenshot, der den Bereich „Netzwerksicherheitsgruppe erstellen“ zeigt.](./media/load-balancer-standard-public-availability-zones-portal/create-nsg.png)
 
 ### <a name="create-network-security-group-rules"></a>Erstellen von Netzwerksicherheitsgruppen-Regeln
 
@@ -112,7 +112,7 @@ In diesem Abschnitt erstellen Sie Netzwerksicherheitsgruppen-Regeln, um eingehen
     - *Allow HTTP* als Beschreibung der Lastenausgleichsregel
 4. Klicken Sie auf **OK**.
  
-   ![Erstellen eines virtuellen Netzwerks](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
+   ![Screenshot des Bereichs „Eingangssicherheitsregel hinzufügen“.](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
 5. Wiederholen Sie die Schritte 2 bis 4, um eine weitere Regel namens *myRDPRule* zu erstellen und eine eingehende RDP-Verbindung über den Port 3389 zu ermöglichen. Verwenden Sie dabei die folgenden Werte:
     - *Service Tag* für **Quelle**
     - *Internet* für **Quelldiensttag**

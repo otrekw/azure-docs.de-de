@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/27/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, mvc, cc996988-fb4f-47
-ms.openlocfilehash: 29b35493342b92813aa808069ebdd7ca8a7bbc56
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: feb6b36f8e5e7bbec83d8882552484f68abfd56d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88208543"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537751"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Erstellen einer Funktion, die in Azure Logic Apps integriert ist
 
@@ -182,7 +182,7 @@ Ihre App ist jetzt mit Twitter verbunden. Stellen Sie als Nächstes eine Verbind
 
 2. Geben Sie unter **Aktion auswählen** den Begriff **Textanalyse** ein, und klicken Sie anschließend auf die Aktion **Stimmung erkennen**.
     
-    ![„Neuer Schritt“ und anschließend „Aktion hinzufügen“](media/functions-twitter-email/11-detect-sentiment.png)
+    ![Screenshot, der den Abschnitt „Aktion auswählen“ mit „Textanalyse“ im Suchfeld und die ausgewählte Aktion „Stimmung erkennen“ zeigt. ](media/functions-twitter-email/11-detect-sentiment.png)
 
 3. Geben Sie einen Verbindungsnamen (beispielsweise `MyCognitiveServicesConnection`) ein, fügen Sie den Schlüssel für Ihre Cognitive Services-API und den Cognitive Services-Endpunkt ein, die Sie in einem Text-Editor gespeichert haben, und klicken Sie auf **Erstellen**.
 
@@ -202,7 +202,7 @@ Nachdem die Stimmungserkennung nun konfiguriert wurde, können Sie Ihrer Funktio
   
 4. Wählen Sie die zuvor erstellte Funktions-App aus.
 
-    ![Auswählen der Funktion](media/functions-twitter-email/15-select-function.png)
+    ![Screenshot, der den Abschnitt „Aktion auswählen“ mit einer ausgewählten Funktions-App zeigt.](media/functions-twitter-email/15-select-function.png)
 
 5. Wählen Sie die für dieses Tutorial erstellte Funktion aus.
 
@@ -228,7 +228,7 @@ Der letzte Teil des Workflows ist das Auslösen einer E-Mail, wenn der Wert für
 
 3. Klicken Sie unter **IF TRUE** (WENN TRUE) auf **Aktion hinzufügen**, suchen Sie nach `outlook.com`, klicken Sie auf **E-Mail senden**, und melden Sie sich bei Ihrem Outlook.com-Konto an.
 
-    ![Konfigurieren Sie die E-Mail für die Aktion „E-Mail senden“.](media/functions-twitter-email/20-add-outlook.png)
+    ![Screenshot, der den Abschnitt „IF TRUE“ mit im Suchfeld eingegebenem Text „outlook.com“ und ausgewählter Aktion „E-Mail senden“ zeigt.](media/functions-twitter-email/20-add-outlook.png)
 
     > [!NOTE]
     > Wenn Sie kein Outlook.com-Konto besitzen, können Sie einen anderen Connector wählen, z.B. Gmail oder Office 365 Outlook.

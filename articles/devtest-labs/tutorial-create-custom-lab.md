@@ -3,12 +3,12 @@ title: Erstellen eines Labs mithilfe von Azure DevTest Labs | Microsoft-Dokument
 description: In diesem Tutorial erstellen Sie über das Azure-Portal ein Lab in Azure DevTest Labs. Ein Lab-Administrator richtet ein Lab ein, erstellt virtuelle Computer im Lab und konfiguriert Richtlinien.
 ms.topic: tutorial
 ms.date: 06/26/2020
-ms.openlocfilehash: 9d016b38beb2f338a97ac862a060dc5ec3a77780
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 4b59edd4ab1204d6683cf95a02070d10b1abe061
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85476562"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324279"
 ---
 # <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>Tutorial: Erstellen eines Labs mithilfe von Azure DevTest Labs
 In diesem Tutorial erstellen Sie ein Lab über das Azure-Portal. Ein Lab-Administrator richtet ein Lab in einer Organisation ein, erstellt VMs im Lab und konfiguriert Richtlinien. Lab-Benutzer (z.B. Entwickler und Tester) fordern virtuelle Computer im Lab an, stellen eine Verbindung mit ihnen her und nutzen sie. 
@@ -56,7 +56,7 @@ Die folgenden Schritte beschreiben, wie Sie mithilfe des Azure-Portals ein Lab i
     2. Geben Sie für **Benutzername** den Namen des Benutzers ein, der Zugriff auf den virtuellen Computer hat. 
     3. Geben Sie unter **Kennwort** das Kennwort für den Benutzer ein. 
 
-        ![Auswählen einer Grundlage](./media/tutorial-create-custom-lab/new-virtual-machine.png)
+        ![Screenshot, der die Grundeinstellungen der Seite „Lab-Ressource erstellen“ zeigt.](./media/tutorial-create-custom-lab/new-virtual-machine.png)
 1. Wählen Sie die Registerkarte **Erweiterte Einstellungen** aus.
     1. Wählen Sie für **Diesen Computer als abrufbar festlegen** die Option **Ja** aus.
     2. Vergewissern Sie sich, dass die **Anzahl der Instanzen** auf **1** festgelegt ist. Wenn Sie die Einstellung **2** wählen, werden 2 VMs mit den Namen `<base image name>00' and <base image name>01` erstellt. Beispiel: `win10vm00` und `win10vm01`.     

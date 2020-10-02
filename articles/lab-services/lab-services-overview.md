@@ -2,16 +2,16 @@
 title: Informationen zu Azure Lab Services | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie mit Lab Services das Erstellen, Verwalten und Schützen von Labs mit virtuellen Computern vereinfachen können, die von Entwicklern, Testern, Lehrkräften, Kursteilnehmern und anderen genutzt werden können.
 ms.topic: overview
-ms.date: 06/26/2020
-ms.openlocfilehash: 7661b26d16eb2c2acd53c30889ea791689c1eec0
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.date: 09/16/2020
+ms.openlocfilehash: ad17ebb3a803a15d1ac9ef8cb71cf8ca7976243b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85442804"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333935"
 ---
 # <a name="an-introduction-to-azure-lab-services"></a>Einführung in Azure Lab Services
-Mit **Azure Lab Services** können Sie Labs erstellen, deren Infrastruktur von Azure verwaltet wird. Aktuell sind Classroom-Labs die einzige Art von verwalteten Labs, die von Azure Lab Services unterstützt werden. Der Dienst selbst übernimmt die gesamte Infrastrukturverwaltung für einen verwalteten Lab-Typ – vom Hochfahren der VMs über die Fehlerbehandlung bis hin zur Skalierung der Infrastruktur. Nachdem ein IT-Administrator ein Labkonto in Azure Lab Services erstellt hat, kann ein Kursleiter schnell ein Lab für seinen Kurs einrichten, die Anzahl und den Typ der virtuellen Computer angeben, die für Übungen im Kurs erforderlich sind, und Benutzer zum Kurs hinzufügen. Wenn sich ein Benutzer für den Kurs registriert hat, kann er auf den virtuellen Computer zugreifen, um Übungen für den Kurs auszuführen.  
+Mit **Azure Lab Services** können Sie Labs erstellen, deren Infrastruktur von Azure verwaltet wird. Aktuell sind Classroom-Labs die einzige Art von verwalteten Labs, die von Azure Lab Services unterstützt werden. Der Dienst selbst übernimmt die gesamte Infrastrukturverwaltung für einen verwalteten Lab-Typ – vom Hochfahren der VMs über die Fehlerbehandlung bis hin zur Skalierung der Infrastruktur. Nachdem ein IT-Administrator ein Lab-Konto in Azure Lab Services erstellt hat, kann ein Kursleiter schnell ein Lab für seinen Kurs einrichten, die Anzahl und den Typ der virtuellen Computer angeben, die für Übungen im Kurs erforderlich sind, und Benutzer zum Kurs hinzufügen. Wenn sich ein Benutzer für den Kurs registriert hat, kann er auf den virtuellen Computer zugreifen, um Übungen für den Kurs auszuführen.  
 
 ## <a name="key-capabilities"></a>Wichtige Funktionen
 Azure Lab Services unterstützt Folgendes:

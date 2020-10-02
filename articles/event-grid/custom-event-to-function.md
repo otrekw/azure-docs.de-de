@@ -3,12 +3,12 @@ title: 'Schnellstart: Senden von benutzerdefinierten Ereignissen an eine Azure-F
 description: 'Schnellstart: Verwenden Sie Azure Event Grid und die Azure CLI oder das Portal, um ein Thema zu veröffentlichen und dieses Ereignis zu abonnieren. Als Endpunkt wird eine Azure-Funktion verwendet.'
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: 26ddfd1aeb61d3786edcdfca1acf5e293e4145ae
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: aea52bcaa94d6f288e86e44e1a0f294796d8e4a3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115093"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324393"
 ---
 # <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>Schnellstart: Weiterleiten von benutzerdefinierten Ereignissen an eine Azure-Funktion mit Event Grid
 
@@ -17,14 +17,17 @@ Azure Event Grid ist ein Ereignisdienst für die Cloud. Azure Functions ist eine
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-azure-function"></a>Azure-Funktion erstellen
+Vor dem Abonnieren des benutzerdefinierten Themas erstellen wir zunächst eine Funktion zur Verarbeitung der Ereignisse. 
 
-Vor dem Abonnieren des benutzerdefinierten Themas erstellen wir zunächst eine Funktion zur Verarbeitung der Ereignisse. Klicken Sie im Azure-Portal auf „Ressource erstellen“, geben Sie „Funktion“ ein, wählen Sie dann „Funktions-App“, und klicken Sie auf „Erstellen“. Wählen Sie unter „Ressourcengruppe“ die Option „Neu erstellen“ aus, und geben Sie der Gruppe einen Namen. Sie wird im weiteren Verlauf des Tutorials verwendet. Geben Sie der Funktions-App einen Namen, lassen Sie den Umschalter „Veröffentlichen“ auf „Code“ eingestellt, wählen Sie eine Runtime und Region aus, und klicken Sie auf „Erstellen“.
+1. Erstellen Sie eine Funktions-App mithilfe der Anweisungen unter [Erstellen einer Funktions-App](../azure-functions/functions-create-first-azure-function.md#create-a-function-app).
+2. Erstellen Sie eine Funktion mithilfe des **Event Grid-Triggers**. Wenn Sie diesen Trigger zum ersten Mal verwenden, müssen Sie möglicherweise auf „Installieren“ klicken, um die Erweiterung zu installieren.
+    1. Wählen Sie auf der Seite **Funktions-App** im linken Menü **Funktionen** aus, suchen Sie in den Vorlagen nach **Event Grid**,und wählen Sie dann **Azure Event Grid-Trigger** aus. 
 
-Sobald Ihre Funktions-App bereit ist, navigieren Sie zu ihr, und klicken Sie auf "+ Neue Funktion". Wählen Sie „Im Portal“ als Entwicklungsumgebung aus, und klicken Sie auf „Weiter“. Wählen Sie unter „Funktion erstellen“ die Option „Weitere Vorlagen“ aus, um mehr Vorlagen anzuzeigen. Suchen Sie dann nach „ Azure Event Grid-Trigger“, und wählen Sie die Option aus. Wenn Sie diesen Trigger zum ersten Mal verwenden, müssen Sie möglicherweise auf „Installieren“ klicken, um die Erweiterung zu installieren.
+        :::image type="content" source="./media/custom-event-to-function/function-event-grid-trigger.png" alt-text="Auswählen des Event Grid-Triggers":::
+3. Geben Sie auf der Seite **Neue Funktion** einen Namen für die Funktion ein, und wählen Sie **Funktion erstellen** aus.
 
-![Event Grid-Trigger für Funktion](./media/custom-event-to-function/grid-trigger.png)
-
-Nachdem Sie die Erweiterung installiert haben, klicken Sie auf „Weiter“, geben Sie Ihrer Funktion einen Namen, und klicken Sie dann auf „Erstellen“.
+    :::image type="content" source="./media/custom-event-to-function/new-function-page.png" alt-text="Auswählen des Event Grid-Triggers":::
+4. Verwenden Sie die Seite **Code und testen**, um den vorhandenen Code für die Funktion anzuzeigen und zu aktualisieren. 
 
 [!INCLUDE [event-grid-register-provider-portal.md](../../includes/event-grid-register-provider-portal.md)]
 
@@ -81,7 +84,11 @@ Sie abonnieren ein Event Grid-Thema, um Event Grid mitzuteilen, welche Ereigniss
     5. Wählen Sie als Endpunkt der Funktion das Azure-Abonnement und die Ressourcengruppe aus, in der sich Ihre Funktions-App befindet, und wählen Sie dann die zuvor erstellte Funktions-App und Funktion aus. Klicken Sie auf **Auswahl bestätigen**.
 
        ![Angeben der Endpunkt-URL](./media/custom-event-to-function/provide-endpoint.png)
-
+    6. Dieser Schritt ist optional, wird aber für Produktionsszenarien empfohlen. Navigieren Sie auf der Seite **Ereignisabonnement erstellen** zur Registerkarte **Erweiterte Funktionen**, und legen Sie Werte für **Max. Anzahl von Ereignissen pro Batch** und **Bevorzugte Batchgröße in KB** fest. 
+    
+        Durch die Batchverarbeitung kann ein hoher Durchsatz erreicht werden. Legen Sie für **Max. Anzahl von Ereignissen pro Batch** die maximale Anzahl von Ereignissen fest, die ein Abonnement in einen Batch einschließen soll. „Bevorzugte Batchgröße“ legt die bevorzugte Obergrenze der Batchgröße in KB fest, kann jedoch überschritten werden, wenn ein einzelnes Ereignis größer als dieser Schwellenwert ist.
+    
+        :::image type="content" source="./media/custom-event-to-function/enable-batching.png" alt-text="Auswählen des Event Grid-Triggers":::
     6. Wählen Sie auf der Seite **Ereignisabonnement erstellen** die Option **Erstellen** aus.
 
 ## <a name="send-an-event-to-your-topic"></a>Senden eines Ereignisses an Ihr Thema
@@ -91,7 +98,7 @@ Als Nächstes lösen wir ein Ereignis aus, um zu sehen, wie Event Grid die Nachr
 Im ersten Beispiel wird die Azure-Befehlszeilenschnittstelle verwendet. Es ruft die URL und den Schlüssel für das benutzerdefinierte Thema sowie Beispielereignisdaten ab. Verwenden Sie für `<topic name>` den Namen Ihres benutzerdefinierten Themas. Es werden Beispielereignisdaten erstellt. Bei dem `data`-Element des JSON-Codes handelt es sich um die Nutzlast Ihres Ereignisses. Für dieses Feld kann ein beliebiger wohlgeformter JSON-Code verwendet werden. Sie können auch das Betrefffeld zur erweiterten Weiterleitung und Filterung verwenden. CURL ist ein Hilfsprogramm zum Senden von HTTP-Anforderungen.
 
 
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+### <a name="azure-cli"></a>Azure CLI
 1. Wählen Sie im Azure-Portal die Option **Cloud Shell** aus. Wählen Sie links oben im Cloud Shell-Fenster die Option **Bash** aus. 
 
     ![Cloud Shell – Bash](./media/custom-event-quickstart-portal/cloud-shell-bash.png)
