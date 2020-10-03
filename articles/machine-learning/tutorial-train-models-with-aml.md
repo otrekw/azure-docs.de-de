@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 03/18/2020
+ms.date: 09/28/2020
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 1af5ab33497ad8694752db17e874b883e60c942c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 40ee7ad74d1a1daaf6df5e76b5e51db52feea304
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906664"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535068"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>Tutorial: Trainieren von Bildklassifizierungsmodellen mit MNIST-Daten und scikit-learn 
 
@@ -37,7 +37,7 @@ In [Teil 2 dieses Tutorials](tutorial-deploy-models-with-aml.md) erfahren Sie, w
 Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
 
 >[!NOTE]
-> Der Code in diesem Artikel wurde mit Version 1.0.83 des [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) getestet.
+> Der Code in diesem Artikel wurde mit Version 1.13.0 des Azure [Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) getestet.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -117,7 +117,7 @@ from azureml.core.compute import ComputeTarget
 import os
 
 # choose a name for your cluster
-compute_name = os.environ.get("AML_COMPUTE_CLUSTER_NAME", "cpucluster")
+compute_name = os.environ.get("AML_COMPUTE_CLUSTER_NAME", "cpu-cluster")
 compute_min_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MIN_NODES", 0)
 compute_max_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MAX_NODES", 4)
 
@@ -223,7 +223,7 @@ Sie haben jetzt einen Eindruck vom Aussehen dieser Bilder und vom erwarteten Vor
 Für diese Aufgabe übermitteln Sie den Auftrag zur Ausführung im Remotetrainingscluster, den Sie zuvor eingerichtet haben.  So senden Sie einen Auftrag
 * Erstellen eines Verzeichnisses
 * Erstellen eines Trainingsskripts
-* Erstellen eines estimator-Objekts
+* Erstellen einer Skriptausführungskonfiguration
 * Übermitteln des Auftrags
 
 ### <a name="create-a-directory"></a>Erstellen eines Verzeichnisses
@@ -307,19 +307,19 @@ Beachten Sie, wie das Skript Daten abruft und Modelle speichert:
   shutil.copy('utils.py', script_folder)
   ```
 
-### <a name="create-an-estimator"></a>Erstellen eines Estimators
+### <a name="configure-the-training-job"></a>Konfigurieren des Trainingsauftrags
 
-Ein Estimator-Objekt wird verwendet, um die Ausführung zu übermitteln. Azure Machine Learning verfügt über vorkonfigurierte Schätzer für gängige Frameworks für maschinelles Lernen sowie einen generischen Schätzer. Erstellen Sie einen Schätzer, indem Sie Folgendes angeben:
+Erstellen Sie ein [ScriptRunConfig-](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) Objekt, um die Konfigurationsdetails Ihres Trainingsauftrags anzugeben, einschließlich Ihres Trainingsskripts, der zu verwendenden Umgebung und des Computeziels für die Ausführung. Konfigurieren Sie ScriptRunConfig, indem Sie Folgendes angeben:
 
-
-* Den Namen des Estimator-Objekts, `est`.
 * Das Verzeichnis, das Ihre Skripts enthält. Alle Dateien in dieses Verzeichnis werden zur Ausführung in die Clusterknoten hochgeladen.
 * Das Computeziel. In diesem Fall verwenden Sie den von Ihnen erstellten Azure Machine Learning-Computecluster.
 * Den Namen des Trainingsskripts, **train.py**.
 * Eine Umgebung, die die erforderlichen Bibliotheken zum Ausführen des Skripts enthält.
-* Die für das Trainingsskript erforderlichen Parameter.
+* Die für das Trainingsskript erforderlichen Argumente.
 
-In diesem Tutorial wird der AmlCompute-Cluster als Ziel verwendet. Alle Dateien im Skriptordner werden zur Ausführung in die Clusterknoten hochgeladen. **data_folder** wird auf die Verwendung des Datasets festgelegt. Erstellen Sie zunächst eine Umgebung, die Folgendes enthält: die Scikit-learn-Bibliothek, azureml-dataprep (erforderlich für den Zugriff auf das Dataset) und azureml-defaults (enthält die Abhängigkeiten für die Protokollierung von Metriken). Das azureml-defaults-Paket enthält auch die Abhängigkeiten, die in Teil 2 des Tutorials für die Bereitstellung des Modells als Webdienst benötigt werden.
+In diesem Tutorial wird der AmlCompute-Cluster als Ziel verwendet. Alle Dateien im Skriptordner werden zur Ausführung in die Clusterknoten hochgeladen. **--data_folder** wird auf die Verwendung des Datasets festgelegt.
+
+Erstellen Sie zunächst eine Umgebung, die Folgendes enthält: die Scikit-learn-Bibliothek, azureml-dataset-runtime (erforderlich für den Zugriff auf das Dataset) und azureml-defaults (enthält die Abhängigkeiten für die Protokollierung von Metriken). Das azureml-defaults-Paket enthält auch die Abhängigkeiten, die in Teil 2 des Tutorials für die Bereitstellung des Modells als Webdienst benötigt werden.
 
 Nachdem Sie die Umgebung definiert haben, registrieren Sie sie im Arbeitsbereich, damit Sie sie in Teil 2 des Tutorials wiederverwenden können.
 
@@ -329,38 +329,34 @@ from azureml.core.conda_dependencies import CondaDependencies
 
 # to install required packages
 env = Environment('tutorial-env')
-cd = CondaDependencies.create(pip_packages=['azureml-dataprep[pandas,fuse]>=1.1.14', 'azureml-defaults'], conda_packages = ['scikit-learn==0.22.1'])
+cd = CondaDependencies.create(pip_packages=['azureml-dataset-runtime[pandas,fuse]', 'azureml-defaults'], conda_packages=['scikit-learn==0.22.1'])
 
 env.python.conda_dependencies = cd
 
 # Register environment to re-use later
-env.register(workspace = ws)
+env.register(workspace=ws)
 ```
 
-Erstellen Sie dann den Estimator mit dem folgenden Code:
+Erstellen Sie dann die ScriptRunConfig-Datei, indem Sie das Trainingsskript, das Computeziel und die Umgebung angeben.
 
 ```python
-from azureml.train.estimator import Estimator
+from azureml.core import ScriptRunConfig
 
-script_params = {
-    # to mount files referenced by mnist dataset
-    '--data-folder': mnist_file_dataset.as_named_input('mnist_opendataset').as_mount(),
-    '--regularization': 0.5
-}
+args = ['--data-folder', mnist_file_dataset.as_mount(), '--regularization', 0.5]
 
-est = Estimator(source_directory=script_folder,
-              script_params=script_params,
-              compute_target=compute_target,
-              environment_definition=env,
-              entry_script='train.py')
+src = ScriptRunConfig(source_directory=script_folder,
+                      script='train.py', 
+                      arguments=args,
+                      compute_target=compute_target,
+                      environment=env)
 ```
 
 ### <a name="submit-the-job-to-the-cluster"></a>Übermitteln des Auftrags an den Cluster
 
-Führen Sie das Experiment aus, indem Sie das Estimator-Objekt übermitteln:
+Führen Sie das Experiment aus, indem Sie das ScriptRunConfig-Objekt übermitteln:
 
 ```python
-run = exp.submit(config=est)
+run = exp.submit(config=src)
 run
 ```
 
@@ -372,7 +368,7 @@ Insgesamt dauert die erste Ausführung **ungefähr 10 Minuten**. Solange sich di
 
 Was geschieht, während Sie warten:
 
-- **Erstellen von Images**: Ein Docker-Image wird erstellt, das der vom Estimator angegebenen Python-Umgebung entspricht. Das Image wird in den Arbeitsbereich hochgeladen. Das Erstellen und Hochladen des Images nimmt **etwa fünf Minuten** in Anspruch.
+- **Erstellen von Images**: Ein Docker-Image wird erstellt, das der von der Azure ML-Umgebung angegebenen Python-Umgebung entspricht. Das Image wird in den Arbeitsbereich hochgeladen. Das Erstellen und Hochladen des Images nimmt **etwa fünf Minuten** in Anspruch.
 
   Diese Phase erfolgt für jede Python-Umgebung einmal, weil der Container für nachfolgende Ausführungen zwischengespeichert wird. Während der Imageerstellung werden Protokolle in den Ausführungsverlauf gestreamt. Anhand dieser Protokolle können Sie den Fortschritt der Imageerstellung überwachen.
 

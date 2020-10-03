@@ -8,14 +8,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 06/28/2020
+ms.date: 09/28/2020
 ms.custom: designer
-ms.openlocfilehash: 55d950435522a18eafda69d152619426fe54d87f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d9422cfb9bd8e5539f1a9b43d6fb7b137778f3d4
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90896705"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91404917"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer"></a>Tutorial: Prognostizieren von Automobilpreisen mit dem Designer
 
@@ -75,7 +75,7 @@ Sie können ein **Standardcomputeziel** für die gesamte Pipeline festlegen, wod
     Falls Sie bereits über ein verfügbares Computeziel verfügen, können Sie es auswählen, um diese Pipeline auszuführen.
 
     > [!NOTE]
-    > Der Designer kann nur Trainingsexperimente in Azure Machine Learning Compute und auf Azure Machine Learning-Compute-Instanzen ausführen, andere Computeziele werden jedoch nicht angezeigt.
+    > Der Designer kann nur Trainingsexperimente in Azure Machine Learning Compute ausführen, andere Computeziele werden jedoch nicht angezeigt.
 
 1. Geben Sie einen Namen für die Computeressource ein.
 
@@ -221,7 +221,7 @@ Trainieren Sie das Modell, indem Sie ein Dataset mit Preis bereitstellen. Durch 
     > [!IMPORTANT]
     > Achten Sie darauf, dass der linke Ausgabeport von **Split Data** (Daten aufteilen) mit **Train Model** (Modell trainieren) verbunden ist. Der linke Port enthält den Trainingssatz. Der rechte Port enthält den Testsatz.
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png"alt-text="Screenshot: Richtige Konfiguration des Moduls „Train Model“ (Modell trainieren). Das Modul „Linear Regression“ (Lineare Regression) ist mit dem linken Port des Moduls „Train Model“ verbunden, und das Modul „Split Data“ (Daten aufteilen) ist mit dem rechten Port von „Train Model“ verbunden.":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png"alt-text="Select-column":::
 
 1. Wählen Sie das Modul **Train Model** (Modell trainieren) aus.
 
@@ -236,7 +236,7 @@ Trainieren Sie das Modell, indem Sie ein Dataset mit Preis bereitstellen. Durch 
 
     Ihre Pipeline sollte wie folgt aussehen:
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png"alt-text="Screenshot: Richtige Pipelinekonfiguration nach dem Hinzufügen des Moduls „Train Model“ (Modell trainieren)":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png"alt-text="Select-column":::
 
 ### <a name="add-the-score-model-module"></a>Hinzufügen des Moduls „Score Model“ (Modell bewerten)
 
@@ -256,7 +256,7 @@ Verwenden Sie das Modul **Evaluate Model** (Modell auswerten), um auszuwerten, w
 
     Die fertige Pipeline sollte in etwa wie folgt aussehen:
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png"alt-text="Screenshot: Richtige Pipelinekonfiguration":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png"alt-text="Select-column":::
 
 ## <a name="submit-the-pipeline"></a>Übermitteln der Pipeline
 
@@ -285,7 +285,7 @@ Nach Abschluss der Ausführung können Sie sich die Ergebnisse ansehen. Sehen Si
 
     Hier sehen Sie die vorhergesagten Preise und die tatsächlichen Preise aus den Testdaten.
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/score-result.png"alt-text="Screenshot: Ausgabevisualisierung mit hervorgehobener Spalte „Scored Labels“ (Bewertete Bezeichnungen)":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/score-result.png"alt-text="Select-column":::
 
 ### <a name="evaluate-models"></a>Auswerten von Modellen
 
