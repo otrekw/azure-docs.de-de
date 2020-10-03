@@ -449,12 +449,6 @@
               href: windows-voice-assistants-best-practices.md
             - name: Beispiele und häufig gestellte Fragen
               href: windows-voice-assistants-faq.md
-    - name: Benutzerdefiniertes Schlüsselwort
-      items:
-        - name: Übersicht über benutzerdefinierte Schlüsselwörter
-          href: custom-keyword-overview.md
-        - name: Grundlagen zu benutzerdefinierten Schlüsselwörtern
-          href: custom-keyword-basics.md
 - name: Sprechererkennung
   items:
     - name: Übersicht über die Sprechererkennung
@@ -465,6 +459,12 @@
       items:
         - name: REST-API für die Sprechererkennung
           href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
+- name: Benutzerdefiniertes Schlüsselwort
+  items:
+    - name: Übersicht über benutzerdefinierte Schlüsselwörter
+      href: custom-keyword-overview.md
+    - name: Grundlagen zu benutzerdefinierten Schlüsselwörtern
+      href: custom-keyword-basics.md
 - name: Tools
   items:
     - name: Sprach-SDK
@@ -588,7 +588,7 @@
       href: sovereign-clouds.md
     - name: Preisrechner
       href: 'https://azure.microsoft.com/pricing/calculator/#cognitive-services'
-    - name: Kompatibilität
+    - name: Compliance
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Verschlüsselung
       href: speech-encryption-of-data-at-rest.md
