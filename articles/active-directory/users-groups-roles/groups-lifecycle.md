@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ed286cf2b11429d5f0f56b3a85f173c2a39bc81
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: eb51f402cd7032358e6a9d2f9fad9aa64316b809
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799297"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054550"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>Konfigurieren der Ablaufrichtlinie für Microsoft 365-Gruppen
 
@@ -42,7 +42,7 @@ Informationen zum Herunterladen und Installieren der Azure AD-PowerShell-Cmdlets
 
 ## <a name="activity-based-automatic-renewal"></a>Aktivitätsbasierte automatische Erneuerung
 
-Mit Azure AD-Intelligence werden Gruppen nun automatisch erneuert, je nachdem, ob sie kürzlich verwendet wurden. Durch dieses Feature müssen Gruppenbesitzer nicht mehr manuell eingreifen, da es auf der Benutzeraktivität in Gruppen in Office 365-Diensten wie Outlook, SharePoint oder Teams basiert. Wenn z. B. ein Besitzer oder ein Gruppenmitglied ein Dokument in SharePoint hochlädt, einen Teams-Kanal besucht oder eine E-Mail an die Gruppe in Outlook sendet, wird die Gruppe automatisch erneuert, und der Besitzer erhält keine Benachrichtigung zur Erneuerung.
+Mit Azure AD-Intelligence werden Gruppen nun automatisch erneuert, je nachdem, ob sie kürzlich verwendet wurden. Durch dieses Feature müssen Gruppenbesitzer keine manuellen Aktionen mehr ausführen, weil es auf der Benutzeraktivität in Gruppen in Microsoft 365-Diensten wie Outlook, SharePoint oder Teams basiert. Wenn z. B. ein Besitzer oder ein Gruppenmitglied ein Dokument in SharePoint hochlädt, einen Teams-Kanal besucht oder eine E-Mail an die Gruppe in Outlook sendet, wird die Gruppe automatisch erneuert, und der Besitzer erhält keine Benachrichtigung zur Erneuerung.
 
 ### <a name="activities-that-automatically-renew-group-expiration"></a>Aktivitäten, durch die der Ablauf der Gruppe automatisch verlängert wird
 
