@@ -1,25 +1,25 @@
 ---
-title: Problembehandlung für Datenflüsse
+title: Problembehandlung bei Zuordnungsdatenflüssen
 description: In diesem Artikel wird beschrieben, wie Sie in Azure Data Factory Datenflussprobleme beheben.
 services: data-factory
 ms.author: makromer
 author: kromerm
-manager: anandsub
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 08/16/2020
-ms.openlocfilehash: 0a691b562ebf030712eb0c13a688ea9a52fdb164
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.date: 09/11/2020
+ms.openlocfilehash: e52432c01e649754116fcd0420fa52ae6c4e3733
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263468"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031856"
 ---
-# <a name="troubleshoot-data-flows-in-azure-data-factory"></a>Problembehandlung für Datenflüsse in Azure Data Factory
+# <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Problembehandlung bei Zuordnungsdatenflüssen in Azure Data Factory
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-In diesem Artikel werden die gängigen Problembehandlungsmethoden für Datenflüsse in Azure Data Factory beschrieben.
+In diesem Artikel werden die gängigen Problembehandlungsmethoden für Zuordnungsdatenflüsse in Azure Data Factory beschrieben.
 
 ## <a name="common-errors-and-messages"></a>Häufige Fehler und Meldungen
 
@@ -43,8 +43,10 @@ In diesem Artikel werden die gängigen Problembehandlungsmethoden für Datenflü
 ### <a name="error-code-df-executor-broadcasttimeout"></a>Fehlercode: DF-Executor-BroadcastTimeout
 
 - **Meldung**: Broadcast join timeout error, make sure broadcast stream produces data within 60 secs in debug runs and 300 secs in job runs (Übertragungsjoin-Timeoutfehler: Stellen Sie sicher, dass der Übertragungsdatenstrom in Debugausführungen Daten innerhalb von 60 Sekunden und in Auftragsausführungen innerhalb von 300 Sekunden Daten erzeugt.)
-- **Ursachen**: Das Zeitlimit für Übertragungen beträgt standardmäßig 60 Sekunden bei Debugausführungen und 300 Sekunden bei Auftragsausführungen. Der Datenstrom, der für die Übertragung ausgewählt wurde, ist anscheinend zu groß, um innerhalb dieser Zeitspanne Daten zu erzeugen.
-- **Empfehlung**: Überprüfen Sie die Registerkarte „Optimieren“ auf Ihren Datenflusstransformationen auf „Join“, „Exists“ und „Lookup“. Die Standardoption für die Übertragung ist „Auto“. Wenn diese Option festgelegt ist oder wenn Sie die linke oder rechte Seite manuell unter „Fixed“ für die Übertragung festlegen, dann können Sie entweder eine größere Azure Integration Runtime-Konfiguration festlegen oder die Übertragung deaktivieren. Der empfohlene Ansatz für die optimale Leistung bei Datenflüssen besteht darin, Spark zu erlauben, mit „Auto“ zu übertragen und ein arbeitsspeicheroptimiertes Azure IR zu verwenden.
+- **Ursachen**: Für Übertragungen gilt bei Debugausführungen ein Standardtimeout von 60 Sekunden und bei Auftragsausführungen ein Standardtimeout von 300 Sekunden. Der für die Übertragung ausgewählte Datenstrom ist anscheinend zu groß, um innerhalb dieser Zeitspanne Daten zu erzeugen.
+- **Empfehlung**: Überprüfen Sie die Registerkarte „Optimieren“ auf Ihren Datenflusstransformationen auf „Join“, „Exists“ und „Lookup“. Die Standardoption für die Übertragung ist „Auto“. Wenn „Auto“ festgelegt ist oder Sie die linke oder rechte Seite unter „Fixed“ für die Übertragung manuell festlegen, können Sie entweder eine größere Azure Integration Runtime-Konfiguration festlegen oder die Übertragung deaktivieren. Der empfohlene Ansatz für die optimale Leistung bei Datenflüssen besteht darin, Spark zu erlauben, mit „Auto“ zu übertragen und ein arbeitsspeicheroptimiertes Azure IR zu verwenden.
+
+Wenn Sie den Datenfluss in einer Debugtestausführung über eine Debugpipelineausführung ausführen, kann diese Bedingung häufiger auftreten. Dies liegt daran, dass ADF das Übertragungstimeout auf 60 Sekunden einschränkt, um ein schnelleres Debuggen zu gewährleisten. Wenn Sie dies auf das Timeout von 300 Sekunden einer ausgelösten Ausführung verlängern möchten, können Sie die Optionen „Debug“ > „Use Activity Runtime“ auswählen, um die in Ihrer Pipelineaktivität zum Ausführen des Datenflusses definierte Azure IR zu verwenden.
 
 ### <a name="error-code-df-executor-conversion"></a>Fehlercode: DF-Executor-Conversion
 
@@ -57,6 +59,46 @@ In diesem Artikel werden die gängigen Problembehandlungsmethoden für Datenflü
 - **Meldung**: Column name needs to be specified in the query, set an alias if using a SQL function (Spaltenname muss in der Abfrage angegeben werden. Legen Sie einen Alias fest, wenn Sie eine SQL-Funktion verwenden.)
 - **Ursachen**: Es wurde kein Spaltenname angegeben.
 - **Empfehlung**: Legen Sie einen Alias fest, wenn Sie SQL-Funktionen wie min()/max() etc. verwenden.
+
+ ### <a name="error-code-df-executor-drivererror"></a>Fehlercode: DF-Executor-DriverError
+- **Meldung**: INT96 ist ein älterer Zeitstempeltyp, der vom ADF-Datenfluss nicht unterstützt wird. Sie sollten den Spaltentyp auf die aktuellen Typen aktualisieren.
+- **Ursachen**: Treiberfehler
+- **Empfehlung**: INT96 ist ein älterer Zeitstempeltyp, der vom ADF-Datenfluss nicht unterstützt wird. Sie sollten den Spaltentyp auf die aktuellen Typen aktualisieren.
+
+ ### <a name="error-code-df-executor-blockcountexceedslimiterror"></a>Fehlercode: DF-Executor-BlockCountExceedsLimitError
+- **Meldung**: Die Anzahl der Blöcke ohne Commit darf den maximalen Grenzwert von 100.000 Blöcken nicht überschreiten. Überprüfen Sie die Blobkonfiguration.
+- **Ursachen**: Ein Blob darf maximal 100.000 Blöcke ohne Commit enthalten.
+- **Empfehlung**: Wenden Sie sich bezüglich dieses Problems an das Microsoft-Produktteam, um weitere Informationen zu erhalten.
+
+ ### <a name="error-code-df-executor-partitiondirectoryerror"></a>Fehlercode: DF-Executor-PartitionDirectoryError
+- **Meldung**: Der angegebene Quellpfad weist entweder mehrere partitionierte Verzeichnisse (z. B. <Source Path>/<Partitionsstammverzeichnis 1>/a=10/b=20, <Source Path>/<Partitionsstammverzeichnis 2>/c=10/d=30) oder ein partitioniertes Verzeichnis mit einer anderen Datei oder einem nicht partitionierten Verzeichnis auf (z. B. <Source Path>/<Partitionsstammverzeichnis 1>/a=10/b=20, <Source Path>/Verzeichnis 2/Datei1). Entfernen Sie das Partitionsstammverzeichnis aus dem Quellpfad, und lesen Sie es durch eine separate Quelltransformation.
+- **Ursachen**: Der Quellpfad weist entweder mehrere partitionierte Verzeichnisse oder ein partitioniertes Verzeichnis mit einer anderen Datei oder einem nicht partitionierten Verzeichnis auf.
+- **Empfehlung**: Entfernen Sie das partitionierte Stammverzeichnis aus dem Quellpfad, und lesen Sie es durch eine separate Quelltransformation.
+
+ ### <a name="error-code-df-executor-outofmemoryerror"></a>Fehlercode: DF-Executor-OutOfMemoryError
+- **Meldung**: Nicht genügend Arbeitsspeicher während der Ausführung im Cluster verfügbar. Wiederholen Sie den Vorgang mit einer Integration Runtime mit einer größeren Anzahl von Kernen und/oder einem arbeitsspeicheroptimierten Computetyp.
+- **Ursachen**: Der Cluster verfügt nicht über genügend Arbeitsspeicher.
+- **Empfehlung**: Debugcluster sind für Entwicklungszwecke gedacht. Nutzen Sie Datenstichproben, den entsprechenden Computetyp und die richtige Größe, um die Nutzlast auszuführen. Lesen Sie die [Anleitung zur Leistung und Optimierung der Mapping Data Flow-Funktion](concepts-data-flow-performance.md), um zu erfahren, wie Sie die beste Leistung erzielen können.
+
+ ### <a name="error-code-df-executor-illegalargument"></a>Fehlercode: DF-Executor-illegalArgument
+- **Meldung**: Stellen Sie sicher, dass in Ihrem verknüpften Dienst der richtige Zugriffsschlüssel verwendet wird.
+- **Ursachen**: Falscher Kontoname oder Zugriffsschlüssel
+- **Empfehlung**: Stellen Sie sicher, dass in Ihrem verknüpften Dienst der richtige Kontoname oder Zugriffsschlüssel angegeben ist. 
+
+ ### <a name="error-code-df-executor-invalidtype"></a>Fehlercode: DF-Executor-InvalidType
+- **Meldung**: Stellen Sie sicher, dass der Parametertyp mit dem Typ des übergebenen Werts übereinstimmt. Das Übergeben von float-Parametern aus Pipelines wird derzeit nicht unterstützt.
+- **Ursachen**: Inkompatible Datentypen zwischen dem deklarierten Typ und dem tatsächlichen Parameterwert
+- **Empfehlung**: Vergewissern Sie sich, dass die an einen Datenfluss übergebenen Parameterwerte dem deklarierten Typ entsprechen.
+
+ ### <a name="error-code-df-executor-columnunavailable"></a>Fehlercode: DF-Executor-ColumnUnavailable
+- **Meldung**: Der im Ausdruck verwendete Spaltenname ist nicht verfügbar oder ungültig.
+- **Ursachen**: Ungültiger oder nicht verfügbarer Spaltenname in Ausdrücken
+- **Empfehlung**: Überprüfen Sie die in Ausdrücken verwendeten Spaltennamen.
+
+ ### <a name="error-code-df-executor-parseerror"></a>Fehlercode: DF-Executor-ParseError
+- **Meldung**: Der Ausdruck kann nicht analysiert werden.
+- **Ursachen**: Der Ausdruck weist Analysefehler aufgrund der Formatierung auf.
+- **Empfehlung**: Überprüfen Sie die Formatierung des Ausdrucks.
 
 ### <a name="error-code-getcommand-outputasync-failed"></a>Fehlercode: GetCommand OutputAsync failed (Fehler bei GetCommand OutputAsync)
 

@@ -11,13 +11,13 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 08/11/2020
-ms.openlocfilehash: 3bc8458aa009920f183b076d12185295ef294e07
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.date: 09/15/2020
+ms.openlocfilehash: ff56ef55066fd0f56b5b8dc7507bfb63b8b8baa0
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88186079"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090600"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Anpassen des Setups für eine Azure-SSIS Integration Runtime
 
@@ -40,7 +40,7 @@ Sie können sowohl kostenlose (nicht lizenzierte) als auch kostenpflichtige (liz
 
 Die folgenden Einschränkungen gelten nur für benutzerdefinierte Standard-Setups:
 
-- Wenn Sie *gacutil.exe* in Ihrem Skript verwenden möchten, um Assemblys im globalen Assemblycache (GAC) zu installieren, müssen Sie *gacutil.exe* als Teil Ihres benutzerdefinierten Setups bereitstellen. Oder Sie können die Kopie verwenden, die in unserem Container *Öffentliche Vorschau* bereitgestellt wird. Dies wird weiter unten im Abschnitt „Anweisungen“ erläutert.
+- Wenn Sie *gacutil.exe* in Ihrem Skript verwenden möchten, um Assemblys im globalen Assemblycache (GAC) zu installieren, müssen Sie *gacutil.exe* als Teil Ihres benutzerdefinierten Setups bereitstellen. Sie können auch die im Ordner *Sample* unseres *Public Preview*-Containers bereitgestellte Kopie verwenden. Weitere Informationen finden Sie unten im Abschnitt **Beispiele für benutzerdefinierte Standardsetups**.
 
 - Wenn Sie in Ihrem Skript auf einen Unterordner verweisen möchten, unterstützt *msiexec.exe* nicht die `.\`-Notation zum Verweisen auf den Stammordner. Verwenden Sie einen Befehl, z. B. `msiexec /i "MySubfolder\MyInstallerx64.msi" ...`, anstelle von `msiexec /i ".\MySubfolder\MyInstallerx64.msi" ...`.
 
@@ -147,9 +147,9 @@ Wenn Sie den Typ **Lizenzierte Komponente installieren** für das benutzerdefini
 
    * Wenn Sie die Komponente **SQLPhonetics.NET von oh22** auswählen, können Sie die [SQLPhonetics.NET](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis)-Datenqualitäts-/Zuordnungskomponente von oh22 in Ihrer Azure-SSIS IR installieren. Geben Sie hierzu im Textfeld **Lizenzschlüssel** den zuvor erworbenen Produktlizenzschlüssel ein. Die aktuelle integrierte Version ist **1.0.45**.
 
-   * Wenn Sie die Komponente **SSIS Integration Toolkit von KingswaySoft** auswählen, können Sie die [SSIS Integration Toolkit](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365)-Connector-Sammlung für Apps für CRM/ERP/Marketing/Zusammenarbeit, z. B. Microsoft Dynamics/SharePoint/Project Server, Oracle/Salesforce Marketing Cloud usw., von KingswaySoft in Ihrer Azure-SSIS IR installieren. Geben Sie hierzu im Textfeld **Lizenzschlüssel** den zuvor erworbenen Produktlizenzschlüssel ein. Die aktuelle integrierte Version ist **2019.2**.
+   * Wenn Sie die Komponente **SSIS Integration Toolkit von KingswaySoft** auswählen, können Sie die [SSIS Integration Toolkit](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365)-Connector-Sammlung für Apps für CRM/ERP/Marketing/Zusammenarbeit, z. B. Microsoft Dynamics/SharePoint/Project Server, Oracle/Salesforce Marketing Cloud usw., von KingswaySoft in Ihrer Azure-SSIS IR installieren. Geben Sie hierzu im Textfeld **Lizenzschlüssel** den zuvor erworbenen Produktlizenzschlüssel ein. Die aktuelle integrierte Version ist **2020.1**.
 
-   * Wenn Sie die Komponente **SSIS Productivity Pack von KingswaySoft** auswählen, können Sie die [SSIS Productivity Pack](https://www.kingswaysoft.com/products/ssis-productivity-pack)-Komponentensammlung von KingswaySoft in Ihrer Azure-SSIS IR installieren. Geben Sie hierzu im Textfeld **Lizenzschlüssel** den zuvor erworbenen Produktlizenzschlüssel ein. Die aktuelle integrierte Version ist **10.0**.
+   * Wenn Sie die Komponente **SSIS Productivity Pack von KingswaySoft** auswählen, können Sie die [SSIS Productivity Pack](https://www.kingswaysoft.com/products/ssis-productivity-pack)-Komponentensammlung von KingswaySoft in Ihrer Azure-SSIS IR installieren. Geben Sie hierzu im Textfeld **Lizenzschlüssel** den zuvor erworbenen Produktlizenzschlüssel ein. Die aktuelle integrierte Version ist **20.1**.
 
    * Wenn Sie die Komponente **Xtract IS von Theobald Software** auswählen, können Sie die [Xtract IS](https://theobald-software.com/en/xtract-is/)-Connector-Sammlung für SAP-Systeme (ERP, S/4HANA, BW) von Theobald Software in Ihrer Azure-SSIS IR installieren. Dazu müssen Sie die zuvor erworbene Produktlizenzdatei per Drag & Drop in das Eingabefeld **Lizenzdatei** ziehen oder hochladen. Die aktuelle integrierte Version ist **6.1.1.3**.
 

@@ -13,12 +13,12 @@ ms.topic: end-user-help
 ms.date: 05/28/2020
 ms.author: curtand
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 8c6a9304927f5d4bcad895b725955c522b60207a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c9d8bb85aac87503ca641f6633668a6dc582882f
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266235"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056080"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>Verwalten von App-Kennwörtern für die zweistufige Überprüfung
 
@@ -44,7 +44,7 @@ Sie können App-Kennwörter erstellen und löschen, je nachdem, wie Sie die zwei
 
 - **Ihr Unternehmen verwendet die zweistufige Überprüfung und die Seite „Zusätzliche Sicherheitsüberprüfung“.** Wenn Sie Ihr Geschäfts-, Schul- oder Unikonto (z. B. alain@contoso.com) mit zweistufiger Überprüfung in Ihrer Organisation verwenden, können Sie Ihre App-Kennwörter auf der Seite [Zusätzliche Sicherheitsprüfung](https://account.activedirectory.windowsazure.com/Proofup.aspx) verwalten. Ausführliche Anweisungen finden Sie unter [Erstellen und Löschen von App-Kennwörtern mithilfe der Seite „Zusätzliche Sicherheitsüberprüfung“](#create-and-delete-app-passwords-from-the-additional-security-verification-page) in diesem Artikel.
 
-- **Ihr Unternehmen verwendet die zweistufige Überprüfung und das Office 365-Portal.** Wenn Sie in Ihrem Unternehmen Ihr Geschäfts-, Schul- oder Unikonto (z. B. alain@contoso.com) die zweistufige Überprüfung und Office 365-Anwendungen verwenden, können Sie Ihre App-Kennwörter auf der [Office 365-Portalseite](https://www.office.com) verwalten. Ausführliche Anweisungen finden Sie unter [Erstellen und Löschen von App-Kennwörtern mithilfe des Office 365-Portals](#create-and-delete-app-passwords-using-the-office-365-portal) in diesem Artikel.
+- **Ihr Unternehmen verwendet die zweistufige Überprüfung und das Office 365-Portal.** Wenn Sie Ihr Geschäfts-, Schul- oder Unikonto (z. B. alain@contoso.com) mit zweistufiger Überprüfung und Microsoft 365-Apps in Ihrer Organisation verwenden, können Sie Ihre App-Kennwörter auf der [Office 365-Portalseite](https://www.office.com) verwalten. Ausführliche Anweisungen finden Sie unter [Erstellen und Löschen von App-Kennwörtern mithilfe des Office 365-Portals](#create-and-delete-app-passwords-using-the-office-365-portal) in diesem Artikel.
 
 - **Sie verwenden eine zweistufige Überprüfung mit einem privaten Microsoft-Konto.** Wenn Sie ein privates Microsoft-Konto (z. B. alain@outlook.com) mit zweistufiger Überprüfung verwenden, können Sie Ihre App-Kennwörter auf der Seite [Grundlegendes zur Sicherheit](https://account.microsoft.com/security/) verwalten. Ausführliche Anweisungen finden Sie unter [Verwenden von App-Kennwörtern mit Apps, die keine zweistufige Überprüfung unterstützen](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-and-two-step-verification).
 
@@ -82,11 +82,11 @@ Sie können App-Kennwörter auf der Seite **Zusätzliche Sicherheitsüberprüfun
 
 ## <a name="create-and-delete-app-passwords-using-the-office-365-portal"></a>Erstellen und Löschen von App-Kennwörtern über das Office 365-Portal
 
-Wenn Sie die zweistufige Überprüfung mit Ihrem Geschäfts-, Schul- oder Unikonto und Ihren Office 365-Apps verwenden, können Sie Ihre App-Kennwörter über das Office 365-Portal erstellen und löschen.
+Wenn Sie die zweistufige Überprüfung mit Ihrem Geschäfts-, Schul- oder Unikonto und Ihren Microsoft 365-Apps verwenden, können Sie Ihre App-Kennwörter über das Office 365-Portal erstellen und löschen.
 
 ### <a name="to-create-app-passwords-using-the-office-365-portal"></a>So erstellen Sie App-Kennwörter im Office 365-Portal
 
-1. Melden Sie sich bei Office 365 an, und wechseln Sie dann zur Seite [Mein Konto](https://portal.office.com), wählen Sie **Sicherheit und Datenschutz** aus, und erweitern Sie dann **Zusätzliche Sicherheitsüberprüfung**.
+1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, wechseln Sie zur Seite [Mein Konto](https://portal.office.com), wählen Sie **Sicherheit und Datenschutz** aus, und erweitern Sie dann **Zusätzliche Sicherheitsüberprüfung**.
 
     ![Office-Portal mit erweitertem Bereich „Zusätzliche Sicherheitsüberprüfung“](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-o365-my-account-page.png)
 

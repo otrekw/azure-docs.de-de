@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2da67b9996156f136aa2eddb8aa3d2b1777a554
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: c00c89e5f81bcb142c50e5f3438c1af2d72a9de5
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88794551"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056216"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Azure Active Directory-Cmdlets Version 2 für die Gruppenverwaltung
 
@@ -53,7 +53,7 @@ Verwenden Sie die folgenden Befehle, um das Azure AD PowerShell-Modul zu install
 Sie können die Cmdlets jetzt im Modul verwenden. Eine ausführliche Beschreibung der Cmdlets im Azure AD-Modul finden Sie in der Onlinereferenzdokumentation für [Azure Active Directory PowerShell Version 2](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0).
 
 > [!NOTE]
-> Die Azure AD PowerShell-Cmdlets funktionieren nicht mit der neuen Version von PowerShell (Version 7), da diese auf .NET Core basiert. Wir arbeiten derzeit an einem Update, um dieses Problem zu beheben. In der Zwischenzeit verwenden Sie am besten das Windows PowerShell 5.x-Modul für Azure AD PowerShell-Vorgänge. 
+> Die Azure AD PowerShell-Cmdlets funktionieren nicht mit der neuen Version von PowerShell (Version 7), da diese auf .NET Core basiert. Wir arbeiten derzeit an einem Update, um dieses Problem zu beheben. In der Zwischenzeit verwenden Sie am besten das Windows PowerShell 5.x-Modul für Azure AD PowerShell-Vorgänge. 
 
 
 ## <a name="connect-to-the-directory"></a>Herstellen einer Verbindung mit dem Verzeichnis
@@ -328,13 +328,13 @@ Wenn eine Gruppe erstellt wird, ermöglichen bestimmte Endpunkte dem Benutzer, e
 
 ## <a name="group-writeback-to-on-premises-preview"></a>Rückschreiben von Gruppen in das lokale Azure AD (Vorschau)
 
-Heutzutage werden viele Gruppen immer noch im lokalen Active Directory verwaltet. Als Reaktion auf Anforderungen zum Synchronisieren von Cloudgruppen mit dem lokalen Active Directory ist jetzt das Feature Office 365-Gruppenrückschreiben für Azure AD als Vorschau verfügbar.
+Heutzutage werden viele Gruppen immer noch im lokalen Active Directory verwaltet. Als Reaktion auf Anforderungen zum Synchronisieren von Cloudgruppen mit der lokalen Instanz ist das Microsoft 365-Gruppenrückschreiben für Azure AD jetzt als Vorschaufunktion verfügbar.
 
-Office 365-Gruppen werden in der Cloud erstellt und verwaltet. Die Funktion zum Rückschreiben ermöglicht Ihnen, Office 365-Gruppen als Verteilergruppen in eine Active Directory-Gesamtstruktur bei installiertem Exchange zurückzuschreiben. Benutzer mit lokalen Exchange-Postfächern können E-Mails von diesen Gruppen senden und empfangen. Das Feature „Gruppenrückschreiben“ unterstützt keine Azure AD-Sicherheitsgruppen oder -Verteilergruppen.
+Microsoft 365-Gruppen werden in der Cloud erstellt und verwaltet. Mit der Funktion zum Rückschreiben können Sie Microsoft 365-Gruppen als Verteilergruppen in eine Active Directory-Gesamtstruktur bei installiertem Exchange zurückschreiben. Benutzer mit lokalen Exchange-Postfächern können E-Mails von diesen Gruppen senden und empfangen. Das Feature „Gruppenrückschreiben“ unterstützt keine Azure AD-Sicherheitsgruppen oder -Verteilergruppen.
 
 Weitere Informationen finden Sie in der Dokumentation für den [Azure AD Connect-Synchronisierungsdienst](../hybrid/how-to-connect-syncservice-features.md).
 
-Office 365-Gruppenrückschreiben ist ein Feature der öffentlichen Vorschauversion von Azure Active Directory (Azure AD) und mit jedem kostenpflichtigen Azure AD-Lizenzplan verfügbar. Rechtliche Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Microsoft 365-Gruppenrückschreiben ist eine Funktion in der öffentlichen Vorschauversion von Azure Active Directory (Azure AD) und mit jedem kostenpflichtigen Azure AD-Lizenzplan verfügbar. Rechtliche Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

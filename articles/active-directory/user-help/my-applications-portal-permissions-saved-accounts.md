@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 02/03/2020
 ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: 8507a53959e7d28cbcec2dec6783b2470696d59b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 993e75f6a5a39e076a9e7161b62abba85d9b0eab
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798107"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031091"
 ---
 # <a name="edit-or-revoke-application-permissions-in-the-my-apps-portal"></a>Bearbeiten oder Widerrufen von Anwendungsberechtigungen im Portal „Meine Apps“
 
@@ -28,9 +28,9 @@ Wenn Sie Organisationsanwendungen im Portal **Meine Apps** verwenden, erteilen S
 >[!Important]
 >Dieser Inhalt richtet sich an Benutzer. Administratoren können sich in der [Dokumentation zur Anwendungsverwaltung](../manage-apps/access-panel-collections.md) über die Einrichtung und Verwaltung cloudbasierter Apps informieren.
 
-## <a name="manage-app-permissions"></a>Verwalten von App-Berechtigungen
+## <a name="manage-app-accounts"></a>Verwalten von App-Konten
 
-Wählen Sie zum Anzeigen der Berechtigungen, denen Sie oder Ihr Administrator zugestimmt haben, das Auslassungszeichen ( **...** ) aus, das angezeigt wird, wenn Sie im Portal **Meine Apps** auf eine App zeigen. Wählen Sie anschließend **Anwendungen verwalten** aus:
+Wählen Sie zum Anzeigen der Apps, denen Sie oder Ihr Administrator zugestimmt haben/hat, das Auslassungszeichen ( **...** ) aus, das angezeigt wird, wenn Sie im Portal **Meine Apps** auf eine App zeigen, und wählen Sie dann **Anwendungen verwalten** aus:
 
 ![Verwalten einer Anwendung im Portal „Meine Apps“](media/my-applications-portal-permissions-saved-accounts/manage-your-application.png)
 

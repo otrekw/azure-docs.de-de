@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c7f91285b393734bce83785dde62fd573e94ac0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a77a4808390f816bc3a6646520f4b542bee89d4c
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254513"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89438516"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Kopieren von Daten nach oder aus Azure Blob Storage mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -31,7 +31,7 @@ ms.locfileid: "85254513"
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten nach und aus Azure Blob Storage zu kopieren. Dieser Artikel baut auf dem Artikel zu [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit der Kopieraktivität bietet.
 
 ## <a name="overview"></a>Übersicht
-Sie können Daten aus einem beliebigen unterstützten Quelldatenspeicher in Azure Blob Storage bzw. aus Azure Blob Storage in einen beliebigen unterstützten Senkendatenspeicher kopieren. Die folgende Tabelle enthält eine Liste der Datenspeicher, die als Quellen oder Senken (Ziele) für die Kopieraktivität unterstützt werden. Beispielsweise können Sie Daten **aus** einer SQL Server-Datenbank oder einer Datenbank in Azure SQL-Datenbank **in** den Azure Blob Storage verschieben. Außerdem können Sie Daten **aus** Azure Blob Storage **in** eine Azure SQL Data Warehouse- oder Azure Cosmos DB-Sammlung kopieren.
+Sie können Daten aus einem beliebigen unterstützten Quelldatenspeicher in Azure Blob Storage bzw. aus Azure Blob Storage in einen beliebigen unterstützten Senkendatenspeicher kopieren. Die folgende Tabelle enthält eine Liste der Datenspeicher, die als Quellen oder Senken (Ziele) für die Kopieraktivität unterstützt werden. Beispielsweise können Sie Daten **aus** einer SQL Server-Datenbank oder einer Datenbank in Azure SQL-Datenbank **in** den Azure Blob Storage verschieben. Außerdem können Sie Daten **aus** Azure Blob Storage **in** Azure Synapse Analytics (ehemals SQL Data Warehouse) oder in eine Azure Cosmos DB-Sammlung kopieren.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -221,14 +221,14 @@ Es wird nun gezeigt, wie Daten schnell in einen/aus einem Azure Blob Storage kop
 5. Auf der Seite **Eingabedatei oder -ordner auswählen** :
     1. Doppelklicken Sie auf **adfblobcontainer**.
     2. Wählen Sie **input** aus, und klicken Sie auf **Auswählen**. In dieser exemplarischen Vorgehensweise wählen Sie den Ordner „input“ aus. Sie könnten stattdessen die Datei „emp.txt“ im Ordner auswählen.
-        ![Kopiertool – Eingabedatei- oder -ordner auswählen](./media/data-factory-azure-blob-connector/copy-tool-choose-input-file-or-folder.png)
+        ![Kopiertool: Auswählen der Eingabedatei oder des Eingabeordners 1](./media/data-factory-azure-blob-connector/copy-tool-choose-input-file-or-folder.png)
 6. Auf der Seite für **Eingabedatei oder -ordner auswählen**:
     1. Vergewissern Sie sich, dass **Datei oder Ordner** auf **adfblobconnector/input** festgelegt ist. Wenn sich die Dateien in Unterordnern befinden, z. B. „2017/04/01“, „2017/04/02“ usw., geben Sie „adfblobconnector/input/{year}/{month}/{day}“ für „Datei oder Ordner“ ein. Wenn Sie im Textfeld die TAB-TASTE drücken, werden drei Dropdownlisten angezeigt, in denen die Formate für Jahr (yyyy), Monat (MM) und Tag (dd) ausgewählt werden können.
     2. Aktivieren Sie nicht die Option **Dateien rekursiv kopieren**. Aktivieren Sie diese Option, wenn Sie die Ordner rekursiv durchlaufen möchten, um die in das Ziel zu kopierenden Dateien auszuwählen.
     3. Aktivieren Sie nicht die **Binärkopie**. Aktivieren Sie diese Option, um die Quelldatei als Binärkopie in das Ziel zu kopieren. Aktivieren Sie diese Option nicht für diese exemplarische Vorgehensweise, damit auf den nächsten Seiten weitere Optionen angezeigt werden.
     4. Vergewissern Sie sich, dass der **Komprimierungstyp** auf **Kein** festgelegt ist. Wählen Sie einen Wert für diese Option aus, wenn die Quelldateien in einem der unterstützten Formate komprimiert sind.
     5. Klicken Sie auf **Weiter**.
-    ![Kopiertool – Eingabedatei- oder -ordner auswählen](./media/data-factory-azure-blob-connector/chose-input-file-folder.png)
+    ![Kopiertool: Auswählen der Eingabedatei oder des Eingabeordners 2](./media/data-factory-azure-blob-connector/chose-input-file-folder.png)
 7. Auf der Seite **File format settings** (Dateiformateinstellungen) werden die Trennzeichen und das Schema angezeigt. Diese Informationen werden vom Assistenten beim Analysieren der Datei automatisch erkannt.
     1. Bestätigen Sie die folgenden Optionen:  
         a. Das **Dateiformat** ist auf **Textformat** festgelegt. In der Dropdownliste werden alle unterstützten Formate angezeigt. Beispiel: JSON, Avro, ORC, Parquet.

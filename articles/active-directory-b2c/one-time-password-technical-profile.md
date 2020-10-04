@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/26/2020
+ms.date: 09/02/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9592afbf74e65bcb2fe9319da764bf06d8d4eb6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b0a90eee4a1bd309a04cf355eb8d8c0564830aa
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385721"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89418907"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Definieren eines technischen Einmalkennwortprofils in einer benutzerdefinierten Azure AD B2C-Richtlinie
 
@@ -77,6 +77,7 @@ Die folgenden Einstellungen können verwendet werden, um den Codegenerierungsmod
 | CodeLength | Nein | Die Länge des Codes. Standardwert: `6`. |
 | CharacterSet | Nein | Der Zeichensatz für den Code, der für die Verwendung in einem regulären Ausdruck formatiert ist. Beispiel: `a-z0-9A-Z`. Standardwert: `0-9`. Der Zeichensatz muss mindestens zehn verschiedene Zeichen enthalten, die im angegebenen Zeichensatz enthalten sind. |
 | NumRetryAttempts | Nein | Die Anzahl der Überprüfungsversuche, bevor der Code als ungültig betrachtet wird. Standardwert: `5`. |
+| NumCodeGenerationAttempts | Nein | Die maximale Anzahl von Codegenerierungsversuchen pro Bezeichner. Der Standardwert lautet „10“, wenn keine Angabe erfolgt. |
 | Vorgang | Ja | Der Vorgang, der ausgeführt werden soll. Möglicher Wert: `GenerateCode`. |
 | ReuseSameCode | Nein | Gibt an, ob ein doppelter Code angegeben werden soll, anstatt einen neuen Code zu generieren, wenn der angegebene Code noch nicht abgelaufen und gültig ist. Standardwert: `false`. |
 
@@ -94,6 +95,7 @@ Das folgende Beispiel `TechnicalProfile` wird zum Erstellen eines Codes verwende
     <Item Key="CodeLength">6</Item>
     <Item Key="CharacterSet">0-9</Item>
     <Item Key="NumRetryAttempts">5</Item>
+    <Item Key="NumCodeGenerationAttempts">15</Item>
     <Item Key="ReuseSameCode">false</Item>
   </Metadata>
   <InputClaims>
@@ -130,7 +132,7 @@ Das **OutputClaimsTransformations**-Element darf eine Sammlung von **OutputClaim
 
 Die folgenden Einstellungen können verwendet werden, um den Codeüberprüfungsmodus zu konfigurieren:
 
-| attribute | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | Vorgang | Ja | Der Vorgang, der ausgeführt werden soll. Möglicher Wert: `VerifyCode`. |
 
@@ -143,6 +145,7 @@ Die folgenden Metadaten können verwendet werden, um die Fehlermeldungen zu konf
 | --------- | -------- | ----------- |
 | UserMessageIfSessionDoesNotExist | Nein | Die Meldung, die dem Benutzer angezeigt werden soll, wenn die Codeüberprüfungssitzung abgelaufen ist. Der Code ist entweder abgelaufen, oder der Code wurde nie für einen angegebenen Bezeichner generiert. |
 | UserMessageIfMaxRetryAttempted | Nein | Die Meldung, die dem Benutzer angezeigt werden soll, wenn die maximal zulässige Anzahl von Überprüfungsversuchen überschritten wurde. |
+| UserMessageIfMaxNumberOfCodeGenerated | Nein | Die Meldung, die dem Benutzer angezeigt werden soll, wenn die maximal zulässige Anzahl von Codegenerierungsversuchen überschritten wurde. |
 | UserMessageIfInvalidCode | Nein | Die Meldung, die dem Benutzer angezeigt werden soll, wenn ein ungültiger Code bereitgestellt wurde. |
 | UserMessageIfVerificationFailedRetryAllowed | Nein | Die Meldung, die dem Benutzer angezeigt werden soll, wenn ein ungültiger Code bereitgestellt wurde und der Benutzer berechtigt ist, den richtigen Code bereitzustellen.  |
 |UserMessageIfSessionConflict|Nein| Die Meldung, die dem Benutzer angezeigt werden soll, wenn der Code nicht überprüft werden kann.|

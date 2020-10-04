@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 9b5a2bb939384ff06423693c8e4a788b80f3908c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e47f82323919f4fec3f28ec2f7698d734ab72ac6
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85318891"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89490121"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory – JSON-Skiptreferenz
 > [!NOTE]
@@ -377,7 +377,7 @@ Klicken Sie auf den Link für den Speicher, an dem Sie interessiert sind, um die
 | &nbsp; |Azure Data Lake Store |
 | &nbsp; |[Azure Cosmos DB](#azure-cosmos-db) |
 | &nbsp; |[Azure SQL-Datenbank](#azure-sql-database) |
-| &nbsp; |[Azure SQL Data Warehouse](#azure-sql-data-warehouse) |
+| &nbsp; |[Azure Synapse Analytics (ehemals SQL Data Warehouse)](#azure-synapse-analytics) |
 | &nbsp; |[Azure Cognitive Search](#azure-cognitive-search) |
 | &nbsp; |[Azure Table Storage](#azure-table-storage) |
 | **Datenbanken** |[Amazon Redshift](#amazon-redshift) |
@@ -1100,14 +1100,14 @@ Legen Sie beim Kopieren von Daten in eine Azure SQL-Datenbank den **Senkentyp** 
 
 Weitere Informationen finden Sie im Artikel zum [Azure SQL-Connector](data-factory-azure-sql-connector.md#copy-activity-properties).
 
-## <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
+## <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
 ### <a name="linked-service"></a>Verknüpfter Dienst
-Legen Sie zum Definieren eines verknüpften Azure SQL Data Warehouse-Diensts den **Typ** des verknüpften Diensts auf **AzureSqlDW** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
+Legen Sie zum Definieren eines verknüpften Azure Synapse Analytics-Diensts den **Typ** des verknüpften Diensts auf **AzureSqlDW** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| connectionString |Geben Sie Informationen, die zur Verbindung mit der Azure SQL Data Warehouse-Instanz erforderlich sind, für die Eigenschaft "connectionString" ein. |Ja |
+| connectionString |Geben Sie Informationen, die zum Herstellen einer Verbindung mit der Azure Synapse Analytics-Instanz erforderlich sind, für die Eigenschaft „connectionString“ an. |Ja |
 
 
 
@@ -1125,14 +1125,14 @@ Legen Sie zum Definieren eines verknüpften Azure SQL Data Warehouse-Diensts den
 }
 ```
 
-Weitere Informationen finden Sie im Artikel zum [Azure SQL Data Warehouse-Connector](data-factory-azure-sql-data-warehouse-connector.md#linked-service-properties).
+Weitere Informationen finden Sie im Artikel [Azure Synapse Analytics-Connector](data-factory-azure-sql-data-warehouse-connector.md#linked-service-properties).
 
 ### <a name="dataset"></a>Dataset
-Legen Sie zum Definieren eines Azure SQL Data Warehouse-Datasets den **Typ** des Datasets auf **AzureSqlDWTable** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
+Legen Sie zum Definieren eines Azure Synapse Analytics-Datasets den **Typ** des Datasets auf **AzureSqlDWTable** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| tableName |Name der Tabelle oder Sicht in der Azure SQL Data Warehouse-Datenbank, auf die der verknüpfte Dienst verweist. |Ja |
+| tableName |Der Name der Tabelle oder Sicht in der Azure Synapse Analytics-Datenbank, auf die der verknüpfte Dienst verweist. |Ja |
 
 #### <a name="example"></a>Beispiel
 
@@ -1161,10 +1161,10 @@ Legen Sie zum Definieren eines Azure SQL Data Warehouse-Datasets den **Typ** des
 }
 ```
 
-Weitere Informationen finden Sie im Artikel zum [Azure SQL Data Warehouse-Connector](data-factory-azure-sql-data-warehouse-connector.md#dataset-properties).
+Weitere Informationen finden Sie im Artikel [Azure Synapse Analytics-Connector](data-factory-azure-sql-data-warehouse-connector.md#dataset-properties).
 
-### <a name="sql-dw-source-in-copy-activity"></a>SAP DW-Quelle in der Kopieraktivität
-Legen Sie beim Kopieren von Daten aus einer Azure SQL Data Warehouse-Instanz den **Quelltyp** der Kopieraktivität auf **SqlDWSource** fest, und geben Sie im Abschnitt **source** die folgenden Eigenschaften an:
+### <a name="azure-synapse-analytics-source-in-copy-activity"></a>Azure Synapse Analytics-Quelle in der Kopieraktivität
+Legen Sie beim Kopieren von Daten aus Azure Synapse Analytics den **Quelltyp** der Kopieraktivität auf **SqlDWSource** fest, und geben Sie im Abschnitt **source** die folgenden Eigenschaften an:
 
 
 | Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
@@ -1216,15 +1216,15 @@ Legen Sie beim Kopieren von Daten aus einer Azure SQL Data Warehouse-Instanz den
 }
 ```
 
-Weitere Informationen finden Sie im Artikel zum [Azure SQL Data Warehouse-Connector](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties).
+Weitere Informationen finden Sie im Artikel [Azure Synapse Analytics-Connector](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties).
 
-### <a name="sql-dw-sink-in-copy-activity"></a>SQL DW-Senke in der Kopieraktivität
-Legen Sie beim Kopieren von Daten in eine Azure SQL Data Warehouse-Instanz den **Senkentyp** der Kopieraktivität auf **SqlDWSink** fest, und geben Sie im Abschnitt **sink** die folgenden Eigenschaften an:
+### <a name="azure-synapse-analytics-sink-in-copy-activity"></a>Azure Synapse Analytics-Senke in der Kopieraktivität
+Legen Sie beim Kopieren von Daten in Azure Synapse Analytics den **Senkentyp** der Kopieraktivität auf **SqlDWSink** fest, und geben Sie im Abschnitt **sink** die folgenden Eigenschaften an:
 
 | Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
 | sqlWriterCleanupScript |Geben Sie eine Abfrage für die Kopieraktivität an, bei deren Ausführung die Daten eines bestimmten Slice bereinigt werden. |Eine Abfrageanweisung. |Nein |
-| allowPolyBase |Gibt an, ob (falls zutreffend) PolyBase anstelle des BULKINSERT-Mechanismus verwendet werden soll. <br/><br/> **Das empfohlene Verfahren zum Laden von Daten in SQL Data Warehouse ist PolyBase.** |True <br/>False (Standardwert) |Nein |
+| allowPolyBase |Gibt an, ob (falls zutreffend) PolyBase anstelle des BULKINSERT-Mechanismus verwendet werden soll. <br/><br/> **Zum Laden von Daten in Synapse Analytics wird die Verwendung von PolyBase empfohlen.** |True <br/>False (Standardwert) |Nein |
 | polyBaseSettings |Eine Gruppe von Eigenschaften, die angegeben werden können, wenn die **allowPolybase**-Eigenschaft auf **true** festgelegt ist. |&nbsp; |Nein |
 | rejectValue |Gibt die Anzahl oder den Prozentsatz von Zeilen an, die abgelehnt werden können, bevor für die Abfrage ein Fehler auftritt. <br/><br/>Weitere Informationen zu den PolyBase-Ablehnungsoptionen finden Sie im Abschnitt **Argumente** des Themas [CREATE EXTERNAL TABLE (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx) . |0 (Standardwert), 1, 2, … |Nein |
 | rejectType |Gibt an, ob die rejectValue-Option als Literalwert oder Prozentsatz angegeben ist. |Value (Standardwert), Percentage |Nein |
@@ -1277,7 +1277,7 @@ Legen Sie beim Kopieren von Daten in eine Azure SQL Data Warehouse-Instanz den *
 }
 ```
 
-Weitere Informationen finden Sie im Artikel zum [Azure SQL Data Warehouse-Connector](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties).
+Weitere Informationen finden Sie im Artikel [Azure Synapse Analytics-Connector](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties).
 
 ## <a name="azure-cognitive-search"></a>Azure Cognitive Search
 
@@ -4826,7 +4826,7 @@ Die folgende Tabelle enthält eine Liste mit den Compute-Umgebungen, die von Dat
 | [Azure Batch](#azure-batch) |[Benutzerdefinierte .NET-Aktivität](#net-custom-activity) |
 | [Azure Machine Learning](#azure-machine-learning) | [Machine Learning-Batchausführungsaktivität](#machine-learning-batch-execution-activity), [Machine Learning-Ressourcenaktualisierungsaktivität](#machine-learning-update-resource-activity) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics) |[Data Lake Analytics U-SQL](#data-lake-analytics-u-sql-activity) |
-| [Azure SQL-Datenbank](#azure-sql-database), [Azure SQL Data Warehouse](#azure-sql-data-warehouse), [SQL Server](#sql-server-stored-procedure) |[Gespeicherte Prozedur](#stored-procedure-activity) |
+| [Azure SQL-Datenbank](#azure-sql-database), [Azure Synapse Analytics](#azure-synapse-analytics), [SQL Server](#sql-server-stored-procedure) |[Gespeicherte Prozedur](#stored-procedure-activity) |
 
 ## <a name="on-demand-azure-hdinsight-cluster"></a>Bedarfsgesteuerter Azure HDInsight-Cluster
 Der Azure Data Factory-Dienst kann zum Verarbeiten von Daten automatisch einen bedarfsgesteuerten Windows-/Linux-basierten HDInsight-Cluster erstellen. Der Cluster wird in derselben Region erstellt wie das Speicherkonto (Eigenschaft „linkedServiceName“ in JSON), das dem Cluster zugeordnet ist. Sie können für diesen verknüpften Dienst die folgenden Transformationsaktivitäten ausführen: [Benutzerdefinierte .NET-Aktivität](#net-custom-activity), [Hive-Aktivität](#hdinsight-hive-activity), [Pig-Aktivität](#hdinsight-pig-activity), [MapReduce-Aktivität](#hdinsight-mapreduce-activity), Hadoop-Streamingaktivität, [Spark-Aktivität](#hdinsight-spark-activity).
@@ -5066,7 +5066,7 @@ Aktivität | BESCHREIBUNG
 [HDInsight Spark-Aktivität](#hdinsight-spark-activity) | Die HDInsight Spark-Aktivität in einer Data Factory-Pipeline führt Spark-Programme in Ihrem eigenen HDInsight-Cluster aus.
 [Machine Learning-Batchausführungsaktivität](#machine-learning-batch-execution-activity) | Azure Data Factory ermöglicht die einfache Erstellung von Pipelines, die einen veröffentlichten Azure Machine Learning-Webdienst für Predictive Analytics nutzen. Bei Verwendung der Batchausführungsaktivität in einer Azure Data Factory-Pipeline können Sie einen Machine Learning-Webdienst aufrufen, um Vorhersagen zu den Daten im Batch zu treffen.
 [Machine Learning-Ressourcenaktualisierungsaktivität](#machine-learning-update-resource-activity) | Im Laufe der Zeit müssen die Vorhersagemodelle in den Machine Learning-Bewertungsexperimenten mit neuen Eingabedatasets neu trainiert werden. Wenn Sie mit dem erneuten Trainieren fertig sind, sollten Sie den Bewertungswebdienst mit dem neu trainierten Machine Learning-Modell aktualisieren. Verwenden Sie die Ressourcenaktualisierungsaktivität, um den Webdienst mit dem neu trainierten Modell zu aktualisieren.
-[Aktivität „Gespeicherte Prozedur“](#stored-procedure-activity) | Sie können die Aktivität „Gespeicherte Prozedur“ in einer Data Factory-Pipeline verwenden, um eine gespeicherte Prozedur in einem der folgenden Datenspeicher aufzurufen: Azure SQL-Datenbank, Azure SQL Data Warehouse, SQL Server-Datenbank in Ihrem Unternehmen oder auf einer Azure-VM.
+[Aktivität „Gespeicherte Prozedur“](#stored-procedure-activity) | Sie können die Aktivität „Gespeicherte Prozedur“ in einer Data Factory-Pipeline verwenden, um eine gespeicherte Prozedur in einem der folgenden Datenspeicher aufzurufen: Azure SQL-Datenbank, Azure Synapse Analytics, SQL Server-Datenbank in Ihrem Unternehmen oder auf einem virtuellen Azure-Computer.
 [U-SQL-Aktivität für Data Lake Analytics](#data-lake-analytics-u-sql-activity) | Die U-SQL-Aktivität für Data Lake Analytics wendet ein U-SQL-Skript auf einen Azure Data Lake Analytics-Cluster an.
 [Benutzerdefinierte .NET-Aktivität](#net-custom-activity) | Wenn Sie Daten auf eine Weise transformieren/verarbeiten müssen, die von Data Factory nicht unterstützt wird, können Sie eine benutzerdefinierte Aktivität mit Ihrer eigenen Datenverarbeitungslogik erstellen und in der Pipeline verwenden. Sie können die benutzerdefinierte .NET-Aktivität so konfigurieren, dass sie entweder mithilfe eines Azure Batch-Diensts oder eines Azure HDInsight-Clusters ausgeführt wird.
 
@@ -5541,18 +5541,18 @@ Sie können in der JSON-Definition einer Aktivität vom Typ „Gespeicherte Proz
 
 - SQL Server
 - Azure SQL-Datenbank
-- Azure SQL Data Warehouse
+- Azure Synapse Analytics
 
 Die folgenden Eigenschaften werden im Abschnitt **typeProperties** unterstützt, wenn Sie den Typ der Aktivität auf SqlServerStoredProcedure festlegen:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| storedProcedureName |Geben Sie den Namen der gespeicherten Prozedur in der Azure SQL-Datenbank- oder Azure SQL Data Warehouse-Instanz an, die durch den verknüpften Dienst dargestellt wird, der von der Ausgabetabelle verwendet wird. |Ja |
+| storedProcedureName |Geben Sie den Namen der gespeicherten Prozedur in der Azure SQL-Datenbank- oder Azure Synapse Analytics-Instanz an, die durch den verknüpften Dienst dargestellt wird, der von der Ausgabetabelle verwendet wird. |Ja |
 | storedProcedureParameters |Geben Sie Werte für Parameter der gespeicherten Prozedur an. Wenn Sie für einen Parameter Null übergeben müssen, verwenden Sie die folgende Syntax: "param1": null (nur Kleinbuchstaben). Das folgende Beispiel veranschaulicht die Verwendung dieser Eigenschaft. |Nein |
 
 Wenn Sie ein Eingabedataset angeben, muss es (im Status „Bereit“) verfügbar sein, damit die Aktivität „Gespeicherte Prozedur“ ausgeführt wird. Das Eingabedataset kann nicht als Parameter in der gespeicherten Prozedur genutzt werden. Es wird nur verwendet, um vor dem Start der Aktivität „Gespeicherte Prozedur“ die Abhängigkeit zu überprüfen. Sie müssen ein Ausgabedataset für eine Aktivität „Gespeicherte Prozedur“ angeben.
 
-Das Ausgabedataset gibt den **Zeitplan** für die Aktivität „Gespeicherte Prozedur“ an (stündlich, wöchentlich, monatlich usw.). Das Ausgabedataset muss einen **verknüpften Dienst** verwenden, der auf eine Azure SQL-Datenbank, ein Azure SQL Data Warehouse oder eine SQL Server-Datenbank verweist, in der bzw. dem die gespeicherte Prozedur ausgeführt werden soll. Das Ausgabedataset kann verwendet werden, um das Ergebnis der gespeicherten Prozedur für die nachfolgende Verarbeitung durch eine andere Aktivität in der Pipeline zu übergeben ([Verketten von Aktivitäten](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)). Data Factory schreibt die Ausgabe einer gespeicherten Prozedur jedoch nicht automatisch in dieses Dataset. Die gespeicherte Prozedur schreibt die Ausgabe in eine SQL-Tabelle, auf die das Ausgabedataset verweist. In einigen Fällen kann das Ausgabedataset ein **Dummy-Dataset** sein, das nur dazu dient, den Zeitplan für die Ausführung der Aktivität „Gespeicherte Prozedur“ anzugeben.
+Das Ausgabedataset gibt den **Zeitplan** für die Aktivität „Gespeicherte Prozedur“ an (stündlich, wöchentlich, monatlich usw.). Das Ausgabedataset muss einen **verknüpften Dienst** verwenden, der auf eine Azure SQL-Datenbank, eine Azure Synapse Analytics-Instanz oder eine SQL Server-Datenbank verweist, in der die gespeicherte Prozedur ausgeführt werden soll. Das Ausgabedataset kann verwendet werden, um das Ergebnis der gespeicherten Prozedur für die nachfolgende Verarbeitung durch eine andere Aktivität in der Pipeline zu übergeben ([Verketten von Aktivitäten](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)). Data Factory schreibt die Ausgabe einer gespeicherten Prozedur jedoch nicht automatisch in dieses Dataset. Die gespeicherte Prozedur schreibt die Ausgabe in eine SQL-Tabelle, auf die das Ausgabedataset verweist. In einigen Fällen kann das Ausgabedataset ein **Dummy-Dataset** sein, das nur dazu dient, den Zeitplan für die Ausführung der Aktivität „Gespeicherte Prozedur“ anzugeben.
 
 ### <a name="json-example"></a>JSON-Beispiel
 

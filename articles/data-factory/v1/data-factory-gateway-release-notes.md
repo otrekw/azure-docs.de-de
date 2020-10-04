@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: d8324b0b861829b02b589f8145121559114b7435
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 0538777cadf7935a6684932a17fadc10849518d8
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89289578"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89490087"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Versionshinweise für Datenverwaltungsgateway
 > [!NOTE]
@@ -198,7 +198,7 @@ Die Anmerkungen zu dieser Version werden hier nicht länger beibehalten. Die neu
 
 *  Unterstützung für Diagnosetools im Konfigurations-Manager
 *  Unterstützung für Tabellenspalten für tabellarische Datenquellen für Azure Data Factory
-*  SQL-DW-Unterstützung für Azure Data Factory
+*  Unterstützung von Azure Synapse Analytics für Azure Data Factory
 *  Reclusive-Unterstützung in BlobSource und FileSource für Azure Data Factory
 *  Unterstützung von CopyBehavior – MergeFiles, PreserveHierarchy und FlattenHierarchy in BlobSink und FileSink mit binärer Kopie für Azure Data Factory
 *  Unterstützung für Kopieraktivität mit Fortschrittsbericht für Azure Data Factory

@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: f56d3a364e38d13931f8e07d749d3a5958dcee67
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9318ce7d73f2d05dde6815a0ded4269510760251
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322519"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441985"
 ---
 # <a name="integrating-azure-data-lake-storage-gen1-with-other-azure-services"></a>Integrieren von Azure Data Lake Storage Gen1 in andere Azure-Dienste
 Azure Data Lake Storage Gen1 kann zusammen mit anderen Azure-Diensten verwendet werden, um eine breitere Palette von Szenarien zu ermöglichen. Im folgende Artikel werden die Dienste aufgeführt, in die Data Lake Storage Gen1 integriert werden kann.
@@ -21,7 +21,7 @@ Sie können einen [Azure HDInsight](https://azure.microsoft.com/documentation/le
 
 Anleitungen zum Bereitstellen eines HDInsight-Clusters mit Data Lake Storage Gen1 finden Sie hier:
 
-* [Bereitstellen eines HDInsight-Clusters mit Data Lake Storage Gen1 mithilfe des Azure-Portals](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Bereitstellen eines HDInsight-Clusters mit Data Lake Storage Gen1 mithilfe des Azure-Portals](data-lake-store-hdinsight-hadoop-use-portal.md)
 * [Bereitstellen von HDInsight-Clustern mit Data Lake Storage Gen1 als Standardspeicher mithilfe von PowerShell](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
 * [Bereitstellen eines HDInsight-Clusters mit Data Lake Storage Gen1 als Zusatzspeicher mithilfe von PowerShell](data-lake-store-hdinsight-hadoop-use-powershell.md)
 
@@ -53,8 +53,8 @@ Sie können Daten aus Data Lake Storage Gen1 in Azure Data Catalog registrieren,
 ## <a name="use-data-lake-storage-gen1-with-sql-server-integration-services-ssis"></a>Verwenden von Data Lake Storage Gen1 mit SQL Server Integration Services (SSIS)
 Sie können den Data Lake Storage Gen1-Verbindungs-Manager in SSIS verwenden, um für ein SSIS-Paket eine Verbindung mit Data Lake Storage Gen1 herzustellen. Weitere Informationen finden Sie unter [Verwenden von Data Lake Storage Gen1 mit SSIS](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager).
 
-## <a name="use-data-lake-storage-gen1-with-sql-data-warehouse"></a>Verwenden von Data Lake Storage Gen1 mit SQL Data Warehouse
-Sie können PolyBase verwenden, um Daten aus Data Lake Storage Gen1 in SQL Data Warehouse zu laden. Weitere Informationen finden Sie unter [Laden von Daten aus Data Lake Storage Gen1 in SQL Data Warehouse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md).
+## <a name="use-data-lake-storage-gen1-with-azure-synapse-analytics"></a>Verwenden von Data Lake Storage Gen1 mit Azure Synapse Analytics
+Sie können PolyBase verwenden, um Daten aus Data Lake Storage Gen1 in Azure Synapse Analytics (ehemals SQL Data Warehouse) zu laden. Weitere Informationen finden Sie unter [Verwenden von Data Lake Storage Gen1 mit Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md).
 
 ## <a name="use-data-lake-storage-gen1-with-azure-event-hubs"></a>Verwenden von Data Lake Storage Gen1 mit Azure Event Hubs
 Sie können Azure Data Lake Storage Gen1 zum Archivieren und Erfassen von Daten verwenden, die von Azure Event Hubs empfangen werden. Weitere Informationen finden Sie unter [Verwenden von Data Lake Storage Gen1 mit Azure Event Hubs](data-lake-store-archive-eventhub-capture.md).

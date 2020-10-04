@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 02d6c11e3880f69f5020fb51f90a72c3233e2f25
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 3d9d41e80f78af7087c80592d927c193e494eab8
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195887"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442393"
 ---
 # <a name="use-case---product-recommendations"></a>Anwendungsfall – Produktempfehlungen
 Azure Data Factory ist einer der zahlreichen Dienste, die zum Implementieren der Cortana Intelligence Suite von Lösungsoptimierungen verwendet werden.  Auf der Seite [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics) finden Sie Details zu dieser Suite. In diesem Dokument wird ein allgemeiner Anwendungsfall beschrieben, den Azure-Benutzer bereits mithilfe von Azure Data Factory und anderen Cortana Intelligence-Komponentendiensten gelöst und implementiert haben.
@@ -41,7 +41,7 @@ Drittens müssen Onlinehändler die Effektivität des Vorgehens ermitteln, indem
 ## <a name="solution-overview"></a>Übersicht über die Lösungen
 Dieser Beispielanwendungsfall wurde von realen Azure-Benutzern mit Azure Data Factory und anderen Cortana Intelligence-Komponentendiensten gelöst und implementiert, darunter [HDInsight](https://azure.microsoft.com/services/hdinsight/) und [Power BI](https://powerbi.microsoft.com/).
 
-Der Onlinehändler verwendet einen Azure-Blobspeicher, einen lokalen SQL Server, Azure SQL-Datenbank und einen relationalen Datamart als Datenspeicheroptionen im gesamten Workflow.  Der Blobspeicher enthält Kundeninformationen, Daten zum Kundenverhalten und Produktdaten. Die Produktdaten enthalten Informationen zur Produktmarke und einen Produktkatalog, der lokal in einem SQL Data Warehouse gespeichert ist. 
+Der Onlinehändler verwendet einen Azure-Blobspeicher, einen lokalen SQL Server, Azure SQL-Datenbank und einen relationalen Datamart als Datenspeicheroptionen im gesamten Workflow.  Der Blobspeicher enthält Kundeninformationen, Daten zum Kundenverhalten und Produktdaten. Die Produktdaten enthalten Informationen zur Produktmarke und einen Produktkatalog, der lokal in einer Instanz von Azure Synapse Analytics (ehemals SQL Data Warehouse) gespeichert ist. 
 
 Alle Daten werden kombiniert und einem Produktempfehlungssystem hinzugefügt, um personalisierte Empfehlungen auf der Grundlage der Interessen und Aktionen der Kunden zu präsentieren, während der Benutzer die Produkte im Katalog auf der Website durchsucht. Auf der Grundlage allgemeiner, nicht benutzerspezifischer Website-Nutzungsmuster werden den Kunden auch Produkte angezeigt, die mit dem betrachteten Produkt in Verbindung stehen.
 

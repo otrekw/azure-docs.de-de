@@ -5,40 +5,38 @@ services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/15/2020
+ms.date: 08/14/2020
 ms.author: jmprieur
-ms.custom: include file
-ms.openlocfilehash: a3acdbb93dd20f0b89e4f99d64f5f7a30ce40623
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 42102f38959911388cefcc141d949e59f24a2c31
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87102678"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436465"
 ---
-## <a name="register-secrets-or-certificates"></a>Registrieren von geheimen Schlüsseln oder Zertifikaten
+## <a name="add-a-client-secret-or-certificate"></a>Hinzufügen eines geheimen Clientschlüssels oder eines Zertifikats
 
-Wie bei jeder vertraulichen Clientanwendung müssen Sie einen geheimen Schlüssel oder ein Zertifikat registrieren. Sie können Ihre geheimen Anwendungsschlüssel entweder über die interaktive Oberfläche im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) oder mithilfe von Befehlszeilentools (wie PowerShell) registrieren.
+Wie bei jeder vertraulichen Clientanwendung müssen Sie ein Geheimnis oder ein Zertifikat hinzufügen, das als *Anmeldeinformationen* für die Anwendung fungiert, damit die Authentifizierung ohne Benutzerinteraktion erfolgen kann.
 
-### <a name="register-client-secrets-by-using-the-application-registration-portal"></a>Registrieren von geheimen Clientschlüsseln über das Anwendungsregistrierungsportal
+Sie können das [Azure-Portal](#add-client-credentials-by-using-the-azure-portal) oder ein Befehlszeilentool wie [PowerShell](#add-client-credentials-by-using-powershell) verwenden, um der Registrierung Ihrer Client-App Anmeldeinformationen hinzuzufügen.
 
-Die Verwaltung von Clientanmeldeinformationen geschieht auf der Seite **Zertifikate und Geheimnisse** einer Anwendung:
+### <a name="add-client-credentials-by-using-the-azure-portal"></a>Hinzufügen von Clientanmeldeinformationen im Azure-Portal
 
-![Seite „Zertifikate und Geheimnisse“](../articles/active-directory/develop/media/quickstart-update-azure-ad-app-preview/credentials-certificates-secrets.png)
+Führen Sie zum Hinzufügen von Anmeldeinformationen zur App-Registrierung Ihrer vertraulichen Clientanwendung die unter [Schnellstart: Registrieren einer Anwendung bei Microsoft Identity Platform](../articles/active-directory/develop/quickstart-register-app.md) beschriebenen Schritte für den gewünschten Anmeldeinformationstyp aus:
 
-- Sie erstellen einen *geheimen Clientschlüssel*, indem Sie im Azure-Portal bei der Registrierung der App die Option **Neuer geheimer Clientschlüssel** auswählen. Wenn Sie einen geheimen Clientschlüssel erstellen, _müssen_ Sie die Zeichenfolge des geheimen Schlüssels aufzeichnen, bevor Sie den Bereich **Zertifikate und Geheimnisse** verlassen. Die Zeichenfolge des geheimen Schlüssels wird an keiner Stelle mehr angezeigt.
-- Während der Anwendungsregistrierung verwenden Sie die Schaltfläche **Zertifikat hochladen** zum Hochladen des Zertifikats. Azure AD unterstützt nur Zertifikate, die in der Anwendung direkt registriert sind und keinen Zertifikatsketten folgen.
+* [Geheimen Clientschlüssel hinzufügen](../articles/active-directory/develop/quickstart-register-app.md#add-a-client-secret)
+* [Hinzufügen eines Zertifikats](../articles/active-directory/develop/quickstart-register-app.md#add-a-certificate)
 
-Weitere Informationen finden Sie unter [Schnellstart: Konfigurieren einer Clientanwendung für den Zugriff auf Web-APIs | Hinzufügen von Anmeldeinformationen zu Ihrer Anwendung](../articles/active-directory/develop/quickstart-configure-app-access-web-apis.md#add-credentials-to-your-web-application).
+### <a name="add-client-credentials-by-using-powershell"></a>Hinzufügen von Clientanmeldeinformationen mithilfe von PowerShell
 
-### <a name="register-client-secrets-by-using-powershell"></a>Registrieren von geheimen Clientschlüsseln mithilfe von PowerShell
+Alternativ können Sie Anmeldeinformationen mithilfe von PowerShell hinzufügen, wenn Sie Ihre Anwendung bei Microsoft Identity Platform registrieren.
 
-Alternativ können Sie Ihre Anwendung in Azure AD mithilfe von Befehlszeilentools registrieren. Im Beispiel [active-directory-dotnetcore-daemon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) wird gezeigt, wie Sie einen geheimen Anwendungsschlüssel oder ein Zertifikat in einer Azure AD-Anwendung registrieren:
+Im Codebeispiel [active-directory-dotnetcore-daemon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) auf GitHub wird gezeigt, wie Sie einen geheimen Anwendungsschlüssel oder ein Zertifikat beim Registrieren einer Anwendung hinzufügen:
 
-- Weitere Informationen darüber, wie Sie einen geheimen Anwendungsschlüssel registrieren, finden Sie unter [AppCreationScripts/Configure.ps1](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts/Configure.ps1#L190).
-- Weitere Informationen darüber, wie Sie ein Zertifikat in einer Anwendung registrieren, finden Sie unter [AppCreationScripts-withCert/Configure.ps1](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts-withCert/Configure.ps1#L162-L178).
+- Ausführliche Informationen zum Hinzufügen eines **geheimen Clientschlüssels** mithilfe von PowerShell finden Sie unter [AppCreationScripts/Configure.ps1](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts/Configure.ps1#L190).
+- Ausführliche Informationen zum Hinzufügen eines **Zertifikats** mithilfe von PowerShell finden Sie unter [AppCreationScripts-withCert/Configure.ps1](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts-withCert/Configure.ps1#L162-L178).

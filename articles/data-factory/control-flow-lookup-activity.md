@@ -10,13 +10,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/24/2020
-ms.openlocfilehash: 7a0b4e52d729c3f13d5ac425627970d67b87979e
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.date: 09/09/2020
+ms.openlocfilehash: e75921e5ee5b148d81c637800f46403d3d410f42
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795880"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613476"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Lookup-Aktivität in Azure Data Factory
 
@@ -29,7 +29,9 @@ Die Lookup-Aktivität liest die Daten und gibt den Inhalt einer Konfigurationsda
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
-Die folgenden Datenquellen werden für die Lookup-Aktivität unterstützt. Von der Lookup-Aktivität können höchstens 5.000 Zeilen mit einer Größe von bis zu 2 MB zurückgegeben werden. Derzeit beträgt die Höchstdauer für die Lookup-Aktivität vor dem Zeitlimit eine Stunde.
+Die folgenden Datenquellen werden für die Lookup-Aktivität unterstützt. 
+
+Die Lookup-Aktivität kann bis zu 5.000 Zeilen zurückgeben. Wenn das Resultset mehr Datensätze enthält, werden die ersten 5.000 Zeilen zurückgegeben. Die Ausgabe der Lookup-Aktivität unterstützt eine Größe von bis zu 2 MB. Wenn die Größe den Grenzwert überschreitet, kann die Aktivität nicht erfolgreich ausgeführt werden. Derzeit beträgt die Höchstdauer für die Lookup-Aktivität vor dem Zeitlimit eine Stunde.
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
 
@@ -54,7 +56,7 @@ Die folgenden Datenquellen werden für die Lookup-Aktivität unterstützt. Von d
 
 ## <a name="type-properties"></a>Typeigenschaften
 
-Name | BESCHREIBUNG | type | Erforderlich?
+Name | Beschreibung | type | Erforderlich?
 ---- | ----------- | ---- | --------
 dataset | Enthält die Datasetreferenz für die Lookupaktivität. Details finden Sie in den entsprechenden Connectorartikeln im Abschnitt **Dataset-Eigenschaften**. | Schlüssel-Wert-Paar | Ja
 source | Enthält spezifische Quelleneigenschaften für das Dataset, identisch mit der Quelle der Kopieraktivität. Details finden Sie in jedem entsprechenden Connectorartikel im Abschnitt **Eigenschaften der Kopieraktivität**. | Schlüssel-Wert-Paar | Ja

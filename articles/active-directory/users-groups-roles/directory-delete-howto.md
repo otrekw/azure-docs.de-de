@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c0b203647bc57c7c7eb48e321895cf3b3fa7d44
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 97a8f372a90d3add99390220d89214c6ad205db6
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795421"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056301"
 ---
 # <a name="delete-a-tenant-in-azure-active-directory"></a>Löschen eines Mandanten in Azure Active Directory
 
@@ -27,12 +27,12 @@ Beim Löschen einer Azure AD-Organisation (Mandant) werden auch alle in der Orga
 
 ## <a name="prepare-the-organization"></a>Vorbereiten der Organisation
 
-Sie können eine Organisation in Azure AD erst löschen, nachdem sie mehrere Prüfungen bestanden hat. Diese Prüfungen verringern das Risiko, dass das Löschen einer Azure AD-Organisation den Benutzerzugriff beeinträchtigt, z. B. die Möglichkeit, sich bei Office 365 anzumelden oder auf Ressourcen in Azure zuzugreifen. Wenn beispielsweise die einem Abonnement zugeordnete Organisation versehentlich gelöscht wird, können Benutzer auf die Azure-Ressourcen für dieses Abonnement nicht mehr zugreifen. Die folgenden Bedingungen werden überprüft:
+Sie können eine Organisation in Azure AD erst löschen, nachdem sie mehrere Prüfungen bestanden hat. Diese Prüfungen verringern das Risiko, dass das Löschen einer Azure AD-Organisation den Benutzerzugriff beeinträchtigt, z. B. die Möglichkeit, sich bei Microsoft 365 anzumelden oder auf Ressourcen in Azure zuzugreifen. Wenn beispielsweise die einem Abonnement zugeordnete Organisation versehentlich gelöscht wird, können Benutzer auf die Azure-Ressourcen für dieses Abonnement nicht mehr zugreifen. Die folgenden Bedingungen werden überprüft:
 
 * Es darf keine Benutzer in der Azure AD-Organisation (Mandant) geben, außer einem globalen Administrator, der die Organisation löschen soll. Alle anderen Benutzer müssen gelöscht werden, bevor die Organisation gelöscht werden kann. Wenn Benutzer aus der lokalen Umgebung synchronisiert werden, muss die Synchronisierung zuerst deaktiviert werden, und die Benutzer müssen in der Cloudorganisation über das Azure-Portal oder mithilfe von Azure PowerShell-Cmdlets gelöscht werden.
 * Es dürfen keine Anwendungen in der Organisation vorhanden sein. Alle Anwendungen müssen entfernt werden, bevor die Organisation gelöscht werden kann.
 * Mit der Organisation dürfen keine Anbieter für mehrstufige Authentifizierung verknüpft sein.
-* Der Organisation dürfen keine Abonnements für Microsoft Online Services (z. B. Microsoft Azure, Office 365 oder Azure AD Premium) zugeordnet sein. Falls für Sie in Azure beispielsweise eine Azure AD-Standardorganisation erstellt wurde, dürfen Sie diese Organisation nicht löschen, wenn sie vom Azure-Abonnement noch für die Authentifizierung benötigt wird. Analog dazu dürfen Sie auch keine Organisation löschen, wenn ein anderer Benutzer dieser ein Abonnement zugeordnet hat.
+* Der Organisation dürfen keine Abonnements für Microsoft Online Services (z. B. Microsoft Azure, Microsoft 365 oder Azure AD Premium) zugeordnet sein. Falls für Sie in Azure beispielsweise eine Azure AD-Standardorganisation erstellt wurde, dürfen Sie diese Organisation nicht löschen, wenn sie vom Azure-Abonnement noch für die Authentifizierung benötigt wird. Analog dazu dürfen Sie auch keine Organisation löschen, wenn ein anderer Benutzer dieser ein Abonnement zugeordnet hat.
 
 ## <a name="delete-the-organization"></a>Löschen der Organisation
 
@@ -52,16 +52,16 @@ Sie können eine Organisation in Azure AD erst löschen, nachdem sie mehrere Pr�
 
 ## <a name="if-you-cant-delete-the-organization"></a>Wenn Sie die Organisation nicht löschen können
 
-Bei der Konfiguration Ihrer Azure AD-Organisation haben Sie möglicherweise auch lizenzbasierte Abonnements für Ihre Organisation wie Azure AD Premium P2, Office 365 Business Premium oder Enterprise Mobility + Security E5 aktiviert. Um einen versehentlichen Datenverlust zu vermeiden, können Sie eine Organisation erst löschen, nachdem die Abonnements vollständig gelöscht wurden. Die Abonnements müssen den Status **Bereitstellung aufgehoben** haben, damit die Organisation gelöscht werden kann. Ein Abonnement mit dem Status **Abgelaufen** oder **Gekündigt** wechselt in den Zustand **Deaktiviert**. Die letzte Stufe ist der Status **Bereitstellung aufgehoben**.
+Bei der Konfiguration Ihrer Azure AD-Organisation haben Sie möglicherweise auch lizenzbasierte Abonnements für Ihre Organisation wie Azure AD Premium P2, Microsoft 365 Business Standard oder Enterprise Mobility + Security E5 aktiviert. Um einen versehentlichen Datenverlust zu vermeiden, können Sie eine Organisation erst löschen, nachdem die Abonnements vollständig gelöscht wurden. Die Abonnements müssen den Status **Bereitstellung aufgehoben** haben, damit die Organisation gelöscht werden kann. Ein Abonnement mit dem Status **Abgelaufen** oder **Gekündigt** wechselt in den Zustand **Deaktiviert**. Die letzte Stufe ist der Status **Bereitstellung aufgehoben**.
 
-Informationen dazu, was zu erwarten ist, wenn ein Testabonnement für Office 365 ausläuft (ohne bezahlte Partner/CSP-, Enterprise Agreement- oder Volumenlizenzen), finden Sie in der folgenden Tabelle. Weitere Informationen zum Datenaufbewahrungs- und Abonnementlebenszyklus von Office 365 finden Sie unter [Was geschieht mit meinen Daten und dem Zugriff darauf, wenn mein Office 365 Business-Abonnement endet?](https://support.office.com/article/what-happens-to-my-data-and-access-when-my-office-365-for-business-subscription-ends-4436582f-211a-45ec-b72e-33647f97d8a3). 
+Informationen dazu, was zu erwarten ist, wenn ein Microsoft 365-Testabonnement abläuft (ohne bezahlte Partner/CSP-, Enterprise Agreement- oder Volumenlizenzen), finden Sie in der folgenden Tabelle. Unter [Was geschieht mit meinen Daten und dem Zugriff darauf, wenn mein Microsoft 365 Business-Abonnement endet?](https://support.office.com/article/what-happens-to-my-data-and-access-when-my-office-365-for-business-subscription-ends-4436582f-211a-45ec-b72e-33647f97d8a3) finden Sie weitere Informationen zur Datenaufbewahrung und zum Abonnementlebenszyklus von Microsoft 365. 
 
 Abonnementzustand | Daten | Zugriff auf Daten
 ----- | ----- | -----
-Aktiv (30 Tage für die Testversion) | Daten für alle zugänglich | Benutzer haben normalen Zugriff auf Office 365-Dateien oder -Apps<br>Administratoren besitzen normalen Zugriff auf das Microsoft 365 Admin Center und -Ressourcen 
-Abgelaufen (30 Tage) | Daten für alle zugänglich| Benutzer haben normalen Zugriff auf Office 365-Dateien oder -Apps<br>Administratoren besitzen normalen Zugriff auf das Microsoft 365 Admin Center und -Ressourcen
-Deaktiviert (30 Tage) | Daten nur für Administrator zugänglich | Benutzer können nicht auf Office 365-Dateien oder -Apps zugreifen<br>Administratoren können auf das Microsoft 365 Admin Center zugreifen, aber keine Lizenzen zuweisen oder Benutzer aktualisieren
-Bereitstellung aufgehoben (30 Tage nach Deaktivierung) | Daten gelöscht (werden automatisch gelöscht, wenn keine anderen Dienste verwendet werden) | Benutzer können nicht auf Office 365-Dateien oder -Apps zugreifen<br>Administratoren können auf das Microsoft 365 Admin Center zugreifen, um andere Abonnements zu erwerben und zu verwalten
+Aktiv (30 Tage für die Testversion) | Daten für alle zugänglich | Benutzer haben normalen Zugriff auf Microsoft 365-Dateien oder -Apps<br>Administratoren besitzen normalen Zugriff auf das Microsoft 365 Admin Center und -Ressourcen 
+Abgelaufen (30 Tage) | Daten für alle zugänglich| Benutzer haben normalen Zugriff auf Microsoft 365-Dateien oder -Apps<br>Administratoren besitzen normalen Zugriff auf das Microsoft 365 Admin Center und -Ressourcen
+Deaktiviert (30 Tage) | Daten nur für Administrator zugänglich | Benutzer können nicht auf Microsoft 365-Dateien oder -Apps zugreifen<br>Administratoren können auf das Microsoft 365 Admin Center zugreifen, aber keine Lizenzen zuweisen oder Benutzer aktualisieren
+Bereitstellung aufgehoben (30 Tage nach Deaktivierung) | Daten gelöscht (werden automatisch gelöscht, wenn keine anderen Dienste verwendet werden) | Benutzer können nicht auf Microsoft 365-Dateien oder -Apps zugreifen<br>Administratoren können auf das Microsoft 365 Admin Center zugreifen, um andere Abonnements zu erwerben und zu verwalten
 
 ## <a name="delete-a-subscription"></a>Löschen eines Abonnements
 
@@ -97,7 +97,7 @@ Sie können ein Abonnement im Microsoft 365 Admin Center in den Status **Bereits
 
 ## <a name="i-have-a-trial-subscription-that-blocks-deletion"></a>Ich habe ein Testabonnement, das die Löschung blockiert
 
-Es gibt [Produkte zur Self-Service-Registrierung](/office365/admin/misc/self-service-sign-up?view=o365-worldwide) wie Microsoft Power BI, Rights Management Services, Microsoft Power Apps oder Dynamics 365, für die sich einzelne Benutzer über Office 365 registrieren können. Dadurch wird auch ein Gastbenutzer zur Authentifizierung in Ihrer Azure AD-Organisation erstellt. Um einen Datenverlust zu vermeiden, blockieren diese Produkte zur Self-Service-Registrierung Organisationslöschungen so lange, bis sie vollständig aus dem Verzeichnis gelöscht wurden. Sie können nur vom Azure AD-Administrator gelöscht werden – unabhängig davon, ob der Benutzer einzeln registriert oder ihm das Produkt zugewiesen wurde.
+Es gibt [Produkte zur Self-Service-Registrierung](/office365/admin/misc/self-service-sign-up?view=o365-worldwide) wie Microsoft Power BI, Rights Management Services, Microsoft Power Apps oder Dynamics 365, für die sich einzelne Benutzer über Microsoft 365 registrieren können. Dadurch wird auch ein Gastbenutzer zur Authentifizierung in Ihrer Azure AD-Organisation erstellt. Um einen Datenverlust zu vermeiden, blockieren diese Produkte zur Self-Service-Registrierung Organisationslöschungen so lange, bis sie vollständig aus dem Verzeichnis gelöscht wurden. Sie können nur vom Azure AD-Administrator gelöscht werden – unabhängig davon, ob der Benutzer einzeln registriert oder ihm das Produkt zugewiesen wurde.
 
 Es gibt zwei Typen von Produkten zur Self-Service-Registrierung aufgrund der Art, wie sie zugewiesen werden: 
 
@@ -108,7 +108,7 @@ Wenn Sie mit dem Löschen des Produkts zur Self-Service-Registrierung beginnen, 
 
 Weitere Informationen zu den derzeit verfügbaren Produkten und Diensten zur Self-Service-Registrierung finden Sie unter [Verfügbare Self-Service-Programme](/office365/admin/misc/self-service-sign-up?view=o365-worldwide#available-self-service-programs).
 
-Informationen dazu, was zu erwarten ist, wenn ein Testabonnement für Office 365 ausläuft (ohne bezahlte Partner/CSP-, Enterprise Agreement- oder Volumenlizenzen), finden Sie in der folgenden Tabelle. Weitere Informationen zum Datenaufbewahrungs- und Abonnementlebenszyklus von Office 365 finden Sie unter [Was geschieht mit meinen Daten und dem Zugriff darauf, wenn mein Office 365 Business-Abonnement endet?](/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide).
+Informationen dazu, was zu erwarten ist, wenn ein Microsoft 365-Testabonnement abläuft (ohne bezahlte Partner/CSP-, Enterprise Agreement- oder Volumenlizenzen), finden Sie in der folgenden Tabelle. Unter [Was geschieht mit meinen Daten und dem Zugriff darauf, wenn mein Microsoft 365 Business-Abonnement endet?](/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide) finden Sie weitere Informationen zur Datenaufbewahrung und zum Abonnementlebenszyklus von Microsoft 365.
 
 Produktstatus | Daten | Zugriff auf Daten
 ------------- | ---- | --------------
