@@ -6,13 +6,13 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/21/2019
-ms.openlocfilehash: aacec8830948e08f66d71da88897670f7ef43788
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/14/2020
+ms.openlocfilehash: c6a2d38644d844cb1231a24465478b7f70a85111
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81606130"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531145"
 ---
 # <a name="using-column-patterns-in-mapping-data-flow"></a>Verwenden von Spaltenmustern in Mappingdatenflüssen
 
@@ -27,17 +27,17 @@ Spaltenmuster stehen aktuell für die Transformationen „Abgeleitete Spalte“,
 
 ## <a name="column-patterns-in-derived-column-and-aggregate"></a>Spaltenmuster in „Abgeleitete Spalte“ und „Aggregieren“
 
-Wenn Sie ein Spaltenmuster in einer abgeleiteten Spalte oder auf der Registerkarte „Aggregate“ einer Aggregattransformation hinzufügen möchten, klicken Sie rechts neben einer vorhandenen Spalte auf das Plussymbol. Wählen Sie **Add column pattern** (Spaltenmuster hinzufügen) aus. 
+Um ein Spaltenmuster in einer Transformation einer abgeleiteten Spalte, eines Aggregats oder eines Fensters hinzuzufügen, klicken Sie oberhalb der Spaltenliste auf **Hinzufügen**, oder klicken Sie auf das Pluszeichen („+“) neben einer vorhandenen abgeleiteten Spalte. Wählen Sie **Spaltenmuster hinzufügen** aus.
 
-![Spaltenmuster](media/data-flow/columnpattern.png "Spaltenmuster")
+![Spaltenmuster](media/data-flow/add-column-pattern.png "Spaltenmuster")
 
 Verwenden Sie den [Ausdrucks-Generator](concepts-data-flow-expression-builder.md), um die Übereinstimmungsbedingung einzugeben. Erstellen Sie einen booleschen Ausdruck, um Spalten auf der Grundlage von `name`, `type`, `stream` und `position` der Spalte abzugleichen. Das Muster wirkt sich sowohl auf Spalten mit Datendrift als auch auf definierte Spalten aus, bei denen die Bedingung zutrifft (also „true“ zurückgegeben wird).
 
 Die beiden Ausdrucksfelder unterhalb der Übereinstimmungsbedingung geben die neuen Namen und Werte der betroffenen Spalten an. Verwenden Sie `$$`, um auf den vorhandenen Wert des abgeglichenen Felds zu verweisen. Das linke Ausdrucksfeld definiert den Namen, das rechte den Wert.
 
-![Spaltenmuster](media/data-flow/columnpattern2.png "Spaltenmuster")
+![Spaltenmuster](media/data-flow/edit-column-pattern.png "Spaltenmuster")
 
-Das obige Spaltenmuster gleicht jede Spalte vom Typ „Double“ ab und erstellt pro Übereinstimmung eine einzelne Aggregatspalte. Zur Benennung der neuen Spalte wird der Name der übereinstimmenden Spalte mit „_total“ verkettet. Der Wert der neuen Spalte ist die gerundete aggregierte Summe des vorhandenen Double-Werts.
+Das obige Spaltenmuster stimmt mit jeder Spalte vom Typ „Double“ überein und erstellt eine abgeleitete Spalte pro Übereinstimmung. Durch Angeben von `$$` als Spaltennamensfeld wird jede übereinstimmende Spalte mit demselben Namen aktualisiert. Der Wert jeder Spalte ist der vorhandene Wert, der auf zwei Dezimalstellen gerundet wird.
 
 Um zu überprüfen, ob die Übereinstimmungsbedingung korrekt ist, können Sie auf der Registerkarte **Untersuchen** das Ausgabeschema definierter Spalten überprüfen oder auf der Registerkarte **Datenvorschau** eine Momentaufnahme der Daten anzeigen. 
 

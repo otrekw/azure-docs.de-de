@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: 62df01a02feacb8311d14e0bae7ceccb44d47a5a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b6a3e67ffd909262da2f890874f049dfac59a4ce
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497657"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90562008"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Pipelines und Aktivitäten in Azure Data Factory
 
@@ -30,7 +30,7 @@ Eine Data Factory kann eine oder mehrere Pipelines haben. Bei einer Pipeline han
 
 Die Aktivitäten in einer Pipeline definieren Aktionen, die Sie auf Ihre Daten anwenden. Sie können beispielsweise mit einer Kopieraktivität Daten aus einer SQL Server-Instanz in eine Instanz von Azure Blob Storage kopieren. Verwenden Sie anschließend eine Datenfluss- oder Databricks-Notebook-Aktivität, um Daten aus dem Blobspeicher zu verarbeiten und in einen Azure Synapse Analytics-Pool zu transformieren, auf dessen Grundlage Business Intelligence-Berichterstellungslösungen erstellt werden.
 
-Data Factory verfügt über drei Gruppen von Aktivitäten: [Datenverschiebungsaktivitäten](copy-activity-overview.md), [Datentransformationsaktivitäten](transform-data.md) und [Steuerungsaktivitäten](control-flow-web-activity.md). Eine Aktivität kann über null oder mehr [Eingabedatasets](concepts-datasets-linked-services.md) verfügen und ein oder mehrere [Ausgabedatasets](concepts-datasets-linked-services.md) erstellen. Das folgende Diagramm zeigt die Beziehung zwischen Pipeline, Aktivität und Dataset in der Data Factory an:
+Data Factory verfügt über drei Gruppen von Aktivitäten: [Datenverschiebungsaktivitäten](copy-activity-overview.md), [Datentransformationsaktivitäten](transform-data.md) und [Steuerungsaktivitäten](#control-flow-activities). Eine Aktivität kann über null oder mehr [Eingabedatasets](concepts-datasets-linked-services.md) verfügen und ein oder mehrere [Ausgabedatasets](concepts-datasets-linked-services.md) erstellen. Das folgende Diagramm zeigt die Beziehung zwischen Pipeline, Aktivität und Dataset in der Data Factory an:
 
 ![Beziehung zwischen Dataset, Aktivität und Pipeline](media/concepts-pipelines-activities/relationship-between-dataset-pipeline-activity.png)
 
@@ -57,7 +57,7 @@ Datentransformationsaktivität | Compute-Umgebung
 [Hadoop-Datenströme](transform-data-using-hadoop-streaming.md) | HDInsight [Hadoop]
 [Spark](transform-data-using-spark.md) | HDInsight [Hadoop]
 [Machine Learning-Aktivitäten: Batchausführung und Ressourcenaktualisierung](transform-data-using-machine-learning.md) | Azure VM
-[Gespeicherte Prozedur](transform-data-using-stored-procedure.md) | Azure SQL, Azure SQL Data Warehouse oder SQL Server
+[Gespeicherte Prozedur](transform-data-using-stored-procedure.md) | Azure SQL, Azure Synapse Analytics (ehemals SQL Data Warehouse) oder SQL Server
 [U-SQL](transform-data-using-data-lake-analytics.md) | Azure Data Lake Analytics
 [Benutzerdefinierte Aktivität](transform-data-using-dotnet-custom-activity.md) | Azure Batch
 [Databricks-Notebook](transform-data-databricks-notebook.md) | Azure Databricks

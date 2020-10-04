@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/24/2020
-ms.openlocfilehash: 871f2b49e2dce9d762ef8a54923da04b0f24e4be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/14/2020
+ms.openlocfilehash: 71f5488b1f689e8892155b013730bcbb3c8e0e35
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81606537"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531921"
 ---
 # <a name="aggregate-transformation-in-mapping-data-flow"></a>Aggregattransformation in Mapping Data Flow
 
@@ -29,17 +29,18 @@ Wählen Sie eine bereits vorhandene Spalte aus, oder erstellen Sie eine neue ber
 
 Die Verwendung einer GROUP BY-Klausel in einer Aggregattransformation ist optional.
 
-## <a name="aggregate-column"></a>Aggregatspalte 
+## <a name="aggregate-columns"></a>Aggregatespalten
 
-Wechseln Sie zur Registerkarte **Aggregate**, um Aggregationsausdrücke zu erstellen. Sie können entweder eine bereits vorhandene Spalte mit einer Aggregation überschreiben oder ein neues Feld mit einem neuen Namen erstellen. Der Aggregationsausdruck wird in das Feld auf der rechten Seite neben dem Selektor für den Spaltennamen eingegeben. Sie können den Ausdruck bearbeiten, indem Sie auf das Textfeld klicken, um den Ausdrucks-Generator zu öffnen. Wenn Sie zusätzliche Aggregationen hinzufügen möchten, zeigen Sie mit dem Mauszeiger auf einen bereits vorhandenen Ausdruck, und klicken Sie auf das Pluszeichen, um eine neue Aggregationsspalte oder ein [Spaltenmuster](concepts-data-flow-column-pattern.md) zu erstellen.
+Wechseln Sie zur Registerkarte **Aggregate**, um Aggregationsausdrücke zu erstellen. Sie können entweder eine bereits vorhandene Spalte mit einer Aggregation überschreiben oder ein neues Feld mit einem neuen Namen erstellen. Der Aggregationsausdruck wird in das Feld auf der rechten Seite neben dem Selektor für den Spaltennamen eingegeben. Klicken Sie auf das Textfeld, und öffnen Sie den Ausdrucks-Generator, um den Ausdruck zu bearbeiten. Wenn Sie weitere Aggregatspalten hinzufügen möchten, klicken Sie oberhalb der Spaltenliste auf **Hinzufügen**, oder klicken Sie auf das Pluszeichen („+“) neben einer vorhandenen Aggregatspalte. Klicken Sie entweder auf **Spalte hinzufügen** oder auf **Spaltenmuster hinzufügen**. Jeder Aggregationsausdruck muss mindestens eine Aggregatfunktion enthalten.
 
-Jeder Aggregationsausdruck muss mindestens eine Aggregatfunktion enthalten.
-
-![Aggregateinstellungen der Aggregattransformation](media/data-flow/agg2.png "Aggregateinstellungen der Aggregattransformation")
-
+![Aggregateinstellungen](media/data-flow/aggregate-columns.png "Aggregateinstellungen")
 
 > [!NOTE]
 > Im Debugmodus kann der Ausdrucks-Generator keine Datenvorschau mit Aggregatfunktionen generieren. Wenn Sie die Datenvorschau für eine Aggregattransformation abrufen möchten, schließen Sie den Ausdrucks-Generator, und rufen Sie die Daten über die Registerkarte „Datenvorschau“ ab.
+
+### <a name="column-patterns"></a>Spaltenmuster
+
+Verwenden Sie [Spaltenmuster](concepts-data-flow-column-pattern.md), um dieselbe Aggregation auf eine Gruppe von Spalten anzuwenden. Dies ist nützlich, wenn Sie viele Spalten aus dem Eingabeschema beibehalten möchten, weil sie standardmäßig gelöscht werden. Verwenden Sie eine Heuristik wie `first()`, um Eingabespalten über die Aggregation hinaus beizubehalten.
 
 ## <a name="reconnect-rows-and-columns"></a>Neuverbinden von Zeilen und Spalten
 

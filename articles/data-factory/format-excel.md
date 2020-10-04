@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/21/2020
+ms.date: 09/14/2020
 ms.author: jingwang
-ms.openlocfilehash: dd5e116f0c6844abeffc27820da03462c6e1cbbc
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 368b8d614ca77692e08a3cbe38132f5aff4eab91
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718202"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061154"
 ---
 # <a name="excel-format-in-azure-data-factory"></a>Excel-Format in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -36,7 +36,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 | firstRowAsHeader | Gibt an, ob die erste Zeile des jeweiligen Arbeitsblatts bzw. Bereichs als Headerzeile mit den Namen der Spalten behandelt werden soll.<br>Zulässige Werte sind **true** und **false** (Standard). | Nein       |
 | nullValue        | Gibt eine Zeichenfolgendarstellung von Null-Werten an. <br>Der Standardwert ist eine **leere Zeichenfolge**. | Nein       |
 | compression | Gruppe von Eigenschaften zum Konfigurieren der Dateikomprimierung. Konfigurieren Sie diesen Abschnitt, wenn Sie während der Aktivitätsausführung eine Komprimierung/Dekomprimierung durchführen möchten. | Nein |
-| type<br/>(*unter `compression`* ) | Der zum Lesen und Schreiben von JSON-Dateien verwendete Komprimierungscodec. <br>Zulässige Werte sind **bzip2**, **Gzip**, **deflate**, **ZipDeflate**, **snappy** oder **lz4**, die beim Speichern der Datei verwendet werden können. Standardmäßig erfolgt keine Komprimierung.<br>**Hinweis** Die Kopieraktivität unterstützt zurzeit nicht „snappy“ und „lz4“ und der Zuordnungsdatenfluss nicht „ZipDeflate“.<br>**Hinweis**: Bei Verwendung der Kopieraktivität zum Dekomprimieren einer oder mehrerer **ZipDeflate**-Dateien und zum Schreiben in den dateibasierten Senkendatenspeicher werden Dateien in den folgenden Ordner extrahiert: `<path specified in dataset>/<folder named as source zip file>/`. | Nein.  |
+| type<br/>(*unter `compression`* ) | Der zum Lesen und Schreiben von JSON-Dateien verwendete Komprimierungscodec. <br>Zulässige Werte sind **bzip2**, **gzip**, **deflate**, **ZipDeflate**, **TarGzip**, **snappy** und **lz4**. Standardmäßig erfolgt keine Komprimierung.<br>**Hinweis** Die Kopieraktivität unterstützt zurzeit nicht „snappy“ und „lz4“ und der Zuordnungsdatenfluss nicht „ZipDeflate“.<br>**Hinweis**: Bei Verwendung der Kopieraktivität zum Dekomprimieren einer oder mehrerer **ZipDeflate**-Dateien und zum Schreiben in den dateibasierten Senkendatenspeicher werden Dateien in den folgenden Ordner extrahiert: `<path specified in dataset>/<folder named as source zip file>/`. | Nein.  |
 | level<br/>(*unter `compression`* ) | Das Komprimierungsverhältnis. <br>Zulässige Werte sind **Optimal** oder **Sehr schnell**.<br>- **Sehr schnell:** Der Komprimierungsvorgang wird schnellstmöglich abgeschlossen, auch wenn die resultierende Datei nicht optimal komprimiert ist.<br>- **Optimal**: Die Daten sollten optimal komprimiert sein, auch wenn der Vorgang eine längere Zeit in Anspruch nimmt. Weitere Informationen finden Sie im Thema [Komprimierungsstufe](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) . | Nein       |
 
 Unten ist ein Beispiel für ein Excel-Dataset in Azure Blob Storage angegeben:
@@ -73,7 +73,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Die folgenden Eigenschaften werden im Abschnitt ***\*source\**** der Kopieraktivität unterstützt.
 
-| Eigenschaft      | BESCHREIBUNG                                                  | Erforderlich |
+| Eigenschaft      | Beschreibung                                                  | Erforderlich |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **ExcelSource** festgelegt sein. | Ja      |
 | storeSettings | Eine Gruppe von Eigenschaften für das Lesen von Daten aus einem Datenspeicher. Jeder dateibasierte Connector verfügt unter `storeSettings` über eigene unterstützte Leseeinstellungen. | Nein       |
@@ -106,7 +106,7 @@ Bei Zuordnungsdatenflüssen können Sie das Excel-Format in den folgenden Datens
 
 In der folgenden Tabelle sind die von einer Excel-Quelle unterstützten Eigenschaften aufgeführt. Sie können diese Eigenschaften auf der Registerkarte **Quelloptionen** bearbeiten. Bei Verwendung eines Inlinedatasets werden zusätzliche Dateieinstellungen angezeigt. Diese entsprechen den Eigenschaften, die im Abschnitt zu den [Dataseteigenschaften](#dataset-properties) beschrieben sind.
 
-| Name                      | BESCHREIBUNG                                                  | Erforderlich | Zulässige Werte                                            | Datenflussskript-Eigenschaft         |
+| Name                      | Beschreibung                                                  | Erforderlich | Zulässige Werte                                            | Datenflussskript-Eigenschaft         |
 | ------------------------- | ------------------------------------------------------------ | -------- | --------------------------------------------------------- | --------------------------------- |
 | Platzhalterpfade           | Alle Dateien, die dem Platzhalterpfad entsprechen, werden verarbeitet. Überschreibt den Ordner und den Dateipfad, die im Dataset festgelegt sind. | nein       | String[]                                                  | wildcardPaths                     |
 | Partitionsstammpfad       | Für partitionierte Dateidaten können Sie einen Partitionsstammpfad eingeben, um partitionierte Ordner als Spalten zu lesen. | nein       | String                                                    | partitionRootPath                 |

@@ -9,14 +9,16 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.custom: seo-lt-2019
+ms.custom:
+- seo-lt-2019
+- references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: 14a3a76ef4fefb7a33b272b846e1f1cb66644c3e
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 5a40faa1feac20ae096dfe39a5b1d109d4a11d3d
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225681"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563997"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Verwaltetes virtuelles Netzwerk in Azure Data Factory (Vorschauversion)
 
@@ -59,7 +61,7 @@ Der private Endpunkt nutzt eine private IP-Adresse im verwalteten virtuellen Net
 > Es wird empfohlen, verwaltete private Endpunkte zu erstellen, um eine Verbindung mit all Ihren Azure-Datenquellen herzustellen. 
  
 > [!WARNING]
-> Wenn für einen PaaS-Datenspeicher (Blob, ADLS Gen2, SQL DW) bereits ein privater Endpunkt erstellt wurde, kann ADF nur mithilfe des verwalteten privaten Endpunkts darauf zugreifen, selbst wenn er den Zugriff aus allen Netzwerken zulässt. Stellen Sie in solchen Szenarien sicher, einen privaten Endpunkt zu erstellen. 
+> Wenn für einen PaaS-Datenspeicher (Blob, ADLS Gen2, Azure Synapse Analytics) bereits ein privater Endpunkt erstellt wurde, kann ADF nur mithilfe des verwalteten privaten Endpunkts darauf zugreifen, selbst wenn er den Zugriff aus allen Netzwerken zulässt. Stellen Sie in solchen Szenarien sicher, einen privaten Endpunkt zu erstellen. 
 
 Wenn Sie einen verwalteten privaten Endpunkt in Azure Data Factory erstellen, wird eine Verbindung mit einem privaten Endpunkt mit dem Status „Ausstehend“ erstellt. Ein Genehmigungsworkflow wird ausgelöst. Der Besitzer der Ressource für private Links ist für die Genehmigung oder Ablehnung der Verbindung verantwortlich.
 
@@ -83,10 +85,31 @@ Die nachstehenden Datenquellen werden für eine Verbindung über einen privaten 
 - Azure Cosmos DB SQL
 - Azure-Schlüsseltresor
 - Azure Private Link-Dienst
+- Azure Search
+- Azure Database for MySQL
+- Azure Database for PostgreSQL
+- Azure Database for MariaDB
+
+### <a name="azure-data-factory-managed-virtual-network-is-available-in-the-following-azure-regions"></a>Verwaltetes virtuelles Netzwerk in Azure Data Factory ist in den folgenden Azure-Regionen verfügbar:
+- East US
+- USA (Ost) 2
+- USA, Westen-Mitte
+- USA, Westen 2
+- USA Süd Mitte
+- USA (Mitte)
+- Nordeuropa
+- Europa, Westen
+- UK, Süden
+- Asien, Südosten
+- Australien (Osten)
 
 ### <a name="outbound-communications-through-public-endpoint-from-adf-managed-virtual-network"></a>Ausgehende Kommunikation über einen öffentlichen Endpunkt von einem verwaltetem virtuellen ADF-Netzwerk
 - Nur Port 443 wird für die ausgehende Kommunikation geöffnet.
 - Azure Storage und Azure Data Lake Gen2 werden für eine Verbindung über einen öffentlichen Endpunkt von einem verwalteten virtuellen ADF-Netzwerk nicht unterstützt.
+
+### <a name="linked-service-creation-of-azure-key-vault"></a>Erstellung eines verknüpften Diensts von Azure Key Vault 
+- Wenn Sie einen verknüpften Dienst für Azure Key Vault erstellen, gibt es keinen Verweis auf Azure Integration Runtime. Daher können Sie während der Erstellung eines verknüpften Diensts von Azure Key Vault keinen privaten Endpunkt erstellen. Wenn Sie jedoch einen verknüpften Dienst für Datenspeicher erstellen, der auf den verknüpften Dienst von Azure Key Vault verweist, und dieser verknüpfte Dienst auf Azure Integration Runtime mit aktiviertem verwalteten virtuellen Netzwerk verweist, können Sie während der Erstellung einen privaten Endpunkt für den verknüpften Dienst von Azure Key Vault erstellen. 
+- Bei dem Vorgang **Verbindung testen** für den verknüpften Dienst von Azure Key Vault wird nur das URL-Format überprüft. Es werden dabei jedoch keine Netzwerkvorgänge ausgeführt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

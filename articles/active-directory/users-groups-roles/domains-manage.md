@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12193b469b6e1f014e6c948da7b2adb370e78d4b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 48f924cef12db974faae8fb8ed73f01ff8c9a3f8
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795338"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056250"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Verwalten von benutzerdefinierten Domänennamen in Azure Active Directory
 
@@ -55,7 +55,7 @@ Wenn Sie einem Azure AD-Mandanten bereits eine Domäne contoso.com hinzugefügt 
 
 ## <a name="what-to-do-if-you-change-the-dns-registrar-for-your-custom-domain-name"></a>Vorgehensweise beim Ändern der DNS-Registrierungsstelle für Ihren benutzerdefinierten Domänennamen
 
-Wenn Sie die DNS-Registrierungsstellen ändern, sind keine weiteren Konfigurationsaufgaben in Azure AD auszuführen. Sie können den Domänennamen in Azure AD ohne jede Unterbrechung weiterverwenden. Wenn Sie Ihren benutzerdefinierten Domänennamen mit Office 365, Intune oder anderen Diensten verwenden, die benutzerdefinierte Domänennamen in Azure AD verwenden, informieren Sie sich in der Dokumentation zu diesen Diensten.
+Wenn Sie die DNS-Registrierungsstellen ändern, sind keine weiteren Konfigurationsaufgaben in Azure AD auszuführen. Sie können den Domänennamen in Azure AD ohne jede Unterbrechung weiterverwenden. Wenn Sie Ihren benutzerdefinierten Domänennamen mit Microsoft 365, Intune oder anderen Diensten verwenden, die benutzerdefinierte Domänennamen in Azure AD verwenden, lesen Sie die Dokumentation zu diesen Diensten.
 
 ## <a name="delete-a-custom-domain-name"></a>Löschen eines benutzerdefinierten Domänennamens
 
@@ -75,7 +75,7 @@ Sie können das Löschen eines Domänennamens im [Azure AD Admin Center](https:/
 
 Um **ForceDelete** im Azure-Portal aufzurufen, müssen Sie sicherstellen, dass weniger als 1.000 Verweise auf den Domänennamen vorhanden sind und dass alle Verweise, bei denen Exchange der Bereitstellungsdienst ist, im [Exchange Admin Center](https://outlook.office365.com/ecp/) aktualisiert oder entfernt werden. Dazu gehören E-Mail-aktivierte Exchange-Sicherheitsgruppen und verteilte Listen. Weitere Informationen finden Sie unter [Entfernen von E-Mail-aktivierten Sicherheitsgruppen](/Exchange/recipients/mail-enabled-security-groups?view=exchserver-2019#Remove%20mail-enabled%20security%20groups). Der **ForceDelete**-Vorgang kann nicht erfolgreich ausgeführt werden, wenn eine der folgenden Aussagen zutrifft:
 
-* Sie haben eine Domäne über Office 365-Domänenabonnementdienste erworben.
+* Sie haben eine Domäne über Microsoft 365-Domänenabonnementdienste erworben.
 * Sie sind Partner und führen die Verwaltung im Auftrag einer anderen Organisation des Kunden aus.
 
 Folgende Aktionen werden im Rahmen des **ForceDelete**-Vorgangs ausgeführt:

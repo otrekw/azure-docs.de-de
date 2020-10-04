@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/04/2020
+ms.date: 09/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d705c7fbdb744082b402f4dd598551107563ed2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 296f396f3c2aacdfe32ea2ee800190d0a91d353f
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85203162"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602165"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -64,10 +64,9 @@ Das **OrchestrationStep**-Element enthält die folgenden Attribute:
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | `Order` | Ja | Die Reihenfolge der Orchestrierungsschritte. |
-| `Type` | Ja | Der Typ des Orchestrierungsschritts. Mögliche Werte: <ul><li>**ClaimsProviderSelection:** Gibt an, dass der Orchestrierungsschritt verschiedene Anspruchsanbieter darstellt, von denen der Benutzer einen auswählen kann.</li><li>**CombinedSignInAndSignUp:** Gibt an, dass der Orchestrierungsschritt eine kombinierte Seite für die Anmeldung eines Social Media-Anbieters und die Registrierung eines lokalen Kontos darstellt.</li><li>**ClaimsExchange:** Gibt an, dass der Orchestrierungsschritt Ansprüche mit einem Anspruchsanbieter austauscht.</li><li>**GetClaims:** Gibt an, dass der Orchestrierungsschritt Anspruchsdaten verarbeiten soll, die von der vertrauenden Seite über ihre `InputClaims`-Konfiguration an Azure AD B2C gesendet werden.</li><li>**SendClaims:** Gibt an, dass der Orchestrierungsschritt die Ansprüche an die vertrauende Seite mit einem Token übermittelt, das von einem Anspruchsaussteller ausgestellt wurde.</li></ul> |
-| ContentDefinitionReferenceId | Nein  | Der Bezeichner der [Inhaltsdefinition](contentdefinitions.md), die diesem Orchestrierungsschritt zugeordnet ist. In der Regel wird der Bezeichner für den Verweis auf die Inhaltsdefinition im selbstbestätigten technischen Profil definiert. Jedoch gibt es einige Fälle, in denen Azure AD B2C etwas ohne technisches Profil anzeigen muss. Hier sind zwei Beispiele: Wenn der Orchestrierungsschritt vom Typ `ClaimsProviderSelection` oder `CombinedSignInAndSignUp` ist, muss Azure AD B2C die Auswahl des Identitätsanbieters auch ohne technisches Profil anzeigen. |
-| CpimIssuerTechnicalProfileReferenceId | Nein  | Der Typ des Orchestrierungsschritts ist `SendClaims`. Diese Eigenschaft definiert den Bezeichner für das technische Profil des Anspruchsanbieters, der das Token für die vertrauende Seite ausstellt.  Wenn sie nicht vorhanden ist, wird kein Token für die vertrauende Seite erstellt. |
-
+| `Type` | Ja | Der Typ des Orchestrierungsschritts. Mögliche Werte: <ul><li>**ClaimsProviderSelection:** Gibt an, dass der Orchestrierungsschritt verschiedene Anspruchsanbieter darstellt, von denen der Benutzer einen auswählen kann.</li><li>**CombinedSignInAndSignUp:** Gibt an, dass der Orchestrierungsschritt eine kombinierte Seite für die Anmeldung eines Social Media-Anbieters und die Registrierung eines lokalen Kontos darstellt.</li><li>**ClaimsExchange:** Gibt an, dass der Orchestrierungsschritt Ansprüche mit einem Anspruchsanbieter austauscht.</li><li>**GetClaims:** Gibt an, dass der Orchestrierungsschritt Anspruchsdaten verarbeiten soll, die von der vertrauenden Seite über ihre `InputClaims`-Konfiguration an Azure AD B2C gesendet werden.</li><li>**InvokeSubJourney**: Gibt an, dass der Orchestrierungsschritt Ansprüche mit einer untergeordneten Journey (in der öffentlichen Vorschau) austauscht.</li><li>**SendClaims:** Gibt an, dass der Orchestrierungsschritt die Ansprüche an die vertrauende Seite mit einem Token übermittelt, das von einem Anspruchsaussteller ausgestellt wurde.</li></ul> |
+| ContentDefinitionReferenceId | Nein | Der Bezeichner der [Inhaltsdefinition](contentdefinitions.md), die diesem Orchestrierungsschritt zugeordnet ist. In der Regel wird der Bezeichner für den Verweis auf die Inhaltsdefinition im selbstbestätigten technischen Profil definiert. Jedoch gibt es einige Fälle, in denen Azure AD B2C etwas ohne technisches Profil anzeigen muss. Hier sind zwei Beispiele: Wenn der Orchestrierungsschritt vom Typ `ClaimsProviderSelection` oder `CombinedSignInAndSignUp` ist, muss Azure AD B2C die Auswahl des Identitätsanbieters auch ohne technisches Profil anzeigen. |
+| CpimIssuerTechnicalProfileReferenceId | Nein | Der Typ des Orchestrierungsschritts ist `SendClaims`. Diese Eigenschaft definiert den Bezeichner für das technische Profil des Anspruchsanbieters, der das Token für die vertrauende Seite ausstellt.  Wenn sie nicht vorhanden ist, wird kein Token für die vertrauende Seite erstellt. |
 
 Das **OrchestrationStep**-Element kann die folgenden Elemente enthalten:
 
@@ -76,6 +75,7 @@ Das **OrchestrationStep**-Element kann die folgenden Elemente enthalten:
 | Preconditions | 0:n | Eine Liste von Voraussetzungen, die für die Ausführung des Orchestrierungsschritts erfüllt sein müssen. |
 | ClaimsProviderSelections | 0:n | Eine Liste von Auswahloptionen für Anspruchsanbieter für den Orchestrierungsschritts. |
 | ClaimsExchanges | 0:n | Eine Liste von Anspruchsaustauschvorgängen für den Orchestrierungsschritt. |
+| JourneyList | 0:1 | Eine Liste der möglichen untergeordneten Journeys für den Orchestrierungsschritt. |
 
 ### <a name="preconditions"></a>Preconditions
 
@@ -90,7 +90,7 @@ Das **Preconditions**-Element enthält das folgende Element:
 
 Das **Precondition**-Element enthält die folgenden Attribute:
 
-| attribute | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | `Type` | Ja | Der Typ der Überprüfung oder Abfrage, die für diese Voraussetzung ausgeführt werden soll. Dieser Wert kann **ClaimsExist** sein, wodurch festgelegt wird, dass die Aktionen durchgeführt werden sollen, wenn die angegebenen Ansprüche in den aktuellen Ansprüchen des Benutzers vorhanden sind. Alternativ kann der Wert **ClaimEquals** sein, wodurch festgelegt wird, dass die Aktionen durchgeführt werden sollen, wenn der angegebene Anspruch vorhanden ist und sein Wert dem angegebenen Wert gleicht. |
 | `ExecuteActionsIf` | Ja | Verwenden Sie einen booleschen Test (TRUE oder FALSE), um zu entscheiden, ob die Aktionen in der Voraussetzung ausgeführt werden sollen. |
@@ -170,16 +170,16 @@ Das **ClaimsProviderSelections**-Element enthält das folgende Element:
 
 Das **ClaimsProviderSelections**-Element enthält die folgenden Attribute:
 
-| attribute | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
-| DisplayOption| Nein  | Steuert das Verhalten in dem Fall, wenn nur eine Anspruchsanbieterauswahl verfügbar ist. Mögliche Werte: `DoNotShowSingleProvider` (Standard), der Benutzer wird sofort an den Verbundidentitätsanbieter umgeleitet. Oder `ShowSingleProvider` Azure AD B2C präsentiert die Anmeldeseite mit der Auswahl eines einzelnen Identitätsanbieters. Um dieses Attribut zu verwenden, muss die [Version der Inhaltsdefinition](page-layout.md)  `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0` und höher lauten.|
+| DisplayOption| Nein | Steuert das Verhalten in dem Fall, wenn nur eine Anspruchsanbieterauswahl verfügbar ist. Mögliche Werte: `DoNotShowSingleProvider` (Standard), der Benutzer wird sofort an den Verbundidentitätsanbieter umgeleitet. Oder `ShowSingleProvider` Azure AD B2C präsentiert die Anmeldeseite mit der Auswahl eines einzelnen Identitätsanbieters. Um dieses Attribut zu verwenden, muss die [Version der Inhaltsdefinition](page-layout.md) `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0` und höher lauten.|
 
 Das **ClaimsProviderSelection**-Element enthält die folgenden Attribute:
 
-| attribute | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | TargetClaimsExchangeId | Nein  | Der Bezeichner des Anspruchsaustauschs, der im nächsten Orchestrierungsschritt der Auswahl des Anspruchsanbieters ausgeführt wird. Dieses oder das ValidationClaimsExchangeId-Attribut muss angegeben werden, aber nicht beide. |
-| ValidationClaimsExchangeId | Nein  | Der Bezeichner des Anspruchsaustauschs, der im aktuellen Orchestrierungsschritt zur Validierung der Auswahl des Anspruchsanbieters ausgeführt wird. Dieses oder das TargetClaimsExchangeId-Attribut muss angegeben werden, aber nicht beide. |
+| ValidationClaimsExchangeId | Nein | Der Bezeichner des Anspruchsaustauschs, der im aktuellen Orchestrierungsschritt zur Validierung der Auswahl des Anspruchsanbieters ausgeführt wird. Dieses oder das TargetClaimsExchangeId-Attribut muss angegeben werden, aber nicht beide. |
 
 ### <a name="claimsproviderselection-example"></a>Beispiel für das ClaimsProviderSelection-Element
 
@@ -232,3 +232,19 @@ Das **ClaimsExchange**-Element enthält die folgenden Attribute:
 | --------- | -------- | ----------- |
 | Id | Ja | Ein Bezeichner für den Schritt mit dem Anspruchsaustausch. Der Bezeichner wird verwendet, um in der Richtlinie auf den Anspruchsaustausch eines Schritts für die Auswahl des Anspruchsanbieters zu verweisen. |
 | TechnicalProfileReferenceId | Ja | Der Bezeichner des technischen Profils, das ausgeführt werden soll. |
+
+## <a name="journeylist"></a>JourneyList
+
+Das **JourneyList**-Element enthält das folgende Element:
+
+| Element | Vorkommen | BESCHREIBUNG |
+| ------- | ----------- | ----------- |
+| Kandidat | 1:1 | Ein Verweis auf eine untergeordnete Journey, die aufgerufen werden soll. |
+
+### <a name="candidate"></a>Kandidat
+
+Das **Candidate**-Element enthält die folgenden Attribute:
+
+| attribute | Erforderlich | Beschreibung |
+| --------- | -------- | ----------- |
+| SubJourneyReferenceId | Ja | Der Bezeichner der untergeordneten Journey, die ausgeführt werden soll. |

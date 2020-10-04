@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/10/2020
+ms.date: 09/15/2020
 ms.author: jingwang
-ms.openlocfilehash: 6c0b03db281a054410b3c4f44e278dbccf32029f
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 12e6ae9dd14ebafb1da6bfbcfef64e2d65e876d8
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042682"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531711"
 ---
 # <a name="xml-format-in-azure-data-factory"></a>XML-Format in Azure Data Factory
 
@@ -35,7 +35,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 | encodingName     | Der zu Lesen/Schreiben von Testdateien verwendete Codierungstyp. <br>Es sind die folgenden Werte zulässig: "UTF-8", "UTF-16", "UTF-16BE", "UTF-32", "UTF-32BE", "US-ASCII", "UTF-7", "BIG5", "EUC-JP", "EUC-KR", "GB2312", "GB18030", "JOHAB", "SHIFT-JIS", "CP875", "CP866", "IBM00858", "IBM037", "IBM273", "IBM437", "IBM500", "IBM737", "IBM775", "IBM850", "IBM852", "IBM855", "IBM857", "IBM860", "IBM861", "IBM863", "IBM864", "IBM865", "IBM869", "IBM870", "IBM01140", "IBM01141", "IBM01142", "IBM01143", "IBM01144", "IBM01145", "IBM01146", "IBM01147", "IBM01148", "IBM01149", "ISO-2022-JP", "ISO-2022-KR", "ISO-8859-1", "ISO-8859-2", "ISO-8859-3", "ISO-8859-4", "ISO-8859-5", "ISO-8859-6", "ISO-8859-7", "ISO-8859-8", "ISO-8859-9", "ISO-8859-13", "ISO-8859-15", "WINDOWS-874", "WINDOWS-1250", "WINDOWS-1251", "WINDOWS-1252", "WINDOWS-1253", "WINDOWS-1254", "WINDOWS-1255", "WINDOWS-1256", "WINDOWS-1257", "WINDOWS-1258".| Nein       |
 | nullValue | Gibt eine Zeichenfolgendarstellung von Null-Werten an.<br/>Der Standardwert ist eine **leere Zeichenfolge**. | Nein |
 | compression | Gruppe von Eigenschaften zum Konfigurieren der Dateikomprimierung. Konfigurieren Sie diesen Abschnitt, wenn Sie während der Aktivitätsausführung eine Komprimierung/Dekomprimierung durchführen möchten. | Nein |
-| type<br>(*unter `compression`* ) | Der zum Lesen und Schreiben von XML-Dateien verwendete Komprimierungscodec. <br>Zulässige Werte sind **bzip2**, **Gzip**, **deflate**, **ZipDeflate**, **snappy** oder **lz4**, die beim Speichern der Datei verwendet werden können. Standardmäßig erfolgt keine Komprimierung.<br>**Hinweis** Die Kopieraktivität unterstützt zurzeit nicht „snappy“ und „lz4“ und der Zuordnungsdatenfluss nicht „ZipDeflate“.<br>**Beachten Sie**, dass bei Verwendung der Kopieraktivität zum Dekomprimieren von **ZipDeflate**-Dateien und zum Schreiben in den dateibasierten Senkendatenspeicher diese Dateien standardmäßig in den Ordner `<path specified in dataset>/<folder named as source zip file>/` extrahiert werden. Verwenden Sie in diesem Fall `preserveZipFileNameAsFolder` für die [Quelle der Kopieraktivität](#xml-as-source), um zu steuern, ob der Name der ZIP-Datei als Ordnerstruktur beibehalten werden soll. | Nein.  |
+| type<br>(*unter `compression`* ) | Der zum Lesen und Schreiben von XML-Dateien verwendete Komprimierungscodec. <br>Zulässige Werte sind **bzip2**, **gzip**, **deflate**, **ZipDeflate**, **TarGzip**, **snappy** und **lz4**. Standardmäßig erfolgt keine Komprimierung.<br>**Hinweis** Die Kopieraktivität unterstützt zurzeit nicht „snappy“ und „lz4“ und der Zuordnungsdatenfluss nicht „ZipDeflate“.<br>**Beachten Sie**, dass bei Verwendung der Kopieraktivität zum Dekomprimieren von **ZipDeflate**-/**TarGzip**-Dateien und zum Schreiben in den dateibasierten Senkendatenspeicher diese Dateien standardmäßig in den Ordner `<path specified in dataset>/<folder named as source compressed file>/` extrahiert werden. Verwenden Sie in diesem Fall `preserveZipFileNameAsFolder`/`preserveCompressionFileNameAsFolder` für die [Quelle der Kopieraktivität](#xml-as-source), um zu steuern, ob der Name der komprimierten Datei(en) als Ordnerstruktur beibehalten werden soll. | Nein.  |
 | level<br/>(*unter `compression`* ) | Das Komprimierungsverhältnis. <br>Zulässige Werte sind **Optimal** oder **Sehr schnell**.<br>- **Sehr schnell:** Der Komprimierungsvorgang wird schnellstmöglich abgeschlossen, auch wenn die resultierende Datei nicht optimal komprimiert ist.<br>- **Optimal**: Die Daten sollten optimal komprimiert sein, auch wenn der Vorgang eine längere Zeit in Anspruch nimmt. Weitere Informationen finden Sie im Thema [Komprimierungsstufe](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) . | Nein       |
 
 Nachfolgend sehen Sie ein Beispiel für ein XML-Dataset in Azure Blob Storage:
@@ -73,7 +73,7 @@ Erfahren Sie, wie Sie XML-Daten und Senkendatenspeicher sowie das zugehörige Fo
 
 Die folgenden Eigenschaften werden im Abschnitt ***\*source\**** der Kopieraktivität unterstützt. Weitere Informationen finden Sie unter [Verhalten des XML-Connectors](#xml-connector-behavior).
 
-| Eigenschaft      | BESCHREIBUNG                                                  | Erforderlich |
+| Eigenschaft      | Beschreibung                                                  | Erforderlich |
 | ------------- | ------------------------------------------------------------ | -------- |
 | Typ          | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **XmlSource** festgelegt sein. | Ja      |
 | formatSettings | Eine Gruppe von Eigenschaften. Weitere Informationen finden Sie in der Tabelle der **XML-Leseeinstellungen** weiter unten. | Nein       |
@@ -81,13 +81,14 @@ Die folgenden Eigenschaften werden im Abschnitt ***\*source\**** der Kopieraktiv
 
 Unterstützte **XML-Leseeinstellungen** unter `formatSettings`:
 
-| Eigenschaft      | BESCHREIBUNG                                                  | Erforderlich |
+| Eigenschaft      | Beschreibung                                                  | Erforderlich |
 | ------------- | ------------------------------------------------------------ | -------- |
 | Typ          | Der Typ von formatSettings muss auf **XmlReadSettings** festgelegt werden. | Ja      |
 | validationMode | Gibt an, ob das XML-Schema validiert werden soll.<br>Zulässige Werte sind **none** (Standard, keine Validierung), **xsd** (Validierung mithilfe von XSD) und **dtd** (Validierung mithilfe von DTD). | Nein |
 | namespacePrefixes | Namespace-URI für die Präfixzuordnung, die zum Benennen von Feldern beim Auswerten der XML-Datei verwendet wird.<br/>Wenn eine XML-Datei einen Namespace aufweist und der Namespace aktiviert ist, entspricht der Feldname standardmäßig dem im XML-Dokument.<br>Wenn ein Element für den Namespace-URI in dieser Zuordnung definiert ist, lautet der Feldname `prefix:fieldName`. | Nein |
 | compressionProperties | Eine Gruppe von Eigenschaften zur Festlegung, wie Daten bei einem bestimmten Komprimierungscodec dekomprimiert werden können. | Nein       |
-| preserveZipFileNameAsFolder<br>(*unter `compressionProperties`* ) | Diese Eigenschaft gilt, wenn das Eingabedataset mit der **ZipDeflate**-Komprimierung konfiguriert wurde. Sie gibt an, ob der Name der ZIP-Quelldatei während Kopiervorgängen als Ordnerstruktur beibehalten werden soll.<br>– Lautet der Wert **TRUE** (Standard), schreibt Data Factory entzippte Dateien in `<path specified in dataset>/<folder named as source zip file>/`.<br>– Lautet der Wert **FALSE**, schreibt Data Factory entzippte Dateien direkt in `<path specified in dataset>`. Stellen Sie sicher, dass keine doppelten Dateinamen in unterschiedlichen ZIP-Quelldateien vorliegen, um ein „Racing“ oder ein unerwartetes Verhalten zu vermeiden.  | Nein |
+| preserveZipFileNameAsFolder<br>(*unter `compressionProperties`->`type` als `ZipDeflateReadSettings`* )  | Diese Eigenschaft gilt, wenn das Eingabedataset mit der **ZipDeflate**-Komprimierung konfiguriert wurde. Sie gibt an, ob der Name der ZIP-Quelldatei während Kopiervorgängen als Ordnerstruktur beibehalten werden soll.<br>– Lautet der Wert **true** (Standard), schreibt Data Factory entzippte Dateien in `<path specified in dataset>/<folder named as source zip file>/`.<br>– Lautet der Wert **false**, schreibt Data Factory entzippte Dateien direkt in `<path specified in dataset>`. Stellen Sie sicher, dass keine doppelten Dateinamen in unterschiedlichen ZIP-Quelldateien vorliegen, um „Racing“ oder ein unerwartetes Verhalten zu vermeiden.  | Nein |
+| preserveCompressionFileNameAsFolder<br>(*unter `compressionProperties`->`type` als `TarGZipReadSettings`* ) | Gilt, wenn das Eingabedataset mit der **TarGzip**-Komprimierung konfiguriert wurde. Gibt an, ob der Name der komprimierten Quelldatei während Kopiervorgängen als Ordnerstruktur beibehalten werden soll.<br>– Lautet der Wert **true** (Standardwert), schreibt Data Factory dekomprimierte Dateien in `<path specified in dataset>/<folder named as source compressed file>/`. <br>– Lautet der Wert **false**, schreibt Data Factory dekomprimierte Dateien direkt in `<path specified in dataset>`. Stellen Sie sicher, dass keine doppelten Dateinamen in unterschiedlichen Quelldateien vorliegen, um „Racing“ oder ein unerwartetes Verhalten zu vermeiden. | Nein |
 
 ## <a name="mapping-data-flow-properties"></a>Eigenschaften von Mapping Data Flow
 
@@ -97,7 +98,7 @@ Bei Zuordnungsdatenflüssen können Sie in den folgenden Datenspeichern das XML-
 
 In der folgenden Tabelle sind die von einer XML-Quelle unterstützten Eigenschaften aufgeführt. Sie können diese Eigenschaften auf der Registerkarte **Quelloptionen** bearbeiten. Weitere Informationen finden Sie unter [Verhalten des XML-Connectors](#xml-connector-behavior). Bei Verwendung eines Inlinedatasets werden zusätzliche Dateieinstellungen angezeigt. Diese entsprechen den Eigenschaften, die im Abschnitt zu den [Dataseteigenschaften](#dataset-properties) beschrieben sind. 
 
-| Name | BESCHREIBUNG | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
+| Name | Beschreibung | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Platzhalterpfade | Alle Dateien, die dem Platzhalterpfad entsprechen, werden verarbeitet. Überschreibt den Ordner und den Dateipfad, die im Dataset festgelegt sind. | Nein | String[] | wildcardPaths |
 | Partitionsstammpfad | Für partitionierte Dateidaten können Sie einen Partitionsstammpfad eingeben, um partitionierte Ordner als Spalten zu lesen. | Nein | String | partitionRootPath |

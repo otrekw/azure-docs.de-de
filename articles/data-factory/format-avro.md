@@ -7,16 +7,17 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/05/2020
+ms.date: 09/15/2020
 ms.author: jingwang
-ms.openlocfilehash: 32af8c1b19d57fdba58ce27700e5d1e7a34f9c64
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7be92289d293798393ead3562c39721d46ce561b
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84604982"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531847"
 ---
 # <a name="avro-format-in-azure-data-factory"></a>Avro-Format in Azure Data Factory
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Nutzen Sie diesen Artikel, wenn Sie die **Avro-Dateien analysieren oder Daten im Avro-Format schreiben** möchten. 
@@ -31,7 +32,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | Die type-Eigenschaft des Datasets muss auf **Avro** festgelegt werden. | Ja      |
 | location         | Speicherorteinstellungen der Datei(en) Jeder dateibasierte Connector verfügt unter `location` über seinen eigenen Speicherorttyp und unterstützte Eigenschaften. **Informationen hierzu finden Sie im Abschnitt „Dataset-Eigenschaften“ des Artikels über Connectors**. | Ja      |
-| avroCompressionCodec | Der Komprimierungscodec, der beim Schreiben in Avro-Dateien verwendet werden soll. Beim Lesen von Avro-Dateien legt Data Factory den Codec für die Komprimierung automatisch anhand der Dateimetadaten fest.<br>Unterstützte Typen sind **none** (Standard), **deflate** und **snappy**. Hinweis: „Snappy“ wird derzeit von der Kopieraktivität für das Lesen/Schreiben von Avro-Dateien nicht unterstützt. | Nein       |
+| avroCompressionCodec | Der Komprimierungscodec, der beim Schreiben in Avro-Dateien verwendet werden soll. Beim Lesen von Daten aus Avro-Dateien bestimmt Data Factory den Codec für die Komprimierung automatisch anhand der Dateimetadaten.<br>Unterstützte Typen sind **none** (Standard), **deflate** und **snappy**. Hinweis: „Snappy“ wird derzeit von der Kopieraktivität für das Lesen/Schreiben von Avro-Dateien nicht unterstützt. | Nein       |
 
 > [!NOTE]
 > Leerzeichen im Spaltennamen werden bei Avro-Dateien nicht unterstützt.
@@ -80,8 +81,16 @@ Die folgenden Eigenschaften werden im Abschnitt ***\*sink\**** der Kopieraktivit
 | Eigenschaft      | BESCHREIBUNG                                                  | Erforderlich |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **AvroSink** festgelegt werden. | Ja      |
+| formatSettings          | Eine Gruppe von Eigenschaften. Weitere Informationen zu **Avro-Schreibeinstellungen** finden Sie in der Tabelle unten.| Nein      |
 | storeSettings | Eine Gruppe von Eigenschaften für das Schreiben von Daten in einen Datenspeicher. Jeder dateibasierte Connector verfügt unter `storeSettings` über eigene unterstützte Schreibeinstellungen. **Informationen hierzu finden Sie im Abschnitt über die Eigenschaften der Kopieraktivität im Artikel über Connectors**. | Nein       |
 
+Unterstützte **Avro-Schreibeinstellungen** unter `formatSettings`:
+
+| Eigenschaft      | BESCHREIBUNG                                                  | Erforderlich                                              |
+| ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
+| Typ          | Der Typ von „formatSettings“ muss auf **AvroWriteSettings** festgelegt werden. | Ja                                                   |
+| maxRowsPerFile | Wenn Sie Daten in einen Ordner schreiben, können Sie auswählen, in mehrere Dateien zu schreiben, und die maximale Anzahl von Zeilen pro Datei angeben.  | Nein |
+| fileNamePrefix | Anwendbar, wenn `maxRowsPerFile` konfiguriert ist.<br> Geben Sie das Dateinamenpräfix beim Schreiben von Daten in mehrere Dateien an, das zu diesem Muster führt: `<fileNamePrefix>_00000.<fileExtension>`. Wenn keine Angabe erfolgt, wird das Dateinamenpräfix automatisch generiert. Diese Eigenschaft findet keine Anwendung, wenn die Quelle ein dateibasierter Speicher oder ein [Datenspeicher mit aktivierter Partitionsoption](copy-activity-performance-features.md) ist.  | Nein |
 
 ## <a name="mapping-data-flow-properties"></a>Eigenschaften von Mapping Data Flow
 
@@ -91,24 +100,24 @@ Bei Zuordnungsdatenflüssen können Sie in den folgenden Datenspeichern das Avro
 
 In der folgenden Tabelle sind die von einer Avro-Quelle unterstützten Eigenschaften aufgeführt. Sie können diese Eigenschaften auf der Registerkarte **Quelloptionen** bearbeiten.
 
-| Name | BESCHREIBUNG | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
+| Name | Beschreibung | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Platzhalterpfade | Alle Dateien, die dem Platzhalterpfad entsprechen, werden verarbeitet. Überschreibt den Ordner und den Dateipfad, die im Dataset festgelegt sind. | nein | String[] | wildcardPaths |
-| Partitionsstammpfad | Für Dateidaten, die partitioniert sind, können Sie einen Partitionsstammpfad eingeben, um partitionierte Ordner als Spalten zu lesen. | nein | String | partitionRootPath |
-| Liste der Dateien | Gibt an, ob Ihre Quelle auf eine Textdatei verweist, die zu verarbeitende Dateien auflistet. | nein | `true` oder `false` | fileList |
-| Spalte für die Speicherung im Dateinamen. | Erstellen Sie eine neue Spalte mit dem Namen und Pfad der Quelldatei. | nein | String | rowUrlColumn |
-| Nach der Fertigstellung | Löschen oder verschieben Sie die Dateien nach der Verarbeitung. Dateipfad beginnt mit dem Containerstamm | nein | Löschen: `true` oder `false` <br> Verschieben: `['<from>', '<to>']` | purgeFiles <br> moveFiles |
+| Partitionsstammpfad | Für partitionierte Dateidaten können Sie einen Partitionsstammpfad eingeben, um partitionierte Ordner als Spalten zu lesen. | nein | String | partitionRootPath |
+| Liste mit den Dateien | Gibt an, ob Ihre Quelle auf eine Textdatei verweist, in der die zu verarbeitenden Dateien aufgelistet sind. | nein | `true` oder `false` | fileList |
+| Spalte, in der der Dateiname gespeichert wird | Erstellt eine neue Spalte mit dem Namen und Pfad der Quelldatei. | nein | String | rowUrlColumn |
+| Nach Abschluss | Löscht oder verschiebt die Dateien nach der Verarbeitung. Dateipfad beginnt mit dem Containerstamm | nein | Löschen: `true` oder `false` <br> Verschieben: `['<from>', '<to>']` | purgeFiles <br> moveFiles |
 | Nach der letzten Änderung filtern | Filtern Sie Dateien nach dem Zeitpunkt ihrer letzten Änderung. | nein | Timestamp | modifiedAfter <br> modifiedBefore |
 
 ### <a name="sink-properties"></a>Senkeneigenschaften
 
 In der folgenden Tabelle sind die von einer Avro-Senke unterstützten Eigenschaften aufgeführt. Sie können diese Eigenschaften auf der Registerkarte **Einstellungen** bearbeiten.
 
-| Name | BESCHREIBUNG | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
+| Name | Beschreibung | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Ordner löschen | Wenn der Zielordner vor dem Schreiben gelöscht wird | nein | `true` oder `false` | truncate |
-| Dateinamenoption | Das Namensformat der geschriebenen Daten. Standardmäßig eine Datei pro Partition im Format `part-#####-tid-<guid>` | nein | Muster: String <br> Pro Partition: String[] <br> Wie Daten in Spalte: String <br> Ausgabe in eine einzelne Datei: `['<fileName>']`  | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |
-| Alle in Anführungszeichen | Alle Werte in Anführungszeichen einschließen | nein | `true` oder `false` | quoteAll |
+| Ordner löschen | Wenn der Zielordner vor dem Schreiben gelöscht wird. | nein | `true` oder `false` | truncate |
+| Dateinamenoption | Das Namensformat der geschriebenen Daten. Standardmäßig eine Datei pro Partition im Format `part-#####-tid-<guid>`. | nein | Muster: String <br> Pro Partition: String[] <br> Wie Daten in Spalte: String <br> Ausgabe in eine einzelne Datei: `['<fileName>']`  | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |
+| Alle in Anführungszeichen | Gibt an, ob alle Werte in Anführungszeichen eingeschlossen werden. | nein | `true` oder `false` | quoteAll |
 
 ## <a name="data-type-support"></a>Datentypunterstützung
 
