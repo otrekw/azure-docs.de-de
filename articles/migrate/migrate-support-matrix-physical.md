@@ -3,12 +3,12 @@ title: Unterstützung der Bewertung physischer Server in Azure Migrate
 description: Informationen zur Unterstützung der Bewertung physischer Server mit der Azure Migrate-Serverbewertung
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: 2b96bff7468f0705f2b80f60dcd5248960495f16
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: dffa95fe717f8588f56b9dee60ede8bbf44aceb9
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640122"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660348"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>Unterstützungsmatrix für die Bewertung physischer Server 
 
@@ -35,7 +35,7 @@ Zum Bewerten von physischen Servern erstellen Sie ein Azure Migrate-Projekt, und
 | :-------------------       | :------------------- |
 | **Physische Serverbereitstellung**       | Der physische Server kann eigenständig sein oder in einem Cluster bereitgestellt werden. |
 | **Berechtigungen**           | **Windows:** Verwenden Sie ein Domänenkonto für Computer, die in eine Domäne eingebunden sind, sowie ein lokales Konto für Computer, die in keine Domäne eingebunden sind. Das Benutzerkonto sollte diesen Gruppen hinzugefügt werden: Remoteverwaltungsbenutzer, Leistungsüberwachungsbenutzer und Leistungsprotokollbenutzer. <br/><br/> **Linux:** Sie benötigen ein root-Konto auf den Linux-Servern, die Sie ermitteln möchten. <br/> Stellen Sie alternativ sicher, dass die erforderlichen Funktionen mithilfe der folgenden Befehle festgelegt werden. <br/> setcap CAP_DAC_READ_SEARCH+eip /usr/sbin/fdisk <br/> setcap CAP_DAC_READ_SEARCH+eip /sbin/fdisk (wenn „/usr/sbin/fdisk“ nicht vorhanden ist) <br/> setcap "cap_dac_override, cap_dac_read_search, cap_fowner,cap_fsetid, cap_setuid, cap_setpcap, cap_net_bind_service, cap_net_admin, cap_sys_chroot, cap_sys_admin, cap_sys_resource, cap_audit_control, cap_setfcap=+eip" /sbin/lvm <br/> setcap CAP_DAC_READ_SEARCH+eip /usr/sbin/dmidecode <br/> chmod a+r /sys/class/dmi/id/product_uuid
-| **Betriebssystem** | Alle Betriebssysteme mit Ausnahme von Windows Server 2003 und SUSE Linux können für die Migration ausgewertet werden. |
+| **Betriebssystem** | Alle Windows- und Linux-Betriebssysteme können für die Migration bewertet werden. |
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Anforderungen für die Azure Migrate-Appliance

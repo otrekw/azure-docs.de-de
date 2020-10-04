@@ -3,19 +3,19 @@ title: Unterstützte Kubernetes-Versionen in Azure Kubernetes Service
 description: Grundlegendes zur Richtlinie zur Unterstützung der Kubernetes-Version und zum Lebenszyklus von Clustern in Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: article
-ms.date: 07/08/2020
+ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 45c60069c27a2bb9b34cc53eb394bd44a04bd0ba
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: fb5b9c446ea5574970b14c683fac258c17199fef
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144616"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565370"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Unterstützte Kubernetes-Versionen in Azure Kubernetes Service (AKS)
 
-Die Kubernetes-Community veröffentlicht etwa alle drei Monate Nebenversionen. Diese Releases enthalten neue Features und Verbesserungen. Patchreleases kommen häufiger vor (manchmal wöchentlich) und sind nur für wichtige Fehlerbehebungen in einer Nebenversion gedacht. Diese Patchreleases enthalten Fixes für Sicherheitsrisiken oder schwer wiegende Fehler.
+Die Kubernetes-Community veröffentlicht etwa alle drei Monate Nebenversionen. Kürzlich hat die Kubernetes-Community das [Fenster der Unterstützung für die einzelnen Versionen von 9 Monaten auf 12 Monate](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/) erhöht, beginnend mit Version 1.19. Diese Releases enthalten neue Features und Verbesserungen. Patchreleases kommen häufiger vor (manchmal wöchentlich) und sind für wichtige Fehlerbehebungen in einer Nebenversion gedacht. Diese Patchreleases enthalten Fixes für Sicherheitsrisiken oder schwer wiegende Fehler.
 
 ## <a name="kubernetes-versions"></a>Kubernetes-Versionen
 
@@ -41,8 +41,8 @@ Benutzer sollten nach Möglichkeit immer das neueste Patchrelease der aktuell ve
 
 In AKS ist eine allgemein verfügbare Version als eine Version definiert, die in allen SLO- oder SLA-Messungen aktiviert und in allen Regionen verfügbar ist. AKS unterstützt drei allgemein verfügbare Nebenversionen von Kubernetes:
 
-* Die neueste allgemein verfügbare Nebenversion, die in AKS veröffentlicht wurde (diese wird als „N“ bezeichnet). 
-* Die beiden vorherigen Nebenversionen. 
+* Die neueste allgemein verfügbare Nebenversion, die in AKS veröffentlicht wurde (diese wird als „N“ bezeichnet).
+* Die beiden vorherigen Nebenversionen.
 * Jede unterstützte Nebenversion unterstützt auch maximal zwei stabile Patches.
 * AKS unterstützt möglicherweise auch Vorschauversionen, die explizit als solche gekennzeichnet sind und den [Nutzungsbedingungen für Vorschauversionen][preview-terms] unterliegen.
 
@@ -143,6 +143,10 @@ Den Verlauf der letzten Versionen finden Sie [hier](https://en.wikipedia.org/wik
 \* Vorbehaltlich der Bestätigung des Upstreamreleasedatums.
 
 ## <a name="faq"></a>Häufig gestellte Fragen
+
+**Wie oft muss ich damit rechnen, ein Upgrade auf Kubernetes-Versionen durchzuführen, um weiterhin Unterstützung zu erhalten?**
+
+Ab Kubernetes 1.19 hat die [Open-Source-Community die Unterstützung auf 1 Jahr](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/) erweitert. AKS führt einen Commit aus, um Patches und Unterstützung zu ermöglichen, die mindestens den Upstreamzusagen entsprechen. Das bedeutet, dass Sie beginnend mit AKS-Clustern der Version 1.19 mindestens einmal pro Jahr ein Upgrade durchführen können, um bei einer unterstützten Version zu bleiben. Für die Versionen 1.18 oder darunter bleibt das Fenster der Unterstützung bei 9 Monaten, was alle 9 Monate ein Upgrade erfordert, um bei einer unterstützten Version zu bleiben. Es wird dringend empfohlen, neue Versionen regelmäßig zu testen und bereit zu sein, ein Upgrade auf neuere Versionen auszuführen, um die neuesten stabilen Verbesserungen in Kubernetes zu erfassen.
 
 **Was geschieht, wenn ein Benutzer ein Upgrade eines Kubernetes-Clusters mit einer Nebenversion durchführt, die nicht unterstützt wird?**
 

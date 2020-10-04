@@ -4,12 +4,12 @@ description: Durchführen einer Massenwartung mithilfe der schnellen Problembehe
 ms.topic: article
 ms.date: 03/13/2020
 ms.author: sagupt
-ms.openlocfilehash: ebd993733c1aca9cd4f7d92f0a75e22d68a87ffe
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a9c86a7ae510d9657f64c71db2aa8c4e3e558f52
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518061"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90968585"
 ---
 # <a name="quick-fix-remediation-for-advisor"></a>Schnelle Problembehebung für Advisor
 Die **schneller Problembehebung** ermöglicht eine schnellere und einfachere Wartung für Empfehlungen für mehrere Ressourcen. Sie bietet eine Möglichkeit für die Massenwartung von Ressourcen und unterstützt Sie bei der schnelleren Optimierung Ihrer Abonnements durch eine bedarfsgerechte Wartung Ihrer Ressourcen.
@@ -20,13 +20,13 @@ Die Funktion ist über das Azure-Portal nur für bestimmte Empfehlungen verfügb
 
 1. Klicken Sie in der Liste der Empfehlungen, die mit **Schnelle Problembehebung** gekennzeichnet sind, auf die entsprechende Empfehlung.
 
-   ![Schnelle Problembehebung für Advisor](./media/quick-fix-1.png)
+   :::image type="content" source="./media/quick-fix-1.png" alt-text="{Screenshot: Azure Advisor zeigt Bezeichnungen für die schnelle Problembehebung in den Empfehlungen.}":::
    
    *Die Preise in der Abbildung dienen nur als Beispiel*
 
 2. Auf der Seite mit den Empfehlungsdetails sehen Sie eine Liste der Ressourcen, für die Sie diese Empfehlung erhalten. Wählen Sie alle Ressourcen aus, die Sie für die Empfehlung warten möchten.
 
-   ![Schnelle Problembehebung für Advisor](./media/quick-fix-2.png)
+   :::image type="content" source="./media/quick-fix-2.png" alt-text="{Screenshot: Azure Advisor zeigt Bezeichnungen für die schnelle Problembehebung in den Empfehlungen.}":::
    
    *Die Preise in der Abbildung dienen nur als Beispiel*
 

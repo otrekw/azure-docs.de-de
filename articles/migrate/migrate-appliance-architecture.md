@@ -3,12 +3,12 @@ title: Architektur der Azure Migrate-Appliance
 description: Bietet einen Überblick über die Azure Migrate-Appliance, die bei der Serverbewertung und -migration verwendet wird.
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: a83e044acc329572a5f3bfd4856f90379319ba1d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 623790568fb8d86d8065711439f148211fc7fd6b
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919742"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514565"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Architektur der Azure Migrate-Appliance
 
@@ -62,15 +62,15 @@ Die vom Client für alle Bereitstellungsszenarien gesammelten Daten werden in de
 
 ## <a name="discovery-and-collection-process"></a>Ermittlungs- und Sammlungsprozess
 
-![Aufbau](./media/migrate-appliance-architecture/architecture.png)
+![Aufbau](./media/migrate-appliance-architecture/architecture1.png)
 
 Die Appliance kommuniziert mit vCenter-Servern und Hyper-V-Hosts/Clustern über den folgenden Prozess.
 
 1. **Start der Ermittlung**:
-    - Wenn Sie die Ermittlung auf der Hyper-V-Appliance starten, kommuniziert sie mit den Hyper-V-Hosts über die WinRM-Ports 5985 (HTTP) und 5986 (HTTPS).
+    - Wenn Sie die Ermittlung auf der Hyper-V-Appliance starten, kommuniziert sie mit den Hyper-V-Hosts über den WinRM-Port 5985 (HTTP).
     - Wenn Sie die Ermittlung auf der VMware-Appliance starten, kommuniziert sie standardmäßig mit dem vCenter-Server über TCP-Port 443. Wenn der vCenter-Server an einem anderen Port lauscht, können Sie ihn in der Appliance-Webanwendung konfigurieren.
 2. **Sammeln von Metadaten und Leistungsdaten**:
-    - Die Appliance verwendet eine Common Information Model (CIM)-Sitzung, um Hyper-V-VM-Daten vom Hyper-V-Host an Port 5985 und 5986 zu sammeln.
+    - Die Appliance verwendet eine Common Information Model (CIM)-Sitzung, um Hyper-V-VM-Daten vom Hyper-V-Host an Port 5985 zu sammeln.
     - Die Appliance kommuniziert standardmäßig über Port 443, um VMware-VM-Daten vom vCenter Server zu sammeln.
 3. **Senden von Daten**: Die Appliance sendet die gesammelten Daten über SSL-Port 443 an die Azure Migrate-Serverbewertung und die Azure Migrate-Servermigration. Die Verbindung der Appliance mit Azure kann über das Internet erfolgen, oder Sie können ExpressRoute mit öffentlichem/Microsoft-Peering verwenden.
     - Bei Leistungsdaten sammelt die Appliance Nutzungsdaten in Echtzeit.
@@ -81,17 +81,12 @@ Die Appliance kommuniziert mit vCenter-Servern und Hyper-V-Hosts/Clustern über 
     - Bei der Servermigration beginnt die Appliance mit der Ermittlung von VM-Daten und repliziert diese nach Azure.
 4. **Bewerten und Migrieren**: Sie können nun mit der Azure Migrate-Serverbewertung aus den von der Appliance gesammelten Metadaten Bewertungen erstellen. Darüber hinaus können Sie auch mit der Migration von VMware-VMs mit der Azure Migrate-Servermigration beginnen, um die VM-Replikation ohne Agent zu organisieren.
 
-
-
-
-
 ## <a name="appliance-upgrades"></a>Appliance-Upgrades
 
 Die Appliance wird aktualisiert, wenn die auf der Appliance ausgeführten Azure Migrate-Agents aktualisiert werden. Dies geschieht automatisch, da auf der Appliance standardmäßig die automatische Aktualisierung aktiviert ist. Sie können diese Standardeinstellung ändern, um die Agents manuell zu aktualisieren.
 
 Sie deaktivieren die automatische Aktualisierung in der Registrierung, indem Sie in „HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance“ den Schlüssel „AutoUpdate“ auf 0 (DWORD) festlegen.
 
- 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

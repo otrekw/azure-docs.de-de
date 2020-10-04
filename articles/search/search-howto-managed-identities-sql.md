@@ -1,25 +1,22 @@
 ---
-title: Einrichten einer Verbindung mit Azure SQL-Datenbank mithilfe einer verwalteten Identität (Vorschau)
+title: Einrichten einer Verbindung mit Azure SQL-Datenbank mithilfe einer verwalteten Identität
 titleSuffix: Azure Cognitive Search
-description: Erfahren Sie, wie Sie eine Indexerverbindung mit Azure SQL-Datenbank mithilfe einer verwalteten Identität einrichten (Vorschau)
+description: Erfahren Sie, wie Sie eine Indexerverbindung mit Azure SQL-Datenbank mithilfe einer verwalteten Identität einrichten.
 manager: luisca
 author: markheff
 ms.author: maheff
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.openlocfilehash: 8dabf69af8628bb0b168bfea94af5333df341423
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/22/2020
+ms.openlocfilehash: 9f90125edeee453dc9e8b8b80f8eb09d9fc6e84c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88924128"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971534"
 ---
-# <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity-preview"></a>Einrichten einer Indexerverbindung mit Azure SQL-Datenbank mithilfe einer verwalteten Identität (Vorschau)
-
-> [!IMPORTANT] 
-> Das Einrichten einer Verbindung mit einer Datenquelle mithilfe einer verwalteten Identität wird derzeit in einer öffentlichen Vorschauversion unterstützt. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen.
+# <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity"></a>Einrichten einer Indexerverbindung mit Azure SQL-Datenbank mithilfe einer verwalteten Identität
 
 Auf dieser Seite wird beschrieben, wie Sie eine Indexerverbindung mit Azure SQL-Datenbank mithilfe einer verwalteten Identität einrichten, anstatt Anmeldeinformationen in der Verbindungszeichenfolge des Datenquellenobjekts anzugeben.
 
@@ -97,7 +94,7 @@ In diesem Schritt erteilen Sie dem Azure Cognitive Search-Dienst die Berechtigun
 
 ### <a name="5---create-the-data-source"></a>5\. Erstellen der Datenquelle
 
-Die Verbindungszeichenfolge für verwaltete Identitäten wird von der [REST-API](/rest/api/searchservice/create-data-source), dem Azure-Portal und dem [.NET SDK](/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) unterstützt. Im Folgenden finden Sie ein Beispiel für das Erstellen einer Datenquelle zum Indizieren von Daten aus einer Azure SQL-Datenbank mithilfe der [REST-API](/rest/api/searchservice/create-data-source) und einer Verbindungszeichenfolge für verwaltete Identitäten. Das Format der Verbindungszeichenfolge für verwaltete Identitäten ist für die REST-API, das .NET SDK und das Azure-Portal identisch.
+Die Verbindungszeichenfolge für verwaltete Identitäten wird von der [REST-API](/rest/api/searchservice/create-data-source), dem Azure-Portal und dem [.NET SDK](/dotnet/api/microsoft.azure.search.models.datasource) unterstützt. Im Folgenden finden Sie ein Beispiel für das Erstellen einer Datenquelle zum Indizieren von Daten aus einer Azure SQL-Datenbank mithilfe der [REST-API](/rest/api/searchservice/create-data-source) und einer Verbindungszeichenfolge für verwaltete Identitäten. Das Format der Verbindungszeichenfolge für verwaltete Identitäten ist für die REST-API, das .NET SDK und das Azure-Portal identisch.
 
 Beim Erstellen einer Datenquelle mit der [REST-API](/rest/api/searchservice/create-data-source) muss die Datenquelle die folgenden erforderlichen Eigenschaften aufweisen:
 

@@ -10,16 +10,16 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: mbaldwin
-ms.openlocfilehash: dfb1ca4fc8f550c8ed6955adaca9082f0b6b79e6
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: e0bb3c3f3a6a1a38f974acf361937928ad4e2cfd
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89379000"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983288"
 ---
 # <a name="azure-key-vault-basic-concepts"></a>Grundlegende Konzepte von Azure Key Vault
 
-Azure Key Vault ist ein Tool zum sicheren Speichern und Zugreifen auf Geheimnisse. Als Geheimnis wird alles bezeichnet, für das Sie den Zugriff streng kontrollieren möchten, z.B. API-Schlüssel, Kennwörter oder Zertifikate. Ein Tresor ist eine logische Gruppe von Geheimnissen.
+Azure Key Vault ist ein Clouddienst zum sicheren Speichern und Zugreifen auf Geheimnisse. Als Geheimnis wird alles bezeichnet, für das Sie den Zugriff streng kontrollieren möchten, z. B. API-Schlüssel, Kennwörter, Zertifikate oder kryptografische Schlüssel. Der Key Vault-Dienst unterstützt zwei Arten von Containern: Tresore und verwaltete HSM-Pools. Tresore unterstützen die Speicherung von Software und HSM-gestützten Schlüsseln, Geheimnissen und Zertifikaten. Verwaltete HSM-Pools unterstützen nur HSM-gestützte Schlüssel. Ausführliche Informationen finden Sie unter [Übersicht über die Azure Key Vault-REST-API](about-keys-secrets-certificates.md).
 
 Hier sind weitere wichtige Begriffe:
 
@@ -28,6 +28,12 @@ Hier sind weitere wichtige Begriffe:
 - **Tresorbesitzer:** Ein Tresorbesitzer kann einen Schlüsseltresor erstellen und über Vollzugriff sowie über uneingeschränkte Kontrolle verfügen. Außerdem kann der Tresorbesitzer auch eine Überprüfung einrichten, um zu protokollieren, wer auf Geheimnisse und Schlüssel zugreift. Administratoren können den Lebenszyklus des Schlüssels steuern. Sie können zu einer neuen Version des Schlüssels wechseln, den Schlüssel sichern und ähnliche Aufgaben ausführen.
 
 - **Tresorconsumer:** Ein Tresorconsumer kann Aktionen für die Objekte im Schlüsseltresor ausführen, wenn der Tresorbesitzer dem Consumer Zugriff gewährt. Welche Aktionen verfügbar sind, hängt von den gewährten Berechtigungen ab.
+
+- **Administratoren für verwaltete HSMs**: Benutzer, denen die Rolle „Administrator“ zugewiesen ist, haben die vollständige Kontrolle über einen verwalteten HSM-Pool. Sie können weitere Rollenzuweisungen erstellen, um den kontrollierten Zugriff an andere Benutzer zu delegieren.
+
+- **Kryptoverantwortlicher/Kryptografiebenutzer für verwaltete HSMs**: Integrierte Rollen, die normalerweise Benutzern oder Dienstprinzipalen zugewiesen werden, die kryptografische Vorgänge mithilfe von Schlüsseln in verwaltetem HSM durchführen. Der Kryptografiebenutzer kann neue Schlüssel erstellen, aber keine Schlüssel löschen.
+
+- **Kryptografiedienstverschlüsselung für verwaltete HSMs**: Integrierte Rolle, die in der Regel für die Verschlüsselung von ruhenden Daten mit kundenseitig verwaltetem Schlüssel einem Dienstkonto mit verwalteter Dienstidentität (z. B. Speicherkonto) zugewiesen wird.
 
 - **Ressource:** Eine Ressource ist ein verwaltbares Element, das über Azure verfügbar ist. Allgemeine Beispiele sind virtuelle Computer, Speicherkonten, Web-Apps, Datenbanken und virtuelle Netzwerke. Es gibt noch viele weitere.
 
@@ -59,7 +65,7 @@ Die folgende Tabelle enthält Informationen dazu, wie Sie mithilfe des Schlüsse
 | --- | --- | --- |
 | Entwickler einer Azure-Anwendung |„Ich möchte eine Anwendung für Azure schreiben, die Schlüssel für die Signierung und Verschlüsselung verwendet. Diese Schlüssel sollen sich jedoch außerhalb meiner Anwendung befinden, damit die Lösung auch für eine geografisch verteilte Anwendung geeignet ist. <br/><br/>Ich möchte Schlüssel und Geheimnisse schützen, ohne den Code dafür selbst zu schreiben. Außerdem sollen die Schlüssel auf einfache Weise und mit optimaler Leistung in meinen Anwendungen verwendbar sein.“ |√ Schlüssel werden in einem Tresor gespeichert und bei Bedarf über einen URI aufgerufen.<br/><br/> √ Schlüssel werden mit branchenüblichen Algorithmen, Schlüssellängen und Hardwaresicherheitsmodulen von Azure geschützt.<br/><br/> √ Schlüssel werden in HSMs verarbeitet, die sich in den gleichen Azure-Datencentern befinden wie die Anwendungen. Durch diese Methode werden im Gegensatz zu einer Lösung, bei der die Schlüssel an einem anderen Ort (beispielsweise lokal) vorliegen, eine höhere Zuverlässigkeit und eine geringere Latenz erreicht. |
 | Entwickler von SaaS-Lösungen (Software-as-a-Service) |„Ich möchte weder die Verantwortung noch die Haftung für Schlüssel und geheime Schlüssel für Kundenmandanten übernehmen. <br/><br/>Ich möchte, dass Kunden sowohl die Verantwortung als auch die Verwaltung für ihre Schlüssel übernehmen, sodass ich mich auf meine eigentlichen Aufgaben konzentrieren kann – die Bereitstellung der Softwarefunktionen.“ |√ Kunden können eigene Schlüssel in Azure importieren und diese verwalten. Wenn eine SaaS-Anwendung kryptografische Vorgänge unter Verwendung von Kundenschlüsseln ausführen muss, führt der Schlüsseltresor diese Vorgänge im Auftrag der Anwendung aus. Die Anwendung hat keine Informationen über die Kundenschlüssel. |
-| Sicherheitsbeauftragter (Chief Security Officer, CSO) |„Ich möchte sicherstellen, dass unsere Anwendungen den Anforderungen für FIPS 140-2 Level 2 HSMs für die sichere Schlüsselverwaltung entsprechen. <br/><br/>Ich möchte sicherstellen, dass meine Organisation die Kontrolle über den gesamten Lebenszyklus der Schlüssel behält und die Schlüsselverwendung überwachen kann. <br/><br/>Auch wenn wir verschiedene Azure-Dienste und -Ressourcen nutzen, möchte ich die Schlüssel über einen einzigen Speicherort in Azure verwalten.“ |√ HSMs sind FIPS 140-2 Level 2-zertifiziert.<br/><br/>√ Mit Key Vault sind Ihre Schlüssel für Microsoft nicht sichtbar und können auch nicht extrahiert werden.<br/><br/>√ Die Schlüsselverwendung wird nahezu in Echtzeit protokolliert.<br/><br/>√ Der Tresor stellt eine einzige Benutzeroberfläche bereit – unabhängig davon, über wie viele Tresore Sie in Azure verfügen, welche Regionen diese unterstützen und von welchen Anwendungen die Tresore verwendet werden. |
+| Sicherheitsbeauftragter (Chief Security Officer, CSO) |„Ich möchte sicherstellen, dass unsere Anwendungen den Anforderungen für FIPS 140-2 Level 2 oder FIPS 140-2 Level 3 HSMs für die sichere Schlüsselverwaltung entsprechen. <br/><br/>Ich möchte sicherstellen, dass meine Organisation die Kontrolle über den gesamten Lebenszyklus der Schlüssel behält und die Schlüsselverwendung überwachen kann. <br/><br/>Auch wenn wir verschiedene Azure-Dienste und -Ressourcen nutzen, möchte ich die Schlüssel über einen einzigen Speicherort in Azure verwalten.“ |√ Wählen Sie **Tresore** für HSMs aus, die gemäß FIPS 140-2 Level 2 überprüft wurden.<br/>√ Wählen Sie **Verwaltete HSM-Pools** für HSMs aus, die gemäß FIPS 140-2 Level 3 überprüft wurden.<br/><br/>√ Mit Key Vault sind Ihre Schlüssel für Microsoft nicht sichtbar und können auch nicht extrahiert werden.<br/>√ Die Schlüsselverwendung wird nahezu in Echtzeit protokolliert.<br/><br/>√ Der Tresor stellt eine einzige Benutzeroberfläche bereit – unabhängig davon, über wie viele Tresore Sie in Azure verfügen, welche Regionen diese unterstützen und von welchen Anwendungen die Tresore verwendet werden. |
 
 Jeder Benutzer mit einem Azure-Abonnement kann Schlüsseltresore erstellen und verwenden. Wenngleich der Schlüsseltresor insbesondere Entwicklern und Sicherheitsadministratoren Vorteile bietet, kann er durch einen Organisationsadministrator implementiert und verwaltet werden, der andere Azure-Dienste verwaltet. So kann sich dieser Administrator beispielsweise mit einem Azure-Abonnement anmelden, einen Tresor für die Schlüsselspeicherung der Organisation erstellen und dann operative Vorgänge wie die folgenden übernehmen:
 
@@ -77,7 +83,8 @@ Entwickler können die Schlüssel außerdem durch Verwendung von APIs direkt ver
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über das [Schützen Ihres Tresors](secure-your-key-vault.md).
+- Erfahren Sie mehr über das [Schützen Ihres Tresors](secure-your-key-vault.md).
+- Erfahren Sie, wie Sie Ihre [verwalteten HSM-Pools sichern können](../managed-hsm/access-control.md).
 
 <!--Image references-->
 [1]: ../media/key-vault-whatis/AzureKeyVault_overview.png
