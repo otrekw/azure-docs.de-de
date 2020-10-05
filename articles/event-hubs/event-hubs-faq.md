@@ -2,13 +2,13 @@
 title: Häufig gestellte Fragen (FAQ) – Azure Event Hubs | Microsoft-Dokumentation
 description: Dieser Artikel enthält eine Liste häufig gestellter Fragen (FAQ) zu Azure Event Hubs sowie die zugehörigen Antworten.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 9995588e618679ae38a11aff26485d1ba0b60688
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.date: 09/16/2020
+ms.openlocfilehash: b852af961327fbecb773c0608dfb823093e17267
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89288966"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883392"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Häufig gestellte Fragen zu Event Hubs
 
@@ -55,6 +55,9 @@ Sie können den Aufbewahrungszeitraum für die erfassten Daten in Ihrem Speicher
 ### <a name="how-do-i-monitor-my-event-hubs"></a>Wie überwache ich Event Hubs?
 Event Hubs gibt umfassende Metriken aus, die den Zustand Ihrer Ressourcen in [Azure Monitor](../azure-monitor/overview.md) angeben. Mit den Metriken können Sie zudem die allgemeine Integrität des Event Hubs-Diensts nicht nur auf Namespaceebene, sondern auch auf Entitätsebene bewerten. Erfahren Sie mehr über die angebotene Überwachung für [Azure Event Hubs](event-hubs-metrics-azure-monitor.md).
 
+### <a name="where-does-azure-event-hubs-store-customer-data"></a><a name="in-region-data-residency"></a>Wo speichert Azure Event Hubs Kundendaten?
+Azure Event Hubs speichert Kundendaten. Diese Daten werden von Event Hubs automatisch in einer einzigen Region gespeichert, sodass dieser Dienst in der Region automatisch die Anforderungen an Datenresidenz erfüllt, einschließlich der im [Trust Center](https://azuredatacentermap.azurewebsites.net/) angegebenen Anforderungen.
+
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Welche Ports muss ich in der Firewall öffnen? 
 Sie können die folgenden Protokolle mit Azure Service Bus verwenden, um Nachrichten zu senden und zu empfangen:
 
@@ -78,9 +81,9 @@ Um die richtigen IP-Adressen zu ermitteln, die Sie in die Zulassungsliste für I
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. Notieren Sie sich die IP-Adresse, die in `Non-authoritative answer` zurückgegeben werden. Sie würde sich nur dann ändern, wenn Sie den Namespace in einem anderen Cluster wiederherstellen.
+2. Notieren Sie sich die IP-Adresse, die in `Non-authoritative answer` zurückgegeben werden. 
 
-Wenn Sie die Zonenredundanz für Ihren Namespace verwenden, müssen Sie einige zusätzliche Schritte durchführen: 
+Wenn Sie **Zonenredundanz** für Ihren Namespace verwenden, müssen Sie einige zusätzliche Schritte durchführen: 
 
 1. Führen Sie zunächst nslookup für den Namespace aus.
 
@@ -94,9 +97,12 @@ Wenn Sie die Zonenredundanz für Ihren Namespace verwenden, müssen Sie einige z
     <name>-s2.cloudapp.net
     <name>-s3.cloudapp.net
     ```
+
+    > [!NOTE]
+    > Die vom `nslookup`-Befehl zurückgegebene IP-Adresse ist keine statische IP-Adresse. Allerdings bleibt sie gleich, bis die zugrunde liegende Bereitstellung gelöscht oder in einen anderen Cluster verschoben wird.
 3. Führen Sie den Befehl „nslookup“ für jeden Namen mit den Suffixen s1, s2 und s3 aus, um die IP-Adressen aller drei Instanzen zu erhalten, die in drei Verfügbarkeitszonen ausgeführt werden. 
 
-### <a name="where-can-i-find-client-ip-sending-or-receiving-msgs-to-my-namespace"></a>Wo finde ich Client-IP-Adressen, die Nachrichten (msgs) an meinen Namespace sendet oder von diesem empfängt?
+### <a name="where-can-i-find-client-ip-sending-or-receiving-messages-to-my-namespace"></a>Wo finde ich die Client-IP-Adresse, die Nachrichten an meinen Namespace sendet oder von diesem empfängt?
 Aktivieren Sie zunächst die [IP-Filterung](event-hubs-ip-filtering.md) für den Namespace. 
 
 Aktivieren Sie dann Diagnoseprotokolle für [Event Hubs-Verbindungsereignisse für virtuelle Netzwerke](event-hubs-diagnostic-logs.md#event-hubs-virtual-network-connection-event-schema), indem Sie den Anweisungen unter [Aktivieren von Diagnoseprotokollen](event-hubs-diagnostic-logs.md#enable-diagnostic-logs) folgen. Es wird die IP-Adresse angezeigt, für die die Verbindung verweigert wird.

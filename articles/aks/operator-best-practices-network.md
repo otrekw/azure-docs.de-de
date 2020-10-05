@@ -5,12 +5,12 @@ description: Lernen Sie die Best Practices für virtuelle Netzwerkressourcen und
 services: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: fc839fd69e3b574c47aa7bb712583dfc0b9c711d
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 9ec6423a853aacbc8a03cc5472bf1a95a5623b1f
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542703"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89482724"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Best Practices für Netzwerkkonnektivität und Sicherheit in Azure Kubernetes Service (AKS)
 
@@ -31,7 +31,7 @@ In diesem Artikel zu bewährten Methoden liegt der Schwerpunkt auf der Netzwerkk
 Virtuelle Netzwerke bieten die grundlegende Konnektivität für AKS-Knoten und Kunden für den Zugriff auf Ihre Anwendungen. Es gibt zwei verschiedene Möglichkeiten, AKS-Cluster in virtuellen Netzwerken bereitzustellen:
 
 * **kubenet-Netzwerk**: Azure verwaltet die virtuellen Netzwerkressourcen während der Bereitstellung des Clusters und verwendet das Kubernetes-Plug-In [kubenet][kubenet].
-* **Azure CNI-Netzwerk**: Führt die Bereitstellung in einem bestehenden virtuellen Netzwerk aus und verwendet das Kubernetes-Plug-In [Azure Container Networking Interface (CNI)][cni-networking]. Pods erhalten einzelne IP-Adressen, die an anderen Netzwerkdienste oder lokale Ressourcen weitergeleitet werden können.
+* **Azure CNI-Netzwerk**: Führt die Bereitstellung in einem virtuellen Netzwerk aus und verwendet das Kubernetes-Plug-In [Azure Container Networking Interface (CNI)][cni-networking]. Pods erhalten einzelne IP-Adressen, die an anderen Netzwerkdienste oder lokale Ressourcen weitergeleitet werden können.
 
 Die Container Networking Interface (CNI) ist ein herstellerneutrales Protokoll, mit dem die Containerlaufzeit Anfragen an einen Netzwerkanbieter richten kann. Azure CNI weist Pods und Knoten IP-Adressen zu und stellt Features zur IP-Adressverwaltung (IPAM) bereit, wenn Sie die Verbindung zu bestehenden virtuellen Azure-Netzwerken herstellen. Jeder Knoten und jede Podressource erhält eine IP-Adresse im virtuellen Azure-Netzwerk, und es ist kein zusätzliches Routing erforderlich, um mit anderen Ressourcen oder Diensten zu kommunizieren.
 

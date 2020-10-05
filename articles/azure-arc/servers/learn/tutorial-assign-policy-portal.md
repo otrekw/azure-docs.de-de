@@ -2,18 +2,18 @@
 title: 'Tutorial: Neue Richtlinienzuweisung per Azure-Portal'
 description: In diesem Tutorial erstellen Sie über das Azure-Portal eine Azure Policy-Zuweisung zum Identifizieren nicht konformer Ressourcen.
 ms.topic: tutorial
-ms.date: 08/12/2020
-ms.openlocfilehash: 4ba301b066137dbdb85ccea0a02ffcac88128e6b
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 09/23/2020
+ms.openlocfilehash: fbfe7090db1b4e1a8f802b30fdf749466ea26f1f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213236"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321865"
 ---
 # <a name="tutorial-create-a-policy-assignment-to-identify-non-compliant-resources"></a>Tutorial: Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen
 
 Zum Verständnis der Konformität in Azure müssen Sie zunächst wissen, wie Sie den Status Ihrer Ressourcen ermitteln.
-In diesem Tutorial wird Schritt für Schritt der Prozess zum Erstellen einer Richtlinienzuweisung beschrieben, mit der Ihre Servercomputer mit Azure Arc-Aktivierung (Vorschauversion) identifiziert werden. Anschließend werden die Computer mit Azure Arc-Aktivierung identifiziert, auf denen der Log Analytics-Agent nicht installiert ist.
+In diesem Tutorial wird Schritt für Schritt der Prozess zum Erstellen einer Richtlinienzuweisung beschrieben, mit der Ihre Servercomputer mit Azure Arc-Aktivierung identifiziert werden. Anschließend werden die Computer mit Azure Arc-Aktivierung identifiziert, auf denen der Log Analytics-Agent nicht installiert ist.
 
 Am Ende dieses Prozesses können Sie erfolgreich Computer identifizieren, für die der Log Analytics-Agent für Windows oder Linux nicht installiert ist. Sie sind mit der Richtlinienzuweisung _nicht konform_.
 
@@ -31,11 +31,11 @@ In diesem Tutorial erstellen Sie eine Richtlinienzuweisung und weisen die Richtl
 
 1. Wählen Sie links auf der Seite „Azure Policy“ die Option **Zuweisungen**. Eine Zuweisung ist eine zugewiesene Richtlinie, die innerhalb eines bestimmten Bereichs angewendet werden soll.
 
-   :::image type="content" source="./media/tutorial-assign-policy-portal/select-assignment.png" alt-text="Auswählen von „Zuweisungen“ auf der Übersichtsseite von Policy" border="false":::
+   :::image type="content" source="./media/tutorial-assign-policy-portal/select-assignment.png" alt-text="Suchen nach „Policy“ unter „Alle Dienste“" border="false":::
 
 1. Wählen Sie im oberen Bereich der Seite **Richtlinien – Zuweisungen** die Option **Richtlinie zuweisen**.
 
-   :::image type="content" source="./media/tutorial-assign-policy-portal/select-assign-policy.png" alt-text="Zuweisen einer Richtliniendefinition auf der Seite „Zuweisungen“" border="false":::
+   :::image type="content" source="./media/tutorial-assign-policy-portal/select-assign-policy.png" alt-text="Suchen nach „Policy“ unter „Alle Dienste“" border="false":::
 
 1. Wählen Sie auf der Seite **Richtlinie zuweisen** den **Bereich** aus, indem Sie auf die Auslassungspunkte klicken und entweder eine Verwaltungsgruppe oder ein Abonnement auswählen. Wählen Sie optional eine Ressourcengruppe aus. Ein Bereich bestimmt, für welche Ressourcen oder Ressourcengruppe die Richtlinienzuweisung erzwungen wird. Klicken Sie dann unten im Abschnitt der Seite **Bereich** auf **Auswählen**.
 
@@ -51,9 +51,9 @@ In diesem Tutorial erstellen Sie eine Richtlinienzuweisung und weisen die Richtl
 
    Eine Liste mit einem Teil der verfügbaren integrierten Richtlinien finden Sie unter [Azure Policy-Beispiele](../../../governance/policy/samples/index.md).
 
-1. Durchsuchen Sie die Liste mit den Richtliniendefinitionen nach der Definition _\[Vorschau]: Der Log Analytics-Agent muss auf Ihren Azure Arc-Computern unter Windows installiert sein_, falls Sie den Agent für Server mit Arc-Aktivierung (Vorschauversion) auf einem Windows-basierten Computer aktiviert haben. Suchen Sie für einen Linux-basierten Computer nach der Richtliniendefinition _\[Vorschau]: Der Log Analytics-Agent muss auf Ihren Azure Arc-Computern unter Linux installiert sein_. Klicken Sie auf diese Richtlinie und anschließend auf **Auswählen**.
+1. Durchsuchen Sie die Liste mit den Richtliniendefinitionen nach der Definition _\[Vorschau]: Der Log Analytics-Agent muss auf Ihren Azure Arc-Computern unter Windows installiert sein_, falls Sie den Agent für Server mit Arc-Aktivierung auf einem Windows-basierten Computer aktiviert haben. Suchen Sie für einen Linux-basierten Computer nach der Richtliniendefinition _\[Vorschau]: Der Log Analytics-Agent muss auf Ihren Azure Arc-Computern unter Linux installiert sein_. Klicken Sie auf diese Richtlinie und anschließend auf **Auswählen**.
 
-   :::image type="content" source="./media/tutorial-assign-policy-portal/select-available-definition.png" alt-text="Suchen der korrekten Richtliniendefinition" border="false":::
+   :::image type="content" source="./media/tutorial-assign-policy-portal/select-available-definition.png" alt-text="Suchen nach „Policy“ unter „Alle Dienste“" border="false":::
 
 1. Der **Zuweisungsname** wird automatisch mit dem ausgewählten Richtliniennamen gefüllt, kann aber geändert werden. Übernehmen Sie für dieses Beispiel _\[Vorschau]: Der Log Analytics-Agent muss auf Ihren Azure Arc-Computern unter Windows installiert sein_ oder _\[Vorschau]: Der Log Analytics-Agent muss auf Ihren Azure Arc-Computern unter Linux installiert sein_ (je nachdem, was Sie zuvor ausgewählt haben). Geben Sie ggf. auch eine **Beschreibung** ein. Die Beschreibung enthält Details zu dieser Richtlinienzuweisung.
    Über **Zugewiesen von** werden die Daten abhängig vom angemeldeten Benutzer automatisch ausgefüllt. Dieses Feld ist optional. Daher können auch benutzerdefinierte Werte eingegeben werden.
@@ -68,7 +68,7 @@ Sie können nun nicht konforme Ressourcen identifizieren, um den Konformitätszu
 
 Wählen Sie links auf der Seite die Option **Konformität** aus. Suchen Sie anschließend nach der von Ihnen erstellten Richtlinienzuweisung **\[Vorschau]: Der Log Analytics-Agent muss auf Ihren Azure Arc-Computern unter Windows installiert sein** oder **\[Vorschau]: Der Log Analytics-Agent muss auf Ihren Azure Arc-Computern unter Linux installiert sein**.
 
-:::image type="content" source="./media/tutorial-assign-policy-portal/policy-compliance.png" alt-text="Konformitätsdetails auf der Seite zur Richtlinienkonformität" border="false":::
+:::image type="content" source="./media/tutorial-assign-policy-portal/policy-compliance.png" alt-text="Suchen nach „Policy“ unter „Alle Dienste“" border="false":::
 
 Falls Ressourcen vorhanden sind, die mit dieser neuen Zuweisung nicht konform sind, werden diese unter **Nicht konforme Ressourcen** angezeigt.
 
@@ -92,12 +92,11 @@ Um die erstellte Zuweisung zu entfernen, gehen Sie folgendermaßen vor:
 
 1. Klicken Sie mit der rechten Maustaste auf die Richtlinienzuweisung, und wählen Sie **Zuweisung löschen** aus.
 
-   :::image type="content" source="./media/tutorial-assign-policy-portal/delete-assignment.png" alt-text="Löschen einer Zuweisung auf der Seite zur Konformität" border="false":::
+   :::image type="content" source="./media/tutorial-assign-policy-portal/delete-assignment.png" alt-text="Suchen nach „Policy“ unter „Alle Dienste“" border="false":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie einem Bereich eine Richtliniendefinition zugewiesen und deren Konformitätsbericht ausgewertet.
-Die Richtliniendefinition überprüft, ob alle Ressourcen im Bereich konform sind, und identifiziert die Ressourcen, die nicht konform sind. Sie können Ihren Computer mit Servern mit Azure Arc-Aktivierung (Vorschau) jetzt mit Azure Monitor für VMs überwachen.
+In diesem Tutorial haben Sie einem Bereich eine Richtliniendefinition zugewiesen und deren Konformitätsbericht ausgewertet. Die Richtliniendefinition überprüft, ob alle Ressourcen im Bereich konform sind, und identifiziert die Ressourcen, die nicht konform sind. Sie können Ihren Computer mit Servern mit Azure Arc-Aktivierung jetzt mit Azure Monitor für VMs überwachen.
 
 Fahren Sie mit dem folgenden Tutorial fort, um zu erfahren, wie Sie die Leistung, den aktiven Prozess und die zugehörigen Abhängigkeiten auf Ihrem Computer überwachen und anzeigen:
 

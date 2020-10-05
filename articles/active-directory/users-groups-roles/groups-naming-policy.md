@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ff525eab42d69ded33381fefc83076f9aa94f05
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 7fe5072042553d676c798a32e0ca6fc28e92332d
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213745"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054465"
 ---
 # <a name="enforce-a-naming-policy-on-microsoft-365-groups-in-azure-active-directory"></a>Durchsetzen einer Benennungsrichtlinie für Microsoft 365-Gruppen in Azure Active Directory
 
@@ -229,9 +229,9 @@ Set-AzureADDirectorySetting -Id $Settings.Id -DirectorySetting $Settings
    Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
    ```
 
-## <a name="experience-across-office-365-apps"></a>Verhalten in Office 365-Apps
+## <a name="experience-across-microsoft-365-apps"></a>Benutzeroberfläche von Microsoft 365-Apps
 
-Nachdem Sie eine Gruppenbenennungsrichtlinie in Azure AD festgelegt haben, wird Benutzern beim Erstellen einer Gruppe in einer Office 365-App Folgendes angezeigt:
+Nachdem Sie eine Gruppenbenennungsrichtlinie in Azure AD festgelegt haben, wird Benutzern beim Erstellen einer Gruppe in einer Microsoft 365-App Folgendes angezeigt:
 
 - Eine Vorschau des Namens gemäß der Benennungsrichtlinie (mit Präfixen und Suffixen) während der Eingabe des Gruppennamens
 - Eine Fehlermeldung, wenn der Benutzer blockierte Wörter eingibt, damit er diese entfernen kann
@@ -252,7 +252,7 @@ School Data Sync (SDS) | Gruppen, die mit SDS erstellt werden, sind mit der Bene
 Outlook Customer Manager (OCM) | Outlook Customer Manager ist mit der Benennungsrichtlinie konform, die automatisch auf die in Outlook Customer Manager erstellte Gruppe angewendet wird. Wenn ein benutzerdefiniertes blockiertes Wort erkannt wird, wird die Erstellung der Gruppe in OCM blockiert und der Benutzer für die Verwendung der OCM-App gesperrt.
 Classroom-App | Die in der Classroom-App erstellten Gruppen sind mit der Benennungsrichtlinie konform, die jedoch nicht automatisch angewendet wird. Den Benutzern wird während der Eingabe des Classroom-Gruppennamens auch keine Vorschau des durch die Benennungsrichtlinie erzwungenen Namens angezeigt. Die Benutzer müssen den erzwungenen Classroom-Gruppennamen inklusive Präfixen und Suffixen eingeben. Andernfalls tritt beim Erstellen oder Bearbeiten der Classroom-Gruppe ein Fehler auf.
 Power BI | Power BI-Arbeitsbereiche sind mit der Benennungsrichtlinie konform.    
-Yammer | Wenn ein Benutzer, der sich mit seinem Azure Active Directory-Konto bei Yammer angemeldet hat, eine Gruppe erstellt oder einen Gruppennamen bearbeitet, entspricht der Gruppenname der Benennungsrichtlinie. Dies gilt sowohl für mit Office 365 verbundene Gruppen als auch für alle anderen Yammer-Gruppen.<br>Wenn eine mit Office 365 verbundene Gruppe erstellt wurde, bevor die Benennungsrichtlinie vorhanden war, entspricht der Gruppenname nicht automatisch den Benennungsrichtlinien. Wenn ein Benutzer den Gruppennamen bearbeitet, wird er aufgefordert, das Präfix und das Suffix hinzuzufügen.
+Yammer | Wenn ein Benutzer, der sich mit seinem Azure Active Directory-Konto bei Yammer angemeldet hat, eine Gruppe erstellt oder einen Gruppennamen bearbeitet, entspricht der Gruppenname der Benennungsrichtlinie. Dies gilt sowohl für mit Microsoft 365 verbundene Gruppen als auch für alle anderen Yammer-Gruppen.<br>Wenn eine mit Microsoft 365 verbundene Gruppe erstellt wurde, bevor die Benennungsrichtlinie vorhanden war, entspricht der Gruppenname nicht automatisch den Benennungsrichtlinien. Wenn ein Benutzer den Gruppennamen bearbeitet, wird er aufgefordert, das Präfix und das Suffix hinzuzufügen.
 StaffHub  | StaffHub-Teams unterliegen nicht der Benennungsrichtlinie, die zugrunde liegende Microsoft 365-Gruppe aber schon. Auf StaffHub-Teamnamen werden nicht die Präfixe und Suffixe angewendet, und es erfolgt keine Prüfung auf benutzerdefinierte blockierte Wörter. StaffHub wendet die Präfixe und Suffixe allerdings auf die zugrunde liegende Microsoft 365-Gruppe an und entfernt dort blockierte Wörter.
 Exchange PowerShell | Exchange PowerShell-Cmdlets sind mit der Benennungsrichtlinie konform. Benutzer erhalten entsprechende Fehlermeldungen mit Vorschlägen für Präfixe und Suffixe und den benutzerdefinierten blockierten Wörtern, wenn sie die Benennungsrichtlinie beim Gruppennamen oder -alias (mailNickname) nicht einhalten.
 Azure Active Directory PowerShell-Cmdlets | Azure Active Directory PowerShell-Cmdlets sind mit der Benennungsrichtlinie konform. Benutzer erhalten entsprechende Fehlermeldungen mit Vorschlägen für Präfixe und Suffixe und den benutzerdefinierten blockierten Wörtern, wenn sie die Benennungsrichtlinie bei Gruppennamen oder -aliasen nicht einhalten.

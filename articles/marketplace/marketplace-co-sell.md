@@ -4,59 +4,54 @@ description: Das Co-Selling-Programm von Microsoft Partner Center kann Ihnen hel
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: palanis-MSFT
-ms.author: palanis
-ms.date: 05/19/2020
-ms.openlocfilehash: 4a7f3b143df4a177bba67d3556d224ec7c806244
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+author: vamahtan
+ms.author: vamahtan
+ms.date: 09/15/2020
+ms.openlocfilehash: 41dd683bb0ff5be4a48cd05f24663dd51c66a15b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89260390"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984631"
 ---
 # <a name="co-sell-partner-engagement"></a>Partner-Engagement für Co-Selling
 
-Sie können mit dem Co-Selling-Programm von Microsoft direkt mit uns an gemeinsamen Verkaufschancen arbeiten. Mit dem Programm können Sie eine große Anzahl von Kunden erreichen und neue Verkaufschancen erschließen, um das Unternehmenswachstum zu beschleunigen.
+Sie können das Co-Selling-Programm verwenden, um direkt mit Microsoft-Verkäufern an gemeinsamen Verkaufschancen zu arbeiten und von wichtigen zusätzlichen kommerziellen und verkaufsfördernden Vorteilen zu profitieren, die der Verkauf im kommerziellen Marketplace bietet.
 
-## <a name="co-sell-channels"></a>Co-Selling-Kanäle
+Das Co-Selling-Programm ist für **Software, die mit Ihrem geistigen Eigentum (Intellectual Property, IP) als wiederholbare Paketangebote erstellt wurden**, und für **Dienste mit eingebetteter Microsoft-Technologie** verfügbar. Die meisten Angebotstypen im Co-Selling-Programm sind auch im kommerziellen Marketplace verfügbar. Angebote, die zusätzliche Anforderungen erfüllen, werden zu **Co-Sell Ready**- oder **Co-Sell Incentivized**-Angeboten.
 
-Für das Vermarkten Ihrer Lösungen durch Co-Selling stehen drei Kanäle zur Verfügung:
+- **Co-Sell Ready**-Angebote werden für Microsoft-Verkäufer im Außendienst bereitgestellt. Bei der Arbeit mit Microsoft-Verkäufern hilft Ihnen das Co-Selling-Programm, eine umfangreiche Gemeinschaft von Kunden zu erreichen, die von Microsoft verwaltet werden. So können Sie an Verkaufschancen zusammenarbeiten, die Ihr Geschäftswachstum beschleunigen.
 
-* Im direkten Vertrieb an Kunden in Microsoft AppSource oder im Azure Marketplace
-* In Zusammenarbeit mit anderen Partnern
-* In Zusammenarbeit mit Microsoft-Verkäufern
+<ul>
 
-Das Co-Selling-Programm ist für **Dienste** mit eingebetteter Microsoft-Technologie und für wiederholbare **Intellectual Property (IP)-Paketlösungen** verfügbar.
+![Diagramm mit dem Ablauf des Co-Sellings, wenn Vertriebsleads für von Microsoft verwaltete Kunden freigegeben, akzeptiert und gewonnen werden.](./media/marketplace-publishers-guide/marketplace-co-sell-v2.png)
+</ul>
 
-Einige IP-Lösungen können für Verkäuferincentives von Microsoft qualifiziert sein, wenn sie erfolgreich verkauft und mit den Außendienstteams von Microsoft bereitgestellt werden.
+- Wenn **Co-Sell Incentivized**-IP-Lösungen (Intellectual Property, geistiges Eigentum) in Zusammenarbeit mit Microsoft-Vertriebsteams verkauft werden, können neben den unten aufgeführten Marketplace-Vorteilen Incentives für Microsoft-Verkäufer im Außendienst gesammelt werden.</li></ul>
 
-![Diagramm mit dem Ablauf des Co-Sellings, wenn Vertriebsleads für von Microsoft verwaltete Kunden freigegeben, akzeptiert und gewonnen werden.](./media/marketplace-publishers-guide/marketplace-co-sell.png)
+## <a name="marketplace-benefits-for-incentivized-offers"></a>Marketplace-Vorteile für Incentive-Angebote
 
-## <a name="azure-ip-co-sell-incentivized-offers"></a>Azure-IP-Co-Selling-Incentive-Angebote
+Angebote, die den Status **Azure IP Co-Sell Incentivized** erhalten, profitieren von folgenden zusätzlichen Vorteilen im Marketplace:
 
-Angebote im Co-Selling-Programm sind abhängig von den Anforderungen, die sie erfüllen, entweder **Co-Sell Ready** (Bereit für das Co-Selling) oder **Co-Sell Incentivized** (Durch Co-Selling-Incentives gefördert).
-
-Azure-IP-Lösungen, die den Status **Co-Sell Incentivized** erreichen, profitieren von folgenden Vorteilen:
-
-* Die Marketplace-Servicegebühr wird von 20 % auf 10 % des abgerechneten Umsatzes reduziert. Dieser Rabatt gilt für IaaS- und SaaS-Angebote, die über den kommerziellen Microsoft-Marketplace verkauft werden. Weitere Informationen finden Sie unter [Reduzierte Servicegebühr](marketplace-commercial-transaction-capabilities-and-considerations.md#reduced-service-fee).
-* Cloud Solution Provider (CSP)-Partner erhalten für den Verkauf Ihrer SaaS- und IaaS-Angebote einen Vertriebsincentive von 10 %. Unter [Cloud Solution Provider-Programm](cloud-solution-providers.md) erfahren Sie mehr über CSPs.
-* Ihre Azure-IP-Angebote mit dem Status „Co-Sell Incentivized“ tragen zum Microsoft Azure Consumption Commitment (MACC) des Kunden bei, wenn sie im kommerziellen Marketplace erworben werden. Für berechtigte Kunden ist das Angebot in den Onlineshops mit **Für Azure-Vorteil berechtigt** gekennzeichnet. Weitere Informationen finden Sie unter [Vorteil eines Prepaidtarifs für den Azure-Verbrauch](azure-consumption-commitment-benefit.md).
-* Die Angebote erhalten in den Onlineshops den Badge „Bevorzugte Microsoft-Lösung“. Der Badge bewirbt die Qualität und Leistung des Angebots sowie dessen Fähigkeit, Kundenbedürfnisse in bestimmten Schlüsselbranchen oder in einem bestimmten Lösungsbereich zu erfüllen. Weitere Informationen finden Sie unter [Bevorzugte Lösungen in Microsoft AppSource und Azure Marketplace](preferred-solutions.md).
+* Die Marketplace-Servicegebühr wird von 20 % auf 10 % reduziert. Dieser Rabatt gilt für IaaS- oder SaaS-Angebote, die über den kommerziellen Marketplace verkauft werden. Weitere Informationen finden Sie unter [Reduzierte Servicegebühr](marketplace-commercial-transaction-capabilities-and-considerations.md#reduced-service-fee).
+* Cloud Solution Provider (CSP)-Partner erhalten für den Verkauf Ihrer SaaS- oder IaaS-Angebote einen Incentive von 10 %. Weitere Informationen über das CSP-Programm finden Sie unter [Cloud Solution Provider-Programm](cloud-solution-providers.md).
+* Der Verkauf Ihres Angebots über den kommerziellen Marketplace trägt zu den Azure Consumption Commitments der Kunden bei. Für berechtigte Kunden ist das Angebot im Azure-Portal mit **Für Azure-Vorteil berechtigt** gekennzeichnet. Weitere Informationen finden Sie unter [Vorteil eines Prepaidtarifs für den Azure-Verbrauch](azure-consumption-commitment-benefit.md).
+* Ihr Angebot erhält in den Storefronts den Badge **Bevorzugte Lösungen**. Der Badge bewirbt die Qualität und Leistung des Angebots sowie dessen Fähigkeit, Kundenbedürfnisse in bestimmten Schlüsselbranchen oder in einem bestimmten Lösungsbereich zu erfüllen. Weitere Informationen finden Sie unter [Bevorzugte Lösungen in Microsoft AppSource und Azure Marketplace](preferred-solutions.md).
 
 ## <a name="co-sell-publishing-steps-and-requirements"></a>Veröffentlichungsschritte und -anforderungen für das Co-Selling
 
-In der folgenden Tabelle sind die Schritte und Anforderungen aufgeführt, die Ihr Angebot für den Status „Co-Sell Ready“ oder „Co-Sell Incentivized“ qualifizieren.
+In der folgenden Tabelle sind die Schritte und Anforderungen zur Qualifizierung Ihres Marketplace-Angebot für den Status „Co-Sell Ready“ oder „Co-Sell Incentivized“ aufgeführt. Es können noch nicht alle Angebotstypen im kommerziellen Marketplace für das Co-Selling im Partner Center konfiguriert werden. Die neuesten Informationen finden Sie unter [Co-Selling-Option im Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell). 
 
-|Schritt    |Lösungstyp    |Requirements (Anforderungen)    |Co-Selling-Status    |
+|Schritt    |Angebotstyp    |Requirements (Anforderungen)    |Co-Selling-Status    |
 |----    |-------------    |------------    |---------------   |
-|<ol><li> Erstellen Sie ein Geschäftsprofil im Partner Center, und veröffentlichen Sie Ihr Angebot im kommerziellen Marketplace.</li>|IP und Dienste|<ul><li>Das Angebot erfüllt die Veröffentlichungsanforderungen des kommerziellen Marketplace.</li><li>Sie verfügen über ein vollständiges Geschäftsprofil im Partner Center.</li>|Nicht bereit.|
-|<ol start=2><li>Optional: Abonnieren Sie den Cloud Solution Provider-Kanal.</li>|IP und Dienste|<ul><li>Das Angebot ist für CSP-Handelspartner konfiguriert. Weitere Informationen finden Sie unter [Cloud Solution Provider-Programm](cloud-solution-providers.md).</li>|Nicht bereit.|
-|<ol start=3><li>Übermitteln Sie die erforderlichen Co-Selling-Materialien.</li>|IP|<ul><li>Das Angebot verfügt über einen Vertriebskontakt für jedes berechtigte Land.</li><li>Erforderliche Stückliste: einseitiges Dokument des Kunden, Kundenpräsentation (optional), URL für die Angebotsseite der Lösung, URL für den Kanal in den sozialen Medien und andere (z. B. eine Fallstudie).|Co-Sell Ready|
-||Dienste|<ul><li>Das Angebot verfügt über einen Vertriebskontakt für jedes berechtigte Land.</li><li>Erforderliche Stückliste: einseitiges Dokument des Kunden, Kundenpräsentation (optional), URL für die Angebotsseite der Lösung, URL für den Kanal in den sozialen Medien und andere (z. B. eine Fallstudie).</li><li>Aktive Gold-Kompetenz</li>|Co-Sell Ready|
-|<ol start=4lo><li>Qualifizieren Sie sich für Microsoft-Verkäuferincentives.</li>|Berechtigt für Azure-IP-Incentives|<ul><li>Auf Organisationsebene erreichen oder überschreiten Sie einen Schwellenwert von 100.000 USD ACR TTM (Trailing Twelve Month, vergangene zwölf Monate) oder – wenn das Angebot transaktionsfähig ist – einen abgerechneten Umsatzschwellenwert von 100.000 USD. Der Schwellenwert kann durch eine Kombination aus Azure-Lösungen erreicht werden.</li><li>Die Lösung muss mit mehr als 50 % des wiederholbaren IP-Codes in Azure erstellt werden.</li>|Co-Sell Incentivized|
-||Berechtigt für Business Applications-Incentives|<ul><li>Sie haben sich aktiv für den ISV Connect-Premium-Tarif registriert.</li>|Co-Sell Incentivized|
+|<ol start=1><li> Erstellen Sie ein Konto im Partner Center, und veröffentlichen Sie Ihr Angebot im kommerziellen Marketplace.</li>|All|<li>Das Angebot erfüllt die Veröffentlichungsanforderungen des kommerziellen Marketplace.</li><li>Sie verfügen über ein vollständiges Geschäftsprofil im Partner Center.</li>|Nicht bereit.|
+|<ol start=2><li>Übermitteln Sie die erforderlichen Co-Selling-Materialien.</li>|IP-Angebote *mit* [Co-Selling-Option im Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell)|[Laden Sie erforderliche Materialien in das Partner Center hoch](#how-to-submit-co-sell-materials-in-partner-center): <ul><li>Vertriebskontakt für jedes berechtigte Land</li><li>Stückliste: einseitiges Dokument des Kunden, Kundenpräsentation (optional), URL für die Angebotsseite der Lösung, URL für den Kanal in den sozialen Medien und andere (z. B. eine Fallstudie).|Co-Sell Ready|
+||IP-Angebote *ohne* [Co-Selling-Option im Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell)|<li>Anforderung zur [Zusammenarbeit mit einem Cloudspezialisten](https://partner.microsoft.com/campaigns/ced-nomination-form/), um die erforderliche Co-Selling-Dokumentation bereitzustellen.|Co-Sell Ready|
+||Beratungsdienste|<li>Anforderung zur [Zusammenarbeit mit einem Cloudspezialisten](https://partner.microsoft.com/campaigns/ced-nomination-form/), um die erforderliche Co-Selling-Dokumentation bereitzustellen.</li><li>Aktive Gold-Kompetenz</li>|Co-Sell Ready|
+|<ol start=3><li>Qualifizieren für IP-Co-Selling-Incentives</li>|Azure-Anwendungen, Azure-Container, IoT Edge-Module, SaaS, VMS|Nachdem Sie den Status „Co-Sell Ready“ erreicht haben, gibt es zwei zusätzliche Anforderungen: <ul> Anforderung 1: Eines der folgenden beiden Ergebnisse:<ul><li>*Auf Unternehmensebene:* Mindestens 100.000 USD Azure-Umsatzverbrauch über die letzten 12 Monate</li><li>*Auf Angebotsebene:* 100.000 USD kumulativer abgerechneter Marketplace-Umsatz</li></ul><br>Anforderung 2: Über 50 % der Infrastruktur Ihres Angebots müssen in Azure ausgeführt werden:<ul><li>IP-Angebote *mit* [Co-Selling-Option im Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell): Hochladen eines Architekturdiagramms mit Ihren Co-Selling-Dokumenten im Partner Center zur Überprüfung</li><li>IP-Angebote *ohne* [Co-Selling-Option im Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell): Hochladen eines Architekturdiagramms in OCP GTM|Azure IP Co-Sell Incentivized|
+||Dynamics|<li>Sie haben sich aktiv für den ISV Connect-Premium-Tarif registriert.</li>|Business Applications – Co-Sell Incentivized|
 
-## <a name="co-sell-your-offer"></a>Co-Selling Ihres Angebots
+## <a name="how-to-submit-co-sell-materials-in-partner-center"></a>Übermitteln von Co-Selling-Materialien im Partner Center
 
 Starten Sie Ihre Co-Selling-Aktivitäten direkt im Partner Center, indem Sie die folgenden Schritte ausführen. Weitere Informationen finden Sie unter [Co-Selling-Option im Partner Center](./partner-center-portal/commercial-marketplace-co-sell.md).
 
@@ -85,5 +80,5 @@ Starten Sie Ihre Co-Selling-Aktivitäten direkt im Partner Center, indem Sie die
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erfahren Sie mehr über das [Verkaufen mit Microsoft](https://partner.microsoft.com/membership/sell-with-microsoft).
-* Erfahren Sie mehr über die [Co-Selling-Option in Partner Center](./partner-center-portal/commercial-marketplace-co-sell.md).
-* Lesen Sie das [Partner-Engagement-Handbuch für Co-Selling](https://aka.ms/Co-sellPartnerengagementguidepartnerlink) (PDF).
+* Erfahren Sie mehr über die [Co-Selling-Option im Partner Center](./partner-center-portal/commercial-marketplace-co-sell.md).
+* Lesen Sie das [Co-Selling-Playbook](https://aka.ms/Co-sellPartnerengagementguidepartnerlink) (PDF).

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 74cf34438ca142302a6853e8e488b0c7188b162b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: eb320cb71de43c40522bf93213fd98247a0d5b59
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522362"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436296"
 ---
 # <a name="transform-data-in-azure-data-factory-version-1"></a>Transformieren von Daten in Azure Data Factory Version 1
 > [!div class="op_single_selector"]
@@ -65,7 +65,7 @@ Im Laufe der Zeit müssen die Vorhersagemodelle in den Machine Learning-Bewertun
 Unter [Verwenden von Machine Learning-Aktivitäten](data-factory-azure-ml-batch-execution-activity.md) finden Sie Einzelheiten zu diesen Machine Learning-Aktivitäten. 
 
 ## <a name="stored-procedure-activity"></a>Aktivität „Gespeicherte Prozedur“
-Sie können die SQL Server-Aktivität „Gespeicherte Prozedur“ in einer Data Factory-Pipeline verwenden, um eine gespeicherte Prozedur in einem der folgenden Datenspeicher aufzurufen: Azure SQL-Datenbank, Azure SQL Data Warehouse, SQL Server-Datenbank in Ihrem Unternehmen oder auf einer Azure-VM. Unter [Aktivität „Gespeicherte Prozedur“](data-factory-stored-proc-activity.md) finden Sie Details.  
+Sie können die SQL Server-Aktivität „Gespeicherte Prozedur“ in einer Data Factory-Pipeline verwenden, um eine gespeicherte Prozedur in einem der folgenden Datenspeicher aufzurufen: Azure SQL-Datenbank, Azure Synapse Analytics (ehemals SQL Data Warehouse), SQL Server-Datenbank in Ihrem Unternehmen oder auf einem virtuellen Azure-Computer. Unter [Aktivität „Gespeicherte Prozedur“](data-factory-stored-proc-activity.md) finden Sie Details.  
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>U-SQL-Aktivität für Data Lake Analytics
 Die U-SQL-Aktivität für Data Lake Analytics wendet ein U-SQL-Skript auf einen Azure Data Lake Analytics-Cluster an. Unter [U-SQL-Aktivität für Data Lake Analytics](data-factory-usql-activity.md) finden Sie Details. 
@@ -93,7 +93,7 @@ Azure Data Factory unterstützt für die Aktivitäten die folgenden Datentransfo
 | [MapReduce](data-factory-map-reduce.md) |HDInsight [Hadoop] |
 | [Hadoop-Datenströme](data-factory-hadoop-streaming-activity.md) |HDInsight [Hadoop] |
 | [Machine Learning-Aktivitäten: Batchausführung und Ressourcenaktualisierung](data-factory-azure-ml-batch-execution-activity.md) |Azure VM |
-| [Gespeicherte Prozedur](data-factory-stored-proc-activity.md) |Azure SQL, Azure SQL Data Warehouse oder SQL Server |
+| [Gespeicherte Prozedur](data-factory-stored-proc-activity.md) |Azure SQL, Azure Synapse Analytics oder SQL Server |
 | [Data Lake Analytics U-SQL](data-factory-usql-activity.md) |Azure Data Lake Analytics |
 | [DotNet](data-factory-use-custom-activities.md) |HDInsight [Hadoop] oder Azure Batch |
 

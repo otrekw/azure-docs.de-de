@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f2c8dbebce685eea67672a2b8c93d51e356ac69c
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: deffa5c75cbde4f9d95be549844478d4de87a685
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88226044"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069627"
 ---
 # <a name="deploy-azure-file-sync"></a>Bereitstellen der Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -157,7 +157,7 @@ Navigieren Sie zum Bereitstellen eines Speichersynchronisierungsdiensts zum [Azu
 
 Geben Sie in dem neuen Bereich, der geöffnet wird, Folgendes ein:
 
-- **Name**: Ein eindeutiger Name (pro Abonnement) für den Speichersynchronisierungsdienst.
+- **Name**: Ein eindeutiger Name (pro Region) für den Speichersynchronisierungsdienst.
 - **Abonnement**: Das Abonnement, in dem Sie den Speichersynchronisierungsdienst erstellen möchten. Abhängig von der Konfigurationsstrategie Ihrer Organisation haben Sie möglicherweise Zugriff auf ein oder mehrere Abonnements. Die Abrechnung für die einzelnen Clouddienste (z.B. Azure Files) erfolgt innerhalb eines Azure-Abonnements.
 - **Ressourcengruppe**: Eine Ressourcengruppe ist eine logische Gruppe von Azure-Ressourcen, z.B. ein Speicherkonto oder Speichersynchronisierungsdienst. Sie können für die Azure-Dateisynchronisierung eine neue Ressourcengruppe erstellen oder eine vorhandene Ressourcengruppe auswählen. (Wir empfehlen, Ressourcengruppen als Container zu verwenden, um Ressourcen für Ihre Organisation logisch voneinander zu trennen, etwa indem Sie alle Personalressourcen oder alle Ressourcen für ein bestimmtes Projekt gruppieren.)
 - **Standort**: Die Region, in der Sie die Azure-Dateisynchronisierung bereitstellen möchten. In dieser Liste sind nur die unterstützten Regionen verfügbar.
@@ -403,6 +403,9 @@ az storagesync sync-group cloud-endpoint create --resource-group myResourceGroup
 
 ## <a name="create-a-server-endpoint"></a>Erstellen eines Serverendpunkts
 Ein Serverendpunkt stellt einen bestimmten Speicherort auf einem registrierten Server dar, z. B. einen Ordner auf einem Servervolume. Ein Serverendpunkt muss ein Pfad auf einem registrierten Server sein (statt einer eingebundenen Freigabe), und um Cloudtiering verwenden zu können, darf der Pfad sich nicht auf einem Systemvolume befinden. Network Attached Storage (NAS) wird nicht unterstützt.
+
+> [!NOTE]
+> Das Ändern des Pfads oder Laufwerkbuchstabens nachdem Sie einen Serverendpunkt auf einem Volume erstellt haben, wird nicht unterstützt. Stellen Sie sicher, dass Sie einen endgültigen Pfad auf dem registrierten Server verwenden.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 Um einen Serverendpunkt hinzuzufügen, wechseln Sie zu der neu erstellten Synchronisierungsgruppe, und wählen Sie dann **Serverendpunkt hinzufügen** aus.

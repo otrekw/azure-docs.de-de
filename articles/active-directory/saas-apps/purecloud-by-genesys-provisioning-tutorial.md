@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 02/05/2020
 ms.author: Zhchia
-ms.openlocfilehash: 1397aa350ccc3114954902a6bfd02826cdff965f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4983a4a637ae636c6a3ef4a485c1777fc9b8a77a
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553280"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015144"
 ---
 # <a name="tutorial-configure-purecloud-by-genesys-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von PureCloud by Genesys für die automatische Benutzerbereitstellung
 
@@ -111,6 +111,8 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
      |phoneNumbers[type eq "work"].value|String|
      |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|String|
      |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|Verweis|
+     |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber|String|
+     
 
 10. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Gruppen mit PureCloud by Genesys synchronisieren** aus.
 
@@ -144,6 +146,10 @@ Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden
 * Mithilfe der [Bereitstellungsprotokolle](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) können Sie ermitteln, welche Benutzer erfolgreich bzw. nicht erfolgreich bereitgestellt wurden.
 * Anhand der [Fortschrittsleiste](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) können Sie den Status des Bereitstellungszyklus überprüfen und den Fortschritt der Bereitstellung verfolgen.
 * Wenn sich die Bereitstellungskonfiguration in einem fehlerhaften Zustand zu befinden scheint, wird die Anwendung unter Quarantäne gestellt. Weitere Informationen zu den verschiedenen Quarantänestatus finden Sie [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
+
+## <a name="change-log"></a>Änderungsprotokoll
+
+10.09.: Support für das Unternehmensattribut „employeeNumber“ hinzugefügt.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

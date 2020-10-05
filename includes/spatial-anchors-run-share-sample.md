@@ -4,17 +4,19 @@ ms.service: spatial-anchors
 ms.topic: include
 ms.date: 8/27/2020
 ms.author: rgarcia
-ms.openlocfilehash: 8e3f58a5a88495263396c4e915a6363ad065c202
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: efd5ff494620d4fab3fb904d9bcf054b57a3290b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89570122"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358764"
 ---
 ## <a name="android"></a>[Android](#tab/Android)
 
 Das Java-Android-Beispiel unterstützt die geräteübergreifende Freigabe.
 Öffnen Sie die Datei `SharedActivity.java` aus dem Ordner mit den Beispielen in Android Studio. Geben Sie die URL, die Sie im vorherigen Schritt (aus der Azure-Bereitstellung Ihrer ASP.NET-Web-App) abgerufen haben, in der Datei `SharedActivity.java` als Wert für `SharingAnchorsServiceUrl` ein. Ersetzen Sie `index.html` in der URL durch `api/anchors`. Diese sollte wie folgt aussehen: `https://<app_name>.azurewebsites.net/api/anchors`.
+
+[!INCLUDE [Run shared sample](spatial-anchors-deploy-sample.md)]
 
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
@@ -23,12 +25,16 @@ Das Java-Android-Beispiel unterstützt die geräteübergreifende Freigabe.
 Das Objective-C-iOS-Beispiel unterstützt die geräteübergreifende Freigabe.
 Öffnen Sie die Datei `SharedDemoViewController.m` im Ordner mit den Beispielen. Geben Sie die URL, die Sie im vorherigen Schritt (aus der Azure-Bereitstellung Ihrer ASP.NET-Web-App) abgerufen haben, in der Datei `SharedDemoViewController.m` als Wert für `SharingAnchorsServiceUrl` ein. Ersetzen Sie `index.html` in der URL durch `api/anchors`. Diese sollte wie folgt aussehen: `https://<app_name>.azurewebsites.net/api/anchors`.
 
+Stellen Sie die App auf Ihrem Gerät bereit. Nachdem die App gestartet wurde, wählen Sie die Option **Tippen, um die freigegebene Demo zu starten** aus. Befolgen Sie die Anweisungen in der App. Sie können **Tippen, um den Anker anhand seiner Ankernummer zu finden** oder **Tippen, um den Anker zu erstellen und im Dienst zu speichern** auswählen.
+
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
 ## <a name="xamarin"></a>[Xamarin](#tab/Xamarin)
 
 Die Android- und iOS-Beispiele für Xamarin unterstützen die geräteübergreifende Freigabe.
 Öffnen Sie die Datei `AccountDetails.cs` im Ordner mit den Beispielen. Geben Sie die URL, die Sie im vorherigen Schritt (aus der Azure-Bereitstellung Ihrer ASP.NET-Web-App) abgerufen haben, in der Datei `AccountDetails.cs` als Wert für `AnchorSharingServiceUrl` ein. Ersetzen Sie `index.html` in der URL durch `api/anchors`. Diese sollte wie folgt aussehen: `https://<app_name>.azurewebsites.net/api/anchors`.
+
+[!INCLUDE [Run shared sample](spatial-anchors-deploy-sample.md)]
 
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 

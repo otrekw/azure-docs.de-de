@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: c22168aade11bbba66682efea0e2f5a1fcc2ac1f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 19b37472d7decb46825da4760511f1761493c246
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84021499"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441934"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory – Sicherheitsüberlegungen für Datenverschiebung
 
@@ -42,7 +42,7 @@ Informationen zur Compliance von Azure und zur eigenständigen Sicherung der Azu
 
 In diesem Artikel werden Sicherheitsüberlegungen zu den beiden folgenden Datenverschiebungsszenarien erläutert: 
 
-- **Cloudszenario** In diesem Szenario sind sowohl die Quelle als auch das Ziel über das Internet öffentlich zugänglich. Dazu gehören verwaltete Cloudspeicherdienste wie Azure Storage, Azure SQL Data Warehouse, Azure SQL-Datenbank, Azure Data Lake Store, Amazon S3, Amazon Redshift, SaaS-Dienste wie Salesforce und Webprotokolle wie FTP und OData. Eine vollständige Liste der unterstützten Datenquellen finden Sie [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats).
+- **Cloudszenario** In diesem Szenario sind sowohl die Quelle als auch das Ziel über das Internet öffentlich zugänglich. Dazu gehören verwaltete Cloudspeicherdienste wie Azure Storage, Azure Synapse Analytics (früher SQL Data Warehouse), Azure SQL-Datenbank, Azure Data Lake Store, Amazon S3, Amazon Redshift, SaaS-Dienste wie Salesforce und Webprotokolle wie FTP und OData. Eine vollständige Liste der unterstützten Datenquellen finden Sie [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats).
 - **Hybridszenario** In diesem Szenario befindet sich entweder die Quelle oder das Ziel hinter einer Firewall oder in einem lokalen Unternehmensnetzwerk, oder der Datenspeicher befindet sich in einem privaten Netzwerk/virtuellen Netzwerk (meist die Quelle) und ist nicht öffentlich zugänglich. Zu diesem Szenario zählen auch Datenbankserver, die auf virtuellen Computern gehostet werden.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
@@ -55,13 +55,13 @@ Azure Data Factory schützt Ihre Datenspeicher-Anmeldeinformationen dadurch, das
 Wenn der Clouddatenspeicher HTTPS oder TLS unterstützt, erfolgen alle Datenübertragungen zwischen Datenverschiebungsdiensten in Data Factory und einem Clouddatenspeicher über einen sicheren Kanal (HTTPS oder TLS).
 
 > [!NOTE]
-> Für alle Verbindungen mit **Azure SQL-Datenbank** und **Azure SQL Data Warehouse** ist eine Verschlüsselung (SSL/TLS) erforderlich, solange Daten in die und aus der Datenbank übertragen werden. Wenn Sie eine Pipeline mit einem JSON-Editor erstellen, fügen Sie die **encryption**-Eigenschaft zur Verbindungszeichenfolge (**connection string**) hinzu, und legen Sie die Eigenschaft auf **true** fest. Wenn Sie den [Kopier-Assistenten](data-factory-azure-copy-wizard.md) verwenden, wird diese Eigenschaft von dem Assistenten standardmäßig festgelegt. Für **Azure Storage** können Sie **HTTPS** in der Verbindungszeichenfolge verwenden.
+> Für alle Verbindungen mit **Azure SQL-Datenbank** und **Azure Synapse Analytics** ist eine Verschlüsselung (SSL/TLS) erforderlich, solange Daten in die und aus der Datenbank übertragen werden. Wenn Sie eine Pipeline mit einem JSON-Editor erstellen, fügen Sie die **encryption**-Eigenschaft zur Verbindungszeichenfolge (**connection string**) hinzu, und legen Sie die Eigenschaft auf **true** fest. Wenn Sie den [Kopier-Assistenten](data-factory-azure-copy-wizard.md) verwenden, wird diese Eigenschaft von dem Assistenten standardmäßig festgelegt. Für **Azure Storage** können Sie **HTTPS** in der Verbindungszeichenfolge verwenden.
 
 ### <a name="data-encryption-at-rest"></a>Datenverschlüsselung ruhender Daten
 Einige Datenspeicher unterstützen die Verschlüsselung von ruhenden Daten. Es empfiehlt sich, dass Sie einen Datenverschlüsselungsmechanismus für solche Datenspeicher aktivieren. 
 
-#### <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
-Transparent Data Encryption (TDE) in Azure SQL Data Warehouse bietet Schutz vor der Bedrohung durch schädliche Aktivitäten, indem die ruhenden Daten in Echtzeit ver- und entschlüsselt werden. Dieses Verhalten ist für den Client transparent. Weitere Informationen finden Sie unter [Sichern einer Datenbank in SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md).
+#### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
+Transparent Data Encryption (TDE) in Azure Synapse Analytics bietet Schutz vor der Bedrohung durch schädliche Aktivitäten, indem die ruhenden Daten in Echtzeit ver- und entschlüsselt werden. Dieses Verhalten ist für den Client transparent. Weitere Informationen finden Sie unter [Sichern einer Datenbank in Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md).
 
 #### <a name="azure-sql-database"></a>Azure SQL-Datenbank
 Azure SQL-Datenbank unterstützt auch Transparent Data Encryption (TDE), die Schutz vor der Bedrohung durch schädliche Aktivitäten bietet. Hierzu werden die Daten in Echtzeit ver- und entschlüsselt, ohne dass Änderungen der Anwendung erforderlich sind. Dieses Verhalten ist für den Client transparent. Weitere Informationen finden Sie unter [Transparent Data Encryption mit Azure SQL-Datenbank](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database). 
@@ -154,11 +154,11 @@ Die folgende Tabelle enthält die Anforderungen für **ausgehende Ports** und di
 | `*.servicebus.windows.net` | 443, 80 | Erforderlich für das Gateway, um Verbindungen mit Datenverschiebungsdiensten in Data Factory herzustellen. |
 | `*.core.windows.net` | 443 | Wird vom Gateway verwendet, um Verbindungen mit dem Azure Storage-Konto herzustellen, wenn Sie das Feature [gestaffeltes Kopieren](data-factory-copy-activity-performance.md#staged-copy) verwenden. | 
 | `*.frontend.clouddatahub.net` | 443 | Erforderlich für das Gateway, um Verbindungen mit dem Azure Data Factory-Dienst herzustellen. | 
-| `*.database.windows.net` | 1433   | (OPTIONAL) Erforderlich, wenn Ihr Ziel Azure SQL-Datenbank/Azure SQL Data Warehouse ist. Verwenden Sie das Feature „gestaffeltes Kopieren“ um Daten nach Azure SQL-Datenbank/Azure SQL Data Warehouse zu kopieren, ohne den Port 1433 zu öffnen. | 
+| `*.database.windows.net` | 1433   | (OPTIONAL) Erforderlich, wenn Ihr Ziel Azure SQL-Datenbank/Azure Synapse Analytics ist. Verwenden Sie das Feature „gestaffeltes Kopieren“ um Daten nach Azure SQL-Datenbank/Azure Synapse Analytics zu kopieren, ohne Port 1433 zu öffnen. | 
 | `*.azuredatalakestore.net` | 443 | (OPTIONAL) Erforderlich, wenn Ihr Ziel Azure Data Lake Store ist. | 
 
 > [!NOTE] 
-> Möglicherweise müssen Sie Ports/Whitelistdomänen auf Ebene der Unternehmensfirewall verwalten, wie dies für die jeweiligen Datenquellen erforderlich ist. In dieser Tabelle werden nur Azure SQL-Datenbank, Azure SQL Data Warehouse und Azure Data Lake Store als Beispiele verwendet.   
+> Möglicherweise müssen Sie Ports/Whitelistdomänen auf Ebene der Unternehmensfirewall verwalten, wie dies für die jeweiligen Datenquellen erforderlich ist. In dieser Tabelle werden nur Azure SQL-Datenbank, Azure Synapse Analytics und Azure Data Lake Store als Beispiele verwendet.   
 
 Die folgende Tabelle enthält die Anforderungen für **eingehende Ports** für die **Windows-Firewall**.
 
@@ -174,7 +174,7 @@ Einige Datenspeicher in der Cloud erfordern auch, dass die IP-Adresse des Comput
 Die folgenden Clouddatenspeicher erfordern, dass die IP-Adresse des Gatewaycomputers in der Whitelist enthalten ist. Einige dieser Datenspeicher erfordern standardmäßig möglicherweise nicht, dass die IP-Adresse in der Whitelist enthalten ist. 
 
 - [Azure SQL-Datenbank](../../azure-sql/database/firewall-configure.md) 
-- [Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
+- [Azure Synapse Analytics](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
 - [Azure Data Lake Store](../../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
 - [Azure Cosmos DB](../../cosmos-db/firewall-support.md)
 - [Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
@@ -185,7 +185,7 @@ Die folgenden Clouddatenspeicher erfordern, dass die IP-Adresse des Gatewaycompu
 **Antwort:** Dieses Feature wird noch nicht unterstützt. Wir arbeiten mit Hochdruck daran.
 
 **Frage:** Welche Portanforderungen müssen erfüllt sein, damit das Gateway funktioniert?
-**Antwort:** Das Gateway stellt ausgehende HTTP-basierte Verbindungen mit dem offenen Internet her. Die **ausgehenden Ports 443 und 80** müssen geöffnet sein, damit das Gateway diese Verbindung herstellen kann. Öffnen Sie den **eingehenden Port 8050** nur auf Computerebene (nicht auf Ebene der Unternehmensfirewall) für die Anwendung „Anmeldeinformationsverwaltung“. Wenn Azure SQL-Datenbank oder Azure SQL Data Warehouse als Quelle/Ziel verwendet wird, müssen Sie auch den Port **1433** öffnen. Weitere Informationen finden Sie im Abschnitt [IP-Konfigurationen/Whitelists in Datenspeicher](#firewall-configurations-and-whitelisting-ip-address-of gateway). 
+**Antwort:** Das Gateway stellt ausgehende HTTP-basierte Verbindungen mit dem offenen Internet her. Die **ausgehenden Ports 443 und 80** müssen geöffnet sein, damit das Gateway diese Verbindung herstellen kann. Öffnen Sie den **eingehenden Port 8050** nur auf Computerebene (nicht auf Ebene der Unternehmensfirewall) für die Anwendung „Anmeldeinformationsverwaltung“. Wenn Azure SQL-Datenbank oder Azure Synapse Analytics als Quelle/Ziel verwendet wird, müssen Sie auch Port **1433** öffnen. Weitere Informationen finden Sie im Abschnitt [IP-Konfigurationen/Whitelists in Datenspeicher](#firewall-configurations-and-whitelisting-ip-address-of gateway). 
 
 **Frage:** Welche Zertifikatanforderungen gelten für das Gateway?
 **Antwort:** Das aktuelle Gateway benötigt ein Zertifikat, das von der Anwendung „Anmeldeinformationsverwaltung“ verwendet wird, um Datenspeicher-Anmeldeinformationen sicher festzulegen. Dieses Zertifikat ist ein selbst signiertes Zertifikat, das beim Gatewaysetup erstellt und konfiguriert wird. Sie können stattdessen Ihr eigenes TLS/SSL-Zertifikat verwenden. Weitere Informationen finden Sie im Abschnitt [ClickOnce-Anwendung „Anmeldeinformationsverwaltung“](#click-once-credentials-manager-app). 

@@ -10,12 +10,12 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/06/2019
-ms.openlocfilehash: 05103052308b6dbf1314348f7d45abc9cba79827
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 552b3f55632e817cc4669ce5da41b1e127c7d808
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84706433"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283869"
 ---
 # <a name="tutorial-security-in-azure-sql-managed-instance-using-azure-ad-server-principals-logins"></a>Tutorial: Sicherheit für verwaltete Azure SQL-Instanz durch Azure AD-Serverprinzipale (Anmeldungen)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -104,7 +104,7 @@ Beispiele für das Herstellen einer Verbindung mit der verwalteten SQL-Instanz f
     GO
     ```
 
-    ![native-login.png](./media/aad-security-configure-tutorial/native-login.png)
+    ![Screenshot der Registerkarte „Ergebnisse“ im SSMS-Objekt-Explorer mit „name“, „principal_id“, „sid“, „type“ und „type_desc“ der neu hinzugefügten Anmeldung](./media/aad-security-configure-tutorial/native-login.png)
 
 Weitere Informationen finden Sie unter [CREATE LOGIN (Transact-SQL)](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current).
 
@@ -153,13 +153,13 @@ Nachdem der Azure AD-Serverprinzipal (Anmeldung) erstellt und mit Berechtigunge
    - Active Directory-Kennwortauthentifizierung
    - Integrierte Active Directory-Authentifizierung </br>
 
-     ![ssms-login-prompt.png](./media/aad-security-configure-tutorial/ssms-login-prompt.png)
+     ![Screenshot des Dialogfelds „Mit Server verbinden“ in SSMS, wobei „Active Directory: universell mit MFA-Unterstützung“ in der Dropdownliste „Authentifizierung“ ausgewählt ist](./media/aad-security-configure-tutorial/ssms-login-prompt.png)
 
      Weitere Informationen finden Sie unter [Universelle Authentifizierung (SSMS-Unterstützung für Multi-Factor Authentication)](../database/authentication-mfa-ssms-overview.md).
 
 1. Wählen Sie **Active Directory: universell mit MFA-Unterstützung** aus. Daraufhin wird ein Anmeldefenster mit Multi-Factor Authentication angezeigt. Melden Sie sich mit Ihrem Azure AD-Kennwort an.
 
-    ![mfa-login-prompt.png](./media/aad-security-configure-tutorial/mfa-login-prompt.png)
+    ![Screenshot des Anmeldefenster mit Multi-Factor Authentication. Der Cursor befindet sich im Feld „Kennwort eingeben“.](./media/aad-security-configure-tutorial/mfa-login-prompt.png)
 
 1. Klicken Sie im **Objekt-Explorer** von SSMS mit der rechten Maustaste auf den Server, und wählen Sie **Neue Abfrage** aus.
 1. Verwenden Sie im Abfragefenster die folgende Syntax, um eine Anmeldung für ein weiteres Azure AD-Konto zu erstellen:
@@ -222,7 +222,7 @@ Die Autorisierung für einzelne Datenbanken funktioniert bei der verwalteten SQL
 
 Nachdem wir nun eine Datenbank namens **MyMITestDB** sowie eine Anwendung mit Standardberechtigungen erstellt haben, können wir als Nächstes auf der Grundlage dieser Anmeldung einen Benutzer erstellen. Im Moment kann die Anmeldung zwar eine Verbindung mit der verwalteten Instanz herstellen und alle Datenbanken anzeigen, aber nicht mit den Datenbanken interagieren. Wenn Sie sich mit dem Azure AD-Konto mit den Standardberechtigungen anmelden und versuchen, die neu erstellte Datenbank zu erweitern, wird der folgende Fehler angezeigt:
 
-![ssms-db-not-accessible.png](./media/aad-security-configure-tutorial/ssms-db-not-accessible.png)
+![Screenshot einer Fehlermeldung vom SSMS-Objekt-Explorer mit dem Hinweis „Auf die Datenbank MyMITestDB kann nicht zugegriffen werden. (ObjectExplorer)“.](./media/aad-security-configure-tutorial/ssms-db-not-accessible.png)
 
 Weitere Informationen zum Gewähren von Datenbankberechtigungen finden Sie unter [Erste Schritte mit Berechtigungen für die Datenbank-Engine](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions).
 
@@ -326,7 +326,7 @@ Damit dem Benutzer Daten in der Datenbank angezeigt werden, können wir ihm [Rol
 1. Erstellen Sie unter Verwendung des Benutzers, der der Rolle `db_datareader` hinzugefügt wurde, eine neue Verbindung mit der verwalteten Instanz.
 1. Erweitern Sie die Datenbank im **Objekt-Explorer**, um die Tabelle anzuzeigen.
 
-    ![ssms-test-table.png](./media/aad-security-configure-tutorial/ssms-test-table.png)
+    ![Screenshot vom SSMS-Objekt-Explorer mit der die Ordnerstruktur für die Tabellen in MyMITestDB. Der Ordner „dbo.TestTable“ ist hervorgehoben.](./media/aad-security-configure-tutorial/ssms-test-table.png)
 
 1. Öffnen Sie ein neues Abfragefenster, und führen Sie die folgende SELECT-Anweisung aus:
 
@@ -337,7 +337,7 @@ Damit dem Benutzer Daten in der Datenbank angezeigt werden, können wir ihm [Rol
 
     Werden Daten aus der Tabelle angezeigt? Die Spalten sollten zurückgegeben werden.
 
-    ![ssms-test-table-query.png](./media/aad-security-configure-tutorial/ssms-test-table-query.png)
+    ![Screenshot der Registerkarte „Ergebnisse“ im SSMS-Objekt-Explorer mit den Tabellenspaltenüberschriften „AccountNum“, „City“, „Name“ und „State“](./media/aad-security-configure-tutorial/ssms-test-table-query.png)
 
 ## <a name="impersonate-azure-ad-server-level-principals-logins"></a>Annehmen der Identität von Azure AD-Serverebenenprinzipalen (Anmeldungen)
 

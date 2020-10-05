@@ -4,12 +4,12 @@ description: Es wird beschrieben, wie Sie Geschäftsprozesse über Ihre App Serv
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: ddd57bfe653766d133824f42098d9ad9adb1e56b
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 5aa563e55c64893d57522dd1154a64c7e90a1690
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962195"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397435"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>Tutorial: Senden von E-Mails und Aufrufen anderer Geschäftsprozesse aus App Service
 
@@ -84,7 +84,8 @@ Stellen Sie eine App über das Sprachframework Ihrer Wahl für App Service berei
 1. Klicken Sie unten im Designer auf **Neuer Schritt**, geben Sie im Suchfeld für Aktionen **Gmail** ein, und wählen Sie **E-Mail senden (V2)** aus, nachdem diese Option gefunden wurde.
     
     > [!TIP]
-    > Sie können auch nach anderen Arten von Integrationen suchen, z. B. SendGrid, MailChimp, Office 365 und Salesforce. Weitere Informationen hierzu finden Sie in der [Logic Apps-Dokumentation](../logic-apps/index.yml).
+    > Sie können auch nach anderen Arten von Integrationen suchen, z. B. SendGrid, MailChimp, Microsoft 365 und Salesforce. Weitere Informationen hierzu finden Sie in der [Logic Apps-Dokumentation](../logic-apps/index.yml).
+
 1. Wählen Sie im Dialogfeld **Gmail** die Option **Anmelden** aus, und melden Sie sich bei dem Gmail-Konto an, über das Sie die E-Mail senden möchten.
 
     ![Screenshot des Dialogfelds „Gmail“, das Sie verwenden, um sich bei dem Gmail-Konto anzumelden, von dem aus Sie E-Mail senden möchten.](./media/tutorial-send-email/gmail-sign-in.png)

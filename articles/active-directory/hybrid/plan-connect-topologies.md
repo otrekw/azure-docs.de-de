@@ -16,12 +16,12 @@ ms.date: 11/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 062b2cac093c3049f65dd485e280776602c06e4b
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 7616ceed812b21f471609d95f59a0d0270dd7f52
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279719"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658506"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Topologien für Azure AD Connect
 In diesem Artikel werden verschiedene lokale und Azure Active Directory (Azure AD)-Topologien beschrieben, die Azure AD Connect-Synchronisierung als Schlüsselintegrationslösung verwenden. In diesem Artikel werden sowohl unterstützte als auch nicht unterstützte Konfigurationen beschrieben.
@@ -117,15 +117,15 @@ In einer Topologie mit Kontoressourcengesamtstruktur verfügen Sie über eine od
 
 In diesem Szenario vertraut (mindestens) eine Ressourcengesamtstruktur allen Kontogesamtstrukturen. Diese Ressourcengesamtstruktur verfügt in der Regel über ein erweitertes Active Directory-Schema mit Exchange und Lync. Alle Dienste von Exchange und Lync sowie andere freigegebene Dienste befinden sich in dieser Gesamtstruktur. Benutzer haben ein deaktiviertes Benutzerkonto in dieser Gesamtstruktur, und das Postfach ist mit der Kontengesamtstruktur verknüpft.
 
-## <a name="office-365-and-topology-considerations"></a>Office 365 und Überlegungen zur Netzwerktopologie
-Für einige Office 365-Workloads gelten bestimmte Einschränkungen für unterstützte Topologien:
+## <a name="microsoft-365-and-topology-considerations"></a>Microsoft 365 und Überlegungen zur Netzwerktopologie
+Für einige Microsoft 365-Workloads gelten bestimmte Einschränkungen für unterstützte Topologien:
 
 | Workload | Beschränkungen |
 | --------- | --------- |
 | Exchange Online | Weitere Informationen zu Hybridtopologien, die von Exchange Online unterstützt werden, finden Sie unter [Hybridbereitstellungen mit mehreren Active Directory-Gesamtstrukturen](/Exchange/hybrid-deployment/hybrid-with-multiple-forests). |
 | Skype for Business | Wenn Sie mehrere lokale Gesamtstrukturen verwenden, wird nur die Topologie mit Kontoressourcengesamtstruktur unterstützt. Weitere Informationen finden Sie unter [Anforderungen für die Umgebung für Skype for Business Server 2015](/skypeforbusiness/plan-your-deployment/requirements-for-your-environment/environmental-requirements). |
 
-Wenn es sich um eine größere Organisation handelt, sollten Sie die Verwendung des Features [Office 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) in Erwägung ziehen. Mit diesem Feature können Sie festlegen, in welcher Rechenzentrumsregion sich die Ressourcen des Benutzers befinden.
+Wenn es sich um eine größere Organisation handelt, sollten Sie die Verwendung des Features [Microsoft 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) in Erwägung ziehen. Mit diesem Feature können Sie festlegen, in welcher Rechenzentrumsregion sich die Ressourcen des Benutzers befinden.
 
 ## <a name="staging-server"></a>Stagingserver
 ![Stagingserver in einer Topologie](./media/plan-connect-topologies/MultiForestStaging.png)

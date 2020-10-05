@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1865d307e7b79e7e40b0e98f2dcfa2535b0313fd
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 08e6491e1d8d94e8e6e9112e5a19682018103325
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551706"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400348"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>Tutorial: Sichern und Wiederherstellen von Dateien für virtuelle Linux-Computer in Azure
 
@@ -70,7 +70,7 @@ In diesem Beispiel wird beschrieben, wie Sie die nginx-Standardwebseite „/var/
  
 1. Öffnen Sie auf dem lokalen Computer einen Browser, und geben Sie die öffentliche IP-Adresse Ihres virtuellen Computers ein, um die nginx-Standardwebseite anzuzeigen.
 
-    ![nginx-Standardwebseite](./media/tutorial-backup-vms/nginx-working.png)
+    ![Screenshot mit der nginx-Standardwebseite](./media/tutorial-backup-vms/nginx-working.png)
 
 1. Stellen Sie eine SSH-Verbindung mit Ihrem virtuellen Computer her.
 
@@ -86,7 +86,7 @@ In diesem Beispiel wird beschrieben, wie Sie die nginx-Standardwebseite „/var/
     
 4. Aktualisieren Sie den Browser auf dem lokalen Computer durch Drücken von STRG+F5, um zu zeigen, dass diese nginx-Standardseite nicht mehr angezeigt wird.
 
-    ![nginx-Standardwebseite](./media/tutorial-backup-vms/nginx-broken.png)
+    ![Screenshot, der zeigt, dass die nginx-Standardseite nicht mehr angezeigt wird](./media/tutorial-backup-vms/nginx-broken.png)
     
 1. Melden Sie sich auf dem lokalen Computer beim [Azure-Portal](https://portal.azure.com/) an.
 6. Wählen Sie im Menü auf der linken Seite **Virtuelle Computer** aus. 

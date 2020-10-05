@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/2/2020
 ms.author: derekol
 Customer intent: With Azure Peering service enhancing the customer connectivity to Microsoft cloud services .
-ms.openlocfilehash: f04ae0d2e541be0a7984e944298fa8d7b47fd126
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: f8f0ee71a8dd00498d868bb6dc11b3fa083df766
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "84870574"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530217"
 ---
 # <a name="tutorial-create-a-peering-service-connection"></a>Tutorial: Erstellen einer Peering Service-Verbindung
 
@@ -43,13 +43,13 @@ In diesem Tutorial wird gezeigt, wie Sie eine Peering Service-Ressource erstelle
 
 1. Wählen Sie **Präfixschlüssel** aus, und fügen Sie den Präfixschlüssel hinzu, der Ihnen von Ihrem Anbieter (ISP oder IXP) zugeteilt wurde. Mit diesem Schlüssel kann MS das Präfix und den Anbieter überprüfen, die Ihr IP-Präfix zugeordnet haben.
 
-    ![Registerkarte „Peering Service-Konfiguration registrieren“](./media/peering-service-portal/peering-serviceconfiguration.png)
+    ![Screenshot, der die Registerkarte „Konfiguration“ der Seite „Peering Service-Verbindung erstellen“ zeigt, auf der Sie den Präfixschlüssel eingeben können.](./media/peering-service-portal/peering-serviceconfiguration.png)
 
 1. Wählen Sie unten links auf der Seite die Schaltfläche **Überprüfen + erstellen** aus. Die Seite **Überprüfen + erstellen** wird angezeigt, und Azure überprüft Ihre Konfiguration.
 
  1. Wenn die Meldung **Überprüfung erfolgreich** wie hier angezeigt wird, wählen Sie **Erstellen** aus.
 
-> ![Registerkarte „Peering Service-Konfiguration registrieren“](./media/peering-service-portal/peering-service-prefix.png)
+> ![Screenshot, der die Registerkarte „Überprüfen und erstellen“ der Seite „Peering Service-Verbindung erstellen“ zeigt.](./media/peering-service-portal/peering-service-prefix.png)
 
 1. Nachdem Sie eine Peering Service Verbindung registriert haben, wird für die darin enthaltenen Präfixe eine zusätzliche Prüfung durchgeführt. Sie können den Prüfungsstatus unter dem Abschnitt **Präfixe** des Ressourcennamens überprüfen. Wenn die Überprüfung fehlschlägt, wird eine der folgenden Fehlermeldungen angezeigt:
 

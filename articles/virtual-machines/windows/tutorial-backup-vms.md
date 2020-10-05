@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b5b3d1240c621a1bcdc135825e70fe164452a428
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5dc41522add580b96e178328f47bd88fc1fbf052
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500394"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397061"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-windows-virtual-machines-in-azure"></a>Tutorial: Sichern und Wiederherstellen von Dateien für virtuelle Windows-Computer in Azure
 
@@ -59,7 +59,7 @@ In diesem Beispiel ist dargestellt, wie die Image-Datei, die auf der Standardweb
 
 1. Öffnen Sie einen Browser, und stellen Sie eine Verbindung mit der IP-Adresse der VM her, um die Standardseite von IIS anzuzeigen.
 
-    ![Standardwebseite von IIS](./media/tutorial-backup-vms/iis-working.png)
+    ![Screenshot mit der IIS-Standardwebseite](./media/tutorial-backup-vms/iis-working.png)
 
 1. Stellen Sie eine Verbindung zur VM her.
 1. Öffnen Sie auf dem virtuellen Computer den **Datei-Explorer**, navigieren Sie zu \inetpub\wwwroot, und löschen Sie die Datei **iisstart.png**.
@@ -72,14 +72,14 @@ In diesem Beispiel ist dargestellt, wie die Image-Datei, die auf der Standardweb
 1. Klicken Sie auf dem Blatt des virtuellen Computers im Abschnitt **Vorgänge** auf **Sicherung**. Das Blatt **Sicherung** wird geöffnet. 
 1. Wählen Sie im Menü oben auf dem Blatt die Option **Dateiwiederherstellung** aus. Das Blatt **Dateiwiederherstellung** wird geöffnet.
 1. Wählen Sie in **Schritt 1: Auswählen eines Wiederherstellungspunkts** in der Dropdownliste einen Wiederherstellungspunkt aus.
-1. Klicken Sie in **Schritt 2: Herunterladen des Skripts zum Suchen und Wiederherstellen von Dateien** auf die Schaltfläche **Ausführbare Datei herunterladen**. Kopieren Sie das Kennwort für die Datei, und speichern Sie es an einem sicheren Ort.
+1. Geben Sie in **Step 2: Herunterladen des Skripts zum Suchen und Wiederherstellen von Dateien** die Schaltfläche **Ausführbare Datei herunterladen** aus. Kopieren Sie das Kennwort für die Datei, und speichern Sie es an einem sicheren Ort.
 1. Öffnen Sie auf Ihrem lokalen Computer den **Datei-Explorer**, navigieren Sie zum **Downloads**-Ordner, und kopieren Sie die heruntergeladene EXE-Datei. Der Dateiname enthält Ihren VM-Namen als Präfix. 
 1. Fügen Sie auf Ihrem virtuellen Computer (über die RDP-Verbindung) die EXE-Datei auf dem Desktop Ihres virtuellen Computers ein. 
 1. Navigieren Sie zum Desktop Ihrer VM, und doppelklicken Sie die EXE-Datei. Eine Eingabeaufforderung wird geöffnet. Das Programm bindet den Wiederherstellungspunkt als Dateifreigabe ein, auf die Sie zugreifen können. Wenn die Erstellung der Freigabe abgeschlossen ist, geben Sie **q** ein, um die Eingabeaufforderung zu schließen.
 1. Öffnen Sie Ihren virtuellen Computer, öffnen Sie **Datei-Explorer**, und navigieren Sie zum Laufwerksbuchstaben, der für die Dateifreigabe verwendet wurde.
 1. Navigieren Sie zu \inetpub\wwwroot, kopieren Sie **iisstart.png** aus der Dateifreigabe, und fügen Sie es in \inetpub\wwwroot ein. Kopieren Sie beispielsweise „F:\inetpub\wwwroot\iisstart.png and paste it into c:\inetpub\wwwroot“, um die Datei wiederherzustellen.
 1. Öffnen Sie auf dem lokalen Computer die Browserregisterkarte, auf der Sie mit der IP-Adresse des virtuellen Computers verbunden sind, der die IIS-Standardseite anzeigt. Drücken Sie STRG+F5, um die Browserseite zu aktualisieren. Sie sollten nun sehen, dass das Image wiederhergestellt wurde.
-1. Wechseln Sie auf dem lokalen Computer zurück zur Browserregisterkarte für das Azure-Portal, und klicken Sie in **Schritt 3: Aufheben der Bereitstellung der Datenträger nach der Wiederherstellung** auf die Schaltfläche **Bereitstellung der Datenträger aufheben**. Wenn Sie vergessen, diesen Schritt durchzuführen, wird die Verbindung mit dem Bereitstellungspunkt nach 12 Stunden automatisch getrennt. Nach diesen zwölf Stunden müssen Sie ein neues Skript zum Erstellen eines neuen Bereitstellungspunkts herunterladen.
+1. Navigieren Sie auf dem lokalen Computer zurück zur Browserregisterkarte für das Azure-Portal, und klicken Sie in **Schritt 3: Aufheben der Bereitstellung der Datenträger nach der Wiederherstellung** auf die Schaltfläche **Bereitstellung der Datenträger aufheben**. Wenn Sie vergessen, diesen Schritt durchzuführen, wird die Verbindung mit dem Bereitstellungspunkt nach 12 Stunden automatisch getrennt. Nach diesen zwölf Stunden müssen Sie ein neues Skript zum Erstellen eines neuen Bereitstellungspunkts herunterladen.
 
 
 

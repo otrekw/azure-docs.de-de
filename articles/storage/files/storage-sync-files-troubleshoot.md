@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 6/12/2020
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: d266583a2bd73c92a58fad1882a1c572ed4f3769
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: a93c127d0b04667b0f28949f4b384f22769bace4
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056260"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018593"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problembehandlung für Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -1257,23 +1257,7 @@ Wenn Probleme mit der Azure-Dateisynchronisierung auf einem Server auftreten, f�
 
 Wenn das Problem nicht behoben werden kann, führen Sie das Tool AFSDiag aus, und übermitteln Sie die Ausgabe der ZIP-Datei zur weiteren Untersuchung an den für Ihren Fall zuständigen Supportmitarbeiter.
 
-Ab Agent-Version 11:
-
-1. Öffnen Sie ein PowerShell-Fenster mit erhöhten Rechten, und führen Sie die folgenden Befehle aus (drücken Sie nach jedem Befehl die EINGABETASTE):
-
-    > [!NOTE]
-    >AFSDiag erstellt das Ausgabeverzeichnis und einen temporären Ordner darin, bevor Protokolle gesammelt werden, und löscht den temporären Ordner nach der Ausführung. Geben Sie einen Speicherort für die Ausgaben an, der keine Daten enthält.
-    
-    ```powershell
-    cd "c:\Program Files\Azure\StorageSyncAgent"
-    Import-Module .\afsdiag.ps1
-    Debug-AFS -OutputDirectory C:\output -KernelModeTraceLevel Verbose -UserModeTraceLevel Verbose
-    ```
-
-2. Reproduzieren Sie das Problem. Klicken Sie abschließend auf **D**.
-3. Eine ZIP-Datei, die Protokolle und Ablaufverfolgungsdateien enthält, wird im angegebenen Ausgabeverzeichnis gespeichert. 
-
-Bis Agent-Version 10:
+Um AFSDiag auszuführen, befolgen Sie die nachstehenden Schritte:
 1. Erstellen Sie eine Verzeichnis zum Speichern der Ausgabe von AFSDiag (z.B. „C:\Ausgabe“).
     > [!NOTE]
     >AFSDiag löscht vor der Protokollerfassung den gesamten Inhalt des Ausgabeverzeichnisses. Geben Sie einen Speicherort für die Ausgaben an, der keine Daten enthält.

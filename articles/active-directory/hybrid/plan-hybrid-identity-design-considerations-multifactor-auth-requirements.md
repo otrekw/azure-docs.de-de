@@ -1,6 +1,6 @@
 ---
 title: Entwerfen von Hybrididentitäten – Anforderungen für die mehrstufige Authentifizierung in Azure | Microsoft-Dokumentation
-description: Mit der bedingten Zugriffssteuerung überprüft Azure Active Directory die besonderen Bedingungen, die Sie beim Authentifizieren des Benutzers und vor dem Gewähren des Zugriffs auf die Anwendung auswählen. Nachdem diese Bedingungen erfüllt sind, wird der Benutzer authentifiziert und erhält Zugriff auf die Anwendung.
+description: Mit der Steuerung für bedingten Zugriff überprüft Azure AD die besonderen Bedingungen, die Sie beim Authentifizieren des Benutzers und vor dem Gewähren des Zugriffs auf die Anwendung auswählen.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4743195fc79d43571ec79a13b8518edc7e81379b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7d8ddf372e234bab242e4b28ba53dce7dd68cc89
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67109289"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976059"
 ---
 # <a name="determine-multi-factor-authentication-requirements-for-your-hybrid-identity-solution"></a>Ermitteln der Anforderungen an die Multi-Factor Authentication für Ihre Hybrid-Identitätslösung
 In dieser Welt mit ihrem hohen Mobilitätsgrad, in der Benutzer mit allen Geräten auf Daten und Anwendungen in der Cloud zugreifen können, ist der Schutz dieser Daten zu einer sehr wichtigen Aufgabe geworden.  Jeden Tag kann man neue Artikel über Sicherheitsverletzungen lesen.  Es gibt zwar keinen absoluten Schutz vor diesen Sicherheitsverletzungen, aber die Multi-Factor Authentication bietet eine zusätzliche Sicherheitsebene als Schutz vor Verletzungen dieser Art.

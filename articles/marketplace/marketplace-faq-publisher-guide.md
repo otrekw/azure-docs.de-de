@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 07/22/2020
-ms.openlocfilehash: 82a6b2674fe73bd448bb7ccbd230e837bd1cbb2a
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.date: 09/11/2020
+ms.openlocfilehash: fa8ee205952d1bd39e932ca6c91e3cffe608bf95
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607330"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032111"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Häufig gestellte Fragen zum kommerziellen Marketplace von Microsoft
 
@@ -22,7 +22,7 @@ Dieser Artikel bietet Antworten auf häufig gestellte Fragen zum kommerziellen M
 
 ### <a name="what-is-the-microsoft-commercial-marketplace"></a>Was ist der kommerzielle Marketplace von Microsoft?
 
-Der kommerzielle Marketplace stellt eine Verbindung von Unternehmen und Regierungsbehörden mit Lösungen her, die von unseren Partnern entwickelt wurden. Unsere Partner erstellen und verwalten Angebote im Partner Center, und Kunden können Lösungen über Oberflächen innerhalb des Produkts (z. B. Microsoft AppSource, Azure Marketplace), Handelspartner im Cloud Solution Provider-Programm sowie unsere Vertriebsteams im Rahmen des Co-Selling-Programms entdecken und erwerben.
+Der kommerzielle Marketplace stellt eine Verbindung von Unternehmen und Regierungsbehörden mit Lösungen her, die von unseren Partnern entwickelt wurden. Unsere Partner erstellen und verwalten Angebote im Partner Center, und Kunden können Lösungen über Oberflächen innerhalb des Produkts (z. B. Microsoft AppSource, Azure Marketplace), Handelspartner im Cloud Solution Provider-Programm sowie unsere Vertriebsteams im Rahmen des Co-Selling-Programms erkunden und erwerben.
 
 Weitere Informationen finden Sie im [Hub für den kommerziellen Microsoft-Marketplace](https://partner.microsoft.com/asset/collection/commercial-marketplace#/).
 
@@ -42,11 +42,11 @@ Der kommerzielle Marketplace ist in 141 Regionen über einzelne Pläne verfügba
 
 Wir verwalten die Steuerzahlungen in vielen Ländern/Regionen und bieten Zugriff auf unser globales Netzwerk von Handelspartnern. Sie können für den Verkauf an Organisationen die Microsoft-Kundenvereinbarung oder das Enterprise Agreement eines Kunden nutzen, ohne eine neue Kaufbeziehung aufbauen zu müssen.
 
-Weitere Informationen finden Sie im Video [Why sell through marketplace](https://partner.microsoft.com/asset/detail/why-sell-through-marketplace) (Gründe für den Verkauf über den Marketplace, in englischer Sprache).
+Weitere Informationen finden Sie im [Hub für den kommerziellen Microsoft-Marketplace](https://aka.ms/commercialmarketplacehub).
 
 ### <a name="is-there-a-listing-fee-for-the-microsoft-commercial-marketplace"></a>Gibt es eine Gebühr für die Auflistung im kommerziellen Microsoft-Marketplace?
 
-Nein, es fallen keine Kosten für die Veröffentlichung von Angeboten in unserem kommerziellen Marketplace an. Wir behalten einen geringen Prozentsatz des Umsatzes als Transaktionsgebühr ein und investieren ihn in das Marketplace-Prämienprogramm, in die Plattforminnovation und den Betrieb des kommerziellen Marketplace. Diese Transaktionsgebühr ist für Angebote reduziert, die als [Azure IP-Co-Selling](https://docs.microsoft.com/azure/marketplace/marketplace-co-sell)-Incentives gekennzeichnet sind.
+Nein, es fallen keine Kosten für die Veröffentlichung von Angeboten in unserem kommerziellen Marketplace an. Wir behalten einen geringen Prozentsatz des Umsatzes als Transaktionsgebühr ein und investieren ihn in das Marketplace-Prämienprogramm, in die Plattforminnovation und den Betrieb des kommerziellen Marketplace. Diese Transaktionsgebühr wird für [Azure-IP-Co-Selling](https://docs.microsoft.com/azure/marketplace/marketplace-co-sell)-Incentive-Angebote und für kostenpflichtige SaaS-Angebote in AppSource reduziert, die einer Microsoft Teams-App oder mindestens zwei Microsoft 365-Add-Ins (Excel, PowerPoint, Word, Outlook und SharePoint) zugeordnet sind.
 
 ### <a name="how-do-i-sign-up-to-be-a-publisher-in-the-microsoft-commercial-marketplace"></a>Wie registriere ich mich als Herausgeber im kommerziellen Microsoft-Marketplace?
 
@@ -67,7 +67,7 @@ Auf welche Weise die Kunden Ihr Angebot im kommerziellen Marketplace nutzen kön
 
 Nachdem Sie sich registriert und die Herausgebervereinbarung akzeptiert haben, können Sie auf die Seite „Kommerzieller Marketplace“ im Partner Center zugreifen. Hier können Sie Angebote erstellen und verwalten sowie Analyseberichte anzeigen. Für Microsoft 365-Apps müssen Sie auch das Office Store-Programm im Partner Center aktivieren.
 
-Weitere Informationen finden Sie unter [Willkommen beim kommerziellen Marketplace](index.yml) und [Monetarisieren Ihres Office 365-Add-Ins über den kommerziellen Microsoft-Marketplace](https://docs.microsoft.com/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace).
+Weitere Informationen finden Sie unter [Willkommen beim kommerziellen Marketplace](index.yml) und [Monetarisieren Ihres Microsoft 365-Add-Ins über den kommerziellen Microsoft-Marketplace](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace).
 
 ### <a name="how-do-i-get-support-assistance-for-the-commercial-marketplace"></a>Wie erhalte ich Unterstützung für den kommerziellen Marketplace?
 
@@ -320,7 +320,7 @@ Hier finden Sie einige Ressourcen für den Einstieg:
 Wir empfehlen die folgenden Ressourcen:
 
 - Informationen zum Anmelden bei der Microsoft Partner Community finden Sie unter [Microsoft AppSource und Azure Marketplace](https://www.microsoftpartnercommunity.com/t5/Microsoft-AppSource-and-Azure/bd-p/2222).
-- Informieren Sie sich über das [Microsoft Commercial Marketplace Insiders Program](https://crmnamvoc1runtime.crm.dynamics.com/cbdbd59b-ab3d-47bf-8a1c-7452f8e49970/marketplaceinsiders), und nehmen Sie daran teil.
+- Informieren Sie sich über das [Microsoft Commercial Marketplace Insiders Program](https://www.microsoftpartnercommunity.com/t5/Microsoft-AppSource-and-Azure/Commercial-Marketplace-Insiders-Program/td-p/13743), und nehmen Sie daran teil.
 
 ### <a name="where-can-i-learn-more-about-partner-center"></a>Wo erfahre ich mehr über das Partner Center?
 
@@ -329,7 +329,7 @@ Wir empfehlen die folgenden Ressourcen:
 
 ### <a name="where-can-i-learn-more-about-the-microsoft-admin-center"></a>Wo erfahre ich mehr über das Microsoft Admin Center?
 
-Weitere Informationen zum Microsoft Admin Center finden Sie unter [Verwalten von Drittanbieter-App-Abonnements für Ihre Organisation](https://docs.microsoft.com/microsoft-365/commerce/manage-saas-apps?view=o365-worldwide).
+Weitere Informationen zum Microsoft Admin Center finden Sie unter [Verwalten von Drittanbieter-App-Abonnements für Ihre Organisation](/microsoft-365/commerce/manage-saas-apps).
 
 ### <a name="where-can-i-learn-more-about-azure-billing"></a>Wo erfahre ich mehr über die Azure-Abrechnung?
 

@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie mit Azure Site Recovery das Failover auf
 ms.service: site-recovery
 ms.topic: article
 ms.date: 12/10/2019
-ms.openlocfilehash: bebc4cd56f248d09579dcde2fc234f63dd65a09f
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: d2f7fed25955d6a34c6162b87b82bfae5e58ff41
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309967"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563980"
 ---
 # <a name="run-a-failover-from-on-premises-to-azure"></a>Ausführen eines Failovers vom lokalen Standort nach Azure
 
@@ -46,7 +46,7 @@ Führen Sie den Wiederherstellungsplan wie folgt aus:
 1. Wählen Sie im Site Recovery-Tresor **Wiederherstellungspläne** > *Name_des_Wiederherstellungsplans* aus.
 2. Klicken Sie auf **Failover**.
 
-    ![Failover](./media/site-recovery-failover/Failover.png)
+    ![Screenshot des ADRP-Panels mit dem Menü „Mehr“, in dem „Failover“ ausgewählt ist](./media/site-recovery-failover/Failover.png)
 
 3. Wenn Sie in Azure replizieren, behalten Sie in **Failover** > **Failover-Richtung** die Standardeinstellung bei.
 4. Wählen Sie unter **Failover** einen **Wiederherstellungspunkt** für das Failover aus.

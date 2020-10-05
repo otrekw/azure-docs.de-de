@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3959fc7df78a5c1f255f7551a018eec6b7279eb1
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 690dead3cb0059dd1b20ff042a93c36d674e62d2
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717437"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052680"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>Funktionsweise des Rückschreibens von Self-Service-Kennwortzurücksetzungen in Azure Active Directory
 
@@ -37,7 +37,7 @@ Kennwortrückschreiben bietet die folgenden Features:
 
 * **Erzwingung von lokalen Active Directory Domain Services-Kennwortrichtlinien (AD DS):** Wenn ein Benutzer sein Kennwort zurücksetzt, wird es überprüft, um sicherzustellen, dass es die lokalen AD DS-Richtlinien erfüllt, bevor es in diesem Verzeichnis committet wird. Diese Überprüfung umfasst das Überprüfen des Verlaufs, der Komplexität, des Alters, der Kennwortfilter und aller weiteren Kennwortbeschränkungen, die Sie in der lokalen Instanz von lokalen AD DS definiert haben.
 * **Feedback ohne Verzögerung**:  Die Kennwortrückschreibung ist ein synchroner Vorgang. Benutzer werden sofort benachrichtigt, wenn ihre Kennwörter nicht der Richtlinie entsprechen oder das Zurücksetzen oder Ändern des Kennworts aus irgendeinem Grund nicht möglich ist.
-* **Unterstützung für das Ändern von Kennwörtern über den Zugriffsbereich und Office 365**: Wenn Verbundbenutzer oder Benutzer mit Kennworthashsynchronisierung ihre abgelaufenen oder noch nicht abgelaufenen Kennwörter ändern möchten, werden diese Kennwörter in AD DS zurückgeschrieben.
+* **Unterstützung für das Ändern von Kennwörtern über den Zugriffsbereich und Microsoft 365**: Wenn Verbundbenutzer oder Benutzer mit Kennworthashsynchronisierung ihre abgelaufenen oder noch nicht abgelaufenen Kennwörter ändern möchten, werden diese Kennwörter in AD DS zurückgeschrieben.
 * **Unterstützung für Kennwortrückschreiben, wenn die Kennwörter im Azure-Portal von einem Administrator zurückgesetzt werden**: Wenn ein Administrator das Kennwort eines Benutzers im [Azure-Portal](https://portal.azure.com) zurücksetzt und der Benutzer ein Verbundkonto oder ein Konto mit Kennworthashsynchronisierung verwendet, wird das Kennwort lokal zurückgeschrieben. Diese Funktionalität wird im Office-Verwaltungsportal derzeit nicht unterstützt.
 * **Keine Notwendigkeit zur Festlegung von eingehenden Firewallregeln:** Kennwortrückschreiben verwendet ein Azure Service Bus Relay als zugrunde liegenden Kommunikationskanal. Die gesamte Kommunikation geht über Port 443.
 

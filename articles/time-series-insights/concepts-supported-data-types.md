@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 08/31/2020
-ms.openlocfilehash: 4e6586453469797458bc60fc7499a45a9aad9b9b
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 9dbc66e3331325e9b79d0434fb452d01d69d550a
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226742"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89482588"
 ---
 # <a name="supported-data-types"></a>Unterstützte Datentypen
 
@@ -27,10 +27,10 @@ In der folgenden Tabelle sind die von Azure Time Series Insights Gen2 unterstüt
 | **double** | Eine 64-Bit-Zahl mit doppelter Genauigkeit  | `"value": 31.0482941` | `$event.value.Double` oder `$event['value'].Double` |  `value_double`
 | **long** | Eine 64-Bit-Ganzzahl mit Vorzeichen  | `"value" : 31` | `$event.value.Long` oder `$event['value'].Long` |  `value_long`
 | **string** | Textwerte müssen aus gültigen Zeichen in UTF-8 bestehen. NULL und leere Zeichenfolgen werden gleich behandelt. |  `"site": "DIM_MLGGG"`| `$event.site.String` oder `$event['site'].String`| `site_string`
-| **dynamic** | Ein komplexer (nicht primitiver) Typ, der entweder aus einem Array oder einer Eigenschaftensammlung (Wörterbuch) besteht. Derzeit werden nur JSON-Arrays, die Primitive als Zeichenfolgen enthalten, oder Arrays von Objekten, die nicht die TS-ID oder Zeitstempel-Eigenschaft(en) enthalten, mit dem Typ „dynamic“ gespeichert. Lesen Sie diesen [Artikel](./concepts-json-flattening-escaping-rules.md), um zu erfahren, wie Objekte vereinfacht und Arrays möglicherweise aufgelöst werden. Auf die Nutzlasteigenschaften, die als dieser Typ gespeichert sind, kann nur durch Auswählen von `Explore Events` im TSI-Explorer zum Anzeigen von Rohereignissen oder über die [`GetEvents`](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents) -Abfrage-API für die clientseitige Analyse zugegriffen werden. |  `"values": "[197, 194, 189, 188]"` | Verweise auf dynamische Typen in einem Zeitreihenausdruck werden noch nicht unterstützt. | `values_dynamic`
+| **dynamic** | Ein komplexer (nicht primitiver) Typ, der entweder aus einem Array oder einer Eigenschaftensammlung (Wörterbuch) besteht. Derzeit werden nur JSON-Arrays, die Primitive als Zeichenfolgen enthalten, oder Arrays von Objekten, die nicht die TS-ID oder Zeitstempel-Eigenschaft(en) enthalten, mit dem Typ „dynamic“ gespeichert. Lesen Sie diesen [Artikel](./concepts-json-flattening-escaping-rules.md), um zu erfahren, wie Objekte vereinfacht und Arrays möglicherweise aufgelöst werden. Auf die Nutzlasteigenschaften, die als dieser Typ gespeichert sind, kann nur durch Auswählen von `Explore Events` im Time Series Insights-Explorer zum Anzeigen von Rohereignissen oder über die [`GetEvents`](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents) -Abfrage-API für die clientseitige Analyse zugegriffen werden. |  `"values": "[197, 194, 189, 188]"` | Verweise auf dynamische Typen in einem Zeitreihenausdruck werden noch nicht unterstützt. | `values_dynamic`
 
 > [!NOTE]
-> 64-Bit-Ganzzahlwerte werden unterstützt. Die größte Zahl, die vom Azure Time Series Insights-Explorer sicher ausgedrückt werden kann, ist aufgrund von JavaScript-Einschränkungen folgende: 9.007.199.254.740.991 (2^53-1). Wenn Sie in Ihrem Datenmodell mit größeren Zahlen arbeiten, können Sie die Größe verringern, indem Sie eine [Zeitreihenmodellvariable](/concepts-variables#numeric-variables) erstellen und den Wert [konvertieren](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#conversion-functions).
+> 64-Bit-Ganzzahlwerte werden unterstützt. Die größte Zahl, die vom Azure Time Series Insights-Explorer sicher ausgedrückt werden kann, ist aufgrund von JavaScript-Einschränkungen folgende: 9.007.199.254.740.991 (2^53-1). Wenn Sie in Ihrem Datenmodell mit größeren Zahlen arbeiten, können Sie die Größe verringern, indem Sie eine [Zeitreihenmodellvariable](/azure/time-series-insights/concepts-variables#numeric-variables) erstellen und den Wert [konvertieren](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#conversion-functions).
 
 > [!NOTE]
 > Der Typ **Zeichenfolge** lässt keine NULL-Werte zu:

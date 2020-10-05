@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e2858daaa834552da5a85063fd9973d2c35209d7
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: f41584194f8f5e8afde630405116b8b169cb5656
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005617"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542035"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-classic"></a>Tutorial: Erstellen eines Mandanten in Windows Virtual Desktop (klassisch)
 
@@ -126,7 +126,7 @@ So ermitteln Sie Ihre Azure-Abonnement-ID:
 1. Suchen Sie in der gleichen Sitzung im [Azure-Portal](https://portal.azure.com) nach **Abonnements**, und wählen Sie die entsprechende Option aus.
 
    > [!div class="mx-imgBorder"]
-   > ![Screenshot: Suchergebnisse für „Azure Active Directory“ im Azure-Portal. Das Suchergebnis unter „Dienste“ ist hervorgehoben.](../media/tenant-search-subscription.png)
+   > ![Screenshot: Suchergebnisse für „Azure Active Directory“ im Azure-Portal. Das Suchergebnis für „Dienste“ ist hervorgehoben.](../media/tenant-search-subscription.png)
 
 2. Wählen Sie das Azure-Abonnement aus, das Sie für den Empfang von Benachrichtigungen des Windows Virtual Desktop-Diensts verwenden möchten.
 3. Zeigen Sie auf den Wert der **Abonnement-ID**, bis ein Symbol für die Zwischenablage angezeigt wird. Wählen Sie das Symbol für die Zwischenablage aus, und fügen Sie den Wert an einem gut erreichbaren Ort ein, um ihn später als Wert für **AzureSubscriptionId** verwenden zu können.

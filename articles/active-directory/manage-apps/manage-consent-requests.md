@@ -1,6 +1,6 @@
 ---
-title: 'Verwalten der Einwilligung zu Anwendungen und Auswerten von Einwilligungsanforderungen: Azure AD'
-description: Erfahren Sie, wie Sie Einwilligungsanforderungen verwalten, wenn die Benutzereinwilligung deaktiviert oder eingeschränkt ist, und wie Sie eine Anforderung für eine mandantenweite Administratoreinwilligung für eine Anwendung auswerten.
+title: Verwalten der Einwilligung zu Anwendungen und Auswerten von Einwilligungsanforderungen in Azure Active Directory
+description: Erfahren Sie, wie Sie Einwilligungsanforderungen verwalten, wenn die Benutzereinwilligung deaktiviert oder eingeschränkt ist, und wie Sie eine Anforderung für eine mandantenweite Administratoreinwilligung für eine Anwendung in Azure Active Directory auswerten.
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -11,13 +11,12 @@ ms.topic: how-to
 ms.date: 12/27/2019
 ms.author: kenwith
 ms.reviewer: phsignor
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f7dc1d4b0f6678f02c4f5d152edf2ae9af063d1
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 3d95d2551f8e078f4252a19dc850345793c040d8
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89392441"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420454"
 ---
 # <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>Verwalten der Einwilligung zu Anwendungen und Auswerten von Einwilligungsanforderungen
 
@@ -76,7 +75,7 @@ Die folgende Liste enthält einige Empfehlungen, die Sie beim Auswerten einer An
 
 * **Informieren Sie sich über die angeforderten Berechtigungen.**
 
-   Die von der Anwendung angeforderten Berechtigungen werden in der [Einwilligungsaufforderung](../develop/application-consent-experience.md) aufgeführt. Wenn Sie den Berechtigungstitel erweitern, wird die Beschreibung der Berechtigung angezeigt. Die Beschreibung von Anwendungsberechtigungen enthält in der Regel „ohne einen angemeldeten Benutzer“. Die Beschreibung von delegierten Berechtigungen enthält in der Regel „im Namen des angemeldeten Benutzers“. Berechtigungen für die Microsoft Graph-API werden in der [Referenz zu Microsoft Graph-Berechtigungen] beschrieben. Informationen zu den von anderen APIs verfügbar gemachten Berechtigungen finden Sie in der jeweiligen Dokumentation.
+   Die von der Anwendung angeforderten Berechtigungen werden in der [Einwilligungsaufforderung](../develop/application-consent-experience.md) aufgeführt. Wenn Sie den Berechtigungstitel erweitern, wird die Beschreibung der Berechtigung angezeigt. Die Beschreibung von Anwendungsberechtigungen enthält in der Regel „ohne einen angemeldeten Benutzer“. Die Beschreibung von delegierten Berechtigungen enthält in der Regel „im Namen des angemeldeten Benutzers“. Berechtigungen für die Microsoft Graph-API werden in der [Referenz zu Microsoft Graph-Berechtigungen](https://docs.microsoft.com/graph/permissions-reference) beschrieben. Informationen zu den von anderen APIs verfügbar gemachten Berechtigungen finden Sie in der jeweiligen Dokumentation.
 
    Wenn Sie die angeforderte Berechtigung nicht verstehen, *erteilen Sie keine Einwilligung*.
 
@@ -95,39 +94,29 @@ Die folgende Liste enthält einige Empfehlungen, die Sie beim Auswerten einer An
 ## <a name="granting-consent-as-an-administrator"></a>Erteilen der Einwilligung als Administrator
 
 ### <a name="granting-tenant-wide-admin-consent"></a>Erteilen einer mandantenweiten Administratoreinwilligung
-
 Unter [Erteilen einer mandantenweiten Administratoreinwilligung für eine Anwendung](grant-admin-consent.md) finden Sie ausführliche Anleitungen zum Erteilen einer mandantenweiten Administratoreinwilligung über das Azure-Portal, mithilfe von Azure AD PowerShell oder über die Einwilligungsaufforderung selbst.
 
 ### <a name="granting-consent-on-behalf-of-a-specific-user"></a>Erteilen einer Einwilligung im Namen eines bestimmten Benutzers
-
 Anstatt die Einwilligung für die gesamte Organisation zu erteilen, kann ein Administrator auch die [Microsoft Graph-API](https://docs.microsoft.com/graph/use-the-api) verwenden, um eine Einwilligung für delegierte Berechtigungen im Namen eines einzelnen Benutzers zu erteilen. Weitere Informationen finden Sie unter [Zugreifen im Namen eines Benutzers](https://docs.microsoft.com/graph/auth-v2-user).
 
 ## <a name="limiting-user-access-to-applications"></a>Beschränken des Benutzerzugriffs auf Anwendungen
-
 Der Zugriff von Benutzern auf Anwendungen kann auch dann noch eingeschränkt werden, wenn eine mandantenweite Administratoreinwilligung erteilt wurde. Weitere Informationen dazu, wie Sie eine Benutzerzuweisung zu einer Anwendung erzwingen, finden Sie unter [Methoden zum Zuweisen von Benutzern und Gruppen](methods-for-assigning-users-and-groups.md).
 
 Eine umfassendere Übersicht, einschließlich der Behandlung weiterer komplexer Szenarien, finden Sie unter [Verwenden von Azure AD für die Anwendungszugriffsverwaltung](what-is-access-management.md).
 
 ## <a name="disable-all-future-user-consent-operations-to-any-application"></a>Deaktivieren aller zukünftigen Vorgänge für die Benutzereinwilligung für jede Anwendung
-
 Die Deaktivierung der Benutzerzustimmung für das gesamte Verzeichnis führt dazu, dass Endbenutzer keiner Anwendung zustimmen können. Administratoren können weiterhin im Namen von Benutzern zustimmen. Weitere Informationen zur Zustimmung zu Anwendungen sowie zum Aktivieren bzw. Deaktivieren der Zustimmung finden Sie unter [Grundlegendes zur Benutzer- und Administratorzustimmung](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview).
 
-Führen Sie die folgenden Schritte aus, um **alle zukünftigen Vorgänge der Benutzerzustimmung in Ihrem gesamten Verzeichnis zu deaktivieren**:
+Führen Sie die folgenden Schritte aus, um alle zukünftigen Vorgänge der Benutzerzustimmung in Ihrem gesamten Verzeichnis zu deaktivieren:
 1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
 2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
-4.  Klicken Sie im Navigationsmenü auf **Benutzer und Gruppen**.
-5.  Klicken Sie auf **Benutzereinstellungen**.
+4.  Wählen Sie im Navigationsmenü **Benutzer und Gruppen** aus.
+5.  Wählen Sie **Benutzereinstellungen** aus.
 6.  Deaktivieren Sie alle zukünftigen Vorgänge der Benutzerzustimmung, indem Sie **Benutzer können Apps Zugriff auf ihre Daten gewähren** auf **Nein** festlegen und dann auf die Schaltfläche **Speichern** klicken.
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-[Fünf Schritte zum Sichern Ihrer Identitätsinfrastruktur](https://docs.microsoft.com/azure/security/fundamentals/steps-secure-identity#before-you-begin-protect-privileged-accounts-with-mfa)
-
-[Konfigurieren des Workflows für die Administratoreinwilligung (Vorschau)](configure-admin-consent-workflow.md)
-
-[Konfigurieren der Art der Benutzereinwilligung für eine Anwendung in Azure Active Directory](configure-user-consent.md)
-
-[Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt](../develop/active-directory-v2-scopes.md)
-
-[Azure AD bei StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+* [Fünf Schritte zum Sichern Ihrer Identitätsinfrastruktur](https://docs.microsoft.com/azure/security/fundamentals/steps-secure-identity#before-you-begin-protect-privileged-accounts-with-mfa)
+* [Konfigurieren des Workflows für die Administratoreinwilligung (Vorschau)](configure-admin-consent-workflow.md)
+* [Konfigurieren der Art der Benutzereinwilligung für eine Anwendung in Azure Active Directory](configure-user-consent.md)
+* [Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt](../develop/active-directory-v2-scopes.md)

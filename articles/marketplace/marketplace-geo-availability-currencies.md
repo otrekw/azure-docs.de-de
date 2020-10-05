@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 07/29/2020
-ms.openlocfilehash: f60fba6a0b3a4d891fe19b7d75ab9c9fde278629
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: cc697cd78e929b62f951014f760d644552fa082c
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89393801"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650994"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Geografische Verfügbarkeit und Unterstützung von Währungen für den kommerziellen Marketplace
 
@@ -185,6 +185,8 @@ Microsoft erhält Zahlungen von Kunden in deren lokaler Währung und bezahlt Sie
 
 > [!NOTE]
 > Microsoft rechnet Angebotspreise mit dem Microsoft Treasury-Wechselkurs um.
+
+[![Der Verlauf der Währungsumrechnung](media/marketplace-geo-availability-currencies/currency-exchange-flow.png)](media/marketplace-geo-availability-currencies/currency-exchange-flow.png#lightbox)
 
 ## <a name="retrieving-currency-information-by-api"></a>Abrufen von Währungsinformationen per API
 

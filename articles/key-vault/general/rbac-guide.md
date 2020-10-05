@@ -9,14 +9,17 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: ada966cb3c2a08a8a1ed81c3ba18ab9859774b44
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: b80b3cf1712fab17b8f626bae5fef97849e44e20
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89394426"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972267"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control-preview"></a>Gewähren des Zugriffs auf Key Vault-Schlüssel, -Zertifikate und -Geheimnisse mit der rollenbasierten Zugriffssteuerung in Azure (Vorschauversion)
+
+> [!NOTE]
+> Der Key Vault-Ressourcenanbieter unterstützt zwei Ressourcentypen: **Tresore** und **verwaltete HSMs**. Die in diesem Artikel beschriebene Zugriffssteuerung gilt nur für **Tresore**. Weitere Informationen zur Zugriffssteuerung für verwaltetes HSM finden Sie unter [Zugriffssteuerung für verwaltetes HSM](../managed-hsm/access-control.md).
 
 Die rollenbasierte Zugriffssteuerung (Azure Role-Based Access Control, Azure RBAC) ist ein Autorisierungssystem, das auf [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) basiert und eine präzise Verwaltung des Zugriffs auf Azure-Ressourcen ermöglicht.
 

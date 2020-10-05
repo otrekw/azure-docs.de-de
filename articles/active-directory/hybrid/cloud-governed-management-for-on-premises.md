@@ -13,23 +13,23 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdd26307dfdf75717a48eda034efeedd7465a63a
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 9cb101e415499150cd3d825fe5f42ce0dbc766fb
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89277475"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662530"
 ---
 # <a name="how-azure-ad-delivers-cloud-governed-management-for-on-premises-workloads"></a>So stellt Azure AD die über die Cloud gesteuerte Verwaltung für lokale Workloads bereit
 
 Azure Active Directory (Azure AD) ist eine umfassende IDaaS-Lösung (Identity as a Service) für sämtliche Aspekte von Identität, Zugriffsverwaltung und Sicherheit, die von Millionen von Organisationen verwendet wird. Azure AD nimmt mehr als eine Milliarde Benutzeridentitäten auf und hilft Benutzern bei der Anmeldung und dem sicheren Zugriff auf beides:
 
-* Externe Ressourcen wie Microsoft Office 365, das Azure-Portal und Tausende andere SaaS-Anwendungen (Software-as-a-Service).
+* Externe Ressourcen wie Microsoft 365, das Azure-Portal und Tausende andere SaaS-Anwendungen (Software-as-a-Service).
 * Interne Ressourcen wie Anwendungen im Firmennetzwerk und Intranet eines Unternehmens zusammen mit Cloudanwendungen, die von dieser Organisation selbst entwickelt wurden.
 
 Organisationen können Azure AD verwenden, wenn sie „nur die Cloud“ verwenden, oder als eine „Hybrid“bereitstellung, wenn sie auch lokale Workloads haben. Eine Hybridbereitstellung von Azure AD kann Teil einer Strategie für eine Organisation sein, um ihre IT-Ressourcen zur Cloud zu migrieren, oder um die Integration vorhandener lokaler Infrastruktur zusammen mit neuen Clouddiensten fortzusetzen.
 
-In der Vergangenheit haben „Hybrid“organisationen Azure AD als Erweiterung der vorhandenen lokalen Infrastruktur betrachtet. In diesen Bereitstellungen sind die lokale Verwaltung der Identitäts-Governance, Windows Server Active Directory oder andere interne Verzeichnissysteme die Kontrollpunkte, und Benutzer und Gruppen werden aus diesen Systemen in ein Cloudverzeichnis wie Azure AD synchronisiert. Sobald sich diese Identitäten in der Cloud befinden, können sie für Office 365, Azure und andere Anwendungen verfügbar gemacht werden.
+In der Vergangenheit haben „Hybrid“organisationen Azure AD als Erweiterung der vorhandenen lokalen Infrastruktur betrachtet. In diesen Bereitstellungen sind die lokale Verwaltung der Identitäts-Governance, Windows Server Active Directory oder andere interne Verzeichnissysteme die Kontrollpunkte, und Benutzer und Gruppen werden aus diesen Systemen in ein Cloudverzeichnis wie Azure AD synchronisiert. Sobald sich diese Identitäten in der Cloud befinden, können sie für Microsoft 365, Azure und andere Anwendungen verfügbar gemacht werden.
 
 ![Identitätslebenszyklus](media/cloud-governed-management-for-on-premises//image1.png)
 
@@ -49,7 +49,7 @@ Darüber hinaus ist Verwaltung ohne Governance nicht vollständig – und Govern
 
 Die Integration der Identity Governance erleichtert den Übergang des Unternehmens zur cloudgesteuerten Verwaltung, ermöglicht es der IT-Abteilung, zu skalieren, geht neue Herausforderungen mit Gästen an und bietet tiefere Erkenntnisse und stärkere Automatisierung als das, was Kunden bisher mit lokalen Infrastrukturen hatten. Governance in dieser neuen Welt bedeutet die Fähigkeit einer Organisation, Transparenz, Sichtbarkeit und angemessene Kontrolle des Zugangs zu Ressourcen innerhalb der Organisation zu haben. Mit Azure AD haben Sicherheitsbetriebs- und Auditteams einen Überblick darüber, wer Zugriff auf welche Ressourcen (auf welchen Geräten) in der Organisation hat – und wer diesen haben sollte, was diese Benutzer mit diesem Zugriff machen, und ob die Organisation über geeignete Kontrollen verfügt und diese einsetzt, um den Zugriff gemäß den Richtlinien der Organisation oder der Aufsichtsbehörden zu entfernen oder einzuschränken.
 
-Das neue Verwaltungsmodell kommt Organisationen mit sowohl SaaS- als auch Branchenanwendungen (LOB, Line-of-Business) zugute, da sie leichter in der Lage sind, den Zugriff auf diese Anwendungen zu verwalten und abzusichern. Durch die Integration von Anwendungen in Azure AD schaffen Organisationen es, den Zugriff auf sowohl aus der Cloud stammende als auch lokal erstellte Identitäten konsistent zu nutzen und zu verwalten. Die Verwaltung des Anwendungslebenszyklus wird immer stärker automatisiert, und Azure AD bietet umfassende Erkenntnisse in die Anwendungsnutzung, die mit der lokalen Identitätsverwaltung nicht so einfach zu erreichen waren. Durch die Self-Service-Funktionen von Azure AD, Office 365-Gruppen und Teams können Organisationen einfach Gruppen für die Zugriffsverwaltung und die Zusammenarbeit erstellen und Benutzer in der Cloud hinzufügen oder entfernen, um Anforderungen an die Zusammenarbeit und Zugriffsverwaltung einzurichten.
+Das neue Verwaltungsmodell kommt Organisationen mit sowohl SaaS- als auch Branchenanwendungen (LOB, Line-of-Business) zugute, da sie leichter in der Lage sind, den Zugriff auf diese Anwendungen zu verwalten und abzusichern. Durch die Integration von Anwendungen in Azure AD schaffen Organisationen es, den Zugriff auf sowohl aus der Cloud stammende als auch lokal erstellte Identitäten konsistent zu nutzen und zu verwalten. Die Verwaltung des Anwendungslebenszyklus wird immer stärker automatisiert, und Azure AD bietet umfassende Erkenntnisse in die Anwendungsnutzung, die mit der lokalen Identitätsverwaltung nicht so einfach zu erreichen waren. Durch die Self-Service-Funktionen von Azure AD, Microsoft 365-Gruppen und Teams können Organisationen einfach Gruppen für die Zugriffsverwaltung und die Zusammenarbeit erstellen und Benutzer in der Cloud hinzufügen oder entfernen, um Anforderungen an die Zusammenarbeit und Zugriffsverwaltung einzurichten.
 
 Die Auswahl der richtigen Azure AD-Funktionen für die cloudgesteuerte Verwaltung hängt von den zu verwendenden Anwendungen ab und wie diese Anwendungen in Azure AD integriert werden. Die folgenden Abschnitte beschreiben die zu verfolgenden Ansätze für AD-integrierte Anwendungen sowie Anwendungen, die Verbundprotokolle verwenden (z. B. SAML, OAuth oder OpenID Connect).
 

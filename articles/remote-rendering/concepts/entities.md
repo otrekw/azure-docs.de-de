@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 20de83e190a419b95c99c1c1238eb931910feb82
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 1c49c7bfaa7714dda902d05537fbe3d8a55d5abe
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020285"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613918"
 ---
 # <a name="entities"></a>Entitäten
 
@@ -21,7 +21,7 @@ Eine *Entität* stellt ein bewegliches Objekt im Raum dar und ist der grundlegen
 
 Entitäten verfügen über eine Transformation, die durch eine Position, eine Drehung und einen Maßstab definiert ist. Entitäten an sich besitzen keine beobachtbare Funktionalität. Stattdessen wird Verhalten durch Komponenten hinzugefügt, die an Entitäten angefügt werden. Beispielsweise wird durch das Anfügen einer [CutPlaneComponent](../overview/features/cut-planes.md) eine Schnittebene an der Position der Entität erstellt.
 
-Der wichtigste Aspekt der Entität selbst ist die Hierarchie und die sich ergebende hierarchische Transformation. Wenn mehrere Entitäten beispielsweise als untergeordnete Elemente einer freigegebenen übergeordneten Entität angefügt werden, können alle diese Entitäten durch Ändern der Transformation der übergeordneten Entität verschoben, gedreht und gemeinsam skaliert werden.
+Der wichtigste Aspekt der Entität selbst ist die Hierarchie und die sich ergebende hierarchische Transformation. Wenn mehrere Entitäten beispielsweise als untergeordnete Elemente einer freigegebenen übergeordneten Entität angefügt werden, können alle diese Entitäten durch Ändern der Transformation der übergeordneten Entität verschoben, gedreht und gemeinsam skaliert werden. Der Zustand `enabled` der Entität kann auch verwendet werden, um die Sichtbarkeit und die Reaktionen auf Raycasts für einen vollständigen Untergraphen in der Hierarchie zu deaktivieren.
 
 Eine Entität befindet sich im Besitz ihres übergeordneten Elements. Wenn das übergeordnete Element mit `Entity.Destroy()` zerstört wird, gilt dies daher auch für die untergeordneten Elemente und alle verbundenen [Komponenten](components.md). Daher wird das Entfernen eines Modells aus der Szene erreicht, indem `Destroy` für den Stammknoten eines Modells aufgerufen wird, das von `AzureSession.Actions.LoadModelAsync()` oder dessen SAS-Variante `AzureSession.Actions.LoadModelFromSASAsync()` zurückgegeben wird.
 
@@ -95,7 +95,6 @@ Double3 translation = entity->GetPosition();
 Quaternion rotation = entity->GetRotation();
 ```
 
-
 ### <a name="querying-spatial-bounds"></a>Abfragen räumlicher Begrenzungen
 
 Begrenzungsabfragen sind asynchrone Aufrufe, die für eine vollständige Objekthierarchie ausgeführt werden und eine Entität als Stamm verwenden. Weitere Informationen finden Sie im speziellen Kapitel zu [Objektbegrenzungen](object-bounds.md).
@@ -137,6 +136,13 @@ metaDataQuery->Completed([](const ApiHandle<MetadataQueryAsync>& query)
 ```
 
 Die Abfrage ist selbst dann erfolgreich, wenn das Objekt keine Metadaten enthält.
+
+## <a name="api-documentation"></a>API-Dokumentation
+
+* [C#-Klasse „Entity“](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.entity)
+* [C# – RemoteManager.CreateEntity()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.createentity)
+* [C++-Klasse „Entity“](https://docs.microsoft.com/cpp/api/remote-rendering/entity)
+* [C++ – RemoteManager::CreateEntity()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#createentity)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

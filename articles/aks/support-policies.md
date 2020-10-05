@@ -2,20 +2,18 @@
 title: Unterstützungsrichtlinien für Azure Kubernetes Service (AKS)
 description: Hier erhalten Sie Informationen zu AKS-Unterstützungsrichtlinien (Azure Kubernetes Service), zur gemeinsamen Verantwortung und zu Features, die in der Vorschauversion (bzw. Alpha- oder Betaversion) vorliegen.
 services: container-service
-author: jnoller
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: jenoller
-ms.openlocfilehash: c51b5c4d9cd7362aeda0a0998d8031d0ba358ce1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.date: 09/18/2020
+ms.openlocfilehash: 188416d9ef6f8e7568b10e8ccbb405be0bff315d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012346"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888981"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Unterstützungsrichtlinien für Azure Kubernetes Service
 
-Dieser Artikel enthält Details zu den Richtlinien und Einschränkungen für den technischen Support von Azure Kubernetes Service (AKS). Der Artikel beschreibt auch die Workerknotenverwaltung, verwaltete Steuerungsebenenkomponenten, Open-Source-Komponenten von Drittanbietern sowie die Sicherheits- oder Patchverwaltung.
+Dieser Artikel enthält Details zu den Richtlinien und Einschränkungen für den technischen Support von Azure Kubernetes Service (AKS). Der Artikel beschreibt auch die Agentknotenverwaltung, verwaltete Steuerungsebenenkomponenten, Open-Source-Komponenten von Drittanbietern sowie die Sicherheits- oder Patchverwaltung.
 
 ## <a name="service-updates-and-releases"></a>Dienstupdates und -versionen
 
@@ -24,9 +22,9 @@ Dieser Artikel enthält Details zu den Richtlinien und Einschränkungen für den
 
 ## <a name="managed-features-in-aks"></a>Verwaltete Features in AKS
 
-IaaS-Cloudkomponenten (Infrastructure-as-a-Service) der Basisinfrastruktur, z. B. Compute- oder Netzwerkkomponenten, bieten Benutzern Zugriff auf Steuerelemente und Anpassungsoptionen auf niedriger Ebene. Im Gegensatz dazu bietet AKS eine betriebsbereite Kubernetes-Bereitstellung, die den Kunden die üblichen erforderlichen Konfigurationen und Funktionen bietet. AKS-Kunden verfügen nur über begrenzte Möglichkeiten zur Anpassung, Bereitstellung und für andere Optionen. Diese Kunden müssen sich nicht direkt um Kubernetes-Cluster kümmern oder diese verwalten.
+IaaS-Cloudkomponenten (Infrastructure-as-a-Service) der Basisinfrastruktur, z. B. Compute- oder Netzwerkkomponenten, bieten Ihnen Zugriff auf Steuerelemente und Anpassungsoptionen auf niedriger Ebene. Im Gegensatz dazu bietet AKS eine betriebsbereite Kubernetes-Bereitstellung, die Ihnen die üblichen erforderlichen Konfigurationen und Funktionen für Ihren Cluster zur Verfügung stellt. Als AKS-Benutzer verfügen Sie über eingeschränkte Anpassungs- und Bereitstellungsoptionen. Allerdings müssen Sie sich nicht direkt um Kubernetes-Cluster kümmern oder diese verwalten.
 
-Mit AKS erhält der Kunde eine vollständig verwaltete *Steuerungsebene*. Die Steuerungsebene enthält alle Komponenten und Dienste, die der Kunde benötigt, um die Kubernetes-Cluster zu betreiben und den Endbenutzern zur Verfügung zu stellen. Alle Kubernetes-Komponenten werden von Microsoft verwaltet und betrieben.
+Mit AKS erhalten Sie eine vollständig verwaltete *Steuerungsebene*. Die Steuerungsebene enthält alle Komponenten und Dienste, die Sie benötigen, um die Kubernetes-Cluster zu betreiben und den Endbenutzern zur Verfügung zu stellen. Alle Kubernetes-Komponenten werden von Microsoft verwaltet und betrieben.
 
 Microsoft verwaltet und überwacht die folgenden Komponenten über den Steuerungsbereich:
 
@@ -34,122 +32,118 @@ Microsoft verwaltet und überwacht die folgenden Komponenten über den Steuerung
 * Etcd oder ein kompatibler Schlüssel-Wert-Speicher, der Servicequalität (QoS, Quality of Service), Skalierbarkeit und Laufzeit bietet
 * DNS-Dienste (z. B. kube-dns oder CoreDNS)
 * Kubernetes-Proxy oder -Netzwerk
+* Alle zusätzlichen Add-On- oder Systemkomponenten, die im kube-system-Namespace ausgeführt werden
 
-AKS ist keine vollständig verwaltete Clusterlösung. Einige Komponenten, z. B. Workerknoten, weisen eine *gemeinsame Verantwortung* auf, wobei Benutzer bei der Verwaltung des AKS-Clusters helfen müssen. Benutzereingaben sind z. B. erforderlich, um einen Sicherheitspatch für das Betriebssystem (OS) eines Workerknotens anzuwenden.
+AKS ist keine PaaS-Lösung (Platform-as-a-Service). Einige Komponenten, z. B. Agentknoten, weisen eine *gemeinsame Verantwortung* auf, wobei Benutzer bei der Verwaltung des AKS-Clusters helfen müssen. Benutzereingaben sind z. B. erforderlich, um einen Sicherheitspatch für das Betriebssystem (OS) eines Agentknotens anzuwenden.
 
 Die Dienste sind in dem Sinne *verwaltet*, dass Microsoft und das AKS-Team die Dienste bereitstellen, betreiben und für deren Verfügbarkeit und Funktionalität verantwortlich sind. Kunden können diese verwalteten Komponenten nicht ändern. Microsoft beschränkt die Anpassung, um eine konsistente und skalierbare Benutzererfahrung zu gewährleisten. Eine vollständig anpassbare Lösung finden Sie unter [AKS-Engine](https://github.com/Azure/aks-engine).
 
 ## <a name="shared-responsibility"></a>Gemeinsame Verantwortung
 
-Wenn ein Cluster erstellt wird, definiert der Kunde die Kubernetes-Workerknoten, die von AKS erstellt werden. Auf diesen Knoten werden Kundenworkloads ausgeführt. Kunden sind die Besitzer der Workerknoten und können sie anzeigen und ändern.
+Wenn ein Cluster erstellt wird, definieren Sie die Kubernetes-Agentknoten, die von AKS erstellt werden. Auf diesen Knoten werden Ihre Workloads ausgeführt.
 
-Da Clusterknoten von Kunden privaten Code ausführen und vertrauliche Daten speichern, kann der Microsoft-Support nur eingeschränkt darauf zugreifen. Der Microsoft-Support kann sich ohne ausdrückliche Genehmigung oder Hilfe des Kunden nicht bei diesen Knoten anmelden, Befehle ausführen oder Protokolle anzeigen.
+Da die Agentknoten privaten Code ausführen und vertrauliche Daten speichern, kann der Microsoft-Support nur eingeschränkt darauf zugreifen. Der Microsoft-Support kann sich ohne Ihre ausdrückliche Genehmigung oder Hilfe nicht bei diesen Knoten anmelden, Befehle ausführen oder Protokolle anzeigen.
 
-Da Workerknoten vertrauliche Daten enthalten, legt Microsoft großen Wert darauf, die Verwaltung im Hintergrund einzuschränken. In vielen Fällen wird Ihr Workload weiterhin ausgeführt, auch wenn die Kubernetes-Masterknoten, etcd und andere von Microsoft verwaltete Komponenten ausfallen. Sorglos geänderte Workerknoten können zu Daten- und Workloadverlusten führen und dafür sorgen, dass der Cluster nicht mehr unterstützt werden kann.
+Jede Änderung, die mithilfe einer der IaaS-APIs direkt an den Agentknoten vorgenommen wird, führt dazu, dass der Cluster nicht mehr unterstützt werden kann. Jede Änderung an den Agentknoten muss mithilfe nativer Kubernetes-Mechanismen, z. B. `Daemon Sets`, vorgenommen werden.
+
+Ebenso führt das Ändern der vom System erstellten Metadaten dazu, dass der Cluster nicht mehr unterstützt werden kann. Sie können jedoch dem Cluster und den Knoten Metadaten, z. B. Tags und Bezeichnungen, hinzufügen.
 
 ## <a name="aks-support-coverage"></a>AKS-Supportabdeckung
 
-Microsoft bietet technischen Support für Folgendes:
-
-> [!NOTE]
-> Alle von Microsoft/AKS ausgeführten Clusteraktionen werden mit Benutzereinwilligung unter der integrierten Kubernetes-Rolle `aks-service` und der integrierten Rollenbindung `aks-service-rolebinding` durchgeführt. Diese Rolle ermöglicht es AKS, Clusterprobleme zu beheben und zu diagnostizieren, damit können jedoch keine Berechtigungen geändert oder Rollen bzw. Rollenbindungen erstellt oder andere Aktionen mit hohen Berechtigungen ausgeführt werden. Der Rollenzugriff ist nur unter aktiven Support Tickets mit Just-in-time-Zugriff (JIT) aktiviert.
+In den folgenden Beispielen bietet Microsoft technischen Support:
 
 * Konnektivität mit allen Kubernetes-Komponenten, die vom Kubernetes-Dienst bereitgestellt und unterstützt werden (beispielsweise der API-Server).
-* Verwaltung, Betriebszeit, QoS und Vorgänge der Kubernetes-Steuerungsebenendienste (beispielsweise Kubernetes-Masterknoten, API-Server, etcd und kube-dns).
-* Etcd: Der Support beinhaltet automatisierte, transparente Sicherungen sämtlicher etcd-Daten im 30-Minuten-Takt für die Planung der Notfallwiederherstellung und die Wiederherstellung des Clusterzustands. Diese Backups sind nicht direkt für Kunden oder Benutzer verfügbar. Sie stellen die Zuverlässigkeit und Konsistenz der Daten sicher. Etcd: Ein On-Demand-Rollback oder eine Wiederherstellung wird als Feature nicht unterstützt.
+* Verwaltung, Betriebszeit, QoS und Vorgänge der Kubernetes-Steuerungsebenendienste (beispielsweise Kubernetes-Steuerungsebene, API-Server, etcd und coreDNS).
+* etcd-Datenspeicher. Der Support beinhaltet automatisierte, transparente Sicherungen sämtlicher etcd-Daten im 30-Minuten-Takt für die Planung der Notfallwiederherstellung und die Wiederherstellung des Clusterzustands. Diese Sicherungen sind für Sie und andere Benutzer nicht direkt verfügbar. Sie stellen die Zuverlässigkeit und Konsistenz der Daten sicher. Etcd: Ein On-Demand-Rollback oder eine Wiederherstellung wird als Feature nicht unterstützt.
 * Alle Integrationspunkte im Azure-Cloudanbietertreiber für Kubernetes. Dazu gehören Integrationen in andere Azure-Dienste wie Lastenausgleichsmodule, persistente Volumes oder Netzwerke (Kubernetes und Azure CNI).
-* Fragen oder Probleme zur Anpassung von Komponenten der Steuerungsebene wie Kubernetes-API-Server, etcd und kube-dns.
+* Fragen oder Probleme zur Anpassung von Komponenten der Steuerungsebene wie Kubernetes-API-Server, etcd und coreDNS.
 * Probleme bei Netzwerken, z. B. Azure CNI, Kubenet oder andere Probleme in Verbindung mit Netzwerkzugriff und -funktionalität. Probleme können DNS-Auflösung, Paketverluste, Routing usw. umfassen. Microsoft unterstützt verschiedene Netzwerkszenarien:
-  * Kubenet (Standard) und erweiterte Netzwerke (Azure CNI) innerhalb des Clusters und der zugehörigen Komponenten
+  * Kubenet und Azure CNI mit verwalteten VNETs oder benutzerdefinierten Subnetzen (Bring Your Own).
   * Konnektivität mit anderen Azure-Diensten und -Anwendungen
   * Eingangscontroller und Eingangs- oder Lastenausgleichskonfigurationen
   * Netzwerkleistung und Wartezeit
 
-Microsoft bietet keinen technischen Support für Folgendes:
+
+> [!NOTE]
+> Alle von Microsoft/AKS ausgeführten Clusteraktionen werden mit Benutzereinwilligung unter der integrierten Kubernetes-Rolle `aks-service` und der integrierten Rollenbindung `aks-service-rolebinding` durchgeführt. Diese Rolle ermöglicht es AKS, Clusterprobleme zu beheben und zu diagnostizieren, damit können jedoch keine Berechtigungen geändert oder Rollen bzw. Rollenbindungen erstellt oder andere Aktionen mit hohen Berechtigungen ausgeführt werden. Der Rollenzugriff ist nur unter aktiven Supporttickets mit Just-in-time-Zugriff (JIT) aktiviert.
+
+In den folgenden Beispielen bietet Microsoft keinen technischen Support:
 
 * Fragen zur Verwendung von Kubernetes. Der Microsoft-Support bietet z. B. keine Empfehlungen zur Erstellung benutzerdefinierter Eingangscontroller, zur Verwendung von Anwendungsworkloads oder zur Anwendung von Open-Source-Softwarepaketen oder -Tools bzw. zu Softwarepaketen oder Tools von Drittanbietern.
   > [!NOTE]
   > Der Microsoft-Support kann Sie hinsichtlich der AKS-Clusterfunktionalität, der Anpassung und der Optimierung beraten (z. B. Kubernetes-Betriebsprobleme und -verfahren).
 * Open-Source-Projekte von Drittanbietern, die nicht im Rahmen der Kubernetes-Steuerungsebene bereitgestellt oder mit AKS-Clustern bereitgestellt wurden. Diese Projekte können Istio, Helm, Envoy und andere einbeziehen.
   > [!NOTE]
-  > Microsoft kann den bestmöglichen Support für Open-Source-Projekte von Drittanbietern wie Helm und Kured bereitstellen. Wenn das Open-Source-Tool eines Drittanbieters mit den vom Kubernetes Azure-Cloudanbieter stammenden oder anderen AKS-spezifischen Fehlern integriert wird, unterstützt Microsoft Beispiele und Anwendungen aus der Microsoft-Dokumentation.
+  > Microsoft kann den bestmöglichen Support für Open-Source-Projekte von Drittanbietern wie Helm bereitstellen. Wenn das Open-Source-Tool eines Drittanbieters mit den vom Kubernetes Azure-Cloudanbieter stammenden oder anderen AKS-spezifischen Fehlern integriert wird, unterstützt Microsoft Beispiele und Anwendungen aus der Microsoft-Dokumentation.
 * Closed-Source-Software von Drittanbietern. Diese Software kann z. B. Tools für Sicherheitsscans und Netzwerkgeräte oder -software umfassen.
-* Probleme mit Multi-Cloud- oder Multi-Vendor-Erweiterungen. Microsoft unterstützt z. B. keine Probleme bei der Ausführung einer vereinten Multipublic-Cloudanbieterlösung.
 * Andere als die in der [AKS-Dokumentation](./index.yml) aufgeführten Netzwerkanpassungen.
-  > [!NOTE]
-  > Microsoft unterstützt Probleme und Fehler im Zusammenhang mit Netzwerksicherheitsgruppen (NSGs). Der Microsoft-Support kann z. B. Fragen zu einem NSG-Fehler beim Aktualisieren oder zum unerwarteten Verhalten einer NSG oder eines Lastenausgleichs beantworten.
 
-## <a name="aks-support-coverage-for-worker-nodes"></a>AKS-Supportabdeckung für Workerknoten
 
-### <a name="microsoft-responsibilities-for-aks-worker-nodes"></a>Zuständigkeiten von Microsoft für AKS-Workerknoten
+## <a name="aks-support-coverage-for-agent-nodes"></a>AKS-Supportabdeckung für Agentknoten
 
-Microsoft und die Kunden teilen sich die Verantwortung für die Kubernetes-Workerknoten, für die Folgendes gilt:
+### <a name="microsoft-responsibilities-for-aks-agent-nodes"></a>Zuständigkeiten von Microsoft für AKS-Agentknoten
+
+Microsoft und die Benutzer teilen sich die Verantwortung für die Kubernetes-Agentknoten, für die Folgendes gilt:
 
 * Das Basisbetriebssystem-Image verfügt über die erforderlichen Ergänzungen (wie etwa Überwachungs- und Netzwerk-Agents)
-* Die Workerknoten erhalten Betriebssystempatches automatisch.
-* Problemen mit Komponenten der Kubernetes-Steuerungsebene, die auf den Workerknoten ausgeführt werden, werden automatisch behoben. Dies umfasst folgende Komponenten:
-  * Kube-proxy
+* Die Agentknoten erhalten Betriebssystempatches automatisch.
+* Probleme bei Komponenten der Kubernetes-Steuerungsebene, die auf den Agentknoten ausgeführt werden, werden automatisch behoben. Zu diesen Komponenten gehören die folgenden:
+  * `Kube-proxy`
   * Netzwerktunnel zur Bereitstellung von Kommunikationspfaden zu Kubernetes-Masterkomponenten
-  * Kubelet
-  * Docker- oder Moby-Daemon
+  * `Kubelet`
+  * `Moby` oder `ContainerD`
 
 > [!NOTE]
-> Wenn eine Komponente der Steuerungsebene auf einem Workerknoten ausgefallen ist, muss das AKS-Team unter Umständen einzelne Komponenten oder den gesamten Workerknoten neu starten. Diese Neustartvorgänge sind automatisiert und ermöglichen eine automatische Wiederherstellung bei häufigen Problemen. Diese Neustarts erfolgen nur auf der Ebene _Knoten_ und nicht auf der Clusterebene, es sei denn, es handelt sich hierbei um eine Notfallwartung oder einen Ausfall.
+> Wenn ein Agentknoten nicht funktionstüchtig ist, kann AKS einzelne Komponenten oder den gesamten Agentknoten neu starten. Diese Neustartvorgänge sind automatisiert und ermöglichen eine automatische Wiederherstellung bei häufigen Problemen. Weitere Informationen zu den Mechanismen für die automatische Wiederherstellung finden Sie unter [Automatisches Reparieren von AKS-Knoten](node-auto-repair.md).
 
-### <a name="customer-responsibilities-for-aks-worker-nodes"></a>Zuständigkeiten des Kunden für AKS-Workerknoten
+### <a name="customer-responsibilities-for-aks-agent-nodes"></a>Kundenzuständigkeiten für AKS-Agentknoten
 
-Microsoft startet Workerknoten nicht automatisch neu, um Patches auf Betriebssystemebene anzuwenden. Obwohl Betriebssystempatches an die Workerknoten verteilt werden, ist der *Kunde* für den Neustart der Workerknoten verantwortlich, um die Änderungen anzuwenden. Freigegebene Bibliotheken, Daemons wie SSHD (Solid State Hybrid Drive) und andere Komponenten auf System- oder Betriebssystemebene werden automatisch gepatcht.
+Microsoft stellt wöchentlich Patches und neue Images für Ihre Imageknoten bereit, patcht sie aber standardmäßig nicht automatisch. Damit das Betriebssystem und die Laufzeitkomponenten Ihrer Agentknoten gepatcht bleiben, sollten Sie ein regelmäßiges [Knotenimageupgrade](node-image-upgrade.md) planen oder automatisieren.
 
-Die Kunden sind für die Durchführung von Kubernetes-Upgrades verantwortlich. Sie können Upgrades über die Azure-Systemsteuerung oder die Azure CLI durchführen. Dies gilt für Updates zur Verbesserung der Sicherheit oder Funktionalität von Kubernetes.
+AKS veröffentlicht zudem regelmäßig Releases neuer Kubernetes-Patches und -Nebenversionen. Diese Updates können Verbesserungen der Sicherheit oder Funktionalität von Kubernetes enthalten. Sie sind dafür verantwortlich, dass die Kubernetes-Version Ihres Clusters stets aktualisiert wird und der [Richtlinie zur Unterstützung der Kubernetes-Version](supported-kubernetes-versions.md) entspricht.
 
-#### <a name="user-customization-of-worker-nodes"></a>Benutzeranpassung von Workerknoten
+#### <a name="user-customization-of-agent-nodes"></a>Benutzeranpassung von Agentknoten
 > [!NOTE]
-> AKS-Workerknoten werden im Azure Portal als reguläre Azure IaaS-Ressourcen angezeigt. Diese virtuellen Computer werden jedoch in einer benutzerdefinierten Azure-Ressourcengruppe bereitgestellt (mit dem Präfix MC\\\*). Sie können die Standardkonfiguration Ihrer AKS-Workerknoten erweitern. Beispielsweise können Sie Secure Shell (SSH) verwenden, um AKS-Workerknoten regulär wie VMs zu konfigurieren. Das Basis-Betriebssystemimage kann jedoch nicht geändert werden. Benutzerdefinierte Änderungen werden möglicherweise nicht beibehalten, wenn Upgrades, Skalierungen, Updates oder Neustarts durchgeführt werden. Wenn Sie **jedoch** Änderungen vornehmen, die nicht mit den *Bedingungen für die AKS-API übereinstimmen*, wird der AKS-Cluster nicht mehr unterstützt. Vermeiden Sie Änderungen bei Workerknoten, es sei denn, Sie werden vom Microsoft-Support zum Vornehmen von Änderungen angewiesen.
+> AKS-Agentknoten werden im Azure Portal als reguläre Azure IaaS-Ressourcen angezeigt. Diese virtuellen Computer werden jedoch in einer benutzerdefinierten Azure-Ressourcengruppe bereitgestellt (in der Regel mit dem Präfix MC_\*). Sie können mit den IaaS-APIs- oder -Ressourcen keine Änderungen am Basisbetriebssystemimage oder direkte Anpassungen an diesen Knoten vornehmen. Benutzerdefinierte Änderungen, die nicht über die AKS-API erfolgen, werden nicht beibehalten, wenn Upgrades, Skalierungen, Updates oder Neustarts durchgeführt werden. Nehmen Sie keine Änderungen an den Agentknoten vor, es sei denn, Sie werden vom Microsoft-Support zum Vornehmen von Änderungen angewiesen.
 
-Wenn nicht unterstützte Vorgänge wie oben definiert ausgeführt werden, z. B. Aufhebung der Out-of-Band-Zuweisung aller Agent-Knoten, wird der Cluster nicht mehr unterstützt. AKS behält sich vor, Steuerungsebenen zu archivieren, die außerhalb der Supportrichtlinien für verlängerte Zeiträume ab 30 Tagen konfiguriert wurden. AKS verwaltet Sicherungen von etcd-Metadaten der Cluster und kann den Cluster jederzeit neu zuweisen. Diese erneute Zuweisung kann mit jedem PUT-Vorgang initiiert werden, der den Cluster wieder unterstützungsfähig macht, z. B. durch ein Upgrade oder eine Skalierung auf aktive Agent-Knoten.
-
-AKS verwaltet den Lebenszyklus und die Vorgänge von Workerknoten im Auftrag von Kunden. Das Ändern der IaaS-Ressourcen, die den Workerknoten zugeordnet sind, wird **nicht** unterstützt. Ein Beispiel für einen nicht unterstützten Vorgang ist das Anpassen einer VM-Skalierungsgruppe eines Knotenpools durch manuelles Ändern der Konfigurationen auf der VMSS über das VMSS-Portal oder die VMSS-API.
+AKS verwaltet den Lebenszyklus und die Vorgänge von Agentknoten für Sie. Das Ändern der IaaS-Ressourcen, die den Agentknoten zugeordnet sind, wird **nicht unterstützt**. Ein Beispiel für einen nicht unterstützten Vorgang ist das Anpassen einer VM-Skalierungsgruppe eines Knotenpools durch manuelles Ändern der Konfigurationen über das VMSS-Portal oder die VMSS-API.
  
-Für workloadspezifische Konfigurationen oder Pakete empfiehlt AKS die Verwendung von [Kubernetes-Daemonsets](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/).
+Für workloadspezifische Konfigurationen oder Pakete empfiehlt AKS die Verwendung von [Kubernetes`daemon sets`](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/).
 
-Durch die Verwendung von privilegierten Kubernetes-Daemonsets und -Startcontainern können Kunden Software von Drittanbietern auf Clusterworkerknoten optimieren, ändern oder installieren. Beispiele für solche Anpassungen sind das Hinzufügen von benutzerdefinierter Software für Sicherheitsscans oder das Aktualisieren von sysctl-Einstellungen.
+Durch die Verwendung von privilegierten Kubernetes-`daemon sets` und -Startcontainern können Sie Software von Drittanbietern auf Cluster-Agentknoten optimieren, ändern oder installieren. Beispiele für solche Anpassungen sind das Hinzufügen von benutzerdefinierter Software für Sicherheitsscans oder das Aktualisieren von sysctl-Einstellungen.
 
-Dieser Ansatz wird empfohlen, wenn die oben genannten Anforderungen zutreffen. Das AKS-Engineeringteam und der AKS-Support können Sie nicht bei der Diagnose oder Behebung von Problemen unterstützen, die aus fehlerhaften Änderungen oder sonstigen Änderungen hervorgehen, durch die der Knoten aufgrund eines kundenseitig bereitgestellten Daemonsets nicht verfügbar ist.
-
-> [!NOTE]
-> Da es sich bei AKS um einen *verwalteten Dienst* handelt, besteht sein Zweck darin, jegliche Verantwortung für Patches, Updates und Protokollerfassung zu beseitigen, um die Dienstverwaltung umfassender und effektiver zu gestalten. Da die Kapazität des Diensts für die End-to-End-Verwaltung steigt, könnten zukünftige Versionen einige Funktionen auslassen (z. B. Neustart von Knoten und automatisches Patchen).
+Dieser Ansatz wird empfohlen, wenn die oben genannten Anforderungen zutreffen. Das AKS-Engineeringteam und der AKS-Support können Sie nicht bei der Diagnose oder Behebung von Problemen unterstützen, durch die der Knoten aufgrund eines bereitgestellten benutzerdefinierten `daemon set` nicht verfügbar ist.
 
 ### <a name="security-issues-and-patching"></a>Sicherheitsprobleme und -patches
 
-Wenn ein Sicherheitsproblem in einer oder mehreren Komponenten von AKS auftritt, wird das AKS-Team alle betroffenen Cluster patchen, um das Problem zu beheben. Alternativ wird das Team den Benutzern eine Anleitung für ein Upgrade bereitstellen.
+Wenn ein Sicherheitsproblem in einer oder mehreren verwalteten Komponenten von AKS auftritt, wird das AKS-Team alle betroffenen Cluster patchen, um das Problem zu beheben. Alternativ wird das Team den Benutzern eine Anleitung für ein Upgrade bereitstellen.
 
-Für Workerknoten, die von einem Sicherheitsproblem betroffen sind, wendet das AKS-Team einen Patch ohne Downtime (sofern verfügbar) an und informiert die Benutzer über die Änderung.
-
-Wenn ein Sicherheitspatch einen Neustart des Workerknotens erfordert, wird Microsoft die Kunden über diese Anforderung informieren. Der Kunde ist für den Neustart oder die Aktualisierung verantwortlich, um das Clusterpatch abzurufen. Wenn Benutzer die Patches nicht gemäß den AKS-Anweisungen anwenden, ist ihr Cluster weiterhin anfällig für das Sicherheitsproblem.
+Bei Agentknoten, die von einem Sicherheitsrisiko betroffen sind, werden Sie von Microsoft ausführlich über die Auswirkungen und die Schritte zum Beheben oder Mindern des Sicherheitsproblems benachrichtigt (normalerweise durch ein Knotenimageupgrade oder Clusterpatchupgrade).
 
 ### <a name="node-maintenance-and-access"></a>Knotenwartung und -zugriff
 
-Workerknoten unterliegen einer gemeinsamen Verantwortung und befinden sich im Besitz von Kunden. Aus diesem Grund haben Kunden die Möglichkeit, sich bei ihren Workerknoten anzumelden und potenziell schädliche Änderungen wie Kernelupdates und das Installieren oder Entfernen von Paketen vorzunehmen.
-
-Wenn Kunden schädliche Änderungen vornehmen oder verursachen, dass Komponenten der Steuerebene offline gehen oder nicht mehr funktionieren, erkennt AKS diesen Fehler und stellt den Workerknoten automatisch im vorherigen funktionierenden Zustand wieder her.
-
-Obwohl sich Kunden bei Workerknoten anmelden und diese ändern können, ist dies nicht empfehlenswert, da Änderungen dazu führen können, dass ein Cluster nicht mehr unterstützt wird.
+Obwohl Sie sich bei Agentknoten anmelden und diese ändern können, ist dies nicht empfehlenswert, da Änderungen dazu führen können, dass ein Cluster nicht mehr unterstützt wird.
 
 ## <a name="network-ports-access-and-nsgs"></a>Netzwerkports, Zugriff und NSGs
 
-Als verwalteter Dienst gelten für AKS bestimmte Netzwerk- und Konnektivitätsanforderungen. Diese Anforderungen sind weniger flexibel als bei normalen IaaS-Komponenten. In AKS können Vorgänge wie das Anpassen von NSG-Regeln, das Blockieren eines bestimmten Ports (z. B. durch Firewallregeln, die den ausgehenden Port 443 blockieren) und das Hinzufügen von URLs zu einer Zulassungsliste dazu führen, dass Ihr Cluster nicht mehr unterstützt wird.
+Sie können die NGSs nur für benutzerdefinierte Subnetze anpassen. NSGs können nicht in verwalteten Subnetzen oder auf NIC-Ebene der Agentknoten angepasst werden. In AKS gelten Anforderungen für ausgehenden Datenverkehr an bestimmte Endpunkte, um den ausgehenden Datenverkehr zu steuern und die erforderliche Konnektivität sicherzustellen. Weitere Informationen finden Sie unter [Steuern des ausgehenden Datenverkehrs für Clusterknoten in Azure Kubernetes Service (AKS)](limit-egress-traffic.md).
 
-> [!NOTE]
-> Derzeit ist es in AKS nicht zulässig, ausgehenden Datenverkehr von Ihrem Cluster vollständig zu sperren. Informationen zum Steuern der Liste mit URLs und Ports, die Ihr Cluster für ausgehenden Datenverkehr nutzen kann, finden Sie unter [Vorschau: Einschränken des ausgehenden Datenverkehrs für Clusterknoten und Steuern des Zugriffs auf erforderliche Ports und Dienste in Azure Kubernetes Service (AKS)](limit-egress-traffic.md).
+## <a name="stopped-or-de-allocated-clusters"></a>Beendete Cluster oder Cluster mit aufgehobener Zuordnung
+
+Wie oben beschrieben, wird ein Cluster nicht mehr unterstützt, wenn die Zuordnung aller Clusterknoten manuell über die IaaS-APIs, die IaaS-CLI oder das IaaS-Portal aufgehoben wird.
+Das einzige unterstützte Verfahren zum Beenden aller Knoten/Aufheben der Zuordnung aller Knoten besteht darin, den AKS-Cluster zu beenden, wodurch der Clusterstatus bis zu 12 Monate lang erhalten bleibt.
+
+Der Status von Clustern, die vor mehr als 12 Monaten beendet wurden, bleibt nicht erhalten. 
+
+Die Erhaltung des Status von Clustern, deren Zuordnung außerhalb der AKS-APIs aufgehoben wird, wird nicht garantiert. Die Steuerungsebenen für Cluster in diesem Status werden nach 30 Tagen archiviert und nach 12 Monaten gelöscht.
+
+AKS behält sich vor, Steuerungsebenen zu archivieren, die außerhalb der Supportrichtlinien für verlängerte Zeiträume ab 30 Tagen konfiguriert wurden. AKS verwaltet Sicherungen von etcd-Metadaten der Cluster und kann den Cluster jederzeit neu zuweisen. Diese erneute Zuweisung kann mit jedem PUT-Vorgang initiiert werden, der den Cluster wieder unterstützungsfähig macht, z. B. durch ein Upgrade oder eine Skalierung auf aktive Agent-Knoten.
+
+Wenn Ihr Abonnement gesperrt oder gelöscht wird, werden die Steuerungsebene und der Status des Clusters nach 90 Tagen gelöscht.
 
 ## <a name="unsupported-alpha-and-beta-kubernetes-features"></a>Nicht unterstützte Kubernetes-Features der Alpha- und Betaversion
 
-AKS bietet nur Support für stabile Features im Rahmen des Upstream-Kubernetes-Projekts. Sofern nicht anderweitig dokumentiert, unterstützt AKS keine Features der Alpha- und Betaversion, die im Upstream-Kubernetes-Projekt verfügbar sind.
-
-In zwei Szenarien können Features der Alpha- und Betaversion eingeführt werden, bevor sie allgemein verfügbar sind:
-
-* Kunden wurden bei einem Treffen mit den Produkt-, Support- oder -Entwicklungsteams von AKS darum gebeten, diese neuen Features auszuprobieren.
-* Diese Features wurden [durch ein Featureflag aktiviert](https://awesomeopensource.com/projects/aks?categoryPage=11). Kunden müssen sich explizit für die Nutzung dieser Features entscheiden.
+AKS bietet nur Support für stabile Features und Betafeatures im Rahmen des Upstream-Kubernetes-Projekts. Sofern nicht anderweitig dokumentiert, unterstützt AKS keine Alphafeatures, die im Upstream-Kubernetes-Projekt verfügbar sind.
 
 ## <a name="preview-features-or-feature-flags"></a>Previewfunktionen oder Featureflags
 
@@ -157,16 +151,13 @@ Für Features und Funktionen, die ausführliche Tests und Benutzerfeedback erfor
 
 Previewfunktionen oder Features mit Featureflag sind nicht für die Produktionsumgebung vorgesehen. Kontinuierliche Änderungen an APIs und am Verhalten, Fehlerbehebungen und andere Änderungen können zu instabilen Clustern und Ausfallzeiten führen.
 
-Features in der öffentlichen Vorschauversion fallen unter den „bestmöglichen“ Support, da sich diese Features in der Vorschauversion befinden und nicht für die Produktionsumgebung bestimmt sind und von den technischen AKS-Supportteams nur während der Geschäftszeiten unterstützt werden. Weitere Informationen finden Sie unter:
+Features in der öffentlichen Vorschauversion fallen unter den „bestmöglichen“ Support, da sich diese Features in der Vorschauversion befinden und nicht für die Produktionsumgebung bestimmt sind und von den technischen AKS-Supportteams nur während der Geschäftszeiten unterstützt werden. Weitere Informationen finden Sie unter
 
 * [Häufig gestellte Fragen zum Azure-Support](https://azure.microsoft.com/support/faq/)
 
-> [!NOTE]
-> Previewfunktionen werden auf der *Azure-Abonnementebene* aktiviert. Installieren Sie keine Previewfunktionen in einem Produktionsabonnement. In einem Produktionsabonnement können Previewfunktionen zu einer Änderung des API-Standardverhaltens führen und den regulären Betrieb beeinträchtigen.
-
 ## <a name="upstream-bugs-and-issues"></a>Upstream-Fehler und -Probleme
 
-Angesichts des hohen Tempos bei der Entwicklung im Upstream-Kubernetes-Projekt können immer wieder Fehler auftreten. Einige dieser Fehler können innerhalb des AKS-Systems nicht gepatcht oder umgangen werden. Stattdessen erfordern Fehlerbehebungen größere Patches für Upstream-Projekte (z. B. Kubernetes, Betriebssysteme für Knoten oder Worker sowie Kernel). Bei Komponenten, die sich im Besitz von Microsoft befinden (z. B. der Azure-Cloudanbieter), kümmern sich die AKS-/Azure-Mitarbeiter um die Upstream-Behebung des Problems in der Community.
+Angesichts des hohen Tempos bei der Entwicklung im Upstream-Kubernetes-Projekt können immer wieder Fehler auftreten. Einige dieser Fehler können innerhalb des AKS-Systems nicht gepatcht oder umgangen werden. Stattdessen erfordern Fehlerbehebungen größere Patches für Upstream-Projekte (z. B. Kubernetes, Betriebssysteme für Knoten oder Agents sowie Kernel). Bei Komponenten, die sich im Besitz von Microsoft befinden (z. B. der Azure-Cloudanbieter), kümmern sich die AKS-/Azure-Mitarbeiter um die Upstream-Behebung des Problems in der Community.
 
 Sollte ein technisches Supportproblem auf einen oder mehrere Upstream-Fehler zurückzuführen sein, führen die Support- und Entwicklungsteams von AKS folgende Schritte aus:
 

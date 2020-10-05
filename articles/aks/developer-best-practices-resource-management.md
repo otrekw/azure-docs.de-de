@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: 4882fadcc2f05e4047366d8d097a3918091035bb
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: e52bd150f72ba663c504b81832ce83d3e38cbf04
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005311"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986774"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Bewährte Anwendungsentwicklermethoden zum Verwalten von Ressourcen in Azure Kubernetes Service (AKS)
 
@@ -22,7 +22,7 @@ Dieser Artikel zu bewährten Methoden konzentriert sich darauf, wie Sie Ihre Clu
 
 > [!div class="checklist"]
 > * Podressourcenanforderungen und -grenzwerte
-> * Methoden zum Entwickeln und Bereitstellen von Anwendungen mit Dev Spaces und Visual Studio Code
+> * Methoden zum Entwickeln und Bereitstellen von Anwendungen mit Bridge to Kubernetes und Visual Studio Code
 > * Verwenden des `kube-advisor`-Tools, um nach Problemen mit Bereitstellungen zu suchen
 
 ## <a name="define-pod-resource-requests-and-limits"></a>Definieren von Podressourcenanforderungen und -grenzwerten
@@ -74,13 +74,13 @@ Weitere Informationen zu Ressourcenverwaltung und Zuweisungen finden Sie unter [
 
 ## <a name="develop-and-debug-applications-against-an-aks-cluster"></a>Entwickeln und Debuggen von Anwendungen für einen AKS-Cluster
 
-**Best Practice-Anleitung**: Entwicklungsteams sollten einen AKS-Cluster mithilfe von Dev Spaces bereitstellen und debuggen. Dieses Entwicklungsmodell stellt sicher, dass die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) und Netzwerk- oder Speicheranforderungen implementiert werden, bevor die App in der Produktionsumgebung bereitgestellt wird.
+**Best Practice-Anleitung**: Entwicklungsteams sollten einen AKS-Cluster mithilfe von Bridge to Kubernetes bereitstellen und debuggen.
 
-Mit Azure Dev Spaces entwickeln, debuggen und testen Sie Anwendungen direkt mit einem AKS-Cluster. Entwickler in einem Team arbeiten zusammen, um während des gesamten Lebenszyklus der Anwendung zu erstellen und zu testen. Sie können weiterhin vorhandene Tools wie Visual Studio oder Visual Studio Code verwenden. Eine Erweiterung ist für Dev Spaces installiert, die eine Option zum Ausführen und Debuggen der Anwendung in einem AKS-Cluster bietet.
+Mit Bridge to Kubernetes können Sie Anwendungen direkt für einen AKS-Cluster entwickeln, debuggen und testen. Entwickler in einem Team arbeiten zusammen, um während des gesamten Lebenszyklus der Anwendung zu erstellen und zu testen. Sie können weiterhin vorhandene Tools wie Visual Studio oder Visual Studio Code verwenden. Es wird eine Erweiterung für Bridge to Kubernetes installiert, mit der Sie direkt in einem AKS-Cluster entwickeln können.
 
-Dieser integrierte Entwicklungs- und Testprozess mit Dev Spaces verringert den Bedarf an lokalen Testumgebungen wie [minikube][minikube]. Stattdessen entwickeln und testen Sie anhand eines AKS-Clusters. Dieser Cluster kann gesichert und isoliert werden, wie im vorherigen Abschnitt zur Verwendung von Namespaces zum logischen Isolieren eines Clusters angemerkt. Wenn Ihre Apps für die Bereitstellung zur Produktion bereit sind, können Sie zuverlässig bereitstellen, da Ihre Entwicklung bereits mit einem echten AKS-Cluster ausgeführt wurde.
+Dieser integrierte Entwicklungs- und Testprozess mit Bridge to Kubernetes verringert den Bedarf an lokalen Testumgebungen wie [minikube][minikube]. Stattdessen entwickeln und testen Sie anhand eines AKS-Clusters. Dieser Cluster kann gesichert und isoliert werden, wie im vorherigen Abschnitt zur Verwendung von Namespaces zum logischen Isolieren eines Clusters angemerkt.
 
-Azure Dev Spaces ist für die Verwendung mit auf Linux-Pods und -Knoten ausgeführten Anwendungen vorgesehen.
+Bridge to Kubernetes ist für die Verwendung mit auf Linux-Pods und -Knoten ausgeführten Anwendungen vorgesehen.
 
 ## <a name="use-the-visual-studio-code-extension-for-kubernetes"></a>Verwenden der Visual Studio Code-Erweiterung für Kubernetes
 
@@ -106,7 +106,7 @@ Dieser Artikel zu bewährten Methoden konzentriert sich darauf, wie Sie Ihre Clu
 
 Um einige dieser Best Practices zu implementieren, lesen Sie folgende Artikel:
 
-* [Entwickeln mit Dev Spaces][dev-spaces]
+* [Entwickeln mit Bridge to Kubernetes][btk]
 * [Überprüfen auf Probleme mit dem Kube-Advisor][aks-kubeadvisor]
 
 <!-- EXTERNAL LINKS -->
@@ -117,7 +117,7 @@ Um einige dieser Best Practices zu implementieren, lesen Sie folgende Artikel:
 
 <!-- INTERNAL LINKS -->
 [aks-kubeadvisor]: kube-advisor-tool.md
-[dev-spaces]: /visualstudio/containers/overview-local-process-kubernetes
+[btk]: /visualstudio/containers/overview-bridge-to-kubernetes
 [operator-best-practices-isolation]: operator-best-practices-cluster-isolation.md
 [resource-quotas]: operator-best-practices-scheduler.md#enforce-resource-quotas
 [k8s-node-selector]: concepts-clusters-workloads.md#node-selectors

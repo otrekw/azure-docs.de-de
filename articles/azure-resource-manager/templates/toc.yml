@@ -283,7 +283,7 @@
           href: template-expressions.md
         - name: Parameter
           href: template-parameters.md
-        - name: Variablen
+        - name: Variables
           href: template-variables.md
         - name: Benutzerdefinierte Funktionen
           href: template-user-defined-functions.md
@@ -379,7 +379,7 @@
           href: key-vault-parameter.md
     - name: CI/CD
       items:
-        - name: VS-Projekte mit Pipelines
+        - name: ARM-Vorlagen mit Pipelines
           href: add-template-to-azure-pipelines.md
         - name: 'Bereitstellen: GitHub Actions'
           href: deploy-github-actions.md

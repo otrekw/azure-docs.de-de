@@ -976,6 +976,8 @@
           href: insights/vminsights-maps.md
         - name: Überwachen der Leistung
           href: insights/vminsights-performance.md
+        - name: Überwachen von Änderungen
+          href: insights/vminsights-change-analysis.md
         - name: Analysieren von Daten mit Protokollabfragen
           href: insights/vminsights-log-search.md
         - name: Visualisieren von Daten mit Arbeitsmappen

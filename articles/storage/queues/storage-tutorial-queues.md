@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: tutorial
 ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7474cfbd0182797bd62e97979e83e2aeb5244cbc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 23684dbbc5cb8c2d5fc4880ae8fe1999450928e0
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89008793"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400569"
 ---
 # <a name="tutorial-work-with-azure-storage-queues-in-net"></a>Tutorial: Arbeiten mit Azure Storage-Warteschlangen in .NET
 
@@ -227,6 +227,8 @@ Erstellen Sie eine neue Methode zum Abrufen einer Nachricht aus der Warteschlang
    # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
    Diese Methode empfängt durch Aufrufen von [ReceiveMessagesAsync](/dotnet/api/azure.storage.queues.queueclient.receivemessagesasync) eine Nachricht aus der Warteschlange. Dabei wird im ersten Parameter der Wert „1“ zum Abrufen nur der nächsten Nachricht in der Warteschlange übergeben. Löschen Sie die empfangene Nachricht daher durch Aufrufen von [DeleteMessageAsync](/dotnet/api/azure.storage.queues.queueclient.deletemessageasync) aus der Warteschlange.
+
+   Wenn eine Nachricht mit einer niedrigeren Version des SDK als v12 an die Warteschlange gesendet wird, wird Sie automatisch Base64-codiert. Ab v12 wurde diese Funktion entfernt. Wenn Sie eine Nachricht mit dem v12-SDK abrufen, wird diese nicht automatisch Base64-decodiert. Sie müssen den Inhalt selbst explizit [Base64-decodieren](/dotnet/api/system.convert.frombase64string).
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Initial.cs" id="snippet_InitialRetrieveMessage":::
 

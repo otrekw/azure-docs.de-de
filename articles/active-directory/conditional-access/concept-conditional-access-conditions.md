@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8dfeb8a38e07d94671691bb797d26a32973c910
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: d0ea9259e701e2ad9a4026401f5aef39c0ecfa51
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042478"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601825"
 ---
 # <a name="conditional-access-conditions"></a>Bedingter Zugriff: Bedingungen
 
@@ -149,27 +149,27 @@ Diese Einstellung hat Auswirkungen auf Zugriffsversuche von den folgenden mobile
 | Client-Apps | Zieldienst | Plattform |
 | --- | --- | --- |
 | Dynamics CRM-App | Dynamics CRM | Windows 10, Windows 8.1, iOS und Android |
-| E-Mail-/Kalender-/Kontakte-App, Outlook 2016, Outlook 2013 (mit moderner Authentifizierung)| Microsoft Office 365 Exchange Online | Windows 10 |
+| E-Mail-/Kalender-/Kontakte-App, Outlook 2016, Outlook 2013 (mit moderner Authentifizierung)| Exchange Online | Windows 10 |
 | MFA- und Standort-Richtlinien für Apps Gerätebasierte Richtlinien werden nicht unterstützt.| Alle Meine Apps-App-Dienste | Android und iOS |
 | Microsoft Teams-Dienste: steuert alle Dienste, die Microsoft-Teams unterstützen, und alle dazugehörigen Client-Apps – Windows Desktop, iOS, Android, WP und Webclient | Microsoft Teams | Windows 10, Windows 8.1, Windows 7, iOS, Android und macOS |
-| Office 2016-Apps, Office 2013 (mit moderner Authentifizierung), [OneDrive-Synchronisierungsclient](/onedrive/enable-conditional-access) | Office 365 SharePoint Online | Windows 8.1, Windows 7 |
-| Office 2016-Apps, universelle Office-Apps, Office 2013 (mit moderner Authentifizierung), [OneDrive-Synchronisierungsclient](/onedrive/enable-conditional-access) | Office 365 SharePoint Online | Windows 10 |
-| Office 2016 (nur Word, Excel, PowerPoint und OneNote). | Office 365 SharePoint Online | macOS |
-| Office 2019| Office 365 SharePoint Online | Windows 10, macOS |
-| Office Mobile-Apps | Office 365 SharePoint Online | Android, iOS |
-| Office Yammer-App | Office 365 Yammer | Windows 10, iOS und Android |
-| Outlook 2019 | Office 365 SharePoint Online | Windows 10, macOS |
-| Outlook 2016 (Office für macOS) | Microsoft Office 365 Exchange Online | macOS |
-| Outlook 2016, Outlook 2013 (mit moderner Authentifizierung), Skype for Business (mit moderner Authentifizierung) | Microsoft Office 365 Exchange Online | Windows 8.1, Windows 7 |
-| Outlook Mobile-App | Microsoft Office 365 Exchange Online | Android, iOS |
+| Office 2016-Apps, Office 2013 (mit moderner Authentifizierung), [OneDrive-Synchronisierungsclient](/onedrive/enable-conditional-access) | SharePoint | Windows 8.1, Windows 7 |
+| Office 2016-Apps, universelle Office-Apps, Office 2013 (mit moderner Authentifizierung), [OneDrive-Synchronisierungsclient](/onedrive/enable-conditional-access) | SharePoint Online | Windows 10 |
+| Office 2016 (nur Word, Excel, PowerPoint und OneNote). | SharePoint | macOS |
+| Office 2019| SharePoint | Windows 10, macOS |
+| Office Mobile-Apps | SharePoint | Android, iOS |
+| Office Yammer-App | Yammer | Windows 10, iOS und Android |
+| Outlook 2019 | SharePoint | Windows 10, macOS |
+| Outlook 2016 (Office für macOS) | Exchange Online | macOS |
+| Outlook 2016, Outlook 2013 (mit moderner Authentifizierung), Skype for Business (mit moderner Authentifizierung) | Exchange Online | Windows 8.1, Windows 7 |
+| Outlook Mobile-App | Exchange Online | Android, iOS |
 | Power BI-App | Power BI-Dienst | Windows 10, Windows 8.1, Windows 7, Android und iOS |
-| Skype for Business | Microsoft Office 365 Exchange Online| Android, iOS |
+| Skype for Business | Exchange Online| Android, iOS |
 | Visual Studio Team Services-App | Visual Studio Team Services | Windows 10, Windows 8.1, Windows 7, iOS, Android |
 
 ### <a name="exchange-activesync-clients"></a>Exchange ActiveSync-Clients
 
 - Organisationen können Exchange ActiveSync-Clients nur auswählen, wenn sie Benutzern oder Gruppen Richtlinien zuweisen. Bei der Auswahl von **Alle Benutzer**, **Alle Gast- und externen Benutzer** oder **Verzeichnisrollen** werden alle Benutzer blockiert.
-- Wenn Sie eine Richtlinie erstellen, die Exchange ActiveSync-Clients zugewiesen ist, sollte **Office 365 Exchange Online** der Richtlinie als einzige Cloudanwendung zugewiesen sein. 
+- Wenn Sie eine Richtlinie erstellen, die Exchange ActiveSync-Clients zugewiesen ist, sollte **Exchange Online** der Richtlinie als einzige Cloudanwendung zugewiesen sein. 
 - Organisationen können den Umfang dieser Richtlinie auf bestimmte Plattformen beschränken, indem sie die Bedingung **Geräteplattformen** verwenden.
 
 Wenn die der Richtlinie zugewiesene Zugriffssteuerung die Option **Genehmigte Client-App erforderlich** verwendet, wird der Benutzer angewiesen, den Outlook Mobile-Client zu installieren und zu verwenden. Wenn die **mehrstufige Authentifizierung** erforderlich ist, werden betroffene Benutzer blockiert, weil die Standardauthentifizierung keine mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) unterstützt.

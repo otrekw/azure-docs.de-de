@@ -4,18 +4,18 @@ description: Senden von Blockchaindaten an Azure Cosmos DB mithilfe von Blockcha
 ms.date: 03/08/2020
 ms.topic: tutorial
 ms.reviewer: chroyal
-ms.openlocfilehash: 483a5246274f63549dfb2914361ede6aa001e02e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 69790787bc888448f2f40178bd12ee7058cc5892
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79533180"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283451"
 ---
 # <a name="tutorial-use-blockchain-data-manager-to-send-data-to-azure-cosmos-db"></a>Tutorial: Verwenden von Blockchain Data Manager zum Senden von Daten an Azure Cosmos DB
 
 In diesem Tutorial verwenden Sie den Blockchain Data Manager for Azure Blockchain Service, um Blockchaintransaktionsdaten in Azure Cosmos DB aufzuzeichnen. Blockchain Data Manager erfasst, transformiert und stellt Blockchainledgerdaten für Azure Event Grid-Themen bereit. Von Azure Event Grid aus verwenden Sie einen Azure Logic App-Connector, um Dokumente in einer Azure Cosmos DB-Datenbank zu erstellen. Wenn Sie mit dem Tutorial fertig sind, können Sie die Blockchaintransaktionsdaten im Azure Cosmos DB-Daten-Explorer untersuchen.
 
-[![Details zur Blockchaintransaktion](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
+[![Screenshot, der Details zur Blockchaintransaktion zeigt.](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
 
 In diesem Tutorial führen Sie Folgendes durch:
 
@@ -271,7 +271,7 @@ Nachdem Sie Ihren Blockchain Data Manager mit Azure Cosmos DB verbunden haben, k
 
 1. Durchsuchen Sie die Nachrichten, indem Sie die Element-ID auswählen und die Nachricht mit dem passenden Transaktionshash finden.
 
-    [![Details zur Blockchaintransaktion](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
+    [![Screenshot, der Details zur Blockchaintransaktion eines ausgewählten Elements zeigt.](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
 
     Die unformatierte Transaktionsnachricht enthält Details über die Transaktion. Die Eigenschaftsinformationen sind jedoch verschlüsselt.
 

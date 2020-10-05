@@ -1,21 +1,21 @@
 ---
 author: sethmanheim
-ms.service: service-bus
+ms.service: notification-hubs
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 09/14/2020
 ms.author: sethm
-ms.openlocfilehash: 7fd161c90234d45a6751f173ba3685ee8c392c87
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fb3c95b74128f1da7b29a290e17fefe21987dd76
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74260744"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089943"
 ---
 ## <a name="webapi-project"></a>WebAPI-Projekt
 
 1. Öffnen Sie in Visual Studio das Projekt **AppBackend** , das Sie im Lernprogramm **Benachrichtigen von Benutzern** erstellt haben.
-2. Ersetzen Sie in der Datei "Notifications.cs" die gesamte **Notifications** -Klasse durch den folgenden Code. Stellen Sie sicher, dass Sie die Platzhalter durch Ihre Verbindungszeichenfolge (mit vollständigem Zugriff) für Ihr Notification Hub und den Hub-Namen ersetzen. Diese Werte erhalten Sie im [Azure-Portal](https://portal.azure.com). Dieses Modul stellt nun die unterschiedlichen sicheren Benachrichtigungen dar, die gesendet werden. In einer vollständigen Implementierung werden die Benachrichtigungen in einer Datenbank gespeichert; der Einfachheit halber speichern wir Sie in diesem Fall im Speicher.
-   
+2. Ersetzen Sie in der Datei „Notifications.cs“ die gesamte **Notifications** -Klasse durch den folgenden Code. Stellen Sie sicher, dass Sie die Platzhalter durch Ihre Verbindungszeichenfolge (mit vollständigem Zugriff) für Ihr Notification Hub und den Hub-Namen ersetzen. Diese Werte erhalten Sie im [Azure-Portal](https://portal.azure.com). Dieses Modul stellt nun die unterschiedlichen sicheren Benachrichtigungen dar, die gesendet werden. In einer vollständigen Implementierung werden die Benachrichtigungen in einer Datenbank gespeichert; der Einfachheit halber speichern wir Sie in diesem Fall im Speicher.
+
    ```csharp
     public class Notification
     {
@@ -56,8 +56,8 @@ ms.locfileid: "74260744"
     }
     ```
 
-1. Ersetzen Sie in der Datei "NotificationsController.cs" den Code innerhalb der **NotificationsController** -Klassendefinition durch den folgenden Code. Durch diese Komponente wird für das Gerät eine Möglichkeit zum sicheren Abrufen der Benachrichtigung implementiert, und sie ermöglicht außerdem (zu Lernzwecken in diesem Lernprogramm) das Auslösen einer sicheren Pushbenachrichtigung an Ihre Geräte. Beachten Sie, dass wenn Sie die Benachrichtigung an das Notification Hub senden, nur eine reine Benachrichtigung mit der ID der Benachrichtigung (und nicht der tatsächlichen Meldung) gesendet wird.
-   
+3. Ersetzen Sie in der Datei "NotificationsController.cs" den Code innerhalb der **NotificationsController** -Klassendefinition durch den folgenden Code. Durch diese Komponente wird für das Gerät eine Möglichkeit zum sicheren Abrufen der Benachrichtigung implementiert, und sie ermöglicht außerdem (zu Lernzwecken in diesem Lernprogramm) das Auslösen einer sicheren Pushbenachrichtigung an Ihre Geräte. Beachten Sie, dass wenn Sie die Benachrichtigung an das Notification Hub senden, nur eine reine Benachrichtigung mit der ID der Benachrichtigung (und nicht der tatsächlichen Meldung) gesendet wird.
+
    ```csharp
     public NotificationsController()
     {

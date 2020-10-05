@@ -88,6 +88,8 @@
           href: specify-marketplace-images.md
         - name: Angeben von Supportinformationen (Labkontobesitzer)
           href: lab-account-owner-support-information.md
+        - name: Hochladen eines benutzerdefiniertes Image in Shared Image Gallery
+          href: upload-custom-image-shared-image-gallery.md
     - name: Erstellen und Konfigurieren von Classroom-Labs (Lehrkraft)
       items:
         - name: Erstellen und Verwalten von Classroom-Labs

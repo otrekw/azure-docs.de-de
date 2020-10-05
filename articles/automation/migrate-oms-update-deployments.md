@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 9c8238e6e0b52a625c76f79fa0dd5a91dd640fb8
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: dabe914ffd4e84e8ded5c0e3b519036479fe33ec
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447841"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987603"
 ---
 # <a name="migrate-azure-monitor-logs-update-deployments-to-azure-portal"></a>Migrieren der Updatebereitstellungen für Azure Monitor-Protokolle zum Azure-Portal
 
@@ -33,7 +33,7 @@ Das Portal der Operations Management Suite (OMS) wird gerade [eingestellt](../az
 
 3. Klicken Sie in Ihrem Automation-Konto auf **Updateverwaltung**.
 
-    ![Updateverwaltung](media/migrate-oms-update-deployments/azure-automation.png)
+    :::image type="content" source="media/migrate-oms-update-deployments/azure-automation.png" alt-text="Screenshot der Seite „Updateverwaltung“.":::
 
 4. Wählen Sie im Azure-Portal unter **Alle Dienste** die Option **Automation-Konten** aus. 
 
@@ -43,7 +43,7 @@ Das Portal der Operations Management Suite (OMS) wird gerade [eingestellt](../az
 
 Alle im OMS-Portal erstellten Updatebereitstellungen verfügen über eine [gespeicherte Suche](../azure-monitor/platform/computer-groups.md), auch Computergruppe genannt. Diese weist denselben Namen wie die vorhandene Updatebereitstellung auf. Die gespeicherte Suche enthält die Liste der Computer, für die die Updatebereitstellung geplant wurde.
 
-![Updateverwaltung](media/migrate-oms-update-deployments/oms-deployment.png)
+:::image type="content" source="media/migrate-oms-update-deployments/oms-deployment.png" alt-text="Screenshot der Seite „Updateverwaltung“.":::
 
 Wenn Sie diese vorhandene gespeicherte Suche verwenden möchten, gehen Sie folgendermaßen vor:
 

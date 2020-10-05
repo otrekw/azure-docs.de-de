@@ -4,12 +4,12 @@ description: Stellen Sie eine Linux-basierte Web-App unter Verwendung eines Cont
 ms.topic: tutorial
 ms.date: 08/20/2018
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 5b075e1065ef8c30837000f490cc93525b4b61cc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bcbce3c60aa0b4613b1dd1840c335c800193e549
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74456105"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328688"
 ---
 # <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Tutorial: Bereitstellen einer Web-App aus einer georeplizierten Azure-Containerregistrierung
 
@@ -58,7 +58,7 @@ Nachdem Sie „In Web-App bereitstellen“ aktiviert haben, geben Sie unter **We
 
 Klicken Sie auf **Erstellen**, um die Web-App in der Region *USA, Westen* bereitzustellen.
 
-![Konfiguration der Web-App unter Linux im Azure-Portal][deploy-app-portal-02]
+![Screenshot, der die Web-App für Container mit hervorgehobener Schaltfläche „Erstellen“ zeigt.][deploy-app-portal-02]
 
 ## <a name="view-the-deployed-web-app"></a>Anzeigen der bereitgestellten Web-App
 
@@ -68,11 +68,11 @@ Klicken Sie im Portal auf **App Services** und anschließend auf die Web-App, di
 
 Wählen Sie rechts oben in der **App Service-Übersicht** die als Link dargestellte URL der Web-App aus, um die ausgeführte Anwendung in Ihrem Browser anzuzeigen.
 
-![Konfiguration der Web-App unter Linux im Azure-Portal][deploy-app-portal-04]
+![Screenshot, der die App Service-Übersicht mit hervorgehobener Web-App-URL zeigt.][deploy-app-portal-04]
 
 Nachdem das Docker-Image über Ihre georeplizierte Containerregistrierung bereitgestellt wurde, wird ein Image angezeigt, das die Azure-Region darstellt, in der die Containerregistrierung gehostet wird.
 
-![Bereitgestellte Webanwendung, angezeigt in einem Browser][deployed-app-westus]
+![Screenshot, der die im Browser angezeigte, bereitgestellte Web-App zeigt.][deployed-app-westus]
 
 ## <a name="deploy-second-web-app-for-containers-instance"></a>Bereitstellen der zweiten Instanz von „Web-App für Container“
 
@@ -88,9 +88,9 @@ Gehen Sie wie im vorherigen Abschnitt beschrieben vor, um eine zweite Web-App in
 
 Klicken Sie auf **Erstellen**, um die Web-App in der Region *USA, Osten* bereitzustellen.
 
-![Konfiguration der Web-App unter Linux im Azure-Portal][deploy-app-portal-06]
+![Screenshot, der das Fenster „Erstellen“ der Web-App für Container mit hervorgehobener Schaltfläche „Erstellen“ zeigt.][deploy-app-portal-06]
 
-## <a name="view-the-deployed-web-app"></a>Anzeigen der bereitgestellten Web-App
+## <a name="view-the-second-deployed-web-app"></a>Anzeigen der zweiten bereitgestellten Web-App
 
 Auch hier können Sie die ausgeführte Anwendung anzeigen, indem Sie in Ihrem Browser zur URL der Anwendung navigieren.
 

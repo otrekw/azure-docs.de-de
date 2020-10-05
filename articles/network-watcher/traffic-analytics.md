@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: 8deb3d81895629e817aeb9dbc1eb6520e1fb7aad
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: f978343bd47c4b8c86653024e651b56c782f768c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747532"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967494"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -339,7 +339,7 @@ Verteilung des Datenverkehrs nach Anwendungsgateway, Lastenausgleichsmodul, Topo
  - Wissen, welches Subnetz mit welchem Anwendungsgateway bzw. Lastenausgleichsmodul kommuniziert. Wenn unerwartete Kommunikationen beobachtet werden, können Sie Ihre Konfiguration korrigieren.
  - Wenn bösartige Netzwerke mit einem Anwendungsgateway oder Lastenausgleichsmodul kommunizieren, können Sie dies beheben, indem Sie die NSG-Regeln zum Blockieren von bösartigen Netzwerken anpassen. 
 
-    ![subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png)
+    ![Der Screenshot zeigt eine Subnetztopologie mit der Verteilung des Datenverkehrs auf ein Anwendungsgatewaysubnetz in Bezug auf Flows.](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png)
 
 ### <a name="view-ports-and-virtual-machines-receiving-traffic-from-the-internet"></a>Anzeigen der Ports und virtuellen Computer, die Datenverkehr aus dem Internet empfangen
 

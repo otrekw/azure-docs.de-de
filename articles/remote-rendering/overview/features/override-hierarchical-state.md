@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 99f57c212dfc44d84640224b1526ab770fe97230
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: c098dc6b1d3b41a41246857f8a353dd4f5dfcef1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89009456"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884196"
 ---
 # <a name="hierarchical-state-override"></a>Hierarchische Zustandsüberschreibung
 
@@ -31,20 +31,27 @@ Die festgelegten Zustände, die überschrieben werden können, sind die folgende
 * **`Hidden`** : Entsprechende Gittermodelle im Szenendiagramm werden ausgeblendet oder angezeigt.
 * **`Tint color`** : Ein gerendertes Objekt kann mit einzelnen Farben und Sättigung getönt werden. Im Bild unten ist die Felge eines Rads getönt dargestellt.
   
-  ![Farbtönung](./media/color-tint.png)
+  ![Tönungsfarbe, um ein Objekt in Grün darzustellen](./media/color-tint.png)
 
 * **`See-through`** : Die Geometrie wird semitransparent gerendert, um beispielsweise die inneren Teile eines Objekts anzuzeigen. Die folgende Abbildung zeigt das gesamte Auto, das mit Ausnahme des roten Bremssattels im durchsichtigen Modus gerendert wird:
 
-  ![Durchsichtig](./media/see-through.png)
+  ![Durchsichtiger Modus, mit dem ausgewählte Objekte transparent gemacht werden](./media/see-through.png)
 
   > [!IMPORTANT]
   > Der durchsichtige Effekt funktioniert nur, wenn der [Renderingmodus](../../concepts/rendering-modes.md) *TileBasedComposition* verwendet wird.
 
 * **`Selected`** : Die Geometrie wird mit einer [Auswahlgliederung](outlines.md) gerendert.
 
-  ![Auswahlgliederung](./media/selection-outline.png)
+  ![Konturoption zum Hervorheben eines ausgewählten Teils](./media/selection-outline.png)
 
 * **`DisableCollision`** : Die Geometrie ist von [räumlichen Abfragen](spatial-queries.md) ausgenommen. Das **`Hidden`** -Flag wirkt sich nicht auf das Kollisionsstatus-Flag aus, deshalb werden diese beiden Flags häufig zusammen festgelegt.
+
+* **`UseCutPlaneFilterMask`** : Verwenden Sie eine einzelne Filterbitmaske, um die Auswahl der Schnittebene zu steuern. Dieses Flag bestimmt, ob die jeweilige Filtermaske verwendet oder von der übergeordneten Filtermaske geerbt werden soll. Die Filterbitmaske selbst wird mit der `CutPlaneFilterMask`-Eigenschaft festgelegt. Ausführliche Informationen zur Funktionsweise der Filterung finden Sie im Abschnitt [Selektive Schnittebenen](cut-planes.md#selective-cut-planes).
+![Selektive Schnittebenen](./media/selective-cut-planes.png)
+
+
+> [!TIP]
+> Als Alternative zum Deaktivieren der Sichtbarkeit und räumlicher Abfragen für ein vollständiges Unterdiagramm kann der Status `enabled` eines Spielobjekts umgeschaltet werden. Wenn eine Hierarchie deaktiviert ist, hat dies Vorrang vor jeder `HierarchicalStateOverrideComponent`.
 
 ## <a name="hierarchical-overrides"></a>Hierarchische Überschreibungen
 
@@ -95,6 +102,11 @@ Das Überschreiben der `tint color` ist etwas Besonderes, da es sowohl den Zusta
 Eine Instanz von `HierarchicalStateOverrideComponent` selbst führt nicht zu einem großen Runtimemehraufwand. Jedoch bewährt es sich immer, die Anzahl der aktiven Komponenten niedrig zu halten. Wenn Sie beispielsweise ein Auswahlsystem implementieren, das das ausgewählte Objekt hervorhebt, wird empfohlen, die Komponente zu löschen, wenn die Hervorhebung entfernt wird. Die Beibehaltung der Komponenten mit neutralen Features kann sich schnell häufen.
 
 Durch das transparente Rendering werden die GPUs des Servers durch mehr Workload belastet als beim Standardrendering. Wenn große Teile des Szenendiagramms zu *durchsichtig* wechseln und viele Geometrieebenen sichtbar sind, kann dies zu einem Leistungsengpass führen. Das gleiche gilt für Objekte mit [Auswahlgliederungen](../../overview/features/outlines.md#performance).
+
+## <a name="api-documentation"></a>API-Dokumentation
+
+* [HierarchicalStateOverrideComponent-Klasse (C#)](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.hierarchicalstateoverridecomponent)
+* [HierarchicalStateOverrideComponent-Klasse (C++)](https://docs.microsoft.com/cpp/api/remote-rendering/hierarchicalstateoverridecomponent)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

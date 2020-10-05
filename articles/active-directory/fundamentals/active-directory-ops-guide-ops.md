@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: edb35986fcfc0e8855fa712b519ee7a8ca2f0ed8
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 921a56dca8f1cda67e6f32458914fef4ac2d324c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321955"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601305"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Allgemeiner Betriebsleitfaden für Azure Active Directory – Referenz
 
@@ -125,9 +125,9 @@ Wenn Ihr Unternehmen derzeit über kein Programm zur Überwachung von Änderunge
 
 ### <a name="notifications"></a>Benachrichtigungen
 
-Microsoft sendet E-Mail-Nachrichten an Administratoren, um verschiedene Änderungen im Dienst, erforderliche Konfigurationsupdates und Fehler, die ein Eingreifen des Administrators erfordern, zu melden. Es ist wichtig, dass Kunden die E-Mail-Adressen für die Benachrichtigung so einstellen, dass Benachrichtigungen an die richtigen Teammitglieder gesendet werden, die alle Benachrichtigungen bestätigen und darauf reagieren können. Es wird empfohlen, mehrere Empfänger zum [Office 365-Nachrichtencenter](/office365/admin/manage/message-center) hinzuzufügen und anzufordern, dass Benachrichtigungen (einschließlich Azure AD Connect Health-Benachrichtigungen) an eine Verteilerliste oder ein freigegebenes Postfach gesendet werden. Wenn Sie nur über ein globales Administratorkonto mit einer E-Mail-Adresse verfügen, stellen Sie sicher, dass Sie mindestens zwei E-Mail-fähige Konten konfigurieren.
+Microsoft sendet E-Mail-Nachrichten an Administratoren, um verschiedene Änderungen im Dienst, erforderliche Konfigurationsupdates und Fehler, die ein Eingreifen des Administrators erfordern, zu melden. Es ist wichtig, dass Kunden die E-Mail-Adressen für die Benachrichtigung so einstellen, dass Benachrichtigungen an die richtigen Teammitglieder gesendet werden, die alle Benachrichtigungen bestätigen und darauf reagieren können. Es wird empfohlen, mehrere Empfänger zum [Nachrichtencenter](/office365/admin/manage/message-center) hinzuzufügen und anzufordern, dass Benachrichtigungen (einschließlich Azure AD Connect Health-Benachrichtigungen) an eine Verteilerliste oder ein freigegebenes Postfach gesendet werden. Wenn Sie nur über ein globales Administratorkonto mit einer E-Mail-Adresse verfügen, stellen Sie sicher, dass Sie mindestens zwei E-Mail-fähige Konten konfigurieren.
 
-Es werden zwei Absenderadressen („Von“) von Azure AD verwendet: <o365mc@email2.microsoft.com>, das Benachrichtigungen des Office 365-Nachrichtencenters sendet und <azure-noreply@microsoft.com>, das Benachrichtigungen in Bezug auf Folgendes sendet:
+Es werden zwei Absenderadressen („Von“) von Azure AD verwendet: <o365mc@email2.microsoft.com>, von der Benachrichtigungen des Nachrichtencenters gesendet werden, und <azure-noreply@microsoft.com>, von der Benachrichtigungen zu Folgendem gesendet werden:
 
 - [Azure AD-Zugriffsüberprüfungen](../governance/access-reviews-overview.md)
 - [Azure AD Connect Health](../hybrid/how-to-connect-health-operations.md#enable-email-notifications)
@@ -141,14 +141,14 @@ In der folgenden Tabelle erfahren Sie, welche Art von Benachrichtigungen gesende
 | Benachrichtigungsquelle | Was wird gesendet? | Wo suchen? |
 |:-|:-|:-|
 | Technischer Kontakt | Synchronisierungsfehler | Azure-Portal – Blatt „Eigenschaften“ |
-| Office 365-Nachrichtencenter | Hinweise zu Vorfällen und Leistungsminderung bei Identitätsdiensten und O365-Back-End-Diensten | Office-Portal |
+| Nachrichtencenter | Hinweise zu Incidents und Leistungsminderung bei Identitätsdiensten und Microsoft 365-Back-End-Diensten | Office-Portal |
 | Wöchentliche Übersicht für Identity Protection | Übersicht für Identity Protection | Blatt „Azure AD Identity Protection“ |
 | Azure AD Connect Health | Warnungsbenachrichtigungen | Azure-Portal – Blatt „Azure AD Connect Health“ |
 | Benachrichtigungen von Unternehmensanwendungen | Benachrichtigungen beim Ablauf von Zertifikaten und bei Bereitstellungsfehlern | Azure-Portal – Blatt „Unternehmensanwendung“ (jede App verfügt über eigene Einstellung für E-Mail-Adresse) |
 
 #### <a name="notifications-recommended-reading"></a>Empfohlene Artikel zu Benachrichtigungen
 
-- [Ändern von Adresse, technischem Kontakt und weiteren Informationen für Ihr Unternehmen – Office 365](/office365/admin/manage/change-address-contact-and-more)
+- [Ändern von Adresse, technischem Kontakt und weiteren Informationen für Ihr Unternehmen](/office365/admin/manage/change-address-contact-and-more)
 
 ## <a name="operational-surface-area"></a>Betriebsflächenbereich
 

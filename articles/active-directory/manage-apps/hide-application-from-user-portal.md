@@ -1,6 +1,6 @@
 ---
 title: Ausblenden einer Unternehmensanwendung auf der Benutzeroberfläche in Azure AD
-description: Ausblenden einer Enterpise-Anwendung auf der Benutzeroberfläche in Zugriffsbereichen von Azure Active Directory oder Startfeldern von Office 365
+description: Ausblenden einer Unternehmensanwendung auf der Benutzeroberfläche in Zugriffsbereichen von Azure Active Directory oder Microsoft 365-Anwendungsstartern.
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -12,26 +12,26 @@ ms.date: 03/25/2020
 ms.author: kenwith
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d21ba14fba24c9b8e0b460e56b93d0e5212bfb27
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 23d2d6645bea6e99e9f62e36364adf8816329c26
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367698"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601138"
 ---
 # <a name="hide-enterprise-applications-from-end-users-in-azure-active-directory"></a>Ausblenden von Unternehmensanwendung für Endbenutzer in Azure Active Directory
 
-Enthält eine Anleitung, wie Sie Anwendungen für das Panel „MyApps“ oder das Office 365-Startprogramm von Endbenutzern ausblenden. Wenn eine Anwendung ausgeblendet ist, verfügen Benutzer trotzdem über Berechtigungen für die Anwendung. 
+Enthält eine Anleitung, wie Sie Anwendungen im Panel „Meine Apps“ oder im Microsoft 365-Anwendungsstarter von Endbenutzern ausblenden. Wenn eine Anwendung ausgeblendet ist, verfügen Benutzer trotzdem über Berechtigungen für die Anwendung. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Die Rechte eines Anwendungsadministrators sind erforderlich, um eine Anwendung im Panel „MyApps“ und Office 365-Startprogramm auszublenden.
+Die Rechte eines Anwendungsadministrators sind erforderlich, um eine Anwendung im Panel „Meine Apps“ und im Microsoft 365-Anwendungsstarter auszublenden.
 
-Die Rechte eines globalen Administrators sind erforderlich, um alle Office 365-Anwendungen auszublenden.
+Die Rechte eines globalen Administrators sind erforderlich, um alle Microsoft 365-Anwendungen auszublenden.
 
 
 ## <a name="hide-an-application-from-the-end-user"></a>Ausblenden einer Anwendung für den Endbenutzer
-Führen Sie die folgenden Schritte aus, um eine Anwendung für das Panel „MyApps“ und das Startprogramm der Office 365-Anwendung auszublenden.
+Führen Sie die folgenden Schritte aus, um eine Anwendung im Panel „Meine Apps“ und im Microsoft 365-Anwendungsstarter auszublenden.
 
 1.  Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als globaler Administrator für Ihr Verzeichnis an.
 2.  Wählen Sie **Azure Active Directory** aus.
@@ -59,9 +59,9 @@ $tags += "HideApp"
 Set-AzureADServicePrincipal -ObjectId $objectId -Tags $tags
 ```
 
-## <a name="hide-office-365-applications-from-the-myapps-panel"></a>Ausblenden von Office 365-Anwendungen im Panel „MyApps“
+## <a name="hide-microsoft-365-applications-from-the-myapps-panel"></a>Ausblenden von Microsoft 365-Anwendungen im Panel „Meine Apps“
 
-Mit den folgenden Schritten können Sie alle Office 365-Anwendungen im Panel „MyApps“ ausblenden. Die Anwendungen sind im Office 365-Portal weiterhin sichtbar.
+Mit den folgenden Schritten können Sie alle Microsoft 365-Anwendungen im Panel „Meine Apps“ ausblenden. Die Anwendungen sind im Office 365-Portal weiterhin sichtbar.
 
 1.  Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als globaler Administrator für Ihr Verzeichnis an.
 2.  Wählen Sie **Azure Active Directory** aus.

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: c5d611ddffedc2f69cfc4f2b5600a158b0be9680
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 161272fe35ee9ea1e0880b991273e5d1a79eafb4
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186332"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987329"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>Erstellen von grafischen Azure Automation-Runbooks
 
@@ -61,7 +61,7 @@ Wählen Sie eine Aktivität auf der Canvas aus, um ihre Eigenschaften und Parame
 
 Ein Parametersatz definiert die erforderlichen und optionalen Parameter, die Werte für ein bestimmtes Cmdlet akzeptieren. Alle Cmdlets müssen über mindestens einen Parametersatz verfügen, einige enthalten mehrere Sätze. Wenn ein Cmdlet mehrere Parametersätze aufweist, können Sie Parameter erst konfigurieren, nachdem Sie den zu verwendenden Parametersatz ausgewählt haben. Sie ändern den durch eine Aktivität verwendeten Parametersatz, indem Sie **Parametersatz** auswählen und einen anderen Satz angeben. In diesem Fall gehen alle bereits konfigurierten Parameterwerte verloren.
 
-Im folgenden Beispiel besitzt das Cmdlet [Get-AzVM](/powershell/module/az.compute/get-azvm?view=azps-3.5.0) drei Parametersätze. Im Beispiel wird der Parametersatz **ListVirtualMachineInResourceGroupParamSet** mit einem einzelnen optionalen Parameter zum Zurückgeben aller virtuellen Computer in einer Ressourcengruppe verwendet. Im Beispiel wird auch der Parametersatz **GetVirtualMachineInResourceGroupParamSet** verwendet, um den zurückzugebenden virtuellen Computer anzugeben. Dieser Satz verfügt über zwei obligatorische Parameter und einen optionalen Parameter.
+Im folgenden Beispiel besitzt das Cmdlet [Get-AzVM](/powershell/module/az.compute/get-azvm?view=azps-3.5.0&preserve-view=true) drei Parametersätze. Im Beispiel wird der Parametersatz **ListVirtualMachineInResourceGroupParamSet** mit einem einzelnen optionalen Parameter zum Zurückgeben aller virtuellen Computer in einer Ressourcengruppe verwendet. Im Beispiel wird auch der Parametersatz **GetVirtualMachineInResourceGroupParamSet** verwendet, um den zurückzugebenden virtuellen Computer anzugeben. Dieser Satz verfügt über zwei obligatorische Parameter und einen optionalen Parameter.
 
 ![Parametersatz](media/automation-graphical-authoring-intro/get-azvm-parameter-sets.png)
 
@@ -91,11 +91,11 @@ Die Wiederholungsfunktion für eine Aktivität ermöglicht deren mehrmalige Ausf
 
 Wenn Sie eine Wiederholung für eine Aktivität aktivieren, können Sie eine Verzögerung und eine Bedingung festlegen. Die Verzögerung ist die Zeit (gemessen in Sekunden oder Minuten), die das Runbook wartet, bevor die Aktivität erneut ausgeführt wird. Wenn Sie keine Verzögerung angeben, wird die Aktivität sofort nach Abschluss des Vorgangs erneut ausgeführt.
 
-![Wiederholungsverzögerung für Aktivität](media/automation-graphical-authoring-intro/retry-delay.png)
+:::image type="content" source="media/automation-graphical-authoring-intro/retry-delay.png" alt-text="Screenshot der Einstellungen für das Aktivieren der Wiederholungsfunktion.":::
 
 Die Wiederholungsbedingung ist ein PowerShell-Ausdruck, der nach jeder Ausführung der Aktivität ausgewertet wird. Wenn der Ausdruck „True“ ergibt, wird die Aktivität erneut ausgeführt. Wenn der Ausdruck „False“ ergibt, wird die Aktivität nicht erneut ausgeführt, und das Runbook fährt mit der nächsten Aktivität fort.
 
-![Wiederholungsverzögerung für Aktivität](media/automation-graphical-authoring-intro/retry-condition.png)
+:::image type="content" source="media/automation-graphical-authoring-intro/retry-condition.png" alt-text="Screenshot der Einstellungen für das Aktivieren der Wiederholungsfunktion.":::
 
 Die Wiederholungsbedingung kann eine Variable namens `RetryData` enthalten, die Zugriff auf Informationen zu den Aktivitätswiederholungen bereitstellt. Diese Variable weist die in der folgenden Tabelle aufgeführten Eigenschaften auf:
 
@@ -435,4 +435,4 @@ Sie haben die Möglichkeit, ein Runbook auf die veröffentlichte Version zurück
 * Informationen zu den ersten Schritten mit grafischen Runbooks finden Sie unter [Tutorial: Erstellen eines grafischen Runbooks](learn/automation-tutorial-runbook-graphical.md).
 * Weitere Informationen zu den verschiedenen Runbooktypen sowie zu ihren Vorteilen und Einschränkungen finden Sie unter [Azure Automation-Runbooktypen](automation-runbook-types.md).
 * Informationen, wie Sie sich mithilfe des ausführenden Automation-Kontos authentifizieren, finden Sie unter [Ausführendes Konto](automation-security-overview.md#run-as-account).
-* Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+* Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0&preserve-view=true#automation).

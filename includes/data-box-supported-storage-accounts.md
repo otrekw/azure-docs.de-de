@@ -3,14 +3,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: include
-ms.date: 06/08/2020
+ms.date: 09/git14/2020
 ms.author: alkohli
-ms.openlocfilehash: da36e2bbf358a1c61d2b9b3f7ede592ac88fd427
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 91f91b1260cc445f90c2608fc5259ad61acd37ac
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200284"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90533333"
 ---
 Im Folgenden finden Sie eine Liste der unterstützten Speicherkonten und Speichertypen für das Data Box-Gerät. Eine vollständige Liste aller verschiedenen Typen von Speicherkonten und ihren vollständigen Funktionen finden Sie unter [Speicherkontotypen](/azure/storage/common/storage-account-overview#types-of-storage-accounts).
 
@@ -41,7 +41,7 @@ Die folgende Tabelle zeigt die unterstützten Speicherkonten für Exportaufträg
 | Page Blob Storage Premium | |J | | |
 
 > [!IMPORTANT]
-> - Data Box unterstützt Warteschlangen, Tabellen, Datenträger und Azure Data Lake Gen 2 nicht als Speichertypen für universelle Konten.
+> - Data Box unterstützt Warteschlangen, Tabellen und Datenträger nicht als Speichertypen von Importaufträgen für universelle Konten. Data Box unterstützt Warteschlangen, Tabellen, Datenträger und Azure Data Lake Gen 2 nicht als Speichertypen von Exportaufträgen für universelle Konten.
 > - Data Box unterstützt keine Anfügeblobs für Blob Storage- und Block Blob Storage-Konten.
 > - Data Box unterstützt keine File Storage Premium-Konten.
 > - In Seitenblobs hochgeladene Daten müssen einem ganzzahligen Vielfachen von 512 Byte entsprechen, z. B. VHDs.

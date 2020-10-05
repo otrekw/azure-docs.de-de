@@ -8,12 +8,12 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 9353750fdbbb52aff60fc41b7fd028ec4c5f0ec8
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 846153dd482130bbb3b35c38a3dbb791e0d0d32e
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90992169"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448271"
 ---
 # <a name="manage-a-managed-hsm-using-the-azure-cli"></a>Verwalten eines verwalteten HSM über die Azure-Befehlszeilenschnittstelle
 
@@ -53,7 +53,7 @@ Verwenden Sie den Befehl `az keyvault key create`, um einen Schlüssel zu erstel
 
 ### <a name="create-an-rsa-key"></a>Erstellen eines RSA-Schlüssels
 
-Das folgende Beispiel zeigt, wie Sie einen **RSA**-Schlüssel mit 3.070 Bit erstellen, der nur für Vorgänge (--ops) vom Typ **wrapKey, unwrapKey** verwendet wird. 
+Das folgende Beispiel zeigt, wie Sie einen **RSA**-Schlüssel mit 3072 Bit erstellen, der nur für Vorgänge (--ops) vom Typ **wrapKey, unwrapKey** verwendet wird. 
 
 
 ```azurecli-interactive
@@ -82,7 +82,7 @@ az keyvault key create --id https://ContosoMHSM.managedhsm.azure.net/keys/myec25
 
 ### <a name="create-a-256-bit-symmetric-key"></a>Erstellen eines symmetrischen 256-Bit-Schlüssels
 
-Das folgende Beispiel zeigt, wie Sie einen **symmetrischen** Schlüssel mit 3.070 Bit erstellen, der nur für Vorgänge (--ops) vom Typ **Verschlüsseln und Entschlüsseln** verwendet wird.
+Das folgende Beispiel zeigt, wie Sie einen **symmetrischen** Schlüssel mit 256 Bit erstellen, der nur für Vorgänge (--ops) vom Typ **Verschlüsseln und Entschlüsseln** verwendet wird.
 
 ```azurecli-interactive
 az keyvault key create --hsm-name ContosoMHSM --name myaeskey --ops encrypt decrypt  --tags --kty oct-HSM --size 256

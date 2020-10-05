@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 73ba78eca710f0b98b2a209494519cb8003e554b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd635d4c0563c35979f8d85c33dfbde35f05f9e6
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "75469141"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91401044"
 ---
 Der Verfügbarkeitsgruppenlistener umfasst eine IP-Adresse und einen Netzwerknamen, über die die SQL Server-Verfügbarkeitsgruppe lauscht. Gehen Sie wie folgt vor, um den Verfügbarkeitsgruppenlistener zu erstellen:
 
@@ -30,7 +30,7 @@ Der Verfügbarkeitsgruppenlistener umfasst eine IP-Adresse und einen Netzwerknam
 
     b. Klicken Sie im Bereich **Rollen** mit der rechten Maustaste auf den Verfügbarkeitsgruppennamen, und wählen Sie dann **Ressource hinzufügen** > **Clientzugriffspunkt** aus.
 
-   ![Clientzugriffspunkt](./media/virtual-machines-ag-listener-configure/92-addclientaccesspoint.png)
+   ![Screenshot mit der Menüoption „Clientzugriffspunkt“](./media/virtual-machines-ag-listener-configure/92-addclientaccesspoint.png)
 
     c. Erstellen Sie im Feld **Name** einen Namen für diesen neuen Listener. 
    Der Name für den neuen Listener ist der Netzwerkname, den Anwendungen beim Herstellen einer Verbindung mit Datenbanken in der SQL Server-Verfügbarkeitsgruppe verwenden.
@@ -50,7 +50,7 @@ Der Verfügbarkeitsgruppenlistener umfasst eine IP-Adresse und einen Netzwerknam
 
     c. Klicken Sie unter **IP-Adresse** auf **Statische IP-Adresse**. Legen Sie die IP-Adresse auf die gleiche Adresse fest, die Sie beim Festlegen der Adresse für den Lastenausgleich im Azure-Portal verwendet haben.
 
-   ![IP-Ressource](./media/virtual-machines-ag-listener-configure/96-ipresource.png) 
+   ![Screenshot, in dem gezeigt wird, wo Sie die IP-Adresse festlegen](./media/virtual-machines-ag-listener-configure/96-ipresource.png) 
 
     <!-----------------------I don't see this option on server 2016
     1. Disable NetBIOS for this address and click **OK**. Repeat this step for each IP resource if your solution spans multiple Azure VNets. 
@@ -64,7 +64,7 @@ Der Verfügbarkeitsgruppenlistener umfasst eine IP-Adresse und einen Netzwerknam
 
     c. Fügen Sie auf der Registerkarte „Abhängigkeiten“ den Namen der Clientzugriffspunkt-Ressource (Listener) hinzu.
 
-   ![IP-Ressource](./media/virtual-machines-ag-listener-configure/97-propertiesdependencies.png) 
+   ![Screenshot, in dem gezeigt wird, wo der Name auf der Registerkarte „Abhängigkeiten“ hinzugefügt wird](./media/virtual-machines-ag-listener-configure/97-propertiesdependencies.png) 
 
     d. Klicken Sie auf **OK**.
 
@@ -74,7 +74,7 @@ Der Verfügbarkeitsgruppenlistener umfasst eine IP-Adresse und einen Netzwerknam
 
     b. Klicken Sie auf der Registerkarte **Ressourcen** unter **Servername** mit der rechten Maustaste auf den Clientzugriffspunkt, und klicken Sie dann auf **Eigenschaften**. 
 
-   ![IP-Ressource](./media/virtual-machines-ag-listener-configure/98-dependencies.png) 
+   ![Screenshot mit der Menüoption „Eigenschaften“ für den Namen des Servers](./media/virtual-machines-ag-listener-configure/98-dependencies.png) 
 
     c. Klicken Sie auf die Registerkarte **Abhängigkeiten** . Stellen Sie sicher, dass die IP-Adresse eine Abhängigkeit ist. Wenn dies nicht der Fall ist, legen Sie eine Abhängigkeit für die IP-Adresse fest. Wenn mehrere Ressourcen aufgeführt sind, überprüfen Sie, ob die IP-Adressen OR-Abhängigkeiten aufweisen (statt AND-Abhängigkeiten). Klicken Sie auf **OK**. 
 

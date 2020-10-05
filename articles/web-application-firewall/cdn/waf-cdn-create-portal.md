@@ -5,14 +5,14 @@ author: vhorne
 ms.service: web-application-firewall
 services: web-application-firewall
 ms.topic: tutorial
-ms.date: 03/18/2020
+ms.date: 09/16/2020
 ms.author: victorh
-ms.openlocfilehash: 7a9e0cc3977892fd899b4a25e17ad72f13481506
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: c5505b9437a4bd8dced6a090817b17d5e29374f2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82608812"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327937"
 ---
 # <a name="tutorial-create-a-waf-policy-on-azure-cdn-using-the-azure-portal"></a>Tutorial: Erstellen einer WAF-Richtlinie für Azure CDN über das Azure-Portal
 
@@ -72,17 +72,22 @@ Wählen Sie zum Erstellen einer benutzerdefinierten Regel im Abschnitt **Benutze
 
 Der folgende Screenshot zeigt eine benutzerdefinierte Abgleichsregel zum Blockieren einer Anforderung, wenn die Abfragezeichenfolge den Wert **blockme** enthält.
 
-![Ändern des WAF-Richtlinienmodus](../media/waf-cdn-create-portal/custommatch.png)
+![Hinzufügen einer benutzerdefinierten Abgleichsregel](../media/waf-cdn-create-portal/custommatch.png)
 
 Bei Ratenbegrenzungsregeln sind zwei zusätzliche Felder erforderlich: **Dauer der Ratenbegrenzung** und **Schwellenwert für die Ratenbegrenzung (Anforderungen)** wie im folgenden Beispiel gezeigt:
 
-![Ändern des WAF-Richtlinienmodus](../media/waf-cdn-create-portal/customrate.png)
+![Hinzufügen einer Ratenbegrenzungsregel](../media/waf-cdn-create-portal/customrate.png)
 
 ### <a name="default-rule-set-drs"></a>Standardregelsatz
 
 Der von Azure verwaltete Standardregelsatz ist standardmäßig aktiviert. Um eine einzelne Regel innerhalb einer Regelgruppe zu deaktivieren, erweitern Sie die Regeln innerhalb dieser Regelgruppe. Aktivieren Sie das Kontrollkästchen vor der Regelnummer, und wählen Sie oben auf der Registerkarte **Deaktivieren** aus. Um Aktionstypen für einzelne Regeln innerhalb des Regelsatzes zu ändern, aktivieren Sie das Kontrollkästchen vor der Regelnummer, und wählen Sie dann oben die Registerkarte **Aktion ändern** aus.
 
  ![Ändern des WAF-Regelsatzes](../media/waf-cdn-create-portal/managed2.png)
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Entfernen Sie die Ressourcengruppe und alle dazugehörigen Ressourcen, wenn Sie sie nicht mehr benötigen.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

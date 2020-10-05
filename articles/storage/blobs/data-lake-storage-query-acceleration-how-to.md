@@ -1,150 +1,244 @@
 ---
-title: Filtern von Daten mithilfe der Abfragebeschleunigung für Azure Data Lake Storage (Vorschau) | Microsoft-Dokumentation
-description: Verwenden Sie die Abfragebeschleunigung (Vorschau), um eine Teilmenge von Daten aus Ihrem Speicherkonto abzurufen.
+title: Filtern von Daten mithilfe der Abfragebeschleunigung für Azure Data Lake Storage | Microsoft-Dokumentation
+description: Verwenden Sie die Abfragebeschleunigung, um eine Teilmenge von Daten aus Ihrem Speicherkonto abzurufen.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/21/2020
+ms.date: 09/09/2020
 ms.author: normesta
 ms.reviewer: jamsbak
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6de6661e5c970c7c3cbfc944b8539060b8844a36
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 72602e1e74074f21c93950bdb779758e784ce171
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005223"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659868"
 ---
-# <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration-preview"></a>Filtern von Daten mithilfe der Abfragebeschleunigung für Azure Data Lake Storage (Vorschau)
+# <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration"></a>Filtern von Daten mithilfe der Abfragebeschleunigung für Azure Data Lake Storage
 
-In diesem Artikel wird gezeigt, wie Sie mithilfe der Abfragebeschleunigung (Vorschau) eine Teilmenge von Daten aus Ihrem Speicherkonto abrufen. 
+In diesem Artikel wird gezeigt, wie Sie mithilfe der Abfragebeschleunigung eine Teilmenge von Daten aus Ihrem Speicherkonto abrufen. 
 
-Die Abfragebeschleunigung (Vorschau) ist eine neue Funktion für Azure Data Lake Storage, die es Anwendungen und Analyseframeworks ermöglicht, die Datenverarbeitung drastisch zu optimieren. Dabei werden nur die Daten abgerufen, die für einen bestimmten Vorgang erforderlich sind. Weitere Informationen finden Sie unter [Abfragebeschleunigung für Azure Data Lake Storage (Vorschau)](data-lake-storage-query-acceleration.md).
-
-> [!NOTE]
-> Die Abfragebeschleunigung ist als öffentliche Vorschau in den Regionen „Kanada, Mitte“ und „Frankreich, Mitte“ verfügbar. Informationen zu den Einschränkungen finden Sie im Artikel [Bekannte Probleme](data-lake-storage-known-issues.md). Wie Sie sich für die Vorschau registrieren, erfahren Sie in [diesem Formular](https://aka.ms/adls/qa-preview-signup).  
+Die Abfragebeschleunigung ermöglicht es Anwendungen und Analyseframeworks, die Datenverarbeitung drastisch zu optimieren. Dabei werden nur die Daten abgerufen, die für die Durchführung eines bestimmten Vorgangs erforderlich sind. Weitere Informationen finden Sie unter [Abfragebeschleunigung für Azure Data Lake Storage](data-lake-storage-query-acceleration.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-### <a name="net"></a>[.NET](#tab/dotnet)
-
 - Sie benötigen ein Azure-Abonnement, um auf Azure Storage zuzugreifen. Wenn Sie noch kein Abonnement haben, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 - Ein Speicherkonto vom Typ **Allgemein V2**. Informationen finden Sie unter [Erstellen eines Speicherkontos](../common/storage-quickstart-create-account.md).
 
-- [.NET SDK](https://dotnet.microsoft.com/download). 
+- Wählen Sie eine Registerkarte aus, um SDK-spezifische Voraussetzungen anzuzeigen.
 
-### <a name="java"></a>[Java](#tab/java)
+  ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-- Sie benötigen ein Azure-Abonnement, um auf Azure Storage zuzugreifen. Wenn Sie noch kein Abonnement haben, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+  Nicht zutreffend
 
-- Ein Speicherkonto vom Typ **Allgemein V2**. Informationen finden Sie unter [Erstellen eines Speicherkontos](../common/storage-quickstart-create-account.md).
+  ### <a name="net"></a>[.NET](#tab/dotnet)
 
-- [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable), Version 8 oder höher.
+  [.NET SDK](https://dotnet.microsoft.com/download) 
 
-- [Apache Maven](https://maven.apache.org/download.cgi). 
+  ### <a name="java"></a>[Java](#tab/java)
 
-  > [!NOTE] 
-  > In diesem Artikel wird davon ausgegangen, dass Sie ein Java-Projekt mithilfe von Apache Maven erstellt haben. Ein Beispiel zum Erstellen eines Projekts mithilfe von Apache Maven finden Sie unter [Einrichten](storage-quickstart-blobs-java.md#setting-up).
+  - [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable&preserve-view=true), Version 8 oder höher
+
+  - [Apache Maven](https://maven.apache.org/download.cgi) 
+
+    > [!NOTE] 
+    > In diesem Artikel wird davon ausgegangen, dass Sie ein Java-Projekt mithilfe von Apache Maven erstellt haben. Ein Beispiel zum Erstellen eines Projekts mithilfe von Apache Maven finden Sie unter [Einrichten](storage-quickstart-blobs-java.md#setting-up).
   
+  ### <a name="python"></a>[Python](#tab/python)
+
+  [Python](https://www.python.org/downloads/) 3.8 oder höher.
+
+  ### <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+  Für die Verwendung des Node.js SDK sind keine weiteren Voraussetzungen zu erfüllen.
+
 ---
 
-## <a name="install-packages"></a>Installieren von Paketen 
+## <a name="enable-query-acceleration"></a>Aktivieren der Abfragebeschleunigung
 
-### <a name="net"></a>[.NET](#tab/dotnet)
+Wenn Sie die Abfragebeschleunigung verwenden möchten, müssen Sie dieses Feature in Ihrem Abonnement registrieren. Nachdem Sie sich vergewissert haben, dass das Feature registriert ist, müssen Sie den Azure Storage-Ressourcenanbieter registrieren. 
 
-1. Laden Sie die Pakete für die Abfragebeschleunigung herunter. Sie können eine komprimierte ZIP-Datei mit diesen Paketen über den folgenden Link abrufen: [https://aka.ms/adls/qqsdk/.net](https://aka.ms/adls/qqsdk/.net) 
+### <a name="step-1-register-the-query-acceleration-feature"></a>Schritt 1: Registrieren des Features Abfragebeschleunigung
 
-2. Extrahieren Sie den Inhalt dieser Datei in Ihr Projektverzeichnis.
+Wenn Sie die Abfragebeschleunigung verwenden möchten, müssen Sie zunächst dieses Feature in Ihrem Abonnement registrieren. 
 
-3. Öffnen Sie die Projektdatei ( *.csproj*) in einem Text-Editor, und fügen Sie die folgenden Paketverweise innerhalb des Elements \<Project\> hinzu.
+#### <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-   ```xml
-   <ItemGroup>
-       <PackageReference Include="Azure.Storage.Blobs" Version="12.5.0-preview.1" />
-       <PackageReference Include="Azure.Storage.Common" Version="12.4.0-preview.1" />
-       <PackageReference Include="Azure.Storage.QuickQuery" Version="12.0.0-preview.1" />
-   </ItemGroup>
+1. Öffnen Sie ein Windows PowerShell-Befehlsfenster.
+
+1. Melden Sie sich mit dem Befehl `Connect-AzAccount` bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm.
+
+   ```powershell
+   Connect-AzAccount
    ```
 
-4. Stellen Sie die SDK-Vorschaupakete wieder her. In diesem Beispiel werden die SDK-Vorschaupakete mit dem Befehl `dotnet restore` wiederhergestellt. 
+2. Wenn Ihre Identität mehreren Abonnements zugeordnet ist, legen Sie das aktive Abonnement fest.
+
+   ```powershell
+   $context = Get-AzSubscription -SubscriptionId <subscription-id>
+   Set-AzContext $context
+   ```
+
+   Ersetzen Sie den Platzhalterwert `<subscription-id>` durch die ID Ihres Abonnements.
+
+3. Registrieren Sie das Feature Abfragebeschleunigung mithilfe des Befehls [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature).
+
+   ```powershell
+   Register-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName BlobQuery
+   ```
+
+#### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+1. Öffnen Sie [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), oder falls Sie die Azure-Befehlszeilenschnittstelle lokal [installiert](https://docs.microsoft.com/cli/azure/install-azure-cli) haben, öffnen Sie eine Befehlskonsolenanwendung wie Windows PowerShell.
+
+2. Wenn Ihre Identität mehreren Abonnements zugeordnet ist, legen Sie das aktive Abonnement auf das Abonnement des Speicherkontos fest.
+
+   ```azurecli-interactive
+   az account set --subscription <subscription-id>
+   ```
+
+   Ersetzen Sie den Platzhalterwert `<subscription-id>` durch die ID Ihres Abonnements.
+
+3. Registrieren Sie das Feature Abfragebeschleunigung mithilfe des Befehls [az feature register](/cli/azure/feature#az-feature-register).
+
+   ```azurecli
+   az feature register --namespace Microsoft.Storage --name BlobQuery
+   ```
+
+---
+
+### <a name="step-2-verify-that-the-feature-is-registered"></a>Schritt 2: Überprüfen, ob das Feature registriert ist
+
+#### <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Um zu überprüfen, ob die Registrierung abgeschlossen wurde, verwenden Sie den Befehl [Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature).
+
+```powershell
+Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName BlobQuery
+```
+
+#### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Um zu überprüfen, ob die Registrierung abgeschlossen wurde, verwenden Sie den Befehl [az feature](/cli/azure/feature#az-feature-show).
+
+```azurecli
+az feature show --namespace Microsoft.Storage --name BlobQuery
+```
+
+---
+
+### <a name="step-3-register-the-azure-storage-resource-provider"></a>Schritt 3: Registrieren des Azure Storage-Ressourcenanbieters
+
+Nachdem Ihre Registrierung genehmigt wurde, müssen Sie den Azure Storage-Ressourcenanbieter erneut registrieren. 
+
+#### <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Um den Ressourcenanbieter zu registrieren, verwenden Sie den Befehl [Register-AzResourceProvider](/powershell/module/az.resources/register-azresourceprovider).
+
+```powershell
+Register-AzResourceProvider -ProviderNamespace 'Microsoft.Storage'
+```
+
+#### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Verwenden Sie zum Registrieren des Ressourcenanbieters den Befehl [az provider register](/cli/azure/provider#az-provider-register).
+
+```azurecli
+az provider register --namespace 'Microsoft.Storage'
+```
+
+---
+
+## <a name="set-up-your-environment"></a>Einrichten Ihrer Umgebung
+
+### <a name="step-1-install-packages"></a>Schritt 1: Installieren von Paketen 
+
+#### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Installieren Sie das Az-Modul, Version 4.6.0 oder höher.
+
+```powershell
+Install-Module -Name Az -Repository PSGallery -Force
+```
+
+Führen Sie zum Aktualisieren von einer älteren Version von Az den folgenden Befehl aus:
+
+```powershell
+Update-Module -Name Az
+```
+
+#### <a name="net"></a>[.NET](#tab/dotnet)
+
+1. Öffnen Sie eine Eingabeaufforderung, und wechseln Sie mit dem Befehl `cd` in Ihren Projektordner. Beispiel:
 
    ```console
-   dotnet restore --source C:\Users\contoso\myProject
+   cd myProject
    ```
 
-5. Stellen Sie alle anderen Abhängigkeiten aus dem öffentlichen NuGet-Repository wieder her.
+2. Installieren Sie Version `12.5.0-preview.6` der Azure Blob Storage-Clientbibliothek für das .NET-Paket mit dem Befehl `dotnet add package`. 
 
    ```console
-   dotnet restore
+   dotnet add package Azure.Storage.Blobs -v 12.6.0
    ```
 
-### <a name="java"></a>[Java](#tab/java)
+3. In den Beispielen in diesem Artikel wird eine CSV-Datei mithilfe der Bibliothek [CsvHelper](https://www.nuget.org/packages/CsvHelper/) analysiert. Führen Sie den folgenden Befehl aus, um diese Bibliothek zu verwenden.
 
-1. Erstellen Sie ein Verzeichnis im Stammverzeichnis Ihres Projekts. Das Stammverzeichnis ist das Verzeichnis, das die Datei **pom.xml** enthält.
+   ```console
+   dotnet add package CsvHelper
+   ```
 
-   > [!NOTE]
-   > Bei den Beispielen in diesem Artikel wird davon ausgegangen, dass der Name des Verzeichnisses **lib** lautet.
+#### <a name="java"></a>[Java](#tab/java)
 
-2. Laden Sie die Pakete für die Abfragebeschleunigung herunter. Sie können eine komprimierte ZIP-Datei mit diesen Paketen über den folgenden Link abrufen: [https://aka.ms/adls/qqsdk/java](https://aka.ms/adls/qqsdk/java) 
-
-3. Extrahieren Sie die Dateien in dieser ZIP-Datei in das von Ihnen erstellte Verzeichnis. In diesem Beispiel hat das Verzeichnis den Namen **lib**. 
-
-4. Öffnen Sie die Datei *pom.xml* in Ihrem Text-Editor. Fügen Sie der Gruppe der Abhängigkeiten das folgende Abhängigkeitselement hinzu: 
+1. Öffnen Sie die Datei *pom.xml* des Projekts in einem Text-Editor. Fügen Sie der Gruppe der Abhängigkeiten das folgende Abhängigkeitselement hinzu: 
 
    ```xml
    <!-- Request static dependencies from Maven -->
    <dependency>
        <groupId>com.azure</groupId>
        <artifactId>azure-core</artifactId>
-       <version>1.3.0</version>
+       <version>1.6.0</version>
    </dependency>
-   <dependency>
+    <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-csv</artifactId>
+        <version>1.8</version>
+    </dependency>    
+    <dependency>
       <groupId>com.azure</groupId>
-      <artifactId>azure-core-http-netty</artifactId>
-      <version>1.3.0</version>
-   </dependency>
-   <dependency>
-      <groupId>org.apache.avro</groupId>
-      <artifactId>avro</artifactId>
-      <version>1.9.2</version>
-   </dependency>
-   <dependency>
-    <groupId>org.apache.commons</groupId>
-    <artifactId>commons-csv</artifactId>
-    <version>1.8</version>
-   </dependency>
-   <!-- Local dependencies -->
-   <dependency>
-       <groupId>com.azure</groupId>
-       <artifactId>azure-storage-blob</artifactId>
-       <version>12.5.0-beta.1</version>
-       <scope>system</scope>
-       <systemPath>${project.basedir}/lib/azure-storage-blob-12.5.0-beta.1.jar</systemPath>
-   </dependency>
-   <dependency>
-       <groupId>com.azure</groupId>
-       <artifactId>azure-storage-common</artifactId>
-       <version>12.5.0-beta.1</version>
-       <scope>system</scope>
-       <systemPath>${project.basedir}/lib/azure-storage-common-12.5.0-beta.1.jar</systemPath>
-   </dependency>
-   <dependency>
-       <groupId>com.azure</groupId>
-       <artifactId>azure-storage-quickquery</artifactId>
-       <version>12.0.0-beta.1</version>
-       <scope>system</scope>
-       <systemPath>${project.basedir}/lib/azure-storage-quickquery-12.0.0-beta.1.jar</systemPath>
-   </dependency>
+      <artifactId>azure-storage-blob</artifactId>
+      <version>12.8.0-beta.1</version>
+    </dependency>
    ```
+
+#### <a name="python"></a>[Python](#tab/python)
+
+Installieren Sie die Azure Data Lake Storage-Clientbibliothek für Python mithilfe von [pip](https://pypi.org/project/pip/).
+
+```
+pip install azure-storage-blob==12.4.0
+```
+
+#### <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Installieren Sie die Data Lake-Clientbibliothek für JavaScript, indem Sie ein Terminalfenster öffnen und den folgenden Befehl eingeben.
+
+```javascript
+    npm install @azure/storage-blob
+    npm install @fast-csv/parse
+```
 
 ---
 
-## <a name="add-statements"></a>Hinzufügen von Anweisungen
+### <a name="step-2-add-statements"></a>Schritt 2: Hinzufügen von Anweisungen
 
+#### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-### <a name="net"></a>[.NET](#tab/dotnet)
+Nicht zutreffend
+
+#### <a name="net"></a>[.NET](#tab/dotnet)
 
 Fügen Sie die folgenden `using`-Anweisungen am Anfang Ihrer Codedatei hinzu.
 
@@ -152,8 +246,6 @@ Fügen Sie die folgenden `using`-Anweisungen am Anfang Ihrer Codedatei hinzu.
 using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 using Azure.Storage.Blobs.Specialized;
-using Azure.Storage.QuickQuery;
-using Azure.Storage.QuickQuery.Models;
 ```
 
 Bei der Abfragebeschleunigung werden CSV- und JSON-formatierte Daten abgerufen. Stellen Sie deshalb sicher, dass Sie die using-Anweisungen für alle CSV- oder JSON-Analysebibliotheken hinzufügen, die Sie verwenden möchten. In den Beispielen in diesem Artikel wird eine CSV-Datei mithilfe der Bibliothek [CsvHelper](https://www.nuget.org/packages/CsvHelper/) analysiert, die auf NuGet verfügbar ist. Daher werden die folgenden `using`-Anweisungen am Anfang der Codedatei hinzugefügt.
@@ -169,22 +261,43 @@ Zum Kompilieren der Beispiele, die in diesem Artikel gezeigt werden, müssen Sie
 using System.Threading.Tasks;
 using System.IO;
 using System.Globalization;
-using System.Threading;
-using System.Linq;
 ```
 
-### <a name="java"></a>[Java](#tab/java)
+#### <a name="java"></a>[Java](#tab/java)
 
 Fügen Sie die folgenden `import`-Anweisungen am Anfang Ihrer Codedatei hinzu.
 
 ```java
 import com.azure.storage.blob.*;
+import com.azure.storage.blob.options.*;
 import com.azure.storage.blob.models.*;
 import com.azure.storage.common.*;
-import com.azure.storage.quickquery.*;
-import com.azure.storage.quickquery.models.*;
 import java.io.*;
+import java.util.function.Consumer;
 import org.apache.commons.csv.*;
+```
+
+#### <a name="python"></a>[Python](#tab/python)
+
+Fügen Sie diese Importanweisungen am Anfang Ihrer Codedatei hinzu.
+
+```python
+import sys, csv
+from azure.storage.blob import BlobServiceClient, ContainerClient, BlobClient, DelimitedTextDialect, BlobQueryError
+```
+
+### <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Schließen Sie das `storage-blob`-Modul ein, indem Sie die folgende Anweisung am Anfang Ihrer Codedatei einfügen. 
+
+```javascript
+const { BlobServiceClient } = require("@azure/storage-blob");
+```
+
+Bei der Abfragebeschleunigung werden CSV- und JSON-formatierte Daten abgerufen. Stellen Sie deshalb sicher, dass Sie Anweisungen für alle CSV- oder JSON-Analysemodule hinzufügen, die Sie verwenden möchten. In den Beispielen in diesem Artikel wird eine CSV-Datei mithilfe des Moduls [fast-csv](https://www.npmjs.com/package/fast-csv) analysiert. Daher wird diese Anweisung am Anfang der Codedatei hinzugefügt.
+
+```javascript
+const csv = require('@fast-csv/parse');
 ```
 
 ---
@@ -197,14 +310,30 @@ Sie können SQL verwenden, um die Zeilenfilterprädikate und Spaltenprojektionen
 
 - Spaltenverweise werden als `_N` angegeben, wobei die erste Spalte `_1` ist. Wenn die Quelldatei eine Kopfzeile enthält, können Sie mit dem Namen, der in der Kopfzeile angegeben ist, auf Spalten verweisen. 
 
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```powershell
+Function Get-QueryCsv($ctx, $container, $blob, $query, $hasheaders) {
+    $tempfile = New-TemporaryFile
+    $informat = New-AzStorageBlobQueryConfig -AsCsv -HasHeader:$hasheaders
+    Get-AzStorageBlobQueryResult -Context $ctx -Container $container -Blob $blob -InputTextConfiguration $informat -OutputTextConfiguration (New-AzStorageBlobQueryConfig -AsCsv -HasHeader) -ResultFile $tempfile.FullName -QueryString $query -Force
+    Get-Content $tempfile.FullName
+}
+
+$container = "data"
+$blob = "csv/csv-general/seattle-library.csv"
+Get-QueryCsv $ctx $container $blob "SELECT * FROM BlobStorage WHERE _3 = 'Hemingway, Ernest, 1899-1961'" $false
+
+```
+
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-Die asynchrone Methode `BlobQuickQueryClient.QueryAsync` sendet die Abfrage an die Abfragebeschleunigungs-API und streamt dann die Ergebnisse als [Stream](https://docs.microsoft.com/dotnet/api/system.io.stream?view=netframework-4.8)-Objekt an die Anwendung zurück.
+Die asynchrone Methode `BlobQuickQueryClient.QueryAsync` sendet die Abfrage an die Abfragebeschleunigungs-API und streamt dann die Ergebnisse als [Stream](https://docs.microsoft.com/dotnet/api/system.io.stream)-Objekt an die Anwendung zurück.
 
 ```cs
 static async Task QueryHemingway(BlockBlobClient blob)
 {
-    string query = @"SELECT * FROM BlobStorage WHERE _3 = 'Hemingway, Ernest'";
+    string query = @"SELECT * FROM BlobStorage WHERE _3 = 'Hemingway, Ernest, 1899-1961'";
     await DumpQueryCsv(blob, query, false);
 }
 
@@ -212,25 +341,26 @@ private static async Task DumpQueryCsv(BlockBlobClient blob, string query, bool 
 {
     try
     {
-        using (var reader = new StreamReader((await blob.GetQuickQueryClient().QueryAsync(query,
-                new CsvTextConfiguration() { HasHeaders = headers }, 
-                new CsvTextConfiguration() { HasHeaders = false }, 
-                new ErrorHandler(),
-                new BlobRequestConditions(), 
-                new ProgressHandler(),
-                CancellationToken.None)).Value.Content))
+        var options = new BlobQueryOptions() {
+            InputTextConfiguration = new BlobQueryCsvTextOptions() { HasHeaders = headers },
+            OutputTextConfiguration = new BlobQueryCsvTextOptions() { HasHeaders = true },
+            ProgressHandler = new Progress<long>((finishedBytes) => Console.Error.WriteLine($"Data read: {finishedBytes}"))
+        };
+        options.ErrorHandler += (BlobQueryError err) => {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Error.WriteLine($"Error: {err.Position}:{err.Name}:{err.Description}");
+            Console.ResetColor();
+        };
+        // BlobDownloadInfo exposes a Stream that will make results available when received rather than blocking for the entire response.
+        using (var reader = new StreamReader((await blob.QueryAsync(
+                query,
+                options)).Value.Content))
         {
-            using (var parser = new CsvReader(reader, new CsvConfiguration(CultureInfo.CurrentCulture) 
-            { HasHeaderRecord = false }))
+            using (var parser = new CsvReader(reader, new CsvConfiguration(CultureInfo.CurrentCulture) { HasHeaderRecord = true }))
             {
                 while (await parser.ReadAsync())
                 {
-                    parser.Context.Record.All(cell =>
-                    {
-                        Console.Out.Write(cell + "  ");
-                        return true;
-                    });
-                    Console.Out.WriteLine();
+                    Console.Out.WriteLine(String.Join(" ", parser.Context.Record));
                 }
             }
         }
@@ -238,22 +368,6 @@ private static async Task DumpQueryCsv(BlockBlobClient blob, string query, bool 
     catch (Exception ex)
     {
         Console.Error.WriteLine("Exception: " + ex.ToString());
-    }
-}
-
-class ErrorHandler : IBlobQueryErrorReceiver
-{
-    public void ReportError(BlobQueryError err)
-    {
-        Console.Error.WriteLine($"Error: {err.Name}:{ err.Description }");
-    }
-}
-
-class ProgressHandler : IProgress<long>
-{
-    public void Report(long value)
-    {
-        Console.Error.WriteLine("Bytes scanned: " + value.ToString());
     }
 }
 
@@ -265,49 +379,98 @@ Die Methode `BlobQuickQueryClient.openInputStream()` sendet die Abfrage an die A
 
 ```java
 static void QueryHemingway(BlobClient blobClient) {
-    String expression = "SELECT * FROM BlobStorage WHERE _3 = 'Hemingway, Ernest'";
-    DumpQueryCsv(blobClient, expression, false);
+    String expression = "SELECT * FROM BlobStorage WHERE _3 = 'Hemingway, Ernest, 1899-1961'";
+    DumpQueryCsv(blobClient, expression, true);
 }
 
 static void DumpQueryCsv(BlobClient blobClient, String query, Boolean headers) {
     try {
-    
-        BlobQuickQueryDelimitedSerialization input = new BlobQuickQueryDelimitedSerialization()
+        BlobQuerySerialization input = new BlobQueryDelimitedSerialization()
             .setRecordSeparator('\n')
             .setColumnSeparator(',')
             .setHeadersPresent(headers)
             .setFieldQuote('\0')
             .setEscapeChar('\\');
-
-        BlobQuickQueryDelimitedSerialization output = new BlobQuickQueryDelimitedSerialization()
+        BlobQuerySerialization output = new BlobQueryDelimitedSerialization()
             .setRecordSeparator('\n')
             .setColumnSeparator(',')
-            .setHeadersPresent(false)
+            .setHeadersPresent(true)
             .setFieldQuote('\0')
             .setEscapeChar('\n');
-                
-        BlobRequestConditions requestConditions = null;
-        /* ErrorReceiver determines what to do on errors. */
-        ErrorReceiver<BlobQuickQueryError> errorReceiver = System.out::println;
+        Consumer<BlobQueryError> errorConsumer = System.out::println;
+        Consumer<BlobQueryProgress> progressConsumer = progress -> System.out.println("total bytes read: " + progress.getBytesScanned());
+        BlobQueryOptions queryOptions = new BlobQueryOptions(query)
+            .setInputSerialization(input)
+            .setOutputSerialization(output)
+            .setErrorConsumer(errorConsumer)
+            .setProgressConsumer(progressConsumer);            
 
-        /* ProgressReceiver details how to log progress*/
-        com.azure.storage.common.ProgressReceiver progressReceiver = System.out::println;
-    
-        /* Create a query acceleration client to the blob. */
-        BlobQuickQueryClient qqClient = new BlobQuickQueryClientBuilder(blobClient)
-            .buildClient();
         /* Open the query input stream. */
-        InputStream stream = qqClient.openInputStream(query, input, output, requestConditions, errorReceiver, progressReceiver);
-            
+        InputStream stream = blobClient.openQueryInputStream(queryOptions).getValue();
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(stream))) {
             /* Read from stream like you normally would. */
-            for (CSVRecord record : CSVParser.parse(reader, CSVFormat.EXCEL)) {
+            for (CSVRecord record : CSVParser.parse(reader, CSVFormat.EXCEL.withHeader())) {
                 System.out.println(record.toString());
             }
         }
     } catch (Exception e) {
         System.err.println("Exception: " + e.toString());
+        e.printStackTrace(System.err);
     }
+}
+```
+
+### <a name="python"></a>[Python](#tab/python)
+
+```python
+def query_hemingway(blob: BlobClient):
+    query = "SELECT * FROM BlobStorage WHERE _3 = 'Hemingway, Ernest, 1899-1961'"
+    dump_query_csv(blob, query, False)
+
+def dump_query_csv(blob: BlobClient, query: str, headers: bool):
+    qa_reader = blob.query_blob(query, blob_format=DelimitedTextDialect(has_header=headers), on_error=report_error, encoding='utf-8')
+    # records() returns a generator that will stream results as received. It will not block pending all results.
+    csv_reader = csv.reader(qa_reader.records())
+    for row in csv_reader:
+        print("*".join(row))
+```
+
+### <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+In diesem Beispiel wird die Abfrage an die Abfragebeschleunigung-API gesendet, und die Ergebnisse werden anschließend zurückgestreamt.
+
+```javascript
+async function queryHemingway(blob)
+{
+    const query = "SELECT * FROM BlobStorage WHERE _3 = 'Hemingway, Ernest, 1899-1961'";
+    await dumpQueryCsv(blob, query, false);
+}
+
+async function dumpQueryCsv(blob, query, headers)
+{
+    var response = await blob.query(query, {
+        inputTextConfiguration: {
+            kind: "csv",
+            recordSeparator: '\n',
+            hasHeaders: headers
+        },
+        outputTextConfiguration: {
+            kind: "csv",
+            recordSeparator: '\n',
+            hasHeaders: true
+        },
+        onProgress: (progress) => console.log(`Data read: ${progress.loadedBytes}`),
+        onError: (err) => console.error(`Error: ${err.position}:${err.name}:${err.description}`)});
+    return new Promise(
+        function (resolve, reject) {
+            csv.parseStream(response.readableStreamBody)
+                .on('data', row => console.log(row))
+                .on('error', error => {
+                    console.error(error);
+                    reject(error);
+                })
+                .on('end', rowCount => resolve());
+    });
 }
 ```
 
@@ -317,15 +480,30 @@ static void DumpQueryCsv(BlobClient blobClient, String query, Boolean headers) {
 
 Sie können die Ergebnisse auf eine Teilmenge der Spalten beschränken. Auf diese Weise rufen Sie nur die Spalten ab, die zum Ausführen einer bestimmten Berechnung benötigt werden. Dadurch werden die Anwendungsleistung verbessert und Kosten reduziert, da weniger Daten über das Netzwerk übertragen werden. 
 
-Dieser Code ruft nur die Spalte `PublicationYear` für alle Bücher im Dataset ab. Außerdem werden die Informationen aus der Kopfzeile in der Quelldatei verwendet, um auf Spalten in der Abfrage zu verweisen.
+Dieser Code ruft nur die Spalte `BibNum` für alle Bücher im Dataset ab. Außerdem werden die Informationen aus der Kopfzeile in der Quelldatei verwendet, um auf Spalten in der Abfrage zu verweisen.
 
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```powershell
+Function Get-QueryCsv($ctx, $container, $blob, $query, $hasheaders) {
+    $tempfile = New-TemporaryFile
+    $informat = New-AzStorageBlobQueryConfig -AsCsv -HasHeader:$hasheaders
+    Get-AzStorageBlobQueryResult -Context $ctx -Container $container -Blob $blob -InputTextConfiguration $informat -OutputTextConfiguration (New-AzStorageBlobQueryConfig -AsCsv -HasHeader) -ResultFile $tempfile.FullName -QueryString $query -Force
+    Get-Content $tempfile.FullName
+}
+
+$container = "data"
+$blob = "csv/csv-general/seattle-library-with-headers.csv"
+Get-QueryCsv $ctx $container $blob "SELECT BibNum FROM BlobStorage" $true
+
+```
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
 ```cs
-static async Task QueryPublishDates(BlockBlobClient blob)
+static async Task QueryBibNum(BlockBlobClient blob)
 {
-    string query = @"SELECT PublicationYear FROM BlobStorage";
+    string query = @"SELECT BibNum FROM BlobStorage";
     await DumpQueryCsv(blob, query, true);
 }
 ```
@@ -333,10 +511,28 @@ static async Task QueryPublishDates(BlockBlobClient blob)
 ### <a name="java"></a>[Java](#tab/java)
 
 ```java
-static void QueryPublishDates(BlobClient blobClient)
+static void QueryBibNum(BlobClient blobClient)
 {
-    String expression = "SELECT PublicationYear FROM BlobStorage";
+    String expression = "SELECT BibNum FROM BlobStorage";
     DumpQueryCsv(blobClient, expression, true);
+}
+```
+
+### <a name="python"></a>[Python](#tab/python)
+
+```python
+def query_bibnum(blob: BlobClient):
+    query = "SELECT BibNum FROM BlobStorage"
+    dump_query_csv(blob, query, True)
+```
+
+### <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+```javascript
+async function queryBibNum(blob)
+{
+    const query = "SELECT BibNum FROM BlobStorage";
+    await dumpQueryCsv(blob, query, true);
 }
 ```
 
@@ -344,12 +540,35 @@ static void QueryPublishDates(BlobClient blobClient)
 
 Im folgenden Code werden Zeilenfilterung und Spaltenprojektionen in derselben Abfrage kombiniert. 
 
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```powershell
+Get-QueryCsv $ctx $container $blob $query $true
+
+Function Get-QueryCsv($ctx, $container, $blob, $query, $hasheaders) {
+    $tempfile = New-TemporaryFile
+    $informat = New-AzStorageBlobQueryConfig -AsCsv -HasHeader:$hasheaders
+    Get-AzStorageBlobQueryResult -Context $ctx -Container $container -Blob $blob -InputTextConfiguration $informat -OutputTextConfiguration (New-AzStorageBlobQueryConfig -AsCsv -HasHeader) -ResultFile $tempfile.FullName -QueryString $query -Force
+    Get-Content $tempfile.FullName
+}
+
+$container = "data"
+$query = "SELECT BibNum, Title, Author, ISBN, Publisher, ItemType 
+            FROM BlobStorage 
+            WHERE ItemType IN 
+                ('acdvd', 'cadvd', 'cadvdnf', 'calndvd', 'ccdvd', 'ccdvdnf', 'jcdvd', 'nadvd', 'nadvdnf', 'nalndvd', 'ncdvd', 'ncdvdnf')"
+
+```
+
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
 ```cs
-static async Task QueryMysteryBooks(BlockBlobClient blob)
+static async Task QueryDvds(BlockBlobClient blob)
 {
-    string query = @"SELECT BibNum, Title, Author, ISBN, Publisher FROM BlobStorage WHERE Subjects LIKE '%Mystery%'";
+    string query = @"SELECT BibNum, Title, Author, ISBN, Publisher, ItemType 
+        FROM BlobStorage 
+        WHERE ItemType IN 
+            ('acdvd', 'cadvd', 'cadvdnf', 'calndvd', 'ccdvd', 'ccdvdnf', 'jcdvd', 'nadvd', 'nadvdnf', 'nalndvd', 'ncdvd', 'ncdvdnf')";
     await DumpQueryCsv(blob, query, true);
 }
 ```
@@ -357,10 +576,37 @@ static async Task QueryMysteryBooks(BlockBlobClient blob)
 ### <a name="java"></a>[Java](#tab/java)
 
 ```java
-static void QueryMysteryBooks(BlobClient blobClient)
+static void QueryDvds(BlobClient blobClient)
 {
-    String expression = "SELECT BibNum, Title, Author, ISBN, Publisher FROM BlobStorage WHERE Subjects LIKE '%Mystery%'";
+    String expression = "SELECT BibNum, Title, Author, ISBN, Publisher, ItemType " +
+                        "FROM BlobStorage " +
+                        "WHERE ItemType IN " +
+                        "   ('acdvd', 'cadvd', 'cadvdnf', 'calndvd', 'ccdvd', 'ccdvdnf', 'jcdvd', 'nadvd', 'nadvdnf', 'nalndvd', 'ncdvd', 'ncdvdnf')";
     DumpQueryCsv(blobClient, expression, true);
+}
+```
+
+### <a name="python"></a>[Python](#tab/python)
+
+```python
+def query_dvds(blob: BlobClient):
+    query = "SELECT BibNum, Title, Author, ISBN, Publisher, ItemType "\
+        "FROM BlobStorage "\
+        "WHERE ItemType IN "\
+        "   ('acdvd', 'cadvd', 'cadvdnf', 'calndvd', 'ccdvd', 'ccdvdnf', 'jcdvd', 'nadvd', 'nadvdnf', 'nalndvd', 'ncdvd', 'ncdvdnf')"
+    dump_query_csv(blob, query, True)
+```
+
+### <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+```javascript
+async function queryDvds(blob)
+{
+    const query = "SELECT BibNum, Title, Author, ISBN, Publisher, ItemType " +
+                  "FROM BlobStorage " +
+                  "WHERE ItemType IN " + 
+                  " ('acdvd', 'cadvd', 'cadvdnf', 'calndvd', 'ccdvd', 'ccdvdnf', 'jcdvd', 'nadvd', 'nadvdnf', 'nalndvd', 'ncdvd', 'ncdvdnf')";
+    await dumpQueryCsv(blob, query, true);
 }
 ```
 
@@ -368,6 +614,5 @@ static void QueryMysteryBooks(BlobClient blobClient)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Registrierungsformular für die Abfragebeschleunigung](https://aka.ms/adls/qa-preview-signup)    
-- [Abfragebeschleunigung für Azure Data Lake Storage (Vorschau)](data-lake-storage-query-acceleration.md)
-- [Abfragebeschleunigung – SQL-Sprachreferenz (Vorschau)](query-acceleration-sql-reference.md)
+- [Abfragebeschleunigung für Azure Data Lake Storage](data-lake-storage-query-acceleration.md)
+- [Abfragebeschleunigung – SQL-Sprachreferenz](query-acceleration-sql-reference.md)

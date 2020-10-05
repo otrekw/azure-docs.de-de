@@ -607,7 +607,7 @@
       items:
         - name: Onlinesicherung und bedarfsgesteuerte Wiederherstellung
           href: online-backup-and-restore.md
-        - name: Kompatibilität
+        - name: Compliance
           href: compliance.md
         - name: "Azure\_Policy-Unterstützung"
           href: policy.md
@@ -1064,6 +1064,8 @@
       items:
         - name: Migrieren zum Java V4 SDK
           href: migrate-java-v4-sdk.md
+        - name: Migrieren zu .NET V3 SDK
+          href: migrate-dotnet-v3.md
     - name: Problembehandlung
       items:
         - name: Häufige Fehler

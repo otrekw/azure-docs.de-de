@@ -12,12 +12,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e463644820866607eee1deac115dc1381f463a7
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: afef3d41212c9366aa696bfcd0abff6c8cfc4eb3
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89276557"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662424"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Migrieren vom Verbund zur Kennworthashsynchronisierung für Azure Active Directory
 
@@ -126,7 +126,7 @@ Weitere Informationen und Beispiele finden Sie in diesen Artikeln:
 
 Auch wenn während der in diesem Artikel beschriebenen Prozesse keine Änderungen an anderen vertrauenden Seiten Ihrer AD FS-Farm vorgenommen werden, empfehlen wir Ihnen das Anlegen einer aktuellen gültigen Sicherung Ihrer AD FS-Farm, mit der Sie eine Wiederherstellung durchführen können. Sie können eine aktuelle gültige Sicherung erstellen, indem Sie das kostenlose Microsoft-[Tool für die schnelle AD FS-Wiederherstellung](/windows-server/identity/ad-fs/operations/ad-fs-rapid-restore-tool) (AD FS Rapid Restore Tool) verwenden. Mit dem Tool können Sie AD FS sichern und eine vorhandene Farm wiederherstellen oder eine neue Farm erstellen.
 
-Wenn Sie das „AD FS Rapid Restore Tool“ nicht verwenden möchten, sollten Sie zumindest die Vertrauensstellung der vertrauenden Seite von Microsoft Office 365 Identity Platform und alle zugeordneten benutzerdefinierten Anspruchsregeln exportieren, die Sie ggf. hinzugefügt haben. Sie können die Vertrauensstellung der vertrauenden Seite und die zugehörigen Anspruchsregeln exportieren, indem Sie das folgende PowerShell-Beispiel verwenden:
+Wenn Sie das „AD FS Rapid Restore Tool“ nicht verwenden möchten, sollten Sie zumindest die Vertrauensstellung der vertrauenden Seite von Microsoft 365 Identity Platform und alle zugeordneten benutzerdefinierten Anspruchsregeln exportieren, die Sie hinzugefügt haben. Sie können die Vertrauensstellung der vertrauenden Seite und die zugehörigen Anspruchsregeln exportieren, indem Sie das folgende PowerShell-Beispiel verwenden:
 
 ``` PowerShell
 (Get-AdfsRelyingPartyTrust -Name "Microsoft Office 365 Identity Platform") | Export-CliXML "C:\temp\O365-RelyingPartyTrust.xml"
@@ -138,15 +138,15 @@ In diesem Abschnitt werden die Bereitstellungsaspekte und Details zur Verwendung
 
 ### <a name="current-ad-fs-use"></a>Derzeitige Verwendung von AD FS
 
-Bevor Sie die Umstellung von der Verbundidentität auf die verwaltete Identität durchführen, sollten Sie sich genau ansehen, wie Sie AD FS derzeit für Azure AD, Office 365 und andere Anwendungen (Vertrauensstellungen der vertrauenden Seite) nutzen. Sehen Sie sich vor allem die Szenarien an, die in der folgenden Tabelle beschrieben sind:
+Bevor Sie die Umstellung von der Verbundidentität auf die verwaltete Identität durchführen, sollten Sie sich genau ansehen, wie Sie AD FS derzeit für Azure AD, Microsoft 365 und andere Anwendungen (Vertrauensstellungen der vertrauenden Seite) nutzen. Sehen Sie sich vor allem die Szenarien an, die in der folgenden Tabelle beschrieben sind:
 
 | Wenn | Then |
 |-|-|
-| Sie planen, AD FS für andere Anwendungen (als Azure AD und Office 365) weiterzuverwenden. | Nachdem Sie Ihre Domänen konvertiert haben, verwenden Sie sowohl AD FS als auch Azure AD. Berücksichtigen Sie die Benutzerfreundlichkeit. In einigen Szenarien müssen sich Benutzer unter Umständen zweimal authentifizieren: einmal für Azure AD (worüber ein Benutzer SSO-Zugriff auf andere Anwendungen erhält, z.B. Office 365) und erneut für alle Anwendungen, die noch an AD FS als Vertrauensstellung der vertrauenden Seite gebunden sind. |
+| Sie planen, AD FS weiterhin für andere Anwendungen (als Azure AD und Microsoft 365) zu verwenden. | Nachdem Sie Ihre Domänen konvertiert haben, verwenden Sie sowohl AD FS als auch Azure AD. Berücksichtigen Sie die Benutzerfreundlichkeit. In einigen Szenarien müssen sich Benutzer unter Umständen zweimal authentifizieren: einmal für Azure AD (worüber ein Benutzer SSO-Zugriff auf andere Anwendungen wie Microsoft 365 erhält) und erneut für alle Anwendungen, die noch an AD FS als Vertrauensstellung der vertrauenden Seite gebunden sind. |
 | Ihre AD FS-Instanz wurde stark angepasst und nutzt in der Datei „onload.js“ spezifische Anpassungseinstellungen (z.B. wenn Sie die Anmeldung so geändert haben, dass Benutzer nur das Format **SamAccountName** für ihren Benutzernamen verwenden, anstatt einen Benutzerprinzipalnamen (UPN), oder wenn Ihre Organisation die Anmeldung mit umfangreichem Branding versehen hat). Die Datei „onload.js“ kann in Azure AD nicht dupliziert werden. | Vor dem Fortfahren müssen Sie sich vergewissern, dass mit Azure AD Ihre derzeitigen Anpassungsanforderungen erfüllt werden können. Weitere Informationen und Anleitungen finden Sie in den Abschnitten zum AD FS-Branding und zur AD FS-Anpassung.|
 | Sie können AD FS zum Blockieren von früheren Versionen von Clients mit Authentifizierung verwenden.| Erwägen Sie die Ersetzung von AD FS-Steuerungen, mit denen frühere Versionen von Authentifizierungsclients blockiert werden, indem Sie eine Kombination aus [Steuerungen des bedingten Zugriffs](../conditional-access/concept-conditional-access-conditions.md) und [Clientzugriffsregeln in Exchange Online](https://aka.ms/EXOCAR) verwenden. |
 | Bei Ihnen ist es erforderlich, dass Benutzer eine mehrstufige Authentifizierung über eine entsprechende lokale Serverlösung durchführen, um sich für AD FS zu authentifizieren.| In einer Domäne mit verwalteter Identität können Sie über die lokale Lösung für die mehrstufige Authentifizierung keine MFA-Abfrage in den Authentifizierungsablauf einfügen. Sie können den Dienst „Azure Multi-Factor Authentication“ aber für die mehrstufige Authentifizierung nutzen, nachdem die Domäne konvertiert wurde.<br /><br /> Falls Ihre Benutzer Azure Multi-Factor Authentication derzeit nicht verwenden, ist ein einmaliger Registrierungsschritt für die Benutzer erforderlich. Sie müssen sich auf die geplante Registrierung für Ihre Benutzer vorbereiten und dies kommunizieren. |
-| Sie verwenden derzeit Zugriffssteuerungsrichtlinien (AuthZ-Regeln) in AD FS, um den Zugriff auf Office 365 zu steuern.| Erwägen Sie, die Richtlinien durch die entsprechenden [Azure AD-Richtlinien für den bedingten Zugriff](../conditional-access/overview.md) und die [Clientzugriffsregeln für Exchange Online](https://aka.ms/EXOCAR) zu ersetzen.|
+| Sie verwenden derzeit Zugriffssteuerungsrichtlinien (AuthZ-Regeln) in AD FS, um den Zugriff auf Microsoft 365 zu steuern.| Erwägen Sie, die Richtlinien durch die entsprechenden [Azure AD-Richtlinien für den bedingten Zugriff](../conditional-access/overview.md) und die [Clientzugriffsregeln für Exchange Online](https://aka.ms/EXOCAR) zu ersetzen.|
 
 ### <a name="common-ad-fs-customizations"></a>Häufige AD FS-Anpassungen
 
@@ -179,7 +179,7 @@ Wenn Ihre Organisation die [Seiten für die AD FS-Anmeldung so angepasst hat](/w
 Es sind zwar ähnliche Anpassungen verfügbar, aber auf Anmeldeseiten sollte mit visuellen Änderungen gerechnet werden, nachdem die Konvertierung durchgeführt wurde. Es kann ratsam sein, in der Benachrichtigung für Ihre Benutzer auch Informationen zu den zu erwartenden Änderungen anzugeben.
 
 > [!NOTE]
-> Branding für Organisationen ist nur verfügbar, wenn Sie eine Premium- oder Basic-Lizenz für Azure Active Directory erwerben oder über eine Office 365-Lizenz verfügen.
+> Branding für Organisationen ist nur verfügbar, wenn Sie eine Premium- oder Basic-Lizenz für Azure Active Directory erwerben oder über eine Microsoft 365-Lizenz verfügen.
 
 ## <a name="plan-deployment-and-support"></a>Planen der Bereitstellung und des Supports
 
@@ -194,7 +194,7 @@ Hiervon sind nur Benutzer betroffen, die während dieses Fensters nach der Konve
 Moderne Authentifizierungsclients (Office 2016-/Office 2013-, iOS- und Android-Apps) nutzen ein gültiges Aktualisierungstoken, um neue Zugriffstoken für den weiteren Zugriff auf Ressourcen abzurufen, anstatt zurück zu AD FS zu wechseln. Diese Clients sind „immun“ gegen Aufforderungen zur Kennworteingabe, die sich aus dem Prozess der Domänenkonvertierung ergeben. Die Clients funktionieren auch ohne zusätzliche Konfiguration weiterhin.
 
 > [!IMPORTANT]
-> Fahren Sie Ihre AD FS-Umgebung nicht herunter, und entfernen Sie die Vertrauensstellung der vertrauenden Seite in Office 365 nicht, bevor Sie überprüft haben, ob alle Benutzer die Cloudauthentifizierung erfolgreich nutzen können.
+> Fahren Sie Ihre AD FS-Umgebung nicht herunter, und entfernen Sie die Vertrauensstellung der vertrauenden Seite von Microsoft 365 nicht, bevor Sie überprüft haben, ob alle Benutzer die Cloudauthentifizierung erfolgreich nutzen können.
 
 ### <a name="plan-for-rollback"></a>Planen der Zurücksetzung
 
@@ -211,7 +211,7 @@ Falls ein größeres Problem besteht, das Sie nicht schnell lösen können, tref
 
 Ein wichtiger Teil der Bereitstellungsplanung und des Supports ist die Sicherstellung, dass Ihre Benutzer vorab über anstehende Änderungen informiert werden. Benutzer sollten im Voraus wissen, was passiert und was von ihnen erwartet wird. 
 
-Nachdem sowohl die Kennworthashsynchronisierung als auch das nahtlose einmalige Anmelden bereitgestellt wurden, ändert sich die Anmeldeerfahrung für den Benutzer beim Zugriff auf Office 365 und andere Ressourcen, die per Azure AD authentifiziert werden. Benutzer, die sich außerhalb des Netzwerks befinden, sehen nur die Azure AD-Anmeldeseite. Diese Benutzer werden nicht auf die formularbasierte Seite umgeleitet, die von den Proxyservern für externe Webanwendungen angezeigt wird.
+Nachdem sowohl die Kennworthashsynchronisierung als auch das nahtlose einmalige Anmelden bereitgestellt wurden, ändert sich die Anmeldeerfahrung für den Benutzer beim Zugriff auf Microsoft 365 und andere Ressourcen, die per Azure AD authentifiziert werden. Benutzer, die sich außerhalb des Netzwerks befinden, sehen nur die Azure AD-Anmeldeseite. Diese Benutzer werden nicht auf die formularbasierte Seite umgeleitet, die von den Proxyservern für externe Webanwendungen angezeigt wird.
 
 Binden Sie die folgenden Elemente in Ihre Kommunikationsstrategie ein:
 
@@ -431,14 +431,14 @@ Testen Sie die Kennworthashsynchronisierung wie folgt:
 3. Der Benutzer wird umgeleitet, und die Anmeldung am Zugriffsbereich ist erfolgreich:
 
    > [!NOTE]
-   > Das nahtlose einmalige Anmelden funktioniert für Office 365-Dienste, die Domänenhinweise unterstützen (z.B. myapps.microsoft.com/contoso.com). Derzeit unterstützt das Office 365-Portal (portal.office.com) keine Domänenhinweise. Benutzer müssen einen Benutzerprinzipalnamen (UPN) eingeben. Nachdem ein UPN eingegeben wurde, ruft der Prozess zum nahtlosen einmaligen Anmelden das Kerberos-Ticket im Namen des Benutzers ab. Der Benutzer wird angemeldet, ohne ein Kennwort einzugeben.
+   > Das nahtlose einmalige Anmelden funktioniert für Microsoft 365-Dienste, die Domänenhinweise unterstützen (z. B. myapps.microsoft.com/contoso.com). Derzeit unterstützt das Microsoft 365-Portal (portal.office.com) keine Domänenhinweise. Benutzer müssen einen Benutzerprinzipalnamen (UPN) eingeben. Nachdem ein UPN eingegeben wurde, ruft der Prozess zum nahtlosen einmaligen Anmelden das Kerberos-Ticket im Namen des Benutzers ab. Der Benutzer wird angemeldet, ohne ein Kennwort einzugeben.
 
    > [!TIP]
    > Erwägen Sie die Bereitstellung der [Azure AD-Hybrideinbindung unter Windows 10](../devices/overview.md), um das einmalige Anmelden zu verbessern.
 
 ### <a name="remove-the-relying-party-trust"></a>Entfernen der Vertrauensstellung der vertrauenden Seite
 
-Nachdem Sie überprüft haben, ob alle Benutzer und Clients erfolgreich über Azure AD authentifiziert werden konnten, können Sie die Vertrauensstellung der vertrauenden Seite von Office 365 entfernen.
+Nachdem Sie überprüft haben, ob alle Benutzer und Clients erfolgreich über Azure AD authentifiziert werden konnten, können Sie die Vertrauensstellung der vertrauenden Seite von Microsoft 365 entfernen.
 
 Falls Sie AD FS nicht für andere Zwecke nutzen (für andere Vertrauensstellungen der vertrauenden Seite), können Sie AD FS nun außer Betrieb nehmen.
 

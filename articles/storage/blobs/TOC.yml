@@ -265,8 +265,8 @@
                     - name: Vorbereiten von Laufwerken für den Import (v2)
         - name: Überwachung
           items:
-            - name: Überwachen eines Speicherkontos
-              href: ../common/monitor-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Überwachen von Blobspeicher
+              href: monitor-blob-storage.md
             - name: Übergang von klassischen Metriken
               href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Überwachung (klassisch)
@@ -554,7 +554,7 @@
           displayName: ARM
           href: /azure/templates/microsoft.storage/allversions
         - name: Überwachungsdaten
-          href: ../common/monitor-storage-reference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+          href: monitor-blob-storage-reference.md
         - name: Azure Policy-Integrationen
           displayName: 'samples, policies, definitions'
           href: ../common/policy-reference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -701,7 +701,7 @@
               href: data-lake-storage-supported-open-source-platforms.md
         - name: Überwachung
           items:
-            - name: Überwachen eines Speicherkontos
+            - name: Überwachen von Blobspeicher
               href: ../common/monitor-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Übergang von klassischen Metriken
               href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json

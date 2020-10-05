@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 01/15/2020
 ms.author: curtand
-ms.openlocfilehash: 7d630fac1f848e691ddb96dc47596a2e9927309f
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 7f4c09a32794e13b0e0041ee916401b714d8509e
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799433"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055230"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>Wozu dient die Microsoft Authenticator-App?
 
@@ -41,8 +41,8 @@ Die Verwendung der Microsoft Authenticator-App kann auf verschiedene Arten erfol
 | ----|-----------|
 | Zweistufige Überprüfung | Bei dieser Überprüfung benötigen Sie in der Regel nur zwei Angaben zur Überprüfung, etwa ein Kennwort und eine PIN. Die Microsoft Authenticator-App unterstützt sowohl die standardmäßige zweistufige Überprüfung als auch die Anmeldung ohne Kennwort. |
 | Multi-Factor Authentication (MFA) | Jede zweistufige Überprüfung stellt eine mehrstufige Authentifizierung dar. Dabei müssen Sie je nach den Anforderungen Ihrer Organisation *mindestens* zwei Angaben zur Überprüfung machen. |
-| Microsoft-Konto (auch MSA genannt) | Sie erstellen Ihre persönlichen Microsoft-Konten, um Zugriff auf Ihre verbraucherorientierten Microsoft-Produkte und -Clouddienste wie Outlook, OneDrive, MSN, Xbox LIVE oder Office 365 zu erhalten. Ihr Microsoft-Konto wird im von Microsoft betriebenen Microsoft-Kontosystem für Endbenutzeridentitäten erstellt und gespeichert. |
-| Geschäfts- oder Schulkonto | Ihre Organisation erstellt Ihr Geschäfts-, Schul- oder Unikonto (z.B. alain@contoso.com), über das Sie Zugriff auf interne und möglicherweise eingeschränkte Ressourcen wie Microsoft Azure, Windows Intune und Office 365 erhalten. |
+| Microsoft-Konto (auch MSA genannt) | Sie erstellen Ihre persönlichen Konten, um Zugriff auf Ihre verbraucherorientierten Microsoft-Produkte und -Clouddienste wie Outlook, OneDrive, MSN, Xbox LIVE oder Microsoft 365 zu erhalten. Ihr Microsoft-Konto wird im von Microsoft betriebenen Microsoft-Kontosystem für Endbenutzeridentitäten erstellt und gespeichert. |
+| Geschäfts- oder Schulkonto | Ihre Organisation erstellt Ihr Geschäfts-, Schul- oder Unikonto (z. B. alain@contoso.com), über das Sie Zugriff auf interne und möglicherweise eingeschränkte Ressourcen wie Microsoft Azure, Windows Intune und Microsoft 365 erhalten. |
 | Prüfcode | Dies ist der sechsstellige Code, der in der Authenticator-App unter jedem hinzugefügten Konto angezeigt wird. Der Prüfcode wird alle 30 Sekunden geändert, um zu verhindern, dass Benutzer einen Code mehrmals verwenden. Dies wird auch als Einmalkennung (One-Time Passcode, OTP) bezeichnet. |
 
 ## <a name="how-two-factor-verification-works-with-the-app"></a>Funktionsweise der zweistufigen Überprüfung mit der App

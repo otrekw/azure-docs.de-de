@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 03/30/2020
-ms.openlocfilehash: 92f4bde31af2a7bb4c658141964f238a8c077eef
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 31dba5489db3778d738fc2856cf6aacfd6987711
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120373"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030751"
 ---
 # <a name="configure-lead-management-for-dynamics-365-customer-engagement"></a>Konfigurieren der Leadverwaltung für Dynamics 365 Customer Engagement
 
@@ -27,7 +27,7 @@ Für die Schritte in diesem Artikel werden die folgenden Benutzerberechtigungen 
 
 * Administratorrechte für Ihre Dynamics 365 Customer Engagement-Instanz, um eine Lösung installieren zu können
 * Mandantenadministratorrechte, um ein neues Dienstkonto für den Leaddienst zu erstellen, mit dem Leads von kommerziellen Marketplace-Angeboten gesendet werden
-* Zugriff auf das Office 365-Verwaltungsportal
+* Zugriff auf das Administratorportal
 * Zugriff auf das Azure-Portal
 
 ## <a name="install-the-solution"></a>Installieren der Lösung

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 583179c4678b43bef25174835ec2701d571b37b6
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 3ceaa357150fe0c4d26eeedc6821761d2eb00106
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905649"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357963"
 ---
 # <a name="import-soap-api"></a>Importieren einer SOAP-API
 
@@ -45,7 +45,7 @@ Bearbeiten Sie den folgenden Schnellstart: [Erstellen einer neuen Azure API Mana
 3. Geben Sie in **WSDL-Spezifikation** die URL Ihrer SOAP-API ein.
 4. Das Optionsfeld **SOAP-Passthrough** ist standardmäßig aktiviert. Mit dieser Auswahl wird die API als SOAP verfügbar gemacht. Der Consumer muss die SOAP-Regeln verwenden. Wenn Sie die API „korrigieren“ möchten, führen Sie die Schritte in [Importieren einer SOAP-API und Konvertieren dieser in REST](restify-soap-api.md) aus.
 
-    ![Pass-Through](./media/import-soap-api/pass-through.png)
+    ![Screenshot, der das Dialogfeld „Aus W S D L erstellen“ zeigt, in dem Sie eine W S D L-Spezifikation eingeben können.](./media/import-soap-api/pass-through.png)
 5. Drücken Sie auf die Registerkarte.
 
     Die folgenden Felder werden mit den Informationen aus der SOAP-API aufgefüllt: Anzeigename, Name, Beschreibung.

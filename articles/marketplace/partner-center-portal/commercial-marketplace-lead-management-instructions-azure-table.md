@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 08/25/2020
-ms.openlocfilehash: db2bae9d9e1c9658937e725a04d919743ff9999e
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 2dca0ae02f2d079e98b51e1222114db1f2104b96
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855782"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030796"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Verwenden von Azure-Tabellenspeicher zum Verwalten von Leads im kommerziellen Marketplace
 
@@ -38,7 +38,7 @@ Wenn Ihr CRM-System (Customer Relationship Management) in Partner Center nicht e
 
 1. Wählen Sie auf der Seite **Home** des Azure-Portals **Alle Ihre Ressourcen anzeigen** aus, um auf Ihr Speicherkonto zuzugreifen. Sie können auch auf der linken Menüleiste des Azure-Portals **Alle Ressourcen** auswählen.
 
-    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-access.png" alt-text="Zugriff auf Ihr Azure-Speicherkonto":::.
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-access.png" alt-text="Schritte zum Erstellen eines Azure Storage-Kontos":::.
 
 1. Wählen Sie im Speicherkontobereich **Zugriffsschlüssel** aus, und kopieren Sie den Wert von **Verbindungszeichenfolge** für den Schlüssel. Speichern Sie diesen Wert, da es sich um den Wert **Verbindungszeichenfolge für Speicherkonto** handelt, den Sie im Veröffentlichungsportal angeben müssen, um Leads für Ihr Azure Marketplace-Angebot zu erhalten.
 
@@ -48,7 +48,7 @@ Wenn Ihr CRM-System (Customer Relationship Management) in Partner Center nicht e
     DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.screens.net
     ```
 
-    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-keys.png" alt-text="Azure-Speicherschlüssel":::.
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-keys.png" alt-text="Schritte zum Erstellen eines Azure Storage-Kontos":::.
 
 
 1. Wählen Sie im Speicherkontobereich **Tabellen** und dann **+ Tabelle** aus, um eine Tabelle zu erstellen. Geben Sie einen Namen für die Tabelle ein, und wählen Sie **OK** aus. Speichern Sie diesen Wert, da Sie ihn benötigen, wenn Sie einen Flow für den Empfang von E-Mail-Benachrichtigungen beim Erhalt von Leads konfigurieren möchten.
@@ -135,7 +135,7 @@ In diesem Beispiel wird ein Flow erstellt, in dem automatisch eine E-Mail-Benach
    In den nächsten Schritten richten Sie die Aktion ein, die entsprechend dem Ergebnis der Bedingung ausgeführt werden soll:
 
    * Hat die Bedingung das Ergebnis **Wenn nein**, soll keine Aktion ausgeführt werden.
-   * Hat die Bedingung das Ergebnis **Wenn ja**, lösen Sie eine Aktion aus, in der eine E-Mail an Ihr Office 365-Konto gesendet wird.
+   * Hat die Bedingung das Ergebnis **Wenn ja**, soll eine Aktion ausgelöst werden, durch die eine Verbindung mit Ihrem Geschäfts-, Schul- oder Unikonto hergestellt wird, um eine E-Mail zu senden. 
 
 1. Wählen Sie unter **Wenn ja** die Option **Aktion hinzufügen** aus.
 
@@ -185,7 +185,7 @@ Führen Sie die folgenden Schritte aus, um die Leadverwaltungsinformationen für
 
 1. Wählen Sie im Abschnitt **Kundenleads** die Option **Verbinden** aus.
 
-    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-azure-table/customer-leads.png" alt-text="Kundenleads":::
+    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-azure-table/customer-leads.png" alt-text="Schritte zum Erstellen eines Azure Storage-Kontos":::
 
 1. Wählen Sie im Popupfenster **Verbindungsdetails** die Option **Azure-Tabelle** als **Leadziel** aus. 
      ![„Verbindungsdetails“ unter „Leadverwaltung“](./media/commercial-marketplace-lead-management-instructions-azure-table/connection-details.png)

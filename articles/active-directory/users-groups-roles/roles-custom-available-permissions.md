@@ -1,6 +1,6 @@
 ---
-title: Verfügbare Berechtigungen für benutzerdefinierte Administratorrollen – Azure AD | Microsoft-Dokumentation
-description: Benutzerdefinierte Administratorrollenberechtigungen zur Delegierung der Identitätsverwaltung.
+title: Benutzerdefinierte Rollenberechtigungen für die App-Registrierung – Azure AD | Microsoft-Dokumentation
+description: Delegieren Sie benutzerdefinierte Administratorrollenberechtigungen für die Verwaltung von App-Registrierungen.
 services: active-directory
 author: curtand
 manager: daveba
@@ -8,27 +8,27 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: how-to
-ms.date: 11/08/2019
+ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c11723efe3fac236fce49c1f92fa338d4e58b59
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 624489033097c0da4d85488b7ae376c5e0f3a56b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84732105"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967689"
 ---
-# <a name="application-registration-subtypes-and-permissions-in-azure-active-directory"></a>Anwendungsregistrierungsuntertypen und -berechtigungen in Azure Active Directory
+# <a name="application-registration-permissions-for-custom-roles-in-azure-active-directory"></a>Berechtigungen für Anwendungsregistrierung für benutzerdefinierte Rollen in Azure Active Directory
 
 Dieser Artikel enthält die derzeit verfügbaren Anwendungsregistrierungsberechtigungen für benutzerdefinierte Rollendefinitionen in Azure Active Directory (Azure AD).
 
-## <a name="permissions-for-managing-single-directory-applications"></a>Berechtigungen zum Verwalten von Einzelverzeichnisanwendungen
+## <a name="permissions-for-managing-single-tenant-applications"></a>Berechtigungen zum Verwalten von Anwendungen mit einem Mandanten
 
-Beim Auswählen der Berechtigungen für Ihre benutzerdefinierte Rolle haben Sie die Möglichkeit, Zugriff nur zum Verwalten von Einzelverzeichnisanwendungen zu gewähren. Einzelverzeichnisanwendungen sind nur für Benutzer in der Azure AD-Organisation verfügbar, in der die Anwendung registriert ist. Bei Einzelverzeichnisanwendungen ist die Option **Unterstützte Kontotypen** per Definition auf „Nur Konten in diesem Organisationsverzeichnis“ festgelegt. In der Graph-API ist die „signInAudience“-Eigenschaft von Einzelverzeichnisanwendungen auf „AzureADMyOrg“ festgelegt.
+Beim Auswählen der Berechtigungen für Ihre benutzerdefinierte Rolle haben Sie die Möglichkeit, Zugriff nur zum Verwalten von Anwendungen mit einem Mandanten zu gewähren. Anwendungen mit einem Mandanten sind nur für Benutzer in der Azure AD-Organisation verfügbar, in der die Anwendung registriert ist. Per Definition ist bei Anwendungen mit einem Mandanten **Unterstützte Kontotypen** auf „Nur Konten in diesem Organisationsverzeichnis“ festgelegt. In der Graph-API ist für Einzelmandantenanwendungen die signInAudience-Eigenschaft auf „AzureADMyOrg“ festgelegt.
 
-Verwenden Sie zum Gewähren des Zugriffs nur zum Verwalten von Einzelverzeichnisanwendungen die unten aufgeführten Berechtigungen mit dem Untertyp **applications.myOrganization**. Beispiel: microsoft.directory/applications.myOrganization/basic/update.
+Verwenden Sie zum Gewähren des Zugriffs nur zum Verwalten von Anwendungen mit einem Mandanten die unten aufgeführten Berechtigungen mit dem Untertyp **applications.myOrganization**. Beispiel: microsoft.directory/applications.myOrganization/basic/update.
 
 Eine Erläuterung der allgemeinen Begriffe „Untertyp“, „Berechtigung“ und „Eigenschaftensatz“ finden Sie in der [Übersicht über benutzerdefinierte Rollen](roles-custom-overview.md). Die folgenden Informationen gelten speziell für Anwendungsregistrierungen.
 
@@ -95,7 +95,7 @@ Erteilt die gleichen Berechtigungen wie microsoft.directory/applications/standar
 
 #### <a name="microsoftdirectoryapplicationsallpropertiesupdate"></a>microsoft.directory/applications/allProperties/update
 
-Möglichkeit zum Aktualisieren aller Eigenschaften von Einzelverzeichnisanwendungen und Anwendungen mit mehreren Verzeichnissen.
+Möglichkeit zum Aktualisieren aller Eigenschaften von Anwendungen mit einem Mandanten und mehrinstanzenfähigen Anwendungen.
 
 #### <a name="microsoftdirectoryapplicationsmyorganizationallpropertiesupdate"></a>microsoft.directory/applications.myOrganization/allProperties/update
 
@@ -103,7 +103,7 @@ Erteilt die gleichen Berechtigungen wie microsoft.directory/applications/allProp
 
 #### <a name="microsoftdirectoryapplicationsaudienceupdate"></a>microsoft.directory/applications/audience/update
 
-Möglichkeit zum Aktualisieren der (signInAudience)-Eigenschaft des unterstützten Kontotyps von Einzelverzeichnisanwendungen und Anwendungen mit mehreren Verzeichnissen.
+Möglichkeit zum Aktualisieren der (signInAudience)-Eigenschaft des unterstützten Kontotyps von Anwendungen mit einem Mandanten und mehrinstanzenfähigen Anwendungen.
 
 ![Diese Berechtigung gewährt Zugriff auf die Eigenschaft des unterstützten Kontotyps der App-Registrierung auf der Authentifizierungsseite.](./media/roles-custom-available-permissions/supported-account-types.png)
 
@@ -139,7 +139,7 @@ Berechtigung zum Aktualisieren der Eigenschaften der Zertifikate und der geheime
 
 #### <a name="microsoftdirectoryapplicationsmyorganizationcredentialsupdate"></a>microsoft.directory/applications.myOrganization/credentials/update
 
-Erteilt die gleichen Berechtigungen wie microsoft.directory/applications/credentials/update, jedoch nur für Einzelmandantenanwendungen.
+Erteilt die gleichen Berechtigungen wie microsoft.directory/applications/credentials/update, jedoch nur für Anwendungen mit einem Mandanten.
 
 #### <a name="microsoftdirectoryapplicationsownersupdate"></a>microsoft.directory/applications/owners/update
 
