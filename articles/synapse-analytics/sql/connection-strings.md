@@ -10,18 +10,18 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 42a1110b089d5edf9793bf2bb2c699a717a4b1a4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: aa940b00e9c23ab08244ea55c0cd22a8d5f1897f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004968"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289377"
 ---
 # <a name="connection-strings-for-synapse-sql-preview"></a>Verbindungszeichenfolgen für Synapse SQL (Vorschauversion)
 
 Sie können über verschiedene Anwendungsprotokolle eine Verbindung mit Synapse SQL (Vorschauversion) herstellen, z. B. über [ADO.NET](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx), [ODBC](https://msdn.microsoft.com/library/jj730314.aspx), [PHP](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396) und [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx). Im Folgenden sind einige Beispiele für Verbindungszeichenfolgen für die einzelnen Protokolle aufgeführt. 
 
-Sie können auch das Azure-Portal zum Einrichten Ihrer Verbindungszeichenfolge verwenden.  Um die Verbindungszeichenfolge über das Azure-Portal zu erstellen, navigieren Sie zum Blatt Ihrer Datenbank, und klicken Sie unter *Zusammenfassung* auf *Datenbank-Verbindungszeichenfolgen anzeigen*.
+Sie können auch das Azure-Portal zum Einrichten Ihrer Verbindungszeichenfolge verwenden.  Um die Verbindungszeichenfolge über das Azure-Portal zu erstellen, navigieren Sie zum Blatt Ihrer Datenbank, und wählen Sie unter *Zusammenfassung* die Option *Datenbank-Verbindungszeichenfolgen anzeigen* aus.
 
 ## <a name="sample-adonet-connection-string"></a>Beispiel-Verbindungszeichenfolge für ADO.NET
 

@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/24/2019
+ms.date: 09/15/2020
 ms.author: jingwang
-ms.openlocfilehash: 9b68d3724c6390fc5d30745924451e27ef9855b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3aa42d6060ecdd93dd97438a025c4f5e4f05ac52
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81417724"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531728"
 ---
 # <a name="orc-format-in-azure-data-factory"></a>ORC-Format in Azure Data Factory
 
@@ -82,7 +82,16 @@ Die folgenden Eigenschaften werden im Abschnitt ***\*sink\**** der Kopieraktivit
 | Eigenschaft      | BESCHREIBUNG                                                  | Erforderlich |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **OrcSink** festgelegt werden. | Ja      |
+| formatSettings | Eine Gruppe von Eigenschaften. Weitere Informationen zu **ORC-Schreibeinstellungen** finden Sie in der Tabelle unten. |    Nein      |
 | storeSettings | Eine Gruppe von Eigenschaften für das Schreiben von Daten in einen Datenspeicher. Jeder dateibasierte Connector verfügt unter `storeSettings` über eigene unterstützte Schreibeinstellungen. **Informationen hierzu finden Sie im Abschnitt über die Eigenschaften der Kopieraktivität im Artikel über Connectors**. | Nein       |
+
+Unterstützte **ORC-Schreibeinstellungen** unter `formatSettings`:
+
+| Eigenschaft      | Beschreibung                                                  | Erforderlich                                              |
+| ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
+| Typ          | Der Typ von „formatSettings“ muss auf **OrcWriteSettings** festgelegt werden. | Ja                                                   |
+| maxRowsPerFile | Wenn Sie Daten in einen Ordner schreiben, können Sie in mehrere Dateien zu schreiben und die maximale Anzahl von Zeilen pro Datei angeben.  | Nein |
+| fileNamePrefix | Gilt, wenn `maxRowsPerFile` konfiguriert ist.<br> Geben Sie das Dateinamenpräfix beim Schreiben von Daten in mehrere Dateien an, das zu diesem Muster führt: `<fileNamePrefix>_00000.<fileExtension>`. Wenn keine Angabe erfolgt, wird das Dateinamenpräfix automatisch generiert. Diese Eigenschaft findet keine Anwendung, wenn die Quelle ein dateibasierter Speicher oder ein [Datenspeicher mit aktivierter Partitionsoption](copy-activity-performance-features.md) ist.  | Nein |
 
 ## <a name="using-self-hosted-integration-runtime"></a>Verwendung der selbstgehosteten Integration Runtime
 

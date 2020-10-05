@@ -1,39 +1,44 @@
 ---
-title: Zusammenfassen lokaler Umgebungen mittels Peering zu einer privaten Cloud
-description: In diesem Azure VMware Solution-Tutorial wird ein ExpressRoute Global Reach-Peering mit einer privaten Cloud in einer Azure VMware Solution-Instanz erstellt.
+title: 'Tutorial: Zusammenfassen lokaler Umgebungen mittels Peering zu einer privaten Cloud'
+description: Erfahren Sie, wie Sie ExpressRoute Global Reach-Peering mit einer privaten Cloud in einer Azure VMware Solution-Instanz erstellen.
 ms.topic: tutorial
-ms.date: 07/16/2020
-ms.openlocfilehash: db3f5988cb8c07d9b6e80f500ac6aff8f96dfded
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 09/21/2020
+ms.openlocfilehash: 07b7e1c2636f3754eda56af574586a1027403d3e
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750449"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576726"
 ---
 # <a name="tutorial-peer-on-premises-environments-to-a-private-cloud"></a>Tutorial: Zusammenfassen lokaler Umgebungen mittels Peering zu einer privaten Cloud
 
-Über ExpressRoute Global Reach wird Ihre lokale Umgebung mit Ihren privaten Clouds verbunden. Die ExpressRoute Global Reach-Verbindung wird zwischen einer ExpressRoute-Leitung einer privaten Cloud und einer vorhandenen ExpressRoute-Verbindung mit Ihren lokalen Umgebungen hergestellt.  Es gibt eine Anleitung zum Konfigurieren von ExpressRoute Global Reach per Azure CLI und per PowerShell, und wir haben die [CLI-Befehle](../expressroute/expressroute-howto-set-global-reach-cli.md) mit spezifischen Details und Beispielen erweitert, um Sie bei beim Konfigurieren des ExpressRoute Global Reach-Peerings zwischen lokalen Umgebungen und einer privaten Azure VMware Solution-Cloud zu unterstützen.   
+Über ExpressRoute Global Reach wird Ihre lokale Umgebung mit Ihrer privaten Azure VMware Solution-Cloud verbunden. Die ExpressRoute Global Reach-Verbindung wird zwischen der ExpressRoute-Leitung der privaten Cloud und einer vorhandenen ExpressRoute-Verbindung mit Ihren lokalen Umgebungen hergestellt. 
 
-Lesen Sie zunächst die Dokumentation zum [Aktivieren der Konnektivität zwischen ExpressRoute-Leitungen in verschiedenen Azure-Abonnements](../expressroute/expressroute-howto-set-global-reach-cli.md#enable-connectivity-between-expressroute-circuits-in-different-azure-subscriptions), bevor Sie die Konnektivität zwischen zwei ExpressRoute-Leitungen mit ExpressRoute Global Reach aktivieren.  Für die ExpressRoute-Leitung, die Sie beim [Konfigurieren des Netzwerks zwischen Azure und privater Cloud](tutorial-configure-networking.md) verwenden, müssen Autorisierungsschlüssel erstellt und verwendet werden, wenn Sie ein Peering mit ExpressRoute-Gateways oder mit anderen ExpressRoute-Leitungen unter Verwendung von Global Reach einrichten. Sie haben bereits einen Autorisierungsschlüssel der ExpressRoute-Leitung verwendet, und Sie erstellen einen zweiten Autorisierungsschlüssel, um ein Peering mit Ihrer lokalen ExpressRoute-Leitung einzurichten.
-
-> [!TIP]
-> Im Kontext dieser Anleitung ist _Circuit 1_ Ihre lokale ExpressRoute-Leitung. Die ExpressRoute-Leitung Ihrer privaten Cloud befindet sich in einem anderen Abonnement und heißt _Circuit 2_. 
+Für die ExpressRoute-Leitung, die Sie beim [Konfigurieren des Netzwerks zwischen Azure und privater Cloud](tutorial-configure-networking.md) verwenden, müssen Autorisierungsschlüssel erstellt und verwendet werden, wenn Sie ein Peering mit ExpressRoute-Gateways oder mit anderen ExpressRoute-Leitungen unter Verwendung von Global Reach einrichten. Sie haben bereits einen Autorisierungsschlüssel der ExpressRoute-Leitung verwendet, und Sie erstellen in diesem Tutorial einen zweiten Autorisierungsschlüssel, um ein Peering mit Ihrer lokalen ExpressRoute-Leitung einzurichten.
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Verwenden der vorhandenen Anweisungen zum Verwalten von ExpressRoute-Leitungen und ExpressRoute Global Reach-Peerings
-> * Erstellen eines Autorisierungsschlüssels für _Circuit 2_ (ExpressRoute-Leitung der privaten Cloud)
-> * Verwenden der Azure CLI in einer Cloud Shell-Instanz im Abonnement von _Circuit 1_, um das ExpressRoute Global Reach-Peering zwischen lokaler Umgebung und privater Cloud zu aktivieren
+> * Erstellen eines zweiten Autorisierungsschlüssels für _Circuit 2_, die ExpressRoute-Leitung der privaten Cloud
+> * Verwenden entweder des [Azure-Portals](#azure-portal-method) oder der [Azure CLI in einer Cloud Shell-Methode](#azure-cli-in-a-cloud-shell-method) im Abonnement von _Circuit 1_, um das ExpressRoute Global Reach-Peering zwischen lokaler Umgebung und privater Cloud zu aktivieren
+
+
+## <a name="before-you-begin"></a>Voraussetzungen
+
+Lesen Sie zunächst die Dokumentation zum [Aktivieren der Konnektivität zwischen ExpressRoute-Leitungen in verschiedenen Azure-Abonnements](../expressroute/expressroute-howto-set-global-reach-cli.md#enable-connectivity-between-expressroute-circuits-in-different-azure-subscriptions), bevor Sie die Konnektivität zwischen zwei ExpressRoute-Leitungen mit ExpressRoute Global Reach aktivieren.  
+
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für dieses Tutorial wird Folgendes benötigt:
-- Eine private Cloud, deren ExpressRoute-Leitung mittels Peering mit einem ExpressRoute-Gateway in einem virtuellen Azure-Netzwerk (VNET) verbunden ist (_Circuit 2_ aus Sicht der Peeringprozeduren).
-- Eine separate, funktionierende ExpressRoute-Leitung für die Verbindungsherstellung zwischen lokalen Umgebungen und Azure (_Circuit 1_ aus Sicht der Peeringprozeduren).
-- Ein [Netzwerkadressblock](../expressroute/expressroute-routing.md#ip-addresses-used-for-peerings) vom Typ „/29“ ohne Überschneidungen für das ExpressRoute Global Reach-Peering.
+1. Eine eingerichtete Verbindung mit einer privaten Azure VMware Solution-Cloud, deren ExpressRoute-Leitung mittels Peering mit einem ExpressRoute-Gateway in einem virtuellen Azure-Netzwerk (VNET) verbunden ist. Dies ist _Circuit 2_ aus den Peeringvorgängen.  
+1. Eine separate, funktionierende ExpressRoute-Leitung für die Verbindungsherstellung zwischen lokalen Umgebungen und Azure. Dies ist _Circuit 1_ aus Sicht der Peeringvorgänge.
+1. Ein [Netzwerkadressblock](../expressroute/expressroute-routing.md#ip-addresses-used-for-peerings) vom Typ „/29“ ohne Überschneidungen für das ExpressRoute Global Reach-Peering.
 
-## <a name="create-an-expressroute-authorization-key-in-the-azure-vmware-solution-private-cloud"></a>Erstellen eines ExpressRoute-Autorisierungsschlüssels in der privaten Azure VMware Solution-Cloud
+> [!TIP]
+> Im Kontext dieser Voraussetzungen ist _Circuit 1_ Ihre lokale ExpressRoute-Leitung. Die ExpressRoute-Leitung Ihrer privaten Cloud befindet sich in einem anderen Abonnement und heißt _Circuit 2_. 
+
+
+## <a name="create-an-expressroute-authorization-key-in-the-private-cloud"></a>Erstellen eines ExpressRoute-Autorisierungsschlüssels in der privaten Cloud
 
 1. Navigieren Sie in der **Übersicht** der privaten Cloud unter „Verwalten“ zu **Konnektivität > ExpressRoute > Autorisierungsschlüssel anfordern**.
 
@@ -41,31 +46,55 @@ Für dieses Tutorial wird Folgendes benötigt:
 
 2. Geben Sie den Namen für den Autorisierungsschlüssel ein, und wählen Sie **Erstellen** aus. 
 
-   :::image type="content" source="media/expressroute-global-reach/create-global-reach-auth-key.png" alt-text="Klicken auf „Erstellen“, um einen neuen Autorisierungsschlüssel zu erstellen":::
+   :::image type="content" source="media/expressroute-global-reach/create-global-reach-auth-key.png" alt-text="Auswählen von „Konnektivität“ > „ExpressRoute“ > „Autorisierungsschlüssel anfordern“, um eine neue Anforderung zu initiieren":::
 
    Nach der Erstellung wird der neue Schlüssel in der Liste der Autorisierungsschlüssel für die private Cloud angezeigt. 
 
-   :::image type="content" source="media/expressroute-global-reach/show-global-reach-auth-key.png" alt-text="Vergewissern, dass der neue Autorisierungsschlüssel in der Liste der Schlüssel für die private Cloud angezeigt wird":::
+   :::image type="content" source="media/expressroute-global-reach/show-global-reach-auth-key.png" alt-text="Auswählen von „Konnektivität“ > „ExpressRoute“ > „Autorisierungsschlüssel anfordern“, um eine neue Anforderung zu initiieren":::
 
 3. Notieren Sie sich den Autorisierungsschlüssel und die ExpressRoute-ID zusammen mit dem Adressblock vom Typ „/29“. Diese Angaben werden im nächsten Schritt benötigt, um das Peering abzuschließen. 
 
 ## <a name="peer-private-cloud-to-on-premises-using-authorization-key"></a>Verknüpfen der privaten Cloud mit der lokalen Umgebung mittels Peering unter Verwendung des Autorisierungsschlüssels
 
-Nachdem Sie einen Autorisierungsschlüssel für die ExpressRoute-Leitung der privaten Cloud erstellt haben, können Sie sie mittels Peering mit Ihrer lokalen ExpressRoute-Leitung verknüpfen.  Das Peering erfolgt aus Sicht der lokalen ExpressRoute-Leitung mithilfe der Azure CLI in einer Cloud Shell-Instanz und unter Verwendung der Ressourcen-ID und des Autorisierungsschlüssels der ExpressRoute-Leitung Ihrer privaten Cloud, die in den vorherigen Schritten erstellt wurde.
+Nachdem Sie einen Autorisierungsschlüssel für die ExpressRoute-Leitung der privaten Cloud erstellt haben, können Sie sie mittels Peering mit Ihrer lokalen ExpressRoute-Leitung verknüpfen.  Das Peering erfolgt aus der Perspektive der lokalen ExpressRoute-Leitung entweder über das [Azure-Portal](#azure-portal-method) oder über Verwenden der [Azure CLI in einer Cloud Shell-Umgebung](#azure-cli-in-a-cloud-shell-method). In beiden Methoden verwenden Sie die Ressourcen-ID und den Autorisierungsschlüssel der ExpressRoute-Leitung Ihrer privaten Cloud, die Sie in den vorherigen Schritten erstellt haben, dazu, das Peering abzuschließen.
+
+### <a name="azure-portal-method"></a>Azure-Portal-Methode
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) mit dem Abonnement an, das auch für die lokale ExpressRoute-Leitung verwendet wird.
+
+1. Wählen Sie in der **Übersicht** der privaten Cloud unter „Verwalten“ die Option **Konnektivität > ExpressRoute Global Reach > Hinzufügen** aus.
+
+   :::image type="content" source="./media/expressroute-global-reach/expressroute-global-reach-tab.png" alt-text="Auswählen von „Konnektivität“ > „ExpressRoute“ > „Autorisierungsschlüssel anfordern“, um eine neue Anforderung zu initiieren":::
+
+1. Sie können eine lokale Cloudverbindung erstellen, indem Sie eine der folgenden Aktionen ausführen:
+
+   - Wählen Sie die ExpressRoute-Leitung in der Liste aus.
+   - Wenn Sie eine Leitungs-ID haben, kopieren Sie diese, und fügen Sie sie ein.
+
+1. Wählen Sie **Verbinden** aus. Die neue Verbindung wird in der Liste „Lokale Cloudverbindungen“ angezeigt.  
+
+>[!TIP]
+>Sie können eine Verbindung aus der Liste löschen oder trennen, indem Sie **Mehr** auswählen.  
+>
+> :::image type="content" source="./media/expressroute-global-reach/on-premises-connection-disconnect.png" alt-text="Auswählen von „Konnektivität“ > „ExpressRoute“ > „Autorisierungsschlüssel anfordern“, um eine neue Anforderung zu initiieren":::
+
+### <a name="azure-cli-in-a-cloud-shell-method"></a>Azure CLI in einer Cloud Shell-Methode
+
+Wir haben die [CLI-Befehle](../expressroute/expressroute-howto-set-global-reach-cli.md) mit speziellen Details und Beispielen erweitert, um Sie bei beim Konfigurieren des ExpressRoute Global Reach-Peerings zwischen lokalen Umgebungen und einer privaten Azure VMware Solution-Cloud zu unterstützen.  
 
 > [!TIP]  
-> Zur besseren Übersichtlichkeit der Azure CLI-Befehlsausgabe wird in dieser Anleitung ggf. ein [Argument vom Typ `–query` verwendet, um eine JMESPath-Abfrage auszuführen und nur die erforderlichen Ergebnisse anzuzeigen](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest).
+> Zur besseren Übersichtlichkeit der Azure CLI-Befehlsausgabe wird in dieser Anleitung ggf. ein [Argument vom Typ `–query` verwendet, um eine JMESPath-Abfrage auszuführen und nur die erforderlichen Ergebnisse anzuzeigen](https://docs.microsoft.com/cli/azure/query-azure-cli).
 
 
 1. Melden Sie sich beim Azure-Portal mit dem Abonnement an, das auch für die lokale ExpressRoute-Leitung verwendet wurde, und öffnen Sie eine Cloud Shell-Instanz. Verwenden Sie die standardmäßige Bash-Shell.
  
-   :::image type="content" source="media/expressroute-global-reach/open-cloud-shell.png" alt-text="Anmelden beim Azure-Portal und Öffnen einer Cloud Shell-Instanz":::
+   :::image type="content" source="media/expressroute-global-reach/open-cloud-shell.png" alt-text="Auswählen von „Konnektivität“ > „ExpressRoute“ > „Autorisierungsschlüssel anfordern“, um eine neue Anforderung zu initiieren":::
  
 2. Geben Sie den Azure CLI-Befehl zum Erstellen des Peerings in die Befehlszeile ein. Verwenden Sie dabei Ihre spezifischen Informationen sowie die Ressourcen-ID, den Autorisierungsschlüssel und den CIDR-Netzwerkblock vom Typ „/29“. 
 
    Das folgende Beispiel zeigt den zu verwendenden Befehl sowie die Ausgabe mit der Angabe, dass das Peering erfolgreich war. Der Beispielbefehl basiert auf dem Befehl, der in Schritt 3 von [Aktivieren der Konnektivität zwischen ExpressRoute-Leitungen in verschiedenen Azure-Abonnements](../expressroute/expressroute-howto-set-global-reach-cli.md#enable-connectivity-between-expressroute-circuits-in-different-azure-subscriptions) verwendet wird.
 
-   :::image type="content" source="media/expressroute-global-reach/azure-command-with-results.png" alt-text="Erstellen des ExpressRoute Global Reach-Peerings per Azure CLI-Befehl in einer Cloud Shell-Instanz":::
+   :::image type="content" source="media/expressroute-global-reach/azure-command-with-results.png" alt-text="Auswählen von „Konnektivität“ > „ExpressRoute“ > „Autorisierungsschlüssel anfordern“, um eine neue Anforderung zu initiieren":::
  
    Nun sollte es möglich sein, von lokalen Umgebungen aus über das ExpressRoute Global Reach-Peering eine Verbindung mit Ihrer privaten Cloud herzustellen.
 
@@ -75,7 +104,12 @@ Nachdem Sie einen Autorisierungsschlüssel für die ExpressRoute-Leitung der pri
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie beabsichtigen, Hybrid Cloud Extension (HCX) zum Migrieren von VM-Workloads zu Ihrer privaten Cloud zu verwenden, führen Sie das Verfahren unter [Installieren von HCX für eine Azure-VMware-Lösung](hybrid-cloud-extension-installation.md) aus.
+In diesem Tutorial haben Sie erfahren, wie Sie einen zweiten Autorisierungsschlüssel für die ExpressRoute-Leitung einer privaten Cloud erstellen, und Sie haben das ExpressRoute Global Reach-Peering zwischen lokaler Umgebung und privater Cloud aktiviert. 
+
+Arbeiten Sie das nächste Tutorial durch, um zu erfahren Sie, wie Sie eine VMware HCX-Lösung für Ihre private Azure VMware Solution-Cloud bereitstellen und konfigurieren.
+
+> [!div class="nextstepaction"]
+> [Bereitstellen und Konfigurieren von VMware HCX](tutorial-deploy-vmware-hcx.md)
 
 
 <!-- LINKS - external-->

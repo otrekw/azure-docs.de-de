@@ -1,18 +1,18 @@
 ---
-title: Aktivieren des Eingangscontroller-Add-Ons für einen neuen AKS-Cluster mit einer vorhandenen Azure Application Gateway-Instanz
-description: Erfahren Sie, wie Sie die Azure CLI verwenden, um das Eingangscontroller-Add-On für Ihren neuen AKS-Cluster mit einer neuen Application Gateway-Instanz zu aktivieren.
+title: 'Tutorial: Aktivieren des Eingangscontroller-Add-Ons für einen neuen AKS-Cluster mit einer vorhandenen Azure Application Gateway-Instanz'
+description: Verwenden Sie dieses Tutorial, um zu erfahren, wie Sie die Azure CLI verwenden, um das Eingangscontroller-Add-On für Ihren neuen AKS-Cluster mit einer neuen Application Gateway-Instanz zu aktivieren.
 services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 06/10/2020
+ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: 620fe5851f9dbde01b2206595fa79b61f62deb66
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: ab917fe476a40eb8ea559bc08e52d4bbf16a8436
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595919"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285586"
 ---
 # <a name="tutorial-enable-the-ingress-controller-add-on-preview-for-a-new-aks-cluster-with-a-new-application-gateway-instance"></a>Tutorial: Aktivieren des Eingangscontroller-Add-Ons (Vorschau) für einen neuen AKS-Cluster mit einer neuen Azure Application Gateway-Instanz
 
@@ -30,11 +30,12 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Bereitstellen einer Beispielanwendung mithilfe von AGIC für eingehenden Datenverkehr auf dem AKS-Cluster.
 > * Überprüfen der Erreichbarkeit der Anwendung über Application Gateway.
 
+## <a name="prerequisites"></a>Voraussetzungen
+
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Voraussetzungen
 
 Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli).
 
@@ -134,7 +135,7 @@ az group delete --name myResourceGroup
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Informationen zum Deaktivieren des AGIC-Add-Ons](./ingress-controller-disable-addon.md)
-* [Informationen zu den bei AGIC unterstützten Anmerkungen](./ingress-controller-annotations.md)
-* [Behandlung von AGIC-Problemen](./ingress-controller-troubleshoot.md)
+
+> [!div class="nextstepaction"]
+> [Informationen zum Deaktivieren des AGIC-Add-Ons](./ingress-controller-disable-addon.md)
 

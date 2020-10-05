@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: 60ca3723831b1d47e5c20f292394386df08ebdd1
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 382a6056076179be0d25e0fee0d55b978a3b7169
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89380455"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420437"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>Planen eines SaaS-Angebots im kommerziellen Marketplace
 
@@ -104,7 +104,7 @@ Eine CRM-Verbindung kann während der Angebotserstellung zu einem beliebigen Zei
 
 ## <a name="selecting-an-online-store"></a>Auswählen eines Onlineshops
 
-Wenn Sie ein SaaS-Angebot veröffentlichen, wird es in Microsoft AppSource, Azure Marketplace oder beidem aufgelistet. Jeder Onlineshop erfüllt bestimmte Kundenanforderungen. AppSource ist für Geschäftslösungen und Azure Marketplace für IT-Lösungen vorgesehen. Ihr Angebotstyp, Ihre Transaktionsfunktionen und Ihre Kategorien bestimmen, wo Ihr Angebot veröffentlicht wird. Kategorien und Unterkategorien werden den einzelnen Onlineshops basierend auf der Zielgruppe zugeordnet. Ausführliche Informationen zum Auswählen eines Onlineshops finden Sie unter [Auswählen eines Onlineshops](determine-your-listing-type.md#selecting-an-online-store).
+Wenn Sie ein SaaS-Angebot veröffentlichen, wird es in Microsoft AppSource, Azure Marketplace oder beidem aufgelistet. Jeder Onlineshop erfüllt bestimmte Kundenanforderungen. AppSource ist für Geschäftslösungen und Azure Marketplace für IT-Lösungen vorgesehen. Ihr Angebotstyp, Ihre Transaktionsfunktionen und Ihre Kategorien bestimmen, wo Ihr Angebot veröffentlicht wird. Kategorien und Unterkategorien werden den einzelnen Onlineshops basierend auf dem Lösungstyp zugeordnet. Ausführliche Informationen zum Auswählen eines Onlineshops finden Sie unter [Auswählen eines Onlineshops](determine-your-listing-type.md#selecting-an-online-store).
 
 ## <a name="legal-contracts"></a>Verträge
 

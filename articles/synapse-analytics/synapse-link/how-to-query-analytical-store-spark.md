@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 663c07795926b17eb42ff185ca248454c5bc459c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 07342cb31f1c44273f98a97b018620538f86c17f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90881851"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287728"
 ---
 # <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link-preview"></a>Interagieren mit Azure Cosmos DB mithilfe von Apache Spark in Azure Synapse Link (Vorschau)
 
@@ -120,6 +120,8 @@ df.write.format("cosmos.oltp").
     save()
 ```
 
+## <a name="load-streaming-dataframe-from-container"></a>Streamingdatenrahmen aus Container laden
+Bei dieser Geste verwenden Sie die Spark-Streamingfunktion, um Daten aus einem Container in einen Datenrahmen zu laden. Die Daten werden im primären Data Lake-Konto (und Dateisystem) gespeichert, das Sie mit dem Arbeitsbereich verbunden haben. 
 > [!NOTE]
 > Wenn Sie Verweise auf externe Bibliotheken in Synapse Apache Spark hinzufügen möchten, finden Sie [hier](#external-library-management) weitere Informationen. Wenn Sie beispielsweise einen Spark-Datenrahmen in einem Container der Cosmos DB-API für Mongo DB erfassen möchten, können Sie den Mongo DB-Connector für Spark [hier](https://docs.mongodb.com/spark-connector/master/) nutzen.
 

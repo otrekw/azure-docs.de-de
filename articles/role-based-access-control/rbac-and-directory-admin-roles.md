@@ -15,12 +15,12 @@ ms.date: 07/07/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 8809b5fdce382b7c8f913823ca8e176226d5837b
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: b85f1d8bd7249ad26ff957a72a9cc7285158caba
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89536173"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397724"
 ---
 # <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>Administratorrollen für klassische Abonnements, Azure-Rollen und Azure AD-Rollen
 
@@ -122,7 +122,7 @@ Grob gesehen werden mit Azure-Rollen Berechtigungen zum Verwalten von Azure-Ress
 
 Standardmäßig wird mit Azure-Rollen und Azure AD-Rollen nicht der gesamte Azure- bzw. Azure AD-Bereich abgedeckt. Aber wenn ein globaler Administrator den Zugriff erweitert, indem er im Azure-Portal den Switch **Zugriffsverwaltung für Azure-Ressourcen** auswählt, wird dem globalen Administrator die Rolle [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) (eine Azure-Rolle) für alle Abonnements eines bestimmten Mandanten gewährt. Die Rolle „Benutzerzugriffsadministrator“ ermöglicht es dem Benutzer, anderen Benutzern Zugriff auf Azure-Ressourcen zu gewähren. Dieser Switch kann hilfreich sein, um wieder Zugriff auf das Abonnement zu erlangen. Weitere Informationen finden Sie unter [Erhöhen der Zugriffsrechte zum Verwalten aller Azure-Abonnements und Verwaltungsgruppen](elevate-access-global-admin.md).
 
-Mit mehreren Azure AD-Rollen sind Azure AD und Microsoft Office 365 abgedeckt, z. B. bei den Rollen „Globaler Administrator“ und „Benutzeradministrator“. Wenn Sie beispielsweise Mitglied der Rolle „Globaler Administrator“ sind, verfügen Sie über globale Administratorfunktionen in Azure AD und Office 365, z.B. Vornehmen von Änderungen an Microsoft Exchange und Microsoft SharePoint. Standardmäßig hat der globale Administrator aber keinen Zugriff auf Azure-Ressourcen.
+Mit mehreren Azure AD-Rollen sind Azure AD und Microsoft 365 abgedeckt, z. B. bei den Rollen „Globaler Administrator“ und „Benutzeradministrator“. Wenn Sie beispielsweise Mitglied der Rolle „Globaler Administrator“ sind, verfügen Sie über globale Administratorfunktionen in Azure AD und Microsoft 365, z. B. Vornehmen von Änderungen an Microsoft Exchange und Microsoft SharePoint. Standardmäßig hat der globale Administrator aber keinen Zugriff auf Azure-Ressourcen.
 
 ![Rollenvergleich: Azure RBAC und Azure AD](./media/rbac-and-directory-admin-roles/azure-office-roles.png)
 

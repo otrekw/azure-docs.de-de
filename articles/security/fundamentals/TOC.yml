@@ -80,6 +80,8 @@
       href: encryption-overview.md
     - name: Doppelte Verschlüsselung
       href: double-encryption.md
+    - name: TLS-Zertifikatänderungen
+      href: tls-certificate-changes.md
     - name: Datenträgerverschlüsselung
       items:
         - name: Bewährte Methoden

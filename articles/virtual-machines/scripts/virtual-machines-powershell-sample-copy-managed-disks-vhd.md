@@ -1,5 +1,5 @@
 ---
-title: 'VHD-Datei des verwalteten Datenträgers in das Konto einer anderen Region (Windows): PowerShell'
+title: 'Exportieren/Kopieren der VHD-Datei eines verwalteten Datenträgers in das Konto einer anderen Region (Windows): PowerShell'
 description: Azure PowerShell-Skriptbeispiel – Exportieren/Kopieren der VHD eines verwalteten Datenträgers in ein Speicherkonto in derselben oder einer anderen Region
 services: virtual-machines-windows
 documentationcenter: storage
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/17/2018
 ms.author: ramankum
-ms.openlocfilehash: ef760688e2a91da6e2f8ab759dc1858d3e583655
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: d76fda02f94f85126214de27d88079977824098d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322708"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320131"
 ---
 # <a name="exportcopy-the-vhd-of-a-managed-disk-to-a-storage-account-in-different-region-with-powershell-windows"></a>Exportieren/Kopieren der VHD eines verwalteten Datenträgers in ein Speicherkonto in einer anderen Region mit PowerShell (Windows)
 

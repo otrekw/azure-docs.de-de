@@ -9,12 +9,12 @@ ms.subservice: cli
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 92bd5bb6e9c8a00b72ace5f81d1a1cedccfa95e5
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: f6eda8b3b60658425f4c30850f9f979cf31d32d4
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503666"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570157"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-the-azure-cli"></a>Tutorial: Installieren von Anwendungen in VM-Skalierungsgruppen mit der Azure-Befehlszeilenschnittstelle
 Zum Ausführen von Anwendungen auf VM-Instanzen in einer Skalierungsgruppe müssen Sie zuerst die Anwendungskomponenten und erforderlichen Dateien installieren. In einem vorherigen Tutorial wurde beschrieben, wie Sie ein benutzerdefiniertes VM-Image erstellen und verwenden, um Ihre VM-Instanzen bereitzustellen. Dieses benutzerdefinierte Image umfasste manuelle Anwendungsinstallationen und -konfigurationen. Sie können die Installation von Anwendungen auch per Skalierungsgruppe automatisieren, nachdem die einzelnen VM-Instanzen bereitgestellt wurden, oder eine Anwendung aktualisieren, die bereits in einer Skalierungsgruppe ausgeführt wird. In diesem Tutorial lernen Sie Folgendes:
@@ -50,6 +50,9 @@ Erstellen Sie in der aktuellen Shell eine Datei namens *customConfig.json*, und 
   "commandToExecute": "./automate_nginx.sh"
 }
 ```
+
+> [!CAUTION]
+> Möglicherweise müssen Sie die Verwendung der einfachen (') und doppelten Anführungszeichen (") innerhalb des JSON-Blocks umkehren, wenn Sie sich dazu entschließen, im Parameter *--settings* weiter unten direkt auf den JSON-Code zu verweisen (anstatt auf die Datei *customConfig.json*). 
 
 
 ## <a name="create-a-scale-set"></a>Erstellen einer Skalierungsgruppe

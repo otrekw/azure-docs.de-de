@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: duau
 ms.custom: contperfq1
-ms.openlocfilehash: 14a61d33ef2e4d4fc80770f5c86e33d34ec860cd
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: bb0d3cebd9382ef2c81b217417cfbcb6198b6ebb
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401434"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565922"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>ExpressRoute-Workflows für die Verbindungsbereitstellung und Verbindungszustände
 
@@ -86,7 +86,7 @@ Aktivieren Sie das private Peering, um eine Verbindung mit VMs und Clouddiensten
 
 #### <a name="for-microsoft-peering"></a>Für Microsoft-Peering
 
-Aktivieren Sie diese Option, um auf Microsoft-Onlinedienste wie Office 365 zuzugreifen. Darüber hinaus kann über Microsoft-Peering auf alle Azure-PaaS-Dienste zugegriffen werden. Verwenden Sie für die Verbindung mit Microsoft unbedingt einen anderen Proxy/Edge als für die Internetverbindung. Wenn Sie denselben Edge für ExpressRoute und das Internet verwenden, führt das zu asymmetrischem Routing und Konnektivitätsausfällen für Ihr Netzwerk.
+Aktivieren Sie diese Option, um auf Microsoft-Onlinedienste wie Microsoft 365 zuzugreifen. Darüber hinaus kann über Microsoft-Peering auf alle Azure-PaaS-Dienste zugegriffen werden. Verwenden Sie für die Verbindung mit Microsoft unbedingt einen anderen Proxy/Edge als für die Internetverbindung. Wenn Sie denselben Edge für ExpressRoute und das Internet verwenden, führt das zu asymmetrischem Routing und Konnektivitätsausfällen für Ihr Netzwerk.
 
 * Peeringsubnetz für Pfad 1 (/30) – muss eine öffentliche IP-Adresse sein
 * Peeringsubnetz für Pfad 2 (/30) – muss eine öffentliche IP-Adresse sein

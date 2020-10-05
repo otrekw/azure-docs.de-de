@@ -9,12 +9,12 @@ ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
-ms.openlocfilehash: 236134887728ebc3dd4d03fa4c9d9d450b39eac2
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 728db85e7b5afab676612d908e2ba420c7582194
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930671"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645582"
 ---
 # <a name="create-an-azure-file-share"></a>Erstellen einer Azure-Dateifreigabe
 Um eine Azure-Dateifreigabe zu erstellen, müssen Sie drei Fragen zur Verwendung beantworten:
@@ -231,7 +231,7 @@ Für diesen Befehl tritt ein Fehler auf, wenn sich das Speicherkonto in einem vi
 > Der Name der Dateifreigabe darf nur Kleinbuchstaben enthalten. Ausführliche Informationen zur Benennung von Dateifreigaben und Dateien finden Sie unter  [Benennen und Referenzieren von Freigaben, Verzeichnissen, Dateien und Metadaten](https://msdn.microsoft.com/library/azure/dn167011.aspx).
 
 ### <a name="create-a-hot-or-cool-file-share"></a>Erstellen einer Dateifreigabe der heißen oder kalten Speicherebene
-Eine Dateifreigabe in einem **GPv2-Speicherkonto (General Purpose v2)** kann für Transaktionen optimierte Dateifreigaben oder Dateifreigaben der heißen oder kalten Speicherebene (oder eine Mischung davon) enthalten. Für Transaktionen optimierte Dateifreigaben sind in allen Azure-Regionen verfügbar, aber Dateifreigaben der heißen oder kalten Speicherebene sind nur [in einer Teilmenge von Regionen](storage-files-planning.md#storage-tiers) verfügbar. Sie können eine Dateifreigabe der heißen oder kalten Speicherebene erstellen, indem Sie das Azure PowerShell-Vorschaumodul oder die Azure CLI verwenden. 
+Ein **GPv2-Speicherkonto (Universell V2)** kann für Transaktionen optimierte Dateifreigaben oder Dateifreigaben der heißen oder kalten Speicherebene (oder eine Mischung davon) enthalten. Für Transaktionen optimierte Dateifreigaben sind in allen Azure-Regionen verfügbar, aber Dateifreigaben der heißen oder kalten Speicherebene sind nur [in einer Teilmenge von Regionen](storage-files-planning.md#storage-tiers) verfügbar. Sie können eine Dateifreigabe der heißen oder kalten Speicherebene erstellen, indem Sie das Azure PowerShell-Vorschaumodul oder die Azure CLI verwenden. 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 Das Azure-Portal unterstützt noch keine Erstellung von Dateifreigaben der heißen und kalten Speicherebene oder das Verschieben vorhandener, für Transaktionen optimierter Dateifreigaben in eine heiße oder kalte Speicherebene. Sehen Sie sich die Anweisungen zum Erstellen einer Dateifreigabe mit PowerShell oder der Azure CLI an.

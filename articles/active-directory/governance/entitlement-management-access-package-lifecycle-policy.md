@@ -1,6 +1,6 @@
 ---
 title: Ändern der Lebenszykluseinstellungen für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung – Azure Active Directory
-description: Erfahren Sie, wie Sie die Lebenszykluseinstellungen für ein Zugriffspaket in der Azure Active Directory-Berechtigungsverwaltung ändern.
+description: Erfahren Sie, wie Sie die Informationen zum Anforderer und Lebenszykluseinstellungen für ein Zugriffspaket in der Azure Active Directory-Berechtigungsverwaltung ändern.
 services: active-directory
 documentationCenter: ''
 author: ajburnle
@@ -16,18 +16,21 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c628c3c1f11cb973176e7a689856b64177036c9
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 4fd119238476b842a4dba1efeec86544ca263920
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798697"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980119"
 ---
 # <a name="change-lifecycle-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Ändern der Lebenszykluseinstellungen für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung
 
 Als Zugriffspaket-Manager können Sie die Lebenszykluseinstellungen für ein Zugriffspaket jederzeit ändern, indem Sie eine vorhandene Richtlinie bearbeiten. Wenn Sie das Ablaufdatum für eine Richtlinie ändern, ändert sich das Ablaufdatum für Anforderungen mit ausstehender Genehmigung oder genehmigte Anforderungen nicht.
 
 In diesem Artikel wird beschrieben, wie die Lebenszykluseinstellungen für ein vorhandenes Zugriffspaket geändert werden.
+
+## <a name="open-requestor-information"></a>Öffnen der Informationen zum Anforderer
+Um sicherzustellen, dass Benutzer über den richtigen Zugriff auf ein Zugriffspaket verfügen, können benutzerdefinierte Fragen an Benutzer konfiguriert werden, die Zugriff auf bestimmte Zugriffspakete anfordern. Zu den Konfigurationsoptionen zählen: Lokalisierung, erforderlich/optional und die Antwortformate Text oder Multiple-Choice. Für die Anforderer werden die Fragen angezeigt, wenn sie das Paket anfordern, und für die genehmigenden Personen werden die Fragen angezeigt, um sie bei der Entscheidung zu unterstützen. Führen Sie die folgenden Schritte aus, um Fragen in einem Zugriffspaket zu konfigurieren:
 
 ## <a name="open-lifecycle-settings"></a>Öffnen der Lebenszykluseinstellungen
 

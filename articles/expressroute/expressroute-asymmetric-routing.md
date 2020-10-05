@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: duau
-ms.openlocfilehash: aa3465940088d3a66f23dfd5d58a6ec3fd3053de
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: ee96abb51e03fb1dc567b66d180cb520de299d95
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89397711"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566533"
 ---
 # <a name="asymmetric-routing-with-multiple-network-paths"></a>Asymmetrisches Routing mit mehreren Netzwerkpfaden
 In diesem Artikel erfahren Sie, wie ausgehender und eingehender Netzwerkdatenverkehr über unterschiedliche Routen abgewickelt werden kann, wenn zwischen Netzwerkquelle und -ziel mehrere Pfade verfügbar sind.
@@ -64,5 +64,5 @@ Eine weitere Möglichkeit zur Behandlung von Problemen durch asymmetrisches Rout
 ![Netzwerkkonfiguration mit quellenbasierter NAT](./media/expressroute-asymmetric-routing/AsymmetricRouting2.png)
 
 ## <a name="asymmetric-routing-detection"></a>Erkennung von asymmetrischem Routing
-Wenn Sie sich vergewissern möchten, dass der Netzwerkdatenverkehr den erwarteten Pfad durchläuft, verwenden Sie am besten Traceroute. Soll an Microsoft gerichteter Datenverkehr von Ihrem lokalen SMTP-Server über den Internetpfad abgewickelt werden, verläuft die erwartete Traceroute zwischen SMTP-Server und Office 365. Das Ergebnis gibt Aufschluss darüber, ob der Datenverkehr Ihr Netzwerk tatsächlich in Richtung Internet (und nicht Richtung ExpressRoute) verlässt.
+Wenn Sie sich vergewissern möchten, dass der Netzwerkdatenverkehr den erwarteten Pfad durchläuft, verwenden Sie am besten Traceroute. Soll an Microsoft gerichteter Datenverkehr von Ihrem lokalen SMTP-Server über den Internetpfad abgewickelt werden, verläuft die erwartete Traceroute zwischen SMTP-Server und Microsoft 365. Das Ergebnis gibt Aufschluss darüber, ob der Datenverkehr Ihr Netzwerk tatsächlich in Richtung Internet (und nicht Richtung ExpressRoute) verlässt.
 

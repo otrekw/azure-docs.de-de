@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 527255653bf2779b36e0e463cd32a0b334c00f96
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 726507fa6ea0651b23d46424bda669a2d8ad41e0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798493"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979904"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management"></a>Anfordern des Zugriffs auf ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung
 
@@ -80,6 +80,12 @@ Nachdem Sie das Zugriffspaket im Portal „Mein Zugriff“ gefunden haben, könn
 Wenn Sie Zugriff auf ein Zugriffspaket anfordern, für das mehrere Richtlinien gelten, werden Sie möglicherweise aufgefordert, eine Richtlinie auszuwählen. Beispielsweise kann ein Zugriffspaketmanager ein Zugriffspaket mit zwei Richtlinien für zwei Gruppen interner Mitarbeiter konfigurieren. Die erste Richtlinie könnte einen Zeitraum von 60 Tagen für den Zugriff zulassen und eine Genehmigung erfordern. Die zweite Richtlinie könnte den Zugriff 2 Tage lang zulassen und keine Genehmigung erfordern. Bei diesem Szenario müssen Sie die Richtlinie auswählen, die Sie verwenden möchten.
 
 ![Portal „Mein Zugriff“ – Zugriff anfordern – mehrere Richtlinien](./media/entitlement-management-request-access/my-access-multiple-policies.png)
+
+### <a name="fill-out-requestor-information"></a>Angeben der Informationen zum Anforderer
+
+Möglicherweise fordern Sie Zugriff auf ein Zugriffspaket an, das eine geschäftliche Begründung und zusätzliche Informationen zum Anforderer erfordert, bevor Ihnen Zugriff auf das Zugriffspaket gewährt wird. Geben Sie alle Informationen zum Anforderer ein, die für den Zugriff auf das Zugriffspaket erforderlich sind.
+
+![Portal „Mein Zugriff“ – Zugriff anfordern – Informationen zum Anforderer angeben](./media/entitlement-management-request-access/my-access-requestor-information.png)
 
 ## <a name="resubmit-a-request"></a>Erneutes Übermitteln einer Anforderung
 

@@ -3,14 +3,14 @@ title: 'Azure Automation-Updateverwaltung: Übersicht'
 description: Dieser Artikel bietet eine Übersicht über die Updateverwaltungsfunktion, die Updates für Ihre Windows- und Linux-Computer implementiert.
 services: automation
 ms.subservice: update-management
-ms.date: 07/28/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0fd416c844ac93ffb77eded98448b2e93e9acd30
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 4a753cd139db9dec23c82346704382979aeaa0de
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660907"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976993"
 ---
 # <a name="update-management-overview"></a>Übersicht über die Updateverwaltung
 
@@ -18,8 +18,8 @@ Mithilfe der Updateverwaltung in Azure Automation können Sie Betriebssystemupda
 
 Die Updateverwaltung für virtuelle Computer können Sie auf die folgenden Arten aktivieren:
 
-* Aus Ihrem [Azure Automation-Konto](update-mgmt-enable-automation-account.md) für einen oder mehrere Azure-Computer.
-* Manuell für Nicht-Azure-Computer.
+* Aus Ihrem [Azure Automation-Konto](update-mgmt-enable-automation-account.md) für einen oder mehrere Azure- und Nicht-Azure-Computer.
+* Manuell für Nicht-Azure-Computer, einschließlich Computer oder Server, die mit [Servern mit Azure Arc-Unterstützung](../../azure-arc/servers/overview.md) registriert sind (Vorschau).
 * Für einen einzelnen virtuellen Azure-Computer auf der Seite für virtuelle Computer im Azure-Portal. Dieses Szenario steht für virtuelle Computer unter [Linux](../../virtual-machines/linux/tutorial-config-management.md#enable-update-management) oder [Windows](../../virtual-machines/windows/tutorial-config-management.md#enable-update-management) zur Verfügung.
 * Für [mehrere Azure-VMs](update-mgmt-enable-portal.md), indem Sie diese auf der Seite für virtuelle Computer im Azure-Portal auswählen.
 
@@ -31,6 +31,8 @@ Eine [Azure Resource Manager-Vorlage](update-mgmt-enable-template.md) ist verfü
 > [!NOTE]
 > Auf einem Computer, der mit der Updateverwaltung konfiguriert ist, können Sie keine benutzerdefinierten Skripts aus Azure Automation ausführen. Auf diesem Computer kann nur das von Microsoft signierte Updateskript ausgeführt werden.
 
+Informationen zum automatischen Herunterladen und Installieren verfügbarer Patches vom Typ *Kritisch* und *Sicherheit* auf Ihren virtuellen Azure-Computer finden Sie unter [Automatische VM-Gastpatches](../../virtual-machines/windows/automatic-vm-guest-patching.md) für Windows-VMs.
+
 ## <a name="about-update-management"></a>Informationen zur Updateverwaltung
 
 Computer, die mit der Updateverwaltung verwaltet werden, verwenden folgende Konfigurationen, um Bewertungen und Updatebereitstellungen durchzuführen:
@@ -40,21 +42,17 @@ Computer, die mit der Updateverwaltung verwaltet werden, verwenden folgende Konf
 * Automation Hybrid Runbook Worker
 * Microsoft Update oder Windows Server Update Services (WSUS) für Windows-Computer
 
-Das folgende Diagramm veranschaulicht, wie die Updateverwaltung alle verbundenen Windows Server- und Linux-Computer eines Arbeitsbereichs bewertet und Sicherheitsupdates darauf anwendet:
+Das folgende Diagramm veranschaulicht, wie die Updateverwaltung alle verbundenen Windows Server- und Linux-Server eines Arbeitsbereichs bewertet und Sicherheitsupdates darauf anwendet:
 
 ![Updateverwaltungs-Workflow](./media/update-mgmt-overview/update-mgmt-updateworkflow.png)
 
 Die Updateverwaltung kann für das systeminterne Bereitstellen von Computern in mehreren Abonnements im selben Mandanten verwendet werden.
 
-Nachdem ein Paket veröffentlicht wurde, dauert es zwei bis drei Stunden, bis der Patch für Linux-Computer für die Bewertung angezeigt wird. Bei Windows-Computern dauert es 12 bis 15 Stunden, bis der Patch nach der Veröffentlichung für die Bewertung angezeigt wird.
-
-Nachdem ein Computer einen Scanvorgang abgeschlossen hat, um die Konformität für das Update zu überprüfen, leitet der Agent die Informationen gesammelt an Azure Monitor-Protokolle weiter. Auf einem Windows-Computer wird der Konformitätsscan standardmäßig alle 12 Stunden ausgeführt.
+Nachdem ein Paket veröffentlicht wurde, dauert es zwei bis drei Stunden, bis der Patch für Linux-Computer für die Bewertung angezeigt wird. Bei Windows-Computern dauert es 12 bis 15 Stunden, bis der Patch nach der Veröffentlichung für die Bewertung angezeigt wird. Wenn ein Computer einen Scanvorgang abgeschlossen hat, um die Konformität für das Update zu überprüfen, leitet der Agent die Informationen gesammelt an Azure Monitor-Protokolle weiter. Auf einem Windows-Computer wird der Konformitätsscan standardmäßig alle 12 Stunden ausgeführt. Für einen Linux-Computer wird der Konformitätsscan standardmäßig jede Stunde durchgeführt. Wenn der Log Analytics-Agent neu gestartet wird, wird ein Konformitätsscan innerhalb von 15 Minuten gestartet.
 
 Darüber hinaus wird der Update-Konformitätsscan innerhalb von 15 Minuten nach dem Neustart des Log Analytics-Agents sowie vor und nach der Updateinstallation gestartet.
 
-Für einen Linux-Computer wird der Konformitätsscan standardmäßig jede Stunde durchgeführt. Wenn der Log Analytics-Agent neu gestartet wird, wird ein Konformitätsscan innerhalb von 15 Minuten gestartet.
-
-Die Updateverwaltung meldet basierend auf der für die Synchronisierung konfigurierten Quelle, wie aktuell der Computer ist. Wenn der Windows-Computer für das Senden von Meldungen an WSUS konfiguriert ist, können sich die Ergebnisse von den angezeigten Microsoft Update-Ergebnissen unterscheiden. Dies hängt davon ab, wann WSUS zuletzt mit Microsoft Update synchronisiert wurde. Dasselbe gilt für Linux-Computer, die für Meldungen an ein lokales Repository konfiguriert sind (anstatt an ein öffentliches Repository).
+Die Updateverwaltung meldet basierend auf der für die Synchronisierung konfigurierten Quelle, wie aktuell der Computer ist. Wenn der Windows-Computer für das Senden von Meldungen an [Windows Server Update Services](/windows-server/administration/windows-server-update-services/get-started/windows-server-update-services-wsus) (WSUS) konfiguriert ist, können sich die Ergebnisse von den angezeigten Microsoft Update-Ergebnissen unterscheiden. Dies hängt davon ab, wann WSUS zuletzt mit Microsoft Update synchronisiert wurde. Dasselbe gilt für Linux-Computer, die für Meldungen an ein lokales Repository konfiguriert sind (anstatt an ein öffentliches Repository).
 
 > [!NOTE]
 > Damit Meldungen an den Dienst ordnungsgemäß erfolgen können, erfordert die Updateverwaltung, dass bestimmte URLs und Ports aktiviert werden. Weitere Informationen zu diesen Anforderungen finden Sie unter [Netzwerkkonfiguration](../automation-hybrid-runbook-worker.md#network-planning).
@@ -86,7 +84,7 @@ Die folgende Tabelle enthält die unterstützten Betriebssysteme für Updatebewe
 |Windows Server 2008 R2 (RTM und SP1 Standard)| Die Updateverwaltung unterstützt Bewertungen und Patching für dieses Betriebssystem. Der [Hybrid Runbook Worker](../automation-windows-hrw-install.md) wird für Windows Server 2008 R2 unterstützt. |
 |CentOS 6 (x86/x64) und 7 (x64)      | Linux-Agents erfordern Zugriff auf ein Updaterepository. Für klassifizierungsbasiertes Patchen muss `yum` Sicherheitsdaten zurückgeben, über die CentOS in den RTM-Releases nicht verfügt. Weitere Informationen zu klassifizierungsbasiertem Patching unter CentOS finden Sie unter [Lösung für die Updateverwaltung in Azure](update-mgmt-view-update-assessments.md#linux).          |
 |Red Hat Enterprise 6 (x86/x64) und 7 (x64)     | Linux-Agents erfordern Zugriff auf ein Updaterepository.        |
-|SUSE Linux Enterprise Server 11 (x86/x64) und 12 (x64)     | Linux-Agents erfordern Zugriff auf ein Updaterepository.        |
+|SUSE Linux Enterprise Server 12 (x64)     | Linux-Agents erfordern Zugriff auf ein Updaterepository.        |
 |Ubuntu 14.04 LTS, 16.04 LTS und 18.04 (x86/x64)      |Linux-Agents erfordern Zugriff auf ein Updaterepository.         |
 
 > [!NOTE]
@@ -112,7 +110,7 @@ Windows-Agents müssen für die Kommunikation mit einem WSUS-Server konfiguriert
 
 Sie können die Updateverwaltung zusammen mit Microsoft Endpoint Configuration Manager verwenden. Weitere Informationen zu Integrationsszenarien finden Sie unter [Integrieren der Updateverwaltung in Windows Endpoint Configuration Manager](update-mgmt-mecmintegration.md). Der [Log Analytics-Agent für Windows](../../azure-monitor/platform/agent-windows.md) ist für Windows-Server erforderlich, die von Sites in Ihrer Configuration Manager-Umgebung verwaltet werden. 
 
-Über den Azure Marketplace bereitgestellte virtuelle Windows-Computer sind standardmäßig so konfiguriert, dass sie automatisch Updates vom Windows Update-Dienst erhalten. Dieses Verhalten ändert sich nicht, wenn Sie Ihrem Arbeitsbereich virtuelle Windows-Computer hinzufügen. Wenn Sie Updates mithilfe der Updateverwaltung nicht aktiv verwalten, gilt das Standardverhalten (Updates werden automatisch angewendet).
+Über Azure Marketplace bereitgestellte virtuelle Windows-Computer sind standardmäßig so konfiguriert, dass sie automatisch Updates vom Windows Update-Dienst erhalten. Dieses Verhalten ändert sich nicht, wenn Sie Ihrem Arbeitsbereich virtuelle Windows-Computer hinzufügen. Wenn Sie Updates mithilfe der Updateverwaltung nicht aktiv verwalten, gilt das Standardverhalten (Updates werden automatisch angewendet).
 
 > [!NOTE]
 > Sie können die Gruppenrichtlinie so ändern, dass Computerneustarts nur vom Benutzer durchgeführt werden können, nicht aber vom System. Verwaltete Computer bleiben ggf. hängen, wenn die Updateverwaltung nicht berechtigt ist, den Computer ohne manuelle Benutzerinteraktion neu zu starten. Weitere Informationen finden Sie unter [Konfigurieren der Gruppenrichtlinieneinstellungen für automatische Updates](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates).
@@ -140,7 +138,7 @@ Die Updateverwaltung verwendet die in diesem Abschnitt beschriebenen Ressourcen.
 
 Nachdem Sie die Updateverwaltung aktiviert haben, werden alle direkt mit dem Log Analytics-Arbeitsbereich verbundenen Windows-Computer automatisch als Hybrid Runbook Worker konfiguriert, um die Runbooks zu unterstützen, die die Updateverwaltung unterstützen.
 
-Jeder von der Updateverwaltung verwaltete Windows-Computer wird im Bereich „Hybrid Worker-Gruppen“ als Hybrid Worker-Systemgruppe für das Automation-Konto aufgeführt. Die Gruppen verwenden die Benennungskonvention `Hostname FQDN_GUID`. Es ist nicht möglich, diese Gruppen mit Runbooks in Ihrem Konto zu erreichen. Entsprechende Versuche sind nicht erfolgreich. Diese Gruppen sind nur für die ausschließliche Unterstützung der Updateverwaltung bestimmt.
+Jeder von der Updateverwaltung verwaltete Windows-Computer wird im Bereich „Hybrid Worker-Gruppen“ als Hybrid Worker-Systemgruppe für das Automation-Konto aufgeführt. Die Gruppen verwenden die Benennungskonvention `Hostname FQDN_GUID`. Es ist nicht möglich, diese Gruppen mit Runbooks in Ihrem Konto zu erreichen. Entsprechende Versuche sind nicht erfolgreich. Diese Gruppen sind nur für die ausschließliche Unterstützung der Updateverwaltung bestimmt. Weitere Informationen zur Anzeige der Liste von Windows-Computern, die als Hybrid Runbook Worker konfiguriert sind, finden Sie unter [Anzeigen von Hybrid Runbook Workern](../automation-hybrid-runbook-worker.md#view-hybrid-runbook-workers).
 
 Sie können die Windows-Computer einer Hybrid Runbook Worker-Gruppe in Ihrem Automation-Konto hinzufügen, um Automation-Runbooks zu unterstützen, wenn Sie für die Updateverwaltung und die Mitgliedschaft in der Hybrid Runbook Worker-Gruppe dasselbe Konto verwenden. Diese Funktionalität wurde in Version 7.2.12024.0 des Hybrid Runbook Worker hinzugefügt.
 
@@ -176,7 +174,7 @@ In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von der U
 
 Die Updateverwaltung überprüft verwaltete Computer auf Daten mithilfe der folgenden Regeln. Es kann zwischen 30 Minuten und 6 Stunden dauern, bis im Dashboard aktualisierte Daten von verwalteten Computern angezeigt werden.
 
-* Für jeden Windows-Computer: Die Updateverwaltung führt zweimal am Tag eine Überprüfung jedes Computers durch. Alle 15 Minuten fragt sie bei der Windows-API den letzten Updatezeitpunkt ab, um zu ermitteln, ob sich der Status geändert hat. Wenn sich der Status geändert hat, startet die Updateverwaltung eine Konformitätsprüfung.
+* Für jeden Windows-Computer: Die Updateverwaltung führt zweimal am Tag eine Überprüfung jedes Computers durch.
 
 * Für jeden Linux-Computer: Die Updateverwaltung führt jede Stunde eine Überprüfung durch.
 
@@ -238,7 +236,7 @@ Für Linux kann die Updateverwaltung bei der Anzeige von Bewertungsdaten dank de
 sudo yum -q --security check-update
 ```
 
-Aktuell steht keine unterstützte Methode zur Verfügung, mit der unter CentOS eine native Verfügbarkeit von Klassifizierungsdaten implementiert werden kann. Für Kunden, die diese Funktion möglicherweise selbst implementiert haben, wird derzeit nur Support nach bestem Wissen bereitgestellt.
+Aktuell steht keine unterstützte Methode zur Verfügung, mit der unter CentOS eine native Verfügbarkeit von Klassifizierungsdaten implementiert werden kann. Für Kunden, die diese Funktion möglicherweise selbst implementiert haben, wird derzeit nur eingeschränkter Support bereitgestellt.
 
 Sie müssen das Plug-In „yum-security“ installieren, um Updates in Version 6 von Red Hat Enterprise zu klassifizieren. Unter Red Hat Enterprise Linux 7 ist das Plug-In bereits Teil von yum selbst, und Sie müssen also nichts installieren. Weitere Informationen finden Sie im folgenden [Knowledge-Artikel](https://access.redhat.com/solutions/10021) zu Red Hat.
 
@@ -256,9 +254,10 @@ Eine [Azure Resource Manager-Vorlage](update-mgmt-enable-template.md) ist verfü
 
 Hier finden Sie die Möglichkeiten, wie Sie die Updateverwaltung aktivieren und zu verwaltende Computer auswählen können:
 
-* [Über einen virtuellen Computer](update-mgmt-enable-vm.md)
-* [Über Durchsuchen mehrerer Computer](update-mgmt-enable-portal.md)
+* [Von einem virtuellen Azure-Computer](update-mgmt-enable-vm.md)
+* [Durch Durchsuchen mehrerer virtueller Azure-Computer](update-mgmt-enable-portal.md)
 * [Aus einem Azure Automation-Konto](update-mgmt-enable-automation-account.md)
+* Installieren Sie für Arc-fähige Server (Vorschau) oder Nicht-Azure-Computer den [Log Analytics-Agent](../../azure-monitor/platform/log-analytics-agent.md), und [aktivieren Sie dann Computer im Arbeitsbereich](update-mgmt-enable-automation-account.md#enable-machines-in-the-workspace) zur Updateverwaltung.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 08/03/2020
-ms.openlocfilehash: 655caa05eff16bcf3e598dccd3c9845928b2fcff
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.date: 09/04/2020
+ms.openlocfilehash: b01b482b967ba6db90aa80ba537457597fb91046
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378830"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488608"
 ---
 # <a name="build-the-landing-page-for-your-free-or-trial-saas-offer-in-the-commercial-marketplace"></a>Erstellen der Landing Page für Ihr kostenloses SaaS-Angebot oder Ihr SaaS-Testangebot im kommerziellen Marketplace
 
@@ -27,7 +27,7 @@ Der Zweck der Landing Page besteht darin, den Benutzer auf einfache Weise zu emp
 
 Da zum Aktivieren des Abonnements nur wenige Informationen erforderlich sind, die von Azure AD und Microsoft Graph bereitgestellt werden, sollten keine Informationen abgerufen werden müssen, für die mehr als die Standardeinwilligung erforderlich ist. Wenn Sie Benutzerdetails benötigen, für die eine zusätzliche Einwilligung für Ihre Anwendung erforderlich ist, sollten Sie diese Informationen anfordern, nachdem die Aktivierung des Abonnements abgeschlossen ist. Dadurch wird eine reibungslose Aktivierung des Abonnements für den Benutzer sichergestellt und das Risiko gesenkt, dass der Benutzer den Vorgang abbricht.
 
-Die Landing Page beinhaltet üblicherweise folgende Informationen und Handlungsaufforderungen:
+Die Landing Page beinhaltet üblicherweise folgende Informationen und Auflistungsoptionen:
 
 - Den Namen und Details zur kostenlosen Testversion oder zum kostenlosen Abonnement. Geben Sie beispielsweise die Nutzungslimits oder die Dauer einer Testversion an.
 - Die Kontodetails des Benutzers, einschließlich Vor- und Nachname, Unternehmen und E-Mail-Adresse.

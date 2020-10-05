@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Wiederherstellungsvorgänge
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: f9cd0cca938dac79071d7ded6f6139f4e3c3840d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ad60436d82ccc8049a4509ba5bf1e244bee150ea
+ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011189"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89506677"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Wiederherstellen virtueller Azure-Computer mit der REST-API
 
@@ -244,6 +244,30 @@ Der folgende Anforderungstext definiert Eigenschaften, die zum Auslösen einer D
 }
 ```
 
+### <a name="restore-disks-selectively"></a>Selektives Wiederherstellen von Datenträgern
+
+Wenn Sie [Datenträger selektiv sichern](backup-azure-arm-userestapi-backupazurevms.md#excluding-disks-in-azure-vm-backup), wird die aktuelle Liste der gesicherten Datenträger in der [Wiederherstellungspunktübersicht](#select-recovery-point) und der [ausführlichen Antwort](https://docs.microsoft.com/rest/api/backup/recoverypoints/get) bereitgestellt. Sie können Datenträger auch selektiv wiederherstellen. Weitere Informationen hierzu finden Sie [hier](selective-disk-backup-restore.md#selective-disk-restore). Wenn Sie einen Datenträger aus der Liste der gesicherten Datenträger selektiv wiederherstellen möchten, suchen Sie die LUN des Datenträgers in der Antwort des Wiederherstellungspunkts, und fügen Sie die **restoreDiskLunList**-Eigenschaft dem [Anforderungstext oben](#example-request) hinzu, wie unten gezeigt.
+
+```json
+{
+    "properties": {
+        "objectType": "IaasVMRestoreRequest",
+        "recoveryPointId": "20982486783671",
+        "recoveryType": "RestoreDisks",
+        "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
+        "storageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Storage/storageAccounts/testAccount",
+        "region": "westus",
+        "createNewCloudService": false,
+        "originalStorageAccountOption": false,
+        "encryptionDetails": {
+          "encryptionEnabled": false
+        },
+        "restoreDiskLunList" : [0]
+    }
+}
+
+```
+
 Sobald Sie die Antwort wie [oben](#responses) erläutert nachverfolgen und der zeitintensive Vorgang abgeschlossen ist, sind die Datenträger und die Konfiguration des gesicherten virtuellen Computers („VMConfig.json“) im angegebenen Speicherkonto zu finden.
 
 ### <a name="replace-disks-in-a-backed-up-virtual-machine"></a>Ersetzen von Datenträgern in einem gesicherten virtuellen Computer
@@ -254,7 +278,7 @@ Während mit „Datenträger wiederherstellen“ Datenträger aus dem Wiederhers
 
 Zum Auslösen einer Datenträgerersetzung auf der Grundlage einer Azure-VM-Sicherung werden im Folgenden die Komponenten des Anforderungstexts angegeben.
 
-|Name  |type  |BESCHREIBUNG  |
+|Name  |Typ  |BESCHREIBUNG  |
 |---------|---------|---------|
 |properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 

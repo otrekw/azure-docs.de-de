@@ -14,12 +14,12 @@ ms.date: 04/01/2020
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9d2f295394d89432f3c6dd99585cc4363d4ff74
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 3b8a40449d7a2b17adddd55120ab232a5cd3f459
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641363"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90600944"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Verschieben der Anwendungsauthentifizierung von Active Directory-Verbunddiensten (AD FS) in Azure Active Directory
 
@@ -35,7 +35,7 @@ Wenn Sie über ein lokales Verzeichnis verfügen, das Benutzerkonten enthält, h
 
 Benutzer können sich auch direkt bei Ihrem lokalen Active Directory authentifizieren. Active Directory-Verbunddienste (AD FS) sind ein auf Standards basierender lokaler Identitätsdienst. AD FS erweitert die Möglichkeit, die Funktion für das einmalige Anmelden (Single Sign-on, SSO) für vertrauenswürdige Geschäftspartnern zu verwenden, ohne dass sich Benutzer separat bei jeder Anwendung anmelden müssen. Dies wird als Verbund bezeichnet.
 
-Viele Organisationen nutzen SaaS- oder LOB-Apps (Software-as-a-Service bzw. Line-of-Business) direkt im Verbund von AD FS zusammen mit auf Office 365 und Azure AD basierenden Apps. 
+Viele Organisationen nutzen SaaS- oder LOB-Apps (Software-as-a-Service bzw. Line-of-Business) direkt im Verbund von AD FS zusammen mit auf Microsoft 365 und Azure AD basierenden Apps. 
 
 ![Anwendungen mit direkter lokaler Verbindung](media/migrate-adfs-apps-to-azure/app-integration-before-migration1.png)
 

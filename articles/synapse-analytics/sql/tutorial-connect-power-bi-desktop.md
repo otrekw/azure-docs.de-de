@@ -1,5 +1,5 @@
 ---
-title: Herstellen einer Verbindung zwischen SQL On-Demand und Power BI Desktop und Erstellen eines Berichts
+title: 'Tutorial: Herstellen einer Verbindung zwischen SQL On-Demand und Power BI Desktop und Erstellen eines Berichts'
 description: In diesem Tutorial erfahren Sie, wie Sie SQL On-Demand in Azure Synapse Analytics mit Power BI Desktop verbinden und einen Demobericht auf der Grundlage einer Ansicht erstellen.
 services: synapse analytics
 author: azaricstefan
@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 325a2015e4107a20dfaec22e904cf3cc6ce3085d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.reviewer: jrasnick
+ms.openlocfilehash: 5c86825d6dce8681e114ec930add751b6beae085
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089174"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539553"
 ---
 # <a name="tutorial-use-sql-on-demand-with-power-bi-desktop--create-a-report"></a>Tutorial: Verwenden von SQL On-Demand mit Power BI Desktop und Erstellen eines Berichts
 
@@ -45,7 +45,7 @@ Werte für die folgenden Parameter:
 | Dienstendpunktadresse von SQL On-Demand    | Wird als Servername verwendet.                                   |
 | Dienstendpunktregion von SQL On-Demand     | Wird verwendet, um den in den Beispielen verwendeten Speicher zu bestimmen. |
 | Benutzername und Kennwort für den Endpunktzugriff | Wird für den Zugriff auf den Endpunkt verwendet.                               |
-| Datenbank, die Sie zum Erstellen von Ansichten verwenden     | Die Datenbank wird als Ausgangspunkt in den Beispielen verwendet.       |
+| Datenbank zum Erstellen von Ansichten     | Die Datenbank wird als Ausgangspunkt in den Beispielen verwendet.       |
 
 ## <a name="1---create-database"></a>1\. Erstellen der Datenbank
 

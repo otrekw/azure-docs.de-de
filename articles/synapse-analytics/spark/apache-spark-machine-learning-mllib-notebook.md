@@ -1,22 +1,22 @@
 ---
-title: Erstellen einer Machine-Learning-App mit Apache Spark MLlib
-description: Erfahren Sie, wie Sie Apache Spark MLlib verwenden, um eine Machine Learning-App zu erstellen, die ein Dataset analysiert, indem eine Klassifizierung mittels logistischer Regression vorgenommen wird.
+title: 'Tutorial: Erstellen einer Machine-Learning-App mit Apache Spark MLlib'
+description: Ein Tutorial, wie Sie Apache Spark MLlib verwenden, um eine Machine Learning-App zu erstellen, die ein Dataset analysiert, indem eine Klassifizierung mittels logistischer Regression vorgenommen wird.
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
-ms.reviewer: jrasnick, carlrab
-ms.topic: conceptual
+ms.reviewer: jrasnick
+ms.topic: tutorial
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: e1ece0add7b0749cfd808b0a3ec7962dd43a302d
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 667ce8ede9469063e5714470a8e18c218f3c2c90
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719341"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540318"
 ---
-# <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Erstellen einer Machine Learning-App mit Apache Spark MLlib und Azure Synapse Analytics
+# <a name="tutorial-build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Tutorial: Erstellen einer Machine Learning-App mit Apache Spark MLlib und Azure Synapse Analytics
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe von Apache Spark [MLlib](https://spark.apache.org/mllib/) eine Machine-Learning-Anwendung erstellt, die eine einfache Vorhersageanalyse für ein Azure Open Dataset ausführt. Spark bietet integrierte Machine Learning-Bibliotheken. In diesem Beispiel wird eine *Klassifizierung* mittels logistischer Regression verwendet.
 
@@ -206,7 +206,7 @@ en2 = OneHotEncoder(dropLast=False, inputCol="weekdayIndex", outputCol="weekdayV
 encoded_final_df = Pipeline(stages=[sI1, en1, sI2, en2]).fit(taxi_featurised_df).transform(taxi_featurised_df)
 ```
 
-Dies führt zu einem neuen Dataframe mit allen Spalten im richtigen Format, um ein Modell zu trainieren.
+Diese Aktion führt zu einem neuen Dataframe mit allen Spalten im richtigen Format, um ein Modell zu trainieren.
 
 ## <a name="train-a-logistic-regression-model"></a>Trainieren eines logistischen Regressionsmodells
 

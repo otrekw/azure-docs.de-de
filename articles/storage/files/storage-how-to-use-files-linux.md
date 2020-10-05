@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d00b0558f85e18dfb53736d89fead953cc01ee60
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 957e827e621d07ed9b5533a1607f955f05985d9b
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053166"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004781"
 ---
 # <a name="use-azure-files-with-linux"></a>Verwenden von Azure Files mit Linux
 [Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können mithilfe des [SMB-Kernelclients](https://wiki.samba.org/index.php/LinuxCIFS) in Linux-Distributionen eingebunden werden. Dieser Artikel veranschaulicht zwei Möglichkeiten zum Einbinden einer Azure-Dateifreigabe: bedarfsgesteuert mit dem Befehl `mount` oder beim Start durch Erstellen eines Eintrags in `/etc/fstab`.
@@ -69,7 +69,7 @@ uname -r
 
 * **Die neueste Version der Azure-Befehlszeilenschnittstelle (CLI).** Informationen zum Installieren der Azure CLI finden Sie unter [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) im Abschnitt zu Ihrem Betriebssystem. Wenn Sie lieber mit dem Azure PowerShell-Modul in PowerShell 6 und höher arbeiten möchten, können Sie dies tun, die folgenden Anweisungen beziehen sich jedoch auf die Azure CLI.
 
-* **Prüfen Sie, ob Port 445 geöffnet ist**: SMB kommuniziert über den TCP-Port 445. Vergewissern Sie sich, dass der TCP-Port 445 des Clientcomputers nicht durch die Firewall blockiert wird.  **<your-resource-group>** (<Ihre-Ressourcengruppe>) und **<your-storage-account>** (<Ihr-Speicherkonto>) ersetzen
+* **Prüfen Sie, ob Port 445 geöffnet ist**: SMB kommuniziert über den TCP-Port 445. Vergewissern Sie sich, dass der TCP-Port 445 des Clientcomputers nicht durch die Firewall blockiert wird.  Ersetzen Sie `<your-resource-group>` und `<your-storage-account>`, und führen Sie dann das folgende Skript aus:
     ```bash
     resourceGroupName="<your-resource-group>"
     storageAccountName="<your-storage-account>"
@@ -114,6 +114,7 @@ Falls gewünscht, können Sie dieselbe Azure-Dateifreigabe in mehrere Bereitstel
 1. **Verwenden Sie den Einbindungsbefehl, um die Azure-Dateifreigabe einzubinden.** Im folgenden Beispiel gilt für die lokalen Berechtigungen für Linux-Dateien und -Ordner der Standardwert 0755. Dadurch erhalten Besitzer Lese-, Schreib- und Ausführungsberechtigungen (basierend auf dem Linux-Besitzer der Datei bzw. des Verzeichnisses), Benutzer in Besitzergruppen erhalten Lese- und Ausführungsberechtigungen und alle anderen Benutzer des Systems erhalten Lese- und Ausführungsberechtigungen. Sie können die Einbindungsoptionen `uid` und `gid` verwenden, um die Benutzer-ID und die Gruppen-ID für die Einbindung festzulegen. Sie können auch `dir_mode` und `file_mode` verwenden, um nach Belieben benutzerdefinierte Berechtigungen festzulegen. Weitere Informationen zum Festlegen von Berechtigungen finden Sie unter [UNIX numeric notation](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) (Numerische UNIX-Notation) auf Wikipedia. 
 
     ```bash
+    # This command assumes you have logged in with az login
     httpEndpoint=$(az storage account show \
         --resource-group $resourceGroupName \
         --name $storageAccountName \
@@ -176,6 +177,7 @@ Wenn Sie die Azure-Dateifreigabe nicht mehr benötigen, können Sie `sudo umount
 1. **Fügen Sie mit dem folgenden Befehl die folgende Zeile an `/etc/fstab` an**: Im folgenden Beispiel gilt für die lokalen Berechtigungen für Linux-Dateien und -Ordner der Standardwert 0755. Dadurch erhalten Besitzer Lese-, Schreib- und Ausführungsberechtigungen (basierend auf dem Linux-Besitzer der Datei bzw. des Verzeichnisses), Benutzer in Besitzergruppen erhalten Lese- und Ausführungsberechtigungen und alle anderen Benutzer des Systems erhalten Lese- und Ausführungsberechtigungen. Sie können die Einbindungsoptionen `uid` und `gid` verwenden, um die Benutzer-ID und die Gruppen-ID für die Einbindung festzulegen. Sie können auch `dir_mode` und `file_mode` verwenden, um nach Belieben benutzerdefinierte Berechtigungen festzulegen. Weitere Informationen zum Festlegen von Berechtigungen finden Sie unter [UNIX numeric notation](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) (Numerische UNIX-Notation) auf Wikipedia.
 
     ```bash
+    # This command assumes you have logged in with az login
     httpEndpoint=$(az storage account show \
         --resource-group $resourceGroupName \
         --name $storageAccountName \

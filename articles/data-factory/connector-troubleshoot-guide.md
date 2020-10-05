@@ -5,16 +5,16 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 07/20/2020
+ms.date: 09/10/2020
 ms.author: jingwang
 ms.reviewer: craigg
 ms.custom: has-adal-ref
-ms.openlocfilehash: c8edb36345de4516077b3c857cff33389062cc7f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 62a5f3b18d4b8329c4a15086bc23d09805b786ab
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87044566"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89668886"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Problembehandlung für Azure Data Factory-Connectors
 
@@ -22,7 +22,6 @@ ms.locfileid: "87044566"
 
 In diesem Artikel werden die gängigen Problembehandlungsmethoden für Connectors in Azure Data Factory beschrieben.
   
-
 ## <a name="azure-blob-storage"></a>Azure Blob Storage
 
 ### <a name="error-code--azurebloboperationfailed"></a>Fehlercode:  AzureBlobOperationFailed
@@ -174,8 +173,7 @@ In diesem Artikel werden die gängigen Problembehandlungsmethoden für Connector
 
 - **Ursache:** Bei der Zertifikatüberprüfung ist während des TLS-Handshakes ein Fehler aufgetreten.
 
-- **Lösung:** Problemumgehung: Verwenden Sie das gestaffelte Kopieren, um die TLS-Validierung für ADLS Gen1 zu überspringen. Sie müssen dieses Problem reproduzieren und die Netmon-Ablaufverfolgung erfassen. Anschließend prüfen Sie zusammen mit dem Netzwerkteam die Konfiguration des lokalen Netzwerks entsprechend [dem folgenden Artikel](self-hosted-integration-runtime-troubleshoot-guide.md#how-to-collect-netmon-trace).
-
+- **Lösung:** Problemumgehung: Verwenden Sie das gestaffelte Kopieren, um die TLS-Validierung für ADLS Gen1 zu überspringen. Sie müssen dieses Problem reproduzieren und die Netmon-Ablaufverfolgung erfassen. Anschließend prüfen Sie zusammen mit dem Netzwerkteam die Konfiguration des lokalen Netzwerks.
 
     ![Problembehandlung bei ADLS Gen1](./media/connector-troubleshoot-guide/adls-troubleshoot.png)
 
@@ -207,7 +205,7 @@ In diesem Artikel werden die gängigen Problembehandlungsmethoden für Connector
 - **Lösung:** Führen Sie die Kopieraktivität nach einigen Minuten erneut aus.
                   
 
-## <a name="azure-sql-data-warehouseazure-sql-databasesql-server"></a>Azure SQL Data Warehouse/Azure SQL-Datenbank/SQL Server
+## <a name="azure-synapse-analytics-formerly-sql-data-warehouseazure-sql-databasesql-server"></a>Azure Synapse Analytics (ehemals SQL Data Warehouse)/Azure SQL-Datenbank/SQL Server
 
 ### <a name="error-code--sqlfailedtoconnect"></a>Fehlercode:  SqlFailedToConnect
 
@@ -228,8 +226,9 @@ In diesem Artikel werden die gängigen Problembehandlungsmethoden für Connector
 
 - **Ursache:** Wenn die Fehlermeldung „SqlException“ enthält, löst SQL-Datenbank den Fehler aus, der angibt, dass ein bestimmter Vorgang fehlgeschlagen ist.
 
-- **Empfehlung**:  Wenn der SQL-Fehler nicht eindeutig ist, versuchen Sie, die Datenbank auf den aktuellen Kompatibilitätsgrad „150“ zu ändern. Es können SQL-Fehler der neuesten Version ausgelöst werden. Weitere Informationen finden Sie in diesem Detaildokument: https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level?view=sql-server-ver15#backwardCompat.
-        Weitere Informationen zur Problembehandlung bei SQL-Problemen finden Sie unter „SQL-Fehlercode“ in diesem Referenzdokument: https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors. Wenn Sie weitere Hilfe benötigen, wenden Sie sich an den Azure SQL-Support.
+- **Empfehlung**:  Wenn der SQL-Fehler nicht eindeutig ist, versuchen Sie, die Datenbank auf den aktuellen Kompatibilitätsgrad „150“ zu ändern. Es können SQL-Fehler der neuesten Version ausgelöst werden. Weitere Informationen finden Sie im [Detaildokument](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level#backwardCompat).
+
+    Weitere Informationen zur Problembehandlung bei SQL-Problemen finden Sie unter „SQL-Fehlercode“ in diesem Referenzdokument: https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors. Wenn Sie weitere Hilfe benötigen, wenden Sie sich an den Azure SQL-Support.
 
 - **Ursache:** Wenn die Fehlermeldung „PdwManagedToNativeInteropException“ enthält, wird sie normalerweise durch einen Konflikt zwischen Quell- und Senkspaltengrößen verursacht.
 
@@ -319,7 +318,7 @@ In diesem Artikel werden die gängigen Problembehandlungsmethoden für Connector
 
 - **Ursache:** Dies könnte ein vorübergehender SQL-Datenbank-Fehler sein.
 
-- **Empfehlung**:  Versuchen Sie es erneut. Wenn nochmal ein Problem auftritt, wenden Sie sich an den Azure SQL-Support.
+- **Empfehlung**:  Wiederholen Sie den Vorgang. Wenn nochmal ein Problem auftritt, wenden Sie sich an den Azure SQL-Support.
 
 
 ### <a name="error-code--sqlbatchwritetransactionfailed"></a>Fehlercode:  SqlBatchWriteTransactionFailed
@@ -350,7 +349,7 @@ In diesem Artikel werden die gängigen Problembehandlungsmethoden für Connector
 
 - **Ursache:** Die SQL-Verbindung wird durch SQL-Datenbank getrennt, wenn viele Vorgänge gleichzeitig durchgeführt werden und der Server die Verbindung trennt.
 
-- **Empfehlung**:  Der Remoteserver hat die SQL-Verbindung getrennt. Versuchen Sie es erneut. Wenn nochmal ein Problem auftritt, wenden Sie sich an den Azure SQL-Support.
+- **Empfehlung**:  Der Remoteserver hat die SQL-Verbindung getrennt. Wiederholen. Wenn nochmal ein Problem auftritt, wenden Sie sich an den Azure SQL-Support.
 
 
 ### <a name="error-code--sqlcreatetablefailedunsupportedtype"></a>Fehlercode:  SqlCreateTableFailedUnsupportedType
@@ -360,38 +359,38 @@ In diesem Artikel werden die gängigen Problembehandlungsmethoden für Connector
 
 ### <a name="error-message-conversion-failed-when-converting-from-a-character-string-to-uniqueidentifier"></a>Fehlermeldung: Fehler beim Konvertieren einer Zeichenfolge in „uniqueidentifier“.
 
-- **Symptome:** Wenn Sie Daten von der Tabellendatenquelle (z. B. SQL Server) in Azure SQL Data Warehouse kopieren, indem Sie das gestaffelte Kopieren und PolyBase verwenden, tritt der folgende Fehler auf:
+- **Symptome:** Wenn Sie Daten aus der Tabellendatenquelle (z. B. SQL Server) in Azure Synapse Analytics kopieren, indem Sie das gestaffelte Kopieren und PolyBase verwenden, tritt der folgende Fehler auf:
 
     ```
     ErrorCode=FailedDbOperation,Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,
-    Message=Error happened when loading data into SQL Data Warehouse.,
+    Message=Error happened when loading data into Azure Synapse Analytics.,
     Source=Microsoft.DataTransfer.ClientLibrary,Type=System.Data.SqlClient.SqlException,
     Message=Conversion failed when converting from a character string to uniqueidentifier...
     ```
 
-- **Ursache:** Mit Azure SQL Data Warehouse PolyBase kann eine leere Zeichenfolge nicht in eine GUID konvertiert werden.
+- **Ursache:** Mit Azure Synapse Analytics PolyBase kann eine leere Zeichenfolge nicht in eine GUID konvertiert werden.
 
 - **Lösung:** Legen Sie in der Senke der Kopieraktivität unter den PolyBase-Einstellungen die Option „**use type default**“ auf „false“ fest.
 
 ### <a name="error-message-expected-data-type-decimalxx-offending-value"></a>Fehlermeldung: Erwarteter Datentyp: DECIMAL(x,x), Auslösender Wert
 
-- **Symptome:** Wenn Sie Daten von der Tabellendatenquelle (z. B. SQL Server) in SQL DW kopieren, indem Sie das gestaffelte Kopieren und PolyBase verwenden, tritt der folgende Fehler auf:
+- **Symptome:** Wenn Sie Daten aus der Tabellendatenquelle (z. B. SQL Server) in Azure Synapse Analytics kopieren, indem Sie das gestaffelte Kopieren und PolyBase verwenden, tritt der folgende Fehler auf:
 
     ```
     ErrorCode=FailedDbOperation,Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,
-    Message=Error happened when loading data into SQL Data Warehouse.,
+    Message=Error happened when loading data into Azure Synapse Analytics.,
     Source=Microsoft.DataTransfer.ClientLibrary,Type=System.Data.SqlClient.SqlException,
     Message=Query aborted-- the maximum reject threshold (0 rows) was reached while reading from an external source: 1 rows rejected out of total 415 rows processed. (/file_name.txt) 
     Column ordinal: 18, Expected data type: DECIMAL(x,x), Offending value:..
     ```
 
-- **Ursache:** Azure SQL Data Warehouse PolyBase kann in eine Dezimalspalte keine leere Zeichenfolge (NULL-Wert) einfügen.
+- **Ursache:** Azure Synapse Analytics PolyBase kann in eine Dezimalspalte keine leere Zeichenfolge (NULL-Wert) einfügen.
 
 - **Lösung:** Legen Sie in der Senke der Kopieraktivität unter den PolyBase-Einstellungen die Option „**use type default**“ auf „false“ fest.
 
 ### <a name="error-message-java-exception-message-hdfsbridgecreaterecordreader"></a>Fehlermeldung: Java-Ausnahmemeldung: HdfsBridge::CreateRecordReader
 
-- **Symptome:** Sie kopieren Daten mit PolyBase in Azure SQL Data Warehouse und erhalten den folgenden Fehler:
+- **Symptome:** Sie kopieren Daten mit PolyBase in Azure Synapse Analytics und erhalten den folgenden Fehler:
 
     ```
     Message=110802;An internal DMS error occurred that caused this operation to fail. 
@@ -400,7 +399,7 @@ In diesem Artikel werden die gängigen Problembehandlungsmethoden für Connector
     Java exception message:HdfsBridge::CreateRecordReader - Unexpected error encountered creating the record reader.: Error [HdfsBridge::CreateRecordReader - Unexpected error encountered creating the record reader.] occurred while accessing external file.....
     ```
 
-- **Ursache:** Die mögliche Ursache ist, dass das Schema (gesamte Spaltenbreite) zu groß ist (größer als 1 MB). Überprüfen Sie das Schema der SQL DW-Zieltabelle, indem Sie die Größe aller Spalten hinzufügen:
+- **Ursache:** Die mögliche Ursache ist, dass das Schema (gesamte Spaltenbreite) zu groß ist (größer als 1 MB). Überprüfen Sie das Schema der Azure Synapse Analytics-Zieltabelle, indem Sie die Größe aller Spalten hinzufügen:
 
     - Int -> 4 Byte
     - Bigint -> 8 Byte
@@ -424,15 +423,15 @@ In diesem Artikel werden die gängigen Problembehandlungsmethoden für Connector
 
 ### <a name="error-message-the-condition-specified-using-http-conditional-headers-is-not-met"></a>Fehlermeldung: Die mit bedingtem HTTP-Header angegebene Bedingung ist nicht erfüllt.
 
-- **Symptome:** Sie verwenden die SQL-Abfrage zum Abrufen von Daten per Pullvorgang aus Azure SQL Data Warehouse und erhalten den folgenden Fehler:
+- **Symptome:** Sie verwenden die SQL-Abfrage zum Abrufen von Daten per Pullvorgang aus Azure Synapse Analytics und erhalten den folgenden Fehler:
 
     ```
     ...StorageException: The condition specified using HTTP conditional header(s) is not met...
     ```
 
-- **Ursache:** Für Azure SQL Data Warehouse ist beim Abfragen der externen Tabelle in Azure Storage ein Fehler aufgetreten.
+- **Ursache:** Für Azure Synapse Analytics ist beim Abfragen der externen Tabelle in Azure Storage ein Fehler aufgetreten.
 
-- **Lösung:** Führen Sie die gleiche Abfrage in SSMS aus, und überprüfen Sie, ob das gleiche Ergebnis angezeigt wird. Wenn ja: Erstellen Sie ein Supportticket für Azure SQL Data Warehouse, und geben Sie für die weitere Problembehandlung den Namen Ihres SQL DW-Servers und der Datenbank an.
+- **Lösung:** Führen Sie die gleiche Abfrage in SSMS aus, und überprüfen Sie, ob das gleiche Ergebnis angezeigt wird. Wenn ja: Erstellen Sie ein Supportticket für Azure Synapse Analytics, und geben Sie für die weitere Problembehandlung den Namen Ihres Azure Synapse Analytics-Servers und der Datenbank an.
             
 
 ## <a name="delimited-text-format"></a>Textformat mit Trennzeichen
@@ -537,7 +536,7 @@ In diesem Artikel werden die gängigen Problembehandlungsmethoden für Connector
 
 - **Ursache:** Wenn die Fehlermeldung „java.lang.OutOfMemory“, „Java heap space“ und „doubleCapacity“ enthält, liegt normalerweise ein Speicherverwaltungsproblem in der alten Version von Integration Runtime vor.
 
-- **Empfehlung**:  Wenn Sie selbstgehostete Integration Runtime verwenden und die Version älter als 3.20.7159.1 ist, sollten Sie ein Upgrade auf die neueste Version durchführen.
+- **Empfehlung**:  Wenn Sie selbstgehostete Integration Runtime verwenden und die Version älter als 3.20.7159.1 ist, wird empfohlen, ein Upgrade auf die neueste Version durchzuführen.
 
 - **Ursache:** Wenn die Fehlermeldung „java.lang.OutOfMemory“ enthält, verfügt die Integration Runtime nicht über genügend Ressourcen zum Verarbeiten der Datei(en).
 
@@ -545,7 +544,7 @@ In diesem Artikel werden die gängigen Problembehandlungsmethoden für Connector
 
 - **Ursache:** Wenn die Fehlermeldung „NullPointerReference“ enthält, ist möglicherweise ein vorübergehender Fehler aufgetreten.
 
-- **Empfehlung**:  Versuchen Sie es erneut. Wenn das Problem weiterhin besteht, wenden Sie sich an den Support.
+- **Empfehlung**:  Wiederholen Sie den Vorgang. Wenn das Problem weiterhin besteht, wenden Sie sich an den Support.
 
 
 ### <a name="error-code--parquetinvalidfile"></a>Fehlercode:  ParquetInvalidFile
@@ -626,7 +625,7 @@ In diesem Artikel werden die gängigen Problembehandlungsmethoden für Connector
 
 - **Ursache:** Datenwert über Begrenzung
 
-- **Empfehlung**:  Versuchen Sie es erneut. Wenn das Problem weiterhin auftritt, wenden Sie sich an uns.
+- **Empfehlung**:  Wiederholen Sie den Vorgang. Wenn das Problem weiterhin auftritt, wenden Sie sich an uns.
 
 
 ### <a name="error-code--parquetunsupportedinterpretation"></a>Fehlercode:  ParquetUnsupportedInterpretation

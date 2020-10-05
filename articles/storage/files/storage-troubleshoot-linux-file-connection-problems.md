@@ -7,18 +7,21 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: a01d9e90e87d1c23b9aefc5f2d9ba3ba84d0f59f
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 4044690bf042d05e4efd531826fab6cb5459b3b7
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904920"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707644"
 ---
-# <a name="troubleshoot-azure-files-problems-in-linux"></a>Behandeln von Azure Files-Problemen unter Linux
+# <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>Behandeln von Azure Files-Problemen unter Linux (SMB)
 
 Dieser Artikel beschreibt allgemeine Probleme im Zusammenhang mit Azure Files, wenn Sie eine Verbindung von Linux-Clients herstellen. Darüber hinaus werden die möglichen Ursachen und Lösungen für diese Probleme bereitgestellt. 
 
 Zusätzlich zu den Schritten zur Problembehandlung in diesem Artikel können Sie [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Linux) verwenden, um sicherzustellen, dass der Linux-Client die erforderlichen Voraussetzungen erfüllt. AzFileDiagnostics automatisiert die Erkennung eines Großteils der in diesem Artikel erwähnten Symptome. Das Tool hilft Ihnen dabei, Ihre Umgebung optimal einzurichten. Diese Informationen stehen auch in der [Problembehandlung für Azure Files-Freigaben](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares) zur Verfügung. Die Problembehandlung unterstützt Sie beim Behandeln von Verbindungs-, Zuordnungs- und Einbindungsproblemen im Zusammenhang mit Azure Files-Freigaben.
+
+> [!IMPORTANT]
+> Der Inhalt dieses Artikels gilt nur für SMB-Freigaben. Weitere Informationen zu NFS-Freigaben finden Sie unter [Behandeln von Problemen mit Azure NFS-Dateifreigaben](storage-troubleshooting-files-nfs.md).
 
 ## <a name="cannot-connect-to-or-mount-an-azure-file-share"></a>Verbindungsherstellung mit oder Einbindung von Azure-Dateifreigabe nicht möglich
 

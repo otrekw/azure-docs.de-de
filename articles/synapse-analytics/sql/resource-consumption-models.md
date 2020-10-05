@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: c699186c77bba16e96de2dc8b5968f5a83a5a9ce
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 4d00abdd3caf6c77b2227d9edfea3cc23d13e392
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461764"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288221"
 ---
 # <a name="synapse-sql-resource-consumption"></a>Synapse SQL-Ressourcennutzung
 
@@ -29,7 +29,7 @@ Empfehlungen zum Auswählen der idealen Anzahl von Data Warehouse-Einheiten (Dat
 
 ### <a name="data-warehouse-units"></a>Data Warehouse-Einheiten
 
-Ein Synapse SQL-Pool ist eine Sammlung von Analyseressourcen, die bereitgestellt werden. Analytische Ressourcen werden als eine Kombination aus CPU, Arbeitsspeicher und E/A definiert. Diese drei Ressourcen werden in Computeskalierungseinheiten gebündelt, die als „Data Warehouse-Einheiten“ (Data Warehouse Units, DWUs) bezeichnet werden. Eine DWU stellt ein abstraktes, normalisiertes Maß für Computeressourcen und -leistung dar. Durch eine Änderung der Dienstebene wird die Anzahl von DWUs geändert, die für das System verfügbar sind. Hiermit werden dann die Leistung und die Kosten Ihres Systems angepasst.
+Ein Synapse SQL-Pool ist eine Sammlung von Analyseressourcen, die bereitgestellt werden. Analyseressourcen werden als eine Kombination aus CPU, Arbeitsspeicher und E/A definiert. Diese drei Ressourcen werden in Computeskalierungseinheiten gebündelt, die als „Data Warehouse-Einheiten“ (Data Warehouse Units, DWUs) bezeichnet werden. Eine DWU stellt ein abstraktes, normalisiertes Maß für Computeressourcen und -leistung dar. Durch eine Änderung der Dienstebene wird die Anzahl von DWUs geändert, die für das System verfügbar sind. Hiermit werden dann die Leistung und die Kosten Ihres Systems angepasst.
 
 Um die Leistung zu steigern, können Sie die Anzahl von Data Warehouse-Einheiten erhöhen. Verringern Sie die Anzahl von Data Warehouse-Einheiten, um die Leistung zu reduzieren. Speicher- und Computekosten werden separat in Rechnung gestellt. Das Ändern der Data Warehouse-Einheiten wirkt sich daher nicht auf die Speicherkosten aus.
 
@@ -81,7 +81,7 @@ Jeder SQL-Server (z.B. myserver.database.windows.net) weist ein Kontingent für 
 
 ### <a name="assess-the-number-of-data-warehouse-units-you-need"></a>Ermitteln der Anzahl der benötigten Data Warehouse-Einheiten
 
-Die optimale Anzahl der Data Warehouse-Einheiten hängt in hohem Maß von Ihrer Arbeitsauslastung und der Datenmenge ab, die Sie in das System geladen haben.
+Die optimale Anzahl der Data Warehouse-Einheiten hängt in hohem Maß von Ihrer Workload und der Datenmenge ab, die Sie in das System geladen haben.
 
 Schritte zum Ermitteln der besten DWU-Anzahl für Ihre Arbeitsauslastung:
 
@@ -124,11 +124,11 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 
 So ändern Sie DWUs:
 
-1. Öffnen Sie das [Azure-Portal](https://portal.azure.com), öffnen Sie Ihre Datenbank, und klicken Sie dann auf **Skalieren**.
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com), öffnen Sie Ihre Datenbank, und wählen Sie dann **Skalieren** aus.
 
 2. Verschieben Sie unter **Skalieren** den Schieberegler nach links oder rechts, um die DWU-Einstellung zu ändern.
 
-3. Klicken Sie auf **Speichern**. Eine Bestätigungsmeldung wird angezeigt. Klicken Sie zur Bestätigung auf **Ja** oder zum Abbrechen auf **Nein**.
+3. Wählen Sie **Speichern** aus. Eine Bestätigungsmeldung wird angezeigt. Wählen Sie zur Bestätigung **Ja** oder zum Abbrechen **Nein** aus.
 
 #### <a name="powershell"></a>PowerShell
 
@@ -180,7 +180,7 @@ Es kann mehrere Minuten in Anspruch nehmen, bis DWU-Änderungen abgeschlossen we
 
 Überprüfen Sie den Datenbankzustand über verschiedene Endpunkte, um sicherzugehen, dass die Automatisierung ordnungsgemäß implementiert wird. Über das Portal erhalten Sie bei Abschluss eines Vorgangs eine Benachrichtigung sowie Informationen zum aktuellen Zustand der Datenbanken. Das Portal ermöglicht aber keine programmgesteuerte Überprüfung des Zustands.
 
-Der Zustand der Datenbank für horizontale Hochskalierungsvorgänge kann nicht mit dem Azure-Portal überprüft werden.
+Der Datenbankzustand für horizontale Hochskalierungsvorgänge kann nicht mit dem Azure-Portal überprüft werden.
 
 So überprüfen Sie den Zustand von DWU-Änderungen:
 

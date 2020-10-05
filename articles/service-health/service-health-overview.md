@@ -1,14 +1,14 @@
 ---
 title: Übersicht über Service Health | Microsoft-Dokumentation
-description: Personalisierte Informationen dazu, wie Ihre Azure-Apps von aktuellen und zukünftigen Problemen und Wartungen der Azure-Dienste betroffen sind.
+description: Erfahren Sie, wie Service Health Ihnen ein anpassbares Dashboard bietet, das die Integrität Ihrer Azure-Dienste in den Regionen nachverfolgt, in denen Sie sie verwenden.
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 2f2f0c8bf2cf4fe5beae7d48b198a23edba4e9ae
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8246b0ab93b95c13858e4ff96d0f24b255d05e55
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089599"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967789"
 ---
 # <a name="service-health-overview"></a>Service Health-Übersicht
 

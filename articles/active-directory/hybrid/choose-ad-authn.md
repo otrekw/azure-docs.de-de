@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: beabe9440c37d16ca4a81efdbc9588739f4c7473
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: d5de8da548c2e141eb921aa4f95e82f7199ae1f4
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279345"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602369"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Wählen der richtigen Authentifizierungsmethode für Ihre Azure Active Directory-Hybrididentitätslösung
 
@@ -86,7 +86,7 @@ Informationen zu Entscheidungsfragen:
 
 ### <a name="cloud-authentication-password-hash-synchronization"></a>Cloudauthentifizierung Kennworthashsynchronisierung
 
-* **Aufwand**: Die Kennworthashsynchronisierung ist mit dem geringsten Aufwand in Bezug auf Bereitstellung, Wartung und Infrastruktur verbunden.  Diese Art von Aufwand fällt normalerweise für Organisationen an, in denen sich Benutzer nur an Office 365, SaaS-Apps und anderen Azure AD-basierten Ressourcen anmelden müssen. Im aktivierten Zustand ist die Kennworthashsynchronisierung Teil des Azure AD Connect-Synchronisierungsprozesses, der alle zwei Minuten ausgeführt wird.
+* **Aufwand**: Die Kennworthashsynchronisierung ist mit dem geringsten Aufwand in Bezug auf Bereitstellung, Wartung und Infrastruktur verbunden.  Diese Art von Aufwand fällt normalerweise für Organisationen an, in denen sich Benutzer nur bei Microsoft 365-Apps, SaaS-Apps und anderen Azure AD-basierten Ressourcen anmelden müssen. Im aktivierten Zustand ist die Kennworthashsynchronisierung Teil des Azure AD Connect-Synchronisierungsprozesses, der alle zwei Minuten ausgeführt wird.
 
 * **Benutzererfahrung**: Stellen Sie das nahtlose einmalige Anmelden mit Kennworthashsynchronisierung bereit, um die Anmeldeerfahrung für Benutzer zu verbessern. Beim nahtlosen einmaligen Anmelden werden für Benutzer bei der Anmeldung keine unnötigen Aufforderungen angezeigt.
 
@@ -203,7 +203,7 @@ Verwenden oder aktivieren Sie die Kennworthashsynchronisierung aus folgenden Gr�
 
 2. **Sicherung bei lokalem Ausfall**:  Die Folgen eines lokalen Ausfalls aufgrund eines Cyberangriffs oder einer Katastrophe können beträchtlich sein. Sie reichen von einem Markenschaden bis hin zu einer handlungsunfähigen Organisation, die den Angriff nicht bewältigen kann. In letzter Zeit sind viele Organisationen Opfer von Angriffen mit Schadsoftware geworden, z. B. gezielter Ransomware, die zu einem Ausfall der lokalen Server geführt hat. Microsoft hat seine Kunden bei der Bewältigung dieser Art von Angriffen unterstützt und zwei Kategorien von Organisationen erkannt:
 
-   * Organisationen, die zusätzlich zur Verbund- oder Pass-Through-Authentifizierung auch die Kennworthashsynchronisierung bereits aktiviert hatten, haben ihre primäre Authentifizierungsmethode geändert und dann die Kennworthashsynchronisierung verwendet. Der Onlinezustand konnte innerhalb weniger Stunden wiederhergestellt werden. Durch den Zugriff auf E-Mails über Office 365 konnten Probleme gelöst werden, und der Zugriff auf andere cloudbasierte Workloads wurde ermöglicht.
+   * Organisationen, die zusätzlich zur Verbund- oder Pass-Through-Authentifizierung auch die Kennworthashsynchronisierung bereits aktiviert hatten, haben ihre primäre Authentifizierungsmethode geändert und dann die Kennworthashsynchronisierung verwendet. Der Onlinezustand konnte innerhalb weniger Stunden wiederhergestellt werden. Durch den Zugriff auf E-Mails über Microsoft 365 konnten Probleme gelöst werden, und der Zugriff auf andere cloudbasierte Workloads wurde ermöglicht.
 
    * Organisationen, die die Kennworthashsynchronisierung zuvor nicht aktiviert hatten, mussten für die Kommunikation und Problembehebung auf nicht vertrauenswürdige externe E-Mail-Systeme zurückgreifen. In diesen Fällen dauerte es Wochen, bis die lokale Identitätsinfrastruktur wiederhergestellt war, sodass sich die Benutzer wieder bei cloudbasierten Anwendungen anmelden konnten.
 

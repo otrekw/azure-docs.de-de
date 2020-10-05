@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: b7b8a0d98db1411a08afdb33fa272bb7e6d6313e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e541a5620d4f263e5e1379b364d7c7dd9a97a331
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280476"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289020"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>Verwenden von OPENROWSET mit SQL On-Demand (Vorschauversion)
 
@@ -119,7 +119,7 @@ Bei dem Pfad für unstrukturierte Daten kann es sich um einen absoluten oder rel
 | Azure Blob Storage         | wasb[s]  | \<container>@\<storage_account>.blob.core.windows.net/path/file |
 | Azure Data Lake Store Gen1 | http[s]  | \<storage_account>.azuredatalakestore.net/webhdfs/v1 |
 | Azure Data Lake Store Gen2 | http[s]  | \<storage_account>.dfs.core.windows.net/path/file   |
-| Azure Data Lake Store Gen2 | abfs[s]  | [\<file_system>@\<account_name>.dfs.core.windows.net/path/file](../../storage/blobs/data-lake-storage-introduction-abfs-uri.md#uri-syntax)              |
+| Azure Data Lake Store Gen2 | aufs[s]  | [\<file_system>@\<account_name>.dfs.core.windows.net/path/file](../../storage/blobs/data-lake-storage-introduction-abfs-uri.md#uri-syntax)              |
 ||||
 
 '\<storage_path>'
@@ -184,7 +184,7 @@ Der ESCAPE_CHAR-Parameter wird unabhängig davon angewendet, ob FIELDQUOTE aktiv
 
 FIRSTROW = 'first_row' 
 
-Gibt die Nummer der ersten zu ladenden Zeile an. Der Standardwert ist 1. Damit wird die erste Zeile in der festgelegten Datendatei angegeben. Die Zeilennummern werden durch Zählen der Zeilenabschlusszeichen bestimmt. FIRSTROW ist einsbasiert.
+Gibt die Nummer der ersten zu ladenden Zeile an. Der Standardwert ist 1 und kennzeichnet die erste Zeile in der angegebenen Datendatei. Die Zeilennummern werden durch Zählen der Zeilenabschlusszeichen bestimmt. FIRSTROW ist einsbasiert.
 
 FIELDQUOTE = 'field_quote' 
 
@@ -203,7 +203,7 @@ Gibt die beim Lesen von Dateien zu verwendende Parserversion an. Zurzeit werden 
 - PARSER_VERSION = '1.0'
 - PARSER_VERSION = '2.0'
 
-Die CSV-Parserversion 1.0 ist die funktionsreiche Standardversion, während 2.0 im Hinblick auf Leistung erstellt wurde und nicht alle Optionen und Codierungen unterstützt. 
+Die CSV-Parserversion 1.0 ist die funktionsreiche Standardversion. Version 2.0 wurde mit dem Fokus auf Leistung erstellt und unterstützt nicht alle Optionen und Codierungen. 
 
 Einzelheiten zu CSV-Parserversion 2.0:
 
@@ -229,7 +229,7 @@ WITH (
 ) AS [r]
 ```
 
-Im folgenden Beispiel werden alle Spalten der ersten Zeile aus dem Zensus-Dataset im Parquet-Format ohne Angabe von Spaltennamen und Datentypen zurückgegeben: 
+Im folgenden Beispiel werden alle Spalten der ersten Zeile aus dem Zensus-Dataset im Parquet-Format zurückgegeben, ohne dass die Spaltennamen und Datentypen angegeben werden: 
 
 ```sql
 SELECT 

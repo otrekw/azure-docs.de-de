@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: overview
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: 3d9d1240e31d40a3d9c75d56314acc1721d90b99
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 2512092c69390ce604c26ab6c5dd000afafc7c05
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73488136"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360887"
 ---
 # <a name="what-is-internet-analyzer-preview"></a>Was ist Internet Analyzer? (Vorschau)
 
@@ -90,7 +90,7 @@ Um Internet Analyzer zu verwenden, richten Sie eine Internet Analyzer-Ressource 
 
 Wenn ein Benutzer die Webanwendung besucht, wählt der JavaScript-Client zwei Endpunkte aus, für die Messungen für alle konfigurierten Tests ausgeführt werden. Für jeden Endpunkt führt der Client eine _kalte_ und eine _warme_ Messung aus. Die _kalte_ Messung verursacht zusätzliche Latenz – neben der reinen Netzwerklatenz zwischen Benutzer und Endpunkt z. B. bei DNS-Auflösung, TCP-Verbindungshandshake und SSL/TLS-Aushandlung. Die _warme_ Messung erfolgt direkt nach Abschluss der _kalten_ Messung und nutzt das permanente TCP-Verbindungsmanagement moderner Browser, um eine exakte Messung der End-to-End-Latenz zu erhalten. Für ein exaktes Timing der Messungen wird die W3C-API für das Ressourcentiming verwendet, wenn diese vom Browser des Benutzers unterstützt wird. Zurzeit werden nur warme Latenzmessungen für Analysen verwendet.
 
-![Architektur](./media/ia-overview/architecture.png)
+![Diagramm, das einen Endbenutzer zeigt, der eine Verbindung mit einem Anwendungsserver mit eingebettetem Client herstellt sowie mit den beiden Endpunkte im Internet von verschiedenen Optionen aus. Der Benutzer lädt Messungen in Internet Analyzer hoch.](./media/ia-overview/architecture.png)
 
 
 ## <a name="scorecards"></a>Scorecards 

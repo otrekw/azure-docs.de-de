@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 09/04/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 52f495753d055730c1ad42444c83cf3d5cd4c1d3
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: beac9f64b12a07d2fc900099ee1f107e4981f17e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461424"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320216"
 ---
 # <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>Tutorial: Verwalten von App-Gruppen mit dem Azure-Portal
 
@@ -32,7 +32,8 @@ Falls Sie bereits einen Hostpool und Sitzungshost-VMs erstellt haben, indem Sie 
 
 1.  Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
    
-   >![HINWEIS] Wenn Sie sich beim US Gov-Portal anmelden, wechseln Sie stattdessen zu [https://portal.azure.us/](https://portal.azure.us/).
+    >[!NOTE]
+    > Wenn Sie sich beim US Gov-Portal anmelden, wechseln Sie stattdessen zu [https://portal.azure.us/](https://portal.azure.us/).
 
 2.  Suchen Sie nach **Windows Virtual Desktop**, und wählen Sie diese Option aus.
 

@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 08/25/2020
+ms.date: 09/23/2020
 ms.author: victorh
-ms.openlocfilehash: ae220a1b70be7178c4c2fea01103991c8729ae79
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 74d83ecc240fa4b48421dbaa1c5cc9e62990655d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855048"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399447"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Was ist Azure Firewall Manager?
 
@@ -78,7 +78,7 @@ Für Azure Firewall Manager sind die folgenden Probleme bekannt:
 
 |Problem  |BESCHREIBUNG  |Minderung  |
 |---------|---------|---------|
-|Trennung von Datenverkehr|Die Trennung von Office 365-Datenverkehr und öffentlichem Azure-PaaS-Datenverkehr wird aktuell nicht unterstützt. Daher wird bei Auswahl eines Drittanbieters für V2I oder B2I auch der gesamte öffentliche Azure-PaaS- und Office 365-Datenverkehr über den Partnerdienst gesendet.|Die Datenverkehrstrennung am Hub wird untersucht.
+|Trennung von Datenverkehr|Die Trennung von Microsoft 365-Datenverkehr und öffentlichem Azure-PaaS-Datenverkehr wird aktuell nicht unterstützt. Daher wird bei Auswahl eines Drittanbieters für V2I oder B2I auch der gesamte öffentliche Azure-PaaS- und Microsoft 365-Datenverkehr über den Partnerdienst gesendet.|Die Datenverkehrstrennung am Hub wird untersucht.
 |Ein geschützter virtueller Hub pro Region|Sie können nicht mehr als einen geschützten virtuellen Hub pro Region verwenden.|Erstellen Sie mehrere virtuelle WANs in einer Region.|
 |Basisrichtlinien müssen in derselben Region wie die lokale Richtlinie vorliegen|Erstellen Sie sämtliche Ihrer lokalen Richtlinien in derselben Region wie die Basisrichtlinie. Eine in einer Region erstellte Richtlinie kann weiterhin auf einen geschützten Hub aus einer anderen Region angewendet werden.|Wird untersucht|
 |Filtern von Datenverkehr zwischen Hubs in Bereitstellungen mit geschützten Hubs|Das Filtern der Kommunikation zwischen geschützten virtuellen Hubs wird noch nicht unterstützt. Die Kommunikation zwischen Hubs funktioniert jedoch weiterhin, wenn die Filterung von privatem Datenverkehr per Azure Firewall nicht aktiviert ist.|Wird untersucht|
@@ -87,6 +87,8 @@ Für Azure Firewall Manager sind die folgenden Probleme bekannt:
 |Alle geschützten virtuellen Hubs, die das gleiche virtuelle WAN nutzen, müssen sich in derselben Ressourcengruppe befinden.|Dieses Verhalten orientiert sich heute an Virtual WAN-Hubs.|Erstellen Sie mehrere Virtual WAN-Instanzen, um die Erstellung von geschützten virtuellen Hubs in verschiedenen Ressourcengruppen zu ermöglichen.|
 |Fehler beim Massenhinzufügen von IP-Adressen|Die Firewall des geschützten Hubs wird in einen Fehlerzustand versetzt, wenn Sie eine größere Zahl von öffentlichen IP-Adressen hinzufügen.|Fügen Sie öffentliche IP-Adressen in kleineren Schritten hinzu. Fügen Sie beispielsweise nur zehn gleichzeitig hinzu.|
 |Für Anwendungsregeln tritt auf einem geschützten Hub ein Fehler auf, wenn ein benutzerdefiniertes DNS (Vorschau) konfiguriert ist.|Benutzerdefiniertes DNS (Vorschau) funktioniert nicht in Bereitstellungen von geschützten Hubs und virtuellen Hubnetzwerkbereitstellungen, bei denen die Tunnelerzwingung aktiviert ist.|Wir arbeiten derzeit an der Fehlerbehebung.|
+|DDoS Protection Standard wird bei geschützten virtuellen Hubs nicht unterstützt.|DDoS Protection Standard ist nicht in vWANs integriert.|Wird untersucht|
+|Aktivitätsprotokolle werden nicht vollständig unterstützt.|Firewallrichtlinie unterstützt derzeit keine Aktivitätsprotokolle.|Wird untersucht|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

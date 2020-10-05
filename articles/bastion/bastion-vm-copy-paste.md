@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: charwen
-ms.openlocfilehash: 4e818617b70e874153e026bcf40b6dfee8a8e04e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad1476847874f7cea53c6e9c0c3d9f142c949dac
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84744237"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987715"
 ---
 # <a name="copy-and-paste-to-a-virtual-machine-azure-bastion"></a>Kopieren und Einfügen bei virtuellen Computern: Azure Bastion
 
@@ -37,7 +37,7 @@ Führen Sie die folgenden Schritte aus, nachdem Sie im [Azure-Portal](https://po
 
    ![Toolpalette](./media/bastion-vm-manage/left.png)
 
-   ![Zwischenablage](./media/bastion-vm-manage/clipboard.png)
+   ![Der Screenshot zeigt eine Zwischenablage für in Bastion kopierten Text.](./media/bastion-vm-manage/clipboard.png)
 1. Normalerweise wird der kopierte Text automatisch in der Bastion-Palette zum Kopieren/Einfügen angezeigt. Wenn der Text nicht angezeigt wird, fügen Sie den Text in den Textbereich auf der Palette ein.
 1. Sobald der Text im Textbereich ist, können Sie ihn in der Remotesitzung einfügen.
 

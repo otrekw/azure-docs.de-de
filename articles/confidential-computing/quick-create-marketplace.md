@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: d892d04eddb572ab644693503e454e9f00e0b39c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 82d9c143f84dfced639c928bf12693024079c2ba
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281088"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409492"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-marketplace"></a>Schnellstart: Bereitstellen eines virtuellen Azure Confidential Computing-Computers im Marketplace
 
@@ -179,9 +179,7 @@ Wählen Sie die Ressourcengruppe für den virtuellen Computer und dann **Lösche
 
 In dieser Schnellstartanleitung haben Sie einen virtuellen Confidential Computing-Computer bereitgestellt und das Open Enclave SDK installiert. Weitere Informationen zu virtuellen Confidential Computing-Computern in Azure finden Sie unter [Lösungen für virtuelle Computer](virtual-machine-solutions.md). 
 
-Informieren Sie sich bei Bereitstellung einer Windows-VM auf GitHub in den [OE SDK-Beispielen für Windows](https://github.com/openenclave/openenclave/blob/master/samples/README_Windows.md) darüber, wie Sie Anwendungen entwickeln. 
-
-Machen Sie sich damit vertraut, wie Sie Confidential Computing-Anwendungen unter Linux entwickeln, indem Sie mit den Linux-Beispielen zum Open Enclave SDK auf GitHub fortfahren. 
+Machen Sie sich damit vertraut, wie Sie Confidential Computing-Anwendungen entwickeln, indem Sie mit den Beispielen zum Open Enclave SDK auf GitHub fortfahren. 
 
 > [!div class="nextstepaction"]
-> [Entwickeln von Open Enclave SDK-Beispielen unter Linux](https://github.com/openenclave/openenclave/blob/master/samples/README_Linux.md)
+> [Entwickeln von Open Enclave SDK-Beispielen](https://github.com/openenclave/openenclave/blob/master/samples/README.md)

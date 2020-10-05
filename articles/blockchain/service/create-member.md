@@ -5,12 +5,12 @@ ms.date: 07/16/2020
 ms.topic: quickstart
 ms.reviewer: ravastra
 ms.custom: references_regions
-ms.openlocfilehash: 5632c8a17c5ac25c8b4b436297d0dd5a0071df26
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8a7f5aaea56f34e8107664ab786a14b59cd1cb7d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503420"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292727"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-the-azure-portal"></a>Schnellstart: Erstellen eines Blockchainmitglieds für Azure Blockchain Service mithilfe des Azure-Portals
 
@@ -41,7 +41,7 @@ Ein Azure Blockchain Service-Mitglied ist ein Blockchainknoten in einem privat
     Konsortium | Geben Sie für ein neues Konsortium einen eindeutigen Namen ein. Wenn Sie einem Konsortium über eine Einladung beitreten, wählen Sie das Konsortium aus, dem Sie beitreten. Weitere Informationen zu Konsortien finden Sie unter [Azure Blockchain Service-Konsortium](consortium.md).
     Name | Wählen Sie einen eindeutigen Namen für das Azure Blockchain-Mitglied aus. Der Name des Blockchainmitglieds darf nur Kleinbuchstaben und Zahlen enthalten. Das erste Zeichen muss ein Buchstabe sein. Der Wert muss zwischen 2 und 20 Zeichen umfassen.
     Mitgliedskontokennwort | Das Mitgliedskontokennwort wird zum Verschlüsseln des privaten Schlüssels für das Ethereum-Konto verwendet, das für Ihr Mitglied erstellt wird. Sie verwenden das Mitgliedskonto und das Mitgliedskontokennwort für die Verwaltung des Konsortiums.
-    Preise | Die Knotenkonfiguration und Kosten für Ihren neuen Dienst. Wählen Sie den Link **Ändern** aus, um zwischen den Ebenen **Standard** und **Basic** zu wählen. Verwenden Sie *Basic* für die Entwicklung, das Testen und Proof of Concept-Vorgänge. Verwenden Sie *Standard* für Bereitstellungen für die Produktion. Sie sollten den Tarif *Standard* auch wählen, wenn Sie Blockchain Data Manager verwenden oder eine große Menge privater Transaktionen senden. Das Wechseln zwischen den Tarifen „Basic“ und „Standard“ nach der Erstellung eines Mitglieds wird nicht unterstützt.
+    Preise | Die Knotenkonfiguration und Kosten für Ihren neuen Dienst. Wählen Sie den Link **Ändern** aus, um zwischen den Ebenen **Standard** und **Basic** zu wählen. Verwenden Sie *Basic* für die Entwicklung, das Testen und Proof of Concept-Vorgänge. Verwenden Sie *Standard* für Bereitstellungen für die Produktion. Verwenden Sie außerdem den Tarif *Standard*, wenn Sie Blockchain Data Manager verwenden oder eine große Menge privater Transaktionen senden. Das Wechseln zwischen den Tarifen „Basic“ und „Standard“ nach der Erstellung eines Mitglieds wird nicht unterstützt.
     Knotenkennwort | Das Kennwort für den Standardtransaktionsknoten des Mitglieds. Verwenden Sie das Kennwort für die Standardauthentifizierung, wenn Sie eine Verbindung mit dem öffentlichen Endpunkt des Standardtransaktionsknotens des Blockchainmitglieds herstellen.
 
 1. Wählen Sie zum Überprüfen Ihrer Einstellungen **Überprüfen + erstellen** aus. Wählen Sie **Erstellen** aus, um den Dienst bereitzustellen. Die Bereitstellung dauert ungefähr 10 Minuten.

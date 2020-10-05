@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/28/2020
-ms.openlocfilehash: 62c4813caa1d35f20824223c77fb3a652b0cc6b8
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.date: 09/09/2020
+ms.openlocfilehash: 06c09144fc112d6f095271c510fa33b816e8f906
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182580"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612654"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Kopieren und Transformieren von Daten in Azure Data Lake Storage Gen2 mithilfe von Azure Data Factory
 
@@ -68,7 +68,7 @@ Der Azure Data Lake Storage Gen2-Connector unterstützt die folgenden Authentifi
 - [Verwaltete Identitäten für Azure-Ressourcenauthentifizierung](#managed-identity)
 
 >[!NOTE]
->Wenn Sie mit PolyBase Daten in SQL Data Warehouse laden und Ihr Quell-Data Lake Storage Gen2 mit einem Virtual Network-Endpunkt konfiguriert ist, müssen Sie zur Authentifizierung eine verwaltete Identität wie für PolyBase erforderlich verwenden. Im Abschnitt [Verwaltete Identitäten für Azure-Ressourcenauthentifizierung](#managed-identity) sind weitere Konfigurationsvoraussetzungen aufgeführt.
+>Wenn Sie mit PolyBase Daten in Azure Synapse Analytics (früher SQL Data Warehouse) laden und Ihr Quell-Data Lake Storage Gen2 mit einem Virtual Network-Endpunkt konfiguriert ist, müssen Sie gemäß den Anforderungen von PolyBase eine Authentifizierung der verwalteten Identität verwenden. Im Abschnitt [Verwaltete Identitäten für Azure-Ressourcenauthentifizierung](#managed-identity) sind weitere Konfigurationsvoraussetzungen aufgeführt.
 
 ### <a name="account-key-authentication"></a>Kontoschlüsselauthentifizierung
 
@@ -131,12 +131,16 @@ Diese Eigenschaften werden im verknüpften Dienst unterstützt:
 | type | Die „type“-Eigenschaft muss auf **AzureBlobFS** festgelegt sein. |Ja |
 | url | Endpunkt für Data Lake Storage Gen2 im Format `https://<accountname>.dfs.core.windows.net`. | Ja |
 | servicePrincipalId | Geben Sie die Client-ID der Anwendung an. | Ja |
-| servicePrincipalKey | Geben Sie den Schlüssel der Anwendung an. Markieren Sie dieses Feld als `SecureString`, um es sicher in Data Factory zu speichern. Alternativ können Sie [auf ein in Azure Key Vault gespeichertes Geheimnis verweisen](store-credentials-in-key-vault.md). | Ja |
+| servicePrincipalCredentialType | Die Art von Anmeldeinformationen, die für die Authentifizierung beim Dienstprinzipal verwendet werden. Gültige Werte sind **ServicePrincipalKey** und **ServicePrincipalCert**. | Ja |
+| servicePrincipalCredential | Die Anmeldeinformationen für den Dienstprinzipal. <br/> Wenn Sie **ServicePrincipalKey** als Anmeldeinformationstyp verwenden, geben Sie den Schlüssel der Anwendung an. Markieren Sie dieses Feld als **SecureString**, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). <br/> Wenn Sie **ServicePrincipalCert** als Anmeldeinformationen verwenden,verweisen Sie auf ein Zertifikat in Azure Key Vault. | Ja |
+| servicePrincipalKey | Geben Sie den Schlüssel der Anwendung an. Markieren Sie dieses Feld als **SecureString**, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). <br/> Diese Eigenschaft wird weiterhin unverändert für `servicePrincipalId` + `servicePrincipalKey` unterstützt. Wenn ADF eine neue Dienstprinzipal-Zertifikatauthentifizierung hinzugefügt wird, ist das neue Modell für die Dienstprinzipalauthentifizierung `servicePrincipalId` + `servicePrincipalCredentialType` + `servicePrincipalCredential`. | Nein |
 | tenant | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Diese können Sie abrufen, indem Sie im Azure-Portal mit der Maus auf den Bereich oben rechts zeigen. | Ja |
 | azureCloudType | Geben Sie für die Dienstprinzipalauthentifizierung die Art der Azure-Cloudumgebung an, bei der Ihre Azure Active Directory-Anwendung registriert ist. <br/> Zulässige Werte sind **AzurePublic**, **AzureChina**, **AzureUsGovernment** und **AzureGermany**. Standardmäßig wird die Cloudumgebung der Data Factory verwendet. | Nein |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Sie können die Azure Integration Runtime oder eine selbstgehostete Integration Runtime verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn kein Wert angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
 
-**Beispiel:**
+**Beispiel: Verwenden der Dienstprinzipal-Schlüsselauthentifizierung**
+
+Sie können den Dienstprinzipalschlüssel auch in Azure Key Vault speichern.
 
 ```json
 {
@@ -146,9 +150,38 @@ Diese Eigenschaften werden im verknüpften Dienst unterstützt:
         "typeProperties": {
             "url": "https://<accountname>.dfs.core.windows.net", 
             "servicePrincipalId": "<service principal id>",
-            "servicePrincipalKey": {
+            "servicePrincipalCredentialType": "ServicePrincipalKey",
+            "servicePrincipalCredential": {
                 "type": "SecureString",
                 "value": "<service principal key>"
+            },
+            "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>" 
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+**Beispiel: Verwenden der Dienstprinzipal-Zertifikatauthentifizierung**
+```json
+{
+    "name": "AzureDataLakeStorageGen2LinkedService",
+    "properties": {
+        "type": "AzureBlobFS",
+        "typeProperties": {
+            "url": "https://<accountname>.dfs.core.windows.net", 
+            "servicePrincipalId": "<service principal id>",
+            "servicePrincipalCredentialType": "ServicePrincipalCert",
+            "servicePrincipalCredential": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<AKV reference>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<certificate name in AKV>" 
             },
             "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>" 
         },
@@ -177,11 +210,11 @@ Um verwaltete Identitäten für die Azure-Ressourcenauthentifizierung zu verwend
 >Wenn Sie die Data Factory-Benutzeroberfläche für die Erstellung verwenden und die verwaltete Identität nicht mit der Rolle „Storage-Blobdatenleser/Mitwirkender an Storage-Blobdaten“ in IAM festgelegt ist, wählen Sie beim Testen der Verbindung oder beim Durchsuchen von/Navigieren in Ordnern die Option „Test connection to file path“ (Verbindung mit Dateipfad testen) bzw. „Browse from specified path“ (Von angegebenem Pfad suchen) aus. Geben Sie einen Pfad mit **Lese- und Ausführungsberechtigungen** an, um fortzufahren.
 
 >[!IMPORTANT]
->Wenn Sie mit PolyBase Daten aus Data Lake Storage Gen2 in SQL Data Warehouse laden und eine verwaltete Identität zur Authentifizierung bei Data Lake Storage Gen2 verwenden, müssen Sie auch die Schritte 1 und 2 im [zugehörigen Leitfaden](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) ausführen. Registrieren Sie in Schritt 1 zuerst Ihren Server bei Azure Active Directory (Azure AD). Weisen Sie dann in Schritt 2 Ihrem Server die Rolle „Mitwirkender an Storage-Blobdaten“ zu. Alles Weitere erledigt Data Factory. Wenn Ihr Data Lake Storage Gen2 mit einem Azure Virtual Network-Endpunkt konfiguriert ist und Sie mit PolyBase Daten daraus laden, müssen Sie zur Authentifizierung eine verwaltete Identität wie für PolyBase erforderlich verwenden.
+>Wenn Sie mit PolyBase Daten aus Data Lake Storage Gen2 in Azure Synapse Analytics (früher SQL Data Warehouse) laden und eine verwaltete Identität zur Authentifizierung bei Data Lake Storage Gen2 verwenden, müssen Sie auch die Schritte 1 und 2 in [diesem Leitfaden](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) ausführen. Registrieren Sie in Schritt 1 zuerst Ihren Server bei Azure Active Directory (Azure AD). Weisen Sie dann in Schritt 2 Ihrem Server die Rolle „Mitwirkender an Storage-Blobdaten“ zu. Alles Weitere erledigt Data Factory. Wenn Ihr Data Lake Storage Gen2 mit einem Azure Virtual Network-Endpunkt konfiguriert ist und Sie mit PolyBase Daten daraus laden, müssen Sie zur Authentifizierung eine verwaltete Identität wie für PolyBase erforderlich verwenden.
 
 Diese Eigenschaften werden im verknüpften Dienst unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die „type“-Eigenschaft muss auf **AzureBlobFS** festgelegt sein. |Ja |
 | url | Endpunkt für Data Lake Storage Gen2 im Format `https://<accountname>.dfs.core.windows.net`. | Ja |
@@ -213,7 +246,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Folgende Eigenschaften werden für Data Lake Storage Gen2 unter `location`-Einstellungen in formatbasierten Datasets unterstützt:
 
-| Eigenschaft   | BESCHREIBUNG                                                  | Erforderlich |
+| Eigenschaft   | Beschreibung                                                  | Erforderlich |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | Die „type“-Eigenschaft unter `location` im Dataset muss auf **AzureBlobFSLocation** festgelegt werden. | Ja      |
 | fileSystem | Der Name des Data Lake Storage Gen2-Dateisystems.                              | Nein       |
@@ -263,7 +296,7 @@ Sie haben mehrere Optionen zum Kopieren von Daten aus ADLS Gen2:
 
 Folgende Eigenschaften werden für Data Lake Storage Gen2 unter `storeSettings`-Einstellungen in der formatbasierten Kopierquelle unterstützt:
 
-| Eigenschaft                 | BESCHREIBUNG                                                  | Erforderlich                                      |
+| Eigenschaft                 | Beschreibung                                                  | Erforderlich                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | type                     | Die „type“-Eigenschaft unter `storeSettings` muss auf **AzureBlobFSReadSettings** festgelegt werden. | Ja                                           |
 | ***Suchen Sie die zu kopierenden Dateien:*** |  |  |
@@ -276,8 +309,8 @@ Folgende Eigenschaften werden für Data Lake Storage Gen2 unter `storeSettings`-
 | deleteFilesAfterCompletion | Gibt an, ob die Binärdateien nach dem erfolgreichen Verschieben in den Zielspeicher aus dem Quellspeicher gelöscht werden. Die Dateien werden einzeln gelöscht, sodass Sie bei einem Fehler der Kopieraktivität feststellen werden, dass einige Dateien bereits ins Ziel kopiert und aus der Quelle gelöscht wurden, wohingegen sich andere weiter im Quellspeicher befinden. <br/>Diese Eigenschaft kann nur in Szenarios für Binärkopien verwendet werden, bei denen die Datenquellenspeicher Blob, ADLS Gen1, ADLS Gen2, S3, Google Cloud Storage, File, Azure File, SFTP oder FTP sind. Standardwert: FALSE. |Nein |
 | modifiedDatetimeStart    | Dateifilterung basierend auf dem Attribut: Letzte Änderung. <br>Die Dateien werden ausgewählt, wenn der Zeitpunkt der letzten Änderung innerhalb des Zeitbereichs zwischen `modifiedDatetimeStart` und `modifiedDatetimeEnd` liegt. Die Zeit wird auf die UTC-Zeitzone im Format „2018-12-01T05:00:00Z“ angewandt. <br> Die Eigenschaften können NULL sein, was bedeutet, dass kein Dateiattributfilter auf das Dataset angewandt wird.  Wenn `modifiedDatetimeStart` den datetime-Wert aufweist, aber `modifiedDatetimeEnd` NULL ist, bedeutet dies, dass die Dateien ausgewählt werden, deren Attribut für die letzte Änderung größer oder gleich dem datetime-Wert ist.  Wenn `modifiedDatetimeEnd` den datetime-Wert aufweist, aber `modifiedDatetimeStart` NULL ist, bedeutet dies, dass die Dateien ausgewählt werden, deren Attribut für die letzte Änderung kleiner als der datetime-Wert ist.<br/>Diese Eigenschaft gilt nicht, wenn Sie `fileListPath` konfigurieren. | Nein                                            |
 | modifiedDatetimeEnd      | Wie oben.                                               | Nein                                            |
-| enablePartitionDiscovery | Geben Sie bei partitionierten Dateien an, ob die Partitionen anhand des Dateipfads analysiert und als zusätzliche Quellspalten hinzugefügt werden sollen.<br/>Zulässige Werte sind **FALSE** (Standard) und **TRUE**. | Nein                                            |
-| partitionRootPath | Wenn die Partitionsermittlung aktiviert ist, geben Sie den absoluten Stammpfad an, um partitionierte Ordner als Datenspalten zu lesen.<br/><br/>Ohne Angabe gilt standardmäßig Folgendes:<br/>- Wenn Sie den Dateipfad im Dataset oder die Liste der Dateien in der Quelle verwenden, ist der Partitionsstammpfad der im Dataset konfigurierte Pfad.<br/>- Wenn Sie einen Platzhalterordnerfilter verwenden, ist der Stammpfad der Partition der Unterpfad vor dem ersten Platzhalter.<br/><br/>Angenommen, Sie konfigurieren den Pfad im Dataset als „root/folder/year=2020/month=08/day=27“:<br/>- Wenn Sie den Stammpfad der Partition als „root/folder/year=2020“ angeben, generiert die Copy-Aktivität zusätzlich zu den Spalten innerhalb der Dateien die beiden weiteren Spalten `month` und `day` mit den Werten „08“ bzw. „27“.<br/>- Wenn der Stammpfad der Partition nicht angegeben ist, wird keine zusätzliche Spalte generiert. | Nein                                            |
+| enablePartitionDiscovery | Geben Sie bei partitionierten Dateien an, ob die Partitionen anhand des Dateipfads analysiert und als zusätzliche Quellspalten hinzugefügt werden sollen.<br/>Zulässige Werte sind **false** (Standard) und **true**. | Nein                                            |
+| partitionRootPath | Wenn die Partitionsermittlung aktiviert ist, geben Sie den absoluten Stammpfad an, um partitionierte Ordner als Datenspalten zu lesen.<br/><br/>Ohne Angabe gilt standardmäßig Folgendes:<br/>- Wenn Sie den Dateipfad im Dataset oder die Liste der Dateien in der Quelle verwenden, ist der Partitionsstammpfad der im Dataset konfigurierte Pfad.<br/>- Wenn Sie einen Platzhalterordnerfilter verwenden, ist der Stammpfad der Partition der Unterpfad vor dem ersten Platzhalter.<br/><br/>Angenommen etwa, Sie konfigurieren den Pfad im Dataset als „root/folder/year=2020/month=08/day=27“:<br/>- Wenn Sie den Stammpfad der Partition als „root/folder/year=2020“ angeben, generiert die Kopieraktivität zusätzlich zu den Spalten in den Dateien die beiden weiteren Spalten `month` und `day` mit den Werten „08“ bzw. „27“.<br/>- Wenn kein Stammpfad für die Partition angegeben ist, wird keine zusätzliche Spalte generiert. | Nein                                            |
 | maxConcurrentConnections | Die Anzahl von Verbindungen, die gleichzeitig mit einem Speicher hergestellt werden können. Geben Sie diesen Wert nur an, wenn Sie die gleichzeitigen Verbindungen mit dem Datenspeicher begrenzen möchten. | Nein                                            |
 
 **Beispiel:**
@@ -327,7 +360,7 @@ Folgende Eigenschaften werden für Data Lake Storage Gen2 unter `storeSettings`-
 
 Folgende Eigenschaften werden für Data Lake Storage Gen2 unter `storeSettings`-Einstellungen in formatbasierten Kopiersenken unterstützt:
 
-| Eigenschaft                 | BESCHREIBUNG                                                  | Erforderlich |
+| Eigenschaft                 | Beschreibung                                                  | Erforderlich |
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | type                     | Die „type“-Eigenschaft unter `storeSettings` muss auf **AzureBlobFSWriteSettings** festgelegt werden. | Ja      |
 | copyBehavior             | Definiert das Kopierverhalten, wenn es sich bei der Quelle um Dateien aus einem dateibasierten Datenspeicher handelt.<br/><br/>Zulässige Werte sind:<br/><b>- PreserveHierarchy (Standard)</b>: Behält die Dateihierarchie im Zielordner bei. Der relative Pfad der Quelldatei zum Quellordner ist mit dem relativen Pfad der Zieldatei zum Zielordner identisch.<br/><b>- FlattenHierarchy</b>: Alle Dateien aus dem Quellordner befinden sich auf der ersten Ebene des Zielordners. Die Namen für die Zieldateien werden automatisch generiert. <br/><b>- MergeFiles</b>: Alle Dateien aus dem Quellordner werden in einer Datei zusammengeführt. Wenn der Dateiname angegeben wurde, entspricht der zusammengeführte Dateiname dem angegebenen Namen. Andernfalls wird der Dateiname automatisch generiert. | Nein       |
@@ -523,7 +556,7 @@ Ausführliche Informationen zu den Eigenschaften finden Sie unter [Delete-Aktivi
 
 ### <a name="legacy-dataset-model"></a>Legacy-Datasetmodell
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die „type“-Eigenschaft des Datasets muss auf **AzureBlobFSFile** festgelegt sein. |Ja |
 | folderPath | Pfad zum Ordner in Data Lake Storage Gen2. Wenn keine Angabe vorhanden ist, wird auf das Stammverzeichnis verwiesen. <br/><br/>Der Platzhalterfilter wird unterstützt. Folgende Platzhalter sind zulässig: `*` (entspricht null [0] oder mehr Zeichen) und `?` (entspricht null [0] oder einem einzelnen Zeichen). Verwenden Sie `^` als Escapezeichen, wenn der tatsächliche Ordnername einen Platzhalter oder dieses Escapezeichen enthält. <br/><br/>Beispiele: „Dateisystem/Ordner/“. Weitere Beispiele finden Sie unter [Beispiele für Ordner- und Dateifilter](#folder-and-file-filter-examples). |Nein |
@@ -568,7 +601,7 @@ Ausführliche Informationen zu den Eigenschaften finden Sie unter [Delete-Aktivi
 
 ### <a name="legacy-copy-activity-source-model"></a>Legacy-Kopieraktivität: Quellenmodell
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **AzureBlobFSSource** festgelegt sein. |Ja |
 | recursive | Gibt an, ob die Daten rekursiv aus den Unterordnern oder nur aus dem angegebenen Ordner gelesen werden. Wenn „recursive“ auf „true“ festgelegt ist und es sich bei der Senke um einen dateibasierten Speicher handelt, wird ein leerer Ordner oder Unterordner nicht in die Senke kopiert oder dort erstellt.<br/>Zulässige Werte sind **true** (Standard) und **false**. | Nein |
@@ -608,7 +641,7 @@ Ausführliche Informationen zu den Eigenschaften finden Sie unter [Delete-Aktivi
 
 ### <a name="legacy-copy-activity-sink-model"></a>Legacy-Kopieraktivität – Senkenmodell
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die „type“-Eigenschaft der Senke der Kopieraktivität muss auf **AzureBlobFSSink** festgelegt sein. |Ja |
 | copyBehavior | Definiert das Kopierverhalten, wenn es sich bei der Quelle um Dateien aus einem dateibasierten Datenspeicher handelt.<br/><br/>Zulässige Werte sind:<br/><b>- PreserveHierarchy (Standard)</b>: Behält die Dateihierarchie im Zielordner bei. Der relative Pfad der Quelldatei zum Quellordner ist mit dem relativen Pfad der Zieldatei zum Zielordner identisch.<br/><b>- FlattenHierarchy</b>: Alle Dateien aus dem Quellordner befinden sich auf der ersten Ebene des Zielordners. Die Namen für die Zieldateien werden automatisch generiert. <br/><b>- MergeFiles</b>: Alle Dateien aus dem Quellordner werden in einer Datei zusammengeführt. Wenn der Dateiname angegeben wurde, entspricht der zusammengeführte Dateiname dem angegebenen Namen. Andernfalls wird der Dateiname automatisch generiert. | Nein |

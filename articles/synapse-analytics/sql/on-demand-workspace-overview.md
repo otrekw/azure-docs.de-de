@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: fc306dbca3191f04a85f2c5cc88d41336c13e09c
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: dc47bf73f39d73861c166674a692932d51064e6d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496388"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288527"
 ---
 # <a name="sql-on-demand-preview-in-azure-synapse-analytics"></a>SQL On-Demand (Vorschauversion) in Azure Synapse Analytics 
 
@@ -25,9 +25,11 @@ SQL On-Demand ist ein Abfragedienst für die Daten in Ihrem Data Lake. Er ermö
 - Eine vertraute T-SQL-Syntax zum direkten Abfragen von Daten, ohne dass diese in einen speziellen Speicher kopiert oder geladen werden müssen 
 - Integrierte Konnektivität über die T-SQL-Schnittstelle, die ein breites Spektrum an Business Intelligence und Ad-hoc-Abfragetools bietet – einschließlich der beliebtesten Treiber 
 
-SQL On-Demand ist ein verteiltes Datenverarbeitungssystem, das für große Datenmengen und hohe Computekapazität konzipiert ist. Mit SQL On-Demand können Sie Big Data abhängig von der Workload in wenigen Sekunden oder Minuten analysieren. Dank der integrierten Fehlertoleranz bei der Abfrageausführung bietet das System auch bei Abfragen mit langer Ausführungszeit und umfangreichen Datasets eine hohe Zuverlässigkeit und Erfolgsquote.
+SQL On-Demand ist ein verteiltes Datenverarbeitungssystem, das für umfangreiche Datenmengen und Berechnungsfunktionen konzipiert ist. Mit SQL On-Demand können Sie Big Data abhängig von der Workload in wenigen Sekunden oder Minuten analysieren. Dank der integrierten Fehlertoleranz bei der Abfrageausführung bietet das System auch bei Abfragen mit langer Ausführungszeit und umfangreichen Datasets eine hohe Zuverlässigkeit und Erfolgsquote.
 
-Da es sich bei SQL On-Demand um eine serverlose Lösung handelt, müssen Sie weder eine Infrastruktur einrichten noch Cluster verwalten. In jedem Azure Synapse-Arbeitsbereich wird ein Standardendpunkt für diesen Dienst bereitgestellt, sodass Sie direkt nach der Erstellung des Arbeitsbereichs mit dem Abfragen von Daten beginnen können. Es fallen keine Gebühren für reservierte Ressourcen an. Ihnen werden lediglich die Daten in Rechnung gestellt, die im Rahmen Ihrer Abfragen überprüft werden. Somit handelt es sich hierbei um ein Modell mit echter nutzungsbasierter Bezahlung.  
+Da es sich bei SQL On-Demand um eine serverlose Lösung handelt, müssen Sie weder eine Infrastruktur einrichten noch Cluster verwalten. In jedem Azure Synapse-Arbeitsbereich wird ein Standardendpunkt für diesen Dienst bereitgestellt, sodass Sie direkt nach der Erstellung des Arbeitsbereichs mit dem Abfragen von Daten beginnen können. 
+
+Es fallen keine Gebühren für reservierte Ressourcen an. Ihnen werden lediglich die Daten in Rechnung gestellt, die im Rahmen Ihrer Abfragen verarbeitet werden. Somit handelt es sich hierbei um ein Modell mit echter nutzungsbasierter Bezahlung.  
 
 Wenn Sie Apache Spark für Azure Synapse in Ihrer Datenpipeline verwenden, können Sie zur Datenvorbereitung, -bereinigung oder -anreicherung [im Rahmen des Prozesses erstellte externe Spark-Tabellen direkt über SQL On-Demand abfragen](develop-storage-files-spark-tables.md). Verwenden Sie [Private Link](../security/how-to-connect-to-workspace-with-private-links.md), um Ihren SQL On-Demand-Endpunkt in das [verwaltete VNET Ihres Arbeitsbereichs](../security/synapse-workspace-managed-vnet.md) zu integrieren.  
 

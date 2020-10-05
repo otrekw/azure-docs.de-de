@@ -13,18 +13,18 @@ ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a76a20d2cbc8a7b12b283c2858a13e9343499335
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 04e1d35ab17a49dd1c4e9bd2bd19289de2b8658a
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321292"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565853"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Hinzufügen von Branding zur Azure Active Directory-Anmeldeseite Ihrer Organisation
-Verwenden Sie das Logo und benutzerdefinierte Farbschemas Ihrer Organisation, um Ihren Azure Active Directory-Anmeldeseiten (Azure AD) ein konsistentes Aussehen und Verhalten zu verleihen. Ihre Anmeldeseiten werden angezeigt, wenn sich Benutzer bei webbasierten Apps Ihrer Organisation wie Office 365 anmelden, die Azure AD als Identitätsanbieter verwenden.
+Verwenden Sie das Logo und benutzerdefinierte Farbschemas Ihrer Organisation, um Ihren Azure Active Directory-Anmeldeseiten (Azure AD) ein konsistentes Aussehen und Verhalten zu verleihen. Ihre Anmeldeseiten werden angezeigt, wenn sich Benutzer bei webbasierten Apps Ihrer Organisation wie Microsoft 365 anmelden, die Azure AD als Identitätsanbieter verwenden.
 
 >[!NOTE]
->Für das Hinzufügen eines benutzerdefinierten Brandings müssen Sie eine der Editionen Azure Active Directory Premium 1, Premium 2 oder Basic verwenden oder eine Office 365-Lizenz besitzen. Weitere Informationen zu Lizenzierung und Editionen finden Sie unter [Registrieren für Azure AD Premium](active-directory-get-started-premium.md).<br><br>Die Azure AD-Editionen Premium und Basic stehen für Kunden in China zur Verfügung, die mit der weltweit verfügbaren Instanz von Azure Active Directory arbeiten. Allerdings werden die Azure AD-Editionen „Premium“ und „Basic“ derzeit nicht durch den Azure-Dienst unterstützt, der in China von 21Vianet betrieben wird. Sollten Sie weitere Informationen benötigen, können Sie sich über das [Azure Active Directory-Forum](https://feedback.azure.com/forums/169401-azure-active-directory/) mit uns in Verbindung setzen.
+>Für das Hinzufügen eines benutzerdefinierten Brandings müssen Sie eine der Editionen Azure Active Directory Premium 1, Premium 2 oder Basic verwenden oder eine Microsoft 365-Lizenz besitzen. Weitere Informationen zu Lizenzierung und Editionen finden Sie unter [Registrieren für Azure AD Premium](active-directory-get-started-premium.md).<br><br>Die Azure AD-Editionen Premium und Basic stehen für Kunden in China zur Verfügung, die mit der weltweit verfügbaren Instanz von Azure Active Directory arbeiten. Allerdings werden die Azure AD-Editionen „Premium“ und „Basic“ derzeit nicht durch den Azure-Dienst unterstützt, der in China von 21Vianet betrieben wird. Sollten Sie weitere Informationen benötigen, können Sie sich über das [Azure Active Directory-Forum](https://feedback.azure.com/forums/169401-azure-active-directory/) mit uns in Verbindung setzen.
 
 ## <a name="customize-your-azure-ad-sign-in-page"></a>Anpassen Ihrer Azure AD-Anmeldeseite
 Sie können Ihre Azure AD-Anmeldeseiten anpassen, die angezeigt werden, wenn sich Benutzer bei mandantenspezifischen Apps Ihrer Organisation anmelden, z. B. `https://outlook.com/contoso.com`, oder bei der Übergabe einer Domänenvariablen, z. B. `https://passwordreset.microsoftonline.com/?whr=contoso.com`.
@@ -32,7 +32,7 @@ Sie können Ihre Azure AD-Anmeldeseiten anpassen, die angezeigt werden, wenn sic
 Ihr benutzerdefiniertes Branding wird nicht sofort angezeigt, wenn Ihre Benutzer zu Websites wie www\.office.com navigieren. Stattdessen muss sich der Benutzer anmelden, bevor Ihr benutzerdefiniertes Branding angezeigt wird. Nach der Anmeldung des Benutzers kann es 15 Minuten oder länger dauern, bis das Branding angezeigt wird. 
 
 > [!NOTE]
-> Alle Brandingelemente sind optional. Wenn Sie beispielsweise ein Bannerlogo ohne Hintergrundbild angeben, wird auf der Anmeldeseite Ihr Logo mit einem Standardhintergrundbild der Zielwebsite (z. B. Office 365) angezeigt.<br><br>Darüber hinaus wird das Branding von Anmeldeseiten nicht für persönliche Microsoft-Konten übernommen. Wenn sich Ihre Benutzer oder Gäste des Unternehmens mit einem persönlichen Microsoft-Konto anmelden, wird auf der Anmeldeseite das Branding Ihrer Organisation nicht angezeigt.
+> Alle Brandingelemente sind optional. Wenn Sie beispielsweise ein Bannerlogo ohne Hintergrundbild angeben, wird auf der Anmeldeseite Ihr Logo mit einem Standardhintergrundbild der Zielwebsite (z. B. Microsoft 365) angezeigt.<br><br>Darüber hinaus wird das Branding von Anmeldeseiten nicht für persönliche Microsoft-Konten übernommen. Wenn sich Ihre Benutzer oder Gäste des Unternehmens mit einem persönlichen Microsoft-Konto anmelden, wird auf der Anmeldeseite das Branding Ihrer Organisation nicht angezeigt.
 
 ### <a name="to-customize-your-branding"></a>So passen Sie Ihr Branding an
 1. Melden Sie sich mit dem Konto eines globalen Administrators für das Verzeichnis beim [Azure-Portal](https://portal.azure.com/) an.

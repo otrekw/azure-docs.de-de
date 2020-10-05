@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: 65d7845763b60a66f396d9081f3c9c6e1d04c1bc
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 04f2b0e989edcb182c6c52ff0479902035137810
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447246"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561822"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>Übersicht über die Optionen der identitätsbasierten Authentifizierung mit Azure Files für den SMB-Zugriff
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -78,6 +78,7 @@ In der folgenden Tabelle werden die unterstützten Authentifizierungsszenarien f
 - Die Authentifizierung mit Azure AD DS und lokalen AD DS unterstützt keine Authentifizierung für Computerkonten. Stattdessen können Sie die Verwendung eines Dienstanmeldekontos in Erwägung ziehen.
 - Für in Azure AD eingebundene Geräte oder Azure AD registrierte Geräte werden weder die Azure AD DS-Authentifizierung noch die lokale AD DS Authentifizierung unterstützt.
 - Azure-Dateifreigaben unterstützen nur die identitätsbasierte Authentifizierung bei einem der folgenden Domänendienst, entweder bei [Azure Active Directory Domain Services (Azure AD DS)](#azure-ad-ds) oder einer [lokalen Active Directory Domain Services-Instanz (AD DS)](#ad-ds).
+- Mit dem Netzwerkdateisystem (Network File System, NFS), das sich in der Vorschau befindet, wird keine der identitätsbasierten Authentifizierungsmethoden unterstützt.
 
 ## <a name="advantages-of-identity-based-authentication"></a>Vorteile der identitätsbasierten Authentifizierung
 Die identitätsbasierte Authentifizierung für Azure Files bietet mehrere Vorteile gegenüber der Authentifizierung mit einem gemeinsam verwendeten Schlüssel:

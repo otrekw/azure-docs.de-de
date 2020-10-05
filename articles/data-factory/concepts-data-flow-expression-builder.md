@@ -6,29 +6,29 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 08/10/2020
-ms.openlocfilehash: f522812f762b55ec61794101e6cd1ec15fb171ca
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 09/14/2020
+ms.openlocfilehash: 4297cc83ab3fa280e15480aefcd5aef8734c65ee
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212102"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531060"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>Erstellen von Ausdrücken im Zuordnungsdatenfluss
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Im Zuordnungsdatenfluss werden viele Transformationseigenschaften als Ausdrücke eingegeben. Diese Ausdrücke bestehen aus Spaltenwerten, Parametern, Funktionen, Operatoren und Literalen, die zur Laufzeit zu einem Spark-Datentyp ausgewertet werden.
+Im Zuordnungsdatenfluss werden viele Transformationseigenschaften als Ausdrücke eingegeben. Diese Ausdrücke bestehen aus Spaltenwerten, Parametern, Funktionen, Operatoren und Literalen, die zur Laufzeit zu einem Spark-Datentyp ausgewertet werden. Die Zuordnung von Datenflüssen verfügt über eine dedizierte Funktion, die Sie bei der Erstellung dieser Ausdrücke unterstützen soll, den so genannten **Ausdrucks-Generator**. Der Ausdrucks-Generator nutzt die [IntelliSense](https://docs.microsoft.com/visualstudio/ide/using-intellisense)-Codevervollständigung für Hervorhebung, Syntaxüberprüfung und automatische Vervollständigung und soll Ihnen das Erstellen von Datenflüssen erleichtern. In diesem Artikel wird erläutert, wie Sie den Ausdrucks-Generator verwenden, um Ihre Geschäftslogik effektiv zu erstellen.
 
-> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tkur]
+![Ausdrucks-Generator](media/data-flow/expresion-builder.png "Ausdrucks-Generator")
 
 ## <a name="open-expression-builder"></a>Öffnen des Ausdrucks-Generators
 
-Die Schnittstelle zur Ausdrucksbearbeitung in der Azure Data Factory-Benutzeroberfläche wird als Ausdrucks-Generator bezeichnet. Während Sie Ihre Ausdruckslogik eingeben, verwendet Data Factory die [IntelliSense](https://docs.microsoft.com/visualstudio/ide/using-intellisense?view=vs-2019)-Codevervollständigung zum Hervorheben, für die Syntaxprüfung und zur automatischen Vervollständigung.
+Der Ausdrucks-Generator kann auf verschiedene Weise geöffnet werden. Diese hängen jeweils vom Kontext der Datenflusstransformation ab. Der häufigste Anwendungsfall ist eine Transformation wie eine [abgeleitete Spalte](data-flow-derived-column.md) und ein [Aggregat](data-flow-aggregate.md), bei denen Benutzer Spalten mithilfe der Ausdruckssprache für Datenflüsse erstellen oder aktualisieren. Sie können den Ausdrucks-Generator öffnen, indem Sie über der Spaltenliste **Ausdrucks-Generator öffnen** auswählen. Sie können auch auf einen Spaltenkontext klicken und den Ausdrucks-Generator direkt für diesen Ausdruck öffnen.
 
-![Ausdrucks-Generator](media/data-flow/xpb1.png "Ausdrucks-Generator")
+![Öffnen des Ausdrucks-Generators – Abgeleitet](media/data-flow/open-expression-builder-derive.png "Öffnen des Ausdrucks-Generators – Abgeleitet")
 
-Öffnen Sie in Transformationen wie der abgeleiteten Spalte und dem abgeleiteten Filter, bei denen Ausdrücke obligatorisch sind, den Ausdrucks-Generator, indem Sie das blaue Ausdrucksfeld auswählen.
+Bei einigen Transformationen wie [Filtern](data-flow-filter.md) wird der Ausdrucks-Generator durch Klicken auf ein blaues Ausdruckstextfeld geöffnet. 
 
 ![Blaues Ausdrucksfeld](media/data-flow/expressionbox.png "Ausdrucks-Generator")
 
@@ -40,29 +40,52 @@ In Fällen, in denen ein Ausdruck oder ein Literalwert gültige Eingaben sind, k
 
 ![Option „Dynamischen Inhalt hinzufügen“](media/data-flow/add-dynamic-content.png "Ausdrucks-Generator")
 
-## <a name="expression-language-reference"></a>Ausdruckssprache – Referenz
+## <a name="expression-elements"></a>Elemente eines Ausdrucks
 
-Zuordnungsdatenflüsse verfügen über integrierte Funktionen und Operatoren, die in Ausdrücken verwendet werden können. Eine Liste der verfügbaren Funktionen finden Sie unter [Ausdrucksfunktionen im Zuordnungsdatenfluss](data-flow-expression-functions.md).
+Bei Zuordnungsdatenflüssen können Ausdrücke aus Spaltenwerten, Parametern, Funktionen, lokalen Variablen, Operatoren und Literalwerten bestehen. Diese Ausdrücke müssen als Spark-Datentyp wie Zeichenfolge, boolescher Wert oder ganze Zahl ausgewertet werden können.
 
-## <a name="column-names-with-special-characters"></a>Spaltennamen mit Sonderzeichen
+![Elemente eines Ausdrucks](media/data-flow/expression-elements.png "Elemente eines Ausdrucks")
+
+### <a name="functions"></a>Funktionen
+
+Zuordnungsdatenflüsse verfügen über integrierte Funktionen und Operatoren, die in Ausdrücken verwendet werden können. Eine Liste der verfügbaren Funktionen finden Sie in der [Sprachreferenz zu Zuordnungsdatenflüssen](data-flow-expression-functions.md).
+
+#### <a name="address-array-indexes"></a>Angeben von Arrayindizes
+
+Verwenden Sie bei Spalten oder Funktionen, die Arraytypen zurückgeben, eckige Klammern ([]), um auf ein bestimmtes Element zuzugreifen. Wenn der Index nicht vorhanden ist, wird der Ausdruck als NULL ausgewertet.
+
+![Ausdrucks-Generator: Array](media/data-flow/expression-array.png "Ausdrucksdatenvorschau")
+
+> [!IMPORTANT]
+> Bei der Zuordnung von Datenflüssen haben Arrays die Basis 1, d. h., das erste Element hat den Index 1. Beispielsweise greifen Sie mit myArray[1] auf das erste Element eines Arrays mit dem Namen „myArray“ zu.
+
+### <a name="input-schema"></a>Eingabeschema
+
+Wenn der Datenfluss in einer seiner Quellen ein definiertes Schema verwendet, können Sie in vielen Ausdrücken anhand des Namens auf eine Spalte verweisen. Wenn Sie die Schemaabweichung verwenden, können Sie mit den Funktionen `byName()` oder `byNames()` explizit auf Spalten verweisen oder mithilfe von Spaltenmustern Übereinstimmungen auswählen.
+
+#### <a name="column-names-with-special-characters"></a>Spaltennamen mit Sonderzeichen
 
 Wenn Sie Spaltennamen mit Sonder- oder Leerzeichen haben, setzen Sie den Namen in geschweifte Klammern, um darauf in einem Ausdruck zu verweisen.
 
 ```{[dbo].this_is my complex name$$$}```
 
+### <a name="parameters"></a>Parameter
+
+Parameter sind Werte, die von einer Pipeline zur Laufzeit an einen Datenfluss übergeben werden. Um auf einen Parameter zu verweisen, klicken Sie entweder in der Ansicht **Ausdruckselemente** auf den Parameter, oder verweisen Sie darauf mit einem Dollarzeichen vor seinem Namen. Beispielsweise wird mit `$parameter1` auf einen Parameter mit dem Namen „parameter1“ verwiesen. Weitere Informationen finden Sie unter [Parametrisieren von Zuordnungsdatenflüssen](parameters-data-flow.md).
+
+### <a name="locals"></a>Locals
+
+Wenn Sie Ihre Logik für mehrere Spalten gemeinsam nutzen oder aufteilen möchten, können Sie eine lokale Variable in einer abgeleiteten Spalte erstellen. Wenn Sie auf eine lokale Variable verweisen möchten, klicken Sie entweder in der Ansicht **Ausdruckselemente** auf die lokale Variable, oder verweisen Sie darauf mit einem Doppelpunkt vor ihrem Namen. Beispielsweise wird mit `:local1` auf eine lokale Variable mit dem Namen „local1“ verwiesen. Weitere Informationen zu lokalen Variablen finden Sie in der [Dokumentation zu abgeleiteten Spalten](data-flow-derived-column.md#locals).
+
 ## <a name="preview-expression-results"></a>Vorschau von Ausdrucksergebnissen
 
-Wenn [debug mode](concepts-data-flow-debug-mode.md) aktiviert ist, können Sie mithilfe des Live-Spark-Clusters während der Bearbeitung eine Vorschau der Elemente anzeigen, zu denen Ihr Ausdruck ausgewertet wird. Während Sie Ihre Logik erstellen, können Sie den Ausdruck in Echtzeit debuggen. 
+Wenn [debug mode](concepts-data-flow-debug-mode.md) aktiviert ist, können Sie mithilfe des Debugclusters interaktiv eine Vorschau des Werts anzeigen, den der Ausdruck ergibt. Wählen Sie neben der Datenvorschau **Aktualisieren** aus, um die Ergebnisse der Datenvorschau zu aktualisieren. Es wird die Ausgabe für jede Zeile entsprechend den Eingabespalten angezeigt.
 
-![Vorschau während der Bearbeitung](media/data-flow/exp4b.png "Ausdrucksdatenvorschau")
+![Vorschau während der Bearbeitung](media/data-flow/preview-expression.png "Ausdrucksdatenvorschau")
 
-Klicken Sie auf **Aktualisieren**, um die Ergebnisse Ihres Ausdrucks anhand eines Livebeispiels Ihrer Quelle zu aktualisieren.
+## <a name="string-interpolation"></a>Zeichenfolgeninterpolierung
 
-![Schaltfläche „Aktualisieren“](media/data-flow/exp5.png "Ausdrucksdatenvorschau")
-
-## <a name="string-interpolation"></a>Zeichenfolgeninterpolation
-
-Verwenden Sie Anführungszeichen, um Literalzeichenfolgen zusammen mit Ausdrücken einzubeziehen. Sie können Ausdrucksfunktionen, Spalten und Parameter einbeziehen. Die Zeichenfolgeninterpolation ist hilfreich zum Vermeiden von übermäßiger Zeichenfolgenverkettung, wenn Parameter in Abfragezeichenfolgen einbezogen werden. Wenn Sie eine Ausdruckssyntax verwenden möchten, schließen Sie sie in geschweifte Klammern ein.
+Wenn Sie lange Zeichenfolgen erstellen, die Ausdruckselemente verwenden, verwenden Sie die Zeichenfolgeninterpolation, um problemlos eine komplexe Zeichenfolgenlogik zu erstellen. Durch die Zeichenfolgeninterpolation wird eine übermäßige Verkettung von Zeichenfolgen vermieden, wenn Parameter in Abfragezeichenfolgen einbezogen werden. Verwenden Sie doppelte Anführungszeichen, um Literalzeichenfolgen in Ausdrücke einzuschließen. Sie können Ausdrucksfunktionen, Spalten und Parameter einbeziehen. Wenn Sie eine Ausdruckssyntax verwenden möchten, schließen Sie sie in geschweifte Klammern ein.
 
 Einige Beispiele für Zeichenfolgeninterpolation:
 
@@ -72,7 +95,9 @@ Einige Beispiele für Zeichenfolgeninterpolation:
 
 * ```"Total cost with sales tax is {round(totalcost * 1.08,2)}"```
 
-## <a name="comment-expressions"></a>Kommentarausdrücke
+* ```"{:playerName} is a {:playerRating} player"```
+
+## <a name="commenting-expressions"></a>Kommentieren von Ausdrücken
 
 Fügen Sie Ihren Ausdrücken Kommentare hinzu. Verwenden Sie dabei eine einzeilige oder eine mehrzeilige Kommentarsyntax.
 
@@ -81,11 +106,11 @@ Die folgenden Beispiele stellen gültige Kommentare dar:
 * ```/* This is my comment */```
 
 * ```/* This is a```
-*   ```multi-line comment */```
+* ```multi-line comment */```
 
 Wenn Sie einen Kommentar am Anfang des Ausdrucks einfügen, wird er im Transformationstextfeld angezeigt und dokumentiert Ihre Transformationsausdrücke.
 
-![Kommentar im Transformationstextfeld](media/data-flow/comments2.png "Kommentare")
+![Kommentar im Transformationstextfeld](media/data-flow/comment-expression.png "Kommentare")
 
 ## <a name="regular-expressions"></a>Reguläre Ausdrücke
 
@@ -103,13 +128,9 @@ Ein Beispiel mit doppelten umgekehrten Schrägstrichen:
 regex_replace('100 and 200', '(\\d+)', 'digits')
 ```
 
-## <a name="address-array-indexes"></a>Angeben von Arrayindizes
-
-Verwenden Sie bei Ausdrucksfunktionen, die Arrays zurückgeben, eckige Klammern ([]), um bestimmte Indizes innerhalb dieser Rückgabearrayobjekte anzugeben. Das Array basiert auf Einsen.
-
-![Ausdrucks-Generator: Array](media/data-flow/expb2.png "Ausdrucksdatenvorschau")
-
 ## <a name="keyboard-shortcuts"></a>Tastenkombinationen
+
+Im Folgenden finden Sie eine Liste der Tastenkombination, die im Ausdrucks-Generator unterstützt werden. Beim Erstellen von Ausdrücken sind die meisten IntelliSense-Tastenkombinationen verfügbar.
 
 * STRG+K, STRG+C: Gesamte Zeile auskommentieren
 * STRG+K, STRG+U: Auskommentierung aufheben
@@ -118,7 +139,9 @@ Verwenden Sie bei Ausdrucksfunktionen, die Arrays zurückgeben, eckige Klammern 
 * ALT+NACH-OBEN-TASTE: Aktuelle Zeile nach oben verschieben
 * STRG+LEERTASTE: Kontexthilfe anzeigen
 
-## <a name="convert-to-dates-or-timestamps"></a>Konvertieren in Datumsangaben oder Zeitstempel
+## <a name="commonly-used-expressions"></a>Häufig verwendete Ausdrücke
+
+### <a name="convert-to-dates-or-timestamps"></a>Konvertieren in Datumsangaben oder Zeitstempel
 
 Wenn Sie Zeichenfolgenliterale in Ihre Zeitstempelausgabe einbeziehen möchten, schließen Sie die Konvertierung in ```toString()``` ein.
 
@@ -130,7 +153,7 @@ Wenn Sie Millisekunden von einer Epoche in ein Datum oder einen Zeitstempel konv
 
 Das nachgestellte „l“ am Ende des vorstehenden Ausdrucks gibt eine Konvertierung in einen long-Datentyp als inline-Syntax an.
 
-## <a name="find-time-from-epoch-or-unix-time"></a>Zeit aus Epochen- oder Unix-Zeit finden
+### <a name="find-time-from-epoch-or-unix-time"></a>Zeit aus Epochen- oder Unix-Zeit finden
 
 toLong( currentTimestamp() - toTimestamp('1970-01-01 00:00:00.000', 'yyyy-MM-dd HH:mm:ss.SSS') ) * 1000l
 

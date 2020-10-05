@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: ea0970a672ac8fb15c2e7c6bbb65edf33bd25f04
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 40654926b2998b3ba1c4ce1a5607a768f2c32340
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186587"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987282"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Erstellen eines eigenständigen Azure Automation-Kontos
 
@@ -59,7 +59,7 @@ Führen Sie die folgenden Schritte aus, um ein Azure Automation-Konto über das 
    > [!NOTE]
    > Sollte im Bereich „Automation-Konto hinzufügen“ die folgende Meldung angezeigt werden, ist Ihr Konto kein Mitglied der Rolle „Administratoren“ des Abonnements und kein Co-Administrator des Abonnements.
    >
-   > ![Warnung beim Hinzufügen des Automation-Kontos](media/automation-create-standalone-account/create-account-without-perms.png)
+   > :::image type="content" source="media/automation-create-standalone-account/create-account-without-perms.png" alt-text="Der Screenshot der Aufforderung, dass Sie nicht über die Berechtigungen zum Erstellen eines ausführenden Kontos in Azure Active Directory verfügen.":::
 
 1. Geben Sie im Bereich „Automation-Konto hinzufügen“ im Feld **Name** einen Namen für das neue Automation-Konto ein. Sie können diesen Namen nach der Auswahl nicht mehr ändern. 
 
@@ -74,7 +74,7 @@ Führen Sie die folgenden Schritte aus, um ein Azure Automation-Konto über das 
    > [!NOTE]
    > Wenn Sie die Option **Ausführendes Azure-Konto erstellen** auf **Nein** festlegen, wird im Bereich „Automation-Konto hinzufügen“ eine Meldung angezeigt. Das Konto wird zwar im Azure-Portal erstellt, verfügt aber im Verzeichnisdienst für Ihr Abonnement (klassisches Bereitstellungsmodell oder Azure Resource Manager-Bereitstellungsmodell) über keine entsprechende Authentifizierungsidentität. Dadurch hat das Automation-Konto auch keinen Zugriff auf Ressourcen in Ihrem Abonnement. Runbooks, die auf dieses Konto verweisen, können in diesem Fall nicht authentifiziert werden und keine Aufgaben für Ressourcen in diesen Bereitstellungsmodellen durchführen.
    >
-   > ![Warnung beim Hinzufügen des Automation-Kontos](media/automation-create-standalone-account/create-account-decline-create-runas-msg.png)
+   > :::image type="content" source="media/automation-create-standalone-account/create-account-decline-create-runas-msg.png" alt-text="Der Screenshot der Aufforderung, dass Sie nicht über die Berechtigungen zum Erstellen eines ausführenden Kontos in Azure Active Directory verfügen.":::
    >
    > Wenn der Dienstprinzipal nicht erstellt wird, wird die Rolle „Mitwirkender“ nicht zugewiesen.
    >
@@ -105,4 +105,4 @@ Klassische ausführende Konten werden nicht mehr standardmäßig erstellt, wenn 
 * Informationen zu den ersten Schritten mit PowerShell-Runbooks finden Sie unter [Tutorial: Erstellen eines PowerShell-Runbooks](learn/automation-tutorial-runbook-textual-powershell.md).
 * Informationen zu den ersten Schritten mit PowerShell-Workflow-Runbooks finden Sie unter [Tutorial: Erstellen eines PowerShell-Workflow-Runbooks](learn/automation-tutorial-runbook-textual.md).
 * Informationen zu den ersten Schritten mit Python 2-Runbooks finden Sie unter [Tutorial: Erstellen eines Python 2-Runbooks](learn/automation-tutorial-runbook-textual-python2.md).
-* Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+* Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0&preserve-view=true#automation).

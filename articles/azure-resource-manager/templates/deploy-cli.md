@@ -2,13 +2,13 @@
 title: Bereitstellen von Ressourcen mit Azure-CLI und Vorlagen
 description: Verwenden Sie Azure Resource Manager und Azure CLI, um Ressourcen in Azure bereitzustellen. Die Ressourcen werden in einer Resource Manager-Vorlage definiert.
 ms.topic: conceptual
-ms.date: 07/21/2020
-ms.openlocfilehash: da865d3b425da6b5969e540a424b513d9a58bd9a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/08/2020
+ms.openlocfilehash: 7e8ae7e8c568f5f0ebb85f434e33f142b5fe94e8
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87040807"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566159"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>Bereitstellen von Ressourcen mit ARM-Vorlagen und der Azure CLI
 
@@ -26,13 +26,13 @@ Sie können als Ziel für Ihre Bereitstellung eine Ressourcengruppe, ein Abonnem
 
 Abhängig vom Umfang der Bereitstellung verwenden Sie unterschiedliche Befehle.
 
-* Für die Bereitstellung in einer **Ressourcengruppe** verwenden Sie [az deployment group create](/cli/azure/deployment/group?view=azure-cli-latest#az-deployment-group-create):
+* Für die Bereitstellung in einer **Ressourcengruppe** verwenden Sie [az deployment group create](/cli/azure/deployment/group#az-deployment-group-create):
 
   ```azurecli-interactive
   az deployment group create --resource-group <resource-group-name> --template-file <path-to-template>
   ```
 
-* Für die Bereitstellung in einem **Abonnement** verwenden Sie [az deployment sub create](/cli/azure/deployment/sub?view=azure-cli-latest#az-deployment-sub-create):
+* Für die Bereitstellung in einem **Abonnement** verwenden Sie [az deployment sub create](/cli/azure/deployment/sub#az-deployment-sub-create):
 
   ```azurecli-interactive
   az deployment sub create --location <location> --template-file <path-to-template>
@@ -40,7 +40,7 @@ Abhängig vom Umfang der Bereitstellung verwenden Sie unterschiedliche Befehle.
 
   Weitere Informationen zu Bereitstellungen auf Abonnementebene finden Sie unter [Erstellen von Ressourcengruppen und Ressourcen auf Abonnementebene](deploy-to-subscription.md).
 
-* Für die Bereitstellung in einer **Verwaltungsgruppe** verwenden Sie [az deployment mg create](/cli/azure/deployment/mg?view=azure-cli-latest#az-deployment-mg-create):
+* Für die Bereitstellung in einer **Verwaltungsgruppe** verwenden Sie [az deployment mg create](/cli/azure/deployment/mg#az-deployment-mg-create):
 
   ```azurecli-interactive
   az deployment mg create --location <location> --template-file <path-to-template>
@@ -48,7 +48,7 @@ Abhängig vom Umfang der Bereitstellung verwenden Sie unterschiedliche Befehle.
 
   Weitere Informationen zu Bereitstellungen auf Verwaltungsgruppenebene finden Sie unter [Erstellen von Ressourcen auf der Verwaltungsgruppenebene](deploy-to-management-group.md).
 
-* Für die Bereitstellung in einem **Mandanten** verwenden Sie [az deployment tenant create](/cli/azure/deployment/tenant?view=azure-cli-latest#az-deployment-tenant-create):
+* Für die Bereitstellung in einem **Mandanten** verwenden Sie [az deployment tenant create](/cli/azure/deployment/tenant#az-deployment-tenant-create):
 
   ```azurecli-interactive
   az deployment tenant create --location <location> --template-file <path-to-template>
@@ -128,6 +128,35 @@ az deployment group create \
 
 Das obige Beispiel erfordert einen URI mit öffentlichem Zugriff für die Vorlage, was in den meisten Szenarien funktioniert, da die Vorlage keine vertraulichen Daten enthalten sollte. Wenn Sie vertrauliche Daten (z.B. ein Administratorkennwort) angeben müssen, übergeben Sie diesen Wert als sicheren Parameter. Wenn Sie jedoch keinen öffentlichen Zugriff auf Ihre Vorlage wünschen, können Sie sie schützen, indem Sie sie in einem privaten Speichercontainer speichern. Informationen zum Bereitstellen einer Vorlage, die ein SAS-Token (Shared Access Signature) erfordert, finden Sie unter [Bereitstellen einer privaten Vorlage mit SAS-Token](secure-template-with-sas-token.md).
 
+## <a name="deploy-template-spec"></a>Bereitstellen der Vorlagenspezifikationen
+
+Anstatt eine lokale oder Remotevorlage bereitzustellen, können Sie eine [Vorlagenspezifikation](template-specs.md) erstellen. Bei der Vorlagenspezifikation handelt es sich um eine Ressource im Azure-Abonnement, die eine ARM-Vorlage enthält. Sie vereinfacht die sichere Freigabe der Vorlage für Benutzer in Ihrer Organisation. Mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) können Sie Zugriff auf die Vorlagenspezifikation gewähren. Diese Funktion steht derzeit als Vorschau zur Verfügung.
+
+In den folgenden Beispielen wird das Erstellen und Bereitstellen einer Vorlagenspezifikation veranschaulicht. Diese Befehle sind nur verfügbar, wenn Sie sich für die [Vorschau registriert haben](https://aka.ms/templateSpecOnboarding).
+
+Als Erstes erstellen Sie die Vorlagenspezifikation, indem Sie die ARM-Vorlage bereitstellen.
+
+```azurecli
+az ts create \
+  --name storageSpec \
+  --version "1.0" \
+  --resource-group templateSpecRG \
+  --location "westus2" \
+  --template-file "./mainTemplate.json"
+```
+
+Anschließend erhalten Sie die ID für die Vorlagenspezifikation und stellen sie bereit.
+
+```azurecli
+id = $(az ts show --name storageSpec --resource-group templateSpecRG --version "1.0" --query "id")
+
+az deployment group create \
+  --resource-group demoRG \
+  --template-spec $id
+```
+
+Weitere Informationen finden Sie unter [Azure Resource Manager-Vorlagenspezifikationen (Vorschau)](template-specs.md).
+
 ## <a name="preview-changes"></a>Vorschau der Änderungen
 
 Vor dem Bereitstellen der Vorlage können Sie die Änderungen, die von der Vorlage an Ihrer Umgebung vorgenommen werden, in der Vorschau anzeigen. Überprüfen Sie anhand des [„Was-wäre-wenn“-Vorgangs](template-deploy-what-if.md), ob die Vorlage die erwarteten Änderungen vornimmt. „Was-wäre-wenn“ überprüft auch die Vorlage auf Fehler.
@@ -179,6 +208,28 @@ Das Format „arrayContent.json“ sieht wie folgt aus:
     "value2"
 ]
 ```
+
+Verwenden Sie JSON, um ein Objekt zu übergeben, z. B. zum Festlegen von Tags. Ihre Vorlage kann z. B. einen Parameter wie den folgenden enthalten:
+
+```json
+    "resourceTags": {
+      "type": "object",
+      "defaultValue": {
+        "Cost Center": "IT Department"
+      }
+    }
+```
+
+In diesem Fall können Sie eine JSON-Zeichenfolge übergeben, um den Parameter festzulegen, wie im folgenden Bash-Skript gezeigt:
+
+```bash
+tags='{"Owner":"Contoso","Cost Center":"2345-324"}'
+az deployment group create --name addstorage  --resource-group myResourceGroup \
+--template-file $templateFile \
+--parameters resourceName=abcdef4556 resourceTags="$tags"
+```
+
+Schließen Sie den JSON-Code, der an das Objekt übergeben werden soll, in doppelte Anführungszeichen ein.
 
 ### <a name="parameter-files"></a>Parameterdateien
 

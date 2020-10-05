@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Azure CNI-Netzwerke – „Advanced“ (Erwei
 services: container-service
 ms.topic: article
 ms.date: 06/03/2019
-ms.openlocfilehash: 0506eb6350358f7256a61c8d6f164b6594d20554
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 58c2c597c7a75c801af91cd735561071250bda2c
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566113"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89426145"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Konfigurieren von Azure CNI-Netzwerken in Azure Kubernetes Service (AKS)
 
@@ -22,7 +22,7 @@ Dieser Artikel veranschaulicht die Verwendung von *Azure CNI*-Netzwerken zum Ers
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Das virtuelle Netzwerk des AKS-Clusters muss ausgehende Internetkonnektivität zulassen.
-* AKS-Cluster verwenden möglicherweise nicht `169.254.0.0/16`, `172.30.0.0/16`, `172.31.0.0/16` oder `192.0.2.0/24` für den Kubernetes-Dienstadressbereich.
+* AKS-Cluster dürfen für den Adressbereich des Kubernetes-Diensts, den Adressbereich für den Pod oder den Adressbereich für das virtuelle Clusternetzwerk nicht `169.254.0.0/16`, `172.30.0.0/16`, `172.31.0.0/16` oder `192.0.2.0/24` verwenden. 
 * Der vom AKS-Cluster verwendete Dienstprinzipal muss zumindest über Berechtigungen [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md#network-contributor) für das Subnetz in Ihrem virtuellen Netzwerk verfügen. Wenn Sie eine [benutzerdefinierte Rolle](../role-based-access-control/custom-roles.md) anstelle der integrierten Rolle des Netzwerkmitwirkenden definieren möchten, sind die folgenden Berechtigungen erforderlich:
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
@@ -52,7 +52,7 @@ Der IP-Adressplan eines AKS-Clusters enthält neben einem virtuellen Netzwerk mi
 | Virtuelles Netzwerk | Das virtuelle Azure-Netzwerk kann eine Größe von /8 haben, ist aber auf 65.536 konfigurierte IP-Adressen beschränkt. Berücksichtigen Sie alle Netzwerkanforderungen, einschließlich der Kommunikation mit Diensten in anderen virtuellen Netzwerken, bevor Sie den Adressraum konfigurieren. Wenn Sie z. B. einen zu großen Adressraum konfigurieren, treten möglicherweise Probleme mit überlappenden Adressräumen in Ihrem Netzwerk auf.|
 | Subnet | Muss groß genug für die Knoten, Pods und alle Kubernetes- und Azure-Ressourcen sein, die in Ihrem Cluster bereitgestellt werden können. Wenn Sie beispielsweise einen internen Azure Load Balancer bereitstellen, werden dessen Front-End-IP-Adressen aus dem Clusternetzwerk zugeordnet, nicht die öffentlichen IP-Adressen. Die Größe des Subnetzes sollte auch Aktualisierungsvorgänge oder zukünftige Skalierungsanforderungen berücksichtigen.<p />So berechnen Sie die *Mindestsubnetzgröße* mit einem zusätzlichen Knoten für Aktualisierungsvorgänge: `(number of nodes + 1) + ((number of nodes + 1) * maximum pods per node that you configure)`<p/>Beispiel für einen Cluster mit 50 Knoten: `(51) + (51  * 30 (default)) = 1,581` (/ 21 oder mehr)<p/>Beispiel für einen 50-Knoten-Cluster, der auch die Möglichkeit beinhaltet, ihn um weitere 10 Knoten hochzuskalieren: `(61) + (61 * 30 (default)) = 1,891` (/21 oder größer)<p>Wenn Sie beim Erstellen des Clusters keine maximale Anzahl von Pods pro Knoten angeben, wird diese auf *30* festgelegt. Die mindestens erforderliche Anzahl von IP-Adressen basiert auf diesem Wert. Wenn Sie Ihre mindestens erforderliche Anzahl von IP-Adressen anhand eines anderen Maximalwerts berechnen, finden Sie Informationen zum Festlegen dieses Werts beim Bereitstellen Ihres Clusters unter [Konfigurieren der maximalen Anzahl von Pods pro Knoten](#configure-maximum---new-clusters). |
 | Kubernetes-Dienstadressbereich | Dieser Bereich darf nicht von Netzwerkelementen verwendet werden, die sich in diesem virtuellen Netzwerk befinden oder damit verbunden sind. Das Dienstadress-CIDR darf höchstens eine Größe von /12 aufweisen. Sie können diesen Bereich für unterschiedliche AKS-Cluster wiederverwenden. |
-| Kubernetes-DNS-Dienst – IP-Adresse | Die IP-Adresse im Kubernetes-Dienstadressbereich wird bei der Clusterdienstermittlung (kube-dns) verwendet. Verwenden Sie nicht die erste IP-Adresse Ihres Adressbereichs, z.B. „.1“. Die erste Adresse Ihres Subnetzbereichs wird für die Adresse *kubernetes.default.svc.cluster.local* genutzt. |
+| Kubernetes-DNS-Dienst – IP-Adresse | Die IP-Adresse im Kubernetes-Dienstadressbereich wird bei der Clusterdienstermittlung verwendet. Verwenden Sie nicht die erste IP-Adresse Ihres Adressbereichs, z.B. „.1“. Die erste Adresse Ihres Subnetzbereichs wird für die Adresse *kubernetes.default.svc.cluster.local* genutzt. |
 | Docker-Bridge-Adresse | Die Docker-Bridge-Netzwerkadresse stellt die Standardnetzwerkadresse der Bridge *docker0* dar, die in allen Docker-Installationen vorhanden ist. Die Bridge *docker0* wird zwar nicht von AKS-Clustern oder den Pods selbst verwendet, die Adresse muss aber trotzdem festgelegt werden, damit Szenarien wie *docker build* innerhalb des AKS-Clusters weiterhin unterstützt werden. Für die Docker-Bridge-Netzwerkadresse muss ein CIDR-Wert ausgewählt werden, da Docker andernfalls automatisch ein Subnetz auswählt, was zu Konflikten mit anderen CIDRs führen kann. Wählen Sie einen Adressraum aus, der nicht mit den übrigen CIDRs in Ihrem Netzwerk in Konflikt steht (einschließlich Dienst-CIDR und Pod-CIDR des Clusters). Standard 172.17.0.1/16. Sie können diesen Bereich für unterschiedliche AKS-Cluster wiederverwenden. |
 
 ## <a name="maximum-pods-per-node"></a>Maximale Pods pro Knoten

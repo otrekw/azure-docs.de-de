@@ -1,6 +1,6 @@
 ---
-title: 'Azure Active Directory: Externe Office 365-Freigaben und B2B Collaboration'
-description: Erläutert die gemeinsame Verwendung von Ressourcen mit externen Partnern, die Office 365- und Azure Active Directory B2B-Zusammenarbeit verwenden.
+title: Externe Microsoft 365-Freigaben und B2B Collaboration –Azure AD
+description: Erläutert die gemeinsame Verwendung von Ressourcen mit externen Partnern, die Microsoft 365- und Azure Active Directory B2B-Zusammenarbeit verwenden.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -11,16 +11,16 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcb407735cff5a0c43d3a584ff37a0eabc178381
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 563d925aa3e0d6922756ab037226f5a86534b19f
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87907422"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705434"
 ---
-# <a name="office-365-external-sharing-and-azure-active-directory-azure-ad-b2b-collaboration"></a>Externe Office 365-Freigaben und Azure Active Directory B2B-Zusammenarbeit
+# <a name="microsoft-365-external-sharing-and-azure-active-directory-azure-ad-b2b-collaboration"></a>Externe Microsoft 365-Freigaben und Azure Active Directory B2B-Zusammenarbeit
 
-Sowohl bei der Azure AD B2B Collaboration als auch bei externen Office 365-Freigaben (OneDrive, SharePoint Online, einheitliche Gruppen usw.) werden externe Benutzer über Azure AD B2B authentifiziert.
+Sowohl bei der Azure AD B2B Collaboration als auch bei externen Microsoft 365-Freigaben (OneDrive, SharePoint Online, einheitliche Gruppen usw.) werden externe Benutzer über Azure AD B2B authentifiziert.
 
 ## <a name="how-does-azure-ad-b2b-differ-from-external-sharing-in-sharepoint-online"></a>Wie unterscheidet sich Azure AD B2B von externen Freigaben in SharePoint Online?
 

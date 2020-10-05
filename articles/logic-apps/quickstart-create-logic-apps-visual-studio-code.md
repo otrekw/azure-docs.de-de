@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: jonfan, deli, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 10/25/2019
-ms.openlocfilehash: a2239d5ee70e90b9ee7c07b4dca78a45d2ce7ef9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.date: 09/25/2020
+ms.openlocfilehash: fa103c39b540c41536e4f231692b4602afe01a3e
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131479"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361210"
 ---
 # <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>Schnellstart: Erstellen und Verwalten von Logik-App-Workflowdefinitionen mit Visual Studio Code
 
@@ -130,7 +130,7 @@ Stellen Sie zunächst sicher, dass Sie über die folgenden Elemente verfügen:
    Im Folgenden sehen Sie eine Beispieldefinition für einen Logik-App-Workflow, der mit einem RSS-Trigger und einer Office 365 Outlook-Aktion beginnt. JSON-Elemente werden in der Regel alphabetisch in jedem Abschnitt angezeigt. In diesem Beispiel werden diese Elemente jedoch ungefähr in der Reihenfolge angezeigt, in dem die Schritte der Logik-App im Designer aufgeführt sind.
 
    > [!IMPORTANT]
-   > Wenn Sie dieses Beispiel einer Logik-App-Definition wiederverwenden möchten, benötigen Sie ein Office 365-Organisationskonto, z. B. @fabrikam.com. Stellen Sie sicher, dass Sie die fiktive E-Mail-Adresse durch Ihre eigene E-Mail-Adresse ersetzen. Um einen anderen E-Mail-Connector wie z. B. Outlook.com oder Gmail zu verwenden, ersetzen Sie die `Send_an_email_action`-Aktion durch eine ähnliche Aktion, die bei einem [von Azure Logic Apps unterstützten E-Mail-Connector](../connectors/apis-list.md) verfügbar ist.
+   > Wenn Sie dieses Beispiel einer Logik-App-Definition wiederverwenden möchten, benötigen Sie ein Organisationskonto, z. B. @fabrikam.com. Stellen Sie sicher, dass Sie die fiktive E-Mail-Adresse durch Ihre eigene E-Mail-Adresse ersetzen. Um einen anderen E-Mail-Connector wie z. B. Outlook.com oder Gmail zu verwenden, ersetzen Sie die `Send_an_email_action`-Aktion durch eine ähnliche Aktion, die bei einem [von Azure Logic Apps unterstützten E-Mail-Connector](../connectors/apis-list.md) verfügbar ist.
    >
    > Wenn Sie den Gmail-Connector verwenden möchten, können nur G-Suite-Geschäftskonten diesen Connector ohne Einschränkung in Logik-Apps verwenden. 
    > Wenn Sie über ein Gmail-Consumerkonto verfügen, können Sie diesen Connector nur mit bestimmten von Google genehmigten Diensten verwenden, oder Sie können [eine Google-Client-App erstellen, die für die Authentifizierung mit Ihrem Gmail-Connector verwendet werden soll](/connectors/gmail/#authentication-and-bring-your-own-application). 
@@ -307,4 +307,4 @@ In Visual Studio Code können Sie die früheren Versionen der Logik-App öffnen 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Erstellen von Logik-Apps mit Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
+> [Erstellen zustandsbehafteter oder zustandsloser Logik-Apps in Visual Studio Code (Vorschau)](../logic-apps/create-stateful-stateless-workflows-visual-studio-code.md)

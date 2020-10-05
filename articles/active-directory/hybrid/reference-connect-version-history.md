@@ -12,12 +12,12 @@ ms.date: 08/07/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d790c7c4c8d184999ff073e97613d663988c34e7
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: fccbb84647ae9e47afc7bb36eeca97bb41a0d1d8
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89275945"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604069"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verlauf der Versionsveröffentlichungen
 Das Azure Active Directory-Team (Azure AD) aktualisiert Azure AD Connect regelmäßig mit neuen Features und Funktionen. Nicht alle Erweiterungen gelten für alle Benutzergruppen.
@@ -208,13 +208,13 @@ Wir haben einen Synchronisierungsfehler im Komprimierungstool behoben, durch den
 
 ### <a name="new-features-and-improvements"></a>Neue Features und Verbesserungen
 - Neue Tools zur Problembehandlung helfen bei der Behandlung folgender Szenarien: „Benutzer wird nicht synchronisiert“, „Gruppe wird nicht synchronisiert“ oder „Gruppenmitglied wird nicht synchronisiert“.
-- Zusätzliche Unterstützung für nationale Clouds im Azure AD Connect-Skript für die Problembehandlung 
+- Zusätzliche Unterstützung für nationale Clouds im Azure AD Connect-Skript für die Problembehandlung.
 - Kunden sollten darüber informiert werden, dass die veralteten WMI-Endpunkte für MIIS_Service jetzt entfernt wurden. Alle WMI-Vorgänge sollten jetzt über PS-Cmdlets erfolgen.
-- Sicherheitsverbesserung durch Zurücksetzen der eingeschränkten Delegierung für AZUREADSSOACC-Objekt
+- Sicherheitsverbesserung durch Zurücksetzen der eingeschränkten Delegierung für AZUREADSSOACC-Objekt.
 - Werden beim Hinzufügen/Bearbeiten einer Synchronisierungsregel in der Regel Attribute verwendet, die sich zwar im Connector-Schema befinden, dem Connector aber nicht hinzugefügt wurden, werden die Attribute automatisch dem Connector hinzugefügt. Dies gilt auch für den Objekttyp, auf den sich die Regel auswirkt. Wird dem Connector etwas hinzugefügt, wird der Connector markiert, damit beim nächsten Synchronisierungszyklus ein vollständiger Import erfolgt.
 - Die Verwendung eines Unternehmens- oder Domänenadministrators als Connectorkonto wird in neuen Azure AD Connect-Bereitstellungen nicht mehr unterstützt. Aktuelle Azure AD Connect-Bereitstellungen, bei denen ein Unternehmens- oder Domänenadministrator als Connectorkonto verwendet wird, sind von diesem Release nicht betroffen.
 - Im Synchronisierungs-Manager wird beim Erstellen/Bearbeiten/Löschen von Regeln eine vollständige Synchronisierung ausgeführt. Bei jeder Regeländerung wird der Benutzer in einem Popup-Fenster darüber informiert, wenn ein vollständiger Import oder eine vollständige Synchronisierung ausgeführt wird.
-- Zusätzliche Schritte für die Problembehandlung bei Kennwortfehlern auf der Seite „Connectors > Eigenschaften > Konnektivität“
+- Zusätzliche Schritte für die Problembehandlung bei Kennwortfehlern auf der Seite „Connectors > Eigenschaften > Konnektivität“.
 - Auf der Seite „Connectoreigenschaften“ wurde eine Warnung zur Einstellung für den Synchronisierungsdienst-Manager hinzugefügt. Diese Warnung informiert den Benutzer, dass über den Azure AD Connect-Assistenten Änderungen vorgenommen werden sollten.
 - Es wurde ein neuer Fehler bei Problemen mit der Kennwortrichtlinie eines Benutzers hinzugefügt.
 - Verhindern von Fehlkonfigurationen beim Filtern von Gruppen nach Domänen und Organisationseinheiten. Bei der Gruppenfilterung wird ein Fehler angezeigt, wenn die Domäne/Organisationseinheit der eingegebenen Gruppe bereits herausgefiltert wurde. Der Benutzer kann den Vorgang erst fortsetzen, wenn das Problem behoben wurde.
@@ -233,7 +233,7 @@ Wir haben einen Synchronisierungsfehler im Komprimierungstool behoben, durch den
 - Beim Tastaturfokus werden jetzt Popus mit Hilfe angezeigt.
 - Wenn beim automatischen Upgrade eine in Konflikt stehende App über 6 Stunden ausgeführt wird, beenden Sie sie, und fahren Sie mit dem Upgrade fort.
 - Begrenzen Sie die Anzahl der Attribute, die ein Kunde bei der Auswahl von Verzeichniserweiterungen auswählen kann, auf 100 pro Objekt. Dadurch wird verhindert, dass beim Export ein Fehler auftritt, da Azure maximal 100 Erweiterungsattribute pro Objekt aufweist.
-- Es wurde ein Fehler behoben, um das AD Connectivity-Skript robuster zu machen
+- Es wurde ein Fehler behoben, um das AD Connectivity-Skript robuster zu machen.
 - Es wurde ein Fehler behoben, um die Azure AD Connect-Installation auf einem Computer mithilfe eines vorhandenen WCF-Diensts mit Named Pipes zuverlässiger zu machen.
 - Verbesserte Diagnose und Problembehandlung im Zusammenhang mit Gruppenrichtlinien, die ein Starten des ADSync-Diensts bei der Erstinstallation nicht zulassen.
 - Ein Fehler bei der Schreibweise des Anzeigenamens für einen Windows-Computer wurde behoben.
@@ -244,7 +244,7 @@ Wir haben einen Synchronisierungsfehler im Komprimierungstool behoben, durch den
 
 ## <a name="13210"></a>1.3.21.0
 >[!IMPORTANT]
->Es gibt ein bekanntes Problem beim Upgrade von Azure AD Connect aus einer früheren Version auf 1.3.21.0, bei dem im Office 365-Portal nicht die aktualisierte Version angezeigt wird, obwohl das Upgrade von Azure AD Connect erfolgreich durchgeführt wurde.
+>Es gibt ein bekanntes Problem beim Upgrade von Azure AD Connect aus einer früheren Version auf 1.3.21.0, bei dem im Microsoft 365-Portal nicht die aktualisierte Version angezeigt wird, obwohl das Upgrade von Azure AD Connect erfolgreich durchgeführt wurde.
 >
 > Um dies zu beheben, müssen Sie das **AdSync**-Modul importieren und anschließend das PowerShell-Cmdlet `Set-ADSyncDirSyncConfiguration` auf dem Azure AD Connect-Server ausführen.  Sie können sich nach den folgenden Schritten richten:
 >

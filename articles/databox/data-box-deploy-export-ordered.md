@@ -2,18 +2,18 @@
 title: Tutorial zum Exportieren von Daten aus Azure Data Box | Microsoft-Dokumentation
 description: Hier erfahren Sie, welche Voraussetzungen für die Bereitstellung gelten und wie Sie Daten aus einer Azure Data Box exportieren.
 services: databox
-author: twooley
+author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: how-to
-ms.date: 07/10/2020
-ms.author: twooley
-ms.openlocfilehash: 0ddadd8d2bddda0fdff6a126fe6c09d863139b44
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.date: 09/10/2020
+ms.author: alkohli
+ms.openlocfilehash: 5494c2dd57220888ad846aaf69fde2f7a59353e4
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783619"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053053"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>Tutorial: Erstellen eines Exportauftrags für Azure Data Box (Vorschau)
 
@@ -115,9 +115,20 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um ein Gerät zu bestell
 
    Ein Beispiel für die XML-Eingabe finden Sie unter [Beispiel für eine XML-Datei](data-box-deploy-export-ordered.md#sample-xml-file).
 
-9. Überprüfen Sie Ihre Einstellungen in **Datenauswahl**, und wählen Sie **Weiter: Kontaktdetails** aus.
+9. Überprüfen Sie Ihre Einstellungen in **Datenauswahl**, und wählen Sie **Weiter: Sicherheit>** .
 
    ![Kontaktdetails](media/data-box-deploy-export-ordered/azure-data-box-export-05.png)
+
+1. Wenn Sie die softwarebasierte doppelte Verschlüsselung aktivieren möchten, wählen Sie unter **Sicherheit** die Option **Doppelte Verschlüsselung für den Auftrag aktivieren**. 
+
+   Die softwarebasierte Verschlüsselung wird zusätzlich zur AES-256-Bit-Verschlüsselung der Daten auf der Data Box ausgeführt.
+
+   > [!NOTE]
+   > Wenn Sie diese Option aktivieren, können die Auftragsverarbeitung und das Kopieren von Daten länger dauern. Nach dem Erstellen des Auftrags können Sie diese Option nicht mehr ändern.
+
+   ![Bildschirm „Sicherheit“ für den Data Box-Import, doppelte Verschlüsselung](media/data-box-deploy-export-ordered/azure-data-box-export-05b.png)
+
+   Klicken Sie auf **Weiter: Kontaktdetails**, um fortzufahren.
 
 10. Wählen Sie in **Kontakt Details** die Option **+ Lieferadresse hinzufügen** aus, um Ihre Versandinformationen einzugeben.
 

@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Verwenden von Azure Key Vault mit einer Azure-Web-App in .NET | Microsoft-Dokumentation'
-description: In diesem Tutorial konfigurieren Sie eine ASP.NET Core-Anwendung zum Lesen eines Geheimnisses aus Ihrem Schlüsseltresor.
+description: In diesem Tutorial konfigurieren Sie eine Azure-Web-App in einer ASP.NET Core-Anwendung zum Lesen eines Geheimnisses aus Ihrem Schlüsseltresor.
 services: key-vault
 author: msmbaldwin
 manager: rajvijan
@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp
-ms.openlocfilehash: be18718513e8624db00d502228a3e5af6076d9d7
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e537bb74655bce5c8438e22fb9b990b72eab73d7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007076"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336682"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-with-net"></a>Tutorial: Verwenden einer verwalteten Identität, um eine Verbindung zwischen Key Vault und einer Azure-Web-App mit .NET herzustellen
 

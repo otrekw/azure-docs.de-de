@@ -8,13 +8,13 @@ ms.topic: overview
 ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 2a0751f12f33a36d9e0003977bcf40b66d715615
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.reviewer: jrasnick
+ms.openlocfilehash: 8884f62ba015cc4b33b75a133f21264dac6430e5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986949"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288986"
 ---
 # <a name="access-external-storage-in-synapse-sql-on-demand"></a>Zugreifen auf externen Speicher in Synapse SQL (On-Demand)
 
@@ -52,12 +52,12 @@ CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]
 GRANT REFERENCES CREDENTIAL::[https://<storage_account>.dfs.core.windows.net/<container>] TO sqluser
 ```
 
-Falls keine serverbezogenen Anmeldeinformationen vorhanden sind, die mit der URL übereinstimmen, oder wenn der SQL-Benutzer nicht über die Berechtigung REFERENCES für diese Anmeldeinformationen verfügt, wird der Fehler zurückgegeben. Für SQL-Prinzipale kann per Azure AD-Identität nicht die Identität gewechselt werden.
+Falls keine serverbezogenen Anmeldeinformationen vorhanden sind, die mit der URL übereinstimmen, oder wenn der SQL-Benutzer nicht die Berechtigung REFERENCES für diese Anmeldeinformationen hat, wird der Fehler zurückgegeben. Für SQL-Prinzipale kann die Identität nicht über eine Azure AD-Identität gewechselt werden.
 
 ### <a name="direct-access"></a>[Direktzugriff](#tab/direct-access)
 
 Es ist kein zusätzliches Setup erforderlich, um Azure AD-Benutzern den Zugriff auf die Dateien unter Verwendung ihrer Identitäten zu ermöglichen.
-Jeder Benutzer kann auf den Azure-Speicher zugreifen, der anonymen Zugriff zulässt (kein zusätzliches Setup erforderlich).
+Jeder Benutzer kann auf den Azure-Speicher zugreifen, der anonymen Zugriff zulässt (es ist kein zusätzliches Setup erforderlich).
 
 ---
 
@@ -116,7 +116,7 @@ CREATE EXTERNAL DATA SOURCE MyAzureInvoices
 
 Benutzer mit den Berechtigungen zum Lesen der Tabelle können auf externe Dateien über eine externe Tabelle (EXTERNAL TABLE) zugreifen, die basierend auf einer Gruppe von Azure Storage-Ordnern und -Dateien erstellt wurde.
 
-Benutzer, die über [Berechtigungen zum Erstellen einer externen Tabelle](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=sql-server-ver15#permissions) verfügen (z. B. CREATE TABLE und ALTER ANY CREDENTIAL oder REFERENCES DATABASE SCOPED CREDENTIAL), können mit dem folgenden Skript basierend auf der Azure Storage-Datenquelle eine Tabelle erstellen:
+Benutzer, die über [Berechtigungen zum Erstellen einer externen Tabelle](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=sql-server-ver15#permissions&preserve-view=true) verfügen (z. B. CREATE TABLE und ALTER ANY CREDENTIAL oder REFERENCES DATABASE SCOPED CREDENTIAL), können mit dem folgenden Skript basierend auf der Azure Storage-Datenquelle eine Tabelle erstellen:
 
 ```sql
 CREATE EXTERNAL TABLE [dbo].[DimProductexternal]

@@ -3,18 +3,18 @@ title: Entfernen von VMs aus der Updateverwaltung in Azure Automation
 description: In diesem Artikel erfahren Sie, wie Sie mit der Updateverwaltung verwaltete Computer entfernen.
 services: automation
 ms.topic: conceptual
-ms.date: 07/28/2020
+ms.date: 09/09/2020
 ms.custom: mvc
-ms.openlocfilehash: d7f7e4aa8b2c192688020b4449c8750f94af29f6
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 66631adbb56a98431e70f956f3e860b16e8f7ea2
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449581"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648639"
 ---
 # <a name="remove-vms-from-update-management"></a>Entfernen virtueller Computer aus der Updateverwaltung
 
-Wenn Sie die Verwaltung von Updates auf den VMs in Ihrer Umgebung abgeschlossen haben, können Sie aufhören, die VMs mit der Funktion [Updateverwaltung](update-mgmt-overview.md) zu verwalten.
+Wenn Sie die Verwaltung von Updates auf den VMs in Ihrer Umgebung abgeschlossen haben, können Sie aufhören, die VMs mit der Funktion [Updateverwaltung](update-mgmt-overview.md) zu verwalten. Um die Bearbeitung zu beenden, bearbeiten Sie die gespeicherte Suchabfrage `MicrosoftDefaultComputerGroup` in Ihrem Log Analytics-Arbeitsbereich, der mit Ihrem Automation-Konto verknüpft ist.
 
 ## <a name="sign-into-the-azure-portal"></a>Anmelden beim Azure-Portal
 
@@ -22,7 +22,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 ## <a name="to-remove-your-vms"></a>So entfernen Sie Ihre VMs
 
-1. Wählen Sie in Ihrem Automation-Konto unter **Updateverwaltung** die Option **Updateverwaltung** aus.
+1. Starten Sie **Cloud Shell** über den oberen Navigationsbereich im Azure-Portal. Wenn Sie mit Azure Cloud Shell nicht vertraut sind, finden Sie weitere Informationen unter [Übersicht über Azure Cloud Shell](../../cloud-shell/overview.md).
 
 2. Ermitteln Sie mit dem folgenden Befehl die UUID eines Computers, den Sie aus der Verwaltung entfernen möchten.
 
@@ -30,18 +30,18 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
     az vm show -g MyResourceGroup -n MyVm -d
     ```
 
-3. Greifen Sie in Ihrem Log Analytics-Arbeitsbereich unter **Allgemein** auf die gespeicherten Suchvorgänge für die Bereichskonfiguration `MicrosoftDefaultScopeConfig-Updates` zu.
+3. Navigieren Sie im Azure-Portal zu **Log Analytics-Arbeitsbereiche**. Wählen Sie Ihren Arbeitsbereich in der Liste aus.
 
-4. Klicken Sie für die gespeicherte Suche `MicrosoftDefaultComputerGroup` auf die Auslassungspunkte rechts neben dem Eintrag, und wählen Sie **Bearbeiten** aus.
+4. Wählen Sie in Ihrem Log Analytics-Arbeitsbereich im oberen Aktionsmenü **Protokolle** und dann **Abfrage-Explorer** aus.
 
-5. Entfernen Sie die UUID für die VM.
+5. Erweitern Sie unter **Abfrage-Explorer** im rechten Bereich **Gespeicherte Abfragen > Updates**, und wählen Sie die gespeicherte Suchabfrage `MicrosoftDefaultComputerGroup`, um sie zu bearbeiten.
 
-6. Wiederholen Sie die Schritte für jede weitere VM, die Sie entfernen möchten.
+6. Überprüfen Sie die Abfrage im Abfrage-Editor, und suchen Sie die UUID für den virtuellen Computer. Entfernen Sie die UUID für den virtuellen Computer, und wiederholen Sie die Schritte für alle anderen VMs, die Sie entfernen möchten.
 
-7. Speichern Sie die gespeicherte Suche, wenn Sie die Bearbeitung abgeschlossen haben.
+7. Speichern Sie die gespeicherte Suche, wenn Sie die Bearbeitung abgeschlossen haben, indem Sie auf der oberen Leiste **Speichern** auswählen.
 
 >[!NOTE]
->Computer werden weiterhin angezeigt, nachdem Sie die Registrierung aufgehoben haben, da wir alle in den letzten 24 Stunden bewerteten Computer melden. Nachdem Sie den Computer getrennt haben, müssen Sie 24 Stunden warten, bis er nicht mehr aufgelistet wird.
+>Computer werden weiterhin angezeigt, nachdem Sie die Registrierung aufgehoben haben, da wir alle in den letzten 24 Stunden bewerteten Computer melden. Nachdem Sie den Computer entfernt haben, müssen Sie 24 Stunden warten, bis er nicht mehr aufgelistet wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

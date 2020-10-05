@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 9/21/2020
 ms.custom: mvc
-ms.openlocfilehash: bae6e9f04eced02130ae628d5308a87a1baaa8fa
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7a5bab13dbaa5715aa8dd34e41aba34ce62557a2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90945036"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329527"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-flexible-server-using-azure-cli"></a>Schnellstart: Erstellen einer Azure Database for MySQL Flexible Server-Instanz mit der Azure CLI
 
@@ -28,17 +28,17 @@ In diesem Schnellstart erfahren Sie, wie Sie mit den Befehlen der [Azure CLI](ht
 
 Wählen Sie zum Öffnen von Cloud Shell oben rechts in einem Codeblock einfach die Option **Ausprobieren**. Sie können Cloud Shell auch auf einer separaten Browserregisterkarte öffnen, indem Sie zu [https://shell.azure.com/bash](https://shell.azure.com/bash) navigieren. Wählen Sie **Kopieren** aus, um die Codeblöcke zu kopieren. Fügen Sie die Blöcke anschließend in Cloud Shell ein, und wählen Sie **Eingabe**, um sie auszuführen.
 
-Wenn Sie es vorziehen, die CLI lokal zu installieren und zu verwenden, müssen Sie für diesen Schnellstart mindestens Version 2.0 der Azure CLI verwenden. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Wenn Sie es vorziehen, die CLI lokal zu installieren und zu verwenden, müssen Sie für diesen Schnellstart mindestens Version 2.0 der Azure CLI verwenden. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie müssen sich mithilfe des Befehls [az login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) bei Ihrem Konto anmelden. Beachten Sie die Eigenschaft **id**, die auf die **Abonnement-ID** für Ihr Azure-Konto verweist.
+Sie müssen sich mithilfe des Befehls [az login](https://docs.microsoft.com/cli/azure/reference-index#az-login) bei Ihrem Konto anmelden. Beachten Sie die Eigenschaft **id**, die auf die **Abonnement-ID** für Ihr Azure-Konto verweist.
 
 ```azurecli-interactive
 az login
 ```
 
-Wählen Sie mithilfe des Befehls [az account set](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-set) das Abonnement unter Ihrem Konto aus. Notieren Sie sich aus der Ausgabe von **az login** den Wert für **id**. Sie verwenden ihn im Befehl als Wert für das Argument **subscription**. Wenn Sie über mehrere Abonnements verfügen, wählen Sie das entsprechende Abonnement aus, in dem die Ressource fakturiert sein sollte. Verwenden Sie [az account list](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list), um alle Abonnements abzurufen.
+Wählen Sie mithilfe des Befehls [az account set](https://docs.microsoft.com/cli/azure/account#az-account-set) das Abonnement unter Ihrem Konto aus. Notieren Sie sich aus der Ausgabe von **az login** den Wert für **id**. Sie verwenden ihn im Befehl als Wert für das Argument **subscription**. Wenn Sie über mehrere Abonnements verfügen, wählen Sie das entsprechende Abonnement aus, in dem die Ressource fakturiert sein sollte. Verwenden Sie [az account list](https://docs.microsoft.com/cli/azure/account#az-account-list), um alle Abonnements abzurufen.
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -46,13 +46,13 @@ az account set --subscription <subscription id>
 
 ## <a name="create-a-flexible-server"></a>Erstellen eines flexiblen Servers
 
-Erstellen Sie mithilfe des Befehls `az group create` eine [Azure-Ressourcengruppe](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) und anschließend in dieser Ressourcengruppe Ihren flexiblen MySQL-Server. Geben Sie daher einen eindeutigen Namen an. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen `myresourcegroup` am Standort `westus` erstellt.
+Erstellen Sie mithilfe des Befehls `az group create` eine [Azure-Ressourcengruppe](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) und anschließend in dieser Ressourcengruppe Ihren flexiblen MySQL-Server. Geben Sie daher einen eindeutigen Namen an. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen `myresourcegroup` am Standort `eastus2` erstellt.
 
 ```azurecli-interactive
-az group create --name myresourcegroup --location westus
+az group create --name myresourcegroup --location eastus2
 ```
 
-Erstellen Sie mit dem Befehl `az mysql flexible-server create` einen flexiblen Server. Ein Server kann mehrere Datenbanken enthalten. Mit dem folgenden Befehl wird ein Server mit Dienststandards und -werten aus dem [lokalen Kontext](https://docs.microsoft.com/cli/azure/local-context?view=azure-cli-latest) Ihrer Azure CLI erstellt: 
+Erstellen Sie mit dem Befehl `az mysql flexible-server create` einen flexiblen Server. Ein Server kann mehrere Datenbanken enthalten. Mit dem folgenden Befehl wird ein Server mit Dienststandards und -werten aus dem [lokalen Kontext](https://docs.microsoft.com/cli/azure/local-context) Ihrer Azure CLI erstellt: 
 
 ```azurecli
 az mysql flexible-server create
@@ -66,7 +66,35 @@ Der erstellte Server weist die folgenden Attribute auf:
 > [!NOTE] 
 > Die Konnektivitätsmethode kann nicht geändert werden, nachdem der Server erstellt wurde. Wenn Sie z. B. während der Erstellung *Private access (VNet Integration)* (Privater Zugriff (VNET-Integration)) ausgewählt haben, können Sie nach der Erstellung nicht zu *Public access (allowed IP addresses)* (Öffentlicher Zugriff (zulässige IP-Adressen)) wechseln. Es wird dringend empfohlen, einen Server mit privatem Zugriff zu erstellen, um mithilfe der VNET-Integration sicher auf den Server zugreifen zu können. Weitere Informationen zum privaten Zugriff finden Sie im Artikel zu [Konzepten](./concepts-networking.md).
 
-Wenn Sie die Standardwerte ändern möchten, finden Sie in der Referenzdokumentation zur Azure CLI <!--FIXME --> die komplette Liste der konfigurierbaren CLI-Parameter. 
+Wenn Sie irgendwelche Standardwerte ändern möchten, finden Sie in der [Referenzdokumentation](/cli/azure/mysql/flexible-server) zur Azure CLI die komplette Liste der konfigurierbaren CLI-Parameter. 
+
+Nachstehend ist eine Beispielausgabe aufgeführt: 
+
+```json
+Command group 'mysql flexible-server' is in preview. It may be changed/removed in a future release.
+Creating Resource Group 'groupXXXXXXXXXX'...
+Creating new vnet "serverXXXXXXXXXVNET" in resource group "groupXXXXXXXXXX"...
+Creating new subnet "serverXXXXXXXXXSubnet" in resource group "groupXXXXXXXXXX" and delegating it to "Microsoft.DBforMySQL/flexibleServers"...
+Creating MySQL Server 'serverXXXXXXXXX' in group 'groupXXXXXXXXXX'...
+Your server 'serverXXXXXXXXX' is using sku 'Standard_B1ms' (Paid Tier). Please refer to https://aka.ms/mysql-pricing for pricing details
+Creating MySQL database 'flexibleserverdb'...
+Make a note of your password. If you forget, you would have to reset your password with 'az mysql flexible-server update -n serverXXXXXXXXX -g groupXXXXXXXXXX -p <new-password>'.
+{
+  "connectionString": "server=serverXXXXXXXXX.mysql.database.azure.com;database=flexibleserverdb;uid=secureusername;pwd=securepasswordstring",
+  "databaseName": "flexibleserverdb",
+  "host": "serverXXXXXXXXX.mysql.database.azure.com",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/groupXXXXXXXXXX/providers/Microsoft.DBforMySQL/flexibleServers/serverXXXXXXXXX",
+  "location": "East US 2",
+  "password": "securepasswordstring",
+  "resourceGroup": "groupXXXXXXXXXX",
+  "skuname": "Standard_B1ms",
+  "subnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/groupXXXXXXXXXX/providers/Microsoft.Network/virtualNetworks/serverXXXXXXXXXVNET/subnets/serverXXXXXXXXXSubnet",
+  "username": "secureusername",
+  "version": "5.7"
+}
+```
+
+Wenn Sie irgendwelche Standardwerte ändern möchten, finden Sie in der [Referenzdokumentation](/cli/azure/mysql/flexible-server) zur Azure CLI die komplette Liste der konfigurierbaren CLI-Parameter. 
 
 > [!NOTE]
 > Die Kommunikation für Verbindungen mit Azure-Datenbank für MySQL erfolgt über Port 3306. Wenn Sie versuchen, eine Verbindung über ein Unternehmensnetzwerk herzustellen, wird ausgehender Datenverkehr über Port 3306 unter Umständen nicht zugelassen. In diesem Fall können Sie nur dann eine Verbindung mit Ihrem Server herstellen, wenn Ihre IT-Abteilung Port 3306 öffnet.
@@ -79,33 +107,35 @@ Zum Herstellen einer Verbindung zum Server müssen Sie Hostinformationen und Anm
 az mysql flexible-server show --resource-group myresourcegroup --name mydemoserver
 ```
 
-Das Ergebnis liegt im JSON-Format vor. Notieren Sie sich die Werte für **fullyQualifiedDomainName** und **administratorLogin**.
+Das Ergebnis liegt im JSON-Format vor. Notieren Sie sich die Werte für **fullyQualifiedDomainName** und **administratorLogin**. Im Folgenden finden Sie ein Beispiel für die JSON-Ausgabe: 
 
-<!--FIXME-->
 ```json
 {
-  "administratorLogin": "myadmin",
-  "earliestRestoreDate": null,
+  "administratorLogin": "myadminusername",
+  "administratorLoginPassword": null,
+  "delegatedSubnetArguments": {
+    "subnetArmResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/mydemoserverVNET/subnets/mydemoserverSubnet"
+  },
   "fullyQualifiedDomainName": "mydemoserver.mysql.database.azure.com",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.DBforMySQL/flexibleServers/mydemoserver",
-  "location": "westus",
+  "location": "East US 2",
   "name": "mydemoserver",
+  "publicNetworkAccess": "Disabled",
   "resourceGroup": "myresourcegroup",
   "sku": {
-    "capacity": 1,
+    "capacity": 0,
     "name": "Standard_B1ms",
-    "size": null,
     "tier": "Burstable"
   },
-  "publicAccess": "Enabled",
   "storageProfile": {
     "backupRetentionDays": 7,
-    "geoRedundantBackup": "Disabled",
-    "storageMb": 5120
+    "fileStorageSkuName": "Premium_LRS",
+    "storageAutogrow": "Disabled",
+    "storageIops": 0,
+    "storageMb": 10240
   },
   "tags": null,
   "type": "Microsoft.DBforMySQL/flexibleServers",
-  "userVisibleState": "Ready",
   "version": "5.7"
 }
 ```

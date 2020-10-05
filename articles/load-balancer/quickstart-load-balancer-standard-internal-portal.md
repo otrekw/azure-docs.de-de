@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: e8d11c2122a21b67620987ad9ef74efc99eeb98b
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: beafff2276d0b6dc525b586fa2d5943675012981
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654496"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446113"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Schnellstart: Erstellen eines internen Lastenausgleichs für virtuelle Computer über das Azure-Portal
 
@@ -42,8 +42,6 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 >Ein Lastenausgleich mit Standard-SKU wird für Produktionsworkloads empfohlen.  Weitere Informationen zu SKUs finden Sie unter **[Azure Load Balancer-SKUs](skus.md)** .
 
 In diesem Abschnitt wird ein Lastenausgleich für virtuelle Computer erstellt. 
-
-Sie können eine öffentliche oder eine interne Load Balancer-Instanz erstellen. 
 
 Wenn Sie einen internen Lastenausgleich erstellen, wird ein virtuelles Netzwerk als Netzwerk für den Lastenausgleich konfiguriert. 
 
@@ -125,7 +123,7 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und ein Subnetz.
 
 4. Wählen Sie auf der Registerkarte **Bewerten + erstellen** die Option **Erstellen** aus.   
     
-    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/create-standard-internal-load-balancer.png" alt-text="Erstellen eines internen Standard-Lastenausgleichs" border="true":::
+    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/create-standard-internal-load-balancer.png" alt-text="Erstellen eines internen Load Balancer Standard." border="true":::
  
 ## <a name="create-load-balancer-resources"></a>Erstellen von Load Balancer-Ressourcen
 
@@ -213,7 +211,7 @@ In diesem Abschnitt führen Sie folgende Schritte aus:
 
 ### <a name="create-virtual-machines"></a>Erstellen von virtuellen Computern
 
-In diesem Abschnitt werden zwei virtuelle Computer (**myVM1** und **myVM2**) mit einer öffentlichen Standard-IP-Adresse in zwei Zonen (**Zone 1** und **Zone 2**) erstellt. 
+In diesem Abschnitt erstellen Sie zwei virtuelle Computer (**myVM1** und **myVM2**).
 
 Diese virtuellen Computer werden dem Back-End-Pool des zuvor erstellten Lastenausgleichs hinzugefügt.
 
@@ -248,7 +246,7 @@ Diese virtuellen Computer werden dem Back-End-Pool des zuvor erstellten Lastenau
     | **Netzwerkschnittstelle** |  |
     | Virtuelles Netzwerk | **myVNet** |
     | Subnet | **myBackendSubnet** |
-    | Öffentliche IP-Adresse | Übernehmen Sie den Standardwert **myVM-ip**. </br> Die IP-Adresse ist automatisch eine IP-Adresse der SKU „Standard“ in Zone 1. |
+    | Öffentliche IP-Adresse | Wählen Sie **Keine** aus. |
     | NIC-Netzwerksicherheitsgruppe | Wählen Sie **Erweitert** aus.|
     | Konfigurieren von Netzwerksicherheitsgruppen | Wählen Sie **Neu erstellen**. </br> Geben Sie unter **Netzwerksicherheitsgruppe erstellen** als **Name** die Zeichenfolge **myNSG** ein. </br> Klicken Sie auf **OK**. |
     | **Lastenausgleich**  |
@@ -257,21 +255,12 @@ Diese virtuellen Computer werden dem Back-End-Pool des zuvor erstellten Lastenau
     | Optionen für den Lastenausgleich | Wählen Sie **Azure-Lastenausgleich** aus. |
     | Wählen Sie einen Lastenausgleich aus. | Wählen Sie **myLoadBalancer** aus.  |
     | Wählen Sie einen Back-End-Pool aus. | Wählen Sie **myBackendPool** aus. |
-
-5. Wählen Sie die Registerkarte **Verwaltung** oder **Weiter** > **Verwaltung**.
-
-6. Wählen Sie auf der Registerkarte **Verwaltung** die folgenden Werte aus, oder geben Sie sie ein:
-    
-    | Einstellung | Wert |
-    |-|-|
-    | **Überwachung** |  |
-    | Startdiagnose | Wählen Sie **Aus** aus. |
    
-7. Klicken Sie auf **Überprüfen + erstellen**. 
+5. Klicken Sie auf **Überprüfen + erstellen**. 
   
-8. Überprüfen Sie die Einstellungen, und wählen Sie dann die Option **Erstellen**.
+6. Überprüfen Sie die Einstellungen, und wählen Sie dann die Option **Erstellen**.
 
-9. Führen Sie die Schritte 1 bis 8 aus, um einen weiteren virtuellen Computer mit folgenden Werten zu erstellen. Verwenden Sie für alle übrigen Einstellungen die Werte von **myVM1**:
+7. Führen Sie die Schritte 1 bis 8 aus, um einen weiteren virtuellen Computer mit folgenden Werten zu erstellen. Verwenden Sie für alle übrigen Einstellungen die Werte von **myVM1**:
 
     | Einstellung | VM 2|
     | ------- | ----- |
@@ -286,8 +275,6 @@ Diese virtuellen Computer werden dem Back-End-Pool des zuvor erstellten Lastenau
 >Ein Lastenausgleich mit Standard-SKU wird für Produktionsworkloads empfohlen.  Weitere Informationen zu SKUs finden Sie unter **[Azure Load Balancer-SKUs](skus.md)** .
 
 In diesem Abschnitt wird ein Lastenausgleich für virtuelle Computer erstellt. 
-
-Sie können eine öffentliche oder eine interne Load Balancer-Instanz erstellen. 
 
 Wenn Sie einen internen Lastenausgleich erstellen, wird ein virtuelles Netzwerk als Netzwerk für den Lastenausgleich konfiguriert. 
 
@@ -368,7 +355,7 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und ein Subnetz.
 
 4. Wählen Sie auf der Registerkarte **Bewerten + erstellen** die Option **Erstellen** aus.   
 
-    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/create-basic-internal-load-balancer.png" alt-text="Erstellen eines internen Standard-Lastenausgleichs" border="true":::
+    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/create-basic-internal-load-balancer.png" alt-text="Erstellen eines internen Load Balancer Standard." border="true":::
 
 ## <a name="create-load-balancer-resources"></a>Erstellen von Load Balancer-Ressourcen
 
@@ -461,9 +448,7 @@ In diesem Abschnitt führen Sie folgende Schritte aus:
 
 ### <a name="create-virtual-machines"></a>Erstellen von virtuellen Computern
 
-Die SKUs für öffentliche IP-Adressen und die Lastenausgleichs-SKUs müssen übereinstimmen. Verwenden Sie für den Lastenausgleich im Basic-Tarif virtuelle Computer mit Basic-IP-Adressen im Back-End-Pool. 
-
-In diesem Abschnitt werden zwei virtuelle Computer (**myVM1** und **myVM2**) mit einer öffentlichen IP-Adresse vom Typ „Basic“ erstellt.  
+In diesem Abschnitt erstellen Sie zwei virtuelle Computer (**myVM1** und **myVM2**).
 
 Die beiden virtuellen Computer werden einer Verfügbarkeitsgruppe namens **myAvailabilitySet** hinzugefügt.
 
@@ -505,21 +490,12 @@ Diese virtuellen Computer werden dem Back-End-Pool des zuvor erstellten Lastenau
     | Konfigurieren von Netzwerksicherheitsgruppen | Wählen Sie **Neu erstellen**. </br> Geben Sie unter **Netzwerksicherheitsgruppe erstellen** als **Name** die Zeichenfolge **myNSG** ein. </br> Klicken Sie auf **OK**. |
     | **Lastenausgleich**  |
     | Diese VM hinter einer vorhandenen Lastenausgleichslösung platzieren? | Wählen Sie **Nein** aus. |
- 
-5. Wählen Sie die Registerkarte **Verwaltung** oder **Weiter** > **Verwaltung**.
 
-6. Wählen Sie auf der Registerkarte **Verwaltung** die folgenden Werte aus, oder geben Sie sie ein:
-    
-    | Einstellung | Wert |
-    |-|-|
-    | **Überwachung** |  |
-    | Startdiagnose | Wählen Sie **Aus** aus. |
-
-7. Klicken Sie auf **Überprüfen + erstellen**. 
+5. Klicken Sie auf **Überprüfen + erstellen**. 
   
-8. Überprüfen Sie die Einstellungen, und wählen Sie dann die Option **Erstellen**.
+6. Überprüfen Sie die Einstellungen, und wählen Sie dann die Option **Erstellen**.
 
-9. Führen Sie die Schritte 1 bis 8 aus, um einen weiteren virtuellen Computer mit folgenden Werten zu erstellen. Verwenden Sie für alle übrigen Einstellungen die Werte von **myVM1**:
+7. Führen Sie die Schritte 1 bis 8 aus, um einen weiteren virtuellen Computer mit folgenden Werten zu erstellen. Verwenden Sie für alle übrigen Einstellungen die Werte von **myVM1**:
 
     | Einstellung | VM 2 |
     | ------- | ----- |
@@ -583,19 +559,10 @@ In diesem Abschnitt wird ein virtueller Computer namens **myTestVM** erstellt.  
     | Öffentliche IP-Adresse | Wählen Sie **Keine** aus. |
     | NIC-Netzwerksicherheitsgruppe | Wählen Sie **Erweitert** aus.|
     | Konfigurieren von Netzwerksicherheitsgruppen | Wählen Sie die im vorherigen Schritt erstellte Netzwerksicherheitsgruppe **MyNSG** aus.|
-    
-5. Wählen Sie die Registerkarte **Verwaltung** oder **Weiter** > **Verwaltung**.
-
-6. Wählen Sie auf der Registerkarte **Verwaltung** die folgenden Werte aus, oder geben Sie sie ein:
-    
-    | Einstellung | Wert |
-    |-|-|
-    | **Überwachung** |  |
-    | Startdiagnose | Wählen Sie **Aus** aus. |
-   
-7. Klicken Sie auf **Überprüfen + erstellen**. 
+       
+5. Klicken Sie auf **Überprüfen + erstellen**. 
   
-8. Überprüfen Sie die Einstellungen, und wählen Sie dann die Option **Erstellen**.
+6. Überprüfen Sie die Einstellungen, und wählen Sie dann die Option **Erstellen**.
 
 ## <a name="install-iis"></a>Installieren von IIS
 
@@ -647,13 +614,13 @@ In diesem Abschnitt wird ein virtueller Computer namens **myTestVM** erstellt.  
 
 8. Geben Sie die IP-Adresse aus dem vorherigen Schritt in die Adressleiste des Browsers ein. Die Standardseite des IIS-Webservers wird im Browser angezeigt.
 
-    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/load-balancer-test.png" alt-text="Erstellen eines internen Standard-Lastenausgleichs" border="true":::
+    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/load-balancer-test.png" alt-text="Erstellen eines internen Load Balancer Standard." border="true":::
    
-Um zu sehen, wie Datenverkehr durch den Lastenausgleich auf alle drei virtuellen Computer verteilt wird, können Sie die Standardseite des IIS-Webservers der einzelnen virtuellen Computer anpassen und dann über den Clientcomputer eine Aktualisierung Ihres Webbrowsers erzwingen.
+Um zu sehen, wie Datenverkehr durch den Lastenausgleich auf beide virtuelle Computer verteilt wird, können Sie die Standardseite des IIS-Webservers der einzelnen virtuellen Computer anpassen und dann über den Clientcomputer eine Aktualisierung Ihres Webbrowsers erzwingen.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Löschen Sie die Ressourcengruppe, den Lastenausgleich und alle zugehörigen Ressourcen, wenn Sie sie nicht mehr benötigen. Wählen Sie hierzu die Ressourcengruppe **myResourceGroupLB** aus, die die Ressourcen enthält, und wählen Sie anschließend **Löschen** aus.
+Löschen Sie die Ressourcengruppe, den Lastenausgleich und alle dazugehörigen Ressourcen, wenn Sie sie nicht mehr benötigen. Wählen Sie hierzu die Ressourcengruppe **myResourceGroupLB** aus, die die Ressourcen enthält, und wählen Sie anschließend **Löschen** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -665,5 +632,3 @@ In dieser Schnellstartanleitung führen Sie die folgenden Schritte aus:
 
 Weitere Informationen zu Azure Load Balancer finden Sie unter [Was versteht man unter Azure Load Balancer?](load-balancer-overview.md) sowie unter [Häufig gestellte Fragen zu Load Balancer](load-balancer-faqs.md).
 
-* Weitere Informationen zu Load Balancer und Verfügbarkeitszonen finden Sie [hier](load-balancer-standard-availability-zones.md).
-* Weitere Informationen zu [Azure Bastion](https://docs.microsoft.com/azure/bastion/bastion-overview).

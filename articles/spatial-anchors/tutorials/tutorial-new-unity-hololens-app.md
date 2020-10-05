@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 08/17/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 365fe8c330cadcc01fcd24de28b663cd80b55117
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: 8c9e6462beb48e3326de3c2348b73053f717e032
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89535876"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441273"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>Tutorial: Schritt-für-Schritt-Anleitung zum Erstellen einer neuen HoloLens Unity-App mit Azure Spatial Anchors
 
@@ -204,11 +204,11 @@ Bevor Sie fortfahren, müssen Sie ein Azure Spatial Anchors-Konto erstellen, dam
 
 Wenn Ihnen der Azure Spatial Anchors-Kontobezeichner, der Schlüssel und die Domäne vorliegen, fügen Sie die `Account Id` in `SpatialAnchorsAccountId`, den `Account Key` in `SpatialAnchorsAccountKey` und die `Account Domain` in `SpatialAnchorsAccountDomain` ein.
 
-Im letzten Schritt werden alle Komponenten zusammengefügt. Fügen Sie in Ihrer `SpawnNewAnchoredObject()`-Methode den folgenden Code hinzu. Er ruft die `CreateAnchorAsync()`-Methode auf, sobald Ihre Kugel erstellt wurde. Nach der Methodenrückgabe wird die Kugel mit dem unten angegebenen Code noch ein letztes Mal aktualisiert, indem ihre Farbe in Blau geändert wird.
+Im letzten Schritt werden alle Komponenten zusammengefügt. Fügen Sie in Ihrer `CreateAndSaveSphere()`-Methode den folgenden Code hinzu. Er ruft die `CreateAnchorAsync()`-Methode auf, sobald Ihre Kugel erstellt wurde. Nach der Methodenrückgabe wird die Kugel mit dem unten angegebenen Code noch ein letztes Mal aktualisiert, indem ihre Farbe in Blau geändert wird.
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=320-397&highlight=26-77)]
 
-Führen Sie Ihre App ein weiteres Mal aus **Visual Studio** heraus aus. Bewegen Sie Ihren Kopf, und tippen Sie dann in die Luft, um Ihre Kugel zu platzieren. Sobald genügend Frames vorhanden sind, ändert sich die Farbe der Kugel in Gelb, und der Upload in die Cloud beginnt. Nach Abschluss des Uploadvorgangs ändert sich die Farbe der Kugel in Blau. Optional könnten Sie auch das Ausgabefenster innerhalb von **Visual Studio** verwenden, um die Protokollmeldungen zu überwachen, die von Ihrer App gesendet werden. Sie können sich `RecommendedForCreateProgress` ansehen, und sobald der Upload abgeschlossen ist, sehen Sie den von der Cloud zurückgegebenen Ankerbezeichner.
+Führen Sie Ihre App ein weiteres Mal aus **Visual Studio** heraus aus. Bewegen Sie Ihren Kopf, und tippen Sie dann in die Luft, um Ihre Kugel zu platzieren. Sobald genügend Frames vorhanden sind, ändert sich die Farbe der Kugel in Gelb, und der Upload in die Cloud beginnt. Nach Abschluss des Uploadvorgangs ändert sich die Farbe der Kugel in Blau. Optional könnten Sie auch das [Ausgabefenster](https://docs.microsoft.com/visualstudio/ide/reference/output-window) während des Debuggens innerhalb von **Visual Studio** verwenden, um die Protokollmeldungen zu überwachen, die von Ihrer App gesendet werden. Stellen Sie sicher, dass Sie die `Debug`-Konfiguration Ihrer App aus Visual Studio bereitstellen, um die Protokollmeldungen anzuzeigen. Sie können sich `RecommendedForCreateProgress` ansehen, und sobald der Upload abgeschlossen ist, sehen Sie den von der Cloud zurückgegebenen Ankerbezeichner.
 
 > [!NOTE]
 > Wenn Sie „DllNotFoundException: Die DLL 'AzureSpatialAnchors' kann nicht geladen werden: Das angegebene Modul wurde nicht gefunden.“ erhalten, sollten Sie Ihre Projektmappe **Bereinigen** und erneut **Erstellen**.

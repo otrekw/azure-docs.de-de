@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: troubleshooting
-ms.date: 07/08/2020
+ms.date: 09/10/2020
 ms.author: alkohli
-ms.openlocfilehash: a632e753426def52bb260d7bf01875ec24e2ea9e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 2a40e908677a173862ad715f7024865ff728d0b9
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200144"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053452"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Behandeln von Problemen mit Azure Data Box und Azure Data Box Heavy
 
@@ -112,13 +112,17 @@ Hierbei handelt es sich um Fehler im Zusammenhang mit Daten, die die zulässige 
 
 ### <a name="error_container_or_share_capacity_exceeded"></a>ERROR_CONTAINER_OR_SHARE_CAPACITY_EXCEEDED
 
-**Fehlerbeschreibung:** Azure-Dateifreigabe sind auf 5 TB an Daten begrenzt. Dieses Limit wurde für einige Freigaben überschritten.
+**Fehlerbeschreibung:** Die Azure-Dateifreigabe schränkt Freigaben auf eine Datenmenge von jeweils 5 TiB ein, und große Dateifreigaben sind im Speicherkonto nicht aktiviert. Dieses Limit wurde für einige Freigaben überschritten.
 
 **Vorgeschlagene Lösung:** Laden Sie auf der lokalen Webbenutzeroberfläche auf der Seite **Verbinden und kopieren** die Fehlerdateien herunter, und überprüfen Sie sie.
 
-Ermitteln Sie die Ordner, die dieses Problem in den Fehlerprotokollen enthalten, und stellen Sie sicher, dass die Dateien in diesem Ordner kleiner als 5 TB sind.
-
-
+- Ermitteln Sie anhand der Fehlerprotokolle die Ordner, die dieses Problem aufweisen, und stellen Sie sicher, dass die Dateien in diesem Ordner kleiner als 5 TB sind.
+- Das Limit von 5 TiB gilt nicht für Speicherkonten, in denen große Dateifreigaben zulässig sind. Sie müssen jedoch große Dateifreigaben konfiguriert haben, wenn Sie Ihre Bestellung aufgeben. 
+  - Fordern Sie vom [Microsoft-Support](data-box-disk-contact-microsoft-support.md) ein neues Versandetikett an.
+  - [Aktivieren Sie große Dateifreigaben im Speicherkonto.](../storage/files/storage-files-how-to-create-large-file-share.md#enable-large-files-shares-on-an-existing-account)
+  - [Erweitern Sie die Dateifreigaben im Speicherkonto](../storage/files/storage-files-how-to-create-large-file-share.md#expand-existing-file-shares), und legen Sie das Kontingent auf 100 TiB fest.
+  
+  
 ## <a name="object-or-file-size-limit-errors"></a>Objekt- oder Dateigrößenbeschränkungs-Fehler
 
 Hierbei handelt es sich um Fehler im Zusammenhang mit Daten, die die maximale Größe des Objekts oder der Datei überschreiten, die in Azure zulässig ist. 

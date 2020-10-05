@@ -16,12 +16,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17209919e9bcd93a9a0184d8d4df9c29fff62ef9
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 1fa96d6bd0032f675ffaeabc58c62c13312039dc
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89277322"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662167"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Voraussetzungen für Azure AD Connect
 In diesem Artikel werden die Voraussetzungen und die Hardwareanforderungen für Azure Active Directory (Azure AD) Connect beschrieben.
@@ -34,10 +34,10 @@ Vor der Installation von Azure AD Connect gibt es einige Dinge, die Sie benötig
   * [Azure-Portal](https://portal.azure.com)
   * [Office-Portal](https://portal.office.com)
 * [Fügen Sie die Domäne hinzu](../fundamentals/add-custom-domain.md) , die Sie in Azure AD verwenden möchten, und überprüfen Sie sie. Wenn Sie beispielsweise planen, „contoso.com“ für Ihre Benutzer zu verwenden, müssen Sie sicherstellen, dass diese Domäne überprüft wurde und nicht nur die Standarddomäne „contoso.onmicrosoft.com“ verwendet wird.
-* In einem Azure AD-Mandanten sind standardmäßig 50.000 Objekte zulässig. Wenn Sie Ihre Domäne überprüfen, wird der Grenzwert auf 300.000 Objekte erhöht. Wenn Sie noch mehr Objekte in Azure AD benötigen, stellen Sie eine Supportanfrage, um den Grenzwert noch weiter erhöhen zu lassen. Wenn Sie mehr als 500.000 Objekte verwalten müssen, benötigen Sie eine Lizenz, z. B. für Office 365, Azure AD Premium oder Enterprise Mobility + Security.
+* In einem Azure AD-Mandanten sind standardmäßig 50.000 Objekte zulässig. Wenn Sie Ihre Domäne überprüfen, wird der Grenzwert auf 300.000 Objekte erhöht. Wenn Sie noch mehr Objekte in Azure AD benötigen, stellen Sie eine Supportanfrage, um den Grenzwert noch weiter erhöhen zu lassen. Wenn Sie mehr als 500.000 Objekte verwalten müssen, benötigen Sie eine Lizenz, z. B. für Microsoft 365, Azure AD Premium oder Enterprise Mobility + Security.
 
 ### <a name="prepare-your-on-premises-data"></a>Vorbereiten Ihrer lokalen Daten
-* Verwenden Sie [IdFix](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) zum Ermitteln von Fehlern wie Duplikaten und Formatierungsproblemen in Ihrem Verzeichnis, bevor Sie eine Synchronisierung mit Azure AD und Office 365 durchführen.
+* Verwenden Sie [IdFix](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) zum Ermitteln von Fehlern wie Duplikaten und Formatierungsproblemen in Ihrem Verzeichnis, bevor Sie eine Synchronisierung mit Azure AD und Microsoft 365 durchführen.
 * Lesen Sie den Artikel über die [optionalen Synchronisierungsfeatures, die Sie in Azure AD aktivieren können](how-to-connect-syncservice-features.md), und bestimmen Sie, welche Features Sie aktivieren sollten.
 
 ### <a name="on-premises-active-directory"></a>Lokales Active Directory

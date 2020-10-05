@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Verwenden von Azure Key Vault mit einem virtuellen Computer in Python | Microsoft-Dokumentation'
-description: In diesem Tutorial konfigurieren Sie eine ASP.NET Core-Anwendung zum Lesen eines Geheimnisses aus Ihrem Schlüsseltresor.
+description: In diesem Tutorial konfigurieren Sie einen virtuellen Computer in einer Python-Anwendung zum Lesen eines Geheimnisses aus Ihrem Schlüsseltresor.
 services: key-vault
 author: msmbaldwin
 ms.service: key-vault
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: c0f98f8c77e4a9cd4271511e0169f07da1c52baa
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 8980505ac34e32a29403060a7cf3cfaec077d8af
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875948"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336699"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-python"></a>Tutorial: Verwenden von Azure Key Vault mit einem virtuellen Windows in Python
 

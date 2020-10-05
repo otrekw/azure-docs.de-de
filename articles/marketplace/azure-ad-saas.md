@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 09/02/2020
-ms.openlocfilehash: 5a40328274fbc776ea02efa0a86422763794d5be
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.date: 09/04/2020
+ms.openlocfilehash: 5a09105dac89f3dc241140f16f3d4be72cc97493
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378813"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483625"
 ---
 # <a name="azure-ad-and-transactable-saas-offers-in-the-commercial-marketplace"></a>Azure AD und transaktionsfähige SaaS-Angebote im kommerziellen Marketplace
 
@@ -25,7 +25,7 @@ Die Anleitungen in diesem Artikel sollen Sie bei der Zertifizierung Ihres SaaS-A
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Wenn Sie Ihr [SaaS-Angebot](./partner-center-portal/create-new-saas-offer.md) im Partner Center erstellen, wählen Sie aus einer Reihe spezifischer Optionen für Handlungsaufforderungen aus, die in der Angebotsliste angezeigt werden. Ihre Auswahl bestimmt, wie die Transaktion Ihres Angebots im kommerziellen Marketplace abläuft. Über Microsoft verkaufte Angebote werden als transaktionsfähige Angebote bezeichnet. Kunden werden alle transaktionsfähigen Angebote in Ihrem Namen von uns in Rechnung gestellt. Wenn Sie Ihr Angebot über Microsoft vertreiben und Transaktionen in Ihrem Namen von uns hosten lassen möchten (Option **Ja**), dann haben Sie sich dafür entschieden, ein transaktionsfähiges Angebot zu erstellen. In diesem Fall ist dieser Artikel genau richtig für Sie, und Sie sollten ihn vollständig lesen.
+Wenn Sie Ihr [SaaS-Angebot](./partner-center-portal/create-new-saas-offer.md) im Partner Center erstellen, wählen Sie aus einer Reihe spezifischer Auflistungsoptionen aus, die in der Angebotsliste angezeigt werden. Ihre Auswahl bestimmt, wie die Transaktion Ihres Angebots im kommerziellen Marketplace abläuft. Über Microsoft verkaufte Angebote werden als transaktionsfähige Angebote bezeichnet. Kunden werden alle transaktionsfähigen Angebote in Ihrem Namen von uns in Rechnung gestellt. Wenn Sie Ihr Angebot über Microsoft vertreiben und Transaktionen in Ihrem Namen von uns hosten lassen möchten (Option **Ja**), dann haben Sie sich dafür entschieden, ein transaktionsfähiges Angebot zu erstellen. In diesem Fall ist dieser Artikel genau richtig für Sie, und Sie sollten ihn vollständig lesen.
 
 Wenn Sie Ihr Angebot nur im kommerziellen Marketplace auflisten und Transaktionen unabhängig verarbeiten möchten (die Option **Nein**), können Sie potenziellen Kunden drei Möglichkeiten bieten, auf Ihr Angebot zuzugreifen: „Jetzt abrufen (kostenlos)“, „Kostenlose Testversion“ und „Kontakt mit mir aufnehmen“. Bei Auswahl von **Jetzt abrufen (kostenlos)** oder **Kostenlose Testversion** ist dieser Artikel nicht für Sie geeignet. Informieren Sie sich stattdessen unter [Erstellen der Landing Page für Ihr kostenloses SaaS-Angebot oder Ihr SaaS-Testangebot im kommerziellen Marketplace](./azure-ad-free-or-trial-landing-page.md). Bei Auswahl von **Kontakt mit mir aufnehmen** ist der Herausgeber nicht direkt verantwortlich. Fahren Sie mit der Erstellung Ihres Angebots im Partner Center fort.
 
@@ -45,7 +45,7 @@ Die folgenden Abschnitte enthalten Details zu den Anforderungen für die einzeln
 
 In dieser Abbildung werden die vier Schritte für die Einkaufsverwaltung veranschaulicht.
 
-:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-1-4.png" alt-text="Veranschaulicht die vier Schritte für die Einkaufsverwaltung.":::
+:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-1-4.png" alt-text="Veranschaulicht die Schritte für die Einkaufs-, Abonnement- und (optionale) Benutzerverwaltung.":::
 
 Diese Tabelle enthält Details zu den Schritten für die Einkaufsverwaltung.
 
@@ -61,7 +61,7 @@ Diese Tabelle enthält Details zu den Schritten für die Einkaufsverwaltung.
 
 In dieser Abbildung werden die zwei Schritte für die Abonnementverwaltung veranschaulicht.
 
-:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-5-6.png" alt-text="Veranschaulicht die zwei Schritte für die Abonnementverwaltung.":::
+:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-5-6.png" alt-text="Veranschaulicht die Schritte für die Einkaufs-, Abonnement- und (optionale) Benutzerverwaltung.":::
 
 In dieser Tabelle werden die Schritte für die Abonnementverwaltung ausführlich beschrieben.
 
@@ -75,7 +75,7 @@ In dieser Tabelle werden die Schritte für die Abonnementverwaltung ausführlich
 
 In dieser Abbildung werden die drei Schritte für die Benutzerverwaltung veranschaulicht.
 
-:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-7-9.png" alt-text="Veranschaulicht die drei optionalen Schritte für die Benutzerverwaltung.":::
+:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-7-9.png" alt-text="Veranschaulicht die Schritte für die Einkaufs-, Abonnement- und (optionale) Benutzerverwaltung.":::
 
 Die Schritte 7 bis 9 sind optional für die Benutzerverwaltung. Sie bieten Herausgebern, die das einmalige Anmelden in Azure AD (SSO) unterstützen, zusätzliche Vorteile. In dieser Tabelle werden die Schritte für die Benutzerverwaltung ausführlich beschrieben.
 

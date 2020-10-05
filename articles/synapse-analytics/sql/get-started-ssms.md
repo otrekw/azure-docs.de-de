@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: dc467eebbd7346777765af7143d13c76627ab648
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 166d598528d8fe38e2bc22b76c659326c5e0ba45
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077714"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288782"
 ---
 # <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>Herstellen einer Verbindung mit Synapse SQL mithilfe von SQL Server Management Studio (SSMS)
 > [!div class="op_single_selector"]
@@ -41,7 +41,7 @@ Bevor Sie beginnen, stellen Sie sicher, dass die folgenden Voraussetzungen erfü
 
 * [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms). 
 * Für den SQL-Pool benötigen Sie ein vorhandenes Data Warehouse. Informationen zur Erstellung finden Sie unter [Erstellen eines SQL-Pools](../quickstart-create-sql-pool-portal.md). Bei SQL On-Demand wird bereits bei der Erstellung ein Data Warehouse in Ihrem Arbeitsbereich bereitgestellt. 
-* Den vollqualifizierten SQL Server-Namen. Informationen zur Ermittlung finden Sie unter [Herstellen einer Verbindung mit Synapse SQL](connect-overview.md).
+* Den vollqualifizierten SQL Server-Namen. Informationen, wie dieser Name ermittelt wird, finden Sie unter [Herstellen einer Verbindung mit Synapse SQL](connect-overview.md).
 
 ## <a name="connect"></a>Verbinden
 
@@ -52,7 +52,7 @@ Führen Sie die folgenden Schritte aus, um mithilfe des SQL-Pools eine Verbindun
 1. Öffnen Sie SQL Server Management Studio (SSMS). 
 1. Füllen Sie im Dialogfeld **Mit Server verbinden** die Felder aus, und wählen Sie dann **Verbinden** aus: 
   
-    ![Verbindung mit Server herstellen](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/connect-object-explorer1.png)
+    ![Mit Server verbinden 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/connect-object-explorer1.png)
    
    * **Servername**: Geben Sie den zuvor ermittelten **Servernamen** ein.
    * **Authentifizierung:**  Wählen Sie einen Authentifizierungstyp aus, etwa **SQL Server-Authentifizierung** oder **Integrierte Active Directory-Authentifizierung**.
@@ -60,7 +60,7 @@ Führen Sie die folgenden Schritte aus, um mithilfe des SQL-Pools eine Verbindun
 
 1. Erweitern Sie Ihre Azure SQL Server-Instanz im **Objekt-Explorer**. Sie können die dem Server zugeordneten Datenbanken anzeigen, etwa die Beispieldatenbank „AdventureWorksDW“. Sie können die Datenbank erweitern, um die Tabellen anzuzeigen:
    
-    ![AdventureWorksDW erkunden](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/explore-tables.png)
+    ![AdventureWorksDW erkunden 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/explore-tables.png)
 
 
 ### <a name="sql-on-demand-preview"></a>SQL On-Demand (Vorschauversion)
@@ -70,16 +70,16 @@ Führen Sie die folgenden Schritte aus, um mithilfe von SQL On-Demand eine Verbi
 1. Öffnen Sie SQL Server Management Studio (SSMS).
 1. Füllen Sie im Dialogfeld **Mit Server verbinden** die Felder aus, und wählen Sie dann **Verbinden** aus: 
    
-    ![Verbindung mit Server herstellen](./media/get-started-ssms/connect-object-explorer1.png)
+    ![Mit Server verbinden 2](./media/get-started-ssms/connect-object-explorer1.png)
    
    * **Servername**: Geben Sie den zuvor ermittelten **Servernamen** ein.
    * **Authentifizierung:** Wählen Sie einen Authentifizierungstyp aus, etwa **SQL Server-Authentifizierung** oder **Integrierte Active Directory-Authentifizierung**.
    * **Benutzername** und **Kennwort**: Geben Sie Benutzername und Kennwort ein, wenn Sie oben „SQL Server-Authentifizierung“ ausgewählt haben.
-   * Klicken Sie auf **Verbinden**.
+   * Wählen Sie **Verbinden** aus.
 
 4. Erweitern Sie den Azure SQL-Server. Sie können die dem Server zugeordneten Datenbanken anzeigen. Erweitern Sie *Demo*, um den Inhalt in der Beispieldatenbank anzuzeigen.
    
-    ![AdventureWorksDW erkunden](./media/get-started-ssms/explore-tables.png)
+    ![AdventureWorksDW erkunden 2](./media/get-started-ssms/explore-tables.png)
 
 
 ## <a name="run-a-sample-query"></a>Ausführen einer Beispielabfrage
@@ -91,18 +91,18 @@ Nachdem eine Datenbankverbindung hergestellt wurde, können Sie die Daten nun ab
 1. Klicken Sie mit der rechten Maustaste im SQL Server-Objekt-Explorer auf Ihre Datenbank.
 2. Wählen Sie **Neue Abfrage** aus. Ein neues Abfragefenster wird geöffnet.
    
-    ![Neue Abfrage](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/new-query.png)
-3. Kopieren Sie die folgende T-SQL-Abfrage in das Abfragefenster:
+    ![Neue Abfrage 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/new-query.png)
+3. Kopieren Sie die folgende TSQL-Abfrage in das Abfragefenster:
    
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
     ```
-4. Führen Sie die Abfrage aus. Zu diesem Zweck klicken Sie auf `Execute` oder drücken auf `F5`.
+4. Führen Sie die Abfrage aus, indem Sie `Execute` auswählen oder die folgende Tastenkombination drücken: `F5`.
    
-    ![Abfrage ausführen](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/execute-query.png)
-5. Sehen Sie sich die Abfrageergebnisse an. In diesem Beispiel weist die Tabelle „FactInternetSales“ 60398 Zeilen auf.
+    ![Abfrage ausführen 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/execute-query.png)
+5. Sehen Sie sich die Abfrageergebnisse an. Im folgenden Beispiel hat die Tabelle „FactInternetSales“ 60398 Zeilen.
    
-    ![Abfrageergebnisse](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/results.png)
+    ![Abfrageergebnisse 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/results.png)
 
 ### <a name="sql-on-demand"></a>SQL On-Demand
 
@@ -111,18 +111,18 @@ Nachdem eine Datenbankverbindung hergestellt wurde, können Sie die Daten nun ab
 1. Klicken Sie mit der rechten Maustaste im SQL Server-Objekt-Explorer auf Ihre Datenbank.
 2. Wählen Sie **Neue Abfrage** aus. Ein neues Abfragefenster wird geöffnet.
    
-    ![Neue Abfrage](./media/get-started-ssms/new-query.png)
+    ![Neue Abfrage 2](./media/get-started-ssms/new-query.png)
 3. Kopieren Sie die folgende TSQL-Abfrage in das Abfragefenster:
    
     ```sql
     SELECT COUNT(*) FROM demo.dbo.usPopulationView
     ```
-4. Führen Sie die Abfrage aus. Zu diesem Zweck klicken Sie auf `Execute` oder drücken auf `F5`.
+4. Führen Sie die Abfrage aus, indem Sie `Execute` auswählen oder die folgende Tastenkombination drücken: `F5`.
    
-    ![Abfrage ausführen](./media/get-started-ssms/execute-query.png)
+    ![Abfrage ausführen 2](./media/get-started-ssms/execute-query.png)
 5. Sehen Sie sich die Abfrageergebnisse an. In diesem Beispiel enthält die Ansicht „usPopulationView“ 3.664.512 Zeilen.
    
-    ![Abfrageergebnisse](./media/get-started-ssms/results.png)
+    ![Abfrageergebnisse 2](./media/get-started-ssms/results.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nun da Sie eine Verbindung hergestellt haben und Abfragen senden können, versuchen Sie, [die Daten mit Power BI zu visualisieren](get-started-power-bi-professional.md).

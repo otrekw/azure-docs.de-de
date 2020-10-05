@@ -8,13 +8,13 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: a16a83408587a1b99485140174c45e457ac820f8
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.date: 08/31/2020
+ms.openlocfilehash: 9564611ee37c2aa2f104bbb14096a3b2f45fb7cd
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855101"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89485368"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights Gen2-Ereignisquellen
 
@@ -64,7 +64,7 @@ Die Streamingpipeline kann in Azure Time Series Insights Gen2 aktuell nicht zum 
 
 ## <a name="event-source-timestamp"></a>Zeitstempel der Ereignisquelle
 
-Beim Konfigurieren einer Ereignisquelle werden Sie dazu aufgefordert, eine Zeitstempel-ID-Eigenschaft anzugeben. Die Zeitstempeleigenschaft wird verwendet, um Ereignisse im Zeitverlauf zu verfolgen. Diese Zeit wird als $event.$ts in den [Abfrage-APIs](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute) und zum Zeichnen von Reihen im Azure Time Series Insights TSI-Explorer verwendet. Wenn zum Zeitpunkt der Erstellung keine Eigenschaft bereitgestellt wird oder die Zeitstempeleigenschaft aus einem Ereignis fehlt, wird der Zeitpunkt der Einreihung in die IoT Hub- oder Event Hubs-Warteschlange als Standardwert verwendet. Werte der Zeitstempeleigenschaft werden in UTC gespeichert.
+Beim Konfigurieren einer Ereignisquelle werden Sie dazu aufgefordert, eine Zeitstempel-ID-Eigenschaft anzugeben. Die Zeitstempeleigenschaft wird verwendet, um Ereignisse im Zeitverlauf zu verfolgen. Diese Zeit wird als $event.$ts in den [Abfrage-APIs](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute) und zum Zeichnen von Reihen im Azure Time Series Insights-Explorer verwendet. Wenn zum Zeitpunkt der Erstellung keine Eigenschaft bereitgestellt wird oder die Zeitstempeleigenschaft aus einem Ereignis fehlt, wird der Zeitpunkt der Einreihung in die IoT Hub- oder Event Hubs-Warteschlange als Standardwert verwendet. Werte der Zeitstempeleigenschaft werden in UTC gespeichert.
 
 Im Allgemeinen entscheiden sich Benutzer dafür, die Zeitstempeleigenschaft anzupassen und den Zeitpunkt zu verwenden, zu dem der Sensor oder das Tag den Lesevorgang generiert hat, anstatt den Standardwert des Zeitpunkts der Einreihung in die Hub-Warteschlange zu verwenden. Dies ist besonders dann notwendig, wenn Geräte vorübergehenden Konnektivitätsverlust aufweisen und ein Batch verzögerter Nachrichten an Azure Time Series Insights Gen2 weitergeleitet wird.
 

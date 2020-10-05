@@ -1,22 +1,25 @@
 ---
-title: Behandeln von Azure Files-Problemen unter Windows | Microsoft-Dokumentation
-description: Hier finden Sie Informationen zum Behandeln von Azure Files-Problemen unter Windows. In diesem Artikel werden allgemeine Probleme im Zusammenhang mit Azure Files aufgeführt, die auftreten können, wenn Sie eine Verbindung von Windows-Clients herstellen, und es werden mögliche Lösungen beschrieben.
+title: Behandeln von Azure Files-Problemen unter Windows
+description: Hier finden Sie Informationen zum Behandeln von Azure Files-Problemen unter Windows. In diesem Artikel werden allgemeine Probleme im Zusammenhang mit Azure Files aufgeführt, die auftreten können, wenn Sie eine Verbindung von Windows-Clients herstellen, und es werden mögliche Lösungen beschrieben. Nur für SMB-Freigaben
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 08/31/2019
+ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 3bd059e59bebe9ae1ecc8f2f00dd63f873e08944
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: a899927166d7e1294ad89d48e5c646e6abb5ed76
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269368"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707610"
 ---
-# <a name="troubleshoot-azure-files-problems-in-windows"></a>Behandeln von Azure Files-Problemen unter Windows
+# <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Behandeln von Azure Files-Problemen unter Windows (SMB)
 
 Dieser Artikel beschreibt allgemeine Probleme im Zusammenhang mit Microsoft Azure Files, wenn Sie eine Verbindung von Windows-Clients herstellen. Darüber hinaus werden die möglichen Ursachen und Lösungen für diese Probleme bereitgestellt. Zusätzlich zu den Schritten zur Problembehandlung in diesem Artikel können Sie auch [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows)  verwenden, um sicherzustellen, dass die Windows-Clientumgebung über die richtigen erforderlichen Komponenten verfügt. AzFileDiagnostics automatisiert die Erkennung eines Großteils der Symptome, die in diesem Artikel erwähnt werden und hilft, Ihre Umgebung einzurichten, um eine optimale Leistung zu erzielen. Sie erhalten diese Informationen auch unter [Problembehandlung für Azure Files-Freigaben](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares). Hier finden Sie Schritte zum Beheben von Problemen mit dem Verbinden, Zuordnen und Einbinden von Azure Files-Freigaben.
+
+> [!IMPORTANT]
+> Der Inhalt dieses Artikels gilt nur für SMB-Freigaben. Weitere Informationen zu NFS-Freigaben finden Sie unter [Behandeln von Problemen mit Azure NFS-Dateifreigaben](storage-troubleshooting-files-nfs.md).
 
 <a id="error5"></a>
 ## <a name="error-5-when-you-mount-an-azure-file-share"></a>Fehler 5 beim Bereitstellen einer Azure-Dateifreigabe
@@ -50,7 +53,12 @@ Wenn Benutzer mithilfe der Active Directory (AD)- oder Azure Active Directory Do
 
 ### <a name="solution-for-cause-3"></a>Lösung für Ursache 3
 
-Informationen zum Aktualisieren der Berechtigungen auf Freigabeebene finden Sie unter [Zuweisen von Zugriffsberechtigungen zu einer Identität](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable#2-assign-access-permissions-to-an-identity).
+Überprüfen, ob Berechtigungen ordnungsgemäß konfiguriert sind:
+
+- **Active Directory (AD)** siehe [Zuweisen von Berechtigungen auf Freigabeebene für eine Identität](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-assign-permissions).
+
+    Berechtigungszuweisungen auf Freigabeebene werden für Gruppen und Benutzer unterstützt, die mithilfe von Azure AD Connect von Active Directory (AD) zu Azure Active Directory (Azure AD) synchronisiert wurden.  Vergewissern Sie sich, dass Gruppen und Benutzer, denen Berechtigungen auf Freigabeebene zugewiesen werden, nicht zu den nicht unterstützten „reinen Cloudgruppen“ gehören.
+- **Azure Active Directory Domain Services (Azure AD DS)** siehe [Zuweisen von Zugriffsberechtigungen zu einer Identität](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable?tabs=azure-portal#assign-access-permissions-to-an-identity).
 
 <a id="error53-67-87"></a>
 ## <a name="error-53-error-67-or-error-87-when-you-mount-or-unmount-an-azure-file-share"></a>„Fehler 53“, „Fehler 67“ oder „Fehler 87“ beim Versuch, eine Azure-Dateifreigabe einzubinden oder die Einbindung aufzuheben
@@ -317,18 +325,6 @@ Aktivieren Sie Azure AD DS für den Azure AD-Mandanten des Abonnements, in de
 
 [!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
 
-## <a name="error-system-error-1359-has-occurred-an-internal-error-received-over-smb-access-to-file-shares-with-azure-active-directory-domain-service-azure-ad-ds-authentication-enabled"></a>Fehler „Systemfehler 1359 ist aufgetreten. Interner Fehler“, empfangen über SMB-Zugriff auf Dateifreigaben mit aktivierter Azure Active Directory Domain Services-Authentifizierung (Azure AD DS-Authentifizierung)
-
-### <a name="cause"></a>Ursache
-
-Fehler „Systemfehler 1359 ist aufgetreten. Interner Fehler“ tritt auf, wenn Sie versuchen, eine Verbindung mit Ihrer Dateifreigabe herzustellen, und die Azure AD DS-Authentifizierung für eine Azure AD DS-Instanz mit einem DNS-Domänennamen aktiviert ist, der mit einem numerischen Zeichen beginnt. Wenn der DNS-Name Ihrer Azure AD DS-Domäne beispielsweise „1domain“ lautet und Sie versuchen, die Dateifreigabe mit Azure AD-Anmeldeinformationen einzubinden, wird dieser Fehler angezeigt. 
-
-### <a name="solution"></a>Lösung
-
-Derzeit können Sie die erneute Bereitstellung Ihrer Azure AD DS-Instanz mit einem neuen DNS-Domänennamen in Erwägung ziehen, für den die folgenden Regeln gelten:
-- Namen dürfen nicht mit einem numerischen Zeichen beginnen.
-- Die Namen müssen zwischen 3 und 63 Zeichen lang sein.
-
 ## <a name="unable-to-mount-azure-files-with-ad-credentials"></a>Azure Files mit AD-Anmeldeinformationen kann nicht eingebunden werden 
 
 ### <a name="self-diagnostics-steps"></a>Selbstdiagnoseschritte
@@ -373,6 +369,18 @@ Dieser Fehler kann auftreten, wenn ein Domänencontroller, der die FSMO-Rolle (R
 ### <a name="error-cannot-bind-positional-parameters-because-no-names-were-given"></a>Fehler: „Die Positionsparameter können nicht gebunden werden, da keine Namen angegeben wurden.“
 
 Dieser Fehler wird wahrscheinlich durch einen Syntaxfehler im Befehl „Join-AzStorageAccountforAuth“ verursacht.  Überprüfen Sie den Befehl auf Rechtschreib- oder Syntaxfehler, und vergewissern Sie sich, dass die neueste Version des AzFilesHybrid-Moduls (https://github.com/Azure-Samples/azure-files-samples/releases) installiert ist.  
+
+## <a name="azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption"></a>Azure Files-Unterstützung der lokalen AD DS-Authentifizierung für die AES 256-Kerberos-Verschlüsselung
+
+Mit dem [AzFilesHybrid-Modul v0.2.2](https://github.com/Azure-Samples/azure-files-samples/releases) haben wir die Azure Files-Unterstützung der lokalen AD DS-Authentifizierung für die AES 256-Kerberos-Verschlüsselung eingeführt. Wenn Sie die AD DS-Authentifizierung mit einer Modulversion unter v0.2.2 aktiviert haben, müssen Sie das neueste AzFilesHybrid-Modul (v0.2.2+) herunterladen und PowerShell nachfolgend ausführen. Wenn Sie die AD DS-Authentifizierung für Ihr Speicherkonto noch nicht aktiviert haben, können Sie zur Aktivierung diesem [Leitfaden](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-enable#option-one-recommended-use-azfileshybrid-powershell-module) folgen. 
+
+```PowerShell
+$ResourceGroupName = "<resource-group-name-here>"
+$StorageAccountName = "<storage-account-name-here>"
+
+Update-AzStorageAccountAuthForAES256 -ResourceGroupName $ResourceGroupName -StorageAccountName $StorageAccountName
+```
+
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
 [Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen.

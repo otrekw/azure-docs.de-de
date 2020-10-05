@@ -1,5 +1,5 @@
 ---
-title: Erstellen eines Agents für elastische Aufträge mithilfe von PowerShell
+title: Erstellen eines Agents für elastische Aufträge über PowerShell (Vorschau)
 description: Hier erfahren Sie, wie Sie mithilfe von PowerShell einen Agent für elastische Aufträge erstellen.
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
 ms.date: 03/13/2019
-ms.openlocfilehash: 0fe6a3b1d0e5216d923cfe3997826e7a727f1a2b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: aaf749708b49c57d08a63581f3d911b04aba2103
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89077346"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91408666"
 ---
-# <a name="create-an-elastic-job-agent-using-powershell"></a>Erstellen eines Agents für elastische Aufträge mithilfe von PowerShell
+# <a name="create-an-elastic-job-agent-using-powershell-preview"></a>Erstellen eines Agents für elastische Aufträge über PowerShell (Vorschau)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Mit [elastischen Aufträgen (Vorschau)](job-automation-overview.md#elastic-database-jobs-preview) können einzelne oder mehrere T-SQL-Skripts (Transact-SQL) für zahlreiche Datenbanken gleichzeitig ausgeführt werden.

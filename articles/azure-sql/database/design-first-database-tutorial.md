@@ -10,12 +10,12 @@ ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 07/29/2019
 ms.custom: sqldbrb=1
-ms.openlocfilehash: b56dd81cd0cdc5d9a6917b0bf43c3fceeff63c4a
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 1e0ab1d6c1266b37dfcba461fbbdc373fc526783
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84216546"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362162"
 ---
 # <a name="tutorial-design-a-relational-database-in-azure-sql-database-using-ssms"></a>Tutorial: Entwerfen einer relationalen Datenbank in Azure SQL-Datenbank unter Verwendung von SSMS
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -92,7 +92,7 @@ Führen Sie die folgenden Schritte zum Erstellen einer leeren Datenbank aus.
 
 9. Klicken Sie in der Symbolleiste auf **Benachrichtigungen**, um den Bereitstellungsprozess zu überwachen.
 
-   ![Benachrichtigung](./media/design-first-database-tutorial/notification.png)
+   ![Screenshot, in dem das Menü „Benachrichtigungen“ mit „Bereitstellung wird durchgeführt“ gezeigt ist](./media/design-first-database-tutorial/notification.png)
 
 ## <a name="create-a-server-level-ip-firewall-rule"></a>Erstellen einer IP-Firewallregel auf Serverebene
 

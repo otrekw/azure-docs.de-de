@@ -5,16 +5,16 @@ keywords: Lokale Anmeldeinformationen für die Authentifizierung bei Azure Key V
 author: msmbaldwin
 services: key-vault
 ms.author: mbaldwin
-ms.date: 08/08/2020
+ms.date: 09/04/2020
 ms.topic: how-to
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: 860f9b0e49423b5d144d56ecd965153f7a362d87
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 00799f7c5239bfd744268f7353e1bac6cb038294
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180914"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483336"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Dienst-zu-Dienst-Authentifizierung in Azure Key Vault mithilfe von .NET
 
@@ -54,7 +54,7 @@ Für .NET-Anwendungen ist die einfachste Methode zum Verwenden einer verwalteten
     string accessToken = await azureServiceTokenProvider2.GetAccessTokenAsync("https://management.azure.com/").ConfigureAwait(false);
     ```
 
-Sie müssen den Ablauf des Tokens nicht überprüfen, bevor Sie die `GetAccessTokenAsync`-Methode aufrufen, da `AzureServiceTokenProvider` das Token im Arbeitsspeicher zwischenspeichert und es direkt vor dem Ablauf von Azure AD abruft. 
+Die threadsichere `AzureServiceTokenProvider`-Klasse speichert das Token im Arbeitsspeicher zwischen und ruft es kurz vor dem Ablaufdatum von Azure AD ab. Das bedeutet, dass Sie vor dem Aufruf der `GetAccessTokenAsync`-Methode nie den Ablauf des Tokens überprüfen müssen. 
 
 Die `GetAccessTokenAsync`-Methode erfordert einen Ressourcenbezeichner. Weitere Informationen zu Microsoft Azure-Diensten finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen](../../active-directory/msi-overview.md).
 

@@ -12,18 +12,18 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: e78b5118a2525fbf10a3089712f75e44cb7deceb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1bcf8ec2395dbc94154072c1c4d839bf45125a3e
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080691"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89487299"
 ---
 # <a name="azure-time-series-insights-gen1-explorer"></a>Azure Time Series Insights-Explorer (Gen1)
 
 In diesem Artikel werden die Features und Optionen der [Explorer-Web-App](https://insights.timeseries.azure.com/) für Azure Time Series Insights (Gen1) beschrieben. Der Azure Time Series Insights-Explorer veranschaulicht die leistungsstarken Datenvisualisierungsfunktionen, die der Dienst bereitstellt und auf die innerhalb Ihrer eigenen Umgebung zugegriffen werden kann.
 
-Azure Time Series Insights ist ein vollständig verwalteter Analyse-, Speicher- und Visualisierungsdienst, der die simultane Untersuchung und Analyse von Milliarden von IoT-Ereignissen ermöglicht. Sie erhalten globale Einblicke in Ihre Daten und können basierend darauf Ihre IoT-Lösung schneller überprüfen und kostenintensive Ausfallzeiten unternehmenskritischer Geräte vermeiden. Sie können versteckte Trends aufdecken, Abweichungen erkennen und Ursachenanalysen nahezu in Echtzeit durchführen. 
+Azure Time Series Insights ist ein vollständig verwalteter Analyse-, Speicher- und Visualisierungsdienst, der die simultane Untersuchung und Analyse von Milliarden von IoT-Ereignissen ermöglicht. Sie erhalten globale Einblicke in Ihre Daten und können basierend darauf Ihre IoT-Lösung schneller überprüfen und kostenintensive Ausfallzeiten unternehmenskritischer Geräte vermeiden. Sie können versteckte Trends aufdecken, Abweichungen erkennen und Ursachenanalysen nahezu in Echtzeit durchführen.
 
 > [!TIP]
 > Eine interaktive Tour durch die Demoumgebung finden Sie in der [Schnellstartanleitung für Azure Time Series Insights](time-series-quickstart.md).
@@ -108,7 +108,7 @@ Binnen weniger Minuten nach der Verbindung der Ereignisquelle mit der Azure Time
 
 1. Mithilfe des **Wärmebilds** können Sie schnell besondere oder ungewöhnliche Datenreihen in einer bestimmten Abfrage erkennen. Nur ein Suchbegriff kann als Wärmebild visualisiert werden.
 
-    [![Gen1-Explorer: Wärmebilddiagramm](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png#lightbox)
+    [![Time Series Insights-Explorer: Wärmebilddiagramm ](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png#lightbox)
 
 1. Beim Untersuchen von Ereignissen durch Auswählen oder Klicken mit der rechten Maustaste wird der Bereich **EREIGNISSE** angezeigt. Hier können Sie alle Ihre Rohereignisse überprüfen und die Ereignisse als JSON- oder CSV-Dateien exportieren. In Azure Time Series Insights werden alle Rohdaten gespeichert.
 

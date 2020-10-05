@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
 ms.date: 05/12/2020
-ms.openlocfilehash: 529988ce456b9017d700880d55b349fa93e15f96
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 6088569efed56d4453e4f1b0806af68f206cd2e9
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104230"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033250"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Co-Selling-Option im Partner Center
 
@@ -62,11 +62,11 @@ Sie können bis zu drei Lösungsbereiche für Ihr Angebot hinzufügen. Für jede
 
 ## <a name="documents"></a>Dokumente
 
-Sie können Begleitmaterialien zur Verfügung stellen, die Microsoft zur Bewertung der Kundenanforderungen nutzen kann.
+Sie haben die Möglichkeit, Begleitdokumente bereitzustellen, die Microsoft verwendet, um weitere Informationen zu Ihrem Angebot zu erhalten und dessen Eignung für Ihre Kundenanforderungen zu überprüfen. Alle in der folgenden Tabelle aufgeführten Dokumente sind optional.
 
 | **Dokumente**    | **Beschreibung**  |
 | :------------------- | :-------------------|
-| *Einseitiges Dokument des Kunden* | Kundenspezifische Beschreibung Ihres Angebots. Microsoft-Vertriebsteams können diese Informationen an Kunden weitergeben, um festzustellen, ob Ihr Angebot gut zu ihnen passt und um sicherzustellen, dass es kundengerecht ist. <br> <br> Verwenden Sie eine der relevanten Vorlagen, die im Partner Center zur Verfügung stehen: <br> <ul> <li> Einseitige Microsoft Azure-Vorlage </li> <li> Einseitige Microsoft Dynamics 365-Vorlage </li> <li> Einseitige Office 365-Vorlage </li> <li> Einseitige Windows 10-Vorlage </li> </ul> |
+| *Einseitiges Dokument des Kunden* | Kundenspezifische Beschreibung Ihres Angebots. Microsoft-Vertriebsteams können diese Informationen an Kunden weitergeben, um festzustellen, ob Ihr Angebot gut zu ihnen passt und um sicherzustellen, dass es kundengerecht ist. <br> <br> Verwenden Sie eine der relevanten Vorlagen, die im Partner Center zur Verfügung stehen: <br> <ul> <li> Einseitige Microsoft Azure-Vorlage </li> <li> Einseitige Microsoft Dynamics 365-Vorlage </li> <li> Einseitige Microsoft 365-Vorlage </li> <li> Einseitige Windows 10-Vorlage </li> </ul> |
 | *Kundenpräsentation* | Präsentation zum Vorstellen Ihrer Lösung und deren Leistungsversprechen. Nachdem Sie sichergestellt haben, dass Ihr Angebot für den Kunden bereit ist, können die Microsoft-Vertriebsteams die Präsentation mit den Kunden teilen, um den Nutzen zu vermitteln, den beide Unternehmen bei der Bereitstellung einer gemeinsamen Lösung einbringen. Die Präsentation sollte darlegen, was Ihre Lösung leistet, auf welche Weise sie Kunden helfen kann, in welchen Branchen die Lösung eingesetzt wird und wie sie sich im Vergleich zu konkurrierenden Lösungen auszeichnet. <br> <br> Verwenden Sie die im Partner Center verfügbare Vorlage.|
 | *Kundenfallstudie* | Diese Informationen zeigen einem potenziellen Kunden, wie Sie und Microsoft diese Lösung in früheren Fällen erfolgreich bereitgestellt haben. <br> <br> Verwenden Sie die im Partner Center verfügbare Vorlage. |
 | *Überprüfbare Kundengewinne (optional)* | Konkrete Beispiele für den Erfolg von Kunden nach dem Einsatz Ihrer Lösung. |
@@ -79,14 +79,14 @@ Sie können Begleitmaterialien zur Verfügung stellen, die Microsoft zur Bewertu
 
 Ihre Kontaktinformationen ermöglichen es Microsoft-Vertriebsteams und Vertriebspartnern, zusätzliche Informationen von der entsprechenden Ressource in Ihrem Unternehmen anzufordern. Die Kontaktinformationen sind für alle Microsoft-Vertriebsteams verfügbar. Wenn Sie Ihr Angebot im CSP-Programm zur Verfügung stellen, stehen diese Kontaktinformationen auch den Vertriebspartnern zur Verfügung.
 
-Dieses Dokument enthält Anleitungen zu den verschiedenen Rollen für Partner und wie sie zwischen ihnen wählen können. Sie können Ihre Kontakte bereitstellen, indem Sie die CSV-Vorlage aus dem Partner Center herunterladen, jede Zeile mit Informationen zum Kontakt ausfüllen und diese CSV-Datei dann importieren. Das Importieren einer CSV-Datei überschreibt die vorhandenen Kontakte.
+Sie können Ihre Kontakte bereitstellen, indem Sie die CSV-Vorlage aus dem Partner Center herunterladen, jede Zeile mit Informationen zum Kontakt ausfüllen und diese CSV-Datei dann importieren. Das Importieren einer CSV-Datei überschreibt die vorhandenen Kontakte.
 
 Sie können auch Ihre bestehende Kontaktliste für ein Angebot exportieren und dann Änderungen an dieser Datei vornehmen.
 
 * *Name (erforderlich)* : Der Name des Kontakts.
 * *E-Mail-Adresse (erforderlich)* : Die E-Mail-Adresse des Kontakts.
 * *Position (erforderlich)* : Die Positionsbezeichnung.
-* *Rolle (erforderlich)* : Verwenden Sie in diesem Feld der Vorlage eine der folgenden Rollen.
+* *Rolle (erforderlich)* : Verwenden Sie eine der folgenden Rollen.
 
     | **Rolle**    | **Beschreibung**  |
     | :------------------- | :-------------------|

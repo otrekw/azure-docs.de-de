@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tilarso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77c673ec52873d854647cf49c0efcbd650fb6aa8
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 8c319489fe4c884cd5de48ac2d3e47e7beb3026f
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89320646"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705485"
 ---
 # <a name="what-is-the-identity-secure-score-in-azure-active-directory"></a>Was ist der Identity Secure Score in Azure Active Directory?
 
@@ -102,7 +102,7 @@ Sie erhalten Hinweise zur Konfiguration empfohlener Sicherheitsfunktionen oder D
 
 Wenn Sie Ihren Bewertungsverlauf anzeigen möchten, navigieren Sie zum [Microsoft 365 Security Center](https://security.microsoft.com/), und sehen Sie sich Ihre gesamte Microsoft-Sicherheitsbewertung an. Sie können die Änderungen Ihrer gesamten Sicherheitsbewertung überprüfen, indem Sie auf „Verlauf anzeigen“ klicken. Wählen Sie ein Datum aus, um anzuzeigen, welche Kontrollen für diesen Tag aktiviert waren und welche Bewertung Sie für die einzelnen Kontrollen erhalten haben.
 
-### <a name="how-does-the-identity-secure-score-relate-to-the-office-365-secure-score"></a>In welcher Beziehung steht der Identity Secure Score zum Office 365 Secure Score?
+### <a name="how-does-the-identity-secure-score-relate-to-the-microsoft-365-secure-score"></a>In welcher Beziehung steht der Identity Secure Score zum Microsoft 365 Secure Score?
 
 Die [Microsoft-Sicherheitsbewertung](/office365/securitycompliance/microsoft-secure-score) enthält fünf unterschiedliche Kontroll- und Bewertungskategorien:
 

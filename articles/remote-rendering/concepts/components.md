@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d957da572bfdd3119dda506ac8f5bb42064d7758
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a488e2499b92b290ad2b55120c3c70a18d45d426
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020302"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613944"
 ---
 # <a name="components"></a>Komponenten
 
@@ -53,7 +53,6 @@ lightComponent->Destroy();
 lightComponent = nullptr;
 ```
 
-
 Eine Komponente wird zum Erstellungszeitpunkt an eine Entität angefügt. Anschließend kann sie nicht mehr in eine andere Entität verschoben werden. Komponenten werden explizit mit `Component.Destroy()` oder automatisch gelöscht, wenn die Besitzerentität der Komponente zerstört wird.
 
 Der Entität kann jeweils nur eine Instanz eines einzelnen Komponentyps hinzugefügt werden.
@@ -61,6 +60,15 @@ Der Entität kann jeweils nur eine Instanz eines einzelnen Komponentyps hinzugef
 ## <a name="unity-specific"></a>Unity-spezifisch
 
 Die Unity-Integration stellt zusätzliche Erweiterungsfunktionen für die Interaktion mit-Komponenten bereit. Weitere Informationen dazu finden Sie unter [Interagieren mit Spielobjekten und Komponenten](../how-tos/unity/objects-components.md).
+
+## <a name="api-documentation"></a>API-Dokumentation
+
+* [ComponentBase (C#)](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.componentbase)
+* [RemoteManager.CreateComponent() (C#)](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.createcomponent)
+* [Entity.FindComponentOfType() (C#)](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.entity.findcomponentoftype)
+* [ComponentBase (C++)](https://docs.microsoft.com/cpp/api/remote-rendering/componentbase)
+* [ RemoteManager::CreateComponent() (C++)](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#createcomponent)
+* [Entity::FindComponentOfType() (C++)](https://docs.microsoft.com/cpp/api/remote-rendering/entity#findcomponentoftype)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

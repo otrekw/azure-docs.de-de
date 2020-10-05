@@ -12,13 +12,13 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 05/29/2020
-ms.openlocfilehash: f1fad6554a347acb1de72bfe1e5c3413e6f74d9f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/28/2020
+ms.openlocfilehash: 35a637df85984bcfd20836bcd87aa5ecf1583170
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87004153"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461137"
 ---
 # <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database-or-azure-sql-managed-instance"></a>Schnellstart: Verwenden von SSMS zum Herstellen einer Verbindung mit Azure SQL-Datenbank oder Azure SQL Managed Instance und Ausführen von Abfragen
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -83,6 +83,9 @@ Stellen Sie in SSMS eine Verbindung mit Ihrem Server her.
    ||||
 
    ![Verbindung mit dem Server herstellen](./media/connect-query-ssms/connect.png)  
+
+> [!NOTE]
+> In diesem Tutorial wird SQL Server-Authentifizierung verwendet.  Soll die Verbindungsherstellung dagegen über Azure Active Directory mit mehrstufiger Authentifizierung (MFA) erfolgen, müssen Sie [SSMS 18.6 oder höher](https://aka.ms/ssms) verwenden. 
 
 3. Wählen Sie im Dialogfeld **Mit Server verbinden** **Optionen** aus. Wählen Sie im Dropdownmenü **Mit Datenbank verbinden** **mySampleDatabase** aus. Im Rahmen der unter [Voraussetzungen](#prerequisites) angegebenen Schnellstartanleitung wird eine AdventureWorksLT-Datenbank namens „mySampleDatabase“ erstellt. Sollte Ihre Arbeitskopie der AdventureWorks-Datenbank einen anderen Namen haben als „mySampleDatabase“, wählen Sie stattdessen den anderen Namen aus.
 
@@ -155,7 +158,7 @@ Führen Sie diesen [INSERT](/sql/t-sql/statements/insert-transact-sql/)-Transact
 
 ### <a name="update-data"></a>Aktualisieren von Daten
 
-Führen Sie diesen [UPDATE](/sql/t-sql/queries/update-transact-sql?view=sql-server-ver15)-Transact-SQL-Code aus, um Ihr neues Produkt zu ändern.
+Führen Sie diesen [UPDATE](/sql/t-sql/queries/update-transact-sql)-Transact-SQL-Code aus, um Ihr neues Produkt zu ändern.
 
 1. Ersetzen Sie die vorherige Abfrage durch diese, die den neuen, zuvor erstellten Datensatz zurückgibt:
 

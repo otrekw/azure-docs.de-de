@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/06/2020
-ms.openlocfilehash: 19e3e356765099b83f7248a024b55c491a61b110
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: c3ffcea27fa16fd4f5449b42407a7e4779ca27f9
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816268"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420930"
 ---
 # <a name="offer-listing-best-practices"></a>Bewährte Methoden für Angebotslistung
 
@@ -48,11 +48,11 @@ Für verschiedene Angebotstypen gelten Kategorien und Branchen für verschiedene
 
 ### <a name="categories"></a>Kategorien
 
-Microsoft AppSource und der Azure Marketplace sind zwei verschiedene Onlineshops für individuelle Kundenanforderungen. Azure Marketplace richtet sich an IT-Experten und Entwickler, die Lösungen in Azure entwickeln.  Microsoft AppSource richtet sich an Geschäftsanwender, die geschäfts- und/oder branchenspezifische SaaS-Anwendungen, Dynamics 365-Add-Ins, Microsoft 365-Add-Ins und Power Platform-Apps benötigen.
+Microsoft AppSource und Azure Marketplace sind Onlineshops, die verschiedene Lösungstypen bieten. Azure Marketplace bietet IT-Lösungen, die in oder für Azure entwickelt wurden.  Microsoft AppSource bietet Geschäftslösungen wie branchenspezifische SaaS-Anwendungen, Dynamics 365-Add-Ins, Microsoft 365-Add-Ins und Power Platform-Apps.
 
-Kategorien und Unterkategorien werden den einzelnen Onlineshops basierend auf der Zielgruppe zugeordnet. Ihr Angebot wird in Microsoft AppSource oder im Azure Marketplace veröffentlicht und zwar je nach Angebotstyp, Transaktionsfähigkeit des Angebots und ausgewählter Kategorie/Unterkategorie. 
+Kategorien und Unterkategorien werden den einzelnen Onlineshops basierend auf dem Lösungstyp zugeordnet. Ihr Angebot wird in Microsoft AppSource oder im Azure Marketplace veröffentlicht und zwar je nach Angebotstyp, Transaktionsfähigkeit des Angebots und ausgewählter Kategorie/Unterkategorie. 
 
-Wählen Sie Kategorien und Unterkategorien aus, die am besten zu Ihrem Angebot und Ihrer Zielgruppe passen. Sie können Folgendes auswählen:
+Wählen Sie die Kategorien und Unterkategorien aus, die am besten zu Ihrem Lösungstyp passen. Sie können Folgendes auswählen:
 
 * Bis zu zwei Kategorien, einschließlich einer primären und einer sekundären Kategorie (optional).
 * Bis zu zwei Unterkategorien für jede primäre und/oder sekundäre Kategorie. Wenn keine Unterkategorie ausgewählt wird, ist das Angebot weiterhin auffindbar, allerdings nur unter der ausgewählten Kategorie.

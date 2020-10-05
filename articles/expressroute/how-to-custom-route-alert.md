@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
-ms.openlocfilehash: f29f43234f1541abeb448e722d0b72ef7c0221c9
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 4a116d06f5feb3fe402e7f64b9bccd5531b210c1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401723"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986583"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>Konfigurieren benutzerdefinierter Warnungen zum Überwachen angekündigter Routen
 
@@ -78,7 +78,7 @@ Standardmäßig wird dem Dienstprinzipal, der von Ihrem **ausführenden Konto** 
 
 2. Klicken Sie auf **Rollen**, um die verwendete Rollendefinition anzuzeigen.
 
-   :::image type="content" source="./media/custom-route-alert-portal/run-as-account-permissions.png" alt-text="Zuweisen einer Rolle":::
+   :::image type="content" source="./media/custom-route-alert-portal/run-as-account-permissions.png" alt-text="Hinzufügen eines Automation-Kontos":::
 
 ## <a name="create-and-configure-runbooks"></a><a name="runbooks"></a>Erstellen und Konfigurieren von Runbooks
 
@@ -88,25 +88,25 @@ Damit Sie PowerShell-Cmdlets in Azure Automation-Runbooks ausführen können, m�
 
 1. Öffnen Sie Ihr Azure Automation-Konto, und navigieren Sie zu **Module**.
 
-   :::image type="content" source="./media/custom-route-alert-portal/navigate-modules.png" alt-text="Navigieren zu „Module“":::
+   :::image type="content" source="./media/custom-route-alert-portal/navigate-modules.png" alt-text="Hinzufügen eines Automation-Kontos":::
 
 2. Durchsuchen Sie den Katalog, und importieren Sie die folgenden Module: **Az.Accounts**, **Az.Network**, **Az.Automation** und **Az.Profile**.
 
-   :::image type="content" source="./media/custom-route-alert-portal/import-modules.png" alt-text="Suchen nach und Importieren von Modulen" lightbox="./media/custom-route-alert-portal/import-modules-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/import-modules.png" alt-text="Hinzufügen eines Automation-Kontos" lightbox="./media/custom-route-alert-portal/import-modules-expand.png":::
   
 ### <a name="2-create-a-runbook"></a><a name="create"></a>2. Erstellen eines Runbooks
 
 1. Navigieren Sie zu Ihrem Automation-Konto, um das PowerShell-Runbook zu erstellen. Klicken Sie unter **Prozessautomatisierung** auf die Kachel **Runbooks** und anschließend auf **Runbook erstellen**.
 
-   :::image type="content" source="./media/custom-route-alert-portal/create-runbook.png" alt-text="Erstellen eines Runbooks":::
+   :::image type="content" source="./media/custom-route-alert-portal/create-runbook.png" alt-text="Hinzufügen eines Automation-Kontos":::
 
 2. Klicken Sie auf **Erstellen**, um das Runbook zu erstellen.
 
-   :::image type="content" source="./media/custom-route-alert-portal/create-runbook-2.png" alt-text="Klicken auf „Erstellen“":::
+   :::image type="content" source="./media/custom-route-alert-portal/create-runbook-2.png" alt-text="Hinzufügen eines Automation-Kontos":::
 
 3. Wählen Sie das neu erstellte Runbook aus, und klicken Sie dann auf **Bearbeiten**.
 
-   :::image type="content" source="./media/custom-route-alert-portal/edit-runbook.png" alt-text="Runbook bearbeiten":::
+   :::image type="content" source="./media/custom-route-alert-portal/edit-runbook.png" alt-text="Hinzufügen eines Automation-Kontos":::
 
 4. Fügen Sie unter **Bearbeiten** das PowerShell-Skript ein. Sie können das [Beispielskript](#script) ändern und zur Überwachung von ExpressRoute-Gateways in einer oder mehreren Ressourcengruppen verwenden.
 
@@ -231,7 +231,7 @@ Write-Output  $jsonResults
 1. Klicken Sie auf **Speichern**, um eine Entwurfskopie des Runbooks zu speichern.
 2. Klicken Sie auf **Veröffentlichen**, um das Runbook als offizielle Version des Runbooks im Automation-Konto zu veröffentlichen.
 
-   :::image type="content" source="./media/custom-route-alert-portal/save-publish-runbook.png" alt-text="Speichern und Veröffentlichen des Runbooks":::
+   :::image type="content" source="./media/custom-route-alert-portal/save-publish-runbook.png" alt-text="Hinzufügen eines Automation-Kontos":::
 
 Beim Ausführen des PowerShell-Skripts werden folgende Werte erfasst:
  
@@ -263,7 +263,7 @@ Die gesammelten Informationen werden vom PowerShell-Skript in eine JSON-Ausgabe 
 
 Nachdem das Runbook erstellt wurde, müssen Sie es überprüfen. Klicken Sie auf **Starten**, und suchen Sie in der Ausgabe und den Fehlern nach den unterschiedlichen Auftragsdatenströmen.
 
-:::image type="content" source="./media/custom-route-alert-portal/validate-runbook.png" alt-text="Überprüfen des Runbooks" lightbox="./media/custom-route-alert-portal/validate-runbook-expand.png":::
+:::image type="content" source="./media/custom-route-alert-portal/validate-runbook.png" alt-text="Hinzufügen eines Automation-Kontos" lightbox="./media/custom-route-alert-portal/validate-runbook-expand.png":::
 
 ## <a name="create-and-configure-a-logic-app"></a><a name="logic"></a>Erstellen und Konfigurieren einer Logik-App
 
@@ -273,13 +273,13 @@ Mit Azure Logic Apps werden alle Sammlungs- und Aktionsprozesse orchestriert. In
 
 In diesem Workflow erstellen Sie eine Logik-App, mit der ExpressRoute-Gateways regelmäßig überwacht werden. Wenn neue Elemente vorhanden sind, sendet die Logik-App eine E-Mail für jedes Element. Am Ende entspricht Ihre Logik-App grob dem folgenden Workflow:
 
-:::image type="content" source="./media/custom-route-alert-portal/logic-apps-workflow.png" alt-text="Logic Apps-Workflow":::
+:::image type="content" source="./media/custom-route-alert-portal/logic-apps-workflow.png" alt-text="Hinzufügen eines Automation-Kontos":::
 
 ### <a name="1-create-a-logic-app"></a>1. Erstellen einer Logik-App
 
 Erstellen Sie im **Logik-App-Designer** mithilfe der Vorlage **Leere Logik-App** eine Logik-App. Eine Anleitung hierzu finden Sie unter [Erstellen von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md#create-your-logic-app).
 
-:::image type="content" source="./media/custom-route-alert-portal/blank-template.png" alt-text="Leere Vorlage":::
+:::image type="content" source="./media/custom-route-alert-portal/blank-template.png" alt-text="Hinzufügen eines Automation-Kontos":::
 
 ### <a name="2-add-a-trigger"></a>2. Hinzufügen eines Triggers
 
@@ -287,7 +287,7 @@ Logik-Apps werden durch einen Trigger gestartet. Der Trigger wird ausgelöst, we
 
 Fügen Sie dem Workflow den integrierten Trigger **Wiederholung – Zeitplan** hinzu, um eine Logik-App, die auf einem vordefinierten Zeitplan basiert, regelmäßig auszuführen. Geben Sie im Suchfeld den Suchbegriff **Zeitplan** ein. Wählen Sie **Trigger** aus. Klicken Sie in der Liste „Trigger“ auf **Wiederholung – Zeitplan**.
 
-:::image type="content" source="./media/custom-route-alert-portal/schedule.png" alt-text="Wiederholung – Zeitplan":::
+:::image type="content" source="./media/custom-route-alert-portal/schedule.png" alt-text="Hinzufügen eines Automation-Kontos":::
 
 Im Trigger „Wiederholung – Zeitplan“ können Sie die Zeitzone und eine Wiederholung für den Workflow festlegen. Das Intervall und die Häufigkeit definieren zusammen den Zeitplan für den Trigger Ihrer Logik-App. Berücksichtigen Sie die folgenden Aspekte, um eine sinnvolle Mindesthäufigkeit für die Wiederholungen festzulegen:
 
@@ -299,7 +299,7 @@ Im Trigger „Wiederholung – Zeitplan“ können Sie die Zeitzone und eine Wie
 
 Nach Abschluss der Workflowkonfiguration können Sie die Konsistenz der Wiederholungshäufigkeit überprüfen, indem Sie den Workflow einige Male ausführen. Überprüfen Sie anschließend das Ergebnis im **Ausführungsverlauf**.
 
-:::image type="content" source="./media/custom-route-alert-portal/recurrence.png" alt-text="Serie" lightbox="./media/custom-route-alert-portal/recurrence-expand.png":::
+:::image type="content" source="./media/custom-route-alert-portal/recurrence.png" alt-text="Hinzufügen eines Automation-Kontos" lightbox="./media/custom-route-alert-portal/recurrence-expand.png":::
 
 ### <a name="3-create-a-job"></a><a name="job"></a>3. Erstellen eines Auftrags
 
@@ -308,29 +308,29 @@ Eine Logik-App greift über Connectors auf andere Apps, Dienste und die Plattfor
 1. Klicken Sie im **Logik-App-Designer** unter **Wiederholung** auf **Neuer Schritt**. Klicken Sie unter **Aktion auswählen** und unterhalb des Suchfelds auf die Option **Alle**.
 2. Geben Sie im Suchfeld den Suchbegriff **Azure Automation** ein, und starten Sie die Suche. Klicken Sie auf **Auftrag erstellen**. Mit der Aktion **Auftrag erstellen** wird das zuvor erstellte Automation-Runbook ausgelöst.
 
-   :::image type="content" source="./media/custom-route-alert-portal/create-job.png" alt-text="Auftrag erstellen":::
+   :::image type="content" source="./media/custom-route-alert-portal/create-job.png" alt-text="Hinzufügen eines Automation-Kontos":::
 
 3. Melden Sie sich mithilfe eines Dienstprinzipals an. Dazu können Sie einen vorhandenen Dienstprinzipal verwenden oder einen neuen erstellen. Eine Anleitung zum Erstellen eines neuen Dienstprinzipals finden Sie unter [Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](../active-directory/develop/howto-create-service-principal-portal.md). Klicken Sie auf **Verbindung über Dienstprinzipal herstellen**.
 
-   :::image type="content" source="./media/custom-route-alert-portal/sign-in.png" alt-text="Anmelden":::
+   :::image type="content" source="./media/custom-route-alert-portal/sign-in.png" alt-text="Hinzufügen eines Automation-Kontos":::
 
 4. Geben Sie einen **Verbindungsnamen**, Ihre **Client-ID** (Anwendungs-ID), Ihren **geheimen Clientschlüssel** und Ihre **Mandanten-ID** ein. Wählen Sie anschließend **Erstellen**.
 
-   :::image type="content" source="./media/custom-route-alert-portal/connect-service-principal.png" alt-text="Verbindung über Dienstprinzipal herstellen":::
+   :::image type="content" source="./media/custom-route-alert-portal/connect-service-principal.png" alt-text="Hinzufügen eines Automation-Kontos":::
 
 5. Überprüfen Sie auf der Seite **Auftrag erstellen**, ob der Dienstprinzipal für die **Ressourcengruppe**, die das Automation-Konto hostet, über die Rolle „Leser“ verfügt sowie für das **Automation-Konto** über die Rolle „Automation-Auftragsoperator“. Vergewissern Sie sich zudem, dass Sie **Name des Runbooks** als neuen Parameter hinzugefügt haben.
 
-   :::image type="content" source="./media/custom-route-alert-portal/roles.png" alt-text="Rollen" lightbox="./media/custom-route-alert-portal/roles-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/roles.png" alt-text="Hinzufügen eines Automation-Kontos" lightbox="./media/custom-route-alert-portal/roles-expand.png":::
 
 ### <a name="4-get-the-job-output"></a><a name="output"></a>4. Abrufen der Auftragsausgabe
 
 1. Wählen Sie **Neuer Schritt** aus. Geben Sie im Suchfeld den Suchbegriff „Azure Automation“ ein. Wählen Sie in der Liste **Aktionen** die Aktion **Auftragsausgabe abrufen** aus.
 
-   :::image type="content" source="./media/custom-route-alert-portal/get-output.png" alt-text="Auftragsausgabe abrufen":::
+   :::image type="content" source="./media/custom-route-alert-portal/get-output.png" alt-text="Hinzufügen eines Automation-Kontos":::
 
 2. Geben Sie auf der Seite **Auftragsausgabe abrufen** die erforderlichen Informationen für den Zugriff auf das Automation-Konto an. Wählen Sie unter **Abonnement, Ressourcengruppe** und **Automation-Konto** jeweils die gewünschte Option aus. Klicken Sie in das Feld **Auftrags-ID**. Wählen Sie in der angezeigten Liste **Dynamischer Inhalt** die Option **Auftrags-ID** aus.
 
-   :::image type="content" source="./media/custom-route-alert-portal/job-id.png" alt-text="Auftrags-ID" lightbox="./media/custom-route-alert-portal/job-id-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/job-id.png" alt-text="Hinzufügen eines Automation-Kontos" lightbox="./media/custom-route-alert-portal/job-id-expand.png":::
 
 ### <a name="5-parse-the-json"></a><a name="parse"></a>5. Analysieren des JSON-Elements
 
@@ -339,23 +339,23 @@ Eine Logik-App greift über Connectors auf andere Apps, Dienste und die Plattfor
 1. Fügen Sie eine Aktion hinzu. Klicken Sie unter der Aktion **Auftragsausgabe abrufen** auf **Neuer Schritt**.
 2. Geben Sie im Suchfeld unter **Aktion auswählen** den Suchbegriff „JSON analysieren“ ein, um nach Connectors für diese Aktion zu suchen. Wählen Sie in der Liste **Aktionen** die Aktion **JSON analysieren** für die Datenvorgänge aus, die Sie verwenden möchten.
 
-   :::image type="content" source="./media/custom-route-alert-portal/parse-json.png" alt-text="JSON analysieren":::
+   :::image type="content" source="./media/custom-route-alert-portal/parse-json.png" alt-text="Hinzufügen eines Automation-Kontos":::
 
 3. Klicken Sie in das Feld **Inhalt**. Klicken Sie in der angezeigten Liste „Dynamischer Inhalt“ auf die Option **Inhalt**.
 
-   :::image type="content" source="./media/custom-route-alert-portal/content.png" alt-text="Inhalt" lightbox="./media/custom-route-alert-portal/content-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/content.png" alt-text="Hinzufügen eines Automation-Kontos" lightbox="./media/custom-route-alert-portal/content-expand.png":::
 
 4. Die JSON-Analyse erfordert ein Schema. Sie können das Schema mithilfe der Ausgabe des Automation-Runbooks generieren. Öffnen Sie eine neue Webbrowsersitzung, führen Sie das Automation-Runbook aus, und rufen Sie die Ausgabe ab. Wechseln Sie zurück zur Logic Apps-Aktion **JSON-Datenvorgänge analysieren**. Klicken Sie unten auf der Seite auf **Beispielnutzlast zum Generieren eines Schemas verwenden**.
 
-   :::image type="content" source="./media/custom-route-alert-portal/sample-payload.png" alt-text="Beispielnutzlast zum Generieren eines Schemas verwenden":::
+   :::image type="content" source="./media/custom-route-alert-portal/sample-payload.png" alt-text="Hinzufügen eines Automation-Kontos":::
 
 5. Fügen Sie unter **Geben oder fügen Sie eine JSON-Beispielnutzlast ein** die Ausgabe des Automation-Runbooks ein, und klicken Sie auf **Fertig**.
 
-   :::image type="content" source="./media/custom-route-alert-portal/paste-payload.png" alt-text="Einfügen der Beispielnutzlast" lightbox="./media/custom-route-alert-portal/paste-payload-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/paste-payload.png" alt-text="Hinzufügen eines Automation-Kontos" lightbox="./media/custom-route-alert-portal/paste-payload-expand.png":::
 
 6. Über die Analyse der JSON-Eingabenutzlast wird automatisch ein Schema generiert.
 
-   :::image type="content" source="./media/custom-route-alert-portal/generate-schema.png" alt-text="Generieren eines Schemas" lightbox="./media/custom-route-alert-portal/generate-schema-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/generate-schema.png" alt-text="Hinzufügen eines Automation-Kontos" lightbox="./media/custom-route-alert-portal/generate-schema-expand.png":::
 
 ### <a name="6-define-and-initialize-a-variable"></a><a name="define-variable"></a>6. Definieren und Initialisieren einer Variable
 
@@ -363,15 +363,15 @@ In diesem Schritt des Workflows erstellen Sie eine Bedingung für das Senden ein
 
 1. Klicken Sie unter der Aktion **Auftragsausgabe abrufen** auf **Neuer Schritt**. Suchen Sie über das Suchfeld nach **Variablen**, und wählen Sie die Option aus.
 
-   :::image type="content" source="./media/custom-route-alert-portal/variables.png" alt-text="Variablen":::
+   :::image type="content" source="./media/custom-route-alert-portal/variables.png" alt-text="Hinzufügen eines Automation-Kontos":::
 
 2. Wählen Sie in der Liste **Aktionen** die Aktion **Variable initialisieren** aus.
 
-   :::image type="content" source="./media/custom-route-alert-portal/initialize-variables.png" alt-text="Variablen initialisieren":::
+   :::image type="content" source="./media/custom-route-alert-portal/initialize-variables.png" alt-text="Hinzufügen eines Automation-Kontos":::
 
 3. Geben Sie den Namen der Variable an. Wählen Sie unter **Typ** die Option **Zeichenfolge** aus. Der **Wert** für die Variable wird später im Workflow zugewiesen.
 
-   :::image type="content" source="./media/custom-route-alert-portal/string.png" alt-text="String" lightbox="./media/custom-route-alert-portal/string-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/string.png" alt-text="Hinzufügen eines Automation-Kontos" lightbox="./media/custom-route-alert-portal/string-expand.png":::
 
 ### <a name="7-create-a-for-each-action"></a><a name="cycles-json"></a>7. Erstellen einer ForEach-Aktion
 
@@ -379,51 +379,51 @@ Nach der JSON-Analyse wird der Inhalt der *Text*-Ausgabe durch die Aktion **JSON
 
 1. Klicken Sie unter **Variable initialisieren** auf **Aktion hinzufügen**. Geben Sie im Suchfeld die Zeichenfolge „for each“ als Filter ein.
 
-   :::image type="content" source="./media/custom-route-alert-portal/control.png" alt-text="Steuerung":::
+   :::image type="content" source="./media/custom-route-alert-portal/control.png" alt-text="Hinzufügen eines Automation-Kontos":::
 
 2. Wählen Sie in der Liste **Aktionen** die Aktion **ForEach – Steuerung** aus.
 
-   :::image type="content" source="./media/custom-route-alert-portal/for-each.png" alt-text="ForEach – Steuerung":::
+   :::image type="content" source="./media/custom-route-alert-portal/for-each.png" alt-text="Hinzufügen eines Automation-Kontos":::
 
 3. Klicken Sie in das Textfeld **Ausgabe von vorherigen Schritten auswählen**. Klicken Sie in der angezeigten Liste **Dynamischer Inhalt** auf die Option **Text**, die die Ausgabe des analysierten JSON-Elements darstellt.
 
-   :::image type="content" source="./media/custom-route-alert-portal/body.png" alt-text="Text":::
+   :::image type="content" source="./media/custom-route-alert-portal/body.png" alt-text="Hinzufügen eines Automation-Kontos":::
 
 4. Für jedes Element des JSON-Texts soll eine Bedingung festgelegt werden. Wählen Sie aus der Gruppe der Aktionen die Aktion **Steuerung** aus.
 
-   :::image type="content" source="./media/custom-route-alert-portal/condition-control.png" alt-text="Steuerung":::
+   :::image type="content" source="./media/custom-route-alert-portal/condition-control.png" alt-text="Hinzufügen eines Automation-Kontos":::
 
 5. Wählen Sie in der Liste **Aktionen** die Option **Bedingung – Steuerung** aus. Mit der Kontrollstruktur „Bedingung – Steuerung“ werden die Daten in Ihrem Workflow mit bestimmten Werten oder Feldern verglichen. Sie können nun verschiedene Aktionen angeben, die nur dann ausgeführt werden, wenn die Daten die Bedingung erfüllen.
 
-   :::image type="content" source="./media/custom-route-alert-portal/condition.png" alt-text="Bedingung – Steuerung":::
+   :::image type="content" source="./media/custom-route-alert-portal/condition.png" alt-text="Hinzufügen eines Automation-Kontos":::
 
 6. Ändern Sie im Stammverzeichnis der Aktion **Bedingung** den logischen Operator in **OR**.
 
-   :::image type="content" source="./media/custom-route-alert-portal/condition-or.png" alt-text="Oder" lightbox="./media/custom-route-alert-portal/condition-or-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/condition-or.png" alt-text="Hinzufügen eines Automation-Kontos" lightbox="./media/custom-route-alert-portal/condition-or-expand.png":::
 
 7. Überprüfen Sie den Wert für die Anzahl der Netzwerkpräfixe, die von einem ExpressRoute-Gateway in den beiden BGP-Peers angekündigt werden. Die Anzahl der Routen wird unter **Dynamischer Inhalt** „numRoutePeer1“ und „numRoutePeer2“ angezeigt. Geben Sie im Feld „Wert“ den Wert für **numRoutePeer1** ein.
 
-   :::image type="content" source="./media/custom-route-alert-portal/peer-1.png" alt-text="numRoutesPeer1":::
+   :::image type="content" source="./media/custom-route-alert-portal/peer-1.png" alt-text="Hinzufügen eines Automation-Kontos":::
 
 8. Wenn Sie der Bedingung eine weitere Zeile hinzufügen möchten, klicken Sie auf **Hinzufügen > Zeile hinzufügen**. Klicken Sie unter **Dynamischer Inhalt** für das zweite Feld auf **numRoutePeer2**.
 
-   :::image type="content" source="./media/custom-route-alert-portal/peer-2.png" alt-text="numRoutesPeer2":::
+   :::image type="content" source="./media/custom-route-alert-portal/peer-2.png" alt-text="Hinzufügen eines Automation-Kontos":::
 
 9. Die logische Bedingung ist TRUE, wenn eine der beiden dynamischen Variablen „numRoute1“ oder „numRoute2“ über dem Schwellenwert liegt. In diesem Beispiel ist der Schwellenwert auf 160 festgelegt (was 80 % des Grenzwerts von 200 Routen entspricht). Sie können den Schwellenwert an Ihre Anforderungen anpassen. Aus Gründen der Konsistenz sollte dieser Wert mit dem Wert übereinstimmen, der im PowerShell-Skript des Runbooks verwendet wird.
 
-   :::image type="content" source="./media/custom-route-alert-portal/logic-condition.png" alt-text="Logische Bedingung":::
+   :::image type="content" source="./media/custom-route-alert-portal/logic-condition.png" alt-text="Hinzufügen eines Automation-Kontos":::
 
 10. Unter **Wenn TRUE** können Sie die Aktionen zum Senden der Warnungs-E-Mail formatieren und erstellen. Suchen Sie unter „Aktion auswählen“ nach **Variablen**, und wählen Sie die Option aus.
 
-    :::image type="content" source="./media/custom-route-alert-portal/condition-if-true.png" alt-text="Wenn TRUE":::
+    :::image type="content" source="./media/custom-route-alert-portal/condition-if-true.png" alt-text="Hinzufügen eines Automation-Kontos":::
 
 11. Klicken Sie unter „Variablen“ auf **Aktion hinzufügen**. Wählen Sie in der Liste **Aktionen** die Aktion **Variable festlegen** aus.
 
-    :::image type="content" source="./media/custom-route-alert-portal/condition-set-variable.png" alt-text="Variable festlegen":::
+    :::image type="content" source="./media/custom-route-alert-portal/condition-set-variable.png" alt-text="Hinzufügen eines Automation-Kontos":::
 
 12. Wählen Sie für **Name** die Variable mit dem Namen **EmailBody** aus, die Sie zuvor erstellt haben. Fügen Sie für **Wert** das HTML-Skript ein, das zum Formatieren der Warnungs-E-Mail erforderlich ist. Fügen Sie über **Dynamischer Inhalt** die Werte des JSON-Texts ein. Nachdem Sie diese Einstellungen konfiguriert haben, enthält die Variable **EmailBody** alle Informationen zu der Warnung im HTML-Format.
 
-    :::image type="content" source="./media/custom-route-alert-portal/paste-script.png" alt-text="Variable festlegen":::
+    :::image type="content" source="./media/custom-route-alert-portal/paste-script.png" alt-text="Hinzufügen eines Automation-Kontos":::
 
 ### <a name="8-add-the-email-connector"></a><a name="email"></a>8. Hinzufügen des E-Mail-Connectors
 
@@ -431,29 +431,29 @@ Logic Apps stellt viele E-Mail-Connectors bereit. In diesem Beispiel fügen Sie 
 
 1. Wählen Sie **Office 365 Outlook** aus.
 
-   :::image type="content" source="./media/custom-route-alert-portal/email.png" alt-text="Senden von E-Mails":::
+   :::image type="content" source="./media/custom-route-alert-portal/email.png" alt-text="Hinzufügen eines Automation-Kontos":::
 
 2. Wählen Sie in der Liste **Aktionen** die Option **E-Mail senden (V2)** aus.
 
-   :::image type="content" source="./media/custom-route-alert-portal/email-v2.png" alt-text="E-Mail senden (V2)":::
+   :::image type="content" source="./media/custom-route-alert-portal/email-v2.png" alt-text="Hinzufügen eines Automation-Kontos":::
 
 3. Melden Sie sich an, um eine Verbindung mit Office 365 Outlook herzustellen.
 
-   :::image type="content" source="./media/custom-route-alert-portal/office-365.png" alt-text="Anmelden":::
+   :::image type="content" source="./media/custom-route-alert-portal/office-365.png" alt-text="Hinzufügen eines Automation-Kontos":::
 
 4. Klicken Sie unterhalb des Felds **Text** auf **Dynamischen Inhalt hinzufügen**. Fügen Sie die Variable **EmailBody** aus dem Bereich „Dynamischer Inhalt“ hinzu. Füllen Sie die Felder **Betreff** und **An** aus.
 
-   :::image type="content" source="./media/custom-route-alert-portal/emailbody.png" alt-text="Text":::
+   :::image type="content" source="./media/custom-route-alert-portal/emailbody.png" alt-text="Hinzufügen eines Automation-Kontos":::
 
 5. Mit der Aktion **E-Mail senden (V2)** wird die Einrichtung des Workflows abgeschlossen.
 
-   :::image type="content" source="./media/custom-route-alert-portal/send-email-v2.png" alt-text="E-Mail senden (V2)" lightbox="./media/custom-route-alert-portal/send-email-v2-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/send-email-v2.png" alt-text="Hinzufügen eines Automation-Kontos" lightbox="./media/custom-route-alert-portal/send-email-v2-expand.png":::
 
 ### <a name="9-workflow-validation"></a><a name="validation"></a>9. Überprüfen des Workflows
 
 Der letzte Schritt besteht nun in der Überprüfung des Workflows. Klicken Sie in der **Logic Apps-Übersicht** auf **Trigger ausführen**. Klicken Sie auf **Wiederholung**. Im **Ausführungsverlauf** können Sie den Workflow überwachen und überprüfen.
 
-:::image type="content" source="./media/custom-route-alert-portal/trigger.png" alt-text="Trigger ausführen":::
+:::image type="content" source="./media/custom-route-alert-portal/trigger.png" alt-text="Hinzufügen eines Automation-Kontos":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

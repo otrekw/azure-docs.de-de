@@ -8,18 +8,18 @@ ms.author: rgarcia
 ms.date: 07/31/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 12a15a2d0cd45207b4adefc7315e48c6d642c0f7
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 8b6c3608165ed592cc2f0daf475226c9d35de012
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810168"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358766"
 ---
 # <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices"></a>Tutorial: Sitzungs- und geräteübergreifendes Freigeben von Azure Spatial Anchors
 
 In diesem Tutorial erfahren Sie, wie Sie [Azure Spatial Anchors](../overview.md) verwenden, um im Rahmen einer Sitzung Anker zu erstellen und diese anschließend auf dem gleichen oder auf einem anderen Gerät zu finden. Die gleichen Anker können auch von mehreren Geräten am gleichen Ort und zur selben Zeit gefunden werden.
 
-![Persistenz](./media/persistence.gif)
+![Animation, die mit einem mobilen Gerät erstellte Azure Spatial Anchors zeigt, die im Laufe der Tage mit einem anderen Gerät verwendet werden.](./media/persistence.gif)
 
 Azure Spatial Anchors ist ein plattformübergreifender Entwicklerdienst, mit dem Sie Mixed Reality-Umgebungen mit Objekten erstellen können, die ihre Position im Zeitverlauf geräteübergreifend beibehalten. Nach Abschluss des Vorgangs verfügen Sie über eine App, die auf zwei oder mehr Geräten bereitgestellt werden kann. Von einer Instanz erstellte Azure Spatial Anchors-Bezeichner können für die anderen Instanzen freigegeben werden.
 

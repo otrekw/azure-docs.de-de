@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: 75c3b325b29e6738a61728d53b85464bb61655f8
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 9fddd5cb749b1dfe50505c139ed7900f709b584e
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117786"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706250"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Gewusst wie: Migrieren aus dem Azure Access Control Service
 
@@ -173,7 +173,7 @@ Leider gibt es keinen Dienst, der alle diese Funktionen in gleichwertiger Weise 
 
 #### <a name="migrate-to-azure-active-directory"></a>Migrieren zu Azure Active Directory
 
-Eine überlegenswerte Möglichkeit ist die direkte Integration Ihrer Apps und Dienste in Azure AD. Azure AD ist der cloudbasierte Identitätsanbieter für Geschäfts-, Schul- oder Unikonten von Microsoft. Azure AD ist der Identitätsanbieter für Office 365, Azure und vieles mehr. Er bietet ähnliche Verbundauthentifizierungsfunktionen wie Access Control, unterstützt jedoch nicht alle Access Control-Features. 
+Eine überlegenswerte Möglichkeit ist die direkte Integration Ihrer Apps und Dienste in Azure AD. Azure AD ist der cloudbasierte Identitätsanbieter für Geschäfts-, Schul- oder Unikonten von Microsoft. Azure AD ist der Identitätsanbieter für Microsoft 365, Azure und vieles mehr. Er bietet ähnliche Verbundauthentifizierungsfunktionen wie Access Control, unterstützt jedoch nicht alle Access Control-Features. 
 
 Ein gutes Beispiel ist der Verbund mit Identitätsanbietern aus sozialen Netzwerken wie Facebook, Google und Yahoo. Wenn Ihre Benutzer sich mit dieser Art von Anmeldeinformationen anmelden, ist Azure AD keine geeignete Lösung für Sie. 
 
@@ -316,7 +316,7 @@ Dienstidentitäten in Access Control werden in der Regel zum Implementieren von 
 
 #### <a name="migrate-to-azure-active-directory"></a>Migrieren zu Azure Active Directory
 
-Für diese Art der Authentifizierung wird die Migration zu [Azure Active Directory](https://azure.microsoft.com/develop/identity/signin/) empfohlen. Azure AD ist der cloudbasierte Identitätsanbieter für Geschäfts-, Schul- oder Unikonten von Microsoft. Azure AD ist der Identitätsanbieter für Office 365, Azure und vieles mehr. 
+Für diese Art der Authentifizierung wird die Migration zu [Azure Active Directory](https://azure.microsoft.com/develop/identity/signin/) empfohlen. Azure AD ist der cloudbasierte Identitätsanbieter für Geschäfts-, Schul- oder Unikonten von Microsoft. Azure AD ist der Identitätsanbieter für Microsoft 365, Azure und vieles mehr. 
 
 Azure AD kann jedoch mithilfe der Azure AD-Implementierung der Erteilung der OAuth-Clientanmeldeinformationen auch für die Server-zu-Server-Authentifizierung verwendet werden. Die folgende Tabelle vergleicht die Funktionen von Access Control bei der Server-zu-Server-Authentifizierung mit den in Azure AD verfügbaren Features:
 

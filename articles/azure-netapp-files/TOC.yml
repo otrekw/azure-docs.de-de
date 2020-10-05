@@ -119,6 +119,8 @@
           href: troubleshoot-capacity-pools.md
         - name: Problembehandlung für die regionsübergreifende Replikation
           href: troubleshoot-cross-region-replication.md
+        - name: Problembehandlung für Volumes mit dualem Protokoll
+          href: troubleshoot-dual-protocol-volumes.md
         - name: Problembehandlung für Momentaufnahmenrichtlinien
           href: troubleshoot-snapshot-policies.md
 - name: Verweis

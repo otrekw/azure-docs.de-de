@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie allgemeine Probleme bei der Verwendung von Az
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: a65e5e2b507f45fe51a8f6406edae4d96affe227
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 855e5e5e23371f600a7e73139f2e6da1eebc91d0
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056514"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068828"
 ---
 # <a name="aks-troubleshooting"></a>AKS-Problembehandlung
 
@@ -98,6 +98,10 @@ Der Grund für die Warnungen ist, dass für den Cluster RBAC aktiviert und der Z
 
 Stellen Sie sicher, dass die Ports 22, 9000 und 1194 für die Verbindung mit dem API-Server offen sind. Überprüfen Sie mit dem `kubectl get pods --namespace kube-system`-Befehl, ob der `tunnelfront`- oder `aks-link`-Pod im *kube-system*-Namespace ausgeführt wird. Falls nicht, erzwingen Sie das Löschen des Pods. Er wird anschließend neu gestartet.
 
+## <a name="im-getting-tls-client-offered-only-unsupported-versions-from-my-client-when-connecting-to-aks-api-what-should-i-do"></a>Beim Herstellen einer Verbindung mit der AKS-API erhalte ich von meinem Client die Meldung `"tls: client offered only unsupported versions"`.   Wie sollte ich vorgehen?
+
+Die unterstützte TLS-Mindestversion in AKS ist TLS 1.2.
+
 ## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-changing-property-imagereference-is-not-allowed-error-how-do-i-fix-this-problem"></a>Ich möchte ein Upgrade oder eine Skalierung ausführen und erhalte eine Fehlermeldung `"Changing property 'imageReference' is not allowed"`. Wie kann ich dieses Problem beheben?
 
 Möglicherweise erhalten Sie diese Fehlermeldung, da Sie die Tags in den Agent-Knoten innerhalb des AKS-Clusters geändert haben. Das Ändern oder Löschen von Tags und anderen Eigenschaften von Ressourcen in der Ressourcengruppe MC_* kann zu unerwarteten Ergebnissen führen. Durch das Ändern der Ressourcen unter der Gruppe „MC_*“ im AKS-Cluster wird das Servicelevelziel (SLO) unterbrochen.
@@ -176,9 +180,9 @@ Verwenden Sie in diesem Fall folgende Problemumgehungen:
 * Bei Verwendung von Automatisierungsskripts fügen Sie Zeitverzögerungen zwischen der Erstellung des Dienstprinzipals und der Erstellung des AKS-Clusters ein.
 * Wenn Sie das Azure-Portal verwenden, kehren Sie während der Erstellung zu den Clustereinstellungen zurück, und wiederholen Sie die Überprüfung nach einigen Minuten.
 
+## <a name="im-getting-aadsts7000215-invalid-client-secret-is-provided-when-using-aks-api-what-should-i-do"></a>Ich erhalte bei Verwendung der AKS-API die Meldung `"AADSTS7000215: Invalid client secret is provided."`.   Wie sollte ich vorgehen?
 
-
-
+Die Ursache ist in der Regel, dass die Anmeldeinformationen für den Dienstprinzipal abgelaufen sind. [Aktualisieren Sie die Anmeldeinformationen für einen AKS-Cluster.](update-credentials.md)
 
 ## <a name="im-receiving-errors-after-restricting-egress-traffic"></a>Ich erhalte Fehlermeldungen, nachdem mein ausgehender Datenverkehr eingeschränkt wurde.
 
@@ -446,3 +450,15 @@ In Kubernetes-Versionen **vor 1.15.0** erhalten Sie möglicherweise eine Fehlerm
 <!-- LINKS - internal -->
 [view-master-logs]: view-master-logs.md
 [cluster-autoscaler]: cluster-autoscaler.md
+
+### <a name="why-do-upgrades-to-kubernetes-116-fail-when-using-node-labels-with-a-kubernetesio-prefix"></a>Warum tritt bei Upgrades auf Kubernetes 1.16 ein Fehler auf, wenn Knotenbezeichnungen mit dem Präfix „kubernetes.io“verwendet werden?
+
+Ab Kubernetes [1.16](https://v1-16.docs.kubernetes.io/docs/setup/release/notes/) kann das Kubelet [nur eine definierte Teilmenge von Bezeichnungen mit dem Präfix „kubernetes.io“](https://github.com/kubernetes/enhancements/blob/master/keps/sig-auth/0000-20170814-bounding-self-labeling-kubelets.md#proposal) auf Knoten anwenden. AKS kann ohne Ihre Zustimmung keine aktiven Bezeichnungen in Ihrem Auftrag entfernen, da dies Ausfallzeiten für betroffene Workloads verursachen kann.
+
+Daher können Sie zum Vermeiden dieses Problems eine der folgenden Maßnahmen durchführen:
+
+1. Aktualisieren der Clustersteuerungsebene auf Version 1.16 oder höher
+2. Hinzufügen eines neuen Knotenpools in Version 1.16 oder höher ohne die nicht unterstützte Bezeichnung „kubernetes.io“
+3. Löschen des älteren Knotenpools
+
+Es wird untersucht, ob aktive Bezeichnungen in einem Knotenpool mutiert werden können, um das Problem zu mindern.

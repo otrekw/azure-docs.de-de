@@ -10,14 +10,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/24/2020
-ms.openlocfilehash: 37bf610d1ecc6a05e8dd142ff3d72dd9ed72e51f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 407183837f7be01f5182ff0890426170da223161
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087763"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91363170"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>Tutorial: Onlinemigration von Oracle zu Azure Database for PostgreSQL mit DMS (Vorschauversion)
 
@@ -214,11 +214,11 @@ Falls Sie mithilfe von Tools wie ora2pg ein PostgreSQL-Schema erstellen, bevor S
 
 1. Wenn Sie ein neues Projekt für die Migration von Oracle zu Azure Database for PostgreSQL erstellen, werden Sie im Schritt „Schemas auswählen“ zum Auswählen von Zieldatenbank und Zielschema aufgefordert. Geben Sie die Zieldatenbank und das Zielschema an.
 
-   ![Abonnements im Portal anzeigen](media/tutorial-oracle-azure-postgresql-online/dms-map-to-target-databases.png)
+   ![Screenshot, der „Den Zieldatenbanken zuordnen“ zeigt.](media/tutorial-oracle-azure-postgresql-online/dms-map-to-target-databases.png)
 
 2. Im Bildschirm **Migrationseinstellungen** wird eine Liste mit Tabellen in der Oracle-Quelle angezeigt. Von Azure Database Migration Service wird versucht, Quell- und Zieltabellen anhand des Tabellennamens abzugleichen. Sind mehrere übereinstimmende Zieltabellen mit unterschiedlicher Groß-/Kleinschreibung vorhanden, können Sie die zuzuordnende Zieltabelle auswählen.
 
-    ![Abonnements im Portal anzeigen](media/tutorial-oracle-azure-postgresql-online/dms-migration-settings.png)
+    ![Screenshot, der „Migrationseinstellungen“ zeigt.](media/tutorial-oracle-azure-postgresql-online/dms-migration-settings.png)
 
 > [!NOTE]
 > Falls Sie Quelltabellennamen Tabellen mit abweichenden Namen zuordnen müssen, wenden Sie sich per E-Mail an [dmsfeedback@microsoft.com](mailto:dmsfeedbac@microsoft.com), um ein Automatisierungsskript für diesen Prozess zu erhalten.

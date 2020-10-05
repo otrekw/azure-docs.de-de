@@ -1,5 +1,5 @@
 ---
-title: Erstellen und Abfragen eines Synapse-SQL-Pools (Azure-Portal)
+title: 'Schnellstart: Erstellen und Abfragen eines Synapse-SQL-Pools (Azure-Portal)'
 description: Erstellen und Abfragen eines Synapse-SQL-Pools mit dem Azure-Portal
 services: synapse-analytics
 author: kevinvngo
@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: Kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 4972e843394cac3b4a4f7c08a27f9d1a9e19cee5
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 878b272e2a1a0e1d5a00a9c2028a6803b6d95383
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459384"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568959"
 ---
 # <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>Schnellstart: Erstellen und Abfragen eines Synapse-SQL-Pools mit dem Azure-Portal
 
@@ -78,7 +78,7 @@ Führen Sie diese Schritte aus, um einen SQL-Pool mit den **AdventureWorksDW**-B
 
 7. Wählen Sie in der Symbolleiste die Option **Benachrichtigungen** aus, um den Bereitstellungsprozess zu überwachen.
 
-   ![Benachrichtigung](./media/create-data-warehouse-portal/notification.png)
+   ![Screenshot, in dem Benachrichtigungen für „Bereitstellung wird durchgeführt“ gezeigt sind](./media/create-data-warehouse-portal/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>Erstellen einer Firewallregel auf Serverebene
 

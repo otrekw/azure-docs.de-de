@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0019f7d8195dc39127b992a31ebd8c33e55452f6
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 9d5ffaf996f51348334f4adeeae150db9eb0defa
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179350"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052663"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-multi-factor-authentication"></a>Optimieren von Aufforderungen für die erneute Authentifizierung und Grundlegendes zur Sitzungslebensdauer für Azure Multi-Factor Authentication
 
@@ -36,7 +36,7 @@ Damit Sie Ihren Benutzern die richtige Balance zwischen Sicherheit und Benutzerf
     * Aktivieren Sie das einmalige Anmelden (Single Sign-on, SSO) über mehrere Anwendungen hinweg mithilfe von [verwalteten Geräten](../devices/overview.md) oder [nahtlosem einmaligem Anmelden](../hybrid/how-to-connect-sso.md).
     * Wenn eine erneute Authentifizierung erforderlich ist, verwenden Sie eine Richtlinie für bedingten Zugriff für die [Anmeldehäufigkeit](../conditional-access/howto-conditional-access-session-lifetime.md).
     * Verwenden Sie für Benutzer, die sich über nicht verwaltete oder mobile Geräte anmelden, den bedingten Zugriff, um persistente Browsersitzungen und Richtlinien für die Anmeldehäufigkeit zu aktivieren.
-* Wenn Sie über Lizenzen für Office 365-Apps oder den kostenlosen Azure AD-Tarif verfügen:
+* Wenn Sie über Lizenzen für Microsoft 365-Apps oder den kostenlosen Azure AD-Tarif verfügen:
     * Aktivieren Sie das einmalige Anmelden (Single Sign-on, SSO) über mehrere Anwendungen hinweg mithilfe von [verwalteten Geräten](../devices/overview.md) oder [nahtlosem einmaligem Anmelden](../hybrid/how-to-connect-sso.md).
     * Lassen Sie die Option *Remain signed-in* (Angemeldet bleiben) aktiviert, und weisen Sie Ihre Benutzer an, sie zu akzeptieren.
 * Stellen Sie in Szenarien mit mobilen Geräten sicher, dass Ihre Benutzer die Microsoft Authenticator-App verwenden. Diese App wird als Broker für andere Azure AD-Verbund-Apps verwendet und reduziert die Authentifizierungsaufforderungen auf dem Gerät.
@@ -123,13 +123,13 @@ Führen Sie die folgenden Schritte aus, um Richtlinien für bedingten Zugriff f�
 
 Zum Überprüfen der Tokengültigkeitsdauer [verwenden Sie Azure AD PowerShell, um Azure AD-Richtlinien abzufragen](../develop/active-directory-configurable-token-lifetimes.md#prerequisites). Deaktivieren Sie alle Richtlinien, die Sie eingerichtet haben.
 
-Wenn mehr als eine Einstellung in Ihrem Mandanten aktiviert ist, empfehlen wir Ihnen, die Einstellungen ausgehend von der für Sie verfügbaren Lizenzierung zu aktualisieren. Wenn Sie beispielsweise über Azure AD Premium-Lizenzen verfügen, sollten Sie nur die Richtlinie für bedingten Zugriff für die *Anmeldehäufigkeit* und die *persistente Browsersitzung* verwenden. Wenn Sie über Office 365-Apps oder Azure AD Free-Lizenzen verfügen, verwenden Sie die Konfiguration *Remain signed-in?* (Angemeldet bleiben?).
+Wenn mehr als eine Einstellung in Ihrem Mandanten aktiviert ist, empfehlen wir Ihnen, die Einstellungen ausgehend von der für Sie verfügbaren Lizenzierung zu aktualisieren. Wenn Sie beispielsweise über Azure AD Premium-Lizenzen verfügen, sollten Sie nur die Richtlinie für bedingten Zugriff für die *Anmeldehäufigkeit* und die *persistente Browsersitzung* verwenden. Wenn Sie über Microsoft 365-Apps oder Azure AD Free-Lizenzen verfügen, verwenden Sie die Konfiguration *Remain signed-in?* (Angemeldet bleiben?).
 
 Wenn Sie konfigurierbare Tokengültigkeitsdauern aktiviert haben, wird diese Funktion bald entfernt. Planen Sie eine Migration zu einer Richtlinie für bedingten Zugriff.
 
 In der folgenden Tabelle werden die Empfehlungen auf Grundlage von Lizenzen zusammengefasst:
 
-|              | Azure AD Free- und Office 365-Apps | Azure AD Premium |
+|              | Azure AD Free und Microsoft 365-Apps | Azure AD Premium |
 |------------------------------|-----------------------------------|------------------|
 | **SSO**                      | [Azure AD Join](../devices/concept-azure-ad-join.md), [Azure AD Hybrid Join](../devices/concept-azure-ad-join-hybrid.md) oder [Nahtlose einmalige Anmeldung](../hybrid/how-to-connect-sso.md) für nicht verwaltete Geräte | Azure AD-Einbindung<br />Azure AD-Hybrideinbindung |
 | **Einstellungen für die erneute Authentifizierung** | Angemeldet bleiben                  | Verwenden Sie Richtlinien für bedingten Zugriff für die Anmeldehäufigkeit und eine persistente Browsersitzung. |

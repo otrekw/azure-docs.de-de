@@ -2,13 +2,13 @@
 title: Verknüpfen von Vorlagen für die Bereitstellung
 description: Beschreibt, wie verknüpfte Vorlagen in einer Azure-Ressourcen-Manager-Vorlage zum Erstellen einer modularen Vorlagenprojektmappe verwendet werden. Zeigt, wie Parameterwerte übergeben, eine Parameterdatei festgelegt und URLs dynamisch erstellt werden.
 ms.topic: conceptual
-ms.date: 07/21/2020
-ms.openlocfilehash: 40da2443828a07f2171922fcc6d8976d464d0ad4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/08/2020
+ms.openlocfilehash: f1fe07faeaddae3367fb1f8b4a37f7b0630b6e83
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086811"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89535557"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Verwenden von verknüpften und geschachtelten Vorlagen bei der Bereitstellung von Azure-Ressourcen
 
@@ -19,7 +19,9 @@ Bei kleinen bis mittelgroßen Lösungen lässt sich eine Einzelvorlage einfacher
 Ein entsprechendes Tutorial finden Sie unter [Tutorial: Erstellen verknüpfter Azure Resource Manager-Vorlagen](./deployment-tutorial-linked-template.md).
 
 > [!NOTE]
-> Für verknüpfte oder geschachtelte Vorlagen können Sie nur den Bereitstellungsmodus [Inkrementell](deployment-modes.md) verwenden.
+> Für verknüpfte oder geschachtelte Vorlagen können Sie den Bereitstellungsmodus nur auf [Inkrementell](deployment-modes.md) festlegen. Die Hauptvorlage kann jedoch im vollständigen Modus bereitgestellt werden. Wenn Sie die Hauptvorlage im vollständigen Modus bereitstellen und die verknüpfte oder geschachtelte Vorlage auf dieselbe Ressourcengruppe ausgerichtet ist, werden die in der verknüpften oder geschachtelten Vorlage bereitgestellten Ressourcen in die Auswertung für die Bereitstellung im vollständigen Modus aufgenommen. Die kombinierte Sammlung der in der Hauptvorlage und den verknüpften oder geschachtelten Vorlagen bereitgestellten Ressourcen wird mit den vorhandenen Ressourcen in der Ressourcengruppe verglichen. Alle Ressourcen, die nicht in dieser kombinierten Sammlung enthalten sind, werden gelöscht.
+>
+> Wenn die verknüpfte oder geschachtelte Vorlage auf eine andere Ressourcengruppe ausgerichtet ist, wird in dieser Bereitstellung der inkrementelle Modus verwendet.
 >
 
 ## <a name="nested-template"></a>Geschachtelte Vorlage
@@ -316,11 +318,6 @@ Beim Verweisen auf eine verknüpfte Vorlage darf der Wert von `uri` keine lokale
 
 Der Resource Manager muss auf die Vorlage zugreifen können. Eine Option besteht darin, die verknüpfte Vorlage in einem Speicherkonto zu platzieren und den URI für dieses Element zu verwenden.
 
-[Vorlagenspezifikationen](./template-specs.md) (zurzeit in der privaten Vorschau) ermöglichen es Ihnen, ARM-Vorlagen mit anderen Benutzern in Ihrer Organisation gemeinsam zu nutzen. Vorlagenspezifikationen können auch zum Verpacken einer Hauptvorlage und der mit ihr verknüpften Vorlagen verwendet werden. Weitere Informationen finden Sie unter
-
-- [Tutorial: Erstellen einer Vorlagenspezifikation mit verknüpften Vorlagen](./template-specs-create-linked.md).
-- [Tutorial: Bereitstellen einer Vorlagenspezifikation als verknüpfte Vorlage](./template-specs-deploy-linked-template.md).
-
 ### <a name="parameters-for-linked-template"></a>Parameter für eine verknüpfte Vorlage
 
 Sie können die Parameter für die verknüpfte Vorlage in einer externen Datei oder inline bereitstellen. Verenden Sie zum Bereitstellen einer externen Parameterdatei die **parametersLink**-Eigenschaft:
@@ -369,6 +366,15 @@ Um Parameterwerte inline zu übergeben, verwenden Sie die **parameters**-Eigensc
 ```
 
 Sie können nicht sowohl Inlineparameter als auch einen Link auf eine Parameterdatei verwenden. Bei der Bereitstellung tritt ein Fehler auf, wenn sowohl `parametersLink` als auch `parameters` angegeben sind.
+
+## <a name="template-specs"></a>Vorlagenspezifikationen
+
+Anstatt die verknüpften Vorlagen an einem zugänglichen Endpunkt zu verwalten, können Sie eine [Vorlagenspezifikation](template-specs.md) erstellen, die die Hauptvorlage und die verknüpften Vorlagen in eine einzelne Entität verpackt, die Sie bereitstellen können. Bei der Vorlagenspezifikation handelt es sich um eine Ressource im Azure-Abonnement. Sie vereinfacht die sichere Freigabe der Vorlage für Benutzer in Ihrer Organisation. Mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) können Sie Zugriff auf die Vorlagenspezifikation gewähren. Diese Funktion steht derzeit als Vorschau zur Verfügung.
+
+Weitere Informationen finden Sie unter
+
+- [Tutorial: Erstellen einer Vorlagenspezifikation mit verknüpften Vorlagen](./template-specs-create-linked.md).
+- [Tutorial: Bereitstellen einer Vorlagenspezifikation als verknüpfte Vorlage](./template-specs-deploy-linked-template.md).
 
 ## <a name="contentversion"></a>contentVersion
 
@@ -723,6 +729,9 @@ Obwohl die verknüpfte Vorlage extern verfügbar sein muss, muss sie nicht allge
 Für die Parameterdatei kann auch die Einschränkung gelten, dass der Zugriff nur mithilfe eines SAS-Tokens möglich ist.
 
 Derzeit ist es nicht möglich, eine Verknüpfung mit einer Vorlage in einem Speicherkonto zu erstellen, das sich hinter einer [Azure Storage-Firewall](../../storage/common/storage-network-security.md) befindet.
+
+> [!IMPORTANT]
+> Anstatt die verknüpfte Vorlage mit einem SAS-Token zu sichern, können Sie eine [Vorlagenspezifikationen](template-specs.md) erstellen. In der Vorlagenspezifikation werden die Hauptvorlage und die verknüpften Vorlagen auf sichere Weise als Ressource im Azure-Abonnement gespeichert. Mit RBAC können Sie Benutzern Zugriff gewähren, die die Vorlage bereitstellen müssen.
 
 Im folgenden Beispiel wird veranschaulicht, wie ein SAS-Token beim Verknüpfen mit einer Vorlage übergeben wird:
 

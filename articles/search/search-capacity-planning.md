@@ -7,32 +7,48 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/30/2020
-ms.openlocfilehash: 476af7dd40cd1f31d03f3bd80affac0ce10ef900
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/08/2020
+ms.openlocfilehash: 76084a9ddd6842194bb4c6b25d62e62c2ed2d4a8
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927203"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660302"
 ---
-# <a name="adjust-capacity-in-azure-cognitive-search"></a>Anpassen der Kapazität in Azure Cognitive Search
+# <a name="adjust-the-capacity-of-an-azure-cognitive-search-service"></a>Anpassen der Kapazität eines Azure Cognitive Search-Diensts
 
-Nehmen Sie sich vor dem [Bereitstellen eines Suchdiensts](search-create-service-portal.md) und dem Einschließen einer bestimmten Preisstufe ein paar Minuten Zeit, um sich mit den Rollen von Replikaten und Partitionen in einem Dienst vertraut zu machen und zu verstehen, wie Sie einen Dienst anpassen können, um Spitzen und Einbrüche in der Ressourcennachfrage auszugleichen.
+Nehmen Sie sich einige Minuten Zeit, bevor Sie [einen Suchdienst bereitstellen](search-create-service-portal.md) und einen bestimmten Tarif festlegen, um zu verstehen, wie die Kapazität funktioniert und wie Sie Replikate und Partitionen an Schwankungen der Workload anpassen können.
 
-Die Kapazität ist vom [ausgewählten Tarif](search-sku-tier.md) (Tarife bestimmen die Hardwareeigenschaften) und der für geplante Workloads erforderlichen Kombination aus Replikat und Partition abhängig. Je nach Tarif und Umfang der Anpassung kann das Hinzufügen oder Reduzieren von Kapazität zwischen 15 Minuten und mehreren Stunden dauern. 
+Die Kapazität ist vom [ausgewählten Tarif](search-sku-tier.md) (Tarife bestimmen die Hardwareeigenschaften) und der für geplante Workloads erforderlichen Kombination aus Replikat und Partition abhängig. Sie können die Anzahl der Replikate oder Partitionen einzeln erhöhen oder verringern. Je nach Tarif und Umfang der Anpassung kann das Hinzufügen oder Reduzieren von Kapazität zwischen 15 Minuten und mehreren Stunden dauern.
 
 Wir empfehlen, die Replikat- und Partitionszuordnung über das Azure-Portal zu ändern. Das Portal erzwingt Grenzwerte für zulässige Kombinationen, damit die Obergrenzen eines Tarifs nicht überschritten werden. Wenn die Bereitstellung jedoch skript- oder codebasiert erfolgen soll, sind die [Azure PowerShell](/rest/api/searchmanagement/services) oder die [Verwaltungs-REST-API](search-manage-powershell.md) alternative Lösungen.
 
-## <a name="terminology-replicas-and-partitions"></a>Terminologie: Replikate und Partitionen
+## <a name="concepts-search-units-replicas-partitions-shards"></a>Konzepte: Sucheinheiten, Replikate, Partitionen, Shards
 
-|||
-|-|-|
-|*Partitionen* | Partitionen stellen Indexspeicher und E/A für Lese-/Schreibvorgänge (beispielsweise bei der Neuerstellung oder Aktualisierung eines Index) bereit. Jede Partition hat einen Anteil am Gesamtindex. Wenn Sie drei Partitionen zuordnen, wird Ihr Index in Drittel aufgeteilt. |
-|*Replikate* | Replikate sind Instanzen des Suchdiensts und dienen in erster Linie zum Lastenausgleich bei Abfragevorgängen. Jedes Replikat ist eine Kopie eines Indexes. Wenn Sie drei Replikate zuordnen, stehen Ihnen drei Kopien eines Indexes für die Bearbeitung von Abfrageanforderungen zur Verfügung.|
+Die Kapazität wird in *Sucheinheiten* ausgedrückt, die in Kombinationen von *Partitionen* und *Replikaten* unter Verwendung eines zugrunde liegenden *Sharding*-Mechanismus zur Unterstützung flexibler Konfigurationen zugewiesen werden können:
+
+| Konzept  | Definition|
+|----------|-----------|
+|*Sucheinheit* | Eine einzelnes Inkrement der verfügbaren Gesamtkapazität (36 Einheiten). Es ist auch die Abrechnungseinheit für einen Azure Cognitive Search-Dienst. Zum Ausführen des Diensts ist mindestens eine Einheit erforderlich.|
+|*Replikat* | Replikate sind Instanzen des Suchdiensts und dienen in erster Linie zum Lastenausgleich bei Abfragevorgängen. Jedes Replikat hostet eine Kopie eines Indexes. Wenn Sie drei Replikate zuordnen, stehen Ihnen drei Kopien eines Indexes für die Bearbeitung von Abfrageanforderungen zur Verfügung.|
+|*Partition* | Physischer Speicher und E/A für Lese-/Schreibvorgänge (z. B. bei der Neuerstellung oder Aktualisierung eines Index). Jede Partition hat einen Anteil am Gesamtindex. Wenn Sie drei Partitionen zuordnen, wird Ihr Index in Drittel aufgeteilt. |
+|*Shard* | Ein Block eines Indexes. Azure Cognitive Search unterteilt jeden Index in Shards, um das Hinzufügen von Partitionen zu beschleunigen (durch Verschieben der Shards in neue Sucheinheiten).|
+
+Das folgende Diagramm zeigt die Beziehung zwischen Replikaten, Partitionen, Shards und Sucheinheiten. Es zeigt ein Beispiel dafür, wie ein einzelner Index in einem Dienst mit zwei Replikaten und zwei Partitionen über vier Sucheinheiten verteilt ist. Jede der vier Sucheinheiten speichert nur die Hälfte der Shards des Indexes. Die Sucheinheiten in der linken Spalte speichern die erste Hälfte der Shards, bestehend aus der ersten Partition, während die in der rechten Spalte die zweite Hälfte der Shards, bestehend aus der zweiten Partition, speichern. Da es zwei Replikate gibt, sind zwei Kopien der einzelnen Indexshards vorhanden. Die Sucheinheiten in der oberen Zeile speichern eine aus dem ersten Replikat bestehende Kopie, während die Sucheinheiten in der unteren Zeile eine aus dem zweiten Replikat bestehende weitere Kopie speichern.
+
+:::image type="content" source="media/search-capacity-planning/shards.png" alt-text="Für Suchindizes erfolgt das Sharding partitionsübergreifend.":::
+
+Das obige Diagramm ist nur ein Beispiel. Es sind viele Kombinationen von Partitionen und Replikaten möglich, bis zu einer Gesamtzahl von maximal 36 Sucheinheiten.
+
+In Cognitive Search ist die Shardverwaltung ein Implementierungsdetail und nicht konfigurierbar. Aber das Wissen, dass das Sharding für einen Index ausgeführt wird, hilft dabei, die gelegentlichen Anomalien bei der Erstellung der Rangfolge und beim Verhalten von AutoVervollständigen zu verstehen:
+
++ Anomalien beim Erstellen der Rangfolge: Suchbewertungen werden zunächst auf der Shard-Ebene berechnet und dann zu einem einzelnen Resultset aggregiert. Abhängig von den Merkmalen des Shardinhalts können Übereinstimmungen aus einem Shard höher eingestuft werden als Übereinstimmungen in einem anderen Shard. Wenn Sie nicht intuitive Rangfolgen in den Suchergebnissen bemerken, ist dies höchstwahrscheinlich auf die Auswirkungen des Shardings zurückzuführen, insbesondere wenn die Indizes klein sind. Sie können diese Anomalien in der Rangfolge vermeiden, indem Sie die Option zum [globalen Berechnen von Bewertungen über den gesamten Index](index-similarity-and-scoring.md#scoring-statistics-and-sticky-sessions) auswählen. Dies ist jedoch mit Leistungseinbußen verbunden.
+
++ Anomalien beim AutoVervollständigen: AutoVervollständigen-Abfragen, bei denen Vergleiche anhand der ersten paar Zeichen eines teilweise eingegebenen Begriffs vorgenommen werden, akzeptieren einen Fuzzyparameter, der kleine Abweichungen in der Rechtschreibung verzeiht. Bei AutoVervollständigen ist die Fuzzyübereinstimmung auf Begriffe innerhalb des aktuellen Shards beschränkt. Wenn z. B. ein Shard „Microsoft“ enthält und ein Teilbegriff von „micor“ eingegeben wird, findet die Suchmaschine in diesem Shard eine Übereinstimmung mit „Microsoft“, aber nicht in anderen Shards, die die restlichen Teile des Indexes enthalten.
 
 ## <a name="when-to-add-nodes"></a>Zeitpunkt zum Hinzufügen von Knoten
 
-Zunächst wird einem Dienst eine Mindestmenge von Ressourcen (bestehend aus einer Partition und einem Replikat) zugeordnet. 
+Zunächst wird einem Dienst eine Mindestmenge von Ressourcen (bestehend aus einer Partition und einem Replikat) zugeordnet.
 
 Ein einzelner Dienst muss über genügend Ressourcen verfügen, um sämtliche Workloads (Indizierung und Abfragen) bewältigen zu können. Beide Workloads laufen nicht im Hintergrund. Sie können die Indizierung für Zeiten planen, in denen Abfrageanforderungen naturgemäß weniger häufig sind, aber der Dienst priorisiert ansonsten keine Aufgabe gegenüber einer anderen. Zusätzlich gleicht ein gewisses Maß an Redundanz die Abfrageleistung aus, wenn Dienste oder Knoten intern aktualisiert werden.
 
@@ -59,7 +75,7 @@ Allgemein gilt: Suchanwendungen benötigen in der Regel mehr Replikate als Parti
 
    ![Hinzufügen von Replikaten und Partitionen](media/search-capacity-planning/2-add-2-each.png "Hinzufügen von Replikaten und Partitionen")
 
-1. Klicken Sie auf **Speichern**, um die Änderungen zu bestätigen.
+1. Wählen Sie **Speichern** aus, um die Änderungen zu bestätigen.
 
    ![Bestätigen von Änderungen an Skalierung und Abrechnung](media/search-capacity-planning/3-save-confirm.png "Bestätigen von Änderungen an Skalierung und Abrechnung")
 

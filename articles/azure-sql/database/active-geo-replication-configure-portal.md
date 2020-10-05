@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: high-availability
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 1beb2065f1823135981545e42d499c5429b87c0f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 5ddc79721355924f125acedd7420cab5f487c065
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84031611"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445047"
 ---
 # <a name="tutorial-configure-active-geo-replication-and-failover-in-the-azure-portal-azure-sql-database"></a>Tutorial: Konfigurieren der aktiven Georeplikation und des Failovers im Azure-Portal (Azure SQL-Datenbank)
 
@@ -55,12 +55,12 @@ Nachdem die sekundäre Datenbank erstellt und das Seeding ausgeführt wurde, beg
     ![Konfigurieren der Georeplikation](./media/active-geo-replication-configure-portal/configure-geo-replication.png)
 3. Wählen Sie den Server und den Tarif für die sekundäre Datenbank aus bzw. konfigurieren Sie Server und Tarif.
 
-    ![Konfigurieren der sekundären Datenbank](./media/active-geo-replication-configure-portal/create-secondary.png)
+    ![Dialogfeld „Sekundäre Datenbank erstellen“](./media/active-geo-replication-configure-portal/create-secondary.png)
 4. Optional können Sie einem Pool für elastische Datenbanken eine sekundäre Datenbank hinzufügen. Um die sekundäre Datenbank in einem Pool zu erstellen, klicken Sie auf **Pool für elastische Datenbanken**, und wählen Sie einen Pool auf dem Zielserver aus. Ein Pool muss bereits auf dem Zielserver vorhanden sein. Dieser Workflow erstellt keinen Pool.
 5. Klicken Sie auf **Erstellen** , um die sekundäre Datenbank hinzuzufügen.
 6. Die sekundäre Datenbank wird erstellt, und der Seedingprozess beginnt.
 
-    ![Konfigurieren der sekundären Datenbank](./media/active-geo-replication-configure-portal/seeding0.png)
+    ![Karte mit sekundären Datenbanken](./media/active-geo-replication-configure-portal/seeding0.png)
 7. Nach Abschluss des Seedingprozesses wird der Status für die zweite Datenbank angezeigt.
 
     ![Seeding abgeschlossen](./media/active-geo-replication-configure-portal/seeding-complete.png)

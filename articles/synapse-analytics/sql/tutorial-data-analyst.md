@@ -1,6 +1,6 @@
 ---
-title: Analysieren von Azure Open Datasets in Azure Synapse Studio (Vorschauversion) mithilfe von SQL On-Demand (Vorschauversion)
-description: In diesem Tutorial erfahren Sie, wie Sie ganz einfach eine explorative Datenanalyse durchführen. Dabei werden mithilfe von SQL On-Demand (Vorschauversion) verschiedene Azure Open Datasets miteinander kombiniert und die Ergebnisse in Azure Synapse Studio visualisiert.
+title: 'Tutorial: Analysieren von Azure Open Datasets in Azure Synapse Studio (Vorschauversion) mithilfe von SQL On-Demand (Vorschauversion)'
+description: In diesem Tutorial wird gezeigt, wie Sie ganz einfach eine explorative Datenanalyse durchführen. Dabei werden mithilfe von SQL On-Demand (Vorschauversion) verschiedene Azure Open Datasets miteinander kombiniert und die Ergebnisse in Azure Synapse Studio visualisiert.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -8,15 +8,15 @@ ms.topic: tutorial
 ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 2fc98e927fcf9686f0f39dae600f944b485c5a06
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.reviewer: jrasnick
+ms.openlocfilehash: 0471bd594dcf1b0654d6b4c496e5d39ade2739fd
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089140"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539519"
 ---
-# <a name="use-sql-on-demand-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio"></a>Analysieren von Azure Open Datasets und Visualisieren der Ergebnisse in Azure Synapse Studio mithilfe von SQL On-Demand
+# <a name="tutorial-use-sql-on-demand-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio"></a>Tutorial: Analysieren von Azure Open Datasets und Visualisieren der Ergebnisse in Azure Synapse Studio mithilfe von SQL On-Demand
 
 In diesem Tutorial erfahren Sie, wie Sie eine explorative Datenanalyse durchführen, indem Sie mithilfe von SQL On-Demand verschiedene Azure Open Datasets miteinander kombinieren und die Ergebnisse anschließend in Azure Synapse Studio visualisieren.
 
@@ -135,7 +135,7 @@ Auch diese Daten können ganz einfach in einem **Säulendiagramm** visualisiert 
 
 ![Säulendiagramm mit täglicher Anzahl von Fahrten im Jahr 2016](./media/tutorial-data-analyst/7.png)
 
-Das Diagramm zeigt ein wöchentliches Muster mit jeweils einer Spitze am Samstag. In den Sommermonaten werden urlaubsbedingt weniger Taxifahrten durchgeführt. Es gibt allerdings auch einige signifikante Einbrüche bei der Anzahl von Taxifahrten, ohne dass ein klares Muster für den Zeitpunkt und den Grund dieser Rückgänge erkennbar wäre.
+Im ausgegebenen Diagramm ist zu sehen, dass es ein wöchentliches Muster gibt, wobei der jeweilige Samstag der Spitzentag ist. In den Sommermonaten werden urlaubsbedingt weniger Taxifahrten durchgeführt. Sie können außerdem einige signifikante Einbrüche bei der Anzahl von Taxifahrten sehen, ohne dass ein klares Muster für den Zeitpunkt und den Grund dieser Rückgänge erkennbar wäre.
 
 Daher untersuchen wir als Nächstes, ob diese Einbrüche mit gesetzlichen Feiertagen zusammenhängen, indem wir das Dataset der NYC-Taxifahrten mit dem Dataset der gesetzlichen Feiertage verknüpfen:
 

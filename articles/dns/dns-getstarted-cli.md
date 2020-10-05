@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 3/11/2019
 ms.author: rohink
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a15209351f95e44c7cf10993513e03ba35b53d27
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a08a3bb8e01d827b806dae269b65569cb415404d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494365"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358609"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-cli"></a>Schnellstart: Erstellen einer Azure DNS-Zone und eines Azure DNS-Eintrags mithilfe der Azure CLI
 
@@ -92,7 +92,7 @@ Sie besitzen nun eine DNS-Testzone mit einem A-Testeintrag und können die Namen
 
    Es sollte ein Bildschirm angezeigt werden, der in etwa wie folgt aussieht:
 
-   ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
+   ![Screenshot, der ein Eingabeaufforderungsfenster mit einem Namenserver-Suchbefehl und Werten für Server, Adresse, Name und Adresse zeigt.](media/dns-getstarted-portal/nslookup.PNG)
 
 Der Hostname **www\.contoso.xyz** wird gemäß Ihrer Konfiguration zu **10.10.10.10** aufgelöst. Mit diesem Ergebnis wird bestätigt, dass die Namensauflösung richtig funktioniert.
 

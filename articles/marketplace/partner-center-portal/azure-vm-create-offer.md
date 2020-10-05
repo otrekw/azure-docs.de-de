@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 08/07/2020
-ms.openlocfilehash: 33b3dcdc4fbcf08114f6ba6d63bb949250380d63
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: b9bacb352b3559c33a4a2ef92dc0c3af6ebbc7d6
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816523"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029701"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Erstellen eines Azure-VM-Angebots im Azure Marketplace
 
@@ -27,7 +27,7 @@ Bevor Sie beginnen, [erstellen Sie in Partner Center ein Konto für den kommerzi
 Wenn Sie Ihre Angebote im Azure Marketplace veröffentlichen, haben Sie folgende Möglichkeiten:
 
 - Bewerben Sie Ihr Unternehmen mit der Unterstützung der Marke Microsoft.
-- Erreichen Sie über 100 Millionen Office 365- und Dynamics 365-Benutzer und mehr als 200.000 Organisationen.
+- Erreichen Sie über 100 Millionen Microsoft 365- und Dynamics 365-Benutzer und mehr als 200.000 Unternehmen.
 - Gewinnen Sie hochwertige Leads in diesen Marketplaces.
 - Lassen Sie Ihre Dienste durch die Außendienstvertriebs- und Telefonmarketingteams von Microsoft bewerben.
 
@@ -162,7 +162,7 @@ Sie müssen Ihren Kunden Angebotsbedingungen angeben. Sie haben zwei Möglichkei
 
        a. Geben Sie Ihre Zusatzbestimmungen im Feld **Benutzerdefinierte Zusatzbedingungen** ein. Sie können eine unbegrenzte Anzahl von Zeichen eingeben. Diese benutzerdefinierten Vereinbarungen werden im Azure-Portal im Rahmen der Kaufabwicklung für das Angebot nur Kunden mit den Mandanten-IDs angezeigt, die Sie für sie angeben.
 
-       b. (Erforderlich:) Geben Sie **Mandanten-IDs** an. Jede benutzerdefinierte Zusatzvereinbarung kann für bis zu 20 Mandanten-IDs gelten. Wenn Sie eine benutzerdefinierte Zusatzvereinbarung hinzufügen, müssen Sie mindestens eine Mandanten-ID angeben, die Ihren Kunden in Azure identifiziert. Ihr Kunde kann diese für Sie in Azure finden, indem er **Azure Active Directory** > **Eigenschaften** auswählt. Der Wert „Verzeichnis-ID“ ist die Mandanten-ID (z. B. 50c464d3-4930-494c-963c-1e951d15360e). Sie können die von Ihrer Organisation zugeteilte Mandanten-ID Ihres Kunden auch suchen, indem Sie unter [Wie lautet meine Mandanten-ID für Microsoft Azure und Office 365?](https://www.whatismytenantid.com/) die Domänennamen-Webadresse des Kunden verwenden.
+       b. (Erforderlich:) Geben Sie **Mandanten-IDs** an. Jede benutzerdefinierte Zusatzvereinbarung kann für bis zu 20 Mandanten-IDs gelten. Wenn Sie eine benutzerdefinierte Zusatzvereinbarung hinzufügen, müssen Sie mindestens eine Mandanten-ID angeben, die Ihren Kunden in Azure identifiziert. Ihr Kunde kann diese für Sie in Azure finden, indem er **Azure Active Directory** > **Eigenschaften** auswählt. Der Wert „Verzeichnis-ID“ ist die Mandanten-ID (z. B. 50c464d3-4930-494c-963c-1e951d15360e). Sie können die von Ihrem Unternehmen zugeteilte Mandanten-ID Ihres Kunden auch suchen, indem Sie unter [Wie lautet meine Mandanten-ID für Microsoft Azure und Microsoft 365?](https://www.whatismytenantid.com/) die Domänennamen-Webadresse des Kunden verwenden.
 
        c. (Optional:) Geben Sie eine aussagekräftige **Beschreibung** für die Mandanten-ID an, mit der Sie den Kunden, für den die Zusatzvereinbarung gelten soll, einfacher identifizieren können.
 
@@ -547,7 +547,7 @@ Hier sehen Sie ein Beispiel dafür, wie Angebotsinformationen im Azure Marketpla
 
 <br>Hier sehen Sie ein Beispiel dafür, wie Angebotsinformationen in Azure Marketplace-Suchergebnissen angezeigt werden:
 
-:::image type="content" source="media/example-azure-marketplace-virtual-machine-search-results.png" alt-text="Veranschaulicht, wie dieses Angebot in Azure Marketplace-Suchergebnissen angezeigt wird.":::
+:::image type="content" source="media/example-azure-marketplace-virtual-machine-search-results.png" alt-text="Veranschaulicht, wie dieses Angebot im Azure Marketplace angezeigt wird.":::
 
 #### <a name="call-out-descriptions"></a>Beschreibungen zu den Nummern
 
@@ -558,7 +558,7 @@ Hier sehen Sie ein Beispiel dafür, wie Angebotsinformationen im Azure Marketpla
 
 <br>Hier sehen Sie ein Beispiel für Plandetails im Azure Marketplace:
 
-:::image type="content" source="media/example-azure-marketplace-virtual-machine-plan-details.png" alt-text="Darstellung von Plandetails im Azure Marketplace.":::
+:::image type="content" source="media/example-azure-marketplace-virtual-machine-plan-details.png" alt-text="Veranschaulicht, wie dieses Angebot im Azure Marketplace angezeigt wird.":::
 
 #### <a name="call-out-descriptions"></a>Beschreibungen zu den Nummern
 
@@ -568,7 +568,7 @@ Hier sehen Sie ein Beispiel dafür, wie Angebotsinformationen im Azure Marketpla
 
 <br>Hier sehen Sie ein Beispiel dafür, wie Angebotsinformationen im Azure-Portal angezeigt werden:
 
-:::image type="content" source="media/example-azure-portal-virtual-machine-offer.png" alt-text="Veranschaulicht, wie dieses Angebot im Azure-Portal angezeigt wird.":::
+:::image type="content" source="media/example-azure-portal-virtual-machine-offer.png" alt-text="Veranschaulicht, wie dieses Angebot im Azure Marketplace angezeigt wird.":::
 
 #### <a name="call-out-descriptions"></a>Beschreibungen zu den Nummern
 
@@ -579,7 +579,7 @@ Hier sehen Sie ein Beispiel dafür, wie Angebotsinformationen im Azure Marketpla
 
 <br>Hier sehen Sie ein Beispiel dafür, wie Angebotsinformationen in den Suchergebnissen im Azure-Portal angezeigt werden:
 
-:::image type="content" source="media/example-azure-portal-virtual-machine-search-results.png" alt-text="Veranschaulicht, wie dieses Angebot in den Suchergebnissen im Azure-Portal angezeigt wird.":::
+:::image type="content" source="media/example-azure-portal-virtual-machine-search-results.png" alt-text="Veranschaulicht, wie dieses Angebot im Azure Marketplace angezeigt wird.":::
 
 #### <a name="call-out-descriptions"></a>Beschreibungen zu den Nummern
 
@@ -589,7 +589,7 @@ Hier sehen Sie ein Beispiel dafür, wie Angebotsinformationen im Azure Marketpla
 
 <br>Hier sehen Sie ein Beispiel für die Plandetails im Azure-Portal:
 
-:::image type="content" source="media/example-azure-portal-virtual-machine-plan-details.png" alt-text="Darstellung der Plandetails im Azure-Portal.":::
+:::image type="content" source="media/example-azure-portal-virtual-machine-plan-details.png" alt-text="Veranschaulicht, wie dieses Angebot im Azure Marketplace angezeigt wird.":::
 
 #### <a name="call-out-descriptions"></a>Beschreibungen zu den Nummern
 

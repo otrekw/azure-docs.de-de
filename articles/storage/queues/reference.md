@@ -1,19 +1,19 @@
 ---
 title: Azure Queue Storage-Referenz
-description: Hier finden Sie die Referenz zur Azure Storage-API, Infodateien und Clientbibliothekspakete.
+description: Hier finden Sie die Referenz zur Azure Queue Storage-API, Infodateien und Clientbibliothekspakete.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 06/02/2020
+ms.date: 09/10/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: ripohane
-ms.openlocfilehash: fbf20b92edf5d8dce8438731c2812a78e457a402
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5544a6985ca357688b2585fa29c6dc63546c3e8c
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84976658"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90014955"
 ---
 # <a name="azure-queue-storage-reference"></a>Azure Queue Storage-Referenz
 
@@ -50,7 +50,7 @@ Die folgende Tabelle enthält die Referenz- und Beispieldokumentation zu Java-AP
 
 |  Version  | Referenzdokumentation | Paket | Schnellstart |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12.x | [Azure Storage Queue-Clientbibliothek für Java](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/index.html) | [Maven-Paket](https://mvnrepository.com/artifact/com.azure/azure-storage-queue) | [Schnellstart: Azure Queue Storage-Clientbibliothek v12 für Java](/azure/storage/queues/storage-quickstart-queues-java) |
+| 12.x | [Azure Storage Queue-Clientbibliothek für Java](/java/api/overview/azure/storage-queue-readme) | [Maven-Paket](https://mvnrepository.com/artifact/com.azure/azure-storage-queue) | [Schnellstart: Azure Queue Storage-Clientbibliothek v12 für Java](/azure/storage/queues/storage-quickstart-queues-java) |
 | 8.x | [com.microsoft.azure.storage.queue](/java/api/com.microsoft.azure.storage.queue) | [Maven-Paket](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) | [Schnellstart: Verwalten von Blobs mit Java SDK, Version 8](/azure/storage/blobs/storage-quickstart-blobs-java-legacy) |
 
 ### <a name="storage-management"></a>Speicherverwaltung
@@ -67,8 +67,8 @@ Die folgende Tabelle enthält die Referenz- und Beispieldokumentation zu Python-
 
 |  Version  | Referenzdokumentation | Paket | Schnellstart |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12.x | [Azure Storage-Clientbibliotheken v12 für Python](/azure/developer/python/sdk/storage/overview?view=storage-py-v12) | [Paket (PyPI)](https://pypi.org/project/azure-storage-queue/) | [Schnellstart: Azure Queue Storage-Clientbibliothek v12 für Python](/azure/storage/queues/storage-quickstart-queues-python) |
-| 2.x | [Azure Storage-Clientbibliotheken v2 für Python](/azure/developer/python/sdk/storage/overview?view=storage-py-v2) | [Paket (PyPI)](https://pypi.org/project/azure-storage-queue/2.1.0/) | [Verwenden von Azure Queue Storage v2.1 mit Python](/azure/storage/queues/storage-python-how-to-use-queue-storage) |
+| 12.x | [Azure Storage-Clientbibliotheken v12 für Python](/azure/developer/python/sdk/storage/overview) | [Paket (PyPI)](https://pypi.org/project/azure-storage-queue/) | [Schnellstart: Azure Queue Storage-Clientbibliothek v12 für Python](/azure/storage/queues/storage-quickstart-queues-python) |
+| 2.x | [Azure Storage-Clientbibliotheken v2 für Python](/azure/developer/python/sdk/storage/overview?view=storage-py-v2&preserve-view=true) | [Paket (PyPI)](https://pypi.org/project/azure-storage-queue/2.1.0/) | [Verwenden von Azure Queue Storage v2.1 mit Python](/azure/storage/queues/storage-python-how-to-use-queue-storage) |
 
 ## <a name="javascript-client-libraries"></a>JavaScript-Clientbibliotheken
 
@@ -77,7 +77,7 @@ Die folgende Tabelle enthält die Referenz- und Beispieldokumentation zu JavaScr
 |  Version  | Referenzdokumentation | Paket | Schnellstart |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12.x | [Azure Storage Queue-Clientbibliothek für JavaScript](/javascript/api/overview/azure/storage-queue-readme) | [Paket (npm)](https://www.npmjs.com/package/@azure/storage-queue) | [Schnellstart: Azure Queue Storage-Clientbibliothek v12 für JavaScript](/azure/storage/queues/storage-quickstart-queues-nodejs) |
-| 10.x | [@azure/storage-queue](/javascript/api/@azure/storage-queue/?view=azure-node-legacy) | [Paket (npm)](https://www.npmjs.com/package/@azure/storage-queue/v/10.3.0) | [Warteschlangen aus Node.js erstellen und löschen mit Azure Queue Service](/azure/storage/queues/storage-nodejs-how-to-use-queues) |
+| 10.x | [@azure/storage-queue](/javascript/api/@azure/storage-queue/?view=azure-node-legacy&preserve-view=true) | [Paket (npm)](https://www.npmjs.com/package/@azure/storage-queue/v/10.3.0) | [Warteschlangen aus Node.js erstellen und löschen mit Azure Queue Service](/azure/storage/queues/storage-nodejs-how-to-use-queues) |
 
 ## <a name="rest-apis"></a>REST-APIs
 
@@ -107,8 +107,9 @@ Die folgende Tabelle enthält Links zur neuesten Version der Referenzen.
 
 | Version | Plattform |
 | ------- | -------- |
-|  3.x  | [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/?view=azps-3.8.0) |
-|  2.x  | [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/?view=azps-2.8.0) |
+|  4.x  | [PowerShell](/powershell/module/az.storage/?view=azps-4.6.1&preserve-view=true) |
+|  3.x  | [PowerShell](/powershell/module/az.storage/?view=azps-3.8.0&preserve-view=true) |
+|  2.x  | [PowerShell](/powershell/module/az.storage/?view=azps-2.8.0&preserve-view=true) |
 
 ## <a name="azure-cli"></a>Azure CLI
 

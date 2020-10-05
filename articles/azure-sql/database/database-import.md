@@ -6,17 +6,17 @@ ms.service: sql-db-mi
 ms.subservice: migrate
 ms.custom: sqldbrb=1, devx-track-azurecli, devx-track-azurepowershell
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/20/2019
-ms.openlocfilehash: 574bc4721f83d60fdd8c75b4fedb824522968822
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 5f7aad271f04bcb4eb63472716ea2fe9f98a0e33
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89070043"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443701"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Schnellstart: Importieren einer BACPAC-Datei in eine Datenbank in Azure SQL-Datenbank oder Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -147,6 +147,10 @@ az sql db import --resource-group "<resourceGroup>" --server "<server>" --name "
 
 - Das Importieren in eine Datenbank in einen Pool für elastische Datenbanken wird nicht unterstützt. Sie können jedoch Daten in eine Einzeldatenbank importieren und die Datenbank anschließend in einen Pool für elastische Datenbanken verschieben.
 - Der Import/Export-Dienst funktioniert nicht, wenn „Azure-Diensten Zugriff auf den Server erlauben“ mit „AUS“ deaktiviert ist. Sie können dieses Problem jedoch umgehen, indem Sie „sqlpackage.exe“ manuell auf einem virtuellen Azure-Computer oder den Export über die DACFx-API direkt in Ihrem Code ausführen.
+- Für Importieren wird beim Erstellen einer neuen Datenbank die Angabe einer Sicherungsspeicherredundanz nicht unterstützt, sondern Redundanz wird mit dem standardmäßigen georedundanten Sicherungsspeicher erstellt. Um dieses Problem zu umgehen, erstellen Sie zunächst eine leere Datenbank mit gewünschter Sicherungsspeicherredundanz über das Azure-Portal oder PowerShell, und importieren Sie dann die BACPAC-Datei in diese leere Datenbank. 
+
+> [!NOTE]
+> Die konfigurierbare Sicherungsspeicherredundanz von Azure SQL-Datenbank ist derzeit nur in der Azure-Region „Asien, Südosten“ in öffentlicher Vorschau verfügbar.
 
 ## <a name="import-using-wizards"></a>Importieren mithilfe von Assistenten
 

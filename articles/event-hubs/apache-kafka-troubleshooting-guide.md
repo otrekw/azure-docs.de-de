@@ -3,12 +3,12 @@ title: Beheben von Problemen mit Azure Event Hubs für Apache Kafka
 description: In diesem Artikel erfahren Sie, wie Sie Probleme mit Azure Event Hubs für Apache Kafka behandeln.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 034541aa6ea683c0e294ca8790b02f0dc60b5440
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e32e02947b9f004755381d562fd3f3c897b70674
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090568"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061426"
 ---
 # <a name="apache-kafka-troubleshooting-guide-for-event-hubs"></a>Apache Kafka-Leitfaden zur Problembehandlung für Event Hubs
 In diesem Artikel finden Sie Tipps zur Problembehandlung, die bei der Verwendung von Event Hubs für Apache Kafka auftreten können. 
@@ -55,11 +55,11 @@ org.apache.kafka.common.errors.UnknownServerException: The server experienced an
 - **SASL-Authentifizierung**: Ihr Framework dazu zu bringen, mit dem SASL-Authentifizierungsprotokoll zusammenzuarbeiten, das von Event Hubs benötigt wird, kann schwieriger sein, als es zunächst den Anschein hat. Versuchen Sie, ob Sie die Konfiguration mit den Ressourcen Ihres Frameworks zur SASL-Authentifizierung korrigieren können. 
 
 ## <a name="limits"></a>Einschränkungen
-Apache Kafka im Vergleich zu Event Hubs für Kafka. Event Hubs für Kafka weist in den meisten Fällen die gleichen Standardeinstellungen, Eigenschaften, Fehlercodes und allgemeinen Verhaltensweisen auf wie Apache Kafka. Die Fälle, in denen sich diese beiden explizit unterscheiden (oder in denen Event Hubs einen Grenzwert vorschreiben, der von Kafka nicht eingehalten wird), sind nachstehend aufgeführt:
+Apache Kafka im Vergleich zu Event Hubs für Kafka. Die Benutzeroberfläche von Azure Event Hubs für Kafka weist in den meisten Fällen die gleichen Standardeinstellungen, Eigenschaften, Fehlercodes und allgemeinen Verhaltensweisen auf wie Apache Kafka. Die Fälle, in denen sich diese beiden explizit unterscheiden (oder in denen Event Hubs einen Grenzwert vorschreiben, der von Kafka nicht eingehalten wird), sind nachstehend aufgeführt:
 
 - Die maximale Länge der Eigenschaft `group.id` ist 256 Zeichen.
 - Die maximale Größe von `offset.metadata.max.bytes` ist 1024 Bytes.
-- Offsetcommits werden mit vier Aufrufen pro Sekunde pro Partition bei einer maximalen internen Protokollgröße von 1 MB gedrosselt.
+- Offsetcommits werden auf vier Aufrufe pro Sekunde und Partition bei einer maximalen internen Protokollgröße von 1 MB gedrosselt.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/1/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 5cf1181c41af1edc752205f4477f18b78680f484
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 66e0ac622479d38d2e2a3cbf499bb7900251571d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81254001"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359390"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Tutorial: Konfigurieren von HTTPS in einer benutzerdefinierten Azure CDN-Domäne
 
@@ -80,7 +80,7 @@ Um HTTPS für eine benutzerdefinierte Domäne zu aktivieren, führen Sie die fol
 
 4. Wählen Sie in der Liste mit den benutzerdefinierten Domänen die benutzerdefinierte Domäne aus, für die Sie HTTPS aktivieren möchten.
 
-    ![Liste mit benutzerdefinierten Domänen](./media/cdn-custom-ssl/cdn-custom-domain.png)
+    ![Screenshot, der die Seite „Benutzerdefinierte Domäne“ mit der Option „Eigenes Zertifikat verwenden“ zeigt.](./media/cdn-custom-ssl/cdn-custom-domain.png)
 
     Die Seite **Benutzerdefinierte Domäne** wird angezeigt.
 

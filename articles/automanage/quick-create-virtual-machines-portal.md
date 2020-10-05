@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 09/04/2020
 ms.author: jushiman
-ms.openlocfilehash: 43e0805a828a2ed32d23984b6ffef95a7e710953
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d66c19ce3a9786a5ca0f1390acb398c2a9cf502f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90944311"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445793"
 ---
 # <a name="quickstart-enable-azure-automanage-for-virtual-machines-in-the-azure-portal"></a>Schnellstart: Aktivieren der automatischen Azure-Verwaltung für virtuelle Computer im Azure-Portal
 
@@ -28,7 +28,7 @@ Wenn Sie kein Azure-Abonnement besitzen, [erstellen Sie ein Konto](https://azure
 > Mit kostenlosen Testkonten ist kein Zugriff auf die virtuellen Computer möglich, die in diesem Tutorial verwendet werden. Führen Sie ein Upgrade auf ein Abonnement mit nutzungsbasierter Zahlung durch.
 
 > [!IMPORTANT]
-> Zum Aktivieren der automatischen Verwaltung ist die folgende RBAC-Berechtigung erforderlich: Rolle **Besitzer** oder **Mitwirkender** sowie Rollen vom Typ **Benutzerzugriffsadministrator**
+> Sie müssen die Rolle **Mitwirkender** haben, um automatische Verwaltung mit einem vorhandenen Konto für die automatische Verwaltung zu aktivieren. Wenn Sie automatische Verwaltung mit einem neuen Konto für die automatische Verwaltung aktivieren, benötigen Sie die folgenden Berechtigungen: Rolle **Besitzer** oder **Mitwirkender** sowie Rollen vom Typ **Benutzerzugriffsadministrator**
 
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
@@ -49,34 +49,36 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
     1. Aktivieren Sie das Kontrollkästchen für jeden virtuellen Computer, den Sie integrieren möchten.
     1. Klicken Sie auf die Schaltfläche **Auswählen**.
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-select-machine.png" alt-text="Auswählen eines vorhandenen virtuellen Computers aus der Liste verfügbarer virtueller Computer":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-select-machine.png" alt-text="Für vorhandene VM aktivieren":::
 
 4. Klicken Sie unter **Configuration Profile** (Konfigurationsprofil) auf **Browse and change profiles and preferences** (Profile und Einstellungen durchsuchen und ändern).
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-quick-create.png" alt-text="Browse and change profiles and preferences (Profile und Einstellungen durchsuchen und ändern)":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-quick-create.png" alt-text="Für vorhandene VM aktivieren":::
 
 5. Gehen Sie auf dem Blatt **Konfigurationsprofil und -einstellungen auswählen** wie folgt vor:
     1. Wählen Sie auf der linken Seite ein Profil aus: *Dev/Test* für Tests, *Prod* für die Produktion.
     1. Klicken Sie auf die Schaltfläche **Auswählen**.
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\browse-production-profile.png" alt-text="Navigieren zum Produktionskonfigurationsprofil":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\browse-production-profile.png" alt-text="Für vorhandene VM aktivieren":::
 
 6. Klicken Sie auf die Schaltfläche **Aktivieren**.
 
 
 ## <a name="enable-automanage-for-vms-on-a-new-vm"></a>Aktivieren der automatischen Verwaltung für virtuelle Computer auf einem neuen virtuellen Computer
 
+Melden Sie sich [hier](https://aka.ms/automanageportalnextstep) beim Azure-Portal an, um einen neuen virtuellen Computer zu erstellen und automatische Verwaltung zu aktivieren.
+
 1. Führen Sie die Schritte zur Erstellung unter [Schnellstart: Erstellen eines virtuellen Windows-Computers im Azure-Portal](..\virtual-machines\windows\quick-create-portal.md) aus.
 
 2. Nach der Bereitstellung des virtuellen Computers gelangen Sie zur Seite mit dem Bereitstellungsstatus. Dort finden Sie ganz unten den Bereich **Nächste Schritte** mit Empfehlungen für die nächsten Schritte.
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\create-next-steps.png" alt-text="Abschnitt „Nächste Schritte“ unten auf der Bereitstellungsseite":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\create-next-steps.png" alt-text="Für vorhandene VM aktivieren":::
 
 3. Wählen Sie unter **Nächste Schritte** die Option **Best Practices zum Aktivieren der automatischen VM-Verwaltung** aus.
 
 4. Auf der Seite **Automatische Verwaltung – Best Practices für Azure-VMs** wird **Computer** automatisch mit Ihrem neu erstellten virtuellen Computer aufgefüllt.
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\create-new-enable-overview.png" alt-text="Der neu erstellte virtuelle Computer wird als ausgewählter Computer angezeigt.":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\create-new-enable-overview.png" alt-text="Für vorhandene VM aktivieren":::
 
 5. Klicken Sie unter **Configuration Profile** (Konfigurationsprofil) auf **Browse and change profiles and preferences** (Profile und Einstellungen durchsuchen und ändern).
 
@@ -84,16 +86,15 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
     1. Wählen Sie auf der linken Seite ein Profil aus: *Dev/Test* für Tests, *Prod* für die Produktion.
     1. Klicken Sie auf die Schaltfläche **Auswählen**.
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\browse-production-profile.png" alt-text="Navigieren zum Produktionskonfigurationsprofil":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\browse-production-profile.png" alt-text="Für vorhandene VM aktivieren":::
 
 7. Klicken Sie auf die Schaltfläche **Aktivieren**.
-
 
 ## <a name="disable-automanage-for-vms"></a>Deaktivieren der automatischen Verwaltung für virtuelle Computer
 
 Sie können die Verwendung der automatischen Azure-Verwaltung für virtuelle Computer schnell beenden, indem Sie die automatische Verwaltung deaktivieren.
 
-:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="Deaktivieren der automatischen Verwaltung auf einem virtuellen Computer":::
+:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="Für vorhandene VM aktivieren":::
 
 1. Navigieren Sie zur Seite **Automatische Verwaltung – Best Practices für Azure-VMs**, auf der alle automatisch verwalteten virtuellen Computer aufgeführt sind.
 1. Aktivieren Sie das Kontrollkästchen neben dem virtuellen Computer, den Sie deaktivieren möchten.

@@ -1,6 +1,6 @@
 ---
 title: Erstellen und Verwenden externer Tabellen in SQL On-Demand (Vorschauversion)
-description: In diesem Abschnitt erfahren Sie, wie Sie externe Tabellen in SQL On-Demand (Vorschauversion) erstellen und verwenden. Externe Tabellen sind nützlich, wenn Sie den Zugriff auf externe Daten in SQL On-Demand steuern und Tools wie Power BI in Verbindung mit SQL On-Demand verwenden möchten.
+description: In diesem Abschnitt erfahren Sie, wie Sie externe Tabellen in SQL On-Demand (Vorschauversion) erstellen und verwenden.
 services: synapse-analytics
 author: vvasic-msft
 ms.service: synapse-analytics
@@ -8,13 +8,13 @@ ms.topic: overview
 ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: vvasic
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: d830ee28eb1f5befc3ad778a6b82c291d1e49d02
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.reviewer: jrasnick
+ms.openlocfilehash: 182deba959144f6a3992bb41243f29023bad5e5c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85206511"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289326"
 ---
 # <a name="create-and-use-external-tables-in-sql-on-demand-preview-using-azure-synapse-analytics"></a>Erstellen und Verwenden externer Tabellen in SQL On-Demand (Vorschauversion) mithilfe von Azure Synapse Analytics
 
@@ -132,4 +132,4 @@ ORDER BY
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zum Speichern der Ergebnisse einer Abfrage im Speicher finden Sie unter [Speichern von Abfrageergebnissen im Speicher mithilfe von SQL On-Demand (Vorschauversion) und Azure Synapse Analytics](../sql/create-external-table-as-select.md).
+Informationen dazu, wie die Ergebnisse einer Abfrage im Speicher gespeichert werden, finden Sie im Artikel [Speichern von Abfrageergebnissen im Speicher mithilfe von SQL On-Demand (Vorschauversion) und Azure Synapse Analytics](../sql/create-external-table-as-select.md).
