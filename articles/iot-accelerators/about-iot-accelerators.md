@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: 1a27d748e16f892a748cf18569c13ca3f9ead1dd
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: a8314fed43c8282c536fc6e95e6c3aa877408b09
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "71309512"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542494"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Was sind Azure IoT Solution Accelerators?
 
@@ -46,7 +46,7 @@ Verwenden Sie den [Solution Accelerator „Verbundene Factory“](iot-accelerato
 
 Sie können das Dashboard für verbundene Factorys zum Überwachen und Verwalten Ihrer Industriegeräte verwenden:
 
-[![Dashboard der Connected Factory-Lösung](./media/about-iot-accelerators/cf-dashboard-inline.png)](./media/about-iot-accelerators/cf-dashboard-expanded.png#lightbox)
+:::image type="content" source="./media/about-iot-accelerators/cf-dashboard-inline.png" alt-text="Screenshot, der das Dashboard für die Lösung „Verbundene Factory“ zeigt." lightbox="./media/about-iot-accelerators/cf-dashboard-expanded.png":::
 
 ### <a name="predictive-maintenance"></a>Predictive Maintenance
 
@@ -54,7 +54,7 @@ Verwenden Sie den [Solution Accelerator „Predictive Maintenance“](iot-accele
 
 Sie können das Dashboard für vorbeugende Wartung verwenden, um Predictive Maintenance-Analysen anzuzeigen:
 
-[![Dashboard der Connected Factory-Lösung](./media/about-iot-accelerators/pm-dashboard-inline.png)](./media/about-iot-accelerators/pm-dashboard-expanded.png#lightbox)
+:::image type="content" source="./media/about-iot-accelerators/pm-dashboard-inline.png" alt-text="Screenshot, der das Dashboard für die Lösung „Verbundene Factory“ zeigt." lightbox="./media/about-iot-accelerators/pm-dashboard-expanded.png":::
 
 ### <a name="device-simulation"></a>Gerätesimulation
 

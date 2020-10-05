@@ -3,12 +3,12 @@ title: Bereitstellen und Konfigurieren von Azure VMware Solution
 description: Erfahren Sie, wie Sie die in der Planungsphase gesammelten Informationen verwenden, um die private Azure VMware Solution-Cloud bereitzustellen.
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 08d2d48820505dad9bba74fe3ac84f45525f4525
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: af2a9e4fcb4125683342ad739e3890671f64b0bf
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 09/30/2020
-ms.locfileid: "91578774"
+ms.locfileid: "91598167"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Bereitstellen und Konfigurieren von Azure VMware Solution
 
@@ -40,7 +40,7 @@ Verwenden Sie die Informationen, die Sie im Artikel [Planen der Azure VMware Sol
 Nachdem Sie Azure VMware Solution bereitgestellt haben, erstellen Sie die Jumpbox des virtuellen Netzwerks, über die Verbindungen mit vCenter und NSX hergestellt werden. Nachdem Sie ExpressRoute-Leitungen und ExpressRoute Global Reach konfiguriert haben, ist die Jumpbox nicht mehr erforderlich.  Sie ist jedoch praktisch, vCenter und NSX in ihrer Azure VMware Solution-Umgebung zu erreichen.  
 
 
-:::image type="content" source="media/pre-deployment/jump-box-diagram.png" alt-text="Die Azure VMware Solution-Jumpbox erstellen":::
+:::image type="content" source="media/pre-deployment/jump-box-diagram.png" alt-text="Die Azure VMware Solution-Jumpbox erstellen" border="false" lightbox="media/pre-deployment/jump-box-diagram.png":::
 
 Gehen Sie wie folgt vor, um einen virtuellen Computer (Virtual Machine, VM) in dem virtuellen Netzwerk zu erstellen, das Sie [im Rahmen des Bereitstellungsprozesses bestimmt oder erstellt haben](production-ready-deployment-steps.md#azure-virtual-network-to-attach-azure-vmware-solution): 
 
@@ -60,7 +60,7 @@ Die Jumpbox befindet sich in dem virtuellen Netzwerk, in dem Azure VMware Soluti
 
 In der Liste der effektive Routen sollten die Netzwerke angezeigt werden, die während der Azure VMware Solution-Bereitstellung erstellt wurden. Es werden mehrere Netzwerke angezeigt, die aus dem [`/22`-Netzwerk abgeleitet wurden, das Sie](production-ready-deployment-steps.md#ip-address-segment) während des [Bereitstellungsschritts](#deploy-azure-vmware-solution) weiter oben in diesem Artikel definiert haben.
 
-:::image type="content" source="media/pre-deployment/azure-vmware-solution-effective-routes.png" alt-text="Die Azure VMware Solution-Jumpbox erstellen":::
+:::image type="content" source="media/pre-deployment/azure-vmware-solution-effective-routes.png" alt-text="Die Azure VMware Solution-Jumpbox erstellen" lightbox="media/pre-deployment/azure-vmware-solution-effective-routes.png":::
 
 In diesem Beispiel wird für das 10.74.72.0/22-Netzwerk, das bei der Bereitstellung eingegeben wurde, das /24-Netzwerk abgeleitet.  Wenn Sie eine ähnliche Anzeige sehen, können Sie eine Verbindung mit vCenter in Azure VMware Solution herstellen.
 
