@@ -9,12 +9,12 @@ ms.date: 08/03/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, amqp, devx-track-csharp
-ms.openlocfilehash: b904fcd03247f6e6ae01f51c5048c29826bb8e5a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 24a63a167f640646b9e07126a038663f4da3e23b
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018466"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449603"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Tutorial: Entwickeln eines C#-IoT Edge-Moduls für Windows-Geräte
 
@@ -311,11 +311,11 @@ Im vorherigen Abschnitt haben Sie eine IoT Edge-Projektmappe erstellt und **CSha
 
 ## <a name="deploy-modules-to-device"></a>Bereitstellen von Modulen auf dem Gerät
 
-Verwenden Sie den Visual Studio-Cloud-Explorer und die Erweiterung „Azure IoT-Tools“, um das Modulprojekt auf Ihrem IoT Edge-Gerät bereitzustellen. Sie haben schon ein Bereitstellungsmanifest für Ihr Szenario vorbereitet: die Datei **deployment.windows-amd64.json** im Ordner „config“. Nun müssen Sie nur noch ein Gerät auswählen, um die Bereitstellung zu empfangen.
+Verwenden Sie Visual Studio Cloud-Explorer und die Erweiterung „Azure IoT Edge Tools“ zum Bereitstellen des Modulprojekts auf Ihrem IoT Edge-Gerät. Sie haben schon ein Bereitstellungsmanifest für Ihr Szenario vorbereitet: die Datei **deployment.windows-amd64.json** im Ordner „config“. Nun müssen Sie nur noch ein Gerät auswählen, um die Bereitstellung zu empfangen.
 
 Sorgen Sie dafür, dass Ihr IoT Edge-Gerät ordnungsgemäß ausgeführt wird.
 
-1. Erweitern Sie im Visual Studio-Cloud-Explorer die Ressourcen, um die Liste der IoT-Geräte anzuzeigen.
+1. Erweitern Sie in Visual Studio Cloud-Explorer die Ressourcen, um die Liste der IoT-Geräte anzuzeigen.
 
 2. Klicken Sie mit der rechten Maustaste auf den Namen des IoT Edge-Geräts, das die Bereitstellung erhalten soll.
 
@@ -323,7 +323,7 @@ Sorgen Sie dafür, dass Ihr IoT Edge-Gerät ordnungsgemäß ausgeführt wird.
 
 4. Wählen Sie im Datei-Explorer im Ordner „config“ Ihrer Projektmappe die Datei **deployment.windows-amd64.json** aus.
 
-5. Aktualisieren Sie den Cloud-Explorer, um die bereitgestellten Module anzuzeigen, die unter Ihrem Gerät aufgeführt sind.
+5. Aktualisieren Sie Cloud-Explorer zum Anzeigen der bereitgestellten Module, die unter Ihrem Gerät aufgeführt sind.
 
 ## <a name="view-generated-data"></a>Anzeigen generierter Daten
 
@@ -331,7 +331,7 @@ Sobald Sie das Bereitstellungsmanifest auf Ihr IoT Edge-Gerät angewendet haben,
 
 Mit der Erweiterung „IoT Edge-Tools“ können Sie die bei Ihrer IoT Hub-Instanz eingehenden Nachrichten anzeigen.
 
-1. Wählen Sie im Cloud-Explorer von Visual Studio den Namen Ihres IoT Edge-Geräts aus.
+1. Wählen Sie in Visual Studio Cloud-Explorer den Namen Ihres IoT Edge-Geräts aus.
 
 2. Wählen Sie in der Liste **Aktionen** die Option **Start Monitoring Built-in Event Endpoint** (Überwachung des integrierten Ereignisendpunkts starten) aus.
 

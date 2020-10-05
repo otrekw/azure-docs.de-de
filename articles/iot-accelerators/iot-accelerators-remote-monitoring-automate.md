@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 676f1133a516174478a456a97bc467e7770fe6e7
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 695d1b1124c042b61837f0a1257ac2a201ae4860
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84712512"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539400"
 ---
 # <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>Tutorial: Erkennen von Problemen mit Geräten, die mit der Überwachungslösung verbunden sind
 
@@ -122,7 +122,7 @@ Sie können mehrere Regeln gleichzeitig aktivieren und deaktivieren, indem Sie i
 
 Wenn Sie eine Regel dauerhaft löschen möchten, können Sie sie in der Regelliste löschen. Wählen Sie die zu löschende Regel aus, und klicken Sie anschließend auf **Löschen**.
 
-[![Löschen der Regel](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdelete-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdelete-expanded.png#lightbox)
+[![Screenshot, der die Seite „Regeln“ mit hervorgehobenem Fenster „Regel löschen“ zeigt.](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdelete-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdelete-expanded.png#lightbox)
 
 Nachdem Sie bestätigt haben, dass Sie die Regel löschen möchten, haben Sie die Option, alle Warnungen im Zusammenhang mit der Regel auf der Seite **Wartung** zu löschen.
 

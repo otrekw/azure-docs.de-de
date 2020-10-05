@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 76e72e8fd134c65cc9334e635375cc25e9b09a75
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: dea009d6d246d68f0686c3dc85f3518ccb13705c
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719069"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575196"
 ---
 # <a name="tutorial-monitor-and-manage-a-video-analytics---object-and-motion-detection-application"></a>Tutorial: Überwachen und Verwalten einer Anwendung vom Typ „Videoanalyse: Objekt- und Bewegungserkennung“
 
@@ -61,7 +61,7 @@ Wenn Sie zwei Kameras an Ihr IoT Edge-Gatewaygerät angeschlossen haben, sollten
 
 Wählen Sie die Registerkarte **Nachgeschaltete Geräte** für das Gerät **LVA-Gateway 001** aus, um die eben hinzugefügten Kamerageräte anzuzeigen:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/inspect-downstream.png" alt-text="Überprüfen":::
+:::image type="content" source="media/tutorial-video-analytics-manage/inspect-downstream.png" alt-text="Kamera hinzufügen":::
 
 Die Kamerageräte werden auch in der Liste auf der Seite **Geräte** der Anwendung angezeigt.
 
@@ -98,7 +98,7 @@ Wählen Sie **Speichern** aus.
 
 Nach einigen Sekunden wird die Bestätigungsmeldung **Accepted** (Akzeptiert) für jede Einstellung angezeigt:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/object-detection.png" alt-text="Objekterkennung":::
+:::image type="content" source="media/tutorial-video-analytics-manage/object-detection.png" alt-text="Kamera hinzufügen":::
 
 ## <a name="start-lva-processing"></a>Starten der LVA-Verarbeitung
 
@@ -108,13 +108,13 @@ Führen Sie den Befehl **Start LVA Processing** (LVA-Verarbeitung starten) aus.
 
 Zeigen Sie nach Abschluss des Befehls den Befehlsverlauf an, um sicherzustellen, dass keine Fehler vorhanden sind:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/start-processing.png" alt-text="Befehl „Start LVA processing“ (LVA-Verarbeitung starten)":::
+:::image type="content" source="media/tutorial-video-analytics-manage/start-processing.png" alt-text="Kamera hinzufügen":::
 
 ## <a name="monitor-the-cameras"></a>Überwachen der Kameras
 
 Navigieren Sie zum Gerät **camera-003**, und wählen Sie die Registerkarte **Dashboard** aus:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/camera-dashboard.png" alt-text="Dashboard für Kamera":::
+:::image type="content" source="media/tutorial-video-analytics-manage/camera-dashboard.png" alt-text="Kamera hinzufügen":::
 
 Auf der Kachel **Detection Count** (Erkennungsanzahl) wird die durchschnittliche Erkennungsanzahl jeweils für das ausgewählte Erkennungsklassenobjekt für ein Erkennungsintervall von einer Sekunde angezeigt.
 
@@ -157,7 +157,7 @@ docker run -it --rm -e amsAadClientId="<FROM_AZURE_PORTAL>" -e amsAadSecret="<FR
 
 Navigieren Sie zum Gerät **camera-003**, und wählen Sie die Registerkarte **Dashboard** aus. Klicken Sie anschließend auf der Kachel **Inference Event Video** (Rückschlussereignis-Video) auf einen der Hyperlinks der erfassten Ereignisse für die Bewegungserkennung. Das Video wird auf einer Seite des lokalen Videoplayers angezeigt:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/video-snippet.png" alt-text="Videocodeausschnitt":::
+:::image type="content" source="media/tutorial-video-analytics-manage/video-snippet.png" alt-text="Kamera hinzufügen":::
 
 ## <a name="change-the-simulated-devices-in-application-dashboards"></a>Ändern der simulierten Geräte auf Anwendungsdashboards
 
@@ -182,7 +182,7 @@ Die Anwendungsdashboards werden ursprünglich mit Telemetriedaten und Eigenschaf
 
 Im Dashboard **Real Camera Monitor** (Überwachung für echte Kamera) werden jetzt Werte Ihres echten Kamerageräts angezeigt:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/update-real-cameras.png" alt-text="Anwendungsdashboard für echte Kameras":::
+:::image type="content" source="media/tutorial-video-analytics-manage/update-real-cameras.png" alt-text="Kamera hinzufügen":::
 
 ## <a name="pause-processing"></a>Anhalten der Verarbeitung
 

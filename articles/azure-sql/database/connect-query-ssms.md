@@ -13,12 +13,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/28/2020
-ms.openlocfilehash: 35a637df85984bcfd20836bcd87aa5ecf1583170
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 60977b9388af3a93d0ebbbc6aad50628b79e0e44
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91461137"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598267"
 ---
 # <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database-or-azure-sql-managed-instance"></a>Schnellstart: Verwenden von SSMS zum Herstellen einer Verbindung mit Azure SQL-Datenbank oder Azure SQL Managed Instance und Ausführen von Abfragen
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -64,6 +64,8 @@ Rufen Sie die Verbindungsinformationen ab, die Sie zum Herstellen einer Verbindu
 
 ## <a name="connect-to-your-database"></a>Verbinden mit der Datenbank
 
+[!INCLUDE[ssms-connect-azure-ad](../includes/ssms-connect-azure-ad.md)]
+
 Stellen Sie in SSMS eine Verbindung mit Ihrem Server her.
 
 > [!IMPORTANT]
@@ -85,7 +87,7 @@ Stellen Sie in SSMS eine Verbindung mit Ihrem Server her.
    ![Verbindung mit dem Server herstellen](./media/connect-query-ssms/connect.png)  
 
 > [!NOTE]
-> In diesem Tutorial wird SQL Server-Authentifizierung verwendet.  Soll die Verbindungsherstellung dagegen über Azure Active Directory mit mehrstufiger Authentifizierung (MFA) erfolgen, müssen Sie [SSMS 18.6 oder höher](https://aka.ms/ssms) verwenden. 
+> In diesem Tutorial wird SQL Server-Authentifizierung verwendet.
 
 3. Wählen Sie im Dialogfeld **Mit Server verbinden** **Optionen** aus. Wählen Sie im Dropdownmenü **Mit Datenbank verbinden** **mySampleDatabase** aus. Im Rahmen der unter [Voraussetzungen](#prerequisites) angegebenen Schnellstartanleitung wird eine AdventureWorksLT-Datenbank namens „mySampleDatabase“ erstellt. Sollte Ihre Arbeitskopie der AdventureWorks-Datenbank einen anderen Namen haben als „mySampleDatabase“, wählen Sie stattdessen den anderen Namen aus.
 
