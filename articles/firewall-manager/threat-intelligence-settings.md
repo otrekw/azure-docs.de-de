@@ -1,18 +1,18 @@
 ---
 title: Threat Intelligence-Konfiguration von Azure Firewall
-description: Das Filtern auf Basis von Threat Intelligence kann für Ihre Firewall aktiviert werden, damit diese Sie bei Datenverkehr von und zu bekannten schädlichen IP-Adressen oder Domänen warnt und diesen verweigert.
+description: Erfahren Sie, wie Sie die auf Threat Intelligence basierende Filterung für Ihre Azure Firewall-Richtlinie konfigurieren, um vor Datenverkehr von und zu bekannten schädlichen IP-Adressen und Domänen zu warnen und diesen zu verweigern.
 services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 136ceeb271bec29bdbfc4572626936ee67f05556
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a663c5f3bcf3492c4a9bc74fe93c6ed6a86137ee
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85567701"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530640"
 ---
 # <a name="azure-firewall-threat-intelligence-configuration"></a>Threat Intelligence-Konfiguration von Azure Firewall
 

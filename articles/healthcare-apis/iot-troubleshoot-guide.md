@@ -6,14 +6,14 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: troubleshooting
-ms.date: 08/07/2020
+ms.date: 09/16/2020
 ms.author: jasteppe
-ms.openlocfilehash: 088d1e409f14fdba02311d1ff17eb655f6e41ad3
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 64056ef2f63331686553c52040af9e10ee0ac468
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053455"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982992"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-troubleshooting-guide"></a>Azure IoT-Konnektor für FHIR (Vorschauversion): Leitfaden zur Problembehandlung
 
@@ -25,6 +25,34 @@ Sie können die Kopien der JSON-Datei für Konvertierungszuordnung zur Bearbeitu
 
 > [!TIP]
 > Wenn Sie ein [Azure Technical Support](https://azure.microsoft.com/support/create-ticket/)-Ticket zu Azure IoT-Konnektor für FHIR öffnen, müssen Sie unbedingt Kopien Ihrer JSON-Datei für Konvertierungszuordnung als Hilfe bei der Problembehandlung einbeziehen.
+
+## <a name="device-and-fhir-conversion-mapping-json-template-validations-for-azure-iot-connector-for-fhir-preview"></a>JSON-Vorlagenüberprüfungen für die Konvertierungszuordnung vom Typ „Gerät“ und „FHIR“ für Azure IoT-Konnektor für FHIR (Vorschau)
+In diesem Abschnitt erfahren Sie mehr über den Überprüfungsprozess, den Azure IoT-Konnektor für FHIR durchführt, um die JSON-Vorlagen für die Konvertierungszuordnung vom Typ „Gerät“ und „FHIR“ zu überprüfen, bevor sie zur Verwendung gespeichert werden können.  Diese Elemente werden im JSON-Code für die Konvertierungszuordnung vom Typ „Gerät“ und „FHIR“ benötigt.
+
+**Gerätezuordnung**
+
+|Element|Erforderlich|
+|:-------|:------|
+|TypName|True|
+|TypeMatchExpression|True|
+|DeviceIdExpression|True|
+|TimestampExpression|True|
+|Values[].ValueName|True|
+|Values[].ValueExpression|True|
+
+> [!NOTE]
+> Values[].ValueName und Values[].ValueExpression
+>
+> Diese Elemente sind nur erforderlich, wenn sich ein Werteintrag im Array befindet – es ist zulässig, dass keine Werte zugeordnet sind. Dies wird verwendet, wenn die gesendete Telemetrie ein Ereignis ist. Beispiel: Wenn ein tragbares IoMT-Gerät angelegt oder entfernt wird. Die Elemente haben keine Werte außer einem Namen, der von Azure IoT-Konnektor für FHIR verglichen und ausgegeben wird. Bei der FHIR-Konvertierung wird es von Azure IoT-Konnektor für FHIR einem codierbaren Konzept zugeordnet, das auf dem semantischen Typ basiert – es werden keine tatsächlichen Werte aufgefüllt.
+
+**FHIR-Zuordnung**
+
+|Element|Erforderlich|
+|:------|:-------|
+|TypName|True|
+
+> [!NOTE]
+> Dies ist das einzige erforderliche FHIR-Zuordnungselement, das zu diesem Zeitpunkt überprüft wurde.
 
 ## <a name="error-messages-and-fixes-for-azure-iot-connector-for-fhir-preview"></a>Fehlermeldungen und Korrekturen bei Azure IoT-Konnektor für FHIR (Vorschauversion)
 
@@ -42,8 +70,8 @@ Sie können die Kopien der JSON-Datei für Konvertierungszuordnung zur Bearbeitu
 
 ##  <a name="why-is-my-azure-iot-connector-for-fhir-preview-data-not-showing-up-in-azure-api-for-fhir"></a>Warum werden meine Daten zu Azure IoT-Konnektor für FHIR (Vorschauversion) in der Azure-API für FHIR nicht angezeigt?
 
-|Mögliche Probleme  |Fehlerbehebungen            |
-|------------------|-----------------|
+|Mögliche Probleme|Fehlerbehebungen|
+|----------------|-----|
 |Die Daten werden noch verarbeitet.|Daten werden an die Azure-API für FHIR in Batches (ca. alle 15 Minuten) ausgegeben.  Es ist möglich, dass die Daten noch verarbeitet werden und zusätzliche Zeit erforderlich ist, damit die Daten in der Azure-API für FHIR persistent gespeichert werden.|
 |JSON-Datei für Konvertierungszuordnung des Typs „Gerät“ wurde nicht konfiguriert.|Konfigurieren und speichern Sie die entsprechende JSON-Datei für Konvertierungszuordnung des Typs „Gerät“.|
 |JSON-Datei für Konvertierungszuordnung des Typs „FHIR“ wurde nicht konfiguriert.|Konfigurieren und speichern Sie die entsprechende JSON-Datei für Konvertierungszuordnung des Typs „FHIR“.|
@@ -67,22 +95,22 @@ Die Kopien der Zuordnungsdatei sollten beim Öffnen eines Supporttickets für de
 
 1. Wählen Sie auf der unteren linken Seite des Ressourcendashboards für Azure-API für FHIR im Abschnitt **„Add-Ins“** die Option **„IoT-Konnektor (Vorschauversion)“** aus.
 
-   :::image type="content" source="media/iot-troubleshoot/map-files-main-with-box.png" alt-text="IoT-Konnektor" lightbox="media/iot-troubleshoot/map-files-main-with-box.png":::
+   :::image type="content" source="media/iot-troubleshoot/map-files-main-with-box.png" alt-text="IoT-Konnektor1" lightbox="media/iot-troubleshoot/map-files-main-with-box.png":::
 
 2. Wählen Sie den **„Konnektor“** aus, aus dem Sie die JSON-Datei für Konvertierungszuordnung kopieren werden.
 
-   :::image type="content" source="media/iot-troubleshoot/map-files-select-connector-with-box.png" alt-text="IoT-Konnektor" lightbox="media/iot-troubleshoot/map-files-select-connector-with-box.png":::
+   :::image type="content" source="media/iot-troubleshoot/map-files-select-connector-with-box.png" alt-text="IoT-Konnektor1" lightbox="media/iot-troubleshoot/map-files-select-connector-with-box.png":::
 
 > [!NOTE]
 > Dieser Prozess kann auch zum Kopieren und Speichern der Inhalte der JSON-Datei für **„FHIR-Zuordnung konfigurieren“** verwendet werden.
 
 3. Wählen Sie **„Gerätezuordnung konfigurieren“** aus.
 
-    :::image type="content" source="media/iot-troubleshoot/map-files-select-device-with-box.png" alt-text="IoT-Konnektor" lightbox="media/iot-troubleshoot/map-files-select-device-with-box.png":::
+    :::image type="content" source="media/iot-troubleshoot/map-files-select-device-with-box.png" alt-text="IoT-Konnektor1" lightbox="media/iot-troubleshoot/map-files-select-device-with-box.png":::
 
 4. Wählen Sie den Inhalt der JSON-Datei aus, und führen Sie einen Kopiervorgang aus (Beispiel: Drücken Sie STRG+C). 
 
-   :::image type="content" source="media/iot-troubleshoot/map-files-select-device-json-with-box.png" alt-text="IoT-Konnektor" lightbox="media/iot-troubleshoot/map-files-select-device-json-with-box.png":::
+   :::image type="content" source="media/iot-troubleshoot/map-files-select-device-json-with-box.png" alt-text="IoT-Konnektor1" lightbox="media/iot-troubleshoot/map-files-select-device-json-with-box.png":::
 
 5. Führen Sie einen Einfügevorgang (Beispiel: STRG+C drücken) in eine neue Datei in einem Text-Editor (Beispiel: Visual Studio Code, Notepad) aus, und speichern Sie die Datei mit der Erweiterung „*.JSON“.
 

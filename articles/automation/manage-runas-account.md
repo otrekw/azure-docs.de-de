@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 06/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3e5f75a5ff9c6baff9bbefea7846ffe78655c6a9
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: cb804b21d6f5312c13bfdbf7b0fc0404961ba1e3
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401757"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90005733"
 ---
 # <a name="manage-an-azure-automation-run-as-account"></a>Verwalten eines ausführenden Azure Automation-Kontos
 
@@ -26,16 +26,16 @@ Azure Automation verwendet zwei Typen von ausführenden Konten:
 >[!NOTE]
 >Azure Cloud Solution Provider-Abonnements (Azure CSP) unterstützen nur das Azure Resource Manager-Modell. Dienste, die nicht auf Azure Resource Manager basieren, sind in diesem Programm nicht verfügbar. Wenn Sie ein CSP-Abonnement verwenden, wird kein klassisches ausführendes Azure-Konto erstellt, sondern das ausführende Azure-Konto. Weitere Informationen zu CSP-Abonnements finden Sie unter [Verfügbare Dienste in CSP-Abonnements](/azure/cloud-solution-provider/overview/azure-csp-available-services).
 
-Der Dienstprinzipal für ein ausführendes Konto hat standardmäßig keine Leseberechtigungen für Azure AD. Wenn Sie Berechtigungen zum Lesen oder Verwalten von Azure AD hinzufügen möchten, müssen Sie dem Dienstprinzipal diese Berechtigung unter **API-Berechtigungen** erteilen. Weitere Informationen finden Sie unter [Hinzufügen von Zugriffsberechtigungen für Web-APIs](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis).
+Der Dienstprinzipal für ein ausführendes Konto hat standardmäßig keine Leseberechtigungen für Azure AD. Wenn Sie Berechtigungen zum Lesen oder Verwalten von Azure AD hinzufügen möchten, müssen Sie dem Dienstprinzipal diese Berechtigung unter **API-Berechtigungen** erteilen. Weitere Informationen finden Sie unter [Hinzufügen von Berechtigungen für den Zugriff auf Ihre Web-API](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-your-web-api).
 
 ### <a name="run-as-account"></a>Ausführendes Konto
 
 Das ausführende Konto verwaltet [Resource Manager-Bereitstellungsmodell](../azure-resource-manager/management/deployment-models.md)ressourcen. Folgende Aufgaben werden von ihm ausgeführt.
 
 * Erstellt eine Azure AD-Anwendung mit einem selbstsignierten Zertifikat, erstellt ein Dienstprinzipalkonto für die Anwendung in Azure AD und weist die Rolle „Mitwirkender“ für das Konto in Ihrem aktuellen Abonnement zu. Sie können die Zertifikateinstellung in „Besitzer“ oder eine beliebige andere Rolle ändern. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure Automation](automation-role-based-access-control.md).
-  
+
 * Erstellt ein Automation-Zertifikatasset mit dem Namen `AzureRunAsCertificate` im angegebenen Automation-Konto. Das Zertifikatasset enthält den privaten Schlüssel des Zertifikats, der von der Azure AD-Anwendung verwendet wird.
-  
+
 * Erstellt ein Automation-Verbindungsasset mit dem Namen `AzureRunAsConnection` im angegebenen Automation-Konto. Die Verbindungsressource enthält die Anwendungs-ID, die Mandanten-ID, die Abonnement-ID und den Zertifikatfingerabdruck.
 
 ### <a name="azure-classic-run-as-account"></a>Klassisches ausführendes Azure-Konto
@@ -80,7 +80,7 @@ So überprüfen Sie, ob die Situation, die die Fehlermeldung erzeugt, behoben wu
 
 1. Wählen Sie im Azure-Portal im Bereich „Azure Active Directory“ **Benutzer und Gruppen** aus.
 2. Wählen Sie **Alle Benutzer**.
-3. Wählen Sie Ihren Namen aus, und wählen Sie dann **Profil** aus. 
+3. Wählen Sie Ihren Namen aus, und wählen Sie dann **Profil** aus.
 4. Stellen Sie sicher, dass der Wert des Attributs **Benutzertyp** im Profil des Benutzers nicht auf **Gast** festgelegt ist.
 
 ### <a name="get-permissions-to-configure-classic-run-as-accounts"></a><a name="permissions-classic"></a>Erhalten von Berechtigungen zum Konfigurieren klassischer ausführender Konten
@@ -99,7 +99,7 @@ Führen Sie die folgenden Schritte aus, um Ihr Azure Automation-Konto im Azure-P
 
 4. Wählen Sie im linken Bereich im Abschnitt „Kontoeinstellungen“ **Ausführende Konten** aus.
 
-5. Abhängig vom benötigten Konto wählen Sie **Ausführendes Azure-Konto** oder **Klassisches ausführendes Azure-Konto** aus. 
+5. Abhängig vom benötigten Konto wählen Sie **Ausführendes Azure-Konto** oder **Klassisches ausführendes Azure-Konto** aus.
 
 6. Verwenden Sie je nach gewünschtem Konto den Bereich **Ausführendes Azure-Konto hinzufügen** oder **Klassisches ausführendes Azure-Konto hinzufügen**. Klicken Sie nach dem Überprüfen der Übersichtsinformationen auf **Erstellen**.
 
@@ -113,7 +113,7 @@ In diesem Abschnitt wird beschrieben, wie Sie ein ausführendes Konto oder klass
 
 2. Wählen Sie im linken Bereich im Abschnitt „Kontoeinstellungen“ **Ausführende Konten** aus.
 
-3. Wählen Sie auf der Eigenschaftenseite „Ausführende Konten“ entweder das ausführende Konto oder das klassische ausführende Konto aus, das Sie löschen möchten. 
+3. Wählen Sie auf der Eigenschaftenseite „Ausführende Konten“ entweder das ausführende Konto oder das klassische ausführende Konto aus, das Sie löschen möchten.
 
 4. Klicken Sie auf der Seite „Eigenschaften“ für das ausgewählte Konto auf **Löschen**.
 
@@ -127,7 +127,7 @@ In diesem Abschnitt wird beschrieben, wie Sie ein ausführendes Konto oder klass
 
 ## <a name="renew-a-self-signed-certificate"></a><a name="cert-renewal"></a>Verlängern eines selbstsignierten Zertifikats
 
-Das selbstsignierte Zertifikat, das Sie für das ausführende Konto erstellt haben, läuft ein Jahr nach dem Erstellungsdatum ab. Das Zertifikat muss vor Ablauf Ihres ausführenden Kontos erneuert werden. Sie können es vor dem Ablaufdatum jederzeit erneuern. 
+Das selbstsignierte Zertifikat, das Sie für das ausführende Konto erstellt haben, läuft ein Jahr nach dem Erstellungsdatum ab. Das Zertifikat muss vor Ablauf Ihres ausführenden Kontos erneuert werden. Sie können es vor dem Ablaufdatum jederzeit erneuern.
 
 Beim Erneuern des selbstsignierten Zertifikats wird das aktuell gültige Zertifikat beibehalten, um sicherzustellen, dass sich keine negativen Auswirkungen auf Runbooks ergeben, die sich in der Warteschlange befinden oder aktiv ausgeführt werden und die mit dem ausführenden Konto authentifiziert werden. Das Zertifikat bleibt bis zum Ablaufdatum gültig.
 
@@ -168,10 +168,10 @@ $roleDefinition.NotActions.Add("Microsoft.Compute/*")
 $roleDefinition | Set-AzRoleDefinition
 ```
 
-Sie können bestimmen, ob sich der Dienstprinzipal, der von Ihrem ausführenden Konto verwendet wird, in der Rollendefinition „Mitwirkender“ oder in einer benutzerdefinierten befindet. 
+Sie können bestimmen, ob sich der Dienstprinzipal, der von Ihrem ausführenden Konto verwendet wird, in der Rollendefinition „Mitwirkender“ oder in einer benutzerdefinierten befindet.
 
 1. Wechseln Sie zu Ihrem Automation-Konto, und wählen Sie im Abschnitt mit den Kontoeinstellungen **Ausführende Konten** aus.
-2. Wählen Sie **Ausführendes Azure-Konto** aus. 
+2. Wählen Sie **Ausführendes Azure-Konto** aus.
 3. Wählen Sie **Rolle** aus, um die Rollendefinition zu suchen, die verwendet wird.
 
 :::image type="content" source="media/manage-runas-account/verify-role.png" alt-text="Überprüfen der Rolle „Ausführendes Konto“" lightbox="media/manage-runas-account/verify-role-expanded.png":::
@@ -207,7 +207,7 @@ Wenn Sie das ausführende Konto auswählen, wird im Bereich „Eigenschaften“ 
 The Run As account is incomplete. Either one of these was deleted or not created - Azure Active Directory Application, Service Principal, Role, Automation Certificate asset, Automation Connect asset - or the Thumbprint is not identical between Certificate and Connection. Please delete and then re-create the Run As Account.
 ```
 
-Sie können diese Probleme mit ausführenden Konten schnell beheben, indem Sie das Konto löschen und neu erstellen.
+Sie können diese Probleme mit ausführenden Konten schnell beheben, indem Sie das ausführende Konto löschen und neu erstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

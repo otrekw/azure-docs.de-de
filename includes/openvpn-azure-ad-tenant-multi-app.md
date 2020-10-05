@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/21/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 2eb2dbc43c59f4f6301c7f5073a73462639d35b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8172e0e208d9a780c7676d7cb0e77dbc1c16f493
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83797156"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606261"
 ---
 ## <a name="1-create-the-azure-ad-tenant"></a><a name="tenant"></a>1. Erstellen des Azure AD-Mandanten
 
@@ -77,7 +77,7 @@ Registrieren des VPN-Client im Azure AD-Mandanten.
 
 6. Wählen Sie **Akzeptieren** aus, wenn Sie dazu aufgefordert werden.
 
-    ![Akzeptieren](./media/openvpn-azure-ad-tenant-multi-app/accept.jpg)
+    ![Der Screenshot zeigt ein Fenster mit der Meldung, dass Berechtigungen angefordert wurden. Zudem wird „Akzeptieren“ für Ihre Organisation sowie Informationen zur Anforderung angezeigt.](./media/openvpn-azure-ad-tenant-multi-app/accept.jpg)
 
 7. Unter ihrem Azure AD wird in **Unternehmensanwendungen** **Azure-VPN** aufgeführt.
 

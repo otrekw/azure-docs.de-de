@@ -1,25 +1,24 @@
 ---
 title: Unterstützte Regionen für einen verknüpften Log Analytics-Arbeitsbereich
-description: In diesem Artikel werden die unterstützten Regionszuordnungen zwischen einem Automation-Konto und einem Log Analytics-Arbeitsbereich beschrieben.
+description: In diesem Artikel werden die unterstützten Regionszuordnungen zwischen einem Automation-Konto und einem Log Analytics-Arbeitsbereich im Zusammenhang mit bestimmten Features von Azure Automation beschrieben.
+ms.date: 09/03/2020
 services: automation
-ms.service: automation
-ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 06/12/2020
 ms.topic: conceptual
-manager: carmonm
 ms.custom: references_regions
-ms.openlocfilehash: 879c6d247a915def7b4b8d53c74bde7861e47f1d
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: dd831789d5f09ca6a20cce13659d6c479845f74e
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279804"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440659"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>Unterstützte Regionen für einen verknüpften Log Analytics-Arbeitsbereich
 
-In Azure Automation können Sie die Features „Updateverwaltung“, „Änderungsnachverfolgung und Bestand“ und „VMs außerhalb der Geschäftszeiten starten/beenden“ für Ihre virtuellen Computer aktivieren. Für die Verknüpfung eines Log Analytics-Arbeitsbereichs und eines Automation-Kontos in Ihrem Abonnement werden allerdings nur bestimmte Regionen unterstützt. Diese Regionszuordnungen gelten nur für das Automation-Konto und den Log Analytics-Arbeitsbereich. Der Log Analytics-Arbeitsbereich und das Automation-Konto müssen sich im selben Abonnement befinden, können sich aber in unterschiedlichen Ressourcengruppen befinden, die in derselben Region bereitgestellt sind. Weitere Informationen finden Sie unter [Log Analytics-Arbeitsbereich und das Automation-Konto](../../azure-monitor/insights/solutions.md#log-analytics-workspace-and-automation-account).
+In Azure Automation können Sie die Features „Updateverwaltung“, „Änderungsnachverfolgung und Bestand“ und „VMs außerhalb der Geschäftszeiten starten/beenden“ für Ihre Server und virtuellen Computer aktivieren. Diese Features hängen von einem Log Analytics-Arbeitsbereich ab und erfordern daher die Verknüpfung des Arbeitsbereichs mit einem Automation-Konto. Allerdings wird nur die Verknüpfung bestimmter Regionen unterstützt. Im Allgemeinen ist die Zuordnung *nicht* anwendbar, wenn Sie planen, ein Automation-Konto mit einem Arbeitsbereich zu verknüpfen, in dem diese Features nicht aktiviert sind.
+
+Dieser Artikel enthält die unterstützten Zuordnungen, um diese Features in Ihrem Automation-Konto erfolgreich zu aktivieren und mithilfe dieser Features zu verwenden.
+
+Weitere Informationen finden Sie unter [Log Analytics-Arbeitsbereich und das Automation-Konto](../../azure-monitor/insights/solutions.md#log-analytics-workspace-and-automation-account).
 
 ## <a name="supported-mappings"></a>Unterstützte Zuordnungen
 
@@ -55,7 +54,7 @@ Die folgende Tabelle zeigt die unterstützten Zuordnungen:
 
 ## <a name="unlink-a-workspace"></a>Aufheben der Verknüpfung eines Arbeitsbereichs
 
-Wenn Sie Ihr Automation-Konto nicht länger in einen Log Analytics-Arbeitsbereich integriert sein soll, können Sie die Verknüpfung direkt im Azure-Portal aufheben. Dazu müssen zunächst „Updateverwaltung“, „Änderungsnachverfolgung und Bestand“ und „VMs außerhalb der Geschäftszeiten starten/beenden“ [entfernt](move-account.md#remove-features) werden (sofern Sie diese Features nutzen). Andernfalls kann der Vorgang zum Aufheben der Verknüpfung nicht ausgeführt werden. 
+Wenn Sie Ihr Automation-Konto nicht länger in einen Log Analytics-Arbeitsbereich integriert sein soll, können Sie die Verknüpfung direkt im Azure-Portal aufheben. Dazu müssen zunächst „Updateverwaltung“, „Änderungsnachverfolgung und Bestand“ und „VMs außerhalb der Geschäftszeiten starten/beenden“ [entfernt](move-account.md#remove-features) werden (sofern Sie diese Features nutzen). Andernfalls kann der Vorgang zum Aufheben der Verknüpfung nicht ausgeführt werden.
 
 Nachdem Sie die Features entfernt haben, können Sie die folgenden Schritte ausführen, um die Verknüpfung Ihres Automation-Kontos aufzuheben.
 

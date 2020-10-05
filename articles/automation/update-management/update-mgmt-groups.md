@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 20e6d26808964c8e697c694bd796af2851e7ca48
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 61339a22fc3823325ff5356112c2df8a800010a0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449597"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985194"
 ---
 # <a name="use-dynamic-groups-with-update-management"></a>Verwenden dynamischer Gruppen mit der Updateverwaltung
 
@@ -45,7 +45,7 @@ Klicken Sie auf **Vorschau**, um die Ergebnisse Ihrer Abfrage für die dynamisch
 
 Bei Verwendung einer dynamischen Gruppe für nicht zu Azure gehörende Computer werden gespeicherte Suchen genutzt, die auch als Computergruppen bezeichnet werden. Informationen zum Erstellen einer gespeicherten Suche finden Sie unter [Erstellen einer Computergruppe](../../azure-monitor/platform/computer-groups.md#creating-a-computer-group). Nachdem Ihre gespeicherte Suche erstellt wurde, können Sie sie im Azure-Portal unter **Updateverwaltung** in der Liste mit den gespeicherten Suchen auswählen. Klicken Sie auf **Vorschau**, um die Vorschau für die Computer in der gespeicherten Suche anzuzeigen.
 
-![Auswählen von Gruppen](./media/update-mgmt-groups/select-groups-2.png)
+![Der Screenshot zeigt die Seite „Gruppen auswählen“ für Nicht-Azure (Vorschau) und den Vorschaubereich auf der rechten Seite.](./media/update-mgmt-groups/select-groups-2.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

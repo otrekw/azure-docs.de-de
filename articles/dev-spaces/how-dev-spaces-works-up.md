@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Beschreibt die Prozesse bei der Ausführung von Code unter Azure Kubernetes Service mit Azure Dev Spaces
 keywords: azds.yaml, Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
-ms.openlocfilehash: 9dbc1f0f21c2883e5caadbdae268a515eb94d145
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: a189b26264f3e22a69acb3e3c0410203f9822c31
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88208694"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981280"
 ---
 # <a name="how-running-your-code-with-azure-dev-spaces-works"></a>Funktionsweise der Ausführung von Code mit Azure Dev Spaces
 
@@ -199,12 +199,12 @@ ingress:
 
 Weitere Informationen zu Netzwerken und zum Weiterleiten von Anforderungen in Azure Dev Spaces finden Sie unter [Funktionsweise von Routing mit Azure Dev Spaces][how-it-works-routing].
 
-Weitere Informationen zum Verwenden von Azure Dev Spaces für schnelle Iteration und Entwicklung finden Sie unter [So funktioniert ein lokaler Prozess mit Kubernetes][how-it-works-local-process-kubernetes] und [So funktioniert das Remotedebuggen Ihres Codes mit Azure Dev Spaces][how-it-works-remote-debugging].
+Weitere Informationen zur schnellen Iteration und Entwicklung mit Kubernetes finden Sie unter [Funktionsweise von Bridge to Kubernetes][how-it-works-bridge-to-kubernetes] und [So funktioniert das Remotedebuggen Ihres Codes mit Azure Dev Spaces][how-it-works-remote-debugging].
 
 
 [azds-yaml-section]: #how-running-your-code-is-configured
 [helm-upgrade]: https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
-[how-it-works-local-process-kubernetes]: /visualstudio/containers/overview-local-process-kubernetes
+[how-it-works-bridge-to-kubernetes]: /visualstudio/containers/overview-bridge-to-kubernetes
 [how-it-works-prep]: how-dev-spaces-works-prep.md
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
 [how-it-works-routing]: how-dev-spaces-works-routing.md

@@ -8,13 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: how-to
 ms.custom: subject-moving-resources
-ms.date: 03/24/2020
-ms.openlocfilehash: 71846b8e26efb3853705fabff78831e746727191
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/10/2020
+ms.openlocfilehash: 7383d9f95435775448f7322d9eb7707f676e9952
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88926948"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007042"
 ---
 # <a name="move-your-azure-cognitive-search-service-to-another-azure-region"></a>Verschieben Ihres Azure Cognitive Search-Diensts in eine andere Azure-Region
 
@@ -23,7 +23,13 @@ Gelegentlich fragen Kunden an, wie ein Suchdienst in eine andere Region verschob
 > [!NOTE]
 > Im Azure-Portal verfügen alle Dienste über einen Befehl zum **Exportieren von Vorlagen**. Bei Azure Cognitive Search erstellt dieser Befehl eine grundlegende Definition eines Diensts (Name, Standort, Ebene, Replikat und Partitionsanzahl), erkennt jedoch nicht den Inhalt des Diensts und überträgt auch keine Schlüssel, Rollen oder Protokolle. Der Befehl ist zwar vorhanden, es empfiehlt sich jedoch nicht, ihn zum Verschieben eines Suchdiensts zu verwenden.
 
-## <a name="guidance-for-moving-a-service"></a>Schritte zum Verschieben eines Diensts
+## <a name="prerequisites"></a>Voraussetzungen
+
++ Stellen Sie sicher, dass die Dienste und Features, die von Ihrem Konto verwendet werden, in der Zielregion unterstützt werden.
+
++ Stellen Sie für Previewfunktionen sicher, dass Ihr Abonnement für die Zielregion auf der Whitelist steht.
+
+## <a name="prepare-and-move"></a>Vorbereiten und Verschieben
 
 1. Identifizieren Sie Abhängigkeiten und verwandte Dienste, um die vollständige Auswirkung des Verschiebens eines Diensts zu verstehen, falls Sie mehr als nur Azure Cognitive Search verschieben müssen.
 
@@ -41,14 +47,16 @@ Gelegentlich fragen Kunden an, wie ein Suchdienst in eine andere Region verschob
 
 1. Aktualisieren Sie Clientanwendungen und Testsammlungen, sodass sie den neuen Dienstnamen und die API-Schlüssel verwenden, und testen Sie alle Anwendungen.
 
-1. Löschen Sie den alten Dienst, wenn der neue Dienst vollständig getestet und einsatzbereit ist.
+## <a name="discard-or-clean-up"></a>Verwerfen oder Bereinigen
+
+Löschen Sie den alten Dienst, wenn der neue Dienst vollständig getestet und einsatzbereit ist. Wenn Sie den Dienst löschen, werden automatisch alle dem Dienst zugeordneten Inhalte gelöscht.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Anhand der folgenden Links finden Sie weitere Informationen, wenn Sie die oben beschriebenen Schritte ausführen.
 
 + [Azure Cognitive Search-Tarife und -Regionen](https://azure.microsoft.com/pricing/details/search/)
-+ [Auswählen einer Ebene](search-sku-tier.md)
++ [Wählen Sie eine Ebene aus:](search-sku-tier.md)
 + [Erstellen eines Suchdiensts](search-create-service-portal.md)
 + [Laden von Suchdokumenten](search-what-is-data-import.md)
 + [Aktivieren der Protokollierung](search-monitor-logs.md)

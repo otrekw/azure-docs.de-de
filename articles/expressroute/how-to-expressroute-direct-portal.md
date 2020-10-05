@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 08/06/2020
 ms.author: duau
-ms.openlocfilehash: 09d3723224f9c678e41a6cbc86b5f8f9655173c8
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 52aba71ba289a1b5479a6a9eaef7e07418b563fd
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401468"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986378"
 ---
 # <a name="create-expressroute-direct-using-the-azure-portal"></a>Erstellen von ExpressRoute Direct mit dem Portal
 
@@ -47,7 +47,7 @@ ExpressRoute Direct ermöglicht es, sich direkt mit dem globalen Netzwerk von Mi
 
 1. Vervollständigen Sie dann die Felder auf der Seite **Konfiguration**.
 
-    :::image type="content" source="./media/how-to-expressroute-direct-portal/configuration.png" alt-text="Seite „Konfiguration“":::
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/configuration.png" alt-text="Seite „Grundlagen“":::
 
     * **Peeringstandort**: Der Peeringstandort, an dem Sie eine Verbindung mit der ExpressRoute Direct-Ressource herstellen. Weitere Informationen zu Peeringstandorten finden Sie unter [ExpressRoute-Standorte](expressroute-locations-providers.md).
    * **Bandbreite**: Die Portpaarbandbreite, die Sie reservieren möchten. ExpressRoute Direct unterstützt die Bandbreitenoptionen 10 GB und 100 GB. Wenn die gewünschte Bandbreite am angegebenen Peeringstandort nicht verfügbar ist, [öffnen Sie eine Supportanfrage im Azure-Portal](https://aka.ms/azsupt).
@@ -61,7 +61,7 @@ ExpressRoute Direct ermöglicht es, sich direkt mit dem globalen Netzwerk von Mi
 
 1. Geben Sie beliebige Ressourcentags an, und wählen Sie dann **Überprüfen und erstellen** aus, um die ExpressRoute Direct-Ressourceneinstellungen zu überprüfen.
 
-    :::image type="content" source="./media/how-to-expressroute-direct-portal/validate.png" alt-text="Überprüfen und erstellen":::
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/validate.png" alt-text="Seite „Grundlagen“":::
 
 1. Klicken Sie auf **Erstellen**. Daraufhin wird eine Meldung mit dem Hinweis angezeigt, dass Ihre Bereitstellung ausgeführt wird. Der Status der Ressourcenerstellung wird auf dieser Seite angezeigt. 
 
@@ -71,11 +71,11 @@ Dieser Prozess sollte verwendet werden, um einen Layer-1-Test durchzuführen, de
 
 1. Wählen Sie auf der Seite **Übersicht** der ExpressRoute Direct-Ressource im Abschnitt **Links** die Angabe **Link1** aus.
 
-    :::image type="content" source="./media/how-to-expressroute-direct-portal/link.png" alt-text="Link 1" lightbox="./media/how-to-expressroute-direct-portal/link-expand.png":::
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/link.png" alt-text="Seite „Grundlagen“" lightbox="./media/how-to-expressroute-direct-portal/link-expand.png":::
 
 1. Schalten Sie die Einstellung **Administratorstatus** auf **Aktiviert** um, und wählen Sie dann **Speichern** aus.
 
-    :::image type="content" source="./media/how-to-expressroute-direct-portal/state.png" alt-text="Administratorstatus":::
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/state.png" alt-text="Seite „Grundlagen“":::
 
     >[!IMPORTANT]
     >Die Abrechnung beginnt, wenn der Administratorstatus für einen der beiden Links aktiviert ist.
@@ -97,15 +97,15 @@ Die folgenden Schritte unterstützen Sie beim Erstellen einer ExpressRoute-Verbi
 
 1. Wählen Sie im Abschnitt **ExpressRoute Direct-Einstellungen** die Option **Verbindungen** aus, und wählen Sie dann **+Hinzufügen** aus. 
 
-    :::image type="content" source="./media/how-to-expressroute-direct-portal/add.png" alt-text="Add (Hinzufügen)" lightbox="./media/how-to-expressroute-direct-portal/add-expand.png":::
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/add.png" alt-text="Seite „Grundlagen“" lightbox="./media/how-to-expressroute-direct-portal/add-expand.png":::
 
 1. Konfigurieren Sie die Einstellungen auf der Seite **Konfiguration**.
 
-   :::image type="content" source="./media/how-to-expressroute-direct-portal/configuration2.png" alt-text="Seite „Konfiguration“":::
+   :::image type="content" source="./media/how-to-expressroute-direct-portal/configuration2.png" alt-text="Seite „Grundlagen“":::
 
 1. Geben Sie beliebige Ressourcen Tags an, und wählen Sie **Überprüfen und erstellen** aus, um die Werte vor dem Erstellen der Ressource zu validieren.
 
-   :::image type="content" source="./media/how-to-expressroute-direct-portal/review.png" alt-text="Überprüfen und erstellen":::
+   :::image type="content" source="./media/how-to-expressroute-direct-portal/review.png" alt-text="Seite „Grundlagen“":::
 
 1. Klicken Sie auf **Erstellen**. Daraufhin wird eine Meldung mit dem Hinweis angezeigt, dass Ihre Bereitstellung ausgeführt wird. Der Status der Ressourcenerstellung wird auf dieser Seite angezeigt. 
 

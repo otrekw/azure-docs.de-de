@@ -1,5 +1,5 @@
 ---
-title: 'Visualisieren von Daten im TSI-Explorer: Azure Time Series Insights Gen2 | Microsoft-Dokumentation'
+title: 'Visualisieren von Daten im Time Series Insights-Explorer: Azure Time Series Insights Gen2 | Microsoft-Dokumentation'
 description: Hier erfahren Sie mehr über die im Azure Time Series Insights-Explorer verfügbaren Features und Optionen.
 author: deepakpalled
 ms.author: dpalled
@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 08/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 31ed5f93fc7d1b44ae8a4afb1f4368d0b52eb2fd
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 0933e34e5bdd8469b827ed03c0eff51a4ecba0d5
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89227048"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488166"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights-Explorer
 
@@ -200,11 +200,11 @@ Der Azure Time Series Insights-Explorer unterstützt zwei Designs:
 
   [![„Dunkles Design“ ausgewählt](media/v2-update-explorer/tsi-preview-dark-theme-selected.png)](media/v2-update-explorer/tsi-preview-dark-theme-selected.png#lightbox)
 
-## <a name="gen-1-environment-controls"></a>Gen1-Umgebungssteuerelemente
+## <a name="gen1-environment-controls"></a>Gen1-Umgebungssteuerelemente
 
 ### <a name="gen2-terms-panel"></a>Gen2-Begriffsbereich
 
-Dieser Abschnitt gilt nur für vorhandene Gen1-Umgebungen, die versuchen, den Explorer mit der aktualisierten Benutzeroberfläche zu verwenden. Sie sollten die Gen1- und das Gen2-Produkte auch in Kombination verwenden. Wir haben dem aktualisierten Explorer einige Funktionen aus der vorhandenen Benutzeroberfläche hinzugefügt, aber Sie können die vollständigen Benutzeroberflächenfunktionen für eine Gen1-Umgebung im neuen Azure Time Series Insights-Explorer nutzen.
+Dieser Abschnitt gilt nur für vorhandene Gen1-Umgebungen, die versuchen, den Explorer mit der aktualisierten Benutzeroberfläche zu verwenden. Sie sollten die Gen1- und das Gen1-Produkte auch in Kombination verwenden. Wir haben dem aktualisierten Explorer einige Funktionen aus der vorhandenen Benutzeroberfläche hinzugefügt, aber Sie können die vollständigen Benutzeroberflächenfunktionen für eine Gen1-Umgebung im neuen Azure Time Series Insights-Explorer nutzen.
 
 Anstelle der Hierarchie wird der Azure Time Series Insights Gen2-Begriffsbereich angezeigt. Mit dem Begriffsbereich können Sie Abfragen in Ihrer Umgebung definieren. Verwenden Sie ihn auch, um Daten basierend auf einem Prädikat zu filtern.
 

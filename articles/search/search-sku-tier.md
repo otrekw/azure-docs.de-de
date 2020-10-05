@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: ac08f2cee19b2d8860323c48d89205d5ca939157
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: c09c5b33f7960ffebfdfc8005537e75a249b8d99
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922802"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661086"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Auswählen eines Tarifs für die kognitive Azure-Suche
 
@@ -39,7 +39,7 @@ Die meisten Features sind in jedem Tarif verfügbar, auch im Free-Tarif, aber re
 
 Die Tarife unterscheiden sich durch:
 
-+ Anzahl der Indizes und Indexer, die erstellt werden können
++ Anzahl der Indizes und Indexer (maximale Grenzwerte)
 + Größe und Geschwindigkeit von Partitionen (physischer Speicher)
 
 Der ausgewählte Tarif bestimmt den abzurechnenden Preis. Im folgenden Screenshot aus dem Azure-Portal sind die verfügbaren Tarife ohne Preise aufgeführt (die Preise finden Sie im Portal und auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/search/)). **Free**, **Basic** und **Standard** sind die gängigsten Tarife.

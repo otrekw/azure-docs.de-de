@@ -3,12 +3,12 @@ title: Einrichten der Abhängigkeitsanalyse ohne Agent in der Azure Migrate-Serv
 description: Hier erfahren Sie, wie Sie die Abhängigkeitsanalyse ohne Agent in der Azure Migrate-Serverbewertung einrichten.
 ms.topic: how-to
 ms.date: 6/08/2020
-ms.openlocfilehash: dc2ea0656198927cc8ae58533d296a2bedc37c13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2e6e562a18fa2ee0b89416ea67cc15394e760ada
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84771375"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536437"
 ---
 # <a name="analyze-machine-dependencies-agentless"></a>Analysieren von Computerabhängigkeiten (ohne Agent)
 
@@ -25,7 +25,7 @@ In diesem Artikel wird das Einrichten der Abhängigkeitsanalyse ohne Agent in de
 
 - In der Abhängigkeitsanalyseansicht können Sie zurzeit keine Server zu einer Gruppe hinzufügen oder daraus entfernen.
 - Eine Abhängigkeitszuordnung für eine Gruppe von Servern ist derzeit nicht verfügbar.
-- Die Abhängigkeitsdaten können nicht im Tabellenformat heruntergeladen werden.
+- Die Sammlung von Abhängigkeitsdaten kann gleichzeitig für 400 Server eingerichtet werden. Sie können eine höhere Anzahl von Servern analysieren, indem Sie eine Reihe von Batches von jeweils 400 Servern erstellen.
 
 ## <a name="before-you-start"></a>Vorbereitung
 

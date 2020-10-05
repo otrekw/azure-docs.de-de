@@ -9,14 +9,14 @@ manager: dviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/25/2020
+ms.date: 08/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 35a2be5c9f418bc423ae56c456db0062677a33c2
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 5e8cb5e062db5c66fc093bf67c97caba15f407a3
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88856117"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489118"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Gewähren von Datenzugriff für eine Umgebung
 
@@ -124,4 +124,4 @@ Führen Sie die folgenden Schritte aus, um einem Azure AD-Benutzer über einen 
 
 * Lesen Sie [Authentifizierung und Autorisierung](time-series-insights-authentication-and-authorization.md), um sich über die Schritte für die Azure Active Directory App-Registrierung zu informieren.
 
-* Zeigen Sie [Ihre Umgebung im Azure Time Series Insights TSI-Explorer](./time-series-insights-update-explorer.md) an.
+* Anzeigen [Ihrer Umgebung im Azure Time Series Insights-Explorer](./time-series-insights-update-explorer.md).

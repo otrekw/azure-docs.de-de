@@ -2,13 +2,13 @@
 title: Häufig gestellte Fragen zur Azure Migrate-Appliance
 description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zur Azure Migrate-Appliance.
 ms.topic: conceptual
-ms.date: 06/03/2020
-ms.openlocfilehash: de34bba40b9200c198f3c07262bd6b7a00b62060
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.date: 09/15/2020
+ms.openlocfilehash: 6c1e5099f208788919d27ba3d2b1de296f0d91a6
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050674"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526560"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate-Appliance: Häufig gestellte Fragen
 
@@ -21,7 +21,7 @@ In diesem Artikel werden häufig gestellte Fragen zur Azure Migrate-Appliance be
 
 ## <a name="what-is-the-azure-migrate-appliance"></a>Was ist die Azure Migrate-Appliance?
 
-Die Azure Migrate-Appliance ist eine einfache Appliance, die vom Azure Migrate: Serverbewertungstool verwendet wird, um lokale Server zu entdecken und zu bewerten. Azure Migrate: verwendet die Appliance auch für die Migration ohne Agent für lokale VMware-VMs.
+Die Azure Migrate-Appliance ist eine einfache Appliance, die vom Azure Migrate: Serverbewertungstool zum Ermitteln und Bewerten physischer oder virtueller Server von lokalen Standorten oder beliebigen Clouds aus verwendet wird. Azure Migrate: verwendet die Appliance auch für die Migration ohne Agent für lokale VMware-VMs.
 
 Weitere Informationen zur Azure Migrate-Appliance:
 
@@ -35,13 +35,14 @@ Weitere Informationen zur Azure Migrate-Appliance:
 
 Die Appliance kann wie folgt bereitgestellt werden:
 
-- Mithilfe einer Vorlage für VMware-VMs und Hyper-V-VMs (OVA-Vorlage für VMware oder VHD für Hyper-V).
-- Wenn Sie keine Vorlage verwenden möchten oder in Azure Government arbeiten, können Sie die Appliance für VMware oder Hyper-V mithilfe eines PowerShell-Skripts bereitstellen.
-- Bei physischen Servern stellen Sie die Appliance immer mithilfe eines Skripts bereit.
+- Mithilfe einer Vorlage zur Ermittlung von VMware-VMs (.OVA-Datei) und Hyper-V-VMs (.VHD-Datei), um eine neue VM zu erstellen, die die Appliance hostet.
+- Wenn Sie keine Vorlage verwenden möchten, können Sie die Appliance auf einem vorhandenen physischen oder virtuellen Computer bereitstellen, um VMware-VMs oder Hyper-V-VMs mithilfe eines PowerShell-Installationsskripts zu ermitteln, das in einer ZIP-Datei vom Portal heruntergeladen werden kann.
+- Bei physischen oder virtuellen Servern von lokalen Standorten oder einer beliebigen Cloud stellen Sie die Appliance immer mithilfe eines Skripts auf einem vorhandenen Server bereit.
+- Für Azure Government können alle drei Appliances nur mithilfe des PowerShell-Installationsskripts bereitgestellt werden.
 
 ## <a name="how-does-the-appliance-connect-to-azure"></a>Wie stellt die Appliance eine Verbindung mit Azure her?
 
-Die Appliance kann eine Verbindung über das Internet oder mithilfe von Azure ExpressRoute herstellen.
+Die Appliance kann eine Verbindung über das Internet oder mithilfe von Azure ExpressRoute herstellen. Stellen Sie sicher, dass diese [URLs](https://docs.microsoft.com/azure/migrate/migrate-appliance#url-access) auf der Whitelist stehen, damit die Appliance eine Verbindung mit Azure herstellen kann.
 
 - Zur Verwendung von Azure ExpressRoute für Azure Migrate-Replikationsdatenverkehr ist Microsoft-Peering oder ein vorhandenes öffentliches Peering erforderlich (öffentliches Peering ist für neue ER-Erstellungen veraltet).
 - Die Replikation über Azure ExpressRoute mit (nur) aktiviertem privatem Peering wird nicht unterstützt.
@@ -66,6 +67,7 @@ In den folgenden Artikeln finden Sie Informationen zu den Daten, die von der Azu
 
 - **Virtueller VMware-Computer:** [Überprüfen](migrate-appliance.md#collected-data---vmware) gesammelter Daten.
 - **Virtueller Hyper-V-Computer**: [Überprüfen](migrate-appliance.md#collected-data---hyper-v) gesammelter Daten.
+- **Physische oder virtuelle Server**:[Überprüfen](migrate-appliance.md#collected-data---physical) gesammelter Daten.
 
 ## <a name="how-is-data-stored"></a>Wie werden die Daten gespeichert?
 
@@ -74,7 +76,7 @@ Die von der Azure Migrate-Appliance erfassten Daten werden an dem Azure-Speicher
 Weitere Informationen zur Speicherung von Daten:
 
 - Die erfassten Daten werden sicher in CosmosDB in einem Microsoft-Abonnement gespeichert. Die Daten werden gelöscht, wenn Sie das Azure Migrate-Projekt löschen. Die Speicherung wird von Azure Migrate durchgeführt. Sie können nicht speziell ein Speicherkonto für erfasste Daten auswählen.
-- Wenn Sie die [Visualisierung von Abhängigkeiten](concepts-dependency-visualization.md) verwenden, werden die erfassten Daten in den USA in einem Azure Log Analytics-Arbeitsbereich gespeichert, der in Ihrem Azure-Abonnement erstellt wurde. Die Daten werden gelöscht, wenn Sie den Log Analytics-Arbeitsbereich in Ihrem Abonnement löschen.
+- Wenn Sie die [Visualisierung von Abhängigkeiten](concepts-dependency-visualization.md) verwenden, werden die erfassten Daten in einem Azure Log Analytics-Arbeitsbereich gespeichert, der in Ihrem Azure-Abonnement erstellt wurde. Die Daten werden gelöscht, wenn Sie den Log Analytics-Arbeitsbereich in Ihrem Abonnement löschen. 
 
 ## <a name="how-much-data-is-uploaded-during-continuous-profiling"></a>Wie viele Daten werden bei der kontinuierlichen Profilerstellung hochgeladen?
 
@@ -107,8 +109,7 @@ An ein Projekt können mehrere Appliances angefügt sein. Eine Appliance kann je
 
 ## <a name="can-the-azure-migrate-appliancereplication-appliance-connect-to-the-same-vcenter"></a>Kann die Azure Migrate-Appliance/Replikations-Appliance eine Verbindung mit demselben vCenter herstellen?
 
-Ja. Sie können sowohl die Azure Migrate-Appliance (wird für die Bewertung und die VMware-Migration ohne Agent verwendet) als auch die Replikations-Appliance (wird für die Agent-basierte Migration von VMware-VMS verwendet) demselben vCenter-Server hinzufügen.
-
+Ja. Sie können sowohl die Azure Migrate-Appliance (wird für die Bewertung und die VMware-Migration ohne Agent verwendet) als auch die Replikations-Appliance (wird für die Agent-basierte Migration von VMware-VMS verwendet) demselben vCenter-Server hinzufügen. Stellen Sie jedoch sicher, dass Sie nicht beide Appliances auf derselben VM einrichten und dass diese derzeit nicht unterstützt wird.
 
 ## <a name="how-many-vms-or-servers-can-i-discover-with-an-appliance"></a>Wie viele VMs oder Server können mit einer Appliance ermittelt werden?
 
@@ -124,7 +125,9 @@ Beim Löschen der Ressourcengruppe werden jedoch auch andere registrierte Applia
 
 ## <a name="can-i-use-the-appliance-with-a-different-subscription-or-project"></a>Kann ich die Appliance mit einem anderen Abonnement oder Projekt verwenden?
 
-Nachdem Sie die Appliance zum Initiieren der Ermittlung verwendet haben, können Sie sie nicht für die Verwendung mit einem anderen Azure-Abonnement neu konfigurieren und sie auch nicht in einem anderen Azure Migrate-Projekt verwenden. Es ist auch nicht möglich, VMs in einer anderen vCenter Server-Instanz zu ermitteln. Richten Sie für diese Aufgaben eine neue Appliance ein.
+Um die Appliance mit einem anderen Abonnement oder Projekt zu verwenden, müssen Sie die vorhandene Appliance neu konfigurieren, indem Sie das PowerShell-Installationsskript für das spezifische Szenario (VMware/Hyper-V/Physisch) auf dem Appliancecomputer ausführen. Das Skript wird die vorhandenen Appliancekomponenten und Einstellungen bereinigen, um eine neue Appliance bereitzustellen. Stellen Sie sicher, dass der Browsercache gelöscht wird, bevor Sie den neu bereitgestellten Appliance-Konfigurations-Manager verwenden.
+
+Außerdem können Sie einen vorhandenen Azure Migrate-Projektschlüssel auf einer neu konfigurierten Appliance nicht wiederverwenden. Stellen Sie sicher, dass Sie aus dem gewünschten Abonnement/Projekt einen neuen Schlüssel generieren, um die Registrierung der Appliance abzuschließen.
 
 ## <a name="can-i-set-up-the-appliance-on-an-azure-vm"></a>Kann ich die Appliance auf einem virtuellen Azure-Computer einrichten?
 

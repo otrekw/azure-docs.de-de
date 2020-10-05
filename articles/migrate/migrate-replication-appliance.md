@@ -3,12 +3,12 @@ title: Azure Migrate-Replikationsappliance
 description: Hier erhalten Sie Informationen zur Azure Migrate-Replikationsappliance für die Agent-basierte VMware-Migration.
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 8149613effc4519638cc9b80f7894874ef3eafe3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: af9e45e47c2f0645d81a571161f15f7d69cfec61
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122097"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532119"
 ---
 # <a name="replication-appliance"></a>Replikationsappliance
 
@@ -129,7 +129,7 @@ Prozessserver | Der Prozessserver empfängt Replikationsdaten, optimiert und ver
     - Der Prozessserver empfängt Replikationsdaten, optimiert und verschlüsselt sie und sendet sie über den ausgehenden Port 443 an Azure Storage.
 5. Die Replikationsdatenprotokolle werden zunächst in einem Cachespeicherkonto in Azure gespeichert. Diese Protokolle werden dann verarbeitet, und die Daten werden auf einem verwalteten Azure-Datenträger gespeichert.
 
-![Aufbau](./media/migrate-replication-appliance/architecture.png)
+![Das Diagramm zeigt die Architektur des Replikationsprozesses.](./media/migrate-replication-appliance/architecture.png)
 
 ## <a name="appliance-upgrades"></a>Appliance-Upgrades
 
