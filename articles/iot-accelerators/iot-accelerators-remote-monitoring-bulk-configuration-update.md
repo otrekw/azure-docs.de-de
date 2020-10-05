@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: philmea
-ms.openlocfilehash: eaca93ac8a4e8c660be9618aefb27921a4e0a2eb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8309b625a590131c5f521335e180967ab2c2667c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77565577"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91363153"
 ---
 # <a name="tutorial-manage-your-connected-devices-in-bulk"></a>Tutorial: Durchführen der Massenverwaltung für Ihre verbundenen Geräte
 
@@ -147,7 +147,7 @@ Verwenden Sie Ihr Azure-Speicherkonto zum Hosten Ihrer neuen Firmwaredatei in de
 
 1. Nachdem der Upload abgeschlossen ist, wird das IoT DevKit-Gerät neu gestartet. Nach Abschluss des Neustarts werden auf dem IoT DevKit-Bildschirm **FW version: 1.0.0** (Firmwareversion: 1.0.0) und ein Hinweis angezeigt, dass nach neuer Firmware gesucht wird:
 
-    ![ota-1](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-1.jpg)
+    ![Das Foto zeigt das IoT DevKit-Gerät mit seinem Bildschirm, auf dem die Firmwareversion und ein Hinweis zu sehen ist, dass nach neuer Firmware gesucht wird.](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-1.jpg)
 
 ## <a name="create-a-device-configuration"></a>Erstellen einer Gerätekonfiguration
 
@@ -248,23 +248,23 @@ In diesem Abschnitt erstellen Sie eine Bereitstellung, bei der die Gerätekonfig
 
 Nach einigen Minuten ruft das IoT DevKit die neuen Firmwareinformationen ab und beginnt mit dem Herunterladen auf das Gerät:
 
-![ota-2](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-2.jpg)
+![Das Foto zeigt das IoT DevKit-Gerät mit seinem Bildschirm, auf dem zu sehen ist, dass die Firmwareversion heruntergeladen wird.](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-2.jpg)
 
 Je nach Geschwindigkeit Ihres Netzwerks kann der Download bis zu zwei Minuten dauern. Nachdem die Firmware heruntergeladen wurde, überprüft das Gerät die Dateigröße und den CRC-Wert. Auf dem MXChip-Bildschirm wird **Passed** (Erfolgreich) angezeigt, wenn die Überprüfung erfolgreich ist.
 
-![ota-3](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-3.jpg)
+![Das Foto zeigt das IoT DevKit-Gerät mit seinem Bildschirm, auf dem die Firmwareversion und „Passed“ für eine erfolgreiche Überprüfung zu sehen ist.](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-3.jpg)
 
 Wenn die Überprüfung erfolgreich ist, wird das Gerät neu gestartet. Vor Beginn des Neustarts wird von **5** bis **0** heruntergezählt.
 
-![ota-4](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-4.jpg)
+![Das Foto zeigt, dass das IoT DevKit-Gerät für den Neustart vorbereitet wird.](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-4.jpg)
 
 Nach dem Neustart aktualisiert das IoT DevKit-Startladeprogramm die Firmware auf die neue Version. Das Upgrade kann einige Sekunden dauern. Während dieser Phase leuchtet die RGB-LED des Geräts rot, und der Bildschirm ist leer.
 
-![ota-5](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-5.jpg)
+![Das Foto zeigt, dass das IoT DevKit-Gerät das Upgrade durchführt. Es gibt keine spezielle Anzeige, aber die RGB-LED leuchtet rot.](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-5.jpg)
 
 Nach Abschluss des Neustarts wird auf Ihrem IoT DevKit-Gerät Version 1.0.1 der Firmware ausgeführt.
 
-![ota-6](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-6.jpg)
+![Das Foto zeigt das IoT DevKit-Gerät mit seinem Bildschirm, auf dem die neue Firmwareversion zu sehen ist.](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-6.jpg)
 
 Klicken Sie auf der Seite **Bereitstellungen** auf eine Bereitstellung, um den Status Ihrer Geräte während des Updatevorgangs zu verfolgen. Sie können den Status für jedes Gerät Ihrer Gerätegruppe und die benutzerdefinierten Metriken sehen.
 

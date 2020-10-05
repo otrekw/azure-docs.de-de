@@ -1,5 +1,5 @@
 ---
-title: Bereitstellen eines simulierten X.509-Geräts für Azure IoT Hub mithilfe von Java
+title: Schnellstart – Bereitstellen eines simulierten X.509-Geräts für Azure IoT Hub mithilfe von Java
 description: 'Azure-Schnellstartanleitung: Erstellen und Bereitstellen eines simulierten X.509-Geräts mithilfe des Java-Geräte-SDK für IoT Hub Device Provisioning Service (DPS). In dieser Schnellstartanleitung werden individuelle Registrierungen verwendet.'
 author: wesmc7777
 ms.author: wesmc
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: f16ace3e54db4d30f89da7335f00153191a7e226
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0198a32800f364f921a2b9f64048166c48a14f7e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326748"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323888"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-java-device-sdk-for-iot-hub-device-provisioning-service"></a>Schnellstart: Erstellen und Bereitstellen eines simulierten X.509-Geräts mithilfe des Java-Geräte-SDKs für den IoT Hub Device Provisioning-Dienst
 
@@ -24,7 +24,7 @@ In dieser Schnellstartanleitung erstellen Sie ein simuliertes X.509-Gerät auf e
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Kenntnis der [Konzepte für die automatische Bereitstellung](concepts-auto-provisioning.md).
+- Mit Konzepten für die [Bereitstellung](about-iot-dps.md#provisioning-process) vertraut sein.
 - Ausführung der Schritte unter [Einrichten des IoT Hub Device Provisioning-Diensts über das Azure-Portal](./quick-setup-auto-provision.md).
 - Ein Azure-Konto mit einem aktiven Abonnement. [Erstellen Sie ein kostenloses Konto.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 - [Java SE Development Kit 8](https://aka.ms/azure-jdks)

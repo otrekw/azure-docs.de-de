@@ -1,5 +1,5 @@
 ---
-title: Registrieren von X.509-Geräten für Azure Device Provisioning Service mit Python
+title: Schnellstart – Registrieren von X.509-Geräten bei Azure Device Provisioning Service mit Python
 description: In dieser Schnellstartanleitung werden Gruppenregistrierungen verwendet. In dieser Schnellstartanleitung registrieren Sie X.509-Geräte mithilfe von Python in IoT Hub Device Provisioning Service (DPS).
 author: wesmc7777
 ms.author: wesmc
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: python
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: f3ac856b3817bb63c53a36505cf89065a8650154
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 577890720e9a0a262b099ab638fafe4268c4f756
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875403"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330195"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-python"></a>Schnellstart: Registrieren von X.509-Geräten für den Device Provisioning-Dienst mit Python
 
