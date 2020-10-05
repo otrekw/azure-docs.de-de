@@ -1,5 +1,5 @@
 ---
-title: Bereitstellen eines simulierten X.509-Geräts für Azure IoT Hub mithilfe von Python
+title: Schnellstart – Bereitstellen eines simulierten X.509-Geräts für Azure IoT Hub mithilfe von Python
 description: 'Schnellstart: Erstellen und Bereitstellen eines simulierten X.509-Geräts mithilfe des Python-Geräte-SDK für IoT Hub Device Provisioning Service (DPS) In dieser Schnellstartanleitung werden individuelle Registrierungen verwendet.'
 author: wesmc7777
 ms.author: wesmc
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: python
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 3386dcf60049ede9297bd36e701442ce50603add
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 28a65e9e5f85d3c1102875a97ae122a00456c607
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87872515"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323905"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>Schnellstart: Erstellen und Bereitstellen eines simulierten X.509-Geräts mithilfe des Python-Geräte-SDKs für den IoT Hub Device Provisioning-Dienst
 
@@ -24,7 +24,7 @@ In dieser Schnellstartanleitung erstellen Sie ein simuliertes X.509-Gerät auf e
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Kenntnis der [Konzepte für die automatische Bereitstellung](concepts-auto-provisioning.md).
+- Mit Konzepten für die [Bereitstellung](about-iot-dps.md#provisioning-process) vertraut sein.
 - Ausführung der Schritte unter [Einrichten des IoT Hub Device Provisioning-Diensts über das Azure-Portal](./quick-setup-auto-provision.md).
 - Ein Azure-Konto mit einem aktiven Abonnement. [Erstellen Sie ein kostenloses Konto.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 - [Visual Studio 2015+](https://visualstudio.microsoft.com/vs/) mit Desktopentwicklung mit C++.

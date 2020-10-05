@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: d4846a69f548c99de735cc9d9e06bd6bb263b4bd
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: a0bc934d32a2d09fcd6b52ec1f186855bf0da92c
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439687"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449620"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Tutorial: Entwickeln von IoT Edge-Modulen für Windows-Geräte
 
@@ -275,7 +275,7 @@ Falls beim Erstellen und Pushen Ihres Modulimages Fehler auftreten, liegt dies h
 
 Sie haben sich vergewissert, dass die Containerimages in Ihrer Containerregistrierung gespeichert sind. Diese können nun also auf einem Gerät bereitgestellt werden. Sorgen Sie dafür, dass Ihr IoT Edge-Gerät ordnungsgemäß ausgeführt wird.
 
-1. Öffnen Sie den Cloud-Explorer in Visual Studio, und erweitern Sie die Details für Ihren IoT-Hub.
+1. Öffnen Sie Cloud-Explorer in Visual Studio, und erweitern Sie die Details für Ihren IoT-Hub.
 
 2. Wählen Sie den Namen des Geräts aus, auf dem Sie die Bereitstellung durchführen möchten. Wählen Sie in der Liste **Aktionen** die Option **Bereitstellung erstellen**.
 
@@ -285,7 +285,7 @@ Sie haben sich vergewissert, dass die Containerimages in Ihrer Containerregistri
 
    Verwenden Sie nicht die Datei „deployment.template.json“, da diese nicht die vollständigen Modulimagewerte enthält.
 
-4. Erweitern Sie die Details für Ihr IoT Edge-Gerät im Cloud-Explorer, um die Module auf Ihrem Gerät anzuzeigen.
+4. Erweitern Sie die Details für Ihr IoT Edge-Gerät in Cloud-Explorer, um die Module auf Ihrem Gerät anzuzeigen.
 
 5. Verwenden Sie die Schaltfläche **Aktualisieren**, um den Gerätestatus zu aktualisieren und sich zu vergewissern, dass die Module „SimulatedTemperatureSensor“ und „IotEdgeModule1“ auf Ihrem Gerät bereitgestellt wurden.
 
@@ -295,7 +295,7 @@ Sie haben sich vergewissert, dass die Containerimages in Ihrer Containerregistri
 
 Der Code von „IotEdgeModule1“ empfängt Nachrichten über die zugehörige Eingabewarteschlange und leitet diese an die Ausgabewarteschlange weiter. Im Bereitstellungsmanifest wurden Routen deklariert, über die Nachrichten von „SimulatedTemperatureSensor“ an „IotEdgeModule1“ und von „IotEdgeModule1“ dann an IoT Hub übergeben wurden. Mit den Azure IoT Edge-Tools für Visual Studio können Sie Nachrichten anzeigen, wenn diese von Ihren einzelnen Geräten auf IoT Hub eingehen.
 
-1. Wählen Sie im Cloud-Explorer von Visual Studio den Namen des IoT Edge-Geräts aus, auf dem Sie die Bereitstellung durchgeführt haben.
+1. Wählen Sie in Cloud-Explorer von Visual Studio den Namen des IoT Edge-Geräts aus, auf dem Sie die Bereitstellung durchgeführt haben.
 
 2. Wählen Sie im Menü **Aktionen** die Option **Start Monitoring Built-in Event Endpoint** (Überwachung des integrierten Ereignisendpunkts starten) aus.
 

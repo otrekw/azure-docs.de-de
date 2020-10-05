@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: fb86b25fc24ea505ae258cc44d5554a019723af6
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ddba41acfcfe497059a661b701906cda0d4d77c6
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019163"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398356"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>Tutorial: Teil 2: Anzeigen der weitergeleiteten Nachrichten
 
@@ -82,7 +82,7 @@ Die Service Bus-Warteschlange sollte zum Empfangen von als kritisch eingestuften
 
    ![Office 365-Optionen](./media/tutorial-routing-view-message-routing-results/logic-app-select-outlook.png)
 
-8. Melden Sie sich an Ihrem Office 365-Konto an, um die Verbindung einzurichten. Falls ein Timeout eintritt, können Sie es einfach erneut versuchen. Geben Sie die E-Mail-Adressen für die E-Mail-Empfänger ein. Geben Sie auch einen Betreff an sowie eine Nachricht ein, die den Empfängern im Nachrichtentext angezeigt werden soll. Geben Sie zu Testzwecken Ihre eigene E-Mail-Adresse als Empfänger ein.
+8. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, um die Verbindung einzurichten. Falls ein Timeout eintritt, können Sie es einfach erneut versuchen. Geben Sie die E-Mail-Adressen für die E-Mail-Empfänger ein. Geben Sie auch einen Betreff an sowie eine Nachricht ein, die den Empfängern im Nachrichtentext angezeigt werden soll. Geben Sie zu Testzwecken Ihre eigene E-Mail-Adresse als Empfänger ein.
 
    Wählen Sie **Dynamischen Inhalt hinzufügen**, um Inhalte aus der Nachricht anzuzeigen, die Sie hinzufügen können. Wählen Sie **Inhalt** aus – damit wird die Nachricht in die E-Mail einbezogen.
 
