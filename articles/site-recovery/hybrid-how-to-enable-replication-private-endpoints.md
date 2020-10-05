@@ -1,24 +1,21 @@
 ---
 title: Aktivieren der Replikation für lokale Computer mit privaten Endpunkten
 description: In diesem Artikel wird beschrieben, wie Sie die Replikation für lokale Computer mit privaten Endpunkten mithilfe von Site Recovery konfigurieren.
-author: mayurigupta13
-ms.author: mayg
+author: Harsha-CS
+ms.author: harshacs
 ms.service: site-recovery
 ms.topic: article
 ms.date: 07/14/2020
-ms.openlocfilehash: 13c19f07ac21f986a5523407e46c59c050ebf96d
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 3d15f4039da85dfa926e7bc9ab96b2c48965d5f0
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142076"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658799"
 ---
 # <a name="replicate-on-premises-machines-by-using-private-endpoints"></a>Replizieren von lokalen Computern mit privaten Endpunkten
 
-Mit Azure Site Recovery können Sie private [Azure Private Link-Endpunkte](../private-link/private-endpoint-overview.md) für die Replikation Ihrer lokalen Computer in virtuelle Azure-Netzwerke verwenden. Der Zugriff auf einen Wiederherstellungstresor über private Endpunkte wird für folgende Regionen unterstützt:
-
-- Azure Commercial: „USA, Süden-Mitte“, „USA, Westen 2“, „USA, Osten“
-- Azure Government: „US Gov Virginia“, „US Gov Arizona“, „US Gov Texas“, „US DoD, Osten“, „US DoD, Mitte“
+Mit Azure Site Recovery können Sie private [Azure Private Link-Endpunkte](../private-link/private-endpoint-overview.md) für die Replikation Ihrer lokalen Computer in virtuelle Azure-Netzwerke verwenden. Der Zugriff auf einen Wiederherstellungstresor über private Endpunkte wird in allen kommerziellen Azure-Regionen und Azure Government-Regionen unterstützt.
 
 In diesem Artikel wird beschrieben, wie Sie die folgenden Schritte ausführen:
 
@@ -60,7 +57,7 @@ Eine [verwaltete Identität](../active-directory/managed-identities-azure-resour
 
 1. Navigieren Sie zu Ihrem Recovery Services-Tresor. Klicken Sie unter **Einstellungen** auf **Identität**:
 
-   :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/enable-managed-identity-in-vault.png" alt-text="Screenshot: Seite „Identitätseinstellungen“":::
+   :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/enable-managed-identity-in-vault.png" alt-text="Abbildung der Architektur für Azure Site Recovery und private Endpunkte":::
 
 1. Ändern Sie den **Status** in **Ein**, und klicken Sie auf **Speichern**.
 
@@ -72,21 +69,21 @@ Sie benötigen einen privaten Endpunkt für den Tresor im Umgehungsnetzwerk, der
 
 1. Suchen Sie über die Suchleiste des Azure-Portals nach „private link“. Klicken Sie auf **Private Link**, um zum Private Link-Center zu navigieren:
 
-   :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/search-private-links.png" alt-text="Screenshot der Suche im Azure-Portal nach dem Private Link-Center":::
+   :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/search-private-links.png" alt-text="Abbildung der Architektur für Azure Site Recovery und private Endpunkte":::
 
 1. Klicken Sie im linken Bereich auf **Private Endpunkte**. Sobald Sie sich auf der Seite **Private Endpunkte** befinden, klicken Sie auf **Hinzufügen**, um mit der Erstellung eines privaten Endpunkts für Ihren Tresor zu beginnen:
 
-   :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/create-private-endpoints.png" alt-text="Screenshot der Erstellung eines privaten Endpunkts im Private Link-Center":::
+   :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/create-private-endpoints.png" alt-text="Abbildung der Architektur für Azure Site Recovery und private Endpunkte":::
 
 1. Geben Sie auf der Seite **Privaten Endpunkt erstellen** die Details zum Erstellen Ihrer privaten Endpunktverbindung an.
 
    1. **Grundeinstellungen:** Hier geben Sie die grundlegenden Details für Ihre privaten Endpunkte an. Verwenden Sie die Region, die Sie für Ihr Umgehungsnetzwerk verwendet haben:
 
-      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/create-private-endpoints-basic-tab.png" alt-text="Screenshot der Registerkarte „Grundeinstellungen“ für das Erstellen eines privaten Endpunkts":::
+      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/create-private-endpoints-basic-tab.png" alt-text="Abbildung der Architektur für Azure Site Recovery und private Endpunkte":::
 
    1. **Ressource:** Auf dieser Registerkarte müssen Sie die PaaS-Ressource (Platform-as-a-Service) angeben, für die Sie eine Verbindung herstellen möchten. Wählen Sie unter **Ressourcentyp** für Ihr ausgewähltes Abonnement **Microsoft.RecoveryServices/vaults** aus. Wählen Sie unter **Ressource** den Namen Ihres Recovery Services-Tresor aus. Klicken Sie für **Untergeordnete Zielressource** auf **Azure Site Recovery**.
 
-      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/create-private-endpoints-resource-tab.png" alt-text="Screenshot der Registerkarte „Ressource“ für das Herstellen von Verknüpfungen zu einem privaten Endpunkt":::
+      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/create-private-endpoints-resource-tab.png" alt-text="Abbildung der Architektur für Azure Site Recovery und private Endpunkte":::
 
    1. **Konfiguration**. Geben Sie auf dieser Registerkarte das Umgehungsnetzwerk und das Subnetz an, in dem der private Endpunkt erstellt werden soll. 
 
@@ -99,7 +96,7 @@ Sie benötigen einen privaten Endpunkt für den Tresor im Umgehungsnetzwerk, der
 
       Befolgen Sie die Schritte unter [Erstellen privater DNS-Zonen und manuelles Hinzufügen von DNS-Einträgen](#create-private-dns-zones-and-add-dns-records-manually), um die private DNS-Zone manuell zu erstellen.
 
-      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/create-private-endpoints-configuration-tab.png" alt-text="Screenshot der Registerkarte „Konfiguration“ für die Konfiguration eines privaten Endpunkts":::
+      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/create-private-endpoints-configuration-tab.png" alt-text="Abbildung der Architektur für Azure Site Recovery und private Endpunkte":::
 
    1. **Tags**. Optional können Sie Tags für Ihren privaten Endpunkt hinzufügen.
 
@@ -117,7 +114,7 @@ Wenn Sie den privaten Endpunkt erstellt und auch Besitzer des Recovery Services-
 
 Sie können zur privaten Endpunktressource wechseln, um den Status der Verbindung zu überprüfen, bevor Sie fortfahren:
 
-:::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/vault-private-endpoint-connections.png" alt-text="Screenshot der Seite „Verbindungen mit privatem Endpunkt“ des Tresors und Verbindungsliste":::
+:::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/vault-private-endpoint-connections.png" alt-text="Abbildung der Architektur für Azure Site Recovery und private Endpunkte":::
 
 ### <a name="optional-create-private-endpoints-for-the-cache-storage-account"></a><a name="create-private-endpoints-for-the-cache-storage-account"></a>(Optional) Erstellen privater Endpunkte für das Cachespeicherkonto
 
@@ -150,11 +147,11 @@ Diese Schritte beschreiben, wie Sie Ihrem Speicherkonto eine Rollenzuweisung hin
 
 1. Klicken Sie im Bereich **Rollenzuweisung hinzufügen** auf **Hinzufügen**:
 
-   :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/storage-role-assignment.png" alt-text="Screenshot der Seite „Zugriffssteuerung (IAM)“ für ein Speicherkonto":::
+   :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/storage-role-assignment.png" alt-text="Abbildung der Architektur für Azure Site Recovery und private Endpunkte":::
 
 1. Wählen Sie auf der Seite **Rollenzuweisung hinzufügen** in der Liste **Rolle** die Rolle aus der Liste zu Beginn dieses Abschnitts aus. Geben Sie den Namen des Tresors ein, und klicken Sie dann auf **Speichern**.
 
-   :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/storage-role-assignment-select-role.png" alt-text="Screenshot der Seite „Rollenzuweisung hinzufügen“":::
+   :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/storage-role-assignment-select-role.png" alt-text="Abbildung der Architektur für Azure Site Recovery und private Endpunkte":::
 
 Nach Hinzufügen dieser Berechtigungen müssen Sie den Zugriff auf vertrauenswürdige Microsoft-Dienste zulassen. Navigieren Sie zu **Firewalls und virtuelle Netzwerke**, und klicken Sie unter **Ausnahmen** auf **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben**.
 
@@ -177,13 +174,13 @@ Erstellen Sie eine private DNS-Zone, damit der Site Recovery-Anbieter (für Hype
 
    1. Suchen Sie in der Suchleiste **Alle Dienste** nach „Private DNS-Zone“, und wählen Sie aus den Ergebnissen **Private DNS-Zone** aus:
 
-      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/search-private-dns-zone.png" alt-text="Screenshot: Suche nach „Private DNS-Zone“ auf der Seite „Neue Ressourcen“ im Azure-Portal":::
+      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/search-private-dns-zone.png" alt-text="Abbildung der Architektur für Azure Site Recovery und private Endpunkte":::
 
    1. Klicken Sie auf der Seite **Private DNS-Zonen** auf die Schaltfläche **Hinzufügen**, um mit dem Erstellen einer neuen Zone zu beginnen.
 
    1. Geben Sie auf der Seite **Private DNS-Zone erstellen** die erforderlichen Details ein. Geben Sie als Name für die private DNS-Zone **privatelink.siterecovery.windowsazure.com** ein. Sie können eine beliebige Ressourcengruppe und ein beliebiges Abonnement auswählen.
 
-      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/create-private-dns-zone.png" alt-text="Screenshot der Registerkarte „Grundeinstellungen“ der Seite „Private DNS-Zone erstellen“":::
+      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/create-private-dns-zone.png" alt-text="Abbildung der Architektur für Azure Site Recovery und private Endpunkte":::
 
    1. Überprüfen und erstellen Sie die DNS-Zone anschließend über die Registerkarte **Überprüfen \+ erstellen**.
 
@@ -195,7 +192,7 @@ Erstellen Sie eine private DNS-Zone, damit der Site Recovery-Anbieter (für Hype
 
    1. Geben Sie die erforderlichen Details ein. Wählen Sie in den Listen **Abonnement** und **Virtuelles Netzwerk** die Details aus, die dem Umgehungsnetzwerk entsprechen. Behalten Sie für die übrigen Felder den Standardwert bei.
 
-      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/add-virtual-network-link.png" alt-text="Screenshot der Seite „VNET-Verknüpfung hinzufügen“":::
+      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/add-virtual-network-link.png" alt-text="Abbildung der Architektur für Azure Site Recovery und private Endpunkte":::
 
 1. Fügen Sie DNS-Einträge hinzu.
 
@@ -212,7 +209,7 @@ Erstellen Sie eine private DNS-Zone, damit der Site Recovery-Anbieter (für Hype
 
       Diese vollqualifizierten Domänennamen entsprechen folgendem Muster: `{Vault-ID}-asr-pod01-{type}-.{target-geo-code}.siterecovery.windowsazure.com`
 
-      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/add-record-set.png" alt-text="Screenshot der Seite „Datensatzgruppe hinzufügen“":::
+      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/add-record-set.png" alt-text="Abbildung der Architektur für Azure Site Recovery und private Endpunkte":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,25 +1,22 @@
 ---
-title: Einrichten einer Verbindung mit einer Datenquelle mithilfe einer verwalteten Identität (Vorschau)
+title: Einrichten einer Verbindung mit einer Datenquelle mithilfe einer verwalteten Identität
 titleSuffix: Azure Cognitive Search
-description: Erfahren Sie, wie Sie eine Indexerverbindung mit einer Datenquelle mithilfe einer verwalteten Identität einrichten (Vorschau).
+description: Erfahren Sie, wie Sie eine Indexerverbindung mit einer Datenquelle mithilfe einer verwalteten Identität einrichten
 manager: luisca
 author: markheff
 ms.author: maheff
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.openlocfilehash: d303de23a04d183d0ca280c3b3591299d883adf7
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/22/2020
+ms.openlocfilehash: a057c0d35a465447cc0be99b574ffeebb671115a
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936587"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971548"
 ---
-# <a name="set-up-an-indexer-connection-to-a-data-source-using-a-managed-identity-preview"></a>Einrichten einer Indexerverbindung mit einer Datenquelle mithilfe einer verwalteten Identität (Vorschau)
-
-> [!IMPORTANT] 
-> Das Einrichten einer Verbindung mit einer Datenquelle mithilfe einer verwalteten Identität wird derzeit in einer öffentlichen Vorschauversion unterstützt. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen.
+# <a name="set-up-an-indexer-connection-to-a-data-source-using-a-managed-identity"></a>Einrichten einer Indexerverbindung mit einer Datenquelle mithilfe einer verwalteten Identität
 
 Ein [Indexer](search-indexer-overview.md) in Azure Cognitive Search ist ein Crawler, mit dem Daten aus Ihrer Datenquelle in Azure Cognitive Search abgerufen werden können. Ein Indexer ruft eine Datenquellenverbindung aus dem von Ihnen erstellten Datenquellenobjekt ab. Das Datenquellenobjekt enthält im Allgemeinen Anmeldeinformationen für die Zieldatenquelle. Beispielsweise kann das Datenquellenobjekt einen Azure Storage-Kontoschlüssel enthalten, wenn Sie Daten aus einem Blobspeichercontainer indizieren möchten.
 

@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 8/26/2020
 ms.author: matjazl
-ms.openlocfilehash: 10d901f73006051e8b1ddd02aeb36b229c6a7761
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 83509b5f452ab7cf88774561c12d7aa2cf3b46cf
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269878"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89482316"
 ---
 # <a name="how-to-export-fhir-data"></a>Exportieren von FHIR-Daten
 
@@ -42,3 +42,10 @@ Der Befehl $export kann auch verwendet werden, um anonymisierte Daten vom FHIR-S
 
 > [!IMPORTANT]
 > Beachten Sie, dass sowohl der unformatierte als auch der anonymisierte Export in das gleiche Azure Storage-Konto geschrieben wird, das im Rahmen der Exportkonfiguration angegeben wurde. Es wird empfohlen, für verschiedene anonymisierte Konfigurationen unterschiedliche Container zu verwenden und den Benutzerzugriff auf Containerebene zu verwalten.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+In diesem Artikel haben Sie erfahren, wie Sie FHIR-Ressourcen mithilfe des Befehls „$export“ exportieren (einschließlich anonymisierte Daten). Als Nächstes können Sie Ihre Exportdaten konfigurieren:
+ 
+>[!div class="nextstepaction"]
+>[Konfigurieren von Exportdaten](configure-export-data.md)

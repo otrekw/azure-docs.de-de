@@ -10,12 +10,12 @@ ms.topic: reference
 ms.workload: identity
 ms.date: 07/20/2020
 ms.author: chmutali
-ms.openlocfilehash: ea47f8a6fc29571a27f8976bd0ad9bbd30ed0ad9
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 805cdc0713afd43502bb224cce60167adbc418ee
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808455"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969522"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-sap-successfactors"></a>Integration der Azure Active Directory-Bereitstellung mit SAP SuccessFactors 
 
@@ -199,11 +199,11 @@ Bei der Mitarbeiterstatusumwandlung wird ein vorhandener Vollzeitmitarbeiter zu 
 1. Scrollen Sie nach unten, und klicken Sie auf **Erweiterte Optionen anzeigen**.
 1. Klicken Sie auf den Link **Review your schema here** (Schema hier überprüfen), um den Schema-Editor zu öffnen. 
 
-   >![Überprüfen des Schemas](media/sap-successfactors-integration-reference/review-schema.png#lightbox)
+   >![Screenshot mit dem Link zum Überprüfen des Schemas, über den der Schema-Editor geöffnet wird.](media/sap-successfactors-integration-reference/review-schema.png#lightbox)
 
 1. Klicken Sie auf den Link **Download**, um eine Kopie des Schemas vor der Bearbeitung zu speichern. 
 
-   >![Herunterladen des Schemas](media/sap-successfactors-integration-reference/download-schema.png#lightbox)
+   >![Screenshot zur Darstellung des Schema-Editors mit ausgewählter Downloadoption, um eine Kopie des Schemas zu speichern.](media/sap-successfactors-integration-reference/download-schema.png#lightbox)
 1. Drücken Sie im Schema-Editor die Tastenkombination STRG+H, um das Steuerelement für das Suchen und Ersetzen zu öffnen.
 1. Kopieren Sie den Wert von `$.employmentNav.results[0]`, und fügen Sie ihn im Textfeld für die Suche ein.
 1. Kopieren Sie den Wert von `$.employmentNav.results[?(@.userNav != null)]`, und fügen Sie ihn im Textfeld für das Ersetzen ein. Beachten Sie den Leerraum um den Operator `!=`. Dieser ist für die erfolgreiche Verarbeitung des JSONPath-Ausdrucks wichtig. 

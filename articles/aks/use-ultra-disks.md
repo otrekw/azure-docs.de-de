@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Ultra Disks in einem Azure Kubernetes Service
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 6ad739a128839eac4d664ffb6f9e3b2fcd07f2d9
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 3f15f075604c104b467af289f6f5d4b92dc12659
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650178"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420862"
 ---
 # <a name="use-azure-ultra-disks-on-azure-kubernetes-service-preview"></a>Verwenden von Azure Ultra Disks in Azure Kubernetes Service (Vorschauversion)
 
@@ -21,11 +21,6 @@ Diese Funktion kann nur bei der Erstellung des Clusters oder bei der Erstellung 
 
 > [!IMPORTANT]
 > Azure Ultra Disks erfordern Knotenpools in Verfügbarkeitszonen und Regionen, die diese Datenträger unterstützen, sowie bestimmte VM-Serien. Weitere Informationen finden Sie unter [**Umfang und Einschränkungen für die allgemeine Verfügbarkeit von Ultra Disks**](../virtual-machines/disks-enable-ultra-ssd.md#ga-scope-and-limitations).
-
-### <a name="prerequisites"></a>Voraussetzungen
-
-- Stellen Sie sicher, dass das `EnableUltraSSD`-Featureflag aktiviert ist.
-- Stellen Sie sicher, dass die neueste Version der [CLI-Erweiterung][az-extension-add] `aks-preview` installiert ist.
 
 ### <a name="register-the-enableultrassd-preview-feature"></a>Registrieren der Previewfunktion `EnableUltraSSD`
 
@@ -78,7 +73,7 @@ Erstellen Sie eine Azure-Ressourcengruppe:
 az group create --name myResourceGroup --location westus2
 ```
 
-Erstellen Sie den AKS-Cluster mit verwalteter Azure AD-Integration und Azure RBAC für Kubernetes-Autorisierung.
+Erstellen Sie den AKS-Cluster mit Unterstützung für Ultra Disks.
 
 ```azurecli-interactive
 # Create an AKS-managed Azure AD cluster
@@ -133,7 +128,7 @@ storageclass.storage.k8s.io/ultra-disk-sc created
 
 ## <a name="create-a-persistent-volume-claim"></a>Erstellen eines Anspruchs auf ein persistentes Volume
 
-Ein Anspruch auf ein persistentes Volume (Persistent Volume Claim, PVC) wird verwendet, um basierend auf einer Speicherklasse automatisch Speicher bereitzustellen. In diesem Fall kann ein PVC eine der zuvor erstellten Speicherklassen verwenden, um einen verwalteten Azure Standard- oder Premium-Datenträger zu erstellen.
+Ein Anspruch auf ein persistentes Volume (Persistent Volume Claim, PVC) wird verwendet, um basierend auf einer Speicherklasse automatisch Speicher bereitzustellen. In diesem Fall kann ein Anspruch auf ein persistentes Volume die zuvor erstellte Speicherklasse zum Erstellen einer Ultra Disk verwenden.
 
 Erstellen Sie eine Datei namens `azure-ultra-disk-pvc.yaml`, und fügen Sie das folgende Manifest ein. Der Anspruch fordert einen Datenträger namens `ultra-disk` mit einer Größe von *1.000 GB* und *ReadWriteOnce*-Zugriff an. Als Speicherklasse ist *ultra-disk-sc* angegeben.
 

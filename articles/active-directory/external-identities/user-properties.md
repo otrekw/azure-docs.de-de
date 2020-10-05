@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7271c4de6d5c186c9e561aa37a140eaa04cbc0a
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: b68a4d0c9c33f6a7eb1a2300955e9185bd52d8fb
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87907229"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705468"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Eigenschaften eines Azure Active Directory B2B-Zusammenarbeitsbenutzers
 
@@ -104,11 +104,11 @@ Sie können die standardmäßigen Einschränkungen aufheben, sodass Gastbenutzer
 ![Screenshot mit der Option für externe Benutzer in den Benutzereinstellungen](media/user-properties/remove-guest-limitations.png)
 
 ## <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Kann ich Gastbenutzer in der globalen Adressliste von Exchange sichtbar machen?
-Ja. Gastobjekte sind in der globalen Adressliste Ihres Unternehmens standardmäßig nicht sichtbar. Sie können jedoch Azure Active Directory PowerShell verwenden, um diese sichtbar zu machen. Weitere Informationen finden Sie unter **Kann ich Gast-Objekte in der globalen Adressliste sichtbar machen?** im Artikel [Verwalten des Zugriffs von Gast in Office 365-Gruppen](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups).
+Ja. Gastobjekte sind in der globalen Adressliste Ihres Unternehmens standardmäßig nicht sichtbar. Sie können jedoch Azure Active Directory PowerShell verwenden, um diese sichtbar zu machen. Weitere Informationen finden Sie unter **Kann ich Gast-Objekte in der globalen Adressliste sichtbar machen?** im Artikel [Verwalten des Zugriffs von Gast in Microsoft 365-Gruppen](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups).
 
 ## <a name="can-i-update-a-guest-users-email-address"></a>Kann ich die E-Mail-Adresse eines Gastbenutzers aktualisieren?
 
-Wenn ein Gastbenutzer Ihre Einladung annimmt und danach seine E-Mail-Adresse ändert, wird die neue Adresse nicht automatisch im Gastbenutzerobjekt in Ihrem Verzeichnis synchronisiert. Die E-Mail-Eigenschaft wird über die [Microsoft Graph-API](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0) erstellt. Sie können die E-Mail-Eigenschaft über das Exchange Admin Center oder in [Exchange Online PowerShell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/set-mailuser?view=exchange-ps) aktualisieren, und die Änderung wird im Gastbenutzerobjekt in Azure AD reflektiert.
+Wenn ein Gastbenutzer Ihre Einladung annimmt und danach seine E-Mail-Adresse ändert, wird die neue Adresse nicht automatisch im Gastbenutzerobjekt in Ihrem Verzeichnis synchronisiert. Die E-Mail-Eigenschaft wird über die [Microsoft Graph-API](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0) erstellt. Sie können die Maileigenschaft über die Microsoft Graph-API, das Admin Center von Exchange oder [Exchange Online-PowerShell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/set-mailuser?view=exchange-ps) aktualisieren. Die Änderung wird im Azure AD-Gastbenutzerobjekt widergespiegelt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

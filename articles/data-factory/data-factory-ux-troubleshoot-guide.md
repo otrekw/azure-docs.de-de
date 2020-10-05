@@ -5,15 +5,15 @@ services: data-factory
 author: ceespino
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 09/02/2020
+ms.date: 09/03/2020
 ms.author: ceespino
 ms.reviewer: daperlov
-ms.openlocfilehash: e0c5ab4f6d36a24ff9f59ec373291e00669e1e92
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 9f23155df6d9e63448b35974c331bf78c3e5f90c
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89320118"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89426220"
 ---
 # <a name="troubleshoot-azure-data-factory-ux-issues"></a>Problembehandlung bei der Azure Data Factory-Benutzeroberfläche
 
@@ -100,6 +100,16 @@ Wenn eine normale DNS-Antwort angezeigt wird, wenden Sie sich an den lokalen IT-
 Wenn etwas anderes angezeigt wird, bedeutet dies in der Regel, dass beim DNS-Server ein Fehler mit der Auflösung des DNS-Namens vorliegt. Eine Problemumgehung besteht beispielsweise im Ändern des Internetdienstanbieters (Internet Service Provider, ISP) oder des DNS (z. B. in den Google-DNS 8.8.8.8). Wenn das Problem weiterhin besteht, prüfen Sie **nslookup datafactory.azure.com** und **nslookup azure.com**, um zu sehen, auf welcher Ebene die DNS-Auflösung fehlgeschlagen ist, und übermitteln Sie alle Informationen an Ihren lokalen IT-Support oder Ihren ISP zur Problembehandlung. Wenn der Support der Meinung ist, dass das Problem weiterhin aufseiten von Microsoft vorliegt, übermitteln Sie ein Supportticket mit der **Aktivitäts-ID** aus der Fehlermeldung ADF-Benutzeroberfläche.
 
 ![Befehlsantwort 2](media/data-factory-ux-troubleshoot-guide/command-response-2.png)
+
+## <a name="change-linked-service-type-in-datasets"></a>Ändern des verknüpften Diensttyps in Datasets
+
+Datasets im Dateiformat können mit allen dateibasierten Connectors verwendet werden. Sie können z. B. ein Parquet-Dataset für Azure Blob Storage oder Azure Data Lake Storage Gen2 konfigurieren. Beachten Sie, dass die einzelnen Connectors unterschiedliche datenspeicherbezogene Einstellungen für die Aktivität sowie unterschiedliche App-Modelle unterstützen. 
+
+Wenn Sie auf der ADF-Benutzeroberfläche zur Erstellung Datasets im Dateiformat für eine Aktivität verwenden (einschließlich „Kopieren“, „Suchen“, „Metadaten abrufen“ und „Löschen“) und im Dataset auf einen verknüpften Dienst zeigen möchten, dessen Typ nicht dem aktuellen Typ entspricht (z. B. ein Wechsel von Dateisystem zu ADLS Gen2), wird die folgende Warnmeldung angezeigt. Für einen reibungslosen Wechsel werden die Pipelines und Aktivitäten, die auf dieses Dataset verweisen, nach Ihrer Zustimmung so geändert, dass sie ebenfalls den neuen Typ verwenden. Da vorhandene Datenspeichereinstellungen, die nicht mit dem neuen Typ kompatibel sind, nicht mehr gültig sind, werden diese Einstellungen gelöscht.
+
+Weitere Informationen zu den unterstützten Datenspeichereinstellungen für die verschiedenen Connectors finden Sie im entsprechenden Artikel zum jeweiligen Connector. Kopieren Sie die Aktivitätseigenschaften, um eine detaillierte Liste der Eigenschaften anzuzeigen. Weitere Informationen zu [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [Dateisystem](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md) und [SFTP](connector-sftp.md).
+
+![Warnmeldung](media/data-factory-ux-troubleshoot-guide/warning-message.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

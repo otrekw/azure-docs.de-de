@@ -2,13 +2,13 @@
 title: Bereitstellen von Ressourcen für einen Mandanten
 description: Hier erfahren Sie, wie Sie Ressourcen im Mandantenbereich in einer Azure Resource Manager-Vorlage bereitstellen.
 ms.topic: conceptual
-ms.date: 08/06/2020
-ms.openlocfilehash: 2f5249eb54a62e4df082a18b22625bb93a0f09f8
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.date: 09/04/2020
+ms.openlocfilehash: 9b653f3fd4ed66f23521ea3ec8f9972e3b6cc09c
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002772"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468554"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>Erstellen von Ressourcen auf der Mandantenebene
 
@@ -151,7 +151,7 @@ Um eine Verwaltungsgruppe innerhalb des Mandanten als Ziel zu verwenden, fügen 
             "properties": {
                 "mode": "Incremental",
                 "template": {
-                    nested-template
+                    nested-template-with-resources-in-mg
                 }
             }
         }
@@ -167,9 +167,11 @@ Bei Mandantenbereitstellungen müssen bei der Verwendung von Vorlagenfunktionen 
 * Die Funktion [resourceGroup()](template-functions-resource.md#resourcegroup) wird **nicht** unterstützt.
 * Die Funktion [subscription()](template-functions-resource.md#subscription) wird **nicht** unterstützt.
 * Die Funktionen [reference()](template-functions-resource.md#reference) und [list()](template-functions-resource.md#list) werden unterstützt.
-* Verwenden Sie die Funktion [tenantResourceId()](template-functions-resource.md#tenantresourceid), um die Ressourcen-ID für Ressourcen abzurufen, die auf der Mandantenebene bereitgestellt werden.
+* Verwenden Sie nicht [resourceId()](template-functions-resource.md#resourceid), um die Ressourcen-ID für Ressourcen abzurufen, die auf Mandantenebene bereitgestellt werden.
 
-  Verwenden Sie beispielsweise Folgendes, um die Ressourcen-ID für eine Richtliniendefinition abzurufen:
+  Verwenden Sie stattdessen die Funktion [tenantResourceId()](template-functions-resource.md#tenantresourceid).
+
+  Verwenden Sie beispielsweise Folgendes, um die Ressourcen-ID für eine integrierte Richtliniendefinition abzurufen:
 
   ```json
   tenantResourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))

@@ -1,6 +1,6 @@
 ---
 title: Zuweisen einer Rolle zu einer Gruppe mithilfe von Privileged Identity Management in Azure AD | Microsoft-Dokumentation
-description: 'Vorschau: Benutzerdefinierte Azure AD-Rollen zur Delegierung der Identitätsverwaltung. Verwalten von Azure-Rollen im Azure-Portal, mit PowerShell oder über die Graph-API.'
+description: Erfahren Sie, wie Sie einer Gruppe mithilfe von Azure AD Privileged Identity Management (PIM) eine Azure Active Directory-Rolle (Azure AD) zuweisen können.
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 343da87048cf43c04a137376e9a7f24270ce729a
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: b297ee3d03d61b654e2b7fffa17141a1fd5268f3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475871"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971175"
 ---
 # <a name="assign-a-role-to-a-group-using-privileged-identity-management"></a>Zuweisen einer Rolle zu einer Gruppe mithilfe von Privileged Identity Management
 

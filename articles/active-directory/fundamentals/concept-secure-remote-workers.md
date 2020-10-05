@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: davidspo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e0e0ad9086a7945201b1752126253f12eb751bf
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 4f4d9d1a2a4c88601e7dd7e0d6f56025b79aaac1
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89320034"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705366"
 ---
 # <a name="rapidly-respond-to-secure-identities-with-azure-ad"></a>Schnelles Reagieren auf Sicherheitsvorfälle mit Azure AD
 
@@ -42,13 +42,12 @@ In dieser Anleitung wird davon ausgegangen, dass Ihre cloudbasierten oder Hybrid
 
 Bei sicheren Identitätsinfrastrukturen gilt es eine Vielzahl von Aspekten zu berücksichtigen. Bei dieser Prüfliste liegt das Hauptaugenmerk jedoch auf einer sichereren Identitätsinfrastruktur, die es Benutzern ermöglicht, remote zu arbeiten. Das Schützen Ihrer Identität ist nur ein Teil eines Sicherheitskonzepts – auch der Schutz von Daten, Anwendungen und Geräten sollte berücksichtigt werden.
 
-### <a name="guidance-for-azure-ad-free-or-office-365-customers"></a>Leitfaden für Kunden von Azure AD Free oder Office 365
+### <a name="guidance-for-azure-ad-free-office-365-or-microsoft-365-customers"></a>Leitfaden für Azure AD Free-, Office 365- oder Microsoft 365-Kunden.
 
-Es gibt eine Reihe von Empfehlungen, die Kunden von Azure AD Free- oder Office 365-Apps zum Schutz ihrer Benutzeridentitäten anwenden sollten. In der folgenden Tabelle sind die wichtigsten Aktionen für die folgenden Lizenzabonnements aufgeführt:
+Es gibt eine Reihe von Empfehlungen, die Kunden mit Azure AD Free, Office 365- oder Microsoft 365-Apps zum Schutz ihrer Benutzeridentitäten anwenden sollten. In der folgenden Tabelle sind die wichtigsten Aktionen für die folgenden Lizenzabonnements aufgeführt:
 
-- Office 365 (O365 E1, E3, E5, F1, A1, A3, A5)
-- Office 365 Business (Essentials, Business, Business Premium)
-- Microsoft 365 (M365 Business, A1)
+- Office 365 (Office 365 E1, E3, E5, F1, A1, A3, A5)
+- Microsoft 365 (Business Basic, Apps for Business, Business Standard, Business Premium, A1)
 - Azure AD Free (enthalten in Azure, Dynamics 365, Intune und Power Platform)
 
 | Empfohlene Maßnahme | Detail |
@@ -127,7 +126,7 @@ In der folgenden Tabelle sind die wichtigsten Aktionen für die folgenden Lizenz
 | [Nach Möglichkeit nicht globale Administratorrollen verwenden](../users-groups-roles/directory-assign-admin-roles.md) | Gewähren Sie Ihren Administratoren nur den Zugriff, den sie benötigen, und nur für Bereiche, auf die sie zugreifen müssen. Nicht alle Administratoren müssen globale Administratoren sein. |
 | [Kennwortleitfaden von Microsoft aktivieren](https://www.microsoft.com/research/publication/password-guidance/) | Wenn Ihre Benutzer ihre Kennwörter nicht mehr nach einem festgelegten Zeitplan ändern müssen, und Sie die Anforderungen an die Kennwortkomplexität abschaffen, fällt es Ihren Benutzern leichter, sich Kennwörter zu merken und sichere Kennwörter festzulegen. |
 | [Erstellen eines Plans für den Zugriff durch Gastbenutzer](../external-identities/what-is-b2b.md) | Arbeiten Sie mit Gastbenutzern zusammen, indem Sie ihnen ermöglichen, sich mit ihrem Geschäfts-, Schul- oder Unikonto bzw. mit ihrer Identität bei Ihren Anwendungen und Diensten anzumelden. |
-| [Privileged Identity Management aktivieren](../privileged-identity-management/pim-configure.md) | Ermöglicht Ihnen, den Zugriff auf wichtige Ressourcen in Ihrer Organisation zu verwalten, zu steuern und zu überwachen, um sicherzustellen, dass Administratoren nur bei Bedarf und mit Genehmigung Zugriff erhalten. |
+| [Aktivieren von Privileged Identity Management](../privileged-identity-management/pim-configure.md) | Ermöglicht Ihnen, den Zugriff auf wichtige Ressourcen in Ihrer Organisation zu verwalten, zu steuern und zu überwachen, um sicherzustellen, dass Administratoren nur bei Bedarf und mit Genehmigung Zugriff erhalten. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
