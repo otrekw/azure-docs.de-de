@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 06/18/2020
 ms.author: victorh
-ms.openlocfilehash: e921ea707e4a0df968d162726fe53064491cb032
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 744fe22b6b2c9fbeb9b149760145267ccb6fa6f8
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610505"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89435211"
 ---
 # <a name="configure-azure-firewall-application-rules-with-sql-fqdns"></a>Konfigurieren von Azure Firewall-Anwendungsregeln mit SQL-FQDNs
 
@@ -20,7 +20,7 @@ Sie können nun Azure Firewall-Anwendungsregeln mit SQL-FQDNs konfigurieren. So
 
 Mit SQL-FQDNs können Sie Datenverkehr wie folgt filtern:
 
-- Von Ihren VNETs an eine Azure SQL-Datenbank- oder Azure SQL Data Warehouse-Instanz. Beispiel: Sie haben die Möglichkeit, nur Zugriffe auf *sql-server1.database.windows.net* zuzulassen.
+- Von Ihren VNETs zu Azure SQL-Datenbank oder Azure Synapse Analytics. Beispiel: Sie haben die Möglichkeit, nur Zugriffe auf *sql-server1.database.windows.net* zuzulassen.
 - Von Ihrer lokalen Umgebung an verwaltete Azure SQL-Instanzen oder an SQL-IaaS in Ihren VNETs
 - Von Spoke-zu-Spoke an verwaltete Azure SQL-Instanzen oder an SQL-IaaS in Ihren VNETs
 
@@ -30,7 +30,7 @@ Wenn Sie nicht standardmäßige Ports für SQL-IaaS-Datenverkehr verwenden, kön
 ## <a name="configure-using-azure-cli"></a>Konfigurieren über die Azure-Befehlszeilenschnittstelle
 
 1. [Stellen Sie eine Azure Firewall-Instanz unter Verwendung der Azure-Befehlszeilenschnittstelle bereit.](deploy-cli.md)
-2. Wenn Sie Datenverkehr an Azure SQL-Datenbank, SQL Data Warehouse oder an eine verwaltete SQL-Instanz filtern möchten, muss der SQL-Konnektivitätsmodus auf **Proxy** festgelegt sein. Informationen zum Ändern des SQL-Konnektivitätsmodus finden Sie unter [Azure SQL-Konnektivitätseinstellungen](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-settings#change-connection-policy-via-azure-cli).
+2. Wenn Sie Datenverkehr zu Azure SQL-Datenbank, Azure Synapse Analytics oder SQL Managed Instance filtern möchten, muss der SQL-Konnektivitätsmodus auf **Proxy** festgelegt sein. Informationen zum Ändern des SQL-Konnektivitätsmodus finden Sie unter [Azure SQL-Konnektivitätseinstellungen](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-settings#change-connection-policy-via-azure-cli).
 
    > [!NOTE]
    > Im SQL-Modus *Proxy* kommt es unter Umständen zu längeren Wartezeiten als im Modus *Umleiten*. Wenn Sie weiterhin den Umleitungsmodus (Standardmodus für Clients, die eine Verbindung innerhalb von Azure herstellen) verwenden möchten, können Sie den Zugriff mit dem SQL-[Diensttag](service-tags.md) in [Netzwerkregeln](tutorial-firewall-deploy-portal.md#configure-a-network-rule) der Firewall filtern.
@@ -52,7 +52,7 @@ Wenn Sie nicht standardmäßige Ports für SQL-IaaS-Datenverkehr verwenden, kön
 
 ## <a name="configure-using-the-azure-portal"></a>Konfigurieren über das Azure-Portal
 1. [Stellen Sie eine Azure Firewall-Instanz unter Verwendung der Azure-Befehlszeilenschnittstelle bereit.](deploy-cli.md)
-2. Wenn Sie Datenverkehr an Azure SQL-Datenbank, SQL Data Warehouse oder an eine verwaltete SQL-Instanz filtern möchten, muss der SQL-Konnektivitätsmodus auf **Proxy** festgelegt sein. Informationen zum Ändern des SQL-Konnektivitätsmodus finden Sie unter [Azure SQL-Konnektivitätseinstellungen](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-settings#change-connection-policy-via-azure-cli).  
+2. Wenn Sie Datenverkehr zu Azure SQL-Datenbank, Azure Synapse Analytics oder SQL Managed Instance filtern möchten, muss der SQL-Konnektivitätsmodus auf **Proxy** festgelegt sein. Informationen zum Ändern des SQL-Konnektivitätsmodus finden Sie unter [Azure SQL-Konnektivitätseinstellungen](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-settings#change-connection-policy-via-azure-cli).  
 
    > [!NOTE]
    > Im SQL-Modus *Proxy* kommt es unter Umständen zu längeren Wartezeiten als im Modus *Umleiten*. Wenn Sie weiterhin den Umleitungsmodus (Standardmodus für Clients, die eine Verbindung innerhalb von Azure herstellen) verwenden möchten, können Sie den Zugriff mit dem SQL-[Diensttag](service-tags.md) in [Netzwerkregeln](tutorial-firewall-deploy-portal.md#configure-a-network-rule) der Firewall filtern.

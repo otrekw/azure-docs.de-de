@@ -16,29 +16,29 @@ ms.date: 04/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b00037704558d0029223b3c99154d0d60757612f
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 9411c22183620f883b4d2819eb3078e49837e578
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279430"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90016077"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect-Synchronisierung: Mit Azure Active Directory synchronisierte Attribute
 In diesem Thema werden die Attribute aufgelistet, die bei der Azure AD Connect-Synchronisierung synchronisiert werden.  
 Die Attribute sind nach den zugehörigen Azure AD-Apps gruppiert.
 
 ## <a name="attributes-to-synchronize"></a>Zu synchronisierende Attribute
-Häufig wird die Frage gestellt, *welche Attribute als Mindestvoraussetzung synchronisiert werden müssen*. Die standardmäßige und empfohlene Vorgehensweise besteht darin, die Standardattribute beizubehalten, damit in der Cloud eine vollständige GAL (Globale Adressliste) erstellt werden kann und alle Features in Office 365-Workloads abgerufen werden können. In einigen Fällen können Attribute vorhanden sein, die für Ihre Organisation nicht mit der Cloud synchronisiert werden sollen, da sie sensible Daten oder personenbezogene Informationen (Personally Identifiable Information, PII) enthalten, wie etwa in diesem Beispiel:  
+Häufig wird die Frage gestellt, *welche Attribute als Mindestvoraussetzung synchronisiert werden müssen*. Die standardmäßige und empfohlene Vorgehensweise besteht darin, die Standardattribute beizubehalten, damit in der Cloud eine vollständige GAL (Globale Adressliste) erstellt werden kann und alle Features in Microsoft 365-Workloads abgerufen werden können. In einigen Fällen können Attribute vorhanden sein, die für Ihre Organisation nicht mit der Cloud synchronisiert werden sollen, da sie vertrauliche, personenbezogene Daten enthalten, wie etwa in diesem Beispiel:  
 ![Fehlerhafte Attribute](./media/reference-connect-sync-attributes-synchronized/badextensionattribute.png)
 
-In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attributen und identifizieren die Attribute, die unter Umständen sensible oder personenbezogene Informationen enthalten und nicht synchronisiert werden können. Deaktivieren Sie diese Attribute per [Azure AD-App- und Attributfilterung](how-to-connect-install-custom.md#azure-ad-app-and-attribute-filtering) während der Installation.
+In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attributen und identifizieren die Attribute, die unter Umständen personenbezogene Informationen enthalten und nicht synchronisiert werden können. Deaktivieren Sie diese Attribute per [Azure AD-App- und Attributfilterung](how-to-connect-install-custom.md#azure-ad-app-and-attribute-filtering) während der Installation.
 
 > [!WARNING]
 > Sie sollten beim Deaktivieren der Attribute äußerst vorsichtig vorgehen und nur diejenigen Attribute deaktivieren, die auf keinen Fall synchronisiert werden können. Das Deaktivieren von anderen Attributen kann eine negative Auswirkung auf Features haben.
 >
 >
 
-## <a name="office-365-proplus"></a>Office 365 ProPlus
+## <a name="microsoft-365-apps-for-enterprise"></a>Microsoft 365 Apps for Enterprise
 | Attributname | Benutzer | Comment |
 | --- |:---:| --- |
 | accountEnabled |X |Definiert, ob ein Konto aktiviert ist. |
@@ -375,7 +375,7 @@ Diese Gruppe umfasst einen Satz von Attributen. Es handelt sich um die Attribute
 * Yammer (nur „Benutzer“ wird genutzt)
 * [Organisationsübergreifende Hybrid-B2B-Zusammenarbeit über Ressourcen wie SharePoint (siehe SharePoint Business to Business Collaboration: Extranet for Partners with Office 365 (SharePoint Business-to-Business-Zusammenarbeit: Extranet für Partner mit Office 365))](https://go.microsoft.com/fwlink/?LinkId=747036)
 
-Diese Gruppe umfasst einen Satz von Attributen, die verwendet werden können, wenn das Azure AD-Verzeichnis nicht zur Unterstützung von Office 365, Dynamics oder Intune verwendet wird. Er umfasst eine kleine Gruppe von Kernattributen. Beachten Sie, dass für das einmalige Anmelden oder die Bereitstellung für einige Drittanbieteranwendungen zusätzlich zu den hier beschriebenen Attributen das Konfigurieren der Synchronisierung von Attributen erforderlich ist. Die Anwendungsanforderungen werden im [Tutorial zur Saas-Anwendung](../saas-apps/tutorial-list.md) für jede Anwendung beschrieben.
+Diese Gruppe umfasst mehrere Attribute, die verwendet werden können, wenn das Azure AD-Verzeichnis nicht zur Unterstützung von Microsoft 365, Dynamics oder Intune verwendet wird. Er umfasst eine kleine Gruppe von Kernattributen. Beachten Sie, dass für das einmalige Anmelden oder die Bereitstellung für einige Drittanbieteranwendungen zusätzlich zu den hier beschriebenen Attributen das Konfigurieren der Synchronisierung von Attributen erforderlich ist. Die Anwendungsanforderungen werden im [Tutorial zur Saas-Anwendung](../saas-apps/tutorial-list.md) für jede Anwendung beschrieben.
 
 | Attributname | Benutzer | Kontakt | Group | Comment |
 | --- |:---:|:---:|:---:| --- |

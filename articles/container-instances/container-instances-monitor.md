@@ -3,12 +3,12 @@ title: Überwachen von Containerinstanzen
 description: Vorgehensweise zur Überwachung des Verbrauchs von Computeressourcen, z. B. CPU und Arbeitsspeicher, durch Ihre Container in Azure Container Instances.
 ms.topic: article
 ms.date: 04/24/2019
-ms.openlocfilehash: e8d41e419abe43530186e256ac6253e2d4783f9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b10c370b599233d00b2b4a65268f6c61a11cbd5c
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116366"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526696"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>Überwachen von Containerressourcen in Azure Container Instances
 
@@ -44,7 +44,7 @@ In einer Containergruppe, die mehrere Container enthält, verwenden Sie eine [Di
 1. Auf der Seite **Übersicht** wählen Sie eins der Metrikdiagramme aus, z. B. **CPU**. 
 1. Wählen Sie die Schaltfläche **Teilung anwenden** und dann **Containername** aus.
 
-![Dimension][dimension]
+![Screenshot: Metriken für eine Containerinstanz, für die „Teilung anwenden“ und „Containername“ ausgewählt sind][dimension]
 
 ## <a name="get-metrics---azure-cli"></a>Abrufen von Metriken – Azure CLI
 

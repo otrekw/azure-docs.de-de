@@ -1,8 +1,8 @@
 ---
 title: Verwenden verschiedener Nachweismechanismen mit dem Client SDK für IoT Hub Device Provisioning Service
 description: 'Azure-Anleitung: Verwenden verschiedener Nachweismechanismen mit dem Client-SDK des Device Provisioning-Diensts (Device Provisioning Service, DPS) in Azure'
-author: robinsh
-ms.author: robinsh
+author: wesmc7777
+ms.author: wesmc
 ms.date: 03/30/2018
 ms.topic: conceptual
 ms.service: iot-dps
@@ -10,16 +10,16 @@ services: iot-dps
 ms.custom:
 - mvc
 - amqp
-ms.openlocfilehash: c110e90f26f595bcbf181b72e13f12a6de2fa8ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a32e2f055b2914fa0008e043e80092ac2da0814
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81687203"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531507"
 ---
 # <a name="how-to-use-different-attestation-mechanisms-with-device-provisioning-service-client-sdk-for-c"></a>Verwenden verschiedener Nachweismechanismen mit dem Client-SDK des Device Provisioning-Diensts für C
 
-In diesem Artikel erfahren Sie, wie Sie verschiedene [Nachweismechanismen](concepts-security.md#attestation-mechanism) mit dem Client-SDK des Device Provisioning-Diensts für C verwenden – entweder mit einem physischen Gerät oder mit einem Emulator. Der Bereitstellungsdienst unterstützt die Authentifizierung für zwei Arten von Nachweismechanismen: X.509 und Trusted Platform Module (TPM).
+In diesem Artikel erfahren Sie, wie Sie verschiedene [Nachweismechanismen](concepts-service.md#attestation-mechanism) mit dem Client-SDK des Device Provisioning-Diensts für C verwenden – entweder mit einem physischen Gerät oder mit einem Emulator. Der Bereitstellungsdienst unterstützt die Authentifizierung für zwei Arten von Nachweismechanismen: X.509 und Trusted Platform Module (TPM).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -29,11 +29,11 @@ Bereiten Sie Ihre Entwicklungsumgebung gemäß dem Abschnitt „Vorbereiten der 
 
 Als Gerätehersteller müssen Sie zuerst basierend auf einem Supporttyp einen Nachweismechanismus auswählen. Das [Client-SDK des Device Provisioning-Diensts für C](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client) unterstützt derzeit die folgenden Nachweismechanismen: 
 
-- [Trusted Platform Module (TPM)](https://en.wikipedia.org/wiki/Trusted_Platform_Module): TPM ist ein etablierter Standard für die meisten Windows-basierten Geräteplattformen sowie für einige Linux/Ubuntu-basierte Geräte. Gerätehersteller können sich für diesen Nachweismechanismus entscheiden, wenn auf ihren Geräten eines der folgenden Betriebssysteme ausgeführt wird und sie nach einem etablierten Standard suchen. Bei TPM-Chips können Sie nur jedes Gerät einzeln beim Device Provisioning-Dienst registrieren. Für Entwicklungszwecke können Sie den TPM-Simulator auf dem Windows- oder Linux-Entwicklungscomputer verwenden.
+- [Trusted Platform Module (TPM)](https://en.wikipedia.org/wiki/Trusted_Platform_Module): TPM ist ein etablierter Standard für die meisten Windows-basierten Geräteplattformen sowie für einige Linux/Ubuntu-basierte Geräte. Als Gerätehersteller können Sie diesen Nachweismechanismus verwenden, wenn auf Ihren Geräten eines der folgenden Betriebssysteme ausgeführt wird und Sie nach einem etablierten Standard suchen. Bei TPM-Chips können Sie nur jedes Gerät einzeln beim Device Provisioning-Dienst registrieren. Für Entwicklungszwecke können Sie den TPM-Simulator auf dem Windows- oder Linux-Entwicklungscomputer verwenden.
 
-- [X.509](https://cryptography.io/en/latest/x509/): X.509-Zertifikate können auf relativ neuen Chips gespeichert werden, die als [Hardwaresicherheitsmodule (HSMs)](concepts-security.md#hardware-security-module) bezeichnet werden. Bei Microsoft wird auch an RIoT- oder DICE-Chips gearbeitet, die die X.509-Zertifikate implementieren. Mit X.509-Chips können Sie Massengeräteregistrierungen im Portal durchführen. Darüber hinaus werden bestimmte Windows-fremde Betriebssysteme wie mbed OS unterstützt. Für Entwicklungszwecke unterstützt das Client-SDK des Device Provisioning-Diensts einen X.509-Gerätesimulator. 
+- [X.509](https://cryptography.io/en/latest/x509/): X.509-Zertifikate können auf relativ neuen Chips gespeichert werden, die als [Hardwaresicherheitsmodule (HSMs)](concepts-service.md#hardware-security-module) bezeichnet werden. Bei Microsoft wird auch an RIoT- oder DICE-Chips gearbeitet, die die X.509-Zertifikate implementieren. Mit X.509-Chips können Sie Massengeräteregistrierungen im Portal durchführen. Darüber hinaus werden bestimmte Windows-fremde Betriebssysteme wie mbed OS unterstützt. Für Entwicklungszwecke unterstützt das Client-SDK des Device Provisioning-Diensts einen X.509-Gerätesimulator. 
 
-Weitere Informationen finden Sie unter [Sicherheitskonzepte beim IoT Hub Device Provisioning-Dienst](concepts-security.md) und [Konzepte für die automatische Bereitstellung](/azure/iot-dps/concepts-auto-provisioning).
+Weitere Informationen finden Sie unter den [Nachweismechanismen](concepts-service.md#attestation-mechanism) von IoT Hub Device Provisioning Service.
 
 ## <a name="enable-authentication-for-supported-attestation-mechanisms"></a>Aktivieren der Authentifizierung für unterstützte Nachweismechanismen
 

@@ -3,18 +3,18 @@ title: Verwalten des Azure Storage-Lebenszyklus
 description: Erfahren Sie, wie Sie Regeln für Lebenszyklusrichtlinien erstellen, um alternde Daten von heißen zu kalten und zu Archivebenen zu übertragen.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 04/24/2020
+ms.date: 09/15/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b1bf8fbfb6d2c141a2b18c3599631f6383883908
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.custom: devx-track-azurepowershell, references_regions
+ms.openlocfilehash: d47b9b5882b25ee030ca813abbaf77805b2df0f5
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89074422"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707763"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Verwalten des Azure Blob Storage-Lebenszyklus
 
@@ -33,7 +33,7 @@ Stellen Sie sich ein Szenario vor, bei dem in den frühen Phasen des Lebenszyklu
 
 ## <a name="availability-and-pricing"></a>Verfügbarkeit und Preismodell
 
-Das Feature zur Lebenszyklusverwaltung ist in allen Azure-Regionen für GPv2-Konten (General Purpose v2), Blob Storage-Konten und Premium-Blockblob-Speicherkonten verfügbar. Für ein vorhandenes GPv1-Konto (Universell V1) kann in einem einfachen Prozess im Azure-Portal ein Upgrade auf ein GPv2-Konto erfolgen. Weitere Informationen zu Speicherkonten finden Sie unter [Azure-Speicherkonto – Übersicht](../common/storage-account-overview.md).  
+Das Feature zur Lebenszyklusverwaltung ist in allen Azure-Regionen für GPv2-Konten (General Purpose v2), Blob Storage-Konten und Premium-Blockblob-Speicherkonten verfügbar. Für ein vorhandenes GPv1-Konto (Universell V1) kann in einem einfachen Prozess im Azure-Portal ein Upgrade auf ein GPv2-Konto erfolgen. Weitere Informationen zu Speicherkonten finden Sie unter [Azure-Speicherkonto – Übersicht](../common/storage-account-overview.md).
 
 Die Funktion zur Lebenszyklusverwaltung ist kostenlos. Kunden werden die regulären Betriebskosten für die [Set Blob Tier](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier)-API-Aufrufe in Rechnung gestellt. Löschvorgänge sind kostenlos. Weitere Informationen zu den Preisen finden Sie unter [Preise für Blockblobs](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
@@ -51,7 +51,7 @@ Eine Richtlinie kann vollständig gelesen oder geschrieben werden. Teilaktualisi
 > [!NOTE]
 > Wenn Sie Firewallregeln für Ihr Speicherkonto aktivieren, werden Anforderungen für die Lebenszyklusverwaltung möglicherweise blockiert. Sie können die Sperre dieser Anforderungen durch Bereitstellen von Ausnahmen für vertrauenswürdige Microsoft-Dienste aufheben. Weitere Informationen finden Sie im Abschnitt „Ausnahmen“ unter [Konfigurieren von Firewalls und virtuellen Netzwerken](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
 
-In diesem Artikel wird die Verwaltung einer Richtlinie über das Portal und über PowerShell erläutert.  
+In diesem Artikel wird die Verwaltung einer Richtlinie über das Portal und über PowerShell erläutert.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -64,54 +64,68 @@ Es gibt zwei Möglichkeiten zum Hinzufügen einer Richtlinie über das Azure-Por
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-2. Suchen Sie im Azure-Portal nach Ihrem Speicherkonto, und wählen Sie es aus. 
+1. Suchen Sie im Azure-Portal nach Ihrem Speicherkonto, und wählen Sie es aus. 
 
-3. Wählen Sie unter **Blobdienst** die Option **Lebenszyklusverwaltung** aus, um Ihre Regeln anzuzeigen oder zu ändern.
+1. Wählen Sie unter **Blob-Dienst** die Option **Lebenszyklusverwaltung** aus, um Ihre Regeln anzuzeigen oder zu ändern.
 
-4. Wählen Sie die Registerkarte **Listenansicht** aus.
+1. Wählen Sie die Registerkarte **Listenansicht** aus.
 
-5. Wählen Sie **Regel hinzufügen** aus, und füllen Sie dann die Felder des Formulars **Aktionssatz** aus. Im nachstehenden Beispiel werden Blobs in den kalten Speicher verschoben, wenn sie während 30 Tagen nicht geändert wurden.
+1. Wählen Sie **Regel hinzufügen** aus, und geben Sie Ihrer Regel im Formular **Details** einen Namen. Darüber hinaus können Sie Werte für **Regelbereich**, **Blobtyp** und **Blobuntertyp** festlegen. Im folgenden Beispiel wird der Bereich zum Filtern von Blobs festgelegt. Daraufhin wird die Registerkarte **Filtersatz** angezeigt.
 
-   ![Seite mit dem Aktionssatz für Lebenszyklusverwaltung im Azure-Portal](media/storage-lifecycle-management-concepts/lifecycle-management-action-set.png)
+   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-details.png" alt-text="Seite mit Details zum Hinzufügen einer Regel in der Lebenszyklusverwaltung im Azure-Portal":::
 
-6. Wählen Sie **Filtersatz** aus, um einen optionalen Filter hinzuzufügen. Wählen Sie dann **Durchsuchen** aus, um den Container und Ordner anzugeben, nach dem gefiltert werden soll.
+1. Wählen Sie **Basisblobs** aus, um die Bedingungen für Ihre Regel festzulegen. Im nachstehenden Beispiel werden Blobs in den kalten Speicher verschoben, wenn sie während 30 Tagen nicht geändert wurden.
 
-   ![Seite mit dem Filtersatz für Lebenszyklusverwaltung im Azure-Portal](media/storage-lifecycle-management-concepts/lifecycle-management-filter-set-browse.png)
+   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-base-blobs.png" alt-text="Seite mit Details zum Hinzufügen einer Regel in der Lebenszyklusverwaltung im Azure-Portal":::
 
-8. Wählen Sie **Überprüfen + hinzufügen** aus, um die Richtlinieneinstellungen zu überprüfen.
+   Die Option **Letzter Zugriff** ist in der Vorschau in den folgenden Regionen verfügbar:
 
-9. Wählen Sie **Hinzufügen** aus, um die neue Richtlinie hinzuzufügen.
+    - Frankreich, Mitte
+    - Kanada, Osten
+    - Kanada, Mitte
+
+   > [!IMPORTANT]
+   > Die Vorschau der Zeitüberwachung für den letzten Zugriff ist nur zur Verwendung in Umgebungen außerhalb der Produktion bestimmt. Produktions-SLAs (Service Level Agreements, Vereinbarungen zum Servicelevel) sind derzeit nicht verfügbar.
+   
+   Wenn Sie die Option **Letzter Zugriff** verwenden möchten, wählen Sie im Azure-Portal auf der Seite **Lebenszyklusverwaltung** die Option **Access tracking enabled** (Zugriffsüberwachung aktiviert) aus. Weitere Informationen zur Option **Letzter Zugriff** finden Sie unter [Verschieben von Daten basierend auf dem Datum des letzten Zugriffs (Vorschau)](#move-data-based-on-last-accessed-date-preview).
+
+1. Wenn Sie auf der Seite **Details** die Option **Limit blobs with filters** (Blobs mit Filtern einschränken) ausgewählt haben, wählen Sie **Filtersatz** aus, um einen optionalen Filter hinzuzufügen. Im folgenden Beispiel werden im Container *mylifecyclecontainer* Blobs gefiltert, die mit „log“ beginnen.
+
+   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-filter-set.png" alt-text="Seite mit Details zum Hinzufügen einer Regel in der Lebenszyklusverwaltung im Azure-Portal":::
+
+1. Wählen Sie **Hinzufügen** aus, um die neue Richtlinie hinzuzufügen.
 
 #### <a name="azure-portal-code-view"></a>Codeansicht des Azure-Portals
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-2. Suchen Sie im Azure-Portal nach Ihrem Speicherkonto, und wählen Sie es aus.
+1. Suchen Sie im Azure-Portal nach Ihrem Speicherkonto, und wählen Sie es aus.
 
-3. Wählen Sie unter **Blobdienst** die Option **Lebenszyklusverwaltung** aus, um Ihre Richtlinie anzuzeigen oder zu ändern.
+1. Wählen Sie unter **Blob-Dienst** die Option **Lebenszyklusverwaltung** aus, um Ihre Richtlinie anzuzeigen oder zu ändern.
 
-4. Der folgende JSON-Code ist ein Beispiel für eine Richtlinie, die in die Registerkarte **Codeansicht** eingefügt werden kann.
+1. Der folgende JSON-Code ist ein Beispiel für eine Richtlinie, die in die Registerkarte **Codeansicht** eingefügt werden kann.
 
    ```json
    {
      "rules": [
        {
-         "name": "ruleFoo",
          "enabled": true,
+         "name": "move-to-cool",
          "type": "Lifecycle",
          "definition": {
-           "filters": {
-             "blobTypes": [ "blockBlob" ],
-             "prefixMatch": [ "container1/foo" ]
-           },
            "actions": {
              "baseBlob": {
-               "tierToCool": { "daysAfterModificationGreaterThan": 30 },
-               "tierToArchive": { "daysAfterModificationGreaterThan": 90 },
-               "delete": { "daysAfterModificationGreaterThan": 2555 }
-             },
-             "snapshot": {
-               "delete": { "daysAfterCreationGreaterThan": 90 }
+               "tierToCool": {
+                 "daysAfterModificationGreaterThan": 30
+               }
              }
+           },
+           "filters": {
+             "blobTypes": [
+               "blockBlob"
+             ],
+             "prefixMatch": [
+               "mylifecyclecontainer/log"
+             ]
            }
          }
        }
@@ -119,9 +133,9 @@ Es gibt zwei Möglichkeiten zum Hinzufügen einer Richtlinie über das Azure-Por
    }
    ```
 
-5. Wählen Sie **Speichern** aus.
+1. Wählen Sie **Speichern** aus.
 
-6. Weitere Informationen zu diesem JSON-Beispiel finden Sie in den Abschnitten [Richtlinie](#policy) und [Regeln](#rules).
+1. Weitere Informationen zu diesem JSON-Beispiel finden Sie in den Abschnitten [Richtlinie](#policy) und [Regeln](#rules).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -229,7 +243,7 @@ Jede Regel in der Richtlinie umfasst mehrere Parameter:
 
 | Parametername | Parametertyp | Notizen | Erforderlich |
 |----------------|----------------|-------|----------|
-| `name`         | String |Ein Regelname kann bis zu 256 alphanumerische Zeichen enthalten. Bei Regelnamen wird die Groß-/Kleinschreibung unterschieden.  Er muss innerhalb einer Richtlinie eindeutig sein. | True |
+| `name`         | String |Ein Regelname kann bis zu 256 alphanumerische Zeichen enthalten. Bei Regelnamen wird die Groß-/Kleinschreibung unterschieden. Er muss innerhalb einer Richtlinie eindeutig sein. | True |
 | `enabled`      | Boolean | Ein optionaler boolescher Wert, über den eine Regel temporär deaktiviert werden kann. Der Standardwert ist „True“, wenn dieser Wert nicht festgelegt wurde. | False | 
 | `type`         | Ein Enumerationswert | Aktuell ist `Lifecycle` der gültige Typ. | True |
 | `definition`   | Ein Objekt, das die Lebenszyklusregel definiert | Jede Definition beinhaltet einen Filtersatz und einen Aktionssatz. | True |
@@ -240,10 +254,10 @@ Jede Regeldefinition enthält einen Filtersatz und einen Aktionssatz. Der [Filte
 
 ### <a name="sample-rule"></a>Beispielregel
 
-Mit der folgenden Beispielregel wird das Konto so gefiltert, dass Aktionen für Objekte ausgeführt werden, die sich in `container1` befinden und mit `foo` beginnen.  
+Mit der folgenden Beispielregel wird das Konto so gefiltert, dass Aktionen für Objekte ausgeführt werden, die sich in `container1` befinden und mit `foo` beginnen.
 
 >[!NOTE]
->- Die Lebenszyklusverwaltung unterstützt nur den Typ „Blockblob“.<br>
+>- Die Lebenszyklusverwaltung unterstützt die Typen „Blockblob“ und „Anfügeblob“.<br>
 >- Die Lebenszyklusverwaltung hat keinen Einfluss auf Systemcontainer wie $logs und $web.
 
 - Blob 30 Tage nach der letzten Änderung in die kalte Ebene verschieben
@@ -287,8 +301,8 @@ Filter umfassen Folgendes:
 
 | Filtername | Filtertyp | Notizen | Ist erforderlich |
 |-------------|-------------|-------|-------------|
-| blobTypes   | Ein Array von vordefinierten Enumerationswerten. | In der aktuellen Version wird `blockBlob` unterstützt. | Ja |
-| prefixMatch | Ein Array von Zeichenfolgen für Präfixe, die abgeglichen werden sollen. In jeder Regel können bis zu 10 Präfixe definiert werden. Eine Präfixzeichenfolge muss mit einem Containernamen beginnen. Wenn Sie für eine Regel beispielsweise eine Übereinstimmung mit allen Blobs unter „`https://myaccount.blob.core.windows.net/container1/foo/...`“ erzielen möchten, lautet der prefixMatch-Wert `container1/foo`. | Wenn Sie prefixMatch nicht definieren, gilt die Regel für alle Blobs im Speicherkonto.  | Nein |
+| blobTypes   | Ein Array von vordefinierten Enumerationswerten. | In der aktuellen Version werden `blockBlob` und `appendBlob` unterstützt. Für `appendBlob` werden nur Blobs zum Löschen unterstützt, festgelegte Ebenen dagegen nicht. | Ja |
+| prefixMatch | Ein Array von Zeichenfolgen für Präfixe, die abgeglichen werden sollen. In jeder Regel können bis zu 10 Präfixe definiert werden. Eine Präfixzeichenfolge muss mit einem Containernamen beginnen. Wenn Sie für eine Regel beispielsweise eine Übereinstimmung mit allen Blobs unter „`https://myaccount.blob.core.windows.net/container1/foo/...`“ erzielen möchten, lautet der prefixMatch-Wert `container1/foo`. | Wenn Sie prefixMatch nicht definieren, gilt die Regel für alle Blobs im Speicherkonto. | Nein |
 | blobIndexMatch | Ein Array von Wörterbuchwerten, die aus dem Blobindextag-Schlüssel und den Wertbedingungen bestehen, die abgeglichen werden sollen. In jeder Regel können bis zu 10 Blobindextag-Bedingungen definiert werden. Wenn Sie beispielsweise alle Blobs mit `Project = Contoso` unter `https://myaccount.blob.core.windows.net/` für eine Regel abgleichen möchten, lautet der blobIndexMatch-Wert `{"name": "Project","op": "==","value": "Contoso"}`. | Wenn Sie blobIndexMatch nicht definieren, gilt die Regel für alle Blobs im Speicherkonto. | Nein |
 
 > [!NOTE]
@@ -300,21 +314,23 @@ Aktionen werden auf die gefilterten Blobs angewandt, wenn die Ausführungsbeding
 
 Bei der Lebenszyklusverwaltung werden die Ebenenverschiebung und das Löschen von Blobs sowie von Blobmomentaufnahmen unterstützt. Definieren Sie mindestens eine Aktion für jede Regel für Blobs oder Blobmomentaufnahmen.
 
-| Aktion        | Basisblob                                   | Momentaufnahme      |
-|---------------|---------------------------------------------|---------------|
-| tierToCool    | Unterstützt Blobs, die sich aktuell in der heißen Ebene befinden.         | Nicht unterstützt |
-| tierToArchive | Unterstützt Blobs, die sich aktuell in der heißen oder der kalten Ebene befinden. | Nicht unterstützt |
-| delete        | Unterstützt                                   | Unterstützt     |
+| Aktion                      | Basisblob                                   | Momentaufnahme      |
+|-----------------------------|---------------------------------------------|---------------|
+| tierToCool                  | Unterstützt Blobs, die sich aktuell in der heißen Ebene befinden.         | Nicht unterstützt |
+| enableAutoTierToHotFromCool | Unterstützt Blobs, die sich aktuell in der kalten Ebene befinden.        | Nicht unterstützt |
+| tierToArchive               | Unterstützt Blobs, die sich aktuell in der heißen oder der kalten Ebene befinden. | Nicht unterstützt |
+| delete                      | Für `blockBlob` und `appendBlob` unterstützt  | Unterstützt     |
 
 >[!NOTE]
 >Wenn für das gleiche Blob mehrere Aktionen definiert sind, wendet die Lebenszyklusverwaltung die am wenigsten teure Aktion auf das Blob an. Beispielsweise ist die Aktion `delete` kostengünstiger als die Aktion `tierToArchive`. Die Aktion `tierToArchive` ist kostengünstiger als die Option `tierToCool`.
 
 Die Ausführungsbedingungen basieren auf dem Alter. Basisblobs verwenden den Zeitpunkt der letzten Änderung, um das Alter nachzuverfolgen, während Blobmomentaufnahmen für den gleichen Zweck den Erstellungszeitpunkt der Momentaufnahme verwenden.
 
-| Aktionsausführungsbedingung             | Wert der Bedingung                          | BESCHREIBUNG                             |
-|----------------------------------|------------------------------------------|-----------------------------------------|
-| daysAfterModificationGreaterThan | Ganzzahliger Wert, der das Alter in Tagen angibt | Bedingung für Basisblobaktionen     |
-| daysAfterCreationGreaterThan     | Ganzzahliger Wert, der das Alter in Tagen angibt | Bedingung für Aktionen für Blobmomentaufnahmen |
+| Aktionsausführungsbedingung               | Wert der Bedingung                          | BESCHREIBUNG                                                                      |
+|------------------------------------|------------------------------------------|----------------------------------------------------------------------------------|
+| daysAfterModificationGreaterThan   | Ganzzahliger Wert, der das Alter in Tagen angibt | Bedingung für Basisblobaktionen                                              |
+| daysAfterCreationGreaterThan       | Ganzzahliger Wert, der das Alter in Tagen angibt | Bedingung für Aktionen für Blobmomentaufnahmen                                          |
+| daysAfterLastAccessTimeGreaterThan | Ganzzahliger Wert, der das Alter in Tagen angibt | (Vorschau) Die Bedingung für Basisblobaktionen, wenn die Uhrzeit für den letzten Zugriff aktiviert ist |
 
 ## <a name="examples"></a>Beispiele
 
@@ -347,6 +363,71 @@ Dieses Beispiel zeigt den Übergang von Blockblobs mit dem Präfix `container1/f
   ]
 }
 ```
+
+### <a name="move-data-based-on-last-accessed-date-preview"></a>Verschieben von Daten basierend auf dem Datum des letzten Zugriffs (Vorschau)
+
+Sie können die Zeitüberwachung für den letzten Zugriff aktivieren, damit aufgezeichnet wird, wann Ihr Blog zuletzt gelesen oder beschrieben wurde. Sie können den letzten Zugriff als Filter zum Verwalten von Tiering und Aufbewahrung von Blobdaten verwenden.
+
+Die Option **Letzter Zugriff** ist in der Vorschau in den folgenden Regionen verfügbar:
+
+ - Frankreich, Mitte
+ - Kanada, Osten
+ - Kanada, Mitte
+
+> [!IMPORTANT]
+> Die Vorschau der Zeitüberwachung für den letzten Zugriff ist nur zur Verwendung in Umgebungen außerhalb der Produktion bestimmt. Produktions-SLAs (Service Level Agreements, Vereinbarungen zum Servicelevel) sind derzeit nicht verfügbar.
+
+Wenn Sie die Option **Letzter Zugriff** verwenden möchten, wählen Sie im Azure-Portal auf der Seite **Lebenszyklusverwaltung** die Option **Access tracking enabled** (Zugriffsüberwachung aktiviert) aus.
+
+#### <a name="how-last-access-time-tracking-works"></a>Funktionsweise der Zeitüberwachung für den letzten Zugriff
+
+Wenn die Zeitüberwachung für den letzten Zugriff aktiviert ist, wird die Blobeigenschaft, mit der `LastAccessTime` aufgerufen wird, aktualisiert, wenn ein Blob gelesen oder beschrieben wird. Dabei gilt der Vorgang [Get Blob](/rest/api/storageservices/get-blob) als Zugriff. [Get Blob Properties](/rest/api/storageservices/get-blob-properties), [Get Blob Metadata](/rest/api/storageservices/get-blob-metadata) und [Get Blob Tags](/rest/api/storageservices/get-blob-tags) gelten nicht als Zugriff. Daher wird bei diesen Vorgängen die Uhrzeit des letzten Zugriffs nicht aktualisiert.
+
+Um die Auswirkungen auf die Lesezugriffswartezeit zu minimieren, wird die Uhrzeit des letzten Zugriffs nur beim ersten Lesezugriff der letzten 24 Stunden aktualisiert. Bei nachfolgenden Lesezugriffen innerhalb desselben 24-Stunden-Zeitraums wird die Uhrzeit des letzten Zugriffs nicht aktualisiert. Wenn ein Blob zwischen zwei Lesezugriffen geändert wird, ist die Uhrzeit des letzten Zugriffs die aktuellere der beiden Werte.
+
+Im nachstehenden Beispiel werden Blobs in den kalten Speicher verschoben, wenn auf sie während 30 Tagen nicht zugegriffen wurde. Bei der `enableAutoTierToHotFromCool`-Eigenschaft handelt es sich um einen booleschen Wert, der angibt, ob für einen Blob automatisch ein Tiering von der kalten Ebene zurück zur heißen Ebene durchgeführt werden soll, wenn nach dem Tiering auf die kalte Ebene noch mal auf den Blob zugegriffen wird.
+
+```json
+{
+  "enabled": true,
+  "name": "last-accessed-thirty-days-ago",
+  "type": "Lifecycle",
+  "definition": {
+    "actions": {
+      "baseBlob": {
+        "enableAutoTierToHotFromCool": true,
+        "tierToCool": {
+          "daysAfterLastAccessTimeGreaterThan": 30
+        }
+      }
+    },
+    "filters": {
+      "blobTypes": [
+        "blockBlob"
+      ],
+      "prefixMatch": [
+        "mylifecyclecontainer/log"
+      ]
+    }
+  }
+}
+```
+
+#### <a name="storage-account-support"></a>Speicherkontounterstützung
+
+Die Zeitüberwachung für den letzten Zugriff ist für die folgenden Typen von Speicherkonten verfügbar:
+
+ - Speicherkonten vom Typ „Universell V2“
+ - Blockblob-Speicherkonten
+ - Blob-Speicherkonten
+
+Wenn Ihr Speicherkonto vom Typ „Universell V1“ ist, verwenden Sie das Azure-Portal, um ein Upgrade auf ein Konto vom Typ „Universell V2“ durchzuführen.
+
+Speicherkonten mit einem hierarchischen Namespace, die für die Verwendung mit Azure Data Lake Storage Gen2 aktiviert sind, werden noch nicht unterstützt.
+
+#### <a name="pricing-and-billing"></a>Preise und Abrechnung
+
+Die Aktualisierung der Uhrzeit des letzten Zugriffs gilt als [sonstiger Vorgang](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
 ### <a name="archive-data-after-ingest"></a>Archivieren von Daten nach der Erfassung
 
@@ -470,13 +551,16 @@ Bei Daten, die regelmäßig geändert und auf die während ihrer Lebensdauer reg
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 
-**Ich habe eine neue Richtlinie erstellt. Warum werden die Aktionen nicht sofort ausgeführt?**  
-Die Plattform führt die Lebenszyklusrichtlinie ein Mal täglich aus. Nachdem Sie eine neue Richtlinie konfiguriert haben, kann es bis zu 24 Stunden dauern, bis einige Aktionen das erste Mal ausgeführt werden.  
+**Ich habe eine neue Richtlinie erstellt. Warum werden die Aktionen nicht sofort ausgeführt?**
 
-**Wie lange dauert es nach dem Aktualisieren einer vorhandenen Richtlinie, bis die Aktionen ausgeführt werden?**  
-Es dauert bis zu 24 Stunden, bis die aktualisierte Richtlinie in Kraft tritt. Sobald die Richtlinie gültig ist, kann es bis zu 24 Stunden dauern, bis die Aktionen ausgeführt werden. Daher kann der Abschluss von Richtlinieaktionen bis zu 48 Stunden dauern.   
+Die Plattform führt die Lebenszyklusrichtlinie ein Mal täglich aus. Nachdem Sie eine neue Richtlinie konfiguriert haben, kann es bis zu 24 Stunden dauern, bis einige Aktionen das erste Mal ausgeführt werden.
 
-**Ich habe ein archiviertes Blob manuell wieder aktiviert. Wie kann ich vorübergehend verhindern, dass es zurück auf die Archivspeicherebene verschoben wird?**  
+**Wie lange dauert es nach dem Aktualisieren einer vorhandenen Richtlinie, bis die Aktionen ausgeführt werden?**
+
+Es dauert bis zu 24 Stunden, bis die aktualisierte Richtlinie in Kraft tritt. Sobald die Richtlinie gültig ist, kann es bis zu 24 Stunden dauern, bis die Aktionen ausgeführt werden. Daher kann der Abschluss von Richtlinieaktionen bis zu 48 Stunden dauern.
+
+**Ich habe ein archiviertes Blob manuell wieder aktiviert. Wie kann ich vorübergehend verhindern, dass es zurück auf die Archivspeicherebene verschoben wird?**
+
 Wenn ein Blob von einer Zugriffsebene auf eine andere verschoben wird, ändert sich der Zeitpunkt der letzten Änderung nicht. Wenn Sie ein archiviertes Blob auf der heißen Ebene manuell aktivieren, würde es vom Modul für die Lebenszyklusverwaltung zurück auf die Archivspeicherebene verschoben. Deaktivieren Sie vorübergehend die Regel, die sich auf dieses Blob auswirkt, um zu verhindern, dass es erneut archiviert wird. Aktivieren Sie die Regel erneut, wenn das Blob sicher zurück auf die Archivspeicherebene verschoben werden kann. Sie können das Blob auch an einen anderen Speicherort kopieren, falls es sich dauerhaft auf einer heißen oder kalten Ebene befinden muss.
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 8/12/2020
 ms.author: JenCook
-ms.openlocfilehash: b5b0f9acc45dba81bb7653c844bb8c78a8bd29ba
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 235f4eb236e144d41ffb9958b09dab0cf5c269b6
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826292"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462427"
 ---
 # <a name="how-to-run-an-application-with-fortanix-enclave-manager"></a>Anleitung: Ausführen einer Anwendung mit Fortanix Enclave Manager 
 
@@ -24,7 +24,7 @@ Beginnen Sie mit der Ausführung Ihrer Anwendung in Azure Confidential Computing
 Fortanix ist ein Drittanbieter von Software mit Produkten und Diensten, die auf Azure-Infrastruktur aufsetzen. Andere Drittanbieter bieten ähnliche Confidential Computing-Dienste in Azure an.
 
 > [!Note] 
- > DIE PRODUKTE, AUF DIE IN DIESEM DOKUMENT VERWIESEN WIRD, UNTERLIEGEN NICHT DER KONTROLLE VON MICROSOFT. MICROSOFT STELLT IHNEN DIESE INFORMATIONEN NUR AUS PRAKTISCHEN GRÜNDEN ZUR VERFÜGUNG, UND DER VERWEIS AUF DIESE NICHT-MICROSOFT-PRODUKTE BEDEUTET NICHT, DASS MICROSOFT SIE EMPFIEHLT.
+ > Die Produkte, auf die in diesem Dokument verwiesen wird, unterliegen nicht der Kontrolle von Microsoft. Microsoft stellt Ihnen diese Informationen nur aus praktischen Gründen zur Verfügung, und der Verweis auf diese Nicht-Microsoft-Produkte bedeutet nicht, dass Microsoft sie empfiehlt.
 
 
 
@@ -43,7 +43,7 @@ In diesem Tutorial erfahren Sie, wie Sie Ihr Anwendungsimage in ein durch Confid
 > Mit kostenlosen Testkonten ist kein Zugriff auf die virtuellen Computer möglich, die in diesem Tutorial verwendet werden. Führen Sie ein Upgrade auf ein Abonnement mit nutzungsbasierter Zahlung durch.
 
 ## <a name="add-an-application-to-fortanix-enclave-manager"></a>Hinzufügen einer Anwendung zu Fortanix Enclave Manager
-1. Melden Sie sich bei [Fortanix Enclave Manager](https://fortanix.com) an.
+1. Melden Sie sich bei [Fortanix Enclave Manager (Fortanix EM)](https://em.fortanix.com) an.
 1. Navigieren Sie zur Seite **Accounts** (Konten), und wählen Sie **ADD ACCOUNT** (Konto hinzufügen) aus, um ein neues Konto zu erstellen. 
     
 ![Erstellen eines Kontos](media/how-to-fortanix-enclave-manager/create-account.png)
@@ -120,7 +120,7 @@ Beim Erstellen eines Fortanix Node Agents werden in Ihrer Azure-Ressourcengruppe
 1. Auf dieser Seite geben Sie Informationen zur Bereitstellung eines virtuellen Computers ein. Konkret handelt es sich bei dieser VM um einen Intel SGX-fähigen virtuellen Computer der DCsv2-Serie von Azure mit installierter Fortanix Node Agent-Software. Der Node Agent ermöglicht die sichere Ausführung Ihres konvertierten Images auf Intel SGX-Knoten in Azure.  Wählen Sie das  **Abonnement** und die  **Ressourcengruppe** aus, in der Sie den virtuellen Computer und die zugehörigen Ressourcen bereitstellen möchten. 
  
     > [!NOTE]
-    > Für die Bereitstellung von virtuellen Computern der DCsv2-Serie in Azure gelten Einschränkungen. Möglicherweise müssen Sie Kontingente für zusätzliche Kerne anfordern. Weitere Informationen finden Sie unter [Confidential Computing-Lösungen auf Azure VMs](https://docs.microsoft.com/azure/confidential-computing/virtual-machine-solution). 
+    > Für die Bereitstellung von virtuellen Computern der DCsv2-Serie in Azure gelten Einschränkungen. Möglicherweise müssen Sie Kontingente für zusätzliche Kerne anfordern. Weitere Informationen finden Sie unter [Confidential Computing-Lösungen auf Azure VMs](https://docs.microsoft.com/azure/confidential-computing/virtual-machine-solutions). 
 
 1. Wählen Sie eine verfügbare Region aus.
 1. Geben Sie in das Feld **Knotenname** einen Namen für Ihren virtuellen Computer ein. 

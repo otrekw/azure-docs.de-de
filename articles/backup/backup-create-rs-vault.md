@@ -1,15 +1,15 @@
 ---
 title: Erstellen und Konfigurieren von Recovery Services-Tresoren
-description: In diesem Artikel erfahren Sie, wie Sie Recovery Services-Tresore zum Speichern von Sicherungen und Wiederherstellungspunkten erstellen und konfigurieren.
+description: In diesem Artikel erfahren Sie, wie Sie Recovery Services-Tresore zum Speichern von Sicherungen und Wiederherstellungspunkten erstellen und konfigurieren. Erfahren Sie, wie Sie die regionsübergreifende Wiederherstellung zur Wiederherstellung in einer sekundären Region verwenden.
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: 81c6fd47ccea2ea17a20535df04931727c23be6f
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: c659efad7f0eaf5793e1fd608eb522964df7befd
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177192"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981492"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Erstellen und Konfigurieren von Recovery Services-Tresoren
 
@@ -30,34 +30,45 @@ Azure Backup übernimmt automatisch die Speicherung für den Tresor. Sie müssen
 
 1. Wählen Sie den Speicherreplikationstyp und dann **Speichern** aus.
 
-     ![Speicherkonfiguration für neuen Tresor festlegen](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
+     ![Speicherkonfiguration für neuen Tresor festlegen](./media/backup-create-rs-vault/recovery-services-vault-backup-configuration.png)
 
    - Wir empfehlen, dass Sie, wenn Sie Azure als primären Endpunkt für den Sicherungsspeicher verwenden, weiterhin die Standardeinstellung **Georedundant** verwenden.
    - Wenn Sie Azure nicht als primären Speicherendpunkt für die Sicherung verwenden, wählen Sie **Lokal redundant** aus. Dadurch verringern sich die Kosten für Azure-Speicher.
-   - Erfahren Sie mehr über [Georedundanz](../storage/common/storage-redundancy.md) and [lokale Redundanz](../storage/common/storage-redundancy.md).
+   - Erfahren Sie mehr über [Georedundanz](../storage/common/storage-redundancy.md#geo-redundant-storage) and [lokale Redundanz](../storage/common/storage-redundancy.md#locally-redundant-storage).
+   - Wenn Sie in einer Region Datenverfügbarkeit ohne Ausfallzeiten benötigen und Data Residency gewährleistet sein muss, wählen Sie [zonenredundanten Speicher](https://docs.microsoft.com/azure/storage/common/storage-redundancy#zone-redundant-storage) aus.
 
 >[!NOTE]
 >Die Speicherreplikationseinstellungen für den Tresor sind für das Sichern von Azure-Dateifreigaben nicht relevant, da die aktuelle Lösung auf Momentaufnahmen basiert und keine Daten in den Tresor übertragen werden. Momentaufnahmen werden im gleichen Speicherkonto gespeichert wie die gesicherte Dateifreigabe.
 
 ## <a name="set-cross-region-restore"></a>Festlegen der bereichsübergreifenden Wiederherstellung
 
-Als eine der Wiederherstellungsoptionen ermöglicht die bereichsübergreifende Wiederherstellung (Cross Region Restore, CRR) die Wiederherstellung von virtuellen Azure-Computern in einer sekundären Region, bei der es sich um eine [gepaarte Azure-Region](../best-practices-availability-paired-regions.md) handelt. Diese Option ermöglicht Folgendes:
+Die Wiederherstellungsoption **Regionsübergreifende Wiederherstellung** ermöglicht Ihnen, Daten in einer sekundären [gekoppelten Azure-Region](../best-practices-availability-paired-regions.md) wiederherzustellen.
+
+Sie unterstützt die folgenden Datenquellen:
+
+- Virtuelle Azure-Computer
+- Auf Azure-VMs gehostete SQL-Datenbanken
+- Auf Azure-VMs gehostete SAP HANA-Datenbanken
+
+Die regionsübergreifende Wiederherstellung bietet folgende Möglichkeiten:
 
 - Durchführen von Übungen für Audit- oder Complianceanforderungen
-- Wiederherstellen des virtuellen Computers oder dessen Datenträgers im Falle eines Notfalls in der primären Region
+- Wiederherstellen der Daten bei einer Katastrophe in der primären Region
+
+Beim Wiederherstellen einer VM können Sie die VM oder den zugehörigen Datenträger wiederherstellen. Wenn Sie die Wiederherstellung von SQL-/SAP HANA-Datenbanken auf Azure-VMs durchführen, können Sie die Datenbanken oder deren Dateien wiederherstellen.
 
 Wählen Sie zur Auswahl dieses Features im Bereich **Sicherungskonfiguration** die Option **Bereichsübergreifende Wiederherstellung aktivieren** aus.
 
-Dieser Prozess hat Auswirkungen auf den Preis, da er auf der Speicherebene erfolgt.
+Da dieser Prozess auf Speicherebene erfolgt, hat er [Auswirkungen auf den Preis](https://azure.microsoft.com/pricing/details/backup/).
 
 >[!NOTE]
 >Vorbereitungen
 >
 >- Machen Sie sich anhand der [Unterstützungsmatrix](backup-support-matrix.md#cross-region-restore) mit der Liste unterstützter verwalteter Typen und Regionen vertraut.
->- Das Feature der bereichsübergreifenden Wiederherstellung (CRR) ist nun in allen öffentlichen Azure-Regionen in der Vorschau verfügbar.
+>- Das Feature der regionsübergreifenden Wiederherstellung (Cross Region Restore, CRR) ist nun in allen öffentlichen Azure-Regionen und Sovereign Clouds als Vorschauversion verfügbar.
 >- CRR ist ein optionales Feature auf Tresorebene für beliebige GRS-Tresore und standardmäßig deaktiviert.
 >- Nach der Aktivierung kann es bis zu 48 Stunden dauern, bis die Sicherungselemente in sekundären Regionen verfügbar sind.
->- Zurzeit wird CRR nur für virtuelle Azure-Computer mit dem Sicherungsverwaltungstyp „ARM“ unterstützt. (Klassische virtuelle Azure-Computer werden nicht unterstützt.)  Wenn CRR von weiteren Verwaltungstypen unterstützt wird, werden diese **automatisch** registriert.
+>- CRR für Azure-VMs wird zurzeit nur für Azure Resource Manager-VMs in Azure unterstützt. Klassische Azure-VMs werden nicht unterstützt.  Wenn CRR von weiteren Verwaltungstypen unterstützt wird, werden diese **automatisch** registriert.
 >- Die bereichsübergreifende Wiederherstellung kann zurzeit nicht auf GRS oder LRS zurückgesetzt werden, sobald der Schutz zum ersten Mal initiiert wurde.
 
 ### <a name="configure-cross-region-restore"></a>Konfigurieren der bereichsübergreifenden Wiederherstellung
@@ -69,15 +80,13 @@ Bei einem mit GRS-Redundanz erstellten Tresor kann die bereichsübergreifende Wi
 1. Navigieren Sie im Portal zu „Recovery Services-Tresor“ > „Einstellungen“ > „Eigenschaften“.
 2. Wählen Sie unter **Bereichsübergreifende Wiederherstellung in diesem Tresor aktivieren** aus, um die Funktionalität zu aktivieren.
 
-   ![Vor Auswahl der bereichsübergreifenden Wiederherstellung in diesem Tresor](./media/backup-azure-arm-restore-vms/backup-configuration1.png)
+   ![Aktivieren der regionsübergreifenden Wiederherstellung](./media/backup-azure-arm-restore-vms/backup-configuration.png)
 
-   ![Nach Auswahl der bereichsübergreifenden Wiederherstellung in diesem Tresor](./media/backup-azure-arm-restore-vms/backup-configuration2.png)
+Weitere Informationen zum Sichern und Wiederherstellen mit CRR finden Sie in diesen Artikeln:
 
-Informationen zum Anzeigen von Sicherungselementen in der sekundären Region finden Sie [hier](backup-azure-arm-restore-vms.md#view-backup-items-in-secondary-region).
-
-Informationen zur Wiederherstellung in der sekundären Region finden Sie [hier](backup-azure-arm-restore-vms.md#restore-in-secondary-region).
-
-Informationen zum Überwachen von Wiederherstellungsaufträgen für die sekundäre Regionen finden Sie [hier](backup-azure-arm-restore-vms.md#monitoring-secondary-region-restore-jobs).
+- [Regionsübergreifende Wiederherstellung für Azure-VMs](backup-azure-arm-restore-vms.md#cross-region-restore)
+- [Regionsübergreifende Wiederherstellung für SQL-Datenbanken](restore-sql-database-azure-vm.md#cross-region-restore)
+- [Regionsübergreifende Wiederherstellung für SAP HANA-Datenbanken](sap-hana-db-restore.md#cross-region-restore)
 
 ## <a name="set-encryption-settings"></a>Festlegen von Verschlüsselungseinstellungen
 

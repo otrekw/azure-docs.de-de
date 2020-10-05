@@ -13,12 +13,12 @@ ms.date: 09/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd3361657406f2ece6a48b74d3ca6ee3d9ed68ca
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 244456298e9a85f7cf7a5bdc175f1df5397ca207
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89277356"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662155"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Installationsübersicht: Azure AD Connect und Azure AD Connect Health
 
@@ -124,7 +124,7 @@ Wenn Ihr AD FS-Server nicht für die automatische Aktualisierung von Zertifikate
 |Alle AD FS-Artikel | [Azure AD Connect und Verbund](how-to-connect-fed-whatis.md)|
 |Konfigurieren von AD FS mit Unterdomänen | [Unterstützung mehrerer Domänen für den Verbund mit Azure AD](how-to-connect-install-multiple-domains.md)|
 |Verwalten der AD FS-Farm | [Verwaltung und Anpassung der Active Directory-Verbunddienste mit Azure AD Connect](how-to-connect-fed-management.md)|
-|Manuelles Aktualisieren von Verbundzertifikaten | [Erneuern von Verbundzertifikaten für Office 365 und Azure AD](how-to-connect-fed-o365-certs.md)|
+|Manuelles Aktualisieren von Verbundzertifikaten | [Erneuern von Verbundzertifikaten für Microsoft 365 und Azure AD](how-to-connect-fed-o365-certs.md)|
 
 
 ## <a name="get-started-with-azure-ad-connect-health"></a>Erste Schritte mit Azure AD Connect Health

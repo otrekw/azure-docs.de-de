@@ -1,6 +1,6 @@
 ---
-title: Behandeln von Problemen beim kennwortbasierten einmaligen Anmelden in Azure AD
-description: Beheben von Problemen bei einer Azure AD-App, die für kennwortbasiertes einmaliges Anmelden konfiguriert wurde.
+title: Behandeln von Problemen beim kennwortbasierten einmaligen Anmelden bei Azure Active Directory
+description: Hier erfahren Sie, wie Sie Probleme mit einer Azure AD-App beheben, die für kennwortbasiertes einmaliges Anmelden konfiguriert wurde.
 author: kenwith
 manager: celestedg
 ms.service: active-directory
@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
-ms.openlocfilehash: 436fbdde1283bd8406e631fd37b559bfe11e234e
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 0534c85548b1d8b6203aaac4911dc851dd49d81a
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051870"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460353"
 ---
 # <a name="troubleshoot-password-based-single-sign-on-in-azure-ad"></a>Behandeln von Problemen beim kennwortbasierten einmaligen Anmelden in Azure AD
 

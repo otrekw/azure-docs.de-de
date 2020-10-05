@@ -5,31 +5,35 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 06/09/2020
+ms.date: 09/18/2020
 ms.author: duau
-ms.openlocfilehash: 27061035048202e4bcf231045bd946dd08bb5472
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.custom: references_regions
+ms.openlocfilehash: e3f9105037c049a53f1b7b99da96dd857070fcc7
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89396504"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987622"
 ---
 # <a name="expressroute-global-reach"></a>ExpressRoute Global Reach
-ExpressRoute ist eine private und zuverlässige Möglichkeit, Ihre lokalen Netzwerke mit der Microsoft Cloud zu verbinden. Sie können aus Ihrem privaten Rechenzentrum oder Ihrem Unternehmensnetzwerk auf viele Microsoft-Clouddienste wie beispielsweise Azure und Office 365 zugreifen. Angenommen, Sie haben eine Niederlassung in San Francisco mit einer ExpressRoute-Leitung im Silicon Valley und eine weitere Niederlassung in London mit einer ExpressRoute-Leitung in derselben Stadt. Beide Niederlassungen erhalten Highspeedkonnektivität mit Azure-Ressourcen in den Regionen „USA, Westen“ und „Vereinigtes Königreich, Süden“. Allerdings können die Niederlassungen nicht direkt Daten miteinander austauschen. Anders ausgedrückt: 10.0.1.0/24 kann Daten an 10.0.3.0/24 und 10.0.4.0/24 senden, jedoch NICHT an 10.0.2.0/24.
+ExpressRoute ist eine private und zuverlässige Möglichkeit, Ihre lokalen Netzwerke mit der Microsoft Cloud zu verbinden. Sie können aus Ihrem privaten Rechenzentrum oder Ihrem Unternehmensnetzwerk auf viele Microsoft-Clouddienste wie beispielsweise Azure und Microsoft 365 zugreifen. Angenommen, Sie haben eine Niederlassung in San Francisco mit einer ExpressRoute-Leitung im Silicon Valley und eine weitere Niederlassung in London mit einer ExpressRoute-Leitung in derselben Stadt. Beide Niederlassungen erhalten Highspeedkonnektivität mit Azure-Ressourcen in den Regionen „USA, Westen“ und „Vereinigtes Königreich, Süden“. Die Niederlassungen können jedoch keine Verbindung herstellen und nicht direkt Daten untereinander austauschen. Anders ausgedrückt: 10.0.1.0/24 kann Daten an die Netzwerke 10.0.3.0/24 und 10.0.4.0/24 senden, jedoch NICHT an das Netzwerk 10.0.2.0/24.
 
-![ohne][1]
+![Diagramm der nicht miteinander verbundenen Verbindungen mit ExpressRoute Global Reach][1]
 
 Mithilfe von **ExpressRoute Global Reach** können Sie ExpressRoute-Leitungen miteinander verbinden, um ein privates Netzwerk zwischen Ihren lokalen Netzwerken aufzubauen. Im obigen Beispiel kann Ihre Niederlassung in San Francisco (10.0.1.0/24) dank ExpressRoute Global Reach direkt Daten mit Ihrer Niederlassung in London (10.0.2.0/24) über die bestehenden ExpressRoute-Leitungen und über das globale Netzwerk von Microsoft austauschen. 
 
-![mit][2]
+![Diagramm der miteinander verbundenen Verbindungen mit ExpressRoute Global Reach][2]
 
 ## <a name="use-case"></a>Anwendungsfall
 ExpressRoute Global Reach dient zur Ergänzung der WAN-Implementierung des Dienstanbieters und vernetzt Ihre Niederlassungen auf der ganzen Welt. Wenn Ihr Dienstanbieter beispielsweise in erster Linie in den USA tätig ist und sämtliche Niederlassungen in den USA vernetzt hat, der Dienstanbieter jedoch nicht in Japan und Hongkong agiert, können Sie mit ExpressRoute Global Reach mit einem lokalen Dienstanbieter arbeiten. Microsoft vernetzt Ihre Niederlassungen dann über ExpressRoute und unser globales Netzwerk mit denen in den USA.
 
-![Anwendungsfall][3]
+![Diagramm eines Anwendungsfalls für ExpressRoute Global Reach][3]
 
 ## <a name="availability"></a>Verfügbarkeit 
-ExpressRoute Global Reach wird derzeit in den folgenden Ländern unterstützt:
+ExpressRoute Global Reach wird an den folgenden Standorten unterstützt. 
+
+> [!NOTE] 
+> Um ExpressRoute Global Reach zwischen [verschiedenen geopolitischen Regionen](expressroute-locations-providers.md#locations) zu aktivieren, ist für Ihre Verbindungen eine **Premium-SKU** erforderlich.
 
 * Australien
 * Canada
@@ -48,13 +52,10 @@ ExpressRoute Global Reach wird derzeit in den folgenden Ländern unterstützt:
 * United Kingdom
 * USA
 
-Ihre ExpressRoute-Leitungen müssen an den [ExpressRoute-Peeringstandorten](expressroute-locations.md) in den oben aufgeführten Ländern oder Regionen eingerichtet werden. Um ExpressRoute Global Reach zwischen [verschiedenen geopolitischen Regionen](expressroute-locations.md) zu erstellen, ist für Ihre Leitungen die SKU „Premium“ erforderlich.
-
 ## <a name="next-steps"></a>Nächste Schritte
-1. [Sehen Sie sich die Global Reach-FAQ an.](expressroute-faqs.md#globalreach)
-2. [Erfahren Sie, wie Sie Global Reach aktivieren.](expressroute-howto-set-global-reach.md)
-3. [Erfahren Sie, wie Sie eine ExpressRoute-Verbindung mit Ihrem virtuellen Netzwerk verknüpfen.](expressroute-howto-linkvnet-arm.md)
-
+- Sehen Sie sich die [häufig gestellten Fragen zu Global Reach](expressroute-faqs.md#globalreach) an.
+- Erfahren Sie, wie Sie [Global Reach aktivieren](expressroute-howto-set-global-reach.md).
+- Erfahren Sie, wie Sie [eine ExpressRoute-Verbindung mit Ihrem virtuellen Netzwerk verknüpfen](expressroute-howto-linkvnet-arm.md).
 
 <!--Image References-->
 [1]: ./media/expressroute-global-reach/1.png "Diagramm ohne Global Reach"

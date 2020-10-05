@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: nichola
-ms.openlocfilehash: bbe813b46b41bf0e2b8bf9c6b3fe3e3e843204ed
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 54a1135931c2be9c6b7941c9ff740fd29f855eee
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319745"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601247"
 ---
 # <a name="five-steps-for-integrating-all-your-apps-with-azure-ad"></a>Fünf Schritte zum Integrieren Ihrer gesamten Apps in Azure AD
 
@@ -70,7 +70,7 @@ Während Ihres Ermittlungsprozesses haben Sie ggf. Anwendungen ermittelt, die vo
 
 Wir haben einen Leitfaden zur Verwaltung des Geschäftsprozesses für die Integration von Apps in Azure AD veröffentlicht. Darin sind beispielsweise ein [Poster](https://aka.ms/AppOnePager) und eine [Präsentation](https://aka.ms/AppGuideline) enthalten, damit Sie die für Geschäftsprozesse und Anwendungen verantwortlichen Personen informieren und deren Interesse wecken können. Sie können diese Beispiele mit Ihrem eigenen Branding versehen und für Ihre Organisation veröffentlichen, indem Sie Ihr Unternehmensportal, einen Newsletter oder ein anderes Medium verwenden, während Sie diesen Prozess durchführen.
 
-Ein guter Ausgangspunkt ist die Auswertung Ihrer Nutzung von AD FS (Active Directory-Verbunddienste). In vielen Organisationen wird AD FS für die Authentifizierung mit SaaS-Apps, benutzerdefinierten Branchenanwendungen und Office 365- und Azure AD-basierten Apps genutzt:
+Ein guter Ausgangspunkt ist die Auswertung Ihrer Nutzung von AD FS (Active Directory-Verbunddienste). In vielen Organisationen wird AD FS für die Authentifizierung mit SaaS-Apps, benutzerdefinierten Branchenanwendungen und Microsoft 365- und Azure AD-basierten Apps genutzt:
 
 ![Im Diagramm sind lokale Apps, Branchenanwendungen, SaaS-Apps und Office 365-Apps (über Azure AD) dargestellt, die durch gepunktete Linien jeweils mit Active Directory und AD FS verbunden sind.](\media\five-steps-to-full-application-integration-with-azure-ad\adfs-integration-1.png)
 

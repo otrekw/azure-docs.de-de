@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/7/2020
-ms.openlocfilehash: b27fe2abc50396b527e61487acf9797db59c1cce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b95162d34b706b0bbb3e2940ea214e5a662655d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82627584"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984917"
 ---
 # <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>Migrieren von SQL Server-Agent-Aufträgen zu ADF mit SSMS
 
@@ -46,7 +46,7 @@ Die in diesem Artikel beschriebene Funktion erfordert Version 18.5 oder höher 
 ## <a name="migrate-ssis-jobs-to-adf"></a>Migrieren von SSIS-Aufträgen zu ADF
 
 1. Klicken Sie in SSMS im Objekt-Explorer auf „SQL Server-Agent“ und dann auf „Aufträge“. Klicken Sie anschließend mit der rechten Maustaste, und wählen Sie die Option **SSIS-Aufträge zu ADF migrieren** aus.
-![Menü](media/how-to-migrate-ssis-job-ssms/menu.png)
+![Screenshot des SQL Server Management Studio-Objekt-Explorers für die Auswahl von „Aufträge“ und dann „SSIS-Aufträge zu ADF migrieren“](media/how-to-migrate-ssis-job-ssms/menu.png)
 
 1. Melden Sie sich bei Azure an, und wählen Sie ein Azure-Abonnement, eine Data Factory-Instanz und eine Integration Runtime aus. Die Auswahl eines Azure Storage-Kontos ist optional. Dieses Konto wird im Schritt der Zuordnung des Paketspeicherorts verwendet, wenn die SSIS-Aufträge, die migriert werden sollen, über SSIS-Dateisystempakete verfügen.
 ![Menü](media/how-to-migrate-ssis-job-ssms/step1.png)
@@ -57,28 +57,28 @@ Die in diesem Artikel beschriebene Funktion erfordert Version 18.5 oder höher 
     1. Sie können den Pfad zum Quellordner aktualisieren. Gültige Pfade sind Ordnerpfade oder übergeordnete Ordnerpfade von Paketen.
     1. Sie können den Pfad des Zielordners aktualisieren. Die Standardeinstellung ist der relative Pfad zum Azure Storage-Standardkonto, das in Schritt 2 ausgewählt wird.
     1. Sie können eine ausgewählte Zuordnung über **Zuordnung löschen** löschen.
-![Schritt 2](media/how-to-migrate-ssis-job-ssms/step2.png)
-![Schritt 2.1](media/how-to-migrate-ssis-job-ssms/step2-1.png)
+![Screenshot der Seite zum Zuordnen der Pfade für SSIS-Paket und Konfiguration für das Hinzufügen einer Zuordnung](media/how-to-migrate-ssis-job-ssms/step2.png)
+![Screenshot der Seite zum Zuordnen der Pfade für SSIS-Paket und Konfiguration für das Aktualisieren der Pfade für Quell- und Zielordner](media/how-to-migrate-ssis-job-ssms/step2-1.png)
 
 1. Wählen Sie die anwendbaren Aufträge aus, die migriert werden sollen, und konfigurieren Sie die Einstellungen der entsprechenden Aktivität *SSIS-Paket ausführen*.
 
     - Die *Standardeinstellung* gilt standardmäßig für alle ausgewählten Schritte. Weitere Informationen zu den einzelnen Eigenschaften finden Sie auf der Registerkarte *Einstellungen* der [Aktivität „SSIS-Paket ausführen“](how-to-invoke-ssis-package-ssis-activity.md), wenn der Paketspeicherort auf *Dateisystem (Paket)* festgelegt ist.
-    ![Schritt 3.1](media/how-to-migrate-ssis-job-ssms/step3-1.png)
+    ![Screenshot der Seite „SSIS-Aufträge auswählen“ für das Konfigurieren der Einstellungen der entsprechenden ausgeführten SSIS-Paketaktivität](media/how-to-migrate-ssis-job-ssms/step3-1.png)
     - Über die Einstellung *Schritt* können Sie die Einstellung für einen ausgewählten Schritt konfigurieren.
         
         Das Kontrollkästchen bei **Standardeinstellung anwenden** ist standardmäßig aktiviert. Deaktivieren Sie das Kontrollkästchen, wenn Sie nur die Einstellung für den ausgewählten Schritt konfigurieren möchten.  
         Weitere Informationen zu anderen Eigenschaften finden Sie auf der Registerkarte *Einstellungen* der [Aktivität „SSIS-Paket ausführen“](how-to-invoke-ssis-package-ssis-activity.md), wenn der Paketspeicherort auf *Dateisystem (Paket)* festgelegt ist.
-    ![Schritt 3.2](media/how-to-migrate-ssis-job-ssms/step3-2.png)
+    ![Screenshot der Seite „SSIS-Aufträge auswählen“ für das Anwenden der Standardeinstellungen](media/how-to-migrate-ssis-job-ssms/step3-2.png)
 
 1. Generieren Sie eine ARM-Vorlage, und stellen Sie diese bereit.
     1. Wählen Sie den Ausgabepfad für die ARM-Vorlagen der migrierten ADF-Pipelines aus, oder geben Sie ihn ein. Sofern der Ordner noch nicht vorhanden ist, wird er automatisch erstellt.
     2. Aktivieren Sie das Kontrollkästchen bei **ARM-Vorlagen in Data Factory bereitstellen**.
         - Standardmäßig ist das Kontrollkästchen nicht aktiviert. Generierte ARM-Vorlagen können Sie später manuell bereitstellen.
         - Aktivieren Sie das Kontrollkästchen, um generierte ARM-Vorlagen direkt in Data Factory bereitzustellen.
-    ![Schritt 4](media/how-to-migrate-ssis-job-ssms/step4.png)
+    ![Screenshot der Seite „Migration konfigurieren“ für das Auswählen oder Eingeben des Ausgabepfads für die ARM-Vorlagen der migrierten ADF-Pipelines und das Aktivieren der Option zum Bereitstellen von ARM-Vorlagen in Ihrer Data Factory](media/how-to-migrate-ssis-job-ssms/step4.png)
 
 1. Führen Sie die Migration aus, und überprüfen Sie die Ergebnisse.
-![Schritt 5](media/how-to-migrate-ssis-job-ssms/step5.png)
+![Screenshot der Seite „Migrationsergebnisse“ mit dem Status der Migration](media/how-to-migrate-ssis-job-ssms/step5.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

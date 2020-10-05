@@ -1,18 +1,18 @@
 ---
 title: Azure Files-Verweis
-description: Hier finden Sie die Referenz zur Azure Storage-API, Infodateien und Clientbibliothekspakete.
+description: Hier finden Sie die Referenz zur Azure Files-API, Infodateien und Clientbibliothekspakete.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 07/14/2020
 ms.service: storage
 ms.topic: conceptual
 ms.reviewer: ripohane
-ms.openlocfilehash: c5799b7ec9f6ecce1b9203345446b2d3240beb80
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cbbd4960a498516182323748e6609b834b1d4884
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527845"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90014683"
 ---
 # <a name="azure-files-reference"></a>Azure Files-Verweis
 
@@ -66,8 +66,8 @@ Die folgende Tabelle enthält die Referenz- und Beispieldokumentation zu Python-
 
 |  Version  | Referenzdokumentation | Paket | Schnellstart |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12.x | [Azure Storage-Clientbibliotheken v12 für Python](/azure/developer/python/sdk/storage/overview?view=storage-py-v12) | [Paket (PyPI)](https://pypi.org/project/azure-storage-file/12.0.0b4/) | [Beispiele](/python/api/overview/azure/storage-file-share-readme#examples) |
-| 2.x | [Azure Storage-Clientbibliotheken v2 für Python](/azure/developer/python/sdk/storage/overview?view=storage-py-v2) | [Paket (PyPI)](https://pypi.org/project/azure-storage-file/2.1.0/) | [Entwickeln für Azure Files mit Python](/azure/storage/files/storage-python-how-to-use-file-storage) |
+| 12.x | [Azure Storage-Clientbibliotheken v12 für Python](/azure/developer/python/sdk/storage/overview) | [Paket (PyPI)](https://pypi.org/project/azure-storage-file/12.0.0b4/) | [Beispiele](/python/api/overview/azure/storage-file-share-readme#examples) |
+| 2.x | [Azure Storage-Clientbibliotheken v2 für Python](/azure/developer/python/sdk/storage/overview?view=storage-py-v2&preserve-view=true) | [Paket (PyPI)](https://pypi.org/project/azure-storage-file/2.1.0/) | [Entwickeln für Azure Files mit Python](/azure/storage/files/storage-python-how-to-use-file-storage) |
 
 ## <a name="javascript-client-libraries"></a>JavaScript-Clientbibliotheken
 
@@ -106,8 +106,9 @@ Die folgende Tabelle enthält Links zur neuesten Version der Referenzen.
 
 | Version | Plattform |
 | ------- | -------- |
-|  3.x  | [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/?view=azps-3.8.0) |
-|  2.x  | [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/?view=azps-2.8.0) |
+|  4.x  | [PowerShell](/powershell/module/az.storage/?view=azps-4.6.1&preserve-view=true) |
+|  3.x  | [PowerShell](/powershell/module/az.storage/?view=azps-3.8.0&preserve-view=true) |
+|  2.x  | [PowerShell](/powershell/module/az.storage/?view=azps-2.8.0&preserve-view=true) |
 
 ## <a name="azure-cli"></a>Azure CLI
 

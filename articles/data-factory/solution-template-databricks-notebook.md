@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/27/2020
-ms.openlocfilehash: 2503c26ac0348739bbf117c3538af797833ce8b8
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: f9dc11bd046bdc3a8913b4b05f1b68b84c9736c4
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857647"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89438448"
 ---
 # <a name="transformation-with-azure-databricks"></a>Transformation mit Azure Databricks
 
@@ -28,7 +28,7 @@ In diesem Tutorial erstellen Sie in Azure Data Factory eine End-to-End-Pipeline,
 
 - Mit **Daten kopieren** wird das Quelldataset im Senkenspeicher dupliziert, der im Azure Databricks-Notebook als DBFS eingebunden wird. Auf diese Weise kann das Dataset direkt von Spark genutzt werden.
 
-- Durch **Notebook** wird das Databricks-Notebook ausgelöst, das das Dataset transformiert. Durch die Aktivität wird zudem das Dataset einem verarbeiteten Ordner oder einem Azure SQL Data Warehouse hinzugefügt.
+- Durch **Notebook** wird das Databricks-Notebook ausgelöst, das das Dataset transformiert. Außerdem wird das Dataset einem verarbeiteten Ordner oder Azure Synapse Analytics (ehemals SQL Data Warehouse) hinzugefügt.
 
 Der Einfachheit halber wird mit der Vorlage in diesem Tutorial kein geplanter Trigger erstellt. Sie können bei Bedarf einen solchen hinzufügen.
 

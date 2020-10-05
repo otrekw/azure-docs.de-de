@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/28/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: ded2f54379e60e8e3fc26d9c2166930a6f953078
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: ae7e85624f5da06603ddc2675787b84203bc987b
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854856"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087206"
 ---
 # <a name="troubleshooting-azure-digital-twins-alerts"></a>Problembehandlung von Azure Digital Twins: Alerts
 
@@ -31,29 +31,30 @@ Hier ist beschrieben, wie Sie Warnungen für Ihre Azure Digital Twins-Instanz ak
 3. Auf der Seite *Warnungsregel erstellen*, die als Nächstes angezeigt wird, können Sie die Anweisungen befolgen, um Bedingungen, die auszulösenden Aktionen und die Warnungsdetails zu definieren.     
     * Die Details unter **Bereich** sollten zusammen mit den Details für Ihre Instanz automatisch eingefügt werden.
     * Sie definieren die Details für **Bedingung** und **Aktionsgruppe**, um Warnungstrigger und die zugehörigen Antworten anzupassen.
-    * Geben Sie im Abschnitt **Details zur Warnungsregel** einen _Namen der Warnungsregel_ und eine _Beschreibung_ (optional) ein. Sie können das Kontrollkästchen _Warnungsregel bei Erstellung aktivieren_ aktivieren, wenn die Warnung aktiviert werden soll, sobald sie erstellt wird.
-    * Basierend auf einigen Bedingungen und Aktionen, die Sie hinzufügen, müssen Sie _Warnungsregel in Ressourcengruppe speichern_ und _Schweregrad_ aus den entsprechenden Dropdownlisten auswählen.
+    * Geben Sie im Abschnitt **Details zur Warnungsregel** einen Namen und optional eine Beschreibung für Ihre Regel ein. Sie können das Kontrollkästchen _Warnungsregel bei Erstellung aktivieren_ aktivieren, wenn die Warnung aktiviert werden soll, sobald sie erstellt wird.
+        - Hier wählen Sie auch eine _Ressourcengruppe_ und einen _Schweregrad_ aus.
 
 4. Wählen Sie die Schaltfläche _Warnungsregel erstellen_ aus, um die Warnungsregel zu erstellen.
 
-:::image type="content" source="media/troubleshoot-alerts/create-alert-rule.png" alt-text="Screenshot: Seite „Warnungsregel erstellen“ mit Abschnitten für Bereich, Bedingung und Aktionsgruppe" lightbox="media/troubleshoot-alerts/create-alert-rule.png":::
-
-:::image type="content" source="media/troubleshoot-alerts/alert-rule-details.png" alt-text="Screenshot des Abschnitts mit Warnungsregeldetails beim Erstellen einer Warnungsregel" lightbox="media/troubleshoot-alerts/alert-rule-details.png":::
+:::image type="content" source="media/troubleshoot-alerts/create-alert-rule.png" alt-text="Screenshot: Seite „Warnungsregel erstellen“ mit Abschnitten für Bereich, Bedingung, Aktionsgruppe und Details zur Warnungsregel" lightbox="media/troubleshoot-alerts/create-alert-rule.png":::
 
 Eine Anleitung zum Ausfüllen dieser Felder finden Sie unter [*Überblick über Warnungen in Microsoft Azure*](../azure-monitor/platform/alerts-overview.md). Unten sind einige Beispiele dafür angegeben, welche Schritte für Azure Digital Twins ausgeführt werden müssen.
 
+### <a name="select-conditions"></a>Auswählen von Bedingungen
+
 Hier ist ein Auszug aus dem Prozess *Bedingung auswählen* angegeben, um zu veranschaulichen, welche Arten von Warnungssignalen für Azure Digital Twins verfügbar sind. Auf dieser Seite können Sie nach dem Typ des Signals filtern und das gewünschte Signal in einer Liste auswählen.
 
-:::image type="content" source="media/troubleshoot-alerts/configure-signal-logic.png" alt-text="Screenshot: Erste Seite „Signallogik konfigurieren“. Das Feld „Signaltyp“ ist hervorgehoben, über das Metriken und Aktivitätsprotokolle ausgewählt werden können, und unterhalb davon können Sie eine Liste mit Metriken auswählen.":::
+:::image type="content" source="media/troubleshoot-alerts/configure-signal-logic.png" alt-text="Screenshot: Seite „Warnungsregel erstellen“ mit Abschnitten für Bereich, Bedingung, Aktionsgruppe und Details zur Warnungsregel":::
 
 Nachdem Sie ein Signal ausgewählt haben, werden Sie aufgefordert, die Logik der Warnung zu konfigurieren. Sie können nach einer Dimension filtern und einen Schwellenwert für Ihre Warnung sowie die Häufigkeit der Überprüfungen für die Bedingung festlegen. Hier ist ein Beispiel für die Einrichtung einer Warnung für den Fall angegeben, dass der Durchschnittswert für die Metrik „Routingfehlerrate“ über 5 % steigt.
 
-:::image type="content" source="media/troubleshoot-alerts/configure-signal-logic-2.png" alt-text="Screenshot: Zweite Seite „Signallogik konfigurieren“. Auf der Seite wird der Metrikverlauf angezeigt, sie verfügt über einen Bereich zum Filtern nach einer Dimension, z. B. Event Grid-Vorgänge, und es ist ein Abschnitt zum Definieren der Warnungslogik vorhanden (Beispiel: „Durchschnittswert größer als 5“).":::
- 
+:::image type="content" source="media/troubleshoot-alerts/configure-signal-logic-2.png" alt-text="Screenshot: Seite „Warnungsregel erstellen“ mit Abschnitten für Bereich, Bedingung, Aktionsgruppe und Details zur Warnungsregel":::
+
+### <a name="verify-success"></a>Überprüfen des erfolgreichen Abschlusses
+
 Nach dem Einrichten von Warnungen werden diese auf der Seite *Warnungen* für Ihre Instanz angezeigt.
  
-:::image type="content" source="media/troubleshoot-alerts/alerts-post.png" alt-text="Screenshot: Seite „Warnungen“ und Schaltfläche zum Hinzufügen. Eine Warnung ist konfiguriert." lightbox="media/troubleshoot-alerts/alerts-post.png":::
-
+:::image type="content" source="media/troubleshoot-alerts/alerts-post.png" alt-text="Screenshot: Seite „Warnungsregel erstellen“ mit Abschnitten für Bereich, Bedingung, Aktionsgruppe und Details zur Warnungsregel" lightbox="media/troubleshoot-alerts/alerts-post.png":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

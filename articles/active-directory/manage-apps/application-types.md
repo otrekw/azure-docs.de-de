@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: kenwith
-ms.openlocfilehash: 955efe45be27fa2f4e738066bb3b69b3604be33a
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 5229b123986149903d562bc0b3d6902c0136f647
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400720"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707882"
 ---
 # <a name="viewing-apps-using-your-azure-ad-tenant-for-identity-management"></a>Anzeigen von Apps mithilfe Ihres Azure AD-Mandanten für die Identitätsverwaltung
 Die [Schnellstartserie zur Anwendungsverwaltung](view-applications-portal.md) enthält grundlegende Informationen. Darin erfahren Sie, wie Sie alle Apps anzeigen, die Ihren Azure AD-Mandanten für die Identitätsverwaltung verwenden. In diesem Artikel wird etwas ausführlicher auf die angezeigten App-Typen eingegangen.
@@ -27,7 +27,7 @@ Bei einer Filterung nach **Alle Anwendungen** zeigt die **Liste** **Alle Anwendu
    - **Azure AD – App-Registrierungen**: Apps, die Ihrem Mandanten mithilfe der Option **App-Registrierungen** im Azure AD-Portal hinzugefügt werden. In der Regel sind dies benutzerdefinierte Apps, die den Open ID Connect- und den OAuth-Standard verwenden.
    - **Anwendungen für den Anwendungsproxy**: Anwendungen, die in Ihrer lokalen Umgebung ausgeführt werden und für die Sie das sichere einmalige Anmelden von externen Standorten bereitstellen möchten.
 - Beim Registrieren für eine oder beim Anmelden bei einer Drittanbieteranwendung, die in Azure Active Directory integriert ist. Beispiele hierfür sind [Smartsheet](https://app.smartsheet.com/b/home) oder [DocuSign](https://www.docusign.net/member/MemberLogin.aspx).
-- Microsoft-Apps, etwa Microsoft 365 oder Office 365
+- Microsoft-Apps, etwa Microsoft 365.
 - Beim Hinzufügen einer neuen Anwendungsregistrierung durch Erstellen einer benutzerdefiniert entwickelten Anwendung über die [Anwendungsregistrierung](https://docs.microsoft.com/azure/active-directory/active-directory-app-registration).
 - Beim Hinzufügen einer neuen Anwendungsregistrierung durch Erstellen einer benutzerdefiniert entwickelten Anwendung über das [Anwendungsregistrierungsportal v2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration).
 - Beim Hinzufügen einer Anwendung, die Sie mithilfe von [ASP.NET-Authentifizierungsmethoden](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) oder [verbundenen Diensten](https://devblogs.microsoft.com/visualstudio/connecting-to-cloud-services/) von Visual Studio entwickeln

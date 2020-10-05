@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 69c3246c910a83d889151d6ad749e1be86340e8c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7d47c21da1279271b12933a2e4642abcce622600
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88540965"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015482"
 ---
 # <a name="tutorial-configure-workday-to-azure-ad-user-provisioning"></a>Tutorial: Konfigurieren der Benutzerbereitstellung aus Workday in Azure AD
 In diesem Tutorial werden die Schritte veranschaulicht, die Sie ausführen müssen, um Mitarbeiterdaten aus Workday in Azure Active Directory bereitzustellen. 
@@ -27,13 +27,13 @@ In diesem Tutorial werden die Schritte veranschaulicht, die Sie ausführen müss
 
 Der [Azure Active Directory-Benutzerbereitstellungsdienst](../app-provisioning/user-provisioning.md) ist zum Bereitstellen von Benutzerkonten mit der [Workday Human Resources-API](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) integriert. Die vom Azure AD-Benutzerbereitstellungsdienst unterstützten Workday-Workflows zur Benutzerbereitstellung ermöglichen die Automatisierung der folgenden Szenarien im Personalwesen und bei der Verwaltung des Lebenszyklus von Identitäten:
 
-* **Einstellung neuer Mitarbeiter**: Wenn Workday ein neuer Mitarbeiter hinzugefügt wird, wird in Azure Active Directory und optional Office 365 sowie [anderen von Azure AD unterstützten SaaS-Anwendungen](../app-provisioning/user-provisioning.md) automatisch ein Benutzerkonto erstellt. Die E-Mail-Adresse wird dabei in Workday zurückgeschrieben.
+* **Einstellung neuer Mitarbeiter:** Wenn Workday ein neuer Mitarbeiter hinzugefügt wird, wird in Azure Active Directory und optional Microsoft 365 sowie in [anderen von Azure AD unterstützten SaaS-Anwendungen](../app-provisioning/user-provisioning.md) automatisch ein Benutzerkonto erstellt, und die E-Mail-Adresse wird in Workday zurückgeschrieben.
 
-* **Aktualisierung von Mitarbeiterattributen und -profilen:** Wenn in Workday ein Mitarbeiterdatensatz aktualisiert wird (beispielsweise der Name, Titel oder Vorgesetzte), wird das entsprechende Benutzerkonto in Azure Active Directory und optional in Office 365 und in [anderen, von Azure AD unterstützten SaaS-Anwendungen](../app-provisioning/user-provisioning.md) automatisch aktualisiert.
+* **Aktualisierung von Mitarbeiterattributen und -profilen:** Wenn in Workday ein Mitarbeiterdatensatz aktualisiert wird (beispielsweise der Name, Titel oder Vorgesetzte), wird das entsprechende Benutzerkonto in Azure Active Directory und optional in Microsoft 365 und in [anderen, von Azure AD unterstützten SaaS-Anwendungen](../app-provisioning/user-provisioning.md) automatisch aktualisiert.
 
-* **Kündigung von Mitarbeitern:** Wenn einem Mitarbeiter in Workday gekündigt wird, wird das entsprechende Benutzerkonto in Azure Active Directory und optional in Office 365 und in [anderen, von Azure AD unterstützten SaaS-Anwendungen](../app-provisioning/user-provisioning.md) automatisch deaktiviert.
+* **Kündigung von Mitarbeitern:** Wenn einem Mitarbeiter in Workday gekündigt wird, wird das entsprechende Benutzerkonto in Azure Active Directory und optional in Microsoft 365 und in [anderen, von Azure AD unterstützten SaaS-Anwendungen](../app-provisioning/user-provisioning.md) automatisch deaktiviert.
 
-* **Wiedereinstellung von Mitarbeitern:** Wenn ein Mitarbeiter in Workday erneut eingestellt wird, kann sein altes Konto in Azure Active Directory und optional in Office 365 und in [anderen, von Azure AD unterstützten SaaS-Anwendungen](../app-provisioning/user-provisioning.md) je nach Präferenz automatisch reaktiviert oder erneut bereitgestellt werden.
+* **Wiedereinstellung von Mitarbeitern:** Wenn ein Mitarbeiter in Workday erneut eingestellt wird, kann sein altes Konto in Azure Active Directory und optional in Microsoft 365 und in [anderen, von Azure AD unterstützten SaaS-Anwendungen](../app-provisioning/user-provisioning.md) je nach Präferenz automatisch reaktiviert oder erneut bereitgestellt werden.
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>Für wen ist diese Benutzerbereitstellungslösung am besten geeignet?
 
@@ -45,7 +45,7 @@ Diese Lösung zur Benutzerbereitstellung von Workday in Azure Active Directory e
 
 * Organisationen, bei denen Benutzer mithilfe von Daten bereitgestellt werden müssen, die aus Workday abgerufen werden
 
-* Organisationen, die Office 365 für E-Mail verwenden
+* Organisationen, die Microsoft 365 für E-Mails verwenden
 
 ## <a name="solution-architecture"></a>Lösungsarchitektur
 

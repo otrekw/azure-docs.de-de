@@ -9,12 +9,12 @@ ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 07/21/2020
 tags: connectors
-ms.openlocfilehash: a0f6af706a81db537b9ed66dc49996282c4dbbaa
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 4afd6f0cc3b4b5e135d80b420d8260c50d9ca46c
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833894"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488846"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Herstellen einer Verbindung zu SAP-Systemen: Azure Logic Apps
 
@@ -124,7 +124,7 @@ Diese Voraussetzungen müssen erfüllt sein, wenn Ihre Logik-Apps in einer [Inte
 
 ### <a name="sap-client-library-prerequisites"></a>Voraussetzungen für die SAP-Clientbibliothek
 
-* Stellen Sie sicher, dass Sie über die neueste Version verfügen: [SAP-Connector (NCo 3.0) für Microsoft .NET 3.0.22.0 mit .NET Framework 4.0 kompiliert – Windows 64-Bit (x64)](https://softwaredownloads.sap.com/file/0020000001000932019). Ältere Versionen können zu Kompatibilitätsproblemen führen. Weitere Informationen finden Sie im Abschnitt [Versionen der SAP-Clientbibliothek](#sap-library-versions).
+* Stellen Sie sicher, dass Sie über die neueste Version verfügen: [SAP-Connector (NCo 3.0) für Microsoft .NET 3.0.22.0 mit .NET Framework 4.0 kompiliert – Windows 64-Bit (x64)](https://support.sap.com/en/product/connectors/msnet.html). Ältere Versionen können zu Kompatibilitätsproblemen führen. Weitere Informationen finden Sie im Abschnitt [Versionen der SAP-Clientbibliothek](#sap-library-versions).
 
 * Standardmäßig speichert das SAP-Installationsprogramm die Assemblydateien im Standardinstallationsordner. Kopieren Sie auf folgende Weise die Assemblydateien gemäß Ihrem Szenario an einen anderen Speicherort:
 
@@ -396,7 +396,7 @@ Dieses Beispiel verwendet eine Logik-App, die bei Empfang einer Nachricht von ei
 
    Sie können eine Aktion auch manuell angeben:
 
-   ![SAP-Aktion manuell eingeben](media/logic-apps-using-sap-connector/manual-enter-SAP-action-trigger.png)
+   ![Manuelles Eingeben der gewünschten SAP-Aktion](media/logic-apps-using-sap-connector/manual-enter-SAP-action-trigger.png)
 
    Dieses Beispiel stellt dar, wie die Aktion angezeigt wird, wenn Sie den Trigger für den Empfang mehrerer Nachrichten einrichten.
 

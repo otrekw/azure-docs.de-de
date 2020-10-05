@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Azure Blockchain-Transaktionsknoten konfiguri
 ms.date: 11/20/2019
 ms.topic: how-to
 ms.reviewer: janders
-ms.openlocfilehash: 90836ad94410dfec5caa32275362f1407c9f5b1a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3a4650977f1ad1a7a6967daa162adc8d2ef7bff
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85212563"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530385"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Konfigurieren von Azure Blockchain-Transaktionsknoten
 
@@ -52,7 +52,7 @@ So zeigen Sie die Details zum Endpunkt eines Transaktionsknotens an:
 
 1. Navigieren Sie im Azure-Portal zu einem Ihrer Transaktionsknoten Ihres Azure Blockchain-Mitglieds, und klicken Sie auf **Übersicht**.
 
-    ![Endpunkte](./media/configure-transaction-nodes/endpoints.png)
+    ![Screenshot: Übersicht über die Transaktionsknoten für ein Blockchainmitglied](./media/configure-transaction-nodes/endpoints.png)
 
 Transaktionsknotenendpunkte sind sicher und erfordern Authentifizierung. Sie können eine Verbindung mit einem Transaktionsendpunkt mithilfe der Azure AD-Authentifizierung, HTTPS-Standardauthentifizierung und mithilfe eines Zugriffsschlüssels über HTTPS oder eines Websockets über TLS herstellen.
 

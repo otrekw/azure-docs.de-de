@@ -6,14 +6,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 06/22/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 7adeb9682336b19cc87d8c73a7f9ad8bda5e7828
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e814487cb4dab9c8c19daab2ea3bb81391d4a98f
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564065"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983687"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel-for-virtual-wan"></a>Konfigurieren eines Always On-VPN-Gerätetunnels für Virtual WAN
 
@@ -34,7 +34,7 @@ Sie müssen eine Point-to-Site-Konfiguration erstellen und die Zuweisung des vir
 
 Führen Sie den folgenden Befehl aus, um das Profil zu entfernen:
 
-![Cleanup](./media/howto-always-on-device-tunnel/cleanup.png)
+![Screenshot eines PowerShell-Fensters, in dem der Befehl „Remove-VpnConnection -Name MachineCertTest“ ausgeführt wird.](./media/howto-always-on-device-tunnel/cleanup.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -5,7 +5,7 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: daveba
-ms.date: 08/20/2020
+ms.date: 09/04/2020
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28125ff55fe6ab3e68d56dc26a074d0498c2b413
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 418be35cb7996acaa7f11f37627d065451c9c7c6
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798430"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055213"
 ---
 # <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>Einschränken von Gastzugriffsberechtigungen (Vorschau) in Azure Active Directory
 
@@ -40,10 +40,7 @@ Sie müssen der Rolle „Globaler Administrator“ angehören, um die Einstellun
 
 Es wurden Änderungen an den vorhandenen Azure-Portalsteuerelementen für Gastbenutzerberechtigungen vorgenommen.
 
-> [!IMPORTANT]
-> Für kurze Zeit werden die neuen Portalsteuerelemente für Gastbenutzerberechtigungen nur unter Verwendung der URL [https://aka.ms/AADRestrictedGuestAccess](https://aka.ms/AADRestrictedGuestAccess) sichtbar sein. PowerShell und Microsoft Graph können weiterhin zum Festlegen der Steuerelemente verwendet werden, und Änderungen werden im Portal berücksichtigt.
-
-1. Melden Sie sich mit globalen Administratorberechtigungen beim [Azure AD Admin Center](https://aka.ms/AADRestrictedGuestAccess) an.
+1. Melden Sie sich mit globalen Administratorberechtigungen beim [Azure AD Admin Center](https://aad.portal.azure.com) an.
 1. Wählen Sie auf der **Azure Active Directory**-Übersichtsseite für Ihre Organisation die Option **Benutzereinstellungen** aus.
 1. Wählen Sie unter **Externe Benutzer** die Option **Externe Einstellungen zur Zusammenarbeit verwalten** aus.
 1. Wählen Sie auf der Seite **Einstellungen für externe Zusammenarbeit** die Option **Der Gastbenutzerzugriff ist auf Eigenschaften und Mitgliedschaften eigener Verzeichnisobjekte beschränkt** aus.
@@ -157,7 +154,7 @@ Dienste, die aktuell nicht unterstützt werden, weisen möglicherweise Kompatibi
 
 Frage | Antwort
 -------- | ------
-Wo gelten diese Berechtigungen? | Diese Berechtigungen auf Verzeichnisebene werden für alle Azure AD-Dienste und -Portale erzwungen, einschließlich Microsoft Graph, PowerShell v2, das Azure-Portal und das Portal „Meine Apps“. Microsoft 365-Dienste, die Office 365-Gruppen für Zusammenarbeitsszenarien nutzen, sind ebenfalls betroffen, insbesondere Outlook, Microsoft Teams und SharePoint.
+Wo gelten diese Berechtigungen? | Diese Berechtigungen auf Verzeichnisebene werden für alle Azure AD-Dienste und -Portale erzwungen, einschließlich Microsoft Graph, PowerShell v2, das Azure-Portal und das Portal „Meine Apps“. Microsoft 365-Dienste, die Microsoft 365-Gruppen für Zusammenarbeitsszenarien nutzen, sind ebenfalls betroffen, insbesondere Outlook, Microsoft Teams und SharePoint.
 Auf welche Bereiche des Portals „Meine Apps“ wirkt sich auf dieses Feature aus? | Diese neuen Berechtigungen werden in der Gruppenfunktion im Portal „Meine Apps“ berücksichtigt. Dies umfasst alle Pfade zum Anzeigen der Gruppenliste und Gruppenmitgliedschaften in „Meine Apps“. An der Verfügbarkeit der Gruppenkachel wurden keine Änderungen vorgenommen. Die Verfügbarkeit der Gruppenkachel wird weiterhin durch die vorhandene Gruppeneinstellung im Azure-Verwaltungsportal gesteuert.
 Haben diese Berechtigungen Vorrang vor Gasteinstellungen in SharePoint oder Microsoft Teams? | Nein. Diese vorhandenen Einstellungen steuern weiterhin die Benutzeroberfläche und den Zugriff in diesen Anwendungen. Wenn beispielsweise Probleme in SharePoint angezeigt werden, überprüfen Sie Ihre Einstellungen für externe Freigaben.
 Welche Kompatibilitätsprobleme in Planner und Yammer sind bekannt? | <li>Wenn die Berechtigungen auf „eingeschränkt“ festgelegt sind, haben Gäste, die sich bei der Planner-App angemeldet haben oder auf Planner in Microsoft Teams zugreifen, keinen Zugriff auf Ihre Pläne oder Aufgaben.<li>Wenn die Berechtigungen auf „eingeschränkt“ festgelegt sind, können Gäste, die sich bei Yammer angemeldet haben, die Gruppe nicht verlassen.

@@ -8,17 +8,18 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: 5596a2db32a0fe5b6b5eddf3ae20501e6edb0b99
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 9fb76c5c96795b8092c86e22acbab4ea5963b42e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935380"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971628"
 ---
 # <a name="incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Inkrementelle Anreicherung und Zwischenspeicherung in Azure Cognitive Search
 
 > [!IMPORTANT] 
-> Die inkrementelle Anreicherung ist derzeit als öffentliche Vorschauversion verfügbar. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Dieses Feature steht in den [REST API-Versionen 2019-05-06-Preview und 2020-06-30-Preview](search-api-preview.md) zur Verfügung. Derzeit werden weder das Portal noch das .NET SDK unterstützt.
+> Die inkrementelle Anreicherung ist derzeit als öffentliche Vorschauversion verfügbar. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
+> Dieses Feature wird von den [Vorschauversionen der REST-API](search-api-preview.md) bereitgestellt. Derzeit werden weder das Portal noch das .NET SDK unterstützt.
 
 *Inkrementelle Anreicherung* ist ein Features, das sich auf [Skillsets](cognitive-search-working-with-skillsets.md) richtet. Es nutzt Azure Storage, um die von einer Anreicherungspipeline ausgegebene Prozessausgabe für die Wiederverwendung in künftigen Indexerläufen zu speichern. Nach Möglichkeit verwendet der Indexer jede zwischengespeicherte Ausgabe, die noch gültig ist. 
 
@@ -166,7 +167,7 @@ Die REST-API-Version `2020-06-30-Preview` bietet eine inkrementelle Anreicherun
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Inkrementelle Anreicherung ist ein leistungsstarkes Feature, das die Änderungsverfolgung auf Skillsets und KI-Anreicherung ausdehnt. Eine inkrementelle Anreicherung ermöglicht die Wiederverwendung vorhandener, verarbeiteter Inhalte beim Durchlaufen des Skillsetdesigns.
+Inkrementelle Anreicherung ist ein leistungsstarkes Feature, das die Änderungsverfolgung auf Skillsets und KI-Anreicherung ausdehnt. Die inkrementelle Anreicherung ermöglicht die Wiederverwendung vorhandener, verarbeiteter Inhalte beim Durchlaufen des Skillsetdesigns.
 
 Aktivieren Sie im nächsten Schritt die Zwischenspeicherung in einem vorhandenen Indexer, oder fügen Sie den Cache beim Definieren eines neuen Indexers hinzu.
 

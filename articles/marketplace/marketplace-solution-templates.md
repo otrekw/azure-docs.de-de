@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: msjogarrig
 ms.author: jogarrig
 ms.date: 04/22/2020
-ms.openlocfilehash: c66682a7f457612b0ea77b90cc98ec1e6b4a85e9
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: c4be1c7eec9572d284d70823d270dafe5569ab14
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322261"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484220"
 ---
 # <a name="publishing-guide-for-azure-applications-solution-template-offers"></a>Leitfaden für die Veröffentlichung von Lösungsvorlagenangeboten für Azure-Anwendungen
 
@@ -23,7 +23,7 @@ Verwenden Sie den Angebotstyp *Lösungsvorlage* für Azure-Anwendungen unter den
 - Ihre Lösung erfordert eine zusätzliche Automatisierung der Bereitstellung und Konfiguration über einen einzelnen virtuellen Computer (Virtual Machine, VM) hinaus, z. B. eine Kombination aus VMs, Netzwerk- und Speicherressourcen.
 - Ihre Kunden werden die Lösung selbst verwalten.
 
-Einem Kunden wird für diesen Angebotstyp der Aktionsaufruf *Jetzt kaufen* angezeigt.
+Einem Kunden wird für diesen Angebotstyp eine Auflistungsoption *Jetzt kaufen* angezeigt.
 
 ## <a name="requirements-for-solution-template-offers"></a>Anforderungen für Lösungsvorlagenangebote
 

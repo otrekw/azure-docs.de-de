@@ -3,13 +3,13 @@ title: Konzepte – Speicher in Azure Kubernetes Service (AKS)
 description: Informationen zu Speicher in Azure Kubernetes Service (AKS) einschließlich Volumes, persistente Volumes, Speicherklassen und Ansprüche
 services: container-service
 ms.topic: conceptual
-ms.date: 03/01/2019
-ms.openlocfilehash: 5cf52cb608061498c8e613a3bf1064997acaa128
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.date: 08/17/2020
+ms.openlocfilehash: 00dee485c7b07ec19bb1399aab9d55b286830871
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406961"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421151"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Speicheroptionen für Anwendungen in Azure Kubernetes Service (AKS)
 
@@ -32,8 +32,6 @@ Herkömmliche Volumes zum Speichern und Abrufen von Daten werden als Kubernetes-
 
 - *Azure Disk* kann zum Erstellen einer Kubernetes-*DataDisk*-Ressource verwendet werden. Azure Disk kann von Hochleistungs-SSDs gesicherten Azure Storage Premium oder von regulären Festplatten gesicherten Azure-Standardspeicher verwenden. Verwenden Sie für die meisten Produktionsumgebungen und Entwicklungsworkloads Storage Premium. Azure Disk-Datenträger werden als *ReadWriteOnce* bereitgestellt, daher sind sie nur für einen einzelnen Pod verfügbar. Verwenden Sie für die Speichervolumes, auf die mehrere Pods gleichzeitig zugreifen können, Azure Files.
 - Mit *Azure Files* kann eine SMB 3.0-Dateifreigabe bereitgestellt werden, die durch ein Azure Storage-Konto auf Pods gesichert ist. Mit Azure Files können Sie Daten mehrere Knoten und Pods übergreifend freigeben. Files kann durch reguläre HDDs unterstützte Azure Storage Standard-Instanzen oder durch Hochleistungs-SSDs unterstützte Azure Storage Premium-Instanzen verwenden.
-> [!NOTE] 
-> Azure Files unterstützt Storage Premium in AKS-Clustern, auf denen Kubernetes 1.13 oder höher ausgeführt wird.
 
 In Kubernetes können Volumes mehr als nur einen herkömmlichen Datenträger darstellen, auf dem Informationen gespeichert und abgerufen werden können. Kubernetes-Volumes können auch als Möglichkeit zum Einfügen von Daten in einen Pod zur Verwendung von den Containern genutzt werden. Zu den üblichen zusätzlichen Volumetypen in Kubernetes gehören:
 
@@ -55,12 +53,18 @@ Ein PersistentVolume kann *statisch* von einem Clusteradministrator oder *dynami
 
 Sie können zum Definieren verschiedener Speicherstufen, z.B. „Premium“ und „Standard“, eine *StorageClass* erstellen. Die StorageClass definiert auch die *reclaimPolicy*. Diese reclaimPolicy steuert das Verhalten der zugrunde liegenden Azure-Speicherressource, wenn die Pods gelöscht werden und das persistente Volume vielleicht nicht mehr benötigt wird. Die zugrunde liegende Speicherressource kann gelöscht oder für die Verwendung mit einem zukünftigen Pod beibehalten werden.
 
-In AKS werden anfänglich 4 StorageClasses erstellt:
+In AKS werden vier anfängliche `StorageClasses` für den Cluster erstellt, der die Plug-Ins zur strukturinternen Speicherung verwendet:
 
-- *default*: Verwendet Azure-StandardSSD-Speicher zum Erstellen eines verwalteten Datenträgers. Die Freigaberichtlinie gibt an, dass der zugrunde liegende Azure Disk-Datenträger gelöscht wird, wenn das persistente Volume gelöscht wird, das ihn verwendet hat.
-- *managed-premium*: Verwendet Azure Storage Premium zum Erstellen verwalteter Datenträger. Die Freigaberichtlinie gibt wieder an, dass der zugrunde liegende Azure Disk-Datenträger gelöscht wird, wenn das persistente Volume gelöscht wird, das ihn verwendet hat.
-- *azurefile*: Verwendet Azure Storage Standard zum Erstellen einer Azure-Dateifreigabe. Die Freigaberichtlinie gibt an, dass die zugrunde liegende Azure-Dateifreigabe gelöscht wird, wenn das persistente Volume gelöscht wird, das sie verwendet hat.
-- *azurefile-premium*: Verwendet Azure Storage Premium zum Erstellen einer Azure-Dateifreigabe. Die Freigaberichtlinie gibt an, dass die zugrunde liegende Azure-Dateifreigabe gelöscht wird, wenn das persistente Volume gelöscht wird, das sie verwendet hat.
+- `default`: Verwendet Azure-StandardSSD-Speicher zum Erstellen eines verwalteten Datenträgers. Mit der Freigaberichtlinie wird sichergestellt, dass der zugrunde liegende Azure Disk-Datenträger gelöscht wird, wenn das persistente Volume gelöscht wird, das ihn verwendet hat.
+- `managed-premium`: Verwendet Azure Storage Premium zum Erstellen verwalteter Datenträger. Mit der Freigaberichtlinie wird wieder sichergestellt, dass der zugrunde liegende Azure Disk-Datenträger gelöscht wird, wenn das persistente Volume gelöscht wird, das ihn verwendet hat.
+- `azurefile`: Verwendet Azure Storage Standard zum Erstellen einer Azure-Dateifreigabe. Mit der Freigaberichtlinie wird sichergestellt, dass die zugrunde liegende Azure-Dateifreigabe gelöscht wird, wenn das persistente Volume gelöscht wird, das sie verwendet hat.
+- `azurefile-premium`: Verwendet Azure Storage Premium zum Erstellen einer Azure-Dateifreigabe. Mit der Freigaberichtlinie wird sichergestellt, dass die zugrunde liegende Azure-Dateifreigabe gelöscht wird, wenn das persistente Volume gelöscht wird, das sie verwendet hat.
+
+Cluster, die die neuen externen CSI-Plug-Ins (Container Storage Interface) (Vorschau) verwenden, werden die folgenden zusätzlichen `StorageClasses` erstellt:
+- `managed-csi`: Verwendet lokal redundanten Azure-StandardSSD-Speicher (LRS) zum Erstellen eines verwalteten Datenträgers. Mit der Freigaberichtlinie wird sichergestellt, dass der zugrunde liegende Azure Disk-Datenträger gelöscht wird, wenn das persistente Volume gelöscht wird, das ihn verwendet hat. Mit der Speicherklasse werden auch die persistenten Volumes so konfiguriert, dass sie erweiterbar sind. Sie müssen lediglich den Anspruch der persistenten Volumes entsprechend der neuen Größe anpassen.
+- `managed-csi-premium`: Verwendet lokal redundanten Azure-Premium-Speicher (LRS) zum Erstellen eines verwalteten Datenträgers. Mit der Freigaberichtlinie wird wieder sichergestellt, dass der zugrunde liegende Azure Disk-Datenträger gelöscht wird, wenn das persistente Volume gelöscht wird, das ihn verwendet hat. Zudem ermöglicht diese Speicherklasse auch eine Erweiterung von persistenten Volumes.
+- `azurefile-csi`: Verwendet Azure Storage Standard zum Erstellen einer Azure-Dateifreigabe. Mit der Freigaberichtlinie wird sichergestellt, dass die zugrunde liegende Azure-Dateifreigabe gelöscht wird, wenn das persistente Volume gelöscht wird, das sie verwendet hat.
+- `azurefile-csi-premium`: Verwendet Azure Storage Premium zum Erstellen einer Azure-Dateifreigabe. Mit der Freigaberichtlinie wird sichergestellt, dass die zugrunde liegende Azure-Dateifreigabe gelöscht wird, wenn das persistente Volume gelöscht wird, das sie verwendet hat.
 
 Wenn keine StorageClass für ein persistentes Volume angegeben wird, wird die standardmäßige StorageClass verwendet. Achten Sie beim Anfordern von persistenten Volumes darauf, dass sie den Speicher verwenden, den Sie benötigen. Sie können eine StorageClass für zusätzliche Anforderungen mit `kubectl` erstellen. Im folgenden Beispiel werden Managed Disks Premium verwendet und festgelegt, dass der zugrunde liegende Azure Disk-Datenträger *beibehalten* werden soll, wenn der Pod gelöscht wird:
 

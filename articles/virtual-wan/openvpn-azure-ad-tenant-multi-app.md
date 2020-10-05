@@ -1,18 +1,18 @@
 ---
 title: 'Virtual WAN: Azure AD-Mandant für verschiedene Benutzergruppen: Azure AD-Authentifizierung'
-description: Sie können P2S VPN verwenden, um eine Verbindung mit Azure AD-Authentifizierung zu Ihrem VNet herzustellen.
+description: Richten Sie einen Azure AD-Mandanten für die P2S-OpenVPN-Authentifizierung ein, und erstellen und registrieren Sie mehrere Apps in Azure AD, um verschiedenen Benutzern und Gruppen unterschiedliche Zugriffsrechte zu erteilen.
 services: virtual-wan
-author: kumudD
+author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 03/19/2020
+ms.date: 09/22/2020
 ms.author: alzam
-ms.openlocfilehash: 5ca57ccc40669a607cd0541dc738e3a3eacf3e88
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 57fd36366eef284e2975633fbb34549f4316cde6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507691"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988268"
 ---
 # <a name="create-an-azure-active-directory-ad-tenant-for-p2s-openvpn-protocol-connections"></a>Erstellen eines Azure Active Directory (AD)-Mandanten für Verbindungen mit dem P2S OpenVPN-Protokoll
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-javascript
-ms.openlocfilehash: e4309b3fdda1296aade19de2874e7f3423b9fc0f
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 7d45adc10a84af2cf1e5bfddd09c990e53a9f7e2
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035954"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086350"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Verwenden des Azure Maps-Kartensteuerelements
 
@@ -251,6 +251,15 @@ var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');
 ```
 
 Wenn Sie direkt auf die Azure Maps-REST-Dienste zugreifen, ändern Sie die URL-Domäne in `atlas.azure.us`. Wenn Sie z. B. den Such-API-Dienst verwenden, ändern Sie die URL-Domäne von `https://atlas.microsoft.com/search/` in `https://atlas.azure.us/search/`.
+
+## <a name="javascript-frameworks"></a>JavaScript-Frameworks
+
+Bei Entwicklungen mit einem JavaScript-Framework kann eins der folgenden Open-Source-Projekte nützlich sein:
+
+- [ng-azure-maps](https://github.com/arnaudleclerc/ng-azure-maps): Angular 10-Wrapper zur Umschließung von Azure-Karten.
+- [AzureMapsControl.Components](https://github.com/arnaudleclerc/AzureMapsControl.Components): Eine Blazor-Komponente für Azure Maps.
+- [Azure Maps React Component](https://github.com/WiredSolutions/react-azure-maps): Ein React-Wrapper für das Azure Maps-Steuerelement.
+- [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps): Eine Azure Maps-Komponente für die Vue-Anwendung.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

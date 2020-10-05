@@ -4,12 +4,12 @@ description: Enthält Antworten auf häufig gestellte Fragen zur Sicherung von S
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: c1efbc44ae1e4bea96c063e4dc734f1cc53a42ac
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 9c6e99b81ce10cfabd4109bb18376b2579edef20
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180098"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500333"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Häufig gestellte Fragen zu SQL Server-Datenbanken, die auf einer Azure VM-Sicherungsinstanz ausgeführt werden
 
@@ -72,7 +72,7 @@ Nein. Erfolgreiche Sicherungsaufträge generieren keine Warnungen. Warnungen wer
 
 ## <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>Werden geplante Sicherungsaufträge im Menü „Sicherungsaufträge“ angezeigt?
 
-Im Menü **Sicherungsauftrag** werden nur bedarfsgesteuerte Sicherungsaufträge angezeigt. Verwenden Sie für geplante Aufträge [Monitoring using Azure Monitor](backup-azure-monitoring-use-azuremonitor.md) (Bedarfsgesteuertes Überwachen mit Azure Monitor).
+Im Menü **Sicherungsauftrag** werden alle geplanten und bedarfsgesteuerten Vorgänge angezeigt – mit Ausnahme der geplanten Protokollsicherungen, da diese möglicherweise sehr häufig ausgeführt werden. Verwenden Sie für geplante Protokollaufträge [Überwachen mithilfe von Azure Monitor](backup-azure-monitoring-use-azuremonitor.md).
 
 ## <a name="are-future-databases-automatically-added-for-backup"></a>Werden zukünftige Datenbanken für die Durchführung von Sicherungen automatisch hinzugefügt?
 

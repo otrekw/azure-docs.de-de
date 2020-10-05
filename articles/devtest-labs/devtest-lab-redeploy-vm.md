@@ -3,12 +3,12 @@ title: Erneute Bereitstellung eines virtuellen Computers in einem Lab in Azure D
 description: Erfahren Sie, wie Sie einen virtuellen Computer in Azure DevTest Labs erneut bereitstellen (von einem Azure-Knoten auf einen anderen verschieben).
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: da0edf13adaa0d7ecd84ee2c190f376c19b398db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a38b112165b893d877733b967c21bb62b20ca2f6
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85480234"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530317"
 ---
 # <a name="redeploy-a-vm-in-a-lab-in-azure-devtest-labs"></a>Erneute Bereitstellung eines virtuellen Computers in einem Lab in Azure DevTest Labs
 Wenn Sie keine Verbindung zu einem virtuellen Computer (VM) in einem Lab über eine Remotedesktopverbindung herstellen können, stellen Sie die VM erneut bereit, und versuchen Sie nochmals, eine Verbindung herzustellen. Wenn Sie eine VM erneut bereitstellen, verschiebt DevTest Labs die VM von dem Knoten, auf dem sie ausgeführt wird, auf einen neuen Knoten innerhalb der Azure-Infrastruktur. Dann wird die VM gestartet, wobei alle Konfigurationsoptionen und zugehörigen Ressourcen beibehalten werden. Mit diesem Feature sparen Sie die Zeit, die Sie sonst für die Fehlerbehebung bei Ihrer Remotedesktopverbindung oder beim Anwendungszugriff auf Windows-basierte VMs im Lab benötigen. 
@@ -23,7 +23,7 @@ Führen Sie die folgenden Schritte aus, um eine VM in einem Lab in Azure DevTest
 5. Wählen Sie eine VM aus der Liste der VMs aus.
 6. Wählen Sie auf der VM-Seite für Ihre VM im linken Menü unter **Vorgänge** **Erneut bereitstellen** aus.
 
-    ![Erneute Bereitstellung](media/devtest-lab-redeploy-vm/redeploy.png)
+    ![Screenshot: VM-Seite, auf der „Erneut bereitstellen“ ausgewählt ist](media/devtest-lab-redeploy-vm/redeploy.png)
 7. Lesen Sie sich die Informationen auf der Seite durch, und klicken Sie auf die Schaltfläche **Erneut bereitstellen**. 9. Überprüfen Sie den Status der erneuten Bereitstellung im Fenster **Benachrichtigungen**.
 
     ![Status der erneuten Bereitstellung](media/devtest-lab-redeploy-vm/redeploy-status.png)

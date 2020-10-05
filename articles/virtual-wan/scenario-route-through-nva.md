@@ -6,15 +6,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 08/04/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2fdc1cd36c037f163b6b04907248e08ef20e961d
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: d44964b5aed55e2ee70d18e6be5d632b652956e1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400023"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976257"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>Szenario: Weiterleiten von Datenverkehr über ein virtuelles Netzwerkgerät
 
@@ -99,7 +99,7 @@ In **Abbildung 2** gibt es zwei Hubs: **Hub1** und **Hub2**.
 
 **Abbildung 2**
 
-:::image type="content" source="./media/routing-scenarios/nva/nva.png" alt-text="Abbildung 2" lightbox="./media/routing-scenarios/nva/nva.png":::
+:::image type="content" source="./media/routing-scenarios/nva/nva.png" alt-text="Abbildung 1" lightbox="./media/routing-scenarios/nva/nva.png":::
 
 ## <a name="scenario-workflow"></a><a name="workflow"></a>Szenarioworkflow
 
@@ -113,9 +113,11 @@ Zur Einrichtung des Routings über das virtuelle Netzwerkgerät sind die folgend
    
    Sie müssen die VNETs 5, 6, 7 und 8 nicht direkt mit den virtuellen Hubs verbinden. Stellen Sie sicher, dass die Netzwerksicherheitsgruppen in den VNETs 5, 6, 7 und 8 den Datenverkehr für den Branch (VPN/ER/P2S) oder für VNETs zulassen, die mit ihren Remote-VNETs verbunden sind. Beispielsweise muss für die VNETs 5 und 6 sichergestellt sein, dass die Netzwerksicherheitsgruppen den Datenverkehr für lokale Adresspräfixe und die VNETs 7 und 8 zulassen, die mit dem Remotehub 2 verbunden sind.
 
+Virtual WAN unterstützt kein Szenario, in dem VNet 5 und VNet 6 eine Verbindung mit einem virtuellen Hub herstellen und über die NVA-IP-Adresse von VNet 2 kommunizieren. Daher ist es erforderlich, VNet 5 und VNet 6 mit VNet 2 bzw. VNet 7 und VNet 8 mit VNet 4 zu verbinden.
+
 2. Fügen Sie der Standardroutingtabelle von Hub 1 einen aggregierten statischen Routeneintrag für die VNETs 2, 5 und 6 hinzu.
 
-   :::image type="content" source="./media/routing-scenarios/nva/nva-static-expand.png" alt-text="Beispiel":::
+   :::image type="content" source="./media/routing-scenarios/nva/nva-static-expand.png" alt-text="Abbildung 1":::
 
 3. Konfigurieren Sie eine statische Route für die VNETs 5 und 6 in der virtuellen Netzwerkverbindung von VNET 2. Informationen zum Einrichten der Routingkonfiguration für eine virtuelle Netzwerkverbindung finden Sie unter [Routing virtueller Hubs](how-to-virtual-hub-routing.md#routing-configuration).
 
@@ -127,7 +129,7 @@ Dies führt, wie unten in **Abbildung 3** dargestellt, zu Änderungen an der Ro
 
 **Abbildung 3**
 
-   :::image type="content" source="./media/routing-scenarios/nva/nva-result.png" alt-text="Abbildung 3" lightbox="./media/routing-scenarios/nva/nva-result.png":::
+   :::image type="content" source="./media/routing-scenarios/nva/nva-result.png" alt-text="Abbildung 1" lightbox="./media/routing-scenarios/nva/nva-result.png":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

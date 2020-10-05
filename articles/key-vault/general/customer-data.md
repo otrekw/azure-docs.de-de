@@ -9,16 +9,16 @@ ms.service: key-vault
 ms.topic: reference
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e7cfc707aa4bccdcd72e45efa3693ebd8f88a211
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 9b320c765b258473acd6fa553831b4f075cca9ba
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88189921"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983246"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Azure Key Vault-Funktionen für Kundendaten
 
-Azure Key Vault empfängt Kundendaten während der Erstellung oder Aktualisierung von Tresoren, Schlüsseln, Geheimnissen, Zertifikaten und verwalteten Speicherkonten. Diese Kundendaten werden im Azure-Portal und über die REST-API direkt angezeigt. Kundendaten können durch Aktualisieren oder Löschen des jeweiligen Objekts, das die Daten enthält, bearbeitet oder gelöscht werden.
+Azure Key Vault empfängt Kundendaten während der Erstellung oder Aktualisierung von Tresoren, verwalteten HSM-Pools, Schlüsseln, Geheimnissen, Zertifikaten und verwalteten Speicherkonten. Diese Kundendaten werden im Azure-Portal und über die REST-API direkt angezeigt. Kundendaten können durch Aktualisieren oder Löschen des jeweiligen Objekts, das die Daten enthält, bearbeitet oder gelöscht werden.
 
 Wenn ein Benutzer oder eine Anwendung auf Key Vault zugreift, werden Systemzugriffsprotokolle generiert. Detaillierte Zugriffsprotokolle stehen den Kunden über Azure Insights zur Verfügung.
 
@@ -52,7 +52,7 @@ Azure Key Vault-Diagnoseprotokolle, die persönliche Daten enthalten, können du
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Azure Key Vault-Protokollierung](logging.md)
+- [Azure-Schlüsseltresor-Protokollierung](logging.md)
 
 - [Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen](soft-delete-cli.md)
 

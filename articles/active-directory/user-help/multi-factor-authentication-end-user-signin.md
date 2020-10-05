@@ -13,12 +13,12 @@ ms.date: 04/02/2017
 ms.author: curtand
 ms.reviewer: librown
 ms.custom: end-user, seo-update-azuread-jan
-ms.openlocfilehash: daa2cfae4ed8371e245d12a9f805fe07f31a6d76
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51cfe2c448fde8c50f8b846979a4b35fa4be5ec1
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83742953"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056027"
 ---
 # <a name="sign-in-to-your-work-or-school-account-using-your-two-factor-verification-method"></a>Anmelden bei Ihrem Geschäfts-, Schul- oder Unikonto unter Verwendung der zweistufigen Überprüfung
 
@@ -39,14 +39,14 @@ Ihr Anmeldevorgang hängt davon ab, was Sie als zweiten Faktor wählen: einen Te
 ## <a name="signing-in-with-a-phone-call"></a>Anmelden mit einem Telefonanruf
 Die folgenden Informationen beschreiben die zweistufige Überprüfung mit einem Anruf an Ihr Mobil- oder Bürotelefon.
 
-1. Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei einer Anwendung oder einem Dienst wie Office 365 an.  
+1. Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei einer Anwendung oder einem Dienst wie Microsoft 365 an.  
 2. Sie erhalten einen Anruf von Microsoft.  
 3. Nehmen Sie den Anruf entgegen, und drücken Sie die #-Taste.  
 
 ## <a name="signing-in-with-a-text-message"></a>Anmeldung mit einer Textnachricht
 Die folgenden Informationen beschreiben die zweistufige Überprüfung mit einer Textnachricht an Ihr Mobiltelefon:
 
-1. Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei einer Anwendung oder einem Dienst wie Office 365 an.
+1. Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei einer Anwendung oder einem Dienst wie Microsoft 365 an.
 2. Sie erhalten von Microsoft eine SMS mit einem Zahlencode.
 3. Geben Sie den Code in das auf der Anmeldeseite gezeigte Feld ein.
 
@@ -54,7 +54,7 @@ Die folgenden Informationen beschreiben die zweistufige Überprüfung mit einer 
 Nachstehend wird der Anmeldevorgang mit der Microsoft Authenticator-App für zweistufige Überprüfung beschrieben. Es gibt zwei Möglichkeiten, die App zu verwenden. Sie können Pushbenachrichtigungen auf Ihrem Gerät erhalten oder die App öffnen, um einen Prüfcode abzurufen.
 
 ### <a name="to-sign-in-with-a-notification-from-the-microsoft-authenticator-app"></a>So melden Sie sich mit einer von der Microsoft Authenticator-App gesendeten Benachrichtigung an
-1. Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei einer Anwendung oder einem Dienst wie Office 365 an.
+1. Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei einer Anwendung oder einem Dienst wie Microsoft 365 an.
 2. Microsoft sendet eine Benachrichtigung an die Microsoft Authenticator-App auf Ihrem Gerät.
 
    ![Microsoft sendet Benachrichtigung](./media/multi-factor-authentication-end-user-signin/notify.png)
@@ -66,7 +66,7 @@ Nachstehend wird der Anmeldevorgang mit der Microsoft Authenticator-App für zwe
 
 Wenn Sie die Microsoft Authenticator-App zum Abrufen von Prüfcodes verwenden, wird Ihnen beim Öffnen der App unter dem Namen Ihres Kontos eine Zahl angezeigt. Diese Zahl ändert sich alle 30 Sekunden, damit Sie die gleiche Zahl nicht zweimal verwenden. Wenn ein Prüfcode angefordert wird, öffnen Sie die App und verwenden die derzeit angezeigte Zahl.
 
-1. Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei einer Anwendung oder einem Dienst wie Office 365 an.
+1. Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei einer Anwendung oder einem Dienst wie Microsoft 365 an.
 2. Sie werden von Microsoft dazu aufgefordert, einen Bestätigungscode einzugeben.
 
    ![Eingeben des Überprüfungscodes](./media/multi-factor-authentication-end-user-signin/verify3.png)
@@ -76,7 +76,7 @@ Wenn Sie die Microsoft Authenticator-App zum Abrufen von Prüfcodes verwenden, w
 ## <a name="signing-in-with-an-alternate-method"></a>Anmelden mit einer alternativen Methode
 Mitunter verfügen Sie nicht über das Telefon oder Gerät, das Sie als Ihre bevorzugte Überprüfungsmethode festgelegt haben. Genau aus diesem Grund empfehlen wird, alternative Anmeldemethoden für Ihr Konto einzurichten. Im folgenden Abschnitt erfahren Sie, wie Sie sich über eine alternative Methode anmelden, wenn die primäre Methode nicht verfügbar ist.
 
-1. Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei einer Anwendung oder einem Dienst wie Office 365 an.
+1. Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei einer Anwendung oder einem Dienst wie Microsoft 365 an.
 2. Wählen Sie **Andere Überprüfungsoption verwenden** aus. Es werden verschiedene Überprüfungsoptionen abhängig davon angezeigt, wie viele Sie eingerichtet haben.
 3. Wählen Sie eine alternative Methode aus, und melden Sie sich an.
 

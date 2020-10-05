@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: d339e68dcf49c74c508029fda3e7eb548ec92588
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d464124c6841cb2e3186d521b93d7ae08f94c9e9
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770951"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440523"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Problembehandlung für die Leistung der Kopieraktivität
 
@@ -179,7 +179,7 @@ Hier finden Sie Referenzen zur Leistungsüberwachung und -optimierung für einig
 * Azure Blob Storage: [Skalierbarkeits- und Leistungsziele für Blob Storage](../storage/blobs/scalability-targets.md) und [Checkliste zu Leistung und Skalierbarkeit für Blob Storage](../storage/blobs/storage-performance-checklist.md).
 * Azure Table Storage: [Skalierbarkeits- und Leistungsziele für Table Storage](../storage/tables/scalability-targets.md) und [Checkliste zu Leistung und Skalierbarkeit für Table Storage](../storage/tables/storage-performance-checklist.md).
 * Azure SQL-Datenbank: Sie können [die Leistung überwachen](../sql-database/sql-database-single-database-monitor.md) und den prozentualen Anteil der Datenbanktransaktionseinheit (Database Transaction Unit, DTU) überprüfen.
-* Azure SQL Data Warehouse: Die Funktion wird in DWUs (Data Warehouse-Einheiten) gemessen. Siehe [Verwalten von Computeleistung in Azure SQL Data Warehouse (Übersicht)](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
+* Azure Synapse Analytics (ehemals SQL Data Warehouse): Die Funktion wird in DWUs (Data Warehouse-Einheiten) gemessen. Weitere Informationen finden Sie unter [Verwalten von Computeressourcen im Azure Synapse Analytics-Data Warehouse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
 * Azure Cosmos DB: [Leistungsebenen in Azure Cosmos DB](../cosmos-db/performance-levels.md)
 * SQL Server: [Überwachen und Optimieren der Leistung](https://msdn.microsoft.com/library/ms189081.aspx).
 * Lokaler Dateiserver: [Leistungsoptimierung für Dateiserver](https://msdn.microsoft.com/library/dn567661.aspx)

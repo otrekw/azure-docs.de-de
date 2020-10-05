@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: b7a2c78238de58ee8851462aa7193121b35f72a9
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 3b87d68fb9b5fa5f5f8dec43c39ea8b7dbf08b93
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588820"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651854"
 ---
 # <a name="importing-azure-key-vault-certificates-faq"></a>Importieren von Azure Key Vault-Zertifikaten: Häufig gestellte Fragen
 
@@ -54,7 +54,7 @@ Weitere Informationen zu zertifikatbezogenen Zugriffsrichtlinien finden Sie unte
 
 ### <a name="how-can-i-resolve-error-type-conflict-when-creating-a-certificate"></a>Wie kann ich den folgenden Fehlertyp beheben: „Conflict when creating a certificate“ (Konflikt beim Erstellen eines Zertifikats)?
     
-Jeder Zertifikatname muss eindeutig sein. Wenn ein Zertifikat denselben Namen wie ein anderes Zertifikat hat, befindet es sich unter Umständen im vorläufig gelöschten Zustand. Basierend auf der [Zusammensetzung eines Zertifikats](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#composition-of-a-certificate) in Azure Key Vault gilt außerdem Folgendes: Die Erstellung des Zertifikats ist nicht erfolgreich, wenn im Schlüsseltresor ein weiterer Schlüssel oder ein Geheimnis mit demselben Namen vorhanden ist, den bzw. das Sie für Ihr Zertifikat angeben möchten. Sie müssen den Schlüssel oder das Geheimnis dann entfernen oder für Ihr Zertifikat einen anderen Namen verwenden. 
+Jeder Zertifikatname muss eindeutig sein. Ein Zertifikat mit demselben Namen kann sich unter Umständen im vorläufig gelöschten Zustand befinden. Außerdem gilt basierend auf der [Zusammensetzung eines Zertifikats](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#composition-of-a-certificate) Folgendes: Wenn ein neues Zertifikat erstellt wird, wird ein adressierbares Geheimnis mit demselben Namen erstellt. Wenn also im Schlüsseltresor ein weiterer Schlüssel oder ein Geheimnis mit demselben Namen enthalten ist, den oder das Sie für Ihr Zertifikat festlegen möchten, schlägt die Zertifikaterstellung fehl, und Sie müssen den Schlüssel oder das Geheimnis entweder entfernen oder einen anderen Namen für Ihr Zertifikat verwenden. 
 
 Weitere Informationen finden Sie unter [Vorgang „GetDeletedCertificate“](https://docs.microsoft.com/rest/api/keyvault/getdeletedcertificate/getdeletedcertificate).
 

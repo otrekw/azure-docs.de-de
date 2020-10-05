@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 41713554273ed5d6548a35d0ac956d8ff5c74191
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2e3b2ee35352c2af4ae8196ba7c9699da761f83e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542522"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372492"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springer-link"></a>Tutorial: Azure Active Directory-Integration mit Springer Link
 
@@ -39,7 +39,7 @@ Um die Azure AD-Integration mit Springer Link konfigurieren zu können, benötig
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
-In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
+In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD.
 
 * Springer Link unterstützt **SP-** und **IDP-initiiertes** einmaliges Anmelden.
 
@@ -68,16 +68,14 @@ Zum Konfigurieren der Integration von Springer Link in Azure AD müssen Sie Spri
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
 In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Springer Link mithilfe eines Testbenutzers namens **Britta Simon**.
-Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Springer Link eingerichtet werden.
 
 Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit Springer Link zu konfigurieren und zu testen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für Springer Link](#configure-springer-link-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+2. **[Konfigurieren des einmaligen Anmeldens für Springer Link](#configure-springer-link-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
 3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines Springer Link-Testbenutzers](#create-springer-link-test-user)** , um in Springer Link eine Entsprechung von Britta Simon zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
-6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+5. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
@@ -120,21 +118,11 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
 6. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf das Kopiersymbol, um die **App-Verbundmetadaten-URL** zu kopieren, und speichern Sie sie auf Ihrem Computer.
 
-    ![Downloadlink für das Zertifikat](common/metadataxml.png)
-
-7. Kopieren Sie im Abschnitt **Springer Link einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
-
-    ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
-
-    a. Anmelde-URL
-
-    b. Azure AD-Bezeichner
-
-    c. Abmelde-URL
+    ![Metadaten-Downloadlink](common/copy_metadataurl.png)
 
 ### <a name="configure-springer-link-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Springer Link
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Springer Link** müssen Sie die kopierte **App-Verbundmetadaten-URL** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Springer Link](mailto:identity@springernature.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Für die **Springer Link**-seitige Konfiguration des einmaligen Anmeldens müssen Sie die kopierten **Verbundmetadaten-URL der App** an das [Supportteam von Springer Link](mailto:onlineservice@springernature.com) senden. Das Springer-Linksupportteam verwendet diese URL, um die SAML-SSO-Verbindung auf beiden Seiten ordnungsgemäß einzurichten.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
 
@@ -186,10 +174,6 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 6. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen**.
 
 7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
-
-### <a name="create-springer-link-test-user"></a>Erstellen eines Springer Link-Testbenutzers
-
-In diesem Abschnitt erstellen Sie in Springer Link einen Benutzer namens Britta Simon. Arbeiten Sie beim Hinzufügen der Benutzer zur Springer Link-Plattform mit dem  [Springer Link-Supportteam](mailto:identity@springernature.com) zusammen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 

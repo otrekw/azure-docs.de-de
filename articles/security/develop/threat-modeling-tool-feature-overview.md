@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 08/17/2017
-ms.openlocfilehash: e405ea35dcaa33ac7c8227385e4aaff86d9244cb
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 65a88f309602462e77336181316c0d5bf19a8a1e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87540001"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980678"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>Übersicht über die Funktionen des Threat Modeling Tools
 
@@ -122,7 +122,7 @@ Bewegen Sie den Mauszeiger über der Schaltfläche **Modell öffnen**, um zwei O
 
 Wenn Sie **Feedback, Vorschläge und Probleme** auswählen, gelangen Sie zum MSDN-Forum für SDL-Tools. Sie können lesen, was andere Benutzer zum Tool zu sagen haben, sowie Problemumgehungen und neue Ideen finden.
 
-![Feedback](./media/threat-modeling-tool-feature-overview/feedback.png)
+![Screenshot einer Schaltfläche mit dem Text „Feedback, Suggestions and Issues“ (Feedback, Vorschläge und Probleme)](./media/threat-modeling-tool-feature-overview/feedback.png)
 
 ## <a name="design-view"></a>Entwurfsansicht
 
@@ -158,7 +158,7 @@ Sie können Elemente auf zwei Arten verbinden:
 
 Wenn Sie ein Bedrohungsmodell erstellen und vergessen, Datenflüsse mit Elementen zu verbinden, werden Sie benachrichtigt. Sie können die Meldung ignorieren oder die Anweisungen zum Beheben des Problems befolgen. 
 
-![Meldungen](./media/threat-modeling-tool-feature-overview/messages.png)
+![Screenshot eines Bedrohungsmodell-Connectors, der nicht mit Elementen verbunden ist, mit der Meldung, dass dies Probleme verursacht](./media/threat-modeling-tool-feature-overview/messages.png)
 
 ### <a name="notes"></a>Notizen
 
@@ -196,7 +196,7 @@ Wie in der vorherigen Abbildung dargestellt, können Sie die vom Tool generierte
 
 Nachdem Sie das Ändern von Prioritäten und Aktualisieren des Status der einzelnen generierten Bedrohungen abgeschlossen haben, können Sie die Datei speichern und/oder einen Bericht ausgeben. Wechseln Sie zu **Bericht** > **Vollständigen Bericht erstellen**. Benennen Sie den Bericht. Anschließend wird ein Bericht wie etwa in der folgenden Abbildung angezeigt:
 
-![Bericht](./media/threat-modeling-tool-feature-overview/report.png)
+![Screenshot eines Beispielberichts zur Bedrohungsmodellierung, einschließlich einer Zusammenfassung, Diagrammen und anderer Informationen](./media/threat-modeling-tool-feature-overview/report.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

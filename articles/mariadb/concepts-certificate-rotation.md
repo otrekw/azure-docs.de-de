@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: f35a43e9cbffb2613f7a98e02b03840c774e5999
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: a52dd48bb97c8e7979771bdc2dbb50654493b088
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90708154"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972599"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mariadb"></a>Grundlegendes zu den Änderungen im Zusammenhang mit der Stammzertifizierungsstelle für Azure Database for MariaDB
 
@@ -122,8 +122,28 @@ Diese von Azure Database for MariaDB verwendeten Zertifikate werden von vertraue
 ### <a name="11-if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-master-server-or-the-read-replicas"></a>11. Muss ich bei Verwendung von Lesereplikaten dieses Update nur auf dem Masterserver oder für die gelesenen Replikate ausführen?
 Da dieses Update eine clientseitige Änderung ist, müssen Sie die Änderungen auch für diese Clients anwenden, wenn der Client Daten vom Replikatserver gelesen hat.
 
-### <a name="12-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>12. Gibt es eine serverseitige Abfrage, um zu überprüfen, ob SSL verwendet wird?
+### <a name="12-if-i-am-using-data-in-replication-do-i-need-to-perform-any-action"></a>12. Muss ich bei Verwendung der Datenreplikation eine Aktion ausführen?
+Wenn Sie die [Datenreplikation](concepts-data-in-replication.md) verwenden, um eine Verbindung mit Azure Database for MySQL herzustellen, müssen Sie zwei Punkte berücksichtigen:
+*   Wenn die Datenreplikation von einem virtuellen Computer (lokal oder Azure-VM) zu Azure Database for MySQL erfolgt, müssen Sie überprüfen, ob zum Erstellen des Replikats SSL verwendet wird. Führen Sie **SHOW SLAVE STATUS** aus, und überprüfen Sie die folgende Einstellung.  
+
+    ```azurecli-interactive
+    Master_SSL_Allowed            : Yes
+    Master_SSL_CA_File            : ~\azure_mysqlservice.pem
+    Master_SSL_CA_Path            :
+    Master_SSL_Cert               : ~\azure_mysqlclient_cert.pem
+    Master_SSL_Cipher             :
+    Master_SSL_Key                : ~\azure_mysqlclient_key.pem
+    ```
+
+    Wenn das Zertifikat für CA_file, SSL_Cert und SSL_Key bereitgestellt wird, müssen Sie die Datei aktualisieren, indem Sie das [neue Zertifikat](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) hinzufügen.
+
+*   Wenn die Datenreplikation zwischen zwei Azure Database for MySQL-Instanzen erfolgt, müssen Sie das Replikat zurücksetzen, indem Sie **CALL mysql.az_replication_change_master** ausführen und das neue duale Stammzertifikat als letzten Parameter ([master_ssl_ca](howto-data-in-replication.md#link-the-master-and-replica-servers-to-start-data-in-replication)) bereitstellen.
+
+### <a name="13-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>13. Gibt es eine serverseitige Abfrage, um zu überprüfen, ob SSL verwendet wird?
 Um zu überprüfen, ob Sie eine SSL-Verbindung zum Herstellen einer Verbindung mit dem Server verwenden, lesen Sie die Informationen unter [Überprüfen der SSL-Verbindung](howto-configure-ssl.md#verify-the-ssl-connection).
 
-### <a name="13-what-if-i-have-further-questions"></a>13. Wie gehe ich vor, wenn ich weitere Fragen habe?
+### <a name="14-is-there-an-action-needed-if-i-already-have-the-digicertglobalrootg2-in-my-certificate-file"></a>14. Ist eine Aktion erforderlich, wenn sich DigiCertGlobalRootG2 bereits in meiner Zertifikatsdatei befindet?
+Nein Wenn in Ihrer Zertifikatsdatei **DigiCertGlobalRootG2** bereits enthalten ist, ist keine Aktion erforderlich.
+
+### <a name="15-what-if-i-have-further-questions"></a>15. Wie gehe ich vor, wenn ich weitere Fragen habe?
 Bei Fragen können Sie Antworten von Communityexperten auf [Microsoft Q&A](mailto:AzureDatabaseformariadb@service.microsoft.com) erhalten. Wenn Sie über einen Supportplan verfügen und technische Hilfe benötigen, [kontaktieren Sie uns](mailto:AzureDatabaseformariadb@service.microsoft.com).

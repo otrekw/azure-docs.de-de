@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 10/23/2017
 ms.author: alkohli
-ms.openlocfilehash: fee0837c1196adf35a956cd13df584528d46bfc0
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: dff1d8f48b275fa7e45dab93b5ce45962499b450
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183478"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563878"
 ---
 # <a name="use-azure-automation-runbooks-to-manage-storsimple-devices"></a>Verwalten von StorSimple-Geräten mit Azure Automation-Runbooks
 
@@ -85,7 +85,7 @@ Führen Sie die folgenden Schritte aus, um ein Automation-Modul für die Geräte
 
 6. Stellen Sie sicher, dass eine ZIP-Datei für das Automation-Modul in `C:\scripts\StorSimpleSDKTools` erstellt wird.
 
-    ![verify-automation-module](./media/storsimple-8000-automation-azurerm-runbook/verify-automation-module.png)
+    ![Screenshot: Ordner „StorSimpleSDKTools“ mit der ZIP-Datei für das Automation-Modul](./media/storsimple-8000-automation-azurerm-runbook/verify-automation-module.png)
 
 7. Die folgende Ausgabe wird angezeigt, wenn ein Automation-Modul über Windows PowerShell erstellt wird.
 
@@ -184,7 +184,7 @@ Führen Sie die folgenden Schritte aus, um ein Automation-Modul für die Geräte
    5. Lassen Sie die Standardoption **Ausführendes Konto erstellen** aktiviert.
    6. Aktivieren Sie optional die Option **An Dashboard anheften**. Klicken Sie auf **Erstellen**.
 
-       ![create-automation-account](./media/storsimple-8000-automation-azurerm-runbook/create-automation-account.png)
+       ![Screenshot: Bereich „Automation-Konto hinzufügen“ mit Werten für „Abonnement“, „Ausführendes Azure-Konto erstellen“ und „Erstellen“](./media/storsimple-8000-automation-azurerm-runbook/create-automation-account.png)
 
       Sie werden benachrichtigt, nachdem das Automation-Konto erfolgreich erstellt wurde. Weitere Informationen zum Erstellen eines Automation-Kontos finden Sie unter [Erstellen eines ausführenden Kontos](https://docs.microsoft.com/azure/automation/automation-create-runas-account).
 
@@ -196,7 +196,7 @@ Führen Sie die folgenden Schritte aus, um ein Automation-Modul für die Geräte
 
 5. Navigieren Sie auf dem Blatt **Modul hinzufügen** zum Speicherort des gezippten Moduls. Wählen Sie das Modul aus, um es dann zu öffnen. Klicken Sie auf **OK**.
 
-    ![add-module](./media/storsimple-8000-automation-azurerm-runbook/add-module.png)
+    ![Screenshot: Bereich „Modul hinzufügen“ mit einem Wert für „Dateiupload“ und „OK“](./media/storsimple-8000-automation-azurerm-runbook/add-module.png)
 
 6. Wechseln Sie zu **Prozessautomatisierung > Runbooks, und klicken Sie auf + Runbook hinzufügen**. Klicken Sie auf dem Blatt **Runbook hinzufügen** auf die Option **Vorhandenes Runbook importieren**. Zeigen Sie auf die Windows PowerShell-Skriptdatei für die **Runbookdatei**. Das Runbooktyp wird automatisch ausgewählt. Geben Sie einen Namen und eine optionale Beschreibung für das Runbook an. Klicken Sie auf **Erstellen**.
 
@@ -208,11 +208,11 @@ Führen Sie die folgenden Schritte aus, um ein Automation-Modul für die Geräte
 
 8. Bearbeiten Sie das Runbook, und klicken Sie auf **Testbereich**. Stellen Sie die Parameter wie den Namen Ihres StorSimple-Geräte-Manager-Diensts, den Namen des StorSimple-Geräts und das Abonnement bereit. **Starten** Sie den Test. Der Bericht wird nach Abschluss der Ausführung generiert. Weitere Informationen finden Sie unter [Testen eines Runbooks](../automation/automation-first-runbook-textual-powershell.md#step-3---test-the-runbook).
 
-    ![test-runbook](./media/storsimple-8000-automation-azurerm-runbook/test-runbook.png)
+    ![Screenshot: Bereich „Testen“ zum Eingeben von Parameterwerten und Starten eines Tests](./media/storsimple-8000-automation-azurerm-runbook/test-runbook.png)
 
 9. Untersuchen Sie die Ausgabe des Runbooks im Testbereich. Wenn Sie mit dem Ergebnis zufrieden sind, schließen Sie den Bereich. Klicken Sie auf **Veröffentlichen**, und wenn Sie zur Bestätigung aufgefordert werden, bestätigen und veröffentlichen Sie das Runbook.
 
-    ![publish-runbook](./media/storsimple-8000-automation-azurerm-runbook/publish-runbook.png)
+    ![Screenshot: Bereich „PowerShell-Runbook bearbeiten“ mit der Aufforderung mit der Aufforderung zum Veröffentlichen des Runbooks](./media/storsimple-8000-automation-azurerm-runbook/publish-runbook.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

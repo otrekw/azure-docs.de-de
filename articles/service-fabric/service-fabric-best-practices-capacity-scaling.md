@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e6b6cebfd146ffe23bdc21751f86c71d14ea875e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 96cd460ddfea863eb27a1087ff59f3b87acf65d8
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002248"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531303"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Kapazitätsplanung und Skalierung für Azure Service Fabric
 
@@ -36,6 +36,9 @@ Durch die Verwendung der automatischen Skalierung über VM-Skalierungsgruppen de
 
 > [!NOTE]
 > Der zustandsbehaftete Service Fabric-Dienst „fabric:/System/InfastructureService/<KNOTENTYPNAME>“ wird auf jedem Knotentyp mit der Dauerhaftigkeit „Silber“ oder höher ausgeführt. Dies ist der einzige Systemdienst, dessen Ausführung in Azure auf allen Clusterknotentypen unterstützt wird.
+
+> [!IMPORTANT]
+> Mit der automatischen Skalierung von Service Fabric werden die [Konfigurationen für horizontales Herunterskalieren](../virtual-machine-scale-sets/virtual-machine-scale-sets-scale-in-policy.md) der VM-Skalierungsgruppen `Default` und `NewestVM` unterstützt.
 
 ## <a name="vertical-scaling-considerations"></a>Überlegungen zur vertikalen Skalierung
 
@@ -168,7 +171,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 
 > [!NOTE]
 > Wenn Sie einen Cluster abskalieren, wird der entfernte Knoten bzw. die entfernte VM-Instanz im Service Fabric Explorer mit einem fehlerhaften Zustand angezeigt. Eine Erklärung dieses Verhaltens finden Sie unter [Verhaltensweisen von Service Fabric Explorer, die Sie möglicherweise beobachten](./service-fabric-cluster-scale-in-out.md#behaviors-you-may-observe-in-service-fabric-explorer). Ihre Möglichkeiten:
-> * Rufen Sie den Befehl [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) mit dem entsprechenden Knotennamen auf.
+> * Rufen Sie den Befehl [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps&preserve-view=true) mit dem entsprechenden Knotennamen auf.
 > * Stellen Sie die [Service Fabric-Hilfsanwendung für die Autoskalierung](https://github.com/Azure/service-fabric-autoscale-helper/) in Ihrem Cluster bereit. Diese Anwendung stellt sicher, dass die herunterskalierten Knoten im Service Fabric Explorer entfernt werden.
 
 ## <a name="reliability-levels"></a>Zuverlässigkeitsstufen

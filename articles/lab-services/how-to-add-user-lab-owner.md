@@ -2,13 +2,13 @@
 title: Hinzufügen zusätzlicher Benutzer zu einem Lab in Azure Lab Services
 description: In diesem Artikel erfahren Sie, wie ein Administrator einen Benutzer als Besitzer eines Labs in Azure Lab Services hinzufügen kann.
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: 6671a3070dae672769eecf59d614d3b75455ef5a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/04/2020
+ms.openlocfilehash: 4b46dd08a3b9527cdfc7bdf766ee4976e67656d0
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445864"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89482668"
 ---
 # <a name="how-to-add-additional-owners-to-an-existing-lab-in-azure-lab-services"></a>Hinzufügen zusätzlicher Benutzer zu einem vorhandenen Lab in Azure Lab Services
 In diesem Artikel erfahren Sie, wie ein Administrator zusätzliche Besitzer zu einem vorhandenen Lab hinzufügen kann.
@@ -32,6 +32,9 @@ Wenn Sie einem vorhandenen Lab einen Benutzer als zusätzlichen Besitzer hinzuf�
 
 ## <a name="add-user-to-the-owner-role-for-the-lab"></a>Hinzufügen von Benutzern zur Benutzerrolle für das Lab
 
+> [!NOTE]
+> Wenn der Benutzer nur über Lesezugriff für ein Lab verfügt, wird das Lab in labs.azure.com nicht angezeigt.
+
 1. Kehren Sie zurück zur Seite **Labkonto**, und klicken Sie im linken Menü auf **Alle Labs**.
 2. Wählen Sie das **Lab** aus, zu dem Sie einen Benutzer als Besitzer hinzufügen möchten. 
     
@@ -39,7 +42,7 @@ Wenn Sie einem vorhandenen Lab einen Benutzer als zusätzlichen Besitzer hinzuf�
 3. Wählen Sie auf der Seite **Lab** im linken Menü die Option **Zugriffssteuerung (IAM)** aus.
 4. Klicken Sie auf der Seite **Zugriffssteuerung (IAM)** in der Symbolleiste auf **Hinzufügen**, und wählen Sie dann **Rollenzuweisung hinzufügen** aus.
 5. Führen Sie die folgenden Schritte auf der Seite **Rollenzuweisung hinzufügen** durch: 
-    1. Wählen Sie die **Rolle** **Besitzer** aus. 
+    1. Wählen Sie die **Rolle****Besitzer** aus. 
     2. Wählen Sie den Benutzer aus. 
     3. Wählen Sie **Speichern** aus. 
 

@@ -4,15 +4,15 @@ description: Replizieren Sie Azure Analysis Services-Server mittels horizontalem
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 09/10/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ceed2a287fb210a421972e9c9f9e6c77c6cb1879
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 33f42b1d01bd0a39a268d9425a8406f976534634
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716927"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007688"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Horizontales Hochskalieren von Azure Analysis Services
 
@@ -41,6 +41,8 @@ Wenn Sie einen nachfolgenden horizontalen Skalierungsvorgang ausführen und beis
 * Führen Sie *vor der horizontalen Skalierung* eine Synchronisierung durch, um redundante Vorgänge mit zusätzlichen Replikaten zu vermeiden. Ein gleichzeitiges Ausführen von Synchronisierung und horizontaler Skalierung ist nicht zulässig.
 
 * Beim Automatisieren von Verarbeitungs- *und* Skalierungsvorgängen müssen Sie zuerst die Daten auf dem primären Server verarbeiten, dann eine Synchronisierung und dann die horizontale Skalierung durchführen. So stellen Sie möglichst geringe Auswirkungen auf die Ressourcen in QPU und Arbeitsspeicher sicher.
+
+* Während horizontaler Skalierungsvorgänge sind alle Server im Abfragepool, auch der primäre Server, vorübergehend offline.
 
 * Die Synchronisierung ist auch dann zulässig, wenn keine Replikate im Abfragepool vorhanden sind. Wenn Sie mit neuen Daten aus einem Verarbeitungsvorgang auf dem primären Server von Null auf ein oder mehrere Replikate hochskalieren, führen Sie zuerst die Synchronisierung ohne Replikate im Abfragepool durch und nehmen dann die horizontale Skalierung vor. Durch das Synchronisieren vor dem horizontalen Skalieren werden redundante Vorgänge mit den neu hinzugefügten Replikaten vermieden.
 
@@ -114,7 +116,7 @@ Synchronisierungsvorgänge müssen manuell oder mithilfe der REST-API ausgeführ
 
 Klicken Sie in der **Übersicht** für das Modell auf das Symbol **Modell synchronisieren**.
 
-![Schieberegler für horizontales Hochskalieren](media/analysis-services-scale-out/aas-scale-out-sync.png)
+![Symbol „Synchronisieren“](media/analysis-services-scale-out/aas-scale-out-sync.png)
 
 ### <a name="rest-api"></a>REST-API
 

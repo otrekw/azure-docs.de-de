@@ -4,15 +4,15 @@ description: Hier finden Sie Informationen zur Behandlung bekannter Leistungspro
 author: gunjanj
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 08/24/2020
+ms.date: 09/15/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: fe1460d4353addff1b8e3095cfe06c1fcb3b7bd0
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 7afaa057ecc94cf67d4fd5b041d95210fcf26717
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782369"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707593"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Troubleshooting bei Azure Files-Leistungsproblemen
 
@@ -200,6 +200,36 @@ Zugriffe auf Azure-Dateien haben für E/A-intensive Workloads eine höhere Laten
 11. Klicken Sie auf **Aktionsgruppe auswählen**, um der Warnung eine **Aktionsgruppe** (E-Mail, SMS usw.) hinzuzufügen, indem Sie entweder eine bestehende Aktionsgruppe auswählen oder eine neue Aktionsgruppe erstellen.
 12. Geben Sie die **Warnungsdetails** wie **Warnungsregelname**, **Beschreibung** und **Schweregrad** ein.
 13. Klicken Sie auf **Warnungsregel erstellen**, um die Warnung zu erstellen.
+
+Weitere Informationen zum Konfigurieren von Warnungen in Azure Monitor finden Sie unter [Übersicht über Warnungen in Microsoft Azure]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).
+
+## <a name="how-to-create-alerts-if-a-premium-file-share-is-trending-towards-being-throttled"></a>Erstellen von Warnungen, wenn sich eine Premium-Dateifreigabe der Drosselung nähert
+
+1. Navigieren Sie im **Azure-Portal** zu Ihrem **Speicherkonto**.
+2. Klicken Sie im Abschnitt „Überwachung“ auf **Warnungen** und anschließend auf **+ Neue Warnungsregel**.
+3. Klicken Sie auf **Ressource bearbeiten**, wählen Sie unter **Ressourcentyp** den Ressourcentyp für das Speicherkonto aus, und klicken Sie anschließend auf **Fertig**. Wenn der Name des Speicherkontos z. B. „contoso“ lautet, wählen Sie die Ressource „contoso/datei“ aus.
+4. Klicken Sie auf **Bedingung auswählen**, um eine Bedingung hinzuzufügen.
+5. Wählen Sie in der daraufhin angezeigten Liste der für das Speicherkonto unterstützten Signale die Metrik **Ausgehend** aus.
+
+  > [!NOTE]
+  > Sie müssen drei separate Warnungen erstellen, um benachrichtigt zu werden, wenn „Eingehend“, „Ausgehend“ oder „Transaktionen“ den festgelegten Schwellenwert überschreiten. Das liegt daran, dass eine Warnung nur ausgelöst wird, wenn alle Bedingungen erfüllt sind. Wenn Sie also alle Bedingungen in eine Warnung einfügen, werden Sie nur benachrichtigt, wenn der Schwellenwert für „Eingehend“, „Ausgehend“ und „Transaktionen“ überschritten wird.
+
+6. Scrollen Sie nach unten. Klicken Sie auf die Dropdownliste **Dimensionsname**, und wählen Sie **Dateifreigabe** aus.
+7. Klicken Sie auf die Dropdownliste **Dimensionswerte**, und wählen Sie die Dateifreigaben aus, für die Sie eine Warnung einrichten möchten.
+8. Definieren Sie die **Warnungsparameter** (Schwellenwert, Operator, Aggregationsgranularität und Häufigkeit der Auswertung), und klicken Sie auf **Fertig**.
+
+  > [!NOTE]
+  > Die Metriken „Eingehend“, „Ausgehend“ und „Transaktionen“ werden minutenweise gemeldet, obwohl die Abrechnung für die Metriken und die IOPS nach Sekunden erfolgt. (Wenn also eine Aggregationsgranularität über minutenweise zu viele Warnungen generiert, wählen Sie eine andere aus.) Wenn Ihr bereitgestellter Ausgang z. B. 90 MiB/s beträgt und Sie als Schwellenwert 80 % des bereitgestellten Ausgangswerts festlegen möchten, sollten Sie die folgenden Warnungsparameter auswählen: „75497472“ als **Schwellenwert**, „größer als oder gleich“ als **Operator** und „Durchschnitt“ als **Aggregationstyp**. Abhängig davon, wie häufig die Warnung gesendet werden soll, können Sie andere Werte für die Aggregationsgranularität und die Auswertungshäufigkeit auswählen. Wenn beispielsweise die Warnung den durchschnittlichen Eingangswert über einen Zeitraum von einer Stunde berücksichtigen und die Warnungsregel einmal pro Stunde ausgeführt werden soll, wählen Sie als **Aggregationsgranularität** 1 Stunde und als **Häufigkeit der Auswertung** ebenfalls 1 Stunde aus.
+
+9. Klicken Sie auf **Aktionsgruppe auswählen**, um der Warnung eine **Aktionsgruppe** (E-Mail, SMS usw.) hinzuzufügen, indem Sie entweder eine bestehende Aktionsgruppe auswählen oder eine neue Aktionsgruppe erstellen.
+10. Geben Sie die **Warnungsdetails** wie **Warnungsregelname**, **Beschreibung** und **Schweregrad** ein.
+11. Klicken Sie auf **Warnungsregel erstellen**, um die Warnung zu erstellen.
+
+  > [!NOTE]
+  > Damit Sie benachrichtigt werden, wenn Ihre Premium-Dateifreigabe aufgrund des bereitgestelltem Eingangswerts demnächst gedrosselt wird, führen Sie dieselben Schritte aus, wählen aber in Schritt 5 stattdessen die Metrik **Eingehend** aus.
+
+  > [!NOTE]
+  > Sie müssen einige Änderungen vornehmen, um benachrichtigt zu werden, wenn Ihre Premium-Dateifreigabe aufgrund der bereitgestellten IOPS demnächst gedrosselt wird. Wählen Sie in Schritt 5 stattdessen die Metrik **Transaktionen** aus. Außerdem ist in Schritt 10 die einzige Option für den **Aggregationstyp** der Gesamtwert. Daher ist der Schwellenwert abhängig von der ausgewählten Aggregationsgranularität. Wenn Sie z. B. als Schwellenwert 80 % der bereitgestellten Baseline-IOPS verwenden möchten und als **Aggregationsgranularität** 1 Stunde ausgewählt haben, wäre Ihr **Schwellenwert** der Basiswert für IOPS (in Byte) × 0,8 × 3.600. Führen Sie mit Ausnahme dieser Änderungen die oben aufgeführten Schritte aus. 
 
 Weitere Informationen zum Konfigurieren von Warnungen in Azure Monitor finden Sie unter [Übersicht über Warnungen in Microsoft Azure]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).
 

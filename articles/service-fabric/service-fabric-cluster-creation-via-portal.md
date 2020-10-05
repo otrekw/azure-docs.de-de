@@ -3,12 +3,12 @@ title: Erstellen eines Service Fabric-Clusters über das Azure-Portal
 description: Erfahren Sie, wie Sie über das Azure-Portal und mithilfe von Azure Key Vault einen sicheren Service Fabric-Cluster in Azure erstellen.
 ms.topic: conceptual
 ms.date: 09/06/2018
-ms.openlocfilehash: b47f3b756ef4d012b41fd15686ffc08ab54fc187
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c679a804db09b1034f31e9d8da1f7d2ad206f684
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259307"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563725"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Erstellen eines Service Fabric-Clusters in Azure über das Azure-Portal
 > [!div class="op_single_selector"]
@@ -128,42 +128,42 @@ Folgen Sie den Anweisungen der Bildschirme zum Hinzufügen oder Wiederverwenden 
 
 Widerstehen Sie der Versuchung, diesen Bildschirm zu verlassen, bis der vorherige Vorgang abgeschlossen ist.
 
-![CreateKeyVault]
+![Screenshot: Seite „Sicherheit“, auf der „Grundeinstellungen“ ausgewählt ist, mit den Bereichen „Schlüsseltresor“ und „Schlüsseltresor erstellen“][CreateKeyVault]
 
 Da der Schlüsseltresor nun erstellt wurde, bearbeiten Sie die Zugriffsrichtlinien für Ihren Schlüsseltresor. 
 
-![CreateKeyVault2]
+![Screenshot: Bereich „Service Fabric-Cluster erstellen“, in dem Option 3 „Sicherheit“ ausgewählt ist, mit einer Meldung, dass der Schlüsseltresor nicht aktiviert ist][CreateKeyVault2]
 
 Klicken Sie auf **Zugriffsrichtlinien bearbeiten** und dann auf **Erweiterte Zugriffsrichtlinien anzeigen**, und aktivieren Sie den Zugriff auf Azure Virtual Machines für die Bereitstellung. Es wird empfohlen, auch die Vorlagenbereitstellung zu aktivieren. Nachdem Sie Ihre Auswahl getroffen haben, vergessen Sie nicht, auf die Schaltfläche **Speichern** zu klicken und den Bereich **Zugriffsrichtlinien** zu schließen.
 
-![CreateKeyVault3]
+![Screenshot: Bereich „Service Fabric-Cluster erstellen“ mit den geöffneten Bereichen „Sicherheit“ und „Zugriffsrichtlinien“][CreateKeyVault3]
 
 Geben Sie den Namen des Zertifikats ein, und klicken Sie auf dann auf **OK**.
 
-![CreateKeyVault4]
+![Screenshot: Bereich „Service Fabric-Cluster erstellen“, in dem wie zuvor „Sicherheit“ ausgewählt ist, aber ohne die Meldung, dass der Schlüsseltresor nicht aktiviert ist][CreateKeyVault4]
 
 #### <a name="custom-option"></a>Option „Benutzerdefiniert“
 Überspringen Sie diesen Abschnitt, wenn Sie bereits die Schritte für die Option **Basic** ausgeführt haben.
 
-![SecurityCustomOption]
+![Screenshot: Dialogfeld „Sicherheit: Clustersicherheitseinstellungen konfigurieren“][SecurityCustomOption]
 
 Sie benötigen den Quellschlüsseltresor, die Zertifikat-URL und Informationen zum Zertifikatfingerabdruck, um die Sicherheitsseite zu vervollständigen. Wenn Sie diese Daten nicht zur Hand haben, öffnen Sie ein weiteres Browserfenster, und gehen Sie dann im Azure-Portal folgendermaßen vor:
 
 1. Navigieren Sie zu Ihrem Schlüsseltresordienst.
 2. Wählen Sie die Registerkarte „Eigenschaften“ aus, und kopieren Sie „RESSOURCEN-ID“ in „Quellschlüsseltresor“ im anderen Browserfenster. 
 
-    ![CertInfo0]
+    ![Screenshot: Fenster „Eigenschaften“ für den Schlüsseltresor][CertInfo0]
 
 3. Wählen Sie nun die Registerkarte „Zertifikate“ aus.
 4. Klicken Sie auf den Zertifikatfingerabdruck. Sie gelangen nun auf die Seite „Versionen“.
 5. Klicken Sie auf die GUIDs, die unter der aktuellen Version angezeigt werden.
 
-    ![CertInfo1]
+    ![Screenshot: Fenster „Zertifikate“ für den Schlüsseltresor][CertInfo1]
 
 6. Nun sollte ein Bildschirm wie der unten abgebildete angezeigt werden. Kopieren Sie den SHA-1-Fingerabdruck im Hexadezimalformat in „Zertifikatfingerabdruck“ im anderen Browserfenster.
 7. Kopieren Sie die „Geheimnis-ID“ in „Zertifikat-URL“ im anderen Browserfenster.
 
-    ![CertInfo2]
+    ![Screenshot: Dialogfeld „Zertifikatversion“ mit einer Option zum Kopieren der Zertifikat-ID][CertInfo2]
 
 Aktivieren Sie das Kontrollkästchen **Erweiterte Einstellungen konfigurieren**, um Clientzertifikate für den **Verwaltungsclient** und den **schreibgeschützten Client** einzugeben. Geben Sie in diesen Feldern ggf. den Fingerabdruck des Verwaltungsclientzertifikats und den Fingerabdruck des schreibgeschützten Benutzerclientzertifikats ein. Wenn Administratoren versuchen, eine Verbindung mit dem Cluster herzustellen, wird ihnen nur dann Zugriff gewährt, wenn sie über ein Zertifikat mit einem Fingerabdruck verfügen, der mit den hier angegebenen Fingerabdruckwerten übereinstimmt.  
 
@@ -173,7 +173,7 @@ Nun sind Sie bereit, den Cluster bereitzustellen. Bevor Sie diese Aufgabe ausfü
 
 Um die Clustererstellung abzuschließen, klicken Sie auf **Erstellen**. Sie können optional die Vorlage herunterladen.
 
-![Zusammenfassung]
+![Screenshot: Seite „Zusammenfassung“ für „Service Fabric-Cluster erstellen“ mit einem Link zum Anzeigen und Herunterladen eines Zertifikats][Summary]
 
 Sie können den Verlauf der Erstellung in den Benachrichtigungen finden. (Klicken Sie auf das Glockensymbol in der Nähe der Statusleiste am oberen rechten Bildschirmrand.) Wenn Sie beim Erstellen des Clusters auf **An Startmenü anheften** geklickt haben, wird im Menü **Start** der Hinweis **Deploying Service Fabric Cluster** (Service Fabric-Cluster wird bereitgestellt) angezeigt. Dieser Vorgang nimmt einige Zeit in Anspruch. 
 
@@ -230,7 +230,7 @@ Sie verfügen jetzt über einen sicheren Cluster, der Zertifikate zur Verwaltung
 [CertInfo2]: ./media/service-fabric-cluster-creation-via-portal/CertInfo2.PNG
 [SecurityCustomOption]: ./media/service-fabric-cluster-creation-via-portal/SecurityCustomOption.PNG
 [DownloadCert]: ./media/service-fabric-cluster-creation-via-portal/DownloadCert.PNG
-[Zusammenfassung]: ./media/service-fabric-cluster-creation-via-portal/Summary.PNG
+[Summary]: ./media/service-fabric-cluster-creation-via-portal/Summary.PNG
 [SecurityConfigs]: ./media/service-fabric-cluster-creation-via-portal/SecurityConfigs.png
 [Notifications]: ./media/service-fabric-cluster-creation-via-portal/notifications.png
 [ClusterDashboard]: ./media/service-fabric-cluster-creation-via-portal/ClusterDashboard.png

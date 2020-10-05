@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: c8de7148e91f8fafa4a2b1f8a661964a77ead215
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: ea88797a6423118cba40d117a37dc9df75b0b7a1
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009136"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089444"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Datengesteuerte Formatvorlagenausdrücke (Web SDK)
 
@@ -72,7 +72,12 @@ In allen Beispielen dieses Dokuments werden die folgenden Features verwendet, um
         "subTitle": "Building 40", 
         "temperature": 72,
         "title": "Cafeteria", 
-        "zoneColor": "red"
+        "zoneColor": "red",
+        "abcArray": ['a', 'b', 'c'],
+        "array2d": [['a', 'b'], ['x', 'y']],
+        "_style": {
+            "fillColor": 'red'
+        }
     }
 }
 ```
@@ -136,6 +141,28 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 ```
 
 Auf ähnliche Weise wird die Kontur von Polygonen auf Linienebenen gerendert. Fügen Sie zum Deaktivieren dieses Verhaltens auf einer Linienebene einen Filter hinzu, bei dem nur `LineString`- und `MultiLineString`-Features zugelassen werden.  
+
+Im Folgenden finden Sie einige weitere Beispiele für die Verwendung von Datenausdrücken:
+
+```javascript
+//Get item [2] from an array "properties.abcArray[1]" = "c"
+['at', 2, ['get', 'abcArray']]
+
+//Get item [0][1] from a 2D array "properties.array2d[0][1]" = "b"
+['at', 1, ['at', 0, ['get', 'array2d']]]
+
+//Check to see if a value is in an array property "properties.abcArray.indexOf('a') !== -1" = true
+['in', 'a', ['get', 'abcArray']]
+
+//Get the length of an array "properties.abcArray.length" = 3
+['length', ['get', 'abcArray']]
+
+//Get the value of a subproperty "properties._style.fillColor" = "red"
+['get', 'fillColor', ['get', '_style']]
+
+//Check that "fillColor" exists as a subproperty of "_style".
+['has', 'fillColor', ['get', '_style']]
+```
 
 ## <a name="math-expressions"></a>Mathematische Ausdrücke
 
@@ -609,7 +636,7 @@ Spezielle Ausdrücke, die nur für bestimmte Ebenen gelten.
 
 ### <a name="heat-map-density-expression"></a>Heatmap Density-Ausdruck
 
-Mit einem Heatmap Density-Ausdruck wird der Wärmebilddichte-Wert für jedes Pixel einer Wärmebildebene abgerufen. Er ist als `['heatmap-density']` definiert. Dieser Wert ist eine Zahl zwischen `0` und `1`. Er wird zusammen mit einem `interpolation`- oder `step`-Ausdruck verwendet, um den Farbverlauf zu definieren, der zum Einfügen der Farben in das Wärmebild genutzt wird. Dieser Ausdruck kann nur in der [color-Option](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest#color) der Wärmebildebene verwendet werden.
+Mit einem Heatmap Density-Ausdruck wird der Wärmebilddichte-Wert für jedes Pixel einer Wärmebildebene abgerufen. Er ist als `['heatmap-density']` definiert. Dieser Wert ist eine Zahl zwischen `0` und `1`. Er wird zusammen mit einem `interpolation`- oder `step`-Ausdruck verwendet, um den Farbverlauf zu definieren, der zum Einfügen der Farben in das Wärmebild genutzt wird. Dieser Ausdruck kann nur in der [color-Option](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions#color) der Wärmebildebene verwendet werden.
 
 > [!TIP]
 > Die Farbe bei Index „0“ in einem interpolation-Ausdruck bzw. die Standardfarbe einer Schrittfarbe definiert die Farbe in einem Bereich ohne Daten. Die Farbe bei Index 0 kann verwendet werden, um eine Hintergrundfarbe zu definieren. Viele Benutzer legen hierfür einen transparenten Wert oder ein halbtransparentes Schwarz fest.
@@ -653,7 +680,7 @@ Weitere Informationen finden Sie unter [Hinzufügen einer Wärmebildebene](map-a
 
 ### <a name="line-progress-expression"></a>Line Progress-Ausdruck
 
-Mit einem Line Progress-Ausdruck wird der Fortschritt entlang einer Farbverlaufslinie auf einer Linienebene abgerufen. Er ist als `['line-progress']` definiert. Dieser Wert ist eine Zahl zwischen 0 und 1. Er wird in Kombination mit einem `interpolation`- oder `step`-Ausdruck verwendet. Dieser Ausdruck kann nur mit der [strokeGradient-Option]( https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest#strokegradient) der Linienebene verwendet werden. 
+Mit einem Line Progress-Ausdruck wird der Fortschritt entlang einer Farbverlaufslinie auf einer Linienebene abgerufen. Er ist als `['line-progress']` definiert. Dieser Wert ist eine Zahl zwischen 0 und 1. Er wird in Kombination mit einem `interpolation`- oder `step`-Ausdruck verwendet. Dieser Ausdruck kann nur mit der [strokeGradient-Option]( https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions#strokegradient) der Linienebene verwendet werden. 
 
 > [!NOTE]
 > Für die `strokeGradient`-Option der Linienebene muss die `lineMetrics`-Option der Datenquelle auf `true` festgelegt sein.
@@ -916,16 +943,16 @@ In den folgenden Artikeln finden Sie weitere Codebeispiele, in denen Ausdrücke 
 Weitere Informationen zu den Ebenenoptionen, die Ausdrücke unterstützen:
 
 > [!div class="nextstepaction"] 
-> [BubbleLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.bubblelayeroptions?view=azure-iot-typescript-latest)
+> [BubbleLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.bubblelayeroptions)
 
 > [!div class="nextstepaction"] 
-> [HeatMapLayerOptions-Schnittstelle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest)
+> [HeatMapLayerOptions-Schnittstelle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions)
 
 > [!div class="nextstepaction"] 
-> [LineLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest)
+> [LineLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions)
 
 > [!div class="nextstepaction"] 
-> [PolygonLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest)
+> [PolygonLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.polygonlayeroptions)
 
 > [!div class="nextstepaction"] 
-> [SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.symbollayeroptions?view=azure-iot-typescript-latest)
+> [SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.symbollayeroptions)

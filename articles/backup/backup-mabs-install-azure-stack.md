@@ -3,12 +3,12 @@ title: Installieren von Azure Backup Server in Azure Stack
 description: In diesem Artikel erfahren Sie, wie Sie Azure Backup Server verwenden, um Workloads in Azure Stack zu schützen oder zu sichern.
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: a95ee42c3229e642bd48b812eb6bc01636af3ba2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7153e2ff03a4f78ee1cc92ca04054fb2955d11a5
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018126"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970236"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Installieren von Azure Backup Server in Azure Stack
 
@@ -107,7 +107,7 @@ Binden Sie Azure Backup Server immer in eine Domäne ein. Wenn Sie Azure Backup 
 
 ### <a name="set-storage-replication"></a>Festlegen der Speicherreplikation
 
-Die Option zur Replikation des Recovery Services-Tresorspeichers ermöglicht Ihnen, zwischen georedundantem und lokal redundantem Speicher zu wählen. Recovery Services-Tresore verwenden standardmäßig georedundanten Speicher. Behalten Sie den georedundanten Speicher bei, wenn es sich hierbei um Ihren primären Tresor handelt. Wählen Sie lokal redundanten Speicher aus, wenn Sie eine kostengünstigere und weniger langlebige Option wünschen. Weitere Informationen zu den Optionen für [georedundanten](../storage/common/storage-redundancy.md) und [lokal redundanten](../storage/common/storage-redundancy.md) Speicher finden Sie in der [Übersicht über die Azure Storage-Replikation](../storage/common/storage-redundancy.md).
+Die Option zur Replikation des Recovery Services-Tresorspeichers ermöglicht Ihnen, zwischen georedundantem und lokal redundantem Speicher zu wählen. Recovery Services-Tresore verwenden standardmäßig georedundanten Speicher. Behalten Sie den georedundanten Speicher bei, wenn es sich hierbei um Ihren primären Tresor handelt. Wählen Sie lokal redundanten Speicher aus, wenn Sie eine kostengünstigere und weniger langlebige Option wünschen. Weitere Informationen zu den Optionen für [georedundanten](../storage/common/storage-redundancy.md#geo-redundant-storage), [lokal redundanten](../storage/common/storage-redundancy.md#locally-redundant-storage) und [zonenredundanten](../storage/common/storage-redundancy.md#zone-redundant-storage) Speicher finden Sie in der [Übersicht über die Azure Storage-Replikation](../storage/common/storage-redundancy.md).
 
 So bearbeiten Sie die Einstellung für die Speicherreplikation:
 
@@ -243,7 +243,7 @@ Azure Backup Server und Data Protection Manager teilen sich Code. Deshalb finden
 
     ![Angeben eines Speicherorts für die Installation von Dateien](./media/backup-mabs-install-azure-stack/mabs-install-wizard-settings-11.png)
 
-    Das Scratchverzeichnis ist eine Anforderung für die Sicherung in Azure. Stellen Sie sicher, dass die Größe des Scratchverzeichnisses mindestens 5 % der Datenmenge entspricht, die in Azure gesichert werden soll. Für den Datenträgerschutz müssen separate Datenträger nach Abschluss der Installation konfiguriert werden. Weitere Informationen zu Speicherpools finden Sie unter [Vorbereiten der Datenspeicherung](/system-center/dpm/plan-long-and-short-term-data-storage?view=sc-dpm-2019).
+    Das Scratchverzeichnis ist eine Anforderung für die Sicherung in Azure. Stellen Sie sicher, dass die Größe des Scratchverzeichnisses mindestens 5 % der Datenmenge entspricht, die in Azure gesichert werden soll. Für den Datenträgerschutz müssen separate Datenträger nach Abschluss der Installation konfiguriert werden. Weitere Informationen zu Speicherpools finden Sie unter [Vorbereiten der Datenspeicherung](/system-center/dpm/plan-long-and-short-term-data-storage).
 
 6. Geben Sie auf dem Bildschirm **Sicherheitseinstellungen** ein sicheres Kennwort für eingeschränkte lokale Benutzerkonten an, und wählen Sie **Weiter** aus.
 

@@ -14,21 +14,21 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa9d2aa94970e7d17102e5a5696c6b61330aff80
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 6c341235a646fff28a16d30d1bf010932b02cf19
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279957"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660967"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>Verwenden eines SAML 2.0-Identitätsanbieters (IdP, Identity Provider) für einmaliges Anmelden
 
-Dieses Dokument enthält Informationen zur Verwendung des mit dem SP-Lite-Profil kompatiblen SAML 2.0-Identitätsanbieters als bevorzugter Sicherheitstokendienst (STS) bzw. Identitätsanbieter. Dieses Szenario ist hilfreich, wenn Sie bereits lokal über einen Speicher für das Benutzerverzeichnis und Kennwort verfügen, auf den mithilfe von SAML 2.0 zugegriffen werden kann. Dieses vorhandene Benutzerverzeichnis kann für die Anmeldung bei Office 365 und anderen mit Azure AD gesicherten Ressourcen verwendet werden. Das SAML 2.0-SP-Lite-Profil basiert auf dem häufig verwendeten Verbund-Identitätsstandard Security Assertion Markup Language (SAML), um das einmalige Anmelden zu ermöglichen und ein Framework für den Austausch von Attributen bereitzustellen.
+Dieses Dokument enthält Informationen zur Verwendung des mit dem SP-Lite-Profil kompatiblen SAML 2.0-Identitätsanbieters als bevorzugter Sicherheitstokendienst (STS) bzw. Identitätsanbieter. Dieses Szenario ist hilfreich, wenn Sie bereits lokal über einen Speicher für das Benutzerverzeichnis und Kennwort verfügen, auf den mithilfe von SAML 2.0 zugegriffen werden kann. Dieses vorhandene Benutzerverzeichnis kann für die Anmeldung bei Microsoft 365 und anderen mit Azure AD gesicherten Ressourcen verwendet werden. Das SAML 2.0-SP-Lite-Profil basiert auf dem häufig verwendeten Verbund-Identitätsstandard Security Assertion Markup Language (SAML), um das einmalige Anmelden zu ermöglichen und ein Framework für den Austausch von Attributen bereitzustellen.
 
 >[!NOTE]
 >Eine Liste der Drittanbieter-IdPs, die für die Verwendung mit Azure AD getestet wurden, finden Sie in der [Azure AD-Verbund – Kompatibilitätsliste](how-to-connect-fed-compatibility.md).
 
-Microsoft unterstützt diese Anmeldung als Integration von Microsoft-Clouddiensten, z.B. Office 365, in Ihren ordnungsgemäß konfigurierten, auf dem SAML 2.0-Profil basierten IdP. Es handelt sich bei SAML 2.0-Identitätsanbieter um Drittanbieterprodukte, und Microsoft bietet deshalb keinen Support für die Bereitstellung, Konfiguration und Problembehandlung sowie keine bewährten Methoden dafür. Sobald die Integration mit dem SAML 2.0-Identitätsanbieter ordnungsgemäß konfiguriert ist, kann dieser für die Konfiguration mithilfe des Microsoft-Verbindungsuntersuchungstools verwendet werden, wie weiter unten ausführlicher beschrieben wird. Weitere Informationen zu Ihrem auf dem SAML 2.0 SP-Lite-Profil basierten Identitätsanbieter erhalten Sie bei der Organisation, die ihn bereitgestellt hat.
+Microsoft unterstützt diese Anmeldung als Integration von Microsoft-Clouddiensten, z. B. Microsoft 365, mit Ihrem ordnungsgemäß konfigurierten, auf dem SAML 2.0-Profil basierten IdP. Es handelt sich bei SAML 2.0-Identitätsanbieter um Drittanbieterprodukte, und Microsoft bietet deshalb keinen Support für die Bereitstellung, Konfiguration und Problembehandlung sowie keine bewährten Methoden dafür. Sobald die Integration mit dem SAML 2.0-Identitätsanbieter ordnungsgemäß konfiguriert ist, kann dieser für die Konfiguration mithilfe des Microsoft-Verbindungsuntersuchungstools verwendet werden, wie weiter unten ausführlicher beschrieben wird. Weitere Informationen zu Ihrem auf dem SAML 2.0 SP-Lite-Profil basierten Identitätsanbieter erhalten Sie bei der Organisation, die ihn bereitgestellt hat.
 
 > [!IMPORTANT]
 > In diesem Anmeldeszenario mit SAML 2.0-Identitätsanbietern ist nur eine begrenzte Anzahl von Clients verfügbar, einschließlich:
@@ -44,12 +44,12 @@ Microsoft unterstützt diese Anmeldung als Integration von Microsoft-Clouddienst
 Alle anderen Clients sind nicht in diesem Anmeldeszenario mit Ihrem SAML 2.0-Identitätsanbieter verfügbar. Beispielsweise kann sich der Lync 2010-Desktopclient nicht beim Dienst mit Ihrem SAML 2.0-Identitätsanbieter anmelden, der für einmaliges Anmelden konfiguriert ist.
 
 ## <a name="azure-ad-saml-20-protocol-requirements"></a>Azure AD-SAML 2.0-Protokollanforderungen
-Dieses Dokument enthält detaillierte Anforderungen an die Protokoll- und Benachrichtigungsformatierung, die Ihr SAML 2.0-Identitätsanbieter implementieren muss, um einen Verbund mit Azure AD zu bilden, damit die Anmeldung bei mehr als einem Microsoft-Clouddienst (wie Office 365) aktiviert werden kann. Die vertrauende SAML 2.0-Seite (SP-STS) für einen Microsoft-Clouddienst, die in diesem Szenario verwendet wird, ist Azure AD.
+Dieses Dokument enthält detaillierte Anforderungen an die Protokoll- und Benachrichtigungsformatierung, die Ihr SAML 2.0-Identitätsanbieter implementieren muss, um einen Verbund mit Azure AD zu bilden, damit die Anmeldung bei mehr als einem Microsoft-Clouddienst (wie Microsoft 365) aktiviert werden kann. Die vertrauende SAML 2.0-Seite (SP-STS) für einen Microsoft-Clouddienst, die in diesem Szenario verwendet wird, ist Azure AD.
 
 Sie sollten sicherstellen, dass die ausgehenden Nachrichten Ihres SAML 2.0-Identitätsanbieters den bereitgestellten Beispielablaufverfolgungen so ähnlich wie möglich sind. Verwenden Sie auch wenn möglich die bestimmten Attributwerte aus den bereitgestellten Azure AD-Metadaten. Wenn Sie mit den Ausgabenachrichten zufrieden sind, können Sie mit der Microsoft-Verbindungsuntersuchung wie unten beschrieben Tests durchführen.
 
 Die Azure AD-Metadaten können unter dieser URL heruntergeladen werden: [https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml](https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml).
-Für Kunden in China, die die für China bestimmte Instanz von Office 365 nutzen, sollte der folgende Verbundendpunkt verwendet werden: [https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml](https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml).
+Für Kunden in China, die die für China bestimmte Instanz von Microsoft 365 nutzen, sollte der folgende Verbundendpunkt verwendet werden: [https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml](https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml).
 
 ## <a name="saml-protocol-requirements"></a>SAML-Protokollanforderungen
 In diesem Abschnitt wird beschrieben, wie die Anforderungs- und Anwortbenachrichtigungspaare zusammengefügt werden, damit Sie Ihre Benachrichtigungen richtig formatieren können.
@@ -80,7 +80,7 @@ Diese Tabelle zeigt die Anforderungen für bestimmte Attribute in der SAML 2.0-B
 |attribute|BESCHREIBUNG|
 | ----- | ----- |
 |NameID|Der Wert dieser Assertion muss mit der ImmutableID des Azure AD-Benutzers identisch sein. Er kann bis zu 64 alphanumerische Zeichen lang sein. Alle sicheren Nicht-HTML-Zeichen müssen codiert werden, z.B. wird ein „+“-Zeichen als „.2B“ angezeigt.|
-|IDPEmail|Der Benutzerprinzipalname (User Principal Name, UPN) ist in der SAML-Antwort als Element mit dem Namen „IDPEmail“ aufgeführt. Dieser ist der UPN des Benutzers in Azure AD/Office 365. Der UPN ist im E-Mail-Adressformat. Der UPN-Wert in Windows Office 365 (Azure Active Directory).|
+|IDPEmail|Der Benutzerprinzipalname (User Principal Name, UPN) ist in der SAML-Antwort als Element mit dem Namen „IDPEmail“ aufgeführt. Dieser ist der UPN des Benutzers in Azure AD/Microsoft 365. Der UPN ist im E-Mail-Adressformat. Der UPN-Wert in Windows Microsoft 365 (Azure Active Directory).|
 |Issuer (Aussteller)|Dies muss ein URI des Identitätsanbieters sein. Der Aussteller aus der Beispielbenachrichtigung sollte nicht wiederverwendet werden. Wenn Sie mehrere Domänen der obersten Ebene in Ihrem Azure AD-Mandanten verfügen, muss der Aussteller mit der pro Domäne konfigurierten URI-Einstellung übereinstimmen.|
 
 >[!IMPORTANT]
@@ -103,7 +103,7 @@ Dies ist eine Beispielanforderungsnachricht, die von Azure AD an einen SAML 2.0-
     </samlp:AuthnRequest>
 ```
 
-Dies ist eine Beispielantwortnachricht, die von dem mit SAML 2.0 kompatiblen Beispielidentitätsanbieter an Azure AD/Office 365 gesendet wird.
+Dies ist eine Beispielantwortnachricht, die von dem mit SAML 2.0 kompatiblen Beispielidentitätsanbieter an Azure AD/Microsoft 365 gesendet wird.
 
 ```xml
     <samlp:Response ID="_592c022f-e85e-4d23-b55b-9141c95cd2a5" Version="2.0" IssueInstant="2014-01-31T15:36:31.357Z" Destination="https://login.microsoftonline.com/login.srf" Consent="urn:oasis:names:tc:SAML:2.0:consent:unspecified" InResponseTo="_049917a6-1183-42fd-a190-1d2cbaf9b144" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
@@ -159,7 +159,7 @@ Dies ist eine Beispielantwortnachricht, die von dem mit SAML 2.0 kompatiblen Bei
 ```
 
 ## <a name="configure-your-saml-20-compliant-identity-provider"></a>Konfigurieren Ihres mit SAML 2.0 kompatiblen Identitätsanbieters
-Dieser Abschnitt enthält Richtlinien zum Konfigurieren Ihres SAML 2.0-Identitätsanbieters für einen Verbund mit Azure AD für die Aktivierung des einmaligen Anmeldens für den Zugriff auf einen oder mehrere Microsoft-Clouddienste (z.B. Office 365) mithilfe des SAML 2.0-Protokolls. Die vertrauende SAML 2.0-Seite für einen Microsoft-Clouddienst, die in diesem Szenario verwendet wird, ist Azure AD.
+Dieser Abschnitt enthält Richtlinien zum Konfigurieren Ihres SAML 2.0-Identitätsanbieters für einen Verbund mit Azure AD für die Aktivierung des einmaligen Anmeldens für den Zugriff auf einen oder mehrere Microsoft-Clouddienste (z. B. Microsoft 365) mithilfe des SAML 2.0-Protokolls. Die vertrauende SAML 2.0-Seite für einen Microsoft-Clouddienst, die in diesem Szenario verwendet wird, ist Azure AD.
 
 ## <a name="add-azure-ad-metadata"></a>Hinzufügen von Azure AD-Metadaten
 Ihr SAML 2.0-Identitätsanbieter muss Informationen zur vertrauenden Azure AD-Seite befolgen. Azure AD veröffentlicht Metadaten unter https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml.
@@ -200,7 +200,7 @@ Das folgende Verfahren führt Sie durch das Konvertieren einer vorhandenen Stand
     Connect-MsolService
     ```
     
-2. Konfigurieren Sie Ihre gewünschte Office 365-Domäne zur Verwendung eines Verbunds mit SAML 2.0:
+2. Konfigurieren Sie Ihre gewünschte Microsoft 365-Domäne zur Verwendung eines Verbunds mit SAML 2.0:
 
     ```powershell
     $dom = "contoso.com" 
@@ -245,8 +245,8 @@ Weitere Informationen zu „Set-MsolDomainAuthentication“ finden Sie unter: [/
 
 Nachdem der Verbund konfiguriert wurde, können Sie zurück zu „ohne Verbund“ (oder „verwaltet“) wechseln. Diese Änderungen benötigen jedoch bis zu zwei Stunden und erfordern die Zuweisung neuer zufälliger Kennwörter für die cloudbasierte Anmeldung für jeden Benutzer. Das Zurückwechseln zu „verwaltet“ ist in einigen Szenarios möglicherweise erforderlich, um einen Fehler in Ihren Einstellungen zurückzusetzen. Weitere Informationen zur Domänenkonvertierung finden Sie unter: [/previous-versions/azure/dn194122(v=azure.100)](/previous-versions/azure/dn194122(v=azure.100)).
 
-## <a name="provision-user-principals-to-azure-ad--office-365"></a>Bereitstellen von Benutzerprinzipalen für Azure AD/Office 365
-Bevor Sie Ihre Benutzer mit Office 365 authentifizieren können, müssen Sie Azure AD mit Benutzerprinzipalen bereitstellen, die mit der Assertion im SAML 2.0-Anspruch übereinstimmen. Wenn Azure AD diese Benutzerprinzipale im Voraus nicht bekannt sind, können sie nicht für die Verbundanmeldung verwendet werden. Azure AD Connect oder Windows PowerShell können zum Bereitstellen von Benutzerprinzipalen verwendet werden.
+## <a name="provision-user-principals-to-azure-ad--microsoft-365"></a>Bereitstellen von Benutzerprinzipalen für Azure AD/Microsoft 365
+Bevor Sie Ihre Benutzer mit Microsoft 365 authentifizieren können, müssen Sie Azure AD mit Benutzerprinzipalen bereitstellen, die mit der Assertion im SAML 2.0-Anspruch übereinstimmen. Wenn Azure AD diese Benutzerprinzipale im Voraus nicht bekannt sind, können sie nicht für die Verbundanmeldung verwendet werden. Azure AD Connect oder Windows PowerShell können zum Bereitstellen von Benutzerprinzipalen verwendet werden.
 
 Azure AD Connect kann zum Bereitstellen von Prinzipalen für Ihre Domänen in Ihrem Azure AD-Verzeichnis aus dem lokalen Active Directory verwendet werden. Ausführlichere Informationen finden Sie unter [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](whatis-hybrid-identity.md).
 
@@ -283,7 +283,7 @@ Bevor Sie als Administrator das einmalige Anmelden (auch als Identitätsverbund 
 2.  Sie haben Ihren SAML 2.0-Identitätsanbieter konfiguriert.
 3.  Installieren Sie Windows PowerShell für einmaliges Anmelden mit dem SAML 2.0-Identitätsanbieter.
 4.  Richten Sie eine Vertrauensstellung zwischen Ihrem SAML 2.0-Identitätsanbieter und Azure AD ein.
-5.  Stellen Sie einen bekannten Testbenutzerprinzipal für Azure Active Directory (Office 365) entweder über Windows PowerShell oder Azure AD Connect bereit.
+5.  Stellen Sie einen bekannten Testbenutzerprinzipal für Azure Active Directory (Microsoft 365) entweder über Windows PowerShell oder Azure AD Connect bereit.
 6.  Konfigurieren Sie mithilfe von [Azure AD Connect](whatis-hybrid-identity.md) die Verzeichnissynchronisierung.
 
 Nach dem Einrichten des einmaligen Anmeldens mit Ihrem auf SAML 2.0 SP-Lite basierenden Identitätsanbieter müssen Sie überprüfen, ob dieser ordnungsgemäß arbeitet.

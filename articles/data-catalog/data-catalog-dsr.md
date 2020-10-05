@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: ec716924d3cebf8e78b0505b95837b91c568813a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ead1a324d342f818551ac05ac385ba4fa5b8b877
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78898147"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439083"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Von Azure Data Catalog unterstützte Datenquellen
 
@@ -143,7 +143,7 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
       <td></td>
     </tr>
     <tr>
-      <td>Azure SQL Data Warehouse-Tabelle</td>
+      <td>Azure Synapse Analytics-Tabelle</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -151,7 +151,7 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
       <td></td>
     </tr>
     <tr>
-      <td>Azure SQL Data Warehouse-Ansicht</td>
+      <td>Azure Synapse Analytics-Ansicht</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -932,7 +932,7 @@ Wenn Sie für eine bestimmte Datenquelle Unterstützung wünschen, können Sie d
       </td>
     </tr>
     <tr>
-      <td>SQL Data Warehouse</td>
+      <td>Azure Synapse Analytics </td>
       <td>Command</td>
       <td>Stored procedure</td>
       <td>
@@ -948,7 +948,7 @@ Wenn Sie für eine bestimmte Datenquelle Unterstützung wünschen, können Sie d
       </td>
     </tr>
     <tr>
-      <td>SQL Data Warehouse</td>
+      <td>Azure Synapse Analytics </td>
       <td>TableValuedFunction</td>
       <td>Table-valued function</td>
       <td>
@@ -964,7 +964,7 @@ Wenn Sie für eine bestimmte Datenquelle Unterstützung wünschen, können Sie d
       </td>
     </tr>
     <tr>
-      <td>SQL Data Warehouse</td>
+      <td>Azure Synapse Analytics </td>
       <td>Container</td>
       <td>Database</td>
       <td>
@@ -978,7 +978,7 @@ Wenn Sie für eine bestimmte Datenquelle Unterstützung wünschen, können Sie d
       </td>
     </tr>
     <tr>
-      <td>SQL Data Warehouse</td>
+      <td>Azure Synapse Analytics </td>
       <td>Table</td>
       <td>Table, view</td>
       <td>

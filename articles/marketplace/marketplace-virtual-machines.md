@@ -7,19 +7,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
-ms.date: 04/15/2020
-ms.openlocfilehash: 9f408174b9a8dff925a9c834ea75bf725ec6f913
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.date: 09/04/2020
+ms.openlocfilehash: cc6b040731cbeb7271d7a7c0de1c32fa2d007013
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837343"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484187"
 ---
 # <a name="publishing-guide-for-virtual-machine-offers"></a>Leitfaden für die Veröffentlichung von Virtual Machine-Angeboten
 
 Das Veröffentlichen von VM-Images ist eine der wichtigsten Möglichkeiten, eine Lösung im Azure Marketplace zu veröffentlichen. Lesen Sie diesen Leitfaden, um die Anforderungen für diesen Angebotstyp zu verstehen. 
 
-Virtual Machine-Angebote sind Transaktionsangebote, die über den Azure Marketplace bereitgestellt und abgerechnet werden. Den Benutzern wird der Aktionsaufruf *Jetzt kaufen* angezeigt.
+Virtual Machine-Angebote sind Transaktionsangebote, die über den Azure Marketplace bereitgestellt und abgerechnet werden. Den Benutzern wird die Listenoption *Jetzt kaufen* angezeigt.
 
 ## <a name="free-trial"></a>Kostenlose Testversion 
 

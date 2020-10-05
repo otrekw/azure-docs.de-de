@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a80dafda39c0b37b1a7477b93d7f649fa1beeade
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 0126c5348a2acaebea0400a94ca0a1d14a1bf6ff
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783636"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707542"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Erstellen eines neuen Zugriffspakets in der Azure AD-Berechtigungsverwaltung
 
@@ -99,7 +99,7 @@ Auf der Registerkarte **Ressourcenrollen** wählen Sie die Ressourcen aus, die i
 
     Wenn Sie das Zugriffspaket in einem vorhandenen Katalog erstellen, können Sie jede bereits im Katalog vorhandene Ressource auswählen, ohne deren Besitzer zu sein.
 
-    Als globaler Administrator, Benutzeradministrator oder Katalogbesitzer haben Sie zusätzlich die Möglichkeit, noch nicht im Katalog enthaltene Ressourcen auszuwählen, deren Besitzer Sie sind. Wenn Sie Ressourcen auswählen, die derzeit nicht im ausgewählten Katalog vorhanden sind, werden diese Ressourcen ebenfalls dem Katalog hinzugefügt, sodass andere Katalogadministratoren Zugriffspakete damit erstellen können. Wenn Sie nur Ressourcen auswählen möchten, die derzeit im ausgewählten Katalog vorhanden sind, aktivieren Sie am oberen Rand des Auswahlbereichs das Kontrollkästchen **Nur Elemente im Katalog anzeigen**.
+    Als globaler Administrator, Benutzeradministrator oder Katalogbesitzer haben Sie zusätzlich die Möglichkeit, noch nicht im Katalog enthaltene Ressourcen auszuwählen, deren Besitzer Sie sind. Wenn Sie Ressourcen auswählen, die derzeit nicht im ausgewählten Katalog vorhanden sind, werden diese Ressourcen ebenfalls dem Katalog hinzugefügt, sodass andere Katalogadministratoren Zugriffspakete damit erstellen können. Wenn Sie alle Ressourcen anzeigen möchten, die dem Katalog hinzugefügt werden können, aktivieren Sie das Kontrollkästchen **Alle anzeigen** am oberen Rand des Auswahlbereichs. Wenn Sie nur Ressourcen auswählen möchten, die derzeit im ausgewählten Katalog vorhanden sind, lassen Sie das Kontrollkästchen **Alle anzeigen** deaktiviert (Standardeinstellung).
 
 1. Nachdem Sie die Ressourcen ausgewählt haben, wählen Sie in der Liste **Rolle** die Rolle aus, die Benutzern für die Ressource zugewiesen werden soll.
 
@@ -135,11 +135,11 @@ Auf der Registerkarte **Bewerten + erstellen** können Sie Ihre Einstellungen ü
 
 Sie können auch mithilfe von Microsoft Graph ein Zugriffspaket erstellen.  Ein Benutzer in einer passenden Rolle mit einer Anwendung, die über die delegierte `EntitlementManagement.ReadWrite.All`-Berechtigung verfügt, kann die API aufrufen, um
 
-1. [die accessPackageResources im Katalog aufzulisten](/graph/api/accesspackagecatalog-list-accesspackageresources?view=graph-rest-beta) und [eine accessPackageResourceRequest zu erstellen](/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta), die sich auf alle Ressourcen bezieht, die noch nicht im Katalog enthalten sind.
-1. [Auflisten der accessPackageResourceRoles](/graph/api/accesspackagecatalog-list-accesspackageresourceroles?view=graph-rest-beta) für jede accessPackageResource in einem accessPackageCatalog. Diese Rollenliste wird dann zum Auswählen einer Rolle verwendet, wenn anschließend ein accessPackageResourceRoleScope erstellt wird.
-1. [Erstellen eines accessPackage](/graph/api/accesspackage-post?view=graph-rest-beta).
-1. [Erstellen einer accessPackageAssignmentPolicy](/graph/api/accesspackageassignmentpolicy-post?view=graph-rest-beta).
-1. [Erstellen eines accessPackageResourceRoleScope](/graph/api/accesspackage-post-accesspackageresourcerolescopes?view=graph-rest-beta) für jede Ressourcenrolle, die im Zugriffspaket benötigt wird.
+1. [die accessPackageResources im Katalog aufzulisten](https://docs.microsoft.com/graph/api/accesspackagecatalog-list?view=graph-rest-beta&tabs=http) und [eine accessPackageResourceRequest zu erstellen](https://docs.microsoft.com/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta&tabs=http), die sich auf alle Ressourcen bezieht, die noch nicht im Katalog enthalten sind.
+1. [Auflisten der accessPackageResourceRoles](https://docs.microsoft.com/graph/api/accesspackage-list-accesspackageresourcerolescopes?view=graph-rest-beta&tabs=http) für jede accessPackageResource in einem accessPackageCatalog. Diese Rollenliste wird dann zum Auswählen einer Rolle verwendet, wenn anschließend ein accessPackageResourceRoleScope erstellt wird.
+1. [Erstellen eines accessPackage](https://docs.microsoft.com/graph/tutorial-access-package-api?view=graph-rest-beta).
+1. [Erstellen einer accessPackageAssignmentPolicy](https://docs.microsoft.com/graph/api/accesspackageassignmentpolicy-post?view=graph-rest-beta&tabs=http).
+1. [Erstellen eines accessPackageResourceRoleScope](https://docs.microsoft.com/graph/api/accesspackage-post-accesspackageresourcerolescopes?view=graph-rest-beta&tabs=http) für jede Ressourcenrolle, die im Zugriffspaket benötigt wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

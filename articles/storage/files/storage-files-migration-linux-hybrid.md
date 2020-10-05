@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: fd2e4f5c81427413e3f3f3eceaa0cc41a3b9e318
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 202f7fd065641f9921df5237fb83e7900819c8f7
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510369"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563504"
 ---
 # <a name="migrate-from-linux-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Migration von Linux zu einer Hybrid-Cloud-Bereitstellung mit der Azure-Dateisynchronisierung
 
-Die Azure-Dateisynchronisierung arbeitet auf Windows Server-Instanzen mit direkt angeschlossenem Speicher. Die Synchronisierung mit und von Linux oder einer SMB-Remotefreigabe (Server Message Block) wird nicht unterstützt.
+Die Azure-Dateisynchronisierung arbeitet auf Windows Server-Instanzen mit direkt angeschlossenem Speicher. Die Synchronisierung mit und von Linux-Clients, SMB-Remotefreigaben (Server Message Block) oder NFS-Freigaben (Network File System) wird nicht unterstützt.
 
 Wenn Sie Ihre Dateidienste in eine Hybridbereitstellung umwandeln, wird daher eine Migration zu Windows Server erforderlich. Dieser Artikel führt Sie durch die Planung und Durchführung einer solchen Migration.
 

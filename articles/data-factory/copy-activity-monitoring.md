@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: jingwang
-ms.openlocfilehash: fd2bd404d59b57eae111ba969fb7dcf20a98de35
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 92119709aa260f3180c503a77064f6e80dece6e6
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036367"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440608"
 ---
 # <a name="monitor-copy-activity"></a>Überwachen der Kopieraktivität
 
@@ -30,7 +30,7 @@ Nachdem Sie eine Pipeline in Azure Data Factory erstellt und veröffentlicht hab
 
 Wenn Sie die Ausführung der Kopieraktivität überwachen möchten, wechseln Sie zur Benutzeroberfläche **Erstellen und überwachen** Ihrer Data Factory-Instanz. Auf der Registerkarte **Überwachen** wird eine Liste der Pipelineausführungen angezeigt. Klicken Sie auf den Link **Pipelinename**, um auf die Liste von Aktivitätsausführungen in der Pipelineausführung zuzugreifen.
 
-![Überwachen der Ausführung der Kopieraktivität](./media/copy-activity-overview/monitor-pipeline-run.png)
+![Überwachen der Pipelineausführung](./media/copy-activity-overview/monitor-pipeline-run.png)
 
 Auf dieser Ebene können Sie Links zu Eingabe und Ausgabe der Kopieraktivität sowie Fehler (wenn die Ausführung der Kopieraktivität fehlschlägt) und außerdem Statistiken wie Dauer/Status anzeigen. Wenn Sie neben dem Namen der Kopieraktivität auf die Schaltfläche **Details** (Brille) klicken, erhalten Sie detaillierte Informationen zur Ausführung Ihrer Kopieraktivität. 
 
@@ -67,7 +67,7 @@ Ausführungsdetails und Leistungsmerkmale zur Kopieraktivität werden auch im Ab
 | throughput | Die Datenübertragungsrate. | Gleitkommazahl in KB/s |
 | sourcePeakConnections | Die maximale Anzahl gleichzeitiger Verbindungen mit dem Quelldatenspeicher während der Ausführung der Kopieraktivität. | Int32-Wert (ohne Einheit) |
 | sinkPeakConnections| Die maximale Anzahl gleichzeitiger Verbindungen mit dem Senkendatenspeicher während der Ausführung der Kopieraktivität.| Int32-Wert (ohne Einheit) |
-| sqlDwPolyBase | Gibt an, ob PolyBase beim Kopieren von Daten in SQL Data Warehouse verwendet wird. | Boolean |
+| sqlDwPolyBase | Gibt an, ob PolyBase beim Kopieren von Daten in Azure Synapse Analytics (vormals SQL Data Warehouse) verwendet wird. | Boolean |
 | redshiftUnload | Gibt an, ob UNLOAD beim Kopieren von Daten aus Redshift verwendet wird. | Boolean |
 | hdfsDistcp | Gibt an, ob DistCp beim Kopieren von Daten aus HDFS verwendet wird. | Boolean |
 | effectiveIntegrationRuntime | Die Integration Runtimes (IR), die zur Unterstützung der Aktivitätsausführung verwendet werden, im Format `<IR name> (<region if it's Azure IR>)`. | Text (Zeichenfolge) |

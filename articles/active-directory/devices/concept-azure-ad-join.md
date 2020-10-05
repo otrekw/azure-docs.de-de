@@ -1,6 +1,6 @@
 ---
 title: Was ist ein in Azure AD eingebundenes Gerät?
-description: Erfahren Sie, wie Sie mithilfe der Geräteidentitätsverwaltung Geräte verwalten können, die auf Ressourcen in Ihrer Umgebung zugreifen.
+description: Lernen Sie in Azure AD eingebundene Geräte kennen, und erfahren Sie, wie Sie mithilfe der Geräteidentitätsverwaltung Geräte verwalten können, die auf Ressourcen in Ihrer Umgebung zugreifen.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31374b851d90e43e7380024923c3ad025859b7a0
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 2b7cc0535549f2dbcdef4ab043ee506527fdbc5f
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923729"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601451"
 ---
 # <a name="azure-ad-joined-devices"></a>In Azure AD eingebundene Geräte
 
@@ -58,7 +58,7 @@ Azure AD Join ist zwar hauptsächlich für Unternehmen vorgesehen, die über kei
 
 - Sie möchten mit Azure AD und einer Lösung für die Verwaltung mobiler Geräte wie Intune zu einer cloudbasierten Infrastruktur wechseln.
 - Sie können keinen lokalen Domänenbeitritt verwenden, z.B. wenn Sie mobile Geräte wie Tablets und Telefone steuern möchten.
-- Benutzer müssen hauptsächlich auf Office 365 oder andere in Azure AD integrierte SaaS-Apps zugreifen.
+- Benutzer müssen hauptsächlich auf Microsoft 365 oder andere in Azure AD integrierte SaaS-Apps zugreifen.
 - Sie möchten eine Gruppe von Benutzern in Azure AD anstatt in Active Directory verwalten. Dieses Szenario kann beispielsweise für Saisonkräfte, Auftragnehmer oder Kursteilnehmer gelten.
 - Sie möchten Beitrittsfunktionen für Mitarbeiter in entfernten Niederlassungen mit eingeschränkter lokaler Infrastruktur bereitstellen.
 

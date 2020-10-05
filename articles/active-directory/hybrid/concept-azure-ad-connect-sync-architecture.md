@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fac0f9143918d3f273812e53abfb88d6a56f7a71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b27055ce84bbb073045b69b942fd13f4fde4e3b3
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84689213"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563861"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-architecture"></a>Azure AD Connect-Synchronisierung: Grundlagen der Architektur
 In diesem Thema wird die grundlegende Architektur für Azure AD Connect Sync beschrieben. In vielen Punkten ähnelt sie den Vorgängern MIIS 2003, ILM 2007 und FIM 2010. Azure AD Connect Sync ist die Weiterentwicklung dieser Technologien. Wenn Sie sich mit einer dieser früheren Technologien auskennen, wird Ihnen auch der Inhalt dieses Themas vertraut sein. Dieses Thema ist für Sie auch geeignet, falls Sie sich mit der Synchronisierung noch nicht auskennen. Es ist jedoch nicht erforderlich, alle Details dieses Themas zu kennen, um erfolgreich Anpassungen an Azure AD Connect Sync (in diesem Thema als „Synchronisierungsmodul“ bezeichnet) vornehmen zu können.
@@ -36,7 +36,7 @@ Das Synchronisierungsmodul kapselt die Interaktion mit einer verbundenen Datenqu
 
 Connectors führen API-Aufrufe durch, um mit einer verbundenen Datenquelle Identitätsinformationen auszutauschen (Lesen und Schreiben). Es ist auch möglich, einen benutzerdefinierten Connector mit dem Extensible Connectivity-Framework hinzuzufügen. In der folgenden Abbildung ist dargestellt, wie ein Connector eine verbundene Datenquelle mit dem Synchronisierungsmodul verbindet.
 
-![Arch1](./media/concept-azure-ad-connect-sync-architecture/arch1.png)
+![Diagramm: Eine verbundene Datenquelle und eine Synchronisierungs-Engine, die durch eine Linie mit der Beschriftung „Connector“ miteinander verbunden sind](./media/concept-azure-ad-connect-sync-architecture/arch1.png)
 
 Daten können in beide Richtungen fließen, aber nicht in beide Richtungen gleichzeitig. Anders ausgedrückt: Ein Connector kann so konfiguriert werden, dass der Datenfluss von der verbundenen Datenquelle zum Synchronisierungsmodul oder vom Synchronisierungsmodul zur verbundenen Datenquelle zugelassen wird. Für ein Objekt und Attribut kann aber jeweils nur einer dieser Vorgänge durchgeführt werden. Die Richtung kann sich für unterschiedliche Objekte und unterschiedliche Attribute unterscheiden.
 
@@ -62,7 +62,7 @@ Der **Metaverse** ist ein Speicherbereich, der die aggregierten Identitätsinfor
 
 Die folgende Abbildung zeigt den Connectorbereich-Namespace und den Metaverse-Namespace im Synchronisierungsmodul.
 
-![Arch2](./media/concept-azure-ad-connect-sync-architecture/arch2.png)
+![Diagramm: Eine verbundene Datenquelle und eine in einen Connectorbereichsnamespace und einen Metaverse-Namespace unterteilte Synchronisierungs-Engine, die durch eine Linie mit der Beschriftung „Connector“ miteinander verbunden sind](./media/concept-azure-ad-connect-sync-architecture/arch2.png)
 
 ## <a name="sync-engine-identity-objects"></a>Identitätsobjekte des Synchronisierungsmoduls
 Die Objekte im Synchronisierungsmodul sind entweder Darstellungen von Objekten in der verbundenen Datenquelle oder der integrierten Ansicht, über die das Synchronisierungsmodul für diese Objekte verfügt. Jedes Objekt des Synchronisierungsmoduls benötigt einen global eindeutigen Bezeichner (GUID). Mit GUIDs wird die Datenintegrität ermöglicht, und es werden Beziehungen zwischen Objekten ausgedrückt.
@@ -97,13 +97,13 @@ Bei einem Stagingobjekt kann es sich um ein Importobjekt oder ein Exportobjekt h
 
 Die folgende Abbildung zeigt ein Importobjekt, mit dem ein Objekt in der verbundenen Datenquelle dargestellt wird.
 
-![Arch3](./media/concept-azure-ad-connect-sync-architecture/arch3.png)
+![Diagramm: Importobjekt, das aus der verbundenen Datenquelle in den Connectorbereichsnamespace in der Synchronisierungs-Engine importiert wird](./media/concept-azure-ad-connect-sync-architecture/arch3.png)
 
 Das Synchronisierungsmodul erstellt ein Exportobjekt anhand von Objektinformationen im Metaverse. Exportobjekte werden während der nächsten Kommunikationssitzung in die verbundene Datenquelle exportiert. Aus Sicht des Synchronisierungsmoduls sind in der verbundenen Datenquelle noch keine Exportobjekte vorhanden. Aus diesem Grund ist das Ankerattribut für ein Exportobjekt nicht verfügbar. Nach dem Erhalt des Objekts vom Synchronisierungsmodul erstellt die verbundene Datenquelle einen eindeutigen Wert für das Ankerattribut des Objekts.
 
 Die folgende Abbildung zeigt, wie Sie ein Exportobjekt erstellen, indem Sie Identitätsinformationen im Metaverse verwenden.
 
-![Arch4](./media/concept-azure-ad-connect-sync-architecture/arch4.png)
+![Diagramm: Exportobjekt, das aus dem Metaverse-Namespace in den Connectorbereichsnamespace und dann in die verbundene Datenquelle exportiert wird](./media/concept-azure-ad-connect-sync-architecture/arch4.png)
 
 Das Synchronisierungsmodul bestätigt den Export des Objekts, indem das Objekt erneut aus der verbundenen Datenquelle importiert wird. Exportobjekte werden zu Importobjekten, wenn das Synchronisierungsmodul diese im Rahmen des nächsten Importvorgangs von der verbundenen Datenquelle empfängt.
 
@@ -132,7 +132,7 @@ Wenn ein Stagingobjekt während der Synchronisierung zu einem verknüpften Objek
 
 Ein einzelnes Connectorbereichsobjekt kann nur mit einem einzelnen Metaverseobjekt verknüpft sein. Aber jedes Metaverseobjekt kann mit mehreren Connectorbereichsobjekten in demselben oder in verschiedenen Connectorbereichen verknüpft werden. Dies ist in der folgenden Abbildung dargestellt.
 
-![Arch5](./media/concept-azure-ad-connect-sync-architecture/arch5.png)
+![Diagramm: Zwei verbundene Datenobjekte, die über Connectors mit einer Synchronisierungs-Engine verbunden sind, die über verknüpfte Objekte und ein getrenntes Objekt verfügt](./media/concept-azure-ad-connect-sync-architecture/arch5.png)
 
 Die Verknüpfungsbeziehung zwischen dem Stagingobjekt und einem Metaverseobjekt ist dauerhafter Art und kann nur mit Regeln entfernt werden, die Sie angeben.
 
@@ -157,7 +157,7 @@ Während des Exportvorgangs sendet das Synchronisierungsmodul per Pushvorgang di
 
 Die folgende Abbildung zeigt, wo die einzelnen Prozesse stattfinden, wenn Identitätsinformationen von einer verbundenen Datenquelle zu einer anderen fließen.
 
-![Arch6](./media/concept-azure-ad-connect-sync-architecture/arch6.png)
+![Diagramm: Fluss der Identitätsinformationen von der verbundenen Datenquelle zum Connectorbereich (Import), von dorthin zur Metaverse und zum Connectorbereich (Synchronisierung) und zur verbundenen Datenquelle (Export)](./media/concept-azure-ad-connect-sync-architecture/arch6.png)
 
 ### <a name="import-process"></a>Importvorgang
 Während des Importvorgangs wertet das Synchronisierungsmodul Aktualisierungen der Identitätsinformationen aus. Das Synchronisierungsmodul vergleicht die von der verbundenen Datenquelle empfangenen Identitätsinformationen mit den Identitätsinformationen zu einem Stagingobjekt und ermittelt, ob für das Stagingobjekt Updates erforderlich sind. Falls das Stagingobjekt mit neuen Daten aktualisiert werden muss, wird das Stagingobjekt mit der Kennzeichnung „Import steht aus“ versehen.
@@ -252,7 +252,7 @@ Mit einem Prozess in der verbundenen Datenquelle können die Attribute des Objek
 
 Das Synchronisierungsmodul speichert Statusinformationen zum Export und Import für jedes Stagingobjekt. Wenn sich die Werte der Attribute, die in der Aufnahmeliste der Attribute angegeben sind, seit dem letzten Export geändert haben, ermöglicht die Speicherung des Import- und Exportstatus dem Synchronisierungsmodul die richtige Reaktion. Das Synchronisierungsmodul verwendet den Importvorgang, um die Attributwerte zu bestätigen, die in die verbundene Datenquelle exportiert wurden. Anhand eines Vergleichs zwischen den importierten und exportierten Informationen (siehe folgende Abbildung) kann das Synchronisierungsmodul ermitteln, ob der Export erfolgreich war oder wiederholt werden muss.
 
-![Arch7](./media/concept-azure-ad-connect-sync-architecture/arch7.png)
+![Diagramm: Synchronisierung eines Objekts zwischen Connectorbereich und verbundener Datenquelle über den Connector](./media/concept-azure-ad-connect-sync-architecture/arch7.png)
 
 Wenn das Synchronisierungsmodul beispielsweise Attribut C mit dem Wert 5 in eine verbundene Datenquelle exportiert, wird im Exportstatusspeicher „C=5“ abgelegt. Jeder weitere Export für dieses Objekt führt zu einem Versuch, „C=5“ erneut in die verbundene Datenquelle zu exportieren, da vom Synchronisierungsmodul angenommen wird, dass dieser Wert nicht dauerhaft auf das Objekt angewendet wurde (es sei denn, von der verbundenen Datenquelle wurde vor Kurzem ein anderer Wert importiert). Der Exportspeicher wird gelöscht, wenn C=5 während eines Importvorgangs für das Objekt empfangen wird.
 

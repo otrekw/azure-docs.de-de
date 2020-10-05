@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe4350a721b025858493739e78011458f89f33ee
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 7f6c75337c27e14fb77161cf641cde0a582901e7
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89276336"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90014632"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Häufig gestellte Fragen zu Azure Active Directory Connect
 
@@ -139,10 +139,10 @@ Nein, Azure AD Connect unterstützt keine reine IPv6-Umgebung.
 Nein, die Verwendung von Azure AD Connect für NAT wird nicht unterstützt. 
 
 ## <a name="federation"></a>Verbund
-**F: Was muss ich tun, wenn ich eine E-Mail erhalte, in der ich zur Erneuerung meines Office 365-Zertifikats aufgefordert werde?**  
+**F: Was muss ich tun, wenn ich eine E-Mail erhalte, in der ich zur Erneuerung meines Microsoft 365-Zertifikats aufgefordert werde?**  
 Anleitungen zur Erneuerung des Zertifikats finden Sie unter [Erneuern von Zertifikaten](how-to-connect-fed-o365-certs.md).
 
-**F: Für die vertrauende Seite für Office 365 habe ich „Update für vertrauende Seite automatisch ausführen“ festgelegt. Muss ich bestimmte Maßnahmen ergreifen, wenn mein Tokensignaturzertifikat automatisch verlängert wird?**  
+**F: Für die vertrauende Seite für Microsoft 365 habe ich „Update für vertrauende Seite automatisch ausführen“ festgelegt. Muss ich bestimmte Maßnahmen ergreifen, wenn mein Tokensignaturzertifikat automatisch verlängert wird?**  
 Befolgen Sie die Anweisungen im Artikel [Erneuern von Zertifikaten](how-to-connect-fed-o365-certs.md).
 
 ## <a name="environment"></a>Environment
@@ -155,14 +155,14 @@ Nein.  Sie werden nicht unterstützt.
 **F: Wenn ich im Azure-Portal ein synchronisiertes Gerät deaktiviert habe (z. B.: HAADJ), warum wird es dann erneut aktiviert?**<br>
 Synchronisierte Geräte können lokal erstellt oder gemastert werden. Wenn ein synchronisiertes Gerät lokal aktiviert ist, wird es möglicherweise im Azure-Portal erneut aktiviert, auch wenn es zuvor von einem Administrator deaktiviert wurde. Verwenden Sie zum Deaktivieren eines synchronisierten Geräts das lokale Active Directory, um das Computerkonto zu deaktivieren.
 
-**F: Warum wird eine Blockierung der Benutzeranmeldung im Office 365- oder Azure AD-Portal für synchronisierte Benutzer bei einer erneuten Anmeldung aufgehoben?**<br>
+**F: Warum wird eine Blockierung der Benutzeranmeldung im Microsoft 365- oder Azure AD-Portal für synchronisierte Benutzer bei einer erneuten Anmeldung aufgehoben?**<br>
 Synchronisierte Benutzer können lokal erstellt oder gemastert werden. Wenn das Konto lokal aktiviert ist, kann dadurch die Blockierung der Anmeldung durch den Administrator aufgehoben werden.
 
 ## <a name="identity-data"></a>Identitätsdaten
 **F: Warum entspricht das userPrincipalName-Attribut (UPN) in Azure AD nicht dem lokalen UPN?**  
 Informationen finden Sie in diesen Artikeln:
 
-* [Benutzernamen in Office 365, Azure oder Intune entsprechen nicht dem lokalen UPN oder der alternativen Anmelde-ID](https://support.microsoft.com/kb/2523192)
+* [Benutzernamen in Microsoft 365, Azure oder Intune entsprechen nicht dem lokalen UPN oder der alternativen Anmelde-ID](https://support.microsoft.com/kb/2523192)
 * [Änderungen werden nicht mehr vom Azure Active Directory-Synchronisierungstool synchronisiert, wenn der UPN eines Benutzerkontos für die Verbindung mit einer anderen Verbunddomäne geändert wird](https://support.microsoft.com/kb/2669550)
 
 Sie können Azure AD auch so konfigurieren, dass das Synchronisierungsmodul den UPN wie unter [Features des Azure AD Connect-Synchronisierungsdiensts](how-to-connect-syncservice-features.md)beschrieben aktualisiert.
@@ -253,10 +253,10 @@ Ja, mit dem automatischen Upgrade wird auch Azure AD Connect Health aktualisiert
 Ja, ein automatisches Upgrade kann für einen Azure AD Connect-Server im Stagingmodus durchgeführt werden.
 
 **F: Wie soll ich vorgehen, wenn beim automatischen Upgrade Fehler auftreten und der Azure AD Connect-Server nicht gestartet wird?**  
-In seltenen Fällen wird der Azure AD Connect-Dienst nach dem Durchführen des Upgrades nicht gestartet. Starten Sie in diesen Fällen den Server neu. Das Problem wird dadurch normalerweise behoben. Wenn der Azure AD Connect-Dienst weiterhin nicht gestartet wird, öffnen Sie ein Supportticket. Weitere Informationen finden Sie unter [Erstellen einer Serviceanfrage zum Kontaktieren des Office 365-Supports](/archive/blogs/praveenkumar/how-to-create-service-requests-to-contact-office-365-support). 
+In seltenen Fällen wird der Azure AD Connect-Dienst nach dem Durchführen des Upgrades nicht gestartet. Starten Sie in diesen Fällen den Server neu. Das Problem wird dadurch normalerweise behoben. Wenn der Azure AD Connect-Dienst weiterhin nicht gestartet wird, öffnen Sie ein Supportticket. Weitere Informationen finden Sie unter [Erstellen einer Serviceanfrage zum Kontaktieren des Microsoft 365-Supports](/archive/blogs/praveenkumar/how-to-create-service-requests-to-contact-office-365-support). 
 
 **F: Ich bin mir über die Auswirkungen des Upgrades auf eine neuere Version von Azure AD Connect nicht sicher. Können Sie mich anrufen, um mir bei der Durchführung des Upgrades zu helfen?**  
-Wenn Sie Hilfe bei der Durchführung eines Upgrades auf eine neuere Version von Azure AD Connect benötigen, öffnen Sie ein Supportticket, wie unter [Erstellen einer Serviceanfrage zum Kontaktieren des Office 365-Supports](/archive/blogs/praveenkumar/how-to-create-service-requests-to-contact-office-365-support) beschrieben.
+Wenn Sie Hilfe bei der Durchführung eines Upgrades auf eine neuere Version von Azure AD Connect benötigen, öffnen Sie ein Supportticket, wie unter [Erstellen einer Serviceanfrage zum Kontaktieren des Microsoft 365-Supports](/archive/blogs/praveenkumar/how-to-create-service-requests-to-contact-office-365-support) beschrieben.
 
 ## <a name="operational-best-practice"></a>Bewährte Betriebsmethoden    
 Im Folgenden finden Sie einige bewährte Methoden, die bei der Synchronisierung zwischen Windows Server Active Directory und Azure Active Directory implementiert werden sollten.

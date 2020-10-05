@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/31/2020
-ms.openlocfilehash: 582a9eb4c98e89602e35e2ee424a00adc54a88e3
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 8749b64b664571abab6f354018dcbd2bd797531e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229547"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531218"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Continuous Integration und Continuous Delivery in Azure Data Factory
 
@@ -638,6 +638,8 @@ Wenn Sie die Git-Integration mit Ihrer Data Factory verwenden und über eine CI/
 -   **Integration Runtimes und Freigaben**. Integration Runtimes werden nicht sehr häufig geändert und sind in allen Stufen von CI/CD ähnlich. Daher erwartet Data Factory, dass diese in allen Stufen von CI/CD den gleichen Integration Runtime-Namen bzw. -Typ aufweisen. Wenn Sie Integration Runtimes über alle Stufen hinweg freigeben möchten, können Sie eine ternäre Factory verwenden, die nur die freigegebenen Integration Runtimes enthält. Diese freigegebene Factory können Sie in allen Umgebungen als verknüpften Integration Runtime-Typ verwenden.
 
 -   **Key Vault**. Wenn Sie verknüpfte Dienste verwenden, deren Verbindungsinformationen in Azure Key Vault gespeichert sind, wird empfohlen, separate Schlüsseltresore für verschiedene Umgebungen beizubehalten. Sie können auch separate Berechtigungsstufen für jeden Schlüsseltresor konfigurieren. Es kann beispielsweise sein, dass Teammitglieder nicht über Berechtigungen für Produktionsgeheimnisse verfügen sollen. Bei diesem Ansatz empfehlen wir Ihnen, in allen Stufen die gleichen Geheimnisnamen beizubehalten. Wenn Sie die gleichen Geheimnisnamen beibehalten, müssen Sie nicht jede einzelne Verbindungszeichenfolge für alle CI/CD-Umgebungen parametrisieren, weil sich lediglich der Name des Schlüsseltresors ändert, und der ist ein separater Parameter.
+
+-  **Benennen von Ressourcen**. Aufgrund von Einschränkungen bei Resource Manager-Vorlagen können bei der Bereitstellung Probleme auftreten, wenn die Namen Ihrer Ressourcen Leerzeichen enthalten. Daher empfiehlt das Azure Data Factory-Team bei Ressourcennamen die Verwendung der Zeichen „_“ bzw. „-“ anstelle von Leerzeichen. Verwenden Sie beispielsweise „Pipeline_1“ anstelle von „Pipeline 1“.
 
 ## <a name="unsupported-features"></a>Nicht unterstützte Funktionen
 

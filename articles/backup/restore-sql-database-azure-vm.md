@@ -1,14 +1,14 @@
 ---
 title: Wiederherstellen von SQL Server-Datenbanken auf einem virtuellen Azure-Computer
-description: In diesem Artikel erfahren Sie, wie Sie SQL Server-Datenbanken wiederherstellen, die auf einem virtuellen Azure-Computer ausgeführt und mit Azure Backup gesichert werden.
+description: In diesem Artikel erfahren Sie, wie Sie SQL Server-Datenbanken wiederherstellen, die auf einem virtuellen Azure-Computer ausgeführt und mit Azure Backup gesichert werden. Zum Wiederherstellen von Datenbanken in einer sekundären Region können Sie auch die regionsübergreifende Wiederherstellung verwenden.
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: afb3ef7ac1d161c073ef715a9f7b1ec83bd8410a
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 0d6feb512ab4ebcc5b5eaffafe607602fc552984
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377980"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985428"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Wiederherstellen von SQL Server-Datenbanken auf virtuellen Azure-Computern
 
@@ -30,7 +30,7 @@ Beachten Sie vor dem Wiederherstellen einer Datenbank Folgendes:
 - Sie können die Datenbank auf einer SQL Server-Instanz in derselben Azure-Region wiederherstellen.
 - Der Zielserver muss bei demselben Tresor wie die Quelle registriert werden.
 - Wenn Sie eine mit TDE verschlüsselte Datenbank in einer anderen SQL Server-Instanz wiederherstellen möchten, müssen Sie zuerst [das Zertifikat auf dem Zielserver wiederherstellen](/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server).
-- [CDC](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server?view=sql-server-ver15)-fähige Datenbanken sollten mithilfe der Option [Als Dateien wiederherstellen](#restore-as-files) wiederhergestellt werden.
+- [CDC](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server)-fähige Datenbanken sollten mithilfe der Option [Als Dateien wiederherstellen](#restore-as-files) wiederhergestellt werden.
 - Starten Sie vor der Wiederherstellung der Masterdatenbank die SQL Server-Instanz mit der Startoption **-m AzureWorkloadBackup** im Einzelbenutzermodus.
   - Der Wert für **-m** ist der Name des Clients.
   - Die Verbindung kann nur vom angegebenen Clientnamen geöffnet werden.
@@ -168,6 +168,51 @@ Wenn Sie **Vollständig und differenziell** als Wiederherstellungstyp ausgewähl
 Wenn die gesamte Zeichenfolgegröße von Dateien in einer Datenbank einen [bestimmten Grenzwert](backup-sql-server-azure-troubleshoot.md#size-limit-for-files) überschreitet, speichert Azure Backup die Liste mit den Datenbankdateien in einer anderen PIT-Komponente, sodass Sie den Wiederherstellungszielpfad während des Wiederherstellungsvorgangs nicht festlegen können. Die Dateien werden stattdessen am SQL-Standardpfad wiederhergestellt.
 
   ![Wiederherstellen einer Datenbank mit großer Datei](./media/backup-azure-sql-database/restore-large-files.jpg)
+
+## <a name="cross-region-restore"></a>Regionsübergreifende Wiederherstellung
+
+Als eine der Wiederherstellungsoptionen ermöglicht die regionsübergreifende Wiederherstellung die Wiederherstellung von auf virtuellen Azure-Computern gehosteten SQL-Datenbanken in einer sekundären Region, bei der es sich um eine gekoppelte Azure-Region handelt.
+
+Informationen zum Integrieren des Features während der Vorschau finden Sie im Abschnitt [Bevor Sie beginnen](./backup-create-rs-vault.md#set-cross-region-restore).
+
+Um festzustellen, ob CRR aktiviert ist, befolgen Sie die Anweisungen unter [Konfigurieren der regionsübergreifenden Wiederherstellung](backup-create-rs-vault.md#configure-cross-region-restore).
+
+### <a name="view-backup-items-in-secondary-region"></a>Anzeigen von Sicherungselementen in der sekundären Region
+
+Wenn CRR aktiviert ist, können Sie die Sicherungselemente in der sekundären Region anzeigen.
+
+1. Navigieren Sie im Portal zu **Recovery Services-Tresor** > **Sicherungselemente**.
+1. Wählen Sie **Sekundäre Region** aus, um die Elemente in der sekundären Region anzuzeigen.
+
+>[!NOTE]
+>In der Liste werden nur Sicherungsverwaltungstypen angezeigt, die das CRR-Feature unterstützen. Derzeit ist nur die Unterstützung der Wiederherstellung von Daten aus sekundären Regionen in einer sekundären Region zulässig.
+
+![Sicherungselemente in einer sekundären Region](./media/backup-azure-sql-database/backup-items-secondary-region.png)
+
+![Datenbanken in einer sekundären Region](./media/backup-azure-sql-database/databases-secondary-region.png)
+
+### <a name="restore-in-secondary-region"></a>Wiederherstellen in der sekundären Region
+
+Die Benutzeroberfläche zur Wiederherstellung in der sekundären Region ähnelt der Benutzerumgebung für die Wiederherstellung in der primären Region. Wenn Sie Details im Bereich „Wiederherstellungskonfiguration“ festlegen, um Ihre Wiederherstellung zu konfigurieren, werden Sie aufgefordert, nur die Parameter der sekundären Region anzugeben.
+
+![Ziel und Art der Wiederherstellung](./media/backup-azure-sql-database/restore-secondary-region.png)
+
+>[!NOTE]
+>Das virtuelle Netzwerk in der sekundären Region muss eindeutig zugewiesen werden und kann nicht für andere VMs in dieser Ressourcengruppe verwendet werden.
+
+![Auslösen der Benachrichtigung „Wiederherstellung wird ausgeführt“](./media/backup-azure-arm-restore-vms/restorenotifications.png)
+
+>[!NOTE]
+>
+>- Nachdem die Wiederherstellung ausgelöst wurde und sich in der Datenübertragungsphase befindet, kann der Wiederherstellungsauftrag nicht abgebrochen werden.
+>- Die für die Wiederherstellung in der Sekundärregion erforderlichen Azure-Rollen sind die gleichen wie in der Primärregion.
+
+### <a name="monitoring-secondary-region-restore-jobs"></a>Überwachen von Wiederherstellungsaufträgen für die sekundäre Regionen
+
+1. Navigieren Sie im Portal zu **Recovery Services-Tresor** > **Sicherungsaufträge**.
+1. Wählen Sie **Sekundäre Region** aus, um die Elemente in der sekundären Region anzuzeigen.
+
+    ![Gefilterte Sicherungsaufträge](./media/backup-azure-sql-database/backup-jobs-secondary-region.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

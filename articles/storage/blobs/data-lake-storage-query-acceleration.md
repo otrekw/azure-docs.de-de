@@ -1,32 +1,29 @@
 ---
-title: Abfragebeschleunigung für Azure Data Lake Storage (Vorschau)
-description: Die Abfragebeschleunigung (Vorschau) ist eine neue Funktion für Azure Data Lake Storage, die es Anwendungen und Analyseframeworks ermöglicht, die Datenverarbeitung drastisch zu optimieren. Dabei werden nur die Daten abgerufen, die für einen Verarbeitungsvorgang erforderlich sind.
+title: Abfragebeschleunigung für Azure Data Lake Storage
+description: Die Abfragebeschleunigung ermöglicht es Anwendungen und Analyseframeworks, die Datenverarbeitung drastisch zu optimieren. Dabei werden nur die Daten abgerufen, die für einen Verarbeitungsvorgang erforderlich sind.
 author: normesta
 ms.topic: conceptual
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.date: 04/21/2020
+ms.date: 09/09/2020
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 42eec4a0796a7f07c7e7d1c35571d9d4ddcf69d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ae92828f08ae4abf9cc28f18872cca27ce747be4
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176701"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657647"
 ---
-# <a name="azure-data-lake-storage-query-acceleration-preview"></a>Abfragebeschleunigung für Azure Data Lake Storage (Vorschau)
+# <a name="azure-data-lake-storage-query-acceleration"></a>Abfragebeschleunigung für Azure Data Lake Storage
 
-Die Abfragebeschleunigung (Vorschau) ist eine neue Funktion für Azure Data Lake Storage, die es Anwendungen und Analyseframeworks ermöglicht, die Datenverarbeitung drastisch zu optimieren. Dabei werden nur die Daten abgerufen, die für einen bestimmten Vorgang erforderlich sind. So werden weniger Zeit und Verarbeitungsleistung benötigt, um wichtige Einblicke in gespeicherte Daten zu erhalten.
-
-> [!NOTE]
-> Die Abfragebeschleunigung ist als öffentliche Vorschau in den Regionen „Kanada, Mitte“ und „Frankreich, Mitte“ verfügbar. Informationen zu den Einschränkungen finden Sie im Artikel [Bekannte Probleme](data-lake-storage-known-issues.md). Wie Sie sich für die Vorschau registrieren, erfahren Sie in [diesem Formular](https://aka.ms/adls/qa-preview-signup).  
+Die Abfragebeschleunigung ermöglicht es Anwendungen und Analyseframeworks, die Datenverarbeitung drastisch zu optimieren. Dabei werden nur die Daten abgerufen, die für die Durchführung eines bestimmten Vorgangs erforderlich sind. So werden weniger Zeit und Verarbeitungsleistung benötigt, um wichtige Einblicke in gespeicherte Daten zu erhalten.
 
 ## <a name="overview"></a>Übersicht
 
 Die Abfragebeschleunigung unterstützt die Filterung von *Prädikaten* und *Spaltenprojektionen*. So können Anwendungen Zeilen und Spalten zu dem Zeitpunkt filtern, zu dem die Daten vom Datenträger gelesen werden. Nur die Daten, die die Bedingungen eines Prädikats erfüllen, werden über das Netzwerk an die Anwendung übertragen. Dies reduziert die Netzwerklatenz und die Computekosten.  
 
-Sie können SQL verwenden, um die Zeilenfilterprädikate und Spaltenprojektionen in einer Anforderung der Abfragebeschleunigung anzugeben. Von einer Anforderung wird jeweils nur eine Datei verarbeitet. Daher werden erweiterte relationale SQL-Funktionen, z. B. Joins und GROUP BY-Aggregate, nicht unterstützt. Die Abfragebeschleunigung unterstützt CSV- und JSON-formatierte Daten als Eingabe für die einzelnen Anforderungen.
+Sie können SQL verwenden, um die Zeilenfilterprädikate und Spaltenprojektionen in einer Abfragebeschleunigungsanforderung anzugeben. Von einer Anforderung wird jeweils nur eine Datei verarbeitet. Daher werden erweiterte relationale SQL-Funktionen, z. B. Joins und GROUP BY-Aggregate, nicht unterstützt. Die Abfragebeschleunigung unterstützt CSV- und JSON-formatierte Daten als Eingabe für die einzelnen Anforderungen.
 
 Die Abfragebeschleunigung ist nicht auf Data Lake Storage beschränkt (Speicherkonten, für die der hierarchische Namespace aktiviert wurde). Die Abfragebeschleunigung ist vollständig kompatibel mit den Blobs in Speicherkonten, für die **kein** hierarchischer Namespace aktiviert wurde. Dies bedeutet, dass sich die Netzwerklatenz und die Computekosten genauso reduzieren lassen, wenn Sie Daten verarbeiten, die bereits als Blobs in Speicherkonten gespeichert wurden.
 
@@ -77,8 +74,7 @@ Trotz des geänderten Abrechnungsmodells ist das Preismodell für die Abfragebes
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Registrierungsformular für die Abfragebeschleunigung](https://aka.ms/adls/qa-preview-signup)    
-- [Filtern von Daten mithilfe der Abfragebeschleunigung für Azure Data Lake Storage (Vorschau)](data-lake-storage-query-acceleration-how-to.md)
-- [Abfragebeschleunigung – SQL-Sprachreferenz (Vorschau)](query-acceleration-sql-reference.md)
+- [Filtern von Daten mithilfe der Abfragebeschleunigung für Azure Data Lake Storage](data-lake-storage-query-acceleration-how-to.md)
+- [Abfragebeschleunigung – SQL-Sprachreferenz](query-acceleration-sql-reference.md)
 
 

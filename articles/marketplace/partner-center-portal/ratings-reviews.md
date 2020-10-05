@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/11/2019
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 4a107b3175b7dddad3abb6401cbc12216ae843be
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ff46c5e2d434a75bf71d6216ce81b34de878ba80
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87304189"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419179"
 ---
 # <a name="ratings--reviews-analytics-dashboard-in-partner-center"></a>Analyse-Dashboard „Bewertungen und Rezensionen“ in Partner Center
 
@@ -33,7 +33,7 @@ Im Dashboard wird eine grafische Darstellung der folgenden Kundenaktivität ange
 - Bewertungen und Rezensionen  
 - Rezensionskommentare
 
-Auf den Registerkarten zur **Marketplace-Storefront** können Sie die Metriken zu Ihrem Angebot bei Microsoft AppSource und im Azure Marketplace separat anzeigen. Wählen Sie das Angebot im Dropdownmenü der Angebote aus, um bestimmte Angebotsmetriken anzuzeigen.
+Auf den Registerkarten zu **Marketplace Insights** können Sie die Metriken zu Ihrem Angebot bei Microsoft AppSource und im Azure Marketplace separat anzeigen. Wählen Sie das Angebot im Dropdownmenü der Angebote aus, um bestimmte Angebotsmetriken anzuzeigen.
 
 ### <a name="ratings--reviews-summary"></a>Zusammenfassung von Bewertungen und Rezensionen
 

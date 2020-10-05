@@ -15,12 +15,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 725b3b712313c199382cebe32bed98f2115fc262
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 08305b6aec7dcd5906f4316767c4c512d3a0535e
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231162"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90600499"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Behandeln von „Benutzer mit Risikomarkierung“ im Azure Active Directory-Portal
 
@@ -42,9 +42,9 @@ Dem Bericht „Benutzer mit Risikomarkierung“ können Sie für jeden Benutzer 
 
 Weitere Informationen finden Sie unter [Sicherheitsbericht „Benutzer mit Risikomarkierung“](../identity-protection/overview-identity-protection.md).
 
-### <a name="azure-ad-subscription-for-office-365-customers"></a>Azure AD-Abonnement für Office 365-Kunden
+### <a name="azure-ad-subscription-for-microsoft-365-customers"></a>Azure AD-Abonnement für Microsoft 365-Kunden
 
-Außerdem können Sie mit Ihren Office 365-Anmeldeinformationen auch auf das **Azure Admin Center** zugreifen. Nachdem Sie Ihren Zugriff auf Azure AD aktiviert haben, werden Sie zum Azure AD-Portal umgeleitet. Auf der Abonnementebene „Basic“ stehen in den Berichten nur eingeschränkte Details zur Verfügung. Azure Premium-Abonnementen haben dagegen Zugang zu weiteren Daten und Analysen.
+Außerdem können Sie mit Ihren Microsoft 365-Anmeldeinformationen auch auf **Azure Admin Center** zugreifen. Nachdem Sie Ihren Zugriff auf Azure AD aktiviert haben, werden Sie zum Azure AD-Portal umgeleitet. Auf der Abonnementebene „Basic“ stehen in den Berichten nur eingeschränkte Details zur Verfügung. Azure Premium-Abonnementen haben dagegen Zugang zu weiteren Daten und Analysen.
 
 So greifen Sie im Microsoft 365 Admin Center auf den Bericht **Benutzer mit Risikomarkierung** zu
 
@@ -79,7 +79,7 @@ Führen Sie die folgenden Schritte aus, um die betroffenen Konten zu korrigieren
 
     h. Erstellen eines Überwachungsprotokolls zur Überprüfung durch den Administrator
 
-4. Untersuchen Sie Ihren Office 365-Mandanten sowie die restliche IT-Infrastruktur – einschließlich aller Mandanteneinstellungen, Benutzerkonten und der benutzerspezifischen Konfigurationseinstellungen – auf mögliche Änderungen. Suchen Sie nach Anzeichen für Persistenzmethoden sowie nach Anzeichen dafür, dass ein Eindringling an VPN-Anmeldeinformationen gelangt ist oder sich Zugriff auf andere Ressourcen der Organisation verschafft hat. 
+4. Untersuchen Sie Ihren Microsoft 365-Mandanten sowie die restliche IT-Infrastruktur – einschließlich aller Mandanteneinstellungen, Benutzerkonten und der benutzerspezifischen Konfigurationseinstellungen – auf mögliche Änderungen. Suchen Sie nach Anzeichen für Persistenzmethoden sowie nach Anzeichen dafür, dass ein Eindringling an VPN-Anmeldeinformationen gelangt ist oder sich Zugriff auf andere Ressourcen der Organisation verschafft hat. 
 
 5.  Überlegen Sie sich im Rahmen Ihrer Untersuchung, ob Sie ggf. die Behörden (einschließlich der Strafverfolgungsbehörden) einschalten sollten.
 

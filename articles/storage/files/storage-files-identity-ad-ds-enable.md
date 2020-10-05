@@ -5,14 +5,14 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: how-to
-ms.date: 06/22/2020
+ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: 612584a71aa6be54d726ccdd74d9368ba9cddbc9
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: ce6325abf34813a9ca397f5bcbe2e774af3442d4
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535075"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061477"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>Teil 1: Aktivieren der AD DS-Authentifizierung für Ihre Dateifreigaben in Azure 
 
@@ -28,7 +28,7 @@ Durch die Cmdlets im AzFilesHybrid-PowerShell-Modul werden die erforderlichen Ä
 
 ### <a name="download-azfileshybrid-module"></a>Herunterladen des AzFilesHybrid-Moduls
 
-- [Herunterladen und Entpacken des AzFilesHybrid-Moduls](https://github.com/Azure-Samples/azure-files-samples/releases) (GA-Modul: v0.2.0+)
+- [Herunterladen und Entpacken des AzFilesHybrid-Moduls (GA-Modul: v0.2.0+)](https://github.com/Azure-Samples/azure-files-samples/releases) Beachten Sie, dass die AES 256-Kerberos-Verschlüsselung ab Version 0.2.2 unterstützt wird. Wenn Sie die Funktion mit einer älteren AzFilesHybrid-Version als v0.2.2 aktiviert haben und ein Update zur Unterstützung der AES 256 Kerberos-Verschlüsselung durchführen möchten, lesen Sie [diesen Artikel](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems). 
 - Installieren Sie das Modul auf einem Gerät mit Domäneneinbindung in die lokale AD DS-Umgebung mithilfe von AD DS-Anmeldeinformationen, die zum Erstellen eines Dienstanmeldekontos oder eines Computerkontos in der Ziel-AD-Umgebungen berechtigt sind, und führen Sie das Modul dann aus.
 -  Führen Sie das Skript mit lokalen AD DS-Anmeldeinformationen aus, die mit Ihrer Azure AD-Umgebung synchronisiert sind. Die lokalen AD DS-Anmeldeinformationen müssen über die Rolle „Speicherkontobesitzer“ oder „Mitwirkender“ für Azure-Rollen verfügen.
 

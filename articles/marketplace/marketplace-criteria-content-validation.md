@@ -1,22 +1,22 @@
 ---
 title: Anforderungen an Auflistungen von Azure Marketplace-Angeboten und -Diensten
-description: In diesem Artikel werden die Anforderungen und Richtlinien für die Auflistung neuer Angebote und Dienste im Azure Marketplace erläutert.
+description: In diesem Artikel werden die Anforderungen und Leitfäden für das Listen neuer Angebote, Dienste und anderer IT-Lösungen im Azure Marketplace erläutert.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: keferna
 ms.author: keferna
-ms.date: 07/14/2020
-ms.openlocfilehash: 2f472f15f5f15fb48563aba90df273e31bb1b665
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.date: 09/04/2020
+ms.openlocfilehash: 51f226443e6f21b6c333cacf6c88f0d00208f5f2
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88812868"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484271"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Richtlinien für die Azure Marketplace-Auflistung
 
-In diesem Artikel werden die Anforderungen und Richtlinien für die Auflistung neuer Angebote und Dienste im Azure Marketplace erläutert. Alle Angebote müssen die Anforderungen erfüllen, die im Abschnitt [Auflistungsanforderungen für alle Angebote](#listing-requirements-for-all-offers) aufgeführt sind. Verwenden Sie die Links auf der rechten Seite, um zu den Anforderungen und Prüflisten für bestimmte Auflistungstypen zu wechseln.
+In diesem Artikel werden die Anforderungen und Richtlinien für die Auflistung neuer Angebote und Dienste im Azure Marketplace erläutert. Alle Angebote müssen die unten aufgeführten [Listungsanforderungen](#listing-requirements-for-all-offers) erfüllen. Verwenden Sie die Links auf der rechten Seite, um zu weiteren Anforderungen und Prüflisten für bestimmte Listungstypen zu navigieren.
 
 ## <a name="listing-requirements-for-all-offers"></a>Auflistungsanforderungen für alle Angebote
 
@@ -29,7 +29,7 @@ In diesem Artikel werden die Anforderungen und Richtlinien für die Auflistung n
 | 5 | Kategorien und Branchen | <ul><li>Kategorien und Unterkategorien müssen den Angebotsfunktionen entsprechen. </li><li>Wählen Sie keine Kategorien/Unterkategorien aus, die nicht Ihren Angebotsfunktionen entsprechen. </li></ul> | <ul><li>Wählen Sie bis zu zwei Kategorien aus, einschließlich einer primären und einer sekundären Kategorie (optional).</li><li>Wählen Sie bis zu zwei Unterkategorien für jede primäre oder sekundäre Kategorie aus. Wenn keine Unterkategorie ausgewählt wird, ist das Angebot weiterhin unter der ausgewählten Kategorie auffindbar.</li></ul> |
 | 6 | Bilder | <ul><li>Die Anforderungen für Bilder sind in Partner Center aufgeführt.</li><li>Text im Screenshot ist lesbar, und das Bild ist scharf. | Das Lösungsangebot ist auf einen Blick leicht verständlich. |
 | 7 | Videos | <ul><li>Videos sind nicht erforderlich. Werden Videos bereitgestellt, müssen sie sich fehlerfrei wiedergeben lassen.</li><li>In Videos darf nicht auf Konkurrenzunternehmen verwiesen werden, *es sei denn*, es handelt sich um eine Migrationslösung. |<ul><li>Idealerweise beträgt die Länge 3 Minuten oder mehr.</li><li>Das Lösungsangebot wird im Videoinhalt leicht verständlich vorgestellt.</li><li>Funktionen der Lösung werden in einer Demo dargestellt. |
-| 8 | Listenstatus (Handlungsaufforderung) | <ul><li>Es muss eine der folgenden Bezeichnungen verwendet werden: <ul><li>*Kontaktformular*</li><li>*Kostenlose Testversion*/*Testversion jetzt anfordern*/*Testversion starten*/*Testversion*</li><li>*Jetzt kaufen*/*Jetzt anfordern*</li></ul></ul> | Die nächsten Schritte sind für den Kunden leicht zu verstehen: <ol><li>Testversion ausprobieren</li><li>Jetzt kaufen</li><li>Per E-Mail oder telefonisch Kontakt aufnehmen, um einen Termine für Proofs of Concept, Bewertungen oder Briefings zu vereinbaren</li></ol> | 
+| 8 | Listungsstatus (Listungsoptionen) | <ul><li>Es muss eine der folgenden Bezeichnungen verwendet werden: <ul><li>*Kontaktformular*</li><li>*Kostenlose Testversion*/*Testversion jetzt anfordern*/*Testversion starten*/*Testversion*</li><li>*Jetzt kaufen*/*Jetzt anfordern*</li></ul></ul> | Die nächsten Schritte sind für den Kunden leicht zu verstehen: <ol><li>Testversion ausprobieren</li><li>Jetzt kaufen</li><li>Per E-Mail oder telefonisch Kontakt aufnehmen, um einen Termine für Proofs of Concept, Bewertungen oder Briefings zu vereinbaren</li></ol> | 
 | 9 | Preise der Lösung | Eine Registerkarte oder Details zum Preis der Lösung müssen enthalten sein, und Preise müssen in der Landeswährung des Partners angegeben sein. | Es sollten mehrere Abrechnungsoptionen mit gestaffelten Preisen verfügbar sein, zwischen denen der Kunde wählen kann. |
 | 10 | Weitere Informationen | Links am unteren Rand (unter der Beschreibung, nicht unter den Azure Marketplace-Links auf der linken Seite) führen zu weiteren Informationen zur Lösung, sind öffentlich verfügbar und werden richtig angezeigt. |    Es sind Links zu bestimmten Elementen (z. B. Spezifikationsseiten auf der Website des Partners) und nicht nur zur Homepage des Partners verfügbar. | 
 | 11 | Support und Hilfe für die Lösung | Für mindestens eine der folgenden Support-/Hilfemethoden muss ein Link enthalten sein: <ul><li>Telefonnummern</li><li>E-Mail-Support</li><li>Chat-Agents</li><li>Communityforen |<ul><li>Alle Supportmethoden sind aufgeführt.</li><li>Während des *Testzeitraums* (kostenlos oder kostenpflichtig) wird kostenpflichtiger Support kostenlos angeboten *.* |
@@ -40,7 +40,7 @@ In diesem Artikel werden die Anforderungen und Richtlinien für die Auflistung n
 
 | Nein. | Auflistungselement | Grundlegende Anforderung | Optimale Anforderung | 
 |:--- |:--- |:--- |:--- |
-|  | Listenstatus (Handlungsaufforderung) | Der Link muss zu einer kundengeführten Testbenutzeroberfläche führen *.* | Andere Handlungsaufforderungen (z. B. *Jetzt kaufen*) sind ebenfalls verfügbar. | 
+|  | Listungsstatus (Listungsoption) | Der Link muss zu einer kundengeführten Testbenutzeroberfläche führen *.* | Andere Listungsoptionen (z. B. *Jetzt kaufen*) sind ebenfalls verfügbar. | 
 |||
 
 ## <a name="saas-application-requirements"></a>Anforderungen für SaaS-Anwendungen
@@ -78,7 +78,7 @@ In diesem Artikel werden die Anforderungen und Richtlinien für die Auflistung n
 | 2 | Beschreibung des Angebots  |<ul><li>Stellen Sie sicher, dass [Microsoft-Produktnamen](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/en-us.aspx) korrekt verwendet werden.</li><li>Bei Angeboten, die mit *Preis: Geschätzt* gekennzeichnet sind, muss die Variabilität der Preise (Anfahrt zum Kunden, Anzahl von Servern, die migriert werden, usw.) in einem Hinweis am Anfang oder Ende des Angebots erläutert werden.</li><li>Folgende Anforderungen gelten für die Beschreibung der einzelnen Angebotstypen: <ul><li>Für Briefings sind mindestens vier bis fünf Aufzählungszeichen mit Informationen zu den behandelten Themen erforderlich.</li><li>Für alle Workshops ist eine Agenda erforderlich.</li><li>Alle Agenden müssen je nach Dauer des Workshops nach Tag oder Woche aufgegliedert sein.</li><li>Für Angebote für Bewertungen, Proofs of Concept, nicht trainingsbezogene Workshops und Implementierungen sind Projektleistungen erforderlich.</li><li>Für Trainingsworkshops sind keine Projektleistungen erforderlich, sie erfordern aber eine ausführlichere Agenda mit den behandelten Themen.</li></ul></ul> | <ul><li>Jedes Angebot enthält eine Agenda und Projektleistungen.</li><li>Das Angebot enthält im obersten Abschnitt einen Absatz mit Hintergrundinformationen zu dem Unternehmen, das den Dienst bereitstellt.</li><li>Das Angebot enthält am Anfang einen Absatz, in dem der Nutzen und Wert des Diensts erläutert werden. |
 | 3 | Markdown-Formatierung  | Alle Angebote müssen Markdown-Formatierung verwenden, damit sie bei der Konvertierung in HTML korrekt gerendert werden.  |  |
 | 4 | Kategorien und Branchen | Kategorien sind nicht relevant. |  | 
-| 5 | Listenstatus (Handlungsaufforderung) | Wird automatisch als *Kontakt mit mir aufnehmen* aufgelistet. |  | 
+| 5 | Listungsstatus (Listungsoption) | Wird automatisch als *Kontakt mit mir aufnehmen* aufgelistet. |  | 
 | 6 | Support und Hilfe für die Lösung  | Support und Hilfe sind nicht erforderlich.  | | 
 | 7 | Datenschutzrichtlinie und Nutzungsbedingungen  |  Richtlinien oder Bestimmungen sind nicht erforderlich.  | | 
 | 8 | Diensttypen | Stellen Sie sicher, dass der Diensttyp dem Titel entspricht. | |

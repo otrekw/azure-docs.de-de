@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38f3a6d9cea1aa1ebcb76f61882dcf2615dc4832
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13bb7782f6396466200fbb3e2df77158bb75d8a4
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554651"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705400"
 ---
 # <a name="overview-of-azure-multi-factor-authentication-for-your-organization"></a>Übersicht über Azure Multi-Factor Authentication für Ihre Organisation
 
@@ -34,10 +34,10 @@ Kunden, die die kostenlosen Vorteile von Azure AD nutzen, können mithilfe von [
 
 ## <a name="microsoft-365-business-e3-or-e5"></a>Microsoft 365 Business, E3 oder E5
 
-Kunden, die über Office 365 verfügen, stehen zwei Optionen zur Verfügung:
+Kunden, die über Microsoft 365 verfügen, stehen zwei Optionen zur Verfügung:
 
 * Azure Multi-Factor Authentication ist für alle Benutzer und alle Anmeldeereignisse entweder aktiviert oder deaktiviert. Es gibt keine Möglichkeit, die mehrstufige Authentifizierung nur für eine Teilmenge von Benutzern oder nur bei bestimmten Szenarien zu aktivieren. Die Verwaltung erfolgt über das Office 365-Portal. 
-* Führen Sie zugunsten einer optimierten Benutzerumgebung ein Upgrade auf Azure AD Premium P1 oder P2 durch, und verwenden Sie den bedingten Zugriff. Weitere Informationen finden Sie unter „Schützen von Office 365-Ressourcen mit der mehrstufigen Authentifizierung“.
+* Führen Sie zugunsten einer optimierten Benutzerumgebung ein Upgrade auf Azure AD Premium P1 oder P2 durch, und verwenden Sie den bedingten Zugriff. Weitere Informationen finden Sie unter Schützen von Microsoft 365-Ressourcen mit der mehrstufigen Authentifizierung.
 
 ## <a name="azure-ad-premium-p1"></a>Azure AD Premium P1
 

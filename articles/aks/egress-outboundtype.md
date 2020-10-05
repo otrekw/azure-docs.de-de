@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: juluk
 ms.date: 06/29/2020
 author: jluk
-ms.openlocfilehash: 5095931e28438beebf3250155ede1a8af0bb5c64
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: d8ae03d52691a6c30f78439a579e7e7c136dda76
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88796968"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975280"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route"></a>Anpassen des ausgehenden Clusterdatenverkehrs mit einer benutzerdefinierten Route
 
@@ -51,7 +51,7 @@ Die folgende Konfiguration wird von AKS durchgeführt.
 
 Hier sehen Sie eine Netzwerktopologie, die standardmäßig in AKS-Clustern bereitgestellt wird und `loadBalancer` als `outboundType` verwendet.
 
-![outboundtype-lb](media/egress-outboundtype/outboundtype-lb.png)
+![Diagramm der Eingangs-IP-Adresse und der Ausgangs-IP-Adresse. Der eingehende Datenverkehr wird an einen Lastenausgleich weitergeleitet, der Datenverkehr zu und von einem internen Cluster sowie anderen Datenverkehr an die Ausgangs-IP-Adresse weiterleitet. Von dort wird der Datenverkehr an das Internet, MCR, die von Azure benötigten Dienste und die AKS-Steuerungsebene weitergeleitet.](media/egress-outboundtype/outboundtype-lb.png)
 
 ### <a name="outbound-type-of-userdefinedrouting"></a>Ausgehender Typ von userDefinedRouting
 

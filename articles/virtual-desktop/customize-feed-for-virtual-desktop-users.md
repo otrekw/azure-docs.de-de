@@ -3,15 +3,15 @@ title: Anpassen des Feeds für Windows Virtual Desktop-Benutzer – Azure
 description: Erfahren Sie, wie Sie den Feed für Windows Virtual Desktop-Benutzer mit PowerShell-Cmdlets anpassen.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 08/29/2019
+ms.date: 09/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1f1779ac27c7e46aa3e608b33e3c006902df8c27
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: e47486f29537cb948aaae7cf17e97bae14b60700
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009119"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084293"
 ---
 # <a name="customize-the-feed-for-windows-virtual-desktop-users"></a>Anpassen des Feeds für Windows Virtual Desktop-Benutzer
 
@@ -107,7 +107,7 @@ Sie können den Anzeigenamen für einen veröffentlichten Remotedesktop ändern,
 
 3. Wählen Sie unter „Dienste“ die Option **Windows Virtual Desktop** aus.
 
-4. Wählen Sie auf der Seite „Windows Virtual Desktop“ auf der linken Bildschirmseite **Anwendungsgruppen** aus, und wählen Sie dann den Namen der App-Gruppe aus, den Sie bearbeiten möchten.
+4. Wählen Sie auf der Seite „Windows Virtual Desktop“ auf der linken Bildschirmseite **Anwendungsgruppen** aus, und wählen Sie dann den Namen der App-Gruppe aus, den Sie bearbeiten möchten. (Wenn Sie beispielsweise den Anzeigenamen der Desktop-App-Gruppe bearbeiten möchten, klicken Sie auf die App-Gruppe mit dem Namen **Desktop**.)
 
 5. Wählen Sie im Menü auf der linken Bildschirmseite **Anwendungen** aus.
 

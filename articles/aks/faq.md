@@ -3,12 +3,12 @@ title: Häufig gestellte Fragen zu Azure Kubernetes Service (AKS)
 description: Finden Sie Antworten auf einige der häufig gestellten Fragen zu Azure Kubernetes Service (AKS).
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 7a56756855319ee72bd5b3dc60ad1ae440afd7fe
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 4150f850263aed7b8aa4317028386dc285f06ade
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927146"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905335"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Häufig gestellte Fragen zu Azure Kubernetes Service (AKS)
 
@@ -174,6 +174,10 @@ Vergewissern Sie sich, dass der Dienstprinzipal nicht abgelaufen ist.  Informati
 ## <a name="my-cluster-was-working-but-suddenly-cannot-provision-loadbalancers-mount-pvcs-etc"></a>Mein Cluster hat funktioniert, kann aber plötzlich keine LoadBalancer bereitstellen, keine PVCs mounten usw. 
 
 Vergewissern Sie sich, dass der Dienstprinzipal nicht abgelaufen ist.  Informationen finden Sie unter: [AKS-Dienstprinzipal](./kubernetes-service-principal.md) und [Aktualisieren der AKS-Anmeldeinformationen](./update-credentials.md).
+
+## <a name="can-i-scale-my-aks-cluster-to-zero"></a>Kann ich meinen AKS-Cluster auf 0 (null) skalieren?
+Sie können einen AKS-Cluster, der gerade ausgeführt wird, [vollständig beenden](start-stop-cluster.md) und so die entsprechenden Computekosten einsparen. Außerdem können Sie [alle oder bestimmte `User`-Knotenpools auch auf 0 skalieren oder automatisch skalieren](scale-cluster.md#scale-user-node-pools-to-0) und nur die erforderliche Clusterkonfiguration beibehalten.
+[Systemknotenpools](use-system-pools.md) können nicht direkt auf 0 skaliert werden.
 
 ## <a name="can-i-use-the-virtual-machine-scale-set-apis-to-scale-manually"></a>Kann ich die VM-Skalierungsgruppen-APIs für eine manuelle Skalierung verwenden?
 

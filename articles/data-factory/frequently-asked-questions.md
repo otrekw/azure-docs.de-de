@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: b8bd471c5fd5346fcc7e95b9afb49e833e7c6384
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 2d2c4145ab0a070e4cb20d89b8a0d3973b23d9ed
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84187291"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440506"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory: Häufig gestellte Fragen
 
@@ -190,7 +190,7 @@ Wenn Microsoft Hilfe oder eine Problembehandlung für Datenflüsse bereitstellt,
 
 ### <a name="how-do-i-access-data-by-using-the-other-90-dataset-types-in-data-factory"></a>Wie kann ich mit den anderen 90 Datasettypen in Data Factory auf Daten zugreifen?
 
-Mit dem Feature „Mapping Data Flow“ können aktuell Azure SQL-Datenbank, Azure SQL Data Warehouse, durch Trennzeichen getrennte Textdateien aus Azure Blob Storage oder Azure Data Lake Storage Gen2 sowie Parquet-Dateien aus Blob Storage oder Data Lake Storage Gen2 nativ für Quelle und Senke verwendet werden. 
+Mit dem Feature „Zuordnungsdatenfluss“ können aktuell Azure SQL-Datenbank, Azure Synapse Analytics (früher SQL Data Warehouse), durch Trennzeichen getrennte Textdateien aus Azure Blob Storage oder Azure Data Lake Storage Gen2 sowie Parquet-Dateien aus Blob Storage oder Data Lake Storage Gen2 nativ für Quelle und Senke verwendet werden. 
 
 Verwenden Sie die Kopieraktivität, um Daten aus einem der anderen Connectors bereitzustellen, und führen Sie dann eine Datenflussaktivität aus, um Daten nach der Bereitstellung zu transformieren. So führt Ihre Pipeline beispielsweise zuerst einen Kopiervorgang nach Blob Storage aus, und anschließend verwendet eine Datenflussaktivität ein Dataset in der Quelle, um diese Daten zu transformieren.
 

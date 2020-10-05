@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 08/13/2019
 ms.author: alkohli
-ms.openlocfilehash: db6e2eadbf19d78a203a4d4ba6111ad88430b192
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f4a0739eb1ab14155a98b17e2427c5b08c9db788
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68985946"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564422"
 ---
 # <a name="safely-install-and-operate-your-azure-data-box"></a>Sichere Installation und Bedienung Ihrer Azure Data Box
 ![Symbol „Warnung“](./media/data-box-safety/warning_icon.png)
@@ -120,7 +120,7 @@ Dieses Gerät wurde getestet und entspricht den Grenzwerten für ein Digitalger�
 
 Dieses Gerät entspricht Teil 15 der Lizenzbestimmungen von FCC Rules and Industry Canada – ausgenommen RSS-Standard(s). Der Betrieb unterliegt den beiden folgenden Bedingungen: 1.) Dieses Gerät darf keine schädlichen Störungen verursachen. 2.) Dieses Gerät muss alle empfangenen Störungen akzeptieren, einschließlich Störungen, die einen unerwünschten Betrieb des Geräts verursachen können.
 
-![Canada](./media/data-box-safety/canada.png)
+![Screenshot einer für Kanada erforderlichen Benachrichtigung](./media/data-box-safety/canada.png)
 
 CAN ICES-3(A)/NMB-3(A)
 
@@ -154,7 +154,7 @@ Faxnummer: +353 1 706 4110
 
 **Japan**
 
-![Japan](./media/data-box-safety/japan.png)
+![Screenshot einer für Japan erforderlichen Benachrichtigung](./media/data-box-safety/japan.png)
 
 <!--**South Korea**
 

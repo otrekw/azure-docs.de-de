@@ -3,12 +3,12 @@ title: Azure Lighthouse und verwaltete Azure-Anwendungen
 description: Hier erfahren Sie, wie Azure Lighthouse und verwaltete Azure-Anwendungen Ihnen helfen können, unterschiedliche Szenarien zu ermöglichen, und wie diese gemeinsam verwendet werden können.
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 81ff61a6d1b7487d3da0643bac3987589de46c1e
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 7fd8801fc714a0f0c245d27462e368602dc41eb5
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163423"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483846"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse und verwaltete Azure-Anwendungen
 
@@ -23,7 +23,7 @@ Sowohl verwaltete Azure-Anwendungen als auch Azure Lighthouse funktionieren, ind
 
 Mit [Azure Lighthouse](../overview.md) kann ein Dienstanbieter eine Vielzahl verschiedener Verwaltungsaufgaben direkt im Abonnement eines Kunden (oder in einer Ressourcengruppe) ausführen. Dieser Zugriff wird durch eine logische Projektion erreicht, die es dem Dienstanbieter gestattet, sich bei seinem eigenen Mandanten anzumelden und auf Ressourcen zuzugreifen, die zum Mandanten des Kunden gehören. Der Kunde kann bestimmen, welche Abonnements oder Ressourcengruppen an den Dienstanbieter delegiert werden sollen, und der Kunde behält vollständigen Zugriff auf diese Ressourcen. Er kann den Zugriff des Dienstanbieters auch jederzeit entfernen.
 
-Um Azure Lighthouse zu verwenden, wird ein Onboarding der Kunden für die [delegierte Azure-Ressourcenverwaltung](azure-delegated-resource-management.md) durchgeführt, entweder durch [Bereitstellen von ARM-Vorlagen](../how-to/onboard-customer.md) oder über ein [Angebot für verwaltete Dienste in Azure Marketplace](managed-services-offers.md). Sie können Ihre Auswirkungen auf Kundenbindungen nachverfolgen, indem Sie [Ihre Partner-ID verknüpfen](../../cost-management-billing/manage/link-partner-id.md).
+Um Azure Lighthouse zu verwenden, wird ein Onboarding der Kunden für die [delegierte Azure-Ressourcenverwaltung](azure-delegated-resource-management.md) durchgeführt, entweder durch [Bereitstellen von ARM-Vorlagen](../how-to/onboard-customer.md) oder über ein [Angebot für verwaltete Dienste in Azure Marketplace](managed-services-offers.md). Sie können Ihre Auswirkungen auf Kundenbindungen nachverfolgen und durch den Partner verdiente Guthaben erhalten, indem Sie [Ihre Partner-ID verknüpfen](../how-to/partner-earned-credit.md).
 
 Azure Lighthouse wird in der Regel verwendet, wenn ein Dienstanbieter Verwaltungsaufgaben für einen Kunden kontinuierlich ausführen soll.
 

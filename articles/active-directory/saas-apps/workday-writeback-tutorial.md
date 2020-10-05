@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 324d3a21e1694d243f03beca28ac8376bedffa4d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8c76bddc0fae024b0dd2bdd27d6b1e10d71dec71
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88526829"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017471"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-workday"></a>Tutorial: Konfigurieren des Rückschreibens von Attributen aus Azure AD für Workday
 In diesem Tutorial werden die Schritte beschrieben, die Sie ausführen müssen, um Attribute aus Azure AD für Workday zurückzuschreiben. Die Bereitstellungs-App für das Workday-Rückschreiben unterstützt das Zuweisen von Werten zu den folgenden Workday-Attributen:
@@ -34,7 +34,7 @@ Nachdem Sie die Bereitstellungsintegration in eingehender Richtung entweder mit 
 
 Diese Benutzerbereitstellungslösung für das Workday-Rückschreiben eignet sich ideal für:
 
-* Organisationen, die Office 365 nutzen und von der IT-Abteilung verwaltete autoritative Attribute (z. B. die E-Mail-Adresse, Benutzername und Telefonnummer) für Workday zurückschreiben möchten.
+* Organisationen, die Microsoft 365 nutzen und von der IT-Abteilung verwaltete autoritative Attribute (z. B. die E-Mail-Adresse, Benutzername und Telefonnummer) für Workday zurückschreiben möchten.
 
 ## <a name="configure-integration-system-user-in-workday"></a>Konfigurieren eines Integrationssystembenutzers in Workday
 

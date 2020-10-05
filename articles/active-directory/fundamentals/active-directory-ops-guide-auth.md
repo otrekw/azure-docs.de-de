@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: b45a0608d78330eafd6afc3656f8a4addbdffd3b
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 178c54b9726f21775603d67cb0911237aa4caf01
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321717"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601363"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Referenzleitfaden zur Authentifizierungsverwaltung von Azure Active Directory-Vorgänge
 
@@ -95,7 +95,7 @@ Kennwörter allein sind nicht sicher genug, um böswillige Akteure davon abzuhal
 
 ### <a name="on-premises-outage-authentication-resiliency"></a>Lokale Authentifizierungsresilienz für Ausfälle
 
-Abgesehen von der Einfachheit und der Aktivierung der Ermittlung kompromittierter Anmeldeinformationen, bieten die Azure AD-Kennworthashsynchronisierung und Azure MFA Benutzern die vorteilhafte Möglichkeit, trotz Ausfällen aufgrund von Cyberangriffen wie [NotPetya](https://www.microsoft.com/security/blog/2018/02/05/overview-of-petya-a-rapid-cyberattack/) auf SaaS-Anwendungen und Office 365 zugreifen zu können. Es ist auch möglich, die Kennworthashsynchronisierung im Zusammenhang mit Verbunddiensten zu aktivieren. Das Aktivieren der Kennworthashsynchronisierung ermöglicht ein Fallback für die Authentifizierung, wenn Verbunddienste nicht verfügbar sind.
+Abgesehen von der Einfachheit und der Aktivierung der Ermittlung kompromittierter Anmeldeinformationen, bieten die Azure AD-Kennworthashsynchronisierung und Azure MFA Benutzern die vorteilhafte Möglichkeit, trotz Ausfällen aufgrund von Cyberangriffen wie [NotPetya](https://www.microsoft.com/security/blog/2018/02/05/overview-of-petya-a-rapid-cyberattack/) auf SaaS-Anwendungen und Microsoft 365 zugreifen zu können. Es ist auch möglich, die Kennworthashsynchronisierung im Zusammenhang mit Verbunddiensten zu aktivieren. Das Aktivieren der Kennworthashsynchronisierung ermöglicht ein Fallback für die Authentifizierung, wenn Verbunddienste nicht verfügbar sind.
 
 Wenn Ihre lokale Organisation nicht über eine Resilienzstrategie für Ausfälle oder über eine Strategie verfügt, die nicht mit Azure AD integriert ist, sollten Sie die Azure AD-Kennworthashsynchronisierung bereitstellen und einen Notfallwiederherstellungsplan definieren, der die Kennworthashsynchronisierung enthält. Indem Sie die Azure AD-Kennworthashsynchronisierung aktivieren, ermöglichen Sie Benutzern die Authentifizierung bei Azure AD, wenn Ihre lokale Active Directory-Lösung nicht verfügbar ist.
 
@@ -249,7 +249,7 @@ Der bedingte Zugriff ist ein wichtiges Tool zur Verbesserung der Sicherheit Ihre
 - Nutzen Sie eine kleine Gruppe wichtiger Richtlinien an, die auf mehrere Anwendungen angewendet werden können.
 - Definieren Sie leere Ausnahmegruppen, und fügen Sie diese zu den Richtlinien hinzu, um eine Ausnahmestrategie zu erhalten.
 - Planen Sie Konten ohne MFA-Kontrollen für den [Notfallzugriff](../users-groups-roles/directory-admin-roles-secure.md#break-glass-what-to-do-in-an-emergency).
-- Stellen Sie eine konsistente Umgebung zwischen Office 365-Clientanwendungen (z. B. Teams, OneDrive for Business, Outlook usw.) sicher, indem Sie dieselben Kontrollen für Dienste wie Exchange Online und SharePoint Online implementieren.
+- Stellen Sie eine konsistente Umgebung zwischen Microsoft 365-Clientanwendungen (z. B. Teams, OneDrive, Outlook usw.) sicher, indem Sie dieselben Kontrollen für Dienste wie Exchange Online und SharePoint Online implementieren.
 - Die Zuweisung zu Richtlinien sollte nur über Gruppen erfolgen, nicht über Einzelpersonen.
 - Führen Sie regelmäßige Überprüfungen der Ausnahmegruppen durch, die in Richtlinien verwendet werden, um die Zeit zu begrenzen, in der die Benutzer nicht durch die errichtete Sicherheit geschützt werden. Wenn Sie über Azure AD Premium P2 verfügen, können Sie Zugriffsüberprüfungen verwenden, um diesen Prozess zu automatisieren.
 
@@ -302,7 +302,7 @@ Im Anschluss sind Apps mit Berechtigungen aufgeführt, die Sie für Microsoft Cl
 
 | Resource | Berechtigung |
 | :- | :- |
-| Microsoft Office 365 Exchange Online | EAS.AccessAsUser.All |
+| Exchange Online | EAS.AccessAsUser.All |
 | | EWS.AccessAsUser.All |
 | | Mail.Read |
 | Microsoft Graph-API | Mail.Read |
@@ -339,7 +339,7 @@ Im Folgenden sind Benutzer- und Gruppeneinstellungen aufgeführt, die gesperrt w
 
 #### <a name="group-settings"></a>Gruppeneinstellungen
 
-**Self-Service-Gruppenverwaltung/Benutzer können Sicherheitsgruppen/Office 365-Gruppen erstellen.** Wenn derzeit keine Self-Service-Initiative für Gruppen in der Cloud vorliegt, entscheiden sich Kunden möglicherweise dazu, diese zu deaktivieren, bis sie bereit sind, die Funktion zu verwenden.
+**Self-Service-Gruppenverwaltung/Benutzer können Sicherheitsgruppen/Microsoft 365-Gruppen erstellen.** Wenn derzeit keine Self-Service-Initiative für Gruppen in der Cloud vorliegt, entscheiden sich Kunden möglicherweise dazu, diese zu deaktivieren, bis sie bereit sind, die Funktion zu verwenden.
 
 #### <a name="groups-recommended-reading"></a>Empfohlene Artikel zu Gruppen
 

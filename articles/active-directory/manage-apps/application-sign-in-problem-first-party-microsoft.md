@@ -1,6 +1,6 @@
 ---
 title: Probleme beim Anmelden bei Microsoft-Anwendungen | Microsoft-Dokumentation
-description: Behandlung von allgemeinen Problemen bei der Anmeldung in eigenen Microsoft-Anwendungen mithilfe von Azure AD (z.B. Office 365)
+description: Hier erhalten Sie Informationen zur Behandlung von allgemeinen Problemen bei der Anmeldung in eigenen Microsoft-Anwendungen mithilfe von Azure AD (z. B. Microsoft 365).
 services: active-directory
 documentationcenter: ''
 author: kenwith
@@ -16,20 +16,20 @@ ms.date: 09/10/2018
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69edf8e8dc51f8a8841ceed94221ed44786e280d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8942a55d880132313e1cdac6bfc025e0b153b410
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84759282"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707950"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Probleme beim Anmelden bei Microsoft-Anwendungen
 
-Microsoft-Anwendungen (z.B. Office 365 Exchange, SharePoint, Yammer usw.) werden etwas anders und als SaaS-Anwendungen von Drittanbietern oder andere Anwendungen zugewiesen, die Sie für einmaliges Anmelden in Azure AD integrieren.
+Microsoft-Anwendungen (z. B. Exchange, SharePoint, Yammer usw.) werden nicht genau auf die gleiche Weise zugewiesen und verwaltet wie SaaS-Anwendungen von Drittanbietern oder andere Anwendungen, die Sie für das einmalige Anmelden mit Azure AD integrieren.
 
 Es gibt drei Hauptmethoden, über die ein Benutzer Zugriff auf eine von Microsoft veröffentlichte Anwendung erhalten kann.
 
--   Für Anwendungen in Office 365 oder anderen kostenpflichtigen Suites erhalten Benutzer Zugriff über **Lizenzzuweisungen** direkt in ihrem Benutzerkonto oder über eine Gruppe mithilfe der Funktion für gruppenbasierte Lizenzzuweisung.
+-   Für Anwendungen in Microsoft 365 oder anderen kostenpflichtigen Sammlungen erhalten Benutzer Zugriff über eine **Lizenzzuweisung** direkt in ihrem Benutzerkonto oder über eine Gruppe mithilfe der Funktion für gruppenbasierte Lizenzzuweisung.
 
 -   Für Anwendungen, die Microsoft oder ein Drittanbieter kostenlos für alle Benutzer veröffentlicht, erhalten Benutzer möglicherweise Zugriff über eine **Benutzerzustimmung**. Dies bedeutet, dass sie sich mit ihrem Geschäfts-, Schul- oder Unikonto von Azure AD bei der Anwendung anmelden und dieser den Zugriff auf eine begrenzte Menge von Daten in ihrem Konto gewähren.
 
@@ -438,7 +438,7 @@ So überprüfen oder validieren Sie eine einzelne Richtlinie für bedingten Zugr
 7. Vergewissern Sie sich, dass keine spezifischen Bedingungen, Zuweisungen oder anderen Einstellungen den Benutzerzugriff blockieren.
 
    >[!NOTE]
-   >Möglicherweise sollten Sie diese Richtlinie vorübergehend deaktivieren, um sicherzustellen, dass sie keine Auswirkungen auf Anmeldungen hat. Legen Sie hierzu den Umschalter **Richtlinie aktivieren** auf **Nein** fest, und klicken Sie auf die Schaltfläche **Speichern**.
+   >Möglicherweise möchten Sie diese Richtlinie vorübergehend deaktivieren, um Auswirkungen auf Anmeldungen auszuschließen. Legen Sie hierzu den Umschalter **Richtlinie aktivieren** auf **Nein** fest, und klicken Sie auf die Schaltfläche **Speichern**.
    >
    >
 
@@ -470,7 +470,7 @@ So überprüfen oder validieren Sie die derzeit konfigurierte Richtlinie für be
 9.  Vergewissern Sie sich, dass keine spezifischen Bedingungen, Zuweisungen oder anderen Einstellungen den Benutzerzugriff blockieren können.
 
      >[!NOTE]
-     >Möglicherweise sollten Sie diese Richtlinie vorübergehend deaktivieren, um sicherzustellen, dass sie keine Auswirkungen auf Anmeldungen hat. Legen Sie hierzu den Umschalter **Richtlinie aktivieren** auf **Nein** fest, und klicken Sie auf die Schaltfläche **Speichern**.
+     >Möglicherweise möchten Sie diese Richtlinie vorübergehend deaktivieren, um Auswirkungen auf Anmeldungen auszuschließen. Legen Sie hierzu den Umschalter **Richtlinie aktivieren** auf **Nein** fest, und klicken Sie auf die Schaltfläche **Speichern**.
      >
      >
 

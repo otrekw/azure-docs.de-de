@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9e782ee8e4afda1f8891979b6e50f99f3e0f1cc7
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 3deb7c0802dbfcdb65bcff6cb2653e73017651f1
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299540"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536454"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Verwalten von Azure Digital Twins-Modellen
 
@@ -168,11 +168,16 @@ Modelle werden nicht unbedingt genau in dem Dokumentformat zurückgegeben, in de
 
 ### <a name="update-models"></a>Aktualisieren von Modellen
 
-Nachdem ein Modell in Ihre Instanz hochgeladen wurde, ist die gesamte Modellschnittstelle unveränderlich. Dies bedeutet, dass es kein herkömmliches „Bearbeiten“ von Modellen gibt.
+Nachdem ein Modell in Ihre Azure Digital Twins-Instanz hochgeladen wurde, ist die gesamte Modellschnittstelle unveränderlich. Dies bedeutet, dass es kein herkömmliches „Bearbeiten“ von Modellen gibt. Azure Digital Twins lässt auch keinen erneuten Upload desselben Modells zu.
 
-Wenn Sie stattdessen Änderungen an einem Modell in Azure Digital Twins vornehmen möchten, besteht die Möglichkeit, eine **neuere Version** desselben Modells hochzuladen. Während der Vorschau erlaubt Ihnen das Ansteigen einer Modellversion nur das Entfernen von Feldern, nicht das Hinzufügen neuer Felder (um neue Felder hinzuzufügen, sollten Sie einfach [ein brandneues Modell erstellen](#create-models)).
+Wenn Sie stattdessen Änderungen an einem Modell vornehmen möchten, wie ein Update von **oder**, können Sie eine `displayName`neuere Version`description` desselben Modells hochladen. 
+
+#### <a name="model-versioning"></a>Versionsverwaltung der Modelle
 
 Um eine neue Version eines bestehenden Modells zu erstellen, beginnen Sie mit der DTDL des ursprünglichen Modells. Aktualisieren Sie die Felder, die Sie ändern möchten.
+
+>[!NOTE]
+>In der Vorschauversion können Sie durch die Weiterentwicklung einer Modellversion nur neue Felder hinzufügen und vorhandene Felder nicht entfernen. Zum Entfernen von Feldern sollten Sie besser [ein völlig neues Modell](#create-models) erstellen.
 
 Markieren Sie diese dann als neuere Version des Modells, indem Sie das `id`-Feld des Modells aktualisieren. Der letzte Abschnitt der Modell-ID, nach dem `;`, stellt die Modellnummer dar. Um anzuzeigen, dass es sich jetzt um eine aktualisierte Version dieses Modells handelt, erhöhen Sie die Zahl am Ende des `id`-Werts auf eine beliebige Zahl, die größer als die aktuelle Versionsnummer ist.
 
@@ -188,7 +193,17 @@ Version 2 dieses Modells könnte wie folgt aussehen:
 "@id": "dtmi:com:contoso:PatientRoom;2",
 ```
 
-Laden Sie dann die neue Version des Modells auf Ihre Instanz hoch. Es wird die alte Version ersetzen, und neue Zwillinge, die Sie mit diesem Modell erstellen, werden die aktualisierte Version verwenden.
+Laden Sie dann die neue Version des Modells auf Ihre Instanz hoch. 
+
+Diese Version des Modells wird dann in Ihrer Instanz für digitale Zwillinge zur Verfügung stehen. Frühere Versionen des Modells werden dabei **nicht überschrieben**, sodass mehrere Versionen des Modells in Ihrer Instanz gleichzeitig vorhanden sind, bis Sie sie [ entfernen](#remove-models).
+
+#### <a name="impact-on-twins"></a>Auswirkungen auf Zwillinge
+
+Wenn Sie einen neuen Zwilling erstellen, da die neue Modellversion und die alte Modellversion parallel vorhanden sind, kann der neue Zwilling entweder die neue Version des Modells oder die ältere Version verwenden.
+
+Dies bedeutet auch, dass sich das Hochladen einer neuen Version eines Modells nicht automatisch auf vorhandene Zwillinge auswirkt. Die vorhandenen Zwillinge bleiben einfach Instanzen der alten Modellversion.
+
+Sie können diese vorhandenen Zwillinge auf die neue Modellversion aktualisieren, indem Sie sie patchen, wie im Abschnitt [*Aktualisieren eines Modells eines digitalen Zwillings*](how-to-manage-twin.md#update-a-digital-twins-model) von *Gewusst wie: Verwalten digitaler Zwillinge* beschrieben. Innerhalb desselben Patches müssen Sie sowohl die **Modell-ID** (für die neue Version) aktualisieren und **alle Felder, die im Zwilling geändert werden müssen, um sie an das neue Modell anzupassen**.
 
 ### <a name="remove-models"></a>Entfernen von Modellen
 

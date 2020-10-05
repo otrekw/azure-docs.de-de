@@ -2,14 +2,14 @@
 title: Verwenden von Shared Image Gallery zum Erstellen eines benutzerdefinierten Imagepools
 description: Benutzerdefinierte Imagepools sind eine effiziente Möglichkeit zum Konfigurieren von Computeknoten, um Ihre Batch-Workloads auszuführen.
 ms.topic: conceptual
-ms.date: 07/01/2020
+ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: aad8b279ce821496d4c947bc7f9c707243468f07
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 31fcbff50a2a66aec1643f1bac351e0401205861
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852411"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605191"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>Verwenden von Shared Image Gallery zum Erstellen eines benutzerdefinierten Imagepools
 
@@ -43,7 +43,9 @@ Die Verwendung eines für Ihr Szenario konfigurierten freigegebenen Image kann m
 - **Ein Shared Image Gallery-Image**. Zum Erstellen eines freigegebenen Images müssen Sie über eine verwaltete Imageressource verfügen oder eine verwaltete Imageressource erstellen. Das Image sollte auf der Grundlage von Momentaufnahmen des Betriebssystemdatenträgers des virtuellen Computers und optional seiner angefügten Datenträger erstellt werden.
 
 > [!NOTE]
-> Ihr freigegebenes Image muss sich in demselben Abonnement befinden wie das Batch-Konto. Das Image kann sich in unterschiedlichen Regionen befinden, sofern es über Replikate in derselben Region verfügt wie Ihr Batch-Konto.
+> Wenn das freigegebene Image sich nicht im gleichen Abonnement wie das Batch-Konto befindet, müssen Sie für das Abonnement [den Ressourcenanbieter „Microsoft.Batch“ registrieren](../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider). Beide Abonnements müssen demselben Azure AD-Mandanten zugeordnet sein.
+>
+> Das Image kann sich in unterschiedlichen Regionen befinden, sofern es über Replikate in derselben Region wie Ihr Batch-Konto verfügt.
 
 Wenn Sie eine Azure AD-Anwendung verwenden, um einen Pool mit benutzerdefinierten Images aus einem Shared Image Gallery-Image zu erstellen, muss dieser Anwendung eine [in Azure integrierte Rolle](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) erteilt worden sein, die ihr Zugriff auf das Shared Image gibt. Sie können diesen Zugriff im Azure-Portal erteilen, indem Sie zum Shared Image navigieren, **Zugriffssteuerung (IAM)** auswählen und eine Rollenzuweisung für die Anwendung hinzufügen.
 

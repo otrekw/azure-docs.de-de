@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jegeib
-ms.openlocfilehash: 3b8467a5983ae9d8928d14987bcee9d2aef094aa
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 6ddb2ecef3a70ed6a56b404e64cef5b78b7abd13
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87539899"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980479"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>Erste Schritte mit dem Threat Modeling Tool
 
@@ -97,7 +97,7 @@ Ricardo beginnt mit der Auswahl des ersten Elements in der Liste. Hier geschieht
 
 Erstens wird die Interaktion zwischen den beiden Schablonen verbessert.
 
-![Interaktion](./media/threat-modeling-tool-getting-started/interaction.png)
+![Screenshot: Zwei Schablonen und der gebogene Pfeil, mit dem sie über eine dickere Linie miteinander verbunden sind](./media/threat-modeling-tool-getting-started/interaction.png)
 
 Zweitens werden weitere Informationen zur Bedrohung im Fenster „Bedrohungseigenschaften“ hinzugefügt.
 

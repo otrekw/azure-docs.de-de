@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb,
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d05aaa7a6bd48c92e863d38dcee9f0bf925bafa
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 68ab302e5c24835174d03b3579c9ec587bfd9006
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049263"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601587"
 ---
 # <a name="conditional-access-block-access"></a>Bedingter Zugriff: Zugriff blockieren
 
@@ -40,7 +40,7 @@ Richtlinien für bedingten Zugriff sind leistungsstarke Tools, daher wird empfoh
 
 Mit den folgenden Schritte können Sie Richtlinien für den bedingten Zugriff erstellen, um den Zugriff auf alle Apps (mit Ausnahme von [Office 365](concept-conditional-access-cloud-apps.md#office-365-preview)) zu blockieren, wenn sich Benutzer nicht in einem vertrauenswürdigen Netzwerk befinden. Für diese Richtlinien wird zu Beginn der Modus [Nur Bericht](howto-conditional-access-insights-reporting.md) festgelegt, damit Administratoren die Auswirkungen auf vorhandene Benutzer ermitteln können. Wenn die Administratoren sicher sind, dass die Richtlinien erwartungsgemäß funktionieren, können sie die Richtlinien **aktivieren**.
 
-Die erste Richtlinie blockiert den Zugriff auf alle Apps mit Ausnahme von Office 365-Anwendungen, wenn sie sich nicht an einem vertrauenswürdigen Standort befinden.
+Die erste Richtlinie blockiert den Zugriff auf alle Apps mit Ausnahme von Microsoft 365-Anwendungen, wenn sie sich nicht an einem vertrauenswürdigen Standort befinden.
 
 1. Melden Sie sich beim **Azure-Portal** als globaler Administrator, Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
 1. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff**.
@@ -64,7 +64,7 @@ Die erste Richtlinie blockiert den Zugriff auf alle Apps mit Ausnahme von Office
 1. Bestätigen Sie die Einstellungen, und legen Sie **Richtlinie aktivieren** auf **Nur Bericht** fest.
 1. Wählen Sie **Erstellen** aus, um die Richtlinie zu erstellen und zu aktivieren.
 
-Nachfolgend wird eine zweite Richtlinie erstellt, die für Benutzer von Office 365 die mehrstufige Authentifizierung (MFA) oder ein kompatibles Gerät voraussetzt.
+Nachfolgend wird eine zweite Richtlinie erstellt, die für Benutzer von Microsoft 365 die mehrstufige Authentifizierung (MFA) oder ein kompatibles Gerät voraussetzt.
 
 1. Wählen Sie **Neue Richtlinie**.
 1. Benennen Sie Ihre Richtlinie. Es wird empfohlen, dass Unternehmen einen aussagekräftigen Standard für die Namen ihrer Richtlinien erstellen.

@@ -3,14 +3,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: include
-ms.date: 07/11/2019
+ms.date: 09/06/2020
 ms.author: alkohli
-ms.openlocfilehash: 948f5399ceb931d701341c2cf378482ede94979d
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: b9ff5968b4bb406f1a96780985b5c6fe64ca976c
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200323"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505907"
 ---
 | Port-Nr.| ein oder aus | Portbereich| Erforderlich| Notizen |
 |--------|-----|-----|-----------|----------|

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 3422176ed89b7f575c11cc40e5be8420da0018b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 170716804a5bc3133e070ee67f2aac71acad7b0b
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81415800"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89435557"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Laden von Daten aus Office 365 mithilfe von Azure Data Factory
 
@@ -147,7 +147,7 @@ Navigieren Sie nun zur Azure Blob Storage-Zielinstanz, und überprüfen Sie, ob 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Lesen Sie den folgenden Artikel, um mehr über die Unterstützung von Azure SQL Data Warehouse zu erfahren: 
+Lesen Sie den folgenden Artikel, um mehr über die Unterstützung von Azure Synapse Analytics (vormals SQL Data Warehouse) zu erfahren: 
 
 > [!div class="nextstepaction"]
 >[Office 365-Connector](connector-office-365.md)

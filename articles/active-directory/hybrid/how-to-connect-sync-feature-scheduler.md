@@ -16,12 +16,12 @@ ms.date: 05/01/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2b65f8cd22e72e0ba90918121a02d66fe6bf3e7
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: ad7b0039602add7f4cd3cdd300bd829c4f148a79
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053047"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084735"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect-Synchronisierung: Scheduler
 In diesem Thema wird der integrierte Scheduler in Azure AD Connect-Synchronisierung (Synchronisierungsmodul) beschrieben.
@@ -160,12 +160,15 @@ Beispiel:  Wenn Sie Änderungen an den Synchronisierungsregeln für den Connecto
 ## <a name="stop-the-scheduler"></a>Beenden des Schedulers
 Wenn der Scheduler gerade einen Synchronisierungszyklus ausführt, müssen Sie diesen beenden. Dies ist zum Beispiel der Fall, wenn Sie beim Starten des Installations-Assistenten den folgenden Fehler erhalten:
 
-![SyncCycleRunningError](./media/how-to-connect-sync-feature-scheduler/synccyclerunningerror.png)
+![Screenshot mit der Fehlermeldung „Konfigurationsänderung nicht möglich“](./media/how-to-connect-sync-feature-scheduler/synccyclerunningerror.png)
 
 Während ein Synchronisierungszyklus ausgeführt wird, sind Änderungen an der Konfiguration nicht möglich. Sie können warten, bis der Scheduler den Prozess beendet hat. Sie können den Prozess aber auch beenden, um Ihre Änderungen sofort vorzunehmen. Das Beenden des aktuellen Zyklus ist ungefährlich, und ausstehende Änderungen werden bei der nächsten Ausführung verarbeitet.
 
 1. Weisen Sie den Scheduler zunächst mit dem PowerShell-Cmdlet `Stop-ADSyncSyncCycle` an, den aktuellen Zyklus zu beenden.
-2. Wenn Sie einen älteren Build als 1.1.281 verwenden, wird der aktuelle Task des aktuellen Connectors durch das Beenden des Schedulers nicht unterbrochen. Um ein Beenden des Connectors zu erzwingen, führen Sie folgende Aktionen aus:  ![StopAConnector](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
+2. Wenn Sie einen älteren Build als 1.1.281 verwenden, wird der aktuelle Task des aktuellen Connectors durch das Beenden des Schedulers nicht unterbrochen. Um ein Beenden des Connectors zu erzwingen, führen Sie folgende Aktionen aus: 
+
+   ![Screenshot mit Synchronization Service Manager mit ausgewählten Connectors und einem laufenden Connector mit hervorgehobener Auswahl „Stop“](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
+
    * Starten Sie den **Synchronisierungsdienst** über das Startmenü. Wechseln Sie zu **Connectors**, markieren Sie den Connector mit dem Status **Wird ausgeführt**, und wählen Sie unter „Aktionen“ die Option **Beenden** aus.
 
 Der Scheduler ist noch immer aktiv und wird bei der nächsten Gelegenheit wieder gestartet.

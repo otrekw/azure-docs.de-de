@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/28/2020
 ms.author: apimpm
-ms.openlocfilehash: 6a8c4c3fa2bd73fa689458d6877d09900ea86938
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 068f15cc06a76412836176dc13237741ea14d135
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852156"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89614066"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API Management-Entwicklerportal: Übersicht
 
@@ -73,21 +73,21 @@ In diesem Abschnitt beantworten wir häufig gestellte Fragen zum Entwicklerporta
 
 ### <a name="how-can-i-migrate-from-the-preview-version-of-the-portal"></a><a id="preview-to-ga"></a> Wie kann ich von der Vorschauversion des Portals migrieren?
 
-Mit der Vorschauversion des Entwicklerportals haben Sie den Vorschauinhalt in Ihrem API Management-Dienst bereitgestellt. Der Standardinhalt wurde in der allgemein verfügbaren Version zur Verbesserung der Benutzerfreundlichkeit erheblich geändert. Außerdem sind neue Widgets enthalten.
+Beim ersten Starten der Vorschauversion des Entwicklerportals haben Sie die Vorschauversion des Standardinhalts in Ihrem API Management-Dienst bereitgestellt. In der allgemein verfügbaren Version wurde der Standardinhalt erheblich geändert. So enthält die Vorschauversion des Standardinhalts beispielsweise auf der Anmeldeseite keine OAuth-Schaltflächen, sie verwendet zur Anzeige von APIs andere Widgets, und die Strukturierung der Seiten im Entwicklerportal wird mit eingeschränkten Funktionen ausgeführt. Trotz der inhaltlichen Unterschiede wird die Engine des Portals (samt der zugrunde liegenden Widgets) bei jeder Veröffentlichung des Entwicklerportals automatisch aktualisiert.
 
-Wenn Sie die verwaltete Version verwenden, setzen Sie den Inhalt des Portals zurück, indem Sie im Abschnitt **Vorgänge** des Menüs auf **Inhalt zurücksetzen** klicken. Wenn Sie diesen Vorgang bestätigen, wird der gesamte Inhalt des Portals entfernt, und die neuen Standardinhalte werden bereitgestellt. Die Engine des Portals wurde automatisch in Ihrem API Management-Dienst aktualisiert.
+Wenn Sie Ihr Portal basierend auf der Vorschauversion des Inhalts umfangreich angepasst haben, können Sie es unverändert weiter verwenden und neue Widgets manuell auf den Seiten des Portals platzieren. Andernfalls wird empfohlen, den Inhalt Ihres Portals durch den neuen Standardinhalt zu ersetzen.
+
+Wenn Sie den Inhalt in einem verwalteten Portal zurücksetzen möchten, klicken Sie im Menüabschnitt **Vorgänge** auf **Inhalt zurücksetzen**. Dadurch wird der gesamte Inhalt des Portals entfernt, und die neuen Standardinhalte werden bereitgestellt. Alle Anpassungen und Änderungen des Entwicklerportals gehen dabei verloren. **Dieser Vorgang kann nicht rückgängig gemacht werden**.
 
 ![Zurücksetzen des Portalinhalts](media/api-management-howto-developer-portal/reset-content.png)
 
-Wenn Sie die selbstgehostete Version verwenden, verwenden Sie die Dateien `scripts/cleanup.bat` und `scripts/generate.bat` aus dem GitHub-Repository, um vorhandene Inhalte zu entfernen und neue Inhalte bereitzustellen. Stellen Sie sicher, dass Sie den Code Ihres Portals im Vorfeld im GitHub-Repository auf die neueste Version aktualisieren.
+Wenn Sie die selbstgehostete Version verwenden, führen Sie die Skripts `scripts.v2/cleanup.bat` und `scripts.v2/generate.bat` aus dem GitHub-Repository aus, um vorhandene Inhalte zu entfernen und neue Inhalte bereitzustellen. Stellen Sie sicher, dass Sie im Vorfeld den Code Ihres Portals im GitHub-Repository auf die neueste Version aktualisieren.
 
-Wenn Sie den Inhalt des Portals nicht zurücksetzen möchten, ziehen Sie ggf. in Erwägung, neu verfügbare Widgets auf Ihren Seiten zu verwenden. Vorhandene Widgets wurden automatisch auf die neuesten Versionen aktualisiert.
-
-Wenn Ihr Portal nach der Ankündigung der allgemeinen Verfügbarkeit bereitgestellt wurde, sollte es bereits über die neuen Standardinhalte verfügen. Von Ihrer Seite ist keine Aktion erforderlich.
+Wenn Sie zum ersten Mal nach der Ankündigung der allgemeinen Verfügbarkeit im November 2019 auf das Portal zugegriffen haben, sollte der neue Standardinhalt bereits vorhanden sein. In diesem Fall ist keine weitere Aktion erforderlich.
 
 ### <a name="does-the-portal-have-all-the-features-of-the-legacy-portal"></a>Verfügt das Portal über alle Features des Legacy-Portals?
 
-Das Entwicklerportal unterstützt keine *Anwendungen* und *Issues* (Probleme) mehr.
+*Anwendungen*, *Issues* und eine direkte Integration mit Facebook, Microsoft, Twitter und Google werden im Entwicklerportal nicht mehr als Identitätsanbieter unterstützt. Verwenden Sie stattdessen Azure AD B2C.
 
 ### <a name="has-the-legacy-portal-been-deprecated"></a>Wurde das Legacy-Portal als veraltet markiert?
 

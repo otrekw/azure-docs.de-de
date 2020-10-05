@@ -3,12 +3,12 @@ title: Erstellen und Bereitstellen von Ressourcengruppenprojekten in Visual Stud
 description: Verwenden Sie Visual Studio, um ein Azure-Ressourcengruppenprojekt zu erstellen und die Ressourcen in Azure bereitzustellen.
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 5127732ac0c33d4b27f70bd616fb23aaec5c871f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eacab3e1919b68661dd24eb78e3b0eca51cf4972
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76152730"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985256"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Erstellen und Bereitstellen von Azure-Ressourcengruppen mit Visual Studio
 
@@ -23,7 +23,7 @@ In diesem Abschnitt erstellen Sie ein Azure-Ressourcengruppenprojekt mit der Vor
 1. Wählen Sie in Visual Studio **Datei**>**Neu**>**Projekt**.
 1. Wählen Sie die Projektvorlage **Azure-Ressourcengruppe** und dann **Weiter** aus.
 
-    ![Projekt erstellen](./media/create-visual-studio-deployment-project/create-project.png)
+    ![Screenshot: Fenster „Neues Projekt erstellen“, in dem „Azure-Ressourcengruppe“ und die Schaltfläche „Weiter“ hervorgehoben sind](./media/create-visual-studio-deployment-project/create-project.png)
 
 1. Geben Sie dem Projekt einen Namen. Die anderen Standardeinstellungen können wahrscheinlich übernommen werden, überprüfen Sie sie jedoch dennoch, damit sie in Ihrer Umgebung funktionieren. Wählen Sie abschließend die Option **Erstellen**.
 
@@ -65,7 +65,7 @@ Sie können ein Bereitstellungsprojekt anpassen, indem Sie die Resource Manager-
 
 1. Sie können eine Ressource hinzufügen, indem Sie entweder die Schaltfläche **Ressource hinzufügen** am oberen Rand der JSON-Gliederung auswählen oder mit der rechten Maustaste auf **Ressourcen** und anschließend auf **Neue Ressource hinzufügen** klicken.
 
-   ![Ressource hinzufügen](./media/create-visual-studio-deployment-project/add-resource.png)
+   ![Screenshot: Fenster „JSON-Gliederung“, in dem die Option „Neue Ressource hinzufügen“ hervorgehoben ist](./media/create-visual-studio-deployment-project/add-resource.png)
 
 1. Wählen Sie **Speicherkonto**, aus, und geben Sie einen Namen ein. Geben Sie einen Namen mit maximal elf Zeichen ein, der nur Zahlen und Kleinbuchstaben enthält.
 
@@ -189,7 +189,7 @@ Jetzt haben Sie die Infrastruktur für Ihre App bereitgestellt, im Projekt ist j
 
 1. Nun müssen Sie sicherstellen, dass Ihr Ressourcengruppenprojekt über das neue Projekt informiert ist. Wechseln Sie wieder zu Ihrem Ressourcengruppenprojekt (ExampleAppDeploy). Klicken Sie mit der rechten Maustaste auf **Verweise**, und wählen Sie **Verweis hinzufügen**.
 
-    ![Hinzuzufügender Verweis](./media/create-visual-studio-deployment-project/add-new-reference.png)
+    ![Screenshot: Menü „ExampleAppDeploy“, in dem die Option „Verweis hinzufügen“ hervorgehoben ist](./media/create-visual-studio-deployment-project/add-new-reference.png)
 
 1. Wählen Sie das Web-App-Projekt aus, das Sie erstellt haben.
 
@@ -364,7 +364,7 @@ Sie sind nicht auf die Ressourcen beschränkt, die über die Visual Studio-Benut
 
 1. Zeigen Sie das Dashboard nach Abschluss der Bereitstellung im Portal an. Wählen Sie **Dashboard** und dann das bereitgestellte Dashboard aus.
 
-   ![Benutzerdefiniertes Dashboard](./media/create-visual-studio-deployment-project/view-custom-dashboards.png)
+   ![Screenshot: Seite „Dashboard“, auf der ein Beispiel für ein benutzerdefiniertes Dashboard hervorgehoben ist](./media/create-visual-studio-deployment-project/view-custom-dashboards.png)
 
 1. Das angepasste Dashboard wird angezeigt.
 

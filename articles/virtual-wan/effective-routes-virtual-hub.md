@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 06/29/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0f5481531d23eeb579dcabe80e028ed7b482b09f
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: ad487aa7492abcf02988c78ccfa2ba7cd4798249
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762265"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983656"
 ---
 # <a name="view-virtual-hub-effective-routes"></a>Anzeigen effektiver Routen eines virtuellen Hubs
 
@@ -50,6 +50,8 @@ Verwenden Sie die Scrollleiste am unteren Rand der Tabelle, um den „AS-Pfad“
 * Das Feld **Standardroute weitergeben** wird im Azure Virtual WAN-Portal angezeigt, wenn Sie eine Verbindung mit einem virtuellen Netzwerk, eine VPN-Verbindung oder eine ExpressRoute-Verbindung bearbeiten. Dieses Feld gibt das **enableInternetSecurity**-Flag an, das für ExpressRoute- und VPN-Verbindungen immer standardmäßig FALSE ist, für Verbindungen mit virtuellen Netzwerken jedoch TRUE.
 
 * Wenn beim Anzeigen effektiver Routen auf einer VM-NIC der nächste Hop als „Gateway für virtuelle Netzwerke“ angezeigt wird, beinhaltet dies den virtuellen Hubrouter, wenn sich der virtuelle Computer in einer Spoke befindet, die mit einem virtuellen WAN-Hub verbunden ist.
+
+* Die Anzeige effektiver Routen für eine Routingtabelle eines virtuellen Hubs wird nur aufgefüllt, wenn der virtuelle Hub mindestens einen Verbindungstyp (VPN/ER/VNET) aufweist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

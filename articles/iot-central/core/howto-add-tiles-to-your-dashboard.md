@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 892bdcc08bd19b92c8b3d32d2954583f80005e87
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: beeb771ea5053dd0ad867a7568aa64bbb2d0b4ed
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022871"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985262"
 ---
 # <a name="configure-the-application-dashboard"></a>Konfigurieren des Anwendungsdashboards
 
@@ -33,7 +33,7 @@ Nachdem Sie auf **Bearbeiten** oder **Neu** geklickt haben, befindet sich das Da
 1. Wählen Sie im Dropdown **Geräte** eines oder mehrere Geräte aus, die auf der Kachel angezeigt werden sollen. Nun werden die verfügbare Telemetrie, die Eigenschaften und die Befehle dieser Geräte angezeigt.
 1. Klicken Sie im Telemetriebereich auf **Temperatur** und dann auf **Kachel hinzufügen**. Die Kachel wird nun auf dem Dashboard angezeigt. Dort können Sie die Visualisierung ändern, die Größe der Kachel ändern und sie konfigurieren:
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/device-details.png" alt-text="Hinzufügen einer Kachel mit Temperaturtelemetriedaten zum Dashboard":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/device-details.png" alt-text="Dashboard für Anwendungen, die auf der Vorlage „Benutzerdefinierte Anwendung“ basieren":::
 
 Wenn Sie das Hinzufügen und Anpassen der Kacheln auf dem Dashboard abgeschlossen haben, klicken Sie auf **Speichern**.
 
@@ -75,11 +75,23 @@ Klicken Sie bei Kacheln, die aggregierte Werte anzeigen, auf das Zahnradsymbol n
 
 Bei Liniendiagrammen, Balkendiagrammen und Kreisdiagrammen können Sie die Farbe der verschiedenen Telemetriewerte anpassen. Klicken Sie hierzu auf das Farbpalettensymbol neben den Telemetriedaten, die Sie anpassen möchten:
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/color-customization.png" alt-text="Ändern der Farbe eines Telemetriewerts":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/color-customization.png" alt-text="Dashboard für Anwendungen, die auf der Vorlage „Benutzerdefinierte Anwendung“ basieren":::
 
 Bei Kacheln, die Zeichenfolgeneigenschaften oder Telemetriewerte zeigen, können Sie auswählen, wie der Text angezeigt werden soll. Wenn das Gerät beispielsweise eine URL in einer Zeichenfolgeneigenschaft speichert, können Sie sie als Link anzeigen, auf den geklickt werden kann. Wenn die URL auf ein Bild verweist, können Sie das Bild in einer Kachel mit dem letzten bekannten Wert oder einer Eigenschaftenkachel rendern. Wenn Sie ändern möchten, wie eine Zeichenfolge angezeigt wird, klicken Sie in der Kachelkonfiguration auf das Zahnradsymbol neben dem Telemetrietyp oder der Eigenschaft:
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/string-customization.png" alt-text="Ändern der Anzeige einer Zeichenfolge auf einer Kachel":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/string-customization.png" alt-text="Dashboard für Anwendungen, die auf der Vorlage „Benutzerdefinierte Anwendung“ basieren":::
+
+Für die numerischen Kacheln **KPI**, **Letzter bekannter Wert** und **Eigenschaften** können Sie mithilfe von bedingter Formatierung die Farbe der jeweiligen Kachel basierend auf dem aktuellen Wert anpassen. Um eine bedingte Formatierung anzuwenden, wählen Sie die Kachel **Konfigurieren** und dann neben dem anzupassenden Wert das Symbol **Bedingte Formatierung** aus:
+
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-1.png" alt-text="Dashboard für Anwendungen, die auf der Vorlage „Benutzerdefinierte Anwendung“ basieren":::
+
+Fügen Sie Ihre Regeln für bedingte Formatierung hinzu:
+
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-2.png" alt-text="Dashboard für Anwendungen, die auf der Vorlage „Benutzerdefinierte Anwendung“ basieren":::
+
+Der folgende Screenshot zeigt die Auswirkung der Regel für bedingte Formatierung:
+
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-3.png" alt-text="Dashboard für Anwendungen, die auf der Vorlage „Benutzerdefinierte Anwendung“ basieren":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

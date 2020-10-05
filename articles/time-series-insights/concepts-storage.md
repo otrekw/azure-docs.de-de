@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/25/2020
+ms.date: 08/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: a0f1e7789c0cebdd1cb5b22f21151020a0be09c9
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: c05de0462dde2b09e0e01919dfc691a85df153fa
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855112"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483268"
 ---
 # <a name="data-storage"></a>Datenspeicherung
 
@@ -24,7 +24,7 @@ Beim Erstellen einer Azure Time Series Insights Gen2-Umgebung erstellen Sie zwei
 * Eine Azure Time Series Insights Gen2-Umgebung, die für die Speicherung von warmen Daten (Warm Storage) konfiguriert werden kann.
 * Ein Azure Storage-Konto für die Speicherung von kalten Daten (Cold Storage).
 
-Daten in Ihrem warmen Speicher stehen nur über [Zeitreihenabfrage-APIs](./time-series-insights-update-tsq.md) und den [Azure Time Series Insights TSI-Explorer](./time-series-insights-update-explorer.md) zur Verfügung. Der warme Speicher enthält aktuelle Daten innerhalb des [Aufbewahrungszeitraums](./time-series-insights-update-plan.md#the-preview-environment), den Sie beim Erstellen der Azure Time Series Insights Gen2-Umgebung ausgewählt haben.
+Daten in Ihrem warmen Speicher stehen nur über [Zeitreihenabfrage-APIs](./time-series-insights-update-tsq.md) und den [Azure Time Series Insights-Explorer](./time-series-insights-update-explorer.md) zur Verfügung. Der warme Speicher enthält aktuelle Daten innerhalb des [Aufbewahrungszeitraums](./time-series-insights-update-plan.md#the-preview-environment), den Sie beim Erstellen der Azure Time Series Insights Gen2-Umgebung ausgewählt haben.
 
 Azure Time Series Insights Gen2 speichert Ihre kalten Speicherdaten im [Parquet-Dateiformat](#parquet-file-format-and-folder-structure) im Azure-Blobspeicher. Azure Time Series Insights Gen2 verwaltet diese kalten Speicherdaten exklusiv. Sie können die Daten jedoch direkt als standardmäßige Parquet-Dateien lesen.
 
@@ -58,7 +58,7 @@ Wenn Sie Abfrageleistung und Datenverfügbarkeit sicherstellen möchten, bearbei
 
 #### <a name="accessing-cold-store-data"></a>Zugreifen auf kalte Speicherdaten
 
-Zusätzlich zum Zugriff auf Ihre Daten über den [Azure Time Series Insights TSI-Explorer](./time-series-insights-update-explorer.md) und [Zeitreihenabfrage-APIs](./time-series-insights-update-tsq.md) können Sie auch direkt über die im kalten Speicher gespeicherten Parquet-Dateien auf Ihre Daten zugreifen. Beispielsweise können Sie Daten in einem Jupyter-Notebook lesen, transformieren und bereinigen und dann verwenden, um Ihr Azure Machine Learning-Modell im gleichen Spark-Workflow zu trainieren.
+Zusätzlich zum Zugriff auf Ihre Daten über den [Azure Time Series Insights-Explorer](./time-series-insights-update-explorer.md) und [Zeitreihenabfrage-APIs](./time-series-insights-update-tsq.md) können Sie auch direkt über die im kalten Speicher gespeicherten Parquet-Dateien auf Ihre Daten zugreifen. Beispielsweise können Sie Daten in einem Jupyter-Notebook lesen, transformieren und bereinigen und dann verwenden, um Ihr Azure Machine Learning-Modell im gleichen Spark-Workflow zu trainieren.
 
 Wenn Sie direkt über Ihr Azure Storage-Konto auf Daten zugreifen möchten, benötigen Sie Lesezugriff auf das Konto, das zum Speichern Ihrer Azure Time Series Insights Gen2-Daten verwendet wird. Sie können dann ausgewählte Daten basierend auf der Erstellungszeit der Parquet-Datei lesen, die sich im unten im Abschnitt [Parquet-Dateiformat](#parquet-file-format-and-folder-structure) beschriebenen Ordner `PT=Time` befindet.  Weitere Informationen zum Aktivieren des Lesezugriffs auf Ihr Speicherkonto finden Sie unter [Verwalten des Zugriffs auf Ihre Speicherkontoressourcen](../storage/blobs/storage-manage-access-to-resources.md).
 

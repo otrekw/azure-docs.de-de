@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 45f704afce28967237b2905ef068678ba05ae085
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 4b2d882e6956fa23464e620e9820b0616e13b6f6
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206641"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563086"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Trigger mit Timer für Azure Functions 
 
@@ -22,15 +22,15 @@ Dieser Artikel erläutert das Arbeiten mit Triggern mit Timer in Azure Functions
 
 Informationen zum manuellen Ausführen einer per Timer ausgelösten Funktion finden Sie unter [Manuelles Ausführen einer Funktion ohne HTTP-Trigger](./functions-manually-run-non-http.md).
 
-## <a name="packages---functions-1x"></a>Pakete: Functions 1.x
-
-Der Zeitgebertrigger wird im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) der Version 2.x bereitgestellt. Den Quellcode für das Paket finden Sie im GitHub-Repository [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Timers/).
-
-[!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
-
 ## <a name="packages---functions-2x-and-higher"></a>Pakete: Functions 2.x oder höher
 
 Der Zeitgebertrigger wird im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) der Version 3.x bereitgestellt. Den Quellcode für das Paket finden Sie im GitHub-Repository [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/).
+
+[!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
+
+## <a name="packages---functions-1x"></a>Pakete: Functions 1.x
+
+Der Zeitgebertrigger wird im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) der Version 2.x bereitgestellt. Den Quellcode für das Paket finden Sie im GitHub-Repository [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Timers/).
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
@@ -250,6 +250,7 @@ Bei Aufruf einer Trigger-mit-Timer-Funktion wird ein Timerobjekt an die Funktion
 
 Die Eigenschaft `IsPastDue` lautet `true`, wenn der aktuelle Funktionsaufruf später als geplant erfolgt. Beispielsweise kann ein Neustart der Funktionen-App dazu führen, dass ein Aufruf nicht erkannt wird.
 
+
 ## <a name="ncrontab-expressions"></a>NCRONTAB-Ausdrücke 
 
 Azure Functions verwendet die Bibliothek [NCronTab](https://github.com/atifaziz/NCrontab), um NCRONTAB-Ausdrücke zu interpretieren. Ein NCRONTAB-Ausdruck ähnelt einem CRON-Ausdruck, enthält jedoch am Anfang ein zusätzliches sechstes Feld für sekundengenaue Zeitangaben:
@@ -282,6 +283,8 @@ Die folgenden Beispiele zeigen NCRONTAB-Ausdrücke, die Sie für den Trigger mit
 |`"0 30 9 * * 1-5"`|werktags um 9:30 Uhr|
 |`"0 30 9 * Jan Mon"`|jeden Montag im Januar um 9:30|
 
+> [!NOTE]
+> Der NCRONTAB-Ausdruck erfordert das Format **six field** (Sechs Felder). Cron-Ausdrücke mit fünf Feldern werden in Azure nicht unterstützt.
 
 ### <a name="ncrontab-time-zones"></a>NCRONTAB-Zeitzonen
 

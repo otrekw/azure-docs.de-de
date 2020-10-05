@@ -3,12 +3,12 @@ title: Konfigurieren einer IP-Firewall für den Azure Relay-Namespace
 description: In diesem Artikel wird beschrieben, wie Sie mithilfe von Firewallregeln Verbindungen von bestimmten IP-Adressen mit Azure Relay-Namespaces zulassen.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: e47c5071a5fc7207d4eabc162fcb24ab6ad57d28
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 250158aff2ceb89e2823b711717f1d3a1cad438c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141855"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976026"
 ---
 # <a name="configure-ip-firewall-for-an-azure-relay-namespace"></a>Konfigurieren einer IP-Firewall für einen Azure Relay-Namespace
 Standardmäßig kann über das Internet auf Relaynamespaces zugegriffen werden, solange die Anforderung eine gültige Authentifizierung und Autorisierung aufweist. Mit der IP-Firewall können Sie den Zugriff auf eine Gruppe von IPv4-Adressen oder IPv4-Adressbereichen in der [CIDR-Notation (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) weiter einschränken.
@@ -29,7 +29,7 @@ In diesem Abschnitt erfahren Sie, wie Sie im Azure-Portal IP-Firewallregeln für
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem **Relaynamespace**.
 2. Wählen Sie im Menü auf der linken Seite die Option **Netzwerk** aus. Wenn Sie die Option **Alle Netzwerke** im Abschnitt **Zugriff zulassen von** auswählen, akzeptiert der Relaynamespace Verbindungen von jeder beliebigen IP-Adresse. Diese Einstellung entspricht einer Regel, bei der der IP-Adressbereich 0.0.0.0/0 zulässig ist. 
 
-    ![Firewall: Option „Alle Netzwerke“ ausgewählt](./media/ip-firewall/all-networks-selected.png)
+    ![Screenshot: Seite „Netzwerk“, auf der die Option „Alle Netzwerke“ ausgewählt ist](./media/ip-firewall/all-networks-selected.png)
 1. Um den Zugriff auf bestimmte Netzwerke und IP-Adressen einzuschränken, wählen Sie die Option **Ausgewählte Netzwerke** aus. Gehen Sie im Abschnitt **Firewall** wie folgt vor:
     1. Wählen Sie die Option **Client-IP-Adresse hinzufügen** aus, um Ihrer aktuellen Client-IP Zugriff auf den Namespace zu gewähren. 
     2. Geben Sie für **Adressbereich** eine bestimmte IPv4-Adresse oder einen Bereich von IPv4-Adressen in der CIDR-Notation ein. 

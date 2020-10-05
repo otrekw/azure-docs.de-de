@@ -3,12 +3,12 @@ title: Azure Service Bus-Tarife Premium und Standard
 description: Dieser Artikel beschreibt die Tarife Standard und Premium von Azure Service Bus. Er vergleicht diese Tarife und erläutert technische Unterschiede.
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 82f8dbce7c48cb6efea67de4297239915e46eac8
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 31c53a1375078cd5d185945cba55a6e5a6dd5ffb
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386349"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90966792"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Service Bus Premium- und Standard-Preisstufe für Messaging
 
@@ -72,7 +72,7 @@ Bei der Entscheidung über die Anzahl von Messagingeinheiten für Ihre Architekt
     - Bei einer CPU-Auslastung von ***unter 20 Prozent*** können Sie die Anzahl von Messagingeinheiten, die Ihrem Namespace zugeordnet sind, ggf. ***zentral herunterskalieren***.
     - Bei einer CPU-Auslastung von ***über 70 Prozent*** verbessert sich die Leistung Ihrer Anwendung, wenn Sie die Anzahl von Messagingeinheiten, die Ihrem Namespace zugeordnet sind, ***zentral hochskalieren***.
 
-Die Skalierung der Ressourcen, die einem Service Bus-Namespace zugeordnet werden, kann mithilfe von [Azure Automation-Runbooks](../automation/automation-quickstart-create-runbook.md) automatisiert werden.
+Informationen zum Konfigurieren eines Service Bus-Namespace für automatisches Skalieren (Erhöhen oder Verringern von Messagingeinheiten) finden Sie unter [Automatisches Aktualisieren von Messagingeinheiten](automate-update-messaging-units.md).
 
 > [!NOTE]
 > Die Ressourcen, die dem Namespace zugeordnet werden, können präventiv oder reaktiv **skaliert** werden.
@@ -96,10 +96,9 @@ Sie können auch [Premium-Namespaces mit Azure Resource Manager-Vorlagen erstell
 
 Weitere Informationen zum Service Bus-Messaging finden Sie unter folgenden Links:
 
-* [Introducing Azure Service Bus Premium Messaging (Blogbeitrag)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/) (Einführung in Azure Service Bus Premium-Messaging)
-* [Introducing Azure Service Bus Premium Messaging (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging) (Einführung in Azure Service Bus Premium-Messaging)
-* [Service Bus Messaging: Flexible Datenübermittlung in der Cloud](service-bus-messaging-overview.md)
-* [Erste Schritte mit Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md)
+- [Automatisches Aktualisieren von Messagingeinheiten](automate-update-messaging-units.md)
+- [Introducing Azure Service Bus Premium Messaging (Blogbeitrag)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/) (Einführung in Azure Service Bus Premium-Messaging)
+- [Introducing Azure Service Bus Premium Messaging (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging) (Einführung in Azure Service Bus Premium-Messaging)
 
 <!--Image references-->
 

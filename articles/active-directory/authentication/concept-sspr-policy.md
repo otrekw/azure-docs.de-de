@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: b0684735b32e03abe525b19dce6d9d887afe513b
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 4b729e975ddc9c184c1b0f39a6d3be548211cdfc
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194059"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052714"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Kennwortrichtlinien und Kontoeinschränkungen in Azure Active Directory
 
@@ -43,7 +43,7 @@ In der folgenden Tabelle sind die Richtlinien für Benutzernamen aufgeführt, di
 
 Eine Kennwortrichtlinie wird auf alle Benutzerkonten angewandt, die direkt in Azure AD erstellt und verwaltet werden. Diese Kennwortrichtlinie kann nicht geändert werden, Sie können jedoch [benutzerdefinierte gesperrte Kennwörter für den Azure AD-Kennwortschutz konfigurieren](tutorial-configure-custom-password-protection.md).
 
-Die Kennwortrichtlinien betreffen keine Benutzerkonten, die über Azure AD Connect aus einer lokalen AD DS-Umgebung synchronisiert werden.
+Die Kennwortrichtlinien betreffen keine Benutzerkonten, die über Azure AD Connect aus einer lokalen AD DS-Umgebung synchronisiert werden, sofern Sie nicht EnforceCloudPasswordPolicyForPasswordSyncedUsers aktivieren.
 
 Die folgenden Optionen für Kennwortrichtlinien sind definiert:
 
@@ -108,7 +108,7 @@ Ein *globaler Administrator* oder *Benutzeradministrator* kann mit dem [Microsof
 
 Sie können auch PowerShell-Cmdlets verwenden, um die Konfiguration für niemals ablaufende Kennwörter zu entfernen oder um anzuzeigen, für welche Benutzerkennwörter festgelegt ist, dass sie nie ablaufen.
 
-Diese Anleitung gilt für andere Anbieter wie Intune und Office 365, die ebenfalls auf Azure AD als Identitäts- und Verzeichnisdienste zurückgreifen. Kennwortablauf ist der einzige Teil der Richtlinie, der geändert werden kann.
+Diese Anleitung gilt für andere Anbieter wie Intune und Microsoft 365, die ebenfalls auf Azure AD als Identitäts- und Verzeichnisdienste zurückgreifen. Kennwortablauf ist der einzige Teil der Richtlinie, der geändert werden kann.
 
 > [!NOTE]
 > Nur Kennwörter für Benutzerkonten, die nicht über Azure AD Connect synchronisiert werden, können so konfiguriert werden, dass sie nicht ablaufen. Weitere Informationen zur Verzeichnissynchronisierung finden Sie unter [Integrieren Ihrer lokalen Verzeichnisse in Azure Active Directory](../hybrid/whatis-hybrid-identity.md).

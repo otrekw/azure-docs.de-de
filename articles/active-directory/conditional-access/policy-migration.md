@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33b1f76dd1489e00115d0f805add8d754038df84
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d1811d5b9ae4d3e34b48e1cdc156438f2bad98d1
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77185905"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601653"
 ---
 # <a name="conditional-access-classic-policy-migration"></a>Migration der klassischen Richtlinie für bedingten Zugriff
 
@@ -73,9 +73,9 @@ Die folgenden Aspekte sind im Zusammenhang mit der Konsolidierung von Richtlinie
    - Kombinieren mehrerer Bedingungen, wenn das für Ihr Szenario erforderlich ist. 
    - Auswählen mehrerer Erteilungsanforderungen als Zugriffssteuerung, die mit logischem *ODER* (eins der ausgewählten Steuerelemente muss erfüllt sein) oder mit logischen *UND* (alle aktivierten Steuerelemente müssen erfüllt sein) kombiniert werden können.
 
-### <a name="office-365-exchange-online"></a>Office 365 Exchange Online
+### <a name="exchange-online"></a>Exchange Online
 
-Wenn Sie klassische Richtlinien für **Office 365 Exchange Online** migrieren möchten, die **Exchange Active Sync** als Bedingung für Client-Apps beinhalten, ist eine Konsolidierung in einer neuen Richtlinie möglicherweise nicht möglich. 
+Wenn Sie klassische Richtlinien für **Exchange Online** migrieren möchten, die **Exchange Active Sync** als Bedingung für Client-Apps beinhalten, ist eine Konsolidierung in einer neuen Richtlinie eventuell nicht möglich. 
 
 Dies ist beispielsweise dann der Fall, wenn Sie alle Typen von Client-Apps unterstützen möchten. In einer neuen Richtlinie, die **Exchange Active Sync** als Bedingung für Client-Apps beinhaltet, können keine weiteren Client-Apps ausgewählt werden.
 
@@ -89,7 +89,7 @@ Wenn Sie über eine neue Richtlinie verfügen, in der **Exchange Active Sync** a
 
 ![Bedingungen für bedingten Zugriff](./media/policy-migration/16.png)
  
-App-basierte klassische Richtlinien für Office 365 Exchange Online, die **Exchange Active Sync** als Bedingung für Client-Apps enthalten, lassen **unterstützte** und **nicht unterstützte** Geräteplattformen zu. Zwar können in einer zugeordneten neuen Richtlinie keine einzelnen Geräteplattformen konfiguriert werden, jedoch können Sie die Unterstützung auf [unterstützte Geräteplattformen](concept-conditional-access-conditions.md#device-platforms) einschränken. 
+App-basierte klassische Richtlinien für Exchange Online, die **Exchange Active Sync** als Bedingung für Client-Apps enthalten, lassen **unterstützte** und **nicht unterstützte** Geräteplattformen zu. Zwar können in einer zugeordneten neuen Richtlinie keine einzelnen Geräteplattformen konfiguriert werden, jedoch können Sie die Unterstützung auf [unterstützte Geräteplattformen](concept-conditional-access-conditions.md#device-platforms) einschränken. 
 
 ![Bedingter Zugriff: Auswählen von Exchange ActiveSync](./media/policy-migration/65.png)
 

@@ -1,6 +1,6 @@
 ---
-title: Behandeln gängiger Probleme beim Hinzufügen einer Anwendung zu Azure Active Directory
-description: Behandeln gängiger Probleme, die beim Hinzufügen einer App zu Azure Active Directory auftreten.
+title: Behandeln gängiger Probleme beim Hinzufügen oder Entfernen einer Anwendung in Azure Active Directory
+description: Behandeln gängiger Probleme, die beim Hinzufügen oder Entfernen einer App in Azure Active Directory auftreten.
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -10,15 +10,15 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 09/11/2018
 ms.author: kenwith
-ms.openlocfilehash: 1502c97e625d3af128772451be8db4dd6187e3a7
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e9e97aec66d99d149320938540c48b9ad68eaf0e
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89410360"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068029"
 ---
-# <a name="troubleshoot-common-problem-adding-an-application-to-azure-active-directory"></a>Behandeln gängiger Probleme beim Hinzufügen einer Anwendung zu Azure Active Directory
-In diesem Artikel werden häufige Probleme beschrieben, die beim Hinzufügen einer App zu Azure Active Directory auftreten.
+# <a name="troubleshoot-common-problem-adding-or-removing-an-application-to-azure-active-directory"></a>Behandeln gängiger Probleme beim Hinzufügen oder Entfernen einer Anwendung in Azure Active Directory
+In diesem Artikel werden häufige Probleme beschrieben, die beim Hinzufügen oder Entfernen einer App in Azure Active Directory auftreten.
 
 ## <a name="i-clicked-the-add-button-and-my-application-took-a-long-time-to-appear"></a>Nach dem Klicken auf die Schaltfläche „Hinzufügen“ wurde meine Anwendung erst nach einiger Zeit angezeigt.
 Unter bestimmten Umständen kann es 1 bis 2 Minuten (manchmal auch länger) dauern, bis eine Anwendung angezeigt wird, nachdem sie Ihrem Verzeichnis hinzugefügt wurde. Auch wenn dies nicht der normalen erwarteten Leistung entspricht, können Sie sehen, dass die Hinzufügung der Anwendung durchgeführt wird, indem Sie auf das Symbol **Benachrichtigungen** (Glockensymbol) rechts oben im [Azure-Portal](https://portal.azure.com/) klicken und nach einer Benachrichtigung des Typs **In Bearbeitung** oder **Abgeschlossen** mit der Bezeichnung **Anwendung wird hinzugefügt** suchen.
@@ -34,6 +34,16 @@ Wenn beim Klicken auf die Schaltfläche **Hinzufügen** ein Fehler auftritt, wir
 Für allgemeine Informationen zu Anwendungen bietet sich der Artikel [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) als Ausgangspunkt an.
 
 Zudem finden Sie weitere Informationen zur Verwendung und Funktionsweise des einmaligen Anmeldens mit Azure AD in der [Dokumentbibliothek zu Azure AD-Anwendungen](https://docs.microsoft.com/azure/active-directory/active-directory-apps-index).
+
+## <a name="i-want-to-delete-an-application-but-the-delete-button-is-disabled"></a>Ich möchte eine Anwendung löschen, aber die Schaltfläche „Löschen“ ist deaktiviert
+
+Die Schaltfläche „Löschen“ ist in den folgenden Fällen deaktiviert:
+
+- Bei Unternehmensanwendungen, wenn Sie über keine der folgenden Rollen verfügen: Globaler Administrator, Cloudanwendungsadministrator, Anwendungsadministrator oder Besitzer des Dienstprinzipals.
+
+- Bei Microsoft-Anwendungen können Sie diese nicht von der Benutzeroberfläche löschen, unabhängig von Ihrer Rolle
+
+- Bei Dienstprinzipalen, die einer verwalteten Identität entsprechen. Dienstprinzipale für verwaltete Identitäten können auf dem Blatt „Enterprise apps“ (Unternehmens-Apps) nicht gelöscht werden. Sie müssen zur Azure-Ressource wechseln, um dies zu verwalten. Weitere Informationen zu verwalteten Identitäten finden Sie [hier](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
 
 ## <a name="how-to-see-the-details-of-a-portal-notification"></a>Anzeigen von Details einer Portalbenachrichtigung
 Sie können die Details von Portalbenachrichtigungen anzeigen, indem Sie folgende Schritte ausführen:

@@ -6,15 +6,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 06/29/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f29a7e48fc1872f83b5a6ce127f38c1a559b2691
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 51480a49aab2c1277eeb846c593fcb2bc858d1f0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762316"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983723"
 ---
 # <a name="about-virtual-hub-routing"></a>Informationen zum Routing virtueller Hubs
 
@@ -55,7 +55,7 @@ Verbindungen geben Routen dynamisch an eine Routingtabelle weiter. Bei einer VPN
 
 Für jeden virtuellen Hub ist auch eine **Keine-Routingtabelle** verfügbar. Die Weitergabe an die Keine-Routingtabelle bedeutet, dass von der Verbindung aus keine Routen weitergegeben werden müssen. VPN-, ExpressRoute- und Benutzer-VPN-Verbindungen geben Routen an denselben Satz von Routingtabellen weiter.
 
-:::image type="content" source="./media/about-virtual-hub-routing/concepts-propagation.png" alt-text="Weitergabe":::
+:::image type="content" source="./media/about-virtual-hub-routing/concepts-propagation.png" alt-text="Zuordnung":::
 
 ### <a name="labels"></a><a name="static"></a>Bezeichnungen
 Bezeichnungen sind ein Verfahren zum logischen Gruppieren von Routingtabellen. Dies ist insbesondere bei der Weitergabe von Routen von Verbindungen zu mehreren Routingtabellen hilfreich. Die Standardroutingtabelle weist beispielsweise eine integrierte Bezeichnung mit dem Namen „Standard“ auf. Wenn Benutzer Verbindungsrouten an die Bezeichnung „Standard“ weitergeben, gilt sie automatisch für alle Standardroutingtabellen über jeden Hub im virtuellen WAN. 
@@ -87,6 +87,7 @@ Beachten Sie beim Konfigurieren des Virtual WAN-Routings Folgendes:
 * Wenn Sie Azure Firewall in mehreren Regionen verwenden, müssen alle virtuellen Spoke-Netzwerke derselben Routingtabelle zugeordnet werden. Beispielsweise ist es nicht möglich, dass eine Teilmenge der VNETs Azure Firewall durchlaufen, während andere VNETs Azure Firewall im selben virtuellen Hub umgehen.
 * Eine einzelne IP-Adresse für den nächsten Hop kann pro VNET-Verbindung konfiguriert werden.
 * Der virtuelle Hub unterstützt keine statische Route für 0.0.0.0/0 und virtuelle Netzwerkverbindung für den nächsten Hop (oder eine IP-Adresse einer Appliance in der VNET-Verbindung).
+* Alle Informationen im Zusammenhang mit der Route 0.0.0.0/0 sind auf die Routingtabelle des lokalen Hubs beschränkt. Diese Route wird nicht über Hubs weitergegeben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: a6a185c61c32636dd0189bc5835f850348b196cd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: afc7e6c1ed41661c835a811a7cbcaa6f7771328e
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020353"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645652"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Behandeln von Problemen bei der Bewertung- und Abhängigkeitsvisualisierung
 
@@ -147,7 +147,8 @@ Dies kann vorkommen, wenn die Hyper-V-Virtualisierung auf dem physischen Server 
 
 ## <a name="dependency-visualization-in-azure-government"></a>Abhängigkeitsvisualisierung in Azure Government
 
-Azure Migrate ist bei der Funktion zur Visualisierung von Abhängigkeiten von Service Map abhängig. Da Service Map in Azure Government zurzeit nicht verfügbar ist, ist diese Funktionalität auch nicht in Azure Government verfügbar.
+Die Agent-basierte Abhängigkeitsanalyse wird in Azure Government nicht unterstützt. Sie können die Abhängigkeitsanalyse ohne Agent verwenden.
+
 
 ## <a name="dependencies-dont-show-after-agent-install"></a>Abhängigkeiten werden nicht nach der Installation von Agents angezeigt
 
@@ -160,7 +161,7 @@ Für virtuelle Windows-Computer:
 
     ![MMA-Status](./media/troubleshoot-assessment/mma-properties.png)
 
-Stellen Sie bei virtuellen Linux-Computern sicher, dass die Installationsbefehle für MMA und den Abhängigkeits-Agent erfolgreich ausgeführt wurden.
+Stellen Sie bei virtuellen Linux-Computern sicher, dass die Installationsbefehle für MMA und den Abhängigkeits-Agent erfolgreich ausgeführt wurden. Weitere Informationen zur Problembehandlung finden Sie [hier](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#post-installation-issues).
 
 ## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 
@@ -181,7 +182,6 @@ Bei der Azure Migrate-Serverbewertung mit der Abhängigkeitsanalyse ohne Agent k
 ## <a name="machines-show-install-agent"></a>Computer zeigen „Agent installieren“ an
 
 Nach dem Migrieren von Computern mit aktivierter Abhängigkeitsvisualisierung zu Azure zeigen Computer möglicherweise aufgrund des folgenden Verhaltens die Aktion „Agent installieren“ anstelle von „Abhängigkeiten anzeigen“ an:
-
 
 - Nach der Migration zu Azure werden die lokalen Computer ausgeschaltet, und die entsprechenden virtuellen Computer werden in Azure hochgefahren. Diese Computer beziehen eine andere MAC-Adresse.
 - Je nachdem, ob Sie die lokale IP-Adresse beibehalten haben oder nicht, haben Computer möglicherweise auch eine andere IP-Adresse.

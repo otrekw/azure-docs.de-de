@@ -7,12 +7,12 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/10/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 7e809c1990f31687acb559b5ecd6684bfec52483
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: f451b39d2757425a50a186a8212042cf887b136b
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423268"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662306"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Schemareferenzhandbuch zu Trigger- und Aktionstypen für Azure Logic Apps
 
@@ -160,7 +160,7 @@ Mit diesem Trigger wird ein Endpunkt überprüft bzw.*abgefragt*, indem [von Mic
 
 *Beispiel*
 
-Diese Triggerdefinition prüft den Posteingang eines Office 365-Outlook-Kontos jeden Tag auf E-Mails:
+Diese Triggerdefinition prüft den Posteingang eines Geschäfts-, Schul- oder Unikontos jeden Tag auf E-Mails:
 
 ```json
 "When_a_new_email_arrives": {
@@ -1101,7 +1101,7 @@ Diese Aktion führt Code aus, der den Namen Ihrer Logik-App abruft und den Text 
 
 *Beispiel 2*
 
-Diese Aktion führt Code in einer Logik-App aus, die ausgelöst wird, wenn eine neue E-Mail in einem Office 365 Outlook-Konto eingeht. Die Logik-App verwendet auch eine Aktion für das Senden einer Genehmigungs-E-Mail, die den Inhalt der empfangenen E-Mail zusammen mit einer Genehmigungsanforderung weiterleitet.
+Diese Aktion führt Code in einer Logik-App aus, die ausgelöst wird, wenn eine neue E-Mail in einem Geschäfts-, Schul- oder Unikonto eingeht. Die Logik-App verwendet auch eine Aktion für das Senden einer Genehmigungs-E-Mail, die den Inhalt der empfangenen E-Mail zusammen mit einer Genehmigungsanforderung weiterleitet.
 
 Der Code extrahiert die E-Mail-Adressen aus der `Body`-Eigenschaft des Triggers und gibt die Adressen zusammen mit dem `SelectedOption`-Eigenschaftswert aus der Genehmigungsaktion zurück. Die Aktion schließt explizit die Aktion zum Senden der Genehmigungs-E-Mail als Abhängigkeit im Attribut `explicitDependencies` > `actions` mit ein.
 

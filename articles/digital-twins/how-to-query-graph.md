@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: e6236d9ed5ed75b6b5e10914e668de545c48fc2c
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: 8d71cccfe0ebd049607d5b51e7211739c3a7209b
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055633"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468707"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Abfragen des Zwillingsdiagramms von Azure Digital Twins
 
@@ -174,6 +174,42 @@ Mithilfe von Kombinationsoperatoren können Sie jeden der oben genannten Abfrage
 | Von den Geräten, über die *Room 123* verfügt, geben Sie die MxChip-Geräte zurück, die die Rolle des Operators übernehmen | `SELECT device`<br>`FROM DigitalTwins space`<br>`JOIN device RELATED space.has`<br>`WHERE space.$dtid = 'Room 123'`<br>`AND device.$metadata.model = 'dtmi:contosocom:DigitalTwins:MxChip:3'`<br>`AND has.role = 'Operator'` |
 | Rufen Sie Zwillinge ab, die eine Beziehung namens *Enthält* mit einem anderen Zwilling aufweisen, der die ID *id1* besitzt | `SELECT Room`<br>`FROM DIGITIALTWINS Room`<br>`JOIN Thermostat ON Room.Contains`<br>`WHERE Thermostat.$dtId = 'id1'` |
 | Rufen Sie alle Räume dieses Raummodells ab, die in *floor11* enthalten sind | `SELECT Room`<br>`FROM DIGITALTWINS Floor`<br>`JOIN Room RELATED Floor.Contains`<br>`WHERE Floor.$dtId = 'floor11'`<br>`AND IS_OF_MODEL(Room, 'dtmi:contosocom:DigitalTwins:Room;1')` |
+
+## <a name="reference-expressions-and-conditions"></a>Referenz: Ausdrücke und Bedingungen
+
+Dieser Abschnitt enthält entsprechende Verweise für die Operatoren und Funktionen, die beim Schreiben von Azure Digital Twins-Abfragen verfügbar sind.
+
+### <a name="operators"></a>Operatoren
+
+Die folgenden Operatoren werden unterstützt:
+
+| Familie | Operatoren |
+| --- | --- |
+| Logisch |AND, OR, NOT |
+| Vergleich |=, !=, <, >, <=, >= |
+| Enthält | IN, NIN |
+
+### <a name="functions"></a>Funktionen
+
+Folgende Typüberprüfungs- und Umwandlungsfunktionen werden unterstützt:
+
+| Funktion | Beschreibung |
+| -------- | ----------- |
+| IS_DEFINED | Gibt einen booleschen Wert zurück, um anzugeben, ob der Eigenschaft ein Wert zugewiesen wurde. Dies wird nur unterstützt, wenn es sich bei dem Wert um einen primitiven Typ handelt. Primitive Typen umfassen Zeichenfolgen, boolesche Werte, numerische Werte und `null`. DateTime, Objekttypen und Arrays werden nicht unterstützt. |
+| IS_OF_MODEL | Gibt einen booleschen Wert zurück, der angibt, ob der angegebene Zwilling dem angegebenen Modelltyp entspricht. |
+| IS_BOOL | Gibt einen booleschen Wert zurück, der angibt, ob der angegebene Ausdruck vom Typ „boolesch“ ist. |
+| IS_NUMBER | Gibt einen booleschen Wert zurück, der angibt, ob der angegebene Ausdruck vom Typ „Zahl“ ist. |
+| IS_STRING | Gibt einen booleschen Wert zurück, der angibt, ob der angegebene Ausdruck vom Typ „Zeichenfolge“ ist. |
+| IS_NULL | Gibt einen booleschen Wert zurück, der angibt, ob der angegebene Ausdruck vom Typ „NULL“ ist. |
+| IS_PRIMITIVE | Gibt einen booleschen Wert zurück, der angibt, ob der angegebene Ausdruck ein Grundtyp ist (Zeichenfolge, boolesch, numerisch oder `null`). |
+| IS_OBJECT | Gibt einen booleschen Wert zurück, der angibt, ob der angegebene Ausdruck vom Typ „JSON-Objekt“ ist. |
+
+Folgende Zeichenfolgenfunktionen werden unterstützt:
+
+| Funktion | Beschreibung |
+| -------- | ----------- |
+| STARTS_WITH(x, y) | Gibt einen booleschen Wert zurück, um anzugeben, ob der erste Zeichenfolgenausdruck mit dem zweiten beginnt. |
+| ENDS_WITH(x, y) | Gibt einen booleschen Wert zurück, um anzugeben, ob der erste Zeichenfolgenausdruck mit dem zweiten endet. |
 
 ## <a name="run-queries-with-an-api-call"></a>Ausführen von Abfragen mit einem API-Aufruf
 

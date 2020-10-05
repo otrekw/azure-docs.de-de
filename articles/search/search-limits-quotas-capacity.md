@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: 62a0b0ec5312b4d00724fe7c13a5e20b5d35e34f
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: b541af5351a0dd98e782c584d869de0d98445b74
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88926863"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462512"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Dienstgrenzwerte in der kognitiven Azure-Suche
 
@@ -96,10 +96,26 @@ Es gibt eine maximale Ausführungsdauer, um den Dienst als Ganzes ausgewogen und
 
 <sup>4</sup> Maximal 30 Fähigkeiten pro Qualifikationsgruppe.
 
-<sup>5</sup> Die KI-Anreicherung und die Bildanalyse sind rechenintensive Vorgänge, die unverhältnismäßig große Mengen der verfügbaren Verarbeitungskapazität verbrauchen. Die Laufzeit für diese Workloads wurde verkürzt, damit andere Aufträge in der Warteschlange bessere Chancen haben, ausgeführt zu werden.  
+<sup>5</sup> Die KI-Anreicherung und die Bildanalyse sind rechenintensive Vorgänge, die unverhältnismäßig große Mengen der verfügbaren Verarbeitungskapazität verbrauchen. Die Laufzeit für diese Workloads wurde verkürzt, damit andere Aufträge in der Warteschlange bessere Chancen haben, ausgeführt zu werden.
 
 > [!NOTE]
 > Wie unter [Indexgrenzwerte](#index-limits) beschrieben, erzwingen Indexer die Obergrenze von 3.000 Elementen auch für alle komplexen Sammlungen pro Dokument – ab der neuesten allgemein verfügbaren API-Version, die komplexe Typen (`2019-05-06`) unterstützt. Dies bedeutet, dass dieser Grenzwert für Sie nicht gilt, wenn Sie Ihren Indexer mit einer früheren API-Version erstellt haben. Zur Sicherstellung der maximalen Kompatibilität wird ein Indexer, der mit einer früheren API-Version erstellt und dann mit API-Version `2019-05-06` oder höher aktualisiert wurde, trotzdem von der Begrenzung **ausgenommen**. Kunden sollten sich dieser negativen Auswirkungen, die wie oben erwähnt mit der Verwendung sehr komplexer Sammlungen verbunden sind, bewusst sein. Wir empfehlen Ihnen dringend, für die Erstellung aller neuen Indexer die neueste allgemein verfügbare API-Version zu nutzen.
+
+### <a name="shared-private-link-resource-limits"></a>Beschränkungen für freigegebene Private Link-Ressourcen
+
+> [!NOTE]
+> Indexer haben über private Endpunkte, die über die [API für freigegebene Private Link-Ressourcen](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources) verwaltet werden, sicheren Zugriff auf Ressourcen. Eine Beschreibung hierzu finden Sie in [dieser Schrittanleitung](search-indexer-howto-access-private.md).
+
+| Resource | Kostenlos | Basic | S1 | S2 | S3 | S3 HD | L1 | L2
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Unterstützung für den Indexer des privaten Endpunkts | Nein | Ja | Ja | Ja | Ja | Nein | Ja | Ja |
+| Unterstützung für private Endpunkte für Indexer mit einem Skillset<sup>1</sup> | Nein | Nein | Nein | Ja | Ja | Nein | Ja | Ja |
+| Maximale Anzahl privater Endpunkte | – | 10 oder 30 | 100 | 400 | 400 | – | 20 | 20 |
+| Maximale Anzahl unterschiedlicher Ressourcentypen<sup>2</sup> | N/V | 4 | 7 | 15 | 15 | N/V | 4 | 4 |
+
+<sup>1</sup> KI-Anreicherung und Bildanalyse sind rechenintensiv und nehmen unverhältnismäßig viel verfügbare Verarbeitungsleistung in Anspruch. Daher kann sich die Ausführung in einer privaten Umgebung bei günstigeren Suchdiensttarifen negativ auf die Leistung und Stabilität des Suchdiensts auswirken.
+
+<sup>2</sup> Die Anzahl der unterschiedlichen Ressourcentypen wird als die Anzahl der eindeutigen `groupId`-Werte berechnet, die in allen freigegebenen Private Link-Ressourcen für einen bestimmten Dienst verwendet werden. Der Status der jeweiligen Ressource spielt dabei keine Rolle.
 
 ## <a name="synonym-limits"></a>Synonymlimits
 
@@ -108,7 +124,7 @@ Die maximale Anzahl der Synonymzuordnungen variiert je nach Tarif. Jede Regel ka
 | Resource | Kostenlos | Basic | S1 | S2 | S3 | S3-HD |L1 | L2 |
 | -------- | -----|------ |----|----|----|-------|---|----|
 | Maximale Synonymzuordnungen |3 |3|5 |10 |20 |20 | 10 | 10 |
-| Maximale Anzahl von Regeln pro Zuordnung |5\.000 |20000|20000 |20000 |20000 |20000 | 20000 | 20000  |
+| Maximale Anzahl von Regeln pro Zuordnung |5.000 |20000|20000 |20000 |20000 |20000 | 20000 | 20000  |
 
 ## <a name="queries-per-second-qps"></a>Abfragen pro Sekunde (QPS)
 
@@ -116,7 +132,7 @@ QPS-Schätzungen müssen unabhängig von jedem Kunde erstellt werden. Indexgrö�
 
 Schätzungen sind besser vorhersagbar, wenn sie für Dienste berechnet werden, die auf dedizierten Ressourcen ausgeführt werden (Basic- und Standard-Tarife). Sie können den QPS-Wert genauer schätzen, da Sie die Kontrolle über mehr Parameter haben. Anleitungen zur Herangehensweise für Schätzungen finden Sie unter [Leistung und Optimierung der kognitiven Azure-Suche](search-performance-optimization.md).
 
-Für die Tarife vom Typ „Storage Optimized“ (L1 und L2) sollten Sie einen geringeren Abfragedurchsatz und eine höhere Latenz als für die Tarife vom Typ „Standard“ erwarten. 
+Für die Tarife vom Typ „Storage Optimized“ (L1 und L2) sollten Sie einen geringeren Abfragedurchsatz und eine höhere Latenz als für die Tarife vom Typ „Standard“ erwarten.
 
 ## <a name="data-limits-ai-enrichment"></a>Datengrenzwerte (KI-Anreicherung)
 

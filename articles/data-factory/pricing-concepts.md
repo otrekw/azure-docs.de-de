@@ -9,13 +9,13 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/27/2019
-ms.openlocfilehash: d679dbb7a14767b83d6508e4b1e637584f33210a
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.date: 09/14/2020
+ms.openlocfilehash: a80e0f1b62257fdbce6598c9cc4088701cc2ae9c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949954"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983609"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Grundlegendes zu Azure Data Factory-Preisen anhand von Beispielen
 
@@ -38,7 +38,7 @@ Um dieses Szenario zu realisieren, müssen Sie eine Pipeline mit folgenden Eleme
 
 3. Einen Zeitplantrigger, der die Pipeline einmal pro Stunde ausführt.
 
-   ![Szenario1](media/pricing-concepts/scenario1.png)
+   ![Diagramm einer Pipeline mit einem Zeitplantrigger. In der Pipeline fließt die Kopieraktivität in ein Eingabedataset, das zu einem verknüpften AWS-S3-Dienst fließt. Außerdem fließt die Kopieraktivität auch in ein Ausgabedataset, das zu einem verknüpften Azure Storage-Dienst fließt.](media/pricing-concepts/scenario1.png)
 
 | **Vorgänge** | **Typen und Einheiten** |
 | --- | --- |
@@ -69,7 +69,7 @@ Um dieses Szenario zu realisieren, müssen Sie eine Pipeline mit folgenden Eleme
 2. Eine Azure Databricks-Aktivität für die Datentransformation.
 3. Ein Zeitplantrigger, um die Pipeline einmal pro Stunde auszuführen.
 
-![Szenario2](media/pricing-concepts/scenario2.png)
+![Diagramm einer Pipeline mit einem Zeitplantrigger. In der Pipeline fließt die Kopieraktivität in ein Eingabedataset, ein Ausgabedataset und eine Databricks-Aktivität, die in Azure Databricks ausgeführt wird. Das Eingabedataset fließt in einen verknüpften AWS-S3-Dienst. Das Ausgabedataset fließt in einen verknüpften Azure Storage-Dienst.](media/pricing-concepts/scenario2.png)
 
 | **Vorgänge** | **Typen und Einheiten** |
 | --- | --- |
@@ -103,7 +103,7 @@ Um dieses Szenario zu realisieren, müssen Sie eine Pipeline mit folgenden Eleme
 3. Eine Azure Databricks-Aktivität für die Datentransformation.
 4. Ein Zeitplantrigger, um die Pipeline einmal pro Stunde auszuführen.
 
-![Szenario3](media/pricing-concepts/scenario3.png)
+![Diagramm einer Pipeline mit einem Zeitplantrigger. In der Pipeline fließt die Kopieraktivität in ein Eingabedataset, ein Ausgabedataset und eine Suchaktivität, die in eine Databricks-Aktivität fließt, die in Azure Databricks ausgeführt wird. Das Eingabedataset fließt in einen verknüpften AWS-S3-Dienst. Das Ausgabedataset fließt in einen verknüpften Azure Storage-Dienst.](media/pricing-concepts/scenario3.png)
 
 | **Vorgänge** | **Typen und Einheiten** |
 | --- | --- |
@@ -130,9 +130,13 @@ Um dieses Szenario zu realisieren, müssen Sie eine Pipeline mit folgenden Eleme
 
 ## <a name="using-mapping-data-flow-debug-for-a-normal-workday"></a>Verwenden der Zuordnungsdatenfluss-Debugfunktion für einen normalen Arbeitstag
 
-Als Dateningenieur sind Sie täglich für das Entwerfen, Erstellen und Testen von Mapping Data Flows verantwortlich. Sie melden sich morgens in der ADF-Oberfläche an und aktivieren den Debugmodus für Datenflüsse. Die Standardgültigkeitsdauer (TTL) für Debugsitzungen ist 60 Minuten. Sie arbeiten den ganzen Tag 8 Stunden lang, sodass Ihre Debugsitzung nie abläuft. Daher fallen für diesen Tag folgende Gebühren an:
+Als Dateningenieur ist Sam täglich für das Entwerfen, Erstellen und Testen von Zuordnungsdatenflüssen verantwortlich. Sam melden sich morgens in der ADF-Benutzeroberfläche an und aktiviert den Debugmodus für Datenflüsse. Die Standardgültigkeitsdauer (TTL) für Debugsitzungen ist 60 Minuten. Sam arbeitet den ganzen Tag 8 Stunden lang, sodass die Debugsitzung nie abläuft. Daher fallen für diesen Tag folgende Gebühren für Sam an:
 
 **8 (Stunden) x 8 (computeoptimierte Kerne) x 0,193 US-$ = 12,35 US-$**
+
+Gleichzeitig meldet sich Chris, ein anderer Datenengineer, ebenfalls bei der Browserbenutzeroberfläche von ADF an, um Datenprofile zu erstellen und an ETL-Entwürfen zu arbeiten. Chris arbeitet nicht wie Sam den ganzen Tag in ADF. Chris muss lediglich den Datenflussdebugger für eine Stunde innerhalb desselben Zeitraums und an demselben Tag wie Sam oben verwenden. Diese Gebühren fallen bei Chris für die Debugnutzung an:
+
+**1 (Stunde) × 8 (universelle Kerne) × 0,274 USD = 2,19 USD**
 
 ## <a name="transform-data-in-blob-store-with-mapping-data-flows"></a>Transformieren von Daten im Blobspeicher mit Zuordnungsdatenflüssen
 

@@ -1,6 +1,6 @@
 ---
 title: Konfigurieren von SaaS-Apps für die B2B-Zusammenarbeit – Azure AD
-description: Code- und PowerShell-Beispiele für die Azure Active Directory B2B-Zusammenarbeit
+description: Erfahren Sie, wie Sie SaaS-Apps für Azure Active Directory B2B Collaboration konfigurieren und weitere verfügbare Ressourcen anzeigen.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b8f38d42003645e6d6544d5c2064a0c8e692c0f
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: e0db5e609a5e6b7d74809810a50f86d72ae85675
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87907547"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705509"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>Konfigurieren von SaaS-Apps für die B2B-Zusammenarbeit
 
@@ -105,5 +105,5 @@ Weitere Artikel zur Azure AD B2B-Zusammenarbeit:
 - [Was ist die Azure AD B2B-Zusammenarbeit?](what-is-b2b.md)
 - [Dynamische Gruppen und B2B-Zusammenarbeit](use-dynamic-groups.md)
 - [Zuordnen von Benutzeransprüchen für die B2B-Zusammenarbeit](claims-mapping.md)
-- [Externe Office 365-Freigaben](o365-external-user.md)
+- [Externe Microsoft 365-Freigaben](o365-external-user.md)
 

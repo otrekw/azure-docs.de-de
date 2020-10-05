@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/21/2020
+ms.date: 9/16/2020
 ms.author: b-juche
-ms.openlocfilehash: 9facbc1629b8e1330c6bbafb4444d5bfc237d16f
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 870863cc0b1a98aa0efe671da4a8f6a5bb7f53aa
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752298"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90708103"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Ressourcenlimits für Azure NetApp Files
 
@@ -44,7 +44,8 @@ In der folgenden Tabelle werden die Ressourcengrenzwerte für Azure NetApp Files
 |  Maximale Größe eines einzelnen Volumes     |    ca. 100 TiB    |    Nein    |
 |  Maximale Größe einer einzelnen Datei     |    16 TiB    |    Nein    |    
 |  Maximale Größe der Verzeichnismetadaten in einem einzelnen Verzeichnis      |    320 MB    |    Nein    |    
-|  Maximale Anzahl von Dateien ([maxfiles](#maxfiles)) pro Volume     |    100 Mio.    |    Ja    |    
+|  Maximale Anzahl von Dateien ([maxfiles](#maxfiles)) pro Volume     |    100 Mio.    |    Ja    |   
+|  Anzahl der regionsübergreifenden Datenschutzvolumes für die regionsübergreifende Replikation (Zielvolumes)     |    5    |    Ja    |     
 
 Weitere Informationen finden Sie unter [Häufig gestellte Fragen zur Kapazitätsverwaltung](azure-netapp-files-faqs.md#capacity-management-faqs).
 
@@ -56,11 +57,11 @@ Der Dienst passt das maxfiles-Limit für ein Volume basierend auf seiner bereitg
 
 |    Volumegröße (Kontingent)     |  Automatische Neuanpassung des maxfiles-Limits    |
 |----------------------------|-------------------|
-|    < 1 TiB                 |    20 Mio.     |
-|    >= 1 TiB, aber < 2 TiB    |    40 Mio.     |
-|    >= 2 TiB, aber < 3 TiB    |    60 Mio.     |
-|    >= 3 TiB, aber < 4 TiB    |    80 Mio.     |
-|    >= 4 TiB                |    100 Mio.    |
+|    <= 1 TiB                |    20 Mio.     |
+|    > 1 TiB, aber <= 2 TiB    |    40 Mio.     |
+|    > 2 TiB, aber <= 3 TiB    |    60 Mio.     |
+|    > 3 TiB, aber <= 4 TiB    |    80 Mio.     |
+|    > 4 TiB                 |    100 Mio.    |
 
 Wenn Sie für ein Volume bereits ein Kontingent von mindestens 4 TiB zugeordnet haben, können Sie eine [Supportanfrage](#limit_increase) initiieren, um das maxfiles-Limit auf über 100 Millionen zu erhöhen.
 
@@ -83,9 +84,10 @@ Sie können eine Supportanfrage an den Azure-Support stellen, um die anpassbaren
         |  Resource  |    Übergeordnete Ressourcen      |    Angeforderte neue Grenzwerte     |    Grund für die Kontingenterhöhung       |
         |----------------|------------------------------|---------------------------------|------------------------------------------|
         |  Konto |  *Abonnement-ID*   |  *Angeforderte neue maximale Anzahl an **Konten***    |  *Szenario oder Anwendungsfall, das zur Anforderung geführt hat*  |
-        |  Pool    |  *Abonnement-ID, Konto-URI*  |  *Angeforderte neue maximale Anzahl an **Pools***   |  *Szenario oder Anwendungsfall, das zur Anforderung geführt hat*  |
-        |  Volume  |  *Abonnement-ID, Konto-URI, Pool-URI*   |  *Angeforderte neue maximale Anzahl an **Volumes***     |  *Szenario oder Anwendungsfall, das zur Anforderung geführt hat*  |
-        |  Maxfiles  |  *Abonnement-ID, Konto-URI, Pool-URI, Volume-URI*   |  *Angeforderter neuer maximaler **maxfiles**-Wert*     |  *Szenario oder Anwendungsfall, das zur Anforderung geführt hat*  |    
+        |  Pool    |  *Abonnement-ID, NetApp-Konto-URI*  |  *Angeforderte neue maximale Anzahl an **Pools***   |  *Szenario oder Anwendungsfall, das zur Anforderung geführt hat*  |
+        |  Volume  |  *Abonnement-ID, NetApp-Konto-URI, Kapazitätspool-URI*   |  *Angeforderte neue maximale Anzahl an **Volumes***     |  *Szenario oder Anwendungsfall, das zur Anforderung geführt hat*  |
+        |  Maxfiles  |  *Abonnement-ID, NetApp-Konto-URI, Kapazitätspool-URI, Volume-URI*   |  *Angeforderter neuer maximaler **maxfiles**-Wert*     |  *Szenario oder Anwendungsfall, das zur Anforderung geführt hat*  |    
+        |  Datenschutzvolumes für die regionsübergreifende Replikation  |  *Abonnement-ID, NetApp-Zielkonto-URI, Zielkapazitätspool-URI, NetApp-Quellkonto-URI, Quellkapazitätspool-URI, Quellvolume-URI*   |  *Angeforderte neue maximale Anzahl der **regionsübergreifenden Datenschutzvolumes für die regionsübergreifende Replikation (Zielvolumes)***     |  *Szenario oder Anwendungsfall, das zur Anforderung geführt hat*  |    
 
     2. Legen Sie die entsprechende Supportmethode fest, und geben Sie Ihre Kontaktinformationen an.
 

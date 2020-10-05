@@ -3,12 +3,12 @@ title: Sicherheitskontrollen
 description: Erfahren Sie mehr über die Sicherheitskontrollen, die im Azure Backup-Dienst verwendet werden. Diese Kontrollen helfen dem Dienst, Sicherheitsrisiken zu verhindern, zu erkennen und darauf zu reagieren.
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: ce1ca0a79476e4985569c677b58892fad91866a5
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 7ff3ff5c1b024a228778b0214e67239d3c8ab721
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892961"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89418754"
 ---
 # <a name="security-controls-for-azure-backup"></a>Sicherheitskontrollen für Azure Backup
 
@@ -22,8 +22,9 @@ In diesem Artikel werden die in Azure Backup integrierten Sicherheitskontrollen 
 |---|---|--|--|
 | Unterstützung des Dienstendpunkts| Nein |  |  |
 | Unterstützung der VNet-Einschleusung| Nein |  |  |
-| Unterstützung von Netzwerkisolation und Firewall| Ja | Die Tunnelerzwingung wird für VM-Sicherungen unterstützt. Die Tunnelerzwingung wird für Workloads in virtuellen Computern nicht unterstützt. |  |
-| Unterstützung der Tunnelerzwingung| Nein |  |  |
+| Unterstützung von Netzwerkisolation und Firewall| Ja | |  |
+| Unterstützung der Tunnelerzwingung für virtuelle Azure-Computer | Ja  |  |  |
+| Unterstützung für Tunnelerzwingung für Anwendungen, die auf virtuellen Azure-Computern ausgeführt werden| Nein  |  |  |
 
 ## <a name="monitoring--logging"></a>Überwachung und Protokollierung
 

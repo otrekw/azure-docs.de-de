@@ -1,14 +1,14 @@
 ---
 title: Übersicht über Recovery Services-Tresore
-description: Übersicht über Recovery Services-und Azure Backup-Tresore sowie Vergleich dieser Tresore
+description: Übersicht über Recovery Services-Tresore
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: 6b6550bc8c5221547d55ad1e81a985b8ecd303e0
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: cc09c1ffa84bc66e8fe2c48c80b8aea0977762ba
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88889616"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975152"
 ---
 # <a name="recovery-services-vaults-overview"></a>Übersicht über Recovery Services-Tresore
 
@@ -30,7 +30,7 @@ Bei einem Recovery Services-Tresor handelt es sich um eine Entität, in der alle
 
 - Azure Backup übernimmt automatisch die Speicherung für den Tresor. Informieren Sie sich, wie [Speichereinstellungen geändert werden können](./backup-create-rs-vault.md#set-storage-redundancy).
 
-- Weitere Informationen zur Speicherredundanz finden Sie in diesen Artikeln zur [Georedundanz](../storage/common/storage-redundancy.md) und zur [lokalen](../storage/common/storage-redundancy.md) Redundanz.
+- Weitere Informationen zur Speicherredundanz finden Sie in diesen Artikeln zur [geografischen](../storage/common/storage-redundancy.md#geo-zone-redundant-storage), [lokalen](../storage/common/storage-redundancy.md#locally-redundant-storage) und [zonalen](../storage/common/storage-redundancy.md#zone-redundant-storage) Redundanz.
 
 ## <a name="encryption-settings-in-the-recovery-services-vault"></a>Verschlüsselungseinstellungen im Recovery Services-Tresor
 

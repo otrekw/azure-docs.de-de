@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 12/20/2017
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 4d6dac98125827a303b8370b5a0a959ea425fb57
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 6b9a951787df6775b5159433c7172e767ff955b2
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401451"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566074"
 ---
 # <a name="troubleshooting-network-performance"></a>Beheben von Problemen bei der Netzwerkleistung
 ## <a name="overview"></a>Übersicht
@@ -121,7 +121,7 @@ Wenn Sie nicht sicher sind, wo sich der Rand der Cloud tatsächlich befindet, ka
 ![2][2]
 
 >[!NOTE]
-> Beachten Sie, dass sich MSEE nicht in der Azure-Cloud befindet. ExpressRoute befindet sich am Rand des Microsoft-Netzwerks und nicht in Azure. Nachdem Sie mit ExpressRoute eine Verbindung mit einem MSEE hergestellt haben, wird eine Verbindung mit dem Microsoft-Netzwerk hergestellt. Von hier aus gelangen Sie zu allen Clouddiensten, z.B. zu Office 365 (mit Microsoft-Peering) oder Azure (mit privatem Peering und/oder Microsoft-Peering).
+> Beachten Sie, dass sich MSEE nicht in der Azure-Cloud befindet. ExpressRoute befindet sich am Rand des Microsoft-Netzwerks und nicht in Azure. Nachdem Sie mit ExpressRoute eine Verbindung mit einem MSEE hergestellt haben, wird eine Verbindung mit dem Microsoft-Netzwerk hergestellt. Von hier aus gelangen Sie zu allen Clouddiensten, z. B. zu Microsoft 365 (mit Microsoft-Peering) oder Azure (mit privatem Peering und/oder Microsoft-Peering).
 >
 >
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: ea9a0e52ce424459b6c402eb136d06dd370bab7d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: fe85dfb39a9787376221cb9beeea11bec35293f4
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548040"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604460"
 ---
 # <a name="tutorial-configure-mypolicies-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von myPolicies für die automatische Benutzerbereitstellung
 
@@ -101,7 +101,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![Registerkarte „Bereitstellung“](common/provisioning-automatic.png)
+    ![Bereitstellungsmodus „Automatisch“](common/provisioning-automatic.png)
 
 5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** in das Feld **Mandanten-URL** die URL `https://<myPoliciesCustomDomain>.mypolicies.com/scim` ein. Dabei steht `<myPoliciesCustomDomain>` für Ihre benutzerdefinierte myPolicies-Domäne. Sie können Ihre myPolicies-Kundendomäne über Ihre URL abrufen.
 Beispiel: `<demo0-qa>`.mypolicies.com
@@ -122,7 +122,18 @@ Beispiel: `<demo0-qa>`.mypolicies.com
 
 10. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit myPolicies synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in myPolicies für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-    ![Benutzerzuordnungen in myPolicies](media/mypolicies-provisioning-tutorial/userattribute.png)
+   |attribute|type|
+   |---|---|
+   |userName|String|
+   |aktiv|Boolean|
+   |emails[type eq "work"].value|String|
+   |name.givenName|String|
+   |name.familyName|String|
+   |name.formatted|String|
+   |externalId|String|
+   |addresses[type eq "work"].country|String|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|Verweis|
+
 
 11. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
@@ -146,6 +157,10 @@ Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden S
 
 * Für myPolicies ist immer **userName**, **email** und **externalId** erforderlich.
 * myPolicies unterstützt das endgültige Löschen für Benutzerattribute nicht.
+
+## <a name="change-log"></a>Änderungsprotokoll
+
+* 15.9.2020: Unterstützung für das Attribut „country“ für Benutzer wurde hinzugefügt.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

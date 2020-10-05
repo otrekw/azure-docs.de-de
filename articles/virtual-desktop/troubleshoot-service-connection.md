@@ -1,17 +1,17 @@
 ---
 title: Problembehandlung bei Windows Virtual Desktop-Dienstverbindungen – Azure
-description: Informationen zum Beheben von Problemen beim Einrichten von Clientverbindungen in einer Windows Virtual Desktop-Mandantenumgebung
+description: Informationen zum Beheben von Problemen beim Einrichten von Dienstverbindungen in einer Windows Virtual Desktop-Mandantenumgebung
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 06/19/2020
+ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c6d0360a4fe957f43e38fd892cef6b4ab0a2325a
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 5eb5602b8330906311df4a0d1f59bc5e5130237e
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009374"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089903"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Windows Virtual Desktop-Dienstverbindungen
 
@@ -39,6 +39,12 @@ Ein Benutzer kann Remotedesktopclients starten und sich authentifizieren, ihm we
 3. Wenn der Webclient verwendet wird, vergewissern Sie sich, dass keine Probleme mit zwischengespeicherten Anmeldeinformationen vorliegen.
 
 4. Wenn der Benutzer einer Azure AD-Benutzergruppe (Active Directory) angehört, stellen Sie sicher, dass die Benutzergruppe eine Sicherheitsgruppe und keine Verteilergruppe ist. Azure AD-Verteilergruppen werden von Windows Virtual Desktop nicht unterstützt.
+
+## <a name="user-loses-existing-feed-and-no-remote-resource-is-displayed-no-feed"></a>Der Benutzer verliert den vorhandenen Feed, und es wird keine Remoteressource angezeigt (kein Feed)
+
+Dieser Fehler tritt normalerweise auf, nachdem ein Benutzer sein Abonnement von einem Azure AD-Mandanten zu einem anderen verschoben hat. Aufgrund dieses Fehlers kann der Dienst die Benutzerzuweisungen nicht mehr verfolgen, da diese weiterhin an den alten Azure AD-Mandanten gebunden sind.
+
+Um dieses Problem zu beheben, müssen Sie lediglich die Benutzer ihren jeweiligen Anwendungsgruppen erneut zuweisen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,21 +1,21 @@
 ---
 title: Verwenden von Tools für Azure IoT Hub Device Provisioning-Dienst-SDKs
 description: In diesem Dokument werden die Tools behandelt, die in Device Provisioning Service-SDKs (DPS) von Azure IoT Hub für die Entwicklung bereitgestellt werden
-author: robinsh
-ms.author: robinsh
+author: wesmc7777
+ms.author: wesmc
 ms.date: 04/09/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: b817b3cfe47ed08cae9e7e0b1c2c24363f2ccfed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28d682a9ca698afb72d08b4d111562c725d46996
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84691627"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530844"
 ---
 # <a name="how-to-use-tools-provided-in-the-sdks-to-simplify-development-for-provisioning"></a>Gewusst wie: Verwenden von Tools, die in den SDKs zur Vereinfachung der Entwicklung für die Bereitstellung zur Verfügung stehen
-Der IoT Hub Device Provisioning-Dienst vereinfacht den Bereitstellungsprozess mit [automatischer Just-in-Time-Bereitstellung](concepts-auto-provisioning.md) ohne manuelles Eingreifen in sicherer und skalierbarer Weise.  Der Sicherheitsnachweis in Form eines X.509-Zertifikats oder von Trusted Platform Module (TPM) ist erforderlich.  Microsoft pflegt zur Verbesserung des Vertrauens in die Absicherung der IoT-Bereitstellung auch Partnerschaften mit [anderen Sicherheitshardwarepartnern](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/). Umfassende Kenntnisse über die Hardwaresicherheitsanforderungen zu besitzen kann für Entwickler eine große Herausforderung sein. Mit einem Satz von Provisioning-Dienst-SDKs von Azure IoT können Entwickler mühelos Clients erstellen, die mit dem Provisioning-Dienst kommunizieren. Die SDKs bieten auch Beispiele für häufige Szenarien sowie eine Reihe von Tools, die den Sicherheitsnachweis bei der Entwicklung vereinfachen.
+IoT Hub Device Provisioning Service vereinfacht den Bereitstellungsprozess mit Just-in-Time-[Bereitstellung](about-iot-dps.md#provisioning-process) ohne manuelles Eingreifen in sicherer und skalierbarer Weise.  Der Sicherheitsnachweis in Form eines X.509-Zertifikats oder von Trusted Platform Module (TPM) ist erforderlich.  Microsoft pflegt zur Verbesserung des Vertrauens in die Absicherung der IoT-Bereitstellung auch Partnerschaften mit [anderen Sicherheitshardwarepartnern](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/). Umfassende Kenntnisse über die Hardwaresicherheitsanforderungen zu besitzen kann für Entwickler eine große Herausforderung sein. Mit einem Satz von Provisioning-Dienst-SDKs von Azure IoT können Entwickler mühelos Clients erstellen, die mit dem Provisioning-Dienst kommunizieren. Die SDKs bieten auch Beispiele für häufige Szenarien sowie eine Reihe von Tools, die den Sicherheitsnachweis bei der Entwicklung vereinfachen.
 
 ## <a name="trusted-platform-module-tpm-simulator"></a>Simulator für Trusted Platform Module (TPM)
 [TPM](https://docs.microsoft.com/azure/iot-dps/concepts-security) kann sich auf einen Standard zum sicheren Speichern von Schlüsseln, mit denen die Plattform authentifiziert wird, oder auf die E/A-Schnittstelle beziehen, die für die Interaktion mit den Modulen zum Implementieren des Standards verwendet wird. TPMs können als diskrete Hardware, integrierte Hardware, firmwarebasiert oder softwarebasiert vorhanden sein.  In der Produktion befindet sich TPM auf dem Gerät, entweder als diskrete Hardware, integrierte Hardware oder firmwarebasiert. In der Testphase steht Entwicklern ein softwarebasierter TPM-Simulator zur Verfügung.  Dieser Simulator ist derzeit nur für die Entwicklung auf der Windows-Plattform verfügbar.

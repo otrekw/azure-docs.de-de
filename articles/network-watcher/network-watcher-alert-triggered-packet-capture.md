@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: fb5ae2408c15baee0f37acaacc780f4d198b1521
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eefd67d4d150c0c8d152002a174c62d31fcb8b5f
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738055"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975068"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Verwenden der Paketerfassung für die proaktive Netzwerküberwachung mit Warnungen und Azure Functions
 
@@ -30,7 +30,7 @@ In Azure bereitgestellte Ressourcen werden rund um die Uhr ausgeführt. Für Sie
 
 Durch den Einsatz von Network Watcher, Warnungen und Funktionen im Azure-Ökosystem können Sie mit den entsprechenden Daten und Tools proaktiv reagieren, um Probleme im Netzwerk zu lösen.
 
-![Szenario][scenario]
+![Diagramm der Network Watcher-Erweiterung auf einem virtuellen Computer, die an TCP-Segmente überträgt und mehr als 100 Fehler sendet, die dann an Azure Functions, von dort an Network Watcher und schließlich zurück zur Network Watcher-Erweiterung übertragen werden][scenario]
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]

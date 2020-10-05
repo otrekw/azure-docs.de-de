@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: d2d3c94985f099c7a0ab92efab564415f5cd81bb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3ede38edd9d24114eb4d0939ff9d4586a2d31daa
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87095004"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978142"
 ---
 # <a name="azure-time-series-insights-gen2-use-cases"></a>Anwendungsfälle für Azure Time Series Insights Gen2
 
@@ -66,7 +66,7 @@ Es gibt drei primäre Methoden zur Interaktion mit in Azure Time Series Insights
 
 Verwenden Sie Azure Time Series Insights Gen2, um die Integrität, Verwendung und Leistung von Geräten im Verhältnis zu überwachen sowie um die Betriebseffizienz zu messen. Mit Azure Time Series Insights Gen2 können Sie verschiedene und unvorhersehbare IoT-Workloads verwalten, ohne die Leistung bei eingehendem Datenverkehr oder Abfragen zu beeinträchtigen.
 
-[![Übersicht](media/v2-update-use-cases/overview.png)](media/v2-update-use-cases/overview.png#lightbox)
+[![Screenshot zu IoT-Geräten/-Anwendungsdaten, Streamverarbeitung, betrieblicher Effizienz, Analysen/Erkenntnissen und erweiterten Analysefunktionen in Azure Time Series Insights Gen2](media/v2-update-use-cases/overview.png)](media/v2-update-use-cases/overview.png#lightbox)
 
 Das Streamen und die fortlaufende Verarbeitung von Daten, die aus operativen Prozessen stammen, können jedes Unternehmen erfolgreich transformieren, wenn sie mit der richtigen Technologie oder Lösung kombiniert werden. Häufig sind diese Lösungen eine Kombination aus mehreren Systemen. Sie ermöglichen die Untersuchung und Analyse von Daten, die sich ständig ändern, insbesondere im IoT-Bereich, und ein gemeinsames Muster aufweisen.
 

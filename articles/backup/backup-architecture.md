@@ -3,12 +3,12 @@ title: Übersicht über die Architektur
 description: Übersicht über die Architektur, die Komponenten und die Prozesse des Azure Backup-Diensts.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: 1081de6b467b896bd8cc62b84c9a67c329b11e02
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: e70fe13e895315763ae305b48a72d688f09931f0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824031"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986485"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup-Architektur und -Komponenten
 
@@ -35,18 +35,22 @@ Erfahren Sie mehr über die [sicherbaren Elemente](backup-overview.md) und über
 
 ## <a name="where-is-data-backed-up"></a>Wo werden die Daten gesichert?
 
-Azure Backup speichert die gesicherten Daten in einem Recovery Services-Tresor. Ein Tresor ist eine Onlinespeicherentität in Azure, die zum Speichern von Daten wie Sicherungskopien, Wiederherstellungspunkten und Sicherungsrichtlinien verwendet wird.
+Azure Backup speichert gesicherte Daten in Tresoren: Recovery Services-Tresoren und Sicherungstresoren. Ein Tresor ist eine Onlinespeicherentität in Azure, die zum Speichern von Daten wie Sicherungskopien, Wiederherstellungspunkten und Sicherungsrichtlinien verwendet wird.
 
-Recovery Services-Tresore bieten die folgenden Vorteile:
+Tresore bieten die folgenden Features:
 
 - Tresore vereinfachen die Organisation Ihrer Sicherungsdaten und minimieren gleichzeitig den Verwaltungsaufwand.
-- In jedem Azure-Abonnement können bis zu 500 Tresore erstellt werden.
 - Sie können gesicherte Elemente einschließlich virtueller Azure-Computer und lokaler Computer in einem Tresor überwachen.
 - Der Zugriff auf den Tresor kann mithilfe der [rollenbasierten Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC)](../role-based-access-control/role-assignments-portal.md) verwaltet werden.
 - Sie können angeben, wie die Daten im Tresor repliziert werden sollen, um für Redundanz zu sorgen:
-  - **Lokal redundanter Speicher (LRS):** Sie können LRS zum Schutz vor Ausfällen in einem Datencenter verwenden. LRS repliziert Daten in einer Speicherskalierungseinheit. [Weitere Informationen](../storage/common/storage-redundancy.md)
-  - **Georedundanter Speicher (Geo-Redundant Storage, GRS)** : Sie können GRS zum Schutz vor regionsweiten Ausfällen verwenden. GRS repliziert Ihre Daten in einer sekundären Region. [Weitere Informationen](../storage/common/storage-redundancy.md)
+  - **Lokal redundanter Speicher (LRS):** Sie können LRS zum Schutz vor Ausfällen in einem Datencenter verwenden. LRS repliziert Daten in einer Speicherskalierungseinheit. [Weitere Informationen](../storage/common/storage-redundancy.md#locally-redundant-storage)
+  - **Georedundanter Speicher (Geo-Redundant Storage, GRS)** : Sie können GRS zum Schutz vor regionsweiten Ausfällen verwenden. GRS repliziert Ihre Daten in einer sekundären Region. [Weitere Informationen](../storage/common/storage-redundancy.md#geo-redundant-storage)
+  - **Zonenredundanter Speicher (ZRS)** repliziert Ihre Daten in [Verfügbarkeitszonen](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones) und gewährleistet dadurch Data Residency und Resilienz in derselben Region. [Weitere Informationen](../storage/common/storage-redundancy.md#zone-redundant-storage)
   - Recovery Services-Tresore verwenden standardmäßig GRS.
+
+Recovery Services-Tresore bieten die folgenden zusätzlichen Features:
+
+- In jedem Azure-Abonnement können bis zu 500 Tresore erstellt werden.
 
 ## <a name="backup-agents"></a>Sicherungs-Agents
 

@@ -2,16 +2,14 @@
 title: Skalieren eines Azure Kubernetes Service-Clusters (AKS)
 description: Erfahren Sie, wie Sie die Anzahl der Knoten in einem Azure Kubernetes Service-Cluster (AKS) skalieren.
 services: container-service
-author: iainfoulds
 ms.topic: article
-ms.date: 05/31/2019
-ms.author: iainfou
-ms.openlocfilehash: 55d7a00a0a8c0b655f06810f8bcea7126bb9167f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 09/16/2020
+ms.openlocfilehash: d5686a74ffe138af51d2319c839a3a5c5887f992
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79368416"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902947"
 ---
 # <a name="scale-the-node-count-in-an-azure-kubernetes-service-aks-cluster"></a>Skalieren der Anzahl der Knoten in einem Azure Kubernetes Service-Cluster (AKS)
 
@@ -41,7 +39,7 @@ Die folgende Beispielausgabe zeigt, dass der *Name* *nodepool1* lautet:
 ]
 ```
 
-Verwenden Sie den Befehl [az aks scale][az-aks-scale], um die Clusterknoten zu skalieren. Das folgende Beispiel skaliert einen Cluster namens *myAKSCluster* auf einen einzelnen Knoten. Stellen Sie Ihren eigenen *--nodepool-name* aus dem vorherigen Befehl bereit, z.B. *nodepool1*:
+Verwenden Sie den Befehl [az aks scale][az-aks-scale], um die Clusterknoten zu skalieren. Das folgende Beispiel skaliert einen Cluster namens *myAKSCluster* auf einen einzelnen Knoten. Stellen Sie Ihren eigenen `--nodepool-name` aus dem vorherigen Befehl bereit, z.B. *nodepool1*:
 
 ```azurecli-interactive
 az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 1 --nodepool-name <your node pool name>
@@ -69,6 +67,20 @@ Die folgende Beispielausgabe zeigt, dass der Cluster erfolgreich auf einen einzi
 }
 ```
 
+
+## <a name="scale-user-node-pools-to-0"></a>Skalieren von `User`-Knotenpools auf 0 (null)
+
+Im Unterschied zu `System`-Knotenpools, die immer ausgeführte Knoten erfordern, können Sie `User`-Knotenpools auf 0 (null) skalieren. Weitere Informationen zu den Unterschieden zwischen System- und Benutzerknotenpools finden Sie unter [System- und Benutzerknotenpools](use-system-pools.md).
+
+Um einen Benutzerpool auf 0 zu skalieren, können Sie den Befehl [az aks nodepool scale][az-aks-nodepool-scale] als Alternative zum obigen Befehl `az aks scale` verwenden und als Knotenanzahl 0 (null) festlegen.
+
+
+```azurecli-interactive
+az aks nodepool scale --name <your node pool name> --cluster-name myAKSCluster --resource-group myResourceGroup  --node-count 0 
+```
+
+Sie können für `User`-Knotenpools auch eine Autoskalierung auf 0 Knoten durchführen, indem Sie den Parameter `--min-count` der [automatischen Clusterskalierung](cluster-autoscaler.md) auf 0 (null) festlegen.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Artikel haben Sie einen AKS-Cluster manuell skaliert, um die Anzahl von Knoten zu erhöhen oder zu verringern. Sie können auch die [Autoskalierung für Cluster][cluster-autoscaler] verwenden, um den Cluster automatisch zu skalieren.
@@ -81,3 +93,4 @@ In diesem Artikel haben Sie einen AKS-Cluster manuell skaliert, um die Anzahl vo
 [az-aks-show]: /cli/azure/aks#az-aks-show
 [az-aks-scale]: /cli/azure/aks#az-aks-scale
 [cluster-autoscaler]: cluster-autoscaler.md
+[az-aks-nodepool-scale]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-scale&preserve-view=true

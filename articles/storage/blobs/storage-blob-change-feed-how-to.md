@@ -1,29 +1,26 @@
 ---
-title: Verarbeiten von Änderungsfeeds in Azure Blob Storage (Vorschau) | Microsoft-Dokumentation
+title: Verarbeiten des Änderungsfeeds in Azure Blob Storage | Microsoft-Dokumentation
 description: Erfahren Sie, wie Änderungsfeedprotokolle in einer .NET-Clientanwendung verarbeitet werden.
 author: normesta
 ms.author: normesta
-ms.date: 06/18/2020
+ms.date: 09/08/2020
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cc70204a56c3a853c6c6c7f0e1573c71854c0f19
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f0e89fdfba852fc056cf48efd1b92daabb272cf0
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018959"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568250"
 ---
-# <a name="process-change-feed-in-azure-blob-storage-preview"></a>Verarbeiten von Änderungsfeeds in Azure Blob Storage (Vorschau)
+# <a name="process-change-feed-in-azure-blob-storage"></a>Verarbeiten des Änderungsfeeds in Azure Blob Storage
 
 Der Änderungsfeed stellt Transaktionsprotokolle für alle Änderungen bereit, die in den Blobs und den Blobmetadaten in Ihrem Speicherkonto auftreten. In diesem Artikel wird gezeigt, wie Sie Änderungsfeeddatensätze mithilfe der Change Feed Processor-Bibliothek für Blobs lesen.
 
-Weitere Informationen zu Änderungsfeeds finden Sie unter [Änderungsfeed in Azure Blob Storage (Vorschau)](storage-blob-change-feed.md).
-
-> [!NOTE]
-> Der Änderungsfeed befindet sich in der öffentlichen Vorschau und ist in eingeschränkten Regionen verfügbar. Weitere Informationen zu dieser Funktion sowie bekannten Problemen und Einschränkungen finden Sie unter [Änderungsfeedunterstützung in Azure Blob Storage](storage-blob-change-feed.md). Die Change Feed Processor-Bibliothek kann sich ab dem jetzigen Zeitpunkt bis zum Zeitpunkt der allgemeinen Verfügbarkeit dieser Bibliothek ändern.
+Weitere Informationen zum Änderungsfeed finden Sie unter [Änderungsfeed in Azure Blob Storage](storage-blob-change-feed.md).
 
 ## <a name="get-the-blob-change-feed-processor-library"></a>Anfordern der Change Feed Processor-Bibliothek
 
@@ -219,4 +216,4 @@ Die von Ihnen angegebene Startzeit wird auf die volle Stunde abgerundet, und die
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über Änderungsfeedprotokolle. Siehe [Verarbeiten von Änderungsfeeds in Azure Blob Storage (Vorschau)](storage-blob-change-feed.md).
+Erfahren Sie mehr über Änderungsfeedprotokolle. Sehen Sie sich den Artikel [Änderungsfeed in Azure Blob Storage](storage-blob-change-feed.md) an.

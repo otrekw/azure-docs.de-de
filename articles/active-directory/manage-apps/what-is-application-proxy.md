@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/31/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: ce159bc61a1f21c52b8d182c1248ba1d436462da
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: dbfe18c84217c741f8dd64481901747d068fcdd3
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640513"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604137"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Veröffentlichen von lokalen Apps für Remotebenutzer mit dem Azure AD-Anwendungsproxy
 
@@ -29,7 +29,7 @@ Die Fähigkeit zum sicheren Zugriff auf interne Apps von außerhalb des Netzwerk
 
 Viele Organisationen glauben, die Kontrolle zu haben und geschützt zu sein, wenn Ressourcen innerhalb der Grenzen ihres Unternehmensnetzwerks vorhanden sind. In der modernen digitalen Arbeitswelt mit verwalteten mobilen Geräten sowie Ressourcen und Diensten in der Cloud wurde diese Grenze jedoch durchlässig. Jetzt müssen Sie den komplexen Schutz der Identitäten der Benutzer und ihrer auf Geräten und in Apps gespeicherten Daten sicherstellen.
 
-Vielleicht verwenden Sie bereits Azure AD zum Verwalten von Benutzern in der Cloud, die auf Office 365 und andere SaaS-Anwendungen sowie die lokal gehosteten Web-Apps zugreifen. Wenn Sie bereits über Azure AD verfügen, können Sie dies als eine Steuerungsebene nutzen, um den nahtlosen und sicheren Zugriff auf die lokalen Anwendungen sicherzustellen. Oder Sie erwägen möglicherweise noch die Migration zur Cloud. Wenn dies der Fall ist, können Sie hierfür zunächst den Anwendungsproxy implementieren und den ersten Schritt zu einer stabilen Identitätsverwaltung unternehmen.
+Vielleicht verwenden Sie bereits Azure AD zum Verwalten von Benutzern in der Cloud, die auf Microsoft 365 und andere SaaS-Anwendungen sowie lokal gehostete Web-Apps zugreifen müssen. Wenn Sie bereits über Azure AD verfügen, können Sie dies als eine Steuerungsebene nutzen, um den nahtlosen und sicheren Zugriff auf die lokalen Anwendungen sicherzustellen. Oder Sie erwägen möglicherweise noch die Migration zur Cloud. Wenn dies der Fall ist, können Sie hierfür zunächst den Anwendungsproxy implementieren und den ersten Schritt zu einer stabilen Identitätsverwaltung unternehmen.
 
 Die nachstehende Liste ist zwar nicht vollständig, veranschaulicht jedoch einige Möglichkeiten, die Ihnen das Implementieren des Anwendungsproxys in einem Hybridszenario bietet:
 
@@ -53,7 +53,7 @@ Bisher befand sich die gesamte Steuerungsebene für den Schutz interner Ressourc
 * Authentifizieren von Benutzern bei Webservern im Umkreisnetzwerk
 * Verwalten des VPN-Zugriffs für Remotebenutzer mit der Verteilung und Konfiguration der VPN-Clientsoftware. Zudem Verwalten von in Domänen eingebundenen Servern in der DMZ, die durch externe Angriffe gefährdet sein können.
 
-In der heutigen durch die Cloud dominierten Welt ist Azure AD die beste Lösung, um zu steuern, wer und was in Ihr Netzwerk gelangt. Der Azure AD-Anwendungsproxy lässt sich in moderne Authentifizierungs- und Cloudtechnologien, z.B. SaaS-Anwendungen und Identitätsanbieter, integrieren. Diese Integration ermöglicht Benutzern den Zugriff auf Apps von überall. Der Anwendungsproxy ist nicht nur besser für die moderne digitale Arbeitswelt geeignet, sondern bietet auch höhere Sicherheit als VPN- und Reverseproxylösungen und lässt sich leichter implementieren. Dadurch können Remotebenutzer auf Ihre lokalen Anwendungen auf die gleiche Weise zugreifen wie auf O365 und andere SaaS-Apps, die in Azure AD integriert sind. Sie brauchen Ihre Anwendungen nicht ändern oder aktualisieren, damit Sie mit dem Anwendungsproxy funktionieren. Für den Anwendungsproxy müssen Sie zudem keine eingehenden Verbindungen über die Firewall öffnen. Mit dem Anwendungsproxy müssen Sie dies nur einmal festlegen und brauchen sich dann nicht mehr darum zu kümmern.
+In der heutigen durch die Cloud dominierten Welt ist Azure AD die beste Lösung, um zu steuern, wer und was in Ihr Netzwerk gelangt. Der Azure AD-Anwendungsproxy lässt sich in moderne Authentifizierungs- und Cloudtechnologien, z.B. SaaS-Anwendungen und Identitätsanbieter, integrieren. Diese Integration ermöglicht Benutzern den Zugriff auf Apps von überall. Der Anwendungsproxy ist nicht nur besser für die moderne digitale Arbeitswelt geeignet, sondern bietet auch höhere Sicherheit als VPN- und Reverseproxylösungen und lässt sich leichter implementieren. Remotebenutzer können auf die gleiche Weise auf Ihre lokalen Anwendungen zugreifen wie auf Microsoft und andere mit Azure AD integrierte SaaS-Apps. Sie brauchen Ihre Anwendungen nicht ändern oder aktualisieren, damit Sie mit dem Anwendungsproxy funktionieren. Für den Anwendungsproxy müssen Sie zudem keine eingehenden Verbindungen über die Firewall öffnen. Mit dem Anwendungsproxy müssen Sie dies nur einmal festlegen und brauchen sich dann nicht mehr darum zu kümmern.
 
 ## <a name="the-future-of-remote-access"></a>Die Zukunft des Remotezugriffs
 
@@ -72,7 +72,7 @@ Azure AD verfolgt mit dem Anwendungsproxy Benutzer nach, die Zugriff auf lokal u
 
 ### <a name="an-overview-of-how-app-proxy-works"></a>Ein Überblick über die Funktionsweise des Anwendungsproxys
 
-Der Anwendungsproxy ist ein Azure AD-Dienst, den Sie im Azure-Portal konfigurieren. Sie können mit ihm einen externen öffentlichen HTTP/HTTPS-URL-Endpunkt in der Azure-Cloud veröffentlichen, der eine Verbindung mit einer internen Anwendungsserver-URL in Ihrer Organisation herstellt. Diese lokalen Web-Apps können für die Unterstützung von einmaligem Anmelden in Azure AD integriert werden. Endbenutzer können dann auf die gleiche Weise auf lokale Web-Apps wie auf Office 365 und andere SaaS-Apps zugreifen.
+Der Anwendungsproxy ist ein Azure AD-Dienst, den Sie im Azure-Portal konfigurieren. Sie können mit ihm einen externen öffentlichen HTTP/HTTPS-URL-Endpunkt in der Azure-Cloud veröffentlichen, der eine Verbindung mit einer internen Anwendungsserver-URL in Ihrer Organisation herstellt. Diese lokalen Web-Apps können für die Unterstützung von einmaligem Anmelden in Azure AD integriert werden. Endbenutzer können dann auf die gleiche Weise auf lokale Web-Apps zugreifen wie auf Microsoft 365 und andere SaaS-Apps.
 
 Die Komponenten dieses Features umfassen den Anwendungsproxydienst, der in der Cloud ausgeführt wird, den Anwendungsproxyconnector, der ein einfacher auf einem lokalen Server ausgeführter Agent ist, und den Identitätsanbieter Azure AD. Alle drei Komponenten zusammen ermöglichen dem Benutzer einmaliges Anmelden für den Zugriff auf lokale Webanwendungen.
 
@@ -195,8 +195,8 @@ Ob Sie derzeit Azure AD zum Verwalten von Benutzern in einem Hybridszenario verw
 Organisationen sollten den Anwendungsproxy verwenden, um die folgenden Vorteile zu nutzen:
 
 * Externes Veröffentlichen lokaler Apps ohne den Aufwand, herkömmliche VPN- oder andere lokale Webveröffentlichungslösungen zu verwalten und eine DMZ zu verwenden
-* Einmaliges Anmelden bei allen Anwendungen, ob Office 365 oder andere SaaS-Apps, einschließlich lokaler Anwendungen
-* Sicherheit auf Cloudebene, wobei Azure AD mithilfe von Office 365-Telemetrie unberechtigten Zugriff verhindert
+* Einmaliges Anmelden bei allen Anwendungen, ob Microsoft 365 oder andere SaaS-Apps, einschließlich lokaler Anwendungen
+* Sicherheit auf Cloudniveau, wobei Azure AD mithilfe von Microsoft 365-Telemetrie unberechtigten Zugriff verhindert
 * Intune-Integration, um die Authentifizierung des Unternehmensdatenverkehrs sicherzustellen
 * Zentralisierung der Benutzerkontoverwaltung
 * Automatische Updates, um sicherzustellen, dass Sie über die neuesten Sicherheitspatches verfügen

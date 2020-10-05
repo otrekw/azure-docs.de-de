@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie einen lokalen Windows Communication Foundatio
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 06/23/2020
-ms.openlocfilehash: d6299899ee45bbad8b5e5fdbca01805604794d62
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 22b582634b623b39545eca225c8df0130606c2bb
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922547"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983896"
 ---
 # <a name="expose-an-on-premises-wcf-service-to-a-web-application-in-the-cloud-by-using-azure-relay"></a>Machen Sie einen lokalen Windows Communication Foundation-Anwendungsdienst (WCF-Dienst) für eine Webanwendung in der Cloud mit Azure Relay verfügbar.
 
@@ -344,7 +344,7 @@ Führen Sie die Anwendung aus, um sicherzustellen, dass sie funktioniert.
 
 Die Anwendung sollte ausgeführt und in einem Browser angezeigt werden.
 
-![Webanwendung][21]
+![Screenshot eines Beispiels für die in einem Browser ausgeführte Anwendung mit hervorgehobener URL][21]
 
 ## <a name="put-the-pieces-together"></a>Zusammensetzen der Einzelteile
 

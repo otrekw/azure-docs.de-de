@@ -1,6 +1,6 @@
 ---
 title: Verwalten Ihrer Organisationen aus dem Portal „Mein Konto“ – Azure AD
-description: Sie erfahren, wie Sie im Portal „Mein Konto“ auf der Seite „Organisationen“ mit Ihrem Geschäfts-, Schul- oder Unikonto verbundene Organisationen anzeigen und verlassen.
+description: Hier erfahren Sie, wie Sie die Organisationen, auf die Sie im Portal „Mein Konto“ auf der Seite „Organisationen“ Zugriff haben, anzeigen und verlassen können.
 services: active-directory
 author: curtand
 manager: daveba
@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 07/29/2020
+ms.date: 09/10/2020
 ms.author: curtand
-ms.openlocfilehash: bb0f0b93f3890a06f4ecbdc6cf39a173ea048940
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 8b8abe60503c68f06a97782ea09d418ebf659216
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798175"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90005070"
 ---
-# <a name="manage-your-connected-organizations-from-the-organizations-page"></a>Verwalten Ihrer verbundenen Organisationen auf der Seite „Organisationen“
+# <a name="manage-organizations-you-have-access-to-in-the-my-account-portal"></a>Verwalten von Organisationen, auf die Sie über das Portal „Mein Konto“ zugreifen können
 
-Im Portal **Mein Konto** können Sie auf der Seite **Organisationen** die Organisationen (in der Regel der Name Ihrer Organisation) verwalten, die mit Ihrem Geschäfts-, Schul- oder Unikonto verbunden sind. Auf der Seite **Organisationen** werden zwei Arten von Organisationen angezeigt:
+Im Portal **Mein Konto** können Sie auf der Seite **Organisationen** die Organisationen (in der Regel der Name Ihrer Organisation) verwalten, auf die Sie Zugriff haben. Auf der Seite **Organisationen** werden zwei Arten von Organisationen angezeigt:
 
 - **Eigene Organisation**. Ihre eigene Organisation ist die Organisation, die Besitzer Ihres Geschäfts-, Schul- oder Unikontos ist. Ihre eigene Organisation können Sie nicht verlassen.
 
@@ -30,7 +30,7 @@ Im Portal **Mein Konto** können Sie auf der Seite **Organisationen** die Organi
 - **Andere Organisationen**. Zu den anderen Organisationen gehören alle Gruppen, bei denen Sie sich zuvor mit Ihrem Geschäfts-, Schul- oder Unikonto angemeldet haben. Sie können jede dieser Organisationen jederzeit verlassen.
 
 >[!Important]
->Dieser Artikel richtet sich an Benutzer, die versuchen, die Informationen der mit einem Geschäfts-, Schul- oder Unikonto verbundenen Organisationen zu aktualisieren. Wenn Sie ein Administrator sind und nach Informationen zur Gruppen- und Benutzerverwaltung für Ihre Mitarbeiter und andere Verwendungszwecke suchen, lesen Sie die [Dokumentation zur Verwaltung von Unternehmensbenutzern](../users-groups-roles/index.yml).
+>Dieser Artikel richtet sich an Benutzer, die versuchen, die Organisationsinformationen zu aktualisieren, auf die von einem Geschäfts-, Schul- oder Unikonto zugegriffen wird. Wenn Sie ein Administrator sind und nach Informationen zur Gruppen- und Benutzerverwaltung für Ihre Mitarbeiter und andere Verwendungszwecke suchen, lesen Sie die [Dokumentation zur Verwaltung von Unternehmensbenutzern](../users-groups-roles/index.yml).
 
 ## <a name="view-your-organizations"></a>Anzeigen Ihrer Organisationen
 
@@ -44,7 +44,7 @@ Im Portal **Mein Konto** können Sie auf der Seite **Organisationen** die Organi
 
     ![Seite „Organisationen“](media/my-account-portal/my-account-portal-organization-page.png)
 
-4. Überprüfen Sie alle zugeordneten Organisationen, und stellen Sie sicher, dass Sie alle mit Ihrem Konto verbunden Organisationen erkennen.
+4. Überprüfen Sie Ihre anderen Organisationen, und stellen Sie sicher, dass Sie alle Organisationen kennen, auf die Sie Zugriff haben.
 
 ## <a name="leave-an-organization"></a>Verlassen einer Organisation
 

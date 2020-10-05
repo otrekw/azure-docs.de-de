@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.custom: has-adal-ref, devx-track-csharp
-ms.openlocfilehash: b32e0a60e099b5ad184f8919be3f93646c3a68b3
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 817bc7624bb3a6b69d56265e40681287b7fc09fa
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018143"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969590"
 ---
 # <a name="configure-role-based-access-control-in-the-remote-monitoring-solution-accelerator"></a>Konfigurieren der rollenbasierten Zugriffssteuerung im Solution Accelerator der Remoteüberwachung
 
@@ -62,7 +62,7 @@ Als Azure Active Directory-Anwendungsbesitzer können Sie über das Azure-Portal
 
 1. Überprüfen Sie, ob Sie der Besitzer der Anwendung sind, indem Sie auf die Anwendung und dann auf **Besitzer** klicken. Im folgenden Screenshot ist **Contoso Admin** ein Besitzer der Anwendung **contoso-rm4**:
 
-    ![Besitzer](media/iot-accelerators-remote-monitoring-rbac/owners.png)
+    ![Screenshot der ausgewählten Option „Besitzer verwalten“ mit angezeigten Besitzern der Anwendung contoso-rm4](media/iot-accelerators-remote-monitoring-rbac/owners.png)
 
     Wenn Sie kein Besitzer sind, müssen Sie einen vorhandenen Besitzer darum bitten, Sie der Liste hinzuzufügen. Nur Besitzer können anderen Benutzern Anwendungsrollen wie **Administrator** oder **Lesezugriff** zuweisen.
 

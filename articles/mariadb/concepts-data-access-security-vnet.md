@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 7/17/2020
-ms.openlocfilehash: d681c79cb3c7874cbcd75d03db08721dd4b25f4d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 6fc0add55caccd7721f3ee2c72db68fbcf6bc0dc
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835458"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458500"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>Verwenden von Virtual Network-Dienstendpunkten und -Regeln für Azure Database for MariaDB
 
@@ -112,7 +112,7 @@ Bei Azure Database for MariaDB gelten für VNET-Regeln folgende Einschränkungen
 
 - VNET-Regeln gelten nur für virtuelle Netzwerke gemäß dem Azure Resource Manager-Modell und nicht gemäß dem [klassischen Bereitstellungsmodell][resource-manager-deployment-model-568f].
 
-- Wenn Sie die VNET-Dienstendpunkte für Azure Database for MariaDB mit dem Diensttag **Microsoft.Sql** aktivieren, werden auch die Endpunkte für alle Azure-Datenbankdienste aktiviert: Azure Database for MariaDB, Azure Database for MySQL, Azure Database for PostgreSQL, Azure SQL-Datenbank und Azure SQL Data Warehouse.
+- Wenn Sie die VNET-Dienstendpunkte für Azure Database for MariaDB mit dem Diensttag **Microsoft.Sql** aktivieren, werden auch die Endpunkte für alle Azure-Datenbankdienste aktiviert: Azure Database for MariaDB, Azure Database for MySQL, Azure Database for PostgreSQL, Azure SQL-Datenbank und Azure Synapse Analytics (vormals SQL Data Warehouse).
 
 - VNET-Dienstendpunkte werden nur für Server vom Typ „Universell“ und „Arbeitsspeicheroptimiert“ unterstützt.
 

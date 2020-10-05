@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 5189270a7b9de9ff5a222ad76ce46254ae5d2ee3
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: d839ea042dec2224885f9ba4a0cb6adef5108568
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542958"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458619"
 ---
 # <a name="azure-encryption-overview"></a>Übersicht über die Azure-Verschlüsselung
 
@@ -83,7 +83,7 @@ Schließlich können Sie auch die Azure Storage-Clientbibliothek für Java verwe
 
 #### <a name="transparent-data-encryption"></a>Transparente Datenverschlüsselung
 
-[TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) wird verwendet, um Datendateien aus [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016), [Azure SQL-Datenbank](../../azure-sql/database/sql-database-paas-overview.md) und [Azure SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) in Echtzeit mit einem Datenbankverschlüsselungsschlüssel (DEK, Database Encryption Key) zu verschlüsseln, der für die Verfügbarkeit während der Wiederherstellung im Datenbank-Startdatensatz gespeichert ist.
+[TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) wird verwendet, um Datendateien aus [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016), [Azure SQL-Datenbank](../../azure-sql/database/sql-database-paas-overview.md) und [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) in Echtzeit mit einem Datenbankverschlüsselungsschlüssel (DEK, Database Encryption Key) zu verschlüsseln, der für die Verfügbarkeit während der Wiederherstellung im Datenbank-Startdatensatz gespeichert ist.
 
 TDE schützt die Daten- und Protokolldateien über die Verschlüsselungsalgorithmen AES und Triple Data Encryption Standard (3DES). Die Verschlüsselung der Datenbankdatei erfolgt auf Seitenebene. Die Seiten in einer verschlüsselten Datenbank werden verschlüsselt, bevor sie auf den Datenträger geschrieben werden, und entschlüsselt, bevor sie in den Arbeitsspeicher eingelesen werden. TDE ist jetzt bei neu erstellten Azure SQL-Datenbanken standardmäßig aktiviert.
 

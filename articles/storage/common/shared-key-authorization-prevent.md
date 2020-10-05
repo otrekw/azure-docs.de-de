@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 3d46df8847a5865c42438ea36245ead0f1e6e528
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 9bf656989dc331fdd4ce044126ea9d0be9414930
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950830"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088798"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>Verhindern der Autorisierung mit gemeinsam verwendeten Schlüsseln für ein Azure Storage-Konto (Vorschau)
 
@@ -67,7 +67,7 @@ Gehen Sie wie folgt vor, um eine Metrik zur Nachverfolgung von Anforderungen mit
 
 Nachdem Sie die Metrik konfiguriert haben, werden nach und nach Anforderungen an Ihr Speicherkonto im Diagramm angezeigt. In der folgenden Abbildung sind Anforderungen aufgeführt, die mit einem gemeinsam verwendeten Schlüssel autorisiert oder mit einem SAS-Token durchgeführt wurden. Anforderungen werden tageweise für die letzten 30 Tage aggregiert.
 
-:::image type="content" source="media/shared-key-authorization-prevent/metric-shared-key-requests.png" alt-text="Screenshot: aggregierte Anforderungen, die mit einem gemeinsam verwendeten Schlüssel autorisiert wurden":::
+:::image type="content" source="media/shared-key-authorization-prevent/metric-shared-key-requests.png" alt-text="Screenshot: Konfigurieren einer Metrik zum Summieren von Transaktionen mit einem gemeinsam verwendeten Schlüssel oder einer SAS":::
 
 Sie können auch eine Warnungsregel konfigurieren, um benachrichtigt zu werden, wenn eine bestimmte Anzahl von Anforderungen an Ihr Speicherkonto gerichtet wird, die mit einem gemeinsam verwendeten Schlüssel autorisiert wurden. Weitere Informationen finden Sie unter [Erstellen, Anzeigen und Verwalten von Metrikwarnungen mit Azure Monitor](../../azure-monitor/platform/alerts-metric.md).
 
@@ -93,7 +93,7 @@ Wenn Sie Azure Storage-Daten mit Azure Monitor protokollieren und mit Azure Log 
 1. Wählen Sie im Abschnitt **Protokoll** unter **Kategoriedetails** die Optionen **StorageRead**, **StorageWrite** und **StorageDelete** aus, um alle Datenanforderungen an den ausgewählten Dienst zu protokollieren.
 1. Wählen Sie unter **Zieldetails** die Option **An Log Analytics senden** aus. Wählen Sie Ihr Abonnement und den zuvor erstellten Log Analytics-Arbeitsbereich aus, wie in der folgenden Abbildung zu sehen:
 
-    :::image type="content" source="media/shared-key-authorization-prevent/create-diagnostic-setting-logs.png" alt-text="Screenshot: Erstellen einer Diagnoseeinstellung für die Protokollierung von Anforderungen":::
+    :::image type="content" source="media/shared-key-authorization-prevent/create-diagnostic-setting-logs.png" alt-text="Screenshot: Konfigurieren einer Metrik zum Summieren von Transaktionen mit einem gemeinsam verwendeten Schlüssel oder einer SAS":::
 
 Sie können für jeden Typ von Azure Storage-Ressource in Ihrem Speicherkonto eine Diagnoseeinstellung erstellen.
 
@@ -133,7 +133,7 @@ Befolgen Sie diese Schritte, um die Autorisierung mit gemeinsam verwendeten Schl
 1. Suchen Sie unter **Einstellungen** die Einstellung **Konfiguration**.
 1. Legen Sie **Zugriff mit gemeinsam verwendetem Schlüssel zulassen** auf **Deaktiviert** fest.
 
-    :::image type="content" source="media/shared-key-authorization-prevent/shared-key-access-portal.png" alt-text="Screenshot: Verweigern des Zugriffs auf das Konto mit einem gemeinsam verwendeten Schlüssel":::
+    :::image type="content" source="media/shared-key-authorization-prevent/shared-key-access-portal.png" alt-text="Screenshot: Konfigurieren einer Metrik zum Summieren von Transaktionen mit einem gemeinsam verwendeten Schlüssel oder einer SAS":::
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
@@ -213,10 +213,10 @@ Einige Azure-Tools bieten die Möglichkeit, die Azure AD-Autorisierung für den
 
 | Azure-Tool | Azure AD-Autorisierung für Azure Storage |
 |-|-|
-| Azure-Portal | Unterstützt. Informationen zur Autorisierung mit Ihrem Azure AD-Konto über das Azure-Portal finden Sie unter [Auswählen der Autorisierung des Zugriffs auf Blob- oder Warteschlangendaten im Azure-Portal](storage-access-blobs-queues-portal.md). |
+| Azure-Portal | Unterstützt. Informationen zur Autorisierung mit Ihrem Azure AD-Konto über das Azure-Portal finden Sie unter [Auswählen der Autorisierung des Zugriffs auf Blobdaten im Azure-Portal](../blobs/authorize-blob-access-portal.md). |
 | AzCopy | Für Blob Storage unterstützt. Weitere Informationen zur Autorisierung von AzCopy-Vorgängen finden Sie in der AzCopy-Dokumentation unter [Auswählen, wie Sie die Autorisierungsanmeldeinformationen bereitstellen](storage-use-azcopy-v10.md#choose-how-youll-provide-authorization-credentials). |
 | Azure Storage-Explorer | Nur für Blob Storage und Azure Data Lake Storage Gen2 unterstützt. Azure AD-Zugriff auf Queue Storage wird nicht unterstützt. Wählen Sie unbedingt den richtigen Azure AD-Mandanten aus. Weitere Informationen finden Sie unter [Erste Schritte mit Storage-Explorer](/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows#sign-in-to-azure). |
-| Azure PowerShell | Unterstützt. Informationen zum Autorisieren von PowerShell-Befehlen mit Azure AD für den Zugriff auf Blob- und Warteschlangendaten finden Sie unter [Ausführen von PowerShell-Befehlen mit Azure AD-Anmeldeinformationen für den Zugriff auf Blob- oder Warteschlangendaten](authorize-active-directory-powershell.md). |
+| Azure PowerShell | Unterstützt. Informationen zum Autorisieren von PowerShell-Befehlen für Befehle für Blob- oder Warteschlangenvorgänge mit Azure AD finden Sie unter [Ausführen von PowerShell-Befehlen mit Azure AD-Anmeldeinformationen für den Zugriff auf Blobdaten](../blobs/authorize-active-directory-powershell.md) und [Ausführen von PowerShell-Befehlen mit Azure AD-Anmeldeinformationen für den Zugriff auf Warteschlangendaten](../queues/authorize-active-directory-powershell.md). |
 | Azure CLI | Unterstützt. Informationen zum Autorisieren von Azure CLI-Befehlen mit Azure AD für den Zugriff auf Blob- und Warteschlangendaten finden Sie unter [Ausführen von Azure CLI-Befehlen mit Azure AD-Anmeldeinformationen für den Zugriff auf Blob- oder Warteschlangendaten](authorize-data-operations-cli.md). |
 | Azure IoT Hub | Unterstützt. Weitere Informationen finden Sie unter [IoT Hub-Unterstützung für virtuelle Netzwerke](../../iot-hub/virtual-network-support.md). |
 | Azure Cloud Shell | Azure Cloud Shell ist eine integrierte Shell im Azure-Portal. Azure Cloud Shell hostet Dateien für Persistenz in einer Azure-Dateifreigabe in einem Speicherkonto. Auf diese Dateien kann nicht mehr zugegriffen werden, wenn die Autorisierung mit gemeinsam verwendeten Schlüsseln für dieses Speicherkonto aufgehoben wird. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit dem Microsoft Azure Files-Speicher](/azure/cloud-shell/overview#connect-your-microsoft-azure-files-storage). <br /><br /> Zum Ausführen von Befehlen in Azure Cloud Shell zum Verwalten von Speicherkonten, für die der Zugriff mit gemeinsam verwendeten Schlüsseln nicht zulässig ist, müssen Sie zunächst sicherstellen, dass Ihnen die erforderlichen Berechtigungen für diese Konten über die rollenbasierte Zugriffssteuerung (RBAC) erteilt wurden. Weitere Informationen finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](../../role-based-access-control/overview.md). |

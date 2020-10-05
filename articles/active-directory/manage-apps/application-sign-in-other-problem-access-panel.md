@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 472ab82e6941be5c1485773b1115d91eda701666
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: bfb4d265a42fe1e4473af0f9bde4ebb76f0734a0
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231179"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707967"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>Beheben von Anmeldeproblemen bei einer Anwendung aus „Meine Apps“ in Azure AD
 
@@ -27,13 +27,13 @@ Weitere Informationen dazu, wie Sie Azure AD als Identitätsanbieter für eine 
 Diese Anwendungen werden im Namen des Benutzers im Azure AD-Portal konfiguriert. Die Anwendung muss ordnungsgemäß konfiguriert und dem Benutzer oder einer Gruppe, deren Mitglied er ist, zugewiesen sein, damit sie in „Meine Apps“ angezeigt wird. 
 
 Es gibt drei Kategorien von Apps, die für einen Benutzer angezeigt werden können:
--   Microsoft 365 und Office 365-Anwendungen
+-   Microsoft 365-Anwendungen
 -   Anwendungen von Microsoft und Drittanbietern, für die verbundbasiertes SSO konfiguriert ist
 -   Anwendungen mit kennwortbasiertem SSO
 -   Anwendungen mit vorhandenen SSO-Lösungen
 
 Hier sind einige Aspekte zur Überprüfung, ob eine App angezeigt wird oder nicht.
-- Stellen Sie sicher, dass die App Azure AD hinzugefügt und der Benutzer zugewiesen wird. Weitere Informationen finden Sie in der [Schnellstartserie zur Anwendungsverwaltung](view-applications-portal.md).
+- Stellen Sie sicher, dass die App Azure AD hinzugefügt und der Benutzer zugewiesen wird. Weitere Informationen finden Sie in der [Schnellstartserie zur Anwendungsverwaltung](add-application-portal.md).
 - Wenn eine App kürzlich hinzugefügt wurde, muss sich der Benutzer abmelden und erneut anmelden. 
 - Wenn die App eine Lizenz (z. B. Office) erfordert, stellen Sie sicher, dass dem Benutzer die entsprechende Lizenz zugewiesen wird.
 - Die Zeit, die für Lizenzierungsänderungen benötigt wird, kann je nach Größe und Komplexität der Gruppe variieren.
@@ -163,7 +163,7 @@ Um einem Benutzer eine Lizenz zuzuweisen, führen Sie die folgenden Schritte aus
 11. Wählen Sie die Schaltfläche **Zuweisen** aus, um dem Benutzer diese Lizenzen zuzuweisen.
 
 ## <a name="troubleshooting-deep-links"></a>Problembehandlung bei Deeplinks
-Deeplinks oder Benutzerzugriffs-URLs sind Links, mit deren Hilfe Ihre Benutzer direkt über die URL-Leiste ihrer Browser auf ihre Kennwort-SSO-Anwendungen zugreifen können. Durch Navigieren zu diesem Link werden Benutzer bei der Anwendung automatisch angemeldet, ohne zuerst zu „Meine Apps“ wechseln zu müssen. Dieser Link ist derselbe Link, mit dem Benutzer über den Office 365-Anwendungsstarter auf diese Anwendungen zugreifen.
+Deeplinks oder Benutzerzugriffs-URLs sind Links, mit deren Hilfe Ihre Benutzer direkt über die URL-Leiste ihrer Browser auf ihre Kennwort-SSO-Anwendungen zugreifen können. Durch Navigieren zu diesem Link werden Benutzer bei der Anwendung automatisch angemeldet, ohne zuerst zu „Meine Apps“ wechseln zu müssen. Dieser Link ist derselbe Link, mit dem Benutzer über den Microsoft 365-Anwendungsstarter auf diese Anwendungen zugreifen.
 
 ### <a name="checking-the-deep-link"></a>Überprüfen des Deeplinks
 

@@ -3,14 +3,14 @@ title: 'Azure Automation: Übersicht über Hybrid Runbook Worker'
 description: Dieser Artikel enthält eine Übersicht über Hybrid Runbook Worker, mit denen Sie Runbooks auf Computern in Ihrem lokalen Rechenzentrum oder beim Cloudanbieter ausführen können.
 services: automation
 ms.subservice: process-automation
-ms.date: 07/16/2020
+ms.date: 09/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4d29979e28140b728478d405db934cb41783f4b0
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: f5dc9305df8ce0e26e13738d605849fa75cc53a7
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448088"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087886"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Übersicht über Hybrid Runbook Worker
 
@@ -63,7 +63,7 @@ Wenn Sie einen Proxyserver für die Kommunikation zwischen Azure Automation und 
 
 ### <a name="firewall-use"></a>Verwenden von Firewalls
 
-Wenn Sie eine Firewall verwenden, um den Zugriff auf das Internet einzuschränken, müssen Sie die Firewall so konfigurieren, dass der Zugriff möglich ist. Wenn Sie das Log Analytics-Gateway als Proxy verwenden, achten Sie darauf, dass es für Hybrid Runbook Worker konfiguriert ist. Weitere Informationen finden Sie unter [Konfigurieren des Log Analytics-Gateways für Automation Hybrid Worker](../azure-monitor/platform/gateway.md).
+Wenn Sie eine Firewall verwenden, um den Zugriff auf das Internet einzuschränken, müssen Sie die Firewall so konfigurieren, dass der Zugriff möglich ist. Wenn Sie das Log Analytics-Gateway als Proxy verwenden, achten Sie darauf, dass es für Hybrid Runbook Worker konfiguriert ist. Weitere Informationen finden Sie unter [Konfigurieren des Log Analytics-Gateways für Automation Hybrid Runbook Worker](../azure-monitor/platform/gateway.md).
 
 ### <a name="service-tags"></a>Diensttags
 
@@ -115,6 +115,20 @@ Wenn der Hostcomputer des Hybrid Runbook Workers neu gestartet wird, werden alle
 ### <a name="runbook-permissions-for-a-hybrid-runbook-worker"></a>Runbook-Berechtigungen für einen Hybrid Runbook Worker
 
 Da sie auf Nicht-Azure-Ressourcen zugreifen, können Runbooks, die auf einem Hybrid Runbook Worker laufen, nicht den Authentifizierungsmechanismus verwenden, der normalerweise von Runbooks zur Authentifizierung bei Azure-Ressourcen verwendet wird. Ein Runbook stellt entweder eine eigene Authentifizierung für lokale Ressourcen bereit oder konfiguriert die Authentifizierung mithilfe von [verwalteten Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager). Alternativ hierzu können Sie auch ein ausführendes Konto angeben, um einen Benutzerkontext für alle Runbooks bereitzustellen.
+
+## <a name="view-hybrid-runbook-workers"></a>Anzeigen von Hybrid Runbook Workern
+
+Nachdem das Feature Updateverwaltung auf Windows-Servern oder -VMs aktiviert wurde, können Sie mithilfe der Liste der Hybrid Runbook Worker-Systemgruppe im Azure-Portal einen Bestand erstellen. Sie können im Portal bis zu 2.000 Worker anzeigen, indem Sie im linken Bereich für das ausgewählte Automation-Konto unter **Hybrid worker groups** (Hybrid Worker-Gruppen) die Registerkarte **System hybrid worker groups** (Hybrid Worker-Systemgruppen) auswählen.
+
+:::image type="content" source="./media/automation-hybrid-runbook-worker/system-hybrid-workers-page.png" alt-text="Seite „System hybrid worker groups“ (Hybrid Worker-Systemgruppen) für ein Automation-Konto" border="false" lightbox="./media/automation-hybrid-runbook-worker/system-hybrid-workers-page.png":::
+
+Wenn Sie über mehr als 2.000 Hybrid Worker verfügen und eine vollständige Liste abrufen möchten, können Sie das folgende PowerShell-Skript ausführen:
+
+```powershell
+"Get-AzSubscription -SubscriptionName "<subscriptionName>" | Set-AzContext
+$workersList = (Get-AzAutomationHybridWorkerGroup -ResourceGroupName "<resourceGroupName>" -AutomationAccountName "<automationAccountName>").Runbookworker
+$workersList | export-csv -Path "<Path>\output.csv" -NoClobber -NoTypeInformation"
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

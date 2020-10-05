@@ -9,13 +9,13 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: ''
 manager: anandsub
-ms.date: 05/15/2020
-ms.openlocfilehash: ac51fd63adcc0328ff67f5fbe13dbfdb768f4bfe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/08/2020
+ms.openlocfilehash: 6f8d74ade382db9bfa28c3ab6f03b95b5ac7947c
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84343111"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567117"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Visuelles Erstellen in Azure Data Factory
 
@@ -39,9 +39,17 @@ Die standardmäßige visuelle Erstellungsumgebung arbeitet direkt mit dem Data F
 
 Bei Ressourcen der obersten Ebene, z. B Pipelines, Datasets und Datenflüssen, können allgemeine Eigenschaften im Eigenschaftenbereich auf der rechten Seite der Canvas bearbeitet werden. Der Eigenschaftenbereich enthält Eigenschaften wie Name, Beschreibung, Anmerkungen und andere allgemeine Eigenschaften. Unterressourcen, z. B. Pipelineaktivitäten und Datenflusstransformationen, werden in dem Bereich unten in der Canvas bearbeitet. 
 
-![Erstellungsbereich](media/author-visually/properties-pane.png)
+![Eigenschaftenbereich](media/author-visually/properties-pane.png)
 
 Der Eigenschaftenbereich wird standardmäßig nur bei der Ressourcenerstellung geöffnet. Wenn Sie ihn bearbeiten möchten, klicken Sie oben rechts im Erstellungsbereich auf das Symbol für den Eigenschaftenbereich.
+
+### <a name="related-resources"></a>Verwandte Ressourcen
+
+Im Bereich „Eigenschaften“ können Sie sehen, welche Ressourcen von der ausgewählten Ressource abhängig sind, indem Sie die Registerkarte **Verknüpft** auswählen. Hier werden alle Ressourcen aufgeführt, die auf die aktuelle Ressource verweisen.
+
+![Verwandte Ressourcen](media/author-visually/related-resources.png)
+
+Beispielsweise verwenden in der obigen Abbildung eine Pipeline und zwei Datenflüsse das aktuell ausgewählte Dataset.
 
 ## <a name="management-hub"></a>Verwaltungshub
 

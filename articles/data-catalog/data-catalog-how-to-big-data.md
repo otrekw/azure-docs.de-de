@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: c6f7355b4505324c562ae39b05155a2902da2790
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e79e5e16b300fd02b9c9124f9677747834f22813
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523450"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89443142"
 ---
 # <a name="how-to-catalog-big-data-in-azure-data-catalog"></a>Katalogisieren von Big Data in Azure Data Catalog
 
@@ -19,7 +19,7 @@ ms.locfileid: "86523450"
 
 **Microsoft Azure Data Catalog** ist ein vollständig verwalteter Clouddienst, der als Registrierungs- und Ermittlungssystem für Datenquellen von Unternehmen dient. Der Dienst unterstützt Benutzer beim Ermitteln, Nachvollziehen und Verwenden von Datenquellen und Unternehmen dabei, mehr Nutzen aus ihren vorhandenen Datenquellen, wie z.B. Big Data, zu ziehen.
 
-**Azure Data Catalog** unterstützt die Registrierung von Azure-Blobspeicher-Blobs und -Verzeichnissen sowie Hadoop HDFS-Dateien und -Verzeichnisse. Die teilweise strukturierte Art dieser Datenquellen bietet enorme Flexibilität. Doch um den größten Nutzen aus ihrer Registrierung bei **Azure Data Catalog** zu ziehen, müssen Benutzer berücksichtigen, wie die Datenquellen organisiert sind.
+**Azure Data Catalog** unterstützt die Registrierung von Azure Storage-Blobs und -Verzeichnissen sowie Hadoop HDFS-Dateien und -Verzeichnisse. Die teilweise strukturierte Art dieser Datenquellen bietet enorme Flexibilität. Doch um den größten Nutzen aus ihrer Registrierung bei **Azure Data Catalog** zu ziehen, müssen Benutzer berücksichtigen, wie die Datenquellen organisiert sind.
 
 ## <a name="directories-as-logical-data-sets"></a>Verzeichnisse als logische Datensätze
 

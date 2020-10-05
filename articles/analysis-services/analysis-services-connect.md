@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Sie in Azure eine Verbindung mit Analysis Service
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/17/2020
+ms.date: 09/04/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 170cf0081e6671451ece6dc2924ae7e418f520a2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 71caad8ce650b86f4350b32974bb8d980538b223
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506773"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489016"
 ---
 # <a name="connecting-to-servers"></a>Herstellen einer Verbindung mit Servern
 
@@ -76,6 +76,24 @@ Verwenden Sie das Windows-Konto, unter dem der aktuelle Prozess ausgeführt wird
 ## <a name="connect-using-an-odc-file"></a>Herstellen einer Verbindung mithilfe einer ODC-Datei
 
 Bei Verwendung älterer Versionen von Excel können Benutzer mithilfe einer ODC-Datei (Office Data Connection) eine Verbindung mit einem Azure Analysis Services-Server herstellen. Weitere Informationen finden Sie unter [Erstellen einer ODC-Datei (Office Data Connection)](analysis-services-odc.md).
+
+## <a name="connect-as-a-linked-server-from-sql-server"></a>Herstellen einer Verbindung als Verbindungsserver in SQL Server
+
+SQL Server kann eine Verbindung zu eine Azure Analysis Services-Ressource als [Verbindungsserver](https://docs.microsoft.com/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine) herstellen, indem MSOLAP als Datenquellenanbieter angegeben wird. Bevor eine Verbindungsserververbindung konfiguriert wird, sollten Sie die aktuelle [MSOLAP-Clientbibliothek](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) (Anbieter) installieren. 
+
+Für Verbindungsserververbindungen zu Azure Analysis Services muss der MSOLAP-Anbieter außerhalb des SQL Server-Prozesses instanziiert werden. Wenn Verbindungsserveroptionen konfiguriert werden, sollten Sie dafür sorgen, dass die **InProcess zulassen**-Option **nicht ausgewählt** ist.
+
+Wenn die Option **InProcess zulassen** ausgewählt ist und der Anbieter im SQL Server-Prozess instanziiert wird, wird der folgende Fehler zurückgegeben:
+
+```
+OLE DB provider "MSOLAP" for linked server "(null)" returned message "The following system error occurred: ".
+
+OLE DB provider "MSOLAP" for linked server "(null)" returned message "The connection failed because user credentials are needed and Sign-In UI is not allowed.".
+
+Msg 7303, Level 16, State 1, Line 2
+Cannot initialize the data source object of OLE DB provider "MSOLAP" for linked server "(null)".
+```
+
 
 
 ## <a name="next-steps"></a>Nächste Schritte

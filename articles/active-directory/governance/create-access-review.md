@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 08/18/2020
+ms.date: 09/15/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2b3a838e52bb0b9f3a3be7195bd528c08e499c0
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 02d1c40c26dd6b6992d8df85a986b4157a22226a
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783653"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602930"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Erstellen einer Zugriffsüberprüfung für Gruppen und Anwendungen in Azure AD-Zugriffsüberprüfungen
 
@@ -100,22 +100,31 @@ Weitere Informationen finden Sie unter [Lizenzanforderungen](access-reviews-over
 
 1. Erweitern Sie den Abschnitt **Einstellungen nach Abschluss**, um anzugeben, was nach Abschluss der Überprüfung geschehen soll.
 
-    ![Erstellen einer Zugriffsüberprüfung – Einstellungen nach Abschluss](./media/create-access-review/upon-completion-settings.png)
+    ![Erstellen einer Zugriffsüberprüfung – Einstellungen nach Abschluss](./media/create-access-review/upon-completion-settings-new.png)
 
-1. Soll abgelehnten Benutzern automatisch der Zugriff entzogen werden, legen Sie **Ergebnisse automatisch auf Ressource anwenden** auf **Aktivieren** fest. Falls Sie die Ergebnisse nach Abschluss der Überprüfung manuell anwenden möchten, legen Sie die Einstellung auf **Deaktivieren** fest.
+2. Soll abgelehnten Benutzern automatisch der Zugriff entzogen werden, legen Sie **Ergebnisse automatisch auf Ressource anwenden** auf **Aktivieren** fest. Falls Sie die Ergebnisse nach Abschluss der Überprüfung manuell anwenden möchten, legen Sie die Einstellung auf **Deaktivieren** fest.
 
-1. Geben Sie mithilfe der Liste **Falls der Prüfer nicht reagiert** an, was bei Benutzern geschehen soll, die vom Prüfer nicht innerhalb des vorgesehenen Zeitraums überprüft werden. Diese Einstellung hat keine Auswirkungen auf Benutzer, die von den Prüfern manuell überprüft wurden. Lautet die Entscheidung des Prüfers letztlich „Verweigern“, wird dem Benutzer der Zugriff entzogen.
+3. Geben Sie mithilfe der Liste **If reviewers don‘t respond** (Wenn die Prüfer nicht reagieren) an, was bei Benutzern geschehen soll, die vom Prüfer nicht innerhalb des vorgesehenen Zeitraums überprüft werden. Diese Einstellung hat keine Auswirkungen auf Benutzer, die von den Prüfern manuell überprüft wurden. Lautet die Entscheidung des Prüfers letztlich „Verweigern“, wird dem Benutzer der Zugriff entzogen.
 
     - **Keine Änderung**: Der Zugriff des Benutzers bleibt unverändert.
     - **Zugriff entfernen**: Dem Benutzer wird der Zugriff entzogen.
     - **Zugriff genehmigen**: Der Zugriff des Benutzers wird genehmigt.
     - **Empfehlungen annehmen**: Die Systemempfehlungen hinsichtlich der Ablehnung oder Gewährung des weiteren Benutzerzugriffs werden verwendet.
 
+    ![Erstellen einer Zugriffsüberprüfung – Erweiterte Einstellungen](./media/create-access-review/advanced-settings-preview-new.png)
+
+4. (Vorschau) Verwenden Sie „Auf verweigerte Benutzer anzuwendende Aktion“, um festzulegen, was mit Gastbenutzern geschieht, wenn diese abgelehnt werden.
+    - Mit **Option 1** können Sie den Zugriff des abgelehnten Benutzers auf die zu überprüfende Gruppe oder Anwendung deaktivieren. Der Benutzer kann sich aber weiterhin beim Mandanten anmelden. 
+    - Mit **Option 2** können Sie verhindern, dass der abgelehnte Benutzer sich beim Mandanten anmeldet, unabhängig davon, ob er Zugriff auf andere Ressourcen hat. Wenn ein Fehler aufgetreten ist oder ein Administrator beschließt, den Zugriff erneut zu aktivieren, kann das innerhalb von 30 Tagen nach der Deaktivierung des Benutzers geschehen. Wenn keine Aktionen mit dem deaktivierten Benutzer durchgeführt werden, wird dieser aus dem Mandanten gelöscht.
+
+Weitere Informationen zu bewährten Methoden zum Entfernen von Gastbenutzern, die keinen Zugriff mehr auf Ressourcen in Ihrer Organisation haben sollen, finden Sie im Artikel [Verwenden von Azure AD Identity Governance zum Überprüfen und Entfernen externer Benutzer, die keinen Zugriff mehr auf Ressourcen haben](access-reviews-external-users.md).
+
+>[!NOTE]
+> „Auf verweigerte Benutzer anzuwendende Aktion“ funktioniert nur, wenn Sie zuvor eine Prüfung nur für Gastbenutzer durchgeführt haben. Weitere Informationen finden Sie unter **Erstellen einer oder mehrerer Zugriffsüberprüfung, Schritt 8**.
+
 ### <a name="advanced-settings"></a>Erweiterte Einstellungen
 
 1. Erweitern Sie den Abschnitt **Erweiterte Einstellungen**, um weitere Einstellungen anzugeben.
-
-    ![Erstellen einer Zugriffsüberprüfung – Erweiterte Einstellungen](./media/create-access-review/advanced-settings-preview.png)
 
 1. Legen Sie **Empfehlungen anzeigen** auf **Aktivieren** fest, damit den Prüfern die Systemempfehlungen auf der Grundlage der Zugriffsinformationen des Benutzers angezeigt werden.
 

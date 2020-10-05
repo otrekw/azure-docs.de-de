@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: de39789a45856211421e3ec5638a2df94d49976c
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 72df946ed35dfdfd2811089a51ab9403d2e0567c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958710"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983010"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Problembehandlung von Apps in Azure App Service mit Visual Studio
 ## <a name="overview"></a>Übersicht
@@ -70,15 +70,15 @@ Das `customErrors`-Kennzeichen in der Datei "Web.config" ist bei der Bereitstell
 
 **Serverfehler in '/'-Anwendung:**
 
-![Wenig hilfreiche Fehlerseite](./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror.png)
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror.png" alt-text="Screenshot eines Serverfehlers in der '/'-Anwendung in einem Webbrowser":::
 
 **Ein Fehler ist aufgetreten:**
 
-![Wenig hilfreiche Fehlerseite](./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror1.png)
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror1.png" alt-text="Screenshot eines Serverfehlers in der '/'-Anwendung in einem Webbrowser":::
 
 **Die Website kann die Seite nicht anzeigen**
 
-![Wenig hilfreiche Fehlerseite](./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror2.png)
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror2.png" alt-text="Screenshot eines Serverfehlers in der '/'-Anwendung in einem Webbrowser":::
 
 Häufig ist der einfachste Weg für die Suche nach der Fehlerursache die Aktivierung detaillierter Fehlermeldungen. Im ersten der vorherigen Screenshots wird dies erläutert. Dazu ist eine Änderung an der bereitgestellten Web.config-Datei erforderlich. Sie können die Datei *Web.config* im Projekt bearbeiten und das Projekt neu bereitstellen oder eine [Web.config-Transformation](https://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations) erstellen und eine Debugversion bereitstellen. Es gibt aber noch einen einfacheren Weg: Im **Projektmappen-Explorer** können Sie Dateien in der Remote-App mithilfe des Features *Remoteansicht* direkt anzeigen und bearbeiten.
 
@@ -139,7 +139,7 @@ Dieser Abschnitt veranschaulicht das Remotedebuggen anhand des Projekts, das Sie
 
 1. Klicken Sie im **Server-Explorer** mit der rechten Maustaste auf Ihre App, und klicken Sie dann auf **Debugger anfügen**.
 
-    ![Debugger anfügen](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-attachdebugger.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-attachdebugger.png" alt-text="Screenshot eines Serverfehlers in der '/'-Anwendung in einem Webbrowser":::
 
     Der Browser öffnet automatisch Ihre Startseite in Azure. Möglicherweise müssen Sie ca. 20 Sekunden warten, während Azure die den Server zum Debuggen einrichtet. Diese Verzögerung tritt nur bei der ersten Ausführung einer App im Debugmodus innerhalb von 48 Stunden auf. Wenn Sie das Debuggen im gleichen Zeitraum erneut starten, tritt keine Verzögerung auf.
 
@@ -192,7 +192,7 @@ Remotedebuggen funktioniert nur bei kontinuierlichen WebJobs. Geplante und bedar
 
 8. Klicken Sie auf **Debugger anfügen**.
 
-    ![Debugger anfügen](./media/web-sites-dotnet-troubleshoot-visual-studio/wjattach.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/wjattach.png" alt-text="Screenshot eines Serverfehlers in der '/'-Anwendung in einem Webbrowser":::
 
     Der Browser öffnet automatisch Ihre Startseite in Azure. Möglicherweise müssen Sie ca. 20 Sekunden warten, während Azure die den Server zum Debuggen einrichtet. Diese Verzögerung tritt nur bei der ersten Ausführung einer App im Debugmodus innerhalb von 48 Stunden auf. Wenn Sie das Debuggen im gleichen Zeitraum erneut starten, tritt keine Verzögerung auf.
 
@@ -340,11 +340,11 @@ Informationen zum Erstellen von Anwendungsprotokollen in WebJobs finden Sie unte
 1. Fügen Sie der URL in der Adressleiste des Browserfensters *trace.axd* hinzu, und drücken Sie die EINGABETASTE (die URL sollte dieser ähneln: `http://localhost:53370/trace.axd`).
 1. Klicken Sie auf der Seite **Anwendungsablaufverfolgung** auf **Details anzeigen** in der ersten Zeile (nicht in der BrowserLink-Zeile).
 
-    ![trace.axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png" alt-text="Screenshot eines Serverfehlers in der '/'-Anwendung in einem Webbrowser":::
 
     Daraufhin wird die Seite **Anforderungsdetails** angezeigt, und im Bereich **Überwachungsinformationen** sehen Sie die Ausgabe der Ablaufverfolgungs-Anweisungen, die Sie der `Index`-Methode hinzugefügt haben.
 
-    ![trace.axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd2.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd2.png" alt-text="Screenshot eines Serverfehlers in der '/'-Anwendung in einem Webbrowser":::
 
     `trace.axd` ist standardmäßig nur lokal verfügbar. Sie können dem `trace`-Element in der Datei *Web.config* die Zeile `localOnly="false"` hinzufügen, um die Datei in einer Remote-App verfügbar zu machen, wie im folgenden Beispiel gezeigt:
 
@@ -361,11 +361,12 @@ Informationen zum Erstellen von Anwendungsprotokollen in WebJobs finden Sie unte
     Nachdem Visual Studio Ihr Update veröffentlicht hat, wird ein Browserfenster mit Ihrer Startseite geöffnet (sofern Sie **Ziel-URL** auf der Registerkarte **Verbindung** nicht gelöscht haben).
 3. Klicken Sie im **Server-Explorer** mit der rechten Maustaste auf die App, und wählen Sie **Streamingprotokolle anzeigen** aus.
 
-    ![Anzeigen der Streamingprotokolle im Kontextmenü](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewlogsmenu.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewlogsmenu.png" alt-text="Screenshot eines Serverfehlers in der '/'-Anwendung in einem Webbrowser":::
 
     Das **Ausgabefenster** zeigt an, dass Sie mit dem Protokollstreamingdienst verbunden sind und fügt eine Benachrichtigungszeile für jede Minute hinzu, in der kein anzuzeigendes Protokoll eingeht.
 
-    ![Anzeigen der Streamingprotokolle im Kontextmenü](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-nologsyet.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-nologsyet.png" alt-text="Screenshot eines Serverfehlers in der '/'-Anwendung in einem Webbrowser":::
+
 4. Klicken Sie im Browserfenster, in dem die Startseite Ihrer Anwendung geöffnet ist, auf **Contact**.
 
     Innerhalb weniger Sekunden wird die Ausgabe der Ablaufverfolgung mit dem Schweregrad „Fehler“, die Sie der `Contact`-Methode hinzugefügt haben, im **Ausgabefenster** angezeigt.
@@ -393,7 +394,7 @@ Informationen zum Erstellen von Anwendungsprotokollen in WebJobs finden Sie unte
 ### <a name="output-window-features"></a>Funktionen des Ausgabefensters
 Die Registerkarte **Microsoft Azure-Protokolle** im **Ausgabefenster** enthält verschiedene Schaltflächen und ein Textfeld:
 
-![Schaltflächen auf der Registerkarte Protokolle](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-icons.png)
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-icons.png" alt-text="Screenshot eines Serverfehlers in der '/'-Anwendung in einem Webbrowser":::
 
 Diese Schaltflächen bieten die folgenden Funktionen:
 
@@ -457,14 +458,15 @@ Alle Protokolle, die Sie im **Ausgabefenster** überwachen können, lassen sich 
 
 1. Klicken Sie im **Ausgabefenster** auf **Streamingprotokolle herunterladen**.
 
-    ![Schaltflächen auf der Registerkarte Protokolle](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadicon.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadicon.png" alt-text="Screenshot eines Serverfehlers in der '/'-Anwendung in einem Webbrowser":::
 
     Der Datei-Explorer öffnet Ihren *Downloads* -Ordner, und die heruntergeladene Datei ist ausgewählt.
 
-    ![Heruntergeladene Datei](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadedfile.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadedfile.png" alt-text="Screenshot eines Serverfehlers in der '/'-Anwendung in einem Webbrowser":::
+
 2. Wenn Sie die *.zip* -Datei extrahieren, sehen Sie die folgende Ordnerstruktur:
 
-    ![Heruntergeladene Datei](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-logfilefolders.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-logfilefolders.png" alt-text="Screenshot eines Serverfehlers in der '/'-Anwendung in einem Webbrowser":::
 
    * Ablaufverfolgungsprotokolle von Anwendungen befinden sich in *TXT*-Dateien im Ordner *LogFiles\Application*.
    * Webserverprotokolle befinden sich in *LOG*-Dateien im Ordner *LogFiles\http\RawLogs*. Sie können diese Dateien mit Werkzeugen wie [Log Parser](https://www.microsoft.com/download/details.aspx?displaylang=en&id=24659) anzeigen und bearbeiten.

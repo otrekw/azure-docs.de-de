@@ -9,17 +9,18 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: c432b89574949b31612aeba862ece7687c12dde4
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: a1b317b651b0e17c07eb17dbdb8a7c6657d39564
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922836"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971615"
 ---
 # <a name="how-to-configure-caching-for-incremental-enrichment-in-azure-cognitive-search"></a>Konfigurieren der Zwischenspeicherung für die inkrementelle Anreicherung in Azure Cognitive Search
 
 > [!IMPORTANT] 
-> Die inkrementelle Anreicherung ist derzeit als öffentliche Vorschauversion verfügbar. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Dieses Feature steht in den [REST API-Versionen 2019-05-06-Preview und 2020-06-30-Preview](search-api-preview.md) zur Verfügung. Derzeit werden weder das Portal noch das .NET SDK unterstützt.
+> Die inkrementelle Anreicherung ist derzeit als öffentliche Vorschauversion verfügbar. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
+> Dieses Feature wird von den [Vorschauversionen der REST-API](search-api-preview.md) bereitgestellt. Derzeit werden weder das Portal noch das .NET SDK unterstützt.
 
 In diesem Artikel erfahren Sie, wie Sie eine Zwischenspeicherung zu einer Anreicherungspipeline hinzufügen, sodass Sie Schritte inkrementell ändern können, ohne jedes Mal eine Neuerstellung durchführen zu müssen. Standardmäßig ist ein Skillset zustandslos, und eine Änderung eines beliebigen Teils seiner Komposition erfordert eine vollständige erneute Ausführung des Indexers. Mit der inkrementellen Anreicherung kann der Indexer ermitteln, welche Teile der Dokumentstruktur auf der Grundlage der in den Skillset- oder Indexerdefinitionen erkannten Änderungen aktualisiert werden müssen. Die vorhandene verarbeitete Ausgabe wird nach Möglichkeit beibehalten und wiederverwendet. 
 

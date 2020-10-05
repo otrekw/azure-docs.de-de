@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: af33a777d2d6ef53965c2168ac0abee00f59bc50
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: cda4aa9a811bac0ccf20caec32ee38da9b46b6c7
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021380"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613778"
 ---
 # <a name="color-materials"></a>Farbmaterialien
 
@@ -50,6 +50,13 @@ Die folgenden Eigenschaften gelten speziell für Farbmaterialien:
   1. **AlphaBlended**: Dieser Modus ähnelt dem Transparenzmodus für PBR-Materialien. Es sollte für durchsichtige Materialien wie Glas verwendet werden.
 
   1. **Additive**: Dieser Modus ist der einfachste und effizienteste Transparenzmodus. Der Beitrag des Materials wird dem gerenderten Bild hinzugefügt. Dieser Modus kann verwendet werden, um leuchtende (aber dennoch transparente) Objekte zu simulieren, z. B. Marker, die zum Hervorheben wichtiger Objekte verwendet werden.
+
+## <a name="api-documentation"></a>API-Dokumentation
+
+* [C#-Klasse „ColorMaterial“](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.colormaterial)
+* [C# RemoteManager.CreateMaterial()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.creatematerial)
+* [C++-Klasse „ColorMaterial“](https://docs.microsoft.com/cpp/api/remote-rendering/colormaterial)
+* [C++ RemoteManager::CreateMaterial()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#creatematerial)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

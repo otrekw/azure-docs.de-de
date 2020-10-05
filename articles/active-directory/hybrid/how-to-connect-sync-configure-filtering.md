@@ -16,20 +16,20 @@ ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1879df40122549ddc4c57557017fa2c84c883368
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 0852171544f179315535d234f5a2680d918e7d85
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88061505"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084837"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect-Synchronisierung: Konfigurieren der Filterung
-Per Filterung können Sie für Ihr lokales Verzeichnis steuern, welche Objekte in Azure Active Directory (Azure AD) angezeigt werden. Die Standardkonfiguration deckt alle Objekte in allen Domänen der konfigurierten Gesamtstrukturen ab. Dies ist die für den Normalfall empfohlene Konfiguration. Benutzer, die Office 365-Workloads wie etwa Exchange Online und Skype for Business verwenden, profitieren von einer vollständigen globalen Adressliste, die zum Senden von E-Mails und Anrufen anderer Personen genutzt werden kann. In der Standardkonfiguration erhalten diese Benutzer die gleiche Funktionalität wie bei einer lokalen Implementierung von Exchange oder Lync.
+Per Filterung können Sie für Ihr lokales Verzeichnis steuern, welche Objekte in Azure Active Directory (Azure AD) angezeigt werden. Die Standardkonfiguration deckt alle Objekte in allen Domänen der konfigurierten Gesamtstrukturen ab. Dies ist die für den Normalfall empfohlene Konfiguration. Benutzer, die Microsoft 365-Workloads wie etwa Exchange Online und Skype for Business verwenden, profitieren von einer vollständigen globalen Adressliste, mit der sie E-Mails an andere Personen senden und diese anrufen können. In der Standardkonfiguration erhalten diese Benutzer die gleiche Funktionalität wie bei einer lokalen Implementierung von Exchange oder Lync.
 
 In einigen Fällen ist es jedoch erforderlich, Änderungen an der Standardkonfiguration vorzunehmen. Im Folgenden finden Sie einige Beispiele:
 
 * Sie planen, die [Azure AD-Multiverzeichnistopologie](plan-connect-topologies.md#each-object-only-once-in-an-azure-ad-tenant) zu verwenden. Sie müssen einen Filter anwenden, um zu steuern, welche Objekte mit einem bestimmten Azure AD-Verzeichnis synchronisiert werden sollen.
-* Sie führen ein Pilotprojekt für Azure oder Office 365 aus und benötigen nur eine Teilmenge der Benutzer in Azure AD. In dem kleinen Pilotprojekt müssen Sie nicht unbedingt über eine vollständige globale Adressliste verfügen, um die Funktionsweise zu demonstrieren.
+* Sie führen einen Pilotversuch für Azure oder Microsoft 365 durch und möchten nur eine Teilmenge der Benutzer in Azure AD verwenden. In dem kleinen Pilotprojekt müssen Sie nicht unbedingt über eine vollständige globale Adressliste verfügen, um die Funktionsweise zu demonstrieren.
 * Sie haben viele Dienstkonten und andere nicht persönliche Konten, die nicht in Azure AD enthalten sein sollen.
 * Aus Compliancegründen löschen Sie lokal keine Benutzerkonten. Sie deaktivieren sie nur. In Azure AD sollen aber nur aktive Konten vorhanden sein.
 
@@ -217,7 +217,7 @@ Bei der eingehenden Filterung wird die Standardkonfiguration genutzt, bei der f�
 Bei der eingehenden Filterung nutzen Sie die Leistungsfähigkeit des **Bereichs**, um zu ermitteln, welche Objekte synchronisiert werden sollen. Hierbei nehmen Sie die Anpassungen vor, um die Anforderungen Ihres Unternehmens zu erfüllen. Das Bereichsmodul verfügt über die Elemente **group** (Gruppe) und **clause** (Klausel), um zu bestimmen, wann eine Synchronisierungsregel zum Bereich gehören soll. Eine Gruppe enthält eine oder mehrere Klauseln. Ein logisches „Und“ wird zwischen mehreren Klauseln und ein logisches „Oder“ zwischen mehreren Gruppen verwendet.
 
 Beispiel:  
-![Umfang](./media/how-to-connect-sync-configure-filtering/scope.png)  
+![Screenshot: Beispiel für das Hinzufügen von Bereichsfiltern](./media/how-to-connect-sync-configure-filtering/scope.png)  
 Lesen Sie dieses Beispiel wie folgt: **(department = IT) OR (department = Sales AND c = US)** .
 
 In den folgenden Beispielen und Schritten verwenden Sie das Benutzerobjekt als Beispiel, aber Sie können es für alle Objekttypen nutzen.
@@ -275,7 +275,7 @@ In diesem Beispiel wird die Filterung so geändert, dass nur Benutzer synchronis
 1. Melden Sie sich bei dem Server, auf dem die Azure AD Connect-Synchronisierung ausgeführt wird, mit einem Konto an, das Mitglied der Sicherheitsgruppe **ADSyncAdmins** ist.
 2. Starten Sie den **Synchronisierungsregel-Editor** über das **Startmenü**.
 3. Klicken Sie unter **Rules Type** (Regeltyp) auf **Outbound** (Ausgehend).
-4. Suchen Sie abhängig von der verwendeten Connect-Version entweder die Regel mit dem Namen **Out to AAD – User Join** oder die Regel mit dem Namen **Out to AAD - User Join SOAInAD**, und klicken Sie auf **Bearbeiten**.
+4. Suchen Sie abhängig von der verwendeten Connect-Version entweder die Regel **Out to Azure AD – User Join** (Ausgehend zu Azure AD – Beitritt Benutzer) oder die Regel **Out to Azure AD – User Join SOAInAD** (Ausgehend zu Azure AD – Beitritt Benutzer SOAInAD), und klicken Sie auf **Bearbeiten**.
 5. Wählen Sie im Popupfenster die Antwort **Ja** , um eine Kopie der Regel zu erstellen.
 6. Ändern Sie auf der Seite **Beschreibung** die **Rangfolge** in einen nicht verwendeten Wert, z.B. 50.
 7. Klicken Sie im linken Navigationsbereich auf **Scoping filter** (Bereichsfilter) und dann auf **Klausel hinzufügen**. Wählen Sie in **Attribut** den Wert **mail** aus. Wählen Sie in **Operator** die Option **ENDSWITH** aus. Geben Sie in **Wert** die Zeichenfolge **\@contoso.com** ein, und klicken Sie dann auf **Klausel hinzufügen**. Wählen Sie in **Attribut** die Option **userPrincipalName** aus. Wählen Sie in **Operator** die Option **ENDSWITH** aus. Geben Sie in **Wert** die Zeichenfolge **\@contoso.com** ein.
@@ -300,7 +300,7 @@ Nach der Synchronisierung werden alle Änderungen für den Export bereitgestellt
 
 1. Starten Sie eine Eingabeaufforderung, und wechseln Sie zu `%ProgramFiles%\Microsoft Azure AD Sync\bin`.
 2. Führen Sie `csexport "Name of Connector" %temp%\export.xml /f:x` aus.  
-   Den Namen des Connectors finden Sie im Synchronisierungsdienst. Für Azure AD sieht der Name in etwa wie folgt aus: contoso.com – AAD.
+   Den Namen des Connectors finden Sie im Synchronisierungsdienst. Für Azure AD sieht der Name in etwa wie folgt aus: contoso.com – Azure AD.
 3. Führen Sie `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` aus.
 4. Sie verfügen jetzt im Ordner „%temp%“ über eine Datei namens „export.csv“, die in Microsoft Excel untersucht werden kann. Diese Datei enthält alle Änderungen, die exportiert werden sollen.
 5. Nehmen Sie erforderliche Änderungen an den Daten oder der Konfiguration vor, und führen Sie die oben genannten Schritte (Importieren, Synchronisieren und Überprüfen) erneut aus, bis Sie die Änderungen erhalten, die Sie exportieren möchten.

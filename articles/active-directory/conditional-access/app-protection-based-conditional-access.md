@@ -11,22 +11,22 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3626a29bb828c9fbc353b11858d42fecd4bb129d
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 82ab9bc0159528446a9de95769f1e433f03acb56
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641023"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601944"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>Gewusst wie: Erzwingen einer App-Schutzrichtlinie und einer genehmigten Client-App für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs
 
 Viele Menschen verwenden mobile Geräte sowohl für private als auch für berufliche Zwecke. Organisationen möchten natürlich sicherstellen, dass die Mitarbeiter produktiv arbeiten können, aber gleichzeitig auch verhindern, dass Datenverluste durch potenziell unsichere Anwendungen vermieden werden. Mit bedingtem Zugriff können Organisationen den Zugriff auf genehmigte (modern authentifizierungsfähige) Client-Apps mithilfe von Intune-App-Schutzrichtlinien einschränken, die auf solche Apps angewandt werden.
 
-Dieser Artikel enthält drei Szenarien zum Konfigurieren von Richtlinien für den bedingten Zugriff auf Ressourcen wie Office 365, Exchange Online und SharePoint Online.
+Dieser Artikel enthält drei Szenarien zum Konfigurieren von Richtlinien für den bedingten Zugriff auf Ressourcen wie Microsoft 365, Exchange Online und SharePoint.
 
-- [Szenario 1: Office 365-Apps erfordern genehmigte Apps mit App-Schutzrichtlinien.](#scenario-1-office-365-apps-require-approved-apps-with-app-protection-policies)
+- [Szenario 1: Microsoft 365-Apps erfordern genehmigte Apps mit App-Schutzrichtlinien.](#scenario-1-microsoft-365-apps-require-approved-apps-with-app-protection-policies)
 - [Szenario 2: Browser-Apps erfordern genehmigte Apps mit App-Schutzrichtlinien.](#scenario-2-browser-apps-require-approved-apps-with-app-protection-policies)
-- [Szenario 3: Exchange Online und SharePoint Online erfordern eine genehmigte Client-App und eine App-Schutzrichtlinie.](#scenario-3-exchange-online-and-sharepoint-online-require-an-approved-client-app-and-app-protection-policy)
+- [Szenario 3: Exchange Online und SharePoint erfordern eine genehmigte Client-App und eine App-Schutzrichtlinie.](#scenario-3-exchange-online-and-sharepoint-require-an-approved-client-app-and-app-protection-policy)
 
 Bei bedingtem Zugriff sind diese Client-Apps bekanntermaßen durch eine App-Schutzrichtlinie geschützt. Weitere Informationen zu App-Schutzrichtlinien finden Sie im Artikel [Übersicht über App-Schutzrichtlinien](/intune/apps/app-protection-policy).
 
@@ -36,13 +36,13 @@ Bei bedingtem Zugriff sind diese Client-Apps bekanntermaßen durch eine App-Schu
 > [!NOTE]
 > Die Option „Eine der ausgewählten Steuerungen anfordern“ unter den Zugriffserteilungssteuerungen funktioniert wie eine ODER-Klausel. Sie wird innerhalb einer Richtlinie verwendet, um Benutzern die Verwendung von Apps zu ermöglichen, welche die Zugriffserteilungssteuerungen **App-Schutzrichtlinie erforderlich** bzw. **Genehmigte Client-App erforderlich** unterstützen. **App-Schutzrichtlinie erforderlich** wird erzwungen, wenn eine App in beiden Richtlinien unterstützt wird. Weitere Informationen zu den Apps, welche die Zugriffserteilungssteuerung **App-Schutzrichtlinie erforderlich** unterstützen, finden Sie unter [App-Schutzrichtlinie als Voraussetzung](concept-conditional-access-grant.md#require-app-protection-policy).
 
-## <a name="scenario-1-office-365-apps-require-approved-apps-with-app-protection-policies"></a>Szenario 1: Office 365-Apps erfordern genehmigte Apps mit App-Schutzrichtlinien.
+## <a name="scenario-1-microsoft-365-apps-require-approved-apps-with-app-protection-policies"></a>Szenario 1: Microsoft 365-Apps erfordern genehmigte Apps mit App-Schutzrichtlinien.
 
-In diesem Szenario hat Contoso beschlossen, dass der gesamte mobile Zugriff auf Office 365-Ressourcen genehmigte Client-Apps wie Outlook Mobile oder OneDrive erfordert, die durch eine App-Schutzrichtlinie geschützt sind. Alle Benutzer melden sich bereits mit Azure AD-Anmeldeinformationen an. Außerdem wurden ihnen Lizenzen zugewiesen, die Azure AD Premium P1 oder P2 und Microsoft Intune umfassen.
+In diesem Szenario hat Contoso beschlossen, dass der gesamte mobile Zugriff auf Microsoft 365-Ressourcen genehmigte Client-Apps wie Outlook Mobile oder OneDrive erfordert, die durch eine App-Schutzrichtlinie geschützt sind. Alle Benutzer melden sich bereits mit Azure AD-Anmeldeinformationen an. Außerdem wurden ihnen Lizenzen zugewiesen, die Azure AD Premium P1 oder P2 und Microsoft Intune umfassen.
 
 Organisationen müssen die folgenden Schritte ausführen, um die Verwendung einer genehmigten Client-App auf mobilen Geräten zu erzwingen.
 
-**Schritt 1: Konfigurieren einer Azure AD-Richtlinie für bedingten Zugriff für Office 365**
+**Schritt 1: Konfigurieren einer Azure AD-Richtlinie für bedingten Zugriff für Microsoft 365**
 
 1. Melden Sie sich beim **Azure-Portal** als globaler Administrator, Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
 1. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff**.
@@ -89,11 +89,11 @@ Die Schritte zum Erstellen von App-Schutzrichtlinien für Android und iOS finden
 
 ## <a name="scenario-2-browser-apps-require-approved-apps-with-app-protection-policies"></a>Szenario 2: Browser-Apps erfordern genehmigte Apps mit App-Schutzrichtlinien.
 
-In diesem Szenario hat Contoso beschlossen, dass der gesamte mobile Webbrowserzugriff auf Office 365-Ressourcen genehmigte Client-Apps wie Microsoft Edge für iOS und Android erfordert, die durch eine App-Schutzrichtlinie geschützt sind. Alle Benutzer melden sich bereits mit Azure AD-Anmeldeinformationen an. Außerdem wurden ihnen Lizenzen zugewiesen, die Azure AD Premium P1 oder P2 und Microsoft Intune umfassen.
+In diesem Szenario hat Contoso entschieden, dass der gesamte mobile Webbrowserzugriff auf Microsoft 365-Ressourcen genehmigte Client-Apps wie Edge für iOS und Android erfordert, die durch eine App-Schutzrichtlinie geschützt sind. Alle Benutzer melden sich bereits mit Azure AD-Anmeldeinformationen an. Außerdem wurden ihnen Lizenzen zugewiesen, die Azure AD Premium P1 oder P2 und Microsoft Intune umfassen.
 
 Organisationen müssen die folgenden Schritte ausführen, um die Verwendung einer genehmigten Client-App auf mobilen Geräten zu erzwingen.
 
-**Schritt 1: Konfigurieren einer Azure AD-Richtlinie für bedingten Zugriff für Office 365**
+**Schritt 1: Konfigurieren einer Azure AD-Richtlinie für bedingten Zugriff für Microsoft 365**
 
 1. Melden Sie sich beim **Azure-Portal** als globaler Administrator, Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
 1. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff**.
@@ -120,13 +120,13 @@ Organisationen müssen die folgenden Schritte ausführen, um die Verwendung eine
 
 Die Schritte zum Erstellen von App-Schutzrichtlinien für Android und iOS finden Sie im Artikel [Erstellen und Zuweisen von App-Schutzrichtlinien](/intune/apps/app-protection-policies). 
 
-## <a name="scenario-3-exchange-online-and-sharepoint-online-require-an-approved-client-app-and-app-protection-policy"></a>Szenario 3: Exchange Online und SharePoint Online erfordern eine genehmigte Client-App und eine App-Schutzrichtlinie.
+## <a name="scenario-3-exchange-online-and-sharepoint-require-an-approved-client-app-and-app-protection-policy"></a>Szenario 3: Exchange Online und SharePoint erfordern eine genehmigte Client-App und eine App-Schutzrichtlinie.
 
 In diesem Szenario hat Contoso beschlossen, dass Benutzer auf mobilen Geräten nur auf E-Mail- und SharePoint-Daten zugreifen dürfen, sofern sie eine genehmigte Client-App wie Outlook Mobile verwenden, die vor dem Erteilen des Zugriffs durch eine App-Schutzrichtlinie geschützt wird. Alle Benutzer melden sich bereits mit Azure AD-Anmeldeinformationen an. Außerdem wurden ihnen Lizenzen zugewiesen, die Azure AD Premium P1 oder P2 und Microsoft Intune umfassen.
 
 Organisationen müssen die folgenden drei Schritte ausführen, um die Verwendung einer genehmigten Client-App auf mobilen Geräten und von Exchange ActiveSync-Clients zu erzwingen.
 
-**Schritt 1: Richtlinie für auf Android und iOS basierende moderne Authentifizierungsclients, die die Verwendung einer genehmigten Client-App-Schutzrichtlinie für den Zugriff auf Exchange Online und SharePoint Online erfordern.**
+**Schritt 1: Richtlinie für auf Android und iOS basierende moderne Authentifizierungsclients, die die Verwendung einer genehmigten Client-App-Schutzrichtlinie für den Zugriff auf Exchange Online und SharePoint erfordern.**
 
 1. Melden Sie sich beim **Azure-Portal** als globaler Administrator, Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
 1. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff**.

@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: absha
-ms.openlocfilehash: 1109dae90790c9667b3c60afb6416c20061a95fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbaad0f6639d65d88da6847886d3aa3d39b93e82
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808106"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563752"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>Konfigurieren von App Service mit Application Gateway
 
@@ -23,10 +23,8 @@ Application Gateway verfügt über den Switch `Pick host name from backend addre
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
-> [!div class="checklist"]
->
-> - Erstellen eines Back-End-Pools und Hinzufügen eines App-Diensts
-> - Erstellen von HTTP-Einstellungen und benutzerdefiniertes Testen mit aktivierten „Pick Hostname“-Parametern (Hostname auswählen)
+- Erstellen eines Back-End-Pools und Hinzufügen eines App-Diensts
+- Erstellen von HTTP-Einstellungen und benutzerdefiniertes Testen mit aktivierten „Pick Hostname“-Parametern (Hostname auswählen)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -69,9 +67,9 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 5. Klicken Sie auf **OK**, um die HTTP-Einstellung zu erstellen.
 
-   ![Screenshot: HTTP-Einstellung 1](./media/configure-web-app-portal/http-setting1.png)
+   ![Screenshot des Bereichs „HTTP-Einstellung hinzufügen“ mit ausgewählten Optionen „Für App Service verwenden“ und „OK“](./media/configure-web-app-portal/http-setting1.png)
 
-   ![Screenshot: HTTP-Einstellung 2](./media/configure-web-app-portal/http-setting2.png)
+   ![Screenshot eines Integritätstests mit ausgewählter Option „Hostnamen aus Back-End-HTTP-Einstellungen auswählen“](./media/configure-web-app-portal/http-setting2.png)
 
 
 
@@ -87,7 +85,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 5. Klicken Sie auf **OK**, um diese Regel zu speichern.
 
-   ![Regel](./media/configure-web-app-portal/rule.png)
+   ![Screenshot des Bereichs „Einfache Regel hinzufügen“ mit hervorgehoben Optionen „Listener“, „Back-End-Pool“ und „HTTP-Einstellung“](./media/configure-web-app-portal/rule.png)
 
 ## <a name="additional-configuration-in-case-of-redirection-to-app-services-relative-path"></a>Zusätzliche Konfiguration bei einer Umleitung an den relativen App Service-Pfad
 

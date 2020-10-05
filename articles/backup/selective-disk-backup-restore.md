@@ -4,12 +4,12 @@ description: In diesem Artikel lernen Sie die selektive Datenträgersicherung un
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: 12b5b4cd35d70d8ebbd6b269e82c46984652bd07
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: fa5ab60481b431971abb1e3fcb5c85492eb5b22a
+ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961991"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89506694"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Selektive Datenträgersicherung und -wiederherstellung für Azure-VMs
 
@@ -268,6 +268,10 @@ Das Konfigurieren der selektiven Datenträgersicherung für eine VM über das Az
 Wenn Sie die Sicherung im Azure-Portal aktivieren, können Sie die Option **Nur Betriebssystemdatenträger sichern** auswählen. Sie können also die Sicherung Ihres virtuellen Azure-Computers mit dem Betriebssystemdatenträger konfigurieren und alle daran angefügten Datenträger ausschließen.
 
 ![Konfigurieren der ausschließlichen Sicherung des Betriebssystemdatenträgers](./media/selective-disk-backup-restore/configure-backup-operating-system-disk.png)
+
+## <a name="using-azure-rest-api"></a>Verwenden der Azure-REST-API
+
+Sie können Azure VM Backup mit einigen wenigen ausgewählten Datenträgern konfigurieren, oder Sie können den Schutz einer vorhandenen VM so ändern, dass einige Datenträger eingeschlossen/ausgeschlossen werden, wie [hier](backup-azure-arm-userestapi-backupazurevms.md#excluding-disks-in-azure-vm-backup) dokumentiert.
 
 ## <a name="selective-disk-restore"></a>Selektive Datenträgerwiederherstellung
 

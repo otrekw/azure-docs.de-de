@@ -11,20 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/14/2018
-ms.openlocfilehash: 46e81242c1fba463f547015a244650ae6e574580
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: be3b82765f2f5268a75147e8e1ef6de34aeb8ff2
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629081"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441067"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>Massenkopieren aus einer Datenbank mit einer Steuertabelle
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Sie müssen große Datenmengen aus mehreren Tabellen laden, um Daten aus einem Data Warehouse in Oracle Server, Netezza, Teradata oder SQL Server in Azure SQL Data Warehouse zu kopieren. In der Regel müssen die Daten in den einzelnen Tabellen partitioniert werden, um Zeilen mit mehreren Threads parallel aus einer einzelnen Tabelle laden zu können. In diesem Artikel wird eine Vorlage für diese Szenarios beschrieben.
+Sie müssen große Datenmengen aus mehreren Tabellen laden, um Daten aus einem Data Warehouse in Oracle Server, Netezza, Teradata oder SQL Server in Azure Synapse Analytics (vormals SQL Data Warehouse) zu kopieren. In der Regel müssen die Daten in den einzelnen Tabellen partitioniert werden, um Zeilen mit mehreren Threads parallel aus einer einzelnen Tabelle laden zu können. In diesem Artikel wird eine Vorlage für diese Szenarios beschrieben.
 
- >!HINWEIS: Wenn Sie Daten aus einer kleinen Anzahl von Tabellen mit relativ geringem Datenvolumen in SQL Data Warehouse kopieren möchten, ist es effizienter, das [Tool zum Kopieren von Daten in Azure Data Factory](copy-data-tool.md) zu verwenden. Die in diesem Artikel beschriebene Vorlage ist für dieses Szenario umfangreicher als notwendig.
+ >!HINWEIS: Wenn Sie Daten aus einer kleinen Anzahl von Tabellen mit relativ geringem Datenvolumen in Azure Synapse Analytics kopieren möchten, ist es effizienter, das [Tool zum Kopieren von Daten in Azure Data Factory](copy-data-tool.md) zu verwenden. Die in diesem Artikel beschriebene Vorlage ist für dieses Szenario umfangreicher als notwendig.
 
 ## <a name="about-this-solution-template"></a>Informationen zu dieser Lösungsvorlage
 
@@ -44,7 +44,7 @@ Die Vorlage definiert die folgenden Parameter:
 - *Data_Destination_Container* ist der Stammordnerpfad, in den die Daten in Ihrem Zielspeicher kopiert werden. 
 - *Data_Destination_Directory* ist der Verzeichnispfad unter dem Stammelement, in den die Daten in Ihrem Zielspeicher kopiert werden. 
 
-Die letzten drei Parameter, die den Pfad im Zielspeicher definieren, werden nur angezeigt, wenn es sich bei dem ausgewählten Ziel um einen dateibasierten Speicher handelt. Wenn Sie „Azure Synapse Analytics (vormals SQL DW)“ als Zielspeicher auswählen, sind diese Parameter nicht erforderlich. Die Tabellennamen und das Schema in SQL Data Warehouse müssen jedoch den Tabellennamen und dem Schema in der Quelldatenbank entsprechen.
+Die letzten drei Parameter, die den Pfad im Zielspeicher definieren, werden nur angezeigt, wenn es sich bei dem ausgewählten Ziel um einen dateibasierten Speicher handelt. Wenn Sie „Azure Synapse Analytics (vormals SQL DW)“ als Zielspeicher auswählen, sind diese Parameter nicht erforderlich. Die Tabellennamen und das Schema in Azure Synapse Analytics müssen jedoch den Tabellennamen und dem Schema in der Quelldatenbank entsprechen.
 
 ## <a name="how-to-use-this-solution-template"></a>So verwenden Sie diese Lösungsvorlage
 
@@ -94,7 +94,7 @@ Die letzten drei Parameter, die den Pfad im Zielspeicher definieren, werden nur 
 
     ![Überprüfen des Ergebnisses](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable8.png)
 
-9. (Optional:) Wenn Sie „Azure Synapse Analytics (vormals SQL DW)“ als Datenziel ausgewählt haben, müssen Sie eine Verbindung mit Azure Blob Storage für den Stagingprozess eingeben, da dies für SQL Data Warehouse PolyBase erforderlich ist. Die Vorlage generiert automatisch einen Containerpfad für Ihren Blob Storage. Überprüfen Sie nach der Pipelineausführung, ob der Container erstellt wurde.
+9. (Optional:) Wenn Sie „Azure Synapse Analytics (vormals SQL DW)“ als Datenziel ausgewählt haben, müssen Sie eine Verbindung mit Azure Blob Storage für den Stagingprozess eingeben, da dies für Azure Synapse Analytics PolyBase erforderlich ist. Die Vorlage generiert automatisch einen Containerpfad für Ihren Blob Storage. Überprüfen Sie nach der Pipelineausführung, ob der Container erstellt wurde.
     
     ![PolyBase-Einstellung](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable9.png)
        

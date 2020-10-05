@@ -7,13 +7,13 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.author: terrylan
 manager: rkarlin
-ms.date: 11/04/2019
-ms.openlocfilehash: 5330c751aaa3fcbd5c7fc268e4a4de08d336d474
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/09/2020
+ms.openlocfilehash: 5c24bd80721f626e38dcb886e89231c0b86056df
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82735435"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650974"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Kunden-Lockbox für Microsoft Azure
 
@@ -25,6 +25,49 @@ Kunden-Lockbox für Microsoft Azure bietet eine Oberfläche, auf der Kunden Anfo
 Dieser Artikel behandelt, wie Kunden-Lockbox-Anforderungen initiiert, nachverfolgt und für spätere Überprüfungen und Audits gespeichert werden.
 
 Kunden-Lockbox ist jetzt allgemein verfügbar und derzeit für Remotedesktopzugriff auf virtuelle Computer aktiviert.
+
+## <a name="supported-services-and-scenarios-in-preview"></a>Unterstützte Dienste und Szenarien während der Vorschau
+
+Die folgenden Dienste sind derzeit für Kunden-Lockbox als Vorschauversion verfügbar:
+
+- API Management
+- Azure App Service
+- Azure Database for MySQL
+- Azure Databricks
+- Azure Synapse Analytics
+- Cognitive Services
+- Container Registry
+- Azure Data Factory
+- Azure Database for PostgreSQL
+- Azure Kubernetes Service
+- Azure Data Box
+- HDInsight
+- Funktionen
+- Azure Storage
+- Azure SQL-Datenbank
+- Azure-Daten-Explorer
+- Virtuelle Computer (jetzt auch mit Zugriff auf Speicherabbilder und verwaltete Datenträger)
+- Azure-Abonnementübertragung
+
+Wenn Sie Kunden-Lockbox für diese Vorschauangebote für Ihre Organisation aktivieren möchten, registrieren Sie sich für dir [Public Preview von Kunden-Lockbox für Azure](https://aka.ms/customerlockbox/insiderprogram).
+
+## <a name="supported-services-and-scenarios-in-general-availability"></a>Unterstützte Dienste und Szenarien bei allgemeiner Verfügbarkeit
+
+Die folgenden Dienste und Szenarien sind derzeit für Kunden-Lockbox allgemein verfügbar.
+
+### <a name="remote-desktop-access-to-virtual-machines"></a>Remotedesktopzugriff auf virtuelle Computer
+
+Kunden-Lockbox ist derzeit für Remotedesktop-Zugriffsanforderungen auf virtuelle Computer aktiviert. Die folgenden Workloads werden unterstützt:
+- Platform-as-a-Service (PaaS): Azure Cloud Services (Webrolle und Workerrolle)
+- Infrastructure-as-a-Service (IaaS) – Windows und Linux (nur Azure Resource Manager)
+- VM-Skalierungsgruppen – Windows und Linux
+
+> [!NOTE]
+> Klassische IaaS-Instanzen werden von Kunden-Lockbox nicht unterstützt. Wenn keine Ihrer Workloads auf klassischen IaaS-Instanzen ausgeführt werden, empfehlen wir, sie vom klassischen zum Resource Manager-Bereitstellungsmodell zu migrieren. Anweisungen hierzu finden Sie unter [Plattformgestützte Migration von IaaS-Ressourcen vom klassischen zum Azure Resource Manager-Bereitstellungsmodell](../../virtual-machines/windows/migration-classic-resource-manager-overview.md).
+
+#### <a name="detailed-audit-logs"></a>Ausführliche Überwachungsprotokolle
+
+In Szenarien mit Remotedesktopzugriff können Sie die vom Microsoft-Techniker ausgeführten Aktionen mithilfe von Windows-Ereignisprotokollen überprüfen. Ziehen Sie in Erwägung, die Ereignisprotokolle mit Azure Security Center zu sammeln und die Daten für die Analyse in Ihren Arbeitsbereich zu kopieren. Weitere Informationen finden Sie unter [Datensammlung in Azure Security Center](../../security-center/security-center-enable-data-collection.md).
 
 ## <a name="workflow"></a>Workflow
 
@@ -91,40 +134,9 @@ Beispiel:
 
 ![Azure Kunden-Lockbox – Aktivitätsprotokolle](./media/customer-lockbox-overview/customer-lockbox-activitylogs.png)
 
-## <a name="supported-services-and-scenarios-in-general-availability"></a>Unterstützte Dienste und Szenarien bei allgemeiner Verfügbarkeit
+## <a name="customer-lockbox-integration-with-azure-security-benchmark"></a>Kunden-Lockbox-Integration im Azure-Sicherheitsvergleichstest
 
-Die folgenden Dienste und Szenarien sind derzeit für Kunden-Lockbox allgemein verfügbar.
-
-### <a name="remote-desktop-access-to-virtual-machines"></a>Remotedesktopzugriff auf virtuelle Computer
-
-Kunden-Lockbox ist derzeit für Remotedesktop-Zugriffsanforderungen auf virtuelle Computer aktiviert. Die folgenden Workloads werden unterstützt:
-- Platform-as-a-Service (PaaS): Azure Cloud Services (Webrolle und Workerrolle)
-- Infrastructure-as-a-Service (IaaS) – Windows und Linux (nur Azure Resource Manager)
-- VM-Skalierungsgruppen – Windows und Linux
-
-> [!NOTE]
-> Klassische IaaS-Instanzen werden von Kunden-Lockbox nicht unterstützt. Wenn keine Ihrer Workloads auf klassischen IaaS-Instanzen ausgeführt werden, empfehlen wir, sie vom klassischen zum Resource Manager-Bereitstellungsmodell zu migrieren. Anweisungen hierzu finden Sie unter [Plattformgestützte Migration von IaaS-Ressourcen vom klassischen zum Azure Resource Manager-Bereitstellungsmodell](../../virtual-machines/windows/migration-classic-resource-manager-overview.md).
-
-#### <a name="detailed-audit-logs"></a>Ausführliche Überwachungsprotokolle
-
-In Szenarien mit Remotedesktopzugriff können Sie die vom Microsoft-Techniker ausgeführten Aktionen mithilfe von Windows-Ereignisprotokollen überprüfen. Ziehen Sie in Erwägung, die Ereignisprotokolle mit Azure Security Center zu sammeln und die Daten für die Analyse in Ihren Arbeitsbereich zu kopieren. Weitere Informationen finden Sie unter [Datensammlung in Azure Security Center](../../security-center/security-center-enable-data-collection.md).
-
-## <a name="supported-services-and-scenarios-in-preview"></a>Unterstützte Dienste und Szenarien während der Vorschau
-
-Die folgenden Dienste sind derzeit für Kunden-Lockbox als Vorschauversion verfügbar:
-
-- Azure Storage
-
-- Azure SQL-Datenbank
-
-- Azure-Daten-Explorer
-
-- Virtuelle Computer (jetzt auch mit Zugriff auf Speicherabbilder und verwaltete Datenträger)
-
-- Azure-Abonnementübertragung
-
-Wenn Sie Kunden-Lockbox für diese Vorschauangebote für Ihre Organisation aktivieren möchten, registrieren Sie sich für dir [Public Preview von Kunden-Lockbox für Azure](https://aka.ms/customerlockbox/insiderprogram).
-
+Wir haben dem Azure-Sicherheitsvergleichstest eine neue Baselinekontrolle ([3.13](../benchmarks/security-control-identity-access-control.md#313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios)) für Kunden-Lockbox hinzugefügt. Kunden können nun den Vergleichstest nutzen, um die Anwendbarkeit von Kunden-Lockbox für einen Dienst zu überprüfen.
 
 ## <a name="exclusions"></a>Ausschlüsse
 

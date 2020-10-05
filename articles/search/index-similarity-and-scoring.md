@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: 300da87ecff13fc160ec08684cf1d032f9a19f71
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/08/2020
+ms.openlocfilehash: d980764b7151183b61657434afa6c472e5058d18
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88924485"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662259"
 ---
 # <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Ähnlichkeit und Bewertung in Azure Cognitive Search
 
@@ -40,7 +40,7 @@ Ein Bewertungsprofil ist Teil der Indexdefinition und besteht aus gewichteten Fe
 
 ## <a name="scoring-statistics-and-sticky-sessions"></a>Bewertungsstatistiken und persistente Sitzungen
 
-Aus Gründen der Skalierbarkeit verteilt Azure Cognitive Search jeden Index horizontal mithilfe eines Shardingprozesses. Dies bedeutet, dass Teile eines Indexes physisch voneinander getrennt sind.
+Aus Gründen der Skalierbarkeit verteilt Azure Cognitive Search jeden Index horizontal mithilfe eines Shardingprozesses. Dies bedeutet, dass [Teile eines Index physisch voneinander getrennt](search-capacity-planning.md#concepts-search-units-replicas-partitions-shards) sind.
 
 Standardmäßig wird die Bewertung eines Dokuments basierend auf statistischen Eigenschaften der Daten *innerhalb eines Shards* berechnet. Diese Vorgehensweise stellt in der Regel bei einem großen Datenkorpus kein Problem dar und bietet eine bessere Leistung als die Berechnung der Bewertung auf Grundlage von Informationen in allen Shards. Allerdings kann die Verwendung dieser Leistungsoptimierung dazu führen, dass zwei sehr ähnliche (oder sogar identische) Dokumente unterschiedliche Relevanzbewertungen erhalten, wenn sie sich in verschiedenen Shards befinden.
 

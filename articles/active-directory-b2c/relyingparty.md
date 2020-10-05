@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/17/2020
+ms.date: 09/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 40672ac958e84d816d4b582472ae04502a910c6a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2d00942331b7e6c881803af366d1c08e173462b3
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88521262"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90023787"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -138,7 +138,7 @@ Das **JourneyInsights**-Element enthält die folgenden Attribute:
 | --------- | -------- | ----------- |
 | TelemetryEngine | Ja | Der Wert muss `ApplicationInsights` sein. |
 | InstrumentationKey | Ja | Die Zeichenfolge, die den Instrumentierungsschlüssel für das Application Insights-Element enthält. |
-| DeveloperMode | Ja | Mögliche Werte: `true` oder `false`. Wenn `true`, beschleunigt Application Insights die Telemetriedaten durch die Verarbeitungspipeline. Diese Einstellung eignet sich für die Entwicklung, bei höheren Volumen ist sie jedoch eingeschränkt. Die detaillierten Aktivitätsprotokolle sind lediglich zur Unterstützung bei der Entwicklung benutzerdefinierter Richtlinien konzipiert. Verwenden Sie den Entwicklungsmodus nicht in der Produktion. Protokolle erfassen alle Ansprüche, die während der Entwicklung an die Identitätsanbieter und von Ihnen gesendet werden. Bei Verwendung in der Produktion übernehmen Entwickler die Verantwortung für PII (Privately Identifiable Information, privat identifizierbare Informationen), die in dem App Insights-Protokoll gesammelt werden, das sie besitzen. Diese detaillierten Protokolle werden nur gesammelt, wenn dieser Wert auf `true` festgelegt ist.|
+| DeveloperMode | Ja | Mögliche Werte: `true` oder `false`. Wenn `true`, beschleunigt Application Insights die Telemetriedaten durch die Verarbeitungspipeline. Diese Einstellung eignet sich gut für die Entwicklung, bei hohem Datenvolumen jedoch nur eingeschränkt. Die ausführlichen Aktivitätsprotokolle dienen lediglich zur Entwicklung von benutzerdefinierten Richtlinien. Verwenden Sie den Entwicklungsmodus nicht in der Produktion. Protokolle erfassen alle Ansprüche, die während der Entwicklung an die Identitätsanbieter und von Ihnen gesendet werden. Bei Verwendung in der Produktion übernehmen Entwickler die Verantwortung für PII (Privately Identifiable Information, privat identifizierbare Informationen), die in dem App Insights-Protokoll gesammelt werden, das sie besitzen. Diese detaillierten Protokolle werden nur gesammelt, wenn dieser Wert auf `true` festgelegt ist.|
 | ClientEnabled | Ja | Mögliche Werte: `true` oder `false`. Wenn `true`, wird das clientseitige Application Insights-Skript zum Nachverfolgen der Seitenansicht und von clientseitigen Fehlern gesendet. |
 | ServerEnabled | Ja | Mögliche Werte: `true` oder `false`. Wenn `true`, wird die vorhandene JSON-Datei „UserJourneyRecorder“ als benutzerdefiniertes Ereignis an Application Insights übermittelt. |
 | TelemetryVersion | Ja | Der Wert muss `1.0.0` sein. |
@@ -161,7 +161,7 @@ Das **ContentDefinitionParameters**-Element enthält das folgende Element:
 
 Das **ContentDefinitionParameter**-Element enthält das folgende Attribut:
 
-| attribute | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | Name | Ja | Der Name des Schlüssel-Wert-Paars. |
 
@@ -188,7 +188,7 @@ Das **TechnicalProfile**-Element enthält die folgenden Attribute:
 
 Das **Protocol**-Element enthält die folgenden Attribute:
 
-| attribute | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | Name | Ja | Der Name eines gültigen Protokolls, das von Azure AD B2C unterstützt und als Teil des technischen Profils verwendet wird. Mögliche Werte: `OpenIdConnect` oder `SAML2`. Der Wert `OpenIdConnect` stellt den Protokollstandard „OpenID Connect 1.0“ gemäß der Vorgaben der OpenID Foundation dar. Der Wert `SAML2` stellt den Protokollstandard „SAML 2.0“ gemäß der Vorgaben von OASIS dar. |
 
@@ -196,9 +196,14 @@ Das **Protocol**-Element enthält die folgenden Attribute:
 
 Wenn `SAML` das Protokoll ist, enthält ein Metadatenelement die folgenden Elemente:
 
-| attribute | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
+| IdpInitiatedProfileEnabled | Nein | Gibt an, ob der IdP-initiierte Fluss unterstützt wird. Mögliche Werte: `true` und `false` (Standardwert). | 
 | XmlSignatureAlgorithm | Nein | Die Methode, die Azure AD B2C zur Signierung der SAML-Antwort verwendet. Mögliche Werte: `Sha256`, `Sha384`, `Sha512` oder `Sha1`. Vergewissern Sie sich, dass Sie den Signaturalgorithmus auf beiden Seiten mit demselben Wert konfigurieren. Verwenden Sie nur den Algorithmus, den Ihr Zertifikat unterstützt. Informationen zum Konfigurieren der SAML-Assertion finden Sie unter [Metadaten für das technische Profil des SAML-Ausstellers](saml-issuer-technical-profile.md#metadata). |
+| DataEncryptionMethod | Nein | Gibt die Methode an, die von Azure AD B2C zum Verschlüsseln der Daten mit dem AES-Algorithmus (Advanced Encryption Standard) verwendet wird. Die Metadaten bestimmen den Wert des `<EncryptedData>`-Elements in der SAML-Antwort. Mögliche Werte: `Aes256` (Standard), `Aes192`, `Sha512` oder ` Aes128`. |
+| KeyEncryptionMethod| Nein | Gibt die Methode an, die von Azure AD B2C zum Verschlüsseln der Kopie des Schlüssels verwendet wird, der zum Verschlüsseln der Daten verwendet wurde. Die Metadaten bestimmen den Wert des `<EncryptedKey>`-Elements in der SAML-Antwort. Mögliche Werte: ` Rsa15` (Standardwert) – RSA PKCS-Algorithmus (Public Key Cryptography Standard), Version 1.5, ` RsaOaep` – RSA OAEP-Verschlüsselungsalgorithmus (Optimal Asymmetric Encryption Padding). |
+| UseDetachedKeys | Nein |  Mögliche Werte sind `true` oder `false` (Standardwert). Wenn der Wert auf `true` festgelegt wird, wird das Format der verschlüsselten Assertionen von Azure AD B2C geändert. Durch die Verwendung von getrennten Schlüsseln wird die verschlüsselte Assertion als untergeordnetes Element der EncrytedAssertion und nicht den EncryptedData hinzugefügt. |
+| WantsSignedResponses| Nein | Gibt an, ob Azure AD B2C den Abschnitt `Response` der SAML-Antwort signiert. Mögliche Werte: `true` (Standard) oder `false`.  |
 
 ### <a name="outputclaims"></a>OutputClaims
 

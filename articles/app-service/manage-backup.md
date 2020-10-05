@@ -5,12 +5,12 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: b160f0aa50c30f7856bc09b88b3eb305f32d6f98
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 0aa0393544f5744c6aaf428ca4b4c27922a0c287
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961923"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987849"
 ---
 # <a name="back-up-your-app-in-azure"></a>Sichern einer App in Azure
 Das Feature zum Sichern und Wiederherstellen in [Azure App Service](overview.md) ermöglicht Ihnen, App-Sicherungen einfach manuell oder nach einem Zeitplan zu erstellen. Sie können die Sicherungen so konfigurieren, dass Sie für einen bis zu unbestimmten Zeitraum aufbewahrt werden. Sie können die App mit einer Momentaufnahme eines früheren Zustands wiederherstellen, indem Sie die vorhandene App überschreiben oder als andere App wiederherstellen.
@@ -60,7 +60,7 @@ Die folgenden Datenbanklösungen werden von der Sicherungsfunktion unterstützt:
     > [!NOTE]
     > Wenn die folgende Meldung angezeigt wird, klicken Sie darauf, um Ihren App Service-Plan zu aktualisieren, damit Sie mit Sicherungen fortfahren können.
     > Weitere Informationen finden Sie unter [Hochskalieren einer App in Azure](manage-scale-up.md).
-    > ![Speicherkonto auswählen](./media/manage-backup/upgrade-plan.png)
+    > :::image type="content" source="./media/manage-backup/upgrade-plan.png" alt-text="Screenshot: Banner mit einer Meldung zum Aktualisieren des App Service-Plans für den Zugriff auf das Feature „Backup and Restore“ (Sichern und Wiederherstellen)":::
     > 
     > 
 
@@ -70,13 +70,13 @@ Die folgenden Datenbanklösungen werden von der Sicherungsfunktion unterstützt:
 
 3. Klicken Sie auf der Seite **Sicherungskonfiguration** auf **Speicher: nicht konfiguriert**, um ein Speicherkonto zu konfigurieren.
 
-    ![Speicherkonto auswählen](./media/manage-backup/configure-storage.png)
+    :::image type="content" source="./media/manage-backup/configure-storage.png" alt-text="Screenshot: Banner mit einer Meldung zum Aktualisieren des App Service-Plans für den Zugriff auf das Feature „Backup and Restore“ (Sichern und Wiederherstellen)":::
 
 4. Wählen Sie das Sicherungsziel durch Auswahl eines **Speicherkontos** und **Containers** aus. Das Speicherkonto muss zum selben Abonnement wie die App gehören, die Sie sichern möchten. Bei Bedarf können Sie auf den entsprechenden Seiten ein neues Speicherkonto oder einen neuen Container erstellen. Wenn Sie fertig sind, klicken Sie auf **Auswählen**.
 
 5. Auf der noch geöffneten Seite **Sicherungskonfiguration** können Sie die Einstellungen für **Datenbank sichern** konfigurieren. Wählen Sie dann die Datenbanken aus, die in die Sicherungen einbezogen werden sollen (SQL-Datenbank oder MySQL), und klicken Sie auf **OK**.
 
-    ![Speicherkonto auswählen](./media/manage-backup/configure-database.png)
+    :::image type="content" source="./media/manage-backup/configure-database.png" alt-text="Screenshot: Banner mit einer Meldung zum Aktualisieren des App Service-Plans für den Zugriff auf das Feature „Backup and Restore“ (Sichern und Wiederherstellen)":::
 
     > [!NOTE]
     > Damit eine Datenbank in dieser Liste angezeigt wird, muss die zugehörige Verbindungszeichenfolge auf der Seite **Anwendungseinstellungen** für Ihre App im Abschnitt **Verbindungszeichenfolgen** angegeben sein. 

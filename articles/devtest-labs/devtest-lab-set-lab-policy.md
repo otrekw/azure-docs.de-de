@@ -3,12 +3,12 @@ title: Verwalten von Labrichtlinien in Azure DevTest Labs | Microsoft-Dokumentat
 description: Erfahren Sie, wie Sie Labrichtlinien wie VM-Größen, die maximale Anzahl von VMs pro Benutzer und das automatisierte Herunterfahren definieren.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: ab2e2b1905a515d3a85339099f02d93d8e5c0424
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a7ada980b2a251b8164f2e1a20f65da54c89ba72
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290425"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530351"
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>Verwalten aller Richtlinien für ein Lab in Azure DevTest Labs
 
@@ -105,7 +105,7 @@ Mit der Richtlinie „Automatisch starten“ können Sie angeben, wann die virtu
 
 1. Wählen Sie im Bereich **Konfiguration und Richtlinien** des Labs die Option **Automatisch starten** aus.
    
-    ![Auto-start](./media/devtest-lab-set-lab-policy/auto-start.png)
+    ![Screenshot: Optionen für automatisches Starten eines virtuellen Computers](./media/devtest-lab-set-lab-policy/auto-start.png)
 
 2. Wählen Sie **Ein**, um diese Richtlinie zu aktivieren, und **Aus**, um sie zu deaktivieren.
 

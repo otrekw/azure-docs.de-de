@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: f3a48e4434588b2eb64637e6f0a454148cad39f2
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: e1cce536a9ec498304cbbc591fc56a0ee1b21b13
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036441"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087268"
 ---
 # <a name="interact-with-the-map"></a>Interaktion mit der Karte
 
@@ -26,7 +26,7 @@ Experimentieren Sie mit der unten gezeigten Karte, und sehen Sie die entsprechen
 
 <br/>
 
-<iframe height='600' scrolling='no' title='Interaktion mit der Karte – Mausereignisse' src='//codepen.io/azuremaps/embed/bLZEWd/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/bLZEWd/'>Interact with the map – mouse events</a> (Interagieren mit der Karte – Mausereignisse) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
+<iframe height='600' scrolling='no' title='Interaktion mit der Karte – Mausereignisse' src='//codepen.io/azuremaps/embed/bLZEWd/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/bLZEWd/'>Interact with the map – mouse events</a> (Interagieren mit der Karte – Mausereignisse) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="interact-with-map-layers"></a>Interaktion mit Kartenebenen
@@ -35,16 +35,16 @@ Der folgende Code hebt das ausgelöste Ereignis hervor, während Sie mit der Sym
 
 <br/>
 
-<iframe height='600' scrolling='no' title='Interaktion mit der Karte – Ebenenereignisse' src='//codepen.io/azuremaps/embed/bQRRPE/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/bQRRPE/'>Interacting with the map – Layer Events</a> (Interaktion mit der Karte – Ebenenereignisse) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
+<iframe height='600' scrolling='no' title='Interaktion mit der Karte – Ebenenereignisse' src='//codepen.io/azuremaps/embed/bQRRPE/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/bQRRPE/'>Interacting with the map – Layer Events</a> (Interaktion mit der Karte – Ebenenereignisse) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="interact-with-html-marker"></a>Interaktion mit dem HTML-Marker
 
-Der folgende Code fügt Javascript-Kartenereignisse zu einem HTML-Marker hinzu. Er hebt außerdem den Namen der Ereignisse hervor, die bei der Interaktion mit dem HTML-Marker ausgelöst werden.
+Der folgende Code fügt einem HTML-Marker JavaScript-Kartenereignisse hinzu. Er hebt außerdem den Namen der Ereignisse hervor, die bei der Interaktion mit dem HTML-Marker ausgelöst werden.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Interaktion mit der Karte – HTML Markerereignisse' src='//codepen.io/azuremaps/embed/VVzKJY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/VVzKJY/'>Interacting with the map - HTML Marker events</a> (Interaktion mit der Karte – HTML Markerereignisse) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Interaktion mit der Karte – HTML Markerereignisse' src='//codepen.io/azuremaps/embed/VVzKJY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/VVzKJY/'>Interacting with the map - HTML Marker events</a> (Interaktion mit der Karte – HTML Markerereignisse) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 In der folgenden Tabelle sind alle unterstützten Ereignisse der Eigenschaft „map class events“ aufgelistet.
@@ -98,11 +98,11 @@ In der folgenden Tabelle sind alle unterstützten Ereignisse der Eigenschaft „
 | `sourceremoved`     | Wird ausgelöst, wenn aus der Karte `DataSource` oder `VectorTileSource` entfernt wird.|
 | `styledata`         | Wird ausgelöst, wenn der Kartenstil geladen oder geändert wird.|
 | `styleimagemissing` | Wird ausgelöst, wenn eine Ebene versucht, ein Bild aus dem noch nicht vorhandenen Bild-Sprite zu laden. |
-| `tokenacquired`     | Wird ausgelöst, wenn ein AAD-Zugriffstoken abgerufen wird.|
-| `touchcancel`       | Wird ausgelöst, wenn ein „touchcancel“-Ereignis innerhalb der Karte auftritt.|
-| `touchend`          | Wird ausgelöst, wenn ein „touchend“-Ereignis innerhalb der Karte auftritt.|
-| `touchmove`         | Wird ausgelöst, wenn ein „touchmove“-Ereignis innerhalb der Karte auftritt.|
-| `touchstart`        | Wird ausgelöst, wenn ein „touchstart“-Ereignis innerhalb der Karte auftritt.|
+| `tokenacquired`     | Wird ausgelöst, wenn ein Zugriffstoken für Azure Active Directory abgerufen wird.|
+| `touchcancel`       | Wird ausgelöst, wenn ein `touchcancel`-Ereignis innerhalb der Karte auftritt.|
+| `touchend`          | Wird ausgelöst, wenn ein `touchend`-Ereignis innerhalb der Karte auftritt.|
+| `touchmove`         | Wird ausgelöst, wenn ein `touchmove`-Ereignis innerhalb der Karte auftritt.|
+| `touchstart`        | Wird ausgelöst, wenn ein `touchstart`-Ereignis innerhalb der Karte auftritt.|
 | `wheel`             | Wird ausgelöst, wenn ein Mausradereignis innerhalb der Karte auftritt.|
 | `zoom`              | Wird während eines animierten Übergangs von einem Zoomfaktor zu einem anderen wiederholt ausgelöst, entweder infolge einer Benutzerinteraktion oder durch Methoden.|
 | `zoomend`           | Wird ausgelöst, kurz nachdem die Karte den Übergang von einem Zoomfaktor zu einem anderen abgeschlossen hat, entweder infolge einer Benutzerinteraktion oder durch Methoden.|

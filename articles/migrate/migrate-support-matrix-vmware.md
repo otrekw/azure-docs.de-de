@@ -3,12 +3,12 @@ title: Unterstützung der VMware-Bewertung in Azure Migrate
 description: Informationen zur Unterstützung der Bewertung von VMware-VMs mit der Azure Migrate-Serverbewertung
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 3d975b35ff5db9bf77ed33e040eb49b6b15f3cf9
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 6716bea08347783d8c5728a4e346ffab8ea60a07
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89277781"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660276"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Unterstützungsmatrix für die VMware-Bewertung 
 
@@ -89,7 +89,7 @@ Mit der [Abhängigkeitsanalyse](concepts-dependency-visualization.md) können Si
 **vCenter Server-Anmeldeinformationen** | Für die Abhängigkeitsvisualisierung sind ein vCenter Server-Konto mit schreibgeschütztem Zugriff und aktivierte Berechtigungen für „Virtuelle Computer“ > „Gastvorgänge“ erforderlich.
 **Windows-VM-Berechtigungen** |  Die Azure Migrate-Appliance erfordert für die Abhängigkeitsanalyse ein Domänenadministratorkonto oder ein lokales Administratorkonto für den Zugriff auf Windows-VMs.
 **Virtuelle Linux-Computer** | Red Hat Enterprise Linux 7, 6, 5<br/> Ubuntu Linux 14.04, 16.04<br/> Debian 7, 8<br/> Oracle Linux 6, 7<br/> CentOS 5, 6, 7.
-**Linux-Konto** | Auf Linux-Computern erfordert die Azure Migrate-Appliance für die Abhängigkeitsanalyse ein Benutzerkonto mit Stammberechtigungen.<br/><br/> Alternativ benötigt das Benutzerkonto diese Berechtigungen für „/bin/netstat“- und „/bin/ls“-Dateien: CAP_DAC_READ_SEARCH und CAP_SYS_PTRACE.
+**Linux-Konto** | Auf Linux-Computern erfordert die Azure Migrate-Appliance für die Abhängigkeitsanalyse ein Benutzerkonto mit Stammberechtigungen.<br/><br/> Alternativ benötigt das Benutzerkonto diese Berechtigungen für „/bin/netstat“- und „/bin/ls“-Dateien: CAP_DAC_READ_SEARCH und CAP_SYS_PTRACE. Legen Sie diese Funktionen mithilfe der folgenden Befehle fest: <br/> sudo setcap CAP_DAC_READ_SEARCH,CAP_SYS_PTRACE=ep /bin/ls <br/> sudo setcap CAP_DAC_READ_SEARCH,CAP_SYS_PTRACE=ep /bin/netstat
 **Erforderliche Agents** | Auf Computern, die Sie analysieren möchten, ist kein Agent erforderlich.
 **VMware Tools** | Auf jeder VM, die Sie analysieren möchten, muss VMware Tools (höhere Version als 10.2) installiert sein und ausgeführt werden.
 

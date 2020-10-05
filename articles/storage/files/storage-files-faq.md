@@ -7,15 +7,15 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: eca9596666b318b71bb1deec64e3a7d037e8fa0d
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 9bb228c81ee180ec337ce52e3c87a4a9684e158a
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654326"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563691"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Häufig gestellte Fragen (FAQ) zu Azure Files
-[Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das branchenübliche [Protokoll Server Message Block (SMB) zugegriffen werden kann](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sie können Azure-Dateifreigaben gleichzeitig unter Cloud- und lokalen Bereitstellungen von Windows, Linux und macOS einbinden. Azure-Dateifreigaben können auch auf Windows Server-Computern zwischengespeichert werden, indem die Azure-Dateisynchronisierung verwendet wird, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen.
+[Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll [Server Message Block (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) sowie über das [Network File System-Protokoll (NFS)](https://en.wikipedia.org/wiki/Network_File_System) (Vorschau) zugegriffen werden kann. Sie können Azure-Dateifreigaben gleichzeitig unter Cloud- und lokalen Bereitstellungen von Windows, Linux und macOS einbinden. Azure-Dateifreigaben können auch auf Windows Server-Computern zwischengespeichert werden, indem die Azure-Dateisynchronisierung verwendet wird, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen.
 
 In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -Funktionen beantwortet, z.B. die Nutzung der Azure-Dateisynchronisierung mit Azure Files. Wenn Sie hier keine Antwort auf Ihre Frage finden, können Sie sich über die folgenden Kanäle an uns wenden (Eskalationsreihenfolge):
 
@@ -31,7 +31,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 
 * <a id="file-access-options"></a>
   **Auf welche Arten kann auf Dateien in Azure Files zugegriffen werden?**  
-    Sie können die Dateifreigabe mithilfe des SMB 3.0-Protokolls auf Ihrem lokalen Computer einbinden oder mithilfe von Tools wie dem [Storage-Explorer](https://storageexplorer.com/) auf Dateien in Ihrer Dateifreigabe zugreifen. In Ihrer Anwendung können Sie über Speicherclientbibliotheken, REST-APIs, PowerShell oder die Azure CLI auf Ihre Dateien in der Azure-Dateifreigabe zugreifen.
+    Sie können SMB-Dateifreigaben mithilfe des SMB 3.0-Protokolls auf Ihrem lokalen Computer einbinden oder mithilfe von Tools wie dem [Storage-Explorer](https://storageexplorer.com/) auf Dateien in Ihrer Dateifreigabe zugreifen. NFS-Dateifreigaben können auf dem lokalen Computer durch Kopieren und Einfügen des im Azure-Portal bereitgestellten Skripts eingebunden werden. In Ihrer Anwendung können Sie über Speicherclientbibliotheken, REST-APIs, PowerShell oder die Azure CLI auf Ihre Dateien in der Azure-Dateifreigabe zugreifen.
 
 * <a id="what-is-afs"></a>
   **Was ist Azure-Dateisynchronisierung?**  
@@ -43,12 +43,12 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
     
     Der Azure Blob Storage ist für umfangreiche native Cloudanwendungen geeignet, die unstrukturierte Daten speichern müssen. In Bezug auf die Maximierung von Leistung und Skalierbarkeit stellt der Azure Blob Storage eine einfachere Speicherabstraktion dar als ein echtes Dateisystem. Sie können auf den Azure Blob Storage nur über REST-basierte Clientbibliotheken (oder direkt über das REST-basierte Protokoll) zugreifen.
 
-    Azure Files ist eigentlich ein Dateisystem. Azure Files verfügt über alle Datei-Abstracts, die Sie bei der jahrelangen Arbeit mit lokalen Betriebssystemen kennen und schätzen gelernt haben. Wie Azure Blob Storage auch, verfügt Azure Files über eine REST-Schnittstelle und REST-basierte Clientbibliotheken. Im Gegensatz zu Azure Blob Storage ermöglicht Azure Files den SMB-Zugriff auf Azure-Dateifreigaben. Per SMB können Sie eine Azure-Dateifreigabe direkt unter Windows, Linux oder macOS (lokal oder auf Cloud-VMs) bereitstellen, ohne Codes schreiben oder dem Dateisystem spezielle Treiber hinzufügen zu müssen. Außerdem können Sie Azure-Dateifreigaben auf lokalen Dateiservern per Azure-Dateisynchronisierung zwischenspeichern, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen. 
+    Azure Files ist eigentlich ein Dateisystem. Azure Files verfügt über alle Datei-Abstracts, die Sie bei der jahrelangen Arbeit mit lokalen Betriebssystemen kennen und schätzen gelernt haben. Wie Azure Blob Storage auch, verfügt Azure Files über eine REST-Schnittstelle und REST-basierte Clientbibliotheken. Im Gegensatz zu Azure Blob Storage ermöglicht Azure Files den SMB- oder NFS-Zugriff auf Azure-Dateifreigaben. Dateifreigaben können direkt unter Windows, Linux oder macOS (lokal oder auf virtuellen Cloudcomputern) eingebunden werden, ohne dass Sie dafür Code schreiben oder dem Dateisystem spezielle Treiber hinzufügen müssen. Außerdem können Sie Azure SMB-Dateifreigaben auf lokalen Dateiservern mithilfe der Azure-Dateisynchronisierung zwischenspeichern, um schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen. 
    
     Eine ausführlichere Beschreibung der Unterschiede zwischen Azure Files und Azure Blob Storage finden Sie in der [Einführung in die zentralen Azure Storage-Dienste](../common/storage-introduction.md). Weitere Informationen zum Azure Blob Storage finden Sie unter [Einführung in Blob Storage](../blobs/storage-blobs-introduction.md).
 
 * <a id="files-versus-disks"></a>**Warum sollte ich eine Azure-Dateifreigabe anstelle von Azure-Datenträgern verwenden?**  
-    Unter Azure-Datenträger ist ein Datenträger nicht mehr als ein einfacher Datenträger. Sie erhöhen den Nutzen von Azure-Datenträgern, indem Sie einen Datenträger an einen virtuellen Computer anfügen, der in Azure ausgeführt wird. Azure-Datenträger können für alle Zwecke verwendet werden, die auch für einen Datenträger auf einem lokalen Server gelten. Sie können sie als Betriebssystemdatenträger, als Auslagerungsbereich für ein Betriebssystem oder als dedizierten Speicher für eine Anwendung einsetzen. Ein interessanter Einsatzzweck von Azure-Datenträgern ist die Erstellung eines Dateiservers in der Cloud, der in denselben Situationen wie bei einer Azure-Dateifreigabe verwendet wird. Die Bereitstellung eines Dateiservers auf Azure Virtual Machines ist ein auf hohe Leistung ausgelegtes Verfahren, um Dateispeicher in Azure freizugeben, wenn Sie Bereitstellungsoptionen benötigen (z.B. NFS-Protokollunterstützung oder Storage Premium), die derzeit nicht von Azure Files unterstützt werden. 
+    Unter Azure-Datenträger ist ein Datenträger nicht mehr als ein einfacher Datenträger. Sie erhöhen den Nutzen von Azure-Datenträgern, indem Sie einen Datenträger an einen virtuellen Computer anfügen, der in Azure ausgeführt wird. Azure-Datenträger können für alle Zwecke verwendet werden, die auch für einen Datenträger auf einem lokalen Server gelten. Sie können sie als Betriebssystemdatenträger, als Auslagerungsbereich für ein Betriebssystem oder als dedizierten Speicher für eine Anwendung einsetzen. Ein interessanter Einsatzzweck von Azure-Datenträgern ist die Erstellung eines Dateiservers in der Cloud, der in denselben Situationen wie bei einer Azure-Dateifreigabe verwendet wird. Die Bereitstellung eines Dateiservers in Azure Virtual Machines ist ein auf hohe Leistung ausgelegtes Verfahren, um Dateispeicher in Azure freizugeben, wenn Sie Bereitstellungsoptionen benötigen, die derzeit nicht von Azure Files unterstützt werden. 
 
     Das Ausführen eines Dateiservers mit Azure-Datenträgern als Back-End-Speicher ist aus einigen Gründen normalerweise aber deutlich teurer als die Verwendung einer Azure-Dateifreigabe. Zunächst einmal müssen Sie nicht nur für die Kosten des Datenträgerspeichers aufkommen, sondern auch für die Ausgaben zum Betrieb von einer oder mehreren Azure-VMs. Zweitens müssen Sie auch die VMs verwalten, die zum Ausführen des Dateiservers verwendet werden. Beispielsweise sind Sie für Upgrades des Betriebssystems verantwortlich. Und falls Daten lokal zwischengespeichert werden müssen, sind Sie auch für die Einrichtung und Verwaltung der Replikationstechnologien (z.B. DFS-Replikation (Distributed File System Replication)) zuständig.
 
@@ -58,17 +58,18 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 
 * <a id="get-started"></a>
   **Wie kann ich mich mit Azure Files vertraut machen?**  
-   Die ersten Schritte mit Azure Files sind leicht. [Erstellen Sie zuerst eine Dateifreigabe](storage-how-to-create-file-share.md), und binden Sie sie dann in Ihrem bevorzugten Betriebssystem ein: 
+   Die ersten Schritte mit Azure Files sind leicht. Erstellen Sie zunächst entweder eine [SMB-Dateifreigabe](storage-how-to-create-file-share.md) oder eine [NFS-Dateifreigabe](storage-files-how-to-create-nfs-shares.md), die Sie anschließend in Ihr bevorzugtes Betriebssystem einbinden: 
 
-  * [Bereitstellen unter Windows](storage-how-to-use-files-windows.md)
-  * [Bereitstellen unter Linux](storage-how-to-use-files-linux.md)
-  * [Bereitstellen unter macOS](storage-how-to-use-files-mac.md)
+  * [Einbinden einer SMB-Freigabe in Windows](storage-how-to-use-files-windows.md)
+  * [Einbinden einer SMB-Freigabe in Linux](storage-how-to-use-files-linux.md)
+  * [Einbinden einer SMB-Freigabe in macOS](storage-how-to-use-files-mac.md)
+  * [Einbinden einer NFS-Dateifreigabe](storage-files-how-to-mount-nfs-shares.md)
 
     Eine ausführlichere Anleitung zum Bereitstellen einer Azure-Dateifreigabe als Ersatz für Produktionsdateifreigaben in Ihrer Organisation finden Sie unter [Planung für eine Azure Files-Bereitstellung](storage-files-planning.md).
 
 * <a id="redundancy-options"></a>
   **Welche Speicherredundanzoptionen werden von Azure Files unterstützt?**  
-    Azure Files unterstützt derzeit lokal redundanten Speicher (LRS), zonenredundanten Speicher (ZRS), georedundanten Speicher (GRS) und geozonenredundanten Speicher (GZRS). Für die Zukunft ist Unterstützung für georedundanten Speicher mit Lesezugriff (Read-Access Geo Redundant Storage, RA-GRS) geplant. Zum gegenwärtigen Zeitpunkt sind hierfür aber noch keine Zeitpläne verfügbar.
+    Azure Files unterstützt derzeit lokal redundanten Speicher (LRS), zonenredundanten Speicher (ZRS), georedundanten Speicher (GRS) und geozonenredundanten Speicher (GZRS). Im Premium-Tarif von Azure Files werden derzeit nur LRS und ZRS unterstützt.
 
 * <a id="tier-options"></a>
   **Welche Speicherebenen werden in Azure Files unterstützt?**  
@@ -282,6 +283,23 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 **Sind REST-APIs zur Unterstützung von Get/Set/Copy-Vorgängen für Windows-ACLs auf Verzeichnis-/Dateiebene vorhanden?**
 
     Ja, wir unterstützen REST-APIs, die NTFS-ACLs für Verzeichnisse oder Dateien bei Verwendung der REST-API [2019-07-07](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) (oder höher) erfassen, festlegen oder kopieren. Außerdem wird das Beibehalten von Windows-ACLs in REST-basierten Tools unterstützt: [AzCopy v10.4+](https://github.com/Azure/azure-storage-azcopy/releases).
+
+## <a name="network-file-system"></a>Network File System
+
+* <a id="when-to-use-nfs"></a>
+**Wann sollte ich Azure Files NFS verwenden?**
+
+    Informationen hierzu finden Sie unter [NFS-Freigaben (Vorschau)](storage-files-compare-protocols.md#nfs-shares-preview).
+
+* <a id="backup-nfs-data"></a>
+**Wie sichere ich Daten, die in NFS-Freigaben gespeichert sind?**
+
+    Die Sicherung von Daten in NFS-Freigaben kann entweder mit bekannten Tools wie rsync oder mit Produkten eines unserer Partnerunternehmen zur Datensicherung orchestriert werden. Mehrere dieser Partner zur Datensicherung, wie etwa [Commvault](https://documentation.commvault.com/commvault/v11/article?p=92634.htm), [Veeam](https://www.veeam.com/blog/?p=123438) und [Veritas](https://players.brightcove.net/4396107486001/default_default/index.html?videoId=6189967101001), waren Teil der ersten Vorschauversion und haben ihre Lösungen auf SMB 3.0 sowie NFS 4.1 für Azure Files erweitert.
+
+* <a id="migrate-nfs-data"></a>
+**Kann ich vorhandene Daten zu einer NFS-Freigabe migrieren?**
+
+    Innerhalb derselben Region können Sie Daten mit Standardtools wie scp, rsync oder SSHFS verschieben. Da auf Azure Files NFS von mehreren Compute-Instanzen aus gleichzeitig zugegriffen werden kann, können Sie über parallele Uploads die Kopiergeschwindigkeit erhöhen. Wenn Sie Daten von außerhalb einer Region migrieren möchten, verwenden Sie zur Einbindung in Ihr Dateisystem aus Ihrem lokalen Rechenzentrum eine VPN- oder ExpressRoute-Verbindung.
 
 ## <a name="on-premises-access"></a>Lokaler Zugriff
 

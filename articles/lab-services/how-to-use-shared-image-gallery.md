@@ -2,16 +2,19 @@
 title: Verwenden eines Katalogs mit freigegebenen Images in Azure Lab Services | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie ein Labkonto für die Verwendung eines Katalogs mit freigegebenen Images konfigurieren, sodass ein Benutzer ein Image für andere freigeben und ein anderer Benutzer mithilfe dieses Images eine Vorlage für virtuelle Computer im Lab erstellen kann.
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: 4dc001a5e4c95db608c38f0a7c00190fd1859998
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/11/2020
+ms.openlocfilehash: 04e3764b095706d091bb72baaae77f5a4016fd28
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445150"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052833"
 ---
 # <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>Verwenden eines Katalogs mit freigegebenen Images in Azure Lab Services
 In diesem Artikel wird erläutert, wie Lehrer/Dozenten und Lab-Administratoren ein VM-Vorlagenimage in einem [Katalog mit freigegebenen Images](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries) speichern können, damit es von anderen Benutzern zum Erstellen von Labs verwendet werden kann. 
+
+> [!IMPORTANT]
+> Bei Verwendung einer Shared Image Gallery unterstützt Azure Lab Services nur Images mit weniger als 128 GB Betriebssystem-Speicherplatz. Images mit mehr als 128 GB Speicherplatz auf dem Datenträger oder mehreren Datenträgern werden während der Erstellung des Labs nicht in der Liste der Images virtueller Computer angezeigt.
 
 ## <a name="scenarios"></a>Szenarien
 Im Folgenden sehen Sie ein paar der Szenarien, die von diesem Feature unterstützt werden: 

@@ -1,25 +1,22 @@
 ---
-title: Einrichten einer Verbindung mit einem Speicherkonto mithilfe einer verwalteten Identität (Vorschau)
+title: Einrichten einer Verbindung mit einem Speicherkonto mithilfe einer verwalteten Identität
 titleSuffix: Azure Cognitive Search
-description: Erfahren Sie, wie Sie mithilfe einer verwalteten Identität eine Indexerverbindung mit einem Azure Storage-Konto einrichten (Vorschau).
+description: Hier erfahren Sie, wie Sie mithilfe einer verwalteten Identität eine Indexerverbindung mit einem Azure Storage-Konto einrichten.
 manager: luisca
 author: markheff
 ms.author: maheff
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.openlocfilehash: 30305607ea291587f7751b7e8048924f995251e9
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/22/2020
+ms.openlocfilehash: c1168602ccb527d8ffb3b64d5437a26490b44a21
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88917974"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971519"
 ---
-# <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity-preview"></a>Einrichten einer Verbindung mit einem Azure Storage-Konto mithilfe einer verwalteten Identität (Vorschau)
-
-> [!IMPORTANT] 
-> Das Einrichten einer Verbindung mit einer Datenquelle mithilfe einer verwalteten Identität wird derzeit in einer öffentlichen Vorschauversion unterstützt. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen.
+# <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity"></a>Einrichten einer Verbindung mit einem Azure Storage-Konto mithilfe einer verwalteten Identität
 
 Auf dieser Seite wird beschrieben, wie Sie eine Indexerverbindung mit einer Azure-Speicherkonto mithilfe einer verwalteten Identität einrichten, anstatt Anmeldeinformationen in der Verbindungszeichenfolge des Datenquellenobjekts anzugeben.
 
@@ -68,7 +65,7 @@ In diesem Schritt erteilen Sie dem Azure Cognitive Search-Dienst die Berechtigun
 
 ### <a name="3---create-the-data-source"></a>3\. Erstellen der Datenquelle
 
-Die Verbindungszeichenfolge für verwaltete Identitäten wird von der [REST-API](/rest/api/searchservice/create-data-source), dem Azure-Portal und dem [.NET SDK](/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) unterstützt. Im Folgenden finden Sie ein Beispiel für das Erstellen einer Datenquelle zum Indizieren von Daten aus einem Speicherkonto mithilfe der [REST-API](/rest/api/searchservice/create-data-source) und einer Verbindungszeichenfolge für verwaltete Identitäten. Das Format der Verbindungszeichenfolge für verwaltete Identitäten ist für die REST-API, das .NET SDK und das Azure-Portal identisch.
+Die Verbindungszeichenfolge für verwaltete Identitäten wird von der [REST-API](/rest/api/searchservice/create-data-source), dem Azure-Portal und dem [.NET SDK](/dotnet/api/microsoft.azure.search.models.datasource) unterstützt. Im Folgenden finden Sie ein Beispiel für das Erstellen einer Datenquelle zum Indizieren von Daten aus einem Speicherkonto mithilfe der [REST-API](/rest/api/searchservice/create-data-source) und einer Verbindungszeichenfolge für verwaltete Identitäten. Das Format der Verbindungszeichenfolge für verwaltete Identitäten ist für die REST-API, das .NET SDK und das Azure-Portal identisch.
 
 Bei der Indizierung über ein Speicherkonto muss die Datenquelle über die folgenden erforderlichen Eigenschaften verfügen:
 
@@ -150,6 +147,7 @@ Weitere Informationen zum Definieren von Indexerzeitplänen finden Sie unter [Fe
 ## <a name="see-also"></a>Weitere Informationen
 
 Weitere Informationen zu Azure Storage-Indexern:
+
 * [Azure-Blobindexer](search-howto-indexing-azure-blob-storage.md)
 * [Azure Data Lake Storage Gen2-Indexer](search-howto-index-azure-data-lake-storage.md)
 * [Azure-Tabellenindexer](search-howto-indexing-azure-tables.md)

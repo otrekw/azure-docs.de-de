@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 9edf348c856de5c75c95d8a8f1957dcf73fc8ec1
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: fa6a226926439e30b9ca51c75743ce35915ffd85
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030485"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017233"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Zugriffssteuerung in Azure Data Lake Storage Gen2
 
@@ -256,7 +256,7 @@ Für Azure Data Lake Storage Gen2 ist „umask“ ein konstanter Wert, der auf �
 | umask.owning_group  |    0         |   `---`      | Für die zuständige Gruppe wird die Standard-ACL des übergeordneten Elements für die Zugriffs-ACL des untergeordneten Elements kopiert. | 
 | umask.other         |    7         |   `RWX`      | Für „other“ (andere) werden alle Berechtigungen für die Zugriffs-ACL des untergeordneten Elements entfernt. |
 
-Der „umask“-Wert, der von Azure Data Lake Storage Gen2 verwendet wird, bedeutet, dass der Wert für **other** nie standardmäßig an untergeordnete Elemente übertragen wird, unabhängig davon, was die Standard-ACL angibt. 
+Der Wert von „umask“, der von Azure Data Lake Storage Gen2 verwendet wird, bedeutet, dass der Wert für **other** nie standardmäßig an untergeordnete Elemente übertragen wird, sofern im übergeordneten Verzeichnis keine Standard-ACL definiert wurde. In diesem Fall wird umask ignoriert, und die von der Standard-ACL definierten Berechtigungen werden auf das untergeordnete Element angewandt. 
 
 Im folgenden Pseudocode wird gezeigt, wie der umask-Wert angewendet wird, wenn die ACLs für ein untergeordnetes Element erstellt werden.
 

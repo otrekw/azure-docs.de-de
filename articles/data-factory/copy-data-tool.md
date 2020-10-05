@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: yexu
-ms.openlocfilehash: a10f7c3dda4d16a264cf52f9fddcf2bf0ed93348
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b0ba14a05ac42e9fccc1a146ad5943716652104d
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84907505"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434196"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Tool zum Kopieren von Daten in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -69,7 +69,7 @@ Das Schema der Datenquelle ist in vielen Fällen ggf. nicht mit dem Schema des D
 Das Tool zum Kopieren von Daten überwacht und erlernt Ihr Verhalten beim Zuordnen von Spalten zwischen Quell- und Zielspeichern. Nachdem Sie mindestens eine Spalte aus dem Quelldatenspeicher ausgewählt und dem Zielschema zugeordnet haben, beginnt das Tool zum Kopieren von Daten das Muster für Spaltenpaare zu analysieren, die Sie auf beiden Seiten ausgewählt haben. Dann wendet es das gleiche Muster auf den Rest der Spalten an. Daher erkennen Sie bereits nach wenigen Klicks, dass alle Spalten auf die gewünschte Art und Weise dem Ziel zugeordnet wurden.  Wenn Sie mit der Auswahl der Spaltenzuordnung durch das Tool zum Kopieren von Daten nicht zufrieden sind, können Sie diese ignorieren und mit der manuellen Zuordnung der Spalten fortfahren. In der Zwischenzeit erlernt und aktualisiert das Tool zum Kopieren von Daten ständig das Muster und erreicht schließlich das richtige Muster für die gewünschte Spaltenzuordnung. 
 
 > [!NOTE]
-> Beim Kopieren von Daten aus SQL Server oder der Azure SQL-Datenbank in das Azure SQL Data Warehouse unterstützt das Tool zum Kopieren von Daten die automatische Erstellung der Tabelle unter Verwendung des Quellschemas, falls die Tabelle nicht im Zielspeicher vorhanden ist. 
+> Beim Kopieren von Daten aus SQL Server oder Azure SQL-Datenbank in Azure Synapse Analytics (vormals SQL Data Warehouse) unterstützt das Tool zum Kopieren von Daten die automatische Erstellung der Tabelle unter Verwendung des Quellschemas, sofern die Tabelle nicht im Zielspeicher vorhanden ist. 
 
 ## <a name="filter-data"></a>Filtern von Daten
 Sie können Quelldaten filtern, wenn nur bestimmte Daten in den Senkendatenspeicher kopiert werden sollen. Durch Filtern wird das Datenvolumen der in den Senkendatenspeicher kopierten Daten verringert. Der Durchsatz des Kopiervorgangs steigt. Das Tool zum Kopieren von Daten bietet flexible Möglichkeiten, die Daten einer relationalen Datenbank mittels der SQL-Abfragesprache oder Dateien in einem Azure-Blobordner zu filtern. 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3fbd6292f654071f74b4dfccc5e4de393ccfff02
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: b0bc23d515bebdd0d943bbad33c5ebba35a35605
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266714"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987206"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>Konfigurieren von „VMs außerhalb der Geschäftszeiten starten/beenden“
 
@@ -139,17 +139,17 @@ Um E-Mail-Benachrichtigungen nach dem Bereitstellen von „VMs außerhalb der Ge
 
 1. Navigieren Sie im Azure-Portal zu **Überwachung** > **Aktionsgruppen**. Wählen Sie die Aktionsgruppe **StartStop_VM_Notication** aus.
 
-    ![Automation-Seite „Updateverwaltung“](media/automation-solution-vm-management/azure-monitor.png)
+    :::image type="content" source="media/automation-solution-vm-management/azure-monitor.png" alt-text="Screenshot der Seite „Azure Monitor-Aktionsgruppen“":::
 
 2. Klicken Sie auf der Seite „StartStop_VM_Notification“ unter **Details** auf **Details bearbeiten**. Dadurch wird die Seite „Email/SMS/Push/Voice“ geöffnet. Aktualisieren Sie die E-Mail-Adresse, und klicken Sie auf **OK**, um Ihre Änderungen zu speichern.
 
-    ![Automation-Seite „Updateverwaltung“](media/automation-solution-vm-management/change-email.png)
+    :::image type="content" source="media/automation-solution-vm-management/change-email.png" alt-text="Screenshot der Seite „Azure Monitor-Aktionsgruppen“":::
 
     Alternativ können Sie der Aktionsgruppe weitere Aktionen hinzufügen. Weitere Informationen über Aktionsgruppen finden Sie unter [Aktionsgruppen](../azure-monitor/platform/action-groups.md)
 
 Die folgende Beispiel-E-Mail wird gesendet, wenn das Feature virtuelle Computer herunterfährt.
 
-![Automation-Seite „Updateverwaltung“](media/automation-solution-vm-management/email.png)
+:::image type="content" source="media/automation-solution-vm-management/email.png" alt-text="Screenshot der Seite „Azure Monitor-Aktionsgruppen“":::
 
 ## <a name="add-or-exclude-vms"></a><a name="add-exclude-vms"></a>Hinzufügen oder Ausschließen von VMs
 

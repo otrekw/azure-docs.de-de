@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/05/2020
-ms.openlocfilehash: 45cecccd88b0b84b478bc6fc7346cb9ef9c2f454
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: d93ff81bacbb537cc5891e0b869f164e0d6824c6
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846342"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440540"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>Features für die Leistungsoptimierung bei Kopieraktivitäten
 
@@ -126,7 +126,7 @@ Berücksichtigen Sie bei der Angabe eines Werts für die Eigenschaft `parallelCo
 
 Beim Kopieren von Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher können Sie ggf. Blob Storage als Stagingzwischenspeicher verwenden. Staging ist besonders in folgenden Fällen hilfreich:
 
-- **Sie möchten Daten aus verschiedenen Datenspeichern über PolyBase in Azure Synapse Analytics (ehemals SQL Data Warehouse) erfassen.** Azure Synapse Analytics nutzt PolyBase als Mechanismus mit hohem Durchsatz, um große Datenmengen in Azure Synapse Analytics zu laden. Die Quelldaten müssen sich in Blob Storage oder in Azure Data Lake Store befinden und einige andere Kriterien erfüllen. Wenn Sie Daten aus einem Blob Storage- oder Azure Data Lake Store-fremden Datenspeicher laden, können Sie das Kopieren von Daten über einen Staging-Blob-Zwischenspeicher aktivieren. In diesem Fall führt Azure Data Factory die erforderlichen Datentransformationen durch, um die Anforderungen von PolyBase zu erfüllen. Anschließend werden die Daten mithilfe von PolyBase auf effiziente Weise in Azure Synapse Analytics geladen. Weitere Informationen finden Sie unter [Use PolyBase to load data into Azure SQL Data Warehouse (Verwenden von PolyBase zum Laden von Daten in Azure SQL Data Warehouse)](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse).
+- **Sie möchten Daten aus verschiedenen Datenspeichern über PolyBase in Azure Synapse Analytics (ehemals SQL Data Warehouse) erfassen.** Azure Synapse Analytics nutzt PolyBase als Mechanismus mit hohem Durchsatz, um große Datenmengen in Azure Synapse Analytics zu laden. Die Quelldaten müssen sich in Blob Storage oder in Azure Data Lake Store befinden und einige andere Kriterien erfüllen. Wenn Sie Daten aus einem Blob Storage- oder Azure Data Lake Store-fremden Datenspeicher laden, können Sie das Kopieren von Daten über einen Staging-Blob-Zwischenspeicher aktivieren. In diesem Fall führt Azure Data Factory die erforderlichen Datentransformationen durch, um die Anforderungen von PolyBase zu erfüllen. Anschließend werden die Daten mithilfe von PolyBase auf effiziente Weise in Azure Synapse Analytics geladen. Weitere Informationen finden Sie unter [Verwenden von PolyBase zum Laden von Daten in Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics).
 - **Hybriddatenverschiebungen (also das Kopieren aus einem lokalen Datenspeicher in einen Clouddatenspeicher) können bei einer langsamen Netzwerkverbindung eine Weile dauern.** Zur Verbesserung der Leistung können Sie gestaffeltes Kopieren verwenden, um die Daten lokal zu komprimieren und dadurch die Verschiebung in den Stagingdatenspeicher in der Cloud zu beschleunigen. Anschließend können Sie die Daten im Stagingspeicher wieder dekomprimieren, bevor Sie sie in den Zieldatenspeicher laden.
 - **Aufgrund der IT-Richtlinien des Unternehmens sollten Sie mit Ausnahme der Ports 80 und 443 keine weiteren Ports in der Firewall öffnen.** Ein Beispiel: Beim Kopieren von Daten aus einem lokalen Datenspeicher an eine Azure SQL-Datenbank- oder Azure Synapse Analytics-Senke muss die ausgehende TCP-Kommunikation über den Port 1433 sowohl für die Windows-Firewall als auch für die Unternehmensfirewall ermöglicht werden. In diesem Szenario kann das gestaffelte Kopieren die selbstgehostete Integration Runtime nutzen, um zunächst Daten per HTTP oder HTTPS über den Port 443 an eine Blob Storage-Staginginstanz kopieren. Anschließend können die Daten aus dem Blob Storage-Stagingspeicher in SQL-Datenbank oder in Azure Synapse Analytics geladen werden. Dadurch muss der Port 1433 nicht geöffnet werden.
 

@@ -3,12 +3,12 @@ title: Vorbereiten des DPM-Servers zum Sichern von Workloads
 description: In diesem Artikel erfahren Sie, wie Sie System Center Data Protection Manager-Sicherungen (DPM) in Azure mithilfe des Azure Backup-Diensts vorbereiten.
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 4534b75018fb91cedda00b8c1167012858c5e562
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0089c3d86eb36b82287570ecdfd6e8c782e6fb8a
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021033"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975460"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Vorbereiten der Sicherung von Workloads in Azure mit System Center DPM
 
@@ -61,7 +61,7 @@ Sie haben die Wahl zwischen georedundantem Speicher und lokal redundantem Speich
 
 - Standardmäßig verfügt Ihr Tresor über einen georedundanten Speicher.
 - Behalten Sie den georedundanten Speicher bei, wenn der Tresor Ihre primäre Sicherung ist. Befolgen Sie die unten aufgeführten Schritte, um einen lokal redundanten Speicher zu konfigurieren, wenn Sie eine günstigere und weniger langfristige Option wünschen.
-- Erfahren Sie etwas über [Azure Storage](../storage/common/storage-redundancy.md) und die Optionen für [georedundanten](../storage/common/storage-redundancy.md) und [lokal redundanten](../storage/common/storage-redundancy.md) Speicher.
+- Informieren Sie sich über [Azure Storage](../storage/common/storage-redundancy.md) sowie die [georedundanten](../storage/common/storage-redundancy.md#geo-redundant-storage), [lokal redundanten](../storage/common/storage-redundancy.md#locally-redundant-storage) und [zonenredundanten](../storage/common/storage-redundancy.md#zone-redundant-storage) Speicheroptionen.
 - Ändern Sie die Speichereinstellungen vor der ersten Sicherung. Wenn Sie ein Element bereits gesichert haben, beenden Sie die Sicherung im Tresor, bevor Sie Speichereinstellungen ändern.
 
 So bearbeiten Sie die Einstellung für die Speicherreplikation:
@@ -165,7 +165,7 @@ Auf jedem Computer, der von Azure Backup gesichert wird, muss der Backup-Agent (
 
 7. Wählen Sie **Registrieren** aus, um den DPM-Server im Tresor zu registrieren.
 
-Nach dem Registrieren des Servers beim Tresor können Sie mit der Sicherung in Microsoft Azure beginnen. Zum Sichern von Workloads in Azure müssen Sie die Schutzgruppe in der DPM-Verwaltungskonsole konfigurieren. [Erfahren Sie](/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019), wie Sie Schutzgruppen bereitstellen.
+Nach dem Registrieren des Servers beim Tresor können Sie mit der Sicherung in Microsoft Azure beginnen. Zum Sichern von Workloads in Azure müssen Sie die Schutzgruppe in der DPM-Verwaltungskonsole konfigurieren. [Erfahren Sie](/system-center/dpm/create-dpm-protection-groups), wie Sie Schutzgruppen bereitstellen.
 
 ## <a name="troubleshoot-vault-credentials"></a>Problembehandlung von Tresoranmeldeinformationen
 

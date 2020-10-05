@@ -3,12 +3,12 @@ title: Erstellen von Azure Advisor-Warnungen für neue Empfehlungen über das Az
 description: Erstellen von Azure Advisor-Warnungen für neue Empfehlungen
 ms.topic: article
 ms.date: 09/09/2019
-ms.openlocfilehash: 0b3984b82cd5265f4940cd88597ccb29d51e1118
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 837f12a12e532902ee76e345afa430f758f79c10
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507215"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973659"
 ---
 # <a name="create-azure-advisor-alerts-on-new-recommendations-using-the-azure-portal"></a>Erstellen von Azure Advisor-Warnungen für neue Empfehlungen über das Azure-Portal 
 
@@ -63,8 +63,7 @@ Weitere Informationen zu Aktionsgruppen finden Sie unter [Erstellen und Verwalte
 
 8. Geben Sie im Abschnitt mit den Warnungsdetails einen Namen und eine kurze Beschreibung für die Warnung ein. Wenn die Warnung aktiviert werden soll, belassen Sie **Regel beim Erstellen aktivieren** auf **Ja**. Wählen Sie dann die Ressourcengruppe aus, in der die Warnung gespeichert werden soll. Dies wirkt sich nicht auf den Zielbereich der Empfehlung aus. 
 
-    ![Azure Advisor-Banner](./media/advisor-alerts/create8.png)
-
+    :::image type="content" source="./media/advisor-alerts/create8.png" alt-text="Screenshot: Abschnitt mit Details zur Warnung":::
 
 
 ## <a name="configure-recommendation-alerts-to-use-a-webhook"></a>Konfigurieren von Empfehlungswarnungen für die Verwendung eines Webhooks
@@ -188,11 +187,11 @@ In Azure Advisor können Sie Empfehlungswarnungen bearbeiten, löschen oder deak
 
 1. Wählen Sie im **Portal** die Option für den **Azure Advisor** aus.
 
-    ![Azure Advisor-Banner](./media/advisor-alerts/create1.png)
+    :::image type="content" source="./media/advisor-alerts/create1.png" alt-text="Screenshot: Abschnitt mit Details zur Warnung":::
 
 2. Wählen Sie im linken Menü im Abschnitt **Überwachung** die Option **Warnungen** aus.
 
-    ![Azure Advisor-Banner](./media/advisor-alerts/create2.png)
+    :::image type="content" source="./media/advisor-alerts/create2.png" alt-text="Screenshot: Abschnitt mit Details zur Warnung":::
 
 3. Wenn Sie eine Warnung bearbeiten möchten, klicken Sie auf den Warnungsnamen, um die Warnung zu öffnen, und bearbeiten Sie die entsprechenden Felder.
 

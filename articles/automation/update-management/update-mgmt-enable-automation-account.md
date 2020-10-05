@@ -2,19 +2,19 @@
 title: Aktivieren der Azure Automation-Updateverwaltung über ein Automation-Konto
 description: In diesem Artikel erfahren Sie, wie Sie die Updateverwaltung über ein Automation-Konto aktivieren.
 services: automation
-ms.date: 07/28/2020
+ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 930861c61843c5963c83d8fa6dc1efdce20853f4
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 787338be06c2e30aabb6421a42e7cb3aaabf8a2a
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449691"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669512"
 ---
 # <a name="enable-update-management-from-an-automation-account"></a>Aktivieren der Updateverwaltung über ein Automation-Konto
 
-In diesem Artikel wird beschrieben, wie Sie mit Ihrem Automation-Konto das Feature [Updateverwaltung](update-mgmt-overview.md) für VMs in Ihrer Umgebung aktivieren können. Sie müssen eine vorhandene VM über die Updateverwaltung aktivieren, um Azure-VMs im großen Stil zu aktivieren.
+In diesem Artikel wird beschrieben, wie Sie mit Ihrem Automation-Konto das Feature [Updateverwaltung](update-mgmt-overview.md) für VMs in Ihrer Umgebung aktivieren können. Dies schließt auch Computer oder Server ein, die als [Server mit Azure Arc-Unterstützung](../../azure-arc/servers/overview.md) (Vorschauversion) registriert sind. Sie müssen eine vorhandene Azure-VM über die Updateverwaltung aktivieren, um Azure-VMs im großen Stil zu aktivieren.
 
 > [!NOTE]
 > Wenn Sie die Updateverwaltung aktivieren, werden nur bestimmte Regionen zum Verknüpfen mit einem Log Analytics-Arbeitsbereich und einem Automation-Konto unterstützt. Eine Liste der unterstützten Zuordnungspaare finden Sie unter [Regionszuordnung für Automation-Konto und Log Analytics-Arbeitsbereich](../how-to/region-mappings.md).
@@ -23,7 +23,7 @@ In diesem Artikel wird beschrieben, wie Sie mit Ihrem Automation-Konto das Featu
 
 * Azure-Abonnement. Wenn Sie noch kein Abonnement haben, können Sie Ihre [MSDN-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) oder sich für ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) registrieren.
 * [Automation-Konto](../index.yml) zum Verwalten von Computern.
-* Ein [virtueller Computer](../../virtual-machines/windows/quick-create-portal.md).
+* Ein [virtueller Azure-Computer](../../virtual-machines/windows/quick-create-portal.md) oder eine VM bzw. ein Server, die oder der als Server mit Azure Arc-Unterstützung (Vorschauversion) registriert ist. Für Nicht-Azure-VMs oder -Server muss der [Log Analytics-Agent](../../azure-monitor/platform/log-analytics-agent.md) für Windows oder Linux installiert sein und an den Arbeitsbereich, der mit dem Automation-Konto mit aktivierter Updateverwaltung verknüpft ist, Meldungen übermitteln. Der Agent kann auf Servern mit Azure Arc-Unterstützung installiert werden, indem die [Azure Log Analytics-VM-Erweiterung](../../azure-arc/servers/manage-vm-extensions.md) mit Azure Arc bereitgestellt wird.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -65,16 +65,21 @@ Manuell installierte Computer oder Computer, die bereits Berichte für Ihren Arb
 
     ![Gespeicherte Suchvorgänge](media/update-mgmt-enable-automation-account/managemachines.png)
 
-3. Wenn Sie die Updateverwaltung für alle verfügbaren Computer aktivieren möchten, wählen Sie auf der Seite „Computer verwalten“ die Option **Auf allen verfügbaren Computern aktivieren** aus. Diese Aktion deaktiviert das Steuerelement zum einzelnen Hinzufügen von Computern. Mit dieser Aufgabe werden alle Namen der Computer hinzugefügt, die Berichte für den Arbeitsbereich und die Computergruppe der gespeicherten Suchabfrage erstellen. Diese Aktion deaktiviert die Schaltfläche **Computer verwalten**.
+3. Wenn Sie die Updateverwaltung für alle verfügbaren Computer aktivieren möchten, die Meldungen an den Arbeitsbereich übermitteln, wählen Sie auf der Seite „Computer verwalten“ die Option **Auf allen verfügbaren Computern aktivieren** aus. Diese Aktion deaktiviert das Steuerelement zum einzelnen Hinzufügen von Computern. Mit dieser Aufgabe werden die Namen aller Computer hinzugefügt, die Meldungen an den Arbeitsbereich und die Computergruppe (`MicrosoftDefaultComputerGroup`) der gespeicherten Suchabfrage übermitteln. Diese Aktion deaktiviert die Schaltfläche **Computer verwalten**.
 
-4. Wenn Sie das Feature für alle verfügbaren und zukünftigen Computer aktivieren möchten, wählen Sie **Auf allen verfügbaren und zukünftigen Computern aktivieren** aus. Mit dieser Option werden die gespeicherten Suchen und die Bereichskonfigurationen aus dem Arbeitsbereich gelöscht, und das Feature wird für alle Azure-Computer und Azure-fremden Computer geöffnet, von denen Berichte an den Arbeitsbereich übermittelt werden. Bei Verwendung dieser Aktion wird die Schaltfläche **Computer verwalten** dauerhaft deaktiviert, da keine Bereichskonfiguration mehr vorhanden ist.
+4. Wenn Sie das Feature für alle verfügbaren und zukünftigen Computer aktivieren möchten, wählen Sie **Auf allen verfügbaren und zukünftigen Computern aktivieren** aus. Mit dieser Option werden die gespeicherten Suchen und die Bereichskonfiguration aus dem Arbeitsbereich gelöscht. Außerdem erhält das Feature damit die Möglichkeit, alle Azure-Computer und Azure-fremden Computer hinzuzufügen, die derzeit oder zukünftig Meldungen an den Arbeitsbereich übermitteln. Bei Verwendung dieser Aktion wird die Schaltfläche **Computer verwalten** dauerhaft deaktiviert, da keine Bereichskonfiguration verfügbar ist.
 
-5. Die Bereichskonfigurationen können bei Bedarf durch Hinzufügen der anfänglichen gespeicherten Suchen wieder hinzugefügt werden. Weitere Informationen finden Sie unter [Einschränken des Bereitstellungsbereichs für die Updateverwaltung](update-mgmt-scope-configuration.md).
+    > [!NOTE]
+    > Da diese Option die gespeicherten Suchen und Bereichskonfigurationen in Log Analytics löscht, müssen Sie vor ihrer Aktivierung unbedingt alle Löschsperren im Log Analytics-Arbeitsbereich entfernen. Andernfalls können die Konfigurationen nicht durch die Option entfernt werden, und Sie müssen sie manuell entfernen.
+
+5. Die Bereichskonfigurationen können bei Bedarf durch erneutes Hinzufügen der anfänglich gespeicherten Suchabfrage wieder hinzugefügt werden. Weitere Informationen finden Sie unter [Einschränken des Bereitstellungsbereichs für die Updateverwaltung](update-mgmt-scope-configuration.md).
 
 6. Wenn Sie die Funktion für einen oder mehrere Computer aktivieren möchten, wählen Sie **Auf ausgewählten Computern aktivieren** aus, und wählen Sie neben jedem Computer **Hinzufügen** aus. Dadurch werden die Namen der ausgewählten Computer der gespeicherten Computergruppensuchabfrage für das Feature hinzugefügt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Wie Sie die Updateverwaltung für VMs verwenden, erfahren Sie unter [Verwalten von Updates und Patches für Ihre VMs](update-mgmt-manage-updates-for-vm.md).
+
+* Wenn Sie virtuelle Computer oder Server nicht mehr mit der Updateverwaltung verwalten möchten, finden Sie weitere Informationen unter [Entfernen virtueller Computer aus der Updateverwaltung](update-mgmt-remove-vms.md).
 
 * Informationen zum Behandeln von Fehlern bei der Updateverwaltung finden Sie unter [Behandeln von Problemen mit der Updateverwaltung](../troubleshoot/update-management.md).

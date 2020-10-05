@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 author: Microsoft-BradleyWright
 ms.author: brwrigh
-ms.openlocfilehash: afcca913b8a9c8fb31fa6e18d0570aebd68b8ef3
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 9745dce03d87b447dfd606f021891794cb343593
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814721"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419753"
 ---
 # <a name="consulting-service-offers"></a>Beratungsdienstangebote
 
@@ -22,16 +22,16 @@ Beratungsdienstangebote sind kundengebundene Angebote. Herausgeber können den A
 
 ## <a name="compare-consulting-services"></a>Vergleichen von Beratungsdiensten
 
-Die Onlineshops im kommerziellen Marketplace, Microsoft AppSource und Azure Marketplace orientieren sich an Zielgruppen und Cloudprodukten, damit Kunden das finden, was sie benötigen. Jeder Onlineshop verfügt über spezielle Veröffentlichungsoptionen, damit sich Ihre Investitionen in die Veröffentlichung noch besser amortisieren. Weitere Informationen zum Unterschied zwischen den beiden Onlineshops finden Sie unter [Vergleich von Microsoft AppSource und Azure Marketplace](comparing-appsource-azure-marketplace.md).
+Die Onlineshops im kommerziellen Marketplace, Microsoft AppSource und Azure Marketplace orientieren sich an Lösungstypen und Cloudprodukten, damit Kunden das finden, was sie benötigen. Jeder Onlineshop verfügt über spezielle Veröffentlichungsoptionen, damit sich Ihre Investitionen in die Veröffentlichung noch besser amortisieren. Weitere Informationen zum Unterschied zwischen den beiden Onlineshops finden Sie unter [Vergleich von Microsoft AppSource und Azure Marketplace](comparing-appsource-azure-marketplace.md).
 
 Die auf Dynamics 365, Power Apps und Power BI basierenden Beratungsdienstangebote sind für das Listing in AppSource geeignet. Weitere Informationen finden Sie in der herunterladbaren PDF-Datei mit den [Richtlinien zum Listing von Microsoft AppSource-Beratungsdiensten](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409).
 
 Beratungsdienstangebote und Angebote verwalteter Dienste, die auf Microsoft Azure basieren, sind für das Listing im Azure Marketplace geeignet. Weitere Informationen finden Sie unter [Veröffentlichen eines Azure-Beratungsdienstangebots](./partner-center-portal/create-consulting-service-offer.md) und [Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketplace](../lighthouse/how-to/publish-managed-services-offers.md).
 
 > [!Note]
-> Beratungsdienste im Azure Marketplace sollten sich auf Angebote für eine technische Zielgruppe konzentrieren und den Schwerpunkt auf technische Azure-Lösungen und -Dienste legen.
+> Beratungsdienste im Azure Marketplace sollten sich auf technische Azure-Lösungen und -Dienste konzentrieren.
 >
-> Beratungsdienste in AppSource sollten sich auf Angebote für Benutzer mit Fachkenntnissen bei der Bereitstellung qualitativ hochwertiger Lösungen für Dynamics 365, Power BI oder Power Apps konzentrieren.
+> Beratungsdienste in AppSource sollten sich auf Geschäftslösungen für Dynamics 365, Power BI oder Power Apps konzentrieren.
  
 > [!TIP]
 > Wählen Sie zum Veröffentlichen im Azure Marketplace im Partner Center in der Dropdownliste **Primäres Produkt** die Option **Azure** aus.
@@ -131,7 +131,7 @@ Angebote müssen mindestens einem der folgenden fünf Diensttypen entsprechen:
 > * **Präsenzveranstaltung:** vor Ort am Standort des Kunden oder in den Räumlichkeiten eines Partners.
 > * **Virtuell:** per Telefonkonferenz, Webkonferenz oder Remoteimplementierung.
 
-Nachdem Sie die oben genannten Pflichtelemente konfiguriert haben, prüft das Inhaltsprüfungsteam, ob Ihre Angebotsbeschreibung für Ihre Zielgruppe aussagekräftig und vollständig ist. 
+Nachdem Sie die oben genannten Pflichtelemente konfiguriert haben, prüft das Inhaltsprüfungsteam, ob Ihre Angebotsbeschreibung aussagekräftig und vollständig ist. 
 
 ### <a name="the-listing-title"></a>Auflistungstitel
 
@@ -171,9 +171,5 @@ Hier sind einige Markdown-Tipps:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich (falls noch nicht geschehen), wie Sie [Ihr Cloudgeschäft mit dem Azure Marketplace ausweiten](https://azuremarketplace.microsoft.com/sell).
-
-So registrieren Sie sich in Partner Center und beginnen mit der Arbeit
-
-* [Melden Sie sich bei Partner Center an](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership), um Ihr Angebot zu erstellen oder abzuschließen.
-* Weitere Informationen finden Sie unter [Erstellen eines Beratungsdienstangebots](./partner-center-portal/create-consulting-service-offer.md).
+- [Weiten Sie Ihr Cloudgeschäft mit Azure Marketplace aus](https://azuremarketplace.microsoft.com/sell).
+- [Erstellen eines Beratungsdienstangebots](./partner-center-portal/create-consulting-service-offer.md)

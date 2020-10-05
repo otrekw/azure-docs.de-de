@@ -6,16 +6,16 @@ ms.topic: article
 ms.date: 06/18/2020
 ms.author: mlearned
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e068984e02a468169f286ab5b783e531a54bd6ed
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 2cb6ed265d3e94c2c162381dfb80ba0c5427a71f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949778"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888954"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Verwalten von Systemknotenpools in Azure Kubernetes Service (AKS)
 
-Im Azure Kubernetes Service (AKS) werden Knoten derselben Konfiguration zu *Knotenpools* zusammengefasst. Knotenpools enthalten die zugrunde liegenden virtuellen Computer, auf denen Ihre Anwendungen ausgeführt werden. Systemknotenpools und Benutzerknotenpools sind zwei verschiedene Knotenpoolmodi für AKS-Cluster. Systemknotenpools dienen dem primären Zweck, kritische Systempods wie CoreDNS und tunnelfront zu hosten. Benutzerknotenpools dienen dem primären Zweck, Ihre Anwendungspods zu hosten. Anwendungspods lassen sich jedoch auf Systemknotenpools planen, wenn Sie nur einen Pool in Ihrem AKS-Cluster haben möchten. Jeder AKS-Cluster muss mindestens einen Systemknotenpool mit mindestens einem Knoten enthalten.
+Im Azure Kubernetes Service (AKS) werden Knoten derselben Konfiguration zu *Knotenpools* zusammengefasst. Knotenpools enthalten die zugrunde liegenden virtuellen Computer, auf denen Ihre Anwendungen ausgeführt werden. Systemknotenpools und Benutzerknotenpools sind zwei verschiedene Knotenpoolmodi für AKS-Cluster. Systemknotenpools dienen dem primären Zweck, kritische Systempods wie `CoreDNS` und `metrics-server` zu hosten. Benutzerknotenpools dienen dem primären Zweck, Ihre Anwendungspods zu hosten. Anwendungspods lassen sich jedoch auf Systemknotenpools planen, wenn Sie nur einen Pool in Ihrem AKS-Cluster haben möchten. Jeder AKS-Cluster muss mindestens einen Systemknotenpool mit mindestens einem Knoten enthalten.
 
 > [!Important]
 > Wenn Sie für Ihren AKS-Cluster nur einen Systemknotenpool in einer Produktionsumgebung ausführen, sollten Sie für den Knotenpool mindestens drei Knoten verwenden.
@@ -46,6 +46,7 @@ Für Systemknotenpools gelten folgende Einschränkungen:
 * Für Systemknotenpools ist eine VM SKU mit mindestens zwei vCPUs und 4 GB Arbeitsspeicher erforderlich.
 * Systemknotenpools müssen gemäß der [Formel für die mindestens erforderliche und maximal zulässige Anzahl von Pods][maximum-pods] mindestens 30 Pods unterstützen.
 * Für Spot-Knotenpools sind Benutzerknotenpools erforderlich.
+* Wenn Sie einen zusätzlichen Systemknotenpool hinzufügen oder ändern, welcher Knotenpool ein Systemknotenpool ist, werden die Systempods *NICHT* automatisch verschoben. Systempods können auch dann weiterhin im selben Knotenpool ausgeführt werden, wenn Sie diesen in einen Benutzerknotenpool ändern. Wenn Sie einen Knotenpool, auf dem Systempods ausgeführt werden und der zuvor ein Systemknotenpool war, löschen oder herunterskalieren, werden diese Systempods nach einem Zeitplan mit höherer Priorität im neuen Systemknotenpool erneut bereitgestellt.
 
 Mit Knotenpools sind folgende Vorgänge möglich:
 
@@ -163,7 +164,7 @@ az aks nodepool update -g myResourceGroup --cluster-name myAKSCluster -n mynodep
 > [!Note]
 > Wenn Sie in AKS-Clustern älter als API-Version 2020-03-02 Systemknotenpools verwenden möchten, fügen Sie einen neuen Systemknotenpool hinzu, und löschen Sie anschließend den ursprünglichen Standardknotenpool.
 
-Bisher konnte der Systemknotenpool, der der ursprüngliche Standardknotenpool in einem AKS-Cluster war, nicht gelöscht werden. Ab sofort können Sie jeden Knotenpool in Ihren Clustern flexibel löschen. Da in AKS-Clustern mindestens ein Systemknotenpool vorhanden sein muss, müssen im AKS-Cluster mindestens zwei Systemknotenpools vorhanden sein, damit Sie einen davon löschen können.
+Im AKS-Cluster müssen mindestens zwei Systemknotenpools vorhanden sein, damit Sie einen davon löschen können.
 
 ```azurecli-interactive
 az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster -n mynodepool

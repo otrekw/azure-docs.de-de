@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 6d2b2fb55a9c23643bbb778ced047e75871ba7f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0896df301718c74e63a9e18c74615130fa80c952
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807681"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986260"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>Visualisieren von Azure Network Watcher-NSG-Datenflussprotokollen mit Open-Source-Tools
 
@@ -29,7 +29,7 @@ Die manuelle Analyse und Auswertung dieser Datenflussprotokolle kann schwierig s
 
 In diesem Artikel richten wir eine Lösung ein, mit der Sie die Datenflussprotokolle von Netzwerksicherheitsgruppen mithilfe des Elastic Stack visualisieren können.  Ein Logstash-Eingangs-Plug-In ruft die Flowprotokolle direkt aus dem für die Flowprotokolle konfigurierten Speicherblob ab. Anschließend werden die Datenflussprotokolle mit dem Elastic Stack indiziert und für das Erstellen eines Kibana-Dashboards verwendet, mit dem die Informationen visualisiert werden.
 
-![Szenario][scenario]
+![Das Diagramm zeigt ein Szenario, in dem Sie Datenflussprotokolle für Netzwerksicherheitsgruppen mit Elastic Stack visualisieren können.][scenario]
 
 ## <a name="steps"></a>Schritte
 
@@ -215,27 +215,27 @@ Das Beispieldashboard stellt mehrere Visualisierungen der Datenflussprotokolle b
 
 1. Datenfluss nach Entscheidung/Richtung über die Zeit: Zeitraumdiagramme zeigen die Anzahl der Datenflüsse für den Zeitraum an. Sie können Zeiteinheit und Dauer bei beiden Visualisierungen ändern. „Datenflüsse nach Entscheidung“ zeigt den Anteil von Entscheidungen für das Zulassen bzw. Verweigern an, während „Datenflüsse nach Richtung“ den Anteil von eingehendem und ausgehendem Datenverkehr darstellt. Mithilfe dieser Visualisierungen können Sie Datenverkehrstrends über einen Zeitraum auf Spitzen oder ungewöhnliche Muster untersuchen.
 
-   ![Abbildung 2][2]
+   ![Screenshot zeigt ein Beispieldashboard mit Datenflüssen nach Entscheidung und Richtung im Zeitverlauf.][2]
 
 2. Datenflüsse nach Ziel/Quellport: Kreisdiagramme zeigen eine Aufschlüsselung der Datenflüsse an den jeweiligen Ports an. In dieser Ansicht können Sie die am häufigsten verwendeten Ports ermitteln. Wenn Sie im Kreisdiagramm auf einen bestimmten Port klicken, wird das übrige Dashboard nach Datenflüssen über diesen Port gefiltert.
 
-   ![Abbildung 3][3]
+   ![Screenshot zeigt ein Beispieldashboard mit Datenflüssen nach Ziel- und Quellport.][3]
 
 3. Anzahl von Datenflüssen und früheste Protokollzeit: Metriken zeigen die Anzahl der aufgezeichneten Datenflüsse und das Datum des ältesten aufgezeichneten Protokolls.
 
-   ![Abbildung 4][4]
+   ![Screenshot zeigt ein Beispieldashboard mit der Anzahl der Datenflüsse und der frühesten Protokollzeit.][4]
 
 4. Datenflüsse nach NSG und Regel: Ein Balkendiagramm zeigt die Verteilung der Datenflüsse innerhalb der einzelnen NSGs sowie die Verteilung der Regeln in den NSGs. Hier können Sie sehen, welche NSGs und Regeln den meisten Datenverkehr generieren.
 
-   ![Abbildung 5][5]
+   ![Screenshot zeigt ein Beispieldashboard mit Datenflüssen nach NSG und einer Regel.][5]
 
 5. 10 häufigste Quell-/Ziel-IP-Adressen: Balkendiagramme zeigen die zehn häufigsten Quell- und Ziel-IP-Adressen. Sie können diese Diagramme anpassen, um mehr oder weniger IP-Adressen anzuzeigen. Hier sehen Sie die am häufigsten auftretenden IP-Adressen sowie die Entscheidung zum Datenverkehr (zulassen oder verweigern), die für jede IP-Adresse getroffen wurden.
 
-   ![Abbildung 6][6]
+   ![Screenshot zeigt ein Beispieldashboard mit Datenflüssen nach den ersten zehn Ziel- und Quell-IP-Adressen.][6]
 
 6. Datenflusstupel: Diese Tabelle zeigt Informationen innerhalb jedes Datenflusstupels mit der zugehörigen NSG und Regel.
 
-   ![Abbildung 7][7]
+   ![Screenshot zeigt Datenflusstupel in einer Tabelle.][7]
 
 Mithilfe der Abfrageleiste oben im Dashboard können Sie das Dashboard basierend auf beliebige Parameter der Datenflüsse filtern, z.B. nach Abonnement-ID, Ressourcengruppen, Regel oder andere relevante Variablen. Weitere Informationen zu Kibana-Abfragen und -Filtern finden Sie in der [offiziellen Dokumentation](https://www.elastic.co/guide/en/beats/packetbeat/current/kibana-queries-filters.html).
 
