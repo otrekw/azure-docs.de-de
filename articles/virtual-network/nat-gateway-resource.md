@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/11/2020
 ms.author: allensu
-ms.openlocfilehash: f6e0009a1e1df57298884097cac076ef3a344714
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: ef1f8966497492f5a4969aca594c43abdf80945c
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135826"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612903"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Entwerfen von virtuellen Netzwerken mit NAT-Gatewayressourcen
 
@@ -217,7 +217,7 @@ Wenn Sie Endpunkte für eingehenden Datenverkehr benötigen, haben Sie zwei Opti
 
 Sie können für NAT-Gatewayressourcen keine Zonenzusage erzielen, wenn VM-Instanzen in mehreren Zonen desselben Subnetzes bereitgestellt werden.   Auch wenn mehrere NAT-Zonengateways an ein Subnetz angefügt sind, weiß die VM-Instanz nicht, welche NAT-Gatewayressource ausgewählt werden soll.
 
-Eine Zonenzusage besteht nicht, wenn a) die Zone einer VM-Instanz und die Zonen eines NAT-Zonengateways nicht aufeinander ausgerichtet sind oder b) eine regionale NAT-Gatewayressource mit VM-Zoneninstanzen genutzt wird.
+Eine Zonenzusage besteht nicht, wenn a) die Zone einer VM-Instanz und die Zone eines NAT-Zonengateways nicht aufeinander ausgerichtet sind oder b) eine regionale NAT-Gatewayressource mit VM-Zoneninstanzen genutzt wird.
 
 Auch wenn das Szenario scheinbar funktioniert, sind das Integritätsmodell und der Fehlermodus aus Sicht der Verfügbarkeitszone nicht definiert. Erwägen Sie stattdessen, Zonenstapel zu verwenden oder ganz auf Regionen zu setzen.
 

@@ -3,16 +3,16 @@ title: Erstellen eines Angebots für Dynamics 365 Business Central im kommerzie
 description: Hier lernen Sie die Schritte und Überlegungen zum Erstellen eines neuen Angebots für Dynamics 365 Business Central im kommerziellen Microsoft-Marketplace im Partner Center kennen. Sie können Ihr Angebot im Azure Marketplace oder über das CSP-Programm (Cloud Solution Provider) anbieten oder verkaufen.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 08/07/2020
-ms.openlocfilehash: 4226f9cc45589b8c555d3d54918e31a04acbfc6b
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 1e2af29779c93175ccc4c7f6964862b79febd8e6
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88817050"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527087"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Erstellen eines Angebots für Dynamics 365 Business Central
 
@@ -71,9 +71,7 @@ Sammeln Sie über Ihr CRM-System (Customer Relationship Management) Kundenkontak
 
 ### <a name="test-drive"></a>Testversion
 
-Eine Testversion ist eine hervorragende Möglichkeit, Ihr Angebot potenziellen Kunden zu präsentieren, indem Sie ihnen die Möglichkeit geben, das Produkt vor dem Kauf zu testen. Dies führt zu einer höheren Konversionsrate und zur Generierung von aussichtsreichen Leads. Um mehr zu erfahren, beginnen Sie mit [Was ist die Testversion?](../what-is-test-drive.md)
-
-Aktivieren Sie das Kontrollkästchen **Testversion aktivieren**, um eine Testversion für einen festen Zeitraum zu aktivieren. Deaktivieren Sie dieses Kontrollkästchen, um die Testversion aus Ihrem Angebot zu entfernen.
+Von Dynamics 365 Business Central-Angeboten wird derzeit keine Testversion unterstützt. Deaktivieren Sie das Kontrollkästchen **Testversion aktivieren**, um die Testversion aus Ihrem Angebot zu entfernen.
 
 ### <a name="customer-leads"></a>Kundenleads
 
@@ -184,8 +182,8 @@ Geben Sie mindestens ein (und höchstens drei) zugehörige Marketingdokumente an
 
 Geben Sie eine PNG-Datei für das **große** Logo an. Dies wird in Partner Center verwendet, um ein **kleines** Logo zu erstellen. Später können Sie dieses Logo optional durch ein anderes Bild ersetzen.
 
-- **Groß** (von 216 x 216 bis 350 x 350 Pixel, erforderlich)
-- **Klein** (48 x 48 Pixel, optional)
+- **Groß** (von 216 x 216 bis 350 x 350 px, erforderlich)
+- **Klein** (48 x 48 px, optional)
 
 Diese Logos werden an unterschiedlichen Stellen in der Auflistung verwendet:
 

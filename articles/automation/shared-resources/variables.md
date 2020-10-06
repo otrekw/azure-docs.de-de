@@ -2,19 +2,15 @@
 title: Verwalten von Variablen in Azure Automation
 description: In diesem Artikel erfahren Sie, wie Sie Variablen in Runbooks und DSC-Konfigurationen verwenden.
 services: automation
-ms.service: automation
 ms.subservice: shared-capabilities
-author: mgoedtel
-ms.author: magoedte
-ms.date: 05/14/2019
+ms.date: 09/10/2020
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: ee49ae905622b4b76d782f6a31e0c2333b6d54be
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 300bfa2ed801b810bcaaeb5bc4d04775d590015b
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88055291"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004561"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Verwalten von Variablen in Azure Automation
 
@@ -30,7 +26,7 @@ Automatisierungsvariablen sind in folgenden Szenarien hilfreich:
 
 Azure Automation speichert Variablen persistent und macht sie auch dann verfügbar, wenn die Ausführung eines Runbooks oder einer DSC-Konfiguration zu einem Fehler führt. Durch dieses Verhalten kann ein Runbook oder eine DSC-Konfiguration einen Wert festlegen, der dann bei der nächsten Ausführung von einem anderen Runbook bzw. vom selben Runbook oder derselben DSC-Konfiguration genutzt werden kann.
 
-Azure Automation speichert jede verschlüsselte Variable sicher. Beim Erstellen einer Variablen können Sie die Verschlüsselung und den Speicher durch Azure Automation als sichere Ressource angeben. Nachdem Sie die Variable erstellt haben, können Sie ihren Verschlüsselungsstatus nicht ändern, ohne die Variable neu erstellen zu müssen. Eine Azure Security Center-Empfehlung ist, alle Azure Automation-Variablen wie unter [Automation-Kontovariablen sollten verschlüsselt werden](../../security-center/recommendations-reference.md#recs-computeapp) beschrieben zu verschlüsseln. 
+Azure Automation speichert jede verschlüsselte Variable sicher. Beim Erstellen einer Variablen können Sie die Verschlüsselung und den Speicher durch Azure Automation als sichere Ressource angeben. Nachdem Sie die Variable erstellt haben, können Sie ihren Verschlüsselungsstatus nicht ändern, ohne die Variable neu erstellen zu müssen. Eine Azure Security Center-Empfehlung ist, alle Azure Automation-Variablen wie unter [Automation-Kontovariablen sollten verschlüsselt werden](../../security-center/recommendations-reference.md#recs-computeapp) beschrieben zu verschlüsseln.
 
 >[!NOTE]
 >Zu den sicheren Objekten in Azure Automation gehören Anmeldeinformationen, Zertifikate, Verbindungen und verschlüsselte Variablen. Diese Objekte werden mithilfe eines eindeutigen Schlüssels verschlüsselt und in Azure Automation gespeichert, der für jedes Automation-Konto generiert wird. Azure Automation speichert den Schlüssel im vom System verwalteten Schlüsseltresor. Vor dem Speichern einer sicheren Ressource lädt Azure Automation den Schlüssel aus dem Schlüsseltresor und verwendet ihn dann zum Verschlüsseln der Ressource. 
@@ -45,7 +41,7 @@ Beim Erstellen einer Variable über das Azure-Portal müssen Sie einen Datentyp 
 * Boolean
 * Null
 
-Die Variable ist nicht auf den festgelegten Datentyp beschränkt. Sie müssen die Variable in Windows PowerShell festlegen, wenn Sie einen anderen Wertetyp angeben möchten. Wenn Sie `Not defined` angeben, wird der Wert der Variable auf NULL festgelegt. Sie müssen den Wert mit dem Cmdlet [Set-AzAutomationVariable](/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0) oder dem internen Cmdlet `Set-AutomationVariable` festlegen.
+Die Variable ist nicht auf den festgelegten Datentyp beschränkt. Sie müssen die Variable in Windows PowerShell festlegen, wenn Sie einen anderen Wertetyp angeben möchten. Wenn Sie `Not defined` angeben, wird der Wert der Variable auf NULL festgelegt. Sie müssen den Wert mit dem Cmdlet [Set-AzAutomationVariable](/powershell/module/az.automation/set-azautomationvariable) oder dem internen Cmdlet `Set-AutomationVariable` festlegen.
 
 Sie können den Wert für einen komplexen Variablentyp nicht im Azure-Portal erstellen oder ändern. Sie können jedoch einen Wert eines beliebigen Typs mithilfe von Windows PowerShell bereitstellen. Komplexe Typen werden als [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject) abgerufen.
 
@@ -60,10 +56,10 @@ Sie können mehrere Werte in einer einzigen Variable speichern, indem Sie ein Ar
 
 | Cmdlet | BESCHREIBUNG |
 |:---|:---|
-|[Get-AzAutomationVariable](/powershell/module/az.automation/get-azautomationvariable?view=azps-3.5.0) | Ruft den Wert einer vorhandenen Variable ab. Wenn es sich um einen einfachen Werttyp handelt, wird der gleiche Typ abgerufen. Bei einem komplexen Typ wird der Typ `PSCustomObject` abgerufen. <br>**Hinweis:**  Sie können dieses Cmdlet nicht verwenden, um den Wert einer verschlüsselten Variable abzurufen. Dies ist nur mit dem internen Cmdlet `Get-AutomationVariable` in einem Runbook oder einer DSC-Konfiguration möglich. Weitere Informationen finden Sie unter [Interne Cmdlets für den Zugriff auf Variablen](#internal-cmdlets-to-access-variables). |
-|[New-AzAutomationVariable](/powershell/module/az.automation/new-azautomationvariable?view=azps-3.5.0) | Erstellt eine neue Variable und legt ihren Wert fest.|
-|[Remove-AzAutomationVariable](/powershell/module/az.automation/remove-azautomationvariable?view=azps-3.5.0)| Entfernt eine vorhandene Variable.|
-|[Set-AzAutomationVariable](/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0)| Legt den Wert für eine vorhandene Variable fest. |
+|[Get-AzAutomationVariable](/powershell/module/az.automation/get-azautomationvariable) | Ruft den Wert einer vorhandenen Variable ab. Wenn es sich um einen einfachen Werttyp handelt, wird der gleiche Typ abgerufen. Bei einem komplexen Typ wird der Typ `PSCustomObject` abgerufen. <br>**Hinweis:**  Sie können dieses Cmdlet nicht verwenden, um den Wert einer verschlüsselten Variable abzurufen. Dies ist nur mit dem internen Cmdlet `Get-AutomationVariable` in einem Runbook oder einer DSC-Konfiguration möglich. Weitere Informationen finden Sie unter [Interne Cmdlets für den Zugriff auf Variablen](#internal-cmdlets-to-access-variables). |
+|[New-AzAutomationVariable](/powershell/module/az.automation/new-azautomationvariable) | Erstellt eine neue Variable und legt ihren Wert fest.|
+|[Remove-AzAutomationVariable](/powershell/module/az.automation/remove-azautomationvariable)| Entfernt eine vorhandene Variable.|
+|[Set-AzAutomationVariable](/powershell/module/az.automation/set-azautomationvariable)| Legt den Wert für eine vorhandene Variable fest. |
 
 ## <a name="internal-cmdlets-to-access-variables"></a>Interne Cmdlets für den Zugriff auf Variablen
 
@@ -103,16 +99,16 @@ Die Funktionen in der folgenden Tabelle werden zum Zugreifen auf Variablen in ei
 
 ### <a name="create-and-get-a-variable-using-the-azure-portal"></a>Erstellen und Abrufen einer Variable über das Azure-Portal
 
-1. Klicken Sie in Ihrem Automation-Konto auf die Kachel **Ressourcen** und dann auf das Blatt **Ressourcen**, und wählen Sie **Variablen** aus.
-2. Klicken Sie auf dem Blatt **Variablen** auf **Variable hinzufügen**.
-3. Füllen Sie die Optionen auf dem Blatt **Neue Variable** aus, und klicken Sie dann auf **Erstellen**, um die neue Variable zu speichern.
+1. Wählen Sie in Ihrem Automation-Konto im linken Bereich unter **Freigegebene Ressourcen** die Option **Variablen** aus.
+2. Wählen Sie auf der Seite **Variablen** die Option **Variable hinzufügen** aus.
+3. Füllen Sie die Optionen auf dem Blatt **Neue Variable** aus, und wählen Sie anschließend **Erstellen** aus, um die neue Variable zu speichern.
 
 > [!NOTE]
 > Nachdem Sie eine verschlüsselte Variable gespeichert haben, kann sie nicht mehr im Portal angezeigt werden. Sie kann lediglich aktualisiert werden.
 
 ### <a name="create-and-get-a-variable-in-windows-powershell"></a>Erstellen und Abrufen einer Variable in Windows PowerShell
 
-Ihr Runbook oder Ihre DSC-Konfiguration verwendet das Cmdlet `New-AzAutomationVariable`, um eine neue Variable zu erstellen und ihren Anfangswert festzulegen. Wenn die Variable verschlüsselt ist, sollte beim Aufruf der Parameter `Encrypted` verwendet werden. Ihr Skript kann den Wert der Variable mithilfe von `Get-AzAutomationVariable` abrufen. 
+Ihr Runbook oder Ihre DSC-Konfiguration verwendet das Cmdlet `New-AzAutomationVariable`, um eine neue Variable zu erstellen und ihren Anfangswert festzulegen. Wenn die Variable verschlüsselt ist, sollte beim Aufruf der Parameter `Encrypted` verwendet werden. Ihr Skript kann den Wert der Variable mithilfe von `Get-AzAutomationVariable` abrufen.
 
 >[!NOTE]
 >Mit einem PowerShell-Skript kann kein verschlüsselter Wert abgerufen werden. Dies ist nur über die Verwendung des internen Cmdlets `Get-AutomationVariable` möglich.
@@ -127,7 +123,7 @@ $string = (Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" `
 –AutomationAccountName "MyAutomationAccount" –Name 'MyStringVariable').Value
 ```
 
-Das folgende Beispiel zeigt, wie eine Variable mit einem komplexen Typ erstellt wird und dann ihre Eigenschaften abgerufen werden. In diesem Fall wird ein Objekt für einen virtuellen Computer von [Get-AzVM](/powershell/module/Az.Compute/Get-AzVM?view=azps-3.5.0) verwendet.
+Das folgende Beispiel zeigt, wie eine Variable mit einem komplexen Typ erstellt wird und dann ihre Eigenschaften abgerufen werden. In diesem Fall wird ein Objekt für einen virtuellen Computer von [Get-AzVM](/powershell/module/Az.Compute/Get-AzVM) verwendet.
 
 ```powershell
 $vm = Get-AzVM -ResourceGroupName "ResourceGroup01" –Name "VM01"

@@ -1,23 +1,23 @@
 ---
-title: Konzepte für Wetterdienste | Microsoft Azure Maps
-description: In diesem Artikel erfahren Sie mehr über die Konzepte, die für Wetterdienste in Microsoft Azure Maps gelten.
+title: Konzepte für Wetterdienste in Microsoft Azure Maps
+description: Hier finden Sie Informationen zu den Konzepten für Wetterdienste in Microsoft Azure Maps.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 11/20/2019
+ms.date: 09/10/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: e8ecbd50aa4490bde705b386a67b8732bb8c02c9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 4430737814ef904e83b2bf3ce25edf3d44e2668d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132108"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972040"
 ---
 # <a name="weather-services-in-azure-maps"></a>Wetterdienste in Azure Maps
 
-In diesem Artikel werden Konzepte vorgestellt, die für die [Wetterdienste von Azure Maps](https://aka.ms/AzureMapsWeatherService) gelten. Es empfiehlt sich, diesen Artikel zu lesen, bevor Sie die Wetter-APIs verwenden. 
+In diesem Artikel werden Konzepte vorgestellt, die für die [Wetterdienste von Azure Maps](https://aka.ms/AzureMapsWeatherService) gelten. Es empfiehlt sich, diesen Artikel zu lesen, bevor Sie die Wetter-APIs verwenden.
 
 ## <a name="unit-types"></a>Einheitstypen
 
@@ -472,3 +472,169 @@ Die detaillierte Farbpalette für Infrarotsatellitenkacheln sehen Sie unten.
 |307,57  |#02555555     |
 |308     |#00525252     |
 |308     |#00525252     |
+
+## <a name="index-ids-and-index-groups-ids"></a>Index-IDs and Indexgruppen-IDs
+
+Über die [API zum Abrufen von Tagesindizes](https://aka.ms/AzureMapsWeatherDailyIndices) können Benutzer die zurückgegebenen Ergebnisse auf bestimmte Indextypen oder Indexgruppen beschränken.
+
+Im Anschluss finden Sie eine Tabelle mit verfügbaren Index-IDs, den zugehörigen Namen und einem Link zu deren Bereichen. Danach folgt eine Tabelle mit den verschiedenen Indexgruppen.
+
+  Indexname |  ID  | Wertbereich
+  -------------------------- |---|-----
+  Arthritisschmerzen             |21 | [Günstig bis sehr hohes Risiko](#beneficial-at-extreme-risk)
+  Asthma                     |23|  [Günstig bis sehr hohes Risiko](#beneficial-at-extreme-risk)
+  Strand und Pool               |10| [Schlecht bis ausgezeichnet 1](#poor-excellent-1)
+  Radfahren                  |4| [Schlecht bis ausgezeichnet 1](#poor-excellent-1)
+  Erkältung                |25|  [Günstig bis sehr hohes Risiko](#beneficial-at-extreme-risk)
+  Kompostierung                 |38| [Schlecht bis ausgezeichnet 1](#poor-excellent-1)
+  Bauwesen               |14| [Schlecht bis ausgezeichnet 1](#poor-excellent-1)
+  Chronisch obstruktive Lungenerkrankung                       |44|  [Günstig bis sehr hohes Risiko](#beneficial-at-extreme-risk)
+  Komfortables Gassigehen        |43| [Schlecht bis ausgezeichnet 1](#poor-excellent-1)
+  Driving (Auto)                    |40|  [Schlecht bis ausgezeichnet 2](#poor-excellent-2)
+  Staubbelastung              |18| [Niedrig bis extrem 1](#low-extreme-1)
+  Feldbereitschaft            |32| [Schlecht bis ausgezeichnet 1](#poor-excellent-1)
+  Angeln/Fischen                    |13| [Schlecht bis ausgezeichnet 1](#poor-excellent-1)
+  Flugverspätungen              |-3|  [Sehr unwahrscheinlich bis sehr wahrscheinlich 2](#very-unlikely-very-likely-2)
+  Grippe                        |26|  [Günstig bis sehr hohes Risiko](#beneficial-at-extreme-risk)
+  Flugreiseindex        |31| [Ausgezeichnet bis schlecht](#excellent-poor)
+  Kraftstoffeffizienz               |37| [Schlecht bis ausgezeichnet 1](#poor-excellent-1)
+  Golfwetter               |5| [Schlecht bis ausgezeichnet 1](#poor-excellent-1)
+  Graswachstum              |33| [Schlecht bis ausgezeichnet 1](#poor-excellent-1)
+  Frizz                 |42| [Unwahrscheinlich bis Notfall](#unlikely-emergency)
+  Fitness für ein gesundes Herz      |16| [Schlecht bis ausgezeichnet 1](#poor-excellent-1)
+  Wandern                     |3| [Schlecht bis ausgezeichnet 1](#poor-excellent-1)
+  Private Energieeffizienz     |36| [Schlecht bis ausgezeichnet 1](#poor-excellent-1)
+  Suche                    | 20| [Schlecht bis ausgezeichnet 1](#poor-excellent-1)
+  Indoor-Aktivitäten            | -2| [Schlecht bis ausgezeichnet 1](#poor-excellent-1)
+  Joggen                    |2| [Schlecht bis ausgezeichnet 1](#poor-excellent-1)
+  Drachensteigenlassen                |9| [Schlecht bis ausgezeichnet 1](#poor-excellent-1)
+  Rasenmähen                |28| [Schlecht bis ausgezeichnet 1](#poor-excellent-1)
+  Migränekopfschmerzen          |27|  [Günstig bis sehr hohes Risiko](#beneficial-at-extreme-risk)
+  Schulbus am Morgen         |35| [Schlecht bis ausgezeichnet 1](#poor-excellent-1)
+  Mückenaktivität          |17|[Niedrig bis extrem 1](#low-extreme-1)
+  Aktivitäten im Freien           |29| [Schlecht bis ausgezeichnet 1](#poor-excellent-1)
+  Grillen im Freien           |24| [Schlecht bis ausgezeichnet 1](#poor-excellent-1)
+  Konzert im Freien            |8| [Schlecht bis ausgezeichnet 1](#poor-excellent-1)
+  Wird ausgeführt                    |1|  [Schlecht bis ausgezeichnet 1](#poor-excellent-1)
+  Tennis                     |6| [Schlecht bis ausgezeichnet 1](#poor-excellent-1)
+  Durst                     |41| [Niedrig bis extrem 2](#low-extreme-2)
+  Segeln                    |11| [Schlecht bis ausgezeichnet 1](#poor-excellent-1)
+  Shopping                   |39| [Schlecht bis ausgezeichnet 1](#poor-excellent-1)
+  Sinusitis-Kopfschmerzen             |30|  [Günstig bis sehr hohes Risiko](#beneficial-at-extreme-risk)
+  Skateboarden              | 7| [Schlecht bis ausgezeichnet 1](#poor-excellent-1)
+  Skiwetter                | 15| [Schlecht bis ausgezeichnet 1](#poor-excellent-1)
+  Schneetage                  | 19| [Sehr unwahrscheinlich bis sehr wahrscheinlich](#very-unlikely-very-likely)
+  Bodenfeuchtigkeit              | 34| [Schlecht bis ausgezeichnet 1](#poor-excellent-1)
+  Sternenbeobachtung                 | 12| [Schlecht bis ausgezeichnet 1](#poor-excellent-1)
+
+Die folgende Liste enthält verfügbare Indexgruppen (indexGroupId):
+
+  ID   | Gruppenname | Indizes in dieser Gruppe |
+  -------- | ------------------|------
+  1       |All | All
+  2       |Schmerzen | Arthritisschmerzen (21) </br> Migränekopfschmerzen (27) </br> Sinusitis-Kopfschmerzen (30)
+  3       |Atmung | Asthma (23) </br> Erkältung (25) </br> Grippeprognose (26)
+  4       |Gartenarbeit | Feldbereitschaft (32) </br> Rasenmähen (28) </br> Bodenfeuchtigkeit (34)</br>
+  5       |Umwelt | Kompostierung (38) </br> Private Energieeffizienz (36) </br> Kraftstoffeffizienz (37)
+  6       |Aktivitäten im Freien | Grillen im Freien (24) </br> Mückenaktivität (17)
+  7       |Strand und Meer | Strand und Pool (10) </br> Angeln/Fischen (13) </br> Segeln (11)
+  8       |Sportliche Aktivitäten | Angeln/Fischen (13) </br> Jagen (20) </br> Aktivitäten im Freien (29)</br>
+  9       |Landwirtschaft |  Feldbereitschaft (32) </br>  Bodenfeuchtigkeit (34)
+  10      |Gesundheitswesen | Arthritisschmerzen (21) </br> Asthma (23) </br> Erkältung (25) </br> Staubbelastung (18) </br> Grippe (26) </br> Fitness für ein gesundes Herz (16) </br> Migränekopfschmerzen (27)
+  11      |Outdoor-Aktivitäten | Grillen im Freien (24) </br> Strand und Pool (10) </br> Radfahren (4) </br> Konzert im Freien (8) </br>  Feldbereitschaft (32) </br> Angeln/Fischen (13) </br> Golfwetter (5) </br> Wandern (3) </br> Jagen (20) </br> Joggen (2) </br> Drachensteigenlassen (9) </br> Mückenaktivität (17)</br> Rasenmähen (28) </br> Aktivitäten im Freien (29) </br> Laufen (1) </br> Segeln (11) </br> Skateboarden (7) </br> Skiwetter (15) </br>  Bodenfeuchtigkeit (34)</br> Sternenbeobachtung (12) </br> Tennis (6)
+  12      |Sport | Radfahren (4) </br> Golfwetter (5) </br> Wandern (3) </br>  Joggen (2) </br> Laufen (1) </br> Skateboarden (7) </br> Skiwetter (15) </br>Tennis (6)
+  13      |Startseite | Private Energieeffizienz (36) </br> Kraftstoffeffizienz (37) </br> Indoor-Aktivitäten (-2)
+
+## <a name="daily-index-range-sets"></a>Tagesindexbereiche
+
+Von der [API zum Abrufen von Tagesindizes](https://aka.ms/AzureMapsWeatherDailyIndices) werden der Bereichswert und der zugehörige Kategoriename für die jeweilige Index-ID zurückgegeben. Bereiche sind nicht für alle Indizes gleich. Die folgenden Tabellen enthalten die verschiedenen Bereiche, die von den unter [Index-IDs and Indexgruppen-IDs](#index-ids-and-index-groups-ids) aufgeführten unterstützten Indizes verwendet werden. Von welchen Indizes welche Bereiche verwendet werden, erfahren Sie im Abschnitt [Index-IDs and Indexgruppen-IDs](#index-ids-and-index-groups-ids) dieses Dokuments.
+
+### <a name="poor-excellent-1"></a>Schlecht bis ausgezeichnet 1
+
+  | Category Name | Bereichsbeginn | Bereichsende |
+  ----------------|--------------|------------
+  Schlecht              |  0 |                2,99
+  Mittelmäßig              |  3  |               4,99
+  Gut              |  5  |              6,99
+  Sehr gut         |  7  |               8,99
+  Ausgezeichnet         |  9  |               10
+
+### <a name="poor-excellent-2"></a>Schlecht bis ausgezeichnet 2
+
+ | Category Name | Bereichsbeginn | Bereichsende |
+  ----------------|--------------|------------
+  Schlecht           |0              |  3
+  Mittelmäßig           |3,01           |  6
+  Gut           |6.01           |  7,5
+  Sehr gut      |7,51           |  8,99
+  Ausgezeichnet      |9              |  10
+
+### <a name="excellent-poor"></a>Ausgezeichnet bis schlecht
+
+ | Category Name | Bereichsbeginn | Bereichsende |
+  ----------------|--------------|------------
+  Ausgezeichnet      |     0.00        |    1.00
+  Sehr gut        |   1.01          |  3.00
+  Gut             |   3,01          |  5.00
+  Mittelmäßig             |   5.01          |  7.00
+  Schlecht             |   7,01          |  10,00
+
+### <a name="low-extreme-1"></a>Niedrig bis extrem 1
+
+   | Category Name | Bereichsbeginn | Bereichsende |
+  ----------------|--------------|------------
+  Niedrig                |  0         |        1,99
+  Mittel           |  2         |        3,99
+  Hoch               |  4         |        5,99
+  Sehr hoch          |  6         |        7,99
+  Extreme            |  8         |        10
+
+### <a name="low-extreme-2"></a>Niedrig bis extrem 2
+
+   | Category Name | Bereichsbeginn | Bereichsende |
+  ----------------|--------------|------------
+  Niedrig                |  0            |      2,99
+  Mittel           |  3            |      4,99
+  Hoch               |  5            |      6,99
+  Sehr hoch          |  7            |      8,99
+  Extreme            |  9            |      10
+
+### <a name="very-unlikely-very-likely"></a>Sehr unwahrscheinlich bis sehr wahrscheinlich
+
+ | Category Name | Bereichsbeginn | Bereichsende |
+  ----------------|--------------|------------
+  Sehr unwahrscheinlich      | 0     |           1,99
+  Unwahrscheinlich           | 2     |           3,99
+  Möglich           | 4     |           5,99
+  Wahrscheinlich             | 6     |           7,99
+  Sehr wahrscheinlich        | 8     |           10
+
+### <a name="very-unlikely-very-likely-2"></a>Sehr unwahrscheinlich bis sehr wahrscheinlich 2
+
+ | Category Name | Bereichsbeginn | Bereichsende |
+  ----------------|--------------|------------
+  Sehr unwahrscheinlich      |  0.00     |         1.00
+  Unwahrscheinlich           |  1.01     |         3.00
+  Möglich           |  3,01     |         5.00
+  Wahrscheinlich             |  5.01     |         7.00
+  Sehr wahrscheinlich        |  7,01     |         10,00
+
+### <a name="unlikely-emergency"></a>Unwahrscheinlich bis Notfall
+
+| Category Name | Bereichsbeginn | Bereichsende |
+  ----------------|--------------|------------
+  Unwahrscheinlich         |  0     |          2,99
+  Überwachen            |  3     |          4,99
+  Empfehlung         |  5     |          6,99
+  Warnung          |  7     |          8,99
+  Notfall        |  9     |          10
+
+### <a name="beneficial-at-extreme-risk"></a>Günstig bis sehr hohes Risiko
+
+| Category Name | Bereichsbeginn | Bereichsende |
+  ----------------|--------------|------------
+  Günstig        |    0        |        1,99
+  Neutral           |    2        |        3,99
+  Risiko           |    4        |        5,99
+  Hohes Risiko      |    6        |        7,99
+  Sehr hohes Risiko   |    8        |        10

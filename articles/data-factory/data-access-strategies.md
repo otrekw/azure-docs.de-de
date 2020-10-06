@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: 015feac819467cf60bfb2faab27af769fadc3cfa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 76181f089511a6645a51707f9a8537c1589d82bf
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522872"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484951"
 ---
 # <a name="data-access-strategies"></a>Datenzugriffsstrategien
 
@@ -55,7 +55,7 @@ Weitere Informationen zu unterstützten Netzwerksicherheitsmechanismen für Date
     |                              | Azure Database for MariaDB, MySQL, PostgreSQL       | -                | -                   | Ja             | -            | Ja                  |
     |                              | Azure File Storage                                  | Ja              | -                   | Ja             | -            | .                    |
     |                              | Azure Storage (Blob, ADLS Gen2)                     | Ja              | Ja (nur MSI-Authentifizierung) | Ja             | -            | .                    |
-    |                              | Azure SQL DB, SQL DW (Synapse Analytics), SQL Ml  | Ja (nur Azure SQL DB/DW)        | -                   | Ja             | -            | Ja                  |
+    |                              | Azure SQL DB, Azure Synapse Analytics, SQL ML  | Ja (nur Azure SQL DB/DW)        | -                   | Ja             | -            | Ja                  |
     |                              | Azure Key Vault (zum Abrufen von Geheimnissen/Verbindungszeichenfolge) | ja      | Ja                 | Ja             | -            | -                    |
     | Andere PaaS-/SaaS-Datenspeicher | AWS S3, SalesForce, Google Cloud Storage usw.    | -                | -                   | Ja             | -            | -                    |
     | Azure laaS                   | SQL Server, Oracle usw.                          | -                | -                   | Ja             | Ja          | -                    |
@@ -73,7 +73,7 @@ Weitere Informationen zu unterstützten Netzwerksicherheitsmechanismen für Date
     |                                | Azure Database for MariaDB, MySQL, PostgreSQL               | Ja       | -                   |
     |                                | Azure File Storage                                            | Ja       | -                   |
     |                                | Azure Storage (Blog, ADLS Gen2)                             | Ja       | Ja (nur MSI-Authentifizierung) |
-    |                                | Azure SQL DB, SQL DW (Synapse Analytics), SQL Ml          | Ja       | -                   |
+    |                                | Azure SQL DB, Azure Synapse Analytics, SQL ML          | Ja       | -                   |
     |                                | Azure Key Vault (zum Abrufen von Geheimnissen/Verbindungszeichenfolge) | Ja       | Ja                 |
     | Andere PaaS-/SaaS-Datenspeicher | AWS S3, SalesForce, Google Cloud Storage usw.              | Ja       | -                   |
     | Azure laaS                     | SQL Server, Oracle usw.                                  | Ja       | -                   |

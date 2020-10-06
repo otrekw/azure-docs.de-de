@@ -11,13 +11,13 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 07/20/2020
-ms.openlocfilehash: 6455c186e05fc98b1ec340c152f9b3e5710f1dd5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/06/2020
+ms.openlocfilehash: 84a7a205e52ba37eb6fcb3b624e0f71a9b9bbc10
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087905"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505487"
 ---
 # <a name="manage-packages-with-azure-ssis-integration-runtime-package-store"></a>Verwalten von Paketen mit dem Paketspeicher für Azure-SSIS Integration Runtime
 
@@ -57,7 +57,7 @@ Nachdem Sie eine Verbindung mit Ihrer Azure-SSIS IR-Instanz in SSMS hergestellt
       > [!NOTE]
       > Das Importieren von SSIS-Paketen in Azure-SSIS IR-Paketspeicher kann nur einzeln durchgeführt werden. Sie werden dabei lediglich in die zugrunde liegende msdb, das Dateisystem oder Azure Files kopiert, wobei die SQL Server- oder SSIS-Version beibehalten wird. 
       >
-      > Da Azure-SSIS IR zurzeit über einen Standardkompatibilitätsgrad von 140 verfügt (entspricht **SQL Server 2017**), werden diese bei der Ausführung von Paketen mit einer niedrigeren Version zur Laufzeit auf SSIS 2017-Pakete aktualisiert. Das Ausführen von Paketen höherer Version wird nicht unterstützt.
+      > Da Azure-SSIS IR aktuell auf **SQL Server 2017** basiert, werden Pakete mit einer niedrigeren Version zur Laufzeit auf SSIS 2017-Pakete aktualisiert, wenn sie mit Azure-SSIS IR ausgeführt werden. Das Ausführen von Paketen höherer Version wird nicht unterstützt.
       >
       > Da darüber hinaus die Legacy-SSIS-Paketspeicher an eine bestimmte SQL Server-Version gebunden sind und nur im SSMS für diese Version verfügbar sind, müssen Pakete mit einer niedrigeren Version in den Legacy-SSIS-Paketspeichern zunächst mithilfe der angegebenen SSMS-Version in das Dateisystem exportiert werden, bevor sie mit SSMS 2019 oder höheren Versionen in Azure-SSIS IR-Paketspeicher importiert werden können.
       >
@@ -72,7 +72,7 @@ Nachdem Sie eine Verbindung mit Ihrer Azure-SSIS IR-Instanz in SSMS hergestellt
       > [!NOTE]
       > Das Exportieren von SSIS-Paketen aus Azure-SSIS IR-Paketspeichern kann nur einzeln durchgeführt werden. Wenn Sie dabei nicht die Schutzebene wechseln, werden sie einfach unter Beibehaltung der SQL Server-/SSIS-Version kopiert. Andernfalls werden die Pakete auf SSIS 2019 oder eine höhere Versionen aktualisiert.
       >
-      > Da Azure-SSIS IR zurzeit über einen Standardkompatibilitätsgrad von 140 verfügt (entspricht **SQL Server 2017**), werden diese bei der Ausführung von Paketen mit einer niedrigeren Version zur Laufzeit auf SSIS 2017-Pakete aktualisiert. Das Ausführen von Paketen höherer Version wird nicht unterstützt.
+      > Da Azure-SSIS IR aktuell auf **SQL Server 2017** basiert, werden Pakete mit einer niedrigeren Version zur Laufzeit auf SSIS 2017-Pakete aktualisiert, wenn sie mit Azure-SSIS IR ausgeführt werden. Das Ausführen von Paketen höherer Version wird nicht unterstützt.
       >
       > Wenn Sie mehrere SSIS-Pakete aus Azure-SSIS IR-Paketspeichern exportieren und dabei die Schutzebene wechseln möchten, können Sie alternativ das Befehlszeilen-Hilfsprogramm [dtutil](https://docs.microsoft.com/sql/integration-services/dtutil-utility?view=sql-server-2017) verwenden. Weitere Informationen finden Sie unter [Bereitstellen mehrerer Pakete mit dtutil](#deploying-multiple-packages-with-dtutil).
 
@@ -124,7 +124,7 @@ Wenn Sie Ihre lokalen SSIS-Workloads per Lift & Shift nach SSIS in ADF verschi
 
 Sie können das Befehlszeilen-Hilfsprogramm [dtutil](https://docs.microsoft.com/sql/integration-services/dtutil-utility?view=sql-server-2017) verwenden, das in der SQL Server-/SSIS-Installation enthalten ist, um mehrere Pakete in Batches bereitzustellen. Es ist an eine bestimmte SSIS-Version gebunden. Wenn Sie es also verwenden, um Pakete mit einer niedrigeren Version bereitzustellen, ohne ihre Schutzebene zu wechseln, werden sie einfach kopiert, und die SSIS-Version wird beibehalten. Wenn Sie es zur Bereitstellung verwenden und die Schutzebene gleichzeitig wechseln, werden sie auf die neue SSIS-Version aktualisiert.
 
- Da Azure-SSIS IR zurzeit über einen Standardkompatibilitätsgrad von 140 verfügt (entspricht **SQL Server 2017**), werden diese bei der Ausführung von Paketen mit einer niedrigeren Version zur Laufzeit auf SSIS 2017-Pakete aktualisiert. Das Ausführen von Paketen höherer Version wird nicht unterstützt.
+ Da Azure-SSIS IR aktuell auf **SQL Server 2017** basiert, werden Pakete mit einer niedrigeren Version zur Laufzeit auf SSIS 2017-Pakete aktualisiert, wenn sie mit Azure-SSIS IR ausgeführt werden. Das Ausführen von Paketen höherer Version wird nicht unterstützt.
 
 Damit Upgrades zur Laufzeit vermieden werden, sollte für die Bereitstellung von Paketen, die mit der Azure-SSIS IR im Paketbereitstellungsmodell ausgeführt werden sollen, dtutil 2017 verwendet werden, das in der Installation von SQL Server/SSIS 2017 enthalten ist. Sie können zu diesem Zweck die kostenlose [Developer Edition von SQL Server/SSIS 2017](https://go.microsoft.com/fwlink/?linkid=853016) herunterladen und installieren. Nach der Installation finden Sie dtutil 2017 in diesem Ordner: `YourLocalDrive:\Program Files\Microsoft SQL Server\140\DTS\Binn`.
 

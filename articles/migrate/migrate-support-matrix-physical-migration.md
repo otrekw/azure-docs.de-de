@@ -4,12 +4,12 @@ description: Hier finden Sie Informationen zur Unterstützung der Migration phys
 ms.topic: conceptual
 ms.custom: fasttrack-edit
 ms.date: 06/14/2020
-ms.openlocfilehash: 30c96b11fb15ca1783b6ffc574d9d258dff9da06
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 2e71ab5cd934f2fe931cd901d425061455cc9f0e
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051133"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89535447"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>Unterstützungsmatrix für die Migration physischer Server
 
@@ -45,7 +45,7 @@ Die Tabelle enthält eine Übersicht über die Unterstützung für physische Ser
 **Mobilitätsdienst** | Der Mobilitätsdienst-Agent muss auf jedem Computer installiert sein, den Sie migrieren möchten.
 **UEFI-Start** | Der migrierte Computer in Azure wird automatisch in einen virtuellen Azure-Computer mit BIOS-Start konvertiert. Es werden nur Server unter Windows Server 2012 oder höher unterstützt.<br/><br/> Der Betriebssystemdatenträger sollte bis zu vier Partitionen aufweisen, und Volumes sollten mit NTFS formatiert sein.
 **UEFI: Sicherer Start**         | Nicht unterstützt für die Migration.
-**Zieldatenträger** | Computer können nur zu verwalteten Datenträgern (HDD Standard, SSD Premium) in Azure migriert werden.
+**Zieldatenträger** | Computer können nur zu verwalteten Datenträgern (HDD Standard, SSD Standard, SSD Premium) in Azure migriert werden.
 **Datenträgergröße** | 2 TB für den Betriebssystemdatenträger, 8 TB für Datenträger
 **Einschränkungen für Datenträger** |  Bis zu 63 Datenträger pro Computer
 **Verschlüsselte Datenträger/Volumes** |  Die Migration von Computern mit verschlüsselten Datenträgern/Volumes wird nicht unterstützt.

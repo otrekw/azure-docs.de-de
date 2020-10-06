@@ -11,16 +11,16 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c4e34c6f13f7013847e99a362716fc9c570cdaf
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 12be5109f339223c11970041922ed2172f67382b
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224916"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526900"
 ---
 # <a name="enable-and-use-azure-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>Aktivieren und Verwenden von Azure Multi-Factor Authentication mit ältere Anwendungen mithilfe von App-Kennwörtern
 
-Einige Anwendungen wie Office 2010 oder frühere Versionen und Apple Mail vor iOS 11 unterstützen die mehrstufige Authentifizierung nicht. Die Konfiguration der Apps lässt keine sekundäre Form der Authentifizierung bzw. Eingabeaufforderung zu. Um diese Anwendungen auf sichere Weise mit Azure Multi-Factor Authentication (das für die Benutzerkonten aktiviert ist) zu verwenden, können Sie App-Kennwörter nutzen. Diese App-Kennwörter ersetzen das herkömmliche Kennwort und ermöglichen der App, die mehrstufige Authentifizierung zu umgehen und ordnungsgemäß zu funktionieren.
+Einige ältere, nicht browserbasierte Apps – etwa Office 2010 oder ältere Versionen und Apple Mail vor iOS 11 – kennen keine Pausen oder Unterbrechungen im Authentifizierungsvorgang. Wenn Azure Multi-Factor Authentication für einen Benutzer aktiviert ist und der Benutzer versucht, eine dieser älteren, nicht browserbasierten Apps zu verwenden, kann er sich nicht erfolgreich authentifizieren. Um diese Anwendungen auf sichere Weise mit Azure Multi-Factor Authentication (das für die Benutzerkonten aktiviert ist) zu verwenden, können Sie App-Kennwörter nutzen. Diese App-Kennwörter ersetzen das herkömmliche Kennwort und ermöglichen der App, die mehrstufige Authentifizierung zu umgehen und ordnungsgemäß zu funktionieren.
 
 Die moderne Authentifizierung für Microsoft Office 2013-Clients und neuere Clients wird unterstützt. Office 2013-Clients (einschließlich Outlook) unterstützen moderne Authentifizierungsprotokolle und können für die zweistufige Überprüfung aktiviert werden. Nach der Aktivierung sind für diese Clients keine App-Kennwörter erforderlich.
 

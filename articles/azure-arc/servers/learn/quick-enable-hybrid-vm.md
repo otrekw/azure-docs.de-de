@@ -1,24 +1,24 @@
 ---
-title: Verbinden eines Hybridcomputers mit Servern mit Azure Arc-Unterstützung (Vorschauversion)
-description: Hier erfahren Sie, wie Sie Ihren Hybridcomputer mit Servern mit Azure Arc-Unterstützung (Vorschauversion) verbinden und registrieren.
+title: Verbinden eines Hybridcomputers mit Azure Arc-fähigen Servern
+description: Hier erfahren Sie, wie Sie Ihren Hybridcomputer mit Azure Arc-fähigen Servern verbinden und registrieren.
 ms.topic: quickstart
-ms.date: 08/12/2020
-ms.openlocfilehash: eacf75871b1f7cc7fc3b703d8859338578e43456
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 09/23/2020
+ms.openlocfilehash: b57f30821a105a99041d8187716b75096116ea8e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213612"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327883"
 ---
-# <a name="quickstart-connect-hybrid-machine-with-azure-arc-enabled-servers-preview"></a>Schnellstart: Verbinden eines Hybridcomputers mit Servern mit Azure Arc-Unterstützung (Vorschauversion)
+# <a name="quickstart-connect-hybrid-machine-with-azure-arc-enabled-servers"></a>Schnellstart: Verbinden eines Hybridcomputers mit Azure Arc-fähigen Servern
 
-Mit [Servern mit Azure Arc-Unterstützung](../overview.md) (Vorschauversion) können Sie Ihre in lokalen Umgebungen, in Edgeumgebungen und in Multicloudumgebungen gehosteten Windows- und Linux-Computer verwalten und steuern. In dieser Schnellstartanleitung wird der Connected Machine-Agent auf Ihrem außerhalb von Azure gehosteten Windows- oder Linux-Computer bereitgestellt und für die Verwaltung durch Server mit Azure Arc-Unterstützung (Vorschauversion) konfiguriert.
+Mit [Azure Arc-fähigen Servern](../overview.md) können Sie Ihre Windows- und Linux-Computer, die in lokalen Umgebungen, in Edgeumgebungen und in Multicloudumgebungen gehostet werden, verwalten und steuern. In dieser Schnellstartanleitung wird der Connected Machine-Agent auf Ihrem außerhalb von Azure gehosteten Windows- oder Linux-Computer bereitgestellt und für die Verwaltung durch Azure Arc-fähige Server konfiguriert.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-* Zur Bereitstellung des hybriden Connected Machine-Agents für Server mit Azure Arc-Unterstützung (Vorschauversion) müssen Sie auf dem Computer über Administratorberechtigungen verfügen, um den Agent installieren und konfigurieren zu können. Verwenden Sie dazu unter Linux das root-Konto und unter Windows ein Konto, das der Gruppe „Lokale Administratoren“ angehört.
+* Zur Bereitstellung des hybriden Connected Machine-Agents für Azure Arc-fähige Server müssen Sie auf dem Computer über Administratorberechtigungen verfügen, um den Agent installieren und konfigurieren zu können. Verwenden Sie dazu unter Linux das root-Konto und unter Windows ein Konto, das der Gruppe „Lokale Administratoren“ angehört.
 
 * Machen Sie sich zunächst mit den [Voraussetzungen](../agent-overview.md#prerequisites) für den Agent vertraut, und vergewissern Sie sich, dass Folgendes erfüllt ist:
 
@@ -28,13 +28,13 @@ Mit [Servern mit Azure Arc-Unterstützung](../overview.md) (Vorschauversion) k�
 
     * Sollte der Computer für die Kommunikation über das Internet eine Verbindung über eine Firewall oder über einen Proxyserver herstellen, sorgen Sie dafür, dass die [aufgeführten](../agent-overview.md#networking-configuration) URLs nicht blockiert werden.
 
-    * Von Servern mit Azure Arc-Unterstützung (Vorschauversion) werden nur die [hier](../overview.md#supported-regions) angegebenen Regionen unterstützt.
+    * Von Azure Arc-fähigen Servern werden nur die [hier](../overview.md#supported-regions) angegebenen Regionen unterstützt.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="register-azure-resource-providers"></a>Registrieren von Azure-Ressourcenanbietern
 
-Server mit Azure Arc-Unterstützung (Vorschauversion) benötigen folgende Azure-Ressourcenanbieter in Ihrem Abonnement, um diesen Dienst nutzen zu können:
+Azure Arc-fähige Server benötigen folgende Azure-Ressourcenanbieter in Ihrem Abonnement, um diesen Dienst nutzen zu können:
 
 * Microsoft.HybridCompute
 * Microsoft.GuestConfiguration
@@ -97,15 +97,15 @@ Das Skript zum Automatisieren des Download- und Installationsvorgangs sowie zum 
 
 ## <a name="verify-the-connection-with-azure-arc"></a>Überprüfen der Verbindung mit Azure Arc
 
-Vergewissern Sie sich im Azure-Portal, dass die Serververbindung erfolgreich hergestellt wurde, nachdem Sie den Agent installiert und für die Verbindungsherstellung mit Servern mit Azure Arc-Unterstützung (Vorschauversion) konfiguriert haben. Sehen Sie sich Ihre Computer im [Azure-Portal](https://aka.ms/hybridmachineportal) an.
+Vergewissern Sie sich im Azure-Portal, dass die Serververbindung erfolgreich hergestellt wurde, nachdem Sie den Agent installiert und für die Verbindungsherstellung mit Azure Arc-fähigen Servern konfiguriert haben. Sehen Sie sich Ihre Computer im [Azure-Portal](https://aka.ms/hybridmachineportal) an.
 
-:::image type="content" source="./media/quick-enable-hybrid-vm/enabled-machine.png" alt-text="Erfolgreiche Computerverbindung" border="false":::
+:::image type="content" source="./media/quick-enable-hybrid-vm/enabled-machine.png" alt-text="Suchen nach Servern mit Arc-Unterstützung unter „Alle Dienste“" border="false":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Nachdem Sie Ihren Linux- oder Windows-Hybridcomputer aktiviert und erfolgreich mit dem Dienst verbunden haben, können Sie Azure Policy aktivieren, um sich mit der Compliance in Azure zu beschäftigen.
 
-Im nächsten Tutorial erfahren Sie, wie Sie Server mit Azure Arc-Unterstützung (Vorschauversion) identifizieren, auf denen der Log Analytics-Agent nicht installiert ist:
+Im nächsten Tutorial erfahren Sie, wie Sie Azure Arc-fähige Server identifizieren, auf denen der Log Analytics-Agent nicht installiert ist:
 
 > [!div class="nextstepaction"]
 > [Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen](tutorial-assign-policy-portal.md)

@@ -6,14 +6,14 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: quickstart
-ms.date: 06/09/2020
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 92d92072fbc8ceebdd4fd9253620e5fba89bfb54
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.date: 09/22/2020
+ms.custom: devx-track-azurecli, subject-armqs
+ms.openlocfilehash: d118bef4a7ccc263010fe176432a5301c4104118
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987510"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533892"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Schnellstart: Einrichten von Azure NetApp Files und Erstellen eines NFS-Volumes 
 
@@ -53,7 +53,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Für diesen Gewusst-wie-Artikel wird Az-Version 2.6.0 (oder höher) des Azure PowerShell-Moduls benötigt. Führen Sie `Get-Module -ListAvailable Az` aus, um Ihre aktuelle Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Install and configure Azure PowerShell](/powershell/azure/install-Az-ps) (Installieren des Azure PowerShell-Moduls) Informationen dazu. Wenn Sie möchten, können Sie stattdessen die Cloud Shell-Konsole in einer PowerShell-Sitzung verwenden.
 
-1. Geben Sie an einer PowerShell-Eingabeaufforderung (oder PowerShell Cloud Shell-Sitzung) das Abonnement an, das für Azure NetApp Files in die Whitelist aufgenommen wurde:
+1. Geben Sie an einer PowerShell-Eingabeaufforderung (oder PowerShell Cloud Shell-Sitzung) das Abonnement an, das für Azure NetApp Files genehmigt wurde:
     ```powershell-interactive
     Select-AzSubscription -Subscription <subscriptionId>
     ```
@@ -66,6 +66,14 @@ Für diesen Gewusst-wie-Artikel wird Az-Version 2.6.0 (oder höher) des Azure P
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 [!INCLUDE [azure-netapp-files-cloudshell-include](../../includes/azure-netapp-files-azure-cloud-shell-window.md)]
+
+# <a name="template"></a>[Vorlage](#tab/template)
+
+Keine.  
+
+Verwenden Sie das Azure-Portal, die PowerShell oder die Azure CLI, um sich für Azure NetApp Files und den NetApp-Ressourcenanbieter zu registrieren.  
+
+Weitere Informationen finden Sie unter [Registrieren für Azure NetApp Files](azure-netapp-files-register.md). 
 
 ---
 
@@ -151,6 +159,17 @@ Für diesen Gewusst-wie-Artikel wird Az-Version 2.6.0 (oder höher) des Azure P
         --location $LOCATION \
         --account-name $ANF_ACCOUNT_NAME
     ```
+
+# <a name="template"></a>[Vorlage](#tab/template)
+
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Der folgende Codeausschnitt zeigt, wie Sie ein NetApp-Konto in einer Azure Resource Manager-Vorlage (ARM-Vorlage) erstellen, indem Sie die Ressource [Microsoft.NetApp/netAppAccounts](https://docs.microsoft.com/azure/templates/microsoft.netapp/netappaccounts) verwenden. Um den Code auszuführen, laden Sie die [vollständige ARM-Vorlage](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json) aus unserem GitHub-Repository herunter.
+
+:::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="177-183":::
+
+<!-- Block begins with "type": "Microsoft.NetApp/netAppAccounts", -->
+
 ---
 
 ## <a name="set-up-a-capacity-pool"></a>Einrichten eines Kapazitätspools
@@ -167,14 +186,15 @@ Für diesen Gewusst-wie-Artikel wird Az-Version 2.6.0 (oder höher) des Azure P
 
 3. Klicken Sie auf **+ Pools hinzufügen**. 
 
-    ![Klicken auf „Pools hinzufügen“](../media/azure-netapp-files/azure-netapp-files-click-add-pools.png)  
+    ![Klicken auf „Pools hinzufügen“](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)  
 
 4. Geben Sie Informationen für den Kapazitätspool an: 
-    1. Geben Sie **mypool1** als Poolname ein.
-    2. Wählen Sie für den Servicelevel die Option **Premium** aus. 
-    3. Geben Sie eine Poolgröße von **4 (TiB)** an. 
+    * Geben Sie **mypool1** als Poolname ein.
+    * Wählen Sie für den Servicelevel die Option **Premium** aus. 
+    * Geben Sie eine Poolgröße von **4 (TiB)** an. 
+    * Verwenden Sie den QoS-Typ **Auto** (Automatisch).
 
-5. Klicken Sie auf **OK**.
+5. Klicken Sie auf **Erstellen**.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -213,6 +233,16 @@ Für diesen Gewusst-wie-Artikel wird Az-Version 2.6.0 (oder höher) des Azure P
         --size $POOL_SIZE_TiB \
         --service-level $SERVICE_LEVEL
     ```
+
+# <a name="template"></a>[Vorlage](#tab/template)
+
+<!-- [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)] -->
+
+Der folgende Codeausschnitt zeigt, wie Sie einen Kapazitätspool in einer Azure Resource Manager-Vorlage (ARM-Vorlage) erstellen, indem Sie die Ressource [Microsoft.NetApp/netAppAccounts/capacityPools](https://docs.microsoft.com/azure/templates/microsoft.netapp/netappaccounts/capacitypools) verwenden. Um den Code auszuführen, laden Sie die [vollständige ARM-Vorlage](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json) aus unserem GitHub-Repository herunter.
+
+:::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="184-196":::
+
+<!-- LN 185, block begins with  "type": "Microsoft.NetApp/netAppAccounts/capacityPools", -->
 
 ---
 
@@ -353,6 +383,20 @@ Für diesen Gewusst-wie-Artikel wird Az-Version 2.6.0 (oder höher) des Azure P
         --protocol-types "NFSv3"
     ```
 
+# <a name="template"></a>[Vorlage](#tab/template)
+
+<!-- [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)] --> 
+
+Die folgenden Codeausschnitte zeigen, wie Sie ein VNet einrichten und ein Azure NetApp Files-Volume in einer Azure Resource Manager-Vorlage (ARM-Vorlage) erstellen. Das VNet-Setup verwendet die Ressource [Microsoft.Network/virtualNetworks](https://docs.microsoft.com/azure/templates/Microsoft.Network/virtualNetworks). Die Volumeerstellung verwendet die Ressource [Microsoft.NetApp/netAppAccounts/capacityPools/volumes](https://docs.microsoft.com/azure/templates/microsoft.netapp/netappaccounts/capacitypools/volumes). Um den Code auszuführen, laden Sie die [vollständige ARM-Vorlage](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json) aus unserem GitHub-Repository herunter.
+
+:::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="148-176":::
+
+<!-- Block begins with  "type": "Microsoft.Network/virtualNetworks", -->
+
+:::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="197-229":::
+
+<!-- Block begins with  "type": "Microsoft.NetApp/netAppAccounts/capacityPools/volumes", -->
+
 ---
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
@@ -373,13 +417,13 @@ Wenn Sie fertig sind, können Sie die Ressourcengruppe bei Bedarf löschen. Das 
 
 3. Klicken Sie auf der Seite für die Ressourcengruppe auf die Option **Ressourcengruppe löschen**.
 
-    ![Ressourcengruppe löschen](../media/azure-netapp-files/azure-netapp-files-azure-delete-resource-group.png) 
+    ![Screenshot, der die Schaltfläche „Ressourcengruppe löschen“ hervorhebt.](../media/azure-netapp-files/azure-netapp-files-azure-delete-resource-group.png) 
 
     Ein Fenster mit der Warnung, dass die Ressourcen mit der Ressourcengruppe gelöscht werden, wird geöffnet.
 
 4. Geben Sie den Namen der Ressourcengruppe (myRG1) ein, um zu bestätigen, dass Sie die Ressourcengruppe und alle darin enthaltenen Ressourcen permanent löschen möchten, und klicken Sie dann auf **Löschen**.
 
-    ![Ressourcengruppe löschen](../media/azure-netapp-files/azure-netapp-files-azure-confirm-resource-group-deletion.png ) 
+    ![Bestätigen des Löschens der Ressourcengruppe](../media/azure-netapp-files/azure-netapp-files-azure-confirm-resource-group-deletion.png ) 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -407,6 +451,13 @@ Wenn Sie fertig sind, können Sie die Ressourcengruppe bei Bedarf löschen. Das 
     az group delete \
         --name $RESOURCE_GROUP
     ```
+
+# <a name="template"></a>[Vorlage](#tab/template)
+
+Keine.
+
+Verwenden Sie das Azure-Portal, die PowerShell oder die Azure CLI, um die Ressourcengruppe zu löschen.   
+
 ---
 
 ## <a name="next-steps"></a>Nächste Schritte  

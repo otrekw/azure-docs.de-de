@@ -1,21 +1,21 @@
 ---
-title: Änderungsfeed in Azure Blob Storage (Vorschau) | Microsoft-Dokumentation
+title: Änderungsfeed in Azure Blob Storage | Microsoft-Dokumentation
 description: Erfahren Sie mehr über Änderungsfeedprotokolle in Azure Blob Storage und deren Verwendung.
 author: normesta
 ms.author: normesta
-ms.date: 11/04/2019
+ms.date: 09/08/2020
 ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: 09a97897ca7e3984c7003c1dbbca65cddaec1ee6
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: c3348356561ea74bb5e0b5bc46fccee1ada82755
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88055420"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568233"
 ---
-# <a name="change-feed-support-in-azure-blob-storage-preview"></a>Unterstützung für Änderungsfeeds in Azure Blob Storage (Vorschau)
+# <a name="change-feed-support-in-azure-blob-storage"></a>Änderungsfeed in Azure Blob Storage
 
 Zweck des Änderungsfeeds ist es, Transaktionsprotokolle für alle Änderungen bereitzustellen, die in den Blobs und Blobmetadaten in Ihrem Speicherkonto auftreten. Der Änderungsfeed bietet **sortierte**, **garantierte**, **permanente**, **unveränderliche** und **schreibgeschützte** Protokolle dieser Änderungen. Clientanwendungen können diese Protokolle jederzeit lesen, entweder im Streaming- oder im Batchmodus. Der Änderungsfeed ermöglicht es Ihnen, effiziente und skalierbare Lösungen zu erstellen, mit denen Änderungsereignisse, die in Ihrem Blob Storage-Konto auftreten, kostengünstig verarbeitet werden.
 
@@ -56,9 +56,6 @@ Folgende Aspekte müssen Sie berücksichtigen, wenn Sie den Änderungsfeed aktiv
 
 - Nur GPv2- und Blob Storage-Konten können den Änderungsfeed aktivieren. Premium-BlockBlobStorage-Konten und Konten für hierarchische Namespaces werden aktuell nicht unterstützt. GPv1-Speicherkonten werden zwar nicht unterstützt, können aber ohne Downtime auf GPv2 aktualisiert werden. Weitere Informationen finden Sie unter [Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Allgemein v2“](../common/storage-account-upgrade.md).
 
-> [!IMPORTANT]
-> Der Änderungsfeed befindet sich in der öffentlichen Vorschau und ist in den Regionen **USA, Westen-Mitte**, **USA, Westen 2**, **Frankreich, Mitte**, **Frankreich, Süden**, **Kanada, Mitte** und **Kanada, Osten** verfügbar. Informationen hierzu finden Sie im Abschnitt [Bedingungen](#conditions) dieses Artikels. Informationen zum Registrieren für die Vorschau finden Sie im Abschnitt [Registrieren Ihres Abonnements](#register) dieses Artikels. Sie müssen Ihr Abonnement registrieren, bevor Sie den Änderungsfeed für Ihre Speicherkonten aktivieren können.
-
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 So aktivieren Sie den Änderungsfeed für Ihr Speicherkonto über das Azure-Portal:
@@ -85,10 +82,10 @@ So aktivieren Sie den Änderungsfeed mithilfe von PowerShell:
 
 2. Schließen Sie die PowerShell-Konsole, und öffnen Sie sie dann erneut.
 
-3. Installieren Sie das Vorschaumodul **Az.Storage**.
+3. Installieren Sie mindestens die Version 2.5.0 des Moduls **Az.Storage**.
 
    ```powershell
-   Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.8.1-preview –AllowPrerelease –AllowClobber –Force
+   Install-Module Az.Storage –Repository PSGallery -RequiredVersion 2.5.0 –AllowClobber –Force
    ```
 
 4. Melden Sie sich mit dem Befehl `Connect-AzAccount` bei Ihrem Azure-Abonnement an, und befolgen Sie die Authentifizierungsanweisungen auf dem Bildschirm.
@@ -289,43 +286,18 @@ Eine ausführliche Beschreibung der einzelnen Eigenschaften finden Sie unter [Az
 
 ```
 
-<a id="register"></a>
-
-## <a name="register-your-subscription-preview"></a>Registrieren Ihres Abonnements (Vorschau)
-
-Da der Änderungsfeed nur in der öffentlichen Vorschau vorhanden ist, müssen Sie Ihr Abonnement registrieren, um das Feature verwenden zu können.
-
-### <a name="register-by-using-powershell"></a>Registrieren über PowerShell
-
-Führen Sie die folgenden Befehle in einer PowerShell-Konsole aus:
-
-```powershell
-Register-AzProviderFeature -FeatureName Changefeed -ProviderNamespace Microsoft.Storage
-Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
-```
-   
-### <a name="register-by-using-azure-cli"></a>Registrieren mithilfe der Azure CLI
-
-Führen Sie die folgenden Befehle in der Azure Cloud Shell aus:
-
-```azurecli
-az feature register --namespace Microsoft.Storage --name Changefeed
-az provider register --namespace 'Microsoft.Storage'
-```
-
 <a id="conditions"></a>
 
-## <a name="conditions-and-known-issues-preview"></a>Bedingungen und bekannte Probleme (Vorschau)
+## <a name="conditions-and-known-issues"></a>Bedingungen und bekannte Probleme
 
-Dieser Abschnitt beschreibt bekannte Probleme und Bedingungen in der aktuellen öffentlichen Vorschauversion des Änderungsfeeds. 
-- Für die Vorschau müssen Sie zunächst [Ihr Abonnement registrieren](#register), bevor Sie den Änderungsfeed für Ihr Speicherkonto in den Regionen „USA, Westen-Mitte“, „USA, Westen 2“, „Frankreich, Mitte“, „Frankreich, Süden“, „Kanada, Mitte“ und „Kanada, Osten“ aktivieren können. 
-- Der Änderungsfeed zeichnet nur Erstellungs-, Aktualisierungs-, Lösch- und Kopiervorgänge auf. Blobeigenschaften und Metadatenänderungen werden ebenfalls erfasst. Die Zugriffsebeneneigenschaft wird jedoch derzeit nicht aufgezeichnet. 
+Dieser Abschnitt enthält Informationen zu bekannten Problemen und Bedingungen im aktuellen Release des Änderungsfeeds. 
+
 - Änderungsereignis-Datensätze für eine einzelne Änderung werden in Ihrem Änderungsfeed möglicherweise mehrmals angezeigt.
 - Sie können die Lebensdauer der Änderungsfeed-Protokolldateien noch nicht durch Festlegen einer zeitbasierten Aufbewahrungsrichtlinie verwalten, und Sie können die Blobs nicht löschen.
 - Die Eigenschaft `url` der Protokolldatei ist aktuell immer leer.
 - Die `LastConsumable`-Eigenschaft der segments.json-Datei listet das allererste Segment, das vom Änderungsfeed abgeschlossen wird, nicht auf. Dieses Problem tritt nur nach Abschluss des ersten Segments auf. Alle nachfolgenden Segmente nach der ersten Stunde werden ordnungsgemäß in der `LastConsumable`-Eigenschaft aufgezeichnet.
 - Der Container **$blobchangefeed** kann zurzeit nicht angezeigt werden, wenn Sie die ListContainers-API aufrufen, und er wird auch nicht im Azure-Portal oder im Speicher-Explorer angezeigt. Sie können den Inhalt anzeigen, indem Sie die ListBlobs-API für den $blobchangefeed-Container direkt aufrufen.
-- Bei Speicherkonten, für die zuvor ein [Kontofailover](../common/storage-disaster-recovery-guidance.md) initiiert wurde, kann es vorkommen, dass die Protokolldatei nicht angezeigt wird. Auch bei zukünftigen Kontofailovern kann es während der Vorschauphase zu Problemen mit der Protokolldatei kommen.
+- Bei Speicherkonten, für die zuvor ein [Kontofailover](../common/storage-disaster-recovery-guidance.md) initiiert wurde, kann es vorkommen, dass die Protokolldatei nicht angezeigt wird. Auch bei zukünftigen Kontofailovern kann es zu Problemen mit der Protokolldatei kommen.
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 

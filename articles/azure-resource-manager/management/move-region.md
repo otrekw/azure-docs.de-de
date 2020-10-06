@@ -4,14 +4,14 @@ description: Bietet eine Übersicht über das Verschieben von Azure-Ressourcen z
 author: rayne-wiselman
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 09/10/2020
 ms.author: raynew
-ms.openlocfilehash: 22d8bcee96b4ac52641d4f0841267195f44fe15a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7a71502ec361004079e0962d8bc6433316a4ba81
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75476592"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007637"
 ---
 # <a name="moving-azure-resources-across-regions"></a>Verschieben von Azure-Ressourcen zwischen Regionen
 
@@ -29,20 +29,50 @@ Nach dem Bereitstellen von Ressourcen in einer bestimmten Azure-Region gibt es v
 - **Reagieren auf Bereitstellungsanforderungen**: Verschieben von Ressourcen, die fehlerhaft bereitgestellt wurden, oder als Reaktion auf Kapazitätsanforderungen. 
 - **Reagieren auf Außerbetriebnahmen**: Verschieben von Ressourcen aufgrund der Außerbetriebnahme von Regionen.
 
-## <a name="move-process"></a>Verschiebungsvorgang
+## <a name="move-resources-with-resource-mover"></a>Verschieben von Ressourcen mit Resource Mover
 
-Der eigentliche Verschiebungsvorgang ist von den Ressourcen abhängig, die Sie verschieben. Es gibt jedoch einige allgemeine wichtige Schritte:
+Ressourcen können mit [Azure Resource Mover](../../resource-mover/overview.md) in eine andere Region verschoben werden. Resource Mover bietet Folgendes:
 
-- **Überprüfen der Voraussetzungen**: Zu den Voraussetzungen gehören die Sicherstellung, dass die benötigten Ressourcen in der Zielregion verfügbar sind, die Überprüfung, ob Sie über ein ausreichendes Kontingent verfügen, und die Überprüfung, ob Ihr Abonnement auf die Zielregion zugreifen kann.
-- **Analysieren von Abhängigkeiten**: Ihre Ressourcen haben möglicherweise Abhängigkeiten von anderen Ressourcen. Ermitteln Sie vor dem Verschieben Abhängigkeiten, damit die verschobenen Ressourcen auch nach dem Verschieben wie erwartet funktionieren.
-- **Vorbereitung der Verschiebung**: Dies sind die Schritte, die Sie in Ihrer primären Region vor dem Verschieben durchführen. Beispielsweise kann es erforderlich sein, eine Azure Resource Manager-Vorlage zu exportieren oder Ressourcen von der Quelle zum Ziel zu replizieren.
-- **Verschieben der Ressourcen**: Wie Sie Ressourcen verschieben, hängt davon ab, um welche Ressourcen es sich handelt. Möglicherweise müssen Sie eine Vorlage in der Zielregion bereitstellen oder ein Failover der Ressourcen auf das Ziel ausführen.
-- **Verwerfen von Zielressourcen**: Nach dem Verschieben von Ressourcen sollten Sie sich die Ressourcen ansehen, die sich nun in der Zielregion befinden, und entscheiden, ob nicht erforderliche Ressourcen vorhanden sind.
-- **Commit der Verschiebung**: Nach dem Überprüfen der Ressourcen in der Zielregion kann für einige Ressourcen eine abschließende Commitaktion erforderlich sein. Beispielsweise müssen Sie für eine Zielregion, die nun die primäre Region ist, möglicherweise Notfallwiederherstellung in einer neuen sekundären Region einrichten. 
-- **Bereinigen der Quelle**: Nachdem alles in der neuen Region eingerichtet wurde und aktiv ist, können Sie die Ressourcen, die Sie für die Verschiebung erstellt haben, und die Ressourcen in Ihrer primären Region bereinigen und außer Betrieb nehmen.
+- Einen einzelnen Hub für das regionsübergreifende Verschieben von Ressourcen
+- Schnellere Verschiebung und geringere Komplexität Alles, was Sie brauchen, an einem zentralen Ort
+- Ein einfaches und konsistentes Verfahren zum Verschieben verschiedener Arten von Azure-Ressourcen
+- Eine einfache Möglichkeit zum Erkennen von Abhängigkeiten zwischen den zu verschiebenden Ressourcen. Dies hilft Ihnen, zusammenhängende Ressourcen gemeinsam zu verschieben, damit nach der Verschiebung in der Zielregion alles wie erwartet funktioniert.
+- Automatische Bereinigung der Ressourcen in der Quellregion, falls Sie sie nach dem Verschieben löschen möchten
+- Tests. Sie können eine Verschiebung testen und ggf. verwerfen, wenn Sie keine vollständige Verschiebung durchführen möchten.
+
+Für die Verschiebung von Ressourcen in eine andere Region stehen verschiedene Methoden zur Verfügung:
+
+- **Starten der Ressourcenverschiebung über eine Ressourcengruppe:** Bei dieser Methode wird die Regionsverschiebung innerhalb einer Ressourcengruppe initiiert. Nach dem Auswählen der zu verschiebenden Ressourcen wird der Prozess im Resource Mover-Hub fortgesetzt, um die Ressourcenabhängigkeiten zu überprüfen und den Verschiebungsprozess zu orchestrieren. [Weitere Informationen](../../resource-mover/move-region-within-resource-group.md)
+- **Starten der Ressourcenverschiebung direkt über den Resource Mover-Hub:** Bei dieser Methode wird der Regionsverschiebungsprozess direkt im Hub gestartet. [Weitere Informationen](../../resource-mover/tutorial-move-region-virtual-machines.md)
+
+
+## <a name="support-for-region-move"></a>Unterstützung von Regionsverschiebungen
+
+Mit Resource Mover können derzeit folgende Ressourcen in eine andere Region verschoben werden:
+
+- Virtuelle Azure-Computer und zugehörige Datenträger
+- NICs
+- Verfügbarkeitsgruppen
+- Virtuelle Azure-Netzwerke
+- Öffentliche IP-Adressen
+- Netzwerksicherheitsgruppen (NSGs)
+- Interne und externe Lastenausgleichsmodule
+- Azure SQL-Datenbank-Instanzen und Pools für elastische Datenbanken
+
+## <a name="region-move-process"></a>Regionsverschiebungsprozess
+
+Der tatsächliche Prozess für die Verschiebung von Ressourcen in andere Regionen hängt von den zu verschiebenden Ressourcen ab. Es gibt jedoch einige allgemeine wichtige Schritte:
+
+1. **Überprüfen der Voraussetzungen**: Zu den Voraussetzungen gehören die Sicherstellung, dass die benötigten Ressourcen in der Zielregion verfügbar sind, die Überprüfung, ob Sie über ein ausreichendes Kontingent verfügen, und die Überprüfung, ob Ihr Abonnement auf die Zielregion zugreifen kann.
+2. **Analysieren von Abhängigkeiten**: Ihre Ressourcen haben möglicherweise Abhängigkeiten von anderen Ressourcen. Ermitteln Sie vor dem Verschieben Abhängigkeiten, damit die verschobenen Ressourcen auch nach dem Verschieben wie erwartet funktionieren.
+3. **Vorbereitung der Verschiebung**: Dies sind die Schritte, die Sie in Ihrer primären Region vor dem Verschieben durchführen. Beispielsweise kann es erforderlich sein, eine Azure Resource Manager-Vorlage zu exportieren oder Ressourcen von der Quelle zum Ziel zu replizieren.
+4. **Verschieben der Ressourcen**: Wie Sie Ressourcen verschieben, hängt davon ab, um welche Ressourcen es sich handelt. Möglicherweise müssen Sie eine Vorlage in der Zielregion bereitstellen oder ein Failover der Ressourcen auf das Ziel ausführen.
+5. **Verwerfen von Zielressourcen**: Nach dem Verschieben von Ressourcen sollten Sie sich die Ressourcen ansehen, die sich nun in der Zielregion befinden, und entscheiden, ob nicht erforderliche Ressourcen vorhanden sind.
+6. **Commit der Verschiebung**: Nach dem Überprüfen der Ressourcen in der Zielregion kann für einige Ressourcen eine abschließende Commitaktion erforderlich sein. Beispielsweise müssen Sie für eine Zielregion, die nun die primäre Region ist, möglicherweise Notfallwiederherstellung in einer neuen sekundären Region einrichten. 
+7. **Bereinigen der Quelle**: Nachdem alles in der neuen Region eingerichtet wurde und aktiv ist, können Sie die Ressourcen, die Sie für die Verschiebung erstellt haben, und die Ressourcen in Ihrer primären Region bereinigen und außer Betrieb nehmen.
 
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Eine Liste der Ressourcen, die regionsübergreifendes Verschieben unterstützen, finden Sie unter [Unterstützung des Verschiebungsvorgangs für Ressourcen](region-move-support.md).
+Weitere Informationen zum Verschiebungsprozess in Resource Mover finden Sie [hier](../../resource-mover/about-move-process.md).

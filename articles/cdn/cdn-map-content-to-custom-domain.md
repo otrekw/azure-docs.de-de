@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 06/11/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 4ca601a3f149d8287137265665379d407d10b988
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 08bbe1000d457cc4f4d6b655051ec640d4dcecf4
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192684"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362094"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>Tutorial: Hinzufügen einer benutzerdefinierten Domäne zum Azure CDN-Endpunkt
 In diesem Tutorial wird veranschaulicht, wie Sie einem Azure CDN-Endpunkt (Content Delivery Network) eine benutzerdefinierte Domäne hinzufügen. Wenn Sie einen CDN-Endpunkt zum Bereitstellen von Inhalt verwenden, ist eine benutzerdefinierte Domäne erforderlich, falls Ihr eigener Domänenname in Ihrer CDN-URL sichtbar sein soll. Die Verwendung eines sichtbaren Domänennamens kann für Ihre Kunden komfortabel und für Branding-Zwecke hilfreich sein. 
@@ -90,7 +90,7 @@ Für die Domänenregistrierungsstelle GoDaddy gilt beispielsweise folgende Vorge
 
 5. Füllen Sie für den CNAME-Eintrag die folgenden Felder aus:
 
-    ![CNAME-Eintrag](./media/cdn-map-content-to-custom-domain/cdn-cdnverify-cname-entry.png)
+    ![Screenshot, der den C NAME-Eintrag mit Typ, Host, „Verweist auf“ und T T L-Werten für eine temporäre „cdnverify“-Unterdomäne zeigt.](./media/cdn-map-content-to-custom-domain/cdn-cdnverify-cname-entry.png)
 
     - Typ: Übernehmen Sie *CNAME*.
 
@@ -104,7 +104,7 @@ Für die Domänenregistrierungsstelle GoDaddy gilt beispielsweise folgende Vorge
  
     Der CNAME-Eintrag wird der Tabelle mit den DNS-Einträgen hinzugefügt.
 
-    ![Tabelle mit DNS-Einträgen](./media/cdn-map-content-to-custom-domain/cdn-cdnverify-dns-table.png)
+    ![Screenshot, der zeigt, dass der C NAME-Eintrag der D N S-Eintragstabelle für eine temporäre „cdnverify“-Unterdomäne hinzugefügt wurde.](./media/cdn-map-content-to-custom-domain/cdn-cdnverify-dns-table.png)
 
 
 ## <a name="associate-the-custom-domain-with-your-cdn-endpoint"></a>Zuordnen der benutzerdefinierten Domäne zu Ihrem CDN-Endpunkt
@@ -188,7 +188,7 @@ Für die Domänenregistrierungsstelle GoDaddy gilt beispielsweise folgende Vorge
 
 5. Füllen Sie die Felder für den CNAME-Eintrag aus:
 
-    ![CNAME-Eintrag](./media/cdn-map-content-to-custom-domain/cdn-cname-entry.png)
+    ![Screenshot, der den C NAME-Eintrag mit Typ, Host, „Verweist auf“ und T T L-Werten für eine dauerhafte benutzerdefinierte Domäne zeigt.](./media/cdn-map-content-to-custom-domain/cdn-cname-entry.png)
 
     - Typ: Übernehmen Sie *CNAME*.
 
@@ -202,7 +202,7 @@ Für die Domänenregistrierungsstelle GoDaddy gilt beispielsweise folgende Vorge
  
     Der CNAME-Eintrag wird der Tabelle mit den DNS-Einträgen hinzugefügt.
 
-    ![Tabelle mit DNS-Einträgen](./media/cdn-map-content-to-custom-domain/cdn-dns-table.png)
+    ![Screenshot, der zeigt, dass der C NAME-Eintrag der D N S-Eintragstabelle für eine dauerhafte benutzerdefinierte Domäne hinzugefügt wurde.](./media/cdn-map-content-to-custom-domain/cdn-dns-table.png)
 
 7. Wählen Sie bei Vorhandensein des CNAME-Eintrags „cdnverify“ daneben das Stiftsymbol und dann das Papierkorbsymbol aus.
 

@@ -4,12 +4,12 @@ description: Sichern und Wiederherstellen von SQL-Datenbanken auf virtuellen Azu
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: b355aaa465132e86c636c68552f3d650b51b08f1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 37e2336b262311ea00e833ad91fe5e8c5c1ddf1e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004985"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975190"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>Sichern und Wiederherstellen von SQL-Datenbanken auf virtuellen Azure-Computern mit PowerShell
 
@@ -102,7 +102,7 @@ Der Recovery Services-Tresor ist eine Resource Manager-Ressource. Deshalb müsse
 
 3. Geben Sie den für den Tresorspeicher zu verwendenden Redundanztyp an.
 
-    * Sie können [lokal redundanten Speicher](../storage/common/storage-redundancy.md) oder [georedundanten Speicher](../storage/common/storage-redundancy.md) verwenden.
+    * Sie können [lokal redundanten Speicher](../storage/common/storage-redundancy.md#locally-redundant-storage), [georedundanten Speicher](../storage/common/storage-redundancy.md#geo-redundant-storage) oder [zonenredundanten Speicher](../storage/common/storage-redundancy.md#zone-redundant-storage) verwenden.
     * Im folgenden Beispiel wird die Option **-BackupStorageRedundancy** für den Befehl [Set-AzRecoveryServicesBackupProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) für **testvault** auf den Wert **GeoRedundant** festgelegt.
 
     ```powershell

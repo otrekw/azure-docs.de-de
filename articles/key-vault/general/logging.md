@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 0ed50b8d128386008a73eb4d1a8b412a42fdb945
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 0364495d751465f644686824758992d47f0b8bdf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89485454"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91290652"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault-Protokollierung
 
@@ -133,6 +133,7 @@ Protokollierte Daten:
   * Erstellen, Ändern oder Löschen dieser Schlüssel oder Geheimnisse.
   * Signieren, Verifizieren, Verschlüsseln, Entschlüsseln, Ver- und Entpacken von Schlüsseln, Erhalten von Geheimnissen und Auflisten von Schlüsseln und Geheimnissen (und deren Versionen).
 * Bei nicht authentifizierten Anforderungen wird eine 401-Antwort zurückgegeben. Beispiele sind Anforderungen ohne Bearertoken, falsch formatierte oder abgelaufene Anforderungen oder Anforderungen, deren Token ungültig ist.  
+* Event Grid-Benachrichtigungsereignisse für „Läuft demnächst ab“, „Abgelaufen“ und „Tresorzugriffsrichtlinie geändert“ (neues Versionsereignis wird nicht protokolliert). Ereignisse werden unabhängig davon protokolliert, ob im Schlüsseltresor ein Ereignisabonnement erstellt wurde. Weitere Informationen finden Sie unter [Event Grid-Ereignisschema für Schlüsseltresor](https://docs.microsoft.com/azure/event-grid/event-schema-key-vault).
 
 ## <a name="enable-logging-using-azure-cli"></a>Aktivieren der Protokollierung mithilfe der Azure CLI
 
@@ -289,6 +290,8 @@ Die Feldwerte unter **operationName** liegen im *ObjectVerb*-Format vor. Beispie
 
 Die folgende Tabelle enthält die **operationName**-Werte und die entsprechenden REST-API-Befehle:
 
+### <a name="operation-names-table"></a>Tabelle mit Vorgangsnamen
+
 | operationName | REST-API-Befehl |
 | --- | --- |
 | **Authentifizierung** |Authentifizieren über Azure Active Directory-Endpunkt |
@@ -318,6 +321,13 @@ Die folgende Tabelle enthält die **operationName**-Werte und die entsprechenden
 | **SecretDelete** |[Löschen eines Geheimnisses](https://msdn.microsoft.com/library/azure/dn903613.aspx) |
 | **SecretList** |[Auflisten von Geheimnissen in einem Tresor](https://msdn.microsoft.com/library/azure/dn903614.aspx) |
 | **SecretListVersions** |[Auflisten von Versionen eines Geheimnisses](https://msdn.microsoft.com/library/azure/dn986824.aspx) |
+| **VaultAccessPolicyChangedEventGridNotification** | Ereignis „Tresorzugriffsrichtlinie geändert“ veröffentlicht |
+| **SecretNearExpiryEventGridNotification** |Ereignis „Geheimnis läuft demnächst ab“ veröffentlicht |
+| **SecretExpiredEventGridNotification** |Ereignis „Geheimnis abgelaufen“ veröffentlicht |
+| **KeyNearExpiryEventGridNotification** |Ereignis „Schlüssel läuft demnächst ab“ veröffentlicht |
+| **KeyExpiredEventGridNotification** |Ereignis „Schlüssel abgelaufen“ veröffentlicht |
+| **CertificateNearExpiryEventGridNotification** |Ereignis „Zertifikat läuft demnächst ab“ veröffentlicht |
+| **CertificateExpiredEventGridNotification** |Ereignis „Zertifikat abgelaufen“ veröffentlicht |
 
 ## <a name="use-azure-monitor-logs"></a><a id="loganalytics"></a>Verwenden von Azure Monitor-Protokollen
 

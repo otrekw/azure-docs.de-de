@@ -3,16 +3,16 @@ title: Azure Key Vault als Event Grid-Quelle
 description: Beschreibt die Eigenschaften und das Schema, die für Azure Key Vault-Ereignisse im Azure Event Grid verfügbar sind
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 1f9cbe85de9423484343e4054be8d2d58c6c5e7e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f6e2bdfb2000f3a4c4a8f91eee23348d9cc9c766
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109432"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090396"
 ---
 # <a name="azure-key-vault-as-event-grid-source"></a>Azure Key Vault als Event Grid-Quelle
 
-Dieser Artikel enthält die Eigenschaften und das Schema für Ereignisse in [Azure Key Vault](../key-vault/index.yml), derzeit als Vorschauversion verfügbar. Eine Einführung in Ereignisschemas finden Sie unter [Azure Event Grid-Ereignisschema](event-schema.md).
+Dieser Artikel enthält Informationen zu den Eigenschaften und zum Schema für Ereignisse in [Azure Key Vault](../key-vault/index.yml). Eine Einführung in Ereignisschemas finden Sie unter [Azure Event Grid-Ereignisschema](event-schema.md).
 
 ## <a name="event-grid-event-schema"></a>Event Grid-Ereignisschema
 
@@ -31,6 +31,7 @@ Ein Azure Key Vault Konto generiert die folgenden Ereignistypen:
 | Microsoft.KeyVault.SecretNewVersionCreated | Secret New Version Created (Neue Version des Geheimnisses erstellt) | Wird ausgelöst, wenn ein neues Geheimnis oder eine neue Geheimnisversion erstellt wird. |
 | Microsoft.KeyVault.SecretNearExpiry | Secret Near Expiry (Geheimnis läuft demnächst ab) | Wird ausgelöst, wenn die aktuelle Version eines Geheimnisses demnächst abläuft. (Das Ereignis wird 30 Tage vor dem Ablaufdatum ausgelöst.) |
 | Microsoft.KeyVault.SecretExpired | Secret Expired (Geheimnis abgelaufen) | Wird ausgelöst, wenn ein Geheimnis abgelaufen ist. |
+| Microsoft.KeyVault.VaultAccessPolicyChanged | Geänderte Tresorzugriffsrichtlinie | Wird ausgelöst, wenn eine Zugriffsrichtlinie für Key Vault geändert wird. Enthält ein Szenario, in dem das Key Vault-Berechtigungsmodell in/von Azure RBAC geändert wird.  |
 
 ### <a name="event-examples"></a>Ereignisbeispiele
 
@@ -63,7 +64,7 @@ Das folgende Beispiel zeigt das Schema für **Microsoft.KeyVault.SecretNewVersio
 
 Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | Typ | BESCHREIBUNG |
 | ---------- | ----------- |---|
 | id | Zeichenfolge | Die ID des Objekts, das dieses Ereignis ausgelöst hat. |
 | vaultName | Zeichenfolge | Der Schlüsseltresorname des Objekts, das dieses Ereignis ausgelöst hat. |
@@ -84,10 +85,10 @@ Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
 * Eine Einführung zu Azure Event Grid finden Sie unter [Einführung in Azure Event Grid](overview.md).
 * Weitere Informationen zum Erstellen eines Azure Event Grid-Abonnements finden Sie unter [Event Grid-Abonnementschema](subscription-creation-schema.md).
-* Weitere Informationen über die Integration von Key Vault in Event Grid finden Sie unter [Überwachen von Key Vault mit Azure Event Grid (Vorschau)](../key-vault/general/event-grid-overview.md).
-* Ein Tutorial zur Key Vault-Integration in Event Grid finden Sie unter [Empfangen von und Reagieren auf Key Vault-Benachrichtigungen mit Azure Event Grid (Vorschau)](../key-vault/general/event-grid-tutorial.md).
+* Weitere Informationen zur Key Vault-Integration für Event Grid finden Sie unter [Überwachen von Key Vault mit Azure Event Grid](../key-vault/general/event-grid-overview.md).
+* Ein Tutorial zur Key Vault-Integration für Event Grid finden Sie unter [Empfangen von und Reagieren auf Key Vault-Benachrichtigungen mit Azure Event Grid](../key-vault/general/event-grid-tutorial.md).
 * Weitere Anleitungen für Key Vault und Azure Automation finden Sie unter:
     - [Was ist der Azure-Schlüsseltresor?](../key-vault/general/overview.md)
-    - [Überwachen von Key Vault mit Azure Event Grid (Vorschau)](../key-vault/general/event-grid-overview.md)
-    - [Empfangen von und Reagieren auf Key Vault-Benachrichtigungen mit Azure Event Grid (Vorschau)](../key-vault/general/event-grid-tutorial.md)
+    - [Überwachen von Key Vault mit Azure Event Grid](../key-vault/general/event-grid-overview.md)
+    - [Empfangen von und Reagieren auf Key Vault-Benachrichtigungen mit Azure Event Grid](../key-vault/general/event-grid-tutorial.md)
     - [Azure Automation – Übersicht](../automation/index.yml)

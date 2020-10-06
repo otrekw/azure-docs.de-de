@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55270889c8c284335d5aa7b545718da419ba8d84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16d48cda87b8226ebc3bbab179c1034abf0a486f
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357357"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084608"
 ---
 # <a name="azure-ad-connect-sync-prevent-accidental-deletes"></a>Azure AD Connect-Synchronisierung: Verhindern von versehentlichen Löschvorgängen
 In diesem Thema wird die Funktion zum Verhindern von versehentlichen Löschungen (Verhindern versehentlicher Löschvorgänge) in Azure AD Connect beschrieben.
@@ -65,7 +65,7 @@ Wenn alle Löschvorgänge gewünscht sind, gehen Sie folgendermaßen vor:
 
 1. Führen Sie zum Abrufen des aktuellen Schwellenwerts für Löschungen das PowerShell-Cmdlet `Get-ADSyncExportDeletionThreshold` aus. Geben Sie das Konto und das Kennwort eines globalen Azure AD-Administrators ein. Der Standardwert ist 500.
 2. Um den Schutz vorübergehend zu deaktivieren und diese Löschvorgänge zuzulassen, führen Sie folgendes PowerShell-Cmdlet aus: `Disable-ADSyncExportDeletionThreshold`. Geben Sie das Konto und das Kennwort eines globalen Azure AD-Administrators ein.
-   ![Anmeldeinformationen](./media/how-to-connect-sync-feature-prevent-accidental-deletes/credentials.png)
+   ![Screenshot: Dialogfeld zum Eingeben des Benutzernamens und Kennworts des globalen Azure AD-Administrators](./media/how-to-connect-sync-feature-prevent-accidental-deletes/credentials.png)
 3. Lassen Sie Azure Active Directory Connector weiterhin ausgewählt, wählen Sie die Aktion **Run** (Ausführen) und anschließend **Export** (Exportieren) aus.
 4. Führen Sie zum erneuten Aktivieren des Schutzes folgendes PowerShell-Cmdlet aus: `Enable-ADSyncExportDeletionThreshold -DeletionThreshold 500`. Ersetzen Sie „500“ durch den Wert, den Sie beim Abrufen des aktuellen Schwellenwerts für Löschungen notiert haben. Geben Sie das Konto und das Kennwort eines globalen Azure AD-Administrators ein.
 

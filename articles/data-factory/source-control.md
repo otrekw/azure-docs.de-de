@@ -10,13 +10,13 @@ manager: anandsub
 ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/30/2020
-ms.openlocfilehash: 66cc7b0d4f205a93c41f49ecaadac495a98b6da6
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.date: 09/08/2020
+ms.openlocfilehash: 2f4e0728a863521f772f4d1c9531b07f427bfb3e
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949132"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595081"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Quellcodeverwaltung in Azure Data Factory
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -242,13 +242,13 @@ Im Folgenden werden einige Beispielsituationen veranschaulicht, die zu einem ver
 
 ## <a name="switch-to-a-different-git-repository"></a>Wechseln zu einem anderen Git-Repository
 
-Um zu einem anderen Git-Repository zu wechseln, klicken Sie auf der Data Factory-Übersichtseite rechts oben auf das Symbol **Git Repo Settings** (Git-Repositoryeinstellungen). Wenn das Symbol nicht angezeigt wird, löschen Sie den lokalen Browsercache. Wählen Sie das Symbol aus, um die Zuordnung zum aktuellen Repository zu entfernen.
+Wenn Sie zu einem anderen Git-Repository wechseln möchten, navigieren Sie im Verwaltungshub unter **Quellcodeverwaltung** zur Seite mit der Git-Konfiguration. Wählen Sie **Trennen** aus. 
 
-![Git-Symbol](media/author-visually/remove-repo.png)
+![Git-Symbol](media/author-visually/remove-repository.png)
 
-Klicken Sie im eingeblendeten Bereich „Repositoryeinstellungen“ auf **Git entfernen**. Geben Sie Ihren Data Factory Namen ein, und klicken Sie auf **Bestätigen**, um das Git-Repository zu entfernen, das Ihrer Data Factory-Instanz zugeordnet ist.
+Geben Sie Ihren Data Factory Namen ein, und klicken Sie auf **Bestätigen**, um das Git-Repository zu entfernen, das Ihrer Data Factory-Instanz zugeordnet ist.
 
-![Entfernen der Zuordnung zum aktuellen Git-Repository](media/author-visually/remove-repo2.png)
+![Entfernen der Zuordnung zum aktuellen Git-Repository](media/author-visually/remove-repository-2.png)
 
 Nachdem Sie die Zuordnung zum aktuellen Repository entfernt haben, können Sie Ihre Git-Einstellungen zur Verwendung eines anderen Repositorys konfigurieren und dann vorhandene Data Factory-Ressourcen in das neue Repository importieren.
 

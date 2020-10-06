@@ -5,32 +5,31 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 09/15/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee4b15311dfefecd9a533add9c5a028a9b7b22fd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0e5d8dc60ee0a1f4742382b1cec8ef3ed60e8fb3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051158"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970659"
 ---
 # <a name="data-residency-and-customer-data-for-azure-multi-factor-authentication"></a>Datenresidenz und Kundendaten für Azure Multi-Factor Authentication
 
-Kundendaten werden von Azure AD basierend auf der Adresse, die Ihre Organisation beim Abonnieren eines Microsoft-Onlinediensts wie Office 365 und Azure angibt, an einem geografischen Standort gespeichert. Informationen darüber, wo Ihre Kundendaten gespeichert werden, finden Sie im Microsoft Trust Center im Abschnitt [Wo wir Ihre Daten speichern](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located).
+Kundendaten werden von Azure AD an einem geografischen Standort gespeichert, der auf der Adresse basiert, die Ihre Organisation beim Abonnieren eines Microsoft-Onlinediensts wie Microsoft 365 und Azure angegeben hat. Informationen darüber, wo Ihre Kundendaten gespeichert werden, finden Sie im Microsoft Trust Center im Abschnitt [Wo wir Ihre Daten speichern](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located).
 
 Bei der cloudbasierten Azure Multi-Factor Authentication und auf den Servern für Azure Multi-Factor Authentication werden einige personenbezogene sowie organisationsbezogene Daten verarbeitet und gespeichert. In diesem Artikel wird beschrieben, welche Daten wo gespeichert werden.
 
-Die folgenden Multi-Factor Authentication-Aktivitäten erfolgen zurzeit in Rechenzentren in den USA, sofern nicht anders angegeben:
+Für den Dienst „Azure Multi-Factor Authentication“ stehen Rechenzentren in den USA, in Europa und in der Region „Asien-Pazifik“ zur Verfügung. Sofern nichts anderes angegeben ist, werden die folgenden Aktivitäten in den regionalen Rechenzentren abgewickelt:
 
-* Die zweistufige Authentifizierung per Telefon oder SMS erfolgt in der Regel in Rechenzentren in den USA. Sie wird von globalen Anbietern weitergeleitet.
-    * Allgemeine Anforderungen zur Benutzerauthentifizierung aus anderen Regionen, z. B. aus Europa oder Australien, werden zurzeit von Rechenzentren in diesen Regionen verarbeitet. Andere Ereignisse, z. B. Self-Service-Kennwortzurücksetzungen, Azure B2C-Ereignisse oder Hybridszenarien mit der NPS-Erweiterung oder dem AD FS-Adapter, werden zurzeit ausschließlich in Rechenzentren in den USA verarbeitet.
-* Von der Microsoft Authenticator-App gesendete Pushbenachrichtigungen stammen aus Rechenzentren in den USA. Dazu können auch spezifische Dienste von Geräteherstellern aus anderen Regionen kommen.
-* OATH-Codes werden derzeit in der Regel in den USA überprüft.
-    * Auch hier werden allgemeine Ereignisse zur Benutzerauthentifizierung, die aus anderen Regionen wie Europa oder Australien stammen, von Rechenzentren in dieser Region verarbeitet. Alle weiteren Ereignisse werden zurzeit von Rechenzentren in den USA verarbeitet.
+* Die mehrstufige Authentifizierung mit Telefonanrufen erfolgt in der Regel in Rechenzentren in den USA und wird von globalen Anbietern weitergeleitet.
+* Universelle Benutzerauthentifizierungsanforderungen aus anderen Regionen wie Europa oder Australien werden aktuell abhängig vom Standort des Benutzers verarbeitet.
+* Von der Microsoft Authenticator-App gesendete Pushbenachrichtigungen stammen aus regionalen Rechenzentren (basierend auf dem Standort des Benutzers).
+    * Geräte- und anbieterspezifische Dienste (beispielsweise Apple-Pushbenachrichtigungen) können sich abseits des Benutzerstandorts befinden.
 
 ## <a name="personal-data-stored-by-azure-multi-factor-authentication"></a>Von Azure Multi-Factor Authentication gespeicherte personenbezogene Daten
 

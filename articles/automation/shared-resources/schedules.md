@@ -2,19 +2,15 @@
 title: Verwalten von Zeitplänen in Azure Automation
 description: In diesem Artikel wird beschrieben, wie in Azure Automation ein Zeitplan erstellt und verwendet wird.
 services: automation
-ms.service: automation
 ms.subservice: shared-capabilities
-author: mgoedtel
-ms.author: magoedte
-ms.date: 04/04/2019
+ms.date: 09/10/2020
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 8bd988029b8d78a29de38e995c36ee1860d8cda9
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 844a45c9b596522b949443b6edc311308da7806c
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187352"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004611"
 ---
 # <a name="manage-schedules-in-azure-automation"></a>Verwalten von Zeitplänen in Azure Automation
 
@@ -28,17 +24,17 @@ Um ein Runbook in Azure-Automation für die Ausführung zu einer bestimmten Uhrz
 
 ## <a name="powershell-cmdlets-used-to-access-schedules"></a>PowerShell-Cmdlets für den Zugriff auf Zeitpläne
 
-Über die Cmdlets in der folgenden Tabelle können Sie Zeitpläne für Automation mit PowerShell erstellen und verwalten. Diese sind im Lieferumfang der [Az-Module](modules.md#az-modules) enthalten. 
+Über die Cmdlets in der folgenden Tabelle können Sie Zeitpläne für Automation mit PowerShell erstellen und verwalten. Diese sind im Lieferumfang der [Az-Module](modules.md#az-modules) enthalten.
 
 | Cmdlets | BESCHREIBUNG |
 |:--- |:--- |
-| [Get-AzAutomationSchedule](/powershell/module/Az.Automation/Get-AzAutomationSchedule?view=azps-3.7.0) |Ruft einen Zeitplan ab. |
-| [Get-AzAutomationScheduledRunbook](/powershell/module/az.automation/get-azautomationscheduledrunbook?view=azps-3.7.0) |Ruft geplante Runbooks ab. |
-| [New-AzAutomationSchedule](/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) |Erstellt einen neuen Zeitplan. |
-| [Register-AzAutomationScheduledRunbook](/powershell/module/Az.Automation/Register-AzAutomationScheduledRunbook?view=azps-3.7.0) |Ordnet ein Runbook einem Zeitplan zu. |
-| [Remove-AzAutomationSchedule](/powershell/module/Az.Automation/Remove-AzAutomationSchedule?view=azps-3.7.0) |Entfernt einen Zeitplan. |
-| [Set-AzAutomationSchedule](/powershell/module/Az.Automation/Set-AzAutomationSchedule?view=azps-3.7.0) |Legt die Eigenschaften für einen vorhandenen Zeitplan fest. |
-| [Unregister-AzAutomationScheduledRunbook](/powershell/module/Az.Automation/Unregister-AzAutomationScheduledRunbook?view=azps-3.7.0) |Hebt die Zuordnung eines Runbook zu einem Zeitplan auf. |
+| [Get-AzAutomationSchedule](/powershell/module/Az.Automation/Get-AzAutomationSchedule) |Ruft einen Zeitplan ab. |
+| [Get-AzAutomationScheduledRunbook](/powershell/module/az.automation/get-azautomationscheduledrunbook) |Ruft geplante Runbooks ab. |
+| [New-AzAutomationSchedule](/powershell/module/Az.Automation/New-AzAutomationSchedule) |Erstellt einen neuen Zeitplan. |
+| [Register-AzAutomationScheduledRunbook](/powershell/module/Az.Automation/Register-AzAutomationScheduledRunbook) |Ordnet ein Runbook einem Zeitplan zu. |
+| [Remove-AzAutomationSchedule](/powershell/module/Az.Automation/Remove-AzAutomationSchedule) |Entfernt einen Zeitplan. |
+| [Set-AzAutomationSchedule](/powershell/module/Az.Automation/Set-AzAutomationSchedule) |Legt die Eigenschaften für einen vorhandenen Zeitplan fest. |
+| [Unregister-AzAutomationScheduledRunbook](/powershell/module/Az.Automation/Unregister-AzAutomationScheduledRunbook) |Hebt die Zuordnung eines Runbook zu einem Zeitplan auf. |
 
 ## <a name="create-a-schedule"></a>Erstellen eines Zeitplans
 
@@ -49,23 +45,33 @@ Sie können im Azure-Portal oder mit PowerShell einen neuen Zeitplan für Runboo
 
 ### <a name="create-a-new-schedule-in-the-azure-portal"></a>Erstellen eines neuen Zeitplans im Azure-Portal
 
-1. Klicken Sie im Azure-Portal in Ihrem Automation-Konto im Abschnitt **Freigegebene Ressourcen** links auf **Zeitpläne**.
-1. Wählen Sie oben auf der Seite **Zeitplan hinzufügen** aus.
-1. Geben Sie im Bereich **Neuer Zeitplan** einen Namen und optional eine Beschreibung für den neuen Zeitplan ein.
-1. Wählen Sie aus, ob der Zeitplan einmalig oder wiederholt ausgeführt werden soll, indem Sie **Einmalig** oder **Wiederholt** auswählen. Geben Sie bei Auswahl von **Einmalig** eine Startzeit an, und wählen Sie **Erstellen** aus. Geben Sie bei Auswahl von **Wiederholt** eine Startzeit an. Wählen Sie bei **Wiederholen alle** aus, wie oft das Runbook wiederholt werden soll. Sie können nach Stunde, Tag, Woche oder Monat auswählen.
-    1. Wenn Sie **Woche** auswählen, werden die Tage der Woche angezeigt, aus denen Sie auswählen können. Wählen Sie beliebig viele Tage aus. Die erste Ausführung Ihres Zeitplans erfolgt am ersten Tag, den Sie nach der Startzeit ausgewählt haben. Um z. B. einen Wochenendzeitplan auszuwählen, wählen Sie „Samstag“ und „Sonntag“ aus.
-    
-       ![Festlegen eines sich wiederholenden Zeitplans für das Wochenende](../media/schedules/week-end-weekly-recurrence.png)
+1. Wählen Sie in Ihrem Automation-Konto im linken Bereich unter **Freigegebene Ressourcen** die Option **Zeitpläne** aus.
+2. Wählen Sie auf der Seite **Zeitpläne** die Option **Zeitplan hinzufügen** aus.
+3. Geben Sie auf der Seite **Neuer Zeitplan** einen Namen und optional eine Beschreibung für den neuen Zeitplan ein.
 
-    2. Bei Auswahl von **Monat** werden verschiedene Optionen angezeigt. Wählen Sie für die Option **Monatliche Vorkommen** entweder **Tage im Monat** oder **Wochentage** aus. Wenn Sie **Tage im Monat** auswählen, wird ein Kalender angezeigt, in dem Sie beliebig viele Tage auswählen können. Wenn Sie einen Tag wie den 31. auswählen, der im aktuellen Monat nicht vorkommt, wird der Zeitplan nicht ausgeführt. Wenn der Zeitplan am letzten Tag ausgeführt werden soll, wählen Sie unter **Am letzten Tag des Monats ausführen** die Option **Ja** aus. Bei Auswahl von **Wochentage** wird die Option **Wiederholen alle** angezeigt. Wählen Sie **Erster**, **Zweiter**, **Dritter**, **Vierter** oder **Letzter** aus. Wählen Sie abschließend einen Tag für die Wiederholung aus.
+    >[!NOTE]
+    >Namen von Automation-Zeitplänen dürfen aktuell keine Sonderzeichen enthalten.
+    >
 
-       ![Monatlicher Zeitplan am ersten, 15. und letzten Tag des Monats](../media/schedules/monthly-first-fifteenth-last.png)
+4. Wählen Sie aus, ob der Zeitplan einmalig oder wiederholt ausgeführt werden soll, indem Sie **Einmalig** oder **Wiederholt** auswählen. Geben Sie bei Auswahl von **Einmalig** eine Startzeit an, und wählen Sie **Erstellen** aus. Geben Sie bei Auswahl von **Wiederholt** eine Startzeit an. Wählen Sie bei **Wiederholen alle** aus, wie oft das Runbook wiederholt werden soll. Sie können nach Stunde, Tag, Woche oder Monat auswählen.
 
-1. Wählen Sie **Erstellen** aus, wenn Sie fertig sind.
+    * Wenn Sie **Woche** auswählen, werden die Tage der Woche angezeigt, aus denen Sie auswählen können. Wählen Sie beliebig viele Tage aus. Die erste Ausführung Ihres Zeitplans erfolgt am ersten Tag, den Sie nach der Startzeit ausgewählt haben. Um z. B. einen Wochenendzeitplan auszuwählen, wählen Sie „Samstag“ und „Sonntag“ aus.
+
+    ![Festlegen eines sich wiederholenden Zeitplans für das Wochenende](../media/schedules/week-end-weekly-recurrence.png)
+
+    * Bei Auswahl von **Monat** werden verschiedene Optionen angezeigt. Wählen Sie für die Option **Monatliche Vorkommen** entweder **Tage im Monat** oder **Wochentage** aus. Wenn Sie **Tage im Monat** auswählen, wird ein Kalender angezeigt, in dem Sie beliebig viele Tage auswählen können. Wenn Sie einen Tag wie den 31. auswählen, der im aktuellen Monat nicht vorkommt, wird der Zeitplan nicht ausgeführt. Wenn der Zeitplan am letzten Tag ausgeführt werden soll, wählen Sie unter **Am letzten Tag des Monats ausführen** die Option **Ja** aus. Bei Auswahl von **Wochentage** wird die Option **Wiederholen alle** angezeigt. Wählen Sie **Erster**, **Zweiter**, **Dritter**, **Vierter** oder **Letzter** aus. Wählen Sie abschließend einen Tag für die Wiederholung aus.
+
+    ![Monatlicher Zeitplan am ersten, 15. und letzten Tag des Monats](../media/schedules/monthly-first-fifteenth-last.png)
+
+5. Wählen Sie **Erstellen** aus, wenn Sie fertig sind.
 
 ### <a name="create-a-new-schedule-with-powershell"></a>Erstellen eines neuen Zeitplans mit PowerShell
 
-Verwenden Sie das Cmdlet [New-AzAutomationSchedule](/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0), um Zeitpläne zu erstellen. Geben Sie die Startzeit für den Zeitplan und die Häufigkeit der Ausführung an. Die folgenden Beispiele zeigen, wie Sie verschiedene Zeitplanszenarien erstellen können.
+Verwenden Sie das Cmdlet [New-AzAutomationSchedule](/powershell/module/Az.Automation/New-AzAutomationSchedule), um Zeitpläne zu erstellen. Geben Sie die Startzeit für den Zeitplan und die Häufigkeit der Ausführung an. Die folgenden Beispiele zeigen, wie Sie verschiedene Zeitplanszenarien erstellen können.
+
+>[!NOTE]
+>Namen von Automation-Zeitplänen dürfen aktuell keine Sonderzeichen enthalten.
+>
 
 #### <a name="create-a-one-time-schedule"></a>Erstellen eines einmaligen Zeitplans
 
@@ -128,7 +134,7 @@ Ein Runbook kann mit mehreren Zeitplänen verknüpft werden, und mit einem Zeitp
 
 ### <a name="link-a-schedule-to-a-runbook-with-powershell"></a>Verknüpfen eines Zeitplans mit einem Runbook mithilfe von PowerShell
 
-Verwenden Sie das Cmdlet [Register-AzAutomationScheduledRunbook](/powershell/module/Az.Automation/Register-AzAutomationScheduledRunbook?view=azps-3.7.0), um einen Zeitplan zu verknüpfen. Sie können Werte für die Runbookparameter im Parameter "Parameters" angeben. Weitere Informationen zum Angeben von Parameterwerten finden Sie unter [Starten eines Runbooks in Azure Automation](../start-runbooks.md).
+Verwenden Sie das Cmdlet [Register-AzAutomationScheduledRunbook](/powershell/module/Az.Automation/Register-AzAutomationScheduledRunbook), um einen Zeitplan zu verknüpfen. Sie können Werte für die Runbookparameter im Parameter "Parameters" angeben. Weitere Informationen zum Angeben von Parameterwerten finden Sie unter [Starten eines Runbooks in Azure Automation](../start-runbooks.md).
 Das folgende Beispiel verdeutlicht, wie Sie einen Zeitplan mit einem Runbook verknüpfen, indem Sie ein Azure Resource Manager-Cmdlet mit Parametern verwenden.
 
 ```azurepowershell-interactive
@@ -155,7 +161,7 @@ Wenn Sie einen Zeitplan deaktivieren, werden sämtliche damit verknüpfte Runboo
 
 ### <a name="disable-a-schedule-from-the-azure-portal"></a>Deaktivieren eines Zeitplans über das Azure-Portal
 
-1. Wählen Sie in Ihrem Automation-Konto unter **Freigegebene Ressourcen** die Option **Zeitpläne** aus.
+1. Wählen Sie in Ihrem Automation-Konto im linken Bereich unter **Freigegebene Ressourcen** die Option **Zeitpläne** aus.
 1. Wählen Sie den Namen eines Zeitplans aus, um den Detailbereich zu öffnen.
 1. Ändern Sie **Aktiviert** in **Nein**.
 
@@ -164,7 +170,7 @@ Wenn Sie einen Zeitplan deaktivieren, werden sämtliche damit verknüpfte Runboo
 
 ### <a name="disable-a-schedule-with-powershell"></a>Deaktivieren eines Zeitplans mithilfe von PowerShell
 
-Verwenden Sie das Cmdlet [Set-AzAutomationSchedule](/powershell/module/Az.Automation/Set-AzAutomationSchedule?view=azps-3.7.0), um die Eigenschaften eines vorhandenen Zeitplans zu ändern. Geben Sie zum Deaktivieren des Zeitplans „False“ für den Parameter `IsEnabled` an.
+Verwenden Sie das Cmdlet [Set-AzAutomationSchedule](/powershell/module/Az.Automation/Set-AzAutomationSchedule), um die Eigenschaften eines vorhandenen Zeitplans zu ändern. Geben Sie zum Deaktivieren des Zeitplans „False“ für den Parameter `IsEnabled` an.
 
 Das folgende Beispiel verdeutlicht, wie Sie einen Zeitplan für ein Runbook mithilfe eines Azure Resource Manager-Cmdlets deaktivieren.
 
@@ -181,13 +187,13 @@ Wenn Sie Zeitpläne entfernen möchten, können Sie das Azure-Portal oder PowerS
 
 ### <a name="remove-a-schedule-using-the-azure-portal"></a>Entfernen eines Zeitplans über das Azure-Portal
 
-1. Wählen Sie in Ihrem Automation-Konto unter **Freigegebene Ressourcen** die Option **Zeitpläne** aus.
-2. Klicken Sie auf den Namen eines Zeitplans, um den Bereich mit den Details zu öffnen.
+1. Wählen Sie in Ihrem Automation-Konto im linken Bereich unter **Freigegebene Ressourcen** die Option **Zeitpläne** aus.
+2. Wählen Sie den Namen eines Zeitplans aus, um den Detailbereich zu öffnen.
 3. Klicken Sie auf **Löschen**.
 
 ### <a name="remove-a-schedule-with-powershell"></a>Entfernen eines Zeitplans mithilfe von PowerShell
 
-Mit dem Cmdlet `Remove-AzAutomationSchedule` können Sie wie unten dargestellt einen vorhandenen Zeitplan löschen. 
+Mit dem Cmdlet `Remove-AzAutomationSchedule` können Sie wie unten dargestellt einen vorhandenen Zeitplan löschen.
 
 ```azurepowershell-interactive
 $automationAccountName = "MyAutomationAccount"

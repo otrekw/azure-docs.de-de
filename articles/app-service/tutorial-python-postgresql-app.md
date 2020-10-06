@@ -3,7 +3,7 @@ title: 'Tutorial: Bereitstellen einer Python-Django-App mit Postgres'
 description: Hier erfahren Sie, wie Sie eine Python-Web-App mit einer PostgreSQL-Datenbank erstellen und in Azure bereitstellen. In diesem Tutorial wird das Django-Framework verwendet, und die App wird in Azure App Service für Linux gehostet.
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 07/22/2020
+ms.date: 09/22/2020
 ms.custom:
 - mvc
 - seodec18
@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: 368a87d1054e4a5ad12fa1e8c78bcde39f76ee63
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: a630387a41b6def67141a423249c3347ff034e2e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88959407"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369619"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Tutorial: Bereitstellen einer Django-Web-App mit PostgreSQL in Azure App Service
 
@@ -27,7 +27,7 @@ In diesem Tutorial wird die Azure CLI verwendet, um folgende Aufgaben auszufüh
 > [!div class="checklist"]
 > * Einrichten der anfänglichen Umgebung mit Python und der Azure CLI
 > * Erstellen einer Azure Database for PostgreSQL-Datenbankinstanz
-> * Bereitstellen von Code für Azure App Service und Herstellen einer Verbindung mit Postgres
+> * Bereitstellen von Code für Azure App Service und Herstellen einer Verbindung mit PostgresSQL
 > * Aktualisieren Ihres Codes und erneutes Bereitstellen
 > * Anzeigen von Diagnoseprotokollen
 > * Verwalten der Web-App im Azure-Portal
@@ -91,7 +91,7 @@ Klonen Sie das Beispielrepository:
 git clone https://github.com/Azure-Samples/djangoapp
 ```
 
-Wechseln Sie dann zu diesem Ordner:
+Navigieren Sie anschließend in diesen Ordner:
 
 ```terminal
 cd djangoapp
@@ -107,14 +107,14 @@ Entpacken Sie die ZIP-Datei in einem Ordner namens *djangoapp*.
 
 ---
 
-Das Beispiel „djangoapp“ enthält die datengesteuerte Django-Umfrage-App, die Sie erhalten, indem Sie die in der Django-Dokumentation unter [Schreiben Ihrer ersten Django-App](https://docs.djangoproject.com/en/2.1/intro/tutorial01/) beschriebenen Schritte ausführen. Der Einfachheit halber wird Ihnen hier die fertige App zur Verfügung gestellt.
+Das Beispiel „djangoapp“ enthält die datengesteuerte Django-Umfrage-App, die Sie erhalten, indem Sie die in der Django-Dokumentation unter [Schreiben Ihrer ersten Django-App](https://docs.djangoproject.com/en/3.1/intro/tutorial01/) beschriebenen Schritte ausführen. Der Einfachheit halber wird Ihnen hier die fertige App zur Verfügung gestellt.
 
 Das Beispiel wird außerdem für die Ausführung in einer Produktionsumgebung wie App Service angepasst:
 
 - Die Produktionseinstellungen befinden sich in der Datei *azuresite/production.py*. Die Entwicklungsdetails befinden sich in *azuresite/settings.py*.
 - Von der App werden Produktionseinstellungen verwendet, wenn die Umgebungsvariable `DJANGO_ENV` auf „production“ festgelegt ist. Diese Umgebungsvariable wird später in diesem Tutorial zusammen mit anderen Umgebungsvariablen für die PostgreSQL-Datenbankkonfiguration erstellt.
 
-Diese Änderungen gelten nicht speziell für App Service, sondern ermöglichen die Ausführung von Django in einer beliebigen Produktionsumgebung. Weitere Informationen finden Sie in der [Bereitstellungsprüfliste für Django](https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/).
+Diese Änderungen gelten nicht speziell für App Service, sondern ermöglichen die Ausführung von Django in einer beliebigen Produktionsumgebung. Weitere Informationen finden Sie in der [Bereitstellungsprüfliste für Django](https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/).
 
 [Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/DjangoCLITutorialHelp)
 
@@ -137,7 +137,7 @@ Erstellen Sie anschließend mithilfe des Befehls [`az postgres up`](/cli/azure/e
 az postgres up --resource-group DjangoPostgres-tutorial-rg --location westus2 --sku-name B_Gen5_1 --server-name <postgre-server-name> --database-name pollsdb --admin-user <admin-username> --admin-password <admin-password> --ssl-enforcement Enabled
 ```
 
-- Ersetzen Sie *\<postgres-server-name>* durch einen innerhalb von Azure eindeutigen Namen. (Der Serverendpunkt ist `https://\<postgres-server-name>.postgres.database.azure.com`.) Ein bewährtes Muster ist eine Kombination aus Ihrem Firmennamen und einem anderen eindeutigen Wert.
+- Ersetzen Sie *\<postgres-server-name>* durch einen innerhalb von Azure eindeutigen Namen. (Der Serverendpunkt ist `https://<postgres-server-name>.postgres.database.azure.com`.) Ein bewährtes Muster ist eine Kombination aus Ihrem Firmennamen und einem anderen eindeutigen Wert.
 - Geben Sie für *\<admin-username>* und *\<admin-password>* Anmeldeinformationen ein, um einen Administratorbenutzer für diesen Postgres-Server zu erstellen.
 - Der hier verwendete [Tarif](../postgresql/concepts-pricing-tiers.md) „B_Gen5_1“ (Basic, 5. Generation, ein Kern) ist der günstigste. Lassen Sie bei Produktionsdatenbanken das Argument `--sku-name` weg, um stattdessen den Tarif „GP_Gen5_2“ (Universell, 5. Generation, zwei Kerne) zu verwenden.
 
@@ -167,7 +167,7 @@ In diesem Abschnitt erstellen Sie einen App-Host in der App Service-App, verbin
 
 ### <a name="create-the-app-service-app"></a>Erstellen der App Service-App
 
-Vergewissern Sie sich im Terminal, dass Sie sich am Repositorystamm (`djangoapp`) mit dem App-Code befinden.
+Vergewissern Sie sich im Terminal, dass Sie sich im Repositoryordner *djangoapp* befinden, der den App-Code enthält.
 
 Erstellen Sie mithilfe des Befehls [`az webapp up`](/cli/azure/webapp#az-webapp-up) eine App Service-App (den Hostprozess):
 
@@ -177,7 +177,7 @@ az webapp up --resource-group DjangoPostgres-tutorial-rg --location westus2 --pl
 <!-- without --sku creates PremiumV2 plan -->
 
 - Verwenden Sie für das Argument `--location` den gleichen Standort wie für die Datenbank im vorherigen Abschnitt.
-- Ersetzen Sie *\<app-name>* durch einen innerhalb von Azure eindeutigen Namen. (Der Serverendpunkt ist `https://\<app-name>.azurewebsites.net`.) Zulässige Zeichen für *\<app-name>* sind `A`-`Z`, `0`-`9` und `-`. Ein bewährtes Muster ist eine Kombination aus Ihrem Firmennamen und einer App-ID.
+- Ersetzen Sie *\<app-name>* durch einen innerhalb von Azure eindeutigen Namen. (Der Serverendpunkt ist `https://<app-name>.azurewebsites.net`.) Zulässige Zeichen für *\<app-name>* sind `A`-`Z`, `0`-`9` und `-`. Ein bewährtes Muster ist eine Kombination aus Ihrem Firmennamen und einer App-ID.
 
 Durch diesen Befehl werden folgende Aktionen ausgeführt, was einige Minuten dauern kann:
 
@@ -188,15 +188,13 @@ Durch diesen Befehl werden folgende Aktionen ausgeführt, was einige Minuten dau
 - Erstellen der App Service-App (sofern noch nicht vorhanden)
 - Aktivieren der Standardprotokollierung für die App (sofern noch nicht aktiviert)
 - Hochladen des Repositorys per ZIP-Bereitstellung mit aktivierter Buildautomatisierung
+- Zwischenspeichern allgemeiner Parameter wie dem Namen der Ressourcengruppe und dem App Service-Plan in der Datei *.azure/config*. Daher müssen bei späteren Befehlen nicht noch mal die gleichen Parameter angegeben werden. Wenn Sie die App also beispielsweise erneut bereitstellen möchten, nachdem Sie Änderungen vorgenommen haben, können Sie `az webapp up` einfach ohne Parameter erneut ausführen. Bei Befehlen von CLI-Erweiterungen (beispielsweise `az postgres up`) wird der Cache dagegen aktuell nicht genutzt. Daher müssen hier die Ressourcengruppe und der Standort mit der anfänglichen Verwendung von `az webapp up` angegeben werden.
 
 Nach erfolgreicher Bereitstellung wird eine JSON-Ausgabe wie im folgenden Beispiel generiert:
 
 ![Beispielausgabe des Befehls „az webapp up“](./media/tutorial-python-postgresql-app/az-webapp-up-output.png)
 
 [Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/DjangoCLITutorialHelp)
-
-> [!TIP]
-> Von vielen Azure CLI-Befehlen werden allgemeine Parameter wie etwa der Name der Ressourcengruppe und der App Service-Plan in der Datei *.azure/config* zwischengespeichert. Daher müssen bei späteren Befehlen nicht noch mal die gleichen Parameter angegeben werden. Wenn Sie die App also beispielsweise erneut bereitstellen möchten, nachdem Sie Änderungen vorgenommen haben, können Sie `az webapp up` einfach ohne Parameter erneut ausführen. Bei Befehlen von CLI-Erweiterungen (beispielsweise `az postgres up`) wird der Cache dagegen aktuell nicht genutzt. Daher müssen hier die Ressourcengruppe und der Standort mit `az webapp up` angegeben werden.
 
 > [!NOTE]
 > Wenn Sie an diesem Punkt versuchen, die URL der App zu besuchen, wird der folgende Fehler angezeigt: „DisallowedHost at /“. Dieser Fehler tritt auf, da die App noch nicht für die Verwendung der weiter oben angesprochenen Produktionseinstellungen konfiguriert wurde. Die entsprechende Konfiguration wird im nächsten Abschnitt vorgenommen.
@@ -208,11 +206,11 @@ Nachdem der Code nun in App Service bereitgestellt ist, muss als Nächstes eine 
 Vom App-Code werden Datenbankinformationen in einer Reihe von Umgebungsvariablen erwartet. Mithilfe des Befehls [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) werden App-Einstellungen erstellt, um Umgebungsvariablen in App Service festzulegen.
 
 ```azurecli
-az webapp config appsettings set --settings DJANGO_ENV="production" DBHOST="<postgres-server-name>.postgres.database.azure.com" DBNAME="pollsdb" DBUSER="<username>" DBPASS="<password>"
+az webapp config appsettings set --settings DJANGO_ENV="production" DBHOST="<postgres-server-name>.postgres.database.azure.com" DBNAME="pollsdb" DBUSER="<username>@<postgres-server-name>" DBPASS="<password>"
 ```
 
 - Ersetzen Sie *\<postgres-server-name>* durch den Namen, den Sie zuvor mit dem Befehl `az postgres up` verwendet haben.
-- Ersetzen Sie *\<username>* und *\<password>* durch die Anmeldeinformationen, die durch den Befehl generiert wurden.
+- Ersetzen Sie *\<username>* und *\<password>* durch die Anmeldeinformationen, die durch den Befehl generiert wurden. Das Argument `DBUSER` muss die Form `<username>@<postgres-server-name>` haben.
 - Die Ressourcengruppe und der Name der App werden aus den zwischengespeicherten Werten in der Datei *.azure/config* abgerufen.
 - Durch den Befehl werden die vom App-Code erwarteten Einstellungen `DJANGO_ENV`, `DBHOST`, `DBNAME`, `DBUSER` und `DBPASS` erstellt.
 - In Ihrem Python-Code wird auf diese Einstellungen in Form von Umgebungsvariablen mit Anweisungen wie `os.environ.get('DJANGO_ENV')`zugegriffen. Weitere Informationen finden Sie unter [Zugreifen auf Umgebungsvariablen](configure-language-python.md#access-environment-variables).
@@ -223,34 +221,48 @@ az webapp config appsettings set --settings DJANGO_ENV="production" DBHOST="<pos
 
 Durch Django-Datenbankmigrationen wird sichergestellt, dass das Schema in der PostgreSQL-Datenbank in Azure mit den Angaben im Code übereinstimmt.
 
-1. Öffnen Sie eine SSH-Sitzung im Browser, indem Sie zu *https://\<app-name>.scm.azurewebsites.net/webssh/host* navigieren, und melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos an (nicht mit den Anmeldeinformationen des Datenbankservers).
+1. Öffnen Sie eine SSH-Sitzung im Browser, indem Sie zu folgender URL navigieren und sich mit den Anmeldeinformationen Ihres Azure-Kontos anmelden (nicht mit den Anmeldeinformationen des Datenbankservers).
+
+    ```
+    https://<app-name>.scm.azurewebsites.net/webssh/host
+    ```
+
+    Ersetzen Sie `<app-name>` durch den Namen, den Sie zuvor in dem Befehl `az webapp up` verwendet haben.
+
+    Unter macOS und Linux können Sie alternativ mit dem Befehl [`az webapp ssh`](/cli/azure/webapp?view=azure-cli-latest&preserve-view=true#az_webapp_ssh) eine Verbindung mit einer SSH-Sitzung herstellen.
 
 1. Führen Sie in der SSH-Sitzung die folgenden Befehle aus. (Befehle können mithilfe von **STRG**+**UMSCHALT**+**V** eingefügt werden.)
 
     ```bash
+    # Change to the folder where the app code is deployed
     cd site/wwwroot
     
     # Activate default virtual environment in App Service container
     source /antenv/bin/activate
+
     # Install packages
     pip install -r requirements.txt
+
     # Run database migrations
     python manage.py migrate
+
     # Create the super user (follow prompts)
     python manage.py createsuperuser
     ```
     
 1. Durch den Befehl `createsuperuser` werden Sie zur Eingabe von Superuser-Anmeldeinformationen aufgefordert. Verwenden Sie für dieses Tutorial den Standardbenutzernamen `root`, drücken Sie für die E-Mail-Adresse die **EINGABETASTE**, um sie leer zu lassen, und geben Sie `Pollsdb1` als Kennwort ein.
 
+1. Wenn eine Fehlermeldung angezeigt wird, dass die Datenbank gesperrt ist, stellen Sie sicher, dass Sie den Befehl `az webapp settings` im vorherigen Abschnitt ausgeführt haben. Ohne diese Einstellungen kann der Migrationsbefehl (migrate) nicht mit der Datenbank kommunizieren, was zu einem Fehler führt.
+
 [Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/DjangoCLITutorialHelp)
     
 ### <a name="create-a-poll-question-in-the-app"></a>Erstellen einer Frage für die Umfrage in der App
 
-1. Öffnen Sie in einem Browser die URL *http:\//\<app-name>.azurewebsites.net*. In der App sollte „No polls are available“ (Keine Umfragen verfügbar) angezeigt werden, da die Datenbank noch keine spezifischen Umfragen enthält.
+1. Öffnen Sie in einen Browser die URL `http://<app-name>.azurewebsites.net`. In der App sollte „No polls are available“ (Keine Umfragen verfügbar) angezeigt werden, da die Datenbank noch keine spezifischen Umfragen enthält.
 
-1. Navigieren Sie zu *http:\//\<app-name>.azurewebsites.net/admin*. Melden Sie sich unter Verwendung der Superuser-Anmeldeinformationen aus dem vorherigen Abschnitt an (`root` und `Pollsdb1`). Wählen Sie unter **Polls** (Umfragen) neben **Questions** (Fragen) die Option **Add** (Hinzufügen) aus, und erstellen Sie eine Frage für eine Umfrage mit mehreren Auswahlmöglichkeiten.
+1. Navigieren Sie zu `http://<app-name>.azurewebsites.net/admin`. Melden Sie sich unter Verwendung der Superuser-Anmeldeinformationen aus dem vorherigen Abschnitt an (`root` und `Pollsdb1`). Wählen Sie unter **Polls** (Umfragen) neben **Questions** (Fragen) die Option **Add** (Hinzufügen) aus, und erstellen Sie eine Frage für eine Umfrage mit mehreren Auswahlmöglichkeiten.
 
-1. Navigieren Sie wieder zu *http:\//\<app-name>.azurewebsites.net/* , und vergewissern Sie sich, dass die Fragen nun angezeigt werden. Beantworten Sie Fragen nach Belieben, um Daten in der Datenbank zu generieren.
+1. Navigieren Sie wieder zu `http://<app-name>.azurewebsites.net`, und vergewissern Sie sich, dass die Fragen nun angezeigt werden. Beantworten Sie Fragen nach Belieben, um Daten in der Datenbank zu generieren.
 
 **Glückwunsch!** Sie führen eine Python-Django-Web-App in Azure App Service für Linux mit einer aktiven Postgres-Datenbank aus.
 
@@ -326,9 +338,9 @@ Nachdem die Web-App vollständig geladen wurde, wird vom Django-Entwicklungsserv
 
 Testen Sie die App lokal:
 
-1. Navigieren Sie in einem Browser zu *http:\//localhost:8000*. Daraufhin sollte die Meldung „No polls are available“ (Keine Umfragen verfügbar) angezeigt werden. 
+1. Navigieren Sie in einem Browser zu `http://localhost:8000`, woraufhin die Meldung „No polls are available“ (Keine Abstimmungen verfügbar) angezeigt werden sollte. 
 
-1. Navigieren Sie zu *http:\//localhost:8000/admin*, und melden Sie sich unter Verwendung des zuvor erstellten Administratorbenutzers an. Wählen Sie erneut unter **Polls** (Umfragen) neben **Questions** (Fragen) die Option **Add** (Hinzufügen) aus, und erstellen Sie eine Frage für eine Umfrage mit mehreren Auswahlmöglichkeiten. 
+1. Wechseln Sie zu `http:///localhost:8000/admin`, und melden Sie sich mit dem Administratorbenutzer an, den Sie zuvor erstellt haben. Wählen Sie erneut unter **Polls** (Umfragen) neben **Questions** (Fragen) die Option **Add** (Hinzufügen) aus, und erstellen Sie eine Frage für eine Umfrage mit mehreren Auswahlmöglichkeiten. 
 
 1. Navigieren Sie erneut zu *http:\//localhost:8000*, und beantworten Sie die Frage, um die App zu testen. 
 
@@ -376,7 +388,7 @@ Bei diesem Befehl werden die in der Datei *.azure/config* zwischengespeicherten 
 
 Da Sie Änderungen am Datenmodell vorgenommen haben, müssen Sie die Datenbankmigrationen in App Service erneut ausführen.
 
-Öffnen Sie erneut eine SSH-Sitzung im Browser, indem Sie zu *https://\<app-name>.scm.azurewebsites.net/webssh/host* navigieren. Führen Sie anschließend die folgenden Befehle aus:
+Öffnen Sie erneut eine SSH-Sitzung im Browser, indem Sie zu `https://<app-name>.scm.azurewebsites.net/webssh/host` navigieren. Führen Sie anschließend die folgenden Befehle aus:
 
 ```
 cd site/wwwroot
@@ -391,7 +403,7 @@ python manage.py migrate
 
 ### <a name="review-app-in-production"></a>Überprüfen der App in der Produktion
 
-Navigieren Sie zu *http:\//\<app-name>.azurewebsites.net*, und testen Sie die App erneut in der Produktionsumgebung. (Da Sie lediglich die Länge eines Datenbankfelds geändert haben, macht sich die Änderung nur bemerkbar, wenn Sie versuchen, bei der Frageerstellung eine längere Antwort einzugeben.)
+Navigieren Sie zu `http://<app-name>.azurewebsites.net`, und testen Sie die App erneut in der Produktion. (Da Sie lediglich die Länge eines Datenbankfelds geändert haben, macht sich die Änderung nur bemerkbar, wenn Sie versuchen, bei der Frageerstellung eine längere Antwort einzugeben.)
 
 [Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/DjangoCLITutorialHelp)
 
@@ -437,10 +449,12 @@ Standardmäßig wird im Portal die Seite **Übersicht** mit einer allgemeinen Le
 Wenn Sie die App behalten oder mit dem nächsten Tutorial fortfahren möchten, springen Sie direkt zu [Nächste Schritte](#next-steps). Andernfalls können Sie die für dieses Tutorial erstellte Ressourcengruppe löschen, um laufende Gebühren zu vermeiden:
 
 ```azurecli
-az group delete
+az group delete --no-wait
 ```
 
 Bei diesem Befehl wird der zwischengespeicherte Ressourcengruppenname aus der Datei *.azure/config* verwendet. Wenn Sie die Ressourcengruppe löschen, wird auch die Zuordnung aller darin enthaltenen Ressourcen aufgehoben, und die Ressourcen werden gelöscht.
+
+Das Löschen aller Ressourcen kann einige Zeit dauern. Das Argument `--no-wait` ermöglicht, dass der Befehl sofort zurückgegeben wird.
 
 [Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/DjangoCLITutorialHelp)
 

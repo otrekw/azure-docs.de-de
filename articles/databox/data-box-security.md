@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 7b74c40ab504c08f5a19a1382c303530116c0fdf
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 132c072ad4cbee5cc3ac49695aa34480dc827400
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87483828"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565754"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box – Sicherheit und Schutz von Daten
 
@@ -30,9 +30,13 @@ Die Microsoft Azure Data Box-Lösung besteht aus vier Hauptkomponenten, die mite
 - **Mit dem Gerät verbundene Clients/Hosts**: Die Clients in Ihrer Infrastruktur, die mit dem Data Box-Gerät verbunden werden und zu schützende Daten enthalten.
 - **Cloud-Speicher** – Der Speicherort in der Azure-Cloud, an dem die Daten gespeichert werden. Dies ist normalerweise das Speicherkonto, das mit der von Ihnen erstellten Azure Data Box-Ressource verknüpft ist.
 
-Im folgenden Diagramm ist der Datenfluss durch die Azure Data Box-Lösung vom lokalen Standort nach Azure beschrieben. Dieser Datenfluss wird für einen Importauftrag für Ihre Data Box verwendet.
+Das folgende Diagramm zeigt den Datenfluss durch die Azure Data Box-Lösung vom lokalen Standort zu Azure sowie die verschiedenen verfügbaren Sicherheitsfeatures für die Daten, die die Lösung durchlaufen. Dieser Datenfluss wird für einen Importauftrag für Ihre Data Box verwendet.
 
-![Data Box-Sicherheit](media/data-box-security/data-box-security-2.png)
+![Data Box-Sicherheit beim Importieren](media/data-box-security/data-box-security-2.png)
+
+Das folgende Diagramm veranschaulicht den Exportauftrag für Ihre Data Box.
+
+![Data Box-Sicherheit beim Exportieren](media/data-box-security/data-box-security-3.png)
 
 Während die Daten diese Lösung durchlaufen, werden Ereignisse protokolliert und Protokolle erstellt. Weitere Informationen finden Sie unter:
 

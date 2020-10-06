@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9971eb554825a968f8cfa72d6a0cf78d7c0bcb76
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8b55d8bcc2f2042dc36c6875750893a345deb552
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025879"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468605"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Was ist ein primäres Aktualisierungstoken (Primary Refresh Token, PRT)?
 
@@ -86,6 +86,10 @@ Es gibt zwei Verfahren, um ein PRT zu verlängern:
 * **Azure AD-WAM-Plug-In bei Anforderungen von App-Token**: Mit dem WAM-Plug-In wird SSO auf Windows 10-Geräten ermöglicht, indem automatische Tokenanforderungen für Anwendungen aktiviert werden. Das WAM-Plug-In kann das PRT während dieser Tokenanforderungen auf zwei Arten verlängern:
    * Eine App fordert WAM automatisch für ein Zugriffstoken an, aber für die App ist kein Aktualisierungstoken vorhanden. In diesem Fall nutzt WAM das PRT, um ein Token für die App anzufordern, und erhält als Antwort ein neues PRT.
    * Eine App fordert WAM für ein Zugriffstoken an, aber das PRT ist ungültig, oder für Azure AD ist eine zusätzliche Autorisierung erforderlich (z. B. Azure Multi-Factor Authentication). In diesem Szenario initiiert WAM eine interaktive Anmeldung, bei der der Benutzer sich erneut authentifizieren oder eine zusätzliche Überprüfung durchführen muss. Nach der erfolgreichen Authentifizierung wird ein neues PRT ausgestellt.
+
+In einer ADFS-Umgebung ist keine direkte Sichtlinie zum Domänencontroller erforderlich, um das PRT zu verlängern. Für die PRT-Verlängerung müssen lediglich die Endpunkte „/adfs/services/trust/2005/usernamemixed“ und „/adfs/services/trust/13/usernamemixed“ mithilfe des WS-Trust-Protokolls für den Proxy aktiviert werden.
+
+Windows-Transportendpunkte werden nur für die Kennwortauthentifizierung benötigt, wenn ein Kennwort geändert wird, nicht aber für die PRT-Verlängerung.
 
 ### <a name="key-considerations"></a>Wichtige Aspekte
 

@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
 ms.reviewer: arvindh
-ms.openlocfilehash: d3b7dbbb9aab29e083795025ad5bf7381a4fa0ee
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 8968fd54968f3115641d2315a534ba61a247a06d
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231213"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605123"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Endbenutzerumgebungen für Anwendungen in Azure Active Directory
 
 Azure Active Directory (Azure AD) bietet mehrere anpassbare Möglichkeiten, um Anwendungen für Endbenutzer in Ihrer Organisation bereitzustellen:
 
 * „Meine Apps“ in Azure AD
-* Office 365-Anwendungsstartprogramm
+* Microsoft 365-Anwendungsstartprogramm
 * Direkte Anmeldung bei Verbund-Apps
 * Deep-Links zu verbundenen, kennwortbasierten oder vorhandene Apps
 
@@ -35,13 +35,13 @@ Welche Methode(n) Sie zur Bereitstellung in Ihrer Organisation wählen, liegt in
 
 Standardmäßig werden alle Anwendungen auf einer einzelnen Seite aufgelistet. Sie können jedoch mithilfe von Auflistungen verwandte Anwendungen gruppieren und sie auf einer separaten Registerkarte präsentieren, damit sie leichter zu finden sind. So können Sie mit Auflistungen beispielsweise logische Gruppierungen von Anwendungen für bestimmte Positionen, Aufgaben, Projekte usw. erstellen. Informationen dazu finden Sie unter [Erstellen von Sammlungen im Portal „Meine Apps“](access-panel-collections.md). 
 
-„Meine Apps“ ist unabhängig vom Azure-Portal und setzt nicht voraus, dass Benutzer ein Azure- oder Office 365-Abonnement haben.
+„Meine Apps“ ist unabhängig vom Azure-Portal und setzt nicht voraus, dass Benutzer über ein Azure- oder Microsoft 365-Abonnement verfügen.
 
 Weitere Informationen zu „Meine Apps“ in Azure AD finden Sie in der [Einführung in „Meine Apps“](../user-help/active-directory-saas-access-panel-introduction.md).
 
-## <a name="office-365-application-launcher"></a>Office 365-Anwendungsstartprogramm
+## <a name="microsoft-365-application-launcher"></a>Microsoft 365-Anwendungsstartprogramm
 
-Für Organisationen, die Office 365 bereitgestellt haben, werden Anwendungen, die Benutzern über Azure AD zugewiesen werden, auch im Office 365-Portal unter [https://portal.office.com/myapps](https://portal.office.com/myapps) angezeigt. So können Benutzer in einer Organisation auf einfache und komfortable Weise ihre Apps starten, ohne ein zweites Portal verwenden zu müssen. Diese Lösung für den App-Start wird für Unternehmen empfohlen, die Office 365 einsetzen.
+Für Organisationen, die Microsoft 365 bereitgestellt haben, werden Anwendungen, die Benutzern über Azure AD zugewiesen werden, auch im Office 365-Portal unter [https://portal.office.com/myapps](https://portal.office.com/myapps) angezeigt. So können Benutzer in einer Organisation ihre Apps einfach und komfortabel starten, ohne ein zweites Portal verwenden zu müssen. Diese Lösung für den App-Start wird für Unternehmen empfohlen, die Microsoft 365 nutzen.
 
 Weitere Informationen zum Office 365-Anwendungsstartprogramm finden Sie unter [Anzeige Ihrer App im Office 365-Anwendungsstartprogramm](https://msdn.microsoft.com/office/office365/howto/connect-your-app-to-o365-app-launcher).
 
@@ -53,7 +53,7 @@ Die meisten Verbundanwendungen, die SAML 2.0, WS-Verbund oder OpenID Connect unt
 
 Azure AD unterstützt auch Direktlinks für die einmalige Anmeldung bei einzelnen Anwendungen, die eine kennwortbasierte einmalige Anmeldung, einmaliges Anmelden über Link und eine beliebige Art der einmaligen Verbundanmeldung unterstützen.
 
-Diese Links sind speziell gestaltete URLs, die einen Benutzer durch den Azure AD-Anmeldevorgang für eine bestimmte Anwendung leiten, ohne dass sie der Benutzer über „Meine Apps“ in Azure AD oder in Office 365 starten muss. Diese **Benutzer-Zugriffs-URLs** befinden sich unter den Eigenschaften der verfügbaren Unternehmensanwendungen. Wählen Sie im Azure-Portal **Azure Active Directory** > **Unternehmens-Apps** aus. Wählen Sie die Anwendung und dann **Eigenschaften** aus.
+Diese Links sind speziell gestaltete URLs, die einen Benutzer durch den Azure AD-Anmeldevorgang für eine bestimmte Anwendung leiten, ohne dass der Benutzer sie über „Meine Apps“ in Azure AD oder in Microsoft 365 starten muss. Diese **Benutzer-Zugriffs-URLs** befinden sich unter den Eigenschaften der verfügbaren Unternehmensanwendungen. Wählen Sie im Azure-Portal **Azure Active Directory** > **Unternehmens-Apps** aus. Wählen Sie die Anwendung und dann **Eigenschaften** aus.
 
 ![Beispiel für die Benutzerzugriffs-URL in den Twitter-Eigenschaften](media/end-user-experiences/direct-sign-on-link.png)
 
@@ -67,7 +67,7 @@ Diese Links können Sie kopieren und überall dort einfügen, wo Sie einen Anmel
 
 Wenn autorisierte Benutzer auf einen dieser anwendungsspezifischen Links klicken, wird ihnen zuerst die Anmeldeseite ihrer Organisation angezeigt (vorausgesetzt, dass sie noch nicht angemeldet sind), und nach dem Anmelden werden sie ohne ein Anhalten in „My Apps“ direkt zu ihrer App umgeleitet. Wenn Voraussetzungen für den Zugriff auf die Anwendung nicht erfüllt sind, wenn z. B. die kennwortbasierte Browsererweiterung zur einmaligen Anmeldung fehlt, wird der Benutzer über den Link zur Installation der fehlenden Erweiterung aufgefordert. Die Link-URL bleibt auch dann unverändert, wenn die Konfiguration für die einmalige Anmeldung geändert wird.
 
-Diese Links verwenden dieselben Mechanismen der Zugriffssteuerung wie „Meine Apps“ und Office 365, und nur die Benutzer oder Gruppen, die der Anwendung im Azure-Portal zugewiesen wurden, können sich erfolgreich authentifizieren. Alle nicht autorisierten Benutzer werden in einer Meldung darüber informiert, dass ihnen kein Zugriff gewährt wurde. Anschließend wird ihnen ein Link zum Laden von „Meine Apps“ bereitgestellt, über die verfügbare Anwendungen angezeigt werden, auf die sie zugreifen können.
+Bei diesen Links werden die gleichen Mechanismen der Zugriffssteuerung verwendet wie von „Meine Apps“ und Microsoft 365, und nur die Benutzer oder Gruppen, die der Anwendung im Azure-Portal zugewiesen wurden, können sich erfolgreich authentifizieren. Alle nicht autorisierten Benutzer werden in einer Meldung darüber informiert, dass ihnen kein Zugriff gewährt wurde. Anschließend wird ihnen ein Link zum Laden von „Meine Apps“ bereitgestellt, über die verfügbare Anwendungen angezeigt werden, auf die sie zugreifen können.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
