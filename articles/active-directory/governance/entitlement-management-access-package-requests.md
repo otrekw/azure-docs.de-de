@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 086623378b64aecb91c4e70e6e69bb13453f7681
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be03996f3f88efeb02893f815162a04d6a1e8aa6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078640"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979947"
 ---
 # <a name="view-requests-for-an-access-package-in-azure-ad-entitlement-management"></a>Anzeigen von Anforderungen für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung
 
@@ -29,7 +29,7 @@ In der Azure AD-Berechtigungsverwaltung können Sie anzeigen, wer Zugriffspaket
 
 ## <a name="view-requests"></a>Anzeigen von Anforderungen
 
-**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
+**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer, Zugriffspaket-Manager oder Zugriffspaketzuweisungs-Manager
 
 1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
 

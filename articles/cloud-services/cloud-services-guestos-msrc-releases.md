@@ -12,19 +12,74 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 8/17/2020
 ms.author: yohaddad
-ms.openlocfilehash: 5e5bcef36bb283b8b3f2b67578e0f3118302d936
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: bb2b9da291bf75542c942d785d995018b597f742
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510163"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024297"
 ---
 # <a name="azure-guest-os"></a>Azure-Gastbetriebssystem
 Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MSRC), die auf das Azure-Gastbetriebssystem angewendet wurden. Durchsuchen Sie diesen Artikel, um zu ermitteln, ob ein bestimmtes Update für das Gastbetriebssystem gilt, das Sie verwenden. Updates werden für die [Familie][family-explain], in der sie eingeführt wurden, immer in die jeweils neueste Version übertragen.
 
-## <a name="august-2020-guest-os"></a>Gastbetriebssystem August 2020
+## <a name="september-2020-guest-os"></a>Gastbetriebssystem für September 2020
 >[!NOTE]
->Das Gastbetriebssystem für August wird derzeit auf virtuellen Clouddienstcomputern eingeführt, die für automatische Updates konfiguriert sind. Wenn die Bereitstellung abgeschlossen ist, wird diese Version für manuelle Updates über das Azure-Portal und Konfigurationsdateien verfügbar gemacht. Die folgenden Patches sind im Gastbetriebssystem für August enthalten. Änderungen der Liste vorbehalten.
+>Das Gastbetriebssystem für September wird derzeit auf Clouddienst-VMs eingeführt, die für automatische Updates konfiguriert sind. Wenn die Bereitstellung abgeschlossen ist, wird diese Version für manuelle Updates über das Azure-Portal und Konfigurationsdateien verfügbar gemacht. Die folgenden Patches sind im Gastbetriebssystem für September enthalten. Änderungen der Liste vorbehalten.
+
+
+| Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+|  Rel 20-09 |  [4577010]  |  Internet Explorer | 2.102, 3.89, 4.82 | 8\. September 2020 |
+|  Rel 20-09 |  [4561600]  |  Flash-Update | 3.89, 4.82, 5.47, 6.23 | 8\. September 2020 |
+|  Rel 20-09 |  [4577015]  |  Letztes kumulatives Update | 5,47 | 8\. September 2020 |
+|  Rel 20-09 |  [4570333]  |  Letztes kumulatives Update | 6,23 | 8\. September 2020 |
+|  Rel 20-09 |  [4570673]  |  Wartungsstapelaktualisierung | 2.102 | 8\. September 2020 |
+|  Rel 20-09 |  [4577051]  |  Monatlicher Rollup | 2.102 | 8\. September 2020 |
+|  Rel 20-09 |  [4569767]  |  .NET Framework 3.5: Sicherheits- und Qualitätsrollup | 2.102 | 8\. September 2020 |
+|  Rel 20-09 |  [4569780]  |  .NET Framework 4.5.2: Sicherheits- und Qualitätsrollup | 2.102 | 8\. September 2020 |
+|  Rel 20-09 |  [4566426]  |  Wartungsstapelaktualisierung | 3.89 | 8\. September 2020 |
+|  Rel 20-09 |  [4577038]  |  Monatlicher Rollup | 3.89 | 8\. September 2020 |
+|  Rel 20-09 |  [4569765]  |  .NET Framework 3.5: Sicherheits- und Qualitätsrollup | 3.89 | 8\. September 2020 |
+|  Rel 20-09 |  [4569779]  |  .NET Framework 4.5.2: Sicherheits- und Qualitätsrollup | 3.89 | 8\. September 2020 |
+|  Rel 20-09 |  [4566425]  |  Wartungsstapelaktualisierung | 2.102 | 8\. September 2020 |
+|  Rel 20-09 |  [4577066]  |  Monatlicher Rollup | 2.102 | 8\. September 2020 |
+|  Rel 20-09 |  [4569768]  |  .NET Framework 3.5: Sicherheits- und Qualitätsrollup | 2.102 | 8\. September 2020 |
+|  Rel 20-09 |  [4569778]  |  .NET Framework 4.5.2: Sicherheits- und Qualitätsrollup | 2.102 | 8\. September 2020 |
+|  Rel 20-09 |  [4578013]  |  Sicherheitsupdate | 2.102 | 8\. September 2020 |
+|  Rel 20-09 |  [4576750]  |  Wartungsstapelaktualisierung | 5,47 | 8\. September 2020 |
+|  Rel 20-09 |  [4576479]  |  .NET Framework 4.8: Sicherheits- und Qualitätsrollup | 5,47 | 8\. September 2020 |
+|  Rel 20-09 |  [4494175]  |  Microcode | 5,47 | 8\. September 2020 |
+|  Rel 20-09 |  [4570332]  |  Wartungsstapelaktualisierung | 6,23 | 8\. September 2020 |
+|  Rel 20-09 |  [4570720]  |  Kumulatives Update für .NET Framework 3.5 und 4.7.2 | 6,23 | 8\. September 2020 |
+|  Rel 20-09 |  [4576483]  |  .NET Framework 4.8: Sicherheits- und Qualitätsrollup | 6,23 | 8\. September 2020 |
+|  Rel 20-09 |  [4494174]  |  Microcode | 6,23 | 8\. September 2020 |
+
+[4577010]: https://support.microsoft.com/kb/4577010
+[4561600]: https://support.microsoft.com/kb/4561600
+[4577015]: https://support.microsoft.com/kb/4577015
+[4570333]: https://support.microsoft.com/kb/4570333
+[4570673]: https://support.microsoft.com/kb/4570673
+[4577051]: https://support.microsoft.com/kb/4577051
+[4569767]: https://support.microsoft.com/kb/4569767
+[4569780]: https://support.microsoft.com/kb/4569780
+[4566426]: https://support.microsoft.com/kb/4566426
+[4577038]: https://support.microsoft.com/kb/4577038
+[4569765]: https://support.microsoft.com/kb/4569765
+[4569779]: https://support.microsoft.com/kb/4569779
+[4566425]: https://support.microsoft.com/kb/4566425
+[4577066]: https://support.microsoft.com/kb/4577066
+[4569768]: https://support.microsoft.com/kb/4569768
+[4569778]: https://support.microsoft.com/kb/4569778
+[4578013]: https://support.microsoft.com/kb/4578013
+[4576750]: https://support.microsoft.com/kb/4576750
+[4576479]: https://support.microsoft.com/kb/4576479
+[4494175]: https://support.microsoft.com/kb/4494175
+[4570332]: https://support.microsoft.com/kb/4570332
+[4570720]: https://support.microsoft.com/kb/4570720
+[4576483]: https://support.microsoft.com/kb/4576483
+[4494174]: https://support.microsoft.com/kb/4494174
+
+## <a name="august-2020-guest-os"></a>Gastbetriebssystem August 2020
 
 
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |

@@ -4,14 +4,14 @@ description: Pushen und Pullen von OCI-Artefakten (Open Container Initiative) un
 author: SteveLasker
 manager: gwallace
 ms.topic: article
-ms.date: 03/11/2020
+ms.date: 08/12/2020
 ms.author: stevelas
-ms.openlocfilehash: 2c6b66b635a2513ccc19e0352414d18d8389fef1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7c95766cc12b281521fa52ab113fadd4321d0815
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79371051"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89485002"
 ---
 # <a name="push-and-pull-an-oci-artifact-using-an-azure-container-registry"></a>Pushen und Pullen eines OCI-Artefakts unter Verwendung einer Azure-Containerregistrierung
 
@@ -148,6 +148,36 @@ Das Artefakt kann mithilfe des Befehls [az acr repository delete][az-acr-reposit
 az acr repository delete \
     --name myregistry \
     --image samples/artifact:1.0
+```
+
+## <a name="example-build-docker-image-from-oci-artifact"></a>Beispiel: Erstellen eines Docker-Images anhand eines OCI-Artefakts
+
+Quellcode und Binärdateien zum Erstellen eines Containerimages können als OCI-Artefakte in Azure Container Registry gespeichert werden. Sie können auf ein Quellartefakt als Buildkontext für einen [ACR-Task](container-registry-tasks-overview.md) verweisen. Dieses Beispiel zeigt, wie Sie eine Dockerfile als OCI-Artefakt speichern und dann auf das Artefakt verweisen, um ein Containerimage zu erstellen.
+
+Erstellen Sie z. B. eine einzeilige Dockerfile:
+
+```bash
+echo "FROM hello-world" > hello-world.dockerfile
+```
+
+Melden Sie sich bei der Zielcontainerregistrierung an.
+
+```azurecli
+az login
+az acr login --name myregistry
+```
+
+Erstellen und pushen Sie ein neues OCI-Artefakt mit dem Befehl `oras push` in die Zielregistrierung. In diesem Beispiel wird der Standardmedientyp für das Artefakt festgelegt.
+
+```bash
+oras push myregistry.azurecr.io/hello-world:1.0 hello-world.dockerfile
+```
+
+Führen Sie den Befehl [az acr build](/cli/azure/acr#az-acr-build) aus, um das Image „hello-world“ unter Verwendung des neuen Artefakts als Buildkontext zu erstellen:
+
+```azurecli
+az acr build --registry myregistry --file hello-world.dockerfile \
+  oci://myregistry.azurecr.io/hello-world:1.0
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: 9c94d2ab2e0c49fe38142e42cf934c440746da75
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b7571b0a064e10faf5f002c9487ecc804ac78665
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546677"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017896"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-azure-ad-user-provisioning"></a>Tutorial: Konfigurieren der Benutzerbereitstellung von SAP SuccessFactors zu Azure AD
 In diesem Tutorial werden die Schritte vorgestellt, die Sie zum Bereitstellen von Mitarbeiterdaten aus SuccessFactors Employee Central in Azure Active Directory ausführen müssen, wobei einige E-Mail-Adressen optional in SuccessFactors zurückgeschrieben werden. 
@@ -29,13 +29,13 @@ Der [Azure Active Directory-Benutzerbereitstellungsdienst](../app-provisioning/u
 
 Die vom Azure AD-Benutzerbereitstellungsdienst unterstützten SuccessFactors-Workflows zur Benutzerbereitstellung ermöglichen die Automatisierung der folgenden Szenarien im Personalwesen und bei der Verwaltung des Identity Lifecycle Managements:
 
-* **Einstellung neuer Mitarbeiter:** Wenn in SuccessFactors ein neuer Mitarbeiter hinzugefügt wird, wird in Azure Active Directory und optional in Office 365 sowie in [anderen, von Azure AD unterstützten SaaS-Anwendungen](../app-provisioning/user-provisioning.md) automatisch ein Benutzerkonto erstellt, und die E-Mail-Adresse wird in SuccessFactors zurückgeschrieben.
+* **Einstellung neuer Mitarbeiter:** Wenn in SuccessFactors ein neuer Mitarbeiter hinzugefügt wird, wird in Azure Active Directory und optional in Microsoft 365 sowie in [anderen, von Azure AD unterstützten SaaS-Anwendungen](../app-provisioning/user-provisioning.md) automatisch ein Benutzerkonto erstellt, und die E-Mail-Adresse wird in SuccessFactors zurückgeschrieben.
 
-* **Aktualisierung von Mitarbeiterattributen und -profilen:** Wenn in SuccessFactors ein Mitarbeiterdatensatz aktualisiert wird (beispielsweise der Name, Titel oder Vorgesetzte), wird das entsprechende Benutzerkonto in Azure Active Directory und optional in Office 365 und in [anderen, von Azure AD unterstützten SaaS-Anwendungen](../app-provisioning/user-provisioning.md) automatisch aktualisiert.
+* **Aktualisierung von Mitarbeiterattributen und -profilen:** Wenn in SuccessFactors ein Mitarbeiterdatensatz aktualisiert wird (beispielsweise der Name, Titel oder Vorgesetzte), wird das entsprechende Benutzerkonto in Azure Active Directory und optional in Microsoft 365 und in [anderen, von Azure AD unterstützten SaaS-Anwendungen](../app-provisioning/user-provisioning.md) automatisch aktualisiert.
 
-* **Kündigung von Mitarbeitern:** Wenn einem Mitarbeiter in SuccessFactors gekündigt wird, wird das entsprechende Benutzerkonto in Azure Active Directory und optional in Office 365 und in [anderen, von Azure AD unterstützten SaaS-Anwendungen](../app-provisioning/user-provisioning.md) automatisch deaktiviert.
+* **Kündigung von Mitarbeitern:** Wenn einem Mitarbeiter in SuccessFactors gekündigt wird, wird das entsprechende Benutzerkonto in Azure Active Directory und optional in Microsoft 365 und in [anderen, von Azure AD unterstützten SaaS-Anwendungen](../app-provisioning/user-provisioning.md) automatisch deaktiviert.
 
-* **Wiedereinstellung von Mitarbeitern:** Wenn ein Mitarbeiter in SuccessFactors erneut eingestellt wird, kann sein altes Konto in Azure Active Directory und optional in Office 365 und in [anderen, von Azure AD unterstützten SaaS-Anwendungen](../app-provisioning/user-provisioning.md) je nach Präferenz automatisch reaktiviert oder erneut bereitgestellt werden.
+* **Wiedereinstellung von Mitarbeitern:** Wenn ein Mitarbeiter in SuccessFactors erneut eingestellt wird, kann sein altes Konto in Azure Active Directory und optional in Microsoft 365 und in [anderen, von Azure AD unterstützten SaaS-Anwendungen](../app-provisioning/user-provisioning.md) je nach Präferenz automatisch reaktiviert oder erneut bereitgestellt werden.
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>Für wen ist diese Benutzerbereitstellungslösung am besten geeignet?
 
@@ -47,7 +47,7 @@ Diese Lösung zur Benutzerbereitstellung von SuccessFactors in Azure Active Dire
 
 * Organisationen, bei denen Benutzer mithilfe von Daten bereitgestellt werden müssen, die aus [SuccessFactors Employee Central (EC)](https://www.successfactors.com/products-services/core-hr-payroll/employee-central.html) abgerufen werden
 
-* Organisationen, die Office 365 für E-Mail verwenden
+* Organisationen, die Microsoft 365 für E-Mail verwenden
 
 ## <a name="solution-architecture"></a>Lösungsarchitektur
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/20/2020
+ms.date: 09/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 16fdc38d6235ddd0f72c7a35a3d71973ce01a4be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7417e2d39371066a5c5e8576040cbe22e7632043
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85203213"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90562875"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Informationen zu technischen Profilen in benutzerdefinierten Azure Active Directory B2C-Richtlinien
 
@@ -32,6 +32,7 @@ Ein technisches Profil ermöglicht die folgenden Szenarien:
 - [Azure Active Directory](active-directory-technical-profile.md) – Bietet Unterstützung für die Azure Active Directory B2C-Benutzerverwaltung.
 - [Azure Multi-Factor Authentication](multi-factor-auth-technical-profile.md) – bietet Unterstützung für die Überprüfung einer Telefonnummer mithilfe von Azure Multi-Factor Authentication (MFA). 
 - [Anspruchstransformation](claims-transformation-technical-profile.md) – Aufrufen von Transformationen für Ausgabeansprüche, um Anspruchswerte zu ändern, Ansprüche zu überprüfen oder Standardwerte für eine Gruppe von Ausgabeansprüchen festzulegen.
+- [ID-Tokenhinweis](id-token-hint.md): Überprüft die `id_token_hint`-JWT-Tokensignatur, den Ausstellernamen und die Tokenzielgruppe und extrahiert den Anspruch aus dem eingehenden Token.
 - [JWT-Tokenaussteller](jwt-issuer-technical-profile.md) – Gibt ein JWT-Token aus, das an die Anwendung der vertrauenden Seite zurückgegeben wird.
 - [OAuth1](oauth1-technical-profile.md) – Verbund mit einem beliebigen Identitätsanbieter für das Protokoll OAuth 1.0.
 - [OAuth2](oauth2-technical-profile.md) – Verbund mit einem beliebigen Identitätsanbieter für das Protokoll OAuth 2.0.

@@ -3,12 +3,12 @@ title: Verbessern der Leistung von Azure-Anwendungen mit Advisor
 description: Anhand der Empfehlungen zur Leistung in Azure Advisor können Sie die Geschwindigkeit und Reaktionszeit Ihrer unternehmenskritischen Anwendungen verbessern.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 0112e94e7652026e020e99ca82ad757c236a0c53
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 9a8499e85a264488c756a3d497565398f2e1c229
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653306"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651571"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Verbessern der Leistung von Azure-Anwendungen mit Azure Advisor
 
@@ -63,6 +63,8 @@ Advisor identifiziert die Tabellen, die keine aktuellen [Tabellenstatistiken](..
 
 Die Advisor-Analyse kann ergeben, dass Ihre Anwendung, die eine Verbindung mit einem MySQL-Server herstellt, Verbindungen möglicherweise nicht effizient verwaltet. Dieser Zustand kann zu unnötigem Ressourcenverbrauch und zu einer insgesamt höheren Anwendungslatenz führen. Zur Verbesserung der Verbindungsverwaltung empfehlen wir, die Anzahl kurzlebiger Verbindungen zu verringern und unnötige Leerlaufverbindungen zu beseitigen. Sie können diese Verbesserungen durch Konfigurieren einer serverseitigen Verbindungspoolfunktion wie ProxySQL vornehmen.
 
+## <a name="update-your-current-compute-management-sdk-version-to-the-most-recent-version"></a>Aktualisieren Sie Ihre aktuelle Version des SDK für die Computeverwaltung auf die neueste Version.
+Advisor ermittelt Abonnements, die mit veralteten Compute Management SDK-Versionen arbeiten. Dies kann sich auf die Sicherheit und Leistung Ihrer Workloads auswirken. Daher empfiehlt Advisor, auf die neueste Version des Compute Management SDK umzusteigen. 
 
 ## <a name="scale-up-to-optimize-cache-utilization-on-your-azure-synapse-analytics-tables-to-increase-query-performance"></a>Hochskalieren zum Optimieren der Cachenutzung in Ihrem Azure Synapse Analytics-Tabellen zum Verbessern der Abfrageleistung
 

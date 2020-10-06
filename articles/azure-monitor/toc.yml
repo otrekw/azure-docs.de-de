@@ -1326,6 +1326,8 @@
       href: samples/policy-reference.md
     - name: Feature- und API-Ausmusterung
       items:
+        - name: OperationalInsights-API
+          href: platform/operationalinsights-api-retirement.md
         - name: Klassische Autoskalierung und Metrik-API
           href: ./platform/classic-api-retirement-metrics-autoscale.md
         - name: Klassische Warnungen und Überwachung

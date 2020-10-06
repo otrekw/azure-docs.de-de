@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2ccf986f81ec3abed54c85640b8afb1c5cf7172
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a6a7dcb1d24f3c1ff848e3393687b04d79d28058
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015883"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054703"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Übernehmen eines nicht verwalteten Verzeichnisses als Administrator in Azure Active Directory
 
@@ -34,7 +34,7 @@ Während der Administratorübernahme können Sie die Inhaberschaft wie in [Schne
 
 ## <a name="internal-admin-takeover"></a>Interne Administratorübernahme
 
-Einige Produkte, die SharePoint und OneDrive enthalten, z.B. Office 365, unterstützen keine externe Übernahme. Wenn dieses Szenario auf Sie zutrifft oder Sie ein Administrator sind und eine nicht verwaltete Azure AD-Organisation (Schattenorganisation) übernehmen möchten, die von Benutzern erstellt wurde, die die Self-Service-Registrierung verwendet haben, können Sie dies mit einer internen Administratorübernahme tun.
+Einige Produkte, die SharePoint und OneDrive enthalten, z. B. Microsoft 365, unterstützen keine externe Übernahme. Wenn dieses Szenario auf Sie zutrifft oder Sie ein Administrator sind und eine nicht verwaltete Azure AD-Organisation (Schattenorganisation) übernehmen möchten, die von Benutzern erstellt wurde, die die Self-Service-Registrierung verwendet haben, können Sie dies mit einer internen Administratorübernahme tun.
 
 1. Erstellen Sie einen Benutzerkontext in der nicht verwalteten Organisation über eine Registrierung bei Power BI. Genau dies tun Sie in diesem Beispiel.
 
@@ -52,7 +52,7 @@ Einige Produkte, die SharePoint und OneDrive enthalten, z.B. Office 365, unterst
 
 Wenn die DNS-TXT-Einträge bei Ihrer Domänennamen-Registrierungsstelle bestätigt wurden, können Sie die Azure AD-Organisation verwalten.
 
-Wenn Sie die vorherigen Schritte abgeschlossen haben, sind Sie jetzt der globale Administrator der Fourth Coffee-Organisation in Office 365. Um den Domänennamen in Ihre anderen Azure-Dienste zu integrieren, entfernen Sie ihn aus Office 365, und fügen Sie ihn einer anderen verwalteten Organisation in Azure hinzu.
+Wenn Sie die vorherigen Schritte abgeschlossen haben, sind Sie jetzt der globale Administrator der Fourth Coffee-Organisation in Microsoft 365. Um den Domänennamen in Ihre anderen Azure-Dienste zu integrieren, entfernen Sie ihn aus Microsoft 365, und fügen Sie ihn einer anderen verwalteten Organisation in Azure hinzu.
 
 ### <a name="adding-the-domain-name-to-a-managed-organization-in-azure-ad"></a>Hinzufügen des Domänennamens zu einer verwalteten Organisation in Azure AD
 
@@ -61,9 +61,9 @@ Wenn Sie die vorherigen Schritte abgeschlossen haben, sind Sie jetzt der globale
 3. Stellen Sie sicher, dass das neue Benutzerkonto globale Administratorberechtigungen für die Azure AD-Organisation hat.
 4. Öffnen Sie die Registerkarte **Domänen** im Microsoft 365 Admin Center, wählen Sie den Domänennamen aus, und klicken Sie auf **Entfernen**. 
   
-   ![Entfernen des Domänennamens aus Office 365](./media/domains-admin-takeover/remove-domain-from-o365.png)
+   ![Entfernen des Domänennamens aus Microsoft 365](./media/domains-admin-takeover/remove-domain-from-o365.png)
   
-5. Wenn einige Ihrer Benutzer oder Gruppen in Office 365 weiterhin auf den entfernten Domänennamen verweisen, müssen sie in die Domäne .onmicrosoft.com umbenannt werden. Wenn Sie die Löschung des Domänennamens erzwingen, werden alle Benutzer automatisch umbenannt, in diesem Beispiel in *user\@fourthcoffeexyz.onmicrosoft.com*.
+5. Wenn einige Ihrer Benutzer oder Gruppen in Microsoft 365 weiterhin auf den entfernten Domänennamen verweisen, müssen sie in die Domäne .onmicrosoft.com umbenannt werden. Wenn Sie die Löschung des Domänennamens erzwingen, werden alle Benutzer automatisch umbenannt, in diesem Beispiel in *user\@fourthcoffeexyz.onmicrosoft.com*.
   
 6. Melden Sie sich beim [Azure AD Admin Center](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) mit dem Konto an, das globale Administratorberechtigungen für die Azure AD-Organisation hat.
   
@@ -72,11 +72,11 @@ Wenn Sie die vorherigen Schritte abgeschlossen haben, sind Sie jetzt der globale
    ![Überprüfte Domäne, wie zu Azure AD hinzugefügt](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
   
 > [!NOTE]
-> Alle Power BI- oder Azure Rights Management-Benutzer, die in der Office 365-Organisation zugewiesene Lizenzen haben, müssen ihre Dashboards speichern, wenn der Domänenname entfernt wird. Sie müssen sich mit einem Benutzernamen wie *user\@fourthcoffeexyz.onmicrosoft.com* und nicht mit *user\@fourthcoffee.xyz* anmelden.
+> Alle Power BI- oder Azure Rights Management-Benutzer, die in der Microsoft 365-Organisation zugewiesene Lizenzen haben, müssen ihre Dashboards speichern, wenn der Domänenname entfernt wird. Sie müssen sich mit einem Benutzernamen wie *user\@fourthcoffeexyz.onmicrosoft.com* und nicht mit *user\@fourthcoffee.xyz* anmelden.
 
 ## <a name="external-admin-takeover"></a>Externe Administratorübernahme
 
-Wenn Sie bereits eine Organisation mit Azure-Diensten oder Office 365 verwalten, können Sie keinen benutzerdefinierten Domänennamen hinzufügen, wenn er bereits in einer anderen Azure AD-Organisation überprüft wurde. Sie haben jedoch die Möglichkeit, aus Ihrer verwalteten Organisation in Azure AD eine nicht verwaltete Organisation im Zuge einer externen Administratorübernahme zu übernehmen. Die allgemeine Vorgehensweise wird im Artikel [Schnellstart: Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](../fundamentals/add-custom-domain.md) erklärt.
+Wenn Sie bereits eine Organisation mit Azure-Diensten oder Microsoft 365 verwalten, können Sie keinen benutzerdefinierten Domänennamen hinzufügen, wenn er bereits in einer anderen Azure AD-Organisation überprüft wurde. Sie haben jedoch die Möglichkeit, aus Ihrer verwalteten Organisation in Azure AD eine nicht verwaltete Organisation im Zuge einer externen Administratorübernahme zu übernehmen. Die allgemeine Vorgehensweise wird im Artikel [Schnellstart: Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](../fundamentals/add-custom-domain.md) erklärt.
 
 Wenn Sie die Inhaberschaft des Domänennamens bestätigt haben, entfernt Azure AD den Domänennamen aus der nicht verwalteten Organisation und verschiebt ihn in Ihre bestehende Organisation. Eine externe Administratorübernahme eines nicht verwalteten Verzeichnisses erfordert denselben DNS-TXT-Bestätigungsvorgang wie eine interne Administratorübernahme. Der Unterschied besteht darin, dass Folgendes zusammen mit dem Domänennamen verschoben wird:
 
@@ -120,7 +120,7 @@ Cmdlet | Verwendung
 `new-msoldomain –name <domainname>` | Fügt der Organisation den Domänennamen als „Nicht überprüft “ hinzu (DNS-Überprüfung wurde noch nicht ausgeführt).
 `get-msoldomain` | Der Domänenname befindet sich nun in der Liste der Ihrer verwalteten Organisation zugeordneten Domänennamen, wird jedoch als **Nicht überprüft** aufgeführt.
 `get-msoldomainverificationdns –Domainname <domainname> –Mode DnsTxtRecord` | Stellt Informationen bereit, die in den neuen DNS-TXT-Eintrag für die Domäne eingegeben werden müssen (MS=xxxxx). Die Bestätigung erfolgt möglicherweise nicht sofort, da es einige Zeit braucht, bis der TXT-Eintrag übernommen wird. Warten Sie also einfach einige Minuten, bevor Sie die Option **-ForceTakeover** in Betracht ziehen. 
-`confirm-msoldomain –Domainname <domainname> –ForceTakeover Force` | <li>Wenn Ihr Domänenname weiterhin unbestätigt bleibt, können Sie die Option **-ForceTakeover** anwenden. Damit wird bestätigt, dass der TXT-Eintrag erstellt wurde, und die Übernahme wird angestoßen.<li>Die Option **-ForceTakeover** sollte dem Cmdlet nur beim Erzwingen einer externen Administratorübernahme hinzugefügt werden, z. B. wenn die nicht verwaltete Organisation Office 365-Dienste ausführt, die die Übernahme blockieren.
+`confirm-msoldomain –Domainname <domainname> –ForceTakeover Force` | <li>Wenn Ihr Domänenname weiterhin unbestätigt bleibt, können Sie die Option **-ForceTakeover** anwenden. Damit wird bestätigt, dass der TXT-Eintrag erstellt wurde, und die Übernahme wird angestoßen.<li>Die Option **-ForceTakeover** sollte dem Cmdlet nur beim Erzwingen einer externen Administratorübernahme hinzugefügt werden, z. B. wenn die nicht verwaltete Organisation Microsoft 365-Dienste ausführt, die die Übernahme blockieren.
 `get-msoldomain` | In der Liste der Domänen wird der Domänenname nun als **Verified** (Bestätigt) angezeigt.
 
 > [!NOTE]

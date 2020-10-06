@@ -497,12 +497,8 @@
               href: database/database-copy.md
             - name: Replizieren in SQL-Datenbank
               href: database/replication-to-sql-database.md
-            - name: SQL-Datensynchronisierung
-              items:
-                - name: Replizieren von Schemaänderungen
-                  href: database/sql-data-sync-update-sync-schema.md
-                - name: Überwachen mit OMS
-                  href: database/sql-data-sync-monitor-sync.md
+            - name: Replizieren von Schemaänderungen (Datensynchronisierung)
+              href: database/sql-data-sync-update-sync-schema.md
         - name: Datenbank-Sharding
           items:
             - name: Aktualisieren der Clientbibliothek

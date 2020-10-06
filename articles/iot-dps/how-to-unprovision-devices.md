@@ -7,12 +7,12 @@ ms.date: 05/11/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: efd19d9dc1fdc857a51d7af34c54bbe2d6077767
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 5683d40e9565068c6cd79eedb08b036eab2c54cd
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89294389"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531388"
 ---
 # <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>Aufheben der Bereitstellung von Geräten, die zuvor automatisch bereitgestellt wurden 
 
@@ -43,7 +43,7 @@ So heben Sie die Bereitstellung eines Geräts auf, das über eine individuelle R
 
 
 ## <a name="enrollment-groups"></a>Registrierungsgruppen
-Bei Verwendung des X.509-Nachweises können Geräte auch über eine Registrierungsgruppe bereitgestellt werden. Registrierungsgruppen werden mit einem Signaturzertifikat (Zwischenzertifikat oder Zertifikat der Stammzertifizierungsstelle) konfiguriert und steuern den Zugriff auf den Bereitstellungsdienst für Geräte mit diesem Zertifikat in ihrer Zertifikatkette. Weitere Informationen zu Registrierungsgruppen und X.509-Zertifikaten mit dem Bereitstellungsdienst finden Sie unter [X.509-Zertifikate](concepts-security.md#x509-certificates). 
+Bei Verwendung des X.509-Nachweises können Geräte auch über eine Registrierungsgruppe bereitgestellt werden. Registrierungsgruppen werden mit einem Signaturzertifikat (Zwischenzertifikat oder Zertifikat der Stammzertifizierungsstelle) konfiguriert und steuern den Zugriff auf den Bereitstellungsdienst für Geräte mit diesem Zertifikat in ihrer Zertifikatkette. Weitere Informationen zu Registrierungsgruppen und X.509-Zertifikaten mit dem Bereitstellungsdienst finden Sie unter [X.509-Zertifikatnachweis](concepts-x509-attestation.md). 
 
 Eine Liste mit Geräten, die über eine Registrierungsgruppe bereitgestellt wurden, finden Sie in den Details der Registrierungsgruppe. So können Sie ganz einfach nachvollziehen, für welche IoT Hub-Instanz die einzelnen Geräte bereitgestellt wurden. So zeigen Sie die Geräteliste an: 
 

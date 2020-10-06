@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 063fbd2ad4f2f5d427fd2cb39b8ce9b231eba374
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: cd59bb411a598603ccef215cd9a56b7619115e72
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036424"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090566"
 ---
 # <a name="show-traffic-on-the-map"></a>Anzeigen von Datenverkehr auf einer Karte
 
@@ -40,7 +40,7 @@ Nachfolgend finden Sie das vollständige ausführbare Codebeispiel für die oben
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Anzeigen von Datenverkehr auf einer Karte' src='//codepen.io/azuremaps/embed/WMLRPw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/WMLRPw/'>Show traffic on a map</a> (Anzeigen von Datenverkehr auf einer Karte) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Anzeigen von Datenverkehr auf einer Karte' src='//codepen.io/azuremaps/embed/WMLRPw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/WMLRPw/'>Show traffic on a map</a> (Anzeigen von Datenverkehr auf einer Karte) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="traffic-overlay-options"></a>Optionen für Verkehrsdatenüberlagerungen
@@ -49,9 +49,31 @@ Mit dem folgenden Tool können Sie zwischen den unterschiedlichen Einstellungen 
 
 <br/>
 
-<iframe height="700" style="width: 100%;" scrolling="no" title="Optionen für Verkehrsdatenüberlagerungen" src="//codepen.io/azuremaps/embed/RwbPqRY/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="700" style="width: 100%;" scrolling="no" title="Optionen für Verkehrsdatenüberlagerungen" src="//codepen.io/azuremaps/embed/RwbPqRY/?height=700&theme-id=0&default-tab=result" frameborder='no' loading="lazy" loading="lazy" allowtransparency="true" allowfullscreen="true">
 Weitere Informationen finden Sie im Pen <a href='https://codepen.io/azuremaps/pen/RwbPqRY/'>Traffic overlay options</a> (Optionen für Verkehrsdatenüberlagerungen) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) bei <a href='https://codepen.io'>CodePen</a>.
 </iframe>
+
+
+## <a name="add-traffic-controls"></a>Hinzufügen von Steuerelementen für Straßenverkehr
+
+Es gibt zwei Steuerelementen für Straßenverkehr, die der Karte hinzugefügt werden können. Das erste Steuerelement (`TrafficControl`) fügt eine Umschalttaste hinzu, über die der Verkehr ein- und ausgeschaltet werden kann. Mit Optionen für dieses Steuerelement können Sie angeben, wann Verkehrseinstellungen verwendet werden sollen, wenn Verkehr angezeigt wird. Standardmäßig zeigt dieses Steuerelement den relativen Verkehrsfluss und die Vorfalldaten an. Sie können dies jedoch ändern, um den absoluten Verkehrsfluss und ggf. keine Vorfälle anzuzeigen. Das zweite Steuerelement (`TrafficLegendControl`) fügt der Karte eine Verkehrsflusslegende hinzu, mit der Benutzer verstehen können, was die farbigen Straßenmarkierungen bedeuten. Dieses Steuerelement wird nur bei Anzeige von Verkehrsflussdaten auf der Karte eingeblendet und ist zu allen anderen Zeiten ausgeblendet.
+
+Der folgende Code zeigt, wie die Verkehrssteuerelemente der Karte hinzugefügt werden können.
+
+```JavaScript
+//Att the traffic control toogle button to the top right corner of the map.
+map.controls.add(new atlas.control.TrafficControl(), { position: 'top-right' });
+
+//Att the traffic legend control to the bottom left corner of the map.
+map.controls.add(new atlas.control.TrafficLegendControl(), { position: 'bottom-left' });
+```
+
+<br/>
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="Verkehrssteuerelemente" src="https://codepen.io/azuremaps/embed/ZEWaeLJ?height500&theme-id=0&default-tab=js,result&embed-version=2&editable=true" frameborder='no' loading="lazy" loading="lazy" allowtransparency="true" allowfullscreen="true">
+Siehe den Pen <a href='https://codepen.io/azuremaps/pen/ZEWaeLJ'>Traffic controls</a> von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -6,17 +6,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: msjogarrig
 ms.author: jogarrig
-ms.date: 04/22/2020
-ms.openlocfilehash: 70922b80139015226445ca62026ec6f5a59b751c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 09/04/2020
+ms.openlocfilehash: 10ca7602dd3cf5a80e371ceda845977bcd8f218a
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119819"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484238"
 ---
 # <a name="publishing-guide-for-azure-managed-applications"></a>Leitfaden für die Veröffentlichung von verwalteten Azure-Anwendungen
 
-Ein Angebot einer von Azure *verwalteten Anwendung* ist eine Möglichkeit, eine Azure-Anwendung im Azure Marketplace zu veröffentlichen. Verwaltete Anwendungen sind Transaktionsangebote, die über den Azure Marketplace bereitgestellt und abgerechnet werden. Den Benutzern wird der Aktionsaufruf *Jetzt kaufen* angezeigt.
+Ein Angebot einer von Azure *verwalteten Anwendung* ist eine Möglichkeit, eine Azure-Anwendung im Azure Marketplace zu veröffentlichen. Verwaltete Anwendungen sind Transaktionsangebote, die über den Azure Marketplace bereitgestellt und abgerechnet werden. Den Benutzern wird die Listenoption *Jetzt kaufen* angezeigt.
 
 In diesem Artikel werden die Anforderungen für den Angebotstyp „Verwaltete Anwendung“ erläutert.
 

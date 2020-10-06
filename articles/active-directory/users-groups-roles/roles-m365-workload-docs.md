@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14d5b458aeccd2587f24b30548c4b5e76912bce1
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 6060bc286024183661024abd56567eeefed76430
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798277"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053547"
 ---
 # <a name="administrator-roles-for-microsoft-365-services"></a>Administratorrollen für Microsoft 365-Dienste
 
@@ -29,10 +29,10 @@ Alle Produkte in Microsoft 365 können mit Administratorrollen in Azure AD verwa
 
 Microsoft 365-Dienst | Rolleninhalt | API-Inhalt
 ---------------------- | ------------------ | -----------------
-Administratorrollen in Office 365- und Microsoft 365-Businessplänen | [Office 365-Administratorrollen](/office365/admin/add-users/about-admin-roles?view=o365-worldwide) | Nicht verfügbar
+Administratorrollen in Office 365- und Microsoft 365-Businessplänen | [Microsoft 365-Administratorrollen](/office365/admin/add-users/about-admin-roles?view=o365-worldwide) | Nicht verfügbar
 Azure Active Directory (Azure AD) und Azure AD Identity Protection| [Azure AD-Administratorrollen](directory-assign-admin-roles.md) | [Graph-API](/graph/api/overview?view=graph-rest-1.0)<br>[Abrufen von Rollenzuweisungen](/graph/api/directoryrole-list?view=graph-rest-1.0)
 Exchange Online| [Rollenbasierte Zugriffssteuerung in Exchange](/exchange/understanding-role-based-access-control-exchange-2013-help) |  [PowerShell für Exchange](/powershell/module/exchange/role-based-access-control/add-managementroleentry?view=exchange-ps)<br>[Abrufen von Rollenzuweisungen](/powershell/module/exchange/role-based-access-control/get-rolegroup?view=exchange-ps)
-SharePoint Online | [Azure AD-Administratorrollen](directory-assign-admin-roles.md)<br>Auch [Informationen zur SharePoint-Administratorrolle in Office 365](/sharepoint/sharepoint-admin-role) | [Graph-API](/graph/api/overview?view=graph-rest-1.0)<br>[Abrufen von Rollenzuweisungen](/graph/api/directoryrole-list?view=graph-rest-1.0)
+SharePoint Online | [Azure AD-Administratorrollen](directory-assign-admin-roles.md)<br>Auch [Informationen zur SharePoint-Administratorrolle in Microsoft 365](/sharepoint/sharepoint-admin-role) | [Graph-API](/graph/api/overview?view=graph-rest-1.0)<br>[Abrufen von Rollenzuweisungen](/graph/api/directoryrole-list?view=graph-rest-1.0)
 Teams/Skype for Business | [Azure AD-Administratorrollen](directory-assign-admin-roles.md) | [Graph-API](/graph/api/overview?view=graph-rest-1.0)<br>[Abrufen von Rollenzuweisungen](/graph/api/directoryrole-list?view=graph-rest-1.0)
 Security & Compliance Center (Office 365 Advanced Threat Protection, Schutz für Exchange Online, Information Protection) | [Office 365-Administratorrollen](/office365/SecurityCompliance/permissions-in-the-security-and-compliance-center) | [Exchange PowerShell](/powershell/module/exchange/role-based-access-control/add-managementroleentry?view=exchange-ps)<br>[Abrufen von Rollenzuweisungen](/powershell/module/exchange/role-based-access-control/get-rolegroup?view=exchange-ps)
 Sicherheitsbewertung | [Azure AD-Administratorrollen](directory-assign-admin-roles.md) | [Graph-API](/graph/api/overview?view=graph-rest-1.0)<br>[Abrufen von Rollenzuweisungen](/graph/api/directoryrole-list?view=graph-rest-1.0)

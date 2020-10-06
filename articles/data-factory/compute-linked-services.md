@@ -1,6 +1,6 @@
 ---
 title: Von Azure Data Factory unterstützte Compute-Umgebungen
-description: Erfahren Sie mehr über Compute-Umgebungen, die in Azure Data Factory-Pipelines (wie z.B. Azure HDInsight) für die Transformation oder Verarbeitung von Daten verwendet werden können.
+description: Compute-Umgebungen, die in Azure Data Factory-Pipelines (wie z. B. Azure HDInsight) für die Transformation oder Verarbeitung von Daten verwendet werden können.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -10,12 +10,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.date: 05/08/2019
-ms.openlocfilehash: 98f3c96fe1d1e8dd0f73d0441db8319fc2241cd7
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 3d8e667cd96cc6d7091682a4530633588591d3a4
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563737"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483188"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Von Azure Data Factory unterstützte Compute-Umgebungen
 
@@ -33,7 +33,7 @@ Die folgende Tabelle enthält eine Liste von Compute-Umgebungen, die von Data Fa
 | [Azure Machine Learning](#azure-machine-learning-linked-service) | [Azure Machine Learning-Pipelineausführung](transform-data-machine-learning-service.md) |
 | [Azure Machine Learning](#azure-machine-learning-linked-service) | [Azure Machine Learning-Pipelineausführung](transform-data-machine-learning-service.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md) |
-| [Azure SQL](#azure-sql-database-linked-service), [Azure SQL Data Warehouse](#azure-sql-data-warehouse-linked-service), [SQL Server](#sql-server-linked-service) | [Gespeicherte Prozedur](transform-data-using-stored-procedure.md) |
+| [Azure SQL](#azure-sql-database-linked-service), [Azure Synapse Analytics (ehemals SQL Data Warehouse)](#azure-synapse-analytics-linked-service), [SQL Server](#sql-server-linked-service) | [Gespeicherte Prozedur](transform-data-using-stored-procedure.md) |
 | [Azure Databricks](#azure-databricks-linked-service)         | [Notebook](transform-data-databricks-notebook.md), [Jar](transform-data-databricks-jar.md), [Python](transform-data-databricks-python.md) |
 | [Azure-Funktion](#azure-function-linked-service)         | [Aktivität „Azure Function“](control-flow-azure-function-activity.md)
 >  
@@ -265,7 +265,7 @@ Diese Art von Konfiguration wird für die folgenden Compute-Umgebungen unterstü
 * Azure Batch
 * Azure Machine Learning
 * Azure Data Lake Analytics
-* Azure SQL DB, Azure SQL DW, SQL Server
+* Azure SQL DB, Azure Synapse Analytics, SQL Server
 
 ## <a name="azure-hdinsight-linked-service"></a>Mit Azure HDInsight verknüpfter Dienst
 Sie können einen verknüpften Azure HDInsight-Dienst erstellen, um Ihren eigenen HDInsight-Cluster für Data  Factory zu registrieren.
@@ -562,9 +562,9 @@ Sie können einen **mit Azure Databricks verknüpften Dienst** erstellen, um den
 
 Sie erstellen einen mit Azure SQL verknüpften Dienst und verwenden ihn mit der [Aktivität "Gespeicherte Prozedur"](transform-data-using-stored-procedure.md) zum Aufrufen einer gespeicherten Prozedur in einer Data Factory-Pipeline. Im Artikel [Azure SQL-Connector](connector-azure-sql-database.md#linked-service-properties) finden Sie weitere Informationen zu diesem verknüpften Dienst.
 
-## <a name="azure-sql-data-warehouse-linked-service"></a>Mit Azure SQL Data Warehouse verknüpfter Dienst
+## <a name="azure-synapse-analytics-linked-service"></a>Mit Azure Synapse Analytics verknüpfter Dienst
 
-Sie erstellen einen mit Azure SQL Data Warehouse verknüpften Dienst und verwenden ihn mit der [Aktivität „Gespeicherte Prozedur“](transform-data-using-stored-procedure.md) zum Aufrufen einer gespeicherten Prozedur in einer Data Factory-Pipeline. Im Artikel [Azure SQL Data Warehouse-Connector](connector-azure-sql-data-warehouse.md#linked-service-properties) finden Sie weitere Informationen zu diesem verknüpften Dienst.
+Sie erstellen einen mit Azure Synapse Analytics (ehemals SQL Data Warehouse) verknüpften Dienst und verwenden ihn mit der [Aktivität „Gespeicherte Prozedur“](transform-data-using-stored-procedure.md) zum Aufrufen einer gespeicherten Prozedur in einer Data Factory-Pipeline. Im Artikel [Azure Synapse Analytics-Connector (ehemals SQL Data Warehouse)](connector-azure-sql-data-warehouse.md#linked-service-properties) finden Sie weitere Informationen zu diesem verknüpften Dienst.
 
 ## <a name="sql-server-linked-service"></a>Mit SQL Server verknüpfter Dienst
 

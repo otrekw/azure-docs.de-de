@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f20da2d2ecb4426c0deb1c01591ead5933090f6
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 23ce2f02ef96a88b6bf4471377ce97a529dbd1a9
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716995"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706335"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln bei lokalen Ressourcen mit Azure Active Directory (Vorschauversion)
 
@@ -46,7 +46,7 @@ Organisationen müssen vor dem Ausführen der Schritte die im Artikel [Aktiviere
 
 Organisationen müssen auch die folgenden Softwareanforderungen erfüllen.
 
-- Auf den Geräten muss Windows 10 Insider Build 18945 (oder höher) ausgeführt werden.
+- Auf Geräten muss Windows 10 (2004 oder höher) ausgeführt werden.
 - Sie müssen [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect) 1.4.32.0 oder eine höhere Version verwenden.
   - Weitere Informationen zu den verfügbaren Authentifizierungsoptionen für Ihre Azure AD-Hybridlösung finden Sie unter [Auswählen der richtigen Authentifizierungsmethode für Ihre Azure Active Directory-Hybrididentitätslösung](../hybrid/choose-ad-authn.md) und [Auswählen des Installationstyps für Azure AD Connect](../hybrid/how-to-connect-install-select-installation.md).
 - Auf Ihren Windows Server-Domänencontrollern müssen die folgenden Patches installiert sein:
@@ -57,7 +57,7 @@ Organisationen müssen auch die folgenden Softwareanforderungen erfüllen.
 
 In den beiden folgenden Szenarien wird einmaliges Anmelden (Single Sign-On, SSO) unterstützt:
 
-- Für Cloudressourcen wie Office 365 und andere SAML-aktivierte Anwendungen.
+- Für Cloudressourcen wie Microsoft 365 und andere SAML-fähige Anwendungen.
 - Für lokale Ressourcen und die Windows-integrierte Authentifizierung bei Websites. Zu den Ressourcen können Websites und SharePoint-Websites zählen, die IIS-Authentifizierung erfordern, und/oder Ressourcen, die die NTLM-Authentifizierung verwenden.
 
 ### <a name="unsupported-scenarios"></a>Nicht unterstützte Szenarien

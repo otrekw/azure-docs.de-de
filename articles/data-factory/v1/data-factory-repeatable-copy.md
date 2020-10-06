@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7188cb5774699fc6e31fc3b8c78068bb33c6f552
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10476544e513b52567eb0ca0182039f2c5f482c3
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707292"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441628"
 ---
 # <a name="repeatable-copy-in-azure-data-factory"></a>Wiederholbare Kopiervorgänge in Azure Data Factory
 
@@ -104,7 +104,7 @@ Die Kopieraktivität hat das Bereinigungsskript ausgeführt, um die dem Slice en
 
 ### <a name="mechanism-2-using-sliceidentifiercolumnname"></a>Verfahren 2: mithilfe von sliceIdentifierColumnName
 > [!IMPORTANT]
-> Aktuell wird sliceIdentifierColumnName für Azure SQL Data Warehouse nicht unterstützt. 
+> Aktuell wird sliceIdentifierColumnName für Azure Synapse Analytics (ehemals SQL Data Warehouse) nicht unterstützt. 
 
 Das zweite Verfahren zum Erreichen von Wiederholbarkeit besteht in der Verwendung einer dedizierten Spalte (sliceIdentifierColumnName) in der Zieltabelle. Diese Spalte wird von Azure Data Factory verwendet, um sicherzustellen, dass Quell- und Zielserver synchron bleiben. Dieser Ansatz funktioniert, wenn das Schema der SQL-Zieltabelle flexibel geändert oder definiert werden kann. 
 
@@ -151,5 +151,5 @@ Azure Data Factory füllt diese Spalte den Anforderungen entsprechend auf, um si
 Gehen Sie die folgenden Connector-Artikel durch, um vollständige JSON-Beispiele zu finden: 
 
 - [Azure SQL-Datenbank](data-factory-azure-sql-connector.md)
-- [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md)
+- [Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md)
 - [SQL Server](data-factory-sqlserver-connector.md)

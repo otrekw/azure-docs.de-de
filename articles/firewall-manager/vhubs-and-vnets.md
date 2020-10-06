@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: article
-ms.date: 06/30/2020
+ms.date: 09/14/2020
 ms.author: victorh
-ms.openlocfilehash: 7a06111fbe38f167ddf3512fdb312d7de754a738
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 71ff23e749139087f24da406474403167dcc1c0d
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563578"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563147"
 ---
 # <a name="what-are-the-azure-firewall-manager-architecture-options"></a>Welche Optionen bietet die Azure Firewall Manager-Architektur?
 
@@ -44,6 +44,7 @@ In der folgenden Tabelle werden diese beiden Architekturoptionen miteinander ver
 |**Unterstützung mehrerer Sicherheitsanbieter**|Unterstützt mit manuell konfiguriertem erzwungenem Tunneling zu Firewalls von Drittanbietern|Automatisierte Unterstützung für zwei Sicherheitsanbieter: Azure Firewall für Filterung des privaten Datenverkehrs und Drittanbieter für Internetfilterung|
 |**Web Application Firewall auf Application Gateway** |Unterstützt in virtuellem Netzwerk|Derzeit in Spoke-Netzwerk unterstützt|
 |**Virtuelles Netzwerkgerät**|Unterstützt in virtuellem Netzwerk|Derzeit in Spoke-Netzwerk unterstützt|
+|**Unterstützung für Azure DDoS Protection Standard**|Ja|Nein|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

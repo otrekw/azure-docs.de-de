@@ -2,13 +2,13 @@
 title: Abhängigkeitsanalyse in der Azure Migrate-Serverbewertung
 description: Hier wird beschrieben, wie Sie die Abhängigkeitsanalyse zur Bewertung mithilfe der Azure Migrate-Serverbewertung verwenden.
 ms.topic: conceptual
-ms.date: 06/14/2020
-ms.openlocfilehash: 386a8cefce722c4bff09e2a7fe6d25957630ff61
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 09/15/2020
+ms.openlocfilehash: a284d549f13595e0ce8a5d06cc017602e559b648
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118799"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530249"
 ---
 # <a name="dependency-analysis"></a>Abhängigkeitsanalyse
 
@@ -75,7 +75,7 @@ Die Unterschiede zwischen der Visualisierung ohne Agent und der Agent-basierten 
 --- | --- | ---
 **Unterstützung** | Nur für VMware-VMS als Vorschauversion verfügbar. [Lesen](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) Sie den Artikel zu den unterstützten Betriebssystemen. | In der allgemeinen Verfügbarkeit (General Availability, GA).
 **Agent** | Auf Computern, die Sie analysieren möchten, sind kein Agents erforderlich. | Auf jedem lokalen Computer, den Sie analysieren möchten, sind Agents erforderlich:
-**Log Analytics** | Nicht erforderlich. | Azure Migrate verwendet für die Abhängigkeitsanalyse die [Dienstzuordnungslösung](../azure-monitor/insights/service-map.md) in [Azure Monitor-Protokolle](../azure-monitor/log-query/log-query-overview.md). 
+**Log Analytics** | Nicht erforderlich. | Azure Migrate verwendet für die Abhängigkeitsanalyse die [Dienstzuordnungslösung](../azure-monitor/insights/service-map.md) in [Azure Monitor-Protokolle](../azure-monitor/log-query/log-query-overview.md).<br/><br/> Sie ordnen einem Azure Migrate-Projekt einen Log Analytics-Arbeitsbereich zu. Der Arbeitsbereich muss sich in einer der Regionen „USA, Osten“, „Asien, Südosten“ oder „Europa, Westen“ befinden. Der Arbeitsbereich muss sich in einer Region befinden, in der die [Dienstzuordnung unterstützt wird](../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions).
 **Prozess** | Erfasst TCP-Verbindungsdaten. Nach der Ermittlung werden Daten in Abständen von fünf Minuten gesammelt. | Auf einem Computer installierte Agents für die Dienstzuordnung sammeln Daten über TCP-Prozesse und ein-/ausgehende Verbindungen für die einzelnen Prozesse.
 **Daten** | Servername des Quellcomputers, Prozess, Anwendungsname.<br/><br/> Servername des Zielcomputers, Prozess, Anwendungsname und Port. | Servername des Quellcomputers, Prozess, Anwendungsname.<br/><br/> Servername des Zielcomputers, Prozess, Anwendungsname und Port.<br/><br/> Anzahl der Verbindungen, Wartezeiten und Datenübertragungsinformationen werden gesammelt und stehen für Log Analytics-Abfragen zur Verfügung. 
 **Visualisierung** | Das Abhängigkeitsdiagramm eines einzelnen Servers kann über eine Dauer von einer Stunde bis hin zu 30 Tagen angezeigt werden. | Abhängigkeitsdiagramm eines einzelnen Servers.<br/><br/> Abhängigkeitsdiagramm für eine Gruppe von Servern.<br/><br/>  Das Diagramm kann nur über eine Stunde angezeigt werden.<br/><br/> Hinzufügen und Entfernen von Servern in einer Gruppe aus der Diagrammansicht.

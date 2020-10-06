@@ -7,19 +7,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 04/15/2020
-ms.openlocfilehash: 81069b0340202a0a481522ef1920806026ebcbe1
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 09/04/2020
+ms.openlocfilehash: c52fabcfc2ff22df2de6dd93f2543d625310baef
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119394"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484340"
 ---
 # <a name="publishing-guide-for-container-offers"></a>Leitfaden für die Veröffentlichung von Containerangeboten
 
 Containerangebote erleichtern Ihnen die Veröffentlichung Ihres Containerimages im Azure Marketplace. Informieren Sie sich in diesem Handbuch über die Anforderungen für dieses Angebot. 
 
-Containerangebote sind Transaktionsangebote, die über den Azure Marketplace bereitgestellt und abgerechnet werden. Die Benutzer sehen hier den Aktionsaufruf „Jetzt kaufen“.
+Containerangebote sind Transaktionsangebote, die über den Azure Marketplace bereitgestellt und abgerechnet werden. Den Benutzern wird die Listenoption „Jetzt kaufen“ angezeigt.
 
 Verwenden Sie den Angebotstyp *Container*, wenn Ihre Lösung ein Docker-Container-Image ist, das als Kubernetes-basierte Azure Container Service-Instanz eingerichtet wird. 
 

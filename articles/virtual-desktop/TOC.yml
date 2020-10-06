@@ -34,6 +34,8 @@
           href: connect-macos.md
         - name: Herstellen einer Verbindung mit dem iOS-Client
           href: connect-ios.md
+        - name: "Herstellen einer Verbindung mit dem Microsoft\_Store-Client"
+          href: connect-microsoft-store.md
     - name: Einrichten des PowerShell-Moduls
       href: powershell-module.md
     - name: Einen Hostpool und Sitzungshosts erstellen

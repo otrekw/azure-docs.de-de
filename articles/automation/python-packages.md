@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 02/25/2019
 ms.topic: conceptual
 ms.custom: devx-track-python
-ms.openlocfilehash: 0b0fab40eb95fabd4b74e809c9e6cd6f6573f513
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 1ab0b2def1a22470c1d0b6339e1525cd683b4a0b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852904"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987559"
 ---
 # <a name="manage-python-2-packages-in-azure-automation"></a>Verwalten von Python 2-Paketen in Azure Automation
 
@@ -21,15 +21,15 @@ Mit Azure Automation können Sie Python 2-Runbooks in Azure und Hybrid Runbook W
 
 Wählen Sie in Ihrem Automation-Konto unter **Python 2-Pakete** die Option **Freigegebene Ressourcen** aus. Klicken Sie auf **Python 2-Paket hinzufügen**.
 
-![Hinzufügen eines Python-Pakets](media/python-packages/add-python-package.png)
+:::image type="content" source="media/python-packages/add-python-package.png" alt-text="Screenshot mit der Seite „Python 2-Pakete“ mit Python 2-Paketen im linken Menü und Hervorhebung von „Python 2-Paket hinzufügen“.":::
 
 Wählen Sie auf der Seite „Python 2-Paket hinzufügen“ ein lokales Paket für den Upload aus. Das Paket kann eine Datei im Format **.whl** oder **.tar.gz** sein. Klicken Sie nach der Auswahl des Pakets auf **OK**, um es hochzuladen.
 
-![Hinzufügen eines Python-Pakets](media/python-packages/upload-package.png)
+:::image type="content" source="media/python-packages/upload-package.png" alt-text="Screenshot mit der Seite „Python 2-Pakete“ mit Python 2-Paketen im linken Menü und Hervorhebung von „Python 2-Paket hinzufügen“.":::
 
 Sobald ein Paket importiert wurde, wird es in Ihrem Automation-Konto auf der Seite „Python 2-Pakete“ aufgelistet. Um ein Paket zu entfernen, wählen Sie das Paket aus, und klicken Sie dann auf **Löschen**.
 
-![Paketliste](media/python-packages/package-list.png)
+:::image type="content" source="media/python-packages/package-list.png" alt-text="Screenshot mit der Seite „Python 2-Pakete“ mit Python 2-Paketen im linken Menü und Hervorhebung von „Python 2-Paket hinzufügen“.":::
 
 ## <a name="import-packages-with-dependencies"></a>Importieren von Paketen mit Abhängigkeiten
 
@@ -54,7 +54,7 @@ Sobald die Pakete heruntergeladen sind, können Sie sie in Ihr Automation-Konto 
 * -a \<automationAccount\>
 * -m \<modulePackage\>
 
-![Paketliste](media/python-packages/import-python-runbook.png)
+:::image type="content" source="media/python-packages/import-python-runbook.png" alt-text="Screenshot mit der Seite „Python 2-Pakete“ mit Python 2-Paketen im linken Menü und Hervorhebung von „Python 2-Paket hinzufügen“.":::
 
 Mithilfe des Runbooks können Sie angeben, welches Paket heruntergeladen werden soll. Verwenden Sie beispielsweise den `Azure`-Parameter, um alle Azure-Module und alle Abhängigkeiten (etwa 105) herunterzuladen.
 

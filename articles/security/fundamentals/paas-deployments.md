@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 9adbe7b03283a00f78222ffdc77dca7aaadcbda0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53a41c3921ee92b1ec79edf95999c97f80cbce45
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81461700"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462359"
 ---
 # <a name="securing-paas-deployments"></a>Schützen von PaaS-Bereitstellungen
 
@@ -151,10 +151,10 @@ Fuzzing ist eine Methode zum Auffinden von Programmfehlern (Codefehlern) durch B
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel standen die Sicherheitsvorteile einer Azure-PaaS-Bereitstellung sowie bewährte Methoden für die Sicherheit von Cloudanwendungen im Vordergrund. Als Nächstes gehen wir auf bewährte Vorgehensweisen zum Schutz Ihrer webbasierten und mobilen PaaS-Lösungen mithilfe bestimmter Azure-Dienste ein. Wir beginnen mit Azure App Service, Azure SQL-Datenbank und Azure SQL Data Warehouse sowie Azure Storage. Sobald Artikel zu empfohlenen Vorgehensweisen für andere Azure-Dienste verfügbar sind, werden in der folgenden Liste entsprechende Links bereitgestellt:
+In diesem Artikel standen die Sicherheitsvorteile einer Azure-PaaS-Bereitstellung sowie bewährte Methoden für die Sicherheit von Cloudanwendungen im Vordergrund. Als Nächstes gehen wir auf bewährte Vorgehensweisen zum Schutz Ihrer webbasierten und mobilen PaaS-Lösungen mithilfe bestimmter Azure-Dienste ein. Wir beginnen mit Azure App Service, Azure SQL-Datenbank und Azure Synapse Analytics sowie Azure Storage. Sobald Artikel zu empfohlenen Vorgehensweisen für andere Azure-Dienste verfügbar sind, werden in der folgenden Liste entsprechende Links bereitgestellt:
 
 - [Azure App Service](paas-applications-using-app-services.md)
-- [Azure SQL-Datenbank und Azure SQL Data Warehouse](paas-applications-using-sql.md)
+- [Azure SQL Database und Azure Synapse Analytics](paas-applications-using-sql.md)
 - [Azure Storage (in englischer Sprache)](paas-applications-using-storage.md)
 - Azure Cache for Redis
 - Azure-Servicebus

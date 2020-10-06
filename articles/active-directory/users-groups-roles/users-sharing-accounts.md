@@ -4,23 +4,23 @@ description: Beschreibt, wie es Azure Active Directory Organisationen ermöglich
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: how-to
-ms.date: 08/01/2019
+ms.date: 09/02/2020
 ms.author: curtand
-ms.reviewer: jeffsta
+ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba22720901cf4b7505d8d5b5295ca4e0c271953f
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 019327436eaf2186e23068a5b0a1ac4b21b9fbe7
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798396"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055162"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Freigeben von Konten in Azure AD
 
@@ -29,7 +29,7 @@ ms.locfileid: "88798396"
 Es kann vorkommen, dass in Organisationen ein Benutzername und ein Kennwort für mehrere Personen verwendet werden müssen. Dies passiert normalerweise in den folgenden beiden Fällen:
 
 * Beim Zugreifen auf Anwendungen, für die ein eindeutiger Benutzername und ein Kennwort für jeden Benutzer erforderlich sind (hier kann es sich um lokale Apps oder Clouddienste für Verbraucher handeln, z.B. Unternehmenskonten für Social Media).
-* Beim Erstellen von Mehrbenutzerumgebungen. Beispielsweise verfügen Sie ggf. über ein einzelnes lokales Konto mit erhöhten Rechten, das für die grundlegende Einrichtung sowie für Verwaltungs- und Wiederherstellungsaktivitäten verwendet wird. Ein Beispiel hierfür ist das lokale Konto „Globaler Administrator“ für Office 365 oder das Stammkonto in Salesforce.
+* Beim Erstellen von Mehrbenutzerumgebungen. Beispielsweise verfügen Sie ggf. über ein einzelnes lokales Konto mit erhöhten Rechten, das für die grundlegende Einrichtung sowie für Verwaltungs- und Wiederherstellungsaktivitäten verwendet wird. Ein Beispiel hierfür ist das lokale Konto „Globaler Administrator“ für Microsoft 365 oder das Stammkonto in Salesforce.
 
 Normalerweise werden diese Konten gemeinsam genutzt, indem die Anmeldeinformationen (Benutzername und Kennwort) an geeignete Personen verteilt oder an gemeinsam genutzten Orten aufbewahrt werden, auf die vertrauenswürdige Personen Zugriff haben.
 

@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4703a7d1928415d78eae63c42051542b035d3b1a
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: ca42ddbc648f7c342b1cd649c19b77df803257d8
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798357"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979825"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>Genehmigen oder Ablehnen von Zugriffsanforderungen in der Azure AD-Berechtigungsverwaltung
 
@@ -48,6 +48,22 @@ Wenn Sie nicht über die E-Mail verfügen, können Sie die Zugriffsanforderungen
 1. Klicken Sie im linken Menü auf **Genehmigungen**, um eine Liste der Zugriffsanforderungen anzuzeigen, deren Genehmigung aussteht.
 
 1. Auf der Registerkarte **Ausstehend** können Sie die Anforderung finden.
+
+## <a name="view-requestors-answers-to-questions-preview"></a>Anzeigen der Antworten von Anforderern auf Fragen (Vorschau)
+
+1. Navigieren Sie in „Mein Zugriff“ zur Registerkarte **Genehmigungen**.
+
+1. Wechseln Sie zur Anforderung, die Sie genehmigen möchten, und klicken Sie auf **Details**. Sie können auch auf **Genehmigen** oder **Ablehnen** klicken, wenn Sie bereit sind, eine Entscheidung zu treffen.
+
+1. Klicken Sie auf **Anforderungsdetails**.
+
+     ![Portal „Mein Zugriff“ –Zugriffsanforderung – Auf „Anforderungsdetails“ klicken](./media/entitlement-management-request-approve/requestor-information-request-details.png)
+
+1. Die vom Anforderer bereitgestellten Informationen befinden sich am unteren Rand des Panels.
+
+     ![Portal „Mein Zugriff“ – Zugriffsanforderung](./media/entitlement-management-request-approve/requestor-information-requestor-answers.png)
+
+1. Basierend auf den Informationen, die der Anforderer bereitgestellt hat, können Sie die Anforderung genehmigen oder ablehnen. Anleitungen hierzu finden Sie in den Schritten unter „Genehmigen oder Ablehnen einer Anforderung“.
 
 ## <a name="approve-or-deny-request"></a>Genehmigen oder Ablehnen einer Anforderung
 

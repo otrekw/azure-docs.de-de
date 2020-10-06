@@ -1,14 +1,14 @@
 ---
 title: Azure Migrate-Appliance
-description: Bietet einen Überblick über die Azure Migrate-Appliance, die bei der Serverbewertung und -migration verwendet wird.
+description: Zusammenfassung der Unterstützung der Azure Migrate-Appliance.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: a313d7b964e6ea849acb5b034ed55975b8c5b524
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: e2bd3f2fa40bbf31713393f18a04624d70cbd244
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927504"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084769"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-Appliance
 
@@ -71,7 +71,7 @@ In der folgenden Tabelle sind die Anforderungen der Azure Migrate-Appliance für
 **PowerShell-Skript** | Weitere Informationen finden Sie in diesem [Artikel](./deploy-appliance-script.md#set-up-the-appliance-for-hyper-v).<br/><br/> 
 **Software/Hardware***   |  Die Appliance sollte auf einem Computer mit Windows Server 2016, 16 GB RAM, 8 vCPUs, etwa 80 GB Speicherplatz und einem externen virtuellen Switch ausgeführt werden.<br/> Die Appliance erfordert eine statische oder dynamische IP-Adresse sowie Zugriff auf das Internet, entweder direkt oder über einen Proxy.<br/><br/> Wenn Sie die Appliance als virtuellen Hyper-V-Computer ausführen, benötigen Sie ausreichend Ressourcen auf dem Hyper-V-Host, um 16 GB RAM, 8 vCPUs, ca. 80 GB Speicherplatz und einen externen Switch für den virtuellen Computer der Appliance zuzuweisen.<br/><br/> Wenn Sie die Appliance auf einem physischen Computer ausführen, stellen Sie sicher, dass sie unter Windows Server 2016 läuft und die Hardwareanforderungen erfüllt. 
 **Hyper-V-Anforderungen** | Wenn Sie die Appliance mit der VHD-Vorlage bereitstellen, entspricht die von Azure Migrate bereitgestellte Appliance der Hyper-V VM Version 5.0.<br/><br/> Auf dem Hyper-V-Host muss mindestens Windows Server 2012 R2 ausgeführt werden. 
-**Hashwert-VHD** | [Überprüfen](tutorial-assess-hyper-v.md#verify-security) Sie die VHD-Vorlagenhashwerte.
+**Hashwert-VHD** | Hashwerte der VHD-Vorlage.
 **Hashwert-PowerShell-Skript** | [Überprüfen](deploy-appliance-script.md#verify-file-security) Sie die PowerShell-Skripthashwerte.
 
 
@@ -84,7 +84,7 @@ In der folgenden Tabelle sind die Anforderungen der Azure Migrate-Appliance für
 **Unterstützte Bereitstellung** | Bereitstellen als dedizierter physischer Computer oder als virtueller Computer mithilfe eines PowerShell-Installationsskripts. Das Skript steht im Portal als Download zur Verfügung.
 **Projektunterstützung** |  Eine Appliance kann einem einzelnen Projekt zugeordnet werden. <br/> Einem einzelnen Projekt kann eine beliebige Anzahl von Appliances zugeordnet werden.<br/> 
 **Ermittlungsgrenzwerte** | Eine Appliance kann bis zu 1.000 physische Server ermitteln.
-**PowerShell-Skript** | Laden Sie das Skript (AzureMigrateInstaller.ps1) in einem gezippten Ordner aus dem Portal oder [hier](https://go.microsoft.com/fwlink/?linkid=2140334) herunter. [Weitere Informationen](tutorial-assess-physical.md#set-up-the-azure-migrate-appliance)<br/><br/> Die Downloadgröße beträgt 85 MB.
+**PowerShell-Skript** | Laden Sie das Skript (AzureMigrateInstaller.ps1) in einem gezippten Ordner aus dem Portal oder [hier](https://go.microsoft.com/fwlink/?linkid=2140334) herunter. [Weitere Informationen](tutorial-discover-physical.md)<br/><br/> Die Downloadgröße beträgt 85 MB.
 **Software/Hardware** |  Die Appliance sollte auf einem Computer mit Windows Server 2016, 16 GB RAM, 8 vCPUs, etwa 80 GB Speicherplatz und einem externen virtuellen Switch ausgeführt werden.<br/> Die Appliance erfordert eine statische oder dynamische IP-Adresse sowie Zugriff auf das Internet, entweder direkt oder über einen Proxy.<br/><br/> Wenn Sie die Appliance auf einem physischen Computer ausführen, stellen Sie sicher, dass sie unter Windows Server 2016 läuft und die Hardwareanforderungen erfüllt.<br/> Das Ausführen der Appliance auf einem Computer mit Windows Server 2019 wird nicht unterstützt.
 **Hashwert** | [Überprüfen](deploy-appliance-script.md#verify-file-security) Sie die PowerShell-Skripthashwerte.
 
@@ -101,7 +101,7 @@ Das Azure Migrate-Gerät muss mit dem Internet verbunden sein.
 **URL** | **Details**  
 --- | --- |
 *.portal.azure.com  | Navigieren Sie zum Azure-Portal.
-*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com | Melden Sie sich bei Ihrem Azure-Abonnement an.
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com <br/> *.office.com | Melden Sie sich bei Ihrem Azure-Abonnement an.
 *.microsoftonline.com <br/> *.microsoftonline-p.com | Erstellen von Azure Active Directory-Apps (AD) für die Kommunikation zwischen der Appliance und Azure Migrate.
 management.azure.com | Erstellen von Azure AD-Apps, damit die Appliance mit dem Azure Migrate-Service kommunizieren kann.
 *.services.visualstudio.com | Laden Sie App-Protokolle hoch, die für die interne Überwachung verwendet werden.
@@ -121,7 +121,7 @@ download.microsoft.com/download | Zulassen von Downloads von Microsoft Download 
 graph.windows.net | Melden Sie sich bei Ihrem Azure-Abonnement an.
 login.microsoftonline.us  | Erstellen von Azure Active Directory-Apps (AD) für die Kommunikation zwischen der Appliance und Azure Migrate.
 management.usgovcloudapi.net | Erstellen von Azure AD-Apps, damit die Appliance mit dem Azure Migrate-Service kommunizieren kann.
-dc.services.visualstudio.com | Laden Sie App-Protokolle hoch, die für die interne Überwachung verwendet werden.
+*.services.visualstudio.com | Laden Sie App-Protokolle hoch, die für die interne Überwachung verwendet werden.
 *.vault.usgovcloudapi.net | Verwalten von Geheimnissen in Azure Key Vault
 aka.ms/* | Zulassen des Zugriffs auf aka-Links Wird für Updates der Azure Migrate-Appliance verwendet.
 download.microsoft.com/download | Zulassen von Downloads von Microsoft Download Center

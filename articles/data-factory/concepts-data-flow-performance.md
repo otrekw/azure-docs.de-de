@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 08/12/2020
-ms.openlocfilehash: cf91dd0b7f16bf0dcd3d84da1b942b2353ec5bd0
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 51d9880c654a6ecabbbab294016293113bffb655
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212032"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434230"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Anleitung zur Leistung und Optimierung der Mapping Data Flow-Funktion
 
@@ -126,7 +126,7 @@ Die Preise von Datenflüssen werden nach „Stunden der virtuellen Kerne“ bere
 
 ### <a name="time-to-live"></a>Gültigkeitsdauer
 
-Standardmäßig startet jede Datenflussaktivität basierend auf der IR-Konfiguration einen neuen Cluster. Das Starten des Clusters dauert einige Minuten, und die Datenverarbeitung kann erst gestartet werden, nachdem dieser Vorgang abgeschlossen ist. Wenn Ihre Pipelines mehrere **sequenzielle** Datenflüsse enthalten, können Sie einen Wert für die Gültigkeitsdauer aktivieren. Bei Angabe eines Werts für die Gültigkeitsdauer bleibt ein Cluster nach Abschluss der Ausführung noch eine bestimmte Zeit aktiv. Falls die IR während der Gültigkeitsdauer von einem neuen Auftrag genutzt wird, wird der vorhandene Cluster wiederverwendet, und die Startzeit beträgt nicht mehrere Minuten, sondern nur wenige Sekunden. Nachdem der zweite Auftrag abgeschlossen ist, bleibt der Cluster erneut so lange aktiv, wie dies durch die Gültigkeitsdauer vorgegeben ist.
+Standardmäßig startet jede Datenflussaktivität basierend auf der IR-Konfiguration einen neuen Cluster. Das Starten des Clusters dauert einige Minuten, und die Datenverarbeitung kann erst gestartet werden, nachdem dieser Vorgang abgeschlossen ist. Wenn Ihre Pipelines mehrere **sequenzielle** Datenflüsse enthalten, können Sie einen Wert für die Gültigkeitsdauer aktivieren. Bei Angabe eines Werts für die Gültigkeitsdauer bleibt ein Cluster nach Abschluss der Ausführung noch eine bestimmte Zeit aktiv. Falls die IR während der Gültigkeitsdauer von einem neuen Auftrag genutzt wird, wird der vorhandene Cluster wiederverwendet und die Startzeit beträchtlich verkürzt. Nachdem der zweite Auftrag abgeschlossen ist, bleibt der Cluster erneut so lange aktiv, wie dies durch die Gültigkeitsdauer vorgegeben ist.
 
 In einem Cluster kann jeweils nur ein Auftrag ausgeführt werden. Wenn ein Cluster verfügbar ist, aber zwei Datenflüsse gestartet werden, wird er nur für einen davon verwendet. Für den zweiten Auftrag wird ein eigener isolierter Cluster gestartet.
 

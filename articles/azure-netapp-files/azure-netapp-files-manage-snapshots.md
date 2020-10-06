@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/26/2020
+ms.date: 09/04/2020
 ms.author: b-juche
-ms.openlocfilehash: d70558efb1ea54f069981062e5379d995dbeddd2
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 405d872c178a3172454943b7d40ea276ea5c017e
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950339"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459075"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Verwalten von Momentaufnahmen mithilfe von Azure NetApp Files
 
-Azure NetApp Files unterstützt das Erstellen bedarfsgesteuerter Momentaufnahmen und das Verwenden von Momentaufnahmenrichtlinien zum Planen der automatischen Erstellung von Momentaufnahmen.  Sie können eine Momentaufnahme auch für ein neues Volume wiederherstellen.  
+Azure NetApp Files unterstützt das Erstellen bedarfsgesteuerter Momentaufnahmen und das Verwenden von Momentaufnahmenrichtlinien zum Planen der automatischen Erstellung von Momentaufnahmen.  Sie können auch eine Momentaufnahme auf einem neuen Volume wiederherstellen oder eine einzelne Datei mithilfe eines Clients wiederherstellen.  
 
 ## <a name="create-an-on-demand-snapshot-for-a-volume"></a>Erstellen einer Momentaufnahme bei Bedarf für ein Volume
 
@@ -122,7 +122,7 @@ Sie können eine vorhandene Momentaufnahmenrichtlinie ändern, um den Richtlinie
  
 1.  Klicken Sie in der Ansicht für das NetApp-Konto auf **	Momentaufnahmenrichtlinie**.
 
-2.  Klicken Sie mit der rechten Maustaste auf die Momentaufnahmenrichtlinie, die Sie ändern möchten, und klicken Sie dann auf **Bearbeiten**.
+2.  Klicken Sie mit der rechten Maustaste auf die Momentaufnahmenrichtlinie, die Sie ändern möchten, und wählen Sie dann **Bearbeiten** aus.
 
     ![Rechtsklicken für Menü zum Bearbeiten der Momentaufnahmenrichtlinie](../media/azure-netapp-files/snapshot-policy-right-click-menu.png) 
 
@@ -134,7 +134,7 @@ Sie können eine Momentaufnahmenrichtlinie löschen, die Sie nicht mehr beibehal
 
 1.  Klicken Sie in der Ansicht für das NetApp-Konto auf **	Momentaufnahmenrichtlinie**.
 
-2.  Klicken Sie mit der rechten Maustaste auf die Momentaufnahmenrichtlinie, die Sie ändern möchten, und klicken Sie dann auf **Löschen**.
+2.  Klicken Sie mit der rechten Maustaste auf die Momentaufnahmenrichtlinie, die Sie ändern möchten, und wählen Sie dann **Löschen** aus.
 
     ![Rechtsklicken für Menü zum Bearbeiten der Momentaufnahmenrichtlinie](../media/azure-netapp-files/snapshot-policy-right-click-menu.png) 
 
@@ -165,7 +165,62 @@ Derzeit können Sie eine Momentaufnahme nur auf einem neuen Volume wiederherstel
     Das neue Volume verwendet das gleiche Protokoll wie die Momentaufnahme.   
     Das neue Volume, auf dem die Momentaufnahme wiederhergestellt wurde, wird auf dem Blatt „Volumes“ angezeigt.
 
+## <a name="restore-a-file-from-a-snapshot-using-a-client"></a>Wiederherstellen einer Datei aus einer Momentaufnahme mithilfe eines Clients
+
+Wenn Sie nicht [die gesamte Momentaufnahme auf einem Volume wiederherstellen](#restore-a-snapshot-to-a-new-volume) möchten, haben Sie die Möglichkeit, eine Datei aus einer Momentaufnahme wiederherzustellen, und zwar mithilfe eines Clients, der das Volume eingebunden hat.  
+
+Das eingebundene Volume enthält ein Momentaufnahmeverzeichnis namens `.snapshot` (in NFS-Clients) oder `~snapshot` (bei SMB-Clients), auf das der Client Zugriff hat. Das Momentaufnahmeverzeichnis enthält Unterverzeichnisse, die den Momentaufnahmen des Volumes entsprechen. Jedes Unterverzeichnis enthält die Dateien der Momentaufnahme. Wenn Sie versehentlich eine Datei löschen oder überschreiben, können Sie die Datei im übergeordneten Lese-/Schreibverzeichnis wiederherstellen, indem Sie die Datei aus einem Unterverzeichnis der Momentaufnahme in das Lese-/Schreibverzeichnis kopieren. 
+
+Wenn Sie das beim Erstellen des Volumes Kontrollkästchen „Momentaufnahmepfad ausblenden“ aktiviert haben, wird das Momentaufnahmeverzeichnis ausgeblendet. Sie können den Status für „Momentaufnahmepfad ausblenden“ des Volumes einsehen, indem Sie das Volume auswählen. Sie können die Option „Momentaufnahmepfad ausblenden“ bearbeiten, indem Sie auf der Seite des Volumes auf **Bearbeiten** klicken.  
+
+![Optionen zum Bearbeiten von Volumemomentaufnahmen](../media/azure-netapp-files/volume-edit-snapshot-options.png) 
+
+### <a name="restore-a-file-by-using-a-linux-nfs-client"></a>Wiederherstellen einer Datei mithilfe eines Linux-NFS-Clients 
+
+1. Führen Sie den Linux-Befehl `ls` aus, um die Datei aufzulisten, die Sie aus dem Verzeichnis `.snapshot` wiederherstellen möchten. 
+
+    Beispiel:
+
+    `$ ls my.txt`   
+    `ls: my.txt: No such file or directory`   
+
+    `$ ls .snapshot`   
+    `daily.2020-05-14_0013/              hourly.2020-05-15_1106/`   
+    `daily.2020-05-15_0012/              hourly.2020-05-15_1206/`   
+    `hourly.2020-05-15_1006/             hourly.2020-05-15_1306/`   
+
+    `$ ls .snapshot/hourly.2020-05-15_1306/my.txt`   
+    `my.txt`
+
+2. Führen Sie den Befehl `cp` aus, um die Datei in das übergeordnete Verzeichnis zu kopieren.  
+
+    Beispiel: 
+
+    `$ cp .snapshot/hourly.2020-05-15_1306/my.txt .`   
+
+    `$ ls my.txt`   
+    `my.txt`   
+
+### <a name="restore-a-file-by-using-a-windows-client"></a>Wiederherstellen einer Datei mithilfe eines Windows-Clients 
+
+1. Wenn das Verzeichnis `~snapshot` des Volumes ausgeblendet ist, [blenden Sie ausgeblendete Elemente](https://support.microsoft.com/help/4028316/windows-view-hidden-files-and-folders-in-windows-10) im übergeordneten Verzeichnis ein, um `~snapshot` anzuzeigen.
+
+    ![Ausgeblendete Elemente anzeigen](../media/azure-netapp-files/snapshot-show-hidden.png) 
+
+2. Navigieren Sie zum Unterverzeichnis innerhalb von `~snapshot`, um die Datei zu finden, die Sie wiederherstellen möchten.  Klicken Sie mit der rechten Maustaste auf die Datei. Wählen Sie **Kopieren** aus.  
+
+    ![Kopieren der wiederherzustellenden Datei](../media/azure-netapp-files/snapshot-copy-file-restore.png) 
+
+3. Kehren Sie zum übergeordneten Verzeichnis zurück. Klicken Sie mit der rechten Maustaste in das übergeordnete Verzeichnis, und wählen Sie `Paste` aus, um die Datei in das Verzeichnis einzufügen.
+
+    ![Einfügen der wiederherzustellenden Datei](../media/azure-netapp-files/snapshot-paste-file-restore.png) 
+
+4. Sie können auch mit der rechten Maustaste auf das übergeordnete Verzeichnis klicken, **Eigenschaften** auswählen, auf die Registerkarte **Vorherige Versionen** klicken, um die Liste der Momentaufnahmen anzuzeigen, und **Wiederherstellen** auswählen, um eine Datei wiederherzustellen.  
+
+    ![Eigenschaften vorheriger Versionen](../media/azure-netapp-files/snapshot-properties-previous-version.png) 
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Grundlegendes zur Speicherhierarchie von Azure NetApp Files](azure-netapp-files-understand-storage-hierarchy.md)
 * [Ressourcenlimits für Azure NetApp Files](azure-netapp-files-resource-limits.md)
+* [Video „Azure NetApp Files Snapshots 101“](https://www.youtube.com/watch?v=uxbTXhtXCkw&feature=youtu.be)

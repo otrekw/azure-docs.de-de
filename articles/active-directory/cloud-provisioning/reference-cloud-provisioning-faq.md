@@ -11,12 +11,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efcf2df4e472d022fcdec0c9b7c69c73192c503f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 622d38e09f65d05d7cba7a34f30a070c27d3fd37
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518469"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658376"
 ---
 # <a name="azure-active-directory-connect-cloud-provisioning-faq"></a>Häufig gestellte Fragen zur Azure Active Directory Connect-Cloudbereitstellung
 
@@ -74,7 +74,7 @@ Wenn Sie die Konfiguration löschen, werden die synchronisierten Objekte in Azur
 
 **F:  Was bedeutet es, dass das Exchange-Hybridbereitstellungsfeature nicht unterstützt wird?**
 
-Das Exchange-Hybridbereitstellungsfeature ermöglicht die Koexistenz lokaler und Office 365-basierter Exchange-Postfächer. Azure AD Connect synchronisiert eine bestimmte Gruppe von Attributen aus Azure AD mit Ihrem lokalen Verzeichnis.  Der Agent für die Cloudbereitstellung synchronisiert diese Attribute aktuell nicht mit Ihrem lokalen Verzeichnis und wird daher nicht als Ersatz für Azure AD Connect unterstützt.
+Das Feature „Exchange-Hybridbereitstellung“ ermöglicht die Koexistenz lokaler und Microsoft 365-basierter Exchange-Postfächer. Azure AD Connect synchronisiert eine bestimmte Gruppe von Attributen aus Azure AD mit Ihrem lokalen Verzeichnis.  Der Agent für die Cloudbereitstellung synchronisiert diese Attribute aktuell nicht mit Ihrem lokalen Verzeichnis und wird daher nicht als Ersatz für Azure AD Connect unterstützt.
 
 **F:  Kann ich den Agent für die Cloudbereitstellung unter Windows Server Core installieren?**
 

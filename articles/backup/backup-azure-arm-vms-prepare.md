@@ -3,12 +3,12 @@ title: Sichern virtueller Azure-Computer in einem Recovery Services-Tresor
 description: Beschreibt das Sichern virtueller Azure-Computer in einem Recovery Services-Tresor mit Azure Backup
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 29895c0358547679a9db7b2f4da203e2b546d67f
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 28cc995afc131e747314032c1363f73531e6915c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89145653"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986514"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Sichern virtueller Azure-Computer in einem Recovery Services-Tresor
 
@@ -41,10 +41,11 @@ Darüber hinaus gibt es einige Schritte, die Sie in bestimmten Fällen mögliche
 
 ### <a name="modify-storage-replication"></a>Ändern der Speicherreplikation
 
-Tresore verwenden standardmäßig den [georedundanten Speicher (GRS)](../storage/common/storage-redundancy.md).
+Tresore verwenden standardmäßig den [georedundanten Speicher (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage).
 
 * Wenn der Tresor Ihr Hauptmechanismus für Sicherungen ist, empfehlen wir die Verwendung von GRS.
-* Sie können als kostengünstigere Option [Lokal redundanter Speicher (LRS)](../storage/common/storage-redundancy.md?toc=/azure/storage/blobs/toc.json) verwenden.
+* Sie können als kostengünstigere Option [Lokal redundanter Speicher (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) verwenden.
+* [Zonenredundanter Speicher (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) repliziert Ihre Daten in [Verfügbarkeitszonen](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones) und gewährleistet dadurch Data Residency und Resilienz in derselben Region.
 
 Passen Sie die Speicherreplikationstyp wie folgt an:
 

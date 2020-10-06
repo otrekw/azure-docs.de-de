@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Daten der SQL-Datenbank von Azure Blockchain 
 ms.date: 04/22/2020
 ms.topic: how-to
 ms.reviewer: sunri
-ms.openlocfilehash: 2a5e67a8416c57c1a0cb039733a93608a8919be6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e0e585ce45616c2402972c725b502f4b704d1cd
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85214229"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532374"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-microsoft-power-bi"></a>Verwenden von Azure Blockchain Workbench-Daten mit Microsoft Power BI
 
@@ -41,7 +41,7 @@ Dieser Artikel enthält eine schrittweise exemplarische Vorgehensweise zum Herst
 
 6.  Sobald Sie eine Verbindung mit der Datenbank hergestellt haben, zeigt das Dialogfeld **Navigator** die in der Datenbank verfügbaren Tabellen und Sichten an. Die Sichten dienen der Berichterstellung und tragen alle das Präfix **vw**.
 
-    ![Navigator](./media/data-powerbi/navigator.png)
+    ![Bildschirmerfassung von Power BI Desktop mit Auswahl des Dialogfelds „Navigator“ und von vwContractAction.](./media/data-powerbi/navigator.png)
 
 7.  Wählen Sie die Sichten aus, die Sie einschließen möchten. Zu Demonstrationszwecken schließen wir **vwContractAction** ein. Diese Sicht enthält die Details für die Aktionen, die für einen Vertrag ausgeführt wurden.
 

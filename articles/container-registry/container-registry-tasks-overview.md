@@ -2,13 +2,13 @@
 title: Übersicht über ACR Tasks
 description: 'Einführung in ACR Tasks: eine Suite mit Features in Azure Container Registry für sichere, automatisierte Build- und Patchvorgänge für Containerimages und Verwaltung in der Cloud.'
 ms.topic: article
-ms.date: 01/22/2020
-ms.openlocfilehash: 4fda57c1d7c866f2e6f72b04d75e53f91e995baf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 08/12/2020
+ms.openlocfilehash: 24cc0415fe8756e900a8ea0ce7039f6b4710cf6f
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79087288"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488642"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Automatisieren von Containerimage-Builds und Wartung mit ACR Tasks
 
@@ -100,7 +100,7 @@ Weitere Informationen zu mehrstufigen Aufgaben finden Sie unter [Ausführen von 
 
 ## <a name="context-locations"></a>Kontextspeicherorte
 
-Die folgende Tabelle zeigt einige Beispiele von unterstützten Kontextspeicherorten für ACR Tasks:
+Die folgende Tabelle zeigt Beispiele von unterstützten Kontextspeicherorten für ACR Tasks:
 
 | Kontextspeicherort | BESCHREIBUNG | Beispiel |
 | ---------------- | ----------- | ------- |
@@ -111,6 +111,7 @@ Die folgende Tabelle zeigt einige Beispiele von unterstützten Kontextspeicheror
 | GitHub-Commit | Spezifischer Commit in ein öffentliches oder privates GitHub-Repository. Das Beispiel zeigt die Kombination aus einem Commit-Hash (SHA) und einer Unterordnerspezifikation. | `https://github.com/gituser/myapp-repo.git#git-commit-hash:myfolder` |
 | Azure DevOps-Unterordner | Dateien in einem Unterordner in einem öffentlichen oder privaten Azure-Repository. Das Beispiel zeigt die Kombination der Branch- und Unterordnerspezifikation. | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` |
 | Remotetarball | Dateien in einem komprimierten Archiv auf einem Remotewebserver. | `http://remoteserver/myapp.tar.gz` |
+| Artefakt in Containerregistrierung | [OCI-Artefaktdateien](container-registry-oci-artifacts.md) in einem Repository einer Containerregistrierung. | `oci://myregistry.azurecr.io/myartifact:mytag` |
 
 > [!NOTE]
 > Wenn Sie ein privates Git-Repository als Kontext für eine Aufgabe verwenden, müssen Sie ein persönliches Zugriffstoken (PAT) bereitstellen.

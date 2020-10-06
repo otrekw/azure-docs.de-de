@@ -1,18 +1,18 @@
 ---
 title: Azure HDInsight-Cluster mit Datenträgerverschlüsselung verlieren den Zugriff auf Key Vault
-description: Hier finden Sie Schritte zur Problembehandlung und mögliche Lösungen für Probleme bei der Interaktion mit Azure HDInsight-Clustern.
+description: Problembehandlungsschritte und mögliche Lösungen für Probleme beim Zugriff auf Key Vault, wenn Azure HDInsight-Cluster beteiligt sind.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/30/2020
-ms.openlocfilehash: b1d941fbf86d453a56a5157ed988a32173c614fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e34c1002be3dffb719490fee01e481e8df45901
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81461530"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532561"
 ---
 # <a name="scenario-azure-hdinsight-clusters-with-disk-encryption-lose-key-vault-access"></a>Szenario: Azure HDInsight-Cluster mit Datenträgerverschlüsselung verlieren den Zugriff auf Key Vault
 

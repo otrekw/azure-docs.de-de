@@ -189,7 +189,7 @@ Klicken Sie auf **Add New Row** (Neue Zeile hinzufügen), wählen Sie den im vor
 
     * Name: `<Name>`
     * Description (Beschreibung): `<Description>`
-    * Health Monitors (Integritätsmonitore): `http`
+    * Health Monitors (Systemüberwachungen): `http`
     * Address (Adresse): `<Address>`
     * Service Port (Dienstport): `<Service Port>`
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 53db148eac0d56e53bb96e0597ad53d3183d86e9
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: f49af1488a0c044639a72fc2ea52ba0a47727a24
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192529"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433669"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>Problembehandlung bei der CDN-Dateikomprimierung
 Dieser Artikel unterstützt Sie bei der Behandlung von Problemen mit der [CDN-Dateikomprimierung](cdn-improve-performance.md).
@@ -111,8 +111,8 @@ Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Endpunkt, un
 
 Um sich für die Komprimierung zu eignen, muss eine Datei folgende Größenanforderungen erfüllen:
 
-* Größer als 128 Bytes.
-* Kleiner als 1 MB.
+* Größer als 128 Bytes (Content-Length: 128)
+* Kleiner als 3 MB
 
 ### <a name="check-the-request-at-the-origin-server-for-a-via-header"></a>Überprüfen Sie die Anforderung auf dem Ursprungsserver auf einen **Über** -Header.
 Der **Über** -HTTP-Header informiert den Webserver darüber, dass die Anforderung von einem Proxyserver übergeben wird.  Microsoft IIS-Webserver komprimieren Antworten standardmäßig nicht, wenn die Anforderung einen **Über** -Header enthält.  Führen Sie folgende Schritte aus, um dieses Verhalten außer Kraft zu setzen:

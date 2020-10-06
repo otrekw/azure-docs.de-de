@@ -2,13 +2,13 @@
 title: Tagunterstützung für Ressourcen
 description: Zeigt, welche Azure-Ressourcentypen Tags unterstützen. Enthält Details für alle Azure-Dienste.
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: 1f74ecff7c5db7a851ad2795fdfdb8e552a309c0
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.date: 09/08/2020
+ms.openlocfilehash: ea46e263d934c327cf6dfa343a5e0b5a170f545e
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231519"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89513913"
 ---
 # <a name="tag-support-for-azure-resources"></a>Tagunterstützung für Azure-Ressourcen
 In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](tag-resources.md) unterstützt. Die Spalte mit der Bezeichnung **Tagunterstützung** zeigt an, ob der Ressourcentyp eine Eigenschaft für das Tag hat. Die Spalte mit der Bezeichnung **Tag in Kostenbericht** gibt an, ob dieser Ressourcentyp das Tag an den Kostenbericht übergibt. Sie können die Kosten nach Tags in der [Cost Management-Kostenanalyse](../../cost-management-billing/costs/group-filter.md) und den [Azure-Abrechnungen und täglichen Nutzungsdaten](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md) anzeigen.
@@ -964,6 +964,9 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | dataFactorySchema | Nein | Nein |
 > | factories | Ja | Ja |
 > | factories/integrationRuntimes | Nein | Nein |
+
+> [!NOTE]
+> Wenn Sie in Ihrer Data Factory über Azure-SSIS Integration Runtime-Instanzen verfügen, werden deren laufende Kosten mit Data Factory-Tags gekennzeichnet.  Ausgeführte Azure-SSIS Integration Runtime-Instanzen müssen beendet und neu gestartet werden, damit neue Data Factory-Tags ihren laufenden Kosten zugeordnet werden.
 
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
 

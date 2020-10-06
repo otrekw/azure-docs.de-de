@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 92abfa9937c1ac3f7d4ba68e9228b29e0211e1af
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 9d5859886dbd1211f929be1031237f7e7d9b1fc1
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007790"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89611710"
 ---
 # <a name="reliable-actors-state-management"></a>Reliable Actors-Zustandsverwaltung
 Reliable Actors sind Singlethread-Objekte, die sich zum Kapseln von Logik und Zustand eignen. Da Akteure unter Reliable Services ausgeführt werden, können Sie den Zustand zuverlässig beibehalten, indem sie die gleichen Persistenz- und Replikationsmechanismen verwenden. Daher verlieren Akteure ihren Zustand nicht nach Fehlern, bei der Reaktivierung nach einer Garbage Collection oder beim Verschieben zwischen Knoten in einem Cluster aufgrund von Ressourcenausgleich oder Upgrades.

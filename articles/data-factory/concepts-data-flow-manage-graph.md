@@ -1,51 +1,64 @@
 ---
-title: Datenflussdiagramme
-description: Arbeiten mit Data Factory-Datenflussdiagrammen
+title: Verwalten des Graphen des Zuordnungsdatenflusses
+description: Erfahren Sie, wie Sie den Graphen des Zuordnungsdatenflusses effektiv verwalten und bearbeiten können.
 author: kromerm
 ms.author: makromer
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/04/2019
-ms.openlocfilehash: 0d357c4c671070a5c5e9d4587e2f90b6628996f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/02/2020
+ms.openlocfilehash: 0cdad47123d69ca7cee468c5bb0cea3268d73bfe
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81605352"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420099"
 ---
-# <a name="mapping-data-flow-graphs"></a>Zuordnungsdatenflussdiagramme
+# <a name="managing-the-mapping-data-flow-graph"></a>Verwalten des Graphen des Zuordnungsdatenflusses
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Die Entwurfsoberfläche für Zuordnungsdatenflüsse-ist eine „Konstruktionsoberfläche“, mit der Sie Datenflüsse von oben nach unten und von links nach rechts erstellen können. Jeder Transformation mit einem Pluszeichen (+) ist eine Toolbox angefügt. Konzentrieren Sie sich auf Ihre Geschäftslogik, statt auf das Verbinden von Knoten über Edges in einer Freiform-DAG-Umgebung.
+Zuordnungsdatenflüsse werden mithilfe einer Entwurfsoberfläche, dem sog. Datenflussgraphen, erstellt. Im Graphen ist die Transformationslogik von links nach rechts aufgebaut. Weitere Datenströme werden von oben nach unten hinzugefügt. Wählen Sie zum Hinzufügen einer neuen Transformation unten rechts in einer vorhandenen Transformation das Pluszeichen aus.
 
-Nachstehend finden Sie integrierte Mechanismen zum Verwalten des Datenflussdiagramms.
+![Canvas](media/data-flow/canvas2.png "Canvas")
 
-## <a name="move-nodes"></a>Verschieben von Knoten
+Wenn Ihre Datenflüsse komplexer werden, gehen Sie wie folgt vor, um den Datenflussgraphen effektiv zu nutzen und zu verwalten. 
 
-![Optionen für die Transformation für das Aggregieren](media/data-flow/agghead.png "Aggregator-Header")
+## <a name="moving-transformations"></a>Verschieben von Transformationen
 
-Ohne ein Drag & Drop-Paradigma besteht die Möglichkeit zum „Verschieben“ eines Transformationsknotens darin, den eingehenden Datenstrom zu ändern. Stattdessen verschieben Sie Transformationen, indem Sie den „eingehenden Datenstrom“ ändern.
+In Zuordnungsdatenflüssen wird zusammenhängende Transformationslogik als **Datenstrom** bezeichnet. Das Feld **Eingehender Datenstrom** bestimmt, welcher Datenstrom die aktuelle Transformation mit Informationen versorgt. Jede Transformation hat je nach Aufgabe einen oder zwei eingehende Datenströme und stellt einen Ausgangsdatenstrom dar. Das Ausgabeschema der eingehenden Datenströme bestimmt, auf welche Spaltenmetadaten die aktuelle Transformation verweisen kann.
 
-## <a name="streams-of-data-inside-of-data-flow"></a>Datenströme innerhalb des Datenflusses
+![Knoten verschieben](media/data-flow/move-nodes.png "Knoten verschieben")
 
-In Azure Data Factory-Datenfluss stellen Datenströme den Fluss der Daten dar. Im Bereich der Transformationseinstellungen wird ein Feld „Eingehender Datenstrom“ angezeigt. Daraus geht hervor, welcher eingehende Datenstrom die Transformation speist. Sie können den physischen Speicherort Ihres Transformationsknotens im Diagramm ändern, indem Sie auf den Namen des eingehenden Datenstroms klicken und einen anderen Datenstrom auswählen. Dann werden die aktuelle Transformation sowie alle nachfolgenden Transformationen in diesem Datenstrom an den neuen Speicherort verschoben.
-
-Wenn Sie eine Transformation mit einer oder mehreren nachfolgenden Transformationen verschieben, wird der neue Speicherort im Datenfluss über eine neue Verzweigung verknüpft.
-
-Wenn es nach dem von Ihnen ausgewählten Knoten keine nachfolgenden Transformationen gibt, wird nur diese Transformation an den neuen Speicherort verschoben.
+Im Gegensatz zur Canvas für Pipelines werden Datenflusstransformationen nicht mithilfe eines Drag & Drop-Modells bearbeitet. Um den eingehenden Datenstrom zu ändern oder eine Transformation zu verschieben, wählen Sie in der Dropdownliste **Eingehender Datenstrom** einen anderen Wert aus. Wenn Sie dies tun, werden alle nachgeordneten Transformationen zusammen mit der bearbeiteten Transformation verschoben. Der Graph wird automatisch entsprechend dem neuen logischen Datenfluss aktualisiert. Wenn Sie den eingehenden Datenstrom in eine Transformation ändern, die bereits eine nachgeordnete Transformation hat, wird eine neue Verzweigung oder ein paralleler Datenstrom erstellt. Erfahren Sie mehr zu [neuen Verzweigungen im Zuordnungsdatenfluss](data-flow-new-branch.md).
 
 ## <a name="hide-graph-and-show-graph"></a>Ausblenden und Anzeigen des Diagramms
 
-Ganz rechts im unteren Konfigurationsbereich gibt es eine Schaltfläche, über die Sie den unteren Bereich beim Arbeiten mit Transformationskonfigurationen auf Vollbildmodus erweitern können. Dann können Sie mithilfe der Schaltflächen „Zurück“ und „Weiter“ durch die Konfigurationen des Diagramms navigieren. Wenn Sie zur Diagrammansicht zurückwechseln möchten, klicken Sie auf die Schaltfläche „Nach unten“, und kehren Sie zum geteilten Bildschirm zurück.
+Beim Bearbeiten Ihrer Transformation können Sie das Konfigurationspanel so erweitern, dass es die gesamte Canvas einnimmt und der Graph ausgeblendet wird. Klicken Sie auf der rechten Seite der Canvas auf das nach oben zeigende Chevron.
 
-## <a name="search-graph"></a>Diagramm suchen
+![Diagramm ausblenden](media/data-flow/hide-graph.png "Graphen ausblenden")
 
-Sie können das Diagramm über die Schaltfläche „Suchen“ auf der Entwurfsoberfläche suchen.
+Wenn das Diagramm ausgeblendet ist, können Sie zwischen Transformationen innerhalb eines Datenstroms wechseln, indem Sie auf **Weiter** oder **Zurück** klicken. Klicken Sie auf das nach unten zeigende Chevron, um den Graphen anzuzeigen.
 
-![Suchen,](media/data-flow/search001.png "Diagramm suchen")
+![Graphen anzeigen](media/data-flow/show-graph.png "Graphen anzeigen")
+
+## <a name="searching-for-transformations"></a>Suchen nach Transformationen
+
+Um eine Transformation in Ihrem Graphen schnell zu finden, klicken Sie über der Zoomeinstellung auf das Symbol **Suchen**.
+
+![Suche](media/data-flow/search-1.png "Diagramm suchen")
+
+Sie können nach Name oder Beschreibung der Transformation suchen, um eine Transformation zu finden.
+
+![Suche](media/data-flow/search-2.png "Diagramm suchen")
+
+## <a name="hide-reference-nodes"></a>Ausblenden von Referenzknoten
+
+Wenn der Datenfluss Transformationen des Typs „Join“, „Lookup“, „Exists“ oder „Union“ aufweist, enthält der Datenfluss Referenzknoten für alle eingehenden Datenströme. Wenn Sie den eingenommenen vertikalen Platzbedarf minimieren möchten, können Sie die Referenzknoten minimieren. Klicken Sie dazu mit der rechten Maustaste auf die Canvas, und wählen Sie **Referenzknoten ausblenden** aus.
+
+![Ausblenden von Referenzknoten](media/data-flow/hide-reference-nodes.png "Ausblenden von Referenzknoten")
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie Ihren Datenflussentwurf abgeschlossen haben, aktivieren Sie die Debug-Schaltfläche und testen Sie sie im Debugmodus entweder direkt im [Datenfluss-Designer](concepts-data-flow-debug-mode.md) oder über die Option zum [Debuggen der Pipeline](control-flow-execute-data-flow-activity.md).
+Aktivieren Sie nach Fertigstellen der Datenflusslogik den [Debugmodus](concepts-data-flow-debug-mode.md), und testen Sie sie in einer Datenvorschau.

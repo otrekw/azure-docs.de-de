@@ -1,30 +1,28 @@
 ---
 title: 'Azure Notification Hubs: Sichere Pushbenachrichtigungen für Windows'
 description: Erfahren Sie mehr über das Senden von sicheren Pushbenachrichtigungen in Azure. Die Codebeispiele wurden in C# mithilfe der .NET-API geschrieben.
-documentationcenter: windows
 author: sethmanheim
 manager: femila
-editor: jwargo
+editor: thsomasu
 services: notification-hubs
-ms.assetid: 5aef50f4-80b3-460e-a9a7-7435001273bd
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: windows
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 09/14/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4c75af054a342e74606696f09c227822f385e096
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 98e587103e63cd5cc26eab5b00864d00e0b9007f
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017990"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089944"
 ---
-# <a name="securely-push-notifications-from-azure-notification-hubs"></a>Sicheres Übertragen von Pushbenachrichtigungen von Azure Notification Hubs
+# <a name="send-secure-push-notifications-from-azure-notification-hubs"></a>Senden sicherer Pushbenachrichtigungen aus Azure Notification Hubs
 
 > [!div class="op_single_selector"]
 > * [Windows Universal](notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md)
@@ -48,10 +46,10 @@ Der generelle Ablauf sieht folgendermaßen aus:
 
 Beachten Sie, dass im obigen Ablauf (und in diesem Tutorial) angenommen wird, dass das Gerät ein Authentifizierungstoken im lokalen Speicher speichert, nachdem sich der Benutzer angemeldet hat. Dies gewährleistet einen vollständig nahtlosen Ablauf, da das Gerät mit diesem Token die sichere Nutzlast der Benachrichtigung abrufen kann. Wenn Ihre Anwendung keine Authentifizierungstoken auf dem Gerät speichert oder diese Token ablaufen können, sollte die Geräte-App nach Erhalt der Benachrichtigung eine generische Benachrichtigung anzeigen, in der der Benutzer zum Starten der App aufgefordert wird. Anschließend authentifiziert die App den Benutzer und zeigt die Nutzlast der Benachrichtigung an.
 
-Dieses Lernprogramm zu sicheren Pushbenachrichtigungen veranschaulicht das sichere Senden einer Pushbenachrichtigung. Es baut auf dem Lernprogramm [Benachrichtigen von Benutzern](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md) auf, daher sollten Sie die Schritte in diesem Lernprogramm zuerst durchführen.
+Dieses Tutorial zeigt, wie Sie sichere Pushbenachrichtigungen senden. Es baut auf dem Tutorial [Benachrichtigen von Benutzern](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md) auf. Daher sollten Sie die Schritte in diesem Tutorial zuerst durchführen.
 
 > [!NOTE]
-> In diesem Tutorial wird davon ausgegangen, dass Sie Ihren Notification Hub wie unter [Erste Schritte mit Notification Hubs (Windows Store)](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) beschrieben erstellt und konfiguriert haben.
+> In diesem Tutorial wird davon ausgegangen, dass Sie Ihre Notification Hub-Instanz wie unter [Senden von Benachrichtigungen an Apps für Universelle Windows-Plattform](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) beschrieben erstellt und konfiguriert haben.
 > Beachten Sie außerdem, dass für Windows Phone 8.1 Anmeldedaten für Windows (nicht Windows Phone) erforderlich sind und dass Hintergrundaufgaben in Windows Phone 8.0 oder Silverlight 8.1 nicht funktionieren. Bei Windows Store-Anwendungen können nur dann Benachrichtigungen über eine Hintergrundaufgabe empfangen werden, wenn für die App der Sperbildschirmaktiviert ist (klicken Sie auf das Kontrollkästchen im AppManifest).
 
 [!INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
@@ -63,6 +61,7 @@ Dieses Lernprogramm zu sicheren Pushbenachrichtigungen veranschaulicht das siche
     ```csharp
     RegisterBackgroundTask();
     ```
+
 2. Fügen Sie in "App.xaml.cs" den folgenden Code direkt nach der `OnLaunched()` -Methode ein:
 
     ```csharp
@@ -80,12 +79,14 @@ Dieses Lernprogramm zu sicheren Pushbenachrichtigungen veranschaulicht das siche
         }
     }
     ```
+
 3. Fügen Sie die folgenden `using` -Anweisungen am Anfang der Datei "App.xaml.cs" hinzu:
 
     ```csharp
     using Windows.Networking.PushNotifications;
     using Windows.ApplicationModel.Background;
     ```
+
 4. Klicken Sie im Menü **Datei** in Visual Studio auf **Alles speichern**.
 
 ## <a name="create-the-push-background-component"></a>Erstellen der Push-Hintergrundkomponente
@@ -143,6 +144,7 @@ Im nächsten Schritt erstellen Sie die Push-Hintergrundkomponente.
             }
         }
     ```
+
 5. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **PushBackgroundComponent (Windows Phone 8.1)** , und klicken Sie dann auf **NuGet-Pakete verwalten**.
 6. Klicken Sie auf der linken Seite auf **Online**.
 7. Geben Sie in das **Suchfeld** den Begriff **Http Client** ein.
@@ -160,6 +162,7 @@ Im nächsten Schritt erstellen Sie die Push-Hintergrundkomponente.
     using Windows.UI.Notifications;
     using Windows.Data.Xml.Dom;
     ```
+
 11. Klicken Sie im Projektmappen-Explorer im Projekt **NotifyUserWindowsPhone (Windows Phone 8.1)** mit der rechten Maustaste auf **Verweise**, und klicken Sie dann auf **Verweis hinzufügen**. Aktivieren Sie im Dialogfeld „Verweis-Manager“ das Kontrollkästchen neben **PushBackgroundComponent**, und klicken Sie dann auf **OK**.
 12. Doppelklicken Sie im Projektmappen-Explorer im Projekt **NotifyUserWindowsPhone (Windows Phone 8.1)** auf **Package.appxmanifest**. Legen Sie unter **Benachrichtigungen** die Einstellung **Toastfähig** auf **Ja** fest.
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: 8c2bac1bee5a2301a29589f15d72d0f69b4a05b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb01d5a4923410f693b682d66be8d5d09f9019d0
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253850"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561577"
 ---
 # <a name="application-gateway-redirect-overview"></a>Übersicht über die Umleitung in Application Gateway
 
@@ -37,7 +37,7 @@ Die Application Gateway-Umleitung bietet Folgendes:
    Bei dieser Art von Umleitung kann HTTP nur für einen bestimmten Websitebereich zu HTTPS umgeleitet werden – etwa in einem durch /cart/* gekennzeichneten Einkaufswagenbereich.
 - **Umleitung an eine externe Website**
 
-![Umleitung](./media/redirect-overview/redirect.png)
+![Diagramm mit Benutzern und einer App Gateway-Instanz sowie Verbindungen zwischen den beiden, einschließlich eines roten HTTP-Pfeils (entsperrt), eines direkten roten Pfeils (301, nicht zulässig) und eines grünen HTTPS-Pfeils (gesperrt).](./media/redirect-overview/redirect.png)
 
 Aufgrund dieser Änderung müssen Kunden ein neues Umleitungskonfigurationsobjekt erstellen, das den Ziellistener oder die externe Website angibt, an den bzw. an die die Umleitung erfolgen soll. Das Konfigurationselement unterstützt auch Optionen zum Anfügen von URI-Pfad und Abfragezeichenfolge an die umgeleitete URL. Sie können auch den Typ der Umleitung auswählen. Die erstellte Umleitungskonfiguration wird mittels einer neuen Regel an den Quelllistener angefügt. Bei Verwendung einer einfachen Regel wird die Umleitungskonfiguration einem Quelllistener zugeordnet und fungiert als globale Umleitung. Wenn eine pfadbasierte Regel verwendet wird, wird die Umleitungskonfiguration in der URL-Pfadzuordnung definiert. Daher gilt sie nur für den bestimmten Pfadbereich einer Site.
 

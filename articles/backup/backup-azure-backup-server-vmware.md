@@ -3,16 +3,16 @@ title: Sichern von VMware-VMs mit Azure Backup Server
 description: In diesem Artikel erfahren Sie, wie Sie Azure Backup Server verwenden, um VMware-VMs zu sichern, die auf einem VMware vCenter-/ESXi-Server ausgeführt werden.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: e18b5c51446446103a91ef7d6a00277c2b41db77
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: db5e5c4bdac64e2faf5babb107ecec61a02d6468
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017565"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069831"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Sichern von VMware-VMs mit Azure Backup Server
 
-In diesem Artikel wird erläutert, wie Sie auf VMware ESXi-Hosts/vCenter Server-Instanzen ausgeführte VMware-VMs mithilfe von Azure Backup Server in Azure sichern.
+In diesem Artikel wird erläutert, wie Sie auf VMware ESXi-Hosts/vCenter Server-Instanzen ausgeführte VMware-VMs mithilfe von Microsoft Azure Backup Server in Azure (MABS) sichern.
 
 In diesem Artikel wird Folgendes erläutert:
 
@@ -21,6 +21,31 @@ In diesem Artikel wird Folgendes erläutert:
 - Hinzufügen der Kontoanmeldeinformationen zu Azure Backup
 - Hinzufügen des vCenter- oder ESXi-Servers zu Azure Backup Server
 - Einrichten einer Schutzgruppe, die die zu sichernden VMware-VMs enthält, Angeben der Sicherungseinstellungen und Planen der Sicherung
+
+## <a name="supported-vmware-features"></a>Unterstützte VMware-Features
+
+MABS bietet beim Sichern von VMware-VMs die folgenden Features:
+
+- Sicherung ohne Agents: Für MABS ist es nicht erforderlich, einen Agent auf dem vCenter- oder ESXi-Server zu installieren, um den virtuellen Computer zu sichern. Stattdessen geben Sie einfach die IP-Adresse oder den vollqualifizierten Domänennamen (FQDN) und die Anmeldeinformationen an, mit denen der VMware-Server bei MABS authentifiziert wird.
+- In die Cloud integrierte Sicherung: MABS schützt Workloads durch Sicherung auf Datenträgern und in der Cloud. Mit dem Sicherungs- und Wiederherstellungsworkflow von MABS können Sie die Langzeitaufbewahrung und externe Sicherungen verwalten.
+- Erkennen und Schützen von mit vCenter verwalteten VMs: Azure Backup Server erkennt und schützt VMs, die auf einem VMware-Server (vCenter oder ESXi) bereitgestellt sind. Wenn die Größe Ihrer Bereitstellung zunimmt, verwenden Sie vCenter zur Verwaltung der VMware-Umgebung. MABS erkennt auch von vCenter verwaltete VMs, sodass Sie große Bereitstellungen schützen können.
+- Automatischer Schutz auf Ordnerebene: Mit vCenter können Sie Ihre VMs in VM-Ordnern organisieren. MABS erkennt diese Ordner, ermöglicht das Schützen von VMs auf Ordnerebene und schließt alle Unterordner ein. Beim Schützen von Ordnern schützt MABS nicht nur die VMs in diesen Ordnern, sondern auch später hinzugefügte VMs. MABS führt täglich eine VM-Erkennung durch und schützt sie automatisch. Wenn Sie Ihre VMs in rekursiven Ordnern anordnen, erkennt und schützt MABS automatisch die neuen VMs, die in den rekursiven Ordnern bereitgestellt werden.
+- MABS schützt VMs, die auf einem lokalen Datenträger, in Network File System (NFS) oder Clusterspeicher gespeichert sind.
+- MABS schützt zum Lastenausgleich migrierte VMs: Wenn VMs zum Lastenausgleich migriert werden, erkennt MABS automatisch den VM-Schutz und hält ihn aufrecht.
+- MABS kann Dateien und Ordner in einer Windows-VM wiederherstellen, ohne die gesamte VM wiederherstellen zu müssen, wodurch notwendige Dateien schneller wiederhergestellt werden können.
+
+## <a name="prerequisites-and-limitations"></a>Voraussetzungen und Einschränkungen
+
+Bevor Sie damit beginnen, eine virtuelle VMware-Maschine zu sichern, überprüfen Sie die folgende Liste von Einschränkungen und Voraussetzungen.
+
+- Wenn Sie MABS verwendet haben, um einen (unter Windows ausgeführten) vCenter-Server als Windows-Server unter Verwendung des FQDN des Servers zu schützen, können Sie diesen vCenter-Server nicht als VMware-Server unter Verwendung des FQDN des Servers schützen.
+  - Sie können zur Problemumgehung die statische IP-Adresse des vCenter-Servers verwenden.
+  - Wenn Sie den FQDN verwenden möchten, müssen Sie den Schutz als Windows-Server deaktivieren, den Schutz-Agent entfernen und den Server dann als VMware-Server unter Verwendung des FQDN hinzufügen.
+- Wenn Sie vCenter zur Verwaltung von ESXi-Servern in Ihrer Umgebung verwenden, fügen Sie vCenter (nicht ESXi) zur MABS-Schutzgruppe hinzu.
+- Vor der ersten MABS-Sicherung können Sie keine Momentaufnahmen von Benutzern sichern. Sobald MABS die erste Sicherung abgeschlossen hat, können Sie Momentaufnahmen von Benutzern sichern.
+- MABS kann keine VMware-VMs mit Passthrough-Datenträgern und physischen Raw Device Mappings (pRDM) schützen.
+- MABS kann keine VMware-vApps erkennen oder schützen.
+- MABS kann keine VMware-VMs mit vorhandenen Momentaufnahmen schützen.
 
 ## <a name="before-you-start"></a>Vorbereitung
 
@@ -392,7 +417,7 @@ Sie können die Anzahl der Aufträge ändern, indem Sie wie unten gezeigt den Re
 
 Für eine Sicherung von vSphere 6.7 gehen Sie wie folgt vor:
 
-- Aktivieren von TLS 1.2 auf DPM-Server
+- Aktivieren Sie auf dem MABS-Server TLS 1.2.
 
 >[!NOTE]
 >Ab VMWare-6.7 ist TLS als Kommunikationsprotokoll aktiviert.

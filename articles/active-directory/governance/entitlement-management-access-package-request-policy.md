@@ -1,6 +1,6 @@
 ---
-title: Ändern der Anforderungs- und Genehmigungseinstellungen für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung – Azure Active Directory
-description: Erfahren Sie, wie Sie die Anforderungs- und Genehmigungseinstellungen für ein Zugriffspaket in der Azure Active Directory-Berechtigungsverwaltung ändern.
+title: 'Ändern der Anforderungseinstellungen für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung: Azure Active Directory'
+description: Erfahren Sie, wie Sie die Anforderungseinstellungen für ein Zugriffspaket in der Azure Active Directory-Berechtigungsverwaltung ändern.
 services: active-directory
 documentationCenter: ''
 author: ajburnle
@@ -12,28 +12,32 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 09/16/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: edf38013efb14e412fbcd43e06dcf17e61c3bc4a
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 160137ca2d14e0012a524ee0818b7fb269fa7984
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798765"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980220"
 ---
-# <a name="change-request-and-approval-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Ändern der Anforderungs- und Genehmigungseinstellungen für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung
+# <a name="change-request-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Ändern der Anforderungseinstellungen für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung
 
-Als Zugriffspaket-Manager können Sie jederzeit die Benutzer ändern, die ein Zugriffspaket anfordern können, indem Sie die Richtlinie bearbeiten oder eine neue Richtlinie hinzufügen. Sie können auch die Genehmigungseinstellungen ändern.
+Als Zugriffspaket-Manager können Sie jederzeit die Benutzer ändern, die ein Zugriffspaket anfordern können, indem Sie die Richtlinie bearbeiten oder eine neue Richtlinie hinzufügen. In diesem Artikel wird beschrieben, wie die Anforderungseinstellungen für ein vorhandenes Zugriffspaket geändert werden.
 
-In diesem Artikel wird beschrieben, wie die Anforderungs- und Genehmigungseinstellungen für ein vorhandenes Zugriffspaket geändert werden.
+## <a name="choose-between-one-or-multiple-policies"></a>Wählen zwischen einer oder mehreren Richtlinien
 
-## <a name="choose-between-one-or-multiple-polices"></a>Auswählen zwischen einer oder mehreren Richtlinien
+Mit einer Richtlinie legen Sie fest, wer ein Zugriffspaket anfordern kann. Bevor Sie eine neue Richtlinie erstellen oder eine bestehende Richtlinie in einem Zugriffspaket bearbeiten, müssen Sie feststellen, wie viele Richtlinien das Zugriffspaket benötigt. 
 
-Mit einer Richtlinie legen Sie fest, wer ein Zugriffspaket anfordern kann. Beim Erstellen eines Zugriffspakets geben Sie die Anforderungs- und Genehmigungseinstellung an, die eine Richtlinie erstellt. Die meisten Zugriffspakete enthalten eine einzige Richtlinie, aber ein einzelnes Zugriffspaket kann über mehrere Richtlinien verfügen. Sie erstellen mehrere Richtlinien für ein Zugriffspaket, wenn Sie unterschiedlichen Benutzergruppen Zuweisungen mit unterschiedlichen Anforderungs- und Genehmigungseinstellungen erteilen möchten. Beispielsweise ist es mit einer einzelnen Richtlinie nicht möglich, einem Zugriffspaket interne und externe Benutzer zuzuweisen. Erstellen Sie hierfür in einem Zugriffspaket zwei separate Richtlinien für interne bzw. externe Benutzer. Gelten für einen Benutzer mehrere Richtlinien, wird er beim Anfordern dazu aufgefordert, die Richtlinie auszuwählen, der er zugewiesen werden möchte. Im folgenden Diagramm ist ein Zugriffspaket mit zwei Richtlinien dargestellt.
+Beim Erstellen eines Zugriffspakets geben Sie die Anforderungseinstellung an, die eine Richtlinie erstellt. Die meisten Zugriffspakete enthalten eine einzige Richtlinie, aber ein einzelnes Zugriffspaket kann über mehrere Richtlinien verfügen. Sie erstellen mehrere Richtlinien für ein Zugriffspaket, wenn Sie unterschiedlichen Benutzergruppen Zuweisungen mit unterschiedlichen Anforderungs- und Genehmigungseinstellungen erteilen möchten. 
+
+Beispielsweise ist es mit einer einzelnen Richtlinie nicht möglich, einem Zugriffspaket interne und externe Benutzer zuzuweisen. Erstellen Sie hierfür in einem Zugriffspaket zwei separate Richtlinien für interne bzw. externe Benutzer. Gelten für einen Benutzer mehrere Richtlinien, wird er beim Anfordern dazu aufgefordert, die Richtlinie auszuwählen, der er zugewiesen werden möchte. Im folgenden Diagramm ist ein Zugriffspaket mit zwei Richtlinien dargestellt.
 
 ![Mehrere Richtlinien in einem Zugriffspaket](./media/entitlement-management-access-package-request-policy/access-package-policy.png)
+
+### <a name="how-many-policies-will-i-need"></a>Wie viele Richtlinien werden benötigt?
 
 | Szenario | Anzahl von Richtlinien |
 | --- | --- |
@@ -46,9 +50,119 @@ Mit einer Richtlinie legen Sie fest, wer ein Zugriffspaket anfordern kann. Beim 
 Informationen zur Prioritätslogik, die beim Anwenden mehrerer Richtlinien verwendet wird, finden Sie unter [Mehrere Richtlinien](entitlement-management-troubleshoot.md#multiple-policies
 ).
 
-### <a name="open-an-existing-policy-of-request-and-approval-settings"></a>Öffnen einer vorhandenen Richtlinie mit Anforderungs- und Genehmigungseinstellungen
+## <a name="open-an-existing-access-package-and-add-a-new-policy-of-request-settings"></a>Öffnen eines vorhandenen Zugriffspaket und Hinzufügen einer neue Richtlinie für Anforderungseinstellungen
 
-Wenn Sie die Anforderungs- und Genehmigungseinstellungen für ein Zugriffspaket ändern möchten, müssen Sie die entsprechende Richtlinie öffnen. Führen Sie die folgenden Schritte aus, um die Anforderungs- und Genehmigungseinstellungen für ein Zugriffspaket zu öffnen.
+Wenn Sie über eine Gruppe von Benutzern verfügen, für die unterschiedliche Anforderungs- und Genehmigungseinstellungen gelten sollen, müssen Sie wahrscheinlich eine neue Richtlinie erstellen. Führen Sie die folgenden Schritte aus, um einem vorhandenen Zugriffspaket eine neue Richtlinie hinzuzufügen:
+
+**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
+
+1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
+
+1. Klicken Sie im Menü auf der linken Seite auf **Zugriffspakete**, und öffnen Sie das Zugriffspaket.
+
+1. Klicken Sie auf **Richtlinien** und dann auf **Richtlinie hinzufügen**.
+
+1. Sie beginnen auf der Registerkarte **Grundlagen**. Geben Sie einen Namen und eine Beschreibung für die Richtlinie ein.
+
+    ![Erstellen der Richtlinie mit Name und Beschreibung](./media/entitlement-management-access-package-request-policy/policy-name-description.png)
+
+1. Klicken Sie auf **Weiter**, um die Registerkarte **Anforderungen** zu öffnen.
+
+1. Ändern Sie die Einstellung **Benutzer, die Zugriff anfordern können**. Befolgen Sie die Schritte in den folgenden Abschnitten, um die Einstellung in eine der folgenden Optionen zu ändern: 
+    - [Für Benutzer in Ihrem Verzeichnis](#for-users-in-your-directory) 
+    - [Für Benutzer, die sich nicht in Ihrem Verzeichnis befinden](#for-users-not-in-your-directory)
+    - [Keine (nur direkte Administratorzuweisungen)](#none-administrator-direct-assignments-only)
+
+## <a name="for-users-in-your-directory"></a>Für Benutzer in Ihrem Verzeichnis
+
+Gehen Sie folgendermaßen vor, wenn Sie möchten, dass Benutzer in Ihrem Verzeichnis dieses Zugriffspaket anfordern können sollen. Beim Definieren der Anforderungsrichtlinie können Sie einzelne Benutzer oder Gruppen von Benutzern angeben. Beispielsweise verfügt Ihre Organisation möglicherweise bereits über eine Gruppe wie **Alle Mitarbeiter**.  Wenn diese Gruppe in die Richtlinie für Benutzer eingefügt wird, die Zugriff anfordern können, können alle Mitglieder dieser Gruppe Zugriff anfordern.
+
+1. Klicken Sie im Abschnitt **Benutzer, die Zugriff anfordern können** auf **Für in Ihrem Verzeichnis befindliche Benutzer**.
+
+    Wenn Sie diese Option auswählen, werden neue Optionen angezeigt, um weiter zu verfeinern, wer in Ihrem Verzeichnis dieses Zugriffspaket anfordern kann.
+
+    ![Zugriffspaket – Anforderungen – Für in Ihrem Verzeichnis befindliche Benutzer](./media/entitlement-management-access-package-request-policy/for-users-in-your-directory.png)
+
+1. Wählen Sie eine der folgenden Optionen aus:
+
+    |  |  |
+    | --- | --- |
+    | **Bestimmte Benutzer und Gruppen** | Wählen Sie diese Option aus, wenn Sie möchten, dass nur die von Ihnen angegebenen Benutzer und Gruppen in Ihrem Verzeichnis dieses Zugriffspaket anfordern können sollen. |
+    | **Alle Mitglieder (keine Gäste)** | Wählen Sie diese Option aus, wenn Sie möchten, dass alle Mitgliedsbenutzer in Ihrem Verzeichnis dieses Zugriffspaket anfordern können sollen. Diese Option umfasst keine Gastbenutzer, die Sie möglicherweise in Ihr Verzeichnis eingeladen haben. |
+    | **Alle Benutzer (einschließlich Gästen)** | Wählen Sie diese Option aus, wenn Sie möchten, dass alle Mitgliedsbenutzer und Gastbenutzer in Ihrem Verzeichnis dieses Zugriffspaket anfordern können sollen. |
+
+    Gastbenutzer verweisen auf externe Benutzer, die mit [Azure AD B2B-](../external-identities/what-is-b2b.md) in Ihr Verzeichnis eingeladen wurden. Weitere Informationen zu den Unterschieden zwischen Mitglieds- und Gastbenutzern finden Sie unter [Welche Standardbenutzerberechtigungen gibt es in Azure Active Directory?](../fundamentals/users-default-permissions.md).
+
+1. Wenn Sie **Bestimmte Benutzer und Gruppen** ausgewählt haben, klicken Sie auf **Benutzer und Gruppen hinzufügen**.
+
+1. Wählen Sie im Bereich „Benutzer und Gruppen auswählen“ die Benutzer und Gruppen aus, die Sie hinzufügen möchten.
+
+    ![Zugriffspaket – Anforderungen – Benutzer und Gruppen auswählen](./media/entitlement-management-access-package-request-policy/select-users-groups.png)
+
+1. Klicken Sie auf **Auswählen**, um die Benutzer und Gruppen hinzuzufügen.
+
+1. Wenn Sie eine Genehmigung anfordern möchten, folgen Sie den Schritten unter [Ändern der Anforderungs- und Genehmigungseinstellungen für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung](entitlement-management-access-package-approval-policy.md), um die Genehmigungseinstellungen zu konfigurieren.
+
+1. Wechseln Sie zum Abschnitt [Anforderungen aktivieren](#enable-requests).
+ 
+## <a name="for-users-not-in-your-directory"></a>Für Benutzer, die sich nicht in Ihrem Verzeichnis befinden
+
+ **Benutzer, die sich nicht in Ihrem Verzeichnis befinden** bezieht sich auf Benutzer in einem anderen Azure AD-Verzeichnis bzw. einer anderen Domäne. Diese Benutzer wurden möglicherweise noch nicht zu Ihrem Verzeichnis eingeladen. Azure AD-Verzeichnisse müssen in den **Einschränkungen bei der Zusammenarbeit** so konfiguriert werden, dass sie Einladungen zulassen. Weitere Informationen finden Sie unter [Aktivieren der externen B2B-Zusammenarbeit und Steuern, wer Gäste einladen kann](../external-identities/delegate-invitations.md).
+
+> [!NOTE]
+> Für einen sich noch nicht in Ihrem Verzeichnis befindenden Benutzer, dessen Anforderung genehmigt oder automatisch genehmigt wird, wird ein Gastbenutzerkonto erstellt. Der Gast wird eingeladen, erhält jedoch keine Einladungs-E-Mail. Stattdessen erhält er eine E-Mail, wenn seine Zugriffspaketzuweisung bereitgestellt wird. Wenn dieser Gastbenutzer zu einem späteren Zeitpunkt keine Zugriffspaketzuweisungen mehr besitzt, weil die letzte Zuweisung abgelaufen ist oder abgebrochen wurde, wird das Gastbenutzerkonto standardmäßig für die Anmeldung blockiert und anschließend gelöscht. Wenn Gastbenutzer dauerhaft in Ihrem Verzeichnis bleiben sollen, auch wenn sie keine Zugriffspaketzuweisungen haben, können Sie die Einstellungen für Ihre Berechtigungsverwaltungskonfiguration ändern. Weitere Informationen zum Gastbenutzerobjekt finden Sie unter [Eigenschaften eines Azure Active Directory B2B-Zusammenarbeitsbenutzers](../external-identities/user-properties.md).
+
+Gehen Sie folgendermaßen vor, wenn Sie Benutzern, die sich nicht in Ihrem Verzeichnis befinden, die Möglichkeit geben möchten, dieses Zugriffspaket anzufordern:
+
+1. Klicken Sie im Abschnitt **Benutzer, die Zugriff anfordern können** auf **Für nicht in Ihrem Verzeichnis befindliche Benutzer**.
+
+    Wenn Sie diese Option auswählen, werden neue Optionen angezeigt.
+
+    ![Zugriffspaket – Anforderungen – Für nicht in Ihrem Verzeichnis befindliche Benutzer](./media/entitlement-management-access-package-request-policy/for-users-not-in-your-directory.png)
+
+1. Wählen Sie eine der folgenden Optionen aus:
+
+    |  |  |
+    | --- | --- |
+    | **Bestimmte verbundene Organisationen** | Wählen Sie diese Option aus, wenn Sie aus einer Liste mit Organisationen auswählen möchten, die Ihr Administrator zuvor hinzugefügt hat. Alle Benutzer aus den ausgewählten Organisationen können dieses Zugriffspaket anfordern. |
+    | **Alle verbundenen Organisationen** | Wählen Sie diese Option aus, wenn alle Benutzer aus allen Ihren verbundenen Organisationen dieses Zugriffspaket anfordern können. |
+    | **Alle Benutzer (alle verbundenen Organisationen und alle neuen externen Benutzer)** | Wählen Sie diese Option aus, wenn alle Benutzer von allen verbundenen Organisationen dieses Zugriffspaket anfordern können und die Einstellungen der B2B-Zulassungsliste oder -Verweigerungsliste für jeden neuen externen Benutzer Vorrang haben soll. |
+
+    Eine verbundene Organisation ist ein externes Azure AD-Verzeichnis bzw. eine externe Domäne, mit der eine Beziehung besteht.
+
+1. Wenn Sie **Bestimmte verbundene Organisationen**  ausgewählt haben, klicken Sie auf **Verzeichnisse hinzufügen**, um aus einer Liste der verbundenen Organisationen auszuwählen, die Ihr Administrator zuvor hinzugefügt hat.
+
+1. Geben Sie den Namen oder Domänennamen ein, um nach einer zuvor verbundenen Organisation zu suchen.
+
+    ![Zugriffspaket – Anforderungen – Verzeichnisse auswählen](./media/entitlement-management-access-package-request-policy/select-directories.png)
+
+    Wenn die Organisation, mit der Sie zusammenarbeiten möchten, nicht in der Liste enthalten ist, können Sie Ihren Administrator bitten, sie als verbundene Organisation hinzuzufügen. Weitere Informationen finden Sie unter [Hinzufügen einer verbundenen Organisation](entitlement-management-organization.md).
+
+1. Nachdem Sie alle Ihre verbundenen Organisationen ausgewählt haben, klicken Sie auf **Auswählen**.
+
+    > [!NOTE]
+    > Alle Benutzer aus den ausgewählten verbundenen Organisationen werden dieses Zugriffspaket anfordern können. Dies schließt in Azure AD auch Benutzer aller Unterdomänen ein, die der Organisation zugeordnet sind, sofern diese Domänen nicht über die Zulassungs- oder Verweigerungsliste von Azure B2B blockiert werden. Weitere Informationen finden Sie unter [Zulassen oder Blockieren von Einladungen für B2B-Benutzer von bestimmten Organisationen](../external-identities/allow-deny-list.md).
+
+1. Wenn Sie eine Genehmigung anfordern möchten, folgen Sie den Schritten unter [Ändern der Anforderungs- und Genehmigungseinstellungen für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung](entitlement-management-access-package-approval-policy.md), um die Genehmigungseinstellungen zu konfigurieren.
+ 
+1. Wechseln Sie zum Abschnitt [Anforderungen aktivieren](#enable-requests).
+
+## <a name="none-administrator-direct-assignments-only"></a>Keine (nur direkte Administratorzuweisungen)
+
+Gehen Sie folgendermaßen vor, wenn Sie Zugriffsanforderungen umgehen und Administratoren ermöglichen soll, bestimmte Benutzer direkt diesem Zugriffspaket zuzuweisen. Benutzer müssen das Zugriffspaket nicht anfordern. Sie können weiterhin Lebenszykluseinstellungen festlegen, aber es gibt keine Anforderungseinstellungen.
+
+1. Klicken Sie im Abschnitt **Benutzer, die Zugriff anfordern können** auf **Keine (nur direkte Zuweisungen eines Administrators)** .
+
+    ![Zugriffspaket – Anforderungen – Keine (nur direkte Administratorzuweisungen)](./media/entitlement-management-access-package-request-policy/none-admin-direct-assignments-only.png)
+
+    Nach der Erstellung des Zugriffspakets können Sie direkt bestimmte interne und externe Benutzer dem Zugriffspaket zuweisen. Wenn Sie einen externen Benutzer angeben, wird ein Gastbenutzerkonto in Ihrem Verzeichnis erstellt. Weitere Informationen zum direkten Zuweisen eines Benutzers finden Sie unter [Anzeigen, Hinzufügen und Entfernen von Zuweisungen für ein Zugriffspaket ](entitlement-management-access-package-assignments.md).
+
+1. Fahren Sie mit dem Abschnitt [Anforderungen aktivieren](#enable-requests) fort.
+
+
+## <a name="open-and-edit-an-existing-policy-of-request-settings"></a>Öffnen und Bearbeiten einer vorhandenen Richtlinie mit Anforderungseinstellungen
+
+Wenn Sie die Anforderungs- und Genehmigungseinstellungen für ein Zugriffspaket ändern möchten, müssen Sie die entsprechende Richtlinie öffnen. Führen Sie die folgenden Schritte aus, um die Anforderungseinstellungen für ein Zugriffspaket zu öffnen und zu bearbeiten:
 
 **Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
 
@@ -66,35 +180,32 @@ Wenn Sie die Anforderungs- und Genehmigungseinstellungen für ein Zugriffspaket 
 
     ![Zugriffspaket: Richtlinie bearbeiten](./media/entitlement-management-shared/policy-edit.png)
 
-1. Klicken Sie auf die Registerkarte **Anforderungen**, um die Anforderungs- und Genehmigungseinstellungen zu öffnen.
+1. Klicken Sie auf die Registerkarte **Anforderungen**, um die Anforderungseinstellungen zu öffnen.
 
-1. Führen Sie die Schritte in einem der folgenden Abschnitte zu Anforderungen aus.
+1. Führen Sie die Schritte in den vorherigen Abschnitten aus, um die Anforderungseinstellungen nach Bedarf zu ändern.
 
-### <a name="add-a-new-policy-of-request-and-approval-settings"></a>Hinzufügen einer neuen Richtlinie mit Anforderungs- und Genehmigungseinstellungen
+1. Wechseln Sie zum Abschnitt [Anforderungen aktivieren](#enable-requests).
 
-Wenn Sie über eine Gruppe von Benutzern verfügen, für die unterschiedliche Anforderungs- und Genehmigungseinstellungen gelten sollen, müssen Sie wahrscheinlich eine neue Richtlinie erstellen. Führen Sie die folgenden Schritte aus, um einem vorhandenen Zugriffspaket eine neue Richtlinie hinzuzufügen.
+## <a name="enable-requests"></a>Ermöglichen von Anforderungen
 
-**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
+1. Wenn das Zugriffspaket Benutzern in der Anforderungsrichtlinie sofort zum Anfordern zur Verfügung gestellt werden soll, legen Sie den Umschalter auf **Ja** fest.
 
-1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
+    Sie können sie in der Zukunft immer aktivieren, nachdem Sie das Erstellen des Zugriffspakets abgeschlossen haben.
 
-1. Klicken Sie im Menü auf der linken Seite auf **Zugriffspakete**, und öffnen Sie das Zugriffspaket.
+    Wenn Sie **Keine (nur direkte Administratorzuweisungen)** ausgewählt haben und Sie die Aktivierung auf **Nein** festlegen, können Administratoren dieses Zugriffspaket nicht direkt zuweisen.
 
-1. Klicken Sie auf **Richtlinien** und dann auf **Richtlinie hinzufügen**.
+    ![Zugriffspaket – Richtlinie – Einstellung „Richtlinie aktivieren“](./media/entitlement-management-access-package-approval-policy/enable-requests.png)
 
-1. Geben Sie einen Namen und eine Beschreibung für die Richtlinie ein.
+1. Klicken Sie auf **Weiter**.
 
-    ![Erstellen der Richtlinie mit Name und Beschreibung](./media/entitlement-management-access-package-request-policy/policy-name-description.png)
+1. Wenn Sie von den Anforderern bei der Anforderung von Zugriff auf ein Zugriffspaket zusätzliche Informationen abfragen möchten, folgen Sie den Schritten in [](), um die Informationen zum Anforderer zu konfigurieren (Vorschau).
 
-1. Klicken Sie auf **Weiter**, um die Registerkarte **Anforderungen** zu öffnen.
+1. Konfigurieren Sie Lebenszykluseinstellungen.
 
-1. Führen Sie die Schritte in einem der folgenden Abschnitte zu Anforderungen aus.
-
-[!INCLUDE [Entitlement management request policy](../../../includes/active-directory-entitlement-management-request-policy.md)]
-
-Wenn Sie eine Richtlinie bearbeiten, klicken Sie auf **Aktualisieren**. Wenn Sie eine neue Richtlinie hinzufügen, klicken Sie auf **Erstellen**.
+1. Wenn Sie eine Richtlinie bearbeiten, klicken Sie auf **Aktualisieren**. Wenn Sie eine neue Richtlinie hinzufügen, klicken Sie auf **Erstellen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- [Ändern der Genehmigungseinstellungen für ein Zugriffspaket](entitlement-management-access-package-approval-policy.md)
 - [Ändern der Lebenszykluseinstellungen für ein Zugriffspaket](entitlement-management-access-package-lifecycle-policy.md)
 - [Anzeigen der Anforderungen für ein Zugriffspaket](entitlement-management-access-package-requests.md)

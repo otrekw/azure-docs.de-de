@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/26/2020
-ms.openlocfilehash: 6496e5c953b3dd5e387a79906b22645ba4a24b4f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 458336f27f01cfb0d127b96cd3df6aa40f8db0b3
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84019978"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440557"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Sicherheitsüberlegungen für Datenverschiebung in Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -51,7 +51,7 @@ Informationen zur Konformität von Azure und zur eigenständigen Sicherung der A
 
 In diesem Artikel werden Sicherheitsüberlegungen zu den beiden folgenden Datenverschiebungsszenarien erläutert: 
 
-- **Cloudszenario**: In diesem Szenario sind sowohl Ihre Quelle als auch das Ziel über das Internet öffentlich zugänglich. Dazu gehören verwaltete Cloudspeicherdienste wie Azure Storage, Azure SQL Data Warehouse, Azure SQL-Datenbank, Azure Data Lake Store, Amazon S3, Amazon Redshift, SaaS-Dienste wie Salesforce und Webprotokolle wie FTP und OData. Eine vollständige Liste unterstützter Datenquellen finden Sie unter [Unterstützte Datenspeicher und Formate](copy-activity-overview.md#supported-data-stores-and-formats).
+- **Cloudszenario**: In diesem Szenario sind sowohl Ihre Quelle als auch das Ziel über das Internet öffentlich zugänglich. Dazu gehören verwaltete Cloudspeicherdienste wie Azure Storage, Azure Synapse Analytics (ehemals SQL Data Warehouse), Azure SQL-Datenbank, Azure Data Lake Store, Amazon S3, Amazon Redshift, SaaS-Dienste wie Salesforce und Webprotokolle wie FTP und OData. Eine vollständige Liste unterstützter Datenquellen finden Sie unter [Unterstützte Datenspeicher und Formate](copy-activity-overview.md#supported-data-stores-and-formats).
 - **Hybridszenario**: In diesem Szenario befindet sich entweder Ihre Quelle oder Ihr Ziel hinter einer Firewall oder in einem lokalen Unternehmensnetzwerk. Oder der Datenspeicher befindet sich in einem privaten oder virtuellen Netzwerk (meist die Quelle) und ist nicht öffentlich zugänglich. Zu diesem Szenario zählen auch Datenbankserver, die auf virtuellen Computern gehostet werden.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -67,7 +67,7 @@ In diesem Artikel werden Sicherheitsüberlegungen zu den beiden folgenden Datenv
 Wenn der Clouddatenspeicher HTTPS oder TLS unterstützt, erfolgen alle Datenübertragungen zwischen Datenverschiebungsdiensten in Data Factory und einem Clouddatenspeicher über einen sicheren Kanal (HTTPS oder TLS).
 
 > [!NOTE]
-> Für alle Verbindungen mit Azure SQL-Datenbank und Azure SQL Data Warehouse ist eine Verschlüsselung (SSL/TLS) erforderlich, solange Daten in die und aus der Datenbank übertragen werden. Wenn Sie eine Pipeline mit JSON erstellen, fügen Sie die Verschlüsselungseigenschaft hinzu, und legen Sie die Eigenschaft in der Verbindungszeichenfolge auf **true** fest. Für Azure Storage können Sie **HTTPS** in der Verbindungszeichenfolge verwenden.
+> Für alle Verbindungen mit Azure SQL-Datenbank und Azure Synapse Analytics ist eine Verschlüsselung (SSL/TLS) erforderlich, solange Daten in die und aus der Datenbank übertragen werden. Wenn Sie eine Pipeline mit JSON erstellen, fügen Sie die Verschlüsselungseigenschaft hinzu, und legen Sie die Eigenschaft in der Verbindungszeichenfolge auf **true** fest. Für Azure Storage können Sie **HTTPS** in der Verbindungszeichenfolge verwenden.
 
 > [!NOTE]
 > Um die Verschlüsselung während der Datenübertragung von Oracle zu aktivieren, führen Sie eine der unten aufgeführten Optionen aus:
@@ -80,8 +80,8 @@ Wenn der Clouddatenspeicher HTTPS oder TLS unterstützt, erfolgen alle Datenübe
 ### <a name="data-encryption-at-rest"></a>Datenverschlüsselung ruhender Daten
 Einige Datenspeicher unterstützen die Verschlüsselung von ruhenden Daten. Es empfiehlt sich, dass Sie einen Datenverschlüsselungsmechanismus für solche Datenspeicher aktivieren. 
 
-#### <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
-Transparent Data Encryption (TDE) in Azure SQL Data Warehouse ist ein zusätzlicher Schutz vor der Bedrohung durch schädliche Aktivitäten. Hierzu werden die Schritte für die Echtzeitverschlüsselung und -entschlüsselung der ruhenden Daten ausgeführt. Dieses Verhalten ist für den Client transparent. Weitere Informationen finden Sie unter [Sichern einer Datenbank in SQL Data Warehouse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md).
+#### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
+Transparent Data Encryption (TDE) in Azure Synapse Analytics bietet Schutz vor der Bedrohung durch schädliche Aktivitäten, indem die ruhenden Daten in Echtzeit ver- und entschlüsselt werden. Dieses Verhalten ist für den Client transparent. Weitere Informationen finden Sie unter [Absichern einer Datenbank in Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md).
 
 #### <a name="azure-sql-database"></a>Azure SQL-Datenbank
 Auch Azure SQL-Datenbank unterstützt Transparent Data Encryption (TDE), die Schutz vor der Bedrohung durch schädliche Aktivitäten bietet. Hierzu werden die Daten in Echtzeit ver- und entschlüsselt, ohne dass Änderungen der Anwendung erforderlich sind. Dieses Verhalten ist für den Client transparent. Weitere Informationen finden Sie unter [Transparente Datenverschlüsselung für SQL-Datenbank und Data Warehouse](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql).
@@ -156,7 +156,7 @@ Die folgenden Abbildungen veranschaulichen die Verwendung der selbstgehosteten I
 ### <a name="firewall-configurations-and-allow-list-setting-up-for-ip-addresses"></a><a name="firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway"></a> Einrichten von Firewallkonfigurationen und Zulassungsliste für IP-Adressen
 
 > [!NOTE] 
-> Möglicherweise müssen Sie Ports verwalten oder eine Zulassungsliste für Domänen auf Ebene der Unternehmensfirewall entsprechend den Anforderungen der jeweiligen Datenquellen einrichten. In dieser Tabelle werden nur Azure SQL-Datenbank, Azure SQL Data Warehouse und Azure Data Lake Store als Beispiele verwendet.
+> Möglicherweise müssen Sie Ports verwalten oder eine Zulassungsliste für Domänen auf Ebene der Unternehmensfirewall entsprechend den Anforderungen der jeweiligen Datenquellen einrichten. In dieser Tabelle werden nur Azure SQL-Datenbank, Azure Synapse Analytics und Azure Data Lake Store als Beispiele verwendet.
 
 > [!NOTE] 
 > Weitere Informationen zu Datenzugriffsstrategien über Azure Data Factory finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/data-factory/data-access-strategies#data-access-strategies-through-azure-data-factory).
@@ -169,7 +169,7 @@ Die folgende Tabelle enthält die Anforderungen für ausgehende Ports und die Do
 [!INCLUDE [domain-and-outbound-port-requirements](../../includes/domain-and-outbound-port-requirements.md)]
 
 > [!NOTE] 
-> Möglicherweise müssen Sie Ports verwalten oder eine Zulassungsliste für Domänen auf Ebene der Unternehmensfirewall entsprechend den Anforderungen der jeweiligen Datenquellen einrichten. In dieser Tabelle werden nur Azure SQL-Datenbank, Azure SQL Data Warehouse und Azure Data Lake Store als Beispiele verwendet.   
+> Möglicherweise müssen Sie Ports verwalten oder eine Zulassungsliste für Domänen auf Ebene der Unternehmensfirewall entsprechend den Anforderungen der jeweiligen Datenquellen einrichten. In dieser Tabelle werden nur Azure SQL-Datenbank, Azure Synapse Analytics und Azure Data Lake Store als Beispiele verwendet.   
 
 Die folgende Tabelle enthält die Anforderungen für eingehende Ports für die Windows-Firewall:
 
@@ -185,7 +185,7 @@ Einige Datenspeicher in der Cloud erfordern auch, dass die IP-Adresse des Comput
 Die folgenden Clouddatenspeicher erfordern, dass die IP-Adresse des Computers der selbstgehosteten Internet Runtime zugelassen wird. Einige dieser Datenspeicher erfordern standardmäßig möglicherweise keine Zulassungsliste. 
 
 - [Azure SQL-Datenbank](../azure-sql/database/firewall-configure.md) 
-- [Azure SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
+- [Azure Synapse Analytics](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
 - [Azure Data Lake Store](../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
 - [Azure Cosmos DB](../cosmos-db/firewall-support.md)
 - [Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
@@ -198,7 +198,7 @@ Ja. Ausführlichere Informationen finden Sie [hier](https://azure.microsoft.com/
 
 **Welche Portanforderungen sind erforderlich, damit die selbstgehostete Integration Runtime funktioniert?**
 
-Die selbstgehostete Integration Runtime erstellt HTTP-basierte Verbindungen für den Zugriff auf das Internet. Der ausgehende Ports 443 muss geöffnet sein, damit die selbstgehostete Integration Runtime diese Verbindung herstellen kann. Öffnen Sie den eingehenden Port 8060 nur auf Computerebene (nicht auf Ebene der Unternehmensfirewall) für die Anwendung zur Anmeldeinformationsverwaltung. Wenn Azure SQL-Datenbank oder Azure SQL Data Warehouse als Quelle oder Ziel verwendet wird, müssen Sie auch den Port 1433 öffnen. Weitere Informationen finden Sie im Abschnitt [Einrichten von Firewallkonfigurationen und Zulassungsliste für IP-Adressen](#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway). 
+Die selbstgehostete Integration Runtime erstellt HTTP-basierte Verbindungen für den Zugriff auf das Internet. Der ausgehende Ports 443 muss geöffnet sein, damit die selbstgehostete Integration Runtime diese Verbindung herstellen kann. Öffnen Sie den eingehenden Port 8060 nur auf Computerebene (nicht auf Ebene der Unternehmensfirewall) für die Anwendung zur Anmeldeinformationsverwaltung. Wenn Azure SQL-Datenbank oder Azure Synapse Analytics als Quelle oder Ziel verwendet wird, müssen Sie auch Port 1433 öffnen. Weitere Informationen finden Sie im Abschnitt [Einrichten von Firewallkonfigurationen und Zulassungsliste für IP-Adressen](#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway). 
 
 
 ## <a name="next-steps"></a>Nächste Schritte

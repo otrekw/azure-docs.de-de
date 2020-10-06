@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 09/01/2020
+ms.date: 09/02/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16b2ab39e9bcd6dff44387edc60be9bfc649f224
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: a15024362b31d49e51b291c10401bbf2965f1d82
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229870"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469863"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Bereitstellungsberichte im Azure Active Directory-Portal (Vorschau)
 
@@ -99,7 +99,7 @@ In der Standardansicht können Sie die folgenden Filter auswählen:
 - Aktion
 
 
-![Filter](./media/concept-provisioning-logs/default-filter.png "Filtern")
+![Hinzufügen von Filtern](./media/concept-provisioning-logs/default-filter.png "Filtern")
 
 Mit dem Filter **Identität** können Sie den Namen oder die Identität angeben, der bzw. die für Sie relevant ist. Diese Identität kann ein Benutzer, eine Gruppe, eine Rolle oder ein anderes Objekt sein. Sie können nach dem Namen oder der ID des Objekts suchen. Die ID variiert je nach Szenario. Bei der Bereitstellung eines Objekts aus Azure AD in Salesforce ist die Quell-ID beispielsweise die Objekt-ID des Benutzers in Azure AD und die Ziel-ID die ID des Benutzers in Salesforce. Wenn die Bereitstellung aus Workday in Active Directory erfolgt, ist die Quell-ID die Mitarbeiter-ID des Workday-Mitarbeiters. Beachten Sie, dass der Name des Benutzers möglicherweise nicht immer in der Spalte „Identität“ enthalten ist. Es gibt jedoch immer eine ID. 
 
@@ -175,7 +175,7 @@ Die Details werden basierend auf den folgenden Kategorien gruppiert:
 - Zusammenfassung
 
 
-![Filter](./media/concept-provisioning-logs/provisioning-tabs.png "Registerkarten")
+![Bereitstellungsdetails](./media/concept-provisioning-logs/provisioning-tabs.png "Registerkarten")
 
 
 
@@ -190,7 +190,7 @@ Auf der Registerkarte **Schritte** sind die Schritte zum Bereitstellen eines Obj
 
 
 
-![Filter](./media/concept-provisioning-logs/steps.png "Filtern")
+![Schritte](./media/concept-provisioning-logs/steps.png "Filtern")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>Problembehandlung und Empfehlungen
@@ -214,11 +214,13 @@ Die Registerkarte **Zusammenfassung** bietet eine Übersicht über die Vorgänge
 
 - Sie können das Attribut „Änderungs-ID“ als eindeutigen Bezeichner verwenden. Dies ist beispielsweise bei der Kommunikation mit dem Produktsupport hilfreich.
 
-- Derzeit gibt es keine Option zum Herunterladen von Bereitstellungsdaten.
+- Zurzeit gibt es keine Option zum Herunterladen von Bereitstellungsdaten als CSV-Datei. Sie können die Daten jedoch mit [Microsoft Graph](https://docs.microsoft.com/graph/api/provisioningobjectsummary-list?view=graph-rest-beta&tabs=http) exportieren.
 
 - Die Protokollanalyse wird derzeit nicht unterstützt.
 
 - Möglicherweise werden übersprungene Ereignisse für Benutzer aufgeführt, die nicht dem Gültigkeitsbereich angehören. Dies entspricht dem erwarteten Verhalten, insbesondere dann, wenn der Synchronisierungsbereich auf alle Benutzer und Gruppen festgelegt ist. Der Dienst wertet alle Objekte im Mandanten aus, auch solche, die außerhalb des Gültigkeitsbereichs liegen. 
+
+- Die Bereitstellungsprotokolle sind zurzeit in der Government-Cloud nicht verfügbar. Wenn Sie nicht auf die Bereitstellungsprotokolle zugreifen können, verwenden Sie als temporäre Problemumgehung die Überwachungsprotokolle.  
 
 ## <a name="error-codes"></a>Fehlercodes
 
@@ -244,6 +246,7 @@ Anhand der folgenden Tabelle können Sie besser verstehen, wie Sie mögliche Feh
 |DuplicateSourceEntries | Der Vorgang konnte nicht abgeschlossen werden, da mehr als ein Benutzer mit den konfigurierten übereinstimmenden Attributen gefunden wurde. Entfernen Sie entweder den doppelten Benutzer, oder konfigurieren Sie die Attributzuordnungen neu, wie [hier](../app-provisioning/customize-application-attributes.md) beschrieben.|
 |ImportSkipped | Nachdem jeder Benutzer ausgewertet wurde, wird versucht, die Benutzer aus dem Quellsystem zu importieren. Dieser Fehler tritt häufig auf, wenn für den zu importierenden Benutzer die in den Attributzuordnungen definierte Übereinstimmungseigenschaft fehlt. Wenn für das Benutzerobjekt zum entsprechenden Attribut kein Wert vorhanden ist, können keine Bereichs-, Vergleichs- oder Exportänderungen ausgewertet werden. Beachten Sie, dass dieser Fehler nicht darauf hinweist, dass sich der Benutzer im Gültigkeitsbereich befindet, da der Bereich für den Benutzer noch nicht ausgewertet wurde.|
 |EntrySynchronizationSkipped | Der Bereitstellungsdienst hat das Quellsystem erfolgreich abgefragt und den Benutzer identifiziert. Es wurden keine weiteren Aktionen für den Benutzer durchgeführt, und er wurde übersprungen. Dieses Überspringen kann darauf zurückzuführen sein, dass sich der Benutzer außerhalb des Gültigkeitsbereichs befand oder dass er bereits im Zielsystem vorhanden ist und keine Änderungen erforderlich sind.|
+|SystemForCrossDomainIdentityManagementMultipleEntriesInResponse| Bei einer GET-Anforderung zum Abrufen eines Benutzers oder einer Gruppe haben wir in der Antwort mehrere Benutzer oder Gruppen empfangen. In der Antwort erwarteten wir nur den Empfang eines Benutzers oder einer Gruppe. Wenn wir [beispielsweise](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#get-group) eine GET-Anforderung ausführen, um eine Gruppe abzurufen und einen Filter zum Ausschließen von Mitgliedern bereitzustellen, und Ihr SCIM-Endpunkt die Mitglieder zurückgibt, lösen wir diesen Fehler aus.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

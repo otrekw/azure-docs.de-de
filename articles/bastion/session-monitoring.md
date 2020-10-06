@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 05/21/2020
 ms.author: charwen
-ms.openlocfilehash: 5974ebe7960eec1ca3bb8610f66061395fea64d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: beb4f8fc5b9e22bc3e2bdd4732c8321dfcd70780
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84744101"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980730"
 ---
 # <a name="session-monitoring-and-management-for-azure-bastion"></a>Überwachen und Verwalten von Azure Bastion-Sitzungen
 
@@ -22,13 +22,13 @@ Sobald der Bastion-Dienst provisioniert und in Ihrem virtuellen Netzwerk bereitg
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer Azure Bastion-Ressource, und wählen Sie auf der Azure Bastion-Seite **Sitzungen** aus.
 
-   ![Sitzungen](./media/session-monitoring/sessions.png)
+   ![Screenshot des Menüs „Einstellungen“ im Azure-Portal mit Auswahl von „Sitzungen“.](./media/session-monitoring/sessions.png)
 2. Rechts auf der Seite **Sitzungen** sehen Sie die laufenden Remotesitzungen.
 
    ![Sitzung anzeigen](./media/session-monitoring/view-session.png)
 3. Wählen Sie **Aktualisieren** aus, um die aktualisierte Liste der Remotesitzungen anzuzeigen. Wenn Sie „Aktualisieren“ auswählen, ruft Azure Bastion die neuesten Überwachungsinformationen ab und aktualisiert sie im Portal.
 
-   ![Aktualisieren](./media/session-monitoring/refresh.png)
+   ![Screenshot einer Sitzung mit Azure Bastion und Hervorhebung der Option „Aktualisieren“.](./media/session-monitoring/refresh.png)
 
 
 ## <a name="delete-or-force-disconnect-an-ongoing-remote-session"></a><a name="view"></a>Löschen oder Erzwingen der Trennung einer laufenden Remotesitzung
@@ -37,16 +37,16 @@ Sie können eine Reihe von Sitzungen auswählen und deren Trennung erzwingen. Di
 
 1. Navigieren Sie zu Ihrer Azure Bastion-Ressource, und wählen Sie auf der Azure Bastion-Seite **Sitzungen** aus.
 
-   ![Navigieren](./media/session-monitoring/navigate.png)
+   ![Screenshot des Azure-Portals mit Auswahl von „Sitzungen“ unter „Einstellungen“.](./media/session-monitoring/navigate.png)
 2. Nachdem Sie „Sitzungen“ ausgewählt haben, wird eine Liste mit Remotesitzungen angezeigt.
 
    ![Sitzungen auflisten](./media/session-monitoring/list.png)
 3. Wählen Sie eine bestimmte Remotesitzung, anschließend die Auslassungspunkte auf der rechten Seite der Sitzungszeile und zuletzt **Löschen** aus.
 
-   ![delete](./media/session-monitoring/delete.png)
+   ![Screenshot des Azure-Portals mit angezeigter Sitzung und ausgewähltem Symbol „Löschen“.](./media/session-monitoring/delete.png)
 4. Wenn Sie „Löschen“ auswählen, wird die Remotesitzung getrennt, und der Benutzer erhält in der Remotesitzung eine Meldung, dass seine Verbindung getrennt wurde.
 
-   ![Trennen](./media/session-monitoring/disconnect.png)
+   ![Screenshot mit einer Meldung, die bestätigt, dass Ihre Verbindung getrennt wurde.](./media/session-monitoring/disconnect.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

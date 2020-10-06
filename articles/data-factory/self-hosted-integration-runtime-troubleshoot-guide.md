@@ -5,14 +5,14 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 08/05/2020
+ms.date: 09/14/2020
 ms.author: abnarain
-ms.openlocfilehash: 49d173e0d0f2b96c385b4325335483d25e9a7c2d
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 1a68263598cb2cba8cc0853f5dd1be7c62dc062e
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800594"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069474"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Problembehandlung bei der selbstgehosteten Integration Runtime
 
@@ -519,7 +519,7 @@ Dieses Verhalten tritt auf, wenn Knoten nicht miteinander kommunizieren können.
 
 ### <a name="connectivity-issue-between-self-hosted-ir-and-data-factory-or-self-hosted-ir-and-data-sourcesink"></a>Konnektivitätsprobleme zwischen selbstgehosteter IR und Data Factory oder zwischen selbstgehosteter IR und Datenquelle/-senke
 
-Um ein Problem mit der Netzwerkkonnektivität zu beheben, müssen Sie wissen, wie Sie [die Netzwerkablaufverfolgung erfassen](#how-to-collect-netmon-trace) und verwenden und wie Sie [die Netmon-Ablaufverfolgung analysieren](#how-to-analyze-netmon-trace), bevor Sie die Netmon-Tools in realen Fällen mit der selbstgehosteten IR anwenden.
+Um ein Problem mit der Netzwerkkonnektivität zu beheben, müssen Sie wissen, wie Sie die Netzwerkablaufverfolgung erfassen und verwenden und die [Netmon-Ablaufverfolgung analysieren](#how-to-analyze-netmon-trace), bevor Sie die Netmon-Tools in realen Fällen mit der selbstgehosteten IR anwenden.
 
 #### <a name="symptoms"></a>Symptome
 
@@ -575,51 +575,10 @@ Führen Sie eine weitere Analyse der Netmon-Ablaufverfolgung durch.
 
     Wenden Sie sich daher an das Netzwerkteam, um zu überprüfen, welcher der vierte Hop von der selbstgehosteten IR ist. Wenn es sich um die Firewall als Linux-System handelt, überprüfen Sie die Protokolle dazu, warum dieses Gerät das Paket nach dem TCP 3-Handshake zurücksetzt. Wenn Sie jedoch nicht sicher sind, wo Sie die Untersuchung durchführen sollen, versuchen Sie, die Netmon-Ablaufverfolgung von der selbstgehosteten IR und der Firewall während der problematischen Zeit zusammenzustellen, um herauszufinden, welches Gerät dieses Paket zurücksetzt und die Verbindung trennt. In diesem Fall müssen Sie sich auch an Ihr Netzwerkteam wenden, um fortzufahren.
 
-### <a name="how-to-collect-netmon-trace"></a>Erfassen der Netmon-Ablaufverfolgung
-
-1.  Laden Sie die Netmon-Tools von [dieser Website](https://www.microsoft.com/en-sg/download/details.aspx?id=4865)herunter, und installieren Sie sie auf Ihrem Servercomputer (je nachdem, auf welchem Server das Problem auftritt) und auf dem Client (z. B. selbstgehostete IR).
-
-2.  Erstellen Sie einen Ordner, z. B. im folgenden Pfad: *D:\netmon*. Stellen Sie sicher, dass genügend Speicherplatz zum Speichern des Protokolls vorhanden ist.
-
-3.  Erfassen Sie die IP-Adresse und die Portinformationen. 
-    1. Starten Sie eine CMD-Eingabeaufforderung.
-    2. Wählen Sie „Als Administrator ausführen“ aus, und führen Sie den folgenden Befehl aus:
-       
-        ```
-        Ipconfig /all >D:\netmon\IP.txt
-        netstat -abno > D:\netmon\ServerNetstat.txt
-        ```
-
-4.  Erfassen Sie die Netmon-Ablaufverfolgung (Netzwerkpaket).
-    1. Starten Sie eine CMD-Eingabeaufforderung.
-    2. Wählen Sie „Als Administrator ausführen“ aus, und führen Sie den folgenden Befehl aus:
-        
-        ```
-        cd C:\Program Files\Microsoft Network Monitor 3
-        ```
-    3. Sie können drei verschiedene Befehle verwenden, um die Netzwerkseite zu erfassen:
-        - Option A: RoundRobin-Dateibefehl (dadurch wird nur eine Datei erfasst, und alte Protokolle werden überschrieben)
-
-            ```
-            nmcap /network * /capture /file D:\netmon\ServerConnection.cap:200M
-            ```         
-        - Option B: Verketteter Dateibefehl (dadurch wird eine neue Datei erstellt, wenn 200 MB erreicht sind)
-        
-            ```
-            nmcap /network * /capture /file D:\netmon\ServerConnection.chn:200M
-            ```          
-        - Option C: Geplanter Dateibefehl
-
-            ```
-            nmcap /network * /capture /StartWhen /Time 10:30:00 AM 10/28/2011 /StopWhen /Time 11:30:00 AM 10/28/2011 /file D:\netmon\ServerConnection.chn:200M
-            ```  
-
-5.  Betätigen Sie **STRG + C**, um die Erfassung der Netmon-Ablaufverfolgung anzuhalten.
- 
-> [!NOTE]
-> Wenn Sie die Netmon-Ablaufverfolgung nur auf dem Clientcomputer erfassen können, rufen Sie die IP-Adresse des Servers ab, um die Ablaufverfolgung besser analysieren zu können.
-
 ### <a name="how-to-analyze-netmon-trace"></a>Analysieren der Netmon-Ablaufverfolgung
+
+> [!NOTE] 
+> Die folgende Anweisung gilt für die Netmon-Ablaufverfolgung. Da die Netmon-Ablaufverfolgung derzeit nicht unterstützt wird, können Sie WireShark auf gleiche Weise nutzen.
 
 Wenn Sie versuchen, Telnet **8.8.8.8 888** mit der erfassten Netmon-Ablaufverfolgung auszuführen, sollte Ihnen folgende Ablaufverfolgung angezeigt werden:
 

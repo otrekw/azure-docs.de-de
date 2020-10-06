@@ -1,20 +1,20 @@
 ---
-title: Azure Firewall-Protokollanalyse – Beispiele
+title: Azure Monitor-Protokolle für Azure Firewall
 description: Mithilfe von Azure Monitor-Protokollen können Sie Ihre Azure Firewall-Instanz analysieren. In Ansicht-Designer in Azure Monitor ist eine Beispieldatei integriert.
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: article
-ms.date: 01/23/2020
+ms.topic: how-to
+ms.date: 09/11/2020
 ms.author: victorh
-ms.openlocfilehash: bc34afe82c1b73afb5f3d5d1a07f2a5059590146
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5acbc1f3b8c5519c22105f05219ab2cef5c15892
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76705975"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90023872"
 ---
-# <a name="azure-firewall-log-analytics-samples"></a>Azure Firewall-Protokollanalyse – Beispiele
+# <a name="azure-monitor-logs-for-azure-firewall"></a>Azure Monitor-Protokolle für Azure Firewall
 
 Sie können die folgenden Azure Monitor-Protokollbeispiele verwenden, um Ihre Azure Firewall-Protokolle zu analysieren. Die Beispieldatei wird im Ansicht-Designer in Azure Monitor erstellt. Im Artikel zum [Ansicht-Designer in Azure Monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-view-designer) finden Sie weitere Informationen zum Konzept des Ansicht-Designers.
 
@@ -170,11 +170,11 @@ AzureDiagnostics
 
 In den folgenden Protokollbeispielen werden die in einem Protokolleintrag enthaltenen Daten angezeigt.
 
-![Protokolleintrag](media/log-analytics-samples/log1.png)
+![Protokolleintrag 1](media/log-analytics-samples/log1.png)
 
-![Protokolleintrag](media/log-analytics-samples/log2.png)
+![Protokolleintrag 2 ](media/log-analytics-samples/log2.png)
 
-![Protokolleintrag](media/log-analytics-samples/log3.png)
+![Protokolleintrag 3](media/log-analytics-samples/log3.png)
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informationen zu Azure Firewall-Überwachung und -Diagnose finden Sie unter [Tutorial: Überwachen von Azure Firewall-Protokollen und -Metriken](tutorial-diagnostics.md).

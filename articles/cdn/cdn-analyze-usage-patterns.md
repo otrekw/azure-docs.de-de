@@ -1,6 +1,6 @@
 ---
 title: Kernberichte aus Verizon | Microsoft-Dokumentation
-description: 'Mithilfe der folgenden Berichte können Sie Verwendungsmuster für Ihr CDN anzeigen: Bandbreite, Übertragene Daten, Treffer, Cachestatus, Cachetrefferquote, Übertragene IPV4/IPV6-Daten.'
+description: Erfahren Sie, wie Sie über das Verwaltungsportal für Verizon-Profile auf Verizon-Kernberichte zugreifen und diese anzeigen können.
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 3dc7547dbcf2bde7dd7db0d3f0db3f163a5910ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5353fa70be4705b28dab9350fcdf7819b22faf54
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888433"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985531"
 ---
 # <a name="core-reports-from-verizon"></a>Kernberichte aus Verizon
 

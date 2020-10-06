@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 62b60afb7dc4adb70a0963984ee7848ab056e823
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 023864e23c0cd23df0de603e76acac651bd2458e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447834"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987580"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Verwalten von Runbooks in Azure Automation
 
@@ -293,7 +293,7 @@ In der Zusammenfassung wird die Anzahl aller ausgeführten Aufträge neben einer
 
 Wenn Sie auf die Kachel klicken, wird die Seite „Aufträge“ angezeigt, die eine Liste mit einer Zusammenfassung aller ausgeführten Aufträge enthält. Auf dieser Seite werden der Status, Runbookname sowie die Start- und Abschlusszeit jedes Auftrags angezeigt.
 
-![Die Seite „Aufträge“ im Automation-Konto](./media/manage-runbooks/automation-account-jobs-status-blade.png)
+:::image type="content" source="./media/manage-runbooks/automation-account-jobs-status-blade.png" alt-text="Screenshot der Seite „Aufträge“.":::
 
 Sie können die Auftragsliste filtern, indem Sie **Aufträge filtern** auswählen. Filtern Sie anhand eines bestimmten Runbooks, eines Auftragsstatus oder einer Option in der Dropdownliste, und geben Sie die Zeitspanne für die Suche an.
 
@@ -301,7 +301,7 @@ Sie können die Auftragsliste filtern, indem Sie **Aufträge filtern** auswähle
 
 Alternativ können Sie für ein bestimmtes Runbook eine Auftragszusammenfassung anzeigen, indem Sie in Ihrem Automation-Konto zuerst auf der Seite „Runbooks“ das Runbook und dann **Aufträge** auswählen. Mit dieser Aktion wird die Seite „Aufträge“ angezeigt. Wenn Sie dort auf einen Auftragsdatensatz klicken, werden die zugehörigen Details und Ausgaben angezeigt.
 
-![Die Seite „Aufträge“ im Automation-Konto](./media/manage-runbooks/automation-runbook-job-summary-blade.png)
+:::image type="content" source="./media/manage-runbooks/automation-runbook-job-summary-blade.png" alt-text="Screenshot der Seite „Aufträge“.":::
 
 ### <a name="retrieve-job-statuses-using-powershell"></a>Abrufen des Auftragsstatus mithilfe von PowerShell
 

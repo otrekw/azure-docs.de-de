@@ -226,7 +226,7 @@
       items:
         - name: Hochskalieren der Serverkapazität
           href: manage-scale-up.md
-        - name: Konfigurieren der PremiumV2-Ebene
+        - name: Konfigurieren der PremiumV3-Ebene
           href: app-service-configure-premium-tier.md
         - name: Aufskalieren auf mehrere Instanzen
           href: ../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json

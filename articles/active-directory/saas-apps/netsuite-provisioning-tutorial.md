@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 158b66d63292a1ffb503f3f87eddfd33a2b09b71
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b428ffc0122f13ef15f870ce734b54fe6707f582
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554480"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983952"
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Netsuite für die automatische Benutzerbereitstellung
 
@@ -62,7 +62,7 @@ In diesem Abschnitt wird erläutert, wie Sie die Bereitstellung von Active Direc
 
 1. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest. 
 
-    ![Bereitstellung](./media/netsuite-provisioning-tutorial/provisioning.png)
+    ![Screenshot der Seite für die NetSuite-Bereitstellung mit dem Bereitstellungsmodus „Automatisch“ und weiteren Werten, die Sie festlegen können.](./media/netsuite-provisioning-tutorial/provisioning.png)
 
 1. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die folgenden Konfigurationseinstellungen an:
    

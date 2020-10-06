@@ -11,13 +11,13 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 07/09/2020
-ms.openlocfilehash: 1eac86e856840d5cb78313fb4d61751066d6886b
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.date: 09/09/2020
+ms.openlocfilehash: d135320d8dd9f86fbc313b17b8b55ed3c609e9dc
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184003"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595018"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>Konfigurieren einer selbstgehosteten IR als Proxy für eine Azure-SSIS IR in Azure Data Factory
 
@@ -27,9 +27,11 @@ In diesem Artikel wird beschrieben, wie Sie SSIS-Pakete (SQL Server Integration 
 
 Mit diesem Feature können Sie auf lokale Daten zugreifen, ohne [Ihre Azure-SSIS IR mit einem virtuellen Netzwerk verknüpfen](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network) zu müssen. Dieses Feature ist nützlich, wenn Ihr Unternehmensnetzwerk eine zu komplexe Konfiguration aufweist oder wenn eine Richtlinie zu restriktiv für Sie ist, um Ihre Azure-SSIS IR darin einfügen zu können.
 
-Dieses Feature teilt SSIS-Datenflusstasks mit einer lokalen Datenquelle in zwei Stagingtasks auf: 
-* Der erste Task, der in Ihrer selbstgehosteten IR ausgeführt wird, verschiebt zuerst Daten aus der lokalen Datenquelle in einen Stagingbereich in Ihrem Azure Blob Storage.
-* Mit dem zweiten Task, der in Ihrer Azure-SSIS IR ausgeführt wird, werden dann Daten aus dem Stagingbereich in das vorgesehene Datenziel verschoben.
+Mit diesem Feature wird der SSIS-Datenflusstask nach Bedarf in zwei Stagingtasks unterteilt: 
+* **Lokaler Stagingtask**: Dieser Task führt Ihre Datenflusskomponente aus, die in Ihrer selbstgehosteten IR eine Verbindung mit einem lokalen Datenspeicher herstellt. Dabei werden Daten aus dem lokalen Datenspeicher in einen Stagingbereich in Ihrem Azure Blob Storage und umgekehrt verschoben.
+* **Cloudstagingtask**: Dieser Task führt Ihre Datenflusskomponente aus, die in Ihrer Azure-SSIS IR keine Verbindung mit einem lokalen Datenspeicher herstellt. Dabei werden Daten aus dem Stagingbereich in Azure Blob Storage in einen Clouddatenspeicher oder umgekehrt verschoben.
+
+Wenn Ihr Datenflusstask Daten aus der lokalen in die Cloudumgebung verschiebt, sind der erste und zweite Stagingtask lokale bzw. Cloudstagingtasks. Wenn Ihr Datenflusstask Daten aus der Cloud in die lokale Umgebung verschiebt, sind der erste und zweite Stagingtask Cloud- bzw. lokale Stagingtasks. Wenn Ihr Datenflusstask Daten aus der lokalen Umgebung in die lokale Umgebung verschiebt, sind der erste und zweite Stagingtask beides lokale Stagingtasks. Wenn der Datenflusstask Daten aus der Cloud in die Cloud verschiebt, ist dieses Feature nicht anwendbar.
 
 Weitere Vorteile und Fähigkeiten dieses Features ermöglichen es Ihnen, Ihre selbstgehostete IR in Regionen einzurichten, die noch nicht von einer Azure-SSIS IR unterstützt werden, und die öffentliche statische IP-Adresse Ihrer selbstgehosteten IR auf der Firewall Ihrer Datenquellen zuzulassen.
 
@@ -41,14 +43,14 @@ Anschließend richten Sie Ihre selbstgehostete IR in derselben Data Factory ein,
 
 Zum Schluss laden Sie die neueste Version der selbstgehosteten IR sowie die zusätzlichen Treiber und die Runtime auf Ihren lokalen Computer oder virtuellen Azure-Computer (VM) wie folgt herunter und installieren sie dort:
 - Laden Sie die neueste Version der [selbstgehosteten IR](https://www.microsoft.com/download/details.aspx?id=39717) herunter, und installieren Sie sie.
-- Wenn Sie OLE DB-Connectors (Object Linking and Embedding Database) in Ihren Paketen verwenden, laden Sie die relevanten OLE DB-Treiber herunter, und installieren Sie sie auf demselben Computer, auf dem Ihre selbstgehostete IR installiert wurde, falls dies noch nicht geschehen ist.  
+- Wenn Sie OLE DB-/ODBC-Connectors (Object Linking and Embedding Database/Open Database Connectivity ) in Ihren Paketen verwenden, laden Sie die relevanten Treiber herunter, und installieren Sie sie auf dem Computer, auf dem Ihre selbstgehostete IR installiert wurde, falls nicht bereits geschehen.  
 
   Wenn Sie die frühere Version des OLE DB-Treibers für SQL Server (SQL Server Native Client [SQLNCLI]) verwenden, [laden Sie die 64-Bit-Version herunter](https://www.microsoft.com/download/details.aspx?id=50402).  
 
   Wenn Sie die neueste Version des OLE DB-Treibers für SQL Server (MSOLEDBSQL) verwenden, [laden Sie die 64-Bit-Version herunter](https://www.microsoft.com/download/details.aspx?id=56730).  
   
-  Wenn Sie OLE DB-Treiber für andere Datenbanksysteme wie PostgreSQL, MySQL, Oracle usw. verwenden, können Sie die 64-Bit-Version von deren Websites herunterladen.
-- Falls dies noch nicht geschehen ist, [laden Sie die 64-Bit-Version von Visual C++ (VC) Runtime herunter, und installieren Sie sie](https://www.microsoft.com/download/details.aspx?id=40784) auf demselben Computer, auf dem Ihre selbstgehostete IR installiert wurde.
+  Wenn Sie OLE DB-/ODBC-Treiber für andere Datenbanksysteme wie PostgreSQL, MySQL, Oracle usw. verwenden, können Sie die 64-Bit-Version von deren Websites herunterladen.
+- Falls nicht bereits geschehen, [laden Sie die 64-Bit-Version von Visual C++ (VC) Runtime herunter, und installieren Sie sie](https://www.microsoft.com/download/details.aspx?id=40784) auf dem Computer, auf dem Ihre selbstgehostete IR installiert wurde.
 
 ## <a name="prepare-the-azure-blob-storage-linked-service-for-staging"></a>Vorbereiten des mit Azure Blob Storage verknüpften Diensts für das Staging
 
@@ -118,20 +120,20 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 ## <a name="enable-ssis-packages-to-connect-by-proxy"></a>Aktivieren von SSIS-Paketen für die Verbindungsherstellung über den Proxy
 
-Wenn Sie entweder die neueste Erweiterung „SSDT bei SSIS-Projekten“ für Visual Studio oder ein eigenständiges Installationsprogramm verwenden, können Sie eine neue `ConnectByProxy`-Eigenschaft finden, die in OLE DB- oder Flatfile-Verbindungs-Managern hinzugefügt wurde.
-* [Herunterladen der Erweiterung „SSDT bei SSIS-Projekten“ für Visual Studio](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects)
+Wenn Sie die neuesten SSDT entweder als Erweiterung „SSIS-Projekte“ für Visual Studio oder ein eigenständiges Installationsprogramm verwenden, gibt es eine neue `ConnectByProxy`-Eigenschaft, die in Verbindungs-Managern für unterstützte Datenflusskomponenten hinzugefügt wurde.
+* [Herunterladen der Erweiterung „SSIS-Projekte“ für Visual Studio](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects)
 * [Herunterladen des eigenständigen Installationsprogramms](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer)   
 
-Wenn Sie neue Pakete entwerfen, die Datenflusstasks mit OLE DB- oder Flatfilequellen enthalten, mit denen Sie auf lokale Datenbanken oder Dateien zugreifen können, können Sie diese Eigenschaft aktivieren, indem Sie sie im Bereich *Eigenschaften* der relevanten Verbindungs-Manager auf **True** festlegen.
+Wenn Sie neue Pakete entwerfen, die Datenflusstasks mit Komponenten enthalten, die lokal auf Daten zugreifen, können Sie diese Eigenschaft aktivieren, indem Sie sie im Bereich **Eigenschaften** der entsprechenden Verbindungs-Manager auf *TRUE* festlegen.
 
 ![Aktivieren der ConnectByProxy-Eigenschaft](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-manager-properties.png)
 
 Sie können diese Eigenschaft auch aktivieren, wenn Sie vorhandene Pakete ausführen, ohne sie manuell einzeln ändern zu müssen.  Es gibt zwei Optionen:
-- **Option A**: Öffnen, Neuerstellen und erneutes Bereitstellen des Projekts, das diese Pakete enthält, mit den neuesten SSDT, die in Ihrer Azure-SSIS IR ausgeführt werden sollen. Sie können dann die Eigenschaft aktivieren, indem Sie sie für die relevanten Verbindungs-Manager auf *True* festlegen. Wenn Sie Pakete aus SSMS ausführen, werden diese Verbindungs-Manager im Popup Fenster **Paket ausführen** auf der Registerkarte **Verbindungs-Manager** angezeigt.
+- **Option A**: Öffnen, Neuerstellen und erneutes Bereitstellen des Projekts, das diese Pakete enthält, mit den neuesten SSDT, die in Ihrer Azure-SSIS IR ausgeführt werden sollen. Sie können dann die Eigenschaft aktivieren, indem Sie sie für die relevanten Verbindungs-Manager auf *True* festlegen. Wenn Sie Pakete in SSMS ausführen, werden diese Verbindungs-Manager im Popupfenster **Paket ausführen** auf der Registerkarte **Verbindungs-Manager** gezeigt.
 
   ![Aktivieren der ConnectByProxy-Eigenschaft (2)](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssms.png)
 
-  Sie können die Eigenschaft auch aktivieren, indem Sie sie für die entsprechenden Verbindungs-Manager auf *True* festlegen, die auf der Registerkarte **Connection Managers** (Verbindungs-Manager) der [Aktivität „SSIS-Paket ausführen“](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity) angezeigt werden, wenn Pakete in Data Factory-Pipelines ausgeführt werden.
+  Sie können die Eigenschaft auch aktivieren, indem Sie sie für die entsprechenden Verbindungs-Manager auf *TRUE* festlegen, die auf der Registerkarte **Verbindungs-Manager** der [Aktivität „SSIS-Paket ausführen“](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity) angezeigt werden, wenn Pakete in Data Factory-Pipelines ausgeführt werden.
   
   ![Aktivieren der ConnectByProxy-Eigenschaft (3)](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssis-activity.png)
 
@@ -143,27 +145,27 @@ Sie können diese Eigenschaft auch aktivieren, wenn Sie vorhandene Pakete ausfü
   
   ![Aktivieren der ConnectByProxy-Eigenschaft (5)](media/self-hosted-integration-runtime-proxy-ssis/shir-property-overrides-tab-ssis-activity.png)
 
-## <a name="debug-the-first-and-second-staging-tasks"></a>Debuggen der ersten und zweiten Stagingtasks
+## <a name="debug-the-on-premises-and-cloud-staging-tasks"></a>Debuggen der lokalen und cloudbasierten Stagingtasks
 
-In Ihrer selbstgehosteten IR können Sie die Laufzeitprotokolle im Ordner *C:\ProgramData\SSISTelemetry* und die Ausführungsprotokolle der ersten Stagingtasks im Ordner *C:\ProgramData\SSISTelemetry\ExecutionLog* finden.  Sie können die Ausführungsprotokolle der zweiten Stagingtasks in Ihrer SSISDB oder in den angegebenen Protokollierungspfaden finden – abhängig davon, ob Sie Ihre Pakete in SSISDB oder im Dateisystem, auf Dateifreigaben oder in Azure Files speichern. Die eindeutigen IDs der ersten Stagingtasks können Sie auch in den Ausführungsprotokollen der zweiten Stagingtasks finden. 
+In Ihrer selbstgehosteten IR finden Sie die Laufzeitprotokolle im Ordner *C:\ProgramData\SSISTelemetry* und die Ausführungsprotokolle der lokalen Stagingtasks im Ordner *C:\ProgramData\SSISTelemetry\ExecutionLog*.  Sie finden die Ausführungsprotokolle der Cloudstagingtasks in Ihrer SSISDB oder in den angegebenen Protokollierungspfaden, und zwar abhängig davon, ob Sie Ihre Pakete in SSISDB speichern oder nicht. Die eindeutigen IDs der lokalen Stagingtasks finden Sie auch in den Ausführungsprotokollen der Cloudstagingtasks. 
 
 ![Eindeutige ID des ersten Stagingtasks](media/self-hosted-integration-runtime-proxy-ssis/shir-first-staging-task-guid.png)
 
-## <a name="use-windows-authentication-in-staging-tasks"></a>Verwenden der Windows-Authentifizierung in Stagingtasks
+## <a name="use-windows-authentication-in-on-premises-staging-tasks"></a>Verwenden der Windows-Authentifizierung in lokalen Stagingtasks
 
-Wenn für die Stagingtasks in Ihrer selbstgehosteten IR die Windows-Authentifizierung erforderlich ist, [konfigurieren Sie Ihre SSIS-Pakete für die Verwendung derselben Windows-Authentifizierung](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth?view=sql-server-ver15). 
+Wenn für die lokalen Stagingtasks in Ihrer selbstgehosteten IR die Windows-Authentifizierung erforderlich ist, [konfigurieren Sie Ihre SSIS-Pakete für die Verwendung derselben Windows-Authentifizierung](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth?view=sql-server-ver15). 
 
-Ihre Stagingtasks werden mit dem Dienstkonto der selbstgehosteten IR (standardmäßig *NT SERVICE\DIAHostService*) aufgerufen, und der Zugriff auf Ihre Datenspeicher erfolgt über das Windows-Authentifizierungskonto. Beiden Konten müssen bestimmte Sicherheitsrichtlinien zugewiesen werden. Wechseln Sie auf dem Computer mit der selbstgehosteten IR zu **Lokale Sicherheitsrichtlinie** > **Lokale Richtlinien** > **Zuweisen von Benutzerrechten**, und führen Sie dann die folgenden Schritte aus:
+Ihre lokalen Stagingtasks werden mit dem Dienstkonto der selbstgehosteten IR (standardmäßig *NT SERVICE\DIAHostService*) aufgerufen, und der Zugriff auf Ihre Datenspeicher erfolgt über das Windows-Authentifizierungskonto. Beiden Konten müssen bestimmte Sicherheitsrichtlinien zugewiesen werden. Wechseln Sie auf dem Computer mit der selbstgehosteten IR zu **Lokale Sicherheitsrichtlinie** > **Lokale Richtlinien** > **Zuweisen von Benutzerrechten**, und führen Sie dann die folgenden Schritte aus:
 
 1. Weisen Sie die Richtlinien *Arbeitsspeicherkontingente für einen Prozess anpassen* und *Token auf Prozessebene ersetzen* dem Dienstkonto der selbstgehosteten IR zu. Dies sollte automatisch erfolgen, wenn Sie Ihre selbstgehostete IR mit dem Standarddienstkonto installieren. Wenn dies nicht der Fall ist, weisen Sie diese Richtlinien manuell zu. Wenn Sie ein anderes Dienstkonto verwenden, müssen Sie ihm diese Richtlinien zuweisen.
 
 1. Weisen Sie dem Windows-Authentifizierungskonto die Richtlinie *Als Dienst anmelden* zu.
 
-## <a name="billing-for-the-first-and-second-staging-tasks"></a>Abrechnung der ersten und zweiten Stagingtasks
+## <a name="billing-for-the-on-premises-and-cloud-staging-tasks"></a>Abrechnung lokaler und cloudbasierter Stagingtasks
 
-Die ersten in Ihrer selbstgehosteten IR ausgeführten Stagingtasks werden separat abgerechnet, so wie alle Datenverschiebungsaktivitäten in Rechnung gestellt werden, die in einer selbstgehosteten IR ausgeführt werden. Dies wird im Artikel [Azure Data Factory data pipeline pricing](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/) (Preise für Azure Data Factory-Datenpipeline) beschrieben.
+Die in Ihrer selbstgehosteten IR ausgeführten lokalen Stagingtasks werden separat abgerechnet, so wie alle Datenverschiebungsaktivitäten in Rechnung gestellt werden, die in einer selbstgehosteten IR erfolgen. Dies wird im Artikel [Azure Data Factory data pipeline pricing](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/) (Preise für Azure Data Factory-Datenpipeline) beschrieben.
 
-Die zweiten in Ihrer selbstgehosteten IR ausgeführten Stagingtasks werden nicht separat abgerechnet, aber Ihre Ausführung von Azure-SSIS IR wird wie im Artikel [Preise für Azure-SSIS IR](https://azure.microsoft.com/pricing/details/data-factory/ssis/) beschrieben in Rechnung gestellt.
+Die in Ihrer selbstgehosteten IR ausgeführten Cloudstagingtasks werden nicht separat abgerechnet, aber Ihre Ausführung von Azure-SSIS IR wird, wie im Artikel [Preise für Azure-SSIS IR](https://azure.microsoft.com/pricing/details/data-factory/ssis/) beschrieben, in Rechnung gestellt.
 
 ## <a name="enabling-tls-12"></a>Aktivieren von TLS 1.2
 
@@ -173,9 +175,9 @@ Wenn Sie starke Kryptografie und ein sichereres Netzwerkprotokoll (TLS 1.2) ver
 
 ## <a name="current-limitations"></a>Aktuelle Einschränkungen
 
-- Derzeit werden nur Datenflussaufgaben mit ODBC- (Open Database Connectivity), OLE DB- oder Flatfilequellen oder mit OLE DB-Zielen unterstützt. 
+- Derzeit werden nur Datenflusstasks mit den Quellen „OLEDB/ODBC/Flatfile“ oder dem Ziel „OLEDB“ unterstützt.
 - Derzeit werden nur mit Azure Blob Storage verknüpfte Dienste unterstützt, die mit einer der Authentifizierungen *Kontoschlüssel*, *Shared Access Signature (SAS)-URI* oder *Dienstprinzipal* konfiguriert wurden.
-- *ParameterMapping* in der OLE DB-Quelle wird noch nicht unterstützt. Verwenden Sie zur Problemumgehung die Option *SQL-Befehl aus Variable* als *AccessMode*, und verwenden Sie die Option *Ausdruck*, um die Variablen/Parameter in einen SQL-Befehl einzufügen. Eine Veranschaulichung finden Sie im Paket *ParameterMappingSample.dtsx* im Ordner *SelfHostedIRProxy/Limitations* in unserem öffentlichen Vorschaucontainer. Wenn Sie Azure Storage-Explorer verwenden, können Sie eine Verbindung mit unserem öffentlichen Vorschaucontainer herstellen, indem Sie den obigen SAS-URI eingeben.
+- *ParameterMapping* in der Quelle „OLEDB“ wird derzeit nicht unterstützt. Verwenden Sie zur Problemumgehung die Option *SQL-Befehl aus Variable* als *AccessMode*, und verwenden Sie die Option *Ausdruck*, um die Variablen/Parameter in einen SQL-Befehl einzufügen. Eine Veranschaulichung finden Sie im Paket *ParameterMappingSample.dtsx* im Ordner *SelfHostedIRProxy/Limitations* in unserem öffentlichen Vorschaucontainer. Wenn Sie Azure Storage-Explorer verwenden, können Sie eine Verbindung mit unserem öffentlichen Vorschaucontainer herstellen, indem Sie den obigen SAS-URI eingeben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
 ms.date: 04/30/2020
-ms.openlocfilehash: 1004f7fcc8ff93a170b724a6d8b1c2216b9c39b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5593b0d633b133c8a8295634b674218d5e6c6daf
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84726961"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89485036"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Datenflussaktivität in Azure Data Factory
 
@@ -60,8 +60,8 @@ dataflow | Der Verweis auf den Datenfluss, der ausgeführt wird. | DataFlowRefer
 integrationRuntime | Die Computeumgebung, in der der Datenfluss ausgeführt wird. Ohne Angabe wird die Azure Integration Runtime mit automatischer Auflösung verwendet. | IntegrationRuntimeReference | Nein
 compute.coreCount | Die Anzahl von Kernen, die im Spark-Cluster verwendet werden. Kann nur angegeben werden, wenn die Azure Integration Runtime mit automatischer Auflösung verwendet wird. | 8, 16, 32, 48, 80, 144, 272 | Nein
 compute.computeType | Der Computetyp, der im Spark-Cluster verwendet wird. Kann nur angegeben werden, wenn die Azure Integration Runtime mit automatischer Auflösung verwendet wird. | "General", "ComputeOptimized", "MemoryOptimized" | Nein
-staging.linkedService | Das für das PolyBase-Staging verwendete Speicherkonto, wenn Sie eine SQL Data Warehouse-Quelle oder -Senke verwenden. | LinkedServiceReference | Nur, wenn der Datenfluss Lese-oder Schreibvorgänge in SQL Data Warehouse ausführt.
-staging.folderPath | Der für das PolyBase-Staging verwendete Ordnerpfad im Blob-Speicherkonto, wenn Sie eine SQL Data Warehouse-Quelle oder -Senke verwenden. | String | Nur, wenn der Datenfluss Lese-oder Schreibvorgänge in SQL Data Warehouse ausführt.
+staging.linkedService | Das für das PolyBase-Staging verwendete Speicherkonto, wenn Sie eine Azure Synapse Analytics-Quelle oder -Senke verwenden. | LinkedServiceReference | Nur wenn der Datenfluss Daten in Azure Synapse Analytics liest oder schreibt
+staging.folderPath | Der für das PolyBase-Staging verwendete Ordnerpfad im Blobspeicherkonto, wenn Sie eine Azure Synapse Analytics-Quelle oder -Senke verwenden. | String | Nur wenn der Datenfluss Daten in Azure Synapse Analytics liest oder schreibt
 
 ![Ausführen eines Datenflusses](media/data-flow/activity-data-flow.png "Ausführen eines Datenflusses")
 
@@ -86,7 +86,7 @@ Bei Pipelineausführungen ist der Cluster ein Auftragscluster, der einige Minute
 
 ### <a name="polybase"></a>PolyBase
 
-Wenn Sie Azure SQL Data Warehouse als Senke oder Quelle verwenden, müssen Sie einen Stagingspeicherort für Ihren PolyBase-Batchladevorgang auswählen. PolyBase ermöglicht das Batchladen per Massenvorgang, anstatt die Daten zeilenweise zu laden. Mit PolyBase wird die Zeit für das Laden in SQL Data Warehouse drastisch reduziert.
+Wenn Sie Azure Synapse Analytics (ehemals SQL Data Warehouse) als Senke oder Quelle verwenden, müssen Sie einen Stagingspeicherort für Ihren PolyBase-Batchladevorgang auswählen. PolyBase ermöglicht das Batchladen per Massenvorgang, anstatt die Daten zeilenweise zu laden. PolyBase verkürzt die Ladezeit in Azure Synapse Analytics erheblich.
 
 ## <a name="parameterizing-data-flows"></a>Parametrisieren von Datenflüssen
 

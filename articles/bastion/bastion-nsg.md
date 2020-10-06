@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: charwen
-ms.openlocfilehash: 563c12f91e9553f802d4cf26519da0550880dfcd
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: a69aa8d8a6dc324d6fe28219316c36ac2ec816a5
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88270528"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987703"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>Verwenden von NSG-Zugriff und Azure Bastion
 
@@ -42,7 +42,7 @@ Azure Bastion wird speziell im Azure Bastion-Subnetz (***AzureBastionSubnet***) 
    * **Eingehender Datenverkehr von der Azure Bastion-Steuerungsebene:** Aktivieren Sie für Steuerungsebenenkonnektivität den Eingangsport 443 über das Diensttag **GatewayManager**. Dadurch kann die Steuerungsebene (also der Gateway-Manager) mit Azure Bastion kommunizieren.
 
 
-   :::image type="content" source="./media/bastion-nsg/inbound.png" alt-text="Eingehend":::
+   :::image type="content" source="./media/bastion-nsg/inbound.png" alt-text="NSG":::
 
 * **Ausgehender Datenverkehr:**
 
@@ -50,7 +50,7 @@ Azure Bastion wird speziell im Azure Bastion-Subnetz (***AzureBastionSubnet***) 
    * **Ausgehender Datenverkehr für andere öffentliche Endpunkte in Azure:** Azure Bastion muss eine Verbindung mit verschiedenen öffentlichen Endpunkten in Azure herstellen können, um beispielsweise Diagnose- und Messprotokolle zu speichern. Aus diesem Grund benötigt Azure Bastion ausgehende Konnektivität über den Port 443 mit dem Diensttag **AzureCloud**.
 
 
-   :::image type="content" source="./media/bastion-nsg/outbound.png" alt-text="Ausgehend":::
+   :::image type="content" source="./media/bastion-nsg/outbound.png" alt-text="NSG":::
 
 ### <a name="target-vm-subnet"></a>Ziel-VM-Subnetz
 Dieses Subnetz enthält die Ziel-VM, mit der Sie eine RDP-/SSH-Verbindung herstellen möchten.

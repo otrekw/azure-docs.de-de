@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 08/25/2020
 ms.author: raynew
-ms.openlocfilehash: 8c18a4d2fa6e5bdb211b77d4d7bb28af7e5b1c1a
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 608d9511b14ef8dd3815d6f9b45cda31e6b38b94
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948112"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004305"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>Unterstützung für das regionenübergreifende Verschieben von Azure-Ressourcen
 
@@ -363,9 +363,9 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Regionenverschiebung | 
 > | ------------- | ----------- |
-> | availabilitysets | Nein | 
+> | availabilitysets | Ja <br/><br/> Verschieben Sie mit [Azure Resource Mover](../../resource-mover/tutorial-move-region-virtual-machines.md) Verfügbarkeitsgruppen. | 
 > | diskencryptionsets | Nein | 
-> | disks | Nein | 
+> | disks | Ja <br/><br/> Verschieben Sie mit [Azure Resource Mover](../../resource-mover/tutorial-move-region-virtual-machines.md) Azure-VMs und zugehörige Datenträger. | 
 > | galleries | Nein | 
 > | galleries/images | Nein | 
 > | galleries/images/versions | Nein | 
@@ -377,7 +377,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | sharedvmimages | Nein | 
 > | sharedvmimages/versions | Nein | 
 > | snapshots | Nein | 
-> | virtualmachines | Ja | 
+> | virtualmachines | Ja <br/><br/> Verschieben Sie mit [Azure Resource Mover](../../resource-mover/tutorial-move-region-virtual-machines.md) Azure-VMs. | 
 > | virtualmachines/extensions | Nein | 
 > | virtualmachinescalesets | Nein | 
 
@@ -908,13 +908,13 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | expressrouteports | Nein | 
 > | frontdoors | Nein | 
 > | frontdoorwebapplicationfirewallpolicies | Nein | 
-> | loadbalancers | Ja <br/><br/> Sie können die vorhandene Konfiguration als Vorlage exportieren und diese Vorlage in der neuen Region bereitstellen. Erfahren Sie, wie Sie einen [externen](../..//load-balancer/move-across-regions-external-load-balancer-portal.md) oder [internen](../../load-balancer/move-across-regions-internal-load-balancer-portal.md) Load Balancer verschieben. |
+> | loadbalancers | Ja <br/><br/> Verschieben Sie in- und externe Lastenausgleichsmodule mit [Azure Resource Mover](../../resource-mover/tutorial-move-region-virtual-machines.md). |
 > | localnetworkgateways |  Nein | 
 > | natgateways |  Nein | 
 > | networkintentpolicies |  Nein | 
-> | networkinterfaces | Ja | 
+> | networkinterfaces | Ja <br/><br/> Verschieben Sie NICs mit [Azure Resource Mover](../../resource-mover/tutorial-move-region-virtual-machines.md). | 
 > | networkprofiles | Nein | 
-> | networksecuritygroups | Ja | 
+> | networksecuritygroups | Ja <br/><br/> Verschieben Sie Netzwerksicherheitsgruppen (NSGs) mit [Azure Resource Mover](../../resource-mover/tutorial-move-region-virtual-machines.md). | 
 > | networkwatchers |  Nein |  
 > | networkwatchers/connectionmonitors |  Nein | 
 > | networkwatchers/lenses |  Nein | 
@@ -924,7 +924,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | privatednszones/virtualnetworklinks |  Nein |  
 > | privateendpoints | Nein | 
 > | privatelinkservices | Nein | 
-> | publicipaddresses | Ja<br/><br/> Sie können die vorhandene öffentliche IP-Adressenkonfiguration als Vorlage exportieren und diese Vorlage in der neuen Region bereitstellen. [Weitere Informationen](../../virtual-network/move-across-regions-publicip-portal.md) zum Verschieben einer öffentlichen IP-Adresse. |
+> | publicipaddresses | Ja<br/><br/> Verschieben Sie öffentliche IP-Adressen mit [Azure Resource Mover](../../resource-mover/tutorial-move-region-virtual-machines.md). |
 > | publicipprefixes | Nein | 
 > | routefilters | Nein | 
 > | routetables |  Nein | 
@@ -1134,11 +1134,11 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Ressourcentyp | Regionenverschiebung | 
 > | ------------- | ----------- |
 > | instancepools | Nein | 
-> | managedinstances | Ja | 
+> | managedinstances | Ja <br/><br/> [Erfahren Sie mehr](/azure/azure-sql/database/move-resources-across-regions) über das regionsübergreifende Verschieben verwalteter Instanzen. | 
 > | managedinstances/databases | Ja | 
 > | servers | Ja | 
-> | servers/databases | Ja | 
-> | servers/elasticpools | Ja | 
+> | servers/databases | Ja <br/><br/> [Erfahren Sie mehr](/azure/azure-sql/database/move-resources-across-regions) über das regionsübergreifende Verschieben von Datenbanken.<br/><br/> [Erfahren Sie mehr](../../resource-mover/tutorial-move-region-sql.md) über das Verschieben von Azure SQL-Datenbank-Instanzen mit Azure Resource Mover.  | 
+> | servers/elasticpools | Ja <br/><br/> [Erfahren Sie mehr](/azure/azure-sql/database/move-resources-across-regions) über das regionsübergreifende Verschieben von Pools für elastische Datenbanken.<br/><br/> [Erfahren Sie mehr](../../resource-mover/tutorial-move-region-sql.md) über das Verschieben von Pools für elastische Azure SQL-Datenbank-Instanzen mit Azure Resource Mover.  | 
 > | virtualclusters | Ja | 
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine

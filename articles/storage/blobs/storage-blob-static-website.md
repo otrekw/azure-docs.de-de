@@ -6,25 +6,28 @@ ms.service: storage
 ms.topic: how-to
 ms.author: normesta
 ms.reviewer: dineshm
-ms.date: 05/14/2020
+ms.date: 09/04/2020
 ms.subservice: blobs
 ms.custom: devx-track-javascript
-ms.openlocfilehash: b8864201fc5bf86a5451c790a51141cee46bffeb
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 72ffad3724ba9c981984ef8410fc9dd9556d8b8e
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432511"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89486857"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hosten von statischen Websites in Azure Storage
 
-Sie können statische Inhalte (HTML, CSS, JavaScript und Bilddateien) direkt über einen Speichercontainer namens *$web* bereitstellen. Das Hosten von Inhalten in Azure Storage ermöglicht die Verwendung serverloser Architekturen mit [Azure Functions](/azure/azure-functions/functions-overview) und anderen PaaS-Diensten (Platform-as-a-Service).
+Sie können statische Inhalte (HTML, CSS, JavaScript und Bilddateien) direkt über einen Speichercontainer namens *$web* bereitstellen. Das Hosten von Inhalten in Azure Storage ermöglicht die Verwendung serverloser Architekturen mit [Azure Functions](/azure/azure-functions/functions-overview) und anderen PaaS-Diensten (Platform-as-a-Service). Das statische Hosting von Websites mit Azure Storage ist eine ideale Option für Fälle, in denen Sie keinen Webserver zum Rendern von Inhalten benötigen.
+
+[Static Web Apps von App Service](https://azure.microsoft.com/services/app-service/static/) sind eine hervorragend Alternative zum statischen Hosting von Websites mit Azure Storage, die sich auch für Fälle eignet, in denen Sie keinen Webserver zum Rendern von Inhalten benötigen. Static Web Apps von App Service bieten Ihnen einen vollständig verwalteten Continuous Integration- und Continuous Delivery-Workflow (CI/CD) von der GitHub-Quelle bis zur globalen Bereitstellung.
+
+Wenn Sie einen Webserver zum Rendern von Inhalten benötigen, können Sie [Azure App Service](https://azure.microsoft.com/services/app-service/)verwenden.
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 > [!NOTE]
-> Sollte Ihre Website von serverseitigem Code abhängig sein, verwenden Sie stattdessen [Azure App Service](/azure/app-service/overview).
-Erstellen Sie unbedingt ein Standardspeicherkonto vom Typ „Universell v2 (GPv2)“. Statische Websites sind in keinem anderen Speicherkontotyp verfügbar.
+> Erstellen Sie unbedingt ein Standardspeicherkonto vom Typ „Universell v2 (GPv2)“. Statische Websites sind in keinem anderen Speicherkontotyp verfügbar.
 
 ## <a name="setting-up-a-static-website"></a>Einrichten einer statischen Website
 
@@ -103,6 +106,11 @@ Wenn das Speicherkonto für die [sichere Übertragung](../common/storage-require
 Es gibt keine Möglichkeit, Header im Rahmen des Features für die statische Website zu konfigurieren. Sie können jedoch Azure CDN zum Hinzufügen von Headern und Anfügen (oder Überschreiben) von Headerwerten verwenden. Informationen dazu finden Sie in der [Referenz zur Standardregel-Engine für Azure CDN](https://docs.microsoft.com/azure/cdn/cdn-standard-rules-engine-reference).
 
 Wenn Sie Header zum Steuern der Zwischenspeicherung verwenden möchten, finden Sie Informationen dazu unter [Steuern des Azure CDN-Zwischenspeicherverhaltens mit Chacheregeln](https://docs.microsoft.com/azure/cdn/cdn-caching-rules).
+
+## <a name="multi-region-website-hosting"></a>Hosting von Websites in mehreren Regionen
+
+Wenn Sie beabsichtigen, eine Website in mehreren Regionen zu hosten, empfiehlt es sich, ein [Content Delivery Network](https://docs.microsoft.com/azure/cdn/) für regionales Zwischenspeichern zu verwenden. Setzen Sie [Azure Front Door](https://docs.microsoft.com/azure/frontdoor/) ein, wenn Sie in den einzelnen Regionen unterschiedliche Inhalte bereitstellen möchten. Zudem werden von dieser Lösung Failoverfunktionen geboten. [Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/) wird nicht empfohlen, wenn Sie den Einsatz einer benutzerdefinierten Domäne vorhaben. Probleme können sich daraus ergeben, wie Azure Storage benutzerdefinierte Domänennamen verifiziert.
+
 
 ## <a name="pricing"></a>Preise
 

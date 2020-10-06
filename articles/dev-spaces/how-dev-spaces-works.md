@@ -5,12 +5,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 description: Beschreibt die Prozesse, auf denen Azure Dev Spaces basiert.
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
-ms.openlocfilehash: 48bde5f3cc6f397d51a31f80f41ab299ba8866ee
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 81408ed4bbe5322538d893b29c7397104c5b0844
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212530"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981277"
 ---
 # <a name="how-azure-dev-spaces-works"></a>Funktionsweise von Azure Dev Spaces
 
@@ -22,9 +22,9 @@ Azure Dev Spaces bietet Ihnen mehrere Möglichkeiten, Kubernetes-Anwendungen sch
 
 Azure Dev Spaces reduziert den Aufwand für das Entwickeln, Testen und Durchlaufen Ihrer Kubernetes-Anwendung im Kontext Ihres AKS-Clusters. Diese Verringerung des Aufwands ermöglicht es Entwicklern, sich auf die Geschäftslogik ihrer Anwendungen zu konzentrieren und ihre Dienste nicht für die Ausführung in Kubernetes zu konfigurieren.
 
-### <a name="local-process-with-kubernetes"></a>Lokaler Prozess mit Kubernetes
+### <a name="bridge-to-kubernetes"></a>Bridge to Kubernetes
 
-Beim lokalen Prozess mit Kubernetes können Sie Ihren Entwicklungscomputer mit Ihrem Kubernetes-Cluster verbinden, sodass Sie Code auf dem Entwicklungscomputer so ausführen und debuggen können, als würde er im Cluster ausgeführt. Azure Dev Spaces leitet den Datenverkehr zwischen dem verbundenen Cluster um, indem ein Pod in Ihrem Cluster ausgeführt wird, der als Remote-Agent zum Umleiten von Datenverkehr zwischen dem Entwicklungscomputer und dem Cluster dient. Durch diese Umleitung des Datenverkehrs können Code auf dem Entwicklungscomputer und die im Cluster ausgeführten Dienste so kommunizieren, als befänden sie sich im selben Cluster. Weitere Informationen zum Herstellen einer Verbindung zwischen Ihrem Entwicklungscomputer und einem Kubernetes-Cluster finden Sie unter [Funktionsweise des lokalen Prozesses mit Kubernetes][how-it-works-local-process-kubernetes].
+Mithilfe von Bridge to Kubernetes können Sie Ihren Entwicklungscomputer mit Ihrem Kubernetes-Cluster verbinden, sodass Sie Code auf dem Entwicklungscomputer so ausführen und debuggen können, als würde er im Cluster ausgeführt. Bridge to Kubernetes leitet den Datenverkehr zwischen dem verbundenen Cluster um, indem ein Pod in Ihrem Cluster ausgeführt wird, der als Remote-Agent zum Umleiten von Datenverkehr zwischen dem Entwicklungscomputer und dem Cluster dient. Durch diese Umleitung des Datenverkehrs können Code auf dem Entwicklungscomputer und die im Cluster ausgeführten Dienste so kommunizieren, als befänden sie sich im selben Cluster. Weitere Informationen zum Herstellen einer Verbindung zwischen Ihrem Entwicklungscomputer und einem Kubernetes-Cluster finden Sie unter [Funktionsweise von Bridge to Kubernetes][how-it-works-bridge-to-kubernetes].
 
 ### <a name="run-your-code-in-aks"></a>Ausführen Ihres Codes in AKS
 
@@ -47,8 +47,8 @@ Sie können auch GitHub Actions mit Azure Dev Spaces verwenden, um Änderungen a
 Informationen zu den ersten Schritten beim Verbinden Ihres lokalen Entwicklungscomputers mit Ihrem AKS-Cluster finden Sie unter [Verbinden Ihres Entwicklungscomputers mit einem AKS-Cluster][connect].
 
 
-[connect]: https://code.visualstudio.com/docs/containers/local-process-kubernetes
-[how-it-works-local-process-kubernetes]: /visualstudio/containers/overview-local-process-kubernetes
+[connect]: https://code.visualstudio.com/docs/containers/bridge-to-kubernetes
+[how-it-works-bridge-to-kubernetes]: /visualstudio/containers/overview-bridge-to-kubernetes
 [how-it-works-prep]: how-dev-spaces-works-prep.md
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
 [how-it-works-routing]: how-dev-spaces-works-routing.md

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: duau
-ms.openlocfilehash: 1cb24e4a959e7d32a3c3b5b69a39938df4efddfa
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: aada5b976721fdfed31131095f7f2b12aefefea9
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399870"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024280"
 ---
 # <a name="caching-with-azure-front-door"></a>Zwischenspeicherung mit Azure Front Door
 In diesem Dokument wird das Verhalten von Azure Front Door Service für Routingregeln mit aktivierter Zwischenspeicherung erläutert. Front Door ist ein modernes Content Delivery Network (CDN) und unterstützt daher neben der Beschleunigung dynamischer Websites und dem Lastenausgleich auch Zwischenspeicherungsverhalten wie jedes andere CDN.
@@ -88,13 +88,22 @@ Mit Azure Front Door Service können Sie steuern, wie Dateien für eine Webanfor
 - **Zwischenspeichern jeder eindeutigen URL:** In diesem Modus wird jede Anforderung mit einer eindeutigen URL, einschließlich der Abfragezeichenfolge, als eindeutiges Objekt mit eigenem Cache behandelt. So wird beispielsweise die Antwort vom Back-End für eine Anforderung für `www.example.ashx?q=test1` in der Azure Front Door Service-Umgebung zwischengespeichert und für nachfolgende Caches mit der gleichen Abfragezeichenfolge zurückgegeben. Eine Anforderung für `www.example.ashx?q=test2` wird als separates Objekt mit eigener Einstellung für die Gültigkeitsdauer zwischengespeichert.
 
 ## <a name="cache-purge"></a>Cachebereinigung
-Azure Front Door Service speichert Ressourcen zwischen, bis die Gültigkeitsdauer (Time-to-live, TTL) der Ressource abläuft. Wenn ein Client die Ressource nach Ablauf ihrer TTL anfordert, ruft die Azure Front Door Service-Umgebung eine neue aktualisierte Kopie der Ressource ab, um die Clientanforderung zu erfüllen und den Cache zu aktualisieren.
-</br>Die bewährte Methode, um sicherzustellen, dass Ihre Benutzer immer die neueste Kopie Ihrer Assets abrufen, besteht darin, Ihre Assets für jedes Update mit einer Version zu versehen und sie als neue URLs zu veröffentlichen. Azure Front Door Service ruft sofort die neuen Ressourcen für die nächsten Clientanforderungen ab. Manchmal möchten Sie möglicherweise zwischengespeicherten Inhalt aus allen Edgeknoten löschen und sie zwingen, neue aktualisierte Assets abzurufen. Als Gründe hierfür kommen z. B. Updates Ihrer Webanwendung oder schnelle Aktualisierung von Assets, die falsche Informationen enthalten, infrage.
 
-</br>Wählen Sie, welche Assets Sie aus dem Edgeknoten löschen möchten. Wenn Sie alle Ressourcen löschen möchten, aktivieren Sie das Kontrollkästchen „Alles löschen“. Geben Sie andernfalls den vollständigen Pfad jeder Ressource, die Sie löschen möchten, in das Textfeld „Pfad“ ein. Folgende Formate werden im Pfad unterstützt.
-1. **Löschen eines einzelnen Pfads**: Löschen Sie einzelne Ressourcen, indem Sie den vollständigen Pfad der Ressource, ohne Protokoll und Domäne, aber mit der Dateierweiterung angeben. Beispiel: „/pictures/strasbourg.png“.
-2. **Mit Platzhalter löschen**: Das Sternchen (\*) kann als Platzhalterzeichen verwendet werden. Löschen Sie alle Ordner, Unterordner und Dateien unter einem Endpunkt, indem Sie „/\*“ im Pfad angeben, oder löschen Sie alle Unterordner und Dateien unter einem bestimmten Ordner, indem Sie den Ordner gefolgt von „/\*“ angeben. Beispiel: „/pictures/\*“.
-3. **Stammdomäne löschen**: Löschen Sie den Stamm des Endpunkts, indem Sie „/“ im Pfad angeben.
+Azure Front Door Service speichert Ressourcen zwischen, bis deren Gültigkeitsdauer (Time-to-live, TTL) abläuft. Wenn ein Client die Ressource nach Ablauf ihrer Gültigkeitsdauer anfordert, ruft die Front Door-Umgebung eine neue aktualisierte Kopie der Ressource ab, um die Clientanforderung zu erfüllen und den Cache zu aktualisieren.
+
+Die bewährte Methode, um sicherzustellen, dass Ihre Benutzer immer die neueste Kopie Ihrer Assets abrufen, besteht darin, Ihre Assets für jedes Update mit einer Version zu versehen und sie als neue URLs zu veröffentlichen. Azure Front Door Service ruft sofort die neuen Ressourcen für die nächsten Clientanforderungen ab. Manchmal möchten Sie möglicherweise zwischengespeicherten Inhalt aus allen Edgeknoten löschen und sie zwingen, neue aktualisierte Assets abzurufen. Als Gründe hierfür kommen z. B. Updates Ihrer Webanwendung oder schnelle Aktualisierung von Assets, die falsche Informationen enthalten, infrage.
+
+Wählen Sie die Ressourcen aus, die Sie von den Edgeknoten löschen möchten. Wählen Sie **Alles löschen** aus, um alle Ressourcen zu löschen. Andernfalls geben Sie in **Pfad** den Pfad jeder Ressource ein, die Sie bereinigen möchten.
+
+Diese Formate werden in der Liste der zu löschenden Pfade unterstützt:
+
+- **Löschen eines einzelnen Pfads**: Löschen Sie einzelne Ressourcen, indem Sie den vollständigen Pfad der Ressource, ohne Protokoll und Domäne, aber mit der Dateierweiterung angeben. Beispiel: /pictures/strasbourg.png.
+- **Mit Platzhalter löschen**: Das Sternchen (\*) kann als Platzhalterzeichen verwendet werden. Löschen Sie alle Ordner, Unterordner und Dateien unter einem Endpunkt, indem Sie „/\*“ im Pfad angeben, oder löschen Sie alle Unterordner und Dateien unter einem bestimmten Ordner, indem Sie den Ordner gefolgt von „/\*“ angeben. Beispiel: „/pictures/\*“.
+- **Stammdomäne löschen**: Löschen Sie den Stamm des Endpunkts, indem Sie „/“ im Pfad angeben.
+
+> [!NOTE]
+> **Löschen von Platzhalterdomänen**: Das Angeben zwischengespeicherter Pfade für das Löschen, wie in diesem Abschnitt beschrieben, gilt nicht für Platzhalterdomänen, die mit Front Door verknüpft sind. Derzeit wird das direkte Löschen von Platzhalterdomänen nicht unterstützt. Sie können Pfade aus bestimmten Unterdomänen löschen, indem Sie die jeweilige Unterdomäne und den Löschpfad angeben. Wenn meine Front Door-Instanz beispielsweise `*.contoso.com` aufweist, kann ich Ressourcen meiner Unterdomäne `foo.contoso.com` bereinigen, indem ich `foo.contoso.com/path/*` eingebe. Gegenwärtig ist die Angabe von Hostnamen im Pfad für die Bereinigung von Inhalten ggf. auf Unterdomänen von Platzhalterdomänen beschränkt.
+>
 
 Bei Cachebereinigungen in Azure Front Door Service muss die Groß-/Kleinschreibung beachtet werden. Darüber hinaus sind Cachebereinigungen abfragezeichenfolgenagnostisch, d. h. beim Bereinigen einer URL werden alle Abfragezeichenfolgenvariationen der URL gelöscht. 
 
