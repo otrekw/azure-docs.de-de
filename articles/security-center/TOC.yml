@@ -263,8 +263,6 @@
       href: release-notes-archive.md
     - name: 'Azure-Roadmap: Blog'
       href: 'https://azure.microsoft.com/updates/?product=security-center'
-    - name: Feature- und API-Ausmusterung (Juli 2019)
-      href: security-center-features-retirement-july2019.md
     - name: 'Endpoint Protection: Bewertung und Empfehlungen'
       href: security-center-endpoint-protection.md
 - name: Ressourcen
