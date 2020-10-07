@@ -1,16 +1,14 @@
 ---
 title: 'Fault Analysis Service (FAS): Übersicht'
 description: In diesem Artikel wird der Fault Analysis Service in Service Fabric zum Auslösen von Fehlern und Ausführen von Testszenarien für Ihre Dienste beschrieben.
-author: anmolah
 ms.topic: conceptual
 ms.date: 06/15/2017
-ms.author: anmola
-ms.openlocfilehash: d5c770a4d823ebe9b2700b081c407c54dd1d18a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4e879b0b39d58f115b4661d47cf2ae564ba14e5d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75465575"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531376"
 ---
 # <a name="introduction-to-the-fault-analysis-service"></a>Einführung in den Fault Analysis Service
 Der Fault Analysis Service ist für das Testen von Diensten ausgelegt, die in Microsoft Azure Service Fabric erstellt werden. Mit dem Fault Analysis Service können Sie aussagekräftige Fehler auslösen und vollständige Testszenarien für Ihre Anwendungen ausführen. Mit diesen Fehlern und Szenarien werden die verschiedenen Zustände und Übergänge durchgespielt und überprüft, die während der Lebensdauer eines Diensts auftreten – und zwar auf kontrollierte, sichere und einheitliche Weise.

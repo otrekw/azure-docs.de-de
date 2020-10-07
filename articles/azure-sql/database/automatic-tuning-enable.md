@@ -6,17 +6,17 @@ ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: jrasnik, sstein
 ms.date: 12/03/2019
-ms.openlocfilehash: e7a3dd1c58f2bddb767dcac4ac2b5e354be77f65
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 35fc4b18ee5a98270f715a969354df2be5000150
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90981462"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91444088"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>Aktivieren der automatischen Optimierung im Azure-Portal zum Überwachen von Abfragen und Verbessern der Workloadleistung
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -28,7 +28,7 @@ Die automatische Optimierung kann auf Server- oder auf Datenbankebene über eine
 
 - Das [Azure-Portal](automatic-tuning-enable.md#azure-portal)
 - [REST-API](automatic-tuning-enable.md#rest-api)-Aufrufe
-- [T-SQL](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current)-Befehle
+- [T-SQL](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current&preserve-view=true)-Befehle
 
 > [!NOTE]
 > Für Azure SQL Managed Instance kann die unterstützte Option FORCE_LAST_GOOD_PLAN nur über [T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management) konfiguriert werden. Die in diesem Artikel beschriebene auf dem Azure-Portal basierende Konfiguration und die Optionen zur automatischen Indexoptimierung gelten nicht für Azure SQL Managed Instance.
@@ -109,7 +109,7 @@ Wenn Sie eine Optimierungsoption auf „ON“ festlegen, werden gegebenenfalls g
 > Im Fall einer [aktiven Georeplikation](auto-failover-group-overview.md) muss die automatische Optimierung nur für die primäre Datenbank konfiguriert werden. Automatisch angewandte Aktionen zur Optimierung, z. B. das Erstellen oder Löschen des Index, werden automatisch in die schreibgeschützte sekundäre Datenbank repliziert. Der Versuch, die automatischen Optimierung in der sekundären schreibgeschützten Datenbank über T-SQL zu aktivieren, führt zu einem Fehler, da für die schreibgeschützte sekundäre Datenbank keine abweichende Optimierungskonfiguration unterstützt wird.
 >
 
-Informationen zu den T-SQL-Optionen für die Konfiguration der automatischen Optimierung finden Sie unter [ALTER DATABASE SET-Optionen (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current).
+Informationen zu den T-SQL-Optionen für die Konfiguration der automatischen Optimierung finden Sie unter [ALTER DATABASE SET-Optionen (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current&preserve-view=true).
 
 ## <a name="disabled-by-the-system"></a>Vom System deaktiviert
 

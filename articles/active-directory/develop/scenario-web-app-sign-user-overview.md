@@ -11,20 +11,16 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 52e33177b5fc6c68f615b8eb7738e66b18a1763a
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 7cadb4784cbf90d283f64e12edc155d4430fab06
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118705"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257066"
 ---
 # <a name="scenario-web-app-that-signs-in-users"></a>Szenario: Web-App, die Benutzer anmeldet
 
 Hier erfahren Sie, wie Sie eine Web-App erstellen, die Benutzer unter Verwendung von Microsoft Identity Plattform anmeldet.
-
-## <a name="prerequisites"></a>Voraussetzungen
-
-[!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="getting-started"></a>Erste Schritte
 
@@ -60,7 +56,7 @@ Für Python-Entwickler steht die folgende Schnellstartanleitung zur Verfügung:
 
 ## <a name="overview"></a>Übersicht
 
-Eine Web-App mit Authentifizierung ist in der Lage, Benutzer anzumelden. Durch Hinzufügen einer Authentifizierung kann Ihre App auf eingeschränkte Profilinformationen zugreifen, um beispielsweise die Umgebung für Benutzer anpassen. 
+Eine Web-App mit Authentifizierung ist in der Lage, Benutzer anzumelden. Durch Hinzufügen einer Authentifizierung kann Ihre App auf eingeschränkte Profilinformationen zugreifen, um beispielsweise die Umgebung für Benutzer anpassen.
 
 Web-Apps authentifizieren Benutzer in einem Webbrowser. In diesem Szenario weist die Web-App den Browser des Benutzers an, ihn bei Azure Active Directory (Azure AD) anzumelden. Azure AD gibt über den Browser des Benutzers eine Anmeldeantwort mit Benutzeransprüchen in einem Sicherheitstoken zurück. Bei der Benutzeranmeldung wird das Standardprotokoll [OpenID Connect](./v2-protocols-oidc.md) genutzt – vereinfacht durch die Verwendung von [Middlewarebibliotheken](scenario-web-app-sign-user-app-configuration.md#libraries-for-protecting-web-apps).
 
@@ -76,6 +72,10 @@ In einem zweiten Schritt können Sie die Anwendung so konfigurieren, dass sie We
 - Bei der Anwendungsregistrierung müssen Sie einen Antwort-URI oder – wenn die App an mehreren Standorten bereitgestellt wird – mehrere Antwort-URIs angeben. In bestimmten Fällen (etwa bei ASP.NET und ASP.NET Core) muss das ID-Token aktiviert werden. Außerdem empfiehlt es sich, einen Abmelde-URI einzurichten, damit Ihre Anwendung entsprechend reagiert, wenn sich ein Benutzer abmeldet.
 - Im Code für Ihre Anwendung muss die Autorität angegeben werden, an die Ihre Web-App die Anmeldung delegiert. Darüber hinaus empfiehlt es sich gegebenenfalls, die Tokenüberprüfung anzupassen (insbesondere in Partnerszenarien).
 - Webanwendungen unterstützen alle Kontotypen. Weitere Informationen finden Sie unter [Unterstützte Kontotypen](v2-supported-account-types.md).
+
+## <a name="recommended-reading"></a>Empfohlene Literatur
+
+[!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

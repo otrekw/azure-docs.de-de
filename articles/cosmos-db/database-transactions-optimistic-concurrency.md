@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: d453bb4071c4a6972e01b8f7e90375181caf6d01
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9d8bd72b6a03164a41e0b7c0ff00ac728cecf7f5
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74806523"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355381"
 ---
 # <a name="transactions-and-optimistic-concurrency-control"></a>Transaktionen und Steuerung für optimistische Nebenläufigkeit
 
@@ -55,7 +55,7 @@ Die gleichzeitigen Aktualisierungen eines Elements unterliegen über die Kommuni
 
 Jedes in einem Azure Cosmos-Container gespeicherte Element weist eine systemdefinierte `_etag`-Eigenschaft auf. Der Wert von `_etag` wird automatisch generiert und bei jeder Aktualisierung des Elements vom Server aktualisiert. `_etag` kann mit dem vom Client bereitgestellten Anforderungsheader `if-match` verwendet werden, sodass der Server festlegen kann, ob ein Element bedingt aktualisiert werden kann. Wenn der Wert des `if-match`-Headers dem Wert von `_etag` auf dem Server entspricht, wird das Element aktualisiert. Wenn der Wert des `if-match`-Anforderungsheaders nicht mehr aktuell ist, lehnt der Server den Vorgang mit der Antwortmeldung „HTTP 412 – Vorbedingungsfehler“ ab. Der Client kann dann das Element erneut abrufen, um die aktuelle Version des Elements auf dem Server zu erhalten, oder die Version des Elements auf dem Server mit dem eigenen `_etag`-Wert für das Element überschreiben. Darüber hinaus kann `_etag` mit dem `if-none-match`-Header verwendet werden, um festzustellen, ob ein erneutes Abrufen einer Ressource erforderlich ist.
 
-Der Wert `_etag` des Elements ändert sich bei jeder Aktualisierung des Elements. Bei Vorgängen zum Ersetzen von Elementen muss `if-match` ausdrücklich als Teil der Anforderungsoptionen ausgedrückt werden. Einen entsprechenden Beispielcode finden Sie in [GitHub](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs#L578-L674). `_etag`-Werte werden für alle geschriebenen Elemente, die von der gespeicherten Prozedur verwendet werden, implizit überprüft. Wenn ein Konflikt erkannt wird, setzt die gespeicherte Prozedur die Transaktion zurück und löst eine Ausnahme aus. Mit dieser Methode werden entweder alle oder keine Schreibvorgänge in der gespeicherten Prozedur unteilbar angewandt. Dies ist ein Signal für die Anwendung, Aktualisierungen erneut anzuwenden und die ursprüngliche Clientanforderung zu wiederholen.
+Der Wert `_etag` des Elements ändert sich bei jeder Aktualisierung des Elements. Bei Vorgängen zum Ersetzen von Elementen muss `if-match` ausdrücklich als Teil der Anforderungsoptionen ausgedrückt werden. Einen entsprechenden Beispielcode finden Sie in [GitHub](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs#L676-L772). `_etag`-Werte werden für alle geschriebenen Elemente, die von der gespeicherten Prozedur verwendet werden, implizit überprüft. Wenn ein Konflikt erkannt wird, setzt die gespeicherte Prozedur die Transaktion zurück und löst eine Ausnahme aus. Mit dieser Methode werden entweder alle oder keine Schreibvorgänge in der gespeicherten Prozedur unteilbar angewandt. Dies ist ein Signal für die Anwendung, Aktualisierungen erneut anzuwenden und die ursprüngliche Clientanforderung zu wiederholen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
