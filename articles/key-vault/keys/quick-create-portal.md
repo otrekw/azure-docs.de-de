@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.date: 03/24/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 41f3d60d91b7418d6e9733b8351d4830b31dbace
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "81420284"
 ---
 # <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-the-azure-portal"></a>Schnellstart: Festlegen eines Schlüssels und Abrufen des Schlüssels aus Azure Key Vault mit dem Azure-Portal
@@ -35,7 +35,7 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 3. Wählen Sie in der Ergebnisliste **Key Vault** aus.
 4. Klicken Sie im Abschnitt „Key Vault“ auf **Erstellen**.
 5. Geben Sie im Abschnitt **Schlüsseltresor erstellen** folgende Informationen ein:
-    - **Name**: Es ist ein eindeutiger Name erforderlich. Für diesen Schnellstart verwenden wir **Example-Vault**. 
+    - **Name**: Es ist ein eindeutiger Name erforderlich. Für diese Schnellstartanleitung verwenden wir **Example-Vault**. 
     - **Abonnement**: Wählen Sie ein Abonnement aus.
     - Klicken Sie unter **Ressourcengruppe** auf **Neu erstellen**, und geben Sie einen Ressourcengruppennamen ein.
     - Wählen Sie im Pulldownmenü **Speicherort** einen Speicherort aus.

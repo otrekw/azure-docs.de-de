@@ -8,22 +8,22 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 3/18/2020
 ms.openlocfilehash: 84fd24890495e7278c69c2f83c7182fd65f86791
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "79535560"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>Was ist Azure Database for MariaDB?
 
 Azure Database for MariaDB ist ein relationaler Datenbankdienst in der Microsoft-Cloud. Azure Database for MariaDB basiert auf den Versionen 10.2 und 10.3 der Datenbank-Engine [MariaDB Community Edition](https://mariadb.org/download/) (verfügbar unter der GPLv2-Lizenz).
 
-Azure Database for MariaDB bietet Folgendes:
+Azure Database for MariaDB-Server stellt Folgendes bereit:
 
 - Integrierte Hochverfügbarkeit ohne zusätzliche Kosten.
 - Vorhersagbare Leistung inklusive nutzungsbasierter Bezahlung.
-- Bedarfsgerechte Skalierung in Sekundenschnelle.
-- Schutz von sensiblen Daten (sowohl in Ruhe als auch während der Übertragung).
+- Skalierung je nach Bedarf innerhalb von Sekunden.
+- Sicherer Schutz von sensiblen Daten im Ruhezustand und während der Übertragung.
 - Automatische Sicherungen und Point-in-Time-Wiederherstellung für bis zu 35 Tage.
 - Sicherheit und Konformität auf Unternehmensniveau.
 
