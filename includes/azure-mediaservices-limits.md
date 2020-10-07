@@ -2,14 +2,14 @@
 author: rothja
 ms.service: media-services
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 09/16/2020
 ms.author: jroth
-ms.openlocfilehash: e24c345bfee216dd240f0c283402ad43c8f45c29
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c315c071aeb36eea0bd1af84b1344cf2fef5f703
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85838869"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329657"
 ---
 >[!NOTE]
 >Erstellen Sie für Ressourcen ohne festes Limit ein Supportticket, um eine Erhöhung der Kontingente anzufordern. Erstellen Sie keine zusätzlichen Azure Media Services-Konten, um höhere Limits zu erhalten.
@@ -29,7 +29,7 @@ ms.locfileid: "85838869"
 | Programme im ausgeführten Zustand pro Kanal |3|
 | Streamingendpunkte (beendet oder ausgeführt) pro Media Services-Konto|2|
 | Streamingeinheiten pro Streamingendpunkt |10 |
-| Speicherkonten | 1\.000<sup>5</sup> (feststehend) |
+| Speicherkonten | 100<sup>5</sup> (feststehend) |
 | Richtlinien | 1,000,000<sup>6</sup> |
 | Dateigröße| In einigen Szenarien werden für die Verarbeitung in Media Services nur Dateien bis zu einer bestimmten Größe unterstützt.<sup>7</sup> |
 

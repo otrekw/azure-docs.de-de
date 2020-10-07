@@ -1,7 +1,7 @@
 ---
 title: 'Schnellstart: Aufrufen der Textanalyse-REST-API mithilfe von Node.js'
 titleSuffix: Azure Cognitive Services
-description: Diese Schnellstartanleitung zeigt Ihnen, wie Sie Informationen und Codebeispiele erhalten, damit Sie die ersten Schritte mit der Textanalyse-API in Azure Cognitive Services schnell durchführen können.
+description: Diese Schnellstartanleitung zeigt Ihnen, wie Sie mithilfe von Node.js Informationen und Codebeispiele erhalten, damit Sie die ersten Schritte mit der Textanalyse-API in Azure Cognitive Services schnell durchführen können.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,13 +10,13 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: aahi
-ms.custom: seo-javascript-september2019, devx-track-javascript
-ms.openlocfilehash: fe9877649d850796b03e9f1c3554a1b9aa7344c3
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: seo-javascript-september2019, devx-track-js
+ms.openlocfilehash: 00026066c90520f59700c7c5ddc33557099b3e8a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407743"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91309012"
 ---
 # <a name="quickstart-use-nodejs-to-call-the-text-analytics-cognitive-service"></a>Schnellstart: Verwenden von Node.js zum Aufrufen der Textanalyse von Cognitive Services  
 <a name="HOLTop"></a>

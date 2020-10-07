@@ -5,12 +5,12 @@ author: FlorianBorn71
 ms.author: flborn
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: e77379be863f4527081eeec6a0ee1f426d526527
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 12407d6344c69c747230e9db6fa4d53b4520dc82
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90084463"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331810"
 ---
 # <a name="tutorial-set-up-physically-based-rendering-materials-in-3ds-max"></a>Tutorial: Einrichten von Materialien für Rendern auf physikalischer Grundlage in 3ds Max
 
@@ -22,6 +22,10 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Zuweisen von Materialien mit erweiterter Beleuchtung zu Objekten in einer Szene
 > * Verarbeiten Sie die Instanziierung von Objekten und Materialien.
 > * Exportieren Sie eine Szene im FBX-Format, und wählen Sie wichtige Optionen aus.
+
+> [!Note]
+> Die in diesem Tutorial beschriebene Vorgehensweise funktioniert in 3ds Max 2019 und 3ds Max 2020.
+> Eine Änderung in der Weise, wie 3ds Max 2021 Bumpmaps exportiert, führt jedoch dazu, dass normale Maps vom Konvertierungsdienst nicht gefunden werden, wenn diese Version verwendet wird.
 
 Das Erstellen von [PBR-Materialien](../../overview/features/pbr-materials.md) (Physically Based Rendering, Rendern auf physikalischer Grundlage) in 3ds Max ist unkompliziert. Der Vorgang ähnelt in vielerlei Hinsicht der PBR-Einrichtung in anderen Anwendungen zum Erstellen von Inhalten, wie z. B. Maya. Dieses Tutorial ist ein Leitfaden zur grundlegenden Einrichtung eines PBR-Shaders und für den FBX-Export für Azure Remote Rendering-Projekte.
 

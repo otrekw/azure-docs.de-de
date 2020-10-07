@@ -1,7 +1,7 @@
 ---
 title: 'Schnellstart: Gewinnen von Erkenntnissen zu Bildern mit der REST-API und Python – Visuelle Bing-Suche'
 titleSuffix: Azure Cognitive Services
-description: Es wird beschrieben, wie Sie ein Bild in die API für die visuelle Bing-Suche hochladen und Erkenntnisse dazu gewinnen.
+description: In dieser Schnellstartanleitung wird beschrieben, wie Sie ein Bild mit der API für die visuelle Bing-Suche und Python hochladen und dann Erkenntnisse zum Bild abrufen.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: scottwhi
 ms.custom: devx-track-python
-ms.openlocfilehash: 7c76ec8600ade26098206a5d18559e795db53178
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: ef265ab0cff9514695b40995e842518803e2e4c0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853074"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324585"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-python"></a>Schnellstart: Gewinnen von Erkenntnissen zu Bildern mit der REST-API für die visuelle Bing-Suche und Python
 

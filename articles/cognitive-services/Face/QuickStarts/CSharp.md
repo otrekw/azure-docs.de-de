@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: fe6def8a935fcc6f093c4489409a3bcde829ac10
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 8c1e47db4f5f5bb64c31d16c26f6c3860b5bcb29
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89294933"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323055"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>Schnellstart: Erkennen von Gesichtern in einem Bild mit der Gesichtserkennungs-REST-API und C#
 
@@ -75,7 +75,7 @@ namespace DetectFace
 
 ### <a name="receive-image-input"></a>Empfangen der Bildeingabe
 
-Fügen Sie der **Main**-Methode der **Program**-Klasse den folgenden Code hinzu. Durch diesen Code wird der Benutzer über die Konsole aufgefordert, eine Bild-URL einzugeben. Anschließend wird eine weitere Methode (**MakeAnalysisRequest**) aufgerufen, um das Bild an diesem Speicherort zu verarbeiten.
+Fügen Sie der **Main**-Methode der **Program**-Klasse den folgenden Code hinzu. Durch diesen Code wird der Benutzer über die Konsole aufgefordert, seinen lokalen Pfad zur Bilddatei einzugeben. Anschließend wird eine weitere Methode (**MakeAnalysisRequest**) aufgerufen, um das Bild an diesem Speicherort zu verarbeiten.
 
 ```csharp
         static void Main(string[] args)
@@ -159,7 +159,7 @@ Sie definieren die Hilfsmethoden in den folgenden Schritten.
 
 ### <a name="process-the-input-image-data"></a>Verarbeiten der Eingabebilddaten
 
-Fügen Sie der **Program**-Klasse die folgende Methode hinzu. Durch diese Methode wird das Bild unter der angegebenen URL in ein Bytearray konvertiert.
+Fügen Sie der **Program**-Klasse die folgende Methode hinzu. Durch diese Methode wird das Bild unter dem angegebenen Dateipfad in ein Bytearray konvertiert.
 
 ```csharp
         // Returns the contents of the specified file as a byte array.

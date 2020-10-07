@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Suchen nach Orten in der Nähe auf einer Karte | Microsoft Azure Maps'
-description: Hier wird erläutert, wie Sie auf einer Karte nach Points of Interest suchen. Sie erfahren, wie Sie mithilfe des Azure Maps Web SDK einer Karte Suchfunktionen und interaktive Popupfelder hinzufügen.
+description: Tutorial zur Suche von Points of Interest auf einer Karte. Sie erfahren, wie Sie mithilfe des Azure Maps Web SDK einer Karte Suchfunktionen und interaktive Popupfelder hinzufügen.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 1/15/2020
@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 6ed463cbda3ceb560f907529dc8de54a772932ea
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 4d6728d4fbde4b7d6cc8ed06e961642264ad31bc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085075"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321695"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>Tutorial: Suchen nach Points of Interest in der Nähe mit Azure Maps
 
@@ -26,44 +26,14 @@ In diesem Tutorial wird gezeigt, wie Sie ein Konto für Azure Maps einrichten un
 > * Erstellen einer neuen Webseite mit der Kartensteuerelement-API
 > * Suchen eines Point of Interest in der Nähe mithilfe des Maps-Suchdiensts
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-
-## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
-
-Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+## <a name="prerequisites"></a>Voraussetzungen
 
 <a id="createaccount"></a>
-
-## <a name="create-an-account-with-azure-maps"></a>Erstellen eines Kontos mit Azure Maps
-
-Erstellen Sie mithilfe der folgenden Schritte ein neues Maps-Konto:
-
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com) links oben auf **Ressource erstellen**.
-2. Geben Sie im Feld *Marketplace durchsuchen* das Wort **Maps** ein.
-3. Wählen Sie in den *Ergebnissen* die Option **Maps** aus. Klicken Sie auf die unterhalb der Karte angezeigte Schaltfläche **Erstellen**.
-4. Geben Sie auf der Seite **Azure Maps-Konto erstellen** die folgenden Werte ein:
-    * *Abonnement*, das Sie für dieses Konto verwenden möchten
-    * Name der *Ressourcengruppe* für dieses Konto. Sie können für die Ressourcengruppe die Option *Neu erstellen* oder die Option *Vorhandene verwenden* auswählen.
-    * *Name* des neuen Kontos
-    * Der *Tarif* für dieses Konto.
-    * Lesen Sie die *Lizenzbedingungen* und die *Datenschutzerklärung*, und aktivieren Sie zum Akzeptieren der Bestimmungen das Kontrollkästchen.
-    * Klicken Sie auf die Schaltfläche **Erstellen** .
-
-![Erstellen eines Azure Maps-Kontos im Azure-Portal](./media/tutorial-search-location/create-account.png)
-
 <a id="getkey"></a>
 
-## <a name="get-the-primary-key-for-your-account"></a>Abrufen des Primärschlüssels für Ihr Konto
-
-Rufen Sie nach der Erstellung des Maps-Kontos den Schlüssel ab, mit dem Sie die Maps-APIs abfragen können. Sie sollten den Primärschlüssel Ihres Kontos als Abonnementschlüssel verwenden, wenn Sie Azure Maps-Dienste aufrufen.
-
-1. Öffnen Sie Ihr Maps-Konto im Portal.
-2. Wählen Sie im Abschnitt „Einstellungen“ die Option **Authentifizierung** aus.
-3. Kopieren Sie den **Primärschlüssel** in die Zwischenablage. Speichern Sie ihn lokal zur späteren Verwendung in diesem Tutorial.
-
-![Abrufen des Primärschlüssels im Azure-Portal](./media/tutorial-search-location/get-key.png)
-
-Weitere Informationen zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](how-to-manage-authentication.md).
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+2. [Erstellen eines Azure Maps-Kontos](quick-demo-map-app.md#create-an-azure-maps-account)
+3. [Abrufen eines Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account) (auch primärer Schlüssel oder Abonnementschlüssel genannt) Weitere Informationen zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](how-to-manage-authentication.md).
 
 <a id="createmap"></a>
 
@@ -275,21 +245,9 @@ Die erstellte Karte verwendet bisher nur die Längen-/Breitengraddaten für die 
 
     ![Azure-Kartensteuerelement und Suchdienst](./media/tutorial-search-location/popup-map.png)
 
+Klicken Sie [hier](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/search.html), um den vollständigen Code für dieses Tutorial anzuzeigen. Klicken Sie [hier](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20for%20points%20of%20interest), um das Livebeispiel anzuzeigen
+
 ## <a name="next-steps"></a>Nächste Schritte
-
-In diesem Tutorial haben Sie Folgendes gelernt:
-
-> [!div class="checklist"]
-> * Erstellen eines Kontos mit Azure Maps
-> * Abrufen des Primärschlüssels für Ihr Konto
-> * Erstellen einer neuen Webseite mit der Kartensteuerelement-API
-> * Suchen eines Point of Interest in der Nähe mithilfe des Suchdiensts
-
-> [!div class="nextstepaction"]
-> [Anzeigen des vollständigen Quellcodes](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/search.html)
-
-> [!div class="nextstepaction"]
-> [Anzeigen eines Livebeispiels](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20for%20points%20of%20interest)
 
 Das nächste Tutorial veranschaulicht, wie Sie eine Route zwischen zwei Orten anzeigen.
 

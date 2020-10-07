@@ -1,24 +1,24 @@
 ---
-title: 'Schnellstart: Einrichten von Hochverfügbarkeit mit Azure Front Door Service'
-description: In dieser Schnellstartanleitung wird die Vorgehensweise zum Verwenden von Azure Front Door für globale Webanwendungen mit Hochverfügbarkeit und hoher Leistung beschrieben.
+title: 'Schnellstart: Einrichten von Hochverfügbarkeit mit Azure Front Door Service: Azure-Portal'
+description: In dieser Schnellstartanleitung wird die Vorgehensweise zum Verwenden von Azure Front Door für globale Webanwendungen mit Hochverfügbarkeit und hoher Leistung über das Azure-Portal veranschaulicht.
 services: front-door
-documentationcenter: ''
+documentationcenter: na
 author: duongau
-editor: ''
-ms.assetid: ''
+manager: KumudD
+Customer intent: As an IT admin, I want to direct user traffic to ensure high availability of web applications.
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/27/2020
+ms.date: 09/16/2020
 ms.author: duau
-ms.openlocfilehash: 16ebfe7ae39d63f455e39c677acc61b31d40bb5a
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 4846438f8479fe622570aa515a4d8b40cccc57b8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569236"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252305"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>Schnellstart: Erstellen Sie eine „Front Door“ für eine hoch verfügbare globale Webanwendung.
 
@@ -38,35 +38,33 @@ Wenn Sie noch nicht über eine Web-App verfügen, richten Sie anhand der folgend
 
 1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
-1. Wählen Sie auf der Startseite oder im Azure-Menü die Option **Ressource erstellen** aus.
+1. Klicken Sie links oben auf dem Bildschirm auf **Ressource erstellen** >  **Web-App**.
 
-1. Wählen Sie **Web** > **Web-App** aus.
+    :::image type="content" source="media/quickstart-create-front-door/front-door-create-web-app.png" alt-text="Erstellen einer Web-App im Azure-Portal":::
 
-   ![Erstellen einer Web-App im Azure-Portal](media/quickstart-create-front-door/create-web-app-azure-front-door.png)
+1. Geben Sie auf der Registerkarte **Grundlagen** der Seite **Web-App erstellen** die folgenden Informationen ein, bzw. wählen Sie sie aus.
 
-1. Wählen Sie unter **Web-App** das zu verwendende **Abonnement** aus.
-
-1. Wählen Sie für **Ressourcengruppe** die Option **Neu erstellen** aus. Geben Sie unter **Name** den Namen *FrontDoorQS_rg1* ein, und wählen Sie **OK** aus.
-
-1. Geben Sie unter **Instanzendetails** im Feld **Name** einen eindeutigen Namen für Ihre Web-App ein. In diesem Beispiel wird *WebAppContoso-1* verwendet.
-
-1. Wählen Sie unter **Runtimestapel** eine Option aus. In diesem Beispiel wird *.NET Core 2.1 (LTS)* verwendet.
-
-1. Wählen Sie eine Region aus, etwa *USA, Mitte*.
-
-1. Wählen Sie unter **Windows-Plan** die Option **Neu erstellen** aus. Geben Sie unter **Name** den Namen *myAppServicePlanCentralUS* ein, und wählen Sie **OK** aus.
-
-1. Legen Sie für **SKU und Größe** die Option **Standard S1, 100 ACU insgesamt, 1,75 GB Arbeitsspeicher** aus.
+    | Einstellung                 | Wert                                              |
+    | ---                     | ---                                                |
+    | **Abonnement**               | Wählen Sie Ihr Abonnement aus. |    
+    | **Ressourcengruppe**       | Wählen Sie die Option **Neu erstellen** aus, und geben Sie im Textfeld den Text *FrontDoorQS_rg1* ein.|
+    | **Name**                   | Geben Sie unter **Name** einen eindeutigen Namen für Ihre Web-App ein. In diesem Beispiel wird *WebAppContoso-1* verwendet. |
+    | **Veröffentlichen** | Wählen Sie **Code** aus. |
+    | **Runtimestapel**         | Wählen Sie **.NET Core 2.1 (LTS)** aus. |
+    | **Betriebssystem**          | Wählen Sie **Windows** aus. |
+    | **Region**           | Wählen Sie **USA, Mitte** aus. |
+    | **Windows-Plan** | Wählen Sie **Neu erstellen** aus, und geben Sie im Textfeld den Text *myAppServicePlanCentralUS* ein. |
+    | **SKU und Größe** | Wählen Sie **Standard S1, 100 ACU insgesamt, 1,75 GB Arbeitsspeicher** aus. |
 
 1. Wählen Sie **Überprüfen und erstellen** aus, überprüfen Sie die **Zusammenfassung**, und wählen Sie dann die Option **Erstellen** aus. Es kann mehrere Minuten dauern, bis die Bereitstellung abgeschlossen ist.
 
-   ![Überprüfen der Zusammenfassung für die Web-App](media/quickstart-create-front-door/web-app-summary-azure-front-door.png)
+    :::image type="content" source="media/quickstart-create-front-door/create-web-app.png" alt-text="Erstellen einer Web-App im Azure-Portal":::
 
 Erstellen Sie nach Abschluss der Bereitstellung eine zweite Web-App. Verwenden Sie dieselbe Prozedur mit denselben Werten, mit Ausnahme der folgenden Werte:
 
 | Einstellung          | Wert     |
 | ---              | ---  |
-| **Ressourcengruppe**   | Wählen Sie **Neu** aus, und geben Sie *FrontDoorQS_rg2* ein. |
+| **Ressourcengruppe**   | Wählen Sie **Neu erstellen** aus, und geben Sie *FrontDoorQS_rg2* ein. |
 | **Name**             | Geben Sie einen eindeutigen Namen für Ihre Web-App ein. In diesem Beispiel wird *WebAppContoso-2* verwendet.  |
 | **Region**           | Geben Sie eine andere Region ein. In diesem Beispiel wird *USA, Süden-Mitte* verwendet. |
 | **App Service-Plan** > **Windows-Plan**         | Wählen Sie **Neu** aus, geben Sie *myAppServicePlanSouthCentralUS* ein, und wählen Sie dann **OK** aus. |
@@ -75,35 +73,55 @@ Erstellen Sie nach Abschluss der Bereitstellung eine zweite Web-App. Verwenden S
 
 Konfigurieren Sie Azure Front Door zum Weiterleiten des Benutzerdatenverkehrs basierend auf der geringsten Wartezeit zwischen den beiden Web-App-Servern. Fügen Sie zunächst einen Front-End-Host für Azure Front Door hinzu.
 
-1. Wählen Sie auf der Startseite oder im Azure-Menü die Option **Ressource erstellen** aus. Wählen Sie **Netzwerk** > **Front Door** aus.
+1. Wählen Sie auf der Startseite oder im Azure-Menü die Option **Ressource erstellen** aus. Wählen Sie **Netzwerk** > **Alle anzeigen** > **Front Door** aus.
 
-1. Wählen Sie unter **Frontdoor-Instanz erstellen** ein **Abonnement** aus.
+1. Geben Sie auf der Registerkarte **Grundlagen** der Seite **Frontdoor-Instanz erstellen** die folgenden Informationen ein, oder wählen Sie sie aus. Wählen Sie anschließend **Weiter: Konfiguration** aus.
 
-1. Wählen Sie unter **Ressourcengruppe** die Option **Neu** aus, geben Sie *FrontDoorQS_rg0* ein, und wählen Sie dann **OK** aus.  Sie können stattdessen eine vorhandene Ressourcengruppe verwenden.
-
-1. Wenn Sie eine Ressourcengruppe erstellt haben, wählen Sie einen **Ressourcengruppenstandort** und anschließend **Weiter: Konfiguration** aus.
+    | Einstellung | Wert |
+    | --- | --- |
+    | **Abonnement** | Wählen Sie Ihr Abonnement aus. |    
+    | **Ressourcengruppe** | Wählen Sie die Option **Neu erstellen** aus, und geben Sie im Textfeld den Text *FrontDoorQS_rg0* ein.|
+    | **Ressourcengruppenstandort** | Wählen Sie **USA, Mitte** aus. |
 
 1. Wählen Sie unter **Front-Ends/Domänen** das Symbol **+** aus, um **Front-End-Host hinzufügen** auszuwählen.
 
 1. Geben Sie unter **Hostname** einen global eindeutigen Hostnamen ein. In diesem Beispiel wird *contoso-frontend* verwendet. Wählen Sie **Hinzufügen**.
 
-   ![Hinzufügen eines Front-End-Hosts für Azure Front Door](media/quickstart-create-front-door/add-frontend-host-azure-front-door.png)
+    :::image type="content" source="media/quickstart-create-front-door/add-frontend-host-azure-front-door.png" alt-text="Erstellen einer Web-App im Azure-Portal":::
 
 Erstellen Sie als Nächstes einen Back-End-Pool, der Ihre beiden Web-Apps enthält.
 
 1. Wählen Sie unter **Frontdoor-Instanz erstellen** im Bereich **Back-End-Pools** das Symbol **+** aus, um **Back-End-Pool hinzufügen** zu öffnen.
 
-1. Geben Sie *myBackendPool* als **Name** ein.
+1. Geben Sie unter **Name** den Namen *myBackendPool* ein, und wählen Sie anschließend **Back-End hinzufügen** aus.
 
-1. Wählen Sie **Back-End hinzufügen** aus. Wählen Sie unter **Back-End-Hosttyp** die Option *App Service* aus.
+    :::image type="content" source="media/quickstart-create-front-door/front-door-add-backend-pool.png" alt-text="Erstellen einer Web-App im Azure-Portal":::
 
-1. Wählen Sie Ihr Abonnement und dann unter **Back-End-Hostname** die erste Web-App aus, die Sie erstellt haben. In diesem Beispiel wurde die Web-App *WebAppContoso-1* verwendet. Wählen Sie **Hinzufügen**.
+1. Wählen Sie auf dem Blatt **Back-End hinzufügen** die folgenden Informationen und dann **Hinzufügen** aus.
 
-1. Wählen Sie erneut **Back-End hinzufügen** aus. Wählen Sie unter **Back-End-Hosttyp** die Option *App Service* aus.
+    | Einstellung | Wert |
+    | --- | --- |
+    | **Back-End-Hosttyp** | Wählen Sie **App Service** aus. |   
+    | **Abonnement** | Wählen Sie Ihr Abonnement aus. |    
+    | **Back-End-Hostname** | Wählen Sie die zuerst erstellte Web-App aus. In diesem Beispiel wurde die Web-App *WebAppContoso-1* verwendet. |
 
-1. Wählen Sie erneut Ihr Abonnement und dann unter **Back-End-Hostname** die zweite Web-App aus, die Sie erstellt haben. Wählen Sie **Hinzufügen**.
+    **Übernehmen Sie für alle anderen Felder die Standardeinstellungen.*
 
-   ![Hinzufügen eines Back-End-Hosts zu Front Door](media/quickstart-create-front-door/add-backend-host-pool-azure-front-door.png)
+    :::image type="content" source="media/quickstart-create-front-door/front-door-add-a-backend.png" alt-text="Erstellen einer Web-App im Azure-Portal":::
+
+1. Wählen Sie erneut **Back-End hinzufügen** aus. Wählen Sie die folgenden Informationen und anschließend **Hinzufügen** aus.
+
+    | Einstellung | Wert |
+    | --- | --- |
+    | **Back-End-Hosttyp** | Wählen Sie **App Service** aus. |   
+    | **Abonnement** | Wählen Sie Ihr Abonnement aus. |    
+    | **Back-End-Hostname** | Wählen Sie die zweite Web-App aus, die Sie erstellt haben. In diesem Beispiel wurde die Web-App *WebAppContoso-2* verwendet. |
+
+    **Übernehmen Sie für alle anderen Felder die Standardeinstellungen.*
+
+1. Wählen Sie auf dem Blatt **Back-End-Pool hinzufügen** die Option **Hinzufügen** aus, um die Konfiguration des Back-End-Pools abzuschließen.
+
+    :::image type="content" source="media/quickstart-create-front-door/front-door-add-backend-pool-complete.png" alt-text="Erstellen einer Web-App im Azure-Portal":::
 
 Fügen Sie zum Schluss eine Routingregel hinzu. Eine Routingregel ordnet Ihren Front-End-Host dem Back-End-Pool zu. Die Regel leitet eine Anforderung für `contoso-frontend.azurefd.net` an **myBackendPool** weiter.
 
@@ -111,12 +129,14 @@ Fügen Sie zum Schluss eine Routingregel hinzu. Eine Routingregel ordnet Ihren F
 
 1. Geben Sie unter **Regel hinzufügen** für **Name** den Namen *LocationRule* ein. Übernehmen Sie alle Standardwerte, und wählen Sie anschließend **Hinzufügen** aus, um die Routingregel hinzuzufügen.
 
+    :::image type="content" source="media/quickstart-create-front-door/front-door-add-a-rule.png" alt-text="Erstellen einer Web-App im Azure-Portal":::
+
    >[!WARNING]
    > Sie **müssen** sicherstellen, dass jeder Front-End-Host in Ihrer Front Door-Instanz eine Routingregel mit einem Standardpfad (`\*`) aufweist. Das bedeutet, dass für alle Ihre Routingregeln mindestens eine Routingregel für jeden Ihrer Front-End-Hosts unter dem Standardpfad (`\*`) definiert sein muss. Andernfalls wird der Datenverkehr Ihrer Endbenutzer möglicherweise nicht richtig weitergeleitet.
 
 1. Wählen Sie **Überprüfen + erstellen** und danach **Erstellen** aus.
 
-   ![Konfigurierte Azure Front Door-Instanz](media/quickstart-create-front-door/configuration-azure-front-door.png)
+    :::image type="content" source="media/quickstart-create-front-door/configuration-azure-front-door.png" alt-text="Erstellen einer Web-App im Azure-Portal":::
 
 ## <a name="view-azure-front-door-in-action"></a>Anzeigen von Azure Front Door in Aktion
 
@@ -141,7 +161,7 @@ Führen Sie die folgenden Schritte aus, um das sofortige globale Failover in Akt
 
 1. Aktualisieren Sie Ihren Browser. Dieses Mal sollte eine Fehlermeldung angezeigt werden.
 
-   ![Beide Instanzen der Web-App beendet](media/quickstart-create-front-door/web-app-stopped-message.png)
+   :::image type="content" source="media/quickstart-create-front-door/web-app-stopped-message.png" alt-text="Erstellen einer Web-App im Azure-Portal":::
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

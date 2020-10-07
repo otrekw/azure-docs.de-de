@@ -5,19 +5,22 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/27/2019
 ms.author: pafarley
-ms.openlocfilehash: 11783f8fac147e6fb2cf371ee1a588cf318a5e9c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5de121a1a905a58f8b5eaf8e60c1f8da71ee8cd6
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "75379429"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91276940"
 ---
 Die Formularerkennung arbeitet mit Eingabedokumenten, die diese Anforderungen erfüllen:
 
 * Das Format muss JPG, PNG, PDF (Text oder Scan) oder TIFF sein. In Text eingebettete PDFs eignen sich besser, da beim Extrahieren von Zeichen und Speicherort keine Fehler entstehen können.
+* Die Dateigröße muss weniger als 20 MB betragen.
+* Bei Bildern müssen die Abmessungen zwischen 50 × 50 Pixel und 10.000 × 10.000 Pixel liegen.
+* Die Abmessungen bei PDFs dürfen maximal 17 x 17 Zoll betragen. Dies entspricht den Papiergrößen Legal oder A3 und kleineren Formaten.
+* Bei PDF- und TIFF-Dateien werden nur die ersten 200 Seiten verarbeitet. (Bei einem Abonnement im Free-Tarif werden nur die ersten beiden Seiten verarbeitet.)
+* Die Gesamtgröße des Trainingsdatasets darf maximal 500 Seiten betragen.
 * Wenn Ihre PDF-Dateien mit einem Kennwort geschützt sind, müssen Sie die Sperre entfernen, bevor Sie sie senden.
-* PDF- und TIFF-Dokumente dürfen höchstens einen Umfang von 200 Seiten haben, und die Gesamtgröße des Trainingsdatasets darf höchstens 500 Seiten betragen.
-* Bei Bildern müssen die Abmessungen zwischen 600 × 100 Pixel und 4200 × 4200 Pixel liegen.
 * Werden Papierdokumente eingescannt, sollten dies Scans mit hoher Qualität sein.
 * Für Text muss das lateinische Alphabet (englische Zeichen) verwendet werden.
 * Für nicht überwachtes Lernen (ohne beschriftete Daten) müssen Daten Schlüssel und Werte enthalten.

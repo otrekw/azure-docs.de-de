@@ -1,20 +1,20 @@
 ---
 title: 'Schnellstart: Formularerkennungs-Clientbibliothek für Python'
-description: In diesem Schnellstart finden Sie die ersten Schritte mit der Formularerkennungs-Clientbibliothek für Python.
+description: Verwenden Sie die Clientbibliothek der Formularerkennung für Python, um eine Formularverarbeitungs-App zu erstellen, die Schlüssel-Wert-Paare und Tabellendaten aus Ihren benutzerdefinierten Dokumenten extrahiert.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 08/21/2020
+ms.date: 09/21/2020
 ms.author: pafarley
-ms.openlocfilehash: b178a0b347888f22d9a3c0ee88a203e377cb15be
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 6d460fc9ded9416ef9d2a30b1a0effa863626888
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88864696"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318897"
 ---
 > [!IMPORTANT]
 > * Das SDK für die Formularerkennung ist derzeit auf v2.0 des Formularerkennungsdiensts ausgerichtet.
@@ -50,7 +50,8 @@ Mit der Formularerkennung können Sie zwei verschiedene Clienttypen erstellen. D
 * Verwalten der in Ihrem Konto erstellten Modelle
 * Kopieren eines benutzerdefinierten Modells aus einer Formularerkennungsressource in eine andere
 
-Beachten Sie, dass Modelle auch mithilfe einer grafischen Benutzeroberfläche trainiert werden können, z. B. mit dem [Formularerkennungstool für die Bezeichnung](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool).
+> [!NOTE]
+> Modelle können auch mithilfe einer grafischen Benutzeroberfläche trainiert werden, z. B. mit dem [Formularerkennungstool für die Bezeichnung](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool).
 
 ## <a name="setting-up"></a>Einrichten
 
@@ -102,7 +103,7 @@ form_recognizer_client = FormRecognizerClient(endpoint, AzureKeyCredential(key))
 form_training_client = FormTrainingClient(endpoint, AzureKeyCredential(key))
 ```
 
-## <a name="assets-for-testing"></a>Ressourcen zum Testen
+## <a name="get-assets-for-testing"></a>Ressourcen zum Testen abrufen
 
 Die Codeausschnitte in dieser Anleitung verwenden Remoteformulare, auf die über URLs zugegriffen wird. Wenn Sie stattdessen lokale Formulardokumente verarbeiten möchten, finden Sie weitere Informationen unter den entsprechenden Methoden in der [Referenzdokumentation](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer) und den [Beispielen](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples).
 

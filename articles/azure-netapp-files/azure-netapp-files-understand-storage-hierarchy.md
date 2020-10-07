@@ -1,5 +1,5 @@
 ---
-title: Was ist die Speicherhierarchie von Azure NetApp Files? | Microsoft-Dokumentation
+title: Speicherhierarchie von Azure NetApp Files | Microsoft-Dokumentation
 description: Enthält Informationen zur Speicherhierarchie (einschließlich Azure NetApp Files-Konten, Kapazitätspools und Volumes).
 services: azure-netapp-files
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 08/10/2020
+ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: 91fecbc68efec1adcee9a2c4013dea46f6da86af
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 435d74e771a9d887c87c9d10e6b525ac77cf97e8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066473"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278327"
 ---
-# <a name="what-is-the-storage-hierarchy-of-azure-netapp-files"></a>Was ist die Speicherhierarchie von Azure NetApp Files?
+# <a name="storage-hierarchy-of-azure-netapp-files"></a>Speicherhierarchie von Azure NetApp Files
 
 Vor der Erstellung eines Volumes in Azure NetApp Files müssen Sie zunächst einen Pool für bereitgestellte Kapazität erwerben und einrichten.  Um einen Kapazitätspool einrichten zu können, benötigen Sie ein NetApp-Konto. Die Informationen zur Speicherhierarchie sind beim Einrichten und Verwalten Ihrer Azure NetApp Files-Ressourcen hilfreich.
 
@@ -37,7 +37,12 @@ Vor der Erstellung eines Volumes in Azure NetApp Files müssen Sie zunächst ein
 
 ## <a name="capacity-pools"></a><a name="capacity_pools"></a>Kapazitätspools
 
-- Ein Kapazitätspool wird anhand der bereitgestellten Kapazität gemessen.  
+Wenn Sie mit der Funktionsweise von Kapazitätspools vertraut sind, können Sie leichter die richtigen Typen von Kapazitätspools auswählen, die Sie zur Erfüllung Ihrer Speicheranforderungen benötigen. 
+
+### <a name="general-rules-of-capacity-pools"></a>Allgemeine Regeln von Kapazitätspools
+
+- Ein Kapazitätspool wird anhand der bereitgestellten Kapazität gemessen.   
+    Weitere Informationen finden Sie unter [QoS-Typen für Kapazitätspools](#qos_types).  
 - Die Kapazität wird durch die festen SKUs bereitgestellt, die Sie erworben haben (beispielsweise eine Kapazität von 4 TiB).
 - Ein Kapazitätspool kann lediglich einen einzelnen Servicelevel aufweisen.  
 - Jeder einzelne Kapazitätspool kann nur zu einem einzelnen NetApp-Konto gehören. Innerhalb eines NetApp-Kontos können jedoch mehrere Kapazitätspools vorhanden sein.  
@@ -45,10 +50,35 @@ Vor der Erstellung eines Volumes in Azure NetApp Files müssen Sie zunächst ein
   Im [Konzeptdiagramm der Speicherhierarchie](#conceptual_diagram_of_storage_hierarchy) weiter unten kann beispielsweise der Kapazitätspool 1 nicht aus dem NetApp-Konto für „USA, Osten“ in das NetApp-Konto für „USA, Westen 2“ verschoben werden.  
 - Ein Kapazitätspool kann erst gelöscht werden, wenn alle Volumes innerhalb des Kapazitätspools gelöscht wurden.
 
+### <a name="quality-of-service-qos-types-for-capacity-pools"></a><a name="qos_types"></a>QoS-Typen für Kapazitätspools
+
+Der QoS-Typ (Quality of Service, Servicequalität) ist ein Attribut eines Kapazitätspools. Azure NetApp Files verfügt über zwei QoS-Typen für Kapazitätspools. 
+
+- QoS-Typ *Automatisch („Auto“)*  
+
+    Beim Erstellen eines Kapazitätspools wird standardmäßig der QoS-Typ „Auto“ verwendet.
+
+    In einem QoS-Kapazitätspool vom Typ „Auto“ wird der Durchsatz den Volumes im Pool automatisch zugewiesen. Dies erfolgt proportional zum Größenkontingent, das den Volumes zugewiesen ist. 
+
+    Der maximale Durchsatz, der einem Volume zugewiesen ist, richtet sich nach dem Servicelevel des Kapazitätspools und dem Größenkontingent des Volumes. Unter [Dienstebenen für Azure NetApp Files](azure-netapp-files-service-levels.md) finden Sie ein Beispiel für eine Berechnung.
+
+- <a name="manual_qos_type"></a>QoS-Typ *Manuell*  
+
+     > [!IMPORTANT] 
+     > Bei Verwendung des QoS-Typs „Manuell“ für einen Kapazitätspool ist eine Registrierung erforderlich.  Informationen hierzu finden Sie unter [Verwalten eines manuellen QoS-Kapazitätspools](manage-manual-qos-capacity-pool.md).  
+
+    Sie haben die Möglichkeit, für einen Kapazitätspool den QoS-Typ „Manuell“ zu verwenden.
+
+    Bei einem Kapazitätspool mit dem QoS-Typ „Manuell“ können Sie die Kapazität und den Durchsatz für ein Volume separat zuweisen. Der Gesamtdurchsatz aller Volumes, die mit einem Kapazitätspool mit dem QoS-Typ „Manuell“ erstellt werden, ist durch den Gesamtdurchsatz des Pools begrenzt.  Dieser wird anhand der Kombination von Poolgröße und Serviceleveldurchsatz ermittelt. 
+
+    Ein Kapazitätspool mit 4 TiB und dem Servicelevel „Ultra“ verfügt beispielsweise über einen Gesamtdurchsatz von 512 MiB/s (4 TiB · 128 MiB/s/TiB), der für die Volumes verfügbar ist.
+
+
 ## <a name="volumes"></a><a name="volumes"></a>Volumes
 
 - Ein Volume wird anhand des logischen Kapazitätsverbrauchs gemessen und ist skalierbar. 
 - Der Kapazitätsverbrauch eines Volumes wird mit der bereitgestellten Kapazität des dazugehörigen Pools verrechnet.
+- Der Durchsatzverbrauch eines Volumes wird auf den verfügbaren Durchsatz des zugehörigen Pools angerechnet. Weitere Informationen finden Sie unter [QoS-Typ „Manuell“](#manual_qos_type).
 - Jedes Volume gehört zu einem einzelnen Pool, ein Pool kann jedoch mehrere Volumes enthalten. 
 
 ## <a name="conceptual-diagram-of-storage-hierarchy"></a><a name="conceptual_diagram_of_storage_hierarchy"></a>Konzeptdiagramm der Speicherhierarchie 
@@ -60,3 +90,7 @@ Das folgende Beispiel zeigt die Beziehungen zwischen Azure-Abonnement, NetApp-Ko
 
 - [Ressourcenlimits für Azure NetApp Files](azure-netapp-files-resource-limits.md)
 - [Registrieren für Azure NetApp Files](azure-netapp-files-register.md)
+- [Dienstebenen für Azure NetApp Files](azure-netapp-files-service-levels.md)
+- [Überlegungen zur Leistung für Azure NetApp Files](azure-netapp-files-performance-considerations.md)
+- [Einrichten eines Kapazitätspools](azure-netapp-files-set-up-capacity-pool.md)
+- [Verwalten eines manuellen QoS-Kapazitätspools](manage-manual-qos-capacity-pool.md)

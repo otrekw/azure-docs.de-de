@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Ermitteln und Anzeigen von Routen für bestimmte Reisemodi mit Microsoft Azure Maps'
-description: Hier erfahren Sie, wie Sie mithilfe von Azure Maps Routen für bestimmte Reisemodi ermitteln und anzeigen.
+title: 'Tutorial: Ermitteln mehrerer Routen nach Fortbewegungsmittel | Microsoft Azure Maps'
+description: Tutorial zur Ermittlung von Routen zu Points of Interest für bestimmte Fortbewegungsarten mithilfe von Azure Maps. Sie erfahren, wie Sie mehrere Routen auf Karten anzeigen.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/10/2020
@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: a5b8dba920db0227c400e62ef7ddaf718d27c78a
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 0d57e86088ee472c63b433bde14a0e4316cc20a5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085058"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321746"
 ---
 # <a name="tutorial-find-and-display-routes-for-different-modes-of-travel-using-azure-maps"></a>Tutorial: Ermitteln und Anzeigen von Routen für verschiedene Reisemodi mithilfe von Azure Maps
 
@@ -160,11 +160,13 @@ In diesem Tutorial werden zwei Routen berechnet und auf der Karte dargestellt: D
 
     ```
 
+
     Im Ereignishandler `ready` des Kartensteuerelements wird eine Datenquelle zum Speichern der Route zwischen Start und Ziel erstellt. Stärke und Farbe der Linie werden mithilfe von [Ausdrücken](data-driven-style-expressions-web-sdk.md) aus Eigenschaften des Routenlinienfeatures abgerufen. Um sicherzustellen, dass die Straßennamen nicht von der Routenlinie abgedeckt werden, haben wir einen zweiten Parameter mit dem Wert `'labels'` übergeben.
 
     Als Nächstes wird eine Symbolebene erstellt und der Datenquelle angefügt. Diese Ebene gibt an, wie die Start- und Endpunkte gerendert werden sollen. Ausdrücke wurden hinzugefügt, um das Symbol und die Beschriftungsinformationen aus Eigenschaften für das jeweilige Punktobjekt abzurufen. Weitere Informationen zu Ausdrücken finden Sie unter [Datengesteuerte Formatvorlagenausdrücke (Web SDK)](data-driven-style-expressions-web-sdk.md).
 
 2. Legen Sie den Startpunkt auf ein fiktives Unternehmen in Seattle namens Fabrikam und den Endpunkt auf eine Niederlassung von Microsoft fest.  Fügen Sie im `ready`-Ereignishandler des Kartensteuerelements den folgenden Code hinzu.
+
 
     ```JavaScript
     //Create the GeoJSON objects which represent the start and end point of the route.
@@ -279,7 +281,11 @@ In diesem Abschnitt erfahren Sie, wie Sie den Routendienst von Azure Maps verwen
 
     Die LKW-Route wird als dicke blaue Linie dargestellt. Die PKW-Route wird als dünne violette Linie dargestellt. Die PKW-Route verläuft über den Lake Washington auf der I-90, die durch Tunnel unter Wohngebieten hindurch führt. Da sich die Tunnel nahe an Wohngebieten befinden, ist diese Strecke nicht für Gefahrguttransporte geeignet. Die LKW-Route für den Frachttyp `USHazmatClass2` verläuft daher über eine andere Autobahn.
 
-    Sie können den vollständigen Quellcode für das Beispiel [hier](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/truckRoute.html) abrufen. Ein Livebeispiel dafür finden Sie [hier](https://azuremapscodesamples.azurewebsites.net/?sample=Multiple%20routes%20by%20mode%20of%20travel).
+Sie können den vollständigen Quellcode für das Beispiel [hier](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/truckRoute.html) abrufen. Ein Livebeispiel dafür finden Sie [hier](https://azuremapscodesamples.azurewebsites.net/?sample=Multiple%20routes%20by%20mode%20of%20travel).
+
+Sie können ferner [datengestützte Formatvorlagenausdrücke](data-driven-style-expressions-web-sdk.md) verwenden
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

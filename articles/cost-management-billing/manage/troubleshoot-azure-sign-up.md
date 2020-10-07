@@ -10,12 +10,12 @@ ms.subservice: billing
 ms.topic: troubleshooting
 ms.date: 08/20/2020
 ms.author: v-miegge
-ms.openlocfilehash: 86f9f92810cff241f816dadfc6e1e8ca120f1f4a
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 3e611e25288d52b0be93c76e8a3a28ce6d7d5088
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686648"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326605"
 ---
 # <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>Beheben von Problemen beim Registrieren eines neuen Kontos im Azure-Portal oder im Azure-Kontocenter
 
@@ -131,7 +131,7 @@ Führen Sie die folgenden Schritte aus, um die Cookie-Einstellungen Ihres Browse
 
 ### <a name="i-saw-a-charge-on-my-free-trial-account"></a>In meinem kostenlosen Testkonto werden Gebühren angezeigt
 
-Nach der Registrierung wird möglicherweise eine kurze temporäre Prüfsperre in Ihrem Kreditkartenkonto angezeigt. Diese Sperre wird innerhalb von 3 bis 5 Tagen aufgehoben. Wenn Sie Bedenken bezüglich der Verwaltung von Kosten haben, lesen Sie den Abschnitt [Vermeiden unerwarteter Kosten](https://docs.microsoft.com/azure/cost-management-billing/manage/getting-started).
+Nach der Registrierung wird möglicherweise eine kurze temporäre Prüfsperre in Ihrem Kreditkartenkonto angezeigt. Diese Sperre wird innerhalb von 3 bis 5 Tagen aufgehoben. Wenn Sie Bedenken bezüglich der Verwaltung von Kosten haben, informieren Sie sich über das [Analysieren unerwarteter Gebühren](../understand/analyze-unexpected-charges.md).
 
 ## <a name="agreement"></a>Vereinbarung
 

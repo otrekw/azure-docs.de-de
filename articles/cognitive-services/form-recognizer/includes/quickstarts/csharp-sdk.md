@@ -1,20 +1,20 @@
 ---
 title: 'Schnellstart: Formularerkennungs-Clientbibliothek für .NET'
-description: In dieser Schnellstartanleitung finden Sie die ersten Schritte mit der Formularerkennungs-Clientbibliothek für .NET.
+description: Verwenden Sie die Clientbibliothek der Formularerkennung für .NET, um eine Formularverarbeitungs-App zu erstellen, die Schlüssel-Wert-Paare und Tabellendaten aus Ihren benutzerdefinierten Dokumenten extrahiert.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 08/17/2020
+ms.date: 09/21/2020
 ms.author: pafarley
-ms.openlocfilehash: f924347b99d270ac97da5f6d6f4edf7a13efacee
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: fc7b435d3abdd2e04f8beabf35b7ed337c5ff68b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89449673"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318898"
 ---
 > [!IMPORTANT]
 > * Das SDK für die Formularerkennung ist derzeit auf v2.0 des Formularerkennungsdiensts ausgerichtet.
@@ -105,7 +105,8 @@ Mit der Formularerkennung können Sie zwei verschiedene Clienttypen erstellen. D
 
 Sehen Sie sich die Beispiele zum [Trainieren eines Modells](#train-a-custom-model) und zum [Verwalten eines benutzerdefinierten Modells](#manage-custom-models) an.
 
-Beachten Sie, dass Modelle auch mithilfe einer grafischen Benutzeroberfläche trainiert werden können, z. B. mit dem [Formularerkennungstool für die Bezeichnung](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool).
+> [!NOTE]
+> Modelle können auch mithilfe einer grafischen Benutzeroberfläche trainiert werden, z. B. mit dem [Formularerkennungstool für die Bezeichnung](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool).
 
 ## <a name="code-examples"></a>Codebeispiele
 
@@ -138,7 +139,7 @@ static private FormRecognizerClient AuthenticateClient(){
 }
 ```
 
-## <a name="assets-for-testing"></a>Ressourcen zum Testen 
+## <a name="get-assets-for-testing"></a>Ressourcen zum Testen abrufen 
 
 Die Codeausschnitte in dieser Anleitung verwenden Remoteformulare, auf die über URLs zugegriffen wird. Wenn Sie stattdessen lokale Formulardokumente verarbeiten möchten, finden Sie weitere Informationen unter den entsprechenden Methoden in der [Referenzdokumentation](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer) und den [Beispielen](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples).
 
@@ -620,6 +621,19 @@ static async Task RecognizeContentCustomModel()
 
             Console.WriteLine($"    Value: '{field.ValueData.Text}");
             Console.WriteLine($"    Confidence: '{field.Confidence}");
+        }
+        Console.WriteLine("Table data:");
+        foreach (FormPage page in form.Pages.Values)
+        {
+            for (int i = 0; i < page.Tables.Count; i++)
+            {
+                FormTable table = page.Tables[i];
+                Console.WriteLine($"Table {i} has {table.RowCount} rows and {table.ColumnCount} columns.");
+                foreach (FormTableCell cell in table.Cells)
+                {
+                    Console.WriteLine($"    Cell ({cell.RowIndex}, {cell.ColumnIndex}) contains {(cell.IsHeader ? "header" : "text")}: '{cell.Text}'");
+                }
+            }
         }
     }
 }

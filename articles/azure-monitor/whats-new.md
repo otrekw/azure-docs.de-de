@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
-ms.openlocfilehash: 0269d870f55f7246529b9d98608e5a325b6cf468
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: d82e9244152f1ecb78b062b4b1dbf02c45c505a1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569525"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325656"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Neues in der Azure Monitor-Dokumentation
 
@@ -19,9 +19,67 @@ Dieser Artikel enthält Listen mit neuen oder signifikant aktualisierten Azure 
 
 ## <a name="august-2020"></a>August 2020
 
-### <a name="containers"></a>Container
+### <a name="general"></a>Allgemein
 
+- [Was wird von Azure Monitor überwacht?](monitor-reference.md): Mit Informationen zum Azure Monitor-Agent aktualisiert
+
+
+### <a name="agents"></a>Agents
+- [Übersicht über den Azure Monitor-Agent](platform/azure-monitor-agent-overview.md): Neuer Artikel
+- [Aktivieren von Azure Monitor für eine Hybridumgebung](insights/vminsights-enable-hybrid.md): Für Version des Dependency-Agents aktualisiert
+- [Übersicht über die Azure-Überwachungs-Agents](platform/agents-overview.md): Informationen zum Azure Monitor-Agent und zusammengefasste Tabelle zur Betriebssystemunterstützung hinzugefügt
+
+
+#### <a name="new-and-updated-articles-from-restructure-of-agent-content"></a>Neue und aktualisierte Artikel nach der Umstrukturierung der Agent-Inhalte
+- [Aktivieren von Azure Monitor für VMs: Übersicht](insights/vminsights-enable-overview.md)
+- [Installieren des Log Analytics-Agents auf Linux-Computern](platform/agent-linux.md)
+- [Installieren des Log Analytics-Agents auf Windows-Computern](platform/agent-windows.md)
+- [Übersicht über den Log Analytics-Agent](platform/log-analytics-agent.md)
+
+### <a name="application-insights"></a>Application Insights
+- [Azure Application Insights für JavaScript-Web-Apps](app/javascript.md): Abschnitt mit Informationen zur Client/Server-Korrelation und -Konfiguration für die CORS-Korrelation hinzugefügt
+- [Erstellen einer neuen arbeitsbereichsbasierten Application Insights-Ressource in Azure Monitor](app/create-workspace-resource.md): Funktionen von arbeitsbereichsbasierten Anwendungen hinzugefügt
+- [Von Application Insights und Log Analytics verwendete IP-Adressen](app/ip-addresses.md): IP-Adressen für Live Metrics Stream aktualisiert
+- [Überwachen von Java-Anwendungen in beliebiger Umgebung – Azure Monitor Application Insights](app/java-in-process-agent.md): Tabelle mit Informationen zur unterstützten benutzerdefinierten Telemetrie hinzugefügt
+- [React Native-Plug-In für das Application Insights JavaScript SDK](app/javascript-react-native-plugin.md): Neuer Artikel
+- [React-Plug-In für das Application Insights-JavaScript-SDK](app/javascript-react-plugin.md): Neuer Artikel
+- [Resource Manager-Vorlagenbeispiel zum Erstellen von Azure-Funktions-Apps mit Application Insights-Überwachung](samples/resource-manager-function-app.md): Neuer Artikel
+- [Resource Manager-Vorlagenbeispiele zum Erstellen von Azure App Service-Web-Apps mit Application Insights-Überwachung](samples/resource-manager-web-app.md): Neuer Artikel
+- [Verwendungsanalyse mit Azure Application Insights](app/usage-overview.md): Video hinzugefügt
+
+### <a name="autoscale"></a>Autoscale
+- [Erste Schritte mit der automatischen Skalierung in Azure](platform/autoscale-get-started.md): Abschnitt zum Routing zu fehlerfreien Instanzen für App Service hinzugefügt
+
+### <a name="data-collection"></a>Datensammlung
+- [Konfigurieren der Datensammlung für den Azure Monitor-Agent (Vorschau)](platform/data-collection-rule-azure-monitor-agent.md): Neuer Artikel
+- [Datensammlungsregeln in Azure Monitor (Vorschau)](platform/data-collection-rule-overview.md): Neuer Artikel
+
+
+### <a name="containers"></a>Container
 - [Bereitstellung und HPA-Metriken mit Azure Monitor für Container](insights/container-insights-deployment-hpa-metrics.md) – Neuer Artikel.
+
+### <a name="insights"></a>Einblicke
+- [Überwachungslösungen in Azure Monitor](insights/solutions.md): Für neue Benutzeroberfläche aktualisiert
+- [Netzwerkleistungsmonitor-Lösung in Azure](insights/network-performance-monitor.md): Unterstützte Arbeitsbereichsregionen hinzugefügt
+
+
+### <a name="logs"></a>Protokolle
+- [Häufig gestellte Fragen zu Azure Monitor](faq.md): Eintrag zum Löschen von Daten aus einem Arbeitsbereich hinzugefügt. Eintrag zu den Antworten für 502 und 503 hinzugefügt.
+  - [Entwerfen Ihrer Azure Monitor-Protokollbereitstellung](platform/design-logs-deployment.md): Aktualisierung des Abschnitts zum Ratenlimit für das Datenerfassungsvolumen
+- [Verwalten von Nutzung und Kosten für Azure Monitor-Protokolle](platform/manage-cost-storage.md): Aktualisierung von Nutzungsabfragen in ein effizienteres Abfrageformat
+- [Optimieren von Protokollabfragen in Azure Monitor](log-query/query-optimization.md): Spezifische Werte für Leistungsindikatoren hinzugefügt
+- [Beispiele für Resource Manager-Vorlagen für Diagnoseeinstellungen](samples/resource-manager-diagnostic-settings.md): Beispiel für Überwachungsprotokolle für Protokollabfragen hinzugefügt
+
+
+### <a name="platform-logs"></a>Plattformprotokolle
+- [Erstellen von Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele](platform/diagnostic-settings.md): Regionale Anforderung für Diagnoseeinstellungen hinzugefügt
+
+### <a name="visualizations"></a>Visualisierungen
+- [Übersicht über Azure Monitor-Arbeitsmappen](platform/workbooks-overview.md): Video hinzugefügt
+- [Verschieben einer Azure-Arbeitsmappenvorlage in eine andere Region](platform/workbook-templates-move-region.md): Neuer Artikel
+- [Verschieben einer Azure-Arbeitsmappe in eine andere Region](platform/workbooks-move-region.md): Neuer Artikel
+
+
 
 ## <a name="july-2020"></a>Juli 2020
 
@@ -500,7 +558,6 @@ Mehrere neue Artikel zur Umstellung vom Ansicht-Designer auf Arbeitsmappen.
 - [Application Insights für Workerdienstanwendungen (Anwendungen ohne HTTP)](app/worker-service.md): In diesem Artikel wurde dem C#-Code ein Standardprotokolliergrad hinzugefügt. Außerdem wurde die Paketreferenzversion aktualisiert.
 - [Konfigurieren des Application Insights-SDK mit "ApplicationInsights.config" oder XML](app/configuration-with-applicationinsights-config.md): In diesem Artikel wurde der Beispielcode aktualisiert.
 - [Verwalten von Application Insights-Ressourcen mithilfe von PowerShell](app/powershell.md): In diesem Artikel wurde die Resource Manager-Vorlage aktualisiert.
-- [Application Insights-NuGet-Pakete](app/nuget.md): In diesem Artikel wurden die Paketversionen aktualisiert.
 - [Erstellen einer Application Insights-Ressource](app/create-new-resource.md): Diesem Artikel wurde ein Hinweis zur Verwendung eines global eindeutigen Namens hinzugefügt.
 - [Live Metrics Stream: Überwachung und Diagnose mit einer Latenzzeit von 1 Sekunde](app/live-stream.md): In diesem Artikel wurde die Versionsanforderung für das ASP.NET Core SDK aktualisiert.
 - [Einführung in EventCounters](app/eventcounters.md): In diesem Artikel wurden Kategorie und Tabelle auf „customMetrics“ aktualisiert.

@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c100c1b65b2af1201dfc3b52a6d90b2ed26d454
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 2ecbebfc75cb8c77ebb99ad04b1f9e33b3c4ef64
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89460813"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306462"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Was ist Azure AD Identity Governance?
 
@@ -46,7 +46,7 @@ Identity Governance hilft Organisationen, ein Gleichgewicht herzustellen zwische
 
 ![Identitätslebenszyklus](./media/identity-governance-overview/identity-lifecycle.png)
 
-Bei vielen Organisationen ist der Identitätslebenszyklus für Mitarbeiter mit der Darstellung des Benutzers in einem Personalverwaltungssystem (Human Capital Management, HCM) verknüpft.  Wie im [Tutorial zu Workday Inbound Provisioning](../saas-apps/workday-inbound-tutorial.md) beschrieben, verwaltet Azure AD Premium Benutzeridentitäten für die in Workday dargestellten Benutzer automatisch in Active Directory und Azure Active Directory.  Azure AD Premium umfasst auch [Microsoft Identity Manager](/microsoft-identity-manager/), eine Lösung, mit der Datensätze aus lokalen Personalverwaltungssystemen wie SAP, Oracle eBusiness und Oracle PeopleSoft importiert werden können.
+Bei vielen Organisationen ist der Identitätslebenszyklus für Mitarbeiter mit der Darstellung des Benutzers in einem Personalverwaltungssystem (Human Capital Management, HCM) verknüpft.  Bei Azure AD Premium werden Benutzeridentitäten für Personen, die in Workday und SuccessFactors enthalten sind, sowohl in Active Directory als auch in Azure Active Directory automatisch vorgehalten. Dies ist unter [Planen der HR-Cloudanwendung für die Azure Active Directory-Benutzerbereitstellung](../app-provisioning/plan-cloud-hr-provision.md) beschrieben.  In Azure AD Premium ist zudem [Microsoft Identity Manager](/microsoft-identity-manager/) enthalten. Dies ist eine Lösung, mit der Datensätze aus lokalen Personalverwaltungssystemen wie SAP HCM, Oracle eBusiness und Oracle PeopleSoft importiert werden können.
 
 Immer mehr Szenarien erfordern heute die Kollaboration mit Personen außerhalb Ihrer Organisation. Mithilfe der [Azure AD B2B](/azure/active-directory/b2b/)-Kollaboration (Business-to-Business) können Sie die Anwendungen und Dienste Ihrer Organisation für Gastbenutzer und externe Partner von beliebigen Organisationen sicher freigeben und dabei die Kontrolle über Ihre eigenen Unternehmensdaten behalten.  Mit der [Azure AD-Berechtigungsverwaltung](entitlement-management-overview.md) können Sie auswählen, welche Benutzer der Organisation Zugriff anfordern dürfen und als B2B-Gäste dem Verzeichnis Ihrer Organisation hinzugefügt werden sollen. Außerdem können Sie sicherstellen, dass diese Gäste entfernt werden, wenn Sie keinen Zugriff mehr benötigen.
 
@@ -69,6 +69,24 @@ In der Vergangenheit wurde der privilegierte Zugriff von anderen Anbietern als e
 ![Privilegierter Zugriffslebenszyklus](./media/identity-governance-overview/privileged-access-lifecycle.png)
 
 [Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) bietet zusätzliche Steuerungen für die Sicherung der Zugriffsrechte für Ressourcen in Azure AD, Azure und anderen Microsoft Online Services.  Zusätzlich zur mehrstufigen Authentifizierung und zum bedingten Zugriff stehen Ihnen mit den Funktionen für Just-In-Time-Zugriff und Warnungen für Rollenänderungen von Azure AD PIM umfassende Governancekontrollen zum Schützen der Ressourcen Ihres Unternehmens (Verzeichnis, Microsoft 365 und Azure-Ressourcenrollen) zur Verfügung. Wie bei anderen Formen des Zugriffs können Organisationen mithilfe von Zugriffsüberprüfungen eine periodische erneute Zertifizierung für alle Benutzer mit Administratorrollen konfigurieren.
+
+## <a name="governance-capabilities-in-other-azure-ad-features"></a>Governancefunktionen anderer Azure AD-Features
+
+Zusätzlich zu den obigen Features werden die folgenden weiteren Azure AD-Features häufig für Identity Governance-Szenarien genutzt:
+
+| Funktion | Szenario |Feature
+| ------- | --------------------- |-----|
+|Identitätslebenszyklus (Mitarbeiter)|Administratoren können die Bereitstellung von Benutzerkonten aus Workday oder SuccessFactors über die HR-Cloudumgebung oder die lokale HR-Umgebung ermöglichen.|[Benutzerbereitstellung aus der HR-Cloudumgebung in Azure AD](../app-provisioning/plan-cloud-hr-provision.md):|
+|Identitätslebenszyklus (Gäste)|Administratoren können das Self-Service-Onboarding für Gastbenutzer über einen anderen Azure AD-Mandanten, direkten Verbund, per Einmalkennung (One-Time Passcode, OTP) oder über Google-Konten ermöglichen.  Die Bereitstellung von Gastbenutzern wird gemäß den Lebenszyklusrichtlinien automatisch durchgeführt und aufgehoben.|[Berechtigungsverwaltung](entitlement-management-overview.md) per [B2B](../external-identities/what-is-b2b.md)|
+|Berechtigungsverwaltung|Ressourcenbesitzer können Zugriffspakete erstellen, die Apps, Teams, Azure AD- und Microsoft 365-Gruppen sowie SharePoint Online-Websites enthalten.|[Berechtigungsverwaltung](entitlement-management-overview.md)|
+|Zugriffsanforderungen|Endbenutzer können die Gruppenmitgliedschaft oder den Anwendungszugriff anfordern. Endbenutzer, einschließlich der Gäste aus anderen Organisationen, können Zugriff auf Zugriffspakete anfordern.|[Berechtigungsverwaltung](entitlement-management-overview.md)|
+|Workflow|Ressourcenbesitzer können die genehmigenden Personen und Eskalationsgenehmiger für Zugriffsanforderungen sowie die genehmigenden Personen für Rollenaktivierungsanforderungen definieren.  |[Berechtigungsverwaltung](entitlement-management-overview.md) und [PIM](../privileged-identity-management/pim-configure.md)|
+|Richtlinien- und Rollenverwaltung|Der Administrator kann Richtlinien für bedingten Zugriff definieren, die für den Zugriff auf Anwendungen zur Laufzeit gelten.  Ressourcenbesitzer können Richtlinien für den Benutzerzugriff über Zugriffspakete definieren.|Richtlinien für [bedingten Zugriff](../conditional-access/overview.md) und [Berechtigungsverwaltung](entitlement-management-overview.md)|
+|Zugriffszertifizierung|Administratoren können die erneute Zertifizierung für wiederkehrende Zugriffe für folgende Komponenten ermöglichen: SaaS-Apps oder Cloudgruppenmitgliedschaften, Zuweisungen von Azure AD- oder Azure-Ressourcenrollen. Automatisches Entfernen des Ressourcenzugriffs, Blockieren des Gastzugriffs und Löschen von Gastkonten.|[Zugriffsüberprüfungen](access-reviews-overview.md), die auch unter [PIM](../privileged-identity-management/pim-how-to-start-security-review.md) beschrieben wurden|
+|Erfüllung und Bereitstellung|Automatische Bereitstellung und Aufhebung der Bereitstellung in mit Azure AD verbundenen Apps, z. B. per SCIM und auf SharePoint Online-Websites. |[Benutzerbereitstellung](../app-provisioning/user-provisioning.md)|
+|Berichterstellung und Analyse|Administratoren können Überwachungsprotokolle der aktuellen Benutzerbereitstellung und Anmeldeaktivitäten abrufen. Integration mit Azure Monitor und Zugriffserteilung über Zugriffspakete.|[Azure AD-Berichte](../reports-monitoring/overview-reports.md) und [Überwachung](../reports-monitoring/overview-monitoring.md)|
+|Privilegierter Zugriff|Just-In-Time- und geplanter Zugriff, Warnungen, Genehmigungsworkflows für Azure AD-Rollen (einschließlich benutzerdefinierte Rollen) und Azure-Ressourcenrollen.|[Azure AD PIM](../privileged-identity-management/pim-configure.md)|
+|Überwachung|Administratoren können über die Erstellung von Administratorkonten benachrichtigt werden.|[Azure AD PIM-Warnungen](../privileged-identity-management/pim-how-to-configure-security-alerts.md)|
 
 ## <a name="getting-started"></a>Erste Schritte
 

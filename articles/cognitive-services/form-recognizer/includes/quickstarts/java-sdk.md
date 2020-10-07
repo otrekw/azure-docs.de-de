@@ -1,21 +1,21 @@
 ---
 title: 'Schnellstart: Formularerkennungs-Clientbibliothek für Java'
-description: In diesem Schnellstart finden Sie die ersten Schritte mit der Formularerkennungs-Clientbibliothek für Java.
+description: Verwenden Sie die Clientbibliothek der Formularerkennung für Java, um eine Formularverarbeitungs-App zu erstellen, die Schlüssel-Wert-Paare und Tabellendaten aus Ihren benutzerdefinierten Dokumenten extrahiert.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 06/15/2020
+ms.date: 09/21/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 30c486ccb7bf3b7d537cd1ed3475a8dadc5b4f6d
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 4632c5cb12b6d3c2a1b8d4baebf37e9237704591
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89323978"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318900"
 ---
 > [!IMPORTANT]
 > * Das SDK für die Formularerkennung ist derzeit auf v2.0 des Formularerkennungsdiensts ausgerichtet.
@@ -132,7 +132,8 @@ Mit der Formularerkennung können Sie zwei verschiedene Clienttypen erstellen. D
 - Verwalten der in Ihrem Konto erstellten Modelle
 - Kopieren eines benutzerdefinierten Modells aus einer Formularerkennungsressource in eine andere
 
-Beachten Sie, dass Modelle auch mithilfe einer grafischen Benutzeroberfläche trainiert werden können, z. B. mit dem [Formularerkennungstool für die Bezeichnung](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool).
+> [!NOTE]
+> Modelle können auch mithilfe einer grafischen Benutzeroberfläche trainiert werden, z. B. mit dem [Formularerkennungstool für die Bezeichnung](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool).
 
 ## <a name="code-examples"></a>Codebeispiele
 

@@ -2,16 +2,19 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 08/17/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 6705e6f1e988a836a3a9b7e7c4950510fcb2b228
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.date: 09/15/2020
+ms.custom: devx-track-js
+ms.openlocfilehash: b0dc5553828b9dd31b297df076857332e9cbd881
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88511303"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327447"
 ---
-Dieser Artikel enthält Informationen zu den ersten Schritten mit der Custom Vision-Clientbibliothek und Node.js und unterstützt Sie beim Erstellen eines Objekterkennungsmodells. Nach der Erstellung können Sie markierte Bereiche hinzufügen, Bilder hochladen, das Projekt trainieren, die veröffentlichte Endpunkt-URL für Vorhersagen des Projekts abrufen und den Endpunkt für die programmgesteuerte Überprüfung eines Bilds verwenden. Verwenden Sie dieses Beispiel als Vorlage für die Erstellung Ihrer eigenen Node.js-Anwendung.
+Dieser Leitfaden enthält Anweisungen und Beispielcode für die ersten Schritte mit der Custom Vision-Clientbibliothek für Node.js und unterstützt Sie beim Erstellen eines Objekterkennungsmodells. Sie erstellen ein Projekt, fügen Tags hinzu, trainieren das Projekt und verwenden die Vorhersageendpunkt-URL des Projekts, um es programmgesteuert zu testen. Verwenden Sie dieses Beispiel als Vorlage für die Erstellung Ihrer eigenen Bilderkennungsanwendung.
+
+> [!NOTE]
+> Falls Sie ein Objekterkennungsmodell erstellen und trainieren möchten, _ohne_ Code zu schreiben, sehen Sie sich stattdessen die [browserbasierte Anleitung](../../get-started-build-detector.md) an.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -26,7 +29,7 @@ Dieser Artikel enthält Informationen zu den ersten Schritten mit der Custom Vi
 
 ## <a name="install-the-custom-vision-client-library"></a>Installieren der Custom Vision-Clientbibliothek
 
-Führen Sie die folgenden Befehle aus, um die Clientbibliotheken des Custom Vision-Diensts für Node.js in Ihrem Projekt zu installieren:
+Zum Schreiben einer Bildanalyseanwendung mit Custom Vision für Node.js benötigen Sie die Custom Vision NPM-Pakete. Führen Sie den folgenden Befehl in PowerShell aus, um sie zu installieren:
 
 ```shell
 npm install @azure/cognitiveservices-customvision-training
@@ -37,7 +40,7 @@ npm install @azure/cognitiveservices-customvision-prediction
 
 Erstellen Sie in Ihrem bevorzugten Projektverzeichnis eine neue Datei namens *sample.js*.
 
-### <a name="create-the-custom-vision-service-project"></a>Erstellen des Custom Vision Service-Projekts
+## <a name="create-the-custom-vision-project"></a>Erstellen des Custom Vision-Projekts
 
 Fügen Sie Ihrem Skript den folgenden Code hinzu, um ein neues Custom Vision Service-Projekt zu erstellen. Fügen Sie Ihre Abonnementschlüssel in die entsprechenden Definitionen ein, und legen Sie als Pfadwert für „sampleDataRoot“ den Pfad zu Ihrem Bildordner fest. Stellen Sie sicher, dass der Wert für „endPoint“ den Trainings- und Vorhersageendpunkten entspricht, die Sie unter [Customvision.ai](https://www.customvision.ai/) erstellt haben. Beachten Sie, dass der Unterschied zwischen dem Erstellen einer Objekterkennung und eines Projekts zur Bildklassifizierung in der Domäne liegt, die für den Aufruf von **createProject** angegeben wird.
 
@@ -78,7 +81,7 @@ async function asyncForEach (array, callback) {
     const sampleProject = await trainer.createProject("Sample Obj Detection Project", { domainId: objDetectDomain.id });
 ```
 
-### <a name="create-tags-in-the-project"></a>Erstellen von Tags im Projekt
+## <a name="create-tags-in-the-project"></a>Erstellen von Tags im Projekt
 
 Fügen Sie am Ende der Datei *sample.js* den folgenden Code hinzu, um Ihrem Projekt Klassifizierungstags hinzuzufügen:
 
@@ -87,7 +90,7 @@ Fügen Sie am Ende der Datei *sample.js* den folgenden Code hinzu, um Ihrem Proj
     const scissorsTag = await trainer.createTag(sampleProject.id, "Scissors");
 ```
 
-### <a name="upload-and-tag-images"></a>Hochladen und Kennzeichnen von Bildern
+## <a name="upload-and-tag-images"></a>Hochladen und Kennzeichnen von Bildern
 
 Wenn Sie Bilder in Objekterkennungsprojekten mit Tags versehen, müssen Sie mithilfe normalisierter Koordinaten die Region des jeweiligen markierten Objekts angeben. 
 
@@ -173,7 +176,7 @@ await asyncForEach(scissorsFiles, async (file) => {
 await Promise.all(fileUploadPromises);
 ```
 
-### <a name="train-the-project-and-publish"></a>Trainieren des Projekts und Veröffentlichen
+## <a name="train-and-publish-the-project"></a>Trainieren und Veröffentlichen des Projekts
 
 Dieser Code erstellt die erste Iteration des Vorhersagemodells und veröffentlicht diese anschließend am Vorhersageendpunkt. Der Name der veröffentlichten Iteration kann zum Senden von Vorhersageanforderungen verwendet werden. Eine Iteration ist erst im Vorhersageendpunkt verfügbar, wenn sie veröffentlicht wurde.
 
@@ -229,7 +232,11 @@ Die Ausgabe der Anwendung sollte in der Konsole angezeigt werden. Daraufhin kön
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie wissen nun, wie die einzelnen Schritte des Objekterkennungsprozesses im Code ausgeführt werden. In diesem Beispiel wird eine einzelne Trainingsiteration ausgeführt. Zur Verbesserung der Genauigkeit muss ein Modell jedoch häufig mehrmals trainiert und getestet werden. Im folgenden Trainingshandbuch wird die Bildklassifizierung behandelt. Die Prinzipien sind jedoch mit denen der Objekterkennung vergleichbar.
+Sie haben jetzt die einzelnen Schritte des Objekterkennungsprozesses im Code ausgeführt. In diesem Beispiel wird eine einzelne Trainingsiteration ausgeführt. Zur Verbesserung der Genauigkeit muss ein Modell jedoch häufig mehrmals trainiert und getestet werden. In der folgenden Anleitung wird die Bildklassifizierung behandelt. Die Prinzipien sind jedoch mit denen der Objekterkennung vergleichbar.
 
 > [!div class="nextstepaction"]
 > [Testen und erneutes Trainieren eines Modells mit Custom Vision Service](../../test-your-model.md)
+
+* [Was ist Custom Vision?](../../overview.md)
+* [SDK-Referenzdokumentation (Training)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-training/?view=azure-node-latest)
+* [SDK-Referenzdokumentation (Vorhersage)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-prediction/?view=azure-node-latest)

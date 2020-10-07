@@ -10,12 +10,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: a3930698bb2999ebaad4d78e0b545b83cc968ef2
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: c24af5a9fb1367e00d9a014b1e10f750a38ad30b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690033"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270898"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Herunterladen oder Anzeigen Ihrer Azure-Rechnungen und täglichen Nutzungsdaten
 
@@ -49,7 +49,7 @@ Für die meisten Abonnements können Sie die Rechnung aus dem Azure-Portal herun
 
     ![Screenshot mit der Option „Rechnung herunterladen“ und Nutzungsseite](./media/download-azure-invoice-daily-usage-date/usageandinvoice.png)
 
-Weitere Informationen über Ihre Rechnung finden Sie unter [Erläuterungen zur Rechnung für Microsoft Azure](../understand/review-individual-bill.md). Hilfe beim Verwalten Ihrer Kosten finden Sie unter [Vermeiden unerwarteter Kosten bei der Azure-Abrechnung und -Kostenverwaltung](getting-started.md).
+Weitere Informationen über Ihre Rechnung finden Sie unter [Erläuterungen zur Rechnung für Microsoft Azure](../understand/review-individual-bill.md). Hilfe zum Verwalten Ihrer Kosten finden Sie unter [Analysieren unerwarteter Gebühren](../understand/analyze-unexpected-charges.md).
 
 ### <a name="download-invoices-for-a-microsoft-customer-agreement"></a>Herunterladen von Rechnungen für eine Microsoft-Kundenvereinbarung
 

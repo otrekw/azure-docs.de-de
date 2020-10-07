@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 05/01/2019
 ms.author: sbowles
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c4667b810e4d3d5f13e13572e2420880da5a8a0b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 5341c2613624c6a52f1649dcd8a64b6746b84f67
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931623"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332388"
 ---
 # <a name="example-use-the-large-scale-feature"></a>Beispiel: Verwenden des Features für die Verarbeitung in großem Umfang
 
@@ -260,7 +260,7 @@ private static void TrainTimerOnElapsed(string largePersonGroupId, int timeInter
 }
 ```
 
-Weitere Informationen zu Datenverwaltung und identifikationsbezogenen Implementierungen finden Sie unter [Hinzufügen von Gesichtern](how-to-add-faces.md) und [Identifizieren von Gesichtern in Bildern](HowtoIdentifyFacesinImage.md).
+Weitere Informationen zu Datenverwaltung und identifikationsbezogenen Implementierungen finden Sie unter [Hinzufügen von Gesichtern](how-to-add-faces.md).
 
 ## <a name="summary"></a>Zusammenfassung
 
@@ -271,7 +271,7 @@ In dieser Anleitung haben Sie gelernt, vorhandenen PersonGroup- oder FaceList-Co
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Befolgen Sie die Anweisungen, um zu erfahren, wie Sie Gesichter zu „PersonGroup“ hinzufügen oder den Vorgang zum Identifizieren für „PersonGroup“ ausführen.
+Befolgen Sie die Anweisungen, um zu erfahren, wie Sie Gesichter zu „PersonGroup“ hinzufügen oder ein Skript schreiben, um den Vorgang zum Identifizieren für „PersonGroup“ ausführen.
 
 - [Hinzufügen von Gesichtern](how-to-add-faces.md)
-- [Identifizieren von Gesichtern in Bildern](HowtoIdentifyFacesinImage.md)
+- [Schnellstart: Clientbibliothek zur Gesichtserkennung](../Quickstarts/client-libraries.md)

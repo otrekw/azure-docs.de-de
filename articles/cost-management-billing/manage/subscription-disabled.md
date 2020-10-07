@@ -10,12 +10,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 32a6284c7766f3b5d9413a76056dc915a8ac93dc
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 550be6c10402398b62af307281660b93981a0df3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686801"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308961"
 ---
 # <a name="reactivate-a-disabled-azure-subscription"></a>Reaktivieren eines deaktivierten Azure-Abonnements
 
@@ -32,7 +32,7 @@ Für Azure-Abonnements mit Gutschrift, wie etwa die kostenlose Testversion und V
 > [!NOTE]
 > Wenn Sie über ein Abonnement des Typs „Kostenlose Testversion“ verfügen und das Ausgabenlimit entfernen, wird das Abonnement am Ende des kostenlosen Testzeitraums auf ein individuelles Abonnement mit nutzungsbasierten Tarifen umgestellt. Sie behalten Ihr Restguthaben für die vollen 30 Tage nach Erstellung des Abonnements. Sie haben auch Zugang zu kostenlosen Diensten für 12 Monate.
 
-Weitere Informationen zum Überwachen und Verwalten von Abrechnungsaktivitäten für Azure finden Sie unter [Vermeiden unerwarteter Kosten bei der Azure-Abrechnung und -Kostenverwaltung](getting-started.md).
+Informationen zum Überwachen und Verwalten von Abrechnungsaktivitäten für Azure finden Sie unter [Planen der Verwaltung von Azure-Kosten](../understand/plan-manage-costs.md).
 
 
 ## <a name="your-bill-is-past-due"></a>Ihre Rechnung ist überfällig
@@ -60,4 +60,4 @@ Wenn Sie der Kontoadministrator sind und versehentlich ein individuelles Abonnem
 Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Erfahren Sie mehr zum [Überwachen und Verwalten von Abrechnungsaktivitäten für Azure](getting-started.md).
+- Informieren Sie sich über das [Planen der Verwaltung von Azure-Kosten](../understand/plan-manage-costs.md).

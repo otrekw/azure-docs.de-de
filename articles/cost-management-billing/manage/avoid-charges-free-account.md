@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: f81c33f3b49352933801c8b89a2c3a1787c2356a
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 203a3b93f200a54ec40c96ee79c7fc822fac140b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682925"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270609"
 ---
 # <a name="avoid-charges-with-your-azure-free-account"></a>Vermeiden von Gebühren mit Ihrem kostenlosen Azure-Konto
 
@@ -31,7 +31,7 @@ Sie erhalten jeden Monat eine begrenzte Menge kostenloser Dienste mit Ihrem kost
 
 ## <a name="you-used-some-services-that-arent-free"></a>Sie haben Dienste verwendet, die nicht kostenlos sind.
 
-Nachdem Sie ein Upgrade Ihres Kontos durchgeführt haben, werden nutzungsbasierte Gebühren für die Verwendung von Diensten in Rechnung gestellt, die in Ihrem kostenlosen Azure-Konto nicht kostenlos sind. Weitere Informationen zu Diensten, die im kostenlosen Konto enthalten sind, finden Sie unter [FAQ zum kostenlosen Azure-Konto](https://azure.microsoft.com/free/free-account-faq/). Sie können Ihre Dienstnutzung im Azure-Portal überprüfen. Weitere Informationen finden Sie unter [Regelmäßiges Überprüfen der Kostenaufschlüsselung und Verbrauchsrate im Portal](getting-started.md#costs).
+Nachdem Sie ein Upgrade Ihres Kontos durchgeführt haben, werden nutzungsbasierte Gebühren für die Verwendung von Diensten in Rechnung gestellt, die in Ihrem kostenlosen Azure-Konto nicht kostenlos sind. Weitere Informationen zu Diensten, die im kostenlosen Konto enthalten sind, finden Sie unter [FAQ zum kostenlosen Azure-Konto](https://azure.microsoft.com/free/free-account-faq/). Sie können Ihre Dienstnutzung im Azure-Portal überprüfen. Weitere Informationen finden Sie unter [Analysieren unerwarteter Gebühren](../understand/analyze-unexpected-charges.md).
 
 ## <a name="you-reached-the-end-of-your-free-12-months"></a>Sie haben das Ende Ihrer kostenlosen 12 Monate erreicht
 

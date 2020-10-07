@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7223d33f8f26897d24841f84454405f91cf3bc49
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 1e758a886e32c5a3f7cd3c744ac451b948a74802
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686342"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308859"
 ---
 # <a name="upgrade-your-azure-free-account-or-azure-for-students-starter-account"></a>Durchführen eines Upgrades für Ihr kostenloses Azure-Konto oder Ihr Azure for Students Starter-Konto
 
@@ -80,4 +80,4 @@ Wenn Sie berechtigt sind, führen Sie die folgenden Schritte aus, um ein Upgrade
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie ein Upgrade Ihres Kontos durchgeführt haben, finden Sie unter [Vermeiden unerwarteter Gebühren bei der Azure-Abrechnung und -Kostenverwaltung](getting-started.md) weitere Informationen.
+Nachdem Sie Ihr Konto aktualisiert haben, informieren Sie sich über das [Planen der Verwaltung von Azure-Kosten](../understand/plan-manage-costs.md).

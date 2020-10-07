@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 8ca9eaeeb8d484c9aeae6646e6f4814afbaed577
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 89a12be047a3571c1d85febc246a1ed8a3c8b720
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718525"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297860"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Schnellstart: Ermitteln und Analysieren von Kosten mit der Kostenanalyse
 
@@ -150,7 +150,7 @@ Sehen Sie sich das Video zum [Freigeben und Speichern von Ansichten in Azure Cos
 
 >[!VIDEO https://www.youtube.com/embed/kQkXXj-SmvQ]
 
-Wählen Sie zum Anheften der Kostenanalyse oben rechts das Stecknadelsymbol aus. Beim Anheften der Kostenanalyse wird nur die Diagramm- oder Tabellenhauptansicht gespeichert. Geben Sie das Dashboard frei, um anderen Personen Zugriff auf die Kachel zu gewähren. Beachten Sie, dass hierbei nur die Dashboardkonfiguration freigegeben und anderen Personen kein Zugriff auf die zugrunde liegenden Daten gewährt wird. Wenn Sie nicht für den Zugriff auf die Kosten berechtigt sind, aber über Zugriff auf ein freigegebenes Dashboard verfügen, wird die Meldung „Zugriff verweigert“ angezeigt.
+Wählen Sie zum Anheften der Kostenanalyse das Stecknadelsymbol oben rechts oder direkt nach „<Subscription Name> | Kostenanalyse“ aus. Beim Anheften der Kostenanalyse wird nur die Diagramm- oder Tabellenhauptansicht gespeichert. Geben Sie das Dashboard frei, um anderen Personen Zugriff auf die Kachel zu gewähren. Beachten Sie, dass hierbei nur die Dashboardkonfiguration freigegeben und anderen Personen kein Zugriff auf die zugrunde liegenden Daten gewährt wird. Wenn Sie nicht für den Zugriff auf die Kosten berechtigt sind, aber über Zugriff auf ein freigegebenes Dashboard verfügen, wird die Meldung „Zugriff verweigert“ angezeigt.
 
 Wählen Sie oben auf dem Blatt den Befehl **Teilen** aus, um einen Link zur Kostenanalyse zu teilen. Eine benutzerdefinierte URL wird angezeigt, über die diese spezifische Ansicht für den jeweiligen Bereich geöffnet wird. Wenn Sie keinen Kostenzugriff besitzen und diese URL abrufen, wird die Meldung „Zugriff verweigert“ angezeigt.
 
